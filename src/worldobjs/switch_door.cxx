@@ -32,10 +32,10 @@ namespace WorldObjs {
 
 SwitchDoor::SwitchDoor (const WorldObjsData::SwitchDoorData& data_)
   : data(new WorldObjsData::SwitchDoorData(data_)),
-    door_box      (Resource::load_sprite("switchdoor_box"      , "worldobjs")),
-    door_tile     (Resource::load_sprite("switchdoor_tile"     , "worldobjs")),
-    door_tile_cmap(Resource::load_pixelbuffer("switchdoor_tile_cmap", "worldobjs")),
-    switch_sur    (Resource::load_sprite("switchdoor_switch"   , "worldobjs")),
+    door_box      (Resource::load_sprite("worldobjs/switchdoor_box")),
+    door_tile     (Resource::load_sprite("worldobjs/switchdoor_tile")),
+    door_tile_cmap(Resource::load_pixelbuffer("worldobjs/switchdoor_tile_cmap")),
+    switch_sur    (Resource::load_sprite("worldobjs/switchdoor_switch")),
     is_opening(false),
     current_door_height(data->door_height)
 {

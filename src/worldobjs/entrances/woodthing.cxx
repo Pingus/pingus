@@ -32,8 +32,8 @@ namespace Entrances {
 WoodThing::WoodThing (const WorldObjsData::EntranceData& data_)
   : Entrance(data_)
 {
-  surface  = Resource::load_sprite("Entrances/woodthing_mov" , "entrances");
-  surface2 = Resource::load_sprite("Entrances/woodthing_nmov", "entrances");
+  surface  = Resource::load_sprite("entrances/woodthing_mov");
+  surface2 = Resource::load_sprite("entrances/woodthing_nmov");
 
   counter.set_size(surface.get_frame_count());
   counter.set_type(GameCounter::once);

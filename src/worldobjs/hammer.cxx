@@ -30,7 +30,7 @@ namespace WorldObjs {
 Hammer::Hammer (const WorldObjsData::HammerData& data_)
   : data(new WorldObjsData::HammerData(data_))
 {
-  sprite = Sprite("Traps/hammer", "traps");
+  sprite = Sprite("traps/hammer");
 }
 
 Hammer::~Hammer ()

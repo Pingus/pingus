@@ -51,7 +51,7 @@ Liquid::get_z_pos () const
 void
 Liquid::on_startup ()
 {
-  CL_PixelBuffer colmap_sur = Resource::load_pixelbuffer("Liquid/water_cmap", "global");
+  CL_PixelBuffer colmap_sur = Resource::load_pixelbuffer("liquids/water_cmap");
 
   for(int i=0; i < data->width; ++i)
     world->get_colmap()->put(colmap_sur,

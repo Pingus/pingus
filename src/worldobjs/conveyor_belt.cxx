@@ -31,9 +31,9 @@ namespace WorldObjs {
 
 ConveyorBelt::ConveyorBelt (const WorldObjsData::ConveyorBeltData& data_)
   : data(new WorldObjsData::ConveyorBeltData(data_)),
-    left_sur  (Resource::load_sprite ("conveyorbelt_left",   "worldobjs")),
-    right_sur (Resource::load_sprite ("conveyorbelt_right",  "worldobjs")),
-    middle_sur(Resource::load_sprite ("conveyorbelt_middle", "worldobjs"))
+    left_sur  (Resource::load_sprite ("worldobjs/conveyorbelt_left")),
+    right_sur (Resource::load_sprite ("worldobjs/conveyorbelt_right")),
+    middle_sur(Resource::load_sprite ("worldobjs/conveyorbelt_middle"))
 {
 }
 

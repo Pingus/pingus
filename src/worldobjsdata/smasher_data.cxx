@@ -35,7 +35,7 @@ SmasherData::SmasherData ()
 }
 
 SmasherData::SmasherData (xmlDocPtr doc, xmlNodePtr cur) 
-  : surface(Resource::load_sprite("Traps/smasher", "traps"))
+  : surface(Resource::load_sprite("traps/smasher"))
 {
   XMLFileReader reader(doc, cur);
   reader.read_vector("position", pos);

@@ -35,7 +35,7 @@ LaserExitData::LaserExitData ()
 }
 
 LaserExitData::LaserExitData (xmlDocPtr doc, xmlNodePtr cur) 
-  : surface(Resource::load_sprite("Traps/laser_exit", "traps"))
+  : surface(Resource::load_sprite("traps/laser_exit"))
 {
   XMLFileReader reader(doc, cur);
   reader.read_vector("position", pos);

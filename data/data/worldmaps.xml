@@ -24,7 +24,7 @@
       </sprite>
 
       <sprite name="pacman">
-        <image name="../images/worldmaps/pacman.jpg" />
+        <image file="../images/worldmaps/pacman.jpg" />
       </sprite>
     </section>
   </section>

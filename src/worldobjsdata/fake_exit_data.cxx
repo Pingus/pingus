@@ -35,7 +35,7 @@ FakeExitData::FakeExitData ()
 }
 
 FakeExitData::FakeExitData (xmlDocPtr doc, xmlNodePtr cur)
-  : surface(Resource::load_sprite("Traps/fake_exit", "traps"))
+  : surface(Resource::load_sprite("traps/fake_exit"))
 {
   XMLFileReader reader(doc, cur);
   reader.read_vector("position", pos);

@@ -34,10 +34,10 @@ namespace Pingus {
 CaptureRectangle::CaptureRectangle (ButtonPanel* arg_button_panel)
   : pingu(0),
     owner_id(0),
-    good("Cursors/capgood", "game"),
-    bad("Cursors/capbad",  "game"),
-    arrow_left("Cursors/arrow_left",  "game"),
-    arrow_right("Cursors/arrow_right", "game"),
+    good("game/cursors/capgood"),
+    bad("game/cursors/capbad"),
+    arrow_left("game/cursors/arrow_left"),
+    arrow_right("game/cursors/arrow_right"),
     button_panel(arg_button_panel),
     font(Fonts::courier_small)
 {

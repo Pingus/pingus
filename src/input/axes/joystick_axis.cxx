@@ -58,9 +58,7 @@ JoystickAxis::get_angle () const
 void
 JoystickAxis::update (float)
 {
-#ifdef CLANLIB_0_6
-  pos = CL_Input::joysticks[id]->get_axis(axis)->get_pos();
-#endif
+  pos = CL_Joystick::get_device(id).get_axis(axis);
 }
 
 } // namespace Axes

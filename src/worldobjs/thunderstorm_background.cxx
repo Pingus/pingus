@@ -27,7 +27,7 @@ namespace WorldObjs {
 
 ThunderstormBackground::ThunderstormBackground (const WorldObjsData::ThunderstormBackgroundData& data_)
   : data(new WorldObjsData::ThunderstormBackgroundData(data_)),
-    clouds_sur(Resource::load_sprite("Textures/thunderstorm", "textures")),
+    clouds_sur(Resource::load_sprite("textures/thunderstorm")),
     x_pos(0)
 {
 }

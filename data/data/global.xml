@@ -1,488 +1,1387 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <resources>
   <section name="Liquid">
-    <surface file="../images/liquids/water_cmap.png" height="64" name="water_cmap" width="1" x="0" y="0" />
-    <surface array="16x1" file="../images/liquids/water.png" height="32" name="water" width="32" x="0" y="0" />
-    <surface array="12x1" file="../images/liquids/water2.png" height="64" name="water2" width="64" x="0" y="0" />
-    <surface array="8x1" file="../images/liquids/water3.png" height="64" name="water3" width="64" x="0" y="0" />
-    <surface array="8x1" file="../images/liquids/water4.png" height="64" name="water4" width="64" x="0" y="0" />
-    <surface array="4x1" file="../images/liquids/water3.png" height="64" name="water5" width="64" x="0" y="0" />
-    <surface array="4x1" file="../images/liquids/swater.png" height="64" name="swater" width="64" x="0" y="0" />
-    <surface array="12x1" file="../images/liquids/lava.png" height="64" name="lava" width="64" x="0" y="0" />
-    <surface array="12x1" file="../images/liquids/slime.png" height="64" name="slime" width="64" x="0" y="0" />
+    <sprite name="water_cmap">
+      <image file="../images/liquids/water_cmap.png"/>
+    </sprite>
+    <sprite name="water">
+      <image file="../images/liquids/water.png">
+        <grid pos="0,0" size="32,32" array="16x1"/>
+      </image>
+    </sprite>
+    <sprite name="water2">
+      <image file="../images/liquids/water2.png">
+        <grid pos="0,0" size="64,64" array="12x1"/>
+      </image>
+    </sprite>
+    <sprite name="water3">
+      <image file="../images/liquids/water3.png">
+        <grid pos="0,0" size="64,64" array="8x1"/>
+      </image>
+    </sprite>
+    <sprite name="water4">
+      <image file="../images/liquids/water4.png">
+        <grid pos="0,0" size="64,64" array="8x1"/>
+      </image>
+    </sprite>
+    <sprite name="water5">
+      <image file="../images/liquids/water3.png">
+        <grid pos="0,0" size="64,64" array="4x1"/>
+      </image>
+    </sprite>
+    <sprite name="swater">
+      <image file="../images/liquids/swater.png">
+        <grid pos="0,0" size="64,64" array="4x1"/>
+      </image>
+    </sprite>
+    <sprite name="lava">
+      <image file="../images/liquids/lava.png">
+        <grid pos="0,0" size="64,64" array="12x1"/>
+      </image>
+    </sprite>
+    <sprite name="slime">
+      <image file="../images/liquids/slime.png">
+        <grid pos="0,0" size="64,64" array="12x1"/>
+      </image>
+    </sprite>
   </section>
   <section name="Hotspots">
     <section name="signposts">
-      <surface file="../images/hotspots/signposts/basher.png" height="46" name="basher" width="28" x="0" y="0" />
-      <surface file="../images/hotspots/signposts/blocker.png" height="46" name="blocker" width="28" x="0" y="0" />
-      <surface file="../images/hotspots/signposts/bomber.png" height="46" name="bomber" width="28" x="0" y="0" />
-      <surface file="../images/hotspots/signposts/bridger.png" height="46" name="bridger" width="28" x="0" y="0" />
-      <surface file="../images/hotspots/signposts/climber.png" height="46" name="climber" width="28" x="0" y="0" />
-      <surface file="../images/hotspots/signposts/digger.png" height="46" name="digger" width="28" x="0" y="0" />
-      <surface file="../images/hotspots/signposts/floater.png" height="46" name="floater" width="28" x="0" y="0" />
-      <surface file="../images/hotspots/signposts/miner.png" height="46" name="miner" width="28" x="0" y="0" />
-      <surface file="../images/hotspots/signposts/nogo.png" height="46" name="nogo" width="28" x="0" y="0" />
+      <sprite name="basher">
+        <image file="../images/hotspots/signposts/basher.png"/>
+      </sprite>
+      <sprite name="blocker">
+        <image file="../images/hotspots/signposts/blocker.png"/>
+      </sprite>
+      <sprite name="bomber">
+        <image file="../images/hotspots/signposts/bomber.png"/>
+      </sprite>
+      <sprite name="bridger">
+        <image file="../images/hotspots/signposts/bridger.png"/>
+      </sprite>
+      <sprite name="climber">
+        <image file="../images/hotspots/signposts/climber.png"/>
+      </sprite>
+      <sprite name="digger">
+        <image file="../images/hotspots/signposts/digger.png"/>
+      </sprite>
+      <sprite name="floater">
+        <image file="../images/hotspots/signposts/floater.png"/>
+      </sprite>
+      <sprite name="miner">
+        <image file="../images/hotspots/signposts/miner.png"/>
+      </sprite>
+      <sprite name="nogo">
+        <image file="../images/hotspots/signposts/nogo.png"/>
+      </sprite>
     </section>
-    <surface array="4x1" file="../images/hotspots/space/engine.png" height="166" name="engine" width="108" x="0" y="0" />
-    <surface file="../images/fonts/left_arrow.png" height="73" name="left_arrow" width="100" x="0" y="0" />
-    <surface file="../images/fonts/right_arrow.png" height="73" name="right_arrow" width="100" x="0" y="0" />
-    <surface file="../images/fonts/up_arrow.png" height="99" name="up_arrow" width="73" x="0" y="0" />
-    <surface file="../images/fonts/down_arrow.png" height="99" name="down_arrow" width="73" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/signposts/danger.png" height="121" name="danger" width="215" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/column.png" name="colum" />
-    <surface file="../images/groundpieces/ground/misc/column_flat.png" name="colum_flat" />
-    <surface file="../images/groundpieces/ground/desert/column_piece1.png" height="66" name="colum_piece1" width="103" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/desert/column_piece2.png" height="66" name="colum_piece2" width="128" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/desert/column_piece3.png" height="111" name="colum_piece3" width="128" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/desert/column_piece1.png" height="66" name="colum_pice1" width="103" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/desert/column_piece2.png" height="66" name="colum_pice2" width="128" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/desert/column_piece3.png" height="111" name="colum_pice3" width="128" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/stone0.png" height="91" name="stone0" width="106" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/stone1.png" height="21" name="stone1" width="73" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/stone2.png" height="54" name="stone2" width="86" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/snow/cabin.png" height="94" name="cabin" width="129" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/snow/cabin_winter.png" height="94" name="cabin_winter" width="129" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/dragon.png" height="169" name="dragon" width="255" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/desert/pillar1.png" height="161" name="pillar1" width="36" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/desert/pillar2.png" height="130" name="pillar2" width="37" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/desert/pillar3.png" height="147" name="pillar3" width="36" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/well.png" height="54" name="well" width="32" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/misc/metalplate_horiz.png" height="32" name="plate" width="64" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/misc/metalplate_large.png" height="64" name="plate2" width="64" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/misc/metalplate_small.png" height="32" name="plate_small" width="32" x="0" y="0" />
+    <sprite name="engine">
+      <image file="../images/hotspots/space/engine.png">
+        <grid pos="0,0" size="108,166" array="4x1"/>
+      </image>
+    </sprite>
+    <sprite name="left_arrow">
+      <image file="../images/fonts/left_arrow.png"/>
+    </sprite>
+    <sprite name="right_arrow">
+      <image file="../images/fonts/right_arrow.png"/>
+    </sprite>
+    <sprite name="up_arrow">
+      <image file="../images/fonts/up_arrow.png"/>
+    </sprite>
+    <sprite name="down_arrow">
+      <image file="../images/fonts/down_arrow.png"/>
+    </sprite>
+    <sprite name="danger">
+      <image file="../images/groundpieces/ground/signposts/danger.png"/>
+    </sprite>
+    <sprite name="colum">
+      <image file="../images/groundpieces/ground/misc/column.png"/>
+    </sprite>
+    <sprite name="colum_flat">
+      <image file="../images/groundpieces/ground/misc/column_flat.png"/>
+    </sprite>
+    <sprite name="colum_piece1">
+      <image file="../images/groundpieces/ground/desert/column_piece1.png"/>
+    </sprite>
+    <sprite name="colum_piece2">
+      <image file="../images/groundpieces/ground/desert/column_piece2.png"/>
+    </sprite>
+    <sprite name="colum_piece3">
+      <image file="../images/groundpieces/ground/desert/column_piece3.png"/>
+    </sprite>
+    <sprite name="colum_pice1">
+      <image file="../images/groundpieces/ground/desert/column_piece1.png"/>
+    </sprite>
+    <sprite name="colum_pice2">
+      <image file="../images/groundpieces/ground/desert/column_piece2.png"/>
+    </sprite>
+    <sprite name="colum_pice3">
+      <image file="../images/groundpieces/ground/desert/column_piece3.png"/>
+    </sprite>
+    <sprite name="stone0">
+      <image file="../images/groundpieces/ground/misc/stone0.png"/>
+    </sprite>
+    <sprite name="stone1">
+      <image file="../images/groundpieces/ground/misc/stone1.png"/>
+    </sprite>
+    <sprite name="stone2">
+      <image file="../images/groundpieces/ground/misc/stone2.png"/>
+    </sprite>
+    <sprite name="cabin">
+      <image file="../images/groundpieces/ground/snow/cabin.png"/>
+    </sprite>
+    <sprite name="cabin_winter">
+      <image file="../images/groundpieces/ground/snow/cabin_winter.png"/>
+    </sprite>
+    <sprite name="dragon">
+      <image file="../images/groundpieces/ground/misc/dragon.png"/>
+    </sprite>
+    <sprite name="pillar1">
+      <image file="../images/groundpieces/ground/desert/pillar1.png"/>
+    </sprite>
+    <sprite name="pillar2">
+      <image file="../images/groundpieces/ground/desert/pillar2.png"/>
+    </sprite>
+    <sprite name="pillar3">
+      <image file="../images/groundpieces/ground/desert/pillar3.png"/>
+    </sprite>
+    <sprite name="well">
+      <image file="../images/groundpieces/ground/misc/well.png"/>
+    </sprite>
+    <sprite name="plate">
+      <image file="../images/groundpieces/solid/misc/metalplate_horiz.png"/>
+    </sprite>
+    <sprite name="plate2">
+      <image file="../images/groundpieces/solid/misc/metalplate_large.png"/>
+    </sprite>
+    <sprite name="plate_small">
+      <image file="../images/groundpieces/solid/misc/metalplate_small.png"/>
+    </sprite>
   </section>
   <section name="GroundPieces">
     <section name="Jungle">
-      <surface file="../images/groundpieces/ground/jungle/branch1.png" height="40" name="branch1" width="337" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/jungle/branch2.png" height="112" name="branch2" width="326" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/jungle/branch3.png" height="269" name="branch3" width="226" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/jungle/branch4.png" height="112" name="branch4" width="326" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/jungle/branch5.png" height="269" name="branch5" width="226" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/jungle/branch6.png" height="337" name="branch6" width="41" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/jungle/carabatree.png" height="408" name="carabatree" width="325" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/jungle/carabatreemedium.png" height="300" name="carabatreemedium" width="257" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/jungle/carabatreesmall.png" height="190" name="carabatreesmall" width="164" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/jungle/twist.png" height="70" name="twist" width="405" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/jungle/twistsmooth.png" height="70" name="twistsmooth" width="405" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/jungle/stick1.png" height="21" name="stick1" width="446" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/jungle/stick2.png" height="21" name="stick2" width="312" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/jungle/stick3.png" height="21" name="stick3" width="289" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/jungle/stick4.png" height="21" name="stick4" width="232" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/jungle/stick5.png" height="21" name="stick5" width="185" x="0" y="0" />
+      <sprite name="branch1">
+        <image file="../images/groundpieces/ground/jungle/branch1.png"/>
+      </sprite>
+      <sprite name="branch2">
+        <image file="../images/groundpieces/ground/jungle/branch2.png"/>
+      </sprite>
+      <sprite name="branch3">
+        <image file="../images/groundpieces/ground/jungle/branch3.png"/>
+      </sprite>
+      <sprite name="branch4">
+        <image file="../images/groundpieces/ground/jungle/branch4.png"/>
+      </sprite>
+      <sprite name="branch5">
+        <image file="../images/groundpieces/ground/jungle/branch5.png"/>
+      </sprite>
+      <sprite name="branch6">
+        <image file="../images/groundpieces/ground/jungle/branch6.png"/>
+      </sprite>
+      <sprite name="carabatree">
+        <image file="../images/groundpieces/ground/jungle/carabatree.png"/>
+      </sprite>
+      <sprite name="carabatreemedium">
+        <image file="../images/groundpieces/ground/jungle/carabatreemedium.png"/>
+      </sprite>
+      <sprite name="carabatreesmall">
+        <image file="../images/groundpieces/ground/jungle/carabatreesmall.png"/>
+      </sprite>
+      <sprite name="twist">
+        <image file="../images/groundpieces/ground/jungle/twist.png"/>
+      </sprite>
+      <sprite name="twistsmooth">
+        <image file="../images/groundpieces/ground/jungle/twistsmooth.png"/>
+      </sprite>
+      <sprite name="stick1">
+        <image file="../images/groundpieces/ground/jungle/stick1.png"/>
+      </sprite>
+      <sprite name="stick2">
+        <image file="../images/groundpieces/ground/jungle/stick2.png"/>
+      </sprite>
+      <sprite name="stick3">
+        <image file="../images/groundpieces/ground/jungle/stick3.png"/>
+      </sprite>
+      <sprite name="stick4">
+        <image file="../images/groundpieces/ground/jungle/stick4.png"/>
+      </sprite>
+      <sprite name="stick5">
+        <image file="../images/groundpieces/ground/jungle/stick5.png"/>
+      </sprite>
     </section>
     <section name="Crystal">
-      <surface file="../images/groundpieces/ground/crystal/block.png" height="32" name="block" width="32" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/crystal/column.png" height="95" name="column" width="32" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/crystal/diagcrystal.png" height="138" name="diagcrystal" width="100" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/crystal/hexcrystal.png" height="139" name="hexcrystal" width="175" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/crystal/horiz.png" height="41" name="horiz" width="84" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/crystal/horiz2.png" height="42" name="horiz2" width="87" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/crystal/pipe.png" height="32" name="pipe" width="101" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/crystal/pipeend.png" height="41" name="pipeend" width="41" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/crystal/platform.png" height="74" name="platform" width="126" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/crystal/platform2.png" height="80" name="platform2" width="81" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/crystal/pointleft.png" height="32" name="pointleft" width="32" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/crystal/pointright.png" height="32" name="pointright" width="32" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/crystal/skinnycrystal.png" height="208" name="skinnycrystal" width="65" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/crystal/smcrystal.png" height="50" name="smcrystal" width="100" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/crystal/tesselate.png" height="64" name="tesselate" width="64" x="0" y="0" />
+      <sprite name="block">
+        <image file="../images/groundpieces/ground/crystal/block.png"/>
+      </sprite>
+      <sprite name="column">
+        <image file="../images/groundpieces/ground/crystal/column.png"/>
+      </sprite>
+      <sprite name="diagcrystal">
+        <image file="../images/groundpieces/ground/crystal/diagcrystal.png"/>
+      </sprite>
+      <sprite name="hexcrystal">
+        <image file="../images/groundpieces/ground/crystal/hexcrystal.png"/>
+      </sprite>
+      <sprite name="horiz">
+        <image file="../images/groundpieces/ground/crystal/horiz.png"/>
+      </sprite>
+      <sprite name="horiz2">
+        <image file="../images/groundpieces/ground/crystal/horiz2.png"/>
+      </sprite>
+      <sprite name="pipe">
+        <image file="../images/groundpieces/ground/crystal/pipe.png"/>
+      </sprite>
+      <sprite name="pipeend">
+        <image file="../images/groundpieces/ground/crystal/pipeend.png"/>
+      </sprite>
+      <sprite name="platform">
+        <image file="../images/groundpieces/ground/crystal/platform.png"/>
+      </sprite>
+      <sprite name="platform2">
+        <image file="../images/groundpieces/ground/crystal/platform2.png"/>
+      </sprite>
+      <sprite name="pointleft">
+        <image file="../images/groundpieces/ground/crystal/pointleft.png"/>
+      </sprite>
+      <sprite name="pointright">
+        <image file="../images/groundpieces/ground/crystal/pointright.png"/>
+      </sprite>
+      <sprite name="skinnycrystal">
+        <image file="../images/groundpieces/ground/crystal/skinnycrystal.png"/>
+      </sprite>
+      <sprite name="smcrystal">
+        <image file="../images/groundpieces/ground/crystal/smcrystal.png"/>
+      </sprite>
+      <sprite name="tesselate">
+        <image file="../images/groundpieces/ground/crystal/tesselate.png"/>
+      </sprite>
     </section>
     <section name="Snow">
-      <surface file="../images/groundpieces/ground/snow/snowman.png" height="110" name="snowman" width="67" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/snow/xmas-tree.png" height="98" name="xmas-tree" width="74" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/snow/piece1.png" height="73" name="piece1" width="126" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/snow/slopedr.png" height="73" name="slopedr" width="126" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/snow/gpiece1.png" name="gpiece1" />
-      <surface file="../images/groundpieces/ground/snow/piece2.png" height="19" name="piece2" width="80" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/snow/piece3.png" height="22" name="piece3" width="178" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/snow/ice1.png" height="65" name="ice1" width="54" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/snow/ice2.png" height="41" name="ice2" width="74" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/snow/igloo.png" height="54" name="igloo" width="93" x="0" y="0" />
+      <sprite name="snowman">
+        <image file="../images/groundpieces/ground/snow/snowman.png"/>
+      </sprite>
+      <sprite name="xmas-tree">
+        <image file="../images/groundpieces/ground/snow/xmas-tree.png"/>
+      </sprite>
+      <sprite name="piece1">
+        <image file="../images/groundpieces/ground/snow/piece1.png"/>
+      </sprite>
+      <sprite name="slopedr">
+        <image file="../images/groundpieces/ground/snow/slopedr.png"/>
+      </sprite>
+      <sprite name="gpiece1">
+        <image file="../images/groundpieces/ground/snow/gpiece1.png"/>
+      </sprite>
+      <sprite name="piece2">
+        <image file="../images/groundpieces/ground/snow/piece2.png"/>
+      </sprite>
+      <sprite name="piece3">
+        <image file="../images/groundpieces/ground/snow/piece3.png"/>
+      </sprite>
+      <sprite name="ice1">
+        <image file="../images/groundpieces/ground/snow/ice1.png"/>
+      </sprite>
+      <sprite name="ice2">
+        <image file="../images/groundpieces/ground/snow/ice2.png"/>
+      </sprite>
+      <sprite name="igloo">
+        <image file="../images/groundpieces/ground/snow/igloo.png"/>
+      </sprite>
     </section>
     <section name="Rock">
-      <surface file="../images/groundpieces/ground/real/real1.png" height="134" name="real1" width="222" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real2.png" height="163" name="real2" width="351" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real3.png" height="156" name="real3" width="263" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real4.png" height="93" name="real4" width="200" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real5.png" height="49" name="real5" width="220" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real6.png" height="206" name="real6" width="110" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real7.png" height="132" name="real7" width="247" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real8.png" height="132" name="real8" width="263" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real9.png" height="76" name="real9" width="79" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real10.png" height="95" name="real10" width="100" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real11.png" height="91" name="real11" width="149" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real12.png" height="79" name="real12" width="180" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real13.png" height="56" name="real13" width="300" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real14.png" height="110" name="real14" width="100" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real15.png" height="114" name="real15" width="150" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real16.png" height="94" name="real16" width="150" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real17.png" height="94" name="real17" width="175" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real18.png" height="106" name="real18" width="160" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real19.png" height="79" name="real19" width="184" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real20.png" height="82" name="real20" width="181" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real21.png" height="106" name="real21" width="185" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real22.png" height="142" name="real22" width="160" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real23.png" height="81" name="real23" width="200" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real24.png" height="84" name="real24" width="138" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real25.png" height="128" name="real25" width="184" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real26.png" height="95" name="real26" width="154" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real27.png" height="133" name="real27" width="180" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real28.png" height="155" name="real28" width="140" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real29.png" height="89" name="real29" width="150" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real30.png" height="101" name="real30" width="171" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/rock/blackrock1.png" height="171" name="real31" width="136" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/rock/blackrock2.png" height="171" name="real32" width="150" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/rock/blackrock3.png" height="175" name="real33" width="170" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/rock/blackrock4.png" height="150" name="real34" width="156" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real35.png" height="48" name="real35" width="179" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real36.png" height="60" name="real36" width="181" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/real37.png" height="64" name="real37" width="184" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/fish.png" height="50" name="fish" width="166" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/green1.png" height="374" name="green1" width="122" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/real/green2.png" height="191" name="green2" width="207" x="0" y="0" />
-      <surface file="../images/groundpieces/solid/rock/granit1.png" height="107" name="granit1" width="173" x="0" y="0" />
-      <surface file="../images/groundpieces/solid/rock/granit2.png" height="112" name="granit2" width="139" x="0" y="0" />
-      <surface file="../images/groundpieces/solid/rock/granit3.png" height="182" name="granit3" width="126" x="0" y="0" />
-      <surface file="../images/groundpieces/solid/rock/granit4.png" height="87" name="granit4" width="127" x="0" y="0" />
-      <surface file="../images/groundpieces/solid/rock/granit5.png" height="101" name="granit5" width="138" x="0" y="0" />
-      <surface file="../images/groundpieces/solid/rock/granit6.png" height="150" name="granit6" width="88" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/foliage/rock1.png" height="98" name="rock1" width="188" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/foliage/rock2.png" height="196" name="rock2" width="152" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/foliage/rock3.png" height="121" name="rock3" width="210" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/foliage/rock4.png" height="191" name="rock4" width="136" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/foliage/rock5.png" height="88" name="rock5" width="101" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/foliage/rock6.png" height="185" name="rock6" width="143" x="0" y="0" />
+      <sprite name="real1">
+        <image file="../images/groundpieces/ground/real/real1.png"/>
+      </sprite>
+      <sprite name="real2">
+        <image file="../images/groundpieces/ground/real/real2.png"/>
+      </sprite>
+      <sprite name="real3">
+        <image file="../images/groundpieces/ground/real/real3.png"/>
+      </sprite>
+      <sprite name="real4">
+        <image file="../images/groundpieces/ground/real/real4.png"/>
+      </sprite>
+      <sprite name="real5">
+        <image file="../images/groundpieces/ground/real/real5.png"/>
+      </sprite>
+      <sprite name="real6">
+        <image file="../images/groundpieces/ground/real/real6.png"/>
+      </sprite>
+      <sprite name="real7">
+        <image file="../images/groundpieces/ground/real/real7.png"/>
+      </sprite>
+      <sprite name="real8">
+        <image file="../images/groundpieces/ground/real/real8.png"/>
+      </sprite>
+      <sprite name="real9">
+        <image file="../images/groundpieces/ground/real/real9.png"/>
+      </sprite>
+      <sprite name="real10">
+        <image file="../images/groundpieces/ground/real/real10.png"/>
+      </sprite>
+      <sprite name="real11">
+        <image file="../images/groundpieces/ground/real/real11.png"/>
+      </sprite>
+      <sprite name="real12">
+        <image file="../images/groundpieces/ground/real/real12.png"/>
+      </sprite>
+      <sprite name="real13">
+        <image file="../images/groundpieces/ground/real/real13.png"/>
+      </sprite>
+      <sprite name="real14">
+        <image file="../images/groundpieces/ground/real/real14.png"/>
+      </sprite>
+      <sprite name="real15">
+        <image file="../images/groundpieces/ground/real/real15.png"/>
+      </sprite>
+      <sprite name="real16">
+        <image file="../images/groundpieces/ground/real/real16.png"/>
+      </sprite>
+      <sprite name="real17">
+        <image file="../images/groundpieces/ground/real/real17.png"/>
+      </sprite>
+      <sprite name="real18">
+        <image file="../images/groundpieces/ground/real/real18.png"/>
+      </sprite>
+      <sprite name="real19">
+        <image file="../images/groundpieces/ground/real/real19.png"/>
+      </sprite>
+      <sprite name="real20">
+        <image file="../images/groundpieces/ground/real/real20.png"/>
+      </sprite>
+      <sprite name="real21">
+        <image file="../images/groundpieces/ground/real/real21.png"/>
+      </sprite>
+      <sprite name="real22">
+        <image file="../images/groundpieces/ground/real/real22.png"/>
+      </sprite>
+      <sprite name="real23">
+        <image file="../images/groundpieces/ground/real/real23.png"/>
+      </sprite>
+      <sprite name="real24">
+        <image file="../images/groundpieces/ground/real/real24.png"/>
+      </sprite>
+      <sprite name="real25">
+        <image file="../images/groundpieces/ground/real/real25.png"/>
+      </sprite>
+      <sprite name="real26">
+        <image file="../images/groundpieces/ground/real/real26.png"/>
+      </sprite>
+      <sprite name="real27">
+        <image file="../images/groundpieces/ground/real/real27.png"/>
+      </sprite>
+      <sprite name="real28">
+        <image file="../images/groundpieces/ground/real/real28.png"/>
+      </sprite>
+      <sprite name="real29">
+        <image file="../images/groundpieces/ground/real/real29.png"/>
+      </sprite>
+      <sprite name="real30">
+        <image file="../images/groundpieces/ground/real/real30.png"/>
+      </sprite>
+      <sprite name="real31">
+        <image file="../images/groundpieces/ground/rock/blackrock1.png"/>
+      </sprite>
+      <sprite name="real32">
+        <image file="../images/groundpieces/ground/rock/blackrock2.png"/>
+      </sprite>
+      <sprite name="real33">
+        <image file="../images/groundpieces/ground/rock/blackrock3.png"/>
+      </sprite>
+      <sprite name="real34">
+        <image file="../images/groundpieces/ground/rock/blackrock4.png"/>
+      </sprite>
+      <sprite name="real35">
+        <image file="../images/groundpieces/ground/real/real35.png"/>
+      </sprite>
+      <sprite name="real36">
+        <image file="../images/groundpieces/ground/real/real36.png"/>
+      </sprite>
+      <sprite name="real37">
+        <image file="../images/groundpieces/ground/real/real37.png"/>
+      </sprite>
+      <sprite name="fish">
+        <image file="../images/groundpieces/ground/real/fish.png"/>
+      </sprite>
+      <sprite name="green1">
+        <image file="../images/groundpieces/ground/real/green1.png"/>
+      </sprite>
+      <sprite name="green2">
+        <image file="../images/groundpieces/ground/real/green2.png"/>
+      </sprite>
+      <sprite name="granit1">
+        <image file="../images/groundpieces/solid/rock/granit1.png"/>
+      </sprite>
+      <sprite name="granit2">
+        <image file="../images/groundpieces/solid/rock/granit2.png"/>
+      </sprite>
+      <sprite name="granit3">
+        <image file="../images/groundpieces/solid/rock/granit3.png"/>
+      </sprite>
+      <sprite name="granit4">
+        <image file="../images/groundpieces/solid/rock/granit4.png"/>
+      </sprite>
+      <sprite name="granit5">
+        <image file="../images/groundpieces/solid/rock/granit5.png"/>
+      </sprite>
+      <sprite name="granit6">
+        <image file="../images/groundpieces/solid/rock/granit6.png"/>
+      </sprite>
+      <sprite name="rock1">
+        <image file="../images/groundpieces/ground/foliage/rock1.png"/>
+      </sprite>
+      <sprite name="rock2">
+        <image file="../images/groundpieces/ground/foliage/rock2.png"/>
+      </sprite>
+      <sprite name="rock3">
+        <image file="../images/groundpieces/ground/foliage/rock3.png"/>
+      </sprite>
+      <sprite name="rock4">
+        <image file="../images/groundpieces/ground/foliage/rock4.png"/>
+      </sprite>
+      <sprite name="rock5">
+        <image file="../images/groundpieces/ground/foliage/rock5.png"/>
+      </sprite>
+      <sprite name="rock6">
+        <image file="../images/groundpieces/ground/foliage/rock6.png"/>
+      </sprite>
     </section>
     <section name="Test">
-      <surface file="../images/groundpieces/ground/test/test1.png" height="49" name="test1" width="105" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/test/test2.png" height="38" name="test2" width="71" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/test/test3.png" height="59" name="test3" width="104" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/test/test4.png" height="45" name="test4" width="107" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/test/test5.png" height="42" name="test5" width="47" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/test/test6.png" height="64" name="test6" width="13" x="0" y="0" />
+      <sprite name="test1">
+        <image file="../images/groundpieces/ground/test/test1.png"/>
+      </sprite>
+      <sprite name="test2">
+        <image file="../images/groundpieces/ground/test/test2.png"/>
+      </sprite>
+      <sprite name="test3">
+        <image file="../images/groundpieces/ground/test/test3.png"/>
+      </sprite>
+      <sprite name="test4">
+        <image file="../images/groundpieces/ground/test/test4.png"/>
+      </sprite>
+      <sprite name="test5">
+        <image file="../images/groundpieces/ground/test/test5.png"/>
+      </sprite>
+      <sprite name="test6">
+        <image file="../images/groundpieces/ground/test/test6.png"/>
+      </sprite>
     </section>
     <section name="Foliage">
-      <surface file="../images/groundpieces/ground/foliage/flax1.png" height="91" name="flax1" width="100" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/foliage/flax2.png" height="84" name="flax2" width="92" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/foliage/midtree1.png" height="161" name="midtree1" width="114" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/foliage/midtree2.png" height="189" name="midtree2" width="169" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/foliage/oak1.png" height="215" name="oak1" width="168" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/foliage/smallbush.png" height="24" name="smallbush" width="57" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/foliage/smallbush2.png" height="88" name="smallbush2" width="107" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/foliage/smallbush3.png" height="37" name="smallbush3" width="95" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/foliage/talltree.png" height="200" name="talltree" width="84" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/foliage/turfconcave.png" height="16" name="turfconcave" width="59" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/foliage/turfflat.png" height="13" name="turfflat" width="90" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/foliage/turfslopeleft.png" height="17" name="turfslopeleft" width="70" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/foliage/turfslopeleft20.png" height="20" name="turfslopeleft20" width="52" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/foliage/turfsloperight.png" height="17" name="turfsloperight" width="40" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/foliage/turfsloperight20.png" height="20" name="turfsloperight20" width="52" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/foliage/turfsmallbump.png" height="16" name="turfsmallbump" width="20" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/foliage/turfsmallnook.png" height="17" name="turfsmallnook" width="20" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/foliage/turftufty.png" height="17" name="turftufty" width="20" x="0" y="0" />
+      <sprite name="flax1">
+        <image file="../images/groundpieces/ground/foliage/flax1.png"/>
+      </sprite>
+      <sprite name="flax2">
+        <image file="../images/groundpieces/ground/foliage/flax2.png"/>
+      </sprite>
+      <sprite name="midtree1">
+        <image file="../images/groundpieces/ground/foliage/midtree1.png"/>
+      </sprite>
+      <sprite name="midtree2">
+        <image file="../images/groundpieces/ground/foliage/midtree2.png"/>
+      </sprite>
+      <sprite name="oak1">
+        <image file="../images/groundpieces/ground/foliage/oak1.png"/>
+      </sprite>
+      <sprite name="smallbush">
+        <image file="../images/groundpieces/ground/foliage/smallbush.png"/>
+      </sprite>
+      <sprite name="smallbush2">
+        <image file="../images/groundpieces/ground/foliage/smallbush2.png"/>
+      </sprite>
+      <sprite name="smallbush3">
+        <image file="../images/groundpieces/ground/foliage/smallbush3.png"/>
+      </sprite>
+      <sprite name="talltree">
+        <image file="../images/groundpieces/ground/foliage/talltree.png"/>
+      </sprite>
+      <sprite name="turfconcave">
+        <image file="../images/groundpieces/transparent/foliage/turfconcave.png"/>
+      </sprite>
+      <sprite name="turfflat">
+        <image file="../images/groundpieces/transparent/foliage/turfflat.png"/>
+      </sprite>
+      <sprite name="turfslopeleft">
+        <image file="../images/groundpieces/transparent/foliage/turfslopeleft.png"/>
+      </sprite>
+      <sprite name="turfslopeleft20">
+        <image file="../images/groundpieces/transparent/foliage/turfslopeleft20.png"/>
+      </sprite>
+      <sprite name="turfsloperight">
+        <image file="../images/groundpieces/transparent/foliage/turfsloperight.png"/>
+      </sprite>
+      <sprite name="turfsloperight20">
+        <image file="../images/groundpieces/transparent/foliage/turfsloperight20.png"/>
+      </sprite>
+      <sprite name="turfsmallbump">
+        <image file="../images/groundpieces/transparent/foliage/turfsmallbump.png"/>
+      </sprite>
+      <sprite name="turfsmallnook">
+        <image file="../images/groundpieces/transparent/foliage/turfsmallnook.png"/>
+      </sprite>
+      <sprite name="turftufty">
+        <image file="../images/groundpieces/transparent/foliage/turftufty.png"/>
+      </sprite>
     </section>
     <section name="Mushroom">
-      <surface file="../images/groundpieces/ground/mushroom/toadstool1.png" height="187" name="toadstool1" width="211" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/mushroom/toadstool2.png" height="56" name="toadstool2" width="63" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/mushroom/toadstool3.png" height="178" name="toadstool3" width="214" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/mushroom/toadstool4.png" height="210" name="toadstool4" width="197" x="0" y="0" />
+      <sprite name="toadstool1">
+        <image file="../images/groundpieces/ground/mushroom/toadstool1.png"/>
+      </sprite>
+      <sprite name="toadstool2">
+        <image file="../images/groundpieces/ground/mushroom/toadstool2.png"/>
+      </sprite>
+      <sprite name="toadstool3">
+        <image file="../images/groundpieces/ground/mushroom/toadstool3.png"/>
+      </sprite>
+      <sprite name="toadstool4">
+        <image file="../images/groundpieces/ground/mushroom/toadstool4.png"/>
+      </sprite>
     </section>
     <section name="Sweets">
-      <surface file="../images/groundpieces/ground/sweets/allsort1.png" height="60" name="allsort1" width="61" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/allsort2.png" height="52" name="allsort2" width="67" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/aquachoc.png" height="71" name="aquachoc" width="189" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/canestalk.png" height="61" name="canestalk" width="15" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/canestub.png" height="7" name="canestub" width="16" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/canetop.png" height="72" name="canetop" width="115" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/chocbar.png" height="74" name="chocbar" width="300" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/chocbloc.png" height="64" name="chocbloc" width="64" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/chocbloc-lowleft.png" height="64" name="chocbloc-lowleft" width="64" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/chocbloc-lowright.png" height="64" name="chocbloc-lowright" width="64" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/chocbloc-topleft.png" height="64" name="chocbloc-topleft" width="64" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/chocbloc-topright.png" height="64" name="chocbloc-topright" width="64" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/goldchoc.png" height="71" name="goldchoc" width="190" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/greenjellybaby.png" height="84" name="greenjellybaby" width="64" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/icecream.png" height="273" name="icecream" width="114" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/icecream.png" height="273" name="icecream" width="114" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/greenjellybaby.png" name="jellybaby" />
-      <surface file="../images/groundpieces/ground/sweets/redjellybaby.png" name="jellybaby2" />
-      <surface file="../images/groundpieces/ground/sweets/jube1.png" height="42" name="jube1" width="49" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/jube2.png" height="48" name="jube2" width="45" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/lollipop.png" height="238" name="lollipop" width="42" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/lollipop.png" height="238" name="lollipop" width="42" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/lollipop-purp.png" height="238" name="lollipop-purp" width="42" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/lollipop-purp.png" height="238" name="lollipop-purp" width="42" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/mmblue.png" height="41" name="mmblue" width="50" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/mmbrown.png" height="41" name="mmbrown" width="50" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/mmred.png" height="31" name="mmred" width="54" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/mmyellow.png" height="51" name="mmyellow" width="40" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/purpchoc.png" height="70" name="purpchoc" width="189" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/purplechoc.png" height="57" name="purplechoc" width="150" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/redjellybaby.png" height="63" name="redjellybaby" width="85" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/cake1.png" height="101" name="cake1" width="163" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/cake2.png" height="142" name="cake2" width="121" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/cake3.png" height="97" name="cake3" width="153" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/cake4.png" height="98" name="cake4" width="148" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sweets/cake5.png" height="165" name="cake5" width="152" x="0" y="0" />
+      <sprite name="allsort1">
+        <image file="../images/groundpieces/ground/sweets/allsort1.png"/>
+      </sprite>
+      <sprite name="allsort2">
+        <image file="../images/groundpieces/ground/sweets/allsort2.png"/>
+      </sprite>
+      <sprite name="aquachoc">
+        <image file="../images/groundpieces/ground/sweets/aquachoc.png"/>
+      </sprite>
+      <sprite name="canestalk">
+        <image file="../images/groundpieces/ground/sweets/canestalk.png"/>
+      </sprite>
+      <sprite name="canestub">
+        <image file="../images/groundpieces/ground/sweets/canestub.png"/>
+      </sprite>
+      <sprite name="canetop">
+        <image file="../images/groundpieces/ground/sweets/canetop.png"/>
+      </sprite>
+      <sprite name="chocbar">
+        <image file="../images/groundpieces/ground/sweets/chocbar.png"/>
+      </sprite>
+      <sprite name="chocbloc">
+        <image file="../images/groundpieces/ground/sweets/chocbloc.png"/>
+      </sprite>
+      <sprite name="chocbloc-lowleft">
+        <image file="../images/groundpieces/ground/sweets/chocbloc-lowleft.png"/>
+      </sprite>
+      <sprite name="chocbloc-lowright">
+        <image file="../images/groundpieces/ground/sweets/chocbloc-lowright.png"/>
+      </sprite>
+      <sprite name="chocbloc-topleft">
+        <image file="../images/groundpieces/ground/sweets/chocbloc-topleft.png"/>
+      </sprite>
+      <sprite name="chocbloc-topright">
+        <image file="../images/groundpieces/ground/sweets/chocbloc-topright.png"/>
+      </sprite>
+      <sprite name="goldchoc">
+        <image file="../images/groundpieces/ground/sweets/goldchoc.png"/>
+      </sprite>
+      <sprite name="greenjellybaby">
+        <image file="../images/groundpieces/ground/sweets/greenjellybaby.png"/>
+      </sprite>
+      <sprite name="icecream">
+        <image file="../images/groundpieces/ground/sweets/icecream.png"/>
+      </sprite>
+      <sprite name="icecream">
+        <image file="../images/groundpieces/ground/sweets/icecream.png"/>
+      </sprite>
+      <sprite name="jellybaby">
+        <image file="../images/groundpieces/ground/sweets/greenjellybaby.png"/>
+      </sprite>
+      <sprite name="jellybaby2">
+        <image file="../images/groundpieces/ground/sweets/redjellybaby.png"/>
+      </sprite>
+      <sprite name="jube1">
+        <image file="../images/groundpieces/ground/sweets/jube1.png"/>
+      </sprite>
+      <sprite name="jube2">
+        <image file="../images/groundpieces/ground/sweets/jube2.png"/>
+      </sprite>
+      <sprite name="lollipop">
+        <image file="../images/groundpieces/ground/sweets/lollipop.png"/>
+      </sprite>
+      <sprite name="lollipop">
+        <image file="../images/groundpieces/ground/sweets/lollipop.png"/>
+      </sprite>
+      <sprite name="lollipop-purp">
+        <image file="../images/groundpieces/ground/sweets/lollipop-purp.png"/>
+      </sprite>
+      <sprite name="lollipop-purp">
+        <image file="../images/groundpieces/ground/sweets/lollipop-purp.png"/>
+      </sprite>
+      <sprite name="mmblue">
+        <image file="../images/groundpieces/ground/sweets/mmblue.png"/>
+      </sprite>
+      <sprite name="mmbrown">
+        <image file="../images/groundpieces/ground/sweets/mmbrown.png"/>
+      </sprite>
+      <sprite name="mmred">
+        <image file="../images/groundpieces/ground/sweets/mmred.png"/>
+      </sprite>
+      <sprite name="mmyellow">
+        <image file="../images/groundpieces/ground/sweets/mmyellow.png"/>
+      </sprite>
+      <sprite name="purpchoc">
+        <image file="../images/groundpieces/ground/sweets/purpchoc.png"/>
+      </sprite>
+      <sprite name="purplechoc">
+        <image file="../images/groundpieces/ground/sweets/purplechoc.png"/>
+      </sprite>
+      <sprite name="redjellybaby">
+        <image file="../images/groundpieces/ground/sweets/redjellybaby.png"/>
+      </sprite>
+      <sprite name="cake1">
+        <image file="../images/groundpieces/ground/sweets/cake1.png"/>
+      </sprite>
+      <sprite name="cake2">
+        <image file="../images/groundpieces/ground/sweets/cake2.png"/>
+      </sprite>
+      <sprite name="cake3">
+        <image file="../images/groundpieces/ground/sweets/cake3.png"/>
+      </sprite>
+      <sprite name="cake4">
+        <image file="../images/groundpieces/ground/sweets/cake4.png"/>
+      </sprite>
+      <sprite name="cake5">
+        <image file="../images/groundpieces/ground/sweets/cake5.png"/>
+      </sprite>
     </section>
     <section name="Misc">
-      <surface file="../images/groundpieces/bridge/misc/bridge_left.png" height="30" name="bridge_left" width="72" x="0" y="0" />
-      <surface file="../images/groundpieces/bridge/misc/bridge_right.png" height="30" name="bridge_right" width="72" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/desert/bigprickpiece.png" height="150" name="bigprickpiece" width="300" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/desert/middleprickpiece.png" height="75" name="middleprickpiece" width="150" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/desert/smallbrickpiece.png" height="38" name="smallbrickpiece" width="76" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/misc/bridge1.png" height="42" name="bridge1" width="216" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/desert/platform.png" height="35" name="way" width="117" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/desert/platform_left.png" height="28" name="way_left" width="81" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/desert/platform_right.png" height="26" name="way_right" width="62" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/misc/spike.png" height="125" name="spike" width="262" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/misc/piece1.png" name="piece1" />
-      <surface file="../images/groundpieces/ground/misc/piece2.png" name="piece2" />
-      <surface file="../images/groundpieces/ground/snow/piece3.png" name="piece3" />
-      <surface file="../images/groundpieces/ground/snow/piece7.png" name="piece7" />
-      <surface file="../images/groundpieces/ground/snow/piece8.png" name="piece8" />
-      <surface file="../images/groundpieces/ground/snow/piece9.png" name="piece9" />
-      <surface file="../images/groundpieces/ground/misc/brick1.png" name="brick1" />
-      <surface file="../images/groundpieces/ground/misc/brick2.png" name="brick2" />
-      <surface file="../images/groundpieces/ground/misc/brick3.png" name="brick3" />
-      <surface file="../images/groundpieces/ground/misc/brick4.png" name="brick4" />
-      <surface file="../images/groundpieces/ground/misc/stoneblock1.png" height="64" name="stoneblock1" width="64" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/misc/stoneblock2.png" height="64" name="stoneblock2" width="64" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/misc/stoneblock3.png" height="64" name="stoneblock3" width="64" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/misc/stoneblock5.png" height="64" name="stoneblock5" width="64" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/misc/stoneblock6.png" height="64" name="stoneblock6" width="64" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/misc/pfosten.png" height="201" name="pfosten" width="163" x="0" y="0" />
+      <sprite name="bridge_left">
+        <image file="../images/groundpieces/bridge/misc/bridge_left.png"/>
+      </sprite>
+      <sprite name="bridge_right">
+        <image file="../images/groundpieces/bridge/misc/bridge_right.png"/>
+      </sprite>
+      <sprite name="bigprickpiece">
+        <image file="../images/groundpieces/ground/desert/bigprickpiece.png"/>
+      </sprite>
+      <sprite name="middleprickpiece">
+        <image file="../images/groundpieces/ground/desert/middleprickpiece.png"/>
+      </sprite>
+      <sprite name="smallbrickpiece">
+        <image file="../images/groundpieces/ground/desert/smallbrickpiece.png"/>
+      </sprite>
+      <sprite name="bridge1">
+        <image file="../images/groundpieces/ground/misc/bridge1.png"/>
+      </sprite>
+      <sprite name="way">
+        <image file="../images/groundpieces/ground/desert/platform.png"/>
+      </sprite>
+      <sprite name="way_left">
+        <image file="../images/groundpieces/ground/desert/platform_left.png"/>
+      </sprite>
+      <sprite name="way_right">
+        <image file="../images/groundpieces/ground/desert/platform_right.png"/>
+      </sprite>
+      <sprite name="spike">
+        <image file="../images/groundpieces/ground/misc/spike.png"/>
+      </sprite>
+      <sprite name="piece1">
+        <image file="../images/groundpieces/ground/misc/piece1.png"/>
+      </sprite>
+      <sprite name="piece2">
+        <image file="../images/groundpieces/ground/misc/piece2.png"/>
+      </sprite>
+      <sprite name="piece3">
+        <image file="../images/groundpieces/ground/snow/piece3.png"/>
+      </sprite>
+      <sprite name="piece7">
+        <image file="../images/groundpieces/ground/snow/piece7.png"/>
+      </sprite>
+      <sprite name="piece8">
+        <image file="../images/groundpieces/ground/snow/piece8.png"/>
+      </sprite>
+      <sprite name="piece9">
+        <image file="../images/groundpieces/ground/snow/piece9.png"/>
+      </sprite>
+      <sprite name="brick1">
+        <image file="../images/groundpieces/ground/misc/brick1.png"/>
+      </sprite>
+      <sprite name="brick2">
+        <image file="../images/groundpieces/ground/misc/brick2.png"/>
+      </sprite>
+      <sprite name="brick3">
+        <image file="../images/groundpieces/ground/misc/brick3.png"/>
+      </sprite>
+      <sprite name="brick4">
+        <image file="../images/groundpieces/ground/misc/brick4.png"/>
+      </sprite>
+      <sprite name="stoneblock1">
+        <image file="../images/groundpieces/ground/misc/stoneblock1.png"/>
+      </sprite>
+      <sprite name="stoneblock2">
+        <image file="../images/groundpieces/ground/misc/stoneblock2.png"/>
+      </sprite>
+      <sprite name="stoneblock3">
+        <image file="../images/groundpieces/ground/misc/stoneblock3.png"/>
+      </sprite>
+      <sprite name="stoneblock5">
+        <image file="../images/groundpieces/ground/misc/stoneblock5.png"/>
+      </sprite>
+      <sprite name="stoneblock6">
+        <image file="../images/groundpieces/ground/misc/stoneblock6.png"/>
+      </sprite>
+      <sprite name="pfosten">
+        <image file="../images/groundpieces/ground/misc/pfosten.png"/>
+      </sprite>
     </section>
     <section name="Space">
-      <surface file="../images/groundpieces/bridge/space/grid1.png" height="51" name="grid1" width="51" x="0" y="0" />
-      <surface file="../images/groundpieces/bridge/space/grid2.png" height="51" name="grid2" width="51" x="0" y="0" />
-      <surface file="../images/groundpieces/bridge/space/grid3.png" height="41" name="grid3" width="41" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/space/smallblock1.png" height="32" name="smallblock1" width="32" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/space/smallblock2.png" height="32" name="smallblock2" width="32" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/space/smallblock3.png" height="32" name="smallblock3" width="32" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/space/diagonal.png" height="68" name="diagonal" width="125" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/space/diagonalr.png" height="68" name="diagonalr" width="125" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/space/block1.png" height="61" name="block1" width="201" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/space/tower1.png" height="166" name="tower1" width="64" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/space/smalltower.png" height="200" name="smalltower" width="6" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/space/way.png" height="6" name="way" width="100" x="0" y="0" />
+      <sprite name="grid1">
+        <image file="../images/groundpieces/bridge/space/grid1.png"/>
+      </sprite>
+      <sprite name="grid2">
+        <image file="../images/groundpieces/bridge/space/grid2.png"/>
+      </sprite>
+      <sprite name="grid3">
+        <image file="../images/groundpieces/bridge/space/grid3.png"/>
+      </sprite>
+      <sprite name="smallblock1">
+        <image file="../images/groundpieces/ground/space/smallblock1.png"/>
+      </sprite>
+      <sprite name="smallblock2">
+        <image file="../images/groundpieces/ground/space/smallblock2.png"/>
+      </sprite>
+      <sprite name="smallblock3">
+        <image file="../images/groundpieces/ground/space/smallblock3.png"/>
+      </sprite>
+      <sprite name="diagonal">
+        <image file="../images/groundpieces/ground/space/diagonal.png"/>
+      </sprite>
+      <sprite name="diagonalr">
+        <image file="../images/groundpieces/ground/space/diagonalr.png"/>
+      </sprite>
+      <sprite name="block1">
+        <image file="../images/groundpieces/ground/space/block1.png"/>
+      </sprite>
+      <sprite name="tower1">
+        <image file="../images/groundpieces/ground/space/tower1.png"/>
+      </sprite>
+      <sprite name="smalltower">
+        <image file="../images/groundpieces/ground/space/smalltower.png"/>
+      </sprite>
+      <sprite name="way">
+        <image file="../images/groundpieces/ground/space/way.png"/>
+      </sprite>
     </section>
     <section name="Desert">
-      <surface file="../images/groundpieces/ground/desert/sluggydu.png" height="36" name="Sluggydu" width="192" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/desert/blobdune.png" height="32" name="blobdune" width="112" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/desert/domedune.png" height="45" name="domedune" width="154" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/desert/flatdune.png" height="30" name="flatdune" width="166" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/desert/peakdune.png" height="57" name="peakdune" width="136" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/desert/bigblock-broken1.png" height="150" name="bigblock-broken1" width="300" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/desert/bigblock-broken2.png" height="144" name="bigblock-broken2" width="254" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/desert/bigdune1.png" height="107" name="bigdune1" width="318" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/desert/bigprickpiece.png" height="150" name="bigprickpiece" width="300" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/desert/middleprickpiece.png" height="75" name="middleprickpiece" width="150" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/desert/smallbrickpiece.png" height="38" name="smallbrickpiece" width="76" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/desert/pillar1.png" height="161" name="pillar1" width="36" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/desert/pillar2.png" height="130" name="pillar2" width="37" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/desert/pillar3.png" height="147" name="pillar3" width="36" x="0" y="0" />
+      <sprite name="Sluggydu">
+        <image file="../images/groundpieces/ground/desert/sluggydu.png"/>
+      </sprite>
+      <sprite name="blobdune">
+        <image file="../images/groundpieces/ground/desert/blobdune.png"/>
+      </sprite>
+      <sprite name="domedune">
+        <image file="../images/groundpieces/ground/desert/domedune.png"/>
+      </sprite>
+      <sprite name="flatdune">
+        <image file="../images/groundpieces/ground/desert/flatdune.png"/>
+      </sprite>
+      <sprite name="peakdune">
+        <image file="../images/groundpieces/ground/desert/peakdune.png"/>
+      </sprite>
+      <sprite name="bigblock-broken1">
+        <image file="../images/groundpieces/ground/desert/bigblock-broken1.png"/>
+      </sprite>
+      <sprite name="bigblock-broken2">
+        <image file="../images/groundpieces/ground/desert/bigblock-broken2.png"/>
+      </sprite>
+      <sprite name="bigdune1">
+        <image file="../images/groundpieces/ground/desert/bigdune1.png"/>
+      </sprite>
+      <sprite name="bigprickpiece">
+        <image file="../images/groundpieces/ground/desert/bigprickpiece.png"/>
+      </sprite>
+      <sprite name="middleprickpiece">
+        <image file="../images/groundpieces/ground/desert/middleprickpiece.png"/>
+      </sprite>
+      <sprite name="smallbrickpiece">
+        <image file="../images/groundpieces/ground/desert/smallbrickpiece.png"/>
+      </sprite>
+      <sprite name="pillar1">
+        <image file="../images/groundpieces/ground/desert/pillar1.png"/>
+      </sprite>
+      <sprite name="pillar2">
+        <image file="../images/groundpieces/ground/desert/pillar2.png"/>
+      </sprite>
+      <sprite name="pillar3">
+        <image file="../images/groundpieces/ground/desert/pillar3.png"/>
+      </sprite>
     </section>
     <section name="Sortie">
-      <surface file="../images/groundpieces/ground/sortie/column.png" height="312" name="column1" width="168" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sortie/column2.png" height="312" name="column2" width="168" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sortie/column3.png" height="312" name="column3" width="168" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sortie/plate_forme.png" height="94" name="plate_forme" width="267" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sortie/plate_forme_left.png" height="94" name="plate_forme_left" width="243" x="0" y="0" />
-      <surface file="../images/groundpieces/ground/sortie/plate_forme_right.png" height="84" name="plate_forme_right" width="138" x="0" y="0" />
+      <sprite name="column1">
+        <image file="../images/groundpieces/ground/sortie/column.png"/>
+      </sprite>
+      <sprite name="column2">
+        <image file="../images/groundpieces/ground/sortie/column2.png"/>
+      </sprite>
+      <sprite name="column3">
+        <image file="../images/groundpieces/ground/sortie/column3.png"/>
+      </sprite>
+      <sprite name="plate_forme">
+        <image file="../images/groundpieces/ground/sortie/plate_forme.png"/>
+      </sprite>
+      <sprite name="plate_forme_left">
+        <image file="../images/groundpieces/ground/sortie/plate_forme_left.png"/>
+      </sprite>
+      <sprite name="plate_forme_right">
+        <image file="../images/groundpieces/ground/sortie/plate_forme_right.png"/>
+      </sprite>
     </section>
-    <surface file="../images/groundpieces/ground/ordina/cable1.png" name="cable1" />
-    <surface file="../images/groundpieces/ground/ordina/cable2.png" name="cable2" />
-    <surface file="../images/groundpieces/ground/ordina/cdrom1.png" name="cdrom1" />
-    <surface file="../images/groundpieces/ground/ordina/clavier1.png" name="clavier1" />
-    <surface file="../images/groundpieces/ground/ordina/cpu1.png" name="cpu1" />
-    <surface file="../images/groundpieces/ground/ordina/ecran.png" name="ecran" />
-    <surface file="../images/groundpieces/ground/ordina/sol2.png" name="sol1" />
-    <surface file="../images/groundpieces/ground/ordina/sol3.png" name="sol2" />
-    <surface file="../images/groundpieces/ground/ordina/sol4.png" name="sol3" />
-    <surface file="../images/groundpieces/ground/misc/bpiece1.png" height="154" name="bpiece1" width="217" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/bpiece2.png" height="192" name="bpiece2" width="166" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/bpiece3.png" height="146" name="bpiece3" width="220" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/bpiece4.png" height="215" name="bpiece4" width="156" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/bpiece5.png" height="100" name="bpiece5" width="226" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/bpiece6.png" height="168" name="bpiece6" width="161" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/bpiece1.png" height="154" name="bpice1" width="217" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/bpiece2.png" height="192" name="bpice2" width="166" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/bpiece3.png" height="146" name="bpice3" width="220" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/bpiece4.png" height="215" name="bpice4" width="156" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/bpiece5.png" height="100" name="bpice5" width="226" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/bpiece6.png" height="168" name="bpice6" width="161" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/grey_stone1.png" height="109" name="piece1" width="190" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/grey_stone2.png" height="222" name="piece2" width="125" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/grey_stone3.png" height="145" name="piece3" width="140" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/grey_stone4.png" height="68" name="piece4" width="216" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/grey_stone5.png" height="91" name="piece5" width="218" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/grey_stone1.png" height="109" name="pice1" width="190" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/grey_stone2.png" height="222" name="pice2" width="125" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/grey_stone3.png" height="145" name="pice3" width="140" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/grey_stone4.png" height="68" name="pice4" width="216" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/grey_stone5.png" height="91" name="pice5" width="218" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/green1.png" height="73" name="green1" width="190" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/misc/green2.png" height="128" name="green2" width="109" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/industrial/pipe1.png" height="22" name="pipe_h" width="32" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/industrial/pipe2.png" height="32" name="pipe_v" width="22" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/industrial/pipe4.png" height="22" name="pipe_ph" width="32" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/industrial/pipe5.png" height="32" name="pipe_pv" width="22" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/industrial/pipe_ul.png" height="32" name="pipe_ul" width="32" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/industrial/pipe_ur.png" height="32" name="pipe_ur" width="32" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/industrial/pipe_bl.png" height="32" name="pipe_dl" width="32" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/industrial/pipe_br.png" height="32" name="pipe_dr" width="32" x="0" y="0" />
+    <sprite name="cable1">
+      <image file="../images/groundpieces/ground/ordina/cable1.png"/>
+    </sprite>
+    <sprite name="cable2">
+      <image file="../images/groundpieces/ground/ordina/cable2.png"/>
+    </sprite>
+    <sprite name="cdrom1">
+      <image file="../images/groundpieces/ground/ordina/cdrom1.png"/>
+    </sprite>
+    <sprite name="clavier1">
+      <image file="../images/groundpieces/ground/ordina/clavier1.png"/>
+    </sprite>
+    <sprite name="cpu1">
+      <image file="../images/groundpieces/ground/ordina/cpu1.png"/>
+    </sprite>
+    <sprite name="ecran">
+      <image file="../images/groundpieces/ground/ordina/ecran.png"/>
+    </sprite>
+    <sprite name="sol1">
+      <image file="../images/groundpieces/ground/ordina/sol2.png"/>
+    </sprite>
+    <sprite name="sol2">
+      <image file="../images/groundpieces/ground/ordina/sol3.png"/>
+    </sprite>
+    <sprite name="sol3">
+      <image file="../images/groundpieces/ground/ordina/sol4.png"/>
+    </sprite>
+    <sprite name="bpiece1">
+      <image file="../images/groundpieces/ground/misc/bpiece1.png"/>
+    </sprite>
+    <sprite name="bpiece2">
+      <image file="../images/groundpieces/ground/misc/bpiece2.png"/>
+    </sprite>
+    <sprite name="bpiece3">
+      <image file="../images/groundpieces/ground/misc/bpiece3.png"/>
+    </sprite>
+    <sprite name="bpiece4">
+      <image file="../images/groundpieces/ground/misc/bpiece4.png"/>
+    </sprite>
+    <sprite name="bpiece5">
+      <image file="../images/groundpieces/ground/misc/bpiece5.png"/>
+    </sprite>
+    <sprite name="bpiece6">
+      <image file="../images/groundpieces/ground/misc/bpiece6.png"/>
+    </sprite>
+    <sprite name="bpice1">
+      <image file="../images/groundpieces/ground/misc/bpiece1.png"/>
+    </sprite>
+    <sprite name="bpice2">
+      <image file="../images/groundpieces/ground/misc/bpiece2.png"/>
+    </sprite>
+    <sprite name="bpice3">
+      <image file="../images/groundpieces/ground/misc/bpiece3.png"/>
+    </sprite>
+    <sprite name="bpice4">
+      <image file="../images/groundpieces/ground/misc/bpiece4.png"/>
+    </sprite>
+    <sprite name="bpice5">
+      <image file="../images/groundpieces/ground/misc/bpiece5.png"/>
+    </sprite>
+    <sprite name="bpice6">
+      <image file="../images/groundpieces/ground/misc/bpiece6.png"/>
+    </sprite>
+    <sprite name="piece1">
+      <image file="../images/groundpieces/ground/misc/grey_stone1.png"/>
+    </sprite>
+    <sprite name="piece2">
+      <image file="../images/groundpieces/ground/misc/grey_stone2.png"/>
+    </sprite>
+    <sprite name="piece3">
+      <image file="../images/groundpieces/ground/misc/grey_stone3.png"/>
+    </sprite>
+    <sprite name="piece4">
+      <image file="../images/groundpieces/ground/misc/grey_stone4.png"/>
+    </sprite>
+    <sprite name="piece5">
+      <image file="../images/groundpieces/ground/misc/grey_stone5.png"/>
+    </sprite>
+    <sprite name="pice1">
+      <image file="../images/groundpieces/ground/misc/grey_stone1.png"/>
+    </sprite>
+    <sprite name="pice2">
+      <image file="../images/groundpieces/ground/misc/grey_stone2.png"/>
+    </sprite>
+    <sprite name="pice3">
+      <image file="../images/groundpieces/ground/misc/grey_stone3.png"/>
+    </sprite>
+    <sprite name="pice4">
+      <image file="../images/groundpieces/ground/misc/grey_stone4.png"/>
+    </sprite>
+    <sprite name="pice5">
+      <image file="../images/groundpieces/ground/misc/grey_stone5.png"/>
+    </sprite>
+    <sprite name="green1">
+      <image file="../images/groundpieces/ground/misc/green1.png"/>
+    </sprite>
+    <sprite name="green2">
+      <image file="../images/groundpieces/ground/misc/green2.png"/>
+    </sprite>
+    <sprite name="pipe_h">
+      <image file="../images/groundpieces/ground/industrial/pipe1.png"/>
+    </sprite>
+    <sprite name="pipe_v">
+      <image file="../images/groundpieces/ground/industrial/pipe2.png"/>
+    </sprite>
+    <sprite name="pipe_ph">
+      <image file="../images/groundpieces/ground/industrial/pipe4.png"/>
+    </sprite>
+    <sprite name="pipe_pv">
+      <image file="../images/groundpieces/ground/industrial/pipe5.png"/>
+    </sprite>
+    <sprite name="pipe_ul">
+      <image file="../images/groundpieces/ground/industrial/pipe_ul.png"/>
+    </sprite>
+    <sprite name="pipe_ur">
+      <image file="../images/groundpieces/ground/industrial/pipe_ur.png"/>
+    </sprite>
+    <sprite name="pipe_dl">
+      <image file="../images/groundpieces/ground/industrial/pipe_bl.png"/>
+    </sprite>
+    <sprite name="pipe_dr">
+      <image file="../images/groundpieces/ground/industrial/pipe_br.png"/>
+    </sprite>
   </section>
   <section name="Industrial">
     <section name="Gunge">
-      <surface file="../images/groundpieces/transparent/industrial/gunge1.png" height="59" name="gunge1" width="65" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/industrial/gunge10.png" height="45" name="gunge10" width="147" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/industrial/gunge11.png" height="51" name="gunge11" width="69" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/industrial/gunge12.png" height="4" name="gunge12" width="32" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/industrial/gunge13.png" height="4" name="gunge13" width="75" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/industrial/gunge14.png" height="10" name="gunge14" width="129" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/industrial/gunge15.png" height="10" name="gunge15" width="98" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/industrial/gunge2.png" height="17" name="gunge2" width="13" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/industrial/gunge3.png" height="10" name="gunge3" width="18" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/industrial/gunge4.png" height="16" name="gunge4" width="38" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/industrial/gunge5.png" height="26" name="gunge5" width="9" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/industrial/gunge6.png" height="27" name="gunge6" width="14" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/industrial/gunge7.png" height="24" name="gunge7" width="11" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/industrial/gunge8.png" height="33" name="gunge8" width="89" x="0" y="0" />
-      <surface file="../images/groundpieces/transparent/industrial/gunge9.png" height="9" name="gunge9" width="24" x="0" y="0" />
+      <sprite name="gunge1">
+        <image file="../images/groundpieces/transparent/industrial/gunge1.png"/>
+      </sprite>
+      <sprite name="gunge10">
+        <image file="../images/groundpieces/transparent/industrial/gunge10.png"/>
+      </sprite>
+      <sprite name="gunge11">
+        <image file="../images/groundpieces/transparent/industrial/gunge11.png"/>
+      </sprite>
+      <sprite name="gunge12">
+        <image file="../images/groundpieces/transparent/industrial/gunge12.png"/>
+      </sprite>
+      <sprite name="gunge13">
+        <image file="../images/groundpieces/transparent/industrial/gunge13.png"/>
+      </sprite>
+      <sprite name="gunge14">
+        <image file="../images/groundpieces/transparent/industrial/gunge14.png"/>
+      </sprite>
+      <sprite name="gunge15">
+        <image file="../images/groundpieces/transparent/industrial/gunge15.png"/>
+      </sprite>
+      <sprite name="gunge2">
+        <image file="../images/groundpieces/transparent/industrial/gunge2.png"/>
+      </sprite>
+      <sprite name="gunge3">
+        <image file="../images/groundpieces/transparent/industrial/gunge3.png"/>
+      </sprite>
+      <sprite name="gunge4">
+        <image file="../images/groundpieces/transparent/industrial/gunge4.png"/>
+      </sprite>
+      <sprite name="gunge5">
+        <image file="../images/groundpieces/transparent/industrial/gunge5.png"/>
+      </sprite>
+      <sprite name="gunge6">
+        <image file="../images/groundpieces/transparent/industrial/gunge6.png"/>
+      </sprite>
+      <sprite name="gunge7">
+        <image file="../images/groundpieces/transparent/industrial/gunge7.png"/>
+      </sprite>
+      <sprite name="gunge8">
+        <image file="../images/groundpieces/transparent/industrial/gunge8.png"/>
+      </sprite>
+      <sprite name="gunge9">
+        <image file="../images/groundpieces/transparent/industrial/gunge9.png"/>
+      </sprite>
     </section>
-    <surface file="../images/groundpieces/solid/industrial/steel1.png" height="43" name="steel1" width="84" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/steel2.png" height="167" name="steel2" width="44" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/steel3.png" height="44" name="steel3" width="167" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/steel4.png" height="105" name="steel4" width="233" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/steel5.png" height="106" name="steel5" width="253" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/greybri1.png" height="62" name="greybri1" width="198" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/greybri2.png" height="62" name="greybri2" width="198" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/greybri3.png" height="62" name="greybri3" width="198" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/greybri5.png" height="62" name="greybri5" width="99" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/screw.png" height="23" name="screw" width="23" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/rivet.png" height="23" name="rivet" width="23" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/industrial/pipe1.png" height="22" name="pipe_h" width="32" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/industrial/pipe2.png" height="32" name="pipe_v" width="22" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/industrial/pipe4.png" height="22" name="pipe_ph" width="32" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/industrial/pipe5.png" height="32" name="pipe_pv" width="22" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/industrial/pipe_ul.png" height="32" name="pipe_ul" width="32" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/industrial/pipe_ur.png" height="32" name="pipe_ur" width="32" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/industrial/pipe_bl.png" height="32" name="pipe_dl" width="32" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/industrial/pipe_br.png" height="32" name="pipe_dr" width="32" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/weld1.png" height="21" name="weld1" width="9" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/weld2.png" height="26" name="weld2" width="8" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/weld3.png" height="55" name="weld3" width="7" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/weld4.png" height="9" name="weld4" width="17" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/weld5.png" height="30" name="weld5" width="9" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/weld6.png" height="10" name="weld6" width="101" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/weld7.png" height="7" name="weld7" width="53" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/joint1.png" height="54" name="joint1" width="60" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/joint2.png" height="53" name="joint2" width="44" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/joint3.png" height="44" name="joint3" width="55" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/joint4.png" height="50" name="joint4" width="53" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/joint5.png" height="56" name="joint5" width="57" x="0" y="0" />
+    <sprite name="steel1">
+      <image file="../images/groundpieces/solid/industrial/steel1.png"/>
+    </sprite>
+    <sprite name="steel2">
+      <image file="../images/groundpieces/solid/industrial/steel2.png"/>
+    </sprite>
+    <sprite name="steel3">
+      <image file="../images/groundpieces/solid/industrial/steel3.png"/>
+    </sprite>
+    <sprite name="steel4">
+      <image file="../images/groundpieces/solid/industrial/steel4.png"/>
+    </sprite>
+    <sprite name="steel5">
+      <image file="../images/groundpieces/solid/industrial/steel5.png"/>
+    </sprite>
+    <sprite name="greybri1">
+      <image file="../images/groundpieces/solid/industrial/greybri1.png"/>
+    </sprite>
+    <sprite name="greybri2">
+      <image file="../images/groundpieces/solid/industrial/greybri2.png"/>
+    </sprite>
+    <sprite name="greybri3">
+      <image file="../images/groundpieces/solid/industrial/greybri3.png"/>
+    </sprite>
+    <sprite name="greybri5">
+      <image file="../images/groundpieces/solid/industrial/greybri5.png"/>
+    </sprite>
+    <sprite name="screw">
+      <image file="../images/groundpieces/solid/industrial/screw.png"/>
+    </sprite>
+    <sprite name="rivet">
+      <image file="../images/groundpieces/solid/industrial/rivet.png"/>
+    </sprite>
+    <sprite name="pipe_h">
+      <image file="../images/groundpieces/ground/industrial/pipe1.png"/>
+    </sprite>
+    <sprite name="pipe_v">
+      <image file="../images/groundpieces/ground/industrial/pipe2.png"/>
+    </sprite>
+    <sprite name="pipe_ph">
+      <image file="../images/groundpieces/ground/industrial/pipe4.png"/>
+    </sprite>
+    <sprite name="pipe_pv">
+      <image file="../images/groundpieces/ground/industrial/pipe5.png"/>
+    </sprite>
+    <sprite name="pipe_ul">
+      <image file="../images/groundpieces/ground/industrial/pipe_ul.png"/>
+    </sprite>
+    <sprite name="pipe_ur">
+      <image file="../images/groundpieces/ground/industrial/pipe_ur.png"/>
+    </sprite>
+    <sprite name="pipe_dl">
+      <image file="../images/groundpieces/ground/industrial/pipe_bl.png"/>
+    </sprite>
+    <sprite name="pipe_dr">
+      <image file="../images/groundpieces/ground/industrial/pipe_br.png"/>
+    </sprite>
+    <sprite name="weld1">
+      <image file="../images/groundpieces/solid/industrial/weld1.png"/>
+    </sprite>
+    <sprite name="weld2">
+      <image file="../images/groundpieces/solid/industrial/weld2.png"/>
+    </sprite>
+    <sprite name="weld3">
+      <image file="../images/groundpieces/solid/industrial/weld3.png"/>
+    </sprite>
+    <sprite name="weld4">
+      <image file="../images/groundpieces/solid/industrial/weld4.png"/>
+    </sprite>
+    <sprite name="weld5">
+      <image file="../images/groundpieces/solid/industrial/weld5.png"/>
+    </sprite>
+    <sprite name="weld6">
+      <image file="../images/groundpieces/solid/industrial/weld6.png"/>
+    </sprite>
+    <sprite name="weld7">
+      <image file="../images/groundpieces/solid/industrial/weld7.png"/>
+    </sprite>
+    <sprite name="joint1">
+      <image file="../images/groundpieces/solid/industrial/joint1.png"/>
+    </sprite>
+    <sprite name="joint2">
+      <image file="../images/groundpieces/solid/industrial/joint2.png"/>
+    </sprite>
+    <sprite name="joint3">
+      <image file="../images/groundpieces/solid/industrial/joint3.png"/>
+    </sprite>
+    <sprite name="joint4">
+      <image file="../images/groundpieces/solid/industrial/joint4.png"/>
+    </sprite>
+    <sprite name="joint5">
+      <image file="../images/groundpieces/solid/industrial/joint5.png"/>
+    </sprite>
   </section>
   <section name="Grass">
-    <surface file="../images/groundpieces/transparent/foliage/grass1.png" height="21" name="grass1" width="31" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/foliage/grass10.png" height="7" name="grass10" width="14" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/foliage/grass11.png" height="10" name="grass11" width="14" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/foliage/grass12.png" height="10" name="grass12" width="12" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/foliage/grass13.png" height="6" name="grass13" width="10" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/foliage/grass14.png" height="6" name="grass14" width="13" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/foliage/grass15.png" height="9" name="grass15" width="54" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/foliage/grass16.png" height="7" name="grass16" width="11" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/foliage/grass2.png" height="21" name="grass2" width="14" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/foliage/grass3.png" height="11" name="grass3" width="12" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/foliage/grass4.png" height="21" name="grass4" width="13" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/foliage/grass5.png" height="5" name="grass5" width="9" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/foliage/grass6.png" height="23" name="grass6" width="37" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/foliage/grass7.png" height="9" name="grass7" width="12" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/foliage/grass8.png" height="7" name="grass8" width="13" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/foliage/grass9.png" height="8" name="grass9" width="14" x="0" y="0" />
+    <sprite name="grass1">
+      <image file="../images/groundpieces/transparent/foliage/grass1.png"/>
+    </sprite>
+    <sprite name="grass10">
+      <image file="../images/groundpieces/transparent/foliage/grass10.png"/>
+    </sprite>
+    <sprite name="grass11">
+      <image file="../images/groundpieces/transparent/foliage/grass11.png"/>
+    </sprite>
+    <sprite name="grass12">
+      <image file="../images/groundpieces/transparent/foliage/grass12.png"/>
+    </sprite>
+    <sprite name="grass13">
+      <image file="../images/groundpieces/transparent/foliage/grass13.png"/>
+    </sprite>
+    <sprite name="grass14">
+      <image file="../images/groundpieces/transparent/foliage/grass14.png"/>
+    </sprite>
+    <sprite name="grass15">
+      <image file="../images/groundpieces/transparent/foliage/grass15.png"/>
+    </sprite>
+    <sprite name="grass16">
+      <image file="../images/groundpieces/transparent/foliage/grass16.png"/>
+    </sprite>
+    <sprite name="grass2">
+      <image file="../images/groundpieces/transparent/foliage/grass2.png"/>
+    </sprite>
+    <sprite name="grass3">
+      <image file="../images/groundpieces/transparent/foliage/grass3.png"/>
+    </sprite>
+    <sprite name="grass4">
+      <image file="../images/groundpieces/transparent/foliage/grass4.png"/>
+    </sprite>
+    <sprite name="grass5">
+      <image file="../images/groundpieces/transparent/foliage/grass5.png"/>
+    </sprite>
+    <sprite name="grass6">
+      <image file="../images/groundpieces/transparent/foliage/grass6.png"/>
+    </sprite>
+    <sprite name="grass7">
+      <image file="../images/groundpieces/transparent/foliage/grass7.png"/>
+    </sprite>
+    <sprite name="grass8">
+      <image file="../images/groundpieces/transparent/foliage/grass8.png"/>
+    </sprite>
+    <sprite name="grass9">
+      <image file="../images/groundpieces/transparent/foliage/grass9.png"/>
+    </sprite>
   </section>
-  <section name="Themes" />
+  <section name="Themes"/>
   <section name="Exits">
-    <surface file="../images/exits/desert_tut.png" height="115" name="desert_tut" width="122" x="0" y="0" />
-    <surface file="../images/exits/ice.png" height="64" name="ice" width="64" x="0" y="0" />
-    <surface file="../images/exits/stone.png" height="60" name="stone" width="75" x="0" y="0" />
-    <surface file="../images/exits/desertexit.png" height="100" name="desert" width="150" x="0" y="0" />
-    <surface array="4x1" file="../images/exits/space.png" height="118" name="space" width="154" x="0" y="0" />
-    <surface file="../images/exits/sweetexit.png" height="121" name="sweetexit" width="180" x="0" y="0" />
-    <surface file="../images/exits/sortie.png" height="78" name="sortie" width="78" x="0" y="0" />
-    <surface file="../images/exits/ordina.png" name="sortie_1" />
-    <surface array="11x1" file="../images/exits/sortie_anim.png" height="90" name="sortie_anim" width="78" x="0" y="0" />
-    <surface file="../images/exits/industrial.png" height="118" name="industrial" width="145" x="0" y="0" />
-    <surface file="../images/exits/crystal.png" height="105" name="crystal" width="154" x="0" y="0" />
+    <sprite name="desert_tut">
+      <image file="../images/exits/desert_tut.png"/>
+    </sprite>
+    <sprite name="ice">
+      <image file="../images/exits/ice.png"/>
+    </sprite>
+    <sprite name="stone">
+      <image file="../images/exits/stone.png"/>
+    </sprite>
+    <sprite name="desert">
+      <image file="../images/exits/desertexit.png"/>
+    </sprite>
+    <sprite name="space">
+      <image file="../images/exits/space.png">
+        <grid pos="0,0" size="154,118" array="4x1"/>
+      </image>
+    </sprite>
+    <sprite name="sweetexit">
+      <image file="../images/exits/sweetexit.png"/>
+    </sprite>
+    <sprite name="sortie">
+      <image file="../images/exits/sortie.png"/>
+    </sprite>
+    <sprite name="sortie_1">
+      <image file="../images/exits/ordina.png"/>
+    </sprite>
+    <sprite name="sortie_anim">
+      <image file="../images/exits/sortie_anim.png">
+        <grid pos="0,0" size="78,90" array="11x1"/>
+      </image>
+    </sprite>
+    <sprite name="industrial">
+      <image file="../images/exits/industrial.png"/>
+    </sprite>
+    <sprite name="crystal">
+      <image file="../images/exits/crystal.png"/>
+    </sprite>
   </section>
   <section name="Entrances">
-    <surface file="../images/entrances/entrance.png" height="32" name="entrance" width="64" x="0" y="0" />
-    <surface file="../images/entrances/generic.png" height="64" name="generic" width="64" x="0" y="0" />
-    <surface file="../images/entrances/woodthing_nmov.png" height="157" name="woodthing_nmov" width="151" x="0" y="0" />
-    <surface array="17x1" file="../images/entrances/woodthing_mov.png" height="17" name="woodthing_mov" width="105" x="0" y="0" />
-    <surface file="../images/entrances/cloudent.png" height="90" name="cloud" width="188" x="0" y="0" />
-    <surface array="5x1" file="../images/entrances/space.png" height="64" name="space" width="62" x="0" y="0" />
-    <surface file="../images/entrances/wood_bottom.png" height="57" name="wood_bottom" width="100" x="0" y="0" />
-    <surface file="../images/entrances/wood_top.png" height="44" name="wood_top" width="100" x="0" y="0" />
-    <surface file="../images/entrances/eyes_entrance.png" height="221" name="entrance_eyes" width="273" x="0" y="0" />
-    <surface array="7x1" file="../images/entrances/eyes_entrance_anim.png" height="72" name="entrance_eyes_anim" width="166" x="0" y="0" />
-    <surface file="../images/entrances/eyes_underlay.png" height="72" name="underlay_eyes" width="166" x="0" y="0" />
-    <surface file="../images/entrances/industrial.png" height="158" name="industrial" width="105" x="0" y="0" />
-    <surface file="../images/entrances/industrial_top.png" height="53" name="industrial_top" width="43" x="0" y="0" />
+    <sprite name="entrance">
+      <image file="../images/entrances/entrance.png"/>
+    </sprite>
+    <sprite name="generic">
+      <image file="../images/entrances/generic.png"/>
+    </sprite>
+    <sprite name="woodthing_nmov">
+      <image file="../images/entrances/woodthing_nmov.png"/>
+    </sprite>
+    <sprite name="woodthing_mov">
+      <image file="../images/entrances/woodthing_mov.png">
+        <grid pos="0,0" size="105,17" array="17x1"/>
+      </image>
+    </sprite>
+    <sprite name="cloud">
+      <image file="../images/entrances/cloudent.png"/>
+    </sprite>
+    <sprite name="space">
+      <image file="../images/entrances/space.png">
+        <grid pos="0,0" size="62,64" array="5x1"/>
+      </image>
+    </sprite>
+    <sprite name="wood_bottom">
+      <image file="../images/entrances/wood_bottom.png"/>
+    </sprite>
+    <sprite name="wood_top">
+      <image file="../images/entrances/wood_top.png"/>
+    </sprite>
+    <sprite name="entrance_eyes">
+      <image file="../images/entrances/eyes_entrance.png"/>
+    </sprite>
+    <sprite name="entrance_eyes_anim">
+      <image file="../images/entrances/eyes_entrance_anim.png">
+        <grid pos="0,0" size="166,72" array="7x1"/>
+      </image>
+    </sprite>
+    <sprite name="underlay_eyes">
+      <image file="../images/entrances/eyes_underlay.png"/>
+    </sprite>
+    <sprite name="industrial">
+      <image file="../images/entrances/industrial.png"/>
+    </sprite>
+    <sprite name="industrial_top">
+      <image file="../images/entrances/industrial_top.png"/>
+    </sprite>
   </section>
   <section name="Ywlam">
-    <surface file="../images/groundpieces/ground/desert/bigsand.png" height="150" name="bigsand" width="300" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/desert/mediumsand.png" height="75" name="mediumsand" width="150" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/desert/smallsand.png" height="37" name="smallsand" width="75" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/desert/rightsmallsand.png" height="37" name="rightsmallsand" width="75" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/desert/leftsmallsand.png" height="37" name="leftsmallsand" width="75" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/desert/rightsmallbrick.png" height="38" name="rightsmallbrick" width="76" x="0" y="0" />
-    <surface file="../images/groundpieces/ground/desert/leftsmallbrick.png" height="38" name="leftsmallbrick" width="76" x="0" y="0" />
-    <surface file="../images/hotspots/desert/mediumegyptpic.png" height="242" name="mediumegpytpict" width="193" x="0" y="0" />
-    <surface file="../images/hotspots/desert/smallegyptpic.png" height="121" name="smallegpytpict" width="96" x="0" y="0" />
-    <surface file="../images/hotspots/desert/bigdimwall.png" height="150" name="bigdimwall" width="300" x="0" y="0" />
-    <surface file="../images/hotspots/desert/mediumdimwall.png" height="75" name="mediumdimwall" width="150" x="0" y="0" />
-    <surface file="../images/hotspots/desert/smalldimwall.png" height="37" name="smalldimwall" width="75" x="0" y="0" />
-    <surface file="../images/hotspots/desert/mediummummy.png" height="56" name="mediummummy" width="133" x="0" y="0" />
-    <surface file="../images/hotspots/desert/mediumsphinx.png" height="97" name="mediumsphinx" width="150" x="0" y="0" />
-    <surface file="../images/hotspots/desert/smallsphinx.png" height="48" name="smallsphinx" width="75" x="0" y="0" />
-    <surface file="../images/hotspots/desert/smallD.png" height="38" name="smallD" width="30" x="0" y="0" />
-    <surface file="../images/hotspots/desert/smallO.png" height="38" name="smallO" width="30" x="0" y="0" />
-    <surface file="../images/hotspots/desert/smallG.png" height="38" name="smallG" width="30" x="0" y="0" />
-    <surface file="../images/hotspots/desert/smallE.png" height="38" name="smallE" width="30" x="0" y="0" />
-    <surface file="../images/special/pacman/pacman-maze.png" height="582" name="pacmaze" width="453" x="0" y="0" />
-    <surface file="../images/special/pacman/pacman-frame.png" height="582" name="pacframe" width="453" x="0" y="0" />
-    <surface file="../images/special/pacman/pacman-bkg.png" height="582" name="pacbkg" width="453" x="0" y="0" />
-    <surface file="../images/special/pacman/pacman.png" height="32" name="pacman" width="32" x="0" y="0" />
-    <surface file="../images/special/pacman/inky.png" height="32" name="inky" width="32" x="0" y="0" />
-    <surface file="../images/special/pacman/blinky.png" height="32" name="blinky" width="32" x="0" y="0" />
-    <surface file="../images/special/pacman/pinky.png" height="32" name="pinky" width="32" x="0" y="0" />
-    <surface file="../images/special/pacman/clyde.png" height="32" name="clyde" width="32" x="0" y="0" />
+    <sprite name="bigsand">
+      <image file="../images/groundpieces/ground/desert/bigsand.png"/>
+    </sprite>
+    <sprite name="mediumsand">
+      <image file="../images/groundpieces/ground/desert/mediumsand.png"/>
+    </sprite>
+    <sprite name="smallsand">
+      <image file="../images/groundpieces/ground/desert/smallsand.png"/>
+    </sprite>
+    <sprite name="rightsmallsand">
+      <image file="../images/groundpieces/ground/desert/rightsmallsand.png"/>
+    </sprite>
+    <sprite name="leftsmallsand">
+      <image file="../images/groundpieces/ground/desert/leftsmallsand.png"/>
+    </sprite>
+    <sprite name="rightsmallbrick">
+      <image file="../images/groundpieces/ground/desert/rightsmallbrick.png"/>
+    </sprite>
+    <sprite name="leftsmallbrick">
+      <image file="../images/groundpieces/ground/desert/leftsmallbrick.png"/>
+    </sprite>
+    <sprite name="mediumegpytpict">
+      <image file="../images/hotspots/desert/mediumegyptpic.png"/>
+    </sprite>
+    <sprite name="smallegpytpict">
+      <image file="../images/hotspots/desert/smallegyptpic.png"/>
+    </sprite>
+    <sprite name="bigdimwall">
+      <image file="../images/hotspots/desert/bigdimwall.png"/>
+    </sprite>
+    <sprite name="mediumdimwall">
+      <image file="../images/hotspots/desert/mediumdimwall.png"/>
+    </sprite>
+    <sprite name="smalldimwall">
+      <image file="../images/hotspots/desert/smalldimwall.png"/>
+    </sprite>
+    <sprite name="mediummummy">
+      <image file="../images/hotspots/desert/mediummummy.png"/>
+    </sprite>
+    <sprite name="mediumsphinx">
+      <image file="../images/hotspots/desert/mediumsphinx.png"/>
+    </sprite>
+    <sprite name="smallsphinx">
+      <image file="../images/hotspots/desert/smallsphinx.png"/>
+    </sprite>
+    <sprite name="smallD">
+      <image file="../images/hotspots/desert/smallD.png"/>
+    </sprite>
+    <sprite name="smallO">
+      <image file="../images/hotspots/desert/smallO.png"/>
+    </sprite>
+    <sprite name="smallG">
+      <image file="../images/hotspots/desert/smallG.png"/>
+    </sprite>
+    <sprite name="smallE">
+      <image file="../images/hotspots/desert/smallE.png"/>
+    </sprite>
+    <sprite name="pacmaze">
+      <image file="../images/special/pacman/pacman-maze.png"/>
+    </sprite>
+    <sprite name="pacframe">
+      <image file="../images/special/pacman/pacman-frame.png"/>
+    </sprite>
+    <sprite name="pacbkg">
+      <image file="../images/special/pacman/pacman-bkg.png"/>
+    </sprite>
+    <sprite name="pacman">
+      <image file="../images/special/pacman/pacman.png"/>
+    </sprite>
+    <sprite name="inky">
+      <image file="../images/special/pacman/inky.png"/>
+    </sprite>
+    <sprite name="blinky">
+      <image file="../images/special/pacman/blinky.png"/>
+    </sprite>
+    <sprite name="pinky">
+      <image file="../images/special/pacman/pinky.png"/>
+    </sprite>
+    <sprite name="clyde">
+      <image file="../images/special/pacman/clyde.png"/>
+    </sprite>
   </section>
   <section name="Steel">
-    <surface file="../images/groundpieces/solid/industrial/steel1.png" height="43" name="steel1" width="84" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/steel2.png" height="167" name="steel2" width="44" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/steel3.png" height="44" name="steel3" width="167" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/steel4.png" height="105" name="steel4" width="233" x="0" y="0" />
-    <surface file="../images/groundpieces/solid/industrial/steel5.png" height="106" name="steel5" width="253" x="0" y="0" />
+    <sprite name="steel1">
+      <image file="../images/groundpieces/solid/industrial/steel1.png"/>
+    </sprite>
+    <sprite name="steel2">
+      <image file="../images/groundpieces/solid/industrial/steel2.png"/>
+    </sprite>
+    <sprite name="steel3">
+      <image file="../images/groundpieces/solid/industrial/steel3.png"/>
+    </sprite>
+    <sprite name="steel4">
+      <image file="../images/groundpieces/solid/industrial/steel4.png"/>
+    </sprite>
+    <sprite name="steel5">
+      <image file="../images/groundpieces/solid/industrial/steel5.png"/>
+    </sprite>
   </section>
   <section name="Gunge">
-    <surface file="../images/groundpieces/transparent/industrial/gunge1.png" height="59" name="gunge1" width="65" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/industrial/gunge10.png" height="45" name="gunge10" width="147" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/industrial/gunge11.png" height="51" name="gunge11" width="69" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/industrial/gunge12.png" height="4" name="gunge12" width="32" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/industrial/gunge13.png" height="4" name="gunge13" width="75" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/industrial/gunge14.png" height="10" name="gunge14" width="129" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/industrial/gunge15.png" height="10" name="gunge15" width="98" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/industrial/gunge2.png" height="17" name="gunge2" width="13" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/industrial/gunge3.png" height="10" name="gunge3" width="18" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/industrial/gunge4.png" height="16" name="gunge4" width="38" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/industrial/gunge5.png" height="26" name="gunge5" width="9" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/industrial/gunge6.png" height="27" name="gunge6" width="14" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/industrial/gunge7.png" height="24" name="gunge7" width="11" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/industrial/gunge8.png" height="33" name="gunge8" width="89" x="0" y="0" />
-    <surface file="../images/groundpieces/transparent/industrial/gunge9.png" height="9" name="gunge9" width="24" x="0" y="0" />
+    <sprite name="gunge1">
+      <image file="../images/groundpieces/transparent/industrial/gunge1.png"/>
+    </sprite>
+    <sprite name="gunge10">
+      <image file="../images/groundpieces/transparent/industrial/gunge10.png"/>
+    </sprite>
+    <sprite name="gunge11">
+      <image file="../images/groundpieces/transparent/industrial/gunge11.png"/>
+    </sprite>
+    <sprite name="gunge12">
+      <image file="../images/groundpieces/transparent/industrial/gunge12.png"/>
+    </sprite>
+    <sprite name="gunge13">
+      <image file="../images/groundpieces/transparent/industrial/gunge13.png"/>
+    </sprite>
+    <sprite name="gunge14">
+      <image file="../images/groundpieces/transparent/industrial/gunge14.png"/>
+    </sprite>
+    <sprite name="gunge15">
+      <image file="../images/groundpieces/transparent/industrial/gunge15.png"/>
+    </sprite>
+    <sprite name="gunge2">
+      <image file="../images/groundpieces/transparent/industrial/gunge2.png"/>
+    </sprite>
+    <sprite name="gunge3">
+      <image file="../images/groundpieces/transparent/industrial/gunge3.png"/>
+    </sprite>
+    <sprite name="gunge4">
+      <image file="../images/groundpieces/transparent/industrial/gunge4.png"/>
+    </sprite>
+    <sprite name="gunge5">
+      <image file="../images/groundpieces/transparent/industrial/gunge5.png"/>
+    </sprite>
+    <sprite name="gunge6">
+      <image file="../images/groundpieces/transparent/industrial/gunge6.png"/>
+    </sprite>
+    <sprite name="gunge7">
+      <image file="../images/groundpieces/transparent/industrial/gunge7.png"/>
+    </sprite>
+    <sprite name="gunge8">
+      <image file="../images/groundpieces/transparent/industrial/gunge8.png"/>
+    </sprite>
+    <sprite name="gunge9">
+      <image file="../images/groundpieces/transparent/industrial/gunge9.png"/>
+    </sprite>
   </section>
   <section name="Buttons">
-    <surface file="../images/core/buttons/pause.png" height="56" name="pause" width="38" x="0" y="0" />
+    <sprite name="pause">
+      <image file="../images/core/buttons/pause.png"/>
+    </sprite>
   </section>
 </resources>

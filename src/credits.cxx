@@ -34,8 +34,8 @@ Credits* Credits::instance_ = 0;
 Credits::Credits()
 {
   fast_scrolling = false;
-  background = Resource::load_surface("menu/startscreenbg", "core");
-  pingu = Resource::load_surface("misc/creditpingu", "core");
+  background = Resource::load_surface("core/menu/startscreenbg");
+  pingu = Resource::load_surface("core/misc/creditpingu");
 
   font       = Fonts::chalk_normal;
   font_small = Fonts::chalk_large;

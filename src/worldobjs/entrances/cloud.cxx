@@ -30,7 +30,7 @@ Cloud::Cloud (const WorldObjsData::EntranceData& data_)
 {
   data->pos.z = 100;
 
-  surface = Resource::load_sprite("Entrances/cloud","entrances");
+  surface = Resource::load_sprite("entrances/cloud");
 }
 
 void

@@ -30,13 +30,13 @@ StarfieldBackgroundStars::StarfieldBackgroundStars (Type type)
   switch (type)
     {
     case SMALL_STAR:
-      sur = Resource::load_sprite("Stars/small_star" , "game");
+      sur = Resource::load_sprite("game/stars/small_star");
       break;
     case MIDDLE_STAR:
-      sur = Resource::load_sprite("Stars/middle_star", "game");
+      sur = Resource::load_sprite("game/stars/middle_star");
       break;
     case LARGE_STAR:
-      sur = Resource::load_sprite("Stars/large_star" , "game");
+      sur = Resource::load_sprite("game/stars/large_star");
       break;
     }
 

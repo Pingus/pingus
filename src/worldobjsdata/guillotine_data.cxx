@@ -35,8 +35,8 @@ GuillotineData::GuillotineData ()
 }
 
 GuillotineData::GuillotineData (xmlDocPtr doc, xmlNodePtr cur)
-  : surface  (Resource::load_sprite("Traps/guillotinekill", "traps")),
-    idle_surf(Resource::load_sprite("Traps/guillotineidle", "traps"))
+  : surface  (Resource::load_sprite("traps/guillotinekill")),
+    idle_surf(Resource::load_sprite("traps/guillotineidle"))
 {
   if (cur->name)
     std::cout << reinterpret_cast<const char*>(cur->name) << std::endl;

@@ -73,7 +73,7 @@ Bumper::on_startup ()
 {
   std::cout << "Drawing colmap entry" << std::endl;
 
-  CL_PixelBuffer prov = Resource::load_pixelbuffer("Traps/bumper_cmap", "traps");
+  CL_PixelBuffer prov = Resource::load_pixelbuffer("traps/bumper_cmap");
   world->get_colmap()->put(prov, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y), Groundtype::GP_SOLID);
 }
 

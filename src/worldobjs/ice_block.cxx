@@ -36,7 +36,7 @@ IceBlock::IceBlock (const WorldObjsData::IceBlockData& data_)
     thickness(1.0),
     is_finished(false),
     last_contact(0),
-    block_sur(Resource::load_sprite ("iceblock", "worldobjs"))
+    block_sur(Resource::load_sprite ("worldobjs/iceblock"))
 {
 }
 
@@ -48,7 +48,7 @@ IceBlock::~IceBlock ()
 void
 IceBlock::on_startup ()
 {
-  CL_PixelBuffer surf(Resource::load_pixelbuffer("iceblock_cmap", "worldobjs"));
+  CL_PixelBuffer surf(Resource::load_pixelbuffer("worldobjs/iceblock_cmap"));
 
   world->get_colmap()->put(surf,
                            static_cast<int>(data->pos.x),
@@ -94,7 +94,7 @@ IceBlock::update()
 	  is_finished = true;
 	  thickness = 0;
 
-	  CL_PixelBuffer surf(Resource::load_pixelbuffer("iceblock_cmap", "worldobjs"));
+	  CL_PixelBuffer surf(Resource::load_pixelbuffer("worldobjs/iceblock_cmap"));
 	  world->get_colmap ()->remove(surf, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y));
 	  world->get_gfx_map()->remove(surf, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y));
 	  return;

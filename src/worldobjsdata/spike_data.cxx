@@ -36,7 +36,7 @@ SpikeData::SpikeData ()
 }
 
 SpikeData::SpikeData (xmlDocPtr doc, xmlNodePtr cur)
-  : surface(Resource::load_sprite("Traps/spike", "traps"))
+  : surface(Resource::load_sprite("traps/spike"))
 {
   XMLFileReader reader(doc, cur);
   reader.read_vector("position", pos);

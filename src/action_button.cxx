@@ -86,8 +86,8 @@ ActionButton::get_action_name()
 VerticalActionButton::VerticalActionButton(ActionHolder* h,
                                            int x, int y, ActionName name_, int owner_id)
   : ActionButton(h),
-    background (Resource::load_sprite("buttons/buttonbackground", "core")),
-    backgroundhl (Resource::load_sprite("buttons/buttonbackgroundhl", "core"))
+    background (Resource::load_sprite("core/buttons/buttonbackground")),
+    backgroundhl (Resource::load_sprite("core/buttons/buttonbackgroundhl"))
 {
   init(x, y, name_, owner_id);
 }
