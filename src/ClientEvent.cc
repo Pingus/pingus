@@ -1,4 +1,4 @@
-//  $Id: ClientEvent.cc,v 1.14 2001/03/18 17:45:04 grumbel Exp $
+//  $Id: ClientEvent.cc,v 1.15 2001/03/30 09:19:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -229,12 +229,12 @@ ClientEvent::on_mouse_button_press(const CL_Key& key)
 
   switch(key.id)
     {
-    case 0:
+    case CL_MOUSE_LEFTBUTTON:
       playfield->on_button_press(key);
       break;
-    case 1:
+    case CL_MOUSE_MIDDLEBUTTON:
       break;
-    case 2:
+    case CL_MOUSE_RIGHTBUTTON:
       playfield->enable_scroll_mode();
       break;
     default:
@@ -250,11 +250,11 @@ ClientEvent::on_mouse_button_release(const CL_Key& key)
 
   switch(key.id)
     {
-    case 0:
+    case CL_MOUSE_LEFTBUTTON:
       break;
-    case 1:
+    case CL_MOUSE_MIDDLEBUTTON:
       break;
-    case 2:
+    case CL_MOUSE_RIGHTBUTTON:
       playfield->disable_scroll_mode();
       break;
     default:

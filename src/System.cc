@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.24 2000/10/30 16:17:50 grumbel Exp $
+//  $Id: System.cc,v 1.25 2001/03/30 09:19:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,10 +35,15 @@
 
 #include "my_gettext.hh"
 
-#include "globals.hh"
-#include "PingusError.hh" 
+//#include "PingusError.hh" 
 #include "StringConverter.hh"
 #include "System.hh"
+
+int System::verbose;
+std::string System::default_email;
+std::string System::default_username;
+std::string System::default_language;
+
 
 System::DirectoryEntry::DirectoryEntry(const std::string& n)
 {
@@ -142,13 +147,14 @@ System::create_dir(std::string directory)
     {
       if (mkdir(directory.c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) != 0)
 	{
-	  throw PingusError(directory + ": " + strerror(errno));
+	  throw Error(directory + ": " + strerror(errno));
 	}
       else
 	{
 	  std::cout << _("Successfully created: ") << directory << std::endl;
 	}
-    }  else
+    }  
+  else
     {
       if (verbose) std::cout << _("Found: ") << directory << std::endl;
     }
@@ -196,7 +202,7 @@ System::get_statdir()
     }
   else
     {
-      throw PingusError(_("Enviroment variable $HOME not set, fix that and start again."));
+      throw Error(_("Enviroment variable $HOME not set, fix that and start again."));
     }
 #endif
 }
@@ -232,7 +238,7 @@ System::get_tmpdir()
 std::string
 System::get_username()
 {
-  if (global_username.empty())
+  if (default_username.empty())
     {
       char* username = getenv("USERNAME");
 
@@ -243,7 +249,7 @@ System::get_username()
     }
   else
     {
-      return global_username;
+      return default_username;
     }
 }
 
@@ -251,7 +257,7 @@ System::get_username()
 std::string 
 System::get_email()
 {
-  if (global_email.empty())
+  if (default_email.empty())
     {
       char* email = getenv("EMAIL");
 
@@ -264,7 +270,7 @@ System::get_email()
     }
   else
     {
-      return global_email;
+      return default_email;
     }
 }
 
@@ -322,7 +328,7 @@ System::checksum (std::string filename)
       
       if (bytes_read == -1)
 	{
-	  throw PingusError (_("System:checksum: file read error"));
+	  throw Error (_("System:checksum: file read error"));
 	}
 
       for (int i=0; i < bytes_read; i++)

@@ -1,4 +1,4 @@
-//  $Id: StringConverter.cc,v 1.3 2000/09/30 21:34:42 grumbel Exp $
+//  $Id: StringConverter.cc,v 1.4 2001/03/30 09:19:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include <cstdio>
 #include "StringConverter.hh"
-#include "PingusError.hh"
+//#include "PingusError.hh"
 
 int 
 StringConverter::to_int(const std::string& str)
@@ -27,7 +27,7 @@ StringConverter::to_int(const std::string& str)
   int i;
   if (sscanf(str.c_str(), "%d", &i) != 1)
     {
-      throw PingusError("StringConverter: Couldn't convert: \"" + str + "\" to int");
+      throw Error("StringConverter: Couldn't convert: \"" + str + "\" to int");
     }
   return i;
 }
@@ -38,7 +38,7 @@ StringConverter::to_float(const std::string& str)
   float i;
   if (sscanf(str.c_str(), "%f", &i) != 1)
     {
-      throw PingusError("StringConverter: Couldn't convert: \"" + str + "\" to float");
+      throw Error("StringConverter: Couldn't convert: \"" + str + "\" to float");
     }
   return i;
 }

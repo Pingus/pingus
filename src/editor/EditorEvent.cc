@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.36 2001/03/18 17:45:05 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.37 2001/03/30 09:19:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -272,7 +272,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
     {
       switch (key.id)
 	{
-	case 0:
+	case CL_MOUSE_LEFTBUTTON:
 	  if (editor->panel->mouse_over(key.x, key.y))
 	    editor->panel->on_click();
 	  else if (editor->scroll_map->mouse_over (key.x, key.y))
@@ -280,10 +280,10 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  else
 	    editor_mark_or_move_object();
 	  break;
-	case 1:
+	case CL_MOUSE_MIDDLEBUTTON:
 	  editor->rect_get_current_objs();
 	  break;
-	case 2:
+	case CL_MOUSE_RIGHTBUTTON:
 	  editor->scroll();
 	  break;
 	}

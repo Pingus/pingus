@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.28 2001/03/18 17:45:04 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.29 2001/03/30 09:19:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -151,14 +151,14 @@ OptionMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
     {
       switch(key.id)
 	{
-	case 0:
+	case CL_MOUSE_LEFTBUTTON:
 	  if (verbose) std::cout << "Button 0 pressed" << std::endl;
 	  break;
-	case 1:
+	case CL_MOUSE_MIDDLEBUTTON:
 	  option_menu->quit = true;
 	  if (verbose) std::cout << "Button 1 pressed" << std::endl;
 	  break;
-	case 2:
+	case CL_MOUSE_RIGHTBUTTON:
 	  if (verbose) std::cout << "Button 2 pressed" << std::endl;
 	  break;
 	default:

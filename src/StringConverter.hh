@@ -1,4 +1,4 @@
-//  $Id: StringConverter.hh,v 1.2 2000/09/29 16:21:17 grumbel Exp $
+//  $Id: StringConverter.hh,v 1.3 2001/03/30 09:19:23 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,12 @@
 class StringConverter
 {
 private:
+  struct Error {
+    std::string message;
+    
+    Error (const std::string& str)
+      : message (str) {}
+  };
 
 public:
   static int   to_int(const std::string&);

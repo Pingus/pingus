@@ -1,4 +1,4 @@
-//  $Id: System.hh,v 1.16 2000/10/14 16:09:45 grumbel Exp $
+//  $Id: System.hh,v 1.17 2001/03/30 09:19:23 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,8 +30,18 @@
 class System
 {
 private:
-  
+  static int verbose;
+  static std::string default_email;
+  static std::string default_username;
+  static std::string default_language;
 public:
+  struct Error {
+    std::string message;
+    
+    Error (const std::string& str)
+      : message (str) {}
+  };
+
   ///
   struct DirectoryEntry
   {
