@@ -1,4 +1,4 @@
-//  $Id: Entrance.cc,v 1.6 2000/04/08 20:20:25 grumbel Exp $
+//  $Id: Entrance.cc,v 1.7 2000/04/29 13:13:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,8 @@
 #include <cassert>
 
 #include "PingusResource.hh"
+#include "PingusSound.hh"
+#include "algo.hh"
 #include "globals.hh"
 #include "Entrance.hh"
 #include "GameTime.hh"
@@ -105,7 +107,7 @@ Entrance::get_pingu()
     p->set_direction(d);
     break;
   }
-  
+
   return p;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: Server.cc,v 1.6 2000/02/22 00:09:48 grumbel Exp $
+//  $Id: Server.cc,v 1.7 2000/04/29 13:13:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,6 +99,8 @@ Server::process_event(std::string event)
   char* event_str = strdup(event.c_str());
   std::string token;
   const char delimiters[] = ":";
+
+  cout << "Event: " << event << endl;
 
   token = strtok(event_str, delimiters); // Get GameTime
 

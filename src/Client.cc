@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.19 2000/04/24 13:15:40 grumbel Exp $
+//  $Id: Client.cc,v 1.20 2000/04/29 13:13:26 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -173,7 +173,7 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
   CL_Display::clear_display();
 
 #ifdef HAVE_LIBSDL_MIXER
-  PingusSound::play(find_file(pingus_datadir, "music/" + plf->get_music().res_name));
+  PingusSound::play_mod(find_file(pingus_datadir, "music/" + plf->get_music().res_name));
 #endif
 
   // Main Game Loop

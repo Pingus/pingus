@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.11 2000/04/25 17:54:39 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.12 2000/04/29 13:13:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -210,8 +210,8 @@ OptionMenu::init()
   add_entry("Pingus Datadir", &pingus_datadir);
   add_entry("Game Speed", &game_speed);
   add_entry("Verbose", &verbose);
-  //  add_entry("Music", &music_enabled);
-  //  add_entry("Sound", &sound_enabled);
+  add_entry("Music", &music_enabled);
+  add_entry("Sound", &sound_enabled);
   add_entry("Level Previews", &previews_enabled);
   add_entry("Draw ColMap", &draw_collision_map);
   add_entry("Horizontal Button Panel", &horizontal_button_panel);

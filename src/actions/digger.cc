@@ -1,4 +1,4 @@
-//  $Id: digger.cc,v 1.6 2000/04/10 21:24:19 grumbel Exp $
+//  $Id: digger.cc,v 1.7 2000/04/29 13:13:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <cstdio>
 
 #include "digger.hh"
+#include "../PingusSound.hh"
 #include "../particles/GroundParticle.hh"
 #include "../algo.hh"
 
@@ -70,8 +71,20 @@ Digger::let_move()
 bool   
 Digger::have_something_to_dig()
 {
-  return (rel_getpixel(0, -1) != ColMap::NOTHING
-	  && !(rel_getpixel(0, -1) & ColMap::SOLID));
+  if (rel_getpixel(0, -1) != ColMap::NOTHING)
+    {
+      if (rel_getpixel(0, -1) & ColMap::SOLID)
+	{
+	  PingusSound::play_wav(find_file(pingus_datadir, "sound/CHINK.WAV"));
+	  return false;  
+	}
+      else
+	return true;
+    }
+  else
+    {
+      return false;
+    }
 }
 
 void

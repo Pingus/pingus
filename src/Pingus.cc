@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.22 2000/04/24 13:15:41 grumbel Exp $
+//   $Id: Pingus.cc,v 1.23 2000/04/29 13:13:26 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -383,12 +383,6 @@ PingusMain::init_pingus()
 		<< "   $ ./pingus --verbose 0\n" 
 		<< "-----------------------------------------------------------------\n" 
 		<< std::endl;
-    }
-
-  if (music_enabled)
-    {
-      PingusSound::init(pingus_audio_rate, pingus_audio_format,
-			pingus_audio_channels, pingus_audio_channels);
     }
 
   if (preload_data)

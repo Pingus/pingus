@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.17 2000/04/14 18:28:26 grumbel Exp $
+//  $Id: Pingu.cc,v 1.18 2000/04/29 13:13:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,8 @@
 #include "Pingu.hh"
 #include "ActionHolder.hh"
 #include "PingusResource.hh"
+#include "PingusSound.hh"
+#include "algo.hh"
 #include "actions/smashed.hh"
 #include "FVec.hh"
 
@@ -209,6 +211,7 @@ Pingu::set_action(PinguAction* act)
 	    }
 	  action_time = act->activation_time();
 	  sec_action = act;
+	  PingusSound::play_wav(find_file(pingus_datadir, "sound/OHNO.WAV"));
 	}
       return true;
     }
@@ -311,6 +314,7 @@ Pingu::let_move(void)
     
   if (rel_getpixel(0, -1) == ColMap::OUTOFSCREEN) 
     {
+      PingusSound::play_wav(find_file(pingus_datadir, "sound/DIE.WAV"));
       status = dead;
       return;
     }
@@ -436,6 +440,7 @@ Pingu::do_walking()
  if (rel_getpixel(0,-1) & ColMap::WATER)
    {
      std::cout << "Blub, blub, blub, blub...." << std::endl;
+     PingusSound::play_wav(find_file(pingus_datadir, "sound/SPLASH.WAV"));
      status = dead;
      return;
    }

@@ -1,4 +1,4 @@
-//  $Id: PingusSound.cc,v 1.8 2000/04/25 17:54:39 grumbel Exp $
+//  $Id: PingusSound.cc,v 1.9 2000/04/29 13:13:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include <config.h>
 #include "globals.hh"
 #include "PingusMusicProvider.hh"
+#include "PingusWavProvider.hh"
 #include "PingusSound.hh"
 
 bool PingusSound::is_init;
@@ -98,33 +99,48 @@ PingusSound::clean_up()
 }
 
 void
-PingusSound::play(std::string filename)
+PingusSound::play_wav(std::string str)
 {
 #ifdef HAVE_LIBSDL_MIXER
-  if (!is_init)
+  if (sound_enabled)
     {
-      init(pingus_audio_rate, pingus_audio_format,
-	   pingus_audio_channels, pingus_audio_buffers);
-    }  
-
-  if (music)
-    {
-      Mix_FadeOutMusic(1000);
-      Mix_FreeMusic(music);
+      if (!is_init)
+	{
+	  init(pingus_audio_rate, pingus_audio_format,
+	       pingus_audio_channels, pingus_audio_buffers);
+	}
+      
+      cout << "PlayingWAV: " << str << endl;
+      Mix_PlayChannel(-1, PingusWavProvider::load(str), 0);
     }
-  
-  printf("Playing...\n");
-  music = PingusMusicProvider::load(filename);
-
-  Mix_FadeInMusic(music,-1,2000);
-  printf("Playing...now\n");
-#endif /* HAVE_LIBSDL_MIXER */
+#endif /* HAVE_LIBSDL_MIXER */  
 }
 
 void
-PingusSound::keep_alive()
+PingusSound::play_mod(std::string filename)
 {
+#ifdef HAVE_LIBSDL_MIXER
+  if (music_enabled)
+    {
+      if (!is_init)
+	{
+	  init(pingus_audio_rate, pingus_audio_format,
+	       pingus_audio_channels, pingus_audio_buffers);
+	}
+
+      if (music)
+	{
+	  Mix_FadeOutMusic(1000);
+	  Mix_FreeMusic(music);
+	}
   
+      printf("Playing...\n");
+      music = PingusMusicProvider::load(filename);
+
+      Mix_FadeInMusic(music,-1,2000);
+      printf("Playing...now\n");
+    }
+#endif /* HAVE_LIBSDL_MIXER */
 }
 
 /* EOF */
