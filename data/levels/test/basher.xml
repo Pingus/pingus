@@ -20,6 +20,7 @@
     <bomber count="20"/>
     <digger count="20"/>
     <miner count="20"/>
+    <bridger count="20"/>
   </action-list>
 
 <background type="surface">

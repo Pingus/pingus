@@ -5,8 +5,8 @@
     <levelname lang="en">It's climbers time!</levelname>
     <description lang="en">Discover The Pyramide</description>
     <author></author>
-    <number-of-pingus>30</number-of-pingus>
-    <number-to-save>30</number-to-save>
+    <number-of-pingus>10</number-of-pingus>
+    <number-to-save>5</number-to-save>
     <time>-1</time>
     <width>1216</width>
     <height>600</height>

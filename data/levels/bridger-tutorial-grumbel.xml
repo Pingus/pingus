@@ -10,6 +10,7 @@
     <time>9000</time>
     <width>1600</width>
     <height>800</height>
+    <playable>1</playable>
   </global>
 
 <background type="surface">
