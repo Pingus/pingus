@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: world.cxx,v 1.3 2002/06/14 11:34:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -87,6 +87,7 @@ World::~World()
   }
   
   delete world_obj;
+  delete pingus;
 }
 
 // Merge the different layers on the screen together
@@ -204,8 +205,6 @@ World::init_worldobjs()
       if (obj)
       	world_obj->push_back(obj);
     }
-
-  world_obj->push_back(pingus);
 
   // After all objects are in world_obj, sort them to there z_pos
 #ifdef WIN32
