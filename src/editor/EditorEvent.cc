@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.43 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.44 2001/05/19 09:48:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -261,11 +261,11 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  break;
 
 	case CL_KEY_Z:
-	  editor->view->set_zoom (editor->view->get_zoom () * 1.2f);
+	  editor_zoom_in ();
 	  break;
 
 	case CL_KEY_W:
-	  editor->view->set_zoom (editor->view->get_zoom () / 1.2f);
+	  editor_zoom_out ();
 	  break;
 
 	case CL_KEY_ENTER:
@@ -283,9 +283,9 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
     }
   else if (device == CL_Input::pointers[0])
     {
-      std::cout << "Mouse: (" << CL_Mouse::get_x () << ", " << CL_Mouse::get_y () << ") "
+      /*std::cout << "Mouse: (" << CL_Mouse::get_x () << ", " << CL_Mouse::get_y () << ") "
 		<< "World: " << editor->view->screen_to_world (CL_Vector(CL_Mouse::get_x (), CL_Mouse::get_y ()))
-		<< std::endl;
+		<< std::endl;*/
       
       switch (key.id)
 	{
@@ -679,6 +679,18 @@ void
 EditorEvent::editor_decrease_count ()
 {
   
+}
+
+void 
+EditorEvent::editor_zoom_in ()
+{
+  editor->view->set_zoom (editor->view->get_zoom () * 1.4f);
+}
+
+void 
+EditorEvent::editor_zoom_out ()
+{
+  editor->view->set_zoom (editor->view->get_zoom () / 1.4f);
 }
 
 /* EOF */

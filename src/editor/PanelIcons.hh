@@ -1,4 +1,4 @@
-//  $Id: PanelIcons.hh,v 1.3 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: PanelIcons.hh,v 1.4 2001/05/19 09:48:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,8 +30,7 @@ public:
   PanelIconNew();
   ///
   virtual void on_click();
-}///
-;
+};
 
 ///
 class PanelIconLoad : public PanelIcon
@@ -41,8 +40,7 @@ public:
   PanelIconLoad();
   ///
   virtual void on_click();
-}///
-;
+};
 
 ///
 class PanelIconSave : public PanelIcon
@@ -52,8 +50,7 @@ public:
   PanelIconSave();
   ///
   virtual void on_click();
-}///
-;
+};
 
 ///
 class PanelIconCopy : public PanelIcon
@@ -107,8 +104,7 @@ public:
   PanelIconDelete();
   ///
   virtual void on_click();
-}///
-;
+};
 
 ///
 class PanelIconExit : public PanelIcon
@@ -118,8 +114,7 @@ public:
   PanelIconExit();
   ///
   virtual void on_click();
-}///
-;
+};
 
 ///
 class PanelIconRun : public PanelIcon
@@ -129,8 +124,7 @@ public:
   PanelIconRun();
   ///
   virtual void on_click();
-}///
-;
+};
 
 ///
 class PanelIconInsertObject : public PanelIcon
@@ -140,8 +134,35 @@ public:
   PanelIconInsertObject();
   ///
   virtual void on_click();
-}///
-;
+};
+
+class PanelIconZoomOut : public PanelIcon
+{
+public:
+  ///
+  PanelIconZoomOut();
+  ///
+  virtual void on_click();
+};
+
+class PanelIconZoomIn : public PanelIcon
+{
+public:
+  ///
+  PanelIconZoomIn();
+  ///
+  virtual void on_click();
+};
+
+class PanelIconRegionZoom : public PanelIcon
+{
+public:
+  ///
+  PanelIconRegionZoom();
+  ///
+  virtual void on_click();
+};
+
 
 #endif
 

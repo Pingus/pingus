@@ -1,4 +1,4 @@
-//  $Id: Panel.cc,v 1.11 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: Panel.cc,v 1.12 2001/05/19 09:48:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -104,6 +104,11 @@ Panel::init()
       buttons.push_back(new PanelIconCopy);
       buttons.push_back(new PanelIconEdit);
       buttons.push_back(new PanelIconDelete);
+
+      buttons.push_back(new PanelIconRegionZoom ());
+      buttons.push_back(new PanelIconZoomIn ());
+      buttons.push_back(new PanelIconZoomOut ());
+
       buttons.push_back(new PanelIconRun);
 
       buttons.push_back(new PanelIconExit);

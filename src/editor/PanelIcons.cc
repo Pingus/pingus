@@ -1,4 +1,4 @@
-//  $Id: PanelIcons.cc,v 1.7 2000/10/30 16:17:51 grumbel Exp $
+//  $Id: PanelIcons.cc,v 1.8 2001/05/19 09:48:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -130,6 +130,38 @@ void
 PanelIconInsertObject::on_click()
 {
   editor->get_event()->editor_insert_new_object();
+}
+
+PanelIconRegionZoom::PanelIconRegionZoom ()
+{
+  sur = PingusResource::load_surface("editor/region-zoom", "core");
+}
+
+void 
+PanelIconRegionZoom::on_click()
+{
+}
+
+PanelIconZoomIn::PanelIconZoomIn()
+{
+  sur = PingusResource::load_surface("editor/zoom-in", "core");
+}
+
+void 
+PanelIconZoomIn::on_click()
+{
+  editor->get_event ()->editor_zoom_in ();
+}
+
+PanelIconZoomOut::PanelIconZoomOut()
+{
+  sur = PingusResource::load_surface("editor/zoom-out", "core");
+}
+
+void 
+PanelIconZoomOut::on_click()
+{
+  editor->get_event ()->editor_zoom_out ();
 }
 
 /* EOF */

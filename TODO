@@ -1,10 +1,10 @@
-Editor Bugs:
+Editor:
 
-Teleporter isn't offseted
+Zooming in the menu panel
+region zooming
+
 
 * alterration of the lemmings rate
-print version on startup
----------------------
 
 What we need before we have a finished game:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -320,6 +320,6 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
 
 
 
-$Date: 2001/05/15 17:59:45 $
+$Date: 2001/05/19 09:48:24 $
 
 -= EOF =-
