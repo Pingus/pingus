@@ -1,4 +1,4 @@
-//  $Id: slider.cxx,v 1.19 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: slider.cxx,v 1.20 2004/03/27 14:19:08 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,23 +44,26 @@ Slider::update ()
 
   sprite.update();
 
-  for (int i = 0; i < speed; ++i)
+  for (int i = 0; i < speed && rel_getpixel(1, 0) == Groundtype::GP_NOTHING; ++i)
     {
       pingu->set_x(pingu->get_x() + pingu->direction);
 
       if (rel_getpixel(0, -1) ==  Groundtype::GP_NOTHING)
-	{
-	  speed = (speed > 5) ? 5 : speed;
+        {
+          speed = (speed > 5) ? 5 : speed;
 
-	  if (pingu->direction.is_right()) {
-	    pingu->set_velocity(pingu->get_velocity() + Vector(speed, 0.0));
-	  } else {
-	    pingu->set_velocity(pingu->get_velocity() + Vector(-speed, 0.0));
-	  }
+          if (pingu->direction.is_right())
+					  {
+              pingu->set_velocity(pingu->get_velocity() + Vector(speed, 0.0));
+            } 
+          else
+					  {
+              pingu->set_velocity(pingu->get_velocity() + Vector(-speed, 0.0));
+            }
 
-	  pingu->set_action(Actions::Walker);
+          pingu->set_action(Actions::Walker);
           return;
-	}
+        }
     }
 
   speed -= 7 * 0.025f;
