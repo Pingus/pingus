@@ -1,12 +1,8 @@
 <pingus-controller>
   <controller-config>
-    <standard-pointer>
-      <mouse-pointer />
-    </standard-pointer>
+    <standard-pointer><mouse-pointer /></standard-pointer>
 
-    <primary-button>
-      <mouse-button button="0"/>
-    </primary-button>
+    <primary-button><mouse-button button="0"/></primary-button>
 
     <secondary-button>
       <mouse-button button="2"/>
@@ -33,8 +29,8 @@
 
     <action-axis>
       <button-axis angle="0">
-	<key-button key="1" />
-	<key-button key="2" />
+	<key-button key="B"/>
+	<key-button key="C"/>
       </button-axis>
     </action-axis>
 

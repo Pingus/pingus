@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.26 2002/08/16 15:14:00 torangan Exp $
+//  $Id: object_manager.cxx,v 1.27 2002/09/05 12:40:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,11 +17,12 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <fstream>
 #include <algorithm>
 #include <ClanLib/Core/Math/rect.h>
+#include "../plf.hxx"
 #include "../globals.hxx"
 #include "../system.hxx"
-#include "../plf_plf.hxx"
 #include "../xml_helper.hxx"
 #include "../pingus_resource.hxx"
 #include "../pingus_error.hxx"

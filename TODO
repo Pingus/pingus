@@ -3,6 +3,8 @@ Roadmap for Pingus 0.5.0
 
 Major Items:
 
+* replace draw_offset(int x, int y, float s) with draw(GraphicContext& gc);
+
 * two worlds should be provided
 	- tutorial world (maybe 25 levels)
 	- Hellmouth(story?: the earth opens and pingus face trouble...)
@@ -236,7 +238,7 @@ Random crash while scrolling
 'grep' at the sources for "Bug" or "FIXME" that should give you some
 more known bugs and other stuff. 
 
-$Date: 2002/07/03 17:14:25 $
+$Date: 2002/09/05 12:40:22 $
 
 =======
 

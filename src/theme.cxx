@@ -1,4 +1,4 @@
- //  $Id: theme.cxx,v 1.6 2002/08/23 15:49:51 torangan Exp $
+ //  $Id: theme.cxx,v 1.7 2002/09/05 12:40:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include <ClanLib/Display/Font/font.h>
 #include <ClanLib/Display/Input/keyboard.h>
 #include <ClanLib/Display/Input/key.h>
+#include <fstream>
 #include "path_manager.hxx"
 #include "system.hxx"
 #include "pingus_resource.hxx"
@@ -31,7 +32,6 @@
 #include "message_box.hxx"
 #include "globals.hxx"
 #include "theme.hxx"
-#include "plf_plf.hxx"
 #include "xml_plf.hxx"
 #include "screen_manager.hxx"
 
@@ -333,8 +333,7 @@ Theme::load_levels()
 	{
 	  if (filename.substr(filename.size() - 4) == ".plf")
 	    {
-	      PLFPLF plf(filename);
-	      levelnames.push_back(System::translate(plf.get_levelname()));
+	      PingusError::raise ("Loading of plf's no longer supported");
 	    }
 	  else
 	    {

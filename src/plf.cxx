@@ -1,4 +1,4 @@
-//  $Id: plf.cxx,v 1.4 2002/08/23 15:49:50 torangan Exp $
+//  $Id: plf.cxx,v 1.5 2002/09/05 12:40:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,9 +18,9 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "xml_plf.hxx"
-#include "plf_plf.hxx"
 #include "globals.hxx"
 #include "system.hxx"
+#include "pingus_error.hxx"
 
 using namespace std;
 
@@ -231,7 +231,10 @@ PLF::create (const std::string& pathname)
   if (extension == "xml")
     return new XMLPLF (pathname);
   else if (extension == "plf")
-    return new PLFPLF (pathname);
+    {
+      PingusError::raise ("Loading of plf's no longer supported");
+      return 0;
+    }
   else // filename does not have an extension, default to xml
     return new XMLPLF (pathname);
 }

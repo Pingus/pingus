@@ -36,6 +36,7 @@ more known bugs and other stuff.
 
 Controller:
  * axis event has up/down only, should be float -1,1
+ * factories should not skip empty nodes, but instead signal an error
 
-$Date: 2002/08/15 09:31:07 $
+$Date: 2002/09/05 12:40:22 $
 
