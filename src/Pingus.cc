@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.9 2000/02/16 23:34:11 grumbel Exp $
+//   $Id: Pingus.cc,v 1.10 2000/02/26 16:16:32 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -61,7 +61,7 @@ PingusMain::PingusMain()
   std::string temp;
 
   // Default resolution
-  resolution = "640x480";
+  resolution = "800x600";
 
   temp = string(PACKAGE) + " " + VERSION + " - A free Lemmings clone";
   temp += " - http://pingus.seul.org";
