@@ -1,4 +1,4 @@
-//  $Id: groundpiece_window.cxx,v 1.5 2002/07/01 09:09:31 grumbel Exp $
+//  $Id: groundpiece_window.cxx,v 1.6 2002/07/03 09:53:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,6 +92,8 @@ GroundpieceWindow::read_data ()
 void
 GroundpieceWindow::write_data ()
 {
+  std::cout << "FIXME: GroundpieceWindow::write_data (): this will crash if the object gets deleted" << std::endl;
+
   if (ground_radiobutton.is_checked ())
     data->gptype = GroundpieceData::GP_GROUND;
   else if (transparent_radiobutton.is_checked ())

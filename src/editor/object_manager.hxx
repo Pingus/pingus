@@ -1,4 +1,4 @@
-//  $Id: object_manager.hxx,v 1.14 2002/07/02 16:06:51 grumbel Exp $
+//  $Id: object_manager.hxx,v 1.15 2002/07/03 09:53:32 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -140,6 +140,11 @@ public:
   EditorObj* find_object(const CL_Vector & pos);
 
   std::vector<ActionData>* get_actions ();
+
+  /** Returns false if object is no longer valid. This one is needed
+      to varify that an referenc to and object is still valid and that
+      the object has not yet been deleted */
+  bool has_object (EditorObj* obj);
 };
 
 #endif

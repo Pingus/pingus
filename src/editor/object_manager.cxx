@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.22 2002/07/02 16:06:51 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.23 2002/07/03 09:53:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -145,7 +145,7 @@ ObjectManager::load_level (const std::string& filename)
     editor_objs.insert(editor_objs.end(), temp.begin(), temp.end() );
   }
 
-  std::sort(editor_objs.begin (), editor_objs.end (), EditorObj_z_pos_sorter);
+  std::stable_sort(editor_objs.begin (), editor_objs.end (), EditorObj_z_pos_sorter);
 
   std::cout << "Reading props" << std::endl;
   description = plf->get_description();
@@ -322,6 +322,8 @@ ObjectManager::erase (const std::vector<EditorObj*>& objs)
 EditorObj*
 ObjectManager::find_object(const CL_Vector& pos)
 {
+  // We go reverse about the list, since the top-most object is the
+  // last in the list
   for(EditorObjRIter i = editor_objs.rbegin(); i != editor_objs.rend(); ++i) 
     {
       if ((*i)->is_over(pos))
@@ -369,6 +371,12 @@ void
 ObjectManager::set_height(int arg_height)
 {
   height = arg_height;
+}
+
+bool
+ObjectManager::has_object (EditorObj* obj)
+{
+  return std::find (editor_objs.begin (), editor_objs.end (), obj) != editor_objs.end ();
 }
 
 /* EOF */

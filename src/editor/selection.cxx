@@ -1,4 +1,4 @@
-//  $Id: selection.cxx,v 1.8 2002/07/02 09:21:03 grumbel Exp $
+//  $Id: selection.cxx,v 1.9 2002/07/03 09:53:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -150,6 +150,7 @@ EditorSelection::rotate_270()
 void
 EditorSelection::draw(EditorView * view)
 {
+  
   for (vector<EditorObj*>::iterator i = obj_list.begin(); i != obj_list.end(); ++i) 
     {
       (*i)->draw_mark(view);
