@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.54 2002/01/24 16:11:35 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.55 2002/02/17 14:16:27 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -611,31 +611,8 @@ PingusMain::get_filenames()
   System::init_directories();
 
 #ifndef WIN32
-  /*if (!pingus_datadir_set)
-    {
-    if (System::exist("../data/data/global.scr"))
-    {
-    if (verbose) std::cout << "Assuming that you haven't installed pingus" << std::cout;
-      
-    pingus_datadir = "../data/";
-    pingus_datadir_set = true;
-    }
-    else if (System::exist("./data/data/global.scr"))
-    {
-    if (verbose) std::cout << "Assuming that you are running the binary version" << std::endl;
-      
-    pingus_datadir = "./data/"; 
-    pingus_datadir_set = true; 
-    }
-    else
-    {
-    if (verbose)
-    std::cout << "Using intern macro PINGUS_DATADIR (" << PINGUS_DATADIR << ")" << std::endl;
-      
-    pingus_datadir = PINGUS_DATADIR;
-    pingus_datadir_set = true;
-    }
-    }*/
+  std::cout << "Directory name of " << executable_name << " - " << System::dirname(executable_name)
+	    << std::endl;
 
   // FIXME: Do we need this any longer?
   char* pingus_datadir_env = getenv ("PINGUS_DATADIR");
@@ -643,6 +620,7 @@ PingusMain::get_filenames()
     path_manager.add_path (pingus_datadir_env);
 
   /* Some magic for detecting the path */
+  path_manager.add_path (System::dirname(executable_name) + "/../data/");
   path_manager.add_path ("../data/");     // started from 'src/'
   path_manager.add_path ("data/");        // started from base directory with 'src/pingus'
   path_manager.add_path ("share/games/pingus/");  // started from base directory of the binary
@@ -861,6 +839,8 @@ PingusMain::main(int argc, char** argv)
 {
   // Register the segfault_handler
   // signal(SIGSEGV, segfault_handler);
+
+  executable_name = argv[0];
 
   try {
     init(argc, argv);

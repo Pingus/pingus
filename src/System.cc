@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.38 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: System.cc,v 1.39 2002/02/17 14:16:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -119,7 +119,6 @@ std::string
 System::basename(std::string filename)
 {
   // Should be replaced with STL
-  
   const char* str = filename.c_str();
   int i;
 
@@ -131,6 +130,22 @@ System::basename(std::string filename)
     }
   
   return (str+i + 1);
+}
+
+std::string
+System::dirname (std::string filename)
+{
+  const char* str = filename.c_str();
+  int i;
+
+  for(i = filename.size() - 1; i >= 0; --i) 
+    {
+      if (*(str + i) == '/') {
+	break;
+      }
+    }
+  
+  return filename.substr(0, i);
 }
 
 bool

@@ -1,4 +1,4 @@
-//  $Id: PingusMain.hh,v 1.9 2002/01/19 18:12:54 grumbel Exp $
+//  $Id: PingusMain.hh,v 1.10 2002/02/17 14:16:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,15 +32,13 @@ void segfault_handler(int);
 class PingusMain : public AbstractMain
 {
 private:
-  ///
   bool    no_config_file;
-  ///
+  // the name of the exe: argv[0]
+  std::string executable_name;
   std::string levelfile;
-  ///
   std::string resolution;
-  ///
+
   CL_Slot on_button_press_slot;
-  ///
   CL_Slot on_button_release_slot;
 
 public:
