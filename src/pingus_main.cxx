@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.35 2002/11/03 23:31:35 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.36 2002/11/05 03:02:48 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -84,6 +84,8 @@
 #include "input_debug_screen.hxx"
 #include "pingus_menu_manager.hxx"
 #include "pingus_resource.hxx"
+#include "pingu_action_factory.hxx"
+#include "credits.hxx"
 #include "sound.hxx"
 
 using EditorNS::Editor;
@@ -875,13 +877,17 @@ PingusMain::init_pingus()
   perr.add (std::cout);
   perr.add (console);
   
+  ScreenManager::init();
   PingusSound::init();
-
   PingusResource::init();
   Fonts::init();
+  XMLhelper::init();
+  PinguActionFactory::init();
+  Editor::init(); 
+  Credits::init();
+
   fps_counter.init();
   console.init();
-  XMLhelper::init();
  
   // FIXME: See action_data.hxx, a bit ugly
   init_default_actions();
@@ -890,10 +896,14 @@ PingusMain::init_pingus()
 void
 PingusMain::deinit_pingus()
 {
+  Credits::deinit();
+  Editor::deinit();
+  PinguActionFactory::deinit();
   XMLhelper::deinit();
   Fonts::deinit();
   PingusResource::deinit();
   PingusSound::deinit();
+  ScreenManager::deinit();
 }  
 
 /* EOF */

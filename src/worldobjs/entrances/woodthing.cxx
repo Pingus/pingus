@@ -1,4 +1,4 @@
-//  $Id: woodthing.cxx,v 1.2 2002/10/01 19:53:46 grumbel Exp $
+//  $Id: woodthing.cxx,v 1.3 2002/11/05 03:02:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,6 +50,7 @@ WoodThing::update ()
 
   if (rand() % 5 == 0) 
     {
+      // FIXME: Memory leak
       world->get_particle_holder()
 	   ->add_particle(new SmokeParticle(static_cast<int>(data->pos.x - surface.get_width () /  2 - 24),
         				    static_cast<int>(data->pos.y - surface.get_height() + 32 - 147),

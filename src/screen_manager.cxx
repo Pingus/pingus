@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.25 2002/11/02 22:10:52 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.26 2002/11/05 03:02:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -231,6 +231,18 @@ ScreenManager::fade_over (const ScreenPtr& old_screen, const ScreenPtr& new_scre
       CL_System::keep_alive ();
     }
 #endif 
+}
+
+void
+ScreenManager::init()
+{
+  instance_ = 0;
+}
+
+void
+ScreenManager::deinit()
+{
+  delete instance_;
 }
 
 /* EOF */

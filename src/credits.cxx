@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.12 2002/10/03 12:33:08 grumbel Exp $
+//  $Id: credits.cxx,v 1.13 2002/11/05 03:02:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,67 +32,57 @@
 
 Credits* Credits::instance_ = 0;
 
-Credits::Credits() : is_init(false)
+Credits::Credits()
 {
-}
+  fast_scrolling = false;
+  surface = PingusResource::load_surface("Game/pingubw", "game");
+  font = PingusResource::load_font("Fonts/pingus","fonts");
+  font_small = PingusResource::load_font("Fonts/pingus_small","fonts");
 
-void
-Credits::init ()
-{
-  if (!is_init)
-    {
-      is_init = true;
-      
-      fast_scrolling = false;
-      surface = PingusResource::load_surface("Game/pingubw", "game");
-      font = PingusResource::load_font("Fonts/pingus","fonts");
-      font_small = PingusResource::load_font("Fonts/pingus_small","fonts");
+  // The credits vector holds the strings to display. The first
+  // character of each string is a special character, which indicates
+  // the size of the font or other special stuff. "-" means large
+  // font, "_" is a small font and "n" means a newline.
 
-      // The credits vector holds the strings to display. The first
-      // character of each string is a special character, which indicates
-      // the size of the font or other special stuff. "-" means large
-      // font, "_" is a small font and "n" means a newline.
+  credits.push_back(_("_If I forgot somebody in this"));
+  credits.push_back(_("_list, just drop me a line and"));
+  credits.push_back(_("_I'll fix this."));
+  credits.push_back(_("_Last Updated: 2000/06/27"));
+  credits.push_back(_("n"));
 
-      credits.push_back(_("_If I forgot somebody in this"));
-      credits.push_back(_("_list, just drop me a line and"));
-      credits.push_back(_("_I'll fix this."));
-      credits.push_back(_("_Last Updated: 2000/06/27"));
-      credits.push_back(_("n"));
+  credits.push_back(_("-Programming"));
+  credits.push_back("_Ingo Ruhnke");
+  credits.push_back("_Michael K\"aser");
+  credits.push_back("_Peter Todd");
+  credits.push_back("_David Philippi");
+  credits.push_back("n");
 
-      credits.push_back(_("-Programming"));
-      credits.push_back("_Ingo Ruhnke");
-      credits.push_back("_Michael K\"aser");
-      credits.push_back("_Peter Todd");
-      credits.push_back("_David Philippi");
-      credits.push_back("n");
+  credits.push_back(_("-Gfx"));
+  credits.push_back("_Stefan Stiasny");
+  credits.push_back("_Alan Tennent");
+  credits.push_back("_Craig Timpany");
+  credits.push_back("_Joel Fauche");
+  credits.push_back("_Michael Mestre");
+  credits.push_back("n");
 
-      credits.push_back(_("-Gfx"));
-      credits.push_back("_Stefan Stiasny");
-      credits.push_back("_Alan Tennent");
-      credits.push_back("_Craig Timpany");
-      credits.push_back("_Joel Fauche");
-      credits.push_back("_Michael Mestre");
-      credits.push_back("n");
+  credits.push_back(_("-Music"));
+  credits.push_back("_H. Matthew Smith"); 
+  credits.push_back("_Joseph Toscano");
+  credits.push_back("n");
 
-      credits.push_back(_("-Music"));
-      credits.push_back("_H. Matthew Smith"); 
-      credits.push_back("_Joseph Toscano");
-      credits.push_back("n");
+  credits.push_back(_("-Special"));
+  credits.push_back(_("-Thanks to"));
+  credits.push_back("_Jules Bean");
+  credits.push_back("_Kenneth Gangstø");
+  credits.push_back("_Johnny Taporg");
+  credits.push_back("_Werner Steiner");
+  credits.push_back("_Kenneth Gangstø");
+  credits.push_back("_Tuomas (Tigert) Kuosmanen");
+  credits.push_back("_Keir Fraser");  
 
-      credits.push_back(_("-Special"));
-      credits.push_back(_("-Thanks to"));
-      credits.push_back("_Jules Bean");
-      credits.push_back("_Kenneth Gangstø");
-      credits.push_back("_Johnny Taporg");
-      credits.push_back("_Werner Steiner");
-      credits.push_back("_Kenneth Gangstø");
-      credits.push_back("_Tuomas (Tigert) Kuosmanen");
-      credits.push_back("_Keir Fraser");  
+  credits.push_back("n");
 
-      credits.push_back("n");
-
-      credits.push_back("-### END ###");
-    }
+  credits.push_back("-### END ###");
 }
 
 Credits::~Credits ()
@@ -158,10 +148,7 @@ Credits::draw_background (GraphicContext& gc)
 void
 Credits::on_startup ()
 {
-  init ();
-
   offset = CL_Display::get_height() + 50;
-
   PingusSound::play_music("music/pingus-2.it");
 }
 
@@ -172,6 +159,18 @@ Credits::instance ()
     return instance_;
   else
     return instance_ = new Credits ();
+}
+
+void
+Credits::init()
+{
+  instance_ = 0;
+}
+
+void 
+Credits::deinit()
+{
+  delete instance_;
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: editor.hxx,v 1.20 2002/10/03 12:33:09 grumbel Exp $
+//  $Id: editor.hxx,v 1.21 2002/11/05 03:02:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -96,6 +96,8 @@ public:
   virtual ~Editor ();
   
   static Editor* instance ();
+  static void init();
+  static void deinit();
 
   std::string read_string (const std::string & prefix = "", const std::string & default_str = "");
 

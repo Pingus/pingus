@@ -1,4 +1,4 @@
-//  $Id: screen_manager.hxx,v 1.14 2002/10/02 12:54:18 grumbel Exp $
+//  $Id: screen_manager.hxx,v 1.15 2002/11/05 03:02:48 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -84,7 +84,8 @@ private:
 
 public:  
   static ScreenManager* instance ();
-  
+  static void init();
+  static void deinit();
 private:
   ScreenManager (const ScreenManager&);
   ScreenManager& operator= (const ScreenManager&);

@@ -1,4 +1,4 @@
-//  $Id: pingu_action_factory.cxx,v 1.9 2002/10/13 16:39:59 grumbel Exp $
+//  $Id: pingu_action_factory.cxx,v 1.10 2002/11/05 03:02:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,6 +52,16 @@ PinguActionFactory::PinguActionFactory ()
 {
 }
 
+PinguActionFactory::~PinguActionFactory ()
+{
+  for (std::map<Actions::ActionName, PinguActionAbstractFactory*>::iterator i = factories.begin();
+       i != factories.end();
+       ++i)
+    {
+      delete i->second;
+    }
+}
+
 PinguActionFactory* PinguActionFactory::instance_ = 0;
 
 PinguActionFactory* 
@@ -63,6 +73,18 @@ PinguActionFactory::instance ()
       instance_->register_core_actions ();
     }
   return instance_;
+}
+
+void
+PinguActionFactory::init()
+{
+  instance_ = 0;
+}
+
+void
+PinguActionFactory::deinit()
+{
+  delete instance_;
 }
 
 void 

@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.cxx,v 1.16 2002/11/03 23:31:35 grumbel Exp $
+//  $Id: pingus_menu_manager.cxx,v 1.17 2002/11/05 03:02:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -152,6 +152,18 @@ PingusMenuManager::instance ()
     return instance_;
   else
     return instance_ = new PingusMenuManager ();
+}
+
+void
+PingusMenuManager::init()
+{
+  instance_ = 0;
+}
+
+void
+PingusMenuManager::deinit()
+{
+  delete instance_;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: pingu_action_factory.hxx,v 1.8 2002/10/13 16:39:59 grumbel Exp $
+//  $Id: pingu_action_factory.hxx,v 1.9 2002/11/05 03:02:48 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,11 +37,16 @@ private:
   static PinguActionFactory* instance_;
   
   PinguActionFactory ();
+  ~PinguActionFactory ();
   void register_core_actions ();
   
 public:
   static PinguActionFactory* instance ();
-  void register_factory (Actions::ActionName id, PinguActionAbstractFactory*);
+  static void init();
+  static void deinit();
+
+  /** \a f will get deleted in destructor! */
+  void register_factory (Actions::ActionName id, PinguActionAbstractFactory* f);
 
   /** Delete all actions which this class has allocated. This needs to
       be called seperatly from the constructor, due to the used
