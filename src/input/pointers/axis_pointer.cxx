@@ -1,4 +1,4 @@
-//  $Id: axis_pointer.cxx,v 1.2 2002/08/26 13:53:04 torangan Exp $
+//  $Id: axis_pointer.cxx,v 1.3 2002/10/28 22:40:23 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,8 +64,8 @@ namespace Input {
         {
           (*it)->update(delta);
 	
-          x_pos += cos((*it)->get_angle()) * speed * delta;
-          y_pos += sin((*it)->get_angle()) * speed * delta;
+          x_pos += cos((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
+          y_pos += sin((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
         } 
     }
 

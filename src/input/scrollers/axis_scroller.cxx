@@ -1,4 +1,4 @@
-//  $Id: axis_scroller.cxx,v 1.3 2002/10/28 20:13:40 grumbel Exp $
+//  $Id: axis_scroller.cxx,v 1.4 2002/10/28 22:40:23 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <math.h>
 #include <assert.h>
+#include "../../debug.hxx"
 #include "../axis.hxx"
 #include "axis_scroller.hxx"
 
@@ -71,8 +72,8 @@ namespace Input {
         {
           (*it)->update(delta);
       
-          x_delta += cos((*it)->get_angle()) * speed * delta * (*it)->get_pos();
-          y_delta += sin((*it)->get_angle()) * speed * delta * (*it)->get_pos();
+          x_delta += cos((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
+          y_delta += sin((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
         } 
   
     }

@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.31 2002/10/28 20:13:40 grumbel Exp $
+//  $Id: client.cxx,v 1.32 2002/10/28 22:40:23 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -154,13 +154,14 @@ void
 Client::process_scroll_event (Input::ScrollEvent* ev)
 {
   std::cout << "Client::process_scroll_event ()" << std::endl;    
-  playfield->scroll(ev->x_delta, ev->y_delta);
+  playfield->scroll(static_cast<int>(ev->x_delta), static_cast<int>(ev->y_delta));
 }
 
 void
 Client::process_axis_event (Input::AxisEvent* event)
 {
-  std::cout << "Client::process_axis_event ()" << std::endl;    
+  std::cout << "Client::process_axis_event ()" << std::endl;
+  UNUSED_ARG(event);
 }
 
 bool
