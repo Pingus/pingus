@@ -11,6 +11,7 @@ underground room, but unfortunatley a large tree root blocks their path...</desc
     <time>6000</time>
     <width>800</width>
     <height>672</height>
+    <comment>suffers solid-groundpiece confusion</comment>
   </global>
 
 <background type="surface">

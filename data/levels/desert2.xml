@@ -11,6 +11,10 @@ Can you help them?</description>
     <time>9000</time>
     <width>1824</width>
     <height>608</height>
+
+    <difficulty>80</difficulty>
+    <playable>0</playable>
+    <comment>got broken due to the new head-bounce feature</comment>
   </global>
 
 <background>

@@ -7,9 +7,12 @@
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>50</number-of-pingus>
     <number-to-save>25</number-to-save>
-    <time>9000</time>
+    <time>-1</time>
     <width>1216</width>
     <height>800</height>
+    <difficulty>50</difficulty>
+    <playable>1</playable>
+    <comment></comment>
   </global>
 
   <action-list>
@@ -30,8 +33,8 @@
     <blue>0</blue>
     <alpha>0.1</alpha>
   </color>
-  <scroll-x>0</scroll-x>
-  <scroll-y>0</scroll-y>
+  <scroll-x>.2</scroll-x>
+  <scroll-y>.7</scroll-y>
   <para-x>0.1</para-x>
   <para-y>0.1</para-y>
   <stretch-x>0</stretch-x>
@@ -505,6 +508,18 @@
   <resource-ident>space/way</resource-ident>
   </resource></surface>
   <position>
+    <x-pos>288</x-pos>
+    <y-pos>529</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>space/way</resource-ident>
+  </resource></surface>
+  <position>
     <x-pos>332</x-pos>
     <y-pos>529</y-pos>
     <z-pos>0</z-pos>
@@ -690,7 +705,7 @@
     <y-pos>467</y-pos>
     <z-pos>100</z-pos>
   </position>
-  <speed>-1</speed>
+  <speed>10</speed>
   <parallax>1</parallax>
 </hotspot>
 

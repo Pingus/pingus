@@ -3,15 +3,18 @@
 <pingus-level>
   <global>
     <levelname lang="en">Block and blow</levelname>
-    <description lang="en">
-
-</description>
-    <author></author>
+    <description lang="en"></description>
+    <author>Craig Timpany &lt;timpany@pingus.cx&gt;</author>
     <number-of-pingus>70</number-of-pingus>
     <number-to-save>50</number-to-save>
     <time>9000</time>
     <width>800</width>
     <height>1600</height>
+
+    <difficulty>50</difficulty>
+    <playable>1</playable>
+    <comment>- could need fixing if out-of-screen causes death
+- has some pingus stuck in wall errors</comment>
   </global>
 
 <background>

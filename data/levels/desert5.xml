@@ -9,9 +9,14 @@
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>50</number-of-pingus>
     <number-to-save>25</number-to-save>
-    <time>9000</time>
+    <time>-1</time>
     <width>1216</width>
     <height>800</height>
+    <playable>1</playable>
+    <difficulty>75</difficulty>
+
+    <comment>floaters was 2, increased to 3, 'cause there doesn't seem
+    to be a way to solve it cleanly with 2 floaters</comment>
   </global>
 
 <background>
@@ -38,7 +43,7 @@
     <bomber>20</bomber>
     <bridger>5</bridger>
     <climber>5</climber>
-    <floater>2</floater>
+    <floater>3</floater>
   </action-list>
 
 <hotspot>

@@ -12,6 +12,11 @@
     <time>9000</time>
     <width>1200</width>
     <height>600</height>
+
+    <playable>0</playable>
+    <difficulty>60</difficulty>
+
+    <comment>actions not tuned and very similar to desert5.xml</comment>
   </global>
 
 <background>

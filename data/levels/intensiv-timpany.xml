@@ -6,7 +6,7 @@
     <description lang="en">You only need to save 5, but keep an eye on the clock.
 
 </description>
-    <author></author>
+    <author>Craig Timpany &lt;timpany@pingus.cx&gt;</author>
     <number-of-pingus>100</number-of-pingus>
     <number-to-save>5</number-to-save>
     <time>8000</time>

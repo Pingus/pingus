@@ -4,12 +4,14 @@
   <global>
     <levelname lang="en">Pingus in Wonderland</levelname>
     <description lang="en"></description>
-    <author></author>
+    <author>Craig Timpany &lt;timpany@pingus.cx&gt;</author>
     <number-of-pingus>60</number-of-pingus>
     <number-to-save>50</number-to-save>
     <time>9000</time>
     <width>1216</width>
     <height>896</height>
+    <playable>0</playable>
+    <comment>need fix due to head-bounce feature</comment>
   </global>
 
 <background>

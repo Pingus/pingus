@@ -10,6 +10,10 @@
     <time>9000</time>
     <width>1600</width>
     <height>608</height>
+
+    <difficulty>50</difficulty>
+    <playable>1</playable>
+    <comment>- stuck under bridge bug</comment>
   </global>
 
 <background>
