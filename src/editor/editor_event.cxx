@@ -329,13 +329,6 @@ EditorEvent::on_button_press(const CL_InputEvent& event)
     }
   else if (event.device.get_type() == CL_InputDevice::mouse)
     {
-      if (0)
-        {
-          std::cout << "Mouse: (" << CL_Mouse::get_x () << ", " << CL_Mouse::get_y () << ") "
-                    << "World: " << editor->view->screen_to_world (Vector(CL_Mouse::get_x (), CL_Mouse::get_y ()))
-                    << std::endl;
-        }
-
       switch (event.id)
 	{
 	case CL_MOUSE_LEFT:

@@ -31,21 +31,24 @@
 #include "pingu_holder.hxx"
 #include "fonts.hxx"
 #include "gettext.h"
+#include "input\controller.hxx"
+
+namespace Pingus {
 
 PingusLevelResult::PingusLevelResult(World* w, Controller* c)
-  : controller (c)
 {
   font  = Fonts::pingus_small;
   title = Fonts::pingus_large;
   background = PingusResource::load_surface("Textures/stone", "textures");
   //result = r;
   world = w;
+  controller = c;
 }
 
 void
 PingusLevelResult::draw(void)
 {
-  char  str[128];
+  char str[128];
 
   PingusSound::play_music("pingus-2.it");
 
@@ -125,5 +128,7 @@ PingusLevelResult::get_message (int saved)
     return _("You've got a negative save/total value, something is buggy.");
   }
 }
+
+} // namespace Pingus
 
 /* EOF */

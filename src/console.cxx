@@ -228,13 +228,13 @@ Console::get_lines()
 void
 Console::puts(const std::string& str)
 {
-  (*this) << str << std::endl;
+  (*this) << str.c_str() << std::endl;
 }
 
 void
 Console::newline()
 {
-  (*this) <<  std::endl;
+  (*this) << std::endl;
 }
 
 void

@@ -4,11 +4,12 @@
 #include <assert.h>
 
 #define PACKAGE "Pingus"
-#define VERSION  "0.6.0"
+#define VERSION  "0.7.0"
+#define PACKAGE_STRING "Pingus 0.7.0"
 #define MAJOR_VERSION 0
-#define MINOR_VERSION 6
+#define MINOR_VERSION 7
 #define PATCH_VERSION 0
-#define VERSION_STRING "0.6.0"
+#define VERSION_STRING "0.7.0"
 #define PINGUS_DATADIR "data"
 #define LIBXML_2 1
 #define ENABLE_NLS 1

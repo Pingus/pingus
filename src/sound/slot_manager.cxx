@@ -35,7 +35,7 @@ SlotManager::play_sound(const std::string& name)
   CL_SoundBuffer_Session sess;
 
   try {
-    buffer = new CL_SoundBuffer (new CL_Sample(filename.c_str(), NULL), true);
+    buffer = new CL_SoundBuffer (name.c_str());
     sess   = buffer -> prepare();
   } catch (const CL_Error & e) {
     perr(PINGUS_DEBUG_SOUND) << "Can't open file " << filename << " -- skipping\n"

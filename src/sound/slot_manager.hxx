@@ -20,6 +20,12 @@
 #ifndef HEADER_PINGUS_SLOT_MANAGER_HXX
 #define HEADER_PINGUS_SLOT_MANAGER_HXX
 
+#include <string>
+#include <vector>
+#include <map>
+
+#include <ClanLib/sound.h>
+
 namespace Pingus {
 namespace Sound {
 
@@ -54,8 +60,8 @@ public:
 private:
   SlotEntry& find_slot(const std::string& name);
 
-  SlotManager (const Slot_Manager&);
-  SlotManager& operator= (const Slot_Manager&);
+  SlotManager (const SlotManager&);
+  SlotManager& operator= (const SlotManager&);
 };
 
 } // namespace Sound

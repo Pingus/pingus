@@ -23,7 +23,6 @@
 #include "gui_manager.hxx"
 
 namespace Pingus {
-namespace GUI {
 
 GUIScreen::GUIScreen()
   : gui_manager (new GUI::GUIManager())
@@ -159,7 +158,6 @@ GUIScreen::process_button_event (const Input::ButtonEvent& event)
     }
 }
 
-} // namespace GUI
 } // namespace Pingus
 
 /* EOF */

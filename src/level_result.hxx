@@ -24,28 +24,33 @@
 #include <ClanLib/Display/surface.h>
 
 class CL_Font;
+
+namespace Pingus {
+
 class World;
 class Controller;
 
 class PingusLevelResult
 {
 private:
-  CL_Surface background;
-  CL_Font*    title;
-  CL_Font*    font;
+  CL_Surface  background;
+  CL_Font     title;
+  CL_Font     font;
   World*      world;
   Controller* controller;
 
 public:
   PingusLevelResult(World*, Controller* c);
 
-  void   draw(void);
+  void draw(void);
   std::string get_message(int);
 
 private:
   PingusLevelResult (const PingusLevelResult&);
   PingusLevelResult& operator= (const PingusLevelResult&);
 };
+
+} // namespace Pingus
 
 #endif
 

@@ -23,8 +23,8 @@
 #include <config.h>
 #include "display.hxx"
 #include "display_graphic_context.hxx"
-#include "../math.hxx"
 #include "../sprite.hxx"
+#include "../math.hxx"
 
 namespace Pingus {
 
@@ -82,7 +82,7 @@ DisplayGraphicContext::zoom_to (const CL_Rect & arg_rect)
 {
   CL_Rect rect;
 
-  rect.left = Math::min (arg_rect.left, arg_rect.right);
+  rect.left = Math::min (arg_rect.left, (int)arg_rect.right);
   rect.right = Math::max (arg_rect.left, arg_rect.right);
   rect.top = Math::min (arg_rect.top, arg_rect.bottom);
   rect.bottom = Math::max (arg_rect.top, arg_rect.bottom);

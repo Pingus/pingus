@@ -136,28 +136,41 @@ PingusSoundReal::real_play_music (const std::string & arg_filename, float volume
 
   music_sample = 0;
 
+#ifdef CLANLIB_0_6
   if (filename.substr(filename.size()-4, 4) == ".ogg")
     {
-#ifdef HAVE_LIBCLANVORBIS
+      #ifdef HAVE_LIBCLANVORBIS
       music_sample = new CL_SoundBuffer (new CL_VorbisSoundProvider(filename.c_str()), true);
-#else
-      music_sample = 0;
-#endif
+      #endif
     }
   else if (filename.substr(filename.size()-4, 4) == ".wav")
     {
-#ifdef CLANLIB_0_6
       music_sample = new CL_SoundBuffer (new CL_Sample(filename.c_str(), NULL), true);
-#endif
     }
   else
     {  // MikMod should support the rest...
-#ifdef HAVE_LIBCLANMIKMOD
+      #ifdef HAVE_LIBCLANMIKMOD
       music_sample = new CL_SoundBuffer (new CL_Streamed_MikModSample(filename.c_str()), true);
-#else
-      music_sample = 0;
-#endif
+      #endif
     }
+#else
+  if (filename.substr(filename.size()-4, 4) == ".ogg")
+    {
+      #ifdef HAVE_LIBCLANVORBIS
+      music_sample = new CL_SoundBuffer (filename.c_str());
+      #endif
+    }
+  else if (filename.substr(filename.size()-4, 4) == ".wav")
+    {
+      music_sample = new CL_SoundBuffer (filename.c_str());
+    }
+  else
+    {  // MikMod should support the rest...
+      #ifdef HAVE_LIBCLANMIKMOD
+      music_sample = new CL_SoundBuffer (filename.c_str());
+      #endif
+    }
+#endif
 
   if (music_sample)
     {

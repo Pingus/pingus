@@ -35,12 +35,12 @@ class PingusLevelDesc
 private:
   CL_Surface background;
   CL_Surface level;
-  CL_Font* font;
-  CL_Font* title;
+  CL_Font font;
+  CL_Font title;
   PLF* plf;
 
   MultiLineText description;
-  std::string         levelname;
+  std::string levelname;
 public:
   enum LoadingStatus { LOADING, FINISHED };
   PingusLevelDesc(PLF*);
