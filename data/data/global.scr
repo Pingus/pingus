@@ -320,6 +320,13 @@ section GroundPieces
 		smalltower = ../images/groundpieces/space/smalltower.pcx  (type=surface, x=0, y=0, width=6,  height=200); 
 		way        = ../images/groundpieces/space/way.pcx  (type=surface, x=0, y=0, width=100,  height=6); 
 	}
+
+	section Sortie
+	{
+	        plate_forme       = ../images/groundpieces/sortie/plate_forme.pcx (type=surface, x=0, y=0, width=267, height=94, tcol=0);
+	        plate_forme_left  = ../images/groundpieces/sortie/plate_forme_left.pcx (type=surface, x=0, y=0, width=243, height=94, tcol=0);
+	        plate_forme_right = ../images/groundpieces/sortie/plate_forme_right.pcx (type=surface, x=0, y=0, width=138, height=84, tcol=0);
+	}
 }
 
 section Themes

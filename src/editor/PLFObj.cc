@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.6 2000/04/24 13:15:42 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.7 2000/05/01 11:55:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -169,6 +169,7 @@ ExitObj::save(ofstream* plf, ofstream* psm)
 	 << "}\n"
 	 << endl;
 }
+
 TrapObj::TrapObj(trap_data data)
 {
   x_pos = data.x_pos;
