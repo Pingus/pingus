@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: ThemeSelector.hh,v 1.4 2000/02/15 12:31:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,12 +53,28 @@ public:
 
 class ThemeSelector
 {
+public:
+  class Event : public CL_Event_ButtonPress, public CL_Event_ButtonRelease
+  {
+  public:
+    bool enabled;
+    ThemeSelector* theme_selector;
+    virtual bool on_button_press(CL_InputDevice *device, const CL_Key &key);
+    virtual bool on_button_release(CL_InputDevice *device, const CL_Key &key);
+  };
+  friend class Event;
+  Event* event;
+  
 private:
   vector<AlphaButton*> theme;
   vector<Theme*> themes;
   vector<Theme*>::iterator current_theme;
+
   CL_Font* title_font;
   CL_Font* theme_font;
+  CL_Surface* right_arrow;
+  CL_Surface* left_arrow;
+
   bool dir_read;
   ListBox list_box;
 public:

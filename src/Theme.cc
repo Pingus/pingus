@@ -1,4 +1,4 @@
-//  $Id: Theme.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: Theme.cc,v 1.4 2000/02/15 12:31:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -144,8 +144,6 @@ Theme::draw_title()
       
       j++;
     }
-
-  CL_Display::flip_display();
 }
 
 void
@@ -216,7 +214,7 @@ Theme::next_level()
   if (current_level > accessible_levels) 
     current_level  = accessible_levels;
   
-  std::cout << "Level: " << current_level << std::endl;
+  //std::cout << "Level: " << current_level << std::endl;
 }
 
 void
@@ -227,14 +225,15 @@ Theme::previous_level()
   if (current_level < 0)
     current_level = 0;
   
-  std::cout << "Level: " << current_level << std::endl;
+  //  std::cout << "Level: " << current_level << std::endl;
 }
 
 void
 Theme::load_levels()
 {
   std::string filename;
-  std::cout << "Theme opening levels... " << std::flush;
+  
+  if (verbose) std::cout << "Theme opening levels... " << std::flush;
 
   for(std::vector<std::string>::iterator i = levels.begin(); i < levels.end(); i++)
     {
@@ -253,7 +252,7 @@ Theme::load_levels()
 	  std::cout << err.message << std::endl;
 	}
     }
-  std::cout << "done." << std::endl;
+  if (verbose) std::cout << "done." << std::endl;
 }
 
 /* EOF */

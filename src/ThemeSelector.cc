@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.4 2000/02/15 12:31:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 #include "PingusError.hh"
 #include "PingusResource.hh"
 #include "AlphaButton.hh"
-
+#include "Loading.hh"
 #include "ThemeSelector.hh"
 
 ListBox::ListBox()
@@ -62,21 +62,100 @@ ListItem::draw_offset(int x, int y)
 
 // ---=== ThemeSelector ===---
 
+bool 
+ThemeSelector::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
+{
+  if (!enabled) return true;  
+
+  return true;
+}
+
+bool
+ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
+{
+  if (!enabled) return true;
+
+  cout << "Event triggert" << endl;
+  
+  if (device == CL_Input::keyboards[0])
+    {
+      switch (key.id)
+	{
+	case CL_KEY_LEFT:
+	  theme_selector->current_theme++;
+	  if (theme_selector->current_theme == theme_selector->themes.end()) 
+	    theme_selector->current_theme = theme_selector->themes.begin();
+	  break;
+
+	case CL_KEY_RIGHT:
+	  if (theme_selector->current_theme == theme_selector->themes.begin()) 
+	    theme_selector->current_theme = theme_selector->themes.end();
+	  theme_selector->current_theme--;
+	  break;
+	  
+	case CL_KEY_DOWN:
+	  (*(theme_selector->current_theme))->next_level();
+	  break;
+	case CL_KEY_UP:
+	  (*(theme_selector->current_theme))->previous_level();
+	  break;
+
+	case CL_KEY_ENTER:
+	  enabled = false;
+	  loading_screen.draw();
+	  (*(theme_selector->current_theme))->play();
+	  enabled = true;
+	  break;
+	}
+    }
+  else if (device == CL_Input::pointers[0])
+    {
+      switch (key.id)
+	{
+	case 0:
+	  break;
+	default:
+	  break;
+	}
+    }
+  
+  theme_selector->draw();
+
+  return true;
+}
+
 ThemeSelector::ThemeSelector()
 {
   dir_read = false;
   title_font = CL_Font::load("Fonts/pingus", PingusResource::get("fonts.dat"));
-  theme_font = CL_Font::load("Fonts/smallfont_h", PingusResource::get("fonts.dat"));
+  theme_font = CL_Font::load("Fonts/pingus_small", PingusResource::get("fonts.dat"));
+
+  left_arrow = CL_Surface::load("Hotspots/left_arrow", PingusResource::get("global.dat"));
+  right_arrow = CL_Surface::load("Hotspots/right_arrow", PingusResource::get("global.dat"));
+
+  event = new ThemeSelector::Event;
+  event->enabled = false;
+
+  event->theme_selector = this;
+  
+  CL_Input::chain_button_press.push_back(event);
+  CL_Input::chain_button_release.push_back(event);
 }
 
 ThemeSelector::~ThemeSelector()
 {
+  CL_Input::chain_button_press.remove(event);
+  CL_Input::chain_button_release.remove(event);
+  
+  delete event;
 }
 
 void
 ThemeSelector::select()
 {
   vector<Theme*>::iterator temp_theme = 0;
+
+  event->enabled = true;
   
   while(CL_Mouse::left_pressed() || CL_Mouse::middle_pressed()) 
     CL_System::keep_alive();
@@ -88,12 +167,13 @@ ThemeSelector::select()
     }
   current_theme = themes.begin();
 
-  (*current_theme)->draw_title();
+  //  (*current_theme)->draw_title();
+  draw();
 
   while(!key_pressed(CL_KEY_ESCAPE)) 
     {
       CL_System::keep_alive();
-      
+      /*
       if (key_pressed(CL_KEY_LEFT)) 
 	{
 	  current_theme++;
@@ -125,27 +205,32 @@ ThemeSelector::select()
 	  (*current_theme)->previous_level();
 	  draw();
 	}
-      
+      */
       if (temp_theme != current_theme) 
 	{
 	  (*current_theme)->draw_title();
 	  temp_theme = current_theme;
 	}
     }
+  event->enabled = false;
 }
 
 void
 ThemeSelector::draw()
 {
+  cout << "Drawing ThemeSelector" << endl;
   CL_Display::fill_rect(0,0,640,480,0.5,0.0,0.0,0.5);
-
-  //title_font->print_center(CL_Display::get_width()/2, 30, "Theme Selector");
 
   (*current_theme)->draw_title();
   
-  theme_font->print_left(0, CL_Display::get_height() / 2, "Previous");
-  theme_font->print_right(CL_Display::get_width(), CL_Display::get_height() / 2, "Next");
-  //CL_Display::flip_display();
+  left_arrow->put_screen(0, (CL_Display::get_height() + left_arrow->get_height()) / 2);
+  right_arrow->put_screen(CL_Display::get_width() - right_arrow->get_width(),
+			  (CL_Display::get_height() + right_arrow->get_height()) / 2);
+  
+  theme_font->print_center(CL_Display::get_width()/2, CL_Display::get_height() - 50,
+			   "..:: Use the cursor keys to select a level ::..");
+
+  CL_Display::flip_display();
 }
 
 void
@@ -175,7 +260,7 @@ ThemeSelector::readdir(std::string path)
       
       for(System::Directory::iterator entry = dir.begin(); entry != dir.end(); entry++)
 	{
-	  std::cout << "Entry Name: " << pathname + "/themes/" + entry->name << std::endl;
+	  if (verbose) std::cout << "Entry Name: " << pathname + "/themes/" + entry->name << std::endl;
 	  themes.push_back(new Theme(pathname + "/themes/" + entry->name));
 	}
     }
