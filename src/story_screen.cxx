@@ -1,4 +1,4 @@
-//  $Id: story_screen.cxx,v 1.16 2003/04/10 17:11:58 grumbel Exp $
+//  $Id: story_screen.cxx,v 1.17 2003/04/13 22:00:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -142,7 +142,7 @@ StoryScreenComponent::update(float delta)
 
   if (!page_displayed_completly)
     {
-      int i = Math::min(current_page.text.length(), (unsigned int)(15.0f * time_passed));
+      int i = Math::min(current_page.text.length(), (unsigned int)(20.0f * time_passed));
       display_text = current_page.text.substr(0, i);
 
       if (current_page.text.length() < (unsigned int)(15.0f * time_passed))
@@ -161,8 +161,7 @@ StoryScreen::on_fast_forward_press ()
 void
 StoryScreen::on_escape_press ()
 {
-  if (1 /* story_seen */)
-    ScreenManager::instance()->replace_screen(WorldMapNS::WorldMapManager::instance ());
+  ScreenManager::instance()->replace_screen(WorldMapNS::WorldMapManager::instance ());
 }
 
 void 

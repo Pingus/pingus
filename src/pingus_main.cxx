@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.77 2003/04/12 16:14:31 torangan Exp $
+//   $Id: pingus_main.cxx,v 1.78 2003/04/13 22:00:55 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -214,7 +214,7 @@ PingusMain::check_args(int argc, char** argv)
       {"level",             required_argument, 0, 'l'},
       {"worldmap",          required_argument, 0, 158},
       {"credits",           no_argument,       0, 159},
-      {"help",              no_argument,       0, 'h'},
+      {"help",              no_argument,       0, 'h'}, // add -? support
       {"version",           no_argument,       0, 'V'},
       {"verbose",           required_argument, 0, 'v'},
       {"print-fps",         no_argument,       0, 'b'},
@@ -502,7 +502,7 @@ PingusMain::check_args(int argc, char** argv)
         //"   --use-datafile           Use the pre-compiled datafile (default)\n"
         //          "   --use-scriptfile         Use the scriptfile and read all data from files\n"
         << "\n   -l, --level " << _("FILE      ") << _("Load a custom level from FILE")
-        << "\n   -w, --worldmap "<< _("FILE      ") << _("Load a custom worldmap from FILE")
+        << "\n   --worldmap "<< _("FILE        ") << _("Load a custom worldmap from FILE")
         << "\n   -v, --verbose            " << _("Print some more messages to stdout, can be set")
         << "\n                            " << _("multible times to increase verbosity")
         << "\n   -V, --version            " << _("Prints version number and exit")

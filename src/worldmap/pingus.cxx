@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.31 2003/04/10 14:36:35 grumbel Exp $
+//  $Id: pingus.cxx,v 1.32 2003/04/13 22:00:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,9 @@ Pingus::Pingus (PathGraph* arg_path)
     sprite_standing ("worldmap/pingus_standing", "core"),
     arrow ("worldmap/arrow", "core")
 {
+  final_target_node = NoNode;
+  current_node = NoNode;
+
   arrow.set_align_center_bottom();
 
   pos.x = 320;

@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.44 2003/04/10 11:51:32 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.45 2003/04/13 22:00:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,8 +64,11 @@ WorldMap::WorldMap(const std::string& arg_filename)
   : display_gc (0, 0, CL_Display::get_width()-1, CL_Display::get_height()-1, 
                 0, 0),
     filename(arg_filename),
-    width(1161), height(600) // FIXME: ugly..
+    width(1161), height(600), // FIXME: ugly..
+    mouse_x(0),
+    mouse_y(0)
 {
+
   xmlDocPtr doc = xmlParseFile(filename.c_str());
   
   if (!doc) 

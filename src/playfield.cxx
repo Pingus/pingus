@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.32 2003/04/10 18:28:30 grumbel Exp $
+//  $Id: playfield.cxx,v 1.33 2003/04/13 22:00:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,6 +62,10 @@ Playfield::Playfield (Client* client_)
 	std::cout << "Playfield:: Activating clear screen" << std::endl;
 	needs_clear_screen = true;
 	generate_clipping_rects(x1, y1, x2, y2);
+      }
+    else
+      {
+        needs_clear_screen = false;
       }
 
     view.push_back(new View(client, x1, y1, x2, y2));
