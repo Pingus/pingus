@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.33 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: xml_helper.cxx,v 1.34 2004/03/31 18:17:38 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,8 @@
 int xmlIsBlankNode(xmlNodePtr node) { return 0; }
 #endif
 
+namespace Pingus {
+
 std::ostream& operator<<(std::ostream& s, xmlNode& node)
 {
 #if LIBXML_VERSION >= 20506
@@ -49,8 +51,6 @@ std::ostream& operator<<(std::ostream& s, xmlNode& node)
   return s;
 #endif
 }
-
-namespace Pingus {
 
 xmlNodePtr
 XMLhelper::skip_blank (xmlNodePtr cur)
@@ -157,21 +157,21 @@ XMLhelper::node_list_get_string (xmlDocPtr doc, xmlNodePtr cur, int inLine, int&
 std::string
 XMLhelper::encode_entities (const std::string& arg_str)
 {
-  ///xmlEncodeEntitiesReentrant()
-  std::string str = arg_str;
-  std::string::size_type i;
-  //  std::cout << "encode_xml: " << str << std::endl;
-
-  i = str.find("<");
-  if (i != std::string::npos)
-    str.replace(i, 1, "&lt;");
-
-  i = str.find(">");
-  if (i != std::string::npos)
-    str.replace(i, 1, "&gt;");
-
-  //  std::cout << "encode_xml-done: " << str << std::endl;
-
+  //xmlEncodeEntitiesReentrant()
+  std::string str;
+	for (unsigned int i=0; i < arg_str.size(); ++i)
+	  {
+			switch (arg_str[i])
+			  {
+				  case '\'': str += "&apos;"; break;
+					case '"' : str += "&quot;"; break;
+				  case '<' : str += "&lt;"  ; break;
+					case '>' : str += "&gt;"  ; break;
+					case '&' : str += "&amp;" ; break;
+					default: str += arg_str[i];
+				}
+		}
+	
   return str;
 }
 
@@ -492,5 +492,4 @@ XMLhelper::xmlChar2string(const xmlChar* in)
 }
 
 } // namespace Pingus
-
 /* EOF */
