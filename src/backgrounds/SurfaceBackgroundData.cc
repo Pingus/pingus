@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.cc,v 1.11 2001/12/04 12:18:50 grumbel Exp $
+//  $Id: SurfaceBackgroundData.cc,v 1.12 2002/01/03 13:36:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,6 +54,7 @@ SurfaceBackgroundData::SurfaceBackgroundData()
   para_y = 0.5;
   stretch_x = false;
   stretch_y = false;
+  pos = CL_Vector (0, 0, -10);
 }
 
 SurfaceBackgroundData::~SurfaceBackgroundData()
