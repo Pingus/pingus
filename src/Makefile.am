@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.115 2002/10/04 16:54:03 grumbel Exp $
+#  $Id: Makefile.am,v 1.116 2002/10/08 22:58:02 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,6 +99,8 @@ col_map.hxx \
 color.hxx \
 config.cxx \
 config.hxx \
+config_xml.cxx \
+config_xml.hxx \
 console.cxx \
 console.hxx \
 counter.cxx \
