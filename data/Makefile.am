@@ -15,7 +15,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-SUBDIRS = controller images levels demos data music sounds worldmaps themes prefabs
+SUBDIRS = controller images levels demos data music po sounds worldmaps themes prefabs
 
 # Tweaking the `datadir' to install the files in the correct location
 pkgdatadir = $(datadir)/games/@PACKAGE@

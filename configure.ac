@@ -127,8 +127,8 @@ AC_OUTPUT( Makefile  m4/Makefile
            data/demos/Makefile
            data/data/Makefile
            data/images/Makefile
+           data/po/Makefile
            doc/Makefile
-           po/Makefile.in
           )
 
 # find . -name "Makefile.am" | grep "\./data/images" | grep -v old | grep -v unsorted | sed "s/^\.\//  /" | sed "s/.am\$//"
