@@ -38,6 +38,35 @@ Major Items:
 
 * fix all major action bugs
 
+* resource syntax change
+
+    <surface>
+      <resource type="datafile">
+	<resource-datafile>global</resource-datafile>
+	<resource-ident>GroundPieces/piece5</resource-ident>
+      </resource>
+    </surface>
+
+should become:
+
+    <surface>
+      <location>
+        <resource-datafile>
+  	  <resource-datafile>global</resource-datafile>
+       	  <resource-ident>GroundPieces/piece5</resource-ident>
+        </resource-datafile>
+      </location>
+
+      <modifier>
+	<orientation>rot0</orientation>
+        <color>
+          <red>...
+          ...
+        </color>
+      </modifier>
+    </surface>
+
+
 ============================
 
 Current Bugs:
@@ -75,7 +104,7 @@ Current Bugs:
 'grep' at the sources for "Bug" or "FIXME" that should give you some
 more known bugs and other stuff. 
 
-$Date: 2002/04/27 12:19:38 $
+$Date: 2002/06/26 12:08:38 $
 
 =======
 
@@ -223,7 +252,7 @@ Random crash while scrolling
 'grep' at the sources for "Bug" or "FIXME" that should give you some
 more known bugs and other stuff. 
 
-$Date: 2002/04/27 12:19:38 $
+$Date: 2002/06/26 12:08:38 $
 
 =======
 

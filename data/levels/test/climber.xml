@@ -27,10 +27,18 @@
     <miner count="20"/>
   </action-list>
 
+  <start-position>
+  <position>
+    <x-pos>50</x-pos>
+    <y-pos>50</y-pos>
+    <z-pos>1000</z-pos>
+  </position>
+  </start-position>
+
 <background type="surface">
   <surface><resource type="datafile">
     <resource-datafile>textures</resource-datafile>
-  <resource-ident>textures/default</resource-ident>
+  <resource-ident>textures/desert_room</resource-ident>
   </resource></surface>
   <color>
     <red>0</red>
@@ -45,58 +53,20 @@
   <stretch-x>0</stretch-x>
   <stretch-y>0</stretch-y>
   <position>
-    <x-pos>229</x-pos>
-    <y-pos>101</y-pos>
+    <x-pos>0</x-pos>
+    <y-pos>0</y-pos>
     <z-pos>-150</z-pos>
   </position>
 </background>
 
-<liquid use-old-width-handling="0">
-  <surface><resource type="datafile">
-    <resource-datafile>liquids</resource-datafile>
-  <resource-ident>Liquid/slime</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>133</x-pos>
-    <y-pos>376</y-pos>
-    <z-pos>-50</z-pos>
-  </position>
-  <width>2</width>
-  <speed>50</speed>
-</liquid>
-
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>test/test7</resource-ident>
+  <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>562</x-pos>
-    <y-pos>398</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>test/test2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>683</x-pos>
-    <y-pos>405</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>test/test5</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>637</x-pos>
-    <y-pos>394</y-pos>
+    <x-pos>751</x-pos>
+    <y-pos>210</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -107,8 +77,8 @@
   <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>52</x-pos>
-    <y-pos>386</y-pos>
+    <x-pos>649</x-pos>
+    <y-pos>209</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -119,8 +89,8 @@
   <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>118</x-pos>
-    <y-pos>425</y-pos>
+    <x-pos>834</x-pos>
+    <y-pos>245</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -131,8 +101,8 @@
   <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>205</x-pos>
-    <y-pos>425</y-pos>
+    <x-pos>651</x-pos>
+    <y-pos>255</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -143,8 +113,8 @@
   <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>305</x-pos>
-    <y-pos>193</y-pos>
+    <x-pos>831</x-pos>
+    <y-pos>291</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -155,8 +125,8 @@
   <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>306</x-pos>
-    <y-pos>136</y-pos>
+    <x-pos>652</x-pos>
+    <y-pos>294</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -167,8 +137,8 @@
   <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>285</x-pos>
-    <y-pos>428</y-pos>
+    <x-pos>229</x-pos>
+    <y-pos>255</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -179,8 +149,8 @@
   <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>838</x-pos>
-    <y-pos>383</y-pos>
+    <x-pos>229</x-pos>
+    <y-pos>344</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -191,8 +161,8 @@
   <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>794</x-pos>
-    <y-pos>174</y-pos>
+    <x-pos>829</x-pos>
+    <y-pos>336</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -203,8 +173,8 @@
   <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>800</x-pos>
-    <y-pos>428</y-pos>
+    <x-pos>652</x-pos>
+    <y-pos>337</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -215,8 +185,8 @@
   <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>600</x-pos>
-    <y-pos>154</y-pos>
+    <x-pos>229</x-pos>
+    <y-pos>298</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -227,8 +197,8 @@
   <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>628</x-pos>
-    <y-pos>428</y-pos>
+    <x-pos>229</x-pos>
+    <y-pos>387</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -239,8 +209,8 @@
   <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>708</x-pos>
-    <y-pos>174</y-pos>
+    <x-pos>828</x-pos>
+    <y-pos>382</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -251,8 +221,8 @@
   <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>714</x-pos>
-    <y-pos>428</y-pos>
+    <x-pos>652</x-pos>
+    <y-pos>382</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -263,8 +233,8 @@
   <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>369</x-pos>
-    <y-pos>428</y-pos>
+    <x-pos>809</x-pos>
+    <y-pos>427</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -275,8 +245,8 @@
   <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>449</x-pos>
-    <y-pos>174</y-pos>
+    <x-pos>461</x-pos>
+    <y-pos>427</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -287,8 +257,8 @@
   <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>455</x-pos>
-    <y-pos>428</y-pos>
+    <x-pos>635</x-pos>
+    <y-pos>427</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -299,8 +269,8 @@
   <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>536</x-pos>
-    <y-pos>174</y-pos>
+    <x-pos>287</x-pos>
+    <y-pos>427</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -311,8 +281,8 @@
   <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>542</x-pos>
-    <y-pos>428</y-pos>
+    <x-pos>722</x-pos>
+    <y-pos>427</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -320,11 +290,35 @@
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>test/test8</resource-ident>
+  <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>597</x-pos>
-    <y-pos>395</y-pos>
+    <x-pos>374</x-pos>
+    <y-pos>427</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>548</x-pos>
+    <y-pos>427</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>200</x-pos>
+    <y-pos>427</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -335,8 +329,8 @@
   <resource-ident>test/test9</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>505</x-pos>
-    <y-pos>369</y-pos>
+    <x-pos>295</x-pos>
+    <y-pos>196</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -347,8 +341,44 @@
   <resource-ident>test/test10</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>463</x-pos>
-    <y-pos>374</y-pos>
+    <x-pos>243</x-pos>
+    <y-pos>201</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<entrance>
+  <position>
+    <x-pos>479</x-pos>
+    <y-pos>331</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>misc</direction>
+  <release-rate>50</release-rate>
+  <owner-id>0</owner-id>
+</entrance>
+
+<entrance>
+  <position>
+    <x-pos>803</x-pos>
+    <y-pos>325</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>misc</direction>
+  <release-rate>50</release-rate>
+  <owner-id>0</owner-id>
+</entrance>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_large</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>260</x-pos>
+    <y-pos>323</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -356,70 +386,28 @@
 <groundpiece type="bridge">
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>misc/bridge_left</resource-ident>
+  <resource-ident>space/grid1</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>385</x-pos>
-    <y-pos>151</y-pos>
+    <x-pos>660</x-pos>
+    <y-pos>355</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
 
-<entrance>
-  <position>
-    <x-pos>286</x-pos>
-    <y-pos>353</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <type>generic</type>
-  <direction>misc</direction>
-  <release-rate>50</release-rate>
-  <owner-id>0</owner-id>
-</entrance>
-
-<entrance>
-  <position>
-    <x-pos>563</x-pos>
-    <y-pos>132</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <type>generic</type>
-  <direction>misc</direction>
-  <release-rate>50</release-rate>
-  <owner-id>0</owner-id>
-</entrance>
-
-<entrance>
-  <position>
-    <x-pos>799</x-pos>
-    <y-pos>353</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <type>generic</type>
-  <direction>misc</direction>
-  <release-rate>50</release-rate>
-  <owner-id>0</owner-id>
-</entrance>
-
-  <start-position>
-  <position>
-    <x-pos>539</x-pos>
-    <y-pos>254</y-pos>
-    <z-pos>1000</z-pos>
-  </position>
-  </start-position>
-
-<groundpiece type="ground">
+<liquid use-old-width-handling="0">
   <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/bpiece6</resource-ident>
+    <resource-datafile>liquids</resource-datafile>
+  <resource-ident>Liquid/slime</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>210</x-pos>
-    <y-pos>371</y-pos>
+    <x-pos>678</x-pos>
+    <y-pos>198</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+  <width>5</width>
+  <speed>50</speed>
+</liquid>
 
 </pingus-level>
 
