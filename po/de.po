@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-08 19:51+0200\n"
+"POT-Creation-Date: 2003-04-08 22:18+0200\n"
 "PO-Revision-Date: 2003-04-02 16:32+0200\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: Ingo Ruhnke <grumbel@gmx.de>, Giray Devlet <giray@devlet.cc>\n"
@@ -70,7 +70,6 @@ msgid "-Thanks to"
 msgstr "-Dank an"
 
 #: src/editor/editor_event.cxx:580
-#, fuzzy
 msgid "Enter filename to save as:"
 msgstr "Datei speichern als:  "
 
@@ -91,12 +90,10 @@ msgid "F4 - play/test the level"
 msgstr "F4 - Level starten/testen"
 
 #: src/editor/editor_help_screen.cxx:49
-#, fuzzy
 msgid "F5 - load a level"
 msgstr "Level Laden (F5)"
 
 #: src/editor/editor_help_screen.cxx:50
-#, fuzzy
 msgid "F6 - save this level"
 msgstr "Level Speichern (F6)"
 
@@ -117,7 +114,6 @@ msgid "F10 - [unset]"
 msgstr "F10 - [nicht belegt]"
 
 #: src/editor/editor_help_screen.cxx:55
-#, fuzzy
 msgid "F11 - toggle fps counter"
 msgstr "F11 - fps Zähler an/aus"
 
@@ -150,12 +146,10 @@ msgid "PageDown - level object down"
 msgstr "Bild runter - Objekt nach unten"
 
 #: src/editor/editor_help_screen.cxx:66
-#, fuzzy
 msgid "Shift PageUp   - increase objects z-pos by 50"
 msgstr "Umschalt Bild rauf - Objekt nach oben"
 
 #: src/editor/editor_help_screen.cxx:67
-#, fuzzy
 msgid "Shift PageDown - decrease objects z-pos by 50"
 msgstr "Umschalt Bild runter - Objekt nach unten"
 
@@ -164,12 +158,10 @@ msgid "Enter - Set default zoom (1:1)"
 msgstr "Eingabe - Setze Standard Zoom (1:1)"
 
 #: src/editor/editor_help_screen.cxx:69
-#, fuzzy
 msgid "d - duplicate object"
 msgstr "d - Aktuelles Objekt kopieren"
 
 #: src/editor/editor_help_screen.cxx:70
-#, fuzzy
 msgid "a - mark all objects"
 msgstr "a - Markierte Objecte löschen"
 
@@ -194,12 +186,10 @@ msgid "g - ungroup/group current selection"
 msgstr "g - Auswahl gruppieren / Gruppierung aufheben"
 
 #: src/editor/editor_help_screen.cxx:76
-#, fuzzy
 msgid "Ctrl PageUp   - increase objects z-pos by 1"
 msgstr "Steuerung Bild rauf - z-pos des Objekts um 1 erhöhen"
 
 #: src/editor/editor_help_screen.cxx:77
-#, fuzzy
 msgid "Ctrl PageDown - decrease objects z-pos by 1"
 msgstr "Steuerung Bild runter - z-pos des Objekts um 1 senken"
 
@@ -208,7 +198,6 @@ msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.xml"
 msgstr "Dateinamensvorgabe: <LEVELNAME><NUMMER>-<AUTOR>.xml"
 
 #: src/editor/editor_help_screen.cxx:85
-#, fuzzy
 msgid ""
 "When you have created a level and want to have it in the next Pingus "
 "release,\n"
@@ -302,7 +291,6 @@ msgid "h - entrance surface (hotspot)"
 msgstr "h - Eingangs Oberfläche (Grafikelement)"
 
 #: src/editor/object_selector.cxx:343
-#, fuzzy
 msgid "What object type do you want?"
 msgstr "Was für ein Objekt willst du?"
 
@@ -311,7 +299,6 @@ msgid "h - Hotspot"
 msgstr "h - Grafikelement"
 
 #: src/editor/object_selector.cxx:345
-#, fuzzy
 msgid "g - Groundpiece (ground) [not implemented]"
 msgstr "g - Bodenstück (ground) [nicht implementiert]"
 
@@ -344,7 +331,6 @@ msgid "e - Entrance"
 msgstr "e - Eingang"
 
 #: src/editor/object_selector.cxx:402
-#, fuzzy
 msgid "x - Exit"
 msgstr "x - Beenden"
 
@@ -357,7 +343,6 @@ msgid "w - Weather"
 msgstr "w - Wetter"
 
 #: src/editor/object_selector.cxx:405
-#, fuzzy
 msgid "t - Traps"
 msgstr "t - Falle"
 
@@ -366,7 +351,6 @@ msgid "o - WorldObject"
 msgstr "o - WeltObjekt"
 
 #: src/editor/object_selector.cxx:407
-#, fuzzy
 msgid "z - Background"
 msgstr "z - Hintergrund"
 
@@ -379,12 +363,10 @@ msgid "f - something from file (~/.pingus/images/)"
 msgstr "f - etwas aus einer Datei (~/.pingus/images/)"
 
 #: src/editor/object_selector.cxx:498
-#, fuzzy
 msgid "Which prefab do you want?"
 msgstr "Welche Prefab willst du?"
 
 #: src/editor/object_selector.cxx:563
-#, fuzzy
 msgid "1 - Surface Background"
 msgstr "1 - Bild Hintergrund"
 
@@ -393,7 +375,6 @@ msgid "2 - Solid Color Background"
 msgstr "2 - Farb Hintergrund"
 
 #: src/editor/object_selector.cxx:565
-#, fuzzy
 msgid "3 - Starfield Background"
 msgstr "3 - Sternen Hintergrund"
 
@@ -414,7 +395,6 @@ msgid "Save this level (F6)"
 msgstr "Level Speichern (F6)"
 
 #: src/editor/panel_icons.cxx:68
-#, fuzzy
 msgid "Delete marked objects (delete"
 msgstr "Markierte Objecte Löschen (Entfernen)"
 
@@ -455,7 +435,6 @@ msgid "Zoom out"
 msgstr "Ausschnitt verkleinern"
 
 #: src/editor/panel_icons.cxx:188
-#, fuzzy
 msgid "Setup Number of Actions"
 msgstr "Stelle die Anzahl der Fähigkeiten ein"
 
@@ -464,7 +443,6 @@ msgid "Display Help Screen (F1)"
 msgstr "Hilfe Anzeigen (F1)"
 
 #: src/exit_menu.cxx:44
-#, fuzzy
 msgid "Yes"
 msgstr "Ja"
 
@@ -530,7 +508,6 @@ msgid "Press button to continue..."
 msgstr "Knopf drücken um fortzufahren"
 
 #: src/level_result.cxx:100
-#, fuzzy
 msgid ""
 "As many Pingus escaped as entered the level. That's going to be hard to "
 "beat.... unless this game becomes pornographic."
@@ -563,7 +540,6 @@ msgid "Maybe this level calls for a different strategy."
 msgstr "Möglicherweise verlangt dieser Level eine andere Strategie."
 
 #: src/level_result.cxx:112
-#, fuzzy
 msgid "Exactly half. Are you saving only the female ones?"
 msgstr "Genau die Hälfte! Rettest du nur die Weibchen?"
 
@@ -773,7 +749,7 @@ msgid "pingu_id %d"
 msgstr "Pingu_id %d"
 
 #: src/pingu_info.cxx:55
-#, fuzzy, c-format
+#, c-format
 msgid "action %s"
 msgstr "Fähigkeit %s"
 
@@ -782,17 +758,9 @@ msgid "action none"
 msgstr "Keine Fähigkeit"
 
 #: src/pingus_counter.cxx:49
-#, fuzzy, c-format
+#, c-format
 msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
 msgstr "Eingelassen: %3d/%3d  Raus: %3d Gerettet: %3d/%3d"
-
-#: src/pingus_error.cxx:45
-msgid "PingusBug: "
-msgstr ""
-
-#: src/pingus_error.cxx:76
-msgid "PingusError: "
-msgstr ""
 
 #: src/pingus_main.cxx:101 src/pingus_main.cxx:124
 msgid ""
@@ -866,9 +834,9 @@ msgstr ""
 #: src/pingus_main.cxx:352
 msgid ""
 "\n"
-"Copyright (C) 2003 Ingo Ruhnke <grumbel@pingus.cx>\n"
+"Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n"
 "There is NO warranty.  You may redistribute this software\n"
-"under the terms of the GN General Public License.\n"
+"under the terms of the GNU General Public License.\n"
 "For more information about these matters, see the files named COPYING."
 msgstr ""
 "\n"
@@ -877,45 +845,45 @@ msgstr ""
 "unter der GNU General Public License erstellt werden.\n"
 "Für mehr Informationen hierüber, siehe in der Datei COPYING."
 
-#: src/pingus_main.cxx:508
+#: src/pingus_main.cxx:507
 msgid "Unknow char: "
 msgstr "Unbekannter Buchstabe: "
 
-#: src/pingus_main.cxx:509
+#: src/pingus_main.cxx:508
 msgid "Usage: "
 msgstr "Benutzung: "
 
-#: src/pingus_main.cxx:509
+#: src/pingus_main.cxx:508
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr "[OPTIONEN]... [LEVELDATEI]"
 
-#: src/pingus_main.cxx:511
+#: src/pingus_main.cxx:510
 msgid ""
 "\n"
 "Options:\n"
 "   -g, --geometry {width}x{height}\n"
-"                            Set the resolution for pingus (default: 800x600)\n"
+"                            Set the resolution for pingus (default: "
+"800x600)\n"
 "   -h, --help               Displays this screen\n"
 "   --disable-intro          Disable intro\n"
 msgstr ""
 "\n"
 "Optionen:\n"
 "   -g, --geometry {Breite}x{Höhe}\n"
-"			     Setze die Aufösung für Pingus (Standard: "
-"800x600)\n"
+"\t\t\t     Setze die Aufösung für Pingus (Standard: 800x600)\n"
 "   -h, --help               Zeigt diesen Text an\n"
 "   --disable-intro          Intro überspringen\n"
 
-#: src/pingus_main.cxx:520
+#: src/pingus_main.cxx:519
 msgid "   -G, --use-opengl         Use OpenGL\n"
 msgstr "   -G, --use-opengl         Verwende OpenGL\n"
 
 #. 	"   --fs-preload             Preload all Levelpreviews\n"a
 #. 	"   --disable-previews       Disables all level preview in the level selector\n"
-#: src/pingus_main.cxx:524
+#: src/pingus_main.cxx:523
 msgid ""
-"   -F, --disable-fullscreen Disable Fullscreen\n"
-"   -f, --enable-fullscreen  Enable Fullscreen (default)\n"
+"   -F, --disable-fullscreen Disable Fullscreen (default)\n"
+"   -f, --enable-fullscreen  Enable Fullscreen\n"
 "   -d, --datadir PATH       Set the path to load the data files to `path'\n"
 "   --use-datafile           Use the pre-compiled datafile (default)\n"
 "   --use-scriptfile         Use the scriptfile and read all data from files\n"
@@ -962,11 +930,14 @@ msgid ""
 msgstr ""
 "   -F, --disable-fullscreen Vollen Bildschirm nicht verwenden (Standard)\n"
 "   -f, --enable-fullscreen  Vollen Bilschirm verwenden\n"
-"   -d, --datadir PATH       Setze den Pfad zum Laden der Datendateien auf 'PATH'\n"
-"   --use-datafile           Benutze vorbereitete Datendatei (Standard)"
-"   --use-scriptfile         Benutze die Skriptdatei und lese alle Daten aus Dateien\n"
+"   -d, --datadir PATH       Setze den Pfad zum Laden der Datendateien auf "
+"'PATH'\n"
+"   --use-datafile           Benutze vorbereitete Datendatei (Standard)   --"
+"use-scriptfile         Benutze die Skriptdatei und lese alle Daten aus "
+"Dateien\n"
 "   -l, --level FILE         Benutze eine eigene Leveldatei in 'FILE'\n"
-"   -v, --verbose            Gibt zusäzliche Debugausgaben aus, kann mehrfach gesetzt\n"
+"   -v, --verbose            Gibt zusäzliche Debugausgaben aus, kann mehrfach "
+"gesetzt\n"
 "                            werden, um die Genauigkeit zu erhöhen\n"
 "   -V, --version            Gibt die Versionsnummer aus\n"
 "   --fast-mode              Schaltet einige CPU intensive Funktionen ab\n"
@@ -976,27 +947,38 @@ msgstr ""
 "   --enable-swcursor        Aktiviere SW cursor\n"
 "   --disable-action-help    Hilfe zu Fähigkeitsknöpfen deaktivieren\n"
 "   --no-cfg-file            ~/.pingus/config nicht einlesen\n"
-"   --config-file FILE       Lese Konfiguration aus FILE (Standard: ~/.pingus/config)\n"
-"   --min-cpu-usage          Reduziert die CPU Belastung durch Verwendung von sleep()\n"
-"                            Dies könnte die Geschwindigkeit auf langsamen Rechnern steigern\n"
-"   --min-frame-skip N       Überspringe mindestens N frames, größere Werte beschleunigen das Spiel\n"
+"   --config-file FILE       Lese Konfiguration aus FILE (Standard: ~/.pingus/"
+"config)\n"
+"   --min-cpu-usage          Reduziert die CPU Belastung durch Verwendung von "
+"sleep()\n"
+"                            Dies könnte die Geschwindigkeit auf langsamen "
+"Rechnern steigern\n"
+"   --min-frame-skip N       Überspringe mindestens N frames, größere Werte "
+"beschleunigen das Spiel\n"
 "   --max-frame-skip N       Überspringe maximal N frames\n"
-"   --frame-skip N           Setze sowohl min- als auch max-frameskip auf N\n\n"
+"   --frame-skip N           Setze sowohl min- als auch max-frameskip auf N\n"
+"\n"
 "Debugging und Experimentelles:\n"
-"   --maintainer-mode        Aktiviere einige Funktionen, nur für Programmierer\n"
-"   --enable-bg-manipulation Aktiviere Farbmanipulation von Levelhintergründen\n"
+"   --maintainer-mode        Aktiviere einige Funktionen, nur für "
+"Programmierer\n"
+"   --enable-bg-manipulation Aktiviere Farbmanipulation von "
+"Levelhintergründen\n"
 "   --debug OPTION           Aktiviere Debugausgaben, mögliche Werte sind:\n"
-"                            tiles, gametime, actions, sound, resources, gui, input\n"
-"   -t, --speed SPEED        Setze die Spielgeschwindigkeit (0=schnellste, >0=langsamer)\n"
+"                            tiles, gametime, actions, sound, resources, gui, "
+"input\n"
+"   -t, --speed SPEED        Setze die Spielgeschwindigkeit (0=schnellste, "
+">0=langsamer)\n"
 "   -b, --print-fps          Schreibt die fps auf stdout\n"
 "   -i, --enable-gimmicks    Aktiviere instabile Funktionen für Entwickler\n"
 "   -S, --sound-specs FILE   Benutze Dateien die in FILE erwähnt sind\n"
-"   --tile-size INT          Setzt die Größe von Kartenteilen (Standard: 32)\n\n\n"
+"   --tile-size INT          Setzt die Größe von Kartenteilen (Standard: 32)\n"
+"\n"
+"\n"
 "Demos abspielen und aufnehmen:\n"
 "   -r, --record-demo FILE   Demo aufnehmen und in FILE speichern\n"
 "   -p, --play-demo FILE     Spielt ein Demo aus FILE ab.\n"
 
-#: src/pingus_main.cxx:567
+#: src/pingus_main.cxx:566
 msgid ""
 "\n"
 "Sound:\n"
@@ -1008,89 +990,90 @@ msgstr ""
 "   -s, --enable-sound       Aktiviere Sound\n"
 "   -m, --enable-music       Aktiviere Musik\n"
 
-#: src/pingus_main.cxx:676
+#: src/pingus_main.cxx:675
 msgid "clanVorbis support:           ok"
 msgstr "clanVorbis Unterstützung:    ok"
 
-#: src/pingus_main.cxx:678
+#: src/pingus_main.cxx:677
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
-msgstr "clanVorbis Unterstützung: fehlt (.ogg Musik Datein können nicht abgespielt werden)"
+msgstr ""
+"clanVorbis Unterstützung: fehlt (.ogg Musik Datein können nicht abgespielt "
+"werden)"
 
-#: src/pingus_main.cxx:682
+#: src/pingus_main.cxx:681
 msgid "clanMikMod support:           ok"
 msgstr "clanMikMod Unterstützung:    ok"
 
-#: src/pingus_main.cxx:684
+#: src/pingus_main.cxx:683
 msgid "clanMikMod support:  missing (music files will not be playable)"
-msgstr "clanMikMod Untersützung: fehlt (Musikdateien können nicht abgespielt werden)"
+msgstr ""
+"clanMikMod Untersützung: fehlt (Musikdateien können nicht abgespielt werden)"
 
-#: src/pingus_main.cxx:688
+#: src/pingus_main.cxx:687
 msgid "getext support:               ok"
 msgstr "gettext Unterstützung:       ok"
 
-#: src/pingus_main.cxx:689
-#, fuzzy
-msgid "gettext language:        english"
-msgstr "gettext Sprache:         deutsch"
+#: src/pingus_main.cxx:688
+msgid "gettext language:      english"
+msgstr "gettext Sprache:       deutsch"
 
-#: src/pingus_main.cxx:695
+#: src/pingus_main.cxx:694
 msgid "sound support:           enabled"
-msgstr "Sound Unterstützung:           an"
+msgstr "Sound Unterstützung:         an"
 
-#: src/pingus_main.cxx:697
+#: src/pingus_main.cxx:696
 msgid "sound support:          disabled"
-msgstr "Sound Unterstützung:          aus"
+msgstr "Sound Unterstützung:        aus"
 
-#: src/pingus_main.cxx:700
+#: src/pingus_main.cxx:699
 msgid "music support:           enabled"
-msgstr "Musik Unterstützung:          an"
+msgstr "Musik Unterstützung:         an"
 
-#: src/pingus_main.cxx:702
+#: src/pingus_main.cxx:701
 msgid "music support:          disabled"
-msgstr "Musik Unterstützung:         aus"
+msgstr "Musik Unterstützung:        aus"
 
-#: src/pingus_main.cxx:704
+#: src/pingus_main.cxx:703
 msgid "resolution set to:       "
 msgstr "Auflösung:               "
 
-#: src/pingus_main.cxx:705
-msgid "fullcscreen:            "
-msgstr "Vollbild:"
+#: src/pingus_main.cxx:704
+msgid "fullscreen:              "
+msgstr "Vollbild:                "
 
-#: src/pingus_main.cxx:706
-#, fuzzy
+#: src/pingus_main.cxx:705
 msgid " enabled"
 msgstr "aktiviert"
 
-#: src/pingus_main.cxx:706
+#: src/pingus_main.cxx:705
 msgid "disabled"
 msgstr "deaktiviert"
 
-#: src/pingus_main.cxx:716
+#: src/pingus_main.cxx:715
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Hauptteil wird gestartet: "
 
-#: src/pingus_main.cxx:742
+#: src/pingus_main.cxx:741
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Leveldatei nicht gefunden, Fehler wird ignoriert: "
 
-#: src/pingus_main.cxx:833
+#: src/pingus_main.cxx:832
 msgid "Error caught from ClanLib: "
 msgstr "ClanLib Fehler abgefangen: "
 
-#: src/pingus_main.cxx:837
+#: src/pingus_main.cxx:836
 msgid "Error caught from Pingus: "
 msgstr "Pingus Fehler wurde abgefangen: "
 
-#: src/pingus_main.cxx:841
+#: src/pingus_main.cxx:840
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Speicher ist ausgegangen"
 
-#: src/pingus_main.cxx:845
+#: src/pingus_main.cxx:844
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Standard Ausnahme abgefangen!:\n"
 
-#: src/pingus_main.cxx:849
+#: src/pingus_main.cxx:848
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Unbekannte Ausnahme abgefangen!"
 
@@ -1103,7 +1086,6 @@ msgid "Retry"
 msgstr "Versuche erneut"
 
 #: src/result_screen.cxx:165
-#, fuzzy
 msgid "Success!"
 msgstr "Erfolg!"
 
@@ -1172,7 +1154,6 @@ msgid "Killed: "
 msgstr "Getötet: "
 
 #: src/result_screen.cxx:224
-#, fuzzy
 msgid "Time left: "
 msgstr "Verbliebene Zeit: "
 
@@ -1189,7 +1170,6 @@ msgid "Screenshot: Couldn't save screenshot"
 msgstr "Screenshot: Screenshot konnte nicht gespeichert werden"
 
 #: src/screenshot.cxx:134
-#, fuzzy
 msgid "Screenshot: Couldn't write file: "
 msgstr "Screenshot: Datei konnte nicht geschrieben werden: "
 
@@ -1203,17 +1183,14 @@ msgid "Ok"
 msgstr ""
 
 #: src/start_screen.cxx:135
-#, fuzzy
 msgid "Number of Pingus: "
 msgstr "Anzahl an Pingus: %d"
 
 #: src/start_screen.cxx:138
-#, fuzzy
 msgid "Number to Save: "
 msgstr "Zu rettende Pingus: %d"
 
 #: src/start_screen.cxx:141
-#, fuzzy
 msgid "Time: "
 msgstr "Zeit: "
 
@@ -1243,7 +1220,7 @@ msgid ""
 "the world. Since the floe with which the Pingus traveled to the\n"
 "Tutorial Island isn't going to hold the whole way into the warmer\n"
 "climated regions the Pingus have to find something else to guide\n"
-"there on there journey.\n"
+"there on their journey.\n"
 msgstr ""
 "Nachdem Du und die Pingus nun die Grundlagen gelernt haben und\n"
 "ein wenig Übung haben, ist es an der Zeit weiter zu gehen und die\n"
@@ -1256,8 +1233,8 @@ msgstr ""
 msgid ""
 "But as the eldest have said, the Tutorial Island provides not\n"
 "only a way to practive, but it is also the starting point into\n"
-"the world, cause the wood if the large tree at the end of the\n"
-"island is brings good wood to construct a float.\n"
+"the world, cause the wood of the large tree at the end of the\n"
+"island brings good wood to construct a float.\n"
 msgstr ""
 "Aber wie die Ältesten sagten, Tutorial Island liefert nicht nur\n"
 "einen Weg zum Üben, es ist auch der erste Schritt in die Welt, denn\n"
@@ -1268,7 +1245,7 @@ msgstr ""
 msgid ""
 "So the Pingus set out and constructed a some large floats, enough\n"
 "to carry them all. After also packaging up a bunch of provisions\n"
-"they where prepared to finally start of there journey and leave\n"
+"they where prepared to finally start of their journey and leave\n"
 "their familiar ground and entering the unknown parts of the\n"
 "world.\n"
 msgstr ""
@@ -1280,13 +1257,14 @@ msgstr ""
 
 #: src/story.cxx:68
 msgid ""
-"So the Pingus sat on there float, worrying whats to come and\n"
+"So the Pingus sat on their float, worrying whats to come and\n"
 "where to go, while floating into the sunset.\n"
 "\n"
 "To be continued..."
 msgstr ""
 "So saßen die Pingus nur auf ihrem Floß, sich sorgend was denn nun\n"
-"kommen mag, während sie in den Sonnenuntergang trieben.\n\n"
+"kommen mag, während sie in den Sonnenuntergang trieben.\n"
+"\n"
 "Fortsetzung folgt..."
 
 #: src/story.cxx:79
@@ -1297,7 +1275,7 @@ msgstr "Die Reise beginnt"
 msgid ""
 "For a long time now the Pingus have lived happily in peace on the\n"
 "south pole along with all the other animals, everything was in\n"
-"balance and it seemed like nothing could disrupt there peace.  The\n"
+"balance and it seemed like nothing could disrupt their peace.  The\n"
 "Pingus where happy and it seemed like this could never end.\n"
 msgstr ""
 "Die Pingus lebten schon lange glücklich und in Frieden am Südpol,\n"
@@ -1344,8 +1322,8 @@ msgstr ""
 
 #: src/story.cxx:116
 msgid ""
-"And they picked you to lead them on there journey around the\n"
-"world. Since the journey will be dangerous and difficult. Your\n"
+"And they picked you to lead them on their journey around the\n"
+"world. Since the journey will be dangerous and difficult, your\n"
 "first goal is the Island of Mogorok, also know has Tutorial\n"
 "Island. According to the eldest, this island has always been the\n"
 "first stop of Pingus which where send out into the world."
@@ -1360,8 +1338,8 @@ msgstr ""
 msgid ""
 "The island consists of many regions which are ideally to train the\n"
 "abilities of the Pingus. The Pingus can train there their ability\n"
-"to build bridges, climb, bash and all the rest of there talents\n"
-"which they will surly need on there long and dangerous journey."
+"to build bridges, climb, bash and all the rest of their talents\n"
+"which they will surly need on their long and dangerous journey."
 msgstr ""
 "Die Insel besteht aus verschiedenen Regionen, die ideal sind um die\n"
 "Fähigkeiten der Pingus zu trainieren. Sie können dort ihre Fähig-\n"
@@ -1371,7 +1349,7 @@ msgstr ""
 
 #: src/story.cxx:133
 msgid ""
-"While you on the other site can practice there your ability to\n"
+"While you on the other side can practice there your ability to\n"
 "command and guide the Pingus. You can also get familiar there with\n"
 "all the abilities the Pingus provide and learn to master them,\n"
 "since you will need them all for sure an your journey around the\n"
@@ -1385,14 +1363,15 @@ msgstr ""
 
 #: src/story.cxx:142
 msgid ""
-"Now that you and the Pingus have arrive at tutorial island it\n"
-"is time to take over the command and begin your mission\n"
+"Now that you and the Pingus have arrived at tutorial island it\n"
+"is time to take over the command and begin your mission.\n"
 "\n"
 "                                                  Good Luck!"
 msgstr ""
 "Nun da du und die Pingus im Tutorial Island angekommen sind,\n"
-"musst du das Kommand übernehmen und deine Mission beginnen.\n\n"
-"						   Viel Glück!"
+"musst du das Kommand übernehmen und deine Mission beginnen.\n"
+"\n"
+"                                                  Viel Glück!"
 
 #: src/system.cxx:65 src/system.cxx:97
 msgid "System: Couldn't open: "
@@ -1408,7 +1387,8 @@ msgstr "Gefunden: "
 
 #: src/system.cxx:264
 msgid "Environment variable $HOME not set, fix that and start again."
-msgstr "Umgebungs Variable $HOME ist nicht gesetzt. Setze sie und starte erneut."
+msgstr ""
+"Umgebungs Variable $HOME ist nicht gesetzt. Setze sie und starte erneut."
 
 #: src/system.cxx:422
 msgid "System::checksum: Couldn't open file: "
@@ -1429,7 +1409,7 @@ msgstr "Ende anzeigen?"
 
 #: src/worldmap/manager.cxx:132
 msgid "Show Story?"
-msgstr "Story anzeigen?"
+msgstr "Story zeigen?"
 
 #: src/worldmap/manager.cxx:160
 msgid "Leave?"
@@ -1444,7 +1424,6 @@ msgid "WorldMap: File not found: "
 msgstr "Worldmap: Datei nicht gefunden: "
 
 #: src/worldmap/worldmap.cxx:246
-#, fuzzy
 msgid "...walking..."
 msgstr "Ladevorgang läuft..."
 
@@ -1454,7 +1433,6 @@ msgstr "Ladevorgang läuft..."
 #~ msgid "Result: Failure! :("
 #~ msgstr "Ergebnis: Versagt!"
 
-#, fuzzy
 #~ msgid "..:: Lets you select a world to start ::.."
 #~ msgstr "..:: Such dir eine Welt zum starten aus ::.."
 
@@ -1467,11 +1445,9 @@ msgstr "Ladevorgang läuft..."
 #~ msgid "PingusBmpMap::get_colmap: Surface has wrong pixel format, need 8bpp!"
 #~ msgstr "PingusBmpMap::get_colmap: "
 
-#, fuzzy
 #~ msgid "DemoPlayer: Couldn't load "
 #~ msgstr "System: Datei oder Verzeichnis konnte nicht geöffnet werden: "
 
-#, fuzzy
 #~ msgid "DemoRecorder: Couldn't open: "
 #~ msgstr "System: Datei oder Verzeichnis konnte nicht geöffnet werden: "
 
@@ -1484,19 +1460,15 @@ msgstr "Ladevorgang läuft..."
 #~ msgid "Starting Pingus "
 #~ msgstr "Pingus wird gestartet"
 
-#, fuzzy
 #~ msgid "Start menu"
 #~ msgstr "Start Menu"
 
-#, fuzzy
 #~ msgid ": Could not open file\n"
 #~ msgstr "System: Datei oder Verzeichnis konnte nicht geöffnet werden: "
 
-#, fuzzy
 #~ msgid "PingusDemo: Couldn't open out file: "
 #~ msgstr "System: Datei oder Verzeichnis konnte nicht geöffnet werden: "
 
-#, fuzzy
 #~ msgid "PingusDemo: Couldn't open in file: "
 #~ msgstr "System: Datei oder Verzeichnis konnte nicht geöffnet werden: "
 
