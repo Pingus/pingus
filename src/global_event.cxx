@@ -1,4 +1,4 @@
-//  $Id: global_event.cxx,v 1.3 2002/06/20 12:22:51 grumbel Exp $
+//  $Id: global_event.cxx,v 1.4 2002/06/25 17:05:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "console.hxx"
 #include "fps_counter.hxx"
 #include "global_event.hxx"
+#include "globals.hxx"
 
 GlobalEvent global_event;
 
@@ -79,6 +80,10 @@ GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	    //console << "!\"#$%&'()*+,-./0123456789:;<=>?@";
 	    console.newline();
 	  }
+	  break;
+
+	case CL_KEY_C:
+	  draw_collision_map = !draw_collision_map;
 	  break;
 
 	case CL_KEY_END:

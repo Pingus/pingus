@@ -1,4 +1,4 @@
-//  $Id: climber.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: climber.cxx,v 1.3 2002/06/25 17:05:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,10 +58,10 @@ Climber::update(float delta)
 
   // If above is free
   if (rel_getpixel(0, 1) == ColMap::NOTHING
-      || rel_getpixel (0, 1) & ColMap::BRIDGE)
+      || rel_getpixel (0, 1) == ColMap::BRIDGE)
     {
       // and there is still ground to walk on
-      if (rel_getpixel(1, 1) & ColMap::WALL) 
+      if (rel_getpixel(1, 1) != ColMap::NOTHING) 
 	{
 	  --pingu->pos.y;
 	  return;

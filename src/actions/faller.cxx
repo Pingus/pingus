@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.6 2002/06/25 14:54:01 grumbel Exp $
+//  $Id: faller.cxx,v 1.7 2002/06/25 17:05:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -124,7 +124,7 @@ Faller::update (float delta)
     }
   else // Ping is on ground/water/something
     {
-      if (rel_getpixel(0, 0) & ColMap::WATER)
+      if (rel_getpixel(0, 0) == ColMap::WATER)
 	{
 	  pingu->set_paction("drown");
 	  return;

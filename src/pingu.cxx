@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.10 2002/06/24 14:25:03 grumbel Exp $
+//  $Id: pingu.cxx,v 1.11 2002/06/25 17:05:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,8 +41,8 @@ Pingu::Pingu(const CL_Vector& arg_pos, int owner)
     countdown_action (0),
     id (++id_counter),
     font (PingusResource::load_font("Fonts/numbers", "fonts")),
-    status (PS_ALIVE),
     environment (ENV_LAND),
+    status (PS_ALIVE),
     owner_id (owner),
     pos (arg_pos)
 {

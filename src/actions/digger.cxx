@@ -1,4 +1,4 @@
-//  $Id: digger.cxx,v 1.2 2002/06/19 15:19:26 torangan Exp $
+//  $Id: digger.cxx,v 1.3 2002/06/25 17:05:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,7 @@ Digger::have_something_to_dig()
 {
   if (rel_getpixel(0, -1) != ColMap::NOTHING)
     {
-      if (rel_getpixel(0, -1) & ColMap::SOLID)
+      if (rel_getpixel(0, -1) == ColMap::SOLID)
 	{
 	  PingusSound::play_sound("sounds/chink.wav");
 	  return false;  

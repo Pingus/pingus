@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.4 2002/06/23 19:16:41 torangan Exp $
+//  $Id: basher.cxx,v 1.5 2002/06/25 17:05:25 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -115,7 +115,7 @@ Basher::have_something_to_dig()
       // up to head collision height.
       for (int j = bash_height + 1; j <= 26; j++)
         {
-          if (rel_getpixel(i,j) & ColMap::WALL)
+          if (rel_getpixel(i,j) == ColMap::WALL)
 	    {
 	      pout(PINGUS_DEBUG_ACTIONS) << "Basher: Found something to dig..." << std::endl;
 	      return true;

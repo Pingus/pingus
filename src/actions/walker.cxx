@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.5 2002/06/24 14:25:03 grumbel Exp $
+//  $Id: walker.cxx,v 1.6 2002/06/25 17:05:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,8 +47,9 @@ Walker::update(float delta)
   /* How should this code work?
      
   1) Check that the Pingu stands still on ground, if not turn it into
-  a faller. The reason we do so, is that we catch situations where a
-  digger or a similar action removed the ground under the walker.
+  a faller or drown. The reason we do so, is that we catch situations
+  where a digger or a similar action removed the ground under the
+  walker.
   
   2) If pingu is still on ground, we can preprare the next step
 
@@ -61,6 +62,12 @@ Walker::update(float delta)
 
   // FIXME: pingu environment needs to get reviewed
   pingu->environment = ENV_LAND;
+
+  if (rel_getpixel(0, -1) == ColMap::WATER)
+    {
+      pingu->set_paction ("drown");
+      return;
+    }
 
   // The Pingu stands no longer on ground, the cause for this could be
   // a digger, miner or a bomber
@@ -85,14 +92,14 @@ Walker::update(float delta)
 	}
       else
 	{
-	  pingu->set_action ("faller");
+	  pingu->set_paction ("faller");
 	  return;
 	}
     }
 
   
-  if (rel_getpixel(1, 0) & ColMap::BRIDGE
-	   && !head_collision_on_walk(1, 1))  // bridge
+  if (rel_getpixel(1, 0) == ColMap::BRIDGE
+      && !head_collision_on_walk(1, 1))  // bridge
     {
       // simple, stupid, but working bridge code
       // FIXME: We don't check if we 'drift' into a solid ground block

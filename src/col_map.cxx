@@ -1,4 +1,4 @@
-//  $Id: col_map.cxx,v 1.3 2002/06/19 15:19:26 torangan Exp $
+//  $Id: col_map.cxx,v 1.4 2002/06/25 17:05:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,8 +28,8 @@
 #include <config.h>
 #include "my_gettext.hxx"
 
-
-ColMap::ColMap() : init(false)
+ColMap::ColMap() 
+  : init(false)
 {
 }
 
@@ -193,7 +193,7 @@ void
 ColMap::put(int x, int y, PixelStatus p)
 {
   if (   x > 0 && x < width
-      && y > 0 && y < height) 
+	 && y > 0 && y < height) 
     {
       colmap[x+y*width] = p;
     }
@@ -221,6 +221,20 @@ ColMap::load(unsigned char* b, int w, int h)
     }
 }
 
+bool
+ColMap::blit_allowed (int x, int y,  GroundpieceData::GPType gtype)
+{
+  if (gtype == GroundpieceData::GP_BRIDGE)
+    {
+      int pixel = getpixel (x, y);
+      return pixel == NOTHING;
+    }
+  else
+    {
+      return true;
+    }
+}
+
 void
 ColMap::put(const CL_Surface& sur, int sur_x, int sur_y, GroundpieceData::GPType gptype)
 {
@@ -238,10 +252,10 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, GroundpieceData:
   switch (gptype) 
     {
     case GroundpieceData::GP_GROUND:  pixel = WALL; break;
-    case GroundpieceData::GP_SOLID:   pixel = (PixelStatus)(SOLID | WALL); break;
-    case GroundpieceData::GP_BRIDGE:  pixel = (PixelStatus)(BRIDGE | WALL); break;
-    case GroundpieceData::GP_WATER:   pixel = (PixelStatus)(SOLID | WATER); break;
-    case GroundpieceData::GP_LAVA:    pixel = (PixelStatus)(SOLID | LAVA); break;
+    case GroundpieceData::GP_SOLID:   pixel = (PixelStatus)(SOLID); break;
+    case GroundpieceData::GP_BRIDGE:  pixel = (PixelStatus)(BRIDGE); break;
+    case GroundpieceData::GP_WATER:   pixel = (PixelStatus)(WATER); break;
+    case GroundpieceData::GP_LAVA:    pixel = (PixelStatus)(LAVA); break;
     case GroundpieceData::GP_NOTHING: pixel = (PixelStatus)0; break;
     default:
       std::cout << "Colmap::put() Indefinite type" << std::endl;
@@ -249,13 +263,15 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, GroundpieceData:
       break;
     }
   
-  if ((sur_x > width) || (sur_y > height)) {
-    if (verbose > 3) {
-      std::cout << "Warning: ColMap: Spot out of screen" << std::endl;
-      std::cout << "sur_x: " << sur_x << " sur_y: " << sur_y << std::endl;
+  if ((sur_x > width) || (sur_y > height)) 
+    {
+      if (verbose > 3) 
+	{
+	  std::cout << "Warning: ColMap: Spot out of screen" << std::endl;
+	  std::cout << "sur_x: " << sur_x << " sur_y: " << sur_y << std::endl;
+	}
+      return;
     }
-    return;
-  }
 
   provider->lock();
   
@@ -263,13 +279,14 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, GroundpieceData:
     {
       float r, g, b, a;
       // Rewritting blitter for 32bit depth (using get_pixel())
-      for (unsigned int y=0; y < provider->get_height(); y++)
-	for (unsigned int x=0; x < provider->get_width(); x++) 
+      for (unsigned int y=0; y < provider->get_height(); ++y)
+	for (unsigned int x=0; x < provider->get_width(); ++x) 
 	  {
 	    provider->get_pixel(x, y, &r, &g, &b, &a);
-	    if (a > 0.1)
+	    if (a > 0.1) // Alpha threshold
 	      {
-		put(x + sur_x, y + sur_y, (PixelStatus) pixel);
+		if (blit_allowed (x + sur_x, y + sur_y, gptype))
+		  put(x + sur_x, y + sur_y, (PixelStatus) pixel);
 	      }
 	  }
     }
@@ -293,7 +310,10 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, GroundpieceData:
 	    for (int i = x_offset; i < swidth && (i+sur_x) < width; ++i) 
 	      {
 		if (buffer[i + (swidth*line)] != colorkey)
-		  colmap[i + (width*(line+sur_y) + sur_x)] = pixel;		    
+		  {
+		    if (blit_allowed (i + sur_x, line + sur_y, gptype))
+		      colmap[i + (width*(line+sur_y) + sur_x)] = pixel;		    
+		  }
 	      }
 	}
       else
@@ -301,7 +321,8 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, GroundpieceData:
 	  for(int line = y_offset; line < sheight && (line + sur_y) < height; ++line) 
 	    for (int i = x_offset; i < swidth && (i+sur_x) < width; ++i) 
 	      {
-		colmap[i + (width*(line+sur_y) + sur_x)] = pixel;
+		if (blit_allowed (i + sur_x, line + sur_y, gptype))
+		  colmap[i + (width*(line+sur_y) + sur_x)] = pixel;
 	      }
 	}
     }
@@ -333,12 +354,21 @@ ColMap::draw(int x_of, int y_of, float /*s*/)
 	  buffer[i * 4 + 2] = 0;
 	  buffer[i * 4 + 3] = 0;
 	  break;
+
 	case ColMap::SOLID:
 	  buffer[i * 4 + 0] = 255;
 	  buffer[i * 4 + 1] = 100;
 	  buffer[i * 4 + 2] = 100;
 	  buffer[i * 4 + 3] = 100;
 	  break;
+
+	case ColMap::BRIDGE:
+	  buffer[i * 4 + 0] = 255;
+	  buffer[i * 4 + 1] = 0;
+	  buffer[i * 4 + 2] = 0;
+	  buffer[i * 4 + 3] = 200;
+	  break;
+
 	default:
 	  buffer[i * 4 + 0] = 255;
 	  buffer[i * 4 + 1] = 200;
