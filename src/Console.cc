@@ -1,4 +1,4 @@
-//  $Id: Console.cc,v 1.1 2000/06/13 17:50:46 grumbel Exp $
+//  $Id: Console.cc,v 1.2 2000/06/13 22:19:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <algorithm>
 #include <cstdio>
 #include "PingusResource.hh"
 #include "Console.hh"
@@ -29,6 +30,7 @@ Console::Console()
   is_init = false;
   is_visible = false;
   current_pos = 0;
+  number_of_lines = 10;
 }
 
 Console::~Console()
@@ -53,12 +55,28 @@ Console::draw()
 
   CL_Display::fill_rect(0, 0, CL_Display::get_width(), font->get_height() * 11,
 			1.0, 1.0, 1.0, 0.5);
-  for(unsigned int i = max(0, current_pos - 10), j=1;
+  for(unsigned int i = max(0, current_pos - number_of_lines), j=1;
       i < output_buffer.size(); 
-      i++, j++) 
+      i++, j++)
     {
       font->print_left(10, j * font->get_height(), output_buffer[i].c_str());
     }
+  font->print_left(10, (number_of_lines + 1) * font->get_height(),
+		   current_line.c_str());
+}
+
+void
+Console::print(char* format, ...) 
+{
+  char str_buffer[128];
+  va_list argp;
+
+  va_start(argp, format);
+  vsnprintf(str_buffer, 128, format, argp);
+  va_end(argp);
+
+  output_buffer.push_back(str_buffer);
+  current_pos++;
 }
 
 void
@@ -73,6 +91,15 @@ Console::println(char* format, ...)
 
   output_buffer.push_back(str_buffer);
   current_pos++;
+  newline();
+}
+
+void
+Console::newline()
+{
+  output_buffer.push_back(current_line);
+  current_pos++;
+  current_line = "";
 }
 
 Console& 
@@ -91,16 +118,9 @@ Console::operator<<(int)
 }
 
 void
-Console::toggle_display()
-{
-  is_visible = !is_visible;
-}
-
-void
 Console::on_event()
 {
-  if (is_visible)
-    draw();
+  draw();
 }
 
 /* EOF */

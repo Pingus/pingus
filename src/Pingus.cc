@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.34 2000/06/13 17:50:46 grumbel Exp $
+//   $Id: Pingus.cc,v 1.35 2000/06/13 22:19:17 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -701,8 +701,9 @@ PingusMain::do_lemmings_mode(void)
     std::cout << "PingusMain: Starting Main: " << CL_System::get_time() << std::endl;
   }
 
-  Display::add_flip_screen_hook(&fps_counter);
-  Display::add_flip_screen_hook(&console);
+  if (print_fps)
+    Display::add_flip_screen_hook(&fps_counter);
+  //Display::add_flip_screen_hook(&console);
 
   CL_Input::chain_button_release.push_back(&global_event);
   CL_Input::chain_button_press.push_back(&global_event);
@@ -737,8 +738,8 @@ PingusMain::do_lemmings_mode(void)
   CL_Input::chain_button_press.remove(&global_event);
   CL_Input::chain_button_release.remove(&global_event);
 
-  Display::remove_flip_screen_hook(&console);
-  Display::remove_flip_screen_hook(&fps_counter);
+  //  Display::remove_flip_screen_hook(&console);
+  //  Display::remove_flip_screen_hook(&fps_counter);
   
   std::cout << "\n"
 	    << ",-------------------------------------------.\n"

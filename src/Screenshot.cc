@@ -1,4 +1,4 @@
-//  $Id: Screenshot.cc,v 1.2 2000/06/12 20:31:30 grumbel Exp $
+//  $Id: Screenshot.cc,v 1.3 2000/06/13 22:19:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,9 @@
 #include "System.hh"
 #include "Screenshot.hh"
 
-void
+// Saves a screenshot to file, it return the filename the screenshot
+// was saved to.
+string
 Screenshot::make_screenshot()
 {
   CL_Target* target = CL_Display::get_target();
@@ -32,11 +34,15 @@ Screenshot::make_screenshot()
     std::cout << "Screenshot: Saving screenshot to: " << filename << std::endl;
     save_target_to_file(target, filename);
     std::cout << "Screnshot: Screenshot is done." << std::endl;
+    return filename;
   } else {
     std::cout << "Screenshot: Couldn't save screenshot" << std::endl;
+    return "";
   }
 }
 
+// FIXME: The name sucks, to lazy to change it... this function might
+// not be endian clean. save_generic_target_to_file() should be endian clean
 void
 Screenshot::save_16bit_target_to_file(CL_Target* target, string filename)
 {
@@ -93,14 +99,18 @@ Screenshot::save_16bit_target_to_file(CL_Target* target, string filename)
 void
 Screenshot::save_target_to_file(CL_Target* target, string filename)
 {
-  switch(target->get_depth()) {
-  case 16:
+  /*
+    switch(target->get_depth()) {
+    case 16:
+  */
     save_16bit_target_to_file(target, filename);
-    break;
-  default:
-    save_generic_target_to_file(target, filename);
-    break;
-  }
+    /*   
+	 break;
+	 default:
+	 save_generic_target_to_file(target, filename);
+	 break;
+    */
+    //}
 }
 
 void

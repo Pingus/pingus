@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.18 2000/06/13 17:50:47 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.19 2000/06/13 22:19:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -172,6 +172,47 @@ EditorObj*
 ObjectSelector::get_hotspot()
 {
   string str;
+  CL_ResourceManager* res = PingusResource::get("global.dat");
+    
+  hotspot_data data;
+  data.x_pos = CL_Mouse::get_x() - x_offset;
+  data.y_pos = CL_Mouse::get_y() - y_offset;
+
+  list<string>* liste = res->get_resources_of_type("surface");
+  surface_obj sur_obj;
+  vector<surface_obj> sur_list;
+  int j = 0;
+
+  for(list<string>::iterator i = liste->begin(); i != liste->end(); i++)
+    {
+      ++j;
+      sur_obj.sur = CL_Surface::load(i->c_str(), res);
+      cout << "Loading: " << *i  << endl;
+      sur_obj.name = *i;
+      sur_list.push_back(sur_obj);
+
+      if (!data_loaded && (j % 5) == 0)
+	{
+	  loading_screen.draw_progress(i->c_str(), (float)j / liste->size());
+	}
+    }
+  // Showing the mousecursor again, since loading_screen hides it
+  Display::show_cursor();
+
+  data_loaded = true;
+  str = select_surface(sur_list);
+
+  if (!str.empty())
+    {
+      data.desc = ResDescriptor("resource:global.dat", str);
+      //data.name = str;
+      data.speed = -1;
+
+      return new HotspotObj(data);
+    }
+  return 0;
+
+  /*  string str;
   hotspot_data data;
   data.x_pos = CL_Mouse::get_x() - x_offset;
   data.y_pos = CL_Mouse::get_y() - y_offset;
@@ -190,10 +231,7 @@ ObjectSelector::get_hotspot()
   last_object = str;
   data.desc = ResDescriptor("resource:global.dat", str);
   
-  /*  surf = CL_Surface::load(desc.res_name.c_str(), 
-			      PingusResource::get(desc.filename));
-			      */
-  return new HotspotObj(data);
+  return new HotspotObj(data);*/
 }
 
 EditorObj*
@@ -352,6 +390,13 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.19  2000/06/13 22:19:17  grumbel
+Some enhancements to the console... (simple support for linebreaks)
+Added toggle_display() for the display hooks
+Placed the Console on F1 and Fpscounter on F11
+Made the 16bit screenshot default, since it doesn't contain 16bit specific code ....
+Added the nice groundpiece surface selector to the hotspot selection
+
 Revision 1.18  2000/06/13 17:50:47  grumbel
 Added a simple console (output only), can be activated with ` or ^
 Fixed the groundpiece selection dialog in the editor

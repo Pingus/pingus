@@ -1,4 +1,4 @@
-//  $Id: Console.hh,v 1.1 2000/06/13 17:50:46 grumbel Exp $
+//  $Id: Console.hh,v 1.2 2000/06/13 22:19:17 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,11 +30,10 @@ class Console : public DisplayHook
 private:
   CL_Font* font;
   bool is_init;
-  bool is_visible;
   int  current_pos;
   vector<string> output_buffer;
   string current_line;
-
+  unsigned int number_of_lines;
   void draw();
 
 public:
@@ -43,10 +42,11 @@ public:
 
   void init();
   virtual void on_event();
-  void toggle_display();
   Console& operator<<(string);
   Console& operator<<(int);
   void println(char* format, ...);
+  void print(char* format, ...);
+  void newline();
 };
 
 extern Console console;

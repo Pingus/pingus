@@ -1,4 +1,4 @@
-//  $Id: SurfaceSelector.cc,v 1.5 2000/06/12 20:31:32 grumbel Exp $
+//  $Id: SurfaceSelector.cc,v 1.6 2000/06/13 22:19:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,6 +75,7 @@ SurfaceSelector::draw()
  
   CL_Display::clear_display();
 
+  // Draw all surfaces
   for(vector<surface_obj>::iterator i = sur_list->begin(); i != sur_list->end(); i++)
     {
       if (i->sur->get_width() <= 50 && i->sur->get_height() <= 50)
@@ -101,6 +102,11 @@ SurfaceSelector::draw()
 	}
     }
 
+  Display::draw_rect(CL_Display::get_width() - 16, y/10,
+		     CL_Display::get_width(), y+1/10,
+		     1.0, 1.0, 1.0, 1.0);
+
+  // Draw the current object in the bottom/left corner
   if (c_obj != vector<surface_obj>::iterator())
     {
       CL_Display::fill_rect(0, CL_Display::get_height() - c_obj->sur->get_height(),

@@ -1,4 +1,4 @@
-//  $Id: Display.cc,v 1.4 2000/06/12 14:42:10 grumbel Exp $
+//  $Id: Display.cc,v 1.5 2000/06/13 22:19:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,22 @@
 
 list<DisplayHook*> Display::display_hooks;
 bool Display::displaying_cursor = false;
+
+DisplayHook::DisplayHook()
+{
+  is_visible = false;
+}
+
+void
+DisplayHook::toggle_display()
+{
+  if (is_visible)
+    Display::remove_flip_screen_hook(this);
+  else
+    Display::add_flip_screen_hook(this);
+  
+  is_visible = !is_visible;
+}
 
 void
 Display::draw_rect(int x1, int y1, int x2, int y2, float r, float g, float b, float a)
@@ -77,7 +93,10 @@ Display::flip_display(bool sync=false)
 void
 Display:: add_flip_screen_hook(DisplayHook* hook)
 {
-  display_hooks.push_back(hook);
+  if (find(display_hooks.begin(), display_hooks.end(), hook) == display_hooks.end())
+    display_hooks.push_back(hook);
+  else
+    std::cout << "Display: Trying to insert a display hook multiple times..." << std::endl;
 }
 
 void

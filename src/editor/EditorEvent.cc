@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.15 2000/06/10 07:57:00 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.16 2000/06/13 22:19:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -133,12 +133,12 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 									 object_manager->background.desc.res_name);
 	  break;
 
-	case CL_KEY_F11:
+	  /*	case CL_KEY_F11:
 	  CL_Display::set_videomode(screen_width, screen_height, 16, 
 				    fullscreen_enabled, 
 				    true); // allow resize
 	  break;
-
+	  */
 	case CL_KEY_F12:
 	  // FIXME: disable cause it gives a segfault
 	  //CL_Display::set_videomode(900, 700, 16, 

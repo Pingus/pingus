@@ -1,4 +1,4 @@
-//  $Id: GlobalEvent.cc,v 1.2 2000/06/13 17:50:46 grumbel Exp $
+//  $Id: GlobalEvent.cc,v 1.3 2000/06/13 22:19:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include "Screenshot.hh"
 #include "Console.hh"
+#include "FPSCounter.hh"
 #include "GlobalEvent.hh"
 
 GlobalEvent global_event;
@@ -30,13 +31,20 @@ GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
     {
       switch (key.id)
 	{
-	case CL_KEY_F12:
-	  std::cout << "GlobalEvent::Makeing scrennshoot..." << std::endl;
-	  Screenshot::make_screenshot();
-	  return false;
-	case CL_KEY_NONE_OF_THE_ABOVE:
+	case CL_KEY_F1:
 	  console.toggle_display();
 	  break;
+	case CL_KEY_F11:
+	  fps_counter.toggle_display();
+	  break;
+	case CL_KEY_F12:
+	  {
+	    string filename;
+	    std::cout << "GlobalEvent::Makeing scrennshoot..." << std::endl;
+	    filename = Screenshot::make_screenshot();
+	    console.println("GlobalEvent: Saved screenshot to \"%s\"", filename.c_str());
+	  }
+	  return false;
 	default:
 	  console << "GlobalEvent: Unknown key pressed: " << key.id;
 	  break;
