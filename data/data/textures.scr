@@ -1,5 +1,7 @@
 section Textures
 {
+        fruitcaketile = images/textures/fruitcaketile.jpg (type=surface, x=0, y=0, width=256, height=256);
+
 	default          = images/textures/default.pcx  (type=surface, x=0, y=0, width=64, height=64);
 	industrial       = images/textures/industrial.jpg (type=surface, x=0, y=0, width=400, height=600);
 

@@ -1,6 +1,7 @@
 
 section Traps
 {
+        tut = images/traps/tut.pcx (type=surface, x=0, y=0, width=732, height=115, tcol=0);
 	smasher     = images/traps/smasher.tga   (type=surface, x=0, y=0, width=282, height=189, array=6x1);
 	smasher_cmap = images/traps/smasher_cmap.pcx   (type=surface, x=0, y=0, width=281, height=189,tcol=0);
 	hammer      = images/traps/hammer.tga    (type=surface, x=0, y=0, width=151, height=181, array=13x1);

@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.31 2000/09/12 11:11:36 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.32 2000/09/13 00:14:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -298,6 +298,7 @@ ThemeSelector::readdir(std::string path)
   std::string::size_type last_pos = 0; 
   bool exit_for = false;
 
+  // Remove this and pingus_datadir should become a vector
   for(pos = path.find(":", last_pos);
       !exit_for;
       last_pos = pos + 1, pos = path.find(":", last_pos))
@@ -312,13 +313,22 @@ ThemeSelector::readdir(std::string path)
 	  pathname = path.substr(last_pos, pos - last_pos);
 	}
       
-      dir = System::opendir(pathname + "/themes", "*.xml");
+      dir = System::opendir(pathname + "/data/themes", "*.xml");
       
       for(System::Directory::iterator entry = dir.begin(); entry != dir.end(); entry++)
 	{
-	  if (verbose) std::cout << "Entry Name: " << pathname + "/themes/" + entry->name << std::endl;
-	  themes.push_back(new Theme(pathname + "/themes/" + entry->name));
+	  if (verbose) std::cout << "Entry Name: " << pathname + "/data/themes/" + entry->name << std::endl;
+	  themes.push_back(new Theme(pathname + "/data/themes/" + entry->name));
 	}
+    }
+
+  if (themes.size() == 0)
+    {
+      throw PingusError ("ThemeSelector: Couldn't find anythemes");
+    }
+  else
+    {
+      std::cout << "ThemesSelector: " << themes.size() << " Themes loaded." << std::endl;
     }
 }
 

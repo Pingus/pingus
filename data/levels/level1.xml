@@ -20,7 +20,7 @@ Doch mit gezieltem graben sollten sie noch eine Chance haben.</description>
   </global>
 
 
-<background>
+<background type="surface">
   <surface><resource type="datafile">
     <resource-datafile>textures</resource-datafile>
   <resource-ident>Textures/clouds</resource-ident>
@@ -30,7 +30,7 @@ Doch mit gezieltem graben sollten sie noch eine Chance haben.</description>
   <scroll-x>3</scroll-x>
   </background>
 
-<background>
+<background type="surface">
   <surface><resource type="datafile">
     <resource-datafile>thunderstorm</resource-datafile>
   <resource-ident>mounten</resource-ident>
@@ -48,7 +48,7 @@ Doch mit gezieltem graben sollten sie noch eine Chance haben.</description>
   <stretch-x>0</stretch-x>
   <stretch-y>0</stretch-y>
 </background>
-<background>
+<background type="surface">
   <surface><resource type="datafile">
     <resource-datafile>thunderstorm</resource-datafile>
   <resource-ident>mounten</resource-ident>

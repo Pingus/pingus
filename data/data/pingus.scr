@@ -29,7 +29,7 @@ section Other
 	brick_left    = images/misc/brick_left.pcx      (type=surface, x=0, y=0, width=16, height=2);
 
 	bash_radius   = images/pingus/bash_radius.pcx (type=surface, x=0, y=0, width=32, height=32, tcol=0);
-	digger_radius = images/pingus/digger_radius.pcx (type=surface, x=0, y=0, width=30, height=4, tcol=0);
+	digger_radius = images/pingus/digger_radius.pcx (type=surface, x=0, y=0, width=32, height=16, tcol=0);
 	bomber_radius = images/pingus/bomber_radius.pcx (type=surface, x=0, y=0, width=64, height=64, tcol=0);
 	explo         = images/pingus/explo.pcx         (type=surface, x=0, y=0, width=64, height=64, tcol=0);
 	laser_kill    = images/pingus/laser_kill.tga    (type=surface, x=0, y=0, width=33, height=32, array=9x2);

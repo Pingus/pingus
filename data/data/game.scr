@@ -8,6 +8,8 @@ section Game
 
 	loading        = images/misc/loading.pcx       (type=surface, x=0, y=0, width=175, height=66,tcol=0);
 	pingubw = images/misc/pingubw.pcx (type=surface, x=0, y=0, width=307, height=400, tcol=0);
+
+	404 = images/misc/404.pcx (type=surface, x=0, y=0, width=64, height=64);
 }
 
 section Cursors

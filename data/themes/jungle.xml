@@ -12,7 +12,7 @@
   </background>
 
   <level-list>
-    <level>jungle1.plf</level>
-    <level>jungle2.plf</level>
+    <level>jungle1.xml</level>
+    <level>jungle2.xml</level>
   </level-list>
 </pingus-world>

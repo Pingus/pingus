@@ -12,10 +12,10 @@
   </background>
 
   <level-list>
-    <level>stone.plf</level>
-    <level>block.plf</level>
-    <level>foliage1.plf</level>
-    <level>foliage3.plf</level>
-    <level>foliage4.plf</level>
+    <level>stone.xml</level>
+    <level>block.xml</level>
+    <level>foliage1.xml</level>
+    <level>foliage3.xml</level>
+    <level>foliage4.xml</level>
   </level-list>
 </pingus-world>

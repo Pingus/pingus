@@ -13,9 +13,9 @@
   </background>
 
   <level-list>
-    <level>desert1.plf</level>
-    <level>desert3.plf</level>
-      <level>desert2.plf</level>
+    <level>desert1.xml</level>
+    <level>desert3.xml</level>
+      <level>desert2.xml</level>
   </level-list>
   
 </pingus-world>

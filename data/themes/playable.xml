@@ -12,16 +12,16 @@
   </background>
   
   <level-list>
-    <level>longway.plf</level>
-    <level>rinse.plf</level>
-    <level>Lev4.plf</level>
-    <level>wland.plf</level>
-    <level>particle.plf</level>
-    <level>Stair.plf</level>
-    <level>cages.plf</level>
-    <level>partic2.plf</level>
-    <level>jewel.plf</level>
-    <level>bombing.plf</level>
+    <level>longway.xml</level>
+    <level>rinse.xml</level>
+    <level>Lev4.xml</level>
+    <level>wland.xml</level>
+    <level>particle.xml</level>
+    <level>Stair.xml</level>
+    <level>cages.xml</level>
+    <level>partic2.xml</level>
+    <level>jewel.xml</level>
+    <level>bombing.xml</level>
   </level-list>
   
 </pingus-world>

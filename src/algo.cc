@@ -1,4 +1,4 @@
-//  $Id: algo.cc,v 1.7 2000/06/23 18:39:56 grumbel Exp $
+//  $Id: algo.cc,v 1.8 2000/09/13 00:14:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include "algo.hh"
 #include <cctype>
 #include <iostream>
+
+#include "globals.hh"
 
 // Die algo, die.
 
@@ -88,6 +90,7 @@ tolowerstr(char* s)
 
 // Searches the given path to find the given file, it returns the
 // complete filename of the searched file.
+// FIXME: Remove this function...
 std::string
 find_file(const std::string& paths, const std::string& filename)
 {
@@ -108,7 +111,7 @@ find_file(const std::string& paths, const std::string& filename)
     }
 #endif
   }
-  std::cout << "find_file(): " << filename << ": File not found!" << std::endl;
+  if (verbose) std::cout << "find_file(): " << filename << ": File not found!" << std::endl;
   free(path);
   return filename;
 }

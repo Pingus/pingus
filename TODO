@@ -1,5 +1,42 @@
+GFX ToDo:
+~~~~~~~~~
+
+Desert Theme:
+ * entrance
+ * mummie/grave
+ * integration of the desert column 
+
+Industrial Theme:
+ * smaller/bigger pipes
+
+Space Theme:
+ * more groundpieces
+ * space shuttels
+ * launch pad
+ * rockets
+
+Jungle Theme:
+ * entrance/exit
+
+Snow/X-Mas Theme:
+ * entrance
+ * exit fixing, beautifying
+
+Stone Theme:
+ * Entrance
+ * more grass/mose 
+
+Foliage Theme:
+ * entrance/exit
+ * probably merge with jungle
+
+Crystal Theme:
+ * entrance 
+
+
 Release Critical:
 ~~~~~~~~~~~~~~~~~
+ o Capture Radius of blockers not large enough
  o Bridge building is broken
  o Input handling is broken, the number keys doesn't seem to work
  o Editor reagiert nicht auf Nummern Tastatur
@@ -142,6 +179,8 @@ Star Wars - Escape from the death star.
 Vulcan - Run as fast as you can.
 
 
+
+
 Sound Samples:
 ~~~~~~~~~~~~~~
 BANG.WAV      ELECTRIC.WAV  	     README	 THUNK.WAV
@@ -172,6 +211,6 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
 
 
 
-$Date: 2000/08/28 00:39:20 $
+$Date: 2000/09/13 00:14:55 $
 
 -= EOF =-

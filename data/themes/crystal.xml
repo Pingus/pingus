@@ -12,11 +12,11 @@
   </background>
   
   <level-list>
-    <level>crystal1.plf</level>
-    <level>crystal2.plf</level>
-    <level>crystal3.plf</level>
-    <level>crystal4.plf</level>
-    <level>crystal5.plf</level>
+    <level>crystal1.xml</level>
+    <level>crystal2.xml</level>
+    <level>crystal3.xml</level>
+    <level>crystal4.xml</level>
+    <level>crystal5.xml</level>
   </level-list>
 
 </pingus-world>

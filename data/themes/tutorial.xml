@@ -12,11 +12,11 @@
   </background>
   
   <level-list>
-    <level>tutorial1.plf</level>
-    <level>tutorial2.plf</level>
-    <level>tutorial3.plf</level>
-    <level>tutorial4.plf</level>
-    <level>tutorial5.plf</level>
+    <level>tutorial1.xml</level>
+    <level>tutorial2.xml</level>
+    <level>tutorial3.xml</level>
+    <level>tutorial4.xml</level>
+    <level>tutorial5.xml</level>
   </level-list>
   
 </pingus-world>

@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.12 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.13 2000/09/13 00:14:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "PingusGame.hh"
 #include "OptionMenu.hh"
 #include "System.hh"
+#include "Credits.hh"
 
 #include "SurfaceButton.hh"
 
@@ -46,24 +47,24 @@ SurfaceButton::draw()
 			 CL_Display::get_height() - 20, 
 			 System::translate(desc).c_str());
 
-      surface->put_screen(x_pos - surface->get_width()/2,
-			  y_pos - surface->get_height()/2);
+      //      surface->put_screen(x_pos - surface->get_width()/2,
+      //			  y_pos - surface->get_height()/2);
       surface_p->put_screen(x_pos - surface_p->get_width()/2,
 			    y_pos - surface_p->get_height()/2);
 
-  if (System::translate(line2).empty())
-    {
-      font_large->print_center(x_pos + 32, 
-			       y_pos - 32 - font_large->get_height()/2,
-			       System::translate(line1).c_str());
-    }
-  else
-    {
-      font_large->print_center(x_pos + 32, y_pos - 32 - font_large->get_height(), 
-			       System::translate(line1).c_str());
-      font_large->print_center(x_pos + 32, y_pos - 32,
-			       System::translate(line2).c_str());
-    }
+      if (System::translate(line2).empty())
+	{
+	  font_large->print_center(x_pos + 32, 
+				   y_pos - 32 - font_large->get_height()/2,
+				   System::translate(line1).c_str());
+	}
+      else
+	{
+	  font_large->print_center(x_pos + 32, y_pos - 32 - font_large->get_height(), 
+				   System::translate(line1).c_str());
+	  font_large->print_center(x_pos + 32, y_pos - 32,
+				   System::translate(line2).c_str());
+	}
     }
   else if (mouse_over() && CL_Mouse::left_pressed()) 
     {
@@ -74,33 +75,33 @@ SurfaceButton::draw()
 			 CL_Display::get_height() - 20, 
 			 System::translate(desc).c_str());
 
-      surface->put_screen(x_pos - surface->get_width()/2,
-			  y_pos - surface->get_height()/2);
+      //      surface->put_screen(x_pos - surface->get_width()/2,
+      //		  y_pos - surface->get_height()/2);
 
       surface_p->put_screen(x_pos - surface_p->get_width()/2 * shrink,
 			    y_pos - surface_p->get_height()/2 * shrink,
 			    shrink, shrink);
-  if (System::translate(line2).empty())
-    {
-      font_large->print_center(x_pos + 32, 
-			       y_pos - 32 - font_large->get_height()/2,
-			       System::translate(line1).c_str());
-    }
-  else
-    {
-      font_large->print_center(x_pos + 32, y_pos - 32 - font_large->get_height(), 
-			       System::translate(line1).c_str());
-      font_large->print_center(x_pos + 32, y_pos - 32,
-			       System::translate(line2).c_str());
-    }
+      if (System::translate(line2).empty())
+	{
+	  font_large->print_center(x_pos + 32, 
+				   y_pos - 32 - font_large->get_height()/2,
+				   System::translate(line1).c_str());
+	}
+      else
+	{
+	  font_large->print_center(x_pos + 32, y_pos - 32 - font_large->get_height(), 
+				   System::translate(line1).c_str());
+	  font_large->print_center(x_pos + 32, y_pos - 32,
+				   System::translate(line2).c_str());
+	}
     } 
   else 
     {
       surface_p->put_screen(x_pos - surface_p->get_width()/2,
 			    y_pos - surface_p->get_height()/2);
 
-      surface->put_screen(x_pos - surface->get_width()/2,
-			  y_pos - surface->get_height()/2);
+      //      surface->put_screen(x_pos - surface->get_width()/2,
+      //			  y_pos - surface->get_height()/2);
     }
 }
 
@@ -131,6 +132,11 @@ PlayButton::PlayButton()
   y_pos = CL_Display::get_height() * 369 / 480;
 
   //  desc["en"] = "..:: Starts the level you played at last ::..";
+  desc["en"] = "..:: The people who brought this game to you ::..";
+  desc["de"] = "..:: Wer hat den dieses Spiel verbrochen...? ::..";
+  
+  line1["en"] = "Credits";
+  line1["de"] = "Credits";
 
   surface   = PingusResource::load_surface("NewButtons/ice_off", "menu");
   //  surface   = PingusResource::load_surface("NewButtons/credits_off", "menu");
@@ -147,10 +153,14 @@ PlayButton::~PlayButton()
 void 
 PlayButton::on_click()
 {
-  loading_screen.draw();
+  Credits credits;
+  credits.display();
+  
+  // FIXME: Hack, abusing the play button for the credits
+  //  loading_screen.draw();
 
-  PingusGame game;
-  game.start_game();
+  /// PingusGame game;
+  // game.start_game();
 }
 
 ///////////////////////////////////////////////
