@@ -1,937 +1,727 @@
-<?xml version="1.0"  encoding="ISO-8859-1"?>
-
+<?xml version="1.0" encoding="utf-8"?>
 <pingus-level>
-  <global>
-    <levelname lang="en">Solid ground can block the path</levelname>
-    <levelname lang="nl">Vaste grond kan het pad blokkeren</levelname>
-    <levelname lang="it">Il terreno duro può bloccare il cammino</levelname>
-    <levelname lang="de">Fester Boden kann den Weg blockieren</levelname>
-    <levelname lang="cs">Pevné podlo¾í mù¾e omezit cestu</levelname>
-    <levelname lang="tr">Katý bloklar yolu týkayabilir</levelname>
-    <levelname lang="fr">L'acier bloque le passage</levelname>
-    <levelname lang="sr">Cvrsto zemljiste moze blokirati put</levelname>
-    <levelname lang="fi">Maasto voi tukkia tien</levelname>
-    <levelname lang="pt">Piso sólido pode bloquear a passagem</levelname>
-    <levelname lang="no">Fast grunn kan blokkere veien</levelname>
-    <levelname lang="es">El terreno duro puede bloquear el camino</levelname>
-    <levelname lang="da">Hårde ting kan blokere vejen</levelname>
-
-    <description lang="en">As you have learned in earlier levels your Pingus can dig through
-                           basically any terrain, but there is one material which they can't
-                           penetrate: steel. These regions are marked
-                           dark grey on the level map and cannot be destroyed, so
-			   you must find a way around them.
-    </description>
-    <description lang="nl">Zoals je hebt geleerd in eerdere niveau's kunnen je Pingus graven door
-                           min of meer elk terein, maar er is een materiaal waar ze niet doorheen
-                           kunnen: staal.  Deze plaatsen zijn donker grijs gemarkeerd
-                           op de niveaukaart en kunnen niet worden vernietigd, dus
-                           je zult er iets moeten zien te vinden.
-    </description>
-    <description lang="it">Come avrai appreso nei livelli precedenti, i Pingus possono
-                           scavare attraverso quasi tutti i terreni, ma c'è un materiale che
-                           non si può attraversare: l'acciaio. Queste zone sono rappresentate
-                           in grigio scuro sulla mappa e non possono essere distrutte, perciò
-			   dovrai trovare un modo per evitarle.
-    </description>
-    <description lang="de">Wie du in den früheren Levels gelernt hast, kann ein Pingu durch
-                           fast alles graben, aber es gibt etwas, dass sie nicht durchdringen
-                           können und zwar Stahl Objekte. Diese Bereiche sind auf der Karte
-                           dunkelgrau markiert und können nicht zerstört werden, also finde
-                           einen Weg, sie zu umgehen.
-    </description>
-    <description lang="cs">U¾ døíve ses nauèil, ¾e se pingové doká¾í prokopat skrze jakýkoliv
-			   druh zeminy. Tady se ale v zemi nacházejí kovové pøedmìty,
-			   které prokopat nejdou. Tyto vìci jsou na mapce vyznaèeny
-                           tmavì ¹edou barvou a nemohou být nijak znièeny. Musí¹ je
-                           obejít.
-    </description>
-    <description lang="tr">Daha önceki seviylerde, Pingularýmýz istedikleri yeri
-                           delebiliyoralardý, ama çelikten yapýlmýþ bazý nesneleri delmeleri
-                           mümkün deðil. Bu tür nesneler haritmýzda koyu gri ile gösterilen
-                           yerlerdir. Bunlarý yok edemeyeceðin için çevrelerinden dolaþmanýn
-                           bir yolunu bulman gerekiyor.
-    </description>
-    <description lang="fr">Comme vous l'avez appris dans les niveaux précédants, vos Pingus peuvent
-                           creuser pratiquement tous les sols, mais il y a une chose qu'ils ne
-                           peuvent percer et c'est les objets métalliques. Ces régions sont
-                           marquées de gris foncé sur la carte du niveau et ils ne peuvent être
-                           détruits, alors contourné les.
-    </description>
-    <description lang="sr">I ranijim nivoima smo naucili da Pingusi mogu prakticno kopati
-                           kroz bilo koje zemljiste, ali postoji nesto sto ne mogu
-                           prokopati. To su celicni objekti. Oni su oznaceni tamno sivom
-			   bojom na mapi nivoa i ne mogu biti unisteni, vec treba pronaci
-			   nacin da se zaobidju.
-    </description>
-    <description lang="fi">Kuten olet jo aiemmissa kentissä oppinutkin, pingut pystyvät
-                           kaivautumaan lähes millaisen maaston läpi tahansa, mutta yhtä
-                           materiaalia ne eivät saa rikki: terästä. Teräksiset alueet
-                           on merkittu karttaan tummanharmaalla ja koska niitä ei hajotettua
-			   mitenkään, ne täytyy vain kiertää.
-    </description>
-    <description lang="pt">Tal como aprendido nos passados níveis, os teus Pingus podem escavar através
-                           de basicamente qualquer tipo de terreno, mas há um material o qual não são capazes
-                           de penetrar: aço. Estas regiões estão assinaladas a
-                           cizento escuro no mapa do nível e não podem ser destruídas, por isso,
-			   precisas de encontrar um caminho entre estas.
-    </description>
-    <description lang="no">Som du har lært i tidligere brett kan Pingusene dine grave gjennom
-                           nesten hvilket som helst terreng, men det er et materiale de ikke kan
-                           komme gjennom: stål. Disse områdene er merket mørk grå på kartet og
-                           kan ikke bli ødelagt, så du må finne en vei utenom.
-    </description>
-    <description lang="es">Como ya has visto, tus pingüinos pueden excavar casi cualquier tipo de terreno, excepto
-                           uno : el acero. Éstos terrenos se muestran en color gris, y deberás encontrar alguna
-			   forma de sortearlos.
-    </description>
-    <description lang="da">Som du har lært i tidligere baner, kan dine Pinguer lave huller i
-                           stort set alle slags terræn, men der er én slags materiale, de ikke
-                           kan gennemtrænge: stål. Sådanne områder markeres med mørkegråt på
-                           oversigtskortet (som ses i nederste venstre hjørne), og kan ikke fjernes
-                           eller ødelægges, så du må finde en vej rundt om dem.
-    </description>
-
+  <version>2</version>
+  <head>
+    <levelname>Solid ground can block the path</levelname>
+    <description>As you have learned in earlier levels your Pingus can dig through basically any terrain, but there is one material which they can't penetrate: steel. These regions are marked dark grey on the level map and cannot be destroyed, so you must find a way around them.</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>20</number-of-pingus>
     <number-to-save>10</number-to-save>
     <time>-1</time>
-    <width>1000</width>
-    <height>700</height>
     <difficulty>10</difficulty>
     <playable>1</playable>
-    <comment></comment>
+    <comment />
     <music>pingus-8.it</music>
-  </global>
-
-  <action-list>
-    <basher count="10"/>
-    <bomber count="10"/>
-    <digger count="10"/>
-    <blocker count="5"/>
-  </action-list>
-
-<background type="surface">
-  <surface><resource type="datafile">
-    <resource-datafile>textures</resource-datafile>
-  <resource-ident>textures/clouds2</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <color>
-    <red>0</red>
-    <green>0</green>
-    <blue>0</blue>
-    <alpha>0</alpha>
-  </color>
-  <scroll-x>1</scroll-x>
-  <scroll-y>0</scroll-y>
-  <para-x>0.5</para-x>
-  <para-y>0.5</para-y>
-  <stretch-x>0</stretch-x>
-  <stretch-y>0</stretch-y>
-  <keep-aspect>0</keep-aspect>
-  <position>
-    <x-pos>150</x-pos>
-    <y-pos>-3</y-pos>
-    <z-pos>-150</z-pos>
-  </position>
-</background>
-
-<hotspot>
-  <surface><resource type="datafile">
-    <resource-datafile>entrances</resource-datafile>
-  <resource-ident>entrances/snow_back</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>481.668</x-pos>
-    <y-pos>95.2828</y-pos>
-    <z-pos>-50</z-pos>
-  </position>
-  <speed>-1</speed>
-  <parallax>1</parallax>
-</hotspot>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece7</resource-ident>
-    <modifier>ROT0FLIP</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>252</x-pos>
-    <y-pos>270</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece9</resource-ident>
-    <modifier>ROT270FLIP</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>283</x-pos>
-    <y-pos>437</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece9</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>387</x-pos>
-    <y-pos>333</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece7</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>623</x-pos>
-    <y-pos>257</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece10</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>248</x-pos>
-    <y-pos>248</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece8</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>338</x-pos>
-    <y-pos>268</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece10</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>396</x-pos>
-    <y-pos>247</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece10</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>569</x-pos>
-    <y-pos>246</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece8</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>391</x-pos>
-    <y-pos>398</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece7</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>618</x-pos>
-    <y-pos>328</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece7</resource-ident>
-    <modifier>ROT0FLIP</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>258</x-pos>
-    <y-pos>342</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece7</resource-ident>
-    <modifier>ROT0FLIP</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>273</x-pos>
-    <y-pos>409</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece7</resource-ident>
-    <modifier>ROT0FLIP</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>332</x-pos>
-    <y-pos>405</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece9</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>447</x-pos>
-    <y-pos>437</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece9</resource-ident>
-    <modifier>ROT270</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>688</x-pos>
-    <y-pos>406</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece7</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>596</x-pos>
-    <y-pos>605</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece10</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>288</x-pos>
-    <y-pos>615</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece10</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>461</x-pos>
-    <y-pos>614</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece3</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>245</x-pos>
-    <y-pos>244</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece3</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>394</x-pos>
-    <y-pos>244</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece3</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>620</x-pos>
-    <y-pos>243</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece2</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>559</x-pos>
-    <y-pos>244</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece8</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>311</x-pos>
-    <y-pos>636</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<exit use-old-pos-handling="0">
-  <position>
-    <x-pos>563</x-pos>
-    <y-pos>616</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <surface><resource type="datafile">
-    <resource-datafile>exits</resource-datafile>
-  <resource-ident>exits/ice2</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <owner-id>0</owner-id></exit>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece3</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>364</x-pos>
-    <y-pos>611</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>ground</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/piece3</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>522</x-pos>
-    <y-pos>613</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_horiz</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>285</x-pos>
-    <y-pos>298</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_horiz</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>387</x-pos>
-    <y-pos>298</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_horiz</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>450</x-pos>
-    <y-pos>298</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_horiz</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>704</x-pos>
-    <y-pos>298</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_horiz</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>641</x-pos>
-    <y-pos>298</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_horiz</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>578</x-pos>
-    <y-pos>298</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_horiz</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>514</x-pos>
-    <y-pos>298</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_small</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>758</x-pos>
-    <y-pos>298</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_small</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>255</x-pos>
-    <y-pos>298</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_horiz</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>260</x-pos>
-    <y-pos>381</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_horiz</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>324</x-pos>
-    <y-pos>381</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_horiz</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>387</x-pos>
-    <y-pos>381</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_horiz</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>450</x-pos>
-    <y-pos>381</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_horiz</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>715</x-pos>
-    <y-pos>381</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_horiz</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>578</x-pos>
-    <y-pos>381</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_horiz</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>514</x-pos>
-    <y-pos>381</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_small</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>641</x-pos>
-    <y-pos>380</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_horiz</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>278</x-pos>
-    <y-pos>477</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_horiz</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>328</x-pos>
-    <y-pos>477</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_horiz</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>454</x-pos>
-    <y-pos>477</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_horiz</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>709</x-pos>
-    <y-pos>477</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_horiz</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>645</x-pos>
-    <y-pos>477</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_horiz</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>582</x-pos>
-    <y-pos>477</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_horiz</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>518</x-pos>
-    <y-pos>477</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_small</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>392</x-pos>
-    <y-pos>476</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<entrance>
-  <position>
-    <x-pos>529.357</x-pos>
-    <y-pos>137.143</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <type>generic</type>
-  <direction>misc</direction>
-  <release-rate>150</release-rate>
-  <owner-id>0</owner-id>
-</entrance>
-
-<group>
-<liquid use-old-width-handling="0">
-  <surface><resource type="datafile">
-    <resource-datafile>liquids</resource-datafile>
-  <resource-ident>Liquid/water2</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>-9</x-pos>
-    <y-pos>625</y-pos>
-    <z-pos>-50</z-pos>
-  </position>
-  <width>17</width>
-  <speed>55</speed>
-</liquid>
-
-<liquid use-old-width-handling="0">
-  <surface><resource type="datafile">
-    <resource-datafile>liquids</resource-datafile>
-  <resource-ident>Liquid/water2</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>-45</x-pos>
-    <y-pos>638</y-pos>
-    <z-pos>100</z-pos>
-  </position>
-  <width>17</width>
-  <speed>60</speed>
-</liquid>
-
-</group>
-
-<hotspot>
-  <surface><resource type="datafile">
-    <resource-datafile>entrances</resource-datafile>
-  <resource-ident>entrances/snow_front</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>481.688</x-pos>
-    <y-pos>95.3324</y-pos>
-    <z-pos>100</z-pos>
-  </position>
-  <speed>-1</speed>
-  <parallax>1</parallax>
-</hotspot>
-
-  <start-position>
-  <position>
-    <x-pos>519</x-pos>
-    <y-pos>162</y-pos>
-    <z-pos>1000</z-pos>
-  </position>
-  </start-position>
-
+    <actions>
+      <basher>10</basher>
+      <bomber>10</bomber>
+      <digger>10</digger>
+      <blocker>5</blocker>
+    </actions>
+    <levelsize>
+      <width>1000</width>
+      <height>700</height>
+    </levelsize>
+  </head>
+  <objects>
+    <surface-background>
+      <surface>
+        <image>textures/clouds2</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <color>
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+        <alpha>0</alpha>
+      </color>
+      <scroll-x>1</scroll-x>
+      <scroll-y>0</scroll-y>
+      <para-x>0.5</para-x>
+      <para-y>0.5</para-y>
+      <stretch-x>0</stretch-x>
+      <stretch-y>0</stretch-y>
+      <keep-aspect>0</keep-aspect>
+      <position>
+        <x>150</x>
+        <y>-3</y>
+        <z>-150</z>
+      </position>
+    </surface-background>
+    <hotspot>
+      <surface>
+        <image>entrances/snow_back</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>481.668</x>
+        <y>95.2828</y>
+        <z>-50</z>
+      </position>
+      <speed>-1</speed>
+      <parallax>1</parallax>
+    </hotspot>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece7</image>
+        <modifer>ROT0FLIP</modifer>
+      </surface>
+      <position>
+        <x>252</x>
+        <y>270</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece9</image>
+        <modifer>ROT270FLIP</modifer>
+      </surface>
+      <position>
+        <x>283</x>
+        <y>437</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece9</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>387</x>
+        <y>333</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece7</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>623</x>
+        <y>257</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece10</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>248</x>
+        <y>248</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece8</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>338</x>
+        <y>268</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece10</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>396</x>
+        <y>247</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece10</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>569</x>
+        <y>246</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece8</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>391</x>
+        <y>398</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece7</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>618</x>
+        <y>328</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece7</image>
+        <modifer>ROT0FLIP</modifer>
+      </surface>
+      <position>
+        <x>258</x>
+        <y>342</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece7</image>
+        <modifer>ROT0FLIP</modifer>
+      </surface>
+      <position>
+        <x>273</x>
+        <y>409</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece7</image>
+        <modifer>ROT0FLIP</modifer>
+      </surface>
+      <position>
+        <x>332</x>
+        <y>405</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece9</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>447</x>
+        <y>437</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece9</image>
+        <modifer>ROT270</modifer>
+      </surface>
+      <position>
+        <x>688</x>
+        <y>406</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece7</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>596</x>
+        <y>605</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece10</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>288</x>
+        <y>615</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece10</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>461</x>
+        <y>614</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece3</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>245</x>
+        <y>244</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece3</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>394</x>
+        <y>244</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece3</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>620</x>
+        <y>243</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece2</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>559</x>
+        <y>244</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece8</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>311</x>
+        <y>636</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <exit>
+      <position>
+        <x>563</x>
+        <y>616</y>
+        <z>0</z>
+      </position>
+      <surface>
+        <image>exits/ice2</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <owner-id>0</owner-id>
+    </exit>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece3</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>364</x>
+        <y>611</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>ground</type>
+      <surface>
+        <image>groundpieces/ground/snow/piece3</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>522</x>
+        <y>613</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_horiz</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>285</x>
+        <y>298</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_horiz</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>387</x>
+        <y>298</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_horiz</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>450</x>
+        <y>298</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_horiz</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>704</x>
+        <y>298</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_horiz</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>641</x>
+        <y>298</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_horiz</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>578</x>
+        <y>298</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_horiz</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>514</x>
+        <y>298</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_small</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>758</x>
+        <y>298</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_small</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>255</x>
+        <y>298</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_horiz</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>260</x>
+        <y>381</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_horiz</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>324</x>
+        <y>381</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_horiz</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>387</x>
+        <y>381</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_horiz</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>450</x>
+        <y>381</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_horiz</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>715</x>
+        <y>381</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_horiz</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>578</x>
+        <y>381</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_horiz</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>514</x>
+        <y>381</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_small</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>641</x>
+        <y>380</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_horiz</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>278</x>
+        <y>477</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_horiz</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>328</x>
+        <y>477</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_horiz</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>454</x>
+        <y>477</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_horiz</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>709</x>
+        <y>477</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_horiz</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>645</x>
+        <y>477</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_horiz</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>582</x>
+        <y>477</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_horiz</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>518</x>
+        <y>477</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <groundpiece>
+      <type>solid</type>
+      <surface>
+        <image>groundpieces/solid/misc/metalplate_small</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>392</x>
+        <y>476</y>
+        <z>0</z>
+      </position>
+    </groundpiece>
+    <entrance>
+      <position>
+        <x>529.357</x>
+        <y>137.143</y>
+        <z>0</z>
+      </position>
+      <type>generic</type>
+      <direction>misc</direction>
+      <release-rate>150</release-rate>
+      <owner-id>0</owner-id>
+    </entrance>
+    <liquid>
+      <surface>
+        <image>liquids/water2</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>-9</x>
+        <y>625</y>
+        <z>-50</z>
+      </position>
+      <width>17</width>
+      <speed>55</speed>
+    </liquid>
+    <liquid>
+      <surface>
+        <image>liquids/water2</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>-45</x>
+        <y>638</y>
+        <z>100</z>
+      </position>
+      <width>17</width>
+      <speed>60</speed>
+    </liquid>
+    <hotspot>
+      <surface>
+        <image>entrances/snow_front</image>
+        <modifer>ROT0</modifer>
+      </surface>
+      <position>
+        <x>481.688</x>
+        <y>95.3324</y>
+        <z>100</z>
+      </position>
+      <speed>-1</speed>
+      <parallax>1</parallax>
+    </hotspot>
+  </objects>
 </pingus-level>
-
