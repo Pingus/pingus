@@ -1,4 +1,4 @@
-//  $Id: EditorObjGroupData.cc,v 1.2 2002/01/15 10:48:51 grumbel Exp $
+//  $Id: EditorObjGroupData.cc,v 1.3 2002/03/02 14:03:41 sphair Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,11 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "EditorObjGroupData.hh"
-
-/// Empty placeholder
-EditorObjGroupData::EditorObjGroupData();
-/// Empty placeholder
-EditorObjGroupData::~EditorObjGroupData();
 
 void 
 EditorObjGroupData::write_xml(std::ofstream* xml)
