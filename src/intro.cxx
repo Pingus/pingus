@@ -1,4 +1,4 @@
-//  $Id: intro.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: intro.cxx,v 1.3 2002/08/16 17:15:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -106,12 +106,6 @@ Intro::update (float delta)
 }
 
 void 
-Intro::on_click ()
-{
-  std::cout << _("Start menu") << std::endl;
-}
-
-void 
 Intro::preload ()
 {
   font = PingusResource::load_font ("Fonts/pingus","fonts");
@@ -129,11 +123,11 @@ Intro::preload ()
 }
 
 
-void 
+/*void 
 Intro::on_button_press (CL_InputDevice* device,const CL_Key& key)
 {
   if (device == CL_Input::keyboards[0] && key.id == CL_KEY_SPACE)
     manager->set_menu (&(manager->mainmenu));
-}
+}*/
 
 /* EOF */

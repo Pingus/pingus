@@ -1,4 +1,4 @@
-//  $Id: intro.hxx,v 1.2 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: intro.hxx,v 1.3 2002/08/16 17:15:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,8 +48,6 @@ public:
   void draw();
   void update (float delta);
   void preload ();
-  void on_click ();
-  void on_button_press (CL_InputDevice* device,const CL_Key& key);
 };
 
 #endif

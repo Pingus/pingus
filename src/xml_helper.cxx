@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.11 2002/08/16 13:02:06 torangan Exp $
+//  $Id: xml_helper.cxx,v 1.12 2002/08/16 17:15:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 
 // Hack: if xmlIsBlankNode() is not present, we define an empty dummy
 #ifdef NO_XMLISBLANKNODE
+#error "int xmlIsBlankNode(xmlNodePtr node) missing from libxml"
 int xmlIsBlankNode(xmlNodePtr node) { return 0; }
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: pingus_menu.cxx,v 1.5 2002/07/30 14:57:25 grumbel Exp $
+//  $Id: pingus_menu.cxx,v 1.6 2002/08/16 17:15:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,14 +47,8 @@ PingusMenu::preload ()
       pout << "PingusMenu::init ()" << std::endl;
       //event_enabled = true;
       is_init = true;
-	  SurfaceButton* editor_button = new EditorButton (this);
- 
-      if (start_editor)
-	{  
-	  std::cout << "Editor starting is disabled" << std::endl;
-	  //editor_button->on_click ();
-	}
-
+      SurfaceButton* editor_button = new EditorButton (this);
+	  
       background = PingusResource::load_surface("misc/logo", "core");
 
       // FIXME: Lilla... memory leak

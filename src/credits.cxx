@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.3 2002/08/04 15:42:23 grumbel Exp $
+//  $Id: credits.cxx,v 1.4 2002/08/16 17:15:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,6 +50,7 @@ Credits::init ()
     {
       is_init = true;
       
+      fast_scrolling = false;
       surface = PingusResource::load_surface("Game/pingubw", "game");
       font = PingusResource::load_font("Fonts/pingus","fonts");
       font_small = PingusResource::load_font("Fonts/pingus_small","fonts");
@@ -109,14 +110,17 @@ Credits::~Credits()
 void 
 Credits::update (const GameDelta& delta)
 {
-  offset -= 50.0f * delta.get_time ();
+  if (fast_scrolling)
+    offset -= 250.0f * delta.get_time ();
+  else
+    offset -= 50.0f * delta.get_time ();
 
   if (offset < -1200.0f)
     ScreenManager::instance()->pop_screen ();
 }
 
 void 
-Credits::draw ()
+Credits::draw_background ()
 {
   int x;
   int y;
@@ -174,6 +178,23 @@ Credits::instance ()
     return instance_;
   else
     return instance_ = new Credits ();
+}
+
+void
+Credits::on_pause_press ()
+{
+}
+
+void
+Credits::on_fast_forward_press ()
+{
+  fast_scrolling != fast_scrolling;
+}
+
+void
+Credits::on_escape_press ()
+{
+  ScreenManager::instance ()->pop_screen ();
 }
 
 /* EOF */

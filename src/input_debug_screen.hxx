@@ -1,4 +1,4 @@
-//  $Id: credits.hxx,v 1.5 2002/08/16 17:15:31 grumbel Exp $
+//  $Id: input_debug_screen.hxx,v 1.1 2002/08/16 17:15:31 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,58 +17,35 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_CREDITS_HXX
-#define HEADER_PINGUS_CREDITS_HXX
+#ifndef HEADER_PINGUS_INPUT_DEBUG_SCREEN_HXX
+#define HEADER_PINGUS_INPUT_DEBUG_SCREEN_HXX
 
-#include <string>
-#include <vector>
-#include <ClanLib/Display/Display/surface.h>
-#include "gui_screen.hxx"
+#include "pingus.hxx"
+#include "screen.hxx"
 
-class CL_Font;
-class GameDelta;
-
-class Credits : public GUIScreen
+class InputDebugScreen : public Screen
 {
 private:
-  static Credits* instance_;
-
-  bool fast_scrolling;
-  CL_Surface surface;
-  CL_Font*    font;
-  CL_Font*    font_small;
-
-  bool is_init;
-
-  float offset;
-
-  /** The string's which are shown in the scrolling text, the first
-      character of the string can be used to apply a special format.
-      
-      'n' - Inserts a newline
-      '_' - Use small font
-      '-' - Use large font
-  */
-  std::vector<std::string> credits;
-
-  Credits();
+  
 public:
-  virtual ~Credits();
+  InputDebugScreen ();
+  virtual ~InputDebugScreen ();
 
-  void init ();
+  /** Draw this screen */
+  void draw ();
+
+  /** Pass a delta to the screen */
   void update (const GameDelta& delta);
-  void draw_background ();
 
+  /** Called once the screen gets activated and becomes the current
+      screen */
   void on_startup ();
 
-  static Credits* instance ();
-
-  void on_pause_press ();
-  void on_fast_forward_press ();
-  void on_escape_press ();
+  /** Called once the screen gets replaced or poped or shadowed by a
+      newly pushed screen */ 
+  void on_shutdown ();
 };
 
 #endif
 
 /* EOF */
-

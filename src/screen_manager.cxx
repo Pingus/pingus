@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.9 2002/08/13 18:44:50 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.10 2002/08/16 17:15:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "globals.hxx"
 #include "input/controller.hxx"
 #include "delta_manager.hxx"
 #include "game_delta.hxx"
@@ -26,6 +27,7 @@
 #include "pingus_menu_manager.hxx"
 #include "screen_manager.hxx"
 #include "path_manager.hxx"
+#include "input_debug_screen.hxx"
 
 ScreenManager* ScreenManager::instance_ = 0;
 
@@ -37,7 +39,10 @@ ScreenManager::ScreenManager ()
   cached_action = none;
 
   // Set the root screen
-  push_screen (PingusMenuManager::instance (), false);
+  if (!show_input_debug_screen)
+    push_screen (PingusMenuManager::instance (), false);
+  else
+    push_screen (new InputDebugScreen (), true);
 }
 
 ScreenManager::~ScreenManager ()

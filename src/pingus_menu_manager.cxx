@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.cxx,v 1.9 2002/08/04 15:42:23 grumbel Exp $
+//  $Id: pingus_menu_manager.cxx,v 1.10 2002/08/16 17:15:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Input/input.h>
 #include <ClanLib/Display/Input/keyboard.h>
 #include "globals.hxx"
@@ -35,10 +36,10 @@ PingusMenuManager::PingusMenuManager ()
     exitmenu (this)
 {
   //current_menu = 0;
-  if (intro_disabled)
-    push_menu (&mainmenu);
-  else
-    push_menu (&intro); 
+  //if (intro_disabled)
+  push_menu (&mainmenu);
+  //else
+  //push_menu (&intro); 
 }
 
 PingusMenuManager::~PingusMenuManager ()
@@ -49,6 +50,9 @@ void
 PingusMenuManager::draw ()
 {
   background.draw ();
+  CL_Display::fill_rect(0, CL_Display::get_height () - 22,
+			CL_Display::get_width (), CL_Display::get_height (),
+			0, 0, 0, 1.0f);
 
   for (MenuStackIter i = menu_stack.begin (); i != menu_stack.end (); ++i)
     (*i)->draw ();
@@ -60,8 +64,7 @@ PingusMenuManager::update (const GameDelta& delta)
   background.update (delta.get_time ());
   // We copy the menu_stack so that we don't invalidate our
   // iterators when menu's are removed/added in update()
-  std::vector<PingusSubMenu *> tmp_menu_stack = menu_stack;
-
+  //std::vector<PingusSubMenu *> tmp_menu_stack = menu_stack;
   /*for (MenuStackIter i = tmp_menu_stack.begin (); i != tmp_menu_stack.end (); ++i)
     (*i)->update (delta);*/
   menu_stack.back ()->update (delta);

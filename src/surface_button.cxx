@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.8 2002/08/14 12:45:02 torangan Exp $
+//  $Id: surface_button.cxx,v 1.9 2002/08/16 17:15:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -122,12 +122,13 @@ SurfaceButton::on_pointer_enter ()
 {
   mouse_over = true;
   PingusSound::play_sound ("sounds/chain.wav", 0.1f);
+  //std::cout << "X: " << this << "enter" << std::endl;
 }
 
 void
 SurfaceButton::on_pointer_leave ()
 {
-  std::cout << "X: " << this << "leave" << std::endl;
+  //std::cout << "X: " << this << "leave" << std::endl;
   mouse_over = false;
 }
 

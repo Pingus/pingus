@@ -1,4 +1,4 @@
-//  $Id: globals.hxx,v 1.5 2002/08/16 13:03:35 torangan Exp $
+//  $Id: globals.hxx,v 1.6 2002/08/16 17:15:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,7 @@ extern bool        use_datafile;                    ///< --use-datafile
 extern float       frame_skip;                      ///< --frame-skip
 extern bool        use_opengl;                      ///< --use-opengl
 extern bool        action_help;                     ///< --action-help
-
+extern bool        show_input_debug_screen;         ///
 
 extern std::string global_username;                 ///< The name of the currently logged in user
 extern std::string global_email;                    ///< The email address of the currently logged in user
