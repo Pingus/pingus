@@ -1,4 +1,4 @@
-//  $Id: bridger.hxx,v 1.4 2002/06/24 22:52:57 grumbel Exp $
+//  $Id: bridger.hxx,v 1.5 2002/06/26 10:48:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,6 +48,7 @@ private:
   CL_Vector last_pos;
 
   enum Mode { B_WALKING, B_BUILDING } mode;
+  enum { MAX_BRICKS = 15 };
 public:
   Bridger();
 

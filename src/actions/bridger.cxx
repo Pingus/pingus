@@ -1,4 +1,4 @@
-//  $Id: bridger.cxx,v 1.4 2002/06/25 18:15:18 grumbel Exp $
+//  $Id: bridger.cxx,v 1.5 2002/06/26 10:48:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,17 +36,13 @@ CL_Surface Bridger::brick_l;
 CL_Surface Bridger::brick_r;
 CL_Surface Bridger::static_surface;
 
-Bridger::Bridger() : bricks(15), block_build(false), mode(B_BUILDING) 
+Bridger::Bridger() : bricks(MAX_BRICKS), block_build(false), mode(B_BUILDING) 
 {
 }
 
 void
 Bridger::init(void)
 {
-  bricks = 15;
-  mode = B_BUILDING;
-  block_build = false;
-
   if (!static_surfaces_loaded)
     {
       static_surface = PingusResource::load_surface ("Pingus/bridger0", "pingus");
@@ -67,6 +63,18 @@ Bridger::init(void)
 void
 Bridger::draw_offset(int x, int y, float /*s*/)
 {
+
+  int x_offset(6), y_offset(4);
+
+  if (bricks == MAX_BRICKS) {
+    x_offset = -2;
+    y_offset = 0;
+    
+  } else if (bricks == MAX_BRICKS - 1) {
+    x_offset = 3;
+    y_offset = 2;
+  }
+
   switch (mode)
     {
     case B_BUILDING:
@@ -75,8 +83,8 @@ Bridger::draw_offset(int x, int y, float /*s*/)
       else
 	build_sprite.set_direction (Sprite::RIGHT);
       
-      build_sprite.put_screen(pingu->get_x () + x - (6*pingu->direction),
-			      pingu->get_y () + y + 4);
+      build_sprite.put_screen(pingu->get_x () + x - (x_offset * pingu->direction),
+			      pingu->get_y () + y + y_offset);
       break;
       
     case B_WALKING:
@@ -85,8 +93,8 @@ Bridger::draw_offset(int x, int y, float /*s*/)
       else
 	walk_sprite.set_direction (Sprite::RIGHT);
       
-      walk_sprite.put_screen(pingu->get_x () + x - (6*pingu->direction),
-			      pingu->get_y () + y + 5);
+      walk_sprite.put_screen(pingu->get_x () + x - (x_offset * pingu->direction),
+			      pingu->get_y () + y + y_offset);
       break;
     }
 }
