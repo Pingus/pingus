@@ -174,7 +174,7 @@ if  ( !isset($_GET["l"]) || !isset($_GET["c"]) )
             print "<table width='100%' border='0'>\n" .
              "<tr><td style='width:160px; height:120px;'>" .
              "<a href='$PHP_SELF?c=" . urlencode($c["name"]) . "&l=" . urlencode($l) . "'>".
-             "<img src='http://pingus.seul.org/levels/thumb/$jpg' align='left' border='0'>".
+             "<img src='/levels/thumb/$jpg' align='left' border='0' alt='thumbnail'>".
              "</a></td><td>\n";
           }
 
@@ -193,9 +193,9 @@ if  ( !isset($_GET["l"]) || !isset($_GET["c"]) )
             print "<b>Not playable</b><br>";
           if ( $cnt > 0 )
             print "Rating:" . str_repeat( "*", intval($ldata["avgrating"])) . "<br>";
-          print " view <a href='http://pingus.seul.org/levels/33/$jpg' target='levelview'>third</a>".
-            " / <a href='http://pingus.seul.org/levels/50/$jpg' target='levelview'>half</a>" .
-            " / <a href='http://pingus.seul.org/levels/100/$jpg' target='levelview'>full</a><br>" .
+          print " view <a href='/levels/33/$jpg' target='levelview'>third</a>".
+            " / <a href='/levels/50/$jpg' target='levelview'>half</a>" .
+            " / <a href='/levels/100/$jpg' target='levelview'>full</a><br>" .
             /*"play with <a href='data/levels/" . urlencode($c["name"]) . "/" . urlencode($l) . ".pingus'>Subversion</a>" .
             " / <a href='data/levels/" . urlencode($c["name"]) . "/" . urlencode($l) . ".xml'>0.6</a> version" .
             "<br>";*/
@@ -255,7 +255,7 @@ else
       "Author" => str_replace("@", "<b><small>PingusNoSpam</small></b>@",
         htmlentities($leveldata["author"])),
       );
-    print( "<table border='1'>\n" );
+    print( "<table border='1' width='100%'>\n" );
     while( list($key,$val) = each( $tbl ))
       print("<tr><td><strong>" . htmlentities($key) . "</strong></td>\n" .
             "<td colspan='2'>" . $val . "</td></tr>\n");
@@ -271,18 +271,18 @@ else
     while( list($key,$val) = each( $tbl ))
     {
       print("<tr><td><strong>" . $key . "</strong></td>");
-      print ("<td width='100%'>\n" . htmlentities($val) . "</td>");
+      print ("<td>\n" . htmlentities($val) . "</td>");
       // Thumbnail
       if ( $i++ == 0)
       {
         $jpg = htmlentities($c) . "/" . htmlentities($l) . ".jpg";
-        print ("<td rowspan='5' valign='top' align='center'>\n".
-          "  <img src='http://pingus.seul.org/levels/thumb/$jpg' border='1'><br/>\n".
-          "  see <a href='http://pingus.seul.org/levels/33/$jpg' target='levelview'>third</a> /".
-          " <a href='http://pingus.seul.org/levels/50/$jpg' target='levelview'>half</a> / \n".
-          "  <a href='http://pingus.seul.org/levels/100/$jpg' target='levelview'>full</a> size\n<br>".
-          "<a href='data/levels/" . htmlentities($c) . "/" . htmlentities($l) . ".pingus'>play</a>\n" .
-          "</td>\n" );
+        print ("<td rowspan='5' valign='top' align='center' style='width:160px;'><small>\n".
+          "  <img src='/levels/thumb/$jpg' border='1' alt='thumbnail'><br/>\n".
+          "  see <a href='/levels/33/$jpg' target='levelview'>third</a> /".
+          " <a href='/levels/50/$jpg' target='levelview'>half</a> / \n".
+          "  <a href='/levels/100/$jpg' target='levelview'>full</a> size\n<br>".
+          "<a href='data/levels/" . htmlentities($c) . "/" . htmlentities($l) . ".pingus'>play level</a>" .
+          " (requires Pingus 0.6.1 or later)</small></td>\n" );
       }
     }
 
@@ -304,14 +304,13 @@ else
                  "style='cursor: pointer' src='gfx/actions/$a.png' " .
                  "onclick='document.getElementById(\"CommentForm\").comment.value = " .
                  "document.getElementById(\"CommentForm\").comment.value + " .
-                 "document.getElementById(\"Pic$a\").name'></a> x " .
+                 "document.getElementById(\"Pic$a\").name'> x " .
                  $ac . " ");
       }
     }
 
     print( "</td></tr></table>\n" );
 ?>
-    </p>
     <hr/>
 <?
     // ==================================================================
