@@ -8,27 +8,27 @@ Introduction
 
    Pingus is a free Lemmings(tm) clone for GNU/Linux, Win32 and other
    operating systems supported by ClanLib. It is covered under the GPLv2,
-   check the file COPYING, for more informations.
+   check the file COPYING for more information.
    
    See `INSTALL' for instructions on how to compile and run Pingus from
    source. If you are using the static binary have a look at the file
    README.binary. You might also want to read the file `FAQ' if you have
-   throuble getting things to work.
+   trouble getting things to work.
    
-   Music for the game is seperatly available at the Pingus web page.
+   Music for the game is separately available at the Pingus web page.
    
-   If you want to help developing Pingus, have a look on its web page:
+   If you want to help developing Pingus, have a look at its web page:
    
      * http://www.pingus.cx
        
-   for up to date informations.
+   for up to date information.
      _________________________________________________________________
    
 Mailing Lists
 
-   There exist currently four mailing lists for Pingus (announce, users,
-   developers and cvs), for information on how to subscribe to any of
-   this list have a look at:
+   There are currently four mailing lists for Pingus (announce, users,
+   developers and cvs). For information on how to subscribe to any of
+   these lists have a look at:
    
      * http://pingus.seul.org/contact.html 
      _________________________________________________________________
@@ -36,4 +36,4 @@ Mailing Lists
 Bug Reports
 
    Questions about the game and bug reports should go to Ingo Ruhnke
-   <grumbel@gmx.de> or even better one of the mailing lists.
+   <grumbel@gmx.de> or even better to one of the mailing lists.
