@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.20 2002/09/17 01:03:59 grumbel Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.21 2002/09/18 15:00:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,9 +21,6 @@
 #include "xml_helper.hxx"
 #include "pingus_error.hxx"
 
-// Backgrounds
-#include "backgrounds/thunderstorm_background_data.hxx"
-
 // Special Objects
 #include "hotspot_data.hxx"
 #include "entrance_data.hxx"
@@ -34,21 +31,22 @@
 #include "worldobjsdata/bumper_data.hxx"
 #include "worldobjsdata/conveyor_belt_data.hxx"
 #include "worldobjsdata/fake_exit_data.hxx"
+#include "worldobjsdata/groundpiece_data.hxx"
 #include "worldobjsdata/guillotine_data.hxx"
 #include "worldobjsdata/hammer_data.hxx"
 #include "worldobjsdata/ice_block_data.hxx"
 #include "worldobjsdata/info_box_data.hxx"
 #include "worldobjsdata/laser_exit_data.hxx"
+#include "worldobjsdata/rain_generator_data.hxx"
 #include "worldobjsdata/smasher_data.hxx"
+#include "worldobjsdata/snow_generator_data.hxx"
 #include "worldobjsdata/solid_color_background_data.hxx"
 #include "worldobjsdata/spike_data.hxx"
 #include "worldobjsdata/starfield_background_data.hxx"
 #include "worldobjsdata/surface_background_data.hxx"
 #include "worldobjsdata/switch_door_data.hxx"
 #include "worldobjsdata/teleporter_data.hxx"
-#include "worldobjsdata/rain_generator_data.hxx"
-#include "worldobjsdata/snow_generator_data.hxx"
-#include "worldobjsdata/groundpiece_data.hxx"
+#include "worldobjsdata/thunderstorm_background_data.hxx"
 
 using namespace WorldObjsData;
 

@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.22 2002/09/16 20:52:22 torangan Exp $
+//  $Id: object_selector.cxx,v 1.23 2002/09/18 15:00:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,11 +39,10 @@
 #include "../path_manager.hxx"
 #include "../editor_hotspot.hxx"
 
-#include "../backgrounds/thunderstorm_background.hxx"
-
 #include "../worldobjsdata/solid_color_background_data.hxx"
 #include "../worldobjsdata/starfield_background_data.hxx"
 #include "../worldobjsdata/surface_background_data.hxx"
+#include "../worldobjsdata/thunderstorm_background_data.hxx"
 
 #include "../editorobjs/bumper_obj.hxx"
 #include "../editorobjs/conveyor_belt_obj.hxx"
@@ -64,21 +63,21 @@ using namespace WorldObjsData;
 
 namespace EditorNS {
 
-ObjectSelector::ObjectSelector()
+ObjectSelector::ObjectSelector ()
 {
   last_object = "GroundPieces/";
   font = PingusResource::load_font("Fonts/courier_small", "fonts");
   //data_loaded = false;
 }
 
-ObjectSelector::~ObjectSelector()
+ObjectSelector::~ObjectSelector ()
 {
 }
   
 /** FIXME: Ugly interface, the arguments should not be the offset, but
     instead the absolute position */
 EditorObjLst
-ObjectSelector::get_obj(int x_off, int y_off)
+ObjectSelector::get_obj (int x_off, int y_off)
 {
 
   // FIXME: Sick coordinate handling...
@@ -93,7 +92,7 @@ ObjectSelector::get_obj(int x_off, int y_off)
 }
 
 EditorObjLst
-ObjectSelector::get_trap()
+ObjectSelector::get_trap ()
 {
   CL_Display::clear_display();
   font->print_left(20, 20, _("1 - guillotine"));
@@ -110,19 +109,19 @@ ObjectSelector::get_trap()
       switch (read_key()) 
 	{
 	case CL_KEY_1:
-	  return GuillotineObj::create (pos);
+	  return GuillotineObj::create(pos);
 	case CL_KEY_2:
-	  return HammerObj::create (pos);
+	  return HammerObj::create(pos);
 	case CL_KEY_3:
-	  return SpikeObj::create (pos);
+	  return SpikeObj::create(pos);
 	case CL_KEY_4:
-	  return LaserExitObj::create (pos);
+	  return LaserExitObj::create(pos);
 	case CL_KEY_5:
-	  return FakeExitObj::create (pos);
+	  return FakeExitObj::create(pos);
 	case CL_KEY_6:
-	  return SmasherObj::create (pos);
+	  return SmasherObj::create(pos);
 	case CL_KEY_7:
-	  return BumperObj::create (pos);
+	  return BumperObj::create(pos);
 	case CL_KEY_ESCAPE:
 	  return EditorObjLst();
 	}
@@ -130,7 +129,7 @@ ObjectSelector::get_trap()
 }
 
 EditorObjLst
-ObjectSelector::get_groundpiece(const Groundtype::GPType & gptype)
+ObjectSelector::get_groundpiece (const Groundtype::GPType & gptype)
 {
   GroundpieceData data;
   std::string datafile = std::string("groundpieces-") + Groundtype::type_to_string (gptype);
@@ -153,7 +152,7 @@ ObjectSelector::get_groundpiece(const Groundtype::GPType & gptype)
 }
 
 EditorObjLst
-ObjectSelector::get_hotspot(const std::string& filename)
+ObjectSelector::get_hotspot (const std::string& filename)
 {
   HotspotData data;
   data.pos = pos;
@@ -172,7 +171,7 @@ ObjectSelector::get_hotspot(const std::string& filename)
 }
 
 EditorObjLst
-ObjectSelector::get_worldobj()
+ObjectSelector::get_worldobj ()
 {
   CL_Display::clear_display();
   font->print_left(20,  20, _("Select a WorldObj"));
@@ -210,7 +209,7 @@ ObjectSelector::get_worldobj()
 }
 
 EditorObjLst
-ObjectSelector::get_weather()
+ObjectSelector::get_weather ()
 {
   std::string type;
   bool done = false;
@@ -241,7 +240,7 @@ ObjectSelector::get_weather()
 }
 
 EditorObjLst
-ObjectSelector::get_entrance()
+ObjectSelector::get_entrance ()
 {
   EntranceData entrance;
   bool have_name = false;
@@ -288,7 +287,7 @@ ObjectSelector::get_entrance()
 }
 
 EditorObjLst
-ObjectSelector::get_exit()
+ObjectSelector::get_exit ()
 {
   string str;
   ExitData data;
@@ -307,7 +306,7 @@ ObjectSelector::get_exit()
 }
 
 EditorObjLst
-ObjectSelector::get_liquid()
+ObjectSelector::get_liquid ()
 {
   std::cout << "ObjectSelector::get_liquid() not implemented" << std::endl;
   LiquidData data;
@@ -321,7 +320,7 @@ ObjectSelector::get_liquid()
 }
 
 EditorObjLst
-ObjectSelector::get_from_file()
+ObjectSelector::get_from_file ()
 {
   CL_Display::clear_display();
   font->print_left(20, 20, _("What object type do you want?"));
@@ -372,7 +371,7 @@ ObjectSelector::get_from_file()
 }
 
 EditorObjLst
-ObjectSelector::select_obj_type()
+ObjectSelector::select_obj_type ()
 {
   bool exit_loop;
 
@@ -436,7 +435,7 @@ ObjectSelector::select_obj_type()
 	  return get_weather();
 
 	case CL_KEY_P:
-	  return get_prefab ();
+	  return get_prefab();
 
 	case CL_KEY_O:
 	  return get_worldobj();
@@ -457,7 +456,7 @@ ObjectSelector::select_obj_type()
 
 
 EditorObjLst
-ObjectSelector::get_prefab()
+ObjectSelector::get_prefab ()
 {
   CL_DirectoryScanner dir;
   std::vector<std::string> dir_lst;
@@ -501,7 +500,7 @@ ObjectSelector::get_prefab()
 }
 
 EditorObjLst
-ObjectSelector::get_background()
+ObjectSelector::get_background ()
 {
   CL_Display::clear_display();
   font->print_left(20, 20, _("Which object do you want?"));
@@ -599,7 +598,7 @@ ObjectSelector::select_surface (const std::string & resource_file)
 }
 
 int
-ObjectSelector::read_key()
+ObjectSelector::read_key ()
 {
   CL_InputBuffer keys;
   CL_Key key;
@@ -620,7 +619,7 @@ ObjectSelector::read_key()
 }
 
 string
-ObjectSelector::read_string(const string & description, const string & def_str)
+ObjectSelector::read_string (const string & description, const string & def_str)
 {
   StringReader reader(description, def_str);
   reader.set_strings(PingusResource::get("global")->get_resources_of_type("surface"));

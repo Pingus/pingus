@@ -18,23 +18,24 @@
 noinst_LIBRARIES = libpingus_editorobjs.a
 
 libpingus_editorobjs_a_SOURCES = \
-	bumper_obj.cxx                 bumper_obj.hxx \
-	conveyor_belt_obj.cxx          conveyer_belt_obj.hxx \
-	fake_exit_obj.cxx              fake_exit_obj.hxx \
-	guillotine_obj.cxx             guillotine_obj.hxx \
-	hammer_obj.cxx                 hammer_obj.hxx \
-	ice_block_obj.cxx	       ice_block_obj.hxx \
-	info_box_obj.cxx	       info_box_obj.hxx \
-	laser_exit_obj.cxx             laser_exit_obj.hxx \
-        prefab_obj.hxx                 prefab_obj.cxx \
-	smasher_obj.cxx                smasher_obj.hxx \
-	solid_color_background_obj.cxx solid_color_background_obj.hxx \
-	spike_obj.cxx                  spike_obj.hxx \
-	starfield_background_obj.cxx   starfield_background_obj.hxx \
-	surface_background_obj.cxx     surface_background_obj.hxx \
-	switch_door_obj.cxx            switch_door_obj.hxx \
-        switch_door_switch_obj.cxx     switch_door_switch_obj.hxx \
-	teleporter_obj.cxx             teleporter_obj.hxx \
-	teleporter_target_obj.cxx      teleporter_target_obj.cxx 
+	bumper_obj.cxx                  bumper_obj.hxx \
+	conveyor_belt_obj.cxx           conveyer_belt_obj.hxx \
+	fake_exit_obj.cxx               fake_exit_obj.hxx \
+	guillotine_obj.cxx              guillotine_obj.hxx \
+	hammer_obj.cxx                  hammer_obj.hxx \
+	ice_block_obj.cxx	        ice_block_obj.hxx \
+	info_box_obj.cxx	        info_box_obj.hxx \
+	laser_exit_obj.cxx              laser_exit_obj.hxx \
+        prefab_obj.hxx                  prefab_obj.cxx \
+	smasher_obj.cxx                 smasher_obj.hxx \
+	solid_color_background_obj.cxx  solid_color_background_obj.hxx \
+	spike_obj.cxx                   spike_obj.hxx \
+	starfield_background_obj.cxx    starfield_background_obj.hxx \
+	surface_background_obj.cxx      surface_background_obj.hxx \
+	switch_door_obj.cxx             switch_door_obj.hxx \
+        switch_door_switch_obj.cxx      switch_door_switch_obj.hxx \
+	teleporter_obj.cxx              teleporter_obj.hxx \
+	teleporter_target_obj.cxx       teleporter_target_obj.cxx \
+	thunderstorm_background_obj.cxx thunderstorm_background_obj.hxx
 
 # EOF #
