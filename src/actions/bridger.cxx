@@ -1,4 +1,4 @@
-//  $Id: bridger.cxx,v 1.5 2002/06/26 10:48:19 torangan Exp $
+//  $Id: bridger.cxx,v 1.6 2002/06/26 11:44:16 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,10 +67,13 @@ Bridger::draw_offset(int x, int y, float /*s*/)
   int x_offset(6), y_offset(4);
 
   if (bricks == MAX_BRICKS) {
-    x_offset = -2;
+    x_offset = -4;
     y_offset = 0;
     
   } else if (bricks == MAX_BRICKS - 1) {
+    x_offset = 0;
+    y_offset = 1;
+  } else if (bricks == MAX_BRICKS - 2) {
     x_offset = 3;
     y_offset = 2;
   }
