@@ -1,4 +1,4 @@
-//  $Id: layer_manager.hxx,v 1.12 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: layer_manager.hxx,v 1.13 2003/12/14 00:30:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 
 #include "pingus.hxx"
 #include <cmath>
-#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/sprite.h>
 #include "gui/graphic_context.hxx"
 
 namespace Pingus {
@@ -33,7 +33,7 @@ private:
   class Layer
   {
   private:
-    CL_Surface sur;
+    CL_Sprite sur;
 
     float x_pos;
     float y_pos;
@@ -51,7 +51,7 @@ private:
         x_offset(0), y_offset(0)
     {}
 
-    Layer (const CL_Surface& arg_sur, float x_o, float y_o, float x_u, float y_u)
+    Layer (const CL_Sprite& arg_sur, float x_o, float y_o, float x_u, float y_u)
       : sur(arg_sur),
         x_pos(0), y_pos(0),
         x_update(x_u), y_update(y_u),
@@ -60,10 +60,8 @@ private:
 
     void draw (GraphicContext& gc)
     {
-      gc.draw(sur, int(x_pos + x_offset),
-              int(y_pos + y_offset));
-      gc.draw(sur, int(x_pos + x_offset - 800),
-              int(y_pos + y_offset));
+      gc.draw(sur, Vector(x_pos + x_offset, y_pos + y_offset));
+      gc.draw(sur, Vector(x_pos + x_offset - 800, y_pos + y_offset));
     }
 
     void update (float delta)
@@ -79,7 +77,7 @@ public:
   LayerManager ();
   ~LayerManager();
 
-  void add_layer (const CL_Surface& sur, float x_o, float y_o, float x_u, float y_u);
+  void add_layer (const CL_Sprite& sur, float x_o, float y_o, float x_u, float y_u);
   void draw (GraphicContext& gc);
   void update (float delta);
 

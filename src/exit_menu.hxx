@@ -1,4 +1,4 @@
-//  $Id: exit_menu.hxx,v 1.13 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: exit_menu.hxx,v 1.14 2003/12/14 00:30:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_EXIT_MENU_HXX
 #define HEADER_PINGUS_EXIT_MENU_HXX
 
-#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/sprite.h>
 #include "pingus_sub_menu.hxx"
 
 namespace Pingus {
@@ -30,7 +30,7 @@ class PingusMenuManager;
 class ExitMenu : public PingusSubMenu
 {
 private:
-  CL_Surface sur;
+  CL_Sprite sur;
 
 public:
   ExitMenu (PingusMenuManager* manager);

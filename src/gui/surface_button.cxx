@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.9 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: surface_button.cxx,v 1.10 2003/12/14 00:30:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,9 +31,9 @@ SurfaceButton::SurfaceButton (int arg_x_pos, int arg_y_pos,
 			      const ResDescriptor& arg_button_mouse_over_surface)
   : x_pos (arg_x_pos), y_pos (arg_y_pos), pressed (false), mouse_over (false)
 {
-  button_surface            = PingusResource::load_surface (arg_button_surface);
-  button_pressed_surface    = PingusResource::load_surface (arg_button_pressed_surface);
-  button_mouse_over_surface = PingusResource::load_surface (arg_button_mouse_over_surface);
+  button_surface            = PingusResource::load_sprite(arg_button_surface);
+  button_pressed_surface    = PingusResource::load_sprite(arg_button_pressed_surface);
+  button_mouse_over_surface = PingusResource::load_sprite(arg_button_mouse_over_surface);
 }
 
 SurfaceButton::~SurfaceButton ()
@@ -44,11 +44,11 @@ void
 SurfaceButton::draw (GraphicContext& gc)
 {
   if (pressed && mouse_over)
-    gc.draw(button_pressed_surface, x_pos, y_pos);
+    gc.draw(button_pressed_surface, Vector(x_pos, y_pos));
   else if (!pressed && mouse_over)
-    gc.draw(button_mouse_over_surface, x_pos, y_pos);
+    gc.draw(button_mouse_over_surface, Vector(x_pos, y_pos));
   else
-    gc.draw(button_surface, x_pos, y_pos);
+    gc.draw(button_surface, Vector(x_pos, y_pos));
 }
 
 bool

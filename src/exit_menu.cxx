@@ -1,4 +1,4 @@
-//  $Id: exit_menu.cxx,v 1.23 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: exit_menu.cxx,v 1.24 2003/12/14 00:30:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -109,8 +109,8 @@ ExitMenu::draw (GraphicContext& gc)
 {
   //gc.draw_fillrect (0, 0, CL_Display::get_width (), CL_Display::get_height (),
   //0, 0, 0, 0.5);
-  gc.draw(sur,  gc.get_width ()/2 - sur.get_width ()/2,
-          gc.get_height ()/2 - sur.get_height ()/2);
+  gc.draw(sur, Vector(gc.get_width ()/2 - sur.get_width ()/2,
+                      gc.get_height ()/2 - sur.get_height ()/2));
   gc.print_center(Fonts::chalk_large, gc.get_width()/2, gc.get_height()/2 - 70, _("Exit Pingus?"));
   PingusSubMenu::draw(gc);
   return true;
@@ -119,7 +119,7 @@ ExitMenu::draw (GraphicContext& gc)
 void
 ExitMenu::preload ()
 {
-  sur = PingusResource::load_surface ("menu/exit_menu", "core");
+  sur = PingusResource::load_sprite("menu/exit_menu", "core");
 }
 
 } // namespace Pingus

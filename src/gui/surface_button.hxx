@@ -1,4 +1,4 @@
-//  $Id: surface_button.hxx,v 1.10 2003/10/20 19:28:55 grumbel Exp $
+//  $Id: surface_button.hxx,v 1.11 2003/12/14 00:30:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,9 +36,9 @@ class SurfaceButton : public Component
 protected:
   int x_pos;
   int y_pos;
-  CL_Surface button_surface;
-  CL_Surface button_pressed_surface;
-  CL_Surface button_mouse_over_surface;
+  CL_Sprite button_surface;
+  CL_Sprite button_pressed_surface;
+  CL_Sprite button_mouse_over_surface;
 
   bool pressed;
   bool mouse_over;

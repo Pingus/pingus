@@ -1,4 +1,4 @@
-//  $Id: surface_drawable.cxx,v 1.7 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: surface_drawable.cxx,v 1.8 2003/12/14 00:30:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ SurfaceDrawable::SurfaceDrawable(xmlDocPtr doc, xmlNodePtr cur)
   reader.read_vector ("position", pos);
   reader.read_bool ("auto-uncover", auto_uncover);
 
-  surface = PingusResource::load_surface(desc);
+  surface = PingusResource::load_sprite(desc);
 }
 
 void

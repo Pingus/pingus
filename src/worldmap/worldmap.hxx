@@ -1,4 +1,4 @@
-//  $Id: worldmap.hxx,v 1.31 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: worldmap.hxx,v 1.32 2003/12/14 00:30:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDMAP_WORLDMAP_HXX
 #define HEADER_PINGUS_WORLDMAP_WORLDMAP_HXX
 
-#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/sprite.h>
 #include <vector>
 #include "../libxmlfwd.hxx"
 #include "../gui/display_graphic_context.hxx"
@@ -53,7 +53,7 @@ private:
   // FIXME: We should use a ScrollGC or something like that here
   DisplayGraphicContext display_gc;
 
-  CL_Surface levelname_bg;
+  CL_Sprite levelname_bg;
 
   /** name of the file to parse */
   std::string filename;

@@ -1,4 +1,4 @@
-//  $Id: menu_button.hxx,v 1.7 2003/10/21 21:37:06 grumbel Exp $
+//  $Id: menu_button.hxx,v 1.8 2003/12/14 00:30:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_SURFACE_BUTTON_HXX
 
 #include <string>
-#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/sprite.h>
 #include <ClanLib/Display/font.h>
 #include "gui/component.hxx"
 
@@ -33,7 +33,7 @@ class PingusMenu;
 class SurfaceButton : public GUI::Component
 {
 protected:
-  CL_Surface surface_p;
+  CL_Sprite surface_p;
   CL_Font     font;
   CL_Font     font_large;
 

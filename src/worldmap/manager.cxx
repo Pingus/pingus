@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.41 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: manager.cxx,v 1.42 2003/12/14 00:30:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -190,7 +190,7 @@ WorldMapManagerEnterButton::draw (GraphicContext& gc)
 {
   if (WorldMapManager::instance()->get_worldmap()->get_pingus()->is_walking())
     {
-      gc.draw(button_surface, x_pos, y_pos);
+      gc.draw(button_surface, Vector(x_pos, y_pos));
     }
   else
     {

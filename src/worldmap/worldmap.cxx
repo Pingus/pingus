@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.52 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.53 2003/12/14 00:30:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -106,7 +106,7 @@ WorldMap::WorldMap(const std::string& arg_filename)
 
   add_drawable(pingus);
 
-  levelname_bg = PingusResource::load_surface("worldmap/levelname_bg", "core");
+  levelname_bg = PingusResource::load_sprite("worldmap/levelname_bg", "core");
   xmlFreeDoc(doc);
 }
 
@@ -230,8 +230,8 @@ WorldMap::draw (GraphicContext& gc)
     }
 
   gc.draw(levelname_bg,
-          gc.get_width()/2 - levelname_bg.get_width()/2,
-          gc.get_height() - levelname_bg.get_height());
+          Vector(gc.get_width()/2 - levelname_bg.get_width()/2,
+                 gc.get_height() - levelname_bg.get_height()));
 
   if (pingus->get_node() != NoNode)
     {

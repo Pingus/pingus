@@ -1,4 +1,4 @@
-//  $Id: surface_drawable.hxx,v 1.7 2003/10/20 19:28:55 grumbel Exp $
+//  $Id: surface_drawable.hxx,v 1.8 2003/12/14 00:30:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_SURFACE_DRAWABLE_HXX
 #define HEADER_SURFACE_DRAWABLE_HXX
 
-#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/sprite.h>
 #include "../vector.hxx"
 #include "drawable.hxx"
 
@@ -31,7 +31,7 @@ namespace WorldMapNS {
 class SurfaceDrawable : public Drawable
 {
 private:
-  CL_Surface surface;
+  CL_Sprite surface;
   Vector     pos;
   /** If set to true the surface will disappear if the pingu gets
       covered by it, so that the Pingu can travel into caves and other
