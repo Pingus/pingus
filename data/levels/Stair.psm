@@ -1,14 +1,13 @@
 ground : (resource:global.dat)Hotspots/colum_flat : 355 : 358;
 ground : (resource:global.dat)Hotspots/colum_flat : 452 : 162;
-ground : (resource:global.dat)Hotspots/colum_flat : 266 : 333;
+ground : (resource:global.dat)Hotspots/colum_flat : 290 : 333;
 ground : (resource:global.dat)Hotspots/colum_flat : 720 : 130;
 ground : (resource:global.dat)Hotspots/colum_flat : 536 : 131;
 ground : (resource:global.dat)Hotspots/colum_flat : -88 : 389;
 ground : (resource:global.dat)Hotspots/colum_flat : 1 : 364;
-ground : (resource:global.dat)Hotspots/colum_flat : 94 : 333;
-ground : (resource:global.dat)Hotspots/colum_flat : -89 : 332;
+ground : (resource:global.dat)Hotspots/colum_flat : 106 : 333;
+ground : (resource:global.dat)Hotspots/colum_flat : -77 : 332;
 ground : (resource:global.dat)Hotspots/colum : 427 : -25;
-ground : (resource:global.dat)Hotspots/colum : 411 : 425;
 ground : (resource:global.dat)Hotspots/colum : 426 : 527;
 ground : (resource:global.dat)Hotspots/colum : 425 : 343;
 ground : (resource:global.dat)Hotspots/colum : 426 : 159;

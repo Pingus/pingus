@@ -1,13 +1,12 @@
 /* This level was created with the PLE
- * $Id: Dentist.plf,v 1.1 2000/06/14 14:44:29 grumbel Exp $
+ * $Id: Dentist.plf,v 1.2 2000/06/27 06:35:34 grumbel Exp $
  */
 global {
+  author = "Craig Timpany <timpany@pingus.cx>";
   start_x_pos = 0;
   start_y_pos = 0;
   levelname = "Dentist's Delight";
-  description = "
-
-";
+  description = "";
   number_of_pingus = 60;
   number_to_save = 30;
   time = 9000;
