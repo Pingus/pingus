@@ -1,0 +1,34 @@
+ClanLib Patches
+===============
+
+This directory contains a few ClanLib patches, they are not required to
+compile Pingus, but strongly recomment.
+
+
+Patches:
+========
+
+clanlib_gui.diff
+================
+
+ - Removes the close button of clanGUI windows, pressing them will render
+   parts of the GUI unusable and might lead to a crash. Only the Editor is
+   affected by this, not the game
+
+
+clanlib_x11_mousewheel.diff
+===========================
+
+ - adds support for the mouse wheel in X11 (aka. button 4/5)
+
+
+How to Patch:
+=============
+
+$ cd wherever/your/ClanLib/is/
+$ patch -p1 < $PATCHFILE
+
+Where $PATCHFILE is one of the above files.
+
+
+# EOF #

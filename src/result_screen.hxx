@@ -1,4 +1,4 @@
-//  $Id: result_screen.hxx,v 1.2 2003/03/28 16:16:00 grumbel Exp $
+//  $Id: result_screen.hxx,v 1.3 2003/03/30 13:12:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,12 @@ public:
   ResultScreen(Result result);
   void on_startup();
 
+  void on_pause_press();
+  void on_fast_forward_press();
+  void on_escape_press();
+
+  void retry_level();
+  void close_screen();
 private:
   ResultScreen (const ResultScreen&);
   ResultScreen& operator= (const ResultScreen&);

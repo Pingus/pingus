@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.54 2003/03/25 23:15:23 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.55 2003/03/30 13:12:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -89,7 +89,7 @@ EditorEvent::enable()
 {
   assert (is_enabled == false);
 
-  std::cout << "EditorEvent::enable()" << std::endl;
+  //std::cout << "EditorEvent::enable()" << std::endl;
   is_enabled = true;
   editor->get_gui_manager ()->enable_input ();
 }
@@ -99,7 +99,7 @@ EditorEvent::disable()
 {
   assert (is_enabled == true);
 
-  std::cout << "EditorEvent::disable()" << std::endl;
+  //std::cout << "EditorEvent::disable()" << std::endl;
   is_enabled = false;
   editor->get_gui_manager ()->disable_input ();
 }
@@ -646,11 +646,11 @@ EditorEvent::editor_insert_new_object()
   try 
     {
       disable();
-      std::cout << "Object selector on" <<std::endl;
+      //std::cout << "Object selector on" <<std::endl;
       editor->object_selector->get_obj(object_manager,
                                        int(editor->view->get_offset ().x + CL_Display::get_width ()/2),
                                        int(editor->view->get_offset ().y + CL_Display::get_height ()/2));
-      std::cout << "Object selector off" << std::endl;
+      //std::cout << "Object selector off" << std::endl;
       enable();
     }
   
@@ -670,7 +670,6 @@ EditorEvent::editor_new_level()
 void 
 EditorEvent::editor_exit()
 {
-  std::cout << "Exit editor" << std::endl;
   editor->save_tmp_level();
   ScreenManager::instance ()->pop_screen ();
 }

@@ -1,4 +1,4 @@
-#  $Id: configure.ac,v 1.5 2003/03/28 12:06:31 grumbel Exp $
+#  $Id: configure.ac,v 1.6 2003/03/30 13:12:35 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,7 @@ AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_MAKE_SET
 AC_LANG(C++)
+AC_C_BIGENDIAN
 PINGUS_EXTRA_PATHS
 
 AC_ARG_WITH(gettext,

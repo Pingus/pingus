@@ -1,4 +1,4 @@
-//  $Id: groundpiece_obj.cxx,v 1.11 2003/02/18 22:03:39 grumbel Exp $
+//  $Id: groundpiece_obj.cxx,v 1.12 2003/03/30 13:12:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdio.h>
-#include <iostream>
 #include "../worldobjsdata/groundpiece_data.hxx"
 #include "../pingus_resource.hxx"
 #include "../editor/property_window.hxx"
@@ -75,7 +74,6 @@ GroundpieceObj::status_line ()
 void
 GroundpieceObj::vertical_flip ()
 {
-  std::cout << "Vertical flip" << std::endl;
   data->desc.modifier = ResourceModifierNS::vertical_flip(data->desc.modifier);
   sprite.get_surface() = PingusResource::load_surface(data->desc);
 }
@@ -83,7 +81,6 @@ GroundpieceObj::vertical_flip ()
 void
 GroundpieceObj::horizontal_flip ()
 {
-  std::cout << "Horz flip" << std::endl;
   data->desc.modifier = ResourceModifierNS::horizontal_flip(data->desc.modifier);
   sprite.get_surface() = PingusResource::load_surface(data->desc);
 }
@@ -91,8 +88,6 @@ GroundpieceObj::horizontal_flip ()
 void
 GroundpieceObj::rotate_90 ()
 {
-  std::cout << "rot90" << std::endl;
-
   data->pos.x += sprite.get_width ()/2;
   data->pos.y += sprite.get_height()/2;
 
@@ -106,8 +101,6 @@ GroundpieceObj::rotate_90 ()
 void
 GroundpieceObj::rotate_270 ()
 {
-  std::cout << "rot 270" << std::endl;
-
   data->pos.x += sprite.get_width ()/2;
   data->pos.y += sprite.get_height()/2;
 

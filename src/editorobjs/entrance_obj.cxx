@@ -1,4 +1,4 @@
-//  $Id: entrance_obj.cxx,v 1.6 2003/03/07 18:49:21 grumbel Exp $
+//  $Id: entrance_obj.cxx,v 1.7 2003/03/30 13:12:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdio.h>
-#include <iostream>
 #include "../pingus_error.hxx"
 #include "../editor/editor.hxx"
 #include "../editor/property_window.hxx"
@@ -35,9 +34,6 @@ EntranceObj::EntranceObj (const WorldObjsData::EntranceData& data_)
 {
   pos_ref = &data->pos;
 
-  std::cout << "EntranceObj::EntranceObj(const EntranceData& data): " 
-	    << data->type << std::endl;
-
   if (data->type == "generic")
     {
       sprite = Sprite("Entrances/generic", "entrances");
@@ -45,7 +41,6 @@ EntranceObj::EntranceObj (const WorldObjsData::EntranceData& data_)
     } 
   else if (data->type == "woodthing") 
     {
-      std::cout << "WOODTHING" << std::endl;
       sprite = Sprite("Entrances/woodthing_mov", "entrances");
       sprite.set_align(0  - sprite.get_width()/2,
 		       32 - sprite.get_height());
@@ -57,7 +52,6 @@ EntranceObj::EntranceObj (const WorldObjsData::EntranceData& data_)
     } 
   else 
     {
-      std::cout << "Entrance obj error!" << std::endl;
       PingusError::raise("EntranceObj: Unknown entrance type: " + data->type);
     }
 }
@@ -70,7 +64,6 @@ EntranceObj::~EntranceObj ()
 EditorObj*
 EntranceObj::duplicate ()
 {
-  std::cout << "EntranceObj::duplicate()" << std::endl;
   return new EntranceObj(*data);
 }
 

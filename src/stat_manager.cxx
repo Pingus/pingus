@@ -1,4 +1,4 @@
-//  $Id: stat_manager.cxx,v 1.4 2003/03/28 23:54:14 grumbel Exp $
+//  $Id: stat_manager.cxx,v 1.5 2003/03/30 13:12:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -112,7 +112,8 @@ StatManager::save(const std::string& filename)
 
   for (Table::iterator i = stats.begin(); i != stats.end(); ++i)
     {
-      xml << "  <" << i->first << ">" << i->second << "</" << i->first << ">" << std::endl;
+      if (!i->second.empty())
+        xml << "  <" << i->first << ">" << i->second << "</" << i->first << ">" << std::endl;
     }
 
   xml << "</pingus-stats>\n";

@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.56 2003/03/28 23:54:14 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.57 2003/03/30 13:12:35 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -274,14 +274,11 @@ PingusMain::check_args(int argc, char** argv)
       break;
     case 't': // -t, --set-speed
       game_speed = atoi(optarg);
-      if (verbose) 
-	std::cout << "PingusMain:check_args: Game Speed = "
-		  << game_speed << std::endl;
       break;
     case 'e':
       start_editor = true;
       intro_disabled = true;
-      std::cout << "PingusMain: Starting Editor" << std::endl;
+      //std::cout << "PingusMain: Starting Editor" << std::endl;
       break;
     case 'q':
       quick_play = true;
@@ -636,7 +633,8 @@ PingusMain::init_path_finder()
     }
   else
     {
-      std::cout << "setlocale returned '" << ret << "'" << std::endl;
+      if (maintainer_mode)
+        std::cout << "setlocale returned '" << ret << "'" << std::endl;
     }
   bindtextdomain (PACKAGE, (path_manager.get_base_path () + "/../../locale/").c_str());
   // We use another LOCALEDIR to make static binaries possible
@@ -649,8 +647,11 @@ PingusMain::init_path_finder()
 void
 PingusMain::print_greeting_message()
 {
-  std::cout << "Welcome to Pingus "VERSION"!\n"
-            << "=======================\n" << std::endl;
+  std::string greeting = "Welcome to Pingus "VERSION"!";
+  std::cout <<  greeting << std::endl;
+  for (int i = 0; i < greeting.length(); ++i)
+    std::cout.put('=');
+  std::cout << std::endl;
   
 #ifdef HAVE_LIBCLANVORBIS
   std::cout << "clanVorbis support: ok" << std::endl;

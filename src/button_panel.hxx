@@ -1,4 +1,4 @@
-//  $Id: button_panel.hxx,v 1.16 2002/12/01 17:45:22 grumbel Exp $
+//  $Id: button_panel.hxx,v 1.17 2003/03/30 13:12:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,6 +47,9 @@ private:
   static CL_Surface button_cap;
 
   int x_pos, y_pos;
+
+  CL_Slot wheel_slot;
+  void on_wheel_move(const CL_Key& key);
 public:
   ButtonPanel(Client* c, int arg_x_pos, int arg_y_pos);
   virtual ~ButtonPanel();

@@ -1,4 +1,4 @@
-//  $Id: surface_background_obj.cxx,v 1.8 2003/02/19 17:17:00 grumbel Exp $
+//  $Id: surface_background_obj.cxx,v 1.9 2003/03/30 13:12:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <iostream>
 #include "../string_converter.hxx"
 #include "../worldobjsdata/surface_background_data.hxx"
 #include "../editor/editor.hxx"

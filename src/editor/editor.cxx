@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.47 2003/03/28 12:06:32 grumbel Exp $
+//  $Id: editor.cxx,v 1.48 2003/03/30 13:12:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,6 +44,7 @@
 #include "level_property_window.hxx"
 #include "editor.hxx"
 #include "../path_manager.hxx"
+#include "../stat_manager.hxx"
 #include "editor_view.hxx"
 
 #include <cstdio>
@@ -71,11 +72,14 @@ void
 Editor::deinit()
 {
   delete instance_;
+  instance_ = 0;
 }
 
 Editor::Editor () : event_handler_ref_counter(0),
-                    move_x(0), move_y(0), show_help_screen(false), tool(SELECTOR_TOOL)
+                    move_x(0), move_y(0), show_help_screen(true), tool(SELECTOR_TOOL)
 {
+  StatManager::instance()->get_bool("show-editor-help-screen", show_help_screen);
+
   EditorObj::set_editor(this);
   event      = new EditorEvent;
 
@@ -106,14 +110,15 @@ Editor::Editor () : event_handler_ref_counter(0),
   panel->set_editor(this);
   scroll_map->editor_event = event;
 
-  std::cout << "Editor: registering event handler" << event << "... " << std::flush; 
+  //std::cout << "Editor: registering event handler" << event << "... " << std::flush; 
   on_button_press_slot = CL_Input::sig_button_press ().connect(event, &EditorEvent::on_button_press);
   on_button_release_slot = CL_Input::sig_button_release ().connect(event, &EditorEvent::on_button_release);
 }
 
 Editor::~Editor ()
 {
-  std::cout << "Editor: unregistering event handler" << event << "... " << std::flush; 
+  StatManager::instance()->set_bool("show-editor-help-screen", show_help_screen);
+
   CL_Input::sig_button_press ().disconnect (on_button_press_slot);
   CL_Input::sig_button_release ().disconnect (on_button_release_slot);
 
@@ -129,7 +134,6 @@ Editor::~Editor ()
 void
 Editor::on_startup ()
 {
-  std::cout << "Editor::on_startup ()" << std::endl;
   PingusSound::stop_music();
   Display::set_cursor(CL_MouseCursorProvider::load("cursors/cursor", PingusResource::get("core")));
   Display::show_cursor();
@@ -139,7 +143,6 @@ Editor::on_startup ()
 void
 Editor::on_shutdown ()
 {
-  std::cout << "Editor::on_shutdown ()" << std::endl;
   Display::hide_cursor(); 
   event->disable ();
 }
@@ -164,7 +167,7 @@ Editor::update (const GameDelta& delta)
       else
 	{
 	  property_window->update_frame(0);
-	  std::cout << "EditorEvent::editor_show_object_properties (): error: multiple objects selected" << std::endl;
+	  //std::cout << "EditorEvent::editor_show_object_properties (): error: multiple objects selected" << std::endl;
 	}
     }  
 

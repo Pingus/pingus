@@ -1,4 +1,4 @@
-//  $Id: editor_view.cxx,v 1.6 2003/02/16 18:40:47 grumbel Exp $
+//  $Id: editor_view.cxx,v 1.7 2003/03/30 13:12:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,8 +32,8 @@ EditorView::EditorView (int x1_, int y1_, int x2_, int y2_,
 {
   center = Vector ((x2 - x1)/2.0f + x1,
 		      (y2 - y1)/2.0f + y1);
-  std::cout << "View: " << x1 << ", " << y1 << ", " << x2 << ", " << y2 
-	    << std::endl;
+  //std::cout << "View: " << x1 << ", " << y1 << ", " << x2 << ", " << y2 
+  //<< std::endl;
   UNUSED_ARG(x_offset);
   UNUSED_ARG(y_offset);
 }

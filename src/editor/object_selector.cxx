@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.36 2003/03/21 22:08:06 grumbel Exp $
+//  $Id: object_selector.cxx,v 1.37 2003/03/30 13:12:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -659,7 +659,7 @@ ObjectSelector::read_key ()
       if (keys.peek_key().state != CL_Key::NoKey) 
 	{
 	  key = keys.get_key();
-	  std::cout << "key: " << key.ascii << std::endl;
+	  //std::cout << "key: " << key.ascii << std::endl;
 	  return key.id;
 	}
     }

@@ -1,4 +1,4 @@
-//  $Id: start_screen.cxx,v 1.3 2003/03/28 16:16:00 grumbel Exp $
+//  $Id: start_screen.cxx,v 1.4 2003/03/30 13:12:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,30 +46,22 @@ public:
 class StartScreenOkButton : public GUI::SurfaceButton
 {
 private:
-  PLFHandle plf;
+  StartScreen* parent;
 public:
-  StartScreenOkButton(PLFHandle p)
+  StartScreenOkButton(StartScreen* p)
     : GUI::SurfaceButton(300, 500, 
                          ResDescriptor("result/ok", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("result/ok", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("result/ok", "core", ResDescriptor::RD_RESOURCE)),
-      plf(p)
+      parent(p)
   {
   }
 
   void on_click() 
   {
-    PingusGameSession* game_session = new PingusGameSession(plf, true);
-    ScreenManager::instance()->replace_screen(game_session, true);
+    parent->start_game();
   }
 };
-
-StartScreen::StartScreen(PLFHandle plf)
-{
-  StartScreenComponent* comp = new StartScreenComponent(plf);
-  gui_manager->add(comp);
-  gui_manager->add(new StartScreenOkButton(plf));
-}
 
 StartScreen::~StartScreen()
 {
@@ -88,13 +80,20 @@ StartScreenComponent::draw(GraphicContext& gc)
   //gc.clear(0,0,0);
   background.put_screen(0,0);
   gc.print_center(Fonts::chalk_large, gc.get_width()/2, 100, System::translate(plf->get_levelname()));
-  gc.print_center(Fonts::chalk_normal, gc.get_width()/2, 160, System::translate(plf->get_description()));
+  gc.print_left(Fonts::chalk_normal, 130, 160, System::translate(plf->get_description()));
 
-  gc.print_left(Fonts::chalk_normal, 250, 250, _("Number of Pingus: ") + to_string(plf->get_pingus()));
-  gc.print_left(Fonts::chalk_normal, 250, 280, _("Number to Save: ") + to_string(plf->get_number_to_save()));
-  gc.print_left(Fonts::chalk_normal, 250, 310, _("Time: ") + to_string(plf->get_time()));
+  gc.print_left (Fonts::chalk_normal, 300, 290, _("Number of Pingus: "));
+  gc.print_right(Fonts::chalk_normal, 500, 290, to_string(plf->get_pingus()));
+
+  gc.print_left (Fonts::chalk_normal, 300, 320, _("Number to Save: "));
+  gc.print_right(Fonts::chalk_normal, 500, 320, to_string(plf->get_number_to_save()));
+
+  gc.print_left (Fonts::chalk_normal, 300, 350, _("Time: "));
+  gc.print_right(Fonts::chalk_normal, 500, 350, to_string(plf->get_time()));
   
-  gc.print_left(Fonts::chalk_normal, 250, 340, _("Difficulty:"));
+  gc.print_left (Fonts::chalk_normal, 300, 380, _("Difficulty:"));
+  gc.print_right(Fonts::chalk_normal, 500, 380, to_string(plf->get_difficulty() + "/100"));
+
   /*for (int i = 0; plf->get_difficulty())
     {
     }*/
@@ -103,6 +102,45 @@ StartScreenComponent::draw(GraphicContext& gc)
 
   if (maintainer_mode)
     gc.print_left(Fonts::chalk_small, 110, 430, _("Filename: ") + plf->get_filename());
+}
+
+StartScreen::StartScreen(PLFHandle arg_plf)
+  : plf(arg_plf)
+{
+  StartScreenComponent* comp = new StartScreenComponent(plf);
+  gui_manager->add(comp);
+  gui_manager->add(new StartScreenOkButton(this));
+}
+
+void
+StartScreen::on_fast_forward_press()
+{
+  start_game();
+}
+
+void
+StartScreen::on_pause_press ()
+{
+  start_game();
+}
+
+void
+StartScreen::on_escape_press()
+{
+  cancel_game();
+}
+
+void
+StartScreen::start_game()
+{
+  PingusGameSession* game_session = new PingusGameSession(plf, true);
+  ScreenManager::instance()->replace_screen(game_session, true);
+}
+
+void
+StartScreen::cancel_game()
+{
+  ScreenManager::instance()->pop_screen();
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: teleporter_obj.cxx,v 1.8 2002/10/07 23:04:21 grumbel Exp $
+//  $Id: teleporter_obj.cxx,v 1.9 2003/03/30 13:12:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdio.h>
-#include <iostream>
+#include "../debug.hxx"
 #include "teleporter_obj.hxx"
 #include "../editor/editor_view.hxx"
 #include "../worldobjsdata/teleporter_data.hxx"
@@ -46,7 +46,7 @@ TeleporterObj::get_target_pos_ref ()
 EditorObj*
 TeleporterObj::duplicate()
 {
-  std::cout << "EditorTeleporterObj::duplicate(): not implemented" << std::endl;
+  pwarn << "EditorTeleporterObj::duplicate(): not implemented" << std::endl;
   return 0;
 }
 
@@ -54,8 +54,6 @@ EditorObjLst
 TeleporterObj::create (const Vector& pos)
 {
   WorldObjsData::TeleporterData newdata;
-
-  std::cout << "EditorTeleporterObj: creating..." << std::endl;
 
   newdata.pos          = pos;
   newdata.target_pos.x = pos.x + 50;
@@ -67,7 +65,6 @@ TeleporterObj::create (const Vector& pos)
 void
 TeleporterObj::draw (EditorNS::EditorView * view)
 {
-  //std::cout << "Drawing line" << std::endl;
   view->draw_line (static_cast<int>(data->pos.x), 
 		   static_cast<int>(data->pos.y),
 		   static_cast<int>(data->target_pos.x), 

@@ -1,4 +1,4 @@
-//  $Id: switch_door_obj.cxx,v 1.6 2002/09/28 11:52:25 torangan Exp $
+//  $Id: switch_door_obj.cxx,v 1.7 2003/03/30 13:12:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdio.h>
-#include <iostream>
+#include "../debug.hxx"
 #include "switch_door_obj.hxx"
 #include "../editor/editor_view.hxx"
 #include "../pingus_resource.hxx"
@@ -43,7 +43,7 @@ SwitchDoorObj::~SwitchDoorObj ()
 EditorObj*
 SwitchDoorObj::duplicate ()
 {
-  std::cout << "SwitchDoorObj::duplicate(): not implemented" << std::endl;
+  pwarn << "SwitchDoorObj::duplicate(): not implemented" << std::endl;
   return 0;
 }
 

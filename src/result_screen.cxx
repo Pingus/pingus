@@ -1,4 +1,4 @@
-//  $Id: result_screen.cxx,v 1.5 2003/03/28 16:16:00 grumbel Exp $
+//  $Id: result_screen.cxx,v 1.6 2003/03/30 13:12:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,17 +47,20 @@ public:
 class ResultScreenOkButton 
   : public GUI::SurfaceButton
 {
+private:
+  ResultScreen* parent;
 public:
-  ResultScreenOkButton()
+  ResultScreenOkButton(ResultScreen* p)
     : GUI::SurfaceButton(100, 500, 
                          ResDescriptor("result/ok", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("result/ok", "core", ResDescriptor::RD_RESOURCE),
-                         ResDescriptor("result/ok", "core", ResDescriptor::RD_RESOURCE))
+                         ResDescriptor("result/ok", "core", ResDescriptor::RD_RESOURCE)),
+      parent(p)
   {
   }
 
   void on_click() {
-    ScreenManager::instance()->pop_screen();    
+    parent->close_screen();
   }
 };
 
@@ -65,9 +68,9 @@ class ResultScreenRetryButton
   : public GUI::SurfaceButton
 {
 private:
-  ResultScreenComponent* parent;
+  ResultScreen* parent;
 public:
-  ResultScreenRetryButton(ResultScreenComponent* p)
+  ResultScreenRetryButton(ResultScreen* p)
     : GUI::SurfaceButton(500, 500, 
                          ResDescriptor("result/retry", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("result/retry", "core", ResDescriptor::RD_RESOURCE),
@@ -78,8 +81,7 @@ public:
 
   void on_click() 
   {
-    ScreenManager::instance()->replace_screen(new PingusGameSession (parent->result.plf, false),
-                                              true);
+    parent->retry_level();
   }
 };
 
@@ -122,9 +124,17 @@ ResultScreenComponent::draw(GraphicContext& gc)
     gc.print_left(Fonts::chalk_small, 250, 370, to_string(result.max_time - result.used_time));
 
   if (result.success())
-    gc.print_center(Fonts::chalk_large, gc.get_width()/2, 450, "Success! =:-)");
+    {
+      gc.print_center(Fonts::chalk_large, gc.get_width()/2, 450, "Success! =:-)");
+      gc.print_center(Fonts::pingus_small, gc.get_width()/2, gc.get_height()-30,
+                      "..:: Press Space to continue ::..");
+    }
   else
-    gc.print_center(Fonts::chalk_large, gc.get_width()/2, 450, "Failure! :-(");
+    {
+      gc.print_center(Fonts::chalk_large, gc.get_width()/2, 450, "Failure! :-(");
+      gc.print_center(Fonts::pingus_small, gc.get_width()/2, gc.get_height()-30,
+                      "..:: Press Space to retry the level ::..");
+    }
 }
 
 ResultScreen::ResultScreen(Result arg_result)
@@ -135,8 +145,8 @@ ResultScreen::ResultScreen(Result arg_result)
 
   ResultScreenComponent* comp = new ResultScreenComponent(result);
   gui_manager->add(comp);
-  gui_manager->add(new ResultScreenOkButton());
-  gui_manager->add(new ResultScreenRetryButton(comp));
+  gui_manager->add(new ResultScreenOkButton(this));
+  gui_manager->add(new ResultScreenRetryButton(this));
   //gui_manager->add(new GUI::SurfaceButton(500, 500, cancel_desc, cancel_desc, cancel_desc));
 }
 
@@ -151,6 +161,40 @@ ResultScreen::on_startup()
     {
       PingusSound::play_music("pingus-2.it");
     }
+}
+
+void
+ResultScreen::retry_level()
+{
+  ScreenManager::instance()->replace_screen(new PingusGameSession (result.plf, false),
+                                            true);
+}
+
+void
+ResultScreen::close_screen()
+{
+  ScreenManager::instance()->pop_screen();  
+}
+
+void 
+ResultScreen::on_fast_forward_press()
+{
+  on_pause_press();
+}
+
+void
+ResultScreen::on_pause_press()
+{
+  if (result.success())
+    close_screen();
+  else
+    retry_level();
+}
+
+void
+ResultScreen::on_escape_press()
+{
+  close_screen();
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: button_panel.cxx,v 1.23 2002/12/29 23:29:00 torangan Exp $
+//  $Id: button_panel.cxx,v 1.24 2003/03/30 13:12:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Display/Input/mouse.h>
+#include <iostream>
 #include <algorithm>
 #include "globals.hxx"
 #include "button_panel.hxx"
@@ -62,6 +64,20 @@ ButtonPanel::ButtonPanel(Client* c, int arg_x_pos, int arg_y_pos)
     }
 
   pressed_button = 0;
+  wheel_slot = CL_Mouse::sig_button_press().connect(this, &ButtonPanel::on_wheel_move);
+}
+
+void
+ButtonPanel::on_wheel_move(const CL_Key& key)
+{
+  if (key.id == CL_MOUSE_WHEELDOWN)
+    {
+      next_action();
+    }
+  else if (key.id == CL_MOUSE_WHEELUP)
+    {
+      previous_action();
+    }
 }
 
 ButtonPanel::~ButtonPanel()

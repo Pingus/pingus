@@ -1,4 +1,4 @@
-//  $Id: start_screen.hxx,v 1.1 2003/03/21 22:40:12 grumbel Exp $
+//  $Id: start_screen.hxx,v 1.2 2003/03/30 13:12:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,9 +27,17 @@
 class StartScreen : public GUIScreen
 {
 private:
+  PLFHandle plf;
 public:
   StartScreen(PLFHandle plf);
   ~StartScreen();
+
+  void start_game();
+  void cancel_game();
+
+  void on_pause_press();
+  void on_fast_forward_press();
+  void on_escape_press();
 private:
   StartScreen (const StartScreen&);
   StartScreen& operator= (const StartScreen&);
