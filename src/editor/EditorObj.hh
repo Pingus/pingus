@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.22 2000/11/16 10:23:04 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.23 2000/12/09 01:18:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -94,21 +94,21 @@ public:
       starts then to calculate width and height of the object */
   virtual void init();
   ///
-  static EditorObj* create(GroundpieceData);
+  static std::list<EditorObj*> create(GroundpieceData);
   ///
-  static EditorObj* create(EntranceData);
+  static std::list<EditorObj*> create(EntranceData);
   ///
-  static EditorObj* create(ExitData);
+  static std::list<EditorObj*> create(ExitData);
   ///
-  static EditorObj* create(TrapData);
+  static std::list<EditorObj*> create(TrapData);
   ///
-  static EditorObj* create(HotspotData);
+  static std::list<EditorObj*> create(HotspotData);
   ///
-  static EditorObj* create(LiquidData);
+  static std::list<EditorObj*> create(LiquidData);
   ///
-  static EditorObj* create (WeatherData);
+  static std::list<EditorObj*> create (WeatherData);
   ///
-  static list<EditorObj*> create (WorldObjData*);
+  static std::list<EditorObj*> create (WorldObjData*);
 
   /** @name Z-Pos sort operators */
   //@{

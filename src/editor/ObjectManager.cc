@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.36 2000/11/17 19:09:21 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.37 2000/12/09 01:18:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -156,25 +156,25 @@ ObjectManager::load_level (std::string filename)
   vector<WorldObjData*> temp_worldobj = plf->get_worldobjs_data();
 
   for(vector<GroundpieceData>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i)
-    editor_objs.push_back(EditorObj::create(*i));
+    ListHelper::append (editor_objs, EditorObj::create(*i));
 
   for(vector<EntranceData>::iterator i = temp_entraces.begin(); i != temp_entraces.end(); ++i)
-    editor_objs.push_back(EditorObj::create(*i));
+    ListHelper::append (editor_objs, EditorObj::create(*i));
 
   for(vector<ExitData>::iterator i = temp_exits.begin(); i != temp_exits.end(); ++i)
-    editor_objs.push_back(EditorObj::create(*i));
+    ListHelper::append (editor_objs, EditorObj::create(*i));
       
   for(vector<HotspotData>::iterator i = temp_hotspots.begin(); i != temp_hotspots.end(); ++i)
-    editor_objs.push_back(EditorObj::create(*i));
-  std::cout << "hotspot done" << std::endl;      
+    ListHelper::append (editor_objs, EditorObj::create(*i));
+  
   for(vector<LiquidData>::iterator i = temp_liquid.begin(); i != temp_liquid.end(); ++i)
-    editor_objs.push_back(EditorObj::create(*i));
+    ListHelper::append (editor_objs, EditorObj::create(*i));
 
   for(vector<TrapData>::iterator i = temp_traps.begin(); i != temp_traps.end(); ++i)
-    editor_objs.push_back(EditorObj::create(*i));
+    ListHelper::append (editor_objs, EditorObj::create(*i));
 
   for(vector<WeatherData>::iterator i = temp_weather.begin(); i != temp_weather.end(); ++i)
-    editor_objs.push_back(EditorObj::create(*i));
+    ListHelper::append (editor_objs, EditorObj::create(*i));
 
   for(vector<WorldObjData*>::iterator i = temp_worldobj.begin(); i != temp_worldobj.end(); ++i)
     ListHelper::append (editor_objs, EditorObj::create (*i));
@@ -265,7 +265,7 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.36 2000/11/17 19:09:21 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.37 2000/12/09 01:18:55 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   

@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.24 2000/12/04 23:12:13 grumbel Exp $
+// $Id: EditorObj.cc,v 1.25 2000/12/09 01:18:55 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,60 +73,74 @@ EditorObj::init()
     }
 }
 
-EditorObj*
+std::list<EditorObj*>
 EditorObj::create(GroundpieceData data)
 {
+  std::list<EditorObj*> objs;
   EditorObj* obj = new PSMObj(data);
   obj->init ();
-  return obj;
+  objs.push_back (obj);
+  return objs;
 }
 
-EditorObj*
+std::list<EditorObj*>
 EditorObj::create(EntranceData data)
 {
+  std::list<EditorObj*> objs;
   EditorObj* obj = new EntranceObj(data);
   obj->init ();
-  return obj;
+  objs.push_back(obj);
+  return objs;
 }
 
-EditorObj*
+std::list<EditorObj*>
 EditorObj::create(ExitData data)
 {
+  std::list<EditorObj*> objs;
   EditorObj* obj = new ExitObj(data);
   obj->init ();
-  return obj;
+  objs.push_back (obj);
+  return objs;
 }
 
-EditorObj*
+std::list<EditorObj*>
 EditorObj::create(TrapData data)
 {
+  std::list<EditorObj*> objs;
   EditorObj* obj = new TrapObj(data);
   obj->init ();
-  return obj;
+  objs.push_back (obj);
+  return objs;
 }
 
-EditorObj* 
+std::list<EditorObj*>
 EditorObj::create(HotspotData data)
 {
+  std::list<EditorObj*> objs;
   EditorObj* obj = new HotspotObj(data);
   obj->init ();
-  return obj;
+  objs.push_back (obj);
+  return objs;
 }
 
-EditorObj*
+std::list<EditorObj*>
 EditorObj::create(LiquidData data)
 {
+  std::list<EditorObj*> objs;
   EditorObj* obj = new LiquidObj(data);
   obj->init ();
-  return obj;
+  objs.push_back (obj);
+  return objs;
 }
 
-EditorObj*
+std::list<EditorObj*>
 EditorObj::create(WeatherData data)
 {
+  std::list<EditorObj*> objs;
   EditorObj* obj = new WeatherObj(data);
   obj->init ();
-  return obj;
+  objs.push_back (obj);
+  return objs;
 }
 
 list<EditorObj*>
@@ -186,10 +200,10 @@ EditorObj::set_position_offset(int x_pos_add, int y_pos_add,
 void
 EditorObj::draw_offset(int x_offset, int y_offset)
 {
-  if (!(is_init || !"EditorObj: init () wasn't called"))
+  if (!is_init)
     {
       std::cout << "----" << this->status_line () << std::endl;
-      assert (false);
+      assert (!"EditorObj: init () wasn't called");
     }
 
   assert(surf);
@@ -294,6 +308,9 @@ EditorObj::gui_edit_obj()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.25  2000/12/09 01:18:55  grumbel
+Made the switchdoor working
+
 Revision 1.24  2000/12/04 23:12:13  grumbel
 misc cleanup
 

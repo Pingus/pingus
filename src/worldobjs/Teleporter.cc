@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.7 2000/12/06 10:14:01 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.8 2000/12/09 01:18:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -201,6 +201,15 @@ EditorTeleporterTargetObj::EditorTeleporterTargetObj (WorldObjData* obj, Positio
   position = pos;
 
   std::cout << "EditorTeleporterTargetObj: " << pos << " - " << *pos << std::endl;
+}
+
+void
+EditorTeleporterObj::draw_offset(int x_of, int y_of)
+{
+  CL_Display::draw_line (pos.x_pos + x_of + width/2, pos.y_pos + y_of + height/2,
+			 target_pos.x_pos + x_of + 32, target_pos.y_pos + y_of + 32,
+			 0.0, 1.0, 0.0, 0.5);
+  EditorObj::draw_offset (x_of, y_of);
 }
 
 void

@@ -1,4 +1,4 @@
-// $Id: ObjectSelector.hh,v 1.16 2000/12/05 23:17:56 grumbel Exp $
+// $Id: ObjectSelector.hh,v 1.17 2000/12/09 01:18:55 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,15 +63,15 @@ public:
   std::string read_string(std::string, std::string);
   
   ///
-  list<EditorObj*> get_obj(int, int);
+  std::list<EditorObj*> get_obj(int, int);
   ///
-  EditorObj* get_trap();
+  std::list<EditorObj*> get_trap();
   ///
   EditorObj* get_groundpiece(GroundpieceData::Type type);
   ///
   EditorObj* get_hotspot();
   ///
-  EditorObj* get_entrance();
+  std::list<EditorObj*> get_entrance();
   ///
   EditorObj* get_exit();
   /// 
@@ -79,7 +79,7 @@ public:
   ///
   EditorObj* get_weather();
   ///
-  list<EditorObj*> get_worldobj();
+  std::list<EditorObj*> get_worldobj();
   ///
   std::string get_background();
 };

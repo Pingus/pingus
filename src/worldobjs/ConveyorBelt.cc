@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.6 2000/12/08 17:53:05 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.7 2000/12/09 01:18:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -117,7 +117,7 @@ ConveyorBelt::let_move(void)
 {
   counter += speed;
 
-  if (counter > 2)
+  if (counter > 14)
     counter = 0;
   else if (counter < 0)
     counter = middle_sur->get_num_frames () - 1;
@@ -180,7 +180,7 @@ EditorConveyorBeltObj::draw_offset(int x_of, int y_of)
   right_sur->put_screen (pos.x_pos + left_sur->get_width () + ConveyorBeltData::width*middle_sur->get_width () + x_of,
 			 pos.y_pos + y_of, counter);
   counter += speed;
-  if (counter > 2)
+  if (counter > 14)
     counter = 0;
   else if (counter < 0)
     counter = middle_sur->get_num_frames () - 1;

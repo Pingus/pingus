@@ -1,4 +1,4 @@
-//  $Id: GlobalEvent.cc,v 1.11 2000/08/11 01:11:04 grumbel Exp $
+//  $Id: GlobalEvent.cc,v 1.12 2000/12/09 01:18:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,6 +73,14 @@ GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	    console.newline();
 	  }
 	  break;
+
+	case CL_KEY_END:
+	  if (CL_Keyboard::get_keycode(CL_KEY_LCTRL) 
+	      && CL_Keyboard::get_keycode(CL_KEY_ALT))
+	    {
+	      puts ("---:: Emergency exit ::---");
+	      exit (0);
+	    }
 
 	default:
 	  // console << "GlobalEvent: Unknown key pressed: " << key.id;

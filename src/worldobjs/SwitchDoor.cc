@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.cc,v 1.3 2000/12/06 08:54:41 grumbel Exp $
+//  $Id: SwitchDoor.cc,v 1.4 2000/12/09 01:18:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -113,12 +113,14 @@ SwitchDoor::SwitchDoor (WorldObjData* data)
 {
   door_box   = PingusResource::load_surface("switchdoor_box", "worldobjs");
   door_tile  = PingusResource::load_surface("switchdoor_tile", "worldobjs");
+  door_tile_cmap  = PingusResource::load_surface("switchdoor_tile_cmap", "worldobjs");
   switch_sur = PingusResource::load_surface("switchdoor_switch", "worldobjs");
-  is_open = false;
+  is_opening = false;
 
   SwitchDoorData* switchdoor = dynamic_cast<SwitchDoorData*>(data);
 
   door_height = switchdoor->door_height;
+  current_door_height = door_height;
   door_pos    = switchdoor->door_pos;
   switch_pos  = switchdoor->switch_pos;
 }
@@ -130,22 +132,65 @@ SwitchDoor::~SwitchDoor ()
 void 
 SwitchDoor::draw_colmap()
 {
-  // not imlp
+  world->get_colmap ()->put (door_box, door_pos.x_pos, door_pos.y_pos, GroundpieceData::SOLID);
+  for (int i=0; i < door_height; i++)
+    world->get_colmap ()->put (door_tile_cmap,
+			       door_pos.x_pos + 1, 
+			       door_pos.y_pos + i * door_tile->get_height () + door_box->get_height (),
+			       GroundpieceData::SOLID);
 }
 
 void
 SwitchDoor::draw_offset(int x_of, int y_of, float s = 1.0)
 {
   door_box->put_screen (door_pos.x_pos + x_of, door_pos.y_pos + y_of);
-  for (int i=0; i < door_height; i++)
-    door_tile->put_screen (door_pos.x_pos + x_of, door_pos.y_pos + y_of 
-			   + i * door_tile->get_height ());
+  for (int i=0; i < current_door_height; i++)
+    door_tile->put_screen (door_pos.x_pos + x_of + 1, 
+			   door_pos.y_pos + y_of 
+			   + i * door_tile->get_height ()
+			   + door_box->get_height ());
   switch_sur->put_screen (switch_pos.x_pos + x_of, switch_pos.y_pos + y_of);
 }
 
 void
 SwitchDoor::let_move()
 {
+  if (current_door_height > 0)
+    {
+      if (!is_opening)
+	{
+	  // Check if a pingu is passing the switch
+	  PinguHolder* holder = world->get_pingu_p();
+      
+	  for (PinguIter pingu = holder->begin (); pingu != holder->end (); pingu++)
+	    {
+	      if ((*pingu)->get_x()    > switch_pos.x_pos 
+		  && (*pingu)->get_x() < switch_pos.x_pos + (int) switch_sur->get_width ()
+		  && (*pingu)->get_y() > switch_pos.y_pos
+		  && (*pingu)->get_y() < switch_pos.y_pos + (int) switch_sur->get_height ())
+		{
+		  is_opening = true;
+		}
+	    }
+	}
+      else
+	{
+	  // Open the door
+	  current_door_height -= 1;
+
+	  // If the door is opend enough, so that a pingus fits under
+	  // it, we remove the door from the colmap
+	  if (current_door_height + 10 < door_height)
+	    {
+	      world->get_colmap ()->put (door_box, door_pos.x_pos, door_pos.y_pos, GroundpieceData::NOTHING);
+	      for (int i=0; i < door_height; i++)
+		world->get_colmap ()->put (door_tile_cmap,
+					   door_pos.x_pos + 1, 
+					   door_pos.y_pos + i * door_tile->get_height () + door_box->get_height (),
+					   GroundpieceData::NOTHING);
+	    }
+	}
+    }
 }
 
 ///////////////////////////////
@@ -161,8 +206,8 @@ EditorSwitchDoorSwitchObj::EditorSwitchDoorSwitchObj (SwitchDoorData* data)
 
   position = &obj->switch_pos;
 
-  width  = 100;
-  height = 100;
+  width  = surf->get_width ();
+  height = surf->get_height ();
 }
 
 EditorSwitchDoorSwitchObj::~EditorSwitchDoorSwitchObj ()
@@ -199,8 +244,8 @@ EditorSwitchDoorObj::EditorSwitchDoorObj (WorldObjData* data)
   switch_pos = obj->switch_pos;
   door_height = obj->door_height;
 
-  width  = 100;
-  height = 100;
+  width  = door_box->get_width ();
+  height = (door_tile->get_height () * door_height) + door_box->get_height ();
   
   position = &door_pos;
 }
@@ -256,8 +301,9 @@ EditorSwitchDoorObj::draw_offset(int x_of, int y_of)
 			door_pos.y_pos + y_of);
 
   for (int i = 0; i < door_height; i++)
-    door_tile->put_screen (door_pos.x_pos + x_of, 
-			   door_pos.y_pos + y_of + i * door_tile->get_height ());
+    door_tile->put_screen (door_pos.x_pos + x_of + 1, 
+			   door_pos.y_pos + y_of + (i * door_tile->get_height ())
+			   + door_box->get_height ());
 }
 
 /* EOF */

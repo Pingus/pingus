@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.4 2000/12/05 23:17:57 grumbel Exp $
+//  $Id: Teleporter.hh,v 1.5 2000/12/09 01:18:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -103,6 +103,7 @@ public:
       for the editor */
   static std::list<EditorObj*> create (const Position& pos);
 
+  virtual void draw_offset(int, int);
   virtual void save_xml (std::ofstream* xml);
   virtual std::string status_line();
 };

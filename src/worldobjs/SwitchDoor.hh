@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.hh,v 1.3 2000/12/06 08:54:41 grumbel Exp $
+//  $Id: SwitchDoor.hh,v 1.4 2000/12/09 01:18:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,14 +50,23 @@ public:
   static WorldObjData* create(xmlDocPtr doc, xmlNodePtr cur);
 };
 
+/** A door and a switch, if a pingu is passing the switch, the door
+    will open. */
 class SwitchDoor : public SwitchDoorData,
 		   public WorldObj
 {
 private:
   CL_Surface* door_box;
   CL_Surface* door_tile;
+  CL_Surface* door_tile_cmap;
   CL_Surface* switch_sur;
-  bool is_open;
+  
+  /** True if the door is opening */
+  bool is_opening;
+
+  /** The current height of the door, it might get less when the door
+      is opening, it gets zero when the door is fully opened */
+  int current_door_height;
 
 public:
   ///
@@ -70,6 +79,8 @@ public:
   virtual void draw_offset(int x, int y, float s = 1.0);
   ///
   virtual void let_move();
+  /// The switch and the door should stay above the pingus
+  virtual int  get_z_pos() const { return 100; }
 };
 
 /** A dummy object to represent the switch for a switchdoor, all real

@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.34 2000/12/06 08:54:41 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.35 2000/12/09 01:18:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ ObjectSelector::~ObjectSelector()
   
 /** FIXME: Ugly interface, the arguments should not be the offset, but
     instead the absolute position */
-list<EditorObj*>
+std::list<EditorObj*>
 ObjectSelector::get_obj(int x_off, int y_off)
 {
   x_offset = x_off;
@@ -62,7 +62,7 @@ ObjectSelector::get_obj(int x_off, int y_off)
   return select_obj_type();
 }
 
-EditorObj* 
+std::list<EditorObj*>
 ObjectSelector::get_trap()
 {
   vector<string> traps;
@@ -121,13 +121,13 @@ ObjectSelector::get_trap()
 	  have_name = true;
 	  break;
 	case CL_KEY_ESCAPE:
-	  return 0;
+	  return std::list<EditorObj*>();
 	}
     }
  
   // FIXME: Can somebody enlight me, why gcc gives here a warrning?: 
   // ObjectSelector.cc:107: warning: control reaches end of non-void function `ObjectSelector::get_trap()'
-  return (new TrapObj(trap));
+  return EditorObj::create (&trap);//new TrapObj(trap);
 }
 
 EditorObj*
@@ -145,7 +145,9 @@ ObjectSelector::get_groundpiece(GroundpieceData::Type type)
       data.desc = ResDescriptor("resource:global", str);
       data.type = type;
 
-      return new PSMObj(data);
+      EditorObj* obj = new PSMObj(data);
+      obj->init ();
+      return obj;
     }
   return 0;
 }
@@ -169,7 +171,7 @@ ObjectSelector::get_hotspot()
   return 0;
 }
 
-list<EditorObj*>
+std::list<EditorObj*>
 ObjectSelector::get_worldobj()
 {
   CL_Display::clear_display();
@@ -201,7 +203,7 @@ ObjectSelector::get_worldobj()
 						       CL_Mouse::get_y() - y_offset));
 
 	case CL_KEY_ESCAPE:
-	  return list<EditorObj*>();
+	  return std::list<EditorObj*>();
 	}
     }
 }
@@ -239,7 +241,7 @@ ObjectSelector::get_weather()
   return new WeatherObj(weather);
 }
 
-EditorObj*
+std::list<EditorObj*>
 ObjectSelector::get_entrance()
 {
   EntranceData entrance;
@@ -280,10 +282,10 @@ ObjectSelector::get_entrance()
 	}
     }
   
-  return new EntranceObj(entrance);
+  return EditorObj::create(entrance);
 }
 
-EditorObj* 
+EditorObj*
 ObjectSelector::get_exit()
 {
   string str;
@@ -304,7 +306,7 @@ ObjectSelector::get_exit()
   return new ExitObj(data);
 }
 
-EditorObj* 
+EditorObj*
 ObjectSelector::get_liquid()
 {
   std::cout << "ObjectSelector::get_liquid() not implemented" << std::endl;
@@ -339,8 +341,7 @@ ObjectSelector::select_obj_type()
       switch (read_key()) 
 	{
 	case CL_KEY_T:
-	  objs.push_back(get_trap());
-	  return objs;
+	  return get_trap();
 
 	case CL_KEY_B:
 	  objs.push_back(get_groundpiece(GroundpieceData::BRIDGE));
@@ -363,8 +364,8 @@ ObjectSelector::select_obj_type()
 	  return objs;
 		  
 	case CL_KEY_E:
-	  objs.push_back(get_entrance());
-	  return objs;
+	  return get_entrance();
+
 	case CL_KEY_X:
 	  objs.push_back(get_exit());
 	  return objs;
@@ -433,7 +434,7 @@ ObjectSelector::select_surface(std::string resource_file)
 	}
       sur_list.push_back(sur_obj);
 
-      if (!datafile_loaded && (j % 5) == 0)
+      if (!datafile_loaded && (j % 25) == 0)
 	{
 	  loading_screen.draw_progress(i->c_str(), (float)j / liste->size());
 	}
@@ -478,6 +479,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.35  2000/12/09 01:18:55  grumbel
+Made the switchdoor working
+
 Revision 1.34  2000/12/06 08:54:41  grumbel
 Added support for inserting iceblocks, conveyorbelts and switchdoors into the editor
 

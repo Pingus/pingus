@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.19 2000/10/18 20:16:36 grumbel Exp $
+//  $Id: ColMap.cc,v 1.20 2000/12/09 01:18:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -323,6 +323,9 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, GroundpieceData:
 		      break;
 		    case GroundpieceData::LAVA:
 		      colmap[i + (width*(line+sur_y) + sur_x)] = SOLID | LAVA;
+		      break;
+		    case GroundpieceData::NOTHING:
+		      colmap[i + (width*(line+sur_y) + sur_x)] = 0;
 		      break;
 		    default:
 		      std::cout << "Colmap::put() Undefinit type" << std::endl;
