@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.9 2000/03/16 21:36:33 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.10 2000/03/19 00:12:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -226,8 +226,8 @@ PingusSpotMap::draw(int x, int y, int w, int h,
 	tilemap_width = tile[0].size() - 1;
       else if (tilemap_width < 0)
 	tilemap_width = 0;
-
-      if (tilemap_height > tile.size())
+      
+      if (tilemap_height >= tile.size())
 	tilemap_height = tile.size() - 1;
       else if (tilemap_height < 0)
 	tilemap_height = 0;          

@@ -1,4 +1,4 @@
-//  $Id: globals.cc,v 1.9 2000/03/16 14:20:30 grumbel Exp $
+//  $Id: globals.cc,v 1.10 2000/03/19 00:12:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include "globals.hh"
 
-int    game_speed        = 20;
+int    game_speed        = 10;
 bool   print_fps         = false;
 int    verbose           = 0;
 bool   music_enabled     = false;
