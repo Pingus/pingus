@@ -1,4 +1,4 @@
-//  $Id: delta_manager.hxx,v 1.8 2002/12/28 16:57:38 torangan Exp $
+//  $Id: delta_manager.hxx,v 1.9 2003/04/05 18:36:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_DELTA_MANAGER_HXX
 
 #include <assert.h>
+#include <iostream>
 #include <ClanLib/Core/System/system.h>
 #include "pingus.hxx"
 
@@ -50,8 +51,16 @@ public:
   
   float get () const
   {
-    assert (CL_System::get_time () >= last_time);
-    return (CL_System::get_time () - last_time) / 1000.0f;
+    unsigned int t = CL_System::get_time ();
+    if (t < last_time)
+      { // catching time travel
+        std::cout << "Time Travel: first: " << last_time << " second: " << t << std::endl;
+        return 0.0f;
+      }
+    else
+      {
+        return (CL_System::get_time () - last_time) / 1000.0f;
+      }
   }
   
   /** @return time in miliseconds passed since the start of the DeltaManager */

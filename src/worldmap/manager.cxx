@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.31 2003/04/03 17:03:24 grumbel Exp $
+//  $Id: manager.cxx,v 1.32 2003/04/05 18:36:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,9 +25,11 @@
 #include "../path_manager.hxx"
 #include "../res_descriptor.hxx"
 #include "../sound/sound.hxx"
+#include "../stat_manager.hxx"
 #include "worldmap.hxx"
 #include "pingus.hxx"
 #include "manager.hxx"
+#include "../story_screen.hxx"
 
 namespace WorldMapNS {
 
@@ -43,6 +45,27 @@ public:
   void on_pointer_enter();
 };
 
+class WorldMapManagerStoryButton 
+  : public GUI::SurfaceButton
+{
+public:
+  WorldMapManagerStoryButton();
+  void on_click();
+  void draw (GraphicContext& gc);
+  void on_pointer_enter();
+};
+
+
+class WorldMapManagerCreditsButton 
+  : public GUI::SurfaceButton
+{
+public:
+  WorldMapManagerCreditsButton();
+  void on_click();
+  void draw (GraphicContext& gc);
+  void on_pointer_enter();
+};
+
 class WorldMapManagerEnterButton
   : public GUI::SurfaceButton
 {
@@ -52,6 +75,67 @@ public:
   void draw (GraphicContext& gc);
   void on_pointer_enter();
 };
+
+
+WorldMapManagerCreditsButton::WorldMapManagerCreditsButton()
+  : GUI::SurfaceButton(800 - 150, 0,
+                       ResDescriptor("worldmap/credits_button_normal", "core"),
+                       ResDescriptor("worldmap/credits_button_pressed", "core"),
+                       ResDescriptor("worldmap/credits_button_hover", "core"))
+{
+}
+
+void
+WorldMapManagerCreditsButton::on_pointer_enter()
+{
+  SurfaceButton::on_pointer_enter();
+  PingusSound::play_sound ("tick");
+}
+
+
+
+void
+WorldMapManagerCreditsButton::draw (GraphicContext& gc)
+{
+  SurfaceButton::draw(gc);
+  gc.print_left(Fonts::chalk_small, 800 - 150 + 15, 5, _("Show Ending?"));
+}
+
+void
+WorldMapManagerCreditsButton::on_click()
+{
+  ScreenManager::instance()->replace_screen(new StoryScreen(), true);
+}
+
+WorldMapManagerStoryButton::WorldMapManagerStoryButton()
+  : GUI::SurfaceButton(0, 0,
+                       ResDescriptor("worldmap/story_button_normal", "core"),
+                       ResDescriptor("worldmap/story_button_pressed", "core"),
+                       ResDescriptor("worldmap/story_button_hover", "core"))
+{
+}
+
+void
+WorldMapManagerStoryButton::on_pointer_enter()
+{
+  SurfaceButton::on_pointer_enter();
+  PingusSound::play_sound ("tick");
+}
+
+
+
+void
+WorldMapManagerStoryButton::draw (GraphicContext& gc)
+{
+  SurfaceButton::draw(gc);
+  gc.print_left(Fonts::chalk_small, 10, 5, _("Show Story?"));
+}
+
+void
+WorldMapManagerStoryButton::on_click()
+{
+  ScreenManager::instance()->replace_screen(new StoryScreen(), true);
+}
 
 WorldMapManagerCloseButton::WorldMapManagerCloseButton()
   : GUI::SurfaceButton(0, 600 - 37,
@@ -138,6 +222,15 @@ WorldMapManager::WorldMapManager ()
   gui_manager->add (worldmap_component);
   gui_manager->add(new WorldMapManagerCloseButton());
   gui_manager->add(new WorldMapManagerEnterButton());
+
+  gui_manager->add(new WorldMapManagerStoryButton());
+
+  bool credits_unlocked = false;
+  StatManager::instance()->get_bool("credits-unlocked", credits_unlocked);
+  if (credits_unlocked)
+    {
+      gui_manager->add(new WorldMapManagerCreditsButton());
+    }
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: server.cxx,v 1.25 2002/12/29 23:29:00 torangan Exp $
+//  $Id: server.cxx,v 1.26 2003/04/05 18:36:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -86,12 +86,6 @@ bool
 Server::is_finished ()
 {
   return goal_manager->is_finished();
-}
-
-void
-Server::set_finished ()
-{
-  goal_manager->set_abort_goal();
 }
 
 ActionHolder*

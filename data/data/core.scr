@@ -174,6 +174,15 @@ section worldmap
         leave_button_normal = ../images/core/worldmap/leave_button_normal.png     (type=surface);
         leave_button_hover = ../images/core/worldmap/leave_button_hover.png     (type=surface);
         leave_button_pressed = ../images/core/worldmap/leave_button_pressed.png     (type=surface);
+
+        story_button_normal = ../images/core/worldmap/story_button_normal.png     (type=surface);
+        story_button_hover = ../images/core/worldmap/story_button_hover.png     (type=surface);
+        story_button_pressed = ../images/core/worldmap/story_button_pressed.png     (type=surface);
+
+        credits_button_normal = ../images/core/worldmap/credits_button_normal.png     (type=surface);
+        credits_button_hover = ../images/core/worldmap/credits_button_hover.png     (type=surface);
+        credits_button_pressed = ../images/core/worldmap/credits_button_pressed.png     (type=surface);
+
 }
 
 // EOF //

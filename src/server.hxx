@@ -1,4 +1,4 @@
-//  $Id: server.hxx,v 1.13 2002/12/29 23:29:00 torangan Exp $
+//  $Id: server.hxx,v 1.14 2003/04/05 18:36:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ class GoalManager;
 /** A abstract server-like class */
 class Server
 {
-private:
+protected:
   PLF* plf;
   World* world;
 
@@ -62,7 +62,7 @@ public:
 
   /** set the server into the finshed state, this is used when you
       press ESCAPE inside a game */
-  void set_finished();
+  virtual void set_finished() =0;
 
   /* Event handling stuff */
   void send_armageddon_event();

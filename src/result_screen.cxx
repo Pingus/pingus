@@ -1,4 +1,4 @@
-//  $Id: result_screen.cxx,v 1.10 2003/04/03 17:03:24 grumbel Exp $
+//  $Id: result_screen.cxx,v 1.11 2003/04/05 18:36:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -179,7 +179,7 @@ ResultScreenComponent::draw(GraphicContext& gc)
       else if (result.killed >= 5)
         message = _("Not everybody could get saved, but still good work!");
       else
-        message = _("What can I say, you made it, congratulasions!");
+        message = _("What can I say, you made it, congratulations!");
     }
   else
     {

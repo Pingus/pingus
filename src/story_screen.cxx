@@ -1,4 +1,4 @@
-//  $Id: story_screen.cxx,v 1.8 2003/04/04 11:23:27 grumbel Exp $
+//  $Id: story_screen.cxx,v 1.9 2003/04/05 18:36:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <algorithm>
 #include <ClanLib/Display/Display/surface.h>
+#include "my_gettext.hxx"
 #include "pingus_resource.hxx"
 #include "gui/gui_manager.hxx"
 #include "gui/surface_button.hxx"
@@ -109,39 +110,111 @@ StoryScreenComponent::StoryScreenComponent ()
   page_displayed_completly = false;
   time_passed  = 0;
 
-  pages.push_back(StoryPage(ResDescriptor("Story/story0", "story"), 
-                            "‰ƒ¡”ˆ÷aoeuth htnh30  003 0238p[ 8eu ntuhnt hnthneat'hur  rcg rg th th tnh "));
+  pages.push_back
+    (StoryPage
+     (ResDescriptor("Story/story0", "story"), 
+      _("For a long time now the Pingus have lived happily in peace on the\n"
+        "south pole along with all the other animals, everything was in\n"
+        "balance and it seemed like nothing could disrupt there peace.  The\n"
+        "Pingus where happy and it seemed like this could never end.\n")));
 
-  pages.push_back(StoryPage(ResDescriptor("Story/story1", "story"), 
-                            "Page 2Dies ist ein Tet blabla, sehr lang blabla und mit umbruechen blabal\n"
-                            "Zeile zwei mehr text blabla umbrauchuauaneh usnthu snaotehu nostehusano\n"
-                            "authh nth pte thuat nth auntheun tahneuth oentuh oentuhontu hoantuhetuh\n"
-                            "aoeuth htnh30  003 0238p[ 8eu ntuhnt hnthneat'hur  rcg rg th th tnh "));
+  pages.push_back
+    (StoryPage
+     (ResDescriptor("Story/story1", "story"), 
+      _("But then one day, things began to change slowly, the sky got darker\n"
+        "and the earth got warmer, first of they thought this was just a\n"
+        "normal fluctuation in the worlds climate, but things seemed to get\n"
+        "worse and worse with every year.")));
 
-  pages.push_back(StoryPage(ResDescriptor("Story/story2", "story"), 
-                            "Page 3Dies ist ein Tet blabla, sehr lang blabla und mit umbruechen blabal\n"
-                            "Zeile zwei mehr text blabla umbrauchuauaneh usnthu snaotehu nostehusano\n"
-                            "authh nth pte thuat nth auntheun tahneuth oentuh oentuhontu hoantuhetuh\n"
-                            "aoeuth htnh30  003 0238p[ 8eu ntuhnt hnthneat'hur  rcg rg th th tnh "));  
 
-  pages.push_back(StoryPage(ResDescriptor("Story/story3", "story"), 
-                            "Page 4Dies ist ein Tet blabla, sehr lang blabla und mit umbruechen blabal\n"
-                            "Zeile zwei mehr text blabla umbrauchuauaneh usnthu snaotehu nostehusano\n"
-                            "authh nth pte thuat nth auntheun tahneuth oentuh oentuhontu hoantuhetuh\n"
-                            "aoeuth htnh30  003 0238p[ 8eu ntuhnt hnthneat'hur  rcg rg th th tnh "));
+  pages.push_back
+    (StoryPage
+     (ResDescriptor("Story/story2", "story"), 
+      _("The snow began to melt away in a few regions and food became an\n"
+        "issue. Other animals already tend to leave the region to search\n"
+        "for colder areas, but the Pingus knew that this couldn't help,\n"
+        "they knew that they had to do something about this problem.")));
 
-  std::reverse(pages.begin(), pages.end());
+  pages.push_back
+    (StoryPage
+     (ResDescriptor("Story/story3", "story"), 
+      _("So the circle of the eldest came together to decide what to do\n"
+        "about it. They decided to send out an expedition around the world\n"
+        "to find the cause for this warming. The expedition consisted of\n"
+        "hundreds of the bravest Pingus around on the south pole.")));
+    
+  pages.push_back
+    (StoryPage
+     (ResDescriptor("Story/story4", "story"), 
+      _("And they picked you to lead them on there journey around the\n"
+        "world. Since the journey will be dangerous and difficult. Your\n"
+        "first goal is the Island of Mogorok, also know has Tutorial\n"
+        "Island. According to the eldest, this island has always been the\n"
+        "first stop of Pingus which where send out into the world.")));
 
-  current_page = pages.back();
-  page_surface = PingusResource::load_surface(current_page.image);
-  background   = PingusResource::load_surface("menu/startscreenbg", "core");
+  pages.push_back
+    (StoryPage
+     (ResDescriptor("Story/story5", "story"), 
+      _("The island consists of many regions which are ideally to train the\n"
+        "abilities of the Pingus. The Pingus can train there their ability\n"
+        "to build bridges, climb, bash and all the rest of there talents\n"
+        "which they will surly need on there long and dangerous journey.")));
+
+  pages.push_back
+    (StoryPage
+     (ResDescriptor("Story/story6", "story"), 
+      _("While you on the other site can practice there your ability to\n"
+        "command and guide the Pingus. You can also get familiar there with\n"
+        "all the abilities the Pingus provide and learn to master them,\n"
+        "since you will need them all for sure an your journey around the\n"
+        "world.")));
+
+  pages.push_back
+    (StoryPage
+     (ResDescriptor("Story/story6", "story"), 
+      _("Now that you and the Pingus have arrive at tutorial island it\n"
+        "is time to take over the command and begin your mission\n"
+        "\n"
+        "                                                  Good Luck!")));
+
+
+  /* 
+     Now after you and the Pingus have learned the basics and
+     practiced a bit it is time to move on and begin the journey into
+     the world. Since the floe with which the Pingus traveled to the
+     Tutorial Island isn't going to hold the whole way into the warmer
+     climated regions the Pingus have to find something else to guide
+     there on there journey.
+
+     But as the eldest have said, the Tutorial Island provides not
+     only a way to practive, but it is also the starting point into
+     the world, cause the wood if the large tree at the end of the
+     island is brings good wood to construct a float.
+     
+     So the Pingus set out and constructed a some large floats, enough
+     to carry them all. After also packaging up a bunch of provisions
+     they where prepared to finally start of there journey and leave
+     their familiar ground and entering the unknown parts of the
+     world.
+     
+     So the Pingus sat on there float, worrying whats to come and
+     where to go, while floating into the sunset.
+
+     To be continued...
+   */
+
+    std::reverse(pages.begin(), pages.end());
+
+    current_page = pages.back();
+    page_surface = PingusResource::load_surface(current_page.image);
+    background   = PingusResource::load_surface("menu/startscreenbg", "core");
 }
 
 void
 StoryScreenComponent::draw (GraphicContext& gc)
 {
   gc.draw(background, 0, 0);
-  gc.print_center(Fonts::chalk_large, 400, 100, "Chapter 1 - Training Day - ,bD(B");
+  gc.print_center(Fonts::chalk_large, 400, 100, "Chapter I - Tutorial Island");
   gc.draw(page_surface,  gc.get_width()/2 - page_surface.get_width()/2,
           160);
   gc.print_left(Fonts::chalk_normal, 120, 335, display_text);

@@ -204,7 +204,7 @@
             <z-pos>150</z-pos>
           </position>
         </dot>
-        <levelname>tutorial/snow16-grumbel</levelname>
+        <levelname>tutorial/snow20-grumbel</levelname>
       </leveldot>
 
 
@@ -230,7 +230,7 @@
             <z-pos>150</z-pos>
           </position>
         </dot>
-        <levelname>tutorial/snow20-grumbel</levelname>
+        <levelname>tutorial/snow22-grumbel</levelname>
       </leveldot>
 
 
@@ -243,7 +243,7 @@
             <z-pos>150</z-pos>
           </position>
         </dot>
-        <levelname>tutorial/snow11-grumbel</levelname>
+        <levelname>tutorial/snow7-grumbel</levelname>
       </leveldot>
 
 
@@ -256,7 +256,7 @@
             <z-pos>150</z-pos>
           </position>
         </dot>
-        <levelname>tutorial/snow7-grumbel</levelname>
+        <levelname>tutorial/snow11-grumbel</levelname>
       </leveldot>
 
 
@@ -269,7 +269,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>tutorial/snow22-grumbel</levelname>
+        <levelname>tutorial/snow16-grumbel</levelname>
       </leveldot>
 
 
