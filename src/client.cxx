@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.8 2002/08/02 11:25:46 grumbel Exp $
+//  $Id: client.cxx,v 1.9 2002/08/02 11:53:52 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,7 +76,8 @@ Client::Client(Server * s)
 
   Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", 
 						   PingusResource::get("game")));
-  
+
+  // These object will get deleted by the gui_manager
   button_panel = new ButtonPanel(server->get_plf (), 2, CL_Display::get_height()/2);
   playfield    = new Playfield(this, server->get_plf (), server->get_world());
   hurry_up     = new HurryUp();
@@ -91,38 +92,27 @@ Client::Client(Server * s)
   small_map->set_client(this);
   time_display->set_server(server);
 
-  gui_manager->add (small_map);
-  gui_manager->add (button_panel);
+  gui_manager->add (playfield, true);
+  gui_manager->add (button_panel, true);
+  gui_manager->add (hurry_up, true);
+  gui_manager->add (pcounter, true);
+  gui_manager->add (small_map, true);
+  gui_manager->add (time_display, true);
 
   /*playfield->set_clip_rect(0, 0, 
 			   CL_Display::get_width(),
-			   CL_Display::get_height());
+			   CL_Display::get_height());*/
 
   // Connect the button_panel with the playfield
   playfield->set_buttons(button_panel);
   playfield->set_server(server);
   playfield->set_client(this);
-  */
-  // Adding all GuiObj's to the screen
-  //obj.push_back(playfield);
-  //obj.push_back(pcounter);
-  //obj.push_back(time_display);
-  //obj.push_back(hurry_up);
-
+  
   if (verbose) std::cout << "done " << timer.stop() << std::endl;
 }
 
 Client::~Client()
 {
-  //Display::remove_flip_screen_hook(cursor);
-
-  //delete playfield;    
-  //delete button_panel;
-  //delete pcounter;
-  //delete small_map;
-  //delete time_display;
-  //delete hurry_up;
-  //  delete cursor;
 }
 
 void 
@@ -146,9 +136,9 @@ Client::update (float delta)
   //send_next_event();
 
   /*float wannabe_delta = 0.0333f;
-  unsigned int frames = 1;
-  bool auto_frame_skip = false;
-  float current_delta;*/
+    unsigned int frames = 1;
+    bool auto_frame_skip = false;
+    float current_delta;*/
 
   if (server->is_finished())
     {
@@ -157,24 +147,24 @@ Client::update (float delta)
     }
 
   /*
-  CL_System::keep_alive ();
-  CL_System::sleep (0);
+    CL_System::keep_alive ();
+    CL_System::sleep (0);
 
-  if (current_delta > wannabe_delta)
+    if (current_delta > wannabe_delta)
     {
-      update (delta.getset ());
-      ++frames;
-      if (frames % int(frame_skip) == 0)
-	{
-	  if (!auto_frame_skip)
-	    {
-	      draw ();
-	    }
-	}
-      else
-	{
-	  CL_System::sleep (int(1000 * (wannabe_delta - delta.get ())));
-	}
+    update (delta.getset ());
+    ++frames;
+    if (frames % int(frame_skip) == 0)
+    {
+    if (!auto_frame_skip)
+    {
+    draw ();
+    }
+    }
+    else
+    {
+    CL_System::sleep (int(1000 * (wannabe_delta - delta.get ())));
+    }
     }*/
 }
 
@@ -248,32 +238,32 @@ Client::process_pointer_event (Input::PointerEvent* event)
   
   switch (event->type)
     {
-	/*
+      /*
 
-    case Input::scroll: // FIXME: incorrect enum name
+      case Input::scroll: // FIXME: incorrect enum name
       {
-	GuiObj* obj = get_gui_object (int(event->x), int(event->y));
-	if (obj)
-	  {
-	    if (obj != current_gui_obj)
-	      {
-		current_gui_obj = obj;
-		obj->on_mouse_enter();
-	      }
-	    else
-	      {
-		if (current_gui_obj) current_gui_obj->on_mouse_leave();
-		current_gui_obj = 0;
-	      }
-	  }
-	else
-	  {
-	    if (current_gui_obj) current_gui_obj->on_mouse_leave();
-	    current_gui_obj = 0;
-	  }
+      GuiObj* obj = get_gui_object (int(event->x), int(event->y));
+      if (obj)
+      {
+      if (obj != current_gui_obj)
+      {
+      current_gui_obj = obj;
+      obj->on_mouse_enter();
+      }
+      else
+      {
+      if (current_gui_obj) current_gui_obj->on_mouse_leave();
+      current_gui_obj = 0;
+      }
+      }
+      else
+      {
+      if (current_gui_obj) current_gui_obj->on_mouse_leave();
+      current_gui_obj = 0;
+      }
       }
       break;
-	*/
+      */
       
       //se Input::scroll:
       //reak;	    

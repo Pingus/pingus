@@ -1,4 +1,4 @@
-//  $Id: view.hxx,v 1.3 2002/06/24 22:52:57 grumbel Exp $
+//  $Id: view.hxx,v 1.4 2002/08/02 11:53:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,6 +40,9 @@ private:
   bool mouse_over;
   /// The zoom of the View, 1 is default
   double size;              
+  int mouse_x;
+  int mouse_y;
+  
   CaptureRectangle cap;
   Pingu* current_pingu;
   /// Static objects which are equal for all Views
@@ -47,7 +50,7 @@ private:
 
   ///
   void make_range();
-  Controller* controller;
+
 public:
   /** @name The position of the View.
       
@@ -89,6 +92,8 @@ public:
   double get_zoom();
   void set_pingu(Pingu* p);
   static void set_world(World*);
+
+  void on_pointer_move (int x, int y);
 };
 
 #endif

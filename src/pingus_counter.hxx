@@ -1,4 +1,4 @@
-//  $Id: pingus_counter.hxx,v 1.4 2002/07/02 15:46:58 torangan Exp $
+//  $Id: pingus_counter.hxx,v 1.5 2002/08/02 11:53:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,31 +21,25 @@
 #define HEADER_PINGUS_PINGUS_COUNTER_HXX
 
 #include <ClanLib/Display/Display/surface.h>
-#include "gui_obj.hxx"
+#include "gui/component.hxx"
 
 class CL_Font;
 class World;
 class Client;
 
-///
-class PingusCounter : public GuiObj
+class PingusCounter : public GUI::Component
 {
 private:
-  ///
   CL_Font* font;
   CL_Surface background;
-  ///
   Client* client;
 public:
-  ///
   PingusCounter();
+  virtual ~PingusCounter() {}
 
-  ///
   void draw(void);
-  ///
   void set_client(Client*);
-}///
-;
+};
 
 #endif
 

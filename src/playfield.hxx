@@ -1,4 +1,4 @@
-//  $Id: playfield.hxx,v 1.6 2002/08/02 11:25:47 grumbel Exp $
+//  $Id: playfield.hxx,v 1.7 2002/08/02 11:53:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,6 +68,8 @@ private:
 
   std::vector<Rect> clipping_rectangles;
 
+  int mouse_x;
+  int mouse_y;
 public:
   Playfield(Client*, PLF* plf, World*);
   virtual ~Playfield();
@@ -81,14 +83,11 @@ public:
 
   void draw();
   void update(float delta);
-  void updateX();
-  void process_input();
-  void process_input_interactive();
-  void process_input_demomode();
   void set_world(World*);
   Pingu* current_pingu_find(int x_pos, int y_pos);
 
-  bool on_button_press(const CL_Key &key);
+  void on_button_press (int x, int y);
+  void on_pointer_move (int x, int y);
 
   void enable_scroll_mode();
   void do_scrolling();
@@ -101,6 +100,8 @@ public:
   void set_buttons(ButtonPanel*);
   void set_server(Server*);
   void set_client(Client*);
+
+  bool is_at (int x, int y) { return true; }
 };
 
 #endif

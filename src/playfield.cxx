@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.8 2002/08/02 11:25:47 grumbel Exp $
+//  $Id: playfield.cxx,v 1.9 2002/08/02 11:53:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -147,22 +147,11 @@ Playfield::set_world(World* w)
   world = w;
 }
 
-void 
-Playfield::process_input()
-{
-  process_input_interactive();
-}
-
-void
-Playfield::process_input_demomode()
-{
-}
-
+#if 0
 void 
 Playfield::process_input_interactive()
 {
   // FIXME: This should be replaced with something getting relative mouse co's
-#if 0
   if (auto_scrolling)
     {
       scroll_speed = 30;
@@ -185,37 +174,27 @@ Playfield::process_input_interactive()
 	  view[current_view]->set_y_offset(view[current_view]->get_y_offset() - scroll_speed);
 	}
     }
+}
 #endif
-}
-
-///
-void
-Playfield::updateX()
-{
-  process_input();
-  do_scrolling(); 
-}
 
 void
 Playfield::update(float /*delta*/)
 {
-#if 0
   for(unsigned int i=0; i < view.size(); ++i)
     {
       if (view[i]->is_current() && !mouse_scrolling)
 	{ 
 	  current_view = i;
-	  current_pingu = current_pingu_find(controller->get_x() - view[i]->get_x_pos() - (view[i]->get_x_offset()),
-					     controller->get_y() - view[i]->get_y_pos() - (view[i]->get_y_offset())); 
+	  current_pingu = current_pingu_find(mouse_x - view[i]->get_x_pos() - (view[i]->get_x_offset()),
+					     mouse_y - view[i]->get_y_pos() - (view[i]->get_y_offset())); 
 	  view[i]->set_pingu(current_pingu);
 	  break;
 	}
     }
-#endif 
 }
 
-bool 
-Playfield::on_button_press(const CL_Key & /*key*/)
+void 
+Playfield::on_button_press(int x, int y)
 {
   if (current_pingu)
     {
@@ -223,9 +202,15 @@ Playfield::on_button_press(const CL_Key & /*key*/)
       sprintf(str, "Pingu: %d:%s", current_pingu->get_id(), 
 	      action_to_string(buttons->get_action_name()).c_str());
       server->send_event(str);
-      return true;
     }
-  return false;
+}
+
+void
+Playfield::on_pointer_move (int x, int y)
+{
+  // FIXME: useless stuff, but currently the controller doesn't have a state
+  mouse_x = x;
+  mouse_y = y;
 }
 
 void

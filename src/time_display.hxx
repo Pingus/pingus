@@ -1,4 +1,4 @@
-//  $Id: time_display.hxx,v 1.3 2002/07/02 15:46:58 torangan Exp $
+//  $Id: time_display.hxx,v 1.4 2002/08/02 11:53:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,26 +20,21 @@
 #ifndef HEADER_PINGUS_TIME_DISPLAY_HXX
 #define HEADER_PINGUS_TIME_DISPLAY_HXX
 
-#include "gui_obj.hxx"
+#include "gui/component.hxx"
 
 class CL_Font;
 class Server;
 
-///
-class TimeDisplay : public GuiObj
+class TimeDisplay : public GUI::Component
 {
 private:
-  ///
   Server*  server;
-  ///
   CL_Font* font;
 public:
-  ///
   TimeDisplay();
+  virtual ~TimeDisplay() {}
 
-  ///
   void draw();
-  ///
   void set_server(Server*);
 };
 

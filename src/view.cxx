@@ -1,4 +1,4 @@
-//  $Id: view.cxx,v 1.4 2002/06/24 14:25:03 grumbel Exp $
+//  $Id: view.cxx,v 1.5 2002/08/02 11:53:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include <assert.h>
 #include <ClanLib/Display/Display/display.h>
-#include "mouse_controller.hxx"
+#include <ClanLib/Core/Math/cl_vector.h>
 #include "view.hxx"
 #include "world.hxx"
 #include "client.hxx"
@@ -29,8 +29,7 @@ World* View::world;
 
 View::View(Client* client, int x1, int y1, int x2, int y2, float s)
   : cap (client->get_button_panel ()),
-    current_pingu (0),
-    controller (new MouseController ()) 
+    current_pingu (0)
 {
   assert(world);
 
@@ -52,8 +51,6 @@ View::View(Client* client, int x1, int y1, int x2, int y2, float s)
 
 View::~View()
 {
-  //FIXME: This is dangerous and might cause throuble when the code is reordered
-  delete controller;
 }
 
 void
@@ -62,7 +59,7 @@ View::draw()
   assert(world);
   float color;
 
-  if (is_over(controller->get_x(), controller->get_y()))
+  if (is_over(mouse_x, mouse_y))
     {
       color = 1.0;
       mouse_over = true;
@@ -191,6 +188,13 @@ CL_Vector
 View::get_center ()
 {
   return CL_Vector (-x_offset + get_width ()/2, -y_offset + get_height ()/2);
+}
+
+void
+View::on_pointer_move (int x, int y)
+{
+  mouse_x = x;
+  mouse_y = y;
 }
 
 /* EOF */

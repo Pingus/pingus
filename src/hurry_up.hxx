@@ -1,4 +1,4 @@
-//  $Id: hurry_up.hxx,v 1.2 2002/06/24 22:52:54 grumbel Exp $
+//  $Id: hurry_up.hxx,v 1.3 2002/08/02 11:53:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,13 +20,13 @@
 #ifndef HEADER_PINGUS_HURRY_UP_HXX
 #define HEADER_PINGUS_HURRY_UP_HXX
 
-#include "gui_obj.hxx"
+#include "gui/component.hxx"
 
 class CL_Font;
 class Client;
 
 /** Hurry up if the time goes over... */
-class HurryUp : public GuiObj
+class HurryUp : public GUI::Component
 {
 private:
   CL_Font* font;

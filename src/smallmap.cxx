@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.7 2002/07/29 11:57:38 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.8 2002/08/02 11:53:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -242,6 +242,13 @@ void
 SmallMap::on_button_press(int x, int y)
 {
   scroll_mode = true;
+
+  // set view to the given COs
+  int cx, cy;
+  ColMap* colmap = client->get_server()->get_world()->get_colmap();
+  cx = (x - x_pos) * int(colmap->get_width()) / width;
+  cy = (y - y_pos) * int(colmap->get_height()) / height ;
+  client->get_playfield()->set_viewpoint(cx, cy);
 }
 
 void

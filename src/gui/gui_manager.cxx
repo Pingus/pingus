@@ -1,4 +1,4 @@
-//  $Id: gui_manager.cxx,v 1.5 2002/08/01 21:40:02 grumbel Exp $
+//  $Id: gui_manager.cxx,v 1.6 2002/08/02 11:53:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -184,8 +184,10 @@ GUIManager::remove (Component* c)
 Component*
 GUIManager::component_at (int x, int y)
 {
-  for (std::vector<Component*>::iterator i = components.begin (); 
-       i != components.end (); ++i)
+  // we travel reversly through the component list, so that we get the
+  // top most component at first
+  for (std::vector<Component*>::reverse_iterator i = components.rbegin (); 
+       i != components.rend (); ++i)
     {
       if ((*i)->is_at (x, y))
 	return *i;
