@@ -1,4 +1,4 @@
-//  $Id: story.cxx,v 1.23 2003/04/16 18:02:27 torangan Exp $
+//  $Id: story.cxx,v 1.24 2003/04/17 07:15:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,7 +92,7 @@ Story::init_intro()
      (ResDescriptor("Story/story0", "story"),
       StringFormat::break_line(
       _("For a long time now the Pingus have lived happily in peace on the\n"
-        "south pole along with all the other animals, everything was in\n"
+        "south pole along with all the other animals. Everything was in\n"
         "balance and it seemed like nothing could disrupt their peace.  The\n"
         "Pingus where happy and it seemed like this could never end.\n"), 570, Fonts::chalk_normal)
        ));
@@ -103,7 +103,7 @@ Story::init_intro()
       StringFormat::break_line(
       _("But then one day, things began to change slowly, the sky got darker\n"
         "and the earth got warmer, first of they thought this was just a\n"
-        "normal fluctuation in the worlds climate, but things seemed to get\n"
+        "normal fluctuation in the world's climate, but things seemed to get\n"
         "worse and worse with every year."), 570, Fonts::chalk_normal)
        ));
 
@@ -113,7 +113,7 @@ Story::init_intro()
      (ResDescriptor("Story/story2", "story"), 
       StringFormat::break_line(
       _("The snow began to melt away in a few regions and food became an\n"
-        "issue. Other animals already tend to leave the region to search\n"
+        "issue. Other animals tended to leave the region to search\n"
         "for colder areas, but the Pingus knew that this wouldn't help,\n"
         "they knew that they had to do something about this problem."), 570, Fonts::chalk_normal)
        ));
@@ -134,29 +134,29 @@ Story::init_intro()
       StringFormat::break_line(
       _("And they picked you to lead them on their journey around the\n"
         "world. Since the journey will be dangerous and difficult, your\n"
-        "first goal is the Island of Mogorok, also know has Tutorial\n"
+        "first goal is the Island of Mogorok, also known has Tutorial\n"
         "Island. According to the eldest, this island has always been the\n"
-        "first stop of Pingus which where send out into the world."), 570, Fonts::chalk_normal)
+        "first stop of Pingus that where send out into the world."), 570, Fonts::chalk_normal)
        ));
 
   intro.pages.push_back
     (StoryPage
      (ResDescriptor("Story/story5", "story"), 
       StringFormat::break_line(
-      _("The island consists of many regions which are ideally to train the\n"
-        "abilities of the Pingus. The Pingus can train there their ability\n"
+      _("The island consists of many regions which are ideal to train the\n"
+        "abilities of the Pingus. The Pingus can there train their ability\n"
         "to build bridges, climb, bash and all the rest of their talents\n"
-        "which they will surly need on their long and dangerous journey."), 570, Fonts::chalk_normal)
+        "which they will surely need on their long and dangerous journey."), 570, Fonts::chalk_normal)
        ));
 
   intro.pages.push_back
     (StoryPage
      (ResDescriptor("Story/story6", "story"), 
       StringFormat::break_line(
-      _("While you on the other side can practice there your ability to\n"
-        "command and guide the Pingus. You can also get familiar there with\n"
+      _("You may, on the other hand, practice there your ability to\n"
+        "command and guide the Pingus. You can also get familiar with\n"
         "all the abilities the Pingus provide and learn to master them,\n"
-        "since you will need them all for sure an your journey around the\n"
+        "since you will need them all for sure on your journey around the\n"
         "world."), 570, Fonts::chalk_normal)
        ));
 
@@ -164,8 +164,8 @@ Story::init_intro()
     (StoryPage
      (ResDescriptor("Story/story6", "story"), 
       StringFormat::break_line(
-      _("Now that you and the Pingus have arrived at tutorial island it\n"
-        "is time to take over the command and begin your mission.\n"
+      _("Now that you and the Pingus have arrived at Tutorial Island it\n"
+        "is time to take command and begin your mission.\n"
         "\nGood Luck!"), 570, Fonts::chalk_normal)
        ));
 

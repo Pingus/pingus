@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
-"POT-Creation-Date: 2003-04-16 19:54+0200\n"
+"POT-Creation-Date: 2003-04-17 09:08+0200\n"
 "PO-Revision-Date: 2003-04-15 17:29+0200\n"
 "Last-Translator: Milan Babuskov <mbabuskov@yahoo.com>\n"
 "Language-Team: <mbabuskov@yahoo.com>\n"
@@ -70,27 +70,27 @@ msgstr "-Posebno"
 msgid "-Thanks to"
 msgstr "-se zahvaljujemo"
 
-#: src/credits.cxx:139
+#: src/credits.cxx:141
 msgid "_And a very Special Thanks"
 msgstr "_A narocito se zahvaljujemo"
 
-#: src/credits.cxx:140
+#: src/credits.cxx:142
 msgid "_to all the people who"
 msgstr "_svim ljudima"
 
-#: src/credits.cxx:141
+#: src/credits.cxx:143
 msgid "_contribute to"
 msgstr "_koji doprinose"
 
-#: src/credits.cxx:142
+#: src/credits.cxx:144
 msgid "_Free Software!"
 msgstr "_Free Softveru!"
 
-#: src/credits.cxx:148
+#: src/credits.cxx:150
 msgid "_Thank you for"
 msgstr "_Hvala sto"
 
-#: src/credits.cxx:149
+#: src/credits.cxx:151
 msgid "_playing!"
 msgstr "_ste igrali!"
 
@@ -1160,7 +1160,7 @@ msgstr "Putovanje pocinje"
 #: src/story.cxx:94
 msgid ""
 "For a long time now the Pingus have lived happily in peace on the\n"
-"south pole along with all the other animals, everything was in\n"
+"south pole along with all the other animals. Everything was in\n"
 "balance and it seemed like nothing could disrupt their peace.  The\n"
 "Pingus where happy and it seemed like this could never end.\n"
 msgstr ""
@@ -1173,7 +1173,7 @@ msgstr ""
 msgid ""
 "But then one day, things began to change slowly, the sky got darker\n"
 "and the earth got warmer, first of they thought this was just a\n"
-"normal fluctuation in the worlds climate, but things seemed to get\n"
+"normal fluctuation in the world's climate, but things seemed to get\n"
 "worse and worse with every year."
 msgstr ""
 "Ali, jednog dana, stvari su pocele da se polako menjaju, nebo\n"
@@ -1184,7 +1184,7 @@ msgstr ""
 #: src/story.cxx:115
 msgid ""
 "The snow began to melt away in a few regions and food became an\n"
-"issue. Other animals already tend to leave the region to search\n"
+"issue. Other animals tended to leave the region to search\n"
 "for colder areas, but the Pingus knew that this wouldn't help,\n"
 "they knew that they had to do something about this problem."
 msgstr ""
@@ -1209,9 +1209,9 @@ msgstr ""
 msgid ""
 "And they picked you to lead them on their journey around the\n"
 "world. Since the journey will be dangerous and difficult, your\n"
-"first goal is the Island of Mogorok, also know has Tutorial\n"
+"first goal is the Island of Mogorok, also known has Tutorial\n"
 "Island. According to the eldest, this island has always been the\n"
-"first stop of Pingus which where send out into the world."
+"first stop of Pingus that where send out into the world."
 msgstr ""
 "A tebe su izabrali da ih vodis na njihovom putuovanju oko\n"
 "sveta. Posto ce putovanje biti opasno i tesko, tvoj prvi cilj\n"
@@ -1221,10 +1221,10 @@ msgstr ""
 
 #: src/story.cxx:146
 msgid ""
-"The island consists of many regions which are ideally to train the\n"
-"abilities of the Pingus. The Pingus can train there their ability\n"
+"The island consists of many regions which are ideal to train the\n"
+"abilities of the Pingus. The Pingus can there train their ability\n"
 "to build bridges, climb, bash and all the rest of their talents\n"
-"which they will surly need on their long and dangerous journey."
+"which they will surely need on their long and dangerous journey."
 msgstr ""
 "Ostrvo se sastoji iz mnostva regiona, koji su idealni za\n"
 "uvezbavanje sposobnosti Pingusa. Pingusi mogu tamo vezbati svoje\n"
@@ -1233,10 +1233,10 @@ msgstr ""
 
 #: src/story.cxx:156
 msgid ""
-"While you on the other side can practice there your ability to\n"
-"command and guide the Pingus. You can also get familiar there with\n"
+"You may, on the other hand, practice there your ability to\n"
+"command and guide the Pingus. You can also get familiar with\n"
 "all the abilities the Pingus provide and learn to master them,\n"
-"since you will need them all for sure an your journey around the\n"
+"since you will need them all for sure on your journey around the\n"
 "world."
 msgstr ""
 "Sa druge strane, ti mozes uvezbati svoju sposobnost da\n"
@@ -1246,10 +1246,9 @@ msgstr ""
 "sveta"
 
 #: src/story.cxx:167
-#, fuzzy
 msgid ""
-"Now that you and the Pingus have arrived at tutorial island it\n"
-"is time to take over the command and begin your mission.\n"
+"Now that you and the Pingus have arrived at Tutorial Island it\n"
+"is time to take command and begin your mission.\n"
 "\n"
 "Good Luck!"
 msgstr ""
