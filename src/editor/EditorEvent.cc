@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.4 2000/02/12 12:00:34 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.5 2000/02/12 20:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
 
 EditorEvent::EditorEvent()
 {
-  enabled = true;
+  enable();
 }
 
 EditorEvent::~EditorEvent()
@@ -42,10 +42,22 @@ EditorEvent::set_editor(Editor* e)
   object_manager = &(editor->object_manager);
 }
 
+void
+EditorEvent::enable()
+{
+  is_enabled = true;
+}
+
+void
+EditorEvent::disable()
+{
+  is_enabled = false;
+}
+
 bool
 EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 {
-  if (!enabled)
+  if (!is_enabled)
     return true;
 
   if (device == CL_Input::keyboards[0])
@@ -237,7 +249,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 bool
 EditorEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
 {
-  if (!enabled)
+  if (!is_enabled)
     return true;
 
   if (device == CL_Input::keyboards[0])
@@ -306,7 +318,7 @@ EditorEvent::editor_delete_selected_objects()
 void
 EditorEvent::editor_start_current_level()
 {
-  enabled = false;
+  disable();
 
   try {
     PingusGame game;
@@ -325,7 +337,7 @@ EditorEvent::editor_start_current_level()
   }
 
   
-  enabled = true;
+  enable();
 }
 
 void 
@@ -352,9 +364,9 @@ EditorEvent::editor_load_level()
 
   reader.set_strings(&strings);
 
-  enabled = false;
+  disable();
   str = reader.read_string();
-  enabled = true;
+  enable();
 
   if (!str.empty()) 
     {
@@ -386,9 +398,9 @@ EditorEvent::editor_save_level_as()
 
   reader.set_strings(&strings);
 
-  enabled = false;
+  disable();
   str = reader.read_string();
-  enabled = true;
+  enable();
 
   if (!str.empty()) 
     {
@@ -425,14 +437,14 @@ EditorEvent::editor_insert_new_object()
 
   EditorObj* obj;
   try {
-    enabled = false;
+    disable();
     obj = editor->object_selector.get_obj(object_manager->x_offset, object_manager->y_offset);
-    enabled = true;
+    enable();
   }
   
   catch (CL_Error err) {
     std::cout << "Editor: Error caught from ClanLib: " << err.message << std::endl;
-    enabled = true;
+    enable();
     obj = 0;
   }
       
@@ -482,105 +494,5 @@ EditorEvent::editor_mark_or_move_object()
       object_manager->delete_selection();
     }
 }
-
-#if 0
-/*
-      if (CL_Mouse::left_pressed()) 
-	{
-	  EditorObj* c_obj = get_current_obj();
-	
-	  if (c_obj == 0) 
-	    {
-	      if (!CL_Keyboard::get_keycode(CL_KEY_LSHIFT))
-		delete_selection();
-	    } 
-	  else
-	    {
-	      if (object_selected(c_obj)) 
-		{
-		  if (mouse_moved()) 
-		    {
-		      move_obj();
-		    } 
-		  else 
-		    {
-		      if (CL_Keyboard::get_keycode(CL_KEY_LSHIFT)) {
-			unmark(c_obj);
-		      } else {
-			delete_selection();
-			current_objs.push_back(c_obj);
-		      }
-		    }
-		} 
-	      else 
-		{
-		  if (CL_Keyboard::get_keycode(CL_KEY_LSHIFT)) 
-		    {
-		      current_objs.push_back(c_obj);
-		    }
-		  else 
-		    {
-		      delete_selection();
-		      current_objs.push_back(c_obj);
-		    }
-		  while(CL_Mouse::left_pressed())
-		    CL_System::keep_alive();
-		}
-	    }
-	  draw();
-	}
-
-      if (CL_Mouse::middle_pressed()) {
-      rect_get_current_objs();
-      }
-
-      if (CL_Mouse::right_pressed()) {
-	scroll();
-      }
-
-      if (mouse_x != CL_Mouse::get_x()
-	  || mouse_y != CL_Mouse::get_y()) 
-	{
-	  draw();
-	  mouse_x = CL_Mouse::get_x();
-	  mouse_y = CL_Mouse::get_y();
-	}
-    
-      if (CL_Keyboard::get_keycode(CL_KEY_RSHIFT)) 
-	{
-	  move_offset = 10;
-	}
-      else 
-	{
-	  move_offset = 1;
-	  }*/
-      /*
-	if (CL_Keyboard::get_keycode(CL_KEY_LEFT)) 
-	{
-	for (CurrentObjIter i = current_objs.begin(); i != current_objs.end(); ++i)
-	(*i)->x_pos -= move_offset;
-	draw();
-	} 
-	else if (CL_Keyboard::get_keycode(CL_KEY_RIGHT)) 
-	{
-	for (CurrentObjIter i = current_objs.begin(); i != current_objs.end(); ++i)
-	(*i)->x_pos += move_offset;
-	draw();
-	}
-    
-	if (CL_Keyboard::get_keycode(CL_KEY_UP)) 
-	{
-	for (CurrentObjIter i = current_objs.begin(); i != current_objs.end(); ++i)
-	(*i)->y_pos -= move_offset;
-	draw();
-	} 
-	else if (CL_Keyboard::get_keycode(CL_KEY_DOWN)) 
-	{
-	for (CurrentObjIter i = current_objs.begin(); i != current_objs.end(); ++i)
-	(*i)->y_pos += move_offset;
-	draw();
-	}
-      */
-#endif    
 
 /* EOF */

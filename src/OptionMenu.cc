@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.4 2000/02/12 20:53:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -155,6 +155,7 @@ OptionMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
 	case 1:
 	  break;
 	case 2:
+	  break;
 	case 3:
 	  option_menu->quit = true;
 	  break;

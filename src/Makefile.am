@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+#  $Id: Makefile.am,v 1.3 2000/02/12 20:53:42 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -116,6 +116,7 @@ pingus_SOURCES = \
                  globals.cc           globals.hh           \
                  hotspot_data.cc      hotspot_data.hh      \
                  liquid_data.cc       liquid_data.hh       \
-                 trap_data.cc         trap_data.hh         
+                 trap_data.cc         trap_data.hh         \
+                 Display.cc           Display.hh
 
 

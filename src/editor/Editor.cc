@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.3 2000/02/11 16:58:28 grumbel Exp $
+//  $Id: Editor.cc,v 1.4 2000/02/12 20:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "../globals.hh"
 #include "../PingusError.hh"
 #include "../PingusMessageBox.hh"
+#include "../Display.hh"
 #include "../PingusResource.hh"
 #include "Editor.hh"
 
@@ -78,18 +79,6 @@ Editor::unregister_event_handler()
   CL_Input::chain_button_press.remove(event);
   CL_System::keep_alive();
   std::cout << "done: " << event_handler_ref_counter << std::endl;
-}
-
-void
-Editor::enable_event_handler()
-{
-  //event->enabled = true;
-}
-
-void
-Editor::disable_event_handler()
-{
-  //event->enabled = false;
 }
 
 void
@@ -152,8 +141,8 @@ Editor::scroll()
 string
 Editor::read_string (std::string prefix, std::string default_str)
 {
-  // unregister_event_handler();
-
+  event->disable();
+ 
   std::string str;
 
   if (default_str.empty()) 
@@ -229,7 +218,8 @@ Editor::read_string (std::string prefix, std::string default_str)
 	}
     }
   delete keys;
-  // register_event_handler();
+  event->enable();
+
   return str;
 }
 
@@ -265,8 +255,8 @@ Editor::rect_get_current_objs()
       // Draw the screen
       CL_Display::clear_display();
       object_manager.draw();
-      CL_Display::fill_rect(x1, y1, x2, y2,
-			    0.0, 0.0, 1.0, 0.5);
+      Display::draw_rect(x1, y1, x2, y2,
+			 0.0, 1.0, 0.0, 1.0);
       panel->draw();
       status_line.draw(object_manager.x_offset, object_manager.y_offset);
       CL_Display::flip_display(true);
@@ -380,6 +370,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.4  2000/02/12 20:53:45  grumbel
+Changed the rectangle selection in the editor to use non filled rects
+
 Revision 1.3  2000/02/11 16:58:28  grumbel
 Added correct namespaces
 

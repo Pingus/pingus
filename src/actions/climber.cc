@@ -1,4 +1,4 @@
-//  $Id: climber.cc,v 1.3 2000/02/11 16:58:27 grumbel Exp $
+//  $Id: climber.cc,v 1.4 2000/02/12 20:53:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ Climber::allocate(void)
 void
 Climber::init(void)
 {
-  action_name = "Climber";
+  action_name = "climber";
   environment = PinguEnvironment(sky | land);
 
   surface = CL_Surface::load("Pingus/climber", local_res());

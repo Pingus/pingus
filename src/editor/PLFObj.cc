@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.4 2000/02/11 21:26:38 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.5 2000/02/12 20:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <fstream>
 
+#include "../Display.hh"
 #include "../PingusError.hh"
 #include "../PingusResource.hh"
 #include "PLFObj.hh"
@@ -28,7 +29,7 @@ PLFObj::PLFObj()
   mark_color.r = 1.0;
   mark_color.g = 0.0;
   mark_color.b = 0.0;
-  mark_color.a = 0.2;
+  mark_color.a = 1.0;
 }
 
 PLFObj::~PLFObj()
@@ -295,14 +296,14 @@ LiquidObj::draw_offset(int x_offset, int y_offset)
 void
 LiquidObj::draw_mark_offset(int x_offset, int y_offset) 
 {
-  CL_Display::fill_rect(x_pos + x_offset,
-			y_pos + y_offset,
-			x_pos + width + x_offset,
-			y_pos + surf->get_height() + y_offset,
-			mark_color.r, 
-			mark_color.g,
-			mark_color.b,
-			mark_color.a);
+  Display::draw_rect(x_pos + x_offset,
+		     y_pos + y_offset,
+		     x_pos + width + x_offset,
+		     y_pos + surf->get_height() + y_offset,
+		     mark_color.r, 
+		     mark_color.g,
+		     mark_color.b,
+		     mark_color.a);
 }
 
 bool

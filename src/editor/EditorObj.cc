@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.2 2000/02/09 21:43:43 grumbel Exp $
+// $Id: EditorObj.cc,v 1.3 2000/02/12 20:53:45 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../Display.hh"
 #include "../PSMParser.hh"
 #include "../PingusResource.hh"
 #include "PSMObj.hh"
@@ -31,7 +32,7 @@ EditorObj::EditorObj()
   mark_color.r = 0.0;
   mark_color.g = 1.0;
   mark_color.b = 0.0;
-  mark_color.a = 0.2;
+  mark_color.a = 1.0;
 }
 
 EditorObj::~EditorObj()
@@ -88,30 +89,33 @@ EditorObj::draw_offset(int x_offset, int y_offset)
   } else {
     CL_Display::fill_rect(x_pos + x_offset, y_pos + y_offset, 
 			  x_pos + 10 + x_offset, y_pos + 10 + y_offset,
-			  1.0, 0.0, 0.0, 0.5);
+			  1.0, 0.0, 0.0, 1.0);
   }
 }
 
 void
 EditorObj::draw_mark_offset(int x_offset, int y_offset) 
 {
-  if (surf) {
-    CL_Display::fill_rect(x_pos + x_offset + x_of, y_pos + y_offset + y_of,
-			  x_pos + surf->get_width() + x_offset + x_of,
-			  y_pos + surf->get_height() + y_offset + y_of,
-			  mark_color.r, 
-			  mark_color.g,
-			  mark_color.b,
-			  mark_color.a);
-  } else {
-    CL_Display::fill_rect(x_pos + x_offset + x_of,y_pos + y_offset + y_of,
-			  x_pos + 10 + x_offset + x_of,
-			  y_pos + 10 + y_offset + y_of,
-			  mark_color.r, 
-			  mark_color.g,
-			  mark_color.b,
-			  mark_color.a);
-  }
+  if (surf) 
+    {
+      Display::draw_rect(x_pos + x_offset + x_of, y_pos + y_offset + y_of,
+			 x_pos + surf->get_width() + x_offset + x_of,
+			 y_pos + surf->get_height() + y_offset + y_of,
+			 mark_color.r, 
+			 mark_color.g,
+			 mark_color.b,
+			 mark_color.a);
+    } 
+  else 
+    {
+      Display::draw_rect(x_pos + x_offset + x_of,y_pos + y_offset + y_of,
+			 x_pos + 10 + x_offset + x_of,
+			 y_pos + 10 + y_offset + y_of,
+			 mark_color.r, 
+			 mark_color.g,
+			 mark_color.b,
+			 mark_color.a);
+    }
 }
 
 bool
@@ -160,6 +164,9 @@ EditorObj::obj_type()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.3  2000/02/12 20:53:45  grumbel
+Changed the rectangle selection in the editor to use non filled rects
+
 Revision 1.2  2000/02/09 21:43:43  grumbel
 CVS should be up to date again...
 

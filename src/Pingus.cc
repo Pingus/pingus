@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.5 2000/02/12 16:53:03 grumbel Exp $
+//   $Id: Pingus.cc,v 1.6 2000/02/12 20:53:43 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -186,12 +186,12 @@ PingusMain::check_args(int argc, char* argv[])
     {"maintainer-mode", no_argument,       0, 134},
     {"enable-forces",   no_argument,       0, 135},
     {"enable-uactions", no_argument,       0, 136},
-    {"oos-scrolling",   no_argument,       0, 137},
+    {"disable-auto-scrolling",   no_argument,       0, 137},
     {0, 0, 0, 0}
   };
 
   while(true) {
-    c = getopt_long(argc, argv, "r:p:smv:d:l:hVp:bxS:g:it:cq", long_options, &option_index);
+    c = getopt_long(argc, argv, "r:p:smv:d:l:hVp:bxS:g:it:cqe", long_options, &option_index);
     
     if (c == -1 || c == 1)
       break;
@@ -310,7 +310,7 @@ PingusMain::check_args(int argc, char* argv[])
       unlimited_actions = true;
       break;
     case 137:
-      auto_scrolling = true;
+      auto_scrolling = false;
       break;
     default:
       
@@ -341,6 +341,7 @@ PingusMain::check_args(int argc, char* argv[])
 	"   --disable-previews       Disables all level preview in the level selector\n"
 	"   --maintainer-mode        Enables some features, only interesting programmers\n"
 	"   -e, --editor             Launch the Level editor (experimental)\n"
+	"   --disable-auto_scrolling Disable automatic scrolling\n"
 	   << std::endl;
       exit(EXIT_SUCCESS);
       break;
