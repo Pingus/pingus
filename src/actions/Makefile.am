@@ -50,28 +50,28 @@ EXTRA_DIST = README
 noinst_LIBRARIES = libpingu_actions.a
 
 libpingu_actions_a_SOURCES =       \
+	 waiter.cxx   waiter.hxx \
+         angel.cxx    angel.hxx \
          basher.cxx   basher.hxx     \
          blocker.cxx  blocker.hxx    \
+         boarder.cxx  boarder.hxx \
          bomber.cxx   bomber.hxx     \
          bridger.cxx  bridger.hxx    \
          climber.cxx  climber.hxx    \
          digger.cxx   digger.hxx     \
+         drown.cxx    drown.hxx \
          exiter.cxx   exiter.hxx     \
+         faller.cxx   faller.hxx \
          floater.cxx  floater.hxx    \
          jumper.cxx   jumper.hxx     \
-         miner.cxx    miner.hxx      \
-         smashed.cxx  smashed.hxx    \
          laser_kill.cxx laser_kill.hxx \
-         teleported.cxx teleported.hxx \
-         splashed.cxx splashed.hxx \
-	 waiter.cxx   waiter.hxx \
-         drown.cxx    drown.hxx \
-         angel.cxx    angel.hxx \
-         superman.cxx superman.hxx \
-         boarder.cxx  boarder.hxx \
-         faller.cxx   faller.hxx \
-         walker.cxx   walker.hxx \
+         miner.cxx    miner.hxx      \
          rocket_launcher.cxx  rocket_launcher.hxx \
-         slider.cxx   slider.hxx
+         slider.cxx   slider.hxx \
+         smashed.cxx  smashed.hxx    \
+         splashed.cxx splashed.hxx \
+         superman.cxx superman.hxx \
+         teleported.cxx teleported.hxx \
+         walker.cxx   walker.hxx
 
 # EOF #
