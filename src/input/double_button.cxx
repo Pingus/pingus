@@ -1,4 +1,4 @@
-//  $Id: double_button.cxx,v 1.1 2002/07/11 14:51:10 torangan Exp $
+//  $Id: double_button.cxx,v 1.2 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ namespace Input {
   }
   
   bool
-  DoubleButton::is_pressed ()
+  DoubleButton::is_pressed () const
   {
     return ( ! ignore_second && first_pressed && button2->is_pressed());
   }

@@ -1,4 +1,4 @@
-//  $Id: axis_scroller.cxx,v 1.2 2002/07/11 14:51:10 torangan Exp $
+//  $Id: axis_scroller.cxx,v 1.3 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,46 +17,62 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <math.h>
 #include "axis.hxx"
 #include "axis_scroller.hxx"
 
 namespace Input {
 
-  AxisScroller::AxisScroller (Axis* axis1_, Axis* axis2_, float speed_) : axis1(axis1_), axis2(axis2_), speed(speed_)
+  AxisScroller::AxisScroller (const std::vector<Axis*>& axes_, float speed_) : axes(axes_),
+                                                                               speed(speed_),
+									       x_delta(0),
+									       y_delta(0)
   {
+    assert(axes.size() > 1);
+    assert(axes[0]->get_angle() != axes[1]->get_angle());
   }
   
   AxisScroller::~AxisScroller ()
   {
-    delete axis1;
-    delete axis2;
+    for (unsigned int i=0; i < axes.size(); i++)
+      delete axes[i];
   }
   
-  float
-  AxisScroller::get_x_delta ()
+  const float&
+  AxisScroller::get_x_delta () const
   {
-    return axis1->get_pos() * speed;
+    return x_delta;
   }
   
-  float
-  AxisScroller::get_y_delta ()
+  const float&
+  AxisScroller::get_y_delta () const
   {
-    return axis2->get_pos() * speed;
+    return y_delta;
   }
   
   void
-  AxisScroller::get_delta (float& x, float& y)
+  AxisScroller::get_delta (float& x, float& y) const
   {
-    x = axis1->get_pos() * speed;
-    y = axis2->get_pos() * speed;
+    x = x_delta;
+    y = y_delta;
   }
   
   void
   AxisScroller::update (float delta)
   {
-    axis1->update(delta);
-    axis2->update(delta);
+    x_delta = 0;
+    y_delta = 0;    
+
+    for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
+      {
+        (*it)->update(delta);
+	
+        x_delta += cos((*it)->get_angle()) * speed * delta;
+        y_delta += sin((*it)->get_angle()) * speed * delta;
+      } 
+    
   }
 }
 
 /* EOF */
+

@@ -1,4 +1,4 @@
-//  $Id: multiple_button.hxx,v 1.4 2002/07/11 14:51:10 torangan Exp $
+//  $Id: multiple_button.hxx,v 1.5 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,13 @@
 
 namespace Input {
 
+  /**
+    @brief wrapper class mapping multiple buttons into one
+    
+    XML definition: <multiple-button> <button 1>...<button n> </multiple-button>
+    
+    A multiple button is pressed whenever at least one of the buttons contained is pressed.
+    */
   class MultipleButton : public Button {
   
     private:
@@ -35,7 +42,7 @@ namespace Input {
       MultipleButton (const std::vector<Button*>& buttons_);
      ~MultipleButton ();
 
-      virtual bool is_pressed ();
+      virtual bool is_pressed () const;
       virtual void update (float delta);
   };
 }

@@ -1,4 +1,4 @@
-//  $Id: multiple_pointer.cxx,v 1.4 2002/08/12 22:52:04 grumbel Exp $
+//  $Id: multiple_pointer.cxx,v 1.5 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,11 @@
 
 namespace Input
 {
-  MultiplePointer::MultiplePointer (const std::vector<Pointer*>& pointers_) : 
-                                    pointers(pointers_), x_pos_list(pointers.size()), y_pos_list(pointers.size())
+  MultiplePointer::MultiplePointer (const std::vector<Pointer*>& pointers_) : pointers(pointers_),
+                                                                              old_x_pos(0),
+									      old_y_pos(0),
+									      x_pos(0),
+									      y_pos(0)
   {
   }
 
@@ -32,14 +35,14 @@ namespace Input
       delete pointers[i];
   }
 
-  float
-  MultiplePointer::get_x_pos ()
+  const float&
+  MultiplePointer::get_x_pos () const
   {
     return x_pos;
   }
 
-  float
-  MultiplePointer::get_y_pos ()
+  const float&
+  MultiplePointer::get_y_pos () const
   {
     return y_pos;
   }
@@ -54,36 +57,38 @@ namespace Input
   void
   MultiplePointer::update (float delta)
   {
-    bool do_break = false;
+    unsigned int do_break = UINT_MAX;
   
     for (unsigned int i = 0; i < pointers.size(); i++)
-      {
-        pointers[i]->update(delta);
+      pointers[i]->update(delta);
 	
-	if (pointers[i]->get_x_pos() != x_pos_list[i])
+    for (unsigned int i = 0; i < pointers.size(); i++)
+      {
+	if (pointers[i]->get_x_pos() != old_x_pos)
 	  {
-	    x_pos_list[i] = pointers[i]->get_x_pos();
-	    x_pos = x_pos_list[i];
-	    do_break = true;
+	    old_x_pos = x_pos;
+	    x_pos = pointers[i]->get_x_pos();
+	    do_break = i;
 	  }
 	  
-	if (pointers[i]->get_y_pos() != y_pos_list[i])
+	if (pointers[i]->get_y_pos() != old_y_pos)
 	  {
-	    y_pos_list[i] = pointers[i]->get_y_pos();
-	    y_pos = y_pos_list[i];
-	    do_break = true;
+	    old_y_pos = y_pos;
+	    y_pos = pointers[i]->get_y_pos();
+	    do_break = i;
 	  }
 	  
-	if (do_break)
+	if (do_break != UINT_MAX)
 	  break;
       }
 
-    // no pointer changed, so there's no need to update the pointers
-    if ( ! do_break)
+    // no pointer changed, so there's no need to update the other pointers
+    if (do_break == UINT_MAX)
       return;
 	          
     for (unsigned int n = 0; n < pointers.size(); n++)
-      pointers[n]->set_pos(x_pos, y_pos);
+      if (n != do_break)
+        pointers[n]->set_pos(x_pos, y_pos);
   }
 
 }

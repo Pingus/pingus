@@ -29,20 +29,20 @@ namespace Input {
       delete *it;
   }
   
-  float
-  MultipleScroller::get_x_delta ()
+  const float&
+  MultipleScroller::get_x_delta () const
   {
     return x_pos;
   }
   
-  float
-  MultipleScroller::get_y_delta ()
+  const float&
+  MultipleScroller::get_y_delta () const
   {
     return y_pos;
   }
   
   void
-  MultipleScroller::get_delta (float& x, float& y)
+  MultipleScroller::get_delta (float& x, float& y) const
   {
     x = x_pos;
     y = y_pos;

@@ -1,4 +1,4 @@
-//  $Id: joystick_scroller.cxx,v 1.2 2002/07/12 12:36:14 torangan Exp $
+//  $Id: joystick_scroller.cxx,v 1.3 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,10 +22,13 @@
 
 namespace Input {
 
-  JoystickScroller::JoystickScroller (int id_, float speed_) : id(id_), speed(speed_)
+  JoystickScroller::JoystickScroller (int id_, float speed_) : id(id_),
+							       axis1(new JoystickAxis(id, 0, 0)),
+							       axis2(new JoystickAxis(id, 1, 90)),
+                                                               speed(speed_),
+							       x_delta(0),
+							       y_delta(0)
   {
-    axis1 = new JoystickAxis(id, 0, 0);
-    axis2 = new JoystickAxis(id, 1, 90);
   }
   
   JoystickScroller::~JoystickScroller ()
@@ -34,23 +37,23 @@ namespace Input {
     delete axis2;
   }
   
-  float
-  JoystickScroller::get_x_delta ()
+  const float&
+  JoystickScroller::get_x_delta () const
   {
-    return axis1->get_pos() * speed;
+    return x_delta;
   }
   
-  float
-  JoystickScroller::get_y_delta ()
+  const float&
+  JoystickScroller::get_y_delta () const
   {
-    return axis2->get_pos() * speed;
+    return y_delta;
   }
   
   void
-  JoystickScroller::get_delta (float& x, float& y)
+  JoystickScroller::get_delta (float& x, float& y) const
   {
-    x = axis1->get_pos() * speed;
-    y = axis2->get_pos() * speed;
+    x = x_delta;
+    y = y_delta;
   }
   
   void
@@ -58,6 +61,9 @@ namespace Input {
   {
     axis1->update(delta);
     axis2->update(delta);
+    
+    x_delta = axis1->get_pos() * speed;
+    y_delta = axis2->get_pos() * speed;
   }
 }
 

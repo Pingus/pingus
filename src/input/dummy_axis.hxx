@@ -1,4 +1,4 @@
-//  $Id: dummy_axis.hxx,v 1.1 2002/07/10 14:06:06 torangan Exp $
+//  $Id: dummy_axis.hxx,v 1.2 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,12 +24,24 @@
 
 namespace Input
 {
+  /** 
+    @brief Dummy Axis to be used if an axis is required but none defined
+    
+    XML definition: none
+   */
   class DummyAxis : public Axis {
   
+    private:
+      float pos;
+      float angle;
+
     public:
   
-      virtual float get_pos ()    { return 0; }
-      virtual float get_angle ()  { return 0; }
+      DummyAxis () : pos(0.0f), angle(0.0f) { }
+  
+      virtual const float& get_pos ()   const { return pos; }
+      virtual const float& get_angle () const { return angle; }
+      
       virtual void  update(float) { }
   };
 }

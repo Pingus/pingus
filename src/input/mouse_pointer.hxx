@@ -1,4 +1,4 @@
-//  $Id: mouse_pointer.hxx,v 1.3 2002/07/09 17:00:10 torangan Exp $
+//  $Id: mouse_pointer.hxx,v 1.4 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,18 +24,21 @@
 
 namespace Input
 {
+  /**
+    @brief maps the standard mouse into a pointer
+    
+    XML definition: <mouse-pointer/>
+    */
   class MousePointer : public Pointer {
-
+  
     private:
-      //float x_angle;
-      //float y_angle;
+      float x_pos;
+      float y_pos;
       
     public:
 
-      //MousePointer(float x_angle_, float y_angle_);
-
-      virtual float get_x_pos ();
-      virtual float get_y_pos ();
+      virtual const float& get_x_pos () const;
+      virtual const float& get_y_pos () const;
       
       virtual void  set_pos (float new_x, float new_y);
       

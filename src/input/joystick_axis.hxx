@@ -1,4 +1,4 @@
-//  $Id: joystick_axis.hxx,v 1.3 2002/07/09 17:00:10 torangan Exp $
+//  $Id: joystick_axis.hxx,v 1.4 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,19 +24,26 @@
 
 namespace Input
 {
+  /**
+    @brief represents an axis of a joystick
+    
+    XML definition: <joystick-axis angle="?" id="joystick id" axis="axis of the joystick"/>
+    */
   class JoystickAxis : public Axis {
 
   private:
     int     id;
     int     axis;
+    float   pos;
     float   angle;
     
   public:
   
     JoystickAxis(int id_, int axis_, float angle_);
 
-    virtual float get_pos ();
-    virtual float get_angle ();
+    virtual const float& get_pos   () const;
+    virtual const float& get_angle () const;
+    
     virtual void  update (float);
   };
 }

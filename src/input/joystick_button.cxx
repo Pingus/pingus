@@ -1,4 +1,4 @@
-//  $Id: joystick_button.cxx,v 1.2 2002/07/11 15:24:35 torangan Exp $
+//  $Id: joystick_button.cxx,v 1.3 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ namespace Input {
   }
   
   bool
-  JoystickButton::is_pressed()
+  JoystickButton::is_pressed() const
   {
     return CL_Input::joysticks[id]->get_button(button)->is_pressed();
   }

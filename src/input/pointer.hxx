@@ -1,4 +1,4 @@
-//  $Id: pointer.hxx,v 1.4 2002/07/05 11:02:47 torangan Exp $
+//  $Id: pointer.hxx,v 1.5 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,14 +22,20 @@
 
 namespace Input
 {
+  /// abstract base class defining the pointer interface
   class Pointer
   {
   public:
 
     virtual ~Pointer() { }  
-    virtual float get_x_pos () =0;
-    virtual float get_y_pos () =0;
     
+    /// returns the X coordinate of the pointer
+    virtual const float& get_x_pos () const =0;
+    
+    /// returns the Y coordinate of the pointer
+    virtual const float& get_y_pos () const =0;
+
+    /// sets the pointer to the given position    
     virtual void  set_pos (float, float) =0;
     
     virtual void  update (float) =0;

@@ -1,4 +1,4 @@
-//  $Id: dummy_scroller.hxx,v 1.1 2002/07/12 15:08:01 torangan Exp $
+//  $Id: dummy_scroller.hxx,v 1.2 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,13 +24,23 @@
 
 namespace Input {
 
+  /**
+    @brief dummy class to be used if an Scroller is required but none defined
+    
+    XML definition: none
+   */
   class DummyScroller : public Scroller {
+    private:
+      const float delta;
+      
     public:
       
-      float get_x_delta () { return 0; }
-      float get_y_delta () { return 0; }
+      DummyScroller () : delta(0) { }
       
-      void  get_delta (float&, float&) { }
+      const float& get_x_delta () const { return delta; }
+      const float& get_y_delta () const { return delta; }
+      
+      void  get_delta (float& x_delta, float& y_delta) const { x_delta = delta; y_delta = delta; }
       
       void  update (float) { }
   };

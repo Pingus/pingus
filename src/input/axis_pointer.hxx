@@ -1,4 +1,4 @@
-//  $Id: axis_pointer.hxx,v 1.5 2002/07/11 14:51:10 torangan Exp $
+//  $Id: axis_pointer.hxx,v 1.6 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,15 @@ namespace Input {
 
   class Axis;
 
+  /**
+    @brief maps two or more axes into a pointer
+    
+    XML definition: <axis-pointer> <axis 1><axis 2>[... <axis N>] </axis-pointer>
+    
+    The number of axes used to create the pointer and their respective angles is
+    unlimited as long as there are at least two axes and the first two axes must have
+    different angles.
+    */
   class AxisPointer : public Pointer {
   
     private:
@@ -43,8 +52,8 @@ namespace Input {
       AxisPointer (float speed, const std::vector<Axis*>& axes_);
      ~AxisPointer ();
 
-      virtual float get_x_pos ();
-      virtual float get_y_pos ();
+      virtual const float& get_x_pos () const;
+      virtual const float& get_y_pos () const;
       
       virtual void  set_pos(float new_x, float new_y);
       

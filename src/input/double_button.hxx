@@ -1,4 +1,4 @@
-//  $Id: double_button.hxx,v 1.1 2002/07/11 14:51:10 torangan Exp $
+//  $Id: double_button.hxx,v 1.2 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,20 +24,29 @@
 
 namespace Input {
 
+  /**
+    @brief allows two buttons to be used in combination
+    
+    XML definition: <double-button><button1><button2></double-button>
+    
+    This class allows combinations like CTRL-X whereby it's important that the first
+    key is pressed before the second else the DoubleButton itself won't change it's
+    own state to pressed.
+    */
   class DoubleButton : public Button {
   
     private:
-      Button* button1;
-      Button* button2;
-      bool    first_pressed;
-      bool    ignore_second;
+      Button* const button1;
+      Button* const button2;
+      bool          first_pressed;
+      bool          ignore_second;
       
     public:
     
       DoubleButton (Button* button1_, Button* button2_);
      ~DoubleButton ();
 
-      virtual bool is_pressed ();
+      virtual bool is_pressed () const;
       virtual void update (float delta);
   };
 }

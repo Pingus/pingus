@@ -1,4 +1,4 @@
-//  $Id: mouse_button.hxx,v 1.2 2002/07/09 17:00:10 torangan Exp $
+//  $Id: mouse_button.hxx,v 1.3 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,11 @@
 
 namespace Input {
 
+  /**
+    @brief represents a mouse button
+    
+    XML definition: <mouse-button button="button num"/>
+    */
   class MouseButton : public Button {
   
     private:
@@ -31,9 +36,9 @@ namespace Input {
       
     public:
     
-      MouseButton(int button_);
+      MouseButton (int button_);
     
-      virtual bool is_pressed ();
+      virtual bool is_pressed () const;
       virtual void update (float);
   };
 }

@@ -1,4 +1,4 @@
-//  $Id: inverted_scroller.cxx,v 1.1 2002/07/12 12:36:14 torangan Exp $
+//  $Id: inverted_scroller.cxx,v 1.2 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,9 @@
 
 namespace Input {
 
-  InvertedScroller::InvertedScroller (Scroller* scroller_, bool invert_x_, bool invert_y_) : scroller(scroller_), invert_x(invert_x_), invert_y(invert_y_)
+  InvertedScroller::InvertedScroller (Scroller* scroller_, bool invert_x_, bool invert_y_) : scroller(scroller_),
+                                                                                             invert_x(invert_x_), 
+											     invert_y(invert_y_)
   {
   }
   
@@ -30,20 +32,20 @@ namespace Input {
     delete scroller;
   }
   
-  float
-  InvertedScroller::get_x_delta ()
+  const float&
+  InvertedScroller::get_x_delta () const
   {
     return x_pos;
   }
   
-  float
-  InvertedScroller::get_y_delta ()
+  const float&
+  InvertedScroller::get_y_delta () const
   {
     return y_pos;
   }
   
   void
-  InvertedScroller::get_delta (float& x, float& y)
+  InvertedScroller::get_delta (float& x, float& y) const
   {
     x = x_pos;
     y = y_pos;

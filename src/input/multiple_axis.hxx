@@ -1,4 +1,4 @@
-//  $Id: multiple_axis.hxx,v 1.2 2002/07/11 14:51:10 torangan Exp $
+//  $Id: multiple_axis.hxx,v 1.3 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,19 +25,29 @@
 
 namespace Input {
 
+  /**
+    @brief wrapper class, mapping multiple axes to one
+    
+    XML definition: <multiple-axis> <axis 1>...<axis n></multiple-axis>
+    <br><br>
+    angle and pos returned by this class will be the values returned by the first class
+    yielding a pos that is not null or of the first axis if none is found
+    */
   class MultipleAxis : public Axis {
 
   private:
-    float              angle;
     std::vector<Axis*> axes;
+    float              pos;
+    float              angle;
         
   public:
   
-    MultipleAxis (float angle_, const std::vector<Axis*>& axes_);
+    MultipleAxis (const std::vector<Axis*>& axes_);
    ~MultipleAxis ();
   
-    virtual float get_pos ();
-    virtual float get_angle ();
+    virtual const float& get_pos   () const;
+    virtual const float& get_angle () const;
+    
     virtual void  update (float delta);
   };
 }

@@ -1,4 +1,4 @@
-//  $Id: pointer_scroller.cxx,v 1.1 2002/07/11 12:36:15 torangan Exp $
+//  $Id: pointer_scroller.cxx,v 1.2 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,20 +34,20 @@ namespace Input {
     delete modifier;
   }
   
-  float
-  PointerScroller::get_x_delta ()
+  const float&
+  PointerScroller::get_x_delta () const
   {
     return x_delta;
   }
   
-  float
-  PointerScroller::get_y_delta ()
+  const float&
+  PointerScroller::get_y_delta () const
   {
     return y_delta;
   }
   
   void
-  PointerScroller::get_delta (float& x, float& y)
+  PointerScroller::get_delta (float& x, float& y) const
   {
     x = x_delta;
     y = y_delta;

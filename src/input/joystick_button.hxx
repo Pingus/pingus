@@ -1,4 +1,4 @@
-//  $Id: joystick_button.hxx,v 1.2 2002/07/09 17:00:10 torangan Exp $
+//  $Id: joystick_button.hxx,v 1.3 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,11 @@
 
 namespace Input {
 
+  /**
+    @brief represents a button of a joystick
+    
+    XML definition: <joystick-button id="joystick id" button="button num"/>
+    */
   class JoystickButton : public Button {
   
     private:
@@ -34,7 +39,7 @@ namespace Input {
     
       JoystickButton(int id_, int button_);
     
-      virtual bool is_pressed ();
+      virtual bool is_pressed () const;
       virtual void update (float);
   };
 }

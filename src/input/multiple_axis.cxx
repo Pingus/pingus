@@ -1,4 +1,4 @@
-//  $Id: multiple_axis.cxx,v 1.2 2002/07/11 14:51:10 torangan Exp $
+//  $Id: multiple_axis.cxx,v 1.3 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,13 +21,9 @@
 
 namespace Input
 {
-  MultipleAxis::MultipleAxis (float angle_, const std::vector<Axis*>& axes_) : 
-                              angle(angle_), axes(axes_)
+  MultipleAxis::MultipleAxis (const std::vector<Axis*>& axes_) : axes(axes_),
+                                                                 pos(0), angle(0)
   {
-    if (angle < 0)
-      angle = (static_cast<int>(angle) % 360) + 360;
-    else if (angle > 360)
-      angle = static_cast<int>(angle) % 360;
   }
 
   MultipleAxis::~MultipleAxis ()
@@ -36,30 +32,32 @@ namespace Input
       delete *it;
   }
 
-  float
-  MultipleAxis::get_pos ()
+  const float&
+  MultipleAxis::get_pos () const
   {
-    for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
-      {
-        const float & temp = (*it)->get_pos();
-	if (temp)
-	  return temp;
-      }
-
-    return 0;
+    return pos;
   }
 
-  float
-  MultipleAxis::get_angle ()
+  const float&
+  MultipleAxis::get_angle () const
   {
     return angle;
   }
   
   void
-  MultipleAxis::update(float delta)
+  MultipleAxis::update (float delta)
   {
     for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
-      (*it)->update(delta);
+      {
+        (*it)->update(delta);
+        const float & temp = (*it)->get_pos();
+        if (temp)
+          {
+	    pos   = temp;
+	    angle = (*it)->get_angle();
+	  }
+	
+      }	
   }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: button_axis.cxx,v 1.4 2002/07/11 14:51:10 torangan Exp $
+//  $Id: button_axis.cxx,v 1.5 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,29 +37,32 @@ namespace Input
     delete button2;
   }
 
-  float
-  ButtonAxis::get_pos ()
+  const float&
+  ButtonAxis::get_pos () const
   {
-    if (button1->is_pressed() == button2->is_pressed())
-      return 0;
-      
-    if (button1->is_pressed())
-      return -1.0f;
-    else
-      return 1.0f;
+    return pos;
   }
 
-  float
-  ButtonAxis::get_angle ()
+  const float&
+  ButtonAxis::get_angle () const
   {
     return angle;
   }
   
   void
-  ButtonAxis::update(float delta)
+  ButtonAxis::update (float delta)
   {
     button1->update(delta);
     button2->update(delta);
+
+    if (button1->is_pressed() == button2->is_pressed())
+      pos = 0.0f;
+      
+    if (button1->is_pressed())
+      pos = -1.0f;
+    else
+      pos = 1.0f;
+   
   }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: mouse_axis.cxx,v 1.2 2002/07/11 11:23:44 torangan Exp $
+//  $Id: mouse_axis.cxx,v 1.3 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,20 +41,20 @@ namespace Input
       }
   }
 
-  float
-  MouseAxis::get_pos ()
+  const float&
+  MouseAxis::get_pos () const
   {
     return pos;
   }
 
-  float
-  MouseAxis::get_angle ()
+  const float&
+  MouseAxis::get_angle () const
   {
     return angle;
   }
   
   void
-  MouseAxis::update(float)
+  MouseAxis::update (float)
   {
     switch (axis)
       {

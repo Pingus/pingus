@@ -1,4 +1,4 @@
-//  $Id: axis_factory.cxx,v 1.3 2002/07/10 14:06:20 torangan Exp $
+//  $Id: axis_factory.cxx,v 1.4 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -123,13 +123,6 @@ namespace Input {
 
   Axis* AxisFactory::multiple_axis (xmlNodePtr cur)
   {
-    char * angle_str = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("angle")));
-    if (!angle_str)
-      throw PingusError("MultipleAxis without angle parameter");
-      
-    float angle = strtod(angle_str, reinterpret_cast<char**>(NULL));
-    free(angle_str);
-    
     std::vector<Axis*> axes;
     cur = cur->children;
     
@@ -145,7 +138,10 @@ namespace Input {
 	cur = cur->next;
       }
       
-    return new MultipleAxis(angle, axes);
+    if (!axes.size())
+      throw PingusError("MultipleAxis without any axis");
+
+    return new MultipleAxis(axes);
   }
 
 }

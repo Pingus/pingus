@@ -1,4 +1,4 @@
-//  $Id: inverted_axis.hxx,v 1.4 2002/07/11 14:51:10 torangan Exp $
+//  $Id: inverted_axis.hxx,v 1.5 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,18 +24,24 @@
 
 namespace Input
 {
+  /**
+    @brief decorator class inverting the angle of an axis
+    
+    XML definition: <inverted-axis> <axis> </inverted-axis>
+    */
   class InvertedAxis : public Axis {
 
   private:
-    Axis* axis;
-    float angle;
+    Axis* const axis;
+    float       angle;
     
   public:
     InvertedAxis (Axis* axis_);
    ~InvertedAxis ();
   
-    virtual float get_pos ();
-    virtual float get_angle ();
+    virtual const float& get_pos   () const;
+    virtual const float& get_angle () const;
+    
     virtual void  update (float delta);
   };
 }

@@ -1,4 +1,4 @@
-//  $Id: mouse_scroller.cxx,v 1.1 2002/07/11 14:51:10 torangan Exp $
+//  $Id: mouse_scroller.cxx,v 1.2 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,28 +24,31 @@
 
 namespace Input {
 
-  float
-  MouseScroller::get_x_delta ()
+  const float&
+  MouseScroller::get_x_delta () const
   {
-    return CL_Input::pointers[0]->get_cursor(0)->get_x() - old_x;
+    return x_delta;
   }
   
-  float
-  MouseScroller::get_y_delta ()
+  const float&
+  MouseScroller::get_y_delta () const
   {
-    return CL_Input::pointers[0]->get_cursor(0)->get_x() - old_y;
+    return y_delta;
   }
   
   void
-  MouseScroller::get_delta (float& x, float& y)
+  MouseScroller::get_delta (float& x, float& y) const
   {
-    x = CL_Input::pointers[0]->get_cursor(0)->get_x() - old_x;
-    y = CL_Input::pointers[0]->get_cursor(0)->get_y() - old_y;
+    x = x_delta;
+    y = y_delta;
   }
   
   void
   MouseScroller::update (float)
   {
+    x_delta = CL_Input::pointers[0]->get_cursor(0)->get_x() - old_x;
+    y_delta = CL_Input::pointers[0]->get_cursor(0)->get_x() - old_y;
+    
     old_x = CL_Input::pointers[0]->get_cursor(0)->get_x();
     old_y = CL_Input::pointers[0]->get_cursor(0)->get_y();
   }

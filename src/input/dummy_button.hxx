@@ -1,4 +1,4 @@
-//  $Id: dummy_button.hxx,v 1.1 2002/07/10 14:06:06 torangan Exp $
+//  $Id: dummy_button.hxx,v 1.2 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,10 +24,15 @@
 
 namespace Input
 {
+  /**
+    @brief dummy class to be used if a button is required but not defined
+    
+    XML definition: none
+    */
   class DummyButton : public Button  {
     public:
 
-      virtual bool is_pressed ()  { return false; }
+      virtual bool is_pressed ()  const { return false; }
       virtual void update (float) { }
   };
 }

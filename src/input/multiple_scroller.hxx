@@ -1,4 +1,4 @@
-//  $Id: multiple_scroller.hxx,v 1.1 2002/07/12 12:36:14 torangan Exp $
+//  $Id: multiple_scroller.hxx,v 1.2 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,9 +25,15 @@
 
 namespace Input {
 
+  /**
+    @brief maps multiple Scrollers into one
+    
+    XML definition: <multiple-scroller> <scroller 1>...<scroller N> </multiple-scroller>
+   */
   class MultipleScroller : public Scroller {
     private:
       std::vector<Scroller*> scrollers;
+      
       float x_pos;
       float y_pos;
       
@@ -35,10 +41,10 @@ namespace Input {
       MultipleScroller (const std::vector<Scroller*>& scrollers_);
      ~MultipleScroller ();
       
-      float get_x_delta ();
-      float get_y_delta ();
+      const float& get_x_delta () const;
+      const float& get_y_delta () const;
       
-      void  get_delta (float& x, float& y);
+      void  get_delta (float& x, float& y) const;
 
       void  update (float delta);
   };

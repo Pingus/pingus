@@ -1,4 +1,4 @@
-//  $Id: button_axis.hxx,v 1.3 2002/07/11 14:51:10 torangan Exp $
+//  $Id: button_axis.hxx,v 1.4 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,22 +27,28 @@ namespace Input {
 
   class Button;
 
+  /**
+    @brief maps two buttons into an axis
+    
+    XML definition: <button-axis angle=?> <some button 1><some button 2> </button-axis>
+  */
   class ButtonAxis : public Axis {
 
   private:
     float   pos;
     float   angle;
     
-    Button* button1;
-    Button* button2;
+    Button* const button1;
+    Button* const button2;
     
   public:
   
     ButtonAxis (float angle_, Button* button1_, Button* button2_);
    ~ButtonAxis ();
   
-    virtual float get_pos ();
-    virtual float get_angle ();
+    virtual const float& get_pos () const;
+    virtual const float& get_angle () const;
+    
     virtual void  update (float delta);
   };
 }

@@ -1,4 +1,4 @@
-//  $Id: joystick_axis.cxx,v 1.4 2002/07/11 15:24:35 torangan Exp $
+//  $Id: joystick_axis.cxx,v 1.5 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,21 +39,22 @@ namespace Input
       angle = static_cast<int>(angle) % 360;
   }
 
-  float
-  JoystickAxis::get_pos ()
+  const float&
+  JoystickAxis::get_pos () const
   {
-    return CL_Input::joysticks[id]->get_axis(axis)->get_pos();
+    return pos;
   }
 
-  float
-  JoystickAxis::get_angle ()
+  const float&
+  JoystickAxis::get_angle () const
   {
     return angle;
   }
   
   void
-  JoystickAxis::update(float)
+  JoystickAxis::update (float)
   {
+    pos = CL_Input::joysticks[id]->get_axis(axis)->get_pos();
   }
 }
 

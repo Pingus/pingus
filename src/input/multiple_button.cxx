@@ -1,4 +1,4 @@
-//  $Id: multiple_button.cxx,v 1.3 2002/07/11 14:51:10 torangan Exp $
+//  $Id: multiple_button.cxx,v 1.4 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,9 +39,9 @@ namespace Input {
   }
   
   bool
-  MultipleButton::is_pressed ()
+  MultipleButton::is_pressed () const
   {
-    for (std::vector<Button*>::iterator it = buttons.begin(); it != buttons.end(); it++)
+    for (std::vector<Button*>::const_iterator it = buttons.begin(); it != buttons.end(); it++)
       if ((*it)->is_pressed())
         return true;
 

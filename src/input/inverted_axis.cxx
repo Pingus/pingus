@@ -1,4 +1,4 @@
-//  $Id: inverted_axis.cxx,v 1.3 2002/07/11 14:51:10 torangan Exp $
+//  $Id: inverted_axis.cxx,v 1.4 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,20 +31,20 @@ namespace Input
     delete axis;
   }
 
-  float
-  InvertedAxis::get_pos ()
+  const float&
+  InvertedAxis::get_pos () const
   {
     return axis->get_pos();
   }
 
-  float
-  InvertedAxis::get_angle ()
+  const float&
+  InvertedAxis::get_angle () const
   {
     return angle;
   }
   
   void
-  InvertedAxis::update(float delta)
+  InvertedAxis::update (float delta)
   {
     axis->update(delta);
   }

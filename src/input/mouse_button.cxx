@@ -1,4 +1,4 @@
-//  $Id: mouse_button.cxx,v 1.2 2002/07/11 15:24:35 torangan Exp $
+//  $Id: mouse_button.cxx,v 1.3 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,19 +25,19 @@
 
 namespace Input {
 
-  MouseButton::MouseButton(int button_) : button(button_)
+  MouseButton::MouseButton (int button_) : button(button_)
   {
     if (button > CL_Input::pointers[0]->get_num_buttons())
       throw PingusError("MouseButton: Invalid button id");
   }
 
   void
-  MouseButton::update(float)
+  MouseButton::update (float)
   {
   }
   
   bool
-  MouseButton::is_pressed()
+  MouseButton::is_pressed () const
   {
     return CL_Input::pointers[0]->get_button(button)->is_pressed();
   }

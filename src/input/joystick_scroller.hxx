@@ -1,4 +1,4 @@
-//  $Id: joystick_scroller.hxx,v 1.1 2002/07/11 14:51:10 torangan Exp $
+//  $Id: joystick_scroller.hxx,v 1.2 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,21 +26,31 @@ namespace Input {
 
   class Axis;
 
+  /**
+    @brief maps the first two axes of a joystick into a Scroller
+    
+    XML definition: <joystick-scroller id="joystick id" speed="?"/>
+    */
   class JoystickScroller : public Scroller {
     private:
-      int   id;
-      Axis* axis1;
-      Axis* axis2;
-      float speed;
+      int id;
+      
+      Axis* const axis1;
+      Axis* const axis2;
+      
+      const float speed;
+      
+      float x_delta;
+      float y_delta;
       
     public:
       JoystickScroller (int id_, float speed_);
      ~JoystickScroller ();
       
-      float get_x_delta ();
-      float get_y_delta ();
+      const float& get_x_delta () const;
+      const float& get_y_delta () const;
       
-      void  get_delta (float& x, float& y);
+      void  get_delta (float& x, float& y) const;
       
       void  update (float delta);
   };

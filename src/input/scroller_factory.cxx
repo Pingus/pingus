@@ -1,4 +1,4 @@
-//  $Id: scroller_factory.cxx,v 1.2 2002/07/12 12:36:14 torangan Exp $
+//  $Id: scroller_factory.cxx,v 1.3 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,23 +76,23 @@ namespace Input {
     
     float speed = strtod(speed_str, reinterpret_cast<char**>(NULL));
     free(speed_str);
-    
-    Axis *axis1, *axis2;
+
+    std::vector<Axis*> axes;
     cur = cur->children;
     
-    if (xmlIsBlankNode(cur))
-      cur = cur->next;
-    
-    axis1 = AxisFactory::create(cur);
-    
-    cur = cur-> next;
-    
-    if (xmlIsBlankNode(cur))
-      cur = cur->next;
-    
-    axis2 = AxisFactory::create(cur);
-    
-    return new AxisScroller(axis1, axis2, speed);
+    while (cur)
+      {
+        if (xmlIsBlankNode(cur))
+	  {
+  	    cur = cur->next;
+	    continue;
+	  }
+	  
+	axes.push_back(AxisFactory::create(cur));
+	cur = cur->next;
+      }
+
+    return new AxisScroller(axes, speed);
   }
   
   Scroller*

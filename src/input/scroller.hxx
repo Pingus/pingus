@@ -1,4 +1,4 @@
-//  $Id: scroller.hxx,v 1.1 2002/07/11 12:36:15 torangan Exp $
+//  $Id: scroller.hxx,v 1.2 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,14 +22,19 @@
 
 namespace Input {
 
+  /// abstract base class defining the scroller interface
   class Scroller {
     public:
       virtual ~Scroller () { }
       
-      virtual float get_x_delta () =0;
-      virtual float get_y_delta () =0;
+      /// returns the scroll delta in X direction
+      virtual const float& get_x_delta () const =0;
       
-      virtual void  get_delta (float&, float&) =0;
+      /// returns the scroll delta in Y direction
+      virtual const float& get_y_delta () const =0;
+      
+      /// writes the X/Y scroll delta into it's parameters
+      virtual void  get_delta (float&, float&) const =0;
       
       virtual void  update (float) =0;
   };

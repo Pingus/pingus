@@ -1,4 +1,4 @@
-//  $Id: axis.hxx,v 1.3 2002/07/10 14:06:20 torangan Exp $
+//  $Id: axis.hxx,v 1.4 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,13 +22,18 @@
 
 namespace Input
 {
+  /// abstract base class which defines the axis interface
   class Axis {
   
     public:
       virtual ~Axis () { }
     
-      virtual float get_pos () =0;
-      virtual float get_angle () =0;
+      /// yields the position of the axis in [-1;1]
+      virtual const float& get_pos () const =0;
+      
+      /// yields the angle of axis in [0;360[ degree
+      virtual const float& get_angle () const =0;
+      
       virtual void  update(float) =0;
   };
 }

@@ -1,4 +1,4 @@
-//  $Id: dummy_pointer.hxx,v 1.1 2002/07/10 14:06:06 torangan Exp $
+//  $Id: dummy_pointer.hxx,v 1.2 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,12 +24,23 @@
 
 namespace Input
 {
+  /**
+    @brief dummy class to be used if a pointer is required but none defined
+    
+    XML definition: none
+    */
   class DummyPointer : public Pointer {
+  
+    private:
+      const float pos;
   
     public:
 
-      virtual float get_x_pos () { return 0; }
-      virtual float get_y_pos () { return 0; }
+      DummyPointer () : pos(0) { }
+
+      virtual const float& get_x_pos () const { return pos; }
+      virtual const float& get_y_pos () const { return pos; }
+      
       virtual void  set_pos (float, float) { }
       virtual void  update (float)         { }
   };

@@ -1,4 +1,4 @@
-//  $Id: axis_scroller.hxx,v 1.1 2002/07/11 12:36:15 torangan Exp $
+//  $Id: axis_scroller.hxx,v 1.2 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,26 +20,37 @@
 #ifndef HEADER_PINGUS_INPUT_AXIS_SCROLLER_HXX
 #define HEADER_PINGUS_INPUT_AXIS_SCROLLER_HXX
 
+#include <vector>
 #include "scroller.hxx"
 
 namespace Input {
 
   class Axis;
 
+  /**
+    @brief create a Scroller out of two or more axes
+    
+    XML definition: <axis-scroller speed="?"> <axis 1>...<axis N> </axis-scroller>
+    
+    This class requires at least two axes whereby it's enforced that the first
+    two have different angles.
+    */
   class AxisScroller : public Scroller {
     private:
-      Axis* axis1;
-      Axis* axis2;
-      float speed;
+      std::vector<Axis*> axes;
+      
+      const float speed;
+            float x_delta;
+            float y_delta;
       
     public:
-      AxisScroller (Axis* axis1_, Axis* axis2_, float speed_);
+      AxisScroller (const std::vector<Axis*>& axes_, float speed_);
      ~AxisScroller ();
       
-      float get_x_delta ();
-      float get_y_delta ();
+      const float& get_x_delta () const;
+      const float& get_y_delta () const;
       
-      void  get_delta (float& x, float& y);
+      void  get_delta (float& x, float& y) const;
       
       void  update (float delta);
   };

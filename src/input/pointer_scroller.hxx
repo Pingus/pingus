@@ -1,4 +1,4 @@
-//  $Id: pointer_scroller.hxx,v 1.1 2002/07/11 12:36:15 torangan Exp $
+//  $Id: pointer_scroller.hxx,v 1.2 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,25 +27,34 @@ namespace Input {
   class Button;
   class Pointer;
 
+  /**
+    @brief allows a Pointer to be used as a Scroller
+    
+    XML definition: <pointer-scroller> <pointer><button> </pointer-scroller>
+    
+    A PointerScroller creates ScrollEvents whenever the associated Button is pressed.
+    The Pointer itself is then reset to it's original position to prevent the visible
+    pointer from moving while the Pointer is used as a Scroller.
+    */
   class PointerScroller : public Scroller {
     private:
-      Pointer* pointer;
-      Button*  modifier;
+      Pointer* const pointer;
+      Button*  const modifier;
       
-      float    x_delta;
-      float    y_delta;
-      float    x_pos;
-      float    y_pos;
+      float x_delta;
+      float y_delta;
+      float x_pos;
+      float y_pos;
       
     public:
       
       PointerScroller (Pointer* pointer_, Button* modifier_);
      ~PointerScroller ();
       
-      float get_x_delta ();
-      float get_y_delta ();
+      const float& get_x_delta () const;
+      const float& get_y_delta () const;
       
-      void  get_delta (float& x, float& y);
+      void  get_delta (float& x, float& y) const;
       
       void  update (float delta);
   };

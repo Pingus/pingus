@@ -1,4 +1,4 @@
-//  $Id: axis_pointer.cxx,v 1.6 2002/08/12 22:52:04 grumbel Exp $
+//  $Id: axis_pointer.cxx,v 1.7 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@ namespace Input
   AxisPointer::AxisPointer (float speed_, const std::vector<Axis*>& axes_) : speed(speed_), axes(axes_)
   {
     assert(axes.size() >= 2);
+    assert(axes[0]->get_angle() != axes[1]->get_angle());
   }
 
   AxisPointer::~AxisPointer ()
@@ -35,27 +36,27 @@ namespace Input
       delete *it;
   }
 
-  float
-  AxisPointer::get_x_pos ()
+  const float&
+  AxisPointer::get_x_pos () const
   {
     return x_pos;
   }
 
-  float
-  AxisPointer::get_y_pos ()
+  const float&
+  AxisPointer::get_y_pos () const
   {
     return y_pos;
   }
 
   void
-  AxisPointer::set_pos(float new_x, float new_y)
+  AxisPointer::set_pos (float new_x, float new_y)
   {
     x_pos = new_x;
     y_pos = new_y;
   }
   
   void
-  AxisPointer::update(float delta)
+  AxisPointer::update (float delta)
   {
     for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
       {

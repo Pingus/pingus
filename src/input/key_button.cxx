@@ -1,4 +1,4 @@
-//  $Id: key_button.cxx,v 1.1 2002/07/04 11:32:18 torangan Exp $
+//  $Id: key_button.cxx,v 1.2 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,15 +22,15 @@
 
 namespace Input {
 
-  KeyButton::KeyButton(int button_) : button(button_) { }
+  KeyButton::KeyButton (int button_) : button(button_) { }
 
   void
-  KeyButton::update(float)
+  KeyButton::update (float)
   {
   }
   
   bool
-  KeyButton::is_pressed()
+  KeyButton::is_pressed () const
   {
     return CL_Keyboard::get_keycode(button); 
   }

@@ -1,4 +1,4 @@
-//  $Id: button.hxx,v 1.3 2002/07/08 14:48:36 torangan Exp $
+//  $Id: button.hxx,v 1.4 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,14 +22,16 @@
 
 namespace Input
 {
+  /// abstract base class which defines the button interface
   class Button
   {
   public:
 
     virtual ~Button () { }
 
-    virtual bool is_pressed ()  =0;
-    virtual void update (float) =0;
+    /// returns true if the button is pressed, false otherwise
+    virtual bool is_pressed ()      const =0;
+    virtual void update     (float)       =0;
   };
 }
 

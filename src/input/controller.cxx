@@ -1,4 +1,4 @@
-//  $Id: controller.cxx,v 1.8 2002/07/29 10:41:17 grumbel Exp $
+//  $Id: controller.cxx,v 1.9 2002/08/14 12:41:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -116,6 +116,9 @@ namespace Input
 
     if (!scroller)
       scroller = new DummyScroller;
+      
+    if (!action_axis)
+      action_axis = new DummyAxis;
 
     button_states.resize(buttons.size());
     for (unsigned int i=0; i < buttons.size(); i++)
@@ -149,7 +152,9 @@ namespace Input
   void
   Controller::update (float delta)
   {
-    // FIXME: Memory leak
+    for (std::list<Event*>::iterator it = events.begin(); it != events.end(); it++)
+      delete *it;
+
     events.clear ();
 
     scroller        ->update(delta);
