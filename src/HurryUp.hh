@@ -1,4 +1,4 @@
-//  $Id: HurryUp.hh,v 1.2 2000/07/04 22:59:13 grumbel Exp $
+//  $Id: HurryUp.hh,v 1.3 2000/07/05 07:25:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include <ClanLib/core.h>
 #include "GuiObj.hh"
+#include "Client.hh"
 
 /** Hurry up if the time goes over... */
 class HurryUp : public GuiObj
@@ -29,7 +30,9 @@ class HurryUp : public GuiObj
 private:
   CL_Font* font;
   bool is_running;
+  bool is_finished;
   bool center_reached;
+  Client* client;
 
   int  wait_counter;
   float x_pos;
@@ -42,6 +45,7 @@ public:
 
   virtual void draw();
   virtual void let_move();
+  void set_client(Client*);
 };
 
 #endif

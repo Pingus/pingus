@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.32 2000/07/04 22:59:13 grumbel Exp $
+//  $Id: Client.cc,v 1.33 2000/07/05 07:25:03 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -141,6 +141,7 @@ Client::init_display()
   button_panel->set_client(this);
   pcounter->set_client(this);
   small_map->set_client(this);
+  hurry_up->set_client(this);
   
   event->playfield = playfield;
 
