@@ -135,9 +135,9 @@ private:
   XMLhelper& operator= (const XMLhelper&);
 };
 
-} // namespace Pingus
-
 std::ostream& operator<<(std::ostream& s, xmlNode& node);
+
+} // namespace Pingus
 
 #endif
 

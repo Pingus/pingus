@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-29 22:08+0000\n"
+"POT-Creation-Date: 2004-04-05 15:53+0200\n"
 "PO-Revision-Date: 2003-04-15 17:31+0200\n"
 "Last-Translator: David Philippi <david@torangan.de>\n"
 "Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx."
@@ -489,6 +489,7 @@ msgid "unknown"
 msgstr "unbekannt"
 
 #: src/game_time.cxx:70
+#, c-format
 msgid "unlimited"
 msgstr "unbegrenzt"
 
@@ -978,90 +979,90 @@ msgstr "Sound deaktivieren"
 msgid "Disable music"
 msgstr "Musik deaktivieren"
 
-#: src/pingus_main.cxx:715
+#: src/pingus_main.cxx:720
 msgid "clanVorbis support:           ok"
 msgstr "clanVorbis Unterstützung:    ok"
 
-#: src/pingus_main.cxx:717
+#: src/pingus_main.cxx:722
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr ""
 "clanVorbis Unterstützung: fehlt (.ogg Musik Datein können nicht abgespielt "
 "werden)"
 
-#: src/pingus_main.cxx:721
+#: src/pingus_main.cxx:726
 msgid "clanMikMod support:           ok"
 msgstr "clanMikMod Unterstützung:    ok"
 
-#: src/pingus_main.cxx:723
+#: src/pingus_main.cxx:728
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr ""
 "clanMikMod Untersützung: fehlt (Musikdateien können nicht abgespielt werden)"
 
-#: src/pingus_main.cxx:727
+#: src/pingus_main.cxx:732
 msgid "getext support:               ok"
 msgstr "gettext Unterstützung:       ok"
 
-#: src/pingus_main.cxx:728
+#: src/pingus_main.cxx:733
 msgid "gettext language:        english"
 msgstr "gettext Sprache:        deutsch"
 
-#: src/pingus_main.cxx:734
+#: src/pingus_main.cxx:739
 msgid "sound support:           enabled"
 msgstr "Sound Unterstützung:         an"
 
-#: src/pingus_main.cxx:736
+#: src/pingus_main.cxx:741
 msgid "sound support:          disabled"
 msgstr "Sound Unterstützung:        aus"
 
-#: src/pingus_main.cxx:739
+#: src/pingus_main.cxx:744
 msgid "music support:           enabled"
 msgstr "Musik Unterstützung:         an"
 
-#: src/pingus_main.cxx:741
+#: src/pingus_main.cxx:746
 msgid "music support:          disabled"
 msgstr "Musik Unterstützung:        aus"
 
-#: src/pingus_main.cxx:743
+#: src/pingus_main.cxx:748
 msgid "resolution set to:       "
 msgstr "Auflösung:              "
 
-#: src/pingus_main.cxx:744
+#: src/pingus_main.cxx:749
 msgid "fullscreen:              "
 msgstr "Vollbild:           "
 
-#: src/pingus_main.cxx:745
+#: src/pingus_main.cxx:750
 msgid " enabled"
 msgstr "aktiviert"
 
-#: src/pingus_main.cxx:745
+#: src/pingus_main.cxx:750
 msgid "disabled"
 msgstr "deaktiviert"
 
-#: src/pingus_main.cxx:755
+#: src/pingus_main.cxx:760
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Hauptteil wird gestartet: "
 
-#: src/pingus_main.cxx:800
+#: src/pingus_main.cxx:805
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Leveldatei nicht gefunden, Fehler wird ignoriert: "
 
-#: src/pingus_main.cxx:904
+#: src/pingus_main.cxx:909
 msgid "Error caught from ClanLib: "
 msgstr "ClanLib Fehler abgefangen: "
 
-#: src/pingus_main.cxx:908
+#: src/pingus_main.cxx:913
 msgid "Error caught from Pingus: "
 msgstr "Pingus Fehler wurde abgefangen: "
 
-#: src/pingus_main.cxx:912
+#: src/pingus_main.cxx:917
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Speicher ist ausgegangen"
 
-#: src/pingus_main.cxx:916
+#: src/pingus_main.cxx:921
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Standard Ausnahme abgefangen!:\n"
 
-#: src/pingus_main.cxx:920
+#: src/pingus_main.cxx:925
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Unbekannte Ausnahme abgefangen!"
 

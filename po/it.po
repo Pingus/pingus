@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-08-29 19:12+0200\n"
+"POT-Creation-Date: 2004-04-05 15:53+0200\n"
 "PO-Revision-Date: 2003-04-21 14:09+0200\n"
 "Last-Translator: Giuseppe D'Aqui' <kumber@tiscalinet.it>\n"
 "Language-Team: Italiano\n"
@@ -15,83 +15,83 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0\n"
 
-#: src/config.cxx:71
+#: src/config.cxx:73
 msgid "Couldn't open: "
 msgstr "Impossibile aprire: "
 
-#: src/config.cxx:170
+#: src/config.cxx:172
 msgid "Unexpected char: '"
 msgstr "Carattere inatteso: '"
 
-#: src/config.cxx:204
+#: src/config.cxx:206
 msgid "Unexpected char '"
 msgstr "Carattere inatteso '"
 
-#: src/credits.cxx:46
+#: src/credits.cxx:48
 msgid "-Idea"
 msgstr "-Idea"
 
-#: src/credits.cxx:50
+#: src/credits.cxx:52
 msgid "-Maintaining"
 msgstr "-Manutenzione"
 
-#: src/credits.cxx:54
+#: src/credits.cxx:56
 msgid "-Programming"
 msgstr "-Programmazione"
 
-#: src/credits.cxx:60
+#: src/credits.cxx:62
 msgid "-Porting (Win32)"
 msgstr "-Porting (Win32)"
 
-#: src/credits.cxx:68
+#: src/credits.cxx:70
 msgid "-Gfx"
 msgstr "-Grafica"
 
-#: src/credits.cxx:80
+#: src/credits.cxx:82
 msgid "-Music"
 msgstr "-Musica"
 
-#: src/credits.cxx:86
+#: src/credits.cxx:88
 msgid "-Level Design"
 msgstr "-Progettazione dei Livelli"
 
-#: src/credits.cxx:91
+#: src/credits.cxx:93
 msgid "-Story"
 msgstr "-Trama"
 
-#: src/credits.cxx:95
+#: src/credits.cxx:97
 msgid "-Translation"
 msgstr "-Traduzione"
 
-#: src/credits.cxx:107
+#: src/credits.cxx:112
 msgid "-Special"
 msgstr "-Speciale"
 
-#: src/credits.cxx:108
+#: src/credits.cxx:113
 msgid "-Thanks to"
 msgstr "-Ringraziomenti a"
 
-#: src/credits.cxx:149
+#: src/credits.cxx:154
 msgid "_And a very Special Thanks"
 msgstr "_Ed un Ringraziamento Speciale"
 
-#: src/credits.cxx:150
+#: src/credits.cxx:155
 msgid "_to all the people who"
 msgstr "_a tutti quelli che"
 
-#: src/credits.cxx:151
+#: src/credits.cxx:156
 msgid "_contribute to"
 msgstr "_contribuiscono al"
 
-#: src/credits.cxx:152
+#: src/credits.cxx:157
 msgid "_Free Software!"
 msgstr "_Software Libero!"
 
-#: src/credits.cxx:158
+#: src/credits.cxx:163
 msgid "_Thank you for"
 msgstr "_Grazie per"
 
-#: src/credits.cxx:159
+#: src/credits.cxx:164
 msgid "_playing!"
 msgstr "_aver giocato!"
 
@@ -99,138 +99,138 @@ msgstr "_aver giocato!"
 msgid "Enter filename to save as:"
 msgstr "Scrivi il nome del file per il salvataggio: "
 
-#: src/editor/editor_help_screen.cxx:39
+#: src/editor/editor_help_screen.cxx:43
 msgid "Editor Helpscreen (hide with F1)"
 msgstr "Schermata d'aiuto dell'Editor (nascondi con F1)"
 
-#: src/editor/editor_help_screen.cxx:46
+#: src/editor/editor_help_screen.cxx:51
 msgid "F1 - show/hide this help screen"
 msgstr "F1 - mostra/nascondi questa schermata d'aiuto"
 
-#: src/editor/editor_help_screen.cxx:47
+#: src/editor/editor_help_screen.cxx:52
 msgid "F2 - launch level building tutorial"
 msgstr "F2 - lancia il tutorial per la creazione dei livelli"
 
-#: src/editor/editor_help_screen.cxx:48
+#: src/editor/editor_help_screen.cxx:53
 msgid "F3 - toggle background color"
 msgstr "F3 - modifica colore di sfondo"
 
-#: src/editor/editor_help_screen.cxx:49
+#: src/editor/editor_help_screen.cxx:54
 msgid "F4 - play/test the level"
 msgstr "F4 - gioca/prova il livello"
 
-#: src/editor/editor_help_screen.cxx:50
+#: src/editor/editor_help_screen.cxx:55
 msgid "F5 - load a level"
 msgstr "F5 - carica un livello"
 
-#: src/editor/editor_help_screen.cxx:51
+#: src/editor/editor_help_screen.cxx:56
 msgid "F6 - save this level"
 msgstr "F6 - salva questo livello"
 
-#: src/editor/editor_help_screen.cxx:52
+#: src/editor/editor_help_screen.cxx:57
 msgid "F7 - [unset]"
 msgstr "F7 - [non assegnato]"
 
-#: src/editor/editor_help_screen.cxx:53
+#: src/editor/editor_help_screen.cxx:58
 msgid "F8 - quick save/backup save?!"
 msgstr "F8 - salvataggio rapido/backup?!"
 
-#: src/editor/editor_help_screen.cxx:54
+#: src/editor/editor_help_screen.cxx:59
 msgid "F9 - change level width and height"
 msgstr "F9 - modifica larghezza ed altezza del livello"
 
-#: src/editor/editor_help_screen.cxx:55
+#: src/editor/editor_help_screen.cxx:60
 msgid "F10 - [unset]"
 msgstr "F10 - [non assignato]"
 
-#: src/editor/editor_help_screen.cxx:56
+#: src/editor/editor_help_screen.cxx:61
 msgid "F11 - toggle fps counter"
 msgstr "F11 - mostra/nascondi fps counter"
 
-#: src/editor/editor_help_screen.cxx:57
+#: src/editor/editor_help_screen.cxx:62
 msgid "F12 - make screenshot"
 msgstr "F12 - esegui uno screenshot"
 
-#: src/editor/editor_help_screen.cxx:61
+#: src/editor/editor_help_screen.cxx:66
 msgid "Home - increase object size"
 msgstr "Home - aumenta le dimensioni di un oggetto"
 
-#: src/editor/editor_help_screen.cxx:62
+#: src/editor/editor_help_screen.cxx:67
 msgid "End  - decrease object size"
 msgstr "End - diminuisce le dimensioni di un oggetto"
 
-#: src/editor/editor_help_screen.cxx:63
+#: src/editor/editor_help_screen.cxx:68
 msgid "Cursor Keys - Move object"
 msgstr "Tasti Freccia - muovi un oggetto"
 
-#: src/editor/editor_help_screen.cxx:64
+#: src/editor/editor_help_screen.cxx:69
 msgid "Shift 'Cursor Keys' - Move objects fast "
 msgstr "Maiusc + Tasti Freccia - muovi un oggetto velocemente"
 
-#: src/editor/editor_help_screen.cxx:65
+#: src/editor/editor_help_screen.cxx:70
 msgid "PageUp   - level object up"
 msgstr "PagSu - metti un oggetto in primo piano"
 
-#: src/editor/editor_help_screen.cxx:66
+#: src/editor/editor_help_screen.cxx:71
 msgid "PageDown - level object down"
 msgstr "PagGiù - metti un oggetto in secondo piano"
 
-#: src/editor/editor_help_screen.cxx:67
+#: src/editor/editor_help_screen.cxx:72
 msgid "Shift PageUp   - increase objects z-pos by 50"
 msgstr ""
 "Maiusc + PagSu - allontana un oggetto di 50 unità rispetto al primo piano"
 
-#: src/editor/editor_help_screen.cxx:68
+#: src/editor/editor_help_screen.cxx:73
 msgid "Shift PageDown - decrease objects z-pos by 50"
 msgstr ""
 "Maiusc + PagGiù - avvicina un oggetto di 50 unità rispetto al primo piano"
 
-#: src/editor/editor_help_screen.cxx:69
+#: src/editor/editor_help_screen.cxx:74
 msgid "Enter - Set default zoom (1:1)"
 msgstr "Invio - Imposta lo zoom predefinito (1:1)"
 
-#: src/editor/editor_help_screen.cxx:70
+#: src/editor/editor_help_screen.cxx:75
 msgid "d - duplicate object"
 msgstr "d - duplica un oggetto"
 
-#: src/editor/editor_help_screen.cxx:71
+#: src/editor/editor_help_screen.cxx:76
 msgid "a - mark all objects"
 msgstr "a - seleziona tutti gli oggetti"
 
-#: src/editor/editor_help_screen.cxx:72
+#: src/editor/editor_help_screen.cxx:77
 msgid "shift leftmouseclick - add object to selection"
 msgstr "Maiusc + tasto sinistro del mouse - aggiungi un oggetto alla selezione"
 
-#: src/editor/editor_help_screen.cxx:73
+#: src/editor/editor_help_screen.cxx:78
 msgid "leftmouseclick - select object"
 msgstr "Tasto sinistro del mouse - seleziona un oggetto"
 
-#: src/editor/editor_help_screen.cxx:74
+#: src/editor/editor_help_screen.cxx:79
 msgid "Insert - insert new object"
 msgstr "Ins   - inserisci un nuovo oggetto"
 
-#: src/editor/editor_help_screen.cxx:75
+#: src/editor/editor_help_screen.cxx:80
 msgid "Remove - remove selected object"
 msgstr "Canc - rimuovi l'oggetto selezionato"
 
-#: src/editor/editor_help_screen.cxx:76
+#: src/editor/editor_help_screen.cxx:81
 msgid "g - ungroup/group current selection"
 msgstr "g - separa/raggruppa la selezione corrente"
 
-#: src/editor/editor_help_screen.cxx:77
+#: src/editor/editor_help_screen.cxx:82
 msgid "Ctrl PageUp   - increase objects z-pos by 1"
 msgstr "Ctrl + PagSu - allontana un oggetto di 1 unità rispetto al primo piano"
 
-#: src/editor/editor_help_screen.cxx:78
+#: src/editor/editor_help_screen.cxx:83
 msgid "Ctrl PageDown - decrease objects z-pos by 1"
 msgstr "Ctrl + PagGiù - avvicina un oggetto di 1 unità rispetto al primo piano"
 
-#: src/editor/editor_help_screen.cxx:84
+#: src/editor/editor_help_screen.cxx:89
 #, fuzzy
 msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.plf"
 msgstr "Stile dei nomi: <NOME LIVELLO><NUMERO>-<AUTORE>.xml"
 
-#: src/editor/editor_help_screen.cxx:86
+#: src/editor/editor_help_screen.cxx:91
 msgid ""
 "When you have created a level and want to have it in the next Pingus "
 "release,\n"
@@ -240,282 +240,283 @@ msgstr ""
 "release di Pingus,\n"
 "invialo a: pingus-devel@nongnu.org."
 
-#: src/editor/object_selector.cxx:107
+#: src/editor/object_selector.cxx:106
 msgid "1 - guillotine"
 msgstr "1 - ghigliottina"
 
-#: src/editor/object_selector.cxx:108
+#: src/editor/object_selector.cxx:107
 msgid "2 - hammer"
 msgstr "2 - martello"
 
-#: src/editor/object_selector.cxx:109
+#: src/editor/object_selector.cxx:108
 msgid "3 - spike"
 msgstr "3 - punta (spike)"
 
-#: src/editor/object_selector.cxx:110
+#: src/editor/object_selector.cxx:109
 msgid "4 - laser_exit"
 msgstr "4 - uscita laser"
 
-#: src/editor/object_selector.cxx:111
+#: src/editor/object_selector.cxx:110
 msgid "5 - fake_exit"
 msgstr "5 - falsa uscita"
 
-#: src/editor/object_selector.cxx:112
+#: src/editor/object_selector.cxx:111
 msgid "6 - smasher"
 msgstr "6 - schiacciatore"
 
-#: src/editor/object_selector.cxx:113
+#: src/editor/object_selector.cxx:112
 msgid "7 - bumper"
 msgstr "7 - trampolino"
 
-#: src/editor/object_selector.cxx:187
+#: src/editor/object_selector.cxx:186
 msgid "Select a WorldObj"
 msgstr "Seleziona un WorldObj"
 
-#: src/editor/object_selector.cxx:188
+#: src/editor/object_selector.cxx:187
 msgid "1 - teleporter"
 msgstr "1 - teletrasporto"
 
-#: src/editor/object_selector.cxx:189
+#: src/editor/object_selector.cxx:188
 msgid "2 - switch and door"
 msgstr "2 - interruttore e porta"
 
-#: src/editor/object_selector.cxx:190
+#: src/editor/object_selector.cxx:189
 msgid "3 - ConveyorBelt"
 msgstr "3 - nastro trasportatore"
 
-#: src/editor/object_selector.cxx:191
+#: src/editor/object_selector.cxx:190
 msgid "4 - IceBlock"
 msgstr "4 - blocco di ghiaccio"
 
-#: src/editor/object_selector.cxx:192
+#: src/editor/object_selector.cxx:191
 msgid "5 - InfoBox"
 msgstr "5 - InfoBox"
 
-#: src/editor/object_selector.cxx:233
+#: src/editor/object_selector.cxx:232
 msgid "Select a weather"
 msgstr "Seleziona un clima"
 
-#: src/editor/object_selector.cxx:234
+#: src/editor/object_selector.cxx:233
 msgid "1 - snow"
 msgstr "1 - neve"
 
-#: src/editor/object_selector.cxx:235
+#: src/editor/object_selector.cxx:234
 msgid "2 - rain"
 msgstr "2 - pioggia"
 
-#: src/editor/object_selector.cxx:266
+#: src/editor/object_selector.cxx:265
 msgid "Select an entrance"
 msgstr "Seleziona un'entrata"
 
-#: src/editor/object_selector.cxx:267
+#: src/editor/object_selector.cxx:266
 msgid "1 - generic"
 msgstr "1 - generica"
 
-#: src/editor/object_selector.cxx:268
+#: src/editor/object_selector.cxx:267
 msgid "2 - woodthing"
 msgstr "2 - legnosa"
 
-#: src/editor/object_selector.cxx:269
+#: src/editor/object_selector.cxx:268
 msgid "3 - cloud"
 msgstr "3 - nuvola"
 
-#: src/editor/object_selector.cxx:270
+#: src/editor/object_selector.cxx:269
 msgid "h - entrance surface (hotspot)"
 msgstr "h - superficie d'entrata (hotspot)"
 
-#: src/editor/object_selector.cxx:344
+#: src/editor/object_selector.cxx:343
 msgid "What object type do you want?"
 msgstr "Che tipo di oggetto vuoi?"
 
-#: src/editor/object_selector.cxx:345 src/editor/object_selector.cxx:401
+#: src/editor/object_selector.cxx:344 src/editor/object_selector.cxx:400
 msgid "h - Hotspot"
 msgstr "h - Hotspot"
 
-#: src/editor/object_selector.cxx:346
+#: src/editor/object_selector.cxx:345
 msgid "g - Groundpiece (ground) [not implemented]"
 msgstr "g - Suolo [non implementato]"
 
-#: src/editor/object_selector.cxx:395 src/editor/object_selector.cxx:563
+#: src/editor/object_selector.cxx:394 src/editor/object_selector.cxx:562
 msgid "Which object do you want?"
 msgstr "Che oggetto vuoi?"
 
-#: src/editor/object_selector.cxx:396
+#: src/editor/object_selector.cxx:395
 msgid "g - Groundpiece (ground)"
 msgstr "g - Suolo (terreno)"
 
-#: src/editor/object_selector.cxx:397
+#: src/editor/object_selector.cxx:396
 msgid "s - Groundpiece (solid)"
 msgstr "s - Suolo (solido)"
 
-#: src/editor/object_selector.cxx:398
+#: src/editor/object_selector.cxx:397
 msgid "b - Groundpiece (bridge)"
 msgstr "b - Suolo (ponte)"
 
-#: src/editor/object_selector.cxx:399
+#: src/editor/object_selector.cxx:398
 msgid "n - Groundpiece (transparent)"
 msgstr "n - Suolo (trasparente)"
 
-#: src/editor/object_selector.cxx:400
+#: src/editor/object_selector.cxx:399
 msgid "r - Groundpiece (remove)"
 msgstr "r - Suolo (rimuovi)"
 
-#: src/editor/object_selector.cxx:402
+#: src/editor/object_selector.cxx:401
 msgid "e - Entrance"
 msgstr "e - Entrata"
 
-#: src/editor/object_selector.cxx:403
+#: src/editor/object_selector.cxx:402
 msgid "x - Exit"
 msgstr "x - Uscita"
 
-#: src/editor/object_selector.cxx:404
+#: src/editor/object_selector.cxx:403
 msgid "l - Liquid"
 msgstr "l - Liquido"
 
-#: src/editor/object_selector.cxx:405
+#: src/editor/object_selector.cxx:404
 msgid "w - Weather"
 msgstr "w - Clima"
 
-#: src/editor/object_selector.cxx:406
+#: src/editor/object_selector.cxx:405
 msgid "t - Traps"
 msgstr "t - Trappole"
 
-#: src/editor/object_selector.cxx:407
+#: src/editor/object_selector.cxx:406
 msgid "o - WorldObject"
 msgstr "o - WorldObject"
 
-#: src/editor/object_selector.cxx:408
+#: src/editor/object_selector.cxx:407
 msgid "z - Background"
 msgstr "z - Sfondo"
 
-#: src/editor/object_selector.cxx:409
+#: src/editor/object_selector.cxx:408
 msgid "p - Prefab (ObjectGroup)"
 msgstr "p - Prefab (ObjectGroup)"
 
-#: src/editor/object_selector.cxx:410
+#: src/editor/object_selector.cxx:409
 msgid "f - something from file (~/.pingus/images/)"
 msgstr "f - importa da file (~/.pingus/images/)"
 
-#: src/editor/object_selector.cxx:499
+#: src/editor/object_selector.cxx:498
 msgid "Which prefab do you want?"
 msgstr "Che Prefab vuoi?"
 
-#: src/editor/object_selector.cxx:564
+#: src/editor/object_selector.cxx:563
 msgid "1 - Surface Background"
 msgstr "1 - Sfondo con texture"
 
-#: src/editor/object_selector.cxx:565
+#: src/editor/object_selector.cxx:564
 msgid "2 - Solid Color Background"
 msgstr "2 - Sfondo di colore uniforme"
 
-#: src/editor/object_selector.cxx:566
+#: src/editor/object_selector.cxx:565
 msgid "3 - Starfield Background"
 msgstr "3 - Sfondo con campo stellato"
 
-#: src/editor/object_selector.cxx:567
+#: src/editor/object_selector.cxx:566
 msgid "4 - Thunderstorm Background"
 msgstr "4 - Sfondo con tempesta di fulmini"
 
-#: src/editor/panel_icons.cxx:32
+#: src/editor/panel_icons.cxx:33
 msgid "Load a level (F5)"
 msgstr "Carica un livello (F5)"
 
-#: src/editor/panel_icons.cxx:45
+#: src/editor/panel_icons.cxx:46
 msgid "Exit the editor (Escape)"
 msgstr "Esci dall'editor (Esc)"
 
-#: src/editor/panel_icons.cxx:57
+#: src/editor/panel_icons.cxx:58
 msgid "Save this level (F6)"
 msgstr "Salva questo livello (F6)"
 
-#: src/editor/panel_icons.cxx:69
+#: src/editor/panel_icons.cxx:70
 #, fuzzy
 msgid "Delete marked objects (delete)"
 msgstr "Cancella gli oggetti selezionati (Canc)"
 
-#: src/editor/panel_icons.cxx:81
+#: src/editor/panel_icons.cxx:82
 msgid "Duplicate current object (d)"
 msgstr "Duplica l'oggetto corrente (d)"
 
-#: src/editor/panel_icons.cxx:93
+#: src/editor/panel_icons.cxx:94
 msgid "Edit Level Properties"
 msgstr "Modifica le proprietà del livello"
 
-#: src/editor/panel_icons.cxx:105
+#: src/editor/panel_icons.cxx:106
 msgid "Edit Object Properties"
 msgstr "Modifica le proprietà dell'oggetto"
 
-#: src/editor/panel_icons.cxx:117
+#: src/editor/panel_icons.cxx:118
 msgid "Start the level and test it (F4)"
 msgstr "Prova il livello (F4)"
 
-#: src/editor/panel_icons.cxx:129
+#: src/editor/panel_icons.cxx:130
 msgid "Create a new level from scratch"
 msgstr "Crea un nuovo livello"
 
-#: src/editor/panel_icons.cxx:141
+#: src/editor/panel_icons.cxx:142
 msgid "Insert an object (Insert)"
 msgstr "Inserisci un oggetto (Ins)"
 
-#: src/editor/panel_icons.cxx:153
+#: src/editor/panel_icons.cxx:154
 msgid "Zoom into a region"
 msgstr "Effettua lo zoom su una regione"
 
-#: src/editor/panel_icons.cxx:165
+#: src/editor/panel_icons.cxx:166
 msgid "Zoom in"
 msgstr "Zoom avanti"
 
-#: src/editor/panel_icons.cxx:178
+#: src/editor/panel_icons.cxx:179
 msgid "Zoom out"
 msgstr "Zoom indietro"
 
-#: src/editor/panel_icons.cxx:191
+#: src/editor/panel_icons.cxx:192
 msgid "Setup Number of Actions"
 msgstr "Imposta il numero di azioni"
 
-#: src/editor/panel_icons.cxx:203
+#: src/editor/panel_icons.cxx:204
 msgid "Display Help Screen (F1)"
 msgstr "Mostra schermata d'aiuto (F1)"
 
-#: src/exit_menu.cxx:46
+#: src/exit_menu.cxx:48
 msgid "Yes"
 msgstr "Si"
 
-#: src/exit_menu.cxx:79
+#: src/exit_menu.cxx:81
 msgid "No"
 msgstr "No"
 
-#: src/exit_menu.cxx:112
+#: src/exit_menu.cxx:114
 msgid "Exit Pingus?"
 msgstr "Esci da Pingus?"
 
-#: src/fps_counter.cxx:46
+#: src/fps_counter.cxx:48
 msgid "unknown"
 msgstr "sconosciuto"
 
-#: src/game_time.cxx:68
+#: src/game_time.cxx:70
+#, c-format
 msgid "unlimited"
 msgstr "illimitato"
 
-#: src/level_desc.cxx:72
+#: src/level_desc.cxx:74
 msgid "Designed by "
 msgstr "Creato da "
 
-#: src/level_desc.cxx:77
+#: src/level_desc.cxx:79
 #, c-format
 msgid "Pingus to Save: %d"
 msgstr "Pingus da salvare: %d"
 
-#: src/level_desc.cxx:79
+#: src/level_desc.cxx:81
 #, c-format
 msgid "Number of Pingus: %d"
 msgstr "Numero di Pingus: %d"
 
-#: src/level_desc.cxx:84
+#: src/level_desc.cxx:86
 msgid "Loading..."
 msgstr "Caricamento..."
 
-#: src/level_desc.cxx:87
+#: src/level_desc.cxx:89
 msgid "Loading finished. Press a mouse button to start the level"
 msgstr "Caricamento effettuato. Premi un tasto del mouse per iniziare"
 
@@ -605,491 +606,491 @@ msgstr "Rassicurami: hai premuto il tasto Armageddon, vero?"
 msgid "You've got a negative save/total value, something is buggy."
 msgstr "I Pingus da salvare sono più che nel totale, qualcosa non va."
 
-#: src/menu_button.cxx:177
+#: src/menu_button.cxx:181
 msgid "..:: The people who brought this game to you ::.."
 msgstr "..:: Le persone grazie alle quali hai questo gioco ::.."
 
-#: src/menu_button.cxx:180
+#: src/menu_button.cxx:184
 msgid "Credits"
 msgstr "Credits"
 
-#: src/menu_button.cxx:212
+#: src/menu_button.cxx:216
 msgid "..:: Takes you to the options menu ::.."
 msgstr "..:: Vai al menu delle opzioni ::.."
 
-#: src/menu_button.cxx:215
+#: src/menu_button.cxx:219
 msgid "Options"
 msgstr "Opzioni"
 
-#: src/menu_button.cxx:248
+#: src/menu_button.cxx:252
 msgid "..:: Bye, bye ::.."
 msgstr "..:: Ciao ciao! ::.."
 
-#: src/menu_button.cxx:251
+#: src/menu_button.cxx:255
 msgid "Exit"
 msgstr "Esci"
 
-#: src/menu_button.cxx:302
+#: src/menu_button.cxx:306
 msgid "..:: Launch the level editor ::.."
 msgstr "..:: Lancia l'editor dei livelli ::.."
 
-#: src/menu_button.cxx:305
+#: src/menu_button.cxx:309
 msgid "Create a"
 msgstr "Crea un"
 
-#: src/menu_button.cxx:306
+#: src/menu_button.cxx:310
 msgid "Level"
 msgstr "Livello"
 
-#: src/menu_button.cxx:340
+#: src/menu_button.cxx:344
 msgid "..:: Start the game ::.."
 msgstr "..:: Inizia il gioco ::.."
 
-#: src/menu_button.cxx:341
+#: src/menu_button.cxx:345
 msgid "Start"
 msgstr "Inizia"
 
-#: src/menu_button.cxx:371
+#: src/menu_button.cxx:375
 msgid "..:: Start a contrib level ::.."
 msgstr "..:: Inizia un livello contribuito ::.."
 
-#: src/menu_button.cxx:373
+#: src/menu_button.cxx:377
 msgid "Contrib"
 msgstr "Contrib"
 
-#: src/menu_button.cxx:393
+#: src/menu_button.cxx:399
 msgid "..:: Multiplayer Modes... experimental stuff ::.."
 msgstr "..:: Modo Multigiocatore ::.. sperimentale ::.."
 
-#: src/menu_button.cxx:395
+#: src/menu_button.cxx:401
 msgid "Multi"
 msgstr "Multi"
 
-#: src/pingu_enums.cxx:34
+#: src/pingu_enums.cxx:35
 msgid "Angel"
 msgstr "Angelo"
 
-#: src/pingu_enums.cxx:35
+#: src/pingu_enums.cxx:36
 msgid "Basher"
 msgstr "Sfondamuri"
 
-#: src/pingu_enums.cxx:36
+#: src/pingu_enums.cxx:37
 msgid "Blocker"
 msgstr "Ostacolo"
 
-#: src/pingu_enums.cxx:37
+#: src/pingu_enums.cxx:38
 msgid "Boarder"
 msgstr "Skater"
 
-#: src/pingu_enums.cxx:38
+#: src/pingu_enums.cxx:39
 msgid "Bomber"
 msgstr "Bombarolo"
 
-#: src/pingu_enums.cxx:39
+#: src/pingu_enums.cxx:40
 msgid "Bridger"
 msgstr "Pontiere"
 
-#: src/pingu_enums.cxx:40
+#: src/pingu_enums.cxx:41
 msgid "Climber"
 msgstr "Arrampicatore"
 
-#: src/pingu_enums.cxx:41
+#: src/pingu_enums.cxx:42
 msgid "Digger"
 msgstr "Scavatore"
 
-#: src/pingu_enums.cxx:42
+#: src/pingu_enums.cxx:43
 msgid "Drown"
 msgstr "Annegato"
 
-#: src/pingu_enums.cxx:43
+#: src/pingu_enums.cxx:44
 msgid "Exiter"
 msgstr "In uscita"
 
-#: src/pingu_enums.cxx:44
+#: src/pingu_enums.cxx:45
 msgid "Faller"
 msgstr "In caduta"
 
-#: src/pingu_enums.cxx:45
+#: src/pingu_enums.cxx:46
 msgid "Floater"
 msgstr "Paracadutista"
 
-#: src/pingu_enums.cxx:46
+#: src/pingu_enums.cxx:47
 msgid "Jumper"
 msgstr "Saltatore"
 
-#: src/pingu_enums.cxx:47
+#: src/pingu_enums.cxx:48
 msgid "Laserkill"
 msgstr "Laserkill"
 
-#: src/pingu_enums.cxx:48
+#: src/pingu_enums.cxx:49
 msgid "Miner"
 msgstr "Minatore"
 
-#: src/pingu_enums.cxx:49
+#: src/pingu_enums.cxx:50
 msgid "Rocketlauncher"
 msgstr "Lanciarazzi"
 
-#: src/pingu_enums.cxx:50
+#: src/pingu_enums.cxx:51
 msgid "Slider"
 msgstr "Slider"
 
-#: src/pingu_enums.cxx:51
+#: src/pingu_enums.cxx:52
 msgid "Smashed"
 msgstr "Schiacciato"
 
-#: src/pingu_enums.cxx:52
+#: src/pingu_enums.cxx:53
 msgid "Splashed"
 msgstr ""
 
-#: src/pingu_enums.cxx:53
+#: src/pingu_enums.cxx:54
 msgid "Superman"
 msgstr "Supereroe"
 
-#: src/pingu_enums.cxx:54
+#: src/pingu_enums.cxx:55
 msgid "Teleported"
 msgstr "Teletrasportato"
 
-#: src/pingu_enums.cxx:55
+#: src/pingu_enums.cxx:56
 msgid "Waiter"
 msgstr "In attesa"
 
-#: src/pingu_enums.cxx:56
+#: src/pingu_enums.cxx:57
 msgid "Walker"
 msgstr "Pedone"
 
-#: src/pingus_counter.cxx:50
+#: src/pingus_counter.cxx:52
 #, c-format
 msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
 msgstr "Rilasciati:%3d/%-3d  Totali:%3d Salvati: %3d/%-3d"
 
-#: src/pingus_main.cxx:96
+#: src/pingus_main.cxx:90
 msgid "| segfault_handler: catched a SIGSEGV."
 msgstr "| segfault_handler: intercettato SIGSEGV."
 
-#: src/pingus_main.cxx:98
+#: src/pingus_main.cxx:92
 msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
 msgstr ""
 "| Oops, Pingus è appena andato in crash. Congratulazioni, hai trovato un bug."
 
-#: src/pingus_main.cxx:99
+#: src/pingus_main.cxx:93
 msgid ""
 "| Please write a little bug report to <grumbel@gmx.de>, include informations"
 msgstr ""
 "| Per favore, scrivi un piccolo bug-report a <pingus-devel@nongnu.org>, "
 "includendo informazioni"
 
-#: src/pingus_main.cxx:100
+#: src/pingus_main.cxx:94
 msgid "| where exacly the SIGSEGV occured and how to reproduce it."
 msgstr "| su quando è stato provocato il SIGSEGV e come riprodurlo."
 
-#: src/pingus_main.cxx:101
+#: src/pingus_main.cxx:95
 msgid "| Also try include a backtrace, you can get it like this:"
 msgstr "| Potresti anche includere un 'backtrace', che puoi ottenere così:"
 
-#: src/pingus_main.cxx:107
+#: src/pingus_main.cxx:101
 msgid "| If that doesn't work, try this:"
 msgstr "| Se questo non funziona, prova così:"
 
-#: src/pingus_main.cxx:111
+#: src/pingus_main.cxx:105
 msgid "| [play until it crashes again]"
 msgstr "| [gioca fino a quando non va in crash di nuovo]"
 
-#: src/pingus_main.cxx:119
+#: src/pingus_main.cxx:113
 msgid "| Warning: Pingus recieved a SIGINT, exiting now."
 msgstr "| Attenzione: Pingus ha ricevuto un SIGINT, uscita in corso."
 
-#: src/pingus_main.cxx:310
+#: src/pingus_main.cxx:301
 msgid "Warning: Larger resolution than 800x600 will result in visual problems"
 msgstr ""
 "Attenzione: Una risoluzione più grande di 800x600 potrebbe portare a "
 "problemi di visualizzazione"
 
-#: src/pingus_main.cxx:497
+#: src/pingus_main.cxx:488
 msgid "Unknow char: "
 msgstr "Carattere sconosciuto: "
 
-#: src/pingus_main.cxx:498
+#: src/pingus_main.cxx:489
 msgid "Usage: "
 msgstr "Uso: "
 
-#: src/pingus_main.cxx:498
+#: src/pingus_main.cxx:489
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr "[OPZIONI]... [LIVELLO]"
 
-#: src/pingus_main.cxx:501
+#: src/pingus_main.cxx:492
 msgid "Options:"
 msgstr "Opzioni:"
 
-#: src/pingus_main.cxx:503
+#: src/pingus_main.cxx:494
 msgid "Set the resolution for pingus (default: 800x600)"
 msgstr "Imposta la risoluzione di Pingus (predefinita: 800x600)"
 
-#: src/pingus_main.cxx:504
+#: src/pingus_main.cxx:495
 msgid "Displays this help"
 msgstr "Mostra questo aiuto"
 
-#: src/pingus_main.cxx:505
+#: src/pingus_main.cxx:496
 msgid "Disable intro"
 msgstr "Disattiva l'introduzione"
 
-#: src/pingus_main.cxx:507
+#: src/pingus_main.cxx:497
 msgid "Use OpenGL"
 msgstr "Usa OpenGL"
 
-#: src/pingus_main.cxx:510
+#: src/pingus_main.cxx:499
 msgid "Start in Window Mode"
 msgstr "Inizia in modalità 'Finestra'"
 
-#: src/pingus_main.cxx:511
+#: src/pingus_main.cxx:500
 msgid "Start in Fullscreen"
 msgstr "Inizia in modalità 'Schermo Intero'"
 
-#: src/pingus_main.cxx:515
+#: src/pingus_main.cxx:504
 msgid "FILE      "
 msgstr "FILE   "
 
-#: src/pingus_main.cxx:515
+#: src/pingus_main.cxx:504
 msgid "Load a custom level from FILE"
 msgstr "Carica un livello personalizzato da FILE"
 
-#: src/pingus_main.cxx:516
+#: src/pingus_main.cxx:505
 msgid "FILE        "
 msgstr "FILE    "
 
-#: src/pingus_main.cxx:516
+#: src/pingus_main.cxx:505
 msgid "Load a custom worldmap from FILE"
 msgstr "Carica un mondo personalizzato da FILE"
 
-#: src/pingus_main.cxx:517
+#: src/pingus_main.cxx:506
 msgid "Print some more messages to stdout, can be set"
 msgstr "Stampa più meggaggi in stdout, può essere impostato"
 
-#: src/pingus_main.cxx:518
+#: src/pingus_main.cxx:507
 msgid "multiple times to increase verbosity"
 msgstr "più di una volta per aumentare la prolissità"
 
-#: src/pingus_main.cxx:519
+#: src/pingus_main.cxx:508
 msgid "Prints version number and exit"
 msgstr "Stampa il numero di versione ed esce"
 
-#: src/pingus_main.cxx:520
+#: src/pingus_main.cxx:509
 msgid "Launch the Level editor (experimental)"
 msgstr "Lancia l'editor di livelli (sperimentale)"
 
-#: src/pingus_main.cxx:521
+#: src/pingus_main.cxx:510
 msgid "Disable automatic scrolling"
 msgstr "Disattiva lo scrolling automatico"
 
-#: src/pingus_main.cxx:523
+#: src/pingus_main.cxx:512
 msgid "Enable software cursor"
 msgstr "Attiva software cursor"
 
-#: src/pingus_main.cxx:526
+#: src/pingus_main.cxx:515
 msgid "Don't read ~/.pingus/config"
 msgstr "Ignora ~/.pingus/config"
 
-#: src/pingus_main.cxx:527
+#: src/pingus_main.cxx:516
 msgid "FILE       "
 msgstr "FILE       "
 
-#: src/pingus_main.cxx:527
+#: src/pingus_main.cxx:516
 msgid "Read config from FILE (default: ~/.pingus/config)"
 msgstr "Leggi le impostazioni da FILE (default: ~/.pingus/config)"
 
-#: src/pingus_main.cxx:528
+#: src/pingus_main.cxx:517
 msgid "reduce CPU usage, might speed up the game on slower machines"
 msgstr "riduce l'uso della CPU, potrebbe accelerare il gioco su macchine lente"
 
-#: src/pingus_main.cxx:529
+#: src/pingus_main.cxx:518
 msgid "Uses the controller given in FILE"
 msgstr "Usa il controller specificato in FILE"
 
-#: src/pingus_main.cxx:531
+#: src/pingus_main.cxx:520
 msgid "Debugging and experimental stuff:"
 msgstr "Opzioni sperimentali e di debug:"
 
-#: src/pingus_main.cxx:532
+#: src/pingus_main.cxx:521
 msgid "Enables some features, only interesting programmers"
 msgstr "Attiva alcune funzionalità che interessano solo ai programmatori"
 
-#: src/pingus_main.cxx:533
+#: src/pingus_main.cxx:522
 msgid "Enable the output of debugging infos, possible"
 msgstr "Attiva le informazioni di debug, le OPZIONI possibili"
 
-#: src/pingus_main.cxx:534
+#: src/pingus_main.cxx:523
 msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
 msgstr "sono tiles, gametime, actions, sound, resources, gui,"
 
-#: src/pingus_main.cxx:536
+#: src/pingus_main.cxx:525
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr "Salta almeno N frames, valori maggiori accelerano il gioco"
 
-#: src/pingus_main.cxx:537
+#: src/pingus_main.cxx:526
 msgid "Skip at most N frames"
 msgstr "Salta al massimo N frames"
 
-#: src/pingus_main.cxx:538
+#: src/pingus_main.cxx:527
 msgid "Set both min and max frameskip to N"
 msgstr "Imposta N frames da saltare al minimo ed al massimo"
 
-#: src/pingus_main.cxx:539
+#: src/pingus_main.cxx:528
 msgid "Set the game speed (0=fastest, >0=slower)"
 msgstr "Imposta la velocità del gioco (0=più veloce, >0=più lento)"
 
-#: src/pingus_main.cxx:540
+#: src/pingus_main.cxx:529
 msgid "Prints the fps to stdout"
 msgstr "Stampa il numero di fps in stdout"
 
-#: src/pingus_main.cxx:541
+#: src/pingus_main.cxx:530
 msgid "Set the size of the map tiles (default: 32)"
 msgstr "Imposta la dimensione dei segmenti di mappa (default: 32)"
 
-#: src/pingus_main.cxx:542
+#: src/pingus_main.cxx:531
 msgid "Disable some cpu intensive features"
 msgstr "Disattiva alcune caratteristiche che consumano cicli CPU"
 
-#: src/pingus_main.cxx:543
+#: src/pingus_main.cxx:532
 msgid "Reduces the CPU usage by issuing sleep()"
 msgstr "Diminuisce l'uso della CPU usando sleep()"
 
-#: src/pingus_main.cxx:545
+#: src/pingus_main.cxx:534
 msgid "Demo playing and recording:"
 msgstr "Mostra e registra Demo:"
 
-#: src/pingus_main.cxx:546
+#: src/pingus_main.cxx:535
 msgid "FILE     "
 msgstr "FILE     "
 
-#: src/pingus_main.cxx:546
+#: src/pingus_main.cxx:535
 msgid "Plays a demo session from FILE"
 msgstr "Mostra una Demo da FILE"
 
-#: src/pingus_main.cxx:548
+#: src/pingus_main.cxx:537
 msgid "Record demos for each played level"
 msgstr "Registra una Demo per ogni livello giocato"
 
-#: src/pingus_main.cxx:550
+#: src/pingus_main.cxx:539
 msgid "Sound:"
 msgstr "Suono:"
 
-#: src/pingus_main.cxx:551
+#: src/pingus_main.cxx:540
 msgid "Disable sound"
 msgstr "Disattiva il suono"
 
-#: src/pingus_main.cxx:552
+#: src/pingus_main.cxx:541
 msgid "Disable music"
 msgstr "Disattiva la musica"
 
-#: src/pingus_main.cxx:726
+#: src/pingus_main.cxx:720
 msgid "clanVorbis support:           ok"
 msgstr "Supporto clanVorbis:          ok"
 
-#: src/pingus_main.cxx:728
+#: src/pingus_main.cxx:722
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr ""
 "Supporto clanVorbis: assente (i file musicali .ogg non saranno suonati)"
 
-#: src/pingus_main.cxx:732
+#: src/pingus_main.cxx:726
 msgid "clanMikMod support:           ok"
 msgstr "Supporto clanMikMod:          ok"
 
-#: src/pingus_main.cxx:734
+#: src/pingus_main.cxx:728
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr "Supporto clanMikMod: assente (i file musicali non saranno suonati)"
 
-#: src/pingus_main.cxx:738
+#: src/pingus_main.cxx:732
 msgid "getext support:               ok"
 msgstr "Supporto gettext:             ok"
 
-#: src/pingus_main.cxx:739
+#: src/pingus_main.cxx:733
 msgid "gettext language:        english"
 msgstr "lingua gettext:          italiano"
 
-#: src/pingus_main.cxx:745
+#: src/pingus_main.cxx:739
 msgid "sound support:           enabled"
 msgstr "Supporto suono:          attivato"
 
-#: src/pingus_main.cxx:747
+#: src/pingus_main.cxx:741
 msgid "sound support:          disabled"
 msgstr "Supporto suono:         disattivato"
 
-#: src/pingus_main.cxx:750
+#: src/pingus_main.cxx:744
 msgid "music support:           enabled"
 msgstr "Supporto musica:         attivato"
 
-#: src/pingus_main.cxx:752
+#: src/pingus_main.cxx:746
 msgid "music support:          disabled"
 msgstr "Supporto musica:        disattivato"
 
-#: src/pingus_main.cxx:754
+#: src/pingus_main.cxx:748
 msgid "resolution set to:       "
 msgstr "risoluzione fissata a:  "
 
-#: src/pingus_main.cxx:755
+#: src/pingus_main.cxx:749
 msgid "fullscreen:              "
 msgstr "schermo intero:        "
 
-#: src/pingus_main.cxx:756
+#: src/pingus_main.cxx:750
 msgid " enabled"
 msgstr " attivato"
 
-#: src/pingus_main.cxx:756
+#: src/pingus_main.cxx:750
 msgid "disabled"
 msgstr "disattivato"
 
-#: src/pingus_main.cxx:766
+#: src/pingus_main.cxx:760
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Inizio Main: "
 
-#: src/pingus_main.cxx:811
+#: src/pingus_main.cxx:805
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: File del livello assente, ignorato: "
 
-#: src/pingus_main.cxx:915
+#: src/pingus_main.cxx:909
 msgid "Error caught from ClanLib: "
 msgstr "Errore intercettato da ClanLib: "
 
-#: src/pingus_main.cxx:919
+#: src/pingus_main.cxx:913
 msgid "Error caught from Pingus: "
 msgstr "Errore intercettato da Pingus: "
 
-#: src/pingus_main.cxx:923
+#: src/pingus_main.cxx:917
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: memoria insufficiente!"
 
-#: src/pingus_main.cxx:927
+#: src/pingus_main.cxx:921
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Intercettata eccezione standard!:\n"
 
-#: src/pingus_main.cxx:931
+#: src/pingus_main.cxx:925
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Intercettato throw sconosciuto!"
 
-#: src/result_screen.cxx:97 src/start_screen.cxx:109
+#: src/result_screen.cxx:99 src/start_screen.cxx:111
 msgid "Abort"
 msgstr "Annulla"
 
-#: src/result_screen.cxx:165
+#: src/result_screen.cxx:167
 msgid "Retry"
 msgstr "Riprova"
 
-#: src/result_screen.cxx:173
+#: src/result_screen.cxx:175
 msgid "Success!"
 msgstr "Successo!"
 
-#: src/result_screen.cxx:180
+#: src/result_screen.cxx:182
 msgid "Failure!"
 msgstr "Fallimento!"
 
-#: src/result_screen.cxx:189
+#: src/result_screen.cxx:191
 msgid "Perfect! You saved everyone possible - great!"
 msgstr "Perfetto! Hai salvato tutti, sei grande!"
 
-#: src/result_screen.cxx:191
+#: src/result_screen.cxx:193
 msgid "No-one got killed, pretty good work."
 msgstr "Nessuna vittima, bel lavoro"
 
-#: src/result_screen.cxx:193
+#: src/result_screen.cxx:195
 msgid ""
 "You saved exactly what you needed - you made it, but\n"
 "maybe you can do better?"
@@ -1097,23 +1098,23 @@ msgstr ""
 "Hai salvato giusto il necessario; ce l'hai fatta, ma non\n"
 "potresti migliorarti?"
 
-#: src/result_screen.cxx:196
+#: src/result_screen.cxx:198
 msgid "Not everybody was saved, but still good work!"
 msgstr "Non tutti si sono salvati, ma rimane un buon lavoro!"
 
-#: src/result_screen.cxx:198
+#: src/result_screen.cxx:200
 msgid "What can I say, you made it - congratulations!"
 msgstr "Cosa dovrei dire... ce l'hai fatta, congratulazioni!"
 
-#: src/result_screen.cxx:203
+#: src/result_screen.cxx:205
 msgid "You killed everybody, not good."
 msgstr "Hai ucciso tutti, non va bene"
 
-#: src/result_screen.cxx:205
+#: src/result_screen.cxx:207
 msgid "No-one got saved - I know you can do better."
 msgstr "Non si è salvato nessuno, so che puoi far di meglio"
 
-#: src/result_screen.cxx:207
+#: src/result_screen.cxx:209
 msgid ""
 "You didn't save enough, but you saved a few.  Next\n"
 "time you might do better."
@@ -1121,85 +1122,85 @@ msgstr ""
 "Non ne hai salvati abbastanza, ma alcuni si... \n"
 "La prossima volta puoi fare di meglio."
 
-#: src/result_screen.cxx:210
+#: src/result_screen.cxx:212
 msgid "Only one more and you would have made it - try again!"
 msgstr "Uno in più e ce l'avresti fatta, prova ancora!"
 
-#: src/result_screen.cxx:212
+#: src/result_screen.cxx:214
 msgid "Only a handful more and you would have made it - try again!"
 msgstr "Qualcuno in più e ce l'avresti fatta, prova ancora!"
 
-#: src/result_screen.cxx:214
+#: src/result_screen.cxx:216
 msgid "Better luck next time!"
 msgstr "Riprova, sarai più fortunato!"
 
-#: src/result_screen.cxx:230
+#: src/result_screen.cxx:232
 msgid "Saved: "
 msgstr "Salvati: "
 
-#: src/result_screen.cxx:234
+#: src/result_screen.cxx:236
 #, fuzzy
 msgid "Died: "
 msgstr "Uccisi: "
 
-#: src/result_screen.cxx:238
+#: src/result_screen.cxx:240
 msgid "Time left: "
 msgstr "Tempo rimasto: "
 
-#: src/screenshot.cxx:43
+#: src/screenshot.cxx:45
 msgid "Screenshot: Saving screenshot to: "
 msgstr "Screenshot: Salva screenshot in: "
 
-#: src/screenshot.cxx:45
+#: src/screenshot.cxx:47
 msgid "Screenshot: Screenshot is done."
 msgstr "Screenshot: Screenshot effettuato."
 
-#: src/screenshot.cxx:51
+#: src/screenshot.cxx:53
 msgid "Screenshot: Couldn't save screenshot"
 msgstr "Screenshot: Impossibile salvare lo screenshot"
 
-#: src/screenshot.cxx:132
+#: src/screenshot.cxx:138
 msgid "Screenshot: Couldn't write file: "
 msgstr "Screenshot: Impossibile scrivere il file: "
 
-#: src/spot_map.cxx:278
+#: src/spot_map.cxx:286
 #, c-format
 msgid "Image has wrong color depth: %d"
 msgstr "L'immagine ha una profondità di colore sbagliata: %d"
 
-#: src/start_screen.cxx:73
+#: src/start_screen.cxx:75
 msgid "Ok"
 msgstr "Ok"
 
-#: src/start_screen.cxx:156
+#: src/start_screen.cxx:158
 msgid "Number of Pingus: "
 msgstr "Numero di Pingus: "
 
-#: src/start_screen.cxx:159
+#: src/start_screen.cxx:161
 msgid "Number to Save: "
 msgstr "Numero di Pingus da salvare: "
 
-#: src/start_screen.cxx:162
+#: src/start_screen.cxx:164
 msgid "Time: "
 msgstr "Tempo: "
 
-#: src/start_screen.cxx:165
+#: src/start_screen.cxx:167
 msgid "Difficulty:"
 msgstr "Difficoltà:"
 
-#: src/start_screen.cxx:173
+#: src/start_screen.cxx:175
 msgid "Author: "
 msgstr "Autore: "
 
-#: src/start_screen.cxx:176
+#: src/start_screen.cxx:178
 msgid "Filename: "
 msgstr "Nome del file: "
 
-#: src/story.cxx:39
+#: src/story.cxx:41
 msgid "The Journey Continues"
 msgstr "L'Avventura Continua"
 
-#: src/story.cxx:44
+#: src/story.cxx:46
 #, fuzzy
 msgid ""
 "Now after you and the Pingus have learned the basics and\n"
@@ -1216,7 +1217,7 @@ msgstr ""
 "caldo, i Pingus dovranno trovare un altro mezzo di trasporto per\n"
 "continuare il viaggio.\n"
 
-#: src/story.cxx:56
+#: src/story.cxx:58
 msgid ""
 "But as the eldest have said, the Tutorial Island provides not\n"
 "only a good way to practice, but it is also the starting point into\n"
@@ -1230,7 +1231,7 @@ msgstr ""
 "il grande albero alla fine dell'isola potrebbe fornire ottimo legno per\n"
 "costruire una zattera.\n"
 
-#: src/story.cxx:67
+#: src/story.cxx:69
 msgid ""
 "So the Pingus set out and constructed some large rafts, enough\n"
 "to carry them all. After also packing a bunch of provisions\n"
@@ -1242,7 +1243,7 @@ msgstr ""
 "di provviste, si prepararono finalmente a partire per il loro viaggio,\n"
 "lasciando la terra natìa per entrare nelle zone sconosciute del mondo.\n"
 
-#: src/story.cxx:77
+#: src/story.cxx:79
 msgid ""
 "So the Pingus sit on their raft, worrying about what's to come and\n"
 "where to go, while floating into the sunset.\n"
@@ -1254,11 +1255,11 @@ msgstr ""
 "\n"
 "Continua..."
 
-#: src/story.cxx:89
+#: src/story.cxx:91
 msgid "The Journey Begins"
 msgstr "L'Avventura Inizia"
 
-#: src/story.cxx:94
+#: src/story.cxx:96
 msgid ""
 "For a long time, the Pingus have lived happily in peace on the\n"
 "South Pole along with all the other animals. Everything was in\n"
@@ -1270,7 +1271,7 @@ msgstr ""
 "potesse intaccare la loro tranquillità.  I Pingus erano contenti e\n"
 "sembrava che la cosa potesse durare in eterno.\n"
 
-#: src/story.cxx:104
+#: src/story.cxx:106
 msgid ""
 "But then one day, things began to change slowly: the sky got darker\n"
 "and the earth got warmer. Firstly, they thought this was just a\n"
@@ -1282,7 +1283,7 @@ msgstr ""
 "fluttuazione del clima, ma la situazione si faceva peggiore di anno\n"
 "in anno."
 
-#: src/story.cxx:115
+#: src/story.cxx:117
 msgid ""
 "The snow began to melt away in a few areas and food became an\n"
 "issue. Other animals tried to leave the region to search\n"
@@ -1294,7 +1295,7 @@ msgstr ""
 "cerca di aree più fredde, ma i Pingus sapevano che questa non era\n"
 "la soluzione: bisognava fare qualcosa per risolvere il problema."
 
-#: src/story.cxx:125
+#: src/story.cxx:127
 msgid ""
 "So the circle of the eldest came together to decide what to do\n"
 "about it. They decided to send out an expedition around the world\n"
@@ -1306,7 +1307,7 @@ msgstr ""
 "riscaldamento. La spedizione consisteva di centinaia dei Pingus\n"
 "più coraggiosi del Polo Sud."
 
-#: src/story.cxx:135
+#: src/story.cxx:137
 msgid ""
 "And they picked you to lead them on their journey around the\n"
 "world. Since the journey will be dangerous and difficult, your\n"
@@ -1320,7 +1321,7 @@ msgstr ""
 "quest'isola è sempre stata la prima tappa dei Pingus in viaggio per\n"
 "il mondo."
 
-#: src/story.cxx:146
+#: src/story.cxx:148
 msgid ""
 "The island consists of many areas that are ideal to teach the\n"
 "Pingus their abilities. The Pingus can learn to build\n"
@@ -1332,7 +1333,7 @@ msgstr ""
 "ad arrampicarsi ed a fare tutto quello che potrebbe servire durante il\n"
 "loro lungo e pericoloso viaggio."
 
-#: src/story.cxx:156
+#: src/story.cxx:158
 msgid ""
 "While there, you can practice your abilities in commanding\n"
 "and guiding the Pingus. You can also get familiar with\n"
@@ -1345,7 +1346,7 @@ msgstr ""
 "e magari approfondirle, dato che ti serviranno sicuramente in questa\n"
 "avventura intorno al mondo."
 
-#: src/story.cxx:167
+#: src/story.cxx:169
 msgid ""
 "Now that you and the Pingus have arrived at Tutorial Island it\n"
 "is time to take command and begin your mission.\n"
@@ -1358,36 +1359,36 @@ msgstr ""
 "\n"
 "Buona Fortuna!"
 
-#: src/system.cxx:265
+#: src/system.cxx:273
 msgid "Environment variable $HOME not set, fix that and start again."
 msgstr ""
 "La variabile d'ambiente $HOME non è definita, correggila e prova ancora."
 
-#: src/worldmap/level_dot.cxx:172 src/worldmap/level_dot.cxx:182
+#: src/worldmap/level_dot.cxx:174 src/worldmap/level_dot.cxx:184
 msgid "locked"
 msgstr "bloccato"
 
-#: src/worldmap/manager.cxx:102
+#: src/worldmap/manager.cxx:103
 msgid "Show Ending?"
 msgstr "Mostra conclusione?"
 
-#: src/worldmap/manager.cxx:132
+#: src/worldmap/manager.cxx:133
 msgid "Show Story?"
 msgstr "Mostra storia?"
 
-#: src/worldmap/manager.cxx:160
+#: src/worldmap/manager.cxx:161
 msgid "Leave?"
 msgstr "Esci?"
 
-#: src/worldmap/manager.cxx:200
+#: src/worldmap/manager.cxx:201
 msgid "Enter?"
 msgstr "Inizia?"
 
-#: src/worldmap/worldmap.cxx:76
+#: src/worldmap/worldmap.cxx:77
 msgid "WorldMap: File not found: "
 msgstr "Worldmap: File assente: "
 
-#: src/worldmap/worldmap.cxx:260
+#: src/worldmap/worldmap.cxx:261
 msgid "...walking..."
 msgstr "...sto andando..."
 

@@ -16,6 +16,7 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <assert.h>
 #include <cmath>
 #include <ClanLib/display.h>
 #include "../canvas.hxx"
