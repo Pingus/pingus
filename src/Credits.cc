@@ -1,4 +1,4 @@
-//  $Id: Credits.cc,v 1.3 2000/03/12 02:07:27 grumbel Exp $
+//  $Id: Credits.cc,v 1.4 2000/04/08 20:20:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -84,7 +84,6 @@ Credits::display()
   int y;
   int yof;
   bool quit = false;
-  cout << "Credits::display()" << endl;
 
   y = CL_Display::get_height() + 50;
   x = CL_Display::get_width() * 3 / 4;
@@ -118,7 +117,7 @@ Credits::display()
 	      yof += 50;
 	      break;
 	    default:
-	      cout << "Credits: Syntax error" << endl;
+	      std::cout << "Credits: Syntax error" << std::endl;
 	      break;
 	    }
 	}
@@ -135,8 +134,6 @@ Credits::display()
       if (CL_Keyboard::get_keycode(CL_KEY_ESCAPE))
 	quit = true;
     }
-
-  cout << "Credits: done" << endl;
 }
 
 /* EOF */

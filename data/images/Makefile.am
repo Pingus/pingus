@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.8 2000/03/12 02:13:48 grumbel Exp $
+#  $Id: Makefile.am,v 1.9 2000/04/08 20:20:25 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,8 @@ EXITS = \
         exits/ice.pcx   \
         exits/desertexit.pcx \
         exits/space1.tga     \
-        exits/sweetexit.pcx
+        exits/sweetexit.pcx  \
+        exits/sortie.pcx
 
 EDITOR = \
         editor/logo.tga           \
@@ -299,7 +300,11 @@ GROUNDPIECES = \
                groundpieces/foliage/turfslopeleft.pcx    \
                groundpieces/foliage/turfsloperight20.pcx \
                groundpieces/foliage/turftufty.pcx        \
-                                                         \
+                                             \
+               groundpieces/rock/granit1.pcx  \
+               groundpieces/rock/granit2.pcx  \
+               groundpieces/rock/granit3.pcx  \
+               \
                groundpieces/rock/rock1.pcx  \
                groundpieces/rock/rock2.pcx  \
                groundpieces/rock/rock3.pcx  \

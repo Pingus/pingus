@@ -2,13 +2,13 @@ Release 0.3.2 (15/Mar/1999)
 ===========================
 * Changed the config file syntax (see doc/config)
 * Added a better config file parser
-* Fullscreen support (disabled by default)
+* Fullscreen support
 * Added a credits screen
 * Added a small quick scroll map
 * Changed default resolution to 800x600
 * Fixed the bridger
 * Added some nice particle ground collision
-
+* Added mouse support to the worlds selector
 
 Release 0.3.1 (17/Feb/1999)
 ===========================

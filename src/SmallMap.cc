@@ -1,4 +1,4 @@
-//  $Id: SmallMap.cc,v 1.5 2000/03/16 21:43:14 grumbel Exp $
+//  $Id: SmallMap.cc,v 1.6 2000/04/08 20:20:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -195,8 +195,6 @@ SmallMap::let_move()
       cy = (CL_Mouse::get_y() - y_pos) * colmap->get_height() / height ;
 
       client->get_playfield()->set_viewpoint(cx, cy);
-
-      cout << "scrolling...cx:" << cx << " cy:" << cy << endl;
     }
 }
 

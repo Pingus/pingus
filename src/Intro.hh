@@ -1,4 +1,4 @@
-//  $Id: Intro.hh,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: Intro.hh,v 1.3 2000/04/08 20:20:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,12 +21,13 @@
 #define INTRO_HH
 
 #include <ClanLib/core.h>
+#include "MikMod.hh"
 
 class Intro
 {
 private:
   CL_Surface*     logo;
-  CL_SoundBuffer* music;
+  MODULE*    module;
   CL_SoundBuffer* sound;
   
   CL_SoundBuffer_Session ses_sound;

@@ -13,6 +13,7 @@ section Pingus
 	floater     = ../images/pingus/floater.pcx    (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=8x1);
 	digger      = ../images/pingus/digger.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=14x1);
 	miner       = ../images/pingus/miner.pcx      (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=12x2);
+	splash      = ../images/pingus/splash.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=12x1);
 }
 
 section Other

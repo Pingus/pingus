@@ -1,4 +1,4 @@
-//  $Id: MikMod.hh,v 1.1 2000/03/20 18:55:26 grumbel Exp $
+//  $Id: MikMod.hh,v 1.2 2000/04/08 20:20:25 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #if HAVE_LIBMIKMOD
 #  include <mikmod.h>
 #else
+// Using this as a dummy
 typedef void MODULE;
 #endif /* HAVE_LIBMIKMOD */
 

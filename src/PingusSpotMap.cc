@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.11 2000/03/20 18:55:26 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.12 2000/04/08 20:20:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -155,14 +155,14 @@ PingusSpotMap::load(PLF* plf)
 void
 PingusSpotMap::load(std::string filename)
 {
-  cout << "PingusSpotMap: Parsing file... " << flush;
+  std::cout << "PingusSpotMap: Parsing file... " << std::flush;
   psm_parser.parse(filename);
-  cout << "done" << endl;
-  cout << "PingusSpotMap: Loading surfaces... " << flush;
+  std::cout << "done" << std::endl;
+  std::cout << "PingusSpotMap: Loading surfaces... " << std::flush;
   psm_parser.load_surfaces();
-  cout << "done" << endl;
+  std::cout << "done" << std::endl;
 
-  cout << "PingusSpotMap: Generating Map... " << flush;
+  std::cout << "PingusSpotMap: Generating Map... " << std::flush;
   surfaces = psm_parser.get_surfaces();
 
   if ((width % tile_size) != 0) 
@@ -205,56 +205,37 @@ PingusSpotMap::load(std::string filename)
   // Generate the map surface
   map_provider = canvas;
   map_surface = CL_Surface::create(map_provider, true);
-  cout << "done" << endl;
+  std::cout << "done" << std::endl;
 }
 
 // Draws the map with a offset, needed for scrolling
 void
-PingusSpotMap::draw(int x, int y, int w, int h, 
+PingusSpotMap::draw(int x_pos, int y_pos, int w, int h, 
 		    int of_x, int of_y, float s)
 {
   // Ignoring x and y for the moment
 
-  if (s == 1.0) 
+  if (s == 1.0)
     {
       // Trying to calc which parts of the tilemap needs to be drawn
       int start_x = -of_x/tile_size;
       int start_y = -of_y/tile_size; 
-      unsigned int tilemap_width = w / tile_size;
-      unsigned int tilemap_height = h / tile_size;
-
-      // Correcting the calced values
-      if (tilemap_width >= tile[0].size())
-	tilemap_width = tile[0].size() - 1;
-      else if (tilemap_width < 0)
-	tilemap_width = 0;
-      
-      if (tilemap_height >= tile.size())
-	tilemap_height = tile.size() - 1;
-      else if (tilemap_height < 0)
-	tilemap_height = 0;          
+      unsigned int tilemap_width = w / tile_size + 1;
+      unsigned int tilemap_height = h / tile_size + 1;
 
       // drawing the stuff
-      for (TileIter x = start_x; x < start_x + tilemap_width; ++x)
+      for (TileIter x = start_x; 
+	   x < (start_x + tilemap_width) && x < tile.size();
+	   x++)
 	{
-	  assert(x >= 0);
-	  assert(x < tile.size());
-	  for (TileIter y = start_y; y < start_y + tilemap_height; ++y)
+	  for (TileIter y = start_y;
+	       y < start_y + tilemap_height && y < tile[x].size();
+	       y++)
 	    {
-	      assert(y >= 0);
-	      assert(y < tile[x].size());
-	      if (tile[x][y].is_empty()) 
+	      if (!tile[x][y].is_empty()) 
 		{
-		  // Uncomment the following lines to see the empty tiles
-		  /*
-		    CL_Display::fill_rect(x * tile_size + of_x, y * tile_size + of_y, 
-		    x * tile_size + tile_size - 1 + of_x, y * tile_size + tile_size -1 + of_y,
-		    1.0, 0.0, 0.0, 1.0);
-		  */
-		} 
-	      else 
-		{
-		  tile[x][y].surface->put_screen(x * tile_size + of_x, y * tile_size + of_y);
+		  tile[x][y].surface->put_screen(x * tile_size + of_x, 
+						 y * tile_size + of_y);
 		}
 	    }
 	}
@@ -403,7 +384,6 @@ PingusSpotMap::create_maptiles()
 	  canvas->unlock();
 	  tile[x][y].surface = CL_Surface::create(canvas, true);
 	  tile[x][y].check_empty();
-
 	}
     }
 }

@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.8 2000/03/22 14:32:42 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.9 2000/04/08 20:20:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -190,7 +190,7 @@ void
 ActionHolder::init_uactions()
 {
   // FIXME: Test hack, should be replaced
-  cout << "ActionHoler:init_uaction(): Generating actions..." << flush;
+  std::cout << "ActionHoler:init_uaction(): Generating actions..." << std::flush;
 
   for (int i=0; i < MAX_ACTION_BUFFER_SIZE; i++)
     {
@@ -198,7 +198,7 @@ ActionHolder::init_uactions()
       uaction_buffer["bomber"].number = 0;
     }
 
-  cout << "done" << endl;
+  std::cout << "done" << std::endl;
 }
 
 void

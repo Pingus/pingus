@@ -62,5 +62,6 @@ libpingu_actions_a_SOURCES =       \
          miner.cc    miner.hh      \
          smashed.cc  smashed.hh    \
          LaserKill.cc LaserKill.hh \
-         teleported.cc teleported.hh
+         teleported.cc teleported.hh \
+         Splashed.cc   Splashed.hh
 # EOF #

@@ -1,4 +1,4 @@
-//  $Id: View.cc,v 1.7 2000/03/16 21:38:14 grumbel Exp $
+//  $Id: View.cc,v 1.8 2000/04/08 20:20:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ View::View(int x1, int y1, int x2, int y2, float s)
 
   size = s;
 
-  clip_rect = CL_ClipRect(x1, y1, x2, y2);
+  clip_rect = CL_ClipRect(x1, y1, x2 + 1, y2 + 1);
 
   x1_pos = x1;
   y1_pos = y1;
@@ -78,12 +78,6 @@ View::draw()
 		  get_y_pos() + get_y_offset(),
 		  size);
   
-  /*  std::cout <<  "XPos: " << -get_x_pos() - get_x_offset() + CL_Mouse::get_x()
-      << " YPos: " << -get_y_pos() - get_y_offset() + CL_Mouse::get_y()
-      << " XOffset: " << get_x_offset()
-      << " YOffset: " << get_y_offset()
-      << std::endl;  */
-
   CL_Display::pop_clip_rect();
 }
 

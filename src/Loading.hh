@@ -1,4 +1,4 @@
-//  $Id: Loading.hh,v 1.1 2000/02/15 12:28:51 grumbel Exp $
+//  $Id: Loading.hh,v 1.2 2000/04/08 20:20:25 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@ class Loading
 {
 private:
   CL_Surface* sur;
+  CL_Font*    font;
   bool is_init;
 
 public:
@@ -33,6 +34,7 @@ public:
   ~Loading();
   void init();
   void draw();
+  void draw_progress(string, float);
 };
 
 extern Loading loading_screen;

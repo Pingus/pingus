@@ -1,4 +1,4 @@
-//  $Id: Loading.cc,v 1.1 2000/02/15 12:28:51 grumbel Exp $
+//  $Id: Loading.cc,v 1.2 2000/04/08 20:20:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,7 @@ void
 Loading::init()
 {
   sur = CL_Surface::load("Game/loading", PingusResource::get("game.dat"));
+  font = CL_Font::load("Fonts/courier_small",PingusResource::get("fonts.dat"));
   is_init = true;
 }
 
@@ -48,6 +49,32 @@ Loading::draw()
 
   sur->put_screen((CL_Display::get_width() - sur->get_width())/2,
 		  (CL_Display::get_height() - sur->get_height())/2);
+
+  CL_Display::flip_display();
+}
+
+void
+Loading::draw_progress(string str, float progress)
+{
+  if (!is_init)
+    init();
+
+  CL_Display::clear_display();
+
+  sur->put_screen((CL_Display::get_width() - sur->get_width())/2,
+		  (CL_Display::get_height() - sur->get_height())/2);
+
+  font->print_center(CL_Display::get_width() / 2, 
+		     CL_Display::get_height() - 130,
+		     str.c_str());
+
+  CL_Display::fill_rect(50, CL_Display::get_height() - 100,
+			CL_Display::get_width() - 50, CL_Display::get_height() - 50,
+			0.5, 0.5, 0.5, 1.0);
+
+  CL_Display::fill_rect(50, CL_Display::get_height() - 100,
+			50 + (int)((CL_Display::get_width()-100) * progress), CL_Display::get_height() - 50,
+			1.0, 0.0, 0.0, 1.0);
 
   CL_Display::flip_display();
 }

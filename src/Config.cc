@@ -1,4 +1,4 @@
-//  $Id: Config.cc,v 1.4 2000/03/12 17:08:39 grumbel Exp $
+//  $Id: Config.cc,v 1.5 2000/04/08 20:20:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -266,25 +266,16 @@ ConfigParser::parse(void)
 
   try 
     {
-  while(!eof) 
-    {
-      cout << "parsing..." << endl;
-      valueid = get_valueid();   
-      jump_after('=');
-      value   = get_value();
-      jump_after(';');
-	  
+      while(!eof) 
 	{
-	  std::cout << "ValueID: " << valueid << std::endl;
-	  std::cout << "Value: " << value << std::endl;
+	  valueid = get_valueid();   
+	  jump_after('=');
+	  value   = get_value();
+	  jump_after(';'); 
+	  set_value(valueid, value);
 	}
-      
-      set_value(valueid, value);
     }
-    }
-  catch (ConfigParserEOF a)
-    {
-    }
+  catch (ConfigParserEOF a) {}
 }
 
 Config::Config()
@@ -361,6 +352,10 @@ Config::set_value(std::string valueid,
   else if (valueid == "height")
     {
       screen_height = str_to_int(value);
+    }
+  else if (valueid == "preload_data")
+    {
+      preload_data = str_to_bool(value);
     }
   else
     {

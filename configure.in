@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.7 2000/03/20 18:58:33 grumbel Exp $
+#  $Id: configure.in,v 1.8 2000/04/08 20:20:25 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ PATCH_VERSION=2
 # The required ClanLib version
 CLANLIB_MAJOR_VERSION=0
 CLANLIB_MINOR_VERSION=4
-CLANLIB_PATCH_VERSION=0
+CLANLIB_PATCH_VERSION=3
 
 VERSION=${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION}
 
@@ -65,24 +65,28 @@ dnl -- Dynamic Libraies --
 dnl AM_PROG_LIBTOOL
 
 AC_LANG_CPLUSPLUS
-dnl AC_CHECK_LIB(clan, ,,, -L/usr/X11R6/lib -lz -lX11 -lXext -lvga /usr/lib/libz.a)
 
+dnl What are we doing here?
 PINGUS_EXTRA_PATHS
 
-dnl BUG This guesses that the X libs are in that directory
-LIBS="-L/usr/X11R6/lib $LIBS"
-dnl BUG end
+dnl ENABLE_LIBMIKMOD=true
+dnl AC_ARG_WITH(mikmod, [  --enable-mikmod         Enable music support throu libmikmod. ], [ ENABLE_LIBMIKMOD=true ], [ ENABLE_LIBMIKMOD=false ] )
 
+dnl BUG This guesses that the X libs are in that directory
+dnl LIBS="-L/usr/X11R6/lib $LIBS"
+dnl BUG end
 
 dnl Checks for libraries.
 dnl Checking for ClanLib
 
 dnl FIXME this is a hack:
-LIBS="$LIBS -lHermes"
+dnl LIBS="$LIBS -lHermes"
+
+
 
 AC_CHECK_HEADER(ClanLib/core.h,, [echo "Please get ClanLib from http://www.clanlib.org"; exit])
 
-AC_CHECK_LIB(mikmod,   main, HAVE_LIBMIKMOD=yes, HAVE_LIBMIKMOD=no)
+AC_CHECK_LIB(mikmod,   main,, HAVE_LIBMIKMOD=no)
 AC_CHECK_HEADER(mikmod.h, HAVE_LIBMIKMOD=yes, HAVE_LIBMIKMOD=no)
 
 AC_CHECK_LIB( clanCore,   main,, [
@@ -101,13 +105,14 @@ AC_CHECK_LIB( clanMagick,   main,, [
 	])
 
 AC_CHECK_PROG( HAVE_CLANLIB_CONFIG, clanlib-config, "yes")
+
 if test "x$HAVE_CLANLIB_CONFIG" != "xyes" ; then
 	echo
 	echo "Couldn't find 'clanlib-config. Make sure that you"
 	echo "have installed ClanLib and that clanlib-config"
 	echo "is installed in you PATH.";
 	echo "Since Pingus does not use clanlib-config you can ignore"
-        echo "this" 
+        echo "this... %-)" 
 	echo 
 fi
 
@@ -147,7 +152,7 @@ AC_TRY_RUN([
           echo
  	 echo "The ClanLib source tarball can be found at:"
  	 echo
- 	 echo "   http://dark.x.dtu.dk/clansoft/clanlib/download/ClanLib-$CLANLIB_MAJOR_VERSION.$CLANLIB_MINOR_VERSION.$CLANLIB_PATCH_VERSION.tar.gz"
+ 	 echo "      http://clanlib.org/download/index.html"
  	 echo
  	 exit],
  	[echo "cross compiling detected, assuming that this is correct and continue"]
@@ -181,9 +186,14 @@ dnl Checking for the install prefix and then use it to define PINGUS_DATADIR
 PINGUS_EXPAND_DIR(pingus_datadir, "$datadir/games/$PACKAGE")
 AC_DEFINE_UNQUOTED( PINGUS_DATADIR, "$pingus_datadir")
 
+MIKMOD_CC_FILE="MikMod_dummy.cc"
+
 if test x$HAVE_LIBMIKMOD=xyes ;  then
 	AC_DEFINE_UNQUOTED( HAVE_LIBMIKMOD, 1)
+	MIKMOD_CC_FILE="MikMod.cc"
 fi
+
+AC_SUBST(MIKMOD_CC_FILE)
 
 AC_OUTPUT( Makefile 
            src/Makefile 
@@ -209,7 +219,11 @@ dnl         tools/ple/src/Makefile
 
 echo 
 if test x$HAVE_LIBMIKMOD=xyes ;  then
-	echo "The music support is enabled"
+	if test x$ENABLE_LIBMIKMOD=xtrue ; then
+		echo "The music support is enabled."
+	else
+		echo "The music support is explicit disabled."
+	fi
 else
 	echo "You don't have LibMikMod installed, the music support is therefore disabled."
 fi

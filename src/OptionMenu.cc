@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.7 2000/02/27 21:05:06 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.8 2000/04/08 20:20:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -189,7 +189,8 @@ OptionMenu::~OptionMenu()
 void
 OptionMenu::init() 
 {
-  loading_screen.draw();
+  if (!preload_data)
+    loading_screen.draw();
 
   font = CL_Font::load("Fonts/smallfont_h",  PingusResource::get("fonts.dat"));
   title_font = CL_Font::load("Fonts/pingus", PingusResource::get("fonts.dat"));

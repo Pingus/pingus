@@ -89,6 +89,8 @@ section Exits {
 	desert     = ../images/exits/desertexit.pcx  (type=surface, x=0, y=0, width=150, height=100, tcol=0);
 	space      = ../images/exits/space1.tga  (type=surface, x=0, y=0, width=154, height=118, array=4x1);
 	sweetexit  = ../images/exits/sweetexit.pcx (type=surface, x=0, y=0, width=180,  height=121, tcol=0);
+	sortie  = ../images/exits/sortie.pcx (type=surface, x=0, y=0, width=78,  height=78, tcol=0);
+	sortie_anim  = ../images/exits/sortie.tga (type=surface, x=0, y=0, width=78,  height=90, array=11x1);
 }
 
 section Entrances {
@@ -190,6 +192,13 @@ section GroundPieces
 
 	section Rock 
 	{
+	        granit1 = ../images/groundpieces/rock/granit1.pcx (type=surface, x=0, y=0, width=173, height=107, tcol=0);
+	        granit2 = ../images/groundpieces/rock/granit2.pcx (type=surface, x=0, y=0, width=139, height=112, tcol=0);
+	        granit3 = ../images/groundpieces/rock/granit3.pcx (type=surface, x=0, y=0, width=126, height=182, tcol=0);
+	        granit4 = ../images/groundpieces/rock/granit4.pcx (type=surface, x=0, y=0, width=127, height=87, tcol=0);
+	        granit5 = ../images/groundpieces/rock/granit5.pcx (type=surface, x=0, y=0, width=138, height=101, tcol=0);
+	        granit6 = ../images/groundpieces/rock/granit6.pcx (type=surface, x=0, y=0, width=88, height=150, tcol=0);
+
 		rock1   = ../images/groundpieces/rock/rock1.pcx    (type=surface, x=0, y=0, width=188,  height=98, tcol=0);
 		rock2   = ../images/groundpieces/rock/rock2.pcx    (type=surface, x=0, y=0, width=152,  height=196, tcol=0);
 		rock3   = ../images/groundpieces/rock/rock3.pcx    (type=surface, x=0, y=0, width=210,  height=121, tcol=0);
@@ -317,5 +326,9 @@ section Themes
 	space = ../images/themes/space.tga    (type=surface, x=0, y=0, width=258,  height=145);
 }
 
+section Traps
+{
+	smasher_cmap = ../images/traps/smasher_cmap.pcx   (type=surface, x=0, y=0, width=275, height=7,tcol=0);
+}
 
 // EOF //

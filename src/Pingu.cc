@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.14 2000/03/22 14:34:55 grumbel Exp $
+//  $Id: Pingu.cc,v 1.15 2000/04/08 20:20:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -151,7 +151,7 @@ Pingu::set_action(PinguAction* act)
 
   if (status == dead)
     {
-      cout << "Setting action to a dead pingu" << endl;
+      std::cout << "Setting action to a dead pingu" << std::endl;
       return 0;
     }
 
@@ -407,8 +407,6 @@ Pingu::do_falling()
     }
   else // Ping is on ground
     {
-      //      cout << "Fabs: " << std::fabs(velocity.y) << endl;
-
       // Did we stop too fast?
       if (std::fabs(velocity.y) > deadly_velocity)
 	{
@@ -418,7 +416,7 @@ Pingu::do_falling()
 	}
       else if (std::fabs(velocity.x) > deadly_velocity)
 	{
-	  cout << "x Smashed on ground, jumping" << endl;
+	  std::cout << "x Smashed on ground, jumping" << std::endl;
 	}
 
       // Reset the velocity

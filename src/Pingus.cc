@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.16 2000/03/20 18:55:26 grumbel Exp $
+//   $Id: Pingus.cc,v 1.17 2000/04/08 20:20:25 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -47,6 +47,7 @@
 #include "Pingus.hh"
 #include "algo.hh"
 #include "globals.hh"
+#include "PingusResource.hh"
 #include "System.hh"
 #include "PingusGame.hh"
 #include "Playfield.hh"
@@ -348,6 +349,53 @@ PingusMain::init_pingus()
 
   if (music_enabled)
     MikMod::init();
+
+  if (preload_data)
+    {
+      load_resources("global.dat");
+      load_resources("game.dat");
+      load_resources("textures.dat");
+      load_resources("editor.dat");
+      load_resources("fonts.dat");
+      load_resources("menu.dat");
+      load_resources("pingus.dat");
+      load_resources("traps.dat");
+    }
+}
+
+void
+PingusMain::load_resources(string filename)
+{
+  // Loading all resources
+  {
+    CL_ResourceManager* res = PingusResource::get("global.dat");
+
+    loading_screen.draw_progress("..:: " + filename + " ::..",
+				 0.0);
+    res->load_all_resources();
+    loading_screen.draw_progress("..:: " + filename + " ::..",
+				 1.0);
+
+    /*list<std::string>* liste = res->get_resources_of_type("surface");
+    list<std::string>::size_type count = 0;
+    list<std::string>::size_type list_size = liste->size();
+    
+    for(std::list<std::string>::iterator i = liste->begin(); i != liste->end(); i++)
+      {
+	// Loading surfaces to /dev/null...
+	CL_Surface::load(i->c_str(), res);
+	
+	count++;
+	if (count  % (list_size / 25) == 0)
+	  {
+	    loading_screen.draw_progress("..:: " + filename + " ::..",
+					 (float)(count) / list_size);
+	  }
+	CL_System::keep_alive();
+      }
+    loading_screen.draw_progress("..:: " + filename + " ::..", 1.0);
+    */
+  }
 }
 
 // Get all filenames and directories

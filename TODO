@@ -1,3 +1,5 @@
+if level is smaller than screen, no tiles are drawn
+
 optimize which tiles are drawn
 
 fix themes
@@ -5,7 +7,7 @@ fix themes
 
 test if put_target() works or where it fails (small surfaces?!)
 
-www.ggi-project.Sometimes when I make one pingus explode, many others explode.
+Sometimes when I make one pingus explode, many others explode.
 Forces bug
 
 Digger  - fixing
@@ -86,6 +88,6 @@ Star Wars - Escape from the death star.
 Vulcan - Run as fast as you can.
 
 
-$Date: 2000/03/20 18:58:33 $
+$Date: 2000/04/08 20:20:25 $
 
 -= EOF =-

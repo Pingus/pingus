@@ -1,4 +1,4 @@
-//  $Id: MikMod.cc,v 1.1 2000/03/20 18:55:26 grumbel Exp $
+//  $Id: MikMod.cc,v 1.2 2000/04/08 20:20:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,6 @@ bool MikMod::delete_on_stop;
 void
 MikMod::init()
 {
-#if HAVE_LIBMIKMOD
   MikMod_RegisterAllDrivers();
   MikMod_RegisterAllLoaders();
   
@@ -41,30 +40,24 @@ MikMod::init()
   MikMod_Init();
 #endif
 
-#endif /* HAVE_LIBMIKMOD */
 }
 
 void
 MikMod::deinit()
 {
-#if HAVE_LIBMIKMOD
   MikMod_Exit();
-#endif /* HAVE_LIBMIKMOD */
 }
  
 void
 MikMod::keep_alive()
 {
-#if HAVE_LIBMIKMOD
   if (music_enabled)
     MikMod_Update();
-#endif /* HAVE_LIBMIKMOD */
 }
  
 MODULE* 
 MikMod::load(string filename, bool del_on_stop, int maxchan, bool curious)
 {
-#if HAVE_LIBMIKMOD
   if (music_enabled)
     {
       char* str;
@@ -82,13 +75,11 @@ MikMod::load(string filename, bool del_on_stop, int maxchan, bool curious)
 	}
     }
   return current_module;
-#endif /* HAVE_LIBMIKMOD */
 }
 
 void 
 MikMod::play(MODULE* m)
 {
-#if HAVE_LIBMIKMOD
   if (music_enabled)
     {
       if (m)
@@ -96,13 +87,11 @@ MikMod::play(MODULE* m)
       else
 	Player_Start(current_module);
     }
-#endif /* HAVE_LIBMIKMOD */
 }
 
 bool
 MikMod::is_playing()
 {
-#if HAVE_LIBMIKMOD
   if (music_enabled)
     {
       return Player_Active();
@@ -111,29 +100,24 @@ MikMod::is_playing()
     {
       return false;
     }
-#endif /* HAVE_LIBMIKMOD */
 }
 
 void
 MikMod::stop()
 {
-#if HAVE_LIBMIKMOD
   if (music_enabled)
     {
       Player_Stop();
     }
-#endif /* HAVE_LIBMIKMOD */
 }
 
 void
 MikMod::free(MODULE* module)
 {
-#if HAVE_LIBMIKMOD
   if (music_enabled)
     {
       Player_Free(module);
     }
-#endif /* HAVE_LIBMIKMOD */
 }
 
 /* EOF */

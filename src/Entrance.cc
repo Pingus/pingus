@@ -1,4 +1,4 @@
-//  $Id: Entrance.cc,v 1.5 2000/03/12 01:41:31 grumbel Exp $
+//  $Id: Entrance.cc,v 1.6 2000/04/08 20:20:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -117,13 +117,16 @@ Entrance::let_move(void)
 void
 Entrance::draw_offset(int x, int y, float s)
 {
-  if (s == 1.0) {
-    // FIXME: Why do we have still this hardcoded offsets?!
-    surface->put_screen(x_pos - 32 + x, y_pos - 16 + y);
-  } else {
-    surface->put_screen((int)((x_pos-32 + x) * s), (int)((y_pos-16 + y) * s),
-			s, s);
-  }
+  if (s == 1.0) 
+    {
+      // FIXME: Why do we have still this hardcoded offsets?!
+      surface->put_screen(x_pos - 32 + x, y_pos - 16 + y);
+    } 
+  else 
+    {
+      surface->put_screen((int)((x_pos-32 + x) * s), (int)((y_pos-16 + y) * s),
+			  s, s);
+    }
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: Intro.cc,v 1.4 2000/02/15 13:09:50 grumbel Exp $
+//  $Id: Intro.cc,v 1.5 2000/04/08 20:20:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 
 #include "globals.hh"
 #include "Loading.hh"
+#include "algo.hh"
 #include "Intro.hh"
 
 Intro::Intro()
@@ -28,17 +29,13 @@ Intro::Intro()
   event = new Intro::Event;
 
   event->intro = this;
-
-  if (music_enabled) { 
-    //    music = CL_Streamed_MikModSample::create("../data/music/strut.it"); 
-    // sound = CL_Sample::create("../data/sounds/winlevel.wav", 0);
-  }
 }
 
 Intro::~Intro()
 {
   if (music_enabled) {
-    delete ses_music;
+    // MikMod::free(module);
+    // delete ses_music;
   }
   delete event;
 }
@@ -57,8 +54,10 @@ Intro::draw()
   
   if (music_enabled) 
     {
-      ses_music = new CL_SoundBuffer_Session( music->prepare());
-      ses_music->play();
+      //module = MikMod::load(find_file(pingus_datadir, "music/pingus-1.it"));
+      //MikMod::play(module);
+      //ses_music = new CL_SoundBuffer_Session( music->prepare());
+      //ses_music->play();
     }
 
   logo = CL_Surface::load("Game/logo_t", PingusResource::get("game.dat"));
@@ -73,6 +72,7 @@ Intro::draw()
 		       y_pos - logo->get_height()/2);
       CL_Display::flip_display(true);
       CL_System::keep_alive();
+      MikMod::keep_alive();
     }
   
   if (sound_enabled) 
@@ -88,6 +88,7 @@ Intro::draw()
 		       y_pos - logo->get_height()/2);
       CL_Display::flip_display(true);
       CL_System::keep_alive();
+      MikMod::keep_alive();
     }
 
   if (quit)

@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.5 2000/03/08 01:44:33 grumbel Exp $
+//  $Id: basher.cc,v 1.6 2000/04/08 20:20:26 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -111,7 +111,7 @@ Basher::have_something_to_dig()
 
   for(int i = 0; is_finished == false && i < 16; i++)
     {
-      cout << rel_getpixel(i,0) << " " << flush;
+      //cout << rel_getpixel(i,0) << " " << flush;
       if (rel_getpixel(i,0) & ColMap::WALL)
 	{
 	  cout << "Found something to dig..." << endl;
