@@ -44,7 +44,7 @@ Bridger::Bridger (Pingu* p)
     build_sprite(Sprite("Pingus/bridger_build" + to_string(pingu->get_owner()), "pingus", 15.0f, Sprite::NONE, Sprite::ONCE)),
     bricks(MAX_BRICKS),
     block_build(false),
-    name("Bridger (" + to_string(_(bricks)) + ")")
+    name(_("Bridger") + std::string(" (") + to_string(bricks) + ")")
 {
   if (!static_surfaces_loaded)
     {
@@ -228,7 +228,7 @@ void
 Bridger::place_a_brick()
 {
   bricks--;
-  name = "Bridger (" + to_string(_(bricks)) + ")";
+  name = _("Bridger") + std::string(" (") + to_string(bricks) + ")";
 
   if (bricks < 4)
     PingusSound::play_sound("ting");
