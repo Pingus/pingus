@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.18 2002/09/15 15:30:21 grumbel Exp $
+//  $Id: object_selector.cxx,v 1.19 2002/09/16 15:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -212,7 +212,7 @@ ObjectSelector::get_worldobj()
 EditorObjLst
 ObjectSelector::get_weather()
 {
-  WeatherData weather;
+  std::string type;
   bool done = false;
 
   CL_Display::clear_display();
@@ -226,17 +226,18 @@ ObjectSelector::get_weather()
       switch (read_key()) 
 	{
 	case CL_KEY_1:
-	  weather.type = "snow";
+	  type = "snow-generator";
 	  done = true;
 	  break;
 	case CL_KEY_2:
-	  weather.type = "rain";
+	  type = "rain-generator";
 	  done = true;
 	  break;
 	}
     }
   
-  return weather.create_EditorObj ();
+  std::cout << "Weather objects currently not implemented" << std::endl;
+  return EditorObjLst();
 }
 
 EditorObjLst

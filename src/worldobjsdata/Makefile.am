@@ -32,6 +32,8 @@ libpingus_worldobjsdata_a_SOURCES = \
 	spike_data.cxx                  spike_data.hxx  \
 	switch_door_data.cxx            switch_door_data.hxx \
 	teleporter_data.cxx             teleporter_data.hxx \
-        worldobj_group_data.hxx         worldobj_group_data.cxx
+        worldobj_group_data.hxx         worldobj_group_data.cxx \
+        snow_generator_data.hxx         snow_generator_data.cxx \
+        rain_generator_data.hxx         rain_generator_data.cxx
 
 # EOF #

@@ -1,4 +1,4 @@
-//  $Id: worldobj.hxx,v 1.6 2002/09/04 17:49:48 grumbel Exp $
+//  $Id: worldobj.hxx,v 1.7 2002/09/16 15:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,9 +69,9 @@ public:
   /** Draw the WorldObj to the given GraphicContext */
   virtual void draw (GraphicContext& gc);
 
-  /** Draws the objects collision map to the main collision map, this
-   *  can be used for traps which need a solid ground. */
-  virtual void draw_colmap ();
+  /** Draws the objects collision map to the main collision map, draws
+      stuff onto the gfx map or do other manipulations to the World */
+  virtual void on_startup ();
 
   /** The update function is called once a game loop, the delta
    * specifies how much time is passed since the last update

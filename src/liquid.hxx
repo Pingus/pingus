@@ -1,4 +1,4 @@
-//  $Id: liquid.hxx,v 1.4 2002/09/04 19:40:19 grumbel Exp $
+//  $Id: liquid.hxx,v 1.5 2002/09/16 15:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,11 +36,11 @@ public:
   CL_Surface colmap_sur;
 
   Liquid(const LiquidData&);
-  virtual ~Liquid();
+  ~Liquid();
 
-  float get_z_pos() const { return (int) pos.z; }
-  void draw_colmap();
-  void draw (GraphicContext& gc);
+  float get_z_pos () const { return (int) pos.z; }
+  void  on_startup();
+  void  draw      (GraphicContext& gc);
   
 private:
   Liquid (const Liquid&);

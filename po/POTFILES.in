@@ -43,18 +43,8 @@ src/particles/ground_particle.cxx
 src/particles/ground_particle.hxx
 src/particles/particle.cxx
 src/particles/particle.hxx
-src/particles/rain_generator.cxx
-src/particles/rain_generator.hxx
 src/particles/pingu_particle.cxx
 src/particles/pingu_particle.hxx
-src/particles/snow_generator.cxx
-src/particles/snow_generator.hxx
-src/particles/rain_particle.cxx
-src/particles/rain_particle.hxx
-src/particles/smoke_particle.cxx
-src/particles/smoke_particle.hxx
-src/particles/weather_generator.cxx
-src/particles/weather_generator.hxx
 src/particles/particle_holder.cxx
 src/particles/particle_holder.hxx
 src/particles/particle_cache.cxx
@@ -73,8 +63,6 @@ src/sprite.hxx
 src/pingu_enums.hxx
 src/level_result.cxx
 src/level_result.hxx
-src/worldobj_group_data.cxx
-src/worldobj_group_data.hxx
 src/action_button.cxx
 src/action_button.hxx
 src/timer.cxx
@@ -184,8 +172,6 @@ src/editor/plfobj.cxx
 src/editor/plfobj.hxx
 src/editor/start_pos.cxx
 src/editor/start_pos.hxx
-src/editor/weather_obj.cxx
-src/editor/weather_obj.hxx
 src/editor/editorobj.cxx
 src/editor/editorobj.hxx
 src/editor/string_reader.cxx
@@ -243,8 +229,6 @@ src/worldmap/stat.cxx
 src/worldmap/stat.hxx
 src/worldmap/node.cxx
 src/worldmap/node.hxx
-src/weather_data.cxx
-src/weather_data.hxx
 src/game_session_result.cxx
 src/game_session_result.hxx
 src/actions/walker.cxx

@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.32 2002/09/15 21:21:47 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.33 2002/09/16 15:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -123,16 +123,9 @@ ObjectManager::load_level (const std::string& filename)
       i->surface = PingusResource::load_surface(i->desc);
     }
 
-  vector<WeatherData>  temp_weather  = plf->get_weather();
   vector<WorldObjData*> temp_worldobj = plf->get_worldobjs_data();
 
   for (vector<GroundpieceData>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i) {
-    const EditorObjLst& temp = i->create_EditorObj();
-    editor_objs.insert(editor_objs.end(), temp.begin(), temp.end() );
-  }
-
-
-  for (vector<WeatherData>::iterator i = temp_weather.begin(); i != temp_weather.end(); ++i) {
     const EditorObjLst& temp = i->create_EditorObj();
     editor_objs.insert(editor_objs.end(), temp.begin(), temp.end() );
   }

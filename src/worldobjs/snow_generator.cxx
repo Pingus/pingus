@@ -1,5 +1,5 @@
-//  $Id: weather_obj.hxx,v 1.8 2002/09/16 15:47:35 grumbel Exp $
-// 
+//  $Id: snow_generator.cxx,v 1.1 2002/09/16 15:47:35 grumbel Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,40 +12,30 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_EDITOR_WEATHER_OBJ_HXX
-#define HEADER_PINGUS_EDITOR_WEATHER_OBJ_HXX
+#include "../world.hxx"
+#include "snow_particle.hxx"
+#include "snow_generator.hxx"
+#include "../particles/particle_holder.hxx"
 
-#include <ClanLib/Core/Math/cl_vector.h>
-#include "sprite_editorobj.hxx"
-
-class WeatherObj : public SpriteEditorObj
+SnowGenerator::SnowGenerator()
 {
-private:
-  std::string type;
-  CL_Vector pos;
-  bool dragging;
-  
-public:
-  WeatherObj (const std::string& type_);
-  virtual ~WeatherObj();
+}
 
-  virtual void drag ();
-  virtual void drop ();
+SnowGenerator::~SnowGenerator()
+{
+}
 
-  virtual void draw (EditorNS::EditorView * view);
-  virtual void write_xml(std::ostream& xml);
-  virtual EditorObj* duplicate();
-  
-private:
-  WeatherObj (const WeatherObj&);
-  WeatherObj operator= (const WeatherObj&);
-};
-
-#endif
+void 
+SnowGenerator::update(float /*delta*/)
+{
+  world->get_particle_holder()->add_particle(new SnowParticle(rand() % world->get_width(), -32));
+  world->get_particle_holder()->add_particle(new SnowParticle(rand() % world->get_width(), -32));
+  world->get_particle_holder()->add_particle(new CollidingSnowParticle(rand() % world->get_width(), -32));
+}
 
 /* EOF */

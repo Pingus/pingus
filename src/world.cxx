@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.23 2002/09/14 22:41:31 grumbel Exp $
+//  $Id: world.cxx,v 1.24 2002/09/16 15:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,6 @@
 #include "view.hxx"
 #include "world.hxx"
 #include "particles/particle_holder.hxx"
-#include "particles/weather_generator.hxx"
 #include "pingu.hxx"
 #include "game_time.hxx"
 
@@ -88,15 +87,7 @@ World::init_map(PLF* plf)
 void
 World::init_worldobjs(PLF* plf)
 {
-  vector<WeatherData>   weather_d  = plf->get_weather();
   vector<WorldObjData*> worldobj_d = plf->get_worldobjs_data ();
-
-  for(vector<WeatherData>::iterator i = weather_d.begin();
-      i != weather_d.end();
-      ++i)
-    {
-      world_obj.push_back(WeatherGenerator::create(*i));
-    }
 
   for (vector<WorldObjData*>::iterator i = worldobj_d.begin ();
        i != worldobj_d.end ();
@@ -118,9 +109,10 @@ World::init_worldobjs(PLF* plf)
    //world_obj->sort(WorldObj_less);
    std::stable_sort (world_obj.begin (), world_obj.end (), WorldObj_less);
 
-  // Drawing all world objs to the colmap
+  // Drawing all world objs to the colmap, gfx, or what ever the
+  // objects want to do
   for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
-    (*obj)->draw_colmap();
+    (*obj)->on_startup();
 
   // Setup the gravity force
   // Clear all old forces
@@ -361,12 +353,12 @@ World::get_pingu (const CL_Vector& pos)
   double distance = -1.0;
 
   for (PinguIter i = pingus->begin (); i != pingus->end (); ++i) {
-    if ((*i)->is_over (int(pos.x), int(pos.y)))
+    if ((*i)->is_over(int(pos.x), int(pos.y)))
       {
-	if (distance == -1.0f || distance >= (*i)->dist ((int) pos.x, (int)pos.y))
+	if (distance == -1.0f || distance >= (*i)->dist((int) pos.x, (int)pos.y))
 	  {
 	    current_pingu = (*i);
-	    distance = (*i)->dist ((int)pos.x, (int)pos.y);
+	    distance = (*i)->dist((int)pos.x, (int)pos.y);
 	  }
       }
   }

@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.17 2002/09/16 10:18:51 grumbel Exp $
+//  $Id: xml_plf.cxx,v 1.18 2002/09/16 15:47:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -148,7 +148,7 @@ XMLPLF::parse_file()
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "weather"))
 	    {
-	      parse_weather(cur);
+	      worldobjs_data.push_back(WorldObjDataFactory::instance()->create (doc, cur));
 	    }	  
 	  else
 	    {
@@ -212,8 +212,8 @@ XMLPLF::parse_group (xmlNodePtr cur)
 	}
       else if (XMLhelper::equal_str(cur->name, "weather"))
 	{
-	  parse_weather(cur);
-	}	  
+	  worldobjs_data.push_back(WorldObjDataFactory::instance()->create (doc, cur));
+	}
       else
 	{
 	  printf("XMLPLF: Unhandled parse_group: %s\n", reinterpret_cast<const char*>(cur->name));
@@ -247,34 +247,6 @@ XMLPLF::parse_start_pos (xmlNodePtr cur)
 	}
       cur = cur->next;
     }
-}
-
-void
-XMLPLF::parse_weather (xmlNodePtr cur)
-{
-  WeatherData weather;
-  cur = cur->children;
-
-  while (cur)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
-      
-      if (XMLhelper::equal_str(cur->name, "type"))
-	{
-	  weather.type = XMLhelper::parse_string(doc, cur);
-	}
-      else
-	{
-	  std::cout << "XMLPLF: Unhandled: " << cur->name << std::endl;
-	}
-      cur = cur->next;
-    }
-    
-  weathers.push_back(weather);
 }
 
 void 

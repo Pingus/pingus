@@ -1,4 +1,4 @@
-//  $Id: plf.hxx,v 1.5 2002/09/14 23:40:35 grumbel Exp $
+//  $Id: plf.hxx,v 1.6 2002/09/16 15:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 
 #include <map>
 #include "action_data.hxx"
-#include "weather_data.hxx"
 #include "groundpiece_data.hxx"
 
 class WorldObjData;
@@ -86,9 +85,8 @@ protected:
   /** levels flagged with playable=false are not playable or havn't been yet tested */
   bool playable;
   
-  std::vector<ActionData>   actions;
+  std::vector<ActionData>       actions;
   std::vector<GroundpieceData>  groundpieces;
-  std::vector<WeatherData>  weathers;
 
   /** FIXME: PLF should probally become and interface only, it currently is a
       bit overfull */
@@ -146,9 +144,8 @@ public:
   /** Returns the name of the author, who creates this level */
   std::string get_author();
 
-  std::vector<ActionData>    get_actions(void);
-  std::vector<GroundpieceData>   get_groundpieces(void);
-  std::vector<WeatherData>   get_weather(void);
+  std::vector<ActionData>      get_actions(void);
+  std::vector<GroundpieceData> get_groundpieces(void);
 
   /** Return a access to the worldobj_data, the caller must not delete
       anything in this vector */

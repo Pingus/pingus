@@ -1,7 +1,7 @@
-//  $Id: weather_obj.hxx,v 1.8 2002/09/16 15:47:35 grumbel Exp $
-// 
+//  $Id: snow_generator_data.cxx,v 1.1 2002/09/16 15:47:36 grumbel Exp $
+//
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -12,40 +12,35 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_EDITOR_WEATHER_OBJ_HXX
-#define HEADER_PINGUS_EDITOR_WEATHER_OBJ_HXX
+#include <fstream>
+#include "../worldobjs/snow_generator.hxx"
+#include "snow_generator_data.hxx"
 
-#include <ClanLib/Core/Math/cl_vector.h>
-#include "sprite_editorobj.hxx"
+namespace WorldObjsData {
 
-class WeatherObj : public SpriteEditorObj
+void
+SnowGeneratorData::write_xml(std::ostream& xml)
 {
-private:
-  std::string type;
-  CL_Vector pos;
-  bool dragging;
-  
-public:
-  WeatherObj (const std::string& type_);
-  virtual ~WeatherObj();
+  xml << "<worldobj type=\"snow-generator\"/>" << std::endl;
+}
 
-  virtual void drag ();
-  virtual void drop ();
+WorldObj*
+SnowGeneratorData::create_WorldObj ()
+{
+  return new SnowGenerator();
+}
 
-  virtual void draw (EditorNS::EditorView * view);
-  virtual void write_xml(std::ostream& xml);
-  virtual EditorObj* duplicate();
-  
-private:
-  WeatherObj (const WeatherObj&);
-  WeatherObj operator= (const WeatherObj&);
-};
+EditorObjLst
+SnowGeneratorData::create_EditorObj ()
+{
+  return EditorObjLst();
+}
 
-#endif
+} // namespace WorldObjsData
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: exit.cxx,v 1.6 2002/09/04 19:40:19 grumbel Exp $
+//  $Id: exit.cxx,v 1.7 2002/09/16 15:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,7 +56,7 @@ Exit::~Exit()
 }
 
 void
-Exit::draw_colmap()
+Exit::on_startup()
 {
   world->get_colmap()->remove(sprite.get_surface (), 
 			      int(pos.x) - sprite.get_width ()/2,

@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.13 2002/09/14 23:31:12 grumbel Exp $
+//  $Id: spot_map.cxx,v 1.14 2002/09/16 15:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -78,6 +78,7 @@ MapTileSurface::mark_dirty()
 void
 MapTileSurface::check_empty()
 {
+  // FIXME: obsolete
   CL_SurfaceProvider* provider = surface.get_provider();
   unsigned char* buffer;
   int lenght;

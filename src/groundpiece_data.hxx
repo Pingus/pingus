@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.hxx,v 1.12 2002/09/04 14:55:11 torangan Exp $
+//  $Id: groundpiece_data.hxx,v 1.13 2002/09/16 15:47:35 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,8 +27,9 @@
 #include "worldobj_data.hxx"
 
 class EditorObj;
+class WorldObj;
 
-class GroundpieceData 
+class GroundpieceData : public WorldObjData
 {
 public:
   CL_Surface surface;
@@ -55,9 +56,11 @@ public:
   GroundpieceData (const GroundpieceData& old);
   GroundpieceData operator= (const GroundpieceData& old);
 
-  virtual ~GroundpieceData ();
+  ~GroundpieceData ();
 
+  WorldObj*    create_WorldObj() { return 0; }
   EditorObjLst create_EditorObj();
+
   void write_xml(std::ostream& xml);
 
   static GPType string_to_type(const std::string& arg_type);

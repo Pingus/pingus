@@ -12,33 +12,35 @@
     </surface>
   </thumbnail>
 
-  <group>
-    <hotspot>
-      <surface><resource type="datafile">
-	  <resource-datafile>hotspots</resource-datafile>
-	  <resource-ident>desert/smalldimwall</resource-ident>
-	</resource></surface>
-      <position>
-	<x-pos>217</x-pos>
-	<y-pos>307</y-pos>
-	<z-pos>0</z-pos>
-      </position>
-      <speed>-1</speed>
-      <parallax>1</parallax>
-    </hotspot>
+  <object>
+    <group>
+      <hotspot>
+	<surface><resource type="datafile">
+	    <resource-datafile>hotspots</resource-datafile>
+	    <resource-ident>desert/smalldimwall</resource-ident>
+	  </resource></surface>
+	<position>
+	  <x-pos>217</x-pos>
+	  <y-pos>307</y-pos>
+	  <z-pos>0</z-pos>
+	</position>
+	<speed>-1</speed>
+	<parallax>1</parallax>
+      </hotspot>
 
-    <hotspot>
-      <surface><resource type="datafile">
-	  <resource-datafile>hotspots</resource-datafile>
-	  <resource-ident>desert/smallegyptpic</resource-ident>
-	</resource></surface>
-      <position>
-	<x-pos>207</x-pos>
-	<y-pos>186</y-pos>
-	<z-pos>0</z-pos>
-      </position>
-      <speed>-1</speed>
-      <parallax>1</parallax>
-    </hotspot>
-  </group>
+      <hotspot>
+	<surface><resource type="datafile">
+	    <resource-datafile>hotspots</resource-datafile>
+	    <resource-ident>desert/smallegyptpic</resource-ident>
+	  </resource></surface>
+	<position>
+	  <x-pos>207</x-pos>
+	  <y-pos>186</y-pos>
+	  <z-pos>0</z-pos>
+	</position>
+	<speed>-1</speed>
+	<parallax>1</parallax>
+      </hotspot>
+    </group>
+  </object>
 </pingus-prefab>

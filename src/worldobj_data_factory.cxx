@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.14 2002/09/15 21:21:47 grumbel Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.15 2002/09/16 15:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,6 +46,8 @@
 #include "worldobjsdata/spike_data.hxx"
 #include "worldobjsdata/switch_door_data.hxx"
 #include "worldobjsdata/teleporter_data.hxx"
+#include "worldobjsdata/rain_generator_data.hxx"
+#include "worldobjsdata/snow_generator_data.hxx"
 
 using namespace WorldObjsData;
 
@@ -91,6 +93,13 @@ WorldObjDataFactory::instance ()
       new WorldObjDataFactoryImpl<StarfieldBackgroundData>("starfield-background");
       new WorldObjDataFactoryImpl<SolidColorBackgroundData>("solidcolor-background");
       new WorldObjDataFactoryImpl<ThunderstormBackgroundData>("thunderstorm-background");
+
+      // Weather
+      new WorldObjDataFactoryImpl<SnowGeneratorData>("snow-generator");
+      new WorldObjDataFactoryImpl<RainGeneratorData>("rain-generator");
+      // Weather-Backward compability
+      new WorldObjDataFactoryImpl<SnowGeneratorData>("rain");
+      new WorldObjDataFactoryImpl<RainGeneratorData>("snow");
     }
 
   return instance_;

@@ -1,4 +1,4 @@
-//  $Id: weather_obj.cxx,v 1.8 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: weather_obj.cxx,v 1.9 2002/09/16 15:47:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,17 +22,17 @@
 #include "editor_view.hxx"
 #include "weather_obj.hxx"
 
-WeatherObj::WeatherObj(const WeatherData& data)
+WeatherObj::WeatherObj(const std::string& type_)
+  : type(type_),
+    pos(0,0,200)
 {
-  type = data.type;
-  pos = CL_Vector(0,0,200);
   dragging = false;
 
-  if (type == "rain")
+  if (type == "rain-generator")
     {
       sprite = Sprite("editor/weather_rain", "core");
     }
-  else if (type == "snow")
+  else if (type == "snow-generator")
     {
       sprite = Sprite("editor/weather_snow", "core");
     }  
@@ -76,17 +76,16 @@ WeatherObj::draw (EditorNS::EditorView * view)
 void   
 WeatherObj::write_xml(std::ostream& xml)
 {
-  xml << "  <weather>\n"
-      << "    <type>" << type << "</type>\n";
+  xml << "  <worldobj type=\"" << type << "\"/>\n";
   XMLhelper::write_vector_xml(xml, pos);
-  xml << "  </weather>\n"
+  xml << "  </worldobj>\n"
       << std::endl;
 }
  
 EditorObj*
 WeatherObj::duplicate()
 {
-  return new WeatherObj(static_cast<WeatherData>(*this));
+  return new WeatherObj(type);
 }
 
 void 
