@@ -4,7 +4,7 @@
   <global>
     <levelname lang="en">Outside In</levelname>
     <description lang="en">Can you help the pingus escape without getting their flippers wet?</description>
-    <author>Tom Flavel &lt;tomflavel@yahoo.co.uk&gt;</author>
+    <author>Tom Flavel &lt;tom@printf.net&gt;</author>
     <number-of-pingus>30</number-of-pingus>
     <number-to-save>30</number-to-save>
     <time>9000</time>

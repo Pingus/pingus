@@ -5,7 +5,7 @@
     <levelname lang="en">Claustrophobia</levelname>
     <description lang="en">Hidden deep below the pyramid the pingus come across a small
 underground room, but unfortunatley a large tree root blocks their path...</description>
-    <author>Tom Flavel &lt;tomflavel@yahoo.co.uk&gt;</author>
+    <author>Tom Flavel &lt;tom@printf.net&gt;</author>
     <playable>1</playable>
     <number-of-pingus>30</number-of-pingus>
     <number-to-save>25</number-to-save>
