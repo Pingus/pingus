@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.38 2003/04/15 19:06:50 grumbel Exp $
+//  $Id: object_selector.cxx,v 1.39 2003/04/16 09:44:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -292,7 +292,7 @@ ObjectSelector::get_entrance ()
 	case CL_KEY_4:
 	case CL_KEY_H:
           get_hotspot("entrances");
-          break;
+          return;
 
 	default:
 	  if (verbose) std::cout << "Unknown keypressed" << std::endl;
