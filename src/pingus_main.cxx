@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.25 2002/10/14 11:15:15 torangan Exp $
+//   $Id: pingus_main.cxx,v 1.26 2002/10/20 21:38:54 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -77,6 +77,8 @@
 #include "fonts.hxx"
 #include "sound_real.hxx"
 #include "xml_helper.hxx"
+#include "input_debug_screen.hxx"
+#include "pingus_menu_manager.hxx"
 
 using EditorNS::Editor;
 
@@ -524,68 +526,68 @@ For more information about these matters, see the files named COPYING.\
       std::cout <<
 	_("\n"
 	  "Options:\n"
-	"   -g, --geometry {width}x{height}\n"
-	"                            Set the resolution for pingus (default: 640x480)\n"
-	"   -h, --help               Displays this screen\n"
-	"   --disable-intro          Disable intro\n")
+          "   -g, --geometry {width}x{height}\n"
+          "                            Set the resolution for pingus (default: 640x480)\n"
+          "   -h, --help               Displays this screen\n"
+          "   --disable-intro          Disable intro\n")
 		<< std::endl;
 #ifdef HAVE_LIBCLANGL
       std::cout <<
 	_("   -G, --use-opengl         Use OpenGL\n")
-	<< std::endl;
+                << std::endl;
 #endif
       std::cout <<
 	_("   -F, --disable-fullscreen Disable Fullscreen\n"
-	"   -f, --enable-fullscreen  Enable Fullscreen (default)\n"
-       	"   -d, --datadir PATH       Set the path to load the data files to `path'\n"
-	"   --use-datafile           Use the pre-compiled datafile (default)\n"
-	"   --use-scriptfile         Use the scriptfile and read all data from files\n"
-	"   -l, --level FILE         Load a custom level from `file'\n"
-	"   -v, --verbose            Print some more messages to stdout, can be set\n"
-	"                            multible times to increase verbosity\n"
-	"   -V, --version            Prints version number and exit\n"
-	//	"   --fs-preload             Preload all Levelpreviews\n"a
-	"   --fast                   Disable some cpu intensive features\n"
-	//	"   --disable-previews       Disables all level preview in the level selector\n"
-	"   -e, --editor             Launch the Level editor (experimental)\n"
-	"   --disable-auto-scrolling Disable automatic scrolling\n"
-	"   --disable-swcursor       Disable software cursor, use hw cursor instead\n"
-	"   --enable-swcursor        Enable software cursor\n"
-	"   --disable-action-help    Disable action button help strings\n"
-	"   --enable-action-help     Enable action button help strings(default)\n"
-	"   --no-cfg-file            Don't read ~/.pingus/config\n"
-	"   --config-file FILE       Read config from FILE (default: ~/.pingus/config)\n"
-	"   --max-cpu-usage          Use all of the cpu power available, instead of trying to\n"
-	"                            reduce CPU usage, might speed up the game on slower machines\n"
-	"   --min-frame-skip N       Skip at least N frames, larger values speed the game up\n"
-	"   --max-frame-skip N       Skip at most N frames\n"
+          "   -f, --enable-fullscreen  Enable Fullscreen (default)\n"
+          "   -d, --datadir PATH       Set the path to load the data files to `path'\n"
+          "   --use-datafile           Use the pre-compiled datafile (default)\n"
+          "   --use-scriptfile         Use the scriptfile and read all data from files\n"
+          "   -l, --level FILE         Load a custom level from `file'\n"
+          "   -v, --verbose            Print some more messages to stdout, can be set\n"
+          "                            multible times to increase verbosity\n"
+          "   -V, --version            Prints version number and exit\n"
+          //	"   --fs-preload             Preload all Levelpreviews\n"a
+          "   --fast                   Disable some cpu intensive features\n"
+          //	"   --disable-previews       Disables all level preview in the level selector\n"
+          "   -e, --editor             Launch the Level editor (experimental)\n"
+          "   --disable-auto-scrolling Disable automatic scrolling\n"
+          "   --disable-swcursor       Disable software cursor, use hw cursor instead\n"
+          "   --enable-swcursor        Enable software cursor\n"
+          "   --disable-action-help    Disable action button help strings\n"
+          "   --enable-action-help     Enable action button help strings(default)\n"
+          "   --no-cfg-file            Don't read ~/.pingus/config\n"
+          "   --config-file FILE       Read config from FILE (default: ~/.pingus/config)\n"
+          "   --max-cpu-usage          Use all of the cpu power available, instead of trying to\n"
+          "                            reduce CPU usage, might speed up the game on slower machines\n"
+          "   --min-frame-skip N       Skip at least N frames, larger values speed the game up\n"
+          "   --max-frame-skip N       Skip at most N frames\n"
 
-	"\nDebugging and experimental stuff:\n"
-	"   --maintainer-mode        Enables some features, only interesting programmers\n"
-	"   --enable-bg-manipulation Enables color manipulation of level backgrounds\n"
-	"   --debug OPTION           Enable the output of debugging infos, possible\n"
-        "                            OPTION's are tiles, gametime, actions, sound, resources, gui,\n"
-        "                            input\n"
-	"   -t, --speed SPEED        Set the game speed (0=fastest, >0=slower)\n"
-	"   -b, --print-fps          Prints the fps to stdout\n"
-	"   -i, --enable-gimmicks    Enable some buggy development stuff\n"
-	"   -S, --sound-specs FILE   Use files mentioned in FILE\n"
-	"   --tile-size INT          Set the size of the map tiles (default: 32)\n"
-	"\n"
-	"\nDemo playing and recording:\n"
-	"   -r, --record-demo FILE   Record a demo session to FILE\n"
-	"   -p, --play-demo FILE     Plays a demo session from FILE\n")
-	<< std::endl;
+          "\nDebugging and experimental stuff:\n"
+          "   --maintainer-mode        Enables some features, only interesting programmers\n"
+          "   --enable-bg-manipulation Enables color manipulation of level backgrounds\n"
+          "   --debug OPTION           Enable the output of debugging infos, possible\n"
+          "                            OPTION's are tiles, gametime, actions, sound, resources, gui,\n"
+          "                            input\n"
+          "   -t, --speed SPEED        Set the game speed (0=fastest, >0=slower)\n"
+          "   -b, --print-fps          Prints the fps to stdout\n"
+          "   -i, --enable-gimmicks    Enable some buggy development stuff\n"
+          "   -S, --sound-specs FILE   Use files mentioned in FILE\n"
+          "   --tile-size INT          Set the size of the map tiles (default: 32)\n"
+          "\n"
+          "\nDemo playing and recording:\n"
+          "   -r, --record-demo FILE   Record a demo session to FILE\n"
+          "   -p, --play-demo FILE     Plays a demo session from FILE\n")
+                << std::endl;
 #ifdef HAVE_LIBSDL_MIXER
       std::cout <<
 	_("\nSound:\n"
-	"   -s, --enable-sound       Enable sound\n"
-	"   -m, --enable-music       Enable music\n"
-	"   --audio-format {8,16}    Number of bits (default: 16)\n"
-	"   --audio-rate INT         Audio rate in Hz (default: 44000)\n"
-	"   --audio-channels {1,2}   Mono(1) or Stereo(2) output (default: 2)\n"
-	"   --audio-buffers INT      Audio buffer (default: 4096)\n")
-       << std::endl;
+          "   -s, --enable-sound       Enable sound\n"
+          "   -m, --enable-music       Enable music\n"
+          "   --audio-format {8,16}    Number of bits (default: 16)\n"
+          "   --audio-rate INT         Audio rate in Hz (default: 44000)\n"
+          "   --audio-channels {1,2}   Mono(1) or Stereo(2) output (default: 2)\n"
+          "   --audio-buffers INT      Audio buffer (default: 4096)\n")
+                << std::endl;
 #endif
       exit(EXIT_SUCCESS);
       break;
@@ -618,16 +620,16 @@ PingusMain::init_pingus()
   if (verbose) 
     {
       std::cout << 
-	           _("-----------------------------------------------------------------\n")
+        _("-----------------------------------------------------------------\n")
 		<< std::endl;
       std::cout << 
-		   _(" Verbosity set to: ") << verbose  << "\n"
+        _(" Verbosity set to: ") << verbose  << "\n"
 		<< std::endl;
       std::cout << 
-		   _(" If you don't like to get lots of debug messages, than set the\n"
-		     " verbosity down to 0, like this:\n\n"
-		     "   $ ./pingus --verbose 0\n"
-		     "-----------------------------------------------------------------\n")
+        _(" If you don't like to get lots of debug messages, than set the\n"
+          " verbosity down to 0, like this:\n\n"
+          "   $ ./pingus --verbose 0\n"
+          "-----------------------------------------------------------------\n")
 		<< std::endl;
     }
 
@@ -828,69 +830,65 @@ PingusMain::start_game(void)
 
   if (print_fps)
     Display::add_flip_screen_hook(&fps_counter);
-  
+
+  // Register the global event catcher
   on_button_press_slot = CL_Input::sig_button_press ().connect (&global_event, &GlobalEvent::on_button_press);
   on_button_release_slot = CL_Input::sig_button_release ().connect (&global_event, &GlobalEvent::on_button_release);
-
-  //pingus_story.display ();
-
-  /* start the level or editor if a levelname was given on the command
-     line */
-  if (!levelfile.empty ())
+      
+  // Set the root screen
+  if (show_input_debug_screen) // show a debug screen
+    {
+      ScreenManager::instance()->push_screen(new InputDebugScreen (), true);
+    }
+  else if (!levelfile.empty ()) // start editor or a game_session
     {
       bool successfull = true;
       if (!System::exist(levelfile))
-	{
-	  if (System::exist(levelfile + ".xml"))
-	    levelfile += ".xml";
-	  else if (System::exist("levels/" + levelfile + ".xml"))
-	    levelfile = "levels/" + levelfile + ".xml";
-	  else
-	    {
-	      pout << _("PingusMain: Levelfile not found, ignoring: ") << levelfile << std::endl;
-	      successfull = false;
-	    }
-	}
+        {
+          if (System::exist(levelfile + ".xml"))
+            levelfile += ".xml";
+          else if (System::exist("levels/" + levelfile + ".xml"))
+            levelfile = "levels/" + levelfile + ".xml";
+          else
+            {
+              pout << _("PingusMain: Levelfile not found, ignoring: ") << levelfile << std::endl;
+              successfull = false;
+            }
+        }
 
       if (successfull)
-	{
-	  if (start_editor) 
-	    {
-	      Editor::instance ()->load_level (levelfile);
-	      levelfile = "";
-	      ScreenManager::instance()->push_screen(Editor::instance (), false);
-	    } 
-	  else
-	    {
-	      ScreenManager::instance()->push_screen(new PingusGameSession (levelfile), true);
-	    }
-	}    
+        {
+          if (start_editor) 
+            {
+              Editor::instance ()->load_level (levelfile);
+              levelfile = "";
+              ScreenManager::instance()->push_screen(Editor::instance (), false);
+            } 
+          else
+            {
+              ScreenManager::instance()->push_screen(new PingusGameSession (levelfile), true);
+            }
+        }    
     }
-  else if (start_editor)
-    { // Start an empty editor workspace
-      if (start_editor)
-	ScreenManager::instance()->push_screen(Editor::instance (), false);
+  else if (start_editor) // Start an empty editor workspace
+    { 
+      ScreenManager::instance()->push_screen(Editor::instance (), false);
     }
-  else if (!demo_file.empty())
+  else if (!demo_file.empty()) // start a demo
     {
       ScreenManager::instance()->push_screen(new DemoSession (demo_file));
     }
+  else // start a normal game
+    {
+      ScreenManager::instance()->push_screen (PingusMenuManager::instance (), false);
+    }
 
   // show the main menu, the rest of the game is spawn from there
-  try {
-    std::cout << "PingusMain::start screen manager" << std::endl;
-    ScreenManager::instance ()->display ();
-    std::cout << "PingusMain::quit game and screen_manager" << std::endl;
-  }
+  std::cout << "PingusMain::start screen manager" << std::endl;
+  ScreenManager::instance ()->display ();
+  std::cout << "PingusMain::quit game and screen_manager" << std::endl;
   
-  catch (const CL_Error& err) {
-    PingusMessageBox box(std::string("CL_Error: " + err.message));
-  }
-  
-  catch (const PingusError& err) {
-    PingusMessageBox(" PingusError: " + err.get_message ());
-  }
-
+  // unregister the global event catcher
   CL_Input::sig_button_press ().disconnect (on_button_press_slot);
   CL_Input::sig_button_release ().disconnect(on_button_release_slot);
 }
@@ -916,7 +914,7 @@ PingusMain::main(int argc, char** argv)
       
     if (!intro_disabled && levelfile.empty()) 
       {
-	//intro.draw();
+        //intro.draw();
       }
       
     start_game();
