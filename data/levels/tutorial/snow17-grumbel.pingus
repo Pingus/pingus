@@ -5,7 +5,7 @@
     <levelname lang="en">If too high, your Pingu will die...</levelname>
     <levelname lang="it">Troppo in alto, il Pingus morirà...</levelname>
     <levelname lang="de">Zu hoch und dein Pingu wird sterben...</levelname>
-    <levelname lang="cs">Pingove nepreziji pad z velke vysky...</levelname>
+    <levelname lang="cs">Pingové nepøe¾ijí pád z velké vý¹ky...</levelname>
     <levelname lang="tr">Yüksekten düþen Pingu ölür...</levelname>
     <levelname lang="fr">De trop haut, les Pingus en morceaux...</levelname>
     <levelname lang="sr">Ko visoko leti, nisko pada...</levelname>
@@ -27,9 +27,9 @@
                            Floater, um den Ausgang zu erreichen, also schicke ein paar
                            und lass sie den Weg für den Rest vorbereiten.
     </description>
-    <description lang="cs">Tymova prace je tou pravou cestou k cili. Protoze nemas dostatek
-                           vrtuli pro vsechny, vysli nejprve nekolik pingu, aby ostatnim pripravili
-			   cestu.
+    <description lang="cs">Týmová práce je tou pravou cestou k cíli. Proto¾e nemá¹ dostatek
+                           vrtulek pro v¹echny, vy¹li nejprve nìkolik pingù, aby ostatním
+			   pøipravili cestu.
     </description>
     <description lang="tr">Takým çalýþmasý buradan kaçmanýn tek yolu. Herkesi aþaðýya indirecek
                            kadar Floater yok. Dolayýsýyla birkaçýný önden gönderip, diðerleri

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-09 13:25+0000\n"
+"POT-Creation-Date: 2004-04-15 18:33+0200\n"
 "PO-Revision-Date: 2003-04-15 17:29+0200\n"
 "Last-Translator: Milan Babuskov <mbabuskov@yahoo.com>\n"
 "Language-Team: <mbabuskov@yahoo.com>\n"
@@ -56,47 +56,47 @@ msgstr "-Grafika"
 msgid "-Music"
 msgstr "-Muzika"
 
-#: src/credits.cxx:87
+#: src/credits.cxx:89
 msgid "-Level Design"
 msgstr "-Dizajn nivoa"
 
-#: src/credits.cxx:92
+#: src/credits.cxx:95
 msgid "-Story"
 msgstr "-Prièa"
 
-#: src/credits.cxx:96
+#: src/credits.cxx:99
 msgid "-Translation"
 msgstr "-Prevod"
 
-#: src/credits.cxx:110
+#: src/credits.cxx:115
 msgid "-Special"
 msgstr "-Posebno"
 
-#: src/credits.cxx:111
+#: src/credits.cxx:116
 msgid "-Thanks to"
 msgstr "-se zahvaljujemo"
 
-#: src/credits.cxx:152
+#: src/credits.cxx:160
 msgid "_And a very Special Thanks"
 msgstr "_A naroèito se zahvaljujemo"
 
-#: src/credits.cxx:153
+#: src/credits.cxx:161
 msgid "_to all the people who"
 msgstr "_svim ljudima"
 
-#: src/credits.cxx:154
+#: src/credits.cxx:162
 msgid "_contribute to"
 msgstr "_koji doprinose"
 
-#: src/credits.cxx:155
+#: src/credits.cxx:163
 msgid "_Free Software!"
 msgstr "_Free Softveru!"
 
-#: src/credits.cxx:161
+#: src/credits.cxx:169
 msgid "_Thank you for"
 msgstr "_Hvala što"
 
-#: src/credits.cxx:162
+#: src/credits.cxx:170
 msgid "_playing!"
 msgstr "_ste igrali!"
 
@@ -229,7 +229,8 @@ msgid "Ctrl PageDown - decrease objects z-pos by 1"
 msgstr "Ctrl PageDown - smanji z-koordinatu za 1"
 
 #: src/editor/editor_help_screen.cxx:84
-msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.plf"
+#, fuzzy
+msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.pingus"
 msgstr "Konvencija Nazivanja: <NAZIVNIVOA><BROJ>-<AUTOR>.plf"
 
 #: src/editor/editor_help_screen.cxx:86

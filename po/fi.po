@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-09 13:25+0000\n"
+"POT-Creation-Date: 2004-04-15 18:33+0200\n"
 "PO-Revision-Date: 2003-08-21 18:29+0300\n"
 "Last-Translator: Jarno Elonen <elonen@iki.fi>\n"
 "Language-Team: Finnish <elonen@iki.fi>\n"
@@ -58,47 +58,47 @@ msgstr "-Grafiikka"
 msgid "-Music"
 msgstr "-Musiikki"
 
-#: src/credits.cxx:87
+#: src/credits.cxx:89
 msgid "-Level Design"
 msgstr "-Kenttäsuunnittelu"
 
-#: src/credits.cxx:92
+#: src/credits.cxx:95
 msgid "-Story"
 msgstr "-Tarina"
 
-#: src/credits.cxx:96
+#: src/credits.cxx:99
 msgid "-Translation"
 msgstr "-Käännöstyö"
 
-#: src/credits.cxx:110
+#: src/credits.cxx:115
 msgid "-Special"
 msgstr "-Erityiset"
 
-#: src/credits.cxx:111
+#: src/credits.cxx:116
 msgid "-Thanks to"
 msgstr "-Kiitokset"
 
-#: src/credits.cxx:152
+#: src/credits.cxx:160
 msgid "_And a very Special Thanks"
 msgstr "_Ja aivan erityiskiitokset"
 
-#: src/credits.cxx:153
+#: src/credits.cxx:161
 msgid "_to all the people who"
 msgstr "_kaikille niille, jotka"
 
-#: src/credits.cxx:154
+#: src/credits.cxx:162
 msgid "_contribute to"
 msgstr "_osallistuvat kehittämään"
 
-#: src/credits.cxx:155
+#: src/credits.cxx:163
 msgid "_Free Software!"
 msgstr "_vapaita ohjelmia!"
 
-#: src/credits.cxx:161
+#: src/credits.cxx:169
 msgid "_Thank you for"
 msgstr "_Kiitos sinulle"
 
-#: src/credits.cxx:162
+#: src/credits.cxx:170
 msgid "_playing!"
 msgstr "_pelaamisesta!"
 
@@ -231,7 +231,8 @@ msgid "Ctrl PageDown - decrease objects z-pos by 1"
 msgstr "Ctrl + PageDown - vähennä objektin z-tasoa yhdellä"
 
 #: src/editor/editor_help_screen.cxx:84
-msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.plf"
+#, fuzzy
+msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.pingus"
 msgstr "Nimeämiskäytäntö: <KENTÄNNIMI><NUMERO>-<TEKIJÄ>.plf"
 
 #: src/editor/editor_help_screen.cxx:86

@@ -5,7 +5,7 @@
     <levelname lang="en">Learn to use the bridge</levelname>
     <levelname lang="it">Impara ad usare i ponti</levelname>
     <levelname lang="de">Lerne Brücken zu bauen</levelname>
-    <levelname lang="cs">Nauc se stavet mosty</levelname>
+    <levelname lang="cs">Nauè se stavìt mosty</levelname>
     <levelname lang="tr">Köprü yapmayý öðreniyoruz</levelname>
     <levelname lang="fr">Apprenez a utiliser le pont</levelname>
     <levelname lang="sr">Nauci da koristis most</levelname>
@@ -28,10 +28,10 @@
                            bauen, aber sie erlaubt den nachfolgenden Pingus auch die andere
                            Seite zu erreichen, was die Jumper Fähigkeit nicht tat.
     </description>
-    <description lang="cs">Kdyz neni po ruce skokan a je potreba prekonat nejakou propast,
-                           tak muzes postavit most. Stavba sice zabere nejaky cas, ale
-                           zato budou moci vsichni ostatni snadno prejit, coz by si se skokanem
-                           nedokazal.
+    <description lang="cs">Kdy¾ není po ruce skokan a je potøeba pøekonat nìjakou propast,
+                           tak mù¾e¹ postavit most. Stavba sice zabere nìjaký ten èas, ale
+                           zato budou moci v¹ichni ostatní pohodlnì pøejít, co¾ bys se samotným
+			   skokanem nedokázal.
     </description>
     <description lang="tr">Eðer Jumper kullanamýyorsak ve bir hendek atlamak gerekiyorsa,
                            bu sorunu bir köprü yaparak çözmek mümkün. Yapmasý biraz zaman

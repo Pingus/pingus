@@ -5,7 +5,7 @@
     <levelname lang="en">Bridging gets more complicated...</levelname>
     <levelname lang="it">La costruzione di ponti si complica...</levelname>
     <levelname lang="de">Brückenbauen wird schwieriger...</levelname>
-    <levelname lang="cs">Mosty se zacinaji zeslozitovat...</levelname>
+    <levelname lang="cs">Mosty se zaèínají komplikovat...</levelname>
     <levelname lang="tr">Köprü yapýmý karmaþýklaþýyor...</levelname>
     <levelname lang="fr">La construction de pont devient complexe...</levelname>
     <levelname lang="sr">Mostogradnja se komplikuje...</levelname>
@@ -27,8 +27,8 @@
                            ohne das Du in dem Loch kurz vor dem Ausgang endest. Also denke
                            nach, wie du dies verhindern kannst.
     </description>
-    <description lang="cs">Opet by si mel peclive a mazane zkombinovat vsechny schopnosti dohromady,
-                           jinak skoncis v pasti kousek pred cilem. Takze zapremyslej, jak
+    <description lang="cs">Opìt bys mìl peèlivì a mazanì zkombinovat v¹echny schopnosti dohromady,
+                           jinak skonèí¹ v pasti kousek pøed cílem. Tak¾e zapøemý¹lej, jak
                            se tomu vyhnout.
     </description>
     <description lang="tr">Ve yine birden fazla eylemi akýllýca ve dikkatlice birleþtirmen

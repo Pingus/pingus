@@ -5,7 +5,7 @@
     <levelname lang="en">Climb, Climber,... Boom!</levelname>
     <levelname lang="it">Arrampicati,... Boom!</levelname>
     <levelname lang="de">Kletter, Climber... Boom!</levelname>
-    <levelname lang="cs">Splhej horolezce,... Bum!</levelname>
+    <levelname lang="cs">©plhej horolezèe,... Bum!</levelname>
     <levelname lang="tr">Týrman, týrman,... Bum!</levelname>
     <levelname lang="fr">Plus haut, Plus haut, ... Boum!</levelname>
     <levelname lang="sr">Penjanje, pentranje,... Bum!</levelname>
@@ -30,10 +30,10 @@
                            erreichen. Da die Digger Fähigkeit fehlt, muss der Bomber 
                            einspringen, aber wie erreicht er den Platz zum sprengen?
     </description>
-    <description lang="cs">Jak jsi jiste pochopil z predchozich urovni, casto je potreba
-                           zkloubit vice ruznych cinnosti dohromady, aby se dosahlo potrebneho
-                           cile. Protoze momentalne nemas k dispozici zadneho kopace, tak
-                           budes muset pouzit explozi. Jak se ale dostat na misto odpalu?
+    <description lang="cs">Jak jsi u¾ urèitì pochopil z pøedchozích úrovní, èasto je potøeba
+                           skloubit více rùzných èinností dohromady, aby se dosáhlo potøebného
+                           cíle. Proto¾e momentálnì nemá¹ k dispozici ¾ádného kopáèe, tak
+                           bude¹ muset pou¾ít bombera. Jak se ale dostat na místo odpalu?
     </description>
     <description lang="tr">Çoktan farkýna varmýþ olduðun gibi, genellikle birden fazla 
                            eylemi birleþtirmen gerekiyor. Bu seviyede Digger eylemi olmadýðý

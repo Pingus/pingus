@@ -5,7 +5,7 @@
     <levelname lang="en">Panic Island (float/bash)</levelname>
     <levelname lang="it">Isola del Panico</levelname>
     <levelname lang="de">Insel der Panik (schwebe/grabe)</levelname>
-    <levelname lang="cs">Panika na ostrove</levelname>
+    <levelname lang="cs">Panika na ostrovì</levelname>
     <levelname lang="tr">Panik adasý</levelname>
     <levelname lang="fr">Ile de la Panique (float/bash)</levelname>
     <levelname lang="sr">Ostrvo panike (lebdi/glodaj)</levelname>
@@ -30,9 +30,9 @@
                            kommen aus zwei Eingängen gleichzeitig und es ist Deine Aufgabe
                            beide Gruppen weise zu koordinieren.
     </description>
-    <description lang="cs">Zatimco predchozi urovne po tobe nechtely moc rychlych reakci,
-                           tak tato bude trochu narocnejsi. Pingove vychazeji ze dvou vchodu
-                           najednou a je jen na tobe obe skupiny uhlidat.
+    <description lang="cs">Zatímco pøedchozí úrovnì po tobì nevy¾adovaly moc rychlých reakcí,
+                           tak ta následující je trochu nároènìj¹í. Pingové vycházejí ze dvou
+			   vchodù najednou a je jen na tobì obì skupiny uhlídat.
     </description>
     <description lang="tr">Önceki seviyelerin çözümler hýzlý hareketler yapmaný gerektirmiyordu,
                            sýradaki bu nedenle biraz zor. Her iki yönden gelen Pingularý iyi

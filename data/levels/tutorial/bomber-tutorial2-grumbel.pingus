@@ -5,7 +5,7 @@
     <levelname lang="en">Sacrifice a few and save the rest</levelname>
     <levelname lang="it">Sacrificane alcuni, ma salva gli altri</levelname>
     <levelname lang="de">Opfere einige und rette den Rest</levelname>
-    <levelname lang="cs">Par obetuj a zachran ostatni</levelname>
+    <levelname lang="cs">Pár obìtuj a zachraò ostatní</levelname>
     <levelname lang="tr">Çoðunluk için birkaçýný feda etmek gerek</levelname>
     <levelname lang="fr">Sacrifie quelques-uns pour sauver les autres</levelname>
     <levelname lang="sr">Zrtvuj nekoliko da spases ostale</levelname>
@@ -30,10 +30,10 @@
                            sich selbst sprengt. Dies wird ihn töten, aber es ist
                            gelegentlich notwendig einige zu opfern, um den Rest zu retten.
     </description>
-    <description lang="cs">Obcas, kdyz zadna jina akce neni k dispozici, musis si uvolnit
-                           cestu skrz zemi vybuchem. Pingove to ale umi udelat jen tak, ze se
-                           pri tom sami znici. Pres to, ze je to zabiji, tak je obcas nutne
-                           nekolik z nich obetovat, aby ostatni mohli byt zachraneni.
+    <description lang="cs">Obèas, kdy¾ nemá¹ jinou vhodnou akci k dispozici, musí¹ si uvolnit
+                           cestu skrz zemi výbuchem. Pingové to ale umí udìlat jen tak, ¾e se
+                           pøi tom sami znièí. I kdy¾ je to zabíjí, tak je nìkdy nutné
+                           nìkolik z nich obìtovat, abys zachránil ostatní.
     </description>
     <description lang="tr">Bazen, eðer baþka olasýlýk yoksa, yolu bombayla açman gerekebilir.
                            Pingular bunu, kendilerini feda ederek yapabilirler. Bu kayýp

@@ -5,7 +5,7 @@
     <levelname lang="en">Climb, Climber, climb... and build a bridge</levelname>
     <levelname lang="it">Sali, Arrampicatore... e fai un ponte</levelname>
     <levelname lang="de">Kletter, Climber, kletter.. und bau eine Brücke</levelname>
-    <levelname lang="cs">Splhej horolezce, splhej... a postav most</levelname>
+    <levelname lang="cs">©plhej horolezèe, ¹plhej... a postav most</levelname>
     <levelname lang="tr">Týrman, Climber, týrman ve bir köprü yap</levelname>
     <levelname lang="fr">Grimpe, Grimpe, Grimpe... et construit un pont</levelname>
     <levelname lang="sr">Penjanje, pentranje... i mostogradnja</levelname>
@@ -27,8 +27,8 @@
 			   Fähigkeit ermöglicht es einem Pingu senkrechte Wände zu erklettern und
 			   dadurch Dinge zu erreichen die sonst unmöglich wären.
     </description>
-    <description lang="cs">Zase tu mame novou schopnost - horolezectvi. Pingu, ktery se stane
-                           horolezcem, umi vysplhat na kolme zdi a dostane se tak na mista, kam
+    <description lang="cs">Zase tu máme novou schopnost - horolezectví. Pingu, který se stane
+                           horolezcem, umí vy¹plhat na kolmé zdi a dostane se tak na místa, kam
                            by se jinak nikdo nedostal.
     </description>
     <description lang="tr">Bir yeni eylem daha. Climber eylemi Pingu'nun düz duvarlara

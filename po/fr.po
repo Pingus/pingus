@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-09 13:25+0000\n"
+"POT-Creation-Date: 2004-04-15 18:33+0200\n"
 "PO-Revision-Date: 2004-04-08 01:50+0200\n"
 "Last-Translator: Philippe Saint-Pierre <stpere@linuxmail.org>\n"
 "Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx."
@@ -56,47 +56,47 @@ msgstr "-Graphiques"
 msgid "-Music"
 msgstr "-Musique"
 
-#: src/credits.cxx:87
+#: src/credits.cxx:89
 msgid "-Level Design"
 msgstr "-Conception des niveaux"
 
-#: src/credits.cxx:92
+#: src/credits.cxx:95
 msgid "-Story"
 msgstr "-Scénario"
 
-#: src/credits.cxx:96
+#: src/credits.cxx:99
 msgid "-Translation"
 msgstr "-Traduction"
 
-#: src/credits.cxx:110
+#: src/credits.cxx:115
 msgid "-Special"
 msgstr "-Spécial"
 
-#: src/credits.cxx:111
+#: src/credits.cxx:116
 msgid "-Thanks to"
 msgstr "-Remerciements à"
 
-#: src/credits.cxx:152
+#: src/credits.cxx:160
 msgid "_And a very Special Thanks"
 msgstr "_Et un merci spécial"
 
-#: src/credits.cxx:153
+#: src/credits.cxx:161
 msgid "_to all the people who"
 msgstr "_à tout ceux qui"
 
-#: src/credits.cxx:154
+#: src/credits.cxx:162
 msgid "_contribute to"
 msgstr "_contribuent"
 
-#: src/credits.cxx:155
+#: src/credits.cxx:163
 msgid "_Free Software!"
 msgstr "_aux logiciels libres!"
 
-#: src/credits.cxx:161
+#: src/credits.cxx:169
 msgid "_Thank you for"
 msgstr "_Merci"
 
-#: src/credits.cxx:162
+#: src/credits.cxx:170
 msgid "_playing!"
 msgstr "_d'avoir joué!"
 
@@ -229,7 +229,8 @@ msgid "Ctrl PageDown - decrease objects z-pos by 1"
 msgstr "Ctrl + PageSuiv - réduire la profondeur de 1 unité"
 
 #: src/editor/editor_help_screen.cxx:84
-msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.plf"
+#, fuzzy
+msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.pingus"
 msgstr "Convention de l'appellation: <NOM NIVEAU><NOMBRE>-<AUTEUR>.plf"
 
 #: src/editor/editor_help_screen.cxx:86

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-09 13:25+0000\n"
+"POT-Creation-Date: 2004-04-15 18:33+0200\n"
 "PO-Revision-Date: 2003-04-23 22:26+0200\n"
 "Last-Translator: Jan Morén <jan.moren@lucs.lu.se>\n"
 "Language-Team: sv <jan.moren@lucs.lu.se>\n"
@@ -56,47 +56,47 @@ msgstr "-Grafik"
 msgid "-Music"
 msgstr "-Musik"
 
-#: src/credits.cxx:87
+#: src/credits.cxx:89
 msgid "-Level Design"
 msgstr "-Nivådesign"
 
-#: src/credits.cxx:92
+#: src/credits.cxx:95
 msgid "-Story"
 msgstr "-Berättelse"
 
-#: src/credits.cxx:96
+#: src/credits.cxx:99
 msgid "-Translation"
 msgstr "-Översättning"
 
-#: src/credits.cxx:110
+#: src/credits.cxx:115
 msgid "-Special"
 msgstr "-Special"
 
-#: src/credits.cxx:111
+#: src/credits.cxx:116
 msgid "-Thanks to"
 msgstr "-Tack till"
 
-#: src/credits.cxx:152
+#: src/credits.cxx:160
 msgid "_And a very Special Thanks"
 msgstr "_Och ett Särskilt Tack"
 
-#: src/credits.cxx:153
+#: src/credits.cxx:161
 msgid "_to all the people who"
 msgstr "_till alla de som"
 
-#: src/credits.cxx:154
+#: src/credits.cxx:162
 msgid "_contribute to"
 msgstr "_bidrar till"
 
-#: src/credits.cxx:155
+#: src/credits.cxx:163
 msgid "_Free Software!"
 msgstr "_Fri mjukvara!"
 
-#: src/credits.cxx:161
+#: src/credits.cxx:169
 msgid "_Thank you for"
 msgstr "_Tack för att"
 
-#: src/credits.cxx:162
+#: src/credits.cxx:170
 msgid "_playing!"
 msgstr "_du spelar!"
 
@@ -230,7 +230,7 @@ msgstr "Ctrl PageDown   - minska objektets z-position med 1"
 
 #: src/editor/editor_help_screen.cxx:84
 #, fuzzy
-msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.plf"
+msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.pingus"
 msgstr "Namnstandard: <NIVÅNAMN><NUMMER>-<SKAPARE>.xml"
 
 #: src/editor/editor_help_screen.cxx:86
