@@ -1,4 +1,4 @@
-//  $Id: Pingus.hh,v 1.7 2000/04/24 13:15:41 grumbel Exp $
+//  $Id: Pingus.hh,v 1.8 2000/05/15 06:50:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,13 +23,15 @@
 #include <string>
 #include <ClanLib/core.h>
 
-
 #include "Intro.hh"
+
+void segfault_handler(int);
 
 class PingusMain : public CL_ClanApplication
 {
 private:
   bool    pingus_datadir_set;
+  bool    no_config_file;
 
   std::string pingus_datafile;
   std::string global_datafile;
@@ -54,8 +56,11 @@ public:
   void load_resources(std::string filename);
   bool do_lemmings_mode(void);
   bool do_worms_mode(void);
+
   void check_args(int argc, char* argv[]);
+  void quick_check_args(int argc, char* argv[]);
   void read_rc_file(void);
+
   void get_filenames(void);
   void init(int argc, char* argv[]);
   void init_clanlib(void);

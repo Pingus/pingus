@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.24 2000/05/04 20:19:27 grumbel Exp $
+//   $Id: Pingus.cc,v 1.25 2000/05/15 06:50:06 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -30,6 +30,8 @@
 #include <fstream>
 #include <sys/stat.h>
 
+#include <signal.h>
+
 #ifndef WIN32
 #  include <config.h>
 #  include <getopt.h>
@@ -59,6 +61,36 @@
 #include "PingusMenu.hh"
 #include "PingusMessageBox.hh"
 #include "particles/GroundParticle.hh"
+
+void
+segfault_handler(int signo)
+{
+  switch(signo)
+    {
+    case SIGSEGV:
+      puts("----------------------------------------------------------");
+      puts("segfault_handler: catched a SIGSEGV.\n");
+      puts("Woops, Pingus just crashed, congratulations you've found a bug.");
+      puts("Please write a little bug report to <grumbel@pingus.cx>, include informations");
+      puts("where exacly the SIGSEGV occured and how to reproduce it.");
+      puts("Also try include a backtrace, you can get it like this:\n");
+      puts("$ gdb pingus core");
+      puts("(gdb) bt");
+      puts("...\n");
+      puts("If that doesn't work, try this:\n");
+      puts("$ gdb pingus");
+      puts("(gdb) r");
+      puts("[play until it crashes again]");
+      puts("...\n");
+      exit(EXIT_FAILURE);
+      break;
+
+    default:
+      std::cout << "segfault_handler: Got unknown signal: " << signo
+		<< " ignoring" << std::endl;
+      break;
+    }
+}
 
 PingusMain::PingusMain()
 {
@@ -92,19 +124,37 @@ void PingusMain::deinit_modules()
 void
 PingusMain::read_rc_file(void)
 {
-  char*    homedir = getenv("HOME");
-  Config* config;
-  std::string   rcfile;
+  if (!no_config_file)
+    {
+      char*    homedir = getenv("HOME");
+      Config* config;
+      std::string   rcfile;
 
-  if (!homedir) {
-    rcfile = ".pingus/options";
-  } else {
-    rcfile = std::string(homedir) + "/.pingus/config";
-  }
+      if (!homedir) {
+	rcfile = ".pingus/options";
+      } else {
+	rcfile = std::string(homedir) + "/.pingus/config";
+      }
 
-  // FIXME: kind of weird...
-  config = new Config(rcfile);
-  delete config;
+      // FIXME: kind of weird...
+      config = new Config(rcfile);
+      delete config;
+    }
+}
+
+// Checking for all options, which needs to be known *before* the
+// config file is read. 
+void 
+PingusMain::quick_check_args(int argc, char* argv[])
+{
+  no_config_file = false;
+  for(int i=1; i < argc; i++)
+    {
+      if (strcmp(argv[i], "--no-cfg-file") == 0)
+	{
+	  no_config_file = true;
+	}
+    }
 }
 
 // check_ars() checks the command line for options and set the
@@ -157,6 +207,9 @@ PingusMain::check_args(int argc, char* argv[])
     {"audio-rate",       required_argument, 0, 139},
     {"audio-channels",   required_argument, 0, 140},
     {"audio-buffers",    required_argument, 0, 141},
+
+    // 
+    {"no-cfg-file",    no_argument, 0, 142},
     {0, 0, 0, 0}
   };
 
@@ -313,6 +366,10 @@ PingusMain::check_args(int argc, char* argv[])
       sscanf(optarg, "%d", &pingus_audio_buffers);
       break;
 
+    case 142: // --no-cfg-file
+      // Nothing, since that is handled in quick_check_args()
+      break;
+
     default:
       
       std::cout << "Unknow char: " << c << std::endl << std::endl;
@@ -324,8 +381,6 @@ PingusMain::check_args(int argc, char* argv[])
 	"                            Set the resolution for pingus (default: 640x480)\n"
 	"   -h, --help               Displays this screen\n"
 	"   --disable-intro          Disable intro\n"
-	"   -s, --enable-sound       Enable sound\n"
-	"   -m, --enable-music       Enable music\n"
 	"   -F, --disable-fullscreen Disable Fullscreen (default)\n"
 	"   -f, --enable-fullscreen  Enable Fullscreen\n"
 	"   -i, --enable-gimmicks    Enable some buggy development stuff\n"
@@ -337,15 +392,21 @@ PingusMain::check_args(int argc, char* argv[])
 	"   -v, --verbose            Print some more messages to stdout, can be set\n"
 	"                            multible times to increase verbosity\n"
 	"   -V, --version            Prints version number and exit\n"
-	"   -r, --record-demo FILE   Record a demo session to FILE\n"
-	"   -p, --play-demo FILE     Plays a demo session from FILE\n"
-	"   --fs-preload             Preload all Levelpreviews\n"
-	"   --fast                   Disable some cpu intensive features (not implemented\n"
-	"   --disable-previews       Disables all level preview in the level selector\n"
+	//	"   --fs-preload             Preload all Levelpreviews\n"
+	"   --fast                   Disable some cpu intensive features\n"
+	//	"   --disable-previews       Disables all level preview in the level selector\n"
 	"   --maintainer-mode        Enables some features, only interesting programmers\n"
 	"   -e, --editor             Launch the Level editor (experimental)\n"
 	"   --disable-auto_scrolling Disable automatic scrolling\n"
+	"   --no-cfg-file            Don't read ~/.pingus/config\n"
+
+	"Demo playing and recording:\n"
+	"   -r, --record-demo FILE   Record a demo session to FILE\n"
+	"   -p, --play-demo FILE     Plays a demo session from FILE\n"
+
 	"\nSound:\n"
+	"   -s, --enable-sound       Enable sound\n"
+	"   -m, --enable-music       Enable music\n"
 	"   --audio-format {8,16}    Number of bits (default: 16)\n"
 	"   --audio-rate INT         Audio rate in Hz (default: 44000)\n"
 	"   --audio-channels {1,2}   Mono(1) or Stereo(2) output (default: 2)\n"
@@ -547,6 +608,7 @@ PingusMain::init(int argc, char* argv[])
 {
   char c;
 
+  PingusMain::quick_check_args(argc, argv);
   PingusMain::read_rc_file();
   PingusMain::check_args(argc, argv);
 
@@ -673,6 +735,9 @@ int
 PingusMain::main(int argc, char** argv)
 {
   bool quit = false;
+
+  // Register the segfault_handler
+  signal(SIGSEGV, segfault_handler);
 
   try 
     {

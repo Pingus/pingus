@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.12 2000/05/12 13:34:47 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.13 2000/05/15 06:50:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -144,11 +144,12 @@ ObjectSelector::get_groundpiece()
       sur_obj.name = *i;
       sur_list.push_back(sur_obj);
 
-      if (!data_loaded && (j % 10))
+      if (!data_loaded && (j % 5) == 0)
 	{
 	  loading_screen.draw_progress(i->c_str(), (float)j / liste->size());
 	}
     }
+
   data_loaded = true;
   str = select_surface(sur_list);
 
@@ -331,6 +332,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.13  2000/05/15 06:50:06  grumbel
+Added option for not reading the config file and added a segfault catcher
+
 Revision 1.12  2000/05/12 13:34:47  grumbel
 Misc changes
 
