@@ -8,11 +8,12 @@
     <number-of-pingus>50</number-of-pingus>
     <number-to-save>25</number-to-save>
     <time>-1</time>
-    <width>1216</width>
-    <height>608</height>
+    <width>1024</width>
+    <height>768</height>
     <difficulty>40</difficulty>
     <playable>0</playable>
     <comment></comment>
+    <music>none</music>
   </global>
 
   <action-list>
@@ -25,64 +26,133 @@
     <floater count="20"/>
     <jumper count="20"/>
     <miner count="20"/>
+    <slider count="20"/>
   </action-list>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stone4</resource-ident>
-    <modifier>ROT270FLIP</modifier>
+  <resource-ident>signposts/danger</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>288</x-pos>
-    <y-pos>241</y-pos>
+    <x-pos>215</x-pos>
+    <y-pos>162</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stone4</resource-ident>
+  <resource-ident>signposts/danger</resource-ident>
     <modifier>ROT90</modifier>
   </resource></surface>
   <position>
-    <x-pos>416</x-pos>
-    <y-pos>239</y-pos>
+    <x-pos>366</x-pos>
+    <y-pos>260</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stone4</resource-ident>
+  <resource-ident>signposts/danger</resource-ident>
+    <modifier>ROT180</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>195</x-pos>
+    <y-pos>433</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>signposts/danger</resource-ident>
+    <modifier>ROT270</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>116</x-pos>
+    <y-pos>247</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>signposts/danger</resource-ident>
     <modifier>ROT0FLIP</modifier>
   </resource></surface>
   <position>
-    <x-pos>171</x-pos>
-    <y-pos>309</y-pos>
+    <x-pos>638</x-pos>
+    <y-pos>174</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="ground">
+<worldobj type="groundpiece">
+  <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stone4</resource-ident>
-    <modifier>ROT0FLIP</modifier>
+  <resource-ident>signposts/danger</resource-ident>
+    <modifier>ROT90FLIP</modifier>
   </resource></surface>
   <position>
-    <x-pos>498</x-pos>
-    <y-pos>313</y-pos>
+    <x-pos>789</x-pos>
+    <y-pos>272</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>signposts/danger</resource-ident>
+    <modifier>ROT180FLIP</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>618</x-pos>
+    <y-pos>445</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>signposts/danger</resource-ident>
+    <modifier>ROT270FLIP</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>531</x-pos>
+    <y-pos>261</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="solidcolor-background">
+<color>
+  <red>0</red>
+  <green>0</green>
+  <blue>0</blue>
+  <alpha>1</alpha>
+</color>
+</worldobj>
   <start-position>
   <position>
-    <x-pos>50</x-pos>
-    <y-pos>50</y-pos>
+    <x-pos>484</x-pos>
+    <y-pos>343</y-pos>
     <z-pos>1000</z-pos>
   </position>
   </start-position>
