@@ -20,6 +20,8 @@ section Cursors
 //	capbad	    = ../images/misc/capwrong.pcx   (type=surface, x=0, y=0, width=34, height=34, tcol=0);
 	capbad	    = ../images/cursors/capwrong.tga   (type=surface, x=0, y=0, width=40, height=40);
 
+	cross	    = ../images/cursors/cross.tga   (type=surface, x=0, y=0, width=40, height=40);
+
 	arrow_right = ../images/cursors/arrow_right.pcx (type=surface, x=0, y=0, width=23, height=9, tcol=0);
 	arrow_left = ../images/cursors/arrow_left.pcx  (type=surface, x=0, y=0, width=23, height=9, tcol=0);
 }
