@@ -71,7 +71,7 @@
 
 <hotspot>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpice4</resource-ident>
+    <resource-datafile>global</resource-datafile>  <resource-ident>GroundPieces/bpiece4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>600</x-pos>

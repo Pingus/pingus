@@ -195,7 +195,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice4</resource-ident>
+  <resource-ident>GroundPieces/bpiece4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>715</x-pos>
@@ -207,7 +207,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice4</resource-ident>
+  <resource-ident>GroundPieces/bpiece4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>670</x-pos>
@@ -219,7 +219,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice4</resource-ident>
+  <resource-ident>GroundPieces/bpiece4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>691</x-pos>
@@ -231,7 +231,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+  <resource-ident>GroundPieces/bpiece5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>273</x-pos>
@@ -243,7 +243,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+  <resource-ident>GroundPieces/bpiece5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>620</x-pos>
@@ -255,7 +255,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice1</resource-ident>
+  <resource-ident>GroundPieces/bpiece1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>504</x-pos>
@@ -267,7 +267,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice1</resource-ident>
+  <resource-ident>GroundPieces/bpiece1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>311</x-pos>
@@ -279,7 +279,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>426</x-pos>
@@ -291,7 +291,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+  <resource-ident>GroundPieces/bpiece5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>291</x-pos>
@@ -303,7 +303,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>212</x-pos>
@@ -315,7 +315,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice4</resource-ident>
+  <resource-ident>GroundPieces/bpiece4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1404</x-pos>
@@ -327,7 +327,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>234</x-pos>
@@ -339,7 +339,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>273</x-pos>
@@ -351,7 +351,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>734</x-pos>
@@ -363,7 +363,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>565</x-pos>
@@ -375,7 +375,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>644</x-pos>
@@ -387,7 +387,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1404</x-pos>
@@ -399,7 +399,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>252</x-pos>
@@ -411,7 +411,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+  <resource-ident>GroundPieces/bpiece5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>279</x-pos>
@@ -423,7 +423,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>266</x-pos>
@@ -435,7 +435,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice4</resource-ident>
+  <resource-ident>GroundPieces/bpiece4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>231</x-pos>
@@ -447,7 +447,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1036</x-pos>
@@ -459,7 +459,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>958</x-pos>
@@ -471,7 +471,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1092</x-pos>
@@ -483,7 +483,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1006</x-pos>
@@ -495,7 +495,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+  <resource-ident>GroundPieces/bpiece5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>496</x-pos>
@@ -507,7 +507,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+  <resource-ident>GroundPieces/bpiece5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>658</x-pos>
@@ -519,7 +519,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+  <resource-ident>GroundPieces/bpiece5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>825</x-pos>
@@ -531,7 +531,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+  <resource-ident>GroundPieces/bpiece5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>959</x-pos>
@@ -543,7 +543,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+  <resource-ident>GroundPieces/bpiece5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1048</x-pos>
@@ -555,7 +555,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+  <resource-ident>GroundPieces/bpiece5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>864</x-pos>
@@ -567,7 +567,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+  <resource-ident>GroundPieces/bpiece5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>827</x-pos>
@@ -579,7 +579,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+  <resource-ident>GroundPieces/bpiece5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>652</x-pos>
@@ -591,7 +591,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+  <resource-ident>GroundPieces/bpiece5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1024</x-pos>
@@ -603,7 +603,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+  <resource-ident>GroundPieces/bpiece5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>982</x-pos>
@@ -615,7 +615,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+  <resource-ident>GroundPieces/bpiece5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1085</x-pos>
@@ -627,7 +627,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+  <resource-ident>GroundPieces/bpiece5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>524</x-pos>
@@ -639,7 +639,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice4</resource-ident>
+  <resource-ident>GroundPieces/bpiece4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>884</x-pos>
@@ -651,7 +651,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice4</resource-ident>
+  <resource-ident>GroundPieces/bpiece4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>908</x-pos>
@@ -663,7 +663,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+  <resource-ident>GroundPieces/bpiece5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>629</x-pos>
@@ -675,7 +675,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+  <resource-ident>GroundPieces/bpiece5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>392</x-pos>
@@ -687,7 +687,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>961</x-pos>
@@ -699,7 +699,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice4</resource-ident>
+  <resource-ident>GroundPieces/bpiece4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>994</x-pos>
@@ -711,7 +711,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>236</x-pos>
@@ -723,7 +723,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice4</resource-ident>
+  <resource-ident>GroundPieces/bpiece4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1281</x-pos>
@@ -735,7 +735,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice1</resource-ident>
+  <resource-ident>GroundPieces/bpiece1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>384</x-pos>
@@ -747,7 +747,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice4</resource-ident>
+  <resource-ident>GroundPieces/bpiece4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>942</x-pos>
@@ -759,7 +759,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1337</x-pos>
@@ -771,7 +771,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1381</x-pos>
@@ -783,7 +783,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1204</x-pos>
@@ -795,7 +795,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+  <resource-ident>GroundPieces/bpiece5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1182</x-pos>
@@ -807,7 +807,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+  <resource-ident>GroundPieces/bpiece5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1235</x-pos>
@@ -819,7 +819,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice5</resource-ident>
+  <resource-ident>GroundPieces/bpiece5</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1118</x-pos>
@@ -831,7 +831,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1051</x-pos>
@@ -843,7 +843,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>772</x-pos>
@@ -855,7 +855,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice4</resource-ident>
+  <resource-ident>GroundPieces/bpiece4</resource-ident>
   </resource></surface>
   <position>
     <x-pos>734</x-pos>
@@ -867,7 +867,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice1</resource-ident>
+  <resource-ident>GroundPieces/bpiece1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>357</x-pos>
@@ -879,7 +879,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice1</resource-ident>
+  <resource-ident>GroundPieces/bpiece1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>433</x-pos>
@@ -891,7 +891,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice1</resource-ident>
+  <resource-ident>GroundPieces/bpiece1</resource-ident>
   </resource></surface>
   <position>
     <x-pos>408</x-pos>
@@ -903,7 +903,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1354</x-pos>
@@ -915,7 +915,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/bpice6</resource-ident>
+  <resource-ident>GroundPieces/bpiece6</resource-ident>
   </resource></surface>
   <position>
     <x-pos>1454</x-pos>
