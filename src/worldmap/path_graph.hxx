@@ -1,4 +1,4 @@
-//  $Id: path_graph.hxx,v 1.8 2002/11/03 23:31:35 grumbel Exp $
+//  $Id: path_graph.hxx,v 1.9 2003/04/01 18:24:25 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,6 +76,9 @@ public:
 
   EdgeId lookup_edge(const std::string& name);
   NodeId lookup_node(const std::string& name);
+
+  std::string lookup_node(EdgeId id);
+  std::string lookup_edge(NodeId id);
 
 private:
   void parse_nodes(xmlDocPtr doc, xmlNodePtr cur);

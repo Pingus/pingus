@@ -1,4 +1,4 @@
-//  $Id: path_graph.cxx,v 1.19 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: path_graph.cxx,v 1.20 2003/04/01 18:24:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -234,6 +234,36 @@ PathGraph::lookup_node(const std::string& name)
     {
       return i->second;
     }
+}
+
+std::string
+PathGraph::lookup_node(EdgeId id)
+{
+  for (std::map<std::string, NodeId>::iterator i = node_lookup.begin();
+       i != node_lookup.end(); ++i)
+    {
+      if (i->second == id)
+        {
+          return i->first;
+        }
+    }
+  std::cout << "PathGraph: Couldn't find id: " << id << std::endl;
+  return "error_node";
+}
+
+std::string
+PathGraph::lookup_edge(NodeId id)
+{
+  for (std::map<std::string, EdgeId>::iterator i = node_lookup.begin();
+       i != node_lookup.end(); ++i)
+    {
+      if (i->second == id)
+        {
+          return i->first;
+        }
+    }
+  std::cout << "PathGraph: Couldn't find id: " << id << std::endl;
+  return "error_node";  
 }
 
 Dot*

@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.38 2003/04/01 13:21:20 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.39 2003/04/01 18:24:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include <ClanLib/Display/Input/mouse.h>
 #include "../fonts.hxx"
 #include "../path_manager.hxx"
+#include "../stat_manager.hxx"
 #include "../system.hxx"
 #include "../pingus_resource.hxx"
 #include "../globals.hxx"
@@ -74,9 +75,25 @@ WorldMap::WorldMap(const std::string& arg_filename)
 
   pingus = new Pingus(path_graph);
   //std::cout << "PingusPtr: " << pingus << std::endl;
-  // FIXME: This should not be hardcoded, but instead be noted in the
-  // savegame or worldmap
-  pingus->set_position(0);
+
+  std::string node;
+  if (StatManager::instance()->get_string("current-tutorial-node", node))
+    {
+      NodeId id = path_graph->lookup_node(node);
+      if (id == NoNode)
+        {
+          pingus->set_position(0);
+        }
+      else
+        {
+          pingus->set_position(id);
+        }
+    }
+  else
+    {  // FIXME: This should not be hardcoded, but instead be noted in the
+      // savegame or worldmap
+      pingus->set_position(0);
+    }
 
   add_drawable(pingus);
 
@@ -309,6 +326,10 @@ WorldMap::on_primary_button_press(int x, int y)
                 {
                   if (maintainer_mode)
                     std::cout << "WorldMap: NO PATH TO NODE FOUND!" << std::endl;
+                }
+              else
+                {
+                  StatManager::instance()->set_string("current-tutorial-node", dot->get_name());
                 }
             }
           else
