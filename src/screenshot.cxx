@@ -1,4 +1,4 @@
-//  $Id: screenshot.cxx,v 1.6 2002/09/04 14:55:11 torangan Exp $
+//  $Id: screenshot.cxx,v 1.7 2002/10/06 17:13:24 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -85,11 +85,13 @@ Screenshot::save_16bit_target_to_file(CL_Target* target, std::string filename)
   target->lock();
   sbuffer = (unsigned char*)target->get_data();
   sbuffer_size = target->get_height() * target->get_pitch();
+  unsigned int sbytes_per_pixel = target->get_bytes_per_pixel();
 
   //std::cout << "sbuffer: " << sbuffer_size << std::endl;
   //std::cout << "buffer: " << buffer_size << std::endl;
 
-  for (unsigned int i=0,j=0; i < sbuffer_size; i+=2, j+=3)
+  for (unsigned int i = 0, j = 0; i < sbuffer_size;
+	i += sbytes_per_pixel, j += 3)
     {
       buffer[j + 0] = (*((unsigned short*)(sbuffer+i)) & target->get_red_mask())
 		       * 255 / target->get_red_mask();
