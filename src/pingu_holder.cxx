@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.cxx,v 1.6 2002/09/04 20:30:28 grumbel Exp $
+//  $Id: pingu_holder.cxx,v 1.7 2002/09/18 10:50:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,6 +68,8 @@ PinguHolder::draw (GraphicContext& gc)
   
   while(pingu != pingus.end())
     {
+      // FIXME: The draw-loop is not the place for things like this,
+      // this belongs in the update loop
       if ((*pingu)->get_status() == PS_DEAD)
 	{
 	  // Removing the dead pingu and setting the iterator back to
@@ -97,6 +99,18 @@ PinguHolder::draw (GraphicContext& gc)
     {
       if ((*pingu)->get_action()) 
 	(*pingu)->draw (gc);
+    }
+}
+
+void
+PinguHolder::update(float delta)
+{
+  // FIXME: This is a relictn, pingus should handle that themself
+  // FIXME: WorldObj::for_each_pingu (Func f); might cause throuble
+  // FIXME: with MSVC
+  for(PinguIter pingu = begin(); pingu != end(); ++pingu)
+    {
+      (*pingu)->update(delta);
     }
 }
 

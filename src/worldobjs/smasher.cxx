@@ -1,4 +1,4 @@
-//  $Id: smasher.cxx,v 1.7 2002/09/16 22:51:33 grumbel Exp $
+//  $Id: smasher.cxx,v 1.8 2002/09/18 10:50:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 #include "../sound.hxx"
 #include "../world.hxx"
 #include "../worldobjsdata/smasher_data.hxx"
+#include "../pingu_action.hxx"
 #include "smasher.hxx"
 
 namespace WorldObjs {
@@ -86,7 +87,8 @@ Smasher::update (float delta)
 					  static_cast<int>(data->pos.x + 250),
 					  static_cast<int>(data->pos.y + 190)))
 		    {
-		      (*pingu)->set_action(Actions::Splashed);
+		      if ((*pingu)->get_action()->get_type() != Actions::Splashed)
+			(*pingu)->set_action(Actions::Splashed);
 		    }
 		}
 	    }
@@ -137,11 +139,14 @@ Smasher::catch_pingu (Pingu* pingu)
 	  && pingu->get_x() > data->pos.x + 190
 	  && pingu->get_x() < data->pos.x + 210))
     {
-      if (!smashing) 
+      if (pingu->get_action()->get_type() != Actions::Splashed)
 	{
-	  count = 0;
-	  downwards = true;
-	  smashing = true; 
+	  if (!smashing) 
+	    {
+	      count = 0;
+	      downwards = true;
+	      smashing = true; 
+	    }
 	}
     }
 }

@@ -1,4 +1,4 @@
-//  $Id: blocker.hxx,v 1.9 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: blocker.hxx,v 1.10 2002/09/18 10:50:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,12 +41,11 @@ public:
  
   void  draw (GraphicContext& gc);
   void  update(float delta);
-  bool  standing_on_ground();
 
-  bool  need_catch();
-  void  catch_pingu(Pingu* pingu);
-  
 private:
+  bool  standing_on_ground();
+  void  catch_pingu(Pingu* pingu);
+
   Blocker (const Blocker&);
   Blocker operator= (const Blocker&);
 };

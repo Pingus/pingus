@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.25 2002/09/16 19:18:56 grumbel Exp $
+//  $Id: world.cxx,v 1.26 2002/09/18 10:50:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -187,20 +187,6 @@ World::update(float delta)
       // catch_pingu() is now done in relevant update() if WorldObj
       // needs to catch pingus.
       (*obj)->update(delta);
-    }
-  
-  // FIXME: This is a relictn, pingus should handle that themself
-  // FIXME: WorldObj::for_each_pingu (Func f); might cause throuble
-  // FIXME: with MSVC
-  for(PinguIter pingu = pingus->begin(); pingu != pingus->end(); ++pingu) {
-
-      (*pingu)->update(delta);
-      
-      if ((*pingu)->need_catch()) {
-	for(PinguIter i = pingus->begin(); i != pingus->end(); ++i) {
-	  (*pingu)->catch_pingu(*i);
-	}
-      }
     }
 
   // FIXME: Why is the particle holder still a seperate object?

@@ -1,4 +1,4 @@
-//  $Id: blocker.cxx,v 1.10 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: blocker.cxx,v 1.11 2002/09/18 10:50:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include "../pingu.hxx"
 #include "../pingus_resource.hxx"
 #include "../string_converter.hxx"
+#include "../pingu_holder.hxx"
+#include "../world.hxx"
 #include "blocker.hxx"
 
 namespace Actions {
@@ -59,7 +61,15 @@ Blocker::update(float delta)
     {
       pingu->set_action(Actions::Faller);
     }
-    
+  else
+    {
+      PinguHolder* pingus = WorldObj::get_world()->get_pingu_p();
+      for(PinguIter i = pingus->begin(); i != pingus->end(); ++i)
+	{
+	  catch_pingu(*i);
+	}
+    }
+
   UNUSED_ARG(delta);
 }
 
@@ -75,27 +85,23 @@ Blocker::standing_on_ground()
   return (rel_getpixel(0,-1) !=  Groundtype::GP_NOTHING);
 }
 
-bool
-Blocker::need_catch()
-{
-  return true;
-}
-
-
 void
 Blocker::catch_pingu(Pingu* target)
 {
-  if (target->get_x () > pingu->get_x () - 16 
-      && target->get_x () < pingu->get_x () + 16
-      && target->get_y () > pingu->get_y () - 32
-      && target->get_y () < pingu->get_y () + 5
-      ) 
+  if (target != pingu)
     {
-      if (target->get_x () > pingu->get_x ()) {
-	target->direction.right();
-      } else {
-	target->direction.left();
-      }
+      if (target->get_x () > pingu->get_x () - 16 
+	  && target->get_x () < pingu->get_x () + 16
+	  && target->get_y () > pingu->get_y () - 32
+	  && target->get_y () < pingu->get_y () + 5
+	  ) 
+	{
+	  if (target->get_x () > pingu->get_x ()) {
+	    target->direction.right();
+	  } else {
+	    target->direction.left();
+	  }
+	}
     }
 }
 
