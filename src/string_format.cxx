@@ -80,6 +80,10 @@ StringFormat::break_line (std::string text, int length, const CL_Font& font)
 
       previous_space = pos;
     }
+
+  if (font->get_text_width(text.substr(start_pos, text.length() - start_pos)) > length)
+    text[text.rfind(' ')] = '\n';
+
 #endif
   return text;
 }
