@@ -166,22 +166,21 @@ EditorView::get_y_offset ()
 void
 EditorView::draw (CL_Sprite& sur, const Vector& pos, int frame)
 {
+  sur.draw(int(pos.x + get_x_offset () + center.x),
+           int(pos.y + get_y_offset () + center.y));
 }
 
 void
 EditorView::draw (CL_Sprite& sur, const Vector& pos)
 {
+  sur.draw(int(pos.x + get_x_offset () + center.x),
+           int(pos.y + get_y_offset () + center.y));
 }
 
 void
 EditorView::draw (Sprite& sprite, const Vector& pos)
 {
-#ifdef CLANLIB_0_6
-  CL_Surface sur(sprite.get_surface ());
-  draw(sur,
-       (int) pos.x + sprite.get_x_align (),
-       (int) pos.y + sprite.get_y_align ());
-#endif
+  draw(sprite.get_sprite(), pos);
 }
 
 void

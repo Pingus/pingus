@@ -22,6 +22,7 @@
 #include "../gui/graphic_context.hxx"
 #include "dot.hxx"
 #include "../math.hxx"
+#include "../pingus_resource.hxx"
 #include "pingus.hxx"
 
 namespace Pingus {
@@ -30,21 +31,15 @@ namespace WorldMapNS {
 Pingus::Pingus (PathGraph* arg_path)
   : Drawable("pingus"),
     path(arg_path),
-    sprite ("worldmap/pingus", "core", 27.0f, Sprite::RIGHT),
-    sprite_standing ("worldmap/pingus_standing", "core"),
-    arrow ("worldmap/arrow", "core")
+    sprite (PingusResource::load_sprite("worldmap/pingus", "core")),
+    sprite_standing (PingusResource::load_sprite("worldmap/pingus_standing", "core")),
+    arrow (PingusResource::load_sprite("worldmap/arrow", "core"))
 {
   final_target_node = NoNode;
   current_node = NoNode;
 
-  arrow.set_align_center_bottom();
-
   pos.x = 320;
   pos.y = 200;
-
-  sprite.set_align (-sprite.get_width()/2,  2 - sprite.get_height());
-  sprite_standing.set_align (-sprite_standing.get_width()/2,
-                             -sprite_standing.get_height());
 }
 
 Pingus::~Pingus ()
@@ -60,12 +55,15 @@ Pingus::draw (GraphicContext& gc)
       gc.draw(arrow, path->get_dot(final_target_node)->get_pos());
     }
 
+#ifdef CLANLIB_0_6
   // FIXME: Replace the sprite and add up/down here
   float direction = get_direction();
+
   if (direction >= 0 && direction < 180)
     sprite.set_direction(Sprite::RIGHT);
   else
     sprite.set_direction(Sprite::LEFT);
+#endif
 
   if (!is_walking())
     gc.draw(sprite_standing, pos);

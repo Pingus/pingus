@@ -175,9 +175,9 @@ DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos)
     }
   else
     {
-#ifdef CLANLIB_0_6
-      sur.draw(w2s_x(x_pos), w2s_y(y_pos),
-               offset.z, offset.z);
+      sur.draw(w2s_x(x_pos), w2s_y(y_pos));
+#ifdef CLANLIB_0_6 // scale issue
+      offset.z, offset.z);
 #endif
     }
 }
@@ -185,18 +185,18 @@ DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos)
 void
 DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos, int frame)
 {
-#ifdef CLANLIB_0_6
+  // FIXME: CLANLIB_0_6, no frames in CL_Surface
   if (offset.z == 1.0)
     {
-      sur.draw(w2s_x(x_pos), w2s_y(y_pos), frame);
+      sur.draw(w2s_x(x_pos), w2s_y(y_pos));
     }
   else
     {
-      sur.draw(w2s_x(x_pos), w2s_y(y_pos),
-               offset.z, offset.z,
-               frame);
-    }
+      sur.draw(w2s_x(x_pos), w2s_y(y_pos));
+#ifdef CLANLIB_0_6 // no scale in cl_surface
+               offset.z, offset.z);
 #endif
+    }
 }
 
 void

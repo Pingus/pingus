@@ -31,11 +31,11 @@ namespace WorldMapNS {
 class LevelDot : public Dot
 {
 private:
-  Sprite green_dot_sur;
-  Sprite red_dot_sur;
-  Sprite unaccessible_dot_sur;
-  Sprite highlight_green_dot_sur;
-  Sprite highlight_red_dot_sur;
+  CL_Sprite green_dot_sur;
+  CL_Sprite red_dot_sur;
+  CL_Sprite unaccessible_dot_sur;
+  CL_Sprite highlight_green_dot_sur;
+  CL_Sprite highlight_red_dot_sur;
 
   std::string levelname;
   PLFHandle plf;

@@ -46,7 +46,6 @@ InfoBox::~InfoBox ()
 void
 InfoBox::draw (GraphicContext& gc)
 {
-#ifdef CLANLIB_0_6
   int x = static_cast<int>(gc.get_x_offset() + (gc.get_width ()/2));
   int y = static_cast<int>(gc.get_y_offset() + (gc.get_height()/2));
 
@@ -55,22 +54,21 @@ InfoBox::draw (GraphicContext& gc)
 
   if (is_open)
     {
-      int width = Fonts::pingus_small.get_text_width(data->info_text.c_str());
+      int width = Fonts::pingus_small.bounding_rect(0, 0, data->info_text).get_width();
       int border = 6;
       gc.draw_line(data->pos, data->pos + Vector(0, 0 - 100), 0.0f, 1.0f, 0.0f, 1.0f);
       gc.draw(data->sprite, data->pos);
-      CL_Display::fill_rect(x_pos - width/2 - border,
-                            y_pos - border,
-			    x_pos + width/2 + border,
-			    y_pos + Fonts::pingus_small->get_height() + border,
-			    0.0, 0.0, 0.0, 1.0);
-      gc.print_center(Fonts::pingus_small, x_pos, y_pos, data->info_text.c_str());
+      CL_Display::fill_rect(CL_Rect(x_pos - width/2 - border,
+                                    y_pos - border,
+                                    x_pos + width/2 + border,
+                                    y_pos + Fonts::pingus_small.get_height() + border),
+			    CL_Color(0, 0, 0, 255));
+      gc.print_center(Fonts::pingus_small, x_pos, y_pos, data->info_text);
     }
   else
     {
       gc.draw(data->sprite, data->pos);
     }
-#endif
 }
 
 void

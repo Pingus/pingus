@@ -34,9 +34,9 @@ class Pingus : public Drawable
 {
 private:
   PathGraph* path;
-  Sprite sprite;
-  Sprite sprite_standing;
-  Sprite arrow;
+  CL_Sprite sprite;
+  CL_Sprite sprite_standing;
+  CL_Sprite arrow;
 
   /** The node on which the pingu currently stands, NoNode if the pingu is
       currently on the move to another node */

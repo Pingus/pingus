@@ -42,19 +42,13 @@ namespace WorldMapNS {
 
 LevelDot::LevelDot(xmlDocPtr doc, xmlNodePtr cur)
   : Dot(doc, XMLhelper::skip_blank(cur->children)),
-    green_dot_sur("worldmap/dot_green", "core"),
-    red_dot_sur("worldmap/dot_red", "core"),
-    unaccessible_dot_sur("worldmap/dot_invalid", "core"),
-    highlight_green_dot_sur("worldmap/dot_green_hl", "core"),
-    highlight_red_dot_sur("worldmap/dot_red_hl", "core"),
+    green_dot_sur(PingusResource::load_sprite("worldmap/dot_green", "core")),
+    red_dot_sur(PingusResource::load_sprite("worldmap/dot_red", "core")),
+    unaccessible_dot_sur(PingusResource::load_sprite("worldmap/dot_invalid", "core")),
+    highlight_green_dot_sur(PingusResource::load_sprite("worldmap/dot_green_hl", "core")),
+    highlight_red_dot_sur(PingusResource::load_sprite("worldmap/dot_red_hl", "core")),
     plf(0)
 {
-  green_dot_sur.set_align_center();
-  red_dot_sur.set_align_center();
-  highlight_green_dot_sur.set_align_center();
-  highlight_red_dot_sur.set_align_center();
-  unaccessible_dot_sur.set_align_center();
-
   cur = cur->children;
   // Skip dot entry
   cur = cur->next;
@@ -152,12 +146,11 @@ LevelDot::accessible()
 void
 LevelDot::draw_hover(GraphicContext& gc)
 {
-#ifdef CLANLIB_0_6
   int pos_correction = 0;
 
   if (accessible())
     {
-      int length = Fonts::pingus_small.get_text_width(System::translate(get_plf()->get_levelname())) / 2;
+      int length = Fonts::pingus_small.bounding_rect(0, 0, System::translate(get_plf()->get_levelname())).get_width() / 2;
       int realpos = static_cast<int>(gc.world_to_screen(Vector(pos.x, pos.y, 0)).x);
       if (realpos - length < 0)
         pos_correction = realpos - length;
@@ -171,7 +164,7 @@ LevelDot::draw_hover(GraphicContext& gc)
     }
   else
     {
-      int length = Fonts::pingus_small.get_text_width(_("locked")) / 2;
+      int length  = Fonts::pingus_small.bounding_rect(0, 0, _("locked")).get_width() / 2;
       int realpos = static_cast<int>(gc.world_to_screen(Vector(pos.x, pos.y, 0)).x);
       if (realpos - length < 0)
         pos_correction = realpos - length;
@@ -190,7 +183,6 @@ LevelDot::draw_hover(GraphicContext& gc)
                       int(pos.x), int(pos.y - 56),
                       get_plf()->get_resname());
     }
-#endif
 }
 
 void

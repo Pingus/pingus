@@ -184,10 +184,13 @@
 
   <section name="worldmap">
     <sprite name="pingus">
+      <translation origin="bottom_center" x="0" y="2" />
       <image file="../images/core/worldmap/pingus.png">
         <grid
-          array="8,2"
-          height="24" name="pingus" width="24" x="0" y="0" />
+          pos="0,0" 
+          size="24,24"
+          array="8,2" 
+          />
       </image>
     </sprite>
 
@@ -195,31 +198,41 @@
       <image file="../images/core/worldmap/tube.png" />
     </sprite>
     <sprite name="dot_invalid">
+      <translation origin="center" />
       <image file="../images/core/worldmap/dot_invalid.png" />
     </sprite>
     <sprite name="dot_green">
+      <translation origin="center" />
       <image file="../images/core/worldmap/dot_green.png" />
     </sprite>
     <sprite name="dot_red">
+      <translation origin="center" />
       <image file="../images/core/worldmap/dot_red.png" />
     </sprite>
     <sprite name="dot_green_hl">
+      <translation origin="center" />
       <image file="../images/core/worldmap/dot_green_hl.png" />
     </sprite>
     <sprite name="dot_red_hl">
+      <translation origin="center" />
       <image file="../images/core/worldmap/dot_red_hl.png" />
     </sprite>
     <sprite name="dot_border">
+      <translation origin="center" />
       <image file="../images/core/worldmap/dot_border.png" />
     </sprite>
     <sprite name="flaggreen">
+      <translation origin="center" />
       <image file="../images/core/worldmap/flaggreen.png" />
     </sprite>
     <sprite name="arrow">
+      <translation origin="bottom_center" />
       <image file="../images/core/worldmap/arrow.png" />
     </sprite>
     <sprite name="pingus_standing">
-      <image file="../images/core/worldmap/pingus_standing.png" />
+      <translation origin="bottom_center" />
+      <image file="../images/core/worldmap/pingus_standing.png">
+      </image>
     </sprite>
     <sprite name="levelname_bg">
       <image file="../images/core/worldmap/levelname_bg.png" />

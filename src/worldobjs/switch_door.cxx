@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Display/pixel_buffer.h>
 #include "../col_map.hxx"
 #include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
@@ -106,8 +107,7 @@ SwitchDoor::update ()
 	  // it, we remove the door from the colmap
 	  if (current_door_height + 10 < data->door_height)
 	    {
-#ifdef CLANLIB_0_6
-	      world->get_colmap()->put(door_box,
+	      world->get_colmap()->put(door_box.get_frame_surface(0).get_pixeldata(),
 	                               static_cast<int>(data->door_pos.x),
 				       static_cast<int>(data->door_pos.y),
 				       Groundtype::GP_NOTHING);
@@ -117,7 +117,6 @@ SwitchDoor::update ()
 					 static_cast<int>(data->door_pos.y) + i * door_tile.get_height()
 					                                    + door_box.get_height(),
 					 Groundtype::GP_NOTHING);
-#endif
 	    }
 	}
     }

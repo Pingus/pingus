@@ -69,15 +69,13 @@ BufferGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos)
 void
 BufferGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos, int frame)
 {
-#ifdef CLANLIB_0_6
   //std::cout << "BufferGraphicContext: " << x_pos << ", " << y_pos  << " frame: " << frame << std::endl;
   try {
-    Blitter::put_surface(canvas, sur.get_provider(), x_pos, y_pos);
+    Blitter::put_surface(canvas, sur.get_pixeldata(), x_pos, y_pos);
   } catch (PingusError& err) {
     std::cout << "BufferGraphicContext: " << err.get_message() << std::endl;
   }
   UNUSED_ARG(frame);
-#endif
 }
 
 void
