@@ -759,6 +759,9 @@ textures/bwsortiebg.jpg \
 textures/clouds.jpg \
 textures/clouds2.jpg \
 textures/clouds3.png \
+textures/creepers.png \
+textures/creepers-mirrored.png \
+textures/swirljungle.png \
 textures/crystal.jpg \
 textures/cyanspace.jpg \
 textures/darkjungle.jpg \

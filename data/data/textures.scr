@@ -39,6 +39,10 @@ section Textures
 	darkjungle = ../images/textures/darkjungle.jpg (type=surface, x=0, y=0, width=300,height=500);
 	latejungle = ../images/textures/latejungle.jpg (type=surface, x=0, y=0, width=300,height=500);
 	nightjungle = ../images/textures/nightjungle.jpg (type=surface, x=0, y=0, width=300,height=500);
+        creepers = ../images/textures/creepers.png (type=surface, x=0, y=0, width=256, height=256);
+        creepers-mirrored = ../images/textures/creepers-mirrored.png (type=surface, x=0, y=0, width=256, height=256);
+        swirljungle = ../images/textures/swirljungle.png (type=surface, x=0, y=0, width=256, height=256);
+        
 
 	happyclouds = ../images/textures/happyclouds.jpg (type=surface, x=0, y=0, width=384,height=600);
 
