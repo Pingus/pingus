@@ -19,12 +19,17 @@
 require_once("xml-search.inc");
 require_once("level-cache.inc");
 require_once("mail-settings.inc");
+require_once("htpasswd.inc");
 
 // ==================================================================
 // Admin login.
 // ==================================================================
-$admin_passwd = "testadmin";
-$is_admin = ($_SERVER['PHP_AUTH_PW'] === $admin_passwd);
+
+$htpasswd = load_htpasswd();
+$is_admin = False;
+if ( isset($_SERVER['PHP_AUTH_PW']))
+  $is_admin = test_htpasswd( $htpasswd,  "admin", $_SERVER['PHP_AUTH_PW'] );
+
 if ( isset($_GET["adminlogin"]))
 {
   if (!isset($_SERVER['PHP_AUTH_USER']))
@@ -37,7 +42,7 @@ if ( isset($_GET["adminlogin"]))
   else
   {
     if ( !isset($_SERVER['PHP_AUTH_PW']) ||
-      $_SERVER['PHP_AUTH_PW'] != $admin_passwd )
+      !test_htpasswd( $htpasswd,  "admin", $_SERVER['PHP_AUTH_PW'] ))
     {
       header('HTTP/1.0 401 Unauthorized');
       echo 'Wrong password. Hit Back.';

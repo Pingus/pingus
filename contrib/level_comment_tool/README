@@ -20,7 +20,7 @@ Installing:
 
 Copyright
 
-Pingus Level Feedback System is (c) 2003 by Jarno Elonen
+Pingus Level Feedback System is (c) 2003-2004 by Jarno Elonen
 
   This program is free software; you can redistribute it and/or
   modify it under the terms of the GNU General Public License
@@ -36,3 +36,9 @@ Pingus Level Feedback System is (c) 2003 by Jarno Elonen
   along with this program; if not, write to the Free Software
   Foundation, Inc., 59 Temple Place - Suite 330, Boston,
   MA  02111-1307, USA.
+
+NOTE: 
+
+  Unlike other parts, 'htpasswd.inc' is licensed under Modified BSD
+  license, which is less restrictive than GPL. You can, however,
+  relicense it under the GPL, if necessary.
