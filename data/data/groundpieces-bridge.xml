@@ -5,25 +5,25 @@
 <resources>
   <section name="misc">
       <sprite name="bridge_left">
-        <image file="images/groundpieces/bridge/misc/bridge_left.png"/>
+        <image file="../images/groundpieces/bridge/misc/bridge_left.png"/>
       </sprite>
 
       <sprite name="bridge_right">
-        <image file="images/groundpieces/bridge/misc/bridge_right.png"/>
+        <image file="../images/groundpieces/bridge/misc/bridge_right.png"/>
       </sprite>
 
   </section>
   <section name="space">
       <sprite name="grid1">
-        <image file="images/groundpieces/bridge/space/grid1.png"/>
+        <image file="../images/groundpieces/bridge/space/grid1.png"/>
       </sprite>
 
       <sprite name="grid2">
-        <image file="images/groundpieces/bridge/space/grid2.png"/>
+        <image file="../images/groundpieces/bridge/space/grid2.png"/>
       </sprite>
 
       <sprite name="grid3">
-        <image file="images/groundpieces/bridge/space/grid3.png"/>
+        <image file="../images/groundpieces/bridge/space/grid3.png"/>
       </sprite>
 
   </section>

@@ -105,7 +105,14 @@ PingusResource::load_sprite(const std::string& res_name,
     CL_Sprite sprite(res_name, &res);
     return sprite;
   } catch (CL_Error& err) {
-    std::cout << "PingusResource::load_sprite: CL_Error: " << res_name << ", " << datafile << std::endl;
+      std::list<std::string> liste = res.get_resources_of_type("sprite");
+      for(std::list<std::string>::iterator i = liste.begin(); i != liste.end(); ++i)
+        {
+          std::cout << datafile << ": '" << *i << "'" <<  std::endl;
+        }
+
+      std::cout << "PingusResource::load_sprite: CL_Error: '" << res_name << "', '" << datafile  << "'" << std::endl;
+      std::cout << "CL_Error: " << err.message << std::endl;
     CL_ResourceManager res_mgr = get("core");
     return CL_Sprite("misc/404sprite", &res_mgr);
   }

@@ -79,7 +79,7 @@
                               (indent (1+ level))
                               "<sprite name=\"" (cut-extension el) "\">\n"
                               (indent (+ 2 level))
-                              "<image file=\"" path "/" el "\"/>\n"
+                              "<image file=\"../" path "/" el "\"/>\n"
                               (indent (1+ level))"</sprite>\n"
                               ))
 	      images)

@@ -100,8 +100,17 @@
     <surface file="../images/particles/snow4.png" height="3" name="snow4" width="3" x="0" y="0" />
     <surface file="../images/particles/snow5.png" height="2" name="snow5" width="2" x="0" y="0" />
     <surface file="../images/particles/ground_snow.png" height="2" name="ground_snow" width="3" x="0" y="0" />
-    <surface file="../images/particles/rain_splash.png" height="5" name="rain_splash" width="16" x="0" y="0" />
-    <surface file="../images/particles/rain1.png" height="32" name="rain1" width="18" x="0" y="0" />
-    <surface file="../images/particles/rain2.png" height="32" name="rain2" width="18" x="0" y="0" />
+
+    <sprite name="rain_splash">
+      <image file="../images/particles/rain_splash.png" />
+    </sprite>
+    
+    <sprite name="rain1">
+      <image file="../images/particles/rain1.png" />
+    </sprite>
+
+    <sprite name="rain2">
+      <image file="../images/particles/rain2.png" />
+    </sprite>
   </section>
 </resources>
