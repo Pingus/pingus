@@ -1,0 +1,68 @@
+/* This level was created with the PLE
+ * $Id: crystal5.plf,v 1.1 2000/06/27 16:02:32 grumbel Exp $
+ */
+global {
+  author = "Ingo Ruhnke <grumbel@gmx.de>";
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "Only the fastest will survive";
+  description = "
+
+";
+  number_of_pingus = 100;
+  number_to_save = 50;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 1408;
+  height  = 704;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures.dat)"Textures/crystal";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
+}
+
+buttons {
+  blocker = 5;
+  bridger = 5;
+  digger = 5;
+  jumper = 5;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 515;
+  y_pos = 183;
+  z_pos = 0;
+  release_rate = 25;
+  direction = right;
+}
+
+exit {
+  image = (resource)"Exits/stone";
+  x_pos = 1150;
+  y_pos = 450;
+  z_pos = 0;
+}
+
+trap {
+  name = "spike";
+  x_pos = 729;
+  y_pos = 227;
+  z_pos = 100;
+}
+
+/* EOF */

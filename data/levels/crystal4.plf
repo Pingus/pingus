@@ -1,0 +1,155 @@
+/* This level was created with the PLE
+ * $Id: crystal4.plf,v 1.1 2000/06/27 16:02:32 grumbel Exp $
+ */
+global {
+  author = "Ingo Ruhnke <grumbel@gmx.de>";
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "Crystal Snakes";
+  description = "After the last levels, this one looks pretty easy, but things are not always what they seem to be...";
+  number_of_pingus = 100;
+  number_to_save = 50;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 1200;
+  height  = 600;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures.dat)"Textures/crystal";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
+}
+
+buttons {
+  basher = 5;
+  blocker = 5;
+  bomber = 5;
+  bridger = 2;
+  digger = 5;
+  jumper = 5;
+  miner = 5;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Crystal/smcrystal";
+  x_pos = 202;
+  y_pos = 135;
+  z_pos = -200;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Crystal/pipeend";
+  x_pos = 203;
+  y_pos = 155;
+  z_pos = -100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Crystal/pipeend";
+  x_pos = 224;
+  y_pos = 164;
+  z_pos = -100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Crystal/pipeend";
+  x_pos = 243;
+  y_pos = 164;
+  z_pos = -100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Crystal/pipeend";
+  x_pos = 261;
+  y_pos = 154;
+  z_pos = -100;
+  speed = -1;
+  para = "1";
+}
+
+entrance {
+  type  = generic;
+  x_pos = 251;
+  y_pos = 183;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+exit {
+  image = (resource)"Exits/stone";
+  x_pos = 927;
+  y_pos = 307;
+  z_pos = 0;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Crystal/pipeend";
+  x_pos = 251;
+  y_pos = 148;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Crystal/pipeend";
+  x_pos = 209;
+  y_pos = 148;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Crystal/pipeend";
+  x_pos = 232;
+  y_pos = 142;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+trap {
+  name = "spike";
+  x_pos = 382;
+  y_pos = 421;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 572;
+  y_pos = 361;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 527;
+  y_pos = 289;
+  z_pos = 100;
+}
+
+/* EOF */
