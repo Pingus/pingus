@@ -1,4 +1,4 @@
-//  $Id: PingusDemo.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: PingusDemo.cc,v 1.4 2000/02/18 03:08:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,19 +36,22 @@ PingusDemo::~PingusDemo()
 void
 PingusDemo::open(std::string filename, PingusDemoMode mode)
 {
-  switch(mode) {
-  case (PingusDemoMode)play:
-    in.open(filename.c_str());
+  std::cout << "PingusDemo:open(" << filename << ", " << mode << ")" << std::endl;
+
+  switch(mode) 
+    {
+    case (PingusDemoMode)play:
+      in.open(filename.c_str());
     
-    if (!in) 
-      throw PingusError("PingusDemo: Couldn't open out file: " + filename);
-    break;
-  case (PingusDemoMode)record:
-    out.open(filename.c_str());
-    if (!out) 
-      throw PingusError("PingusDemo: Couldn't open in file: " + filename);
-    break;
-  }
+      if (!in) 
+	throw PingusError("PingusDemo: Couldn't open out file: " + filename);
+      break;
+    case (PingusDemoMode)record:
+      out.open(filename.c_str());
+      if (!out) 
+	throw PingusError("PingusDemo: Couldn't open in file: " + filename);
+      break;
+    }
 }
 
 PingusEvent
@@ -83,7 +86,7 @@ void
 PingusDemo::set_next_event(std::string event)
 {
   out << event << std::endl;
-  std::cout << event << std::endl;
+  std::cout<< "PingusDemo: " << event << std::endl;
 }
 
 /* EOF */

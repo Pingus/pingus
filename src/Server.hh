@@ -1,4 +1,4 @@
-//  $Id: Server.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: Server.hh,v 1.4 2000/02/18 03:08:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ protected:
   PingusDemo demo_out;
   PingusDemo* demo_in;
   bool finished;
-  
+
 public:
   Server();
   virtual ~Server();

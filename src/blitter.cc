@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: blitter.cc,v 1.4 2000/02/18 03:08:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -164,77 +164,6 @@ put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
   provider->unlock();  
 }
 
-/*void
-put_surface(CL_LockableSurface* tsurface, CL_Surface* ssurface,
-	    int x, int y)
-{
-  put_surface(tsurface, ssurface->get_provider(), x, y);
-}*/
-
-/*
-void
-put_surface(CL_LockableSurface* tsurface, CL_SurfaceProvider* sprovider,
-	    int x, int y)
-{
-  int start_i;
-  unsigned char* tbuffer; // Target buffer
-  int twidth, theight, tpitch;
-  
-  unsigned char* sbuffer; // Source buffer
-  int swidth, sheight, spitch;
-
-  CL_Palette* palette;
-  int x_offset, y_offset;
-
-  assert(sprovider->get_pixel_format() == PAL8);
-  //  assert(provider->get_pixel_format() == RGBA8888);
-
-  tsurface->lock();
-  sprovider->lock();
-
-  tbuffer = static_cast<unsigned char*>(tsurface->get_data());
-  sbuffer = static_cast<unsigned char*>(sprovider->get_data());
-  
-  palette = sprovider->get_palette();
-  assert(palette);
-
-  twidth  = tsurface->get_width();
-  theight = tsurface->get_height();
-  tpitch  = tsurface->get_pitch();
-
-  swidth  = sprovider->get_width();
-  sheight = sprovider->get_height();
-  spitch  = sprovider->get_pitch();
-
-  if (y < 0)
-    y_offset = 0-y;
-  else 
-    y_offset = 0;
-  
-  if (x < 0) 
-    x_offset = -x;
-  else
-    x_offset = 0;
-
-  for(int line=y_offset; line < sheight && (line + y) < theight; ++line) {
-    //    std::cout << "Line: " << line << std::endl;
-    start_i = ((line + y) * tpitch) + (x*4);
-
-    for(int i=start_i+(4*x_offset),j=line*spitch+x_offset; 
-	i < start_i + (4*swidth) && (i-start_i+(x*4)) < (4*twidth); i+=4,++j) {
-      if (sbuffer[j] != sprovider->get_transcol()) {
-	tbuffer[i + 0] = 255;                                  // alpha
-	tbuffer[i + 1] = palette->palette[sbuffer[j] * 3 + 2]; // blue
-	tbuffer[i + 2] = palette->palette[sbuffer[j] * 3 + 1]; // green
-	tbuffer[i + 3] = palette->palette[sbuffer[j] * 3 + 0]; // red
-      }
-    }
-  }
-
-  sprovider->unlock();
-  tsurface->unlock();  
-}
-*/
 // Converts a SurfaceProvider based surface, to a Canvas
 // based one. The old one will not be deleted.
 CL_Surface*
@@ -249,6 +178,14 @@ convert_to_emptyprovider(CL_Surface* ssurf)
 CL_Canvas*
 convert_to_emptyprovider(CL_SurfaceProvider* sprov)
 {
+  /*  CL_Canvas* canvas;
+
+  canvas = new CL_Canvas(sprov->get_width(), sprov->get_height());
+  
+  sprov->put_target(canvas);
+
+  return canvas;
+  */
   CL_Canvas* tprov;
   CL_Palette* palette;
   unsigned char* sbuffer;

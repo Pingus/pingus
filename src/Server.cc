@@ -1,4 +1,4 @@
-//  $Id: Server.cc,v 1.4 2000/02/17 01:25:26 grumbel Exp $
+//  $Id: Server.cc,v 1.5 2000/02/18 03:08:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,7 @@ Server::Server()
   demo_mode = false;
   get_next_event = true;
   finished = false;
+  demo_out.open("/tmp/demo.plt", (PingusDemoMode)record); 
 }
 
 Server::~Server()
@@ -76,15 +77,15 @@ Server::let_move()
 void
 Server::send_event(std::string event)
 {
-  if (record_demo) {
-    std::string str;
-    char temp[256];
-    sprintf(temp, "%d", GameTime::get_time());
-    str += temp;
-    str += ":";
-    str += event;
-    demo_out.set_next_event(str);
-  }
+  std::string str;
+  char temp[1024];
+  
+  sprintf(temp, "%d", GameTime::get_time());
+  str += temp;
+  str += ":";
+  str += event;
+  demo_out.set_next_event(str);
+
   process_event(event);
 }
 

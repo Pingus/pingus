@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.6 2000/02/17 01:25:26 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.7 2000/02/18 03:08:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -111,6 +111,7 @@ PingusSpotMap::PingusSpotMap(PLF* plf)
 PingusSpotMap::~PingusSpotMap(void)
 {
   delete map_surface;
+
   std::cout << "Trying to delete the map..." << std::flush;
   for(std::vector<vector<MapTileSurface> >::size_type x = 0; x < tile.size(); x++) 
     {
@@ -125,16 +126,20 @@ PingusSpotMap::~PingusSpotMap(void)
 void
 PingusSpotMap::gen_tiles(void)
 {
-  if (verbose) {
-    std::cout << "PingusSpotMap_TilewWidth: " << width / tile_size << std::endl;
-    std::cout << "PingusSpotMap_TilewHeight: " << height / tile_size << std::endl;
-  }  
+  if (verbose) 
+    {
+      std::cout << "PingusSpotMap_TilewWidth: " << width / tile_size << std::endl;
+      std::cout << "PingusSpotMap_TilewHeight: " << height / tile_size << std::endl;
+    }  
   
   tile.resize(width/tile_size);
-  for(TileIter i=0; i < tile.size(); ++i) {
-    tile[i].resize(height/tile_size);
-  }
-  create_maptiles(map_surface->get_provider());
+  
+  for(TileIter i=0; i < tile.size(); ++i) 
+    {
+      tile[i].resize(height/tile_size);
+    }
+  
+  create_maptiles();
 }
 
 void
@@ -169,20 +174,31 @@ PingusSpotMap::load(std::string filename)
     }
   
   // Allocating the map provider
-  provider = new CL_Canvas(width, height, 1);
+  CL_Canvas* canvas = new CL_Canvas(width, height);
 
   // Drawing all surfaces to the provider
-  for(std::vector<surface_data>::size_type i=0; i < surfaces.size(); ++i) 
+  for(std::vector<surface_data>::iterator i = surfaces.begin(); 
+      i != surfaces.end(); 
+      i++)
     {
       // test cause png
-       put_surface(provider, surfaces[i].surface->get_provider(),
-      surfaces[i].x_pos, surfaces[i].y_pos);
-      //CL_Target* target = provider;
-       //surfaces[i].surface->put_target(surfaces[i].x_pos, surfaces[i].y_pos, 0, provider);
+      if (i->surface->get_provider()->get_depth() == 8)
+	{
+	  put_surface(canvas, i->surface->get_provider(),
+		      i->x_pos, i->y_pos);
+	}
+      else
+	{
+	  std::cout << "Color depth: " << i->surface->get_provider()->get_depth() << std::endl;
+	  canvas->lock();
+	  i->surface->put_target(i->x_pos, i->y_pos, 0, canvas);
+	  canvas->unlock();  
+	}
     }
 
   // Generate the map surface
-  map_surface = CL_Surface::create(provider, true);
+  map_provider = canvas;
+  map_surface = CL_Surface::create(map_provider, true);
 }
 
 // Draws the map with a offset, needed for scrolling
@@ -213,7 +229,8 @@ PingusSpotMap::draw_offset(int of_x, int of_y, float s)
     } 
   else 
     {
-      map_surface->put_screen(int(of_x * s), int(of_y * s), s, s);
+      std::cout << "Zooming is at the moment not supported" << std::endl;
+      // map_surface->put_screen(int(of_x * s), int(of_y * s), s, s);
     }
 }
 
@@ -334,28 +351,28 @@ PingusSpotMap::get_colmap(void)
 CL_Surface*
 PingusSpotMap::get_surface(void)
 {
+  std::cout << "PingusSpotMap::get_surface() not supported" << std::endl;
   return map_surface;
 }
 
 void
-PingusSpotMap::create_maptiles(CL_SurfaceProvider* prov)
+PingusSpotMap::create_maptiles()
 {
-  CL_Surface* temp_surface;
+  CL_Canvas* canvas;
 
-  for(TileIter x=0; x < tile.size(); ++x) {
-    for(TileIter y=0; y < tile[x].size(); ++y) {
-      // FIXME: Memory leak?!
-      temp_surface = CL_SpriteSubarrayProvider::create(prov,
-						       x * tile_size,
-						       y * tile_size,
-						       tile_size,
-						       tile_size,
-						       1, 1);
-      tile[x][y].surface = convert_to_emptyprovider(temp_surface);
-      tile[x][y].check_empty();
-      // We are not deleting temp_surface, since elsewhere we would get a segfault
+  for(TileIter x=0; x < tile.size(); ++x) 
+    {
+      for(TileIter y=0; y < tile[x].size(); ++y) 
+	{
+	  canvas = new CL_Canvas(tile_size, tile_size);
+	  canvas->lock();
+	  map_surface->put_target(-x * tile_size, -y * tile_size, 0, canvas);
+	  canvas->unlock();
+	  tile[x][y].surface = CL_Surface::create(canvas, true);
+	  tile[x][y].check_empty();
+
+	}
     }
-  }
 }
 
 /* EOF */

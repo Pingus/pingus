@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.4 2000/02/15 13:09:50 grumbel Exp $
+//  $Id: ColMap.cc,v 1.5 2000/02/18 03:08:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -187,46 +187,92 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, surface_data::Ty
 
   provider->lock();
   
-  if (provider->get_depth() != 8) {
-    std::cout << "ColMap: Not a 256 color hotspot! Ignoring the surface." << std::endl;
-  } else {
-    unsigned char* buffer;
-    int w = provider->get_width();
-    int h = provider->get_height();
-
-    buffer = static_cast<unsigned char*>(provider->get_data());
-    
-    for(int line = 0; line < h; ++line) {
-      for (int i = (width * (sur_y + line)) + sur_x, j=w * line;
-	   (i < (width * height)) && ((j - w * line) < w);
-	   ++i, ++j)
+  if (provider->get_depth() == 32) 
+    {
+      //std::cout << "ColMap: Not a 256 color hotspot! Ignoring the surface." << std::endl;
+      unsigned char* buffer;
+      int w = provider->get_width();
+      int h = provider->get_height();
+      
+      buffer = static_cast<unsigned char*>(provider->get_data());
+      
+      for(int line = 0; line < h; ++line) 
 	{
-	  if (j < 0 || j > (w * h))
-	  continue;
+	  for (int i = (width * (sur_y + line)) + sur_x, j=w * line;
+	       (i < (width * height)) && ((j - w * line) < w);
+	       i++, j++)
+	    {
+	      if (j < 0 || j > (w * h))
+		continue;
 	  
-	  if (i < 0 || i > (width * height))
-	    continue;
+	      if (i < 0 || i > (width * height))
+		continue;
 	  
-	  if (buffer[j]) {
-	    switch (type) {
-	    case surface_data::GROUND:
-	      colmap[i] = WALL;
-	      break;
-	    case surface_data::SOLID:
-	      colmap[i] = SOLID;
-	      break;
-	    case surface_data::BRIDGE:
-	      colmap[i] = BRIDGE;
-	      break;
-	    default:
-	      std::cout << "Colmap::put() Undefinit type" << std::endl;
-	      break;
+	      //cout << " " << (int)buffer[j*4] << flush;
+	      if (buffer[j*4] != 0) 
+		{
+		  switch (type) 
+		    {
+		    case surface_data::GROUND:
+		      colmap[i] = WALL;
+		      break;
+		    case surface_data::SOLID:
+		      colmap[i] = SOLID;
+		      break;
+		    case surface_data::BRIDGE:
+		      colmap[i] = BRIDGE;
+		      break;
+		    default:
+		      std::cout << "Colmap::put() Undefinit type" << std::endl;
+		      break;
+		    }
+		}
 	    }
-	  }
 	}
     }
-    provider->unlock();
-  }
+  else if ((provider->get_depth() == 8)) 
+    {
+      unsigned char* buffer;
+      int w = provider->get_width();
+      int h = provider->get_height();
+
+      buffer = static_cast<unsigned char*>(provider->get_data());
+    
+      for(int line = 0; line < h; ++line) {
+	for (int i = (width * (sur_y + line)) + sur_x, j=w * line;
+	     (i < (width * height)) && ((j - w * line) < w);
+	     ++i, ++j)
+	  {
+	    if (j < 0 || j > (w * h))
+	      continue;
+	  
+	    if (i < 0 || i > (width * height))
+	      continue;
+	  
+	    if (buffer[j]) {
+	      switch (type) {
+	      case surface_data::GROUND:
+		colmap[i] = WALL;
+		break;
+	      case surface_data::SOLID:
+		colmap[i] = SOLID;
+		break;
+	      case surface_data::BRIDGE:
+		colmap[i] = BRIDGE;
+		break;
+	      default:
+		std::cout << "Colmap::put() Undefinit type" << std::endl;
+		break;
+	      }
+	    }
+	  }
+      }
+    }
+  else
+    {
+      std::cout << "ColMap: Unsupported color depth, ignoring" << std::endl;
+    }
+  provider->unlock();
 }
 
 /* EOF */
