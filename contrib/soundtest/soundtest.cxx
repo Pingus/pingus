@@ -1,4 +1,4 @@
-//  $Id: soundtest.cxx,v 1.3 2003/02/18 18:41:58 grumbel Exp $
+//  $Id: soundtest.cxx,v 1.4 2003/03/01 22:31:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,10 @@ Soundtest::main(int argc, char** argv)
             << "right or left mouse click will cause a sound effect to be played\n"
             <<" panning will be according to the current mouse position\n\n" << std::endl;
 
+  sound_enabled      = true;
+  music_enabled      = true;
+  pingus_debug_flags = ~0;
+
   CL_SetupCore::init ();
   CL_SetupDisplay::init();
 
@@ -45,29 +49,25 @@ Soundtest::main(int argc, char** argv)
   path_manager.add_path ("../../data/");
   path_manager.find_path("music/pingus-1.it");
 
-  sound_enabled      = true;
-  music_enabled      = true;
-  pingus_debug_flags = ~0;
-
   PingusSound::init();
 
-  PingusSound::play_music("music/pingus-1.it");
+  PingusSound::play_music("pingus-1.it");
 
   bool left_down = false;
   while (true)
     {
       if (CL_Keyboard::get_keycode(CL_KEY_1))
-        PingusSound::play_music("music/pingus-1.it");
+        PingusSound::play_music("pingus-1.it");
       else if (CL_Keyboard::get_keycode(CL_KEY_2))
-        PingusSound::play_music("music/pingus-2.it");
+        PingusSound::play_music("pingus-2.it");
       else if (CL_Keyboard::get_keycode(CL_KEY_3))
-        PingusSound::play_music("music/pingus-3.it");
+        PingusSound::play_music("pingus-3.it");
       else if (CL_Keyboard::get_keycode(CL_KEY_4))
-        PingusSound::play_music("music/pingus-5.it");
+        PingusSound::play_music("pingus-5.it");
       else if (CL_Keyboard::get_keycode(CL_KEY_5))
-        PingusSound::play_music("music/pingus-5.it");
+        PingusSound::play_music("pingus-5.it");
       else if (CL_Keyboard::get_keycode(CL_KEY_6))
-        PingusSound::play_music("music/pingus-6.it");      
+        PingusSound::play_music("pingus-6.it");      
       else if (CL_Keyboard::get_keycode(CL_KEY_0))
         PingusSound::stop_music();
       
