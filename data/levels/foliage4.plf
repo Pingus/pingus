@@ -1,13 +1,11 @@
 /* This level was created with the PLE
- * $Id: foliage4.plf,v 1.1 2000/05/25 16:46:13 grumbel Exp $
+ * $Id: foliage4.plf,v 1.2 2000/05/28 16:46:51 grumbel Exp $
  */
 global {
   start_x_pos = 0;
   start_y_pos = 0;
-  levelname = "PLE Level";
-  description = "This level has no name
-
-";
+  levelname = "Foliage 4 - Mushrooms all around";
+  description = "abaoeubho thotehunto eh unaoh untohe nutoh untohe nutoh utnohe untoheu tohus taoeu oheutho eauhuh ntoheuntha.thuthu.tah.t.ht.t ht.h .th. nt.h .tnh.";
   number_of_pingus = 100;
   number_to_save = 50;
   time = 9000;

@@ -3,9 +3,7 @@ global {
   start_x_pos = 0;
   start_y_pos = 0;
   levelname = "Which exit is correct?";
-  description = "A short demonstartion of the fake exit
-and of the new water animation.
-";
+  description = "A short demonstartion of the fake exit and of the new water animation.";
   number_of_pingus = 100;
   number_to_save = 30;
 }

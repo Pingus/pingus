@@ -1,13 +1,12 @@
 /* This level was created with the PLE
- * $Id: jungle2.plf,v 1.3 2000/03/08 02:02:48 grumbel Exp $
+ * $Id: jungle2.plf,v 1.4 2000/05/28 16:46:51 grumbel Exp $
  */
 global {
   author = "Michael Mestre <mmestre@teaser.fr>";
   start_x_pos = 100;
   start_y_pos = 100;
   levelname = "The jungle / have fun part two";
-  description = "You should have hired tarzus, not pingus : )
-";
+  description = "You should have hired tarzus, not pingus : )";
   number_of_pingus = 50;
   number_to_save = 30;
   time = 5000;

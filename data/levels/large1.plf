@@ -1,13 +1,13 @@
 /* This level was created with the PLE
- * $Id: large1.plf,v 1.1 2000/04/14 19:07:29 grumbel Exp $
+ * $Id: large1.plf,v 1.2 2000/05/28 16:46:51 grumbel Exp $
  */
 global {
   start_x_pos = 0;
   start_y_pos = 0;
   levelname = "Extreme Large...";
-  description = "This level will take around 200MB of RAM,
-Better kill Pingus *NOW* or see of your Linux will get
-really really slow...
+  description = "This level will take around 200MB of RAM, better kill Pingus *NOW* or see of your Linux will get really really slow...
+
+You can also try the SysReq-Key if all fails (Alt-Gr Print K)
 ";
   number_of_pingus = 100;
   number_to_save = 50;

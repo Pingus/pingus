@@ -1,14 +1,12 @@
 /* This level was created with the PLE
- * $Id: bombing.plf,v 1.3 2000/05/21 12:03:24 grumbel Exp $
+ * $Id: bombing.plf,v 1.4 2000/05/28 16:46:51 grumbel Exp $
  */
 global {
   author = "Craig Timpany <timpany@pingus.cx>";
   start_x_pos = 0;
   start_y_pos = 0;
   levelname = "Bombing run";
-  description = "
-
-";
+  description = "";
   number_of_pingus = 100;
   number_to_save = 15;
   time = 9000;

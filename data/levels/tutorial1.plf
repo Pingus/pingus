@@ -1,15 +1,11 @@
 /* This level was created with the PLE
- * $Id: tutorial1.plf,v 1.1 2000/02/10 15:50:39 grumbel Exp $
+ * $Id: tutorial1.plf,v 1.2 2000/05/28 16:46:51 grumbel Exp $
  */
 global {
   start_x_pos = 0;
   start_y_pos = 0;
   levelname = "Tutorial 1 - Dig into the ground";
-  description = "
-Use the digger action to dig a hole
-into the ground to reach the exit.
-
-";
+  description = "Use the digger action to dig a hole into the ground to reach the exit.";
   number_of_pingus = 100;
   number_to_save = 50;
   time = 5000;

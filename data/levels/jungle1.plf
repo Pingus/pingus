@@ -3,10 +3,7 @@ global {
   start_x_pos = 500;
   start_y_pos = 500;
   levelname = "The jungle / have fun part one";
-  description = "Once you'll have passed the aggressive vegetation,
-the insects, and the altitude,
-you'll be able to rest as your penguins die of malaria
-";
+  description = "Once you'll have passed the aggressive vegetation, the insects, and the altitude, you'll be able to rest as your penguins die of malaria";
   number_of_pingus = 50;
   number_to_save = 30;
   time = 5000;

@@ -1,12 +1,11 @@
 /* This level was created with the PLE
- * $Id: stone.plf,v 1.5 2000/04/10 21:20:49 grumbel Exp $
+ * $Id: stone.plf,v 1.6 2000/05/28 16:46:51 grumbel Exp $
  */
 global {
   start_x_pos = 0;
   start_y_pos = 0;
   levelname = "Red stone castle";
-  description = "
-";
+  description = "";
   number_of_pingus = 100;
   number_to_save = 0;
   time = 9000;

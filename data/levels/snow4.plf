@@ -2,8 +2,7 @@ global {
   start_x_pos = 0;
   start_y_pos = 0;
   levelname = "Over the water";
-  description = "Happy Christmas!
-";
+  description = "Happy Christmas!";
 }
 
 ground {

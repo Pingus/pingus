@@ -9,8 +9,7 @@ global {
 	number_to_save = 100;
 	time = 5000;
 	levelname = "Crystal 1 - So close, but still so far";
-	description = "
-";
+	description = "";
 
 }
 

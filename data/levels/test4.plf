@@ -1,13 +1,11 @@
 /* This level was created with the PLE
- * $Id: test4.plf,v 1.1 2000/05/25 15:45:52 grumbel Exp $
+ * $Id: test4.plf,v 1.2 2000/05/28 16:46:51 grumbel Exp $
  */
 global {
   start_x_pos = 0;
   start_y_pos = 0;
-  levelname = "PLE Level";
-  description = "This level has no name
-
-";
+  levelname = "Small map test";
+  description = "<deutsch>Platzangst</deutsch>...";
   number_of_pingus = 100;
   number_to_save = 50;
   time = 9000;
