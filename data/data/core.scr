@@ -42,7 +42,7 @@ section editor
 
 	actions = ../images/core/editor/actions.png (type=surface);
 
-	logo = ../images/core/editor/logo.png (type=surface, x=0, y=0, width=25,  height=207);
+	logo = ../images/core/editor/logo.png (type=surface);
 }
 
 section buttons
@@ -103,7 +103,7 @@ section misc
 
 	exitmenu = ../images/core/menu/exitmenu.png (type=surface, x=0, y=0, width=400, height=296);
 
-	logo = ../images/core/misc/logo.png (type=surface, x=0, y=0, width=610, height=210);
+	logo = ../images/core/misc/logo.png (type=surface);
 //	logo_t        = ../images/core/misc/logo.png       (type=surface, x=0, y=0, width=598, height=259);
 
 	loading        = ../images/core/misc/loading.png       (type=surface, x=0, y=0, width=175, height=66,tcol=0);

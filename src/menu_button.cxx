@@ -1,4 +1,4 @@
-//  $Id: menu_button.cxx,v 1.3 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: menu_button.cxx,v 1.4 2003/03/27 15:57:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -243,8 +243,8 @@ QuitButton::QuitButton(PingusMenu* m)
   // x_pos = CL_Display::get_width() * 500 / 640; 
   // y_pos = CL_Display::get_height() * 320 / 480; 
 
-  x_pos = CL_Display::get_width() * 516 / 640; 
-  y_pos = CL_Display::get_height() * 369 / 480; 
+  x_pos = CL_Display::get_width() * 650 / 800; 
+  y_pos = CL_Display::get_height() * 370 / 600; 
 
   desc = _("..:: Bye, bye ::..");
   //desc["de"] = "..:: Auf Wiedersehen ::..";
@@ -267,8 +267,6 @@ QuitButton::~QuitButton()
 void
 QuitButton::on_click()
 {
-  //std::cout << "QuitButton: do exit" << std::endl;
-  //PingusSound::play_sound ("goodidea");
   menu->get_manager ()->show_exit_menu ();
 }
 
@@ -276,8 +274,8 @@ QuitButton::on_click()
 
 LoadButton::LoadButton()
 {
-  x_pos = CL_Display::get_width() * 226 / 640;
-  y_pos = CL_Display::get_height() * 482 / 480; 
+  x_pos = CL_Display::get_width() * 400 / 800;
+  y_pos = CL_Display::get_height() * 500 / 600; 
 
   surface   = PingusResource::load_surface("menu/load", "core");
   surface_p = PingusResource::load_surface("menu/load_p", "core");
@@ -300,11 +298,8 @@ void LoadButton::on_click()
 EditorButton::EditorButton (PingusMenu* menu_)
   : menu(menu_)
 {
-  // x_pos = CL_Display::get_width() * 335 / 640;
-  // y_pos = CL_Display::get_height() * 370 / 480;
-
-  x_pos = CL_Display::get_width() * 126 / 640;
-  y_pos = CL_Display::get_height() * 113 / 480;
+  x_pos = CL_Display::get_width()  * 150 / 800;
+  y_pos = CL_Display::get_height() * 370 / 600; 
 
   desc = _("..:: Launch the level editor ::..");
   //desc["de"] = "..:: Den Level Editor starten ::..";
@@ -343,13 +338,10 @@ EditorButton::on_click()
 StoryButton::StoryButton (PingusMenu* menu_)
   : menu(menu_)
 {
-  // x_pos = CL_Display::get_width() * 150 / 640; 
-  // y_pos = CL_Display::get_height() * 430 / 480;
+  x_pos = CL_Display::get_width()  * 400 / 800;
+  y_pos = CL_Display::get_height() * 370 / 600; 
 
-  x_pos = CL_Display::get_width() * 321 / 640; 
-  y_pos = CL_Display::get_height() * 241 / 480;
-
-  desc = _("..:: Lets you select a world to start ::..");
+  desc = _("..:: Start the game ::..");
   //desc["de"] = "..:: Such dir eine Welt zum beginnen aus ::..";
 
   line1 = _("Start");

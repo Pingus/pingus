@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.hxx,v 1.17 2003/02/18 17:04:13 grumbel Exp $
+//  $Id: pingus_menu_manager.hxx,v 1.18 2003/03/27 15:57:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,8 +38,6 @@ private:
   typedef std::vector<PingusSubMenu *>::iterator MenuStackIter;
   typedef std::vector<PingusSubMenu *>::reverse_iterator MenuStackRIter;
 
-  Sprite unplayable;
-  
   /// Register all event-handling stuff
   void register_events ();
 

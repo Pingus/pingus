@@ -1,4 +1,4 @@
-//  $Id: pingus_menu.cxx,v 1.13 2003/03/18 17:24:55 torangan Exp $
+//  $Id: pingus_menu.cxx,v 1.14 2003/03/27 15:57:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,18 +37,18 @@ PingusMenu::preload ()
       pout << "PingusMenu::init ()" << std::endl;
       //event_enabled = true;
       is_init = true;
-      SurfaceButton* editor_button = new EditorButton (this);
-	  
+
       background = PingusResource::load_surface("misc/logo", "core");
 
-      // FIXME: Lilla... memory leak
-      gui_manager->add(new OptionsButton(this));
-      gui_manager->add(new CreditButton(this));
-      gui_manager->add(new QuitButton(this));
+      //gui_manager->add(new OptionsButton(this));
+      /*if (game_finished)
+        gui_manager->add(new CreditButton(this));*/
       //gui_manager->add(new MultiplayerButton(this));
-      gui_manager->add(new ThemeButton(this));
+      //gui_manager->add(new ThemeButton(this));
+
+      gui_manager->add(new QuitButton(this));
       gui_manager->add(new StoryButton(this));
-      gui_manager->add(editor_button);
+      gui_manager->add(new EditorButton (this));
     }
 }
 
@@ -66,6 +66,17 @@ void
 PingusMenu::on_escape_press ()
 {
   get_manager ()->show_exit_menu ();
+}
+
+void
+PingusMenu::draw_foreground(GraphicContext& gc)
+{
+  gc.draw(background, (gc.get_width()/2) - (background.get_width()/2), 50);
+  gc.print_left(Fonts::pingus_small, 20, 500, 
+                "Pingus version 0.6.0, Copyright (C) Ingo Ruhnke <grumbel@gmx.de>\n");
+  gc.print_left(Fonts::pingus_small, 20, 530, 
+                "Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome\n"
+                "to redistribute it under certain conditions; see the file COPYING for details.\n");
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: pingus_menu.hxx,v 1.9 2002/09/27 11:26:44 torangan Exp $
+//  $Id: pingus_menu.hxx,v 1.10 2003/03/27 15:57:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_PINGUS_MENU_HXX
 #define HEADER_PINGUS_PINGUS_MENU_HXX
 
+#include "fonts.hxx"
 #include "pingus_sub_menu.hxx"
 #include "layer_manager.hxx"
 
@@ -58,7 +59,7 @@ public:
   void preload ();
 
   void on_escape_press ();
-  
+  void draw_foreground(GraphicContext& gc);
 private:
   PingusMenu (const PingusMenu&);
   PingusMenu& operator= (const PingusMenu&);
