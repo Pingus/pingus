@@ -296,7 +296,7 @@ ColMap::draw(GraphicContext& gc)
 
   canvas.unlock();
 
-  sur = CL_Surface(new CL_PixelBuffer(canvas), true);
+  sur = CL_Surface(canvas);
 
   gc.draw(sur, 0, 0);
 }

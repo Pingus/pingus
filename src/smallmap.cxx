@@ -174,7 +174,7 @@ SmallMap::init()
   canvas.unlock();
 
   //Timer surface_timer("Smallmap surface creation");
-  sur = CL_Surface(new CL_PixelBuffer(canvas), true);
+  sur = CL_Surface(canvas);
   //surface_timer.stop();
 
   x_pos = 5;

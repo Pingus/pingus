@@ -100,7 +100,7 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
       //counter.set_speed(1.0);
     }
 
-  bg_surface = CL_Surface(new CL_PixelBuffer(canvas), true);
+  bg_surface = CL_Surface(canvas);
 
   timer.stop();
 }

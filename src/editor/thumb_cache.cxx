@@ -111,7 +111,7 @@ ThumbCache::load (const std::string & res_ident, const std::string & datafile)
 	      return uncached_load (res_ident, datafile);
 	    }
 	  canvas.unlock ();
-	  return CL_Surface (new CL_PixelBuffer(canvas), true);
+	  return CL_Surface(canvas);
 	}
       catch (CL_Error& err)
 	{
@@ -181,7 +181,7 @@ ThumbCache::cache (const CL_Surface& sur,
 
       canvas->unlock ();
       // Canvas will get deleted on the end of the lifetime of this surface
-      return CL_Surface(canvas, true);
+      return CL_Surface(canvas);
     }
   catch (CL_Error&)
     {
@@ -194,7 +194,7 @@ ThumbCache::cache (const CL_Surface& sur,
       return Blitter::scale_surface (sur, width, height);
     }
 #endif
-  return 0;
+  return CL_Surface();
 }
 
 } // namespace EditorNS

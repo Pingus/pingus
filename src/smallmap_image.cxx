@@ -52,7 +52,6 @@ SmallMapImage::update (float delta)
 CL_Surface
 SmallMapImage::create_surface (Server * server, int width, int height)
 {
-  CL_PixelBuffer* canvas;
   unsigned char* buffer;
   unsigned char* cbuffer;
   unsigned char  current_pixel;
@@ -63,11 +62,11 @@ SmallMapImage::create_surface (Server * server, int width, int height)
   ColMap* colmap = world->get_colmap();
   buffer = colmap->get_data();
 
-  canvas = new CL_PixelBuffer(width, height, width*4, CL_PixelFormat::rgba8888);
+  CL_PixelBuffer canvas(width, height, width*4, CL_PixelFormat::rgba8888);
 
-  canvas->lock();
+  canvas.lock();
 
-  cbuffer = static_cast<unsigned char*>(canvas->get_data());
+  cbuffer = static_cast<unsigned char*>(canvas.get_data());
 
   for(int y = 0; y < height; y++)
     {
@@ -148,9 +147,9 @@ SmallMapImage::create_surface (Server * server, int width, int height)
     }
 #endif
 
-  canvas->unlock();
+  canvas.unlock();
 
-  return CL_Surface(canvas, true);
+  return CL_Surface(canvas);
 }
 
 bool

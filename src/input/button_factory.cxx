@@ -95,7 +95,7 @@ Button* ButtonFactory::key_button (xmlNodePtr cur)
   if (!XMLhelper::get_prop(cur, "key", key))
     PingusError::raise("KeyButton without key parameter");
 
-  return new KeyButton(CL_Keyboard::get_device().keyid_to_string(key));
+  return new KeyButton(CL_Keyboard::get_device().string_to_keyid(key));
 }
 
 Button* ButtonFactory::mouse_button (xmlNodePtr cur)

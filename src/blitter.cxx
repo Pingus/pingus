@@ -468,7 +468,7 @@ CL_Surface
 Blitter::scale_surface (const CL_Surface& sur, int width, int height)
 {
   CL_PixelBuffer buf = Blitter::scale_surface_to_canvas(sur, width, height);
-  return CL_Surface(new CL_PixelBuffer(buf), true);
+  return CL_Surface(CL_PixelBuffer(buf));
 }
 
 CL_PixelBuffer

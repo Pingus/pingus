@@ -43,7 +43,7 @@ public:
     Blitter::fill_rect(buf, CL_Rect(50, 50, 150, 150), CL_Color(255, 150, 50, 155));
     bench.stop();
 
-    CL_Surface surf2(new CL_PixelBuffer(buf), true);
+    CL_Surface surf2(buf);
 
     while(!CL_Keyboard::get_keycode(CL_KEY_ESCAPE))
       {

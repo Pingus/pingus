@@ -140,7 +140,7 @@ Resource::load_pixelbuffer(const ResDescriptor& desc_)
       assert(0);
     }
 
-  return apply_modifier_to_pixelbuffer(*desc.get_frames().begin()->first, desc_);
+  return apply_modifier_to_pixelbuffer(desc.get_frames().begin()->first, desc_);
 }
 
 CL_PixelBuffer
@@ -249,32 +249,32 @@ Resource::apply_modifier (const CL_Surface& surf, const ResDescriptor& res_desc)
   switch (res_desc.modifier)
     {
     case ResourceModifierNS::ROT0:
-      return CL_Surface(new CL_PixelBuffer(prov), true);
+      return CL_Surface(prov);
 
     case ResourceModifierNS::ROT90:
-      return CL_Surface(new CL_PixelBuffer(Blitter::rotate_90(prov)), true);
+      return CL_Surface(Blitter::rotate_90(prov));
 
     case ResourceModifierNS::ROT180:
-      return CL_Surface(new CL_PixelBuffer(Blitter::rotate_180(prov)), true);
+      return CL_Surface(Blitter::rotate_180(prov));
                         
     case ResourceModifierNS::ROT270:
-      return CL_Surface(new CL_PixelBuffer(Blitter::rotate_270(prov)), true);
+      return CL_Surface(Blitter::rotate_270(prov));
 
     case ResourceModifierNS::ROT0FLIP:
-      return CL_Surface(new CL_PixelBuffer(Blitter::flip_horizontal(prov)), true);
+      return CL_Surface(Blitter::flip_horizontal(prov));
 
     case ResourceModifierNS::ROT90FLIP:
-      return CL_Surface(new CL_PixelBuffer(Blitter::rotate_90_flip(prov)), true);
+      return CL_Surface(Blitter::rotate_90_flip(prov));
 
     case ResourceModifierNS::ROT180FLIP:
-      return CL_Surface(new CL_PixelBuffer(Blitter::rotate_180_flip(prov)), true);
+      return CL_Surface(Blitter::rotate_180_flip(prov));
 
     case ResourceModifierNS::ROT270FLIP:
-      return CL_Surface(new CL_PixelBuffer(Blitter::rotate_270_flip(prov)), true);
+      return CL_Surface(Blitter::rotate_270_flip(prov));
 
     default:
       perr << "Resource: Unhandled modifier: " << res_desc.modifier << std::endl;
-      return CL_Surface(new CL_PixelBuffer(prov), true);
+      return CL_Surface(prov);
     }
 }
 

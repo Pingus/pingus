@@ -31,8 +31,8 @@ CAImageManipulation::flip( CL_Surface surface, bool horizontal )
 {
   // Create a canvas which contains the original surface:
   //
-  CL_PixelBuffer* can = new CL_PixelBuffer(surface.get_width(), surface.get_height(),
-                                           surface.get_width()*4, CL_PixelFormat::rgba8888);
+  CL_PixelBuffer can(surface.get_width(), surface.get_height(),
+                     surface.get_width()*4, CL_PixelFormat::rgba8888);
   
   // FIXME:
   assert(0);
@@ -40,7 +40,7 @@ CAImageManipulation::flip( CL_Surface surface, bool horizontal )
 
   // Calc size in bytes:
   //
-  int bpp = 0;// FIXME: can->get_bytes_per_pixel();
+  int bpp = 0;// FIXME: can.get_bytes_per_pixel();
 
   int size  = surface.get_width() * surface.get_height() * bpp;
   int width = surface.get_width();
@@ -49,9 +49,9 @@ CAImageManipulation::flip( CL_Surface surface, bool horizontal )
   //
   if( bpp==4 ) {
 
-    can->lock();
+    can.lock();
 
-    unsigned char *data = (unsigned char*)can->get_data();
+    unsigned char *data = (unsigned char*)can.get_data();
     unsigned char tmp;
     int i, k, x, ind, offs;
 
@@ -79,12 +79,12 @@ CAImageManipulation::flip( CL_Surface surface, bool horizontal )
         }
       }
     }
-    can->unlock();
+    can.unlock();
   }
 
   // Return new surface based on the canvas:
   //
-  return CL_Surface( can );
+  return CL_Surface(can);
 }
 
 
@@ -109,15 +109,15 @@ CAImageManipulation::changeHSV(CL_Surface surface,
 {
   // Create a canvas which contains the original surface:
   //
-  CL_PixelBuffer* can = new CL_PixelBuffer(surface.get_width(), surface.get_height(),
-                                           surface.get_width()*4, CL_PixelFormat::rgba8888);
+  CL_PixelBuffer can(surface.get_width(), surface.get_height(),
+                     surface.get_width()*4, CL_PixelFormat::rgba8888);
 
   assert(0);
   // FIXME: surface->put_target( 0,0, 0, can );
 
   // Calc size in bytes:
   //
-  int bpp = 0;// FIXME: can->get_bytes_per_pixel();
+  int bpp = 0;// FIXME: can.get_bytes_per_pixel();
   int size = surface.get_width() * surface.get_height() * bpp;
 
   // Only 24bit supported:
@@ -126,9 +126,9 @@ CAImageManipulation::changeHSV(CL_Surface surface,
 
     // Change hue:
     //
-    can->lock();
+    can.lock();
 
-    unsigned char *data = (unsigned char*)can->get_data();
+    unsigned char *data = (unsigned char*)can.get_data();
     int r, g, b, a;
     int h, s, v;
 
@@ -158,7 +158,7 @@ CAImageManipulation::changeHSV(CL_Surface surface,
       }
 
     }
-    can->unlock();
+    can.unlock();
   }
 
   // Return new surface based on the canvas:
