@@ -244,15 +244,15 @@ section GroundPieces
 
 	section Foliage 
 	{
-		flax1     = images/groundpieces/transparent/foliage/flax1.png     (type=surface, x=0, y=0, width=100,  height=91, tcol=0);
-		flax2     = images/groundpieces/transparent/foliage/flax2.png     (type=surface, x=0, y=0, width=92,  height=84, tcol=0);
-		midtree1  = images/groundpieces/transparent/foliage/midtree1.png  (type=surface, x=0, y=0, width=114,  height=161, tcol=0);
-		midtree2  = images/groundpieces/transparent/foliage/midtree2.png  (type=surface, x=0, y=0, width=169,  height=189, tcol=0);
-		oak1      = images/groundpieces/transparent/foliage/oak1.png      (type=surface, x=0, y=0, width=168,  height=215, tcol=0);
-		smallbush = images/groundpieces/transparent/foliage/smallbush.png (type=surface, x=0, y=0, width=57,  height=24, tcol=0);
-		smallbush2 = images/groundpieces/transparent/foliage/smallbush2.png (type=surface, x=0, y=0, width=107,  height=88, tcol=0);
-		smallbush3 = images/groundpieces/transparent/foliage/smallbush3.png (type=surface, x=0, y=0, width=95,  height=37, tcol=0);
-		talltree  = images/groundpieces/transparent/foliage/talltree.png  (type=surface, x=0, y=0, width=84,  height=200, tcol=0);
+		flax1     = images/groundpieces/ground/foliage/flax1.png     (type=surface, x=0, y=0, width=100,  height=91, tcol=0);
+		flax2     = images/groundpieces/ground/foliage/flax2.png     (type=surface, x=0, y=0, width=92,  height=84, tcol=0);
+		midtree1  = images/groundpieces/ground/foliage/midtree1.png  (type=surface, x=0, y=0, width=114,  height=161, tcol=0);
+		midtree2  = images/groundpieces/ground/foliage/midtree2.png  (type=surface, x=0, y=0, width=169,  height=189, tcol=0);
+		oak1      = images/groundpieces/ground/foliage/oak1.png      (type=surface, x=0, y=0, width=168,  height=215, tcol=0);
+		smallbush = images/groundpieces/ground/foliage/smallbush.png (type=surface, x=0, y=0, width=57,  height=24, tcol=0);
+		smallbush2 = images/groundpieces/ground/foliage/smallbush2.png (type=surface, x=0, y=0, width=107,  height=88, tcol=0);
+		smallbush3 = images/groundpieces/ground/foliage/smallbush3.png (type=surface, x=0, y=0, width=95,  height=37, tcol=0);
+		talltree  = images/groundpieces/ground/foliage/talltree.png  (type=surface, x=0, y=0, width=84,  height=200, tcol=0);
 
 		turfconcave      =  images/groundpieces/transparent/foliage/turfconcave.png     (type=surface, x=0, y=0, width=59,  height=16, tcol=0);
 		turfflat         =  images/groundpieces/transparent/foliage/turfflat.png        (type=surface, x=0, y=0, width=90,  height=13, tcol=0);
