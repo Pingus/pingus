@@ -1,18 +1,32 @@
-# Pingus, De Vrije Lemmings Clone.
-# Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
-# Giray Devlet<giray@devlet.cc>, 2001
-# 
-#, fuzzy
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-09 23:17+0200\n"
-"Last-Translator: Martijn Santen <martijn@jomarsoft.nl>\n"
-"Language-Team: Giray Devlet <giray@devlet.cc>, Martijn Santen "
-"<martijn@jomarsoft.nl>\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"PO-Revision-Date: 2003-04-10 23:13+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plin; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#~ # Pingus, De Vrije Lemmings Clone.
+#~ # Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+#~ # Giray Devlet<giray@devlet.cc>, 2001
+#~ # 
+#~ #, fuzzy
+#~ msgid ""
+#~ msgstr ""
+#~ "Project-Id-Version: Pingus 0.5.0\n"
+#~ "POT-Creation-Date: 2003-04-10 22:58+0200\n"
+#~ "Last-Translator: Martijn Santen <martijn@jomarsoft.nl>\n"
+#~ "Language-Team: Giray Devlet <giray@devlet.cc>, Martijn Santen "
+#~ "<martijn@jomarsoft.nl>\n"
+#~ "MIME-Version: 1.0\n"
+#~ "Content-Type: text/plin; charset=iso-8859-1\n"
+#~ "Content-Transfer-Encoding: 8bit\n"
 
 # src/System.cc:65 src/System.cc:97
 #: src/config.cxx:68
@@ -28,59 +42,78 @@ msgstr ""
 msgid "Unexpected char '"
 msgstr ""
 
-# src/Credits.cc:52
-#. The credits vector holds the strings to display. The first
-#. character of each string is a special character, which indicates
-#. the size of the font or other special stuff. "-" means large
-#. font, "_" is a small font and "n" means a newline.
-#: src/credits.cxx:43
-msgid "_If I forgot somebody in this"
-msgstr "_Als ik iemand vergeten ben in deze"
-
-# src/Credits.cc:53
-#: src/credits.cxx:44
-msgid "_list, just drop me a line and"
-msgstr "_lijst, stuur me een berichtje dan"
-
-# src/Credits.cc:54
-#: src/credits.cxx:45
-msgid "_I'll fix this."
-msgstr "_zal ik het herstellen"
-
-# src/Credits.cc:55
 #: src/credits.cxx:46
-msgid "_Last Updated: 2000/06/27"
-msgstr "_ Laatste aanpassing: 2000/06/27"
+msgid "-Idea"
+msgstr ""
 
-# src/Credits.cc:56
-#: src/credits.cxx:47
-msgid "n"
+#: src/credits.cxx:50
+msgid "-Maintaining"
 msgstr ""
 
 # src/Credits.cc:58
-#: src/credits.cxx:49
+#: src/credits.cxx:54
 msgid "-Programming"
 msgstr "_programmering"
 
+#: src/credits.cxx:60
+msgid "-Porting (Win32)"
+msgstr ""
+
 # src/Credits.cc:64
-#: src/credits.cxx:56
+#: src/credits.cxx:68
 msgid "-Gfx"
 msgstr ""
 
 # src/Credits.cc:72
-#: src/credits.cxx:64
+#: src/credits.cxx:79
 msgid "-Music"
 msgstr "_Muziek"
 
+#: src/credits.cxx:85
+msgid "-Level Design"
+msgstr ""
+
+#: src/credits.cxx:90
+msgid "-Story"
+msgstr ""
+
+#: src/credits.cxx:94
+msgid "-Translation (german)"
+msgstr ""
+
 # src/Credits.cc:77
-#: src/credits.cxx:69
+#: src/credits.cxx:99
 msgid "-Special"
 msgstr "_Speciaal"
 
 # src/Credits.cc:78
-#: src/credits.cxx:70
+#: src/credits.cxx:100
 msgid "-Thanks to"
 msgstr "_Met dank aan"
+
+#: src/credits.cxx:134
+msgid "_And a very Special Thanks"
+msgstr ""
+
+#: src/credits.cxx:135
+msgid "_to all the people who"
+msgstr ""
+
+#: src/credits.cxx:136
+msgid "_contribute to"
+msgstr ""
+
+#: src/credits.cxx:137
+msgid "_Free Software!"
+msgstr ""
+
+#: src/credits.cxx:143
+msgid "_Thank you for"
+msgstr ""
+
+#: src/credits.cxx:144
+msgid "_playing!"
+msgstr ""
 
 # src/editor/EditorEvent.cc:552
 #: src/editor/editor_event.cxx:580
@@ -523,15 +556,15 @@ msgstr "Aantal Pingus"
 msgid "Display Help Screen (F1)"
 msgstr ""
 
-#: src/exit_menu.cxx:44
+#: src/exit_menu.cxx:46
 msgid "Yes"
 msgstr ""
 
-#: src/exit_menu.cxx:76
+#: src/exit_menu.cxx:79
 msgid "No"
 msgstr ""
 
-#: src/exit_menu.cxx:109
+#: src/exit_menu.cxx:112
 msgid "Exit Pingus?"
 msgstr ""
 
@@ -541,15 +574,10 @@ msgid "unknown"
 msgstr "onbekend"
 
 # src/OptionMenu.cc:208
-#: src/game_time.cxx:66
+#: src/game_time.cxx:67
 #, fuzzy
 msgid "unlimited"
 msgstr "Ongelimiteerd acties"
-
-# src/Intro.cc:66 src/Intro.cc:123
-#: src/intro.cxx:62 src/intro.cxx:113
-msgid "..:: Press Start ::.."
-msgstr "..:: Druk op Start ::.."
 
 # src/PingusLevelDesc.cc:74
 #: src/level_desc.cxx:71
@@ -584,10 +612,6 @@ msgid "Results:"
 msgstr "Resultaten"
 
 # src/PingusLevelResult.cc:63
-#. Ending messages are censored for the momement
-#. font->print_center(CL_Display::get_width() / 2, 100,
-#. get_message(100 * world->get_saved_pingus() / world->get_allowed_pingus()).c_str());
-#.
 #: src/level_result.cxx:65
 #, c-format
 msgid "Pingus saved:   %3d/%3d"
@@ -690,28 +714,21 @@ msgid "You've got a negative save/total value, something is buggy."
 msgstr "Je hebt een negatief gered/totaal waarde, iets gaat er mis."
 
 # src/SurfaceButton.cc:159
-#.  desc["en"] = "..:: Starts the level you played at last ::..";
 #: src/menu_button.cxx:179
 msgid "..:: The people who brought this game to you ::.."
 msgstr "Iedereen die dit spel mogelijk maakte ::.."
 
 # src/SurfaceButton.cc:162
-#. desc["de"] = "..:: Wer hat den dieses Spiel verbrochen...? ::..";
 #: src/menu_button.cxx:182
 msgid "Credits"
 msgstr "Krediet"
 
 # src/SurfaceButton.cc:201
-#. x_pos = CL_Display::get_width() * 150 / 640; //150;
-#. y_pos = CL_Display::get_height() * 330 / 480; //330;
-#. 150;
-#. 330;
 #: src/menu_button.cxx:215
 msgid "..:: Takes you to the options menu ::.."
 msgstr ""
 
 # src/SurfaceButton.cc:204
-#.  desc["de"] = "..:: Einstellungen und Mogeleien ::..";
 #: src/menu_button.cxx:218
 msgid "Options"
 msgstr "Opties"
@@ -722,7 +739,6 @@ msgid "..:: Bye, bye ::.."
 msgstr "..:: Doei, Doei ::.."
 
 # src/SurfaceButton.cc:240
-#. desc["de"] = "..:: Auf Wiedersehen ::..";
 #: src/menu_button.cxx:255
 msgid "Exit"
 msgstr "Exit"
@@ -733,7 +749,6 @@ msgid "..:: Launch the level editor ::.."
 msgstr "..:: Start de niveau bewerker ::.."
 
 # src/SurfaceButton.cc:298
-#. desc["de"] = "..:: Den Level Editor starten ::..";
 #: src/menu_button.cxx:310
 msgid "Create a"
 msgstr "Creer een"
@@ -750,7 +765,6 @@ msgid "..:: Start the game ::.."
 msgstr "..:: Start een deelname niveau ::.."
 
 # src/SurfaceButton.cc:344
-#. desc["de"] = "..:: Such dir eine Welt zum beginnen aus ::..";
 #: src/menu_button.cxx:350
 msgid "Start"
 msgstr "Start"
@@ -815,78 +829,62 @@ msgstr "Knop 2 ingedrukt"
 msgid "OptionMenu::Event: Unknown mouse button released: id="
 msgstr "OptionMenu::Event: Onbekende muiskop vrijgegeven: id="
 
-# src/OptionMenu.cc:207
-#. Bool options
-#: src/option_menu.cxx:275
-msgid "Gimmicks"
-msgstr "Foefjes"
-
 # src/OptionMenu.cc:208
-#: src/option_menu.cxx:276
+#: src/option_menu.cxx:275
 msgid "Unlimited Actions"
 msgstr "Ongelimiteerd acties"
 
 # src/OptionMenu.cc:209
-#: src/option_menu.cxx:277
+#: src/option_menu.cxx:276
 msgid "Print fps"
 msgstr "Print fps"
 
 # src/OptionMenu.cc:211
-#.  add_entry("Debug actions", &debug_actions);
-#: src/option_menu.cxx:279
+#: src/option_menu.cxx:278
 msgid "Cursor enabled"
 msgstr "Cursor aan"
 
 # src/OptionMenu.cc:212
-#: src/option_menu.cxx:280
+#: src/option_menu.cxx:279
 msgid "Fast Mode"
 msgstr "Snelle Mode"
 
 # src/OptionMenu.cc:214
-#. add_entry(_("Pingus Datadir"), &pingus_datadir);
-#: src/option_menu.cxx:282
+#: src/option_menu.cxx:281
 msgid "Game Speed"
 msgstr "Spel snelheid"
 
 # src/OptionMenu.cc:215
-#: src/option_menu.cxx:283
+#: src/option_menu.cxx:282
 msgid "Verbose"
 msgstr "Woordenrijk"
 
 # src/OptionMenu.cc:216
-#: src/option_menu.cxx:284
+#: src/option_menu.cxx:283
 msgid "Music"
 msgstr "Muziek"
 
 # src/OptionMenu.cc:217
-#: src/option_menu.cxx:285
+#: src/option_menu.cxx:284
 msgid "Sound"
 msgstr "Geluid"
 
-# src/OptionMenu.cc:218
-#: src/option_menu.cxx:286
-msgid "Level Previews"
-msgstr "Niveau bezichtiging"
-
 # src/OptionMenu.cc:219
-#: src/option_menu.cxx:287
+#: src/option_menu.cxx:285
 msgid "Draw ColMap"
 msgstr "Teken ColMap"
 
 # src/OptionMenu.cc:223
-#. add_entry(_("Debug GameTime"), &debug_game_time);
-#. add_entry(_("Debug Tiles"), &debug_tiles);
-#: src/option_menu.cxx:290
+#: src/option_menu.cxx:286
 msgid "Auto Scrolling"
 msgstr "Auto Scrolling"
 
-#: src/option_menu.cxx:291
+#: src/option_menu.cxx:287
 msgid "Action Help Strings"
 msgstr ""
 
 # src/OptionMenu.cc:262
-#. draw_background();
-#: src/option_menu.cxx:332
+#: src/option_menu.cxx:328
 msgid "Pingus Option Menu"
 msgstr "Pingus Optie Menu"
 
@@ -982,7 +980,7 @@ msgid "| Warning: Pingus recieved a SIGINT, exiting now."
 msgstr ""
 
 # src/PingusMain.cc:323
-#: src/pingus_main.cxx:352
+#: src/pingus_main.cxx:349
 #, fuzzy
 msgid ""
 "\n"
@@ -998,21 +996,21 @@ msgstr ""
 "Voor meer informatie hierover, kijk naar de bestanden genaamd COPYING."
 
 # src/PingusMain.cc:481
-#: src/pingus_main.cxx:507
+#: src/pingus_main.cxx:488
 msgid "Unknow char: "
 msgstr "Onbekend char: "
 
 # src/PingusMain.cc:482
-#: src/pingus_main.cxx:508
+#: src/pingus_main.cxx:489
 msgid "Usage: "
 msgstr "gebruik: "
 
 # src/PingusMain.cc:482
-#: src/pingus_main.cxx:508
+#: src/pingus_main.cxx:489
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr " [OPTIES]... [BESTANDSNIVEAU]"
 
-#: src/pingus_main.cxx:510
+#: src/pingus_main.cxx:491
 msgid ""
 "\n"
 "Options:\n"
@@ -1023,62 +1021,53 @@ msgid ""
 "   --disable-intro          Disable intro\n"
 msgstr ""
 
-#: src/pingus_main.cxx:519
+#: src/pingus_main.cxx:498
 msgid "   -G, --use-opengl         Use OpenGL\n"
 msgstr ""
 
-#. 	"   --fs-preload             Preload all Levelpreviews\n"a
-#. 	"   --disable-previews       Disables all level preview in the level selector\n"
-#: src/pingus_main.cxx:523
+#: src/pingus_main.cxx:501
 msgid ""
-"   -F, --disable-fullscreen Disable Fullscreen (default)\n"
-"   -f, --enable-fullscreen  Enable Fullscreen\n"
+"   -w, --window             Start in Window Mode\n"
+"   -f, --fullscreen         Start in Fullscreen\n"
 "   -d, --datadir PATH       Set the path to load the data files to `path'\n"
-"   --use-datafile           Use the pre-compiled datafile (default)\n"
-"   --use-scriptfile         Use the scriptfile and read all data from files\n"
-"   -l, --level FILE         Load a custom level from `file'\n"
+"   -l, --level FILE         Load a custom level from FILE\n"
+"   -w, --worldmap FILE      Load a custom worldmap from FILE\n"
 "   -v, --verbose            Print some more messages to stdout, can be set\n"
 "                            multible times to increase verbosity\n"
 "   -V, --version            Prints version number and exit\n"
-"   --fast-mode              Disable some cpu intensive features\n"
 "   -e, --editor             Launch the Level editor (experimental)\n"
 "   --disable-auto-scrolling Disable automatic scrolling\n"
-"   --disable-swcursor       Disable software cursor, use hw cursor instead\n"
-"   --enable-swcursor        Enable software cursor\n"
-"   --disable-action-help    Disable action button help strings\n"
-"   --enable-action-help     Enable action button help strings(default)\n"
 "   --no-cfg-file            Don't read ~/.pingus/config\n"
 "   --config-file FILE       Read config from FILE (default: ~/.pingus/"
 "config)\n"
-"   --min-cpu-usage          Reduces the CPU usage by issuing sleep()\n"
 "                            reduce CPU usage, might speed up the game on "
 "slower machines\n"
-"   --min-frame-skip N       Skip at least N frames, larger values speed the "
-"game up\n"
-"   --max-frame-skip N       Skip at most N frames\n"
-"   --frame-skip N           Set both min and max frameskip to N\n"
 "\n"
 "Debugging and experimental stuff:\n"
 "   --maintainer-mode        Enables some features, only interesting "
 "programmers\n"
-"   --enable-bg-manipulation Enables color manipulation of level backgrounds\n"
 "   --debug OPTION           Enable the output of debugging infos, possible\n"
 "                            OPTION's are tiles, gametime, actions, sound, "
 "resources, gui,\n"
 "                            input\n"
+"   --min-frame-skip N       Skip at least N frames, larger values speed the "
+"game up\n"
+"   --max-frame-skip N       Skip at most N frames\n"
+"   --frame-skip N           Set both min and max frameskip to N\n"
 "   -t, --speed SPEED        Set the game speed (0=fastest, >0=slower)\n"
 "   -b, --print-fps          Prints the fps to stdout\n"
-"   -i, --enable-gimmicks    Enable some buggy development stuff\n"
-"   -S, --sound-specs FILE   Use files mentioned in FILE\n"
 "   --tile-size INT          Set the size of the map tiles (default: 32)\n"
+"   --fast-mode              Disable some cpu intensive features\n"
+"   --min-cpu-usage          Reduces the CPU usage by issuing sleep()\n"
 "\n"
 "\n"
 "Demo playing and recording:\n"
-"   -r, --record-demo FILE   Record a demo session to FILE\n"
 "   -p, --play-demo FILE     Plays a demo session from FILE\n"
+"   -r, --enable-demo-recording\n"
+"                            Record demos for each played level\n"
 msgstr ""
 
-#: src/pingus_main.cxx:566
+#: src/pingus_main.cxx:540
 msgid ""
 "\n"
 "Sound:\n"
@@ -1086,172 +1075,172 @@ msgid ""
 "   -m, --enable-music       Enable music\n"
 msgstr ""
 
-#: src/pingus_main.cxx:675
+#: src/pingus_main.cxx:649
 msgid "clanVorbis support:           ok"
 msgstr ""
 
-#: src/pingus_main.cxx:677
+#: src/pingus_main.cxx:651
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr ""
 
-#: src/pingus_main.cxx:681
+#: src/pingus_main.cxx:655
 msgid "clanMikMod support:           ok"
 msgstr ""
 
-#: src/pingus_main.cxx:683
+#: src/pingus_main.cxx:657
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr ""
 
-#: src/pingus_main.cxx:687
+#: src/pingus_main.cxx:661
 msgid "getext support:               ok"
 msgstr ""
 
-#: src/pingus_main.cxx:688
+#: src/pingus_main.cxx:662
 msgid "gettext language:        english"
 msgstr ""
 
-#: src/pingus_main.cxx:694
+#: src/pingus_main.cxx:668
 msgid "sound support:           enabled"
 msgstr ""
 
-#: src/pingus_main.cxx:696
+#: src/pingus_main.cxx:670
 msgid "sound support:          disabled"
 msgstr ""
 
-#: src/pingus_main.cxx:699
+#: src/pingus_main.cxx:673
 msgid "music support:           enabled"
 msgstr ""
 
-#: src/pingus_main.cxx:701
+#: src/pingus_main.cxx:675
 msgid "music support:          disabled"
 msgstr ""
 
-#: src/pingus_main.cxx:703
+#: src/pingus_main.cxx:677
 msgid "resolution set to:       "
 msgstr ""
 
-#: src/pingus_main.cxx:704
+#: src/pingus_main.cxx:678
 msgid "fullscreen:              "
 msgstr ""
 
 # src/OptionMenu.cc:211
-#: src/pingus_main.cxx:705
+#: src/pingus_main.cxx:679
 #, fuzzy
 msgid " enabled"
 msgstr "Cursor aan"
 
-#: src/pingus_main.cxx:705
+#: src/pingus_main.cxx:679
 msgid "disabled"
 msgstr ""
 
 # src/PingusMain.cc:775
-#: src/pingus_main.cxx:715
+#: src/pingus_main.cxx:689
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Starten hoofddeel: "
 
 # src/PingusMain.cc:797
-#: src/pingus_main.cxx:741
+#: src/pingus_main.cxx:719
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMainL Bestand van dit niveau niet gevonden, negeren: "
 
 # src/PingusMain.cc:851
-#: src/pingus_main.cxx:832
+#: src/pingus_main.cxx:810
 msgid "Error caught from ClanLib: "
 msgstr "Fout gevonden in Clanlib: "
 
 # src/PingusMain.cc:855
-#: src/pingus_main.cxx:836
+#: src/pingus_main.cxx:814
 msgid "Error caught from Pingus: "
 msgstr "Error gevonden in Pingus: "
 
 # src/PingusMain.cc:859
-#: src/pingus_main.cxx:840
+#: src/pingus_main.cxx:818
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: te weinig geheugen!"
 
 # src/PingusMain.cc:863
-#: src/pingus_main.cxx:844
+#: src/pingus_main.cxx:822
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Standard uitzondering!:\n"
 
 # src/PingusMain.cc:867
-#: src/pingus_main.cxx:848
+#: src/pingus_main.cxx:826
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Onbekende worp aangetroffen!"
 
-#: src/result_screen.cxx:94 src/start_screen.cxx:104
+#: src/result_screen.cxx:97 src/start_screen.cxx:107
 msgid "Abort"
 msgstr ""
 
-#: src/result_screen.cxx:158
+#: src/result_screen.cxx:165
 msgid "Retry"
 msgstr ""
 
-#: src/result_screen.cxx:165
+#: src/result_screen.cxx:173
 msgid "Success!"
 msgstr ""
 
-#: src/result_screen.cxx:171
+#: src/result_screen.cxx:180
 msgid "Failure!"
 msgstr ""
 
-#: src/result_screen.cxx:180
+#: src/result_screen.cxx:189
 msgid "Perfect! You saved everybody possibly, great!"
 msgstr ""
 
-#: src/result_screen.cxx:182
+#: src/result_screen.cxx:191
 msgid "None got killed, pretty good work"
 msgstr ""
 
-#: src/result_screen.cxx:184
+#: src/result_screen.cxx:193
 msgid ""
 "You saved just what you needed, you made it, but\n"
 "maybe you can do better?"
 msgstr ""
 
-#: src/result_screen.cxx:187
+#: src/result_screen.cxx:196
 msgid "Not everybody could get saved, but still good work!"
 msgstr ""
 
-#: src/result_screen.cxx:189
+#: src/result_screen.cxx:198
 msgid "What can I say, you made it, congratulations!"
 msgstr ""
 
-#: src/result_screen.cxx:194
+#: src/result_screen.cxx:203
 msgid "You killed everybody, not good."
 msgstr ""
 
-#: src/result_screen.cxx:196
+#: src/result_screen.cxx:205
 msgid "None got saved, I know you can do better."
 msgstr ""
 
-#: src/result_screen.cxx:198
+#: src/result_screen.cxx:207
 msgid ""
 "You didn't saved enough, but still saved a few, next\n"
 "time you might be better."
 msgstr ""
 
-#: src/result_screen.cxx:201
+#: src/result_screen.cxx:210
 msgid "Only one more and you would have made it, try again!"
 msgstr ""
 
-#: src/result_screen.cxx:203
+#: src/result_screen.cxx:212
 msgid "Only a handfull more and you would have made it, try again!"
 msgstr ""
 
-#: src/result_screen.cxx:205
+#: src/result_screen.cxx:214
 msgid "Better luck next time!"
 msgstr ""
 
-#: src/result_screen.cxx:216
+#: src/result_screen.cxx:230
 msgid "Saved: "
 msgstr ""
 
-#: src/result_screen.cxx:220
+#: src/result_screen.cxx:234
 msgid "Killed: "
 msgstr ""
 
-#: src/result_screen.cxx:224
+#: src/result_screen.cxx:238
 msgid "Time left: "
 msgstr ""
 
@@ -1282,38 +1271,35 @@ msgstr "Schermafdruk: kon bestand niet opslaan"
 msgid "Image has wrong color depth: %d"
 msgstr "Plaatje heeft de verkeerde kleurdiepte: %d"
 
-#: src/start_screen.cxx:69
+#: src/start_screen.cxx:71
 msgid "Ok"
 msgstr ""
 
 # src/PingusLevelDesc.cc:81
-#: src/start_screen.cxx:139
+#: src/start_screen.cxx:154
 #, fuzzy
 msgid "Number of Pingus: "
 msgstr "Aantal Pingus"
 
 # src/PingusLevelDesc.cc:79
-#: src/start_screen.cxx:142
+#: src/start_screen.cxx:157
 #, fuzzy
 msgid "Number to Save: "
 msgstr "Pingus op te slaan:"
 
-#: src/start_screen.cxx:145
+#: src/start_screen.cxx:160
 msgid "Time: "
 msgstr ""
 
-#: src/start_screen.cxx:148
+#: src/start_screen.cxx:163
 msgid "Difficulty:"
 msgstr ""
 
-#. for (int i = 0; plf->get_difficulty())
-#. {
-#. }
-#: src/start_screen.cxx:155
+#: src/start_screen.cxx:171
 msgid "Author: "
 msgstr ""
 
-#: src/start_screen.cxx:158
+#: src/start_screen.cxx:174
 msgid "Filename: "
 msgstr ""
 
@@ -1456,7 +1442,7 @@ msgstr "Systeem::controle: Kon bestand niet openen: "
 msgid "System:checksum: file read error"
 msgstr "Systeem: controle: leesfout bestand"
 
-#: src/worldmap/level_dot.cxx:137
+#: src/worldmap/level_dot.cxx:159
 msgid "locked"
 msgstr ""
 
@@ -1474,7 +1460,7 @@ msgstr ""
 msgid "Leave?"
 msgstr "Niveau"
 
-#: src/worldmap/manager.cxx:197
+#: src/worldmap/manager.cxx:200
 msgid "Enter?"
 msgstr ""
 
@@ -1489,6 +1475,34 @@ msgstr "PingusWereldKaart: Bestand niet gevonden: "
 #, fuzzy
 msgid "...walking..."
 msgstr "Laden...."
+
+# src/Credits.cc:52
+#~ msgid "_If I forgot somebody in this"
+#~ msgstr "_Als ik iemand vergeten ben in deze"
+
+# src/Credits.cc:53
+#~ msgid "_list, just drop me a line and"
+#~ msgstr "_lijst, stuur me een berichtje dan"
+
+# src/Credits.cc:54
+#~ msgid "_I'll fix this."
+#~ msgstr "_zal ik het herstellen"
+
+# src/Credits.cc:55
+#~ msgid "_Last Updated: 2000/06/27"
+#~ msgstr "_ Laatste aanpassing: 2000/06/27"
+
+# src/Intro.cc:66 src/Intro.cc:123
+#~ msgid "..:: Press Start ::.."
+#~ msgstr "..:: Druk op Start ::.."
+
+# src/OptionMenu.cc:207
+#~ msgid "Gimmicks"
+#~ msgstr "Foefjes"
+
+# src/OptionMenu.cc:218
+#~ msgid "Level Previews"
+#~ msgstr "Niveau bezichtiging"
 
 # src/blitter.cc:93
 #~ msgid "Couldn't find palette: %d"

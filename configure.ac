@@ -1,4 +1,4 @@
-#  $Id: configure.ac,v 1.8 2003/04/07 11:58:19 grumbel Exp $
+#  $Id: configure.ac,v 1.9 2003/04/10 21:35:58 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,10 +25,10 @@ CLANLIB_MINOR_VERSION=6
 CLANLIB_PATCH_VERSION=5
 
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT(Pingus, 0.6.0rc1)
+AC_INIT(Pingus, 0.6.0rc2)
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_SRCDIR(src/pingus_main.cxx)
-AM_INIT_AUTOMAKE
+AM_INIT_AUTOMAKE(dist-bzip2)
 
 
 dnl Checks for programs.
@@ -50,7 +50,7 @@ AC_ARG_WITH(clanGL,
 
 if test "x$with_gettext" != "xno"; then
 	dnl -- gettext macros --
-	ALL_LINGUAS="de tr nl it cs"
+	ALL_LINGUAS="de" # tr nl it cs"
 
 	dnl AM_WITH_NLS
 	dnl AM_LC_MESSAGES
@@ -284,7 +284,7 @@ AC_DEFINE_UNQUOTED(LOCALEDIR, "$localedir", [Location of gettext files])
 # po/Makefile.in intl/Makefile <- this must be in one line, if its not
 # po/Makefile will not be generated.
 
-AC_OUTPUT( Makefile 
+AC_OUTPUT( Makefile  m4/Makefile  intl/Makefile 
            src/Makefile 
            src/actions/Makefile
 	   src/caimagemanipulation/Makefile
@@ -316,7 +316,7 @@ AC_OUTPUT( Makefile
            data/data/Makefile
            data/images/Makefile
            doc/Makefile
-           po/Makefile.in intl/Makefile
+           po/Makefile.in
           )
 
 # find . -name "Makefile.am" | grep "\./data/images" | grep -v old | grep -v unsorted | sed "s/^\.\//  /" | sed "s/.am\$//"

@@ -321,8 +321,6 @@ src/input/scrollers/multiple_scroller.hxx
 src/input/scrollers/pointer_scroller.cxx
 src/input/scrollers/pointer_scroller.hxx
 src/input_event.hxx
-src/intro.cxx
-src/intro.hxx
 src/layer_manager.cxx
 src/layer_manager.hxx
 src/level_desc.cxx

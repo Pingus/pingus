@@ -1389,14 +1389,6 @@ SOURCE=.\src\input_event.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\intro.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\intro.hxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\layer_manager.cxx
 # End Source File
 # Begin Source File
