@@ -1,4 +1,4 @@
-//  $Id: hammer_obj.cxx,v 1.3 2002/09/09 09:38:47 grumbel Exp $
+//  $Id: hammer_obj.cxx,v 1.4 2002/09/09 16:13:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,55 +24,53 @@
 
 namespace EditorObjs {
 
-  HammerObj::HammerObj (WorldObjsData::HammerData* data_) : SpriteEditorObj(data_->pos),
-                                                            frame(0),
-                                                            data(new WorldObjsData::HammerData(*data_))
-  {
-    data->pos.z = -100;
-    sprite = Sprite("Traps/hammer", "traps");
-    sprite.set_align_center_bottom ();
-  }
-  
-  HammerObj::~HammerObj ()
-  {
-    delete data;
-  }
-  
-  EditorObj*
-  HammerObj::duplicate ()
-  {
-    return new HammerObj(data);
-  }
+HammerObj::HammerObj (WorldObjsData::HammerData* data_) : SpriteEditorObj(data_->pos),
+                                                          frame(0),
+                                                          data(new WorldObjsData::HammerData(*data_))
+{
+  data->pos.z = -100;
+  sprite = Sprite("Traps/hammer", "traps");
+  sprite.set_align_center_bottom ();
+}
+
+HammerObj::~HammerObj ()
+{
+  delete data;
+}
+
+EditorObj*
+HammerObj::duplicate ()
+{
+  return new HammerObj(data);
+}
 
 EditorObjLst
 HammerObj::create (const CL_Vector& pos)
 {
-  EditorObjLst lst;
   WorldObjsData::HammerData hammer_data;
   hammer_data.pos = pos;
-  lst.push_back (new HammerObj (&hammer_data));
-  return lst;
+  return EditorObjLst(1, new HammerObj(&hammer_data));
 }
   
-  void
-  HammerObj::write_xml (std::ostream& xml)
-  {
-    data->write_xml(xml);
-  }
-  
-  void
-  HammerObj::draw (EditorView* view)
-  {
-    view->draw(sprite, data->pos, frame);
-  }
+void
+HammerObj::write_xml (std::ostream& xml)
+{
+  data->write_xml(xml);
+}
 
-  std::string  
-  HammerObj::status_line ()
-  {
-    char str[64];
-    snprintf (str, 64, "HammerObj: %4.2fx%4.2fx%4.2f", data->pos.x, data->pos.y, data->pos.z);
-    return str;
-  }
+void
+HammerObj::draw (EditorView* view)
+{
+  view->draw(sprite, data->pos, frame);
+}
+
+std::string  
+HammerObj::status_line ()
+{
+  char str[64];
+  snprintf (str, 64, "HammerObj: %4.2fx%4.2fx%4.2f", data->pos.x, data->pos.y, data->pos.z);
+  return str;
+}
   
 }
 

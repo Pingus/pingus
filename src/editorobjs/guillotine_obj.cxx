@@ -1,4 +1,4 @@
-//  $Id: guillotine_obj.cxx,v 1.3 2002/09/09 09:38:47 grumbel Exp $
+//  $Id: guillotine_obj.cxx,v 1.4 2002/09/09 16:13:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,54 +24,52 @@
 
 namespace EditorObjs {
 
-  GuillotineObj::GuillotineObj (WorldObjsData::GuillotineData* data_) : SpriteEditorObj(data_->pos),
-                                                                        frame(0),
-                                                                        data(new WorldObjsData::GuillotineData(*data_))
-  {
-    data->pos.z = -100;
-    sprite = Sprite("Traps/guillotineidle", "traps");
-  }
-  
-  GuillotineObj::~GuillotineObj ()
-  {
-    delete data;
-  }
+GuillotineObj::GuillotineObj (WorldObjsData::GuillotineData* data_) : SpriteEditorObj(data_->pos),
+                                                                      frame(0),
+                                                                      data(new WorldObjsData::GuillotineData(*data_))
+{
+  data->pos.z = -100;
+  sprite = Sprite("Traps/guillotineidle", "traps");
+}
+
+GuillotineObj::~GuillotineObj ()
+{
+  delete data;
+}
 
 EditorObjLst
 GuillotineObj::create (const CL_Vector& pos)
 {
-  EditorObjLst lst;
-  WorldObjsData::GuillotineData data;
-  data.pos = pos;
-  lst.push_back (new GuillotineObj (&data));
-  return lst;
+  WorldObjsData::GuillotineData newdata;
+  newdata.pos = pos;
+  return EditorObjLst(1, new GuillotineObj(&newdata));
 }
   
-  EditorObj*
-  GuillotineObj::duplicate ()
-  {
-    return new GuillotineObj(data);
-  }
-  
-  void
-  GuillotineObj::write_xml (std::ostream& xml)
-  {
-    data->write_xml(xml);
-  }
-  
-  void
-  GuillotineObj::draw (EditorView* view)
-  {
-    view->draw(sprite, data->pos, frame);
-  }
+EditorObj*
+GuillotineObj::duplicate ()
+{
+  return new GuillotineObj(data);
+}
 
-  std::string  
-  GuillotineObj::status_line ()
-  {
-    char str[64];
-    snprintf (str, 64, "GuillotineObj: %4.2fx%4.2fx%4.2f", data->pos.x, data->pos.y, data->pos.z);
-    return str;
-  }
+void
+GuillotineObj::write_xml (std::ostream& xml)
+{
+  data->write_xml(xml);
+}
+
+void
+GuillotineObj::draw (EditorView* view)
+{
+  view->draw(sprite, data->pos, frame);
+}
+
+std::string  
+GuillotineObj::status_line ()
+{
+  char str[64];
+  snprintf (str, 64, "GuillotineObj: %4.2fx%4.2fx%4.2f", data->pos.x, data->pos.y, data->pos.z);
+  return str;
+}
   
 }
 

@@ -1,4 +1,4 @@
-//  $Id: hammer_obj.hxx,v 1.2 2002/09/08 18:13:04 grumbel Exp $
+//  $Id: hammer_obj.hxx,v 1.3 2002/09/09 16:13:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define HEADER_PINGUS_EDITOROBJS_HAMMER_OBJ_HXX
 
 #include "../editor/sprite_editorobj.hxx"
-#include "../worldobj_data.hxx"
 
 namespace WorldObjsData {
   class HammerData;
@@ -29,29 +28,29 @@ namespace WorldObjsData {
 
 namespace EditorObjs {
 
-  class HammerObj : public SpriteEditorObj
-  {
-    private:
-      int frame;
-      WorldObjsData::HammerData* const data;
-    
-    public:
-      HammerObj (WorldObjsData::HammerData* data_);
-     ~HammerObj ();
-     
+class HammerObj : public SpriteEditorObj
+{
+  private:
+    int frame;
+    WorldObjsData::HammerData* const data;
+  
+  public:
+    HammerObj (WorldObjsData::HammerData* data_);
+   ~HammerObj ();
+   
     static EditorObjLst create (const CL_Vector& pos);
 
-      EditorObj* duplicate ();
-      
-      void write_xml (std::ostream& xml);
-      void draw (EditorView* view);
-      
-      std::string status_line ();
+    EditorObj* duplicate ();
     
-    private:
-      HammerObj (const HammerObj&);
-      HammerObj operator= (const HammerObj&);
-  };
+    void write_xml (std::ostream& xml);
+    void draw (EditorView* view);
+    
+    std::string status_line ();
+  
+  private:
+    HammerObj (const HammerObj&);
+    HammerObj operator= (const HammerObj&);
+};
 
 }
 

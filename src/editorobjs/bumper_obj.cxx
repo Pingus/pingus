@@ -1,4 +1,4 @@
-//  $Id: bumper_obj.cxx,v 1.3 2002/09/09 09:38:47 grumbel Exp $
+//  $Id: bumper_obj.cxx,v 1.4 2002/09/09 16:13:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,55 +24,53 @@
 
 namespace EditorObjs {
 
-  BumperObj::BumperObj (WorldObjsData::BumperData* data_) : SpriteEditorObj(data_->pos),
-                                                            frame(0),
-                                                            data(new WorldObjsData::BumperData(*data_))
-  {
-    data->pos.z = -100;
-    sprite = Sprite("Traps/bumper", "traps");
-    sprite.set_align_center_bottom ();
-  }
-  
-  BumperObj::~BumperObj ()
-  {
-    delete data;
-  }
-  
+BumperObj::BumperObj (WorldObjsData::BumperData* data_) : SpriteEditorObj(data_->pos),
+                                                          frame(0),
+                                                          data(new WorldObjsData::BumperData(*data_))
+{
+  data->pos.z = -100;
+  sprite = Sprite("Traps/bumper", "traps");
+  sprite.set_align_center_bottom ();
+}
+
+BumperObj::~BumperObj ()
+{
+  delete data;
+}
+
 EditorObjLst
 BumperObj::create (const CL_Vector& pos)
 {
-  EditorObjLst lst;
-  WorldObjsData::BumperData data;
-  data.pos = pos;
-  lst.push_back (new BumperObj (&data));
-  return lst;
+  WorldObjsData::BumperData newdata;
+  newdata.pos = pos;
+  return EditorObjLst(1, new BumperObj(&newdata));
 }
 
-  EditorObj*
-  BumperObj::duplicate ()
-  {
-    return new BumperObj(data);
-  }
-  
-  void
-  BumperObj::write_xml (std::ostream& xml)
-  {
-    data->write_xml(xml);
-  }
-  
-  void
-  BumperObj::draw (EditorView* view)
-  {
-    view->draw(sprite, data->pos, frame);
-  }
-  
-  std::string  
-  BumperObj::status_line ()
-  {
-    char str[64];
-    snprintf (str, 64, "BumperObj: %4.2fx%4.2fx%4.2f", data->pos.x, data->pos.y, data->pos.z);
-    return str;
-  }
+EditorObj*
+BumperObj::duplicate ()
+{
+  return new BumperObj(data);
+}
+
+void
+BumperObj::write_xml (std::ostream& xml)
+{
+  data->write_xml(xml);
+}
+
+void
+BumperObj::draw (EditorView* view)
+{
+  view->draw(sprite, data->pos, frame);
+}
+
+std::string  
+BumperObj::status_line ()
+{
+  char str[64];
+  snprintf (str, 64, "BumperObj: %4.2fx%4.2fx%4.2f", data->pos.x, data->pos.y, data->pos.z);
+  return str;
+}
   
 }
 

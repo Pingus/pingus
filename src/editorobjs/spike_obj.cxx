@@ -1,4 +1,4 @@
-//  $Id: spike_obj.cxx,v 1.3 2002/09/09 09:38:47 grumbel Exp $
+//  $Id: spike_obj.cxx,v 1.4 2002/09/09 16:13:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,54 +24,52 @@
 
 namespace EditorObjs {
 
-  SpikeObj::SpikeObj (WorldObjsData::SpikeData* data_) : SpriteEditorObj(data_->pos),
-                                                         frame(0),
-                                                         data(new WorldObjsData::SpikeData(*data_))
-  {
-    data->pos.z = -100;
-    sprite = Sprite("Traps/spike", "traps");
-  }
-  
-  SpikeObj::~SpikeObj ()
-  {
-    delete data;
-  }
+SpikeObj::SpikeObj (WorldObjsData::SpikeData* data_) : SpriteEditorObj(data_->pos),
+                                                       frame(0),
+                                                       data(new WorldObjsData::SpikeData(*data_))
+{
+  data->pos.z = -100;
+  sprite = Sprite("Traps/spike", "traps");
+}
+
+SpikeObj::~SpikeObj ()
+{
+  delete data;
+}
 
 EditorObjLst
 SpikeObj::create (const CL_Vector& pos)
 {
-  EditorObjLst lst;
   WorldObjsData::SpikeData spike_data;
   spike_data.pos = pos;
-  lst.push_back (new SpikeObj (&spike_data));
-  return lst;
+  return EditorObjLst(1, new SpikeObj (&spike_data));
 }
   
-  EditorObj*
-  SpikeObj::duplicate ()
-  {
-    return new SpikeObj(data);
-  }
-  
-  void
-  SpikeObj::write_xml (std::ostream& xml)
-  {
-    data->write_xml(xml);
-  }
-  
-  void
-  SpikeObj::draw (EditorView* view)
-  {
-    view->draw(sprite, data->pos, frame);
-  }
+EditorObj*
+SpikeObj::duplicate ()
+{
+  return new SpikeObj(data);
+}
 
-  std::string  
-  SpikeObj::status_line ()
-  {
-    char str[64];
-    snprintf (str, 64, "SpikeObj: %4.2fx%4.2fx%4.2f", data->pos.x, data->pos.y, data->pos.z);
-    return str;
-  }
+void
+SpikeObj::write_xml (std::ostream& xml)
+{
+  data->write_xml(xml);
+}
+
+void
+SpikeObj::draw (EditorView* view)
+{
+  view->draw(sprite, data->pos, frame);
+}
+
+std::string  
+SpikeObj::status_line ()
+{
+  char str[64];
+  snprintf (str, 64, "SpikeObj: %4.2fx%4.2fx%4.2f", data->pos.x, data->pos.y, data->pos.z);
+  return str;
+}
   
 }
 

@@ -24,6 +24,7 @@ libpingus_worldobjsdata_a_SOURCES = \
 	hammer_data.cxx     hammer_data.hxx \
 	laser_exit_data.cxx laser_exit_data.hxx \
 	smasher_data.cxx    smasher_data.hxx \
-	spike_data.cxx      spike_data.hxx 
+	spike_data.cxx      spike_data.hxx  \
+	teleporter_data.cxx teleporter_data.hxx
 
 # EOF #

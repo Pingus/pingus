@@ -1,4 +1,4 @@
-//  $Id: smasher_obj.cxx,v 1.3 2002/09/09 09:38:47 grumbel Exp $
+//  $Id: smasher_obj.cxx,v 1.4 2002/09/09 16:13:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,54 +24,52 @@
 
 namespace EditorObjs {
 
-  SmasherObj::SmasherObj (WorldObjsData::SmasherData* data_) : SpriteEditorObj(data_->pos),
-                                                               frame(0),
-                                                               data(new WorldObjsData::SmasherData(*data_))
-  {
-    data->pos.z = -100;
-    sprite = Sprite("Traps/smasher", "traps");
-  }
-  
-  SmasherObj::~SmasherObj ()
-  {
-    delete data;
-  }
+SmasherObj::SmasherObj (WorldObjsData::SmasherData* data_) : SpriteEditorObj(data_->pos),
+                                                             frame(0),
+                                                             data(new WorldObjsData::SmasherData(*data_))
+{
+  data->pos.z = -100;
+  sprite = Sprite("Traps/smasher", "traps");
+}
+
+SmasherObj::~SmasherObj ()
+{
+  delete data;
+}
 
 EditorObjLst
 SmasherObj::create (const CL_Vector& pos)
 {
-  EditorObjLst lst;
   WorldObjsData::SmasherData smasher_data;
   smasher_data.pos = pos;
-  lst.push_back (new SmasherObj (&smasher_data));
-  return lst;
+  return EditorObjLst(1, new SmasherObj(&smasher_data));
 }
   
-  EditorObj*
-  SmasherObj::duplicate ()
-  {
-    return new SmasherObj(data);
-  }
-  
-  void
-  SmasherObj::write_xml (std::ostream& xml)
-  {
-    data->write_xml(xml);
-  }
-  
-  void
-  SmasherObj::draw (EditorView* view)
-  {
-    view->draw(sprite, data->pos, frame);
-  }
+EditorObj*
+SmasherObj::duplicate ()
+{
+  return new SmasherObj(data);
+}
 
-  std::string  
-  SmasherObj::status_line ()
-  {
-    char str[64];
-    snprintf (str, 64, "SmasherObj: %4.2fx%4.2fx%4.2f", data->pos.x, data->pos.y, data->pos.z);
-    return str;
-  }
+void
+SmasherObj::write_xml (std::ostream& xml)
+{
+  data->write_xml(xml);
+}
+
+void
+SmasherObj::draw (EditorView* view)
+{
+  view->draw(sprite, data->pos, frame);
+}
+
+std::string  
+SmasherObj::status_line ()
+{
+  char str[64];
+  snprintf (str, 64, "SmasherObj: %4.2fx%4.2fx%4.2f", data->pos.x, data->pos.y, data->pos.z);
+  return str;
+}
   
 }
 

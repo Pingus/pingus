@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.11 2002/09/08 18:13:04 grumbel Exp $
+//  $Id: object_selector.cxx,v 1.12 2002/09/09 16:13:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,15 +52,14 @@
 #include "../editorobjs/fake_exit_obj.hxx"
 #include "../editorobjs/hammer_obj.hxx"
 #include "../editorobjs/smasher_obj.hxx"
+#include "../editorobjs/teleporter_obj.hxx"
 
-#include "../worldobjs/teleporter.hxx"
 #include "../worldobjs/ice_block.hxx"
 #include "../worldobjs/info_box.hxx"
 #include "../worldobjs/conveyor_belt.hxx"
 #include "../worldobjs/switch_door.hxx"
 
 using namespace std;
-
 using namespace EditorObjs;
 
 ObjectSelector::ObjectSelector()
@@ -188,7 +187,7 @@ ObjectSelector::get_worldobj()
       switch (read_key()) 
 	{
 	case CL_KEY_1:
-	  return EditorTeleporterObj::create (pos);
+	  return TeleporterObj::create (pos);
 	  
 	case CL_KEY_2:
 	  return EditorSwitchDoorObj::create (pos);

@@ -1,4 +1,4 @@
-//  $Id: teleporter.hxx,v 1.10 2002/09/06 17:33:29 torangan Exp $
+//  $Id: teleporter.hxx,v 1.11 2002/09/09 16:13:44 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,109 +21,32 @@
 #define HEADER_PINGUS_WORLDOBJS_TELEPORTER_HXX
 
 #include "../worldobj.hxx"
-#include "../worldobj_data.hxx"
-#include "../editor/sprite_editorobj.hxx"
-#include "../libxmlfwd.hxx"
 
-class EditorTeleporterObj;
+namespace WorldObjsData {
+  class TeleporterData;
+}
 
-class TeleporterData : public WorldObjData
-{
-public:
-  CL_Vector pos;
-  CL_Vector target_pos;
+namespace WorldObjs {
+
+  class Teleporter : public WorldObj
+  {
+  private:
+    WorldObjsData::TeleporterData* const data;
+  public:
+    Teleporter (WorldObjsData::TeleporterData* data_);
+
+    int   get_z_pos () { return 0; }
+    
+    void  draw (GraphicContext& gc);
+    void  update (float delta);
+    float get_z_pos () const;
   
-  TeleporterData () {}
-  TeleporterData (xmlDocPtr doc, xmlNodePtr cur);
+  private:
+    Teleporter (const Teleporter&);
+    Teleporter operator= (const Teleporter&);
+  };
 
-  TeleporterData (const TeleporterData& data);
-  TeleporterData operator= (const TeleporterData& data);
-  
-  /** Write the content of this object formatted as xml to the given
-      stream */
-  void write_xml(std::ostream& xml);
-  
-  /** Create an WorldObj from the given data object */
-  WorldObj* create_WorldObj ();
-
-  /** Create an EditorObj from the given data object */
-  EditorObjLst create_EditorObj ();
-};
-
-class Teleporter : private TeleporterData,
-		   public WorldObj
-{
-private:
-  Sprite sprite;
-  Sprite target_sprite;
-  
-public:
-  Teleporter (const TeleporterData& data);
-
-  int   get_z_pos() { return 0; }  
-  void  draw (GraphicContext& gc);
-  void  update(float delta);
-  float get_z_pos() const { return (int) pos.z; }
-  
-private:
-  Teleporter (const Teleporter&);
-  Teleporter operator= (const Teleporter&);
-};
-
-class EditorTeleporterTargetObj;
-
-class EditorTeleporterObj : public SpriteEditorObj, 
-			    public TeleporterData
-{
-private:
-  EditorTeleporterTargetObj* target;
-
-public:
-  EditorTeleporterObj (const TeleporterData& data);
-  
-  CL_Vector& get_target_pos_ref () { return target_pos; }
-
-  EditorObj* duplicate();
-  static EditorObjLst create (const TeleporterData& data);
-  
-  void write_xml(std::ostream& xml) { TeleporterData::write_xml(xml); }
-
-  /** Create this object (and child objects) with reasonable defaults
-      for the editor */
-  static EditorObjLst create (const CL_Vector& pos);
-
-  void draw (EditorView * view);
-  void save_xml (std::ostream& xml);
-  std::string status_line();
-  
-private:
-  EditorTeleporterObj (const EditorTeleporterObj&);
-  EditorTeleporterObj operator= (const EditorTeleporterObj&);
-};
-
-/** A pseudo object to represent the teleporter target; all the
-    data itself is handled inside the EditorTeleporterObj, but we
-    need this helper object to be able to show and move the
-    teleporter target inside the editor */
-class EditorTeleporterTargetObj : public SpriteEditorObj
-{
-private:
-  EditorTeleporterObj* teleporter;
-  
-public:
-  /// Basic constructor
-  EditorTeleporterTargetObj (EditorTeleporterObj* obj);
-
-  EditorObj* duplicate() { return teleporter->duplicate (); }
-
-  /// The saving will be done in EditorTeleporterObj::save_xml
-  void write_xml (std::ostream& xml) { UNUSED_ARG(xml); }
-  std::string status_line();
-  
-private:
-  EditorTeleporterTargetObj (const EditorTeleporterTargetObj&);
-  EditorTeleporterTargetObj operator= (const EditorTeleporterTargetObj&);
-};
+}
 
 #endif
 

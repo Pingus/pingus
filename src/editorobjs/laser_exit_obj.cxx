@@ -1,4 +1,4 @@
-//  $Id: laser_exit_obj.cxx,v 1.3 2002/09/09 09:38:47 grumbel Exp $
+//  $Id: laser_exit_obj.cxx,v 1.4 2002/09/09 16:13:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,55 +24,53 @@
 
 namespace EditorObjs {
 
-  LaserExitObj::LaserExitObj (WorldObjsData::LaserExitData* data_) : SpriteEditorObj(data_->pos),
-                                                                     frame(0),
-                                                                     data(new WorldObjsData::LaserExitData(*data_))
-  {
-    data->pos.z = -100;
-    sprite = Sprite("Traps/laser_exit", "traps");
-    sprite.set_align_center_bottom ();
-  }
-  
-  LaserExitObj::~LaserExitObj ()
-  {
-    delete data;
-  }
+LaserExitObj::LaserExitObj (WorldObjsData::LaserExitData* data_) : SpriteEditorObj(data_->pos),
+                                                                   frame(0),
+                                                                   data(new WorldObjsData::LaserExitData(*data_))
+{
+  data->pos.z = -100;
+  sprite = Sprite("Traps/laser_exit", "traps");
+  sprite.set_align_center_bottom ();
+}
+
+LaserExitObj::~LaserExitObj ()
+{
+  delete data;
+}
 
 EditorObjLst
 LaserExitObj::create (const CL_Vector& pos)
 {
-  EditorObjLst lst;
-  WorldObjsData::LaserExitData data;
-  data.pos = pos;
-  lst.push_back (new LaserExitObj (&data));
-  return lst;
+  WorldObjsData::LaserExitData newdata;
+  newdata.pos = pos;
+  return EditorObjLst(1, new LaserExitObj(&newdata));
 }
 
 EditorObj*
-  LaserExitObj::duplicate ()
-  {
-    return new LaserExitObj(data);
-  }
-  
-  void
-  LaserExitObj::write_xml (std::ostream& xml)
-  {
-    data->write_xml(xml);
-  }
-  
-  void
-  LaserExitObj::draw (EditorView* view)
-  {
-    view->draw(sprite, data->pos, frame);
-  }
+LaserExitObj::duplicate ()
+{
+  return new LaserExitObj(data);
+}
 
-  std::string  
-  LaserExitObj::status_line ()
-  {
-    char str[64];
-    snprintf (str, 64, "LaserExitObj: %4.2fx%4.2fx%4.2f", data->pos.x, data->pos.y, data->pos.z);
-    return str;
-  }
+void
+LaserExitObj::write_xml (std::ostream& xml)
+{
+  data->write_xml(xml);
+}
+
+void
+LaserExitObj::draw (EditorView* view)
+{
+  view->draw(sprite, data->pos, frame);
+}
+
+std::string  
+LaserExitObj::status_line ()
+{
+  char str[64];
+  snprintf (str, 64, "LaserExitObj: %4.2fx%4.2fx%4.2f", data->pos.x, data->pos.y, data->pos.z);
+  return str;
+}
   
 }
 
