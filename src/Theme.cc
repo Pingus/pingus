@@ -1,4 +1,4 @@
-//  $Id: Theme.cc,v 1.12 2000/06/20 20:32:12 grumbel Exp $
+//  $Id: Theme.cc,v 1.13 2000/06/21 15:28:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -101,7 +101,7 @@ Theme::load(std::string filename)
   load_status(filename);
 }
 
-void
+int
 Theme::mark_level_at_point(int x, int y)
 {
   int j = 0;
@@ -118,12 +118,17 @@ Theme::mark_level_at_point(int x, int y)
 	  && y_pos < y
 	  && (y_pos + font->get_height()) > y)
 	{
-	  current_level = j;
-	  std::cout << "Current_level: " << current_level << std::endl;
-	  return;
+	  if (j <= accessible_levels)
+	    {
+	      current_level = j;
+	      // std::cout << "Current_level: " << current_level << std::endl;
+	      return current_level;
+	    }
+	  return -1;
 	}      
       y_pos += font->get_height() + 4;
     }
+  return -1;
 }
 
 void

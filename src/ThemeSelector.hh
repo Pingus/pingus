@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.hh,v 1.8 2000/06/20 20:32:12 grumbel Exp $
+//  $Id: ThemeSelector.hh,v 1.9 2000/06/21 15:28:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -135,8 +135,9 @@ public:
 
   /** Marks the level, which is under the given coordinates 
       @param x X-Position (normaly CL_Mouse::get_x())
-      @param y Y-Position (normaly CL_Mouse::get_y()) */
-  void mark_level_at_point(int x, int y);
+      @param y Y-Position (normaly CL_Mouse::get_y())
+      @return The current_level at point or -1 if no level is under point */
+  int mark_level_at_point(int x, int y);
 };
 
 #endif

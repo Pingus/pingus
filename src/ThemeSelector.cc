@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.19 2000/06/20 20:32:12 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.20 2000/06/21 15:28:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -118,27 +118,40 @@ ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
     }
   else if (device == CL_Input::pointers[0])
     {
+      int tmp_level;
       switch (key.id)
 	{
 	case 0:
-	  if (key.x > 0 && key.x < theme_selector->left_arrow->get_width()
-	      && key.y > (CL_Display::get_height() - theme_selector->left_arrow->get_height()) / 2
-	      && key.y < (CL_Display::get_height() + theme_selector->left_arrow->get_height()) / 2)
+	  tmp_level = theme_selector->mark_level_at_point(key.x, key.y);
+	  if (tmp_level != -1) 
 	    {
-	      theme_selector->current_theme++;
-	      if (theme_selector->current_theme == theme_selector->themes.end()) 
-		theme_selector->current_theme = theme_selector->themes.begin();
-	    }
-	  else if (key.x > CL_Display::get_width() - theme_selector->right_arrow->get_width()
-		   && key.x < CL_Display::get_width()
-		   && key.y > (CL_Display::get_height() - theme_selector->right_arrow->get_height()) / 2
-		   && key.y < (CL_Display::get_height() + theme_selector->right_arrow->get_height()) / 2)
+	      // We clicked on a level, start it now.
+	      enabled = false;
+	      loading_screen.draw();
+	      (*(theme_selector->current_theme))->play();
+	      enabled = true; 
+	    } 
+	  else
 	    {
-	      if (theme_selector->current_theme == theme_selector->themes.begin()) 
-		theme_selector->current_theme = theme_selector->themes.end();
-	      theme_selector->current_theme--;
+	      // Check if we clicked on one of the red buttons
+	      if (key.x > 0 && key.x < theme_selector->left_arrow->get_width()
+		  && key.y > (CL_Display::get_height() - theme_selector->left_arrow->get_height()) / 2
+		  && key.y < (CL_Display::get_height() + theme_selector->left_arrow->get_height()) / 2)
+		{
+		  theme_selector->current_theme++;
+		  if (theme_selector->current_theme == theme_selector->themes.end()) 
+		    theme_selector->current_theme = theme_selector->themes.begin();
+		}
+	      else if (key.x > CL_Display::get_width() - theme_selector->right_arrow->get_width()
+		       && key.x < CL_Display::get_width()
+		       && key.y > (CL_Display::get_height() - theme_selector->right_arrow->get_height()) / 2
+		       && key.y < (CL_Display::get_height() + theme_selector->right_arrow->get_height()) / 2)
+		{
+		  if (theme_selector->current_theme == theme_selector->themes.begin()) 
+		    theme_selector->current_theme = theme_selector->themes.end();
+		  theme_selector->current_theme--;
+		}
 	    }
-
 	  break;
 	default:
 	  break;
@@ -287,10 +300,10 @@ ThemeSelector::readdir(std::string path)
     }
 }
 
-void
+int
 ThemeSelector::mark_level_at_point(int x, int y)
 {
-  (*current_theme)->mark_level_at_point(x, y);
+  return (*current_theme)->mark_level_at_point(x, y);
 }
 
 /* EOF */

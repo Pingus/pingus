@@ -1,4 +1,4 @@
-//  $Id: Theme.hh,v 1.7 2000/06/20 20:32:12 grumbel Exp $
+//  $Id: Theme.hh,v 1.8 2000/06/21 15:28:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,10 +42,14 @@ private:
   CL_Font*    font;
   ///
   CL_Font*    title;
-  ///
+
+  /** The last level, which is accessible */
   int      accessible_levels;
-  ///
+
+  /** The currently selected level, valid in the interval [0,
+      accessible_levels */
   int      current_level;
+  
   ///
   std::vector<std::string> levels;
   ///
@@ -72,7 +76,7 @@ public:
   /** Marks the level, which is under the given coordinates 
       @param x X-Position (normaly CL_Mouse::get_x())
       @param y Y-Position (normaly CL_Mouse::get_y()) */
-  void mark_level_at_point(int x, int y);
+  int mark_level_at_point(int x, int y);
 
   ///
   void next_level();
