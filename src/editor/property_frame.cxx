@@ -1,5 +1,5 @@
-//  $Id: property_window.hxx,v 1.2 2002/06/30 22:32:26 grumbel Exp $
-// 
+//  $Id: property_frame.cxx,v 1.1 2002/06/30 22:32:26 grumbel Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,36 +12,18 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef PINGUS_EDITOR_PROPERTY_WINDOW_HXX
-#define PINGUS_EDITOR_PROPERTY_WINDOW_HXX
+#include "property_frame.hxx"
 
-#include <ClanLib/gui.h>
+using namespace Pingus::Editor;
 
-class EditorObj;
-
-namespace Pingus
+PropertyFrame::PropertyFrame (int width, int height, CL_Component* parent)
+  : CL_Frame (CL_Rect (0, 0, width, height), parent)
 {
-  namespace Editor
-  {
-    class PropertyWindow : public CL_Window
-    {
-    private:
-      CL_Component* current_frame;
-      CL_Label label;
-      
-    public:
-      PropertyWindow (CL_Component* parent);
-
-      void update_frame (boost::shared_ptr<EditorObj>);
-    };
-  }
 }
-
-#endif
 
 /* EOF */

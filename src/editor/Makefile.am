@@ -38,6 +38,7 @@ editorobj.cxx		    rect_editorobj.cxx	  weather_obj.cxx \
     scroll_map.cxx \
   sprite_editorobj.cxx editorobj_group.hxx editorobj_group.cxx \
 groundpiece_window.hxx groundpiece_window.cxx \
-property_window.hxx property_window.cxx
+property_window.hxx property_window.cxx \
+property_frame.hxx property_frame.cxx
 
 # EOF #

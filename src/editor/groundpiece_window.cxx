@@ -1,4 +1,4 @@
-//  $Id: groundpiece_window.cxx,v 1.3 2002/06/30 22:03:13 grumbel Exp $
+//  $Id: groundpiece_window.cxx,v 1.4 2002/06/30 22:32:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@
 using namespace Pingus::Editor;
 
 GroundpieceWindow::GroundpieceWindow (CL_Component* parent,  EditorGroundpieceObj* arg_data)
-  : CL_Frame (CL_Rect (0, 0, 200, 180), /* "Groundpiece Properties",*/ parent),
+  : PropertyFrame (200, 180, parent),
     data (arg_data),
     convert_to_hotspot_button (CL_Rect (10, 30, 190, 30 + 20), "Convert to HotSpot", this),
 
@@ -42,22 +42,12 @@ GroundpieceWindow::GroundpieceWindow (CL_Component* parent,  EditorGroundpieceOb
     ground_radiobutton (CL_Point (110, 60), "ground", this),
     transparent_radiobutton (CL_Point (110, 80), "transparent", this),
     solid_radiobutton (CL_Point (110, 100), "solid", this),
-    bridge_radiobutton (CL_Point (110, 120), "bridge", this),
-
-    ok_button (CL_Rect (10, 150, 90, 150 + 20), "Ok", this),
-    cancel_button (CL_Rect (110, 150, 190, 150 + 20), "Cancel", this)
+    bridge_radiobutton (CL_Point (110, 120), "bridge", this)
 {
-  //groundtype_listbox.insert_item ("ground");
-  //groundtype_listbox.insert_item ("transparent");
-  //groundtype_listbox.insert_item ("bridge");
-  //groundtype_listbox.insert_item ("solid");
   groundtype_group.add (&ground_radiobutton);
   groundtype_group.add (&transparent_radiobutton);
   groundtype_group.add (&solid_radiobutton);
   groundtype_group.add (&bridge_radiobutton);
-
-  ok_button_slot     = ok_button.sig_clicked ().connect (this, &GroundpieceWindow::ok_clicked);
-  cancel_button_slot = cancel_button.sig_clicked ().connect (this, &GroundpieceWindow::cancel_clicked);
 
   convert_to_hotspot_button_slot
     = convert_to_hotspot_button.sig_clicked ().connect (this, &GroundpieceWindow::convert_to_hotspot);
@@ -65,19 +55,9 @@ GroundpieceWindow::GroundpieceWindow (CL_Component* parent,  EditorGroundpieceOb
   read_data ();
 }
 
-void 
-GroundpieceWindow::ok_clicked ()
+GroundpieceWindow::~GroundpieceWindow ()
 {
-  std::cout << "OK Clicked" << std::endl;
   write_data ();
-  show (false);
-}
-
-void
-GroundpieceWindow::cancel_clicked ()
-{
-  std::cout << "Cancel Clicked" << std::endl;
-  show (false);
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: groundpiece_window.hxx,v 1.3 2002/06/30 22:03:13 grumbel Exp $
+//  $Id: groundpiece_window.hxx,v 1.4 2002/06/30 22:32:26 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,14 +20,14 @@
 #ifndef HEADER_PINGUS_EDITOR_GROUNDPIECE_WINDOW_HXX
 #define HEADER_PINGUS_EDITOR_GROUNDPIECE_WINDOW_HXX
 
-#include <ClanLib/gui.h>
+#include "property_frame.hxx"
 #include "editor_groundpiece_obj.hxx"
 
 namespace Pingus
 {
   namespace Editor
   {
-    class GroundpieceWindow : public CL_Frame
+    class GroundpieceWindow : public PropertyFrame
     {
     private:
       EditorGroundpieceObj* data;
@@ -43,18 +43,12 @@ namespace Pingus
       CL_RadioButton solid_radiobutton;
       CL_RadioButton bridge_radiobutton;
 
-      CL_Button ok_button;
-      CL_Button cancel_button;
-      
-      CL_Slot ok_button_slot;
-      CL_Slot cancel_button_slot;
       CL_Slot convert_to_hotspot_button_slot;
 
     public:
       GroundpieceWindow (CL_Component* parent,  EditorGroundpieceObj* data);
+      ~GroundpieceWindow ();
 
-      void ok_clicked ();
-      void cancel_clicked ();
       void convert_to_hotspot ();
 
       void read_data ();

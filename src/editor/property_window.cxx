@@ -1,4 +1,4 @@
-//  $Id: property_window.cxx,v 1.1 2002/06/30 22:03:13 grumbel Exp $
+//  $Id: property_window.cxx,v 1.2 2002/06/30 22:32:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,23 +25,30 @@ using namespace Pingus::Editor;
 
 PropertyWindow::PropertyWindow (CL_Component* parent)
   : CL_Window (CL_Rect (0, 0, 200, 200), "Object Properties", parent),
-    current_frame (0)
+    current_frame (0), label (CL_Point (50, 25), "no properties available", this)
 {
-  
+  label.show (true);
+  set_client_size (200, 20);
 }
 
 void
 PropertyWindow::update_frame (boost::shared_ptr<EditorObj> obj)
 {
   if (current_frame)
-    remove_child (current_frame);
+    {
+      remove_child (current_frame);
+      delete current_frame;
+      current_frame = 0;
+    }
   
   if (obj.get ())
     {
+      // We are responsible to delete comp
       CL_Component* comp = obj->get_gui_dialog (this);
    
       if (comp)
 	{
+	  label.show (false);
 	  // FIXME: This looks like a workaround for a missing feature in
 	  // FIXME: CL_Window
 	  comp->set_position (2, 22);
@@ -52,14 +59,16 @@ PropertyWindow::update_frame (boost::shared_ptr<EditorObj> obj)
 	}
       else
 	{
+	  label.show (true);
 	  std::cout << "No GUI" << std::endl;
 	  current_frame = 0;
-	  set_client_size (200, 30);
+	  set_client_size (200, 20);
 	}
     }
   else
     {
-      set_client_size (200, 30);
+      set_client_size (200, 20);
+      label.show (true);
     }
 }
 
