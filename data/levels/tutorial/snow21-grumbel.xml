@@ -4,6 +4,7 @@
   <global>
     <levelname lang="en">Climb, Climber, climb... and build a bridge</levelname>
     <levelname lang="de">Kletter, Climber, kletter.. und bau eine Brücke</levelname>
+    <levelname lang="cs">Splhej horolezce, splhej... a postav most</levelname>
 
     <description lang="en">Once again you get access to a new action. The Climber action allows
 			   a Pingu to climb of straight walls, thus allowing him to reach stuff
@@ -12,6 +13,10 @@
     <description lang="de">Wieder erhälst du Zugriff auf eine neue Fähigkeit. Die Climber
 			   Fähigkeit ermöglicht es einem Pingu senkrechte Wände zu erklettern und
 			   dadurch Dinge zu erreichen die sonst unmöglich wären.
+    </description>
+    <description lang="cs">Zase tu mame novou akci - horolezce. Pingu, ktery se stane horo-
+                           lezcem, umi vysplhat na kolme zdi a dostane se tak na mista, kam
+                           by se jinak nikdo nedostal.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

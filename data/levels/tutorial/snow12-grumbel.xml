@@ -4,6 +4,7 @@
   <global>
     <levelname lang="en">Two groups in parallel, coordinate wisely</levelname>
     <levelname lang="de">Zwei Gruppen gleichzeitig, koordiniere weise</levelname>
+    <levelname lang="cs">Dve skupiny najednou, rozumne je ved</levelname>
 
     <description lang="en">You have two groups to coordinate this time, no need to panic, since
                            this level gives you enough time to think your actions through. No
@@ -12,6 +13,10 @@
     <description lang="de">Diesmal hast Du zwei Gruppen zu koordinieren, aber keine Panik, denn
                            dieses Level gibt Dir genug Zeit zum Überlegen. Keine weiteren Tipps
                            dieses Mal, aber Viel Glück!
+    </description>
+    <description lang="cs">Mas na starosti dve skupiny, takze je budes muset zvladnout
+                           najednou. Nemusis se obavat, mas dostatek casu na promysleni
+                           svych planu. Vic ti uz napovidat nebudu. Hodne stesti!
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

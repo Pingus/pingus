@@ -4,6 +4,7 @@
   <global>
     <levelname lang="en">Solid ground can block the path</levelname>
     <levelname lang="de">Fester Boden kann den Weg blockieren</levelname>
+    <levelname lang="cs">Pevne podlozi muze omezit cestu</levelname>
 
     <description lang="en">As you have learned in earlier levels your Pingus can dig through
                            basically every ground, but there is one thing which they can't
@@ -16,6 +17,12 @@
                            können und zwar Stahl Objekte. Diese Bereiche sind auf der Karte
                            dunkelgrau markiert und können nicht zerstört werden, also finde
                            einen Weg, sie zu umgehen.
+    </description>
+    <description lang="cs">Uz drive jsi se naucil, ze pingu se dokaze prokopat skoro skrz
+                           vsechny druhy zeminy. V zemi se ale obcas nachazeji kovove predme-
+                           ty, ktere prokopat nemuzes. Tyto veci jsou na mapce vyznaceny
+                           tmave sedou barvou a nemohou byt nijak zniceny. Musis je
+                           obejit.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

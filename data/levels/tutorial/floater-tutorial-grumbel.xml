@@ -4,6 +4,7 @@
   <global>
     <levelname lang="en">Float or Die</levelname>
     <levelname lang="de">Schwebe oder Stirb</levelname>
+    <levelname lang="cs">Let, nebo zemres</levelname>
 
     <description lang="en">Well done in mission one, now lets start the next one. This
                            time you will need to equip your Pingus with a little propeller,
@@ -15,6 +16,11 @@
                            kleinen Propellor versehen, so dass sie langsam zu Boden schweben
                            können. Wenn ein Pingu zu tief fällt, wird er dies nicht überleben,
                            drum halte die Augen offen!
+    </description>
+    <description lang="cs">V prvni misi jsi dopadl dobre, takze se ted podivame na dalsi.
+                           Tentokrat budes muset sve sverence vybavit malou vrtuli, aby se
+                           mohli pomalu snest na zem. Kdyz totiz pingu pada z prilis velke
+                           vysky, tak pad neprezije. Takze davej dobry pozor!
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

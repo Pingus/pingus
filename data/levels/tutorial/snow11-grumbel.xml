@@ -4,6 +4,7 @@
   <global>
     <levelname lang="en">Jump'n Bump... and Bash...</levelname>
     <levelname lang="de">Springe... und grabe...</levelname>
+    <levelname lang="cs">Skok a dopad... a hrabani...</levelname>
 
     <description lang="en">It's panic time again. The Pingus will not come out very fast, but
 		           since they turn around on walls you soon will have some trouble
@@ -15,6 +16,12 @@
 		           wirst Du bald Probleme bekommen, sie zu koordinieren. Wenn alles
 		           andere versagt, nutze den Pause Modus ('p') um dir wieder einen
 		           Überblick zu verschaffen.
+    </description>
+    <description lang="cs">Je na case delat si starosti. Pingove sice nebudou prichazet prilis
+                           rychle, ale protoze se u zdi otaceji, tak brzo vznikne situace,
+                           kdy je nebudes stihat ovladat. Nastesti jich potrebujes do domecku
+                           dostat jen 5, tak to snad zvladnes. Kdyz ti to bude delat problemy,
+                           muzes pouzivat pauzu ('p').
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

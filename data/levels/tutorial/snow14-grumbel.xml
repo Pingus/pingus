@@ -4,6 +4,7 @@
   <global>
     <levelname lang="en">Block'a Rock</levelname>
     <levelname lang="de">Blockiere und sprenge</levelname>
+    <levelname lang="cs">Blokovani</levelname>
 
     <description lang="en">Again is the time to combine the stuff you have learned in your
                            previous levels. Blast your way free and make sure you also keep the
@@ -12,6 +13,10 @@
     <description lang="de">Wieder ist es an der Zeit die Dinge die Du bereits gelernt hast
                            zu verbinden. Sprenge Dir den Weg frei und achte darauf das du auch
                            die restlichen Pingu unter Kontrolle hälst. Der Blocker wird Dir helfen.
+    </description>
+    <description lang="cs">A mame tu znovu prilezitost zkombinovat znalosti, ktere jsi se
+                           drive naucil. Uvolni si cestu k cili a zaroven davej pozor na
+                           ostatni pinguse. Pomuze ti nova akce - zablokovani cesty.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

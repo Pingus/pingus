@@ -4,6 +4,7 @@
   <global>
     <levelname lang="en">Learn to use the bridge</levelname>
     <levelname lang="de">Lerne Brücken zu bauen</levelname>
+    <levelname lang="cs">Nauc se stavet mosty</levelname>
 
     <description lang="en">If no Jumper is at hand and a large hole needs to be passed a bridge
                            can be pretty helpful. It takes some time to build, but it allows
@@ -13,6 +14,11 @@
                            kann eine Brücke sehr nützlich sein. Es dauert einige Zeit sie zu
                            bauen, aber sie erlaubt den nachfolgenden Pingus auch die andere
                            Seite zu erreichen, was die Jumper Fähigkeit nicht tat.
+    </description>
+    <description lang="cs">Kdyz neni po ruce skokan a je potreba prekonat nejakou propast,
+                           tak muzes postavit most. Stavba sice zabere nejaky cas, ale
+                           zato budou moci vsichni ostatni prejit, coz by jeden skokan
+                           nedokazal.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

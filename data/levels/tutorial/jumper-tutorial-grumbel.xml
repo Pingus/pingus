@@ -4,6 +4,7 @@
   <global>
     <levelname lang="en">Jump for joy</levelname>
     <levelname lang="de">Springe aus Freude</levelname>
+    <levelname lang="cs">Skakani pro zabavu</levelname>
 
     <description lang="en">Sometimes a Pingu needs to reach a platform that is far away, 
                            but not reachable by walking, thats when the Jumper comes in handy,
@@ -14,6 +15,10 @@
                            ist und nicht durch laufen erreicht werden kann. Dann ist der Jumper
                            hilfreich, er erlaubt es einem Pingu einen kleinen Sprung zu machen
                            und ermöglicht es so die Platform zu erreichen.
+    </description>
+    <description lang="cs">Nekdy se pingu potrebuje dostat na plosinu, ktera je sice jen kus
+                           od nej, ale nelze na ni dojit. Pak prijde vhod skakani, ktere
+                           umozni pingovi kus poskocit a dostat se tak na kyzene misto.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
