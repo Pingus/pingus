@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.22 2000/05/24 15:45:02 grumbel Exp $
+//  $Id: Client.cc,v 1.23 2000/05/26 17:54:11 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,11 @@ Client::Client(Server* s)
 
   event = new ClientEvent;
   event->client = this;
+}
+
+Client::~Client()
+{
+  delete event;
 }
 
 void
