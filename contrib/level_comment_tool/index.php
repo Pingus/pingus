@@ -23,20 +23,47 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 // EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+require_once("database.inc");
 require_once("xml-search.inc");
 require_once("level-cache.inc");
 require_once("mail-settings.inc");
 require_once("htpasswd.inc");
+require_once("login-system.inc");
 
 // ==================================================================
-// Admin login.
+// Returns the get-parameters (like cathegory, level and others)
 // ==================================================================
+function get_params()
+{ 
+  $params = "";
+  if (isset( $_GET["c"] ))
+    $params .= 'c='.urlencode($_GET["c"]).'&';
+  if (isset( $_GET["l"] ))
+    $params .= 'l='.urlencode($_GET["l"]).'&';
+  if (isset( $_GET["o"] ))
+    $params .= 'o='.urlencode($_GET["o"]).'&';  
+  if (isset( $_GET["showthumbs"] ))
+    $params .= 'showthumbs='.urlencode($_GET["showthumbs"]).'&';  
+  
+  return $params;
+}  
 
+// ==================================================================
+// User/Admin login or signup new user
+// ==================================================================
 $htpasswd = load_htpasswd();
 $is_admin = False;
-if ( isset($_SERVER['PHP_AUTH_PW']))
-  $is_admin = test_htpasswd( $htpasswd,  "admin", $_SERVER['PHP_AUTH_PW'] );
-
+$is_user = False;
+$user_data = Array();
+if ( isset($_SERVER['PHP_AUTH_PW']) && isset($_SERVER['PHP_AUTH_USER']))
+  if ($_SERVER['PHP_AUTH_USER'] == "admin")
+    $is_admin = test_htpasswd( $htpasswd, "admin", $_SERVER['PHP_AUTH_PW'] );
+  else
+  {
+    $is_user = test_htpasswd( $htpasswd, strtolower($_SERVER['PHP_AUTH_USER']), $_SERVER['PHP_AUTH_PW'] );
+    $user_data = get_user_data( $_SERVER['PHP_AUTH_USER'] );
+  }  
+ 
 if ( isset($_GET["adminlogin"]))
 {
   if (!isset($_SERVER['PHP_AUTH_USER']))
@@ -48,17 +75,44 @@ if ( isset($_GET["adminlogin"]))
   }
   else
   {
-    if ( !isset($_SERVER['PHP_AUTH_PW']) ||
-      !test_htpasswd( $htpasswd,  "admin", $_SERVER['PHP_AUTH_PW'] ))
+    if ( !test_htpasswd( $htpasswd, "admin", $_SERVER['PHP_AUTH_PW'] ))
     {
+      header('WWW-Authenticate: Basic realm="Pingus Comment Tool Admin"');
       header('HTTP/1.0 401 Unauthorized');
-      echo 'Wrong password. Hit Back.';
+      echo 'Cancelled. Hit Back.';
       exit;
     }
     else
       $is_admin = True;
   }
 }
+
+if ( isset($_GET["userlogin"]))
+{
+  if (!isset($_SERVER['PHP_AUTH_USER']))
+  {
+    header('WWW-Authenticate: Basic realm="Pingus Comment Tool User"');
+    header('HTTP/1.0 401 Unauthorized');
+    echo 'Cancelled. Hit Back.';
+    exit;
+  }
+  else
+  {
+    if ( !test_htpasswd( $htpasswd, strtolower($_SERVER['PHP_AUTH_USER']), $_SERVER['PHP_AUTH_PW'] ))
+    {
+      header('WWW-Authenticate: Basic realm="Pingus Comment Tool User"');
+      header('HTTP/1.0 401 Unauthorized');
+      echo 'Cancelled. Hit Back.';
+      exit;
+    }
+    else
+    {
+      $is_user = True;
+      $user_data = get_user_data( $_SERVER['PHP_AUTH_USER'] );
+    }  
+  }  
+}
+
 
 // ==================================================================
 // Thumbnail magick with cookies etc.
@@ -83,15 +137,93 @@ else if ( isset($_COOKIE["showthumbs"]) )
   <body>
 
     <h1>Pingus level comment database</h1>
+    
+ <?  
+// ==================================================================
+// Show login and signup link
+// ================================================================== 
+    $params = get_params();
+      
+    if (!$is_user && !$is_admin) 
+    {    
+ ?>   
+    <div align="right">
+      <table border="0" align="right" cellspacing="10">
+        <tr>
+          <td>
+            <a href="<? echo "$PHP_SELF?$params"."userlogin=1" ?>">Login</a>
+          </td>
+          <td>
+            <a href="<? echo "$PHP_SELF?$params"."signup=1" ?>">Signup</a>
+          </td>
+        </tr>
+      </table>  
+    </div>  
+ <? }
+    else
+    {
+ ?>
+    <div align="right">
+      <table border="0" align="right" cellspacing="10">
+        <tr>
+          <td align="right">
+    	    <a href="<? echo "$PHP_SELF?$params"."changeuser=1\">";
+    	                echo ($is_admin) ? 'admin' : $user_data["name"]; ?></a> is logged in<br>
+    	    <? echo "<a href='$PHP_SELF?$params";
+    	       echo (isset($_GET["listusers"])) ? "'>Show comments" : "listusers=1'>List users";
+    	       echo "</a>"; ?>
+    	  </td>
+    	</tr>
+      </table>	
+    </div>  
+ <?   
+    }
+ ?>   
     <div class="mainbody">
 
 <?
+// ==================================================================
+// Signup for new user or change user settings
+// ==================================================================
+if (isset( $_GET["signup"] ))
+{
+  show_signup_form();
+  exit;
+}
+if (isset( $_POST["usersignedup"] ))
+{
+  signup_user();
+}
+if (isset( $_GET["changeuser"] ) && $is_user)
+{
+  show_change_form( $user_data["email"] );
+  exit;
+}  
+if ((isset( $_POST["savechangeddata"] ) || isset( $_POST["deleteuser"])) && $is_user)
+{
+  change_user_data();
+}  
 
-$preferred_order = Array( 'tutorial', 'playable', 'volcano', 'wip', 'test' );
+
+// ==================================================================
+// Show list of users or delete user (for admin only)
+// ==================================================================
+if (isset( $_GET["listusers"] ))
+{
+  show_user_list( $is_admin );
+  exit;
+}
+if (isset( $_POST["deluser"] ) && $is_admin)
+{
+  delete_user( $_POST["user_email"] );
+  show_user_list( $is_admin );
+  exit;
+}  
 
 // ==================================================================
 // Read cathegory and level names from filesystem
 // ==================================================================
+$preferred_order = Array( 'tutorial', 'playable', 'volcano', 'wip', 'test' );
 $cathegories = Array();
 $dir = dir("data/levels");
 while ($file = $dir->read())
@@ -129,8 +261,7 @@ if  ( !isset($_GET["l"]) || !isset($_GET["c"]) )
     $showCath = '&c=' . $_GET["c"];
 
   if ( $show_thumbs )
-  	print "<a href='$PHP_SELF?showthumbs=0$showCath'>[hide thumbnails]</a></br>";
-
+    print "<a href='$PHP_SELF?showthumbs=0$showCath'>[hide thumbnails]</a></br>";
   else
     print "<a href='$PHP_SELF?showthumbs=1$showCath'>[show thumbnails]</a></br>";
 
@@ -327,10 +458,12 @@ else
 
       if ( !is_dir("comments/$c/$l"))
       {
-        mkdir("comments/$c",0777);
-        mkdir("comments/$c/$l",0777);
-        chmod("comments/$c",0777);
-        chmod("comments/$c/$l",0777);
+        @mkdir("comments/$c",0775);
+        @mkdir("comments/$c/$l",0775);
+        chmod("comments/$c",0775);
+        chgrp("comments/$c","pingus");
+        chmod("comments/$c/$l",0775);
+        chgrp("comments/$c/$l","pingus");
         if ( !is_dir("comments/$c/$l"))
         {
           print ("<strong>ERROR: 'comments/$c/$l/' does not exist and ".
@@ -367,7 +500,8 @@ else
           exit;
         }
         fclose($fp);
-        chmod($filename, 0777);
+        chmod($filename, 0775);
+        chgrp($filename,"pingus");
 
         // Send email-notification
         if ( $mail_notify_enabled )
@@ -404,7 +538,7 @@ else
     // ==================================================================
     // Delete comment
     // ==================================================================
-    if ( $is_admin && isset($_GET["delcomment"]))
+    if ( ($is_admin || $is_user) && isset($_GET["delcomment"]))
     {
       sandbox_check($_GET["delcomment"], "comments/" );
       unlink($_GET["delcomment"]);
@@ -413,8 +547,32 @@ else
       @rmdir("comments/$c");
       print "<p><strong>Deleted '" . htmlentities($_GET["delcomment"]) . "'</strong></p>";
     }
+    
+    // ==================================================================
+    // Delete demo file and metafile
+    // ==================================================================
+    if ( ($is_admin || $is_user) && isset($_GET["deldemo"]))
+    {
+      sandbox_check($_GET["deldemo"], "comments/" );
+      
+      $demos = parse_level_demos( $c, $l );
+      while( list(,$cmt) = each($demos))
+      {
+        if ($_GET["deldemo"] == $cmt["filename"])
+        {
+          //delete demofile and metafile
+          unlink( "comments/$c/$l/demos/".$cmt["demofile"] );
+          unlink( $_GET["deldemo"] );
+        }
+      }  
+      // Also try to remove the directories but don't mind if it fails:
+      @rmdir("comments/$c/$l/demos");
+      @rmdir("comments/$c/$l");
+      @rmdir("comments/$c");
+      print "<p><strong>Deleted '" . htmlentities($_GET["deldemo"]) . "'</strong></p>";
+    }
 
-	// ==================================================================
+    // ==================================================================
     // Save uploaded Demofile
     // ==================================================================
     if ( $_POST["adddemo"] == 1)
@@ -422,12 +580,16 @@ else
       //create directory if necessary
       if ( !is_dir("comments/$c/$l/demos"))
       {
-        mkdir("comments/$c", 0777);
-        mkdir("comments/$c/$l", 0777);
-        mkdir("comments/$c/$l/demos", 0777);
-        chmod("comments/$c",0777);
-        chmod("comments/$c/$l",0777);
-        chmod("comments/$c/$l/demos",0777);
+        @mkdir("comments/$c", 0777);
+        @mkdir("comments/$c/$l", 0777);
+        @mkdir("comments/$c/$l/demos", 0777);
+        chmod("comments/$c",0775);
+        chgrp("comments/$c","pingus");
+        chmod("comments/$c/$l",0775);
+        chgrp("comments/$c/$l","pingus");
+        chmod("comments/$c/$l/demos",0775);
+        chgrp("comments/$c/$l/demos","pingus");
+        
         if ( !is_dir("comments/$c/$l/demos")) 
         {
           print ("<strong>ERROR: 'comments/$c/$l/demos' does not exist and ".
@@ -443,7 +605,8 @@ else
       {
         if (move_uploaded_file($_FILES['demofile']['tmp_name'], $uploaddir. '/' . $_FILES['demofile']['name']))
         {
-          chmod( "comments/$c/$l/demos/" . $_FILES['demofile']['name'], 0777 );
+          chmod( "comments/$c/$l/demos/" . $_FILES['demofile']['name'], 0775 );
+          chgrp( "comments/$c/$l/demos/" . $_FILES['demofile']['name'], "pingus" );
           print("<strong>File uploaded successfully</strong><hr/>");
           $str = '<' . '?xml version="1.0"  encoding="ISO-8859-1"?' . ">\n" .
                 "<pingus-demo-metafile>\n".
@@ -470,7 +633,8 @@ else
               exit;
             }
             fclose($fp);
-            chmod($filename, 0777);
+            chmod($filename, 0775);
+            chgrp($filename, "pingus");
      	  }
      	}  
         else
@@ -510,7 +674,7 @@ else
         $rating = intval($cmt["rating"]);
         $leveldata["avgrating"] += $rating;
 
-        if ( $is_admin )
+        if ( $is_admin || ($is_user && $user_data["email"] == $cmt["email"]) )
           $del_link = " <a href='$PHP_SELF?c=" . htmlentities($c) .
             "&l=" . htmlentities($l) . "&delcomment=" . htmlentities($cmt["filename"]) . "'>[del]</a>\n";
         $str =
@@ -536,18 +700,21 @@ else
     if ( count($demos) > 0 )
     {
       $showDemos = True;
-
+      $del_link="";
       while( list(,$cmt) = each($demos))
       {
         $leveldata["totaldemos"]++;
         
+        if ( $is_admin ||  ($is_user && $user_data["email"] == $cmt["email"]))
+	          $del_link = " - <a href='$PHP_SELF?c=" . htmlentities($c)."&l=" . htmlentities($l) .
+	          "&deldemo=" . htmlentities($cmt["filename"]) . "'>[del]</a>\n";
         $str =
           "<p class='message'><strong>From:</strong> " . htmlentities($cmt["username"]) .
           " &lt;" . str_replace("@", "<b><small>PingusNoSpam</small></b>@", htmlentities($cmt["email"])) .
           "&gt;<br><strong>Date: </strong> " . htmlentities($cmt["date"]) . 
           ", <strong>Time: </strong> " . htmlentities($cmt["time"]) . "<br/>\n" .
           "<b>Demofile: </b><a href='comments/$c/$l/demos/" . $cmt["demofile"] . "'>" .
-          $cmt["demofile"] . "</a><br/>\n" .
+          $cmt["demofile"] . "</a>$del_link<br/>\n" .
           "</p>\n";
 		  
         if (strtolower($cmt["levelmd5"]) == strtolower($curlevelmd5))
@@ -585,6 +752,17 @@ else
     $levelmd5 = $curlevelmd5;
     if ( isset( $_GET["levelmd5"] ))
       $levelmd5 = $_GET["levelmd5"];
+    
+    if ($is_user)
+    {
+      $input_name = '<input type="text" name="author" value="' . $user_data["name"] . '">';
+      $input_mail = '<input type="text" name="email" value="' . $user_data["email"] . '">';
+    }
+    else
+    {
+      $input_name = '<input type="text" name="author">';
+      $input_mail = '<input type="text" name="email">';
+    }  
 ?>
     <hr/>
     <table width="100%">
@@ -599,11 +777,11 @@ else
             <table>
               <tr>
                 <td>Your name</td>
-                <td><input type="text" name="author"></td>
+                <td><? echo ($input_name); ?></td>
               </tr>
               <tr>
                 <td>Your email</td>
-                <td><input type="text" name="email"></td>
+                <td><? echo ($input_mail); ?></td>
               </tr>
               <tr>
                 <td>Difficulty</td>
@@ -641,6 +819,9 @@ else
           </form>
         </td>
         <td width="50%" valign="top">
+       <? if ($is_user || $is_admin)
+          {
+       ?>
           <p><em><strong>Upload a demofile:</strong></em></p>
           <form enctype="multipart/form-data"  name="UploadDemo" action="<? echo $PHP_SELF . "?c=" . urlencode($c) . "&l=" . urlencode($l); ?>" method="POST">
             <input type="hidden" name="adddemo" value="1">
@@ -650,11 +831,15 @@ else
             <table>
               <tr>
                 <td>Your name</td>
-                <td><input type="text" name="username"></td>
+                <td><input type="text" name="username"<? if ($is_user)
+                                                           echo ' value="'.$user_data["name"].'"'?>>
+                </td>
               </tr>
               <tr>
                 <td>Your email</td>
-                <td><input type="text" name="email"></td>
+                <td><input type="text" name="email"<? if ($is_user)
+                                                        echo ' value="'.$user_data["email"].'"' ?>>
+                </td>
               </tr>
               <tr>
                 <td>Demofile</td>
@@ -669,14 +854,19 @@ else
               </tr>
             </table>
           </form>
+       <? }
+       ?>
         </td>
       </tr>
     </table>      
           
 <?
     print "<p><a href='$PHP_SELF?c=" . urlencode($c) . "'>Back to level list</a></p>";
-    if ( !$is_admin )
-      print "<div align='right'><a href='$PHP_SELF?adminlogin=1'><small>admin login</small></a></div>";
+    if ( !$is_admin && !$is_user)
+    {
+      $params = get_params(); 
+      print "<div align='right'><a href='$PHP_SELF?$params"."adminlogin=1'><small>admin login</small></a></div>";
+    }  
   }
 }
 

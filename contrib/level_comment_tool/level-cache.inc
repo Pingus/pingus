@@ -25,30 +25,13 @@
 
 require_once("xml-search.inc");
 
-// set some globals for various DBMS
-global $DBMS;
-global $db_handle;
-global $db_tablename;
-global $db_name;
-global $db_host;
-global $db_user;
-global $db_pass;
-
-$DBMS = 'MySQL';
-$db_handle = False;
-$db_tablename = 'lct_cache';
-$db_name = 'pingus';
-$db_host = 'localhost';
-$db_user = 'pingus';
-$db_pass = 'pingus';
-
-function create_table( $tablename )
+// ==================================================================
+// Creates a table if necessary and returns the tablename
+// ==================================================================
+function create_table( $conn, $db, $tablename, $SQL )
 {
-  global $db_name;
-  global $db_handle;
-
   $table_exists = False;
-  $res = mysql_list_tables( $db_name );
+  $res = mysql_list_tables( $db );
 
   for ($i=0;$i<mysql_num_rows( $res );$i++)
     if (mysql_tablename( $res, $i ) == $tablename)
@@ -56,16 +39,16 @@ function create_table( $tablename )
 
   if (!$table_exists)
   {
-    $SQL = "CREATE TABLE `$tablename` (`Key` VARCHAR( 255 ) NOT NULL ,`Value` TEXT NOT NULL , PRIMARY KEY ( `Key` ) );";
-    $res = mysql_query( $SQL, $db_handle );
-	if (!$res)
-	  return False;
-	else
-	  return $tablename;
+    $res = mysql_query( $SQL, $conn );
+    if (!$res)
+      return False;
+    else
+      return $tablename;
   }
   else
     return $tablename;
 }
+
 
 function open_cache()
 {
@@ -100,20 +83,21 @@ function open_cache()
 
       //MySQL is used as cache
       case "MySQL":
-		$db_handle = mysql_connect( $db_host, $db_user, $db_pass );
-		if (!$db_handle)
-		{
+	$db_handle = mysql_connect( $db_host, $db_user, $db_pass );
+	if (!$db_handle)
+	{
           echo "<p><font color=\"red\"><b>ERROR: Cannot open connection to database server ($db_host)!</b></font></p>";
           exit;
         }
 
         if (! mysql_select_db( $db_name, $db_handle ))
-		{
+	{
           echo "<p><font color=\"red\"><b>ERROR: Cannot select database '$db_name'!</b></font></p>";
           exit;
         }
-
-        $db_tablename = create_table($db_tablename);//creates the table if necessary and returns the tablename
+	$SQL = "CREATE TABLE `$tablename` (`Key` VARCHAR( 255 ) NOT NULL".
+	       " ,`Value` TEXT NOT NULL , PRIMARY KEY ( `Key` ) );";
+        $db_tablename = create_table($db_handle, $db_name, $db_tablename, $SQL);//creates the table if necessary and returns the tablename
 
         if (!$db_tablename)
         {
@@ -352,7 +336,7 @@ function parse_level_comments( $cathegory, $level, $order )
       "author" => "pingus-level-comment/author",
       "email" => "pingus-level-comment/email",
       "date" => "pingus-level-comment/date",
-	  "time" => "pingus-level-comment/time",
+      "time" => "pingus-level-comment/time",
       "difficulty" => "pingus-level-comment/difficulty",
       "rating" => "pingus-level-comment/rating",
       "comment" => "pingus-level-comment/comment",
@@ -366,8 +350,8 @@ function parse_level_comments( $cathegory, $level, $order )
     $cmt["filename"] = $filename;
 
     // is the time set? (it is not in old comment files)
-	if (isset($cmt["time"]))
-	  $res[$cmt["date"] . '-' . $cmt["time"]] = $cmt;
+    if (isset($cmt["time"]))
+      $res[$cmt["date"] . '-' . $cmt["time"]] = $cmt;
     else
       $res[$cmt["date"] . '-' . substr(md5(implode("", file($filename))),0,8)] = $cmt;
   }
@@ -401,8 +385,8 @@ function parse_level_demos( $cathegory, $level )
       "username" => "pingus-demo-metafile/username",
       "email" => "pingus-demo-metafile/email",
       "date" => "pingus-demo-metafile/date",
-	  "time" => "pingus-demo-metafile/time",
-	  "demofile" => "pingus-demo-metafile/demofile",
+      "time" => "pingus-demo-metafile/time",
+      "demofile" => "pingus-demo-metafile/demofile",
       "levelmd5" => "pingus-demo-metafile/levelmd5"
     ));
 
