@@ -5,19 +5,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-08 22:18+0200\n"
+"POT-Creation-Date: 2003-04-09 23:26+0200\n"
 "PO-Revision-Date: 2001-12-04 22:50+02:00\n"
-"Last-Translator: Giray Devlet <giray@devlet.cc>\n"
+"Last-Translator: Çaðrý Çöltekin <cagri@metu.edu.tr>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Caðrý Çöltekin <cagri@metu."
 "edu.tr>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-9\n"
+"Content-Type: text/plain; charset=ISO-8859-9\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/config.cxx:68
-#, fuzzy
 msgid "Couldn't open: "
-msgstr "Sistem: Açýlamayan dosya: "
+msgstr "Dosya açýlamadý: "
 
 #: src/config.cxx:167
 msgid "Unexpected char: '"
@@ -72,138 +71,132 @@ msgid "-Thanks to"
 msgstr "-Þükranlarýmýz"
 
 #: src/editor/editor_event.cxx:580
-#, fuzzy
 msgid "Enter filename to save as:"
-msgstr "Dosyayý ne olarak kayit edelim : "
+msgstr "Dosyayý ne olarak kayit edelim: "
 
 #: src/editor/editor_help_screen.cxx:45
 msgid "F1 - show/hide this help screen"
-msgstr ""
+msgstr "F1 - help ekranýný sakla/göster"
 
 #: src/editor/editor_help_screen.cxx:46
 msgid "F2 - launch level building tutorial"
-msgstr ""
+msgstr "F2 - seviye tasarým dersi"
 
 #: src/editor/editor_help_screen.cxx:47
 msgid "F3 - toggle background color"
-msgstr ""
+msgstr "F3 - arkaplan rengini deðiþtir"
 
 #: src/editor/editor_help_screen.cxx:48
 msgid "F4 - play/test the level"
-msgstr ""
+msgstr "F4 - seviyeyi oyana/dene"
 
 #: src/editor/editor_help_screen.cxx:49
-#, fuzzy
 msgid "F5 - load a level"
-msgstr "Seviye yükle"
+msgstr "F5 - bir seviye yükle"
 
 #: src/editor/editor_help_screen.cxx:50
-#, fuzzy
 msgid "F6 - save this level"
-msgstr "Seviyeyi kayýt et"
+msgstr "F6 - seviyeyi kayýt et"
 
 #: src/editor/editor_help_screen.cxx:51
 msgid "F7 - [unset]"
-msgstr ""
+msgstr "F7 - [iþlevsiz]"
 
 #: src/editor/editor_help_screen.cxx:52
 msgid "F8 - quick save/backup save?!"
-msgstr ""
+msgstr "F8 - hýzlý saklama/yedekleme?!"
 
 #: src/editor/editor_help_screen.cxx:53
 msgid "F9 - change level width and height"
-msgstr ""
+msgstr "F9 - seviye geniþlik ve yüksekliðini deðiþtir"
 
 #: src/editor/editor_help_screen.cxx:54
 msgid "F10 - [unset]"
-msgstr ""
+msgstr "F10 - [iþlevsiz]"
 
 #: src/editor/editor_help_screen.cxx:55
-#, fuzzy
 msgid "F11 - toggle fps counter"
-msgstr "1 - Iþýnlayýcý"
+msgstr "F11 - FPS sayacý"
 
 #: src/editor/editor_help_screen.cxx:56
 msgid "F12 - make screenshot"
-msgstr ""
+msgstr "F12 - ekran görüntüsünü sakla"
 
 #: src/editor/editor_help_screen.cxx:60
 msgid "Pos1 - increase object size"
-msgstr ""
+msgstr "Pos1 - nesneyi büyüt"
 
 #: src/editor/editor_help_screen.cxx:61
 msgid "End  - decrease object size"
-msgstr ""
+msgstr "End - nesneyi küçült"
 
 #: src/editor/editor_help_screen.cxx:62
 msgid "Cursor Keys - Move object"
-msgstr ""
+msgstr "Ok tuþlarý - Nesneyi taþý"
 
 #: src/editor/editor_help_screen.cxx:63
 msgid "Shift 'Cursor Keys' - Move objects fast "
-msgstr ""
+msgstr "Shift 'Ok tuþlarý' - Nesneyi hýzlý taþý"
 
 #: src/editor/editor_help_screen.cxx:64
 msgid "PageUp   - level object up"
-msgstr ""
+msgstr "PageUp   - nesneyi ön plana taþý"
 
 #: src/editor/editor_help_screen.cxx:65
 msgid "PageDown - level object down"
-msgstr ""
+msgstr "PageDown - nesneyi arka plana taþý"
 
 #: src/editor/editor_help_screen.cxx:66
 msgid "Shift PageUp   - increase objects z-pos by 50"
-msgstr ""
+msgstr "Shift PageUp   - nesne z konumunu 50 artýr"
 
 #: src/editor/editor_help_screen.cxx:67
 msgid "Shift PageDown - decrease objects z-pos by 50"
-msgstr ""
+msgstr "Shift PageUp   - nesne z konumunu 50 azalt"
 
 #: src/editor/editor_help_screen.cxx:68
 msgid "Enter - Set default zoom (1:1)"
-msgstr ""
+msgstr "Enter - Varsayýlan zumu ayarla (1:1)"
 
 #: src/editor/editor_help_screen.cxx:69
-#, fuzzy
 msgid "d - duplicate object"
-msgstr "Seçili nesneleri çiftle"
+msgstr "d- seçili nesneleri çiftle"
 
 #: src/editor/editor_help_screen.cxx:70
-#, fuzzy
 msgid "a - mark all objects"
-msgstr "Seçili nesneleri sil"
+msgstr "a - seçili nesneleri sil"
 
 #: src/editor/editor_help_screen.cxx:71
 msgid "shift leftmouseclick - add object to selection"
-msgstr ""
+msgstr "shift sol fare tuþu - nesneyi seçime ekle"
 
 #: src/editor/editor_help_screen.cxx:72
 msgid "leftmouseclick - select object"
-msgstr ""
+msgstr "sol fare tuþu - neneyi seç"
 
 #: src/editor/editor_help_screen.cxx:73
 msgid "Insert - insert new object"
-msgstr ""
+msgstr "Insert - yeni nesne ekle"
 
 #: src/editor/editor_help_screen.cxx:74
 msgid "Remove - remove selected object"
-msgstr ""
+msgstr "Remove - seçili neneyi sil"
 
 #: src/editor/editor_help_screen.cxx:75
 msgid "g - ungroup/group current selection"
-msgstr ""
+msgstr "g - seçili nesneleri grupla/grubu boz"
 
 #: src/editor/editor_help_screen.cxx:76
 msgid "Ctrl PageUp   - increase objects z-pos by 1"
-msgstr ""
+msgstr "Ctrl PageUp   - nesne z konumunu 1 artýr"
 
 #: src/editor/editor_help_screen.cxx:77
 msgid "Ctrl PageDown - decrease objects z-pos by 1"
-msgstr ""
+msgstr "Ctrl PageUp   - nesne z konumunu 1 azalt"
 
 #: src/editor/editor_help_screen.cxx:83
 msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.xml"
-msgstr ""
+msgstr "Ýsimlendirme yöntemi: <SeviyeAdý><Numara>-<Tasarýmcý>.xml"
 
 #: src/editor/editor_help_screen.cxx:85
 msgid ""
@@ -211,6 +204,8 @@ msgid ""
 "release,\n"
 "please mail it to pingus-devel@nongnu.org."
 msgstr ""
+"Bir seviye hazýrladýysanýz ve Pingus ile daðýtýlmasýný istiyorsanýz,\n"
+"pingus-devel@nongnu.org adresine gönderin."
 
 #: src/editor/object_selector.cxx:106
 msgid "1 - guillotine"
@@ -292,12 +287,12 @@ msgstr "2 - Ahþap"
 msgid "3 - cloud"
 msgstr "3 - Bulut"
 
+# FIXME: sicaknokta salakligini.
 #: src/editor/object_selector.cxx:269
 msgid "h - entrance surface (hotspot)"
-msgstr ""
+msgstr "h - giriþ yüzeyi (sýcaknokta)"
 
 #: src/editor/object_selector.cxx:343
-#, fuzzy
 msgid "What object type do you want?"
 msgstr "Hangi nesneyi istiyorsun?"
 
@@ -307,9 +302,8 @@ msgid "h - Hotspot"
 msgstr "h - GrafikParçasý"
 
 #: src/editor/object_selector.cxx:345
-#, fuzzy
 msgid "g - Groundpiece (ground) [not implemented]"
-msgstr "g - Yer (ground)"
+msgstr "g - Yer (ground) [bozuk]"
 
 #: src/editor/object_selector.cxx:394 src/editor/object_selector.cxx:562
 msgid "Which object do you want?"
@@ -340,7 +334,6 @@ msgid "e - Entrance"
 msgstr "e - Giriþ"
 
 #: src/editor/object_selector.cxx:402
-#, fuzzy
 msgid "x - Exit"
 msgstr "x - Bitir"
 
@@ -353,7 +346,6 @@ msgid "w - Weather"
 msgstr "w - Ýklim"
 
 #: src/editor/object_selector.cxx:405
-#, fuzzy
 msgid "t - Traps"
 msgstr "t - Tuzak"
 
@@ -362,86 +354,77 @@ msgid "o - WorldObject"
 msgstr "o - DünyaNesnesi"
 
 #: src/editor/object_selector.cxx:407
-#, fuzzy
 msgid "z - Background"
-msgstr "3 - Bulut"
+msgstr "z - Arkaplan"
 
+#  FIXME: preab ne demek
 #: src/editor/object_selector.cxx:408
 msgid "p - Prefab (ObjectGroup)"
-msgstr ""
+msgstr "p - Prefab (Nesne Grubu)"
 
 #: src/editor/object_selector.cxx:409
 msgid "f - something from file (~/.pingus/images/)"
 msgstr "f - dosyadan (~/.pingus/images/)"
 
 #: src/editor/object_selector.cxx:498
-#, fuzzy
 msgid "Which prefab do you want?"
 msgstr "Hangi nesneyi istiyorsun?"
 
 #: src/editor/object_selector.cxx:563
 msgid "1 - Surface Background"
-msgstr ""
+msgstr "1 - Arkaplan"
 
 #: src/editor/object_selector.cxx:564
 msgid "2 - Solid Color Background"
-msgstr ""
+msgstr "2 - Düz Renk Arkaplan"
 
 #: src/editor/object_selector.cxx:565
 msgid "3 - Starfield Background"
-msgstr ""
+msgstr "3 - Yýldýzlý Arkaplan"
 
 #: src/editor/object_selector.cxx:566
 msgid "4 - Thunderstorm Background"
-msgstr ""
+msgstr "4 - Yýldýrýmlý Arkaplan"
 
 #: src/editor/panel_icons.cxx:31
-#, fuzzy
 msgid "Load a level (F5)"
-msgstr "Seviye yükle"
+msgstr "Seviye yükle (F5)"
 
 #: src/editor/panel_icons.cxx:44
-#, fuzzy
 msgid "Exit the editor (Escape)"
-msgstr "Editörden çýk"
+msgstr "Editörden çýk (Escape)"
 
 #: src/editor/panel_icons.cxx:56
-#, fuzzy
 msgid "Save this level (F6)"
-msgstr "Seviyeyi kayýt et"
+msgstr "Seviyeyi kayýt et (F6)"
 
 #: src/editor/panel_icons.cxx:68
-#, fuzzy
 msgid "Delete marked objects (delete"
-msgstr "Seçili nesneleri sil"
+msgstr "Seçili nesneleri sil (delete)"
 
 #: src/editor/panel_icons.cxx:80
-#, fuzzy
 msgid "Duplicate current object (d)"
-msgstr "Seçili nesneleri çiftle"
+msgstr "Seçili nesneleri çiftle (d)"
 
 #: src/editor/panel_icons.cxx:92
-#, fuzzy
 msgid "Edit Level Properties"
-msgstr "Seviye Önizleme"
+msgstr "Seviye Özelliklerini Deðiþtir"
 
 #: src/editor/panel_icons.cxx:104
 msgid "Edit Object Properties"
-msgstr ""
+msgstr "Nesne özelliklerini deðiþtir"
 
 #: src/editor/panel_icons.cxx:116
-#, fuzzy
 msgid "Start the level and test it (F4)"
-msgstr "Seviyeyi baþlat"
+msgstr "Seviyeyi baþlat ve test et (F4)"
 
 #: src/editor/panel_icons.cxx:128
 msgid "Create a new level from scratch"
 msgstr "Sýfýrdan yeni bir seviye yarat"
 
 #: src/editor/panel_icons.cxx:140
-#, fuzzy
 msgid "Insert an object (Insert)"
-msgstr "Nesne ekle"
+msgstr "Nesne ekle (Insert)"
 
 #: src/editor/panel_icons.cxx:152
 msgid "Zoom into a region"
@@ -456,16 +439,14 @@ msgid "Zoom out"
 msgstr "Uzaklaþtýr"
 
 #: src/editor/panel_icons.cxx:188
-#, fuzzy
 msgid "Setup Number of Actions"
-msgstr "Pingus sayýsý: %d"
+msgstr "Eylem Sayýsýný Ayarla"
 
 #: src/editor/panel_icons.cxx:200
 msgid "Display Help Screen (F1)"
-msgstr ""
+msgstr "Yardým Ekranýný Göster (F1)"
 
 #: src/exit_menu.cxx:44
-#, fuzzy
 msgid "Yes"
 msgstr "Evet"
 
@@ -475,16 +456,15 @@ msgstr "Hayýr"
 
 #: src/exit_menu.cxx:109
 msgid "Exit Pingus?"
-msgstr ""
+msgstr "Çýkýyor musun?"
 
 #: src/fps_counter.cxx:46
 msgid "unknown"
 msgstr "bilinmeyen"
 
 #: src/intro.cxx:62 src/intro.cxx:113
-#, fuzzy
 msgid "..:: Press Start ::.."
-msgstr "..:: Güle güle... ::.."
+msgstr "..:: Baþla ::.."
 
 #: src/level_desc.cxx:71
 msgid "Designed by "
@@ -493,7 +473,7 @@ msgstr "Tasarlayan "
 #: src/level_desc.cxx:76
 #, c-format
 msgid "Pingus to Save: %d"
-msgstr "Kurtarýlýcak Pingus: %d"
+msgstr "Kurtarýlacak Pingus: %d"
 
 #: src/level_desc.cxx:78
 #, c-format
@@ -517,9 +497,9 @@ msgstr "Sonuçlar:"
 #. get_message(100 * world->get_saved_pingus() / world->get_allowed_pingus()).c_str());
 #.
 #: src/level_result.cxx:65
-#, fuzzy, c-format
+#, c-format
 msgid "Pingus saved:   %3d/%3d"
-msgstr "Kurtarýlýcak Pingus: %d"
+msgstr "Kurtarýlýcak Pingus: %3d/%3d"
 
 #: src/level_result.cxx:70
 #, c-format
@@ -531,7 +511,6 @@ msgid "Press button to continue..."
 msgstr "Devam etmek için tuþa bas..."
 
 #: src/level_result.cxx:100
-#, fuzzy
 msgid ""
 "As many Pingus escaped as entered the level. That's going to be hard to "
 "beat.... unless this game becomes pornographic."
@@ -564,7 +543,6 @@ msgid "Maybe this level calls for a different strategy."
 msgstr "Farklý bir stateji uygulamakta yarar olabilir."
 
 #: src/level_result.cxx:112
-#, fuzzy
 msgid "Exactly half. Are you saving only the female ones?"
 msgstr "Tam yarýsý. Ne o? Sadece diþileri falan mý kurtarýyoruz?!?"
 
@@ -615,7 +593,6 @@ msgstr "Yardýmcý olanlar"
 #. 150;
 #. 330;
 #: src/menu_button.cxx:215
-#, fuzzy
 msgid "..:: Takes you to the options menu ::.."
 msgstr "..:: Seçenekler Menüsüne gider ::.."
 
@@ -650,11 +627,9 @@ msgstr "Yeni Seviye"
 msgid "Level"
 msgstr "Yarat"
 
-# bu nasil olmuþ? contrib -> katýlýmcý, dýþarlýklý :))) -gd 
 #: src/menu_button.cxx:347
-#, fuzzy
 msgid "..:: Start the game ::.."
-msgstr "..:: Harici bir seviye baþlat ::.."
+msgstr "..:: Oyunu baþlat ::.."
 
 #. desc["de"] = "..:: Such dir eine Welt zum beginnen aus ::..";
 #: src/menu_button.cxx:350
@@ -681,7 +656,6 @@ msgid "Multi"
 msgstr "Çoklu"
 
 #: src/option_menu.cxx:145
-#, fuzzy
 msgid "on"
 msgstr "açýk"
 
@@ -752,14 +726,12 @@ msgid "Verbose"
 msgstr "Ayrýntýlý mesaj"
 
 #: src/option_menu.cxx:284
-#, fuzzy
 msgid "Music"
 msgstr "Müzik"
 
 #: src/option_menu.cxx:285
-#, fuzzy
 msgid "Sound"
-msgstr "Ses: "
+msgstr "Ses"
 
 #: src/option_menu.cxx:286
 msgid "Level Previews"
@@ -777,11 +749,10 @@ msgstr "Otomatik Kaydýrma"
 
 #: src/option_menu.cxx:291
 msgid "Action Help Strings"
-msgstr ""
+msgstr "Eylem Yardým Mesajlarý"
 
 #. draw_background();
 #: src/option_menu.cxx:332
-#, fuzzy
 msgid "Pingus Option Menu"
 msgstr "Pingus Seçenekler Menüsü"
 
@@ -792,102 +763,94 @@ msgstr "Ölü pingu'ya atanan aksiyon"
 #: src/pingu_info.cxx:49
 #, c-format
 msgid "pingu_id %d"
-msgstr ""
+msgstr "pingu_id %d"
 
 #: src/pingu_info.cxx:55
-#, fuzzy, c-format
+#, c-format
 msgid "action %s"
-msgstr "Seçenekler"
+msgstr "eylem %s"
 
 #: src/pingu_info.cxx:57
 msgid "action none"
-msgstr ""
+msgstr "eylem yok"
 
 #: src/pingus_counter.cxx:49
-#, fuzzy, c-format
+#, c-format
 msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
-msgstr "Çýkan: %3d/%3d Dýþarýda olan: %3d  Kurtulan: %3d/%3d"
+msgstr "Çýkan: %3d/%-3d Dýþarýda: %3d  Kurtulan: %3d/%-3d"
 
 #: src/pingus_main.cxx:101 src/pingus_main.cxx:124
 msgid ""
 "\n"
 ",------------------------------------------------------------------------"
 msgstr ""
+"\n"
+",------------------------------------------------------------------------"
 
 #: src/pingus_main.cxx:102
 msgid "| segfault_handler: catched a SIGSEGV."
-msgstr ""
+msgstr "| segfault_handler: catched a SIGSEGV."
 
 #: src/pingus_main.cxx:104
-#, fuzzy
 msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
 msgstr "Amanin booo ...  Pingus çöktü! Tebrikler bir böcek (hata) buldun!"
 
 #: src/pingus_main.cxx:105
-#, fuzzy
 msgid ""
 "| Please write a little bug report to <grumbel@gmx.de>, include informations"
-msgstr "Lütfen inglizce/almanca olarak <grumbel@gmx.de> adresine kýsa bir hata"
+msgstr ""
+"| Lütfen inglizce/almanca olarak <grumbel@gmx.de> adresine kýsa bir hata"
 
 #: src/pingus_main.cxx:106
-#, fuzzy
 msgid "| where exacly the SIGSEGV occured and how to reproduce it."
-msgstr "raporu yaz. SIGSEGV'in nerede oluþtuðunu ve nasýl tekrarlanabileceðini"
+msgstr ""
+"| raporu yaz. SIGSEGV'in nerede oluþtuðunu ve nasýl tekrarlanabileceðini"
 
 #: src/pingus_main.cxx:107
-#, fuzzy
 msgid "| Also try include a backtrace, you can get it like this:"
-msgstr "anlat.  Bir de bir 'backtrace' ekle ... Aþagýdaki gibi mesela:\n"
+msgstr "| anlat.  Bir de bir 'backtrace' ekle ... Aþagýdaki gibi mesela:"
 
 #: src/pingus_main.cxx:109
-#, fuzzy
 msgid "| $ gdb pingus core"
-msgstr "$ gdb pingus core"
+msgstr "| $ gdb pingus core"
 
 #: src/pingus_main.cxx:110
-#, fuzzy
 msgid "| (gdb) bt"
-msgstr "(gdb) bt"
+msgstr "| (gdb) bt"
 
 #: src/pingus_main.cxx:111 src/pingus_main.cxx:118
-#, fuzzy
 msgid "| ..."
-msgstr "...\n"
+msgstr "| ..."
 
 #: src/pingus_main.cxx:113
-#, fuzzy
 msgid "| If that doesn't work, try this:"
-msgstr "Bu çalýþmazsa, þöyle de olabilir:\n"
+msgstr "| Bu çalýþmazsa, þöyle de olabilir:"
 
 #: src/pingus_main.cxx:115
-#, fuzzy
 msgid "| $ gdb pingus"
-msgstr "$ gdb pingus"
+msgstr "| $ gdb pingus"
 
 #: src/pingus_main.cxx:116
-#, fuzzy
 msgid "| (gdb) r"
-msgstr "(gdb) r"
+msgstr "| (gdb) r"
 
 #: src/pingus_main.cxx:117
-#, fuzzy
 msgid "| [play until it crashes again]"
-msgstr " [... ve çökene kadar tekrar oyna ... ]"
+msgstr "| [... ve çökene kadar tekrar oyna ... ]"
 
 #: src/pingus_main.cxx:120
 msgid "'------------------------------------------------------------------------\n"
-msgstr ""
+msgstr "'------------------------------------------------------------------------\n"
 
 #: src/pingus_main.cxx:125
 msgid "| Warning: Pingus recieved a SIGINT, exiting now."
-msgstr ""
+msgstr "| Uyarý: SIGINT sinyali aldýk, oyundan çýkýyoruz."
 
 #: src/pingus_main.cxx:126
 msgid "`------------------------------------------------------------------------\n"
-msgstr ""
+msgstr "`------------------------------------------------------------------------\n"
 
 #: src/pingus_main.cxx:352
-#, fuzzy
 msgid ""
 "\n"
 "Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n"
@@ -896,7 +859,7 @@ msgid ""
 "For more information about these matters, see the files named COPYING."
 msgstr ""
 "\n"
-"Copyright (C) 1998 Ingo Ruhnke <grumbel@gmx.de>\n"
+"Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n"
 "Geliþtiriciler bu yazýlýmla ilgili HÝÇBÝR garanti vermemektedir.\n"
 "Pingus serbest bir yazýlýmdýr ve GNU GPL çerçevesinde \n"
 "özgürce daðýtýlabilir. Ayrýntýlar için kaynak \n"
@@ -924,6 +887,12 @@ msgid ""
 "   -h, --help               Displays this screen\n"
 "   --disable-intro          Disable intro\n"
 msgstr ""
+"\n"
+"Seçenekler:\n"
+"   -g, --geometry {geniþlik}x{yükseklik}\n"
+"                            Çözünürlüðü ayarla (640x480)\n"
+"   -h, --help               Yardým ekranýný göster\n"
+"   --disable-intro          Intro'yu kapat\n"
 
 #: src/pingus_main.cxx:519
 msgid "   -G, --use-opengl         Use OpenGL\n"
@@ -987,63 +956,66 @@ msgid ""
 "   -s, --enable-sound       Enable sound\n"
 "   -m, --enable-music       Enable music\n"
 msgstr ""
+"\n"
+"Ses:\n"
+"   -s, --enable-sound       Sesi aç\n"
+"   -m, --enable-music       Müziði aç\n"
 
 #: src/pingus_main.cxx:675
 msgid "clanVorbis support:           ok"
-msgstr ""
+msgstr "clanVoribs desteði:          var"
 
 #: src/pingus_main.cxx:677
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
-msgstr ""
+msgstr "clanVoribs desteði: yok (.ogg müzik dosyalarý çalýþmayacak)"
 
 #: src/pingus_main.cxx:681
 msgid "clanMikMod support:           ok"
-msgstr ""
+msgstr "clanMikMod desteði:          var"
 
 #: src/pingus_main.cxx:683
 msgid "clanMikMod support:  missing (music files will not be playable)"
-msgstr ""
+msgstr "clanMikMod desteði: yok (müzik dosyalarý çalýþmayacak) "
 
 #: src/pingus_main.cxx:687
 msgid "getext support:               ok"
-msgstr ""
+msgstr "gettext desteði:             var"
 
 #: src/pingus_main.cxx:688
 msgid "gettext language:        english"
-msgstr ""
+msgstr "gettext dili:           türkeçe"
 
 #: src/pingus_main.cxx:694
 msgid "sound support:           enabled"
-msgstr ""
+msgstr "ses:                    etkin"
 
 #: src/pingus_main.cxx:696
 msgid "sound support:          disabled"
-msgstr ""
+msgstr "ses:                   etkin deðil"
 
 #: src/pingus_main.cxx:699
 msgid "music support:           enabled"
-msgstr ""
+msgstr "müzik desteði:          etkin"
 
 #: src/pingus_main.cxx:701
 msgid "music support:          disabled"
-msgstr ""
+msgstr "müzik desteði:         etkin deðil"
 
 #: src/pingus_main.cxx:703
 msgid "resolution set to:       "
-msgstr ""
+msgstr "çözünürlük: "
 
 #: src/pingus_main.cxx:704
 msgid "fullscreen:              "
-msgstr ""
+msgstr "tümekran:               "
 
 #: src/pingus_main.cxx:705
-#, fuzzy
 msgid " enabled"
-msgstr "Ýmleç etkin"
+msgstr " etkin"
 
 #: src/pingus_main.cxx:705
 msgid "disabled"
-msgstr ""
+msgstr " etkin deðil"
 
 # 'Main' yerine baþka biþi uydurmak lazim buraya -gd
 #: src/pingus_main.cxx:715
@@ -1076,82 +1048,85 @@ msgstr "Pingus: Genel olaðan dýþý durum saptandý!:\n"
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Bilinmeyen bir hata saptandý!"
 
-#: src/result_screen.cxx:94 src/start_screen.cxx:100
+#: src/result_screen.cxx:94 src/start_screen.cxx:104
 msgid "Abort"
-msgstr ""
+msgstr "Durdur"
 
 #: src/result_screen.cxx:158
 msgid "Retry"
-msgstr ""
+msgstr "Yeniden dene"
 
 #: src/result_screen.cxx:165
 msgid "Success!"
-msgstr ""
+msgstr "Baþrý!"
 
 #: src/result_screen.cxx:171
 msgid "Failure!"
-msgstr ""
+msgstr "Hata!"
 
 #: src/result_screen.cxx:180
 msgid "Perfect! You saved everybody possibly, great!"
-msgstr ""
+msgstr "Mükemmel! Herkesi kurtardýn galiba."
 
 #: src/result_screen.cxx:182
 msgid "None got killed, pretty good work"
-msgstr ""
+msgstr "Hiçkimse ölmedi, iyi iþ çýkardýn."
 
 #: src/result_screen.cxx:184
 msgid ""
 "You saved just what you needed, you made it, but\n"
 "maybe you can do better?"
 msgstr ""
+"Tam gerektiði kadar Pingu kurtardýn, geçer not, ama\n"
+"belki daha iyisini yapabilisin, hý?"
 
 #: src/result_screen.cxx:187
 msgid "Not everybody could get saved, but still good work!"
-msgstr ""
+msgstr "Herkes kurtarýlamadý, ama yine de baþarýlýydýn!"
 
 #: src/result_screen.cxx:189
 msgid "What can I say, you made it, congratulations!"
-msgstr ""
+msgstr "Ne diyebilirim, yaptýn, aferin!"
 
 #: src/result_screen.cxx:194
 msgid "You killed everybody, not good."
-msgstr ""
+msgstr "Herkesi öldürdun. Hiç hoþ degil."
 
 #: src/result_screen.cxx:196
 msgid "None got saved, I know you can do better."
-msgstr ""
+msgstr "Hiç kimseyi kurtaramadin, daha iyisini yapabileceðinden eminim."
 
 #: src/result_screen.cxx:198
 msgid ""
 "You didn't saved enough, but still saved a few, next\n"
 "time you might be better."
 msgstr ""
+"Yeterince kurtaramadýn, ama yine de birkaçý kurtuldu, bir\n"
+"dahakine daha dikkatli ol."
 
 #: src/result_screen.cxx:201
 msgid "Only one more and you would have made it, try again!"
-msgstr ""
+msgstr "Bir ya da iki tane daha kurtarsaydýn olacaktý, hadi tekrar!"
 
 #: src/result_screen.cxx:203
 msgid "Only a handfull more and you would have made it, try again!"
-msgstr ""
+msgstr "Birkaç tane daha kurtarsan olacaktý, tekrar dene!"
 
 #: src/result_screen.cxx:205
 msgid "Better luck next time!"
-msgstr ""
+msgstr "Bir dahaki oyunda iyi þanslar!"
 
 #: src/result_screen.cxx:216
 msgid "Saved: "
-msgstr ""
+msgstr "Kurtarýlan: "
 
 #: src/result_screen.cxx:220
 msgid "Killed: "
-msgstr ""
+msgstr "Ölenler: "
 
 #: src/result_screen.cxx:224
-#, fuzzy
 msgid "Time left: "
-msgstr "Ad: "
+msgstr "Kalan zaman: "
 
 #: src/screenshot.cxx:43
 msgid "Screenshot: Saving screenshot to: "
@@ -1166,7 +1141,6 @@ msgid "Screenshot: Couldn't save screenshot"
 msgstr "Screenshot: Ekran görüntüsü kaydedilemedi"
 
 #: src/screenshot.cxx:134
-#, fuzzy
 msgid "Screenshot: Couldn't write file: "
 msgstr "Screenshot: Dosyaya yazýlamýyor: "
 
@@ -1175,44 +1149,40 @@ msgstr "Screenshot: Dosyaya yazýlamýyor: "
 msgid "Image has wrong color depth: %d"
 msgstr "Resmin renk derinliði yanlýþ: %d"
 
-#: src/start_screen.cxx:65
+#: src/start_screen.cxx:69
 msgid "Ok"
-msgstr ""
+msgstr "Tamam"
 
-#: src/start_screen.cxx:135
-#, fuzzy
+#: src/start_screen.cxx:139
 msgid "Number of Pingus: "
-msgstr "Pingus sayýsý: %d"
+msgstr "Pingus sayýsý: "
 
-#: src/start_screen.cxx:138
-#, fuzzy
+#: src/start_screen.cxx:142
 msgid "Number to Save: "
-msgstr "Kurtarýlýcak Pingus: %d"
+msgstr "Kurtarýlýcak Pingus: "
 
-#: src/start_screen.cxx:141
-#, fuzzy
+#: src/start_screen.cxx:145
 msgid "Time: "
-msgstr "Ad: "
+msgstr "Zaman: "
 
-#: src/start_screen.cxx:144
+#: src/start_screen.cxx:148
 msgid "Difficulty:"
-msgstr ""
+msgstr "Zorluk:"
 
 #. for (int i = 0; plf->get_difficulty())
 #. {
 #. }
-#: src/start_screen.cxx:151
+#: src/start_screen.cxx:155
 msgid "Author: "
-msgstr ""
+msgstr "Tasarlayan: "
 
-#: src/start_screen.cxx:154
-#, fuzzy
+#: src/start_screen.cxx:158
 msgid "Filename: "
-msgstr "Ad: "
+msgstr "Dosya adý: "
 
 #: src/story.cxx:37
 msgid "The Journey Continues"
-msgstr ""
+msgstr "Yolculuk Devam Ediyor"
 
 #: src/story.cxx:41
 msgid ""
@@ -1223,6 +1193,11 @@ msgid ""
 "climated regions the Pingus have to find something else to guide\n"
 "there on their journey.\n"
 msgstr ""
+"Artýk Pingular ve sen temel bilgileri öðrendiðinize ve biraz\n"
+"alýþtýrma yaptýðýnýza göre, devam edip yolculuða baþlamanýn\n"
+"zamanýdýr. Pingularýn eðitim adasýna gelmek için kullandýklarý\n"
+"buz platform sýcak bölgelere dahanmayacaðýndan, sýcak\n"
+"iklimlerde de iþe yarayacak bir yöntem bulmalarý gerekecek.\n"
 
 #: src/story.cxx:51
 msgid ""
@@ -1231,6 +1206,10 @@ msgid ""
 "the world, cause the wood of the large tree at the end of the\n"
 "island brings good wood to construct a float.\n"
 msgstr ""
+"Ama yaþlýlarýn söylediði gibi, eðitim adasý sadece alýþtýrma\n"
+"yapmaya yaramaz, ayný zamanda dünyaya açýlan bir kapýdýr da.\n"
+"Çünkü adanýn diðer ucundaki sal yapmak için kullanmaya\n"
+"birebirdir.\n"
 
 #: src/story.cxx:59
 msgid ""
@@ -1240,6 +1219,10 @@ msgid ""
 "their familiar ground and entering the unknown parts of the\n"
 "world.\n"
 msgstr ""
+"Sonunda Pingular harekete geçip herkesi taþýyacak yetecek birkaç\n"
+"sal yaptýlar. Yanlarýna biraz azýk da aldýktan sonra, tanýdýk\n"
+"buzullardan ayrýlýp dünyanýn bilinmedik yerlerine doðru\n"
+"yolculuða hazýrlar.\n"
 
 #: src/story.cxx:68
 msgid ""
@@ -1248,10 +1231,14 @@ msgid ""
 "\n"
 "To be continued..."
 msgstr ""
+"Sonunda Pingular sallarýnýn üzerinde, gidecekleri yaban\n"
+"ellerininve baþlarýna gelebileceklerin kaygýsýyla gün\n"
+"batýmýna yol almaya baþladýlar.\n"
+"                                                Devam edecek..."
 
 #: src/story.cxx:79
 msgid "The Journey Begins"
-msgstr ""
+msgstr "Yolculuk Baþlýyor"
 
 #: src/story.cxx:83
 msgid ""
@@ -1260,6 +1247,9 @@ msgid ""
 "balance and it seemed like nothing could disrupt their peace.  The\n"
 "Pingus where happy and it seemed like this could never end.\n"
 msgstr ""
+"Uzun yýllar Pingular diðer hayvanlarla birlikte Güney Kutbu'nda\n"
+"barýþ içinde yaþamaktaydýlar. Herþey uyum içindeydi, hiçbirþey bu\n"
+"güzel ortamý deðiþtiremeyecek gibiydi. \n"
 
 #: src/story.cxx:91
 msgid ""
@@ -1268,6 +1258,10 @@ msgid ""
 "normal fluctuation in the worlds climate, but things seemed to get\n"
 "worse and worse with every year."
 msgstr ""
+"Ama zamanla, durum yavaþ yavaþ deðiþmeye baþladý. Gökyüzü kararmaya,\n"
+"dünya daha sýcak olmaya baþladý. Önceleri bunun sýradan iklim\n"
+"farký olduðunu düþündüler, ama hergeçen yýl durum daha kötüye\n"
+"gittmekteydi"
 
 #: src/story.cxx:100
 msgid ""
@@ -1276,6 +1270,10 @@ msgid ""
 "for colder areas, but the Pingus knew that this couldn't help,\n"
 "they knew that they had to do something about this problem."
 msgstr ""
+"Bazý bölgelerde karlar eridi, yiyecek bulmak giderek zorlaþtý.\n"
+"Diðer hayvanlar çoktan bölgeyi tekerdip daha soðuk yerler arama\n"
+"eðilimindeydiler, ama Pingular bunun iþe yaramayacaðýný,\n"
+"birþeyler yapmalarý gerektiðini biliyorlardý."
 
 #: src/story.cxx:108
 msgid ""
@@ -1284,6 +1282,10 @@ msgid ""
 "to find the cause for this warming. The expedition consisted of\n"
 "hundreds of the bravest Pingus around on the south pole."
 msgstr ""
+"Sonunda yaþlýlar kurulu karar vermek için toplandý ve dünyayý dolaþip\n"
+"bu ýsýnmanýn nedenini araþtýracak bir araþtýrma ekibi kurmaya\n"
+"karar verdiler. Bu ekip Güney Kutbu'nun heryerinden gelen\n"
+"yüzlerce cesur Pingudan oluþuyor."
 
 #: src/story.cxx:116
 msgid ""
@@ -1293,6 +1295,11 @@ msgid ""
 "Island. According to the eldest, this island has always been the\n"
 "first stop of Pingus which where send out into the world."
 msgstr ""
+"Ve Pingular seni dünya çevresindeki bu yolculuklarýnda onlara\n"
+"yol göstermen için seçtiler. Yolculuk tehlikeli ve zor\n"
+"olacaðýndan, ilk hedefimiz eðitim adasý diye de bilinen \n"
+"Magorok Adasý. Yaþlýlara göre, bu ada görev için yola düþen\n"
+"Pingular için herzaman ilk duraktýr."
 
 #: src/story.cxx:125
 msgid ""
@@ -1301,6 +1308,10 @@ msgid ""
 "to build bridges, climb, bash and all the rest of their talents\n"
 "which they will surly need on their long and dangerous journey."
 msgstr ""
+"Ada, bir Pingunun yeteneklerini gelistirmek için çalýþabileceði\n"
+"birçok bolgeden oluþmakta. Pingular önlerindeki zorlu yolcukta\n"
+"kesinlikle gerekli olacak týrmanmak, kazmak, köprü yapmak ve\n"
+"benzeri biçok becerilerini burada geliþtirebilecekler."
 
 #: src/story.cxx:133
 msgid ""
@@ -1310,6 +1321,10 @@ msgid ""
 "since you will need them all for sure an your journey around the\n"
 "world."
 msgstr ""
+"Ayný zamanda sen de onlarý yönlendirip yönetme yeteneðini burada\n"
+"deneyebilirsin. Ayný zamanda, Pingularýn bütün becerilerini\n"
+"tanýyabilir, bu becerileri en iyi þekilde kullanmayý\n"
+"öðrenebilirsin. Bu zorlu yolculukta hepsine gereksinim duyacaksýn"
 
 #: src/story.cxx:142
 msgid ""
@@ -1318,6 +1333,10 @@ msgid ""
 "\n"
 "                                                  Good Luck!"
 msgstr ""
+"Artýk sen ve Pingular eðitim adasýna vardýðýnýza göre, komutayý\n"
+"devralýp göreve baþlamanýn zamanýdýr.\n"
+"\n"
+"                                                  Baþarýlar!"
 
 #: src/system.cxx:65 src/system.cxx:97
 msgid "System: Couldn't open: "
@@ -1332,7 +1351,6 @@ msgid "Found: "
 msgstr "Bulundu: "
 
 #: src/system.cxx:264
-#, fuzzy
 msgid "Environment variable $HOME not set, fix that and start again."
 msgstr "$HOME deðiþkeni atanmamýþ, düzeltip yeniden dene."
 
@@ -1346,40 +1364,31 @@ msgstr "Sistem:checksum: Dosya okunurken hata oluþtu"
 
 #: src/worldmap/level_dot.cxx:137
 msgid "locked"
-msgstr ""
+msgstr "kilitli"
 
 #: src/worldmap/manager.cxx:102
 msgid "Show Ending?"
-msgstr ""
+msgstr "Sonu Göster..."
 
 #: src/worldmap/manager.cxx:132
 msgid "Show Story?"
-msgstr ""
+msgstr "Pingus öyküsü.."
 
 #: src/worldmap/manager.cxx:160
-#, fuzzy
 msgid "Leave?"
-msgstr "Yarat"
+msgstr "Çýk?"
 
 #: src/worldmap/manager.cxx:197
 msgid "Enter?"
-msgstr ""
+msgstr "Gir?"
 
 #: src/worldmap/worldmap.cxx:73
-#, fuzzy
 msgid "WorldMap: File not found: "
-msgstr "PingusWorldMapGraph: Dosya bulunamadý: "
+msgstr "WorldMap: Dosya bulunamadý: "
 
 #: src/worldmap/worldmap.cxx:246
-#, fuzzy
 msgid "...walking..."
-msgstr "Yükleniyor..."
-
-#~ msgid "PingusBug: "
-#~ msgstr "PingusBöceðý:"
-
-#~ msgid "PingusError: "
-#~ msgstr "PingusHatasý:"
+msgstr "...yürüyor..."
 
 #~ msgid "Couldn't find palette: %d"
 #~ msgstr "Bulunamayan palet: %d"
@@ -1388,7 +1397,7 @@ msgstr "Yükleniyor..."
 #~ msgstr "ump_after(): Beklenen '"
 
 #~ msgid "PLF: Syntax Error at line "
-#~ msgstr "PLF: Sözdizimi hattasi. Satýr: "
+#~ msgstr "PLF: Sözdizimi hatasý. Satýr: "
 
 #~ msgid "Config: Unknown valueid: "
 #~ msgstr "Config: Bilinmeyen valueid: "
@@ -1402,9 +1411,17 @@ msgstr "Yükleniyor..."
 #~ msgid "Config: Couldn't convert std::string to integer: "
 #~ msgstr "Config: std::string'i integer'e dönüþtürelemedi"
 
+#~ msgid "unlimited"
+#~ msgstr "sýnýrsýz"
+
+#~ msgid "PingusBug: "
+#~ msgstr "PingusBöceði: "
+
+#~ msgid "PingusError: "
+#~ msgstr "PingusHatasý: "
+
 # bu olmadi -cagri
 # þimdi daha iyi mi? -gd
-#, fuzzy
 #~ msgid "..:: Lets you select a world to start ::.."
 #~ msgstr "..:: Oynamak için bir dünya seçmenizi saðlar ::.."
 
@@ -1425,13 +1442,11 @@ msgstr "Yükleniyor..."
 #~ msgid "InputDeviceButton: Button not found."
 #~ msgstr "InputDeviceButton: Buton bulunamadý"
 
-#, fuzzy
 #~ msgid "DemoPlayer: Couldn't load "
-#~ msgstr "Sistem: Açýlamayan dosya: "
+#~ msgstr "DemoPlayer: Açýlamayan dosya: "
 
-#, fuzzy
 #~ msgid "DemoRecorder: Couldn't open: "
-#~ msgstr "Sistem: Açýlamayan dosya: "
+#~ msgstr "DemoRecorder: Açýlamayan dosya: "
 
 #~ msgid "Edit Properties (not implemented)"
 #~ msgstr "Nesne özellikleri (daha geliþtirilmedi)"
@@ -1463,28 +1478,23 @@ msgstr "Yükleniyor..."
 #~ msgid "\" unknown, default to Pingus mode"
 #~ msgstr "\" bilinmiyor, Pingus kipine git"
 
-#, fuzzy
 #~ msgid "Start menu"
-#~ msgstr "Baþla"
+#~ msgstr "Baþlangýç menüsü"
 
-#, fuzzy
 #~ msgid ": Could not open file\n"
 #~ msgstr "Sistem: Açýlamayan dosya: "
 
-#, fuzzy
 #~ msgid "PingusDemo: Couldn't open out file: "
-#~ msgstr "Sistem: Açýlamayan dosya: "
+#~ msgstr "PingusDemo: Açýlamayan dosya: "
 
-#, fuzzy
 #~ msgid "PingusDemo: Couldn't open in file: "
-#~ msgstr "Sistem: Açýlamayan dosya: "
+#~ msgstr "PingusDemo: Açýlamayan dosya: "
 
 #~ msgid "Time for war - Lets fight!"
 #~ msgstr "Savaþ vaktidir ey ahali - haydi savaþa!"
 
-#, fuzzy
 #~ msgid "Couldn't find: "
-#~ msgstr "Bulunamayan palet: %d"
+#~ msgstr "%d bulunamadý"
 
 #~ msgid "Horizontal Button Panel"
 #~ msgstr "Yatay buton paneli"
@@ -1501,9 +1511,8 @@ msgstr "Yükleniyor..."
 #~ msgid "there are *no* sound files, so this will fail.\n"
 #~ msgstr "belirtmek lazým.  Pek ses dosyasý yok, yani bu çalýþmayacaktýr.\n"
 
-#, fuzzy
 #~ msgid "Options:\n"
-#~ msgstr "Seçenekler"
+#~ msgstr "Seçenekler:"
 
 #~ msgid "   -g, --geometry {width}x{height}\n"
 #~ msgstr "   -g, --geometry {geniþlik}x{yükseklik}\n"
@@ -1626,7 +1635,6 @@ msgstr "Yükleniyor..."
 #~ "   --enable-bg-manipulation Seviye art-alanlarýn renk ayarlarýný "
 #~ "kullanýma açar\n"
 
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "Sound:\n"
@@ -1641,9 +1649,8 @@ msgstr "Yükleniyor..."
 #~ msgid " (without sound support)"
 #~ msgstr " (Ses desteði olmaksýzýn)"
 
-#, fuzzy
 #~ msgid "Pingus Datadir"
-#~ msgstr "Pingus veri dizini: "
+#~ msgstr "Pingus veri dizini"
 
 #~ msgid "Starting..."
 #~ msgstr "Pingus baþlatýlýyor..."
