@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.41 2002/01/21 11:13:54 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.42 2002/02/11 00:09:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -384,6 +384,18 @@ XMLPLF::parse_global(xmlNodePtr cur)
       else if (strcmp((char*)cur->name, "number-of-pingus") == 0)
 	{
 	  number_of_pingus = XMLhelper::parse_int(doc, cur);
+	}
+      else if (strcmp((char*)cur->name, "difficulty") == 0)
+	{
+	  difficulty = XMLhelper::parse_int(doc, cur);
+	}
+      else if (strcmp((char*)cur->name, "playable") == 0)
+	{
+	  playable = XMLhelper::parse_int(doc, cur);
+	}
+      else if (strcmp((char*)cur->name, "comment") == 0)
+	{
+	  comment = XMLhelper::parse_string(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "number-to-save") == 0)
 	{

@@ -1,4 +1,4 @@
-//  $Id: PLF.hh,v 1.27 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: PLF.hh,v 1.28 2002/02/11 00:09:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,27 @@ protected:
   int  release_rate;
   int  number_of_pingus;
   int  number_to_save;
+
+  /** the difficulty of the level, difficulty should be between 0-99
+
+   0 - works without interaction
+  10 - tutorial, requires a single click
+  20 - requires multiple clicks, but solution is obvious
+  30 - ...
+  40 - ...
+  50 - medium level, requires some thinking
+  70 - hard level, requires quite a lot of thinking
+  90 - requires knowlege of many special combinations and other things
+  99 - extreme hard, requires absolute precision and no errors (basically unplayable)
+   */
   int  difficulty;
+
+  /** Internal comment about this level, might include a solution hint
+      or other things which are needed to maintain this level. */
+  std::string comment;
+
+  /** levels flagged with playable=false are not playable or havn't been yet tested */
+  bool playable;
   
   std::vector<ActionData>   actions;
   std::vector<GroundpieceData>  groundpieces;
@@ -111,6 +131,12 @@ public:
 
   /// Returns the difficulty of the current level
   int         get_difficulty();
+
+  /// Returns if the level is playable
+  bool        get_playable();
+
+  /// Returns the maintainer internal comment
+  std::string get_comment ();
 
   /// Returns the number of pingus you need to save in this level.
   int         get_number_to_save();

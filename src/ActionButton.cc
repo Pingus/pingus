@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.27 2002/01/15 22:32:05 grumbel Exp $
+//  $Id: ActionButton.cc,v 1.28 2002/02/11 00:09:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -171,7 +171,7 @@ VerticalActionButton::draw()
   available = action_holder->get_available(name);
 
   if (unlimited_actions) {
-    str = "oo";
+    str = "";
   } else {
     str = to_string(available);
   }
