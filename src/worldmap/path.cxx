@@ -1,4 +1,4 @@
-//  $Id: path.cxx,v 1.5 2002/10/20 18:28:49 torangan Exp $
+//  $Id: path.cxx,v 1.6 2002/11/26 21:30:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,7 @@ Path::calc_length()
       Vec::iterator prev = vec.begin();
       for(Vec::iterator next = prev + 1; next != vec.end(); ++next)
         {
-          length += Vector::distance(*prev, *next);
+          length += Vector::distance2d(*prev, *next);
           prev = next;
         }
       return length;
@@ -81,7 +81,7 @@ Path::at(float vec_position)
   float comp_length = 0.0f;
   while (next != vec.end())
     {
-      float length = Vector::distance(*current, *next);
+      float length = Vector::distance2d(*current, *next);
 
       // The pingu is between current and next
       if (comp_length + length > vec_position) 

@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.19 2002/11/02 14:46:29 grumbel Exp $
+//  $Id: pingus.hxx,v 1.20 2002/11/26 21:30:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,6 +75,10 @@ private:
   /** Current position of the pingu, only for caching purpose */
   Vector pos;
 
+  /** The position the pingu had before his current position, used to
+      calculate its current direction */
+  Vector last_pos;
+
 public:
   /** */
   Pingus (PathGraph* arg_path);
@@ -86,9 +90,6 @@ public:
   /** @return true if the node is reachable, false otherwise */
   bool walk_to_node (NodeId target);
   
-  /** calculate the position of the pingu */
-  Vector calc_pos ();
-
   bool is_walking();
   
   /** @return the node on which the pingu is currently standing, 0 is
@@ -99,11 +100,21 @@ public:
 
   /** Set the pingu to the position of a given node */
   void set_position (NodeId node); 
+
+  /** return the current position in world coordinates */
   Vector get_pos() const { return pos; }
 
+  /** Used for z-ordering for drawing */
   float get_z_pos() const;
-
+  
 private:
+  /** Calculate the direction in which the pingu is heading, return
+      value is in degrees => [0,360[, 0=north, 180=south, 270=east, 90=west */
+  float get_direction() const;
+
+  /** calculate the position of the pingu */
+  Vector calc_pos ();
+
   void  update_walk (float delta);
 
   void update_edge_path();

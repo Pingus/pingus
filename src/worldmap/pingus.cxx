@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.23 2002/10/29 12:48:33 grumbel Exp $
+//  $Id: pingus.cxx,v 1.24 2002/11/26 21:30:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "../boost/smart_ptr.hpp"
 #include "../graphic_context.hxx"
 #include "dot.hxx"
+#include "../math.hxx"
 #include "pingus.hxx"
 
 namespace WorldMapNS {
@@ -45,6 +46,16 @@ Pingus::~Pingus ()
 void
 Pingus::draw (GraphicContext& gc)
 {
+  // FIXME: Our sprite class is quite a bit sucky...
+  if (!is_walking())
+    sprite.set_frame(5);
+
+  // FIXME: Replace the sprite and add up/down here
+  float direction = get_direction();
+  if (direction >= 0 && direction < 180)
+    sprite.set_direction(Sprite::RIGHT);
+  else
+    sprite.set_direction(Sprite::LEFT);
   gc.draw(sprite, pos);
 }
 
@@ -54,7 +65,7 @@ Pingus::update ()
   float delta = 0.025f;
   
   sprite.update ();
-  if (current_node == NoNode)
+  if (is_walking())
     update_walk(delta);
 }
 
@@ -80,7 +91,15 @@ Pingus::update_walk (float delta)
     }
 
   // Recalc pingu position on the screen
+  last_pos = pos;
   pos = calc_pos ();
+}
+
+float
+Pingus::get_direction() const
+{
+  return (atan2(last_pos.x - pos.x,
+                -(last_pos.y - pos.y)) / Math::pi * 180.0f) + 180.0f;
 }
 
 bool
@@ -196,8 +215,11 @@ Pingus::set_position (NodeId node)
 float
 Pingus::get_z_pos() const
 {
-  // FIXME: Should should be interpolated from the given position on the path
-  return 10.0f;
+  /** We add 1.0f here so that the pingu is guranteed to stay above
+      the level-dots (this is a hack), but I currently don't know a
+      better way, since both pingu and level dot have the same
+      z-pos */
+  return pos.z + 10.0f;
 }
 
 void

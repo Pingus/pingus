@@ -1,4 +1,4 @@
-//  $Id: pingu_action.cxx,v 1.20 2002/11/26 18:55:27 grumbel Exp $
+//  $Id: pingu_action.cxx,v 1.21 2002/11/26 21:30:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -109,7 +109,7 @@ PinguAction::move_with_forces ()
   // Apply gravity
   pingu->set_velocity(pingu->get_velocity() + Vector(0.0f, 1.0f));
 
-#if 0
+#if 0 // New Code
   Vector pos        = pingu->get_pos();
   Vector target_pos = pos + pingu->get_velocity();
   Vector dir        = target_pos - pingu->get_pos();
@@ -153,7 +153,7 @@ PinguAction::move_with_forces ()
           return;
         }
     }
-#else
+#else // Old Code
     
   // FIXME: What does this variable do?
   Vector resultant_force = pingu->get_velocity();

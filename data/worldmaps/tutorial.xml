@@ -212,7 +212,7 @@
           <position>
             <x-pos>713</x-pos>
             <y-pos>469</y-pos>
-            <z-pos>0</z-pos>
+            <z-pos>150</z-pos>
           </position>
         </dot>
         <levelname>level10.xml</levelname>
@@ -225,7 +225,7 @@
           <position>
             <x-pos>844</x-pos>
             <y-pos>441</y-pos>
-            <z-pos>0</z-pos>
+            <z-pos>150</z-pos>
           </position>
         </dot>
         <levelname>level10.xml</levelname>
@@ -238,7 +238,7 @@
           <position>
             <x-pos>954</x-pos>
             <y-pos>382</y-pos>
-            <z-pos>0</z-pos>
+            <z-pos>150</z-pos>
           </position>
         </dot>
         <levelname>level10.xml</levelname>
@@ -347,6 +347,21 @@
       </position>
     </surface>
 
+
+    <surface name="mountain_2">
+      <surface>
+        <resource type="datafile">
+          <resource-datafile>worldmaps</resource-datafile>
+          <resource-ident>tutorial/layer2</resource-ident>
+        </resource>
+      </surface>
+
+      <position>
+        <x-pos>770</x-pos>
+        <y-pos>352</y-pos>
+        <z-pos>100</z-pos>
+      </position>
+    </surface>
   </objects>
 
 </pingus-worldmap>

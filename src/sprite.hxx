@@ -1,4 +1,4 @@
-//  $Id: sprite.hxx,v 1.8 2002/10/01 19:53:44 grumbel Exp $
+//  $Id: sprite.hxx,v 1.9 2002/11/26 21:30:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -140,6 +140,9 @@ public:
   /** Once an animation is finished it can be reseted to its initial
       position */
   void reset ();
+
+  /** Set the sprite to the n'th frame */
+  void set_frame (int n);
 
   /// @return the surface which is used internally
   CL_Surface& get_surface ();

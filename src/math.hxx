@@ -1,4 +1,4 @@
-//  $Id: math.hxx,v 1.4 2002/09/11 12:45:57 grumbel Exp $
+//  $Id: math.hxx,v 1.5 2002/11/26 21:30:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,9 @@
     
     @brief A collection of mathematical helper functions */
 namespace Math {
+
+const double pi   = 3.14159265358979323846;	/* pi */
+const double pi_2 = 1.57079632679489661923;	/* pi/2 */
 
 template<class T> 
 T min (const T& a, const T& b) 
