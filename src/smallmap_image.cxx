@@ -26,138 +26,138 @@
 
 namespace Pingus {
 
-SmallMapImage::SmallMapImage (Server * s, Vector arg_pos, int width, int height)
-  : sur (create_surface (s, width, height)),
-    pos (arg_pos)
+SmallMapImage::SmallMapImage(Server* s, int width, int height)
+  : server(s),
+    canvas(width, height, width*4, CL_PixelFormat::rgba8888),
+    sur(canvas),
+    update_count(0),
+    colmap_serial(0)
 {
-}
-
-SmallMapImage::~SmallMapImage ()
-{
-}
-
-void
-SmallMapImage::draw ()
-{
-  sur.draw (int(pos.x), int(pos.y));
+  update_surface();
 }
 
 void
 SmallMapImage::update (float delta)
 {
-  // FIXME: Updating not implemented!
-  UNUSED_ARG(delta);
+  float smallmap_update_time = 1.0f;
+
+  update_count += delta;
+
+  if (update_count > smallmap_update_time)
+    {
+      update_count = 0.0f;
+      ColMap* colmap = server->get_world()->get_colmap();
+
+      if (colmap_serial != colmap->get_serial())
+        {
+          update_surface();
+        }
+    }
 }
 
 CL_Surface
-SmallMapImage::create_surface (Server * server, int width, int height)
+SmallMapImage::get_surface ()
+{
+  if (sur)
+    {
+      return sur;
+    }
+  else
+    {
+      update_surface();
+      return sur;
+    }
+}
+
+void
+SmallMapImage::update_surface()
 {
   unsigned char* buffer;
   unsigned char* cbuffer;
   unsigned char  current_pixel;
-  int tx, ty;
 
-  World* world = server->get_world();
-
-  ColMap* colmap = world->get_colmap();
+  ColMap* colmap = server->get_world()->get_colmap();
   buffer = colmap->get_data();
 
-  CL_PixelBuffer canvas(width, height, width*4, CL_PixelFormat::rgba8888);
+  colmap_serial = colmap->get_serial();
 
   canvas.lock();
 
   cbuffer = static_cast<unsigned char*>(canvas.get_data());
 
-  for(int y = 0; y < height; y++)
+  int alpha = 255;
+
+  int cmap_width  = colmap->get_width();
+  int cmap_height = colmap->get_height();
+
+  int width  = canvas.get_width();
+  int height = canvas.get_height();
+  for(int y = 0; y < height; ++y)
     {
-      for (int x = 0; x < width; x++)
+      for (int x = 0; x < width; ++x)
 	{
-	  tx = x * colmap->get_width() / width;
-	  ty = y * colmap->get_height() / height;
+          // Index on the smallmap canvas
+          int i = 4 * ((y * width) + x);
 
-	  current_pixel = buffer[tx + (ty * colmap->get_width())];
+	  int tx = x * cmap_width / width;
+	  int ty = y * cmap_height / height;
 
-	  if (current_pixel == Groundtype::GP_NOTHING)
-	    {
-	      cbuffer[4 * ((y * width) + x) + 0] = 150;
-	      cbuffer[4 * ((y * width) + x) + 1] = 0;
-	      cbuffer[4 * ((y * width) + x) + 2] = 0;
-	      cbuffer[4 * ((y * width) + x) + 3] = 0;
-	    }
-	  else if (current_pixel == Groundtype::GP_BRIDGE)
-	    {
-	      cbuffer[4 * ((y * width) + x) + 0] = 255;
-	      cbuffer[4 * ((y * width) + x) + 1] = 100;
-	      cbuffer[4 * ((y * width) + x) + 2] = 255;
-	      cbuffer[4 * ((y * width) + x) + 3] =   0;
-	    }
-	  else if (current_pixel == Groundtype::GP_LAVA)
-	    {
-	      cbuffer[4 * ((y * width) + x) + 0] = 255;
-	      cbuffer[4 * ((y * width) + x) + 1] = 100;
-	      cbuffer[4 * ((y * width) + x) + 2] = 100;
-	      cbuffer[4 * ((y * width) + x) + 3] = 255;
-	    }
-	  else if (current_pixel == Groundtype::GP_SOLID)
-	    {
-	      cbuffer[4 * ((y * width) + x) + 0] = 255;
-	      cbuffer[4 * ((y * width) + x) + 1] = 100;
-	      cbuffer[4 * ((y * width) + x) + 2] = 100;
-	      cbuffer[4 * ((y * width) + x) + 3] = 100;
-	    }
-	  else
-	    {
-	      cbuffer[4 * ((y * width) + x) + 0] = 255;
-	      cbuffer[4 * ((y * width) + x) + 1] = 200;
-	      cbuffer[4 * ((y * width) + x) + 2] = 200;
-	      cbuffer[4 * ((y * width) + x) + 3] = 200;
-	    }
-	}
-    }
+	  current_pixel = buffer[tx + (ty * cmap_width)];
+
+	  switch (current_pixel)
+            {
+            case Groundtype::GP_NOTHING:
+	      cbuffer[i + 0] = alpha;
+              cbuffer[i + 1] = 0;
+	      cbuffer[i + 2] = 0;
+	      cbuffer[i + 3] = 0;
+              break;
+
+            case Groundtype::GP_BRIDGE:
+              cbuffer[i + 0] = 255;
+	      cbuffer[i + 1] = 100;
+	      cbuffer[i + 2] = 255;
+	      cbuffer[i + 3] =   0;
+              break;
+
+            case Groundtype::GP_WATER:
+            case Groundtype::GP_LAVA:
+              cbuffer[i + 0] = 255;
+	      cbuffer[i + 1] = 200;
+	      cbuffer[i + 2] = 0;
+	      cbuffer[i + 3] = 0;
+              break;
 
 #if 0
-  /* This draws the exits and entrances to the smallmap, due to the
-     class reordering this is no longer working, a generic
-     WorldObj::draw_smallmap (SmallMap* / CL_Canvas*) should help
-     here. */
-  CL_Surface entrance_sur = Resource::load_surface("misc/smallmap_entrance", "core");
-  CL_Surface exit_sur     = Resource::load_surface("misc/smallmap_exit", "core");
-
-  PingusLevel plf = world->get_plf();
-
-  std::vector<ExitData>     exit_d     = plf->get_exit();
-  for(std::vector<ExitData>::iterator i = exit_d.begin(); i != exit_d.end(); i++)
-    {
-      // FIXME: Replace this with put_target() when it is bug free
-      Blitter::put_surface(canvas, exit_sur,
-			   i->pos.x * width / colmap->get_width() - (exit_sur.get_width()/2),
-			   i->pos.y * height / colmap->get_height() - (exit_sur.get_height()));
-    }
-
-  std::vector<EntranceData>     entrance_d     = plf->get_entrance();
-  for(std::vector<EntranceData>::iterator i = entrance_d.begin(); i != entrance_d.end(); ++i)
-    {
-      Blitter::put_surface(canvas, entrance_sur,
-			   i->pos.x * width / colmap->get_width() - (entrance_sur.get_width()/2),
-			   i->pos.y * height / colmap->get_height() - (entrance_sur.get_height()));
-
-			   //entrance_sur->put_target(i->x_pos * width / colmap->get_width(),
-			   //i->y_pos * height / colmap->get_height(),
-			   //0, canvas);
-    }
+              // FIXME: temporaty disabled for 0.6.0 release, since all liquids are currently lava
+            case Groundtype::GP_LAVA:
+              cbuffer[i + 0] = 255; // alpha
+	      cbuffer[i + 1] = 255; // blue
+	      cbuffer[i + 2] = 128;   // green
+	      cbuffer[i + 3] = 128;   // red
+              break;
 #endif
 
+            case Groundtype::GP_SOLID:
+              cbuffer[i + 0] = 255;
+	      cbuffer[i + 1] = 100;
+	      cbuffer[i + 2] = 100;
+	      cbuffer[i + 3] = 100;
+              break;
+
+            default:
+              cbuffer[i + 0] = 255;
+	      cbuffer[i + 1] = 200;
+	      cbuffer[i + 2] = 200;
+	      cbuffer[i + 3] = 200;
+              break;
+            }
+	}
+    }
   canvas.unlock();
 
-  return CL_Surface(canvas);
-}
-
-bool
-SmallMapImage::mouse_over (int x, int y)
-{
-  return (pos.x < x && pos.x + sur.get_width () > x
-	  &&
-	  pos.y < y && pos.y + sur.get_height () > y);
+  // sur.set_pixeldata(CL_Point(0, 0), canvas);
+  sur = CL_Surface(canvas);
 }
 
 } // namespace Pingus

@@ -30,6 +30,7 @@ namespace Pingus {
 
 class Client;
 class Vector;
+class SmallMapImage;
 
 /** This is the map that appears in the corner of the screen */
 class SmallMap : public GUI::Component
@@ -43,11 +44,7 @@ private:
   /** Graphic surface of the entrance */
   CL_Sprite entrance_sur;
 
-  /** Graphic surface for the generated rectanglar background of the small map */
-  CL_Surface sur;
-
-  /** The canvas that represents the small-colmap */
-  CL_PixelBuffer canvas;
+  SmallMapImage* image;
 
   /** Horizontal position of the small map */
   int x_pos;
@@ -61,15 +58,6 @@ private:
   /** Height of the small map */
   int height;
 
-  int min_width;
-  int min_height;
-
-  /** Max width of the small map */
-  int max_width;
-
-  /** Max height of the small map */
-  int max_height;
-
   /** Indicates whether the playfield should can be scrolled around depending
       on the position of the cursor in the small map */
   bool scroll_mode;
@@ -81,11 +69,6 @@ private:
   int rheight;
 
   bool has_focus;
-
-  /** number of seconds till the smallmap will update itself */
-  float update_count;
-
-  unsigned int colmap_serial;
 
   /** Pointer to the current GC, only valid inside draw() */
   DrawingContext* gc_ptr;
@@ -119,8 +102,6 @@ public:
   void draw_sprite(CL_Sprite sprite, Vector pos);
 
 private:
-  void init();
-
   SmallMap (const SmallMap&);
   SmallMap& operator= (const SmallMap&);
 };

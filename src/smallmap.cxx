@@ -27,6 +27,7 @@
 #include "smallmap.hxx"
 #include "col_map.hxx"
 #include "true_server.hxx"
+#include "smallmap_image.hxx"
 #include "pingu.hxx"
 #include "math.hxx"
 #include "vector.hxx"
@@ -36,201 +37,71 @@ namespace Pingus {
 
 SmallMap::SmallMap(Client* c)
   : client(c),
-    canvas(0),
-    update_count(0),
     gc_ptr(0)
 {
-  max_width = 175;
-  max_height = 100;
+  int max_width = 175;
+  int max_height = 100;
 
-  min_height = 70;
-  min_width = 100;
+  int min_height = 70;
+  int min_width = 100;
 
-  // Don't really need to initialise these now as this values are calculated
-  // later on.  However, initialise here, just in case.
-  width = 175;
-  height = 100;
+  ColMap* colmap = client->get_server()->get_world()->get_colmap();
+
+  // Scaling values used in order to keep the aspect ratio
+  int x_scaling = colmap->get_width()  / max_width;
+  int y_scaling = colmap->get_height() / max_height;
+
+  // If at best one horizontal pixel in the smallmap represents more colmap
+  // pixels than one vertical pixel
+  if (x_scaling > y_scaling)
+    {
+      width  = max_width;
+      height = Math::max(min_height, colmap->get_height() / x_scaling);
+    }
+  else
+    {
+      width  = Math::max(min_width, colmap->get_width() / y_scaling);
+      height = max_height;
+    }
+  
+  x_pos   = 5;
+  y_pos   = CL_Display::get_height() - height - 5;
+  rwidth  = CL_Display::get_width() * width / client->get_server()->get_world()->get_colmap()->get_width();
+  rheight = CL_Display::get_height() * height / client->get_server()->get_world()->get_colmap()->get_height();
+
+  image = new SmallMapImage(c->get_server(), width, height);
 
   scroll_mode = false;
-
-  init();
 }
 
 SmallMap::~SmallMap()
 {
-}
-
-void
-SmallMap::init()
-{
-  unsigned char* buffer;
-  unsigned char* cbuffer;
-  unsigned char  current_pixel;
-  int tx, ty;
-
-  entrance_sur = Resource::load_sprite("core/misc/smallmap_entrance");
-  exit_sur     = Resource::load_sprite("core/misc/smallmap_exit");
-
-  ColMap* colmap = client->get_server()->get_world()->get_colmap();
-  buffer = colmap->get_data();
-
-  colmap_serial = colmap->get_serial();
-
-  if (!canvas)
-    {
-      // Scaling values used in order to keep the aspect ratio
-      int x_scaling = colmap->get_width()  / max_width;
-      int y_scaling = colmap->get_height() / max_height;
-
-      // If at best one horizontal pixel in the smallmap represents more colmap
-      // pixels than one vertical pixel
-      if (x_scaling > y_scaling)
-        {
-          width  = max_width;
-          height = Math::max(min_height, colmap->get_height() / x_scaling);
-        }
-      else
-        {
-          width  = Math::max(min_width, colmap->get_width() / y_scaling);
-          height = max_height;
-        }
-
-      canvas = CL_PixelBuffer(width, height, width*4, CL_PixelFormat::rgba8888);
-    }
-
-  canvas.lock();
-
-  cbuffer = static_cast<unsigned char*>(canvas.get_data());
-
-  int alpha;
-  if (fast_mode)
-    alpha = 255;
-  else
-    alpha = 255;
-
-  int cmap_width  = colmap->get_width();
-  int cmap_height = colmap->get_height();
-
-  for(int y = 0; y < height; ++y)
-    {
-      for (int x = 0; x < width; ++x)
-	{
-          // Index on the smallmap canvas
-          int i = 4 * ((y * width) + x);
-
-	  tx = x * cmap_width / width;
-	  ty = y * cmap_height / height;
-
-	  current_pixel = buffer[tx + (ty * cmap_width)];
-
-	  switch (current_pixel)
-            {
-            case Groundtype::GP_NOTHING:
-	      cbuffer[i + 0] = alpha;
-              cbuffer[i + 1] = 0;
-	      cbuffer[i + 2] = 0;
-	      cbuffer[i + 3] = 0;
-              break;
-
-            case Groundtype::GP_BRIDGE:
-              cbuffer[i + 0] = 255;
-	      cbuffer[i + 1] = 100;
-	      cbuffer[i + 2] = 255;
-	      cbuffer[i + 3] =   0;
-              break;
-
-            case Groundtype::GP_WATER:
-            case Groundtype::GP_LAVA:
-              cbuffer[i + 0] = 255;
-	      cbuffer[i + 1] = 200;
-	      cbuffer[i + 2] = 0;
-	      cbuffer[i + 3] = 0;
-              break;
-
-#if 0
-              // FIXME: temporaty disabled for 0.6.0 release, since all liquids are currently lava
-            case Groundtype::GP_LAVA:
-              cbuffer[i + 0] = 255; // alpha
-	      cbuffer[i + 1] = 255; // blue
-	      cbuffer[i + 2] = 128;   // green
-	      cbuffer[i + 3] = 128;   // red
-              break;
-#endif
-
-            case Groundtype::GP_SOLID:
-              cbuffer[i + 0] = 255;
-	      cbuffer[i + 1] = 100;
-	      cbuffer[i + 2] = 100;
-	      cbuffer[i + 3] = 100;
-              break;
-
-            default:
-              cbuffer[i + 0] = 255;
-	      cbuffer[i + 1] = 200;
-	      cbuffer[i + 2] = 200;
-	      cbuffer[i + 3] = 200;
-              break;
-            }
-	}
-    }
-  canvas.unlock();
-
-  //Timer surface_timer("Smallmap surface creation");
-  sur = CL_Surface(canvas);
-  //surface_timer.stop();
-
-  x_pos = 5;
-  y_pos = CL_Display::get_height() - sur.get_height() - 5;
-
-  rwidth = CL_Display::get_width() * width / client->get_server()->get_world()->get_colmap()->get_width();
-  rheight = CL_Display::get_height() * height / client->get_server()->get_world()->get_colmap()->get_height();
+  delete image;
 }
 
 void
 SmallMap::draw (DrawingContext& gc)
 {
-  // FIXME: This is potentially dangerous, since we don't know how long 'gc' will be alive
+  // FIXME: This is potentially dangerous, since we don't know how
+  // long 'gc' will be alive. Should use a DrawingContext for caching.
   gc_ptr = &gc;
 
   Playfield* playfield = client->get_playfield();
 
-  gc.draw(sur, Vector(x_pos, y_pos));
-
-#if 0
-  if (has_focus)
-    gc.draw_rect(x_pos, y_pos,
-                 x_pos + sur.get_width (), y_pos + sur.get_height () - 1,
-                 CL_Color(255, 255, 255));
-#endif
+  gc.draw(image->get_surface(), Vector(x_pos, y_pos));
 
   CL_Point of = playfield->get_pos();
     
   of.x = x_pos + of.x * width  / client->get_server()->get_world()->get_colmap()->get_width();
   of.y = y_pos + of.y * height / client->get_server()->get_world()->get_colmap()->get_height();
 
-  int w = Math::min(rwidth,  int(sur.get_width()  - 1));
-  int h = Math::min(rheight, int(sur.get_height() - 1));
+  int w = Math::min(rwidth,  int(width  - 1));
+  int h = Math::min(rheight, int(height - 1));
 
   gc.draw_rect(of.x - w/2, of.y - h/2,
                of.x + w/2, of.y + h/2,
                CL_Color(0, 255, 0));
 
-  // FIXME: This should use put_target(), but put_target(), does not
-  // seem to work?!
-  /*  vector<exit_data>     exit_d     = plf->get_exit();
-  for(std::vector<exit_data>::iterator i = exit_d.begin(); i != exit_d.end(); ++i)
-    {
-      exit_sur->draw(i->x_pos * width / colmap->get_width() +  x_pos - 3,
-			   i->y_pos * height / colmap->get_height() + y_pos - 3);
-    }
-
-  vector<entrance_data>     entrance_d     = plf->get_entrance();
-  for(std::vector<entrance_data>::iterator i = entrance_d.begin(); i != entrance_d.end(); ++i)
-    {
-      entrance_sur->draw(i->x_pos * width / colmap->get_width() + x_pos - 3,
-			       i->y_pos * height / colmap->get_height() + y_pos);
-    }
-  */
   client->get_server()->get_world()->draw_smallmap(this);
 
   World* const& world = client->get_server()->get_world();
@@ -253,20 +124,7 @@ SmallMap::draw (DrawingContext& gc)
 void
 SmallMap::update (float delta)
 {
-  float smallmap_update_time = 1.0f;
-
-  update_count += delta;
-
-  if (update_count > smallmap_update_time)
-    {
-      update_count = 0.0f;
-      ColMap* colmap = client->get_server()->get_world()->get_colmap();
-
-      if (colmap_serial != colmap->get_serial())
-        {
-          init();
-        }
-    }
+  image->update(delta);
 }
 
 void

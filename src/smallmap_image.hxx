@@ -33,19 +33,28 @@ class Server;
 class SmallMapImage
 {
 private:
-  CL_Surface sur;
-  Vector pos;
-public:
-  SmallMapImage (Server * s, Vector pos, int width, int height);
-  virtual ~SmallMapImage ();
+  Server* server;
 
-  void draw ();
+  /** The canvas that represents the small-colmap */
+  CL_PixelBuffer canvas;
+
+  /** Graphic surface for the generated rectanglar background of the small map */
+  CL_Surface sur;
+
+  /** number of seconds till the smallmap will update itself */
+  float update_count;
+
+  /** The serial is used to track changes to the colmap */
+  unsigned int colmap_serial;
+
+public:
+  SmallMapImage (Server* s, int width, int height);
   void update (float delta);
 
-  bool mouse_over (int x, int y);
-
-  static CL_Surface create_surface (Server * server, int width, int height);
-
+  CL_Surface get_surface();
+  
+  /** Regenerate the smallmap surface */
+  void update_surface();
 private:
   SmallMapImage (const SmallMapImage&);
   SmallMapImage& operator= (const SmallMapImage&);
