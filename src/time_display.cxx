@@ -1,4 +1,4 @@
-//  $Id: time_display.cxx,v 1.8 2002/10/04 16:54:04 grumbel Exp $
+//  $Id: time_display.cxx,v 1.9 2002/10/08 18:18:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ TimeDisplay::draw (GraphicContext& gc)
   int  time_value = server->get_plf()->get_time() - server->get_world()->get_time_passed();
   char time_string[8];
   
-  if (time_value == -1 && !(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
+  if (server->get_plf()->get_time() == -1 && !(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
     {
       snprintf(time_string, 8, "00");
     }
