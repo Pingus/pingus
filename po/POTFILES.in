@@ -107,8 +107,6 @@ src/editor/editorobj.cxx
 src/editor/editorobj.hxx
 src/editor/editorobj_group.cxx
 src/editor/editorobj_group.hxx
-src/editor/editorobj_group_data.cxx
-src/editor/editorobj_group_data.hxx
 src/editor/generic_property_frame.cxx
 src/editor/generic_property_frame.hxx
 src/editor/level_property_window.cxx
@@ -296,7 +294,6 @@ src/input/controller.cxx
 src/input/controller.hxx
 src/input/event.hxx
 src/input/event_fwd.hxx
-src/input/gui_button.hxx
 src/input/key_helper.cxx
 src/input/key_helper.hxx
 src/input/pointer.hxx
