@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.12 2000/03/08 01:57:02 grumbel Exp $
+//   $Id: Pingus.cc,v 1.13 2000/03/10 19:00:43 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -51,6 +51,7 @@
 #include "Playfield.hh"
 #include "PingusError.hh"
 #include "Loading.hh"
+#include "Config.hh"
 
 #include "PingusMenu.hh"
 #include "PingusMessageBox.hh"
@@ -59,9 +60,6 @@
 PingusMain::PingusMain()
 {
   std::string temp;
-
-  // Default resolution
-  resolution = "800x600";
 
   temp = string(PACKAGE) + " " + VERSION + " - A free Lemmings clone";
   temp += " - http://pingus.seul.org";
@@ -99,15 +97,8 @@ void
 PingusMain::read_rc_file(void)
 {
   char*    homedir = getenv("HOME");
+  Config* config;
   std::string   rcfile;
-  char     line[1024];
-  char     option[1024];
-  char     argument[1024];
-  int      lineno = 0;
-  char*    pargv[100];
-  int      pargc = 1;
-
-  pargv[0] = "dummy"; // strdup(PACKAGE);
 
   if (!homedir) {
     rcfile = ".pingus/options";
@@ -115,15 +106,19 @@ PingusMain::read_rc_file(void)
     rcfile = string(homedir) + "/.pingus/config";
   }
 
-  ifstream in(rcfile.c_str());
+  //ifstream in(rcfile.c_str());
 
-  if (!in) {
+  /*  if (!in) {
     std::cout << "PingusMain: No config file found at: " << rcfile << std::endl;
     return;
   } 
-  
+  */
   std::cout << "PingusMain: Parsing config file" << std::endl;
-  
+
+  // FIXME: kind of weird...
+  config = new Config(rcfile);
+  delete config;
+  /*
   while(true) 
     {
       in.getline(line, 1023);
@@ -147,7 +142,7 @@ PingusMain::read_rc_file(void)
     check_args(pargc, pargv);
   } else { 
     check_args(pargc, pargv);
-  }
+  }*/
 }
 
 // check_ars() checks the command line for options and set the
@@ -162,6 +157,7 @@ PingusMain::check_args(int argc, char* argv[])
   int option_index = 0;
   optind = 0;
 
+  // FIXME: We need some clean up here
   struct option long_options[] =
   {
     {"enable-music",      no_argument,       0, 'm'},
@@ -558,8 +554,8 @@ PingusMain::init(int argc, char* argv[])
 
   argv_0 = argv[0];
 
-  PingusMain::read_rc_file();
   PingusMain::check_args(argc, argv);
+  PingusMain::read_rc_file();
 
   if (verbose) 
     {
@@ -567,13 +563,15 @@ PingusMain::init(int argc, char* argv[])
     }
 
   // Translate the geometry std::string to some int's
-  if (sscanf(resolution.c_str(), "%d%c%d", &screen_width, &c, &screen_height) != 3) 
+  if (!resolution.empty())
     {
-      cerr << "Resolution std::string is wrong, it should be like: \n" 
-	   << "\"640x480\" or \"800x600\"" << std::endl;
-      exit(EXIT_FAILURE);
+      if (sscanf(resolution.c_str(), "%d%c%d", &screen_width, &c, &screen_height) != 3) 
+	{
+	  cerr << "Resolution std::string is wrong, it should be like: \n" 
+	       << "\"640x480\" or \"800x600\"" << std::endl;
+	  exit(EXIT_FAILURE);
+	}
     }
-
   // Loading data and initialisising 
   get_filenames();
   //  register_actions(); 

@@ -1,4 +1,4 @@
-//  $Id: Pingus.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: Pingus.hh,v 1.4 2000/03/10 19:00:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,9 +42,6 @@ private:
   std::string resolution;
   
   int   level;  // the number of the current level, -1 if the level is custom  
-  //  char* levelfile; // the name of the level_file
-  int screen_width;
-  int screen_height;
 
   // Functions
   void remove_comments(char*);
