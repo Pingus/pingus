@@ -1,4 +1,4 @@
-//  $Id: editor_help_screen.cxx,v 1.7 2003/04/08 19:56:40 torangan Exp $
+//  $Id: editor_help_screen.cxx,v 1.8 2003/04/14 22:47:55 cagri Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ EditorHelpScreen::draw ()
 {
   CL_Display::fill_rect (25,0, CL_Display::get_width (), CL_Display::get_height (),
 			 0.0f, 0.0f, 0.0f, 1.0f);
-  large_font->print_center (CL_Display::get_width ()/2, 32, "Editor Helpscreen (hide with F1)");
+  large_font->print_center (CL_Display::get_width ()/2, 32, _("Editor Helpscreen (hide with F1)"));
 
   int x_pos;
   int y_pos;
