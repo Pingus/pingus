@@ -1,11 +1,14 @@
 
 Pingus currently has Locale support for the following Languages
 
-	en -> English - default
-	de -> German / Deutsch
-	tr -> Turkish / Türkçe
-	nl -> Dutch / Nederlands
+        cs -> Czech /
+        de -> German / Deutsch
+        en -> English - default
+        tr -> Turkish / Türkçe
+
+Unfinished:
 	it -> Italian / Italyano 
+	nl -> Dutch / Nederlands
 
 If your environment is already set so that you are able to
 see (some) applications in the desired Language, Pingus
