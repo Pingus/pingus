@@ -345,6 +345,7 @@
         <y-pos>305</y-pos>
         <z-pos>100</z-pos>
       </position>
+      <auto-uncover>1</auto-uncover>
     </surface>
 
 
@@ -361,6 +362,8 @@
         <y-pos>352</y-pos>
         <z-pos>100</z-pos>
       </position>
+      
+      <auto-uncover>1</auto-uncover>
     </surface>
   </objects>
 
