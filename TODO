@@ -51,10 +51,10 @@ should become:
 
     <surface>
       <location>
-        <resource-datafile>
-  	  <resource-datafile>global</resource-datafile>
-       	  <resource-ident>GroundPieces/piece5</resource-ident>
-        </resource-datafile>
+        <datafile>
+  	  <datafile>global</datafile>
+       	  <ident>GroundPieces/piece5</ident>
+        </datafile>
       </location>
 
       <modifier>
@@ -93,22 +93,6 @@ Current Bugs:
 
 * Extremely short mouse clicks are not registered (its a bug in
   ClanLibs event system)
-
-<<<<<<< TODO
-* with-extra-libs broken
-
-* sstream buggy, doesn't work with gcc-3.0
-
-* plf entrances are buggy
-
-'grep' at the sources for "Bug" or "FIXME" that should give you some
-more known bugs and other stuff. 
-
-$Date: 2002/06/26 19:13:13 $
-
-=======
-
-Todo and Bugs from ROADMAP:
 
   - upload an uptodate doxygen source docu (might be incomplete)
 
@@ -252,7 +236,7 @@ Random crash while scrolling
 'grep' at the sources for "Bug" or "FIXME" that should give you some
 more known bugs and other stuff. 
 
-$Date: 2002/06/26 19:13:13 $
+$Date: 2002/07/03 17:14:25 $
 
 =======
 
@@ -350,10 +334,6 @@ Todo and Bugs from ROADMAP:
 - pingus can walk over slime (hellmouth2)
 
 - diggers can dead-lock and not start digging
-
-- show floater and climber in the 'cursor'
-
-- insertion of surface backgrounds in the editor
 
 - exit/entrance on smallmap doesn't get shown
 

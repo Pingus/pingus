@@ -1,4 +1,4 @@
-//  $Id: groundpiece_window.cxx,v 1.6 2002/07/03 09:53:32 grumbel Exp $
+//  $Id: groundpiece_window.cxx,v 1.7 2002/07/03 17:14:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "editor.hxx"
+#include "object_manager.hxx"
 #include "groundpiece_window.hxx"
 
 /************************
@@ -92,19 +94,24 @@ GroundpieceWindow::read_data ()
 void
 GroundpieceWindow::write_data ()
 {
-  std::cout << "FIXME: GroundpieceWindow::write_data (): this will crash if the object gets deleted" << std::endl;
-
-  if (ground_radiobutton.is_checked ())
-    data->gptype = GroundpieceData::GP_GROUND;
-  else if (transparent_radiobutton.is_checked ())
-    data->gptype = GroundpieceData::GP_TRANSPARENT;
-  else if (solid_radiobutton.is_checked ())
-    data->gptype = GroundpieceData::GP_SOLID;
-  else if (bridge_radiobutton.is_checked ())
-    data->gptype = GroundpieceData::GP_BRIDGE;
+  if (EditorObj::get_editor ()->get_object_manager ()->has_object (data))
+    {
+      if (ground_radiobutton.is_checked ())
+	data->gptype = GroundpieceData::GP_GROUND;
+      else if (transparent_radiobutton.is_checked ())
+	data->gptype = GroundpieceData::GP_TRANSPARENT;
+      else if (solid_radiobutton.is_checked ())
+	data->gptype = GroundpieceData::GP_SOLID;
+      else if (bridge_radiobutton.is_checked ())
+	data->gptype = GroundpieceData::GP_BRIDGE;
+      else
+	{
+	  std::cout << "Unhandled" << std::endl;
+	}
+    }
   else
     {
-      std::cout << "Unhandled" << std::endl;
+      std::cout << "GroundpieceWindow::write_data (): object disapeared" << std::endl;
     }
 }
 

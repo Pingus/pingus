@@ -1,4 +1,4 @@
-//  $Id: editorobj.hxx,v 1.10 2002/07/02 13:36:06 torangan Exp $
+//  $Id: editorobj.hxx,v 1.11 2002/07/03 17:14:25 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -116,7 +116,7 @@ public:
       responsible for deleting the object after usage. The
       CL_Component* should/must be a CL_Frame so that it can get
       embedded in the properties window */
-  virtual Pingus::Editor::PropertyFrame* get_gui_dialog (CL_Component* parent);
+  virtual Pingus::Editor::PropertyFrame* get_gui_dialog (Editor* parent);
 };
 
 #endif

@@ -24,6 +24,19 @@
     <slider count="20"/>
   </action-list>
 
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/bpiece7</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>513.56</x-pos>
+    <y-pos>348.52</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
 <background type="surface">
   <surface><resource type="datafile">
     <resource-datafile>textures</resource-datafile>
@@ -61,6 +74,58 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <owner-id>0</owner-id></exit>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/bpiece9</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>577</x-pos>
+    <y-pos>376</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/weed1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>501</x-pos>
+    <y-pos>6.99997</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/weed1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>186</x-pos>
+    <y-pos>25</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="transparent">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-transparent</resource-datafile>
+  <resource-ident>misc/weed1</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>65</x-pos>
+    <y-pos>71</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
 
 <groundpiece type="transparent">
   <surface><resource type="datafile">
@@ -123,19 +188,6 @@
   <position>
     <x-pos>713</x-pos>
     <y-pos>-41</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/bpiece7</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>515.56</x-pos>
-    <y-pos>348.52</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -256,75 +308,6 @@
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/bpiece5</resource-ident>
-    <modifier>ROT180</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>-136</x-pos>
-    <y-pos>108</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/bpiece5</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>241</x-pos>
-    <y-pos>12</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/bpiece5</resource-ident>
-    <modifier>ROT0FLIP</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>193</x-pos>
-    <y-pos>25</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<hotspot>
-  <surface><resource type="datafile">
-    <resource-datafile>hotspots</resource-datafile>
-  <resource-ident>signposts/arrow_northwest</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>867</x-pos>
-    <y-pos>246</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <speed>-1</speed>
-  <parallax>1</parallax>
-</hotspot>
-
-<hotspot>
-  <surface><resource type="datafile">
-    <resource-datafile>hotspots</resource-datafile>
-  <resource-ident>signposts/arrow_northeast</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>430.56</x-pos>
-    <y-pos>343.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <speed>-1</speed>
-  <parallax>1</parallax>
-</hotspot>
 
 <groundpiece type="transparent">
   <surface><resource type="datafile">
@@ -534,45 +517,6 @@
   </position>
 </groundpiece>
 
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed1</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>501</x-pos>
-    <y-pos>6.99997</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed1</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>186</x-pos>
-    <y-pos>25</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed1</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>65</x-pos>
-    <y-pos>71</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
@@ -723,19 +667,6 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>577</x-pos>
-    <y-pos>376</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/bpiece9</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
     <x-pos>321</x-pos>
     <y-pos>416</y-pos>
     <z-pos>0</z-pos>
@@ -790,6 +721,45 @@
   <position>
     <x-pos>55</x-pos>
     <y-pos>-27</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/bpiece5</resource-ident>
+    <modifier>ROT180</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>-136</x-pos>
+    <y-pos>108</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/bpiece5</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>241</x-pos>
+    <y-pos>12</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/bpiece5</resource-ident>
+    <modifier>ROT0FLIP</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>193</x-pos>
+    <y-pos>25</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -1001,6 +971,36 @@
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>hotspots</resource-datafile>
+  <resource-ident>signposts/arrow_northwest</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>867</x-pos>
+    <y-pos>246</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>hotspots</resource-datafile>
+  <resource-ident>signposts/arrow_northeast</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>430.56</x-pos>
+    <y-pos>343.52</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
 
 <group>
 <hotspot>

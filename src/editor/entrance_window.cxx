@@ -1,4 +1,4 @@
-//  $Id: entrance_window.cxx,v 1.2 2002/07/01 09:09:31 grumbel Exp $
+//  $Id: entrance_window.cxx,v 1.3 2002/07/03 17:14:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -16,6 +16,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+#include "editor.hxx"
+#include "object_manager.hxx"
 
 #include "plfobj.hxx"
 #include "../string_converter.hxx"
@@ -65,14 +68,21 @@ EntranceWindow::EntranceWindow (CL_Component* parent, EntranceObj* obj)
 
 EntranceWindow::~EntranceWindow ()
 {
-  if (direction_left.is_checked ())
-    entrance->direction = EntranceData::LEFT;
-  else if (direction_misc.is_checked ())
-    entrance->direction = EntranceData::MISC;
-  else if (direction_right.is_checked ())
-    entrance->direction = EntranceData::RIGHT;
+  if (EditorObj::get_editor ()->get_object_manager ()->has_object (entrance))
+    {
+      if (direction_left.is_checked ())
+	entrance->direction = EntranceData::LEFT;
+      else if (direction_misc.is_checked ())
+	entrance->direction = EntranceData::MISC;
+      else if (direction_right.is_checked ())
+	entrance->direction = EntranceData::RIGHT;
 
-  from_string(release_rate_input.get_text (), entrance->release_rate);
+      from_string(release_rate_input.get_text (), entrance->release_rate);
+    }
+  else
+    {
+      std::cout << "EntranceWindow::~EntranceWindow (): object disapeared" << std::endl;
+    }
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: input_event.hxx,v 1.4 2002/07/02 16:06:51 grumbel Exp $
+//  $Id: input_event.hxx,v 1.5 2002/07/03 17:14:25 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,9 @@ typedef enum {
       press and cursor movement */
   SCROLL_MOVE,
 
+  /** The button that turns the MOUSE_MOVE into a SCROLL_MOVE */
+  SCROLL_MODIFIER,
+
   /*** Generic button events (pos contains position) */
   PRIMARY_BUTTON_PRESSED,
   SECONDARY_BUTTON_PRESSED,
@@ -43,7 +46,8 @@ typedef enum {
   
   /** 'p' or 'Pause' got pressed */
   PAUSE_PRESSED,
-  
+  FASTFORWARD_TRIGGERED
+
   /** Buttons for switching to the next/previous Action */
   ACTION_UP,
   ACTION_DOWN,
