@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.37 2003/03/30 20:43:52 grumbel Exp $
+//  $Id: game_session.cxx,v 1.38 2003/04/01 16:00:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -119,6 +119,7 @@ PingusGameSession::update (const GameDelta& delta)
         savegame.levelname    = result.plf->get_resname();
         savegame.time         = result.used_time;
         savegame.saved_pingus = result.saved;
+
         if (result.saved >= result.needed)
           savegame.status     = Savegame::FINISHED;
         else

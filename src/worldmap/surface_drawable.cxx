@@ -1,4 +1,4 @@
-//  $Id: surface_drawable.cxx,v 1.3 2003/03/07 00:09:00 grumbel Exp $
+//  $Id: surface_drawable.cxx,v 1.4 2003/04/01 16:00:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,10 +58,15 @@ SurfaceDrawable::draw(GraphicContext& gc)
       if (auto_uncover)
         {
           Vector pingus_pos = WorldMapManager::instance()->get_worldmap()->get_pingus()->get_pos();
+          // Pingu is not over the surface
           if (!(pingus_pos.x > pos.x && pingus_pos.x < pos.x + surface.get_width()
                 && 
                 pingus_pos.y > pos.y && pingus_pos.y < pos.y + surface.get_height()))
             {
+              gc.draw(surface, pos);
+            }
+          else if (pingus_pos.z > pos.z + 1000)
+            { // FIXME: Hack for the 0.6.0 release/tutorial world remove later
               gc.draw(surface, pos);
             }
         }

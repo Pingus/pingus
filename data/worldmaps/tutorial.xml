@@ -28,7 +28,7 @@
         <dot>
           <name>leveldot_2</name>
           <position>
-            <x-pos>235</x-pos>
+            <x-pos>240</x-pos>
             <y-pos>404</y-pos>
             <z-pos>0</z-pos>
           </position>
@@ -41,8 +41,8 @@
         <dot>
           <name>leveldot_3</name>
           <position>
-            <x-pos>324</x-pos>
-            <y-pos>357</y-pos>
+            <x-pos>326</x-pos>
+            <y-pos>360</y-pos>
             <z-pos>0</z-pos>
           </position>
         </dot>
@@ -53,8 +53,8 @@
         <dot>
           <name>leveldot_4</name>
           <position>
-            <x-pos>438</x-pos>
-            <y-pos>319</y-pos>
+            <x-pos>415</x-pos>
+            <y-pos>325</y-pos>
             <z-pos>0</z-pos>
           </position>
 
@@ -162,7 +162,7 @@
           <position>
             <x-pos>481</x-pos>
             <y-pos>373</y-pos>
-            <z-pos>0</z-pos>
+            <z-pos>5000</z-pos>
           </position>
         </dot>
         <levelname>tutorial/snow14-grumbel</levelname>
@@ -175,7 +175,7 @@
           <position>
             <x-pos>369</x-pos>
             <y-pos>414</y-pos>
-            <z-pos>0</z-pos>
+            <z-pos>5000</z-pos>
           </position>
         </dot>
         <levelname>tutorial/snow21-grumbel</levelname>
@@ -188,7 +188,7 @@
           <position>
             <x-pos>451</x-pos>
             <y-pos>456</y-pos>
-            <z-pos>0</z-pos>
+            <z-pos>5000</z-pos>
           </position>
         </dot>
         <levelname>tutorial/snow15-grumbel</levelname>
@@ -316,7 +316,7 @@
         <position>
           <x-pos>444</x-pos>
           <y-pos>379</y-pos>
-          <z-pos>0</z-pos>
+          <z-pos>5000</z-pos>
         </position>
       </edge>
 
@@ -406,9 +406,9 @@
       </surface>
 
       <position>
-        <x-pos>208</x-pos>
-        <y-pos>306</y-pos>
-        <z-pos>100</z-pos>
+        <x-pos>209</x-pos>
+        <y-pos>307</y-pos>
+        <z-pos>0</z-pos>
       </position>
       <auto-uncover>1</auto-uncover>
     </surface>

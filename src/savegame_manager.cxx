@@ -1,4 +1,4 @@
-//  $Id: savegame_manager.cxx,v 1.3 2003/04/01 15:13:33 grumbel Exp $
+//  $Id: savegame_manager.cxx,v 1.4 2003/04/01 16:00:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -120,8 +120,16 @@ SavegameManager::store(Savegame& arg_savegame)
     }
   else
     {
-      delete i->second;
-      i->second = savegame;
+      if (i->second->status == Savegame::FINISHED
+          && savegame->status == Savegame::ACCESSIBLE)
+        { // saved game is better then new game
+          delete savegame;
+        }
+      else
+        { // new game is better or equal, save it
+          delete i->second;
+          i->second = savegame;
+        }
     }
   
   flush();
