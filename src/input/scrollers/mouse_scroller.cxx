@@ -24,8 +24,9 @@ namespace Pingus {
 namespace Input {
 namespace Scrollers {
 
-MouseScroller::MouseScroller () : old_x(0), old_y(0), x_delta(0), y_delta(0)
+MouseScroller::MouseScroller(int id) : old_x(0), old_y(0), x_delta(0), y_delta(0)
 {
+  device = CL_Mouse::get_device(id);
 }
 
 const float&
@@ -50,11 +51,11 @@ MouseScroller::get_delta (float& x, float& y) const
 void
 MouseScroller::update (float)
 {
-  x_delta = CL_Mouse::get_x() - old_x;
-  y_delta = CL_Mouse::get_y() - old_y;
+  x_delta = device.get_x() - old_x;
+  y_delta = device.get_y() - old_y;
 
-  old_x = CL_Mouse::get_x();
-  old_y = CL_Mouse::get_y();
+  old_x = device.get_x();
+  old_y = device.get_y();
 }
 
 } // namespace Scroller

@@ -127,9 +127,12 @@ ScrollerFactory::joystick_scroller (xmlNodePtr cur)
 }
 
 Scroller*
-ScrollerFactory::mouse_scroller (xmlNodePtr)
+ScrollerFactory::mouse_scroller (xmlNodePtr cur)
 {
-  return new MouseScroller;
+  int id = 0;
+  XMLhelper::get_prop(cur, "id", id);
+
+  return new MouseScroller(id);
 }
 
 Scroller*
