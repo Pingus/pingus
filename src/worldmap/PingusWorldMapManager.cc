@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapManager.cc,v 1.13 2001/06/16 15:01:54 grumbel Exp $
+//  $Id: PingusWorldMapManager.cc,v 1.14 2001/07/23 21:49:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,8 +24,11 @@
 #include "../Display.hh"
 #include "PingusWorldMapManager.hh"
 
+PingusWorldMapManager* PingusWorldMapManager::current_manager;
+
 PingusWorldMapManager::PingusWorldMapManager ()
 {
+  current_manager = this;
   is_init = false;
 }
 
@@ -52,7 +55,8 @@ PingusWorldMapManager::display ()
 
   init ();
 
-  worldmap = new PingusWorldMap (path_manager.complete("worldmaps/volcano.xml"));
+  worldmap = boost::shared_ptr<PingusWorldMap>
+    (new PingusWorldMap (path_manager.complete("worldmaps/pacman.xml")));
 
   worldmap->init ();
 
@@ -62,6 +66,12 @@ PingusWorldMapManager::display ()
     {
       worldmap->draw ();
       worldmap->update (delta.getset ());
+
+      if (new_worldmap.get ())
+	{
+	  worldmap = new_worldmap;
+	  new_worldmap = boost::shared_ptr<PingusWorldMap>();
+	}
 
       CL_System::keep_alive ();
       Display::flip_display ();
@@ -94,6 +104,13 @@ void
 PingusWorldMapManager::on_resize(int w, int h)
 {
   std::cout << "Width: " << w << " Height: " << h << std::endl;
+}
+
+void 
+PingusWorldMapManager::change_map (std::string filename)
+{
+  new_worldmap = boost::shared_ptr<PingusWorldMap>
+    (new PingusWorldMap (path_manager.complete("worldmaps/" + filename)));
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.16 2001/06/11 20:40:17 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.17 2001/07/23 21:49:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,15 +21,101 @@
 #include <ClanLib/display.h>
 
 #include "../my_gettext.hh"
+#include "../globals.hh"
 #include "../PingusError.hh"
 #include "../XMLPLF.hh"
 #include "../Console.hh"
 #include "../XMLhelper.hh"
 #include "../StringConverter.hh"
+#include "../PingusSound.hh"
+#include "../PingusGameSession.hh"
+#include "PingusWorldMapManager.hh"
 #include "PingusWorldMapGraph.hh"
 
+PingusWorldMapTubeNode::PingusWorldMapTubeNode ()
+  : worldmap_name ("pacman.xml"),
+    tube ("worldmap/tube", "core")
+{
+  tube.set_align (-16, -32);
+}
+
+void 
+PingusWorldMapTubeNode::on_click ()
+{
+  std::cout << "Not Supported" << std::endl;
+  PingusWorldMapManager::get_current ()->change_map (worldmap_name);
+}
+
+void 
+PingusWorldMapTubeNode::draw (CL_Vector offset)
+{
+  tube.put_screen (pos + offset);
+}
+
+std::map<std::string, std::string>
+PingusWorldMapTubeNode::get_string ()
+{
+  std::map<std::string, std::string> str;
+  str["en"] = "Tube";
+
+  return str;
+}
+
+void 
+PingusWorldMapLevelNode::on_click ()
+{
+  if (maintainer_mode) 
+    std::cout << "Start a level...: " << levelname << std::endl;
+		  
+  PingusSound::play_wav("letsgo");
+  PingusGameSession game (levelname);
+      
+  // Launch the game and wait until it is finished
+  game.start ();
+
+  if (game.get_results ().finished ())
+    {
+      finished = true;	
+    }
+  else
+    {
+      console.puts("Please try again!");
+    }
+}
+
+void 
+PingusWorldMapLevelNode::mark (bool value)
+{
+  finished = value;
+}
+
+void 
+PingusWorldMapLevelNode::draw (CL_Vector offset)
+{
+  if (!levelname.empty())
+    {
+      if (accessible) 
+	{
+	  green_dot.put_screen (pos + offset);
+	  if (finished) {
+	    green_flag.put_screen (pos + offset);
+	  }
+	}
+      else
+	{
+	  red_dot.put_screen (pos + offset);
+	}
+    }
+}
+
+std::map<std::string, std::string>
+PingusWorldMapLevelNode::get_string ()
+{
+  return get_plf ()->get_levelname ();
+}
+
 boost::shared_ptr<PLF>
-PingusWorldMapNode::get_plf ()
+PingusWorldMapLevelNode::get_plf ()
 {
   if (plf.get () == 0) 
     {
@@ -120,6 +206,10 @@ PingusWorldMapGraph::parse_node_list (xmlNodePtr cur)
 	{
 	  parse_node (cur);
 	}
+      else if (strcmp((char*)cur->name, "tube") == 0)
+	{
+	  parse_tube (cur);
+	}
       else
 	{
 	  printf("PingusWorldMapGraph:parse_node_list: Unhandled: %s\n", (char*)cur->name);	  
@@ -128,20 +218,50 @@ PingusWorldMapGraph::parse_node_list (xmlNodePtr cur)
     } 
 }
 
+void 
+PingusWorldMapGraph::parse_tube (xmlNodePtr cur)
+{
+  boost::shared_ptr<PingusWorldMapTubeNode> node (new PingusWorldMapTubeNode ());
+
+  cur = cur->children;
+  
+  while (cur != NULL)
+    {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+
+      if (strcmp((char*)cur->name, "position") == 0)
+	{
+	  node->pos = XMLhelper::parse_vector (doc, cur);
+	}
+      else if (strcmp((char*)cur->name, "worldmap") == 0)
+	{
+	  node->worldmap_name = XMLhelper::parse_string (doc, cur);
+	}
+
+      cur = cur->next;
+    }
+  
+  nodes.push_back (node);
+}
+
 void
 PingusWorldMapGraph::parse_node (xmlNodePtr cur)
 {
-  PingusWorldMapNode node;
+  boost::shared_ptr<PingusWorldMapLevelNode> node (new PingusWorldMapLevelNode ());
 
   char* id = (char*)xmlGetProp(cur, (xmlChar*)"id");
   if (id)
-    node.id = StringConverter::to_int (id);
+    node->id = StringConverter::to_int (id);
   else
     std::cout << "PingusWorldMapGraph::parse_node: no node id given" << std::endl;
 
   char* accessible = (char*)xmlGetProp(cur, (xmlChar*)"accessible");
   if (accessible)
-    node.accessible = StringConverter::to_int (accessible);
+    node->accessible = StringConverter::to_int (accessible);
   
   cur = cur->children;
 
@@ -157,19 +277,19 @@ PingusWorldMapGraph::parse_node (xmlNodePtr cur)
 	{
 	  char* level = (char*)xmlGetProp(cur, (xmlChar*)"name");
 	  if (level)
-	    node.levelname = std::string("levels/") + level;
+	    node->levelname = std::string("levels/") + level;
 	  else
 	    std::cout << "PingusWorldMapGraph::parse_node: no levelname given" << std::endl;
 	}
       else if (strcmp((char*)cur->name, "position") == 0)
 	{
-	  node.pos = XMLhelper::parse_vector (doc, cur);
+	  node->pos = XMLhelper::parse_vector (doc, cur);
 	}
       else if (strcmp((char*)cur->name, "link") == 0)
 	{
 	  char* id = (char*)xmlGetProp(cur, (xmlChar*)"id");
 	  if (id)
-	    node.links.push_back(StringConverter::to_int (id));
+	    node->links.push_back(StringConverter::to_int (id));
 	  else
 	    std::cout << "PingusWorldMapGraph::parse_node: no id given" << std::endl;	    
 	}
@@ -228,23 +348,40 @@ PingusWorldMapGraph::draw (const CL_Vector& offset)
   //float x_scale = CL_Display::get_width () / 800.0;
   //float y_scale = CL_Display::get_height () / 600.0;
 
-  for (std::list<PingusWorldMapNode>::iterator i = nodes.begin();
+  for (iterator i = nodes.begin();
        i != nodes.end();
        ++i)
     {
-      for (std::list<PingusWorldMapNode>::iterator j = nodes.begin();
+      for (iterator j = nodes.begin();
 	   j != nodes.end();
 	   ++j)
 	{
-	  for (std::list<int>::iterator k = i->links.begin();
-	       k != i->links.end();
+	  for (std::list<int>::iterator k = (*i)->links.begin();
+	       k != (*i)->links.end();
 	       ++k)
-	    if (j->id == *k)
-	      CL_Display::draw_line (j->pos.x + offset.x, j->pos.y + offset.y,
-				     i->pos.x + offset.x, i->pos.y + offset.y,
+	    if ((*j)->id == *k)
+	      CL_Display::draw_line ((*j)->pos.x + offset.x, (*j)->pos.y + offset.y,
+				     (*i)->pos.x + offset.x, (*i)->pos.y + offset.y,
 				     1.0, 1.0, 1.0, 1.0);
 	}
     }
 }
+
+      /* Fade out, fixme, doesn't work at the moment 
+	 CL_SurfaceProvider* provider = new TargetProvider (target);
+	 CL_Surface* sur = CL_Surface::create (provider);
+
+	 for (int y = 0; y < CL_Display::get_height(); 
+	 y += CL_Display::get_height() / 40)
+	 {
+	 CL_System::keep_alive ();
+	 CL_Display::clear_display ();
+	 sur->put_screen (0, y);
+	 Display::flip_display ();
+	 }
+		      
+	 delete sur;
+	 delete provider;
+      */
 
 /* EOF */

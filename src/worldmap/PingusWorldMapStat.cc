@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapStat.cc,v 1.2 2001/06/11 20:40:17 grumbel Exp $
+//  $Id: PingusWorldMapStat.cc,v 1.3 2001/07/23 21:49:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -137,7 +137,7 @@ PingusWorldMapStat::accessible (int id)
 }
 
 void
-PingusWorldMapStat::save (std::list<PingusWorldMapNode>& nodes)
+PingusWorldMapStat::save (std::list<boost::shared_ptr<PingusWorldMapNode> >& nodes)
 {
   std::ofstream out (filename.c_str ());
   
@@ -146,14 +146,19 @@ PingusWorldMapStat::save (std::list<PingusWorldMapNode>& nodes)
   else
     {
       out << "<pingus-worldmap-stat>" << std::endl;
-      for (std::list<PingusWorldMapNode>::iterator i = nodes.begin ();
+      for (PingusWorldMapGraph::iterator i = nodes.begin ();
 	   i != nodes.end (); ++i)
 	{
-	  out << "  <node id=\"" << i->id << "\" "
-	      << "accessible=\"" << i->accessible  << "\" "
-	      << "finished=\"" << i->finished  << "\" "
-	      << "checksum=\"not-impl\""
-	      << "/>" << std::endl;
+	  PingusWorldMapLevelNode* node = dynamic_cast<PingusWorldMapLevelNode*>((*i).get ());
+
+	  if (node)
+	    {
+	      out << "  <node id=\"" << node->id << "\" "
+		  << "accessible=\"" << node->accessible  << "\" "
+		  << "finished=\"" << node->finished  << "\" "
+		  << "checksum=\"not-impl\""
+		  << "/>" << std::endl;
+	    }
 	}
       out << "</pingus-worldmap-stat>" << std::endl;
     }

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapManager.hh,v 1.5 2001/03/18 17:45:05 grumbel Exp $
+//  $Id: PingusWorldMapManager.hh,v 1.6 2001/07/23 21:49:14 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,8 @@ class PingusWorldMapManager
 private:
   bool is_init;
   bool exit_worldmap;
-  PingusWorldMap* worldmap;
+  boost::shared_ptr<PingusWorldMap> worldmap;
+  boost::shared_ptr<PingusWorldMap> new_worldmap;
 
   /// Some slots to manage the event handling
   //@{
@@ -36,6 +37,8 @@ private:
   CL_Slot on_mouse_move_slot;
   CL_Slot on_resize_slot;
   //@}
+
+  static PingusWorldMapManager* current_manager;
 
 public:
   PingusWorldMapManager ();
@@ -56,6 +59,8 @@ private:
 public:
   /// Display the worldmap and let the user select a level
   void display ();
+  void change_map (std::string filename);
+  static PingusWorldMapManager* get_current () { return current_manager; } 
 };
 
 #endif

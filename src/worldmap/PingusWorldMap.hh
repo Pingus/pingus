@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.hh,v 1.18 2001/04/27 20:44:38 grumbel Exp $
+//  $Id: PingusWorldMap.hh,v 1.19 2001/07/23 21:49:14 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,13 +42,14 @@ private:
 
   //Graph<PingusWorldMapNode>* graph;
   PingusWorldMapGraph graph_data;
+  typedef PingusWorldMapGraph::iterator GraphIter;
 
   PingusWorldMapPingus* pingus;
   
   bool catch_input;
 
   bool do_quit;
-  PingusWorldMapNode* last_node;
+  boost::shared_ptr<PingusWorldMapNode> last_node;
   unsigned int last_node_time;
   
   boost::shared_ptr<PingusWorldMapStat> stat;
@@ -97,8 +98,8 @@ public:
   virtual void update (float delta);
 
   /** Returns a pointer to the node under the given coordinates */
-  PingusWorldMapNode* get_node (int x, int y);
-
+  boost::shared_ptr<PingusWorldMapNode> get_node (int x, int y);
+  
   /** Callculate the offset which is used for drawing and collision
       detection. The offset will be used for scrolling when the
       background is larger than the screen. 

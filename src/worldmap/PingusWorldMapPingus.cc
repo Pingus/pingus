@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapPingus.cc,v 1.12 2001/04/15 18:34:43 grumbel Exp $
+//  $Id: PingusWorldMapPingus.cc,v 1.13 2001/07/23 21:49:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,10 +34,10 @@ PingusWorldMapPingus::~PingusWorldMapPingus ()
 }
 
 void 
-PingusWorldMapPingus::set_position (PingusWorldMapNode* node)
+PingusWorldMapPingus::set_position (boost::shared_ptr<PingusWorldMapNode> node)
 {
   pos = node->pos;
-  current_node = node;
+  current_node = node.get ();
 }
 
 void 

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.27 2001/06/16 15:01:54 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.28 2001/07/23 21:49:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,21 +59,21 @@ PingusWorldMap::PingusWorldMap (std::string filename) :
   
   if (!stat->empty ())
     {
-      for (std::list<PingusWorldMapNode>::iterator i = graph_data.nodes.begin ();
+      for (GraphIter i = graph_data.nodes.begin ();
 	   i != graph_data.nodes.end ();
 	   ++i)
 	{
-	  i->finished = stat->finished (i->id);
+	  (*i)->mark(stat->finished ((*i)->id));
       
-	  if (!i->accessible)
-	    i->accessible = stat->accessible (i->id);
+	  if (!(*i)->accessible)
+	    (*i)->accessible = stat->accessible ((*i)->id);
 	}
       
-      pingus->set_position (&(*graph_data.nodes.begin ()));
+      pingus->set_position (*graph_data.nodes.begin ());
     }
   else
     {
-      pingus->set_position (&(*graph_data.nodes.begin ()));
+      pingus->set_position (*graph_data.nodes.begin ());
     }
 }
 
@@ -168,57 +168,84 @@ PingusWorldMap::on_button_press (CL_InputDevice *device, const CL_Key &key)
     {
       CL_Vector offset = get_offset ();
       
-      if (key.id == CL_MOUSE_LEFTBUTTON)
+      switch (key.id)
 	{
-	  PingusWorldMapNode* node = get_node (key.x - offset.x, key.y - offset.y);
+	case CL_MOUSE_LEFTBUTTON:
+	  {
+	    boost::shared_ptr<PingusWorldMapNode> node
+	      = get_node (key.x - offset.x, key.y - offset.y);
 
-	  if (node && !node->accessible)
-	    {
-	      PingusSound::play_wav("chink");
-	    }
-	  else if (node && node->accessible)
-	    {
-	      PingusWorldMapNode* pingus_node = pingus->get_node ();
-	      if (maintainer_mode)
-		{
-		  std::cout << "Click on: " << node->id << std::endl;
-		  std::cout << "Pingu at: " << pingus_node->id << std::endl;
-		}
+	    if (node.get() && !node->accessible)
+	      {
+		PingusSound::play_wav("chink");
+	      }
+	    else if (node.get() && node->accessible)
+	      {
+		PingusWorldMapNode* pingus_node = pingus->get_node ();
+		if (maintainer_mode)
+		  {
+		    std::cout << "Click on: " << node->id << std::endl;
+		    std::cout << "Pingu at: " << pingus_node->id << std::endl;
+		  }
 
-	      if (pingus_node && pingus_node->id == node->id)
-		{
-		  start_level (pingus_node);
-		}
-	      else
-		{
-		  pingus->walk_to (node);
-		}
-	    }
-	  else
-	    {
-	      if (maintainer_mode)
-		std::cout << "no id clicked" << std::endl;
-	    }
-      	}
-      else if (key.id == CL_MOUSE_MIDDLEBUTTON)
-	{
-	  if (maintainer_mode)
-	    {
-	      std::cout << "<position>" << std::endl;
-	      std::cout << "  <x-pos>" << key.x - offset.x << "</x-pos>" << std::endl;
-	      std::cout << "  <y-pos>" << key.y - offset.y << "</y-pos>" << std::endl;
-	      std::cout << "</position>" << std::endl;
-	    }
-	}
-      else if (key.id == CL_MOUSE_RIGHTBUTTON)
-	{
-	  //PingusWorldMapNode* node = get_node (key.x - offset.x, key.y - offset.y);
+		if (pingus_node && pingus_node->id == node->id)
+		  {
+		    disable_button_events ();
+		    node->on_click ();
+		    
+		    // FIXME: Ugly marking code... should be rewritten
+		    for (std::list<int>::iterator k = node->links.begin();
+			 k != node->links.end();
+			 ++k)
+		      {
+			for (GraphIter i = graph_data.nodes.begin ();
+			     i != graph_data.nodes.end ();
+			     ++i)
+			  {
+			    if ((*i)->id == *k)
+			      (*i)->accessible = true;
+			  }
+		      }
+		    
+		    // Save the changes
+		    save ();
+      
+		    enable_button_events ();
+		  }
+		else
+		  {
+		    pingus->walk_to (node.get ());
+		  }
+	      }
+	    else
+	      {
+		if (maintainer_mode)
+		  std::cout << "no id clicked" << std::endl;
+	      }
+	  }
+	  break;
+	case CL_MOUSE_MIDDLEBUTTON:
+	  {
+	    if (maintainer_mode)
+	      {
+		std::cout << "<position>" << std::endl;
+		std::cout << "  <x-pos>" << key.x - offset.x << "</x-pos>" << std::endl;
+		std::cout << "  <y-pos>" << key.y - offset.y << "</y-pos>" << std::endl;
+		std::cout << "</position>" << std::endl;
+	      }
+	  }
+	  break;
+	case CL_MOUSE_RIGHTBUTTON:
+	  {
+	    //PingusWorldMapNode* node = get_node (key.x - offset.x, key.y - offset.y);
 
-	  /*if (node) {
-	    std::cout << "Node: " << node->id << std::endl;
-	  } else {
-	    std::cout << "No node selected" << std::endl;
-	  }*/
+	    /*if (node) {
+	      std::cout << "Node: " << node->id << std::endl;
+	      } else {
+	      std::cout << "No node selected" << std::endl;
+	      }*/
+	  }
+	  break;
 	}
     }
 }
@@ -232,69 +259,7 @@ PingusWorldMap::on_button_release (CL_InputDevice *device, const CL_Key &key)
 void
 PingusWorldMap::start_level (PingusWorldMapNode* node)
 {
-  assert (node);
-  
-  disable_button_events ();
 
-  if (maintainer_mode) 
-    std::cout << "Start a level...: " << node->levelname << std::endl;
-		  
-  PingusSound::play_wav("letsgo");
-
-  CL_Target* target = CL_Display::get_target ();
-		  
-  if (!target)
-    {
-      console << "PingusWorldMap: Couldn't get CL_Target" << std::endl;
-    }
-  else
-    {
-      /* Fade out, fixme, doesn't work at the moment 
-      CL_SurfaceProvider* provider = new TargetProvider (target);
-      CL_Surface* sur = CL_Surface::create (provider);
-
-      for (int y = 0; y < CL_Display::get_height(); 
-	   y += CL_Display::get_height() / 40)
-	{
-	  CL_System::keep_alive ();
-	  CL_Display::clear_display ();
-	  sur->put_screen (0, y);
-	  Display::flip_display ();
-	}
-		      
-      delete sur;
-      delete provider;
-      */
-      PingusGameSession game (node->levelname);
-      
-      // Launch the game and wait until it is finished
-      game.start ();
-
-      if (game.get_results ().finished ())
-	{
-	  node->finished = true;
-	  
-	  for (std::list<int>::iterator k = node->links.begin();
-	       k != node->links.end();
-	       ++k)
-	    {
-	      for (std::list<PingusWorldMapNode>::iterator i = graph_data.nodes.begin ();
-		   i != graph_data.nodes.end ();
-		   ++i)
-		{
-		  if (i->id == *k)
-		    i->accessible = true;
-		}
-	    }
-	  // Save the changes
-	  save ();
-	}
-      else
-	{
-	  console.puts("Please try again!");
-	}
-    }
-  enable_button_events ();
 }
 
 void
@@ -307,32 +272,37 @@ PingusWorldMap::draw ()
 
   background.put_screen (offset.x, offset.y);
 
+  if (last_node.get () && last_node->accessible)
+    {
+      dot_border.put_screen (last_node->pos + offset);
+      
+      font->print_center (CL_Display::get_width ()/2, CL_Display::get_height () - 40,
+			  System::translate(last_node->get_string()).c_str ());
+
+      /*
+      if (last_node->finished)
+	font->print_center (CL_Display::get_width ()/2, CL_Display::get_height () - 20,
+			    "100%");
+      else
+	font->print_center (CL_Display::get_width ()/2, CL_Display::get_height () - 20,
+			    "0%");
+      */
+    }
+
   graph_data.draw(offset);
 
-  for (std::list<PingusWorldMapNode>::iterator i = graph_data.nodes.begin ();
+  for (GraphIter i = graph_data.nodes.begin ();
        i != graph_data.nodes.end ();
        ++i)
     {
-      if (!i->levelname.empty())
-	{
-	  if (i->accessible) 
-	    {
-	      green_dot.put_screen (i->pos + offset);
-	      if (i->finished) {
-		green_flag.put_screen (i->pos + offset);
-	      }
-	    }
-	  else
-	    {
-	      red_dot.put_screen (i->pos + offset);
-	    }
-	}
+      (*i)->draw (get_offset ());
     }
 
-  PingusWorldMapNode* node = get_node (CL_Mouse::get_x () - offset.x,
-				       CL_Mouse::get_y () - offset.y);
+  boost::shared_ptr<PingusWorldMapNode> node
+    = get_node (CL_Mouse::get_x () - offset.x,
+		CL_Mouse::get_y () - offset.y);
   // The mouse is over a node
-  if (node)
+  if (node.get ())
     {
       last_node = node;
       last_node_time = CL_System::get_time ();
@@ -341,23 +311,8 @@ PingusWorldMap::draw ()
     {
       if (last_node_time + 300 < CL_System::get_time ())
 	{
-	  last_node = 0;
+	  last_node = boost::shared_ptr<PingusWorldMapNode>(0);
 	}
-    }
-
-  if (last_node && last_node->accessible)
-    {
-      dot_border.put_screen (last_node->pos + offset);
-      
-      font->print_center (CL_Display::get_width ()/2, CL_Display::get_height () - 40,
-			  System::translate(last_node->get_plf ()->get_levelname ()).c_str ());
-
-      if (last_node->finished)
-	font->print_center (CL_Display::get_width ()/2, CL_Display::get_height () - 20,
-			    "100%");
-      else
-	font->print_center (CL_Display::get_width ()/2, CL_Display::get_height () - 20,
-			    "0%");
     }
  
   pingus->draw (offset);
@@ -369,21 +324,21 @@ PingusWorldMap::update (float delta)
   pingus->update (delta);
 }
 
-PingusWorldMapNode* 
+boost::shared_ptr<PingusWorldMapNode> 
 PingusWorldMap::get_node (int x, int y)
 {
-  for (std::list<PingusWorldMapNode>::iterator i = graph_data.nodes.begin ();
+  for (GraphIter i = graph_data.nodes.begin ();
        i != graph_data.nodes.end ();
        i++)
-    if (i->pos.x - (int)(red_dot.get_width()/2) - 3 < x
-	&& i->pos.x + (int)(red_dot.get_width()/2) + 3 > x
-	&& i->pos.y - (int)(red_dot.get_width()/2) - 3 < y
-	&& i->pos.y + (int)(red_dot.get_width()/2) + 3 > y)
+    if ((*i)->pos.x - (int)(red_dot.get_width()/2) - 3 < x
+	&& (*i)->pos.x + (int)(red_dot.get_width()/2) + 3 > x
+	&& (*i)->pos.y - (int)(red_dot.get_width()/2) - 3 < y
+	&& (*i)->pos.y + (int)(red_dot.get_width()/2) + 3 > y)
       {
-	if (!i->levelname.empty ())
-	  return &(*i);
+	if (!(*i)->get_string ().empty ())
+	  return *i;
       }
-  return 0;
+  return boost::shared_ptr<PingusWorldMapNode>(0);
 }
 
 /* EOF */
