@@ -1,4 +1,4 @@
-//  $Id: smashed.cc,v 1.2 2000/02/09 21:43:42 grumbel Exp $
+//  $Id: smashed.cc,v 1.3 2000/03/12 01:41:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../PingusSound.hh"
 #include "smashed.hh"
 
 Smashed::Smashed(void)
@@ -49,11 +48,6 @@ Smashed::init(void)
 void
 Smashed::let_move(void)
 {
-  if (!sound_played) {
-    PingusSound::play(PingusSound::SPLAT);
-    sound_played = true;
-  }
-
   if (pingu->get_status() == dead)
     return;
 

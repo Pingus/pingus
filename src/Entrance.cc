@@ -1,4 +1,4 @@
-//  $Id: Entrance.cc,v 1.4 2000/02/15 13:06:51 grumbel Exp $
+//  $Id: Entrance.cc,v 1.5 2000/03/12 01:41:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include <cassert>
 
-#include "PingusSound.hh"
 #include "PingusResource.hh"
 #include "globals.hh"
 #include "Entrance.hh"

@@ -1,4 +1,4 @@
-//  $Id: exiter.cc,v 1.2 2000/02/09 21:43:42 grumbel Exp $
+//  $Id: exiter.cc,v 1.3 2000/03/12 01:41:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include "../globals.hh"
 #include "exiter.hh"
-#include "../PingusSound.hh"
 
 Exiter::Exiter()
 {
@@ -47,9 +46,7 @@ Exiter::init(void)
   counter.set_count(0);
   counter.set_speed(10);
   is_multi_direct = false;
-  if (sound_enabled) {
-    PingusSound::play(PingusSound::YIPEE);
-  }
+
   pingu->set_status(exited);
 }
 
