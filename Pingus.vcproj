@@ -1522,16 +1522,16 @@
 					RelativePath=".\src\blitter_impl.hxx">
 				</File>
 				<File
+					RelativePath=".\src\blitter_test.cxx">
+				</File>
+				<File
+					RelativePath=".\src\blitter_test.hxx">
+				</File>
+				<File
 					RelativePath=".\src\button_panel.cxx">
 				</File>
 				<File
 					RelativePath=".\src\button_panel.hxx">
-				</File>
-				<File
-					RelativePath=".\src\canvas.cxx">
-				</File>
-				<File
-					RelativePath=".\src\canvas.hxx">
 				</File>
 				<File
 					RelativePath=".\src\capture_rectangle.cxx">
@@ -2054,12 +2054,6 @@
 				</File>
 				<File
 					RelativePath=".\src\resource_modifier.hxx">
-				</File>
-				<File
-					RelativePath=".\src\resources.cxx">
-				</File>
-				<File
-					RelativePath=".\src\resources.hxx">
 				</File>
 				<File
 					RelativePath=".\src\result.cxx">

@@ -940,8 +940,8 @@ PingusMain::main(int argc, char** argv)
     std::cout << _("Pingus: Unknown throw caught!") << std::endl;
   }
 
-      deinit_pingus();
-      deinit_clanlib();
+  deinit_pingus();
+  deinit_clanlib();
 
 #if defined WIN32 && defined _DEBUG
   cl_console.wait_for_key();

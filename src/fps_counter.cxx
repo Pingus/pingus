@@ -37,13 +37,13 @@ FPSCounter::~FPSCounter()
 {
 }
 
-
 // We are not initialising the fpscounter in the constructor, 'cause
 // that doesn't work (ClanLib hasn't init the display at that point)
 void
 FPSCounter::init()
 {
   font = Fonts::pingus_small;
+  font.set_alignment(origin_top_right);
   start_time = CL_System::get_time();
   strcat(fps_string, _("unknown"));
   fps_count = 0;
@@ -52,14 +52,14 @@ FPSCounter::init()
 void
 FPSCounter::on_event()
 {
-#ifdef CLANLIB_0_6
   update_fps_counter();
 
   if (odd_frame)
     {
-      font.print_right(CL_Display::get_width(),
-			CL_Display::get_height() - (2 * font.get_height()),
-			"o");
+      font.draw(CL_Display::get_width(),
+                CL_Display::get_height() - (2 * font.get_height()),
+                "o");
+
       odd_frame = false;
     }
   else
@@ -67,10 +67,9 @@ FPSCounter::on_event()
       odd_frame = true;
     }
 
-  font.print_right(CL_Display::get_width(),
-                   CL_Display::get_height() - font.get_height(),
-                   fps_string);
-#endif
+  font.draw(CL_Display::get_width(),
+            CL_Display::get_height() - font.get_height(),
+            fps_string);
 }
 
 void
