@@ -1,4 +1,4 @@
-//  $Id: level_dot.cxx,v 1.20 2003/04/15 19:06:50 grumbel Exp $
+//  $Id: level_dot.cxx,v 1.21 2003/04/15 19:42:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <math.h>
 #include "../input/controller.hxx"
 #include "../input/pointer.hxx"
 #include "../my_gettext.hxx"
