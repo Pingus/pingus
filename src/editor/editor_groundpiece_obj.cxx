@@ -1,4 +1,4 @@
-//  $Id: editor_groundpiece_obj.cxx,v 1.9 2002/07/02 13:36:06 torangan Exp $
+//  $Id: editor_groundpiece_obj.cxx,v 1.10 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,11 +38,10 @@ EditorGroundpieceObj::duplicate()
 std::string 
 EditorGroundpieceObj::status_line()
 {
-  // FIXME: This is a potential buffer overrun, to lazy to fix it right now
   char str[1024];  
   std::string type_name = GroundpieceData::type_to_string(gptype);
   
-  sprintf (str, "Groundpiece: %s Type: %s",
+  snprintf (str, 1024, "Groundpiece: %s Type: %s",
 	   desc.res_name.c_str(), type_name.c_str());
 
   return std::string(str);

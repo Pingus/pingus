@@ -1,4 +1,4 @@
-//  $Id: slider.cxx,v 1.5 2002/08/25 09:08:49 torangan Exp $
+//  $Id: slider.cxx,v 1.6 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@ namespace Actions {
   }
 
   void
-  Slider::init(void)
+  Slider::init (void)
   {
     sprite = Sprite("Pingus/slider" + to_string(pingu->get_owner ()),
 		    "pingus");
@@ -38,27 +38,29 @@ namespace Actions {
   }
 
   void
-  Slider::update(float delta)
+  Slider::update (float delta)
   {
-    if (pingu->direction.is_left ())
-      sprite.set_direction (Sprite::LEFT);
+    if (pingu->direction.is_left())
+      sprite.set_direction(Sprite::LEFT);
     else
-      sprite.set_direction (Sprite::RIGHT);
+      sprite.set_direction(Sprite::RIGHT);
 
     sprite.update (delta);
 
     for (int i = 0; i < speed; ++i)
       {
-        pingu->pos.x += pingu->direction;
+        pingu->set_x(pingu->get_x() + pingu->direction);
       
         if (rel_getpixel(0, -1) ==  GroundpieceData::GP_NOTHING)
 	  {
-	    speed = (speed > 5 ? 5 : speed);
+	    speed = (speed > 5) ? 5 : speed;
 
+            //FIXME CL_Vector
+	    CL_Vector temp(pingu->get_velocity());
 	    if (pingu->direction.is_right()) {
-	      pingu->velocity += CL_Vector(speed, 0.0);
+	      pingu->set_velocity(temp + CL_Vector(speed, 0.0));
 	    } else {
-	      pingu->velocity += CL_Vector(-speed, 0.0);
+	      pingu->set_velocity(temp + CL_Vector(-speed, 0.0));
 	    }
 
 	    pingu->set_action(Actions::Walker);
@@ -71,9 +73,9 @@ namespace Actions {
   }
 
   void
-  Slider::draw_offset(int x, int y, float s)
+  Slider::draw_offset (int x, int y, float s)
   {
-    sprite.put_screen (pingu->pos + CL_Vector(x, y - 2));
+    sprite.put_screen(pingu->get_pos() + CL_Vector(x, y - 2));
     UNUSED_ARG(s);
   }
 

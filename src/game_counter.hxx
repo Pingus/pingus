@@ -1,4 +1,4 @@
-//  $Id: game_counter.hxx,v 1.4 2002/08/23 15:49:48 torangan Exp $
+//  $Id: game_counter.hxx,v 1.5 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,22 +34,22 @@ private:
   bool is_finished;
   CounterType type;
 
-  void check_overflow(void);
+  void check_overflow (void);
 public:
-  GameCounter();
-  ~GameCounter();
+  GameCounter ();
+  ~GameCounter ();
 
-  void set_type(CounterType t);
-  void set_size(int);
-  int  get_size();
-  bool finished();
-  void set_speed(double i);
-  int  value();
-  bool enough_time_passed();
-  int  operator++();
-  int  operator++(int);
-  int  operator--();
-  int  operator=(int i);
+  void set_type (CounterType t);
+  void set_size (int);
+  int  get_size ();
+  bool finished ();
+  void set_speed (double i);
+  int  value ();
+  bool enough_time_passed ();
+  int  operator++ ();
+  int  operator++ (int);
+  int  operator-- ();
+  int  operator= (int i);
   operator int ();
   
 private:

@@ -1,4 +1,4 @@
-//  $Id: sound_real.cxx,v 1.6 2002/08/23 15:49:50 torangan Exp $
+//  $Id: sound_real.cxx,v 1.7 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -126,7 +126,7 @@ PingusSoundReal::real_play_sound(const std::string & filename, float volume, flo
 
 
 void
-PingusSoundReal::real_play_music(const std::string & arg_filename, float volume)
+PingusSoundReal::real_play_music (const std::string & arg_filename, float volume)
 {
   std::string filename;
 
@@ -158,7 +158,7 @@ PingusSoundReal::real_play_music(const std::string & arg_filename, float volume)
 
     sample = new CL_SoundBuffer (new CL_Sample(filename.c_str(), NULL), true);
         
-  } else {  // MikMod unterstützt verschiedene Formate
+  } else {  // MikMod should support the rest...
   
 #ifdef HAVE_LIBCLANMIKMOD
       sample = new CL_SoundBuffer (new CL_Streamed_MikModSample(filename.c_str()), true);

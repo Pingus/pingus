@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.30 2002/08/23 15:49:54 torangan Exp $
+//  $Id: editor_event.cxx,v 1.31 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -271,10 +271,10 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	case CL_KEY_F9:
 	  {
 	    std::string tmp_str;
-	    char str[1024];
+	    char str[16];
 	    int  theight, twidth;
 
-	    sprintf(str, "%d", object_manager->width);
+	    snprintf(str, 16, "%d", object_manager->width);
 	    tmp_str = editor->read_string("Input Width: ", str);
 	
 	    if (sscanf(tmp_str.c_str(), "%d", &twidth) == 1) 
@@ -289,7 +289,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 		object_manager->width = twidth;
 	      }
 
-	    sprintf(str, "%d", object_manager->height);
+	    snprintf(str, 16, "%d", object_manager->height);
 	    tmp_str = editor->read_string("Input Height: ", str);
 
 	    if (sscanf(tmp_str.c_str(), "%d", &theight) == 1) 

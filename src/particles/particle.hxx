@@ -1,5 +1,5 @@
 
-//  $Id: particle.hxx,v 1.3 2002/08/23 15:49:56 torangan Exp $
+//  $Id: particle.hxx,v 1.4 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,9 +24,7 @@
 #include <ClanLib/Core/Math/cl_vector.h>
 #include <ClanLib/Display/Display/surface.h>
 
-#include "../worldobj.hxx"
-
-class Particle : public WorldObj
+class Particle
 {
 protected:
   CL_Surface surface;
@@ -39,25 +37,26 @@ protected:
 
   CL_Vector force;
   int livetime;
+  
 public:
-  Particle();
-  Particle(int x, int y, float x_a, float y_a);
-  virtual ~Particle();
+  Particle ();
+  Particle (int x, int y, float x_a, float y_a);
+  virtual ~Particle ();
 
   /// Reinit a allready created particle with now coordinates
-  virtual void init(int x, int y, float x_a, float y_a);
+  virtual void init (int x, int y, float x_a, float y_a);
 
   /** If false is returned the particle gets deleted by the
       ParticleHolder */
-  virtual bool is_alive(void);
+  virtual bool is_alive (void);
 
-  virtual float get_z_pos() const { return pos.z; }
+  float get_z_pos () const { return pos.z; }
 
   /// Let the particle move
-  virtual void update(float delta);
+  virtual void update (float delta);
 
   /// Draw the particle with the correct zoom resize
-  virtual void draw_offset(int, int, float);
+  virtual void draw_offset (int, int, float);
   
 private:
   Particle (const Particle&);

@@ -1,4 +1,4 @@
-//  $Id: time_display.cxx,v 1.4 2002/06/21 07:45:35 grumbel Exp $
+//  $Id: time_display.cxx,v 1.5 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,11 +37,11 @@ void
 TimeDisplay::draw()
 {
   int time_value = server->get_world()->get_time_left();
-  char time_string[256];
+  char time_string[8];
   
   if (time_value == -1 && !(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
     {
-      sprintf(time_string, "00");
+      snprintf(time_string, 8, "00");
     }
   else
     {  
@@ -52,9 +52,7 @@ TimeDisplay::draw()
 	  int minutes   = (time_value / (60 * game_speed));
 	  char* p;
 
-	  // FIXME: Buffer overflow...
-	  //sprintf(time_string, "%2d:%2d:%2d", minutes, seconds, millisecs);
-	  sprintf(time_string, "%2d:%2d", minutes, seconds);
+	  snprintf(time_string, 8, "%2d:%2d", minutes, seconds);
 
 	  p = time_string;
 
@@ -68,8 +66,7 @@ TimeDisplay::draw()
       else
 	{
 	  time_value = server->get_world()->get_time_passed();
-	  // FIXME: Buffer overflow...
-	  sprintf(time_string, "%4d", time_value);
+	  snprintf(time_string, 8, "%4d", time_value);
 	}
     }
   font->print_right(CL_Display::get_width() - 5, 1, time_string);

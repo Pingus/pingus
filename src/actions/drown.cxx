@@ -1,4 +1,4 @@
-//  $Id: drown.cxx,v 1.4 2002/08/25 09:08:49 torangan Exp $
+//  $Id: drown.cxx,v 1.5 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,41 +17,43 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Core/Math/cl_vector.h>
 #include "../pingu.hxx"
 #include "drown.hxx"
 
 namespace Actions {
 
   void 
-  Drown::init()
+  Drown::init ()
   {
     //if (pingu->environment == ENV_AIR)
-      sprite = Sprite ("Pingus/drownfall0", "pingus", 60.0f,
-		       Sprite::NONE, Sprite::ONCE);
+      sprite = Sprite("Pingus/drownfall0", "pingus", 60.0f,
+		      Sprite::NONE, Sprite::ONCE);
       //else
       //sprite = Sprite ("Pingus/drownwalk0", "pingus", 30.0f,
       //	     Sprite::NONE, Sprite::ONCE);
 
-    sprite.set_align_center_bottom ();
+    sprite.set_align_center_bottom();
   }
 
   void 
-  Drown::draw_offset(int x, int y, float /*s*/)
+  Drown::draw_offset (int x, int y, float s)
   {
     // FIXME: Direction handling is ugly
-    if (pingu->direction.is_left ())
-      sprite.set_direction (Sprite::LEFT);
+    if (pingu->direction.is_left())
+      sprite.set_direction(Sprite::LEFT);
     else
-      sprite.set_direction (Sprite::RIGHT);
+      sprite.set_direction(Sprite::RIGHT);
 
-    sprite.put_screen (pingu->pos + CL_Vector(x, y));
+    sprite.put_screen(pingu->get_pos() + CL_Vector(x, y));
+    UNUSED_ARG(s);
   }
 
   void 
-  Drown::update(float delta)
+  Drown::update (float delta)
   {
-    sprite.update (delta);
-    if (sprite.finished ())
+    sprite.update(delta);
+    if (sprite.finished())
       {
         pingu->set_status(PS_DEAD);
       }

@@ -1,4 +1,4 @@
-//  $Id: smasher.hxx,v 1.3 2002/08/23 15:49:56 torangan Exp $
+//  $Id: fake_exit_obj.hxx,v 1.1 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,35 +17,40 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_TRAPS_SMASHER_HXX
-#define HEADER_PINGUS_TRAPS_SMASHER_HXX
+#ifndef HEADER_PINGUS_EDITOROBJS_FAKE_EXIT_OBJ_HXX
+#define HEADER_PINGUS_EDITOROBJS_FAKE_EXIT_OBJ_HXX
 
-#include "../trap.hxx"
+#include "../editor/sprite_editorobj.hxx"
 
-class TrapData;
+namespace WorldObjsData {
+  class FakeExitData;
+}
 
-class Smasher : public Trap
-{
-private:
-  bool smashing;
-  bool downwards;
-  int  count;
+namespace EditorObjs {
 
-public:
-  Smasher (const TrapData& data);
-  virtual ~Smasher ();
+  class FakeExitObj : public SpriteEditorObj
+  {
+    private:
+      int frame;
+      WorldObjsData::FakeExitData* const data;
+    
+    public:
+      FakeExitObj (WorldObjsData::FakeExitData* data_);
+     ~FakeExitObj ();
+     
+      EditorObj* duplicate ();
+      
+      void write_xml (std::ostream& xml);
+      void draw (EditorView* view);
+      
+      std::string status_line ();
+    
+    private:
+      FakeExitObj (const FakeExitObj&);
+      FakeExitObj operator= (const FakeExitObj&);
+  };
 
-  void draw_offset (int x, int y, float s);
-  void draw_colmap ();
-  void update (float delta);
-  
-protected:
-  void catch_pingu (Pingu* pingu);
-  
-private:
-  Smasher (const Smasher&);
-  Smasher operator= (const Smasher&);
-};
+}
 
 #endif
 

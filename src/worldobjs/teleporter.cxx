@@ -1,4 +1,4 @@
-//  $Id: teleporter.cxx,v 1.5 2002/08/23 15:49:57 torangan Exp $
+//  $Id: teleporter.cxx,v 1.6 2002/09/04 14:55:13 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -236,10 +236,9 @@ EditorTeleporterObj::save_xml (std::ostream& xml)
 std::string
 EditorTeleporterObj::status_line()
 {
-  // FIXME: replace with string streams
-  char str[1024];
-  sprintf (str, "Teleporter - %f %f %f", 
-	   pos.x, pos.y, pos.z);
+  char str[128];
+  snprintf (str, 128, "Teleporter - %f %f %f", 
+                      pos.x, pos.y, pos.z);
   return str;
 }
 
@@ -257,9 +256,9 @@ EditorTeleporterTargetObj::EditorTeleporterTargetObj (EditorTeleporterObj* arg_t
 std::string
 EditorTeleporterTargetObj::status_line()
 {
-  char str[1024];
-  sprintf (str, "TeleporterTarget - %f %f %f", 
-	   pos_ref.x, pos_ref.y, pos_ref.z);
+  char str[128];
+  snprintf (str, 128, "TeleporterTarget - %f %f %f", 
+ 	              pos_ref.x, pos_ref.y, pos_ref.z);
   return str;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: pingu_info.cxx,v 1.3 2002/06/20 12:22:51 grumbel Exp $
+//  $Id: pingu_info.cxx,v 1.4 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,23 +50,22 @@ PinguInfo::draw()
 			y_pos + CL_Display::get_height() - 5,
 			0.2f, 0.2f, 0.2f, 1.0f);
   if (pingu) {
-    char str1[256];
-    char str2[256];
+    char str[128];
 
-    sprintf(str1, _("pingu_id %d"), pingu->get_id());
+    snprintf(str, 128, _("pingu_id %d"), pingu->get_id());
     font->print_left(x_pos + CL_Display::get_width() - 185, 
 		     y_pos + CL_Display::get_height() - 50,
-		     tolowerstr(str1));
+		     str);
 
     if (pingu->get_action()) {
-      sprintf(str2, _("action %s"), pingu->get_action()->get_name().c_str());
+      snprintf(str, 128, _("action %s"), pingu->get_action()->get_name().c_str());
     } else {
-      sprintf(str2, _("action none"));
+      snprintf(str, 128, _("action none"));
     }
 
     font->print_left(x_pos + CL_Display::get_width() - 185, 
 		     y_pos + CL_Display::get_height() - 30,
-		     tolowerstr(str2));
+		     tolowerstr(str));
   } else {
     font->print_left(x_pos + CL_Display::get_width() - 200, 
 		     y_pos + CL_Display::get_height() - 50,

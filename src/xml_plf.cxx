@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.11 2002/08/25 09:08:48 torangan Exp $
+//  $Id: xml_plf.cxx,v 1.12 2002/09/04 14:55:11 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,14 +27,13 @@
 #include "worldobj_group_data.hxx"
 #include "exit_data.hxx"
 #include "entrance_data.hxx"
-#include "trap_data.hxx"
 #include "hotspot_data.hxx"
 #include "liquid_data.hxx"
 
 using namespace std;
 using Actions::action_from_string;
 
-XMLPLF::XMLPLF(const std::string& filename)
+XMLPLF::XMLPLF (const std::string& filename)
 {
   //  std::cout << "----- Parsing .xml file" << std::endl;
   //std::cout << "--- Checksum: " << std::flush;
@@ -72,21 +71,21 @@ XMLPLF::parse_file()
   //std::cout << "parsing file" << std::endl;
   xmlNodePtr cur = doc->ROOT;
 
-  if (xmlIsBlankNode(cur)) cur = cur->next;
+  cur = XMLhelper::skip_blank(cur);
 
-  if (cur != NULL && strcmp((const char*)cur->name, "pingus-level") == 0)
+  if (cur && !strcmp(reinterpret_cast<const char*>(cur->name), "pingus-level"))
     {
       //std::cout << "parse_file...." << std::endl;
 
-      if (xmlIsBlankNode(cur)) cur = cur->next;
+      cur = XMLhelper::skip_blank(cur);
 
-      if (cur->children == NULL)
+      if (!cur->children)
 	std::cout << "XMLPLF: node: " << cur->name << std::endl;
       
       cur = cur->children;
-      if (xmlIsBlankNode(cur)) cur = cur->next;
+      cur = XMLhelper::skip_blank(cur);
       
-      while (cur != NULL)
+      while (cur)
 	{
 	  if (xmlIsBlankNode(cur)) 
 	    {
@@ -95,61 +94,61 @@ XMLPLF::parse_file()
 	    }
 
 	  //puts("global loop");
-	  if (strcmp((char*)cur->name, "global") == 0)
+	  if (!strcmp(reinterpret_cast<const char*>(cur->name), "global"))
 	    {
 	      parse_global(cur);
 	    }
-	  else if (strcmp((char*)cur->name, "action-list") == 0)
+	  else if (!strcmp(reinterpret_cast<const char*>(cur->name), "action-list"))
 	    {
 	      parse_actions(cur);
 	    }
-	  else if (strcmp((char*)cur->name, "background") == 0)
+	  else if (!strcmp(reinterpret_cast<const char*>(cur->name), "background"))
 	    {
 	      parse_background(cur);
 	    }
-	  else if (strcmp((char*)cur->name, "groundpiece") == 0)
+	  else if (!strcmp(reinterpret_cast<const char*>(cur->name), "groundpiece"))
 	    {
 	      parse_groundpiece(cur);
 	    }
-	  else if (strcmp((char*)cur->name, "exit") == 0)
+	  else if (!strcmp(reinterpret_cast<const char*>(cur->name), "exit"))
 	    {
 	      worldobjs_data.push_back (new ExitData (doc, cur));
 	    }
-	  else if (strcmp((char*)cur->name, "entrance") == 0)
+	  else if (!strcmp(reinterpret_cast<const char*>(cur->name), "entrance"))
 	    {
 	      worldobjs_data.push_back (new EntranceData (doc, cur));
 	    }
-	  else if (strcmp((char*)cur->name, "trap") == 0)
+	  else if (!strcmp(reinterpret_cast<const char*>(cur->name), "trap"))
 	    {
-	      worldobjs_data.push_back (new TrapData (doc, cur));
+	      parse_traps(doc, cur);
 	    }
-	  else if (strcmp((char*)cur->name, "hotspot") == 0)
+	  else if (!strcmp(reinterpret_cast<const char*>(cur->name), "hotspot"))
 	    {
 	      worldobjs_data.push_back(new HotspotData (doc, cur));
 	    }
-	  else if (strcmp((char*)cur->name, "liquid") == 0)
+	  else if (!strcmp(reinterpret_cast<const char*>(cur->name), "liquid"))
 	    {
 	      worldobjs_data.push_back(new LiquidData (doc, cur));
 	    }
-	  else if (strcmp ((char*)cur->name, "worldobj") == 0)
+	  else if (!strcmp (reinterpret_cast<const char*>(cur->name), "worldobj"))
 	    {
-	      worldobjs_data.push_back(WorldObjDataFactory::instance ()->create (doc, cur));
+	      worldobjs_data.push_back(WorldObjDataFactory::instance()->create (doc, cur));
 	    }
-	  else if (strcmp((char*)cur->name, "group") == 0)
+	  else if (!strcmp(reinterpret_cast<const char*>(cur->name), "group"))
 	    {
 	      parse_group(cur);
 	    }
-	  else if (strcmp ((char*)cur->name, "start-position") == 0)
+	  else if (!strcmp (reinterpret_cast<const char*>(cur->name), "start-position"))
 	    {
 	      parse_start_pos(cur);
 	    }
-	  else if (strcmp ((char*)cur->name, "weather") == 0)
+	  else if (!strcmp (reinterpret_cast<const char*>(cur->name), "weather"))
 	    {
 	      parse_weather(cur);
 	    }	  
 	  else
 	    {
-	      printf("XMLPLF: Unhandled: %s\n", (char*)cur->name);
+	      printf("XMLPLF: Unhandled: %s\n", reinterpret_cast<const char*>(cur->name));
 	    }
 	  cur = cur->next;
 	}
@@ -160,11 +159,11 @@ XMLPLF::parse_file()
 }
 
 void
-XMLPLF::parse_start_pos(xmlNodePtr cur)
+XMLPLF::parse_start_pos (xmlNodePtr cur)
 {
   cur = cur->children;
 
-  while (cur != NULL)
+  while (cur)
     {
       if (xmlIsBlankNode(cur)) 
 	{
@@ -172,11 +171,11 @@ XMLPLF::parse_start_pos(xmlNodePtr cur)
 	  continue;
 	}
       
-      if (strcmp((char*)cur->name, "position") == 0)
+      if (!strcmp(reinterpret_cast<const char*>(cur->name), "position"))
 	{
 	  CL_Vector pos = XMLhelper::parse_vector(doc, cur);
-	  start_x_pos = int(pos.x);
-	  start_y_pos = int(pos.y);
+	  start_x_pos = static_cast<int>(pos.x);
+	  start_y_pos = static_cast<int>(pos.y);
 	}
       else
 	{
@@ -187,12 +186,12 @@ XMLPLF::parse_start_pos(xmlNodePtr cur)
 }
 
 void
-XMLPLF::parse_weather(xmlNodePtr cur)
+XMLPLF::parse_weather (xmlNodePtr cur)
 {
   WeatherData weather;
   cur = cur->children;
 
-  while (cur != NULL)
+  while (cur)
     {
       if (xmlIsBlankNode(cur)) 
 	{
@@ -200,7 +199,7 @@ XMLPLF::parse_weather(xmlNodePtr cur)
 	  continue;
 	}
       
-      if (strcmp((char*)cur->name, "type") == 0)
+      if (!strcmp(reinterpret_cast<const char*>(cur->name), "type"))
 	{
 	  weather.type = XMLhelper::parse_string(doc, cur);
 	}
@@ -210,17 +209,18 @@ XMLPLF::parse_weather(xmlNodePtr cur)
 	}
       cur = cur->next;
     }
+    
   weathers.push_back(weather);
 }
 
 void
-XMLPLF::parse_group(xmlNodePtr cur)
+XMLPLF::parse_group (xmlNodePtr cur)
 {
   cur = cur->children;
 
-  WorldObjGroupData* group = new WorldObjGroupData ();
+  WorldObjGroupData* group = new WorldObjGroupData;
 
-  while (cur != NULL)
+  while (cur)
     {
       if (xmlIsBlankNode(cur)) 
 	{
@@ -228,41 +228,41 @@ XMLPLF::parse_group(xmlNodePtr cur)
 	  continue;
 	}
       
-      if (strcmp((char*)cur->name, "groundpiece") == 0)
+      if (!strcmp(reinterpret_cast<const char*>(cur->name), "groundpiece"))
 	{
 	  parse_groundpiece(cur);
 	}
-      else if (strcmp((char*)cur->name, "exit") == 0)
+      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "exit"))
 	{
 	  group->add (new ExitData (doc, cur));
 	}
-      else if (strcmp((char*)cur->name, "entrance") == 0)
+      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "entrance"))
 	{
 	  group->add (new EntranceData (doc, cur));
 	}
-      else if (strcmp((char*)cur->name, "trap") == 0)
+      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "trap"))
 	{
-	  group->add (new TrapData (doc, cur));
+	  parse_traps(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "hotspot") == 0)
+      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "hotspot"))
 	{
 	  group->add(new HotspotData (doc, cur));
 	}
-      else if (strcmp((char*)cur->name, "liquid") == 0)
+      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "liquid"))
 	{
 	  group->add(new LiquidData (doc, cur));
 	}
-      else if (strcmp((char*)cur->name, "group") == 0)
+      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "group"))
 	{
 	  parse_group(cur);
 	}
-      else if (strcmp ((char*)cur->name, "worldobj") == 0)
+      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "worldobj"))
 	{
-	  group->add(WorldObjDataFactory::instance ()->create (doc, cur));
+	  group->add(WorldObjDataFactory::instance ()->create(doc, cur));
 	}
       else
 	{
-	  printf("Unhandled: %s\n", (char*)cur->name);
+	  printf("Unhandled: %s\n", reinterpret_cast<const char*>(cur->name));
 	}
       cur = cur->next;
     }
@@ -271,13 +271,13 @@ XMLPLF::parse_group(xmlNodePtr cur)
 }
 
 void 
-XMLPLF::parse_background(xmlNodePtr cur)
+XMLPLF::parse_background (xmlNodePtr cur)
 {
   // The allocated objects are delete'd in the destructor
   //FIXME: Repair me backgrounds.push_back(BackgroundData::create (doc, cur));
-  char* type_cstr = (char*)xmlGetProp(cur, (xmlChar*)"type");
+  char* type_cstr = reinterpret_cast<char*>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("type")));
 
-  if (type_cstr != 0)
+  if (type_cstr)
     {
       std::string type (type_cstr);
 
@@ -294,11 +294,11 @@ XMLPLF::parse_background(xmlNodePtr cur)
 }
 
 void 
-XMLPLF::parse_actions(xmlNodePtr cur)
+XMLPLF::parse_actions (xmlNodePtr cur)
 {
   cur = cur->children;
 
-  while (cur != NULL)
+  while (cur)
     {
       if (xmlIsBlankNode(cur)) 
 	{
@@ -307,9 +307,9 @@ XMLPLF::parse_actions(xmlNodePtr cur)
 	}
  
       ActionData button;
-      button.name = action_from_string((const char*) cur->name);
+      button.name = action_from_string(reinterpret_cast<const char*>(cur->name));
 
-      char* count = (char*)xmlGetProp(cur, (xmlChar*)"count");
+      char* count = reinterpret_cast<char*>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("count")));
       if (count)
 	{
 	  from_string(count, button.number_of);
@@ -318,7 +318,7 @@ XMLPLF::parse_actions(xmlNodePtr cur)
       else
 	{
 	  //std::cout << "XMLPLF::parse_actions (): No 'count' given, fallback to the old format" << std::endl;
-	  char* number = (char*)xmlNodeListGetString(doc, cur->children, 1);
+	  char* number = reinterpret_cast<char*>(xmlNodeListGetString(doc, cur->children, 1));
 	  if (number) {
 	    //std::cout << "xmlNoder..Result: " << number << std::endl;
 	    button.number_of = StringConverter::to_int(number);
@@ -335,10 +335,10 @@ XMLPLF::parse_actions(xmlNodePtr cur)
 }
 
 void
-XMLPLF::parse_global(xmlNodePtr cur)
+XMLPLF::parse_global (xmlNodePtr cur)
 {
   cur = cur->children;
-  while (cur != NULL)
+  while (cur)
     {
       if (xmlIsBlankNode(cur)) 
 	{
@@ -346,10 +346,10 @@ XMLPLF::parse_global(xmlNodePtr cur)
 	  continue;
 	}
 
-      if (strcmp((char*)cur->name, "levelname") == 0)
+      if (!strcmp(reinterpret_cast<const char*>(cur->name), "levelname"))
 	{
-	  char* name = (char*)xmlNodeListGetString(doc, cur->children, 1);
-	  char* lang = (char*)xmlGetProp(cur, (xmlChar*)"lang");
+	  char* name = reinterpret_cast<char*>(xmlNodeListGetString(doc, cur->children, 1));
+	  char* lang = reinterpret_cast<char*>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("lang")));
 
 	  if (name) {
 	    if (lang)
@@ -358,13 +358,15 @@ XMLPLF::parse_global(xmlNodePtr cur)
 	      levelname[default_language] = name;
 	  }
 
-	  if (name) xmlFree(name);
-	  if (lang) xmlFree(lang);
+	  if (name)
+	    xmlFree(name);
+	  if (lang)
+	    xmlFree(lang);
 	}
-      else if (strcmp((char*)cur->name, "description") == 0)
+      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "description"))
 	{
-	  char* desc = (char*)xmlNodeListGetString(doc, cur->children, 1);
-	  char* lang = (char*)xmlGetProp(cur, (xmlChar*)"lang");
+	  char* desc = reinterpret_cast<char*>(xmlNodeListGetString(doc, cur->children, 1));
+	  char* lang = reinterpret_cast<char*>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("lang")));
 
 	  if (desc) {
 	    if (lang)		    
@@ -373,47 +375,49 @@ XMLPLF::parse_global(xmlNodePtr cur)
 	      description[default_language] = desc;
 	  }
 
-	  if (desc) xmlFree(desc);	  
-	  if (lang) xmlFree(lang);
+	  if (desc)
+	    xmlFree(desc);	  
+	  if (lang)
+	    xmlFree(lang);
 	}
-      else if (strcmp((char*)cur->name, "author") == 0)
+      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "author"))
 	{
-	  char* tmp_author = (char*)xmlNodeListGetString(doc, cur->children, 1);
+	  char* tmp_author = reinterpret_cast<char*>(xmlNodeListGetString(doc, cur->children, 1));
 	  if (tmp_author) {
 	    author = tmp_author;
 	    xmlFree(tmp_author);
 	  }
 	  //std::cout << "Author: " << author << " -----------------------" << std::endl;
 	}
-      else if (strcmp((char*)cur->name, "number-of-pingus") == 0)
+      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "number-of-pingus"))
 	{
 	  number_of_pingus = XMLhelper::parse_int(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "difficulty") == 0)
+      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "difficulty"))
 	{
 	  difficulty = XMLhelper::parse_int(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "playable") == 0)
+      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "playable"))
 	{
 	  playable = XMLhelper::parse_int(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "comment") == 0)
+      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "comment"))
 	{
 	  comment = XMLhelper::parse_string(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "number-to-save") == 0)
+      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "number-to-save"))
 	{
 	  number_to_save = XMLhelper::parse_int(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "time") == 0)
+      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "time"))
 	{
 	  max_time = XMLhelper::parse_int(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "height") == 0)
+      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "height"))
 	{
 	  height = XMLhelper::parse_int(doc, cur);
 	}
-      else if (strcmp((char*)cur->name, "width") == 0)
+      else if (!strcmp(reinterpret_cast<const char*>(cur->name), "width"))
 	{
 	  width = XMLhelper::parse_int(doc, cur);
 	}
@@ -427,9 +431,28 @@ XMLPLF::parse_global(xmlNodePtr cur)
 }
 
 void 
-XMLPLF::parse_groundpiece(xmlNodePtr cur)
+XMLPLF::parse_groundpiece (xmlNodePtr cur)
 {
   groundpieces.push_back(GroundpieceData (doc, cur));
+}
+
+void
+XMLPLF::parse_traps (xmlDocPtr doc, xmlNodePtr cur)
+{
+  xmlNodePtr cur_ = XMLhelper::skip_blank(cur->children);
+  
+  if (!strcmp(reinterpret_cast<const char*>(cur_->name), "type"))
+    {
+      char* name = reinterpret_cast<char*>(xmlNodeListGetString(doc, cur_->children, 1));
+      if (name)
+	{
+	  worldobjs_data.push_back(WorldObjDataFactory::instance()->create (name, doc, XMLhelper::skip_blank(cur)));
+	  xmlFree(name);
+	  return;
+	}
+    }
+
+  std::cout << "XMLPLF::parse_traps: Invalid data structure" << std::endl;
 }
 
 /* EOF */

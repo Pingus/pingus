@@ -1,4 +1,4 @@
-//  $Id: fake_exit.hxx,v 1.3 2002/08/23 15:49:56 torangan Exp $
+//  $Id: laser_exit.hxx,v 1.1 2002/09/04 14:55:13 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,27 +17,45 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_TRAPS_FAKE_EXIT_HXX
-#define HEADER_PINGUS_TRAPS_FAKE_EXIT_HXX
+#ifndef HEADER_PINGUS_WORLDOBJS_LASER_EXIT_HXX
+#define HEADER_PINGUS_WORLDOBJS_LASER_EXIT_HXX
 
-#include "../trap.hxx"
+#include "../worldobj.hxx"
 
-class TrapData;
+namespace WorldObjsData {
+  class LaserExitData;
+}
 
-///
-class FakeExit : public Trap
-{
-private:
-  bool smashing;
-public:
-  FakeExit(const TrapData& data);
-  virtual ~FakeExit();
-  
-  void update(float delta);
-  
-protected:
-  void catch_pingu(Pingu*);
-};
+class Pingu;
+
+
+namespace WorldObjs {
+
+  class LaserExit : public WorldObj
+  {
+  private:
+    bool killing;
+    WorldObjsData::LaserExitData* const data;
+    
+  public:
+    LaserExit (WorldObjsData::LaserExitData* data_);
+   ~LaserExit ();
+
+    float get_z_pos () const;
+
+    void draw_offset (int x, int y, float s);
+    void update (float delta);
+
+  protected:
+    void catch_pingu (Pingu*);
+
+  private:
+    LaserExit (const LaserExit&);
+    LaserExit operator= (const LaserExit&);
+  }; 
+
+}
+
 
 #endif
 

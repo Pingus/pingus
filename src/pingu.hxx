@@ -1,4 +1,4 @@
-//  $Id: pingu.hxx,v 1.11 2002/08/25 09:08:48 torangan Exp $
+//  $Id: pingu.hxx,v 1.12 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,23 +20,19 @@
 #ifndef HEADER_PINGUS_PINGU_HXX
 #define HEADER_PINGUS_PINGU_HXX
 
-#include <vector>
-#include <string>
-#include <ClanLib/Core/Math/cl_vector.h>
-
 #include "direction.hxx"
 #include "pingu_enums.hxx"
-#include "worldobj.hxx"
 
 // Forward declarations
 class CL_Font;
+class CL_Vector;
 class ActionHolder;
 class PinguAction;
 
 /** The class for managing one of the many penguins which are walking
     around in the World. All actions are handled by PinguAction
     objects. */
-class Pingu : public WorldObj
+class Pingu
 {
 private:
   /** Static id_counter, which holds the id last pingu, which
@@ -64,16 +60,18 @@ private:
   int action_time;
   int owner_id;
 
-public:
-
   /// The stat of the pingu, these can be modified by PinguActions
   PinguStatus status;
   
-  /// The postion of the pingu (CL_Vector::z is always zero)
-  CL_Vector pos;
-  Direction direction;
-  CL_Vector velocity; 
+  float pos_x;
+  float pos_y;
+  
+  CL_Vector* const velocity; 
 
+public:
+
+  //FIXME make me private
+  Direction direction;
 
   bool request_set_action (PinguAction*);
   
@@ -82,57 +80,64 @@ public:
   /** Creates a new Pingu at the given coordinates
       @param pos The start position of the pingu
       @param owner The owner id of the pingu (used for multiplayer) */
-  Pingu(const CL_Vector& pos, int owner);
+  Pingu (const CL_Vector& pos, int owner);
   
   /** Destruct the pingu... */
-  ~Pingu();
+  ~Pingu ();
   
   /** Return the logical pingus position, this is the position which
       is used for collision detection to the ground (the pingus
       feet) */
-  CL_Vector get_pos () { return pos; }
+  CL_Vector get_pos () const;
 
   /** Returns the visible position of the pingu, the graphical center
       of the pingu. */
-  CL_Vector get_center_pos ();
+  CL_Vector get_center_pos () const;
 
   /** Returns the x position of the pingu
    * For backward comp. only
    */
-  int  get_x(void);
+  const float& get_x () const { return pos_x; }
 
   /** Returns the y position of the pingu
       For backward comp. only */
-  int  get_y(void);
+  const float& get_y () const { return pos_y; }
 
   /** Checks if this action allows to be overwritten with the given new action */
   bool change_allowed (Actions::ActionName new_action);
 
   /// Check if the pingu is still alive
-  bool is_alive(void);
+  bool is_alive (void);
 
   /// Return the status of the pingu
-  PinguStatus get_status(void) const; 
+  PinguStatus get_status (void) const; 
 
-  ///
-  PinguStatus set_status(PinguStatus);
+  PinguStatus set_status (PinguStatus);
 
-  PinguAction* get_action();
+  PinguAction* get_action ();
 
   /// Returns the unique id of the pingu
-  int  get_id(void); 
+  int  get_id (void); 
   
   /// Set's the unique id of the pingu
-  int  set_id(int);
+  int  set_id (int);
   
   /// Set the pingu to the given coordinates
-  void set_pos(int x, int y);
+  void set_pos (float x, float y) { pos_x = x; pos_y = y; }
+
+  void set_x (float x) { pos_y = x; }
+  
+  void set_y (float y) { pos_y = y; }
 
   /// Set the pingu to the given coordinates
-  void set_pos(const CL_Vector& arg_pos);
- 
+  void set_pos (const CL_Vector& arg_pos);
+
+  const CL_Vector& get_velocity () const { return *velocity; }
+  
+  void set_velocity (const CL_Vector& velocity_);
+      
   // Set the pingu in the gives direction
-  void set_direction(Direction d);
+  void set_direction (Direction d);
 
   /** Request an action to be set to the pingu, if its a persistent
       action, it will be hold back for later execution, same with a
@@ -150,45 +155,44 @@ public:
   /// set the fall action if we have one
   bool request_fall_action ();
 
-  PinguAction* get_wall_action() { return wall_action; }
+  PinguAction* get_wall_action () { return wall_action; }
   
-  PinguAction* get_fall_action() { return fall_action; }
+  PinguAction* get_fall_action () { return fall_action; }
 
   /** Returns the `color' of the colmap in the walking direction 
       Examples: 
       (0, -1) is the pixel under the pingu
       (1, 0)  is the pixel in front of the pingu
   */
-  int  rel_getpixel(int x, int y);
+  int  rel_getpixel (int x, int y);
 
   /** Let the pingu catch another pingu, so that an action can be
       applied (i.e. let a blocker change the direction f another
       pingu) */
-  void catch_pingu(Pingu* pingu);
+  void catch_pingu (Pingu* pingu);
 
   /** Returns true if the pingu needs to catch another pingu */
-  bool need_catch();
+  bool need_catch ();
   
-  void draw_offset(int x, int y, float s = 1.0);
-  void apply_force(CL_Vector);
+  void draw_offset (int x, int y, float s = 1.0);
+  void apply_force (CL_Vector);
   
-  void update(float delta);
+  void update (float delta);
   
   /** Indicate if the pingu's speed is above the deadly velocity */
   //bool is_tumbling () const;
   
-  float get_z_pos() const { return 0; }
+  float get_z_pos () const { return 0; }
 
   /** @return The owner_id of the owner, only used in multiplayer
       configurations, ought to bed single player */
   int get_owner ();
 
-  ///
-  bool   is_over(int x, int y);
-  ///
+  bool   is_over (int x, int y);
+
   bool   is_inside (int x1, int y1, int x2, int y2);
-  ///
-  double dist(int x, int y);
+
+  double dist (int x, int y);
 
   /** Return true if the pingu can be catched with the mouse and
       another action can be applied, false otherwise (exiter,
@@ -203,4 +207,3 @@ private:
 #endif /* PINGU_HH */
 
 /* EOF */
-

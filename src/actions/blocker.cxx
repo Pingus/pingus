@@ -1,4 +1,4 @@
-//  $Id: blocker.cxx,v 1.5 2002/08/25 09:08:49 torangan Exp $
+//  $Id: blocker.cxx,v 1.6 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,14 +43,13 @@ namespace Actions {
     if (rel_getpixel(0,-1)     ==  GroundpieceData::GP_NOTHING
         && rel_getpixel(0, -2) ==  GroundpieceData::GP_GROUND)
       {
-        ++pingu->pos.x;
+        pingu->set_x(pingu->get_x() + 1);
       } 
     else if (rel_getpixel(0,-1) ==  GroundpieceData::GP_NOTHING
 	     && rel_getpixel(0, -2) ==  GroundpieceData::GP_NOTHING
 	     && rel_getpixel(0,-3) ==  GroundpieceData::GP_GROUND)
       {
-        ++pingu->pos.y;
-        ++pingu->pos.y;
+        pingu->set_y(pingu->get_y() + 2);
       }
   }
 
@@ -68,7 +67,7 @@ namespace Actions {
   void
   Blocker::draw_offset(int x, int y, float s)
   {
-    sprite.put_screen (pingu->pos + CL_Vector(x, y));
+    sprite.put_screen(pingu->get_pos() + CL_Vector(x, y));
     UNUSED_ARG(s);
   }
 

@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.11 2002/08/25 09:08:49 torangan Exp $
+//  $Id: basher.cxx,v 1.12 2002/09/04 14:55:12 torangan Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -29,14 +29,13 @@ using namespace std;
 
 namespace Actions {
 
-  Basher::Basher() : basher_c(0), first_bash(true)
+  Basher::Basher () : basher_c(0), first_bash(true)
   {
   }
 
   void
-  Basher::init(void)
+  Basher::init (void)
   {
-    first_bash = true;
     bash_radius = PingusResource::load_surface ("Other/bash_radius", "pingus");
     bash_radius_gfx = PingusResource::load_surface ("Other/bash_radius_gfx", "pingus");
     sprite = Sprite (PingusResource::load_surface ("Pingus/basher0", "pingus"));
@@ -48,20 +47,20 @@ namespace Actions {
   }
 
   void
-  Basher::draw_offset(int x, int y, float s)
+  Basher::draw_offset (int x, int y, float s)
   {
-    if (pingu->direction.is_left ())
+    if (pingu->direction.is_left())
       sprite.set_direction (Sprite::LEFT);
     else
       sprite.set_direction (Sprite::RIGHT);
 
-    sprite.put_screen (pingu->get_pos () + CL_Vector(x, y));
+    sprite.put_screen(pingu->get_pos() + CL_Vector(x, y));
     
     UNUSED_ARG(s);
   }
 
   void
-  Basher::update(float delta)
+  Basher::update (float delta)
   {
     sprite.update (delta);
 
@@ -87,12 +86,12 @@ namespace Actions {
   void
   Basher::bash()
   {
-    pingu->get_world()->get_colmap()->remove(bash_radius,
-					     pingu->get_x () - (bash_radius.get_width()/2),
-					     pingu->get_y () - 31);
-    pingu->get_world()->get_gfx_map()->remove(bash_radius_gfx,
-					      pingu->get_x () - (bash_radius_gfx.get_width()/2),
-					      pingu->get_y () - 31);
+    WorldObj::get_world()->get_colmap()->remove(bash_radius,
+					     static_cast<int>(pingu->get_x () - (bash_radius.get_width()/2)),
+					     static_cast<int>(pingu->get_y () - 31));
+    WorldObj::get_world()->get_gfx_map()->remove(bash_radius_gfx,
+					      static_cast<int>(pingu->get_x () - (bash_radius_gfx.get_width()/2)),
+					      static_cast<int>(pingu->get_y () - 31));
   }
 
   void
@@ -103,7 +102,7 @@ namespace Actions {
       pingu->set_action(Actions::Faller);
     } else {
       // On ground, walk forward...
-      pingu->pos.x += pingu->direction;
+      pingu->set_x(pingu->get_x() + static_cast<int>(pingu->direction));
     }
   }
 

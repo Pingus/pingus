@@ -1,4 +1,4 @@
-//  $Id: pingu_particle.cxx,v 1.2 2002/06/28 17:48:42 grumbel Exp $
+//  $Id: pingu_particle.cxx,v 1.3 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "../world.hxx"
 #include "../algo.hxx"
 #include "../pingus_resource.hxx"
+#include "../worldobj.hxx"
 #include "pingu_particle.hxx"
 
 static const float x_collision_decrease = 0.3f;
@@ -94,7 +95,7 @@ PinguParticle::update(float /*delta*/)
     {
       for (tmp_y_add = velocity.y; tmp_y_add >= 1.0; tmp_y_add -= 1.0)
 	{
-	  if (world->get_colmap()->getpixel((int)pos.x, (int)pos.y)) 
+	  if (WorldObj::get_world()->get_colmap()->getpixel((int)pos.x, (int)pos.y)) 
 	    {
 	      velocity.y = velocity.y * -y_collision_decrease;
 	      tmp_y_add = -tmp_y_add;
@@ -109,7 +110,7 @@ PinguParticle::update(float /*delta*/)
     {
       for (tmp_y_add = velocity.y; tmp_y_add <= -1.0; tmp_y_add += 1.0)
 	{
-	  if (world->get_colmap()->getpixel((int)pos.x, (int)pos.y)) {
+	  if (WorldObj::get_world()->get_colmap()->getpixel((int)pos.x, (int)pos.y)) {
 	    velocity.y = velocity.y * -y_collision_decrease;
 	    tmp_y_add = -tmp_y_add;
 	    pos.y += 1.0;
@@ -124,7 +125,7 @@ PinguParticle::update(float /*delta*/)
     {
       for (tmp_x_add = velocity.x; tmp_x_add >= 1.0; tmp_x_add -= 1.0)
 	{
-	  if (world->get_colmap()->getpixel((int)pos.x, (int)pos.y)) {
+	  if (WorldObj::get_world()->get_colmap()->getpixel((int)pos.x, (int)pos.y)) {
 	    velocity.x = velocity.x * -x_collision_decrease;
 	    tmp_x_add = -tmp_x_add;
 	    pos.x -= 1.0;
@@ -138,7 +139,7 @@ PinguParticle::update(float /*delta*/)
     {
       for (tmp_x_add = velocity.x; tmp_x_add <= -1.0; tmp_x_add += 1.0)
 	{
-	  if (world->get_colmap()->getpixel((int)pos.x, (int)pos.y)) {
+	  if (WorldObj::get_world()->get_colmap()->getpixel((int)pos.x, (int)pos.y)) {
 	    velocity.x = velocity.x * -x_collision_decrease;
 	    tmp_x_add = -tmp_x_add;
 	    pos.x += 1.0;

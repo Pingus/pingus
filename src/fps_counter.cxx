@@ -1,4 +1,4 @@
-//  $Id: fps_counter.cxx,v 1.3 2002/06/20 12:22:51 grumbel Exp $
+//  $Id: fps_counter.cxx,v 1.4 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -84,7 +84,7 @@ FPSCounter::update_fps_counter()
   if (start_time + 1000 < current_time) 
     {
       current_fps = fps_count * 1000 / (current_time - start_time);
-      sprintf(fps_string, "%d fps", current_fps);
+      snprintf(fps_string, 16, "%d fps", current_fps);
       fps_count = 0;
       start_time = CL_System::get_time();
     }

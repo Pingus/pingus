@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.20 2002/08/25 09:08:48 torangan Exp $
+//  $Id: pingu.cxx,v 1.21 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,7 @@
 #include "my_gettext.hxx"
 #include "debug.hxx"
 #include "string_converter.hxx"
+#include "worldobj.hxx"
 
 using namespace Actions;
 
@@ -39,48 +40,31 @@ const float deadly_velocity = 20.0;
 int   Pingu::id_counter = 0;
 
 // Init a pingu at the given position while falling
-Pingu::Pingu(const CL_Vector& arg_pos, int owner)
-  : action(0),
-    countdown_action (0),
-    wall_action(0),
-    fall_action(0),
-    id (++id_counter),
-    font (PingusResource::load_font("Fonts/numbers", "fonts")),
-    owner_id (owner),
-    status (PS_ALIVE),
-    pos (arg_pos)
+Pingu::Pingu (const CL_Vector& arg_pos, int owner)
+            : action(0),
+              countdown_action (0),
+              wall_action(0),
+              fall_action(0),
+              id(++id_counter),
+              font(PingusResource::load_font("Fonts/numbers", "fonts")),
+              action_time(-1),
+              owner_id(owner),
+              status(PS_ALIVE),
+	      pos_x(arg_pos.x),
+	      pos_y(arg_pos.y),
+              velocity(new CL_Vector(0, 0, 0))
 {
-  action_time = -1;
-
   direction.left ();
-
-  // Set the velocity to zero
-  velocity.x = 0;
-  velocity.y = 0;
-
   set_action(Faller);
 }
 
-Pingu::~Pingu()
+Pingu::~Pingu ()
 {
-}
-
-// Returns the x position of the pingu
-int
-Pingu::get_x()
-{
-  return int(pos.x);
-}
-
-// Returns the y position of the pingu
-int
-Pingu::get_y()
-{
-  return int(pos.y);
+  delete velocity;
 }
 
 int
-Pingu::get_id()
+Pingu::get_id ()
 {
   return id;
 }
@@ -92,18 +76,17 @@ Pingu::change_allowed (ActionName new_action)
   return action->change_allowed (new_action);
 }
 
-// Set the position of the pingu
-void 
-Pingu::set_pos(int x, int y)
+void
+Pingu::set_pos (const CL_Vector& arg_pos)
 {
-  pos.x = x;
-  pos.y = y;
+  pos_x = arg_pos.x;
+  pos_y = arg_pos.y;
 }
 
-void 
-Pingu::set_pos(const CL_Vector& arg_pos)
+void
+Pingu::set_velocity (const CL_Vector& velocity_)
 {
-  pos = arg_pos;
+  *velocity = velocity_;
 }
 
 // Set the action of the pingu (bridger, blocker, bomber, etc.)
@@ -111,7 +94,7 @@ Pingu::set_pos(const CL_Vector& arg_pos)
 // When you select a function on the button panel and click on a
 // pingu, this action will be called with the action name
 bool
-Pingu::request_set_action(PinguAction* act)
+Pingu::request_set_action (PinguAction* act)
 {
   bool ret_val = false;
   assert(act);
@@ -125,78 +108,78 @@ Pingu::request_set_action(PinguAction* act)
     {    
       switch (act->get_activation_mode()) {
   
-      case INSTANT:
+        case INSTANT:
+  
+          if (act->get_type() == action->get_type()) 
+	    {
+	      pout(PINGUS_DEBUG_ACTIONS) << "Pingu: Already have action" << std::endl;
+	      ret_val = false;
+	    } 
+          else if (action->change_allowed(act->get_type()))
+	    {
+	      pout(PINGUS_DEBUG_ACTIONS) << "setting instant action" << std::endl;
+	      act->set_pingu(this);
+	      set_action(act);
+	      ret_val = true;
+	    }
+          else
+	    {
+	      pout(PINGUS_DEBUG_ACTIONS) << "change from action " << action->get_name () << " not allowed" << std::endl;
+	      ret_val = false;
+	    }
+          break;
+                
+        case WALL_TRIGGERED:
     
-	if (act->get_type() == action->get_type()) 
-	  {
-	    pout(PINGUS_DEBUG_ACTIONS) << "Pingu: Already have action" << std::endl;
-	    ret_val = false;
-	  } 
-	else if (action->change_allowed(act->get_type()))
-	  {
-	    pout(PINGUS_DEBUG_ACTIONS) << "setting instant action" << std::endl;
-	    act->set_pingu(this);
-	    set_action(act);
-	    ret_val = true;
-	  }
-	else
-	  {
-	    pout(PINGUS_DEBUG_ACTIONS) << "change from action " << action->get_name () << " not allowed" << std::endl;
-	    ret_val = false;
-	  }
-	break;
-                  
-      case WALL_TRIGGERED:
-      
-	if (wall_action && wall_action->get_type() == act->get_type())
-	  {
-	    pout(PINGUS_DEBUG_ACTIONS) << "Not using wall action, we have already" << std::endl;
-	    ret_val = false;
-	  }
-	else
-	  {
-	    pout(PINGUS_DEBUG_ACTIONS) << "Setting wall action" << std::endl;
-	    wall_action = act;
-	    ret_val = true;
-	  }
-	break;
-      
-      case FALL_TRIGGERED:
+          if (wall_action && wall_action->get_type() == act->get_type())
+	    {
+	      pout(PINGUS_DEBUG_ACTIONS) << "Not using wall action, we have already" << std::endl;
+	      ret_val = false;
+	    }
+          else
+	    {
+	      pout(PINGUS_DEBUG_ACTIONS) << "Setting wall action" << std::endl;
+	      wall_action = act;
+	      ret_val = true;
+	    }
+          break;
     
-	if (fall_action && fall_action->get_type() == act->get_type())
-	  {
-	    pout(PINGUS_DEBUG_ACTIONS) << "Not using fall action, we have already" << std::endl;
-	    ret_val = false;
-	  }
-	else
-	  {
-	    pout(PINGUS_DEBUG_ACTIONS) << "Setting fall action" << std::endl;
-	    fall_action = act;
-	    ret_val = true;
-	  }
-	break;
+        case FALL_TRIGGERED:
+  
+          if (fall_action && fall_action->get_type() == act->get_type())
+	    {
+	      pout(PINGUS_DEBUG_ACTIONS) << "Not using fall action, we have already" << std::endl;
+	      ret_val = false;
+	    }
+          else
+	    {
+	      pout(PINGUS_DEBUG_ACTIONS) << "Setting fall action" << std::endl;
+	      fall_action = act;
+	      ret_val = true;
+	    }
+          break;
 
-      case COUNTDOWN_TRIGGERED:
-    
-	if (countdown_action && countdown_action->get_type() == act->get_type())
-	  {
-	    pout(PINGUS_DEBUG_ACTIONS) << "Not using countdown action, we have already" << std::endl;
-	    ret_val = false;
-	    break;
-	  }
-        
-	pout(PINGUS_DEBUG_ACTIONS) << "Setting countdown action" << std::endl;
-	// We set the action and start the countdown
-	action_time = act->activation_time();
-	countdown_action = act;
-	ret_val = true;
-	break;
-	    
-      default:
-	pout(PINGUS_DEBUG_ACTIONS) << "unknown action activation_mode" << std::endl;     
-	assert(0);
-	ret_val = false;
-	break;
+        case COUNTDOWN_TRIGGERED:
+  
+          if (countdown_action && countdown_action->get_type() == act->get_type())
+	    {
+	      pout(PINGUS_DEBUG_ACTIONS) << "Not using countdown action, we have already" << std::endl;
+	      ret_val = false;
+	      break;
+	    }
+      
+          pout(PINGUS_DEBUG_ACTIONS) << "Setting countdown action" << std::endl;
+          // We set the action and start the countdown
+          action_time = act->activation_time();
+          countdown_action = act;
+          ret_val = true;
+          break;
+	  
+        default:
+          pout(PINGUS_DEBUG_ACTIONS) << "unknown action activation_mode" << std::endl;     
+          assert(0);
+          ret_val = false;
+          break;
       }
     }
 
@@ -219,14 +202,14 @@ Pingu::request_set_action (ActionName action_name)
 }
 
 void
-Pingu::set_action(ActionName action_name) 
+Pingu::set_action (ActionName action_name) 
 {
   set_action (PinguActionFactory::instance ()->create (action_name));
 }
 
 // Sets an action without any checking
 void
-Pingu::set_action(PinguAction* act) 
+Pingu::set_action (PinguAction* act) 
 {
   assert(act);
   action = act;
@@ -258,20 +241,20 @@ Pingu::request_wall_action ()
 }
 
 PinguStatus
-Pingu::get_status(void) const
+Pingu::get_status (void) const
 {
   return status;
 }
 
 PinguStatus
-Pingu::set_status(PinguStatus s)
+Pingu::set_status (PinguStatus s)
 {
   return (status = s);
 }
 
 // Returns true if the given koordinates are above the pingu
 bool
-Pingu::is_over(int x, int y)
+Pingu::is_over (int x, int y)
 {
   CL_Vector center = get_center_pos ();
 
@@ -285,9 +268,9 @@ Pingu::is_inside (int x1, int y1, int x2, int y2)
   assert (x1 < x2);
   assert (y1 < y2);
 
-  return (pos.x > x1 && pos.x < x2 
+  return (pos_x > x1 && pos_x < x2 
 	  &&
-	  pos.y > y1 && pos.y < y2);
+	  pos_y > y1 && pos_y < y2);
 }
 
 // Returns the distance between the Pingu and a given coordinate
@@ -301,7 +284,7 @@ Pingu::dist (int x, int y)
 
 // Let the pingu do his job (i.e. walk his way)
 void
-Pingu::update(float delta)
+Pingu::update (float delta)
 {
   if (status == PS_DEAD)
     return;
@@ -336,9 +319,9 @@ Pingu::update(float delta)
 
 // Draws the pingu on the screen with the given offset
 void
-Pingu::draw_offset(int x, int y, float s)
+Pingu::draw_offset (int x, int y, float s)
 {
-  char str[64];
+  char str[16];
   y += 2;
 
   action->draw_offset(x, y,s);
@@ -348,16 +331,17 @@ Pingu::draw_offset(int x, int y, float s)
       // FIXME: some people preffer a 5-0 or a 9-0 countdown, not sure
       // FIXME: about that got used to the 50-0 countdown [counting is
       // FIXME: in ticks, should probally be in seconds]
-      sprintf(str, "%d", action_time);
+      snprintf(str, 16, "%d", action_time);
       
       if (s == 1.0) 
 	{
-	  font->print_center(int(pos.x + x), int(pos.y - 45) + y, str);
+	  font->print_center(static_cast<int>(pos_x + x), static_cast<int>(pos_y - 45) + y, str);
 	} 
       else if (s > 1.0) 
 	{
-	  font->print_left(int((pos.x + x) * s), (int)((pos.y - 45 + y) * s) - (int(font->get_text_width(str) * s) / 2),
-			   int(s), int(s),
+	  font->print_left(static_cast<int>((pos_x + x) * s),
+	                   static_cast<int>((pos_y - 45 + y) * s) - (static_cast<int>(font->get_text_width(str) * s) / 2),
+			   static_cast<int>(s), static_cast<int>(s),
 			   str);
 	}
       else 
@@ -368,64 +352,68 @@ Pingu::draw_offset(int x, int y, float s)
 }
 
 int
-Pingu::rel_getpixel(int x, int y)
+Pingu::rel_getpixel (int x, int y)
 {
-  return world->get_colmap()->getpixel(int(pos.x + (x * direction)), int((pos.y) - y));
+  return WorldObj::get_world()->get_colmap()->getpixel(static_cast<int>(pos_x + (x * direction)), 
+                                                       static_cast<int>(pos_y - y));
 }
 
 void
-Pingu::catch_pingu(Pingu* pingu)
+Pingu::catch_pingu (Pingu* pingu)
 {
   action->catch_pingu(pingu);
 }
 
 bool
-Pingu::need_catch()
+Pingu::need_catch ()
 {
-  if (status == PS_DEAD)
+  if (status == PS_DEAD || status == PS_EXITED)
     return false;
   
   return action->need_catch();
 }
 
 void
-Pingu::set_direction(Direction d)
+Pingu::set_direction (Direction d)
 {
   direction = d;
 }
 
 bool
-Pingu::is_alive(void)
+Pingu::is_alive (void)
 {
-  if (status != PS_DEAD && status != PS_EXITED)
-    return true;
-  else 
-    return false;
+  return (status != PS_DEAD && status != PS_EXITED);
 }
 
 PinguAction*
-Pingu::get_action()
+Pingu::get_action ()
 {
   return action;
 }
 
 void
-Pingu::apply_force(CL_Vector arg_v)
+Pingu::apply_force (CL_Vector arg_v)
 {
-  velocity += arg_v;
+  *velocity += arg_v;
   // Moving the pingu on pixel up, so that the force can take effect
   // FIXME: this should be handled by a state-machine
-  pos.y -= 1; 
+  --pos_y; 
 }
 
 CL_Vector
-Pingu::get_center_pos ()
+Pingu::get_pos () const
 {
-  return pos + CL_Vector (0, -16); 
+  return CL_Vector(pos_x, pos_y, 0);
+}
+
+CL_Vector
+Pingu::get_center_pos () const
+{
+  return CL_Vector(pos_x, pos_y) + CL_Vector (0, -16); 
 }
 
 int 
-Pingu::set_id(int i)
+Pingu::set_id (int i)
 {
   return (id = i);
 }

@@ -1,4 +1,4 @@
-//  $Id: weather_obj.cxx,v 1.5 2002/07/02 13:36:07 torangan Exp $
+//  $Id: weather_obj.cxx,v 1.6 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -85,7 +85,7 @@ WeatherObj::write_xml(std::ostream& xml)
 EditorObj*
 WeatherObj::duplicate()
 {
-  return new WeatherObj(*this);
+  return new WeatherObj(static_cast<WeatherData>(*this));
 }
 
 void 

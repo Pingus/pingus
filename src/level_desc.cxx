@@ -1,4 +1,4 @@
-//  $Id: level_desc.cxx,v 1.6 2002/08/23 15:49:49 torangan Exp $
+//  $Id: level_desc.cxx,v 1.7 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -78,10 +78,10 @@ PingusLevelDesc::draw(PingusLevelDesc::LoadingStatus status)
     }
 
   {
-    char str[1024];
-    sprintf(str, _("Pingus to Save: %d"), plf->get_number_to_save());
+    char str[64];
+    snprintf(str, 64, _("Pingus to Save: %d"), plf->get_number_to_save());
     font->print_center(CL_Display::get_width() / 2, y_pos, str);
-    sprintf(str, _("Number of Pingus: %d"), plf->get_pingus());
+    snprintf(str, 64, _("Number of Pingus: %d"), plf->get_pingus());
     font->print_center(CL_Display::get_width() / 2, (y_pos += 20), str);
   }
 

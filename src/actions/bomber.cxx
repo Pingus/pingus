@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.9 2002/08/25 09:08:49 torangan Exp $
+//  $Id: bomber.cxx,v 1.10 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,11 +46,11 @@ namespace Actions {
   void
   Bomber::on_successfull_apply (Pingu* pingu)
   {
-    pingu->get_world ()->play_wav("sounds/ohno.wav", pingu->get_pos ());
+    WorldObj::get_world()->play_wav("sounds/ohno.wav", pingu->get_pos ());
   }
 
   void
-  Bomber::init()
+  Bomber::init ()
   {
     // Only load the surface again if no static_surface is available
     if (!static_surface_loaded) 
@@ -69,24 +69,27 @@ namespace Actions {
   }
 
   void
-  Bomber::draw_offset(int x, int y, float /*s*/)
+  Bomber::draw_offset (int x, int y, float s)
   {
     if (sprite.get_frame () >= 13 && !gfx_exploded) 
       {
-        explo_surf.put_screen(pingu->get_x () - 32 + x, pingu->get_y () - 48 + y);
+        explo_surf.put_screen(static_cast<int>(pingu->get_x () - 32 + x), 
+	                      static_cast<int>(pingu->get_y () - 48 + y));
         gfx_exploded = true;
       }
 
-    sprite.put_screen(pingu->get_x () + x, pingu->get_y () + y);
+    sprite.put_screen(static_cast<int>(pingu->get_x () + x, pingu->get_y () + y));
+    
+    UNUSED_ARG(s);
   }
 
   void
-  Bomber::update(float delta)
+  Bomber::update (float delta)
   {
     sprite.update (delta);
 
     if (sprite.get_frame () > 9 && !sound_played) {
-      pingu->get_world ()->play_wav("sounds/plop.wav", pingu->get_pos ());
+      WorldObj::get_world()->play_wav("sounds/plop.wav", pingu->get_pos ());
       sound_played = true;
     }
 
@@ -94,7 +97,8 @@ namespace Actions {
     if (sprite.get_frame () > 12 && !particle_thrown) 
       {
         particle_thrown = true;
-        pingu->get_world()->get_particle_holder()->add_pingu_explo(pingu->get_x (), pingu->get_y () - 5);
+        WorldObj::get_world()->get_particle_holder()->add_pingu_explo(static_cast<int>(pingu->get_x()),
+	                                                              static_cast<int>(pingu->get_y()) - 5);
       }
 
 
@@ -102,12 +106,12 @@ namespace Actions {
       {
         colmap_exploded = true;
 
-        pingu->get_world()->get_colmap()->remove(bomber_radius,
-					         pingu->get_x () - (bomber_radius.get_width()/2),
-					         pingu->get_y () - 16 - (bomber_radius.get_width()/2));
-        pingu->get_world()->get_gfx_map()->remove(bomber_radius_gfx, 
-						  pingu->get_x () - (bomber_radius.get_width()/2),
-						  pingu->get_y () - 16 - (bomber_radius.get_width()/2));
+        WorldObj::get_world()->get_colmap()->remove(bomber_radius,
+					         static_cast<int>(pingu->get_x () - (bomber_radius.get_width()/2)),
+					         static_cast<int>(pingu->get_y () - 16 - (bomber_radius.get_width()/2)));
+        WorldObj::get_world()->get_gfx_map()->remove(bomber_radius_gfx, 
+						  static_cast<int>(pingu->get_x () - (bomber_radius.get_width()/2)),
+						  static_cast<int>(pingu->get_y () - 16 - (bomber_radius.get_width()/2)));
       
         // Add an explosion to the forces list
         ForcesHolder::add_force(ExplosionForce(5,30,CL_Vector(pingu->get_x (),
@@ -126,11 +130,10 @@ namespace Actions {
   Bomber::update_position(float delta)
   {
     // Apply all forces
-    pingu->velocity = ForcesHolder::apply_forces(pingu->pos, pingu->velocity);
-    // FIXME:
-    pingu->pos += pingu->velocity;
+    pingu->set_velocity(ForcesHolder::apply_forces(pingu->get_pos(), pingu->get_velocity()));
+    pingu->set_pos(pingu->get_pos() + pingu->get_velocity());
   
-    if(delta);
+    UNUSED_ARG(delta);
   }
 
 }

@@ -1,4 +1,4 @@
-//  $Id: pingu_action.hxx,v 1.12 2002/08/25 09:08:48 torangan Exp $
+//  $Id: pingu_action.hxx,v 1.13 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_PINGU_ACTION_HXX
 #define HEADER_PINGUS_PINGU_ACTION_HXX
 
-#include "worldobj.hxx"
 #include "pingu_enums.hxx"
 
 class Pingu;
@@ -38,7 +37,7 @@ enum ActionType
     used to inherit classes which represent the actions. The actions
     are stored in a seperate library, have a look in actions/ for some
     examples. */
-class PinguAction : public WorldObj
+class PinguAction
 {
 protected:
   /** A pointer to the pingu, which hold the action. */
@@ -106,9 +105,6 @@ public:
       another action can be applied, false otherwise (exiter,
       splashed, etc.) */
   virtual bool catchable () { return true; }
-
-  // FIXME: z_pos is currently unused for pingu actions
-  virtual float get_z_pos () const { return 0; }
 
   /// True if Pingu in specified position would bang its head if it were walking
   bool head_collision_on_walk (int x, int y);

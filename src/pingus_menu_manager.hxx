@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.hxx,v 1.9 2002/08/23 15:49:50 torangan Exp $
+//  $Id: pingus_menu_manager.hxx,v 1.10 2002/09/04 14:55:11 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,8 +26,6 @@
 #include "pingus_menu.hxx"
 #include "intro.hxx"
 #include "option_menu.hxx"
-#include "game_delta.hxx"
-#include "screen.hxx"
 
 class PingusSubMenu;
 

@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.hxx,v 1.6 2002/08/23 15:49:50 torangan Exp $
+//  $Id: res_descriptor.hxx,v 1.7 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_RES_DESCRIPTOR_HXX
 #define HEADER_PINGUS_RES_DESCRIPTOR_HXX
 
-#include <string>
 #include "resource_modifier.hxx"
 
 /// Resource descriptor, tells were to find a resource.

@@ -1,4 +1,4 @@
-//  $Id: trap_data.cxx,v 1.6 2002/08/23 15:49:51 torangan Exp $
+//  $Id: trap_data.cxx,v 1.7 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,13 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <fstream>
-#include "traps/smasher.hxx"
-#include "traps/hammer.hxx"
-#include "traps/fake_exit.hxx"
-#include "traps/guillotine.hxx"
-#include "traps/laser_exit.hxx"
-#include "traps/spike.hxx"
-#include "traps/bumper.hxx"
 
 #include "pingus_error.hxx"
 #include "editor/plfobj.hxx"
@@ -100,7 +93,7 @@ TrapData::write_xml(std::ostream& xml)
 
 WorldObj* 
 TrapData::create_WorldObj ()
-{
+{/*
   if (type == "smasher") {
     return new Smasher(*this);
   } else if (type == "hammer") {
@@ -117,7 +110,7 @@ TrapData::create_WorldObj ()
     return new Bumper(*this);
   }
   PingusError::raise("Trap: `" + type + "' is unknown");
-  
+  */
   return 0; // never reached;
 }
 

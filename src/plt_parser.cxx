@@ -1,4 +1,4 @@
-//  $Id: plt_parser.cxx,v 1.4 2002/08/16 15:13:59 torangan Exp $
+//  $Id: plt_parser.cxx,v 1.5 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -87,8 +87,8 @@ PLTParser::add_pair(string keyword, string value)
   } else if (keyword == "Background") {
     background_image = value;
   } else {
-    char str[1024];
-    sprintf(str, _("Unexpected keyword: '%s' at line: %d"), keyword.c_str(), lineno);
+    char str[128];
+    snprintf(str, 128, _("Unexpected keyword: '%s' at line: %d"), keyword.c_str(), lineno);
     PingusError::raise(str);
   }
 }
@@ -128,8 +128,8 @@ PLTParser::expect(char ch)
   c = get_char();
 
   if (c != ch) {
-    char str[1024];
-    sprintf(str, "Unexpected '%c' at line: %d", c, lineno);
+    char str[48];
+    snprintf(str, 48, "Unexpected '%c' at line: %d", c, lineno);
     PingusError::raise(str);
   }
   jump_spaces();

@@ -1,4 +1,4 @@
-//  $Id: hammer.hxx,v 1.3 2002/08/23 15:49:56 torangan Exp $
+//  $Id: hammer.hxx,v 1.1 2002/09/04 14:55:13 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,31 +17,44 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_TRAPS_HAMMER_HXX
-#define HEADER_PINGUS_TRAPS_HAMMER_HXX
+#ifndef HEADER_PINGUS_WORLDOBJS_HAMMER_HXX
+#define HEADER_PINGUS_WORLDOBJS_HAMMER_HXX
 
-#include "../trap.hxx"
+#include "../worldobj.hxx"
 
-class TrapData;
+namespace WorldObjsData {
+  class HammerData;
+}
 
-///
-class Hammer : public Trap
-{
-private:
-  bool particle_thrown;
-public:
-  Hammer(const TrapData& data);
-  virtual ~Hammer();
+class Pingu;
 
-  void update(float delta);
-  
-protected:
-  void catch_pingu(Pingu*);
-  
-private:
-  Hammer (const Hammer&);
-  Hammer operator= (const Hammer&);
-};
+
+namespace WorldObjs {
+
+  class Hammer : public WorldObj
+  {
+  private:
+    bool particle_thrown;
+    WorldObjsData::HammerData* const data;
+    
+  public:
+    Hammer (WorldObjsData::HammerData* data_);
+   ~Hammer ();
+
+    float get_z_pos () const;
+
+    void draw_offset (int x, int y, float s);
+    void update (float delta);
+
+  protected:
+    void catch_pingu (Pingu*);
+
+  private:
+    Hammer (const Hammer&);
+    Hammer operator= (const Hammer&);
+  };
+
+}
 
 #endif
 

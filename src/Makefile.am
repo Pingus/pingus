@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.91 2002/08/24 11:37:29 torangan Exp $
+#  $Id: Makefile.am,v 1.92 2002/09/04 14:55:11 torangan Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,13 +29,14 @@ SUBDIRS = \
 	backgrounds         \
 	caimagemanipulation \
 	editor              \
+	editorobjs          \
 	entrances           \
 	generic             \
         gui                 \
         input               \
 	particles           \
-	traps               \
         worldobjs           \
+	worldobjsdata       \
 	worldmap
 
 EXTRA_DIST = README \
@@ -56,8 +57,11 @@ pingus_LDADD = \
         @LIBS@     \
         \
         caimagemanipulation/libcaimagemanipulation.a \
+	editorobjs/libpingus_editorobjs.a \
+	worldobjsdata/libpingus_worldobjsdata.a \
         worldobjs/libpingus_worldobjs.a \
-	traps/libpingu_traps.a          \
+	worldobjsdata/libpingus_worldobjsdata.a \
+	editorobjs/libpingus_editorobjs.a \
         actions/libpingu_actions.a      \
         entrances/libpingus_entrances.a \
         particles/libpingus_particle.a  \

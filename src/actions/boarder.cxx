@@ -1,4 +1,4 @@
-//  $Id: boarder.cxx,v 1.5 2002/08/25 09:08:49 torangan Exp $
+//  $Id: boarder.cxx,v 1.6 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Core/Math/cl_vector.h>
 #include "../pingu.hxx"
 #include "../pingus_resource.hxx"
 #include "../string_converter.hxx"
@@ -31,7 +32,7 @@ namespace Actions {
   void
   Boarder::init()
   {
-    x_pos = pingu->pos.x;
+    x_pos = pingu->get_x();
     speed = 0.0;
     sprite = Sprite (PingusResource::load_surface 
 		     ("Pingus/boarder" + to_string(pingu->get_owner ()),
@@ -57,16 +58,16 @@ namespace Actions {
         }
       
         // Incremental update so that we don't skip pixels
-        double new_x_pos = pingu->pos.x + pingu->direction * speed;
-        while (int(new_x_pos) != int(pingu->pos.x))
+        double new_x_pos = pingu->get_pos().x + pingu->direction * speed;
+        while (new_x_pos != pingu->get_x())
 	  {
-	    double old_pos = pingu->pos.x;
-	    pingu->pos.x += (int(pingu->pos.x) < int(new_x_pos)) ? 1 : -1;
+	    double old_pos = pingu->get_pos().x;
+	    pingu->set_x(old_pos + (pingu->get_x() < new_x_pos) ? 1 : -1);
 	  
 	    if (pingu->rel_getpixel (1, 0))
 	      {
 	        // Hit a wall
-	        pingu->pos.x = old_pos;// + (pingu->direction * 10);
+	        pingu->set_x(old_pos); // + (pingu->direction * 10);
 	        ////pingu->pos.y = 10;
 
       	        pingu->apply_force (CL_Vector(speed * pingu->direction * 0.5,
@@ -86,8 +87,8 @@ namespace Actions {
   void   
   Boarder::draw_offset(int x_of, int y_of, float s)
   {
-    sprite.put_screen (pingu->get_x () + x_of,
-		       pingu->get_y () + y_of);
+    sprite.put_screen (static_cast<int>(pingu->get_x () + x_of),
+		       static_cast<int>(pingu->get_y () + y_of));
     UNUSED_ARG(s);
   }
 

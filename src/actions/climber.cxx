@@ -1,4 +1,4 @@
-//  $Id: climber.cxx,v 1.7 2002/08/25 09:08:49 torangan Exp $
+//  $Id: climber.cxx,v 1.8 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,7 +65,7 @@ namespace Actions {
         // and there is still ground to walk on
         if (rel_getpixel(1, 1) !=  GroundpieceData::GP_NOTHING) 
 	  {
-	    --pingu->pos.y;
+	    pingu->set_pos(pingu->get_y() - 1);
 	    return;
 	  }
         else if (rel_getpixel(1, 1) ==  GroundpieceData::GP_NOTHING) 
@@ -76,8 +76,7 @@ namespace Actions {
             if (!head_collision_on_walk(pingu->direction, 1))
               {
               // Get ready to walk
-  	    --pingu->pos.y;
-	      pingu->pos.x += pingu->direction;
+	      pingu->set_pos(pingu->get_x() + pingu->direction, pingu->get_y() - 1);
               }
             else
               {
@@ -100,7 +99,7 @@ namespace Actions {
   void
   Climber::draw_offset(int x, int y, float s)
   {
-    sprite.put_screen (pingu->get_pos () + CL_Vector (x, y));
+    sprite.put_screen (pingu->get_pos() + CL_Vector (x, y));
     UNUSED_ARG(s);
   }
 

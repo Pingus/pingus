@@ -1,4 +1,4 @@
-//  $Id: string_converter.cxx,v 1.5 2002/07/08 17:05:09 grumbel Exp $
+//  $Id: string_converter.cxx,v 1.6 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,24 +48,24 @@ StringConverter::to_float(const std::string& str)
 std::string 
 StringConverter::to_string (int i)
 {
-  char buffer[64];
-  sprintf (buffer, "%d", i);
+  char buffer[16];
+  snprintf (buffer, 16, "%d", i);
   return buffer;
 }
 
 std::string 
 StringConverter::to_string (long int i)
 {
-  char buffer[128];
-  sprintf (buffer, "%ld", i);
+  char buffer[32];
+  snprintf (buffer, 32, "%ld", i);
   return buffer;
 }
 
 std::string 
 StringConverter::to_string (float i)
 {
-  char buffer[256];
-  sprintf (buffer, "%f", i);
+  char buffer[48];
+  snprintf (buffer, 48, "%f", i);
   return buffer;
 }
 

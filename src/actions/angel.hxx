@@ -1,4 +1,4 @@
-//  $Id: angel.hxx,v 1.7 2002/08/25 09:08:49 torangan Exp $
+//  $Id: angel.hxx,v 1.8 2002/09/04 14:55:12 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,13 +32,15 @@ namespace Actions {
     double counter;
     double x_pos;
     Sprite sprite;
+    
   public:
     Angel ();
-    void  init();
-    std::string get_name() const { return "Angel"; }
-    ActionName get_type() const { return Actions::Angel; }
-    void  update(float delta);
-    void  draw_offset(int, int, float s);
+    void  init ();
+    std::string get_name () const { return "Angel"; }
+    ActionName get_type () const { return Actions::Angel; }
+    
+    void  update (float delta);
+    void  draw_offset (int, int, float s);
 
   private:
     Angel (const Angel&);

@@ -1,4 +1,4 @@
-//  $Id: button_panel.hxx,v 1.9 2002/08/23 15:49:48 torangan Exp $
+//  $Id: button_panel.hxx,v 1.10 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include <vector>
 
 #include "action_button.hxx"
-#include "gui/component.hxx"
 
 class CL_Key;
 class Client;

@@ -1,4 +1,4 @@
-//  $Id: console.hxx,v 1.7 2002/08/23 15:49:48 torangan Exp $
+//  $Id: console.hxx,v 1.8 2002/09/04 14:55:11 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_CONSOLE_HXX
 #define HEADER_PINGUS_CONSOLE_HXX
 
-#include <list>
 #include <string>
 #include <iostream>
 #include "display.hxx"

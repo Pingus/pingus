@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.6 2002/06/12 19:03:10 grumbel Exp $
+#  $Id: Makefile.am,v 1.7 2002/09/04 14:55:12 torangan Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,17 @@
 noinst_LIBRARIES = libpingus_worldobjs.a
 
 libpingus_worldobjs_a_SOURCES = \
-        teleporter.cxx     teleporter.hxx   \
-        ice_block.cxx      ice_block.hxx     \
+	bumper.cxx         bumper.hxx        \
         conveyor_belt.cxx  conveyor_belt.hxx \
+	fake_exit.cxx      fake_exit.hxx     \
+	guillotine.cxx     guillotine.hxx    \
+	hammer.cxx         hammer.hxx        \
+        ice_block.cxx      ice_block.hxx     \
+        info_box.cxx       info_box.hxx      \
+	laser_exit.cxx     laser_exit.hxx    \
+	smasher.cxx        smasher.hxx       \
+	spike.cxx          spike.hxx         \
         switch_door.cxx    switch_door.hxx   \
-        info_box.cxx       info_box.hxx
+        teleporter.cxx     teleporter.hxx
 
 ## EOF ##

@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.17 2002/08/25 09:08:49 torangan Exp $
+//  $Id: walker.cxx,v 1.18 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,22 +27,22 @@
 namespace Actions {
 
   void
-  Walker::init(void)
+  Walker::init (void)
   {
-    walker = Sprite ("Pingus/walker" + to_string(pingu->get_owner ()), "pingus");
-    walker.set_align_center_bottom ();
+    walker = Sprite("Pingus/walker" + to_string(pingu->get_owner ()), "pingus");
+    walker.set_align_center_bottom();
   
     // Reset the velocity
-    pingu->velocity = CL_Vector ();
+    pingu->set_velocity(CL_Vector());
   }
 
   void
-  Walker::update(float delta)
+  Walker::update (float delta)
   {
     // update the sprite
-    walker.update (delta);
+    walker.update(delta);
 
-    CL_Vector last_pos = pingu->pos;
+    CL_Vector last_pos = pingu->get_pos();
 
     /* How should this code work?
      
@@ -62,7 +62,7 @@ namespace Actions {
 
     if (rel_getpixel(0, -1) ==  GroundpieceData::GP_WATER)
       {
-        pingu->set_action (Actions::Drown);
+        pingu->set_action(Actions::Drown);
         return;
       }
 
@@ -85,11 +85,11 @@ namespace Actions {
 	
         if (found_ground)
 	  {
-	    pingu->pos.y -= i;
+	    pingu->set_y(pingu->get_y() - i);
 	  }
         else
 	  {
-	    pingu->set_action (Actions::Faller);
+	    pingu->set_action(Actions::Faller);
 	    return;
 	  }
       }
@@ -101,8 +101,7 @@ namespace Actions {
       {
         // simple, stupid, but working bridge code
         // FIXME: We don't check if we 'drift' into a solid ground block
-        pingu->pos.x += pingu->direction;
-        pingu->pos.y -= 1; // pingus 'float' through bridges
+	pingu->set_pos(pingu->get_x() + pingu->direction, pingu->get_y() - 1); // pingus 'float' through bridges
       }
     else 
       { 
@@ -120,11 +119,11 @@ namespace Actions {
         int y_inc = 0;
         int possible_y_step = 0;
         bool found_next_step = false;
-        for(y_inc=-max_steps; y_inc <= max_steps; y_inc++)
+        for (y_inc = -max_steps; y_inc <= max_steps; ++y_inc)
 	  {// up/down-hill scan
-	    if ((rel_getpixel(1, y_inc) ==  GroundpieceData::GP_NOTHING
-	         || rel_getpixel(1, y_inc) ==  GroundpieceData::GP_BRIDGE) // FIXME: This causes a rather huge step
-	        && rel_getpixel(1, y_inc - 1) !=  GroundpieceData::GP_NOTHING)
+	    if ((   rel_getpixel(1, y_inc)     == GroundpieceData::GP_NOTHING
+	         || rel_getpixel(1, y_inc)     == GroundpieceData::GP_BRIDGE) // FIXME: This causes a rather huge step
+	         && rel_getpixel(1, y_inc - 1) != GroundpieceData::GP_NOTHING)
 	      { // FIXME:
 	        found_next_step = true;
 	        possible_y_step = y_inc;
@@ -135,8 +134,8 @@ namespace Actions {
       
         if (found_next_step)
 	  {
-	    pingu->pos.x += pingu->direction;
-	    pingu->pos.y -= possible_y_step; // pos.y has a reversed co-system to rel_getpixel()?
+	    // pos.y has a reversed co-system to rel_getpixel()?
+	    pingu->set_pos(pingu->get_x() + pingu->direction, pingu->get_y() - possible_y_step);
 	  }
         else
 	  {
@@ -156,9 +155,9 @@ namespace Actions {
 	    else
 	      {
 	        // We take the step, so that we are in the air
-	        pingu->pos.x += pingu->direction;
+	        pingu->set_x(pingu->get_x() + pingu->direction);
 	        // We reached a cliff
-	        pingu->set_action (Actions::Faller);
+	        pingu->set_action(Actions::Faller);
 	        return;
 	      }
 	  }
@@ -175,7 +174,7 @@ namespace Actions {
         //if the new position causes a head collision, we are already
         //stuck in a wall, so lets go back to the old position
         pingu->direction.change();
-        pingu->pos = last_pos;
+        pingu->set_pos(last_pos);
         return;
       }
       
@@ -197,14 +196,16 @@ namespace Actions {
   }
 
   void  
-  Walker::draw_offset(int x, int y, float /*s*/)
+  Walker::draw_offset (int x, int y, float s)
   {
-    if (pingu->direction.is_left ())
-      walker.set_direction (Sprite::LEFT);
+    if (pingu->direction.is_left())
+      walker.set_direction(Sprite::LEFT);
     else
-      walker.set_direction (Sprite::RIGHT);
+      walker.set_direction(Sprite::RIGHT);
 
-    walker.put_screen (pingu->pos + CL_Vector (x, y));
+    walker.put_screen(pingu->get_pos() + CL_Vector (x, y));
+    
+    UNUSED_ARG(s);
   }
 
 }

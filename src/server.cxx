@@ -1,4 +1,4 @@
-//  $Id: server.cxx,v 1.12 2002/08/25 09:08:48 torangan Exp $
+//  $Id: server.cxx,v 1.13 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <algorithm>
+#include <iostream>
 #include <stdio.h>
 #include "system.hxx"
 #include "pingu.hxx"
@@ -32,11 +33,11 @@
 using namespace std;
 using Actions::action_from_string;
 
-PingusEvent::PingusEvent()
+PingusEvent::PingusEvent ()
 {
 }
 
-PingusEvent::PingusEvent(std::string event_str)
+PingusEvent::PingusEvent (const std::string& event_str)
 {
   std::string game_time_str;
   std::string::size_type split_pos = event_str.find(":");

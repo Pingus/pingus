@@ -1,4 +1,4 @@
-//  $Id: guillotine.hxx,v 1.3 2002/08/23 15:49:56 torangan Exp $
+//  $Id: spike.hxx,v 1.1 2002/09/04 14:55:13 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,37 +17,44 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_TRAPS_GUILLOTINE_HXX
-#define HEADER_PINGUS_TRAPS_GUILLOTINE_HXX
+#ifndef HEADER_PINGUS_TRAPS_SPIKE_HXX
+#define HEADER_PINGUS_TRAPS_SPIKE_HXX
+
+#include "../worldobj.hxx"
+
+namespace WorldObjsData {
+  class SpikeData;
+}
+
+class Pingu;
 
 
-#include "../direction.hxx"
-#include "../trap.hxx"
+namespace WorldObjs {
 
-class TrapData;
+  class Spike : public WorldObj
+  {
+  private:
+    bool killing;
+    WorldObjsData::SpikeData* data;
 
-///
-class Guillotine : public Trap
-{
-private:
-  bool killing;
-  CL_Surface idle_surf;
-  Direction  direction;
-  GameCounter idle_counter;
-public:
-  Guillotine (const TrapData& data);
-  virtual ~Guillotine();
-  
-  void update (float delta);
-  void draw_offset (int x, int y, float s);
-  
-protected:
-  void catch_pingu (Pingu*);
-  
-private:
-  Guillotine (const Guillotine&);
-  Guillotine operator= (const Guillotine&);
-};
+  public:
+    Spike (WorldObjsData::SpikeData* data_);
+   ~Spike ();
+
+    float get_z_pos () const;
+
+    void draw_offset (int x_of, int y_of, float s = 1.0);
+    void update (float delta);
+
+  protected:
+    void catch_pingu (Pingu*);
+
+  private:
+    Spike (const Spike&);
+    Spike operator= (const Spike&);
+  };
+
+}
 
 #endif
 

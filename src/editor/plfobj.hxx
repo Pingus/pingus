@@ -1,4 +1,4 @@
-//  $Id: plfobj.hxx,v 1.7 2002/08/23 15:49:54 torangan Exp $
+//  $Id: plfobj.hxx,v 1.8 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,7 +76,6 @@ private:
   TrapObj operator= (const TrapObj&);
 };
 
-///
 class LiquidObj : public SpriteEditorObj,
 		  protected LiquidData
 {

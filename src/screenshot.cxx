@@ -1,4 +1,4 @@
-//  $Id: screenshot.cxx,v 1.5 2002/08/17 17:56:23 torangan Exp $
+//  $Id: screenshot.cxx,v 1.6 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -161,11 +161,11 @@ std::string
 Screenshot::get_filename()
 {
   std::string tmp_filename;
-  char str [256];
+  char str [16];
   int i = 1;
 
   do {
-    sprintf(str, "%d.pnm", i);
+    snprintf(str, 16, "%d.pnm", i);
     tmp_filename = System::get_statdir() + "screenshots/" 
       + "pingus-" + get_date() + "-" + std::string(str);
     ++i;

@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.cxx,v 1.7 2002/08/23 15:49:57 torangan Exp $
+//  $Id: conveyor_belt.cxx,v 1.8 2002/09/04 14:55:13 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -227,8 +227,8 @@ EditorConveyorBeltObj::create (const CL_Vector& pos)
 std::string 
 EditorConveyorBeltObj::status_line()
 {
-  char str[1024];
-  sprintf (str, "ConveyorBelt - (%f, %f, %f) Speed: %f", pos.x, pos.y, pos.z, speed);
+  char str[256];
+  snprintf (str, 256, "ConveyorBelt - (%f, %f, %f) Speed: %f", pos.x, pos.y, pos.z, speed);
   return str;
 }
 

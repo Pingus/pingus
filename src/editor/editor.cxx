@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.28 2002/08/23 15:49:54 torangan Exp $
+//  $Id: editor.cxx,v 1.29 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,6 @@
 #include "editor.hxx"
 
 #include <cstdio>
-#include <string>
 
 using namespace Pingus::Editor;
 

@@ -1,4 +1,4 @@
-//  $Id: bumper.hxx,v 1.3 2002/08/23 15:49:56 torangan Exp $
+//  $Id: spike_obj.hxx,v 1.1 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,33 +17,40 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_TRAPS_BUMPER_HXX
-#define HEADER_PINGUS_TRAPS_BUMPER_HXX
+#ifndef HEADER_PINGUS_EDITOROBJS_SPIKE_OBJ_HXX
+#define HEADER_PINGUS_EDITOROBJS_SPIKE_OBJ_HXX
 
-#include "../trap.hxx"
+#include "../editor/sprite_editorobj.hxx"
 
-///
-class Bumper : public Trap
-{
-private:
-  bool upwards;
-  int count;
+namespace WorldObjsData {
+  class SpikeData;
+}
 
-public:
-  Bumper(const TrapData& data);
-  virtual ~Bumper();
+namespace EditorObjs {
 
-  void draw_offset(int x, int y, float s);
-  void draw_colmap();
-  void update(float delta);
-  
-protected:
-  void catch_pingu(Pingu* pingu);
-  
-private:
-  Bumper (const Bumper&);
-  Bumper operator= (const Bumper&);
-};
+  class SpikeObj : public SpriteEditorObj
+  {
+    private:
+      int frame;
+      WorldObjsData::SpikeData* const data;
+    
+    public:
+      SpikeObj (WorldObjsData::SpikeData* data_);
+     ~SpikeObj ();
+     
+      EditorObj* duplicate ();
+      
+      void write_xml (std::ostream& xml);
+      void draw (EditorView* view);
+      
+      std::string status_line ();
+    
+    private:
+      SpikeObj (const SpikeObj&);
+      SpikeObj operator= (const SpikeObj&);
+  };
+
+}
 
 #endif
 

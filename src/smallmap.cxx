@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.11 2002/08/17 17:56:23 torangan Exp $
+//  $Id: smallmap.cxx,v 1.12 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -199,21 +199,23 @@ SmallMap::draw_pingus()
 {
   int x;
   int y;
-  PinguHolder* pingus = client->get_server()->get_world()->get_pingu_p();
+  World* const& world = client->get_server()->get_world();
+  PinguHolder* pingus = world->get_pingu_p();
 
   for(PinguIter i = pingus->begin(); i != pingus->end(); ++i)
     {
       //FIXME: Replace this with put pixel
-      x = x_pos + ((*i)->get_x() * width / client->get_server()->get_world()->get_colmap()->get_width());
-      y = y_pos + ((*i)->get_y() * height / client->get_server()->get_world()->get_colmap()->get_height());
+      x = static_cast<int>(x_pos + ((*i)->get_x() * width  / world->get_colmap()->get_width()));
+      y = static_cast<int>(y_pos + ((*i)->get_y() * height / world->get_colmap()->get_height()));
 
       CL_Display::draw_line(x, y, x, y-1, 1.0, 1.0, 0.0, 1.0);
     }
 }
 
 void
-SmallMap::update(float /*delta*/)
+SmallMap::update (float delta)
 {
+  UNUSED_ARG(delta);
 }
 
 bool
@@ -224,22 +226,22 @@ SmallMap::is_at (int x, int y)
 }
 
 void
-SmallMap::on_pointer_move(int x, int y)
+SmallMap::on_pointer_move (int x, int y)
 {
   int cx, cy;
   ColMap* colmap = client->get_server()->get_world()->get_colmap();
 
   if (scroll_mode)
     {
-      cx = (x - x_pos) * int(colmap->get_width()) / width;
-      cy = (y - y_pos) * int(colmap->get_height()) / height ;
+      cx = (x - x_pos) * static_cast<int>(colmap->get_width()  / width);
+      cy = (y - y_pos) * static_cast<int>(colmap->get_height() / height);
       
       client->get_playfield()->set_viewpoint(cx, cy);
     }
 }
 
 void
-SmallMap::on_primary_button_press(int x, int y)
+SmallMap::on_primary_button_press (int x, int y)
 {
   scroll_mode = true;
 

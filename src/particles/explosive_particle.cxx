@@ -1,4 +1,4 @@
-//  $Id: explosive_particle.cxx,v 1.1 2002/06/12 19:11:31 grumbel Exp $
+//  $Id: explosive_particle.cxx,v 1.2 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,8 +25,8 @@
 #include "explosive_particle.hxx"
 
 ExplosiveParticle::ExplosiveParticle (int x, int y, float x_a, float y_a)
-  : Particle (x, y, x_a, y_a),
-    alive (true) 
+                                    : Particle (x, y, x_a, y_a),
+                                      alive (true) 
 {  
   sprite = Sprite (PingusResource::load_surface 
 		   ("Particles/explosive",
@@ -53,14 +53,14 @@ ExplosiveParticle::update(float delta)
       pos -= incr;
 
       if (pos.x < 0 || pos.y < 0 
-	  || pos.x + 1 > world->get_width ()
-	  || pos.y + 1 > world->get_height ())
+	  || pos.x + 1 > WorldObj::get_world()->get_width ()
+	  || pos.y + 1 > WorldObj::get_world()->get_height ())
 	{
 	  alive = false;
 	  return;
 	}
 
-      if (world->get_colmap ()->getpixel ((int) pos.x, (int) pos.y))
+      if (WorldObj::get_world()->get_colmap ()->getpixel ((int) pos.x, (int) pos.y))
 	{
 	  detonate ();
 	}
@@ -74,13 +74,13 @@ ExplosiveParticle::detonate ()
 {
   alive = false;
   CL_Surface bomber_radius = PingusResource::load_surface ("Other/bomber_radius", "pingus");
-  world->get_particle_holder ()->add_pingu_explo((int)pos.x, (int)pos.y);
+  WorldObj::get_world()->get_particle_holder ()->add_pingu_explo((int)pos.x, (int)pos.y);
 
   // FIXME: Ugly do handle the colmap and the gfx map seperatly
-  world->get_colmap()->remove(bomber_radius,
+  WorldObj::get_world()->get_colmap()->remove(bomber_radius,
 			      int(pos.x) - (bomber_radius.get_width()/2),
 			      int(pos.y) - (bomber_radius.get_height()/2));
-  world->get_gfx_map()->remove(bomber_radius, 
+  WorldObj::get_world()->get_gfx_map()->remove(bomber_radius, 
 			       int(pos.x) - (bomber_radius.get_width()/2),
 			       int(pos.y) - (bomber_radius.get_height()/2));
 }

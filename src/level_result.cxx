@@ -1,4 +1,4 @@
-//  $Id: level_result.cxx,v 1.3 2002/06/20 12:22:51 grumbel Exp $
+//  $Id: level_result.cxx,v 1.4 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ PingusLevelResult::PingusLevelResult(World* w, Controller* c)
 void
 PingusLevelResult::draw(void)
 {
-  char  str[1024];
+  char  str[128];
 
   PingusSound::play_music("../data/music/pingus-2.it");
 
@@ -65,18 +65,18 @@ PingusLevelResult::draw(void)
     font->print_center(CL_Display::get_width() / 2, 100,
 		     get_message(100 * world->get_saved_pingus() / world->get_allowed_pingus()).c_str());
   */
-  sprintf(str,  _("Pingus saved:   %3d/%3d"), 
+  snprintf(str, 128, _("Pingus saved:   %3d/%3d"), 
 	  world->get_saved_pingus(),
 	  world->get_allowed_pingus());
   font->print_center(CL_Display::get_width() / 2, 140, str);
 
-  sprintf(str,  _("Pingus killed:  %3d/%3d"), 
+  snprintf(str, 128, _("Pingus killed:  %3d/%3d"), 
 	  world->get_allowed_pingus() - world->get_saved_pingus(),
 	  world->get_allowed_pingus());
   font->print_center(CL_Display::get_width() / 2, 160, str);
 
   /*
-  sprintf(str,  _("Required Time: %2d:%2d:%2d"), 
+  snprintf(str, 128, _("Required Time: %2d:%2d:%2d"), 
 	  result.time / (60 * game_speed),
 	  result.time / game_speed % 60, 
 	  (result.time * 100) / game_speed % 100);
@@ -96,10 +96,9 @@ PingusLevelResult::draw(void)
 }
 
 std::string
-PingusLevelResult::get_message(int saved)
+PingusLevelResult::get_message (int saved)
 {
   if (saved == 100) {
-    // (100%--) survival: Aww, and we wanted to say: 'No Pingus were harmed in the completion of this level'
     return _("As many Pingus escaped as entered the level. Thats going to be hard to beat.... unless this game becomes pornographic.");
   } else if (saved > 90) {
     return _("Very impressive indeed.");
@@ -109,7 +108,7 @@ PingusLevelResult::get_message(int saved)
     return _("Not too shabby, not too shabby at all.");
   } else if (saved > 60) {
     return _("That was OK, but Pingu life insurance premiums have just gotten more expensive.");
-  } else if (saved > 60) {
+  } else if (saved > 55) {
     return _("Maybe this level calls for a different strategy.");
   } else if (saved > 50) {
     return _("Exactly half. Are you saving only the female ones, you kinky sod!?");

@@ -1,4 +1,4 @@
-//  $Id: worldobj.hxx,v 1.4 2002/08/23 15:49:52 torangan Exp $
+//  $Id: worldobj.hxx,v 1.5 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,14 +47,14 @@ public:
   /** Creates a new WorldObj*/
   WorldObj ();
 
-  WorldObj (const WorldObj& old);
-  void operator= (const WorldObj& old);
+  WorldObj (const WorldObj&)       { }
+  void operator= (const WorldObj&) { }
 
   /** Destroys a world object */
-  virtual ~WorldObj();
+  virtual ~WorldObj ();
 
   /** Returns the $z$-position of this object. */
-  virtual float get_z_pos() const =0;
+  virtual float get_z_pos () const =0;
 
   /** Draws this WorldObject on the screen with the specified offset. If not
    *  overloaded, this method does nothing.
@@ -63,16 +63,18 @@ public:
    *  @param y the $y$-coordinate of this object
    *  @param s the scalar by with the object is zoomed (1.0 is default)
    */
-  virtual void draw_offset(int x, int y, float s = 1.0);
+  virtual void draw_offset (int x, int y, float s = 1.0);
 
   /** Draws the objects collision map to the main collision map, this
    *  can be used for traps which need a solid ground. */
-  virtual void draw_colmap();
+  virtual void draw_colmap ();
 
   /** The update function is called once a game loop, the delta
    * specifies how much time is passed since the last update
    * delta = 1.0 means that one second of realtime has passed. */
-  virtual void update(float delta);
+  virtual void update (float delta);
+  
+  virtual WorldObjData* get_data () { return 0; }
 };
 
 #endif

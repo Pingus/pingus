@@ -1,6 +1,0 @@
-pingus/src/traps/
--=-=-=-=-=-=-=-=-
-
-This directory contains all traps which can be used in pingus. The
-traps are inherit objects from 'Trap' and provide aditional
-informations on how they should act and what surfaces they use.

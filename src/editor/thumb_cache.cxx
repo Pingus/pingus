@@ -1,4 +1,4 @@
-//  $Id: thumb_cache.cxx,v 1.8 2002/08/17 17:56:24 torangan Exp $
+//  $Id: thumb_cache.cxx,v 1.9 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdio.h>
-#include <iostream>
 #include <ClanLib/Core/IOData/outputsource_file.h>
 #include <ClanLib/Core/IOData/inputsource_file.h>
 #include <ClanLib/Core/System/error.h>

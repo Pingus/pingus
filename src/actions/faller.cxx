@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.16 2002/08/25 09:08:49 torangan Exp $
+//  $Id: faller.cxx,v 1.17 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,13 +62,13 @@ namespace Actions {
 
     // FIXME: This should be triggered at a later point, when close to
     // FIXME: deadly_velocity or something like that
-    if (pingu->velocity.y > 5.0 && pingu->request_fall_action())
+    if (pingu->get_velocity().y > 5.0 && pingu->request_fall_action())
       return;
 
     // Apply all forces
-    pingu->velocity = ForcesHolder::apply_forces(pingu->pos, pingu->velocity);
+    pingu->set_velocity(ForcesHolder::apply_forces(pingu->get_pos(), pingu->get_velocity()));
     
-    CL_Vector newp = pingu->velocity;
+    CL_Vector newp = pingu->get_velocity();
     CL_Vector last_pos;
   
     // Update x and y by moving the penguin to it's target *slowly*
@@ -76,7 +76,7 @@ namespace Actions {
     while(rel_getpixel(0, 0) == GroundpieceData::GP_NOTHING
 	  && (fabs(newp.x) >= 1 || fabs(newp.y) >= 1))
       {
-        last_pos = pingu->pos;
+        last_pos = pingu->get_pos();
 
         if (fabs(newp.x) >= 1)
 	  { 
@@ -84,12 +84,12 @@ namespace Actions {
 	    // fraction stop when we are within 1 unit of the target
 	    if (newp.x > 0)
 	      {
-	        pingu->pos.x++;
+	        pingu->set_x(pingu->get_x() + 1);
 	        newp.x--;
 	      }
 	    else
 	      {
-	        pingu->pos.x--;
+	        pingu->set_x(pingu->get_x() - 1);
 	        newp.x++;
 	      }
 	  }
@@ -98,12 +98,12 @@ namespace Actions {
 	  {
 	    if (newp.y > 0)
 	      {
-	        pingu->pos.y++;
+	        pingu->set_x(pingu->get_y() + 1);
 	        newp.y--;
 	      }
 	    else 
 	      {
-	        pingu->pos.y--;
+	        pingu->set_x(pingu->get_y() - 1);
 	        newp.y++;
 	      }
 	  }
@@ -127,21 +127,19 @@ namespace Actions {
         else
 	  {
 	    // Did we stop too fast?
-	    if (fabs(pingu->velocity.y) > deadly_velocity) 
+	    if (fabs(pingu->get_velocity().y) > deadly_velocity) 
 	      {
 	        pingu->set_action(Actions::Splashed);
 	        return;
 	      }
-	    else if (fabs(pingu->velocity.x) > deadly_velocity)
+	    else if (fabs(pingu->get_velocity().x) > deadly_velocity)
 	      {
 	        pout(PINGUS_DEBUG_ACTIONS) << "Pingu: x Smashed on ground, jumping" << std::endl;
 	      }
 	  }
         // Reset the velocity
-        pingu->velocity.x = -(pingu->velocity.x/3);
-        pingu->velocity.y = 0;
-
-        pingu->pos = last_pos;
+	pingu->set_velocity(CL_Vector(-(pingu->get_velocity().x/3), 0));
+        pingu->set_pos(last_pos);
 
         // FIXME: UGLY!
         //pingu->set_action (Walker);
@@ -149,21 +147,23 @@ namespace Actions {
   }
 
   void 
-  Faller::draw_offset(int x, int y, float /*s*/)
+  Faller::draw_offset (int x, int y, float s)
   {
-    if (is_tumbling ()) {
-      tumbler.put_screen (int(pingu->pos.x + x), int(pingu->pos.y + y));
+    if (is_tumbling()) {
+      tumbler.put_screen(static_cast<int>(pingu->get_x() + x), static_cast<int>(pingu->get_y() + y));
     } else {
-      faller.put_screen (int(pingu->pos.x + x), int(pingu->pos.y + y));
+      faller.put_screen (static_cast<int>(pingu->get_x() + x), static_cast<int>(pingu->get_y() + y));
     }
+    
+    UNUSED_ARG(s);
   }
 
   bool
   Faller::is_tumbling () const
   {
     // If we are going fast enough to get smashed, start tumbling
-    if (fabs(pingu->velocity.x) > deadly_velocity
-        || fabs(pingu->velocity.y) > deadly_velocity)
+    if (   fabs(pingu->get_velocity().x) > deadly_velocity
+        || fabs(pingu->get_velocity().y) > deadly_velocity)
       {
         return true;
       }

@@ -1,4 +1,4 @@
-//  $Id: ice_block.cxx,v 1.8 2002/08/23 15:49:57 torangan Exp $
+//  $Id: ice_block.cxx,v 1.9 2002/09/04 14:55:13 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,6 @@ IceBlockData::write_xml(std::ostream& xml)
       << "  </worldobj>\n" << std::endl;
 }
 
-///
 IceBlockData::IceBlockData (xmlDocPtr doc, xmlNodePtr cur)
 {
   cur = cur->children;
@@ -92,7 +91,6 @@ IceBlock::IceBlock (const IceBlockData& data)
   last_contact = 0;
 }
 
-///
 void
 IceBlock::draw_colmap()
 {
@@ -168,8 +166,8 @@ EditorIceBlockObj::create (const CL_Vector& pos)
 std::string 
 EditorIceBlockObj::status_line()
 {
-  char str[1024];
-  sprintf (str, "IceBlock - %f %f %f", pos.x, pos.y, pos.z);
+  char str[256];
+  snprintf (str, 256, "IceBlock - %f %f %f", pos.x, pos.y, pos.z);
   return str;
 }
 

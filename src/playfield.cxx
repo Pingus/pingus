@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.18 2002/08/25 09:08:48 torangan Exp $
+//  $Id: playfield.cxx,v 1.19 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -226,9 +226,9 @@ Playfield::on_primary_button_press(int x, int y)
   std::cout << "Playfield::on_primary_button_press(" << x << ", " << y << std::endl;
   if (current_pingu)
     {
-      char str[256];
-      sprintf(str, "Pingu: %d:%s", current_pingu->get_id(), 
-		  Actions::action_to_string(buttons->get_action_name()).c_str());
+      char str[128];
+      snprintf(str, 128, "Pingu: %d:%s", current_pingu->get_id(), 
+		         Actions::action_to_string(buttons->get_action_name()).c_str());
       server->send_event(str);
     }
 }

@@ -1,4 +1,4 @@
-//  $Id: config.cxx,v 1.4 2002/08/16 15:13:59 torangan Exp $
+//  $Id: config.cxx,v 1.5 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -252,9 +252,9 @@ void
 ConfigParser::syntax_error(std::string error = "")
 {
   std::string error_str;
-  char tmp[256];
+  char tmp[16];
 
-  sprintf(tmp, "%d\n", lineno);
+  snprintf(tmp, 16, "%d\n", lineno);
   
   error_str = std::string(_("PLF: Syntax Error at line ")) + tmp;
 

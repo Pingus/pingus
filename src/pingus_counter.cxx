@@ -1,4 +1,4 @@
-//  $Id: pingus_counter.cxx,v 1.4 2002/06/20 11:23:53 grumbel Exp $
+//  $Id: pingus_counter.cxx,v 1.5 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,19 +41,18 @@ PingusCounter::PingusCounter()
 void 
 PingusCounter::draw(void)
 {
-  char str[256];
+  char str[128];
 
   background.put_screen (CL_Display::get_width ()/2 - background.get_width()/2, 0);
   
   World* world = client->get_server()->get_world();
   
-  // FIXME: Buffer overflow...
-  sprintf(str, _("Released: %3d/%3d  Out: %3d  Saved: %3d/%3d"),
-	  world->get_released_pingus(),
-	  world->get_allowed_pingus(),
-	  world->get_pingus_out(),
-	  world->get_saved_pingus(),
-	  world->get_number_to_save());
+  snprintf(str, 128, _("Released: %3d/%3d  Out: %3d  Saved: %3d/%3d"),
+	   world->get_released_pingus(),
+	   world->get_allowed_pingus(),
+	   world->get_pingus_out(),
+	   world->get_saved_pingus(),
+	   world->get_number_to_save());
 
   font->print_center(CL_Display::get_width ()/2,3, str);
 }

@@ -1,4 +1,4 @@
-//  $Id: smashed.cxx,v 1.3 2002/08/25 09:08:49 torangan Exp $
+//  $Id: smashed.cxx,v 1.4 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,14 +23,14 @@
 namespace Actions {
 
   void
-  Smashed::init(void)
+  Smashed::init (void)
   {
     sprite = Sprite ("Pingus/bomber0", "pingus");
     sound_played = false;  
   }
 
   void 
-  Smashed::draw_offset(int x, int y, float /*s*/)
+  Smashed::draw_offset (int x, int y, float /*s*/)
   {
     sprite.put_screen (x, y);
   }

@@ -1,4 +1,4 @@
-//  $Id: plfobj.cxx,v 1.8 2002/08/17 17:56:23 torangan Exp $
+//  $Id: plfobj.cxx,v 1.9 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -82,7 +82,7 @@ EntranceObj::status_line()
       break;
     }
 
-  sprintf(str, "Entrance: %s Rate: %d Direction: %s Owner: %d",
+  snprintf(str, 256, "Entrance: %s Rate: %d Direction: %s Owner: %d",
 	  type.c_str(), release_rate, dir_str.c_str(), owner_id);
 
   return std::string(str);
@@ -122,7 +122,7 @@ ExitObj::status_line()
 {
   char str[256];
   
-  sprintf(str, "Exit - %s - X:%4.2f Y:%4.2f Z:%4.2f OwnerId: %d", desc.res_name.c_str(), pos.x, pos.y, pos.z, owner_id);
+  snprintf(str, 256, "Exit - %s - X:%4.2f Y:%4.2f Z:%4.2f OwnerId: %d", desc.res_name.c_str(), pos.x, pos.y, pos.z, owner_id);
 
   return str;
 }
@@ -226,9 +226,9 @@ LiquidObj::draw_mark (EditorView * view)
 std::string  
 LiquidObj::status_line()
 {
-  char str[256];
+  char str[32];
   
-  sprintf(str, "%4.2f:%4.2f:%3.2f:%2d", pos.x, pos.y, pos.z, speed);
+  snprintf(str, 32, "%4.2f:%4.2f:%3.2f:%2d", pos.x, pos.y, pos.z, speed);
 
   return std::string(str);
 }

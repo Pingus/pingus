@@ -1,4 +1,4 @@
-//  $Id: pingu_action.cxx,v 1.6 2002/08/23 15:49:49 torangan Exp $
+//  $Id: pingu_action.cxx,v 1.7 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "world.hxx"
 #include "pingu.hxx"
 #include "pingu_action.hxx"
+#include "worldobj.hxx"
 
 // Initialise class static.
 const int PinguAction::pingu_height = 26;
@@ -45,7 +46,7 @@ PinguAction::set_pingu (Pingu* pingu_data)
 // Checks if the pingu action needs to catch another pingu (needed for 
 // example by the blocker)
 bool 
-PinguAction::need_catch() 
+PinguAction::need_catch () 
 { 
   return false; 
 }
@@ -55,7 +56,8 @@ PinguAction::need_catch()
 int
 PinguAction::rel_getpixel (int x, int y)
 {
-  return pingu->get_world()->get_colmap()->getpixel(pingu->get_x() + (x * pingu->direction), (pingu->get_y ()) - y);
+  return WorldObj::get_world()->get_colmap()->getpixel(static_cast<int>(pingu->get_x() + (x * pingu->direction)),
+                                                       static_cast<int>(pingu->get_y() - y));
 }
 
 ActionType
@@ -76,7 +78,7 @@ PinguAction::head_collision_on_walk (int x, int y)
 {
   int pixel = rel_getpixel(x, y + pingu_height);
 
-  if (pixel != GroundpieceData::GP_NOTHING && !(pixel &  GroundpieceData::GP_BRIDGE))
+  if (pixel != GroundpieceData::GP_NOTHING && !(pixel & GroundpieceData::GP_BRIDGE))
     return true;
 
   return false;

@@ -1,4 +1,4 @@
-//  $Id: switch_door.cxx,v 1.7 2002/08/23 15:49:57 torangan Exp $
+//  $Id: switch_door.cxx,v 1.8 2002/09/04 14:55:13 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -289,8 +289,8 @@ EditorSwitchDoorObj::save_xml (std::ostream& xml)
 std::string 
 EditorSwitchDoorObj::status_line()
 {
-  char str[1024];
-  sprintf (str, "SwitchDoor - (%f %f %f)", 
+  char str[128];
+  snprintf (str, 128, "SwitchDoor - (%f %f %f)", 
 	   door_pos.x, door_pos.y, door_pos.z);
   return str;
 }

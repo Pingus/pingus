@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.9 2002/08/23 15:49:48 torangan Exp $
+//  $Id: credits.cxx,v 1.10 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,6 @@
 #include "sound.hxx"
 #include "pingus_resource.hxx"
 #include "credits.hxx"
-#include "game_delta.hxx"
 #include "screen_manager.hxx"
 
 /* Headers needed for i18n / gettext */

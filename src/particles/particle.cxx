@@ -1,4 +1,4 @@
-//  $Id: particle.cxx,v 1.2 2002/06/13 14:25:13 torangan Exp $
+//  $Id: particle.cxx,v 1.3 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,9 +26,10 @@ Particle::Particle()
 // Set all parameters to theire default value
 Particle::Particle(int x, int y, float x_a, float y_a)
   : pos (x, y),
-    velocity (x_a, y_a)
+    velocity (x_a, y_a),
+    livetime(50 + ( rand() % 25))
 {
-  livetime = 50 + ( rand() % 25);
+  
 }
 
 Particle::~Particle()

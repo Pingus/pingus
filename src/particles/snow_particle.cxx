@@ -1,4 +1,4 @@
-//  $Id: snow_particle.cxx,v 1.4 2002/06/25 18:15:18 grumbel Exp $
+//  $Id: snow_particle.cxx,v 1.5 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,7 +83,7 @@ SnowParticle::update(float /*delta*/)
 bool
 SnowParticle::is_alive()
 {
-  if (pos.y < world->get_height())
+  if (pos.y < WorldObj::get_world()->get_height())
     return true;
   else
     return false;
@@ -114,13 +114,13 @@ CollidingSnowParticle::update(float delta)
   assert(ground_snow);
   SnowParticle::update(delta);
 
-  int pixel = world->get_colmap()->getpixel(int(pos.x), int(pos.y));
+  int pixel = WorldObj::get_world()->get_colmap()->getpixel(int(pos.x), int(pos.y));
 
   if (pixel != GroundpieceData::GP_NOTHING && pixel !=  GroundpieceData::GP_WATER
       && pixel != GroundpieceData::GP_OUTOFSCREEN)
     {
       //std::cout << "Snow: touch down: " << x_pos << " " << y_pos << std::endl;
-      world->get_gfx_map()->put(ground_snow,
+      WorldObj::get_world()->get_gfx_map()->put(ground_snow,
 				(int)pos.x - 1,
 				(int)pos.y - 1);
       alive = false;

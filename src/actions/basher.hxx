@@ -1,4 +1,4 @@
-//  $Id: basher.hxx,v 1.7 2002/08/25 09:08:49 torangan Exp $
+//  $Id: basher.hxx,v 1.8 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,21 +33,23 @@ namespace Actions {
     CL_Surface bash_radius_gfx;
     int basher_c;
     bool first_bash;
-  public:
-    Basher();
-    virtual ~Basher() {}
-  
-    void   init (void);
-    std::string get_name () const { return "Basher"; }
-    ActionName get_type() const { return Actions::Basher; }
-    void draw_offset(int x, int y, float s);
-    void update(float delta);
-    bool have_something_to_dig();
-    void walk_forward();
-    void bash();
-  
+    
     /// Defines "wall" height needed so as to determine whether it should be bashed.
     enum { bash_height = 4 };
+    
+  public:
+    Basher ();
+    void   init (void);
+    
+    std::string get_name () const { return "Basher"; }
+    ActionName get_type () const { return Actions::Basher; }
+    
+    void draw_offset (int x, int y, float s);
+    void update (float delta);
+    
+    bool have_something_to_dig ();
+    void walk_forward ();
+    void bash ();
   
   private:
     Basher (const Basher&);

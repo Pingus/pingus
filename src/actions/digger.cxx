@@ -1,4 +1,4 @@
-//  $Id: digger.cxx,v 1.9 2002/08/25 09:08:49 torangan Exp $
+//  $Id: digger.cxx,v 1.10 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,12 +30,12 @@
 
 namespace Actions {
 
-  Digger::Digger() : digger_c(0)
+  Digger::Digger () : digger_c(0)
   {
   }
 
   void
-  Digger::init(void)
+  Digger::init (void)
   {
     digger_radius = PingusResource::load_surface ("Other/digger_radius", "pingus");
     digger_radius_gfx = PingusResource::load_surface ("Other/digger_radius_gfx", "pingus");
@@ -50,7 +50,7 @@ namespace Actions {
   }
 
   void
-  Digger::update(float delta)
+  Digger::update (float delta)
   {
     sprite.update (delta);
   
@@ -68,7 +68,7 @@ namespace Actions {
   }
 
   bool   
-  Digger::have_something_to_dig()
+  Digger::have_something_to_dig ()
   {
     if (rel_getpixel(0, -1) !=  GroundpieceData::GP_NOTHING)
       {
@@ -87,19 +87,23 @@ namespace Actions {
   }
 
   void
-  Digger::dig()
+  Digger::dig ()
   {
-    pingu->get_world()->get_colmap()->remove(digger_radius, pingu->get_x () - 16, pingu->get_y() - 14);
-    pingu->get_world()->get_gfx_map()->remove(digger_radius_gfx, pingu->get_x () - 16, pingu->get_y() - 14);
+    WorldObj::get_world()->get_colmap()->remove(digger_radius, 
+                                                static_cast<int>(pingu->get_x () - 16),
+						static_cast<int>(pingu->get_y() - 14));
+    WorldObj::get_world()->get_gfx_map()->remove(digger_radius_gfx,
+                                                 static_cast<int>(pingu->get_x () - 16),
+						 static_cast<int>(pingu->get_y() - 14));
       
-    ++pingu->pos.y;
+    pingu->set_y(pingu->get_y() + 1);
   }
 
   void  
-  Digger::draw_offset(int x, int y, float /*s*/)
+  Digger::draw_offset (int x, int y, float s)
   {
-    //std::cout << "DRawing digger" << std::endl;
-    sprite.put_screen (int(pingu->pos.x + x), int(pingu->pos.y + y));
+    sprite.put_screen (static_cast<int>(pingu->get_x() + x), static_cast<int>(pingu->get_y() + y));
+    UNUSED_ARG(s);
   }
 
 }

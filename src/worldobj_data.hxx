@@ -1,4 +1,4 @@
-//  $Id: worldobj_data.hxx,v 1.5 2002/08/23 15:49:52 torangan Exp $
+//  $Id: worldobj_data.hxx,v 1.6 2002/09/04 14:55:11 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,8 @@
 #ifndef HEADER_PINGUS_WORLDOBJ_DATA_HXX
 #define HEADER_PINGUS_WORLDOBJ_DATA_HXX
 
+#include <iosfwd>
 #include <vector>
-
-#include "editor/editorobj.hxx"
 
 class WorldObj;
 class EditorObj;

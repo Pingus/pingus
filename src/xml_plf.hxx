@@ -1,4 +1,4 @@
-//  $Id: xml_plf.hxx,v 1.4 2002/08/23 15:49:52 torangan Exp $
+//  $Id: xml_plf.hxx,v 1.5 2002/09/04 14:55:11 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ class XMLPLF : public PLF
 private:
   xmlDocPtr doc;  
 
-  void parse_file();
+  void parse_file ();
 
   void parse_background  (xmlNodePtr cur);
   void parse_actions     (xmlNodePtr cur);
@@ -37,6 +37,7 @@ private:
   void parse_group       (xmlNodePtr cur);
   void parse_start_pos   (xmlNodePtr cur);
   void parse_weather     (xmlNodePtr cur);
+  void parse_traps       (xmlDocPtr  doc, xmlNodePtr node);
 
 public:
   XMLPLF (const std::string& filename);

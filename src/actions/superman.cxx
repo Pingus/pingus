@@ -1,4 +1,4 @@
-//  $Id: superman.cxx,v 1.3 2002/08/25 09:08:49 torangan Exp $
+//  $Id: superman.cxx,v 1.4 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,35 +29,33 @@ namespace Actions {
   }
 
   void
-  Superman::init()
+  Superman::init ()
   {
-    x_pos = pingu->pos.x;
+    x_pos = pingu->get_x();
     counter = 0.0;
     sprite = Sprite (PingusResource::load_surface 
 		     ("Pingus/superman" + to_string(pingu->get_owner ()),
 		      "pingus"));
-    sprite.set_align_center_bottom (); 
+    sprite.set_align_center_bottom(); 
   }
 
   void  
-  Superman::update(float delta)
+  Superman::update (float delta)
   {
-    sprite.update (delta);
+    sprite.update(delta);
     counter += delta;
-    pingu->pos.x += 40.0f * delta;
-    pingu->pos.y -= 200.0f * delta;
+    pingu->set_pos(pingu->get_x() + 40.0f * delta, pingu->get_y() - 200.0f * delta);
 
-    if (pingu->pos.y < -32)
-      {
-        pingu->set_status (PS_DEAD);
-      }
+    if (pingu->get_y() < -32)
+      pingu->set_status(PS_DEAD);
   }
 
   void   
-  Superman::draw_offset(int x_of, int y_of, float /*s*/)
+  Superman::draw_offset (int x_of, int y_of, float s)
   {
-    sprite.put_screen (pingu->get_x () + x_of,
-		       pingu->get_y () + y_of);
+    sprite.put_screen (static_cast<int>(pingu->get_x () + x_of),
+		       static_cast<int>(pingu->get_y () + y_of));
+    UNUSED_ARG(s);
   }
 
 }

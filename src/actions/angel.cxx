@@ -1,4 +1,4 @@
-//  $Id: angel.cxx,v 1.7 2002/08/25 09:08:49 torangan Exp $
+//  $Id: angel.cxx,v 1.8 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,9 +30,9 @@ namespace Actions {
   }
 
   void
-  Angel::init()
+  Angel::init ()
   {
-    x_pos = pingu->pos.x;
+    x_pos = pingu->get_x();
     counter = 0.0;
     sprite = Sprite (PingusResource::load_surface 
 		     ("Pingus/angel" + to_string(pingu->get_owner ()),
@@ -41,23 +41,23 @@ namespace Actions {
   }
 
   void  
-  Angel::update(float delta)
+  Angel::update (float delta)
   {
     sprite.update (delta);
     counter += delta;
-    pingu->pos.x = x_pos + 20 * sin (counter * 3.0);
-    pingu->pos.y -= 50.0f * delta;
+    pingu->set_pos(x_pos + 20 * sin (counter * 3.0), pingu->get_y() - 50.0f * delta);
 
     // Out of screen, let the pingu die
-    if (pingu->pos.y < -32)
+    if (pingu->get_y() < -32)
       pingu->set_status (PS_DEAD);
   }
 
   void   
-  Angel::draw_offset(int x_of, int y_of, float /*s*/)
+  Angel::draw_offset (int x_of, int y_of, float s)
   {
-    sprite.put_screen (pingu->get_x () + x_of,
-		       pingu->get_y () + y_of);
+    sprite.put_screen (static_cast<int>(pingu->get_x () + x_of),
+		       static_cast<int>(pingu->get_y () + y_of));
+    UNUSED_ARG(s);
   }
 
 }

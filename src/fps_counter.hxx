@@ -1,4 +1,4 @@
-//  $Id: fps_counter.hxx,v 1.3 2002/08/23 15:49:48 torangan Exp $
+//  $Id: fps_counter.hxx,v 1.4 2002/09/04 14:55:11 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ private:
 
   /** A string holding the current value of frames + "fps", its
       updated every second */
-  char fps_string[64];
+  char fps_string[16];
 
   /** Count the fps until one second is passed */
   int fps_count;

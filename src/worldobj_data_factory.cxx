@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.3 2002/08/16 15:13:59 torangan Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.4 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,16 @@
 #include "entrance_data.hxx"
 #include "worldobj_data_factory.hxx"
 
+#include "worldobjsdata/bumper_data.hxx"
+#include "worldobjsdata/fake_exit_data.hxx"
+#include "worldobjsdata/guillotine_data.hxx"
+#include "worldobjsdata/hammer_data.hxx"
+#include "worldobjsdata/laser_exit_data.hxx"
+#include "worldobjsdata/smasher_data.hxx"
+#include "worldobjsdata/spike_data.hxx"
+
+using namespace WorldObjsData;
+
 WorldObjDataFactory* WorldObjDataFactory::instance_ = 0;
 
 WorldObjDataFactory::WorldObjDataFactory ()
@@ -58,6 +68,14 @@ WorldObjDataFactory::instance ()
       new WorldObjDataFactoryImpl<LiquidData>("liquid");
       new WorldObjDataFactoryImpl<HotspotData>("hotspot");
       new WorldObjDataFactoryImpl<EntranceData>("entrance");
+
+      new WorldObjDataFactoryImpl<BumperData>("bumper");
+      new WorldObjDataFactoryImpl<FakeExitData>("fake_exit");
+      new WorldObjDataFactoryImpl<GuillotineData>("guillotine");
+      new WorldObjDataFactoryImpl<HammerData>("hammer");
+      new WorldObjDataFactoryImpl<LaserExitData>("laser_exit");
+      new WorldObjDataFactoryImpl<SmasherData>("smasher");
+      new WorldObjDataFactoryImpl<SpikeData>("spike");
 
       // Special Objects 
       new WorldObjDataFactoryImpl<SwitchDoorData>("switchdoor");

@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.8 2002/08/23 15:49:50 torangan Exp $
+//  $Id: spot_map.cxx,v 1.9 2002/09/04 14:55:11 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -370,8 +370,8 @@ PingusSpotMap::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovi
   //  assert(sprovider->get_depth() == 8);
   if (sprovider->get_depth() != 8)
     {
-      char str[1024];
-      sprintf(str, _("Image has wrong color depth: %d"), sprovider->get_depth());
+      char str[128];
+      snprintf(str, 128, _("Image has wrong color depth: %d"), sprovider->get_depth());
       PingusError::raise(str);
     }
   //  assert(provider->get_pixel_format() == RGBA8888);

@@ -1,4 +1,4 @@
-//  $Id: exiter.cxx,v 1.4 2002/08/25 09:08:49 torangan Exp $
+//  $Id: exiter.cxx,v 1.5 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Core/Math/cl_vector.h>
 #include "../pingu.hxx"
 #include "../sound.hxx"
 #include "exiter.hxx"
@@ -24,18 +25,18 @@
 namespace Actions {
 
   void
-  Exiter::init(void)
+  Exiter::init (void)
   {
-    sprite = Sprite ("Pingus/exit0", "pingus", 10.0f, Sprite::NONE, Sprite::ONCE);
-    sprite.set_align_center_bottom ();
+    sprite = Sprite("Pingus/exit0", "pingus", 10.0f, Sprite::NONE, Sprite::ONCE);
+    sprite.set_align_center_bottom();
   }
 
   void
-  Exiter::update(float delta)
+  Exiter::update (float delta)
   {
-    sprite.update (delta);
+    sprite.update(delta);
 
-    if (sprite.finished ())
+    if (sprite.finished())
       {
         if (pingu->get_status() != PS_EXITED)
 	  {
@@ -46,14 +47,16 @@ namespace Actions {
   }
 
   void 
-  Exiter::draw_offset(int x, int y, float /*s*/)
+  Exiter::draw_offset(int x, int y, float s)
   {
-    if (pingu->direction.is_left ())
-      sprite.set_direction (Sprite::LEFT);
+    if (pingu->direction.is_left())
+      sprite.set_direction(Sprite::LEFT);
     else
-      sprite.set_direction (Sprite::RIGHT);
-      
-    sprite.put_screen (pingu->pos + CL_Vector (x, y));
+      sprite.set_direction(Sprite::RIGHT);
+    
+    sprite.put_screen(pingu->get_pos() + CL_Vector (x, y));
+    
+    UNUSED_ARG(s);
   }
 
 }

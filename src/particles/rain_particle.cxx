@@ -1,4 +1,4 @@
-//  $Id: rain_particle.cxx,v 1.2 2002/06/25 18:15:18 grumbel Exp $
+//  $Id: rain_particle.cxx,v 1.3 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "../algo.hxx"
 #include "../pingus_resource.hxx"
 #include "../col_map.hxx"
+#include "../worldobj.hxx"
 #include "rain_particle.hxx"
 
 CL_Surface RainParticle::rain1_surf;
@@ -97,14 +98,14 @@ RainParticle::update(float delta)
     }
   else
     {
-      if (world->get_colmap()->getpixel(int(pos.x), int(pos.y)) != GroundpieceData::GP_NOTHING
-	  && world->get_colmap()->getpixel(int(pos.x), int(pos.y)) !=  GroundpieceData::GP_OUTOFSCREEN)
+      if (WorldObj::get_world()->get_colmap()->getpixel(int(pos.x), int(pos.y)) != GroundpieceData::GP_NOTHING
+	  && WorldObj::get_world()->get_colmap()->getpixel(int(pos.x), int(pos.y)) !=  GroundpieceData::GP_OUTOFSCREEN)
 	{
 	  splash = true;
 	}
       else
 	{
-	  if (pos.y > world->get_height())
+	  if (pos.y > WorldObj::get_world()->get_height())
 	    alive = false;
     
 	  pos.x -= 5.0 * add;

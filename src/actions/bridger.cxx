@@ -1,4 +1,4 @@
-//  $Id: bridger.cxx,v 1.11 2002/08/25 09:08:49 torangan Exp $
+//  $Id: bridger.cxx,v 1.12 2002/09/04 14:55:12 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,16 +37,16 @@ namespace Actions {
   CL_Surface Bridger::brick_r;
   CL_Surface Bridger::static_surface;
 
-  Bridger::Bridger() : mode(B_BUILDING),
-                       bricks(MAX_BRICKS),
-		       block_build(false),
-		       name("Bridger (" + to_string(bricks) + ")")
+  Bridger::Bridger () : mode(B_BUILDING),
+                        bricks(MAX_BRICKS),
+		        block_build(false),
+		        name("Bridger (" + to_string(bricks) + ")")
 
   {
   }
 
   void
-  Bridger::init(void)
+  Bridger::init (void)
   {
     if (!static_surfaces_loaded)
       {
@@ -62,11 +62,11 @@ namespace Actions {
     build_sprite.set_align_center_bottom ();
     walk_sprite.set_align_center_bottom ();
 
-    last_pos = pingu->pos;
+    last_pos = pingu->get_pos();
   }
 
   void
-  Bridger::draw_offset(int x, int y, float s)
+  Bridger::draw_offset (int x, int y, float s)
   {
 
     int x_offset(6), y_offset(4);
@@ -91,8 +91,8 @@ namespace Actions {
         else
 	  build_sprite.set_direction (Sprite::RIGHT);
       
-        build_sprite.put_screen(pingu->get_x () + x - (x_offset * pingu->direction),
-			        pingu->get_y () + y + y_offset);
+        build_sprite.put_screen(static_cast<int>(pingu->get_x () + x - (x_offset * pingu->direction)),
+			        static_cast<int>(pingu->get_y () + y + y_offset));
         break;
       
       case B_WALKING:
@@ -101,8 +101,8 @@ namespace Actions {
         else
 	  walk_sprite.set_direction (Sprite::RIGHT);
       
-        walk_sprite.put_screen(pingu->get_x () + x - (x_offset * pingu->direction),
-			        pingu->get_y () + y + y_offset);
+        walk_sprite.put_screen(static_cast<int>(pingu->get_x () + x - (x_offset * pingu->direction)),
+			       static_cast<int>(pingu->get_y () + y + y_offset));
         break;
       }
       
@@ -123,7 +123,7 @@ namespace Actions {
         break;
       }
 
-    last_pos = pingu->pos;
+    last_pos = pingu->get_pos();
   }
 
   void
@@ -142,7 +142,7 @@ namespace Actions {
 	   {
 	     pingu->direction.change ();
 	     pingu->set_action (Actions::Walker);
-	     pingu->pos = last_pos;
+	     pingu->set_pos(last_pos);
 	     return;
 	   }
       }
@@ -197,30 +197,30 @@ namespace Actions {
  
     if (pingu->direction.is_right())
       {
-        pingu->get_world()->get_colmap()->put(brick_r, 
-					      pingu->get_x () + 10 - brick_r.get_width(),
-					      pingu->get_y (),
+        WorldObj::get_world()->get_colmap()->put(brick_r, 
+					      static_cast<int>(pingu->get_x() + 10 - brick_r.get_width()),
+					      static_cast<int>(pingu->get_y()),
 					      GroundpieceData::GP_BRIDGE);
-        pingu->get_world()->get_gfx_map()->put(brick_r,
-					       (int) pingu->get_x () + 10 - brick_r.get_width(),
-					       pingu->get_y ());
+        WorldObj::get_world()->get_gfx_map()->put(brick_r,
+					       static_cast<int>(pingu->get_x() + 10 - brick_r.get_width()),
+					       static_cast<int>(pingu->get_y()));
       }
     else
       {
-        pingu->get_world()->get_colmap()->put(brick_r, pingu->get_x () - 10,
-					      pingu->get_y (),
-					      GroundpieceData::GP_BRIDGE);
-        pingu->get_world()->get_gfx_map()->put(brick_l,
-					       pingu->get_x () - 10,
-					       pingu->get_y ());
+        WorldObj::get_world()->get_colmap()->put(brick_r, 
+	                                         static_cast<int>(pingu->get_x() - 10),
+					         static_cast<int>(pingu->get_y()),
+					         GroundpieceData::GP_BRIDGE);
+        WorldObj::get_world()->get_gfx_map()->put(brick_l,
+					          static_cast<int>(pingu->get_x() - 10),
+					          static_cast<int>(pingu->get_y()));
       }
   }
 
   void
   Bridger::walk_one_step_up()
   {
-    pingu->pos.x += 4.0 * pingu->direction;
-    pingu->pos.y -= 2.0;
+    pingu->set_pos(pingu->get_x() + 4.0 * pingu->direction, pingu->get_y() - 2);
     counter = 0;
   }
 
