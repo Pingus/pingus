@@ -3,10 +3,14 @@
 <article>
   <artheader>
     <title>Pingus</title>
-    <!--author><firstname>Ingo</firstname>
-      <surname>Ruhnke</surname></author-->
+    <author><firstname>Ingo</firstname>
+      <surname>Ruhnke</surname></author>
   </artheader>
   
+  <toc sect>
+    <!-- How does this work?! -->
+  </toc>
+
   <sect1>
     <title>Introduction</title>
     <para> 

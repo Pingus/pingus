@@ -1,4 +1,7 @@
+
 'map' might be an reserved keyword
+
+test if put_target() works or where it fails (small surfaces?!)
 
 www.ggi-project.Sometimes when I make one pingus explode, many others explode.
 Forces bug
@@ -75,7 +78,12 @@ needed:
 Level complete song
 
 
+Special Scenarios:
+~~~~~~~~~~~~~~~~~~
+Star Wars - Escape from the death star.
+Vulcan - Run as fast as you can.
 
-$Date: 2000/03/09 00:20:03 $
+
+$Date: 2000/03/12 02:21:05 $
 
 -= EOF =-

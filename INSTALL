@@ -1,143 +1,126 @@
+
 Pingus Installation Guide
--=-=-=-=-=-=-=-=-=-=-=-=-
+     _________________________________________________________________
+   
+Introduction
 
-To be able to compile pingus you need a working version of ClanLib, it
-should always work with current version of ClanLib, but if you are
-using the CVS version of pingus it may that it will only work with the 
-CVS version of ClanLib.
+   To be able to compile pingus you need a working version of ClanLib, it
+   should always work with current version of ClanLib, but if you are
+   using the CVS version of pingus it may that it will only work with the
+   CVS version of ClanLib.
+     _________________________________________________________________
+   
+Preparing compilation
 
-Table of Contents
-~~~~~~~~~~~~~~~~~
-1.) Preparing compilation
-2.) Configuration and Compilation
-3.) Running Pingus The First Time
-4.) Running Pingus The Second Time
-5.) Trouble Shooting 
-6.) Generic Installation Instructions
-
-1.) ---=== Preparing compilation ===---
-
-  First you have to make sure that you have all required libaries
-  installed, these are:
-
-    * zlib
-    * Hermes
-    * ImageMagick
-    * ClanLib
-
-  If you are trying to compile the CVS version of pingus, you first have
-  run:
-
-    $ ./autogen.sh
-
-  To generate the `Makefile.in's' and the `configure' script. If you are
-  compiling a normal pingus release then you can go to step 2.).
+   First you have to make sure that you have all required libaries
+   installed, these are:
+   
+     * zlib
+     * Hermes
+     * ImageMagick
+     * ClanLib
+       
+   If you are trying to compile the CVS version of Pingus, you first have
+   run:
+        $ ./autogen.sh
 
 
-2.) ---=== Configuration and Compilation ===---
+   To generate the `Makefile.in's' and the `configure' script. If you are
+   compiling a normal pingus release then you can go to step 2.).
+     _________________________________________________________________
+   
+Configuration and Compilation
 
-  To compile pingus:
-
-    $ ./configure && make
-
-  You can also install it with:
-
-    $ make install
-
-  The installation is completely working, but it isn't tested much, so
-  bug reports are very welcom.
-
-  If pingus fails to build or something else went wrong, checkout
-  first you followed the steps correctly and if that is the case go
-  over to section 5.) Throuble Shooting.
+   To compile pingus:
+        $ ./configure && make
 
 
-3.) ---=== Running Pingus The First Time ===---
-
-  To run pingus without installing it, `cd' to the Pingus source dir 'src/' 
-  and type:
-
-  $ ./pingus
-
-  If you have installed Pingus you can just type:
-
-  $ pingus
+   You can also install it with:
+        $ make install
 
 
-4.) ---=== Running Pingus The Second Time ===---
+   The installation is completely working, but it isn't tested much, so
+   bug reports are very welcom.
+   
+   If pingus fails to build or something else went wrong, checkout first
+   you followed the steps correctly and if that is the case go over to
+   section 5.) Throuble Shooting.
+     _________________________________________________________________
+   
+Running Pingus The First Time
 
-***
-*** This section is out of date, I'll rewrite it at time
-***
-
-  If you have successfully build pingus and got it to run, you may
-  want to play another level or try some things which are in development 
-  stages and therefore not activated by default, the following gives
-  and introduction to this things:
-
-  * Running another level
-
-    To do so, type:
-
-      $ ./pingus level1.plf
-
-    There are some levels provided at the moment:
-
-  * Speeding things up 
-
-    Pingus is to slow for you? Than you have different choices, you can 
-    set another speed with: (0 is the fastest, greater values are slower)
-      
-      $ ./pingus --set-speed 0
-
-    You can also set the resolution to a lower value:
-
-      $ ./pingus -g 320x240
-      
-  * Playing Sound
-      
-    Pingus has some basically buggy sound support, but it is not
-    activated by default. Why? Because I haven't anyone at the moment for
-    creating sound effects. But you can use the orginal lemmings sound 
-    effects, if you find them on the net. Please read the file
-    `data/sounds/README' for more information and the URL were you can
-    grab them.
-      
-  * Playing Music
-      
-    Pingus also has music, but you first need to download the
-    soundpack from the pingus webpage. 
-      
-      $ ./pingus --enable-music
-
-    It causes a significant slowdown, therefore it isn't enabled at
-    default. 
-
-  * Enable Gimmicks
+   To run pingus without installing it, `cd' to the Pingus source dir
+   'src/' and type:
+        $ ./pingus
 
 
+   If you have installed Pingus you can just type:
+        $ pingus
 
-5.) ---=== Trouble Shooting ===---
+     _________________________________________________________________
+   
+Running Pingus The Second Time
 
-  You tried to compile or run pingus, but all you got was a boring
-  error message? Read the file `FAQ' in this directory, it contains
-  some information about what could went wrong.
+   *** This section is out of date, I'll rewrite it at time ***
+   
+   If you have successfully build pingus and got it to run, you may want
+   to play another level or try some things which are in development
+   stages and therefore not activated by default, the following gives and
+   introduction to this things:
+     _________________________________________________________________
+   
+Running another level
+
+   To do so, type:
+        $ ./pingus level1.plf
 
 
+   There are some levels provided at the moment:
+     _________________________________________________________________
+   
+Speeding things up
 
-Thats all for now,
-Have fun!
+   Pingus is to slow for you? Than you have different choices, you can
+   set another speed with: (0 is the fastest, greater values are slower)
+            $ ./pingus --set-speed 0
+        
+   You can also set the resolution to a lower value:
+            $ ./pingus -g 320x240
+     _________________________________________________________________
+   
+Playing Sound
 
-   Ingo Ruhnke <grumbel@gmx.de>
+   Pingus has some basically buggy sound support, but it is not activated
+   by default. Why? Because I haven't anyone at the moment for creating
+   sound effects. But you can use the orginal lemmings sound effects, if
+   you find them on the net. Please read the file `data/sounds/README'
+   for more information and the URL were you can grab them.
+     _________________________________________________________________
+   
+Playing Music
 
-Last update: $Date: 2000/03/02 02:29:00 $
+   Pingus also has music, but you first need to download the soundpack
+   from the pingus webpage.
+          $ ./pingus --enable-music
 
 
-6.) ---=== Generic Installation Instructions ===---
+   It causes a significant slowdown, therefore it isn't enabled at
+   default.
+     _________________________________________________________________
+   
+Trouble Shooting
 
-  The following text is the default INSTALL file generated by
-  `automake'.
+   You tried to compile or run pingus, but all you got was a boring error
+   message? Read the file `FAQ' in this directory, it contains some
+   information about what could went wrong.
+   
+   Thats all for now, Have fun! Ingo Ruhnke <grumbel@gmx.de>
+     _________________________________________________________________
+   
+Generic Installation Instructions
 
+   The following text is the default INSTALL file generated by
+   `automake'.
 Basic Installation
 ==================
 
