@@ -1,4 +1,4 @@
-//  $Id: gui_obj.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: gui_obj.cxx,v 1.2 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ GuiObj::~GuiObj()
 {
 }
 
-void 
+void
 GuiObj::set_clip_rect(int ax1, int ay1, int ax2, int ay2)
 {
   x1 = ax1;

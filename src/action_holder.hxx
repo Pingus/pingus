@@ -1,4 +1,4 @@
-//  $Id: action_holder.hxx,v 1.11 2002/12/28 16:57:38 torangan Exp $
+//  $Id: action_holder.hxx,v 1.12 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,13 +38,13 @@ class PinguAction;
 class ActionHolder
 {
 private:
-  /** A map holding the number of available actions. 
+  /** A map holding the number of available actions.
    *  For each action <i>name</i> there is a map (<i>name</i>, <i>n</i>)
-   *  where the integer <i>n</i> indicates how much more actions 
+   *  where the integer <i>n</i> indicates how much more actions
    *  called <i>name</i> can be created.
    */
   std::map<ActionName, int> available_actions;
-  
+
 public:
   /** Create an action holder from the number of actions given in a
       PLF file */
@@ -59,7 +59,7 @@ public:
    * @param available the number of actions available
    */
   void set_actions (ActionName name, int available);
-  
+
   /** Adds an action to the pool of actions, making one more action available
    * @param name the name of the action
    */
@@ -70,12 +70,12 @@ public:
       actions where available */
   bool pop_action (ActionName name);
 
-  /** Returns the number of actions of the specified name which are available 
-   *  thru get_action() 
+  /** Returns the number of actions of the specified name which are available
+   *  thru get_action()
    * @return 0 if the name is unknown FIXME: should use .find instead of []
    */
   int get_available (ActionName);
-  
+
 private:
   ActionHolder (const ActionHolder&);
   ActionHolder& operator= (const ActionHolder&);

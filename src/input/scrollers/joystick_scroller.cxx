@@ -1,5 +1,5 @@
-//  $Id: joystick_scroller.cxx,v 1.2 2002/08/26 13:53:04 torangan Exp $
-// 
+//  $Id: joystick_scroller.cxx,v 1.3 2003/04/19 10:23:19 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -24,7 +24,7 @@ namespace Input {
 
   namespace Scrollers {
 
-    JoystickScroller::JoystickScroller (int id_, float speed_) 
+    JoystickScroller::JoystickScroller (int id_, float speed_)
                                       : id(id_),
 				        axis1(new Axes::JoystickAxis(id, 0, 0)),
 				        axis2(new Axes::JoystickAxis(id, 1, 90)),
@@ -33,42 +33,42 @@ namespace Input {
 				        y_delta(0)
     {
     }
-  
+
     JoystickScroller::~JoystickScroller ()
     {
       delete axis1;
       delete axis2;
     }
-  
+
     const float&
     JoystickScroller::get_x_delta () const
     {
       return x_delta;
     }
-  
+
     const float&
     JoystickScroller::get_y_delta () const
     {
       return y_delta;
     }
-  
+
     void
     JoystickScroller::get_delta (float& x, float& y) const
     {
       x = x_delta;
       y = y_delta;
     }
-  
+
     void
     JoystickScroller::update (float delta)
     {
       axis1->update(delta);
       axis2->update(delta);
-    
+
       x_delta = axis1->get_pos() * speed;
       y_delta = axis2->get_pos() * speed;
     }
-    
+
   }
 }
 

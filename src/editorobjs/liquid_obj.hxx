@@ -1,4 +1,4 @@
-//  $Id: liquid_obj.hxx,v 1.5 2003/02/19 17:16:59 grumbel Exp $
+//  $Id: liquid_obj.hxx,v 1.6 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,18 +33,18 @@ class LiquidObj : public SpriteEditorObj
 {
 private:
   WorldObjsData::LiquidData* const data;
-  
+
 public:
   LiquidObj (const WorldObjsData::LiquidData& data_);
  ~LiquidObj ();
 
   EditorObj* duplicate ();
-  
+
   void draw      (EditorNS::EditorView * view);
   void draw_mark (EditorNS::EditorView * view);
-  
+
   void write_xml (std::ostream& xml);
-  
+
   std::string status_line ();
 
   int get_width ();

@@ -1,4 +1,4 @@
-//  $Id: boarder.cxx,v 1.14 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: boarder.cxx,v 1.15 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,22 +26,22 @@
 
 namespace Actions {
 
-Boarder::Boarder (Pingu* p) 
+Boarder::Boarder (Pingu* p)
   : PinguAction(p),
     x_pos(pingu->get_x()),
     speed(0.0),
     sprite(PingusResource::load_surface("Pingus/boarder" + to_string(pingu->get_owner ()), "pingus"))
 {
-  sprite.set_align_center_bottom(); 
+  sprite.set_align_center_bottom();
 }
 
-void  
+void
 Boarder::update ()
 {
   if (pingu->direction.is_left())
-    sprite.set_direction(Sprite::LEFT); 
+    sprite.set_direction(Sprite::LEFT);
   else
-    sprite.set_direction(Sprite::RIGHT); 
+    sprite.set_direction(Sprite::RIGHT);
   sprite.update();
 
   if (on_ground())
@@ -51,14 +51,14 @@ Boarder::update ()
       else {
 	speed = 15.0;
       }
-      
+
       // Incremental update so that we don't skip pixels
       double new_x_pos = pingu->get_pos().x + pingu->direction * speed;
       while (new_x_pos != pingu->get_x())
 	{
 	  double old_pos = pingu->get_pos().x;
 	  pingu->set_x(old_pos + (pingu->get_x() < new_x_pos) ? 1 : -1);
-	  
+
 	  if (pingu->rel_getpixel (1, 0))
 	    {
 	      // Hit a wall
@@ -79,7 +79,7 @@ Boarder::update ()
     }
 }
 
-void   
+void
 Boarder::draw (GraphicContext& gc)
 {
   gc.draw(sprite, pingu->get_pos ());

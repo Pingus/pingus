@@ -1,4 +1,4 @@
-//  $Id: spike.cxx,v 1.9 2003/02/19 09:50:37 grumbel Exp $
+//  $Id: spike.cxx,v 1.10 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
 
 namespace WorldObjs {
 
-Spike::Spike (const WorldObjsData::SpikeData& data_) 
+Spike::Spike (const WorldObjsData::SpikeData& data_)
   : data(new WorldObjsData::SpikeData(data_)),
     killing(false)
 {
@@ -79,19 +79,19 @@ Spike::catch_pingu (Pingu* pingu)
 {
   if (!killing) {
     if (   pingu->get_x () > data->pos.x + 16 - 5 && pingu->get_x () < data->pos.x + 16 + 5
-	   && pingu->get_y () > data->pos.y          && pingu->get_y () < data->pos.y + 32) 
+	   && pingu->get_y () > data->pos.y          && pingu->get_y () < data->pos.y + 32)
       {
 	data->counter = 0;
 	killing = true;
       }
   } else {
-    if (   data->counter == 3 
+    if (   data->counter == 3
 	   && pingu->get_x () > data->pos.x +16 - 12  && pingu->get_x () < data->pos.x + 16 + 12
-	   && pingu->get_y () > data->pos.y           && pingu->get_y () < data->pos.y + 32) 
+	   && pingu->get_y () > data->pos.y           && pingu->get_y () < data->pos.y + 32)
       {
 	pingu->set_status(PS_DEAD);
       }
-  }  
+  }
 }
 
 } // namespace WorldObjs

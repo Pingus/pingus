@@ -1,4 +1,4 @@
-//  $Id: key_helper.cxx,v 1.3 2002/10/29 12:49:27 grumbel Exp $
+//  $Id: key_helper.cxx,v 1.4 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -238,7 +238,7 @@ Input::KeyHelper::string_to_key (const std::string& key)
     {
       std::cout << "Key Name " << key << "not known" << std::endl;
       return CL_NO_KEY;
-    }  
+    }
 }
 
 /* EOF */

@@ -1,5 +1,5 @@
-//  $Id: math.hxx,v 1.7 2003/02/19 17:16:59 grumbel Exp $
-// 
+//  $Id: math.hxx,v 1.8 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -25,16 +25,16 @@
 
 /** A collection of small math helper functions, some of them might be
     equal in functionality to standard STL functions, but provided
-    here for portability and broken STL implementations 
-    
+    here for portability and broken STL implementations
+
     @brief A collection of mathematical helper functions */
 namespace Math {
 
 const double pi   = 3.14159265358979323846;	/* pi */
 const double pi_2 = 1.57079632679489661923;	/* pi/2 */
 
-template<class T> 
-T min (const T& a, const T& b) 
+template<class T>
+T min (const T& a, const T& b)
 {
   if (a < b)
     return a;
@@ -42,8 +42,8 @@ T min (const T& a, const T& b)
     return b;
 }
 
-template<class T> 
-T max (const T& a, const T& b) 
+template<class T>
+T max (const T& a, const T& b)
 {
   if (a > b)
     return a;
@@ -51,8 +51,8 @@ T max (const T& a, const T& b)
     return b;
 }
 
-template<class T> 
-T mid (const T& a, const T& b, const T& c) 
+template<class T>
+T mid (const T& a, const T& b, const T& c)
 {
   return max((a), min((b), (c)));
 }

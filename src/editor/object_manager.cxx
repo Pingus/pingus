@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.47 2003/04/18 17:08:56 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.48 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ using namespace WorldObjsData;
 
 namespace EditorNS {
 
-static bool EditorObj_z_pos_sorter (EditorObj* a, 
+static bool EditorObj_z_pos_sorter (EditorObj* a,
 				    EditorObj* b)
 {
   return a->get_z_pos () < b->get_z_pos ();
@@ -84,7 +84,7 @@ ObjectManager::new_level ()
 
   number_to_save   = 25;
   number_of_pingus = 50;
-  
+
   delete_all_objs();
   editor_objs.push_back(new StartPos(50, 50));
 
@@ -98,7 +98,7 @@ ObjectManager::new_level ()
       bg_data.color = Color(.3f, 0.0f, 0.0f);
       bg_data.insert_EditorObjs(this);
     }
-  
+
   editor_objs.push_back(new LevelResizer(this));
 
   // Set some default actions
@@ -127,10 +127,10 @@ ObjectManager::load_level (const std::string& filename)
 
   std::cout << "Editor: Clearing current level..." << std::endl;
   std::cout << "Loading new level: " << filename << std::endl;
-  
+
   PLF* plf = PLF::create(filename);
 
-  editor_objs.push_back(new StartPos(plf->get_startx(), 
+  editor_objs.push_back(new StartPos(plf->get_startx(),
 				     plf->get_starty()));
 
   std::vector<GroundpieceData>  temp_surfaces = plf->get_groundpieces();
@@ -143,14 +143,14 @@ ObjectManager::load_level (const std::string& filename)
 
   std::vector<WorldObjData*> temp_worldobj = plf->get_worldobjs_data();
 
-  for (std::vector<GroundpieceData>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i) 
+  for (std::vector<GroundpieceData>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i)
     {
       i->insert_EditorObjs(this);
     }
 
   for (std::vector<WorldObjData*>::iterator i = temp_worldobj.begin();
        i != temp_worldobj.end();
-       ++i) 
+       ++i)
     {
       (*i)->insert_EditorObjs(this);
   }
@@ -176,26 +176,26 @@ ObjectManager::load_level (const std::string& filename)
   comment = plf->get_comment ();
   difficulty = plf->get_difficulty ();
   playable = plf->get_playable ();
-  
+
   delete plf;
 }
 
 void
 ObjectManager::update(float delta)
 {
-  for (EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) 
+  for (EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i)
     {
       (*i)->update (delta);
     }
 }
 
-void 
+void
 ObjectManager::draw(EditorView * view)
 {
   view->draw_fillrect(0, 0, width, height,
 		      bg.red, bg.green, bg.blue, 1.0);
-  
-  for (EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) 
+
+  for (EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i)
     {
       (*i)->draw (view);
     }
@@ -220,12 +220,12 @@ ObjectManager::save_level_xml (const std::string & filename)
       << "<pingus-level>\n"
       << "  <version>1</version>\n"
       << "  <global>\n";
-    
+
   for(std::map<std::string, std::string>::const_iterator i = levelname.begin();
       i != levelname.end();
       i++)
     {
-      xml << "    <levelname lang=\"" << i->first << "\">" 
+      xml << "    <levelname lang=\"" << i->first << "\">"
 	  << i->second << "</levelname>" << std::endl;
     }
 
@@ -237,7 +237,7 @@ ObjectManager::save_level_xml (const std::string & filename)
 	  << "\">" << i->second << "</description>" << std::endl;
     }
 
-  xml << "    <author>" << XMLhelper::encode_entities(author) 
+  xml << "    <author>" << XMLhelper::encode_entities(author)
       << "</author>\n"
       << "    <number-of-pingus>" << number_of_pingus << "</number-of-pingus>\n"
       << "    <number-to-save>" << number_to_save << "</number-to-save>\n"
@@ -250,7 +250,7 @@ ObjectManager::save_level_xml (const std::string & filename)
       << "    <music>" << music << "</music>\n"
       << "  </global>\n"
       << std::endl;
-  
+
   // Printing actions to file
   xml << "  <action-list>\n";
   for (std::vector<ActionData>::iterator i = actions.begin(); i != actions.end(); ++i) {
@@ -261,7 +261,7 @@ ObjectManager::save_level_xml (const std::string & filename)
   for (EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) {
     (*i)->write_xml(xml);
   }
-  
+
   xml << "</pingus-level>\n" << std::endl;
 }
 
@@ -270,15 +270,15 @@ ObjectManager::lower_obj(EditorObj* obj)
 {
   EditorObjIter current;
   EditorObjIter prev;
-  
+
   current = std::find(editor_objs.begin(), editor_objs.end(), obj);
 
-  if (current == editor_objs.begin()) 
+  if (current == editor_objs.begin())
     {
       std::cout << "Editor: Cannot lower object" << std::endl;
       return false;
     }
-  
+
   prev = current;
   prev--;
 
@@ -291,17 +291,17 @@ ObjectManager::raise_obj(EditorObj* obj)
 {
   EditorObjIter current;
   EditorObjIter next;
-  
+
   current = std::find (editor_objs.begin(), editor_objs.end(), obj);
   next    = current;
   next++;
-  
+
   if (next == editor_objs.end())
     {
       std::cout << "Cannot raise object" << std::endl;
       return false;
     }
-  
+
   std::swap(*next, *current);
   return true;
 }
@@ -314,7 +314,7 @@ ObjectManager::rect_get_objs(int x1, int y1, int x2, int y2)
   for (EditorObjIter it = editor_objs.begin(); it != editor_objs.end(); ++it)
     if ((*it)->is_in_rect(CL_Rect(x1, y1, x2, y2)))
       retval.push_back(*it);
-      
+
   return retval;
 }
 
@@ -325,7 +325,7 @@ ObjectManager::add (EditorObj* obj)
   z_pos_sort();
 }
 
-void 
+void
 ObjectManager::add (const EditorObjLst& lst)
 {
   for (EditorObjLst::const_iterator i = lst.begin(); i != lst.end(); ++i)
@@ -354,7 +354,7 @@ ObjectManager::erase (const std::vector<EditorObj*>& objs)
 			editor_objs.end ());
       delete *i;
     }
-  z_pos_sort(); 
+  z_pos_sort();
 }
 
 EditorObj*
@@ -362,14 +362,14 @@ ObjectManager::find_object(const Vector& pos)
 {
   // We go reverse about the list, since the top-most object is the
   // last in the list
-  for(EditorObjRIter i = editor_objs.rbegin(); i != editor_objs.rend(); ++i) 
+  for(EditorObjRIter i = editor_objs.rbegin(); i != editor_objs.rend(); ++i)
     {
       if ((*i)->is_over(pos))
 	{
 	  return *i;
 	}
     }
-  
+
   return 0;
 }
 
@@ -381,7 +381,7 @@ ObjectManager::add_prefab_from_file (const std::string& filename)
   std::cout << "Name: " << fab.get_name () << std::endl;
   std::cout << "Description: " << fab.get_description () << std::endl;
   std::cout << "Data: " << fab.get_data () << std::endl;
-  std::cout << "done" << std::endl;  
+  std::cout << "done" << std::endl;
 }
 
 std::vector<ActionData>*

@@ -1,4 +1,4 @@
-//  $Id: digger.cxx,v 1.23 2003/03/09 20:41:30 torangan Exp $
+//  $Id: digger.cxx,v 1.24 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,10 +43,10 @@ Digger::Digger (Pingu* p)
 		   "pingus", PropertyMgr::instance()->get_int ("actions/digger/sprite-fps", 20));
 #endif
   sprite.set_align_center_bottom();
-  
+
   digger_radius_width  = digger_radius.get_width();
   digger_radius_height = digger_radius.get_height();
-  
+
   digger_radius_gfx_width  = digger_radius_gfx.get_width();
   digger_radius_gfx_height = digger_radius_gfx.get_height();
 }
@@ -70,13 +70,13 @@ Digger::update ()
     }
 
   if (!have_something_to_dig())
-    { 
+    {
       dig ();
       pingu->set_action(Actions::Walker);
     }
 }
 
-bool   
+bool
 Digger::have_something_to_dig ()
 {
   if (rel_getpixel(0, -1) !=  Groundtype::GP_NOTHING)
@@ -84,7 +84,7 @@ Digger::have_something_to_dig ()
       if (rel_getpixel(0, -1) ==  Groundtype::GP_SOLID)
 	{
 	  PingusSound::play_sound("chink");
-	  return false;  
+	  return false;
 	}
       else
 	return true;
@@ -98,17 +98,17 @@ Digger::have_something_to_dig ()
 void
 Digger::dig ()
 {
-  WorldObj::get_world()->get_colmap()->remove(digger_radius, 
+  WorldObj::get_world()->get_colmap()->remove(digger_radius,
 					      static_cast<int>(pingu->get_x() - (digger_radius_width / 2)),
 					      static_cast<int>(pingu->get_y() - digger_radius_height + 2));
   WorldObj::get_world()->get_gfx_map()->remove(digger_radius_gfx,
 					       static_cast<int>(pingu->get_x () - (digger_radius_gfx_width / 2)),
 					       static_cast<int>(pingu->get_y() - digger_radius_gfx_height + 2));
-      
+
   pingu->set_y(pingu->get_y() + 1);
 }
 
-void  
+void
 Digger::draw (GraphicContext& gc)
 {
   gc.draw(sprite, pingu->get_pos ());

@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.cxx,v 1.25 2003/04/11 14:30:05 grumbel Exp $
+//  $Id: pingus_menu_manager.cxx,v 1.26 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ bool
 PingusMenuManager::draw (GraphicContext& gc)
 {
   background.draw (gc);
-  
+
   gc.draw_fillrect(0, CL_Display::get_height () - 22,
                    CL_Display::get_width (), CL_Display::get_height (),
                    0, 0, 0, 1.0f);
@@ -63,21 +63,21 @@ PingusMenuManager::update (const GameDelta& delta)
   menu_stack.back ()->update (delta);
 }
 
-void 
+void
 PingusMenuManager::set_menu (PingusSubMenu * menu)
 {
   pop_menu ();
   push_menu (menu);
 }
 
-void 
+void
 PingusMenuManager::push_menu (PingusSubMenu * menu)
 {
   menu->preload ();
   menu_stack.push_back (menu);
 }
 
-void 
+void
 PingusMenuManager::pop_menu ()
 {
   if (!menu_stack.empty ())
@@ -101,7 +101,7 @@ PingusMenuManager::current_menu ()
     }
 }
 
-void 
+void
 PingusMenuManager::fadeout ()
 {
   std::cout << "PingusMenuManager::fadeout () Not implemented" << std::endl;
@@ -120,7 +120,7 @@ PingusMenuManager::fadeout ()
 
       CL_System::keep_alive ();
     }
-#endif 
+#endif
 }
 
 void

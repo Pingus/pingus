@@ -1,4 +1,4 @@
-//  $Id: input_debug_screen.cxx,v 1.1 2003/02/19 09:51:44 grumbel Exp $
+//  $Id: input_debug_screen.cxx,v 1.2 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ void
 InputDebugScreen::update (const GameDelta& delta)
 {
   std::cout << "InputDebugScreen::update (" << delta.get_time () << ")" << std::endl;
-  for (Input::EventLst::const_iterator i = delta.get_events ().begin (); 
+  for (Input::EventLst::const_iterator i = delta.get_events ().begin ();
        i != delta.get_events ().end ();
        ++i)
     {
@@ -67,8 +67,8 @@ InputDebugScreen::update (const GameDelta& delta)
 
           break;
         case ScrollEventType:
-          { 
-            std::cout << "InputDebugScreen: Scroll event : " 
+          {
+            std::cout << "InputDebugScreen: Scroll event : "
                       << i->scroll.x_delta << " " << i->scroll.y_delta << std::endl;
           }
           break;
@@ -89,7 +89,7 @@ InputDebugScreen::on_startup ()
 }
 
 /** Called once the screen gets replaced or poped or shadowed by a
-    newly pushed screen */ 
+    newly pushed screen */
 void
 InputDebugScreen::on_shutdown ()
 {

@@ -1,4 +1,4 @@
-//  $Id: server.hxx,v 1.14 2003/04/05 18:36:50 grumbel Exp $
+//  $Id: server.hxx,v 1.15 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,7 @@ public:
   /* Event handling stuff */
   void send_armageddon_event();
   void send_pingu_action_event(Pingu* pingu, Actions::ActionName action);
-  
+
 private:
   Server (const Server&);
   Server& operator= (const Server&);

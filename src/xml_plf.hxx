@@ -1,5 +1,5 @@
-//  $Id: xml_plf.hxx,v 1.9 2002/09/27 11:26:44 torangan Exp $
-// 
+//  $Id: xml_plf.hxx,v 1.10 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -26,7 +26,7 @@
 class XMLPLF : public PLF
 {
 private:
-  xmlDocPtr doc;  
+  xmlDocPtr doc;
 
   void parse_file ();
 
@@ -45,7 +45,7 @@ private:
 public:
   XMLPLF (const std::string& filename);
   virtual ~XMLPLF();
-  
+
 private:
   XMLPLF (const XMLPLF&);
   XMLPLF& operator= (const XMLPLF&);

@@ -1,4 +1,4 @@
-//  $Id: level_result.cxx,v 1.13 2003/04/15 20:08:26 torangan Exp $
+//  $Id: level_result.cxx,v 1.14 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,28 +53,28 @@ PingusLevelResult::draw(void)
       background.put_screen(x, y);
 
   CL_Display::fill_rect(0, 0, CL_Display::get_width(), CL_Display::get_height(), 0.0, 0.0, 0.0, 0.5);
-  
+
   title->print_center(CL_Display::get_width() / 2, 50, _("Results:"));
-  
+
   /* Ending messages are censored for the momement
     font->print_center(CL_Display::get_width() / 2, 100,
 		     get_message(100 * world->get_saved_pingus() / world->get_allowed_pingus()).c_str());
   */
-  snprintf(str, 128, _("Pingus saved:   %3d/%3d"), 
+  snprintf(str, 128, _("Pingus saved:   %3d/%3d"),
            world->get_pingus()->get_number_of_exited(),
 	   world->get_pingus()->get_number_of_allowed());
   font->print_center(CL_Display::get_width() / 2, 140, str);
 
-  snprintf(str, 128, _("Pingus killed:  %3d/%3d"), 
-	  world->get_pingus()->get_number_of_allowed() 
+  snprintf(str, 128, _("Pingus killed:  %3d/%3d"),
+	  world->get_pingus()->get_number_of_allowed()
            - world->get_pingus()->get_number_of_exited(),
 	  world->get_pingus()->get_number_of_allowed());
   font->print_center(CL_Display::get_width() / 2, 160, str);
 
   /*
-  snprintf(str, 128, _("Required Time: %2d:%2d:%2d"), 
+  snprintf(str, 128, _("Required Time: %2d:%2d:%2d"),
 	  result.time / (60 * game_speed),
-	  result.time / game_speed % 60, 
+	  result.time / game_speed % 60,
 	  (result.time * 100) / game_speed % 100);
   */
 
@@ -86,7 +86,7 @@ PingusLevelResult::draw(void)
 
   while(!CL_Mouse::left_pressed())
     CL_System::keep_alive();
-  
+
   while(CL_Mouse::left_pressed())
     CL_System::keep_alive();
 }

@@ -1,4 +1,4 @@
-//  $Id: climber.cxx,v 1.21 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: climber.cxx,v 1.22 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ Climber::update ()
     printf("%3d %3d %3d\n", rel_getpixel(1,1), rel_getpixel(0,1), rel_getpixel(-1,1));
     printf("%3d %3d %3d\n", rel_getpixel(1,0), rel_getpixel(0,0), rel_getpixel(-1,0));
     printf("%3d %3d %3d\n", rel_getpixel(1,-1), rel_getpixel(0,-1),rel_getpixel(-1, -1));
-  */  
+  */
 
   sprite.update();
 
@@ -50,13 +50,13 @@ Climber::update ()
       || rel_getpixel(0, 1) == Groundtype::GP_BRIDGE)
     {
       // and there is still ground to walk on
-      if (rel_getpixel(1, 1) != Groundtype::GP_NOTHING) 
+      if (rel_getpixel(1, 1) != Groundtype::GP_NOTHING)
 	{
-	  pingu->set_pos(pingu->get_x(), 
+	  pingu->set_pos(pingu->get_x(),
 			 pingu->get_y() - 1);
 	  return;
 	}
-      else if (rel_getpixel(1, 1) ==  Groundtype::GP_NOTHING) 
+      else if (rel_getpixel(1, 1) ==  Groundtype::GP_NOTHING)
 	{
 	  //  std::cout << "Climber failed, no more wall" << std::endl;
 
@@ -64,7 +64,7 @@ Climber::update ()
 	  if (!head_collision_on_walk(pingu->direction, 1))
 	    {
               // Get ready to walk
-	      pingu->set_pos(pingu->get_x() + pingu->direction, 
+	      pingu->set_pos(pingu->get_x() + pingu->direction,
 			     pingu->get_y() - 1);
 	    }
 	  else
@@ -77,7 +77,7 @@ Climber::update ()
 	  pingu->set_action(Actions::Walker);
 	}
     }
-  else 
+  else
     {
       //    std::cout << "Climber failed, falling down" << std::endl;
       pingu->direction.change();
@@ -89,12 +89,12 @@ void
 Climber::draw (GraphicContext& gc)
 {
   // This is necessary to prevent climber walking inside a wall.
-  if (pingu->direction.is_left()) 
+  if (pingu->direction.is_left())
     {
       sprite.set_align(0, -sprite_height/2);
-      sprite.set_direction(Sprite::LEFT); 
-    } 
-  else 
+      sprite.set_direction(Sprite::LEFT);
+    }
+  else
     {
       sprite.set_align(-sprite_width, -sprite_height/2);
       sprite.set_direction(Sprite::RIGHT);

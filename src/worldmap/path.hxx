@@ -1,5 +1,5 @@
-//  $Id: path.hxx,v 1.3 2002/10/19 17:43:07 grumbel Exp $
-// 
+//  $Id: path.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -33,7 +33,7 @@ class Path
 private:
   typedef std::vector<Vector> Vec;
   Vec vec;
-  
+
   bool  path_length_valid;
   float path_length;
 
@@ -49,7 +49,7 @@ public:
 
   /** @return the length of the path in pixels */
   float length();
-  
+
   /** walk a distance of vec_position on the path and return the position,
       positions between two Vectors are interpolated, if length is
       larger then path *back() will be returned */
@@ -63,21 +63,21 @@ public:
   reverse_iterator rbegin() { return vec.rbegin(); }
   reverse_iterator rend() { return vec.rend(); }
 
-  void push_back(const Vector& v) { 
-    path_length_valid = false; 
+  void push_back(const Vector& v) {
+    path_length_valid = false;
     vec.push_back(v);
   }
 
   void insert(Path& p) {
-    path_length_valid = false; 
-    //vec.insert(vec.end(), p.vec.begin(), p.vec.end()); 
+    path_length_valid = false;
+    //vec.insert(vec.end(), p.vec.begin(), p.vec.end());
     vec.reserve(vec.size() + p.vec.size ());
     std::copy(p.vec.begin(), p.vec.end(), std::back_inserter(vec));
   }
 
-  void reverse_insert(Path& p) { 
-    path_length_valid = false; 
-    //vec.insert(vec.end(), p.vec.rbegin(), p.vec.rend()); 
+  void reverse_insert(Path& p) {
+    path_length_valid = false;
+    //vec.insert(vec.end(), p.vec.rbegin(), p.vec.rend());
     vec.reserve(vec.size() + p.vec.size ());
     std::copy(p.vec.rbegin(), p.vec.rend(), std::back_inserter(vec));
   }

@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.45 2003/04/13 22:00:55 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.46 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,8 +60,8 @@ struct z_pos_sorter
   }
 };
 
-WorldMap::WorldMap(const std::string& arg_filename) 
-  : display_gc (0, 0, CL_Display::get_width()-1, CL_Display::get_height()-1, 
+WorldMap::WorldMap(const std::string& arg_filename)
+  : display_gc (0, 0, CL_Display::get_width()-1, CL_Display::get_height()-1,
                 0, 0),
     filename(arg_filename),
     width(1161), height(600), // FIXME: ugly..
@@ -70,11 +70,11 @@ WorldMap::WorldMap(const std::string& arg_filename)
 {
 
   xmlDocPtr doc = xmlParseFile(filename.c_str());
-  
-  if (!doc) 
+
+  if (!doc)
     {
       PingusError::raise (_("WorldMap: File not found: ") + filename);
-    }    
+    }
 
   xmlNodePtr cur = doc->ROOT;
   cur = XMLhelper::skip_blank(cur);
@@ -114,14 +114,14 @@ WorldMap::~WorldMap()
   //delete path_graph;
 }
 
-void 
+void
 WorldMap::parse_file(xmlDocPtr doc, xmlNodePtr cur)
 {
   if (cur && XMLhelper::equal_str(cur->name, "pingus-worldmap"))
     {
       cur = cur->children;
       cur = XMLhelper::skip_blank(cur);
-	  
+
       while (cur)
 	{
 	  if (XMLhelper::equal_str(cur->name, "graph"))
@@ -175,10 +175,10 @@ WorldMap::parse_objects(xmlDocPtr doc, xmlNodePtr cur)
         {
           std::cout << "WorldMap::parse_objects: Parse Error" << std::endl;
         }
-      
+
       cur = cur->next;
       cur = XMLhelper::skip_blank(cur);
-    }      
+    }
 }
 
 void
@@ -201,14 +201,14 @@ WorldMap::draw (GraphicContext& gc)
 {
   Vector pingu_pos = pingus->get_pos();
 
-  pingu_pos.x = Math::mid(float(gc.get_width()/2), 
-                          pingu_pos.x, 
+  pingu_pos.x = Math::mid(float(gc.get_width()/2),
+                          pingu_pos.x,
                           float(width - gc.get_width()/2));
 
-  pingu_pos.y = Math::mid(float(gc.get_height()/2), 
-                          pingu_pos.y, 
+  pingu_pos.y = Math::mid(float(gc.get_height()/2),
+                          pingu_pos.y,
                           float(height - gc.get_height()/2));
-  
+
   display_gc.set_offset(-pingu_pos.x, -pingu_pos.y);
 
   std::stable_sort(drawables.begin(), drawables.end(), z_pos_sorter());
@@ -218,38 +218,38 @@ WorldMap::draw (GraphicContext& gc)
       (*i)->draw (display_gc);
     }
 
-  gc.draw(levelname_bg, 
-          gc.get_width()/2 - levelname_bg.get_width()/2, 
+  gc.draw(levelname_bg,
+          gc.get_width()/2 - levelname_bg.get_width()/2,
           gc.get_height() - levelname_bg.get_height());
 
   if (pingus->get_node() != NoNode)
     {
       LevelDot* leveldot = dynamic_cast<LevelDot*>(path_graph->get_dot(pingus->get_node()));
-      
+
       if (leveldot)
         {
-          gc.print_center(Fonts::chalk_small, 
-                          display_gc.get_width ()/2, 
+          gc.print_center(Fonts::chalk_small,
+                          display_gc.get_width ()/2,
                           display_gc.get_height() - 20,
                           System::translate(leveldot->get_plf()->get_levelname()));
         }
       else
         {
-          gc.print_center(Fonts::chalk_small, 
-                          display_gc.get_width ()/2, 
+          gc.print_center(Fonts::chalk_small,
+                          display_gc.get_width ()/2,
                           display_gc.get_height() - 20,
                           "---");
         }
     }
   else
     {
-          gc.print_center(Fonts::chalk_small, 
-                          display_gc.get_width ()/2, 
+          gc.print_center(Fonts::chalk_small,
+                          display_gc.get_width ()/2,
                           display_gc.get_height() - 20,
                           _("...walking..."));
     }
-  
-  
+
+
   Vector mpos = display_gc.screen_to_world(Vector(mouse_x, mouse_y));
   Dot* dot = path_graph->get_dot(mpos.x, mpos.y);
   if (dot)
@@ -324,7 +324,7 @@ WorldMap::on_primary_button_press(int x, int y)
     {
       if (maintainer_mode)
         std::cout << "WorldMap: Clicked on: " << dot->get_name() << std::endl;
-        
+
       if (path_graph->lookup_node(dot->get_name()) == pingus->get_node())
         {
           if (maintainer_mode)
@@ -395,8 +395,8 @@ struct unlock_nodes
   {
     path_graph = g;
   }
-  
-  void operator()(Node<Dot*>& node) 
+
+  void operator()(Node<Dot*>& node)
   {
     if (node.data->finished())
       {
@@ -420,7 +420,7 @@ WorldMap::update_locked_nodes()
 
   bool credits_unlocked = false;
   StatManager::instance()->get_bool("credits-unlocked", credits_unlocked);
-  
+
   if (!credits_unlocked)
     {
       Dot* dot = path_graph->get_dot(path_graph->lookup_node("leveldot_19"));

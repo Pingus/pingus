@@ -1,5 +1,5 @@
-//  $Id: system.hxx,v 1.9 2003/04/13 23:33:19 grumbel Exp $
-// 
+//  $Id: system.hxx,v 1.10 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,11 +12,11 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
-//  02111-1307, USA. 
+//  02111-1307, USA.
 
 #ifndef HEADER_PINGUS_SYSTEM_HXX
 #define HEADER_PINGUS_SYSTEM_HXX
@@ -37,7 +37,7 @@ private:
 public:
   struct Error {
     std::string message;
-    
+
     Error (const std::string& str)
       : message (str) {}
   };
@@ -53,7 +53,7 @@ public:
   ///
   typedef std::list<DirectoryEntry> Directory;
   typedef std::list<DirectoryEntry>::iterator DirectoryIter;
-  
+
   ///
   static Directory opendir(const std::string& pathname, const std::string& pattern = "*");
 
@@ -68,8 +68,8 @@ public:
 
   /** Change into the directory named dir, on error throw an PingusError */
   static void change_dir (std::string dir);
- 
-  /** Check if all needed directories are available, if not then create 
+
+  /** Check if all needed directories are available, if not then create
       them. */
   static void init_directories();
 
@@ -106,7 +106,7 @@ public:
   static std::string get_vardir();
 
   /** Asks different variables to check were the directory for
-      temporary files is located 
+      temporary files is located
       @return The location of the tmp directory */
   static std::string get_tmpdir();
 

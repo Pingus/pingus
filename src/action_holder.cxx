@@ -1,4 +1,4 @@
-//  $Id: action_holder.cxx,v 1.11 2003/02/19 11:33:00 grumbel Exp $
+//  $Id: action_holder.cxx,v 1.12 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,13 +27,13 @@
 ActionHolder::ActionHolder (PLF* plf)
 {
   std::vector<ActionData> action_data = plf->get_actions();
-  
+
   if (action_data.size() == 0 || Cheat::all_actions)
     {
       std::cout << "Error: ActionHolder: No actions given in this level! Using defaults" << std::endl;
       action_data = default_actions;
     }
-  
+
   for (std::vector<ActionData>::iterator i = action_data.begin(); i != action_data.end(); ++i) {
     set_actions(i->name, i->number_of);
   }
@@ -51,7 +51,7 @@ ActionHolder::get_available_actions()
   for(std::map<ActionName, int>::iterator i= available_actions.begin();
       i != available_actions.end(); ++i)
     ret.push_back(i->first);
-  
+
   return ret;
 }
 
@@ -86,7 +86,7 @@ ActionHolder::pop_action (ActionName name)
         }
       else
         {
-          return false;    
+          return false;
         }
     }
 }

@@ -1,5 +1,5 @@
-//  $Id: drawable.hxx,v 1.7 2003/04/10 11:51:32 grumbel Exp $
-// 
+//  $Id: drawable.hxx,v 1.8 2003/04/19 10:23:19 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -34,7 +34,7 @@ class Drawable
 protected:
   /** The symbolic id of the drawable */
   std::string name;
-  
+
   /** True if object should be visible, false otherwise */
   bool visible;
 
@@ -48,9 +48,9 @@ public:
     : name(arg_name),
       visible(true)
   {
-  }    
+  }
 
-  Drawable(xmlDocPtr doc, xmlNodePtr cur) 
+  Drawable(xmlDocPtr doc, xmlNodePtr cur)
     : visible(true)
   {
     if (!XMLhelper::get_prop (cur, "name", name))
@@ -69,7 +69,7 @@ public:
   virtual void update(float delta) =0;
 
   virtual float get_z_pos() const =0;
-  
+
 private:
   Drawable (const Drawable&);
   Drawable& operator= (const Drawable&);

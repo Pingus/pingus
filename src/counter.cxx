@@ -1,4 +1,4 @@
-//  $Id: counter.cxx,v 1.4 2002/06/20 11:23:53 grumbel Exp $
+//  $Id: counter.cxx,v 1.5 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -89,10 +89,10 @@ Counter::operator++()
 
   case loop:
     ++count;
-    if (count >= s) 
+    if (count >= s)
       count = 0;
     break;
-    
+
   case once:
     ++count;
     if (count >= s)
@@ -101,10 +101,10 @@ Counter::operator++()
 
   default:
     std::cout << "Counter: Unknown type" << std::endl;
-    assert(false); 
+    assert(false);
     break;
   }
-  
+
   return count;
 }
 
@@ -146,13 +146,13 @@ Counter::set_size(int new_size)
   return new_size;
 }
 
-int 
+int
 Counter::size() const
 {
   return s;
 }
 
-void 
+void
 Counter::set_type(CounterType new_type)
 {
   type = new_type;

@@ -1,4 +1,4 @@
-//  $Id: xml_file_writer.cxx,v 1.3 2003/02/18 01:23:51 grumbel Exp $
+//  $Id: xml_file_writer.cxx,v 1.4 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@ XMLFileWriter::XMLFileWriter(std::ostream& out_)
 
 XMLFileWriter::~XMLFileWriter()
 {
-  
+
 }
 
 void

@@ -1,5 +1,5 @@
-//  $Id: start_screen.hxx,v 1.4 2003/04/11 15:15:34 torangan Exp $
-// 
+//  $Id: start_screen.hxx,v 1.5 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -28,7 +28,7 @@ class StartScreen : public GUIScreen
 {
 private:
   PLFHandle   plf;
-  
+
 public:
   StartScreen(PLFHandle plf);
   ~StartScreen();
@@ -39,7 +39,7 @@ public:
   void on_pause_press();
   void on_fast_forward_press();
   void on_escape_press();
-  
+
 private:
 
   StartScreen (const StartScreen&);

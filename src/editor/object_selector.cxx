@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.39 2003/04/16 09:44:30 grumbel Exp $
+//  $Id: object_selector.cxx,v 1.40 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,7 +80,7 @@ ObjectSelector::ObjectSelector ()
 ObjectSelector::~ObjectSelector ()
 {
 }
-  
+
 /** FIXME: Ugly interface, the arguments should not be the offset, but
     instead the absolute position */
 void
@@ -93,7 +93,7 @@ ObjectSelector::get_obj (ObjectManager* arg_obj_mgr,
 
   obj_mgr = arg_obj_mgr;
   pos = Vector (CL_Mouse::get_x () - x_offset,
-                CL_Mouse::get_y () - y_offset, 
+                CL_Mouse::get_y () - y_offset,
                 0.0f);
 
   select_obj_type();
@@ -112,9 +112,9 @@ ObjectSelector::get_trap ()
   font->print_left(20,200, _("7 - bumper"));
   Display::flip_display();
 
-  while (true) 
+  while (true)
     {
-      switch (read_key()) 
+      switch (read_key())
 	{
 	case CL_KEY_1:
 	  obj_mgr->add(GuillotineObj::create(pos));
@@ -175,7 +175,7 @@ ObjectSelector::get_hotspot (const std::string& filename)
       data.desc = ResDescriptor(str, filename, ResDescriptor::RD_RESOURCE);
       data.speed = -1;
     }
-  
+
   data.insert_EditorObjs(obj_mgr);
 }
 
@@ -192,30 +192,30 @@ ObjectSelector::get_worldobj ()
   //font->print_left(20, 110, _("5 - Liquid"));
   Display::flip_display();
 
-  while (true) 
+  while (true)
     {
-      switch (read_key()) 
+      switch (read_key())
 	{
 	case CL_KEY_1:
 	  obj_mgr->add(TeleporterObj::create(pos));
 	  return;
-	  
+
         case CL_KEY_2:
           obj_mgr->add(SwitchDoorObj::create(pos));
 	  return;
-          
+
         case CL_KEY_3:
           obj_mgr->add(ConveyorBeltObj::create(pos));
           return;
-          
+
         case CL_KEY_4:
           obj_mgr->add(IceBlockObj::create(pos));
           return;
-          
+
         case CL_KEY_5:
           obj_mgr->add(InfoBoxObj::create(pos));
           return;
-	  
+
         case CL_KEY_ESCAPE:
           return;
         }
@@ -234,9 +234,9 @@ ObjectSelector::get_weather ()
   font->print_left(20, 70, _("2 - rain"));
   Display::flip_display();
 
-  while (!done) 
+  while (!done)
     {
-      switch (read_key()) 
+      switch (read_key())
 	{
 	case CL_KEY_1:
 	  type = "snow-generator";
@@ -248,7 +248,7 @@ ObjectSelector::get_weather ()
 	  break;
 	}
     }
-  
+
   std::cout << "Weather objects currently not implemented" << std::endl;
 
   obj_mgr->add(new WeatherObj(type));
@@ -269,9 +269,9 @@ ObjectSelector::get_entrance ()
   font->print_left(20, 120, _("h - entrance surface (hotspot)"));
   Display::flip_display();
 
-  while (!have_name) 
+  while (!have_name)
     {
-      switch (read_key()) 
+      switch (read_key())
 	{
 
 	case CL_KEY_1:
@@ -299,7 +299,7 @@ ObjectSelector::get_entrance ()
           break;
 	}
     }
-  
+
   entrance.insert_EditorObjs (obj_mgr);
 }
 
@@ -309,16 +309,16 @@ ObjectSelector::get_exit ()
   std::string str;
   ExitData data;
   data.pos = pos;
-  
+
   str = select_surface("exits");
-  
+
   last_object = str;
 
   if (str.empty())
     return;
-  
+
   data.desc = ResDescriptor(str, "exits", ResDescriptor::RD_RESOURCE);
-  
+
   data.insert_EditorObjs (obj_mgr);
 }
 
@@ -342,12 +342,12 @@ ObjectSelector::get_from_file ()
   CL_Display::clear_display();
   font->print_left(20, 20, _("What object type do you want?"));
   font->print_left(20, 50, _("h - Hotspot"));
-  font->print_left(20, 70, _("g - Groundpiece (ground) [not implemented]")); 
+  font->print_left(20, 70, _("g - Groundpiece (ground) [not implemented]"));
   Display::flip_display();
 
-  while (true) 
+  while (true)
     {
-      switch (read_key()) 
+      switch (read_key())
 	{
 	case CL_KEY_H:
 	  {
@@ -370,7 +370,7 @@ ObjectSelector::get_from_file ()
 	    HotspotData data;
 	    data.pos = pos;
 	    // FIXME: Ugly hack, since ClanLib appends './'
-	    data.desc = ResDescriptor ("../../../../../../../../../../../" + file, 
+	    data.desc = ResDescriptor ("../../../../../../../../../../../" + file,
 				       "", ResDescriptor::RD_FILE);
             data.insert_EditorObjs(obj_mgr);
 	    return;
@@ -409,9 +409,9 @@ ObjectSelector::select_obj_type ()
   font->print_left(20,350, _("f - something from file (~/.pingus/images/)"));
   Display::flip_display();
 
-  while (1) 
+  while (1)
     {
-      switch (read_key()) 
+      switch (read_key())
 	{
 	case CL_KEY_T:
           get_trap();
@@ -420,11 +420,11 @@ ObjectSelector::select_obj_type ()
 	case CL_KEY_B:
           get_groundpiece(Groundtype::GP_BRIDGE);
           return;
-	  
+
 	case CL_KEY_R:
           get_groundpiece(Groundtype::GP_REMOVE);
           return;
-	  
+
 	case CL_KEY_S:
           get_groundpiece(Groundtype::GP_SOLID);
           return;
@@ -440,7 +440,7 @@ ObjectSelector::select_obj_type ()
 	case CL_KEY_H:
           get_hotspot("hotspots");
           return;
-		  
+
 	case CL_KEY_E:
           get_entrance();
           return;
@@ -457,7 +457,7 @@ ObjectSelector::select_obj_type ()
 	case CL_KEY_W:
           get_weather();
           return;
-          
+
 	case CL_KEY_P:
           get_prefab();
           return;
@@ -469,7 +469,7 @@ ObjectSelector::select_obj_type ()
 	case CL_KEY_Z:
           get_background();
           return;
-		  
+
 	case CL_KEY_F:
           get_from_file();
           return;
@@ -496,18 +496,18 @@ ObjectSelector::get_prefab ()
 
   CL_Display::clear_display();
   font->print_left(20, 20, _("Which prefab do you want?"));
- 
+
   for (std::vector<std::string>::size_type i = 0; i < dir_lst.size (); ++i)
     {
-      font->print_left(20, 60 + i * 30, to_string(i + 1) + " - " + dir_lst[i]); 
+      font->print_left(20, 60 + i * 30, to_string(i + 1) + " - " + dir_lst[i]);
     }
 
   Display::flip_display();
-  
+
   int item = -1;
-  while (item == -1) 
+  while (item == -1)
     {
-      switch (read_key()) 
+      switch (read_key())
 	{
 	case CL_KEY_1:
           item = 1;
@@ -536,8 +536,8 @@ ObjectSelector::get_prefab ()
 	case CL_KEY_9:
           item = 9;
           break;
-          
-	case CL_KEY_ESCAPE: 
+
+	case CL_KEY_ESCAPE:
           return;
 	}
     }
@@ -566,9 +566,9 @@ ObjectSelector::get_background ()
   font->print_left(20,110, _("4 - Thunderstorm Background"));
   Display::flip_display();
 
-  while (1) 
+  while (1)
     {
-      switch (read_key()) 
+      switch (read_key())
 	{
 	case CL_KEY_1:
 	  {
@@ -614,9 +614,9 @@ ObjectSelector::select_surface (const std::string & resource_file)
   GroundpieceData data;
 
   datafile_loaded = data_loaded[resource_file];
-  
+
   data.pos = pos;
-  
+
   std::list<std::string>* liste = res->get_resources_of_type("surface");
   surface_obj sur_obj;
   std::vector<surface_obj> sur_list;
@@ -650,11 +650,11 @@ ObjectSelector::read_key ()
 
   keys.clear();
 
-  while (true) 
-    { 
+  while (true)
+    {
       CL_System::keep_alive();
-      
-      if (keys.peek_key().state != CL_Key::NoKey) 
+
+      if (keys.peek_key().state != CL_Key::NoKey)
 	{
 	  key = keys.get_key();
 	  //std::cout << "key: " << key.ascii << std::endl;

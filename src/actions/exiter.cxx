@@ -1,4 +1,4 @@
-//  $Id: exiter.cxx,v 1.17 2003/03/05 17:31:29 grumbel Exp $
+//  $Id: exiter.cxx,v 1.18 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,19 +48,19 @@ Exiter::update ()
     {
       if (pingu->get_status() != PS_EXITED)
 	{
-	  pingu->set_status(PS_EXITED); 
+	  pingu->set_status(PS_EXITED);
 	}
     }
 }
 
-void 
+void
 Exiter::draw (GraphicContext& gc)
 {
   if (pingu->direction.is_left())
     sprite.set_direction(Sprite::LEFT);
   else
     sprite.set_direction(Sprite::RIGHT);
-    
+
   gc.draw(sprite, pingu->get_pos ());
 }
 

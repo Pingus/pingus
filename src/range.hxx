@@ -1,4 +1,4 @@
-//  $Id: range.hxx,v 1.5 2002/09/11 12:45:57 grumbel Exp $
+//  $Id: range.hxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 
 #include "pingus.hxx"
 
-/** A class similar to an integer, but keeps the value in a given range. 
+/** A class similar to an integer, but keeps the value in a given range.
 
     @deprecated The idea of this class is to keep a value inside a,
     but this class is a bit cheap and I don't really know if we need
@@ -41,13 +41,13 @@ public:
   Range(int a, int b);
   Range(const Range&);
   ~Range();
-  
+
   Range& operator=(const Range&);
-  
+
   operator int() const {
     return count;
   }
-  
+
   Range& operator++();
   Range& operator+=(int a);
   Range& operator-=(int a);

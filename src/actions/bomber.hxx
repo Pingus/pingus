@@ -1,4 +1,4 @@
-//  $Id: bomber.hxx,v 1.19 2003/04/18 17:08:56 grumbel Exp $
+//  $Id: bomber.hxx,v 1.20 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -7,7 +7,7 @@
 //  modify it under the terms of the GNU General Public License
 //  as published by the Free Software Foundation; either version 2
 //  of the License, or (at your option) any later version.
-// 
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -32,8 +32,8 @@ class Bomber : public PinguAction
 private:
   bool particle_thrown;
   bool sound_played;
-  bool gfx_exploded; 
-  bool colmap_exploded; 
+  bool gfx_exploded;
+  bool colmap_exploded;
 
   static bool static_surface_loaded;
   static CL_Surface bomber_radius;
@@ -53,7 +53,7 @@ public:
 
   int  activation_time() { return 150; }
   void on_successfull_apply ();
-  
+
 private:
   Bomber (const Bomber&);
   Bomber& operator= (const Bomber&);

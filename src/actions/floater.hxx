@@ -1,4 +1,4 @@
-//  $Id: floater.hxx,v 1.14 2003/04/18 17:08:56 grumbel Exp $
+//  $Id: floater.hxx,v 1.15 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -7,7 +7,7 @@
 //  modify it under the terms of the GNU General Public License
 //  as published by the Free Software Foundation; either version 2
 //  of the License, or (at your option) any later version.
-// 
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -36,7 +36,7 @@ public:
 
   ActionName get_type() const { return Actions::Floater; }
   ActionType get_activation_mode() const { return FALL_TRIGGERED; }
-    
+
   void init(void);
 
   void draw (GraphicContext& gc);
@@ -44,7 +44,7 @@ public:
 
   char get_persistent_char () { return 'f'; }
   bool change_allowed (ActionName new_action);
-  
+
 private:
   Floater (const Floater&);
   Floater& operator= (const Floater&);

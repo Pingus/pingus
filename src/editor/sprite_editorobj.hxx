@@ -1,5 +1,5 @@
-//  $Id: sprite_editorobj.hxx,v 1.9 2002/09/28 11:52:24 torangan Exp $
-// 
+//  $Id: sprite_editorobj.hxx,v 1.10 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -29,9 +29,9 @@ class SpriteEditorObj : public RectEditorObj
 {
 protected:
   Sprite sprite;
-  
-  /** Pointer to the position member of the child object 
-      
+
+  /** Pointer to the position member of the child object
+
   FIXME: A bit ugly, but requires less changes than a full blown
   FIXME: get/set handling, it also looks nicer  */
   Vector* pos_ref;
@@ -65,7 +65,7 @@ public:
   /** This will be overritten to provide pixel exact click
       detection */
   virtual bool   is_over (const Vector&);
-  
+
 protected:
   SpriteEditorObj (const SpriteEditorObj& old);
   SpriteEditorObj& operator= (const SpriteEditorObj& old);

@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.29 2003/04/18 17:08:56 grumbel Exp $
+//  $Id: action_button.cxx,v 1.30 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -7,7 +7,7 @@
 //  modify it under the terms of the GNU General Public License
 //  as published by the Free Software Foundation; either version 2
 //  of the License, or (at your option) any later version.
-// 
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -83,8 +83,8 @@ ActionButton::get_action_name()
   return name;
 }
 
-VerticalActionButton::VerticalActionButton(ActionHolder* h, 
-                                           int x, int y, ActionName name_, int owner_id) 
+VerticalActionButton::VerticalActionButton(ActionHolder* h,
+                                           int x, int y, ActionName name_, int owner_id)
   : ActionButton(h),
     background (PingusResource::load_surface("buttons/buttonbackground", "core")),
     backgroundhl (PingusResource::load_surface("buttons/buttonbackgroundhl", "core"))
@@ -98,11 +98,11 @@ bool
 VerticalActionButton::is_at (int x, int y)
 {
   if (x > x_pos && x < x_pos + 60
-      && y > y_pos && y <= y_pos + 35) 
+      && y > y_pos && y <= y_pos + 35)
     {
       return true;
-    } 
-  else 
+    }
+  else
     {
       return false;
     }
@@ -113,7 +113,7 @@ VerticalActionButton::draw (GraphicContext& gc)
 {
   UNUSED_ARG(gc);
 
-  if (pressed) 
+  if (pressed)
     {
       if (fast_mode) {
         CL_Display::fill_rect(x_pos, y_pos, x_pos + 60, y_pos + 35,
@@ -127,7 +127,7 @@ VerticalActionButton::draw (GraphicContext& gc)
   else
     {
       sprite.set_frame(0);
-      
+
       if (fast_mode) {
         // do nothing
       } else {
@@ -138,13 +138,13 @@ VerticalActionButton::draw (GraphicContext& gc)
   if (is_multi_direct)
     sprite.set_direction(Sprite::RIGHT);
   gc.draw(sprite, Vector(x_pos + 20, y_pos + 32));
-      
+
   // print the action name next to the button, when mouse pointer is on
   // the button.
   // FIXME: this should use the GUI events, not CL_Mouse
-  if (action_help 
+  if (action_help
       && CL_Mouse::get_x() > x_pos      && CL_Mouse::get_x() < x_pos + 60
-      && CL_Mouse::get_y() < y_pos + 35 && CL_Mouse::get_y() > y_pos) 
+      && CL_Mouse::get_y() < y_pos + 35 && CL_Mouse::get_y() > y_pos)
     {
       font_b->print_left(x_pos + 65, y_pos, action_to_screenname(name));
     }
@@ -181,8 +181,8 @@ ArmageddonButton::draw (GraphicContext& gc)
     {
       backgroundhl.put_screen (x_pos, y_pos);
       gc.draw(sprite, Vector(x_pos, y_pos));
-    } 
-  else 
+    }
+  else
     {
       if (!fast_mode)
         background.put_screen (x_pos, y_pos);
@@ -222,7 +222,7 @@ ArmageddonButton::is_at(int x, int y)
       return true;
     } else  {
       return false;
-    } 
+    }
 }
 
 void
@@ -236,17 +236,17 @@ ArmageddonButton::on_primary_button_click (int x, int y)
     {
       pressed = true;
     }
-    
+
   UNUSED_ARG(x);
   UNUSED_ARG(y);
 }
 
-ForwardButton::ForwardButton (TrueServer* s, int x, int y) 
+ForwardButton::ForwardButton (TrueServer* s, int x, int y)
   : server (s),
     x_pos (x), y_pos (y),
     background  (PingusResource::load_surface("buttons/hbuttonbgb", "core")),
     backgroundhl(PingusResource::load_surface("buttons/hbuttonbg", "core"))
-{ 
+{
   surface = PingusResource::load_surface("buttons/fast_forward", "core");
 }
 
@@ -278,24 +278,24 @@ ForwardButton::is_at (int x, int y)
       return true;
     } else  {
       return false;
-    } 
+    }
 }
 
 void
 ForwardButton::on_primary_button_click (int x, int y)
 {
   server->set_fast_forward(!server->get_fast_forward());
-  
+
   UNUSED_ARG(x);
   UNUSED_ARG(y);
 }
 
-PauseButton::PauseButton (TrueServer* s, int x, int y) 
+PauseButton::PauseButton (TrueServer* s, int x, int y)
   : server (s),
     x_pos(x), y_pos(y),
     background  (PingusResource::load_surface("buttons/hbuttonbgb", "core")),
     backgroundhl(PingusResource::load_surface("buttons/hbuttonbg", "core"))
-{ 
+{
   surface = PingusResource::load_surface("buttons/pause", "core");
 }
 
@@ -304,14 +304,14 @@ PauseButton::~PauseButton () {}
 void
 PauseButton::draw (GraphicContext& gc)
 {
-  if (server->get_pause()) 
+  if (server->get_pause())
     backgroundhl.put_screen (x_pos, y_pos);
   else
     {
     if (!fast_mode)
       background.put_screen (x_pos, y_pos);
     }
-  
+
   surface.put_screen(x_pos, y_pos);
   UNUSED_ARG(gc);
 }
@@ -325,14 +325,14 @@ PauseButton::is_at (int x, int y)
       return true;
     } else  {
       return false;
-    } 
+    }
 }
 
 void
 PauseButton::on_primary_button_click (int x, int y)
 {
   server->set_pause(!server->get_pause());
-  
+
   UNUSED_ARG(x);
   UNUSED_ARG(y);
 }

@@ -1,4 +1,4 @@
-//  $Id: sprite.cxx,v 1.13 2002/12/28 16:31:37 torangan Exp $
+//  $Id: sprite.cxx,v 1.14 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "sprite.hxx"
 #include "globals.hxx"
 
-int round (float f) 
+int round (float f)
 {
   if (f >= 0.0f)
     return int(f + 0.5f);
@@ -53,7 +53,7 @@ Sprite::operator= (const Sprite& sprite)
 {
   if (this == &sprite)
     return *this;
-    
+
   frame             = sprite.frame;
   frames_per_second = sprite.frames_per_second;
   sur               = sprite.sur;
@@ -62,7 +62,7 @@ Sprite::operator= (const Sprite& sprite)
   is_finished       = sprite.is_finished;
   x_align           = sprite.x_align;
   y_align           = sprite.y_align;
-  
+
   return *this;
 }
 
@@ -109,7 +109,7 @@ Sprite::Sprite (const ResDescriptor& desc,
   sur = PingusResource::load_surface (desc);
 }
 
-void 
+void
 Sprite::put_screen (int x, int y)
 {
   if (!sur)
@@ -136,14 +136,14 @@ Sprite::put_screen (int x, int y)
 }
 
 
-void 
+void
 Sprite::put_screen (const Vector& pos)
 {
   put_screen (int(pos.x), int(pos.y));
 }
 
 
-void 
+void
 Sprite::set_align (int arg_x, int arg_y)
 {
   x_align = arg_x;
@@ -157,15 +157,15 @@ Sprite::set_align_center ()
   y_align = -int(sur.get_height ())/2;
 }
 
-void 
+void
 Sprite::set_align_center_bottom ()
 {
   x_align = -int(sur.get_width ())/2;
-  y_align = -int(sur.get_height ()); 
+  y_align = -int(sur.get_height ());
 }
 
 
-void 
+void
 Sprite::next_frame ()
 {
   ++frame;
@@ -176,29 +176,29 @@ Sprite::next_frame ()
 
 
 
-void 
+void
 Sprite::previous_frame ()
 {
   --frame;
 
   if (round(frame) < 0)
-    frame = sur.get_num_frames () - 1;  
+    frame = sur.get_num_frames () - 1;
 }
 
 
-int 
+int
 Sprite::get_frame ()
 {
   return int(frame);
 }
 
-float 
+float
 Sprite::get_progress ()
 {
   return float(frame)/max_frames ();
 }
 
-int 
+int
 Sprite::max_frames ()
 {
   switch (direction)
@@ -246,20 +246,20 @@ Sprite::update (float delta)
 	frame = 0;
       }
       break;
-      
+
     case ONCE:
       frame += frames_per_second * delta;
-      if (round(frame) >= max_frames ()) 
+      if (round(frame) >= max_frames ())
 	{
 	  is_finished = true;
 	  frame = max_frames () - 1;
 	}
-      
+
       break;
     }
 }
 
-bool 
+bool
 Sprite::finished ()
 {
   switch (looptype)
@@ -276,7 +276,7 @@ Sprite::finished ()
     }
 }
 
-void 
+void
 Sprite::reset ()
 {
   frame = 0.0f;

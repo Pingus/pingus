@@ -1,4 +1,4 @@
-// $Id: rect_editorobj.cxx,v 1.8 2002/10/04 11:38:29 torangan Exp $
+// $Id: rect_editorobj.cxx,v 1.9 2003/04/19 10:23:18 torangan Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,16 +34,16 @@ RectEditorObj::operator= (const RectEditorObj& old)
 {
   if (this != &old)
     EditorObj::operator=(old);
-    
+
   return *this;
 }
 
 void
-RectEditorObj::draw_mark (EditorNS::EditorView * view) 
+RectEditorObj::draw_mark (EditorNS::EditorView * view)
 {
   Vector ul(get_upper_left_corner());
 
-  view->draw_rect(static_cast<int>(ul.x), 
+  view->draw_rect(static_cast<int>(ul.x),
 		  static_cast<int>(ul.y),
 		  static_cast<int>(ul.x + get_width()),
 		  static_cast<int>(ul.y + get_height()),
@@ -63,7 +63,7 @@ bool
 RectEditorObj::is_in_rect (const CL_Rect& rect)
 {
   Vector pos(get_upper_left_corner());
-  
+
   // FIXME: Simple, stupid and wrong,... but works good =;-)
   return (   pos.x >= rect.x1 && pos.x < rect.x2
 	  && pos.y >= rect.y1 && pos.y < rect.y2);

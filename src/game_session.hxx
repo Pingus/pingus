@@ -1,5 +1,5 @@
-//  $Id: game_session.hxx,v 1.18 2003/03/21 22:08:06 grumbel Exp $
-// 
+//  $Id: game_session.hxx,v 1.19 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -54,7 +54,7 @@ private:
 
   /** Number of redraws (frameskip == number_of_updates - number_of_redraws) */
   unsigned int number_of_redraws;
-  
+
 public:
   PingusGameSession (PLFHandle arg_plf, bool arg_show_result_screen);
 
@@ -64,7 +64,7 @@ public:
   /** Get the results of the last gaming session */
   PingusGameSessionResult get_result ();
 
-  // Overloaded Screen functions 
+  // Overloaded Screen functions
   /** Draw this screen */
   bool draw(GraphicContext& gc);
 
@@ -79,7 +79,7 @@ public:
   void on_armageddon_press ();
   void on_escape_press ();
 
-private:  
+private:
   PingusGameSession (const PingusGameSession&);
   PingusGameSession& operator= (const PingusGameSession&);
 };

@@ -1,4 +1,4 @@
-//  $Id: path_manager.cxx,v 1.5 2003/04/13 23:33:19 grumbel Exp $
+//  $Id: path_manager.cxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,23 +33,23 @@ PathManager::~PathManager ()
 {
 }
 
-void 
+void
 PathManager::add_path (const std::string& path)
 {
   pout(PINGUS_DEBUG_PATHMGR) << "PathManager: add_path: " << path << std::endl;
   path_list.push_back (path);
 }
 
-std::string 
+std::string
 PathManager::complete (const std::string& relative_path)
 {
   std::string comp_path = base_path + "/" + relative_path;
   pout(PINGUS_DEBUG_PATHMGR) << "PathManager: " << relative_path << " -> " << comp_path << std::endl;
-  
+
   return comp_path;
 }
 
-bool 
+bool
 PathManager::find_path (const std::list<std::string>& file_list)
 {
   for (PathIter i = path_list.begin (); !path_found && i != path_list.end (); ++i)
@@ -77,7 +77,7 @@ PathManager::find_path (const std::list<std::string>& file_list)
 }
 
 /** Search for a path which contains the file 'file' */
-bool 
+bool
 PathManager::find_path (const std::string& file)
 {
   for (PathIter i = path_list.begin (); !path_found && i != path_list.end (); ++i)
@@ -98,7 +98,7 @@ PathManager::find_path (const std::string& file)
   return false;
 }
 
-void 
+void
 PathManager::set_path (const std::string& path)
 {
   base_path = path;

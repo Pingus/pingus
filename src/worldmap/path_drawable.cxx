@@ -1,4 +1,4 @@
-//  $Id: path_drawable.cxx,v 1.7 2003/04/10 11:51:32 grumbel Exp $
+//  $Id: path_drawable.cxx,v 1.8 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ PathDrawable::draw (GraphicContext& gc)
     }
 }
 
-void 
+void
 PathDrawable::update (float delta)
 {
   UNUSED_ARG(delta);

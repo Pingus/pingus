@@ -1,4 +1,4 @@
-//  $Id: groundpiece_obj.cxx,v 1.14 2003/04/02 20:02:28 grumbel Exp $
+//  $Id: groundpiece_obj.cxx,v 1.15 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,7 @@ GroundpieceObj::write_xml (std::ostream& xml)
   data->write_xml(xml);
 }
 
-std::string 
+std::string
 GroundpieceObj::status_line ()
 {
   return "Groundpiece: " + data->desc.res_name
@@ -109,7 +109,7 @@ GroundpieceObj::rotate_270 ()
 
 struct GroundpieceObjRotate {
   GroundpieceObj* obj;
-  GroundpieceObjRotate(GroundpieceObj* o) 
+  GroundpieceObjRotate(GroundpieceObj* o)
   {
     obj = o;
   }
@@ -121,7 +121,7 @@ struct GroundpieceObjRotate {
 
 struct GroundpieceObjFlipHorizontal {
   GroundpieceObj* obj;
-  GroundpieceObjFlipHorizontal(GroundpieceObj* o) 
+  GroundpieceObjFlipHorizontal(GroundpieceObj* o)
   {
     obj = o;
   }
@@ -133,11 +133,11 @@ struct GroundpieceObjFlipHorizontal {
 
 struct GroundpieceObjFlipVertical {
   GroundpieceObj* obj;
-  GroundpieceObjFlipVertical(GroundpieceObj* o) 
+  GroundpieceObjFlipVertical(GroundpieceObj* o)
   {
     obj = o;
   }
-  
+
   void operator()() {
     obj->vertical_flip();
   }
@@ -146,7 +146,7 @@ struct GroundpieceObjFlipVertical {
 EditorNS::PropertyFrame*
 GroundpieceObj::get_gui_dialog (EditorNS::Editor* editor)
 {
-  EditorNS::GenericPropertyFrame* propframe 
+  EditorNS::GenericPropertyFrame* propframe
     = new EditorNS::GenericPropertyFrame("GroundPiece Properties",
                                          editor->get_property_window()->get_client_area());
 
@@ -157,11 +157,11 @@ GroundpieceObj::get_gui_dialog (EditorNS::Editor* editor)
   propframe->add_enum_value("Bridge",      Groundtype::GP_BRIDGE);
   propframe->add_enum_value("Remove",      Groundtype::GP_REMOVE);
   propframe->end_add_enum_box();
-  
+
   propframe->add_button_box("Rotate 90 (r)",       GroundpieceObjRotate(this));
   propframe->add_button_box("Flip Vertical (v)",   GroundpieceObjFlipVertical(this));
   propframe->add_button_box("Flip Horizontal (h)", GroundpieceObjFlipHorizontal(this));
-  
+
   return propframe;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: woodthing.cxx,v 1.6 2003/02/19 09:50:37 grumbel Exp $
+//  $Id: woodthing.cxx,v 1.7 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ WoodThing::update ()
 
   --counter;
 
-  if (rand() % 5 == 0) 
+  if (rand() % 5 == 0)
     {
       world->get_smoke_particle_holder()->
         add_particle(static_cast<int>(data->pos.x - surface.get_width () /  2 - 24),
@@ -59,7 +59,7 @@ WoodThing::update ()
 void
 WoodThing::draw (GraphicContext& gc)
 {
-  gc.draw(surface, 
+  gc.draw(surface,
 	  static_cast<int>(data->pos.x - surface.get_width () /  2),
 	  static_cast<int>(data->pos.y - surface.get_height() + 32),
 	  counter);

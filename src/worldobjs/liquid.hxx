@@ -1,4 +1,4 @@
-//  $Id: liquid.hxx,v 1.5 2003/02/18 17:04:13 grumbel Exp $
+//  $Id: liquid.hxx,v 1.6 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ class Liquid : public WorldObj
 private:
   WorldObjsData::LiquidData* const data;
   Sprite sur;
-  
+
 public:
   CL_Surface colmap_sur;
 
@@ -45,7 +45,7 @@ public:
   void  on_startup();
   void  draw      (GraphicContext& gc);
   void  update();
-  
+
 private:
   Liquid (const Liquid&);
   Liquid& operator= (const Liquid&);

@@ -1,4 +1,4 @@
-//  $Id: drown.cxx,v 1.13 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: drown.cxx,v 1.14 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ Drown::Drown (Pingu* p)
   sprite.set_align_center_bottom();
 }
 
-void 
+void
 Drown::draw (GraphicContext& gc)
 {
   // FIXME: Direction handling is ugly
@@ -43,7 +43,7 @@ Drown::draw (GraphicContext& gc)
   gc.draw(sprite, pingu->get_pos ());
 }
 
-void 
+void
 Drown::update ()
 {
   sprite.update();

@@ -1,5 +1,5 @@
-//  $Id: controller.hxx,v 1.18 2003/04/15 19:06:50 grumbel Exp $
-// 
+//  $Id: controller.hxx,v 1.19 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -40,9 +40,9 @@ class Controller {
 private:
   Pointer*  standard_pointer;
   Scroller* scroller;
-    
+
   std::map<ButtonName, std::pair<Button*, bool> > buttons;
-      
+
   std::vector<Event> events;
 
   float             std_pointer_x;
@@ -51,15 +51,15 @@ private:
 public:
   Controller (const std::string& configfile);
   ~Controller ();
-      
+
   std::vector<Event>& get_events () { return events; }
-      
+
   const Pointer * get_pointer     () const { return standard_pointer; }
   const Scroller* get_scroller    () const { return scroller;         }
 
   /// returns the requested Buttons::Button or 0 if it doesn't exist (e.g. undefined action Buttons::Button)
   const Button* get_button (ButtonName name);
-      
+
   void update (float delta);
 
   static void set_current(Controller* controller) { current_controller = controller; }
@@ -69,7 +69,7 @@ private:
   static Controller* current_controller;
 
   void create_action_buttons (xmlNodePtr cur);
-      
+
   Controller (const Controller&);
   Controller& operator= (const Controller&);
 };

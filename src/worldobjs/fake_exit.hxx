@@ -1,4 +1,4 @@
-//  $Id: fake_exit.hxx,v 1.7 2002/10/20 18:28:49 torangan Exp $
+//  $Id: fake_exit.hxx,v 1.8 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,13 +40,13 @@ private:
   WorldObjsData::FakeExitData* const data;
   bool smashing;
   Sprite smallmap_symbol;
-    
+
 public:
   FakeExit (const WorldObjsData::FakeExitData& data_);
   ~FakeExit ();
 
   float get_z_pos () const;
-    
+
   void draw (GraphicContext& gc);
 
   void update ();
@@ -56,7 +56,7 @@ public:
 
 private:
   void catch_pingu (Pingu*);
-    
+
   FakeExit (const FakeExit&);
   FakeExit& operator= (const FakeExit&);
 };

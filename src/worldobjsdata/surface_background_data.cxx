@@ -1,4 +1,4 @@
-//  $Id: surface_background_data.cxx,v 1.11 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: surface_background_data.cxx,v 1.12 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ SurfaceBackgroundData::SurfaceBackgroundData ()
 {
 }
 
-SurfaceBackgroundData::SurfaceBackgroundData (const SurfaceBackgroundData& old) 
+SurfaceBackgroundData::SurfaceBackgroundData (const SurfaceBackgroundData& old)
   : WorldObjData(old),
     desc(old.desc),
     para_x(old.para_x),
@@ -61,7 +61,7 @@ SurfaceBackgroundData::write_xml (std::ostream& xml)
 {
   xml << "<background type=\"surface\">\n";
   XMLhelper::write_desc_xml(xml, desc);
-  
+
   xml << "  <color>\n"
       << "    <red>"   << color.red   << "</red>\n"
       << "    <green>" << color.green << "</green>\n"
@@ -96,7 +96,7 @@ SurfaceBackgroundData::SurfaceBackgroundData (xmlDocPtr doc, xmlNodePtr cur)
 
   reader.read_float("scroll-x", scroll_x);
   reader.read_float("scroll-y", scroll_y);
-  
+
   reader.read_bool("stretch-x", stretch_x);
   reader.read_bool("stretch-y", stretch_y);
 

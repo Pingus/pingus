@@ -1,4 +1,4 @@
-//  $Id: console.cxx,v 1.12 2003/04/18 12:51:17 grumbel Exp $
+//  $Id: console.cxx,v 1.13 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,25 +30,25 @@ using std::ostream;
 // Globale console
 Console console;
 
-ConsoleBuffer::ConsoleBuffer () : buffer(NUM_LINES) 
+ConsoleBuffer::ConsoleBuffer () : buffer(NUM_LINES)
 {
   // Set the output buffer
   setp (char_buffer, char_buffer + CONSOLE_BUFFER_SIZE - 1);
-  
+
   // Switch of input buffer
   setg(0, 0, 0);
 }
-  
-ConsoleBuffer::~ConsoleBuffer () 
+
+ConsoleBuffer::~ConsoleBuffer ()
 {
   sync ();
 }
 
 int
-ConsoleBuffer::overflow (int c) 
+ConsoleBuffer::overflow (int c)
 {
   std::string str = fill_buffer(true);
-    
+
   str += c;
   buffer.push_back(str);
   buffer.pop_front();
@@ -56,9 +56,9 @@ ConsoleBuffer::overflow (int c)
   setp (char_buffer, char_buffer + CONSOLE_BUFFER_SIZE - 1);
   return 0;
 }
-  
-int 
-ConsoleBuffer::sync () 
+
+int
+ConsoleBuffer::sync ()
 {
   std::string str = fill_buffer(false);
 
@@ -67,7 +67,7 @@ ConsoleBuffer::sync ()
       buffer.push_back(str);
       buffer.pop_front();
     }
-    
+
   setp(char_buffer, char_buffer + CONSOLE_BUFFER_SIZE - 1);
   return 0;
 }
@@ -85,7 +85,7 @@ ConsoleBuffer::fill_buffer (bool append)
 
   for (char* c = pbase (); c != pptr (); ++c)
     {
-      if (*c != '\n') 
+      if (*c != '\n')
 	str += *c;
       else
 	{
@@ -97,16 +97,16 @@ ConsoleBuffer::fill_buffer (bool append)
 
 	      buffer.push_back(str.substr(0, pos));
 	      buffer.pop_front();
-	      
+
 	      str = str.substr(pos, str.size());
 	    }
-	    
+
 	   buffer.push_back(str);
 	   buffer.pop_front();
 	   str = "";
 	}
     }
-    
+
   return str;
 }
 
@@ -154,7 +154,7 @@ Console::draw()
   assert(is_init);
 
   /** Callculate the position of the first line on the screen */
-  int start_y_pos = 
+  int start_y_pos =
     CL_Display::get_height() - (font->get_height() * (number_of_lines + 3));
 
   // The background of the console
@@ -168,17 +168,17 @@ Console::draw()
   unsigned int window_start = Math::max(0, static_cast<int>(buffer.size() - number_of_lines - current_pos));
 
   std::list<std::string>::const_iterator it = buffer.begin();
-  
+
   // move iterator to the first line to be displayed
   for (unsigned int i = 0; i < window_start; ++i)
     ++it;
-  
-  for (unsigned int i = 0; 
-       i < number_of_lines && i + window_start < buffer.size(); 
+
+  for (unsigned int i = 0;
+       i < number_of_lines && i + window_start < buffer.size();
        ++it, ++i)
     {
-      font->print_left(10, 
-		       start_y_pos + (i * (font->get_height() + 2)), 
+      font->print_left(10,
+		       start_y_pos + (i * (font->get_height() + 2)),
 		       it->c_str()
 		      );
     }
@@ -197,7 +197,7 @@ Console::decrease_lines()
     --number_of_lines;
 }
 
-void 
+void
 Console::scroll_up()
 {
   if (current_pos + number_of_lines < streambuf.get_buffer().size())

@@ -1,4 +1,4 @@
-//  $Id: direction.cxx,v 1.2 2002/06/19 15:19:26 torangan Exp $
+//  $Id: direction.cxx,v 1.3 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,7 +65,7 @@ Direction::is_left() const
 {
   if (direction == -1)
     return true;
-  else 
+  else
     return false;
 }
 
@@ -74,7 +74,7 @@ Direction::is_right() const
 {
   if (direction == 1)
     return true;
-  else 
+  else
     return false;
 }
 

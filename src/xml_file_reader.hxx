@@ -1,5 +1,5 @@
-//  $Id: xml_file_reader.hxx,v 1.4 2003/03/26 12:01:17 grumbel Exp $
-// 
+//  $Id: xml_file_reader.hxx,v 1.5 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -29,7 +29,7 @@ class XMLFileReader : public FileReader
 private:
   /** Pointer to the XML document */
   xmlDocPtr  doc;
-  
+
   /** Pointer to the current section node, if one wants to access the
       content of the section one has to use cur->children */
   xmlNodePtr section_node;
@@ -58,7 +58,7 @@ public:
   bool read_enum  (const char* name, E& value, T enum2string)
   {
     xmlNodePtr node = find_node(name);
-    
+
     if (node)
       {
         value = enum2string(XMLhelper::parse_string(doc, node));

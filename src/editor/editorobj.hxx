@@ -1,5 +1,5 @@
-//  $Id: editorobj.hxx,v 1.18 2002/11/28 20:09:54 grumbel Exp $
-// 
+//  $Id: editorobj.hxx,v 1.19 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -119,7 +119,7 @@ public:
       CL_Component* should/must be a CL_Frame so that it can get
       embedded in the properties window */
   virtual EditorNS::PropertyFrame* get_gui_dialog (EditorNS::Editor* parent) =0;
-  
+
 protected:
   EditorObj (const EditorObj&) { }
   EditorObj& operator= (const EditorObj&) { return *this; }

@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.7 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: surface_button.cxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,7 +64,7 @@ void
 SurfaceButton::on_primary_button_press (int x, int y)
 {
   pressed = true;
-  
+
   UNUSED_ARG(x);
   UNUSED_ARG(y);
 }
@@ -73,7 +73,7 @@ void
 SurfaceButton::on_primary_button_release (int x, int y)
 {
   pressed = false;
-  
+
   UNUSED_ARG(x);
   UNUSED_ARG(y);
 }

@@ -1,4 +1,4 @@
-//  $Id: pingu_enums.cxx,v 1.6 2003/04/18 17:08:56 grumbel Exp $
+//  $Id: pingu_enums.cxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@ namespace Actions {
 
 std::string action_to_screenname (ActionName action)
 {
-  switch (action) 
+  switch (action)
     {
     case Angel          : return _("Angel");
     case Basher         : return _("Basher");
@@ -60,7 +60,7 @@ std::string action_to_screenname (ActionName action)
 
 std::string action_to_string (ActionName action)
 {
-  switch (action) 
+  switch (action)
     {
     case Angel          : return "angel";
     case Basher         : return "basher";
@@ -89,7 +89,7 @@ std::string action_to_string (ActionName action)
     }
 }
 
-ActionName action_from_string(const std::string& action) 
+ActionName action_from_string(const std::string& action)
 {
   if (action == "angel")          return Angel;
   if (action == "basher")         return Basher;

@@ -1,4 +1,4 @@
-//  $Id: string_format.cxx,v 1.1 2003/04/16 18:02:27 torangan Exp $
+//  $Id: string_format.cxx,v 1.2 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,12 +26,12 @@ StringFormat::break_line (std::string text, int length, CL_Font* font)
   unsigned int pos = 0;
   while ((pos = text.find('\t', pos)) != std::string::npos)
     text.replace(pos, 1, 1, ' ');
-  
+
   pos = 0;
   while ((pos = text.find("  ", pos)) != std::string::npos)
     text.replace(pos, 2, 1, ' ');
 
-  pos = 0;  
+  pos = 0;
   while ((pos = text.find('\n', pos)) != std::string::npos)
     {
       if (pos < text.length() && text[pos + 1] == '\n')   // double enter marks paragraph
@@ -50,13 +50,13 @@ StringFormat::break_line (std::string text, int length, CL_Font* font)
 
       if (pos && text[pos - 1] == ' ')
         text.replace(pos - 1, 2, 1, '\n');		  // no whitespace in front
-	
+
       if (pos < text.length() && text[pos + 1] == ' ')
          text.replace(pos, 2, 1, '\n');			  // no whitespace behind
-	
+
       ++pos;						  // we don't want to find it again
     }
-        
+
   pos = 0;
   while ((pos = text.find("  ", pos)) != std::string::npos)
     text.replace(pos, 2, 1, ' ');

@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.27 2003/04/18 12:48:50 grumbel Exp $
+//  $Id: blitter.cxx,v 1.28 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ Blitter::put_surface(CL_Canvas* canvas, const CL_Surface& sur,
   Blitter::put_surface(canvas, sur.get_provider(), x, y);
 }
 
-void 
+void
 Blitter::put_surface(CL_Canvas* canvas, CL_SurfaceProvider* provider,
 		     int x, int y)
 {
@@ -61,10 +61,10 @@ Blitter::put_surface(CL_Canvas* canvas, CL_SurfaceProvider* provider,
     case 32:
       put_surface_32bit(canvas, provider, x, y);
       break;
-    default: 
+    default:
       PingusError::raise("Blitter:put_surface:Unknown color depth: " + to_string(provider->get_depth()));
       break;
-    }    
+    }
 }
 
 void
@@ -76,7 +76,7 @@ Blitter::put_surface_8bit(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
   int start_i;
   unsigned char* tbuffer; // Target buffer
   int twidth, theight, tpitch;
-  
+
   unsigned char* sbuffer; // Source buffer
   int swidth, sheight, spitch;
 
@@ -109,32 +109,32 @@ Blitter::put_surface_8bit(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
 
   if (y < 0)
     y_offset = 0-y;
-  else 
+  else
     y_offset = 0;
-  
-  if (x < 0) 
+
+  if (x < 0)
     x_offset = -x;
   else
     x_offset = 0;
 
   unsigned char* palette = cl_palette->palette;
- 
+
   if (sprovider->uses_src_colorkey ())
     {
       unsigned int colorkey = sprovider->get_src_colorkey();
-      
+
       for(int line=y_offset;
-	  line < sheight && (line + y) < theight; 
-	  ++line) 
+	  line < sheight && (line + y) < theight;
+	  ++line)
 	{
 	  start_i = ((line + y) * tpitch) + (x*4);
-      
-	  for(int i=start_i+(4*x_offset),j=line*spitch+x_offset; 
+
+	  for(int i=start_i+(4*x_offset),j=line*spitch+x_offset;
 	      (i < start_i + (4*swidth))
 		&& ((i-start_i+(x*4)) < (4*twidth));
-	      i += 4, ++j) 
+	      i += 4, ++j)
 	    {
-	      if (sbuffer[j] != colorkey) 
+	      if (sbuffer[j] != colorkey)
 		{
 		  tbuffer[i + 0] = 255;                                  // alpha
 		  tbuffer[i + 1] = palette[sbuffer[j] * 3 + 2]; // blue
@@ -147,15 +147,15 @@ Blitter::put_surface_8bit(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
   else
     {
       for(int line=y_offset;
-	  line < sheight && (line + y) < theight; 
-	  ++line) 
+	  line < sheight && (line + y) < theight;
+	  ++line)
 	{
 	  start_i = ((line + y) * tpitch) + (x*4);
-      
-	  for(int i=start_i+(4*x_offset),j=line*spitch+x_offset; 
+
+	  for(int i=start_i+(4*x_offset),j=line*spitch+x_offset;
 	      (i < start_i + (4*swidth))
 		&& ((i-start_i+(x*4)) < (4*twidth));
-	      i += 4, ++j) 
+	      i += 4, ++j)
 	    {
 	      tbuffer[i + 0] = 255;                                  // alpha
 	      tbuffer[i + 1] = palette[sbuffer[j] * 3 + 2]; // blue
@@ -167,9 +167,9 @@ Blitter::put_surface_8bit(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
 
 #if COMPILE_WITH_MEMORY_HOLE
 #warning "FIXME: Blitter::put_surface_8bit(CL_Canvas* provider, CL_SurfaceProvider* sprovider, int x, int y) contains memory hole"
-#else 
+#else
   sprovider->unlock();
-  provider->unlock();  
+  provider->unlock();
 #endif
 }
 
@@ -180,9 +180,9 @@ Blitter::put_surface_32bit(CL_Canvas* canvas, CL_SurfaceProvider* provider,
   assert (canvas);
   assert (provider);
 
-  pout(PINGUS_DEBUG_BLITTER) << "Blitting: SurfaceProvider:" << provider->get_width () 
-                             << "x" << provider->get_height () << ":" << provider 
-                	     << " Canvas:" << canvas->get_width () << "x" 
+  pout(PINGUS_DEBUG_BLITTER) << "Blitting: SurfaceProvider:" << provider->get_width ()
+                             << "x" << provider->get_height () << ":" << provider
+                	     << " Canvas:" << canvas->get_width () << "x"
                              << canvas->get_height () << ":" << canvas << std::endl;
 
   float red, green, blue, alpha;
@@ -202,14 +202,14 @@ Blitter::put_surface_32bit(CL_Canvas* canvas, CL_SurfaceProvider* provider,
   provider->lock();
   if (1) // slow
     {
-      for(int y = Math::max(0, -y_pos); y < sheight && (y + y_pos) < theight; ++y) 
-	for(int x = Math::max(0,-x_pos); x < swidth && (x + x_pos) < twidth; ++x) 
+      for(int y = Math::max(0, -y_pos); y < sheight && (y + y_pos) < theight; ++y)
+	for(int x = Math::max(0,-x_pos); x < swidth && (x + x_pos) < twidth; ++x)
 	  {
 	    provider->get_pixel(x, y, &red, &green, &blue, &alpha);
 	    canvas->get_pixel(x + x_pos, y + y_pos, &tred, &tgreen, &tblue, &talpha);
-	  
+
 	    // FIXME: This doesn't give correct alpha values
-	    canvas->draw_pixel(x + x_pos, y + y_pos, 
+	    canvas->draw_pixel(x + x_pos, y + y_pos,
 			       Math::mid(0.0f, 1.0f, (red   * alpha) + (tred   * (1.0f - alpha))),
 			       Math::mid(0.0f, 1.0f, (green * alpha) + (tgreen * (1.0f - alpha))),
 			       Math::mid(0.0f, 1.0f, (blue  * alpha) + (tblue  * (1.0f - alpha))),
@@ -218,7 +218,7 @@ Blitter::put_surface_32bit(CL_Canvas* canvas, CL_SurfaceProvider* provider,
     }
   else // fast?!
     {
-      
+
     }
 
 #if COMPILE_WITH_MEMORY_HOLE
@@ -238,7 +238,7 @@ Blitter::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
   int start_i;
   unsigned char* tbuffer; // Target buffer
   int twidth, theight, tpitch;
-  
+
   unsigned char* sbuffer; // Source buffer
   int swidth, sheight, spitch;
 
@@ -264,7 +264,7 @@ Blitter::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
 
   tbuffer = static_cast<unsigned char*>(provider->get_data());
   sbuffer = static_cast<unsigned char*>(sprovider->get_data());
-  
+
   palette = sprovider->get_palette();
   assert(palette);
 
@@ -278,10 +278,10 @@ Blitter::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
 
   if (y < 0)
     y_offset = 0-y;
-  else 
+  else
     y_offset = 0;
-  
-  if (x < 0) 
+
+  if (x < 0)
     x_offset = -x;
   else
     x_offset = 0;
@@ -289,7 +289,7 @@ Blitter::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
   for(int line=y_offset; line < sheight && (line + y) < theight; ++line) {
     start_i = ((line + y) * tpitch) + (x*4);
 
-    for(int i=start_i+(4*x_offset),j=line*spitch+x_offset; 
+    for(int i=start_i+(4*x_offset),j=line*spitch+x_offset;
 	i < start_i + (4*swidth) && (i-start_i+(x*4)) < (4*twidth); i+=4,++j) {
       if (sbuffer[j]) {
 	tbuffer[i + 0] = 0;                                  // alpha
@@ -301,7 +301,7 @@ Blitter::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
 #warning "FIXME: Blitter::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider, int x, int y) contains memory hole"
 #else
   sprovider->unlock();
-  provider->unlock();  
+  provider->unlock();
 #endif
 }
 
@@ -310,7 +310,7 @@ Blitter::clear_canvas(CL_Canvas* canvas)
 {
   assert (canvas);
   unsigned char* buffer;
-  
+
   canvas->lock();
   buffer = static_cast<unsigned char*>(canvas->get_data());
   memset(buffer, 0, sizeof(unsigned char) * canvas->get_pitch() * canvas->get_height());
@@ -340,11 +340,11 @@ Blitter::create_canvas(CL_SurfaceProvider* prov)
       {
 	canvas->lock();
 	prov->lock();
-	
+
 	int buffer_size = prov->get_pitch () * prov->get_height ();
 	unsigned char* sbuffer = static_cast<unsigned char*>(prov->get_data ());
 	unsigned char* tbuffer = static_cast<unsigned char*>(canvas->get_data ());
-	
+
 	for (int si = 0, ti = 0; si < buffer_size; si += 3, ti += 4)
 	  {
 	    tbuffer[ti + 0] = 255; // Alpha
@@ -352,7 +352,7 @@ Blitter::create_canvas(CL_SurfaceProvider* prov)
 	    tbuffer[ti + 2] = sbuffer[si + 1];
 	    tbuffer[ti + 3] = sbuffer[si + 2];
 	  }
-	  
+
 	// -FIXME: memory hole
 	prov->unlock();
 	canvas->unlock();
@@ -376,14 +376,14 @@ Blitter::create_canvas(CL_SurfaceProvider* prov)
   return canvas;
 }
 
-CL_Surface 
+CL_Surface
 Blitter::scale_surface (const CL_Surface& sur, int width, int height)
 {
   assert (sur);
   return CL_Surface(Blitter::scale_surface_to_canvas(sur, width, height), true);
 }
 
-CL_Canvas* 
+CL_Canvas*
 Blitter::scale_surface_to_canvas (const CL_Surface& sur, int width, int height)
 {
   assert (sur);
@@ -408,7 +408,7 @@ Blitter::scale_surface_to_canvas (const CL_Surface& sur, int width, int height)
 	{
 	  for (int x = 0; x < width; ++x)
 	    {
-	      unsigned char pixel = *(static_cast<unsigned char*>(provider->get_data ()) 
+	      unsigned char pixel = *(static_cast<unsigned char*>(provider->get_data ())
 				      + (y * pheight/height) * provider->get_pitch() + (x * pwidth/width));
 
 	      color.red   = provider->get_palette()->palette[pixel*3 +0] / 255.0f;
@@ -439,7 +439,7 @@ Blitter::scale_surface_to_canvas (const CL_Surface& sur, int width, int height)
 		  int ti = (y * width + x) * 4;
 		  int si = ((y * pheight / height) * pwidth
 			    + (x * pwidth / width)) * 3;
-		
+
 		  tbuffer[ti + 0] = 255; // alpha
 		  tbuffer[ti + 1] = sbuffer[(si + 0)]; // blue
 		  tbuffer[ti + 2] = sbuffer[(si + 1)]; // green
@@ -457,7 +457,7 @@ Blitter::scale_surface_to_canvas (const CL_Surface& sur, int width, int height)
 		  int ti = (y * width + x) * 4;
 		  int si = ((y * pheight / height) * pwidth
 			    + (x * pwidth / width)) * 4;
-		
+
 		  tbuffer[ti + 0] = sbuffer[(si + 0)]; // alpha
 		  tbuffer[ti + 1] = sbuffer[(si + 1)]; // blue
 		  tbuffer[ti + 2] = sbuffer[(si + 2)]; // green
@@ -514,7 +514,7 @@ Blitter::convert_to_emptyprovider(CL_SurfaceProvider* sprov)
   int i;
 
   sprov->lock();
-  switch(sprov->get_depth()) 
+  switch(sprov->get_depth())
     {
     case 32:
       tprov = new CL_Canvas(sprov->get_width(),
@@ -536,9 +536,9 @@ Blitter::convert_to_emptyprovider(CL_SurfaceProvider* sprov)
 			    sprov->get_height());
       palette = sprov->get_palette();
       tprov->lock();
-      
+
       sbuffer = static_cast<unsigned char*>(sprov->get_data());
-      tbuffer = static_cast<unsigned char*>(tprov->get_data());    
+      tbuffer = static_cast<unsigned char*>(tprov->get_data());
 
       for(i=0; i < (sprov->get_height() * sprov->get_pitch()); ++i)
 	{
@@ -547,20 +547,20 @@ Blitter::convert_to_emptyprovider(CL_SurfaceProvider* sprov)
 	  tbuffer[i * 4 + 2] = palette->palette[sbuffer[i] * 3 + 1];
 	  tbuffer[i * 4 + 3] = palette->palette[sbuffer[i] * 3 + 0];
 	}
-      
-      tprov->unlock();      
+
+      tprov->unlock();
       break;
     default:
-      std::cout << "convert_to_emptyprovider(): Wrong source format: " 
+      std::cout << "convert_to_emptyprovider(): Wrong source format: "
 		<< static_cast<int>(sprov->get_depth()) << std::endl;
       assert(false);
       break;
     }
   sprov->unlock();
-  
+
   return tprov;
 }
-*/ 
+*/
 
 /** Flip a surface horizontal */
 CL_Surface
@@ -591,7 +591,7 @@ Blitter::rotate_90 (const CL_Surface& sur)
       IndexedCanvas* canvas = new IndexedCanvas(pheight, pwidth);
       if (prov->uses_src_colorkey())
         canvas->set_src_colorkey(prov->get_src_colorkey());
-      
+
       prov->lock ();
       canvas->lock ();
 
@@ -608,7 +608,7 @@ Blitter::rotate_90 (const CL_Surface& sur)
 
       canvas->unlock ();
       prov->unlock ();
-      return CL_Surface(canvas, true);     
+      return CL_Surface(canvas, true);
     }
   else
     {

@@ -1,4 +1,4 @@
-//  $Id: capture_rectangle.hxx,v 1.6 2002/10/04 11:38:28 torangan Exp $
+//  $Id: capture_rectangle.hxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,13 +35,13 @@ class ButtonPanel;
 class CaptureRectangle
 {
 private:
-  Pingu*      pingu; 
-  std::string action_str;  
+  Pingu*      pingu;
+  std::string action_str;
 
   /// The id of the owner of this capture rectangle
   int owner_id;
-  
-  Sprite good; 
+
+  Sprite good;
   Sprite bad;
   Sprite arrow_left;
   Sprite arrow_right;
@@ -51,12 +51,12 @@ private:
 
 public:
   CaptureRectangle(ButtonPanel*);
-  ~CaptureRectangle(); 
-  
-  void set_pingu(Pingu* pingu);  
+  ~CaptureRectangle();
 
-  void draw_offset(int x_offset, int y_offset, float s = 1.0); 
-  
+  void set_pingu(Pingu* pingu);
+
+  void draw_offset(int x_offset, int y_offset, float s = 1.0);
+
 private:
   CaptureRectangle (const CaptureRectangle&);
   CaptureRectangle& operator= (const CaptureRectangle&);

@@ -1,4 +1,4 @@
-//  $Id: loading.cxx,v 1.4 2003/04/15 19:06:50 grumbel Exp $
+//  $Id: loading.cxx,v 1.5 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ Loading::Loading()
 }
 
 Loading::~Loading()
-{ 
+{
 }
 
 void
@@ -67,7 +67,7 @@ Loading::draw_progress(const std::string& str, float progress)
   sur.put_screen((CL_Display::get_width() - sur.get_width())/2,
 		 (CL_Display::get_height() - sur.get_height())/2);
 
-  font->print_center(CL_Display::get_width() / 2, 
+  font->print_center(CL_Display::get_width() / 2,
 		     CL_Display::get_height() - 130,
 		     str.c_str());
 

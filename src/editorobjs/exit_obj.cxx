@@ -1,4 +1,4 @@
-//  $Id: exit_obj.cxx,v 1.1 2002/09/27 16:01:55 torangan Exp $
+//  $Id: exit_obj.cxx,v 1.2 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@ ExitObj::ExitObj (const WorldObjsData::ExitData& data_)
 {
   pos_ref = &data->pos;
   sprite.set_align_center_bottom();
-         
+
   if (data->use_old_pos_handling)
     {
       data->pos.x += sprite.get_width ()/2;
@@ -55,11 +55,11 @@ ExitObj::write_xml (std::ostream& xml)
   data->write_xml(xml);
 }
 
-std::string 
+std::string
 ExitObj::status_line ()
 {
   char str[256];
-  
+
   snprintf(str, 256, "Exit - %s - X:%4.2f Y:%4.2f Z:%4.2f OwnerId: %d",
            data->desc.res_name.c_str(), data->pos.x, data->pos.y, data->pos.z, data->owner_id);
 

@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.cxx,v 1.17 2003/04/01 21:54:55 grumbel Exp $
+//  $Id: groundpiece_data.cxx,v 1.18 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,9 +30,9 @@
 
 namespace WorldObjsData {
 
-GroundpieceData::GroundpieceData () 
+GroundpieceData::GroundpieceData ()
 {
-  gptype = Groundtype::GP_GROUND; 
+  gptype = Groundtype::GP_GROUND;
 }
 
 GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
@@ -56,7 +56,7 @@ GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
     }
 }
 
-GroundpieceData::GroundpieceData (const GroundpieceData& old) 
+GroundpieceData::GroundpieceData (const GroundpieceData& old)
   : WorldObjData(old),
     surface(old.surface),
     desc(old.desc),
@@ -70,14 +70,14 @@ GroundpieceData::operator= (const GroundpieceData& old)
 {
   if (this == &old)
     return *this;
-    
+
   WorldObjData::operator=(old);
-  
+
   surface = old.surface;
   desc    = old.desc;
   pos     = old.pos;
   gptype  = old.gptype;
-  
+
   return *this;
 }
 
@@ -106,7 +106,7 @@ GroundpieceData::write_xml(std::ostream& xml)
   xml << "</worldobj>\n" << std::endl;
 }
 
-void 
+void
 GroundpieceData::serialize(FileWriter& writer)
 {
   writer.begin_section("groundpiece");
@@ -116,7 +116,7 @@ GroundpieceData::serialize(FileWriter& writer)
   writer.end_section();
 }
 
-void 
+void
 GroundpieceData::deserialize(FileReader& reader)
 {
   std::string gptype_str = "default value";

@@ -1,4 +1,4 @@
-//  $Id: thumb_cache.cxx,v 1.12 2003/03/28 12:06:32 grumbel Exp $
+//  $Id: thumb_cache.cxx,v 1.13 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ ThumbCache::uncached_load (const std::string & res_ident, const std::string & da
 
   if (maintainer_mode)
     pout << "ThumbCache: Loading: " << res_ident << " (" << datafile << ")"  << std::endl;
-  
+
   // Add object to cache
   return ThumbCache::cache (sur, res_ident, datafile);
 }
@@ -74,10 +74,10 @@ ThumbCache::load (const std::string & res_ident, const std::string & datafile)
   if (System::exist (filename))
     {
       //FILE* in = fopen (filename.c_str (), "r");
-      try 
+      try
 	{
 	  CL_InputSource_File in(filename);
-	  
+
 	  unsigned int version   = in.read_uint32 ();
 	  if (version != thumbcache_version)
 	    {
@@ -102,10 +102,10 @@ ThumbCache::load (const std::string & res_ident, const std::string & datafile)
 	  size_t buffer_size = width * height * 4;
 
 	  size_t read_size = in.read (buffer, buffer_size);
-	  
+
 	  if (read_size != buffer_size)
 	    {
-	      perr(PINGUS_DEBUG_EDITOR) << "ThumbCache: " << filename << ": read error: wanted " 
+	      perr(PINGUS_DEBUG_EDITOR) << "ThumbCache: " << filename << ": read error: wanted "
 	                                << buffer_size << " got " << read_size << std::endl;
 	      delete canvas;
 	      return uncached_load (res_ident, datafile);
@@ -123,7 +123,7 @@ ThumbCache::load (const std::string & res_ident, const std::string & datafile)
   return uncached_load (res_ident, datafile);
 }
 
-CL_Surface 
+CL_Surface
 ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const std::string & datafile)
 {
   if (sur.get_provider ()->get_height () < 50
@@ -132,10 +132,10 @@ ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const s
       // If the image is smaller than the thumbnail, there is no need to cache it
       if (maintainer_mode)
         pout << "ThumbCache: image too small for cache: " << res_ident << std::endl;
-      
+
       return sur;
     }
-    
+
   std::string filename = res_ident + "-" + datafile;
 
   for (unsigned int i = 0; i < filename.size (); ++i)
@@ -147,10 +147,10 @@ ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const s
   unsigned int timestamp = PingusResource::get_mtime (res_ident, datafile);
 
   if (maintainer_mode)
-    pout << "ThumbCache: Writing cache file: " << filename 
+    pout << "ThumbCache: Writing cache file: " << filename
          << " timestamp: " << timestamp << std::endl;
-  
-  try 
+
+  try
     {
       CL_OutputSource_File out(filename);
 
@@ -158,11 +158,11 @@ ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const s
       unsigned int height = Math::min((unsigned int)50, sur.get_height ());
 
       // Caller is responsible to delete the canvas
-      CL_Canvas* canvas = Blitter::scale_surface_to_canvas (sur, width, height); 
+      CL_Canvas* canvas = Blitter::scale_surface_to_canvas (sur, width, height);
       canvas->lock ();
       void* buffer = canvas->get_data();
       int buffer_size = canvas->get_height () * canvas->get_pitch ();
-      
+
       // Versionnumber of the thumbnail format
       out.write_uint32 (thumbcache_version);
 
@@ -172,7 +172,7 @@ ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const s
       // Modification time  of the parent file
       out.write_uint32 (timestamp);
 
-      // Surface data 
+      // Surface data
       // FIXME: Endian issue here?!
       out.write (buffer, buffer_size);
 
@@ -180,15 +180,15 @@ ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const s
       // Canvas will get deleted on the end of the lifetime of this surface
       return CL_Surface (canvas, true);
     }
-  catch (CL_Error&) 
+  catch (CL_Error&)
     {
       perr << "ThumbCache: Couldn't open file for writing: " << filename << std::endl;
-      
+
       // If writing the surface fails, we return the surface without
       // writing it to the cache
       unsigned int width  = Math::min((unsigned int)50, sur.get_width ());
       unsigned int height = Math::min((unsigned int)50, sur.get_height ());
-      return Blitter::scale_surface (sur, width, height); 
+      return Blitter::scale_surface (sur, width, height);
     }
 }
 

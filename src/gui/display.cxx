@@ -1,4 +1,4 @@
-//  $Id: display.cxx,v 1.2 2003/04/15 19:06:50 grumbel Exp $
+//  $Id: display.cxx,v 1.3 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ DisplayHook::toggle_display()
     Display::remove_flip_screen_hook(this);
   else
     Display::add_flip_screen_hook(this);
-  
+
   is_visible = !is_visible;
 }
 
@@ -60,7 +60,7 @@ Display::flip_display(bool sync)
     {
       (*i)->on_event();
     }
-  
+
   CL_Display::flip_display(sync);
   //CL_Display::put_display (CL_Rect (320, 0, 800, 600));
 }

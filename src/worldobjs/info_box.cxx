@@ -1,4 +1,4 @@
-//  $Id: info_box.cxx,v 1.19 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: info_box.cxx,v 1.20 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,7 @@ InfoBox::draw (GraphicContext& gc)
 			    x_pos + width/2 + border,
 			    y_pos + Fonts::pingus_small->get_height() + border,
 			    0.0, 0.0, 0.0, 1.0);
-      gc.print_center(Fonts::pingus_small, x_pos, y_pos, data->info_text.c_str()); 
+      gc.print_center(Fonts::pingus_small, x_pos, y_pos, data->info_text.c_str());
     }
   else
     {

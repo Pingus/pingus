@@ -1,4 +1,4 @@
-//  $Id: cursor.cxx,v 1.2 2003/04/15 19:06:50 grumbel Exp $
+//  $Id: cursor.cxx,v 1.3 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,8 +36,8 @@ Cursor::update (float delta)
 {
   sprite.update (delta);
 }
-  
-void 
+
+void
 Cursor::on_event()
 {
   const Input::Pointer* pointer = Input::Controller::get_current()->get_pointer();

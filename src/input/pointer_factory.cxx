@@ -1,5 +1,5 @@
-//  $Id: pointer_factory.cxx,v 1.9 2002/09/28 19:31:06 torangan Exp $
-// 
+//  $Id: pointer_factory.cxx,v 1.10 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -36,16 +36,16 @@ Pointer* PointerFactory::create (xmlNodePtr cur)
 
   if (XMLhelper::equal_str(cur->name, "axis-pointer"))
     return axis_pointer(cur);
-  
+
   else if (XMLhelper::equal_str(cur->name, "mouse-pointer"))
     return mouse_pointer();
-  
+
   else if (XMLhelper::equal_str(cur->name, "multiple-pointer"))
     return multiple_pointer(cur->children);
-  
+
   else
     PingusError::raise(std::string("Unknown pointer type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
-  
+
   return 0; // never reached
 }
 
@@ -65,11 +65,11 @@ Pointer* PointerFactory::axis_pointer (xmlNodePtr cur)
   	  cur = cur->next;
 	  continue;
 	}
-      
+
       axes.push_back(AxisFactory::create(cur));
       cur = cur->next;
     }
-  
+
   return new AxisPointer(speed, axes);
 }
 
@@ -82,7 +82,7 @@ Pointer* PointerFactory::multiple_pointer (xmlNodePtr cur)
 {
   std::vector<Pointer*> pointers;
 
-  while (cur)    
+  while (cur)
     {
       if (xmlIsBlankNode(cur))
 	{

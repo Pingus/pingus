@@ -1,4 +1,4 @@
-//  $Id: smoke_particle_holder.hxx,v 1.2 2003/01/25 11:03:58 torangan Exp $
+//  $Id: smoke_particle_holder.hxx,v 1.3 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ private:
   CL_Surface surf2;
 
   std::vector<SmokeParticle> particles;
-  
+
 public:
   SmokeParticleHolder ();
 

@@ -1,5 +1,5 @@
-//  $Id: worldobj_data_factory.hxx,v 1.6 2002/09/27 11:26:44 torangan Exp $
-// 
+//  $Id: worldobj_data_factory.hxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -68,9 +68,9 @@ public:
   WorldObjDataAbstractFactory (const std::string& id) {
     WorldObjDataFactory::instance ()-> register_factory (id, this);
   }
-  
+
   virtual WorldObjData* create (xmlDocPtr doc, xmlNodePtr cur) =0;
-  
+
 private:
   WorldObjDataAbstractFactory (const WorldObjDataAbstractFactory&);
   WorldObjDataAbstractFactory& operator= (const WorldObjDataAbstractFactory&);
@@ -86,12 +86,12 @@ public:
     : WorldObjDataAbstractFactory (id) {}
 
   WorldObjData* create (xmlDocPtr doc, xmlNodePtr cur) {
-    return new T (doc, cur); 
+    return new T (doc, cur);
   }
 
 private:
   WorldObjDataFactoryImpl (const WorldObjDataFactoryImpl&);
-  WorldObjDataFactoryImpl& operator= (const WorldObjDataFactoryImpl&);  
+  WorldObjDataFactoryImpl& operator= (const WorldObjDataFactoryImpl&);
 };
 
 #endif

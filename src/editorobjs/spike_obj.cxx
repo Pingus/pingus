@@ -1,4 +1,4 @@
-//  $Id: spike_obj.cxx,v 1.10 2003/03/25 23:15:23 grumbel Exp $
+//  $Id: spike_obj.cxx,v 1.11 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 
 namespace EditorObjs {
 
-SpikeObj::SpikeObj (const WorldObjsData::SpikeData& data_) 
+SpikeObj::SpikeObj (const WorldObjsData::SpikeData& data_)
   : data(new WorldObjsData::SpikeData(data_))
 {
   data->pos.z = -100;
@@ -44,7 +44,7 @@ SpikeObj::create (const Vector& pos)
   spike_data.pos = pos;
   return EditorObjLst(1, new SpikeObj(spike_data));
 }
-  
+
 EditorObj*
 SpikeObj::duplicate ()
 {
@@ -63,14 +63,14 @@ SpikeObj::draw (EditorNS::EditorView* view)
   view->draw(sprite, data->pos, 2);
 }
 
-std::string  
+std::string
 SpikeObj::status_line ()
 {
   char str[64];
   snprintf (str, 64, "SpikeObj: %4.2fx%4.2fx%4.2f", data->pos.x, data->pos.y, data->pos.z);
   return str;
 }
-  
+
 } // namespace EditorObjs
 
 /* EOF */

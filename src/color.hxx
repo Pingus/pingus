@@ -1,5 +1,5 @@
-//  $Id: color.hxx,v 1.6 2003/04/11 16:51:15 grumbel Exp $
-// 
+//  $Id: color.hxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -30,11 +30,11 @@ public:
   float green;
   float blue;
   float alpha;
- 
+
   Color () : red(0.0), green(0.0), blue(0.0), alpha(1.0)
   {
   }
- 
+
   Color (float red_, float green_, float blue_, float alpha_ = 1.0) : red(red_), green(green_), blue(blue_), alpha(alpha_)
   {
   }
@@ -42,20 +42,20 @@ public:
   Color (const Color& old): red(old.red), green(old.green), blue(old.blue), alpha(old.alpha)
   {
   }
-  
+
   Color& operator= (const Color& old)
   {
     if (this == &old)
       return *this;
-      
+
     red   = old.red;
     green = old.green;
     blue  = old.blue;
     alpha = old.alpha;
-    
+
     return *this;
   }
-  
+
   bool operator!= (const Color& color) const {
     return !operator==(color);
   }
@@ -63,7 +63,7 @@ public:
   bool operator== (const Color& color) const {
     return red == color.red && green == color.green && blue == color.blue && alpha == color.alpha;
   }
-  
+
 };
 
 std::ostream& operator<<(std::ostream& s, const Color& color);

@@ -1,4 +1,4 @@
-//  $Id: teleporter_obj.cxx,v 1.9 2003/03/30 13:12:35 grumbel Exp $
+//  $Id: teleporter_obj.cxx,v 1.10 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,9 +65,9 @@ TeleporterObj::create (const Vector& pos)
 void
 TeleporterObj::draw (EditorNS::EditorView * view)
 {
-  view->draw_line (static_cast<int>(data->pos.x), 
+  view->draw_line (static_cast<int>(data->pos.x),
 		   static_cast<int>(data->pos.y),
-		   static_cast<int>(data->target_pos.x), 
+		   static_cast<int>(data->target_pos.x),
 		   static_cast<int>(data->target_pos.y),
 		   0.0, 1.0, 0.0, 0.5);
   SpriteEditorObj::draw (view);

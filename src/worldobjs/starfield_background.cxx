@@ -1,4 +1,4 @@
-//  $Id: starfield_background.cxx,v 1.4 2002/10/01 19:53:46 grumbel Exp $
+//  $Id: starfield_background.cxx,v 1.5 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ StarfieldBackground::~StarfieldBackground ()
 }
 
 
-void 
+void
 StarfieldBackground::update ()
 {
   for (std::vector<StarfieldBackgroundStars*>::iterator i = stars.begin();
@@ -57,7 +57,7 @@ StarfieldBackground::update ()
     }
 }
 
-void 
+void
 StarfieldBackground::draw (GraphicContext& gc)
 {
   for (std::vector<StarfieldBackgroundStars*>::iterator i = stars.begin();

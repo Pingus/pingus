@@ -1,4 +1,4 @@
-//  $Id: prefab_obj_data.cxx,v 1.11 2003/03/05 19:55:14 grumbel Exp $
+//  $Id: prefab_obj_data.cxx,v 1.12 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ PrefabObjData::PrefabObjData (xmlDocPtr doc, xmlNodePtr cur)
   XMLFileReader reader(doc, cur);
   reader.read_vector("position", pos);
   reader.read_string("type", type);
-  
+
   // try to load the data for this prefab-uid
   data = Prefab::create (type);
   if (data == 0)

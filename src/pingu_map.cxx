@@ -1,4 +1,4 @@
-//  $Id: pingu_map.cxx,v 1.6 2002/12/29 23:29:00 torangan Exp $
+//  $Id: pingu_map.cxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@ PinguMap::~PinguMap()
   //std::cout << "PinguMap:~PinguMap()" << std::endl;
 }
 
-void 
+void
 PinguMap::mark_dirty(int x,int y,int w,int h)
 {
 	UNUSED_ARG(x);
@@ -55,13 +55,13 @@ PinguMap::remove(const CL_Surface& sur, int x, int y)
 void
 PinguMap::remove(CL_SurfaceProvider*, int, int)
 {
-  
+
 }
 
-void 
+void
 PinguMap::put(CL_SurfaceProvider*, int, int)
 {
-  
+
 }
 
 void

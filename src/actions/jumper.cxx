@@ -1,4 +1,4 @@
-//  $Id: jumper.cxx,v 1.19 2003/03/25 23:15:23 grumbel Exp $
+//  $Id: jumper.cxx,v 1.20 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ Jumper::Jumper (Pingu* p)
   sprite.set_align_center_bottom();
 }
 
-void 
+void
 Jumper::draw (GraphicContext& gc)
 {
   gc.draw(sprite, pingu->get_pos());

@@ -1,5 +1,5 @@
-//  $Id: pathfinder.hxx,v 1.11 2002/10/16 09:14:45 grumbel Exp $
-// 
+//  $Id: pathfinder.hxx,v 1.12 2003/04/19 10:23:19 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -55,10 +55,10 @@ public:
   };
 
 private:
-  struct CostComp 
+  struct CostComp
   {
     Pathfinder<T, C>& pathfinder;
-    
+
     CostComp(Pathfinder<T, C>& p) : pathfinder(p) {}
 
     bool operator()(NodeId a, NodeId b)
@@ -74,7 +74,7 @@ private:
   NodeId start;
   std::priority_queue<NodeId, std::vector<NodeId>, CostComp> open_nodes;
   std::vector<NodeStat>   stat_graph;
-  
+
 public:
   /** Find pathes to all other nodes, by starting from the node \a s */
   Pathfinder (Graph<T, C>& g, NodeId s)
@@ -99,8 +99,8 @@ public:
 	    NodeId child_node = graph.resolve_edge(*e).destination;
 	    NodeStat& stat = stat_graph[child_node];
 	    float new_cost = stat_graph[current].cost + graph.resolve_edge(*e).cost;
-	    
-	    if  (stat.status == NodeStat::OPEN 
+
+	    if  (stat.status == NodeStat::OPEN
 		 && stat.cost <= new_cost)
 	      {
 		// do nothing, already now a better path
@@ -120,15 +120,15 @@ public:
 
   /** The nodes to walk to reach end is returned in reverse order! so
       you have to handle the vector like a stack with .back() == .top() */
-  std::vector<NodeId> get_path (NodeId end) 
+  std::vector<NodeId> get_path (NodeId end)
   {
     std::vector<NodeId> path;
     NodeId handle = end;
-    
+
     do
       {
 	path.push_back(handle);
-	//std::cout << "Handle: " << handle 
+	//std::cout << "Handle: " << handle
         //<< " Parent: " << stat_graph[handle].parent << std::endl;
 
 	if (handle == start)
@@ -143,7 +143,7 @@ public:
 	else
 	  {
 	    handle = stat_graph[handle].parent;
-	  }	
+	  }
       }
     while (1);
   }

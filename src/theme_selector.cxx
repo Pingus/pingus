@@ -1,4 +1,4 @@
-//  $Id: theme_selector.cxx,v 1.11 2003/04/15 19:06:50 grumbel Exp $
+//  $Id: theme_selector.cxx,v 1.12 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,10 +77,10 @@ ListItem::operator= (const ListItem& old)
 {
   if (this == &old)
     return *this;
-    
+
   label = old.label;
   font  = new CL_Font(*(old.font));
-  
+
   return *this;
 }
 
@@ -92,10 +92,10 @@ ListItem::draw_offset(int x, int y)
 
 // ---=== ThemeSelector ===---
 
-void 
+void
 ThemeSelector::Event::on_button_release(CL_InputDevice * /*device*/, const CL_Key & /*key*/)
 {
-  if (!enabled) return;  
+  if (!enabled) return;
 }
 
 void
@@ -112,16 +112,16 @@ ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	  break;
 	case CL_KEY_LEFT:
 	  theme_selector->current_theme++;
-	  if (theme_selector->current_theme == theme_selector->themes.end()) 
+	  if (theme_selector->current_theme == theme_selector->themes.end())
 	    theme_selector->current_theme = theme_selector->themes.begin();
 	  break;
 
 	case CL_KEY_RIGHT:
-	  if (theme_selector->current_theme == theme_selector->themes.begin()) 
+	  if (theme_selector->current_theme == theme_selector->themes.begin())
 	    theme_selector->current_theme = theme_selector->themes.end();
 	  theme_selector->current_theme--;
 	  break;
-	  
+
 	case CL_KEY_DOWN:
 	  (*(theme_selector->current_theme))->next_level();
 	  break;
@@ -145,14 +145,14 @@ ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	{
 	case CL_MOUSE_LEFTBUTTON: // Left mouse button
 	  tmp_level = theme_selector->mark_level_at_point(int(key.x), int(key.y));
-	  if (tmp_level != -1) 
+	  if (tmp_level != -1)
 	    {
 	      // We clicked on a level, start it now.
 	      enabled = false;
 	      loading_screen.draw();
 	      (*(theme_selector->current_theme))->play();
-	      enabled = true; 
-	    } 
+	      enabled = true;
+	    }
 	  else
 	    {
 	      // Check if we clicked on one of the red buttons
@@ -161,7 +161,7 @@ ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 		  && key.y < (CL_Display::get_height() + theme_selector->left_arrow.get_height()) / 2)
 		{
 		  theme_selector->current_theme++;
-		  if (theme_selector->current_theme == theme_selector->themes.end()) 
+		  if (theme_selector->current_theme == theme_selector->themes.end())
 		    theme_selector->current_theme = theme_selector->themes.begin();
 		}
 	      else if (key.x > CL_Display::get_width() - theme_selector->right_arrow.get_width()
@@ -169,7 +169,7 @@ ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 		       && key.y > (CL_Display::get_height() - theme_selector->right_arrow.get_height()) / 2
 		       && key.y < (CL_Display::get_height() + theme_selector->right_arrow.get_height()) / 2)
 		{
-		  if (theme_selector->current_theme == theme_selector->themes.begin()) 
+		  if (theme_selector->current_theme == theme_selector->themes.begin())
 		    theme_selector->current_theme = theme_selector->themes.end();
 		  theme_selector->current_theme--;
 		}
@@ -181,13 +181,13 @@ ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	    }
 	  break;
 	case CL_MOUSE_MIDDLEBUTTON: // Middle mouse
-	  theme_selector->finished = true;	  
+	  theme_selector->finished = true;
 	  break;
 	default:
 	  break;
 	}
     }
-  
+
   theme_selector->draw();
 
   return;
@@ -197,10 +197,10 @@ void
 ThemeSelector::Event::on_mouse_move(CL_InputDevice *, int mouse_x, int mouse_y)
 {
   //std::cout << "Event: on_mouse_move called.." << std::endl;
-  if (!enabled) return;  
-  //std::cout << "Event: on_mouse_move active.." << std::endl;  
+  if (!enabled) return;
+  //std::cout << "Event: on_mouse_move active.." << std::endl;
   theme_selector->mark_level_at_point(mouse_x, mouse_y);
-} 
+}
 
 ThemeSelector::ThemeSelector()
 {
@@ -216,7 +216,7 @@ ThemeSelector::ThemeSelector()
   event->enabled = false;
 
   event->theme_selector = this;
-  
+
   //CL_Input::chain_button_press.push_back(event);
   //CL_Input::chain_button_release.push_back(event);
   //CL_Input::chain_mouse_move.push_back(event);
@@ -238,11 +238,11 @@ ThemeSelector::~ThemeSelector()
   // CL_Input::chain_mouse_move.remove(event);
   // CL_Input::chain_button_press.remove(event);
   // CL_Input::chain_button_release.remove(event);
-  
+
   CL_Input::sig_button_press ().disconnect (on_button_press_slot);
   CL_Input::sig_button_release ().disconnect (on_button_release_slot);
   CL_Input::sig_mouse_move ().disconnect (on_mouse_move_slot);
-  
+
   delete event;
 }
 
@@ -250,11 +250,11 @@ void
 ThemeSelector::display()
 {
   event->enabled = true;
-  
-  while(CL_Mouse::left_pressed() || CL_Mouse::middle_pressed()) 
+
+  while(CL_Mouse::left_pressed() || CL_Mouse::middle_pressed())
     CL_System::keep_alive();
-  
-  if (!dir_read) 
+
+  if (!dir_read)
     {
       loading_screen.draw();
 
@@ -286,16 +286,16 @@ ThemeSelector::draw()
   //CL_Display::fill_rect(0,0,640,480,0.5,0.0,0.0,0.5);
 
   (*current_theme)->draw_title();
-  
+
   {
     int item_width = (CL_Display::get_width() / themes.size());
     int item_index = themes.size() - std::distance(themes.begin(), current_theme) - 1;
-    
-    Display::draw_rect(item_index * item_width, CL_Display::get_height() - 15, 
+
+    Display::draw_rect(item_index * item_width, CL_Display::get_height() - 15,
 		       (item_index + 1) * item_width, CL_Display::get_height(),
 		       0.0, 1.0, 0.0, 1.0);
   }
-  
+
   left_arrow.put_screen(0, (CL_Display::get_height() - left_arrow.get_height()) / 2);
   right_arrow.put_screen(CL_Display::get_width() - right_arrow.get_width(),
 			  (CL_Display::get_height() - right_arrow.get_height()) / 2);
@@ -314,10 +314,10 @@ ThemeSelector::draw()
 void
 ThemeSelector::readdir(std::string path)
 {
-  System::Directory dir; 
+  System::Directory dir;
   std::string pathname;
-  std::string::size_type pos = 0; 
-  std::string::size_type last_pos = 0; 
+  std::string::size_type pos = 0;
+  std::string::size_type last_pos = 0;
   bool exit_for = false;
 
   // Remove this and pingus_datadir should become a vector
@@ -325,19 +325,19 @@ ThemeSelector::readdir(std::string path)
       !exit_for;
       last_pos = pos + 1, pos = path.find(":", last_pos))
     {
-      if (pos == std::string::npos) 
+      if (pos == std::string::npos)
 	{
 	  pathname = path.substr(last_pos, std::string::npos);
 	  exit_for = true;
-	} 
-      else 
+	}
+      else
 	{
 	  pathname = path.substr(last_pos, pos - last_pos);
 	}
-      
+
       std::cout << "ThemeSelector: " << pathname << std::endl;
       dir = System::opendir(pathname, "*.xml");
-      
+
       for(System::Directory::iterator entry = dir.begin(); entry != dir.end(); ++entry)
 	{
 	  if (verbose) std::cout << "ThemeSelelector: Name of entry: " << pathname + entry->name << std::endl;

@@ -1,4 +1,4 @@
-//  $Id: blocker.cxx,v 1.18 2003/03/28 16:16:00 grumbel Exp $
+//  $Id: blocker.cxx,v 1.19 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ Blocker::Blocker(Pingu* p)
       && rel_getpixel(0, -2) ==  Groundtype::GP_GROUND)
     {
       pingu->set_x(pingu->get_x() + 1);
-    } 
+    }
   else if (   rel_getpixel(0,-1) ==  Groundtype::GP_NOTHING
 	   && rel_getpixel(0,-2) ==  Groundtype::GP_NOTHING
 	   && rel_getpixel(0,-3) ==  Groundtype::GP_GROUND)
@@ -82,11 +82,11 @@ Blocker::catch_pingu(Pingu* target)
 {
   if (target != pingu) // avoid 'self' catch
     {
-      if (target->get_x () > pingu->get_x () - 16 
+      if (target->get_x () > pingu->get_x () - 16
 	  && target->get_x () < pingu->get_x () + 16
 	  && target->get_y () > pingu->get_y () - 32
 	  && target->get_y () < pingu->get_y () + 5
-	  ) 
+	  )
 	{
 	  if (target->get_x () > pingu->get_x ()) {
 	    target->direction.right();

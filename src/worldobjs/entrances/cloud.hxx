@@ -1,4 +1,4 @@
-//  $Id: cloud.hxx,v 1.1 2002/09/27 11:50:45 torangan Exp $
+//  $Id: cloud.hxx,v 1.2 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ public:
   Cloud (const WorldObjsData::EntranceData& data_);
 
   void draw_offset (int x, int y, float s = 1.0);
-  
+
 private:
   Cloud (const Cloud&);
   Cloud& operator= (const Cloud&);

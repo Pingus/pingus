@@ -1,4 +1,4 @@
-//  $Id: gui_obj.hxx,v 1.7 2002/09/27 11:26:43 torangan Exp $
+//  $Id: gui_obj.hxx,v 1.8 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
     screen, the complete screen is representated by a window obtect. A
     GuiObj must provide a methode to react on input, update the screen
     and redraw it. */
-class GuiObj 
+class GuiObj
 {
 protected:
   // FIXME: Do we need that here?! (its used for clipping)
@@ -40,7 +40,7 @@ public:
   virtual ~GuiObj();
 
   void    set_clip_rect(int, int, int, int);
-  
+
   /// Draw the gui element and do the clipping.
   virtual void draw_clipped();
 
@@ -58,14 +58,14 @@ public:
   virtual void updateX();
 
   // Events
-  
-  // Called when 
+
+  // Called when
   virtual void on_mouse_enter () {}
   virtual void on_mouse_leave () {}
   virtual void on_mouse_click () {}
   virtual void on_mouse_press () {}
   virtual void on_mouse_release () {}
-  
+
 private:
   GuiObj (const GuiObj&);
   GuiObj& operator= (const GuiObj&);

@@ -1,4 +1,4 @@
-//  $Id: path.cxx,v 1.6 2002/11/26 21:30:37 grumbel Exp $
+//  $Id: path.cxx,v 1.7 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@ Path::Path()
 {
 }
 
-std::vector<Vector>::size_type 
+std::vector<Vector>::size_type
 Path::size()
 {
   return vec.size();
@@ -49,7 +49,7 @@ Path::length()
       return path_length;
     }
 }
-  
+
 float
 Path::calc_length()
 {
@@ -84,7 +84,7 @@ Path::at(float vec_position)
       float length = Vector::distance2d(*current, *next);
 
       // The pingu is between current and next
-      if (comp_length + length > vec_position) 
+      if (comp_length + length > vec_position)
         {
           float perc = (vec_position - comp_length) // length to walk from current node
             / length;

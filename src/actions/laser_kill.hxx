@@ -1,4 +1,4 @@
-//  $Id: laser_kill.hxx,v 1.13 2003/04/18 17:08:56 grumbel Exp $
+//  $Id: laser_kill.hxx,v 1.14 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -7,7 +7,7 @@
 //  modify it under the terms of the GNU General Public License
 //  as published by the Free Software Foundation; either version 2
 //  of the License, or (at your option) any later version.
-// 
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -31,7 +31,7 @@ class LaserKill : public PinguAction
 {
 private:
   Sprite sprite;
-  
+
 public:
   LaserKill (Pingu*);
 
@@ -42,7 +42,7 @@ public:
   void update ();
 
   bool catchable () { return false; }
-  
+
 private:
   LaserKill (const LaserKill&);
   LaserKill& operator= (const LaserKill&);

@@ -1,4 +1,4 @@
-//  $Id: switch_door_obj.cxx,v 1.7 2003/03/30 13:12:35 grumbel Exp $
+//  $Id: switch_door_obj.cxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "../pingus_resource.hxx"
 #include "../worldobjsdata/switch_door_data.hxx"
 
-namespace EditorObjs { 
+namespace EditorObjs {
 
 SwitchDoorObj::SwitchDoorObj (const WorldObjsData::SwitchDoorData& data_)
   : data(new WorldObjsData::SwitchDoorData(data_)),
@@ -84,11 +84,11 @@ SwitchDoorObj::save_xml (std::ostream& xml)
   data->write_xml(xml);
 }
 
-std::string 
+std::string
 SwitchDoorObj::status_line()
 {
   char str[128];
-  snprintf(str, 128, "SwitchDoor - (%f %f %f)", 
+  snprintf(str, 128, "SwitchDoor - (%f %f %f)",
 	  data->door_pos.x, data->door_pos.y, data->door_pos.z);
   return str;
 }
@@ -98,15 +98,15 @@ SwitchDoorObj::draw (EditorNS::EditorView * view)
 {
   view->draw_line(data->door_pos, data->switch_pos, 1.0, 0.0, 0.0);
 
-  view->draw(door_box, 
+  view->draw(door_box,
              static_cast<int>(data->door_pos.x),
 	     static_cast<int>(data->door_pos.y));
 
   for (int i = 0; i < data->door_height; ++i)
     {
-      view->draw(door_tile, 
-		 static_cast<int>(data->door_pos.x), 
-		 static_cast<int>(data->door_pos.y 
+      view->draw(door_tile,
+		 static_cast<int>(data->door_pos.x),
+		 static_cast<int>(data->door_pos.y
 				  + (i * door_tile.get_height())
 				  + door_box.get_height()));
     }
@@ -118,7 +118,7 @@ SwitchDoorObj::make_larger ()
   data->door_height += 1;
 }
 
-void 
+void
 SwitchDoorObj::make_smaller ()
 {
   if (data->door_height > 1)
@@ -137,7 +137,7 @@ SwitchDoorObj::get_upper_left_corner ()
   return data->door_pos;
 }
 
-void 
+void
 SwitchDoorObj::set_position_offset (const Vector& offset)
 {
   data->door_pos += offset;

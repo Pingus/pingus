@@ -1,5 +1,5 @@
-//  $Id: event.hxx,v 1.7 2002/12/20 01:22:32 grumbel Exp $
-// 
+//  $Id: event.hxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -45,39 +45,39 @@ struct ButtonEvent
 enum PointerName { standard };
 
 struct PointerEvent
-{  
+{
   EventType type;
   PointerName  name;
   float x;
   float y;
- 
+
 };
 
 
 //#include "axis_event.hxx"
 enum AxisName  { action };
 
-struct AxisEvent 
+struct AxisEvent
 {
   EventType type;
   float     dir;
-  AxisName  name;                
+  AxisName  name;
 };
 
 
 //#include "scroll_event.hxx"
 
-struct ScrollEvent 
+struct ScrollEvent
 {
   EventType type;
   float x_delta;
   float y_delta;
 };
 
-union Event 
+union Event
 {
   EventType type;
-    
+
   ButtonEvent  button;
   PointerEvent pointer;
   AxisEvent    axis;
@@ -105,11 +105,11 @@ inline Event makePointerEvent(PointerName name, float x, float y)
   event.pointer.name = name;
   event.pointer.x    = x;
   event.pointer.y    = y;
-    
+
   return event;
 }
 
-inline Event makeAxisEvent (float dir, AxisName name = action) 
+inline Event makeAxisEvent (float dir, AxisName name = action)
 {
   Event event;
 
@@ -119,11 +119,11 @@ inline Event makeAxisEvent (float dir, AxisName name = action)
 
   return event;
 }
-    
+
 inline Event makeScrollEvent (float x_delta, float y_delta)
 {
   Event event;
-    
+
   event.scroll.type    = ScrollEventType;
   event.scroll.x_delta = x_delta;
   event.scroll.y_delta = y_delta;

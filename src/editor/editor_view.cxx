@@ -1,4 +1,4 @@
-//  $Id: editor_view.cxx,v 1.7 2003/03/30 13:12:35 grumbel Exp $
+//  $Id: editor_view.cxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,13 +26,13 @@
 
 namespace EditorNS {
 
-EditorView::EditorView (int x1_, int y1_, int x2_, int y2_, 
+EditorView::EditorView (int x1_, int y1_, int x2_, int y2_,
 			int x_offset, int y_offset)
   : x1(x1_), y1(y1_), x2(x2_), y2(y2_), offset(-(x2_ - x1_)/2.0f, -(y2_-x1_)/2.0f, 1.0f)
 {
   center = Vector ((x2 - x1)/2.0f + x1,
 		      (y2 - y1)/2.0f + y1);
-  //std::cout << "View: " << x1 << ", " << y1 << ", " << x2 << ", " << y2 
+  //std::cout << "View: " << x1 << ", " << y1 << ", " << x2 << ", " << y2
   //<< std::endl;
   UNUSED_ARG(x_offset);
   UNUSED_ARG(y_offset);
@@ -61,7 +61,7 @@ EditorView::set_zoom (float new_zoom)
   //std::cout << "Zoom: " << offset.z << std::endl;
 }
 
-void 
+void
 EditorView::zoom_to (const CL_Rect & arg_rect)
 {
   CL_Rect rect;
@@ -70,7 +70,7 @@ EditorView::zoom_to (const CL_Rect & arg_rect)
   rect.x2 = Math::max (arg_rect.x1, arg_rect.x2);
   rect.y1 = Math::min (arg_rect.y1, arg_rect.y2);
   rect.y2 = Math::max (arg_rect.y1, arg_rect.y2);
-  
+
   Vector pos1 = screen_to_world (Vector(rect.x1, rect.y1));
   Vector pos2 = screen_to_world (Vector(rect.x2, rect.y2));
 
@@ -85,7 +85,7 @@ EditorView::zoom_to (const CL_Rect & arg_rect)
 
   float screen_relation = float(get_width ()) / float(get_height ());
   float rect_reation = width / height;
-  
+
   if (rect_reation > screen_relation)
     {
       set_zoom (get_width () / (pos2.x - pos1.x));
@@ -96,7 +96,7 @@ EditorView::zoom_to (const CL_Rect & arg_rect)
     }
 }
 
-int 
+int
 EditorView::get_width ()
 {
   return x2 - x1;
@@ -108,7 +108,7 @@ EditorView::get_height ()
   return y2 - y1;
 }
 
-void 
+void
 EditorView::move (const Vector & delta)
 {
   offset += delta;
@@ -126,42 +126,42 @@ EditorView::world_to_screen (Vector pos)
   return ((pos + offset) * offset.z) + center;
 }
 
-float 
+float
 EditorView::get_x_offset ()
 {
   return offset.x;
 }
 
-float 
+float
 EditorView::get_y_offset ()
 {
   return offset.y;
 }
 
-void 
+void
 EditorView::draw (Sprite& sprite, const Vector& pos)
 {
   CL_Surface sur (sprite.get_surface ());
-  draw (sur, 
+  draw (sur,
 	(int) pos.x + sprite.get_x_align (),
 	(int) pos.y + sprite.get_y_align ());
 }
 
-void 
+void
 EditorView::draw (Sprite& sprite, const Vector& pos, int frame)
 {
   CL_Surface sur (sprite.get_surface ());
-  draw (sur, 
+  draw (sur,
 	(int) pos.x + sprite.get_x_align (),
-	(int) pos.y + sprite.get_y_align (), 
+	(int) pos.y + sprite.get_y_align (),
 	frame);
 }
 
-void 
+void
 EditorView::draw (CL_Surface& sur, const Vector& pos)
 {
   if (offset.z == 1.0)
-    {   
+    {
       sur.put_screen (int(pos.x + get_x_offset () + center.x),
 		      int(pos.y + get_y_offset () + center.y));
     }
@@ -175,13 +175,13 @@ EditorView::draw (CL_Surface& sur, const Vector& pos)
   //CL_Display::draw_line (x1, y2, x2, y1, 1.0, 1.0, 0.0);
 }
 
-void 
+void
 EditorView::draw (CL_Surface& sur, const Vector& pos, int frame)
 {
   draw (sur, int(pos.x), int(pos.y), frame);
 }
 
-void 
+void
 EditorView::draw (CL_Surface& sur, int x_pos, int y_pos)
 {
   if (offset.z == 1.0)
@@ -197,43 +197,43 @@ EditorView::draw (CL_Surface& sur, int x_pos, int y_pos)
     }
 }
 
-void 
+void
 EditorView::draw (CL_Surface& sur, int x_pos, int y_pos, int frame)
 {
   if (offset.z == 1.0)
     {
       sur.put_screen (int(x_pos + get_x_offset () + center.x),
 		      int(y_pos + get_y_offset () + center.y),
-		      frame);  
+		      frame);
     }
   else
     {
       sur.put_screen (int((x_pos + get_x_offset ()) * offset.z + center.x),
 		      int((y_pos + get_y_offset ()) * offset.z + center.y),
 		      offset.z, offset.z,
-		      frame);  
+		      frame);
     }
 }
 
-void 
-EditorView::draw (CL_Surface& sur, int x_pos, int y_pos, 
+void
+EditorView::draw (CL_Surface& sur, int x_pos, int y_pos,
 	    float size_x, float size_y, int frame)
 {
   sur.put_screen (int(x_pos + get_x_offset () + center.x),
 		  int(y_pos + get_y_offset () + center.y),
-		  size_x * offset.z, 
-		  size_y * offset.z, frame); 
+		  size_x * offset.z,
+		  size_y * offset.z, frame);
 }
 
-void 
+void
 EditorView::draw_line (const Vector& pos1, const Vector& pos2,
 		       float r, float g, float b, float a)
 {
   draw_line (int(pos1.x), int(pos1.y), int(pos2.x), int(pos2.y), r, g, b, a);
 }
 
-void 
-EditorView::draw_line (int x1_, int y1_, int x2_, int y2_, 
+void
+EditorView::draw_line (int x1_, int y1_, int x2_, int y2_,
 		       float r, float g, float b, float a)
 {
   CL_Display::draw_line (static_cast<int>((x1_ + get_x_offset()) * offset.z + center.x),
@@ -243,30 +243,30 @@ EditorView::draw_line (int x1_, int y1_, int x2_, int y2_,
 			 r, g, b, a);
 }
 
-void 
-EditorView::draw_fillrect (int x1_, int y1_, int x2_, int y2_, 
+void
+EditorView::draw_fillrect (int x1_, int y1_, int x2_, int y2_,
 			   float r, float g, float b, float a)
 {
   CL_Display::fill_rect (static_cast<int>((x1_ + get_x_offset()) * offset.z + center.x),
-			 static_cast<int>((y1_ + get_y_offset()) * offset.z + center.y), 
+			 static_cast<int>((y1_ + get_y_offset()) * offset.z + center.y),
 			 static_cast<int>((x2_ + get_x_offset()) * offset.z + center.x),
 			 static_cast<int>((y2_ + get_y_offset()) * offset.z + center.y),
 			 r, g, b, a);
 }
 
-void 
-EditorView::draw_rect (int x1_, int y1_, int x2_, int y2_, 
+void
+EditorView::draw_rect (int x1_, int y1_, int x2_, int y2_,
 		       float r, float g, float b, float a)
 {
   CL_Display::draw_rect(static_cast<int>((x1_ + get_x_offset()) * offset.z + center.x),
-		        static_cast<int>((y1_ + get_y_offset()) * offset.z + center.y), 
+		        static_cast<int>((y1_ + get_y_offset()) * offset.z + center.y),
 			static_cast<int>((x2_ + get_x_offset()) * offset.z + center.x),
 			static_cast<int>((y2_ + get_y_offset()) * offset.z + center.y),
 			r, g, b, a);
 }
 
-void 
-EditorView::draw_pixel (int /*x_pos*/, int /*y_pos*/, 
+void
+EditorView::draw_pixel (int /*x_pos*/, int /*y_pos*/,
 		   float /*r*/, float /*g*/, float /*b*/, float /*a*/)
 {
   //CL_Display::put_pixel (x1 + get_x_offset (),
@@ -274,7 +274,7 @@ EditorView::draw_pixel (int /*x_pos*/, int /*y_pos*/,
   std::cout << "View::draw_pixel () not implemented" << std::endl;
 }
 
-void 
+void
 EditorView::draw_circle (int x_pos, int y_pos, int radius,
 		   float r, float g, float b, float a)
 {

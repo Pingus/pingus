@@ -1,5 +1,5 @@
-//  $Id: input_event.hxx,v 1.8 2002/09/28 11:52:21 torangan Exp $
-// 
+//  $Id: input_event.hxx,v 1.9 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -29,7 +29,7 @@
 typedef enum {
   /** Pointer Events (pos contains the move-delta) */
   MOUSE_MOVE,
-  
+
   /** The scroll controll has been move, in theory this could be a
       second mouse, an second analog stick or a combination of button
       press and cursor movement */
@@ -41,10 +41,10 @@ typedef enum {
   /*** Generic button events (pos contains position) */
   PRIMARY_BUTTON_PRESSED,
   SECONDARY_BUTTON_PRESSED,
-  
+
   /** Escape is pressed */
   ESCAPE_TRIGGERED,
-  
+
   /** 'p' or 'Pause' got pressed */
   PAUSE_PRESSED,
   FASTFORWARD_TRIGGERED
@@ -52,7 +52,7 @@ typedef enum {
   /** Buttons for switching to the next/previous Action */
   ACTION_UP,
   ACTION_DOWN,
-  
+
   /** Action selected, Most likly one of the F1-F?? buttons is
       pressed, this could also be a combination of shift-button or
       something else */
@@ -66,10 +66,10 @@ class InputEvent
 public:
   /** Position or movement */
   Vector pos;
-  
+
   /** integer data */
   int data;
-  
+
   /** The type of event */
   EventType type;
 

@@ -1,4 +1,4 @@
-//  $Id: rain_particle_holder.cxx,v 1.5 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: rain_particle_holder.cxx,v 1.6 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ RainParticleHolder::add_particle (int x, int y)
         *it = RainParticle(x, y);
         return;
       }
-	
+
   // create new entry
   particles.push_back(RainParticle(x, y));
 }
@@ -67,7 +67,7 @@ RainParticleHolder::update ()
       // skip dead particles
       if (!it->alive)
         continue;
-	
+
       if (it->splash)
 	{
 	  if (it->splash_frame >= rain_splash.get_num_frames())
@@ -75,7 +75,7 @@ RainParticleHolder::update ()
 	      it->alive = false;
 	      continue;
 	    }
-		  
+
 	    it->splash_frame += 10 * game_speed / 1000.0f;
 	    (it->splash_counter == 3) ? it->alive = false : ++it->splash_counter;
 	}
@@ -94,7 +94,7 @@ RainParticleHolder::update ()
 		  it->alive = false;
 		  continue;
 		}
-		
+
 		it->pos.x -= 5  * it->pos.z;
 		it->pos.y += 16 * it->pos.z;
 	    }

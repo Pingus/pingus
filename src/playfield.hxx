@@ -1,4 +1,4 @@
-//  $Id: playfield.hxx,v 1.15 2003/04/15 23:12:29 grumbel Exp $
+//  $Id: playfield.hxx,v 1.16 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ class Controller;
 /** This class encapsulates all the different Views */
 class Playfield : public GUI::Component
 {
-private:  
+private:
   friend class Client;
 
   CL_Surface buffer;
@@ -44,7 +44,7 @@ private:
   ButtonPanel* buttons;
   World* world;
   std::vector<View*> view;
-  
+
   ///int  x_offset, y_offset;
   Pingu* current_pingu;
   bool mouse_scrolling;
@@ -90,7 +90,7 @@ public:
   void set_server(Server*);
 
   bool is_at (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); return true; }
-  
+
 private:
   Playfield (const Playfield&);
   Playfield& operator= (const Playfield&);

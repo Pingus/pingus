@@ -1,4 +1,4 @@
-//  $Id: plf.cxx,v 1.15 2003/03/30 20:43:52 grumbel Exp $
+//  $Id: plf.cxx,v 1.16 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ PLF::PLF()
   max_time = -1;
   number_to_save = 0;
   number_of_pingus = 100;
-  difficulty = 5;  
+  difficulty = 5;
   playable = false;
   music = "none";
 }
@@ -132,13 +132,13 @@ PLF::get_number_to_save()
   return number_to_save;
 }
 
-int  
+int
 PLF::get_difficulty()
 {
   return difficulty;
 }
 
-bool  
+bool
 PLF::get_playable()
 {
   return playable;
@@ -156,20 +156,20 @@ PLF::get_author()
   return author;
 }
 
-std::vector<WorldObjsData::GroundpieceData> 
+std::vector<WorldObjsData::GroundpieceData>
 PLF::get_groundpieces(void)
 {
   return groundpieces;
 }
 
-std::vector<WorldObjData*> 
+std::vector<WorldObjData*>
 PLF::get_worldobjs_data ()
 {
   //std::cout << "World: " << worldobjs_data.size () << std::endl;
   return worldobjs_data;
 }
 
-PLF* 
+PLF*
 PLF::create (const std::string& pathname)
 {
   std::string extension = System::extension (pathname);

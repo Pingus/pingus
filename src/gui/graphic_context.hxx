@@ -1,5 +1,5 @@
-//  $Id: graphic_context.hxx,v 1.3 2003/03/21 22:08:06 grumbel Exp $
-// 
+//  $Id: graphic_context.hxx,v 1.4 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -74,26 +74,26 @@ public:
   virtual void draw (CL_Surface& sur, int x_pos, int y_pos, int frame) =0;
 
   /** Draw a scaled surface */
-  virtual void draw (CL_Surface& sur, int x_pos, int y_pos, 
+  virtual void draw (CL_Surface& sur, int x_pos, int y_pos,
 		     float size_x, float size_y, int frame) =0;
 
   /** Draw a line */
   virtual void draw_line (const Vector& pos1, const Vector& pos2,
 			  float r, float g, float b, float a = 1.0f) =0;
   /** Draw a line */
-  virtual void draw_line (int x1, int y1, int x2, int y2, 
+  virtual void draw_line (int x1, int y1, int x2, int y2,
 			  float r, float g, float b, float a = 1.0f) =0;
 
   /** Draw a filled rectangle (FIXME: [x1,x2] or [x1,x2[ ?) */
-  virtual void draw_fillrect (int x1, int y1, int x2, int y2, 
+  virtual void draw_fillrect (int x1, int y1, int x2, int y2,
 			      float r, float g, float b, float a = 1.0f) =0;
 
   /** Draw an unfilled rectangle (FIXME: [x1,x2] or [x1,x2[ ?) */
-  virtual void draw_rect (int x1, int y1, int x2, int y2, 
+  virtual void draw_rect (int x1, int y1, int x2, int y2,
 			  float r, float g, float b, float a = 1.0f) =0;
 
   /** Draw a singel pixel */
-  virtual void draw_pixel (int x_pos, int y_pos, 
+  virtual void draw_pixel (int x_pos, int y_pos,
 			   float r, float g, float b, float a = 1.0f) =0;
 
   /** Draw a circle */
@@ -106,7 +106,7 @@ public:
 
   /** Print a text centred to the given position */
   virtual void print_center (FontHandle font, int x_pos, int y_pos, const std::string& str) =0;
-  
+
   /** Print a text right aligned */
   virtual void print_right (FontHandle font, int x_pos, int y_pos, const std::string& str) =0;
 };

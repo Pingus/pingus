@@ -1,4 +1,4 @@
-//  $Id: string_reader.cxx,v 1.7 2002/09/14 19:06:34 torangan Exp $
+//  $Id: string_reader.cxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ StringReader::StringReader(const std::string & d, const std::string & def)
 {
   strings = 0;
   description = d;
-  default_string = def;  
+  default_string = def;
   font =  PingusResource::load_font("Fonts/courier_small", "fonts");
 }
 
@@ -65,14 +65,14 @@ StringReader::read_string()
   draw();
 
   finished = false;
-  while (!finished) 
+  while (!finished)
     {
       CL_System::keep_alive();
 
       if (keys.peek_key().state != CL_Key::NoKey)
 	{
 	  key = keys.get_key();
-  
+
 	  if (key.state == CL_Key::Pressed)
 	    {
 	      switch (key.id)
@@ -87,7 +87,7 @@ StringReader::read_string()
 		case CL_KEY_DELETE:
 		case CL_KEY_BACKSPACE:
 		  if (!current_string.empty())
-		    current_string = current_string.substr(0, current_string.size() - 1); 
+		    current_string = current_string.substr(0, current_string.size() - 1);
 		  break;
 		case CL_KEY_TAB:
 		case CL_KEY_SPACE:
@@ -113,7 +113,7 @@ StringReader::complete_string()
   std::string* completion;
 
   completions.clear();
-    
+
   console << "\nCompletions:\n" <<   "~~~~~~~~~~~~" << std::endl;
 
   for(std::list<std::string>::iterator i = strings->begin(); i != strings->end(); ++i)
@@ -129,7 +129,7 @@ StringReader::complete_string()
 
   if (completions_counter >= 1)
     {
-      current_string = find_uniq(); 
+      current_string = find_uniq();
     }
   // std::cout << "Searching finished" << std::endl;
 }
@@ -153,14 +153,14 @@ std::string
 StringReader::while_eq(const std::string& a, const std::string& b)
 {
   std::string ret_string;
-  
+
   for(std::string::size_type i = 0;
       i < a.size() && i < b.size() && a[i] == b[i];
       ++i)
     {
       ret_string += a[i];
     }
-  
+
   return ret_string;
 }
 

@@ -1,5 +1,5 @@
-//  $Id: button_axis.cxx,v 1.5 2002/10/29 19:25:58 torangan Exp $
-// 
+//  $Id: button_axis.cxx,v 1.6 2003/04/19 10:23:19 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -24,8 +24,8 @@ namespace Input {
 
   namespace Axes {
 
-    ButtonAxis::ButtonAxis (float angle_, Button* button1_, Button* button2_) : 
-                            pos(0), angle(angle_), button1(button1_), button2(button2_) 
+    ButtonAxis::ButtonAxis (float angle_, Button* button1_, Button* button2_) :
+                            pos(0), angle(angle_), button1(button1_), button2(button2_)
     {
       if (angle < 0)
         angle = static_cast<float>((static_cast<int>(angle) % 360) + 360);

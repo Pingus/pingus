@@ -1,4 +1,4 @@
-//  $Id: smasher.cxx,v 1.18 2003/02/19 09:50:37 grumbel Exp $
+//  $Id: smasher.cxx,v 1.19 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,18 +58,18 @@ Smasher::update ()
   PinguHolder* holder = world->get_pingus();
   for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
     catch_pingu(*pingu);
-      
-  if (smashing) 
+
+  if (smashing)
     {
-      if (downwards) 
+      if (downwards)
 	      {
-	        if (count >= 5) 
+	        if (count >= 5)
 	          {
 	            // SMASH!!! The thing hitten earth and kills the pingus
 	            downwards = false;
-	            --count; 
+	            --count;
 	            PingusSound::play_sound("sounds/tenton.wav", 0.7f);
-	    
+
 	            for(int i=0; i < 20; ++i)
 		            {
 		              world->get_smoke_particle_holder()->
@@ -90,12 +90,12 @@ Smasher::update ()
 		                }
 		            }
 	          }
-	        else 
+	        else
 	          {
 	            ++count;
 	          }
-	      } 
-      else 
+	      }
+      else
 	      {
 	        if (count <= 0)
 		        {
@@ -118,31 +118,31 @@ Smasher::on_startup ()
 			   Groundtype::GP_SOLID);
 }
 
-void 
+void
 Smasher::draw (GraphicContext& gc)
 {
   gc.draw (data->surface, data->pos, count);
 }
 
-void 
+void
 Smasher::catch_pingu (Pingu* pingu)
 {
   // Activate the smasher if a Pingu is under it
-  if ((   pingu->direction.is_left() 
+  if ((   pingu->direction.is_left()
 	  && pingu->get_x() > data->pos.x + 65
 	  && pingu->get_x() < data->pos.x + 85)
-      || 
+      ||
       (   pingu->direction.is_right()
 	  && pingu->get_x() > data->pos.x + 190
 	  && pingu->get_x() < data->pos.x + 210))
     {
       if (pingu->get_action() != Actions::Splashed)
 	{
-	  if (!smashing) 
+	  if (!smashing)
 	    {
 	      count = 0;
 	      downwards = true;
-	      smashing = true; 
+	      smashing = true;
 	    }
 	}
     }

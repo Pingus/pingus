@@ -1,4 +1,4 @@
-//  $Id: start_pos.cxx,v 1.7 2002/09/28 11:52:24 torangan Exp $
+//  $Id: start_pos.cxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ StartPos::write_xml (std::ostream& xml)
 {
   xml << "  <start-position>\n";
   XMLhelper::write_vector_xml(xml, pos);
-  xml << "  </start-position>\n" << std::endl;  
+  xml << "  </start-position>\n" << std::endl;
 }
 
 EditorObj*

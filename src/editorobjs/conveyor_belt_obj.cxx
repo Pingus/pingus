@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_obj.cxx,v 1.7 2003/03/04 12:53:47 grumbel Exp $
+//  $Id: conveyor_belt_obj.cxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,12 +53,12 @@ ConveyorBeltObj::draw (EditorNS::EditorView * view)
 	         static_cast<int>(data->pos.y),
 	         static_cast<int>(data->counter));
     }
-    
+
   view->draw(right_sur,
 	     static_cast<int>(data->pos.x) + left_sur.get_width() + data->width * middle_sur.get_width(),
 	     static_cast<int>(data->pos.y),
 	     static_cast<int>(data->counter));
-	     
+
   data->counter += data->speed;
   if (data->counter > 14)
     data->counter = 0;
@@ -84,8 +84,8 @@ ConveyorBeltObj::create (const Vector& pos)
   newdata.pos = pos;
   return EditorObjLst(1, new ConveyorBeltObj(newdata));
 }
-  
-std::string 
+
+std::string
 ConveyorBeltObj::status_line ()
 {
   char str[256];
@@ -93,7 +93,7 @@ ConveyorBeltObj::status_line ()
   return str;
 }
 
-int 
+int
 ConveyorBeltObj::get_width ()
 {
   return   left_sur  .get_width()
@@ -101,7 +101,7 @@ ConveyorBeltObj::get_width ()
 	 + middle_sur.get_width() * data->width;
 }
 
-int 
+int
 ConveyorBeltObj::get_height ()
 {
   return middle_sur.get_height();
@@ -112,7 +112,7 @@ ConveyorBeltObj::get_z_pos () {
   return data->pos.z;
 }
 
-void 
+void
 ConveyorBeltObj::set_position_offset (const Vector& offset)
 {
   data->pos += offset;
@@ -145,14 +145,14 @@ ConveyorBeltObj::make_smaller ()
 EditorNS::PropertyFrame*
 ConveyorBeltObj::get_gui_dialog(EditorNS::Editor* editor)
 {
-  EditorNS::GenericPropertyFrame* propframe 
+  EditorNS::GenericPropertyFrame* propframe
     = new EditorNS::GenericPropertyFrame("ConveyorBelt Properties",
                                          editor->get_property_window()->get_client_area());
 
   propframe->add_integer_box("Width", &data->width);
   propframe->add_float_box("Speed", &data->speed);
-  
-  return propframe; 
+
+  return propframe;
 }
 
 } // namespace EditorObjs

@@ -1,4 +1,4 @@
-//  $Id: status_line.cxx,v 1.9 2002/09/28 11:52:24 torangan Exp $
+//  $Id: status_line.cxx,v 1.10 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,11 +33,11 @@ StatusLine::StatusLine()
 {
   font = PingusResource::load_font("Fonts/courier_small", "fonts");
 }
- 
+
 StatusLine::~StatusLine()
 {
 }
-  
+
 void
 StatusLine::draw(EditorView * view)
 {
@@ -46,20 +46,20 @@ StatusLine::draw(EditorView * view)
 
   if (current_objs)
     {
-      if (current_objs->size() > 1) 
+      if (current_objs->size() > 1)
 	{
 	  status_line_text = "Group";
-	} 
-      else if (current_objs->size() == 1) 
+	}
+      else if (current_objs->size() == 1)
 	{
 	  status_line_text = (*(current_objs->begin()))->status_line();
-	} 
-      else 
+	}
+      else
 	{
 	  status_line_text = "";
 	}
     }
-  
+
   font->print_left(50, 5, status_line_text.c_str());
 
   Vector pos = view->screen_to_world(Vector (CL_Mouse::get_x(), CL_Mouse::get_y ()));

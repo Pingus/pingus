@@ -1,4 +1,4 @@
-//  $Id: worldobj_group_data.cxx,v 1.11 2003/04/05 23:24:32 grumbel Exp $
+//  $Id: worldobj_group_data.cxx,v 1.12 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,9 +36,9 @@ WorldObjGroupData::WorldObjGroupData (xmlDocPtr doc, xmlNodePtr cur)
   cur = cur->children;
 
   //std::cout << "WorldObjGroupData::WorldObjGroupData (xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
-  
+
   cur = XMLhelper::skip_blank (cur->next);
- 
+
   while (cur)
     {
       //std::cout << "WorldObjGroupData: " << cur->name << std::endl;
@@ -46,7 +46,7 @@ WorldObjGroupData::WorldObjGroupData (xmlDocPtr doc, xmlNodePtr cur)
       cur = cur->next;
       cur = XMLhelper::skip_blank (cur->next);
     }
-  
+
   //std::cout << "WorldObjGroupData: size = " << objs.size () << std::endl;
 }
 
@@ -65,13 +65,13 @@ WorldObjGroupData::~WorldObjGroupData ()
     delete *i;
 }
 
-void 
+void
 WorldObjGroupData::add (WorldObjData* data)
 {
   objs.push_back (data);
 }
 
-void 
+void
 WorldObjGroupData::write_xml (std::ostream& xml)
 {
   xml << "<group>\n";
@@ -80,7 +80,7 @@ WorldObjGroupData::write_xml (std::ostream& xml)
   xml << "</group>\n\n";
 }
 
-void 
+void
 WorldObjGroupData::insert_WorldObjs (World* world)
 {
   // Flatten all objects of the group and insert them normal into the
@@ -98,10 +98,10 @@ WorldObjGroupData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
     {
       (*i)->insert_EditorObjs(group);
     }
-  
+
   obj_mgr->add(group);
 }
- 
+
 } // namespace WorldObjsData
 
 /* EOF */

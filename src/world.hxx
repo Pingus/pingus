@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.27 2003/03/25 00:56:33 grumbel Exp $
+//  $Id: world.hxx,v 1.28 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,8 +51,8 @@ namespace Particles {
 }
 
 
-/** The World holds all objects of the pingu enviroment. 
-    
+/** The World holds all objects of the pingu enviroment.
+
     It holds the pingus, traps, exits, entrances, etc.. It keeps
     control that all objects become time to move and can catch each
     other. */
@@ -79,7 +79,7 @@ private:
 
   std::vector<WorldObj*> world_obj;
   typedef std::vector<WorldObj*>::iterator WorldObjIter;
-  
+
   // These pointers hold objects and must be deleted
   Particles::PinguParticleHolder* pingu_particle_holder;
   Particles::RainParticleHolder*  rain_particle_holder;
@@ -100,7 +100,7 @@ private:
 public:
   World(PLF*);
   virtual ~World();
-  
+
   /** Add an object to the world, obj needs to be new'ed the World
       make sure that it will get deleted */
   void add_object (WorldObj* obj);
@@ -133,7 +133,7 @@ public:
 
   /** @return A pointer to the worlds pingu particle holder */
   Particles::PinguParticleHolder* get_pingu_particle_holder () { return pingu_particle_holder; }
-  
+
   /** @return A pointer to the worlds rain particle holder */
   Particles::RainParticleHolder* get_rain_particle_holder () { return rain_particle_holder; }
 
@@ -148,7 +148,7 @@ public:
 
   /** Play a sound as if it would have been generated at the given
       position, adjust panning and volume by the position relative to
-      the center of the screen 
+      the center of the screen
       @param name The name of the sound to play ("ohno", not "sounds/ohno.wav")
       @param pos Position from which the sound seems to come (z-pos is
       going to be ignored) void play_sound (std::string name, const
@@ -157,7 +157,7 @@ public:
   void play_sound (std::string name, const Vector& pos, float volume = 0.5f);
 
   /** Sets the main view, it is needed to play stereo wave and for
-      other screen orientated effects 
+      other screen orientated effects
 
       FIXME: This is really ugly and should be handled otherwise, by a
       FIXME: play_sound (View*) analog to draw() and update() or something
@@ -168,10 +168,10 @@ public:
 
   /** @return the pingu at the given word coordinates, 0 if none is there */
   Pingu* get_pingu (const Vector& pos);
-  
+
   /** Return a pointer to the GameTime object of this World */
   GameTime* get_game_time ();
-  
+
   int get_start_x() const { return start_x_pos; }
   int get_start_y() const { return start_y_pos; }
 

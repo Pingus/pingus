@@ -1,4 +1,4 @@
-//  $Id: dot_factory.cxx,v 1.3 2002/10/13 01:09:18 grumbel Exp $
+//  $Id: dot_factory.cxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,11 +29,11 @@ DotFactory::create(xmlDocPtr doc, xmlNodePtr cur)
 {
   if (XMLhelper::equal_str(cur->name, "leveldot"))
     {
-      
+
     }
   else if (XMLhelper::equal_str(cur->name, "tubedot"))
     {
-      
+
     }
   else
     {

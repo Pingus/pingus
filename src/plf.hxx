@@ -1,4 +1,4 @@
-//  $Id: plf.hxx,v 1.10 2003/03/30 20:43:52 grumbel Exp $
+//  $Id: plf.hxx,v 1.11 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,23 +27,23 @@
 class WorldObjData;
 
 /** The Pingus Level File
-    
+
     The PLF class holds all object information, which are needed to
     build a level, like the levelname, description, number of pingus,
     etc. */
-class PLF 
+class PLF
 {
 protected:
   std::map<std::string, std::string> levelname;
 
   /** The name of the file from were the current level was loaded */
   std::string filename;
-  
+
   /** Resource name of the PLF, see PLFResMgr */
   std::string resname;
 
   std::map<std::string, std::string> description;
-  
+
   /** Author of this level */
   std::string author;
 
@@ -87,7 +87,7 @@ protected:
 
   /** levels flagged with playable=false are not playable or havn't been yet tested */
   bool playable;
-  
+
   std::vector<ActionData>       actions;
   std::vector<WorldObjsData::GroundpieceData>  groundpieces;
 
@@ -118,7 +118,7 @@ public:
   /** Returns the number of Pingus, which are going to be released in
       this level. */
   int         get_pingus(void);
-  
+
   /** Returns the time you have to complete a level */
   int         get_time(void);
 
@@ -160,7 +160,7 @@ public:
   /** Creates a PLF (XMLPLF or PLFPLF, depending on the file
       extension) from a file. The pathname must be complete */
   static PLF* create (const std::string& pathname);
-  
+
 private:
   PLF (const PLF&);
   PLF& operator= (const PLF&);

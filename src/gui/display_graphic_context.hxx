@@ -1,5 +1,5 @@
-//  $Id: display_graphic_context.hxx,v 1.3 2003/04/18 17:08:26 grumbel Exp $
-// 
+//  $Id: display_graphic_context.hxx,v 1.4 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -52,15 +52,15 @@ private:
     return static_cast<int>((y + get_y_offset()) * offset.z + center.y);
   }
 
-  inline void add_change_rect(int x, int y, int width, int height) 
+  inline void add_change_rect(int x, int y, int width, int height)
   {
     change_rects.push_back(CL_Rect(x, y, x + width, y + height));
   }
 public:
-  DisplayGraphicContext (int x1, int y1, int x2, int y2, 
+  DisplayGraphicContext (int x1, int y1, int x2, int y2,
 			 int /*x_offset*/, int /*y_offset*/);
   virtual ~DisplayGraphicContext ();
-  
+
   Vector get_offset ();
 
   float get_x_offset ();
@@ -99,26 +99,26 @@ public:
   void draw (CL_Surface& sur, int x_pos, int y_pos, int frame);
 
   /** Draw a scaled surface */
-  void draw (CL_Surface& sur, int x_pos, int y_pos, 
+  void draw (CL_Surface& sur, int x_pos, int y_pos,
 	     float size_x, float size_y, int frame);
 
   /** Draw a line */
   void draw_line (const Vector& pos1, const Vector& pos2,
 		  float r, float g, float b, float a = 1.0f);
   /** Draw a line */
-  void draw_line (int x1, int y1, int x2, int y2, 
+  void draw_line (int x1, int y1, int x2, int y2,
 		  float r, float g, float b, float a = 1.0f);
 
   /** Draw a filled rectangle (FIXME: [x1,x2] or [x1,x2[ ?) */
-  void draw_fillrect (int x1, int y1, int x2, int y2, 
+  void draw_fillrect (int x1, int y1, int x2, int y2,
 		      float r, float g, float b, float a = 1.0f);
 
   /** Draw an unfilled rectangle (FIXME: [x1,x2] or [x1,x2[ ?) */
-  void draw_rect (int x1, int y1, int x2, int y2, 
+  void draw_rect (int x1, int y1, int x2, int y2,
 		  float r, float g, float b, float a = 1.0f);
 
   /** Draw a singel pixel */
-  void draw_pixel (int x_pos, int y_pos, 
+  void draw_pixel (int x_pos, int y_pos,
 		   float r, float g, float b, float a = 1.0f);
 
   /** Draw a circle */
@@ -126,9 +126,9 @@ public:
 		    float r, float g, float b, float a = 1.0f);
 
   void print_left (FontHandle font, int x_pos, int y_pos, const std::string& str);
-  
+
   void print_center (FontHandle font, int x_pos, int y_pos, const std::string& str);
-  
+
   void print_right (FontHandle font, int x_pos, int y_pos, const std::string& str);
 
 private:

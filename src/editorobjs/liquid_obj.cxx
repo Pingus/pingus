@@ -1,4 +1,4 @@
-//  $Id: liquid_obj.cxx,v 1.5 2003/02/19 17:16:59 grumbel Exp $
+//  $Id: liquid_obj.cxx,v 1.6 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,7 @@ LiquidObj::draw (EditorNS::EditorView* view)
 }
 
 void
-LiquidObj::draw_mark (EditorNS::EditorView* view) 
+LiquidObj::draw_mark (EditorNS::EditorView* view)
 {
   view->draw_rect(static_cast<int>(data->pos.x),
 		  static_cast<int>(data->pos.y),
@@ -73,7 +73,7 @@ LiquidObj::write_xml (std::ostream& xml)
   data->write_xml(xml);
 }
 
-std::string  
+std::string
 LiquidObj::status_line ()
 {
   char str[32];
@@ -88,13 +88,13 @@ LiquidObj::get_width ()
   return sprite.get_width() * data->width;
 }
 
-void 
+void
 LiquidObj::make_larger ()
 {
   ++data->width;
 }
 
-void 
+void
 LiquidObj::make_smaller ()
 {
   if (data->width > 1)
@@ -104,7 +104,7 @@ LiquidObj::make_smaller ()
 EditorNS::PropertyFrame*
 LiquidObj::get_gui_dialog(EditorNS::Editor* editor)
 {
-  EditorNS::GenericPropertyFrame* propframe 
+  EditorNS::GenericPropertyFrame* propframe
     = new EditorNS::GenericPropertyFrame("Liquid Properties",
                                          editor->get_property_window()->get_client_area());
 

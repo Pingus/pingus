@@ -1,5 +1,5 @@
-//  $Id: graph.hxx,v 1.22 2003/04/18 20:32:34 torangan Exp $
-// 
+//  $Id: graph.hxx,v 1.23 2003/04/19 10:23:19 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -34,14 +34,14 @@ extern const NodeId NoNode;
 extern const EdgeId NoEdge;
 
 template<class NodeType>
-class Node 
+class Node
 {
 public:
-  Node (const NodeType& d) 
+  Node (const NodeType& d)
     : data (d)
   {}
 
-  Node& operator= (const NodeType& d) 
+  Node& operator= (const NodeType& d)
   {
     data = d;
     return *this;
@@ -74,9 +74,9 @@ class Graph
 private:
   std::vector<Node<NodeType> > nodes;
   std::vector<Edge<EdgeType> > edges;
-  
+
 public:
-  Graph () 
+  Graph ()
   {
   }
 
@@ -91,16 +91,16 @@ public:
     return *this;
   }
 
-  ~Graph () 
+  ~Graph ()
   {
   }
 
   NodeId add_node (NodeType d)
-  { 
+  {
     nodes.push_back (Node<NodeType>(d));
     return NodeId (nodes.size ()-1);
   }
-  
+
   EdgeId add_edge (const EdgeType& data, const NodeId& a, const NodeId& b, float cost)
   {
     Edge<EdgeType> new_edge (data, a, b, cost);
@@ -155,24 +155,24 @@ public:
     assert(false);
 	return *((Edge<EdgeType>*) 0);
   }
-  
+
   /* FIXME: This might give problems under MSVC, so it could be better to not use it */
   template<class Func>
-  void for_each_node (Func func) 
+  void for_each_node (Func func)
   {
     std::for_each (nodes.begin (), nodes.end (), func);
   }
 
   template<class Func>
-  void for_each_edge (Func func) 
+  void for_each_edge (Func func)
   {
-    std::for_each (edges.begin (), edges.end (), func);    
+    std::for_each (edges.begin (), edges.end (), func);
   }
 
   int nodes_size () {
     return nodes.size ();
   }
-  
+
   int max_node_handler_value () {
     return nodes.size ();
   }

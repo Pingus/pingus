@@ -1,4 +1,4 @@
-//  $Id: result_screen.cxx,v 1.14 2003/04/10 16:59:57 grumbel Exp $
+//  $Id: result_screen.cxx,v 1.15 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ public:
   void draw(GraphicContext& gc) ;
 };
 
-class ResultScreenOkButton 
+class ResultScreenOkButton
   : public GUI::SurfaceButton
 {
 private:
@@ -56,7 +56,7 @@ private:
 public:
   ResultScreenOkButton(ResultScreen* p)
     : GUI::SurfaceButton(CL_Display::get_width()/2 + 225,
-                         CL_Display::get_height()/2 + 125, 
+                         CL_Display::get_height()/2 + 125,
                          ResDescriptor("start/ok", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("start/ok_clicked", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("start/ok_hover", "core", ResDescriptor::RD_RESOURCE)),
@@ -84,7 +84,7 @@ private:
 public:
   ResultScreenAbortButton(ResultScreen* p)
     : GUI::SurfaceButton(CL_Display::get_width()/2 - 278,
-                         CL_Display::get_height()/2 + 144, 
+                         CL_Display::get_height()/2 + 144,
                          ResDescriptor("start/back", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("start/back_clicked", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("start/back_hover", "core", ResDescriptor::RD_RESOURCE)),
@@ -109,7 +109,7 @@ public:
   }
 };
 
-class ResultScreenRetryButton 
+class ResultScreenRetryButton
   : public GUI::SurfaceButton
 {
 private:
@@ -117,7 +117,7 @@ private:
 public:
   ResultScreenRetryButton(ResultScreen* p)
     : GUI::SurfaceButton(CL_Display::get_width()/2 + 225,
-                         CL_Display::get_height()/2 + 125, 
+                         CL_Display::get_height()/2 + 125,
                          ResDescriptor("start/ok", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("start/ok_clicked", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("start/ok_hover", "core", ResDescriptor::RD_RESOURCE)),
@@ -125,7 +125,7 @@ public:
   {
   }
 
-  void on_click() 
+  void on_click()
   {
     parent->retry_level();
   }
@@ -147,7 +147,7 @@ ResultScreenComponent::ResultScreenComponent(Result arg_result)
   chalk_pingus.push_back(PingusResource::load_surface("misc/chalk_pingu2", "core"));
   chalk_pingus.push_back(PingusResource::load_surface("misc/chalk_pingu3", "core"));
   chalk_pingus.push_back(PingusResource::load_surface("misc/chalk_pingu4", "core"));
-  
+
   if (result.max_time == -1)
     time_str = "-";
   else
@@ -155,16 +155,16 @@ ResultScreenComponent::ResultScreenComponent(Result arg_result)
 }
 
 void
-ResultScreenComponent::draw(GraphicContext& gc) 
+ResultScreenComponent::draw(GraphicContext& gc)
 {
   gc.draw(background, Vector(gc.get_width()/2, gc.get_height()/2));
 
   if (!result.success())
-    gc.print_right(Fonts::chalk_normal, 
+    gc.print_right(Fonts::chalk_normal,
                    CL_Display::get_width()/2 + 275,
                    CL_Display::get_height()/2 + 110, _("Retry"));
 
-  gc.print_center(Fonts::chalk_large, gc.get_width()/2, CL_Display::get_height()/2 - 200, 
+  gc.print_center(Fonts::chalk_large, gc.get_width()/2, CL_Display::get_height()/2 - 200,
                   System::translate(result.plf->get_levelname()));
 
   if (result.success())
@@ -181,7 +181,7 @@ ResultScreenComponent::draw(GraphicContext& gc)
       /*gc.print_center(Fonts::pingus_normal, gc.get_width()/2, gc.get_height()-30,
                       "..:: Press Space to retry the level ::..");*/
     }
-  
+
   std::string message;
   if (result.success())
     {
@@ -213,7 +213,7 @@ ResultScreenComponent::draw(GraphicContext& gc)
       else
         message = _("Better luck next time!");
     }
-  gc.print_center(Fonts::chalk_normal, gc.get_width()/2, 
+  gc.print_center(Fonts::chalk_normal, gc.get_width()/2,
                   CL_Display::get_height()/2 - 70, message);
 
 
@@ -226,9 +226,9 @@ ResultScreenComponent::draw(GraphicContext& gc)
   int left_x  = CL_Display::get_width()/2 - 100;
   int right_x = CL_Display::get_width()/2 + 100;
   int y = CL_Display::get_height()/2 + 10;
-    
+
   gc.print_left(Fonts::chalk_normal,  left_x,  y, _("Saved: "));
-  gc.print_right(Fonts::chalk_normal, right_x, y, to_string(result.saved) 
+  gc.print_right(Fonts::chalk_normal, right_x, y, to_string(result.saved)
                  + "/" + to_string(result.needed));;
 
   gc.print_left(Fonts::chalk_normal,  left_x,  y+=30, _("Killed: "));
@@ -284,10 +284,10 @@ ResultScreen::retry_level()
 void
 ResultScreen::close_screen()
 {
-  ScreenManager::instance()->pop_screen();  
+  ScreenManager::instance()->pop_screen();
 }
 
-void 
+void
 ResultScreen::on_fast_forward_press()
 {
   on_pause_press();

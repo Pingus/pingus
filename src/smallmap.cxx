@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.36 2003/04/02 12:04:04 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.37 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,7 @@ SmallMap::SmallMap(Client* c)
   height = 100;
 
   scroll_mode = false;
-  
+
   init();
 }
 
@@ -57,7 +57,7 @@ SmallMap::~SmallMap()
 {
   delete canvas;
 }
-  
+
 void
 SmallMap::init()
 {
@@ -69,7 +69,7 @@ SmallMap::init()
   entrance_sur = PingusResource::load_surface("misc/smallmap_entrance", "core");
   exit_sur     = PingusResource::load_surface("misc/smallmap_exit", "core");
 
-  ColMap* colmap = client->get_server()->get_world()->get_colmap(); 
+  ColMap* colmap = client->get_server()->get_world()->get_colmap();
   buffer = colmap->get_data();
 
   colmap_serial = colmap->get_serial();
@@ -95,9 +95,9 @@ SmallMap::init()
 
       canvas = new CL_Canvas(width, height);
     }
- 
+
   canvas->lock();
-  
+
   cbuffer = static_cast<unsigned char*>(canvas->get_data());
 
   int alpha;
@@ -118,9 +118,9 @@ SmallMap::init()
 
 	  tx = x * cmap_width / width;
 	  ty = y * cmap_height / height;
-	  
+
 	  current_pixel = buffer[tx + (ty * cmap_width)];
-	  
+
 	  switch (current_pixel)
             {
             case Groundtype::GP_NOTHING:
@@ -129,14 +129,14 @@ SmallMap::init()
 	      cbuffer[i + 2] = 0;
 	      cbuffer[i + 3] = 0;
               break;
-              
+
             case Groundtype::GP_BRIDGE:
               cbuffer[i + 0] = 255;
 	      cbuffer[i + 1] = 100;
 	      cbuffer[i + 2] = 255;
 	      cbuffer[i + 3] =   0;
               break;
-              
+
             case Groundtype::GP_WATER:
             case Groundtype::GP_LAVA:
               cbuffer[i + 0] = 255;
@@ -151,10 +151,10 @@ SmallMap::init()
               cbuffer[i + 0] = 255; // alpha
 	      cbuffer[i + 1] = 255; // blue
 	      cbuffer[i + 2] = 128;   // green
-	      cbuffer[i + 3] = 128;   // red 
+	      cbuffer[i + 3] = 128;   // red
               break;
 #endif
-              
+
             case Groundtype::GP_SOLID:
               cbuffer[i + 0] = 255;
 	      cbuffer[i + 1] = 100;
@@ -194,31 +194,31 @@ SmallMap::draw (GraphicContext& gc)
   int x_of = playfield->get_x_offset();
   int y_of = playfield->get_y_offset();
 
-  sur.put_screen(x_pos, y_pos); 
+  sur.put_screen(x_pos, y_pos);
 
 #if 0
   if (has_focus)
     Display::draw_rect(x_pos, y_pos,
-		       x_pos + sur.get_width (), y_pos + sur.get_height () - 1, 
+		       x_pos + sur.get_width (), y_pos + sur.get_height () - 1,
 		       1.0f, 1.0f, 1.0f, 1.0f);
 #endif
-		       
-  
+
+
   x_of = x_pos - x_of * width / client->get_server()->get_world()->get_colmap()->get_width();
   y_of = y_pos - y_of * height / client->get_server()->get_world()->get_colmap()->get_height();
 
-  Display::draw_rect(x_of, 
+  Display::draw_rect(x_of,
 		     y_of,
 		     x_of + Math::min(rwidth,  static_cast<int>(sur.get_width()  - 1)),
 		     y_of + Math::min(rheight, static_cast<int>(sur.get_height() - 1)),
 		     0.0, 1.0, 0.0, 1.0);
-  
+
   // FIXME: This should use put_target(), but put_target(), does not
   // seem to work?!
   /*  vector<exit_data>     exit_d     = plf->get_exit();
   for(std::vector<exit_data>::iterator i = exit_d.begin(); i != exit_d.end(); ++i)
     {
-      exit_sur->put_screen(i->x_pos * width / colmap->get_width() +  x_pos - 3, 
+      exit_sur->put_screen(i->x_pos * width / colmap->get_width() +  x_pos - 3,
 			   i->y_pos * height / colmap->get_height() + y_pos - 3);
     }
 
@@ -266,7 +266,7 @@ SmallMap::update (float delta)
   if (update_count > smallmap_update_time)
     {
       update_count = 0.0f;
-      ColMap* colmap = client->get_server()->get_world()->get_colmap(); 
+      ColMap* colmap = client->get_server()->get_world()->get_colmap();
 
       if (colmap_serial != colmap->get_serial())
         {
@@ -281,7 +281,7 @@ SmallMap::draw_sprite(Sprite sprite, Vector pos)
   World* world = client->get_server()->get_world();
   float x = x_pos + (pos.x * width  / world->get_colmap()->get_width());
   float y = y_pos + (pos.y * height / world->get_colmap()->get_height());
-  
+
   gc_ptr->draw(sprite, Vector(x, y));
 }
 
@@ -302,7 +302,7 @@ SmallMap::on_pointer_move (int x, int y)
     {
       cx = (x - x_pos) * static_cast<int>(colmap->get_width()  / width);
       cy = (y - y_pos) * static_cast<int>(colmap->get_height() / height);
-      
+
       client->get_playfield()->set_viewpoint(cx, cy);
     }
 }
@@ -331,13 +331,13 @@ SmallMap::on_primary_button_release(int x, int y)
 void
 SmallMap::on_pointer_enter ()
 {
-  has_focus = true;  
+  has_focus = true;
 }
 
 void
 SmallMap::on_pointer_leave ()
 {
-  has_focus = false;  
+  has_focus = false;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: xml_pdf.cxx,v 1.7 2003/01/15 21:16:41 torangan Exp $
+//  $Id: xml_pdf.cxx,v 1.8 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ XMLPDF::XMLPDF(const std::string& filename)
     PingusError::raise("XMLPDF: Couldn't open \"" + filename + "\"");
 
   xmlNodePtr cur = doc->ROOT;
-  
+
   if (XMLhelper::equal_str(cur->name, "pingus-demo"))
     {
       cur = cur->children;
@@ -105,7 +105,7 @@ XMLPDF::write_xml(std::ostream& xml)
       i != events.end();
       ++i)
     i->write_xml(xml);
-  
+
   xml << "  </events>\n";
 }
 
@@ -117,14 +117,14 @@ XMLPDF::get_plf()
 }
 
 /** @return the levelname */
-std::string 
+std::string
 XMLPDF::get_levelname()
 {
   return levelname;
 }
 
 /** Returns a reference to the events of this demo */
-std::vector<ServerEvent> 
+std::vector<ServerEvent>
 XMLPDF::get_events()
 {
   return events;

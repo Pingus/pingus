@@ -1,4 +1,4 @@
-//  $Id: pingus_error.hxx,v 1.7 2002/09/27 11:26:44 torangan Exp $
+//  $Id: pingus_error.hxx,v 1.8 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,15 +23,15 @@
 #include "pingus.hxx"
 #include <string>
 
-class PingusException  
+class PingusException
 {
 protected:
-  std::string message;  
+  std::string message;
 public:
   PingusException (const std::string& mes);
   virtual ~PingusException ();
   virtual const std::string& get_message () const =0;
-  
+
 protected:
   PingusException (const PingusException& old);
   PingusException& operator= (const PingusException& old);
@@ -40,7 +40,7 @@ protected:
 /** PingusBug gets thrown on events which are a bug in Pingus, this
     can be unsupported object types or things that must not happen
     when the thing is properly working. */
-class PingusBug : public PingusException 
+class PingusBug : public PingusException
 {
 protected:
   PingusBug (const std::string& mes);
@@ -49,7 +49,7 @@ protected:
 
 public:
   virtual const std::string& get_message () const;
-  
+
   static void raise (const std::string& msg);
 };
 
@@ -65,7 +65,7 @@ protected:
 
 public:
   virtual const std::string& get_message () const;
-  
+
   static void raise (const std::string& msg);
 };
 

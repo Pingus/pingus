@@ -1,4 +1,4 @@
-//  $Id: time_display.cxx,v 1.13 2003/04/06 14:37:07 grumbel Exp $
+//  $Id: time_display.cxx,v 1.14 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ TimeDisplay::draw (GraphicContext& gc)
 {
   int  time_value = server->get_plf()->get_time() - server->get_world()->get_time_passed();
   std::string time_string;
-  
+
   if (server->get_plf()->get_time() == -1 && !(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
     {
       infinity_symbol.put_screen(CL_Display::get_width()
@@ -53,7 +53,7 @@ TimeDisplay::draw (GraphicContext& gc)
 				  2);
     }
   else
-    {  
+    {
       if (!(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
 	{
           time_string = GameTime::ticks_to_realtime_string(time_value);

@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.50 2003/04/15 19:06:50 grumbel Exp $
+//  $Id: editor.cxx,v 1.51 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,11 +56,11 @@ Editor* Editor::instance_ = 0;
 
 Editor*
 Editor::instance ()
-{ 
+{
   if ( ! instance_)
     instance_ = new Editor ();
-  
-  return instance_; 
+
+  return instance_;
 }
 
 void
@@ -93,7 +93,7 @@ Editor::Editor () : event_handler_ref_counter(0),
 
   // FIXME: Should use PingusResource, Memleak
   CL_ResourceManager* gui_resources = new CL_ResourceManager(path_manager.complete("data/gui.scr"), false);
-  
+
   style_manager = new CL_StyleManager_Default (gui_resources);
   gui   = new CL_GUIManager (style_manager);
 
@@ -104,14 +104,14 @@ Editor::Editor () : event_handler_ref_counter(0),
   view = new EditorView (0, 0, CL_Display::get_width (), CL_Display::get_height (), 0, 0);
 
   event->set_editor(this);
-  
+
   font = PingusResource::load_font("Fonts/courier_small", "fonts");
   panel->init();
   status_line->set_current_objs(&selection->get_objects());
   panel->set_editor(this);
   scroll_map->editor_event = event;
 
-  //std::cout << "Editor: registering event handler" << event << "... " << std::flush; 
+  //std::cout << "Editor: registering event handler" << event << "... " << std::flush;
   on_button_press_slot = CL_Input::sig_button_press ().connect(event, &EditorEvent::on_button_press);
   on_button_release_slot = CL_Input::sig_button_release ().connect(event, &EditorEvent::on_button_release);
 }
@@ -167,7 +167,7 @@ Editor::update (const GameDelta& delta)
 	  property_window->update_frame(0);
 	  //std::cout << "EditorEvent::editor_show_object_properties (): error: multiple objects selected" << std::endl;
 	}
-    }  
+    }
 
   object_manager->update(delta.get_time());
 
@@ -193,7 +193,7 @@ Editor::draw ()
 
   status_line->draw(view);
   scroll_map->draw();
-    
+
   if (show_help_screen)
     {
       help_screen.draw ();
@@ -228,16 +228,16 @@ Editor::scroll ()
 				 (mouse_y - CL_Mouse::get_y()) / 5));
       //	  object_manager->x_offset += (mouse_x - CL_Mouse::get_x()) / 5;
       //  object_manager->y_offset += (mouse_y - CL_Mouse::get_y()) / 5;
-	  
+
 	  /*cout << "ObjectManager: "
-	       << "X: " << object_manager.x_offset 
+	       << "X: " << object_manager.x_offset
 	       << " Y: " << object_manager.y_offset << std::endl;
 	  */
 	  draw();
 	  Display::flip_display(true);
 	}
     }
-  
+
   if (verbose) std::cout << "finished" << std::endl;
 }
 
@@ -245,25 +245,25 @@ std::string
 Editor::read_string (const std::string & prefix, const std::string & default_str)
 {
   event->disable();
- 
+
   std::string str;
 
-  if (default_str.empty()) 
+  if (default_str.empty())
     {
-      if (last_level.empty()) 
+      if (last_level.empty())
 	{
 	  str = System::get_statdir() + "levels/";
-	} 
-      else 
+	}
+      else
 	{
 	  str = last_level;
 	}
     }
-  else 
+  else
     {
       str = default_str;
     }
-      
+
   CL_Display::clear_display();
   font->print_left(20, 20, prefix.c_str());
   font->print_left(20, 40, str.c_str());
@@ -276,14 +276,14 @@ Editor::read_string (const std::string & prefix, const std::string & default_str
   CL_InputBuffer* keys = new CL_InputBuffer;
   bool  finished = false;
 
-  while (!finished) 
-    { 
+  while (!finished)
+    {
       CL_System::keep_alive();
-      
-      if (keys->peek_key().state != CL_Key::NoKey) 
+
+      if (keys->peek_key().state != CL_Key::NoKey)
 	{
 	  key = keys->get_key();
-	  
+
 	  if (key.state == CL_Key::Pressed)
 	    {
 	      switch (key.id)
@@ -292,22 +292,22 @@ Editor::read_string (const std::string & prefix, const std::string & default_str
 		  finished = true;
 		  std::cout << "--- Enter pressed" << std::endl;
 		  break;
-	   
+
 		case CL_KEY_ESCAPE:
 		  str = "";
 		  finished = true;
 		  break;
-	    
+
 		case CL_KEY_DELETE:
 		case CL_KEY_BACKSPACE:
 		  if (!str.empty())
-		    str = str.substr(0, str.size() - 1); 
+		    str = str.substr(0, str.size() - 1);
 		  break;
-	      
+
 		case CL_KEY_TAB:
 		  std::cout << "Tab completion not implemented" << std::endl;
 		  break;
-	    
+
 		default:
 		  if (key.ascii > 0)
 		    str += key.ascii;
@@ -344,14 +344,14 @@ Editor::save_tmp_level ()
     backup_id = 0;
 
   StatManager::instance()->set_int("next-backup-id", backup_id + 1);
-  
+
   std::string filename = System::get_backupdir () + "pingus-backup-" + to_string(backup_id) + ".xml";
   std::cout << "Editor: saving backup level to: " << filename << std::endl;
   object_manager->save_level_xml(filename.c_str());
   return filename;
 }
 
-void 
+void
 Editor::zoom_mode ()
 {
   CL_Rect rect;
@@ -360,11 +360,11 @@ Editor::zoom_mode ()
   tool = ZOOM_TOOL;
 
   CL_Surface mouse_cursor = PingusResource::load_surface("editor/region-zoom", "core");
-  
+
   while (true)
     {
-      CL_System::keep_alive();      
-      
+      CL_System::keep_alive();
+
       if (CL_Mouse::left_pressed () && !mouse_down)
 	{
 	  mouse_down = true;
@@ -382,8 +382,8 @@ Editor::zoom_mode ()
 	{
 	  rect.x2 = CL_Mouse::get_x ();
 	  rect.y2 = CL_Mouse::get_y ();
-	  
-	  CL_Display::draw_rect (rect.x1, rect.y1, rect.x2, rect.y2, 
+
+	  CL_Display::draw_rect (rect.x1, rect.y1, rect.x2, rect.y2,
 				 1.0, 1.0, 0.0, 1.0);
 	}
 
@@ -391,7 +391,7 @@ Editor::zoom_mode ()
 
       Display::flip_display(true);
     }
-  
+
   view->zoom_to (rect);
   tool = SELECTOR_TOOL;
 }
@@ -409,23 +409,23 @@ Editor::rect_get_current_objs()
 
       end_pos = Vector(CL_Mouse::get_x(),
 			  CL_Mouse::get_y ());
-        
+
       // Draw the screen
       CL_Display::clear_display();
       object_manager->draw(view);
       selection->draw (view);
-      
+
       Display::draw_rect((int) start_pos.x, (int)start_pos.y, (int)end_pos.x, (int)end_pos.y,
 			 0.0f, 1.0f, 0.0f, 1.0f);
       panel->draw();
       status_line->draw(view);
       Display::flip_display(true);
     }
-  
+
   start_pos = view->screen_to_world (start_pos);
   end_pos = view->screen_to_world (end_pos);
 
-  selection->select_rect(start_pos.x, start_pos.y, 
+  selection->select_rect(start_pos.x, start_pos.y,
 			 end_pos.x, end_pos.y);
 }
 
@@ -468,7 +468,7 @@ Editor::move_objects()
         move_y = -move_speed;
       else if (CL_Keyboard::get_keycode(CL_KEY_DOWN))
         move_y = move_speed;
-        
+
       selection->move(move_x, move_y);
     }
 }
@@ -483,7 +483,7 @@ Editor::interactive_move_object()
 
   selection->drag ();
   Vector old_pos (view->screen_to_world(Vector(CL_Mouse::get_x(), CL_Mouse::get_y())));
-  while (CL_Mouse::left_pressed()) 
+  while (CL_Mouse::left_pressed())
     {
       Vector new_pos (view->screen_to_world(Vector(CL_Mouse::get_x(), CL_Mouse::get_y())));
 
@@ -492,7 +492,7 @@ Editor::interactive_move_object()
 
       selection->move(new_pos.x - old_pos.x, new_pos.y - old_pos.y);
       old_pos = new_pos;
-      
+
       draw();
       Display::flip_display (true);
       CL_System::keep_alive();
@@ -506,7 +506,7 @@ Editor::toggle_help_screen ()
   show_help_screen = !show_help_screen;
 }
 
-void 
+void
 Editor::load_level (const std::string& str)
 {
   std::cout << "Editor::load_level(" << str << std::endl;
@@ -527,14 +527,14 @@ Editor::interactive_load()
   std::string levelfile;
 
   levelfile = read_string("Input level to load (without the .plf ending!):");
-  if (!levelfile.empty()) 
+  if (!levelfile.empty())
     {
-      try 
+      try
 	{
-	  if (exist(levelfile + ".plf")) 
+	  if (exist(levelfile + ".plf"))
 	    {
 	      last_level = levelfile;
-	      
+
 	      edit();
 	    }
 	  else
@@ -542,7 +542,7 @@ Editor::interactive_load()
 	      std::cout << "Creating new level, removing the current one..." << std::endl;
 	      current_objs.erase(current_objs.begin(), current_objs.end());
 	      editor_objs.erase(editor_objs.begin(), editor_objs.end());
-	      
+
 	      width = 1280;
 	      height = 640;
 	      start_x_pos = 640;
@@ -555,8 +555,8 @@ Editor::interactive_load()
 	      edit();
 	    }
 	}
-      
-      catch (PingusError err) 
+
+      catch (PingusError err)
 	{
 	  PingusMessageBox(" PingusError: " + err.message);
 	  interactive_load();

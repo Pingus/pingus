@@ -1,4 +1,4 @@
-//  $Id: info_box_data.cxx,v 1.12 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: info_box_data.cxx,v 1.13 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@
 
 namespace WorldObjsData {
 
-InfoBoxData::InfoBoxData () 
+InfoBoxData::InfoBoxData ()
 {
 }
 
@@ -63,12 +63,12 @@ InfoBoxData::InfoBoxData (const InfoBoxData& old)
 {
 }
 
-void 
+void
 InfoBoxData::write_xml (std::ostream& xml)
 {
   xml << "  <worldobj type=\"infobox\">\n";
   XMLhelper::write_vector_xml (xml, pos);
-  xml << "   <info-text>" << info_text << "</info-text>\n" 
+  xml << "   <info-text>" << info_text << "</info-text>\n"
       << "  </worldobj>\n" << std::endl;
 }
 

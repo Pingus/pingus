@@ -1,4 +1,4 @@
-//  $Id: theme.hxx,v 1.5 2002/09/27 11:26:44 torangan Exp $
+//  $Id: theme.hxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -16,7 +16,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
-//  02111-1307, USA. 
+//  02111-1307, USA.
 
 #ifndef HEADER_PINGUS_THEME_HXX
 #define HEADER_PINGUS_THEME_HXX
@@ -59,7 +59,7 @@ private:
 
   bool has_description;
   MultiLineText description;
-  
+
   bool is_loaded;
 
   void load_status(std::string);
@@ -71,7 +71,7 @@ public:
 
   void preload ();
 
-  /** Marks the level, which is under the given coordinates 
+  /** Marks the level, which is under the given coordinates
       @param x X-Position (normaly CL_Mouse::get_x())
       @param y Y-Position (normaly CL_Mouse::get_y()) */
   int mark_level_at_point (int x, int y);
@@ -80,7 +80,7 @@ public:
   void load (const std::string& filename);
   void draw_title ();
   void play ();
-  
+
 private:
   Theme (const Theme&);
   Theme& operator= (const Theme&);

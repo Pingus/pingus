@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.cxx,v 1.22 2003/03/04 10:25:32 grumbel Exp $
+//  $Id: conveyor_belt.cxx,v 1.23 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,11 +41,11 @@ ConveyorBelt::draw (GraphicContext& gc)
 {
   gc.draw(left_sur, data->pos, static_cast<int>(data->counter));
   for (int i=0; i < data->width; ++i)
-    gc.draw(middle_sur, 
+    gc.draw(middle_sur,
 	    static_cast<int>(data->pos.x + left_sur.get_width() + i * middle_sur.get_width()),
-	    static_cast<int>(data->pos.y), 
+	    static_cast<int>(data->pos.y),
 	    static_cast<int>(data->counter));
-  
+
   gc.draw(right_sur,
 	  static_cast<int>(data->pos.x + left_sur.get_width() + data->width * middle_sur.get_width()),
 	  static_cast<int>(data->pos.y),
@@ -63,7 +63,7 @@ ConveyorBelt::on_startup ()
 			     Groundtype::GP_SOLID);
 }
 
-void 
+void
 ConveyorBelt::update ()
 {
   data->counter += data->speed * 0.025f;

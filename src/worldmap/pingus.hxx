@@ -1,5 +1,5 @@
-//  $Id: pingus.hxx,v 1.25 2003/04/10 11:51:32 grumbel Exp $
-// 
+//  $Id: pingus.hxx,v 1.26 2003/04/19 10:23:19 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -40,12 +40,12 @@ private:
   /** The node on which the pingu currently stands, NoNode if the pingu is
       currently on the move to another node */
   NodeId current_node;
-  
+
   /** The node from which the pingu as started its walk to the
       target_node, value is undefined when the pingu is currently
       standing on a node */
   NodeId source_node;
- 
+
   /** The node to which the pingu is currently walking, value is
       undefined when the pingu is currently standing on a node. This
       is not the final target node (aka node_path.back()), but instead
@@ -64,7 +64,7 @@ private:
   /** The path which represents an edge between two nodes, it includes
       both source and destinations position, so it is complete */
   Path edge_path;
-  
+
   /** The position in the edge_path, 0 means the pingu is on the
       source_node, edge_path_length means that the pingu has reached
       the target node. Position between edge_path nodes is
@@ -88,9 +88,9 @@ public:
 
   /** @return true if the node is reachable, false otherwise */
   bool walk_to_node (NodeId target);
-  
+
   bool is_walking();
-  
+
   /** @return the node on which the pingu is currently standing, 0 is
       returned if the pingu is currently between two nodes */
   NodeId get_node () {
@@ -98,14 +98,14 @@ public:
   }
 
   /** Set the pingu to the position of a given node */
-  void set_position (NodeId node); 
+  void set_position (NodeId node);
 
   /** return the current position in world coordinates */
   Vector get_pos() const { return pos; }
 
   /** Used for z-ordering for drawing */
   float get_z_pos() const;
-  
+
 private:
   /** Calculate the direction in which the pingu is heading, return
       value is in degrees => [0,360[, 0=north, 180=south, 270=east, 90=west */
@@ -119,7 +119,7 @@ private:
   void update_edge_path();
 
   float calc_edge_path_length();
-  
+
   /** */
   Vector interpolate(const Vector& a, const Vector& b, float perc);
 

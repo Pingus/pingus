@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.cxx,v 1.20 2003/04/18 12:48:50 grumbel Exp $
+//  $Id: pingu_holder.cxx,v 1.21 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,14 +64,14 @@ void
 PinguHolder::draw (GraphicContext& gc)
 {
   // Draw all walkers
-  for(std::list<Pingu*>::iterator pingu = pingus.begin(); 
-      pingu != pingus.end(); 
+  for(std::list<Pingu*>::iterator pingu = pingus.begin();
+      pingu != pingus.end();
       ++pingu)
     {
-      if ((*pingu)->get_action() == Actions::Walker) 
+      if ((*pingu)->get_action() == Actions::Walker)
 	(*pingu)->draw (gc);
     }
-  
+
   // Draw all non-walkers, so that they are easier spotable
 
   // FIXME: This might be usefull, but looks kind of ugly in the game
@@ -79,8 +79,8 @@ PinguHolder::draw (GraphicContext& gc)
   // FIMME: uglyness. Either we rip this code out again or fix the
   // FIXME: bridger so that it looks higher and better with walkers
   // FIXME: behind him.
-  for(std::list<Pingu*>::iterator pingu = pingus.begin(); 
-      pingu != pingus.end(); 
+  for(std::list<Pingu*>::iterator pingu = pingus.begin();
+      pingu != pingus.end();
       ++pingu)
     {
       if ((*pingu)->get_action() != Actions::Walker)
@@ -92,11 +92,11 @@ void
 PinguHolder::update()
 {
   PinguIter pingu = pingus.begin();
-  
+
   while(pingu != pingus.end())
     {
       (*pingu)->update();
-      
+
       // FIXME: The draw-loop is not the place for things like this,
       // this belongs in the update loop
       if ((*pingu)->get_status() == PS_DEAD)
@@ -106,12 +106,12 @@ PinguHolder::update()
 	  // keep track of the allocated Pingus
 	  pingu = pingus.erase(pingu);
 	}
-      else if ((*pingu)->get_status() == PS_EXITED) 
+      else if ((*pingu)->get_status() == PS_EXITED)
 	{
 	  number_of_exited += 1;
 	  pingu = pingus.erase(pingu);
 	}
-      else 
+      else
 	{
 	  // move to the next Pingu
 	  ++pingu;

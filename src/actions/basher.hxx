@@ -1,4 +1,4 @@
-//  $Id: basher.hxx,v 1.16 2003/04/18 17:08:56 grumbel Exp $
+//  $Id: basher.hxx,v 1.17 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ private:
   /** The no. of pixels ahead that a Basher checks for something bashable.
       This is initialised using the size of the bash_radius surface. */
   int bash_reach;
-    
+
   /** Defines the minimum "wall" height needed for a bash to happen. */
   enum { min_bash_height = 5 };
 
@@ -55,19 +55,19 @@ private:
   /** Defines the maximum no. of steps down a Basher can go down before it
       stops being a Basher and turns into a Faller. */
   enum { max_steps_down = 3 };
-    
+
 public:
   Basher (Pingu* p);
-    
+
   ActionName get_type () const { return Actions::Basher; }
-    
+
   void draw (GraphicContext& gc);
   void update ();
-    
+
   bool have_something_to_dig ();
   void walk_forward ();
   void bash ();
-  
+
 private:
   Basher (const Basher&);
   Basher& operator= (const Basher&);

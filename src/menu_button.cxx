@@ -1,4 +1,4 @@
-//  $Id: menu_button.cxx,v 1.8 2003/04/12 13:18:43 grumbel Exp $
+//  $Id: menu_button.cxx,v 1.9 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,13 +56,13 @@ SurfaceButton::~SurfaceButton ()
 {
 }
 
-void 
+void
 SurfaceButton::draw (GraphicContext& gc)
 {
   if (mouse_over && !pressed)
     {
-      gc.print_center(font, CL_Display::get_width() / 2, 
-                      CL_Display::get_height() - 20, 
+      gc.print_center(font, CL_Display::get_width() / 2,
+                      CL_Display::get_height() - 20,
                       desc.c_str());
 
       gc.draw(surface_p, x_pos - surface_p.get_width()/2,
@@ -70,13 +70,13 @@ SurfaceButton::draw (GraphicContext& gc)
 
       if (line2.empty())
 	{
-	  gc.print_center(font_large, x_pos + 32, 
+	  gc.print_center(font_large, x_pos + 32,
                           y_pos - 32 - font_large->get_height()/2,
                           line1.c_str());
 	}
       else
 	{
-	  gc.print_center(font_large, x_pos + 32, y_pos - 32 - font_large->get_height(), 
+	  gc.print_center(font_large, x_pos + 32, y_pos - 32 - font_large->get_height(),
                           line1.c_str());
 	  gc.print_center(font_large, x_pos + 32, y_pos - 32,
                           line2.c_str());
@@ -85,12 +85,12 @@ SurfaceButton::draw (GraphicContext& gc)
   else if (mouse_over && pressed)
     {
       float shrink = 0.9f;
-      
-      gc.print_center(font, CL_Display::get_width() / 2, 
-                      CL_Display::get_height() - 20, 
+
+      gc.print_center(font, CL_Display::get_width() / 2,
+                      CL_Display::get_height() - 20,
                       desc.c_str());
 
-      gc.draw(surface_p, 
+      gc.draw(surface_p,
               static_cast<int>(x_pos - surface_p.get_width()/2 * shrink),
               static_cast<int>(y_pos - surface_p.get_height()/2 * shrink),
               shrink, shrink, 0);
@@ -98,22 +98,22 @@ SurfaceButton::draw (GraphicContext& gc)
       if (line2.empty())
 	{
 	  gc.print_center(font_large,
-                          x_pos + 32, 
+                          x_pos + 32,
                           y_pos - 32 - font_large->get_height()/2,
                           line1.c_str());
 	}
       else
 	{
-	  gc.print_center(font_large, 
-                          x_pos + 32, y_pos - 32 - font_large->get_height(), 
+	  gc.print_center(font_large,
+                          x_pos + 32, y_pos - 32 - font_large->get_height(),
                           line1.c_str());
 	  gc.print_center(font_large, x_pos + 32, y_pos - 32,
                           line2.c_str());
 	}
-    } 
-  else 
+    }
+  else
     {
-      gc.draw(surface_p, 
+      gc.draw(surface_p,
               x_pos - surface_p.get_width()/2,
               y_pos - surface_p.get_height()/2);
     }
@@ -122,7 +122,7 @@ SurfaceButton::draw (GraphicContext& gc)
 
 void
 SurfaceButton::update (float delta)
-{    
+{
   UNUSED_ARG(delta);
 }
 
@@ -146,7 +146,7 @@ SurfaceButton::on_pointer_press ()
 {
   pressed = true;
 }
- 
+
 void
 SurfaceButton::on_pointer_release ()
 {
@@ -176,7 +176,7 @@ CreditButton::CreditButton (PingusMenu* menu_)
   //  desc["en"] = "..:: Starts the level you played at last ::..";
   desc = _("..:: The people who brought this game to you ::..");
   //desc["de"] = "..:: Wer hat den dieses Spiel verbrochen...? ::..";
-  
+
   line1 = _("Credits");
   //line1["de"] = "Credits";
 
@@ -191,7 +191,7 @@ CreditButton::~CreditButton ()
 {
 }
 
-void 
+void
 CreditButton::on_click ()
 {
   std::cout << "Pushing credits screen" << std::endl;
@@ -211,7 +211,7 @@ OptionsButton::OptionsButton (PingusMenu* menu_)
 
   desc = _("..:: Takes you to the options menu ::..");
   //  desc["de"] = "..:: Einstellungen und Mogeleien ::..";
-  
+
   line1 = _("Options");
   //line1["de"] = "Einstellungen";
 
@@ -226,7 +226,7 @@ OptionsButton::~OptionsButton ()
 {
 }
 
-void 
+void
 OptionsButton::on_click()
 {
   //option_menu.display();
@@ -239,11 +239,11 @@ OptionsButton::on_click()
 QuitButton::QuitButton(PingusMenu* m)
   : menu (m)
 {
-  // x_pos = CL_Display::get_width() * 500 / 640; 
-  // y_pos = CL_Display::get_height() * 320 / 480; 
+  // x_pos = CL_Display::get_width() * 500 / 640;
+  // y_pos = CL_Display::get_height() * 320 / 480;
 
-  x_pos = CL_Display::get_width() * 650 / 800; 
-  y_pos = CL_Display::get_height() * 370 / 600; 
+  x_pos = CL_Display::get_width() * 650 / 800;
+  y_pos = CL_Display::get_height() * 370 / 600;
 
   desc = _("..:: Bye, bye ::..");
   //desc["de"] = "..:: Auf Wiedersehen ::..";
@@ -252,10 +252,10 @@ QuitButton::QuitButton(PingusMenu* m)
   //line1["de"] = "Ausgang";
 
   // surface   = PingusResource::load_surface("Buttons/quit", "menu");
-  // surface_p = PingusResource::load_surface("Buttons/quit_p", "menu");  
+  // surface_p = PingusResource::load_surface("Buttons/quit_p", "menu");
 
   //  surface   = PingusResource::load_surface("NewButtons/exit_off", "menu");
-  surface_p = PingusResource::load_surface("menu/exit_on", "core");  
+  surface_p = PingusResource::load_surface("menu/exit_on", "core");
 }
 
 QuitButton::~QuitButton()
@@ -273,7 +273,7 @@ QuitButton::on_click()
 LoadButton::LoadButton()
 {
   x_pos = CL_Display::get_width() * 400 / 800;
-  y_pos = CL_Display::get_height() * 500 / 600; 
+  y_pos = CL_Display::get_height() * 500 / 600;
 
   //surface   = PingusResource::load_surface("menu/load", "core");
   surface_p = PingusResource::load_surface("menu/load_p", "core");
@@ -297,7 +297,7 @@ EditorButton::EditorButton (PingusMenu* menu_)
   : menu(menu_)
 {
   x_pos = CL_Display::get_width()  * 150 / 800;
-  y_pos = CL_Display::get_height() * 370 / 600; 
+  y_pos = CL_Display::get_height() * 370 / 600;
 
   desc = _("..:: Launch the level editor ::..");
   //desc["de"] = "..:: Den Level Editor starten ::..";
@@ -319,7 +319,7 @@ EditorButton::~EditorButton ()
 
 }
 
-void 
+void
 EditorButton::load_level (const std::string& str)
 {
   Editor::instance ()->load_level (str);
@@ -335,20 +335,20 @@ StoryButton::StoryButton (PingusMenu* menu_)
   : menu(menu_)
 {
   x_pos = CL_Display::get_width()  * 400 / 800;
-  y_pos = CL_Display::get_height() * 370 / 600; 
+  y_pos = CL_Display::get_height() * 370 / 600;
 
   desc = _("..:: Start the game ::..");
   line1 = _("Start");
-  surface_p = PingusResource::load_surface("menu/play_on", "core");     
+  surface_p = PingusResource::load_surface("menu/play_on", "core");
 }
 
 StoryButton::~StoryButton () {}
 
-void 
+void
 StoryButton::on_click ()
 {
   PingusSound::play_sound ("letsgo");
-  
+
   bool story_seen = false;
   StatManager::instance()->get_bool("story-seen", story_seen);
 
@@ -365,7 +365,7 @@ StoryButton::on_click ()
 ThemeButton::ThemeButton (PingusMenu* menu_)
   : menu(menu_)
 {
-  x_pos = CL_Display::get_width() * 321 / 640; 
+  x_pos = CL_Display::get_width() * 321 / 640;
   y_pos = CL_Display::get_height() * 100 / 480;
 
   desc = _("..:: Start a contrib level ::..");
@@ -378,7 +378,7 @@ void
 ThemeButton::on_click ()
 {
   PingusSound::play_sound ("letsgo");
-  
+
   ThemeSelector theme_selector;
   theme_selector.display();
 }
@@ -391,16 +391,16 @@ MultiplayerButton::MultiplayerButton (PingusMenu* menu_)
   y_pos = CL_Display::get_height() * 369 / 480;
 
   desc = _("..:: Multiplayer Modes... experimental stuff ::..");
-    
+
   line1 = _("Multi");
-  
+
   surface_p = PingusResource::load_surface("menu/multi_on", "core");
 }
- 
+
 MultiplayerButton::~MultiplayerButton ()
 {
 }
- 
+
 void
 MultiplayerButton::on_click ()
 {

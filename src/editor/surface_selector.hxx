@@ -1,5 +1,5 @@
-//  $Id: surface_selector.hxx,v 1.7 2002/09/27 11:26:45 torangan Exp $
-// 
+//  $Id: surface_selector.hxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -44,7 +44,7 @@ struct surface_obj
   /** The time the small tumbnail was selected, when the mouse is
       longer than 1sec above the surface it will be enlarged */
   unsigned int display_time;
-  
+
   surface_obj ();
   surface_obj (const surface_obj& old);
   surface_obj& operator= (const surface_obj& old);
@@ -64,17 +64,17 @@ private:
   std::vector<surface_obj>::iterator get_current_obj ();
 
   std::vector<surface_obj>::iterator c_obj;
-  
+
 public:
   SurfaceSelector (std::vector<surface_obj>*);
   ~SurfaceSelector ();
 
   std::string select ();
-  
+
 private:
   SurfaceSelector (const SurfaceSelector&);
   SurfaceSelector& operator= (const SurfaceSelector&);
-}; 
+};
 
 
 #endif

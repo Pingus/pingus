@@ -1,5 +1,5 @@
-//  $Id: layer_manager.hxx,v 1.9 2003/04/11 15:15:34 torangan Exp $
-// 
+//  $Id: layer_manager.hxx,v 1.10 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -41,9 +41,9 @@ private:
 
     float x_offset;
     float y_offset;
-    
+
   public:
-    Layer () 
+    Layer ()
       : x_pos(0), y_pos(0),
         x_update(0), y_update(0),
         x_offset(0), y_offset(0)
@@ -55,8 +55,8 @@ private:
         x_update(x_u), y_update(y_u),
         x_offset(x_o), y_offset(y_o)
     {}
-    
-    void draw (GraphicContext& gc) 
+
+    void draw (GraphicContext& gc)
     {
       gc.draw(sur, int(x_pos + x_offset),
               int(y_pos + y_offset));
@@ -64,7 +64,7 @@ private:
               int(y_pos + y_offset));
     }
 
-    void update (float delta) 
+    void update (float delta)
     {
       x_pos = fmod((x_pos + x_update * delta),800);
       y_pos = fmod((y_pos + y_update * delta),600);
@@ -80,7 +80,7 @@ public:
   void add_layer (const CL_Surface& sur, float x_o, float y_o, float x_u, float y_u);
   void draw (GraphicContext& gc);
   void update (float delta);
-  
+
 private:
   LayerManager (const LayerManager&);
   LayerManager& operator= (const LayerManager&);

@@ -1,5 +1,5 @@
-//  $Id: component.hxx,v 1.13 2002/11/27 20:05:42 grumbel Exp $
-// 
+//  $Id: component.hxx,v 1.14 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -24,7 +24,7 @@
 
 class GraphicContext;
 
-namespace GUI 
+namespace GUI
 {
 
 /** A component represents an area which recivies events in the GUI,
@@ -35,16 +35,16 @@ private:
 
 public:
   Component () { }
-    
+
   virtual void draw (GraphicContext& gc) =0;
   virtual void update (float delta) { UNUSED_ARG(delta);}
-    
+
   virtual bool is_at (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); return false; }
 
   // Events
   /** Gets issued once the primary button is pressed */
   virtual void on_primary_button_press (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
-    
+
   /** Gets issued once the primary button is released */
   virtual void on_primary_button_release (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
 
@@ -76,10 +76,10 @@ public:
   /** true if mouse is currently over, FIXME: these seem to be
       unimplementable without renaming on_pointer_enter() and wrapp them */
   bool pointer_over ();
-  
+
 private:
   Component (const Component&);
-  Component& operator= (const Component&); 
+  Component& operator= (const Component&);
 };
 
 } // namespace GUI

@@ -1,4 +1,4 @@
-//  $Id: surface_background_obj.cxx,v 1.9 2003/03/30 13:12:35 grumbel Exp $
+//  $Id: surface_background_obj.cxx,v 1.10 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,7 +56,7 @@ SurfaceBackgroundObj::duplicate ()
 std::string
 SurfaceBackgroundObj::status_line ()
 {
-  return "SurfaceBackground: " 
+  return "SurfaceBackground: "
          + to_string(data->pos.x) + ", "
          + to_string(data->pos.y) + ", "
          + to_string(data->pos.z);
@@ -65,7 +65,7 @@ SurfaceBackgroundObj::status_line ()
 EditorNS::PropertyFrame*
 SurfaceBackgroundObj::get_gui_dialog(EditorNS::Editor* editor)
 {
-  GenericPropertyFrame* propframe 
+  GenericPropertyFrame* propframe
     = new GenericPropertyFrame("SurfaceBackground", editor->get_property_window()->get_client_area());
 
   propframe->add_float_box("Parallax-X", &data->para_x);

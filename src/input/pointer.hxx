@@ -1,5 +1,5 @@
-//  $Id: pointer.hxx,v 1.10 2002/09/27 11:26:46 torangan Exp $
-// 
+//  $Id: pointer.hxx,v 1.11 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -29,19 +29,19 @@ namespace Input {
   {
   public:
     Pointer () { }
-    virtual ~Pointer() { }  
-  
+    virtual ~Pointer() { }
+
     /// returns the X coordinate of the pointer
     virtual const float& get_x_pos () const =0;
-  
+
     /// returns the Y coordinate of the pointer
     virtual const float& get_y_pos () const =0;
 
-    /// sets the pointer to the given position    
+    /// sets the pointer to the given position
     virtual void  set_pos (float, float) =0;
-  
+
     virtual void  update (float) =0;
-  
+
    private:
      Pointer (const Pointer&);
      Pointer& operator= (const Pointer&);

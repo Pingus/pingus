@@ -1,4 +1,4 @@
-//  $Id: screen_ptr.cxx,v 1.2 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: screen_ptr.cxx,v 1.3 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 #include "screen_ptr.hxx"
 
 void
-ScreenPtr::decrease_refcount() 
+ScreenPtr::decrease_refcount()
 {
   //std::cout << "ScreenPtr::decrease_refcount(): " << screen << std::endl;
 
@@ -31,10 +31,10 @@ ScreenPtr::decrease_refcount()
       //std::cout << "*ref_count: " << *ref_count << std::endl;
 
       *ref_count -= 1;
-	
+
       if (*ref_count == 0)
 	{
-	  //std::cout << "XXXXXXXXXXXXXX ScreenPtr: deleting: " 
+	  //std::cout << "XXXXXXXXXXXXXX ScreenPtr: deleting: "
           //<< screen << " = " << typeid(*screen).name() << std::endl;
 	  delete screen;
 	  delete ref_count;
@@ -51,7 +51,7 @@ ScreenPtr::increase_refcount()
     {
       //std::cout << "*ref_count: " << *ref_count << std::endl;
       *ref_count += 1;
-    }    
+    }
 }
 
 /* EOF */

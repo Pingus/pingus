@@ -1,5 +1,5 @@
-//  $Id: level_resizer.hxx,v 1.3 2002/12/05 20:38:10 torangan Exp $
-// 
+//  $Id: level_resizer.hxx,v 1.4 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -35,7 +35,7 @@ private:
   Vector pos;
   ObjectManager* obj_manager;
   bool dragged;
-public:  
+public:
   LevelResizer(ObjectManager* );
 
   void set_position_offset(const Vector& offset);

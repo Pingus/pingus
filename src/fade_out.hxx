@@ -1,4 +1,4 @@
-//  $Id: fade_out.hxx,v 1.5 2002/10/12 00:49:10 torangan Exp $
+//  $Id: fade_out.hxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ private:
 
   /** The time that passed since the fadeout was started */
   float passed_time;
-  
+
 protected:
   Color color;
 public:
@@ -39,7 +39,7 @@ public:
       complete */
   FadeOut (float seconds = 1.0f, Color color = Color ());
   virtual ~FadeOut ();
-  
+
   // Reset the fadeout to the start
   virtual void reset ();
 
@@ -48,7 +48,7 @@ public:
   virtual void  set_progress (float progress);
   virtual float get_progress ();
   virtual bool  finished ();
-  
+
   ///
   static void random(void);
   ///
@@ -57,7 +57,7 @@ public:
   static void fade_to_black(int steps = 20);
   ///
   static void clear(void);
-  
+
 private:
   FadeOut (const FadeOut&);
   FadeOut& operator= (const FadeOut&);
@@ -70,9 +70,9 @@ public:
   EnlargingRectFadeOut (float seconds = 1.0f, Color color_ = Color())
   : FadeOut (seconds, color_) {}
   ~EnlargingRectFadeOut () {}
-  
+
   void draw ();
-  
+
 private:
   EnlargingRectFadeOut (const EnlargingRectFadeOut&);
   EnlargingRectFadeOut& operator= (const EnlargingRectFadeOut&);

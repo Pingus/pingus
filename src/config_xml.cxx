@@ -1,4 +1,4 @@
-//  $Id: config_xml.cxx,v 1.3 2002/10/13 20:25:00 torangan Exp $
+//  $Id: config_xml.cxx,v 1.4 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ ConfigXML::ConfigXML(const std::string& arg_filename)
     }
   else
     {
-      PingusError::raise("ConfigXML: Not a valid pingus-config file \"" + arg_filename + "\"");      
+      PingusError::raise("ConfigXML: Not a valid pingus-config file \"" + arg_filename + "\"");
     }
 }
 
@@ -48,13 +48,13 @@ ConfigXML::ConfigXML(xmlDocPtr doc, xmlNodePtr cur)
   parse_directory(doc, cur, "");
 }
 
-void 
+void
 ConfigXML::parse_directory(xmlDocPtr doc, xmlNodePtr cur, const std::string& prefix)
 {
   while(cur)
     {
       std::string name = reinterpret_cast<const char*>(cur->name);
-  
+
       if (is_directory(doc, cur))
         {
           parse_directory(doc, cur->children, prefix + name + "/");
@@ -73,7 +73,7 @@ ConfigXML::parse_directory(xmlDocPtr doc, xmlNodePtr cur, const std::string& pre
         {
           std::cout << "ConfigXML: parse error 123: " << cur->name << std::endl;
         }
-      
+
       cur = cur->next;
       cur = XMLhelper::skip_blank(cur);
     }

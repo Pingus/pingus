@@ -1,4 +1,4 @@
-//  $Id: pingu_action.cxx,v 1.24 2003/04/18 17:08:56 grumbel Exp $
+//  $Id: pingu_action.cxx,v 1.25 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,12 +35,12 @@ PinguAction::~PinguAction ()
 {
 }
 
-// Checks if the pingu action needs to catch another pingu (needed for 
+// Checks if the pingu action needs to catch another pingu (needed for
 // example by the blocker)
-bool 
-PinguAction::need_catch () 
-{ 
-  return false; 
+bool
+PinguAction::need_catch ()
+{
+  return false;
 }
 
 // Wrapper around the colmap, to get the pixels infront of the pingu,
@@ -154,7 +154,7 @@ PinguAction::move_with_forces ()
         }
     }
 #else // Old Code
-    
+
   // FIXME: What does this variable do?
   Vector resultant_force = pingu->get_velocity();
 
@@ -189,7 +189,7 @@ PinguAction::move_with_forces ()
   Vector force_counter = resultant_force;
 
   // Keep moving the Pingu until there is only a fraction left
-  while (   force_counter.x <= -1 
+  while (   force_counter.x <= -1
             || force_counter.x >=  1
             || force_counter.y <= -1
             || force_counter.y >=  1)

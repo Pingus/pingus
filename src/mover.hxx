@@ -1,4 +1,4 @@
-//  $Id: mover.hxx,v 1.2 2003/03/09 20:41:30 torangan Exp $
+//  $Id: mover.hxx,v 1.3 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,7 @@ class Mover
   protected:
     /** World in which the object should move */
     World* const world;
-    
+
     /** Position of the object to move */
     Vector pos;
 

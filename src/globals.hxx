@@ -1,4 +1,4 @@
-//  $Id: globals.hxx,v 1.16 2003/04/15 10:33:15 grumbel Exp $
+//  $Id: globals.hxx,v 1.17 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ extern bool        maintainer_mode;                 ///< --maintainer-mode
 extern bool        start_editor;                    ///<
 extern std::string demo_file;                       ///<
 extern bool        auto_scrolling;                  ///< --enable-auto-scrolling
-extern int         tile_size;                       ///< --tile-size  
+extern int         tile_size;                       ///< --tile-size
 extern bool        fullscreen_enabled;              ///< --enable-fullscreen
 extern int         screen_width;                    ///<
 extern int         screen_height;                   ///<
@@ -63,7 +63,7 @@ extern std::string global_email;                    ///< The email address of th
 extern std::string default_language;                ///< The default language, which is used when the env var LANG is not set
 extern int         pingus_debug_flags;              ///< Set some bits in this thing to get debug infos
 
-extern int         min_frame_skip;                  
+extern int         min_frame_skip;
 extern int         max_frame_skip;
 
 enum { PINGUS_DEBUG_ACTIONS    = (1 << 0),

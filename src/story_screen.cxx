@@ -1,4 +1,4 @@
-//  $Id: story_screen.cxx,v 1.18 2003/04/15 23:12:29 grumbel Exp $
+//  $Id: story_screen.cxx,v 1.19 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,7 +68,7 @@ private:
   StoryScreenComponent* story_comp;
 public:
   StoryScreenContinueButton(StoryScreenComponent* arg_story_comp)
-    : GUI::SurfaceButton(CL_Display::get_width()/2 + 220, CL_Display::get_height()/2 + 160, 
+    : GUI::SurfaceButton(CL_Display::get_width()/2 + 220, CL_Display::get_height()/2 + 160,
                          ResDescriptor("misc/next", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("misc/next", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("misc/next_hover", "core", ResDescriptor::RD_RESOURCE)),
@@ -82,7 +82,7 @@ public:
     PingusSound::play_sound ("tick", .3);
   }
 
-  void on_click() 
+  void on_click()
   {
     story_comp->next_text();
     //ScreenManager::instance()->replace_screen (PingusMenuManager::instance (), false);
@@ -123,14 +123,14 @@ StoryScreenComponent::draw (GraphicContext& gc)
   gc.draw(background,
           gc.get_width()/2 - background.get_width()/2,
           gc.get_height()/2 - background.get_height()/2);
-  
-  gc.print_center(Fonts::chalk_large, CL_Display::get_width()/2, 
+
+  gc.print_center(Fonts::chalk_large, CL_Display::get_width()/2,
                   CL_Display::get_height()/2 - 200, story.title);
-  gc.draw(page_surface,  
+  gc.draw(page_surface,
           gc.get_width()/2 - page_surface.get_width()/2,
           gc.get_height()/2 - 140);
-  
-  gc.print_left(Fonts::chalk_normal, 
+
+  gc.print_left(Fonts::chalk_normal,
                 CL_Display::get_width()/2  - 280,
                 CL_Display::get_height()/2 + 35, display_text);
 }
@@ -164,7 +164,7 @@ StoryScreen::on_escape_press ()
   ScreenManager::instance()->replace_screen(WorldMapNS::WorldMapManager::instance ());
 }
 
-void 
+void
 StoryScreen::on_startup()
 {
   //PingusSound::play_sound ("letsgo");
@@ -177,7 +177,7 @@ StoryScreenComponent::next_text()
   if (!page_displayed_completly)
     {
       page_displayed_completly = true;
-      display_text = current_page.text;  
+      display_text = current_page.text;
     }
   else
     {

@@ -1,4 +1,4 @@
-//  $Id: worldobj.cxx,v 1.11 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: worldobj.cxx,v 1.12 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -16,7 +16,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
-//  02111-1307, USA. 
+//  02111-1307, USA.
 
 #include <typeinfo>
 #include <iostream>
@@ -38,7 +38,7 @@ WorldObj::WorldObj()
 
 WorldObj::~WorldObj()
 {
-  
+
 }
 
 void
@@ -46,18 +46,18 @@ WorldObj::on_startup()
 {
   // do nothing
 }
-  
-void 
+
+void
 WorldObj::update()
 {
   // do nothing
 }
 
-void 
+void
 WorldObj::draw_offset(int /*x*/, int /*y*/, float /*s*/)
 {
   // do nothing
-  std::cout << "WorldObj::draw_offset(): not implemented, probally a bug: " 
+  std::cout << "WorldObj::draw_offset(): not implemented, probally a bug: "
 	    << typeid(*this).name () << std::endl;
 }
 
@@ -71,10 +71,10 @@ void
 WorldObj::draw (GraphicContext& gc)
 {
   // FIXME: I need some docu on the meaning of get_x_offset() and co.
-  std::cout << "WorldObj:draw(GraphicContext): Using compat-wrapper: " 
+  std::cout << "WorldObj:draw(GraphicContext): Using compat-wrapper: "
 	    << typeid(*this).name () << std::endl;
-  draw_offset (static_cast<int>(gc.get_x_offset () + gc.get_width ()/2), 
-	       static_cast<int>(gc.get_y_offset () + gc.get_height ()/2), 
+  draw_offset (static_cast<int>(gc.get_x_offset () + gc.get_width ()/2),
+	       static_cast<int>(gc.get_y_offset () + gc.get_height ()/2),
 	       gc.get_zoom ());
 }
 

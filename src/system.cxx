@@ -1,4 +1,4 @@
-//  $Id: system.cxx,v 1.18 2003/04/16 10:00:32 grumbel Exp $
+//  $Id: system.cxx,v 1.19 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,10 +55,10 @@ System::opendir(const std::string& pathname, const std::string& pattern)
 {
   std::list<System::DirectoryEntry> dir_list;
 
-#ifndef WIN32 
+#ifndef WIN32
   DIR* dp;
-  dirent* de; 
-  
+  dirent* de;
+
   dp = ::opendir(pathname.c_str());
 
   if (dp == 0)
@@ -67,24 +67,24 @@ System::opendir(const std::string& pathname, const std::string& pattern)
     }
   else
     {
-      while ((de = ::readdir(dp)) != 0) 
+      while ((de = ::readdir(dp)) != 0)
 	{
-	  if (fnmatch(pattern.c_str(), de->d_name, FNM_PATHNAME) == 0) 
+	  if (fnmatch(pattern.c_str(), de->d_name, FNM_PATHNAME) == 0)
 	    {
 	      struct stat buf;
 	      stat ((pathname + "/" + de->d_name).c_str (), &buf);
-	      
+
 	      if (S_ISDIR(buf.st_mode))
 		{
 		  dir_list.push_back(DirectoryEntry(de->d_name, DirectoryEntry::DE_DIRECTORY));
 		}
-	      else 
+	      else
 		{
 		  dir_list.push_back(DirectoryEntry(de->d_name, DirectoryEntry::DE_FILE));
 		}
 	    }
 	}
-      
+
       closedir(dp);
     }
 #else /* !WIN32 */
@@ -97,14 +97,14 @@ System::opendir(const std::string& pathname, const std::string& pattern)
     {
       std::cout << "System: Couldn't open: " << pathname << std::endl;
     }
-  
+
   do
-    {     
+    {
       dir_list.push_back(DirectoryEntry(coFindData.cFileName));
     }
   while (FindNextFile(hFind,&coFindData));
 
-  FindClose(hFind);  
+  FindClose(hFind);
 #endif
 
   return dir_list;
@@ -118,13 +118,13 @@ System::basename(std::string filename)
   const char* str = filename.c_str();
   int i;
 
-  for(i = filename.size() - 1; i >= 0; --i) 
+  for(i = filename.size() - 1; i >= 0; --i)
     {
       if (*(str + i) == '/') {
 	break;
       }
     }
-  
+
   return (str+i + 1);
 }
 
@@ -134,13 +134,13 @@ System::dirname (std::string filename)
   const char* str = filename.c_str();
   int i;
 
-  for(i = filename.size() - 1; i >= 0; --i) 
+  for(i = filename.size() - 1; i >= 0; --i)
     {
       if (*(str + i) == '/') {
 	break;
       }
     }
-  
+
   return filename.substr(0, i);
 }
 
@@ -151,7 +151,7 @@ System::extension (std::string filename)
   int i;
   int last_char = filename.size() - 1;
 
-  for(i = last_char; i >= 0; --i) 
+  for(i = last_char; i >= 0; --i)
     {
       if (str[i] == '.' ) {
 	if (i != last_char)
@@ -192,7 +192,7 @@ System::create_dir(std::string directory)
 	{
 	  std::cout << "Successfully created: " << directory << std::endl;
 	}
-    }  
+    }
   else
     {
       if (verbose) std::cout << "Found: " << directory << std::endl;
@@ -219,7 +219,7 @@ System::init_directories()
 {
   std::string statdir  = get_statdir();
   std::string vardir   = get_vardir();
-  
+
   create_dir(statdir);
 
   // FIXME: We need a better seperation between user created levels,
@@ -233,8 +233,8 @@ System::init_directories()
 
   // Backups of edited levels in the level editor
   create_dir(statdir + "backup/");
-  
-  // User created images 
+
+  // User created images
   create_dir(statdir + "images/");
 
   // Thumbnail cache
@@ -247,7 +247,7 @@ System::init_directories()
   create_dir(statdir + "screenshots/");
   // create_dir(vardir);
 }
- 
+
 std::string
 System::get_statdir()
 {
@@ -256,7 +256,7 @@ System::get_statdir()
 #else /* !WIN32 */
   char* homedir = getenv("HOME");
 
-  if (homedir) 
+  if (homedir)
     {
       return std::string(homedir) + "/.pingus/";
     }
@@ -267,13 +267,13 @@ System::get_statdir()
 #endif
 }
 
-std::string 
+std::string
 System::get_cachedir()
 {
   return get_statdir() + "cache/";
 }
 
-std::string 
+std::string
 System::get_backupdir()
 {
   return get_statdir() + "backup/";
@@ -282,7 +282,7 @@ System::get_backupdir()
 std::string
 System::get_vardir()
 {
-#ifdef WIN32   
+#ifdef WIN32
   return "var\\";
 #else
   return "/var/games/pingus/";
@@ -292,7 +292,7 @@ System::get_vardir()
 std::string
 System::get_tmpdir()
 {
-#ifdef WIN32   
+#ifdef WIN32
   // FIXME: Warning: these hardcoded values are most probably wrong!
   return "c:\\windows\\temp\\";
 #else
@@ -320,7 +320,7 @@ System::get_username()
 }
 
 /** Returns the EMail of the user or an empty string */
-std::string 
+std::string
 System::get_email()
 {
   if (default_email.empty())
@@ -348,13 +348,13 @@ System::get_language()
 #else
   char* lang_c = setlocale(LC_MESSAGES, NULL);
   std::string lang;
-  
+
   if (lang_c)
     lang = lang_c;
-  
+
   if (lang.empty() || lang == "C")
     return default_language;
-  else 
+  else
     return lang.substr(0, 2);
 #endif
 }
@@ -364,7 +364,7 @@ System::translate(const std::map<std::string, std::string>& strs)
 {
   if (pingus_debug_flags & PINGUS_DEBUG_TRANSLATOR)
     {
-      std::cout << ",-- [ Translator: lang=" << System::get_language () 
+      std::cout << ",-- [ Translator: lang=" << System::get_language ()
 		<< " default=" << default_language << " ] --" << std::endl;
       for (std::map<std::string, std::string>::const_iterator i = strs.begin ();
 	   i != strs.end (); ++i)
@@ -425,10 +425,10 @@ System::checksum (std::string filename)
       return "";
     }
 
-  do 
+  do
     {
       bytes_read = fread (buffer, sizeof (char), 4096, in);
-      
+
       if (bytes_read == -1)
 	{
 	  throw Error ("System:checksum: file read error");
@@ -436,7 +436,7 @@ System::checksum (std::string filename)
 
       for (int i=0; i < bytes_read; ++i)
 	checksum = checksum * 17 + buffer[i];
-    } 
+    }
   while (bytes_read != 0);
 
   fclose (in);
@@ -455,7 +455,7 @@ System::get_mtime(const std::string& filename)
     return stat_buf.st_mtime;
   else
     return 0;
-    
+
 #else
     return 0;
 #endif

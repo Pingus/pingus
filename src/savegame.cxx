@@ -1,4 +1,4 @@
-//  $Id: savegame.cxx,v 1.2 2003/04/01 15:13:33 grumbel Exp $
+//  $Id: savegame.cxx,v 1.3 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
 std::string
 Savegame::status_to_string (Status status)
 {
-  switch (status) 
+  switch (status)
     {
     case FINISHED:
       return "finished";
@@ -50,7 +50,7 @@ Savegame::string_to_status (std::string str)
     return FINISHED;
   else if (str == "none")
     return NONE;
-  else 
+  else
     return NONE;
 }
 

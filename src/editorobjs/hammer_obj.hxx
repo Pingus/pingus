@@ -1,4 +1,4 @@
-//  $Id: hammer_obj.hxx,v 1.9 2002/11/28 20:09:54 grumbel Exp $
+//  $Id: hammer_obj.hxx,v 1.10 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,20 +33,20 @@ class HammerObj : public SpriteEditorObj
 private:
   WorldObjsData::HammerData* const data;
   int frame;
-  
+
 public:
   HammerObj (const WorldObjsData::HammerData& data_);
   ~HammerObj ();
-   
+
   static EditorObjLst create (const Vector& pos);
 
   EditorObj* duplicate ();
-    
+
   void write_xml (std::ostream& xml);
   void draw (EditorNS::EditorView* view);
-    
+
   std::string status_line ();
-  EditorNS::PropertyFrame* get_gui_dialog(EditorNS::Editor*) { return 0; }  
+  EditorNS::PropertyFrame* get_gui_dialog(EditorNS::Editor*) { return 0; }
 private:
   HammerObj (const HammerObj&);
   HammerObj& operator= (const HammerObj&);

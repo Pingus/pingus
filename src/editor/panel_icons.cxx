@@ -1,4 +1,4 @@
-//  $Id: panel_icons.cxx,v 1.8 2003/03/28 12:06:32 grumbel Exp $
+//  $Id: panel_icons.cxx,v 1.9 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,10 +42,10 @@ PanelIconLoad::on_click()
 PanelIconExit::PanelIconExit()
 {
   tooltip = _("Exit the editor (Escape)");
-  sur = PingusResource::load_surface("editor/exit", "core");  
+  sur = PingusResource::load_surface("editor/exit", "core");
 }
 
-void 
+void
 PanelIconExit::on_click()
 {
   editor->get_event()->editor_exit();
@@ -57,7 +57,7 @@ PanelIconSave::PanelIconSave()
   sur = PingusResource::load_surface("editor/save", "core");
 }
 
-void 
+void
 PanelIconSave::on_click()
 {
   editor->get_event()->editor_save_level_as();
@@ -69,7 +69,7 @@ PanelIconDelete::PanelIconDelete()
   sur = PingusResource::load_surface("editor/delete", "core");
 }
 
-void 
+void
 PanelIconDelete::on_click()
 {
   editor->get_event()->editor_delete_selected_objects();
@@ -90,10 +90,10 @@ PanelIconCopy::on_click()
 PanelIconLevelProperties::PanelIconLevelProperties()
 {
   tooltip = _("Edit Level Properties");
-  sur = PingusResource::load_surface("editor/edit", "core");  
+  sur = PingusResource::load_surface("editor/edit", "core");
 }
 
-void 
+void
 PanelIconLevelProperties::on_click()
 {
   editor->get_event ()->editor_show_level_properties ();
@@ -114,10 +114,10 @@ PanelIconObjectProperties::on_click()
 PanelIconRun::PanelIconRun()
 {
   tooltip = _("Start the level and test it (F4)");
-  sur = PingusResource::load_surface("editor/clock_run", "core");  
+  sur = PingusResource::load_surface("editor/clock_run", "core");
 }
 
-void 
+void
 PanelIconRun::on_click()
 {
   editor->get_event()->editor_start_current_level();
@@ -126,7 +126,7 @@ PanelIconRun::on_click()
 PanelIconNew::PanelIconNew()
 {
   tooltip = _("Create a new level from scratch");
-  sur = PingusResource::load_surface("editor/new", "core");  
+  sur = PingusResource::load_surface("editor/new", "core");
 }
 
 void
@@ -138,7 +138,7 @@ PanelIconNew::on_click()
 PanelIconInsertObject::PanelIconInsertObject()
 {
   tooltip = _("Insert an object (Insert)");
-  sur = PingusResource::load_surface("editor/index", "core");  
+  sur = PingusResource::load_surface("editor/index", "core");
 }
 
 void
@@ -153,7 +153,7 @@ PanelIconRegionZoom::PanelIconRegionZoom ()
   sur = PingusResource::load_surface("editor/region-zoom", "core");
 }
 
-void 
+void
 PanelIconRegionZoom::on_click()
 {
   editor->get_event ()->zoom_mode ();
@@ -165,7 +165,7 @@ PanelIconZoomIn::PanelIconZoomIn()
   sur = PingusResource::load_surface("editor/zoom-in", "core");
 }
 
-void 
+void
 PanelIconZoomIn::on_click()
 {
   editor->get_event ()->editor_zoom_in ();
@@ -177,7 +177,7 @@ PanelIconZoomOut::PanelIconZoomOut()
   sur = PingusResource::load_surface("editor/zoom-out", "core");
 }
 
-void 
+void
 PanelIconZoomOut::on_click()
 {
   editor->get_event ()->editor_zoom_out ();

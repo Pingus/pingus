@@ -1,5 +1,5 @@
-//  $Id: editorobj_group.hxx,v 1.15 2003/03/05 22:18:51 grumbel Exp $
-// 
+//  $Id: editorobj_group.hxx,v 1.16 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -25,13 +25,13 @@
 #include "editorobj.hxx"
 #include "editorobj_mgr.hxx"
 
-class EditorObjGroup 
+class EditorObjGroup
   : public EditorObj,
     public EditorNS::EditorObjMgr
 {
 private:
   std::vector<EditorObj*> objs;
-  
+
   Vector upper_left_corner;
   //int width, height;
   //bool init;
@@ -45,21 +45,21 @@ public:
   void set_position_offset(const Vector& offset);
   void draw(EditorNS::EditorView *);
   void draw_mark (EditorNS::EditorView * view);
-  
+
   /** Add an object to the group, the object will get duplicated and
       stay untouched */
   void add (EditorObj*);
   ///
   std::vector<EditorObj*>* get_objs();
-  
+
   bool is_over(const Vector &);
   bool is_in_rect(const CL_Rect &);
-    
+
   void   write_xml(std::ostream& xml);
   EditorObj* duplicate();
 
   unsigned int size () { return objs.size (); }
-  
+
   void vertical_flip ();
   void horizontal_flip ();
   void rotate_90 ();

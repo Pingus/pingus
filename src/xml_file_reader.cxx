@@ -1,4 +1,4 @@
-//  $Id: xml_file_reader.cxx,v 1.3 2003/02/18 10:14:52 grumbel Exp $
+//  $Id: xml_file_reader.cxx,v 1.4 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,18 +52,18 @@ XMLFileReader::find_node(const char* name)
     {
       // Whole section is empty
       return NULL;
-    }  
+    }
 
   xmlNodePtr node = section_node->children;
-  
+
   while (node)
     {
-      if (xmlIsBlankNode(node)) 
+      if (xmlIsBlankNode(node))
 	{
 	  node = node->next;
 	  continue;
 	}
-     
+
       if (XMLhelper::equal_str(node->name, name))
         {
           return node;
@@ -99,7 +99,7 @@ XMLFileReader::read_color (const char* name, Color& value)
       return true;
     }
 
-  return false;  
+  return false;
 }
 
 bool

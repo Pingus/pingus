@@ -1,4 +1,4 @@
-//  $Id: resource_modifier.cxx,v 1.2 2002/09/11 12:45:57 grumbel Exp $
+//  $Id: resource_modifier.cxx,v 1.3 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ ResourceModifier horizontal_flip (ResourceModifier modifier)
     case ROT90:
       return ROT90FLIP;
     case ROT180:
-      return ROT180FLIP;	
+      return ROT180FLIP;
     case ROT270:
       return ROT270FLIP;
     case ROT0FLIP:
@@ -83,7 +83,7 @@ ResourceModifier rotate_90 (ResourceModifier modifier)
     case ROT90:
       return ROT180;
     case ROT180:
-      return ROT270;			
+      return ROT270;
     case ROT270:
       return ROT0;
     case ROT0FLIP:
@@ -109,7 +109,7 @@ ResourceModifier rotate_270 (ResourceModifier modifier)
     case ROT90:
       return ROT0;
     case ROT180:
-      return ROT90;	
+      return ROT90;
     case ROT270:
       return ROT180;
     case ROT0FLIP:
@@ -135,7 +135,7 @@ std::string rs_to_string (ResourceModifier modifier)
     case ROT90:
       return "ROT90";
     case ROT180:
-      return "ROT180";	
+      return "ROT180";
     case ROT270:
       return "ROT270";
     case ROT0FLIP:
@@ -149,7 +149,7 @@ std::string rs_to_string (ResourceModifier modifier)
     default:
       assert (0);
       return "--Error--";
-    } 
+    }
 }
 
 ResourceModifier rs_from_string (const std::string& modifier)

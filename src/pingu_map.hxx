@@ -1,4 +1,4 @@
-//  $Id: pingu_map.hxx,v 1.5 2002/09/27 11:26:44 torangan Exp $
+//  $Id: pingu_map.hxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,17 +41,17 @@ public:
 
   virtual void mark_dirty(int,int,int,int);
   virtual ColMap *get_colmap();
-  
+
   virtual int  get_width() = 0;
   virtual int  get_height() = 0;
-  
+
   virtual void remove(int, int) {};
   virtual void remove(CL_SurfaceProvider*, int, int);
   virtual void remove(const CL_Surface&, int, int);
-  
+
   virtual void put(const CL_Surface&, int, int);
   virtual void put(CL_SurfaceProvider*, int, int);
-  
+
 private:
   PinguMap (const PinguMap&);
   PinguMap& operator= (const PinguMap&);

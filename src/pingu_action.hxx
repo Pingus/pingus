@@ -1,4 +1,4 @@
-//  $Id: pingu_action.hxx,v 1.26 2003/04/18 17:08:56 grumbel Exp $
+//  $Id: pingu_action.hxx,v 1.27 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ enum ActionType
   COUNTDOWN_TRIGGERED
 };
 
-/** This class provides an abstract interface for pingu actions. It is 
+/** This class provides an abstract interface for pingu actions. It is
     used to inherit classes which represent the actions. The actions
     are stored in a seperate library, have a look in actions/ for some
     examples. */
@@ -62,7 +62,7 @@ public:
 
   /** Checks if this action allows to be overwritten with the given new action */
   virtual bool change_allowed (Actions::ActionName) { return true; }
-  
+
   /// The "AI" of the pingu.
   virtual void update () = 0;
 
@@ -75,10 +75,10 @@ public:
   /** The name of the action, this is used in the CaputreRectangle, so
       it can contain more than just the name */
   virtual std::string get_name () const;
-  
+
   /// The type of the action
   virtual Actions::ActionName get_type () const =0;
-  
+
   /** Return the character that is shown when a persitent action is
       activated in the CaptureRectangle. */
   virtual char get_persistent_char ();
@@ -99,16 +99,16 @@ public:
 
   /// True if Pingu in specified position would bang its head if it were walking
   bool head_collision_on_walk (int x, int y);
-  
+
   /// True if Pingu in specified position would have a collision if it were walking
   bool collision_on_walk (int x, int y);
-  
+
   /** Called if the action was successfully applied via request_set_action */
   virtual void on_successfull_apply () { }
 
   /** Called if the request_set_action failded to apply this action */
   virtual void on_failed_apply (Pingu*) { }
-  
+
   /** Move Pingu according to the forces applied to it */
   void move_with_forces ();
 

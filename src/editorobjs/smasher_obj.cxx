@@ -1,4 +1,4 @@
-//  $Id: smasher_obj.cxx,v 1.8 2002/09/28 11:52:25 torangan Exp $
+//  $Id: smasher_obj.cxx,v 1.9 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ SmasherObj::create (const Vector& pos)
   smasher_data.pos = pos;
   return EditorObjLst(1, new SmasherObj(smasher_data));
 }
-  
+
 EditorObj*
 SmasherObj::duplicate ()
 {
@@ -64,14 +64,14 @@ SmasherObj::draw (EditorNS::EditorView* view)
   view->draw(sprite, data->pos, frame);
 }
 
-std::string  
+std::string
 SmasherObj::status_line ()
 {
   char str[64];
   snprintf (str, 64, "SmasherObj: %4.2fx%4.2fx%4.2f", data->pos.x, data->pos.y, data->pos.z);
   return str;
 }
-  
+
 } // namespace EditorObjs
 
 /* EOF */

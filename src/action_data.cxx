@@ -1,4 +1,4 @@
-//  $Id: action_data.cxx,v 1.6 2002/09/14 19:06:33 torangan Exp $
+//  $Id: action_data.cxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 
 using namespace Actions;
 
-std::vector<ActionData> default_actions; 
+std::vector<ActionData> default_actions;
 
 void init_default_actions ()
 {

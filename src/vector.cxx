@@ -1,5 +1,5 @@
-//  $Id: vector.cxx,v 1.3 2002/11/03 22:20:29 grumbel Exp $
-// 
+//  $Id: vector.cxx,v 1.4 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -38,7 +38,7 @@ Vector::operator= (const Vector& old)
       y = old.y;
       z = old.z;
     }
-    
+
   return *this;
 }
 
@@ -97,7 +97,7 @@ void
 Vector::normalize ()
 {
   float f = sqrt(x * x + y * y + z * z);
-  
+
   if (f)
     {
       x /= f;
@@ -117,15 +117,15 @@ Vector::rotate (float angle, const Vector& pos) const
 {
   const float s = sin(angle);
   const float c = cos(angle);
-  
+
   return Vector(  x * (pos.x * pos.x * (1-c) + c)
                 + y * (pos.x * pos.y * (1-c) - pos.z *s)
 		+ z * (pos.x * pos.z * (1-c) + pos.y *s),
-		
+
 		  x * (pos.y * pos.x * (1-c) + pos.z *s)
 		+ y * (pos.y * pos.y * (1-c) + c)
 		+ z * (pos.y * pos.z * (1-c) - pos.x *s),
-		
+
 		  x * (pos.x * pos.z * (1-c) - pos.y *s)
 		+ y * (pos.y * pos.z * (1-c) + pos.x *s)
 		+ z * (pos.z * pos.z * (1-c) + c)
@@ -138,7 +138,7 @@ Vector::distance(const Vector& a, const Vector& b)
   float x = b.x - a.x;
   float y = b.y - a.y;
   float z = b.z - a.z;
-  
+
   return fabsf(sqrt((x * x) + (y * y) + (z * z)));
 }
 
@@ -147,7 +147,7 @@ Vector::distance2d(const Vector& a, const Vector& b)
 {
   float x = b.x - a.x;
   float y = b.y - a.y;
-  
+
   return fabsf(sqrt((x * x) + (y * y)));
 }
 

@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.36 2003/04/10 15:40:18 grumbel Exp $
+//  $Id: manager.cxx,v 1.37 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ namespace WorldMapNS {
 
 WorldMapManager* WorldMapManager::instance_ = 0;
 
-class WorldMapManagerCloseButton 
+class WorldMapManagerCloseButton
   : public GUI::SurfaceButton
 {
 public:
@@ -46,7 +46,7 @@ public:
   void on_pointer_enter();
 };
 
-class WorldMapManagerStoryButton 
+class WorldMapManagerStoryButton
   : public GUI::SurfaceButton
 {
 public:
@@ -57,7 +57,7 @@ public:
 };
 
 
-class WorldMapManagerCreditsButton 
+class WorldMapManagerCreditsButton
   : public GUI::SurfaceButton
 {
 public:
@@ -194,9 +194,9 @@ WorldMapManagerEnterButton::draw (GraphicContext& gc)
   else
     {
       SurfaceButton::draw(gc);
-      gc.print_left(Fonts::chalk_small, 
+      gc.print_left(Fonts::chalk_small,
                     CL_Display::get_width() - 100,
-                    CL_Display::get_height() - 20, 
+                    CL_Display::get_height() - 20,
                     _("Enter?"));
     }
 }
@@ -213,7 +213,7 @@ WorldMapManager::WorldMapManager ()
 {
   is_init = false;
   exit_worldmap = false;
- 
+
   // FIXME: a bit ugly because of the proteced member, but should work
   // FIXME: well enough. GUIScreen could also use multi-inheritage,
   // FIXME: but that could lead to member function name conflicts
@@ -237,7 +237,7 @@ WorldMapManager::load (const std::string& filename)
 {
   if (worldmap)
     delete worldmap;
-    
+
   worldmap = new WorldMap (filename);
 }
 
@@ -251,7 +251,7 @@ WorldMapManager::on_startup ()
     {
       load(path_manager.complete("worldmaps/tutorial.xml"));
     }
-  
+
   if (worldmap)
     worldmap->on_startup ();
 }
@@ -300,7 +300,7 @@ WorldMapManager::WorldMapComponent::update (float delta)
   UNUSED_ARG(delta);
 }
 
-void 
+void
 WorldMapManager::WorldMapComponent::on_primary_button_press (int x, int y)
 {
   //std::cout << "Buton press" << std::endl;
@@ -309,13 +309,13 @@ WorldMapManager::WorldMapComponent::on_primary_button_press (int x, int y)
 }
 
 
-void 
+void
 WorldMapManager::WorldMapComponent::on_pointer_move (int x, int y)
 {
   WorldMapManager::instance ()->worldmap->on_pointer_move (x, y);
 }
 
-void 
+void
 WorldMapManager::WorldMapComponent::on_secondary_button_press (int x, int y)
 {
   //std::cout << "Buton press" << std::endl;
@@ -323,7 +323,7 @@ WorldMapManager::WorldMapComponent::on_secondary_button_press (int x, int y)
   WorldMapManager::instance ()->worldmap->on_secondary_button_press (x, y);
 }
 
-void 
+void
 WorldMapManager::change_map (const std::string& filename, NodeId node)
 {
   // Create the new worldmap and make it the current one

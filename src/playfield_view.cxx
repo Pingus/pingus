@@ -1,4 +1,4 @@
-//  $Id: playfield_view.cxx,v 1.4 2002/09/28 11:52:22 torangan Exp $
+//  $Id: playfield_view.cxx,v 1.5 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,18 +32,18 @@ PlayfieldView::~PlayfieldView ()
 {
 }
 
-void 
+void
 PlayfieldView::update (float /*delta*/)
 {
 }
 
-void 
+void
 PlayfieldView::draw ()
 {
   world->draw(gc);
 }
 
-void 
+void
 PlayfieldView::scroll (Vector delta)
 {
   x_offset += (int) delta.x;

@@ -1,4 +1,4 @@
-//  $Id: view.hxx,v 1.11 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: view.hxx,v 1.12 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ class World;
 class Controller;
 class Client;
 
-/** A class to controll the rentering of the playfield, each display on 
+/** A class to controll the rentering of the playfield, each display on
     the screen, which displays the pingus world is an view object. */
 class View
 {
@@ -40,15 +40,15 @@ private:
   CL_ClipRect clip_rect;
 
   /** The position of the view in the world */
-  Range x_offset, y_offset; 
+  Range x_offset, y_offset;
 
   bool mouse_over;
 
   /** The zoom of the View, 1 is default */
-  double size;              
+  double size;
   int mouse_x;
   int mouse_y;
-  
+
   CaptureRectangle cap;
   Pingu* current_pingu;
   /// Static objects which are equal for all Views
@@ -58,7 +58,7 @@ private:
 
 public:
   /** @name The position of the View.
-      
+
       The View should reach from [x1_pos, x2_pos), x2_pos is not
       included in the View, just like in {\tt CL_Display::fill_rect()}. */
   //@{
@@ -79,7 +79,7 @@ public:
   int  get_x_offset() const;
   int  get_y_offset() const;
   int  get_x_pos() const;
-  int  get_y_pos() const; 
+  int  get_y_pos() const;
   void set_x_offset(int);
   void set_y_offset(int);
   void shift_x_offset(int);
@@ -97,7 +97,7 @@ public:
   static void set_world(World*);
 
   void on_pointer_move (int x, int y);
-  
+
 private:
   View (const View&);
   View& operator= (const View&);

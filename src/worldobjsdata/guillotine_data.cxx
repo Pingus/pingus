@@ -1,4 +1,4 @@
-//  $Id: guillotine_data.cxx,v 1.11 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: guillotine_data.cxx,v 1.12 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,20 +33,20 @@ GuillotineData::GuillotineData ()
 {
 }
 
-GuillotineData::GuillotineData (xmlDocPtr doc, xmlNodePtr cur) 
+GuillotineData::GuillotineData (xmlDocPtr doc, xmlNodePtr cur)
   : surface  (PingusResource::load_surface("Traps/guillotinekill", "traps")),
     idle_surf(PingusResource::load_surface("Traps/guillotineidle", "traps"))
 {
   if (cur->name)
     std::cout << reinterpret_cast<const char*>(cur->name) << std::endl;
-      
+
   XMLFileReader reader(doc, cur);
   reader.read_vector("position", pos);
 }
 
 GuillotineData::GuillotineData (const GuillotineData& old) : WorldObjData(old),
 							     surface(old.surface),
-							     idle_surf(old.idle_surf),	                                                 
+							     idle_surf(old.idle_surf),
 							     pos(old.pos)
 {
 }

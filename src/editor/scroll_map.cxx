@@ -1,4 +1,4 @@
-//  $Id: scroll_map.cxx,v 1.6 2003/01/25 18:34:36 torangan Exp $
+//  $Id: scroll_map.cxx,v 1.7 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,7 @@ ScrollMap::on_button_press(CL_InputDevice * /*device*/, const CL_Key& /*key*/)
 }
 
 ///
-bool 
+bool
 ScrollMap::mouse_over(int x, int y)
 {
   if (x > x_pos && x < x_pos + width
@@ -73,7 +73,7 @@ ScrollMap::mouse_over(int x, int y)
     return false;
 }
 
-void 
+void
 ScrollMap::draw()
 {
   CL_Display::fill_rect (x_pos, y_pos, x_pos + width, y_pos + height,
@@ -87,7 +87,7 @@ ScrollMap::draw()
   int viewarea_x_pos = int((x_pos - (view->get_offset().x * width
 				 / editor_event->object_manager->get_width())));
   int viewarea_y_pos = int((y_pos - (view->get_offset().y * height
-				 / editor_event->object_manager->get_height()))); 
+				 / editor_event->object_manager->get_height())));
 
   CL_Display::fill_rect(x_pos, y_pos,
 			x_pos + width,
@@ -105,7 +105,7 @@ ScrollMap::draw()
     }
 
   editor_event->object_manager->draw_scroll_map(x_pos, y_pos, width, height);
-  
+
 
   // The rectangle, which represents the complet world
   Display::draw_rect(x_pos, y_pos,

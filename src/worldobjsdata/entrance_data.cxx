@@ -1,4 +1,4 @@
-//  $Id: entrance_data.cxx,v 1.8 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: entrance_data.cxx,v 1.9 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ EntranceData::EntranceData (xmlDocPtr doc, xmlNodePtr cur) : direction(MISC),
   reader.read_int("owner-id", owner_id);
   reader.read_vector("position", pos);
   reader.read_int("release-rate", release_rate);
-  
+
   std::string direction_str;
   reader.read_string("direction", direction_str);
 
@@ -76,11 +76,11 @@ EntranceData::EntranceData (const EntranceData& old)
 {
 }
 
-void 
+void
 EntranceData::write_xml (std::ostream& xml)
 {
   std::string dir_str;
-  
+
   switch(direction)
     {
     case EntranceData::LEFT:
@@ -102,7 +102,7 @@ EntranceData::write_xml (std::ostream& xml)
       << "  <release-rate>" << release_rate << "</release-rate>\n"
       << "  <owner-id>" << owner_id << "</owner-id>\n"
       << "</entrance>\n"
-      << std::endl;  
+      << std::endl;
 }
 
 void
@@ -118,7 +118,7 @@ EntranceData::insert_WorldObjs (World* world)
   //PingusError::raise("Entrance: Entrance type in Level file is unknown: " + type);
 }
 
-void 
+void
 EntranceData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
   obj_mgr->add(new EditorObjs::EntranceObj(*this));

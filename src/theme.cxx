@@ -1,4 +1,4 @@
- //  $Id: theme.cxx,v 1.16 2003/04/11 12:45:39 grumbel Exp $
+ //  $Id: theme.cxx,v 1.17 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@
 #include "xml_plf.hxx"
 #include "gui/screen_manager.hxx"
 
-Theme::Theme (const std::string& filename_) 
+Theme::Theme (const std::string& filename_)
             : font(PingusResource::load_font("Fonts/pingus_small","fonts")),
 	      title(PingusResource::load_font("Fonts/pingus","fonts")),
 	      filename (filename_),
@@ -46,7 +46,7 @@ Theme::Theme (const std::string& filename_)
 Theme::~Theme ()
 {
 }
-  
+
 void
 Theme::load (const std::string& filename)
 {
@@ -70,25 +70,25 @@ Theme::load (const std::string& filename)
       has_description = false;
     }
 
-  try 
+  try
     {
       if (!plt.get_surface().empty ())
 	surface = PingusResource::load_surface(plt.get_surface(), "global");
     }
-  
-  catch (CL_Error& err) 
+
+  catch (CL_Error& err)
     {
       if (verbose) std::cout << "Theme:CL_Error:" << filename << ":" << err.message << std::endl;
     }
 
-  try 
+  try
     {
       if (plt.get_background().desc.res_name != "-")
 	background = PingusResource::load_surface(plt.get_background().desc);
     }
-  catch (CL_Error& err) 
+  catch (CL_Error& err)
     {
-      if (verbose) 
+      if (verbose)
 	{
 	  std::cout << "Theme:" << filename  << ":" << err.message << std::endl;
 	  std::cout << "Theme: Ignoring missing resource, disable background." << std::endl;
@@ -106,11 +106,11 @@ Theme::mark_level_at_point(int x, int y)
   int y_pos = level_start_y_pos;
 
   for(std::vector<std::string>::iterator i = levelnames.begin();
-      i < levelnames.end(); 
+      i < levelnames.end();
       ++i, ++j)
     {
       int width = font->get_text_width(i->c_str());
-      
+
       if ((CL_Display::get_width()/2 - width/2) < x
 	  && (CL_Display::get_width()/2 + width/2) > x
 	  && y_pos < y
@@ -123,7 +123,7 @@ Theme::mark_level_at_point(int x, int y)
 	      return current_level;
 	    }
 	  return -1;
-	}      
+	}
       y_pos += font->get_height() + 4;
     }
   return -1;
@@ -138,31 +138,31 @@ Theme::draw_title()
   int x_pos = x_center;
   int y_pos = 10;
 
-  if (!background) 
+  if (!background)
     {
       CL_Display::clear_display();
     }
-  else 
+  else
     {
       // Fill the screen with the background surface
-      for(int y=0; y < CL_Display::get_height(); y += background.get_height()) 
+      for(int y=0; y < CL_Display::get_height(); y += background.get_height())
 	{
-	  for(int x=0; x < CL_Display::get_width(); x += background.get_width()) 
+	  for(int x=0; x < CL_Display::get_width(); x += background.get_width())
 	    background.put_screen(x, y);
 	}
     }
-  
-  if (title_name != "-") 
+
+  if (title_name != "-")
     {
       title->print_center(x_center, y_pos, title_name.c_str());
       y_pos += 50;
     }
 
-  if (surface) 
+  if (surface)
     {
       x_pos -= surface.get_width() / 2;
       surface.put_screen(x_pos, y_pos);
-      
+
       y_pos += surface.get_height() + 20;
     }
 
@@ -180,42 +180,42 @@ Theme::draw_title()
 
   y_pos += description.get_height() + 15 + 20;
   int j = 0;
-  
+
   level_start_y_pos = y_pos;
 
   for(std::vector<std::string>::iterator i = levelnames.begin(); i != levelnames.end(); ++i)
     {
-      if (j > accessible_levels) 
+      if (j > accessible_levels)
 	{
 	  // Level is not yet accessible
 	  font->print_center(x_center, y_pos, (*i).c_str());
 	  CL_Display::fill_rect(x_center - font->get_text_width(i->c_str())/2 - 1,
 				y_pos - 1,
-				x_center + font->get_text_width(i->c_str())/2 + 1, 
+				x_center + font->get_text_width(i->c_str())/2 + 1,
 				y_pos + font->get_height() + 1,
 				0.0, 0.0, 0.0, 0.5);
-	} 
-      else if (j == current_level) 
+	}
+      else if (j == current_level)
 	{
 	  // Level is accessible
 	  CL_Display::fill_rect(x_center - font->get_text_width(i->c_str())/2 - 1,
 				y_pos - 1,
-				x_center + font->get_text_width(i->c_str())/2 + 1, 
+				x_center + font->get_text_width(i->c_str())/2 + 1,
 				y_pos + font->get_height() + 1,
 				0.0f, 0.0f, 0.0f, 1.0f);
 	  CL_Display::draw_rect(x_center - font->get_text_width(i->c_str())/2 - 1,
 				y_pos - 1,
-				x_center + font->get_text_width(i->c_str())/2 + 1, 
+				x_center + font->get_text_width(i->c_str())/2 + 1,
 				y_pos + font->get_height() + 1,
 				1.0f, 1.0f, 1.0f, 1.0f);
 	  font->print_center(x_center, y_pos, (*i).c_str());
-	} 
-      else 
+	}
+      else
 	{
 	  font->print_center(x_center, y_pos, (*i).c_str());
 	}
       ++j;
-      y_pos += font->get_height() + 4;     
+      y_pos += font->get_height() + 4;
     }
 }
 
@@ -224,28 +224,28 @@ Theme::load_status(std::string name)
 {
   status_file = System::basename(name);
   std::string rawname  = status_file.substr(0, status_file.rfind("."));
-  
+
   if (verbose > 1) std::cout << "Filename: " << status_file << std::endl;
   if (verbose > 1) std::cout << "Rawfile: " << status_file.substr(0, status_file.rfind(".")) << std::endl;
-  
+
   status_file = System::get_statdir() + "savegames/" + rawname + ".pst";
-  
+
   if (verbose > 1) std::cout << "Filename to open: " << status_file << std::endl;
 
-  if (System::exist(status_file)) 
+  if (System::exist(status_file))
     {
       std::ifstream in;
       in.open(status_file.c_str());
       in >> accessible_levels;
       in.close();
-    } 
-  else 
+    }
+  else
     {
       if (verbose) std::cout << "Theme: No Savegame for this theme found" << std::endl;
       accessible_levels = 0;
     }
 
-  if ((unsigned int)(accessible_levels) >= level_filenames.size()) 
+  if ((unsigned int)(accessible_levels) >= level_filenames.size())
     {
       if (verbose) std::cout << "Warning: Accessible_Level is to high! " << accessible_levels << std::endl;
       accessible_levels = level_filenames.size() - 1;
@@ -257,27 +257,27 @@ void
 Theme::play()
 {
   preload ();
-     
-  try 
+
+  try
     {
       assert (!"Theme::play unimplemented");
-      
+
       ScreenManager::instance()->push_screen
 	(new PingusGameSession(PLFResMgr::load_plf(plt.get_levels()[current_level]), true),
          true);
 
       if (current_level == accessible_levels)
 	++accessible_levels;
-            
+
       if ((unsigned int)(accessible_levels) >= level_filenames.size())
 	accessible_levels = level_filenames.size() - 1;
-      
+
       std::ofstream out (status_file.c_str());
       out << accessible_levels;
       out.close();
     }
 
-  catch (PingusError& err) 
+  catch (PingusError& err)
     {
       std::cout <<  "Pingus_Error: " << err.get_message () << std::endl;
     }
@@ -294,12 +294,12 @@ Theme::next_level()
 
   ++current_level;
 
-  if ((unsigned int)(current_level) >= level_filenames.size()) 
+  if ((unsigned int)(current_level) >= level_filenames.size())
     current_level = level_filenames.size() - 1;
-  
-  if (current_level > accessible_levels) 
+
+  if (current_level > accessible_levels)
     current_level  = accessible_levels;
-  
+
   //std::cout << "Level: " << current_level << std::endl;
 }
 
@@ -312,7 +312,7 @@ Theme::previous_level()
 
   if (current_level < 0)
     current_level = 0;
-  
+
   //  std::cout << "Level: " << current_level << std::endl;
 }
 
@@ -320,10 +320,10 @@ void
 Theme::load_levels()
 {
   std::string filename;
-  
+
   if (verbose) std::cout << "Theme opening levels... " << std::flush;
 
-  for(std::vector<std::string>::iterator i = level_filenames.begin(); 
+  for(std::vector<std::string>::iterator i = level_filenames.begin();
       i != level_filenames.end(); ++i)
     {
       filename = path_manager.complete("levels/" + *i);
@@ -341,7 +341,7 @@ Theme::load_levels()
 	      levelnames.push_back(System::translate(plf.get_levelname()));
 	    }
 	}
-      catch (PingusError& err) 
+      catch (PingusError& err)
 	{
 	  std::cout << "Theme: PingusError: " << err.get_message () << std::endl;
 	}
@@ -351,7 +351,7 @@ Theme::load_levels()
   std::cout << "Levelnames: " << levelnames.size () << std::endl;
 }
 
-void 
+void
 Theme::preload ()
 {
   if (!is_loaded)

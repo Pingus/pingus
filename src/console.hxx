@@ -1,5 +1,5 @@
-//  $Id: console.hxx,v 1.12 2003/02/19 09:50:35 grumbel Exp $
-// 
+//  $Id: console.hxx,v 1.13 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -37,25 +37,25 @@ private:
 
   std::list<std::string> buffer;
   char char_buffer[CONSOLE_BUFFER_SIZE];
-  
+
 public:
-  ConsoleBuffer ();  
+  ConsoleBuffer ();
   virtual ~ConsoleBuffer ();
-  int overflow (int c);  
+  int overflow (int c);
   int sync ();
   const std::list<std::string>& get_buffer ();
-  
+
 private:
   /// helper function used by overflow and sync
   std::string fill_buffer (bool append);
-  
+
   ConsoleBuffer (const ConsoleBuffer&);
   ConsoleBuffer& operator= (const ConsoleBuffer&);
 };
 
 /** A "Quake" like console, but it can just handle output, you can't
     type anything. */
-class Console : 
+class Console :
   public std::ostream,
   public DisplayHook
 {
@@ -101,7 +101,7 @@ public:
 
   void puts(const std::string&);
   void newline();
-  
+
 private:
   Console (const Console&);
   Console& operator= (const Console&);

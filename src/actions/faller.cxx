@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.39 2003/03/25 00:56:33 grumbel Exp $
+//  $Id: faller.cxx,v 1.40 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ Faller::Faller (Pingu* p)
     // FIXME: we can save some cpu cycles & memory if we do this when it
     // is necessary
     tumbler(Sprite("Pingus/tumble" + to_string(pingu->get_owner()), "pingus"))
-{ 
+{
   faller .set_align_center_bottom();
   tumbler.set_align_center_bottom();
 }
@@ -53,7 +53,7 @@ Faller::update ()
 
   // Pingu stands on ground
   if (rel_getpixel(0, -1) !=  Groundtype::GP_NOTHING)
-    { 
+    {
       pingu->set_action(Actions::Walker);
       return;
     }
@@ -100,7 +100,7 @@ Faller::update ()
 		  pingu->set_action(Actions::Drown);
 		}
 	      // Did we stop too fast?
-	      else if (fabs(pingu->get_velocity().y) > deadly_velocity) 
+	      else if (fabs(pingu->get_velocity().y) > deadly_velocity)
 		{
 		  pingu->set_action(Actions::Splashed);
 		}
@@ -143,7 +143,7 @@ Faller::update ()
   while (collided);
 }
 
-void 
+void
 Faller::draw (GraphicContext& gc)
 {
   if (is_tumbling()) {

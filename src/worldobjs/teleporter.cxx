@@ -1,4 +1,4 @@
-//  $Id: teleporter.cxx,v 1.16 2003/02/19 09:50:37 grumbel Exp $
+//  $Id: teleporter.cxx,v 1.17 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ Teleporter::Teleporter (const WorldObjsData::TeleporterData& data_)
   : data(new WorldObjsData::TeleporterData(data_)),
     sprite("teleporter", "worldobjs", 20.0f, Sprite::NONE, Sprite::ONCE),
     target_sprite("teleportertarget", "worldobjs", 15.0f, Sprite::NONE, Sprite::ONCE)
-{  
+{
   sprite.set_align_center_bottom();
   target_sprite.set_align_center();
 
@@ -51,14 +51,14 @@ Teleporter::get_z_pos () const
   return data->pos.z;
 }
 
-void 
+void
 Teleporter::draw (GraphicContext& gc)
 {
   gc.draw(sprite, data->pos);
   gc.draw(target_sprite, data->target_pos);
 }
 
-void 
+void
 Teleporter::update ()
 {
   sprite.update();

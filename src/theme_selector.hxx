@@ -1,4 +1,4 @@
-//  $Id: theme_selector.hxx,v 1.5 2002/09/27 11:26:44 torangan Exp $
+//  $Id: theme_selector.hxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,12 +37,12 @@ class ListItem
 private:
   std::string label;
   CL_Font* font;
-  
+
 public:
   ListItem(std::string);
   void draw_offset(int x, int y);
   bool mouse_over();
-  
+
   ListItem (const ListItem& old);
   ListItem& operator= (const ListItem& old);
 };
@@ -56,7 +56,7 @@ public:
   ListBox();
   void add_item(std::string);
   void draw_offset(int x, int y);
-  
+
 private:
   ListBox (const ListBox&);
   ListBox& operator= (const ListBox&);
@@ -69,30 +69,30 @@ public:
   CL_Slot on_button_release_slot;
   CL_Slot on_mouse_move_slot;
 
-  class Event /*: public CL_Event_ButtonPress, 
+  class Event /*: public CL_Event_ButtonPress,
 		public CL_Event_ButtonRelease,
 		public CL_Event_MouseMove*/
   {
   public:
     bool enabled;
     ThemeSelector* theme_selector;
-    
+
   public:
     Event () { }
-    
+
     virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
     virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
     virtual void on_mouse_move(CL_InputDevice *,int mouse_x, int mouse_y);
-    
+
   private:
     Event (const Event&);
     Event& operator= (const Event&);
   };
-  
+
   friend class Event;
 
   Event* event;
-  
+
 private:
   std::vector<AlphaButton*> theme;
   std::vector<Theme*> themes;
@@ -118,7 +118,7 @@ private:
   void   draw();
   bool key_pressed(int key);
 
-  /** Marks the level, which is under the given coordinates 
+  /** Marks the level, which is under the given coordinates
       @param x X-Position (normaly CL_Mouse::get_x())
       @param y Y-Position (normaly CL_Mouse::get_y())
       @return The current_level at point or -1 if no level is under point */
@@ -129,10 +129,10 @@ private:
 public:
   ThemeSelector();
   ~ThemeSelector();
- 
+
   /** Display the theme selector */
   void   display ();
-  
+
 private:
   ThemeSelector (const ThemeSelector&);
   ThemeSelector& operator= (const ThemeSelector&);

@@ -1,4 +1,4 @@
-//  $Id: groundtype.cxx,v 1.1 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: groundtype.cxx,v 1.2 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,12 +20,12 @@
 #include <iostream>
 #include "groundtype.hxx"
 
-Groundtype::GPType 
-Groundtype::string_to_type(const std::string& arg_type) 
+Groundtype::GPType
+Groundtype::string_to_type(const std::string& arg_type)
 {
   if (arg_type == "solid")
     return Groundtype::GP_SOLID;
-  else if (arg_type == "transparent")    
+  else if (arg_type == "transparent")
     return Groundtype::GP_TRANSPARENT;
   else if (arg_type == "ground")
     return Groundtype::GP_GROUND;
@@ -33,9 +33,9 @@ Groundtype::string_to_type(const std::string& arg_type)
     return Groundtype::GP_BRIDGE;
   else if (arg_type == "water")
     return Groundtype::GP_WATER;
-  else if (arg_type == "lava") 
+  else if (arg_type == "lava")
     return Groundtype::GP_LAVA;
-  else if (arg_type == "remove") 
+  else if (arg_type == "remove")
     return Groundtype::GP_REMOVE;
   else
     {
@@ -45,11 +45,11 @@ Groundtype::string_to_type(const std::string& arg_type)
 }
 
 
-std::string 
-Groundtype::type_to_string(GPType arg_type) 
+std::string
+Groundtype::type_to_string(GPType arg_type)
 {
   switch (arg_type)
-    { 
+    {
     case Groundtype::GP_SOLID:
       return "solid";
     case Groundtype::GP_TRANSPARENT:

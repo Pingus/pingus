@@ -1,4 +1,4 @@
-//  $Id: editor_help_screen.cxx,v 1.9 2003/04/15 10:33:15 grumbel Exp $
+//  $Id: editor_help_screen.cxx,v 1.10 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,7 @@ EditorHelpScreen::EditorHelpScreen ()
   : font (PingusResource::load_font("Fonts/pingus_small", "fonts")),
     large_font (PingusResource::load_font("Fonts/pingus", "fonts"))
 {
-  
+
 }
 
 void
@@ -77,7 +77,7 @@ EditorHelpScreen::draw ()
   font->print_left (x_pos, y_pos + 340, _("Ctrl PageDown - decrease objects z-pos by 1"));
   //font->print_left (x_pos, y_pos + 320, _(""));
   //font->print_left (x_pos, y_pos + 340, _(""));
-  
+
   x_pos = 64;
   y_pos = 500;
   font->print_left (x_pos, y_pos + 0, _("Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.xml"));

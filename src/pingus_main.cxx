@@ -1,14 +1,14 @@
-//   $Id: pingus_main.cxx,v 1.86 2003/04/16 18:02:27 torangan Exp $
+//   $Id: pingus_main.cxx,v 1.87 2003/04/19 10:23:17 torangan Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
-//   |   /_  _ _  ___  _   _  ___ 
+//   |   /_  _ _  ___  _   _  ___
 //   |  || || \ || _ || |_| ||_ -'
 //   |__||_||_\_||_  ||_____||___|
 //                _| |
 //               |___|
 //
 //   Copyright (C) 1998 Ingo Ruhnke <grumbel@gmx.de>
-//     
+//
 //   This program is free software; you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
 //   the Free Software Foundation; either version 2 of the License, or
@@ -134,7 +134,7 @@ PingusMain::~PingusMain()
 {
 }
 
-char* 
+char*
 PingusMain::get_title()
 {
 #ifdef OFFICIAL_PINGUS_BUILD
@@ -165,8 +165,8 @@ PingusMain::read_rc_file (void)
 }
 
 // Checking for all options, which needs to be known *before* the
-// config file is read. 
-void 
+// config file is read.
+void
 PingusMain::quick_check_args(int argc, char** argv)
 {
   no_config_file = false;
@@ -181,13 +181,13 @@ PingusMain::quick_check_args(int argc, char** argv)
 
 // check_ars() checks the command line for options and set the
 // corresponding global variables to the set values.
-void 
+void
 PingusMain::check_args(int argc, char** argv)
 {
 #ifdef WIN32
   cursor_enabled = true;
 #endif
-  int c = 0; 
+  int c = 0;
   int option_index = 0;
   optind = 0;
 
@@ -232,11 +232,11 @@ PingusMain::check_args(int argc, char** argv)
       // FIXME: is the number stuff correct?
       {"fast",            no_argument,       0, 132},
       {"fast-mode",       no_argument,       0, 132},
-      {"disable-previews",no_argument,       0, 133}, 
+      {"disable-previews",no_argument,       0, 133},
       {"maintainer-mode", no_argument,       0, 134},
       {"disable-auto-scrolling",   no_argument,       0, 137},
 
-      // 
+      //
       {"no-cfg-file",    no_argument,       0, 142},
       {"tile-size",      required_argument, 0, 144},
       {"config-file",    required_argument, 0, 147},
@@ -246,7 +246,7 @@ PingusMain::check_args(int argc, char** argv)
 
   while(true) {
     c = getopt_long(argc, argv, "r:p:smv:d:l:hVp:bxS:g:it:cqefFG", long_options, &option_index);
-    
+
     if (c == -1 || c == 1)
       break;
 
@@ -297,7 +297,7 @@ PingusMain::check_args(int argc, char** argv)
         char c;
         if (sscanf(optarg, "%d%c%d", &screen_width, &c, &screen_height) != 3 && c != 'x')
           {
-            std::cout << "Resolution std::string is wrong, it should be like: \n" 
+            std::cout << "Resolution std::string is wrong, it should be like: \n"
                       << "\"640x480\" or \"800x600\"" << std::endl;
             exit(EXIT_FAILURE);
           }
@@ -310,17 +310,17 @@ PingusMain::check_args(int argc, char** argv)
     case 'S':
       std::cout << "not impl. XALA" << std::endl;
       //pingus_soundfile = optarg;
-      //if (verbose) 
+      //if (verbose)
       //std::cout << "check_args: Sound File = " << pingus_soundfile << std::endl;
       break;
     case 'm': // -m, --disable-music
       music_enabled = false;
       break;
     case 'd': // -d, --datadir
-      if (optarg) 
+      if (optarg)
 	{
 	  path_manager.add_path(optarg);
-	 
+
 	  if (verbose)
 	    std::cout << "check_args: Pingus Data Dir = "
 		      << optarg << std::endl;
@@ -331,12 +331,12 @@ PingusMain::check_args(int argc, char** argv)
 	}
       break;
     case 'V':
-      std::cout << "Pingus Version " << VERSION 
+      std::cout << "Pingus Version " << VERSION
 #ifndef OFFICIAL_PINGUS_BUILD
                 << " (unofficial build)"
 #endif
 		<< std::endl;
-      
+
       std::cout << "\n"
         "Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n"
         "There is NO warranty.  You may redistribute this software\n"
@@ -362,7 +362,7 @@ PingusMain::check_args(int argc, char** argv)
     case 'f': // --fullscreen
       fullscreen_enabled = true;
       break;
-      
+
     case 'w': // --window
       fullscreen_enabled = false;
       break;
@@ -374,7 +374,7 @@ PingusMain::check_args(int argc, char** argv)
     case 134: // --maintainer_mode
       std::cout << "---------------------------------" << std::endl
 		<< "--- Maintainer Mode activated ---" << std::endl
-		<< "---------------------------------" << std::endl; 
+		<< "---------------------------------" << std::endl;
       maintainer_mode = true;
       break;
 
@@ -388,7 +388,7 @@ PingusMain::check_args(int argc, char** argv)
     case 144:
       sscanf(optarg, "%d", &tile_size);
       break;
-   
+
     case 145:
       swcursor_enabled = false;
       break;
@@ -400,7 +400,7 @@ PingusMain::check_args(int argc, char** argv)
     case 147:
       config_file = optarg;
       break;
-      
+
     case 152:
       if (strcmp (optarg, "all") == 0)
 	{
@@ -486,7 +486,7 @@ PingusMain::check_args(int argc, char** argv)
     default:
       if (verbose) std::cout << _("Unknow char: ") << c << std::endl << std::endl;
       std::cout << _("Usage: ") << argv[0] << _(" [OPTIONS]... [LEVELFILE]") << std::endl;
-      std::cout 
+      std::cout
         << "\n"
         << _("Options:")
         << "\n   -g, --geometry {width}x{height}"
@@ -549,7 +549,7 @@ PingusMain::check_args(int argc, char** argv)
   }
 
   // Treating non option arguments
-  for(int i = optind; i < argc; ++i) 
+  for(int i = optind; i < argc; ++i)
     {
       if (levelfile.empty()) {
 	levelfile = argv[i];
@@ -592,7 +592,7 @@ PingusMain::init_path_finder()
   path_manager.add_path("share/pingus/");  // started from base directory of the binary
   path_manager.add_path("../share/pingus/");  // started from base directory of the binary
   path_manager.add_path(PINGUS_DATADIR); // started from $PATH
-  
+
   // somebody created a symlink in /usr/bin/ or so to the real binary elsewhere
   if (System::is_symlink(executable_name))
     {
@@ -665,7 +665,7 @@ PingusMain::init_path_finder()
   path_manager.set_path("data");
   path_manager.set_path(".");
 #endif /* !WIN32 */
- 
+
 #ifdef HAVE_GETTEXT
   if (maintainer_mode)
     std::cout << "Setting gettext path to: " << path_manager.get_base_path () + "/../../locale" << std::endl;
@@ -690,7 +690,7 @@ PingusMain::init_path_finder()
   // setlocate(LC_CTYPE,"") causes all sorts of throuble
   bind_textdomain_codeset(PACKAGE, "ISO-8859-1");
 
-#endif 
+#endif
   if (maintainer_mode)
     std::cout << "BasePath: " << path_manager.get_base_path () << std::endl;
 }
@@ -707,7 +707,7 @@ PingusMain::print_greeting_message()
   for (unsigned int i = 0; i < greeting.length(); ++i)
     std::cout.put('=');
   std::cout << std::endl;
-  
+
 #ifdef HAVE_LIBCLANVORBIS
   std::cout << _("clanVorbis support:           ok") << std::endl;
 #else
@@ -758,7 +758,7 @@ PingusMain::start_game ()
   // Register the global event catcher
   on_button_press_slot = CL_Input::sig_button_press ().connect (&global_event, &GlobalEvent::on_button_press);
   on_button_release_slot = CL_Input::sig_button_release ().connect (&global_event, &GlobalEvent::on_button_release);
-      
+
   // Set the root screen
   if (show_input_debug_screen) // show a debug screen
     {
@@ -786,12 +786,12 @@ PingusMain::start_game ()
 
       if (successfull)
         {
-          if (start_editor) 
+          if (start_editor)
             {
               Editor::instance ()->load_level (levelfile);
               levelfile = "";
               ScreenManager::instance()->push_screen(Editor::instance (), false);
-            } 
+            }
           else
             {
               /*ScreenManager::instance()->push_screen
@@ -800,10 +800,10 @@ PingusMain::start_game ()
                 (new StartScreen(PLFResMgr::load_plf_from_filename(levelfile)),
                  true);
             }
-        }    
+        }
     }
   else if (start_editor) // Start an empty editor workspace
-    { 
+    {
       ScreenManager::instance()->push_screen(Editor::instance (), false);
     }
   else if (!demo_file.empty()) // start a demo
@@ -827,7 +827,7 @@ PingusMain::start_game ()
   ScreenManager::instance ()->display ();
   if (maintainer_mode)
     std::cout << "PingusMain::quit game and screen_manager" << std::endl;
-  
+
   // unregister the global event catcher
   CL_Input::sig_button_press ().disconnect (on_button_press_slot);
   CL_Input::sig_button_release ().disconnect(on_button_release_slot);
@@ -837,7 +837,7 @@ int
 PingusMain::main(int argc, char** argv)
 {
   executable_name = argv[0];
-  
+
   // Register the segfault_handler
 #ifndef WIN32
   signal(SIGSEGV, signal_handler);
@@ -856,7 +856,7 @@ PingusMain::main(int argc, char** argv)
   perr.add (std::cout);
   perr.add (console);
 
-  try 
+  try
     {
       quick_check_args(argc, argv);
       read_rc_file();
@@ -867,22 +867,22 @@ PingusMain::main(int argc, char** argv)
       print_greeting_message();
 
       init_clanlib();
-      init_pingus();	
+      init_pingus();
 
       // Avoid uglyness on window opening
       CL_Display::clear_display();
       CL_Display::flip_display();
 
       start_game();
-    
+
       deinit_pingus();
       deinit_clanlib();
     }
-  
+
   catch (const CL_Error& err) {
     std::cout << _("Error caught from ClanLib: ") << err.message << std::endl;
   }
-  
+
   catch (const PingusError& err) {
     std::cout << _("Error caught from Pingus: ") << err.get_message () << std::endl;
   }
@@ -922,19 +922,19 @@ PingusMain::init_clanlib()
 
   on_exit_press_slot = CL_System::sig_quit().connect(this, &PingusMain::on_exit_press);
 
-  if (verbose) 
+  if (verbose)
     {
-      std::cout << "Using resolution: " 
+      std::cout << "Using resolution: "
 		<< screen_width << "x" << screen_height << std::endl;
     }
 
   // Initing the display
-  CL_Display::set_videomode(screen_width, screen_height, 16, 
-			    fullscreen_enabled, 
+  CL_Display::set_videomode(screen_width, screen_height, 16,
+			    fullscreen_enabled,
 			    false); // allow resize
   CL_Display::clear_display();
   CL_Display::flip_display();
-  
+
 #ifdef HAVE_LIBCLANGL
   if (use_opengl)
     {
@@ -957,7 +957,7 @@ PingusMain::deinit_clanlib()
   CL_SetupDisplay::deinit();
 #ifdef HAVE_LIBCLANGL
   if (use_opengl)
-    CL_SetupGL::deinit(); 
+    CL_SetupGL::deinit();
 #endif
   CL_SetupGUI::deinit ();
   CL_SetupPNG::deinit();
@@ -970,7 +970,7 @@ PingusMain::init_pingus()
 {
   SavegameManager::instance();
   StatManager::init();
- 
+
   Fonts::init();
   Story::init();
   ScreenManager::init();
@@ -978,7 +978,7 @@ PingusMain::init_pingus()
   PingusResource::init();
   XMLhelper::init();
   PinguActionFactory::init();
-  Editor::init(); 
+  Editor::init();
   Credits::init();
 
   fps_counter.init();
@@ -1000,6 +1000,6 @@ PingusMain::deinit_pingus()
   PingusSound::deinit();
   ScreenManager::deinit();
   StatManager::deinit();
-}  
+}
 
 /* EOF */

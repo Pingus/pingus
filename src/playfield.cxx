@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.34 2003/04/15 23:12:29 grumbel Exp $
+//  $Id: playfield.cxx,v 1.35 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,9 +47,9 @@ Playfield::Playfield (Client* client_)
     y1 = (CL_Display::get_height() - world->get_height()) / 2;
     y2 = y1 + world->get_height() - 1;
 
-    if (x1 < 0)  
+    if (x1 < 0)
       x1 = 0;
-    if (x2 >= CL_Display::get_width()) 
+    if (x2 >= CL_Display::get_width())
       x2 = CL_Display::get_width() - 1;
     if (y1 < 0)
       y1 = 0;
@@ -69,10 +69,10 @@ Playfield::Playfield (Client* client_)
       }
 
     view.push_back(new View(client, x1, y1, x2, y2));
-	
+
     view[0]->set_x_offset(((x2 - x1) / 2) - world->get_start_x());
     view[0]->set_y_offset(((y2 - y1) / 2) - world->get_start_y());
-	
+
     world->set_view (view[0]);
   }
 }
@@ -81,7 +81,7 @@ Playfield::~Playfield()
 {
   if (verbose)
     std::cout << "Playfield going down" << std::endl;
-    
+
   for (std::vector<View*>::iterator it = view.begin(); it != view.end(); ++it) {
     delete *it;
   }
@@ -89,9 +89,9 @@ Playfield::~Playfield()
 
 void
 Playfield::draw (GraphicContext& gc)
-{ 
+{
   for(std::vector<View*>::iterator i = view.begin();
-      i != view.end(); 
+      i != view.end();
       ++i)
     {
       (*i)->draw();
@@ -142,22 +142,22 @@ Playfield::current_pingu_find (int x_pos, int y_pos)
   double dist;
   Pingu* c_pingu = 0;
 
-  for (PinguIter pingu = world->get_pingus()->begin(); 
+  for (PinguIter pingu = world->get_pingus()->begin();
        pingu != world->get_pingus()->end();
        ++pingu)
     {
       if ((*pingu)->is_over(x_pos, y_pos))
 	{
 	  dist = (*pingu)->dist(x_pos, y_pos);
-	    
-	  if (dist < min_dist) 
+
+	  if (dist < min_dist)
 	    {
 	      min_dist = dist;
 	      c_pingu = *pingu;
 	    }
 	}
     }
-  return c_pingu; 
+  return c_pingu;
 }
 
 void
@@ -174,10 +174,10 @@ Playfield::update(float delta)
       view[i]->update (delta);
 
       if (view[i]->is_current() && !mouse_scrolling)
-	{ 
+	{
 	  current_view = i;
 	  current_pingu = current_pingu_find(mouse_x - view[i]->get_x_pos() - (view[i]->get_x_offset()),
-					     mouse_y - view[i]->get_y_pos() - (view[i]->get_y_offset())); 
+					     mouse_y - view[i]->get_y_pos() - (view[i]->get_y_offset()));
 	  view[i]->set_pingu(current_pingu);
 	  break;
 	}
@@ -195,27 +195,27 @@ Playfield::update(float delta)
       // FIXME: This should be delta dependant
       scroll_speed = 30;
 
-      if (mouse_x < 2) 
+      if (mouse_x < 2)
 	{
 	  view[current_view]->set_x_offset(view[current_view]->get_x_offset() + scroll_speed);
-	} 
-      else if (mouse_x > CL_Display::get_width() - 3) 
+	}
+      else if (mouse_x > CL_Display::get_width() - 3)
 	{
 	  view[current_view]->set_x_offset(view[current_view]->get_x_offset() - scroll_speed);
 	}
-  
-      if (mouse_y < 2) 
+
+      if (mouse_y < 2)
 	{
 	  view[current_view]->set_y_offset(view[current_view]->get_y_offset() + scroll_speed);
 	}
-      else if (mouse_y > CL_Display::get_height() - 3) 
+      else if (mouse_y > CL_Display::get_height() - 3)
 	{
 	  view[current_view]->set_y_offset(view[current_view]->get_y_offset() - scroll_speed);
 	}
     }
 }
 
-void 
+void
 Playfield::on_primary_button_press(int x, int y)
 {
   UNUSED_ARG(x);
@@ -254,7 +254,7 @@ Playfield::on_pointer_move (int x, int y)
   for(unsigned int i=0; i < view.size(); ++i)
     {
       view[i]->on_pointer_move (x, y);
-    }  
+    }
 }
 
 void
@@ -278,7 +278,7 @@ Playfield::get_x_offset()
 int
 Playfield::get_y_offset()
 {
-  return view[0]->get_y_offset();  
+  return view[0]->get_y_offset();
 }
 
 void
@@ -288,7 +288,7 @@ Playfield::set_viewpoint(int x, int y)
   view[0]->set_y_offset((CL_Display::get_height() / 2) - y);
 }
 
-void 
+void
 Playfield::generate_clipping_rects(int x1, int y1, int x2, int y2)
 {
   clipping_rectangles.push_back(CL_Rect(0, 0, CL_Display::get_width() - 1, y1));
@@ -297,7 +297,7 @@ Playfield::generate_clipping_rects(int x1, int y1, int x2, int y2)
   clipping_rectangles.push_back(CL_Rect(0, y2+1, CL_Display::get_width() - 1, CL_Display::get_height() - 1));
 }
 
-void 
+void
 Playfield::scroll (int x, int y)
 {
   view[current_view]->shift_x_offset(x);

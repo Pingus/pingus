@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.31 2003/04/19 08:15:03 torangan Exp $
+//  $Id: credits.cxx,v 1.32 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,7 +77,7 @@ Credits::Credits()
   credits.push_back("n");
 
   credits.push_back(_("-Music"));
-  credits.push_back("_H. Matthew Smith"); 
+  credits.push_back("_H. Matthew Smith");
   credits.push_back("_Joseph Toscano");
   credits.push_back("_Yuri Sucupira");
   credits.push_back("n");
@@ -153,7 +153,7 @@ Credits::Credits()
   credits.push_back(_("_Thank you for"));
   credits.push_back(_("_playing!"));
 
-  end_offset = -CL_Display::get_height()/2 - 50; // screen height + grace time 
+  end_offset = -CL_Display::get_height()/2 - 50; // screen height + grace time
   for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); ++i)
     {
       switch ((*i)[0])
@@ -179,7 +179,7 @@ Credits::~Credits ()
 {
 }
 
-void 
+void
 Credits::update (float delta)
 {
   if (offset < end_offset)
@@ -195,7 +195,7 @@ Credits::update (float delta)
     }
 }
 
-void 
+void
 Credits::draw_background (GraphicContext& gc)
 {
   int x;
@@ -208,7 +208,7 @@ Credits::draw_background (GraphicContext& gc)
   gc.draw(background,
           gc.get_width()/2 - background.get_width()/2,
           gc.get_height()/2 - background.get_height()/2);
-  
+
   gc.draw(pingu, (gc.get_width() / 2) - (pingu.get_width() / 2),
           (gc.get_height() / 2) - (pingu.get_height() / 2) - 20);
 
@@ -263,7 +263,7 @@ Credits::init()
   instance_ = 0;
 }
 
-void 
+void
 Credits::deinit()
 {
   delete instance_;

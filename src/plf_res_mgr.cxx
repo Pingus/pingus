@@ -1,4 +1,4 @@
-//  $Id: plf_res_mgr.cxx,v 1.4 2003/03/30 22:09:33 grumbel Exp $
+//  $Id: plf_res_mgr.cxx,v 1.5 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,21 +26,21 @@
 
 PLFResMgr::PLFMap PLFResMgr::plf_map;
 
-PLFHandle 
+PLFHandle
 PLFResMgr::load_plf_raw(const std::string& res_name,
                         const std::string& filename)
 {
   //std::cout << "PLFResMgr: " << res_name << "\n   " << filename << std::endl;
 
   PLFMap::iterator i = plf_map.find(res_name);
-  
+
   if (i == plf_map.end())
     { // Entry not cached, so load it and add it to cache
       pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: Loading level from DISK: '" << res_name << "' -> '" << filename << "'" << std::endl;
 
       PLF* plf = PLF::create(filename);
-  
-      PLFEntry entry; 
+
+      PLFEntry entry;
 
       entry.plf   = plf;
       entry.mtime = System::get_mtime(filename);
@@ -62,8 +62,8 @@ PLFResMgr::load_plf_raw(const std::string& res_name,
 
           // Reload the file since it has changed on disk
           PLF* plf = PLF::create(filename);
-  
-          PLFEntry entry; 
+
+          PLFEntry entry;
 
           entry.plf   = plf;
           entry.mtime = System::get_mtime(filename);
@@ -77,7 +77,7 @@ PLFResMgr::load_plf_raw(const std::string& res_name,
       else
         { // File in cache is up to date, everything is already, return it
           pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: Loading level from CACHE: '" << res_name << "' -> '" << filename << "'" << std::endl;
-  
+
           return i->second.plf;
         }
     }
@@ -86,11 +86,11 @@ PLFResMgr::load_plf_raw(const std::string& res_name,
 PLFHandle
 PLFResMgr::load_plf_from_filename(const std::string& filename)
 {
-  std::string res_name = System::basename(filename); 
+  std::string res_name = System::basename(filename);
 
   // This should give us the tutorial/, wip/, etc. part of the res_name
-  std::string dirname  = System::basename(System::dirname(filename)); 
-  
+  std::string dirname  = System::basename(System::dirname(filename));
+
   return load_plf_raw(dirname + "/" + res_name.substr(0, res_name.length()-4),
                       filename);
 }
@@ -98,7 +98,7 @@ PLFResMgr::load_plf_from_filename(const std::string& filename)
 PLFHandle
 PLFResMgr::load_plf(const std::string& res_name)
 {
-  return load_plf_raw(res_name, 
+  return load_plf_raw(res_name,
                       path_manager.complete("levels/" + res_name + ".xml"));
 }
 

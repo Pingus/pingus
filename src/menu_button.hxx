@@ -1,4 +1,4 @@
-//  $Id: menu_button.hxx,v 1.2 2003/04/12 13:18:43 grumbel Exp $
+//  $Id: menu_button.hxx,v 1.3 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ protected:
   CL_Surface surface_p;
   CL_Font*    font;
   CL_Font*    font_large;
-  
+
   int x_pos;
   int y_pos;
 
@@ -49,7 +49,7 @@ protected:
 public:
   SurfaceButton();
   virtual ~SurfaceButton();
-  
+
   void draw(GraphicContext& gc);
   void update (float delta);
 
@@ -59,11 +59,11 @@ public:
   void on_pointer_leave ();
   void on_pointer_press ();
   void on_pointer_release ();
-  
+
   void on_primary_button_click (int x, int y) { on_click (); UNUSED_ARG(x); UNUSED_ARG(y); }
 
   virtual void on_click () =0;
-  
+
 private:
   SurfaceButton (const SurfaceButton&);
   SurfaceButton& operator= (const SurfaceButton&);
@@ -77,7 +77,7 @@ public:
   CreditButton(PingusMenu* menu);
   virtual ~CreditButton();
   void on_click();
-  
+
 private:
   CreditButton (const CreditButton&);
   CreditButton& operator= (const CreditButton&);
@@ -91,7 +91,7 @@ public:
   OptionsButton(PingusMenu* menu);
   virtual ~OptionsButton();
   void on_click();
-  
+
 private:
   OptionsButton (const OptionsButton&);
   OptionsButton& operator= (const OptionsButton&);
@@ -105,7 +105,7 @@ public:
   QuitButton(PingusMenu*);
   virtual ~QuitButton();
   void on_click();
-  
+
 private:
   QuitButton (const QuitButton&);
   QuitButton& operator= (const QuitButton&);
@@ -117,7 +117,7 @@ public:
   LoadButton();
   virtual ~LoadButton();
   void on_click();
-  
+
 private:
   LoadButton (const LoadButton&);
   LoadButton& operator= (const LoadButton&);
@@ -134,7 +134,7 @@ public:
 
   void on_click();
   void load_level(const std::string& str);
-  
+
 private:
   EditorButton (const EditorButton&);
   EditorButton& operator= (const EditorButton&);
@@ -148,7 +148,7 @@ public:
   StoryButton(PingusMenu* menu);
   ~StoryButton();
   void on_click();
-  
+
 private:
   StoryButton (const StoryButton&);
   StoryButton& operator= (const StoryButton&);
@@ -161,7 +161,7 @@ private:
 public:
   ThemeButton(PingusMenu* menu);
   void on_click();
-  
+
 private:
   ThemeButton (const ThemeButton&);
   ThemeButton& operator= (const ThemeButton&);
@@ -177,12 +177,12 @@ public:
   MultiplayerButton(PingusMenu* menu);
   virtual ~MultiplayerButton();
   void on_click();
-  
+
 private:
   MultiplayerButton (const MultiplayerButton&);
   MultiplayerButton& operator= (const MultiplayerButton&);
 };
-#endif 
+#endif
 
 #endif
 

@@ -1,5 +1,5 @@
-//  $Id: usb_mouse_controller.hxx,v 1.6 2002/09/28 11:52:22 torangan Exp $
-// 
+//  $Id: usb_mouse_controller.hxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -35,7 +35,7 @@
 
 class USBMouseData
 {
-public: 
+public:
   USBMouseData () {
     button1 = button2 = button3 = button4 = button5 = false;
     x = 0;
@@ -66,7 +66,7 @@ public:
 
   int get_x ();
   int get_y ();
-  
+
   Vector get_pos ();
 
   void keep_alive ();

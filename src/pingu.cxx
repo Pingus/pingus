@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.41 2003/04/15 19:06:50 grumbel Exp $
+//  $Id: pingu.cxx,v 1.42 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,14 +77,14 @@ void
 Pingu::set_x (float x)
 {
   //std::cout << "Pingu::set_x (" << x << ")" << std::endl;
-  pos_x = x; 
+  pos_x = x;
 }
-  
+
 void
 Pingu::set_y (float y)
-{ 
+{
   //std::cout << "Pingu::set_y (" << y << ")" << std::endl;
-  pos_y = y; 
+  pos_y = y;
 }
 
 void
@@ -123,16 +123,16 @@ Pingu::request_set_action (PinguAction* act)
       ret_val =  false;
     }
   else
-    {    
+    {
       switch (act->get_activation_mode()) {
-  
+
       case INSTANT:
-  
-	if (act->get_type() == action->get_type()) 
+
+	if (act->get_type() == action->get_type())
 	  {
 	    pout(PINGUS_DEBUG_ACTIONS) << "Pingu: Already have action" << std::endl;
 	    ret_val = false;
-	  } 
+	  }
 	else if (action->change_allowed(act->get_type()))
 	  {
 	    pout(PINGUS_DEBUG_ACTIONS) << "setting instant action" << std::endl;
@@ -145,9 +145,9 @@ Pingu::request_set_action (PinguAction* act)
 	    ret_val = false;
 	  }
 	break;
-                
+
       case WALL_TRIGGERED:
-    
+
 	if (wall_action && wall_action->get_type() == act->get_type())
 	  {
 	    pout(PINGUS_DEBUG_ACTIONS) << "Not using wall action, we have already" << std::endl;
@@ -160,9 +160,9 @@ Pingu::request_set_action (PinguAction* act)
 	    ret_val = true;
 	  }
 	break;
-    
+
       case FALL_TRIGGERED:
-  
+
 	if (fall_action && fall_action->get_type() == act->get_type())
 	  {
 	    pout(PINGUS_DEBUG_ACTIONS) << "Not using fall action, we have already" << std::endl;
@@ -177,23 +177,23 @@ Pingu::request_set_action (PinguAction* act)
 	break;
 
       case COUNTDOWN_TRIGGERED:
-  
+
 	if (countdown_action && countdown_action->get_type() == act->get_type())
 	  {
 	    pout(PINGUS_DEBUG_ACTIONS) << "Not using countdown action, we have already" << std::endl;
 	    ret_val = false;
 	    break;
 	  }
-      
+
 	pout(PINGUS_DEBUG_ACTIONS) << "Setting countdown action" << std::endl;
 	// We set the action and start the countdown
 	action_time = act->activation_time();
 	countdown_action = act;
 	ret_val = true;
 	break;
-	  
+
       default:
-	pout(PINGUS_DEBUG_ACTIONS) << "unknown action activation_mode" << std::endl;     
+	pout(PINGUS_DEBUG_ACTIONS) << "unknown action activation_mode" << std::endl;
 	ret_val = false;
 	assert(0);
 	break;
@@ -208,25 +208,25 @@ Pingu::request_set_action (PinguAction* act)
     {
       act->on_failed_apply(this);
     }
-    
+
   return ret_val;
 }
 
-bool 
+bool
 Pingu::request_set_action (ActionName action_name)
 {
   return request_set_action (PinguActionFactory::instance ()->create (this, action_name));
 }
 
 void
-Pingu::set_action (ActionName action_name) 
+Pingu::set_action (ActionName action_name)
 {
   set_action(PinguActionFactory::instance()->create(this, action_name));
 }
 
 // Sets an action without any checking
 void
-Pingu::set_action (PinguAction* act) 
+Pingu::set_action (PinguAction* act)
 {
   assert(act);
 
@@ -243,7 +243,7 @@ Pingu::request_fall_action ()
       set_action(fall_action);
       return true;
     }
-    
+
   return false;
 }
 
@@ -287,7 +287,7 @@ Pingu::is_inside (int x1, int y1, int x2, int y2)
   assert (x1 < x2);
   assert (y1 < y2);
 
-  return (pos_x > x1 && pos_x < x2 
+  return (pos_x > x1 && pos_x < x2
 	  &&
 	  pos_y > y1 && pos_y < y2);
 }
@@ -297,7 +297,7 @@ double
 Pingu::dist (int x, int y)
 {
   Vector p = get_center_pos ();
-  
+
   return sqrt(((p.x - x) * (p.x - x) + (p.y - y) * (p.y - y)));
 }
 
@@ -311,7 +311,7 @@ Pingu::update ()
   // FIXME: Out of screen check is ugly
   /** The Pingu has hit the edge of the screen, a good time to let him
       die. */
-  if (rel_getpixel(0, -1) == Groundtype::GP_OUTOFSCREEN) 
+  if (rel_getpixel(0, -1) == Groundtype::GP_OUTOFSCREEN)
     {
       PingusSound::play_sound("die");
       status = PS_DEAD;
@@ -319,18 +319,18 @@ Pingu::update ()
     }
 
   // if an countdown action is set, update the countdown time
-  if (action_time > -1) 
+  if (action_time > -1)
     --action_time;
 
-  if (action_time == 0 && countdown_action) 
+  if (action_time == 0 && countdown_action)
     {
       set_action(countdown_action);
-      // Reset the countdown action handlers 
+      // Reset the countdown action handlers
       countdown_action = 0;
       action_time = -1;
       return;
     }
-  
+
   action->update();
 }
 
@@ -341,16 +341,16 @@ Pingu::draw (GraphicContext& gc)
   char str[16];
 
   action->draw (gc);
-  
-  if (action_time != -1) 
+
+  if (action_time != -1)
     {
       // FIXME: some people preffer a 5-0 or a 9-0 countdown, not sure
       // FIXME: about that got used to the 50-0 countdown [counting is
       // FIXME: in ticks, should probally be in seconds]
       snprintf(str, 16, "%d", action_time/3);
-      
-      gc.print_center(Fonts::lcd, 
-		      static_cast<int>(pos_x), static_cast<int>(pos_y - 45) + 2, 
+
+      gc.print_center(Fonts::lcd,
+		      static_cast<int>(pos_x), static_cast<int>(pos_y - 45) + 2,
 		      str);
     }
 }
@@ -358,7 +358,7 @@ Pingu::draw (GraphicContext& gc)
 int
 Pingu::rel_getpixel (int x, int y)
 {
-  return WorldObj::get_world()->get_colmap()->getpixel(static_cast<int>(pos_x + (x * direction)), 
+  return WorldObj::get_world()->get_colmap()->getpixel(static_cast<int>(pos_x + (x * direction)),
                                                        static_cast<int>(pos_y - y));
 }
 
@@ -373,7 +373,7 @@ Pingu::need_catch ()
 {
   if (status == PS_DEAD || status == PS_EXITED)
     return false;
-  
+
   return action->need_catch();
 }
 
@@ -407,7 +407,7 @@ Pingu::apply_force (Vector arg_v)
   *velocity += arg_v;
   // Moving the pingu on pixel up, so that the force can take effect
   // FIXME: this should be handled by a state-machine
-  --pos_y; 
+  --pos_y;
 }
 
 Vector
@@ -419,16 +419,16 @@ Pingu::get_pos () const
 Vector
 Pingu::get_center_pos () const
 {
-  return Vector(pos_x, pos_y) + Vector (0, -16); 
+  return Vector(pos_x, pos_y) + Vector (0, -16);
 }
 
-int 
+int
 Pingu::get_owner ()
 {
   return owner_id;
 }
 
-bool 
+bool
 Pingu::catchable ()
 {
   return action->catchable ();

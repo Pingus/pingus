@@ -1,4 +1,4 @@
-//  $Id: ground_particle.cxx,v 1.3 2002/12/28 16:10:18 torangan Exp $
+//  $Id: ground_particle.cxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ GroundParticle::draw_offset (int ofx, int ofy, float s)
 
   if (s == 1.0) {
     // FIXME: This segfaults from time to time, don't know why
-    surface.put_screen(static_cast<int>(pos.x + ofx - 16), 
+    surface.put_screen(static_cast<int>(pos.x + ofx - 16),
                        static_cast<int>(pos.y + ofy - 16),
 		       3 - (livetime * 4 / time));
   } else {

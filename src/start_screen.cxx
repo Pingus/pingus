@@ -1,4 +1,4 @@
-//  $Id: start_screen.cxx,v 1.18 2003/04/16 18:02:27 torangan Exp $
+//  $Id: start_screen.cxx,v 1.19 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,12 +43,12 @@ private:
   Sprite background;
   std::string time_str;
   std::string description;
-  
+
 public:
   StartScreenComponent(PLFHandle plf);
   void draw(GraphicContext& gc);
   virtual ~StartScreenComponent() {}
-  
+
 private:
   const std::string& format_description(int length);
 };
@@ -60,7 +60,7 @@ private:
 public:
   StartScreenOkButton(StartScreen* p)
     : GUI::SurfaceButton(CL_Display::get_width()/2 + 225,
-                         CL_Display::get_height()/2 + 125, 
+                         CL_Display::get_height()/2 + 125,
                          ResDescriptor("start/ok", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("start/ok_clicked", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("start/ok_hover", "core", ResDescriptor::RD_RESOURCE)),
@@ -73,7 +73,7 @@ public:
     gc.print_center(Fonts::chalk_normal, x_pos + 32, y_pos - 17, _("Ok"));
   }
 
-  void on_click() 
+  void on_click()
   {
     PingusSound::play_sound("yipee");
     parent->start_game();
@@ -96,7 +96,7 @@ private:
 public:
   StartScreenAbortButton(StartScreen* p)
     : GUI::SurfaceButton(CL_Display::get_width()/2 - 278,
-                         CL_Display::get_height()/2 + 144, 
+                         CL_Display::get_height()/2 + 144,
                          ResDescriptor("start/back", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("start/back_clicked", "core", ResDescriptor::RD_RESOURCE),
                          ResDescriptor("start/back_hover", "core", ResDescriptor::RD_RESOURCE)),
@@ -122,7 +122,7 @@ public:
 
 StartScreen::~StartScreen()
 {
-  
+
 }
 
 StartScreenComponent::StartScreenComponent(PLFHandle p)
@@ -138,13 +138,13 @@ StartScreenComponent::draw(GraphicContext& gc)
 {
   //gc.clear(0,0,0);
   background.put_screen(CL_Display::get_width()/2,CL_Display::get_height()/2);
-  
+
   int left_x  = CL_Display::get_width()/2 - 120;
   int right_x = CL_Display::get_width()/2 + 120;
   int y = CL_Display::get_height()/2 + 10;
 
-  gc.print_center(Fonts::chalk_large, 
-                  gc.get_width()/2, 
+  gc.print_center(Fonts::chalk_large,
+                  gc.get_width()/2,
                   CL_Display::get_height()/2 - 200,
                   System::translate(plf->get_levelname()));
 
@@ -161,7 +161,7 @@ StartScreenComponent::draw(GraphicContext& gc)
 
   gc.print_left (Fonts::chalk_normal, left_x,  y += 30, _("Time: "));
   gc.print_right(Fonts::chalk_normal, right_x, y, time_str);
-  
+
   gc.print_left (Fonts::chalk_normal, left_x,  y += 30, _("Difficulty:"));
   gc.print_right(Fonts::chalk_normal, right_x, y, to_string(plf->get_difficulty()) + "/100");
 
@@ -174,7 +174,7 @@ StartScreenComponent::draw(GraphicContext& gc)
 
   if (maintainer_mode)
     gc.print_left(Fonts::chalk_small, 110, 430, _("Filename: ") + plf->get_resname());
-    
+
   CL_System::sleep(30);
 }
 
@@ -183,14 +183,14 @@ StartScreenComponent::format_description(int length)
 {
   if (description != "")
     return description;
-    
+
   description = System::translate(plf->get_description());
-  
+
   if (description == "")
     return description;
 
   description = StringFormat::break_line(description, length, Fonts::chalk_normal);
-  
+
   return description;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: info_box_obj.cxx,v 1.4 2002/09/28 11:52:25 torangan Exp $
+//  $Id: info_box_obj.cxx,v 1.5 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ InfoBoxObj::duplicate ()
   return new InfoBoxObj(*data);
 }
 
-std::string 
+std::string
 InfoBoxObj::status_line ()
 {
   return "InfoBoxObj";

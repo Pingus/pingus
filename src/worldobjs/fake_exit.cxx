@@ -1,4 +1,4 @@
-//  $Id: fake_exit.cxx,v 1.13 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: fake_exit.cxx,v 1.14 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,7 @@
 
 namespace WorldObjs {
 
-FakeExit::FakeExit (const WorldObjsData::FakeExitData& data_) 
+FakeExit::FakeExit (const WorldObjsData::FakeExitData& data_)
   : data (new WorldObjsData::FakeExitData(data_)),
     smashing(false),
     smallmap_symbol("misc/smallmap_exit", "core")
@@ -53,7 +53,7 @@ FakeExit::get_z_pos () const
   return data->pos.z;
 }
 
-void 
+void
 FakeExit::draw (GraphicContext& gc)
 {
   gc.draw (data->surface, data->pos, data->counter.value());
@@ -80,13 +80,13 @@ FakeExit::catch_pingu (Pingu* pingu)
   }
 
   if (   pingu->get_x() > data->pos.x + 31 && pingu->get_x() < data->pos.x + 31 + 15
-      && pingu->get_y() > data->pos.y + 56 && pingu->get_y() < data->pos.y + 56 + 56) 
+      && pingu->get_y() > data->pos.y + 56 && pingu->get_y() < data->pos.y + 56 + 56)
     {
       if (pingu->get_action() != Actions::Splashed)
 	{
 	  if (!smashing) {
 	    data->counter = 0;
-	    smashing = true; 
+	    smashing = true;
 	  }
 
 	  if (data->counter >= 3 && data->counter <= 5) {

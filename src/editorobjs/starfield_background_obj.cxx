@@ -1,4 +1,4 @@
-//  $Id: starfield_background_obj.cxx,v 1.5 2002/11/30 17:11:55 grumbel Exp $
+//  $Id: starfield_background_obj.cxx,v 1.6 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,17 +56,17 @@ StarfieldBackgroundObj::duplicate ()
 std::string
 StarfieldBackgroundObj::status_line ()
 {
-  return "StarfieldBackground: " 
+  return "StarfieldBackground: "
 	 + to_string (pos.x) + ", "
 	 + to_string (pos.y) + ", "
 	 + to_string (pos.z);
 }
 
 
-EditorNS::PropertyFrame* 
+EditorNS::PropertyFrame*
 StarfieldBackgroundObj::get_gui_dialog(Editor* editor)
 {
-  GenericPropertyFrame* propframe 
+  GenericPropertyFrame* propframe
     = new GenericPropertyFrame("StarfieldBackground", editor->get_property_window()->get_client_area());
 
   propframe->add_integer_box("Small Stars", &data->small_stars_count);

@@ -1,4 +1,4 @@
-// $Id: groundpiece_obj.hxx,v 1.4 2002/11/30 00:10:29 grumbel Exp $
+// $Id: groundpiece_obj.hxx,v 1.5 2003/04/19 10:23:18 torangan Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,7 +56,7 @@ public:
   void rotate_270 ();
 
   void write_xml (std::ostream& xml);
-  
+
   EditorObj* duplicate ();
   std::string status_line ();
 

@@ -1,4 +1,4 @@
-//  $Id: demo_recorder.cxx,v 1.17 2003/04/18 12:48:50 grumbel Exp $
+//  $Id: demo_recorder.cxx,v 1.18 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ DemoRecorder::DemoRecorder (Server* server)
       if (!out)
 	{
           record_demo = false;
-	  std::cout << "DemoRecorder: Error: Couldn't write DemoFile '" << filename 
+	  std::cout << "DemoRecorder: Error: Couldn't write DemoFile '" << filename
                     << "', demo recording will be disabled" << std::endl;
 	}
       else
@@ -86,12 +86,12 @@ DemoRecorder::record_event (const ServerEvent& event)
 {
   if (record_demo)
     {
-      event.write_xml(out);  
+      event.write_xml(out);
       //event.write_xml(std::cout);
     }
 }
 
-std::string 
+std::string
 DemoRecorder::get_date ()
 {
   char buffer[32];

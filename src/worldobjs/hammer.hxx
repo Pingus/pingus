@@ -1,4 +1,4 @@
-//  $Id: hammer.hxx,v 1.8 2002/10/01 23:40:19 grumbel Exp $
+//  $Id: hammer.hxx,v 1.9 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ class Hammer : public WorldObj
 private:
   WorldObjsData::HammerData* const data;
   Sprite sprite;
-    
+
 public:
   Hammer (const WorldObjsData::HammerData& data_);
  ~Hammer ();

@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.33 2003/03/05 22:18:51 grumbel Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.34 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,13 +58,13 @@ WorldObjDataFactory::WorldObjDataFactory ()
   // Register all WorldObjData's
 }
 
-WorldObjDataFactory* 
-WorldObjDataFactory::instance () 
-{ 
-  if ( ! instance_) 
+WorldObjDataFactory*
+WorldObjDataFactory::instance ()
+{
+  if ( ! instance_)
     {
       instance_ = new WorldObjDataFactory ();
-      
+
       // Registring Factories
       new WorldObjDataFactoryImpl<LiquidData>("liquid");
       new WorldObjDataFactoryImpl<HotspotData>("hotspot");
@@ -82,7 +82,7 @@ WorldObjDataFactory::instance ()
       new WorldObjDataFactoryImpl<SmasherData>("smasher");
       new WorldObjDataFactoryImpl<SpikeData>("spike");
 
-      // Special Objects 
+      // Special Objects
       new WorldObjDataFactoryImpl<SwitchDoorData>("switchdoor");
       new WorldObjDataFactoryImpl<InfoBoxData>("infobox");
       new WorldObjDataFactoryImpl<IceBlockData>("iceblock");
@@ -152,11 +152,11 @@ WorldObjDataFactory::create (xmlDocPtr doc, xmlNodePtr cur)
 	}
       else
 	{
-	  PingusError::raise ("WorldObjDataFactory::create: Error, no type given. - " 
+	  PingusError::raise ("WorldObjDataFactory::create: Error, no type given. - "
 			      + std::string((char*) cur->name));
 	}
     }
-    
+
   return 0; //never reached
 }
 
@@ -167,13 +167,13 @@ WorldObjDataFactory::create (const std::string& id,
   //std::cout << "WorldObjDataFactory::create (id, xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
 
   std::map<std::string, WorldObjDataAbstractFactory*>::iterator it = factories.find(id);
-  
+
   if (it == factories.end())
     PingusError::raise("WorldObjDataFactory: Invalid id: '" + id + "' at line "
 		       + to_string(XMLhelper::get_line(cur)));
-  else 
+  else
     return it->second->create (doc, cur);
-    
+
   return 0; // never reached
 }
 

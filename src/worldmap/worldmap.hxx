@@ -1,5 +1,5 @@
-//  $Id: worldmap.hxx,v 1.28 2003/04/11 13:12:54 grumbel Exp $
-// 
+//  $Id: worldmap.hxx,v 1.29 2003/04/19 10:23:19 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -65,7 +65,7 @@ private:
 
   /** The graph that represents the path on the map */
   PathGraph* path_graph;
-  
+
   /** A collection of drawable things, allocation and deallocation
       takes place elsewhere these are only references to other
       objects */
@@ -88,13 +88,13 @@ public:
 
   void draw (GraphicContext& gc);
   void update (float delta);
-  
+
   /** Enters the level on which the Pingu is currently standing */
   void enter_level();
 
   /** The the pingu to the given Node */
   void set_pingus(NodeId id);
-  
+
   /** FIXME: Memory leak?! */
   void add_drawable(Drawable* drawable);
   void remove_drawable(Drawable* drawable);
@@ -115,19 +115,19 @@ private:
 
   /** Parses a WorldMap XML file */
   void parse_file(xmlDocPtr doc, xmlNodePtr cur);
-  
-  /** Parse the object section of the Worldmap XML file, it contains 
+
+  /** Parse the object section of the Worldmap XML file, it contains
       Sprites, Backgrounds and other things */
   void parse_objects(xmlDocPtr doc, xmlNodePtr cur);
 
   /** Parse the graph section of the WorldMap XML file, it contains
       the path where the Pingu can walk on. */
   void parse_graph(xmlDocPtr doc, xmlNodePtr cur);
-  
+
   /** Parse the propertie section of a WorldMap XML file, it contains
       meta data such as the author or the name of the Worldmap */
   void parse_properties(xmlDocPtr doc, xmlNodePtr cur);
-  
+
   /** Unlock nodes according to the finished ones */
   void update_locked_nodes();
 };

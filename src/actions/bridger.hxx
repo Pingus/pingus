@@ -1,4 +1,4 @@
-//  $Id: bridger.hxx,v 1.17 2002/10/13 20:25:00 torangan Exp $
+//  $Id: bridger.hxx,v 1.18 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,21 +56,21 @@ public:
 
   std::string get_name () const;
   ActionName get_type () const { return Actions::Bridger; }
-    
+
   void   update ();
   void   update_build ();
   void   update_walk ();
-    
+
   void   draw (GraphicContext& gc);
-    
+
   bool   way_is_free ();
   bool   brick_placement_allowed (void);
   void   place_a_brick ();
   void   walk_one_step_up ();
-  
+
 private:
   Bridger (const Bridger&);
-  Bridger& operator= (const Bridger&); 
+  Bridger& operator= (const Bridger&);
 };
 
 } // namespace Actions

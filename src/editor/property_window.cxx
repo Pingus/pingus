@@ -1,4 +1,4 @@
-//  $Id: property_window.cxx,v 1.15 2003/03/28 12:06:32 grumbel Exp $
+//  $Id: property_window.cxx,v 1.16 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,11 +39,11 @@ PropertyWindow::PropertyWindow (Editor* parent)
   set_client_size (200, 50);
   show (false);
 
-  set_position(CL_Display::get_width() - get_width() - 50, 
+  set_position(CL_Display::get_width() - get_width() - 50,
                50);
 }
 
-void 
+void
 PropertyWindow::on_close_click()
 {
   show(false);
@@ -59,13 +59,13 @@ PropertyWindow::update_frame (EditorObj* obj)
       delete current_frame;
       current_frame = 0;
     }
-  
+
   if (obj && (current_frame = obj->get_gui_dialog (editor)))
     { // current object provides a GUI
       set_title(current_frame->get_title ());
       label.show (false);
       //std::cout << "Got GUI" << std::endl;
-      set_client_size (current_frame->get_width () + 1, 
+      set_client_size (current_frame->get_width () + 1,
                        current_frame->get_height () + 40);
       close_button.set_position(110, current_frame->get_height () +  10);
     }

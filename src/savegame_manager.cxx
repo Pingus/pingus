@@ -1,4 +1,4 @@
-//  $Id: savegame_manager.cxx,v 1.6 2003/04/18 12:50:24 grumbel Exp $
+//  $Id: savegame_manager.cxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,16 +30,16 @@ SavegameManager*
 SavegameManager::instance()
 {
   if (instance_)
-    return instance_; 
+    return instance_;
   else
-    return (instance_ = new SavegameManager(System::get_statdir() + "savegames/savegames.xml")); 
+    return (instance_ = new SavegameManager(System::get_statdir() + "savegames/savegames.xml"));
 }
 
 SavegameManager::SavegameManager(const std::string& arg_filename)
   : filename(arg_filename)
 {
   xmlDocPtr doc = xmlParseFile(filename.c_str());
-  
+
   if (!doc)
     {
       std::cout << "SavegameManager: Couldn't find savegame file '" << filename
@@ -53,9 +53,9 @@ SavegameManager::SavegameManager(const std::string& arg_filename)
   else
     {
       xmlNodePtr cur = doc->ROOT;
-  
+
       cur = XMLhelper::skip_blank(cur);
-  
+
       if (cur && XMLhelper::equal_str(cur->name, "pingus-savegame"))
         {
           cur = XMLhelper::skip_blank(cur);
@@ -83,15 +83,15 @@ SavegameManager::SavegameManager(const std::string& arg_filename)
                 }
               else
                 {
-                  std::cout << "SavegameManager: Unknownen tag: " << cur->name << std::endl; 
+                  std::cout << "SavegameManager: Unknownen tag: " << cur->name << std::endl;
                 }
-          
+
               cur = cur->next;
               cur = XMLhelper::skip_blank(cur);
             }
         }
 
-  
+
       xmlFreeDoc(doc);
     }
 }
@@ -132,7 +132,7 @@ SavegameManager::store(Savegame& arg_savegame)
           i->second = savegame;
         }
     }
-  
+
   flush();
 }
 
@@ -142,14 +142,14 @@ SavegameManager::flush()
   std::ofstream xml(filename.c_str());
   xml << "<?xml version=\"1.0\"  encoding=\"ISO-8859-1\"?>\n\n"
       << "<pingus-savegame>\n";
-    
+
   for(SavegameTable::iterator i = savegames.begin(); i != savegames.end(); ++i)
     {
       assert(i->second);
       i->second->write_xml(xml);
     }
 
-  xml << "</pingus-savegame>\n" 
+  xml << "</pingus-savegame>\n"
       << std::endl;
 }
 

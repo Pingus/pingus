@@ -1,4 +1,4 @@
-//  $Id: screenshot.cxx,v 1.11 2003/03/28 23:54:14 grumbel Exp $
+//  $Id: screenshot.cxx,v 1.12 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,17 +36,17 @@ Screenshot::make_screenshot()
 {
   CL_Target* target = CL_Display::get_target();
 
-  if (target) 
+  if (target)
     {
       std::string filename = get_filename();
-       
+
       std::cout << _("Screenshot: Saving screenshot to: ") << filename << std::endl;
       save_target_to_file(target, filename);
       std::cout << _("Screnshot: Screenshot is done.") << std::endl;
 
       return filename;
-    } 
-  else 
+    }
+  else
     {
       std::cout << _("Screenshot: Couldn't save screenshot") << std::endl;
       return "";
@@ -78,7 +78,7 @@ Screenshot::save_target_to_file_fast(CL_Target* target, const std::string& filen
         for (int i = 0; i < num_pixels; ++i)
           {
             unsigned int color = *((unsigned short*)(target_buffer + i*2));
-            
+
             buffer[i*3 + 0] = (color & rmask) * 255 / rmask;
             buffer[i*3 + 1] = (color & gmask) * 255 / gmask;
             buffer[i*3 + 2] = (color & bmask) * 255 / bmask;
@@ -86,7 +86,7 @@ Screenshot::save_target_to_file_fast(CL_Target* target, const std::string& filen
         break;
       }
     case 3: // 24bit
-      {			
+      {
         // that should do the trick - untested !!!
         for (int i = 0; i < num_pixels; ++i)
           {
@@ -96,7 +96,7 @@ Screenshot::save_target_to_file_fast(CL_Target* target, const std::string& filen
 #else
             unsigned int color = (*d) | (*(d+1) << 8) | (*(d+2) << 16);
 #endif
-            
+
             buffer[i*3 + 0] = (color & rmask) * 255 / rmask;
             buffer[i*3 + 1] = (color & gmask) * 255 / gmask;
             buffer[i*3 + 2] = (color & bmask) * 255 / bmask;
@@ -104,18 +104,18 @@ Screenshot::save_target_to_file_fast(CL_Target* target, const std::string& filen
         break;
       }
     case 4: // 32bit
-      {	
+      {
         for (int i = 0; i < num_pixels; ++i)
           {
             unsigned int color = *((unsigned int*)(target_buffer + i*4));
-            
+
             buffer[i*3 + 0] = (color & rmask) * 255 / rmask;
             buffer[i*3 + 1] = (color & gmask) * 255 / gmask;
             buffer[i*3 + 2] = (color & bmask) * 255 / bmask;
           }
         break;
       }
-   
+
     }
 
   target->unlock();
@@ -128,7 +128,7 @@ Screenshot::save_ppm(const std::string& filename, unsigned char* buffer, int wid
 {
   FILE* out = fopen(filename.c_str(), "wb");
 
-  if (!out) 
+  if (!out)
     {
       perror(filename.c_str());
       std::cout << _("Screenshot: Couldn't write file: ") << filename << std::endl;
@@ -145,7 +145,7 @@ Screenshot::save_ppm(const std::string& filename, unsigned char* buffer, int wid
 	  height);
 
   fwrite(buffer, sizeof(unsigned char), width * height * 3, out);
-  fclose(out); 
+  fclose(out);
 }
 
 void
@@ -153,7 +153,7 @@ Screenshot::save_target_to_file_slow(CL_Target* target, const std::string& filen
 {
   std::ofstream out(filename.c_str());
 
-  out << "P3\n" 
+  out << "P3\n"
       << "# CREATOR: Pingus... some version\n"
       << target->get_width() << " "
       << target->get_height() << "\n"
@@ -162,12 +162,12 @@ Screenshot::save_target_to_file_slow(CL_Target* target, const std::string& filen
   target->lock();
 
   float red, green, blue, alpha;
-  for (unsigned int y=0; y < target->get_height(); ++y) 
+  for (unsigned int y=0; y < target->get_height(); ++y)
     {
       for (unsigned int x=0; x < target->get_width(); ++x)
         {
           target->get_pixel(x, y, &red, &green, &blue, &alpha);
-          out << (int)(red   * 255) << " " 
+          out << (int)(red   * 255) << " "
               << (int)(green * 255) << " "
               << (int)(blue  * 255) << "\n";
         }
@@ -185,15 +185,15 @@ Screenshot::get_filename()
 
   do {
     snprintf(str, 16, "%d.ppm", i);
-    tmp_filename = System::get_statdir() + "screenshots/" 
+    tmp_filename = System::get_statdir() + "screenshots/"
       + "pingus-" + get_date() + "-" + std::string(str);
     ++i;
   } while (System::exist(tmp_filename));
-  
+
   return tmp_filename;
 }
 
-std::string 
+std::string
 Screenshot::get_date()
 {
   char buffer[64];

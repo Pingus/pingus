@@ -1,4 +1,4 @@
-//  $Id: bumper.hxx,v 1.7 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: bumper.hxx,v 1.8 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,18 +36,18 @@ private:
   WorldObjsData::BumperData* const data;
   bool upwards;
   int  count;
-    
+
 public:
   Bumper (const WorldObjsData::BumperData& data_);
   ~Bumper ();
 
   float get_z_pos () const;
-    
+
   void draw (GraphicContext& gc);
   void on_startup();
   void update ();
 
-private:    
+private:
   void catch_pingu (Pingu* pingu);
 
   Bumper (const Bumper&);

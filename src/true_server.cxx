@@ -1,4 +1,4 @@
-//  $Id: true_server.cxx,v 1.19 2003/04/07 11:58:19 grumbel Exp $
+//  $Id: true_server.cxx,v 1.20 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,7 @@ TrueServer::get_fast_forward()
   return fast_forward;
 }
 
-void 
+void
 TrueServer::set_pause(bool value)
 {
   pause = value;

@@ -1,4 +1,4 @@
-//  $Id: bridger.cxx,v 1.29 2003/03/04 13:59:44 grumbel Exp $
+//  $Id: bridger.cxx,v 1.30 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ CL_Surface Bridger::brick_l;
 CL_Surface Bridger::brick_r;
 CL_Surface Bridger::static_surface;
 
-Bridger::Bridger (Pingu* p) 
+Bridger::Bridger (Pingu* p)
   : PinguAction(p),
     mode(B_BUILDING),
     walk_sprite(Sprite("Pingus/bridger_walk" + to_string(pingu->get_owner()), "pingus", 15.0f, Sprite::NONE, Sprite::ONCE)),
@@ -65,7 +65,7 @@ Bridger::draw (GraphicContext& gc)
   if (bricks == MAX_BRICKS) {
     x_offset = -4;
     y_offset = 0;
-    
+
   } else if (bricks == MAX_BRICKS - 1) {
     x_offset = 0;
     y_offset = 1;
@@ -81,11 +81,11 @@ Bridger::draw (GraphicContext& gc)
 	build_sprite.set_direction (Sprite::LEFT);
       else
 	build_sprite.set_direction (Sprite::RIGHT);
-      
+
       gc.draw(build_sprite, Vector(pingu->get_x () - (x_offset * pingu->direction),
 				   pingu->get_y () + y_offset));
       break;
-      
+
     case B_WALKING:
       if (pingu->direction.is_left ())
 	walk_sprite.set_direction (Sprite::LEFT);
@@ -161,7 +161,7 @@ Bridger::update_build ()
 	{
 	  pingu->set_action(Actions::Waiter);
           return;
-	}     
+	}
     }
 
   if (build_sprite.finished ())
@@ -231,10 +231,10 @@ Bridger::place_a_brick()
 
   if (bricks < 4)
     PingusSound::play_sound("ting");
- 
+
   if (pingu->direction.is_right())
     {
-      WorldObj::get_world()->get_colmap()->put(brick_r, 
+      WorldObj::get_world()->get_colmap()->put(brick_r,
 					       static_cast<int>(pingu->get_x() + 10 - brick_r.get_width()),
 					       static_cast<int>(pingu->get_y()),
 					       Groundtype::GP_BRIDGE);
@@ -244,7 +244,7 @@ Bridger::place_a_brick()
     }
   else
     {
-      WorldObj::get_world()->get_colmap()->put(brick_r, 
+      WorldObj::get_world()->get_colmap()->put(brick_r,
 					       static_cast<int>(pingu->get_x() - 10),
 					       static_cast<int>(pingu->get_y()),
 					       Groundtype::GP_BRIDGE);
@@ -263,7 +263,7 @@ Bridger::walk_one_step_up()
 
 std::string
 Bridger::get_name () const
-{ 
+{
   return name;
 }
 

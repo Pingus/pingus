@@ -1,4 +1,4 @@
-//  $Id: alpha_button.cxx,v 1.2 2002/06/19 15:19:26 torangan Exp $
+//  $Id: alpha_button.cxx,v 1.3 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ AlphaButton::draw(void)
   }
 }
 
-bool 
+bool
 AlphaButton::is_pressed()
 {
   if (mouse_over() && CL_Mouse::left_pressed()) {
@@ -66,13 +66,13 @@ bool
 AlphaButton::mouse_over(void)
 {
   if (   CL_Mouse::get_x() > x1_pos
-      && CL_Mouse::get_x() < x2_pos 
+      && CL_Mouse::get_x() < x2_pos
       && CL_Mouse::get_y() > y1_pos
       && CL_Mouse::get_y() < y2_pos)
     {
       return true;
     }
-  else 
+  else
     {
       return false;
     }

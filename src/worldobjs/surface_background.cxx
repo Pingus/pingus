@@ -1,4 +1,4 @@
-//  $Id: surface_background.cxx,v 1.8 2003/04/10 18:28:30 grumbel Exp $
+//  $Id: surface_background.cxx,v 1.9 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,11 +39,11 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
 {
   Timer timer("Background creation");
 
-  if (data->color.alpha > 1.0) 
+  if (data->color.alpha > 1.0)
     std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
-  
+
   CL_Surface source_surface = PingusResource::load_surface(data->desc);
-      
+
   CL_Canvas* canvas;
 
   // Scaling Code
@@ -56,8 +56,8 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
       if (data->keep_aspect)
         {
           float aspect = source_surface.get_height()/float(source_surface.get_width());
-          canvas = Blitter::scale_surface_to_canvas(source_surface, 
-                                                    world->get_width(), 
+          canvas = Blitter::scale_surface_to_canvas(source_surface,
+                                                    world->get_width(),
                                                     int(world->get_width()*aspect));
         }
       else
@@ -89,16 +89,16 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
      FIXME: not tested with RGBA images
      FIXME: the bug might be in create_canvas() and not in fill_rect()
   */
-    
+
   if (data->color.alpha != 0.0 && data->color != Color(0, 0, 0, 1.0f))
     { // Workaround for a bug which caused all levels to have the
       // wrong background color
-      canvas->fill_rect(0, 0, 
+      canvas->fill_rect(0, 0,
                         canvas->get_width(), canvas->get_height(),
-                        data->color.red, data->color.green, data->color.blue, 
+                        data->color.red, data->color.green, data->color.blue,
                         data->color.alpha);
     }
-      
+
   bg_surface = CL_Surface(canvas, true);
 
   //bg_surface = CAImageManipulation::changeHSV(bg_surface, 150, 100, 0);
@@ -126,21 +126,21 @@ SurfaceBackground::update()
 
   scroll_ox += data->scroll_x;
   scroll_oy += data->scroll_y;
-  
-  if (scroll_ox > bg_surface.get_width()) 
+
+  if (scroll_ox > bg_surface.get_width())
     {
       scroll_ox -= bg_surface.get_width();
-    } 
-  else if (-scroll_ox > bg_surface.get_width()) 
+    }
+  else if (-scroll_ox > bg_surface.get_width())
     {
       scroll_ox += bg_surface.get_width();
     }
-  
-  if (scroll_oy > bg_surface.get_height()) 
+
+  if (scroll_oy > bg_surface.get_height())
     {
       scroll_oy -= bg_surface.get_height();
-    } 
-  else if (-scroll_oy > bg_surface.get_height()) 
+    }
+  else if (-scroll_oy > bg_surface.get_height())
     {
       scroll_oy += bg_surface.get_height();
     }
@@ -149,35 +149,35 @@ SurfaceBackground::update()
 void
 SurfaceBackground::draw (GraphicContext& gc)
 {
-  if (fast_mode) 
+  if (fast_mode)
     {
       CL_Display::clear_display();
-    } 
-  else 
+    }
+  else
     {
       int x_of = static_cast<int>(gc.get_x_offset () + (gc.get_width ()/2));
       int y_of = static_cast<int>(gc.get_y_offset () + (gc.get_height ()/2));
 
       int start_x;
       int start_y;
-      
+
       start_x = static_cast<int>((x_of * data->para_x) + scroll_ox);
       start_y = static_cast<int>((y_of * data->para_y) + scroll_oy);
-      
+
       if (start_x >= 0)
 	start_x = start_x - bg_surface.get_width();
-      
-      if (start_y >= 0) 
+
+      if (start_y >= 0)
 	start_y -= bg_surface.get_height();
       else if (start_y < 0 - static_cast<int>(bg_surface.get_height()))
 	start_y += bg_surface.get_height();
-      
-      for(int y = start_y; 
-	  y < CL_Display::get_height(); 
-	  y += bg_surface.get_height()) 
+
+      for(int y = start_y;
+	  y < CL_Display::get_height();
+	  y += bg_surface.get_height())
 	{
 	  for(int x = start_x;
-	      x < CL_Display::get_width(); 
+	      x < CL_Display::get_width();
 	      x += bg_surface.get_width())
 	    {
 	      bg_surface.put_screen(x, y, counter); // FIXME: should use gc

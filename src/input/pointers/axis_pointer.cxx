@@ -1,5 +1,5 @@
-//  $Id: axis_pointer.cxx,v 1.3 2002/10/28 22:40:23 torangan Exp $
-// 
+//  $Id: axis_pointer.cxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -25,7 +25,7 @@
 namespace Input {
 
   namespace Pointers {
-  
+
     AxisPointer::AxisPointer (float speed_, const std::vector<Axis*>& axes_) : speed(speed_), axes(axes_)
     {
       assert(axes.size() >= 2);
@@ -56,17 +56,17 @@ namespace Input {
       x_pos = new_x;
       y_pos = new_y;
     }
-  
+
     void
     AxisPointer::update (float delta)
     {
       for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
         {
           (*it)->update(delta);
-	
+
           x_pos += cos((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
           y_pos += sin((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
-        } 
+        }
     }
 
   }

@@ -1,4 +1,4 @@
-//  $Id: sprite_editorobj.cxx,v 1.9 2003/03/31 23:26:13 grumbel Exp $
+//  $Id: sprite_editorobj.cxx,v 1.10 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,24 +60,24 @@ SpriteEditorObj&
 SpriteEditorObj::operator= (const SpriteEditorObj& old)
 {
   if (this != &old)
-    {    
+    {
       RectEditorObj::operator=(old);
-  
+
       sprite  = old.sprite;
       pos_ref = old.pos_ref;
     }
-    
+
   return *this;
 }
 
 float
-SpriteEditorObj::get_z_pos() 
+SpriteEditorObj::get_z_pos()
 {
   assert (pos_ref);
   return pos_ref->z;
 }
 
-void 
+void
 SpriteEditorObj::draw(EditorNS::EditorView * view)
 {
   assert (pos_ref);
@@ -85,19 +85,19 @@ SpriteEditorObj::draw(EditorNS::EditorView * view)
 }
 
 
-void 
+void
 SpriteEditorObj::set_position_offset(const Vector& offset)
 {
   assert (pos_ref);
   *pos_ref += offset;
 }
 
-Vector 
-SpriteEditorObj::get_upper_left_corner() 
-{ 
+Vector
+SpriteEditorObj::get_upper_left_corner()
+{
   assert (pos_ref);
   Vector pos(*pos_ref);
-  return pos + Vector(sprite.get_x_align (), sprite.get_y_align ()); 
+  return pos + Vector(sprite.get_x_align (), sprite.get_y_align ());
 }
 
 bool

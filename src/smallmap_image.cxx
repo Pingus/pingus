@@ -1,4 +1,4 @@
-//  $Id: smallmap_image.cxx,v 1.9 2002/12/29 23:29:00 torangan Exp $
+//  $Id: smallmap_image.cxx,v 1.10 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,20 +26,20 @@
 SmallMapImage::SmallMapImage (Server * s, Vector arg_pos, int width, int height)
   : sur (create_surface (s, width, height)),
     pos (arg_pos)
-{  
+{
 }
 
 SmallMapImage::~SmallMapImage ()
 {
 }
 
-void 
+void
 SmallMapImage::draw ()
 {
   sur.put_screen (int(pos.x), int(pos.y));
 }
 
-void 
+void
 SmallMapImage::update (float delta)
 {
   // FIXME: Updating not implemented!
@@ -57,13 +57,13 @@ SmallMapImage::create_surface (Server * server, int width, int height)
 
   World* world = server->get_world();
 
-  ColMap* colmap = world->get_colmap(); 
+  ColMap* colmap = world->get_colmap();
   buffer = colmap->get_data();
 
   canvas = new CL_Canvas(width, height);
- 
+
   canvas->lock();
-  
+
   cbuffer = static_cast<unsigned char*>(canvas->get_data());
 
   for(int y = 0; y < height; y++)
@@ -72,9 +72,9 @@ SmallMapImage::create_surface (Server * server, int width, int height)
 	{
 	  tx = x * colmap->get_width() / width;
 	  ty = y * colmap->get_height() / height;
-	  
+
 	  current_pixel = buffer[tx + (ty * colmap->get_width())];
-	  
+
 	  if (current_pixel == Groundtype::GP_NOTHING)
 	    {
 	      cbuffer[4 * ((y * width) + x) + 0] = 150;
@@ -127,8 +127,8 @@ SmallMapImage::create_surface (Server * server, int width, int height)
   for(std::vector<ExitData>::iterator i = exit_d.begin(); i != exit_d.end(); i++)
     {
       // FIXME: Replace this with put_target() when it is bug free
-      Blitter::put_surface(canvas, exit_sur, 
-			   i->pos.x * width / colmap->get_width() - (exit_sur.get_width()/2), 
+      Blitter::put_surface(canvas, exit_sur,
+			   i->pos.x * width / colmap->get_width() - (exit_sur.get_width()/2),
 			   i->pos.y * height / colmap->get_height() - (exit_sur.get_height()));
     }
 
@@ -138,7 +138,7 @@ SmallMapImage::create_surface (Server * server, int width, int height)
       Blitter::put_surface(canvas, entrance_sur,
 			   i->pos.x * width / colmap->get_width() - (entrance_sur.get_width()/2),
 			   i->pos.y * height / colmap->get_height() - (entrance_sur.get_height()));
-      
+
 			   //entrance_sur->put_target(i->x_pos * width / colmap->get_width(),
 			   //i->y_pos * height / colmap->get_height(),
 			   //0, canvas);
@@ -146,15 +146,15 @@ SmallMapImage::create_surface (Server * server, int width, int height)
 #endif
 
   canvas->unlock();
-  
+
   return CL_Surface(canvas, true);
 }
 
-bool 
+bool
 SmallMapImage::mouse_over (int x, int y)
 {
   return (pos.x < x && pos.x + sur.get_width () > x
-	  && 
+	  &&
 	  pos.y < y && pos.y + sur.get_height () > y);
 }
 

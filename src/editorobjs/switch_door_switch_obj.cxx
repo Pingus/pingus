@@ -1,4 +1,4 @@
-//  $Id: switch_door_switch_obj.cxx,v 1.2 2002/09/28 11:52:25 torangan Exp $
+//  $Id: switch_door_switch_obj.cxx,v 1.3 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include "switch_door_obj.hxx"
 #include "../worldobjsdata/switch_door_data.hxx"
 
-namespace EditorObjs { 
+namespace EditorObjs {
 
 SwitchDoorSwitchObj::SwitchDoorSwitchObj (SwitchDoorObj* data)
                                         : SpriteEditorObj ("switchdoor_switch", "worldobjs"),
@@ -29,7 +29,7 @@ SwitchDoorSwitchObj::SwitchDoorSwitchObj (SwitchDoorObj* data)
   pos_ref = &door->data->switch_pos;
 }
 
-std::string 
+std::string
 SwitchDoorSwitchObj::status_line ()
 {
   return "--- SwitchDoorSwitchObj ---";
@@ -37,8 +37,8 @@ SwitchDoorSwitchObj::status_line ()
 
 EditorObj*
 SwitchDoorSwitchObj::duplicate ()
-{ 
-  return door->duplicate (); 
+{
+  return door->duplicate ();
 }
 
 } // namespace EditorObjs

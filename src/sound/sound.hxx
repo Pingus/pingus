@@ -1,5 +1,5 @@
-//  $Id: sound.hxx,v 1.2 2003/03/04 13:59:44 grumbel Exp $
-// 
+//  $Id: sound.hxx,v 1.3 2003/04/19 10:23:19 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -25,10 +25,10 @@
 
 class PingusSound
 {
-protected: 
+protected:
   /** FIXME: this should be SoundImpl, not PingusSound */
   static PingusSound* sound;
-  
+
 protected:
   PingusSound () { }
 
@@ -46,12 +46,12 @@ public:
       @param volume   volume
       @param panning  panning */
   static void play_sound(const std::string & name, float volume = 1.0f, float panning = 0.0f);
-  
+
   static void play_music(const std::string & name, float volume = 1.0f);
   static void stop_music();
 
   static void play_sound(Sound::Name name, float volume = 1.0f, float panning = 0.0f);
-  
+
 private:
   PingusSound (const PingusSound&);
   PingusSound& operator= (const PingusSound&);

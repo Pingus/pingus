@@ -1,4 +1,4 @@
-//  $Id: true_server.hxx,v 1.12 2003/04/05 18:36:50 grumbel Exp $
+//  $Id: true_server.hxx,v 1.13 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,15 +38,15 @@ public:
 
   void set_fast_forward(bool value);
   bool get_fast_forward();
-  
+
   void set_pause(bool);
   bool get_pause();
 
   /** set the server into the finshed state, this is used when you
       press ESCAPE inside a game */
   void set_finished();
-  
-private: 
+
+private:
   TrueServer (const TrueServer&);
   TrueServer& operator= (const TrueServer&);
 };

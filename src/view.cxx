@@ -1,4 +1,4 @@
-//  $Id: view.cxx,v 1.13 2002/09/28 11:52:22 torangan Exp $
+//  $Id: view.cxx,v 1.14 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ View::View(Client* client, int x1, int y1, int x2, int y2, float s)
   assert(world);
 
   size = s;
-  
+
   // FIXME: clip_rect = CL_ClipRect(x1, y1, x2 + 1, y2 + 1);
 
   x1_pos = x1;
@@ -42,7 +42,7 @@ View::View(Client* client, int x1, int y1, int x2, int y2, float s)
 
   x2_pos = x2;
   y2_pos = y2;
-  
+
   x_offset = 0;
   y_offset = 0;
 
@@ -57,18 +57,18 @@ void
 View::draw()
 {
   assert(world);
-  
+
   // Update the scroll position
   //display_gc.set_zoom (2.0f);
   display_gc.set_offset (x_offset - (x2_pos - x1_pos)/2,
 			 y_offset - (y2_pos - y1_pos)/2);
   world->draw (display_gc);
-  
+
   cap.set_pingu(current_pingu);
-  cap.draw_offset(get_x_pos() + get_x_offset(), 
+  cap.draw_offset(get_x_pos() + get_x_offset(),
 		  get_y_pos() + get_y_offset(),
 		  size);
-  
+
     // FIXME: CL_Display::pop_clip_rect();
 }
 
@@ -79,7 +79,7 @@ View::update (float /*delta */)
     {
       mouse_over = true;
     }
-  else 
+  else
     {
       mouse_over = false;
     }
@@ -172,13 +172,13 @@ View::get_zoom(void)
   return size;
 }
 
-void 
+void
 View::set_pingu(Pingu* p)
 {
   current_pingu = p;
 }
 
-Vector 
+Vector
 View::get_center ()
 {
   return Vector (-x_offset + get_width ()/2, -y_offset + get_height ()/2);

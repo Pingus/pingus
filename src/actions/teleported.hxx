@@ -40,7 +40,7 @@ public:
   bool catchable () { return false; }
 
   int x_target, y_target; // <- FIXME: Ugly!
-  
+
 private:
   Teleported (const Teleported&);
   Teleported& operator= (const Teleported&);

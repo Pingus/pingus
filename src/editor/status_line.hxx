@@ -1,4 +1,4 @@
-//  $Id: status_line.hxx,v 1.10 2002/09/27 11:26:45 torangan Exp $
+//  $Id: status_line.hxx,v 1.11 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,14 +36,14 @@ class StatusLine
 private:
   CL_Font* font;
   const std::vector<EditorObj*>* current_objs;
-  
+
 public:
   StatusLine();
   ~StatusLine();
-  
+
   void set_current_objs(const std::vector<EditorObj*>* c_objs);
   void draw(EditorView * view);
-  
+
 private:
   StatusLine (const StatusLine&);
   StatusLine& operator= (const StatusLine&);

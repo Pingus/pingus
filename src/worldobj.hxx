@@ -1,4 +1,4 @@
-//  $Id: worldobj.hxx,v 1.11 2002/10/10 12:25:53 grumbel Exp $
+//  $Id: worldobj.hxx,v 1.12 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ protected:
 public:
   /** Set the world pointer for all world objects */
   static void   set_world(World*);
-  
+
   /** Return the current active world */
   static World* get_world () { return world; }
 
@@ -85,7 +85,7 @@ public:
    * specifies how much time is passed since the last update
    * delta = 1.0 means that one second of realtime has passed. */
   virtual void update ();
-  
+
   virtual WorldObjData* get_data () { return 0; }
 };
 

@@ -1,5 +1,5 @@
-//  $Id: delta_manager.hxx,v 1.9 2003/04/05 18:36:50 grumbel Exp $
-// 
+//  $Id: delta_manager.hxx,v 1.10 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -42,13 +42,13 @@ public:
     set ();
     return ret;
   }
-  
-  void set () 
+
+  void set ()
   {
     last_time = CL_System::get_time ();
     absolute_time += last_time;
   }
-  
+
   float get () const
   {
     unsigned int t = CL_System::get_time ();
@@ -62,7 +62,7 @@ public:
         return (CL_System::get_time () - last_time) / 1000.0f;
       }
   }
-  
+
   /** @return time in miliseconds passed since the start of the DeltaManager */
   unsigned int get_absolute() const
   {

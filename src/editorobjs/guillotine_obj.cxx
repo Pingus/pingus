@@ -1,4 +1,4 @@
-//  $Id: guillotine_obj.cxx,v 1.9 2002/09/28 11:52:24 torangan Exp $
+//  $Id: guillotine_obj.cxx,v 1.10 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ GuillotineObj::create (const Vector& pos)
   newdata.pos = pos;
   return EditorObjLst(1, new GuillotineObj(newdata));
 }
-  
+
 EditorObj*
 GuillotineObj::duplicate ()
 {
@@ -64,14 +64,14 @@ GuillotineObj::draw (EditorNS::EditorView* view)
   view->draw(sprite, data->pos, frame);
 }
 
-std::string  
+std::string
 GuillotineObj::status_line ()
 {
   char str[64];
   snprintf (str, 64, "GuillotineObj: %4.2fx%4.2fx%4.2f", data->pos.x, data->pos.y, data->pos.z);
   return str;
 }
-  
+
 } // namespace EditorObjs
 
 /* EOF */

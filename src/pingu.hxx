@@ -1,4 +1,4 @@
-//  $Id: pingu.hxx,v 1.24 2002/11/03 13:29:09 grumbel Exp $
+//  $Id: pingu.hxx,v 1.25 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ class Pingu
 private:
   /** The primary action with is currently in use */
   PinguAction* action;
-  
+
   /** A secondary action which will turn active after a given amount of time
       The only example is currently the bomber. */
   PinguAction* countdown_action;
@@ -62,11 +62,11 @@ private:
 
   /// The stat of the pingu, these can be modified by PinguActions
   PinguStatus status;
-  
+
   float pos_x;
   float pos_y;
-  
-  Vector* const velocity; 
+
+  Vector* const velocity;
 
   bool request_set_action (PinguAction*);
   void set_action (PinguAction*);
@@ -81,10 +81,10 @@ public:
       @param pos The start position of the pingu
       @param owner The owner id of the pingu (used for multiplayer) */
   Pingu (int arg_id, const Vector& pos, int owner);
-  
+
   /** Destruct the pingu... */
   ~Pingu ();
-  
+
   /** Return the logical pingus position, this is the position which
       is used for collision detection to the ground (the pingus
       feet) */
@@ -110,7 +110,7 @@ public:
   bool is_alive (void);
 
   /// Return the status of the pingu
-  PinguStatus get_status (void) const; 
+  PinguStatus get_status (void) const;
 
   PinguStatus set_status (PinguStatus);
 
@@ -120,22 +120,22 @@ public:
   std::string get_name();
 
   /// Returns the unique id of the pingu
-  unsigned int  get_id (void); 
-    
+  unsigned int  get_id (void);
+
   /// Set the pingu to the given coordinates
   void set_pos (float x, float y);
 
   void set_x (float x);
-  
+
   void set_y (float y);
 
   /// Set the pingu to the given coordinates
   void set_pos (const Vector& arg_pos);
 
   const Vector& get_velocity () const { return *velocity; }
-  
+
   void set_velocity (const Vector& velocity_);
-      
+
   // Set the pingu in the gives direction
   void set_direction (Direction d);
 
@@ -148,19 +148,19 @@ public:
   /** Set an action without any checking, the action will take
       instantly control. */
   void set_action (Actions::ActionName action_name);
-  
+
   /// set the wall action if we have one
   bool request_wall_action ();
-  
+
   /// set the fall action if we have one
   bool request_fall_action ();
 
   PinguAction* get_wall_action () { return wall_action; }
-  
+
   PinguAction* get_fall_action () { return fall_action; }
 
-  /** Returns the `color' of the colmap in the walking direction 
-      Examples: 
+  /** Returns the `color' of the colmap in the walking direction
+      Examples:
       (0, -1) is the pixel under the pingu
       (1, 0)  is the pixel in front of the pingu
   */
@@ -173,15 +173,15 @@ public:
 
   /** Returns true if the pingu needs to catch another pingu */
   bool need_catch ();
-  
+
   void draw (GraphicContext& gc);
   void apply_force (Vector);
-  
+
   void update();
-  
+
   /** Indicate if the pingu's speed is above the deadly velocity */
   //bool is_tumbling () const;
-  
+
   float get_z_pos () const { return 0; }
 
   /** @return The owner_id of the owner, only used in multiplayer
@@ -211,7 +211,7 @@ public:
 
 private:
   Pingu (const Pingu&);
-  Pingu& operator= (const Pingu&);  
+  Pingu& operator= (const Pingu&);
 };
 
 #endif /* PINGU_HH */

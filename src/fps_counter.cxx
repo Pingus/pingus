@@ -1,4 +1,4 @@
-//  $Id: fps_counter.cxx,v 1.5 2003/02/18 18:41:58 grumbel Exp $
+//  $Id: fps_counter.cxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ FPSCounter::~FPSCounter()
 
 
 // We are not initialising the fpscounter in the constructor, 'cause
-// that doesn't work (ClanLib hasn't init the display at that point) 
+// that doesn't work (ClanLib hasn't init the display at that point)
 void
 FPSCounter::init()
 {
@@ -54,7 +54,7 @@ FPSCounter::on_event()
 
   if (odd_frame)
     {
-      font->print_right(CL_Display::get_width(), 
+      font->print_right(CL_Display::get_width(),
 			CL_Display::get_height() - (2 * font->get_height()),
 			"o");
       odd_frame = false;
@@ -64,20 +64,20 @@ FPSCounter::on_event()
       odd_frame = true;
     }
 
-  font->print_right(CL_Display::get_width(), 
+  font->print_right(CL_Display::get_width(),
 		    CL_Display::get_height() - font->get_height(),
 		    fps_string);
 }
 
-void 
+void
 FPSCounter::update_fps_counter()
 {
   unsigned int current_time = CL_System::get_time();
   int current_fps;
 
   fps_count++;
-  
-  if (start_time + 1000 < current_time) 
+
+  if (start_time + 1000 < current_time)
     {
       current_fps = fps_count * 1000 / (current_time - start_time);
       snprintf(fps_string, 16, "%d fps", current_fps);

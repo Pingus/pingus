@@ -1,4 +1,4 @@
-//  $Id: spot_map.hxx,v 1.8 2002/09/27 11:26:44 torangan Exp $
+//  $Id: spot_map.hxx,v 1.9 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -16,7 +16,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
-//  02111-1307, USA. 
+//  02111-1307, USA.
 
 #ifndef HEADER_PINGUS_SPOT_MAP_HXX
 #define HEADER_PINGUS_SPOT_MAP_HXX
@@ -39,7 +39,7 @@ public:
 
   MapTileSurface ();
   virtual ~MapTileSurface ();
-  
+
   MapTileSurface (const MapTileSurface& old);
   MapTileSurface& operator= (const MapTileSurface& old);
 
@@ -79,7 +79,7 @@ public:
 
   int  get_height();
   int  get_width();
-  
+
   /** Put the gives surface provider onto the given coordinates */
   void put(CL_SurfaceProvider*, int x, int y);
 
@@ -88,7 +88,7 @@ public:
   void remove(CL_SurfaceProvider*, int x, int y);
 
   float get_z_pos () const { return 0; }
-  
+
 private:
   /** Low level version of the remove() call, acts on a single canvas
       instead on the complete map-tiles */

@@ -1,4 +1,4 @@
-//  $Id: gui_manager.cxx,v 1.20 2003/03/28 16:16:00 grumbel Exp $
+//  $Id: gui_manager.cxx,v 1.21 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ GUIManager::GUIManager ()
 void
 GUIManager::draw (GraphicContext& gc)
 {
-  for (std::vector<Component*>::iterator i = components.begin (); 
+  for (std::vector<Component*>::iterator i = components.begin ();
        i != components.end (); ++i)
     {
       (*i)->draw (gc);
@@ -50,7 +50,7 @@ GUIManager::update (const GameDelta& delta)
 {
   process_input (delta);
 
-  for (std::vector<Component*>::iterator i = components.begin (); 
+  for (std::vector<Component*>::iterator i = components.begin ();
        i != components.end (); ++i)
     {
       (*i)->update (delta.get_time ());
@@ -69,16 +69,16 @@ GUIManager::process_input (const GameDelta& delta)
 	case Input::PointerEventType:
           process_pointer_event (i->pointer);
           break;
-            
+
 	case Input::ButtonEventType:
           process_button_event (delta.get_absolute_time(), i->button);
           break;
-	  	  
+
 	case Input::AxisEventType:
           // AxisEvents can be ignored in the GUI, they are handled elsewhere
           pout (PINGUS_DEBUG_GUI) << "GUIManager: AxisEvent: " << i->axis.dir << std::endl;
           break;
-          
+
 	default:
 	  pwarn (PINGUS_DEBUG_GUI) << "GUIManager: unhandled event type " << i->type << std::endl;
 	  break;
@@ -87,16 +87,16 @@ GUIManager::process_input (const GameDelta& delta)
 }
 
 void
-GUIManager::add (Component* c, bool delete_component) 
-{ 
-  components.push_back(c); 
+GUIManager::add (Component* c, bool delete_component)
+{
+  components.push_back(c);
   UNUSED_ARG(delete_component);
 }
 
 void
 GUIManager::remove (Component* c)
 {
-  /* components.erase(c); */ 
+  /* components.erase(c); */
   UNUSED_ARG(c);
 }
 
@@ -105,7 +105,7 @@ GUIManager::component_at (int x, int y)
 {
   // we travel reversly through the component list, so that we get the
   // top most component at first
-  for (std::vector<Component*>::reverse_iterator i = components.rbegin (); 
+  for (std::vector<Component*>::reverse_iterator i = components.rbegin ();
        i != components.rend (); ++i)
     {
       if ((*i)->is_at (x, y))
@@ -117,7 +117,7 @@ GUIManager::component_at (int x, int y)
 bool
 GUIManager::is_at (int x, int y)
 {
-  for (std::vector<Component*>::iterator i = components.begin (); 
+  for (std::vector<Component*>::iterator i = components.begin ();
        i != components.end (); ++i)
     {
       if ((*i)->is_at (x, y))
@@ -148,7 +148,7 @@ GUIManager::process_pointer_event (const Input::PointerEvent& event)
 	{
 	  if (mouse_over_component != 0)
 	    mouse_over_component->on_pointer_leave ();
-		
+
 	  comp->on_pointer_enter ();
 	  mouse_over_component = comp;
 	}
@@ -165,7 +165,7 @@ GUIManager::process_pointer_event (const Input::PointerEvent& event)
 	  mouse_over_component = 0;
 	}
     }
-	    
+
 }
 
 void
@@ -184,7 +184,7 @@ GUIManager::process_button_event (unsigned int time_stamp, const Input::ButtonEv
 
           // FIXME: add double click detection here
 	}
-      else if (event.name == primary && event.state == Input::released) 
+      else if (event.name == primary && event.state == Input::released)
 	{
 	  /** Send the release event to the same component
 	      which got the press event */
@@ -214,9 +214,9 @@ GUIManager::process_button_event (unsigned int time_stamp, const Input::ButtonEv
                 std::cout << "GUIManager: Got a release without a press, possibly a bug" << std::endl;
 	    }
 	}
-		
+
       // Secondary button
-      if (event.name == secondary && event.state == Input::pressed) 
+      if (event.name == secondary && event.state == Input::pressed)
 	{
 	  secondary_pressed_component = comp;
 	  comp->on_secondary_button_press (x_pos, y_pos);

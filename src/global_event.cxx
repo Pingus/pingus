@@ -1,4 +1,4 @@
-//  $Id: global_event.cxx,v 1.9 2003/04/01 15:13:33 grumbel Exp $
+//  $Id: global_event.cxx,v 1.10 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,7 @@ GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 
 	case CL_KEY_DOWN:
 	  //if (CL_Keyboard::get_keycode(PINGUS_CL_KEY_HELP))
-	  //  console.scroll_down();	  
+	  //  console.scroll_down();
 	  break;
 
 #ifdef CL_HAS_KEY_GRAVE
@@ -68,7 +68,7 @@ GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
         case CL_KEY_NONE_OF_THE_ABOVE:
 #endif
 	  console.toggle_display();
-	  break; 
+	  break;
 
 	case CL_KEY_F11:
 	  fps_counter.toggle_display();
@@ -100,7 +100,7 @@ GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
           break;
 
 	case CL_KEY_END:
-	  if (CL_Keyboard::get_keycode(CL_KEY_LCTRL) 
+	  if (CL_Keyboard::get_keycode(CL_KEY_LCTRL)
 	      && CL_Keyboard::get_keycode(CL_KEY_ALT))
 	    {
 	      puts ("---:: Emergency exit ::---");
@@ -119,8 +119,8 @@ GlobalEvent::on_button_release(CL_InputDevice *device, const CL_Key & /*key*/)
 {
   if (device == CL_Input::keyboards[0])
     {
-      
-    }  
+
+    }
 }
 
 /* EOF */

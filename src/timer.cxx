@@ -1,4 +1,4 @@
-//  $Id: timer.cxx,v 1.4 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: timer.cxx,v 1.5 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ Timer::stop()
 {
   unsigned int time = CL_System::get_time() - start_time;
   pout(PINGUS_DEBUG_LOADING)
-    << "Timer: '" << description << "' took " 
+    << "Timer: '" << description << "' took "
     << time << "msec" << std::endl;
 }
 

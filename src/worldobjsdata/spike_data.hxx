@@ -1,4 +1,4 @@
-//  $Id: spike_data.hxx,v 1.8 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: spike_data.hxx,v 1.9 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,29 +28,29 @@
 
 namespace WorldObjsData {
 
-class SpikeData : public WorldObjData 
+class SpikeData : public WorldObjData
 {
 public:
   CL_Surface  surface;
   Vector   pos;
   GameCounter counter;
-      
+
 public:
   SpikeData ();
   SpikeData (xmlDocPtr doc, xmlNodePtr node);
   SpikeData (const SpikeData& old);
-      
+
   void write_xml (std::ostream& xml);
-      
+
   void insert_WorldObjs (World*);
-      
+
   void insert_EditorObjs (EditorNS::EditorObjMgr*);
-      
+
 private:
   SpikeData& operator= (const SpikeData&);
-      
+
 };
-  
+
 } // namespace WorldObjsData
 
 #endif

@@ -1,5 +1,5 @@
-//  $Id: axis_scroller.cxx,v 1.4 2002/10/28 22:40:23 torangan Exp $
-// 
+//  $Id: axis_scroller.cxx,v 1.5 2003/04/19 10:23:19 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -27,7 +27,7 @@ namespace Input {
 
   namespace Scrollers {
 
-    AxisScroller::AxisScroller (const std::vector<Axis*>& axes_, float speed_) 
+    AxisScroller::AxisScroller (const std::vector<Axis*>& axes_, float speed_)
                               : axes(axes_),
 			        speed(speed_),
 				x_delta(0),
@@ -66,16 +66,16 @@ namespace Input {
     AxisScroller::update (float delta)
     {
       x_delta = 0;
-      y_delta = 0;    
+      y_delta = 0;
 
       for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
         {
           (*it)->update(delta);
-      
+
           x_delta += cos((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
           y_delta += sin((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
-        } 
-  
+        }
+
     }
 
   }

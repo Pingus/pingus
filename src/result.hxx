@@ -1,4 +1,4 @@
-//  $Id: result.hxx,v 1.7 2003/03/28 16:16:00 grumbel Exp $
+//  $Id: result.hxx,v 1.8 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,13 +37,13 @@ struct Result
 
   /** Total number of Pingus */
   int total;
-  
+
   /** Time used to finish this level */
   int used_time;
-  
+
   /** Maximum time available for this level */
   int max_time;
-  
+
   /** Number of Pingus needed to save */
   int needed;
 

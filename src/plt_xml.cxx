@@ -1,4 +1,4 @@
-//  $Id: plt_xml.cxx,v 1.11 2002/10/14 11:15:15 torangan Exp $
+//  $Id: plt_xml.cxx,v 1.12 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ PLTXML::parse (std::string filename)
     }
 }
 
-void 
+void
 PLTXML::parse_background (xmlNodePtr cur)
 {
   cur = cur->children;
@@ -91,15 +91,15 @@ PLTXML::parse_background (xmlNodePtr cur)
 	  std::cout << "PLTXML::parse_background(): Unhandled: " << cur->name << std::endl;
 	}
       cur = cur->next;
-    }    
+    }
 }
 
-void 
+void
 PLTXML::parse_description(xmlNodePtr cur)
 {
   std::string desc;
   std::string lang;
-  
+
   if (XMLhelper::node_list_get_string(doc, cur->children, 1, desc)) {
     if (XMLhelper::get_prop(cur, "lang", lang))
       description[lang] = desc;
@@ -108,7 +108,7 @@ PLTXML::parse_description(xmlNodePtr cur)
   }
 }
 
-void 
+void
 PLTXML::parse_world_name (xmlNodePtr cur)
 {
   std::string name;
@@ -143,7 +143,7 @@ PLTXML::parse_level_list (xmlNodePtr cur)
 	  std::cout << "PLTXML: Unhandled: " << cur->name << std::endl;
 	}
       cur = cur->next;
-    }  
+    }
 }
 
 void
@@ -182,19 +182,19 @@ PLTXML::parse_file()
     }
 }
 
-std::vector<std::string> 
+std::vector<std::string>
 PLTXML::get_levels ()
 {
   return level_list;
 }
 
-std::map<std::string,std::string> 
+std::map<std::string,std::string>
 PLTXML::get_name ()
 {
   return world_name;
 }
 
-std::map<std::string,std::string> 
+std::map<std::string,std::string>
 PLTXML::get_description ()
 {
 

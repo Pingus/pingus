@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.hxx,v 1.13 2003/03/04 10:26:18 grumbel Exp $
+//  $Id: pingus_resource.hxx,v 1.14 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ private:
 public:
   static void init();
   static void deinit();
-  
+
   /** */
   static unsigned int get_mtime (const std::string& res_name,
 				 const std::string& datafile);
@@ -55,7 +55,7 @@ public:
 				 const std::string& datafile,
 				 ResourceModifierNS::ResourceModifier modifier
 				 = ResourceModifierNS::ROT0);
-  
+
   /** Load a surface from the ResDescriptor */
   static CL_Surface load_surface(const ResDescriptor&);
 
@@ -71,7 +71,7 @@ public:
 
   /** */
   static CL_ResourceManager* get(const std::string&);
-  
+
 private:
   PingusResource (const PingusResource&);
   PingusResource& operator= (const PingusResource&);

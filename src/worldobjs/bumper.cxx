@@ -1,4 +1,4 @@
-//  $Id: bumper.cxx,v 1.12 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: bumper.cxx,v 1.13 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@
 
 namespace WorldObjs {
 
-Bumper::Bumper (const WorldObjsData::BumperData& data_) 
+Bumper::Bumper (const WorldObjsData::BumperData& data_)
   : data(new WorldObjsData::BumperData(data_)),
     upwards(false),
     count(0)
@@ -56,7 +56,7 @@ Bumper::update ()
     catch_pingu(*pingu);
   }
 
-  if (upwards) 
+  if (upwards)
     {
       ++count;
       if (count >= static_cast<int>(data->surface.get_num_frames()) )
@@ -76,26 +76,26 @@ Bumper::on_startup ()
   world->get_colmap()->put(prov, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y), Groundtype::GP_SOLID);
 }
 
-void 
+void
 Bumper::draw (GraphicContext& gc)
 {
   gc.draw(data->surface, data->pos, count);
 }
 
-void 
+void
 Bumper::catch_pingu (Pingu* pingu)
 {
   if (   pingu->get_y() > data->pos.y + 60
       && pingu->get_y() < data->pos.y + 100)
     {
-      if (   pingu->get_x() > data->pos.x + 28 
+      if (   pingu->get_x() > data->pos.x + 28
           && pingu->get_x() < data->pos.x + 32)
 	{
 	  if (!upwards)
 	    upwards = true;
 	}
 
-      if (   upwards 
+      if (   upwards
           && pingu->get_x() > data->pos.x + 0
 	  && pingu->get_x() < data->pos.x + 60)
 	{

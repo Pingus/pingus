@@ -1,4 +1,4 @@
-//  $Id: gui_screen.cxx,v 1.1 2003/02/19 09:51:44 grumbel Exp $
+//  $Id: gui_screen.cxx,v 1.2 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ GUIScreen::update (const GameDelta& delta)
 
   update (delta.get_time ());
 
-  for (Input::EventLst::const_iterator i = delta.get_events ().begin (); 
+  for (Input::EventLst::const_iterator i = delta.get_events ().begin ();
        i != delta.get_events ().end (); ++i)
     {
       switch (i->type)
@@ -81,7 +81,7 @@ GUIScreen::update (const GameDelta& delta)
 
 	case Input::ScrollEventType:
 	  {
-	    
+
 	  }
 	  break;
 
@@ -97,13 +97,13 @@ GUIScreen::process_button_event (const Input::ButtonEvent& event)
 {
   //std::cout << "GUIScreen::process_button_event (Input::ButtonEvent* event)" << std::endl;
 
-  if (event.state == Input::pressed) 
+  if (event.state == Input::pressed)
     {
       switch (event.name)
 	{
 	case Input::primary:
 	  // ignoring, handled in the gui_manager
-	  break; 
+	  break;
 	case Input::secondary:
 	  // ignoring, handled in the gui_manager
 	  break;
@@ -124,13 +124,13 @@ GUIScreen::process_button_event (const Input::ButtonEvent& event)
 	  break;
 	}
     }
-  else if (event.state == Input::released) 
+  else if (event.state == Input::released)
     {
       switch (event.name)
 	{
 	case Input::primary:
 	  // ignoring, handled in the gui_manager
-	  break; 
+	  break;
 	case Input::secondary:
 	  // ignoring, handled in the gui_manager
 	  break;
@@ -153,7 +153,7 @@ GUIScreen::process_button_event (const Input::ButtonEvent& event)
     }
   else
     {
-      perr(PINGUS_DEBUG_GUI) << "GUIScreen::process_button_event: got unknown event.state: " 
+      perr(PINGUS_DEBUG_GUI) << "GUIScreen::process_button_event: got unknown event.state: "
 			     << event.state << std::endl;;
     }
 }

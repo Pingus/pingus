@@ -1,5 +1,5 @@
-//  $Id: savegame.hxx,v 1.2 2003/04/01 15:13:33 grumbel Exp $
-// 
+//  $Id: savegame.hxx,v 1.3 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -30,7 +30,7 @@ class Savegame
 private:
 public:
   enum Status { FINISHED,   // level is successfully finished
-                ACCESSIBLE, // level is accessible and can be played 
+                ACCESSIBLE, // level is accessible and can be played
                 NONE};      // level is not finished and cannot be accessed
   static std::string status_to_string (Status s);
   static Status string_to_status (std::string s);

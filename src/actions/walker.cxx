@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.32 2003/03/04 11:26:18 grumbel Exp $
+//  $Id: walker.cxx,v 1.33 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,19 +49,19 @@ Walker::update ()
   Vector last_pos = pingu->get_pos();
 
   /* How should this code work?
-     
+
   1) Check that the Pingu stands still on ground, if not turn it into
   a faller or drown. The reason we do so, is that we catch situations
   where a digger or a similar action removed the ground under the
   walker.
-  
+
   2) If pingu is still on ground, we can preprare the next step
 
   3) Check if up-hill or down-hill is required
-  
+
 
   4)
-  
+
   */
 
   if (rel_getpixel(0, -1) ==  Groundtype::GP_WATER)
@@ -73,7 +73,7 @@ Walker::update ()
   // The Pingu stands no longer on ground, the cause for this could be
   // a digger, miner or a bomber
   if (rel_getpixel(0, -1) ==  Groundtype::GP_NOTHING)
-    { 
+    {
       // We search for the nearest ground below the pingu, if we can't
       // find anything within a few pixels, we will turn into a faller
       bool found_ground = false;
@@ -86,7 +86,7 @@ Walker::update ()
 	      break;
 	    }
 	}
-	
+
       if (found_ground)
 	{
 	  pingu->set_y(pingu->get_y() - i);
@@ -98,7 +98,7 @@ Walker::update ()
 	}
     }
 
-  
+
   // FIXME: here we could/should scan more pixels
   if (rel_getpixel(1, 0) == Groundtype::GP_BRIDGE
       && !head_collision_on_walk(1, 1))  // bridge
@@ -108,8 +108,8 @@ Walker::update ()
       pingu->set_pos(pingu->get_x() + pingu->direction,
 		     pingu->get_y() - 1); // pingus 'float' through bridges
     }
-  else 
-    { 
+  else
+    {
       // Non of the trivial moves worked, so we do up-hill or down-hill walking
       // FIXME: currently the pingu takes multiple steps at once when
       // FIXME: working uphill, this looks kind of ugly
@@ -118,8 +118,8 @@ Walker::update ()
       // FIXME: rel_getpixel works on the current pos, so modifing pos
       // FIXME: is evil, a backup copy might help
 
-      // if infront is a pixel 
-      // Pingu is walking up the mountain 
+      // if infront is a pixel
+      // Pingu is walking up the mountain
       // we can continue walking up. search for the correct y_pos
       int y_inc = 0;
       int possible_y_step = 0;
@@ -136,11 +136,11 @@ Walker::update ()
 	      //break;
 	    }
 	}
-      
+
       if (found_next_step)
 	{
 	  // pos.y has a reversed co-system to rel_getpixel()?
-	  pingu->set_pos(pingu->get_x() + pingu->direction, 
+	  pingu->set_pos(pingu->get_x() + pingu->direction,
 			 pingu->get_y() - possible_y_step);
 	}
       else
@@ -148,15 +148,15 @@ Walker::update ()
 	  if (rel_getpixel(1, 0) !=  Groundtype::GP_NOTHING)
 	    {
 	      // We reached a wall
-	      if (pingu->request_wall_action()) 
+	      if (pingu->request_wall_action())
 		{
-		  pout(PINGUS_DEBUG_ACTIONS) 
+		  pout(PINGUS_DEBUG_ACTIONS)
 		    << "Pingu: We are in front of a wall, setting persistant action" << std::endl;
 		  return;
 		}
-	     
+
 	      // No persitent action found, so change the direction
-	      pingu->direction.change();	      
+	      pingu->direction.change();
 	    }
 	  else
 	    {
@@ -183,15 +183,15 @@ Walker::update ()
       pingu->set_pos(last_pos);
       return;
     }
-      
+
   /*
-    for(int y_inc=1; y_inc <= max_steps; ++y_inc) 
+    for(int y_inc=1; y_inc <= max_steps; ++y_inc)
     {
-    if (rel_getpixel(1, -y_inc) == ColMap::WATER) 
+    if (rel_getpixel(1, -y_inc) == ColMap::WATER)
     {
     pingu->set_paction ("drown");
     return;
-    } 
+    }
     else if(rel_getpixel(1, -y_inc) != ColMap::NOTHING)
     { // there is land
     pingu->pos.y += y_inc - 1;
@@ -201,7 +201,7 @@ Walker::update ()
   */
 }
 
-void  
+void
 Walker::draw (GraphicContext& gc)
 {
   if (pingu->direction.is_left())

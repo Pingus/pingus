@@ -1,4 +1,4 @@
-//  $Id: level_property_window.cxx,v 1.12 2002/11/30 17:11:55 grumbel Exp $
+//  $Id: level_property_window.cxx,v 1.13 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,10 +28,10 @@
  Levelname:   ...
  Description: ...
  Author: ........
- 
+
  Pingus: 100
  ToSave: 50
-  
+
  Time: .....?
 
  Width:  800
@@ -67,22 +67,22 @@ LevelPropertyWindow::LevelPropertyWindow (CL_Component* parent, ObjectManager* m
 			  get_client_area ()),
 
     time_label (CL_Rect (10, 110, 90, 130), "Time", get_client_area ()),
-    time_input (CL_Rect(110, 110, 390, 130), to_string (manager->get_leveltime ()), 
+    time_input (CL_Rect(110, 110, 390, 130), to_string (manager->get_leveltime ()),
 		get_client_area ()),
 
     width_label (CL_Rect (10, 130, 90, 150), "Width", get_client_area ()),
-    width_input (CL_Rect(110, 130, 390, 150), to_string(manager->get_width ()), get_client_area ()),    
+    width_input (CL_Rect(110, 130, 390, 150), to_string(manager->get_width ()), get_client_area ()),
 
     height_label (CL_Rect (10, 150, 90, 170), "Height", get_client_area ()),
-    height_input (CL_Rect(110, 150, 390, 170), to_string(manager->get_height ()), get_client_area ()), 
+    height_input (CL_Rect(110, 150, 390, 170), to_string(manager->get_height ()), get_client_area ()),
 
     difficulty_label (CL_Rect (10, 170, 90, 190), "Difficulty", get_client_area ()),
-    difficulty_input (CL_Rect(110, 170, 390, 190), to_string (manager->get_difficulty ()), 
+    difficulty_input (CL_Rect(110, 170, 390, 190), to_string (manager->get_difficulty ()),
 		      get_client_area ()),
 
     comment_label (CL_Rect(10, 190, 90, 210), "Comment", get_client_area ()),
     playable_checkbox (CL_Point(10, 210), "Playable", get_client_area ()),
-    
+
     ok_button(CL_Rect(210, 240, 290, 260), "Ok", get_client_area()),
     cancel_button(CL_Rect(310, 240, 390, 260), "Cancel", get_client_area())
 {
@@ -137,7 +137,7 @@ LevelPropertyWindow::write_data()
   int pingus_to_save;
   if (from_string(pingus_to_save_input.get_text(), pingus_to_save))
     manager->set_number_to_save (pingus_to_save);
-  
+
   int time;
   if (from_string (time_input.get_text(), time))
     manager->set_leveltime (time);
@@ -149,7 +149,7 @@ LevelPropertyWindow::write_data()
   int height;
   if (from_string(height_input.get_text(), height))
     manager->set_height(height);
-  
+
   int difficulty = 40;
   if (from_string(difficulty_input.get_text(), difficulty))
     manager->set_difficulty(difficulty);

@@ -1,5 +1,5 @@
-//  $Id: sprite.hxx,v 1.9 2002/11/26 21:30:37 grumbel Exp $
-// 
+//  $Id: sprite.hxx,v 1.10 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -31,7 +31,7 @@ class Sprite
 public:
   typedef enum { NONE, LEFT, RIGHT } Direction;
   typedef enum { ENDLESS, ONCE } LoopType;
-  
+
 private:
   float frame;
   float frames_per_second;
@@ -42,19 +42,19 @@ private:
 
   int x_align;
   int y_align;
-  
+
   int max_frames ();
-  
+
 public:
   /// Creates an empty sprite, drawing and updating does nothing
   Sprite ();
 
   /// Copy a sprite
   Sprite (const Sprite& sprite);
-  
+
   /// Copy a sprite
   Sprite& operator= (const Sprite& sprite);
-  
+
   Sprite (std::string arg_sur_name,
 	  std::string arg_datafile,
 	  float arg_frames_per_second = 10.0f,
@@ -80,11 +80,11 @@ public:
       the alignment */
   void put_screen (const Vector& pos);
 
-  /** Set the alignment (aka offset) of the surface 
+  /** Set the alignment (aka offset) of the surface
    @param arg_x The x offset by which the surface drawn
    @param arg_y The y offset by which the surface drawn */
   void set_align (int arg_x, int arg_y);
-  
+
   /** Shortcut for setting the aligment to the center of the surface */
   void set_align_center ();
 
@@ -97,14 +97,14 @@ public:
 
   /** Return the y alignment */
   int get_y_align () { return y_align; }
-  
+
   /** Go to the next frame */
   void next_frame ();
 
   /** Go to the previous frame */
   void previous_frame ();
 
-  /** Get the currently displaed frame 
+  /** Get the currently displaed frame
       @return the currently displayed frame */
   int get_frame ();
 
@@ -114,7 +114,7 @@ public:
 
   /** Set the current direction of the surface, WARNING: Does only
       work in a few cases... FIXME: rewrite when
-      CL_Surface::get_num_xframes () exists 
+      CL_Surface::get_num_xframes () exists
   @param dir Direction: LEFT, RIGHT, NONE */
   void set_direction (Sprite::Direction dir) { direction = dir; }
 

@@ -1,4 +1,4 @@
-//  $Id: blitter.hxx,v 1.9 2002/10/16 09:14:45 grumbel Exp $
+//  $Id: blitter.hxx,v 1.10 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,13 +68,13 @@ public:
 
   /** Sets all pixels of a canvas to zero */
   static CL_Canvas* clear_canvas(CL_Canvas*);
-  
+
   /** Creates a new surface (based on a canvas) with the given width
       and height and stretches the source surface onto it
 
       @param sur The source surface
-      @param width The new width of the surface. 
-      @param height The new height of the surface. 
+      @param width The new width of the surface.
+      @param height The new height of the surface.
       @return A newly created surface, the caller is responsible to delete it. */
   static CL_Surface scale_surface (const CL_Surface& sur, int width, int height);
 
@@ -102,17 +102,17 @@ public:
       to delete the returned CL_Canvas.
 
       @param sur The source surface
-      @param width The new width of the surface. 
-      @param height The new height of the surface. 
+      @param width The new width of the surface.
+      @param height The new height of the surface.
       @return A newly created surface, the caller is responsible to delete it. */
   static CL_Canvas* scale_surface_to_canvas (const CL_Surface& sur, int width, int height);
-  
+
 private:
   Blitter (const Blitter&);
   Blitter& operator= (const Blitter&);
 };
 
-#endif 
+#endif
 
 /* EOF */
 

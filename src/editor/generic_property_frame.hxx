@@ -1,5 +1,5 @@
-//  $Id: generic_property_frame.hxx,v 1.2 2002/11/30 15:06:31 grumbel Exp $
-// 
+//  $Id: generic_property_frame.hxx,v 1.3 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -34,7 +34,7 @@ class DataBox {
 public:
   /** Read the data from the data pointer */
   virtual void read_data() =0;
-    
+
   /** Write the data from the GUI to the data pointer */
   virtual void write_data() =0;
 };
@@ -49,12 +49,12 @@ private:
 
 public:
   ButtonDataBox(CL_Component* parent, int y_pos, const std::string& name, Func f)
-    : button(CL_Rect(10, y_pos, 190, y_pos + 20), name, parent), 
+    : button(CL_Rect(10, y_pos, 190, y_pos + 20), name, parent),
       func(f)
   {
     slot = button.sig_clicked().connect(this, &ButtonDataBox<Func>::on_click);
   }
-  
+
   virtual ~ButtonDataBox() {}
 
   void on_click() { func(); }
@@ -106,7 +106,7 @@ public:
     y_pos += 25;
     set_height(y_pos + 5);
   }
-  
+
   /** Creates a listbox to represent an enumeration */
   void begin_add_enum_box(const std::string& title, int*);
   void add_enum_value(const std::string& name, int value);

@@ -1,4 +1,4 @@
-//  $Id: woodthing.hxx,v 1.2 2002/10/01 19:53:46 grumbel Exp $
+//  $Id: woodthing.hxx,v 1.3 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ public:
 
   void update();
   void draw (GraphicContext& gc);
-  
+
 private:
   WoodThing (const WoodThing&);
   WoodThing& operator= (const WoodThing&);

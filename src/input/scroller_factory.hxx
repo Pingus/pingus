@@ -1,5 +1,5 @@
-//  $Id: scroller_factory.hxx,v 1.6 2002/09/27 11:26:47 torangan Exp $
-// 
+//  $Id: scroller_factory.hxx,v 1.7 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -26,7 +26,7 @@ namespace Input {
 
   class Scroller;
 
-  class ScrollerFactory 
+  class ScrollerFactory
   {
     private:
       static inline Scroller* axis_scroller     (xmlNodePtr cur);
@@ -35,10 +35,10 @@ namespace Input {
       static inline Scroller* mouse_scroller    (xmlNodePtr cur);
       static inline Scroller* multiple_scroller (xmlNodePtr cur);
       static inline Scroller* pointer_scroller  (xmlNodePtr cur);
-    
+
     public:
       static Scroller* create (xmlNodePtr cur);
-      
+
     private:
       ScrollerFactory ();
       ScrollerFactory (const ScrollerFactory&);

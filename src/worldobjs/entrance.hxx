@@ -1,4 +1,4 @@
-//  $Id: entrance.hxx,v 1.4 2002/10/10 12:25:54 grumbel Exp $
+//  $Id: entrance.hxx,v 1.5 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,25 +39,25 @@ class Entrance : public WorldObj
 protected:
   WorldObjsData::EntranceData* const data;
 
-  Sprite smallmap_symbol; 
+  Sprite smallmap_symbol;
   CL_Surface surface;
   int        last_release;
-  
+
 public:
   Entrance (const WorldObjsData::EntranceData& data_);
  ~Entrance ();
 
   float get_z_pos () const;
-  
+
   virtual bool   pingu_ready ();
   virtual void   create_pingu ();
-  
+
   virtual void   update ();
-  
+
   virtual void   draw (GraphicContext& gc);
 
   void  draw_smallmap(SmallMap* smallmap);
-  
+
 private:
   Entrance (const Entrance&);
   Entrance& operator= (const Entrance&);

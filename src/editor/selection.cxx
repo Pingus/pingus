@@ -1,4 +1,4 @@
-//  $Id: selection.cxx,v 1.18 2003/03/25 23:15:23 grumbel Exp $
+//  $Id: selection.cxx,v 1.19 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,28 +27,28 @@
 namespace EditorNS {
 
 void
-Selection::move(float x, float y) 
+Selection::move(float x, float y)
 {
   for (std::vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->set_position_offset(Vector(x, y));
 }
 
 void
-Selection::move(const Vector& pos) 
+Selection::move(const Vector& pos)
 {
   for (std::vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->set_position_offset(pos);
 }
 
 void
-Selection::drag() 
+Selection::drag()
 {
   for (std::vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->drag();
 }
 
 void
-Selection::drop() 
+Selection::drop()
 {
   for (std::vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->drop();
@@ -81,28 +81,28 @@ Selection::remove(EditorObj* obj)
 }
 
 void
-Selection::raise() 
+Selection::raise()
 {
   for (std::vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     object_manager->raise_obj(*it);
 }
 
 void
-Selection::lower() 
+Selection::lower()
 {
   for (std::vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     object_manager->lower_obj(*it);
 }
 
 void
-Selection::select_rect(float x1_, float y1_, float x2_, float y2_) 
+Selection::select_rect(float x1_, float y1_, float x2_, float y2_)
 {
   int x1, x2, y1, y2;
-  
+
   if (!CL_Keyboard::get_keycode(CL_KEY_LSHIFT)
       && !CL_Keyboard::get_keycode(CL_KEY_RSHIFT))
     clear();
-    
+
   // Rotate the rectangle, so that x1,y1 is top/left und x2,y2 is
   // bottom right
   x1 = static_cast<int> (Math::min(x1_, x2_));
@@ -114,7 +114,7 @@ Selection::select_rect(float x1_, float y1_, float x2_, float y2_)
 }
 
 EditorObj*
-Selection::get_current_obj() 
+Selection::get_current_obj()
 {
   if (obj_list.size() == 1)
     return *obj_list.begin();
@@ -123,21 +123,21 @@ Selection::get_current_obj()
 }
 
 void
-Selection::horizontal_flip() 
+Selection::horizontal_flip()
 {
   for (std::vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->horizontal_flip();
 }
 
 void
-Selection::vertical_flip() 
+Selection::vertical_flip()
 {
   for (std::vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->vertical_flip();
 }
 
 void
-Selection::rotate_90() 
+Selection::rotate_90()
 {
   for (std::vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->rotate_90();
@@ -153,8 +153,8 @@ Selection::rotate_270()
 void
 Selection::draw(EditorView * view)
 {
-  
-  for (std::vector<EditorObj*>::iterator i = obj_list.begin(); i != obj_list.end(); ++i) 
+
+  for (std::vector<EditorObj*>::iterator i = obj_list.begin(); i != obj_list.end(); ++i)
     {
       (*i)->draw_mark(view);
     }

@@ -1,5 +1,5 @@
-//  $Id: ice_block_data.hxx,v 1.7 2003/03/05 19:13:59 grumbel Exp $
-// 
+//  $Id: ice_block_data.hxx,v 1.8 2003/04/19 10:23:19 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -32,7 +32,7 @@ public:
   /// The upper/left position  of the iceblock's
   Vector pos;
 
-  /** The number of iceblocks, only complete blocks are supported */  
+  /** The number of iceblocks, only complete blocks are supported */
   int width;
 
   IceBlockData ();
@@ -42,13 +42,13 @@ public:
   /** Write the content of this object formatted as xml to the given
       stream */
   void write_xml (std::ostream& xml);
-  
+
   /** Create an WorldObj from the given data object */
   void insert_WorldObjs (World* world);
 
   /** Create an EditorObj from the given data object */
   void insert_EditorObjs (EditorNS::EditorObjMgr*);
-  
+
 private:
   IceBlockData& operator= (const IceBlockData&);
 };

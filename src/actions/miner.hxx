@@ -1,4 +1,4 @@
-//  $Id: miner.hxx,v 1.13 2003/04/18 17:08:56 grumbel Exp $
+//  $Id: miner.hxx,v 1.14 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -7,7 +7,7 @@
 //  modify it under the terms of the GNU General Public License
 //  as published by the Free Software Foundation; either version 2
 //  of the License, or (at your option) any later version.
-// 
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -27,7 +27,7 @@ namespace Actions {
 
 class Miner : public PinguAction
 {
-private:  
+private:
   CL_Surface miner_radius;
   CL_Surface miner_radius_gfx;
   Sprite sprite;
@@ -47,10 +47,10 @@ public:
 
   void draw (GraphicContext& gc);
   void update ();
-  
+
 private:
   Miner (const Miner&);
-  Miner& operator= (const Miner&); 
+  Miner& operator= (const Miner&);
 };
 
 } // namespace Actions

@@ -1,4 +1,4 @@
-//  $Id: demo_player.cxx,v 1.8 2003/01/15 21:16:41 torangan Exp $
+//  $Id: demo_player.cxx,v 1.9 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,10 +38,10 @@ DemoPlayer::update()
   while(!events.empty() && events.back().time_stamp == server->get_time())
     {
       ServerEvent& event = events.back();
-      
+
       std::cout << "Sending: ";
       event.write_xml(std::cout);
-      
+
       event.send(server);
       events.pop_back();
     }

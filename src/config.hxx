@@ -1,5 +1,5 @@
-//  $Id: config.hxx,v 1.8 2003/01/25 18:34:36 torangan Exp $
-// 
+//  $Id: config.hxx,v 1.9 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -28,7 +28,7 @@
 class ConfigParser
 {
 private:
-  
+
   ///
   std::ifstream in;            /// The file to parse
 
@@ -37,7 +37,7 @@ private:
   bool   eof;
   //  std::string filename;             // The name of the current file
 
-  /// private functions    
+  /// private functions
   char   get_char(void);       /// Return the next char and to a eof check
   char   get_atom(void);       /// Return the next atom and keep the old one
   char   get_raw_atom(void);   /// Return the next atom (removes all comments)
@@ -51,17 +51,17 @@ private:
 
   // Some virtual functions
   /// Put the retrieved value in the correct struct
-  virtual void set_value(const std::string& valueid, const std::string& value) = 0; 
+  virtual void set_value(const std::string& valueid, const std::string& value) = 0;
 
 public:
   ///
-  ConfigParser();         
+  ConfigParser();
   ///
   ConfigParser(std::string);         /// Open the file and parse it
   virtual ~ConfigParser();      /// Close the file
-    
+
   void init(std::string);
-  
+
 private:
   ConfigParser (const ConfigParser&);
   ConfigParser& operator= (const ConfigParser&);
@@ -74,13 +74,13 @@ private:
 
   bool str_to_bool(const std::string&);
   int  str_to_int(const std::string&);
-  
+
 public:
   Config ();
   Config (std::string);
 
   void set_value(const std::string& valueid, const std::string& value);
-		 
+
 private:
   Config (const Config&);
   Config& operator= (const Config&);

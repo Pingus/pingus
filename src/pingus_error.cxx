@@ -1,4 +1,4 @@
-//  $Id: pingus_error.cxx,v 1.8 2003/04/08 19:56:40 torangan Exp $
+//  $Id: pingus_error.cxx,v 1.9 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ PingusException::operator= (const PingusException& old)
 {
   if (this != &old)
     message = old.message;
-    
+
   return *this;
 }
 
@@ -55,9 +55,9 @@ PingusBug::operator= (const PingusBug& old)
 {
   if (this == &old)
     return *this;
-    
+
   PingusException::operator=(old);
-  
+
   return *this;
 }
 
@@ -86,9 +86,9 @@ PingusError::operator= (const PingusError& old)
 {
   if (this == &old)
     return *this;
-    
+
   PingusException::operator=(old);
-  
+
   return *this;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: surface_background.hxx,v 1.5 2002/10/01 19:53:46 grumbel Exp $
+//  $Id: surface_background.hxx,v 1.6 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ private:
   GameCounter counter;
 
   CL_Surface bg_surface;
-  
+
   /** The horizontal scrolling speed in pixels per tick */
   float scroll_ox;
 
@@ -44,7 +44,7 @@ private:
   float scroll_oy;
 
   WorldObjsData::SurfaceBackgroundData* const data;
-  
+
 public:
   SurfaceBackground (const WorldObjsData::SurfaceBackgroundData& data_);
  ~SurfaceBackground ();
@@ -53,7 +53,7 @@ public:
 
   void update ();
   void draw (GraphicContext& gc);
-  
+
 private:
   SurfaceBackground (const SurfaceBackground&);
   SurfaceBackground& operator= (const SurfaceBackground&);

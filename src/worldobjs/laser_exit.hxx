@@ -1,4 +1,4 @@
-//  $Id: laser_exit.hxx,v 1.6 2002/10/01 19:53:46 grumbel Exp $
+//  $Id: laser_exit.hxx,v 1.7 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ class LaserExit : public WorldObj
 private:
   WorldObjsData::LaserExitData* const data;
   bool killing;
-    
+
 public:
   LaserExit (const WorldObjsData::LaserExitData& data_);
   ~LaserExit ();
@@ -51,7 +51,7 @@ protected:
 private:
   LaserExit (const LaserExit&);
   LaserExit& operator= (const LaserExit&);
-}; 
+};
 
 } // namespace WorldObjs
 

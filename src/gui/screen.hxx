@@ -1,5 +1,5 @@
-//  $Id: screen.hxx,v 1.1 2003/02/19 09:51:44 grumbel Exp $
-// 
+//  $Id: screen.hxx,v 1.2 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -30,11 +30,11 @@ class GraphicContext;
 class Screen
 {
 private:
-    
+
 public:
   Screen () { }
   virtual ~Screen () {}
-  
+
   /** Draw this screen @return true if draw was successfull, false if
       frameskip has taken place ('causes a skip of flip_display) */
   virtual bool draw (GraphicContext& gc) =0;
@@ -49,9 +49,9 @@ public:
   virtual void on_startup () {}
 
   /** Called once the screen gets replaced or poped or shadowed by a
-      newly pushed screen */ 
+      newly pushed screen */
   virtual void on_shutdown () {}
-  
+
 private:
   Screen (const Screen&);
   Screen& operator= (const Screen&);

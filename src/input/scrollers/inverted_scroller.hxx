@@ -1,5 +1,5 @@
-//  $Id: inverted_scroller.hxx,v 1.3 2002/09/27 11:26:48 torangan Exp $
-// 
+//  $Id: inverted_scroller.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -28,32 +28,32 @@ namespace Input {
 
     /**
       @brief inverts the results of the contained scroller
-  
+
       XML definition: <inverted-scroller invert-x="0/1" invert-y="0/1" speed="?"> <scroller> </inverted-scroller>
-  
+
       Wheter the X and/or the Y axis shall be inverted must be specified explizitly.
       */
     class InvertedScroller : public Scroller {
       private:
         Scroller* const scroller;
-    
+
         const bool invert_x;
         const bool invert_y;
-    
+
         float x_pos;
         float y_pos;
-    
+
       public:
         InvertedScroller (Scroller* scroller_, bool invert_x_, bool invert_y_);
        ~InvertedScroller ();
-    
+
         const float& get_x_delta () const;
         const float& get_y_delta () const;
-    
+
         void  get_delta (float& x, float& y) const;
 
         void  update (float delta);
-    
+
       private:
         InvertedScroller (const InvertedScroller&);
         InvertedScroller& operator= (const InvertedScroller&);

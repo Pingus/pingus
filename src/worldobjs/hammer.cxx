@@ -1,4 +1,4 @@
-//  $Id: hammer.cxx,v 1.12 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: hammer.cxx,v 1.13 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
 
 namespace WorldObjs {
 
-Hammer::Hammer (const WorldObjsData::HammerData& data_) 
+Hammer::Hammer (const WorldObjsData::HammerData& data_)
   : data(new WorldObjsData::HammerData(data_))
 {
   sprite = Sprite("Traps/hammer", "traps");
@@ -43,7 +43,7 @@ Hammer::get_z_pos () const
   return data->pos.z;
 }
 
-void 
+void
 Hammer::draw (GraphicContext& gc)
 {
   gc.draw (sprite, data->pos);
@@ -58,7 +58,7 @@ Hammer::update ()
     {
       PinguHolder* holder = world->get_pingus();
 
-      for (PinguIter pingu_it = holder->begin (); pingu_it != holder->end (); ++pingu_it) 
+      for (PinguIter pingu_it = holder->begin (); pingu_it != holder->end (); ++pingu_it)
 	{
 	  Pingu* pingu = *pingu_it;
 	  if (pingu->get_action() != Actions::Splashed)

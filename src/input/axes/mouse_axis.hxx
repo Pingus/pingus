@@ -1,5 +1,5 @@
-//  $Id: mouse_axis.hxx,v 1.3 2002/09/27 11:26:48 torangan Exp $
-// 
+//  $Id: mouse_axis.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -28,7 +28,7 @@ namespace Axes {
 
   /**
     @brief represents an axis of the mouse
-  
+
     XML definition: <mouse-axis angle="?" axis="0/1"/>
     */
   class MouseAxis : public Axis {
@@ -38,15 +38,15 @@ namespace Axes {
       float angle;
       float pos;
       float old_pos;
-  
+
     public:
       MouseAxis (int axis_, float angle_);
 
       virtual const float& get_pos   () const;
       virtual const float& get_angle () const;
-    
+
       virtual void  update (float);
-    
+
     private:
       MouseAxis (const MouseAxis&);
       MouseAxis& operator= (const MouseAxis&);

@@ -1,5 +1,5 @@
-//  $Id: xml_plf.cxx,v 1.37 2003/04/05 23:24:32 grumbel Exp $
-// 
+//  $Id: xml_plf.cxx,v 1.38 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -81,13 +81,13 @@ XMLPLF::parse_file()
 
       if (!cur->children)
 	std::cout << "XMLPLF: node: " << cur->name << std::endl;
-      
+
       cur = cur->children;
       cur = XMLhelper::skip_blank(cur);
-      
+
       while (cur)
 	{
-	  if (xmlIsBlankNode(cur)) 
+	  if (xmlIsBlankNode(cur))
 	    {
 	      cur = cur->next;
 	      continue;
@@ -166,7 +166,7 @@ XMLPLF::parse_file()
 	  else if (XMLhelper::equal_str(cur->name, "weather"))
 	    {
 	      worldobjs_data.push_back(WorldObjDataFactory::instance()->create (doc, cur));
-	    }	  
+	    }
 	  else
 	    {
 	      printf("XMLPLF: Unhandled: %s\n", reinterpret_cast<const char*>(cur->name));
@@ -183,7 +183,7 @@ void
 XMLPLF::parse_group (xmlNodePtr cur)
 {
   cur = cur->children;
-  
+
   while (cur)
     {
       if (XMLhelper::equal_str(cur->name, "background"))
@@ -246,12 +246,12 @@ XMLPLF::parse_start_pos (xmlNodePtr cur)
 
   while (cur)
     {
-      if (xmlIsBlankNode(cur)) 
+      if (xmlIsBlankNode(cur))
 	{
 	  cur = cur->next;
 	  continue;
 	}
-      
+
       if (XMLhelper::equal_str(cur->name, "position"))
 	{
 	  Vector pos = XMLhelper::parse_vector(doc, cur);
@@ -266,7 +266,7 @@ XMLPLF::parse_start_pos (xmlNodePtr cur)
     }
 }
 
-void 
+void
 XMLPLF::parse_background (xmlNodePtr cur)
 {
   // The allocated objects are delete'd in the destructor
@@ -285,19 +285,19 @@ XMLPLF::parse_background (xmlNodePtr cur)
     }
 }
 
-void 
+void
 XMLPLF::parse_actions (xmlNodePtr cur)
 {
   cur = cur->children;
 
   while (cur)
     {
-      if (xmlIsBlankNode(cur)) 
+      if (xmlIsBlankNode(cur))
 	{
 	  cur = cur->next;
 	  continue;
 	}
- 
+
       ActionData button;
       button.name = action_from_string(reinterpret_cast<const char*>(cur->name));
 
@@ -309,16 +309,16 @@ XMLPLF::parse_actions (xmlNodePtr cur)
 	}
 
       actions.push_back(button);
-      
+
       cur = cur->next;
-    }      
+    }
 }
 
 void
 XMLPLF::parse_global (xmlNodePtr cur)
 {
   XMLFileReader reader(doc, cur);
-  
+
   reader.read_string("author", author);
   reader.read_int("number-of-pingus", number_of_pingus);
   reader.read_int("number-to-save", number_to_save);
@@ -333,7 +333,7 @@ XMLPLF::parse_global (xmlNodePtr cur)
   cur = cur->children;
   while (cur)
     {
-      if (xmlIsBlankNode(cur)) 
+      if (xmlIsBlankNode(cur))
 	{
 	  cur = cur->next;
 	  continue;
@@ -357,7 +357,7 @@ XMLPLF::parse_global (xmlNodePtr cur)
 	  std::string lang;
 
 	  if (XMLhelper::node_list_get_string(doc, cur->children, 1, desc)) {
-	    if (XMLhelper::get_prop(cur, "lang", lang))		    
+	    if (XMLhelper::get_prop(cur, "lang", lang))
 	      description[lang] = desc;
 	    else
 	      description[default_language] = desc;
@@ -367,7 +367,7 @@ XMLPLF::parse_global (xmlNodePtr cur)
     }
 }
 
-void 
+void
 XMLPLF::parse_groundpiece (xmlNodePtr cur)
 {
   groundpieces.push_back(WorldObjsData::GroundpieceData (doc, cur));
@@ -377,7 +377,7 @@ void
 XMLPLF::parse_traps (xmlNodePtr cur)
 {
   xmlNodePtr child_cur = XMLhelper::skip_blank(cur->children);
-  
+
   if (XMLhelper::equal_str(child_cur->name, "type"))
     {
       std::string name;

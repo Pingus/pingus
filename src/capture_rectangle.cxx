@@ -1,4 +1,4 @@
-//  $Id: capture_rectangle.cxx,v 1.12 2002/10/12 00:24:26 grumbel Exp $ 
+//  $Id: capture_rectangle.cxx,v 1.13 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,33 +49,33 @@ CaptureRectangle::~CaptureRectangle ()
 
 void
 CaptureRectangle::draw_offset (int x_offset, int y_offset, float s)
-{ 
+{
   if (pingu && pingu->catchable())
     {
       Sprite* sur;
-      
+
       // FIXME: A check for surface good/bad should  be placed here
       if (pingu->change_allowed(button_panel->get_action_name()))
 	sur = &good;
       else
 	sur = &bad;
-      
-      if (s == 1.0) 
+
+      if (s == 1.0)
 	{ // FIXME: this should use GC
 
 	  // Draw the caputure rectangle
 	  sur->put_screen(pingu->get_center_pos() + Vector(x_offset,y_offset));
-	  
+
 	  font->print_center(static_cast<int>(pingu->get_center_pos().x) + x_offset,
 			     static_cast<int>(pingu->get_center_pos().y) + y_offset - 32,
 			     action_str.c_str());
 	  /*font->print_center(pingu->get_center_pos().x + x_offset,
 			     pingu->get_center_pos().y + y_offset - 16 + 62,
 			     to_string(pingu->get_owner()).c_str());*/
-	  
+
 
 	  // Paint the direction arrow
-	  if (pingu->direction.is_left()) 
+	  if (pingu->direction.is_left())
 	    {
 	      arrow_left.put_screen(pingu->get_center_pos() + Vector(x_offset, y_offset + 28));
 	    }
@@ -83,8 +83,8 @@ CaptureRectangle::draw_offset (int x_offset, int y_offset, float s)
 	    {
 	      arrow_right.put_screen(pingu->get_center_pos() + Vector(x_offset, y_offset + 28));
 	    }
-	} 
-      else 
+	}
+      else
 	{
 	  sur->put_screen(pingu->get_center_pos() + Vector(x_offset, y_offset));
 	}
@@ -99,7 +99,7 @@ CaptureRectangle::set_pingu (Pingu* p)
   if (pingu)
     {
       action_str = pingu->get_name();
-  
+
       if (pingu->get_wall_action() || pingu->get_fall_action())
         {
           action_str += "[";

@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.32 2003/04/13 22:00:55 grumbel Exp $
+//  $Id: pingus.cxx,v 1.33 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ Pingus::Pingus (PathGraph* arg_path)
   pos.y = 200;
 
   sprite.set_align (-sprite.get_width()/2,  2 - sprite.get_height());
-  sprite_standing.set_align (-sprite_standing.get_width()/2,  
+  sprite_standing.set_align (-sprite_standing.get_width()/2,
                              -sprite_standing.get_height());
 }
 
@@ -88,7 +88,7 @@ Pingus::update_walk (float delta)
   //std::cout << "Updating Walk: " << edge_path_position << "/" << edge_path_length << std::endl;
   // Update the edge_path_position
   edge_path_position += velocity * delta;
-  
+
   if (edge_path_position > edge_path.length()) // target reached
     {
       if (node_path.empty ()) // final target reached
@@ -157,7 +157,7 @@ Pingus::walk_to_node (NodeId target)
           // Reverse the pingu
           std::swap(target_node, source_node);
           edge_path.reverse();
-          edge_path_position = edge_path.length() - edge_path_position;         
+          edge_path_position = edge_path.length() - edge_path_position;
           node_path.clear();
           return true;
         }
@@ -165,7 +165,7 @@ Pingus::walk_to_node (NodeId target)
         {
           const PathfinderResult& node_path1 = path->get_path (source_node, target);
           const PathfinderResult& node_path2 = path->get_path (target_node, target);
-	
+
           // Check that a path exist
           if (node_path1.path.empty())
             {
@@ -247,7 +247,7 @@ Pingus::update_edge_path()
   edge_path.clear();
 
   Path* partial_path = path->graph.resolve_edge(source_node, target_node).data;
-          
+
   edge_path.push_back(path->graph.resolve_node(source_node).data->get_pos());
   // Why do we need to reverse this?!
   edge_path.reverse_insert(*partial_path);

@@ -1,5 +1,5 @@
-//  $Id: path_manager.hxx,v 1.5 2002/09/27 11:26:43 torangan Exp $
-// 
+//  $Id: path_manager.hxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -43,7 +43,7 @@ public:
   /** Search for a path which contains the file 'file' */
   bool find_path (const std::string& file);
 
-  /** Set the path directly without using find_path/add_path 
+  /** Set the path directly without using find_path/add_path
       Must include trailing slash */
   void set_path (const std::string& path);
 
@@ -55,7 +55,7 @@ public:
   /** Complete a releative path to the absolute path, the returned
       path contains a trailing slash */
   std::string complete (const std::string& relative_path);
-  
+
 private:
   PathManager (const PathManager&);
   PathManager& operator= (const PathManager&);

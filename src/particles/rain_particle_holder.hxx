@@ -1,4 +1,4 @@
-//  $Id: rain_particle_holder.hxx,v 1.4 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: rain_particle_holder.hxx,v 1.5 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ namespace Particles {
 class RainParticleHolder : public WorldObj
 {
   struct RainParticle {
-    bool  alive;    
+    bool  alive;
     bool  splash;
     bool  use_rain2_surf;
     int   splash_counter;
@@ -50,7 +50,7 @@ private:
   CL_Surface rain_splash;
 
   std::vector<RainParticle> particles;
-  
+
 public:
   RainParticleHolder ();
 

@@ -1,4 +1,4 @@
-//  $Id: sound_dummy.cxx,v 1.1 2003/02/18 17:30:32 grumbel Exp $
+//  $Id: sound_dummy.cxx,v 1.2 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,14 +23,14 @@
 
 namespace Sound {
 
-void 
+void
 PingusSoundDummy::real_play_sound(const std::string & filename, float /*volume*/, float /*panning*/)
 {
   pout(PINGUS_DEBUG_SOUND) << "PingusSoundDummy::real_play_sound: " << filename << std::endl;
 }
 
 
-void 
+void
 PingusSoundDummy::real_play_music(const std::string & filename, float /*volume*/)
 {
   pout(PINGUS_DEBUG_SOUND) << "PingusSoundDummy::real_play_music: " << filename << std::endl;

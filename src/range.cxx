@@ -1,4 +1,4 @@
-//  $Id: range.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: range.cxx,v 1.2 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,7 +77,7 @@ Range::operator++()
 {
   ++count;
   check_range();
-  
+
   return *this;
 }
 
@@ -86,7 +86,7 @@ Range::operator+=(int a)
 {
   count += a;
   check_range();
-  
+
   return *this;
 }
 
@@ -95,7 +95,7 @@ Range::operator-=(int a)
 {
   count -= a;
   check_range();
-  
+
   return *this;
 }
 
@@ -104,7 +104,7 @@ Range::operator=(int a)
 {
   count = a;
   check_range();
-  
+
   return *this;
 }
 

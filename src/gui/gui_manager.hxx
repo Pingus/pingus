@@ -1,5 +1,5 @@
-//  $Id: gui_manager.hxx,v 1.13 2002/12/20 01:22:32 grumbel Exp $
-// 
+//  $Id: gui_manager.hxx,v 1.14 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -30,8 +30,8 @@ namespace GUI
 {
   /** The GUIManager class holds a group of components and manages
       them. It dispatches the GameDelta to each individual
-      component 
-  
+      component
+
       FIXME: We translate GameDelta into another 'language' which is
       then understood by the GUI, this seems unclear, not sure at
       which point it is best to split the GameDelta into
@@ -60,7 +60,7 @@ namespace GUI
   public:
     GUIManager ();
     virtual ~GUIManager () {}
-    
+
     virtual void draw (GraphicContext& gc);
     virtual void update (const GameDelta& delta);
     virtual void update (float delta) { UNUSED_ARG (delta); }
@@ -74,9 +74,9 @@ namespace GUI
     /** */
     void remove (Component*);
 
-    Component* component_at (int x, int y);  
+    Component* component_at (int x, int y);
     virtual bool is_at (int x, int y);
-    
+
   private:
     GUIManager (const GUIManager&);
     GUIManager& operator= (const GUIManager&);

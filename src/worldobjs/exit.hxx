@@ -1,4 +1,4 @@
-//  $Id: exit.hxx,v 1.3 2002/10/10 12:25:54 grumbel Exp $
+//  $Id: exit.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,16 +40,16 @@ private:
 public:
   Exit (const WorldObjsData::ExitData& data_);
  ~Exit ();
-  
+
   void  on_startup ();
 
   void  draw (GraphicContext& gc);
   void  draw_smallmap(SmallMap* smallmap);
-  
+
   void  update ();
-  
+
   float get_z_pos () const;
-  
+
 private:
   Exit (const Exit&);
   Exit& operator= (const Exit&);

@@ -1,4 +1,4 @@
-//  $Id: cloud.cxx,v 1.1 2002/09/27 11:50:45 torangan Exp $
+//  $Id: cloud.cxx,v 1.2 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ Cloud::draw_offset (int x, int y, float s)
   } else {
     surface.put_screen(static_cast<int>((data->pos.x - 32 + x) * s),
 		       static_cast<int>((data->pos.y - 16 + y) * s),
-		       s, s);  
+		       s, s);
   }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: rect_editorobj.hxx,v 1.7 2002/09/28 11:52:23 torangan Exp $
+//  $Id: rect_editorobj.hxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,14 +39,14 @@ public:
 
   /** Draw the caputre rectangle around the object */
   virtual void   draw_mark (EditorNS::EditorView * view);
-  
+
   /** Return true when the object is under the given coordinates */
   virtual bool   is_over (const Vector&);
 
   /** Return true if the current object is inside the current
       selection rectangle */
   virtual bool   is_in_rect (const CL_Rect&);
-  
+
 protected:
   RectEditorObj (const RectEditorObj& old);
   RectEditorObj& operator= (const RectEditorObj& old);

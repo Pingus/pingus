@@ -1,4 +1,4 @@
-//  $Id: entrance.cxx,v 1.12 2003/03/21 22:08:06 grumbel Exp $
+//  $Id: entrance.cxx,v 1.13 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,9 +70,9 @@ Entrance::create_pingu ()
 
   Pingu* pingu = world->get_pingus()->create_pingu(data->pos, data->owner_id);
 
-  if (pingu) // still pingus in the pool 
+  if (pingu) // still pingus in the pool
     {
-      switch (data->direction) 
+      switch (data->direction)
         {
         case WorldObjsData::EntranceData::LEFT:
           d.left();
@@ -80,11 +80,11 @@ Entrance::create_pingu ()
           break;
 
         case WorldObjsData::EntranceData::MISC:
-          if (last_direction) 
+          if (last_direction)
             {
               d.left();
               last_direction = 0;
-            } 
+            }
           else
             {
               d.right();
@@ -92,12 +92,12 @@ Entrance::create_pingu ()
             }
           pingu->set_direction(d);
           break;
-	
-        case WorldObjsData::EntranceData::RIGHT:  
+
+        case WorldObjsData::EntranceData::RIGHT:
           d.right();
           pingu->set_direction(d);
           break;
-    
+
         default:
           std::cout << "Entrance:: Warning direction is wrong: " << data->direction << std::endl;
           d.right();
@@ -125,7 +125,7 @@ Entrance::update ()
 void
 Entrance::draw (GraphicContext& gc)
 {
-  if (!surface) 
+  if (!surface)
     {
       // Entrances have only a surface for historical reasons
       //std::cout << "Entrance::draw (GraphicContext& gc): entrance without a surface?!" << std::endl;

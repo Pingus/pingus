@@ -1,4 +1,4 @@
-//  $Id: laser_exit_obj.cxx,v 1.10 2002/09/28 11:52:25 torangan Exp $
+//  $Id: laser_exit_obj.cxx,v 1.11 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 
 namespace EditorObjs {
 
-LaserExitObj::LaserExitObj (const WorldObjsData::LaserExitData& data_) 
+LaserExitObj::LaserExitObj (const WorldObjsData::LaserExitData& data_)
   : data(new WorldObjsData::LaserExitData(data_)),
     frame(0)
 {
@@ -65,14 +65,14 @@ LaserExitObj::draw (EditorNS::EditorView* view)
   view->draw(sprite, data->pos, frame);
 }
 
-std::string  
+std::string
 LaserExitObj::status_line ()
 {
   char str[64];
   snprintf (str, 64, "LaserExitObj: %4.2fx%4.2fx%4.2f", data->pos.x, data->pos.y, data->pos.z);
   return str;
 }
-  
+
 } // namespace EditorObjs
 
 /* EOF */

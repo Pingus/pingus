@@ -1,4 +1,4 @@
-//  $Id: config.cxx,v 1.14 2003/04/16 01:15:45 grumbel Exp $
+//  $Id: config.cxx,v 1.15 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,9 +67,9 @@ ConfigParser::open(std::string filename)
   in.open(filename.c_str());
   eof = false;
 
-  if (!in) 
+  if (!in)
     PingusError::raise(_("Couldn't open: ") + filename);
-    
+
   if (verbose > 1)
     std::cout << "Successfully opened plf file." << std::endl;
 }
@@ -113,16 +113,16 @@ ConfigParser::get_raw_atom(void)
 
       if (eof)
 	return ' ';
-      
+
       return get_atom();
     }
 
-  if (isspace(c)) 
+  if (isspace(c))
     {
       temp_c = c;
       while (isspace(c = get_char()));
       in.putback(c);
-      if (isspace(last_atom)) 
+      if (isspace(last_atom))
 	return get_atom();
       return temp_c;
     }
@@ -135,7 +135,7 @@ char
 ConfigParser::get_atom(void)
 {
   last_atom = get_raw_atom();
-  
+
   return last_atom;
 }
 
@@ -145,32 +145,32 @@ ConfigParser::get_valueid(void)
 {
   std::string ret_val;
   char   atom;
-  
+
   jump();
 
-  while(true) 
+  while(true)
     {
       atom = get_atom();
-      
+
       if (isgraph(atom) && atom != '=')
 	{
 	  ret_val += atom;
-	} 
-      else if (isspace(atom)) 
+	}
+      else if (isspace(atom))
 	{
 	  return ret_val;
 	}
-      else if (atom == '=') 
+      else if (atom == '=')
 	{
 	  in.putback(atom);
 	  return ret_val;
 	}
-      else 
+      else
 	{
 	  syntax_error(std::string(_("Unexpected char: '")) + atom + "'");
 	}
-    } 
-  
+    }
+
   return ret_val;
 }
 
@@ -196,7 +196,7 @@ ConfigParser::get_value(void)
       in.putback(atom);
       return ret_val;
     }
-   
+
     if (!isalnum(atom) && atom != '-' && atom != '_') {
       if (isspace(atom)){
 	return ret_val;
@@ -204,10 +204,10 @@ ConfigParser::get_value(void)
 	syntax_error(std::string(_("Unexpected char '")) + atom + "'");
       }
     }
-    
+
     ret_val += atom;
   }
-  
+
   return ret_val;
 }
 
@@ -217,11 +217,11 @@ void
 ConfigParser::jump_after(char c)
 {
   char atom;
-  
+
   jump();
 
   atom = get_atom();
-  if (isspace(atom) || atom == c) 
+  if (isspace(atom) || atom == c)
     {
       if (atom == c) {
 	return;
@@ -230,7 +230,7 @@ ConfigParser::jump_after(char c)
 	if (atom == c)
 	  return;
       }
-    } 
+    }
   syntax_error(std::string("jump_after(): Expected '") + c + "', got '" + atom + "'" );
 }
 
@@ -255,7 +255,7 @@ ConfigParser::syntax_error(std::string error = "")
   char tmp[16];
 
   snprintf(tmp, 16, "%d\n", lineno);
-  
+
   error_str = std::string("PLF: Syntax Error at line ") + tmp;
 
   if (error != "")
@@ -271,14 +271,14 @@ ConfigParser::parse(void)
   std::string valueid;
   std::string value;
 
-  try 
+  try
     {
-      while(!eof) 
+      while(!eof)
 	{
-	  valueid = get_valueid();   
+	  valueid = get_valueid();
 	  jump_after('=');
 	  value   = get_value();
-	  jump_after(';'); 
+	  jump_after(';');
 	  set_value(valueid, value);
 	}
     }
@@ -289,7 +289,7 @@ ConfigParser::parse(void)
 
 Config::Config()
 {
-  
+
 }
 
 Config::Config(std::string f)
@@ -390,7 +390,7 @@ Config::str_to_bool(const std::string& str)
     {
       PingusError::raise("Config: value: " + str + " is not of type bool.");
     }
-    
+
   return false; // never reached
 }
 
@@ -399,7 +399,7 @@ Config::str_to_int(const std::string& str)
 {
   int ret_val;
 
-  if (sscanf(str.c_str(), "%d", &ret_val) != 1) 
+  if (sscanf(str.c_str(), "%d", &ret_val) != 1)
     {
       PingusError::raise("Config: Couldn't convert std::string to integer: " + str);
     }

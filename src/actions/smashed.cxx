@@ -1,4 +1,4 @@
-//  $Id: smashed.cxx,v 1.13 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: smashed.cxx,v 1.14 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ Smashed::Smashed (Pingu* p)
   sprite.set_align_center_bottom();
 }
 
-void 
+void
 Smashed::draw (GraphicContext& gc)
 {
   gc.draw (sprite, pingu->get_pos ());

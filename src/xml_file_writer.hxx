@@ -1,5 +1,5 @@
-//  $Id: xml_file_writer.hxx,v 1.4 2003/03/26 12:01:17 grumbel Exp $
-// 
+//  $Id: xml_file_writer.hxx,v 1.5 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -51,11 +51,11 @@ public:
   void write_vector (const char* name, const Vector&);
 
   template<class E, class F>
-  void write_enum (const char* name, E value, F enum2string) 
+  void write_enum (const char* name, E value, F enum2string)
   {
     (*out) << "<" << name << ">" << enum2string(value) << "</" << name << ">\n";
   }
-  
+
 private:
   XMLFileWriter (const XMLFileWriter&);
   XMLFileWriter& operator= (const XMLFileWriter&);

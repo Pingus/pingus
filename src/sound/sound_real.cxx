@@ -1,4 +1,4 @@
-//  $Id: sound_real.cxx,v 1.7 2003/04/12 02:05:47 grumbel Exp $
+//  $Id: sound_real.cxx,v 1.8 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,11 +41,11 @@ PingusSoundReal::PingusSoundReal ()
   : music_sample (0), music_session(0)
 {
   pout(PINGUS_DEBUG_SOUND) << "Initializing ClanLib-Sound" << std::endl;
-    
+
   CL_SetupSound::init();
-  
+
   pout(PINGUS_DEBUG_SOUND) << "Initializing ClanLib-MikMod" << std::endl;
-  
+
 #ifdef HAVE_LIBCLANVORBIS
   CL_SetupVorbis::init();
 #endif
@@ -85,20 +85,20 @@ PingusSoundReal::real_play_sound(const std::string& name, float volume, float pa
 
   SoundHandle buffer;
   CL_SoundBuffer_Session sess;
-  
+
   try {
     buffer = SoundResMgr::load(name);
     sess   = buffer->prepare();
   } catch (const CL_Error & e) {
     perr(PINGUS_DEBUG_SOUND) << "Can't open sound '" << name << "' -- skipping\n"
-			     << "  CL_Error: " << e.message << std::endl;    
+			     << "  CL_Error: " << e.message << std::endl;
     return;
   }
-  
+
   sess.set_volume(volume);
   sess.set_pan(panning);
   sess.set_looping(false);
-  sess.play();  
+  sess.play();
 }
 
 void
@@ -129,12 +129,12 @@ PingusSoundReal::real_play_music (const std::string & arg_filename, float volume
     return;
 
   pout(PINGUS_DEBUG_SOUND) << "PingusSoundReal: Playing music: " << filename << std::endl;
-  
+
   real_stop_music();
 
   music_sample = 0;
 
-  if (filename.substr(filename.size()-4, 4) == ".ogg") 
+  if (filename.substr(filename.size()-4, 4) == ".ogg")
     {
 #ifdef HAVE_LIBCLANVORBIS
       music_sample = new CL_SoundBuffer (new CL_VorbisSoundProvider(filename.c_str()), true);
@@ -142,19 +142,19 @@ PingusSoundReal::real_play_music (const std::string & arg_filename, float volume
       music_sample = 0;
 #endif
     }
-  else if (filename.substr(filename.size()-4, 4) == ".wav") 
+  else if (filename.substr(filename.size()-4, 4) == ".wav")
     {
       music_sample = new CL_SoundBuffer (new CL_Sample(filename.c_str(), NULL), true);
-    } 
+    }
   else
     {  // MikMod should support the rest...
 #ifdef HAVE_LIBCLANMIKMOD
       music_sample = new CL_SoundBuffer (new CL_Streamed_MikModSample(filename.c_str()), true);
 #else
       music_sample = 0;
-#endif    
+#endif
     }
-  
+
   if (music_sample)
     {
       music_session = new CL_SoundBuffer_Session(music_sample->prepare());

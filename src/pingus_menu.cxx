@@ -1,4 +1,4 @@
-//  $Id: pingus_menu.cxx,v 1.19 2003/04/10 16:01:02 grumbel Exp $
+//  $Id: pingus_menu.cxx,v 1.20 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,23 +75,23 @@ PingusMenu::draw_foreground(GraphicContext& gc)
 {
   if (gc.get_height() == 480)
     {
-      gc.draw(background, 
-              (gc.get_width()/2) - (background.get_width()/2), 
+      gc.draw(background,
+              (gc.get_width()/2) - (background.get_width()/2),
               20);
     }
   else
     {
-      gc.draw(background, (gc.get_width()/2) - (background.get_width()/2), 
+      gc.draw(background, (gc.get_width()/2) - (background.get_width()/2),
               CL_Display::get_height()/10);
     }
 #ifdef OFFICIAL_PINGUS_BUILD
-  gc.print_left(Fonts::pingus_small, 20, CL_Display::get_height()-100, 
+  gc.print_left(Fonts::pingus_small, 20, CL_Display::get_height()-100,
                 "Pingus version "VERSION", Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n");
 #else
-  gc.print_left(Fonts::pingus_small, 20, CL_Display::get_height()-100, 
+  gc.print_left(Fonts::pingus_small, 20, CL_Display::get_height()-100,
                 "Pingus version "VERSION" (unofficial build), Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n");
 #endif
-  gc.print_left(Fonts::pingus_small, 20, CL_Display::get_height()-70, 
+  gc.print_left(Fonts::pingus_small, 20, CL_Display::get_height()-70,
                 "Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome\n"
                 "to redistribute it under certain conditions; see the file COPYING for details.\n");
 }

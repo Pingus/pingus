@@ -1,4 +1,4 @@
-//  $Id: col_map.hxx,v 1.10 2002/10/07 23:09:14 grumbel Exp $
+//  $Id: col_map.hxx,v 1.11 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,13 +38,13 @@ private:
   /** The serial number indicates the state of the colmap, on every
       change of the colmap it will get increased. */
   unsigned int serial;
-  
+
   /** The width of the collision map. */
   int    width;
 
   /** The height of the collision map. */
   int   height;
-  
+
   /** A array of uchar, each uchar represents a pixel on the map. */
   unsigned char* colmap;
 
@@ -71,7 +71,7 @@ public:
   /** @return a number which represents the state of the collision
       map, once it changes the serial changes also */
   unsigned get_serial();
-  
+
   /** Return true if the given GroundType i*/
   bool blit_allowed (int x, int y,  Groundtype::GPType);
 
@@ -84,7 +84,7 @@ public:
   void remove(CL_SurfaceProvider*, int x, int y);
 
   void draw(GraphicContext& gc);
-  
+
 private:
   ColMap (const ColMap&);
   ColMap& operator= (const ColMap&);

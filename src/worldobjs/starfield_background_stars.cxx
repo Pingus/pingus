@@ -1,4 +1,4 @@
-//  $Id: starfield_background_stars.cxx,v 1.6 2003/02/19 09:50:37 grumbel Exp $
+//  $Id: starfield_background_stars.cxx,v 1.7 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 #include "../pingus_resource.hxx"
 #include "starfield_background_stars.hxx"
 
-namespace WorldObjs { 
+namespace WorldObjs {
 
 CL_Surface StarfieldBackgroundStars::small_star;
 CL_Surface StarfieldBackgroundStars::middle_star;
@@ -32,7 +32,7 @@ bool       StarfieldBackgroundStars::is_init(false);
 StarfieldBackgroundStars::StarfieldBackgroundStars (Type type)
 {
   init ();
- 
+
   switch (type)
     {
     case SMALL_STAR:
@@ -45,10 +45,10 @@ StarfieldBackgroundStars::StarfieldBackgroundStars (Type type)
       sur = large_star;
       break;
     }
- 
+
   x_pos = rand() % world->get_width();
   y_pos = rand() % world->get_height();
-  
+
   x_add = rand() % 5 + 1.0f;
   y_add = 0.0f;
 }
@@ -70,7 +70,7 @@ StarfieldBackgroundStars::update ()
 {
   x_pos += x_add;
   y_pos += y_add;
-  
+
   if (x_pos > world->get_width())
     {
       x_pos = -32;

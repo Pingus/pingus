@@ -1,5 +1,5 @@
-//  $Id: smallmap.hxx,v 1.17 2003/04/02 12:04:04 grumbel Exp $
-// 
+//  $Id: smallmap.hxx,v 1.18 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -43,7 +43,7 @@ private:
 
   /** Graphic surface for the generated rectanglar background of the small map */
   CL_Surface sur;
-  
+
   /** The canvas that represents the small-colmap */
   CL_Canvas* canvas;
 
@@ -68,7 +68,7 @@ private:
   /** Max height of the small map */
   int max_height;
 
-  /** Indicates whether the playfield should can be scrolled around depending 
+  /** Indicates whether the playfield should can be scrolled around depending
       on the position of the cursor in the small map */
   bool scroll_mode;
 
@@ -110,16 +110,16 @@ public:
   void update(float delta);
   /*}*/
 
-  /** draws a symbolic sprite onto the smallmap 
+  /** draws a symbolic sprite onto the smallmap
       @param sprite the Sprite to draw, it will keep its original size
       @param pos the position to draw it in World COs, it will get
       recalculated to screen CO */
   void draw_sprite(Sprite sprite, Vector pos);
-  
+
 private:
   void init();
   void draw_pingus();
-  
+
   SmallMap (const SmallMap&);
   SmallMap& operator= (const SmallMap&);
 };

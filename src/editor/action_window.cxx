@@ -1,4 +1,4 @@
-//  $Id: action_window.cxx,v 1.15 2003/04/18 17:08:56 grumbel Exp $
+//  $Id: action_window.cxx,v 1.16 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ ActionWindow::ActionWindow (CL_Component* arg_parent, std::vector<ActionData>* a
 {
   window = new CL_Window (CL_Rect(0, 0,
   				  200, (actions->size() * 20) + 80), "Pingus Actions", parent);
-  
+
   //window = new CL_Frame (CL_Rect (0, 0, 200, (actions->size() * 20) + 80), parent);
   //window->enable_fill (true);
 
@@ -68,7 +68,7 @@ ActionWindow::ActionWindow (CL_Component* arg_parent, std::vector<ActionData>* a
 
   ok_button_slot     = ok_button->sig_clicked ().connect (this, &ActionWindow::ok_clicked);
   cancel_button_slot = cancel_button->sig_clicked ().connect (this, &ActionWindow::cancel_clicked);
-  
+
   hide ();
   //window->run ();
   window->set_position(100, 100);
@@ -89,7 +89,7 @@ ActionWindow::hide ()
   window->show (false);
 }
 
-void 
+void
 ActionWindow::ok_clicked ()
 {
   //std::cout << "OK Clicked" << std::endl;
@@ -146,7 +146,7 @@ ActionWindow::write_data ()
 {
   //std::cout << "Writing data" << std::endl;
 
-  for (unsigned int i = 0; i < default_actions.size(); ++i)  
+  for (unsigned int i = 0; i < default_actions.size(); ++i)
     {
       if (checkboxes[i]->is_checked ())
 	{
@@ -157,12 +157,12 @@ ActionWindow::write_data ()
 	      ActionData data;
 	      from_string(inputs[i]->get_text (), data.number_of);
 	      data.name = default_actions[i].name;
-	      
+
 	      actions->push_back (data);
 	    }
 	  else
 	    {
-	      from_string(inputs[i]->get_text (), act->number_of); 
+	      from_string(inputs[i]->get_text (), act->number_of);
 	    }
 	}
       else

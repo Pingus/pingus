@@ -1,4 +1,4 @@
-//  $Id: path_graph.cxx,v 1.20 2003/04/01 18:24:25 grumbel Exp $
+//  $Id: path_graph.cxx,v 1.21 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ PathGraph::PathGraph(WorldMap* arg_worldmap, xmlDocPtr doc, xmlNodePtr cur)
   // cur is at <graph>...
   cur = cur->children;
   cur = XMLhelper::skip_blank(cur);
-  
+
   while (cur)
     {
       if (XMLhelper::equal_str(cur->name, "nodes"))
@@ -73,7 +73,7 @@ PathGraph::parse_nodes(xmlDocPtr doc, xmlNodePtr cur)
   cur = XMLhelper::skip_blank(cur);
 
   //std::cout << "PathGraph::parse_nodes(xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
-  
+
   while (cur)
     {
       //std::cout << "parsing nodes" << std::endl;
@@ -100,7 +100,7 @@ PathGraph::parse_nodes(xmlDocPtr doc, xmlNodePtr cur)
 
       cur = cur->next;
       cur = XMLhelper::skip_blank(cur);
-    }  
+    }
 }
 
 void
@@ -148,7 +148,7 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
                 {
                   std::cout << "12929929: " << child_cur->name  << std::endl;
                 }
-              
+
               child_cur = child_cur->next;
               child_cur = XMLhelper::skip_blank(child_cur);
             }
@@ -164,19 +164,19 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
           // FIXME: Memory leak
           if (pingus_debug_flags & PINGUS_DEBUG_WORLDMAP)
             worldmap->add_drawable(new PathDrawable(full_path));
-          
-          // FIXME: No error checking, 
+
+          // FIXME: No error checking,
           EdgeId id1 = graph.add_edge(path, // FIXME: Memory leak!
-                                      lookup_node(destination), lookup_node(source), 
+                                      lookup_node(destination), lookup_node(source),
                                       cost /* costs */);
 
           Path* path2 = new Path();
           path2->reverse_insert(*path);
           //EdgeId id2 =
           graph.add_edge(path2, // FIXME: Memory leak!
-                         lookup_node(source), lookup_node(destination), 
+                         lookup_node(source), lookup_node(destination),
                          cost /* costs */);
-          
+
           //std::cout << "Cost: " << cost << std::endl;
 
           // FIXME: edge lookup is flawed, since we have different edges in both directions
@@ -190,7 +190,7 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
 
       cur = cur->next;
       cur = XMLhelper::skip_blank(cur);
-    }    
+    }
 }
 
 PathfinderResult
@@ -263,13 +263,13 @@ PathGraph::lookup_edge(NodeId id)
         }
     }
   std::cout << "PathGraph: Couldn't find id: " << id << std::endl;
-  return "error_node";  
+  return "error_node";
 }
 
 Dot*
 PathGraph::get_dot(NodeId id)
 {
-  return graph.resolve_node(id).data; 
+  return graph.resolve_node(id).data;
 }
 
 Dot*
@@ -281,7 +281,7 @@ PathGraph::get_dot(float x_pos, float y_pos)
       float y = y_pos - (*i)->get_pos().y;
 
       if (sqrt(x*x + y*y) < 30.0f)
-        return *i;        
+        return *i;
     }
   return 0;
 }

@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_data.cxx,v 1.11 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: conveyor_belt_data.cxx,v 1.12 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@
 
 namespace WorldObjsData {
 
-ConveyorBeltData::ConveyorBeltData () 
+ConveyorBeltData::ConveyorBeltData ()
   : width(5),
     speed(2),
     counter(0)
@@ -54,7 +54,7 @@ ConveyorBeltData::ConveyorBeltData (const ConveyorBeltData& old)
 
 /** Writte the content of this object formated as xml to the given
     stream */
-void 
+void
 ConveyorBeltData::write_xml (std::ostream& xml)
 {
   XMLFileWriter writer(xml);
@@ -65,7 +65,7 @@ ConveyorBeltData::write_xml (std::ostream& xml)
   writer.end_section();
 }
 
-void 
+void
 ConveyorBeltData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::ConveyorBelt(*this));

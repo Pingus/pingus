@@ -1,4 +1,4 @@
-//  $Id: level_result.hxx,v 1.5 2002/09/27 11:26:43 torangan Exp $
+//  $Id: level_result.hxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ public:
 
   void   draw(void);
   std::string get_message(int);
-  
+
 private:
   PingusLevelResult (const PingusLevelResult&);
   PingusLevelResult& operator= (const PingusLevelResult&);

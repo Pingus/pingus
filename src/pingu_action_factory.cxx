@@ -1,4 +1,4 @@
-//  $Id: pingu_action_factory.cxx,v 1.14 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: pingu_action_factory.cxx,v 1.15 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,7 +68,7 @@ PinguActionFactory::~PinguActionFactory ()
   factories.clear();
 }
 
-PinguActionFactory* 
+PinguActionFactory*
 PinguActionFactory::instance ()
 {
   if ( ! instance_)
@@ -91,7 +91,7 @@ PinguActionFactory::deinit()
   delete instance_;
 }
 
-void 
+void
 PinguActionFactory::register_core_actions ()
 {
   new PinguActionFactoryImpl<class Angel>          (Angel);
@@ -119,28 +119,28 @@ PinguActionFactory::register_core_actions ()
   new PinguActionFactoryImpl<class Walker>         (Walker);
 }
 
-PinguAction* 
+PinguAction*
 PinguActionFactory::create (Pingu* pingu, ActionName id)
 {
   //std::cout << "PinguActionFactory: number of actions: " << all_actions.size() << std::endl;
   std::map<ActionName, PinguActionAbstractFactory*>::iterator it = factories.find(id);
-  
+
   if (it == factories.end())
     PingusError::raise("PinguActionFactory: Invalid id: " + id);
-  else 
+  else
     {
       PinguAction* action = it->second->create (pingu);
       all_actions.push_back (action);
       return action;
     }
-    
+
   return 0; // never reached
 }
 
 void
 PinguActionFactory::delete_actions ()
 {
-  //std::cout << "PinguActionFactory::delete_actions (): Deleting all Actions: " 
+  //std::cout << "PinguActionFactory::delete_actions (): Deleting all Actions: "
   //<< all_actions.size() << std::endl;
   for (std::vector<PinguAction*>::iterator i = all_actions.begin ();
        i != all_actions.end (); ++i)
@@ -151,7 +151,7 @@ PinguActionFactory::delete_actions ()
   //std::cout << "PinguActionFactory::delete_actions (): Deleting all Actions: done" << std::endl;
 }
 
-void 
+void
 PinguActionFactory::register_factory (ActionName id, PinguActionAbstractFactory* factory)
 {
   // FIXME: Could need some more error checking

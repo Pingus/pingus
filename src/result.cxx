@@ -1,4 +1,4 @@
-//  $Id: result.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: result.cxx,v 1.3 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@
   saved = 0;
 }
 
-int 
+int
 Result::get_total()
 {
   return total;
@@ -63,13 +63,13 @@ Result::set_killed(int k)
   return killed = k;
 }
 
-int 
+int
 Result::set_saved(int s)
 {
   return saved = s;
 }
 
-int 
+int
 Result::set_time(int t)
 {
   return time = t;

@@ -1,4 +1,4 @@
-//  $Id: game_session_result.cxx,v 1.2 2002/08/23 15:49:48 torangan Exp $
+//  $Id: game_session_result.cxx,v 1.3 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ PingusGameSessionResult::percentage_saved ()
   return 100.0;
 }
 
-float 
+float
 PingusGameSessionResult::percentage_time ()
 {
   return 100.0;

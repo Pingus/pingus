@@ -1,4 +1,4 @@
-//  $Id: wav_provider.cxx,v 1.5 2002/12/29 23:29:00 torangan Exp $
+//  $Id: wav_provider.cxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,8 +41,8 @@ PingusWavProvider::load (const std::string& str)
     }
   else
     {
-      wav_data = Mix_LoadWAV(str.c_str()); 
-      
+      wav_data = Mix_LoadWAV(str.c_str());
+
       if (!wav_data)
 	{
 	  throw PingusError ("PingusWaveProvider: Couldn't open '" + str + "'");
@@ -52,10 +52,10 @@ PingusWavProvider::load (const std::string& str)
 
 	  wav_data->volume = 80;
 
-	  if (!wav_data) 
+	  if (!wav_data)
 	    {
 	      throw PingusError("PingusWavProvider: Couldn't load " + str + ": " + SDL_GetError());
-	    } 
+	    }
 	  else
 	    {
 	      wave[str] = wav_data;

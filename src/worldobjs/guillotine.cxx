@@ -1,4 +1,4 @@
-//  $Id: guillotine.cxx,v 1.8 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: guillotine.cxx,v 1.9 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
 
 namespace WorldObjs {
 
-Guillotine::Guillotine (const WorldObjsData::GuillotineData& data_) 
+Guillotine::Guillotine (const WorldObjsData::GuillotineData& data_)
   : data(new WorldObjsData::GuillotineData(data_)),
     killing(false)
 {
@@ -56,10 +56,10 @@ Guillotine::draw (GraphicContext& gc)
       gc.draw (data->surface, data->pos, data->counter + 12);
   } else {
     gc.draw (data->idle_surf, data->pos, data->idle_counter);
-  }   
+  }
 }
-  
-  
+
+
 float
 Guillotine::get_z_pos () const
 {
@@ -88,7 +88,7 @@ Guillotine::update ()
 void
 Guillotine::catch_pingu (Pingu* pingu)
 {
-  if (!killing) 
+  if (!killing)
     {
       if (pingu->is_inside (static_cast<int>(data->pos.x + 38), static_cast<int>(data->pos.y + 90),
 			    static_cast<int>(data->pos.x + 42), static_cast<int>(data->pos.y + 98)))

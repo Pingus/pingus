@@ -1,4 +1,4 @@
-//  $Id: editor.hxx,v 1.24 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: editor.hxx,v 1.25 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ private:
 
   CL_Slot on_button_press_slot;
   CL_Slot on_button_release_slot;
-  
+
   int event_handler_ref_counter;
 
   CL_Font* font;
@@ -72,10 +72,10 @@ private:
   ScrollMap* scroll_map;
   ObjectManager* object_manager;
   Selection* selection;
-  EditorView* view; 
+  EditorView* view;
   StatusLine* status_line;
   ObjectSelector* object_selector;
-  
+
   // GUI Stuff
   CL_StyleManager_Default* style_manager;
   CL_GUIManager* gui;
@@ -94,7 +94,7 @@ private:
   Editor ();
 public:
   virtual ~Editor ();
-  
+
   static Editor* instance ();
   static void init();
   static void deinit();
@@ -131,7 +131,7 @@ public:
   void on_shutdown ();
 
   EditorNS::PropertyWindow* get_property_window () { return property_window; }
-  
+
 private:
   Editor (const Editor&);
   Editor& operator= (const Editor&);

@@ -1,4 +1,4 @@
-//  $Id: switch_door.cxx,v 1.23 2003/02/19 09:50:37 grumbel Exp $
+//  $Id: switch_door.cxx,v 1.24 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@
 
 namespace WorldObjs {
 
-SwitchDoor::SwitchDoor (const WorldObjsData::SwitchDoorData& data_) 
+SwitchDoor::SwitchDoor (const WorldObjsData::SwitchDoorData& data_)
   : data(new WorldObjsData::SwitchDoorData(data_)),
     door_box      (PingusResource::load_surface("switchdoor_box"      , "worldobjs")),
     door_tile     (PingusResource::load_surface("switchdoor_tile"     , "worldobjs")),
@@ -44,18 +44,18 @@ SwitchDoor::~SwitchDoor ()
   delete data;
 }
 
-void 
+void
 SwitchDoor::on_startup ()
 {
   world->get_colmap()->put(door_box,
                            static_cast<int>(data->door_pos.x),
 			   static_cast<int>(data->door_pos.y),
 			   Groundtype::GP_SOLID);
-			   
+
   for (int i=0; i < data->door_height; ++i)
     world->get_colmap()->put(door_tile_cmap,
-			     static_cast<int>(data->door_pos.x), 
-			     static_cast<int>(data->door_pos.y) 
+			     static_cast<int>(data->door_pos.x),
+			     static_cast<int>(data->door_pos.y)
 			     + i * door_tile.get_height()
 			     + door_box.get_height(),
 			     Groundtype::GP_SOLID);
@@ -66,9 +66,9 @@ SwitchDoor::draw (GraphicContext& gc)
 {
   gc.draw (door_box, data->door_pos);
   for (int i=0; i < current_door_height; ++i)
-    gc.draw(door_tile, 
-	    static_cast<int>(data->door_pos.x),  
-	    static_cast<int>(data->door_pos.y) 
+    gc.draw(door_tile,
+	    static_cast<int>(data->door_pos.x),
+	    static_cast<int>(data->door_pos.y)
 	    + i * door_tile.get_height()
 	    + door_box.get_height());
 
@@ -84,7 +84,7 @@ SwitchDoor::update ()
 	{
 	  // Check if a pingu is passing the switch
 	  PinguHolder* holder = world->get_pingus();
-      
+
 	  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
 	    {
 	      if (   (*pingu)->get_x() > data->switch_pos.x
@@ -111,7 +111,7 @@ SwitchDoor::update ()
 				       Groundtype::GP_NOTHING);
 	      for (int i=0; i < data->door_height; ++i)
 		world->get_colmap()->put(door_tile_cmap,
-					 static_cast<int>(data->door_pos.x), 
+					 static_cast<int>(data->door_pos.x),
 					 static_cast<int>(data->door_pos.y) + i * door_tile.get_height()
 					                                    + door_box.get_height(),
 					 Groundtype::GP_NOTHING);

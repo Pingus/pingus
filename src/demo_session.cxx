@@ -1,4 +1,4 @@
-//  $Id: demo_session.cxx,v 1.7 2003/03/21 22:08:06 grumbel Exp $
+//  $Id: demo_session.cxx,v 1.8 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,7 +57,7 @@ DemoSession::draw_background(GraphicContext& gc)
 
   if (CL_Keyboard::get_keycode(CL_KEY_LEFT))
     gc.move(Vector(10.0, 0.0));
-  
+
   if(CL_Keyboard::get_keycode(CL_KEY_RIGHT))
     gc.move(Vector(-10.0, 0.0));
 
@@ -71,11 +71,11 @@ DemoSession::draw_background(GraphicContext& gc)
   float y_of = -gc.get_y_offset();
 
   x_of = Math::mid(float(gc.get_width()/2),
-                   x_of, 
+                   x_of,
                    float(world->get_width() - 1 - gc.get_width()/2));
 
   y_of = Math::mid(float(gc.get_height()/2),
-                   y_of, 
+                   y_of,
                    float(world->get_height() - 1 - gc.get_height()/2));
 
   gc.set_offset(-x_of, -y_of);

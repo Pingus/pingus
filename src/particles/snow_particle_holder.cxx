@@ -1,4 +1,4 @@
-//  $Id: snow_particle_holder.cxx,v 1.6 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: snow_particle_holder.cxx,v 1.7 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,7 +77,7 @@ SnowParticleHolder::add_particle (int x, int y, bool colliding)
         *it = SnowParticle(x, y, colliding);
         return;
       }
-	
+
 	// create new entry
   particles.push_back(SnowParticle(x, y, colliding));
 }
@@ -99,7 +99,7 @@ SnowParticleHolder::update ()
           it->alive = false;
 	  continue;
 	}
-      
+
       it->velocity.x += (Math::frand() - 0.5f) / 10;
 
       if (it->colliding)

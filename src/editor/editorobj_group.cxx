@@ -1,4 +1,4 @@
-//  $Id: editorobj_group.cxx,v 1.9 2003/03/05 22:18:51 grumbel Exp $
+//  $Id: editorobj_group.cxx,v 1.10 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ EditorObjGroup::~EditorObjGroup()
 {
 }
 
-void 
+void
 EditorObjGroup::set_position_offset(const Vector& offset)
 {
   upper_left_corner += offset;
@@ -68,7 +68,7 @@ EditorObjGroup::draw (EditorNS::EditorView * view)
     }
 }
 
-float 
+float
 EditorObjGroup::get_z_pos ()
 {
   /*for(std::vector<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
@@ -123,7 +123,7 @@ EditorObjGroup::add (EditorObj* obj)
     objs.push_back(new_obj);
 }
 
-std::vector<EditorObj*>* 
+std::vector<EditorObj*>*
 EditorObjGroup::get_objs()
 {
   return &objs;
@@ -149,7 +149,7 @@ EditorObj*
 EditorObjGroup::duplicate()
 {
   EditorObjGroup* editor_obj = new EditorObjGroup();
-  
+
   for(std::vector<EditorObj*>::iterator i = objs.begin();
       i != objs.end();
       ++i)
@@ -162,7 +162,7 @@ EditorObjGroup::duplicate()
   return editor_obj;
 }
 
-bool 
+bool
 EditorObjGroup::is_over(const Vector& pos)
 {
   for(std::vector<EditorObj*>::iterator i = objs.begin();
@@ -175,7 +175,7 @@ EditorObjGroup::is_over(const Vector& pos)
   return false;
 }
 
-bool 
+bool
 EditorObjGroup::is_in_rect(const CL_Rect& rect)
 {
   for(std::vector<EditorObj*>::iterator i = objs.begin();
@@ -199,7 +199,7 @@ EditorObjGroup::vertical_flip ()
     }
 }
 
-void 
+void
 EditorObjGroup::horizontal_flip ()
 {
   for(std::vector<EditorObj*>::iterator i = objs.begin();
@@ -210,7 +210,7 @@ EditorObjGroup::horizontal_flip ()
     }
 }
 
-void 
+void
 EditorObjGroup::rotate_90 ()
 {
   for(std::vector<EditorObj*>::iterator i = objs.begin();
@@ -221,7 +221,7 @@ EditorObjGroup::rotate_90 ()
     }
 }
 
-void 
+void
 EditorObjGroup::rotate_270 ()
 {
   for(std::vector<EditorObj*>::iterator i = objs.begin();

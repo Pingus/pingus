@@ -1,4 +1,4 @@
-// $Id: miner.cxx,v 1.21 2003/03/04 13:59:44 grumbel Exp $
+// $Id: miner.cxx,v 1.22 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,10 +57,10 @@ Miner::update ()
     {
       if (!(slow_count % 3))
 	{
-	  WorldObj::get_world()->get_colmap()->remove(miner_radius.get_provider(), 
-						      static_cast<int>(pingu->get_x() - (miner_radius_width / 2) + pingu->direction), 
+	  WorldObj::get_world()->get_colmap()->remove(miner_radius.get_provider(),
+						      static_cast<int>(pingu->get_x() - (miner_radius_width / 2) + pingu->direction),
 						      static_cast<int>(pingu->get_y() - miner_radius_width + 1) );
-	  WorldObj::get_world()->get_gfx_map()->remove(miner_radius_gfx.get_provider(), 
+	  WorldObj::get_world()->get_gfx_map()->remove(miner_radius_gfx.get_provider(),
 						       static_cast<int>(pingu->get_x() - (miner_radius_gfx_width / 2) + pingu->direction),
 						       static_cast<int>(pingu->get_y() - miner_radius_gfx_width + 1) );
 	}
@@ -70,11 +70,11 @@ Miner::update ()
 
   if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING)
     {
-      WorldObj::get_world()->get_colmap()->remove(miner_radius, 
-						  static_cast<int>(pingu->get_x() - (miner_radius_width / 2) + pingu->direction), 
+      WorldObj::get_world()->get_colmap()->remove(miner_radius,
+						  static_cast<int>(pingu->get_x() - (miner_radius_width / 2) + pingu->direction),
 						  static_cast<int>(pingu->get_y() - miner_radius_width + 3) );
       WorldObj::get_world()->get_gfx_map()->remove(miner_radius_gfx,
-						   static_cast<int>(pingu->get_x() - (miner_radius_width / 2) + pingu->direction), 
+						   static_cast<int>(pingu->get_x() - (miner_radius_width / 2) + pingu->direction),
 						   static_cast<int>(pingu->get_y() - miner_radius_width + 3) );
       pingu->set_action(Actions::Walker);
     }
@@ -85,7 +85,7 @@ Miner::update ()
 	PingusSound::play_sound("chink");
 
       WorldObj::get_world()->get_colmap ()->remove(miner_radius,
-						   static_cast<int>(pingu->get_x() - (miner_radius_width / 2) + pingu->direction), 
+						   static_cast<int>(pingu->get_x() - (miner_radius_width / 2) + pingu->direction),
 						   static_cast<int>(pingu->get_y() - miner_radius_width + 1) );
       WorldObj::get_world()->get_gfx_map()->remove(miner_radius_gfx,
 						   static_cast<int>(pingu->get_x() - (miner_radius_gfx_width / 2) + pingu->direction),
@@ -97,7 +97,7 @@ Miner::update ()
     }
 }
 
-void 
+void
 Miner::draw (GraphicContext& gc)
 {
   gc.draw(sprite, pingu->get_pos());

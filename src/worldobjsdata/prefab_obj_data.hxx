@@ -1,5 +1,5 @@
-//  $Id: prefab_obj_data.hxx,v 1.8 2003/03/05 19:55:14 grumbel Exp $
-// 
+//  $Id: prefab_obj_data.hxx,v 1.9 2003/04/19 10:23:19 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -47,7 +47,7 @@ public:
 
   /** The uniq identifer of this prefab */
   std::string type;
-  
+
   /** A pointer to the prefab (just for caching, this is not real data
       of this object, since it can be consturcted from the name) */
   Prefab* data;
@@ -57,7 +57,7 @@ public:
   /** The PrefabData is flattened to a WorldObjGroup, the World
       doesn't need to keep track of prefabs */
   void insert_WorldObjs (World*);
-  
+
   /** Create a EditorObjs::PrefabObj from the prefab data */
   void insert_EditorObjs (EditorNS::EditorObjMgr*);
 

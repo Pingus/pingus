@@ -1,4 +1,4 @@
-//  $Id: hotspot.cxx,v 1.6 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: hotspot.cxx,v 1.7 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ Hotspot::update()
   sprite.update();
 }
 
-void 
+void
 Hotspot::draw (GraphicContext& gc)
 {
   // FIXME: para support doesnn't work correctly

@@ -1,4 +1,4 @@
-//  $Id: level_desc.cxx,v 1.10 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: level_desc.cxx,v 1.11 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ PingusLevelDesc::draw(PingusLevelDesc::LoadingStatus status)
 {
   int x_pos = CL_Display::get_width() / 2 ;
   int y_pos = 120;
-    
+
   for(int y = 0; y < CL_Display::get_height(); y += background.get_height())
     for(int x = 0; x < CL_Display::get_width(); x += background.get_width())
       background.put_screen(x, y);
@@ -63,10 +63,10 @@ PingusLevelDesc::draw(PingusLevelDesc::LoadingStatus status)
     description.print_center(x_pos, y_pos);
     y_pos += description.get_height() + 40;
   }
-  
+
   if (!plf->get_author().empty())
     {
-      font->print_center(CL_Display::get_width() / 2, 
+      font->print_center(CL_Display::get_width() / 2,
 			 CL_Display::get_height() - 30,
 			 (_("Designed by ") + plf->get_author()).c_str());
     }
@@ -81,11 +81,11 @@ PingusLevelDesc::draw(PingusLevelDesc::LoadingStatus status)
 
   if (status == LOADING) {
     font->print_center(CL_Display::get_width() / 2, CL_Display::get_height() - 80, _("Loading..."));
-    Display::flip_display();    
+    Display::flip_display();
   } else {
     font->print_center(CL_Display::get_width() / 2, CL_Display::get_height() - 80, _("Loading finished. Press a mouse button to start the level"));
     Display::flip_display();
-    
+
     /*
     // FIXME: Busy waiting... ugly
     while (!controller->pause->is_pressed () && !controller->left->is_pressed ())
@@ -98,4 +98,4 @@ PingusLevelDesc::draw(PingusLevelDesc::LoadingStatus status)
 }
 
 /* EOF */
-  
+

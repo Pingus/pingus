@@ -1,4 +1,4 @@
-//  $Id: solid_color_background_obj.cxx,v 1.6 2002/11/30 17:11:55 grumbel Exp $
+//  $Id: solid_color_background_obj.cxx,v 1.7 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,8 +61,8 @@ SolidColorBackgroundObj::get_z_pos ()
 
 Vector
 SolidColorBackgroundObj::get_upper_left_corner ()
-{ 
-  return data->pos; 
+{
+  return data->pos;
 }
 
 void
@@ -82,21 +82,21 @@ void
 SolidColorBackgroundObj::set_position_offset (const Vector& offset)
 {
   data->pos += offset;
-}  
+}
 
 std::string
 SolidColorBackgroundObj::status_line ()
 {
-  return "SolidColorBackground: " 
+  return "SolidColorBackground: "
 	 + to_string(data->pos.x) + ", "
 	 + to_string(data->pos.y) + ", "
 	 + to_string(data->pos.z);
 }
 
-EditorNS::PropertyFrame* 
+EditorNS::PropertyFrame*
 SolidColorBackgroundObj::get_gui_dialog(Editor* editor)
 {
-  GenericPropertyFrame* propframe 
+  GenericPropertyFrame* propframe
     = new GenericPropertyFrame("SolidColorBackground", editor->get_property_window()->get_client_area());
 
   propframe->add_float_box("Red", &data->color.red);

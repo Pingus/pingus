@@ -1,5 +1,5 @@
-//  $Id: pointer_scroller.cxx,v 1.2 2002/08/26 13:53:04 torangan Exp $
-// 
+//  $Id: pointer_scroller.cxx,v 1.3 2003/04/19 10:23:19 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -29,38 +29,38 @@ namespace Input {
                                                                               x_delta(0), y_delta(0), x_pos(-1), y_pos(-1)
     {
     }
-  
+
     PointerScroller::~PointerScroller ()
     {
       delete pointer;
       delete modifier;
     }
-  
+
     const float&
     PointerScroller::get_x_delta () const
     {
       return x_delta;
     }
-  
+
     const float&
     PointerScroller::get_y_delta () const
     {
       return y_delta;
     }
-  
+
     void
     PointerScroller::get_delta (float& x, float& y) const
     {
       x = x_delta;
       y = y_delta;
     }
-  
+
     void
     PointerScroller::update (float delta)
     {
       pointer ->update(delta);
       modifier->update(delta);
-  
+
       if (modifier->is_pressed())
         {
           if (x_pos == -1)
@@ -72,7 +72,7 @@ namespace Input {
             {
 	      x_delta = pointer->get_x_pos() - x_pos;
 	      y_delta = pointer->get_y_pos() - y_pos;
-	  
+
 	      pointer->set_pos(x_pos, y_pos);
 	  }
         }

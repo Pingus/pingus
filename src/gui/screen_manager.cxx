@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.8 2003/04/15 19:06:50 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.9 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,7 @@ ScreenManager::display ()
       cursor = new Cursor("cursors/animcross", "core");
       Display::add_flip_screen_hook(cursor);
       CL_MouseCursor::hide();
-    }  
+    }
 
   DeltaManager delta_manager;
 
@@ -83,13 +83,13 @@ ScreenManager::display ()
       input_controller->update (time_delta);
 
       // Fill the delta with values
-      GameDelta delta (time_delta, delta_manager.get_absolute(), 
+      GameDelta delta (time_delta, delta_manager.get_absolute(),
                        input_controller->get_events ());
 
       last_screen = get_current_screen();
 
       // Most likly the screen will get changed in this update call
-      get_current_screen()->update (delta);    
+      get_current_screen()->update (delta);
 
       if (cursor)
         cursor->update(time_delta);
@@ -120,7 +120,7 @@ ScreenManager::display ()
       // Last screen has poped, so we are going to end here
       if (screens.empty())
 	continue;
-      
+
       // skip draw if the screen changed to avoid glitches
       if (last_screen == get_current_screen())
       	{
@@ -135,7 +135,7 @@ ScreenManager::display ()
 
       // Stupid hack to make this thing take less CPU
       CL_System::sleep (0);
-    } 
+    }
 
   Display::remove_flip_screen_hook(cursor);
   delete cursor;
@@ -245,12 +245,12 @@ ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
     {
       float time_delta = delta_manager.getset ();
       passed_time += time_delta;
-      
+
       int border_x = int((CL_Display::get_width ()/2) * (1.0f - progress));
       int border_y = int((CL_Display::get_height ()/2) * (1.0f - progress));
 
       old_screen->draw (display_gc);
-      CL_Display::push_clip_rect(CL_ClipRect (0 + border_x, 
+      CL_Display::push_clip_rect(CL_ClipRect (0 + border_x,
 					      0 + border_y,
 					      CL_Display::get_width () - border_x,
 					      CL_Display::get_height () - border_y));
@@ -265,11 +265,11 @@ ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
 
       Display::flip_display ();
       CL_System::keep_alive ();
-     
+
       progress = passed_time/1.0f;
     }
 
-#endif 
+#endif
 }
 
 void

@@ -1,5 +1,5 @@
-//  $Id: debug_stream.hxx,v 1.9 2002/09/27 11:26:43 torangan Exp $
-// 
+//  $Id: debug_stream.hxx,v 1.10 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -42,22 +42,22 @@ private:
 
     char char_buffer[buffersize];
     std::string prefix;
-  
+
   public:
 
     Buffer (const std::string& prefix);
     virtual ~Buffer ();
 
-    int overflow (int c);  
+    int overflow (int c);
     int sync ();
 
     void add (std::ostream& s);
     void set_prefix (const std::string & prefix_);
-  
+
   private:
 
     void put_line (const std::string& line);
-  
+
   } buffer;
 
   static NilStream nilstream;
@@ -71,10 +71,10 @@ public:
 
   void add (std::ostream& s);
   void set_prefix (const std::string & prefix);
-  
+
 private:
   DebugStream (const DebugStream&);
-  DebugStream& operator= (const DebugStream&); 
+  DebugStream& operator= (const DebugStream&);
 };
 
 
@@ -88,14 +88,14 @@ class NilStream : public std::ostream
     class NilBuffer : public std::streambuf
     {
       private:
-      
+
         char char_buffer[4];
-      
+
       public:
-      
+
          NilBuffer () { setp(char_buffer, char_buffer + 3); setg(0,0,0); }
         ~NilBuffer () { }
-        
+
         int overflow (int) { return 0; }
         int sync     ()    { return 0; }
     } buffer;
@@ -103,10 +103,10 @@ class NilStream : public std::ostream
    NilStream ();
    ~NilStream () { }
 
-    NilStream (const NilStream &); ///< not supported    
+    NilStream (const NilStream &); ///< not supported
 
   public:
-            
+
     // Avoid unneccessary calls to internal buffer and conversions
     NilStream & operator << (const char *)        { return *this; }
     NilStream & operator << (const std::string &) { return *this; }

@@ -1,5 +1,5 @@
-//  $Id: property_window.hxx,v 1.10 2002/11/30 15:06:31 grumbel Exp $
-// 
+//  $Id: property_window.hxx,v 1.11 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -38,7 +38,7 @@ class PropertyWindow : public CL_Window
 private:
   /** Pointer to the editor (FIXME: its actually a singleton, not really needed) */
   Editor* editor;
-  
+
   /** Pointer to the frame of the current object */
   PropertyFrame* current_frame;
 
@@ -47,14 +47,14 @@ private:
 
   CL_Button close_button;
   CL_Slot   close_button_slot;
-      
+
 public:
   PropertyWindow (Editor* parent);
 
   /** Called once from the editor when the selection changed or if a
       update() is called. */
   void update_frame (EditorObj*);
-      
+
   void on_close_click();
 private:
   PropertyWindow (const PropertyWindow&);

@@ -1,4 +1,4 @@
-//  $Id: debug_stream.cxx,v 1.7 2002/09/05 16:47:46 torangan Exp $
+//  $Id: debug_stream.cxx,v 1.8 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,12 +43,12 @@ int
 DebugStream::Buffer::overflow (int c)
 {
   std::string str;
-    
+
   for (char* ptr = pbase (); ptr != pptr (); ++ptr)
     {
       str += *ptr;
-      
-      if (*ptr == '\n') 
+
+      if (*ptr == '\n')
       	{
       	  put_line (prefix + str);
       	  str = "";
@@ -56,7 +56,7 @@ DebugStream::Buffer::overflow (int c)
     }
   str += c;
   put_line (str);
-    
+
   setp (char_buffer, char_buffer + buffersize - 1);
   return 0;
 }
@@ -82,19 +82,19 @@ int
 DebugStream::Buffer::sync ()
 {
   std::string str;
-    
-  // Walk through the buffer 
+
+  // Walk through the buffer
   for (char* c = pbase (); c != pptr (); ++c)
     {
     	str += *c;
 
-      if (*c == '\n') 
+      if (*c == '\n')
       	{
       	  put_line (prefix + str);
       	  str = "";
       	}
     }
-    
+
   if (!str.empty ())
     put_line (str);
 
@@ -136,7 +136,7 @@ ostream & DebugStream::operator () (int component) {
     return *this;
   } else {
     return nilstream;
-  }  
+  }
 }
 
 void
@@ -153,8 +153,8 @@ DebugStream::set_prefix (const std::string & prefix)
 
 
 NilStream::NilStream ()
-  : ostream(&buffer) 
-{ 
+  : ostream(&buffer)
+{
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.44 2003/03/25 00:56:33 grumbel Exp $
+//  $Id: world.cxx,v 1.45 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,8 +35,8 @@
 
 using Actions::Bomber;
 
-static 
-bool WorldObj_less (WorldObj* a, WorldObj* b) 
+static
+bool WorldObj_less (WorldObj* a, WorldObj* b)
 {
   return a->get_z_pos () < b->get_z_pos ();
 }
@@ -49,7 +49,7 @@ World::World(PLF* plf)
     colmap(gfx_map->get_colmap()),
     view(0),
     gravitational_acceleration(0.25f)
-{ 
+{
   WorldObj::set_world(this);
 
   start_x_pos = plf->get_startx();
@@ -104,12 +104,12 @@ World::~World()
   for (WorldObjIter it = world_obj.begin(); it != world_obj.end(); ++it) {
     delete *it;
   }
-  
+
   delete game_time;
 }
 
 // Merge the different layers on the screen together
-/*void 
+/*void
 World::draw(int x1, int y1, int w, int h,
 	    int x_of, int y_of, float s)
 {
@@ -120,7 +120,7 @@ World::draw(int x1, int y1, int w, int h,
     {
       (*obj)->draw_offset(x_of, y_of, s);
     }
-  
+
   particle_holder->draw_offset(x_of, y_of, s);
 }*/
 
@@ -143,10 +143,10 @@ World::draw_smallmap(SmallMap* smallmap)
   for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
     {
       (*obj)->draw_smallmap (smallmap);
-    } 
+    }
 }
 
-void 
+void
 World::update()
 {
   WorldObj::set_world(this);
@@ -160,7 +160,7 @@ World::update()
           while (armageddon_count < pingus->get_end_id())
             {
               Pingu* pingu = pingus->get_pingu(armageddon_count);
-      
+
               if (pingu && pingu->get_status() == PS_ALIVE)
                 {
                   pingu->request_set_action(Bomber);
@@ -171,11 +171,11 @@ World::update()
                   ++armageddon_count;
                 }
             }
-      
+
           ++armageddon_count;
         }
     }
-    
+
   // Let all pingus move and
   // Let the pingus catch each other and
   // Let the traps catch the pingus and
@@ -198,7 +198,7 @@ int
 World::get_width()
 {
   assert(gfx_map);
-  return gfx_map->get_width();  
+  return gfx_map->get_width();
 }
 
 int
@@ -214,7 +214,7 @@ World::get_time_passed()
   return game_time->get_ticks();
 }
 
-void 
+void
 World::armageddon(void)
 {
   PingusSound::play_sound ("goodidea");
@@ -228,7 +228,7 @@ World::get_colmap()
   return colmap;
 }
 
-PinguMap* 
+PinguMap*
 World::get_gfx_map ()
 {
   return gfx_map;
@@ -240,7 +240,7 @@ World::get_action_holder ()
   return action_holder;
 }*/
 
-void 
+void
 World::play_sound(std::string name, const Vector& pos, float volume)
 {
   if (view)
@@ -285,7 +285,7 @@ World::get_pingu (const Vector& pos)
 	        }
       }
   }
-  
+
   return current_pingu;
 }
 

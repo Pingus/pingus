@@ -1,4 +1,4 @@
-//  $Id: liquid_data.cxx,v 1.13 2003/04/01 21:54:55 grumbel Exp $
+//  $Id: liquid_data.cxx,v 1.14 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@
 
 namespace WorldObjsData {
 
-LiquidData::LiquidData () 
+LiquidData::LiquidData ()
   : old_width_handling(true),
     width(0),
     speed(20)
@@ -65,7 +65,7 @@ LiquidData::LiquidData (const LiquidData& old)
 }
 
 
-void 
+void
 LiquidData::write_xml (std::ostream& xml)
 {
   xml << "<liquid use-old-width-handling=\"" << old_width_handling << "\">\n";
@@ -84,7 +84,7 @@ LiquidData::insert_WorldObjs (World* world)
 
 void
 LiquidData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
-{ 
+{
   obj_mgr->add(new EditorObjs::LiquidObj(*this));
 }
 

@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.33 2003/03/28 16:16:00 grumbel Exp $
+//  $Id: bomber.cxx,v 1.34 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,17 +39,17 @@ bool Bomber::static_surface_loaded = false;
 CL_Surface Bomber::bomber_radius;
 CL_Surface Bomber::bomber_radius_gfx;
 
-Bomber::Bomber (Pingu* p) 
+Bomber::Bomber (Pingu* p)
   : PinguAction(p),
     particle_thrown(false),
-    sound_played(false), 
+    sound_played(false),
     gfx_exploded(false),
     colmap_exploded(false),
     sprite(PingusResource::load_surface("Pingus/bomber" + to_string(pingu->get_owner()), "pingus"), 17.0f, Sprite::NONE, Sprite::ONCE),
     explo_surf(PingusResource::load_surface("Other/explo" + to_string(pingu->get_owner()), "pingus"))
 {
   // Only load the surface again if no static_surface is available
-  if (!static_surface_loaded) 
+  if (!static_surface_loaded)
     {
       static_surface_loaded = true;
       bomber_radius = PingusResource::load_surface ("Other/bomber_radius", "pingus");
@@ -67,7 +67,7 @@ Bomber::on_successfull_apply ()
 void
 Bomber::draw (GraphicContext& gc)
 {
-  if (sprite.get_frame () >= 13 && !gfx_exploded) 
+  if (sprite.get_frame () >= 13 && !gfx_exploded)
     {
       gc.draw (explo_surf, Vector(pingu->get_x () - 32, pingu->get_y () - 48));
       gfx_exploded = true;
@@ -92,7 +92,7 @@ Bomber::update ()
 
   // If the Bomber hasn't 'exploded' yet and it has hit Water or Lava
   if (sprite.get_frame () <= 9 && (rel_getpixel(0, -1) == Groundtype::GP_WATER
-      || rel_getpixel(0, -1) == Groundtype::GP_LAVA)) 
+      || rel_getpixel(0, -1) == Groundtype::GP_LAVA))
     {
       pingu->set_action(Actions::Drown);
       return;
@@ -112,7 +112,7 @@ Bomber::update ()
   }
 
   // Throwing particles
-  if (sprite.get_frame () > 12 && !particle_thrown) 
+  if (sprite.get_frame () > 12 && !particle_thrown)
     {
       particle_thrown = true;
       WorldObj::get_world()->get_pingu_particle_holder()->add_particle(static_cast<int>(pingu->get_x()),
@@ -127,7 +127,7 @@ Bomber::update ()
       WorldObj::get_world()->get_colmap()->remove(bomber_radius,
                                                   static_cast<int>(pingu->get_x () - (bomber_radius.get_width()/2)),
                                                   static_cast<int>(pingu->get_y () - 16 - (bomber_radius.get_width()/2)));
-      WorldObj::get_world()->get_gfx_map()->remove(bomber_radius_gfx, 
+      WorldObj::get_world()->get_gfx_map()->remove(bomber_radius_gfx,
                                                    static_cast<int>(pingu->get_x () - (bomber_radius.get_width()/2)),
                                                    static_cast<int>(pingu->get_y () - 16 - (bomber_radius.get_width()/2)));
     }

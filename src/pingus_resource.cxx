@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.27 2003/04/11 16:51:15 grumbel Exp $
+//  $Id: pingus_resource.cxx,v 1.28 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ std::map<std::string, CL_ResourceManager*> PingusResource::resource_map;
 std::map<ResDescriptor, CL_Surface>        PingusResource::surface_map;
 std::map<ResDescriptor, CL_Font*>          PingusResource::font_map;
 
-void 
+void
 PingusResource::init()
 {
   // do nothing
@@ -48,13 +48,13 @@ PingusResource::init()
 void
 PingusResource::deinit()
 {
-  for (std::map<std::string, CL_ResourceManager*>::iterator i = resource_map.begin(); 
+  for (std::map<std::string, CL_ResourceManager*>::iterator i = resource_map.begin();
        i != resource_map.end ();
        ++i)
     delete i->second;
-  
+
   for (std::map<ResDescriptor, CL_Font*>::iterator i = font_map.begin();
-       i != font_map.end (); 
+       i != font_map.end ();
        ++i)
     delete i->second;
 }
@@ -78,21 +78,21 @@ PingusResource::get(const std::string& arg_filename)
 
       res_filename = "data/" + filename;
 
-      // FIXME: Memory hole... 
+      // FIXME: Memory hole...
       res_manager = new CL_ResourceManager(path_manager.complete (res_filename.c_str()),
       					   /* is_datafile = */false);
-      
+
       resource_map[filename] = res_manager;
       return res_manager;
     }
 }
 
 CL_Surface
-PingusResource::load_surface(const std::string& res_name, 
+PingusResource::load_surface(const std::string& res_name,
 			     const std::string& datafile,
 			     ResourceModifierNS::ResourceModifier modifier)
 {
-  return load_surface(ResDescriptor(res_name, datafile, 
+  return load_surface(ResDescriptor(res_name, datafile,
 				    ResDescriptor::RD_RESOURCE,
 				    modifier));
 }
@@ -116,7 +116,7 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
 	{
 	  pout(PINGUS_DEBUG_RESOURCES) << "PingusResource: Loading surface from cache 1/2: " << res_desc << std::endl;
 	  surf = apply_modifier (surf, res_desc);
-      
+
 	  surface_map[res_desc] = surf;
 	}
       else // never loaded, need to load it from source
@@ -162,7 +162,7 @@ PingusResource::apply_modifier (const CL_Surface& surf, const ResDescriptor& res
       // FIXME: muahhhaa... I write slower code than you....
     case ResourceModifierNS::ROT0:
       return surf;
-      
+
     case ResourceModifierNS::ROT90:
       return Blitter::rotate_90(surf);
 
@@ -211,17 +211,17 @@ PingusResource::load_from_source (const ResDescriptor& res_desc)
 	}
       }
       break;
-	  
+
     case ResDescriptor::RD_FILE:
       {
 	std::string filename = System::get_statdir() + "images/" + res_desc.res_name;
 	// FIXME: Memory leak?
 	pout << "PingusResource::load_surface(" << res_desc.res_name << ")" << std::endl;
-	// FIXME: Add pcx, jpeg, tga support here 
+	// FIXME: Add pcx, jpeg, tga support here
 	pout << "DONE" << std::endl;
 	return CL_Surface(new CL_PNGProvider(filename, NULL), true);
       }
-	  
+
     case ResDescriptor::RD_AUTO:
       perr << "PingusResource: ResDescriptor::AUTO not implemented" << std::endl;
       assert (false);
@@ -233,22 +233,22 @@ PingusResource::load_from_source (const ResDescriptor& res_desc)
     }
 }
 
-CL_Font* 
+CL_Font*
 PingusResource::load_font(const std::string& res_name,
 			  const std::string& datafile)
 {
-  return load_font(ResDescriptor(res_name, datafile, 
+  return load_font(ResDescriptor(res_name, datafile,
 				 ResDescriptor::RD_RESOURCE));
 }
 
-CL_Font* 
+CL_Font*
 PingusResource::load_font(const ResDescriptor& res_desc)
 {
   pout(PINGUS_DEBUG_RESOURCES) << "PingusResource: Loading font: " << res_desc << std::endl;
 
   CL_Font* font = font_map[res_desc];
-  
-  if (font) 
+
+  if (font)
     {
       return font;
     }
@@ -267,11 +267,11 @@ PingusResource::load_font(const ResDescriptor& res_desc)
 	  }
 	  font_map[res_desc] = font;
 	  return font;
-	  
+
 	case ResDescriptor::RD_FILE:
 	  pout << "PingusResource: ResDescriptor::FILE not implemented" << std::endl;
 	  return 0;
-	  
+
 	case ResDescriptor::RD_AUTO:
 	  pout << "PingusResource: ResDescriptor::AUTO not implemented" << std::endl;
 	  return 0;
@@ -287,7 +287,7 @@ void
 PingusResource::cleanup ()
 {
   pout(PINGUS_DEBUG_RESOURCES) << "PingusResource::cleanup ()" << std::endl;
-  
+
   for (std::map<ResDescriptor, CL_Surface>::iterator i = surface_map.begin ();
        i != surface_map.end (); ++i)
     {
@@ -312,10 +312,10 @@ unsigned int
 PingusResource::get_mtime (const std::string& res_name,
 			   const std::string& datafile)
 {
-  try 
+  try
     {
       CL_ResourceManager* res_man = PingusResource::get(datafile);
-      
+
       if (!res_man->is_from_source ())
 	{
 	  // FIXME: not implemented
@@ -324,7 +324,7 @@ PingusResource::get_mtime (const std::string& res_name,
       else
 	{
 	  CL_Resource& res = res_man->get_resource(res_name);
-  
+
 	  std::string filename = res.get_full_location();
 
 #ifndef WIN32
@@ -338,8 +338,8 @@ PingusResource::get_mtime (const std::string& res_name,
 	  return 0;
 #endif
 	}
-    } 
-  catch (CL_Error& err) 
+    }
+  catch (CL_Error& err)
     {
       std::cout << "PingusResource::get_mtime: CL_Error: " << err.message << std::endl;
       return 0;

@@ -1,4 +1,4 @@
-//  $Id: generic_property_frame.cxx,v 1.5 2003/04/18 12:51:17 grumbel Exp $
+//  $Id: generic_property_frame.cxx,v 1.6 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ public:
   CL_InputBox* input_box;
   int* value;
 
-  IntegerDataBox(CL_Component* parent, int y_pos, const std::string& name, int* _value) 
+  IntegerDataBox(CL_Component* parent, int y_pos, const std::string& name, int* _value)
     : value(_value)
   {
     label     = new CL_Label(CL_Rect(10, y_pos, 90, y_pos + 20), name, parent);
@@ -50,12 +50,12 @@ public:
     delete input_box;
   }
 
-  void read_data() 
+  void read_data()
   {
     input_box->set_text(to_string(*value));
   }
-  
-  void write_data() 
+
+  void write_data()
   {
     from_string(input_box->get_text(), *value);
   }
@@ -68,7 +68,7 @@ public:
   CL_InputBox* input_box;
   float* value;
 
-  FloatDataBox(CL_Component* parent, int y_pos, const std::string& name, float* _value) 
+  FloatDataBox(CL_Component* parent, int y_pos, const std::string& name, float* _value)
     : value(_value)
   {
     label     = new CL_Label(CL_Rect(10, y_pos, 90, y_pos + 20), name, parent);
@@ -81,12 +81,12 @@ public:
     delete input_box;
   }
 
-  void read_data() 
+  void read_data()
   {
     input_box->set_text(to_string(*value));
   }
-  
-  void write_data() 
+
+  void write_data()
   {
     from_string(input_box->get_text(), *value);
   }
@@ -99,7 +99,7 @@ public:
   CL_InputBox* input_box;
   std::string* value;
 
-  StringDataBox(CL_Component* parent, int y_pos, const std::string& name, std::string* _value) 
+  StringDataBox(CL_Component* parent, int y_pos, const std::string& name, std::string* _value)
     : value(_value)
   {
     label     = new CL_Label(CL_Rect(10, y_pos, 90, y_pos + 20), name, parent);
@@ -112,12 +112,12 @@ public:
     delete input_box;
   }
 
-  void read_data() 
+  void read_data()
   {
     input_box->set_text(*value);
   }
-  
-  void write_data() 
+
+  void write_data()
   {
     *value = input_box->get_text();
   }
@@ -129,7 +129,7 @@ public:
   CL_CheckBox* check_box;
   bool* value;
 
-  BoolDataBox(CL_Component* parent, int y_pos, const std::string& name, bool* _value) 
+  BoolDataBox(CL_Component* parent, int y_pos, const std::string& name, bool* _value)
     : value(_value)
   {
     check_box = new CL_CheckBox(CL_Point(10, y_pos), name, parent);
@@ -141,12 +141,12 @@ public:
     delete check_box;
   }
 
-  void read_data() 
+  void read_data()
   {
     check_box->set_checked(*value);
   }
-  
-  void write_data() 
+
+  void write_data()
   {
     *value = check_box->is_checked();
   }
@@ -166,8 +166,8 @@ public:
   /** Pointer to the value that should be changed */
   int* value;
 
-  EnumDataBox(CL_Component* p, int y, const std::string& name, int* _value) 
-    : parent(p), 
+  EnumDataBox(CL_Component* p, int y, const std::string& name, int* _value)
+    : parent(p),
       start_y_pos(y),
       y_pos(y),
       radio_label(CL_Rect(10, y_pos, 90, y_pos+20), name, parent),
@@ -175,15 +175,15 @@ public:
   {
   }
 
-  virtual ~EnumDataBox() 
+  virtual ~EnumDataBox()
   {
     for (RButtonIter i = radio_buttons.begin(); i != radio_buttons.end(); ++i)
       {
         delete (*i).second;
-      }  
+      }
   }
 
-  void read_data() 
+  void read_data()
   {
     for (RButtonIter i = radio_buttons.begin(); i != radio_buttons.end(); ++i)
       {
@@ -194,8 +194,8 @@ public:
           }
       }
   }
-  
-  void write_data() 
+
+  void write_data()
   {
     for (RButtonIter i = radio_buttons.begin(); i != radio_buttons.end(); ++i)
       {
@@ -204,7 +204,7 @@ public:
             *value = i->first;
             return;
           }
-      }    
+      }
   }
 
   void add_item(const std::string& name, int item_value)
@@ -222,7 +222,7 @@ public:
 
     y_pos += 20;
   }
-  
+
   int get_height() {
     return y_pos - start_y_pos + 5;
   }

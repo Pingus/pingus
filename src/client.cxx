@@ -1,5 +1,5 @@
-//  $Id: client.cxx,v 1.44 2003/04/15 19:06:50 grumbel Exp $
-// 
+//  $Id: client.cxx,v 1.45 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -53,14 +53,14 @@ Client::Client (TrueServer * s)
   //Display::add_flip_screen_hook(cursor);
 
   unplayable.set_align_center();
-  
+
   Timer timer("Client UI generation");
 
   // These object will get deleted by the gui_manager
   button_panel = new ButtonPanel(this, 2, CL_Display::get_height()/2);
   playfield    = new Playfield(this);
   hurry_up     = new HurryUp(this);
-  pcounter     = new PingusCounter(get_server());  
+  pcounter     = new PingusCounter(get_server());
   small_map    = new SmallMap(this);
   time_display = new TimeDisplay(this);
 
@@ -97,18 +97,18 @@ Client::process_events (const GameDelta& delta)
 {
   const Input::EventLst& events = delta.get_events ();
 
-  for (Input::EventLst::const_iterator i = events.begin (); 
-       i != events.end (); 
+  for (Input::EventLst::const_iterator i = events.begin ();
+       i != events.end ();
        ++i)
     {
       //std::cout << "Events: " << (*i)->get_type () << std::endl;
-    
+
       switch (i->type)
 	{
 	case Input::ButtonEventType:
           {
             const Input::ButtonEvent& ev = i->button;
-            
+
             if (ev.state == Input::pressed)
               {
                 if (ev.name >= Input::action_1 && ev.name <= Input::action_10)
@@ -136,7 +136,7 @@ Client::process_events (const GameDelta& delta)
           // ???
 	  process_axis_event (i->axis);
 	  break;
-	  
+
         case Input::ScrollEventType:
           process_scroll_event(i->scroll);
           break;
@@ -152,7 +152,7 @@ Client::process_events (const GameDelta& delta)
 void
 Client::process_scroll_event (const Input::ScrollEvent& ev)
 {
-  std::cout << "Client::process_scroll_event ()" << std::endl;    
+  std::cout << "Client::process_scroll_event ()" << std::endl;
   playfield->scroll(static_cast<int>(ev.x_delta),
                     static_cast<int>(ev.y_delta));
 }
@@ -187,7 +187,7 @@ void
 Client::set_finished()
 {
   is_finished = true;
-  server->set_finished();  
+  server->set_finished();
 }
 
 #if 0
@@ -219,19 +219,19 @@ Client::on_keyboard_button_release(const CL_Key& key)
       enabled = true;
       break;
 
-      // Playfield scrolling	
+      // Playfield scrolling
     case CL_KEY_LEFT:
       playfield->view[playfield->current_view]->set_x_offset(playfield->view[playfield->current_view]->get_x_offset() + playfield->scroll_speed);
       break;
-	  
+
     case CL_KEY_RIGHT:
       playfield->view[playfield->current_view]->set_x_offset(playfield->view[playfield->current_view]->get_x_offset() - playfield->scroll_speed);
       break;
-	  
+
     case CL_KEY_UP:
       playfield->view[playfield->current_view]->set_y_offset(playfield->view[playfield->current_view]->get_y_offset() + playfield->scroll_speed);
       break;
-      
+
     case CL_KEY_DOWN:
       playfield->view[playfield->current_view]->set_y_offset(playfield->view[playfield->current_view]->get_y_offset() - playfield->scroll_speed);
       break;
@@ -240,11 +240,11 @@ Client::on_keyboard_button_release(const CL_Key& key)
     case CL_KEY_PAGEDOWN:
       playfield->view[playfield->current_view]->set_zoom(playfield->view[playfield->current_view]->get_zoom() / 1.05);
       break;
-      
+
     case CL_KEY_PAGEUP:
       playfield->view[playfield->current_view]->set_zoom(playfield->view[playfield->current_view]->get_zoom() / 0.95);
       break;
-      
+
     case CL_KEY_END:
       playfield->view[playfield->current_view]->set_zoom(1.0);
       break;
@@ -258,11 +258,11 @@ Client::on_keyboard_button_release(const CL_Key& key)
     case CL_KEY_A:
       server->send_armageddon_event();
       break;
-	  
+
     case CL_KEY_R:
       do_restart();
       break;
-	  
+
     case CL_KEY_SPACE:
       set_fast_forward(!get_fast_forward());
       break;
@@ -279,22 +279,22 @@ Client::on_keyboard_button_release(const CL_Key& key)
       break;
     case CL_KEY_F3:
       button_panel->set_button(2);
-      break;      
+      break;
     case CL_KEY_F4:
       button_panel->set_button(3);
-      break;      
+      break;
     case CL_KEY_F5:
       button_panel->set_button(4);
-      break;      
+      break;
     case CL_KEY_F6:
       button_panel->set_button(5);
-      break;      
+      break;
     case CL_KEY_F7:
       button_panel->set_button(6);
-      break;      
+      break;
     case CL_KEY_F8:
       button_panel->set_button(7);
-      break;      
+      break;
     default:
       if (verbose > 1) std::cout << "Client: Got unknown button: ID=" << key.id << " ASCII=" << char(key.ascii) << std::endl;
     }
@@ -313,13 +313,13 @@ Client:: on_pause_press ()
   server->set_pause (!server->get_pause ());
 }
 
-void 
+void
 Client::on_fast_forward_press ()
 {
   server->set_fast_forward(!server->get_fast_forward());
 }
 
-void 
+void
 Client::on_armageddon_press ()
 {
   server->send_armageddon_event();
@@ -363,7 +363,7 @@ Client::on_startup ()
     }
 
   if (verbose)
-    std::cout << "Client: Entering main_loop. Startup time: " 
+    std::cout << "Client: Entering main_loop. Startup time: "
 	      << CL_System::get_time() << " msec." << std::endl;
 }
 

@@ -1,5 +1,5 @@
-//  $Id: xml_helper.hxx,v 1.20 2003/04/04 11:23:27 grumbel Exp $
-// 
+//  $Id: xml_helper.hxx,v 1.21 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -70,10 +70,10 @@ public:
       cur */
   static xmlNodePtr skip_blank (xmlNodePtr cur);
 
-  /** Compare a xmlChar* string with a char* one 
+  /** Compare a xmlChar* string with a char* one
       @return true if both strings are equal */
   static bool equal_str (const xmlChar* comp, const char* orig);
-  
+
   /** get the propertie of the given name
       @param name  the name of the property
       @param value gets the value if the property exists or remains unchanged
@@ -127,7 +127,7 @@ public:
 
   static void init();
   static void deinit();
-  
+
 private:
   XMLhelper ();
   XMLhelper (const XMLhelper&);

@@ -1,4 +1,4 @@
-//  $Id: pingus_counter_bar.cxx,v 1.5 2002/12/29 23:29:00 torangan Exp $
+//  $Id: pingus_counter_bar.cxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,23 +27,23 @@ PingusCounterBar::PingusCounterBar (Server * s, Orientation o, const CL_Rect& ar
   : server (s),
     orientation (o),
     rect (arg_rect.x1 + 2, arg_rect.y1 + 2, arg_rect.x2 - 2, arg_rect.y2 - 2)
-{  
+{
 }
 
 PingusCounterBar::~PingusCounterBar ()
 {
 }
 
-void 
+void
 PingusCounterBar::update(float /*delta*/)
-{  
+{
 }
 
 void
 PingusCounterBar::draw ()
 {
   int length = rect.y2 - rect.y1;
-  
+
   int complete      = server->get_world ()->get_pingus()->get_number_of_allowed();
   int current_out   = server->get_world ()->get_pingus()->get_number_of_released();
   int current_saved = server->get_world ()->get_pingus()->get_number_of_exited();

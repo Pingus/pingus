@@ -1,4 +1,4 @@
-//  $Id: main_menu.hxx,v 1.5 2002/09/27 11:26:43 torangan Exp $
+//  $Id: main_menu.hxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ private:
 public:
   MainMenu ();
   void start (void);
-  
+
 private:
   MainMenu (const MainMenu&);
   MainMenu& operator= (const MainMenu&);

@@ -1,4 +1,4 @@
-//  $Id: bumper_data.cxx,v 1.11 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: bumper_data.cxx,v 1.12 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ BumperData::BumperData ()
 {
 }
 
-BumperData::BumperData (xmlDocPtr doc, xmlNodePtr cur) 
+BumperData::BumperData (xmlDocPtr doc, xmlNodePtr cur)
   : surface(PingusResource::load_surface("Traps/bumper", "traps"))
 {
   XMLFileReader reader(doc, cur);

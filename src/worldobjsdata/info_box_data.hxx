@@ -1,5 +1,5 @@
-//  $Id: info_box_data.hxx,v 1.7 2003/03/05 19:13:59 grumbel Exp $
-// 
+//  $Id: info_box_data.hxx,v 1.8 2003/04/19 10:23:19 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -40,16 +40,16 @@ public:
 public:
   InfoBoxData ();
   InfoBoxData (xmlDocPtr doc, xmlNodePtr cur);
-  
+
   InfoBoxData (const InfoBoxData& old);
-  
+
   ~InfoBoxData ();
 
-  void write_xml (std::ostream& xml);  
-  
+  void write_xml (std::ostream& xml);
+
   void insert_WorldObjs (World* world);
   void insert_EditorObjs (EditorNS::EditorObjMgr*);
-  
+
 private:
   InfoBoxData& operator= (const InfoBoxData&);
 };

@@ -1,4 +1,4 @@
-//  $Id: level_resizer.cxx,v 1.4 2002/12/05 20:38:10 torangan Exp $
+//  $Id: level_resizer.cxx,v 1.5 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,15 +64,15 @@ LevelResizer::set_position_offset(const Vector& offset)
 }
 
 void
-LevelResizer::drop() 
+LevelResizer::drop()
 {
-  dragged = false; 
+  dragged = false;
 
   // Round the position to a multiple of 10
   //pos.x = int(pos.x)/10*10;
   //pos.y = int(pos.y)/10*10;
 }
-    
+
 } // namespace EditorNS
 
 /* EOF */

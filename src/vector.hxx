@@ -1,5 +1,5 @@
-//  $Id: vector.hxx,v 1.3 2002/11/03 22:20:29 grumbel Exp $
-// 
+//  $Id: vector.hxx,v 1.4 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -29,10 +29,10 @@ public:
   float x;
   float y;
   float z;
-  
+
 public:
   explicit Vector (float x_=0, float y_=0, float z_=0);
-  
+
   Vector (const Vector& old);
   Vector& operator= (const Vector& old);
 
@@ -41,15 +41,15 @@ public:
   Vector operator+ (const Vector& add) const;
   Vector operator- (const Vector& sub) const;
   Vector operator* (       float  mul) const;
-  
+
   Vector& operator+= (const Vector& add);
   Vector& operator-= (const Vector& sub);
   Vector& operator*= (      float   mul);
-  
+
   void normalize ();
 
   float length() const;
-  
+
   Vector rotate (float angle, const Vector& pos) const;
 
   static float distance(const Vector& a, const Vector& b);
@@ -57,7 +57,7 @@ public:
 
   /** Calculate a position between a and b, relative to the value of
       \a perc (perc == 0 -> a, perc == 1.0 -> b) */
-  static Vector interpolate(const Vector& a, const Vector& b, float perc);  
+  static Vector interpolate(const Vector& a, const Vector& b, float perc);
 
   friend std::ostream& operator<< (std::ostream& os, const Vector& v);
 };

@@ -1,4 +1,4 @@
-//  $Id: col_map.cxx,v 1.17 2003/04/18 12:51:17 grumbel Exp $
+//  $Id: col_map.cxx,v 1.18 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,11 +50,11 @@ ColMap::getpixel(int x, int y)
   if (x >= 0 && x < width && y >= 0 && y < height) {
     return colmap[x+y*width];
   } else {
-    return Groundtype::GP_OUTOFSCREEN; 
+    return Groundtype::GP_OUTOFSCREEN;
   }
 }
 
-unsigned char* 
+unsigned char*
 ColMap::get_data()
 {
   return colmap;
@@ -72,20 +72,20 @@ ColMap::get_width()
   return width;
 }
 
-void 
+void
 ColMap::remove(const CL_Surface& sur, int x, int y)
 {
   remove(sur.get_provider(), x, y);
 }
 
-void 
+void
 ColMap::remove(CL_SurfaceProvider* provider, int x, int y)
 {
   ++serial;
 
   assert(provider);
 
-  if (provider->get_depth() == 32) 
+  if (provider->get_depth() == 32)
     {
       unsigned char* buffer;
       int swidth = provider->get_width();
@@ -98,11 +98,11 @@ ColMap::remove(CL_SurfaceProvider* provider, int x, int y)
       provider->lock();
       buffer = static_cast<unsigned char*>(provider->get_data());
 
-      for(int line = y_offset; line < sheight && (line + y) < height; ++line) 
+      for(int line = y_offset; line < sheight && (line + y) < height; ++line)
 	{
-	  for (int i = x_offset; i < swidth && (i+x) < width; ++i) 
+	  for (int i = x_offset; i < swidth && (i+x) < width; ++i)
 	    {
-	      if (buffer[(i + (swidth*line)) * 4] != 0) 
+	      if (buffer[(i + (swidth*line)) * 4] != 0)
 		{
 		  if (colmap[i + (width*(line+y) + x)] != Groundtype::GP_SOLID)
 		    colmap[i + (width*(line+y) + x)] = Groundtype::GP_NOTHING;
@@ -126,11 +126,11 @@ ColMap::remove(CL_SurfaceProvider* provider, int x, int y)
       provider->lock();
       buffer = static_cast<unsigned char*>(provider->get_data());
 
-      for(int line = y_offset; line < sheight && (line + y) < height; ++line) 
+      for(int line = y_offset; line < sheight && (line + y) < height; ++line)
 	{
-	  for (int i = x_offset; i < swidth && (i+x) < width; ++i) 
+	  for (int i = x_offset; i < swidth && (i+x) < width; ++i)
 	    {
-	      if (buffer[i + (swidth*line)]) 
+	      if (buffer[i + (swidth*line)])
 		{
 		  if (colmap[i + (width*(line+y) + x)] != Groundtype::GP_SOLID)
 		    colmap[i + (width*(line+y) + x)] = Groundtype::GP_NOTHING;
@@ -153,7 +153,7 @@ ColMap::put(int x, int y, Groundtype::GPType p)
   ++serial;
 
   if (x > 0 && x < width
-      && y > 0 && y < height) 
+      && y > 0 && y < height)
     {
       colmap[x+y*width] = p;
     }
@@ -193,9 +193,9 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, Groundtype::GPTy
   if (pixel == Groundtype::GP_TRANSPARENT)
     return;
 
-  if ((sur_x > width) || (sur_y > height)) 
+  if ((sur_x > width) || (sur_y > height))
     {
-      if (verbose > 3) 
+      if (verbose > 3)
 	{
 	  std::cout << "Warning: ColMap: Spot out of screen" << std::endl;
 	  std::cout << "sur_x: " << sur_x << " sur_y: " << sur_y << std::endl;
@@ -204,13 +204,13 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, Groundtype::GPTy
     }
 
   provider->lock();
-  
-  if (provider->get_depth() == 32) 
+
+  if (provider->get_depth() == 32)
     {
       float r, g, b, a;
       // Rewritting blitter for 32bit depth (using get_pixel())
       for (unsigned int y=0; y < provider->get_height(); ++y)
-	for (unsigned int x=0; x < provider->get_width(); ++x) 
+	for (unsigned int x=0; x < provider->get_width(); ++x)
 	  {
 	    provider->get_pixel(x, y, &r, &g, &b, &a);
 	    if (a > 0.1) // Alpha threshold
@@ -236,20 +236,20 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, Groundtype::GPTy
       if (provider->uses_src_colorkey())
 	{
 	  unsigned int colorkey = provider->get_src_colorkey();
-	  for(int line = y_offset; line < sheight && (line + sur_y) < height; ++line) 
-	    for (int i = x_offset; i < swidth && (i+sur_x) < width; ++i) 
+	  for(int line = y_offset; line < sheight && (line + sur_y) < height; ++line)
+	    for (int i = x_offset; i < swidth && (i+sur_x) < width; ++i)
 	      {
 		if (buffer[i + (swidth*line)] != colorkey)
 		  {
 		    if (blit_allowed (i + sur_x, line + sur_y, pixel))
-		      colmap[i + (width*(line+sur_y) + sur_x)] = pixel;		    
+		      colmap[i + (width*(line+sur_y) + sur_x)] = pixel;
 		  }
 	      }
 	}
       else
 	{
-	  for(int line = y_offset; line < sheight && (line + sur_y) < height; ++line) 
-	    for (int i = x_offset; i < swidth && (i+sur_x) < width; ++i) 
+	  for(int line = y_offset; line < sheight && (line + sur_y) < height; ++line)
+	    for (int i = x_offset; i < swidth && (i+sur_x) < width; ++i)
 	      {
 		if (blit_allowed (i + sur_x, line + sur_y, pixel))
 		  colmap[i + (width*(line+sur_y) + sur_x)] = pixel;
@@ -273,7 +273,7 @@ ColMap::draw(GraphicContext& gc)
 
   canvas->lock();
   buffer = static_cast<unsigned char*>(canvas->get_data());
-  
+
   for(int i = 0; i < (width * height); ++i)
     {
       switch(colmap[i])

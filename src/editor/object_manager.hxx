@@ -1,5 +1,5 @@
-//  $Id: object_manager.hxx,v 1.27 2003/03/05 19:13:59 grumbel Exp $
-// 
+//  $Id: object_manager.hxx,v 1.28 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -39,7 +39,7 @@ private:
   // FIXME: but instead provide a better interface to interact with him.
   friend class EditorEvent;
   friend class Editor;
-  
+
   /// Other Level data
   std::map<std::string, std::string> description;
   std::map<std::string, std::string> levelname;
@@ -59,13 +59,13 @@ private:
   std::string music;
   std::string comment;
 
-  /** All objects which are visible in the editor */ 
+  /** All objects which are visible in the editor */
   std::vector<EditorObj*> editor_objs;
 
   int move_offset;
 
   Color bg;
-  
+
 public:
   typedef std::vector<EditorObj*>::iterator EditorObjIter;
   typedef std::vector<EditorObj*>::reverse_iterator EditorObjRIter;
@@ -109,7 +109,7 @@ public:
 
   int get_number_of_pingus () { return number_of_pingus; }
   void set_number_of_pingus (int num) { number_of_pingus = num; }
-    
+
   void set_leveltime (int num) { level_time = num; }
   int get_leveltime () { return level_time; }
 
@@ -125,7 +125,7 @@ public:
   /** Return the currently selected object, if none is selected or
       multiple objects are selected return 0 */
   //boost::shared_ptr<EditorObj> get_current_obj();
-  
+
   //void move_current_objs(float x, float y);
   //void drag_current_objs ();
   //void drop_current_objs ();
@@ -159,7 +159,7 @@ public:
       to varify that an referenc to and object is still valid and that
       the object has not yet been deleted */
   bool has_object (EditorObj* obj);
-  
+
   /** sort all objects acording to there z_position */
   void z_pos_sort ();
 

@@ -1,4 +1,4 @@
-//  $Id: direction.hxx,v 1.5 2002/09/04 14:55:11 torangan Exp $
+//  $Id: direction.hxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,12 +27,12 @@ class Direction
 {
 private:
   int direction;
-  
+
 public:
   Direction ();
   Direction (const Direction& dir);
   ~Direction ();
-  
+
   Direction& operator= (const Direction&);
 
   operator int () const { return direction; }

@@ -1,4 +1,4 @@
-//  $Id: server.cxx,v 1.27 2003/04/10 19:38:51 grumbel Exp $
+//  $Id: server.cxx,v 1.28 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,8 +80,8 @@ Server::send_pingu_action_event (Pingu* pingu, Actions::ActionName action)
     }
 
   if (demo_recorder)
-    demo_recorder->record_event(ServerEvent::make_pingu_action_event(get_time(), 
-                                                                     pingu->get_id(), 
+    demo_recorder->record_event(ServerEvent::make_pingu_action_event(get_time(),
+                                                                     pingu->get_id(),
                                                                      action));
 }
 

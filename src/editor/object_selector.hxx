@@ -1,4 +1,4 @@
-// $Id: object_selector.hxx,v 1.14 2003/03/04 12:53:47 grumbel Exp $
+// $Id: object_selector.hxx,v 1.15 2003/04/19 10:23:18 torangan Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ class ObjectSelector
 {
 private:
   CL_Font* font;
-  
+
   int x_offset;
   int y_offset;
 
@@ -50,11 +50,11 @@ private:
 
   std::string last_object;
   std::map<std::string, bool> data_loaded;
-  
+
 public:
   ObjectSelector();
   ~ObjectSelector();
-  
+
   void get_obj(ObjectManager* obj_mgr, int, int);
 
   // semi private stuff, only used by object_selector_window
@@ -75,7 +75,7 @@ public:
   void get_from_file();
   void get_background();
   void get_prefab();
-  
+
 private:
   ObjectSelector (const ObjectSelector&);
   ObjectSelector& operator= (const ObjectSelector&);

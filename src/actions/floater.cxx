@@ -1,4 +1,4 @@
-//  $Id: floater.cxx,v 1.23 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: floater.cxx,v 1.24 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 
 namespace Actions {
 
-Floater::Floater(Pingu* p) 
+Floater::Floater(Pingu* p)
   : PinguAction(p),
     falling_depth(0),
     step(0),
@@ -39,23 +39,23 @@ Floater::update()
   sprite.update ();
 
   pingu->set_velocity(Vector(0.0f, 1.0f));
-  
-  if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING) 
+
+  if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING)
     {
       ++step;
-      if (step > 0) 
+      if (step > 0)
 	{
 	  pingu->set_y(pingu->get_y() + 1);
 	  step = 0;
 	}
-    } 
-  else 
+    }
+  else
     {
       pingu->set_action (Actions::Walker);
     }
 }
 
-void 
+void
 Floater::draw (GraphicContext& gc)
 {
   gc.draw (sprite, pingu->get_pos());

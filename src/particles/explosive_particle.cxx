@@ -1,4 +1,4 @@
-//  $Id: explosive_particle.cxx,v 1.5 2002/12/28 16:10:18 torangan Exp $
+//  $Id: explosive_particle.cxx,v 1.6 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,9 +26,9 @@
 
 ExplosiveParticle::ExplosiveParticle (int x, int y, float x_a, float y_a)
                                     : Particle (x, y, x_a, y_a),
-                                      alive (true) 
-{  
-//  sprite = Sprite (PingusResource::load_surface 
+                                      alive (true)
+{
+//  sprite = Sprite (PingusResource::load_surface
 //		   ("Particles/explosive",
 //		    "pingus"));
 }
@@ -37,11 +37,11 @@ ExplosiveParticle::~ExplosiveParticle ()
 {
 }
 
-void 
+void
 ExplosiveParticle::update (float delta)
 {
   Vector new_pos = pos + velocity * delta;
-  
+
   Vector incr = pos - new_pos;
   incr.normalize ();
 
@@ -52,8 +52,8 @@ ExplosiveParticle::update (float delta)
     {
       pos -= incr;
 
-      if (   pos.x < 0 
-          || pos.y < 0 
+      if (   pos.x < 0
+          || pos.y < 0
 	  || pos.x + 1 > WorldObj::get_world()->get_width ()
 	  || pos.y + 1 > WorldObj::get_world()->get_height())
 	{
@@ -70,7 +70,7 @@ ExplosiveParticle::update (float delta)
   pos = new_pos;
 }
 
-void 
+void
 ExplosiveParticle::detonate ()
 {
   alive = false;
@@ -81,19 +81,19 @@ ExplosiveParticle::detonate ()
   WorldObj::get_world()->get_colmap()->remove(bomber_radius,
 			      int(pos.x) - (bomber_radius.get_width()/2),
 			      int(pos.y) - (bomber_radius.get_height()/2));
-  WorldObj::get_world()->get_gfx_map()->remove(bomber_radius, 
+  WorldObj::get_world()->get_gfx_map()->remove(bomber_radius,
 			       int(pos.x) - (bomber_radius.get_width()/2),
 			       int(pos.y) - (bomber_radius.get_height()/2));
 }
 
-//void 
+//void
 //ExplosiveParticle::draw_offset(int ofx, int ofy, float /*s*/)
 //{
 //  sprite.put_screen (int(pos.x + ofx), int(pos.y + ofy));
 //}
 
 
-bool 
+bool
 ExplosiveParticle::is_alive(void)
 {
   return alive;

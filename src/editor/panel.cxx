@@ -1,4 +1,4 @@
-//  $Id: panel.cxx,v 1.6 2003/02/18 10:30:31 grumbel Exp $
+//  $Id: panel.cxx,v 1.7 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ PanelIcon::start()
 {
 }
 
-void 
+void
 PanelIcon::put_screen(int /*x*/, int y)
 {
   if (CL_Mouse::get_x() < 25 && CL_Mouse::get_y() > y && CL_Mouse::get_y() < y + 25)
@@ -61,7 +61,7 @@ PanelIcon::put_screen(int /*x*/, int y)
 	}
       if (mouse_over_time == 0)
 	mouse_over_time = CL_System::get_time ();
-      
+
       if (CL_System::get_time () - mouse_over_time > 5) {
 	int width = font->get_text_width (tooltip.c_str ());
 	CL_Display::fill_rect (28, y + 6 - 2, 32 + width, y + font->get_height () + 6 + 2,
@@ -90,7 +90,7 @@ Panel::Panel()
 
 Panel::~Panel()
 {
-  
+
 }
 
 void
@@ -100,7 +100,7 @@ Panel::draw()
 
   CL_Display::fill_rect(0, 0, 25, CL_Display::get_height(),
 			0.75, 0.75, 0.75, 1.0);
- 
+
   logo.put_screen(0, CL_Display::get_height() - logo.get_height());
 
   for (std::vector<PanelIcon*>::iterator i = buttons.begin(); i != buttons.end(); ++i)
@@ -110,7 +110,7 @@ Panel::draw()
     }
 }
 
-void 
+void
 Panel::init()
 {
   if (!is_init)
@@ -120,7 +120,7 @@ Panel::init()
       buttons.push_back(new PanelIconSave);
 
       buttons.push_back(new PanelIconInsertObject);
-      
+
       buttons.push_back(new PanelIconCopy);
       buttons.push_back(new PanelIconObjectProperties);
       buttons.push_back(new PanelIconDelete);
@@ -167,7 +167,7 @@ Panel::on_release()
   if (CL_Mouse::get_x() <= 25)
     {
       int y = 0;
-      
+
       for (std::vector<PanelIcon*>::iterator i = buttons.begin(); i != buttons.end(); ++i)
 	{
 	  if (CL_Mouse::get_y() > y && CL_Mouse::get_y() < y + 25)

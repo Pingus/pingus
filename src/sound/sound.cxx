@@ -1,4 +1,4 @@
-//  $Id: sound.cxx,v 1.4 2003/04/12 15:33:30 grumbel Exp $
+//  $Id: sound.cxx,v 1.5 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,11 +34,11 @@ PingusSound::init (PingusSound* s)
 {
   if (s == 0)
     {
-      if (sound_enabled || music_enabled) 
+      if (sound_enabled || music_enabled)
         {
           if (verbose)
             std::cout << "Init Sound" << std::endl;
-          
+
           try {
             PingusSound::init (new PingusSoundReal ());
           } catch (CL_Error& err) {
@@ -68,10 +68,10 @@ PingusSound::deinit ()
 }
 
 /** Load a sound file and play it immediately.
-    
+
     @param filename The complete filename */
-   
-void 
+
+void
 PingusSound::play_sound(const std::string& name, float volume, float panning)
 {
   assert (sound);
@@ -105,10 +105,10 @@ PingusSound::play_sound(Sound::Name name, float volume, float panning)
 }
 
 /** Load a sound file and play it immediately.
-    
+
     @param name
     @param volume   volume */
-void 
+void
 PingusSound::play_music(const std::string & name, float volume)
 {
   assert (sound);

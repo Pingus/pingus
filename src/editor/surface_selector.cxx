@@ -1,4 +1,4 @@
-//  $Id: surface_selector.cxx,v 1.7 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: surface_selector.cxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ SurfaceSelector::SurfaceSelector (std::vector<surface_obj>* s)
 
 SurfaceSelector::~SurfaceSelector ()
 {
-  
+
 }
 
 std::vector<surface_obj>::iterator
@@ -45,9 +45,9 @@ SurfaceSelector::get_current_obj ()
 {
   int x = 0;
   int y = -y_of;
-  
-  for(std::vector<surface_obj>::iterator i = sur_list->begin(); 
-      i != sur_list->end(); 
+
+  for(std::vector<surface_obj>::iterator i = sur_list->begin();
+      i != sur_list->end();
       ++i)
     {
       if (CL_Mouse::get_x() > x && CL_Mouse::get_x() <= x + 50
@@ -55,7 +55,7 @@ SurfaceSelector::get_current_obj ()
 	{
 	  return i;
 	}
-      
+
       x += 50;
       if (x + 50 > CL_Display::get_width())
 	{
@@ -72,23 +72,23 @@ SurfaceSelector::draw ()
 {
   // FIXME: This could heavily optimized if ClanLib would have a put_target(x,y,w,h)
   std::vector<surface_obj>::iterator tmp_obj = get_current_obj();
-  
+
   if (c_obj != tmp_obj)
     {
       if (tmp_obj != std::vector<surface_obj>::iterator())
 	tmp_obj->display_time = CL_System::get_time();
-      
+
       if (c_obj != std::vector<surface_obj>::iterator())
 	c_obj->display_time = 0;
     }
-  
+
   c_obj = tmp_obj;
 
   int x = 0;
   int y = -y_of;
 
   CL_System::keep_alive();
- 
+
   CL_Display::clear_display();
 
   // Draw all surfaces
@@ -96,7 +96,7 @@ SurfaceSelector::draw ()
     {
       if (i->thumbnail.get_width() <= 50 && i->thumbnail.get_height() <= 50)
 	{
-	  i->thumbnail.put_screen(x + 25 - (i->thumbnail.get_width()  / 2), 
+	  i->thumbnail.put_screen(x + 25 - (i->thumbnail.get_width()  / 2),
 			          y + 25 - (i->thumbnail.get_height() / 2));
 	}
       else
@@ -110,7 +110,7 @@ SurfaceSelector::draw ()
 	}
 
       x += 50;
-      if (x + 50 > CL_Display::get_width()) 
+      if (x + 50 > CL_Display::get_width())
 	{
 	  y += 50;
 	  x = 0;
@@ -154,8 +154,8 @@ SurfaceSelector::scroll ()
     {
       y_of -= range - CL_Mouse::get_y();
     }
-  
-  if (y_of < 0) y_of = 0;    
+
+  if (y_of < 0) y_of = 0;
 
   if (y_of > height) y_of = height;
 }
@@ -171,12 +171,12 @@ SurfaceSelector::select ()
       draw();
 
       scroll();
-      
+
       CL_System::keep_alive();
-    } 
+    }
 
   iter = get_current_obj();
-  
+
   if (iter != std::vector<surface_obj>::iterator())
     str = iter->name;
 

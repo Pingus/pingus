@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.cxx,v 1.15 2003/04/02 19:59:04 grumbel Exp $
+//  $Id: res_descriptor.cxx,v 1.16 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 #include "res_descriptor.hxx"
 #include "pingus_error.hxx"
 
-/* 
+/*
    uri -> file:///home/ingo/.pingus/images/...
    uri -> resource://core/result/ok
    uri -> file://bla.png (relative to ~/.pingus/images/)
@@ -50,13 +50,13 @@ ResDescriptor::operator= (const ResDescriptor& old)
 {
   if (this == &old)
     return *this;
-    
+
   type     = old.type;
   datafile = old.datafile;
   res_name = old.res_name;
   modifier = old.modifier;
-  
-  return *this; 
+
+  return *this;
 }
 
 ResDescriptor::ResDescriptor(const std::string& arg_res_name,
@@ -74,7 +74,7 @@ bool
 ResDescriptor::operator<(const ResDescriptor& res_desc) const
 {
   // FIXME: This is ugly and slow
-  //return (datafile + res_name + to_string (type) + to_string (modifier)) 
+  //return (datafile + res_name + to_string (type) + to_string (modifier))
   //  < (res_desc.datafile + res_desc.res_name + to_string (res_desc.type) + to_string (res_desc.modifier));
 
   if (datafile < res_desc.datafile)
@@ -100,7 +100,7 @@ ResDescriptor::operator<(const ResDescriptor& res_desc) const
 	      else if (type > res_desc.type)
 		return false;
 	      else
-		return false;  
+		return false;
 	    }
 	}
     }
@@ -111,7 +111,7 @@ std::ostream& operator<<(std::ostream& s, const ResDescriptor& desc)
   switch (desc.type)
     {
     case ResDescriptor::RD_RESOURCE:
-      return s << "[" << desc.res_name << ", " << desc.datafile 
+      return s << "[" << desc.res_name << ", " << desc.datafile
                << ", " << ResourceModifierNS::rs_to_string(desc.modifier) << "]";
       break;
     case ResDescriptor::RD_FILE:

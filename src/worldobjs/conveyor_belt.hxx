@@ -1,5 +1,5 @@
-//  $Id: conveyor_belt.hxx,v 1.16 2002/10/01 19:53:46 grumbel Exp $
-// 
+//  $Id: conveyor_belt.hxx,v 1.17 2003/04/19 10:23:19 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -39,15 +39,15 @@ private:
   CL_Surface left_sur;
   CL_Surface right_sur;
   CL_Surface middle_sur;
- 
+
 public:
   ConveyorBelt (const WorldObjsData::ConveyorBeltData& data_);
-  
+
   void draw (GraphicContext& gc);
   void on_startup ();
   void update ();
   float get_z_pos () const;
-  
+
 private:
   ConveyorBelt (const ConveyorBelt&);
   ConveyorBelt& operator= (const ConveyorBelt&);

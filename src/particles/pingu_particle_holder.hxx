@@ -1,4 +1,4 @@
-//  $Id: pingu_particle_holder.hxx,v 1.3 2003/01/25 11:03:58 torangan Exp $
+//  $Id: pingu_particle_holder.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,17 +36,17 @@ class PinguParticleHolder : public WorldObj
     bool use_frame2;
     /// The current position of the particle
     Vector pos;
-  
+
     /// The velocity of the particle
     Vector velocity;
-    
+
     PinguParticle (int x, int y);
   };
 
 private:
   CL_Surface surface;
   std::vector<PinguParticle> particles;
-  
+
 public:
   PinguParticleHolder ();
 

@@ -1,4 +1,4 @@
-//  $Id: prefab.cxx,v 1.6 2003/03/05 19:55:14 grumbel Exp $
+//  $Id: prefab.cxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ Prefab::Prefab (const std::string& filename)
   if (doc)
     {
       xmlNodePtr cur = doc->ROOT;
-      
+
       cur = XMLhelper::skip_blank (cur);
 
       if (XMLhelper::equal_str(cur->name, "pingus-prefab"))
@@ -64,20 +64,20 @@ Prefab::Prefab (const std::string& filename)
 		  if (data)
 		    {
 		      std::cout << "Prefab: object defined twice! Overwriting first object!" << std::endl;
-		      delete data; 
+		      delete data;
 		    }
 
-                  std::cout << "XXX Prefab Object is a: " 
-                            << XMLhelper::skip_blank(cur->children)->name 
+                  std::cout << "XXX Prefab Object is a: "
+                            << XMLhelper::skip_blank(cur->children)->name
                             << std::endl;
-		  data = WorldObjDataFactory::instance ()->create (doc, 
+		  data = WorldObjDataFactory::instance ()->create (doc,
                                                                    XMLhelper::skip_blank(cur->children));
 		}
 	      else
 		{
 		  std::cout << "Prefab: Unhandled: " << cur->name << std::endl;
 		}
- 
+
 	      cur = cur->next;
 	      cur = XMLhelper::skip_blank (cur);
             }

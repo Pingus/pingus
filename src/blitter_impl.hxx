@@ -1,5 +1,5 @@
-//  $Id: blitter_impl.hxx,v 1.9 2003/04/03 17:03:24 grumbel Exp $
-// 
+//  $Id: blitter_impl.hxx,v 1.10 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -72,11 +72,11 @@ struct transform_rot180
 /** Rotate a surface 270 degree */
 struct transform_rot270
 {
-  static inline int get_index(int width, int height, int x, int y) { 
+  static inline int get_index(int width, int height, int x, int y) {
     return ((width - x - 1) * height) + y;
   }
 
-  static inline int get_x(int width, int height, int x, int y) { 
+  static inline int get_x(int width, int height, int x, int y) {
     UNUSED_ARG(width); UNUSED_ARG(height); UNUSED_ARG(x);
     return y;
   }
@@ -100,12 +100,12 @@ struct transform_flip
     return (y * width) + (width - x - 1);
   }
 
-  static inline int get_x(int width, int height, int x, int y) { 
+  static inline int get_x(int width, int height, int x, int y) {
     UNUSED_ARG(height); UNUSED_ARG(y);
     return width - x - 1;
   }
 
-  static inline int get_y(int width, int height, int x, int y) { 
+  static inline int get_y(int width, int height, int x, int y) {
     UNUSED_ARG(width); UNUSED_ARG(height); UNUSED_ARG(x);
     return y;
   }
@@ -122,12 +122,12 @@ struct transform_rot90_flip
     return (x * height) + y;
   }
 
-  static inline int get_x(int width, int height, int x, int y) { 
+  static inline int get_x(int width, int height, int x, int y) {
     UNUSED_ARG(width); UNUSED_ARG(height); UNUSED_ARG(x);
     return y;
   }
 
-  static inline int get_y(int width, int height, int x, int y) { 
+  static inline int get_y(int width, int height, int x, int y) {
     UNUSED_ARG(width); UNUSED_ARG(height); UNUSED_ARG(y);
     return x;
   }
@@ -139,16 +139,16 @@ struct transform_rot90_flip
 /** Rotate a surface 180 degree and then flip it */
 struct transform_rot180_flip
 {
-  static inline int get_index(int width, int height, int x, int y) { 
+  static inline int get_index(int width, int height, int x, int y) {
     return ((height - y - 1) * width) + x;
   }
 
-  static inline int get_x(int width, int height, int x, int y) { 
+  static inline int get_x(int width, int height, int x, int y) {
     UNUSED_ARG(width); UNUSED_ARG(height); UNUSED_ARG(y);
     return x;
   }
 
-  static inline int get_y(int width, int height, int x, int y) { 
+  static inline int get_y(int width, int height, int x, int y) {
     UNUSED_ARG(width); UNUSED_ARG(x);
     return height - y - 1;
   }
@@ -164,12 +164,12 @@ struct transform_rot270_flip
     return ((width - x - 1) * height) + height - y - 1;
   }
 
-  static inline int get_x(int width, int height, int x, int y) { 
+  static inline int get_x(int width, int height, int x, int y) {
     UNUSED_ARG(width); UNUSED_ARG(x);
     return height - y - 1;
   }
 
-  static inline int get_y(int width, int height, int x, int y) { 
+  static inline int get_y(int width, int height, int x, int y) {
     UNUSED_ARG(height); UNUSED_ARG(y);
     return width - x - 1;
   }
@@ -194,7 +194,7 @@ CL_Surface modify(const CL_Surface& sur)
                                                 TransF::get_height(pwidth, pheight));
       if (prov->uses_src_colorkey())
         canvas->set_src_colorkey(prov->get_src_colorkey());
-      
+
       prov->lock ();
       canvas->lock ();
 
@@ -206,14 +206,14 @@ CL_Surface modify(const CL_Surface& sur)
       for (int y = 0; y < pheight; ++y)
         for (int x = 0; x < pwidth; ++x)
           {
-#ifdef PINGUS_DO_ROTBLITTER_BOUNDCHECK 
+#ifdef PINGUS_DO_ROTBLITTER_BOUNDCHECK
             int i = TransF::get_index(pwidth, pheight, x, y);
             if (i < 0 || i >= pwidth * pheight)
               {
                 std::cout << "Target: Out of bounce: " << i << " " << pwidth << "x" << pheight
                           << " " <<  typeid(TransF()).name() << std::endl;
               }
-            
+
             if (y * pwidth + x < 0
                 || y * pwidth + x >= pwidth * pheight)
               {
@@ -226,7 +226,7 @@ CL_Surface modify(const CL_Surface& sur)
 
       canvas->unlock ();
       prov->unlock ();
-      return CL_Surface(canvas, true);     
+      return CL_Surface(canvas, true);
     }
   else
     {

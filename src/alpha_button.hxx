@@ -1,4 +1,4 @@
-//  $Id: alpha_button.hxx,v 1.5 2002/09/27 11:26:43 torangan Exp $
+//  $Id: alpha_button.hxx,v 1.6 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ public:
   bool is_pressed ();
   void draw (void);
   bool mouse_over (void);
-  
+
 private:
   AlphaButton (const AlphaButton&);
   AlphaButton& operator= (const AlphaButton&);

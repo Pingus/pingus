@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.hxx,v 1.14 2002/10/08 00:09:55 grumbel Exp $
+//  $Id: pingu_holder.hxx,v 1.15 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,13 +50,13 @@ private:
   /** A list holding all Pingus, the PinguHolder itself has only the
       active (not dead) ones */
   std::list<Pingu*> pingus;
-  
+
 public:
   PinguHolder(PLF*);
   ~PinguHolder();
 
-  /*@{ 
-    @name overloaded stuff for WorldObj 
+  /*@{
+    @name overloaded stuff for WorldObj
   */
   void draw (GraphicContext& gc);
 
@@ -64,7 +64,7 @@ public:
       PinguAction::update()) */
   void update();
 
-  /** The z-pos at which the pingus gets draw. 
+  /** The z-pos at which the pingus gets draw.
       @return 50 */
   float get_z_pos() const;
   /*@}*/
@@ -84,7 +84,7 @@ public:
   /** @return the total number of pingus released, this is alive +
       killed + exited */
   int get_number_of_released();
-  
+
   /** @return the maximal number of pingus that will get released in
       this level */
   int get_number_of_allowed();
@@ -97,7 +97,7 @@ public:
 
   /** Get a pingu by id, references to dead or exited Pingus are not
       returned, but 0 instead
-      
+
       @return the pingu with the id, or 0 if none found or pingu is
       dead or exited */
   Pingu* get_pingu(unsigned int id);
@@ -109,7 +109,7 @@ public:
   std::list<Pingu*>::iterator  begin () { return pingus.begin (); }
   std::list<Pingu*>::iterator  end ()   { return pingus.end (); }
   std::list<Pingu*>::size_type size ()  { return pingus.size (); }
-  
+
 private:
   PinguHolder (const PinguHolder&);
   PinguHolder& operator= (const PinguHolder&);

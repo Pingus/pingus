@@ -1,4 +1,4 @@
-//  $Id: hotspot_data.hxx,v 1.7 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: hotspot_data.hxx,v 1.8 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,16 +36,16 @@ public:
   Vector     pos;
 
   HotspotData ();
-  
+
   HotspotData (xmlDocPtr doc, xmlNodePtr cur);
-  
+
   HotspotData (const HotspotData& old);
 
   void write_xml (std::ostream&);
 
   void  insert_WorldObjs (World*);
   void insert_EditorObjs (EditorNS::EditorObjMgr*);
-  
+
 private:
   HotspotData& operator= (const HotspotData&);
 };

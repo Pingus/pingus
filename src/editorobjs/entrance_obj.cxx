@@ -1,4 +1,4 @@
-//  $Id: entrance_obj.cxx,v 1.7 2003/03/30 13:12:35 grumbel Exp $
+//  $Id: entrance_obj.cxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,8 +38,8 @@ EntranceObj::EntranceObj (const WorldObjsData::EntranceData& data_)
     {
       sprite = Sprite("Entrances/generic", "entrances");
       sprite.set_align_center_bottom();
-    } 
-  else if (data->type == "woodthing") 
+    }
+  else if (data->type == "woodthing")
     {
       sprite = Sprite("Entrances/woodthing_mov", "entrances");
       sprite.set_align(0  - sprite.get_width()/2,
@@ -49,8 +49,8 @@ EntranceObj::EntranceObj (const WorldObjsData::EntranceData& data_)
     {
       sprite = Sprite("Entrances/cloud", "entrances");
       sprite.set_align(-115, -75);
-    } 
-  else 
+    }
+  else
     {
       PingusError::raise("EntranceObj: Unknown entrance type: " + data->type);
     }
@@ -103,7 +103,7 @@ EntranceObj::status_line ()
 EditorNS::PropertyFrame*
 EntranceObj::get_gui_dialog (EditorNS::Editor* editor)
 {
-  EditorNS::GenericPropertyFrame* propframe 
+  EditorNS::GenericPropertyFrame* propframe
     = new EditorNS::GenericPropertyFrame("Entrance Properties",
                                          editor->get_property_window()->get_client_area());
 

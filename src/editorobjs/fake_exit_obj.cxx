@@ -1,4 +1,4 @@
-//  $Id: fake_exit_obj.cxx,v 1.10 2002/09/28 11:52:24 torangan Exp $
+//  $Id: fake_exit_obj.cxx,v 1.11 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 
 namespace EditorObjs {
 
-FakeExitObj::FakeExitObj (const WorldObjsData::FakeExitData& data_) 
+FakeExitObj::FakeExitObj (const WorldObjsData::FakeExitData& data_)
   : data(new WorldObjsData::FakeExitData(data_)),
     frame(0)
 {
@@ -47,7 +47,7 @@ FakeExitObj::create (const Vector& pos)
   newdata.pos = pos;
   return EditorObjLst(1, new FakeExitObj (newdata));
 }
-  
+
 EditorObj*
 FakeExitObj::duplicate ()
 {
@@ -66,14 +66,14 @@ FakeExitObj::draw (EditorNS::EditorView* view)
   view->draw(sprite, data->pos, frame);
 }
 
-std::string  
+std::string
 FakeExitObj::status_line ()
 {
   char str[64];
   snprintf (str, 64, "FakeExitObj: %4.2fx%4.2fx%4.2f", data->pos.x, data->pos.y, data->pos.z);
   return str;
 }
-  
+
 } // namespace EditorObjs
 
 /* EOF */

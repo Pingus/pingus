@@ -1,4 +1,4 @@
-//  $Id: switch_door_data.cxx,v 1.11 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: switch_door_data.cxx,v 1.12 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@
 
 namespace WorldObjsData {
 
-SwitchDoorData::SwitchDoorData () 
+SwitchDoorData::SwitchDoorData ()
   : door_height(10)
 {
 }
@@ -46,7 +46,7 @@ SwitchDoorData::SwitchDoorData (xmlDocPtr doc, xmlNodePtr cur)
   subreader.read_int("height", door_height);
 }
 
-SwitchDoorData::SwitchDoorData (const SwitchDoorData& old) 
+SwitchDoorData::SwitchDoorData (const SwitchDoorData& old)
                               : WorldObjData(old),
 			        door_pos(old.door_pos),
 				switch_pos(old.switch_pos),
@@ -54,7 +54,7 @@ SwitchDoorData::SwitchDoorData (const SwitchDoorData& old)
 {
 }
 
-void 
+void
 SwitchDoorData::write_xml (std::ostream& xml)
 {
   xml << "  <worldobj type=\"switchdoor\">\n";

@@ -1,4 +1,4 @@
-//  $Id: entrance_obj.hxx,v 1.3 2002/12/01 21:45:14 grumbel Exp $
+//  $Id: entrance_obj.hxx,v 1.4 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,19 +29,19 @@ class EntranceObj : public SpriteEditorObj
 {
 private:
   WorldObjsData::EntranceData* const data;
-  
+
 public:
   EntranceObj (const WorldObjsData::EntranceData& data_);
   ~EntranceObj ();
 
   EditorObj* duplicate ();
-  
+
   void write_xml (std::ostream& xml);
-  
+
   std::string status_line ();
-  
+
   EditorNS::PropertyFrame* get_gui_dialog (EditorNS::Editor* parent);
-  
+
 private:
   EntranceObj (const EntranceObj&);
   EntranceObj& operator= (const EntranceObj&);

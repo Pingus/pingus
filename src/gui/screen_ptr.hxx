@@ -1,5 +1,5 @@
-//  $Id: screen_ptr.hxx,v 1.1 2003/02/19 09:51:44 grumbel Exp $
-// 
+//  $Id: screen_ptr.hxx,v 1.2 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -33,7 +33,7 @@ private:
   long*   ref_count;
 
 public:
-  ScreenPtr() 
+  ScreenPtr()
     : screen(0), delete_it(false), ref_count(0)
   {
   }
@@ -68,11 +68,11 @@ public:
     if (this != &ptr)
       {
 	decrease_refcount();
-	
+
 	screen    = ptr.screen;
 	delete_it = ptr.delete_it;
 	ref_count = ptr.ref_count;
-	
+
 	increase_refcount();
       }
     return *this;
@@ -96,7 +96,7 @@ public:
   Screen* get()
   {
     return screen;
-  }  
+  }
 
 private:
   void decrease_refcount();

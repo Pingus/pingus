@@ -1,4 +1,4 @@
-//  $Id: exit_menu.cxx,v 1.18 2003/04/10 16:01:02 grumbel Exp $
+//  $Id: exit_menu.cxx,v 1.19 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ class ExitMenuYesButton : public GUI::SurfaceButton
 private:
   PingusMenuManager* manager;
 public:
-  ExitMenuYesButton (PingusMenuManager* m) 
+  ExitMenuYesButton (PingusMenuManager* m)
     : GUI::SurfaceButton(CL_Display::get_width()/2 - 170,
                          CL_Display::get_height()/2 + 15,
                          ResDescriptor("menu/exit_button_normal", "core"),
@@ -39,7 +39,7 @@ public:
       manager (m)
   {
   }
- 
+
   void draw (GraphicContext& gc) {
     SurfaceButton::draw(gc);
     gc.print_right(Fonts::chalk_large, CL_Display::get_width()/2 - 80,
@@ -102,19 +102,19 @@ ExitMenu::~ExitMenu ()
 {
 }
 
-bool 
+bool
 ExitMenu::draw (GraphicContext& gc)
 {
   //gc.draw_fillrect (0, 0, CL_Display::get_width (), CL_Display::get_height (),
   //0, 0, 0, 0.5);
-  gc.draw(sur,  gc.get_width ()/2 - sur.get_width ()/2, 
+  gc.draw(sur,  gc.get_width ()/2 - sur.get_width ()/2,
           gc.get_height ()/2 - sur.get_height ()/2);
   gc.print_center(Fonts::chalk_large, gc.get_width()/2, gc.get_height()/2 - 70, _("Exit Pingus?"));
   PingusSubMenu::draw(gc);
   return true;
 }
 
-void 
+void
 ExitMenu::preload ()
 {
   sur = PingusResource::load_surface ("menu/exit_menu", "core");

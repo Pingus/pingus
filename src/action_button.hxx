@@ -1,4 +1,4 @@
-//  $Id: action_button.hxx,v 1.16 2002/12/01 17:45:21 grumbel Exp $
+//  $Id: action_button.hxx,v 1.17 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,7 @@ public:
   void update(float);
   bool is_at(int x, int y);
   void on_primary_button_click (int x, int y);
-  
+
 private:
   ArmageddonButton (const ArmageddonButton&);
   ArmageddonButton& operator= (const ArmageddonButton&);
@@ -67,7 +67,7 @@ private:
 // ----------------- snip --------------------
 
 /** Fast Forward button, press it to let the game run faster, press it
-    again to return to normal speed 
+    again to return to normal speed
 
     \sa Client */
 class ForwardButton : public GUI::Component
@@ -87,7 +87,7 @@ public:
   void draw(GraphicContext& gc);
   bool is_at (int x, int y);
   void on_primary_button_click (int x, int y);
-  
+
 private:
   ForwardButton (const ForwardButton&);
   ForwardButton& operator= (const ForwardButton&);
@@ -96,7 +96,7 @@ private:
 // ----------------- snip --------------------
 
 /** Pause button, press it to pause the game, press it again to
-    continue 
+    continue
 
     \sa Client */
 class PauseButton : public GUI::Component
@@ -116,7 +116,7 @@ public:
   void draw(GraphicContext& gc);
   bool is_at (int x, int y);
   void on_primary_button_click (int x, int y);
-  
+
 private:
   PauseButton (const PauseButton&);
   PauseButton& operator= (const PauseButton&);
@@ -141,7 +141,7 @@ protected:
 
   ActionHolder* action_holder;
 
-public:  
+public:
   bool pressed;
 
   ActionButton(ActionHolder*);
@@ -171,7 +171,7 @@ private:
     action will be set to the action represented by the button.
 
     \sa Client */
-class VerticalActionButton : public ActionButton 
+class VerticalActionButton : public ActionButton
 {
 private:
   CL_Surface background;
@@ -183,7 +183,7 @@ public:
 
   void draw(GraphicContext& gc);
   bool is_at (int x, int y);
-  
+
 private:
   VerticalActionButton (const VerticalActionButton&);
   VerticalActionButton& operator= (const VerticalActionButton&);

@@ -1,4 +1,4 @@
-//  $Id: level_dot.cxx,v 1.21 2003/04/15 19:42:03 grumbel Exp $
+//  $Id: level_dot.cxx,v 1.22 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,10 +67,10 @@ LevelDot::LevelDot(xmlDocPtr doc, xmlNodePtr cur)
       if (XMLhelper::equal_str(cur->name, "levelname"))
         {
           levelname = XMLhelper::parse_string(doc, cur);
-          //std::cout << "Levelname: " << levelname << std::endl;         
+          //std::cout << "Levelname: " << levelname << std::endl;
           plf = PLFResMgr::load_plf(levelname);
         }
-      
+
       cur = cur->next;
       cur = XMLhelper::skip_blank(cur);
     }
@@ -84,14 +84,14 @@ LevelDot::draw(GraphicContext& gc)
 
   float x = mpos.x - pos.x;
   float y = mpos.y - pos.y;
-  
+
   bool highlight = false;
 
   if (sqrt(x*x + y*y) < 30.0f)
     highlight = true;
-  
+
   Savegame* savegame = SavegameManager::instance()->get(levelname);
-  if (savegame 
+  if (savegame
       && (savegame->status == Savegame::FINISHED
           || savegame->status == Savegame::ACCESSIBLE))
     {
@@ -133,7 +133,7 @@ LevelDot::finished()
   if (savegame && savegame->status == Savegame::FINISHED)
     return true;
   else
-    return false; 
+    return false;
 }
 
 bool

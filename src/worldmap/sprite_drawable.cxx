@@ -1,4 +1,4 @@
-//  $Id: sprite_drawable.cxx,v 1.3 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: sprite_drawable.cxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@ namespace WorldMapNS {
 SpriteDrawable::SpriteDrawable(xmlDocPtr doc, xmlNodePtr cur)
   : Drawable(doc, cur)
 {
-  
+
 }
 
 SpriteDrawable::~SpriteDrawable()

@@ -1,5 +1,5 @@
-//  $Id: start_pos.hxx,v 1.10 2002/11/29 22:54:22 grumbel Exp $
-// 
+//  $Id: start_pos.hxx,v 1.11 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -28,14 +28,14 @@ class StartPos : public SpriteEditorObj
 {
 private:
   Vector pos;
-  
+
 public:
   StartPos(int arg_x_pos, int arg_y_pos);
 
   void write_xml(std::ostream& xml);
   EditorObj* duplicate();
 
-  EditorNS::PropertyFrame* get_gui_dialog(EditorNS::Editor*) { return 0; }  
+  EditorNS::PropertyFrame* get_gui_dialog(EditorNS::Editor*) { return 0; }
 private:
   StartPos (const StartPos&);
   StartPos& operator= (const StartPos&);

@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.56 2003/04/01 15:13:33 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.57 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,7 +72,7 @@ EditorEvent::EditorEvent()
 
 EditorEvent::~EditorEvent()
 {
-  
+
 }
 
 void
@@ -116,7 +116,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
     {
       switch (key.id)
 	{
-	case CL_KEY_R: 
+	case CL_KEY_R:
 	  if (CL_Keyboard::get_keycode(CL_KEY_RSHIFT)
 	      || CL_Keyboard::get_keycode(CL_KEY_LSHIFT))
 	    { // rotate 90 counterclockwise
@@ -140,14 +140,14 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  editor_import_prefab ();
 	  break;
 
-	case CL_KEY_X: // export prefab 
+	case CL_KEY_X: // export prefab
 	  editor_export_prefab_from_selection ();
 	  break;
 
 	case CL_KEY_F3:
 	  editor_toggle_background_color();
 	  break;
-    
+
 	  // Start the created level and come back if done.
 	case CL_KEY_F4:
 	  editor_start_current_level();
@@ -166,30 +166,30 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  if (verbose) std::cout << "Setting checkpoint: " << editor->checkpoint << std::endl;
 	  object_manager->save_level(editor->checkpoint);*/
 	  break;
-	
+
 	  // Restore a previously created checkpoint.
 	case CL_KEY_F8:
-	  /* 
+	  /*
 	  editor->save_tmp_level();
-	  if (!editor->checkpoint.empty()) 
+	  if (!editor->checkpoint.empty())
 	    {
 	      if (verbose) std::cout << "Restoring checkpoint: " << editor->checkpoint << std::endl;
 	      selection->clear ();
 	      object_manager->load_level(editor->checkpoint);
-	    } 
-	  else 
+	    }
+	  else
 	    {
 	      if (verbose) std::cout << "No checkpoint set, no restoring done. " << std::endl;
 	      }*/
 	  break;
-      
+
 	  // Insert a new object, present the ObjectsSelector to select
-	  // one. 
+	  // one.
 	case CL_KEY_INSERT:
 	  editor_insert_new_object();
           // FIXME: GUI stuff new ObjectSelectorWindow(editor->gui);
 	  break;
-    
+
 	  // Load a level from file.
 	case CL_KEY_F5:
 	  editor_load_level();
@@ -204,25 +204,25 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	case CL_KEY_A:
 	  editor_mark_all_objects();
 	  break;
-    
+
 	  /*	case CL_KEY_F11:
-	  CL_Display::set_videomode(screen_width, screen_height, 16, 
-				    fullscreen_enabled, 
+	  CL_Display::set_videomode(screen_width, screen_height, 16,
+				    fullscreen_enabled,
 				    true); // allow resize
 	  break;
 	  */
 	case CL_KEY_F12:
 	  // FIXME: disable cause it gives a segfault
-	  //CL_Display::set_videomode(900, 700, 16, 
-	  //fullscreen_enabled, 
+	  //CL_Display::set_videomode(900, 700, 16,
+	  //fullscreen_enabled,
 	  //		    true); // allow resize
 	  break;
-    
+
 	  // Delete all objects of the curret selection.
 	case CL_KEY_DELETE:
 	  editor_delete_selected_objects();
 	  break;
-      
+
 	  // Form the current selection into a group
 	case CL_KEY_G:
 	  if (CL_Keyboard::get_keycode(CL_KEY_RSHIFT)
@@ -245,8 +245,8 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  // Lower all object in the current selection
 	case CL_KEY_PAGEDOWN:
 	  selection->lower();
-	
-	  if (CL_Keyboard::get_keycode(CL_KEY_RSHIFT)) 
+
+	  if (CL_Keyboard::get_keycode(CL_KEY_RSHIFT))
 	    {
 	      selection->move(Vector(0, 0, -50));
 	    }
@@ -255,15 +255,15 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	      selection->move(Vector(0, 0, -1));
 	    }
 	  break;
-    
+
 	  // Raise all objects in the current selection.
 	case CL_KEY_PAGEUP:
 	  selection->raise();
-	  if (CL_Keyboard::get_keycode(CL_KEY_RSHIFT)) 
+	  if (CL_Keyboard::get_keycode(CL_KEY_RSHIFT))
 	    {
 	      selection->move(Vector(0, 0, 50));
 	    }
-	  else if (CL_Keyboard::get_keycode(CL_KEY_RCTRL)) 
+	  else if (CL_Keyboard::get_keycode(CL_KEY_RCTRL))
 	    {
 	      selection->move(Vector(0, 0, 1));
 	    }
@@ -286,8 +286,8 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 
 	    snprintf(str, 16, "%d", object_manager->width);
 	    tmp_str = editor->read_string("Input Width: ", str);
-	
-	    if (sscanf(tmp_str.c_str(), "%d", &twidth) == 1) 
+
+	    if (sscanf(tmp_str.c_str(), "%d", &twidth) == 1)
 	      {
 		object_manager->width = twidth;
 	      }
@@ -295,7 +295,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	    snprintf(str, 16, "%d", object_manager->height);
 	    tmp_str = editor->read_string("Input Height: ", str);
 
-	    if (sscanf(tmp_str.c_str(), "%d", &theight) == 1) 
+	    if (sscanf(tmp_str.c_str(), "%d", &theight) == 1)
 	      {
 		object_manager->height = theight;
 	      }
@@ -315,13 +315,13 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  break;
 
 	case CL_KEY_ENTER:
-	  editor->view->set_zoom (1.0);	  
+	  editor->view->set_zoom (1.0);
 	  break;
 
 	case CL_KEY_D:
 	  editor_duplicate_current_selection();
 	  break;
-	  
+
 	default:
 	  if (verbose)
 	    std::cout << "EditorEvent: Unknown key pressed: id=" << key.id << " ascii=" << key.ascii << std::endl;
@@ -332,7 +332,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
       /*std::cout << "Mouse: (" << CL_Mouse::get_x () << ", " << CL_Mouse::get_y () << ") "
 		<< "World: " << editor->view->screen_to_world (Vector(CL_Mouse::get_x (), CL_Mouse::get_y ()))
 		<< std::endl;*/
-      
+
       switch (key.id)
 	{
 	case CL_MOUSE_LEFTBUTTON:
@@ -355,7 +355,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
     {
       if (verbose) std::cout << "Warning: Unknown input device" << std::endl;
     }
-  
+
   // Redraw the screen, since something may have changed
   editor->draw();
 }
@@ -379,7 +379,7 @@ EditorEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
   else
     {
     }
-  
+
   return;
 }
 
@@ -391,7 +391,7 @@ EditorEvent::editor_convert_group_to_selection()
       EditorObjGroup* group = dynamic_cast<EditorObjGroup*>(selection->get_current_obj());
 
       if (group)
-	{      
+	{
 	  std::vector<EditorObj*>* objs = group->get_objs();
 	  selection->clear();
 
@@ -440,7 +440,7 @@ EditorEvent::editor_convert_selection_to_group()
 	  for (std::vector<EditorObj*>::const_iterator i = selection->get_objects().begin();
 	       i != selection->get_objects().end();
 	       ++i)
-	    { 
+	    {
 	      if (*j == *i)
 		{
 		  group->add (*i);
@@ -468,10 +468,10 @@ void
 EditorEvent::editor_mark_all_objects()
 {
   selection->clear();
-  
-  for(ObjectManager::EditorObjIter i = object_manager->editor_objs.begin(); 
-      i != object_manager->editor_objs.end(); 
-      ++i) 
+
+  for(ObjectManager::EditorObjIter i = object_manager->editor_objs.begin();
+      i != object_manager->editor_objs.end();
+      ++i)
     {
       if (dynamic_cast<LevelResizer*>(*i) == 0)
         selection->add(*i);
@@ -481,7 +481,7 @@ EditorEvent::editor_mark_all_objects()
 void
 EditorEvent::editor_toggle_background_color()
 {
-  std::vector<Color>::iterator i = 
+  std::vector<Color>::iterator i =
     std::find(background_colors.begin (), background_colors.end (), object_manager->bg);
 
   if (i == background_colors.end ())
@@ -500,7 +500,7 @@ EditorEvent::editor_toggle_background_color()
 void
 EditorEvent::editor_delete_selected_objects()
 {
-  editor->save_tmp_level ();     
+  editor->save_tmp_level ();
   object_manager->erase (selection->get_objects());
   selection->clear();
 }
@@ -510,24 +510,24 @@ EditorEvent::editor_start_current_level()
 {
   loading_screen.draw();
 
-  try 
+  try
     {
       std::string levelfile = editor->save_tmp_level();
       // FIXME: Insert here something that checks if a level needs a reload
       ScreenManager::instance()->push_screen
         (new PingusGameSession (PLFResMgr::load_plf_from_filename(levelfile), false), true);
     }
-  catch(const PingusError& err) 
+  catch(const PingusError& err)
     {
       std::cout << "Editor: Error caught from Pingus: " << err.get_message () << std::endl;
-    }  
-  catch (const CL_Error& err) 
+    }
+  catch (const CL_Error& err)
     {
       std::cout << "Editor: Error caught from ClanLib: " << err.message << std::endl;
     }
 }
 
-void 
+void
 EditorEvent::editor_load_level()
 {
   std::string str;
@@ -543,7 +543,7 @@ EditorEvent::editor_load_level()
   for (System::Directory::iterator i = dir.begin(); i != dir.end(); ++i)
     {
       //std::cout << "dirs: " << System::get_statdir() + "levels/" +  i->name << std::endl;
-      
+
       temp_str = System::get_statdir() + "levels/" + i->name;
 
       strings.push_back(temp_str);
@@ -555,7 +555,7 @@ EditorEvent::editor_load_level()
   str = reader.read_string();
   enable();
 
-  if (!str.empty()) 
+  if (!str.empty())
     {
       try {
 	selection->clear ();
@@ -597,10 +597,10 @@ EditorEvent::editor_save_level_as()
   str = reader.read_string();
   enable();
 
-  if (!str.empty()) 
+  if (!str.empty())
     {
       if (str.substr(str.size() - 4) ==  ".xml")
-	object_manager->save_level_xml(str);	
+	object_manager->save_level_xml(str);
       else
 	object_manager->save_level_xml(str + ".xml");
 
@@ -612,15 +612,15 @@ void
 EditorEvent::editor_duplicate_current_selection()
 {
   std::vector<EditorObj*> new_objs;
-  
-  for (std::vector<EditorObj*>::const_iterator i = selection->get_objects().begin(); 
+
+  for (std::vector<EditorObj*>::const_iterator i = selection->get_objects().begin();
        i != selection->get_objects().end();
        ++i)
     {
-      /*ObjectManager::EditorObjIter iter = std::find(object_manager->editor_objs.begin(), 
-						    object_manager->editor_objs.end(), 
+      /*ObjectManager::EditorObjIter iter = std::find(object_manager->editor_objs.begin(),
+						    object_manager->editor_objs.end(),
 						    *i);*/
-      
+
       EditorObj* obj = (*i)->duplicate();
       if (obj)
 	{
@@ -643,7 +643,7 @@ EditorEvent::editor_insert_new_object()
 {
   editor->save_tmp_level();
 
-  try 
+  try
     {
       disable();
       //std::cout << "Object selector on" <<std::endl;
@@ -653,7 +653,7 @@ EditorEvent::editor_insert_new_object()
       //std::cout << "Object selector off" << std::endl;
       enable();
     }
-  
+
   catch (CL_Error err) {
     std::cout << "Editor: Error caught from ClanLib: " << err.message << std::endl;
     enable();
@@ -667,7 +667,7 @@ EditorEvent::editor_new_level()
   object_manager->new_level();
 }
 
-void 
+void
 EditorEvent::editor_exit()
 {
   editor->save_tmp_level();
@@ -680,10 +680,10 @@ EditorEvent::editor_mark_or_move_object()
   if (editor->tool != Editor::SELECTOR_TOOL)
     return;
 
-  EditorObj* obj 
-    = object_manager->find_object(editor->view->screen_to_world (Vector(CL_Mouse::get_x(), 
+  EditorObj* obj
+    = object_manager->find_object(editor->view->screen_to_world (Vector(CL_Mouse::get_x(),
 									   CL_Mouse::get_y())));
-  
+
   int x = CL_Mouse::get_x();
   int y = CL_Mouse::get_y();
   bool move_selection = false;
@@ -707,7 +707,7 @@ EditorEvent::editor_mark_or_move_object()
 	  if (!CL_Keyboard::get_keycode(CL_KEY_LSHIFT)
               && !CL_Keyboard::get_keycode(CL_KEY_RSHIFT))
 	    selection->clear();
-	 
+
           if (selection->has_object(obj))
             selection->remove(obj);
           else
@@ -720,7 +720,7 @@ EditorEvent::editor_mark_or_move_object()
     }
 }
 
-void 
+void
 EditorEvent::editor_display_help()
 {
   /*  CL_Display::clear_display();
@@ -735,22 +735,22 @@ EditorEvent::editor_increase_count ()
 void
 EditorEvent::editor_decrease_count ()
 {
-  
+
 }
 
-void 
+void
 EditorEvent::editor_zoom_in ()
 {
   editor->view->set_zoom (editor->view->get_zoom () * 1.4f);
 }
 
-void 
+void
 EditorEvent::editor_zoom_out ()
 {
   editor->view->set_zoom (editor->view->get_zoom () / 1.4f);
 }
 
-void 
+void
 EditorEvent::zoom_mode ()
 {
   editor->zoom_mode ();
@@ -760,12 +760,12 @@ void
 EditorEvent::editor_export_prefab_from_selection ()
 {
   std::cout << "EditorEvent:editor_export_object_group_from_selection (): /tmp/metaobj.xml" << std::endl;
-  
+
   std::vector<EditorObj*> temp;
   for (std::vector<EditorObj*>::const_iterator it  = selection->get_objects().begin();
        it != selection->get_objects().end(); ++it)
     temp.push_back(*it);
-  
+
   EditorObjGroup group (temp);
   std::ofstream xml ("/tmp/metaobj.xml");
   xml << "<pingus-prefab>\n"
@@ -782,7 +782,7 @@ EditorEvent::editor_import_prefab ()
   editor->object_manager->add_prefab_from_file ("/tmp/metaobj.xml");
 }
 
-void 
+void
 EditorEvent::editor_horizontal_flip_current_selection()
 {
   selection->horizontal_flip ();
@@ -827,7 +827,7 @@ EditorEvent::editor_show_level_properties ()
   if (editor->level_property_window->is_visible ())
     editor->level_property_window->show (false);
   else
-    editor->level_property_window->show (true);  
+    editor->level_property_window->show (true);
 }
 
 bool
@@ -835,7 +835,7 @@ EditorEvent::accept_input ()
 {
   return
     is_enabled
-    && 
+    &&
     (editor->get_gui_manager ()->get_focus () == editor->get_gui_manager ());
 }
 

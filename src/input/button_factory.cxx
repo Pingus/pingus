@@ -1,5 +1,5 @@
-//  $Id: button_factory.cxx,v 1.11 2002/09/28 19:31:06 torangan Exp $
-// 
+//  $Id: button_factory.cxx,v 1.12 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -40,13 +40,13 @@ Button* ButtonFactory::create (xmlNodePtr cur)
 
   if (XMLhelper::equal_str(cur->name, "double-button"))
     return double_button(XMLhelper::skip_blank(cur->children));
-  
+
   else if (XMLhelper::equal_str(cur->name, "joystick-button"))
     return joystick_button(cur);
-  
+
   else if (XMLhelper::equal_str(cur->name, "key-button"))
     return key_button(cur);
-  
+
   else if (XMLhelper::equal_str(cur->name, "mouse-button"))
     return mouse_button(cur);
 
@@ -58,7 +58,7 @@ Button* ButtonFactory::create (xmlNodePtr cur)
 
   else
     PingusError::raise(std::string("Unknown button type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
-  
+
   return 0; // never reached
 }
 
@@ -68,9 +68,9 @@ Button* ButtonFactory::double_button (xmlNodePtr cur)
 
   button1 = create(cur);
 
-  cur = XMLhelper::skip_blank(cur->next);	
+  cur = XMLhelper::skip_blank(cur->next);
   button2 = create(cur);
-        
+
   return new DoubleButton(button1, button2);
 }
 
@@ -79,7 +79,7 @@ Button* ButtonFactory::joystick_button (xmlNodePtr cur)
   int id;
   if (!XMLhelper::get_prop(cur, "id", id))
     PingusError::raise("JoystickButton without id parameter");
-    
+
   int button;
   if (!XMLhelper::get_prop(cur, "button", button))
     PingusError::raise("JoystickButton without button parameter");
@@ -92,7 +92,7 @@ Button* ButtonFactory::key_button (xmlNodePtr cur)
   std::string key;
   if (!XMLhelper::get_prop(cur, "key", key))
     PingusError::raise("KeyButton without key parameter");
-    
+
   return new KeyButton(KeyHelper::string_to_key(key));
 }
 
@@ -115,11 +115,11 @@ Button* ButtonFactory::multiple_button (xmlNodePtr cur)
 	cur = cur->next;
 	continue;
       }
-    
+
       buttons.push_back(create(cur));
       cur = cur->next;
     }
-  
+
   return new MultipleButton(buttons);
 }
 
@@ -129,12 +129,12 @@ Button* ButtonFactory::triple_button (xmlNodePtr cur)
 
   button1 = create(cur);
 
-  cur = XMLhelper::skip_blank(cur->next);	
+  cur = XMLhelper::skip_blank(cur->next);
   button2 = create(cur);
 
   cur = XMLhelper::skip_blank(cur->next);
   button3 = create(cur);
-        
+
   return new TripleButton(button1, button2, button3);
 }
 

@@ -1,5 +1,5 @@
-//  $Id: smallmap_image.hxx,v 1.8 2002/09/28 11:52:22 torangan Exp $
-// 
+//  $Id: smallmap_image.hxx,v 1.9 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -43,7 +43,7 @@ public:
   bool mouse_over (int x, int y);
 
   static CL_Surface create_surface (Server * server, int width, int height);
-  
+
 private:
   SmallMapImage (const SmallMapImage&);
   SmallMapImage& operator= (const SmallMapImage&);

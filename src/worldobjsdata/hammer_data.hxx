@@ -1,4 +1,4 @@
-//  $Id: hammer_data.hxx,v 1.8 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: hammer_data.hxx,v 1.9 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,23 +32,23 @@ namespace WorldObjsData {
 class HammerData : public WorldObjData {
 public:
   Vector   pos;
-      
+
 public:
   HammerData ();
   HammerData (xmlDocPtr doc, xmlNodePtr node);
   HammerData (const HammerData& old);
-      
+
   void write_xml (std::ostream& xml);
-      
+
   void insert_WorldObjs (World* world);
-      
+
   void insert_EditorObjs (EditorNS::EditorObjMgr*);
-      
+
 private:
   HammerData& operator= (const HammerData&);
-      
+
 };
-  
+
 } // namespace WorldObjsData
 
 #endif

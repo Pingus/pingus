@@ -1,4 +1,4 @@
-//  $Id: fade_out.cxx,v 1.7 2003/02/19 09:50:35 grumbel Exp $
+//  $Id: fade_out.cxx,v 1.8 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ FadeOut::~FadeOut ()
 {
 }
 
-void 
+void
 FadeOut::reset ()
 {
   passed_time = 0;
@@ -50,10 +50,10 @@ FadeOut::update (float delta)
 void
 FadeOut::set_progress (float /*progress*/)
 {
-  
+
 }
 
-bool  
+bool
 FadeOut::finished ()
 {
   if (get_progress () >= 1.0f)
@@ -72,7 +72,7 @@ void
 FadeOut::random (void)
 {
   if (maintainer_mode) {
-    CL_Display::clear_display();    
+    CL_Display::clear_display();
   } else {
     switch(rand() % 2) {
     case 0:
@@ -85,7 +85,7 @@ FadeOut::random (void)
       break;
     case 2:
       CL_Display::clear_display();
-      if (verbose) std::cout << "FadeOut::clear_display()" << std::endl;    
+      if (verbose) std::cout << "FadeOut::clear_display()" << std::endl;
       break;
     default:
       black_rect();
@@ -103,17 +103,17 @@ FadeOut::black_rect (int steps)
 
   CL_Display::sync_buffers();
 
-  for(int i=0; i <= steps; ++i) 
+  for(int i=0; i <= steps; ++i)
     {
       x1 = static_cast<int>((CL_Display::get_width()  / 2) - (step_w * i));
       y1 = static_cast<int>((CL_Display::get_height() / 2) - (step_h * i));
       x2 = static_cast<int>((CL_Display::get_width()  / 2) + (step_w * i));
       y2 = static_cast<int>((CL_Display::get_height() / 2) + (step_h * i));
-      
+
       CL_Display::fill_rect(x1, y1, x2, y2, 0.0, 0.0, 0.0, 1.0);
       CL_System::sleep(0);
       Display::flip_display(true);
-    }  
+    }
   clear();
 }
 
@@ -142,7 +142,7 @@ FadeOut::clear (void)
   CL_Display::sync_buffers();
 }
 
-void 
+void
 EnlargingRectFadeOut::draw ()
 {
   //std::cout << "EnlargingRectFadeOut:: draw" << std::endl;

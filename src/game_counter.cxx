@@ -1,4 +1,4 @@
-//  $Id: game_counter.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: game_counter.cxx,v 1.3 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ GameCounter::GameCounter()
 
 GameCounter::~GameCounter()
 {
-  
+
 }
 
 void
@@ -128,17 +128,17 @@ int  GameCounter::operator--()
 {
   count -= add;
   check_overflow();
-  return int(count);  
+  return int(count);
 }
 
 int
 GameCounter::operator=(int i)
 {
-  is_finished = false;  
+  is_finished = false;
   return int(count = double(i));
 }
 
-int 
+int
 GameCounter::value(void)
 {
   return int(count);

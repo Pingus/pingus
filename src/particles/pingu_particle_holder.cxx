@@ -1,4 +1,4 @@
-//  $Id: pingu_particle_holder.cxx,v 1.8 2003/03/25 00:56:33 grumbel Exp $
+//  $Id: pingu_particle_holder.cxx,v 1.9 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,7 +50,7 @@ void
 PinguParticleHolder::add_particle (int x, int y)
 {
   int i = 0;
-  
+
   // fill gaps from dead entries
   for (std::vector<PinguParticle>::iterator it=particles.begin(); it != particles.end(); ++it)
     {
@@ -60,10 +60,10 @@ PinguParticleHolder::add_particle (int x, int y)
           ++i;
         }
     }
-  
+
   // allocate space for all remaining particles at once
   particles.reserve(particles.size() + 50 - i);
-    
+
   // create remaining entries
   for (; i < 50; ++i)
     particles.push_back(PinguParticle(x, y));
@@ -78,7 +78,7 @@ PinguParticleHolder::update ()
       // skip dead particles
       if (!it->livetime)
         continue;
-    
+
       float tmp_x_add = 0.0f;
       float tmp_y_add = 0.0f;
 
@@ -161,7 +161,7 @@ PinguParticleHolder::draw (GraphicContext& gc)
       // skip dead particles
       if (!it->livetime)
         continue;
-      
+
       gc.draw(surface, it->pos, it->use_frame2);
     }
 }

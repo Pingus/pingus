@@ -1,4 +1,4 @@
-//  $Id: jumper.hxx,v 1.12 2003/04/18 17:08:56 grumbel Exp $
+//  $Id: jumper.hxx,v 1.13 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -7,7 +7,7 @@
 //  modify it under the terms of the GNU General Public License
 //  as published by the Free Software Foundation; either version 2
 //  of the License, or (at your option) any later version.
-// 
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -36,7 +36,7 @@ public:
 
   void  draw (GraphicContext& gc);
   void  update();
-  
+
 private:
   Jumper (const Jumper&);
   Jumper& operator= (const Jumper&);

@@ -1,4 +1,4 @@
-//  $Id: weather_obj.cxx,v 1.11 2002/09/28 11:52:24 torangan Exp $
+//  $Id: weather_obj.cxx,v 1.12 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,8 +35,8 @@ WeatherObj::WeatherObj(const std::string& type_)
   else if (type == "snow-generator")
     {
       sprite = Sprite("editor/weather_snow", "core");
-    }  
-  else 
+    }
+  else
     {
       std::cout << "WeatherObj: Unknown weather type: " << type << std::endl;
       sprite = Sprite("editor/weather_rain", "core");
@@ -49,11 +49,11 @@ WeatherObj::~WeatherObj()
 {
 }
 
-void 
+void
 WeatherObj::draw (EditorNS::EditorView * view)
 {
   //std::cout << "Dragging: " << dragging << std::endl;
-      
+
   if (dragging)
     {
       for (int x = 0; x < 320; x += sprite.get_width () + 4)
@@ -72,8 +72,8 @@ WeatherObj::draw (EditorNS::EditorView * view)
   SpriteEditorObj::draw (view);
   pos = tmp_pos;
 }
-  
-void   
+
+void
 WeatherObj::write_xml(std::ostream& xml)
 {
   xml << "  <worldobj type=\"" << type << "\">\n";
@@ -81,20 +81,20 @@ WeatherObj::write_xml(std::ostream& xml)
   xml << "  </worldobj>\n"
       << std::endl;
 }
- 
+
 EditorObj*
 WeatherObj::duplicate()
 {
   return new WeatherObj(type);
 }
 
-void 
+void
 WeatherObj::drag ()
 {
   dragging = true;
 }
 
-void 
+void
 WeatherObj::drop ()
 {
   dragging = false;

@@ -1,4 +1,4 @@
-//  $Id: slider.cxx,v 1.17 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: slider.cxx,v 1.18 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ Slider::update ()
   for (int i = 0; i < speed; ++i)
     {
       pingu->set_x(pingu->get_x() + pingu->direction);
-      
+
       if (rel_getpixel(0, -1) ==  Groundtype::GP_NOTHING)
 	{
 	  speed = (speed > 5) ? 5 : speed;

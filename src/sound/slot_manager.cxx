@@ -1,4 +1,4 @@
-//  $Id: slot_manager.cxx,v 1.1 2003/02/18 17:30:32 grumbel Exp $
+//  $Id: slot_manager.cxx,v 1.2 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 
 SlotEntry& find_slot(const std::string& name)
 {
-  
+
 }
 
 void
@@ -29,20 +29,20 @@ SlotManager::play_sound(const std::string& name)
 {
   CL_SoundBuffer         * buffer;
   CL_SoundBuffer_Session sess;
-  
+
   try {
     buffer = new CL_SoundBuffer (new CL_Sample(filename.c_str(), NULL), true);
     sess   = buffer -> prepare();
   } catch (const CL_Error & e) {
     perr(PINGUS_DEBUG_SOUND) << "Can't open file " << filename << " -- skipping\n"
-			     << "  CL_Error: " << e.message << std::endl;    
+			     << "  CL_Error: " << e.message << std::endl;
     return;
   }
-  
+
   sess.set_volume(volume);
   sess.set_pan(panning);
   sess.set_looping(false);
-  sess.play();  
+  sess.play();
 }
 
 /* EOF */

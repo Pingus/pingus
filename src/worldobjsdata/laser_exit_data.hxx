@@ -1,4 +1,4 @@
-//  $Id: laser_exit_data.hxx,v 1.7 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: laser_exit_data.hxx,v 1.8 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,23 +33,23 @@ public:
   CL_Surface  surface;
   Vector   pos;
   GameCounter counter;
-      
+
 public:
   LaserExitData ();
   LaserExitData (xmlDocPtr doc, xmlNodePtr node);
   LaserExitData (const LaserExitData& old);
-      
+
   void write_xml (std::ostream& xml);
-      
+
   void insert_WorldObjs (World*);
-      
+
   void insert_EditorObjs (EditorNS::EditorObjMgr*);
-      
+
 private:
   LaserExitData& operator= (const LaserExitData&);
-      
+
 };
-  
+
 } // namespace WorldObjsData
 
 #endif

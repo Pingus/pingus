@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.39 2003/04/09 16:20:19 torangan Exp $
+//  $Id: game_session.cxx,v 1.40 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,7 @@ PingusGameSession::~PingusGameSession ()
   if (maintainer_mode)
     std::cout << "XXXXXXXX"
               << " Redraws: " << number_of_redraws
-              << " Updates: " << number_of_updates 
+              << " Updates: " << number_of_updates
               << " FrameSkip: " << number_of_updates - number_of_redraws
               << std::endl;
 
@@ -102,7 +102,7 @@ PingusGameSession::update (const GameDelta& delta)
       //ScreenManager::instance()->pop_screen();
       PinguHolder* pingu_holder = server->get_world()->get_pingus();
       Result result;
-      
+
       result.plf    = server->get_plf();
 
       result.saved  = pingu_holder->get_number_of_exited();
@@ -142,7 +142,7 @@ PingusGameSession::update (const GameDelta& delta)
 
   {
     int i;
-    for (i = 0; 
+    for (i = 0;
          ((i * update_time < time_passed)
           || i < min_frame_skip)
            && !(i > max_frame_skip);
@@ -152,7 +152,7 @@ PingusGameSession::update (const GameDelta& delta)
         server->update ();
         ++number_of_updates;
       }
-      
+
     // Time that got not used for updates
     left_over_time = time_passed - (i * update_time);
   }
@@ -162,7 +162,7 @@ PingusGameSession::update (const GameDelta& delta)
       // FIXME: This doesn't really belong here
       CL_System::sleep(-left_over_time);
     }
-  
+
   // Client is independend of the update limit, well, not completly...
   client->update (delta);
 
@@ -176,25 +176,25 @@ PingusGameSession::update (const GameDelta& delta)
 void
 PingusGameSession::on_pause_press ()
 {
-  client->on_pause_press (); 
+  client->on_pause_press ();
 }
 
 void
 PingusGameSession::on_fast_forward_press ()
 {
-  client->on_fast_forward_press (); 
+  client->on_fast_forward_press ();
 }
 
 void
-PingusGameSession::on_armageddon_press () 
+PingusGameSession::on_armageddon_press ()
 {
-  client->on_armageddon_press (); 
+  client->on_armageddon_press ();
 }
 
 void
-PingusGameSession::on_escape_press () 
-{ 
-  client->on_escape_press (); 
+PingusGameSession::on_escape_press ()
+{
+  client->on_escape_press ();
 }
 
 /* EOF */

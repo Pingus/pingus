@@ -1,5 +1,5 @@
-//  $Id: multiple_button.hxx,v 1.3 2002/09/27 11:26:48 torangan Exp $
-// 
+//  $Id: multiple_button.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -26,32 +26,32 @@
 namespace Input {
 
   namespace Buttons {
-  
+
     /**
       @brief wrapper class mapping multiple buttons into one
-    
+
       XML definition: <multiple-button> <button 1>...<button n> </multiple-button>
-    
+
       A multiple button is pressed whenever at least one of the buttons contained is pressed.
       */
     class MultipleButton : public Button {
-  
+
       private:
         std::vector<Button*> buttons;
-      
+
       public:
-    
+
         MultipleButton (const std::vector<Button*>& buttons_);
        ~MultipleButton ();
 
         virtual bool is_pressed () const;
         virtual void update (float delta);
-      
+
       private:
         MultipleButton (const MultipleButton&);
         MultipleButton& operator= (const MultipleButton&);
     };
-    
+
   }
 }
 

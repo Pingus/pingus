@@ -1,5 +1,5 @@
-//  $Id: switch_door.hxx,v 1.18 2002/10/01 19:53:46 grumbel Exp $
-// 
+//  $Id: switch_door.hxx,v 1.19 2003/04/19 10:23:19 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -35,7 +35,7 @@ class SwitchDoor : public WorldObj
 {
 private:
   WorldObjsData::SwitchDoorData* const data;
-  
+
   CL_Surface door_box;
   CL_Surface door_tile;
   CL_Surface door_tile_cmap;
@@ -51,14 +51,14 @@ private:
 public:
   SwitchDoor (const WorldObjsData::SwitchDoorData& data_);
  ~SwitchDoor ();
-  
+
   void on_startup();
   void draw (GraphicContext& gc);
   void update ();
-  
+
   /// The switch and the door should stay above the pingus
   float get_z_pos() const { return 100; }
-  
+
 private:
   SwitchDoor (const SwitchDoor&);
   SwitchDoor& operator= (const SwitchDoor&);

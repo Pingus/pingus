@@ -1,4 +1,4 @@
-//  $Id: laser_exit.cxx,v 1.11 2003/02/19 09:50:37 grumbel Exp $
+//  $Id: laser_exit.cxx,v 1.12 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ LaserExit::get_z_pos () const
   return data->pos.z;
 }
 
-void 
+void
 LaserExit::draw (GraphicContext& gc)
 {
   gc.draw (data->surface, data->pos,
@@ -75,12 +75,12 @@ LaserExit::update ()
 void
 LaserExit::catch_pingu (Pingu* pingu)
 {
-  if (!killing) 
+  if (!killing)
     {
-      if (   pingu->get_x () < data->pos.x + 34 + 10 && pingu->get_x () > data->pos.x + 34 
-	     && pingu->get_y () < data->pos.y + 43 + 20 && pingu->get_y () > data->pos.y + 43) 
+      if (   pingu->get_x () < data->pos.x + 34 + 10 && pingu->get_x () > data->pos.x + 34
+	     && pingu->get_y () < data->pos.y + 43 + 20 && pingu->get_y () > data->pos.y + 43)
 	{
-	  if (pingu->get_action() != Actions::Laserkill) 
+	  if (pingu->get_action() != Actions::Laserkill)
 	    {
 	      killing = true;
 	      pingu->set_action(Actions::Laserkill);

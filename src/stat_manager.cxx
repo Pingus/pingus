@@ -1,4 +1,4 @@
-//  $Id: stat_manager.cxx,v 1.7 2003/04/11 12:45:39 grumbel Exp $
+//  $Id: stat_manager.cxx,v 1.8 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ StatManager*
 StatManager::instance()
 {
   if (instance_)
-    return instance_; 
+    return instance_;
   else
     return (instance_ = new StatManager(System::get_statdir() + "savegames/variables.xml"));
 }
@@ -66,9 +66,9 @@ StatManager::load(const std::string& filename)
   if (doc)
     {
             xmlNodePtr cur = doc->ROOT;
-  
+
       cur = XMLhelper::skip_blank(cur);
-  
+
       if (cur && XMLhelper::equal_str(cur->name, "pingus-stats"))
         {
           cur = XMLhelper::skip_blank(cur);
@@ -119,7 +119,7 @@ StatManager::save(const std::string& filename)
   xml << "</pingus-stats>\n";
 }
 
-bool 
+bool
 StatManager::get_int(const std::string& name, int& value)
 {
   std::string str;
@@ -129,7 +129,7 @@ StatManager::get_int(const std::string& name, int& value)
     return false;
 }
 
-bool 
+bool
 StatManager::get_bool(const std::string& name, bool& value)
 {
   std::string str;
@@ -139,7 +139,7 @@ StatManager::get_bool(const std::string& name, bool& value)
     return false;
 }
 
-bool 
+bool
 StatManager::get_string(const std::string& name, std::string& value)
 {
   Table::iterator i = stats.find(name);
@@ -154,7 +154,7 @@ StatManager::get_string(const std::string& name, std::string& value)
     }
 }
 
-void 
+void
 StatManager::set_string(const std::string& name, const std::string& value)
 {
   stats[name] = value;

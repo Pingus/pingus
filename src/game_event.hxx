@@ -1,5 +1,5 @@
-//  $Id: game_event.hxx,v 1.6 2002/08/23 15:49:48 torangan Exp $
-// 
+//  $Id: game_event.hxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -42,7 +42,7 @@ class PinguGameEvent : public GameEvent
 {
   /** The id of the pingu to which this action should apply
   int pingu_id;
-  
+
   /** The action to apply to the pingu */
   std::string action;
 };

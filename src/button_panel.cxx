@@ -1,4 +1,4 @@
-//  $Id: button_panel.cxx,v 1.24 2003/03/30 13:12:35 grumbel Exp $
+//  $Id: button_panel.cxx,v 1.25 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ ButtonPanel::ButtonPanel(Client* c, int arg_x_pos, int arg_y_pos)
     armageddon_pressed(false),
     left_pressed(0),
     last_press(0),
-    x_pos (arg_x_pos), 
+    x_pos (arg_x_pos),
     y_pos (arg_y_pos)
 {
   ActionHolder* aholder = server->get_action_holder();
@@ -82,7 +82,7 @@ ButtonPanel::on_wheel_move(const CL_Key& key)
 
 ButtonPanel::~ButtonPanel()
 {
-  for (AButtonIter it = a_buttons.begin(); it != a_buttons.end(); ++it) 
+  for (AButtonIter it = a_buttons.begin(); it != a_buttons.end(); ++it)
   {
     delete *it;
   }
@@ -93,10 +93,10 @@ ButtonPanel::update(float delta)
 {
   a_buttons[pressed_button]->update(delta);
 
-  if (last_press + 350 < CL_System::get_time()) 
+  if (last_press + 350 < CL_System::get_time())
     {
       armageddon_pressed = 0;
-    } 
+    }
 }
 
 ActionName
@@ -105,19 +105,19 @@ ButtonPanel::get_action_name()
   return a_buttons[pressed_button]->get_action_name();
 }
 
-void 
-ButtonPanel::draw(GraphicContext& gc) 
+void
+ButtonPanel::draw(GraphicContext& gc)
 {
   float alpha;
 
   if (fast_mode)
     alpha = 1.0;
-  else 
+  else
     alpha = 0.5;
-  
+
   for(int i = 0; i < static_cast<int>(a_buttons.size()); ++i)
     {
-      if (i == pressed_button) 
+      if (i == pressed_button)
 	a_buttons[i]->pressed = true;
       else
         a_buttons[i]->pressed = false;
@@ -168,14 +168,14 @@ ButtonPanel::on_primary_button_release(int x, int y)
 }
 
 /// Select the next action
-void 
+void
 ButtonPanel::next_action ()
 {
   pressed_button = (pressed_button + 1) % a_buttons.size();
 }
 
 /// Select the previous action
-void 
+void
 ButtonPanel::previous_action ()
 {
   pressed_button = (pressed_button - 1 + a_buttons.size()) % a_buttons.size();

@@ -1,4 +1,4 @@
-//  $Id: usb_mouse_controller.cxx,v 1.3 2002/10/20 18:28:49 torangan Exp $
+//  $Id: usb_mouse_controller.cxx,v 1.4 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,7 +50,7 @@ USBMouseController::get_y ()
 {
   return mouse.y;
 }
-  
+
 Vector
 USBMouseController::get_pos ()
 {
@@ -77,7 +77,7 @@ USBMouseController::keep_alive ()
   if (retval)
     {
       unsigned char data[4];
-  
+
       read (fd, data, sizeof (data));
 
       mouse.button1 = ((data[0]&1)>0);

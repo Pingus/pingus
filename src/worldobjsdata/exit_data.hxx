@@ -1,4 +1,4 @@
-//  $Id: exit_data.hxx,v 1.5 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: exit_data.hxx,v 1.6 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ public:
   Vector pos;
   ResDescriptor desc;
   int owner_id;
-  
+
   /** Causes the entrance handling to fall back to the old position
       treatment, that means the position is treaten as the upper/left
       corner of the exit surface. The new handling treats the position
@@ -44,11 +44,11 @@ public:
 public:
   ExitData ();
   ExitData (xmlDocPtr doc, xmlNodePtr cur);
-  
+
   ExitData (const ExitData& old);
 
   void write_xml (std::ostream&);
-  
+
   void insert_WorldObjs (World*);
   void insert_EditorObjs (EditorNS::EditorObjMgr*);
 

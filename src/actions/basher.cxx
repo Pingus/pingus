@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.28 2003/03/28 16:16:00 grumbel Exp $
+//  $Id: basher.cxx,v 1.29 2003/04/19 10:23:18 torangan Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -29,12 +29,12 @@
 
 namespace Actions {
 
-Basher::Basher (Pingu* p) 
+Basher::Basher (Pingu* p)
   : PinguAction(p),
     sprite(PingusResource::load_surface("Pingus/basher0", "pingus")),
     bash_radius(PingusResource::load_surface("Other/bash_radius", "pingus")),
     bash_radius_gfx(PingusResource::load_surface("Other/bash_radius_gfx", "pingus")),
-    basher_c(0), 
+    basher_c(0),
     first_bash(true)
 {
   sprite.set_align_center_bottom();
@@ -98,7 +98,7 @@ Basher::update ()
 	      if (basher_c % 2 == 0)
 		bash();
 	    }
-	  else if (sprite.get_progress () > 0.6f) // FIXME: EVIL! 
+	  else if (sprite.get_progress () > 0.6f) // FIXME: EVIL!
 	    {
 	      pingu->set_action(Actions::Walker);
 	    }

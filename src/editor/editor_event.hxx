@@ -1,5 +1,5 @@
-//  $Id: editor_event.hxx,v 1.17 2002/09/27 11:26:45 torangan Exp $
-// 
+//  $Id: editor_event.hxx,v 1.18 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -48,7 +48,7 @@ public:
   Editor* editor;
   ObjectManager* object_manager;
   Selection* selection;
-  
+
   virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
   virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
 
@@ -79,14 +79,14 @@ public:
   void editor_new_level();
   void editor_insert_new_object();
   void editor_display_help();
-  
+
   // Export the current selection to a meta-obj
   void editor_export_prefab_from_selection ();
   void editor_import_prefab ();
 
   /** Display the configuration window for the actions */
   void editor_show_actions_window ();
-  
+
   /** Display the property dialog for the current object */
   void editor_show_object_properties ();
 
@@ -108,7 +108,7 @@ public:
 
 private:
   bool accept_input ();
-  
+
   EditorEvent (const EditorEvent&);
   EditorEvent& operator= (const EditorEvent&);
 };

@@ -1,4 +1,4 @@
-//  $Id: hotspot_data.cxx,v 1.7 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: hotspot_data.cxx,v 1.8 2003/04/19 10:23:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ HotspotData::HotspotData () : speed(-1), para(1.0)
 {
 }
 
-void 
+void
 HotspotData::write_xml(std::ostream& xml)
 {
   xml << "<hotspot>\n";
@@ -41,7 +41,7 @@ HotspotData::write_xml(std::ostream& xml)
   XMLhelper::write_vector_xml(xml, pos);
   xml << "  <speed>"    << speed << "</speed>\n"
       << "  <parallax>" << para  << "</parallax>\n"
-      << "</hotspot>\n" << std::endl;  
+      << "</hotspot>\n" << std::endl;
 }
 
 HotspotData::HotspotData (xmlDocPtr doc, xmlNodePtr cur)
@@ -61,7 +61,7 @@ HotspotData::HotspotData (const HotspotData& old) : WorldObjData(old),
 {
 }
 
-void 
+void
 HotspotData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::Hotspot(*this));

@@ -1,4 +1,4 @@
-//  $Id: pingus_main.hxx,v 1.11 2003/04/09 23:35:28 grumbel Exp $
+//  $Id: pingus_main.hxx,v 1.12 2003/04/19 10:23:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,7 +69,7 @@ private:
   void init_pingus();
   void init_path_finder();
   void deinit_pingus();
-  
+
   PingusMain (const PingusMain&);
   PingusMain& operator= (const PingusMain&);
 

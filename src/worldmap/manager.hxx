@@ -1,5 +1,5 @@
-//  $Id: manager.hxx,v 1.20 2003/03/31 21:52:03 grumbel Exp $
-// 
+//  $Id: manager.hxx,v 1.21 2003/04/19 10:23:19 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -46,16 +46,16 @@ class WorldMapManager : public GUIScreen
   {
   public:
     WorldMapComponent () { }
-      
+
     void on_primary_button_press (int x, int y);
     void on_secondary_button_press (int x, int y);
     void on_pointer_move(int x, int y);
-    
+
     void draw (GraphicContext& gc);
     void update (float delta);
-      
+
     bool is_at (int, int) { return true; }
-      
+
   private:
     WorldMapComponent (const WorldMapComponent&);
     WorldMapComponent& operator= (const WorldMapComponent&);
@@ -63,21 +63,21 @@ class WorldMapManager : public GUIScreen
   };
 
   WorldMapComponent* worldmap_component;
-    
+
   friend class WorldMapComponent;
 private:
   static WorldMapManager* instance_;
 
   bool is_init;
   bool exit_worldmap;
-  
+
   WorldMap* worldmap;
   WorldMap* new_worldmap;
 
   WorldMapManager ();
 public:
   ~WorldMapManager ();
-  
+
   void load (const std::string& filename);
 
   /** Check if WorldMap manager still needs to run and exit if if
@@ -97,7 +97,7 @@ public:
 
   WorldMap* get_worldmap() { return worldmap; }
 
-  /** Change the current map to the given map 
+  /** Change the current map to the given map
 
   @param filename the filename of the new map, filename must be
   @param filename relative to the worldmap directory
@@ -106,7 +106,7 @@ public:
 
   /** Singleton access function */
   static WorldMapManager* instance ();
-    
+
 private:
   /** Startup Hook of the Screen */
   void on_startup ();

@@ -1,5 +1,5 @@
-//  $Id: pingus_menu_manager.hxx,v 1.20 2003/04/11 14:30:05 grumbel Exp $
-// 
+//  $Id: pingus_menu_manager.hxx,v 1.21 2003/04/19 10:23:17 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -74,7 +74,7 @@ public:
   /** Remove the current menu and fall back to the last one.
       This is used for yes/no dialoges and such things. */
   void pop_menu ();
-  
+
   /** Add's a new menu to the menu stack. This is used for yes/no
       dialoges and such things.*/
   void push_menu (PingusSubMenu * menu);
@@ -87,7 +87,7 @@ public:
 
 protected:
   PingusMenuManager ();
-  
+
 private:
   PingusMenuManager (const PingusMenuManager&);
   PingusMenuManager& operator= (const PingusMenuManager&);

@@ -1,5 +1,5 @@
-//  $Id: hotspot_obj.hxx,v 1.5 2002/12/05 20:38:10 torangan Exp $
-// 
+//  $Id: hotspot_obj.hxx,v 1.6 2003/04/19 10:23:18 torangan Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,7 +12,7 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_EDITOR_HOTSPOT_HXX
 
 #include "../editor/editor.hxx"
-#include "../editor/sprite_editorobj.hxx" 
+#include "../editor/sprite_editorobj.hxx"
 
 namespace WorldObjsData {
 class HotspotData;
@@ -33,7 +33,7 @@ class HotspotObj : public SpriteEditorObj
 {
 private:
   WorldObjsData::HotspotData* const data;
-  
+
 public:
   HotspotObj (const WorldObjsData::HotspotData& data_);
 

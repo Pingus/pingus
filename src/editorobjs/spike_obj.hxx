@@ -1,4 +1,4 @@
-//  $Id: spike_obj.hxx,v 1.10 2003/03/25 23:15:23 grumbel Exp $
+//  $Id: spike_obj.hxx,v 1.11 2003/04/19 10:23:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,20 +32,20 @@ class SpikeObj : public SpriteEditorObj
 {
 private:
   WorldObjsData::SpikeData* const data;
-  
+
 public:
   SpikeObj (const WorldObjsData::SpikeData& data_);
   ~SpikeObj ();
-   
+
   static EditorObjLst create (const Vector& pos);
 
   EditorObj* duplicate ();
-    
+
   void write_xml (std::ostream& xml);
   void draw (EditorNS::EditorView* view);
-    
+
   std::string status_line ();
-  EditorNS::PropertyFrame* get_gui_dialog(EditorNS::Editor*) { return 0; }  
+  EditorNS::PropertyFrame* get_gui_dialog(EditorNS::Editor*) { return 0; }
 private:
   SpikeObj (const SpikeObj&);
   SpikeObj& operator= (const SpikeObj&);
