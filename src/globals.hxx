@@ -1,4 +1,4 @@
-//  $Id: globals.hxx,v 1.11 2002/11/08 01:38:27 grumbel Exp $
+//  $Id: globals.hxx,v 1.12 2003/02/18 21:38:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,7 +57,6 @@ extern std::string config_file;                     ///< --config-file
 extern bool        background_manipulation_enabled; ///< --enable-bg-manipulation
 extern bool        debug_game_time;                 ///< --debug-game-time
 extern bool        max_cpu_usage;                   ///< --max-cpu-usage
-extern bool        use_datafile;                    ///< --use-datafile
 extern bool        use_opengl;                      ///< --use-opengl
 extern bool        action_help;                     ///< --action-help
 extern bool        show_input_debug_screen;         ///

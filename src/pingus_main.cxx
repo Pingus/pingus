@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.45 2003/02/18 18:41:59 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.46 2003/02/18 21:38:08 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -217,8 +217,6 @@ PingusMain::check_args(int argc, char** argv)
       {"disable-action-help",no_argument,      0, 156},
       {"enable-action-help", no_argument,      0, 157},
       {"enable-bg-manipulation", no_argument,  0, 148},
-      {"use-datafile",      no_argument,       0, 150},
-      {"use-scriptfile",    no_argument,       0, 151},
       {"min-cpu-usage",     no_argument,       0, 153},
       {"min-frame-skip",    required_argument, 0, 154},
       {"max-frame-skip",    required_argument, 0, 155},
@@ -415,14 +413,6 @@ For more information about these matters, see the files named COPYING.\
       
     case 148:
       background_manipulation_enabled = true;
-      break;
-
-    case 150:
-      use_datafile = true;
-      break;
-
-    case 151:
-      use_datafile = false;
       break;
 
     case 152:

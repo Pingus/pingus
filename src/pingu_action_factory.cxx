@@ -1,4 +1,4 @@
-//  $Id: pingu_action_factory.cxx,v 1.11 2002/11/27 20:05:42 grumbel Exp $
+//  $Id: pingu_action_factory.cxx,v 1.12 2003/02/18 21:38:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -138,7 +138,8 @@ PinguActionFactory::create (Pingu* pingu, ActionName id)
 void
 PinguActionFactory::delete_actions ()
 {
-  std::cout << "PinguActionFactory::delete_actions (): Deleting all Actions" << std::endl;
+  std::cout << "PinguActionFactory::delete_actions (): Deleting all Actions: " 
+            << all_actions.size() << std::endl;
   for (std::vector<PinguAction*>::iterator i = all_actions.begin ();
        i != all_actions.end (); ++i)
     {

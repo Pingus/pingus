@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.21 2002/11/02 19:03:40 grumbel Exp $
+//  $Id: pingus_resource.cxx,v 1.22 2003/02/18 21:38:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,10 +18,11 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #ifndef WIN32
-	#include <unistd.h>
-	#include <sys/types.h>
-	#include <sys/stat.h>
+#  include <unistd.h>
+#  include <sys/types.h>
+#  include <sys/stat.h>
 #endif
+
 #include <assert.h>
 
 #include <ClanLib/png.h>
@@ -36,43 +37,6 @@
 std::map<std::string, CL_ResourceManager*> PingusResource::resource_map;
 std::map<ResDescriptor, CL_Surface>       PingusResource::surface_map;
 std::map<ResDescriptor, CL_Font*>          PingusResource::font_map;
-
-std::string
-suffix_fixer(const std::string& filename)
-{
-  std::string wrong_suffix;
-  std::string right_suffix;
-
-  // Using compiled datafiles, they load faster, but are larger
-  if (use_datafile)
-    {
-      right_suffix = ".dat";
-      wrong_suffix = ".scr";
-    }
-  else
-    {
-      right_suffix = ".scr";
-      wrong_suffix = ".dat";
-    }
-
-  // Filename ends with ".dat", replace it with ".scr" and return.
-  if (filename.substr(filename.size() - 4, std::string::npos) == wrong_suffix)
-    {
-      //std::cout << "PingusResource: Filename with \"" << wrong_suffix << "\" found: " << filename << std::endl;
-      return filename.substr(0, filename.size() - 4) + right_suffix;
-    }
-
-  // Filename does not end with ".scr", than add it and return
-  if (filename.substr(filename.size() - 4, std::string::npos) != right_suffix)
-    {
-      //std::cout << "PingusResource: filename doesn't contain \"" << right_suffix << "\", fixing: " << filename << std::endl;
-      return (filename + right_suffix);
-    }
-
-  // Everything should be all right, just return.
-  return filename;
-}
-
 
 void 
 PingusResource::init()
@@ -97,8 +61,7 @@ PingusResource::deinit()
 CL_ResourceManager*
 PingusResource::get(const std::string& arg_filename)
 {
-  std::string filename = suffix_fixer(arg_filename);
-  //std::cout << "PingusResource: getting: " << filename << std::endl;
+  std::string filename = arg_filename + ".scr";
 
   CL_ResourceManager* res_manager;
 
@@ -116,7 +79,7 @@ PingusResource::get(const std::string& arg_filename)
 
       // FIXME: Memory hole... 
       res_manager = new CL_ResourceManager(path_manager.complete (res_filename.c_str()),
-      					   /* is_datafile = */ use_datafile);
+      					   /* is_datafile = */false);
       
       resource_map[filename] = res_manager;
       return res_manager;
@@ -226,12 +189,12 @@ PingusResource::load_from_source (const ResDescriptor& res_desc)
     {
     case ResDescriptor::RD_RESOURCE:
       try {
-	return CL_Surface (res_desc.res_name.c_str(), get(suffix_fixer(res_desc.datafile)));
+	return CL_Surface (res_desc.res_name.c_str(), get(res_desc.datafile));
       } catch (CL_Error err) {
 	pout << "PingusResource:" << res_desc
 	     <<  ":-404-:" << err.message << std::endl;
 	try {
-	  return CL_Surface ("misc/404", get(suffix_fixer("core")));
+	  return CL_Surface ("misc/404", get("core"));
 	} catch (CL_Error err2) {
 	  pout << "PingusResource: Fatal error, important gfx files (404.pcx) couldn't be loaded!" << std::endl;
 	  throw err;
@@ -286,7 +249,7 @@ PingusResource::load_font(const ResDescriptor& res_desc)
 	case ResDescriptor::RD_RESOURCE:
 	  try {
 	    font = CL_Font::load(res_desc.res_name.c_str(),
-				 get(suffix_fixer(res_desc.datafile)));
+				 get(res_desc.datafile));
 	  } catch (CL_Error err) {
 	    pout << "PingusResource: " << err.message << std::endl
 	         << "PingusResource: Couldn't load font: " << res_desc << std::endl;
