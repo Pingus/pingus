@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.11 2002/08/02 22:55:19 grumbel Exp $
+//  $Id: client.cxx,v 1.12 2002/08/03 09:59:23 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -117,6 +117,12 @@ Client::Client(Server * s)
 
 Client::~Client()
 {
+}
+
+void
+Client::update (const GameDelta& delta)
+{
+  GUIScreen::update (delta);
 }
 
 void 
@@ -473,13 +479,6 @@ void
 Client::draw ()
 {
   GUIScreen::draw ();
-}
-
-void
-Client::update (const GameDelta& delta)
-{
-  update (delta.get_time ());
-  GUIScreen::update (delta);
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: screen_manager.hxx,v 1.5 2002/08/02 11:25:47 grumbel Exp $
+//  $Id: screen_manager.hxx,v 1.6 2002/08/03 09:59:23 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,9 @@ private:
   /** the screen that was used in the last update() */
   Screen* last_screen;
 
+  enum { none, pop, replace } cached_action;
+  std::pair<Screen*, bool> replace_screen_arg;
+
   ScreenManager ();
 public:
   ~ScreenManager ();
@@ -54,6 +57,14 @@ public:
   /** Remove the current screen and fall back to the last one */
   void pop_screen ();
 
+private:
+  /** Replace the current screen */
+  void real_replace_screen (Screen*, bool delete_screen);
+    
+  /** Remove the current screen and fall back to the last one */
+  void real_pop_screen ();
+
+public:  
   static ScreenManager* instance ();
 };
 

@@ -1,4 +1,4 @@
-//  $Id: gui_screen.cxx,v 1.2 2002/08/02 13:17:42 grumbel Exp $
+//  $Id: gui_screen.cxx,v 1.3 2002/08/03 09:59:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,6 +46,7 @@ void
 GUIScreen::update (const GameDelta& delta)
 {
   gui_manager->update (delta);
+  update (delta.get_time ());
 
   for (std::list<Input::Event*>::const_iterator i = delta.get_events ().begin (); 
        i != delta.get_events ().end (); ++i)

@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.5 2002/08/02 22:55:19 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.6 2002/08/03 09:59:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -156,18 +156,6 @@ WorldMap::on_primary_button_press (int x, int y)
 {
   if (!catch_input) return;
 
-  /*  if (device == CL_Input::keyboards[0])
-      {
-      switch(key.id)
-      {
-      case CL_KEY_ESCAPE:
-      do_quit = true;
-      break;
-      default:
-      break;
-      }
-      }
-  */
   CL_Vector offset = get_offset ();
 
   {      

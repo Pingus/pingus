@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.6 2002/08/02 22:55:19 grumbel Exp $
+//  $Id: manager.cxx,v 1.7 2002/08/03 09:59:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Display/Input/input.h>
+#include "../screen_manager.hxx"
 #include "../path_manager.hxx"
 #include "../delta_manager.hxx"
 #include "../display.hxx"
@@ -45,6 +46,12 @@ WorldMapManager::WorldMapManager ()
   // FIXME: well enough. GUIScreen could also use multi-inheritage,
   // FIXME: but that could lead to member function name conflicts
   gui_manager->add (&worldmap_component);
+}
+
+void
+WorldMapManager::on_startup ()
+{
+  exit_worldmap = false;
 }
 
 WorldMapManager::~WorldMapManager ()
@@ -85,6 +92,19 @@ WorldMapManager::display ()
 }
   */
 
+void
+WorldMapManager::on_escape_press ()
+{
+  std::cout << "WorldMapManager::on_escape_press ()..." << std::endl;
+  exit_worldmap = true;
+}
+
+void
+WorldMapManager::update (float)
+{
+  if (exit_worldmap)
+    ScreenManager::instance ()->pop_screen ();
+}
 
 void
 WorldMapManager::WorldMapComponent::draw ()

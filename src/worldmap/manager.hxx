@@ -1,4 +1,4 @@
-//  $Id: manager.hxx,v 1.5 2002/08/02 22:55:19 grumbel Exp $
+//  $Id: manager.hxx,v 1.6 2002/08/03 09:59:23 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ namespace Pingus
     {
     public:
       void on_primary_button_press (int x, int y);
-
+ 
       void draw ();
       void update (float delta);
       
@@ -64,6 +64,9 @@ namespace Pingus
   public:
     ~WorldMapManager ();
   
+    void update (float);
+    void on_escape_press ();
+    void on_startup ();
   private:
     /// Load all required resources if not already done
     void init ();

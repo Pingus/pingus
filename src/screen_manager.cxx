@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.4 2002/08/02 11:25:47 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.5 2002/08/03 09:59:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,10 @@ ScreenManager* ScreenManager::instance_ = 0;
 ScreenManager::ScreenManager ()
 {
   last_screen = 0;
+
+  replace_screen_arg = std::pair<Screen*, bool>(0, false);
+  cached_action = none;
+
   push_screen (PingusMenuManager::instance (), false);
 }
 
@@ -49,7 +53,7 @@ ScreenManager::display ()
     {
       Screen* current_screen = screens.back ().first;
       float time_delta = delta_manager.getset ();
-
+      
       if (time_delta > 1.0)
 	{
 	  std::cout << "PingusMenuManager: detected large delta (" << time_delta
@@ -69,16 +73,20 @@ ScreenManager::display ()
       last_screen = current_screen;
       // Most likly the screen will get changed in this update call
       current_screen->update (delta);
-
-      if (last_screen != current_screen)
-	{
-	  last_screen = current_screen;
-	  continue;
-	}
-
       current_screen->draw ();
 
       Display::flip_display ();
+
+      if (cached_action == pop)
+	{
+	  real_pop_screen ();
+	  cached_action = none;
+	}
+      else if (cached_action == replace)
+	{
+	  real_replace_screen (replace_screen_arg.first, replace_screen_arg.second);
+	  cached_action = none;
+	}
 
       // Stupid hack to make this thing take less CPU
       CL_System::sleep (0);
@@ -104,31 +112,40 @@ ScreenManager::push_screen (Screen* screen, bool delete_screen)
 void
 ScreenManager::pop_screen ()
 {
-  Screen* current_screen = screens.back ().first;
-  bool    delete_screen  = screens.back ().second;
-
-  current_screen->on_shutdown ();
-
-  if (delete_screen)
-    delete current_screen;
-
-  screens.pop_back ();
+  assert (cached_action == none);
+  cached_action = pop;
 }
 
 void
 ScreenManager::replace_screen (Screen* screen, bool delete_screen)
 {
-  Screen* current_screen = screens.back ().first;
-  bool    delete_c_screen  = screens.back ().second;
+  assert (cached_action == none);
+  cached_action = replace;
+  replace_screen_arg = std::pair<Screen*, bool> (screen, delete_screen);
+}
 
-  current_screen->on_shutdown ();
+void
+ScreenManager::real_replace_screen (Screen* screen, bool delete_screen)
+{
+  screens.back ().first->on_shutdown ();
 
-  if (delete_c_screen)
-    {
-      delete current_screen;
-    }
+  if (screens.back ().second) // delete_screen
+    delete screens.back ().first;
+  
+  screens.back () = std::pair<Screen*, bool> (screen, delete_screen);
+  screens.back ().first->on_startup ();
+}
 
-  screens.back () = std::pair<Screen*, bool>(screen, delete_screen);
+void
+ScreenManager::real_pop_screen ()
+{
+  screens.back ().first->on_shutdown ();
+
+  if (screens.back ().second) // delete_screen
+    delete screens.back ().first;
+  
+  screens.pop_back ();
+  screens.back ().first->on_startup ();
 }
 
 /* EOF */

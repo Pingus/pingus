@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.9 2002/08/02 22:55:19 grumbel Exp $
+//  $Id: client.hxx,v 1.10 2002/08/03 09:59:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -100,6 +100,7 @@ public:
 
   /** Update all parts of the world */
   void update (float delta);
+  void update (const GameDelta&);
 
   //void process_events ();
 
@@ -113,7 +114,6 @@ public:
 
   // Overloaded GUIScreen stuff
   void draw ();
-  void update (const GameDelta& delta);
   void on_startup ();
   void on_shutdown ();
 
