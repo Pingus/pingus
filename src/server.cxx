@@ -1,4 +1,4 @@
-//  $Id: server.cxx,v 1.14 2002/09/14 19:06:33 torangan Exp $
+//  $Id: server.cxx,v 1.15 2002/09/14 23:40:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -217,25 +217,6 @@ void
 Server::set_finished()
 {
   finished = true;
-}
-
-void
-Server::set_demo(std::string s)
-{
-  demo_mode = true;
-  demo_file = s;
-  //demo_in->open(demo_file, (PingusDemoMode)play);
-
-  std::cout << "Set_demo(): " << demo_file << " file opened" << std::endl;
-}
-
-void 
-Server::record_demo()
-{
-  std::cout << "Recording demo..." << endl;
-  // We do only save the basename of the demofile, not the complete
-  // path, to gain at least a bit portability of the demo files.
-  recorder.set_levelname(System::basename(filename));
 }
 
 ActionHolder*

@@ -1,4 +1,4 @@
-//  $Id: server.hxx,v 1.5 2002/09/04 14:55:11 torangan Exp $
+//  $Id: server.hxx,v 1.6 2002/09/14 23:40:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define HEADER_PINGUS_SERVER_HXX
 
 #include "action_holder.hxx"
-#include "demo_recorder.hxx"
 
 class PLF;
 class World;
@@ -57,11 +56,7 @@ protected:
   bool demo_mode;
   std::string demo_file;
 
-  /// The name of the current level file
-  std::string filename;
-
   bool get_next_event;
-  DemoRecorder recorder;
   bool finished;
 
 public:
@@ -90,8 +85,6 @@ public:
   void set_finished();
   void process_event(std::string);
   void send_event(std::string);
-  void set_demo(std::string);
-  void record_demo();
   
 private:
   Server (const Server&);

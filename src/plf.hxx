@@ -1,4 +1,4 @@
-//  $Id: plf.hxx,v 1.4 2002/09/14 23:31:12 grumbel Exp $
+//  $Id: plf.hxx,v 1.5 2002/09/14 23:40:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,21 +37,30 @@ class PLF
 protected:
   std::map<std::string, std::string> levelname;
 
-  /// The name of the file from were the current level was loaded
+  /** The name of the file from were the current level was loaded */
   std::string filename;
 
-  std::string psm_filename;
   std::map<std::string, std::string> description;
+  
+  /** Author of this level */
   std::string author;
-  ResDescriptor foreground;
-  ResDescriptor music;
-  ResDescriptor col;
 
+  ResDescriptor music;
+
+  /** Start x-position of the camera */
   int  start_x_pos;
+  /** Start y-position of the camera */
   int  start_y_pos;
+
+  /** width of the level */
   int  width;
+
+  /** height of the level */
   int  height;
+
+  /** Timelimit for this level */
   int  max_time;
+
   int  release_rate;
   int  number_of_pingus;
   int  number_to_save;
@@ -89,45 +98,39 @@ public:
   PLF();
   virtual ~PLF();
 
-  //ResDescriptor get_foreground(void);
-  ///
-  //ResDescriptor get_mapfile(void);
-  ///
-  //void set_psm_filename(std::string name);
-  
   /** Returns the ResDescriptor where the music for this level can be
       found. The ResDescriptor points normaly to a file. */
   ResDescriptor get_music(void);
 
-  /// Returns the start position for the camera
+  /** Returns the start position for the camera */
   int         get_startx(void);
 
-  /// Returns the start position for the camera
+  /** Returns the start position for the camera */
   int         get_starty(void);
 
-  /// Returns the width of the level
+  /** Returns the width of the level */
   int         get_width(void);
 
-  /// Returns the height of the level
+  /** Returns the height of the level */
   int         get_height(void);
 
   /** Returns the number of Pingus, which are going to be released in
       this level. */
   int         get_pingus(void);
   
-  /// Returns the time you have to complete a level
+  /** Returns the time you have to complete a level */
   int         get_time(void);
 
-  /// Returns the difficulty of the current level
+  /** Returns the difficulty of the current level */
   int         get_difficulty();
 
-  /// Returns if the level is playable
+  /** Returns if the level is playable */
   bool        get_playable();
 
-  /// Returns the maintainer internal comment
+  /** Returns the maintainer internal comment */
   std::string get_comment ();
 
-  /// Returns the number of pingus you need to save in this level.
+  /** Returns the number of pingus you need to save in this level. */
   int         get_number_to_save();
 
   /** Returns the description of the level, which fit to the current
@@ -137,10 +140,10 @@ public:
   /** Returns the name of the current level, {\em not} the level file name. */
   std::map<std::string, std::string> get_levelname();
 
-  /// Returns the name of the plf file.
+  /** Returns the name of the plf file. */
   std::string get_filename();
 
-  /// Returns the name of the author, who creates this level
+  /** Returns the name of the author, who creates this level */
   std::string get_author();
 
   std::vector<ActionData>    get_actions(void);

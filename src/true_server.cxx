@@ -1,4 +1,4 @@
-//  $Id: true_server.cxx,v 1.7 2002/09/14 22:41:31 grumbel Exp $
+//  $Id: true_server.cxx,v 1.8 2002/09/14 23:40:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,17 +30,9 @@ TrueServer::TrueServer(PLF* arg_plf)
     plf (arg_plf)
 {
   armageddon = false;
-  filename = plf->get_filename();
   world = 0;
   finished = false;
   client_needs_redraw = true;
-
-  plf = arg_plf;
-  
-  filename = plf->get_filename();
-
-  std::vector<ActionData> bdata;
-
   fast_forward = false;
   pause = false;
   last_time = 0;

@@ -1,4 +1,4 @@
-//  $Id: demo_player.cxx,v 1.3 2002/08/16 15:13:59 torangan Exp $
+//  $Id: demo_player.cxx,v 1.4 2002/09/14 23:40:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <fstream>
 #include "pingus_error.hxx"
 #include "demo_player.hxx"
 #include "my_gettext.hxx"
@@ -44,7 +45,7 @@ DemoPlayer::load(const std::string& arg_filename)
   const int buffer_size = 256;
   char buffer[buffer_size];
   std::string filename;
-  ifstream in;
+  std::ifstream in;
   
   filename = arg_filename;
 
