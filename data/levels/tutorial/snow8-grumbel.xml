@@ -10,7 +10,7 @@
     <width>1216</width>
     <height>1000</height>
     <difficulty>40</difficulty>
-    <playable>0</playable>
+    <playable>1</playable>
     <comment></comment>
     <music>none</music>
   </global>
