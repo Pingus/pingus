@@ -1,4 +1,4 @@
-//  $Id: Playfield.cc,v 1.12 2000/05/26 18:02:01 grumbel Exp $
+//  $Id: Playfield.cc,v 1.13 2000/05/27 23:08:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include <cstdio>
 #include <cassert>
 
+#include "algo.hh"
 #include "globals.hh"
 #include "Pingu.hh"
 #include "Playfield.hh"
@@ -53,10 +54,10 @@ Playfield::Playfield(PLF* level_data, World* w)
     int x1, x2, y1, y2;
 
     x1 = (CL_Display::get_width() - world->get_width()) / 2;
-    x2 = x1 + world->get_width();
+    x2 = x1 + world->get_width() - 1;
 
     y1 = (CL_Display::get_height() - world->get_height()) / 2;
-    y2 = y1 + world->get_height();
+    y2 = y1 + world->get_height() - 1;
 
     if (x1 < 0)  
       x1 = 0;
@@ -102,6 +103,11 @@ Playfield::~Playfield()
 void
 Playfield::draw()
 { 
+  for(std::vector<View>::iterator i = view.begin(); i != view.end(); i++)
+    {
+      i->draw();
+    }
+
   if (needs_clear_screen)
     {
       //CL_Display::clear_display();
@@ -110,13 +116,8 @@ Playfield::draw()
 	  i++)
 	{
 	  CL_Display::fill_rect(i->x1, i->y1, i->x2, i->y2,
-				1.0, 0.0, 0.0, 1.0);
+				0.0, 0.0, 0.0, 1.0);
 	}
-    }
-      
-  for(std::vector<View>::iterator i = view.begin(); i != view.end(); i++)
-    {
-      i->draw();
     }
 }
 
@@ -294,9 +295,9 @@ void
 Playfield::generate_clipping_rects(int x1, int y1, int x2, int y2)
 {
   clipping_rectangles.push_back(Playfield::Rect(0, 0, CL_Display::get_width() - 1, y1));
-  clipping_rectangles.push_back(Playfield::Rect(0, y1, x1, y2));
-  clipping_rectangles.push_back(Playfield::Rect(x2, y1, CL_Display::get_width() - 1, y2));
-  clipping_rectangles.push_back(Playfield::Rect(0, y2, CL_Display::get_width() - 1, CL_Display::get_height() - 1));
+  clipping_rectangles.push_back(Playfield::Rect(0, y1, x1, y2+1));
+  clipping_rectangles.push_back(Playfield::Rect(x2+1, y1, CL_Display::get_width() - 1, y2+1));
+  clipping_rectangles.push_back(Playfield::Rect(0, y2+1, CL_Display::get_width() - 1, CL_Display::get_height() - 1));
 }
 
 /* EOF */
