@@ -1,4 +1,4 @@
-//  $Id: spike_data.cxx,v 1.11 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: spike_data.cxx,v 1.12 2003/03/25 23:15:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,7 @@ namespace WorldObjsData {
 
 SpikeData::SpikeData ()
 {
+  pos.z = 100;
 }
 
 SpikeData::SpikeData (xmlDocPtr doc, xmlNodePtr cur)

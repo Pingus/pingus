@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.53 2003/03/21 22:08:06 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.54 2003/03/25 23:15:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -685,18 +685,34 @@ EditorEvent::editor_mark_or_move_object()
     = object_manager->find_object(editor->view->screen_to_world (Vector(CL_Mouse::get_x(), 
 									   CL_Mouse::get_y())));
   
+  int x = CL_Mouse::get_x();
+  int y = CL_Mouse::get_y();
+  bool move_selection = false;
+
+  while (CL_Mouse::left_pressed() && move_selection == false)
+    {
+      if ((abs(x - CL_Mouse::get_x()) > 3)
+          || (abs(y - CL_Mouse::get_y()) > 3))
+        move_selection = true;
+      CL_System::keep_alive();
+    }
+
   if (obj)
     {
-      if (selection->object_selected(obj))
+      if (selection->has_object(obj) && move_selection)
 	{
 	  editor->interactive_move_object();
 	}
       else
 	{
-	  if (!CL_Keyboard::get_keycode(CL_KEY_LSHIFT))
+	  if (!CL_Keyboard::get_keycode(CL_KEY_LSHIFT)
+              && !CL_Keyboard::get_keycode(CL_KEY_RSHIFT))
 	    selection->clear();
-	  
-	  selection->add(obj);
+	 
+          if (selection->has_object(obj))
+            selection->remove(obj);
+          else
+            selection->add(obj);
 	}
     }
   else

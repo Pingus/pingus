@@ -1,4 +1,4 @@
-//  $Id: generic_property_frame.cxx,v 1.3 2002/12/01 17:08:47 grumbel Exp $
+//  $Id: generic_property_frame.cxx,v 1.4 2003/03/25 23:15:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -212,7 +212,7 @@ public:
     radio_buttons.push_back(std::pair<int, CL_RadioButton*>(item_value, rbutton));
     radio_group.add(rbutton);
 
-    std::cout << "Value: " << *value << " ItemValue: " << item_value << std::endl;
+    //std::cout << "Value: " << *value << " ItemValue: " << item_value << std::endl;
 
     if (item_value == *value)
       rbutton->set_checked(true);
@@ -236,7 +236,7 @@ GenericPropertyFrame::~GenericPropertyFrame()
 {
   for (std::vector<DataBox*>::iterator i = data_boxes.begin(); i != data_boxes.end(); ++i)
     {
-      std::cout << "GenericPropertyFrame: Writing data for: " << *i << std::endl;
+      //std::cout << "GenericPropertyFrame: Writing data for: " << *i << std::endl;
       (*i)->write_data();
       delete *i;
     }

@@ -1,4 +1,4 @@
-//  $Id: spike_obj.hxx,v 1.9 2002/11/28 20:09:54 grumbel Exp $
+//  $Id: spike_obj.hxx,v 1.10 2003/03/25 23:15:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,6 @@ class SpikeObj : public SpriteEditorObj
 {
 private:
   WorldObjsData::SpikeData* const data;
-  int frame;
   
 public:
   SpikeObj (const WorldObjsData::SpikeData& data_);

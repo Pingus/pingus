@@ -1,4 +1,4 @@
-//  $Id: selection.cxx,v 1.17 2002/12/29 23:29:01 torangan Exp $
+//  $Id: selection.cxx,v 1.18 2003/03/25 23:15:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,12 +71,7 @@ Selection::add(std::vector<EditorObj*> objs)
 bool
 Selection::has_object(EditorObj* obj)
 {
-  for (std::vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); ++it)
-    {
-      if (*it == obj)
-        return true;
-    }
-  return false;
+  return std::find(obj_list.begin(), obj_list.end(), obj)  !=  obj_list.end();
 }
 
 void
@@ -116,12 +111,6 @@ Selection::select_rect(float x1_, float y1_, float x2_, float y2_)
   y2 = static_cast<int> (Math::max(y1_, y2_));
 
   add(object_manager->rect_get_objs(x1, y1, x2, y2));
-}
-
-bool
-Selection::object_selected(EditorObj* obj) 
-{
-  return std::find(obj_list.begin(), obj_list.end(), obj) != obj_list.end();
 }
 
 EditorObj*

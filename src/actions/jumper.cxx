@@ -1,4 +1,4 @@
-//  $Id: jumper.cxx,v 1.18 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: jumper.cxx,v 1.19 2003/03/25 23:15:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,9 +42,9 @@ void
 Jumper::update ()
 {
   if (pingu->direction.is_right()) {
-    pingu->set_velocity(pingu->get_velocity() + Vector(10.0, -10.0));
+    pingu->set_velocity(pingu->get_velocity() + Vector(5.0, -5.0));
   } else {
-    pingu->set_velocity(pingu->get_velocity() + Vector(-10.0, -10.0));
+    pingu->set_velocity(pingu->get_velocity() + Vector(-5.0, -5.0));
   }
 
   // Move the pingu in the air, so that it can start 'falling'

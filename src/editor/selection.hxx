@@ -1,4 +1,4 @@
-//  $Id: selection.hxx,v 1.13 2002/10/09 14:49:46 grumbel Exp $
+//  $Id: selection.hxx,v 1.14 2003/03/25 23:15:23 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,8 +62,6 @@ public:
     
   /** Coordinates must be given in world-co not screen-co */
   void select_rect(float x1_, float y1_, float x2_, float y2_);
-    
-  bool object_selected(EditorObj* obj);
     
   EditorObj* get_current_obj();
   const std::vector<EditorObj*> & get_objects() { return obj_list; }

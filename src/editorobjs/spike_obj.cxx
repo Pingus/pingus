@@ -1,4 +1,4 @@
-//  $Id: spike_obj.cxx,v 1.9 2002/09/28 11:52:25 torangan Exp $
+//  $Id: spike_obj.cxx,v 1.10 2003/03/25 23:15:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,8 +25,7 @@
 namespace EditorObjs {
 
 SpikeObj::SpikeObj (const WorldObjsData::SpikeData& data_) 
-  : data(new WorldObjsData::SpikeData(data_)),
-    frame(0)
+  : data(new WorldObjsData::SpikeData(data_))
 {
   data->pos.z = -100;
   sprite = Sprite("Traps/spike", "traps");
@@ -61,7 +60,7 @@ SpikeObj::write_xml (std::ostream& xml)
 void
 SpikeObj::draw (EditorNS::EditorView* view)
 {
-  view->draw(sprite, data->pos, frame);
+  view->draw(sprite, data->pos, 2);
 }
 
 std::string  

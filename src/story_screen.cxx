@@ -1,4 +1,4 @@
-//  $Id: story_screen.cxx,v 1.4 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: story_screen.cxx,v 1.5 2003/03/25 23:15:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -168,6 +168,12 @@ void
 StoryScreen::on_fast_forward_press ()
 {
   story_comp->next_text();
+}
+
+void
+StoryScreen::on_escape_press ()
+{
+  ScreenManager::instance()->replace_screen (PingusMenuManager::instance (), false);
 }
 
 void 

@@ -1,4 +1,4 @@
-//  $Id: story_screen.hxx,v 1.2 2003/03/23 01:01:16 grumbel Exp $
+//  $Id: story_screen.hxx,v 1.3 2003/03/25 23:15:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,7 @@ public:
 
   void on_startup();
   void on_fast_forward_press ();
+  void on_escape_press ();
 private:
   StoryScreen (const StoryScreen&);
   StoryScreen& operator= (const StoryScreen&);
