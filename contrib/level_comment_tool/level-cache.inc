@@ -29,7 +29,7 @@ function open_cache()
     $db_driver = "db3";
     //$db_driver = "db4";
 
-    $dbfile = "/home/elonen/public_html/pingus/comments/cache.db";
+    $dbfile = "/home/pingus/public_html/level_comment_tool/comments/cache.db";
     //$dbfile = "/var/www/pingus/comments/cache.db";
 
     $db_handle = @dba_open ($dbfile, "w", $db_driver);
@@ -65,7 +65,7 @@ function level_cache_get( $cathegory, $level )
   $data = dba_fetch( make_db_key( $cathegory, $level ), $db_handle );
   if ( $data === False )
   {
-    $levelfile = sandbox_check( "data/levels/$cathegory/$level.plf", "data/" );
+    $levelfile = sandbox_check( "data/levels/$cathegory/$level.pingus", "data/" );
     $leveldata = parse_level( $levelfile );
     $leveldata["md5sum"] = md5(implode("", file($levelfile)));
 
