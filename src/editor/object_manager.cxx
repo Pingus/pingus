@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.9 2002/06/28 15:12:23 torangan Exp $
+//  $Id: object_manager.cxx,v 1.10 2002/06/28 17:03:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -319,7 +319,7 @@ ObjectManager::save_level_xml (const std::string & filename)
   // Printing actions to file
   xml << "  <action-list>\n";
   for (vector<ActionData>::iterator i = actions.begin(); i != actions.end(); ++i) {
-    xml << "    <" << (*i).name << " count=\"" << (*i).number_of << "\"/>" << endl;
+    xml << "    <" << action_to_string((*i).name) << " count=\"" << (*i).number_of << "\"/>" << endl;
   }
   xml << "  </action-list>\n" << std::endl;
 
