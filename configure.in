@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.38 2001/04/15 18:34:43 grumbel Exp $
+#  $Id: configure.in,v 1.39 2001/04/30 18:28:12 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -313,8 +313,7 @@ AC_OUTPUT( Makefile
            data/demos/Makefile
            data/data/Makefile
            doc/Makefile
-           intl/Makefile
-           po/Makefile.in
+           po/Makefile.in intl/Makefile
           )
 
 # ----------------------------------------
