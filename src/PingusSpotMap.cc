@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.28 2000/06/23 18:39:56 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.29 2000/06/24 15:07:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -166,11 +166,30 @@ PingusSpotMap::load(PLF* plf)
   width  = plf->get_width();
   height = plf->get_height();
 
+  // Checking that the map has the correct size, only multiples of
+  // tile_size are allowed, anything else wouldn't fit very well on
+  // the colmap
+  if ((width % tile_size) != 0) 
+    {
+      std::cout << "Warrning: Width is not a multible of " << tile_size << std::endl;
+      width += (tile_size - (width % tile_size));
+      std::cout << "Warning: Fixing height to: " << width << std::endl;
+    }
+  
+  if ((height % tile_size) != 0) 
+    {
+      std::cout << "Warning: Width is not a multible of " << tile_size << std::endl;
+      height += (tile_size - (height % tile_size));
+      std::cout << "Warning: Fixing height to: " << height << std::endl;
+    } 
+
   // Allocating tile map
   tile.resize(width/tile_size);
   for(TileIter i=0; i < tile.size(); ++i) 
     tile[i].resize(height/tile_size);
   
+  //std::cout << "tile: " << tile.size() << " tile[]: " << tile[0].size() << std::endl;
+
   load(plf->get_fg().res_name);
 }
 
@@ -194,20 +213,6 @@ PingusSpotMap::load(std::string filename)
   std::cout << "PingusSpotMap: Generating Map..." << std::flush;
   surfaces = psm_parser.get_surfaces();
 
-  if ((width % tile_size) != 0) 
-    {
-      std::cout << "Warrning: Width is not a multible of " << tile_size << std::endl;
-      width += (tile_size - (width % tile_size));
-      std::cout << "Warning: Fixing height to: " << width << std::endl;
-    }
-  
-  if ((height % tile_size) != 0) 
-    {
-      std::cout << "Warning: Width is not a multible of " << tile_size << std::endl;
-      height += (tile_size - (height % tile_size));
-      std::cout << "Warning: Fixing height to: " << height << std::endl;
-    }
-  
   // Allocating the map provider
    map_canvas = new CL_Canvas(width, height);
 
@@ -260,6 +265,9 @@ void
 PingusSpotMap::draw(int x_pos, int y_pos, int w, int h, 
 		    int of_x, int of_y, float s)
 {
+  //std::cout << "Draw: " << " x_pos: " << x_pos << " y_pos: " 
+  //<< " w: " << w << " h: " << h << " s: " << s << std::endl;
+
   if (draw_collision_map)
     {
       draw_colmap(x_pos, y_pos, w, h, of_x, of_y, s);
@@ -270,11 +278,11 @@ PingusSpotMap::draw(int x_pos, int y_pos, int w, int h,
 	{
 	  // Trying to calc which parts of the tilemap needs to be drawn
 	  int start_x = -of_x/tile_size;
-	  int start_y = -of_y/tile_size; 
-	  unsigned int tilemap_width = w / tile_size + 1;
-	  // Fixme: Who is eating the height, + 1 should be enough,
-	  // but it isn't?!
-	  unsigned int tilemap_height = h / tile_size + 2;
+	  int start_y = -of_y/tile_size;
+	  unsigned int tilemap_width = w / tile_size;
+	  unsigned int tilemap_height = h / tile_size;
+
+	  //	  std::cout  << " th: " << tilemap_height << " tw: " << tilemap_width << std::endl;
 
 	  if (start_x < 0)
 	    start_x = 0;
@@ -570,8 +578,6 @@ PingusSpotMap::create_maptiles()
 	      map_surface->put_target(-x * tile_size, -y * tile_size, 0, canvas);
 	      tile[x][y].surface = CL_Surface::create(canvas, true);
 	    }
-	  // FIXME: Include that for the next release
-	  // tile[x][y].check_empty();
 	}
     }
 }
