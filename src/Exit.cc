@@ -1,4 +1,4 @@
-//  $Id: Exit.cc,v 1.7 2000/06/06 18:51:51 grumbel Exp $
+//  $Id: Exit.cc,v 1.8 2000/06/07 13:52:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "Exit.hh"
 #include "actions/exiter.hh"
 
-static ActionHolder* Exit::action_holder;
+ActionHolder* Exit::action_holder;
 
 Exit::Exit(int x, int y)
 {
