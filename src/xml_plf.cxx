@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.15 2002/09/15 20:33:45 grumbel Exp $
+//  $Id: xml_plf.cxx,v 1.16 2002/09/15 21:21:47 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 #include "entrance_data.hxx"
 #include "hotspot_data.hxx"
 #include "liquid_data.hxx"
+#include "worldobjsdata/worldobj_group_data.hxx"
 
 using namespace std;
 using Actions::action_from_string;
@@ -138,7 +139,7 @@ XMLPLF::parse_file()
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "group"))
 	    {
-	      worldobjs_data.push_back (new WorldObjGroupData (doc, cur));
+	      worldobjs_data.push_back (new WorldObjsData::WorldObjGroupData (doc, cur));
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "start-position"))
 	    {

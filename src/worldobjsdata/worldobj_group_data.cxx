@@ -1,4 +1,4 @@
-//  $Id: worldobj_group_data.cxx,v 1.1 2002/09/15 20:33:45 grumbel Exp $
+//  $Id: worldobj_group_data.cxx,v 1.2 2002/09/15 21:21:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,20 +17,20 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include <fstream>
-#include "editor/editorobj_group.hxx"
-#include "xml_helper.hxx"
+#include "../editor/editorobj_group.hxx"
+#include "../xml_helper.hxx"
+#include "../worldobjs/worldobj_group.hxx"
+#include "../worldobj_data_factory.hxx"
+#include "../worldobj.hxx"
+#include "../editor/editorobj_group.hxx"
+#include "../editor/editorobj.hxx"
 #include "worldobj_group_data.hxx"
-#include "worldobj_data_factory.hxx"
-
-// FIXME: Factory pattern for this would be nice
-#include "exit_data.hxx"
-#include "entrance_data.hxx"
-#include "hotspot_data.hxx"
-#include "liquid_data.hxx"
 
 typedef EditorObjLst::iterator EditorObjLstIter;
 
+namespace WorldObjsData {
 
 WorldObjGroupData::WorldObjGroupData ()
 {
@@ -41,14 +41,25 @@ WorldObjGroupData::WorldObjGroupData (xmlDocPtr doc, xmlNodePtr cur)
   cur = cur->children;
 
   std::cout << "WorldObjGroupData::WorldObjGroupData (xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
-
+  
+  cur = XMLhelper::skip_blank (cur->next);
+ 
   while (cur)
     {
-      cur = XMLhelper::skip_blank (cur->next);
       std::cout << "WorldObjGroupData: " << cur->name << std::endl;
       objs.push_back (WorldObjDataFactory::instance ()->create (doc, cur));
       cur = cur->next;
+      cur = XMLhelper::skip_blank (cur->next);
     }
+  
+  std::cout << "WorldObjGroupData: size = " << objs.size () << std::endl;
+}
+
+WorldObjGroupData::WorldObjGroupData (const WorldObjGroupData& data)
+  : objs (data.objs)
+{
+  // FIXME: no deep copy
+  std::cout << "WorldObjGroupData::WorldObjGroupData (const WorldObjGroupData&): fixme no deep copy" << std::endl;
 }
 
 WorldObjGroupData::~WorldObjGroupData ()
@@ -73,12 +84,11 @@ WorldObjGroupData::write_xml (std::ostream& xml)
   xml << "</group>\n\n";
 }
 
-/** Create an WorldObj from the given data object */
 WorldObj* 
 WorldObjGroupData::create_WorldObj ()
 {
-  std::cout << "WorldObjGroupData::create_WorldObj (): not implemented" << std::endl;
-  return NULL;
+  //return new WorldObjs::WorldObjGroup (*this);
+  return 0;
 }
 
 /** Create an EditorObj from the given data object */
@@ -100,5 +110,7 @@ WorldObjGroupData::create_EditorObj ()
 
   return lst;
 }
+
+} // namespace WorldObjsData
 
 /* EOF */

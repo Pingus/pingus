@@ -1,4 +1,4 @@
-//  $Id: worldobj_group.hxx,v 1.1 2002/09/15 20:33:45 grumbel Exp $
+//  $Id: worldobj_group.hxx,v 1.2 2002/09/15 21:21:47 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,9 +30,9 @@ class WorldObjGroup : public WorldObj
 {
 private:
   std::vector<WorldObj*> objs;
-  WorldObjGroupData* const data;
+  WorldObjsData::WorldObjGroupData* const data;
 public:
-  WorldObjGroup (WorldObjGroupData* data_);
+  WorldObjGroup (const WorldObjsData::WorldObjGroupData& data_);
   
   void update (float delta);
   void draw (GraphicContext& gc);

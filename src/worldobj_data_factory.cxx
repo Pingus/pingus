@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.13 2002/09/15 20:33:45 grumbel Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.14 2002/09/15 21:21:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -107,7 +107,22 @@ WorldObjDataFactory::create (xmlDocPtr doc, xmlNodePtr cur)
     }
   else
     {
-      PingusError::raise ("WorldObjDataFactory::create: Error, no type given.");
+      // Compatibility stuff
+      if (XMLhelper::equal_str(cur->name, "hotspot"))
+	{
+	  return create ("hotspot", doc, cur);
+	}
+      else if (XMLhelper::equal_str(cur->name, "exit"))
+	{
+	  return create ("exit", doc, cur);
+	}
+      else if (XMLhelper::equal_str(cur->name, "entrance"))
+	{
+	  return create ("entrance", doc, cur);
+	}
+      else
+	PingusError::raise ("WorldObjDataFactory::create: Error, no type given. - " 
+			    + std::string((char*) cur->name));
     }
     
   return 0; //never reached

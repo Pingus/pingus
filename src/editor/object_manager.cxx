@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.31 2002/09/15 20:33:45 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.32 2002/09/15 21:21:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "../pingus_resource.hxx"
 #include "../pingus_error.hxx"
 #include "../worldobjsdata/worldobj_group_data.hxx"
+#include "../prefab.hxx"
 #include "start_pos.hxx"
 #include "object_manager.hxx"
 #include "editor_view.hxx"
@@ -336,6 +337,12 @@ ObjectManager::find_object(const CL_Vector& pos)
 void
 ObjectManager::add_prefab_from_file (const std::string& filename)
 {
+  std::cout << "ObjectManager::add_prefab_from_file: " << filename << std::endl;
+  Prefab fab (filename);
+  std::cout << "Name: " << fab.get_name () << std::endl;
+  std::cout << "Description: " << fab.get_description () << std::endl;
+  std::cout << "Data: " << fab.get_data () << std::endl;
+  std::cout << "done" << std::endl;  
 }
 
 std::vector<ActionData>*

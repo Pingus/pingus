@@ -1,4 +1,4 @@
-//  $Id: worldobj_group_data.hxx,v 1.1 2002/09/15 20:33:45 grumbel Exp $
+//  $Id: worldobj_group_data.hxx,v 1.2 2002/09/15 21:21:47 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,9 @@
 #include "../worldobj_data.hxx"
 #include "../libxmlfwd.hxx"
 
+namespace WorldObjsData {
+
+/** */
 class WorldObjGroupData : public WorldObjData
 {
 private:
@@ -32,6 +35,8 @@ private:
 public:
   WorldObjGroupData ();
   WorldObjGroupData (xmlDocPtr doc, xmlNodePtr cur);
+  WorldObjGroupData (const WorldObjGroupData&);
+
   ~WorldObjGroupData ();
 
   void add (WorldObjData*);
@@ -45,9 +50,10 @@ public:
   EditorObjLst create_EditorObj ();
   
 private:
-  WorldObjGroupData (const WorldObjGroupData&);
   WorldObjGroupData operator= (const WorldObjGroupData&);
 };
+
+} // namespace WorldObjsData
 
 #endif
 

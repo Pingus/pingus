@@ -1,4 +1,4 @@
-//  $Id: prefab.cxx,v 1.3 2002/09/15 20:33:45 grumbel Exp $
+//  $Id: prefab.cxx,v 1.4 2002/09/15 21:21:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -101,5 +101,30 @@ Prefab::create (const std::string& uid)
 {
   return new Prefab (path_manager.complete ("prefab/") + uid);
 }
+
+std::string
+Prefab::get_name ()
+{
+  return name;
+}
+
+std::string
+Prefab::get_uid ()
+{
+  return uid;
+}
+
+std::string
+Prefab::get_description ()
+{
+  return description;
+}
+
+WorldObjData*
+Prefab::get_data ()
+{
+  return data;
+}
+
 
 /* EOF */

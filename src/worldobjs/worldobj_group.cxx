@@ -1,4 +1,4 @@
-//  $Id: worldobj_group.cxx,v 1.1 2002/09/15 20:33:45 grumbel Exp $
+//  $Id: worldobj_group.cxx,v 1.2 2002/09/15 21:21:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,8 +22,8 @@
 
 namespace WorldObj {
 
-WorldObjGroup::WorldObjGroup (WorldObjGroupData* data_)
-  : data (data_)
+WorldObjGroup::WorldObjGroup (const WorldObjsData::WorldObjGroupData& data_)
+  : data (new WorldObjsData::WorldObjGroupData(data_))
 {
 }
 
