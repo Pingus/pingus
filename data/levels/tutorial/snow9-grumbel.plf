@@ -12,6 +12,7 @@
     <levelname lang="fi">Kaivamista, murskausta ja muuta mukavaa</levelname>
     <levelname lang="pt">Escavar, perfurar e outros problemas</levelname>
     <levelname lang="no">Grav, slå og andre problemer</levelname>
+    <levelname lang="es">Excavar, golpear y otros problemas</levelname>
 
     <description lang="en">The more levels you master, the more difficult they will get,
                            but don't panic, as this one is still pretty easy. Just use the stuff that
@@ -71,6 +72,11 @@
                            panikk, da dette fortsatt er ganske enkelt. Bare bruk de tingene du har lært
                            og det vil gå greit. Hvis du tror du er kommet til et punkt hvor du ikke
                            kommer videre, dobbeltklikk på armageddon knappen nederst til høyre.
+    </description>
+    <description lang="es">Cuantos más niveles domines, más difíciles se volverán. Pero no temas, porque
+    			  éste es de los facilitos. Usa lo que has aprendido en anteriores niveles y no
+			  tendrás muchos problemas. Si llegas a un punto en que no ves solución, pulsa dos
+			  veces el botón Armagedon e inténtalo de nuevo.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

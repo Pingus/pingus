@@ -12,6 +12,7 @@
     <levelname lang="fi">Stop'n Roll</levelname>
     <levelname lang="pt">Destrói a Rocha</levelname>
     <levelname lang="no">Blokk og spreng</levelname>
+    <levelname lang="es">Bloquea la roca.</levelname>
 
     <description lang="en">Once again it's time to combine the stuff you have learned in your
                            previous levels. Blast your way free and make sure you also keep the
@@ -52,6 +53,10 @@
     <description lang="no">Atter en gang er det tid for å kombinere tingene du har lært i de forrige
                            brettene. Spreng deg vei og sørg for at du også holder resten av Pingusene
                            under kontroll. Blocker handlingen vil være hjelpsom·
+    </description>
+    <description lang="es">De nuevo es necesario que combines lo que has aprendido en anteriores
+                           niveles. Deja el camino libre y asegúrate de mantener al resto de pingüinos
+			   bajo control. La habilidad 'Bloqueo' te será útil.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

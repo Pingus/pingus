@@ -12,6 +12,7 @@
     <levelname lang="fi">Kaiva ja leiju, älä putoa ja liiskaannu</levelname>
     <levelname lang="pt">Escava e flutua, mas não caias, nem sejas esmagado</levelname>
     <levelname lang="no">Grav og flyt, bare ikke dett og knus</levelname>
+    <levelname lang="es">Excava y flota, pero no te caigas y te mates</levelname>
 
     <description lang="en">Unlike the first two levels, you have two actions available in
                            this level. Your job is again simple: select an action at the panel
@@ -65,6 +66,11 @@
                            i dette brettet. Igjen er det en enkel jobb: velg en handling til venstre
                            og bruk den på Pingusene så de kan komme seg til utgangen. Sørg bare for
                            at ikke så mange av dem dør.
+    </description>
+    <description lang="es">Al contrario que en los dos primeros niveles, ahora tienes dos habilidades
+    			   disponibles. Es simple, selecciona la habilidad a la izquierda y aplícala
+			   a los pingüinos para que puedan llegar a la salida. Asegúrate de que no mueran
+			   demasiados.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

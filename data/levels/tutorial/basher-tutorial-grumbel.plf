@@ -12,6 +12,8 @@
     <levelname lang="fi">Kun tie on tukossa, murskaaja auttaa</levelname>
     <levelname lang="pt">Se o caminho está bloqueado, perfura-o</levelname>
     <levelname lang="no">Hvis veien er blokkert, slå i vei</levelname>
+    <levelname lang="es">Si el camino está bloqueado, golpéalo</levelname>
+
 
     <description lang="en">Similar to the Digger action that you already know from previous
                            levels, there is also an action that allows the Pingus to dig
@@ -59,6 +61,11 @@
                            finnes det også en handling som lar Pingusene grave horisontalt, i
                            motsetning til den vertikale gravingen en Digger gir deg. Denne nye
                            handlingen kalles Basher.
+    </description>
+    <description lang="es">Similar al 'Excavador' que has visto en anterior niveles
+                           hay una habilidad que permite a los Pingüinos excavar horizontalmente,
+			   en vez de verticalmente como el 'Excavador'. Ésta nueva habilidad se
+			   llama 'Golpeador'.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

@@ -12,6 +12,7 @@
     <levelname lang="fi">Hypi, pompi... murskaa...</levelname>
     <levelname lang="pt">Saltita... e Perfura...</levelname>
     <levelname lang="no">Hopp, sprett... og slå...</levelname>
+    <levelname lang="es">Salta, bota... y excava...</levelname>
 
     <description lang="en">It's panic time again. The Pingus will not come out very fast, but
 		           since they turn around when they hit walls you will soon have some trouble
@@ -62,6 +63,11 @@
 		           eles vão andar de um lado para o outro, a bater nas paredes, mas tu irás entrar em apuros num ápice
 		           ao tentar cordená-los a todos. Visto só precisares de salvar 5, deves aguentar,
 		           mas se tudo começar a falhar, usa o modo de pausa ('p') para obteres uma vista geral de tudo, antes de prosseguires.
+    </description>
+    <description lang="es">Sigue el pánico. Los pingüinos no saldrán muy rapidamente, pero como cuando al
+                           salir chocan contra un muro y se dan la vuelta, te costará coordinarlos a todos.
+			   Como sólo tienes que rescatar a 5, es factible, pero si pierdes el control puedes
+			   pausar el juego (tecla 'p') para hechar un vistazo general  antes de seguir.
     </description>
     <description lang="no">Det er panikktid igjen. Pingusene kommer ikke ut særlig fort, men siden de snur
                            når de treffer vegger vil du snart få problemer med å koordinere alle. Siden du

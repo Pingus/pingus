@@ -12,6 +12,7 @@
     <levelname lang="fi">Opettele kaivamaan</levelname>
     <levelname lang="pt">Aprendendo a escavar</levelname>
     <levelname lang="no">Lær å grave</levelname>
+    <levelname lang="es">Aprendiendo a excavar</levelname>
 
     <description lang="en">This is your first mission. As always, it's pretty easy. All you
                            have to do is to give a Pingu the command to dig a hole into the
@@ -65,6 +66,10 @@
     <description lang="no">Dette er ditt første oppdrag. Som alltid er det ganske enkelt. Alt du trenger
     			   å gjøre er å gi en Pingu ordre om å grave et hull i bakken så du kan nå utgangen.
 			   Dette kan gjøres bare ved å klikke på en Pingu.
+    </description>
+    <description lang="es">Ésta es tu primera misión. Como vas a comprobar, es bastante fácil. Todo lo que
+                           tienes que hacer es indicarle a un Pingüino que haga un agujero para poder
+			   alcanzar la salida. Puedes hacerlo con un simple click encima del Pingüino.
     </description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>10</number-of-pingus>
