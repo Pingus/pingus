@@ -25,7 +25,7 @@
 
 <background type="surface">
   <surface><resource type="datafile">
-    <resource-datafile>textures.dat</resource-datafile>
+    <resource-datafile>textures</resource-datafile>
   <resource-ident>Textures/rooftile2</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>
@@ -1329,7 +1329,7 @@
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
-    <resource-datafile>franko.dat</resource-datafile>
+    <resource-datafile>franko</resource-datafile>
   <resource-ident>PenguinWorld/PWExit</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>

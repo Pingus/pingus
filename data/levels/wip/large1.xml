@@ -32,7 +32,7 @@ You can also try the SysReq-Key if all fails (Alt-Gr Print K)
 
 <background type="surface">
   <surface><resource type="datafile">
-    <resource-datafile>textures.dat</resource-datafile>
+    <resource-datafile>textures</resource-datafile>
   <resource-ident>Textures/crystal</resource-ident>
     <modifier>ROT0</modifier>
   </resource></surface>

@@ -15,7 +15,7 @@
 
 <background type="surface">
   <surface><resource type="datafile">
-    <resource-datafile>textures.dat</resource-datafile>
+    <resource-datafile>textures</resource-datafile>
   <resource-ident>Textures/crystal</resource-ident>
   </resource></surface>
   <color>

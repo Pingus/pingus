@@ -19,7 +19,7 @@
 
 <background>
   <surface><resource type="datafile">
-    <resource-datafile>textures.dat</resource-datafile>
+    <resource-datafile>textures</resource-datafile>
   <resource-ident>Textures/lunartile</resource-ident>
   </resource></surface>
   <alpha>0.3</alpha>
