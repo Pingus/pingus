@@ -138,6 +138,8 @@ section worldmap
 	flaggreen = ../images/core/worldmap/flaggreen.png (type=surface, x=0, y=0, width=27, height=38);
 
 	arrow = ../images/core/worldmap/arrow.png (type=surface);
+        pingus = ../images/core/worldmap/pingus.png     (type=surface, x=0, y=0, width=24, height=24, array=8x2);
+        pingus_standing = ../images/core/worldmap/pingus_standing.png     (type=surface);
 }
 
 // EOF //

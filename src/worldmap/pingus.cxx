@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.28 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: pingus.cxx,v 1.29 2003/03/27 16:42:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,8 @@ namespace WorldMapNS {
 Pingus::Pingus (PathGraph* arg_path)
   : Drawable("pingus"),
     path(arg_path),
-    sprite ("Pingus/walker0", "pingus", 20.0f, Sprite::RIGHT),
+    sprite ("worldmap/pingus", "core", 20.0f, Sprite::RIGHT),
+    sprite_standing ("worldmap/pingus_standing", "core"),
     arrow ("worldmap/arrow", "core")
 {
   arrow.set_align_center_bottom();
@@ -37,7 +38,9 @@ Pingus::Pingus (PathGraph* arg_path)
   pos.x = 320;
   pos.y = 200;
 
-  sprite.set_align (-sprite.get_width()/2,  4 - sprite.get_height());
+  sprite.set_align (-sprite.get_width()/2,  2 - sprite.get_height());
+  sprite_standing.set_align (-sprite_standing.get_width()/2,  
+                             -sprite_standing.get_height());
 }
 
 Pingus::~Pingus ()
@@ -48,10 +51,7 @@ Pingus::~Pingus ()
 void
 Pingus::draw (GraphicContext& gc)
 {
-  // FIXME: Our sprite class is quite a bit sucky...
-  if (!is_walking())
-    sprite.set_frame(5);
-  else
+  if (final_target_node != NoNode && current_node == NoNode)
     {
       gc.draw(arrow, path->get_dot(final_target_node)->get_pos());
     }
@@ -62,7 +62,11 @@ Pingus::draw (GraphicContext& gc)
     sprite.set_direction(Sprite::RIGHT);
   else
     sprite.set_direction(Sprite::LEFT);
-  gc.draw(sprite, pos);
+
+  if (!is_walking())
+    gc.draw(sprite_standing, pos);
+  else
+    gc.draw(sprite, pos);
 }
 
 void
@@ -89,6 +93,7 @@ Pingus::update_walk (float delta)
       if (node_path.empty ()) // final target reached
         {
           current_node = target_node;
+          final_target_node = NoNode;
         }
       else // edge is traveled, now go to the next node
         {

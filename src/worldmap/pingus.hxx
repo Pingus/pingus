@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.23 2003/03/21 22:08:06 grumbel Exp $
+//  $Id: pingus.hxx,v 1.24 2003/03/27 16:42:30 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,7 @@ class Pingus : public Drawable
 private:
   PathGraph* path;
   Sprite sprite;
+  Sprite sprite_standing;
   Sprite arrow;
 
   /** The node on which the pingu currently stands, NoNode if the pingu is
