@@ -1,0 +1,38 @@
+
+Pingus currently has Locale support for the following Languages
+
+	en -> English - default
+	de -> German / Deutsch
+	tr -> Turkish / Türkçe
+	nl -> Dutch / Nederlands
+	it -> Italian / Italyano 
+
+If your environment is already set so that you are able to
+see (some) applications in the desired Language, Pingus
+should start directly in that language.
+
+However, to start it directly with the language you want 
+you should start Pingus as follows ...
+
+	LANG=tr_TR pingus
+
+This sets the system variable 'LANG' to the value of 
+'tr_TR' (in this example). 
+
+The notation may be a bit confusing.  The two lowercase
+letters are use to denote the language, usually the 
+two letter ISO code of the country the language is
+spoken in.
+
+After the underscore (_), the two uppercase letters denote
+the country. Again the two letter ISO country code is used.
+
+some examples
+
+	en_US  - English  United States
+	en_UK  - English  United Kingdom
+	nl_NL  - Dutch    Holland/Netherlands
+	...
+
+Giray Devlet
+
