@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.22 2002/12/29 23:29:00 torangan Exp $
+//  $Id: blitter.cxx,v 1.23 2003/02/18 18:41:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <config.h>
 #include <stdio.h>
 #include "pingus_error.hxx"
 #include "color.hxx"
@@ -28,8 +29,6 @@
 #include "blitter_impl.hxx"
 
 /* Headers needed for i18n / gettext */
-#include <clocale>
-#include <config.h>
 #include "my_gettext.hxx"
 
 #define COMPILE_WITH_MEMORY_HOLE 0

@@ -1,4 +1,4 @@
-//  $Id: my_gettext.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
+//  $Id: my_gettext.hxx,v 1.4 2003/02/18 18:41:59 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_MY_GETTEXT_HXX
 #define HEADER_PINGUS_MY_GETTEXT_HXX
 
+#include <config.h>
 #include "pingus.hxx"
 
 #ifdef HAVE_GETTEXT

@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.44 2003/02/18 17:04:13 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.45 2003/02/18 18:41:59 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -27,6 +27,10 @@
 #include <stdio.h>
 #include <signal.h>
 
+#ifdef HAVE_GETTEXT
+#  include <locale.h>
+#endif
+
 #ifndef WIN32
 #  include <config.h>
 #  include <getopt.h>
@@ -51,11 +55,7 @@
 # include <ClanLib/gl.h>
 #endif
 
-
-/* Headers needed for i18n / gettext */
-#include <clocale>
 #include "my_gettext.hxx"
-
 
 #include "path_manager.hxx"
 #include "pingus_main.hxx"
@@ -633,7 +633,16 @@ PingusMain::init_path_finder()
 #endif /* !WIN32 */
  
 #ifdef HAVE_GETTEXT
-  std::cout << "Setting gettext path to: " << path_manager.get_base_path () + "/../../locale/" << std::endl;
+  std::cout << "Setting gettext path to: " << path_manager.get_base_path () + "/../../locale" << std::endl;
+  const char* ret = setlocale (LC_ALL, "");
+  if (ret == NULL)
+    {
+      std::cout << "ERROR: setlocale failed!" <<  std::endl;
+    }
+  else
+    {
+      std::cout << "setlocale returned '" << ret << "'" << std::endl;
+    }
   bindtextdomain (PACKAGE, (path_manager.get_base_path () + "/../../locale/").c_str());
   // We use another LOCALEDIR to make static binaries possible
   // bindtextdomain (PACKAGE, LOCALEDIR);
@@ -658,6 +667,13 @@ PingusMain::print_greeting_message()
   std::cout << "clanMikMod support: ok" << std::endl;
 #else
   std::cout << "clanMikMod support: missing (.it and .s3m music files will not be playable)" << std::endl;
+#endif
+
+#ifdef HAVE_GETTEXT
+  std::cout << "getext support: ok" << std::endl;
+  std::cout << gettext("gettext language: english") << std::endl;
+#else
+  std::cout << "getext support: missing (only support for english will be available" << std::endl;
 #endif
 
   std::cout << std::endl;
@@ -750,13 +766,13 @@ PingusMain::main(int argc, char** argv)
 
   try 
     {
-      print_greeting_message();
-
       quick_check_args(argc, argv);
       read_rc_file();
       check_args(argc, argv);
 
       init_path_finder();
+
+      print_greeting_message();
 
       init_clanlib();
       init_pingus();	

@@ -1,4 +1,4 @@
-//  $Id: level_desc.cxx,v 1.8 2002/09/14 19:06:33 torangan Exp $
+//  $Id: level_desc.cxx,v 1.9 2003/02/18 18:41:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,12 +25,7 @@
 #include "level_desc.hxx"
 #include "system.hxx"
 #include "plf.hxx"
-
-/* Headers needed for i18n / gettext */
-#include <clocale>
-#include <config.h>
 #include "my_gettext.hxx"
-
 
 PingusLevelDesc::PingusLevelDesc(PLF* arg_plf)
 {

@@ -42,12 +42,13 @@
   <para-x>0.5</para-x>
   <para-y>0.5</para-y>
   <stretch-x>0</stretch-x>
-  <stretch-y>0</stretch-y>
+  <stretch-y>1</stretch-y>
   <position>
     <x-pos>0</x-pos>
     <y-pos>0</y-pos>
     <z-pos>-200</z-pos>
   </position>
+    <keep-aspect>1</keep-aspect>
 </background>
 
 <liquid use-old-width-handling="0">

@@ -1,4 +1,4 @@
-//  $Id: col_map.cxx,v 1.14 2002/12/29 23:29:00 torangan Exp $
+//  $Id: col_map.cxx,v 1.15 2003/02/18 18:41:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,10 +22,6 @@
 #include "graphic_context.hxx"
 #include "globals.hxx"
 #include "col_map.hxx"
-
-/* Headers needed for i18n / gettext */
-#include <clocale>
-#include <config.h>
 #include "my_gettext.hxx"
 
 #define COLMAP_WITH_MEMORY_HOLE 1

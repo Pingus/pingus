@@ -1,4 +1,4 @@
-//  $Id: soundtest.cxx,v 1.2 2003/02/18 15:03:21 grumbel Exp $
+//  $Id: soundtest.cxx,v 1.3 2003/02/18 18:41:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,13 @@ Soundtest::Soundtest()
 int
 Soundtest::main(int argc, char** argv)
 {
+  std::cout << "Pingus Sound Test Application\n" << std::endl;
+
+  std::cout << "1-9 to play some music\n"
+            << " 0  to stop the music\n"
+            << "right or left mouse click will cause a sound effect to be played\n"
+            <<" panning will be according to the current mouse position\n\n" << std::endl;
+
   CL_SetupCore::init ();
   CL_SetupDisplay::init();
 

@@ -1,4 +1,4 @@
-//  $Id: pingus_error.cxx,v 1.6 2002/10/11 20:21:41 grumbel Exp $
+//  $Id: pingus_error.cxx,v 1.7 2003/02/18 18:41:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,12 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "pingus_error.hxx"
-
-/* Headers needed for i18n / gettext */
-#include <clocale>
-#include <config.h>
 #include "my_gettext.hxx"
-
 
 PingusException::PingusException (const std::string& mes) : message(mes)
 {

@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-02-16 20:08+0100\n"
-"PO-Revision-Date: 2002-01-20 15:11+0100\n"
+"POT-Creation-Date: 2003-02-18 19:07+0100\n"
+"PO-Revision-Date: 2003-02-18 19:09+0100\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: Ingo Ruhnke <grumbel@gmx.de>, Giray Devlet <giray@devlet.cc>\n"
 "MIME-Version: 1.0\n"
@@ -488,6 +488,10 @@ msgstr "Ausschnitt verkleinern"
 msgid "Setup Number of Actions"
 msgstr "Anzahl an Pingus: %d"
 
+#: src/editor/panel_icons.cxx:200
+msgid "Display Help Screen"
+msgstr ""
+
 #: src/fps_counter.cxx:50
 msgid "unknown"
 msgstr "unbekannt"
@@ -807,18 +811,7 @@ msgstr ""
 msgid "`------------------------------------------------------------------------\n"
 msgstr ""
 
-#: src/pingus_main.cxx:296
-msgid ""
-"\n"
-"=================================================================\n"
-"                            WARNING!                             \n"
-"=================================================================\n"
-"Be warned, at the moment there is only some sound code pressent, \n"
-"there are *no* sound files, so this will fail.\n"
-"=================================================================\n"
-msgstr ""
-
-#: src/pingus_main.cxx:347
+#: src/pingus_main.cxx:339
 msgid ""
 "\n"
 "Copyright (C) 1998 Ingo Ruhnke <grumbel@pingus.cx>\n"
@@ -833,19 +826,19 @@ msgstr ""
 "Einsatz-\n"
 "fähigkeit fuer einen bestimmten Zweck."
 
-#: src/pingus_main.cxx:506
+#: src/pingus_main.cxx:503
 msgid "Unknow char: "
 msgstr "Unbekannter Buchstabe: "
 
-#: src/pingus_main.cxx:507
+#: src/pingus_main.cxx:504
 msgid "Usage: "
 msgstr "Benutzung: "
 
-#: src/pingus_main.cxx:507
+#: src/pingus_main.cxx:504
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr "[OPTIONEN]... [LEVELDATEI]"
 
-#: src/pingus_main.cxx:509
+#: src/pingus_main.cxx:506
 msgid ""
 "\n"
 "Options:\n"
@@ -856,13 +849,13 @@ msgid ""
 "   --disable-intro          Disable intro\n"
 msgstr ""
 
-#: src/pingus_main.cxx:518
+#: src/pingus_main.cxx:515
 msgid "   -G, --use-opengl         Use OpenGL\n"
 msgstr ""
 
 #. 	"   --fs-preload             Preload all Levelpreviews\n"a
 #. 	"   --disable-previews       Disables all level preview in the level selector\n"
-#: src/pingus_main.cxx:522
+#: src/pingus_main.cxx:519
 msgid ""
 "   -F, --disable-fullscreen Disable Fullscreen\n"
 "   -f, --enable-fullscreen  Enable Fullscreen (default)\n"
@@ -889,6 +882,7 @@ msgid ""
 "   --min-frame-skip N       Skip at least N frames, larger values speed the "
 "game up\n"
 "   --max-frame-skip N       Skip at most N frames\n"
+"   --frame-skip N           Set both min and max frameskip to N\n"
 "\n"
 "Debugging and experimental stuff:\n"
 "   --maintainer-mode        Enables some features, only interesting "
@@ -910,7 +904,7 @@ msgid ""
 "   -p, --play-demo FILE     Plays a demo session from FILE\n"
 msgstr ""
 
-#: src/pingus_main.cxx:564
+#: src/pingus_main.cxx:562
 msgid ""
 "\n"
 "Sound:\n"
@@ -918,38 +912,37 @@ msgid ""
 "   -m, --enable-music       Enable music\n"
 msgstr ""
 
-#: src/pingus_main.cxx:651
+#: src/pingus_main.cxx:666
+msgid "gettext language: english"
+msgstr "gettext Sprache: deutsch"
+
+#: src/pingus_main.cxx:678
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Hauptteil wird gestartet: "
 
-#: src/pingus_main.cxx:677
+#: src/pingus_main.cxx:704
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Leveldatei nicht gefunden, Fehler wird ignoriert: "
 
-#: src/pingus_main.cxx:750
+#: src/pingus_main.cxx:783
 msgid "Error caught from ClanLib: "
 msgstr "ClanLib Fehler abgefangen: "
 
-#: src/pingus_main.cxx:754
+#: src/pingus_main.cxx:787
 msgid "Error caught from Pingus: "
 msgstr "Pingus Fehler wurde abgefangen: "
 
-#: src/pingus_main.cxx:758
+#: src/pingus_main.cxx:791
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Speicher ist ausgegangen"
 
-#: src/pingus_main.cxx:762
+#: src/pingus_main.cxx:795
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Standard Ausnahme abgefangen!:\n"
 
-#: src/pingus_main.cxx:766
+#: src/pingus_main.cxx:799
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Unbekannte Ausnahme abgefangen!"
-
-#: src/plt_parser.cxx:89
-#, c-format
-msgid "Unexpected keyword: '%s' at line: %d"
-msgstr "Unerwartetes Schlüsselwort: '%s' bei Zeile: '%d'"
 
 #: src/screenshot.cxx:44
 msgid "Screenshot: Saving screenshot to: "
@@ -1071,18 +1064,13 @@ msgstr ""
 msgid "System:checksum: file read error"
 msgstr "System:checksum: Fehler beim Lesen von Datei"
 
-#: src/worldmap/node.cxx:60
-msgid "Tube"
-msgstr ""
-
-#: src/worldmap/node.cxx:169
-msgid "invalid level"
-msgstr ""
-
 #: src/worldmap/worldmap.cxx:66
 #, fuzzy
 msgid "WorldMap: File not found: "
 msgstr "PingusMain: Leveldatei nicht gefunden, Fehler wird ignoriert: "
+
+#~ msgid "Unexpected keyword: '%s' at line: %d"
+#~ msgstr "Unerwartetes Schlüsselwort: '%s' bei Zeile: '%d'"
 
 #~ msgid "ColMap: File load - Feature is no longer implemented"
 #~ msgstr "ColMap: Datei laden - nicht mehr implementiert"

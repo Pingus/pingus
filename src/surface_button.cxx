@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.19 2003/02/18 15:04:47 grumbel Exp $
+//  $Id: surface_button.cxx,v 1.20 2003/02/18 18:41:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,10 +30,6 @@
 #include "surface_button.hxx"
 #include "screen_manager.hxx"
 #include "worldmap/manager.hxx"
-
-/* Headers needed for i18n / gettext */
-#include <clocale>
-#include <config.h>
 #include "my_gettext.hxx"
 
 using EditorNS::Editor;

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-02-16 20:08+0100\n"
+"POT-Creation-Date: 2003-02-18 19:07+0100\n"
 "PO-Revision-Date: 2001-12-04 22:50+02:00\n"
 "Last-Translator: Giray Devlet <giray@devlet.cc>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Caðrý Çöltekin <cagri@metu."
@@ -488,6 +488,10 @@ msgstr "Uzaklaþtýr"
 msgid "Setup Number of Actions"
 msgstr "Pingus sayýsý: %d"
 
+#: src/editor/panel_icons.cxx:200
+msgid "Display Help Screen"
+msgstr ""
+
 #: src/fps_counter.cxx:50
 msgid "unknown"
 msgstr "bilinmeyen"
@@ -823,18 +827,7 @@ msgstr ""
 msgid "`------------------------------------------------------------------------\n"
 msgstr ""
 
-#: src/pingus_main.cxx:296
-msgid ""
-"\n"
-"=================================================================\n"
-"                            WARNING!                             \n"
-"=================================================================\n"
-"Be warned, at the moment there is only some sound code pressent, \n"
-"there are *no* sound files, so this will fail.\n"
-"=================================================================\n"
-msgstr ""
-
-#: src/pingus_main.cxx:347
+#: src/pingus_main.cxx:339
 msgid ""
 "\n"
 "Copyright (C) 1998 Ingo Ruhnke <grumbel@pingus.cx>\n"
@@ -849,19 +842,19 @@ msgstr ""
 "özgürce daðýtýlabilir. Ayrýntýlar için kaynak \n"
 "kodunda COPYING belgesini okuyun."
 
-#: src/pingus_main.cxx:506
+#: src/pingus_main.cxx:503
 msgid "Unknow char: "
 msgstr "Bilinmeyen karakter: "
 
-#: src/pingus_main.cxx:507
+#: src/pingus_main.cxx:504
 msgid "Usage: "
 msgstr "Kullaným: "
 
-#: src/pingus_main.cxx:507
+#: src/pingus_main.cxx:504
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr "[SEÇENEKLER]... [SEVÝYE DOSYASI]"
 
-#: src/pingus_main.cxx:509
+#: src/pingus_main.cxx:506
 msgid ""
 "\n"
 "Options:\n"
@@ -872,13 +865,13 @@ msgid ""
 "   --disable-intro          Disable intro\n"
 msgstr ""
 
-#: src/pingus_main.cxx:518
+#: src/pingus_main.cxx:515
 msgid "   -G, --use-opengl         Use OpenGL\n"
 msgstr "   -G, --use-opengl         OpenGL kullan\n"
 
 #. 	"   --fs-preload             Preload all Levelpreviews\n"a
 #. 	"   --disable-previews       Disables all level preview in the level selector\n"
-#: src/pingus_main.cxx:522
+#: src/pingus_main.cxx:519
 msgid ""
 "   -F, --disable-fullscreen Disable Fullscreen\n"
 "   -f, --enable-fullscreen  Enable Fullscreen (default)\n"
@@ -905,6 +898,7 @@ msgid ""
 "   --min-frame-skip N       Skip at least N frames, larger values speed the "
 "game up\n"
 "   --max-frame-skip N       Skip at most N frames\n"
+"   --frame-skip N           Set both min and max frameskip to N\n"
 "\n"
 "Debugging and experimental stuff:\n"
 "   --maintainer-mode        Enables some features, only interesting "
@@ -926,7 +920,7 @@ msgid ""
 "   -p, --play-demo FILE     Plays a demo session from FILE\n"
 msgstr ""
 
-#: src/pingus_main.cxx:564
+#: src/pingus_main.cxx:562
 msgid ""
 "\n"
 "Sound:\n"
@@ -934,41 +928,40 @@ msgid ""
 "   -m, --enable-music       Enable music\n"
 msgstr ""
 
+#: src/pingus_main.cxx:666
+msgid "gettext language: english"
+msgstr ""
+
 # 'Main' yerine baþka biþi uydurmak lazim buraya -gd
-#: src/pingus_main.cxx:651
+#: src/pingus_main.cxx:678
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Main Baþlatýlýyor: "
 
-#: src/pingus_main.cxx:677
+#: src/pingus_main.cxx:704
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Seviye Dosyasý bulunamadý, yok sayýlacak: "
 
-#: src/pingus_main.cxx:750
+#: src/pingus_main.cxx:783
 msgid "Error caught from ClanLib: "
 msgstr "ClanLib hatasý: "
 
-#: src/pingus_main.cxx:754
+#: src/pingus_main.cxx:787
 msgid "Error caught from Pingus: "
 msgstr "Pingus'ta hata saptandý: "
 
-#: src/pingus_main.cxx:758
+#: src/pingus_main.cxx:791
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Bellek yetersiz!"
 
 # bu komik oldu -cagri
 # daha mi iyi boyle :) -gd
-#: src/pingus_main.cxx:762
+#: src/pingus_main.cxx:795
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Genel olaðan dýþý durum saptandý!:\n"
 
-#: src/pingus_main.cxx:766
+#: src/pingus_main.cxx:799
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Bilinmeyen bir hata saptandý!"
-
-#: src/plt_parser.cxx:89
-#, c-format
-msgid "Unexpected keyword: '%s' at line: %d"
-msgstr "Beklenmeyen anahtar kelime: '%s'. Bulunan satýr: %d"
 
 #: src/screenshot.cxx:44
 msgid "Screenshot: Saving screenshot to: "
@@ -1098,18 +1091,13 @@ msgstr "Sistem::checksum: Açýlamayan dosya: "
 msgid "System:checksum: file read error"
 msgstr "Sistem:checksum: Dosya okunurken hata oluþtu"
 
-#: src/worldmap/node.cxx:60
-msgid "Tube"
-msgstr ""
-
-#: src/worldmap/node.cxx:169
-msgid "invalid level"
-msgstr ""
-
 #: src/worldmap/worldmap.cxx:66
 #, fuzzy
 msgid "WorldMap: File not found: "
 msgstr "PingusWorldMapGraph: Dosya bulunamadý: "
+
+#~ msgid "Unexpected keyword: '%s' at line: %d"
+#~ msgstr "Beklenmeyen anahtar kelime: '%s'. Bulunan satýr: %d"
 
 #~ msgid "ColMap: File load - Feature is no longer implemented"
 #~ msgstr "ColMap: Dosya yükleme - Özellik artýk desteklenmemektedir"

@@ -1,4 +1,4 @@
-//  $Id: level_result.cxx,v 1.7 2003/02/18 15:04:47 grumbel Exp $
+//  $Id: level_result.cxx,v 1.8 2003/02/18 18:41:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,12 +28,7 @@
 #include "sound/sound.hxx"
 #include "world.hxx"
 #include "pingu_holder.hxx"
-
-/* Headers needed for i18n / gettext */
-#include <clocale>
-#include <config.h>
 #include "my_gettext.hxx"
-
 
 PingusLevelResult::PingusLevelResult(World* w, Controller* c)
   : controller (c)

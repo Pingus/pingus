@@ -1,4 +1,4 @@
-//  $Id: intro.cxx,v 1.6 2002/12/29 23:29:00 torangan Exp $
+//  $Id: intro.cxx,v 1.7 2003/02/18 18:41:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,12 +21,7 @@
 #include <ClanLib/Display/Font/font.h>
 #include "pingus_menu_manager.hxx"
 #include "pingus_resource.hxx"
-
-/* Headers needed for i18n / gettext */
-#include <clocale>
-#include <config.h>
 #include "my_gettext.hxx"
-
 
 Intro::Intro(PingusMenuManager* m)
   : PingusSubMenu (m)

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-02-16 20:08+0100\n"
+"POT-Creation-Date: 2003-02-18 19:07+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Stefano Brivio <stefab@infinito.it>\n"
 "Language-Team: stefab@infinito.it\n"
@@ -477,6 +477,10 @@ msgstr "Rimpicciolisci"
 msgid "Setup Number of Actions"
 msgstr "Numero di Pingus: %d"
 
+#: src/editor/panel_icons.cxx:200
+msgid "Display Help Screen"
+msgstr ""
+
 #: src/fps_counter.cxx:50
 msgid "unknown"
 msgstr "sconosciuto"
@@ -807,25 +811,7 @@ msgstr ""
 msgid "`------------------------------------------------------------------------\n"
 msgstr "-----------------------------------------------------------------\n"
 
-#: src/pingus_main.cxx:296
-msgid ""
-"\n"
-"=================================================================\n"
-"                            WARNING!                             \n"
-"=================================================================\n"
-"Be warned, at the moment there is only some sound code pressent, \n"
-"there are *no* sound files, so this will fail.\n"
-"=================================================================\n"
-msgstr ""
-"\n"
-"=================================================================\n"
-"                          ATTENZIONE!                            \n"
-"=================================================================\n"
-"Per adesso solo una parte di codice per il suono e' stata scritta\n"
-"  e *non* ci sono file di suoni, quindi questo non funzionera'.\n"
-"=================================================================\n"
-
-#: src/pingus_main.cxx:347
+#: src/pingus_main.cxx:339
 msgid ""
 "\n"
 "Copyright (C) 1998 Ingo Ruhnke <grumbel@pingus.cx>\n"
@@ -839,19 +825,19 @@ msgstr ""
 "secondo i termini della GN General Public License.\n"
 "Per ulteriori informazioni, fai riferimento al file COPYING."
 
-#: src/pingus_main.cxx:506
+#: src/pingus_main.cxx:503
 msgid "Unknow char: "
 msgstr "Carattere sconosciuto: "
 
-#: src/pingus_main.cxx:507
+#: src/pingus_main.cxx:504
 msgid "Usage: "
 msgstr "Uso: "
 
-#: src/pingus_main.cxx:507
+#: src/pingus_main.cxx:504
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr " [OPZIONI]... [FILEDELLIVELLO]"
 
-#: src/pingus_main.cxx:509
+#: src/pingus_main.cxx:506
 msgid ""
 "\n"
 "Options:\n"
@@ -869,13 +855,13 @@ msgstr ""
 "   -h, --help               Mostra queste informazioni\n"
 "   --disable-intro          Non mostrare l'introduzione\n"
 
-#: src/pingus_main.cxx:518
+#: src/pingus_main.cxx:515
 msgid "   -G, --use-opengl         Use OpenGL\n"
 msgstr "   -G, --use-opengl         Use OpenGL\n"
 
 #. 	"   --fs-preload             Preload all Levelpreviews\n"a
 #. 	"   --disable-previews       Disables all level preview in the level selector\n"
-#: src/pingus_main.cxx:522
+#: src/pingus_main.cxx:519
 #, fuzzy
 msgid ""
 "   -F, --disable-fullscreen Disable Fullscreen\n"
@@ -903,6 +889,7 @@ msgid ""
 "   --min-frame-skip N       Skip at least N frames, larger values speed the "
 "game up\n"
 "   --max-frame-skip N       Skip at most N frames\n"
+"   --frame-skip N           Set both min and max frameskip to N\n"
 "\n"
 "Debugging and experimental stuff:\n"
 "   --maintainer-mode        Enables some features, only interesting "
@@ -976,7 +963,7 @@ msgstr ""
 "   -r, --record-demo FILE   Registra una sessione demo in FILE\n"
 "   -p, --play-demo FILE     Riproduci una sessione demo da FILE\n"
 
-#: src/pingus_main.cxx:564
+#: src/pingus_main.cxx:562
 msgid ""
 "\n"
 "Sound:\n"
@@ -984,38 +971,37 @@ msgid ""
 "   -m, --enable-music       Enable music\n"
 msgstr ""
 
-#: src/pingus_main.cxx:651
+#: src/pingus_main.cxx:666
+msgid "gettext language: english"
+msgstr ""
+
+#: src/pingus_main.cxx:678
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Carico la Main: "
 
-#: src/pingus_main.cxx:677
+#: src/pingus_main.cxx:704
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: File del livello non trovato, ignoro: "
 
-#: src/pingus_main.cxx:750
+#: src/pingus_main.cxx:783
 msgid "Error caught from ClanLib: "
 msgstr "Errore da ClanLib: "
 
-#: src/pingus_main.cxx:754
+#: src/pingus_main.cxx:787
 msgid "Error caught from Pingus: "
 msgstr "Errore da Pingus: "
 
-#: src/pingus_main.cxx:758
+#: src/pingus_main.cxx:791
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Memoria finita!"
 
-#: src/pingus_main.cxx:762
+#: src/pingus_main.cxx:795
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Standard exception!:\n"
 
-#: src/pingus_main.cxx:766
+#: src/pingus_main.cxx:799
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Unknown throw!"
-
-#: src/plt_parser.cxx:89
-#, c-format
-msgid "Unexpected keyword: '%s' at line: %d"
-msgstr "Keyword inattesa: '%s in linea: %d"
 
 #: src/screenshot.cxx:44
 msgid "Screenshot: Saving screenshot to: "
@@ -1132,18 +1118,30 @@ msgstr "System::checksum: Impossibile aprire il file: "
 msgid "System:checksum: file read error"
 msgstr "System:checksum: errore di lettura del file"
 
-#: src/worldmap/node.cxx:60
-msgid "Tube"
-msgstr ""
-
-#: src/worldmap/node.cxx:169
-msgid "invalid level"
-msgstr ""
-
 #: src/worldmap/worldmap.cxx:66
 #, fuzzy
 msgid "WorldMap: File not found: "
 msgstr "PingusWorldMapGraph: File non trovato: "
+
+#~ msgid ""
+#~ "\n"
+#~ "=================================================================\n"
+#~ "                            WARNING!                             \n"
+#~ "=================================================================\n"
+#~ "Be warned, at the moment there is only some sound code pressent, \n"
+#~ "there are *no* sound files, so this will fail.\n"
+#~ "=================================================================\n"
+#~ msgstr ""
+#~ "\n"
+#~ "=================================================================\n"
+#~ "                          ATTENZIONE!                            \n"
+#~ "=================================================================\n"
+#~ "Per adesso solo una parte di codice per il suono e' stata scritta\n"
+#~ "  e *non* ci sono file di suoni, quindi questo non funzionera'.\n"
+#~ "=================================================================\n"
+
+#~ msgid "Unexpected keyword: '%s' at line: %d"
+#~ msgstr "Keyword inattesa: '%s in linea: %d"
 
 #~ msgid "ColMap: File load - Feature is no longer implemented"
 #~ msgstr "ColMap: Load file - Non implementato"

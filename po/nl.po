@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-02-16 20:08+0100\n"
+"POT-Creation-Date: 2003-02-18 19:07+0100\n"
 "PO-Revision-Date: 2001-12-19 13:50+0100\n"
 "Last-Translator: Martijn Santen <martijn@jomarsoft.nl>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Martijn Santen "
@@ -549,6 +549,10 @@ msgstr "Zoem uit"
 msgid "Setup Number of Actions"
 msgstr "Aantal Pingus"
 
+#: src/editor/panel_icons.cxx:200
+msgid "Display Help Screen"
+msgstr ""
+
 # src/FPSCounter.cc:44
 #: src/fps_counter.cxx:50
 msgid "unknown"
@@ -913,19 +917,8 @@ msgstr ""
 msgid "`------------------------------------------------------------------------\n"
 msgstr ""
 
-#: src/pingus_main.cxx:296
-msgid ""
-"\n"
-"=================================================================\n"
-"                            WARNING!                             \n"
-"=================================================================\n"
-"Be warned, at the moment there is only some sound code pressent, \n"
-"there are *no* sound files, so this will fail.\n"
-"=================================================================\n"
-msgstr ""
-
 # src/PingusMain.cc:323
-#: src/pingus_main.cxx:347
+#: src/pingus_main.cxx:339
 msgid ""
 "\n"
 "Copyright (C) 1998 Ingo Ruhnke <grumbel@pingus.cx>\n"
@@ -940,21 +933,21 @@ msgstr ""
 "Voor meer informatie hierover, kijk naar de bestanden genaamd COPYING."
 
 # src/PingusMain.cc:481
-#: src/pingus_main.cxx:506
+#: src/pingus_main.cxx:503
 msgid "Unknow char: "
 msgstr "Onbekend char: "
 
 # src/PingusMain.cc:482
-#: src/pingus_main.cxx:507
+#: src/pingus_main.cxx:504
 msgid "Usage: "
 msgstr "gebruik: "
 
 # src/PingusMain.cc:482
-#: src/pingus_main.cxx:507
+#: src/pingus_main.cxx:504
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr " [OPTIES]... [BESTANDSNIVEAU]"
 
-#: src/pingus_main.cxx:509
+#: src/pingus_main.cxx:506
 msgid ""
 "\n"
 "Options:\n"
@@ -965,13 +958,13 @@ msgid ""
 "   --disable-intro          Disable intro\n"
 msgstr ""
 
-#: src/pingus_main.cxx:518
+#: src/pingus_main.cxx:515
 msgid "   -G, --use-opengl         Use OpenGL\n"
 msgstr ""
 
 #. 	"   --fs-preload             Preload all Levelpreviews\n"a
 #. 	"   --disable-previews       Disables all level preview in the level selector\n"
-#: src/pingus_main.cxx:522
+#: src/pingus_main.cxx:519
 msgid ""
 "   -F, --disable-fullscreen Disable Fullscreen\n"
 "   -f, --enable-fullscreen  Enable Fullscreen (default)\n"
@@ -998,6 +991,7 @@ msgid ""
 "   --min-frame-skip N       Skip at least N frames, larger values speed the "
 "game up\n"
 "   --max-frame-skip N       Skip at most N frames\n"
+"   --frame-skip N           Set both min and max frameskip to N\n"
 "\n"
 "Debugging and experimental stuff:\n"
 "   --maintainer-mode        Enables some features, only interesting "
@@ -1019,7 +1013,7 @@ msgid ""
 "   -p, --play-demo FILE     Plays a demo session from FILE\n"
 msgstr ""
 
-#: src/pingus_main.cxx:564
+#: src/pingus_main.cxx:562
 msgid ""
 "\n"
 "Sound:\n"
@@ -1027,46 +1021,44 @@ msgid ""
 "   -m, --enable-music       Enable music\n"
 msgstr ""
 
+#: src/pingus_main.cxx:666
+msgid "gettext language: english"
+msgstr ""
+
 # src/PingusMain.cc:775
-#: src/pingus_main.cxx:651
+#: src/pingus_main.cxx:678
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Starten hoofddeel: "
 
 # src/PingusMain.cc:797
-#: src/pingus_main.cxx:677
+#: src/pingus_main.cxx:704
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMainL Bestand van dit niveau niet gevonden, negeren: "
 
 # src/PingusMain.cc:851
-#: src/pingus_main.cxx:750
+#: src/pingus_main.cxx:783
 msgid "Error caught from ClanLib: "
 msgstr "Fout gevonden in Clanlib: "
 
 # src/PingusMain.cc:855
-#: src/pingus_main.cxx:754
+#: src/pingus_main.cxx:787
 msgid "Error caught from Pingus: "
 msgstr "Error gevonden in Pingus: "
 
 # src/PingusMain.cc:859
-#: src/pingus_main.cxx:758
+#: src/pingus_main.cxx:791
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: te weinig geheugen!"
 
 # src/PingusMain.cc:863
-#: src/pingus_main.cxx:762
+#: src/pingus_main.cxx:795
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Standard uitzondering!:\n"
 
 # src/PingusMain.cc:867
-#: src/pingus_main.cxx:766
+#: src/pingus_main.cxx:799
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Onbekende worp aangetroffen!"
-
-# src/PLTParser.cc:92
-#: src/plt_parser.cxx:89
-#, c-format
-msgid "Unexpected keyword: '%s' at line: %d"
-msgstr "Onverwacht sleutelwoord: '%s' at line: %d"
 
 # src/Screenshot.cc:39
 #: src/screenshot.cxx:44
@@ -1210,19 +1202,15 @@ msgstr "Systeem::controle: Kon bestand niet openen: "
 msgid "System:checksum: file read error"
 msgstr "Systeem: controle: leesfout bestand"
 
-#: src/worldmap/node.cxx:60
-msgid "Tube"
-msgstr ""
-
-#: src/worldmap/node.cxx:169
-msgid "invalid level"
-msgstr ""
-
 # src/worldmap/PingusWorldMapGraph.cc:152
 #: src/worldmap/worldmap.cxx:66
 #, fuzzy
 msgid "WorldMap: File not found: "
 msgstr "PingusWereldKaart: Bestand niet gevonden: "
+
+# src/PLTParser.cc:92
+#~ msgid "Unexpected keyword: '%s' at line: %d"
+#~ msgstr "Onverwacht sleutelwoord: '%s' at line: %d"
 
 # src/System.cc:65 src/System.cc:97
 #, fuzzy

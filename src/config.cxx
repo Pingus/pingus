@@ -1,4 +1,4 @@
-//  $Id: config.cxx,v 1.10 2003/01/25 18:34:36 torangan Exp $
+//  $Id: config.cxx,v 1.11 2003/02/18 18:41:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,10 +23,6 @@
 #include "globals.hxx"
 #include "pingus_error.hxx"
 #include "config.hxx"
-
-/* Headers needed for i18n / gettext */
-#include <clocale>
-#include <config.h>
 
 #include "cheat.hxx"
 #include "my_gettext.hxx"
