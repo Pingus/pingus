@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.32 2000/09/25 16:29:43 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.33 2000/10/03 20:01:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,6 +41,7 @@ using namespace std;
 
 ObjectManager::ObjectManager()
 {
+  plf = 0;
   new_level();
 }
 
@@ -52,13 +53,15 @@ ObjectManager::~ObjectManager()
     {
       delete *i;
     }
+  
+  if (plf) delete plf;
 }
 
 void
 ObjectManager::new_level ()
 {
-  levelname[default_language] = "PLE Level";
-  description[default_language] = "This level has no name\n\n";
+  levelname[default_language] = "EditorDefaultValue: Please give me a name...";
+  description[default_language] = "EditorDefaultValue: ...and a short descriptions";
 
   author = System::get_username();
 
@@ -74,14 +77,15 @@ ObjectManager::new_level ()
   width = 1200;
   height = 600;
   level_time = 9000;
-  bg.r = 0.3;
-  bg.g = 0.3;
-  bg.b = 0.3;
+
+  bg.red   = 0.3;
+  bg.green = 0.3;
+  bg.blue  = 0.3;
 
   number_to_save   = 25;
   number_of_pingus = 50;
   
-  backgrounds.push_back(new SurfaceBackgroundData ());
+  //backgrounds.push_back(new SurfaceBackgroundData ());
 
   //background->desc.datafile = "textures";
   //background->desc.res_name = "Textures/default";
@@ -111,7 +115,7 @@ ObjectManager::delete_all_objs()
 }
 
 void
-ObjectManager::load_level (string filename)
+ObjectManager::load_level (std::string filename)
 {
   cout << "ObjectManager::Loading level: " << filename << endl;
 
@@ -121,7 +125,6 @@ ObjectManager::load_level (string filename)
   cout << "Editor: Clearing current level..." << endl;
   cout << "Loading new level: " << filename << endl;
   
-  PLF* plf;
   //PSMParser psm;
 
   if (filename.substr(filename.size() - 4) == ".xml")
@@ -199,7 +202,7 @@ ObjectManager::load_level (string filename)
 
   set_viewpoint(start_x_pos, start_y_pos);
 
-  delete plf;
+  //  delete plf;
 }
 
 void
@@ -222,7 +225,7 @@ void
 ObjectManager::draw()
 {
   CL_Display::fill_rect(x_offset, y_offset, width + x_offset, height + y_offset,
-			bg.r, bg.g, bg.b, 1.0);
+			bg.red, bg.green, bg.blue, 1.0);
   
   for (EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) 
     {
@@ -235,7 +238,7 @@ ObjectManager::draw()
     }
 
   Display::draw_rect(x_offset, y_offset, width + x_offset, height + y_offset,
-		     bg.r, bg.g, bg.b, 1.0);
+		     bg.red, bg.green, bg.blue, 1.0);
 }
 
 void
@@ -262,7 +265,7 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.32 2000/09/25 16:29:43 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.33 2000/10/03 20:01:24 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   

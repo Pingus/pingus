@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.17 2000/08/06 22:11:04 grumbel Exp $
+//  $Id: ColMap.cc,v 1.18 2000/10/03 20:01:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -243,8 +243,8 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, SurfaceData::Typ
     {
       float r, g, b, a;
       // Rewritting blitter for 32bit depth (using get_pixel())
-      for(int y=0; y < provider->get_height(); y++)
-	for(int x=0; x < provider->get_width(); x++) {
+      for (unsigned int y=0; y < provider->get_height(); y++)
+	for (unsigned int x=0; x < provider->get_width(); x++) {
 	  provider->get_pixel(x, y, &r, &g, &b, &a);
 	  
 	  if (a > 0.1)

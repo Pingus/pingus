@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.hh,v 1.12 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: ObjectManager.hh,v 1.13 2000/10/03 20:01:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef OBJECTMANAGER_HH
 #define OBJECTMANAGER_HH
 
+#include "../Color.hh"
 #include "EditorObj.hh"
 
 class EditorObj;
@@ -74,18 +75,8 @@ private:
   ///
   int move_offset;
 
-  ///
-  struct RGB { 
-    ///
-    float r;
-    ///
-    float g;
-    ///
-    float b; 
-  };
-  
-  ///
-  RGB bg;
+  Color bg;
+  PLF* plf;
   
 public:
   ///

@@ -1,4 +1,4 @@
-//  $Id: WarMain.cc,v 1.3 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: WarMain.cc,v 1.4 2000/10/03 20:01:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -116,8 +116,8 @@ WarMain::decode_switches (int argc, char **argv)
 	  break;
 	  
 	case 'g':
-	  if (sscanf(optarg, "%d%c%d", 
-		     &WarGlobals::screen_width, &c, &WarGlobals::screen_height) != 3)
+	  if (sscanf(optarg, "%dx%d", 
+		     &WarGlobals::screen_width, &WarGlobals::screen_height) != 3)
 	    {
 	      std::cout << "Resolution std::string is wrong, it should be like: \n" 
 			<< "\"640x480\" or \"800x600\"" << std::endl;
@@ -129,6 +129,7 @@ WarMain::decode_switches (int argc, char **argv)
 	  usage (EXIT_FAILURE);
 	}
     }
+  return 0;
 }
 
 void  

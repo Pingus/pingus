@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.31 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.32 2000/10/03 20:01:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -134,9 +134,13 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  // Select another background.
 	case CL_KEY_F10:
 	  {
+	    // FIXME
+	    std::cout << "EditorEvent: Background settings is currently not supported" << std::endl;
+	    /*
 	    SurfaceBackgroundData* sur_bg;
 	    if ((sur_bg = dynamic_cast<SurfaceBackgroundData*>(*(object_manager->backgrounds.begin()))) != 0)
 	      sur_bg->desc.res_name = editor->object_selector->get_background();
+	    */
 	  }
 	  break;
 
@@ -408,15 +412,15 @@ EditorEvent::editor_mark_all_objects()
 void
 EditorEvent::editor_toggle_background_color()
 {
-  object_manager->bg.r += 0.1;
-  object_manager->bg.g += 0.1;
-  object_manager->bg.b += 0.1;
+  object_manager->bg.red   += 0.1;
+  object_manager->bg.green += 0.1;
+  object_manager->bg.blue  += 0.1;
       
-  if (object_manager->bg.r > 1.0) 
+  if (object_manager->bg.red > 1.0) 
     {
-      object_manager->bg.r = 0.0;
-      object_manager->bg.g = 0.0;
-      object_manager->bg.b = 0.0;
+      object_manager->bg.red   = 0.0;
+      object_manager->bg.green = 0.0;
+      object_manager->bg.blue  = 0.0;
     }
 }
 

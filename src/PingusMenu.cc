@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.31 2000/09/12 11:11:36 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.32 2000/10/03 20:01:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,11 +31,14 @@
 #include "Loading.hh"
 #include "Display.hh"
 #include "PingusSound.hh"
+#include "blitter.hh"
 
 PingusMenu::PingusMenu()
 {
   bg         = PingusResource::load_surface("Game/logo_t", "game");
   background = PingusResource::load_surface("NewButtons/background", "menu");
+
+  background = Blitter::scale_surface (background, CL_Display::get_width (), CL_Display::get_height ());
   //  background = PingusResource::load_surface("Textures/stones", "textures");
  
   event = new Event;
@@ -76,6 +79,8 @@ PingusMenu::~PingusMenu()
   delete editor_button;
   delete theme_button;
 
+  delete background;
+
   //CL_Input::chain_mouse_move.remove(event);
   //CL_Input::chain_button_release.remove(event);
   //CL_Input::chain_button_press.remove(event);
@@ -96,8 +101,8 @@ PingusMenu::draw()
     for(int x = 0; x < CL_Display::get_width(); x += background->get_width())
       background->put_screen(x, y);
   */
-  background->put_screen(0, 0, CL_Display::get_width(), CL_Display::get_height());
-
+  //background->put_screen(0, 0, CL_Display::get_width(), CL_Display::get_height());
+  background->put_screen(0, 0);
   // Putting the logo
   //bg->put_screen(CL_Display::get_width()/2 - bg->get_width()/2, 3);
 

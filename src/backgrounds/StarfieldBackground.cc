@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.cc,v 1.3 2000/09/30 21:34:42 grumbel Exp $
+//  $Id: StarfieldBackground.cc,v 1.4 2000/10/03 20:01:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 void 
 StarfieldBackgroundData::write_xml(ofstream* xml)
 {
-  (*xml) << "<background type=\"starfield\">"
+  (*xml) << "<background type=\"starfield\">\n"
 	 << "  <small-stars count=\"" << small_stars_count << "\"/>\n"
 	 << "  <middle-stars count=\"" << middle_stars_count << "\"/>\n"
 	 << "  <large-stars count=\"" << large_stars_count << "\"/>\n"

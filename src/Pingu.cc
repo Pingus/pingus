@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.32 2000/09/24 00:22:06 grumbel Exp $
+//  $Id: Pingu.cc,v 1.33 2000/10/03 20:01:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -476,7 +476,7 @@ Pingu::do_walking()
 	}
     }
   
-  if (rel_getpixel(2, 26) != ColMap::NOTHING && !(rel_getpixel(2, 26) & ColMap::BRIDGE))
+  if (rel_getpixel(0, 26) != ColMap::NOTHING && !(rel_getpixel(0, 26) & ColMap::BRIDGE))
     {
       std::cout << "Pingu: Head collision" << std::endl;
       direction.change();

@@ -1,4 +1,4 @@
-//  $Id: climber.cc,v 1.5 2000/05/24 18:48:35 grumbel Exp $
+//  $Id: climber.cc,v 1.6 2000/10/03 20:01:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,29 +68,37 @@ void
 Climber::let_move(void)
 {
   /*
-  std::cout << "Climer let_move()" << std::endl;
-  std::cout << "Direction: " << pingu->direction << std::endl;
-  printf("%3d %3d %3d\n", rel_getpixel(1,1), rel_getpixel(0,1), rel_getpixel(-1,1));
-  printf("%3d %3d %3d\n", rel_getpixel(1,0), rel_getpixel(0,0), rel_getpixel(-1,0));
-  printf("%3d %3d %3d\n", rel_getpixel(1,-1), rel_getpixel(0,-1),rel_getpixel(-1, -1));
+    std::cout << "Climer let_move()" << std::endl;
+    std::cout << "Direction: " << pingu->direction << std::endl;
+    printf("%3d %3d %3d\n", rel_getpixel(1,1), rel_getpixel(0,1), rel_getpixel(-1,1));
+    printf("%3d %3d %3d\n", rel_getpixel(1,0), rel_getpixel(0,0), rel_getpixel(-1,0));
+    printf("%3d %3d %3d\n", rel_getpixel(1,-1), rel_getpixel(0,-1),rel_getpixel(-1, -1));
   */  
+
   // If above is free
-  if (rel_getpixel(0, 1) == ColMap::NOTHING) {
-    if (rel_getpixel(1, 1) & ColMap::WALL) {
-      //cout << "Go one step up" << std::endl;
-      --pingu->y_pos;
-      return;
-    } else if (rel_getpixel(1, 1) == ColMap::NOTHING) {
-      //      std::cout << "Climber failed, falling down" << std::endl;
-      --pingu->y_pos;
-      pingu->x_pos += pingu->direction;
+  if (rel_getpixel(0, 1) == ColMap::NOTHING
+      || rel_getpixel (0, 1) & ColMap::BRIDGE)
+    {
+      // and there is still ground to walk on
+      if (rel_getpixel(1, 1) & ColMap::WALL) 
+	{
+	  --pingu->y_pos;
+	  return;
+	}
+      else if (rel_getpixel(1, 1) == ColMap::NOTHING) 
+	{
+	  //  std::cout << "Climber failed, falling down" << std::endl;
+	  --pingu->y_pos;
+	  pingu->x_pos += pingu->direction;
+	  is_finished = true;
+	}
+    }
+  else 
+    {
+      //    std::cout << "Climber failed, falling down" << std::endl;
+      pingu->direction.change();
       is_finished = true;
     }
-  } else {
-    //    std::cout << "Climber failed, falling down" << std::endl;
-    pingu->direction.change();
-    is_finished = true;
-  }
 }
 /*
 void
