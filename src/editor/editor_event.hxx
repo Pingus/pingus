@@ -1,4 +1,4 @@
-//  $Id: editor_event.hxx,v 1.9 2002/07/01 12:46:22 grumbel Exp $
+//  $Id: editor_event.hxx,v 1.10 2002/07/01 16:10:29 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@ class CL_Font;
 class CL_InputDevice;
 class Editor;
 class ObjectManager;
+class EditorSelection;
 
 class EditorEvent //: public CL_Event_ButtonPress, public CL_Event_ButtonRelease
 {
@@ -42,6 +43,7 @@ public:
 
   Editor* editor;
   ObjectManager* object_manager;
+  EditorSelection* selection;
   
   virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
   virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);

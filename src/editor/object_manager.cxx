@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.12 2002/06/29 14:01:32 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.13 2002/07/01 16:10:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -321,18 +321,22 @@ ObjectManager::save_level_xml (const std::string & filename)
   xml << "</pingus-level>\n" << std::endl;
 }
 
+/*
 void
 ObjectManager::delete_selection()
 {
   current_objs.erase(current_objs.begin(), current_objs.end());  
 }
+*/
 
+/*
 void
 ObjectManager::unselect_object(boost::shared_ptr<EditorObj> c_obj)
 {
   current_objs.erase(std::find(current_objs.begin(), current_objs.end(),
 			       c_obj));
 }
+
 
 void
 ObjectManager::raise_current_objs()
@@ -351,6 +355,7 @@ ObjectManager::lower_current_objs()
       lower_obj(*i);
     }
 }
+*/
 
 bool
 ObjectManager::lower_obj(boost::shared_ptr<EditorObj> obj)
@@ -402,8 +407,7 @@ ObjectManager::raise_obj(boost::shared_ptr<EditorObj> obj)
      */
   return true;
 }
-
-
+/*
 void
 ObjectManager::rect_get_current_objs(float x_1, float y_1, float x_2, float y_2)
 {
@@ -424,7 +428,21 @@ ObjectManager::rect_get_current_objs(float x_1, float y_1, float x_2, float y_2)
 	current_objs.push_back(*i);
     }
 }
+*/
 
+list<EditorObj*>
+ObjectManager::rect_get_objs(int x1, int y1, int x2, int y2)
+{
+  list<EditorObj*> retval;
+
+  for (EditorObjIter it = editor_objs.begin(); it != editor_objs.end(); it++)
+    if ((*it)->is_in_rect(CL_Rect(x1, y1, x2, y2)))
+      retval.push_back(*it.get());
+      
+  return retval;
+}
+
+/*
 bool
 ObjectManager::object_selected(boost::shared_ptr<EditorObj> c_obj)
 {
@@ -435,9 +453,10 @@ ObjectManager::object_selected(boost::shared_ptr<EditorObj> c_obj)
     }
   return false;
 }
+*/
 
 boost::shared_ptr<EditorObj>
-ObjectManager::select_object(const CL_Vector & pos)
+ObjectManager::find_object(const CL_Vector & pos)
 {
   for(EditorObjRIter i = editor_objs.rbegin(); i != editor_objs.rend(); ++i) 
     {
@@ -450,6 +469,7 @@ ObjectManager::select_object(const CL_Vector & pos)
   return boost::shared_ptr<EditorObj>();
 }
 
+/*
 void
 ObjectManager::move_current_objs(float x, float y)
 {
@@ -495,7 +515,7 @@ ObjectManager::get_current_obj()
   else
     return boost::shared_ptr<EditorObj>();
 }
-
+*/
 void
 ObjectManager::add_object_group_from_file (const std::string& filename)
 {

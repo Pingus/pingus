@@ -1,4 +1,4 @@
-//  $Id: object_manager.hxx,v 1.6 2002/07/01 12:46:22 grumbel Exp $
+//  $Id: object_manager.hxx,v 1.7 2002/07/01 16:10:29 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,7 +64,7 @@ private:
 
   /** This list contains all objects, which are in the current
       selection */
-  std::list<boost::shared_ptr<EditorObj> > current_objs;
+  //std::list<boost::shared_ptr<EditorObj> > current_objs;
 
   int move_offset;
 
@@ -90,41 +90,42 @@ public:
   void draw(EditorView * view);
   void draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height);
 
-  bool object_selected(boost::shared_ptr<EditorObj> c_obj);
-  void move_obj();
+  //bool object_selected(boost::shared_ptr<EditorObj> c_obj);
+  //void move_obj();
 
-  void delete_selection();
+  //void delete_selection();
   void delete_all_objs();
 
   void add_object_group_from_file (const std::string& filename);
 
-  void rect_get_current_objs(float x1, float y1, float x2, float y2);
+  //void rect_get_current_objs(float x1, float y1, float x2, float y2);
+  list<EditorObj*> rect_get_objs(int x1, int y1, int x2, int y2);
 
   int get_width() { return width; }
   int get_height() { return height; }
 
   /** Return the currently selected object, if none is selected or
       multiple objects are selected return 0 */
-  boost::shared_ptr<EditorObj> get_current_obj();
+  //boost::shared_ptr<EditorObj> get_current_obj();
   
-  void move_current_objs(float x, float y);
-  void drag_current_objs ();
-  void drop_current_objs ();
+  //void move_current_objs(float x, float y);
+  //void drag_current_objs ();
+  //void drop_current_objs ();
 
-  void add_to_selection(boost::shared_ptr<EditorObj> obj);
-  void add_to_selection(std::list<boost::shared_ptr<EditorObj> > objs);
+  //void add_to_selection(boost::shared_ptr<EditorObj> obj);
+  //void add_to_selection(std::list<boost::shared_ptr<EditorObj> > objs);
 
   bool raise_obj(boost::shared_ptr<EditorObj> obj);
-  void raise_current_objs();
+  //void raise_current_objs();
   bool lower_obj(boost::shared_ptr<EditorObj> obj);
 
-  void lower_current_objs();
+  //void lower_current_objs();
 
   /** Remove an object from the current selection */
-  void unselect_object(boost::shared_ptr<EditorObj> c_obj);
+  //void unselect_object(boost::shared_ptr<EditorObj> c_obj);
 
   /** Add the object at the given position to the selection */
-  boost::shared_ptr<EditorObj> select_object(const CL_Vector & pos);
+  boost::shared_ptr<EditorObj> find_object(const CL_Vector & pos);
 
   std::vector<ActionData>* get_actions ();
 };

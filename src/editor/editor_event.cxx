@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.16 2002/07/01 12:46:22 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.17 2002/07/01 16:10:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,7 @@
 #include "../loading.hxx"
 #include "../my_gettext.hxx"
 #include "object_manager.hxx"
+#include "selection.hxx"
 #include "editorobj_group.hxx"
 #include "string_reader.hxx"
 #include "editor_event.hxx"
@@ -73,6 +74,7 @@ EditorEvent::set_editor(Editor* e)
   editor = e;
   editor->last_level = System::get_statdir() + "levels/";
   object_manager = editor->object_manager;
+  selection = editor->selection;
 }
 
 void
@@ -219,59 +221,39 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  break;
 
 	case CL_KEY_HOME:
-	  if (object_manager->get_current_obj().get())
-	    object_manager->get_current_obj()->make_larger ();
+	  if (selection->get_current_obj())
+	    selection->get_current_obj()->make_larger ();
 	  break;
 
 	case CL_KEY_END:
-	  if (object_manager->get_current_obj().get())
-	    object_manager->get_current_obj()->make_smaller ();
+	  if (selection->get_current_obj())
+	    selection->get_current_obj()->make_smaller ();
 	  break;
 
 	  // Lower all object in the current selection
 	case CL_KEY_PAGEDOWN:
-	  object_manager->lower_current_objs();
+	  selection->lower();
 	
 	  if (CL_Keyboard::get_keycode(CL_KEY_RSHIFT)) 
 	    {
-	      for (ObjectManager::CurrentObjIter i = object_manager->current_objs.begin(); 
-		   i != object_manager->current_objs.end(); 
-		   ++i)
-		{
-		  (*i)->set_position_offset(CL_Vector(0, 0, -50));
-		}
+	      selection->move(CL_Vector(0, 0, -50));
 	    }
 	  else if (CL_Keyboard::get_keycode(CL_KEY_RCTRL))
 	    {
-	      for (ObjectManager::CurrentObjIter i = object_manager->current_objs.begin(); 
-		   i != object_manager->current_objs.end(); 
-		   ++i)
-		{
-		  (*i)->set_position_offset(CL_Vector(0, 0, -1));
-		}
+	      selection->move(CL_Vector(0, 0, -1));
 	    }
 	  break;
     
 	  // Raise all objects in the current selection.
 	case CL_KEY_PAGEUP:
-	  object_manager->raise_current_objs();    
+	  selection->raise();
 	  if (CL_Keyboard::get_keycode(CL_KEY_RSHIFT)) 
 	    {
-	      for (ObjectManager::CurrentObjIter i = object_manager->current_objs.begin();
-		   i != object_manager->current_objs.end(); 
-		   ++i) 
-		{
-		  (*i)->set_position_offset(CL_Vector(0, 0, 50));
-		}
+	      selection->move(CL_Vector(0, 0, 50));
 	    }
 	  else if (CL_Keyboard::get_keycode(CL_KEY_RCTRL)) 
 	    {
-	      for (ObjectManager::CurrentObjIter i = object_manager->current_objs.begin(); 
-		   i != object_manager->current_objs.end(); 
-		   ++i)
-		{
-		  (*i)->set_position_offset(CL_Vector(0, 0, 1));
-		}
+	      selection->move(CL_Vector(0, 0, 1));
 	    }
 	  break;
 
@@ -401,9 +383,9 @@ EditorEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
 void
 EditorEvent::editor_convert_group_to_selection()
 {
-  if (object_manager->current_objs.size() == 1)
+  if (selection->get_current_obj())
     {
-      boost::shared_ptr<EditorObj> obj = *(object_manager->current_objs.begin());
+      boost::shared_ptr<EditorObj> obj(selection->get_current_obj());
       EditorObjGroup* group = dynamic_cast<EditorObjGroup*>(obj.get());
 
       if (group)
@@ -412,14 +394,14 @@ EditorEvent::editor_convert_group_to_selection()
 	  object_manager->editor_objs.erase(std::find(object_manager->editor_objs.begin(), 
 						      object_manager->editor_objs.end(),
 						      obj));
-	  object_manager->delete_selection();
+	  selection->clear();
 
 	  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs->begin();
 	      i != objs->end();
 	      i++)
 	    {
 	      object_manager->editor_objs.push_back(*i);
-	      object_manager->current_objs.push_back(*i);
+	      selection->add((*i).get());
 	    }
 
 	  objs->clear();
@@ -438,7 +420,7 @@ EditorEvent::editor_convert_group_to_selection()
 void
 EditorEvent::editor_convert_selection_to_group()
 {
-  if (object_manager->current_objs.size() > 1)
+  if (selection->get_current_objs().size() > 1)
     {
       EditorObjGroup* group = new EditorObjGroup();
       boost::shared_ptr<EditorObj> group_obj(group);
@@ -449,14 +431,15 @@ EditorEvent::editor_convert_selection_to_group()
 	   j != object_manager->editor_objs.end();
 	   j++)
 	{
-	  for (ObjectManager::CurrentObjIter i = object_manager->current_objs.begin();
-	       i != object_manager->current_objs.end();
+	  for (list<EditorObj*>::const_iterator i = selection->get_current_objs().begin();
+	       i != selection->get_current_objs().end();
 	       i++)
 	    { 
-	      if (*j == *i)
+	      if ((*j).get() == *i)
 		{
-		  group->add (*i);
-		  to_erase.push_back(std::find(object_manager->editor_objs.begin(), object_manager->editor_objs.end(), *i));
+		  group->add (boost::shared_ptr<EditorObj>(*i));
+		  to_erase.push_back(std::find(object_manager->editor_objs.begin(), object_manager->editor_objs.end(),
+		                               boost::shared_ptr<EditorObj>(*i)));
 		}
 	    }
 	}
@@ -467,8 +450,8 @@ EditorEvent::editor_convert_selection_to_group()
 	object_manager->editor_objs.erase(*i);
 
       object_manager->editor_objs.push_back(group_obj);
-      object_manager->delete_selection();
-      object_manager->add_to_selection(group_obj);
+      selection->clear();
+      selection->add(group_obj.get());
     }
   else
     {
@@ -479,13 +462,13 @@ EditorEvent::editor_convert_selection_to_group()
 void
 EditorEvent::editor_mark_all_objects()
 {
-  object_manager->delete_selection();
+  selection->clear();
   
   for(ObjectManager::EditorObjIter i = object_manager->editor_objs.begin(); 
       i != object_manager->editor_objs.end(); 
       ++i) 
     {
-      object_manager->current_objs.push_back(*i);
+      selection->add((*i).get());
     }
 }
 
@@ -513,14 +496,15 @@ EditorEvent::editor_delete_selected_objects()
 {
   editor->save_tmp_level ();
       
-  for (ObjectManager::CurrentObjIter i = object_manager->current_objs.begin();
-       i != object_manager->current_objs.end();
+  for (std::list<EditorObj*>::const_iterator i = selection->get_current_objs().begin();
+       i != selection->get_current_objs().end();
        i++)
     { 
-      object_manager->editor_objs.erase(std::find(object_manager->editor_objs.begin(), object_manager->editor_objs.end(), *i));
+      object_manager->editor_objs.erase(std::find(object_manager->editor_objs.begin(), object_manager->editor_objs.end(), 
+                                                  boost::shared_ptr<EditorObj>(*i)));
     }
   
-  object_manager->delete_selection();
+  selection->clear();
 }
 
 void
@@ -635,15 +619,15 @@ EditorEvent::editor_save_level_as()
 void
 EditorEvent::editor_duplicate_current_selection()
 {
-  std::list<boost::shared_ptr<EditorObj> > new_objs;
+  std::list<EditorObj*> new_objs;
   
-  for (ObjectManager::CurrentObjIter i = object_manager->current_objs.begin(); 
-       i != object_manager->current_objs.end();
+  for (std::list<EditorObj*>::const_iterator i = selection->get_current_objs().begin(); 
+       i != selection->get_current_objs().end();
        i++)
     {
       ObjectManager::EditorObjIter iter = std::find(object_manager->editor_objs.begin(), 
 						    object_manager->editor_objs.end(), 
-						    *i);
+						    boost::shared_ptr<EditorObj>(*i));
       
       boost::shared_ptr<EditorObj> obj = (*i)->duplicate();
 
@@ -652,12 +636,12 @@ EditorEvent::editor_duplicate_current_selection()
 	  obj->set_position_offset (CL_Vector(8, 8));
 
 	  object_manager->editor_objs.insert(iter, obj);
-	  new_objs.push_back(obj);
+	  new_objs.push_back(obj.get());
 	}
     }
 
-  object_manager->delete_selection();
-  object_manager->add_to_selection(new_objs);
+  selection->clear();
+  selection->add(new_objs);
 }
 
 void
@@ -714,26 +698,26 @@ EditorEvent::editor_mark_or_move_object()
     return;
 
   boost::shared_ptr<EditorObj> obj 
-    = object_manager->select_object(editor->view->screen_to_world (CL_Vector(CL_Mouse::get_x(), 
+    = object_manager->find_object(editor->view->screen_to_world (CL_Vector(CL_Mouse::get_x(), 
 									     CL_Mouse::get_y())));
   
   if (obj.get())
     {
-      if (object_manager->object_selected(obj))
+      if (selection->object_selected(obj.get()))
 	{
 	  editor->interactive_move_object();
 	}
       else
 	{
 	  if (!CL_Keyboard::get_keycode(CL_KEY_LSHIFT))
-	    object_manager->delete_selection();
+	    selection->clear();
 	  
-	  object_manager->add_to_selection(obj);
+	  selection->add(obj.get());
 	}
     }
   else
     {
-      object_manager->delete_selection();
+      selection->clear();
     }
 }
 
@@ -777,7 +761,13 @@ void
 EditorEvent::editor_export_object_group_from_selection ()
 {
   std::cout << "EditorEvent:editor_export_object_group_from_selection ()" << std::endl;
-  EditorObjGroup group (editor->object_manager->current_objs);
+  
+  std::list<boost::shared_ptr<EditorObj> > temp;
+  for (std::list<EditorObj*>::const_iterator it  = selection->get_current_objs().begin();
+                                             it != selection->get_current_objs().end(); it++)
+    temp.push_back(boost::shared_ptr<EditorObj>(*it));
+  
+  EditorObjGroup group (temp);
   std::ofstream xml ("/tmp/metaobj.xml");
   group.write_xml (xml);
 }
@@ -791,45 +781,25 @@ EditorEvent::editor_import_object_group ()
 void 
 EditorEvent::editor_horizontal_flip_current_selection()
 {
-  for (ObjectManager::CurrentObjIter i = object_manager->current_objs.begin(); 
-       i != object_manager->current_objs.end();
-       i++)
-    {
-      (*i)->horizontal_flip ();
-    } 
+  selection->horizontal_flip ();
 }
 
 void
 EditorEvent::editor_vertical_flip_current_selection()
 {
-  for (ObjectManager::CurrentObjIter i = object_manager->current_objs.begin(); 
-       i != object_manager->current_objs.end();
-       i++)
-    {
-      (*i)->vertical_flip ();
-    } 
+  selection->vertical_flip ();
 }
 
 void
 EditorEvent::editor_rotate_90_current_selection()
 {
-  for (ObjectManager::CurrentObjIter i = object_manager->current_objs.begin(); 
-       i != object_manager->current_objs.end();
-       i++)
-    {
-      (*i)->rotate_90 ();
-    }
+  selection->rotate_90 ();
 }
 
 void
 EditorEvent::editor_rotate_270_current_selection()
 {
-  for (ObjectManager::CurrentObjIter i = object_manager->current_objs.begin(); 
-       i != object_manager->current_objs.end();
-       i++)
-    {
-      (*i)->rotate_270 ();
-    } 
+  selection->rotate_270 ();
 }
 
 void

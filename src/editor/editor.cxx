@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.13 2002/07/01 12:46:22 grumbel Exp $
+//  $Id: editor.cxx,v 1.14 2002/07/01 16:10:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,6 +45,7 @@
 #include "status_line.hxx"
 #include "object_selector.hxx"
 #include "object_manager.hxx"
+#include "selection.hxx"
 #include "action_window.hxx"
 #include "property_window.hxx"
 #include "level_property_window.hxx"
@@ -71,6 +72,7 @@ Editor::Editor () : event_handler_ref_counter(0),
   panel      = new Panel;
   scroll_map = new ScrollMap;
   object_manager  = new ObjectManager;
+  selection       = new EditorSelection(object_manager);
   status_line     = new StatusLine;
   object_selector = new ObjectSelector;
 
@@ -90,7 +92,7 @@ Editor::Editor () : event_handler_ref_counter(0),
   
   font = PingusResource::load_font("Fonts/courier_small", "fonts");
   panel->init();
-  status_line->set_current_objs(&object_manager->current_objs);
+  status_line->set_current_objs(&selection->get_current_objs());
   panel->set_editor(this);
   scroll_map->editor_event = event;
 }
