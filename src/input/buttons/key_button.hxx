@@ -1,4 +1,4 @@
-//  $Id: key_button.hxx,v 1.5 2003/06/16 20:58:11 torangan Exp $
+//  $Id: key_button.hxx,v 1.6 2003/06/16 20:59:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_INPUT_KEY_BUTTON_HXX
 #define HEADER_PINGUS_INPUT_KEY_BUTTON_HXX
 
-#include <ClanLib/Display/Signals/slot.h>
 #include "../button.hxx"
 
 namespace Input {
