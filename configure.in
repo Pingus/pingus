@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.29 2000/09/26 12:35:34 grumbel Exp $
+#  $Id: configure.in,v 1.30 2000/09/30 22:07:19 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,9 +18,6 @@
 #  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 dnl BUG: This file should be updated with the macros from 'configure.scan'
-
-dnl Hack to make ImageMagick work
-LIBS="-L/usr/X11R6/lib -lMagick"
 
 dnl Process this file with autoconf to produce a configure script.
 AC_INIT( src/PingusMain.cc )
@@ -133,6 +130,17 @@ else
 *** Please check your installation of libxml.])
         fi
 fi
+
+dnl Check the version of libxml.
+ac_xml_version=`$XML_CONFIG --version`
+case "$ac_xml_version" in
+        2.*)
+ 	AC_DEFINE_UNQUOTED(LIBXML_2)
+        ;;
+        *)
+        AC_CHECK_LIB(xml, xmlIsBlankNode,, [AC_DEFINE_UNQUOTED(NO_XMLISBLANKNODE)])
+ 	;;
+esac
 
 dnl Add the apropriate xml-flags to CPPFLAGS and LIBS.
 CPPFLAGS="$CPPFLAGS `$XML_CONFIG --cflags`"
