@@ -1,4 +1,4 @@
-//  $Id: groundpiece_obj.cxx,v 1.9 2002/11/30 17:11:55 grumbel Exp $
+//  $Id: groundpiece_obj.cxx,v 1.10 2002/12/14 11:34:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include <stdio.h>
 #include <iostream>
-#include "../editor/groundpiece_window.hxx"
 #include "../worldobjsdata/groundpiece_data.hxx"
 #include "../pingus_resource.hxx"
 #include "../editor/property_window.hxx"

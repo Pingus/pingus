@@ -1,4 +1,4 @@
-//  $Id: entrance_obj.cxx,v 1.4 2002/12/01 21:45:14 grumbel Exp $
+//  $Id: entrance_obj.cxx,v 1.5 2002/12/14 11:35:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #include <stdio.h>
 #include <iostream>
 #include "../pingus_error.hxx"
-#include "../editor/entrance_window.hxx"
 #include "../editor/editor.hxx"
 #include "../editor/property_window.hxx"
 #include "../editor/generic_property_frame.hxx"
