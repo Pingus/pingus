@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.52 2001/08/12 23:05:22 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.53 2001/08/13 21:35:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ EntranceObj::EntranceObj(const EntranceData& data)
   if (type == "generic")
     {
       sprite = Sprite("Entrances/generic", "entrances");
-      sprite.set_align(-(sprite.get_width()/2), -sprite.get_height());
+      sprite.set_align_center_bottom ();
     } 
   else if (type == "woodthing") 
     {
@@ -64,8 +64,7 @@ boost::shared_ptr<EditorObj>
 EntranceObj::duplicate()
 {
   std::cout << "EntranceObj::duplicate()" << std::endl;
-  boost::shared_ptr<EditorObj> entrance (new EntranceObj(*this));
-
+  boost::shared_ptr<EditorObj> entrance (new EntranceObj(static_cast<EntranceData>(*this)));
   return entrance;
 }
 
@@ -98,6 +97,8 @@ ExitObj::ExitObj(const ExitData& data)
   : SpriteEditorObj (data.desc.res_name, data.desc.datafile, pos),
     ExitData (data)
 {
+  std::cout << "EXITOBJ: " << &pos << std::endl;
+  
   if (!use_old_pos_handling)
     {
       pos.x -= sprite.get_width ()/2;
@@ -108,7 +109,8 @@ ExitObj::ExitObj(const ExitData& data)
 boost::shared_ptr<EditorObj>   
 ExitObj::duplicate()
 {
-  return boost::shared_ptr<EditorObj>(new ExitObj(*this));
+  // FIXME: The static_cast<> looks ugly.. 
+  return boost::shared_ptr<EditorObj>(new ExitObj(static_cast<ExitData>(*this)));
 }
 
 std::string 
@@ -120,7 +122,7 @@ ExitObj::status_line()
 	  desc.res_name.c_str(),
 	  pos.x, pos.y, pos.z, owner_id);
 
-  return std::string("unset");
+  return str;
 }
 
 TrapObj::TrapObj(const TrapData& data)
@@ -163,7 +165,7 @@ TrapObj::TrapObj(const TrapData& data)
 boost::shared_ptr<EditorObj>
 TrapObj::duplicate()
 {
-  return boost::shared_ptr<EditorObj>(new TrapObj(*this));
+  return boost::shared_ptr<EditorObj>(new TrapObj(static_cast<TrapData>(*this)));
 }
 
 void
@@ -198,7 +200,7 @@ LiquidObj::LiquidObj(const LiquidData& data)
 boost::shared_ptr<EditorObj>
 LiquidObj::duplicate()
 {
-  return boost::shared_ptr<EditorObj>(new LiquidObj(*this));
+  return boost::shared_ptr<EditorObj>(new LiquidObj(static_cast<LiquidData>(*this)));
 }
 
 void

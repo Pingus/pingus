@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.32 2001/08/12 18:36:41 grumbel Exp $
+//  $Id: Editor.cc,v 1.33 2001/08/13 21:35:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -363,7 +363,7 @@ Editor::rect_get_current_objs()
   CL_Vector start_pos (CL_Mouse::get_x(),
 		       CL_Mouse::get_y ());
   
-  std::cout << "Editor: Selecting rectangle... " << std::flush;
+  //std::cout << "Editor: Selecting rectangle... " << std::flush;
 
   CL_Vector end_pos;
 
@@ -389,7 +389,7 @@ Editor::rect_get_current_objs()
 
   object_manager->rect_get_current_objs(start_pos.x, start_pos.y, end_pos.x, end_pos.y);
 
-  std::cout << "finished" << std::endl;
+  //std::cout << "finished" << std::endl;
 }
 
 bool

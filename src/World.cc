@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.56 2001/08/12 18:36:40 grumbel Exp $
+//  $Id: World.cc,v 1.57 2001/08/13 21:35:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -326,11 +326,11 @@ World::init_worldobjs()
        i != worldobj_d.end ();
        i++)
     {
-      std::cout << "Adding worldobj's" << std::endl;
+      //std::cout << "Adding worldobj's" << std::endl;
 
       shared_ptr<WorldObj> obj = (*i)->create_WorldObj ();
 
-      std::cout << "z_pos: " << obj->get_z_pos() << std::endl;
+      //std::cout << "z_pos: " << obj->get_z_pos() << std::endl;
 
       if (obj->get_z_pos() <= 0)
 	world_obj_bg.push_back(obj);

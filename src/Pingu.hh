@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.36 2001/08/07 19:55:22 grumbel Exp $
+//  $Id: Pingu.hh,v 1.37 2001/08/13 21:35:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -168,6 +168,8 @@ public:
 
   /** Indicate if the pingu's speed is above the deadly velocity */
   bool is_tumbling () const;
+  
+  float get_z_pos() const { return 0; }
 
   /** @return The owner_id of the owner, only used in multiplayer
       configurations, ought to bed single player */

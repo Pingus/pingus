@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackground.cc,v 1.13 2001/08/12 18:36:41 grumbel Exp $
+//  $Id: SurfaceBackground.cc,v 1.14 2001/08/13 21:35:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -82,6 +82,8 @@ SurfaceBackground::SurfaceBackground(const SurfaceBackgroundData& bg_data)
 
   para_x = bg_data.para_x;
   para_y = bg_data.para_y;
+
+  pos = bg_data.pos;
 
   scroll_ox = 0;
   scroll_oy = 0;
@@ -215,6 +217,8 @@ SurfaceBackground::update(float delta)
 void
 SurfaceBackground::draw_offset(int x_of, int y_of, float s)
 {
+  std::cout << "BACKGROUND: " << get_z_pos () << std::endl;
+
   if (fast_mode) 
     {
       CL_Display::clear_display();

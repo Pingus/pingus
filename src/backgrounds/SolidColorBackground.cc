@@ -1,4 +1,4 @@
-//  $Id: SolidColorBackground.cc,v 1.7 2001/08/12 23:05:22 grumbel Exp $
+//  $Id: SolidColorBackground.cc,v 1.8 2001/08/13 21:35:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,7 +77,8 @@ public:
   void write_xml(ofstream* xml) { this->SolidColorBackgroundData::write_xml (xml); }
 
   boost::shared_ptr<EditorObj> duplicate() {
-    return boost::shared_ptr<EditorObj>(new EditorSolidColorBackground (*this));
+    return boost::shared_ptr<EditorObj>
+      (new EditorSolidColorBackground (static_cast<SolidColorBackgroundData>(*this)));
   }
 
   std::string status_line () { return "SolidColorBackground"; }

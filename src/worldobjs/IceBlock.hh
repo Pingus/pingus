@@ -1,4 +1,4 @@
-//  $Id: IceBlock.hh,v 1.14 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: IceBlock.hh,v 1.15 2001/08/13 21:35:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,7 @@ private:
 public:
   IceBlock (const IceBlockData& data);
 
-  int  get_z_pos() const { return 100; }
+  float get_z_pos() const { return 100; }
   void draw_colmap();
   void draw_offset(int x, int y, float s = 1.0);
   void update(float delta);

@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.25 2001/08/12 18:36:40 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.26 2001/08/13 21:35:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,6 +99,9 @@ public:
       another action can be applied, false otherwise (exiter,
       splashed, etc.) */
   virtual bool catchable () { return true; }
+
+  // FIXME: z_pos is currently unused for pingu actions
+  virtual float get_z_pos () const { return 0; }
 };
 
 class PinguActionFactory

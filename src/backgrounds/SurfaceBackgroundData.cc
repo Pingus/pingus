@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.cc,v 1.8 2001/08/13 07:42:22 grumbel Exp $
+//  $Id: SurfaceBackgroundData.cc,v 1.9 2001/08/13 21:35:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include "../editor/SpriteEditorObj.hh"
 #include "../XMLhelper.hh"
+#include "../StringConverter.hh"
 #include "SurfaceBackground.hh"
 #include "SurfaceBackgroundData.hh"
 
@@ -31,16 +32,18 @@ public:
     : SurfaceBackgroundData (data),
       SpriteEditorObj (desc.res_name, desc.datafile, pos)
   {
-    pos = CL_Vector (-192.0f, 0.0f);
   }
 
   void write_xml(ofstream* xml) { this->SurfaceBackgroundData::write_xml (xml); }
 
   boost::shared_ptr<EditorObj> duplicate() {
-    return boost::shared_ptr<EditorObj>(new EditorSurfaceBackground (*this));
+    return boost::shared_ptr<EditorObj>
+      (new EditorSurfaceBackground (static_cast<SurfaceBackgroundData>(*this)));
   }
 
-  std::string status_line () { return "SurfaceBackground"; }
+  std::string status_line () { 
+    return "SurfaceBackground: " + to_string (pos);
+  }
 };
 
 SurfaceBackgroundData::SurfaceBackgroundData()
@@ -74,8 +77,9 @@ SurfaceBackgroundData::write_xml(std::ofstream* xml)
 	  << "  <para-x>"    << para_x << "</para-x>\n"
 	  << "  <para-y>"    << para_y << "</para-y>\n"
 	  << "  <stretch-x>" << stretch_x << "</stretch-x>\n"
-	  << "  <stretch-y>" << stretch_y << "</stretch-y>\n" 
-	  << "</background>\n"
+	  << "  <stretch-y>" << stretch_y << "</stretch-y>\n";
+  XMLhelper::write_vector_xml(xml, pos);
+  (*xml)  << "</background>\n"
 	  << std::endl;
 }
 
@@ -84,8 +88,9 @@ SurfaceBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
   boost::shared_ptr<SurfaceBackgroundData> background(new SurfaceBackgroundData ());
 
-  cur = cur->children;
-  
+  background->pos.z = -100;
+
+  cur = cur->children;  
   while (cur != NULL)
     {
       if (xmlIsBlankNode(cur)) 
@@ -125,6 +130,11 @@ SurfaceBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
       else if (strcmp((char*)cur->name, "stretch-y") == 0)
 	{
 	  background->stretch_y = XMLhelper::parse_float(doc, cur);
+	}
+      else if (strcmp((char*)cur->name, "position") == 0)
+	{
+	  background->pos = XMLhelper::parse_vector(doc, cur);
+	  std::cout << "SURFACEBACKGROUND: " << background->pos << std::endl;
 	}
       else
 	{

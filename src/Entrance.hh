@@ -1,4 +1,4 @@
-//  $Id: Entrance.hh,v 1.17 2001/08/10 10:56:13 grumbel Exp $
+//  $Id: Entrance.hh,v 1.18 2001/08/13 21:35:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ public:
   Entrance(const EntranceData& data);
   virtual ~Entrance() {}
 
-  int  get_z_pos() const { return int(pos.z); }
+  float get_z_pos() const { return int(pos.z); }
   virtual bool   pingu_ready(void);
   virtual boost::shared_ptr<Pingu> get_pingu(void);
   virtual void   update(float delta);

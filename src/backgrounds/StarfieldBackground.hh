@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.hh,v 1.8 2001/08/12 23:05:22 grumbel Exp $
+//  $Id: StarfieldBackground.hh,v 1.9 2001/08/13 21:35:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,6 +65,8 @@ public:
   StarfieldBackgroundStars () {}
   StarfieldBackgroundStars (Type type);
 
+  float get_z_pos() const { return 0; }
+
   void init ();
   void update(float delta);
   void draw_offset(int x_of, int y_of, float s = 1.0);  
@@ -82,6 +84,8 @@ public:
   ///static boost::shared_ptr<StarfieldBackground> create (boost::shared_ptr<BackgroundData> arg_data);
 
   virtual ~StarfieldBackground ();
+
+  float get_z_pos() const { return 0; }
 
   void update(float delta);
   void draw_offset(int x_of, int y_of, float s = 1.0);

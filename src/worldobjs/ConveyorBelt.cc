@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.24 2001/08/12 18:36:42 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.25 2001/08/13 21:35:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -172,7 +172,8 @@ EditorConveyorBeltObj::EditorConveyorBeltObj (const ConveyorBeltData& data)
 boost::shared_ptr<EditorObj> 
 EditorConveyorBeltObj::duplicate()
 {
-  return boost::shared_ptr<EditorObj>(new EditorConveyorBeltObj (*this));
+  return boost::shared_ptr<EditorObj>(new EditorConveyorBeltObj 
+				      (static_cast<ConveyorBeltData> (*this)));
 }
 
 void
@@ -183,8 +184,9 @@ EditorConveyorBeltObj::draw (boost::dummy_ptr<EditorView> view)
     view->draw (middle_sur, pos.x + left_sur.get_width () + i*middle_sur.get_width (),
 		pos.y,
 		counter);
-  view->draw (right_sur, pos.x + left_sur.get_width () + ConveyorBeltData::width*middle_sur.get_width (),
-			pos.y, counter);
+  view->draw (right_sur,
+	      pos.x + left_sur.get_width () + ConveyorBeltData::width*middle_sur.get_width (),
+	      pos.y, counter);
   counter += speed;
   if (counter > 14)
     counter = 0;

@@ -1,4 +1,4 @@
-//  $Id: WorldObj.hh,v 1.18 2001/08/12 18:36:40 grumbel Exp $
+//  $Id: WorldObj.hh,v 1.19 2001/08/13 21:35:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,10 +56,8 @@ public:
    */
   bool operator< (const WorldObj& w);
 
-  /** Returns the $z$-position of this object. By default, every world object
-   *  has $z$-position 0.
-   */
-  virtual int  get_z_pos() const { return 0; }
+  /** Returns the $z$-position of this object. */
+  virtual float get_z_pos() const =0;
 
   /** Draws this WorldObject on the screen with the specified offset. If not
    *  overloaded, this method does nothing.

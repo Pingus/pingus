@@ -1,4 +1,4 @@
-//  $Id: PanelIcons.cc,v 1.12 2001/07/22 21:17:58 grumbel Exp $
+//  $Id: PanelIcons.cc,v 1.13 2001/08/13 21:35:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 
 PanelIconLoad::PanelIconLoad()
 {
-  tooltip = _("Load a level");
+  tooltip = _("Load a level (F5)");
   sur = PingusResource::load_surface("editor/open", "core");
 }
 
@@ -36,7 +36,7 @@ PanelIconLoad::on_click()
 
 PanelIconExit::PanelIconExit()
 {
-  tooltip = _("Exit the editor");
+  tooltip = _("Exit the editor (Escape)");
   sur = PingusResource::load_surface("editor/exit", "core");  
 }
 
@@ -48,7 +48,7 @@ PanelIconExit::on_click()
 
 PanelIconSave::PanelIconSave()
 {
-  tooltip = _("Save this level");
+  tooltip = _("Save this level (F6)");
   sur = PingusResource::load_surface("editor/save", "core");
 }
 
@@ -72,7 +72,7 @@ PanelIconDelete::on_click()
 
 PanelIconCopy::PanelIconCopy()
 {
-  tooltip = _("Duplicate current object");
+  tooltip = _("Duplicate current object (d)");
   sur = PingusResource::load_surface("editor/copy", "core");
 }
 
@@ -109,7 +109,7 @@ PanelIconEdit::on_click()
 
 PanelIconRun::PanelIconRun()
 {
-  tooltip = _("Start the level and test it");
+  tooltip = _("Start the level and test it (F4)");
   sur = PingusResource::load_surface("editor/clock_run", "core");  
 }
 
@@ -133,7 +133,7 @@ PanelIconNew::on_click()
 
 PanelIconInsertObject::PanelIconInsertObject()
 {
-  tooltip = _("Insert an object");
+  tooltip = _("Insert an object (Insert)");
   sur = PingusResource::load_surface("editor/index", "core");  
 }
 

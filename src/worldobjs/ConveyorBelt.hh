@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.hh,v 1.17 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: ConveyorBelt.hh,v 1.18 2001/08/13 21:35:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,7 @@ public:
   void draw_offset (int x_of, int y_of, float s = 1.0);
   void draw_colmap();
   void update(float delta);
-  int  get_z_pos() const { return (int) pos.z; }
+  float get_z_pos() const { return pos.z; }
 };
 
 class EditorConveyorBeltObj : public RectEditorObj,

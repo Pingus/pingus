@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.hh,v 1.8 2001/08/13 07:42:22 grumbel Exp $
+//  $Id: SurfaceBackgroundData.hh,v 1.9 2001/08/13 21:35:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,6 @@ public:
 
   /// Stretch the background to the full screen size in x direction
   bool stretch_y;
-
 
   /// Init all fields with some usefull defaults values.
   SurfaceBackgroundData();

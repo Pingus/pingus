@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackgroundData.cc,v 1.6 2001/08/13 07:42:22 grumbel Exp $
+//  $Id: ThunderstormBackgroundData.cc,v 1.7 2001/08/13 21:35:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,17 +25,19 @@ class EditorThunderstormBackground : public ThunderstormBackgroundData,
 				     public SpriteEditorObj
 {
 private:
-  CL_Vector pos;
 public:
   EditorThunderstormBackground (const ThunderstormBackgroundData& data)
     : ThunderstormBackgroundData (data),
-      SpriteEditorObj ("Stars/starfield_icon", "game", pos),
-      pos (-128.0f, 0.0f)
-  {}
+      SpriteEditorObj ("Stars/starfield_icon", "game", pos)
+  {
+    pos = CL_Vector(-128.0f, 0.0f);
+  }
+
   void write_xml(ofstream* xml) { this->ThunderstormBackgroundData::write_xml (xml); }
   
   boost::shared_ptr<EditorObj> duplicate() {
-    return boost::shared_ptr<EditorObj>(new EditorThunderstormBackground (*this));
+    return boost::shared_ptr<EditorObj>
+      (new EditorThunderstormBackground (static_cast<ThunderstormBackgroundData>(*this)));
   }
   
   std::string status_line () { return "ThunderstormBackground"; }
@@ -51,7 +53,24 @@ ThunderstormBackgroundData::write_xml(std::ofstream* xml)
 boost::shared_ptr<WorldObjData>
 ThunderstormBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  return boost::shared_ptr<ThunderstormBackgroundData>(new ThunderstormBackgroundData());
+  ThunderstormBackgroundData* data (new ThunderstormBackgroundData ());
+
+  cur = cur->children; 
+  while (cur != NULL)
+    {
+      if (xmlIsBlankNode(cur)) {
+	cur = cur->next;
+	continue;
+      }
+
+      if (strcmp ((char*) cur->name, "position") == 0) {
+	data->pos = XMLhelper::parse_vector (doc, cur);
+      } else {
+	std::cout << "ThunderstormBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur) error" << std::endl;
+      }
+    }
+
+  return boost::shared_ptr<WorldObjData>(data);
 }
 
 boost::shared_ptr<WorldObj> 

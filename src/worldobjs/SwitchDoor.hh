@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.hh,v 1.17 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: SwitchDoor.hh,v 1.18 2001/08/13 21:35:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -82,7 +82,7 @@ public:
   void draw_offset(int x, int y, float s = 1.0);
   void update(float delta);
   /// The switch and the door should stay above the pingus
-  int  get_z_pos() const { return 100; }
+  float get_z_pos() const { return 100; }
 };
 
 class EditorSwitchDoorObj;

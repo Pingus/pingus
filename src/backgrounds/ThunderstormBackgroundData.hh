@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackgroundData.hh,v 1.5 2001/08/12 18:36:41 grumbel Exp $
+//  $Id: ThunderstormBackgroundData.hh,v 1.6 2001/08/13 21:35:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,8 @@
 class ThunderstormBackgroundData : public WorldObjData
 {
 public:
+  CL_Vector pos;
+
   ThunderstormBackgroundData() {}
   virtual ~ThunderstormBackgroundData() {}
 

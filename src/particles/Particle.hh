@@ -1,5 +1,5 @@
 
-//  $Id: Particle.hh,v 1.11 2001/05/14 08:17:32 grumbel Exp $
+//  $Id: Particle.hh,v 1.12 2001/08/13 21:35:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,6 @@
 class Particle : public WorldObj
 {
 protected:
-  ///
   CL_Surface surface;
   
   /// The current position of the particle
@@ -41,16 +40,10 @@ protected:
   CL_Vector velocity;
 
   CL_Vector force;
-
-  ///
   int livetime;
 public:
-  ///
   Particle();
-  ///
   Particle(int x, int y, float x_a, float y_a);
-
-  ///
   virtual ~Particle();
 
   /// Reinit a allready created particle with now coordinates
@@ -59,6 +52,8 @@ public:
   /** If false is returned the particle gets deleted by the
       ParticleHolder */
   virtual bool is_alive(void);
+
+  virtual float get_z_pos() const { return pos.z; }
 
   /// Let the particle move
   virtual void update(float delta);

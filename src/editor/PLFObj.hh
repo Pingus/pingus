@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.25 2001/08/12 23:05:22 grumbel Exp $
+//  $Id: PLFObj.hh,v 1.26 2001/08/13 21:35:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,6 @@ class ExitObj : public SpriteEditorObj,
 		public ExitData
 {
 private:
-  CL_Vector pos;
 public:
   ExitObj(const ExitData&);
 

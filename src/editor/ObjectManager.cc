@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.50 2001/08/12 18:36:41 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.51 2001/08/13 21:35:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,6 +40,17 @@
 #endif
 
 using namespace std;
+
+/** */
+class EditorObj_z_pos_sorter
+{
+public:
+  bool operator() (const boost::shared_ptr<EditorObj>& a, 
+		   const boost::shared_ptr<EditorObj>& b) const 
+  {
+    return a->get_z_pos () < b->get_z_pos ();
+  }
+};
 
 ObjectManager::ObjectManager()
 {
@@ -173,9 +184,8 @@ ObjectManager::load_level (std::string filename)
   for(vector<LiquidData>::iterator i = temp_liquid.begin(); i != temp_liquid.end(); ++i)
     ListHelper::append (editor_objs, i->create_EditorObj ());
 
-
 #ifndef WIN32 // FIXME: Compiler error in Windows
-  //FIXME: Repair me  editor_objs.sort(EditorObj_less());
+  editor_objs.sort(EditorObj_z_pos_sorter());
 #endif
 
   std::cout << "Reading props" << std::endl;
@@ -401,12 +411,9 @@ ObjectManager::rect_get_current_objs(float x_1, float y_1, float x_2, float y_2)
   y1 = min(y_1, y_2);
   y2 = max(y_1, y_2);  
 
-  cout << "X1: " << x1 << " X2: " << x2 << endl;
-  cout << "Y1: " << y1 << " Y2: " << y2 << endl;
-
   for(EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) 
     {
-      if ((*i)->is_in_rect(CL_Rect(x1, y1, x2, y2)));
+      if ((*i)->is_in_rect(CL_Rect(x1, y1, x2, y2)))
 	current_objs.push_back(*i);
     }
 }
