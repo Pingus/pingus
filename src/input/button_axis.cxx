@@ -1,4 +1,4 @@
-//  $Id: button_axis.cxx,v 1.2 2002/07/05 10:06:35 torangan Exp $
+//  $Id: button_axis.cxx,v 1.3 2002/07/05 11:02:47 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,9 +26,9 @@ namespace Input
                          angle(angle_), button1(button1_), button2(button2_) 
   {
     if (angle < 0)
-      angle = (angle % 360) + 360;
+      angle = (static_cast<int>(angle) % 360) + 360;
     else if (angle > 360)
-      angle = angle % 360;
+      angle = static_cast<int>(angle) % 360;
   }
 
   float

@@ -1,4 +1,4 @@
-//  $Id: axis_pointer.cxx,v 1.1 2002/07/04 15:14:42 torangan Exp $
+//  $Id: axis_pointer.cxx,v 1.2 2002/07/05 11:02:47 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,6 +47,13 @@ namespace Input
     return y_pos;
   }
 
+  void
+  AxisPointer::set_pos(float new_x, float new_y)
+  {
+    x_pos = new_x;
+    y_pos = new_y;
+  }
+  
   void
   AxisPointer::update(float delta)
   {

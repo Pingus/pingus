@@ -1,4 +1,4 @@
-//  $Id: mouse_pointer.cxx,v 1.1 2002/07/04 15:51:29 torangan Exp $
+//  $Id: mouse_pointer.cxx,v 1.2 2002/07/05 11:02:47 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,13 +31,19 @@ namespace Input
   float
   MousePointer::get_x_pos ()
   {
-    return CL_Input::pointers[0]->get_cursor(1)->get_x();
+    return CL_Input::pointers[0]->get_cursor(0)->get_x();
   }
 
   float
   MousePointer::get_y_pos ()
   {
-    return CL_Input::pointers[0]->get_cursor(1)->get_y();
+    return CL_Input::pointers[0]->get_cursor(0)->get_y();
+  }
+
+  void
+  MousePointer::set_pos (float new_x, float new_y)
+  {
+    CL_Input::pointers[0]->get_cursor(0)->set_position(new_x, new_y);
   }
 
   void

@@ -1,4 +1,4 @@
-//  $Id: axis_pointer.hxx,v 1.1 2002/07/04 15:14:42 torangan Exp $
+//  $Id: axis_pointer.hxx,v 1.2 2002/07/05 11:02:47 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,6 +42,9 @@ namespace Input
 
       virtual float get_x_pos ();
       virtual float get_y_pos ();
+      
+      virtual void  set_pos(float new_x, float new_y);
+      
       virtual void  update (float);
   };
 }
