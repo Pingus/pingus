@@ -1,0 +1,320 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE pingus-level SYSTEM "http://www.pingus.cx/dtd/pingus-level.dtd">
+<pingus-level>
+  <global>
+    <levelname lang="en">Tutorial 1 - Dig into the ground</levelname>
+    <description lang="en">Use the digger action to dig a hole into the ground to reach the exit.</description>
+    <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
+    <number-of-pingus>100</number-of-pingus>
+    <number-to-save>50</number-to-save>
+    <time>5000</time>
+    <width>1200</width>
+    <height>600</height>
+  </global>
+
+<background>
+  <surface><resource type="datafile">
+    <resource-datafile>textures.dat</resource-datafile>
+  <resource-ident>Textures/rockagglo</resource-ident>
+  </resource></surface>
+  <color>
+    <red>0</red>
+    <green>0.2</green>
+    <blue>0.2</blue>
+    <alpha>0.8</alpha>
+  </color>
+  <scroll-x>0</scroll-x>
+  <scroll-y>0</scroll-y>
+  <para-x>0.5</para-x>
+  <para-y>0.5</para-y>
+  <stretch-x>0</stretch-x>
+  <stretch-y>0</stretch-y>
+</background>
+
+  <action-list>
+    <basher>0</basher>
+    <blocker>0</blocker>
+    <bomber>0</bomber>
+    <bridger>0</bridger>
+    <climber>0</climber>
+    <digger>20</digger>
+    <floater>0</floater>
+    <miner>0</miner>
+  </action-list>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Rock/rock1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>702</x-pos>
+    <y-pos>455</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Rock/rock1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>815</x-pos>
+    <y-pos>524</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Rock/rock1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>359</x-pos>
+    <y-pos>454</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Rock/rock1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>458</x-pos>
+    <y-pos>272</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Rock/rock2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>278</x-pos>
+    <y-pos>164</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Rock/rock2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>835</x-pos>
+    <y-pos>395</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Rock/rock2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>786</x-pos>
+    <y-pos>321</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Rock/rock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>490</x-pos>
+    <y-pos>471</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Rock/rock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>610</x-pos>
+    <y-pos>456</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Rock/rock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>503</x-pos>
+    <y-pos>525</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Rock/rock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>674</x-pos>
+    <y-pos>536</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Rock/rock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>334</x-pos>
+    <y-pos>504</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Rock/rock3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>599</x-pos>
+    <y-pos>284</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Rock/rock4</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>255</x-pos>
+    <y-pos>424</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Rock/rock4</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>260</x-pos>
+    <y-pos>306</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Rock/rock4</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>346</x-pos>
+    <y-pos>149</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Rock/rock4</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>772</x-pos>
+    <y-pos>248</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Rock/rock4</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>764</x-pos>
+    <y-pos>127</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Rock/rock5</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>408</x-pos>
+    <y-pos>214</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<entrance>
+  <position>
+    <x-pos>564</x-pos>
+    <y-pos>178</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>left</direction>
+  <release-rate>25</release-rate>
+</entrance>
+
+<exit>
+  <position>
+    <x-pos>522</x-pos>
+    <y-pos>421</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Exits/stone</resource-ident>
+  </resource></surface>
+</exit>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/signposts/digger</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>646</x-pos>
+    <y-pos>251</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+  <start-position>
+  <position>
+    <x-pos>0</x-pos>
+    <y-pos>0</y-pos>
+    <z-pos>1000</z-pos>
+  </position>
+  </start-position>
+
+</pingus-level>
+
