@@ -1,4 +1,4 @@
-//  $Id: bridger.cxx,v 1.21 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: bridger.cxx,v 1.22 2002/10/07 23:10:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -124,7 +124,7 @@ Bridger::update()
 void
 Bridger::update_walk ()
 {
-  if (walk_sprite.finished ())
+  if (walk_sprite.finished ()) // FIXME: Dangerous! might not be fixed timing
     {
       if (way_is_free())
 	{
@@ -169,6 +169,7 @@ Bridger::update_build ()
       else // Out of bricks
 	{
 	  pingu->set_action(Actions::Waiter);
+          return;
 	}     
     }
 
