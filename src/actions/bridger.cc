@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.9 2000/04/09 17:34:33 grumbel Exp $
+//  $Id: bridger.cc,v 1.10 2000/04/10 21:23:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,8 +38,8 @@ Bridger::init(void)
 
   surface = CL_Surface::load("Pingus/bridger", local_res());
   waiter  = CL_Surface::load("Pingus/blocker", local_res());
-  brick_r = CL_Surface::load("Other/brick_left", local_res());
-  brick_l = CL_Surface::load("Other/brick_right", local_res());
+  brick_l = CL_Surface::load("Other/brick_left", local_res());
+  brick_r = CL_Surface::load("Other/brick_right", local_res());
   bricks = 30;
 
   counter.set_size(surface->get_num_frames()/2);
@@ -48,12 +48,14 @@ Bridger::init(void)
   step = 0;
   do_steps = 0;
 
+  /*
   // FIXME: This needs to be moved to let_move()
 
   // Ressetting the bridger position a bit, so that we don't get a
   // hole at the start of the bridge
   pingu->x_pos -= pingu->direction * 2;
   pingu->y_pos += 1;
+  */
 } 
 
 void
@@ -148,20 +150,20 @@ Bridger::place_a_brick()
   if (pingu->direction.is_right())
     {
       pingu->colmap->put(brick_r, 
-			 pingu->x_pos + 16 - brick_r->get_width(),
+			 pingu->x_pos + 15 - brick_r->get_width(),
 			 pingu->y_pos - 1,
 			 surface_data::BRIDGE);
       pingu->map->put(brick_r->get_provider(), 
-		      pingu->x_pos + 16 - brick_r->get_width(),
+		      pingu->x_pos + 15 - brick_r->get_width(),
 		      pingu->y_pos - 1);
     }
   else
     {
-      pingu->colmap->put(brick_r, pingu->x_pos - 16,
+      pingu->colmap->put(brick_r, pingu->x_pos - 15,
 			 pingu->y_pos - 1,
 			 surface_data::BRIDGE);
       pingu->map->put(brick_l->get_provider(), 
-		      pingu->x_pos -16,
+		      pingu->x_pos - 15,
 		      pingu->y_pos - 1);
     }
 }
