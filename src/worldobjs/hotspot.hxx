@@ -1,4 +1,4 @@
-//  $Id: hotspot.hxx,v 1.1 2002/09/24 09:27:48 torangan Exp $
+//  $Id: hotspot.hxx,v 1.2 2002/09/24 16:46:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,8 +32,8 @@ namespace WorldObjs {
 class Hotspot : public WorldObj
 {
 private:
-  Sprite sprite;
   WorldObjsData::HotspotData* const data;
+  Sprite sprite;
 
 public:
   Hotspot (WorldObjsData::HotspotData* data_);
