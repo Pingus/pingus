@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.9 2002/06/29 11:54:22 grumbel Exp $
+//  $Id: editor.cxx,v 1.10 2002/06/29 16:04:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,8 +62,8 @@ Editor::Editor () : event_handler_ref_counter(0),
                     move_x(0), move_y(0), show_help_screen(true), tool(SELECTOR_TOOL)
 {
   EditorObj::set_editor(this);
-
   event      = new EditorEvent;
+
   panel      = new Panel;
   scroll_map = new ScrollMap;
   object_manager  = new ObjectManager;
@@ -160,6 +160,7 @@ Editor::edit ()
       move_objects();
       draw();
       gui->show ();
+      //std::cout << "GUI has Focus: " << (gui->get_focus () !=  gui) << std::endl;
       Display::flip_display(true);
     }
 

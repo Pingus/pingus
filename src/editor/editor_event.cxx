@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.13 2002/06/29 11:54:22 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.14 2002/06/29 16:04:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,10 +46,8 @@
 #include "action_window.hxx"
 
 EditorEvent::EditorEvent()
-  : is_enabled (0)
+  : is_enabled (1)
 {
-  enable();
-  
 }
 
 EditorEvent::~EditorEvent()
@@ -69,18 +67,26 @@ void
 EditorEvent::enable()
 {
   ++is_enabled;
+  
+  if (is_enabled)
+    editor->get_gui_manager ()->enable_input ();
 }
 
 void
 EditorEvent::disable()
 {
   --is_enabled;
+
+  if (is_enabled == 0)
+    {
+      editor->get_gui_manager ()->disable_input ();
+    }
 }
 
 void
 EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 {
-  if (!is_enabled)
+  if (!accept_input ())
     return;
 
   if (device == CL_Input::keyboards[0])
@@ -375,7 +381,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 void
 EditorEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
 {
-  if (!is_enabled)
+  if (!accept_input ())
     return;
 
   if (device == CL_Input::keyboards[0])
@@ -849,6 +855,15 @@ EditorEvent::editor_show_object_properties ()
     {
       std::cout << "EditorEvent::editor_show_object_properties (): error: multiple objects selected" << std::endl;
     }
+}
+
+bool
+EditorEvent::accept_input ()
+{
+  return
+    is_enabled
+    && 
+    (editor->get_gui_manager ()->get_focus () == editor->get_gui_manager ());
 }
 
 /* EOF */
