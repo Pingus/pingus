@@ -1,0 +1,18 @@
+<pingus-level-comments>
+  <author>Jorrit Tyberghein</author>
+  <email>Jorrit.Tyberghein@uz.kuleuven.ac.be</email>
+
+  <level>
+    <name>desert1.xml</name>
+    <rating>easy</rating>
+    
+    <comment>
+      This is a good introduction level. The good thing about it is
+      that you can finish it even if the single basher doesn't manage
+      to get through the pillar in the middle (which occurs more often
+      than not since the basher seems to stop too early almost all the
+      time) by placing a stopper there and letting it explode. You
+      only have to take care not to waste stairs :-)
+    </comment>
+  </level>
+ </pingus-level-comments>
