@@ -1,3 +1,7 @@
+- door-duplication crashes
+
+- z_pos sorting might be incorrect 
+
 - all working actions in default level
 
 - walker fly in the air (see test1)
@@ -49,6 +53,45 @@
 
 BUGS:
 ~~~~~
+Random crash while scrolling
+
+---Type <return> to continue, or q <return> to quit---
+#0  0x08090697 in Playfield::do_scrolling() (this=0x954d678)
+    at boost/smart_ptr.hpp:207
+207	   T* operator->() const         { return px; }  // never throws
+(gdb) where
+#0  0x08090697 in Playfield::do_scrolling() (this=0x954d678)
+    at boost/smart_ptr.hpp:207
+#1  0x080901e8 in Playfield::updateX() (this=0x954d678) at Playfield.cc:196
+#2  0x080637cb in Client::update(float) (this=0x954d3d0, delta=0.0350000001)
+    at /usr/include/g++-v3/bits/stl_iterator.h:478
+#3  0x08063566 in Client::play_level(boost::shared_ptr<PLF>) (
+    this=0x954d3d0, arg_plf=0xbfffec60) at DeltaManager.hh:35
+#4  0x08062388 in Client::display() (this=0x954d3d0)
+    at boost/dummy_ptr.hpp:37
+#5  0x080c18a6 in PingusGameSession::start() (this=0xbfffecd0)
+    at boost/smart_ptr.hpp:207
+#6  0x080fd50a in EditorEvent::editor_start_current_level() (this=0x829de00)
+    at EditorEvent.cc:490
+#7  0x080fc137 in EditorEvent::on_button_press(CL_InputDevice*, CL_Key const&) (this=0x829de00, device=0x81eb7c8, key=@0xbffff2d0) at EditorEvent.cc:90
+#8  0x08145348 in CL_MethodSlot_v2<EditorEvent, CL_InputDevice*, CL_Key const&>::call(CL_InputDevice*, CL_Key const&) (this=0x858a4c8, param1=0x81eb7c8, 
+    param2=@0xbffff2d0) at /usr/local/include/ClanLib/Signals/slot_v2.h:62
+#9  0x4012d5fa in CL_Signal_v2<CL_InputDevice*, CL_Key const&>::call(CL_InputDevice*, CL_Key const&) (this=0x81dd78c, param1=0x81eb7c8, param2=@0xbffff2d0)
+    at Sources/API/Signals/signal_v2.h:80
+#10 0x40116223 in CL_XWindowKeyboard::on_xevent(_XEvent&) (this=0x81eb7c8, 
+    e=@0xbffff3c0) at Sources/API/Signals/signal_v2.h:59
+#11 0x4012d851 in CL_MethodSlot_v1<CL_XWindowKeyboard, _XEvent&>::call(_XEvent&) (this=0x41001170, param1=@0xbffff3c0) at Sources/API/Signals/slot_v1.h:62
+#12 0x40119731 in CL_XWindow_DisplayCard::keep_alive() (this=0x81eb5f8)
+    at Sources/API/Signals/signal_v1.h:80
+#13 0x40171763 in CL_System::keep_alive() ()
+    at /usr/include/g++-v3/bits/stl_list.h:114
+#14 0x080fa45f in Editor::edit() (this=0x8586368) at Editor.cc:144
+#15 0x0809931d in EditorButton::on_click() (this=0x826a3f0)
+    at SurfaceButton.cc:331
+#16 0x08088ac9 in PingusMenu::on_button_release(CL_InputDevice*, CL_Key const&) (this=0xbffff890, device=0x81eb820, key=@0xbffff6f0)
+---Type <return> to continue, or q <return> to quit---
+
+
 
 Happened while doing an armageddon in level one (probally out-of-screen remove):
 

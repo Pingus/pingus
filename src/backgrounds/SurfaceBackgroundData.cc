@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.cc,v 1.15 2002/01/26 10:53:36 grumbel Exp $
+//  $Id: SurfaceBackgroundData.cc,v 1.16 2002/01/29 20:43:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ SurfaceBackgroundData::SurfaceBackgroundData()
   para_y = 0.5;
   stretch_x = false;
   stretch_y = false;
-  pos = CL_Vector (0, 0, -10);
+  pos = CL_Vector (0, 0, -150);
   color = Color (0,0,0,0);
 }
 
@@ -66,7 +66,7 @@ SurfaceBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
   SurfaceBackgroundData* background = new SurfaceBackgroundData ();
 
-  background->pos.z = -100;
+  background->pos.z = -150;
 
   cur = cur->children;  
   while (cur != NULL)

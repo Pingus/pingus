@@ -1,4 +1,4 @@
-//  $Id: SolidColorBackground.hh,v 1.10 2002/01/26 10:53:36 grumbel Exp $
+//  $Id: SolidColorBackground.hh,v 1.11 2002/01/29 20:43:18 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,8 @@
 #ifndef SOLIDCOLORBACKGROUND_HH
 #define SOLIDCOLORBACKGROUND_HH
 
+#include "../StringConverter.hh"
+#include "../editor/EditorView.hh"
 #include "../boost/smart_ptr.hpp"
 #include "../Color.hh"
 #include "../WorldObj.hh"
@@ -61,24 +63,45 @@ public:
 
 
 class EditorSolidColorBackground : public SolidColorBackgroundData,
-				   public SpriteEditorObj
+				   public RectEditorObj
 {
 private:
   CL_Vector pos;
 public:
   EditorSolidColorBackground (const SolidColorBackgroundData& data)
     : SolidColorBackgroundData (data),
-      SpriteEditorObj ("Stars/starfield_icon", "game", pos),
-      pos (-64.0f, 0.0f)
+      pos (0.0f, 0.0f)
   {}
   void write_xml(std::ofstream* xml) { this->SolidColorBackgroundData::write_xml (xml); }
+
+  /// Return the object width
+  int get_width() { return 256; }
+  /// Return the object height
+  int get_height() { return 256; }
 
   boost::shared_ptr<EditorObj> duplicate() {
     return boost::shared_ptr<EditorObj>
       (new EditorSolidColorBackground (static_cast<SolidColorBackgroundData>(*this)));
   }
 
-  std::string status_line () { return "SolidColorBackground"; }
+  float get_z_pos () { return pos.z; }
+
+  CL_Vector get_upper_left_corner () { 
+    return pos; 
+  }
+
+  void draw(boost::dummy_ptr<EditorView> view)
+  {
+    view->draw_fillrect ((int)pos.x, (int)pos.y, (int)pos.x + 256, (int)pos.y + 256, 
+			 color.red, color.green, color.blue, color.alpha);
+  }
+
+  void set_position_offset(const CL_Vector& offset)
+  {
+    pos += offset;
+  }  
+
+  std::string status_line () { return "SolidColorBackground: " + to_string (pos); }
 };
 
 #endif

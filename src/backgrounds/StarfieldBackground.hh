@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.hh,v 1.11 2002/01/26 10:53:36 grumbel Exp $
+//  $Id: StarfieldBackground.hh,v 1.12 2002/01/29 20:43:18 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define STARFIELDBACKGROUND_HH
 
 #include <ClanLib/core.h>
+#include "../StringConverter.hh"
 #include "../boost/smart_ptr.hpp"
 #include "../WorldObj.hh"
 #include "../PingusResource.hh"
@@ -112,7 +113,7 @@ public:
       (new EditorStarfieldBackground (static_cast<StarfieldBackgroundData>(*this)));
   }
 
-  std::string status_line () { return "StarfieldBackground"; }
+  std::string status_line () { return "StarfieldBackground: " + to_string (pos); }
 };
 
 #endif

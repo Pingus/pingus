@@ -1,4 +1,4 @@
-//  $Id: EditorHelpScreen.cc,v 1.2 2002/01/24 16:11:36 grumbel Exp $
+//  $Id: EditorHelpScreen.cc,v 1.3 2002/01/29 20:43:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,8 +61,8 @@ EditorHelpScreen::draw ()
   font->print_left (x_pos, y_pos +  60, _("Shift 'Cursor Keys' - Move objects fast "));
   font->print_left (x_pos, y_pos +  80, _("PageUp   - level object up"));
   font->print_left (x_pos, y_pos + 100, _("PageDown - level object down"));
-  font->print_left (x_pos, y_pos + 120, _("Shift PageUp   - increase objects z-pos"));
-  font->print_left (x_pos, y_pos + 140, _("Shift PageDown - decrease objects z-pos"));
+  font->print_left (x_pos, y_pos + 120, _("Shift PageUp   - increase objects z-pos by 50"));
+  font->print_left (x_pos, y_pos + 140, _("Shift PageDown - decrease objects z-pos by 50"));
   font->print_left (x_pos, y_pos + 160, _("Enter - Set default zoom (1:1)"));
   font->print_left (x_pos, y_pos + 180, _("d - duplicate object"));
   font->print_left (x_pos, y_pos + 200, _("a - mark all objects"));
@@ -71,12 +71,17 @@ EditorHelpScreen::draw ()
   font->print_left (x_pos, y_pos + 260, _("Insert - insert selected object"));
   font->print_left (x_pos, y_pos + 280, _("Remove - remove selected object"));
   font->print_left (x_pos, y_pos + 300, _("g - ungroup/group current selection"));
+  font->print_left (x_pos, y_pos + 320, _("Ctrl PageUp   - increase objects z-pos by 1"));
+  font->print_left (x_pos, y_pos + 340, _("Ctrl PageDown - decrease objects z-pos by 1"));
   //font->print_left (x_pos, y_pos + 320, _(""));
   //font->print_left (x_pos, y_pos + 340, _(""));
   
   x_pos = 32;
   y_pos = 500;
-  font->print_left (x_pos, y_pos + 300, _("Naming Convention: "));
+  font->print_left (x_pos, y_pos + 0, _("Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.xml"));
+
+  font->print_left (x_pos, y_pos + 30, _("When you have create a level and want to have it in the next Pingus release,\n"
+					 "please mail it to grumbel@gmx.de. "));
 }
 
 void
