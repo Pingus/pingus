@@ -1,0 +1,86 @@
+/* This level was created with the PLE
+ * $Id: stone2.plf,v 1.1 2000/05/12 13:25:09 grumbel Exp $
+ */
+global {
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "PLE Level";
+  description = "This level has no name
+
+";
+  number_of_pingus = 100;
+  number_to_save = 50;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 1200;
+  height  = 600;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures.dat)"Textures/crystal";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
+}
+
+buttons {
+  basher = 20;
+  blocker = 20;
+  bomber = 20;
+  bridger = 20;
+  climber = 20;
+  digger = 20;
+  floater = 20;
+  jumper = 20;
+  miner = 20;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 807;
+  y_pos = 255;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+exit {
+  image = (resource)"Exits/sortie_anim";
+  x_pos = 273;
+  y_pos = 275;
+  z_pos = 0;
+}
+
+trap {
+  name = "bumper";
+  x_pos = 707;
+  y_pos = 280;
+  z_pos = -100;
+}
+
+trap {
+  name = "bumper";
+  x_pos = 522;
+  y_pos = 30;
+  z_pos = -100;
+}
+
+trap {
+  name = "smasher";
+  x_pos = 389;
+  y_pos = 176;
+  z_pos = 100;
+}
+
+/* EOF */
