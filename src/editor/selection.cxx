@@ -1,4 +1,4 @@
-//  $Id: selection.cxx,v 1.7 2002/07/02 09:14:20 grumbel Exp $
+//  $Id: selection.cxx,v 1.8 2002/07/02 09:21:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -100,12 +100,7 @@ EditorSelection::select_rect(float x1_, float y1_, float x2_, float y2_)
   y1 = static_cast<int> (Math::min(y1_, y2_));
   y2 = static_cast<int> (Math::max(y1_, y2_));
 
-  std::cout << "Rect: " << x1 << " " << y1 << " "  << x2 << " "  << y2 << " "  << std::endl;
-  
-  const vector<EditorObj*> & erg = object_manager->rect_get_objs(x1, x2, y1, y2);
-  
-  std::cout << "Size: " << erg.size () << std::endl;
-
+  vector<EditorObj*> erg = object_manager->rect_get_objs(x1, y1, x2, y2);
   obj_list.insert(obj_list.end(), erg.begin(), erg.end());
 }
 

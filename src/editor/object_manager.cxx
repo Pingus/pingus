@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.18 2002/07/02 09:14:20 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.19 2002/07/02 09:21:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -419,7 +419,6 @@ ObjectManager::rect_get_objs(int x1, int y1, int x2, int y2)
 void
 ObjectManager::add (EditorObj* obj)
 {
-  std::cout << "ObjectManager::add (EditorObj*)" << std::endl;
   editor_objs.push_back (boost::shared_ptr<EditorObj>(obj));
 }
 
@@ -439,19 +438,6 @@ ObjectManager::erase (const std::vector<EditorObj*>& objs)
 			editor_objs.end ());
     }
 }
-
-/*
-bool
-ObjectManager::object_selected(boost::shared_ptr<EditorObj> c_obj)
-{
-  for(CurrentObjIter i = current_objs.begin(); i != current_objs.end(); i++)
-    {
-      if (c_obj == *i) 
-	return true;
-    }
-  return false;
-}
-*/
 
 EditorObj*
 ObjectManager::find_object(const CL_Vector& pos)
