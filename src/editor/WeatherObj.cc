@@ -1,4 +1,4 @@
-//  $Id: WeatherObj.cc,v 1.2 2000/10/30 16:17:51 grumbel Exp $
+//  $Id: WeatherObj.cc,v 1.3 2000/11/16 10:23:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../XMLhelper.hh"
 #include "../PingusResource.hh"
 #include "WeatherObj.hh"
 
@@ -25,13 +26,13 @@ WeatherObj::WeatherObj(const WeatherObj& obj)
   surf = obj.surf;
   type = obj.type;
   init();
-  pos = Position(0,0,200);
+  *position = Position(0,0,200);
 }
 
 WeatherObj::WeatherObj(WeatherData data)
 {
   type = data.type;
-  pos = Position(0,0,200);
+  *position = Position(0,0,200);
 
   if (type == "rain")
     {
@@ -58,7 +59,7 @@ WeatherObj::save_xml(std::ofstream* xml)
 {
   (*xml) << "  <weather>\n"
 	 << "    <type>" << type << "</type>\n";
-  save_position_xml(xml, pos);
+  XMLhelper::write_position_xml(xml, *position);
   (*xml) << "  </weather>\n"
 	 << std::endl;
 }

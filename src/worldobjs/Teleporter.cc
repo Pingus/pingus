@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.2 2000/11/14 22:22:56 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.3 2000/11/16 10:23:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -119,18 +119,13 @@ Teleporter::let_move ()
     }
 }
 
-EditorTeleporterObj::EditorTeleporterObj ()
-{
-  target = 0;
-}
-
 EditorTeleporterObj::EditorTeleporterObj (WorldObjData* obj)
 {
   surf = PingusResource::load_surface ("teleporter", "worldobjs");
   TeleporterData* data = dynamic_cast<TeleporterData*> (obj);  
   assert (data);
   
-  EditorObj::pos = data->TeleporterData::pos;
+  pos = data->pos;
 }
 
 EditorTeleporterObj::~EditorTeleporterObj ()
@@ -143,7 +138,7 @@ EditorTeleporterObj::create (WorldObjData* obj)
 {
   std::list<EditorObj*> objs;
   EditorTeleporterObj* teleporter = new EditorTeleporterObj (obj);
-  EditorTeleporterTargetObj* teleporter_target = new EditorTeleporterTargetObj (obj);
+  EditorTeleporterTargetObj* teleporter_target = new EditorTeleporterTargetObj (obj, teleporter->get_target_pos_p ());
 
   objs.push_back (teleporter);
   objs.push_back (teleporter_target);
@@ -157,8 +152,6 @@ EditorTeleporterObj::save_xml (std::ofstream* xml)
   // Before we write down the xml stuff, we need to get the positions
   // of the objects
   TeleporterData::target_pos = target->get_position ();
-  TeleporterData::pos = EditorObj::pos;
-
   this->write_xml (xml);
 }
 
@@ -172,14 +165,15 @@ EditorTeleporterTargetObj::EditorTeleporterTargetObj ()
 {
 }
 
-EditorTeleporterTargetObj::EditorTeleporterTargetObj (WorldObjData* obj)
+EditorTeleporterTargetObj::EditorTeleporterTargetObj (WorldObjData* obj, Position* pos)
 {
   surf = PingusResource::load_surface ("teleporter2", "worldobjs");
 
   TeleporterData* data = dynamic_cast<TeleporterData*> (obj);
   assert (data);
-  
-  pos = data->target_pos;
+
+  *pos = data->target_pos;
+  position = pos;
 }
 
 std::list<EditorObj*> 

@@ -1,4 +1,4 @@
-//  $Id: PSMObj.cc,v 1.23 2000/10/18 20:16:36 grumbel Exp $
+//  $Id: PSMObj.cc,v 1.24 2000/11/16 10:23:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include <fstream>
 #include <ClanLib/core.h>
-//#include <ClanLib/gui.h>
+#include "../XMLhelper.hh"
 #include "../algo.hh"
 #include "../globals.hh"
 #include "../PingusResource.hh"
@@ -28,8 +28,7 @@
 
 PSMObj::PSMObj(GroundpieceData data)
 {
-  pos.z_pos = 0;
-  pos = data.pos;
+  *position = data.pos;
   type = data.type;
   desc = data.desc;
 
@@ -39,9 +38,9 @@ PSMObj::PSMObj(GroundpieceData data)
 
 PSMObj::PSMObj(const PSMObj& t)
 {
-  pos.x_pos = t.pos.x_pos + 5;
-  pos.y_pos = t.pos.y_pos + 5;
-  pos.z_pos = 0;
+  position->x_pos = t.position->x_pos + 5;
+  position->y_pos = t.position->y_pos + 5;
+  position->z_pos = 0;
   surf  = t.surf;
   desc  = t.desc;
   type  = t.type;
@@ -76,7 +75,7 @@ PSMObj::save(std::ofstream* plf, std::ofstream* psm)
   }
   
   (*psm) << "(resource:" << desc.datafile << ")" << desc.res_name << " : " 
-	 << pos.x_pos << " : " << pos.y_pos << ";" << std::endl;
+	 << position->x_pos << " : " << position->y_pos << ";" << std::endl;
 }
 
 void PSMObj::save_xml(std::ofstream* xml)
@@ -97,8 +96,8 @@ void PSMObj::save_xml(std::ofstream* xml)
   }
   
   (*xml) << "<groundpiece type=\"" << type_str << "\">\n";
-  save_desc_xml(xml, desc);
-  save_position_xml(xml, pos);
+  XMLhelper::write_desc_xml(xml, desc);
+  XMLhelper::write_position_xml(xml, *position);
 
   //  (*xml) << "  <type>" << GroundpieceData::type_to_string(type) << "</type>\n";
   (*xml) << "</groundpiece>\n" << std::endl;

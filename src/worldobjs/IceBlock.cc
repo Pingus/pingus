@@ -1,4 +1,4 @@
-//  $Id: IceBlock.cc,v 1.3 2000/11/15 20:57:14 grumbel Exp $
+//  $Id: IceBlock.cc,v 1.4 2000/11/16 10:23:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -136,15 +136,12 @@ IceBlock::let_move()
     }
 }
 
-EditorIceBlockObj::EditorIceBlockObj ()
-{
-}
-
 EditorIceBlockObj::EditorIceBlockObj (WorldObjData* obj)
 {
   IceBlockData* data = dynamic_cast<IceBlockData*> (obj);
   surf = PingusResource::load_surface ("iceblock", "worldobjs");
-  EditorObj::pos = data->pos;
+  pos = data->pos;
+  position = &pos;
   IceBlockData::width = data->width;
 }
 
@@ -163,7 +160,6 @@ EditorIceBlockObj::create (WorldObjData* obj)
 void
 EditorIceBlockObj::save_xml (std::ofstream* xml)
 {
-  IceBlockData::pos = EditorObj::pos;
   this->write_xml (xml);
 }
 

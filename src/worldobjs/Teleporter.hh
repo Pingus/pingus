@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.2 2000/11/15 20:57:14 grumbel Exp $
+//  $Id: Teleporter.hh,v 1.3 2000/11/16 10:23:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,6 @@ public:
   Position pos;
   Position target_pos;
   
-public:
   TeleporterData () {}
   TeleporterData (const TeleporterData& data);
   virtual ~TeleporterData () {}
@@ -73,13 +72,13 @@ class EditorTeleporterTargetObj : public EditorObj
 public:
   /// Basic constructor
   EditorTeleporterTargetObj ();
-  EditorTeleporterTargetObj (WorldObjData* obj);
+  EditorTeleporterTargetObj (WorldObjData* obj, Position*);
 
   virtual ~EditorTeleporterTargetObj () {}
     
   static std::list<EditorObj*> create (TeleporterData*);
 
-  Position get_position () { return pos; }
+  Position get_position () { return *position; }
 
   /// The saveing will be done in EditorTeleporterObj::save_xml
   virtual void save_xml (std::ofstream* xml);
@@ -93,9 +92,10 @@ private:
   EditorTeleporterTargetObj* target;
 
 public:
-  EditorTeleporterObj ();
   EditorTeleporterObj (WorldObjData* obj);
   virtual ~EditorTeleporterObj ();
+
+  Position* get_target_pos_p () { return &target_pos; }
 
   static std::list<EditorObj*> create (WorldObjData* obj);
   virtual void save_xml (std::ofstream* xml);

@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.21 2000/11/15 20:58:36 grumbel Exp $
+// $Id: EditorObj.cc,v 1.22 2000/11/16 10:23:04 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,6 +38,8 @@ Editor* EditorObj::editor;
 
 EditorObj::EditorObj()
 {
+  is_init = false;
+  position = &private_pos;
   surf = 0;
   x_of = 0;
   y_of = 0;
@@ -51,12 +53,18 @@ EditorObj::EditorObj()
 
 EditorObj::~EditorObj()
 {
-  
 }
 
 void 
 EditorObj::init()
 {
+  if (is_init)
+    {
+      assert (!"EditorObj: Object already init, you can only call this function once");
+    }
+
+  is_init = true;
+
   if (surf)
     {
       width = surf->get_width();
@@ -67,100 +75,121 @@ EditorObj::init()
 EditorObj*
 EditorObj::create(GroundpieceData data)
 {
-  return new PSMObj(data);
+  EditorObj* obj = new PSMObj(data);
+  obj->init ();
+  return obj;
 }
 
 EditorObj*
 EditorObj::create(EntranceData data)
 {
-  return new EntranceObj(data);
+  EditorObj* obj = new EntranceObj(data);
+  obj->init ();
+  return obj;
 }
 
 EditorObj*
 EditorObj::create(ExitData data)
 {
-  return new ExitObj(data);
+  EditorObj* obj = new ExitObj(data);
+  obj->init ();
+  return obj;
 }
 
 EditorObj*
 EditorObj::create(TrapData data)
 {
-  return new TrapObj(data);
+  EditorObj* obj = new TrapObj(data);
+  obj->init ();
+  return obj;
 }
 
 EditorObj* 
 EditorObj::create(HotspotData data)
 {
-  return new HotspotObj(data);
+  EditorObj* obj = new HotspotObj(data);
+  obj->init ();
+  return obj;
 }
 
 EditorObj*
 EditorObj::create(LiquidData data)
 {
-  return new LiquidObj(data);
+  EditorObj* obj = new LiquidObj(data);
+  obj->init ();
+  return obj;
 }
 
 EditorObj*
 EditorObj::create(WeatherData data)
 {
-  return new WeatherObj(data);
+  EditorObj* obj = new WeatherObj(data);
+  obj->init ();
+  return obj;
 }
 
 list<EditorObj*>
 EditorObj::create (WorldObjData* obj)
 {
+  list<EditorObj*> objs;
   if (dynamic_cast<TeleporterData*>(obj))
-    return EditorTeleporterObj::create (dynamic_cast<TeleporterData*>(obj));
+    objs = EditorTeleporterObj::create (dynamic_cast<TeleporterData*>(obj));
   else if (dynamic_cast<IceBlockData*>(obj))
-    return EditorIceBlockObj::create (dynamic_cast<IceBlockData*>(obj));
+    objs = EditorIceBlockObj::create (dynamic_cast<IceBlockData*>(obj));
   else if (dynamic_cast<ConveyorBeltData*>(obj))
-    return EditorConveyorBeltObj::create (dynamic_cast<ConveyorBeltData*>(obj));
+    objs = EditorConveyorBeltObj::create (dynamic_cast<ConveyorBeltData*>(obj));
   else
     {
       std::cout << _("EditorObj: Warrning unknown WorldObjData pointer!") << std::endl;
       // FIXME: empty dummy
       return list<EditorObj*>();
     }
+  
+  for (list<EditorObj*>::iterator i = objs.begin (); i != objs.end (); i++)
+    (*i)->init ();
+  
+  return objs;
 }
 
 bool
 EditorObj::operator< (const EditorObj& w)
 {
-  return (pos.z_pos < w.pos.z_pos);
+  return (position->z_pos < w.position->z_pos);
 }
 
 bool
 EditorObj::operator> (const EditorObj& w)
 {
-  return (pos.z_pos > w.pos.z_pos);
+  return (position->z_pos > w.position->z_pos);
 }
 
 void 
 EditorObj::set_position(int new_x_pos, int new_y_pos)
 {
-  pos.x_pos = new_x_pos;
-  pos.y_pos = new_y_pos;
+  position->x_pos = new_x_pos;
+  position->y_pos = new_y_pos;
 }
 
 void
 EditorObj::set_position_offset(int x_pos_add, int y_pos_add, 
 			       int z_pos_add)
 {
-  pos.x_pos += x_pos_add;
-  pos.y_pos += y_pos_add;
-  pos.z_pos += z_pos_add;
+  position->x_pos += x_pos_add;
+  position->y_pos += y_pos_add;
+  position->z_pos += z_pos_add;
 }
 
 void
 EditorObj::draw_offset(int x_offset, int y_offset)
 {
+  assert (is_init || !"EditorObj: init () wasn't called");
   assert(surf);
   if (surf) {
-    surf->put_screen(pos.x_pos + x_offset + x_of,
-		     pos.y_pos + y_offset + y_of);
+    surf->put_screen(position->x_pos + x_offset + x_of,
+		     position->y_pos + y_offset + y_of);
   } else {
-    CL_Display::fill_rect(pos.x_pos + x_offset, pos.y_pos + y_offset, 
-			  pos.x_pos + 10 + x_offset, pos.y_pos + 10 + y_offset,
+    CL_Display::fill_rect(position->x_pos + x_offset, position->y_pos + y_offset, 
+			  position->x_pos + 10 + x_offset, position->y_pos + 10 + y_offset,
 			  1.0, 0.0, 0.0, 1.0);
   }
 }
@@ -170,17 +199,17 @@ EditorObj::draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height)
 {
   if (surf)
     {
-      surf->put_screen(x_pos + pos.x_pos * arg_width / editor->get_object_manager()->get_width(),
-		       y_pos + pos.y_pos * arg_height / editor->get_object_manager()->get_height(),
+      surf->put_screen(x_pos + position->x_pos * arg_width / editor->get_object_manager()->get_width(),
+		       y_pos + position->y_pos * arg_height / editor->get_object_manager()->get_height(),
 		       width * arg_width / editor->get_object_manager()->get_width(),
 		       height * arg_height / editor->get_object_manager()->get_height());
     }
   else
     {
-      Display::draw_rect(x_pos + pos.x_pos * arg_width / editor->get_object_manager()->get_width(),
-			 y_pos + pos.y_pos * arg_height / editor->get_object_manager()->get_height(),
-			 x_pos + (pos.x_pos + width) * arg_width / editor->get_object_manager()->get_width(),
-			 y_pos + (pos.y_pos + height) * arg_height / editor->get_object_manager()->get_height(),
+      Display::draw_rect(x_pos + position->x_pos * arg_width / editor->get_object_manager()->get_width(),
+			 y_pos + position->y_pos * arg_height / editor->get_object_manager()->get_height(),
+			 x_pos + (position->x_pos + width) * arg_width / editor->get_object_manager()->get_width(),
+			 y_pos + (position->y_pos + height) * arg_height / editor->get_object_manager()->get_height(),
 			 1.0, 1.0, 0.0, 1.0);       
     }
 }
@@ -195,9 +224,9 @@ EditorObj::draw_mark_offset(int x_offset, int y_offset, EditorObj::Color* arg_co
   else
     color = mark_color;
   
-  Display::draw_rect(pos.x_pos + x_offset + x_of, pos.y_pos + y_offset + y_of,
-		     pos.x_pos + get_width() + x_offset + x_of - 1,
-		     pos.y_pos + get_height() + y_offset + y_of - 1,
+  Display::draw_rect(position->x_pos + x_offset + x_of, position->y_pos + y_offset + y_of,
+		     position->x_pos + get_width() + x_offset + x_of - 1,
+		     position->y_pos + get_height() + y_offset + y_of - 1,
 		     color.r, 
 		     color.g,
 		     color.b,
@@ -217,10 +246,10 @@ EditorObj::mouse_over(int x_offset, int y_offset)
     height = surf->get_height();
   }
 
-  if (   mouse_x > pos.x_pos + x_offset + x_of 
-      && mouse_x < pos.x_pos + width + x_offset + x_of
-      && mouse_y > pos.y_pos + y_offset + y_of
-      && mouse_y < pos.y_pos + height + y_offset + y_of)
+  if (   mouse_x > position->x_pos + x_offset + x_of 
+      && mouse_x < position->x_pos + width + x_offset + x_of
+      && mouse_y > position->y_pos + y_offset + y_of
+      && mouse_y < position->y_pos + height + y_offset + y_of)
     {
       return true;
     }
@@ -231,8 +260,8 @@ bool
 EditorObj::is_in_rect(int x1, int y1, int x2, int y2)
 {
   // FIXME: Simple, stupid, wrong,...
-  if (pos.x_pos + x_of > x1 && pos.x_pos + x_of < x2
-      && pos.y_pos + y_of > y1 && pos.y_pos + y_of < y2)
+  if (position->x_pos + x_of > x1 && position->x_pos + x_of < x2
+      && position->y_pos + y_of > y1 && position->y_pos + y_of < y2)
     {
       return true;
     }
@@ -249,45 +278,6 @@ EditorObj::status_line()
 }
 
 void
-EditorObj::save_desc_xml(std::ofstream* xml, ResDescriptor desc)
-{
-  (*xml) << "  <surface><resource type=\"";
-  switch (desc.type)
-    {
-    case ResDescriptor::FILE:
-      (*xml) << "file\">\n"
-	     << "    <resource-file>"
-	     << desc.res_name
-	     << "</resource-file>\n";
-      break;
-    case ResDescriptor::RESOURCE:
-      (*xml) << "datafile\">\n"
-	     << "    <resource-datafile>"
-	     << desc.datafile
-	     << "</resource-datafile>\n"
-	     << "  <resource-ident>"
-	     << desc.res_name
-	     << "</resource-ident>\n";
-      break;
-    default:
-      std::cout << "EditorObj::save_desc_xml(): Unhandled resource type" << std::endl;
-      break;
-    }
-  
-  (*xml) << "  </resource></surface>" << std::endl;
-}
-
-void
-EditorObj::save_position_xml(std::ofstream* xml, Position pos)
-{
-  (*xml) << "  <position>\n"
-	 << "    <x-pos>" << pos.x_pos << "</x-pos>\n"
-	 << "    <y-pos>" << pos.y_pos << "</y-pos>\n"
-	 << "    <z-pos>" << pos.z_pos << "</z-pos>\n"
-	 << "  </position>\n";
-}
-
-void
 EditorObj::gui_edit_obj()
 {
   std::cout << "EditorObj::gui_edit_obj() not implemented" << std::endl;
@@ -295,6 +285,10 @@ EditorObj::gui_edit_obj()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.22  2000/11/16 10:23:04  grumbel
+More fixes to the conveoyr belt, it works now :-)
+changed the way positions are handled by EditorObj
+
 Revision 1.21  2000/11/15 20:58:36  grumbel
 Some conveyorbelt framework
 

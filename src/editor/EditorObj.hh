@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.21 2000/10/30 16:17:51 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.22 2000/11/16 10:23:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,10 +39,20 @@ class Editor;
 ///
 class EditorObj
 {
+private:
+  /** If the child class does not provide a pos member, we you this
+      one */
+  Position private_pos;
 protected:
   static Editor* editor;
-  Position pos;
+
+  /** The position is a pointer to the position object of the child
+      class, when the child class doesn't provide a position element,
+      EditorObj creates one */
+  Position* position;
   
+  ///
+  bool is_init;
   ///
   int x_of, y_of;
   ///
@@ -116,11 +126,11 @@ public:
   virtual void set_position_offset(int x_pos_add, int y_pos_add, 
 				   int z_pos_add =0);
   /// Return the object x_pos
-  virtual int get_x_pos() { return pos.x_pos; }
+  virtual int get_x_pos() { return position->x_pos; }
   /// Return the object y_pos
-  virtual int get_y_pos() { return pos.y_pos; }
+  virtual int get_y_pos() { return position->y_pos; }
   /// Return the object z_pos
-  virtual int get_z_pos() { return pos.z_pos; }
+  virtual int get_z_pos() { return position->z_pos; }
 
   /// Return the object width
   virtual int get_width() { return width; }
@@ -152,11 +162,6 @@ public:
   virtual void   save(std::ofstream* plf, std::ofstream* psm) {};
   /** Save the given object in the ofstream as xml */
   virtual void   save_xml(std::ofstream* xml) = 0;
-
-  /** Writes the given res_desc to the ofstream */
-  static void save_desc_xml(std::ofstream* xml, ResDescriptor desc);
-  /** Write a position to the xml ofstream */
-  static void save_position_xml(std::ofstream* xml, Position pos);
   ///
   virtual std::string status_line();
   ///

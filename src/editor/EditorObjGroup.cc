@@ -1,4 +1,4 @@
-//  $Id: EditorObjGroup.cc,v 1.4 2000/11/14 22:22:56 grumbel Exp $
+//  $Id: EditorObjGroup.cc,v 1.5 2000/11/16 10:23:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,8 +41,8 @@ EditorObjGroup::~EditorObjGroup()
 void 
 EditorObjGroup::set_position(int new_x_pos, int new_y_pos)
 {
-  pos.x_pos = new_x_pos;
-  pos.y_pos = new_y_pos;
+  position->x_pos = new_x_pos;
+  position->y_pos = new_y_pos;
 
   for(list<EditorObj*>::iterator i = objs.begin();
       i != objs.end();
@@ -55,9 +55,9 @@ EditorObjGroup::set_position(int new_x_pos, int new_y_pos)
 void 
 EditorObjGroup::set_position_offset(int x_pos_add, int y_pos_add, int z_pos_add)
 {
-  pos.x_pos += x_pos_add;
-  pos.y_pos += y_pos_add;
-  pos.z_pos += z_pos_add;
+  position->x_pos += x_pos_add;
+  position->y_pos += y_pos_add;
+  position->z_pos += z_pos_add;
 
   for(list<EditorObj*>::iterator i = objs.begin();
       i != objs.end();
@@ -134,20 +134,20 @@ EditorObjGroup::push_back(EditorObj* obj)
   // Updating the width/height and x_pos/y_pos of the object group
   if (!objs.empty ())
     {
-      if (pos.x_pos > obj->get_x_pos())
-	pos.x_pos = obj->get_x_pos();
-      if (pos.y_pos > obj->get_y_pos())
-	pos.y_pos = obj->get_y_pos();
+      if (position->x_pos > obj->get_x_pos())
+	position->x_pos = obj->get_x_pos();
+      if (position->y_pos > obj->get_y_pos())
+	position->y_pos = obj->get_y_pos();
 
-      if ((pos.x_pos + width) < (obj->get_x_pos() + obj->get_width()))
-	width = (obj->get_x_pos() + obj->get_width()) - pos.x_pos;
-      if ((pos.y_pos + height) < (obj->get_y_pos() + obj->get_height()))
-	height = (obj->get_y_pos() + obj->get_height()) - pos.y_pos;
+      if ((position->x_pos + width) < (obj->get_x_pos() + obj->get_width()))
+	width = (obj->get_x_pos() + obj->get_width()) - position->x_pos;
+      if ((position->y_pos + height) < (obj->get_y_pos() + obj->get_height()))
+	height = (obj->get_y_pos() + obj->get_height()) - position->y_pos;
     }
   else
     {
-      pos.x_pos = obj->get_x_pos ();
-      pos.y_pos = obj->get_y_pos ();
+      position->x_pos = obj->get_x_pos ();
+      position->y_pos = obj->get_y_pos ();
       width = obj->get_width ();
       height = obj->get_height ();
     }

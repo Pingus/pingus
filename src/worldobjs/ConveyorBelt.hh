@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.hh,v 1.1 2000/11/15 20:57:14 grumbel Exp $
+//  $Id: ConveyorBelt.hh,v 1.2 2000/11/16 10:23:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,7 +50,7 @@ private:
   CL_Surface* right_sur;
   CL_Surface* middle_sur;
   int counter;
-  
+  int catch_counter;
 public:
   ///
   ConveyorBelt (WorldObjData*);
@@ -58,6 +58,8 @@ public:
   virtual ~ConveyorBelt () {}
   ///
   virtual void draw_offset (int x_of, int y_of, float s = 1.0);
+  ///
+  virtual void draw_colmap();
   ///
   virtual void let_move(void);
   ///
@@ -67,10 +69,18 @@ public:
 class EditorConveyorBeltObj : public EditorWorldObj,
 			      public ConveyorBeltData
 {
+private:
+  CL_Surface* left_sur;
+  CL_Surface* right_sur;
+  CL_Surface* middle_sur;
+  int counter;
+
 public:
-  EditorConveyorBeltObj ();
   EditorConveyorBeltObj (WorldObjData* obj);
   virtual ~EditorConveyorBeltObj ();
+
+  virtual void   draw_offset(int, int);
+  virtual void draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height);
   
   /// The saveing will be done in EditorTeleporterObj::save_xml
   static std::list<EditorObj*> create (WorldObjData* obj);
