@@ -661,99 +661,95 @@ msgstr "Vise"
 
 #: src/pingu_enums.cxx:34
 msgid "Angel"
-msgstr ""
+msgstr "Andjeo"
 
 #: src/pingu_enums.cxx:35
 msgid "Basher"
-msgstr ""
+msgstr "Glodac"
 
 #: src/pingu_enums.cxx:36
-#, fuzzy
 msgid "Blocker"
-msgstr "zakljucano"
+msgstr "Bloker"
 
 #: src/pingu_enums.cxx:37
 msgid "Boarder"
-msgstr ""
+msgstr "Skejter"
 
 #: src/pingu_enums.cxx:38
 msgid "Bomber"
-msgstr ""
+msgstr "Samoubica"
 
 #: src/pingu_enums.cxx:39
 msgid "Bridger"
-msgstr ""
+msgstr "Neimar"
 
 #: src/pingu_enums.cxx:40
 msgid "Climber"
-msgstr ""
+msgstr "Penjac"
 
 #: src/pingu_enums.cxx:41
 msgid "Digger"
-msgstr ""
+msgstr "Kopac"
 
 #: src/pingu_enums.cxx:42
 msgid "Drown"
-msgstr ""
+msgstr "Davljenik"
 
 #: src/pingu_enums.cxx:43
-#, fuzzy
 msgid "Exiter"
-msgstr "Izlaz"
+msgstr "Izlaznik"
 
 #: src/pingu_enums.cxx:44
 msgid "Faller"
-msgstr ""
+msgstr "Padac"
 
 #: src/pingu_enums.cxx:45
 msgid "Floater"
-msgstr ""
+msgstr "Padobranac"
 
 #: src/pingu_enums.cxx:46
-#, fuzzy
 msgid "Jumper"
-msgstr "7 - odbijac"
+msgstr "Skakac"
 
 #: src/pingu_enums.cxx:47
 msgid "Laserkill"
-msgstr ""
+msgstr "Zrtva lasera"
 
 #: src/pingu_enums.cxx:48
 msgid "Miner"
-msgstr ""
+msgstr "Rudar"
 
 #: src/pingu_enums.cxx:49
 msgid "Rocketlauncher"
-msgstr ""
+msgstr "Lanser raketa"
 
 #: src/pingu_enums.cxx:50
 msgid "Slider"
-msgstr ""
+msgstr "Klizac"
 
 #: src/pingu_enums.cxx:51
 msgid "Smashed"
-msgstr ""
+msgstr "Smrskan"
 
 #: src/pingu_enums.cxx:52
 msgid "Splashed"
-msgstr ""
+msgstr "Zgnjecen"
 
 #: src/pingu_enums.cxx:53
 msgid "Superman"
-msgstr ""
+msgstr "Supermen"
 
 #: src/pingu_enums.cxx:54
-#, fuzzy
 msgid "Teleported"
-msgstr "1 - teleport"
+msgstr "Teleportovan"
 
 #: src/pingu_enums.cxx:55
 msgid "Waiter"
-msgstr ""
+msgstr "Cekac"
 
 #: src/pingu_enums.cxx:56
 msgid "Walker"
-msgstr ""
+msgstr "Hodac"
 
 #: src/pingus_counter.cxx:49
 #, c-format
@@ -861,7 +857,6 @@ msgid "Print some more messages to stdout, can be set"
 msgstr "Ispis jos nekih poruka na stdout, moze biti postavljeno"
 
 #: src/pingus_main.cxx:508
-#, fuzzy
 msgid "multiple times to increase verbosity"
 msgstr "vise puta da se poveca informativnost"
 
@@ -879,7 +874,7 @@ msgstr "Onemoguci automatsko skrolovanje"
 
 #: src/pingus_main.cxx:513
 msgid "Enable software cursor"
-msgstr ""
+msgstr "Omoguci softverski kursor"
 
 #: src/pingus_main.cxx:516
 msgid "Don't read ~/.pingus/config"
@@ -899,7 +894,7 @@ msgstr "smanji upotrebu procesora, da se ubrza igra na sporim masinama"
 
 #: src/pingus_main.cxx:519
 msgid "Uses the controller given in FILE"
-msgstr ""
+msgstr "Koristi kontroler iz FAJLA"
 
 #: src/pingus_main.cxx:521
 msgid "Debugging and experimental stuff:"
@@ -951,7 +946,7 @@ msgstr "Smanjuje upotrebu procesora koriscenjem sleep()-a"
 
 #: src/pingus_main.cxx:535
 msgid "Demo playing and recording:"
-msgstr ""
+msgstr "Igranje i snimanje demoa"
 
 #: src/pingus_main.cxx:536
 msgid "FILE     "
