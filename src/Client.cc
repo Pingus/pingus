@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.30 2000/06/27 16:05:16 grumbel Exp $
+//  $Id: Client.cc,v 1.31 2000/07/02 07:39:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,7 @@ PingusCounter* Client::pcounter;
 Playfield*     Client::playfield;
 TimeDisplay*   Client::time_display;
 SmallMap*      Client::small_map;
+HurryUp*       Client::hurry_up;
 
 Client::Client(Server* s)
 {
@@ -132,6 +133,7 @@ Client::init_display()
   pcounter     = new PingusCounter();
   small_map    = new SmallMap();
   time_display = new TimeDisplay();
+  hurry_up     = new HurryUp();
   gui_is_init = true;
    
   button_panel->set_server(server);
@@ -160,6 +162,7 @@ Client::init_display()
   obj.push_back(time_display);
   obj.push_back(button_panel);
   obj.push_back(small_map);
+  obj.push_back(hurry_up);
 
   if (verbose) std::cout << "done " << timer.stop() << std::endl;
 }
@@ -176,6 +179,7 @@ Client::deinit_display()
   delete playfield;
   delete small_map;
   delete plf;
+  delete hurry_up;
 }
 
 void
@@ -341,4 +345,5 @@ Client::set_finished()
 }
 
 /* EOF */
+
 

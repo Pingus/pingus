@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.14 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: ColMap.cc,v 1.15 2000/07/02 07:39:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -241,51 +241,37 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, surface_data::Ty
   
   if (provider->get_depth() == 32) 
     {
-      //std::cout << "ColMap: Not a 256 color hotspot! Ignoring the surface." << std::endl;
-      unsigned char* buffer;
-      int w = provider->get_width();
-      int h = provider->get_height();
-      
-      buffer = static_cast<unsigned char*>(provider->get_data());
-      
-      for(int line = 0; line < h; ++line) 
-	{
-	  for (int i = (width * (sur_y + line)) + sur_x, j=w * line;
-	       (i < (width * height)) && ((j - w * line) < w) && (i < (width * (sur_y + line + 1)));
-	       i++, j++)
+      float r, g, b, a;
+      // Rewritting blitter for 32bit depth (using get_pixel())
+      for(int y=0; y < provider->get_height(); y++)
+	for(int x=0; x < provider->get_width(); x++) {
+	  provider->get_pixel(x, y, &r, &g, &b, &a);
+	  
+	  if (a > 0.1)
 	    {
-	      if (j < 0 || j > (w * h))
-		continue;
-	  
-	      if (i < 0 || i > (width * height))
-		continue;
-	  
-	      if (buffer[j]) 
+	      switch (type)
 		{
-		  switch (type) 
-		    {
-		    case surface_data::GROUND:
-		      colmap[i] = WALL;
-		      break;
-		    case surface_data::TRANSPARENT:
-		      // doing nothing
-		      break;
-		    case surface_data::SOLID:
-		      colmap[i] = SOLID | WALL;
-		      break;
-		    case surface_data::BRIDGE:
-		      colmap[i] = BRIDGE;
-		      break;
-		    case surface_data::WATER:
-		      colmap[i] = SOLID | WATER;
-		      break;
-		    case surface_data::LAVA:
-		      colmap[i] = SOLID | LAVA;
-		      break;
-		    case surface_data::NOTHING:
-		      colmap[i] = 0;
-		      break;
-		    }
+		case surface_data::GROUND:
+		  put(x + sur_x, y + sur_y,  (PixelStatus)WALL);
+		  break;
+		case surface_data::TRANSPARENT:
+		  // doing nothing
+		  break;
+		case surface_data::SOLID:
+		  put(x + sur_x, y + sur_y, (PixelStatus)(SOLID | WALL));
+		  break;
+		case surface_data::BRIDGE:
+		  put(x + sur_x, y + sur_y,  (PixelStatus)BRIDGE);
+		  break;
+		case surface_data::WATER:
+		  put(x + sur_x, y + sur_y,  (PixelStatus)(SOLID | WATER));
+		  break;
+		case surface_data::LAVA:
+		  put(x + sur_x, y + sur_y,  (PixelStatus)(SOLID | LAVA));
+		  break;
+		case surface_data::NOTHING:
+		  put(x + sur_x, y + sur_y,  (PixelStatus)0);
+		  break;
 		}
 	    }
 	}

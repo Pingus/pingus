@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.15 2000/06/26 15:32:26 grumbel Exp $
+//  $Id: Client.hh,v 1.16 2000/07/02 07:39:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,12 +32,14 @@
 #include "PingusCounter.hh"
 #include "DemoPlayer.hh"
 #include "SmallMap.hh"
+#include "HurryUp.hh"
 
 ///
 class ClientEvent;
 class Playfield;
 class ButtonPanel;
 class PingusCounter;
+class HurryUp;
 
 class Client
 {
@@ -83,6 +85,8 @@ private:
   static TimeDisplay*   time_display;
   ///
   static SmallMap*      small_map;
+  /// 
+  static HurryUp*       hurry_up;
 
 public:
   ///
@@ -107,6 +111,7 @@ public:
 
   ///
   void play_level(std::string plf_filename, std::string psm_filename = "");
+
 
   ///
   void init_display();
