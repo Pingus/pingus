@@ -1,0 +1,54 @@
+/* This level was created with the PLE
+ * $Id: tutorial2.plf,v 1.1 2000/03/12 02:09:31 grumbel Exp $
+ */
+global {
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "Tutorial 2 - Miners have fun";
+  description = "Use the miner action and dig into
+the ground to reach the exit.
+
+";
+  number_of_pingus = 100;
+  number_to_save = 50;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 1200;
+  height  = 600;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures.dat)"Textures/stars";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+}
+
+buttons {
+  miner = 20;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 510;
+  y_pos = 178;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+exit {
+  image = (resource)"Exits/space";
+  x_pos = 738;
+  y_pos = 392;
+  z_pos = 0;
+}
+
+/* EOF */

@@ -1,0 +1,77 @@
+/* This level was created with the PLE
+ * $Id: tutorial3.plf,v 1.1 2000/03/12 02:09:31 grumbel Exp $
+ */
+global {
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "PLE Level";
+  description = "This level has no name
+
+";
+  number_of_pingus = 10;
+  number_to_save = 5;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 1600;
+  height  = 800;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures.dat)"Textures/crystal";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+}
+
+buttons {
+  basher = 20;
+  blocker = 20;
+  bomber = 20;
+  bridger = 20;
+  climber = 20;
+  digger = 20;
+  floater = 20;
+  jumper = 20;
+  miner = 20;
+}
+
+exit {
+  image = (resource)"Exits/desert";
+  x_pos = 1035;
+  y_pos = 608;
+  z_pos = 0;
+}
+
+entrance {
+  type  = woodthing;
+  x_pos = 403;
+  y_pos = 348;
+  z_pos = 0;
+  release_rate = 100;
+  direction = right;
+}
+
+hotspot {
+  image = (resource)"Entrances/woodthing_nmov";
+  x_pos = 327;
+  y_pos = 213;
+  z_pos = 500;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"Hotspots/tutorial_bridger";
+  x_pos = 400;
+  y_pos = 434;
+  z_pos = 100;
+  speed = -1;
+}
+
+/* EOF */

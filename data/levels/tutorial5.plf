@@ -1,0 +1,61 @@
+/* This level was created with the PLE
+ * $Id: tutorial5.plf,v 1.1 2000/03/12 02:09:31 grumbel Exp $
+ */
+global {
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "PLE Level";
+  description = "This level has no name
+
+";
+  number_of_pingus = 100;
+  number_to_save = 50;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 1200;
+  height  = 600;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures.dat)"Textures/crystal";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+}
+
+buttons {
+  basher = 20;
+  blocker = 20;
+  bomber = 20;
+  bridger = 20;
+  climber = 20;
+  digger = 20;
+  floater = 20;
+  jumper = 20;
+  miner = 20;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 426;
+  y_pos = 143;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+exit {
+  image = (resource)"Exits/space";
+  x_pos = 700;
+  y_pos = 368;
+  z_pos = 0;
+}
+
+/* EOF */
