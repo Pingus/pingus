@@ -1,4 +1,4 @@
-//  $Id: PingusSound.hh,v 1.6 2000/04/20 17:17:15 grumbel Exp $
+//  $Id: PingusMusicProvider.hh,v 1.1 2000/04/20 17:17:15 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,24 +17,25 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef PINGUSSOUND_HH
-#define PINGUSSOUND_HH
+#ifndef PINGUSMUSICPROVIDER_HH
+#define PINGUSMUSICPROVIDER_HH
 
+#include <list>
+#include <string>
 #include <SDL/SDL.h>
 #include <SDL/SDL_mixer.h>
 
-class PingusSound
+class PingusMusicProvider
 {
 private:
-  static bool is_init;
-  static int audio_open;
-  static Mix_Music *music;
+  struct music_pair {
+    Mix_Music* data;
+    string     filename;
+  };
+  static list<music_pair> music;
 public:
-  static void init(int audio_rate, Uint16 audio_format,
-		   int audio_channels, int audio_buffers);
-  static void play(string);
-  static void clean_up();
-  static void keep_alive();  
+  static Mix_Music* load(string);
+  static Mix_Music* get(string);
 };
 
 #endif

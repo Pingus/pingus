@@ -1,4 +1,4 @@
-//  $Id: PingusSound.cc,v 1.5 2000/04/14 17:38:13 grumbel Exp $
+//  $Id: PingusSound.cc,v 1.6 2000/04/20 17:17:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,9 +19,12 @@
 
 #include <string>
 
+#include "globals.hh"
+#include "PingusMusicProvider.hh"
 #include "PingusSound.hh"
 
-int PingusSound::audio_open;
+bool PingusSound::is_init;
+int  PingusSound::audio_open;
 Mix_Music* PingusSound::music;
 
 void
@@ -29,9 +32,14 @@ PingusSound::init(int audio_rate, Uint16 audio_format,
 		  int audio_channels, int audio_buffers)
 {
   music = 0;
+  is_init = true;
 
   printf("Initint music\n");
-
+  printf("Opened audio at %d Hz %d bit %s, %d bytes audio buffer\n", audio_rate,
+	 (audio_format&0xFF),
+	 (audio_channels > 1) ? "stereo" : "mono", 
+	 audio_buffers );
+  
   if ( SDL_Init(SDL_INIT_AUDIO) < 0 ) 
     {
       fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
@@ -61,29 +69,38 @@ PingusSound::init(int audio_rate, Uint16 audio_format,
 void
 PingusSound::clean_up()
 {
-  if( Mix_PlayingMusic() ) 
+  if (is_init)
     {
-      Mix_FadeOutMusic(1500);
-      SDL_Delay(1500);
-    }
+      if( Mix_PlayingMusic() ) 
+	{
+	  Mix_FadeOutMusic(1500);
+	  SDL_Delay(1500);
+	}
   
-  if ( music ) 
-    {
-      Mix_FreeMusic(music);
-      music = NULL;
-    }
+      if ( music ) 
+	{
+	  Mix_FreeMusic(music);
+	  music = NULL;
+	}
   
-  if ( audio_open ) 
-    {
-      Mix_CloseAudio();
-      audio_open = 0;
+      if ( audio_open ) 
+	{
+	  Mix_CloseAudio();
+	  audio_open = 0;
+	}
+      SDL_Quit();
     }
-  SDL_Quit();
 }
 
 void
 PingusSound::play(string filename)
 {
+  if (!is_init)
+    {
+      init(pingus_audio_rate, pingus_audio_format,
+	   pingus_audio_channels, pingus_audio_buffers);
+    }  
+
   if (music)
     {
       Mix_FadeOutMusic(1000);
@@ -91,14 +108,8 @@ PingusSound::play(string filename)
     }
   
   printf("Playing...\n");
-  music = Mix_LoadMUS(filename.c_str());
+  music = PingusMusicProvider::load(filename);
 
-  if ( music == NULL ) 
-    {
-      fprintf(stderr, "Couldn't load %s: %s\n",
-	      filename.c_str(), SDL_GetError());
-      exit(2);
-    } 
   Mix_FadeInMusic(music,-1,2000);
   printf("Playing...now\n");
 }
