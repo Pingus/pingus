@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.4 2002/07/02 13:36:06 torangan Exp $
+//  $Id: bomber.cxx,v 1.5 2002/07/02 21:46:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -111,6 +111,15 @@ Bomber::update(float delta)
     {
       pingu->set_status(PS_DEAD);
     }
+}
+
+void
+Bomber::update_position(float delta)
+{
+  // Apply all forces
+  pingu->velocity = ForcesHolder::apply_forces(pingu->pos, pingu->velocity);
+  // FIXME:
+  pingu->pos += pingu->velocity;
 }
 
 /* EOF */
