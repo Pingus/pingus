@@ -1,4 +1,4 @@
-#  $Id: configure.ac,v 1.10 2003/04/11 01:21:21 grumbel Exp $
+#  $Id: configure.ac,v 1.11 2003/04/13 17:29:06 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,7 +50,7 @@ AC_ARG_WITH(clanGL,
 
 if test "x$with_gettext" != "xno"; then
 	dnl -- gettext macros --
-	ALL_LINGUAS="de" # tr nl it cs"
+	ALL_LINGUAS="de tr cs" # nl it"
 
 	dnl AM_WITH_NLS
 	dnl AM_LC_MESSAGES
