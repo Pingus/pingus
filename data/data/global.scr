@@ -229,6 +229,19 @@ section GroundPieces
         	real23 = ../images/groundpieces/rock/real23.pcx (type=surface, x=0, y=0, width=200, height=81, tcol=0);
 	        real24 = ../images/groundpieces/rock/real24.pcx (type=surface, x=0, y=0, width=138, height=84, tcol=0);
 	        real25 = ../images/groundpieces/rock/real25.pcx (type=surface, x=0, y=0, width=184, height=128, tcol=0);
+	        real26 = ../images/groundpieces/rock/real26.pcx (type=surface, x=0, y=0, width=154, height=95, tcol=0);
+	        real27 = ../images/groundpieces/rock/real27.pcx (type=surface, x=0, y=0, width=180, height=133, tcol=0);
+	        real28 = ../images/groundpieces/rock/real28.pcx (type=surface, x=0, y=0, width=140, height=155, tcol=0);
+	        real29 = ../images/groundpieces/rock/real29.pcx (type=surface, x=0, y=0, width=150, height=89, tcol=0);
+	        real30 = ../images/groundpieces/rock/real30.pcx (type=surface, x=0, y=0, width=171, height=101, tcol=0);
+	        real31 = ../images/groundpieces/rock/real31.pcx (type=surface, x=0, y=0, width=136, height=171, tcol=0);
+	        real32 = ../images/groundpieces/rock/real32.pcx (type=surface, x=0, y=0, width=150, height=171, tcol=0);
+	        real33 = ../images/groundpieces/rock/real33.pcx (type=surface, x=0, y=0, width=170, height=175, tcol=0);
+	        real34 = ../images/groundpieces/rock/real34.pcx (type=surface, x=0, y=0, width=156, height=150, tcol=0);
+
+	        fish = ../images/groundpieces/rock/fish.pcx (type=surface, x=0, y=0, width=166, height=50, tcol=0);
+	        green1 = ../images/groundpieces/rock/green1.pcx (type=surface, x=0, y=0, width=122, height=374, tcol=0);
+	        green2 = ../images/groundpieces/rock/green2.pcx (type=surface, x=0, y=0, width=207, height=191, tcol=0);
 
 	        granit1 = ../images/groundpieces/rock/granit1.pcx (type=surface, x=0, y=0, width=173, height=107, tcol=0);
 	        granit2 = ../images/groundpieces/rock/granit2.pcx (type=surface, x=0, y=0, width=139, height=112, tcol=0);
@@ -360,6 +373,8 @@ section GroundPieces
 		grid2 = ../images/groundpieces/space/grid2.pcx  (type=surface, x=0, y=0, width=51,  height=51, tcol=0); 
 		grid3 = ../images/groundpieces/space/grid3.pcx  (type=surface, x=0, y=0, width=41,  height=41, tcol=0); 
 
+	        diagonal = ../images/groundpieces/space/diagonal.pcx (type=surface, x=0, y=0, width=125, height=68, tcol=0);
+	        diagonalr = ../images/groundpieces/space/diagonalr.pcx (type=surface, x=0, y=0, width=125, height=68, tcol=0);
 		block1 = ../images/groundpieces/space/block1.pcx  (type=surface, x=0, y=0, width=201,  height=61);
 		tower1 = ../images/groundpieces/space/tower1.pcx  (type=surface, x=0, y=0, width=64,  height=166, tcol=0); 
 		smalltower = ../images/groundpieces/space/smalltower.pcx  (type=surface, x=0, y=0, width=6,  height=200); 
