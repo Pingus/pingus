@@ -1,4 +1,4 @@
-//  $Id: root_gui_manager.cxx,v 1.4 2002/07/30 14:57:26 grumbel Exp $
+//  $Id: root_gui_manager.cxx,v 1.5 2002/08/14 12:45:02 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,6 +40,8 @@ RootGUIManager::update (float delta)
   assert (controller);
   //GUIManager::update (delta);
   //process_input (controller->get_events ());
+  
+  if (delta);
 }
 
 /* EOF */

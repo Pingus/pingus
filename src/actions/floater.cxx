@@ -1,4 +1,4 @@
-//  $Id: floater.cxx,v 1.8 2002/07/02 16:06:51 grumbel Exp $
+//  $Id: floater.cxx,v 1.9 2002/08/14 12:45:02 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,7 @@ Floater::draw_offset (int x, int y, float /*s*/)
 }
 
 bool
-Floater::change_allowed (ActionName new_action)
+Floater::change_allowed (ActionName)
 {
   return false;
 }

@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.15 2002/08/09 22:02:13 grumbel Exp $
+//  $Id: client.cxx,v 1.16 2002/08/14 12:45:01 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -152,6 +152,8 @@ Client::update (float delta)
     CL_System::sleep (int(1000 * (wannabe_delta - delta.get ())));
     }
     }*/
+    
+  if(delta);
 }
 
 #if 0

@@ -1,4 +1,4 @@
-//  $Id: story.cxx,v 1.3 2002/08/01 21:40:01 grumbel Exp $
+//  $Id: story.cxx,v 1.4 2002/08/14 12:45:02 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -135,6 +135,8 @@ Story::unhandled_event ()
 bool
 Story::is_at (int x, int y)
 {
+  if(x); if(y);
+
   std::cout << "bla" << std::endl; 
   return true;
 }

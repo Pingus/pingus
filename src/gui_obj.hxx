@@ -1,4 +1,4 @@
-//  $Id: gui_obj.hxx,v 1.3 2002/07/29 10:44:12 grumbel Exp $
+//  $Id: gui_obj.hxx,v 1.4 2002/08/14 12:45:02 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ public:
   virtual void draw_clipped();
 
   /** Return true if the mouse is over this GUI component */
-  virtual bool mouse_over (int x, int y) { return false; }
+  virtual bool mouse_over (int x, int y) { if(x); if(y); return false; }
 
   /// Draw the gui element
   virtual void draw() = 0;

@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.14 2002/08/12 22:52:04 grumbel Exp $
+//  $Id: playfield.cxx,v 1.15 2002/08/14 12:45:02 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -223,6 +223,8 @@ void
 Playfield::on_secondary_button_release (int x, int y)
 {
   mouse_scrolling = false;
+  
+  if(x); if(y);
 }
 
 void

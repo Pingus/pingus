@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.7 2002/08/04 15:42:23 grumbel Exp $
+//  $Id: surface_button.cxx,v 1.8 2002/08/14 12:45:02 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -114,6 +114,7 @@ SurfaceButton::draw()
 void
 SurfaceButton::update (float delta)
 {    
+  if(delta);
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.23 2002/08/12 22:52:04 grumbel Exp $
+//  $Id: editor.cxx,v 1.24 2002/08/14 12:45:02 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -133,7 +133,7 @@ Editor::on_shutdown ()
 }
 
 void
-Editor::update (const GameDelta& delta)
+Editor::update (const GameDelta&)
 {
   // FIXME: This should be moved to the object manager
   if (tmp_selection != selection->get_objects ())

@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.8 2002/08/03 12:00:58 grumbel Exp $
+//  $Id: action_button.cxx,v 1.9 2002/08/14 12:45:01 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -238,7 +238,7 @@ ArmageddonButton::is_at(int x, int y)
 void
 ArmageddonButton::on_primary_button_click (int x, int y)
 {
-  if  (pressed)
+  if (pressed)
     {
       server->set_armageddon();
     }
@@ -246,6 +246,8 @@ ArmageddonButton::on_primary_button_click (int x, int y)
     {
       pressed = true;
     }
+    
+  if(x); if(y);
 }
 
 ForwardButton::ForwardButton(Server* s, int x, int y) 
@@ -290,6 +292,8 @@ void
 ForwardButton::on_primary_button_click (int x, int y)
 {
   server->set_fast_forward(!server->get_fast_forward());
+  
+  if(x); if(y);
 }
 
 PauseButton::PauseButton(Server* s, int x, int y) 
@@ -330,6 +334,8 @@ void
 PauseButton::on_primary_button_click (int x, int y)
 {
   server->set_pause(!server->get_pause ());
+  
+  if(x); if(y);
 }
 
 /* EOF */

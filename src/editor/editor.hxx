@@ -1,4 +1,4 @@
-//  $Id: editor.hxx,v 1.11 2002/08/04 20:27:22 grumbel Exp $
+//  $Id: editor.hxx,v 1.12 2002/08/14 12:45:02 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -98,7 +98,7 @@ private:
 
   Editor ();
 public:
-  ~Editor ();
+  virtual ~Editor ();
   
   static Editor* instance ();
 

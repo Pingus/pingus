@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.9 2002/08/02 22:55:19 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.10 2002/08/14 12:45:02 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -255,6 +255,8 @@ void
 SmallMap::on_primary_button_release(int x, int y)
 {
   scroll_mode = false;
+  
+  if(x); if(y);
 }
 
 void

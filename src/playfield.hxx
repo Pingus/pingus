@@ -1,4 +1,4 @@
-//  $Id: playfield.hxx,v 1.8 2002/08/02 22:55:19 grumbel Exp $
+//  $Id: playfield.hxx,v 1.9 2002/08/14 12:45:02 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -103,7 +103,7 @@ public:
   void set_server(Server*);
   void set_client(Client*);
 
-  bool is_at (int x, int y) { return true; }
+  bool is_at (int x, int y) { if(x); if(y); return true; }
 };
 
 #endif

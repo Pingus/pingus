@@ -1,4 +1,4 @@
-//  $Id: gui_manager.hxx,v 1.6 2002/08/02 22:55:19 grumbel Exp $
+//  $Id: gui_manager.hxx,v 1.7 2002/08/14 12:45:02 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,7 +66,7 @@ namespace GUI
     
     virtual void draw ();
     virtual void update (const GameDelta& delta);
-    virtual void update (float delta) {}
+    virtual void update (float delta) { if(delta); }
 
     /** Called once an unhandled event is recieved */
     virtual void unhandled_event ();
