@@ -1,4 +1,4 @@
-//  $Id: generic_main.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: generic_main.cxx,v 1.2 2002/06/28 22:21:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include <ClanLib/Core/System/setupcore.h>
 #include <ClanLib/jpeg.h>
 #include <ClanLib/png.h>
+#include <ClanLib/gui.h>
 
 #include "system.hxx"
 #include "pingus_main.hxx"
@@ -65,6 +66,7 @@ GenericMain::main(int argc, char** argv)
   CL_SetupCore::init ();
   CL_SetupPNG::init ();
   CL_SetupJPEG::init ();
+  CL_SetupGUI::init ();
 
   std::cout << std::string(_("Starting Pingus ")) + VERSION  << std::endl;
   std::cout << _("Build:") << __TIME__ << " " << __DATE__ << std::endl;
@@ -88,6 +90,7 @@ GenericMain::main(int argc, char** argv)
 
   ret_value = main_obj->main(argc, argv);
 
+  CL_SetupGUI::deinit ();
   CL_SetupPNG::deinit();
   CL_SetupJPEG::deinit();
   CL_SetupCore::deinit();

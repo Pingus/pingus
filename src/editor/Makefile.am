@@ -20,6 +20,7 @@ noinst_LIBRARIES = libpingus_editor.a
 EXTRA_DIST = EditorObjGroupData.hh EditorObjGroupData.cc
 
 libpingus_editor_a_SOURCES = \
+action_window.cxx action_window.hxx \
 editor.hxx		    object_manager.hxx	  start_pos.hxx \
 editor_event.hxx	    object_selector.hxx   status_line.hxx \
 editor_groundpiece_obj.hxx  panel.hxx		  string_reader.hxx \

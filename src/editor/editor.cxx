@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.6 2002/06/25 14:54:01 grumbel Exp $
+//  $Id: editor.cxx,v 1.7 2002/06/28 22:21:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include <cstdio>
 #include <string>
+
+#include <ClanLib/gui.h>
 
 #include <ClanLib/Core/System/system.h>
 #include <ClanLib/Core/Math/rect.h>
@@ -43,6 +45,7 @@
 #include "status_line.hxx"
 #include "object_selector.hxx"
 #include "object_manager.hxx"
+#include "action_window.hxx"
 
 Editor* Editor::instance_ = 0;
 
@@ -140,6 +143,16 @@ Editor::edit ()
 
   register_event_handler();
 
+  CL_StyleManager_Default* style_manager;
+  CL_GUIManager* gui;
+
+  CL_ResourceManager gui_resources("../data/data/gui.scr", false);
+  
+  style_manager = new CL_StyleManager_Default (&gui_resources);
+  gui   = new CL_GUIManager (style_manager);
+
+  ActionWindow window (gui, object_manager->get_actions ());
+
   while (!quit) 
     {
       // FIXME: This busy loop should be replaced by redraw events
@@ -147,6 +160,7 @@ Editor::edit ()
       CL_System::keep_alive();
       move_objects();
       draw();
+      gui->show ();
       Display::flip_display(true);
     }
 

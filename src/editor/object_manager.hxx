@@ -1,4 +1,4 @@
-//  $Id: object_manager.hxx,v 1.4 2002/06/24 23:31:24 grumbel Exp $
+//  $Id: object_manager.hxx,v 1.5 2002/06/28 22:21:59 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -124,6 +124,8 @@ public:
 
   /** Add the object at the given position to the selection */
   boost::shared_ptr<EditorObj> select_object(const CL_Vector & pos);
+
+  std::vector<ActionData>* get_actions ();
 };
 
 #endif

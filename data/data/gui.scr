@@ -1,0 +1,121 @@
+section Window
+{
+	font = ../images/gui/fonts/font_black.tga(
+		type=font,
+		trans_limit=0.05,
+		x=0, y=0,
+		subtract_width=0,
+		spacelen=4,
+		letters="!'#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_'abcdefghijklmnopqrstuvwxyz{|}~");
+
+	font_disabled = ../images/gui/fonts/font_gray.tga(
+		type=font,
+		trans_limit=0.05,
+		x=0, y=0,
+		subtract_width=0,
+		spacelen=4,
+		letters="!'#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_'abcdefghijklmnopqrstuvwxyz{|}~");
+}
+
+section Button
+{
+	font = ../images/gui/fonts/font_black.tga(
+		type=font,
+		trans_limit=0.05,
+		x=0, y=0,
+		subtract_width=0,
+		spacelen=4,
+		letters="!'#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_'abcdefghijklmnopqrstuvwxyz{|}~");
+
+	font_disabled = ../images/gui/fonts/font_gray.tga(
+		type=font,
+		trans_limit=0.05,
+		x=0, y=0,
+		subtract_width=0,
+		spacelen=4,
+		letters="!'#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_'abcdefghijklmnopqrstuvwxyz{|}~");
+}
+
+section InputBox
+{
+	font = ../images/gui/fonts/font_black.tga(
+		type=font,
+		trans_limit=0.05,
+		x=0, y=0,
+		subtract_width=0,
+		spacelen=4,
+		letters="!'#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_'abcdefghijklmnopqrstuvwxyz{|}~");
+
+	font_disabled = ../images/gui/fonts/font_gray.tga(
+		type=font,
+		trans_limit=0.05,
+		x=0, y=0,
+		subtract_width=0,
+		spacelen=4,
+		letters="!'#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_'abcdefghijklmnopqrstuvwxyz{|}~");
+}
+
+section Label
+{
+	font = ../images/gui/fonts/font_black.tga(
+		type=font,
+		trans_limit=0.05,
+		x=0, y=0,
+		subtract_width=0,
+		spacelen=4,
+		letters="!'#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_'abcdefghijklmnopqrstuvwxyz{|}~");
+}
+
+section ListBox
+{
+	font = ../images/gui/fonts/font_black.tga(
+		type=font,
+		trans_limit=0.05,
+		x=0, y=0,
+		subtract_width=0,
+		spacelen=4,
+		letters="!'#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_'abcdefghijklmnopqrstuvwxyz{|}~");
+}
+
+section CheckBox
+{
+	font = ../images/gui/fonts/font_black.tga(
+		type=font,
+		trans_limit=0.05,
+		x=0, y=0,
+		subtract_width=0,
+		spacelen=4,
+		letters="!'#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_'abcdefghijklmnopqrstuvwxyz{|}~");
+
+	sur_checked = ../images/gui/checkbox/checked.tga (type=surface);
+	sur_unchecked = ../images/gui/checkbox/unchecked.tga (type=surface);
+	sur_checked_disabled = ../images/gui/checkbox/checked_disabled.tga (type=surface);
+	sur_unchecked_disabled = ../images/gui/checkbox/unchecked_disabled.tga (type=surface);
+}
+
+section RadioButton
+{
+	font = ../images/gui/fonts/font_black.tga(
+		type=font,
+		trans_limit=0.05,
+		x=0, y=0,
+		subtract_width=0,
+		spacelen=4,
+		letters="!'#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_'abcdefghijklmnopqrstuvwxyz{|}~");
+
+	sur_checked = ../images/gui/radiobutton/checked.tga (type=surface);
+	sur_unchecked = ../images/gui/radiobutton/unchecked.tga (type=surface);
+	sur_checked_disabled = ../images/gui/radiobutton/checked_disabled.tga (type=surface);
+	sur_unchecked_disabled = ../images/gui/radiobutton/unchecked_disabled.tga (type=surface);
+}
+
+section TreeViewItem
+{
+	font = ../images/gui/fonts/font_black.tga(
+		type=font,
+		trans_limit=0.05,
+		x=0, y=0,
+		subtract_width=0,
+		spacelen=4,
+		letters="!'#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_'abcdefghijklmnopqrstuvwxyz{|}~");
+}

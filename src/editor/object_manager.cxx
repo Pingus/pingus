@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.10 2002/06/28 17:03:38 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.11 2002/06/28 22:21:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -523,6 +523,12 @@ ObjectManager::add_object_group_from_file (const std::string& filename)
     {
       std::cout << "ObjectManager::add_object_group_from_file: read error: " << filename << std::endl;
     }
+}
+
+std::vector<ActionData>*
+ObjectManager::get_actions ()
+{
+  return &actions;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.62 2002/06/18 21:17:16 grumbel Exp $
+#  $Id: configure.in,v 1.63 2002/06/28 22:21:58 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -273,6 +273,15 @@ AC_CHECK_LIB( clanJPEG,   main,, [
 
 AC_CHECK_LIB( clanPNG,   main,, [
 	echo "ClanLib is installed, but clanPNG was not found. You probably"
+	echo "forgot to compile clanPNG, which is part of the ClanLib package"
+	echo "or you need to run 'ldconfig'."
+	echo "If you think you have everything correctly installed have a look at"
+	echo "the file 'config.log' to see what went wrong"
+	exit
+	])
+
+AC_CHECK_LIB( clanGUI,   main,, [
+	echo "ClanLib is installed, but clanGUI was not found. You probably"
 	echo "forgot to compile clanPNG, which is part of the ClanLib package"
 	echo "or you need to run 'ldconfig'."
 	echo "If you think you have everything correctly installed have a look at"
