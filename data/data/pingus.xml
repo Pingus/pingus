@@ -329,7 +329,7 @@
     <section name="exit">
       <sprite name="left">
         <animation speed="60" loop="no" />
-        <translation origin="bottom_center" x="0" y="2"/>
+        <translation origin="bottom_center" x="-2" y="2"/>
         <image file="../images/pingus/exit.png">
           <grid pos="0,0" size="32,32" array="9,1"/>
         </image>
@@ -346,6 +346,7 @@
 
     <section name="drownfall">
       <sprite name="left">
+        <animation speed="60" loop="no" />
         <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/drownfall.png">
           <grid pos="0,0" size="32,32" array="15,1"/>
@@ -353,6 +354,7 @@
       </sprite>
 
       <sprite name="right">
+        <animation speed="60" loop="no" />
         <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/drownfall.png">
           <grid pos="0,32" size="32,32" array="15,1"/>
@@ -362,11 +364,13 @@
 
     <section name="drownwalk">
       <sprite name="left">
+        <animation speed="60" loop="no" />
         <image file="../images/pingus/drownwalk.png">
           <grid pos="0,0" size="32,32" array="15,1"/>
         </image>
       </sprite>
       <sprite name="right">
+        <animation speed="60" loop="no" />
         <image file="../images/pingus/drownwalk.png">
           <grid pos="0,32" size="32,32" array="15,1"/>
         </image>
