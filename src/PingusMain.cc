@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.38 2001/11/18 12:43:19 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.39 2001/11/18 23:21:33 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -73,10 +73,7 @@
 #include "PingusSound.hh"
 #include "PingusSoundDummy.hh"
 
-//#ifdef HAVE_LIBSDL_MIXER
 #  include "PingusSoundReal.hh"
-//#endif
-
 
 void
 segfault_handler(int signo)
@@ -226,6 +223,7 @@ PingusMain::check_args(int argc, char* argv[])
     {"audio-channels",   required_argument, 0, 140},
     {"audio-buffers",    required_argument, 0, 141},
 #endif
+
     // 
     {"no-cfg-file",    no_argument,       0, 142},
     {"tile-size",      required_argument, 0, 144},
@@ -319,11 +317,6 @@ PingusMain::check_args(int argc, char* argv[])
       break;
     case 'V':
       std::cout << "Pingus Version " << VERSION 
-#ifdef HAVE_LIBSDL_MIXER
-		<< _(" (with sound support)")
-#else
-		<< _(" (without sound support)")
-#endif
 		<< std::endl;
       
       std::cout << _("\n\
@@ -736,15 +729,7 @@ PingusMain::init_clanlib()
       if (verbose)
 	std::cout << "Init Sound" << std::endl;
 
-      PingusSound::init (new PingusSoundReal ());
-      
-      /*#ifdef HAVE_LIBSDL_MIXER
-      PingusSound::init (new PingusSoundReal ());
-      //PingusSound::init (new PingusSoundDummy ());
-#else
-      std::cout << "Sound enabled, but not supported by binary." << std::endl;
-      PingusSound::init (new PingusSoundDummy ());
-      #endif*/
+      PingusSound::init (new PingusSoundReal ());       
     }
   else
     {

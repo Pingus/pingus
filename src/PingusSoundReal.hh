@@ -1,4 +1,4 @@
-//  $Id: PingusSoundReal.hh,v 1.8 2001/11/18 12:43:19 grumbel Exp $
+//  $Id: PingusSoundReal.hh,v 1.9 2001/11/18 23:21:33 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ private:
   CL_SoundBuffer_Session * music;
 
   /// Stores all Sound Effects
-  std::map<std::string, CL_SoundBuffer_Session> sounds;
+  std::map<std::string, CL_SoundBuffer_Session *> sounds;
 
   /// Init ClanSound and ClanMikMod
   void init();
