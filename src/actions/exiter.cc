@@ -1,4 +1,4 @@
-//  $Id: exiter.cc,v 1.13 2001/04/20 20:53:55 grumbel Exp $
+//  $Id: exiter.cc,v 1.14 2001/07/27 15:00:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,18 +38,25 @@ Exiter::init(void)
   action_name = "Exiter";
   
   sprite = Sprite ("Pingus/exit0", "pingus");
+  sprite.set_align_center_bottom ();
 }
 
 void
 Exiter::update(float delta)
 {
+  sprite.update (delta);
+
   if (pingu->get_status() != exited)
     {
       PingusSound::play_wav("oing");
       pingu->set_status(exited); 
-      active = true;
-      //FIXME: Do we need is_finished = true here?
     }
+}
+
+void 
+Exiter::draw_offset(int x, int y, float s)
+{
+  sprite.put_screen (pingu->pos + CL_Vector (x, y));
 }
 
 /* EOF */

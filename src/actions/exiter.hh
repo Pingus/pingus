@@ -1,4 +1,4 @@
-//  $Id: exiter.hh,v 1.7 2001/04/20 20:53:55 grumbel Exp $
+//  $Id: exiter.hh,v 1.8 2001/07/27 15:00:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,8 +42,8 @@ public:
   std::string name() { return "Exiter"; }///
 ;
   ///
-  void   update(float delta);
-
+  void update(float delta);
+  void draw_offset(int x, int y, float s);
 };
 
 REGISTER_PINGUACTION(ExiterFactory, Exiter, "exiter");

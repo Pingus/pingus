@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.33 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: Client.hh,v 1.34 2001/07/27 15:00:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -100,6 +100,7 @@ private:
   CL_Slot slot_right_released;
   CL_Slot slot_abort_pressed;
   CL_Slot slot_pause_pressed;
+  CL_Slot slot_fast_forward_pressed;
   CL_Slot slot_scroll_left_pressed;
   CL_Slot slot_scroll_right_pressed;
   CL_Slot slot_next_action_pressed;
@@ -119,8 +120,8 @@ public:
   ///
   boost::shared_ptr<Playfield> get_playfield() { return playfield; }
 
-  ///
-  void start();
+  /** Display the game and enter the main game loop */
+  void display();
   ///
   void send_next_event();
 
@@ -184,6 +185,7 @@ public:
   void on_right_released (const CL_Vector& pos);
   void on_abort_pressed (const CL_Vector& pos);
   void on_pause_pressed (const CL_Vector& pos);
+  void on_fast_forward_pressed (const CL_Vector& pos);
   void on_scroll_left_pressed (const CL_Vector& pos);
   void on_scroll_right_pressed (const CL_Vector& pos);
   void on_next_action_pressed (const CL_Vector& pos);

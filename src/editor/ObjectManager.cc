@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.44 2001/07/22 12:47:00 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.45 2001/07/27 15:00:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -256,7 +256,7 @@ ObjectManager::save_level (string filename)
 
   // FIXME: we need some error checking 
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.44 2001/07/22 12:47:00 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.45 2001/07/27 15:00:48 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   
@@ -531,7 +531,7 @@ ObjectManager::select_object(CL_Vector pos)
 }
 
 void
-ObjectManager::move_current_objs(int x, int y)
+ObjectManager::move_current_objs(float x, float y)
 {
   for (CurrentObjIter i = current_objs.begin(); i != current_objs.end(); i++) 
     {

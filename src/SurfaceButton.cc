@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.29 2001/07/25 19:49:48 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.30 2001/07/27 15:00:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include "globals.hh"
 #include "PingusResource.hh"
 #include "Loading.hh"
-#include "PingusGame.hh"
 #include "OptionMenu.hh"
 #include "System.hh"
 #include "PingusMenuManager.hh"
@@ -318,7 +317,7 @@ EditorButton::on_click()
   menu->get_manager ()->enable_events ();
 }
 
-ThemeButton::ThemeButton(PingusMenu* menu)
+StoryButton::StoryButton (PingusMenu* menu)
   : menu (menu)
 {
   // x_pos = CL_Display::get_width() * 150 / 640; 
@@ -339,8 +338,27 @@ ThemeButton::ThemeButton(PingusMenu* menu)
   surface_p = PingusResource::load_surface("menu/play_on", "core");     
 }
 
-ThemeButton::~ThemeButton()
+StoryButton::~StoryButton() {}
+
+void 
+StoryButton::on_click()
 {
+  PingusSound::play_wav ("letsgo");
+  
+  menu->get_manager ()->set_menu (&menu->get_manager ()->story);
+  //worldmap_manager.display();
+}
+
+ThemeButton::ThemeButton ()
+{
+  x_pos = CL_Display::get_width() * 321 / 640; 
+  y_pos = CL_Display::get_height() * 100 / 480;
+
+  desc = _("..:: Start a contrib level ::..");
+
+  line1 = _("Contrib");
+  surface   = PingusResource::load_surface("menu/ice_off", "core");
+  surface_p = PingusResource::load_surface("menu/play_on", "core");
 }
 
 void

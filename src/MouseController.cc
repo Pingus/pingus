@@ -1,4 +1,4 @@
-//  $Id: MouseController.cc,v 1.7 2001/04/15 22:54:49 grumbel Exp $
+//  $Id: MouseController.cc,v 1.8 2001/07/27 15:00:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,18 @@ class PauseMouseButton : public ControllerButton
 {
 public:
   PauseMouseButton (Controller* c) : ControllerButton (c) {};
-  bool is_pressed () { return (CL_Keyboard::get_keycode (CL_KEY_P) | CL_Keyboard::get_keycode (CL_KEY_PAUSE)); }
+  bool is_pressed () { 
+    return (CL_Keyboard::get_keycode (CL_KEY_P) || CL_Keyboard::get_keycode (CL_KEY_PAUSE)); 
+  }
+};
+
+class FastForwardMouseButton : public ControllerButton
+{
+public:
+  FastForwardMouseButton (Controller* c) : ControllerButton (c) {};
+  bool is_pressed () { 
+    return (CL_Keyboard::get_keycode (CL_KEY_SPACE) || CL_Keyboard::get_keycode (CL_KEY_F)); 
+  }
 };
 
 class ScrollLeftButton : public ControllerButton
@@ -94,6 +105,7 @@ MouseController::MouseController (int arg_owner_id)
   right        = boost::shared_ptr<ControllerButton> (new RightMouseButton (this));
   abort        = boost::shared_ptr<ControllerButton> (new AbortMouseButton (this));
   pause        = boost::shared_ptr<ControllerButton> (new PauseMouseButton (this));
+  fast_forward = boost::shared_ptr<ControllerButton> (new FastForwardMouseButton (this));
   scroll_left  = boost::shared_ptr<ControllerButton> (new ScrollLeftButton (this));
   scroll_right = boost::shared_ptr<ControllerButton> (new ScrollRightButton(this));
   scroll_up    = boost::shared_ptr<ControllerButton> (new ScrollUpButton (this));

@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.61 2001/07/22 21:17:57 grumbel Exp $
+//  $Id: Client.cc,v 1.62 2001/07/27 15:00:47 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,7 +75,7 @@ Client::~Client()
 }
 
 void
-Client::start()
+Client::display()
 {
   fast_forward = false;
   pause = false;
@@ -306,19 +306,15 @@ void
 Client::register_event_handler()
 {
   if (verbose > 1) std::cout << "Client: register_event_handler()" << std::endl;
-  //CL_Input::chain_button_press.push_back(this);
-  //CL_Input::chain_button_release.push_back(this);
-
-  //on_button_press_slot = CL_Input::sig_button_press.connect (CL_CreateSlot(this, &Client::on_button_press));
-  //on_button_release_slot = CL_Input::sig_button_release.connect (CL_CreateSlot(this, &Client::on_button_release));
 
   slot_left_pressed   = controller->left->signal_pressed.connect (CL_CreateSlot (this, &Client::on_left_pressed));
-  slot_left_released   = controller->left->signal_released.connect (CL_CreateSlot (this, &Client::on_left_released));
+  slot_left_released  = controller->left->signal_released.connect (CL_CreateSlot (this, &Client::on_left_released));
   slot_middle_pressed = controller->middle->signal_pressed.connect (CL_CreateSlot (this, &Client::on_middle_pressed));
   slot_right_pressed  = controller->right->signal_pressed.connect (CL_CreateSlot (this, &Client::on_right_pressed));
-  slot_right_released  = controller->right->signal_released.connect (CL_CreateSlot (this, &Client::on_right_released));
+  slot_right_released = controller->right->signal_released.connect (CL_CreateSlot (this, &Client::on_right_released));
   slot_abort_pressed  = controller->abort->signal_pressed.connect (CL_CreateSlot (this, &Client::on_abort_pressed));
   slot_pause_pressed  = controller->pause->signal_pressed.connect (CL_CreateSlot (this, &Client::on_pause_pressed));
+  slot_fast_forward_pressed = controller->fast_forward->signal_pressed.connect (CL_CreateSlot (this, &Client::on_fast_forward_pressed));
   slot_scroll_left_pressed  = controller->scroll_left->signal_pressed.connect (CL_CreateSlot (this, &Client::on_scroll_left_pressed));
   slot_scroll_right_pressed = controller->scroll_right->signal_pressed.connect (CL_CreateSlot (this, &Client::on_scroll_right_pressed));
 
@@ -360,6 +356,8 @@ Client::on_button_press(CL_InputDevice *device, const CL_Key &key)
   if (!enabled)
     return;
   
+  std::cout << "Got button press: " << enabled << std::endl;
+
   if (device == CL_Input::keyboards[0])
     {
       on_keyboard_button_press(key);
@@ -411,6 +409,7 @@ Client::on_keyboard_button_press(const CL_Key& key)
 void
 Client::on_keyboard_button_release(const CL_Key& key)
 {
+  std::cout << "Keyboard pressed: " << key.id << std::endl;
   switch (key.id)
     {
     case CL_KEY_O:
@@ -602,6 +601,12 @@ void
 Client:: on_pause_pressed (const CL_Vector& pos)
 {
   set_pause (!get_pause ());
+}
+
+void 
+Client::on_fast_forward_pressed (const CL_Vector& pos)
+{
+  set_fast_forward(!get_fast_forward());
 }
 
 void

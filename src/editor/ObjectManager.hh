@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.hh,v 1.16 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: ObjectManager.hh,v 1.17 2001/07/27 15:00:48 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -126,7 +126,7 @@ public:
   boost::shared_ptr<EditorObj> get_current_obj();
   
   ///
-  void move_current_objs(int x, int y);
+  void move_current_objs(float x, float y);
   ///
   void add_to_selection(boost::shared_ptr<EditorObj> obj);
   ///

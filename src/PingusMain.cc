@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.32 2001/07/23 09:20:02 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.33 2001/07/27 15:00:47 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -55,8 +55,6 @@
 #include "globals.hh"
 #include "PingusResource.hh"
 #include "System.hh"
-#include "PingusGame.hh"
-//#include "Playfield.hh"
 #include "PingusError.hh"
 #include "Loading.hh"
 #include "Display.hh"
@@ -66,6 +64,7 @@
 #include "FPSCounter.hh"
 #include "PingusMessageBox.hh"
 #include "audio.hh"
+#include "PingusGameSession.hh"
 
 #include "PingusMenuManager.hh"
 //#include "Story.hh"
@@ -773,18 +772,25 @@ PingusMain::start_game(void)
 
   if (!levelfile.empty ())
     {
-      PingusGame game;
-      
-      if (System::exist(levelfile))
-	game.start_game(levelfile);
-      else if (System::exist(levelfile + ".xml"))
-	game.start_game(levelfile + ".xml");
-      else if (System::exist("levels/" + levelfile + ".xml"))
-	game.start_game("levels/" + levelfile);
-      else
+      bool successfull = true;
+      if (!System::exist(levelfile))
 	{
-	  std::cout << _("PingusMain: Levelfile not found, ignoring: ") << levelfile << std::endl;
+	  if (System::exist(levelfile + ".xml"))
+	    levelfile += ".xml";
+	  else if (System::exist("levels/" + levelfile + ".xml"))
+	    levelfile = "levels/" + levelfile + ".xml";
+	  else
+	    {
+	      std::cout << _("PingusMain: Levelfile not found, ignoring: ") << levelfile << std::endl;
+	      successfull = false;
+	    }
 	}
+      if (successfull)
+	{
+	  PingusGameSession game (levelfile);
+	  game.start ();
+	}
+      
     }
 
   try {

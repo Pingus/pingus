@@ -1,4 +1,4 @@
-//  $Id: Controller.hh,v 1.9 2001/04/21 14:40:22 grumbel Exp $
+//  $Id: Controller.hh,v 1.10 2001/07/27 15:00:47 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -119,11 +119,18 @@ public:
   /// Called once each CL_System::keep_alive () call
   virtual void keep_alive ();
 
+  /// Primary button, used to apply actions and press buttons
   boost::shared_ptr<ControllerButton> left;
+
+  /// Currently not used
   boost::shared_ptr<ControllerButton> middle;
+  
+  /// Button used for scrolling
   boost::shared_ptr<ControllerButton> right;
+
   boost::shared_ptr<ControllerButton> abort;
   boost::shared_ptr<ControllerButton> pause;
+  boost::shared_ptr<ControllerButton> fast_forward;
   boost::shared_ptr<ControllerButton> scroll_left;
   boost::shared_ptr<ControllerButton> scroll_right;
   boost::shared_ptr<ControllerButton> scroll_up;

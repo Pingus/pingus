@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.63 2001/06/16 15:01:53 grumbel Exp $
+#  $Id: Makefile.am,v 1.64 2001/07/27 15:00:47 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,6 +43,10 @@ EXTRA_DIST = README \
              win32/Getopt.h  \
              win32/Getopt1.c \
              win32/config.h  \
+             boost/config.hpp \
+             boost/dummy_ptr.hpp \
+             boost/smart_ptr.hpp \
+             boost/utility.hpp   \
              make_docs.sh
 
 bin_PROGRAMS = pingus
@@ -104,8 +108,7 @@ pingus_SOURCES = \
                  DemoRecorder.cc      DemoRecorder.hh      \
                  DemoPlayer.cc        DemoPlayer.hh        \
                  PingusError.cc       PingusError.hh       \
-                 PingusGame.cc        PingusGame.hh        \
-                 PingusLevelDesc.cc   PingusLevelDesc.hh   \
+	         PingusLevelDesc.cc   PingusLevelDesc.hh   \
                  PingusLevelResult.cc PingusLevelResult.hh \
                  PingusMenu.cc        PingusMenu.hh        \
                  PingusMessageBox.cc  PingusMessageBox.hh  \
@@ -187,8 +190,11 @@ pingus_SOURCES = \
                  PingusSubMenu.cc    PingusSubMenu.hh \
                  ExitMenu.hh         ExitMenu.cc \
                  MenuBackground.hh   MenuBackground.cc \
-                 PathManager.cc      PathManager.hh
+                 PathManager.cc      PathManager.hh \
+                 GroundpieceData.hh \
+                 my_gettext.hh
 
-#                 PinguRandomMap.cc    PinguRandomMap.hh    
+#                PinguRandomMap.cc    PinguRandomMap.hh    
+#                PingusGame.cc        PingusGame.hh        \
 
 ## EOF ##

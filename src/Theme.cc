@@ -1,4 +1,4 @@
- //  $Id: Theme.cc,v 1.26 2001/07/25 19:49:48 grumbel Exp $
+ //  $Id: Theme.cc,v 1.27 2001/07/27 15:00:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include "System.hh"
 #include "PingusResource.hh"
 #include "PingusError.hh"
-#include "PingusGame.hh"
+#include "PingusGameSession.hh"
 #include "PingusMessageBox.hh"
 #include "algo.hh"
 #include "globals.hh"
@@ -245,13 +245,12 @@ void
 Theme::play()
 {
   preload ();
-
-  PingusGame game;
-  std::ofstream out;
-      
+     
   try 
     {
-      game.start_game(path_manager.complete("levels/" + plt.get_levels()[current_level]));
+      PingusGameSession game(path_manager.complete("levels/" + plt.get_levels()[current_level]));
+  
+      game.start();
 
       if (current_level == accessible_levels)
 	++accessible_levels;
@@ -259,7 +258,7 @@ Theme::play()
       if ((unsigned int)(accessible_levels) >= levels.size())
 	accessible_levels = levels.size() - 1;
       
-      out.open(status_file.c_str());
+      std::ofstream out (status_file.c_str());
       out << accessible_levels;
       out.close();
     }

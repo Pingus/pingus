@@ -1,4 +1,4 @@
-//  $Id: PinguAction.cc,v 1.15 2001/07/24 21:39:45 grumbel Exp $
+//  $Id: PinguAction.cc,v 1.16 2001/07/27 15:00:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -136,12 +136,6 @@ const std::string&
 PinguAction::name()
 {
   return action_name;
-}
-
-bool
-PinguAction::is_active(void)
-{
-  return active;
 }
 
 int

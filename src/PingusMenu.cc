@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.48 2001/06/16 15:01:53 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.49 2001/07/27 15:00:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 
 #include "globals.hh"
 #include "AlphaButton.hh"
-#include "PingusGame.hh"
 #include "Credits.hh"
 // #include "FileSelector.hh"
 #include "PingusResource.hh"
@@ -58,7 +57,8 @@ PingusMenu::preload ()
       buttons.push_back(boost::shared_ptr<SurfaceButton>(new PlayButton ()));
       buttons.push_back(boost::shared_ptr<SurfaceButton>(new QuitButton (this)));
       buttons.push_back(boost::shared_ptr<SurfaceButton>(new MultiplayerButton ()));
-      buttons.push_back(boost::shared_ptr<SurfaceButton>(new ThemeButton (this)));
+      buttons.push_back(boost::shared_ptr<SurfaceButton>(new ThemeButton ()));
+      buttons.push_back(boost::shared_ptr<SurfaceButton>(new StoryButton (this)));
       buttons.push_back(editor_button);
     }
 }

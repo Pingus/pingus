@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.18 2001/06/11 20:40:16 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.19 2001/07/27 15:00:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,9 +60,6 @@ protected:
   /// The name of the action, needs to be set in PinguAction::init().
   std::string action_name;
 
-  /// See is_active()
-  bool        active;  
-
 public:
   /** Indicate if the action should be canceled at the next possible
       point. Bug: Only keeped public for lazyness. */
@@ -80,10 +77,6 @@ public:
   /// Get the pixel from the colmap, relative to the pingu position. 
   int  rel_getpixel(int x, int y);
 
-  /** True if the action was used the last update()
-      FIXME: Where is this used?! */
-  bool is_active(void);
-  
   /** Returns the enviroment, used to check if an action can be
       applied. */
   PinguEnvironment get_environment();

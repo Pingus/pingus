@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.47 2001/07/22 21:17:58 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.48 2001/07/27 15:00:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include <vector>
 
 #include "../globals.hh"
-#include "../PingusGame.hh"
+#include "../PingusGameSession.hh"
 #include "../PingusMessageBox.hh"
 #include "../globals.hh"
 #include "../System.hh"
@@ -465,12 +465,12 @@ EditorEvent::editor_start_current_level()
   loading_screen.draw();
 
   try {
-    PingusGame game;
     std::string levelfile = editor->save_tmp_level();
+    PingusGameSession game (levelfile);
     /*
       game.start_game(levelfile + ".plf",
       levelfile + ".psm");*/
-    game.start_game(levelfile);
+    game.start ();
   }
   
   catch(PingusError err) {
