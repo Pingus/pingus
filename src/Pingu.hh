@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.19 2001/03/18 17:45:04 grumbel Exp $
+//  $Id: Pingu.hh,v 1.20 2001/03/31 09:54:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,10 +79,12 @@ protected:
   PinguEnvironment environment;
 
 public:
-  ///
-  int x_pos;
-  ///
-  int y_pos;
+  // The postion of the pingu (CL_Vector::z is always zero)
+  CL_Vector pos;
+
+  //int x_pos;
+  //int y_pos;
+
   ///
   int falling;
   ///
@@ -102,10 +104,15 @@ public:
 
   static World* get_world();
 
-  /// Returns the x position of the pingu
+  CL_Vector get_pos () { return pos; }
+
+  /** Returns the x position of the pingu
+   * For backward comp. only
+   */
   int  get_x(void);
 
-  /// Returns the y position of the pingu
+  /** Returns the y position of the pingu
+      For backward comp. only */
   int  get_y(void);
 
   ///

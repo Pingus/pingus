@@ -1,4 +1,4 @@
-//  $Id: PinguAction.cc,v 1.10 2000/12/16 23:11:20 grumbel Exp $
+//  $Id: PinguAction.cc,v 1.11 2001/03/31 09:54:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,7 @@ PinguAction::need_catch()
 int
 PinguAction::rel_getpixel(int x, int y)
 {
-  return pingu->get_world()->get_colmap()->getpixel(pingu->x_pos + (x * pingu->direction), (pingu->y_pos) - y);
+  return pingu->get_world()->get_colmap()->getpixel(pingu->get_x() + (x * pingu->direction), (pingu->get_y ()) - y);
 }
 
 void
@@ -73,12 +73,12 @@ PinguAction::draw_offset(int x, int y, float s)
     {
       if (is_multi_direct) 
 	{
-	  surface.put_screen(pingu->x_pos + x + x_offset(), pingu->y_pos + y + y_offset(), 
+	  surface.put_screen(pingu->get_x () + x + x_offset(), pingu->get_y () + y + y_offset(), 
 			     ++counter + ((pingu->direction.is_left()) ? 0 : counter.size()));
 	} 
       else 
 	{
-	  surface.put_screen(pingu->x_pos + x + x_offset(), pingu->y_pos + y + y_offset(),
+	  surface.put_screen(pingu->get_x () + x + x_offset(), pingu->get_y () + y + y_offset(),
 			     ++counter);
 	}
     } 
@@ -86,12 +86,12 @@ PinguAction::draw_offset(int x, int y, float s)
     {
       if (is_multi_direct) 
 	{
-	  surface.put_screen(int((pingu->x_pos + x + x_offset()) * s), int((pingu->y_pos + y + y_offset()) * s), 
+	  surface.put_screen(int((pingu->get_x () + x + x_offset()) * s), int((pingu->get_y () + y + y_offset()) * s), 
 			      s, s, ++counter + ((pingu->direction.is_left()) ? 0 : counter.size()));
 	} 
       else
 	{
-	  surface.put_screen(int((pingu->x_pos + x + x_offset()) * s), int((pingu->y_pos + y + y_offset()) * s),
+	  surface.put_screen(int((pingu->get_x () + x + x_offset()) * s), int((pingu->get_y () + y + y_offset()) * s),
 			     s, s, ++counter);
 	}
     }

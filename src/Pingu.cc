@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.40 2000/12/31 00:48:34 grumbel Exp $
+//  $Id: Pingu.cc,v 1.41 2001/03/31 09:54:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,8 +63,8 @@ Pingu::Pingu(int x, int y)
   falling = 4;
   status = alive;
 
-  x_pos = x;
-  y_pos = y;
+  pos.x = x;
+  pos.y = y;
 
   action_time = -1;
 
@@ -96,14 +96,14 @@ Pingu::get_world()
 int
 Pingu::get_x()
 {
-  return x_pos;
+  return int(pos.x);
 }
 
 // Returns the y position of the pingu
 int
 Pingu::get_y()
 {
-  return y_pos;
+  return int(pos.y);
 }
 
 int
@@ -123,8 +123,8 @@ Pingu::get_environment()
 void 
 Pingu::set_pos(int x, int y)
 {
-  x_pos = x;
-  y_pos = y;
+  pos.x = x;
+  pos.y = y;
 }
 
 // Set the action of the pingu (bridger, blocker, bomber, etc.)
@@ -236,8 +236,8 @@ bool
 Pingu::is_over(int x, int y)
 {
   // FIXME: We should use the x/y_offset here
-  if (x > x_pos + x_offset() && x < x_pos + x_offset() + 32
-      && y > y_pos + y_offset() && y < y_pos + y_offset() + 32)
+  if (x > pos.x + x_offset() && x < pos.x + x_offset() + 32
+      && y > pos.y + y_offset() && y < pos.y + y_offset() + 32)
     {
       return true;
     } 
@@ -249,10 +249,10 @@ Pingu::is_over(int x, int y)
 
 // Returns the distance between the Pingu and a given coordinate
 double
-Pingu::dist(int x, int y)
+Pingu::dist (int x, int y)
 {
-  return sqrt(double(((x_pos - x) * (x_pos - x)
-		      + (y_pos - 16 - y) * (y_pos - 16 - y))));
+  return sqrt(((pos.x - x) * (pos.x - x)
+	       + (pos.y - 16 - y) * (pos.y - 16 - y)));
 }
 
 void
@@ -343,7 +343,7 @@ void
 Pingu::do_falling()
 {
   // Apply all forces
-  velocity = ForcesHolder::apply_forces(CL_Vector(x_pos, y_pos), velocity);
+  velocity = ForcesHolder::apply_forces(pos, velocity);
     
   CL_Vector newp = velocity;
 	  
@@ -358,12 +358,12 @@ Pingu::do_falling()
 	  // fraction stop when we are within 1 unit of the target
 	  if (newp.x > 0)
 	    {
-	      x_pos++;
+	      pos.x++;
 	      newp.x--;
 	    }
 	  else
 	    {
-	      x_pos--;
+	      pos.x--;
 	      newp.x++;
 	    }
 	}
@@ -372,12 +372,12 @@ Pingu::do_falling()
 	{
 	  if (newp.y > 0)
 	    {
-	      y_pos++;
+	      pos.y++;
 	      newp.y--;
 	    }
 	  else 
 	    {
-	      y_pos--;
+	      pos.y--;
 	      newp.y++;
 	    }
 	}
@@ -431,25 +431,25 @@ Pingu::do_walking()
 
   if (rel_getpixel(1, 0) == ColMap::NOTHING) 
     { // if infront is free
-      x_pos += direction;    
+      pos.x += direction;    
     }
   else 
     { // if infront is a pixel 
       // Pingu is walking up the mountain 
       if (rel_getpixel(1,1) == ColMap::NOTHING) 
 	{
-	  x_pos += direction;
-	  y_pos -= 1;
+	  pos.x += direction;
+	  pos.y -= 1;
 	} 
       else if (rel_getpixel(1,2) == ColMap::NOTHING)
 	{
-	  x_pos += direction;
-	  y_pos -= 2;
+	  pos.x += direction;
+	  pos.y -= 2;
 	} 
       else if (rel_getpixel(1,2) & ColMap::BRIDGE) 
 	{
-	  x_pos += direction;
-	  y_pos -=3;
+	  pos.x += direction;
+	  pos.y -=3;
 	}
       else
 	{ // WALL
@@ -509,12 +509,12 @@ Pingu::draw_offset(int x, int y, float s) const
 	  
 	  if (s == 1.0) 
 	    {
-	      surf->put_screen(x_pos + x - 16, y_pos + y - 32,
+	      surf->put_screen(pos.x + x - 16, pos.y + y - 32,
 			      tumble_c);
 	    } 
 	  else 
 	    {
-	      surf->put_screen((x_pos + x - 16) * s , (y_pos + y - 32) * s,
+	      surf->put_screen((pos.x + x - 16) * s , (pos.y + y - 32) * s,
 			       s, s, tumble_c);
 	    }
 	} 
@@ -522,14 +522,14 @@ Pingu::draw_offset(int x, int y, float s) const
 	{
 	  if (s == 1.0) 
 	    {
-	      walker.put_screen(x_pos + x - 16, y_pos + y - walker.get_height(), 
+	      walker.put_screen(pos.x + x - 16, pos.y + y - walker.get_height(), 
 				 walker_c
 				 + ((direction.is_left() ? 0 :
 				     walker_c.size())));
 	    } 
 	  else 
 	    {
-	      walker.put_screen((x_pos + x - 16) * s, (y_pos + y - walker.get_height()) * s, 
+	      walker.put_screen((pos.x + x - 16) * s, (pos.y + y - walker.get_height()) * s, 
 				 s, s,
 				 walker_c
 				 + ((direction.is_left() ? 0 :
@@ -544,11 +544,11 @@ Pingu::draw_offset(int x, int y, float s) const
       
       if (s == 1.0) 
 	{
-	  font->print_center(x_pos + x, y_pos - 45 + y, str);
+	  font->print_center(pos.x + x, pos.y - 45 + y, str);
 	} 
       else if (s > 1.0) 
 	{
-	  font->print_left(int((x_pos + x) * s), (int)((y_pos - 45 + y) * s) - (int(font->get_text_width(str) * s) / 2),
+	  font->print_left(int((pos.x + x) * s), (int)((pos.y - 45 + y) * s) - (int(font->get_text_width(str) * s) / 2),
 			   int(s), int(s),
 			   str);
 	}
@@ -564,7 +564,7 @@ int
 Pingu::rel_getpixel(int x, int y)
 {
   //assert(colmap);
-  return world->get_colmap()->getpixel(x_pos + (x * direction), (y_pos) - y);
+  return world->get_colmap()->getpixel(pos.x + (x * direction), (pos.y) - y);
 }
 
 // Let the pingu catch another pingu, so that an action can be aplied
@@ -640,7 +640,7 @@ Pingu::apply_force(CL_Vector arg_v)
 {
   velocity += arg_v;
   // Moving the pingu on pixel up, so that the force can take effect
-  y_pos -= 1; 
+  pos.y -= 1; 
 }
 
 bool
