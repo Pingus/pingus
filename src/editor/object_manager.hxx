@@ -1,4 +1,4 @@
-//  $Id: object_manager.hxx,v 1.16 2002/08/23 15:49:54 torangan Exp $
+//  $Id: object_manager.hxx,v 1.17 2002/09/11 12:45:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include "../color.hxx"
 #include "../action_data.hxx"
 #include "editorobj.hxx"
+
+namespace EditorNS {
 
 class EditorView;
 
@@ -150,6 +152,8 @@ private:
   ObjectManager (const ObjectManager&);
   ObjectManager operator= (const ObjectManager&);
 };
+
+} // namespace EditorNS
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.12 2002/09/09 16:13:44 torangan Exp $
+//  $Id: object_selector.cxx,v 1.13 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,6 +61,8 @@
 
 using namespace std;
 using namespace EditorObjs;
+
+namespace EditorNS {
 
 ObjectSelector::ObjectSelector()
 {
@@ -616,5 +618,7 @@ ObjectSelector::read_string(const string & description, const string & def_str)
   reader.set_strings(PingusResource::get("global")->get_resources_of_type("surface"));
   return reader.read_string();
 }
+
+} // namespace EditorNS
 
 /* EOF */

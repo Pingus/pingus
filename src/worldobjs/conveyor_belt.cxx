@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.cxx,v 1.11 2002/09/10 21:03:33 torangan Exp $
+//  $Id: conveyor_belt.cxx,v 1.12 2002/09/11 12:45:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -206,7 +206,7 @@ EditorConveyorBeltObj::duplicate()
 }
 
 void
-EditorConveyorBeltObj::draw (EditorView * view)
+EditorConveyorBeltObj::draw (EditorNS::EditorView * view)
 {
   view->draw (left_sur, pos, int(counter));
   for (int i=0; i < ConveyorBeltData::width; ++i)

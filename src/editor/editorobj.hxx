@@ -1,4 +1,4 @@
-//  $Id: editorobj.hxx,v 1.14 2002/09/09 16:13:44 torangan Exp $
+//  $Id: editorobj.hxx,v 1.15 2002/09/11 12:45:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,45 +27,42 @@
 
 class CL_Rect;
 class CL_Vector;
-class EditorView;
 class CL_Component;
-class Editor;
 
 class EditorObj;
+
 typedef std::vector<EditorObj*> EditorObjLst;
 
-namespace Pingus
-{
-  namespace Editor
-  {
-    class PropertyFrame;
-  }
-}
+namespace EditorNS {
+class PropertyFrame;
+class Editor;
+class EditorView;
+} // namespace EditorNS
 
 /** Interface for all objects which can be shown in the editor */
 class EditorObj
 {
 private:
-  static Editor* editor;
+  static EditorNS::Editor* editor;
 
 public:
   /** Set the parent editor of all objects */
-  static void set_editor(Editor* e) { editor = e; }
+  static void set_editor(EditorNS::Editor* e) { editor = e; }
 
-  static Editor* get_editor () { return editor; }
+  static EditorNS::Editor* get_editor () { return editor; }
 
   EditorObj ();
   virtual ~EditorObj ();
 
   /** Draw the object to the given view */
-  virtual void draw (EditorView * view) =0;
+  virtual void draw (EditorNS::EditorView * view) =0;
 
   /** Called once a game loop, the delta is the time passed since the
       last update in seconds */
   virtual void update (float /*delta*/) {};
 
   /** Draw a rectangle or shape around the object to the given view */
-  virtual void draw_mark (EditorView * view) =0;
+  virtual void draw_mark (EditorNS::EditorView * view) =0;
 
   /** Return true when the object is under the given coordinates */
   virtual bool is_over(const CL_Vector&) =0;
@@ -121,7 +118,7 @@ public:
       responsible for deleting the object after usage. The
       CL_Component* should/must be a CL_Frame so that it can get
       embedded in the properties window */
-  virtual Pingus::Editor::PropertyFrame* get_gui_dialog (Editor* parent);
+  virtual EditorNS::PropertyFrame* get_gui_dialog (EditorNS::Editor* parent);
   
 protected:
   EditorObj (const EditorObj&) { }

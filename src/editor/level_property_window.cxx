@@ -1,4 +1,4 @@
-//  $Id: level_property_window.cxx,v 1.9 2002/08/23 15:49:54 torangan Exp $
+//  $Id: level_property_window.cxx,v 1.10 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@
  [  OK  ] [Cancel]
 *********************/
 
-using namespace Pingus::Editor;
+namespace EditorNS {
 
 LevelPropertyWindow::LevelPropertyWindow (CL_Component* parent, ObjectManager* manager_)
   : CL_Window (CL_Rect (0, 0, 400, 300), "Level Properties", parent),
@@ -99,5 +99,7 @@ LevelPropertyWindow::~LevelPropertyWindow ()
 
   manager->set_playable (playable_checkbox.is_checked ());
 }
+
+} // namespace EditorNS
 
 /* EOF */

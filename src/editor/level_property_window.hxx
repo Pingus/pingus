@@ -1,4 +1,4 @@
-//  $Id: level_property_window.hxx,v 1.6 2002/08/23 15:49:54 torangan Exp $
+//  $Id: level_property_window.hxx,v 1.7 2002/09/11 12:45:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,55 +28,53 @@
 
 class ObjectManager;
 
-namespace Pingus
+namespace EditorNS {
+
+class LevelPropertyWindow : public CL_Window
 {
-  namespace Editor
-  {
-    class LevelPropertyWindow : public CL_Window
-    {
-    private:
-      ObjectManager* manager;
+private:
+  ObjectManager* manager;
 
-      CL_Label    levelname_label;
-      CL_InputBox levelname_input;
+  CL_Label    levelname_label;
+  CL_InputBox levelname_input;
 
-      CL_Label    descritpion_label;
-      CL_InputBox description_input;
+  CL_Label    descritpion_label;
+  CL_InputBox description_input;
 
-      CL_Label    author_label;
-      CL_InputBox author_input;
+  CL_Label    author_label;
+  CL_InputBox author_input;
 
-      CL_Label    number_of_pingus_label;
-      CL_InputBox number_of_pingus_input;
+  CL_Label    number_of_pingus_label;
+  CL_InputBox number_of_pingus_input;
 
-      CL_Label    pingus_to_save_label;
-      CL_InputBox pingus_to_save_input;
+  CL_Label    pingus_to_save_label;
+  CL_InputBox pingus_to_save_input;
 
-      CL_Label    time_label;
-      CL_InputBox time_input;
+  CL_Label    time_label;
+  CL_InputBox time_input;
 
-      CL_Label    width_label;
-      CL_InputBox width_input;
+  CL_Label    width_label;
+  CL_InputBox width_input;
 
-      CL_Label    height_label;
-      CL_InputBox height_input;
+  CL_Label    height_label;
+  CL_InputBox height_input;
 
-      CL_Label    difficulty_label;
-      CL_InputBox difficulty_input;
+  CL_Label    difficulty_label;
+  CL_InputBox difficulty_input;
 
-      CL_Label    comment_label;
-      CL_CheckBox playable_checkbox;
+  CL_Label    comment_label;
+  CL_CheckBox playable_checkbox;
 
-    public:
-      LevelPropertyWindow (CL_Component* parent, ObjectManager*);
-      ~LevelPropertyWindow ();
+public:
+  LevelPropertyWindow (CL_Component* parent, ObjectManager*);
+  ~LevelPropertyWindow ();
       
-    private:
-      LevelPropertyWindow (const LevelPropertyWindow&);
-      LevelPropertyWindow operator= (const LevelPropertyWindow&);
-    };
-  }
-}
+private:
+  LevelPropertyWindow (const LevelPropertyWindow&);
+  LevelPropertyWindow operator= (const LevelPropertyWindow&);
+};
+
+} // namespace EditorNS
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.31 2002/09/04 14:55:12 torangan Exp $
+//  $Id: editor_event.cxx,v 1.32 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,6 +46,8 @@
 #include "property_window.hxx"
 #include "level_property_window.hxx"
 #include "../screen_manager.hxx"
+
+namespace EditorNS {
 
 EditorEvent::EditorEvent()
   : is_enabled (false)
@@ -828,5 +830,7 @@ EditorEvent::accept_input ()
     && 
     (editor->get_gui_manager ()->get_focus () == editor->get_gui_manager ());
 }
+
+} // namespace EditorNS
 
 /* EOF */

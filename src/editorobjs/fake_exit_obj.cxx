@@ -1,4 +1,4 @@
-//  $Id: fake_exit_obj.cxx,v 1.7 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: fake_exit_obj.cxx,v 1.8 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,7 +61,7 @@ FakeExitObj::write_xml (std::ostream& xml)
 }
 
 void
-FakeExitObj::draw (EditorView* view)
+FakeExitObj::draw (EditorNS::EditorView* view)
 {
   view->draw(sprite, data->pos, frame);
 }

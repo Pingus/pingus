@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.11 2002/09/08 18:13:04 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.12 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,8 +33,7 @@
 #include "worldmap.hxx"
 #include "pingus.hxx"
 
-namespace pingus {
-namespace worldmap {
+namespace WorldMapNS {
 
 WorldMap::WorldMap (std::string filename) 
   : green_dot ("worldmap/dot_green", "core"),
@@ -298,7 +297,6 @@ WorldMap::set_pingus (int node_id)
     }
 }
 
-} // namespace worldmap
-} // namespace pingus
+} // namespace WorldMapNS
 
 /* EOF */

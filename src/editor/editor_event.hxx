@@ -1,4 +1,4 @@
-//  $Id: editor_event.hxx,v 1.13 2002/08/23 15:49:54 torangan Exp $
+//  $Id: editor_event.hxx,v 1.14 2002/09/11 12:45:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,9 +26,12 @@
 class CL_Key;
 class CL_Font;
 class CL_InputDevice;
-class Editor;
+
+namespace EditorNS {
+
 class ObjectManager;
 class EditorSelection;
+class Editor;
 
 class EditorEvent //: public CL_Event_ButtonPress, public CL_Event_ButtonRelease
 {
@@ -109,6 +112,8 @@ private:
   EditorEvent (const EditorEvent&);
   EditorEvent operator= (const EditorEvent&);
 };
+
+} // namespace EditorNS
 
 #endif
 

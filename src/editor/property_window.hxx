@@ -1,4 +1,4 @@
-//  $Id: property_window.hxx,v 1.6 2002/08/23 15:49:54 torangan Exp $
+//  $Id: property_window.hxx,v 1.7 2002/09/11 12:45:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,32 +24,31 @@
 #include <ClanLib/GUI/label.h>
 #include <ClanLib/GUI/window.h>
 
-class Editor;
 class EditorObj;
 class CL_Component;
 
-namespace Pingus
-{
-  namespace Editor
-  {
-    class PropertyWindow : public CL_Window
-    {
-    private:
-      ::Editor* editor;
-      CL_Component* current_frame;
-      CL_Label label;
-      
-    public:
-      PropertyWindow (::Editor* parent);
+namespace EditorNS {
 
-      void update_frame (EditorObj*);
+class Editor;
+
+class PropertyWindow : public CL_Window
+{
+private:
+  Editor* editor;
+  CL_Component* current_frame;
+  CL_Label label;
       
-    private:
-      PropertyWindow (const PropertyWindow&);
-      PropertyWindow operator= (const PropertyWindow&);
-    };
-  }
-}
+public:
+  PropertyWindow (Editor* parent);
+
+  void update_frame (EditorObj*);
+      
+private:
+  PropertyWindow (const PropertyWindow&);
+  PropertyWindow operator= (const PropertyWindow&);
+};
+
+} // namespace EditorNS
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: stat.cxx,v 1.8 2002/09/10 21:03:33 torangan Exp $
+//  $Id: stat.cxx,v 1.9 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,8 +25,7 @@
 #include "../xml_helper.hxx"
 #include "stat.hxx"
 
-namespace pingus {
-namespace worldmap {
+namespace WorldMapNS {
 
 PingusWorldMapNodeStat::PingusWorldMapNodeStat () 
   : finished(false),
@@ -195,7 +194,6 @@ PingusWorldMapStat::save (std::list<boost::shared_ptr<Node> >& nodes)
     }
 }
 
-} // namespace worldmap
-} // namespace pingus
+} // namespace WorldMapNS
 
 /* EOF */

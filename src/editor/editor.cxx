@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.29 2002/09/04 14:55:12 torangan Exp $
+//  $Id: editor.cxx,v 1.30 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@
 
 #include <cstdio>
 
-using namespace Pingus::Editor;
+namespace EditorNS {
 
 Editor* Editor::instance_ = 0;
 
@@ -79,8 +79,8 @@ Editor::Editor () : event_handler_ref_counter(0),
   gui   = new CL_GUIManager (style_manager);
 
   action_window = new ActionWindow (gui, object_manager->get_actions ());
-  property_window = new Pingus::Editor::PropertyWindow (this);
-  level_property_window = new Pingus::Editor::LevelPropertyWindow (gui, object_manager);
+  property_window = new PropertyWindow (this);
+  level_property_window = new LevelPropertyWindow (gui, object_manager);
 
   view = new EditorView (0, 0, CL_Display::get_width (), CL_Display::get_height (), 0, 0);
 
@@ -520,5 +520,7 @@ Editor::get_gui_manager ()
 {
   return gui;
 }
+
+} // namespace EditorNS
 
 /* EOF */

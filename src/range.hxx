@@ -1,4 +1,4 @@
-//  $Id: range.hxx,v 1.4 2002/08/23 15:49:50 torangan Exp $
+//  $Id: range.hxx,v 1.5 2002/09/11 12:45:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,8 +22,12 @@
 
 #include "pingus.hxx"
 
-// A class similar to an integer, but keeps the value in a given range.
+/** A class similar to an integer, but keeps the value in a given range. 
 
+    @deprecated The idea of this class is to keep a value inside a,
+    but this class is a bit cheap and I don't really know if we need
+    it or if we should handle the range-keeping in the client
+    source. */
 class Range
 {
 private:

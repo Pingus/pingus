@@ -1,4 +1,4 @@
-//  $Id: resource_modifier.hxx,v 1.3 2002/08/23 15:49:50 torangan Exp $
+//  $Id: resource_modifier.hxx,v 1.4 2002/09/11 12:45:57 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,31 +23,31 @@
 #include "pingus.hxx"
 #include <string>
 
-namespace Pingus
-{
+namespace ResourceModifierNS {
 
-  /** This array contains possible modifications of a surface */
-  typedef enum {  
-    ROT0,     
-    ROT90,
-    ROT180,
-    ROT270,
-    ROT0FLIP,
-    ROT90FLIP,
-    ROT180FLIP,
-    ROT270FLIP
-  } ResourceModifier;
+/** This array contains possible modifications of a surface */
+typedef enum {  
+  ROT0,     
+  ROT90,
+  ROT180,
+  ROT270,
+  ROT0FLIP,
+  ROT90FLIP,
+  ROT180FLIP,
+  ROT270FLIP
+} ResourceModifier;
 
-  ResourceModifier horizontal_flip (ResourceModifier);
-  ResourceModifier vertical_flip (ResourceModifier);
-  ResourceModifier rotate_90 (ResourceModifier);
-  ResourceModifier rotate_270 (ResourceModifier);
+ResourceModifier horizontal_flip (ResourceModifier);
+ResourceModifier vertical_flip (ResourceModifier);
+ResourceModifier rotate_90 (ResourceModifier);
+ResourceModifier rotate_270 (ResourceModifier);
 
-  // we don't specialize the to_string templates here, since the enum
-  // might get confused with 'int'
-  std::string rs_to_string (ResourceModifier);
-  ResourceModifier rs_from_string (const std::string&);
-}
+// we don't specialize the to_string templates here, since the enum
+// might get confused with 'int'
+std::string rs_to_string (ResourceModifier);
+ResourceModifier rs_from_string (const std::string&);
+
+} // namespace ResourceModifierNS
 
 #endif
 

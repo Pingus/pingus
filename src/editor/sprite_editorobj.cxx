@@ -1,4 +1,4 @@
-//  $Id: sprite_editorobj.cxx,v 1.5 2002/09/10 14:33:07 grumbel Exp $
+//  $Id: sprite_editorobj.cxx,v 1.6 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,7 +74,7 @@ SpriteEditorObj::get_z_pos()
 }
 
 void 
-SpriteEditorObj::draw(EditorView * view)
+SpriteEditorObj::draw(EditorNS::EditorView * view)
 {
   assert (pos_ref);
   view->draw (sprite, *pos_ref);

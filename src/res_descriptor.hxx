@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.hxx,v 1.7 2002/09/04 14:55:11 torangan Exp $
+//  $Id: res_descriptor.hxx,v 1.8 2002/09/11 12:45:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,14 +37,16 @@ public:
   /// The name of the data, filename or resourcename ("Textures/desert")
   std::string res_name;
   
-  Pingus::ResourceModifier modifier;
+  ResourceModifierNS::ResourceModifier modifier;
 
   ResDescriptor ();
   ResDescriptor (const ResDescriptor& old);
   ResDescriptor operator= (const ResDescriptor&);
 
   ResDescriptor (const std::string& res_name, const std::string& datafile,
-		ResourceType type, Pingus::ResourceModifier modifier = Pingus::ROT0);
+		 ResourceType type,
+		 ResourceModifierNS::ResourceModifier modifier 
+		 = ResourceModifierNS::ROT0);
   ResDescriptor (const std::string& cast, const std::string& value);
   ResDescriptor (const std::string& str);
 

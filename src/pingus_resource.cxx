@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.15 2002/09/10 15:36:44 grumbel Exp $
+//  $Id: pingus_resource.cxx,v 1.16 2002/09/11 12:45:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,12 +33,9 @@
 #include "blitter.hxx"
 #include "debug.hxx"
 
-using namespace Pingus;
-
 std::map<std::string, CL_ResourceManager*> PingusResource::resource_map;
 std::map<ResDescriptor, CL_Surface>       PingusResource::surface_map;
 std::map<ResDescriptor, CL_Font*>          PingusResource::font_map;
-
 
 std::string
 suffix_fixer(const std::string& filename)
@@ -113,7 +110,7 @@ PingusResource::get(const std::string& arg_filename)
 CL_Surface
 PingusResource::load_surface(const std::string& res_name, 
 			     const std::string& datafile,
-			     ResourceModifier modifier)
+			     ResourceModifierNS::ResourceModifier modifier)
 {
   return load_surface(ResDescriptor(res_name, datafile, 
 				    ResDescriptor::RD_RESOURCE,
@@ -130,7 +127,7 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
   if (!surf) // not in cache
     {
       ResDescriptor desc = res_desc;
-      desc.modifier = ROT0;
+      desc.modifier = ResourceModifierNS::ROT0;
 
       // Try to an unmodified version from cache
       surf = load_from_cache(desc);
@@ -146,7 +143,7 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
       else // never loaded, need to load it from source
 	{
 	  ResDescriptor desc = res_desc;
-	  desc.modifier = ROT0;
+	  desc.modifier = ResourceModifierNS::ROT0;
 
 	  pout(PINGUS_DEBUG_RESOURCES) << "PingusResource: Loading surface from source: " << res_desc << std::endl;
 	  surf = load_from_source (desc);
@@ -173,34 +170,34 @@ PingusResource::load_from_cache (const ResDescriptor& res_desc)
 CL_Surface
 PingusResource::apply_modifier (const CL_Surface& surf, const ResDescriptor& res_desc)
 {
-  if (res_desc.modifier != ROT0)
+  if (res_desc.modifier != ResourceModifierNS::ROT0)
     pout << "PingusResource::apply_modifier: Using expensive blitting" << std::endl;
   
   switch (res_desc.modifier)
     {
       // FIXME: muahhhaa... I write slower code than you....
-    case ROT0:
+    case ResourceModifierNS::ROT0:
       return surf;
       
-    case ROT90:
+    case ResourceModifierNS::ROT90:
       return Blitter::rotate_90(surf);
 
-    case ROT180:
+    case ResourceModifierNS::ROT180:
       return Blitter::rotate_90(Blitter::rotate_90(surf));
 
-    case ROT270:
+    case ResourceModifierNS::ROT270:
       return Blitter::rotate_90(Blitter::rotate_90(Blitter::rotate_90(surf)));
 
-    case ROT0FLIP:
+    case ResourceModifierNS::ROT0FLIP:
       return Blitter::flip_horizontal(surf);
 
-    case ROT90FLIP:
+    case ResourceModifierNS::ROT90FLIP:
       return Blitter::flip_horizontal(Blitter::rotate_90(surf));
 
-    case ROT180FLIP:
+    case ResourceModifierNS::ROT180FLIP:
       return Blitter::flip_horizontal(Blitter::rotate_90(Blitter::rotate_90(surf)));
 
-    case ROT270FLIP:
+    case ResourceModifierNS::ROT270FLIP:
       return Blitter::flip_horizontal(Blitter::rotate_90(Blitter::rotate_90(Blitter::rotate_90(surf))));
 
     default:

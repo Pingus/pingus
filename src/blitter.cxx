@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.13 2002/09/04 14:55:11 torangan Exp $
+//  $Id: blitter.cxx,v 1.14 2002/09/11 12:45:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,8 +33,6 @@
 #include <clocale>
 #include <config.h>
 #include "my_gettext.hxx"
-
-using namespace Pingus;
 
 void
 Blitter::put_surface(CL_Canvas* canvas, const CL_Surface& sur,

@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.14 2002/09/06 17:33:29 torangan Exp $
+//  $Id: smallmap.cxx,v 1.15 2002/09/11 12:45:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,6 @@
 #include "pingu.hxx"
 #include "math.hxx"
 
-using namespace Pingus;
 using namespace std;
 
 SmallMap::SmallMap()

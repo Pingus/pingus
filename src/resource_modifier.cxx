@@ -1,4 +1,4 @@
-//  $Id: resource_modifier.cxx,v 1.1 2002/06/26 09:40:32 grumbel Exp $
+//  $Id: resource_modifier.cxx,v 1.2 2002/09/11 12:45:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,162 +20,163 @@
 #include <assert.h>
 #include "resource_modifier.hxx"
 
-namespace Pingus
+namespace ResourceModifierNS {
+
+ResourceModifier horizontal_flip (ResourceModifier modifier)
 {
-  ResourceModifier horizontal_flip (ResourceModifier modifier)
-  {
-    switch (modifier)
-      {
-      case ROT0:
-	return ROT0FLIP;
-      case ROT90:
-	return ROT90FLIP;
-      case ROT180:
-	return ROT180FLIP;	
-      case ROT270:
-	return ROT270FLIP;
-      case ROT0FLIP:
-	return ROT0;
-      case ROT90FLIP:
-	return ROT90;
-      case ROT180FLIP:
-	return ROT180;
-      case ROT270FLIP:
-	return ROT270;
-      default:
-	assert (0);
-	return ROT0;
-      }
-  }
-
-  ResourceModifier vertical_flip (ResourceModifier modifier)
-  {
-    switch (modifier)
-      {
-      case ROT0:
-	return ROT180FLIP;
-      case ROT90:
-	return ROT270FLIP;
-      case ROT180:
-	return ROT0FLIP;
-      case ROT270:
-	return ROT90FLIP;
-      case ROT0FLIP:
-	return ROT180;
-      case ROT90FLIP:
-	return ROT270;
-      case ROT180FLIP:
-	return ROT0;
-      case ROT270FLIP:
-	return ROT90;
-      default:
-	assert (0);
-	return ROT0;
-      }
-  }
-
-  ResourceModifier rotate_90 (ResourceModifier modifier)
-  {
-    switch (modifier)
-      {
-      case ROT0:
-	return ROT90;
-      case ROT90:
-	return ROT180;
-      case ROT180:
-	return ROT270;			
-      case ROT270:
-	return ROT0;
-      case ROT0FLIP:
-	return ROT270FLIP;
-      case ROT90FLIP:
-	return ROT0FLIP;
-      case ROT180FLIP:
-	return ROT90FLIP;
-      case ROT270FLIP:
-	return ROT180FLIP;
-      default:
-	assert (0);
-	return ROT0;
-      }
-  }
-
-  ResourceModifier rotate_270 (ResourceModifier modifier)
-  {
-    switch (modifier)
-      {
-      case ROT0:
-	return ROT270;
-      case ROT90:
-	return ROT0;
-      case ROT180:
-	return ROT90;	
-      case ROT270:
-	return ROT180;
-      case ROT0FLIP:
-	return ROT90FLIP;
-      case ROT90FLIP:
-	return ROT180FLIP;
-      case ROT180FLIP:
-	return ROT270FLIP;
-      case ROT270FLIP:
-	return ROT0FLIP;
-      default:
-	assert (0);
-	return ROT0;
-      }
-  }
-
-  std::string rs_to_string (ResourceModifier modifier)
-  {
-    switch (modifier)
-      {
-      case ROT0:
-	return "ROT0";
-      case ROT90:
-	return "ROT90";
-      case ROT180:
-	return "ROT180";	
-      case ROT270:
-	return "ROT270";
-      case ROT0FLIP:
-	return "ROT0FLIP";
-      case ROT90FLIP:
-	return "ROT90FLIP";
-      case ROT180FLIP:
-	return "ROT180FLIP";
-      case ROT270FLIP:
-	return "ROT270FLIP";
-      default:
-	assert (0);
-	return "--Error--";
-      } 
-  }
-
-  ResourceModifier rs_from_string (const std::string& modifier)
-  {
-    if (modifier == "ROT0")
-      return ROT0;
-    else if (modifier == "ROT90")
-      return ROT90;
-    else if (modifier == "ROT180")
-      return ROT180;
-    else if (modifier == "ROT270")
-      return ROT270;
-    else if (modifier == "ROT0FLIP")
+  switch (modifier)
+    {
+    case ROT0:
       return ROT0FLIP;
-    else if (modifier == "ROT90FLIP")
+    case ROT90:
       return ROT90FLIP;
-    else if (modifier == "ROT180FLIP")
-      return ROT180FLIP;
-    else if (modifier == "ROT270FLIP")
+    case ROT180:
+      return ROT180FLIP;	
+    case ROT270:
       return ROT270FLIP;
-    else
-      {
-	assert (0);
-	return ROT0;
-      }
-  }
+    case ROT0FLIP:
+      return ROT0;
+    case ROT90FLIP:
+      return ROT90;
+    case ROT180FLIP:
+      return ROT180;
+    case ROT270FLIP:
+      return ROT270;
+    default:
+      assert (0);
+      return ROT0;
+    }
 }
+
+ResourceModifier vertical_flip (ResourceModifier modifier)
+{
+  switch (modifier)
+    {
+    case ROT0:
+      return ROT180FLIP;
+    case ROT90:
+      return ROT270FLIP;
+    case ROT180:
+      return ROT0FLIP;
+    case ROT270:
+      return ROT90FLIP;
+    case ROT0FLIP:
+      return ROT180;
+    case ROT90FLIP:
+      return ROT270;
+    case ROT180FLIP:
+      return ROT0;
+    case ROT270FLIP:
+      return ROT90;
+    default:
+      assert (0);
+      return ROT0;
+    }
+}
+
+ResourceModifier rotate_90 (ResourceModifier modifier)
+{
+  switch (modifier)
+    {
+    case ROT0:
+      return ROT90;
+    case ROT90:
+      return ROT180;
+    case ROT180:
+      return ROT270;			
+    case ROT270:
+      return ROT0;
+    case ROT0FLIP:
+      return ROT270FLIP;
+    case ROT90FLIP:
+      return ROT0FLIP;
+    case ROT180FLIP:
+      return ROT90FLIP;
+    case ROT270FLIP:
+      return ROT180FLIP;
+    default:
+      assert (0);
+      return ROT0;
+    }
+}
+
+ResourceModifier rotate_270 (ResourceModifier modifier)
+{
+  switch (modifier)
+    {
+    case ROT0:
+      return ROT270;
+    case ROT90:
+      return ROT0;
+    case ROT180:
+      return ROT90;	
+    case ROT270:
+      return ROT180;
+    case ROT0FLIP:
+      return ROT90FLIP;
+    case ROT90FLIP:
+      return ROT180FLIP;
+    case ROT180FLIP:
+      return ROT270FLIP;
+    case ROT270FLIP:
+      return ROT0FLIP;
+    default:
+      assert (0);
+      return ROT0;
+    }
+}
+
+std::string rs_to_string (ResourceModifier modifier)
+{
+  switch (modifier)
+    {
+    case ROT0:
+      return "ROT0";
+    case ROT90:
+      return "ROT90";
+    case ROT180:
+      return "ROT180";	
+    case ROT270:
+      return "ROT270";
+    case ROT0FLIP:
+      return "ROT0FLIP";
+    case ROT90FLIP:
+      return "ROT90FLIP";
+    case ROT180FLIP:
+      return "ROT180FLIP";
+    case ROT270FLIP:
+      return "ROT270FLIP";
+    default:
+      assert (0);
+      return "--Error--";
+    } 
+}
+
+ResourceModifier rs_from_string (const std::string& modifier)
+{
+  if (modifier == "ROT0")
+    return ROT0;
+  else if (modifier == "ROT90")
+    return ROT90;
+  else if (modifier == "ROT180")
+    return ROT180;
+  else if (modifier == "ROT270")
+    return ROT270;
+  else if (modifier == "ROT0FLIP")
+    return ROT0FLIP;
+  else if (modifier == "ROT90FLIP")
+    return ROT90FLIP;
+  else if (modifier == "ROT180FLIP")
+    return ROT180FLIP;
+  else if (modifier == "ROT270FLIP")
+    return ROT270FLIP;
+  else
+    {
+      assert (0);
+      return ROT0;
+    }
+}
+
+} // namespace ResourceModifierNS
 
 /* EOF */

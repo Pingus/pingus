@@ -1,4 +1,4 @@
-//  $Id: editor.hxx,v 1.15 2002/09/06 17:33:29 torangan Exp $
+//  $Id: editor.hxx,v 1.16 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,9 +27,14 @@
 #include "../screen.hxx"
 #include "editor_help_screen.hxx"
 
-///
-class EditorView;
+class CL_StyleManager_Default;
+class CL_GUIManager;
+
 class EditorObj;
+
+namespace EditorNS {
+
+class EditorView;
 class EditorEvent;
 class Panel;
 class ScrollMap;
@@ -38,18 +43,8 @@ class EditorSelection;
 class ObjectSelector;
 class StatusLine;
 class ActionWindow;
-
-namespace Pingus 
-{
-  namespace Editor
-  {
-    class PropertyWindow;
-    class LevelPropertyWindow;
-  }
-}
-
-class CL_StyleManager_Default;
-class CL_GUIManager;
+class PropertyWindow;
+class LevelPropertyWindow;
 
 class Editor : public Screen
 {
@@ -87,8 +82,8 @@ private:
 
   ActionWindow*   action_window;
 
-  Pingus::Editor::LevelPropertyWindow* level_property_window;
-  Pingus::Editor::PropertyWindow* property_window;
+  EditorNS::LevelPropertyWindow* level_property_window;
+  EditorNS::PropertyWindow* property_window;
 
   enum { SELECTOR_TOOL, ZOOM_TOOL } tool;
 
@@ -135,6 +130,8 @@ private:
   Editor (const Editor&);
   Editor operator= (const Editor&);
 };
+
+} // namespace EditorNS
 
 #endif
 

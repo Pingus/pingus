@@ -1,4 +1,4 @@
-//  $Id: plfobj.cxx,v 1.11 2002/09/10 14:33:07 grumbel Exp $
+//  $Id: plfobj.cxx,v 1.12 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -89,12 +89,12 @@ EntranceObj::status_line()
   return std::string(str);
 }
 
-Pingus::Editor::PropertyFrame*
+EditorNS::PropertyFrame*
 EntranceObj::get_gui_dialog (CL_Component* parent)
 {
   // FIXME: due to the shared_ptr<> this is not guaranted to stay here
   // FIXME: long enough
-  return new Pingus::Editor::EntranceWindow (parent, this);
+  return new EditorNS::EntranceWindow (parent, this);
 }
 
 ExitObj::ExitObj(const ExitData& data)
@@ -149,14 +149,14 @@ LiquidObj::duplicate()
 }
 
 void
-LiquidObj::draw (EditorView * view)
+LiquidObj::draw (EditorNS::EditorView * view)
 {
   for(int i = 0; i < width; ++i)
     view->draw (sprite, pos + CL_Vector (i * sprite.get_width (), 0));
 }
 
 void
-LiquidObj::draw_mark (EditorView * view) 
+LiquidObj::draw_mark (EditorNS::EditorView * view) 
 {
   view->draw_rect(int(pos.x),
 		  int(pos.y),

@@ -1,4 +1,4 @@
-//  $Id: teleporter_obj.hxx,v 1.3 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: teleporter_obj.hxx,v 1.4 2002/09/11 12:45:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,9 @@
 
 #include "../editor/sprite_editorobj.hxx"
 
+namespace EditorNS {
 class EditorView;
+} // namespace EditorNS
 
 namespace WorldObjsData {
 class TeleporterData;
@@ -51,7 +53,7 @@ public:
       for the editor */
   static EditorObjLst create (const CL_Vector& pos);
 
-  void draw (EditorView * view);
+  void draw (EditorNS::EditorView * view);
   std::string status_line ();
 
 private:

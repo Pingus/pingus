@@ -1,4 +1,4 @@
-//  $Id: node.hxx,v 1.6 2002/09/07 23:33:47 grumbel Exp $
+//  $Id: node.hxx,v 1.7 2002/09/11 12:45:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,8 +26,7 @@
 class CL_Vector;
 class PLF;
 
-namespace pingus {
-namespace worldmap {
+namespace WorldMapNS {
 
 /** An node in the WorldmapGraph on which the Pingu walks */
 class Node 
@@ -115,8 +114,7 @@ private:
   LevelNode operator= (const LevelNode&);
 };
 
-} // namespace worldmap
-} // namespace pingus
+} // namespace WorldMapNS
 
 #endif
 

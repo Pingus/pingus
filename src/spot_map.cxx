@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.11 2002/09/05 16:47:46 torangan Exp $
+//  $Id: spot_map.cxx,v 1.12 2002/09/11 12:45:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,6 @@
 #include "col_map.hxx"
 #include "math.hxx"
 
-using namespace Pingus;
 using namespace std;
 
 MapTileSurface::MapTileSurface () : empty(true)

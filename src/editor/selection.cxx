@@ -1,4 +1,4 @@
-//  $Id: selection.cxx,v 1.12 2002/08/16 13:03:36 torangan Exp $
+//  $Id: selection.cxx,v 1.13 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,8 +24,9 @@
 #include "selection.hxx"
 #include "../math.hxx"
 
-using namespace Pingus;
 using namespace std;
+
+namespace EditorNS {
 
 void
 EditorSelection::move(float x, float y) 
@@ -157,5 +158,7 @@ EditorSelection::draw(EditorView * view)
       (*i)->draw_mark(view);
     }
 }
+
+} // namespace EditorNS
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.8 2002/09/07 23:33:47 grumbel Exp $
+//  $Id: pingus.cxx,v 1.9 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,7 @@
 #include "pingus.hxx"
 #include "../boost/smart_ptr.hpp"
 
-namespace pingus {
-namespace worldmap {
+namespace WorldMapNS {
 
 Pingus::Pingus ()
   : sprite ("Pingus/walker0", "pingus", 20.0f, Sprite::RIGHT)
@@ -115,7 +114,6 @@ Pingus::get_node ()
   return current_node;
 }
 
-} // namespace worldmap
-} // namespace pingus
+} // namespace WorldMapNS
 
 /* EOF */

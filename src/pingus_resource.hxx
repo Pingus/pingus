@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.hxx,v 1.8 2002/09/04 14:55:11 torangan Exp $
+//  $Id: pingus_resource.hxx,v 1.9 2002/09/11 12:45:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ private:
   static CL_Surface apply_modifier (const CL_Surface&, const ResDescriptor& res_desc);
 
 public:
-  ///
+  /** */
   PingusResource();
   
   /** */
@@ -53,7 +53,8 @@ public:
   /** Load a surface with res_name from datafile */
   static CL_Surface load_surface(const std::string& res_name,
 				 const std::string& datafile,
-				 Pingus::ResourceModifier modifier = Pingus::ROT0);
+				 ResourceModifierNS::ResourceModifier modifier
+				 = ResourceModifierNS::ROT0);
   
   /** Load a surface from the ResDescriptor */
   static CL_Surface load_surface(const ResDescriptor&);

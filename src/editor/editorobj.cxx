@@ -1,4 +1,4 @@
-//  $Id: editorobj.cxx,v 1.4 2002/07/03 17:14:25 grumbel Exp $
+//  $Id: editorobj.cxx,v 1.5 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include "editorobj.hxx"
 
-Editor* EditorObj::editor = 0;
+EditorNS::Editor* EditorObj::editor = 0;
 
 EditorObj::EditorObj ()
 {
@@ -35,8 +35,8 @@ EditorObj::status_line()
   return "EditorObj::status_line(): Not implemented";
 }
 
-Pingus::Editor::PropertyFrame*
-EditorObj::get_gui_dialog (Editor*)
+EditorNS::PropertyFrame*
+EditorObj::get_gui_dialog (EditorNS::Editor*)
 {
   return 0;
 }

@@ -1,4 +1,4 @@
-//  $Id: node_data.cxx,v 1.4 2002/09/10 21:03:33 torangan Exp $
+//  $Id: node_data.cxx,v 1.5 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,7 @@
 #include "../xml_helper.hxx"
 #include "node.hxx"
 
-namespace pingus {
-namespace worldmap {
+namespace WorldMapNS {
 
 NodeData::NodeData (const NodeData& old) : id(old.id),
                                            links(old.links),
@@ -253,7 +252,6 @@ EmptyNodeData::create(xmlDocPtr /*doc*/, xmlNodePtr /*cur*/)
   return new EmptyNodeData ();
 }
 
-} // namespace worldmap
-} // namespace pingus
+} // namespace WorldMapNS
 
 /* EOF */

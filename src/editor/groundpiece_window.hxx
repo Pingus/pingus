@@ -1,4 +1,4 @@
-//  $Id: groundpiece_window.hxx,v 1.7 2002/08/23 15:49:54 torangan Exp $
+//  $Id: groundpiece_window.hxx,v 1.8 2002/09/11 12:45:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,45 +27,43 @@
 #include "property_frame.hxx"
 #include "editor_groundpiece_obj.hxx"
 
-namespace Pingus
+namespace EditorNS {
+
+class GroundpieceWindow : public PropertyFrame
 {
-  namespace Editor
-  {
-    class GroundpieceWindow : public PropertyFrame
-    {
-    private:
-      EditorGroundpieceObj* data;
+private:
+  EditorGroundpieceObj* data;
 
-      CL_Button convert_to_hotspot_button;
+  CL_Button convert_to_hotspot_button;
 
-      CL_Label  groundtype_label;
-      //CL_ListBox groundtype_listbox;
+  CL_Label  groundtype_label;
+  //CL_ListBox groundtype_listbox;
 
-      CL_RadioGroup groundtype_group;
-      CL_RadioButton ground_radiobutton;
-      CL_RadioButton transparent_radiobutton;
-      CL_RadioButton solid_radiobutton;
-      CL_RadioButton bridge_radiobutton;
+  CL_RadioGroup groundtype_group;
+  CL_RadioButton ground_radiobutton;
+  CL_RadioButton transparent_radiobutton;
+  CL_RadioButton solid_radiobutton;
+  CL_RadioButton bridge_radiobutton;
 
-      CL_Slot convert_to_hotspot_button_slot;
+  CL_Slot convert_to_hotspot_button_slot;
 
-    public:
-      GroundpieceWindow (CL_Component* parent,  EditorGroundpieceObj* data);
-      ~GroundpieceWindow ();
+public:
+  GroundpieceWindow (CL_Component* parent,  EditorGroundpieceObj* data);
+  ~GroundpieceWindow ();
 
-      void convert_to_hotspot ();
+  void convert_to_hotspot ();
 
-      void read_data ();
-      void write_data ();
+  void read_data ();
+  void write_data ();
 
-      std::string get_title () { return "Groundpiece Properties"; }
+  std::string get_title () { return "Groundpiece Properties"; }
       
-    private:
-      GroundpieceWindow (const GroundpieceWindow&);
-      GroundpieceWindow operator= (const GroundpieceWindow&);
-    };
-  }
-}
+private:
+  GroundpieceWindow (const GroundpieceWindow&);
+  GroundpieceWindow operator= (const GroundpieceWindow&);
+};
+
+} // namespace EditorNS
 
 #endif
 

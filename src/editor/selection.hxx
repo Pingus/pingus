@@ -1,4 +1,4 @@
-//  $Id: selection.hxx,v 1.8 2002/08/23 15:49:54 torangan Exp $
+//  $Id: selection.hxx,v 1.9 2002/09/11 12:45:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,9 @@
 #include "object_manager.hxx"
 
 class CL_Vector;
+
+namespace EditorNS {
+
 class EditorView;
 
 class EditorSelection 
@@ -75,6 +78,8 @@ private:
   EditorSelection (const EditorSelection&);
   EditorSelection operator= (const EditorSelection&);
 };
+
+} // namespace EditorNS
 
 #endif
 

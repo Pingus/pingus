@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.cxx,v 1.9 2002/08/23 15:49:50 torangan Exp $
+//  $Id: res_descriptor.cxx,v 1.10 2002/09/11 12:45:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,14 +23,12 @@
 #include "string_converter.hxx"
 #include "pingus_error.hxx"
 
-using namespace Pingus;
-
 ResDescriptor::ResDescriptor()
 {
   type = RD_RESOURCE;
   res_name = "";
   datafile = "global";
-  modifier = ROT0;
+  modifier = ResourceModifierNS::ROT0;
 }
 
 ResDescriptor::ResDescriptor (const ResDescriptor& res_desc)
@@ -57,7 +55,7 @@ ResDescriptor ResDescriptor::operator= (const ResDescriptor& old)
 ResDescriptor::ResDescriptor(const std::string& arg_res_name,
 			     const std::string& arg_datafile,
 			     ResourceType arg_type,
-			     Pingus::ResourceModifier arg_modifier)
+			     ResourceModifierNS::ResourceModifier arg_modifier)
 {
   res_name = arg_res_name;
   datafile = arg_datafile;
@@ -67,7 +65,7 @@ ResDescriptor::ResDescriptor(const std::string& arg_res_name,
 
 ResDescriptor::ResDescriptor(const std::string& str) 
 {
-  modifier = Pingus::ROT0;
+  modifier = ResourceModifierNS::ROT0;
 
   std::string::size_type pos1;
   std::string::size_type pos2;
@@ -93,7 +91,7 @@ ResDescriptor::ResDescriptor(const std::string& str)
 
 ResDescriptor::ResDescriptor(const std::string& c_cast, const std::string& value) 
 {
-  modifier = Pingus::ROT0;
+  modifier = ResourceModifierNS::ROT0;
   std::string cast;
 
   if (c_cast.find_first_of(":") == std::string::npos) {

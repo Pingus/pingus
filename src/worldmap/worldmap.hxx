@@ -1,4 +1,4 @@
-//  $Id: worldmap.hxx,v 1.10 2002/09/08 18:13:04 grumbel Exp $
+//  $Id: worldmap.hxx,v 1.11 2002/09/11 12:45:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,8 +27,7 @@ class CL_Key;
 class CL_Font;
 class CL_InputDevice;
 
-namespace pingus {
-namespace worldmap {
+namespace WorldMapNS {
 
 class Pingus;
 
@@ -150,8 +149,7 @@ private:
   WorldMap operator= (const WorldMap&);
 };
 
-} // namespace worldmap
-} // namespace pingus
+} // namespace WorldMapNS
 
 #endif
 

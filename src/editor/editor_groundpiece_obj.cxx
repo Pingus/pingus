@@ -1,4 +1,4 @@
-//  $Id: editor_groundpiece_obj.cxx,v 1.11 2002/09/10 14:33:07 grumbel Exp $
+//  $Id: editor_groundpiece_obj.cxx,v 1.12 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,6 @@
 #include <stdio.h>
 #include "../pingus_resource.hxx"
 #include "groundpiece_window.hxx"
-
-using namespace Pingus;
 
 EditorGroundpieceObj::EditorGroundpieceObj(const GroundpieceData& data)
   : GroundpieceData (data),
@@ -52,7 +50,7 @@ void
 EditorGroundpieceObj::vertical_flip ()
 {
   std::cout << "Vertical flip" << std::endl;
-  desc.modifier = Pingus::vertical_flip(desc.modifier);
+  desc.modifier = ResourceModifierNS::vertical_flip(desc.modifier);
   sprite.get_surface () = PingusResource::load_surface (desc);
 }
 
@@ -60,7 +58,7 @@ void
 EditorGroundpieceObj::horizontal_flip ()
 {
   std::cout << "Horz flip" << std::endl;
-  desc.modifier = Pingus::horizontal_flip(desc.modifier);
+  desc.modifier = ResourceModifierNS::horizontal_flip(desc.modifier);
   sprite.get_surface () = PingusResource::load_surface (desc);
 }
 
@@ -72,7 +70,7 @@ EditorGroundpieceObj::rotate_90 ()
   pos.x += sprite.get_width ()/2;
   pos.y += sprite.get_height ()/2;
 
-  desc.modifier = Pingus::rotate_90(desc.modifier);
+  desc.modifier = ResourceModifierNS::rotate_90(desc.modifier);
   sprite.get_surface () = PingusResource::load_surface (desc);
 
   pos.x -= sprite.get_width ()/2;
@@ -87,17 +85,17 @@ EditorGroundpieceObj::rotate_270 ()
   pos.x += sprite.get_width ()/2;
   pos.y += sprite.get_height ()/2;
 
-  desc.modifier = Pingus::rotate_270(desc.modifier);
+  desc.modifier = ResourceModifierNS::rotate_270(desc.modifier);
   sprite.get_surface () = PingusResource::load_surface (desc);
 
   pos.x -= sprite.get_width ()/2;
   pos.y -= sprite.get_height ()/2;
 }
 
-Pingus::Editor::PropertyFrame*
+EditorNS::PropertyFrame*
 EditorGroundpieceObj::get_gui_dialog(CL_Component* parent)
 {
-  return new Pingus::Editor::GroundpieceWindow (parent, this);
+  return new EditorNS::GroundpieceWindow (parent, this);
 }
 
 /* EOF */

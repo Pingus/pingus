@@ -1,4 +1,4 @@
-//  $Id: property_frame.cxx,v 1.1 2002/06/30 22:32:26 grumbel Exp $
+//  $Id: property_frame.cxx,v 1.2 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,11 +19,13 @@
 
 #include "property_frame.hxx"
 
-using namespace Pingus::Editor;
+namespace EditorNS {
 
 PropertyFrame::PropertyFrame (int width, int height, CL_Component* parent)
   : CL_Frame (CL_Rect (0, 0, width, height), parent)
 {
 }
+
+} // namespace EditorNS
 
 /* EOF */

@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.13 2002/09/05 11:26:35 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.14 2002/09/11 12:45:57 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -76,6 +76,8 @@
 #include "action_data.hxx"
 #include "fonts.hxx"
 #include "sound_real.hxx"
+
+using EditorNS::Editor;
 
 void
 signal_handler(int signo)

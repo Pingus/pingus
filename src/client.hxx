@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.15 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: client.hxx,v 1.16 2002/09/11 12:45:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -120,7 +120,3 @@ private:
 #endif
 
 /* EOF */
-
-
-
-

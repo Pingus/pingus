@@ -1,4 +1,4 @@
-//  $Id: node_data.hxx,v 1.7 2002/09/07 23:33:47 grumbel Exp $
+//  $Id: node_data.hxx,v 1.8 2002/09/11 12:45:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,8 +47,7 @@
    ...
 */
 
-namespace pingus {
-namespace worldmap {
+namespace WorldMapNS {
 
 class Node;
 
@@ -153,8 +152,7 @@ public:
   static TubeNodeData* create(xmlDocPtr doc, xmlNodePtr cur);
 };
 
-} // namespace worldmap
-} // namespace pingus
+} // namespace WorldMapNS
 
 #endif
 

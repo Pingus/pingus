@@ -1,4 +1,4 @@
-//  $Id: scroll_map.cxx,v 1.3 2002/07/01 12:46:22 grumbel Exp $
+//  $Id: scroll_map.cxx,v 1.4 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #include "scroll_map.hxx"
 #include "editor.hxx"
 #include "object_manager.hxx"
+
+namespace EditorNS {
 
 EditorEvent* ScrollMap::editor_event;
 
@@ -109,6 +111,8 @@ ScrollMap::draw()
 		     y_pos + height,
 		     1.0, 1.0, 1.0, 1.0);*/
 }
+
+} // namespace EditorNS
 
 /* EOF */
 

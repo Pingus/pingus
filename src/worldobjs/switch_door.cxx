@@ -1,4 +1,4 @@
-//  $Id: switch_door.cxx,v 1.12 2002/09/10 21:03:33 torangan Exp $
+//  $Id: switch_door.cxx,v 1.13 2002/09/11 12:45:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -305,7 +305,7 @@ EditorSwitchDoorObj::status_line()
 }
 
 void
-EditorSwitchDoorObj::draw (EditorView * view)
+EditorSwitchDoorObj::draw (EditorNS::EditorView * view)
 {
   view->draw_line (door_pos, switch_pos, 1.0, 0.0, 0.0);
 

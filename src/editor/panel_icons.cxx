@@ -1,4 +1,4 @@
-//  $Id: panel_icons.cxx,v 1.4 2002/07/01 12:46:22 grumbel Exp $
+//  $Id: panel_icons.cxx,v 1.5 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include "panel_icons.hxx"
 #include "editor.hxx"
 #include "editor_event.hxx"
+
+namespace EditorNS {
 
 PanelIconLoad::PanelIconLoad()
 {
@@ -192,5 +194,7 @@ PanelIconSetupActions::on_click()
 {
   editor->get_event()->editor_show_actions_window ();
 }
+
+} // namespace EditorNS
 
 /* EOF */

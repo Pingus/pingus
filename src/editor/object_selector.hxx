@@ -1,4 +1,4 @@
-// $Id: object_selector.hxx,v 1.9 2002/09/08 18:13:04 grumbel Exp $
+// $Id: object_selector.hxx,v 1.10 2002/09/11 12:45:58 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,11 @@
 
 class EditorObj;
 
-///
+namespace EditorNS {
+
+/** The ObjectManager provides a graphical interface to select objects
+    in the Editor from a list of objects and insert them into the
+    level. */
 class ObjectSelector
 {
 private:
@@ -69,6 +73,8 @@ private:
   ObjectSelector (const ObjectSelector&);
   ObjectSelector operator= (const ObjectSelector&);
 };
+
+} // namespace EditorNS
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: rect_editorobj.hxx,v 1.4 2002/09/06 17:33:29 torangan Exp $
+//  $Id: rect_editorobj.hxx,v 1.5 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ public:
   virtual int get_height () =0;
 
   /** Draw the caputre rectangle around the object */
-  virtual void   draw_mark (EditorView * view);
+  virtual void   draw_mark (EditorNS::EditorView * view);
   
   /** Return true when the object is under the given coordinates */
   virtual bool   is_over (const CL_Vector&);

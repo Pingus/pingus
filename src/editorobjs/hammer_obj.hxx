@@ -1,4 +1,4 @@
-//  $Id: hammer_obj.hxx,v 1.4 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: hammer_obj.hxx,v 1.5 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 
 namespace WorldObjsData {
 class HammerData;
-}
+} // namespace WorldObjsData
 
 namespace EditorObjs {
 
@@ -43,7 +43,7 @@ public:
   EditorObj* duplicate ();
     
   void write_xml (std::ostream& xml);
-  void draw (EditorView* view);
+  void draw (EditorNS::EditorView* view);
     
   std::string status_line ();
   

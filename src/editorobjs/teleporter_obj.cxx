@@ -1,4 +1,4 @@
-//  $Id: teleporter_obj.cxx,v 1.3 2002/09/10 14:33:07 grumbel Exp $
+//  $Id: teleporter_obj.cxx,v 1.4 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,7 +61,7 @@ TeleporterObj::create (const CL_Vector& pos)
 }
 
 void
-TeleporterObj::draw (EditorView * view)
+TeleporterObj::draw (EditorNS::EditorView * view)
 {
   //std::cout << "Drawing line" << std::endl;
   view->draw_line (static_cast<int>(data->pos.x), 

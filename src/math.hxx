@@ -1,4 +1,4 @@
-//  $Id: math.hxx,v 1.3 2002/08/16 13:03:35 torangan Exp $
+//  $Id: math.hxx,v 1.4 2002/09/11 12:45:57 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,35 +22,38 @@
 
 #include "pingus.hxx"
 
-namespace Pingus
+/** A collection of small math helper functions, some of them might be
+    equal in functionality to standard STL functions, but provided
+    here for portability and broken STL implementations 
+    
+    @brief A collection of mathematical helper functions */
+namespace Math {
+
+template<class T> 
+T min (const T& a, const T& b) 
 {
-  namespace Math
-  {
-    template<class T> 
-    T min (const T& a, const T& b) 
-    {
-      if (a < b)
-	return a;
-      else
-	return b;
-    }
-
-    template<class T> 
-    T max (const T& a, const T& b) 
-    {
-      if (a > b)
-	return a;
-      else
-	return b;
-    }
-
-    template<class T> 
-    T mid (const T& a, const T& b, const T& c) 
-    {
-      return max((a), min((b), (c)));
-    }
-  }
+  if (a < b)
+    return a;
+  else
+    return b;
 }
+
+template<class T> 
+T max (const T& a, const T& b) 
+{
+  if (a > b)
+    return a;
+  else
+    return b;
+}
+
+template<class T> 
+T mid (const T& a, const T& b, const T& c) 
+{
+  return max((a), min((b), (c)));
+}
+
+} // namespace Math
 
 #endif
 

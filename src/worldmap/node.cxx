@@ -1,4 +1,4 @@
-//  $Id: node.cxx,v 1.7 2002/09/07 23:33:47 grumbel Exp $
+//  $Id: node.cxx,v 1.8 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,8 +32,7 @@
 #include "../screen_manager.hxx"
 #include "node.hxx"
 
-namespace pingus {
-namespace worldmap {
+namespace WorldMapNS {
 
 TubeNode::TubeNode (const TubeNodeData& data)
   : TubeNodeData (data),
@@ -178,7 +177,6 @@ LevelNode::get_plf ()
   return plf;
 }
 
-} // namespace worldmap
-} // namespace pingus
+} // namespace WorldMapNS
 
 /* EOF */

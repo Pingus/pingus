@@ -1,4 +1,4 @@
-//  $Id: entrance_window.cxx,v 1.3 2002/07/03 17:14:25 grumbel Exp $
+//  $Id: entrance_window.cxx,v 1.4 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@
  [ok] [cancel]
 ***********************************/
 
-using namespace Pingus::Editor;
+namespace EditorNS {
 
 EntranceWindow::EntranceWindow (CL_Component* parent, EntranceObj* obj)
   : PropertyFrame (200, 100, parent),
@@ -84,5 +84,7 @@ EntranceWindow::~EntranceWindow ()
       std::cout << "EntranceWindow::~EntranceWindow (): object disapeared" << std::endl;
     }
 }
+
+} // namespace EditorNS
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: multiline_text.cxx,v 1.4 2002/08/17 17:56:23 torangan Exp $
+//  $Id: multiline_text.cxx,v 1.5 2002/09/11 12:45:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 #include "multiline_text.hxx"
 #include "math.hxx"
 
-using namespace Pingus;
 using namespace std;
 
 MultiLineText::MultiLineText()

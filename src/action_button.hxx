@@ -1,4 +1,4 @@
-//  $Id: action_button.hxx,v 1.10 2002/09/05 12:24:01 grumbel Exp $
+//  $Id: action_button.hxx,v 1.11 2002/09/11 12:45:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,8 +33,10 @@ class ActionHolder;
 class CL_Font;
 class CL_Vector;
 
-// ----------------- snip --------------------
-///
+/** ArmageddonButton, press it to start the armageddon and to turn all
+    pingus into bomber
+
+    \sa Client */
 class ArmageddonButton : public GUI::Component
 {
 private:
@@ -65,7 +67,10 @@ private:
 
 // ----------------- snip --------------------
 
-///
+/** Fast Forward button, press it to let the game run faster, press it
+    again to return to normal speed 
+
+    \sa Client */
 class ForwardButton : public GUI::Component
 {
 private:
@@ -91,7 +96,10 @@ private:
 
 // ----------------- snip --------------------
 
-///
+/** Pause button, press it to pause the game, press it again to
+    continue 
+
+    \sa Client */
 class PauseButton : public GUI::Component
 {
 private:
@@ -163,7 +171,11 @@ private:
 };
 
 // ----------------- snip --------------------
-///
+
+/** Button which represents an action, one you click it the current
+    action will be set to the action represented by the button.
+
+    \sa Client */
 class VerticalActionButton : public ActionButton 
 {
 private:
@@ -181,8 +193,6 @@ private:
   VerticalActionButton (const VerticalActionButton&);
   VerticalActionButton operator= (const VerticalActionButton&);
 };
-
-// ----------------- snip --------------------
 
 #endif /* ACTIONBUTTON */
 

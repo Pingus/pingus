@@ -1,4 +1,4 @@
-//  $Id: display_graphic_context.cxx,v 1.3 2002/09/05 11:26:35 grumbel Exp $
+//  $Id: display_graphic_context.cxx,v 1.4 2002/09/11 12:45:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,8 +22,6 @@
 #include "math.hxx"
 #include "sprite.hxx"
 #include "display_graphic_context.hxx"
-
-using namespace Pingus;
 
 DisplayGraphicContext::DisplayGraphicContext (int x1, int y1, int x2, int y2, 
 					      int /*x_offset*/, int /*y_offset*/)

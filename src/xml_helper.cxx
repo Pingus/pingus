@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.15 2002/09/10 21:03:32 torangan Exp $
+//  $Id: xml_helper.cxx,v 1.16 2002/09/11 12:45:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,8 +30,6 @@
 #error "int xmlIsBlankNode(xmlNodePtr node) missing from libxml"
 int xmlIsBlankNode(xmlNodePtr node) { return 0; }
 #endif
-
-using namespace Pingus;
 
 xmlNodePtr
 XMLhelper::skip_blank (xmlNodePtr cur)
@@ -227,7 +225,7 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 			{
 			  //std::cout << "Seen: modifier: " << ident << std::endl;
 
-			  desc.modifier = rs_from_string(ident);
+			  desc.modifier = ResourceModifierNS::rs_from_string(ident);
 			  xmlFree(ident);
 			}
 		    }
@@ -281,7 +279,7 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 			{
 			  //std::cout << "Seen: modifier: " << ident << std::endl;
 		      
-			  desc.modifier = rs_from_string(ident);
+			  desc.modifier = ResourceModifierNS::rs_from_string(ident);
 			  xmlFree(ident);
 			}
 		    }
@@ -353,7 +351,7 @@ XMLhelper::write_desc_xml(std::ostream& xml, ResDescriptor desc)
       break;
     }
 
-  xml << "    <modifier>" << rs_to_string(desc.modifier) << "</modifier>" << std::endl;
+  xml << "    <modifier>" << ResourceModifierNS::rs_to_string(desc.modifier) << "</modifier>" << std::endl;
   xml << "  </resource></surface>" << std::endl;
 }
 

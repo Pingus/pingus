@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.1 2002/08/16 13:27:35 torangan Exp $
+//  $Id: pingus.hxx,v 1.2 2002/09/11 12:45:57 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,14 +20,20 @@
 #ifndef HEADER_PINGUS_PINGUS_HXX
 #define HEADER_PINGUS_PINGUS_HXX
 
+/**
+ * Multiple hacks, workarounds and helper things which are included
+ * everywhere and are used to fix broken compilers or supress
+ * warrnings.
+ *
+ * @file pingus.hxx
+ **/
+
 #ifdef WIN32
 #  define for if(0);else for
 #  pragma warning(disable:4786)
 #endif
 
 #define UNUSED_ARG(a) do {/* null */} while (&a == 0)
-
-
 
 #endif
 

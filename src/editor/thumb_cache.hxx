@@ -1,4 +1,4 @@
-//  $Id: thumb_cache.hxx,v 1.6 2002/08/23 15:49:55 torangan Exp $
+//  $Id: thumb_cache.hxx,v 1.7 2002/09/11 12:45:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,8 @@
 
 class CL_Surface;
 
+namespace EditorNS {
+
 /** This class is used inside the SurfaceSelector to load thumbnails
     of surfaces for selection */
 class ThumbCache
@@ -47,10 +49,8 @@ private:
   ThumbCache operator= (const ThumbCache&);  
 };
 
+} // namespace EditorNS
+
 #endif
 
 /* EOF */
-
-
-
-

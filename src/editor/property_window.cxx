@@ -1,4 +1,4 @@
-//  $Id: property_window.cxx,v 1.9 2002/08/16 13:03:36 torangan Exp $
+//  $Id: property_window.cxx,v 1.10 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,9 +24,9 @@
 #include "property_frame.hxx"
 #include "property_window.hxx"
 
-using namespace Pingus::Editor;
+namespace EditorNS {
 
-PropertyWindow::PropertyWindow (::Editor* parent)
+PropertyWindow::PropertyWindow (Editor* parent)
   : CL_Window (CL_Rect (0, 0, 200, 200), "Object Properties", parent->get_gui_manager ()),
     editor (parent),
     current_frame (0), label (CL_Point (50, 0), "no properties available", get_client_area ())
@@ -49,7 +49,7 @@ PropertyWindow::update_frame (EditorObj* obj)
   if (obj)
     {
       // We are responsible to delete comp
-      Pingus::Editor::PropertyFrame* comp = obj->get_gui_dialog (editor);
+      PropertyFrame* comp = obj->get_gui_dialog (editor);
    
       if (comp)
 	{
@@ -74,5 +74,7 @@ PropertyWindow::update_frame (EditorObj* obj)
       label.show (true);
     }
 }
+
+} // namespace EditorNS
 
 /* EOF */

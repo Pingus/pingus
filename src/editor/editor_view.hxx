@@ -1,4 +1,4 @@
-//  $Id: editor_view.hxx,v 1.4 2002/08/23 15:49:54 torangan Exp $
+//  $Id: editor_view.hxx,v 1.5 2002/09/11 12:45:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,8 @@
 class Sprite;
 class CL_Rect;
 class CL_Surface;
+
+namespace EditorNS {
 
 /** The EdtiorView is basically the graphic context to which the
     editor draws. It provides function to manipulate the display of
@@ -96,6 +98,8 @@ private:
   EditorView (const EditorView&);
   EditorView operator= (const EditorView&);
 };
+
+} // namespace EditorNS
 
 #endif
 

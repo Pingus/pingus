@@ -1,4 +1,4 @@
-//  $Id: graph.cxx,v 1.6 2002/09/10 21:03:33 torangan Exp $
+//  $Id: graph.cxx,v 1.7 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,7 @@
 #include "../xml_helper.hxx"
 #include "graph.hxx"
 
-namespace pingus {
-namespace worldmap {
+namespace WorldMapNS {
 
 Graph::Graph ()
 {
@@ -203,7 +202,6 @@ Graph::draw (const CL_Vector& offset)
    delete provider;
 */
 
-} // namespace worldmap
-} // namespace pingus
+} // namespace WorldMapNS
 
 /* EOF */

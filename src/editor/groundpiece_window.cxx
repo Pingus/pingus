@@ -1,4 +1,4 @@
-//  $Id: groundpiece_window.cxx,v 1.7 2002/07/03 17:14:25 grumbel Exp $
+//  $Id: groundpiece_window.cxx,v 1.8 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@
  [ok] [cancel]
 *************************/
 
-using namespace Pingus::Editor;
+namespace EditorNS {
 
 GroundpieceWindow::GroundpieceWindow (CL_Component* parent,  EditorGroundpieceObj* arg_data)
   : PropertyFrame (200, 120, parent),
@@ -114,5 +114,7 @@ GroundpieceWindow::write_data ()
       std::cout << "GroundpieceWindow::write_data (): object disapeared" << std::endl;
     }
 }
+
+} // namespace EditorNS
 
 /* EOF */

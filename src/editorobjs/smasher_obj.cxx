@@ -1,4 +1,4 @@
-//  $Id: smasher_obj.cxx,v 1.5 2002/09/10 14:33:07 grumbel Exp $
+//  $Id: smasher_obj.cxx,v 1.6 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,7 @@ SmasherObj::write_xml (std::ostream& xml)
 }
 
 void
-SmasherObj::draw (EditorView* view)
+SmasherObj::draw (EditorNS::EditorView* view)
 {
   view->draw(sprite, data->pos, frame);
 }

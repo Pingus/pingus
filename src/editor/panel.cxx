@@ -1,4 +1,4 @@
-//  $Id: panel.cxx,v 1.4 2002/08/17 17:56:23 torangan Exp $
+//  $Id: panel.cxx,v 1.5 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,8 @@
 #include "../globals.hxx"
 #include "../pingus_resource.hxx"
 #include "panel_icons.hxx"
+
+namespace EditorNS {
 
 Editor* PanelIcon::editor;
 
@@ -193,5 +195,7 @@ Panel::set_editor(Editor* e)
   editor = e;
   PanelIcon::editor = e;
 }
+
+} // namespace EditorNS
 
 /* EOF */

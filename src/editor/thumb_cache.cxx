@@ -1,4 +1,4 @@
-//  $Id: thumb_cache.cxx,v 1.9 2002/09/04 14:55:12 torangan Exp $
+//  $Id: thumb_cache.cxx,v 1.10 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@
 #include "../math.hxx"
 #include "thumb_cache.hxx"
 
-using namespace Pingus;
+namespace EditorNS {
 
 const unsigned int thumbcache_version = 3;
 
@@ -188,5 +188,7 @@ ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const s
       return Blitter::scale_surface (sur, width, height); 
     }
 }
+
+} // namespace EditorNS
 
 /* EOF */

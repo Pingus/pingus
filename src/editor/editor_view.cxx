@@ -1,4 +1,4 @@
-//  $Id: editor_view.cxx,v 1.2 2002/06/20 16:48:11 grumbel Exp $
+//  $Id: editor_view.cxx,v 1.3 2002/09/11 12:45:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include "editor_view.hxx"
 #include "../math.hxx"
 
-using namespace Pingus;
+namespace EditorNS {
 
 EditorView::EditorView (int x1, int y1, int x2, int y2, 
 			int /*x_offset*/, int /*y_offset*/)
@@ -290,5 +290,7 @@ EditorView::draw_circle (int x_pos, int y_pos, int radius,
       next = next.rotate (pi/8, CL_Vector (0, 0, 1.0f));
     }
 }
+
+} // namespace EditorNS
 
 /* EOF */

@@ -1,4 +1,4 @@
-// $Id: rect_editorobj.cxx,v 1.4 2002/09/06 17:33:29 torangan Exp $
+// $Id: rect_editorobj.cxx,v 1.5 2002/09/11 12:45:58 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ RectEditorObj::operator= (const RectEditorObj& old)
 }
 
 void
-RectEditorObj::draw_mark (EditorView * view) 
+RectEditorObj::draw_mark (EditorNS::EditorView * view) 
 {
   CL_Vector ul (get_upper_left_corner ());
 

@@ -1,4 +1,4 @@
-//  $Id: stat.hxx,v 1.6 2002/09/07 23:33:47 grumbel Exp $
+//  $Id: stat.hxx,v 1.7 2002/09/11 12:45:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,7 @@
 #include <map>
 #include "graph.hxx"
 
-namespace pingus {
-namespace worldmap {
+namespace WorldMapNS {
 
 /** This class holds the information on a level's completeness, etc.
     It's only here for internal use by PingusWorldMapStat. */
@@ -82,8 +81,7 @@ private:
   PingusWorldMapStat operator= (const PingusWorldMapStat&);
 };
 
-} // namespace worldmap
-} // namespace pingus
+} // namespace WorldMapNS
 
 #endif
 

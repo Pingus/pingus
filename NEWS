@@ -1,8 +1,11 @@
+0.5.0 (??/??/2002)
+=======================
+
+
+
+
 Release (28/Jul/2001)
 =====================
-* Added object grouping in the editor
-* Added multiple backgrounds (paralax scrolling)
-* Added dynamic backgrounds
 * Added basic multiplayer support
 * XML based level file format
 * All images are now eighter png or jpeg format
