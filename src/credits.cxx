@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: credits.cxx,v 1.2 2002/06/19 15:19:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,9 +36,8 @@
 
 Credits credit_screen;
 
-Credits::Credits()
+Credits::Credits() : is_init(false)
 {  
-  is_init = false;
 }
 
 ///

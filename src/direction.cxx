@@ -1,4 +1,4 @@
-//  $Id: direction.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: direction.cxx,v 1.2 2002/06/19 15:19:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,9 +19,8 @@
 
 #include "direction.hxx"
 
-Direction::Direction()
+Direction::Direction() : direction(0)
 {
-  direction = 0;
 }
 
 Direction::Direction(const Direction& dir)

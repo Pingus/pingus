@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.cxx,v 1.1 2002/06/12 19:03:10 grumbel Exp $
+//  $Id: conveyor_belt.cxx,v 1.2 2002/06/19 15:19:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,10 +28,8 @@
 #include "../pingu.hxx"
 #include "../boost/smart_ptr.hpp"
 
-ConveyorBeltData::ConveyorBeltData ()
+ConveyorBeltData::ConveyorBeltData () : width(5), speed(2)
 {
-  width = 5;
-  speed = 2;
 }
 
 /** Writte the content of this object formated as xml to the given

@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: client.cxx,v 1.3 2002/06/19 15:19:26 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,15 +41,12 @@
 #include "button_panel.hxx"
 
 Client::Client(Controller* arg_controller, Server * s)
-  : // plf ?
-    // result ?
-    server       (s),
+  : server       (s),
     fast_forward (false),
     pause        (false),
     skip_frame   (0),
     do_replay    (false),
     is_finished  (false),
-    // obj ?
     button_panel (0),
     pcounter     (0),
     playfield    (0),
@@ -58,7 +55,6 @@ Client::Client(Controller* arg_controller, Server * s)
     hurry_up     (0),
     controller   (arg_controller),
     cursor       (new Cursor ("cursors/animcross", "core", controller))
-    // slot_x ?
 {
   //player = 0;
  

@@ -1,4 +1,4 @@
-//  $Id: guillotine.cxx,v 1.1 2002/06/12 19:11:32 grumbel Exp $
+//  $Id: guillotine.cxx,v 1.2 2002/06/19 15:19:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,13 +23,12 @@
 #include "../world.hxx"
 #include "../pingu.hxx"
 
-Guillotine::Guillotine(const TrapData& data)
+Guillotine::Guillotine(const TrapData& data) : killing(false), 
+                                               idle_surf(PingusResource::load_surface("Traps/guillotineidle", "traps"))
 {
-  killing = false;
   pos = data.pos;
   
   surface = PingusResource::load_surface("Traps/guillotinekill", "traps");
-  idle_surf = PingusResource::load_surface("Traps/guillotineidle", "traps");
 
   counter.set_size(surface.get_num_frames()/2);
   counter.set_type(GameCounter::once);

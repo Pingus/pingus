@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.5 2002/06/17 15:45:26 torangan Exp $
+//  $Id: world.cxx,v 1.6 2002/06/19 15:19:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,6 +64,7 @@ World::World(PLF* arg_plf)
   // Not perfect, but works
   WorldObj::set_world(this);
 
+  exit_world    = false;
   do_armageddon = false;
   allowed_pingus = plf->get_pingus();
   number_to_save = plf->get_number_to_save();

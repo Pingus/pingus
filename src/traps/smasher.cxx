@@ -1,4 +1,4 @@
-//  $Id: smasher.cxx,v 1.2 2002/06/13 14:25:13 torangan Exp $
+//  $Id: smasher.cxx,v 1.3 2002/06/19 15:19:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,12 +29,10 @@
 #include "../pingu_action_factory.hxx"
 #include "../pingu.hxx"
 
-Smasher::Smasher(const TrapData& data)
+Smasher::Smasher(const TrapData& data) : smashing(false), downwards(false), count(0)
 {
-  smashing = false;
   pos = data.pos;
   surface = PingusResource::load_surface("Traps/smasher", "traps");
-  count = 0;
 }
 
 Smasher::~Smasher()

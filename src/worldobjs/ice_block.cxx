@@ -1,4 +1,4 @@
-//  $Id: ice_block.cxx,v 1.1 2002/06/12 19:03:10 grumbel Exp $
+//  $Id: ice_block.cxx,v 1.2 2002/06/19 15:19:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,9 +29,8 @@
 #include "../pingu.hxx"
 #include "../boost/smart_ptr.hpp"
 
-IceBlockData::IceBlockData ()
+IceBlockData::IceBlockData () : width(1)
 {
-  width = 1;
 }
 
 void

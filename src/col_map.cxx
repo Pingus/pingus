@@ -1,4 +1,4 @@
-//  $Id: col_map.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: col_map.cxx,v 1.3 2002/06/19 15:19:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,9 +29,8 @@
 #include "my_gettext.hxx"
 
 
-ColMap::ColMap()
+ColMap::ColMap() : init(false)
 {
-  init = false;
 }
 
 // Obtain the colmap from a memory area

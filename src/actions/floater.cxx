@@ -1,4 +1,4 @@
-//  $Id: floater.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: floater.cxx,v 1.3 2002/06/19 15:19:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include "../pingu.hxx"
 #include "floater.hxx"
 
-Floater::Floater()
+Floater::Floater() : falling_depth(0), step(0)
 {
 }
 

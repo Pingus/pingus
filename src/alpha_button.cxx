@@ -1,4 +1,4 @@
-//  $Id: alpha_button.cxx,v 1.1 2002/06/12 19:04:10 grumbel Exp $
+//  $Id: alpha_button.cxx,v 1.2 2002/06/19 15:19:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "alpha_button.hxx"
 
 AlphaButton::AlphaButton(std::string str, int x1, int y1, int w, int h) :
+    pressed(false),
     font  (PingusResource::load_font("Fonts/smallfont_h", "fonts")),
     font_h(PingusResource::load_font("Fonts/smallfont", "fonts")),
     name  (str),

@@ -1,4 +1,4 @@
-//  $Id: fake_exit.cxx,v 1.1 2002/06/12 19:11:32 grumbel Exp $
+//  $Id: fake_exit.cxx,v 1.2 2002/06/19 15:19:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@
 
 #include "fake_exit.hxx"
 
-FakeExit::FakeExit(const TrapData& data)
+FakeExit::FakeExit(const TrapData& data) : smashing(false)
 {
   surface = PingusResource::load_surface("Traps/fake_exit", "traps");
   pos = data.pos;
@@ -34,7 +34,6 @@ FakeExit::FakeExit(const TrapData& data)
   counter.set_type(GameCounter::once);
   counter.set_speed(2.5);
   counter = surface.get_num_frames() - 1;
-  smashing = false;
 }
 
 FakeExit::~FakeExit()

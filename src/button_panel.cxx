@@ -1,4 +1,4 @@
-//  $Id: button_panel.cxx,v 1.3 2002/06/17 15:45:26 torangan Exp $
+//  $Id: button_panel.cxx,v 1.4 2002/06/19 15:19:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,9 @@ CL_Surface ButtonPanel::button_cap;
 
 ButtonPanel::ButtonPanel(PLF* plf, Controller* arg_controller,
                   			 int arg_x_pos, int arg_y_pos)
-  : last_press(0),
+  : armageddon_pressed(false),
+    left_pressed(0),
+    last_press(0),
     controller (arg_controller),
     x_pos (arg_x_pos), 
     y_pos (arg_y_pos)
@@ -64,9 +66,8 @@ ButtonPanel::ButtonPanel(PLF* plf, Controller* arg_controller,
 
   forward->pressed = false;
   pause->pressed   = false;
-  armageddon_pressed = false;
+    
   
-  left_pressed = 0;
   
   pressed_button = a_buttons.begin();
 }

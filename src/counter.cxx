@@ -1,4 +1,4 @@
-//  $Id: counter.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: counter.cxx,v 1.3 2002/06/19 15:19:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,12 +20,8 @@
 #include <iostream>
 #include "counter.hxx"
 
-Counter::Counter()
+Counter::Counter() : s(1), count(0), add(1), type(loop)
 {
-  add = 1;
-  s = 1;
-  count = 0;
-  type = loop;
 }
 
 Counter::Counter(int a)

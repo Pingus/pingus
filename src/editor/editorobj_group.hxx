@@ -1,4 +1,4 @@
-//  $Id: editorobj_group.hxx,v 1.2 2002/06/13 19:53:22 torangan Exp $
+//  $Id: editorobj_group.hxx,v 1.3 2002/06/19 15:19:26 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,8 +31,8 @@ private:
   std::list<boost::shared_ptr<EditorObj> > objs;
   
   CL_Vector upper_left_corner;
-  int width, height;
-  bool init;
+  //int width, height;
+  //bool init;
 public:
   EditorObjGroup();
   virtual ~EditorObjGroup();

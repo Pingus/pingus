@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: basher.cxx,v 1.3 2002/06/19 15:19:26 torangan Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -29,17 +29,17 @@ using namespace std;
 // Initialise class static.
 const int Basher::bash_height = 4;
 
-Basher::Basher()
+Basher::Basher() : basher_c(0), first_bash(true)
 {
 }
 
 void
 Basher::init(void)
 {
+  first_bash = true;
   bash_radius = PingusResource::load_surface ("Other/bash_radius", "pingus");
   sprite = Sprite (PingusResource::load_surface ("Pingus/basher0", "pingus"));
   sprite.set_align_center_bottom ();
-  first_bash = true;
 }
 
 void

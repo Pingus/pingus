@@ -1,4 +1,4 @@
-//  $Id: console.hxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: console.hxx,v 1.2 2002/06/19 15:19:26 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ class ConsoleBuffer :
 {
 private:
   std::string current_line;
-  bool continue_last;
+  //bool continue_last;
   std::vector<std::string> buffer;
   char char_buffer[CONSOLE_BUFFER_SIZE];
   

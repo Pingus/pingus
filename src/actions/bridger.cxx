@@ -1,4 +1,4 @@
-//  $Id: bridger.cxx,v 1.1 2002/06/12 19:01:42 grumbel Exp $
+//  $Id: bridger.cxx,v 1.2 2002/06/19 15:19:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ CL_Surface Bridger::brick_l;
 CL_Surface Bridger::brick_r;
 CL_Surface Bridger::static_surface;
 
-Bridger::Bridger()
+Bridger::Bridger() : bricks(15), block_build(false), mode(B_BUILDING) 
 {
 }
 

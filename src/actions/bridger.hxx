@@ -1,4 +1,4 @@
-//  $Id: bridger.hxx,v 1.1 2002/06/12 19:01:42 grumbel Exp $
+//  $Id: bridger.hxx,v 1.2 2002/06/19 15:19:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,8 +40,8 @@ private:
   static CL_Surface brick_r;
 
   int bricks;
-  int step;
-  int do_steps;
+  //int step;
+  //int do_steps;
   bool block_build;
 
   enum Mode { B_WALKING, B_BUILDING } mode;

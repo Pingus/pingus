@@ -1,4 +1,4 @@
-//  $Id: demo_recorder.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: demo_recorder.cxx,v 1.3 2002/06/19 15:19:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,9 +30,8 @@
 
 using namespace std;
 
-DemoRecorder::DemoRecorder()
+DemoRecorder::DemoRecorder() : is_recording(false)
 {
-  is_recording = false;
 }
 
 DemoRecorder::~DemoRecorder()
