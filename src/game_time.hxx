@@ -1,4 +1,4 @@
-//  $Id: game_time.hxx,v 1.8 2002/11/27 20:05:42 grumbel Exp $
+//  $Id: game_time.hxx,v 1.9 2003/04/06 14:37:07 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,6 +53,9 @@ public:
   
   /** Start from zero */
   void reset(void);
+
+  /** Convert time given in ticks, into a string of Minutes:Seconds */
+  static std::string ticks_to_realtime_string(int ticks);
   
 private:
   GameTime (const GameTime&);

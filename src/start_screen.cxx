@@ -1,4 +1,4 @@
-//  $Id: start_screen.cxx,v 1.9 2003/04/03 17:03:24 grumbel Exp $
+//  $Id: start_screen.cxx,v 1.10 2003/04/06 14:37:07 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,7 @@
 #include "plf.hxx"
 #include "pingus_resource.hxx"
 #include "start_screen.hxx"
+#include "game_time.hxx"
 #include "sound/sound.hxx"
 
 class StartScreenComponent : public GUI::Component
@@ -38,7 +39,7 @@ class StartScreenComponent : public GUI::Component
 private:
   PLFHandle plf;
   CL_Surface background;
-  char time_str[10];
+  std::string time_str;
 public:
   StartScreenComponent(PLFHandle plf);
   virtual ~StartScreenComponent() {}
@@ -119,24 +120,7 @@ StartScreenComponent::StartScreenComponent(PLFHandle p)
   : plf(p)
 {
   background = PingusResource::load_surface("menu/startscreenbg", "core");
-
-  int time_value = plf->get_time();
-  if (time_value == -1)
-    {
-      snprintf(time_str, 10, "unlimited");
-    }
-  else
-    {
-      int seconds   = (time_value / game_speed % 60);
-      int minutes   = (time_value / (60 * game_speed));
-  
-      // Stop displaying negative seconds, which can happen if armageddon is
-      // clicked with 1 second left.
-      if (seconds < 0)
-        seconds = 0;
-  
-      snprintf(time_str, 8, "%2d:%02d", minutes, seconds);
-    }
+  time_str = GameTime::ticks_to_realtime_string(plf->get_time());
 }
 
 void

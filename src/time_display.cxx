@@ -1,4 +1,4 @@
-//  $Id: time_display.cxx,v 1.12 2003/02/19 10:37:31 grumbel Exp $
+//  $Id: time_display.cxx,v 1.13 2003/04/06 14:37:07 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,8 @@
 #include "true_server.hxx"
 #include "client.hxx"
 #include "plf.hxx"
+#include "game_time.hxx"
+#include "string_converter.hxx"
 
 TimeDisplay::TimeDisplay (Client* c)
   : server(c->get_server()),
@@ -42,7 +44,7 @@ void
 TimeDisplay::draw (GraphicContext& gc)
 {
   int  time_value = server->get_plf()->get_time() - server->get_world()->get_time_passed();
-  char time_string[8];
+  std::string time_string;
   
   if (server->get_plf()->get_time() == -1 && !(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
     {
@@ -54,21 +56,12 @@ TimeDisplay::draw (GraphicContext& gc)
     {  
       if (!(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
 	{
-	  //int millisecs = (((time_value * 100)) / game_speed) % 100;
-	  int seconds   = (time_value / game_speed % 60);
-	  int minutes   = (time_value / (60 * game_speed));
-
-	  // Stop displaying negative seconds, which can happen if armageddon is
-	  // clicked with 1 second left.
-	  if (seconds < 0)
-	    seconds = 0;
-
-	  snprintf(time_string, 8, "%2d:%02d", minutes, seconds);
+          time_string = GameTime::ticks_to_realtime_string(time_value);
 	}
       else
 	{
 	  time_value = server->get_world()->get_time_passed();
-	  snprintf(time_string, 8, "%4d", time_value);
+	  time_string = to_string(time_value);
 	}
 
       font->print_right(CL_Display::get_width() - 5, 3, time_string);

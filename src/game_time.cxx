@@ -1,4 +1,4 @@
-//  $Id: game_time.cxx,v 1.4 2002/06/28 09:51:46 grumbel Exp $
+//  $Id: game_time.cxx,v 1.5 2003/04/06 14:37:07 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,6 +53,30 @@ void
 GameTime::reset(void)
 {
   count = 0;
+}
+
+std::string
+GameTime::ticks_to_realtime_string(int ticks)
+{
+  char time_str[10];
+
+  if (ticks == -1)
+    {
+      snprintf(time_str, 10, "unlimited");
+    }
+  else
+    {
+      int seconds   = (ticks / game_speed % 60);
+      int minutes   = (ticks / (60 * game_speed));
+  
+      // Stop displaying negative seconds, which can happen if armageddon is
+      // clicked with 1 second left.
+      if (seconds < 0)
+        seconds = 0;
+  
+      snprintf(time_str, 10, "%2d:%02d", minutes, seconds);
+    }
+  return time_str;
 }
 
 /* EOF */

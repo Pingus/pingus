@@ -1,4 +1,4 @@
-//  $Id: result_screen.cxx,v 1.11 2003/04/05 18:36:50 grumbel Exp $
+//  $Id: result_screen.cxx,v 1.12 2003/04/06 14:37:07 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@
 #include "game_session.hxx"
 #include "system.hxx"
 #include "sound/sound.hxx"
+#include "game_time.hxx"
 #include "result_screen.hxx"
 
 class ResultScreenComponent : public GUI::Component
@@ -37,6 +38,7 @@ class ResultScreenComponent : public GUI::Component
 public:
   Result result;
   CL_Surface background;
+  std::string time_str;
 
   std::vector<CL_Surface> chalk_pingus;
 
@@ -140,6 +142,11 @@ ResultScreenComponent::ResultScreenComponent(Result arg_result)
   chalk_pingus.push_back(PingusResource::load_surface("misc/chalk_pingu2", "core"));
   chalk_pingus.push_back(PingusResource::load_surface("misc/chalk_pingu3", "core"));
   chalk_pingus.push_back(PingusResource::load_surface("misc/chalk_pingu4", "core"));
+  
+  if (result.max_time == -1)
+    time_str = "-";
+  else
+    time_str = GameTime::ticks_to_realtime_string(result.max_time - result.used_time);
 }
 
 void
@@ -215,10 +222,7 @@ ResultScreenComponent::draw(GraphicContext& gc)
 
 
   gc.print_left(Fonts::chalk_normal,   300, 370, _("Time left: "));
-  if (result.max_time == -1)
-    gc.print_right(Fonts::chalk_normal, 500, 370, "-");
-  else
-    gc.print_right(Fonts::chalk_normal, 500, 370, to_string(result.max_time - result.used_time));
+  gc.print_right(Fonts::chalk_normal, 500, 370, time_str);
 }
 
 ResultScreen::ResultScreen(Result arg_result)
