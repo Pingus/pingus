@@ -1,4 +1,4 @@
-//  $Id: editor_hotspot.hxx,v 1.6 2002/08/23 15:49:48 torangan Exp $
+//  $Id: editor_hotspot.hxx,v 1.7 2002/09/10 14:33:07 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,8 +31,10 @@ private:
 public:
   EditorHotspot (const HotspotData& data)
     : HotspotData (data),
-      SpriteEditorObj (desc, pos)
-  {}
+      SpriteEditorObj (desc)
+  {
+    pos_ref = &pos;
+  }
 
   void write_xml(std::ostream& xml) { HotspotData::write_xml (xml); }
 

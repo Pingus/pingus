@@ -1,4 +1,4 @@
-//  $Id: plfobj.cxx,v 1.10 2002/09/06 17:33:29 torangan Exp $
+//  $Id: plfobj.cxx,v 1.11 2002/09/10 14:33:07 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,9 +26,10 @@
 using namespace std;
 
 EntranceObj::EntranceObj(const EntranceData& data)
-  : SpriteEditorObj (pos),
-    EntranceData (data)
+  : EntranceData (data)
 {
+  pos_ref = &pos;
+
   std::cout << "EntranceObj::EntranceObj(const EntranceData& data): " 
 	    << type << std::endl;
 
@@ -97,7 +98,7 @@ EntranceObj::get_gui_dialog (CL_Component* parent)
 }
 
 ExitObj::ExitObj(const ExitData& data)
-  : SpriteEditorObj (data.desc.res_name, data.desc.datafile, pos),
+  : SpriteEditorObj (data.desc.res_name, data.desc.datafile, &pos),
     ExitData (data)
 {
   sprite.set_align_center_bottom ();
@@ -129,7 +130,7 @@ ExitObj::status_line()
 
 
 LiquidObj::LiquidObj(const LiquidData& data)
-  : SpriteEditorObj (data.desc.res_name, data.desc.datafile, pos),
+  : SpriteEditorObj (data.desc.res_name, data.desc.datafile),
     LiquidData (data)
 {
   if (old_width_handling)
@@ -137,6 +138,8 @@ LiquidObj::LiquidObj(const LiquidData& data)
       width = (width + sprite.get_width ()) / sprite.get_width ();
       old_width_handling = false;
     }
+
+  pos_ref = &pos;
 }
 
 EditorObj*

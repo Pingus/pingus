@@ -1,4 +1,4 @@
-//  $Id: start_pos.cxx,v 1.5 2002/07/02 13:36:07 torangan Exp $
+//  $Id: start_pos.cxx,v 1.6 2002/09/10 14:33:07 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,11 +22,13 @@
 #include "start_pos.hxx"
 
 StartPos::StartPos(int arg_x_pos, int arg_y_pos)
-  : SpriteEditorObj("editor/start_pos", "core", pos)
+  : SpriteEditorObj("editor/start_pos", "core")
 {
   pos.x = arg_x_pos;
   pos.y = arg_y_pos;
   pos.z = 1000;
+
+  pos_ref = &pos;
 }
 
 void

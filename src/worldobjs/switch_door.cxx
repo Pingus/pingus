@@ -1,4 +1,4 @@
-//  $Id: switch_door.cxx,v 1.9 2002/09/05 11:26:35 grumbel Exp $
+//  $Id: switch_door.cxx,v 1.10 2002/09/10 14:33:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -230,9 +230,10 @@ SwitchDoor::update(float /*delta*/)
 ///////////////////////////////
 
 EditorSwitchDoorSwitchObj::EditorSwitchDoorSwitchObj (EditorSwitchDoorObj* data)
-  : SpriteEditorObj ("switchdoor_switch", "worldobjs", data->switch_pos),
-  door (data)
+  : SpriteEditorObj ("switchdoor_switch", "worldobjs"),
+    door (data)
 {
+  pos_ref = &door->switch_pos;
 }
 
 std::string 

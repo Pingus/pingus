@@ -1,4 +1,4 @@
-//  $Id: smasher_data.cxx,v 1.1 2002/09/04 14:55:13 torangan Exp $
+//  $Id: smasher_data.cxx,v 1.2 2002/09/10 14:33:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,52 +26,52 @@
 
 namespace WorldObjsData {
 
-  SmasherData::SmasherData ()
-  {
-  }
-
-  SmasherData::SmasherData (xmlDocPtr doc, xmlNodePtr cur) : surface(PingusResource::load_surface("Traps/smasher", "traps"))
-  {
-    cur = cur->children;
-    while (cur)
-      {
-        XMLhelper::skip_blank(cur);
-
-        if (strcmp(reinterpret_cast<const char*>(cur->name), "position") == 0) 
-	  {
-	    pos = XMLhelper::parse_vector(doc, cur);
-	  }
-	  
-	cur = cur->next;
-      }
-  }
-
-  SmasherData::SmasherData (const SmasherData& old) : WorldObjData(old),
-                                                      surface(old.surface),
-	   					      pos(old.pos)
-  {
-  }
-
-  void
-  SmasherData::write_xml (std::ostream& xml)
-  {
-    xml << "<worldobj name=\"smasher\">\n\t";
-    XMLhelper::write_vector_xml(xml, pos);
-    xml << "</worldobj>\n\n";
-  }
-
-  WorldObj*
-  SmasherData::create_WorldObj ()
-  {
-    return new WorldObjs::Smasher(this);
-  }
-
-  EditorObjLst
-  SmasherData::create_EditorObj ()
-  {
-    return EditorObjLst(1, new EditorObjs::SmasherObj(this));
-  }
-
+SmasherData::SmasherData ()
+{
 }
+
+SmasherData::SmasherData (xmlDocPtr doc, xmlNodePtr cur) : surface(PingusResource::load_surface("Traps/smasher", "traps"))
+{
+  cur = cur->children;
+  while (cur)
+    {
+      XMLhelper::skip_blank(cur);
+
+      if (strcmp(reinterpret_cast<const char*>(cur->name), "position") == 0) 
+	{
+	  pos = XMLhelper::parse_vector(doc, cur);
+	}
+	  
+      cur = cur->next;
+    }
+}
+
+SmasherData::SmasherData (const SmasherData& old) : WorldObjData(old),
+						    surface(old.surface),
+						    pos(old.pos)
+{
+}
+
+void
+SmasherData::write_xml (std::ostream& xml)
+{
+  xml << "<worldobj name=\"smasher\">\n\t";
+  XMLhelper::write_vector_xml(xml, pos);
+  xml << "</worldobj>\n\n";
+}
+
+WorldObj*
+SmasherData::create_WorldObj ()
+{
+  return new WorldObjs::Smasher(this);
+}
+
+EditorObjLst
+SmasherData::create_EditorObj ()
+{
+  return EditorObjLst(1, new EditorObjs::SmasherObj(*this));
+}
+
+} // namespace WorldObjsData
 
 /* EOF */

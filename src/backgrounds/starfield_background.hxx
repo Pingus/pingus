@@ -1,4 +1,4 @@
-//  $Id: starfield_background.hxx,v 1.8 2002/09/06 17:33:29 torangan Exp $
+//  $Id: starfield_background.hxx,v 1.9 2002/09/10 14:33:07 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -113,9 +113,11 @@ private:
 public:
   EditorStarfieldBackground (const StarfieldBackgroundData& data)
     : StarfieldBackgroundData (data),
-      SpriteEditorObj ("Stars/starfield_icon", "game", pos),
+      SpriteEditorObj ("Stars/starfield_icon", "game"),
       pos (-64.0f, 0.0f)
-  {}
+  {
+    pos_ref = &pos;
+  }
 
   void write_xml(std::ostream& xml) { this->StarfieldBackgroundData::write_xml (xml); }
 

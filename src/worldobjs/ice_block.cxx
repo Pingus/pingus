@@ -1,4 +1,4 @@
-//  $Id: ice_block.cxx,v 1.10 2002/09/04 19:40:20 grumbel Exp $
+//  $Id: ice_block.cxx,v 1.11 2002/09/10 14:33:07 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -146,7 +146,7 @@ IceBlock::update(float /*delta*/)
 }
 
 EditorIceBlockObj::EditorIceBlockObj (const IceBlockData& data)
-  : SpriteEditorObj ("iceblock", "worldobjs", pos)
+  : SpriteEditorObj ("iceblock", "worldobjs", &pos)
 {
   pos      = data.pos;
   IceBlockData::width = data.width;

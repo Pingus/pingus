@@ -1,4 +1,4 @@
-//  $Id: editor_groundpiece_obj.cxx,v 1.10 2002/09/04 14:55:12 torangan Exp $
+//  $Id: editor_groundpiece_obj.cxx,v 1.11 2002/09/10 14:33:07 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,8 +25,9 @@ using namespace Pingus;
 
 EditorGroundpieceObj::EditorGroundpieceObj(const GroundpieceData& data)
   : GroundpieceData (data),
-    SpriteEditorObj (desc, pos)
+    SpriteEditorObj (desc)
 {
+  pos_ref = &pos;
 }
 
 EditorObj*

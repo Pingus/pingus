@@ -1,4 +1,4 @@
-//  $Id: weather_obj.cxx,v 1.6 2002/09/04 14:55:12 torangan Exp $
+//  $Id: weather_obj.cxx,v 1.7 2002/09/10 14:33:07 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include "weather_obj.hxx"
 
 WeatherObj::WeatherObj(const WeatherData& data)
-  : SpriteEditorObj (pos)
 {
   type = data.type;
   pos = CL_Vector(0,0,200);
@@ -42,6 +41,8 @@ WeatherObj::WeatherObj(const WeatherData& data)
       std::cout << "WeatherObj: Unknown weather type: " << type << std::endl;
       sprite = Sprite("editor/weather_rain", "core");
     }
+
+  pos_ref = &pos;
 }
 
 WeatherObj::~WeatherObj()

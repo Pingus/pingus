@@ -1,4 +1,4 @@
-//  $Id: fake_exit_obj.cxx,v 1.5 2002/09/09 16:55:07 grumbel Exp $
+//  $Id: fake_exit_obj.cxx,v 1.6 2002/09/10 14:33:07 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,13 +25,14 @@
 namespace EditorObjs {
 
 FakeExitObj::FakeExitObj (WorldObjsData::FakeExitData* data_) 
-  : SpriteEditorObj(data_->pos),
-    frame(0),
+  : frame(0),
     data(new WorldObjsData::FakeExitData(*data_))
 {
   data->pos.z = -100;
   sprite = Sprite("Traps/fake_exit", "traps");
   sprite.set_align_center_bottom ();
+
+  pos_ref = &data->pos;
 }
 
 FakeExitObj::~FakeExitObj ()

@@ -1,4 +1,4 @@
-//  $Id: surface_background_data.hxx,v 1.9 2002/09/06 17:33:29 torangan Exp $
+//  $Id: surface_background_data.hxx,v 1.10 2002/09/10 14:33:07 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,9 +92,8 @@ private:
 public:
   EditorSurfaceBackground (const SurfaceBackgroundData& data)
     : SurfaceBackgroundData (data),
-      SpriteEditorObj (desc.res_name, desc.datafile, pos)
-  {
-    
+      SpriteEditorObj (desc.res_name, desc.datafile, &pos)
+  {    
   }
 
   void write_xml(std::ostream& xml) { this->SurfaceBackgroundData::write_xml (xml); }

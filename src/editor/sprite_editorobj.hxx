@@ -1,4 +1,4 @@
-//  $Id: sprite_editorobj.hxx,v 1.4 2002/09/06 17:33:29 torangan Exp $
+//  $Id: sprite_editorobj.hxx,v 1.5 2002/09/10 14:33:07 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,17 +29,25 @@ class SpriteEditorObj : public RectEditorObj
 {
 protected:
   Sprite sprite;
-  CL_Vector& pos_ref;
+  
+  /** Pointer to the position member of the child object 
+      
+  FIXME: A bit ugly, but requires less changes than a full blown
+  FIXME: get/set handling, it also looks nicer  */
+  CL_Vector* pos_ref;
 
 public:
-  SpriteEditorObj (CL_Vector& arg_pos);
+  /** Empty constructor, you *must* initialise pos_ref manually */
+  SpriteEditorObj ();
+
+  SpriteEditorObj (CL_Vector* arg_pos);
 
   SpriteEditorObj (const std::string& sur_name,
 		   const std::string& datafile,
-		   CL_Vector& arg_pos);
+		   CL_Vector* arg_pos = 0);
 
   SpriteEditorObj (const ResDescriptor&,
-		   CL_Vector& arg_pos);
+		   CL_Vector* arg_pos = 0);
 
   /// Return the object width
   virtual int get_width() { return sprite.get_width (); }

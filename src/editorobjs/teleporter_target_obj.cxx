@@ -1,4 +1,4 @@
-//  $Id: teleporter_target_obj.cxx,v 1.1 2002/09/10 12:11:29 torangan Exp $
+//  $Id: teleporter_target_obj.cxx,v 1.2 2002/09/10 14:33:07 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,10 +24,10 @@
 namespace EditorObjs {
 
 TeleporterTargetObj::TeleporterTargetObj (TeleporterObj* arg_teleporter)
-                                        : SpriteEditorObj ("teleporter2", 
-						           "worldobjs",
-							   arg_teleporter->get_target_pos_ref()),
-                                          teleporter(arg_teleporter)
+  : SpriteEditorObj ("teleporter2", 
+		     "worldobjs",
+		     &arg_teleporter->get_target_pos_ref()),
+    teleporter(arg_teleporter)
 {
   sprite.set_align_center();
 }

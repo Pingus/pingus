@@ -1,4 +1,4 @@
-//  $Id: info_box.cxx,v 1.8 2002/09/05 11:26:35 grumbel Exp $
+//  $Id: info_box.cxx,v 1.9 2002/09/10 14:33:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -159,7 +159,7 @@ InfoBox::update (float delta)
 
 EditorInfoBox::EditorInfoBox(const InfoBoxData& data)
   : InfoBoxData (data),
-    SpriteEditorObj ("infobox", "worldobjs", pos)
+    SpriteEditorObj ("infobox", "worldobjs", &pos)
 {
   sprite.set_align_center_bottom ();
 }

@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background_data.hxx,v 1.8 2002/09/06 17:33:29 torangan Exp $
+//  $Id: thunderstorm_background_data.hxx,v 1.9 2002/09/10 14:33:07 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,7 +57,7 @@ private:
 public:
   EditorThunderstormBackground (const ThunderstormBackgroundData& data)
     : ThunderstormBackgroundData (data),
-      SpriteEditorObj ("Stars/starfield_icon", "game", pos)
+      SpriteEditorObj ("Stars/starfield_icon", "game", &pos)
   {
     pos = CL_Vector(-128.0f, 0.0f);
   }
