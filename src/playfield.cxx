@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.15 2002/08/14 12:45:02 torangan Exp $
+//  $Id: playfield.cxx,v 1.16 2002/08/17 00:29:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -117,6 +117,29 @@ Playfield::draw()
 				0.0, 0.0, 0.0, 1.0);
 	}
     }
+
+  // Draw the scrolling band
+  if (mouse_scrolling)
+    {
+       CL_Display::draw_line (mouse_x, mouse_y,
+			      scroll_center_x, scroll_center_y-15,
+			      0.0f, 1.0f, 0.0f, 1.0f);
+
+       CL_Display::draw_line (mouse_x, mouse_y,
+			      scroll_center_x, scroll_center_y,
+			      1.0f, 0.0f, 0.0f, 1.0f);
+
+       CL_Display::draw_line (mouse_x, mouse_y,
+			      scroll_center_x, scroll_center_y+15,
+			      0.0f, 0.0f, 1.0f, 1.0f);
+
+       CL_Display::draw_line (mouse_x, mouse_y,
+			      scroll_center_x + 15, scroll_center_y,
+			      0.0f, 1.0f, 1.0f, 1.0f);
+       CL_Display::draw_line (mouse_x, mouse_y,
+			      scroll_center_x - 15, scroll_center_y,
+			      1.0f, 1.0f, 0.0f, 1.0f);
+    }
 }
 
 Pingu*
@@ -150,36 +173,6 @@ Playfield::set_world(World* w)
   world = w;
 }
 
-#if 0
-void 
-Playfield::process_input_interactive()
-{
-  // FIXME: This should be replaced with something getting relative mouse co's
-  if (auto_scrolling)
-    {
-      scroll_speed = 30;
-
-      if (controller->get_x() < 2) 
-	{
-	  view[current_view]->set_x_offset(view[current_view]->get_x_offset() + scroll_speed);
-	} 
-      else if (controller->get_x() > CL_Display::get_width() - 3) 
-	{
-	  view[current_view]->set_x_offset(view[current_view]->get_x_offset() - scroll_speed);
-	}
-  
-      if (controller->get_y() < 2) 
-	{
-	  view[current_view]->set_y_offset(view[current_view]->get_y_offset() + scroll_speed);
-	}
-      else if (controller->get_y() > CL_Display::get_height() - 3) 
-	{
-	  view[current_view]->set_y_offset(view[current_view]->get_y_offset() - scroll_speed);
-	}
-    }
-}
-#endif
-
 void
 Playfield::update(float delta)
 {
@@ -194,6 +187,37 @@ Playfield::update(float delta)
 					     mouse_y - view[i]->get_y_pos() - (view[i]->get_y_offset())); 
 	  view[i]->set_pingu(current_pingu);
 	  break;
+	}
+    }
+
+  if (mouse_scrolling)
+    {
+      // FIXME: This should be delta dependant
+      view[current_view]->shift_x_offset((scroll_center_x - mouse_x) / 5);
+      view[current_view]->shift_y_offset((scroll_center_y - mouse_y) / 5);
+    }
+
+  if (auto_scrolling)
+    {
+      // FIXME: This should be delta dependant
+      scroll_speed = 30;
+
+      if (mouse_x < 2) 
+	{
+	  view[current_view]->set_x_offset(view[current_view]->get_x_offset() + scroll_speed);
+	} 
+      else if (mouse_x > CL_Display::get_width() - 3) 
+	{
+	  view[current_view]->set_x_offset(view[current_view]->get_x_offset() - scroll_speed);
+	}
+  
+      if (mouse_y < 2) 
+	{
+	  view[current_view]->set_y_offset(view[current_view]->get_y_offset() + scroll_speed);
+	}
+      else if (mouse_y > CL_Display::get_height() - 3) 
+	{
+	  view[current_view]->set_y_offset(view[current_view]->get_y_offset() - scroll_speed);
 	}
     }
 }
@@ -222,9 +246,10 @@ Playfield::on_secondary_button_press (int x, int y)
 void
 Playfield::on_secondary_button_release (int x, int y)
 {
+  UNUSED_ARG (x);
+  UNUSED_ARG (y);
+
   mouse_scrolling = false;
-  
-  if(x); if(y);
 }
 
 void
@@ -238,12 +263,6 @@ Playfield::on_pointer_move (int x, int y)
     {
       view[i]->on_pointer_move (x, y);
     }  
-
-  if (mouse_scrolling)
-    {
-      view[current_view]->shift_x_offset((scroll_center_x - mouse_x) / 5);
-      view[current_view]->shift_y_offset((scroll_center_y - mouse_y) / 5);
-    }
 }
 
 void
