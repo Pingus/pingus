@@ -23,6 +23,7 @@ SUBDIRS = \
 	pointers \
 	scrollers
 
+libpingus_input_a_CPPFLAGS = @PINGUS_CFLAGS@
 libpingus_input_a_SOURCES =       \
 	axis.hxx \
 	axis_factory.hxx axis_factory.cxx \

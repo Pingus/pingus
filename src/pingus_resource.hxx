@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.hxx,v 1.14 2003/04/19 10:23:17 torangan Exp $
+//  $Id: pingus_resource.hxx,v 1.15 2003/10/18 12:11:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 
 #include <map>
 
-#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/display.h>
 #include "res_descriptor.hxx"
 
 class CL_Font;

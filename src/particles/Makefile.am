@@ -17,6 +17,7 @@
 
 noinst_LIBRARIES = libpingus_particle.a
 
+libpingus_particle_a_CPPFLAGS = @PINGUS_CFLAGS@
 libpingus_particle_a_SOURCES = \
 pingu_particle_holder.cxx pingu_particle_holder.hxx \
  rain_particle_holder.cxx  rain_particle_holder.hxx \

@@ -20,6 +20,7 @@ libdir=$(prefix)/share/games/@PACKAGE@/libs
 # -- Static Libs --
 noinst_LIBRARIES = libpingus_movers.a
 
+libpingus_movers_a_CPPFLAGS = @PINGUS_CFLAGS@
 libpingus_movers_a_SOURCES =       \
          linear_mover.cxx   linear_mover.hxx
 

@@ -1,4 +1,4 @@
-//  $Id: screen.hxx,v 1.2 2003/04/19 10:23:18 torangan Exp $
+//  $Id: screen.hxx,v 1.3 2003/10/18 12:11:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include "game_delta.hxx"
 
 class GraphicContext;
+
+namespace Pingus {
 
 /** A interface for screens. A screen is a Pingus 'thing' which gets
     complete controll over the display and input. Examples of
@@ -56,6 +58,8 @@ private:
   Screen (const Screen&);
   Screen& operator= (const Screen&);
 };
+
+} // namespace Pingus
 
 #endif
 

@@ -17,6 +17,7 @@
 
 noinst_LIBRARIES = libpingus_worldobjsdata.a
 
+libpingus_worldobjsdata_a_CPPFLAGS = @PINGUS_CFLAGS@
 libpingus_worldobjsdata_a_SOURCES = \
 	bumper_data.cxx                  bumper_data.hxx \
 	conveyor_belt_data.cxx           conveyor_belt_data.hxx \

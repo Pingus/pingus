@@ -1,4 +1,4 @@
-//  $Id: savegame_manager.hxx,v 1.4 2003/06/04 17:22:33 torangan Exp $
+//  $Id: savegame_manager.hxx,v 1.5 2003/10/18 12:11:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include <map>
 #include "savegame.hxx"
+
+namespace Pingus {
 
 /** */
 class SavegameManager
@@ -47,6 +49,8 @@ private:
   SavegameManager (const SavegameManager&);
   SavegameManager& operator= (const SavegameManager&);
 };
+
+} // namespace Pingus
 
 #endif
 

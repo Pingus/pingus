@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.98 2003/08/19 19:56:55 torangan Exp $
+//   $Id: pingus_main.cxx,v 1.99 2003/10/18 12:11:30 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___
@@ -30,20 +30,19 @@
 #include <locale.h>
 #include <getopt.h>
 
-#include <ClanLib/Core/System/console_window.h>
-#include <ClanLib/Display/setupdisplay.h>
-#include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Input/input.h>
+//#include <ClanLib/Core/System/console_window.h>
+//#include <ClanLib/Display/setupdisplay.h>
+//#include <ClanLib/Display/Display/display.h>
+//#include <ClanLib/Display/Input/input.h>
+//#include <ClanLib/Core/System/setupcore.h>
+//#include <ClanLib/GUI/setupgui.h>
 
-#include <ClanLib/Core/System/setupcore.h>
-#include <ClanLib/jpeg.h>
-#include <ClanLib/png.h>
-#include <ClanLib/GUI/setupgui.h>
-
-
-#ifdef HAVE_LIBCLANGL
-# include <ClanLib/gl.h>
-#endif
+#include <ClanLib/display.h>
+#include <ClanLib/sound.h>
+#include <ClanLib/core.h>
+#include <ClanLib/sdl.h>
+#include <ClanLib/gl.h>
+#include <ClanLib/gui.h>
 
 #include "gettext.h"
 
@@ -85,6 +84,8 @@
 #include "worldobj_data_factory.hxx"
 
 using EditorNS::Editor;
+
+namespace Pingus {
 
 void
 signal_handler(int signo)
@@ -772,8 +773,8 @@ PingusMain::start_game ()
   if (!render_preview)
     {
       // Register the global event catcher
-      on_button_press_slot = CL_Input::sig_button_press ().connect (&global_event, &GlobalEvent::on_button_press);
-      on_button_release_slot = CL_Input::sig_button_release ().connect (&global_event, &GlobalEvent::on_button_release);
+      on_button_press_slot   = window->get_ic()->get_keyboard().sig_key_down().connect (&global_event, &GlobalEvent::on_button_press);
+      on_button_release_slot = window->get_ic()->get_keyboard().sig_key_up().connect (&global_event, &GlobalEvent::on_button_release);
     }
 
   // Set the root screen
@@ -858,8 +859,8 @@ PingusMain::start_game ()
         std::cout << "PingusMain::quit game and screen_manager" << std::endl;
 
       // unregister the global event catcher
-      CL_Input::sig_button_press ().disconnect (on_button_press_slot);
-      CL_Input::sig_button_release ().disconnect(on_button_release_slot);
+      window->get_ic()->get_keyboard().sig_key_down().disconnect(on_button_press_slot);
+      window->get_ic()->get_keyboard().sig_key_up().disconnect(on_button_release_slot);
     }
 }
 
@@ -904,8 +905,8 @@ PingusMain::main(int argc, char** argv)
       // Avoid uglyness on window opening
       if (!render_preview)
         {
-          CL_Display::clear_display();
-          CL_Display::flip_display();
+          CL_Display::clear();
+          CL_Display::flip();
         }
       start_game();
 
@@ -945,51 +946,37 @@ PingusMain::main(int argc, char** argv)
 void
 PingusMain::init_clanlib()
 {
-  CL_SetupCore::init ();
-  CL_SetupPNG::init ();
-  CL_SetupJPEG::init ();
-  CL_SetupGUI::init ();
 
   if (render_preview)
     {
+      CL_SetupCore::init ();
       // Register only the resource types
       CL_SetupDisplay::init(true);
     }
   else
     {
-
-#ifdef HAVE_LIBCLANGL
-      if (use_opengl) {
-        CL_SetupGL::init();
-        std::cout << "Using OpenGL" << std::endl;
-      }
-#endif
+      CL_SetupCore::init ();
+  
+      if (use_opengl) CL_SetupGL::init();
+      else            CL_SetupSDL::init();
 
       CL_SetupDisplay::init();
 
-      on_exit_press_slot = CL_System::sig_quit().connect(this, &PingusMain::on_exit_press);
+      if (verbose) {
+        std::cout << "Using resolution: "
+                  << screen_width << "x" << screen_height << std::endl;
+      }
 
-      if (verbose)
-        {
-          std::cout << "Using resolution: "
-                    << screen_width << "x" << screen_height << std::endl;
-        }
+      window = new CL_DisplayWindow(PACKAGE_STRING,
+                           screen_width, screen_height, fullscreen_enabled, false);
+      sound  = new CL_SoundOutput(44100);
 
-      // Initing the display
-      CL_Display::set_videomode(screen_width, screen_height, 16,
-                                fullscreen_enabled,
-                                false); // allow resize
-      CL_Display::clear_display();
-      CL_Display::flip_display();
-    
-#ifdef HAVE_LIBCLANGL
-      if (use_opengl)
-        {
-          CL_OpenGL::begin_2d ();
-          glEnable (GL_BLEND);
-        }
-#endif
+      CL_Display::clear();
+      CL_Display::flip();
     }
+  CL_SetupGUI::init ();
+  
+  on_exit_press_slot = window->sig_window_close().connect(this, &PingusMain::on_exit_press);
 }
 
 void
@@ -1002,14 +989,14 @@ PingusMain::on_exit_press()
 void
 PingusMain::deinit_clanlib()
 {
-  CL_SetupDisplay::deinit();
-#ifdef HAVE_LIBCLANGL
+  CL_SetupGUI::deinit ();
+
   if (use_opengl)
     CL_SetupGL::deinit();
-#endif
-  CL_SetupGUI::deinit ();
-  CL_SetupPNG::deinit();
-  CL_SetupJPEG::deinit();
+  else
+    CL_SetupSDL::deinit();
+
+  CL_SetupDisplay::deinit ();
   CL_SetupCore::deinit();
 }
 
@@ -1056,5 +1043,7 @@ PingusMain::deinit_pingus()
   SavegameManager::deinit();
   xmlCleanupParser();
 }
+
+} // namespace Pingus
 
 /* EOF */

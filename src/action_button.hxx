@@ -1,4 +1,4 @@
-//  $Id: action_button.hxx,v 1.17 2003/04/19 10:23:17 torangan Exp $
+//  $Id: action_button.hxx,v 1.18 2003/10/18 12:11:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_ACTION_BUTTON_HXX
 #define HEADER_PINGUS_ACTION_BUTTON_HXX
 
-#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/Display/surface.h>
 #include <string>
 #include "pingu_enums.hxx"
 #include "sprite.hxx"

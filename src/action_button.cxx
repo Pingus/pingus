@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.32 2003/08/16 20:51:28 grumbel Exp $
+//  $Id: action_button.cxx,v 1.33 2003/10/18 12:11:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,9 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Font/font.h>
-#include <ClanLib/Display/Input/mouse.h>
+#include <ClanLib/display.h>
 
 #include "globals.hxx"
 #include "cheat.hxx"

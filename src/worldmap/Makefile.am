@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.12 2003/04/11 13:12:54 grumbel Exp $
+#  $Id: Makefile.am,v 1.13 2003/10/18 12:11:31 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 noinst_LIBRARIES = libpingus_worldmap.a
 
+libpingus_worldmap_a_CPPFLAGS = @PINGUS_CFLAGS@
 libpingus_worldmap_a_SOURCES = \
 dot.hxx dot.cxx \
 dot_factory.cxx \

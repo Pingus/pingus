@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.46 2003/04/24 15:18:19 grumbel Exp $
+//  $Id: client.cxx,v 1.47 2003/10/18 12:11:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,8 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Display/mousecursor_provider.h>
+#include <ClanLib/Display/display.h>
+#include <ClanLib/Display/mousecursor_provider.h>
 #include "globals.hxx"
 #include "playfield.hxx"
 #include "timer.hxx"

@@ -1,4 +1,4 @@
-//  $Id: blitter_impl.hxx,v 1.11 2003/06/04 17:34:38 torangan Exp $
+//  $Id: blitter_impl.hxx,v 1.12 2003/10/18 12:11:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 
 #include <iostream>
 #include <ClanLib/Display/SurfaceProviders/canvas.h>
-#include <ClanLib/Display/Display/surface.h>
+#include <ClanLib/Display/surface.h>
 #include "indexed_canvas.hxx"
 #include "pingus.hxx"
 

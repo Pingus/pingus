@@ -1,4 +1,4 @@
-//  $Id: fps_counter.hxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
+//  $Id: fps_counter.hxx,v 1.8 2003/10/18 12:11:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include "gui/display.hxx"
 
 class CL_Font;
+
+namespace Pingus {
 
 ///
 class FPSCounter : public DisplayHook
@@ -69,6 +71,8 @@ private:
 /** The fps_counter is a global object, so we don't need to construct
     it over and over again */
 extern FPSCounter fps_counter;
+
+} // namespace Pingus
 
 #endif
 

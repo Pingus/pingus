@@ -1,4 +1,4 @@
-//  $Id: thumb_cache.cxx,v 1.13 2003/04/19 10:23:18 torangan Exp $
+//  $Id: thumb_cache.cxx,v 1.14 2003/10/18 12:11:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -186,8 +186,8 @@ ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const s
 
       // If writing the surface fails, we return the surface without
       // writing it to the cache
-      unsigned int width  = Math::min((unsigned int)50, sur.get_width ());
-      unsigned int height = Math::min((unsigned int)50, sur.get_height ());
+      unsigned int width  = Math::min(50, sur.get_width ());
+      unsigned int height = Math::min(50, sur.get_height ());
       return Blitter::scale_surface (sur, width, height);
     }
 }

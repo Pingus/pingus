@@ -1,4 +1,4 @@
-//  $Id: console.hxx,v 1.13 2003/04/19 10:23:17 torangan Exp $
+//  $Id: console.hxx,v 1.14 2003/10/18 12:11:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,8 @@
 #include "gui/display.hxx"
 
 class CL_Font;
+
+namespace Pingus {
 
 class ConsoleBuffer :
   public std::streambuf
@@ -109,6 +111,8 @@ private:
 
 /** The globale console object to which you can send messages */
 extern Console console;
+
+} // namespace Pingus
 
 #endif
 

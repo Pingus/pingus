@@ -17,6 +17,7 @@
 
 noinst_LIBRARIES = libpingus_editorobjs.a
 
+libpingus_editorobjs_a_CPPFLAGS = @PINGUS_CFLAGS@
 libpingus_editorobjs_a_SOURCES = \
 	bumper_obj.cxx                  bumper_obj.hxx \
 	conveyor_belt_obj.cxx           conveyor_belt_obj.hxx \

@@ -1,4 +1,4 @@
-//  $Id: savegame.cxx,v 1.3 2003/04/19 10:23:17 torangan Exp $
+//  $Id: savegame.cxx,v 1.4 2003/10/18 12:11:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,7 @@ Savegame::Savegame()
 {
   status = ACCESSIBLE;
   saved_pingus = 0;
-  time = 0;
+  needed_time = 0;
 }
 
 Savegame::Savegame(xmlDocPtr doc, xmlNodePtr node)
@@ -81,7 +81,7 @@ Savegame::write_xml(std::ostream& xml)
   writer.begin_section("level");
   writer.write_string ("name", levelname);
   writer.write_enum   ("status", status, status_to_string);
-  writer.write_int    ("time", time);
+  writer.write_int    ("time", needed_time);
   writer.write_int    ("saved-pingus", saved_pingus);
   writer.end_section();
 }
@@ -92,7 +92,7 @@ Savegame::read_xml (xmlDocPtr doc, xmlNodePtr node)
   XMLFileReader reader(doc, node);
   reader.read_string ("name", levelname);
   reader.read_enum   ("status", status, string_to_status);
-  reader.read_int    ("time", time);
+  reader.read_int    ("time", needed_time);
   reader.read_int    ("saved-pingus", saved_pingus);
 
 }

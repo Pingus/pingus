@@ -1,4 +1,4 @@
-//  $Id: display_graphic_context.cxx,v 1.6 2003/08/16 20:51:28 grumbel Exp $
+//  $Id: display_graphic_context.cxx,v 1.7 2003/10/18 12:11:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,8 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Font/font.h>
+#include <ClanLib/Display/display.h>
+#include <ClanLib/Display/font.h>
 #include <config.h>
 #include "display_graphic_context.hxx"
 #include "../math.hxx"

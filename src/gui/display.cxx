@@ -1,4 +1,4 @@
-//  $Id: display.cxx,v 1.3 2003/04/19 10:23:18 torangan Exp $
+//  $Id: display.cxx,v 1.4 2003/10/18 12:11:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include <ClanLib/Display/Display/mousecursor.h>
 #include "../globals.hxx"
 #include "display.hxx"
+
+namespace Pingus {
 
 std::list<DisplayHook*> Display::display_hooks;
 
@@ -79,5 +81,7 @@ Display::remove_flip_screen_hook(DisplayHook* hook)
 {
   display_hooks.remove(hook);
 }
+
+} // namespace Pingus
 
 /* EOF */

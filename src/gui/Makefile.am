@@ -17,6 +17,7 @@
 
 noinst_LIBRARIES = libpingus_gui.a
 
+libpingus_gui_a_CPPFLAGS = @PINGUS_CFLAGS@
 libpingus_gui_a_SOURCES = \
         buffer_graphic_context.hxx \
         buffer_graphic_context.cxx \

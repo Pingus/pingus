@@ -1,4 +1,4 @@
-#  $Id: configure.ac,v 1.19 2003/10/18 10:49:42 grumbel Exp $
+#  $Id: configure.ac,v 1.20 2003/10/18 12:11:30 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,19 +17,11 @@
 #  along with this program; if not, write to the Free Software
 #  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-dnl BUG: This file should be updated with the macros from 'configure.scan'
-
-# The required ClanLib version
-CLANLIB_MAJOR_VERSION=0
-CLANLIB_MINOR_VERSION=6
-CLANLIB_PATCH_VERSION=5
-
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT(Pingus, 0.6.1)
+AC_INIT(Pingus, 0.7.0)
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_SRCDIR(src/pingus_main.cxx)
 AM_INIT_AUTOMAKE(dist-bzip2 dist-zip)
-
 
 dnl Checks for programs.
 AC_PROG_AWK
@@ -68,11 +60,6 @@ fi
 
 dnl -- Static Libaries --
 AC_PROG_RANLIB
-
-AC_CHECK_HEADER(ClanLib/core.h,, [echo "Please get ClanLib from http://www.clanlib.org"; exit])
-
-dnl FIXME: we don't need pthread, but some system might need it to succeed at the final link
-AC_CHECK_LIB(pthread,   main,,)
 
 dnl ---------------------------------------------------
 dnl Check the location of the XML library and -headers.
@@ -124,138 +111,24 @@ CPPFLAGS="$CPPFLAGS `$XML_CONFIG --cflags`"
 LIBS="$LIBS `$XML_CONFIG --libs`"
 dnl ---------------------------------------------------
 
+REQUIRED_CLANLIB_VERSION="0.7.3"
 
-AC_CHECK_LIB(Hermes,   main,,)
+PKG_CHECK_MODULES(PINGUS,
+ [
+  clanCore-0.7           >= $REQUIRED_CLANLIB_VERSION
+  clanApp-0.7            >= $REQUIRED_CLANLIB_VERSION
+  clanDisplay-0.7        >= $REQUIRED_CLANLIB_VERSION
+  clanGL-0.7             >= $REQUIRED_CLANLIB_VERSION
+  clanGUI-0.7            >= $REQUIRED_CLANLIB_VERSION
+  clanGUIStyleSilver-0.7 >= $REQUIRED_CLANLIB_VERSION
+  clanSound-0.7          >= $REQUIRED_CLANLIB_VERSION
+  clanVorbis-0.7         >= $REQUIRED_CLANLIB_VERSION
+ clanMikMod-0.7         >= $REQUIRED_CLANLIB_VERSION
+  ],
+ [])
 
-AC_CHECK_LIB( clanCore,   main,, [
-	echo "ClanLib installed, but -lclanCore not found, run 'ldconfig' and try again,"
-	echo "if that doesn't help have a look at the file config.log and look into"
-	echo "the FAQ."
-	exit
-	])
-
-dnl FIXME: This should fail, if the libs are not detected
-AC_CHECK_LIB( clanApp,   main)
-AC_CHECK_LIB( clanDisplay,   main)
-AC_CHECK_LIB( clanSound,   main)
-
-AC_CHECK_LIB( clanMikMod,   main)
-AC_CHECK_LIB( clanVorbis,   main)
-
-AC_MSG_CHECKING([for clanGL support])
-AC_ARG_WITH(clanGL,
-        AC_HELP_STRING([--with-clanGL], [enable OpenGL support (default: no)]),,
-        [with_clangl="no"])
-AC_MSG_RESULT([$with_clangl])
-
-if test "x$with_clanGL" = "xyes"; then
-    AC_CHECK_LIB( clanGL,   main)
-fi
-
-dnl AC_CHECK_LIB( clanGUI,   main,, [
-dnl 	echo "ClanLib is installed, but clanGUI was not found. You probably"
-dnl 	echo "forgot to compile clanGUI, which is part of the ClanLib package"
-dnl 	echo "or you need to run 'ldconfig'."
-dnl 	echo "If you think you have everything correctly installed have a look at"
-dnl 	echo "the file 'config.log' to see what went wrong"
-dnl 	exit
-dnl 	])
-
-
-dnl AC_CHECK_PROG( HAVE_CLANLIB_CONFIG, clanlib-config, "yes")
-
-# if test "x$HAVE_CLANLIB_CONFIG" != "xyes" ; then
-# 	echo
-# 	echo "Couldn't find 'clanlib-config. Make sure that you"
-# 	echo "have installed ClanLib and that clanlib-config"
-# 	echo "is installed in you PATH.";
-# 	echo "Since Pingus does not use clanlib-config you can ignore"
-#         echo "this... %-)" 
-# dnl 	echo 
-# dnl fi
-
-dnl clanlib_config_major_version=`clanlib-config --version | \
-dnl            sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
-dnl clanlib_config_minor_version=`clanlib-config --version | \
-dnl            sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\2/'`
-dnl clanlib_config_micro_version=`clanlib-config --version | \
-dnl            sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\3/'`
-
-dnl if test $clanlib_config_major_version -eq $CLANLIB_MAJOR_VERSION;
-dnl  dnl if test $clanlib_config_minor_version -eq
-dnl $CLANLIB_MINOR_VERSION; then dnl if test $clanlib_config_patch_version
-dnl -eq $CLANLIB_PATCH_VERSION; then dnl fi dnl fi dnl fi
-
-#  dnl Checking if ClanLib is new enough
-#  echo -n "checking for working ClanLib >= $CLANLIB_MAJOR_VERSION.$CLANLIB_MINOR_VERSION.$CLANLIB_PATCH_VERSION... "
-#  AC_TRY_RUN([
-#  #include <ClanLib/core.h>
-#   int main(){
-#  	printf ("CL_VERSION: %d\n", CL_CURRENT_VERSION);
-#  	printf ("wanted CL_VERSION: %d\n", CL_VERSION($CLANLIB_MAJOR_VERSION,$CLANLIB_MINOR_VERSION,$CLANLIB_PATCH_VERSION));
-#   if (CL_CURRENT_VERSION >= CL_VERSION($CLANLIB_MAJOR_VERSION,$CLANLIB_MINOR_VERSION,$CLANLIB_PATCH_VERSION))
-#   {
-#   	return 0;
-#   }
-#   else
-#   {
-#   	return 1;
-#   }
-#   }
-#   ],
-#   	[echo "yes"],
-#   	[echo ; echo;
-#   	 echo "Your ClanLib is to old or some other thing went wrong while compiling"
-#   	 echo "the test application, you need at least version $CLANLIB_MAJOR_VERSION.$CLANLIB_MINOR_VERSION.$CLANLIB_PATCH_VERSION"
-#   	 echo "or greater. If you have that version installed have a look at the file"
-#  	 echo "config.log to see what went wrong."
-#   	 echo "The ClanLib webpage is at:"; echo;
-#   	 echo "                    http://www.clanlib.org";
-#            echo
-#   	 echo "The ClanLib source tarball can be found at:"
-#   	 echo
-#   	 echo "      http://clanlib.org/download/index.html"
-#   	 echo
-#   	 exit],
-#   	[echo "cross compiling detected, assuming that this is correct and continue"]
-#   )
-
-AC_CHECK_LIB( clanJPEG,   main,, [
-	echo "ClanLib is installed, but clanJPEG was not found. You probably"
-	echo "forgot to compile clanJPEG, which is part of the ClanLib package"
-	echo "or you need to run 'ldconfig'."
-	echo "If you think you have everything correctly installed have a look at"
-	echo "the file 'config.log' to see what went wrong"
-	exit
-	])
-
-AC_CHECK_LIB( clanPNG,   main,, [
-	echo "ClanLib is installed, but clanPNG was not found. You probably"
-	echo "forgot to compile clanPNG, which is part of the ClanLib package"
-	echo "or you need to run 'ldconfig'."
-	echo "If you think you have everything correctly installed have a look at"
-	echo "the file 'config.log' to see what went wrong"
-	exit
-	])
-
-AC_CHECK_LIB( clanGUI,   main,, [
-	echo "ClanLib is installed, but clanGUI was not found. You probably"
-	echo "forgot to compile clanPNG, which is part of the ClanLib package"
-	echo "or you need to run 'ldconfig'."
-	echo "If you think you have everything correctly installed have a look at"
-	echo "the file 'config.log' to see what went wrong"
-	exit
-	])
-
-# AC_CHECK_PROG(HAVE_DATAFILE_COMPILER, datafile_compiler, "yes")
-# if test "x$HAVE_DATAFILE_COMPILER" != "xyes" ; then
-# 	echo
-# 	echo "Couldn't find the ClanLib datafile_compiler. Make sure"
-# 	echo "it is correctly installed and the path were it is"
-# 	echo "installed is in you PATH.";
-# 	echo
-# 	exit;
-# fi
+AC_SUBST(PINGUS_CFLAGS)
+AC_SUBST(PINGUS_LIBS)
 
 dnl Checks for header files.
 AC_HEADER_DIRENT
@@ -288,6 +161,9 @@ AC_DEFINE_UNQUOTED(PINGUS_DATADIR, "$pingus_datadir", [Location of Pingus data f
 dnl -- Define the localedir, needed for gettext --
 PINGUS_EXPAND_DIR(localedir, "$datadir/locale")
 AC_DEFINE_UNQUOTED(LOCALEDIR, "$localedir", [Location of gettext files])
+
+AC_SUBST(PINGUS_CFLAGS)
+AC_SUBST(PINGUS_LIBS)
 
 # po/Makefile.in intl/Makefile <- this must be in one line, if its not
 # po/Makefile will not be generated.

@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.153 2003/08/16 20:51:28 grumbel Exp $
+#  $Id: Makefile.am,v 1.154 2003/10/18 12:11:30 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,10 @@ EXTRA_DIST = \
 
 bin_PROGRAMS = pingus
 
+pingus_CPPFLAGS = @PINGUS_CFLAGS@
+
 pingus_LDADD = \
+        @PINGUS_LIBS@ \
         @LIBINTL@ \
         @LIBS@     \
         \

@@ -1,4 +1,4 @@
-//  $Id: pingus_main.hxx,v 1.13 2003/08/16 20:51:28 grumbel Exp $
+//  $Id: pingus_main.hxx,v 1.14 2003/10/18 12:11:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,9 +27,14 @@
 
 void segfault_handler(int);
 
+namespace Pingus {
+
 class PingusMain : public CL_ClanApplication
 {
 private:
+  CL_DisplayWindow* window; 
+  CL_SoundOutput*   sound;
+
   bool    no_config_file;
   bool    show_credits;
   /// the name of the exe: argv[0]
@@ -78,6 +83,8 @@ private:
   PingusMain& operator= (const PingusMain&);
 
 } app; // golbal class instance
+
+} // namespace Pingus
 
 #endif
 

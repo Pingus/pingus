@@ -18,6 +18,7 @@
 # -- Static Libs --
 noinst_LIBRARIES = libpingus_sound.a
 
+libpingus_sound_a_CPPFLAGS = @PINGUS_CFLAGS@
 libpingus_sound_a_SOURCES = \
 	sound.cxx  sound_dummy.cxx  sound_real.cxx \
 	sound.hxx  sound_dummy.hxx  sound_real.hxx \

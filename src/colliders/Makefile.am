@@ -20,6 +20,7 @@ libdir=$(prefix)/share/games/@PACKAGE@/libs
 # -- Static Libs --
 noinst_LIBRARIES = libpingus_colliders.a
 
+libpingus_colliders_a_CPPFLAGS = @PINGUS_CFLAGS@
 libpingus_colliders_a_SOURCES =       \
          pingu_collider.cxx   pingu_collider.hxx
 

@@ -17,6 +17,7 @@
 
 noinst_LIBRARIES = libpingus_actions.a
 
+libpingus_actions_a_CPPFLAGS = @PINGUS_CFLAGS@
 libpingus_actions_a_SOURCES =       \
          angel.cxx    angel.hxx \
          basher.cxx   basher.hxx     \

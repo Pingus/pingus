@@ -1,4 +1,4 @@
-//  $Id: screen_manager.hxx,v 1.5 2003/08/16 20:51:28 grumbel Exp $
+//  $Id: screen_manager.hxx,v 1.6 2003/10/18 12:11:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,9 @@
 #include "screen_ptr.hxx"
 
 class GraphicContext;
+namespace Pingus {
 class Screen;
+} // namespace Pingus
 
 class ScreenManager
 {

@@ -17,6 +17,7 @@
 
 noinst_LIBRARIES = libcaimagemanipulation.a
 
+libcaimagemanipulation_a_CPPFLAGS = @PINGUS_CFLAGS@
 libcaimagemanipulation_a_SOURCES = \
 	caimagemanipulation.cpp \
 	caimagemanipulation.h

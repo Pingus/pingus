@@ -1,4 +1,4 @@
-//  $Id: savegame.hxx,v 1.3 2003/04/19 10:23:17 torangan Exp $
+//  $Id: savegame.hxx,v 1.4 2003/10/18 12:11:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,15 +23,17 @@
 #include <string>
 #include "libxmlfwd.hxx"
 
+namespace Pingus {
+
 /** The Savegame class holds savegame informations for a single
     level */
 class Savegame
 {
 private:
 public:
-  enum Status { FINISHED,   // level is successfully finished
-                ACCESSIBLE, // level is accessible and can be played
-                NONE};      // level is not finished and cannot be accessed
+  enum SG_Status { FINISHED,   // level is successfully finished
+                   ACCESSIBLE, // level is accessible and can be played
+                   NONE };      // level is not finished and cannot be accessed
   static std::string status_to_string (Status s);
   static Status string_to_status (std::string s);
 
@@ -40,7 +42,7 @@ public:
   Status status;
 
   /** Time needed to finish the level, only valid if status == FINISHED */
-  int time;
+  int needed_time;
 
   /** Number of Pingus that where saved while playing the level */
   int saved_pingus;
@@ -52,6 +54,8 @@ public:
   void read_xml (xmlDocPtr doc, xmlNodePtr node);
   void write_xml(std::ostream& xml);
 };
+
+} // namespace Pingus
 
 #endif
 

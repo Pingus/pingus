@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.18 2003/03/05 19:13:59 grumbel Exp $
+#  $Id: Makefile.am,v 1.19 2003/10/18 12:11:31 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@ noinst_LIBRARIES = libpingus_worldobjs.a
 
 SUBDIRS = entrances
 
+libpingus_worldobjs_a_CPPFLAGS = @PINGUS_CFLAGS@
 libpingus_worldobjs_a_SOURCES = \
 	bumper.cxx                     bumper.hxx                     \
         conveyor_belt.cxx              conveyor_belt.hxx              \
