@@ -18,12 +18,16 @@
 
     <section name="rocketlauncher">
       <sprite name="left">
+        <animation speed="50" loop="no" />
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/rocketlauncher.png">
           <grid pos="0,0" size="32,32" array="7,1"/>
         </image>
       </sprite>
 
       <sprite name="right">
+        <animation speed="50" loop="no" />
+        <translation origin="bottom_center" x="0" y="2"/>
         <image file="../images/pingus/rocketlauncher.png">
           <grid pos="0,32" size="32,32" array="7,1"/>
         </image>
@@ -311,6 +315,8 @@
     </sprite>
 
     <sprite name="splat">
+      <translation origin="bottom_center" x="0" y="2"/>
+      <animation speed="33" loop="no" />
       <image file="../images/pingus/splat.png">
         <grid pos="0,0" size="32,32" array="16,1"/>
       </image>
@@ -426,11 +432,22 @@
       <image file="../images/pingus/explo0.png">
       </image>
     </sprite>
-    <sprite name="laser_kill">
-      <image file="../images/pingus/laser_kill.png">
-        <grid pos="0,0" size="33,32" array="9,2"/>
-      </image>
-    </sprite>
+    <section name="laser_kill">
+      <sprite name="left">
+        <animation speed="60" loop="no" />
+        <translation origin="bottom_center" x="0" y="2"/>
+        <image file="../images/pingus/laser_kill.png">
+          <grid pos="0,0" size="33,32" array="9,1"/>
+        </image>
+      </sprite>
+      <sprite name="right">
+        <animation speed="60" loop="no" />
+        <translation origin="bottom_center" x="0" y="2"/>
+        <image file="../images/pingus/laser_kill.png">
+          <grid pos="0,32" size="33,32" array="9,1"/>
+        </image>
+      </sprite>
+    </section>
   </section>
   <section name="XMas">
     <sprite name="walker">

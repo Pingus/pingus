@@ -28,10 +28,9 @@ namespace Actions {
 
 Waiter::Waiter (Pingu* p)
   : PinguAction(p),
-    countdown(2.0f),
-    sprite("pingus/waiter", "", 5.0f)
+    countdown(2.0f)
 {
-  sprite.set_align_center_bottom();
+  sprite = Resource::load_sprite("pingus/waiter");
 }
 
 void

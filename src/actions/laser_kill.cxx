@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../vector.hxx"
+#include "../resource.hxx"
 #include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
 #include "laser_kill.hxx"
@@ -26,30 +27,25 @@ namespace Pingus {
 namespace Actions {
 
 LaserKill::LaserKill(Pingu* p)
-  : PinguAction(p),
-    sprite(Sprite ("other/laser_kill", "", 20.0f, Sprite::NONE, Sprite::ONCE))
+  : PinguAction(p)
 {
-  sprite.set_align_center_bottom();
+  sprite.load(Direction::LEFT,  Resource::load_sprite("other/laser_kill/left"));
+  sprite.load(Direction::RIGHT, Resource::load_sprite("other/laser_kill/right"));
 }
 
 void
 LaserKill::draw (GraphicContext& gc)
 {
-  if (pingu->direction.is_left())
-    sprite.set_direction(Sprite::LEFT);
-  else
-    sprite.set_direction(Sprite::RIGHT);
-
-  gc.draw(sprite, pingu->get_pos () + Vector (0, 2));
+  gc.draw(sprite[pingu->direction], pingu->get_pos () + Vector (0, 2));
 }
 
 void
 LaserKill::update ()
 {
-  if (sprite.finished())
+  if (sprite[pingu->direction].is_finished())
     pingu->set_status(PS_DEAD);
   else
-    sprite.update();
+    sprite[pingu->direction].update();
 }
 
 } // namespace Actions

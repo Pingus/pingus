@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_ACTIONS_FLOATER_HXX
 #define HEADER_PINGUS_ACTIONS_FLOATER_HXX
 
-#include "../sprite.hxx"
 #include "../pingu_action.hxx"
 
 namespace Pingus {
@@ -31,7 +30,7 @@ class Floater : public PinguAction
 private:
   int falling_depth;
   int step;
-  Sprite sprite;
+  CL_Sprite sprite;
 public:
   Floater(Pingu* p);
 

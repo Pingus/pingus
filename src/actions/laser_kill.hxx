@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_ACTIONS_LASER_KILL_HXX
 #define HEADER_PINGUS_ACTIONS_LASER_KILL_HXX
 
-#include "../sprite.hxx"
+#include "../state_sprite.hxx"
 #include "../pingu_action.hxx"
 
 namespace Pingus {
@@ -31,7 +31,7 @@ namespace Actions {
 class LaserKill : public PinguAction
 {
 private:
-  Sprite sprite;
+  StateSprite sprite;
 
 public:
   LaserKill (Pingu*);

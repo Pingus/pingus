@@ -18,7 +18,7 @@
 #ifndef HEADER_PINGUS_ACTIONS_TELEPORTED_HXX
 #define HEADER_PINGUS_ACTIONS_TELEPORTED_HXX
 
-#include "../sprite.hxx"
+#include <ClanLib/Display/sprite.h>
 #include "../pingu_action.hxx"
 
 namespace Pingus {
@@ -29,7 +29,7 @@ class Teleported : public PinguAction
 private:
   //bool particle_thrown;
   bool sound_played;
-  Sprite sprite;
+  CL_Sprite sprite;
 public:
   Teleported (Pingu*);
 

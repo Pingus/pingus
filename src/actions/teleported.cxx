@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../resource.hxx"
 #include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
 #include "teleported.hxx"
@@ -26,9 +27,9 @@ namespace Actions {
 
 Teleported::Teleported(Pingu* p)
   : PinguAction(p),
-    sound_played(false),
-    sprite("pingus/bomber")
+    sound_played(false)
 {
+  sprite = Resource::load_sprite("pingus/bomber");
 }
 
 

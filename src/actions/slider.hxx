@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_ACTIONS_SLIDER_HXX
 #define HEADER_PINGUS_ACTIONS_SLIDER_HXX
 
-#include "../sprite.hxx"
+#include "../state_sprite.hxx"
 #include "../pingu_action.hxx"
 
 namespace Pingus {
@@ -29,7 +29,7 @@ namespace Actions {
 class Slider : public PinguAction
 {
 private:
-  Sprite sprite;
+  StateSprite sprite;
   float  speed;
 public:
   Slider (Pingu* p);

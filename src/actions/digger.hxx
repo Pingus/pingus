@@ -21,7 +21,6 @@
 #define HEADER_PINGUS_ACTIONS_DIGGER_HXX
 
 #include "../pingu_action.hxx"
-#include "../sprite.hxx"
 
 namespace Pingus {
 namespace Actions {
@@ -31,7 +30,7 @@ class Digger : public PinguAction
 private:
   CL_PixelBuffer digger_radius;
   CL_PixelBuffer digger_radius_gfx;
-  Sprite sprite;
+  CL_Sprite sprite;
   int digger_c;
 
   /** Width of the digger_radius surface */

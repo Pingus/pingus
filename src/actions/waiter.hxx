@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_ACTIONS_WAITER_HXX
 #define HEADER_PINGUS_ACTIONS_WAITER_HXX
 
-#include "../sprite.hxx"
 #include "../pingu_action.hxx"
 
 namespace Pingus {
@@ -33,7 +32,7 @@ class Waiter : public PinguAction
 {
 private:
   float countdown;
-  Sprite sprite;
+  CL_Sprite sprite;
 
 public:
   Waiter (Pingu*);

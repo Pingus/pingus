@@ -39,6 +39,7 @@ public:
   void update(float delta);
   void update();
 
+  void load(int state, const std::string& name);
   void load(int state, CL_Sprite);
   CL_Sprite& operator[](int state);
 };

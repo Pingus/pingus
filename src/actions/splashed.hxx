@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_ACTIONS_SPLASHED_HXX
 #define HEADER_PINGUS_ACTIONS_SPLASHED_HXX
 
-#include "../sprite.hxx"
 #include "../pingu_action.hxx"
 
 namespace Pingus {
@@ -31,7 +30,7 @@ class Splashed : public PinguAction
 private:
   bool particle_thrown;
   bool sound_played;
-  Sprite sprite;
+  CL_Sprite sprite;
 public:
   Splashed (Pingu*);
 

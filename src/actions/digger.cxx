@@ -35,16 +35,15 @@ Digger::Digger (Pingu* p)
   : PinguAction(p),
     digger_radius(Resource::load_pixelbuffer("other/digger_radius")),
     digger_radius_gfx(Resource::load_pixelbuffer("other/digger_radius")),
-    sprite("pingus/digger"),
     digger_c(0)
 {
-  sprite.set_align_center_bottom();
-
   digger_radius_width  = digger_radius.get_width();
   digger_radius_height = digger_radius.get_height();
 
   digger_radius_gfx_width  = digger_radius_gfx.get_width();
   digger_radius_gfx_height = digger_radius_gfx.get_height();
+
+  sprite = Resource::load_sprite("pingus/digger/left");
 }
 
 void

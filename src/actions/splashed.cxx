@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../resource.hxx"
 #include "../vector.hxx"
 #include "../gui/graphic_context.hxx"
 #include "../world.hxx"
@@ -30,16 +31,15 @@ namespace Actions {
 Splashed::Splashed (Pingu* p)
   : PinguAction(p),
     particle_thrown(false),
-    sound_played(false),
-    sprite("pingus/splat", "", 30.0f, Sprite::NONE, Sprite::ONCE)
+    sound_played(false)
 {
-  sprite.set_align_center_bottom();
+  sprite = Resource::load_sprite("pingus/splat");
 }
 
 void
 Splashed::update ()
 {
-  sprite.update ();
+  sprite.update();
 
   if (!particle_thrown)
     {
@@ -47,7 +47,7 @@ Splashed::update ()
       WorldObj::get_world()->play_sound("splash", pingu->get_pos());
     }
 
-  if (sprite.finished())
+  if (sprite.is_finished())
     {
       pingu->set_status(PS_DEAD);
     }
@@ -56,7 +56,7 @@ Splashed::update ()
 void
 Splashed::draw (GraphicContext& gc)
 {
-  gc.draw (sprite, pingu->get_pos ());
+  gc.draw(sprite, pingu->get_pos ());
 }
 
 } // namespace Actions

@@ -22,7 +22,6 @@
 
 #include "../pingu_action.hxx"
 #include "../state_sprite.hxx"
-#include "../sprite.hxx"
 
 namespace Pingus {
 namespace Actions {

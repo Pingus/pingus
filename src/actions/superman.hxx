@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_ACTIONS_SUPERMAN_HXX
 #define HEADER_PINGUS_ACTIONS_SUPERMAN_HXX
 
-#include "../sprite.hxx"
 #include "../pingu_action.hxx"
 
 namespace Pingus {
@@ -31,7 +30,7 @@ class Superman : public PinguAction
 private:
   double counter;
   double x_pos;
-  Sprite sprite;
+  CL_Sprite sprite;
 
 public:
   Superman (Pingu*);

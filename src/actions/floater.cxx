@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../resource.hxx"
 #include "../pingu.hxx"
 #include "../gui/graphic_context.hxx"
 #include "../groundtype.hxx"
@@ -28,10 +29,9 @@ namespace Actions {
 Floater::Floater(Pingu* p)
   : PinguAction(p),
     falling_depth(0),
-    step(0),
-    sprite(Sprite ("pingus/floater0"))
+    step(0)
 {
-  sprite.set_align_center_bottom();
+  sprite = Resource::load_sprite("pingus/floater/left");
 }
 
 void
@@ -59,7 +59,7 @@ Floater::update()
 void
 Floater::draw (GraphicContext& gc)
 {
-  gc.draw (sprite, pingu->get_pos());
+  gc.draw(sprite, pingu->get_pos());
 }
 
 bool

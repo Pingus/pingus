@@ -30,9 +30,8 @@ Superman::Superman (Pingu* p)
   : PinguAction(p),
     counter(0.0f),
     x_pos(pingu->get_x()),
-    sprite("pingus/superman")
+    sprite(Resource::load_sprite("pingus/superman"))
 {
-  sprite.set_align_center_bottom();
 }
 
 void

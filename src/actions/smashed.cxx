@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../resource.hxx"
 #include "../vector.hxx"
 #include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
@@ -27,16 +28,15 @@ namespace Actions {
 
 Smashed::Smashed (Pingu* p)
   : PinguAction(p),
-    sound_played(false),
-    sprite("pingus/bomber")
+    sound_played(false)
 {
-  sprite.set_align_center_bottom();
+  sprite = Resource::load_sprite("pingus/bomber");
 }
 
 void
 Smashed::draw (GraphicContext& gc)
 {
-  gc.draw (sprite, pingu->get_pos ());
+  gc.draw(sprite, pingu->get_pos ());
 }
 
 void
@@ -44,7 +44,7 @@ Smashed::update()
 {
   sprite.update();
   //  pingu->particle->add_pingu_explo(pingu->x_pos, pingu->y_pos - 16);
-  if (sprite.finished())
+  if (sprite.is_finished())
     pingu->set_status(PS_DEAD);
 }
 

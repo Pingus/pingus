@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../resource.hxx"
 #include "../col_map.hxx"
 #include "../gui/graphic_context.hxx"
 #include "../string_converter.hxx"
@@ -28,21 +29,16 @@ namespace Actions {
 
 Slider::Slider (Pingu* p)
   : PinguAction(p),
-    sprite("pingus/slider"),
     speed(10)
 {
-  sprite.set_align_center_bottom();
+  sprite.load(Direction::LEFT,  "pingus/slider/left");
+  sprite.load(Direction::RIGHT, "pingus/slider/right");
 }
 
 void
 Slider::update ()
 {
-  if (pingu->direction.is_left())
-    sprite.set_direction(Sprite::LEFT);
-  else
-    sprite.set_direction(Sprite::RIGHT);
-
-  sprite.update();
+  sprite[pingu->direction].update();
 
   for (int i = 0; i < speed && rel_getpixel(1, 0) == Groundtype::GP_NOTHING; ++i)
     {
@@ -77,7 +73,7 @@ Slider::update ()
 void
 Slider::draw (GraphicContext& gc)
 {
-  gc.draw(sprite, pingu->get_pos() + Vector(0, -2));
+  gc.draw(sprite[pingu->direction], pingu->get_pos() + Vector(0, -2));
 }
 
 } // namespace Actions

@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "resource.hxx"
 #include "pingus_error.hxx"
 #include "state_sprite.hxx"
 
@@ -24,6 +25,12 @@ namespace Pingus {
 
 StateSprite::StateSprite()
 {
+}
+
+void
+StateSprite::load(int state, const std::string& name)
+{
+  load(state, Resource::load_sprite(name));
 }
 
 void

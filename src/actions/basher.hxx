@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_ACTIONS_BASHER_HXX
 #define HEADER_PINGUS_ACTIONS_BASHER_HXX
 
+#include <ClanLib/Display/pixel_buffer.h>
 #include "../state_sprite.hxx"
 #include "../pingu_action.hxx"
 

@@ -25,9 +25,9 @@
 #include "../pingu.hxx"
 #include "../pingu_enums.hxx"
 #include "../pingu_map.hxx"
-#include "../resource.hxx"
 #include "../string_converter.hxx"
 #include "../world.hxx"
+#include "../resource.hxx"
 #include "../particles/pingu_particle_holder.hxx"
 #include "../colliders/pingu_collider.hxx"
 #include "../movers/linear_mover.hxx"
@@ -48,8 +48,8 @@ Bomber::Bomber (Pingu* p)
     colmap_exploded(false),
     explo_surf(Resource::load_sprite("other/explo"))
 {
-  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/bomber/left"));
-  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/bomber/right"));
+  sprite.load(Direction::LEFT,  "pingus/bomber/left");
+  sprite.load(Direction::RIGHT, "pingus/bomber/right");
 
   // Only load the surface again if no static_surface is available
   if (!static_surface_loaded)

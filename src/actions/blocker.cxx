@@ -22,7 +22,6 @@
 #include "../col_map.hxx"
 #include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
-#include "../resource.hxx"
 #include "../string_converter.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
@@ -34,8 +33,8 @@ namespace Actions {
 Blocker::Blocker(Pingu* p)
   : PinguAction(p)
 {
-  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/blocker/left"));
-  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/blocker/right"));
+  sprite.load(Direction::LEFT,  "pingus/blocker/left");
+  sprite.load(Direction::RIGHT, "pingus/blocker/right");
 
   if (   rel_getpixel(0,-1)  ==  Groundtype::GP_NOTHING
       && rel_getpixel(0, -2) ==  Groundtype::GP_GROUND)
