@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.5 2001/08/10 10:56:14 grumbel Exp $
+#  $Id: Makefile.am,v 1.6 2002/06/01 18:01:45 torangan Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,6 @@ libpingu_traps_a_SOURCES =           \
          LaserExit.cc  LaserExit.hh  \
          Bumper.cc     Bumper.hh
 
-#         Teleport.cc   Teleport.hh   \
+#         Teleport.cc   Teleport.hh   
 
 ## EOF ##
