@@ -32,6 +32,9 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#ifdef WIN32
+#  include <io.h>
+#endif
 
 #ifdef __GNUC__
 # define alloca __builtin_alloca
