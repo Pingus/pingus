@@ -94,7 +94,7 @@
         <dot>
           <name>leveldot_7</name>
           <position>
-            <x-pos>653</x-pos>
+            <x-pos>658</x-pos>
             <y-pos>216</y-pos>
             <z-pos>0</z-pos>
           </position>
@@ -147,8 +147,8 @@
         <dot>
           <name>leveldot_11</name>
           <position>
-            <x-pos>596</x-pos>
-            <y-pos>374</y-pos>
+            <x-pos>594</x-pos>
+            <y-pos>376</y-pos>
             <z-pos>0</z-pos>
           </position>
         </dot>
@@ -173,8 +173,8 @@
         <dot>
           <name>leveldot_13</name>
           <position>
-            <x-pos>369</x-pos>
-            <y-pos>414</y-pos>
+            <x-pos>373</x-pos>
+            <y-pos>418</y-pos>
             <z-pos>5000</z-pos>
           </position>
         </dot>
@@ -186,8 +186,8 @@
         <dot>
           <name>leveldot_14</name>
           <position>
-            <x-pos>451</x-pos>
-            <y-pos>456</y-pos>
+            <x-pos>454</x-pos>
+            <y-pos>460</y-pos>
             <z-pos>5000</z-pos>
           </position>
         </dot>
@@ -213,7 +213,7 @@
           <name>leveldot_16</name>
           <position>
             <x-pos>718</x-pos>
-            <y-pos>475</y-pos>
+            <y-pos>473</y-pos>
             <z-pos>150</z-pos>
           </position>
         </dot>
@@ -238,8 +238,8 @@
         <dot>
           <name>leveldot_18</name>
           <position>
-            <x-pos>954</x-pos>
-            <y-pos>385</y-pos>
+            <x-pos>962</x-pos>
+            <y-pos>383</y-pos>
             <z-pos>150</z-pos>
           </position>
         </dot>
@@ -289,28 +289,53 @@
 
     <edges>
       <edge name="egde_1" source="leveldot_1" destination="leveldot_2"/>
-      <edge name="egde_2" source="leveldot_2" destination="leveldot_3"/>
+      <edge name="egde_2" source="leveldot_2" destination="leveldot_3">
+           <position>
+      <x-pos>269</x-pos>
+      <y-pos>393</y-pos>
+      <z-pos>0</z-pos>
+    </position>
+      </edge>
       <edge name="egde_3" source="leveldot_3" destination="leveldot_4"/>
       <edge name="egde_4" source="leveldot_4" destination="leveldot_5"/>
       <edge name="egde_5" source="leveldot_5" destination="leveldot_6"/>
-      <edge name="egde_6" source="leveldot_6" destination="leveldot_7"/>
+      <edge name="egde_6" source="leveldot_6" destination="leveldot_7">
+            <position>
+      <x-pos>637</x-pos>
+      <y-pos>228</y-pos>
+      <z-pos>0</z-pos>
+    </position>
+      </edge>
       <edge name="egde_7" source="leveldot_7" destination="leveldot_8"/>
 
       <edge name="egde_8"  source="leveldot_7" destination="leveldot_8"/>
       <edge name="egde_9"  source="leveldot_8" destination="leveldot_9">
-        <position>
-          <x-pos>768</x-pos>
-          <y-pos>233</y-pos>
-          <z-pos>0</z-pos>
-        </position>
-        <position>
-          <x-pos>810</x-pos>
-          <y-pos>280</y-pos>
-          <z-pos>0</z-pos>
-        </position>
+    <position>
+      <x-pos>761</x-pos>
+      <y-pos>229</y-pos>
+      <z-pos>0</z-pos>
+    </position>
+
+    <position>
+      <x-pos>784</x-pos>
+      <y-pos>256</y-pos>
+      <z-pos>0</z-pos>
+    </position>
+
+    <position>
+      <x-pos>818</x-pos>
+      <y-pos>285</y-pos>
+      <z-pos>0</z-pos>
+    </position>
       </edge>
       <edge name="egde_10" source="leveldot_9" destination="leveldot_10"/>
-      <edge name="egde_11" source="leveldot_10" destination="leveldot_11"/>
+      <edge name="egde_11" source="leveldot_10" destination="leveldot_11">
+    <position>
+      <x-pos>678</x-pos>
+      <y-pos>347</y-pos>
+      <z-pos>0</z-pos>
+    </position>
+      </edge>
       <edge name="egde_12" source="leveldot_11" destination="leveldot_12"/>
       <edge name="egde_13" source="leveldot_12" destination="leveldot_13">
         <position>
@@ -318,6 +343,11 @@
           <y-pos>379</y-pos>
           <z-pos>5000</z-pos>
         </position>
+    <position>
+      <x-pos>389</x-pos>
+      <y-pos>403</y-pos>
+      <z-pos>5000</z-pos>
+    </position>
       </edge>
 
 
