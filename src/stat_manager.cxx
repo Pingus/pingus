@@ -1,4 +1,4 @@
-//  $Id: stat_manager.cxx,v 1.6 2003/04/01 15:13:33 grumbel Exp $
+//  $Id: stat_manager.cxx,v 1.7 2003/04/11 12:45:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ StatManager::instance()
   if (instance_)
     return instance_; 
   else
-    return (instance_ = new StatManager(System::get_statdir() + "stat/stats.xml"));
+    return (instance_ = new StatManager(System::get_statdir() + "savegames/variables.xml"));
 }
 
 void

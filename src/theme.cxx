@@ -1,4 +1,4 @@
- //  $Id: theme.cxx,v 1.15 2003/03/21 22:08:06 grumbel Exp $
+ //  $Id: theme.cxx,v 1.16 2003/04/11 12:45:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -228,7 +228,7 @@ Theme::load_status(std::string name)
   if (verbose > 1) std::cout << "Filename: " << status_file << std::endl;
   if (verbose > 1) std::cout << "Rawfile: " << status_file.substr(0, status_file.rfind(".")) << std::endl;
   
-  status_file = System::get_statdir() + "stat/" + rawname + ".pst";
+  status_file = System::get_statdir() + "savegames/" + rawname + ".pst";
   
   if (verbose > 1) std::cout << "Filename to open: " << status_file << std::endl;
 

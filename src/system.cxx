@@ -1,4 +1,4 @@
-//  $Id: system.cxx,v 1.12 2003/04/10 17:11:58 grumbel Exp $
+//  $Id: system.cxx,v 1.13 2003/04/11 12:45:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -228,7 +228,7 @@ System::init_directories()
   create_dir(statdir + "themes/");
 
   // Savegames (FIXME: rename to savegames/?)
-  create_dir(statdir + "stat/");
+  create_dir(statdir + "savegames/");
 
   // Backups of edited levels in the level editor
   create_dir(statdir + "backup/");
@@ -251,7 +251,7 @@ std::string
 System::get_statdir()
 {
 #ifdef WIN32
-  return "stat/";
+  return "user/";
 #else /* !WIN32 */
   char* homedir = getenv("HOME");
 

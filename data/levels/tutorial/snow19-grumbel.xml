@@ -28,6 +28,8 @@ Seite zu erreichen, was die Jumper Fähigkeit nicht tat.</description>
 
   <action-list>
     <bridger count="25"/>
+    <blocker count="10"/>
+    <bomber  count="10"/>
   </action-list>
 
 <background type="surface">
@@ -614,7 +616,7 @@ Seite zu erreichen, was die Jumper Fähigkeit nicht tat.</description>
   <position>
     <x-pos>1617.68</x-pos>
     <y-pos>627.154</y-pos>
-    <z-pos>0</z-pos>
+    <z-pos>-50</z-pos>
   </position>
   <surface><resource type="datafile">
     <resource-datafile>exits</resource-datafile>

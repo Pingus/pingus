@@ -1,4 +1,4 @@
-//  $Id: savegame_manager.cxx,v 1.4 2003/04/01 16:00:08 grumbel Exp $
+//  $Id: savegame_manager.cxx,v 1.5 2003/04/11 12:45:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ SavegameManager::instance()
   if (instance_)
     return instance_; 
   else
-    return (instance_ = new SavegameManager(System::get_statdir() + "stat/savegame.xml")); 
+    return (instance_ = new SavegameManager(System::get_statdir() + "savegames/savegames.xml")); 
 }
 
 SavegameManager::SavegameManager(const std::string& arg_filename)

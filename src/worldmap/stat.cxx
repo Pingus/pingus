@@ -1,4 +1,4 @@
-//  $Id: stat.cxx,v 1.14 2002/10/12 23:34:43 grumbel Exp $
+//  $Id: stat.cxx,v 1.15 2003/04/11 12:45:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,7 +64,7 @@ PingusWorldMapNodeStat::operator= (const PingusWorldMapNodeStat& old)
 PingusWorldMapStat::PingusWorldMapStat (std::string worldmap_name)
   : is_empty (true)
 {
-  filename = System::get_statdir () + "stat/" + worldmap_name;
+  filename = System::get_statdir () + "savegames/" + worldmap_name;
 
   if (System::exist (filename))
     {
