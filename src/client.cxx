@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.21 2002/09/14 19:06:33 torangan Exp $
+//  $Id: client.cxx,v 1.22 2002/09/17 23:11:26 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,6 +42,7 @@ Client::Client (Server * s)
     skip_frame   (0),
     do_replay    (false),
     is_finished  (false),
+    unplayable   ("misc/unplayable2", "core"),
     button_panel (0),
     pcounter     (0),
     playfield    (0),
@@ -51,6 +52,8 @@ Client::Client (Server * s)
   //cursor       (new Cursor ("cursors/animcross", "core", controller))
 {
   //Display::add_flip_screen_hook(cursor);
+
+  unplayable.set_align_center();
   
   Timer timer;
   
@@ -437,6 +440,8 @@ void
 Client::draw (GraphicContext& gc)
 {
   GUIScreen::draw (gc);
+  if (!server->get_plf()->get_playable())
+    gc.draw(unplayable, CL_Vector(400, 50));
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.16 2002/09/11 12:45:57 grumbel Exp $
+//  $Id: client.hxx,v 1.17 2002/09/17 23:11:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include <vector>
 #include "result.hxx"
 #include "gui_screen.hxx"
+#include "sprite.hxx"
 
 namespace Input {
 class Controller;
@@ -60,6 +61,8 @@ private:
   int  skip_frame;
   bool do_replay;
   bool is_finished;
+
+  Sprite unplayable;
 
   ButtonPanel*   button_panel;
   PingusCounter* pcounter;

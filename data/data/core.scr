@@ -105,7 +105,8 @@ section misc
         flag2 = ../images/core/misc/flag2.png (type=surface, x=0, y=0, width=27, height=38);
         flag3 = ../images/core/misc/flag3.png (type=surface, x=0, y=0, width=27, height=38);
 
-        unplayable = ../images/core/misc/unplayable.png (type=surface);
+        unplayable  = ../images/core/misc/unplayable.png (type=surface);
+        unplayable2 = ../images/core/misc/unplayable2.png (type=surface);
 }
 
 section worldmap
