@@ -63,7 +63,7 @@ section menu
 	play_on = images/core/menu/play_on.png (type=surface, x=0, y=0, width=201, height=127);
 	multi_on = images/core/menu/multi_on.png (type=surface, x=0, y=0, width=201, height=127);
 
-	layer1 = images/core/menu/layer1.png (type=surface, x=0, y=0, width=800, height=268);
+	layer1 = images/core/menu/layer1.jpg (type=surface, x=0, y=0, width=800, height=268);
 	layer2 = images/core/menu/layer2.png (type=surface, x=0, y=0, width=800, height=362);
 	layer3 = images/core/menu/layer3.png (type=surface, x=0, y=0, width=800, height=201);
 	layer4 = images/core/menu/layer4.png (type=surface, x=0, y=0, width=800, height=223);

@@ -8,7 +8,7 @@ all : tarball
 binary : src/pingus.static src/pingus src/Makefile.static
 	cd src/ && $(MAKE) -f Makefile.static
  
-tarball : binary src/pingus.static 
+dist : binary src/pingus.static 
 	mkdir -p $(TMPDIR)/bin/
 	mkdir -p $(TMPDIR)/share/games/pingus/
 	mkdir -p $(TMPDIR)/share/games/pingus/data/

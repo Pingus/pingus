@@ -1,3 +1,4 @@
+* offset fuer den editor
 * alterration of the lemmings rate
 
 What we need before we have a finished game:
@@ -314,6 +315,6 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
 
 
 
-$Date: 2001/06/16 15:03:53 $
+$Date: 2001/07/09 11:08:59 $
 
 -= EOF =-
