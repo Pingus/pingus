@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.41 2001/11/29 10:47:44 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.42 2001/11/29 11:38:28 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -199,7 +199,9 @@ PingusMain::check_args(int argc, char* argv[])
     {"use-scriptfile",    no_argument,       0, 151},
     {"max-cpu-usage",     no_argument,       0, 153},
     {"frame-skip",        required_argument, 0, 154},
-
+#ifdef HAVE_LIBCLANGL
+    {"use-opengl",        no_argument,       0, 'G'},
+#endif
     // FIXME: is the number stuff correct?
     {"fs-preload",      no_argument,       0, 130},
     {"fast",            no_argument,       0, 132},
@@ -225,7 +227,7 @@ PingusMain::check_args(int argc, char* argv[])
   };
 
   while(true) {
-    c = getopt_long(argc, argv, "r:p:smv:d:l:hVp:bxS:g:it:cqefF", long_options, &option_index);
+    c = getopt_long(argc, argv, "r:p:smv:d:l:hVp:bxS:g:it:cqefFG", long_options, &option_index);
     
     if (c == -1 || c == 1)
       break;
@@ -265,6 +267,13 @@ PingusMain::check_args(int argc, char* argv[])
     case 'q':
       quick_play = true;
       break;
+
+#ifdef HAVE_LIBCLANGL
+    case 'G':
+      use_opengl = true;
+      break;
+#endif
+
     case 's': // -s, --enable-sound
       if (verbose) std::cout << "check_args: Sound Effects enabled" << std::endl;
       std::cout <<
@@ -478,6 +487,9 @@ For more information about these matters, see the files named COPYING.\
 	"                            Set the resolution for pingus (default: 640x480)\n"
 	"   -h, --help               Displays this screen\n"
 	"   --disable-intro          Disable intro\n"
+#ifdef HAVE_LIBCLANGL
+	"   -G, --use-opengl         Use OpenGL\n"
+#endif
 	"   -F, --disable-fullscreen Disable Fullscreen\n"
 	"   -f, --enable-fullscreen  Enable Fullscreen (default)\n"
        	"   -d, --datadir PATH       Set the path to load the data files to `path'\n"
@@ -714,10 +726,13 @@ PingusMain::init_clanlib()
   if (verbose) 
     std::cout << "Init ClanLib" << std::endl;
 
-  CL_SetupDisplay::init();
 #ifdef HAVE_LIBCLANGL
-  CL_SetupGL::init();
+  if (use_opengl) {
+    CL_SetupGL::init();
+    std::cout << "Using OpenGL" << std::endl;
+  }
 #endif
+  CL_SetupDisplay::init();
 
   if (sound_enabled || music_enabled) 
     {
@@ -743,6 +758,14 @@ PingusMain::init_clanlib()
   CL_Display::set_videomode(screen_width, screen_height, 16, 
 			    fullscreen_enabled, 
 			    true); // allow resize
+
+#ifdef HAVE_LIBCLANGL
+  if (use_opengl)
+    {
+      CL_OpenGL::begin_2d ();
+      glEnable (GL_BLEND);
+    }
+#endif
 }
 
 void

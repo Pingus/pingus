@@ -1,4 +1,4 @@
-//  $Id: globals.hh,v 1.31 2001/07/27 21:53:22 grumbel Exp $
+//  $Id: globals.hh,v 1.32 2001/11/29 11:38:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,6 +59,7 @@ extern bool   debug_game_time; /// --debug-game-time
 extern bool   max_cpu_usage;  /// --max-cpu-usage
 extern bool   use_datafile;   /// --use-datafile
 extern float  frame_skip;     /// --frame-skip
+extern bool   use_opengl;     /// --use-opengl
 
 /// The name of the currently logged in user
 extern std::string global_username;
