@@ -55,6 +55,8 @@ src/alpha_button.hxx
 src/blitter.cxx
 src/blitter.hxx
 src/blitter_impl.hxx
+src/blitter_test.cxx
+src/blitter_test.hxx
 src/button_panel.cxx
 src/button_panel.hxx
 src/caimagemanipulation/caimagemanipulation.cpp
@@ -224,6 +226,8 @@ src/goal_manager.cxx
 src/goal_manager.hxx
 src/groundtype.cxx
 src/groundtype.hxx
+src/gui/buffer_graphic_context.cxx
+src/gui/buffer_graphic_context.hxx
 src/gui/component.hxx
 src/gui/cursor.cxx
 src/gui/cursor.hxx
@@ -232,6 +236,7 @@ src/gui/display.hxx
 src/gui/display_graphic_context.cxx
 src/gui/display_graphic_context.hxx
 src/gui/game_delta.hxx
+src/gui/graphic_context.cxx
 src/gui/graphic_context.hxx
 src/gui/gui_manager.cxx
 src/gui/gui_manager.hxx
@@ -255,8 +260,6 @@ src/html_browser.cxx
 src/html_browser.hxx
 src/hurry_up.cxx
 src/hurry_up.hxx
-src/indexed_canvas.cxx
-src/indexed_canvas.hxx
 src/input/axes/button_axis.cxx
 src/input/axes/button_axis.hxx
 src/input/axes/dummy_axis.hxx
@@ -264,8 +267,6 @@ src/input/axes/inverted_axis.cxx
 src/input/axes/inverted_axis.hxx
 src/input/axes/joystick_axis.cxx
 src/input/axes/joystick_axis.hxx
-src/input/axes/mouse_axis.cxx
-src/input/axes/mouse_axis.hxx
 src/input/axes/multiple_axis.cxx
 src/input/axes/multiple_axis.hxx
 src/input/axis.hxx
@@ -320,12 +321,6 @@ src/input/scrollers/pointer_scroller.hxx
 src/input_event.hxx
 src/layer_manager.cxx
 src/layer_manager.hxx
-src/level_desc.cxx
-src/level_desc.hxx
-src/level_interrupt.cxx
-src/level_interrupt.hxx
-src/level_result.cxx
-src/level_result.hxx
 src/libxmlfwd.hxx
 src/loading.cxx
 src/loading.hxx
@@ -394,14 +389,16 @@ src/plt_xml.cxx
 src/plt_xml.hxx
 src/prefab.cxx
 src/prefab.hxx
+src/preview_renderer.cxx
+src/preview_renderer.hxx
 src/range.cxx
 src/range.hxx
 src/res_descriptor.cxx
 src/res_descriptor.hxx
+src/resource.cxx
+src/resource.hxx
 src/resource_modifier.cxx
 src/resource_modifier.hxx
-src/result.cxx
-src/result.hxx
 src/result_screen.cxx
 src/result_screen.hxx
 src/savegame.cxx
@@ -435,6 +432,8 @@ src/start_screen.cxx
 src/start_screen.hxx
 src/stat_manager.cxx
 src/stat_manager.hxx
+src/state_sprite.cxx
+src/state_sprite.hxx
 src/story.cxx
 src/story.hxx
 src/story_screen.cxx
@@ -445,12 +444,8 @@ src/string_tokenizer.cxx
 src/string_tokenizer.hxx
 src/system.cxx
 src/system.hxx
-src/target_provider.cxx
-src/target_provider.hxx
 src/theme.cxx
 src/theme.hxx
-src/theme_selector.cxx
-src/theme_selector.hxx
 src/time_display.cxx
 src/time_display.hxx
 src/timer.cxx
@@ -601,6 +596,8 @@ src/worldobjsdata/thunderstorm_background_data.cxx
 src/worldobjsdata/thunderstorm_background_data.hxx
 src/worldobjsdata/worldobj_group_data.cxx
 src/worldobjsdata/worldobj_group_data.hxx
+src/xml_eval.cxx
+src/xml_eval.hxx
 src/xml_file_reader.cxx
 src/xml_file_reader.hxx
 src/xml_file_writer.cxx
@@ -611,3 +608,5 @@ src/xml_pdf.cxx
 src/xml_pdf.hxx
 src/xml_plf.cxx
 src/xml_plf.hxx
+src/xmlgz_reader.cxx
+src/xmlgz_reader.hxx
