@@ -96,7 +96,6 @@ XMLPingusLevel::XMLPingusLevel(const std::string& filename)
           else if (node.get_tag_name() == "objects")
             {
               CL_DomNodeList objects = node.get_child_nodes();
-              std::cout << "objects: " << objects.get_length() << std::endl;
               for(int i = 0; i < objects.get_length(); ++i)
                 {
                   impl->objects.push_back(XMLFileReader(objects.item(i).to_element()));
