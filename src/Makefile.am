@@ -264,8 +264,6 @@ story_screen.hxx \
 story_screen.cxx \
 string_format.cxx \
 string_format.hxx \
-string_tokenizer.cxx \
-string_tokenizer.hxx \
 system.cxx \
 system.hxx \
 theme.cxx \
