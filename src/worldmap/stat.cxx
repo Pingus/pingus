@@ -1,4 +1,4 @@
-//  $Id: stat.cxx,v 1.1 2002/06/12 19:03:33 grumbel Exp $
+//  $Id: stat.cxx,v 1.2 2002/06/13 19:53:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -141,7 +141,7 @@ PingusWorldMapStat::accessible (int id)
 }
 
 void
-PingusWorldMapStat::save (std::list<boost::shared_ptr<Node> >& nodes)
+PingusWorldMapStat::save (std::list<boost::shared_ptr<Pingus::WorldMap::Node> >& nodes)
 {
   std::ofstream out (filename.c_str ());
   

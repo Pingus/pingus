@@ -1,4 +1,4 @@
-//  $Id: blitter.hxx,v 1.1 2002/06/12 19:04:45 grumbel Exp $
+//  $Id: blitter.hxx,v 1.2 2002/06/13 19:53:21 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,7 +83,7 @@ public:
       @param width The new width of the surface. 
       @param height The new height of the surface. 
       @return A newly created surface, the caller is responsible to delete it. */
-  static CL_Canvas* Blitter::scale_surface_to_canvas (const CL_Surface& sur, int width, int height);
+  static CL_Canvas* scale_surface_to_canvas (const CL_Surface& sur, int width, int height);
 };
 
 #endif 

@@ -1,4 +1,4 @@
-//  $Id: game_session.hxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: game_session.hxx,v 1.2 2002/06/13 19:53:21 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ private:
 
 public:
   /** Create a new game session which is launched on start ()
-      @param filename The filename of a Pingus Level file 
+      @param arg_filename The filename of a Pingus Level file 
       FIXME: Absolute or relative filename? */
   PingusGameSession (std::string arg_filename);
 

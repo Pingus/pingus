@@ -1,4 +1,4 @@
-//  $Id: sound.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: sound.cxx,v 1.3 2002/06/13 19:53:21 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,8 @@ PingusSound::play_sound(const std::string & filename, float volume, float pannin
 
 /** Load a sound file and play it immediately.
     
-    @param filename The complete filename */
+    @param filename The complete filename 
+    @param volume   volume */
     
 void 
 PingusSound::play_music(const std::string & filename, float volume)

@@ -1,4 +1,4 @@
-//  $Id: editorobj_group.hxx,v 1.1 2002/06/12 19:11:31 grumbel Exp $
+//  $Id: editorobj_group.hxx,v 1.2 2002/06/13 19:53:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,9 +44,9 @@ public:
   void draw_mark (EditorView * view);
   
   /** Add an object to the group */
-  void EditorObjGroup::add (boost::shared_ptr<EditorObj>);
+  void add (boost::shared_ptr<EditorObj>);
   ///
-  std::list<boost::shared_ptr<EditorObj> >* EditorObjGroup::get_objs();
+  std::list<boost::shared_ptr<EditorObj> >* get_objs();
   
   bool is_over(const CL_Vector &);
   bool is_in_rect(const CL_Rect &);

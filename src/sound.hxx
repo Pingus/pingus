@@ -1,4 +1,4 @@
-//  $Id: sound.hxx,v 1.1 2002/06/12 19:09:38 grumbel Exp $
+//  $Id: sound.hxx,v 1.2 2002/06/13 19:53:21 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,9 @@ public:
 
   /** Load a sound file and play it immediately.
 
-      @param filename The complete filename  */
+      @param filename The complete filename 
+      @param volume   volume
+      @param panning  panning */
   static void play_sound(const std::string & filename, float volume = 0.5f, float panning = 0.0f);
   
   static void play_music(const std::string & filename, float volume = 0.5f);

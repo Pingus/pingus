@@ -1,4 +1,4 @@
-//  $Id: xml_helper.hxx,v 1.1 2002/06/12 19:09:38 grumbel Exp $
+//  $Id: xml_helper.hxx,v 1.2 2002/06/13 19:53:21 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,7 +61,7 @@ class XMLhelper
 {
 
 public:
-  static std::string XMLhelper::encode_entities(const std::string& arg_str);
+  static std::string encode_entities(const std::string& arg_str);
 
   /// A set of function to parse an xml file
   //@{

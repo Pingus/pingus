@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.1 2002/06/12 19:09:38 grumbel Exp $
+//  $Id: world.hxx,v 1.2 2002/06/13 19:53:21 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -87,10 +87,13 @@ public:
   virtual ~World();
 
   /** Draws the world onto the screen
-      @param x1 The left corner of the drawing area.
-      @param y1 The upper corner of the drawing area.
-      @param w  The width of the drawing area.
-      @param h  The height of the drawing area. */
+      @param x1   The left corner of the drawing area.
+      @param y1   The upper corner of the drawing area.
+      @param w    The width of the drawing area.
+      @param h    The height of the drawing area.
+      @param x_of x_of
+      @param y_of y_of
+      @param s    s   */
   void    draw(int x1, int y1, int w, int h,
 	       int x_of, int y_of, float s);
   ///

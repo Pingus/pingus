@@ -1,4 +1,4 @@
-//  $Id: spot_map.hxx,v 1.1 2002/06/12 19:09:38 grumbel Exp $
+//  $Id: spot_map.hxx,v 1.2 2002/06/13 19:53:21 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,7 +74,7 @@ public:
   virtual ~PingusSpotMap();
 
   void generate_colmap();
-  ColMap* PingusSpotMap::get_colmap();
+  ColMap* get_colmap();
   void load(PLF* plf);
   void gen_tiles();
   void draw(int x, int y, int w, int h, int of_x, int of_y, float s);
