@@ -1,4 +1,4 @@
-//  $Id: pingu_action.hxx,v 1.24 2002/11/03 13:29:09 grumbel Exp $
+//  $Id: pingu_action.hxx,v 1.25 2003/02/12 22:40:47 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,9 +43,6 @@ class PinguAction
 protected:
   /** A pointer to the pingu, which hold the action. */
   Pingu*      pingu;
-
-  /// Height of Pingu.  Used in head collision.
-  static const int pingu_height;
 
 public:
   PinguAction(Pingu* p);

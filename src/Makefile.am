@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.126 2002/12/28 16:10:17 torangan Exp $
+#  $Id: Makefile.am,v 1.127 2003/02/12 22:40:47 torangan Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,10 +27,12 @@ localedir = $(datadir)/locale
 SUBDIRS = \
 	actions             \
 	caimagemanipulation \
+	colliders           \
 	editor              \
 	editorobjs          \
         gui                 \
         input               \
+	movers		    \
 	particles           \
         worldobjs           \
 	worldobjsdata       \
@@ -61,6 +63,8 @@ pingus_LDADD = \
         worldobjs/entrances/libpingus_worldobjs_entrances.a \
 	editorobjs/libpingus_editorobjs.a \
         actions/libpingu_actions.a      \
+	movers/libpingus_movers.a \
+	colliders/libpingus_colliders.a \
         editor/libpingus_editor.a       \
         particles/libpingus_particle.a  \
         worldmap/libpingus_worldmap.a \
@@ -185,6 +189,8 @@ main_menu.hxx \
 math.hxx \
 menu_background.cxx \
 menu_background.hxx \
+mover.cxx \
+mover.hxx \
 multiline_text.cxx \
 multiline_text.hxx \
 my_gettext.hxx \
@@ -198,6 +204,8 @@ pingu_action.cxx \
 pingu_action.hxx \
 pingu_action_factory.cxx \
 pingu_action_factory.hxx \
+collider.cxx \
+collider.hxx \
 pingu_enums.cxx \
 pingu_enums.hxx \
 pingu_holder.cxx \

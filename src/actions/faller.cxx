@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.34 2002/11/03 22:20:29 grumbel Exp $
+//  $Id: faller.cxx,v 1.35 2003/02/12 22:40:47 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,8 +27,6 @@
 #include "faller.hxx"
 
 namespace Actions {
-
-const float Faller::deadly_velocity = 20.0f;
 
 Faller::Faller (Pingu* p)
   : PinguAction(p),

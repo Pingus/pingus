@@ -1,4 +1,4 @@
-//  $Id: pingu_action.cxx,v 1.22 2002/12/29 23:29:00 torangan Exp $
+//  $Id: pingu_action.cxx,v 1.23 2003/02/12 22:40:47 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,10 +25,6 @@
 #include "pingu.hxx"
 #include "pingu_action.hxx"
 #include "worldobj.hxx"
-
-// Initialise class static.
-const int PinguAction::pingu_height = 26;
-const float deadly_velocity = 20.0f;
 
 PinguAction::PinguAction (Pingu* p)
   : pingu (p)

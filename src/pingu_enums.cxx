@@ -1,4 +1,4 @@
-//  $Id: pingu_enums.cxx,v 1.2 2002/08/25 09:08:48 torangan Exp $
+//  $Id: pingu_enums.cxx,v 1.3 2003/02/12 22:40:47 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,10 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "pingu_enums.hxx"
+
+// Pingu "globals"
+const int pingu_height = 26;
+const float deadly_velocity = 20.0f;
 
 namespace Actions {
 

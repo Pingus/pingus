@@ -1,4 +1,4 @@
-//  $Id: faller.hxx,v 1.17 2002/11/03 20:30:38 grumbel Exp $
+//  $Id: faller.hxx,v 1.18 2003/02/12 22:40:47 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,8 +34,6 @@ private:
   int falling;
 
 public:
-  static const float deadly_velocity;
-
   Faller(Pingu*);
   virtual ~Faller();
   

@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.26 2002/12/28 16:10:17 torangan Exp $
+//  $Id: bomber.cxx,v 1.27 2003/02/12 22:40:47 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,8 @@
 #include "../string_converter.hxx"
 #include "../world.hxx"
 #include "../particles/pingu_particle_holder.hxx"
+#include "../colliders/pingu_collider.hxx"
+#include "../movers/linear_mover.hxx"
 #include "bomber.hxx"
 
 namespace Actions {
@@ -79,25 +81,33 @@ Bomber::update ()
 {
   sprite.update ();
 
-  // Do something according to the action that was in use before
-  switch (pingu->get_previous_action())
-    {
-    case Actions::Faller:
-      move_with_forces();
-      break;
-    case Actions::Floater:
-      if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING)
-        pingu->set_y(pingu->get_y() + 0.5f);
-      break;
-    default:
-      break;
-    }
+  Movers::LinearMover mover(WorldObj::get_world(), pingu->get_pos());
+
+  Vector velocity = pingu->get_velocity();
+
+  // Move the Pingu with different colliders depending on whether the Pingu is
+  // moving down (i.e. can't go through Bridges) or moving up (i.e. can go
+  // through Bridges)
+  if (velocity.y > 0.0f)
+    mover.update(velocity, Colliders::PinguCollider(true, pingu_height));
+  else
+    mover.update(velocity, Colliders::PinguCollider(false, pingu_height));
+
+  pingu->set_pos(mover.get_pos());
 
   // If the Bomber hasn't 'exploded' yet and it has hit Water or Lava
   if (sprite.get_frame () <= 9 && (rel_getpixel(0, -1) == Groundtype::GP_WATER
       || rel_getpixel(0, -1) == Groundtype::GP_LAVA)) 
     {
       pingu->set_action(Actions::Drown);
+      return;
+    }
+
+  // If the Bomber hasn't 'exploded' yet and it has hit the ground too quickly
+  if (sprite.get_frame () <= 9 && rel_getpixel(0, -1) != Groundtype::GP_NOTHING
+      && velocity.y > 20.0f)
+    {
+      pingu->set_action(Actions::Splashed);
       return;
     }
 
