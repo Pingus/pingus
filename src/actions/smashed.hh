@@ -1,4 +1,4 @@
-//  $Id: smashed.hh,v 1.3 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: smashed.hh,v 1.4 2001/03/31 11:21:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ public:
   ///
   void   init(void);
   ///
-  void   let_move(void);
+  void   update(void);
   ///
   bool   can_reset(void) { return false; }///
 ;

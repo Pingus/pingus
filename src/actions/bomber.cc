@@ -1,4 +1,4 @@
-//  $Id: bomber.cc,v 1.14 2001/03/31 10:54:27 grumbel Exp $
+//  $Id: bomber.cc,v 1.15 2001/03/31 11:21:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -103,7 +103,7 @@ Bomber::draw_offset(int x, int y, float s)
 }
 
 void
-Bomber::let_move()
+Bomber::update()
 {
   if (pingu->get_status() == dead)
     return;

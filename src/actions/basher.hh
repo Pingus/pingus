@@ -1,4 +1,4 @@
-//  $Id: basher.hh,v 1.9 2000/12/16 23:11:21 grumbel Exp $
+//  $Id: basher.hh,v 1.10 2001/03/31 11:21:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ public:
   ///
   void draw_offset(int x, int y, float s);
   ///
-  void   let_move();
+  void   update();
   ///
   bool   have_something_to_dig();
   ///

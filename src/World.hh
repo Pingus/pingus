@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.20 2000/12/30 23:54:06 grumbel Exp $
+//  $Id: World.hh,v 1.21 2001/03/31 11:21:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -138,7 +138,7 @@ public:
   void    draw(int x1, int y1, int w, int h,
 	       int x_of, int y_of, float s);
   ///
-  void    let_move ();
+  void    update ();
 
   /// Issue an armageddon, all Pingus will explode in some seconds.
   void    armageddon ();

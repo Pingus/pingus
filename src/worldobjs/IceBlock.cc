@@ -1,4 +1,4 @@
-//  $Id: IceBlock.cc,v 1.9 2000/12/30 23:54:06 grumbel Exp $
+//  $Id: IceBlock.cc,v 1.10 2001/03/31 11:21:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -108,7 +108,7 @@ IceBlock::draw_offset(int x_of, int y_of, float s = 1.0)
 
 ///
 void 
-IceBlock::let_move()
+IceBlock::update()
 {
   if (is_finished)
     return;

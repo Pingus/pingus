@@ -1,4 +1,4 @@
-//  $Id: SmokeParticle.cc,v 1.7 2000/12/14 21:35:56 grumbel Exp $
+//  $Id: SmokeParticle.cc,v 1.8 2001/03/31 11:21:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ SmokeParticle::SmokeParticle(int x, int y, float x_a, float y_a)
 }
 
 void
-SmokeParticle::let_move(void)
+SmokeParticle::update(void)
 {
   x_pos += x_add;
   y_pos += y_add;

@@ -1,4 +1,4 @@
-//  $Id: SnowParticle.hh,v 1.5 2000/12/14 21:35:56 grumbel Exp $
+//  $Id: SnowParticle.hh,v 1.6 2001/03/31 11:21:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ public:
   ///
   virtual ~SnowParticle();
 
-  virtual void let_move();
+  virtual void update();
   virtual bool is_alive();
 };
 
@@ -51,7 +51,7 @@ public:
   CollidingSnowParticle(int x, int y);
   virtual ~CollidingSnowParticle();
 
-  virtual void let_move();
+  virtual void update();
   virtual bool is_alive();  
 };
 

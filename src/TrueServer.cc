@@ -1,4 +1,4 @@
-//  $Id: TrueServer.cc,v 1.16 2000/08/03 10:31:17 grumbel Exp $
+//  $Id: TrueServer.cc,v 1.17 2001/03/31 11:21:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,14 +47,14 @@ TrueServer::~TrueServer()
 }
 
 void
-TrueServer::let_move(void)
+TrueServer::update(void)
 {
   if (enough_time_passed()) 
     {
       client_needs_redraw = true;
       GameTime::increase();
-      Server::let_move();
-      world->let_move();
+      Server::update();
+      world->update();
     }
 }
 

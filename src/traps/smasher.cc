@@ -1,4 +1,4 @@
-//  $Id: smasher.cc,v 1.15 2000/12/16 23:11:24 grumbel Exp $
+//  $Id: smasher.cc,v 1.16 2001/03/31 11:21:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ Smasher::~Smasher()
 }
 
 void
-Smasher::let_move()
+Smasher::update()
 {
   if (smashing) {
     if (downwards) {

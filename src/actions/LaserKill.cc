@@ -1,4 +1,4 @@
-//  $Id: LaserKill.cc,v 1.6 2000/12/16 23:11:21 grumbel Exp $
+//  $Id: LaserKill.cc,v 1.7 2001/03/31 11:21:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ LaserKill::init(void)
 }
 
 void
-LaserKill::let_move(void)
+LaserKill::update(void)
 {
   if (counter >= (int)(surface.get_num_frames()) - 1) 
     {

@@ -1,4 +1,4 @@
-//  $Id: Trap.cc,v 1.10 2000/12/30 23:54:05 grumbel Exp $
+//  $Id: Trap.cc,v 1.11 2001/03/31 11:21:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ Trap::draw_offset(int x, int y, float s)
 }
 
 void 
-Trap::let_move()
+Trap::update()
 {
   // do nothing
 }

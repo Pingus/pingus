@@ -1,4 +1,4 @@
-//  $Id: Background.hh,v 1.4 2000/12/30 23:54:06 grumbel Exp $
+//  $Id: Background.hh,v 1.5 2001/03/31 11:21:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ public:
   virtual void draw_offset(int x_of, int y_of, float s=1.0) =0;
 
   /// Move the background once a game loop
-  virtual void let_move() =0;
+  virtual void update() =0;
 
   /** Create and allocate a new background out of the given background
       data */

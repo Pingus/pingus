@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.hh,v 1.6 2000/12/16 23:11:24 grumbel Exp $
+//  $Id: ConveyorBelt.hh,v 1.7 2001/03/31 11:21:52 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,7 +61,7 @@ public:
   ///
   virtual void draw_colmap();
   ///
-  virtual void let_move(void);
+  virtual void update(void);
   ///
   virtual int  get_z_pos() const { return pos.z_pos; }
 };

@@ -1,4 +1,4 @@
-//  $Id: DebugGui.hh,v 1.3 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: DebugGui.hh,v 1.4 2001/03/31 11:21:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ public:
   ~DebugGui();
 
   ///
-  void let_move(void);
+  void update(void);
   ///
   void draw(void);
   ///

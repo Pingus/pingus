@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.35 2000/10/09 19:17:30 grumbel Exp $
+//  $Id: Client.cc,v 1.36 2001/03/31 11:21:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -246,7 +246,7 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
       CL_System::keep_alive(); 
     
       // Let the server process a game loop
-      server->let_move();
+      server->update();
 
       send_next_event();
       
@@ -256,12 +256,12 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
 	  last_update = CL_System::get_time();
 
 	  for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
-	    obj[i]->update();
+	    obj[i]->updateX();
 	}
 
       // Let the window move its content
       for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
-	obj[i]->let_move();
+	obj[i]->updateX();
 
       // Update every 3/100 seconds
       if (last_update + 30 < CL_System::get_time())

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapManager.cc,v 1.8 2001/03/18 17:45:05 grumbel Exp $
+//  $Id: PingusWorldMapManager.cc,v 1.9 2001/03/31 11:21:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,7 @@ PingusWorldMapManager::display ()
     {
       worldmap->draw ();
       // if (enough_time_passed ())
-      worldmap->let_move ();
+      worldmap->update ();
 
       CL_System::keep_alive ();
       Display::flip_display ();

@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.21 2001/03/31 10:54:27 grumbel Exp $
+//  $Id: Pingu.hh,v 1.22 2001/03/31 11:21:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -162,7 +162,7 @@ public:
   void apply_force(CL_Vector);
 
   ///
-  void let_move();
+  void update();
   ///
   void do_persistent();
   ///

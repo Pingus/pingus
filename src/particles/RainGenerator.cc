@@ -1,4 +1,4 @@
-//  $Id: RainGenerator.cc,v 1.2 2000/12/16 23:11:24 grumbel Exp $
+//  $Id: RainGenerator.cc,v 1.3 2001/03/31 11:21:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 #include "RainGenerator.hh"
 
 void
-RainGenerator::let_move()
+RainGenerator::update()
 {
   world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
   world->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));

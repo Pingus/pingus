@@ -1,4 +1,4 @@
-//  $Id: Server.hh,v 1.9 2000/06/20 17:52:48 grumbel Exp $
+//  $Id: Server.hh,v 1.10 2001/03/31 11:21:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,7 +75,7 @@ public:
   ///
   virtual bool enough_time_passed() = 0;
   ///
-  virtual void let_move();
+  virtual void update();
   ///
   virtual void start(PLF* level_data) {}
 

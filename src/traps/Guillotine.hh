@@ -1,4 +1,4 @@
-//  $Id: Guillotine.hh,v 1.6 2000/12/14 21:35:56 grumbel Exp $
+//  $Id: Guillotine.hh,v 1.7 2001/03/31 11:21:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ public:
   virtual ~Guillotine();
   
   ///
-  void let_move(void);
+  void update(void);
   ///
   void draw_offset(int x, int y, float s);
   ///

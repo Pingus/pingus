@@ -1,4 +1,4 @@
-//  $Id: SnowGenerator.hh,v 1.3 2000/08/05 18:48:09 grumbel Exp $
+//  $Id: SnowGenerator.hh,v 1.4 2001/03/31 11:21:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ public:
   ///
   virtual ~SnowGenerator();
   ///
-  virtual void let_move();
+  virtual void update();
 };
 
 #endif

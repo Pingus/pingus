@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.13 2000/12/14 21:35:56 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.14 2001/03/31 11:21:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -170,9 +170,9 @@ PingusWorldMap::draw ()
 }
 
 void
-PingusWorldMap::let_move ()
+PingusWorldMap::update ()
 {
-  pingus->let_move ();
+  pingus->update ();
 }
 
 PingusWorldMapNode* 

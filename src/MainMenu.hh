@@ -1,4 +1,4 @@
-//  $Id: MainMenu.hh,v 1.3 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: MainMenu.hh,v 1.4 2001/03/31 11:21:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,6 @@
 class MainMenu
 {
 private:
-  ///  vector<GuiObj*> gui_obj;
 public:
   MainMenu();
   ///

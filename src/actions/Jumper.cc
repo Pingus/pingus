@@ -1,4 +1,4 @@
-//  $Id: Jumper.cc,v 1.9 2001/03/31 10:54:27 grumbel Exp $
+//  $Id: Jumper.cc,v 1.10 2001/03/31 11:21:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ Jumper::init(void)
 }
 
 void
-Jumper::let_move()
+Jumper::update()
 {
   if (pingu->direction.is_right()) {
     pingu->velocity += CL_Vector(10.0, -10.0);

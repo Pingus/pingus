@@ -37,7 +37,7 @@ public:
   ///
   void   init(void);
   ///
-  void   let_move(void);
+  void   update(void);
 
   ///
   int x_target, y_target;

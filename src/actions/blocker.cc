@@ -1,4 +1,4 @@
-//  $Id: blocker.cc,v 1.10 2001/03/31 10:54:27 grumbel Exp $
+//  $Id: blocker.cc,v 1.11 2001/03/31 11:21:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ Blocker::init(void)
 }
 
 void
-Blocker::let_move()
+Blocker::update()
 {
   if (!standing_on_ground())
     {

@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.9 2000/12/16 23:11:24 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.10 2001/03/31 11:21:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -115,7 +115,7 @@ ConveyorBelt::draw_colmap ()
 }
 
 void 
-ConveyorBelt::let_move(void)
+ConveyorBelt::update(void)
 {
   counter += speed;
 

@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.12 2000/12/30 23:54:05 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.13 2001/03/31 11:21:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -89,7 +89,7 @@ public:
   /// Get the pixel from the colmap, relative to the pingu position. 
   int  rel_getpixel(int x, int y);
 
-  /// True if the action was used the last let_move()
+  /// True if the action was used the last update()
   bool is_active(void);
   
   /** Returns the enviroment, used to check if an action can be
@@ -102,7 +102,7 @@ public:
   virtual void  init(void) {};
 
   /// The "AI" of the pingu. The walker and faller is in class Pingu
-  virtual void  let_move(void) = 0;
+  virtual void  update(void) = 0;
 
   /** Draws the surfaced defined by the action, can be overwritten if
       the action needs a more complicated way of drawing. */

@@ -1,4 +1,4 @@
-//  $Id: SmallMap.cc,v 1.26 2001/03/30 10:02:30 grumbel Exp $
+//  $Id: SmallMap.cc,v 1.27 2001/03/31 11:21:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -213,7 +213,7 @@ SmallMap::draw_pingus()
 }
 
 void
-SmallMap::let_move()
+SmallMap::update()
 {
   int cx, cy;
   ColMap* colmap = client->get_server()->get_world()->get_colmap();

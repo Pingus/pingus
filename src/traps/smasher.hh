@@ -1,4 +1,4 @@
-//  $Id: smasher.hh,v 1.7 2000/09/18 12:22:16 grumbel Exp $
+//  $Id: smasher.hh,v 1.8 2001/03/31 11:21:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ public:
   ///
   void draw_colmap();
   ///
-  void let_move();
+  void update();
   ///
   void catch_pingu(Pingu* pingu);
 };

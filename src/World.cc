@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.37 2000/12/30 23:54:05 grumbel Exp $
+//  $Id: World.cc,v 1.38 2001/03/31 11:21:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -118,7 +118,7 @@ World::draw(int x1, int y1, int w, int h,
 }
 
 void 
-World::let_move()
+World::update()
 {
   if (!exit_world && (allowed_pingus == released_pingus || do_armageddon)
       && pingus->size() == 0) 
@@ -155,26 +155,26 @@ World::let_move()
       obj != world_obj_bg.end(); 
       obj++)
     {
-      (*obj)->let_move();
+      (*obj)->update();
     }
 
   for(vector<shared_ptr<WorldObj> >::iterator obj = world_obj_fg.begin(); 
       obj != world_obj_fg.end(); 
       obj++)
     {
-      (*obj)->let_move();
+      (*obj)->update();
     }
 
   for(vector<shared_ptr<WorldObj> >::iterator obj = world_obj_fg.begin(); 
       obj != world_obj_fg.end(); 
       obj++)
     {
-      (*obj)->let_move();
+      (*obj)->update();
     }
 
   for(PinguIter pingu = pingus->begin(); pingu != pingus->end(); ++pingu)
     {
-      (*pingu)->let_move();
+      (*pingu)->update();
 
       if ((*pingu)->need_catch()) {
 	for(PinguIter i = pingus->begin(); i != pingus->end(); i++) {
@@ -190,15 +190,15 @@ World::let_move()
     }
 
   /*  for(vector<TrapData>::size_type i=0; i < traps.size(); ++i)
-    traps[i]->let_move();
+    traps[i]->update();
 
   for(vector<EntranceData>::size_type i2=0; i2 < entrance.size(); ++i2) 
-    entrance[i2]->let_move();
+    entrance[i2]->update();
   */    
-  particle_holder->let_move();
+  particle_holder->update();
 
   for (vector<shared_ptr<Background> >::iterator i = backgrounds.begin(); i != backgrounds.end(); i++)
-    (*i)->let_move();
+    (*i)->update();
 
   // Clear the explosion force list
   ForcesHolder::clear_explo_list();

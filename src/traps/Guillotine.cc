@@ -1,4 +1,4 @@
-//  $Id: Guillotine.cc,v 1.8 2001/03/31 10:54:27 grumbel Exp $
+//  $Id: Guillotine.cc,v 1.9 2001/03/31 11:21:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,7 +57,7 @@ Guillotine::draw_offset(int x, int y, float s)
 }
 
 void
-Guillotine::let_move(void)
+Guillotine::update(void)
 {
   if (counter.finished()) {
     counter = 0;

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapPingus.hh,v 1.5 2000/12/14 21:35:56 grumbel Exp $
+//  $Id: PingusWorldMapPingus.hh,v 1.6 2001/03/31 11:21:52 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ public:
   ~PingusWorldMapPingus ();
 
   void draw ();
-  void let_move ();
+  void update ();
   void walk_to (PingusWorldMapNode* node);
   bool is_walking ();
   void set_position (PingusWorldMapNode* node);

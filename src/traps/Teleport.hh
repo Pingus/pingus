@@ -37,7 +37,7 @@ public:
   virtual ~Teleport();
   
   ///
-  void let_move(void);
+  void update(void);
   ///
   void catch_pingu(Pingu*);
 };

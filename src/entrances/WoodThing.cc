@@ -1,4 +1,4 @@
-//  $Id: WoodThing.cc,v 1.9 2000/12/16 23:11:24 grumbel Exp $
+//  $Id: WoodThing.cc,v 1.10 2001/03/31 11:21:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ WoodThing::WoodThing(EntranceData data)
 }
 
 void
-WoodThing::let_move(void)
+WoodThing::update(void)
 {
   --counter;
 

@@ -1,4 +1,4 @@
-//  $Id: exiter.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: exiter.hh,v 1.5 2001/03/31 11:21:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ public:
   std::string name() { return "Exiter"; }///
 ;
   ///
-  void   let_move();
+  void   update();
 
 }///
 ;

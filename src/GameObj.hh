@@ -1,4 +1,4 @@
-//  $Id: GameObj.hh,v 1.2 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: GameObj.hh,v 1.3 2001/03/31 11:21:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ public:
 
   //static int SetResourceManager( CL_ResourceManager* );
   ///  static CL_ResourceManager* resource();
-  virtual void let_move();
+  virtual void update();
   ///
   virtual void draw_offset(int x, int y);
 }///

@@ -1,4 +1,4 @@
-//  $Id: Splashed.cc,v 1.10 2000/12/16 23:11:21 grumbel Exp $
+//  $Id: Splashed.cc,v 1.11 2001/03/31 11:21:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ Splashed::init(void)
 }
 
 void
-Splashed::let_move(void)
+Splashed::update(void)
 {
   if (pingu->get_status() == dead)
     return;

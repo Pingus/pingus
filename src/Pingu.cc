@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.42 2001/03/31 10:54:27 grumbel Exp $
+//  $Id: Pingu.cc,v 1.43 2001/03/31 11:21:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -297,7 +297,7 @@ Pingu::do_persistent()
 // FIXME: This function is *much* to large, it needs a real cut down
 // into smaller pieces.  
 void
-Pingu::let_move(void)
+Pingu::update(void)
 {
   if (status == dead) 
     return;
@@ -330,8 +330,8 @@ Pingu::let_move(void)
   do_persistent();
   
   if (action.get()) 
-    { // if we have an action, let_move() it
-      action->let_move();
+    { // if we have an action, update() it
+      action->update();
     }
   else 
     { // if we have no action, let the pingu walk
