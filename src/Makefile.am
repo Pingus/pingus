@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.128 2003/02/16 18:40:47 grumbel Exp $
+#  $Id: Makefile.am,v 1.129 2003/02/17 18:23:05 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -302,7 +302,6 @@ wav_provider.cxx \
 wav_provider.hxx \
 world.cxx \
 world.hxx \
-world_impl.hxx \
 worldobj.cxx \
 worldobj.hxx \
 worldobj_data.hxx \
