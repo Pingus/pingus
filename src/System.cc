@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.20 2000/10/09 19:17:30 grumbel Exp $
+//  $Id: System.cc,v 1.21 2000/10/12 19:33:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -296,7 +296,7 @@ System::checksum (std::string filename)
   FILE* in;
   int bytes_read;
   char buffer[4096];
-  int checksum;
+  int checksum = 0;
 
   in = fopen(filename.c_str(), "r");
 

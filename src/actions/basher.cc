@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.14 2000/08/03 10:31:17 grumbel Exp $
+//  $Id: basher.cc,v 1.15 2000/10/12 19:33:51 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -16,9 +16,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "basher.hh"
 #include "../particles/GroundParticle.hh"
 #include "../algo.hh"
+#include "../globals.hh"
+#include "basher.hh"
 
 using namespace std;
 
@@ -126,10 +127,10 @@ Basher::have_something_to_dig()
 
   for(int i = 0; is_finished == false && i < 16; i++)
     {
-      //cout << rel_getpixel(i,0) << " " << flush;
       if (rel_getpixel(i,0) & ColMap::WALL)
 	{
-	  //cout << "Found something to dig..." << endl;
+	  if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
+	    std::cout << "Basher: Found something to dig..." << std::endl;
 	  return true;
 	}
     }

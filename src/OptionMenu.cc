@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.25 2000/08/09 14:39:37 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.26 2000/10/12 19:33:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -214,8 +214,8 @@ OptionMenu::init()
   add_entry("Level Previews", &previews_enabled);
   add_entry("Draw ColMap", &draw_collision_map);
   add_entry("Horizontal Button Panel", &horizontal_button_panel);
-  add_entry("Debug GameTime", &debug_game_time);
-  add_entry("Debug Tiles", &debug_tiles);
+  //add_entry("Debug GameTime", &debug_game_time);
+  //add_entry("Debug Tiles", &debug_tiles);
   add_entry("Auto Scrolling", &auto_scrolling);
 }
 

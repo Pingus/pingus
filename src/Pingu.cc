@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.35 2000/10/10 18:14:09 grumbel Exp $
+//  $Id: Pingu.cc,v 1.36 2000/10/12 19:33:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -140,7 +140,8 @@ Pingu::set_action(PinguAction* act)
 
   if (status == dead)
     {
-      std::cout << "Setting action to a dead pingu" << std::endl;
+      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
+	std::cout << "Setting action to a dead pingu" << std::endl;
       return 0;
     }
 
@@ -151,7 +152,7 @@ Pingu::set_action(PinguAction* act)
   // FIXME: ^ XOR?!
   if (act->get_type() ^ (ActionType)ONCE) 
     {
-      if (verbose) 
+      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
 	{
 	  std::cout << "Pingu: Found some persistant action" << std::endl;
 	  std::cout << "Pingu: Action is FALL: " 
@@ -164,7 +165,8 @@ Pingu::set_action(PinguAction* act)
 	{
 	  if ((*i)->name() == act->name()) 
 	    {
-	      std::cout << "Not using action, we have allready" << std::endl;
+	      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
+		std::cout << "Not using action, we have allready" << std::endl;
 	      return 0;
 	    }
 	}
@@ -190,7 +192,8 @@ Pingu::set_action(PinguAction* act)
 	{ // Immediately activate the action
 	  if (action && (action->name() == act->name()))
 	    {
-	      if (verbose > 1) std::cout << "Allready have action" << std::endl;
+	      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
+		std::cout << "Pingu: Allready have action" << std::endl;
 	      return false;
 	    }
 	  action = act;
@@ -267,7 +270,8 @@ Pingu::do_persistent()
 	    {
 	      if (action && persist[i]->name() == action->name()) 
 		{
-		  std::cout << "Not using action, we have allready" << std::endl;
+		  if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
+		    std::cout << "Pingu: Not using action, we have allready" << std::endl;
 		} 
 	      else 
 		{
@@ -408,7 +412,10 @@ Pingu::do_falling()
 	  if (fabs(velocity.y) > deadly_velocity)
 	    set_action(world->get_action_holder()->get_uaction("splashed"));
 	  else if (fabs(velocity.x) > deadly_velocity)
-	    std::cout << "x Smashed on ground, jumping" << std::endl;
+	    {
+	      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
+		std::cout << "Pingu: x Smashed on ground, jumping" << std::endl;
+	    }
 	}
       // Reset the velocity
       velocity.x = 0;
@@ -428,7 +435,8 @@ Pingu::do_walking()
       //PingusSound::play_wav("SPLASH");
       //status = dead;
       set_paction(world->get_action_holder()->get_uaction("drown"));
-      std::cout << "Gluck..." << std::endl;
+      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
+	std::cout << "Pingu: Gluck..." << std::endl;
       return;
     }
 
@@ -462,11 +470,13 @@ Pingu::do_walking()
 		{
 		  if (action && persist[i]->name() == action->name()) 
 		    {
-		      if (verbose) std::cout << "Not using action, we have allready" << std::endl;
+		      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
+			std::cout << "Pingu: Not using action, we have allready" << std::endl;
 		    } 
 		  else 
 		    {
-		      if (verbose) std::cout << "We are infront of a wall, setting persistant action" << std::endl;
+		      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
+			std::cout << "Pingu: We are infront of a wall, setting persistant action" << std::endl;
 		      set_paction(world->get_action_holder()->get_uaction(persist[i]->name()));
 		    }
 		  return;
@@ -478,7 +488,8 @@ Pingu::do_walking()
   
   if (rel_getpixel(0, 26) != ColMap::NOTHING && !(rel_getpixel(0, 26) & ColMap::BRIDGE))
     {
-      std::cout << "Pingu: Head collision" << std::endl;
+      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
+	std::cout << "Pingu: Head collision" << std::endl;
       direction.change();
       return;
     }

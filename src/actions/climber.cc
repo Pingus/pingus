@@ -1,4 +1,4 @@
-//  $Id: climber.cc,v 1.6 2000/10/03 20:01:24 grumbel Exp $
+//  $Id: climber.cc,v 1.7 2000/10/12 19:33:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,6 @@ Climber::Climber()
 PinguAction* 
 Climber::allocate(void)
 {
-  // std::cout << "Creating new Climber" << std::endl;
   return new Climber;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: globals.cc,v 1.27 2000/10/09 19:17:30 grumbel Exp $
+//  $Id: globals.cc,v 1.28 2000/10/12 19:33:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,6 @@ bool   intro_disabled    = true;
 bool   record_demo       = false;
 bool   play_demo         = false;
 bool   cursor_enabled    = false;
-bool   debug_actions     = false;
 bool   fs_preload        = false;  
 bool   fast_mode         = false;
 bool   previews_enabled  = true;
@@ -47,17 +46,15 @@ int    screen_width  = 800;
 int    screen_height = 600;
 bool   preload_data  = false; // FIXME: Should be default if it would work
 bool   draw_collision_map = false;
-bool   debug_tiles = false;
 bool   swcursor_enabled = false; // --enable-swcursor
 std::string config_file;   // --config-file
 bool   background_manipulation_enabled = false; // --enable-bg-manipulation
-bool   debug_game_time = false; // --debug-game-time
 bool   use_datafile = false; // --use-datafile
 
 std::string global_username;
 std::string global_email; 
 std::string default_language = "en";
 
-int debug_flags = 0;
+int pingus_debug_flags = 0;
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.11 2000/10/10 13:22:40 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.12 2000/10/12 19:33:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../globals.hh"
 #include "../Display.hh"
 #include "../TargetProvider.hh"
 #include "../PingusResource.hh"
@@ -71,11 +72,13 @@ PingusWorldMap::on_button_press (CL_InputDevice *device, const CL_Key &key)
 	  if (node)
 	    {
 	      PingusWorldMapNode* pingus_node = pingus->get_node ();
-	      std::cout << "Click on: " << node->id << std::endl;
+	      if (maintainer_mode)
+		std::cout << "Click on: " << node->id << std::endl;
 
 	      if (pingus_node && pingus_node->id == node->id)
 		{
-		  std::cout << "Start a level...: " << node->levelname << std::endl;
+		  if (maintainer_mode) 
+		    std::cout << "Start a level...: " << node->levelname << std::endl;
 		  
 		  CL_Target* target = CL_Display::get_target ();
 		  if (target)
@@ -102,15 +105,19 @@ PingusWorldMap::on_button_press (CL_InputDevice *device, const CL_Key &key)
 	    }
 	  else
 	    {
-	      std::cout << "no id clicked" << std::endl;
+	      if (maintainer_mode)
+		std::cout << "no id clicked" << std::endl;
 	    }
       	}
       else 
 	{
-	  std::cout << "<position>" << std::endl;
-	  std::cout << "  <x-pos>" << key.x << "</x-pos>" << std::endl;
-	  std::cout << "  <y-pos>" << key.y << "</y-pos>" << std::endl;
-	  std::cout << "</position>" << std::endl;
+	  if (maintainer_mode)
+	    {
+	      std::cout << "<position>" << std::endl;
+	      std::cout << "  <x-pos>" << key.x << "</x-pos>" << std::endl;
+	      std::cout << "  <y-pos>" << key.y << "</y-pos>" << std::endl;
+	      std::cout << "</position>" << std::endl;
+	    }
 	}
     }
 }

@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.35 2000/09/29 16:21:17 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.36 2000/10/12 19:33:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -312,7 +312,7 @@ PingusSpotMap::draw(int x_pos, int y_pos, int w, int h,
 		    }
 		  else
 		    {
-		      if (debug_tiles)
+		      if (pingus_debug_flags & PINGUS_DEBUG_TILES)
 			CL_Display::fill_rect(x * tile_size + of_x, y * tile_size + of_y,
 					      x * tile_size + of_x + tile_size, y * tile_size + of_y + tile_size,
 					      1.0, 0.0, 0.0, 0.3);
@@ -433,7 +433,7 @@ PingusSpotMap::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovi
 	{
 	  if (sbuffer[j]) 
 	    {
-	      if (debug_actions)
+	      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
 		{
 		  if (!(colmap->getpixel(real_x, real_y) & ColMap::SOLID)) 
 		    {

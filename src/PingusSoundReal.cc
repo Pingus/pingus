@@ -1,4 +1,4 @@
-//  $Id: PingusSoundReal.cc,v 1.4 2000/10/10 18:14:09 grumbel Exp $
+//  $Id: PingusSoundReal.cc,v 1.5 2000/10/12 19:33:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,11 +45,13 @@ PingusSoundReal::init(int audio_rate, Uint16 audio_format,
   music = 0;
   is_init = true;
 
-  printf("Initint music\n");
-  printf("Opened audio at %d Hz %d bit %s, %d bytes audio buffer\n", audio_rate,
-	 (audio_format&0xFF),
-	 (audio_channels > 1) ? "stereo" : "mono", 
-	 audio_buffers );
+  if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
+    {
+      printf("Initint music: %d Hz %d bit %s, %d bytes audio buffer\n", audio_rate,
+	     (audio_format&0xFF),
+	     (audio_channels > 1) ? "stereo" : "mono", 
+	     audio_buffers);
+    }
   
   if ( SDL_Init(SDL_INIT_AUDIO) < 0 ) 
     {
@@ -64,10 +66,13 @@ PingusSoundReal::init(int audio_rate, Uint16 audio_format,
     exit(2);
   } else {
     Mix_QuerySpec(&audio_rate, &audio_format, &audio_channels);
-    printf("Opened audio at %d Hz %d bit %s, %d bytes audio buffer\n", audio_rate,
-	   (audio_format&0xFF),
-	   (audio_channels > 1) ? "stereo" : "mono", 
-	   audio_buffers );
+    if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
+      {
+	printf("Opened audio at %d Hz %d bit %s, %d bytes audio buffer\n", audio_rate,
+	       (audio_format&0xFF),
+	       (audio_channels > 1) ? "stereo" : "mono", 
+	       audio_buffers );
+      }
     atexit(clean_up);
   }
   audio_open = 1;
@@ -120,17 +125,15 @@ PingusSoundReal::real_play_wav(std::string arg_str)
 void
 PingusSoundReal::real_play_mod(std::string filename)
 {
-
-  std::cout << "PingusSoundReal: Playing mod file: " << filename << std::endl;
-
+  if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
+    std::cout << "PingusSoundReal: Playing mod file: " << filename << std::endl;
+  
   if (music)
     {
       Mix_FadeOutMusic(1000);
       Mix_FreeMusic(music);
     }
   
-  printf("Playing...\n");
-
   try {
     music = PingusMusicProvider::load(filename);
   } catch (PingusError err) {

@@ -1,4 +1,4 @@
-//  $Id: PingusSound.cc,v 1.15 2000/10/10 18:14:09 grumbel Exp $
+//  $Id: PingusSound.cc,v 1.16 2000/10/12 19:33:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,13 +60,15 @@ PingusSound::clean_up()
 void
 PingusSoundDummy::real_play_mod (std::string filename)
 {
-  std::cout << "PingusSoundDummy::real_play_mod: " << filename << std::endl;
+  if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
+    std::cout << "PingusSoundDummy::real_play_mod: " << filename << std::endl;
 }
 
 void 
 PingusSoundDummy::real_play_wav(std::string filename)
 {
-  std::cout << "PingusSoundDummy::real_play_wav: " << filename << std::endl;
+  if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
+    std::cout << "PingusSoundDummy::real_play_wav: " << filename << std::endl;
 }
 
 void 

@@ -1,4 +1,4 @@
-//  $Id: Waiter.cc,v 1.5 2000/06/28 19:49:18 grumbel Exp $
+//  $Id: Waiter.cc,v 1.6 2000/10/12 19:33:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,15 +26,10 @@ Waiter::Waiter()
 void
 Waiter::let_move()
 {
-  //  if (rel_getpixel(0,-1) == ColMap::NOTHING)
-    //    is_finished = true;
-  
   if (countdown < 0)
     is_finished = true;    
   
   --countdown;
-
-  //  std::cout << "Waiter:count: " << countdown << std::endl;
 }
 
 void

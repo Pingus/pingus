@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.10 2000/10/10 13:22:39 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.11 2000/10/12 19:33:51 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -24,6 +24,8 @@
 //   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 #include <config.h>
+
+#include <libintl.h>
 
 #include <iostream>
 #include <string>
@@ -343,10 +345,7 @@ PingusMain::check_args(int argc, char* argv[])
       fullscreen_enabled = false;
       break;
 
-    // Starting weird number options...
-    case 129: // --debug-actions
-      debug_actions = true;
-      break;
+    // Starting weird number options... no idea if this is correct.
     case 130: // --fs-preload
       fs_preload = true;
       previews_enabled = true;
@@ -395,10 +394,6 @@ PingusMain::check_args(int argc, char* argv[])
       // Nothing, since that is handled in quick_check_args()
       break;
 
-    case 143:
-      debug_tiles = true;
-      break;
-
     case 144:
       sscanf(optarg, "%d", &tile_size);
       break;
@@ -419,10 +414,6 @@ PingusMain::check_args(int argc, char* argv[])
       background_manipulation_enabled = true;
       break;
 
-    case 149:
-      debug_game_time = true;
-      break;
-
     case 150:
       use_datafile = true;
       break;
@@ -434,15 +425,19 @@ PingusMain::check_args(int argc, char* argv[])
     case 152:
       if (strcmp (optarg, "actions") == 0)
 	{
-	  debug_flags |= DEBUG_ACTIONS;
+	  pingus_debug_flags |= PINGUS_DEBUG_ACTIONS;
 	}
       else if (strcmp (optarg, "sound") == 0)
 	{
-	  debug_flags |= DEBUG_SOUND;
+	  pingus_debug_flags |= PINGUS_DEBUG_SOUND;
 	}
-      else if (strcmp (optarg, "music") == 0)
+      else if (strcmp (optarg, "gametime") == 0)
 	{
-	  debug_flags |= DEBUG_MUSIC;
+	  pingus_debug_flags |= PINGUS_DEBUG_GAMETIME;
+	}
+      else if (strcmp (optarg, "tiles") == 0)
+	{
+	  pingus_debug_flags |= PINGUS_DEBUG_TILES;
 	}
       else
 	{
@@ -484,7 +479,8 @@ PingusMain::check_args(int argc, char* argv[])
 	"\nDebugging and experimental stuff:\n"
 	"   --maintainer-mode        Enables some features, only interesting programmers\n"
 	"   --enable-bg-manipulation Enables color manipulation of level backgrounds\n"
-	"   --debug-tiles            Draw empty tiles\n"
+	"   --debug OPTION           Enable the output of debugging infos, possible 
+                                     OPTION's are tiles, gametime, actions, sound\n"
 	"   -t, --speed SPEED        Set the game speed (0=fastest, >0=slower)\n"
 	"   -b, --print-fps          Prints the fps to stdout\n"
 	"   -i, --enable-gimmicks    Enable some buggy development stuff\n"
