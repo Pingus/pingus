@@ -1,4 +1,4 @@
-//  $Id: entrance_obj.cxx,v 1.5 2002/12/14 11:35:11 grumbel Exp $
+//  $Id: entrance_obj.cxx,v 1.6 2003/03/07 18:49:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -111,7 +111,7 @@ EditorNS::PropertyFrame*
 EntranceObj::get_gui_dialog (EditorNS::Editor* editor)
 {
   EditorNS::GenericPropertyFrame* propframe 
-    = new EditorNS::GenericPropertyFrame("GroundPiece Properties",
+    = new EditorNS::GenericPropertyFrame("Entrance Properties",
                                          editor->get_property_window()->get_client_area());
 
   propframe->begin_add_enum_box("Direction", (int*)&data->direction);

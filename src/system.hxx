@@ -1,4 +1,4 @@
-//  $Id: system.hxx,v 1.7 2003/03/04 17:02:51 grumbel Exp $
+//  $Id: system.hxx,v 1.8 2003/03/07 18:49:20 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -118,6 +118,9 @@ public:
 
   /** Get the currently country code, in a two letter ISO 639 syntax */
   static std::string get_language();
+
+  /** Return the modification time of a file */
+  static unsigned int get_mtime(const std::string& filename);
 
   /** Choose the correct translation out of the map, if there is none
       present, fall back to the default language */

@@ -1,4 +1,4 @@
-//  $Id: plf_res_mgr.cxx,v 1.1 2003/03/04 10:26:18 grumbel Exp $
+//  $Id: plf_res_mgr.cxx,v 1.2 2003/03/07 18:49:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,57 +30,74 @@ PLFHandle
 PLFResMgr::load_plf_raw(const std::string& res_name,
                         const std::string& filename)
 {
-  pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: Loading level from disk: '" << res_name << "' -> '" << filename << "'" << std::endl;
-
-  PLF* plf = PLF::create(filename);
+  PLFMap::iterator i = plf_map.find(res_name);
   
-  plf_map[res_name]  = plf;
+  if (i == plf_map.end())
+    { // Entry not cached, so load it and add it to cache
+      pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: Loading level from DISK: '" << res_name << "' -> '" << filename << "'" << std::endl;
 
-  return PLFHandle (plf);
+      PLF* plf = PLF::create(filename);
+  
+      PLFEntry entry; 
+
+      entry.plf   = plf;
+      entry.mtime = System::get_mtime(filename);
+
+      plf_map[res_name]  = entry;
+
+      // FIXME: leaking pointers to the outsite work is not such a good
+      // idea, could lead to throuble sooner or later
+      return PLFHandle (entry.plf);
+    }
+  else
+    {
+      unsigned int current_mtime = System::get_mtime(filename);
+      if (current_mtime != i->second.mtime)
+        {
+          delete i->second.plf;
+
+          pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: level changed on DISK, reloading: '" << res_name << "' -> '" << filename << "'" << std::endl;
+
+          // Reload the file since it has changed on disk
+          PLF* plf = PLF::create(filename);
+  
+          PLFEntry entry; 
+
+          entry.plf   = plf;
+          entry.mtime = System::get_mtime(filename);
+
+          plf_map[res_name]  = entry;
+
+          // FIXME: leaking pointers to the outsite work is not such a good
+          // idea, could lead to throuble sooner or later
+          return PLFHandle (entry.plf);
+        }
+      else
+        { // File in cache is up to date, everything is already, return it
+          pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: Loading level from CACHE: '" << res_name << "' -> '" << filename << "'" << std::endl;
+  
+          return i->second.plf;
+        }
+    }
 }
 
 PLFHandle
 PLFResMgr::load_plf_from_filename(const std::string& filename)
 {
-  // FIXME: This should reload levels if they have changed on disk
-
   // FIXME: Might cut of the 'playable/' or 'wip/' directories, not so
   // good. saving the PLF's under filenames would also lead to
   // throuble, since multiple filenames can map to the same file
   // (../../data/levels/bla.xml, ../levels/bla.xml, etc.)
   std::string res_name = System::basename(filename); 
-  res_name = res_name.substr(0, res_name.length()-4);
-  
-  PLFMap::iterator i = plf_map.find(res_name);
-
-  if (i == plf_map.end ())
-    {
-      return load_plf_raw (res_name, filename);
-    }
-  else
-    {
-      pout(PINGUS_DEBUG_LOADING) 
-        << "PLFResMgr: Loading level from cache: '" << res_name << "' -> '" << filename << "'" << std::endl;
-      return PLFHandle (i->second);
-    }
+  return load_plf_raw(res_name.substr(0, res_name.length()-4),
+                      filename);
 }
 
 PLFHandle
 PLFResMgr::load_plf(const std::string& res_name)
 {
-  std::string filename = path_manager.complete("levels/" + res_name + ".xml");
-  PLFMap::iterator i   = plf_map.find(res_name);
-
-  if (i == plf_map.end ())
-    {
-      pout(PINGUS_DEBUG_LOADING) 
-        << "PLFResMgr: Loading level from cache: '" << res_name << "' -> '" << filename << "'" << std::endl;
-      return load_plf_raw (res_name, filename);
-    }
-  else
-    {
-      return PLFHandle (i->second);
-    }
+  return load_plf_raw(res_name, 
+                      path_manager.complete("levels/" + res_name + ".xml"));
 }
 
 /* EOF */

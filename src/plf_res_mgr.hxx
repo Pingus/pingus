@@ -1,4 +1,4 @@
-//  $Id: plf_res_mgr.hxx,v 1.1 2003/03/04 10:26:18 grumbel Exp $
+//  $Id: plf_res_mgr.hxx,v 1.2 2003/03/07 18:49:20 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,12 @@
 class PLFResMgr
 {
 private:
-  typedef std::map<std::string, PLF*> PLFMap; 
+  struct PLFEntry {
+    PLF* plf;
+    unsigned int mtime;
+  };
+
+  typedef std::map<std::string, PLFEntry> PLFMap; 
   static  PLFMap plf_map;
 
   /** Loads PLF from filename and stores it under 'res_name' in the
