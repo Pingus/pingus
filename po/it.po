@@ -1,19 +1,20 @@
+# translation of it.po to 
 # translation of it.po to Italiano
-# Copyright (C) 2003 Free Software Foundation, Inc.
-# Giuseppe D'Aqui' <kumber@tiscalinet.it>, 2003
+# Copyright (C) 2003, 2004 Free Software Foundation, Inc.
+# Giuseppe D'Aqui' <kumber@tiscalinet.it>, 2003, 2004.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-08-29 19:12+0200\n"
-"PO-Revision-Date: 2003-04-21 14:09+0200\n"
+"POT-Creation-Date: 2004-04-07 15:49+0200\n"
+"PO-Revision-Date: 2004-04-07 18:48+0200\n"
 "Last-Translator: Giuseppe D'Aqui' <kumber@tiscalinet.it>\n"
-"Language-Team: Italiano\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"X-Generator: KBabel 1.3.1\n"
 
 #: src/config.cxx:71
 msgid "Couldn't open: "
@@ -33,7 +34,7 @@ msgstr "-Idea"
 
 #: src/credits.cxx:50
 msgid "-Maintaining"
-msgstr "-Manutenzione"
+msgstr "-Maintaining"
 
 #: src/credits.cxx:54
 msgid "-Programming"
@@ -47,69 +48,69 @@ msgstr "-Porting (Win32)"
 msgid "-Gfx"
 msgstr "-Grafica"
 
-#: src/credits.cxx:80
+#: src/credits.cxx:81
 msgid "-Music"
 msgstr "-Musica"
 
-#: src/credits.cxx:86
+#: src/credits.cxx:87
 msgid "-Level Design"
 msgstr "-Progettazione dei Livelli"
 
-#: src/credits.cxx:91
+#: src/credits.cxx:92
 msgid "-Story"
 msgstr "-Trama"
 
-#: src/credits.cxx:95
+#: src/credits.cxx:96
 msgid "-Translation"
 msgstr "-Traduzione"
 
-#: src/credits.cxx:107
+#: src/credits.cxx:110
 msgid "-Special"
 msgstr "-Speciale"
 
-#: src/credits.cxx:108
+#: src/credits.cxx:111
 msgid "-Thanks to"
 msgstr "-Ringraziomenti a"
 
-#: src/credits.cxx:149
+#: src/credits.cxx:152
 msgid "_And a very Special Thanks"
 msgstr "_Ed un Ringraziamento Speciale"
 
-#: src/credits.cxx:150
+#: src/credits.cxx:153
 msgid "_to all the people who"
 msgstr "_a tutti quelli che"
 
-#: src/credits.cxx:151
+#: src/credits.cxx:154
 msgid "_contribute to"
 msgstr "_contribuiscono al"
 
-#: src/credits.cxx:152
+#: src/credits.cxx:155
 msgid "_Free Software!"
 msgstr "_Software Libero!"
 
-#: src/credits.cxx:158
+#: src/credits.cxx:161
 msgid "_Thank you for"
 msgstr "_Grazie per"
 
-#: src/credits.cxx:159
+#: src/credits.cxx:162
 msgid "_playing!"
 msgstr "_aver giocato!"
 
 #: src/editor/editor_event.cxx:595
 msgid "Enter filename to save as:"
-msgstr "Scrivi il nome del file per il salvataggio: "
+msgstr "Scrivi il nome del file da salvare: "
 
 #: src/editor/editor_help_screen.cxx:39
 msgid "Editor Helpscreen (hide with F1)"
-msgstr "Schermata d'aiuto dell'Editor (nascondi con F1)"
+msgstr "Aiuto dell'Editor (nascondi con F1)"
 
 #: src/editor/editor_help_screen.cxx:46
 msgid "F1 - show/hide this help screen"
-msgstr "F1 - mostra/nascondi questa schermata d'aiuto"
+msgstr "F1 - mostra/nascondi aiuto"
 
 #: src/editor/editor_help_screen.cxx:47
 msgid "F2 - launch level building tutorial"
-msgstr "F2 - lancia il tutorial per la creazione dei livelli"
+msgstr "F2 -  tutorial per creazione livelli"
 
 #: src/editor/editor_help_screen.cxx:48
 msgid "F3 - toggle background color"
@@ -117,7 +118,7 @@ msgstr "F3 - modifica colore di sfondo"
 
 #: src/editor/editor_help_screen.cxx:49
 msgid "F4 - play/test the level"
-msgstr "F4 - gioca/prova il livello"
+msgstr "F4 - gioca/prova livello"
 
 #: src/editor/editor_help_screen.cxx:50
 msgid "F5 - load a level"
@@ -137,7 +138,7 @@ msgstr "F8 - salvataggio rapido/backup?!"
 
 #: src/editor/editor_help_screen.cxx:54
 msgid "F9 - change level width and height"
-msgstr "F9 - modifica larghezza ed altezza del livello"
+msgstr "F9 - cambia larghezza/altezza livello"
 
 #: src/editor/editor_help_screen.cxx:55
 msgid "F10 - [unset]"
@@ -145,53 +146,51 @@ msgstr "F10 - [non assignato]"
 
 #: src/editor/editor_help_screen.cxx:56
 msgid "F11 - toggle fps counter"
-msgstr "F11 - mostra/nascondi fps counter"
+msgstr "F11 - mostra/nascondi fps"
 
 #: src/editor/editor_help_screen.cxx:57
 msgid "F12 - make screenshot"
-msgstr "F12 - esegui uno screenshot"
+msgstr "F12 - prendi screenshot"
 
 #: src/editor/editor_help_screen.cxx:61
 msgid "Home - increase object size"
-msgstr "Home - aumenta le dimensioni di un oggetto"
+msgstr "Home - aumenta dimensioni oggetto"
 
 #: src/editor/editor_help_screen.cxx:62
 msgid "End  - decrease object size"
-msgstr "End - diminuisce le dimensioni di un oggetto"
+msgstr "End - diminuisce dimensioni oggetto"
 
 #: src/editor/editor_help_screen.cxx:63
 msgid "Cursor Keys - Move object"
-msgstr "Tasti Freccia - muovi un oggetto"
+msgstr "Tasti Freccia - muovi oggetto"
 
 #: src/editor/editor_help_screen.cxx:64
 msgid "Shift 'Cursor Keys' - Move objects fast "
-msgstr "Maiusc + Tasti Freccia - muovi un oggetto velocemente"
+msgstr "Maiusc + Tasti Freccia - muovi oggetto velocemente"
 
 #: src/editor/editor_help_screen.cxx:65
 msgid "PageUp   - level object up"
-msgstr "PagSu - metti un oggetto in primo piano"
+msgstr "PagSu - metti oggetto in primo piano"
 
 #: src/editor/editor_help_screen.cxx:66
 msgid "PageDown - level object down"
-msgstr "PagGiù - metti un oggetto in secondo piano"
+msgstr "PagGiù - metti oggetto in secondo piano"
 
 #: src/editor/editor_help_screen.cxx:67
 msgid "Shift PageUp   - increase objects z-pos by 50"
-msgstr ""
-"Maiusc + PagSu - allontana un oggetto di 50 unità rispetto al primo piano"
+msgstr "Maiusc + PagSu - allontana oggetto di 50 unità rispetto al primo piano"
 
 #: src/editor/editor_help_screen.cxx:68
 msgid "Shift PageDown - decrease objects z-pos by 50"
-msgstr ""
-"Maiusc + PagGiù - avvicina un oggetto di 50 unità rispetto al primo piano"
+msgstr "Maiusc + PagGiù - avvicina oggetto di 50 unità rispetto al primo piano"
 
 #: src/editor/editor_help_screen.cxx:69
 msgid "Enter - Set default zoom (1:1)"
-msgstr "Invio - Imposta lo zoom predefinito (1:1)"
+msgstr "Invio - Imposta zoom di default (1:1)"
 
 #: src/editor/editor_help_screen.cxx:70
 msgid "d - duplicate object"
-msgstr "d - duplica un oggetto"
+msgstr "d - duplica oggetto"
 
 #: src/editor/editor_help_screen.cxx:71
 msgid "a - mark all objects"
@@ -199,36 +198,35 @@ msgstr "a - seleziona tutti gli oggetti"
 
 #: src/editor/editor_help_screen.cxx:72
 msgid "shift leftmouseclick - add object to selection"
-msgstr "Maiusc + tasto sinistro del mouse - aggiungi un oggetto alla selezione"
+msgstr "Maiusc + tasto sinistro mouse - aggiungi oggetto alla selezione"
 
 #: src/editor/editor_help_screen.cxx:73
 msgid "leftmouseclick - select object"
-msgstr "Tasto sinistro del mouse - seleziona un oggetto"
+msgstr "Tasto sinistro mouse - seleziona oggetto"
 
 #: src/editor/editor_help_screen.cxx:74
 msgid "Insert - insert new object"
-msgstr "Ins   - inserisci un nuovo oggetto"
+msgstr "Ins   - inserisci nuovo oggetto"
 
 #: src/editor/editor_help_screen.cxx:75
 msgid "Remove - remove selected object"
-msgstr "Canc - rimuovi l'oggetto selezionato"
+msgstr "Canc - rimuovi oggetto selezionato"
 
 #: src/editor/editor_help_screen.cxx:76
 msgid "g - ungroup/group current selection"
-msgstr "g - separa/raggruppa la selezione corrente"
+msgstr "g - separa/raggruppa selezione corrente"
 
 #: src/editor/editor_help_screen.cxx:77
 msgid "Ctrl PageUp   - increase objects z-pos by 1"
-msgstr "Ctrl + PagSu - allontana un oggetto di 1 unità rispetto al primo piano"
+msgstr "Ctrl + PagSu - allontana oggetto di 1 unità rispetto al primo piano"
 
 #: src/editor/editor_help_screen.cxx:78
 msgid "Ctrl PageDown - decrease objects z-pos by 1"
-msgstr "Ctrl + PagGiù - avvicina un oggetto di 1 unità rispetto al primo piano"
+msgstr "Ctrl + PagGiù - avvicina oggetto di 1 unità rispetto al primo piano"
 
 #: src/editor/editor_help_screen.cxx:84
-#, fuzzy
 msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.plf"
-msgstr "Stile dei nomi: <NOME LIVELLO><NUMERO>-<AUTORE>.xml"
+msgstr "Stile dei nomi: <NOME LIVELLO><NUM>-<AUTORE>.plf"
 
 #: src/editor/editor_help_screen.cxx:86
 msgid ""
@@ -270,7 +268,7 @@ msgstr "7 - trampolino"
 
 #: src/editor/object_selector.cxx:187
 msgid "Select a WorldObj"
-msgstr "Seleziona un WorldObj"
+msgstr "Seleziona WorldObj"
 
 #: src/editor/object_selector.cxx:188
 msgid "1 - teleporter"
@@ -294,7 +292,7 @@ msgstr "5 - InfoBox"
 
 #: src/editor/object_selector.cxx:233
 msgid "Select a weather"
-msgstr "Seleziona un clima"
+msgstr "Seleziona clima"
 
 #: src/editor/object_selector.cxx:234
 msgid "1 - snow"
@@ -429,21 +427,20 @@ msgid "Save this level (F6)"
 msgstr "Salva questo livello (F6)"
 
 #: src/editor/panel_icons.cxx:69
-#, fuzzy
 msgid "Delete marked objects (delete)"
-msgstr "Cancella gli oggetti selezionati (Canc)"
+msgstr "Cancella oggetti selezionati (Canc)"
 
 #: src/editor/panel_icons.cxx:81
 msgid "Duplicate current object (d)"
-msgstr "Duplica l'oggetto corrente (d)"
+msgstr "Duplica oggetto corrente (d)"
 
 #: src/editor/panel_icons.cxx:93
 msgid "Edit Level Properties"
-msgstr "Modifica le proprietà del livello"
+msgstr "Cambia proprietà del livello"
 
 #: src/editor/panel_icons.cxx:105
 msgid "Edit Object Properties"
-msgstr "Modifica le proprietà dell'oggetto"
+msgstr "Cambia proprietà dell'oggetto"
 
 #: src/editor/panel_icons.cxx:117
 msgid "Start the level and test it (F4)"
@@ -451,15 +448,15 @@ msgstr "Prova il livello (F4)"
 
 #: src/editor/panel_icons.cxx:129
 msgid "Create a new level from scratch"
-msgstr "Crea un nuovo livello"
+msgstr "Crea nuovo livello"
 
 #: src/editor/panel_icons.cxx:141
 msgid "Insert an object (Insert)"
-msgstr "Inserisci un oggetto (Ins)"
+msgstr "Inserisci oggetto (Ins)"
 
 #: src/editor/panel_icons.cxx:153
 msgid "Zoom into a region"
-msgstr "Effettua lo zoom su una regione"
+msgstr "Effettua zoom su una regione"
 
 #: src/editor/panel_icons.cxx:165
 msgid "Zoom in"
@@ -471,11 +468,11 @@ msgstr "Zoom indietro"
 
 #: src/editor/panel_icons.cxx:191
 msgid "Setup Number of Actions"
-msgstr "Imposta il numero di azioni"
+msgstr "Imposta Numero di Azioni"
 
 #: src/editor/panel_icons.cxx:203
 msgid "Display Help Screen (F1)"
-msgstr "Mostra schermata d'aiuto (F1)"
+msgstr "Mostra Help (F1)"
 
 #: src/exit_menu.cxx:46
 msgid "Yes"
@@ -529,9 +526,9 @@ msgid "Pingus saved:   %3d/%3d"
 msgstr "Pingus salvati: %3d/%3d"
 
 #: src/level_result.cxx:69
-#, fuzzy, c-format
+#, c-format
 msgid "Pingus died:  %3d/%3d"
-msgstr "Pingus uccisi: %3d/%3d"
+msgstr "Pingus morti: %3d/%3d"
 
 #: src/level_result.cxx:85
 msgid "Press button to continue..."
@@ -551,19 +548,19 @@ msgstr "Davvero impressionante."
 
 #: src/level_result.cxx:103
 msgid "Good work. Still room for improvement though."
-msgstr "Bel lavoro...  Ma c'è ancora spazio per migliorarsi."
+msgstr "Bel lavoro...  Ma puoi ancora migliorare."
 
 #: src/level_result.cxx:105
 msgid "Not too shabby, not too shabby at all."
-msgstr "Non è male, non è affatto male."
+msgstr "Non male, non male davvero."
 
 #: src/level_result.cxx:107
 msgid ""
 "That was OK, but Pingu life insurance premiums have just gotten more "
 "expensive."
 msgstr ""
-"Tutto ok, ma i premi dell'assicurazione sulla vita dei Pingus diventeranno "
-"piu' costosi."
+"Tutto ok, ma i premi dell'assicurazione sulla vita dei Pingus costeranno "
+"di più."
 
 #: src/level_result.cxx:109
 msgid "Maybe this level calls for a different strategy."
@@ -691,7 +688,7 @@ msgstr "Pontiere"
 
 #: src/pingu_enums.cxx:40
 msgid "Climber"
-msgstr "Arrampicatore"
+msgstr "Scalatore"
 
 #: src/pingu_enums.cxx:41
 msgid "Digger"
@@ -739,11 +736,11 @@ msgstr "Schiacciato"
 
 #: src/pingu_enums.cxx:52
 msgid "Splashed"
-msgstr ""
+msgstr "Tuffato"
 
 #: src/pingu_enums.cxx:53
 msgid "Superman"
-msgstr "Supereroe"
+msgstr "Superman"
 
 #: src/pingu_enums.cxx:54
 msgid "Teleported"
@@ -768,19 +765,17 @@ msgstr "| segfault_handler: intercettato SIGSEGV."
 
 #: src/pingus_main.cxx:98
 msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
-msgstr ""
-"| Oops, Pingus è appena andato in crash. Congratulazioni, hai trovato un bug."
+msgstr "| Oops, Pingus è appena andato in crash. Congratulazioni, hai trovato un bug."
 
 #: src/pingus_main.cxx:99
-msgid ""
-"| Please write a little bug report to <grumbel@gmx.de>, include informations"
+msgid "| Please write a little bug report to <grumbel@gmx.de>, include informations"
 msgstr ""
 "| Per favore, scrivi un piccolo bug-report a <pingus-devel@nongnu.org>, "
 "includendo informazioni"
 
 #: src/pingus_main.cxx:100
 msgid "| where exacly the SIGSEGV occured and how to reproduce it."
-msgstr "| su quando è stato provocato il SIGSEGV e come riprodurlo."
+msgstr "| su come è stato provocato il SIGSEGV e come riprodurlo."
 
 #: src/pingus_main.cxx:101
 msgid "| Also try include a backtrace, you can get it like this:"
@@ -826,7 +821,7 @@ msgstr "Imposta la risoluzione di Pingus (predefinita: 800x600)"
 
 #: src/pingus_main.cxx:504
 msgid "Displays this help"
-msgstr "Mostra questo aiuto"
+msgstr "Mostra help"
 
 #: src/pingus_main.cxx:505
 msgid "Disable intro"
@@ -980,88 +975,87 @@ msgstr "Disattiva il suono"
 msgid "Disable music"
 msgstr "Disattiva la musica"
 
-#: src/pingus_main.cxx:726
+#: src/pingus_main.cxx:730
 msgid "clanVorbis support:           ok"
 msgstr "Supporto clanVorbis:          ok"
 
-#: src/pingus_main.cxx:728
-msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
-msgstr ""
-"Supporto clanVorbis: assente (i file musicali .ogg non saranno suonati)"
-
 #: src/pingus_main.cxx:732
+msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
+msgstr "Supporto clanVorbis: assente (i file musicali .ogg non saranno suonati)"
+
+#: src/pingus_main.cxx:736
 msgid "clanMikMod support:           ok"
 msgstr "Supporto clanMikMod:          ok"
 
-#: src/pingus_main.cxx:734
+#: src/pingus_main.cxx:738
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr "Supporto clanMikMod: assente (i file musicali non saranno suonati)"
 
-#: src/pingus_main.cxx:738
+#: src/pingus_main.cxx:742
 msgid "getext support:               ok"
 msgstr "Supporto gettext:             ok"
 
-#: src/pingus_main.cxx:739
+#: src/pingus_main.cxx:743
 msgid "gettext language:        english"
 msgstr "lingua gettext:          italiano"
 
-#: src/pingus_main.cxx:745
+#: src/pingus_main.cxx:749
 msgid "sound support:           enabled"
 msgstr "Supporto suono:          attivato"
 
-#: src/pingus_main.cxx:747
+#: src/pingus_main.cxx:751
 msgid "sound support:          disabled"
 msgstr "Supporto suono:         disattivato"
 
-#: src/pingus_main.cxx:750
+#: src/pingus_main.cxx:754
 msgid "music support:           enabled"
 msgstr "Supporto musica:         attivato"
 
-#: src/pingus_main.cxx:752
+#: src/pingus_main.cxx:756
 msgid "music support:          disabled"
 msgstr "Supporto musica:        disattivato"
 
-#: src/pingus_main.cxx:754
+#: src/pingus_main.cxx:758
 msgid "resolution set to:       "
 msgstr "risoluzione fissata a:  "
 
-#: src/pingus_main.cxx:755
+#: src/pingus_main.cxx:759
 msgid "fullscreen:              "
 msgstr "schermo intero:        "
 
-#: src/pingus_main.cxx:756
+#: src/pingus_main.cxx:760
 msgid " enabled"
 msgstr " attivato"
 
-#: src/pingus_main.cxx:756
+#: src/pingus_main.cxx:760
 msgid "disabled"
 msgstr "disattivato"
 
-#: src/pingus_main.cxx:766
+#: src/pingus_main.cxx:770
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Inizio Main: "
 
-#: src/pingus_main.cxx:811
+#: src/pingus_main.cxx:815
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: File del livello assente, ignorato: "
 
-#: src/pingus_main.cxx:915
+#: src/pingus_main.cxx:919
 msgid "Error caught from ClanLib: "
 msgstr "Errore intercettato da ClanLib: "
 
-#: src/pingus_main.cxx:919
+#: src/pingus_main.cxx:923
 msgid "Error caught from Pingus: "
 msgstr "Errore intercettato da Pingus: "
 
-#: src/pingus_main.cxx:923
+#: src/pingus_main.cxx:927
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: memoria insufficiente!"
 
-#: src/pingus_main.cxx:927
+#: src/pingus_main.cxx:931
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Intercettata eccezione standard!:\n"
 
-#: src/pingus_main.cxx:931
+#: src/pingus_main.cxx:935
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Intercettato throw sconosciuto!"
 
@@ -1138,9 +1132,8 @@ msgid "Saved: "
 msgstr "Salvati: "
 
 #: src/result_screen.cxx:234
-#, fuzzy
 msgid "Died: "
-msgstr "Uccisi: "
+msgstr "Morti: "
 
 #: src/result_screen.cxx:238
 msgid "Time left: "
@@ -1173,11 +1166,11 @@ msgstr "Ok"
 
 #: src/start_screen.cxx:156
 msgid "Number of Pingus: "
-msgstr "Numero di Pingus: "
+msgstr "Pingus totali: "
 
 #: src/start_screen.cxx:159
 msgid "Number to Save: "
-msgstr "Numero di Pingus da salvare: "
+msgstr "Pingus da salvare: "
 
 #: src/start_screen.cxx:162
 msgid "Time: "
@@ -1200,7 +1193,6 @@ msgid "The Journey Continues"
 msgstr "L'Avventura Continua"
 
 #: src/story.cxx:44
-#, fuzzy
 msgid ""
 "Now after you and the Pingus have learned the basics and\n"
 "practiced a bit it is time to move on and begin the journey into\n"
@@ -1209,8 +1201,8 @@ msgid ""
 "climates the Pingus have to find something else to guide\n"
 "them on their journey.\n"
 msgstr ""
-"Ora che tu ed i Pingus avete imparato le basi e vi siete allenati è\n"
-"tempo di muoversi ed iniziare l'avventura nel mondo. Dato che il\n"
+"Adesso che tu ed i Pingus avete imparato le basi e vi siete allenati\n"
+"è tempo di muoversi ed iniziare l'avventura nel mondo. Dato che il\n"
 "blocco di ghiaccio che i Pingus hanno usato per arrivare all'Isola\n"
 "Tutorial si scioglierebbe andando verso le regioni con clima più\n"
 "caldo, i Pingus dovranno trovare un altro mezzo di trasporto per\n"
@@ -1358,10 +1350,9 @@ msgstr ""
 "\n"
 "Buona Fortuna!"
 
-#: src/system.cxx:265
+#: src/system.cxx:271
 msgid "Environment variable $HOME not set, fix that and start again."
-msgstr ""
-"La variabile d'ambiente $HOME non è definita, correggila e prova ancora."
+msgstr "La variabile d'ambiente $HOME non è definita, correggila e prova ancora."
 
 #: src/worldmap/level_dot.cxx:172 src/worldmap/level_dot.cxx:182
 msgid "locked"
@@ -1391,33 +1382,3 @@ msgstr "Worldmap: File assente: "
 msgid "...walking..."
 msgstr "...sto andando..."
 
-#, fuzzy
-#~ msgid "Perfect! You saved all the Pingus. Great!"
-#~ msgstr "Perfetto! Hai salvato tutti, sei grande!"
-
-#, fuzzy
-#~ msgid ""
-#~ "You saved just the ones you needed, you made it, but\n"
-#~ "maybe you can do it better next time?"
-#~ msgstr ""
-#~ "Hai salvato giusto il necessario; ce l'hai fatta, ma non\n"
-#~ "potresti migliorarti?"
-
-#, fuzzy
-#~ msgid "Not everybody got saved, but still good work!"
-#~ msgstr "Non tutti si sono salvati, ma rimane un buon lavoro!"
-
-#, fuzzy
-#~ msgid ""
-#~ "You didn't save enough, but you still saved a few, next\n"
-#~ "time you might be better."
-#~ msgstr ""
-#~ "Non ne hai salvati abbastanza, ma alcuni si... \n"
-#~ "La prossima volta puoi fare di meglio."
-
-#, fuzzy
-#~ msgid "Only a handful more and you would have made it, try again!"
-#~ msgstr "Qualcuno in più e ce l'avresti fatta, prova ancora!"
-
-#~ msgid "input"
-#~ msgstr "input"
