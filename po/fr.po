@@ -229,9 +229,8 @@ msgid "Ctrl PageDown - decrease objects z-pos by 1"
 msgstr "Ctrl + PageSuiv - réduire la profondeur de 1 unité"
 
 #: src/editor/editor_help_screen.cxx:84
-#, fuzzy
 msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.pingus"
-msgstr "Convention de l'appellation: <NOM NIVEAU><NOMBRE>-<AUTEUR>.plf"
+msgstr "Convention de l'appellation: <NOM NIVEAU><NOMBRE>-<AUTEUR>.pingus"
 
 #: src/editor/editor_help_screen.cxx:86
 msgid ""

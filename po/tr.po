@@ -18,7 +18,7 @@ msgstr ""
 #: src/actions/bridger.cxx:47 src/actions/bridger.cxx:231
 #: src/pingu_enums.cxx:39
 msgid "Bridger"
-msgstr ""
+msgstr "Bridger"
 
 #: src/config.cxx:71
 msgid "Couldn't open: "
@@ -229,9 +229,8 @@ msgid "Ctrl PageDown - decrease objects z-pos by 1"
 msgstr "Ctrl PageUp   - nesne z konumunu 1 azalt"
 
 #: src/editor/editor_help_screen.cxx:84
-#, fuzzy
 msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.pingus"
-msgstr "Ýsimlendirme yöntemi: <SeviyeAdý><Numara>-<Tasarýmcý>.xml"
+msgstr "Ýsimlendirme yöntemi: <SeviyeAdý><Numara>-<Tasarýmcý>.pingus"
 
 #: src/editor/editor_help_screen.cxx:86
 msgid ""
@@ -434,7 +433,6 @@ msgid "Save this level (F6)"
 msgstr "Seviyeyi kayýt et (F6)"
 
 #: src/editor/panel_icons.cxx:69
-#, fuzzy
 msgid "Delete marked objects (delete)"
 msgstr "Seçili nesneleri sil (delete)"
 
@@ -534,7 +532,7 @@ msgid "Pingus saved:   %3d/%3d"
 msgstr "Kurtarýlýcak Pingus: %3d/%3d"
 
 #: src/level_result.cxx:69
-#, fuzzy, c-format
+#, c-format
 msgid "Pingus died:  %3d/%3d"
 msgstr "Ölen Pingular:  %3d/%3d"
 
@@ -679,95 +677,91 @@ msgstr "Çoklu"
 
 #: src/pingu_enums.cxx:34
 msgid "Angel"
-msgstr ""
+msgstr "Angel"
 
 #: src/pingu_enums.cxx:35
 msgid "Basher"
-msgstr ""
+msgstr "Basher"
 
 #: src/pingu_enums.cxx:36
-#, fuzzy
 msgid "Blocker"
-msgstr "kapalý"
+msgstr "Blocker"
 
 #: src/pingu_enums.cxx:37
 msgid "Boarder"
-msgstr ""
+msgstr "Boarder"
 
 #: src/pingu_enums.cxx:38
 msgid "Bomber"
-msgstr ""
+msgstr "Bomber"
 
 #: src/pingu_enums.cxx:40
 msgid "Climber"
-msgstr ""
+msgstr "Climber"
 
 #: src/pingu_enums.cxx:41
 msgid "Digger"
-msgstr ""
+msgstr "Digger"
 
 #: src/pingu_enums.cxx:42
 msgid "Drown"
-msgstr ""
+msgstr "Drown"
 
 #: src/pingu_enums.cxx:43
-#, fuzzy
 msgid "Exiter"
-msgstr "Çýkýþ"
+msgstr "Exiter"
 
 #: src/pingu_enums.cxx:44
 msgid "Faller"
-msgstr ""
+msgstr "Faller"
 
 #: src/pingu_enums.cxx:45
 msgid "Floater"
-msgstr ""
+msgstr "Floater"
 
 #: src/pingu_enums.cxx:46
-#, fuzzy
 msgid "Jumper"
-msgstr "7 - Ýtici"
+msgstr "Jumper"
 
 #: src/pingu_enums.cxx:47
 msgid "Laserkill"
-msgstr ""
+msgstr "Laserkill"
 
 #: src/pingu_enums.cxx:48
 msgid "Miner"
-msgstr ""
+msgstr "Miner"
 
 #: src/pingu_enums.cxx:49
 msgid "Rocketlauncher"
-msgstr ""
+msgstr "Rocketlauncher"
 
 #: src/pingu_enums.cxx:50
 msgid "Slider"
-msgstr ""
+msgstr "Slider"
 
 #: src/pingu_enums.cxx:51
 msgid "Smashed"
-msgstr ""
+msgstr "Smashed"
 
 #: src/pingu_enums.cxx:52
 msgid "Splashed"
-msgstr ""
+msgstr "Splashed"
 
 #: src/pingu_enums.cxx:53
 msgid "Superman"
-msgstr ""
+msgstr "Superman"
 
 #: src/pingu_enums.cxx:54
-#, fuzzy
 msgid "Teleported"
-msgstr "1 - Iþýnlayýcý"
+msgstr "Teleported"
 
 #: src/pingu_enums.cxx:55
 msgid "Waiter"
-msgstr ""
+msgstr "Waiter"
 
 #: src/pingu_enums.cxx:56
 msgid "Walker"
-msgstr ""
+msgstr "Walker"
 
 #: src/pingus_counter.cxx:50
 #, c-format
@@ -873,12 +867,11 @@ msgstr "DOSYAdan özel worldmap yükle"
 
 #: src/pingus_main.cxx:517
 msgid "Print some more messages to stdout, can be set"
-msgstr "Stdout'a ayrýntýlý bilgi ver, daha cok `v' ile"
+msgstr "Stdout'a ayrýntýlý bilgi ver. Daha cok `v' ile"
 
 #: src/pingus_main.cxx:518
-#, fuzzy
 msgid "multiple times to increase verbosity"
-msgstr "ayrýntý artýrýlabilinir."
+msgstr "ayrýntý artýrýlabilir."
 
 #: src/pingus_main.cxx:519
 msgid "Prints version number and exit"
@@ -1155,7 +1148,6 @@ msgid "Saved: "
 msgstr "Kurtarýlan: "
 
 #: src/result_screen.cxx:234
-#, fuzzy
 msgid "Died: "
 msgstr "Ölen: "
 
@@ -1217,7 +1209,6 @@ msgid "The Journey Continues"
 msgstr "Yolculuk Devam Ediyor"
 
 #: src/story.cxx:44
-#, fuzzy
 msgid ""
 "Now after you and the Pingus have learned the basics and\n"
 "practiced a bit it is time to move on and begin the journey into\n"

@@ -758,7 +758,7 @@ msgstr "Wandelaar"
 #: src/pingus_counter.cxx:50
 #, c-format
 msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
-msgstr "Vrijgelaten:%3d/%-3d  Uit:%3d  Gered:%3d/-3d"
+msgstr "Vrijgelaten:%3d/%-3d  Uit:%3d  Gered:%3d/%-3d"
 
 #: src/pingus_main.cxx:96
 msgid "| segfault_handler: catched a SIGSEGV."

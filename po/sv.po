@@ -229,9 +229,8 @@ msgid "Ctrl PageDown - decrease objects z-pos by 1"
 msgstr "Ctrl PageDown   - minska objektets z-position med 1"
 
 #: src/editor/editor_help_screen.cxx:84
-#, fuzzy
 msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.pingus"
-msgstr "Namnstandard: <NIVÅNAMN><NUMMER>-<SKAPARE>.xml"
+msgstr "Namnstandard: <NIVÅNAMN><NUMMER>-<SKAPARE>.pingus"
 
 #: src/editor/editor_help_screen.cxx:86
 msgid ""

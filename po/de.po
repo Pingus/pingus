@@ -229,9 +229,8 @@ msgid "Ctrl PageDown - decrease objects z-pos by 1"
 msgstr "Strg Bild runter - z-pos des Objekts um 1 senken"
 
 #: src/editor/editor_help_screen.cxx:84
-#, fuzzy
 msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.pingus"
-msgstr "Dateinamensvorgabe: <LEVELNAME><NUMMER>-<AUTOR>.pfl"
+msgstr "Dateinamensvorgabe: <LEVELNAME><NUMMER>-<AUTOR>.pingus"
 
 #: src/editor/editor_help_screen.cxx:86
 msgid ""

@@ -231,9 +231,8 @@ msgid "Ctrl PageDown - decrease objects z-pos by 1"
 msgstr "Ctrl + AvPág - reduce en 1 la profundidad del objeto"
 
 #: src/editor/editor_help_screen.cxx:84
-#, fuzzy
 msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.pingus"
-msgstr "Formato del nombre: <NOME LIVELLO><NUMERO>-<AUTORE>.xml"
+msgstr "Formato del nombre: <NOME LIVELLO><NUMERO>-<AUTORE>.pingus"
 
 #: src/editor/editor_help_screen.cxx:86
 msgid ""
@@ -433,7 +432,6 @@ msgid "Save this level (F6)"
 msgstr "Graba éste nivel (F6)"
 
 #: src/editor/panel_icons.cxx:69
-#, fuzzy
 msgid "Delete marked objects (delete)"
 msgstr "Borra objetos seleccionados (Canc)"
 
@@ -533,7 +531,7 @@ msgid "Pingus saved:   %3d/%3d"
 msgstr "Pingüinos salvados: %3d/%3d"
 
 #: src/level_result.cxx:69
-#, fuzzy, c-format
+#, c-format
 msgid "Pingus died:  %3d/%3d"
 msgstr "Pingüinos muertos: %3d/%3d"
 
@@ -1145,7 +1143,6 @@ msgid "Saved: "
 msgstr "Salvados: "
 
 #: src/result_screen.cxx:234
-#, fuzzy
 msgid "Died: "
 msgstr "Muertos: "
 
@@ -1207,7 +1204,6 @@ msgid "The Journey Continues"
 msgstr "La aventura continúa"
 
 #: src/story.cxx:44
-#, fuzzy
 msgid ""
 "Now after you and the Pingus have learned the basics and\n"
 "practiced a bit it is time to move on and begin the journey into\n"
