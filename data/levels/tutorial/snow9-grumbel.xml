@@ -6,6 +6,7 @@
     <levelname lang="de">Graben und andere Probleme</levelname>
     <levelname lang="cs">Kopani, hrabani a dalsi problemy</levelname>
     <levelname lang="tr">Kaz, oy ve diðer sorunlar</levelname>
+    <levelname lang="sr">Kopanje, glodanje i drugi problemi</levelname>
 
     <description lang="en">The more levels you have mastered, the more difficult they will get,
                            but don't panic this one is still pretty easy. Just use the stuff that
@@ -29,6 +30,12 @@
                            sýradaki de oldukça kolay. Daha önceki öðrendiklerile bu seviyeyi 
                            aþman da sorun olmamalý. Ancak, eðer içinden çýkamayacaðýn bir duruma
                            düþersen, sað alt köþedekil 'armageddon' butonuna çift týkla.
+    </description>
+    <description lang="sr">Nivoi ce postajati sve tezi sto ih vise prelazis, ali nemoj vec da
+                           pravis paniku jer ovaj je prilicno lak. Treba samo da koristis stvari
+                           naucene na prethodnim nivoima i ne bi trebalo da imas puno problema
+                           Ako mislis da se nalazis u situaciji da vise nisi u stanju da resis
+                           novi, pritisni dupli-klik misem na dugme armageddon u donjem delu ekrana.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

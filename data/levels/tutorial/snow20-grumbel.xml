@@ -6,6 +6,7 @@
     <levelname lang="de">Drei Lösungen, es liegt bei Dir</levelname>
     <levelname lang="cs">Tri reseni - zvol si, ktere chces</levelname>
     <levelname lang="tr">Üç çözüm, istediðini kullan</levelname>
+    <levelname lang="sr">Tri resenja, pa ti vidi</levelname>
 
     <description lang="en">Now that you have learned all the actions, it's time for some
                            more practice, this levels presents you with at least three
@@ -22,6 +23,10 @@
     <description lang="tr">Bütün eylemleri öðrendik, þimdi biraz daha alýþtýrma yapacaðýz.
                            Bu kez en az üç farklý çözüm var, hangisini kullanacaðýn tamamen
                            sana kalmýþ.
+    </description>
+    <description lang="sr">Sada kada su naucene sve akcije, vreme je za malo vezbe ovi
+                           nivoi nude bar tri razlicite mogucnosti za resavanje, pa
+                           izaberi onu koja ti se svidja.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

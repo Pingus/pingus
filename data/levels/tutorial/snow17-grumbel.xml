@@ -6,7 +6,8 @@
     <levelname lang="de">Zu hoch und dein Pingu wird sterben...</levelname>
     <levelname lang="cs">Pingove nepreziji pad z velke vysky...</levelname>
     <levelname lang="tr">Yüksekten düþen Pingu ölür...</levelname>
-
+    <levelname lang="sr">Ko visoko leti, nisko pada...</levelname>
+ 
     <description lang="en">Teamwork is the way to the exit this time. You don't have enough
                            Floaters to reach the exit, so just send a few and let them
                            prepare the path for the rest.
@@ -22,6 +23,10 @@
     <description lang="tr">Takým çalýþmasý buradan kaçmanýn tek yolu. Herkesi aþaðýya indirecek
                            kadar Floater yok. Dolayýsýyla birkaçýný önden gönderip, diðerleri
                            için bir çýkýþ yolu hazýrlamak zorundasýn.
+    </description>
+    <description lang="sr">Ovog puta je potreban timski rad da bi se doslo do izlaza. Nema dovoljno
+                           Padobranaca da bi svi dosli do izlaza, tako da je potrebno poslati nekoliko
+                           njih, koji moraju pripremiti stazu za ostale.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

@@ -6,6 +6,7 @@
     <levelname lang="de">Lernen zu graben</levelname>
     <levelname lang="cs">Vyuka kopani</levelname>
     <levelname lang="tr">Kazmayý öðreniyoruz</levelname>
+    <levelname lang="sr">Ucimo kopanje</levelname>
 
     <description lang="en">This is your first mission. As always, its pretty easy. All you
                            have to do is to give a Pingu the command to dig a hole into the
@@ -22,10 +23,21 @@
                            zeme, aby se vytvorila cesta k vychodu. Toho dosahnes jednoduse
                            tak, ze na nejakeho pinga kliknes.
     </description>
+    <description lang="sr">Ovo je tvoj prvi zadatak. Kao takav, prilicno je lak. Sve sto
+	                       treba da uradis je da naredis Pingusima da iskopaju rupu u
+						   zemlji da bi mogli da dodju do izlaza. Naredjenja se izdaju
+						   kliktanjem misa na Pinugsu.
+    </description>
     <description lang="tr">Bu ilk görevin. Her zaman olduðu gibi oldukça kolay. Bütün yapman
                            gereken, bütün Pingularýn çýkýþa gidebilmeleri için birini yeri 
                            kazmakla görevlendirmen. Herhangi bir Pingu üzerine týklaman bu iþ 
                            için yeterli.
+    </description>
+    </description>
+    <description lang="sr">Ovo je tvoj prvi zadatak. Kao takav, prilicno je lak. Sve sto
+                           treba da uradis je da naredis Pingusima da iskopaju rupu u
+                           zemlji da bi mogli da dodju do izlaza. Naredjenja se izdaju
+                           kliktanjem misa na Pinugsu.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

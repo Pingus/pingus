@@ -6,6 +6,7 @@
     <levelname lang="de">Lerne Brücken zu bauen</levelname>
     <levelname lang="cs">Nauc se stavet mosty</levelname>
     <levelname lang="tr">Köprü yapmayý öðreniyoruz</levelname>
+    <levelname lang="sr">Nauci da koristis most</levelname>
 
     <description lang="en">If no Jumper is at hand and a large hole needs to be passed a bridge
                            can be pretty helpful. It takes some time to build, but it allows
@@ -25,6 +26,10 @@
                            bu sorunu bir köprü yaparak çözmek mümkün. Yapmasý biraz zaman
                            alýcý, ama 'Jumper'dan farklý olarak arkadan gelen bütün Pingularýn 
                            da güvenle karþýya geçmelerini saðlayacaksýn.
+    </description>
+    <description lang="sr">Ako nema na raspolaganju Skakaca a treba preci preko velike rupe, onda
+                           je most vrlo korisna stvar. Potrebno je malo vremena da se most izgradi, ali
+						   svi Pingusi koji slede mogu da ga koriste, za razliku o skakanja.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

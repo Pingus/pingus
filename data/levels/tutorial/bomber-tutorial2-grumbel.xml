@@ -6,6 +6,7 @@
     <levelname lang="de">Opfere einige und rette den Rest</levelname>
     <levelname lang="cs">Par obetuj a zachran ostatni</levelname>
     <levelname lang="tr">Çoðunluk için birkaçýný feda etmek gerek</levelname>
+    <levelname lang="sr">Zrtvuj nekoliko da spases ostale</levelname>
 
     <description lang="en">Sometimes if no other actions are available, you have to bomb your
                            way through the ground. The Pingus can to this by actually self
@@ -25,6 +26,11 @@
     <description lang="tr">Bazen, eðer baþka olasýlýk yoksa, yolu bombayla açman gerekebilir.
                            Pingular bunu, kendilerini feda ederek yapabilirler. Bu kayýp
                            bazan grubun geri kalanýný kurtarmak için gerekli olabilir.
+    </description>
+    <description lang="sr">Ponekad, ako nema na raspolaganju drugih akcija, moguce je probiti
+                           zemljiste eksplozijama. Pingusi mogu to da rade tako sto ce sami
+                           sebe unistiti. Iako ih to ubija, ponekad je neophodno da se zrtvuje
+                           nekoliko Pingusa da bi se ostali spasili.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

@@ -6,6 +6,7 @@
     <levelname lang="de">Fester Boden kann den Weg blockieren</levelname>
     <levelname lang="cs">Pevne podlozi muze omezit cestu</levelname>
     <levelname lang="tr">Katý bloklar yolu týkayabilir</levelname>
+    <levelname lang="sr">Cvrsto zemljiste moze blokirati put</levelname>
 
     <description lang="en">As you have learned in earlier levels your Pingus can dig through
                            basically every ground, but there is one thing which they can't
@@ -30,6 +31,12 @@
                            mümkün deðil. Bu tür nesneler haritmýzda koyu gri ile gösterilen 
                            yerlerdir. Bunlarý yok edemeyeceðin için çevrelerinden dolaþmanýn 
                            bir yolunu bulman gerekiyor.
+    </description>
+    <description lang="sr">I ranijim nivoima smo naucili da Pingusi mogu prakticno kopati
+                           kroz bilo koje zemljiste, ali postoji nesto sto ne mogu
+                           prokopati. To su celicni objekti. Oni su oznaceni tamno sivom
+			   bojom na mapi nivoa i ne mogu biti unisteni, vec treba pronaci
+			   nacin da se zaobidju.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

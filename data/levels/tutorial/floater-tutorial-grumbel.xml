@@ -6,6 +6,7 @@
     <levelname lang="de">Schwebe oder Stirb</levelname>
     <levelname lang="cs">Let, nebo zemres</levelname>
     <levelname lang="tr">Uçamazsan ölürsün</levelname>
+    <levelname lang="sr">Lebdi ili umri</levelname>
 
     <description lang="en">Well done in mission one, now lets start the next one. This
                            time you will need to equip your Pingus with a little propeller,
@@ -26,6 +27,12 @@
     <description lang="tr">Birinci görevi baþarýyla tamamladýn, þimdi sýra ikincide. Bu kez
                            Pingularýn yavaþca düþmeleri için birer küçük pervane vermen gerekecek.
                            Eðer Pingular çok yüksekten düþerlerse ölürler, dikkatli ol!
+    </description>
+    </description>
+    <description lang="sr">Bravo za prvi zadatak, a sada zapocinjemo sledeci. Ovog puta
+                           treba da opremis Pinguse sa malim propelerom, da bi mogli da lebde
+                           i lagano se spuste na zemlju. Ako padnu predaleko, nece uspeti da
+                           prezive pad. Zato obrati paznju!
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

@@ -6,6 +6,7 @@
     <levelname lang="de">Insel der Panik (schwebe/grabe)</levelname>
     <levelname lang="cs">Panika na ostrove</levelname>
     <levelname lang="tr">Panik adasý</levelname>
+    <levelname lang="sr">Ostrvo panike (lebdi/glodaj)</levelname>
 
     <description lang="en">While the previous levels have not required much fast actions of
                            yourself, this one gets a bit trickier. The Pingus are coming
@@ -24,6 +25,10 @@
     <description lang="tr">Önceki seviyelerin çözümler hýzlý hareketler yapmaný gerektirmiyordu,
                            sýradaki bu nedenle biraz zor. Her iki yönden gelen Pingularý iyi 
                            koordine edip, gerktiði kadarýný kurtarmak þimdiki görevin.
+    </description>
+    <description lang="sr">Dok prethodni nivoi nisu zahtevali puno brze akcije od tebe, ovaj
+                           je malo komplikovaniji. Pingusi dolaze iz dva paralelna ulaza i 
+			   ti treba da istovremeno mudro koordiniras obe grupe.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

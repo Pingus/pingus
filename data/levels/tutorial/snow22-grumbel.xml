@@ -6,6 +6,7 @@
     <levelname lang="de">Eingang hoch, Ausgang tief</levelname>
     <levelname lang="cs">Vchod nahore, vychod dole</levelname>
     <levelname lang="tr">Giriþ yüksek, Çýkýþ alçak</levelname>
+    <levelname lang="sr">Ulaz visoko, izlaz nisko</levelname>
 
     <description lang="en">If you don't have enough floaters to bring all Pingus down to
                            the exit, you have to find other ways to guide them down. All
@@ -28,6 +29,11 @@
                            yükseklerden indirebilmenin baþka yollarýný bulmak zorundasýn. Bu 
                            seviyede kullanman gerekn herþeyi daha önce öðrendiðine göre çok
                            zorlanmaman gerek.
+    </description>
+    <description lang="sr">Ako nema dovoljno padobranaca da bi se svi Pingusi spustili
+                           dole do izlaza, potrebno je pronaci drugi nacin. Sve sto je
+                           potrebno koristiti na ovom nivou je vec nauceno ranije tako
+                           da ovo ne bi trebalo da bude velik problem za tebe.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
