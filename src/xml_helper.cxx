@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.5 2002/06/26 09:29:47 grumbel Exp $
+//  $Id: xml_helper.cxx,v 1.6 2002/06/26 11:23:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -219,6 +219,12 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 	      desc.type = ResDescriptor::RD_RESOURCE;
 	      while (ccur != NULL)
 		{
+		  if (xmlIsBlankNode(cur)) 
+		    {
+		      cur = cur->next;
+		      continue;
+		    }
+
 		  if (strcmp((char*)ccur->name, "resource-datafile") == 0)
 		    {
 		      char* datafile = (char*)xmlNodeListGetString(doc, ccur->children, 1);

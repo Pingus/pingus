@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.hxx,v 1.7 2002/06/25 18:15:18 grumbel Exp $
+//  $Id: groundpiece_data.hxx,v 1.8 2002/06/26 11:23:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,15 +41,16 @@ public:
   ResDescriptor desc;
   CL_Vector pos;
 
-  typedef enum { GP_SOLID, 
-		GP_TRANSPARENT,
-		GP_GROUND,
-		GP_BRIDGE, 
-		GP_WATER,
-		GP_LAVA,
-		GP_REMOVE, 
-		GP_NOTHING,
-		GP_OUTOFSCREEN
+  typedef enum { 
+    GP_NOTHING,
+    GP_SOLID, 
+    GP_TRANSPARENT,
+    GP_GROUND,
+    GP_BRIDGE, 
+    GP_WATER,
+    GP_LAVA,
+    GP_REMOVE, 
+    GP_OUTOFSCREEN
   } GPType;
   GPType gptype; 
 
