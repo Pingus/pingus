@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.43 2002/12/01 17:08:47 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.44 2002/12/03 00:51:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -655,7 +655,7 @@ EditorEvent::editor_insert_new_object()
   if (!objs.empty ()) 
     {
       for (ObjectManager::EditorObjIter i = objs.begin (); i != objs.end (); ++i)
-	object_manager->editor_objs.push_back(*i);
+	object_manager->add(*i);
     } 
   else 
     {

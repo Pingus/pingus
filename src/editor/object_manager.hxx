@@ -1,4 +1,4 @@
-//  $Id: object_manager.hxx,v 1.24 2002/11/30 17:11:55 grumbel Exp $
+//  $Id: object_manager.hxx,v 1.25 2002/12/03 00:51:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -138,6 +138,9 @@ public:
       take controll over the object and delele it, if its no longer
       needed! */
   void add (EditorObj*);
+
+  /** Add multiple objects at once */
+  void add (const EditorObjLst&);
 
   /** Erase the object from the ObjectManager and delete it */
   void erase (EditorObj*);

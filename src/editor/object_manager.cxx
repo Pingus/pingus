@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.38 2002/11/29 22:54:22 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.39 2002/12/03 00:51:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -305,6 +305,17 @@ void
 ObjectManager::add (EditorObj* obj)
 {
   editor_objs.push_back (obj);
+  z_pos_sort();
+}
+
+void 
+ObjectManager::add (const EditorObjLst& lst)
+{
+  for (EditorObjLst::const_iterator i = lst.begin(); i != lst.end(); ++i)
+    {
+      editor_objs.push_back(*i);
+    }
+
   z_pos_sort();
 }
 

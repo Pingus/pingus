@@ -1,4 +1,4 @@
-//  $Id: object_selector_window.hxx,v 1.1 2002/12/02 10:40:19 grumbel Exp $
+//  $Id: object_selector_window.hxx,v 1.2 2002/12/03 00:51:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,43 +20,70 @@
 #ifndef HEADER_PINGUS_EDITOR_OBJECT_SELECTOR_WINDOW_HXX
 #define HEADER_PINGUS_EDITOR_OBJECT_SELECTOR_WINDOW_HXX
 
+#include <string>
+#include <vector>
 #include <ClanLib/GUI/window.h>
 #include <ClanLib/GUI/button.h>
 
-/** */
+/** A Little window that lets you select an object type to insert */
 class ObjectSelectorWindow : public CL_Window
 {
 private:
+  typedef void (ObjectSelectorWindow::*Callback)();
+
+  class ButtonPair {
+  private:
+    ObjectSelectorWindow* parent;
+    Callback callback;
+    CL_Button button;
+    CL_Slot button_click_slot;
+
+  public:
+    ButtonPair (ObjectSelectorWindow* p, const std::string& name, Callback c, int y_pos)
+      : parent (p), 
+        callback(c),
+        button (CL_Rect(10, y_pos, 190, y_pos + 20), name, parent->get_client_area())
+    {
+      button_click_slot = button.sig_clicked().connect(this, &ButtonPair::on_click);
+    }
+
+    void on_click() 
+    {
+      // Call the callback, yeah, func_ptr synaxt is cool...
+      ((*parent).*callback)();
+    }
+  };
+
+  /** Position for the next inserted button */
   int y_pos;
-  
-  CL_Button groundpiece_ground_button;
-  CL_Button groundpiece_solid_button;
-  CL_Button groundpiece_transparent_button;
-  CL_Button groundpiece_remove_button;
-
-  CL_Button hotspot_button;
-  CL_Button entrance_button;
-  CL_Button exit_button;
-
-  CL_Button liquid_button;
-  CL_Button weather_button;
-  CL_Button trap_button;
-  CL_Button worldobj_button;
-
-  CL_Button background_button;
-  CL_Button prefab_button;
-  CL_Button file_button;
-
-  CL_Button close_button;
-
-  CL_Slot close_button_slot;
+ 
+  /** container for buttons and callbacks */
+  std::vector<ButtonPair*> buttons;
 
 public:
   ObjectSelectorWindow(CL_Component*);
-  
+  ~ObjectSelectorWindow();
+
   void on_close_press();
   
+  void on_groundpiece_ground_press();
+  void on_groundpiece_solid_press();
+  void on_groundpiece_transparent_press();
+  void on_groundpiece_remove_press();
+  void on_hotspot_press();
+  void on_entrance_press();
+  void on_exit_press();
+  void on_liquid_press();
+  void on_weather_press();
+  void on_trap_press();
+  void on_worldobject_press();
+  void on_background_press();
+  void on_prefab_press();
+  void on_from_file_press();
+
 private:
+  void add_button (const std::string& name, Callback callback);
+  
   ObjectSelectorWindow (const ObjectSelectorWindow&);
   ObjectSelectorWindow& operator= (const ObjectSelectorWindow&);
 };

@@ -1,4 +1,4 @@
-//  $Id: editor.hxx,v 1.22 2002/11/28 20:09:54 grumbel Exp $
+//  $Id: editor.hxx,v 1.23 2002/12/03 00:51:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -115,6 +115,8 @@ public:
   void toggle_help_screen ();
 
   ObjectManager* get_object_manager() { return object_manager; }
+  ObjectSelector* get_object_selector() { return object_selector; }
+
   std::string save_tmp_level ();
   EditorEvent* get_event() { return event; }
 
