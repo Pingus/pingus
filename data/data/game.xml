@@ -30,18 +30,23 @@
         <image file="../images/core/cursors/scroll.png"/>
       </sprite>
       <sprite name="capgood">
+        <translation origin="center"/>
         <image file="../images/core/cursors/cap.png"/>
       </sprite>
       <sprite name="capbad">
+        <translation origin="center"/>
         <image file="../images/core/cursors/capwrong.png"/>
       </sprite>
       <sprite name="cross">
+        <translation origin="center"/>
         <image file="../images/core/cursors/cross.png"/>
       </sprite>
       <sprite name="arrow_right">
+        <translation origin="center" x="0" y="28"/>
         <image file="../images/core/cursors/arrow_right.png"/>
       </sprite>
       <sprite name="arrow_left">
+        <translation origin="center" x="0" y="28"/>
         <image file="../images/core/cursors/arrow_left.png"/>
       </sprite>
     </section>

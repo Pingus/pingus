@@ -13,17 +13,23 @@
       <image file="../images/worldobjs/switchdoor_tile_cmap.png"/>
     </sprite>
     <sprite name="teleporter2">
+      <translation origin="center"/>
       <image file="../images/worldobjs/teleporter2.png"/>
     </sprite>
     <sprite name="infobox">
+      <translation origin="bottom_center"/>
       <image file="../images/worldobjs/infobox.png"/>
     </sprite>
     <sprite name="teleporter">
+      <animation speed="20" loop="no" />
+      <translation origin="bottom_center"/>
       <image file="../images/worldobjs/teleporter.png">
         <grid pos="0,0" size="35,52" array="6,1"/>
       </image>
     </sprite>
     <sprite name="teleportertarget">
+      <animation speed="15" loop="no" />
+      <translation origin="center"/>
       <image file="../images/worldobjs/teleportertarget.png">
         <grid pos="0,0" size="64,64" array="7,1"/>
       </image>

@@ -15,12 +15,14 @@
     </sprite>
 
     <sprite name="hammer">
+      <animation loop="no"/>
       <image file="../images/traps/hammer.png">
         <grid array="13,1"  height="181" width="151" x="0" y="0" />
       </image>
     </sprite>
 
     <sprite name="fake_exit">
+      <translation origin="bottom_center"/>
       <image file="../images/traps/fake_exit.png">
         <grid array="9,1" height="112" tcol="0" width="75" x="0" y="0" />
       </image>
@@ -51,6 +53,7 @@
     </sprite>
 
     <sprite name="bumper">
+      <translation origin="bottom_center"/>
       <image file="../images/traps/bumper.png">
         <grid array="6,1" height="102" tcol="0" width="60" x="0" y="0" />
       </image>

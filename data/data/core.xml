@@ -8,6 +8,7 @@
         <image file="../images/core/cursors/cursor.png"/>
       </sprite>
       <sprite name="scroll_cur">
+        <translation origin="center"/>
         <image file="../images/core/cursors/scroll.png"/>
       </sprite>
       <sprite name="capgood">
@@ -134,6 +135,7 @@
         <image file="../images/core/menu/background.jpg"/>
       </sprite>
       <sprite name="startscreenbg">
+        <translation origin="center"/>
         <image file="../images/core/menu/startscreenbg.jpg"/>
       </sprite>
       <sprite name="create_on">
@@ -253,6 +255,7 @@
         <image file="../images/core/misc/chalk_pingu4.png"/>
       </sprite>
       <sprite name="flag0">
+        <translation origin="bottom_center" x="0" y="0"/>
         <image file="../images/core/misc/flag0.png"/>
       </sprite>
       <surface name="404" file="../images/core/misc/404.png"/>
@@ -277,24 +280,31 @@
         <image file="../images/core/misc/creditpingu.png"/>
       </sprite>
       <sprite name="smallmap_entrance">
+        <translation origin="bottom_center" x="0" y="0"/>
         <image file="../images/core/misc/smallmap_entrance.png"/>
       </sprite>
       <sprite name="smallmap_exit">
+        <translation origin="bottom_center" x="0" y="0"/>
         <image file="../images/core/misc/smallmap_exit.png"/>
       </sprite>
       <sprite name="flag0">
+        <translation origin="bottom_center" x="0" y="0"/>
         <image file="../images/core/misc/flag0.png"/>
       </sprite>
       <sprite name="flag1">
+        <translation origin="bottom_center" x="0" y="0"/>
         <image file="../images/core/misc/flag1.png"/>
       </sprite>
       <sprite name="flag2">
+        <translation origin="bottom_center" x="0" y="0"/>
         <image file="../images/core/misc/flag2.png"/>
       </sprite>
       <sprite name="flag3">
+        <translation origin="bottom_center" x="0" y="0"/>
         <image file="../images/core/misc/flag3.png"/>
       </sprite>
       <sprite name="unplayable">
+        <translation origin="bottom_center" x="0" y="0"/>
         <image file="../images/core/misc/unplayable.png"/>
       </sprite>
       <sprite name="unplayable2">
