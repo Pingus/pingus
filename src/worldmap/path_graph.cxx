@@ -1,4 +1,4 @@
-//  $Id: path_graph.cxx,v 1.12 2002/10/15 19:13:33 grumbel Exp $
+//  $Id: path_graph.cxx,v 1.13 2002/10/15 21:48:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -167,7 +167,7 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
                                       lookup_node(source), lookup_node(destination), 
                                       cost /* costs */);
           
-          std::cout << "Cost: " << cost << std::endl;
+          //std::cout << "Cost: " << cost << std::endl;
 
           // FIXME: edge lookup is flawed, since we have different edges in both directions
 

@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.18 2002/10/15 19:13:33 grumbel Exp $
+//  $Id: pingus.cxx,v 1.19 2002/10/15 21:48:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -88,7 +88,10 @@ Pingus::walk_to_node (NodeId target)
 {
   if (current_node != NoNode) // pingu stands still
     {
-      node_path = path->get_path (current_node, target).path;
+      const PathfinderResult& res = path->get_path (current_node, target);
+
+      std::cout << "XXXXXXX Path cost: " << res.cost << std::endl;
+      node_path = res.path;
 
       // Simulate that we just reached current_node, then update the edge_path
       target_node = node_path.back(); // equal to current_node;
@@ -120,7 +123,8 @@ Pingus::walk_to_node (NodeId target)
           PathfinderResult node_path2 = path->get_path (target_node, target);
 	
           // Select the shorter path
-          if (node_path1.cost < node_path2.cost)
+          if (node_path1.cost + edge_path_position
+              < node_path2.cost + (edge_path.length() - edge_path_position))
             { // walk to source node, which means to reverse the pingu
               node_path = node_path1.path;
 
@@ -159,8 +163,6 @@ Pingus::set_position (NodeId node)
 {
   pos = path->get_dot(node)->get_pos();
   current_node = node;
-  std::cout << "Pingu Pos: " << pos << std::endl;
-  //walk_to_node(0);
 }
 
 float

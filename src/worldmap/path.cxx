@@ -1,4 +1,4 @@
-//  $Id: path.cxx,v 1.1 2002/10/15 19:13:33 grumbel Exp $
+//  $Id: path.cxx,v 1.2 2002/10/15 21:48:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 namespace WorldMapNS {
 
 Path::Path()
+  : path_length_valid (false)
 {
 }
 
@@ -34,6 +35,21 @@ Path::size()
 
 float
 Path::length()
+{
+  if (path_length_valid)
+    {
+      return path_length;
+    }
+  else
+    {
+      path_length = calc_length ();
+      path_length_valid = true;
+      return path_length;
+    }
+}
+  
+float
+Path::calc_length()
 {
   if (vec.empty())
     {

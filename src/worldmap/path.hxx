@@ -1,4 +1,4 @@
-//  $Id: path.hxx,v 1.1 2002/10/15 19:13:33 grumbel Exp $
+//  $Id: path.hxx,v 1.2 2002/10/15 21:48:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,11 @@ class Path
 private:
   typedef std::vector<Vector> Vec;
   Vec vec;
+  
+  bool  path_length_valid;
+  float path_length;
+
+  float calc_length();
 public:
   typedef Vec::iterator iterator;
   typedef Vec::reverse_iterator reverse_iterator;
@@ -50,14 +55,28 @@ public:
   Vector at(float vec_position);
 
   bool empty() { return vec.empty(); }
-  void clear() { vec.clear(); }
+  void clear() { path_length_valid = false; vec.clear(); }
+
   iterator begin() { return vec.begin(); }
   iterator end() { return vec.end(); }
   reverse_iterator rbegin() { return vec.rbegin(); }
   reverse_iterator rend() { return vec.rend(); }
-  void push_back(const Vector& v) { vec.push_back(v); };
-  void insert(Path& p) { vec.insert(vec.end(), p.vec.begin(), p.vec.end()); };
-  void reverse_insert(Path& p) { vec.insert(vec.end(), p.vec.rbegin(), p.vec.rend()); };
+
+  void push_back(const Vector& v) { 
+    path_length_valid = false; 
+    vec.push_back(v);
+  }
+
+  void insert(Path& p) {
+    path_length_valid = false; 
+    vec.insert(vec.end(), p.vec.begin(), p.vec.end()); 
+  }
+
+  void reverse_insert(Path& p) { 
+    path_length_valid = false; 
+    vec.insert(vec.end(), p.vec.rbegin(), p.vec.rend()); 
+  }
+
   void reverse();
 };
 

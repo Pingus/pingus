@@ -1,4 +1,4 @@
-//  $Id: pathfinder.hxx,v 1.7 2002/10/15 19:13:33 grumbel Exp $
+//  $Id: pathfinder.hxx,v 1.8 2002/10/15 21:48:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,7 @@ private:
 
     bool operator()(NodeId a, NodeId b)
     {
-      std::cout << "Coast: " << pathfinder.stat_graph[a].cost << " " << pathfinder.stat_graph[b].cost << std::endl;
+      //std::cout << "Coast: " << pathfinder.stat_graph[a].cost << " " << pathfinder.stat_graph[b].cost << std::endl;
       return pathfinder.stat_graph[a].cost > pathfinder.stat_graph[b].cost;
     }
   };
@@ -85,8 +85,8 @@ public:
 	NodeId current = open_nodes.top ();
 	open_nodes.pop ();
 
-	std::cout << "Current Node: " << current << " "
-		  << stat_graph[current].cost << std::endl;
+	//std::cout << "Current Node: " << current << " "
+        //<< stat_graph[current].cost << std::endl;
 
 	Node<T>& node = graph.resolve_node (current);
 	for (std::vector<EdgeId>::iterator e = node.next.begin ();
@@ -112,7 +112,7 @@ public:
 	      }
 	  }
       }
-    std::cout << "---DONE---" << std::endl;
+    //std::cout << "---DONE---" << std::endl;
   }
 
   /** The nodes to walk to reach end is returned in reverse order! so
@@ -125,8 +125,8 @@ public:
     do
       {
 	path.push_back(handle);
-	std::cout << "Handle: " << handle 
-		  << " Parent: " << stat_graph[handle].parent << std::endl;
+	//std::cout << "Handle: " << handle 
+        //<< " Parent: " << stat_graph[handle].parent << std::endl;
 
 	if (handle == start)
 	  {
