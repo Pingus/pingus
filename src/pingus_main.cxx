@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.57 2003/03/30 13:12:35 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.58 2003/03/30 15:34:57 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -641,7 +641,8 @@ PingusMain::init_path_finder()
   // bindtextdomain (PACKAGE, LOCALEDIR);
   textdomain (PACKAGE);
 #endif 
-  std::cout << "BasePath: " << path_manager.get_base_path () << std::endl;
+  if (maintainer_mode)
+    std::cout << "BasePath: " << path_manager.get_base_path () << std::endl;
 }
 
 void
@@ -649,7 +650,7 @@ PingusMain::print_greeting_message()
 {
   std::string greeting = "Welcome to Pingus "VERSION"!";
   std::cout <<  greeting << std::endl;
-  for (int i = 0; i < greeting.length(); ++i)
+  for (unsigned int i = 0; i < greeting.length(); ++i)
     std::cout.put('=');
   std::cout << std::endl;
   

@@ -1,4 +1,4 @@
-//  $Id: result_screen.cxx,v 1.6 2003/03/30 13:12:35 grumbel Exp $
+//  $Id: result_screen.cxx,v 1.7 2003/03/30 15:34:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,6 +41,7 @@ public:
   std::vector<CL_Surface> chalk_pingus;
 
   ResultScreenComponent(Result arg_result);
+  virtual ~ResultScreenComponent() {}
   void draw(GraphicContext& gc) ;
 };
 
@@ -51,10 +52,10 @@ private:
   ResultScreen* parent;
 public:
   ResultScreenOkButton(ResultScreen* p)
-    : GUI::SurfaceButton(100, 500, 
-                         ResDescriptor("result/ok", "core", ResDescriptor::RD_RESOURCE),
-                         ResDescriptor("result/ok", "core", ResDescriptor::RD_RESOURCE),
-                         ResDescriptor("result/ok", "core", ResDescriptor::RD_RESOURCE)),
+    : GUI::SurfaceButton(625, 425, 
+                         ResDescriptor("start/ok", "core", ResDescriptor::RD_RESOURCE),
+                         ResDescriptor("start/ok_clicked", "core", ResDescriptor::RD_RESOURCE),
+                         ResDescriptor("start/ok_hover", "core", ResDescriptor::RD_RESOURCE)),
       parent(p)
   {
   }
@@ -145,8 +146,12 @@ ResultScreen::ResultScreen(Result arg_result)
 
   ResultScreenComponent* comp = new ResultScreenComponent(result);
   gui_manager->add(comp);
-  gui_manager->add(new ResultScreenOkButton(this));
-  gui_manager->add(new ResultScreenRetryButton(this));
+
+  if (result.success())
+    gui_manager->add(new ResultScreenOkButton(this));
+  else
+    gui_manager->add(new ResultScreenRetryButton(this));
+
   //gui_manager->add(new GUI::SurfaceButton(500, 500, cancel_desc, cancel_desc, cancel_desc));
 }
 
