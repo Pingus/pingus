@@ -1,17 +1,18 @@
-Last update: Thu Feb 17 02:23:44 2000
-
 Pingus BUGS:
-------------
-* The command line options are a bit wired and sometimes not up to date
-* probably not completly C++ namespace clean
-* Sound Support is very primitive or not implemented, same for Music support
-* Zooming is broken
-* Some non Critical Errors quit Pingus, when it still should be able to contiune
-* After some minutes of playing the game begans havyly to swap and
-  ends 
-* Extremly short mouse clicks are not registered.
+~~~~~~~~~~~~ 
 
-'grep' at the sources for 'Bug' or "FIXME" that should give you some
+* Pressing Armageddon crashes the game from time to time
+* While loading a level it sometimes quits with a message that a
+  resource wasn't found, but the resource should be pressent
+* Sound Support is very primitive
+* Music support isn't much tested
+* Zooming is broken
+* Some non Critical Errors (file not found, etc.)  quit Pingus, when
+  it still should be able to contiune
+* Extremly short mouse clicks are not registered (its a bug in
+  ClanLibs event system)
+
+'grep' at the sources for "Bug" or "FIXME" that should give you some
 more known bugs and other stuff. 
 
-holding down mouse button on bombers is weird
+$Date: 2000/07/04 23:01:38 $
