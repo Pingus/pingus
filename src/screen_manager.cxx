@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.23 2002/10/20 21:38:54 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.24 2002/10/26 17:31:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ ScreenManager::display ()
       
       if (time_delta > 1.0)
 	{
-	  std::cout << "PingusMenuManager: detected large delta (" << time_delta
+	  std::cout << "ScreenManager: detected large delta (" << time_delta
 		    << "), ignoring and doing frameskip" << std::endl;
 	  continue;
 	}

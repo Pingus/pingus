@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.26 2002/10/17 00:10:46 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.27 2002/10/26 17:31:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -101,7 +101,7 @@ SmallMap::init()
   if (fast_mode)
     alpha = 255;
   else
-    alpha = 150;
+    alpha = 255;
 
   int cmap_width  = colmap->get_width();
   int cmap_height = colmap->get_height();
