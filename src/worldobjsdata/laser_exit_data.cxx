@@ -39,12 +39,6 @@ LaserExitData::LaserExitData (xmlDocPtr doc, xmlNodePtr cur)
   reader.read_vector("position", pos);
 }
 
-LaserExitData::LaserExitData (const LaserExitData& old) : WorldObjData(old),
-							  surface(old.surface),
-							  pos(old.pos)
-{
-}
-
 void
 LaserExitData::insert_WorldObjs (World* world)
 {

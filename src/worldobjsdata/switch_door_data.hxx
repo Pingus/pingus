@@ -43,13 +43,7 @@ public:
 
   SwitchDoorData ();
   SwitchDoorData (xmlDocPtr doc, xmlNodePtr cur);
-  SwitchDoorData (const SwitchDoorData& old);
-
-  /** Create an WorldObj from the given data object */
   void insert_WorldObjs (World* world);
-
-private:
-  SwitchDoorData& operator= (const SwitchDoorData&);
 };
 
 } // namespace WorldObjsData

@@ -53,10 +53,6 @@ public:
   int  operator-- ();
   int  operator= (int i);
   operator int ();
-
-private:
-  GameCounter (const GameCounter&);
-  GameCounter& operator= (const GameCounter&);
 };
 
 } // namespace Pingus

@@ -37,14 +37,8 @@ public:
   int width;
 
   IceBlockData ();
-  IceBlockData (const IceBlockData& old);
   IceBlockData (xmlDocPtr doc, xmlNodePtr cur);
-
-  /** Create an WorldObj from the given data object */
   void insert_WorldObjs (World* world);
-
-private:
-  IceBlockData& operator= (const IceBlockData&);
 };
 
 } // namespace WorldObjsData

@@ -33,8 +33,11 @@ namespace WorldObjs {
 
 Bumper::Bumper (const WorldObjsData::BumperData& data_)
   : data(new WorldObjsData::BumperData(data_)),
+    sprite(Resource::load_sprite("traps/bumper")),
     upwards(false),
     count(0)
+
+
 {
 }
 
@@ -60,7 +63,7 @@ Bumper::update ()
   if (upwards)
     {
       ++count;
-      if (count >= static_cast<int>(data->surface.get_frame_count()) )
+      if (count >= static_cast<int>(sprite.get_frame_count()) )
 	{
 	  count = 0;
 	  upwards = false;
@@ -80,7 +83,7 @@ Bumper::on_startup ()
 void
 Bumper::draw (SceneContext& gc)
 {
-  gc.color().draw(data->surface, data->pos, count);
+  gc.color().draw(sprite, data->pos, count);
 }
 
 void

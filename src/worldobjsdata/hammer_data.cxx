@@ -37,12 +37,6 @@ HammerData::HammerData (xmlDocPtr doc, xmlNodePtr cur)
   reader.read_vector("position", pos);
 }
 
-HammerData::HammerData (const HammerData& old)
-  : WorldObjData(old),
-    pos(old.pos)
-{
-}
-
 void
 HammerData::insert_WorldObjs (World* world)
 {

@@ -35,13 +35,7 @@ public:
 
   TeleporterData ();
   TeleporterData (xmlDocPtr doc, xmlNodePtr cur);
-  TeleporterData (const TeleporterData& data);
-
-  /** Create an WorldObj from the given data object */
   void insert_WorldObjs (World*);
-
-private:
-  TeleporterData& operator= (const TeleporterData& data);
 };
 
 } // namespace WorldObjsData

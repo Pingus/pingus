@@ -32,13 +32,6 @@ IceBlockData::IceBlockData ()
 {
 }
 
-IceBlockData::IceBlockData (const IceBlockData& old)
-  : WorldObjData(old),
-    pos(old.pos),
-    width(old.width)
-{
-}
-
 IceBlockData::IceBlockData (xmlDocPtr doc, xmlNodePtr cur)
 {
   XMLFileReader reader(doc, cur);

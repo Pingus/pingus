@@ -31,18 +31,12 @@ namespace WorldObjsData {
 
 class BumperData : public WorldObjData {
 public:
-  CL_Sprite surface;
   Vector  pos;
 
 public:
   BumperData ();
   BumperData (xmlDocPtr doc, xmlNodePtr node);
-  BumperData (const BumperData& old);
-
   void insert_WorldObjs (World*);
-
-private:
-  BumperData& operator= (const BumperData&);
 };
 
 } // namespace WorldObjsData

@@ -36,12 +36,7 @@ public:
 public:
   SmasherData ();
   SmasherData (xmlDocPtr doc, xmlNodePtr node);
-  SmasherData (const SmasherData& old);
-
   void insert_WorldObjs (World*);
-
-private:
-  SmasherData& operator= (const SmasherData&);
 };
 
 } // namespace WorldObjsData

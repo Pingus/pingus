@@ -45,9 +45,6 @@ public:
   GroundpieceData ();
   GroundpieceData (xmlDocPtr doc, xmlNodePtr cur);
 
-  GroundpieceData (const GroundpieceData& old);
-  GroundpieceData& operator= (const GroundpieceData& old);
-
   ~GroundpieceData ();
 
   void insert_WorldObjs (World*);

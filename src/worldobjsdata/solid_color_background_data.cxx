@@ -33,13 +33,6 @@ SolidColorBackgroundData::SolidColorBackgroundData (xmlDocPtr doc, xmlNodePtr cu
   reader.read_color("color", color);
 }
 
-SolidColorBackgroundData::SolidColorBackgroundData (const SolidColorBackgroundData& old)
-  : WorldObjData(old),
-    pos(old.pos),
-    color(old.color)
-{
-}
-
 void
 SolidColorBackgroundData::insert_WorldObjs (World* world)
 {

@@ -69,13 +69,7 @@ public:
       SurfaceBackgroundData*, the user is responsible to delete the
       object */
   SurfaceBackgroundData (xmlDocPtr doc, xmlNodePtr cur);
-
-  SurfaceBackgroundData (const SurfaceBackgroundData& old);
-
   void insert_WorldObjs (World* world);
-
-private:
-  SurfaceBackgroundData& operator= (const SurfaceBackgroundData&);
 };
 
 } // namespace WorldObjsData

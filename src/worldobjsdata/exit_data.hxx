@@ -46,12 +46,7 @@ public:
   ExitData ();
   ExitData (xmlDocPtr doc, xmlNodePtr cur);
 
-  ExitData (const ExitData& old);
-
   void insert_WorldObjs (World*);
-
-private:
-  ExitData& operator= (const ExitData& old);
 };
 
 } // namespace WorldObjsData

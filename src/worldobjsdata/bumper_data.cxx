@@ -33,16 +33,9 @@ BumperData::BumperData ()
 }
 
 BumperData::BumperData (xmlDocPtr doc, xmlNodePtr cur)
-  : surface(Resource::load_sprite("traps/bumper"))
 {
   XMLFileReader reader(doc, cur);
   reader.read_vector("position", pos);
-}
-
-BumperData::BumperData (const BumperData& old) : WorldObjData(old),
-						 surface(old.surface),
-						 pos(old.pos)
-{
 }
 
 void

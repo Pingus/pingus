@@ -39,12 +39,6 @@ SmasherData::SmasherData (xmlDocPtr doc, xmlNodePtr cur)
   reader.read_vector("position", pos);
 }
 
-SmasherData::SmasherData (const SmasherData& old) : WorldObjData(old),
-						    surface(old.surface),
-						    pos(old.pos)
-{
-}
-
 void
 SmasherData::insert_WorldObjs (World* world)
 {

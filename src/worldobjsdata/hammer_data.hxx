@@ -37,12 +37,7 @@ public:
 public:
   HammerData ();
   HammerData (xmlDocPtr doc, xmlNodePtr node);
-  HammerData (const HammerData& old);
-
   void insert_WorldObjs (World* world);
-
-private:
-  HammerData& operator= (const HammerData&);
 };
 
 } // namespace WorldObjsData

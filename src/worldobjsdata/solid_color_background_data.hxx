@@ -38,14 +38,8 @@ public:
 
   SolidColorBackgroundData () {}
   SolidColorBackgroundData (xmlDocPtr doc, xmlNodePtr cur);
-  SolidColorBackgroundData (const SolidColorBackgroundData& old);
-
   virtual ~SolidColorBackgroundData() {}
-
   void insert_WorldObjs (World* world);
-
-private:
-  SolidColorBackgroundData& operator= (const SolidColorBackgroundData&);
 };
 
 } // namespace WorldObjsData

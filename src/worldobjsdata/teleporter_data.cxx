@@ -31,13 +31,6 @@ TeleporterData::TeleporterData ()
 {
 }
 
-TeleporterData::TeleporterData (const TeleporterData& data)
-  : WorldObjData(data),
-    pos(data.pos),
-    target_pos(data.target_pos)
-{
-}
-
 TeleporterData::TeleporterData (xmlDocPtr doc, xmlNodePtr cur)
 {
   XMLFileReader reader(doc, cur);

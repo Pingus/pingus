@@ -45,14 +45,6 @@ SwitchDoorData::SwitchDoorData (xmlDocPtr doc, xmlNodePtr cur)
   subreader.read_int("height", door_height);
 }
 
-SwitchDoorData::SwitchDoorData (const SwitchDoorData& old)
-                              : WorldObjData(old),
-			        door_pos(old.door_pos),
-				switch_pos(old.switch_pos),
-				door_height(old.door_height)
-{
-}
-
 /** Create an WorldObj from the given data object */
 void
 SwitchDoorData::insert_WorldObjs (World* world)

@@ -63,17 +63,6 @@ EntranceData::EntranceData (xmlDocPtr doc, xmlNodePtr cur) : direction(MISC),
     }
 }
 
-EntranceData::EntranceData (const EntranceData& old)
-  : WorldObjData(old),
-    direction(old.direction),
-    desc(old.desc),
-    pos(old.pos),
-    release_rate(old.release_rate),
-    owner_id(old.owner_id),
-    type(old.type)
-{
-}
-
 void
 EntranceData::insert_WorldObjs (World* world)
 {

@@ -40,12 +40,6 @@ SpikeData::SpikeData (xmlDocPtr doc, xmlNodePtr cur)
   reader.read_vector("position", pos);
 }
 
-SpikeData::SpikeData (const SpikeData& old) : WorldObjData(old),
-					      surface(old.surface),
-					      pos(old.pos)
-{
-}
-
 void
 SpikeData::insert_WorldObjs (World* world)
 {

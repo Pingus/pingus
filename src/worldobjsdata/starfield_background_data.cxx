@@ -33,14 +33,6 @@ StarfieldBackgroundData::StarfieldBackgroundData ()
 {
 }
 
-StarfieldBackgroundData::StarfieldBackgroundData (const StarfieldBackgroundData& old)
-  : WorldObjData(old),
-    small_stars_count (old.small_stars_count),
-    middle_stars_count(old.middle_stars_count),
-    large_stars_count (old.large_stars_count)
-{
-}
-
 StarfieldBackgroundData::StarfieldBackgroundData (xmlDocPtr doc, xmlNodePtr cur)
 {
   small_stars_count  = 100;

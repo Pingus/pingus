@@ -40,14 +40,6 @@ HotspotData::HotspotData (xmlDocPtr doc, xmlNodePtr cur)
   reader.read_float("parallax", para);
 }
 
-HotspotData::HotspotData (const HotspotData& old) : WorldObjData(old),
-						    speed(old.speed),
-						    para(old.para),
-						    desc(old.desc),
-                                                    pos(old.pos)
-{
-}
-
 void
 HotspotData::insert_WorldObjs (World* world)
 {

@@ -29,7 +29,8 @@
 namespace Pingus {
 namespace WorldObjsData {
 
-class FakeExitData : public WorldObjData {
+class FakeExitData : public WorldObjData 
+{
 public:
   CL_Sprite  surface;
   Vector   pos;
@@ -38,12 +39,8 @@ public:
 public:
   FakeExitData ();
   FakeExitData (xmlDocPtr doc, xmlNodePtr node);
-  FakeExitData (const FakeExitData& old);
 
   void insert_WorldObjs (World*);
-
-private:
-  FakeExitData& operator= (const FakeExitData&);
 };
 
 } // namespace WorldObjsData

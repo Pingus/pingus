@@ -35,10 +35,6 @@ public:
   SnowGeneratorData(xmlDocPtr doc, xmlNodePtr cur);
 
   void insert_WorldObjs (World* world);
-
-private:
-  SnowGeneratorData (const SnowGeneratorData&);
-  SnowGeneratorData& operator= (const SnowGeneratorData&);
 };
 
 } // namespace WorldObjsData

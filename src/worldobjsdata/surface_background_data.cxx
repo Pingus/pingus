@@ -40,21 +40,6 @@ SurfaceBackgroundData::SurfaceBackgroundData ()
 {
 }
 
-SurfaceBackgroundData::SurfaceBackgroundData (const SurfaceBackgroundData& old)
-  : WorldObjData(old),
-    desc(old.desc),
-    para_x(old.para_x),
-    para_y(old.para_y),
-    pos(old.pos),
-    scroll_x(old.scroll_x),
-    scroll_y(old.scroll_y),
-    color(old.color),
-    stretch_x(old.stretch_x),
-    stretch_y(old.stretch_y),
-    keep_aspect(old.keep_aspect)
-{
-}
-
 SurfaceBackgroundData::SurfaceBackgroundData (xmlDocPtr doc, xmlNodePtr cur)
 {
   pos.z = -150;

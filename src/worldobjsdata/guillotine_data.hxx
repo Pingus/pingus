@@ -42,11 +42,8 @@ public:
 public:
   GuillotineData ();
   GuillotineData (xmlDocPtr doc, xmlNodePtr node);
-  GuillotineData (const GuillotineData& old);
 
   void insert_WorldObjs (World*);
-private:
-  GuillotineData& operator= (const GuillotineData&);
 };
 
 } // namespace WorldObjsData

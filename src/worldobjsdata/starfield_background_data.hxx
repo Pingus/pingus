@@ -34,12 +34,8 @@ public:
   int  large_stars_count;
 
   StarfieldBackgroundData ();
-  StarfieldBackgroundData (const StarfieldBackgroundData& old);
   StarfieldBackgroundData (xmlDocPtr doc, xmlNodePtr cur);
-
   void insert_WorldObjs (World*);
-private:
-  StarfieldBackgroundData& operator= (const StarfieldBackgroundData&);
 };
 
 } // namespace WorldObjsData

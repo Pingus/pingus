@@ -52,16 +52,6 @@ LiquidData::LiquidData (xmlDocPtr doc, xmlNodePtr cur)
   reader.read_int("width", width);
 }
 
-LiquidData::LiquidData (const LiquidData& old)
-  : WorldObjData(old),
-    desc(old.desc),
-    pos(old.pos),
-    old_width_handling(old.old_width_handling),
-    width(old.width),
-    speed(old.speed)
-{
-}
-
 void
 LiquidData::insert_WorldObjs (World* world)
 {

@@ -39,12 +39,6 @@ FakeExitData::FakeExitData (xmlDocPtr doc, xmlNodePtr cur)
   reader.read_vector("position", pos);
 }
 
-FakeExitData::FakeExitData (const FakeExitData& old) : WorldObjData(old),
-						       surface(old.surface),
-						       pos(old.pos)
-{
-}
-
 void
 FakeExitData::insert_WorldObjs (World* world)
 {

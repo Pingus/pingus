@@ -47,14 +47,6 @@ ExitData::ExitData (xmlDocPtr doc, xmlNodePtr cur) : owner_id(0),
   reader.read_int("owner-id", owner_id);
 }
 
-ExitData::ExitData (const ExitData& old) : WorldObjData(old),
-                                           pos(old.pos),
-					   desc(old.desc),
-					   owner_id(old.owner_id),
-					   use_old_pos_handling(old.use_old_pos_handling)
-{
-}
-
 void
 ExitData::insert_WorldObjs (World* world)
 {

@@ -27,12 +27,6 @@
 namespace Pingus {
 namespace WorldObjsData {
 
-ThunderstormBackgroundData::ThunderstormBackgroundData (const ThunderstormBackgroundData& old)
-  : WorldObjData(old),
-    pos(old.pos)
-{
-}
-
 ThunderstormBackgroundData::ThunderstormBackgroundData (xmlDocPtr doc, xmlNodePtr cur)
 {
   XMLFileReader reader(doc, cur);

@@ -36,13 +36,10 @@ public:
   float  counter;
 
   ConveyorBeltData ();
-  ConveyorBeltData (const ConveyorBeltData& old);
   ConveyorBeltData (xmlDocPtr doc, xmlNodePtr cur);
 
   /** Create an WorldObj from the given data object */
   void insert_WorldObjs (World* world);
-private:
-  ConveyorBeltData& operator= (const ConveyorBeltData&);
 };
 
 } // namespace WorldObjsData

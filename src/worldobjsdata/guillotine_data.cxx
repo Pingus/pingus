@@ -43,13 +43,6 @@ GuillotineData::GuillotineData (xmlDocPtr doc, xmlNodePtr cur)
   reader.read_vector("position", pos);
 }
 
-GuillotineData::GuillotineData (const GuillotineData& old) : WorldObjData(old),
-							     surface(old.surface),
-							     idle_surf(old.idle_surf),
-							     pos(old.pos)
-{
-}
-
 void
 GuillotineData::insert_WorldObjs (World* world)
 {

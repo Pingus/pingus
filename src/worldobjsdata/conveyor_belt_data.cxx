@@ -42,15 +42,6 @@ ConveyorBeltData::ConveyorBeltData (xmlDocPtr doc, xmlNodePtr cur)
   reader.read_float("speed", speed);
 }
 
-ConveyorBeltData::ConveyorBeltData (const ConveyorBeltData& old)
-  : WorldObjData(old),
-    pos(old.pos),
-    width(old.width),
-    speed(old.speed),
-    counter(old.counter)
-{
-}
-
 void
 ConveyorBeltData::insert_WorldObjs (World* world)
 {

@@ -39,13 +39,7 @@ public:
   HotspotData ();
 
   HotspotData (xmlDocPtr doc, xmlNodePtr cur);
-
-  HotspotData (const HotspotData& old);
-
   void insert_WorldObjs (World*);
-
-private:
-  HotspotData& operator= (const HotspotData&);
 };
 
 } // namespace WorldObjsData

@@ -35,13 +35,7 @@ public:
 public:
   ThunderstormBackgroundData () {}
   ThunderstormBackgroundData (xmlDocPtr doc, xmlNodePtr cur);
-
-  ThunderstormBackgroundData (const ThunderstormBackgroundData& old);
-
   void insert_WorldObjs (World* world);
-
-private:
-  ThunderstormBackgroundData& operator= (const ThunderstormBackgroundData&);
 };
 
 } // namespace WorldObjsData

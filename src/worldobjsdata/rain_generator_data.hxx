@@ -36,9 +36,6 @@ public:
   void insert_WorldObjs (World* world);
 
   void write_xml(std::ostream& xml);
-private:
-  RainGeneratorData (const RainGeneratorData&);
-  RainGeneratorData& operator= (const RainGeneratorData&);
 };
 
 } // namespace WorldObjsData

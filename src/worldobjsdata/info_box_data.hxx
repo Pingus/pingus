@@ -40,15 +40,8 @@ public:
 public:
   InfoBoxData ();
   InfoBoxData (xmlDocPtr doc, xmlNodePtr cur);
-
-  InfoBoxData (const InfoBoxData& old);
-
   ~InfoBoxData ();
-
   void insert_WorldObjs (World* world);
-
-private:
-  InfoBoxData& operator= (const InfoBoxData&);
 };
 
 } // namespace WorldObjsData

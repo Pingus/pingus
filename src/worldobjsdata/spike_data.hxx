@@ -39,12 +39,7 @@ public:
 public:
   SpikeData ();
   SpikeData (xmlDocPtr doc, xmlNodePtr node);
-  SpikeData (const SpikeData& old);
-
   void insert_WorldObjs (World*);
-
-private:
-  SpikeData& operator= (const SpikeData&);
 };
 
 } // namespace WorldObjsData

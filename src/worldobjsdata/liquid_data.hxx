@@ -46,13 +46,9 @@ public:
 public:
   LiquidData ();
   LiquidData (xmlDocPtr doc, xmlNodePtr cur);
-  LiquidData (const LiquidData& old);
 
   /** Create an WorldObj from the given data object */
   void insert_WorldObjs (World* world);
-
-private:
-  LiquidData& operator= (const LiquidData&);
 };
 
 } // namespace WorldObjsData

@@ -46,12 +46,8 @@ public:
 public:
   EntranceData ();
   EntranceData (xmlDocPtr doc, xmlNodePtr cur);
-  EntranceData (const EntranceData& old);
 
   void insert_WorldObjs (World*);
-
-private:
-  EntranceData& operator= (const EntranceData& old);
 };
 
 } // namespace WorldObjsData

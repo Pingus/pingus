@@ -35,6 +35,7 @@ namespace WorldObjs {
 class Bumper : public WorldObj
 {
 private:
+  CL_Sprite sprite;
   WorldObjsData::BumperData* const data;
   bool upwards;
   int  count;

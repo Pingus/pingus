@@ -48,14 +48,6 @@ InfoBoxData::InfoBoxData (xmlDocPtr doc, xmlNodePtr cur)
   reader.read_string("info-text", info_text);
 }
 
-InfoBoxData::InfoBoxData (const InfoBoxData& old)
-  : WorldObjData(old),
-    info_text(old.info_text),
-    pos(old.pos),
-    text_pos(old.text_pos)
-{
-}
-
 } // namespace WorldObjsData
 } // namespace Pingus
 

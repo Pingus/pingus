@@ -55,29 +55,6 @@ GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
     }
 }
 
-GroundpieceData::GroundpieceData (const GroundpieceData& old)
-  : WorldObjData(old),
-    desc(old.desc),
-    pos(old.pos),
-    gptype(old.gptype)
-{
-}
-
-GroundpieceData&
-GroundpieceData::operator= (const GroundpieceData& old)
-{
-  if (this == &old)
-    return *this;
-
-  WorldObjData::operator=(old);
-
-  desc    = old.desc;
-  pos     = old.pos;
-  gptype  = old.gptype;
-
-  return *this;
-}
-
 GroundpieceData::~GroundpieceData ()
 {
 }

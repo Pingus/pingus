@@ -38,12 +38,7 @@ public:
 public:
   LaserExitData ();
   LaserExitData (xmlDocPtr doc, xmlNodePtr node);
-  LaserExitData (const LaserExitData& old);
-
   void insert_WorldObjs (World*);
-
-private:
-  LaserExitData& operator= (const LaserExitData&);
 };
 
 } // namespace WorldObjsData
