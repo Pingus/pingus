@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0"  encoding="ISO-8859-1"?>
 
 <pingus-level>
   <global>
@@ -10,12 +10,20 @@
     <time>9000</time>
     <width>1200</width>
     <height>600</height>
+    <difficulty>5</difficulty>
+    <playable>0</playable>
+    <comment></comment>
   </global>
+
+  <action-list>
+    <jumper count="50"/>
+  </action-list>
 
 <background type="surface">
   <surface><resource type="datafile">
     <resource-datafile>textures.dat</resource-datafile>
   <resource-ident>Textures/happyclouds</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <color>
     <red>0</red>
@@ -29,182 +37,224 @@
   <para-y>0.5</para-y>
   <stretch-x>0</stretch-x>
   <stretch-y>0</stretch-y>
+  <position>
+    <x-pos>-176</x-pos>
+    <y-pos>-42</y-pos>
+    <z-pos>-150</z-pos>
+  </position>
 </background>
 
-  <action-list>
-    <jumper>50</jumper>
-  </action-list>
-
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>526</x-pos>
     <y-pos>378</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>479</x-pos>
-    <y-pos>279</y-pos>
+    <x-pos>476</x-pos>
+    <y-pos>259</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>729</x-pos>
     <y-pos>380</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>857</x-pos>
     <y-pos>380</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>793</x-pos>
     <y-pos>380</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>679</x-pos>
-    <y-pos>280</y-pos>
+    <x-pos>676</x-pos>
+    <y-pos>260</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>457</x-pos>
     <y-pos>452</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>633</x-pos>
-    <y-pos>186</y-pos>
+    <x-pos>630</x-pos>
+    <y-pos>166</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>328</x-pos>
+    <x-pos>327</x-pos>
     <y-pos>381</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>297</x-pos>
-    <y-pos>280</y-pos>
+    <x-pos>294</x-pos>
+    <y-pos>260</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate2</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate2</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
     <x-pos>263</x-pos>
     <y-pos>349</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate_small</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate_small</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>265</x-pos>
-    <y-pos>280</y-pos>
+    <x-pos>262</x-pos>
+    <y-pos>260</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
-<groundpiece type="solid">
+<worldobj type="groundpiece">
+  <type>solid</type>
   <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>  <resource-ident>Hotspots/plate_small</resource-ident>
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate_small</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>265</x-pos>
-    <y-pos>249</y-pos>
+    <x-pos>262</x-pos>
+    <y-pos>229</y-pos>
     <z-pos>0</z-pos>
   </position>
-</groundpiece>
+</worldobj>
 
 <entrance>
   <position>
-    <x-pos>326</x-pos>
-    <y-pos>197</y-pos>
+    <x-pos>323</x-pos>
+    <y-pos>177</y-pos>
     <z-pos>0</z-pos>
   </position>
   <type>generic</type>
   <direction>left</direction>
   <release-rate>50</release-rate>
+  <owner-id>0</owner-id>
 </entrance>
 
-<exit>
+<exit use-old-pos-handling="0">
   <position>
-    <x-pos>818</x-pos>
-    <y-pos>320</y-pos>
+    <x-pos>855</x-pos>
+    <y-pos>380</y-pos>
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
     <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/stone</resource-ident>
+    <modifier>ROT0</modifier>
   </resource></surface>
-</exit>
+  <owner-id>0</owner-id></exit>
 
   <start-position>
   <position>
-    <x-pos>325</x-pos>
-    <y-pos>197</y-pos>
+    <x-pos>322</x-pos>
+    <y-pos>177</y-pos>
     <z-pos>1000</z-pos>
   </position>
   </start-position>
