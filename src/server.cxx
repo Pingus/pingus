@@ -1,4 +1,4 @@
-//  $Id: server.cxx,v 1.23 2002/10/05 12:40:02 torangan Exp $
+//  $Id: server.cxx,v 1.24 2002/10/12 00:24:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,11 +77,9 @@ Server::send_armageddon_event ()
 void
 Server::send_pingu_action_event (Pingu* pingu, Actions::ActionName action)
 {
-  PinguAction* tmp_action = action_holder.get_action(action);
-	  
-  if (tmp_action)
+  if (action_holder.pop_action(action))
     {
-      if (!(pingu->request_set_action(tmp_action)))
+      if (!(pingu->request_set_action(action)))
 	{
 	  action_holder.push_action(action);
 	}

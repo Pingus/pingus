@@ -1,4 +1,4 @@
-//  $Id: action_holder.cxx,v 1.6 2002/10/04 11:38:28 torangan Exp $
+//  $Id: action_holder.cxx,v 1.7 2002/10/12 00:24:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,32 +52,26 @@ ActionHolder::push_action (ActionName name)
   available_actions[name]++;
 }
 
+bool
+ActionHolder::pop_action (ActionName name)
+{
+  int& avail = available_actions[name];
+
+  if (avail > 0)
+    {
+      --avail;
+      return true;
+    }
+  else
+    {
+      return false;    
+    }
+}
+
 int
 ActionHolder::get_available (ActionName name)
 {
   return available_actions[name];
-}
-
-PinguAction*
-ActionHolder::get_action (ActionName name)
-{
-  if (unlimited_actions) // runtime option; defined in global.hh
-    {    
-      return PinguActionFactory::instance()->create(name);
-    } 
-  else 
-    {
-      int& count = available_actions[name];
-      if (count > 0) 
-	{
-	  --count;
-	  return PinguActionFactory::instance()->create(name);
-	}
-      else // Out of actions
-	{
-	  return 0;
-	}
-    }
 }
 
 /* EOF */

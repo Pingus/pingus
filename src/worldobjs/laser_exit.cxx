@@ -1,4 +1,4 @@
-//  $Id: laser_exit.cxx,v 1.8 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: laser_exit.cxx,v 1.9 2002/10/12 00:24:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,7 +81,7 @@ LaserExit::catch_pingu (Pingu* pingu)
       if (   pingu->get_x () < data->pos.x + 34 + 10 && pingu->get_x () > data->pos.x + 34 
 	     && pingu->get_y () < data->pos.y + 43 + 20 && pingu->get_y () > data->pos.y + 43) 
 	{
-	  if (pingu->get_action()->get_type() != Actions::Laserkill) 
+	  if (pingu->get_action() != Actions::Laserkill) 
 	    {
 	      killing = true;
 	      pingu->set_action(Actions::Laserkill);

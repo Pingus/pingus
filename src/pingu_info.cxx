@@ -1,4 +1,4 @@
-//  $Id: pingu_info.cxx,v 1.4 2002/09/04 14:55:11 torangan Exp $
+//  $Id: pingu_info.cxx,v 1.5 2002/10/12 00:24:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,7 @@ PinguInfo::draw()
 		     str);
 
     if (pingu->get_action()) {
-      snprintf(str, 128, _("action %s"), pingu->get_action()->get_name().c_str());
+      snprintf(str, 128, _("action %s"), pingu->get_name().c_str());
     } else {
       snprintf(str, 128, _("action none"));
     }

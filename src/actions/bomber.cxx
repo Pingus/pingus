@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.17 2002/10/06 23:14:33 grumbel Exp $
+//  $Id: bomber.cxx,v 1.18 2002/10/12 00:24:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <math.h>
+#include <iostream>
+#include "../debug.hxx"
+#include "../globals.hxx"
 #include "../col_map.hxx"
 #include "../force_vector.hxx"
 #include "../graphic_context.hxx"
@@ -84,11 +88,64 @@ Bomber::update ()
 {
   sprite.update ();
 
-  // Make a Bomber act like a Floater
-  pingu->set_velocity(Vector(0.0, 0.0));
+  Vector newp = pingu->get_velocity();
+
+  // Subtract velocity due to the fact that the Pingu is ballooning up before
+  // applying it.
+  newp.y -= 1.0f;
+
+  // Apply all forces
+  pingu->set_velocity(ForcesHolder::apply_forces(pingu->get_pos(), newp));
+    
+  newp = pingu->get_velocity();
+
+  //pout(PINGUS_DEBUG_ACTIONS) << "x" << newp.x << std::endl;
+  //pout(PINGUS_DEBUG_ACTIONS) << "y" << newp.y << std::endl;
   
-  if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING) 
-    pingu->set_y(pingu->get_y() + 1);
+  // If going right
+  if (newp.x > 0)
+    {
+      // Move Pingu gradually to the right.  As the velocity may be a fraction,
+      // stop within 1 unit.
+      while (newp.x >= 1 && rel_getpixel(1, 0) == Groundtype::GP_NOTHING)
+	{
+	  pingu->set_x(pingu->get_x() + 1);
+	  newp.x--;
+	}
+    }
+  else
+    {
+      // Move Pingu gradually to the left.  As the velocity may be a fraction,
+      // stop within 1 unit.
+      while (newp.x <= -1 && rel_getpixel(-1, 0) == Groundtype::GP_NOTHING)
+	{
+	  pingu->set_x(pingu->get_x() - 1);
+	  newp.x++;
+	}
+    }
+
+  // If going down
+  if (newp.y > 0)
+    {
+      // Move Pingu down gradually.  As the velocity may be a fraction,
+      // stop within 1 unit.
+      while (newp.y >= 1 && rel_getpixel(0, -1) == Groundtype::GP_NOTHING)
+	{
+	  pingu->set_y(pingu->get_y() + 1);
+	  newp.y--;
+	}
+    }
+  else
+    {
+      // Move Pingu up gradually.  As the velocity may be a fraction,
+      // stop within 1 unit.
+      while (newp.y <= -1
+	      && rel_getpixel(0, pingu_height) == Groundtype::GP_NOTHING)
+	{
+	  pingu->set_y(pingu->get_y() - 1);
+	  newp.y++;
+	}
+    }
 
   if (sprite.get_frame () > 9 && !sound_played) {
     WorldObj::get_world()->play_wav("sounds/plop.wav", pingu->get_pos ());

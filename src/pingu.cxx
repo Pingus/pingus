@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.33 2002/10/04 16:54:04 grumbel Exp $
+//  $Id: pingu.cxx,v 1.34 2002/10/12 00:24:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,6 +42,7 @@ Pingu::Pingu (int arg_id, const Vector& arg_pos, int owner)
     countdown_action (0),
     wall_action(0),
     fall_action(0),
+    previous_action (Actions::Faller),
     id(arg_id),
     action_time(-1),
     owner_id(owner),
@@ -51,7 +52,11 @@ Pingu::Pingu (int arg_id, const Vector& arg_pos, int owner)
     velocity(new Vector(0, 0, 0))
 {
   direction.left ();
-  set_action(Faller);
+
+  // Initialisize the action, after this step the action ptr will
+  // always be valid in the pingu class
+  action = PinguActionFactory::instance()->create(Faller);
+  action->set_pingu(this);
 }
 
 Pingu::~Pingu ()
@@ -135,7 +140,6 @@ Pingu::request_set_action (PinguAction* act)
 	else if (action->change_allowed(act->get_type()))
 	  {
 	    pout(PINGUS_DEBUG_ACTIONS) << "setting instant action" << std::endl;
-	    act->set_pingu(this);
 	    set_action(act);
 	    ret_val = true;
 	  }
@@ -229,6 +233,9 @@ void
 Pingu::set_action (PinguAction* act) 
 {
   assert(act);
+
+  previous_action = action->get_type();
+
   action = act;
   action->set_pingu(this);
 }
@@ -387,10 +394,16 @@ Pingu::is_alive (void)
   return (status != PS_DEAD && status != PS_EXITED);
 }
 
-PinguAction*
+std::string
+Pingu::get_name()
+{
+  return action->get_name();
+}
+
+Actions::ActionName
 Pingu::get_action ()
 {
-  return action;
+  return action->get_type();
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: slider.cxx,v 1.13 2002/10/04 11:38:29 torangan Exp $
+//  $Id: slider.cxx,v 1.14 2002/10/12 00:24:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,12 +63,16 @@ Slider::update ()
 	  }
 
 	  pingu->set_action(Actions::Walker);
+          return;
 	}
     }
 
   speed -= 7 * 0.025f;
   if (speed < 1)
-    pingu->set_action(Actions::Walker);
+    {
+      pingu->set_action(Actions::Walker);
+      return;
+    }
 }
 
 void

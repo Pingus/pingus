@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.cxx,v 1.16 2002/10/08 00:09:55 grumbel Exp $
+//  $Id: pingu_holder.cxx,v 1.17 2002/10/12 00:24:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,7 +69,7 @@ PinguHolder::draw (GraphicContext& gc)
       pingu != pingus.end(); 
       ++pingu)
     {
-      if ((*pingu)->get_action()->get_type() == Actions::Walker) 
+      if ((*pingu)->get_action() == Actions::Walker) 
 	(*pingu)->draw (gc);
     }
   
@@ -84,7 +84,7 @@ PinguHolder::draw (GraphicContext& gc)
       pingu != pingus.end(); 
       ++pingu)
     {
-      if ((*pingu)->get_action()->get_type() != Actions::Walker)
+      if ((*pingu)->get_action() != Actions::Walker)
 	(*pingu)->draw (gc);
     }
 }

@@ -1,4 +1,4 @@
-//  $Id: fake_exit.cxx,v 1.9 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: fake_exit.cxx,v 1.10 2002/10/12 00:24:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,7 +79,7 @@ FakeExit::catch_pingu (Pingu* pingu)
   if (   pingu->get_x() > data->pos.x + 31 && pingu->get_x() < data->pos.x + 31 + 15
       && pingu->get_y() > data->pos.y + 56 && pingu->get_y() < data->pos.y + 56 + 56) 
     {
-      if (pingu->get_action()->get_type() != Actions::Splashed)
+      if (pingu->get_action() != Actions::Splashed)
 	{
 	  if (!smashing) {
 	    data->counter = 0;

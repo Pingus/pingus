@@ -1,4 +1,4 @@
-//  $Id: smasher.cxx,v 1.12 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: smasher.cxx,v 1.13 2002/10/12 00:24:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -88,7 +88,7 @@ Smasher::update ()
 					  static_cast<int>(data->pos.x + 250),
 					  static_cast<int>(data->pos.y + 190)))
 		    {
-		      if ((*pingu)->get_action()->get_type() != Actions::Splashed)
+		      if ((*pingu)->get_action() != Actions::Splashed)
 			(*pingu)->set_action(Actions::Splashed);
 		    }
 		}
@@ -138,7 +138,7 @@ Smasher::catch_pingu (Pingu* pingu)
 	  && pingu->get_x() > data->pos.x + 190
 	  && pingu->get_x() < data->pos.x + 210))
     {
-      if (pingu->get_action()->get_type() != Actions::Splashed)
+      if (pingu->get_action() != Actions::Splashed)
 	{
 	  if (!smashing) 
 	    {

@@ -1,4 +1,4 @@
-//  $Id: action_holder.hxx,v 1.8 2002/10/04 11:38:28 torangan Exp $
+//  $Id: action_holder.hxx,v 1.9 2002/10/12 00:24:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,18 +62,16 @@ public:
    */
   void push_action (ActionName name);
 
+  /** Removes an action from the pool of actions
+      @return true if an action was available and removed, false if no
+      actions where available */
+  bool pop_action (ActionName name);
+
   /** Returns the number of actions of the specified name which are available 
    *  thru get_action() 
    * @return 0 if the name is unknown FIXME: should use .find instead of []
    */
   int get_available (ActionName);
-
-  /** Returns a newly allocated or cached action by a given name. It
-   *  returns it from the action pool and decreases the number of available
-   *  actions if necessary. If the actions are out, it returns 0. 
-   *  The deletion of the action is handled by this class.  
-   */
-  PinguAction* get_action (ActionName);
   
 private:
   ActionHolder (const ActionHolder&);

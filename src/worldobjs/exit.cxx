@@ -1,4 +1,4 @@
-//  $Id: exit.cxx,v 1.5 2002/10/10 12:25:54 grumbel Exp $
+//  $Id: exit.cxx,v 1.6 2002/10/12 00:24:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -93,7 +93,7 @@ Exit::update ()
 	{
 	  if (   (*pingu)->get_status() != PS_EXITED
 	      && (*pingu)->get_status() != PS_DEAD
-	      && (*pingu)->get_action()->get_type() != Actions::Exiter)
+	      && (*pingu)->get_action() != Actions::Exiter)
 	    {
 	      (*pingu)->set_action(Actions::Exiter);
 	    }
