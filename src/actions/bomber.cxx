@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.15 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: bomber.cxx,v 1.16 2002/10/06 17:02:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,6 +83,12 @@ void
 Bomber::update ()
 {
   sprite.update ();
+
+  // Make a Bomber act like a Floater
+  pingu->set_velocity(Vector(0.0, 0.0));
+  
+  if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING) 
+    pingu->set_y(pingu->get_y() + 1);
 
   if (sprite.get_frame () > 9 && !sound_played) {
     WorldObj::get_world()->play_wav("sounds/plop.wav", pingu->get_pos ());
