@@ -1,4 +1,4 @@
-//  $Id: editor_view.cxx,v 1.1 2002/06/12 19:11:31 grumbel Exp $
+//  $Id: editor_view.cxx,v 1.2 2002/06/20 16:48:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,9 +21,9 @@
 #include <ClanLib/Display/Display/display.h>
 #include "../sprite.hxx"
 #include "editor_view.hxx"
+#include "../math.hxx"
 
-using std::min;
-using std::max;
+using namespace Pingus;
 
 EditorView::EditorView (int x1, int y1, int x2, int y2, 
 			int /*x_offset*/, int /*y_offset*/)
@@ -63,10 +63,10 @@ EditorView::zoom_to (const CL_Rect & arg_rect)
 {
   CL_Rect rect;
 
-  rect.x1 = min (arg_rect.x1, arg_rect.x2);
-  rect.x2 = max (arg_rect.x1, arg_rect.x2);
-  rect.y1 = min (arg_rect.y1, arg_rect.y2);
-  rect.y2 = max (arg_rect.y1, arg_rect.y2);
+  rect.x1 = Math::min (arg_rect.x1, arg_rect.x2);
+  rect.x2 = Math::max (arg_rect.x1, arg_rect.x2);
+  rect.y1 = Math::min (arg_rect.y1, arg_rect.y2);
+  rect.y2 = Math::max (arg_rect.y1, arg_rect.y2);
   
   CL_Vector pos1 = screen_to_world (CL_Vector(rect.x1, rect.y1));
   CL_Vector pos2 = screen_to_world (CL_Vector(rect.x2, rect.y2));

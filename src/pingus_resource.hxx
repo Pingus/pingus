@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.hxx,v 1.2 2002/06/18 21:17:16 grumbel Exp $
+//  $Id: pingus_resource.hxx,v 1.3 2002/06/20 16:48:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,6 +52,10 @@ public:
   ///
   PingusResource();
   
+  /** */
+  static unsigned int get_mtime (const std::string& res_name,
+				 const std::string& datafile);
+
   /** Load a surface with res_name from datafile */
   static CL_Surface load_surface(const std::string& res_name,
 				 const std::string& datafile);

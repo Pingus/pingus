@@ -1,4 +1,4 @@
-//  $Id: multiline_text.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: multiline_text.cxx,v 1.3 2002/06/20 16:48:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,9 +17,12 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <assert.h>
 #include <ClanLib/Display/Font/font.h>
 #include "multiline_text.hxx"
+#include "math.hxx"
 
+using namespace Pingus;
 using namespace std;
 
 MultiLineText::MultiLineText()
@@ -77,7 +80,7 @@ MultiLineText::set_text(const string& str, int text_width)
   */
   width = 0;
   for(vector<string>::iterator i = text.begin(); i != text.end(); i++)
-    width = max(width, font->get_text_width(i->c_str()));
+	  width = Math::max(width, font->get_text_width(i->c_str()));
 
   height = text.size() * font->get_height();
 }

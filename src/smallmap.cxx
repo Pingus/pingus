@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.3 2002/06/17 15:45:26 torangan Exp $
+//  $Id: smallmap.cxx,v 1.4 2002/06/20 16:48:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,9 @@
 #include "col_map.hxx"
 #include "server.hxx"
 #include "pingu.hxx"
+#include "math.hxx"
 
+using namespace Pingus;
 using namespace std;
 
 SmallMap::SmallMap()
@@ -163,8 +165,8 @@ SmallMap::draw()
 
   Display::draw_rect(x_of, 
 		     y_of + CL_Display::get_height() - sur.get_height(),
-		     x_of + min(rwidth, int(sur.get_width())),
-		     y_of + min(rheight, int(sur.get_height())) + CL_Display::get_height() - sur.get_height(),
+			 x_of + Math::min(rwidth, int(sur.get_width())),
+			 y_of + Math::min(rheight, int(sur.get_height())) + CL_Display::get_height() - sur.get_height(),
 		     0.0, 1.0, 0.0, 1.0);
   
   // FIXME: This should use put_target(), but put_target(), does not

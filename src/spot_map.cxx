@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.3 2002/06/20 12:22:51 grumbel Exp $
+//  $Id: spot_map.cxx,v 1.4 2002/06/20 16:48:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,9 @@
 #include "spot_map.hxx"
 #include "my_gettext.hxx"
 #include "col_map.hxx"
+#include "math.hxx"
 
+using namespace Pingus;
 using namespace std;
 
 MapTileSurface::MapTileSurface()
@@ -326,8 +328,8 @@ PingusSpotMap::remove(CL_SurfaceProvider* sprovider, int x, int y)
 				sprovider,
 				x - (ix * tile_size), y - (iy * tile_size),
 				// FIXME, I am broken
-				max(x, ix * tile_size),
-				max(y, iy * tile_size));
+				Math::max(x, ix * tile_size),
+				Math::max(y, iy * tile_size));
 	      tile[ix][iy].reload();
 	    }
 	}
@@ -571,10 +573,10 @@ PingusSpotMap::create_maptiles()
 void
 PingusSpotMap::mark_tiles_not_empty(int x_pos, int y_pos, int sur_width, int sur_height)
 {
-  int start_x = max(0, x_pos / tile_size);
-  int start_y = max(0, y_pos / tile_size);
-  int stop_x  = min(width / tile_size,  (x_pos + sur_width - 1) / tile_size + 1);
-  int stop_y  = min(height / tile_size, (y_pos + sur_height - 1) / tile_size + 1);
+	int start_x = Math::max(0, x_pos / tile_size);
+	int start_y = Math::max(0, y_pos / tile_size);
+  int stop_x  = Math::min(width / tile_size,  (x_pos + sur_width - 1) / tile_size + 1);
+  int stop_y  = Math::min(height / tile_size, (y_pos + sur_height - 1) / tile_size + 1);
 
   //cout << "X: " << start_x << " Y: " << start_y << endl;
   //cout << "stop_X: " << stop_x << " stop_Y: " << stop_y << endl;

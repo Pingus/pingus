@@ -1,4 +1,4 @@
-//  $Id: console.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: console.cxx,v 1.3 2002/06/20 16:48:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,12 +17,14 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <assert.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
 #include "pingus_resource.hxx"
 #include "console.hxx"
+#include "math.hxx"
 
-using namespace std;
+using namespace Pingus;
 
 // Globale console
 Console console;
@@ -104,7 +106,7 @@ ConsoleBuffer::get_buffer () {
 }
 
 Console::Console()
-  : ostream (&streambuf)
+  : std::ostream (&streambuf)
 {
   is_init = false;
   is_visible = false;
@@ -142,9 +144,9 @@ Console::draw()
     CL_Display::get_height() - (font->get_height() * (number_of_lines + 3));
 
   if (draw_current_line)
-    start_index =  max(0, current_pos - number_of_lines);
+	  start_index =  Math::max(0, current_pos - number_of_lines);
   else
-    start_index =  max(0, current_pos - number_of_lines-1);
+	  start_index =  Math::max(0, current_pos - number_of_lines-1);
 
   CL_Display::fill_rect(0, start_y_pos,
 			CL_Display::get_width(),

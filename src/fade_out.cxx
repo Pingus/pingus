@@ -1,4 +1,4 @@
-//  $Id: fade_out.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: fade_out.cxx,v 1.2 2002/06/20 16:48:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,9 @@
 #include "display.hxx"
 #include "fade_out.hxx"
 #include "globals.hxx"
+#include "math.hxx"
 
+using namespace Pingus;
 using namespace std;
 
 FadeOut::FadeOut (float seconds, Color color)
@@ -66,7 +68,7 @@ FadeOut::finished ()
 float
 FadeOut::get_progress ()
 {
-  return min(passed_time/complete_time, 1.0f);
+	return Math::min(passed_time/complete_time, 1.0f);
 }
 
 void
