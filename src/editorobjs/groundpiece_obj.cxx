@@ -1,4 +1,4 @@
-//  $Id: groundpiece_obj.cxx,v 1.7 2002/11/30 00:10:29 grumbel Exp $
+//  $Id: groundpiece_obj.cxx,v 1.8 2002/11/30 15:06:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,9 @@
 #include "../worldobjsdata/groundpiece_data.hxx"
 #include "../pingus_resource.hxx"
 #include "../editor/property_window.hxx"
+#include "../editor/generic_property_frame.hxx"
 #include "../editor/editor.hxx"
+#include "../groundtype.hxx"
 #include "groundpiece_obj.hxx"
 
 namespace EditorObjs {
@@ -117,10 +119,61 @@ GroundpieceObj::rotate_270 ()
   data->pos.y -= sprite.get_height()/2;
 }
 
+struct GroundpieceObjRotate {
+  GroundpieceObj* obj;
+  GroundpieceObjRotate(GroundpieceObj* o) 
+  {
+    obj = o;
+  }
+
+  void operator()() {
+    obj->rotate_90();
+  }
+};
+
+struct GroundpieceObjFlipHorizontal {
+  GroundpieceObj* obj;
+  GroundpieceObjFlipHorizontal(GroundpieceObj* o) 
+  {
+    obj = o;
+  }
+
+  void operator()() {
+    obj->horizontal_flip();
+  }
+};
+
+struct GroundpieceObjFlipVertical {
+  GroundpieceObj* obj;
+  GroundpieceObjFlipVertical(GroundpieceObj* o) 
+  {
+    obj = o;
+  }
+  
+  void operator()() {
+    obj->vertical_flip();
+  }
+};
+
 EditorNS::PropertyFrame*
-GroundpieceObj::get_gui_dialog (EditorNS::Editor* parent)
+GroundpieceObj::get_gui_dialog (EditorNS::Editor* editor)
 {
-  return new EditorNS::GroundpieceWindow(parent->get_property_window()->get_client_area(), this);
+  EditorNS::GenericPropertyFrame* propframe 
+    = new EditorNS::GenericPropertyFrame("GroundPiece Properties",
+                                         editor->get_property_window()->get_client_area());
+
+  propframe->begin_add_enum_box("Groundtype:", (int*)&data->gptype);
+  propframe->add_enum_value("Ground",      Groundtype::GP_GROUND);
+  propframe->add_enum_value("Transparent", Groundtype::GP_TRANSPARENT);
+  propframe->add_enum_value("Solid",       Groundtype::GP_SOLID);
+  propframe->add_enum_value("Bridge",      Groundtype::GP_BRIDGE);
+  propframe->end_add_enum_box();
+  
+  propframe->add_button_box("Rotate 90",       GroundpieceObjRotate(this));
+  propframe->add_button_box("Flip Vertical",   GroundpieceObjFlipVertical(this));
+  propframe->add_button_box("Flip Horizontal", GroundpieceObjFlipHorizontal(this));
+  
+  return propframe;
 }
 
 } // namespace EditorObjs

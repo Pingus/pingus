@@ -1,4 +1,4 @@
-//  $Id: level_resizer.cxx,v 1.1 2002/11/29 22:54:22 grumbel Exp $
+//  $Id: level_resizer.cxx,v 1.2 2002/11/30 15:06:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <stdio.h>
 #include <ClanLib/Display/Font/font.h>
 #include "../fonts.hxx"
 #include "object_manager.hxx"

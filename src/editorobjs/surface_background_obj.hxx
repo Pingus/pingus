@@ -1,4 +1,4 @@
-//  $Id: surface_background_obj.hxx,v 1.5 2002/11/29 00:17:05 grumbel Exp $
+//  $Id: surface_background_obj.hxx,v 1.6 2002/11/30 15:06:32 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,6 +43,7 @@ public:
 
   std::string status_line ();
   EditorNS::PropertyFrame* get_gui_dialog(EditorNS::Editor*);
+
 private:
   SurfaceBackgroundObj (const SurfaceBackgroundObj&);
   SurfaceBackgroundObj& operator= (const SurfaceBackgroundObj&);

@@ -1,4 +1,4 @@
-//  $Id: generic_property_frame.hxx,v 1.1 2002/11/29 00:17:05 grumbel Exp $
+//  $Id: generic_property_frame.hxx,v 1.2 2002/11/30 15:06:31 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include <vector>
 #include <string>
+#include <ClanLib/GUI/button.h>
 #include "property_frame.hxx"
 
 class CL_Component;
@@ -36,6 +37,30 @@ public:
     
   /** Write the data from the GUI to the data pointer */
   virtual void write_data() =0;
+};
+
+template<class Func>
+class ButtonDataBox : public DataBox
+{
+private:
+  CL_Button button;
+  CL_Slot slot;
+  Func func;
+
+public:
+  ButtonDataBox(CL_Component* parent, int y_pos, const std::string& name, Func f)
+    : button(CL_Rect(10, y_pos, 190, y_pos + 20), name, parent), 
+      func(f)
+  {
+    slot = button.sig_clicked().connect(this, &ButtonDataBox<Func>::on_click);
+  }
+  
+  virtual ~ButtonDataBox() {}
+
+  void on_click() { func(); }
+
+  void read_data() {}
+  void write_data() {}
 };
 
 class EnumDataBox;
@@ -72,10 +97,19 @@ public:
 
   /** Representation of a boolean value */
   void add_check_box(const std::string& name, bool* value);
+
+  /** Adds a button */
+  template<class Func>
+  void add_button_box(const std::string& name, Func func)
+  {
+    data_boxes.push_back(new ButtonDataBox<Func>(this, y_pos, name, func));
+    y_pos += 25;
+    set_height(y_pos + 5);
+  }
   
   /** Creates a listbox to represent an enumeration */
   void begin_add_enum_box(const std::string& title, int*);
-  void add_enum_value(const std::string name, int value);
+  void add_enum_value(const std::string& name, int value);
   void end_add_enum_box();
 
 private:

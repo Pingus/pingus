@@ -1,4 +1,4 @@
-//  $Id: surface_background_obj.cxx,v 1.5 2002/11/30 00:10:29 grumbel Exp $
+//  $Id: surface_background_obj.cxx,v 1.6 2002/11/30 15:06:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "../string_converter.hxx"
 #include "../worldobjsdata/surface_background_data.hxx"
 #include "../editor/editor.hxx"
@@ -80,6 +81,8 @@ SurfaceBackgroundObj::get_gui_dialog(Editor* editor)
   propframe->add_float_box("Color Green", &data->color.green);
   propframe->add_float_box("Color Blue", &data->color.blue);
   propframe->add_float_box("Color Alpha", &data->color.alpha);
+
+  //propframe->add_button_box("Hello World", Functor);
 
   return propframe;
 }

@@ -1,4 +1,4 @@
-//  $Id: property_window.cxx,v 1.12 2002/11/29 22:54:22 grumbel Exp $
+//  $Id: property_window.cxx,v 1.13 2002/11/30 15:06:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,11 +29,20 @@ namespace EditorNS {
 PropertyWindow::PropertyWindow (Editor* parent)
   : CL_Window (CL_Rect (0, 0, 200, 200), "Object Properties", parent->get_gui_manager ()),
     editor (parent),
-    current_frame (0), label (CL_Point (50, 0), "no properties available", get_client_area ())
+    current_frame (0),
+    label (CL_Point (50, 0), "no properties available", get_client_area ()),
+    close_button (CL_Rect(110, 20, 190, 40), "Close", get_client_area())
 {
+  close_button_slot = close_button.sig_clicked().connect(this, &PropertyWindow::on_close_click);
   label.show (true);
-  set_client_size (200, 20);
+  set_client_size (200, 50);
   show (false);
+}
+
+void 
+PropertyWindow::on_close_click()
+{
+  show(false);
 }
 
 void
@@ -47,33 +56,22 @@ PropertyWindow::update_frame (EditorObj* obj)
       current_frame = 0;
     }
   
-  if (obj)
-    {
-      // We are responsible to delete comp
-      PropertyFrame* comp = obj->get_gui_dialog (editor);
-   
-      if (comp)
-	{
-	  set_title(comp->get_title ());
-	  label.show (false);
-
-	  std::cout << "Got GUI" << std::endl;
-	  current_frame = comp;
-	  set_client_size (comp->get_width (), comp->get_height ());
-	}
-      else
-	{
-	  label.show (true);
-	  set_title("Property Dialog");
-	  std::cout << "No GUI" << std::endl;
-	  current_frame = 0;
-	  set_client_size (200, 20);
-	}
+  if (obj && (current_frame = obj->get_gui_dialog (editor)))
+    { // current object provides a GUI
+      set_title(current_frame->get_title ());
+      label.show (false);
+      std::cout << "Got GUI" << std::endl;
+      set_client_size (current_frame->get_width () + 1, 
+                       current_frame->get_height () + 40);
+      close_button.set_position(110, current_frame->get_height () +  10);
     }
-  else
+  else // current object doesn't have a GUI or no object is selected
     {
-      set_client_size (200, 20);
       label.show (true);
+      set_title("Property Dialog");
+      std::cout << "No GUI" << std::endl;
+      set_client_size (200, 50);
+      close_button.set_position(110, 20);
     }
 }
 

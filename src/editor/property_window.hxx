@@ -1,4 +1,4 @@
-//  $Id: property_window.hxx,v 1.9 2002/11/28 20:09:54 grumbel Exp $
+//  $Id: property_window.hxx,v 1.10 2002/11/30 15:06:31 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,9 +23,11 @@
 #include "../pingus.hxx"
 #include <ClanLib/GUI/label.h>
 #include <ClanLib/GUI/window.h>
+#include <ClanLib/GUI/button.h>
 
 class EditorObj;
 class CL_Component;
+class PropertyFrame;
 
 namespace EditorNS {
 
@@ -38,10 +40,13 @@ private:
   Editor* editor;
   
   /** Pointer to the frame of the current object */
-  CL_Component* current_frame;
+  PropertyFrame* current_frame;
 
   /** The empty frame that is shown when no object is selected */
   CL_Label label;
+
+  CL_Button close_button;
+  CL_Slot   close_button_slot;
       
 public:
   PropertyWindow (Editor* parent);
@@ -50,6 +55,7 @@ public:
       update() is called. */
   void update_frame (EditorObj*);
       
+  void on_close_click();
 private:
   PropertyWindow (const PropertyWindow&);
   PropertyWindow& operator= (const PropertyWindow&);

@@ -1,4 +1,4 @@
-//  $Id: generic_property_frame.cxx,v 1.1 2002/11/29 00:17:05 grumbel Exp $
+//  $Id: generic_property_frame.cxx,v 1.2 2002/11/30 15:06:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,8 @@
 #include <iostream>
 #include <ClanLib/GUI/label.h>
 #include <ClanLib/GUI/inputbox.h>
+#include <ClanLib/GUI/radiogroup.h>
+#include <ClanLib/GUI/radiobutton.h>
 #include <ClanLib/GUI/listbox.h>
 #include <ClanLib/GUI/checkbox.h>
 #include "../string_converter.hxx"
@@ -152,11 +154,23 @@ public:
 class EnumDataBox : public DataBox
 {
 public:
-  CL_ListBox list_box;
+  CL_Component* parent;
+  int start_y_pos;
+  int y_pos;
+  CL_RadioGroup radio_group;
+  CL_Label      radio_label;
+  typedef std::vector<std::pair<int, CL_RadioButton*> >::iterator RButtonIter;
+  std::vector<std::pair<int, CL_RadioButton*> > radio_buttons;
+
+  /** Pointer to the value that should be changed */
   int* value;
 
-  EnumDataBox(CL_Component* parent, int y_pos, const std::string& name, int* _value) 
-    : list_box(CL_Rect(110, y_pos, 190, y_pos+20), parent), value(_value)
+  EnumDataBox(CL_Component* p, int y, const std::string& name, int* _value) 
+    : parent(p), 
+      start_y_pos(y),
+      y_pos(y),
+      radio_label(CL_Rect(10, y_pos, 90, y_pos+20), name, parent),
+      value(_value)
   {
   }
 
@@ -164,16 +178,46 @@ public:
 
   void read_data() 
   {
-    
+    for (RButtonIter i = radio_buttons.begin(); i != radio_buttons.end(); ++i)
+      {
+        if (i->first == *value)
+          {
+            i->second->set_checked(true);
+            return;
+          }
+      }
   }
   
   void write_data() 
   {
-    
+    for (RButtonIter i = radio_buttons.begin(); i != radio_buttons.end(); ++i)
+      {
+        if (i->second->is_checked())
+          {
+            *value = i->first;
+            return;
+          }
+      }    
   }
 
-  void add_item(const std::string&)
+  void add_item(const std::string& name, int item_value)
   {
+    CL_RadioButton* rbutton = new CL_RadioButton(CL_Point(110, y_pos), name, parent);
+    radio_buttons.push_back(std::pair<int, CL_RadioButton*>(item_value, rbutton));
+    radio_group.add(rbutton);
+
+    std::cout << "Value: " << *value << " ItemValue: " << item_value << std::endl;
+
+    if (item_value == *value)
+      rbutton->set_checked(true);
+    else
+      rbutton->set_checked(false);
+
+    y_pos += 20;
+  }
+  
+  int get_height() {
+    return y_pos - start_y_pos + 5;
   }
 };
 
@@ -197,7 +241,7 @@ GenericPropertyFrame::add_string_box(const std::string& name, std::string* value
 {
   data_boxes.push_back(new StringDataBox(this, y_pos, name, value));
   y_pos += 20;
-  set_height(y_pos);
+  set_height(y_pos + 5);
 }
 
 void
@@ -205,7 +249,7 @@ GenericPropertyFrame::add_integer_box(const std::string& name, int* value)
 {
   data_boxes.push_back(new IntegerDataBox(this, y_pos, name, value));
   y_pos += 20;
-  set_height(y_pos);
+  set_height(y_pos + 5);
 }
 
 void
@@ -213,22 +257,32 @@ GenericPropertyFrame::add_float_box(const std::string& name, float* value)
 {
   data_boxes.push_back(new FloatDataBox(this, y_pos, name, value));
   y_pos += 20;
-  set_height(y_pos);
+  set_height(y_pos + 5);
 }
 
 void
-GenericPropertyFrame::begin_add_enum_box(const std::string& title, int*)
+GenericPropertyFrame::begin_add_enum_box(const std::string& title, int* value)
 {
+  assert(enum_data_box == 0);
+  enum_data_box = new EnumDataBox(this, y_pos, title, value);
 }
 
 void
-GenericPropertyFrame::add_enum_value(const std::string name, int value)
+GenericPropertyFrame::add_enum_value(const std::string& name, int value)
 {
+  assert(enum_data_box);
+  enum_data_box->add_item(name, value);
 }
 
 void
 GenericPropertyFrame::end_add_enum_box()
 {
+  assert(enum_data_box);
+
+  data_boxes.push_back(enum_data_box);
+  y_pos += enum_data_box->get_height();
+  set_height(y_pos + 5);
+
   enum_data_box = 0;
 }
 
@@ -237,7 +291,7 @@ GenericPropertyFrame::add_check_box(const std::string& name, bool* value)
 {
   data_boxes.push_back(new BoolDataBox(this, y_pos, name, value));
   y_pos += 20;
-  set_height(y_pos);
+  set_height(y_pos + 5);
 }
 
 } // namespace EditorNS
