@@ -19,9 +19,11 @@
 
 #include <iostream>
 #include <fstream>
-#include <ClanLib/Core/System/clanstring.h>
+#include <ClanLib/core.h>
 #include "xml_helper.hxx"
 #include "system.hxx"
+#include "pingus_error.hxx"
+#include "xml_file_reader.hxx"
 #include "stat_manager.hxx"
 
 namespace Pingus {
@@ -64,37 +66,24 @@ StatManager::~StatManager()
 void
 StatManager::load(const std::string& filename)
 {
-  xmlDocPtr doc = xmlParseFile(filename.c_str());
-  if (doc)
+  CL_InputSourceProvider_File provider(".");
+  CL_DomDocument doc(provider.open_source(filename), true);
+      
+  CL_DomElement root = doc.get_document_element();
+      
+  if (root.get_tag_name() != "pingus-stats")
     {
-            xmlNodePtr cur = doc->ROOT;
-
-      cur = XMLhelper::skip_blank(cur);
-
-      if (cur && XMLhelper::equal_str(cur->name, "pingus-stats"))
+      PingusError::raise("Error: " + filename + ": not a <pingus-stats> file");
+    }
+  else
+    {
+      XMLFileReader reader(root);
+      const std::vector<std::string>& section_names = reader.get_section_names();
+      for(std::vector<std::string>::const_iterator i = section_names.begin();
+          i != section_names.end(); ++i)
         {
-          cur = XMLhelper::skip_blank(cur);
-          cur = cur->children;
-          cur = XMLhelper::skip_blank(cur);
-
-          while(cur)
-            {
-              std::string name  = (const char*)(cur->name);
-              std::string value = XMLhelper::parse_string(doc, cur);
-              //std::cout << "Stat: " << name << " = " << value << std::endl;
-              stats[name] = value;
-
-              cur = cur->next;
-              cur = XMLhelper::skip_blank(cur);
-            }
+          reader.read_string(i->c_str(), stats[*i]);
         }
-      else
-        {
-          std::cout << "StatManager: stat file '" << filename
-                    << "' is corrupt or invalid, assuming an empty one." << std::endl;
-        }
-
-      xmlFreeDoc(doc);
     }
 }
 

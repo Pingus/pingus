@@ -54,8 +54,7 @@ Theme::load (const std::string& filename)
 {
   if (verbose) std::cout << "Theme: loading: " << filename << std::endl;
   plt.parse(filename);
-  if (verbose > 1) std::cout << "Theme: Surface: " << plt.get_surface() << std::endl;
-
+  
   title_name = System::translate(plt.get_name());
 
   level_filenames = plt.get_levels();
@@ -70,17 +69,6 @@ Theme::load (const std::string& filename)
   else
     {
       has_description = false;
-    }
-
-  try
-    {
-      if (!plt.get_surface().empty ())
-	surface = Resource::load_surface(plt.get_surface());
-    }
-
-  catch (CL_Error& err)
-    {
-      if (verbose) std::cout << "Theme:CL_Error:" << filename << ":" << err.message << std::endl;
     }
 
   try

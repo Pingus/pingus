@@ -19,65 +19,42 @@
 
 #include <algorithm>
 #include <iostream>
+#include <vector>
+#include <ClanLib/core.h>
 #include "pingus_error.hxx"
 #include "path_manager.hxx"
 #include "xml_pingus_level.hxx"
+#include "xml_file_reader.hxx"
 #include "xml_pdf.hxx"
 
 namespace Pingus {
 
 XMLPDF::XMLPDF(const std::string& filename)
 {
-  xmlDocPtr doc = xmlParseFile(filename.c_str());
-  if (doc == NULL)
-    PingusError::raise("XMLPDF: Couldn't open \"" + filename + "\"");
+  CL_InputSourceProvider_File provider(".");
+  CL_DomDocument doc(provider.open_source(filename), true);
 
-  xmlNodePtr cur = doc->ROOT;
+  CL_DomElement root = doc.get_document_element();
 
-  if (XMLhelper::equal_str(cur->name, "pingus-demo"))
+  if (root.get_tag_name() != "pingus-demo")
     {
-      cur = cur->children;
-      cur = XMLhelper::skip_blank(cur);
-
-      while(cur)
-	{
-	  std::cout << "Token: " << cur->name << std::endl;
-
-	  if (XMLhelper::equal_str(cur->name, "level"))
-	    {
-	      if (!XMLhelper::node_list_get_string(doc, cur->children, 1, levelname))
-		{
-		  std::cout << "XMLPDF: parse error at levelname" << std::endl;
-		}
-	      std::cout << "Level: " << levelname << std::endl;
-	    }
-	  else if (XMLhelper::equal_str(cur->name, "events"))
-	    {
-	      xmlNodePtr child_cur = cur->children;
-	      child_cur = XMLhelper::skip_blank(child_cur);
-
-	      while(child_cur)
-		{
-		  events.push_back(ServerEvent(doc, child_cur));
-		  child_cur = child_cur->next;
-		  child_cur = XMLhelper::skip_blank(child_cur);
-		}
-	    }
-	  else
-	    {
-	      std::cout << "XMLPDF: Unhandled tag: " << cur->name << std::endl;
-	    }
-
-	  cur = cur->next;
-	  cur = XMLhelper::skip_blank(cur);
-	}
+      PingusError::raise("Error: " + filename + ": not a <pingus-demo> file");
     }
   else
     {
-      PingusError::raise("XMLPDF: Not a pingus-demo file");
-    }
+      XMLFileReader reader(root);
 
-  xmlFreeDoc(doc);
+      reader.read_string ("level",  levelname);
+
+      FileReader events_reader;
+      reader.read_section("events", events_reader);
+      const std::vector<FileReader>& objects = events_reader.get_sections();
+      for(std::vector<FileReader>::const_iterator i = objects.begin();
+          i != objects.end(); ++i)
+        {
+          events.push_back(ServerEvent(*i));
+        }
+    }
 
   std::reverse(events.begin(), events.end());
 

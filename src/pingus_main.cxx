@@ -48,7 +48,6 @@
 #include "pingus_error.hxx"
 #include "global_event.hxx"
 #include "config.hxx"
-#include "config_xml.hxx"
 #include "console.hxx"
 #include "fps_counter.hxx"
 #include "plf_res_mgr.hxx"

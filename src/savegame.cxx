@@ -63,9 +63,9 @@ Savegame::Savegame()
   needed_time = 0;
 }
 
-Savegame::Savegame(xmlDocPtr doc, xmlNodePtr node)
+Savegame::Savegame(FileReader reader)
 {
-  read_xml(doc, node);
+  read_xml(reader);
 }
 
 Savegame::Savegame(std::string arg_levelname, S_Status arg_status, int arg_time, int arg_saved_pingus)
@@ -89,9 +89,8 @@ Savegame::write_xml(std::ostream& xml)
 }
 
 void
-Savegame::read_xml (xmlDocPtr doc, xmlNodePtr node)
+Savegame::read_xml(FileReader reader)
 {
-  XMLFileReaderOld reader(doc, node);
   reader.read_string ("name", levelname);
   reader.read_enum   ("status", status, string_to_status);
   reader.read_int    ("time", needed_time);

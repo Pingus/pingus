@@ -20,8 +20,11 @@
 #include <iostream>
 #include <fstream>
 #include <assert.h>
+#include <ClanLib/core.h>
 #include "system.hxx"
 #include "xml_helper.hxx"
+#include "pingus_error.hxx"
+#include "xml_file_reader.hxx"
 #include "savegame_manager.hxx"
 
 namespace Pingus {
@@ -45,9 +48,39 @@ void SavegameManager::deinit()
 SavegameManager::SavegameManager(const std::string& arg_filename)
   : filename(arg_filename)
 {
-  xmlDocPtr doc = xmlParseFile(filename.c_str());
+  try 
+    {
+      CL_DomDocument doc(new CL_InputSource_File(filename), true);
+      CL_DomElement root = doc.get_document_element();
+      if (root.get_tag_name() != "pingus-savegame")
+        {
+          PingusError::raise("Error: " + filename + ": not a <pingus-savegame> file");
+        }
+      else
+        {
+          XMLFileReader reader(root);
+          const std::vector<FileReader>& sections = reader.get_sections();
+          for(std::vector<FileReader>::const_iterator i = sections.begin();
+              i != sections.end(); ++i)
+            {
+              Savegame* savegame = new Savegame(*i);
+              SavegameTable::iterator i = savegames.find(savegame->levelname);
 
-  if (!doc)
+              if (i != savegames.end())
+                {
+                  std::cout << "SavegameManager: name collision: " << savegame->levelname << std::endl;
+                  delete i->second;
+                  i->second = savegame;
+                }
+              else
+                {
+                  //std::cout << "SavegameManager: Loading savegame for: " << savegame->levelname << std::endl;
+                  savegames[savegame->levelname] = savegame;
+                }
+            }
+        }
+    } 
+  catch (CL_Error& err) 
     {
       std::cout << "SavegameManager: Couldn't find savegame file '" << filename
                 << "', starting with a empty one." << std::endl;
@@ -56,50 +89,6 @@ SavegameManager::SavegameManager(const std::string& arg_filename)
       savegame.status = Savegame::ACCESSIBLE;
       savegame.levelname = "tutorial/digger-tutorial2-grumbel";
       store(savegame);
-    }
-  else
-    {
-      xmlNodePtr cur = doc->ROOT;
-
-      cur = XMLhelper::skip_blank(cur);
-
-      if (cur && XMLhelper::equal_str(cur->name, "pingus-savegame"))
-        {
-          cur = XMLhelper::skip_blank(cur);
-          cur = cur->children;
-          cur = XMLhelper::skip_blank(cur);
-
-          while(cur)
-            {
-              if (XMLhelper::equal_str(cur->name, "level"))
-                {
-                  Savegame* savegame = new Savegame(doc, cur);
-                  SavegameTable::iterator i = savegames.find(savegame->levelname);
-
-                  if (i != savegames.end())
-                    {
-                      std::cout << "SavegameManager: name collision: " << savegame->levelname << std::endl;
-                      delete i->second;
-                      i->second = savegame;
-                    }
-                  else
-                    {
-                      //std::cout << "SavegameManager: Loading savegame for: " << savegame->levelname << std::endl;
-                      savegames[savegame->levelname] = savegame;
-                    }
-                }
-              else
-                {
-                  std::cout << "SavegameManager: Unknownen tag: " << cur->name << std::endl;
-                }
-
-              cur = cur->next;
-              cur = XMLhelper::skip_blank(cur);
-            }
-        }
-
-
-      xmlFreeDoc(doc);
     }
 }
 

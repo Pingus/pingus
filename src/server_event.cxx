@@ -31,37 +31,24 @@ ServerEvent::ServerEvent()
 {
 }
 
-ServerEvent::ServerEvent(xmlDocPtr doc, xmlNodePtr cur)
+ServerEvent::ServerEvent(FileReader reader)
 {
-  UNUSED_ARG(doc);
-
-  if (XMLhelper::equal_str(cur->name, "armageddon"))
+  if (reader.get_name() == "armageddon")
     {
       type = ARMAGEDDON_EVENT;
-      std::string time_stamp_str;
-
-      assert(XMLhelper::get_prop(cur, "time", time_stamp_str));
-      CL_String::from(time_stamp_str, time_stamp);
+      reader.read_int("time", time_stamp);
     }
-  else if (XMLhelper::equal_str(cur->name, "pingu-action"))
+  else if (reader.get_name() == "pingu-action")
     {
       type = PINGU_ACTION_EVENT;
-      std::string time_stamp_str;
-      std::string pingu_id_str;
-      std::string pingu_action_str;
-
-      assert(XMLhelper::get_prop(cur, "time",   time_stamp_str));
-      assert(XMLhelper::get_prop(cur, "id",     pingu_id_str));
-      assert(XMLhelper::get_prop(cur, "action", pingu_action_str));
-
-      CL_String::from(time_stamp_str, time_stamp);
-      CL_String::from(pingu_id_str,   pingu_id);
-      pingu_action = Actions::action_from_string(pingu_action_str);
+      reader.read_int ("time",   time_stamp);
+      reader.read_int ("id",     pingu_id);
+      reader.read_enum("action", pingu_action, Actions::action_from_string);
     }
   else
     {
       PingusError::raise(std::string("ServerEvent: Parse error: Unknown event: ")
-			 + reinterpret_cast<const char*>(cur->name));
+			 + reader.get_name());
     }
 }
 

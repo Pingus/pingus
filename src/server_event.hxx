@@ -22,6 +22,7 @@
 
 #include <iosfwd>
 #include "xml_helper.hxx"
+#include "file_reader.hxx"
 #include "pingu_enums.hxx"
 
 namespace Pingus {
@@ -55,7 +56,7 @@ public:
   ServerEvent();
 
   /** Construct an server event from an xml subtree */
-  ServerEvent(xmlDocPtr doc, xmlNodePtr cur);
+  ServerEvent(FileReader reader);
 
   void write_xml(std::ostream& xml) const;
 

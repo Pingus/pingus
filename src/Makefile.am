@@ -108,8 +108,6 @@ col_map.cxx \
 col_map.hxx \
 config.cxx \
 config.hxx \
-config_xml.cxx \
-config_xml.hxx \
 console.cxx \
 console.hxx \
 credits.cxx \

@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_SAVEGAME_HXX
 
 #include <string>
-#include "libxmlfwd.hxx"
+#include "file_reader.hxx"
 
 namespace Pingus {
 
@@ -48,10 +48,10 @@ public:
   int saved_pingus;
 
   Savegame();
-  Savegame(xmlDocPtr doc, xmlNodePtr node);
+  Savegame(FileReader node);
   Savegame(std::string arg_levelname, S_Status arg_status, int arg_time, int arg_saved_pingus);
 
-  void read_xml (xmlDocPtr doc, xmlNodePtr node);
+  void read_xml(FileReader node);
   void write_xml(std::ostream& xml);
 };
 

@@ -18,9 +18,11 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <ClanLib/core.h>
+#include "xml_file_reader.hxx"
 #include "globals.hxx"
 #include "pingus_error.hxx"
-#include "xml_helper.hxx"
+#include "xml_file_reader.hxx"
 #include "plt_xml.hxx"
 
 namespace Pingus {
@@ -37,103 +39,24 @@ PLTXML::~PLTXML ()
 void
 PLTXML::parse (std::string filename)
 {
-  doc = xmlParseFile(filename.c_str());
-  if (doc)
+  CL_DomDocument doc(new CL_InputSource_File(filename), true);
+  
+  CL_DomElement root = doc.get_document_element();
+
+  if (root.get_tag_name() != "pingus-level")
     {
-      parse_file();
-      xmlFreeDoc(doc);
+      PingusError::raise("Error: " + filename + ": not a <pingus-world> file");
     }
   else
     {
-      PingusError::raise("PLTXML: Couldn't load : " + filename);
-    }
-}
-
-void
-PLTXML::parse_description(xmlNodePtr cur)
-{
-  std::string desc;
-  std::string lang;
-
-  if (XMLhelper::node_list_get_string(doc, cur->children, 1, desc)) {
-    if (XMLhelper::get_prop(cur, "lang", lang))
-      description[lang] = desc;
-    else
-      description[default_language] = desc;
-  }
-}
-
-void
-PLTXML::parse_world_name (xmlNodePtr cur)
-{
-  std::string name;
-  std::string lang;
-
-  if (XMLhelper::node_list_get_string(doc, cur->children, 1, name))
-    {
-      if (XMLhelper::get_prop(cur, "lang", lang))
-	world_name[lang] = name;
-      else
-	world_name[default_language] = name;
-    }
-}
-
-void
-PLTXML::parse_level_list (xmlNodePtr cur)
-{
-  cur = cur->children;
-
-  while (cur)
-    {
-      if (XMLhelper::equal_str(cur->name, "level"))
-	{
-	  std::string name;
-	  if (XMLhelper::node_list_get_string(doc, cur->children, 1, name))
-	    {
-	      level_list.push_back(name);
-	    }
-	}
-      else
-	{
-	  std::cout << "PLTXML: Unhandled: " << cur->name << std::endl;
-	}
-      cur = cur->next;
-    }
-}
-
-void
-PLTXML::parse_file()
-{
-  xmlNodePtr cur = doc->ROOT;
-
-  if (cur && XMLhelper::equal_str(cur->name, "pingus-world"))
-    {
-      cur = cur->children;
-
-      while (cur)
-	{
-	  if (XMLhelper::equal_str(cur->name, "description"))
-	    {
-	      parse_description(cur);
-	    }
-	  else if (XMLhelper::equal_str(cur->name, "background"))
-	    {
-	      //parse_background(cur);
-	    }
-	  else if (XMLhelper::equal_str(cur->name, "world-name"))
-	    {
-	      parse_world_name(cur);
-	    }
-	  else if (XMLhelper::equal_str(cur->name, "level-list"))
-	    {
-	      parse_level_list(cur);
-	    }
-	  else
-	    {
-	      std::cout << "PLTXML: Unhandled: " << cur->name << std::endl;
-	    }
-	  cur = cur->next;
-	}
+      XMLFileReader reader(root);
+      reader.read_string("name",        world_name);
+      reader.read_string("description", description);
+      //reader.read_desc  ("background", background_desc);
+      
+      FileReader levelreader;
+      reader.read_section("level-list", levelreader);
+      /** FIXME: Insert code here for parsing <level> tags */
     }
 }
 
@@ -143,13 +66,13 @@ PLTXML::get_levels ()
   return level_list;
 }
 
-std::map<std::string,std::string>
+const std::string&
 PLTXML::get_name ()
 {
   return world_name;
 }
 
-std::map<std::string,std::string>
+const std::string&
 PLTXML::get_description ()
 {
 

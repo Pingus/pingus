@@ -20,34 +20,28 @@
 #ifndef HEADER_PINGUS_PLT_XML_HXX
 #define HEADER_PINGUS_PLT_XML_HXX
 
-#include <map>
-#include "xml_helper.hxx"
+#include <vector>
+#include <string>
 
 namespace Pingus {
 
 class PLTXML
 {
 private:
-  xmlDocPtr doc;
   std::vector<std::string> level_list;
-  std::map<std::string, std::string> world_name;
-  std::map<std::string, std::string> description;
+  std::string world_name;
+  std::string description;
 
   void parse_file();
-  void parse_background(xmlNodePtr cur);
-  void parse_description(xmlNodePtr cur);
-  void parse_world_name(xmlNodePtr cur);
-  void parse_level_list(xmlNodePtr cur);
-
+  
 public:
   PLTXML ();
   ~PLTXML ();
 
   void parse (std::string filename);
 
-  std::map<std::string,std::string> get_name ();
-  std::map<std::string,std::string> get_description ();
-  std::string get_surface () { return ""; }
+  const std::string& get_name ();
+  const std::string& get_description ();
   std::vector<std::string> get_levels ();
 
 private:
