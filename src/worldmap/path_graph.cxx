@@ -1,4 +1,4 @@
-//  $Id: path_graph.cxx,v 1.14 2002/10/15 23:56:17 grumbel Exp $
+//  $Id: path_graph.cxx,v 1.15 2002/10/16 09:14:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,6 +56,12 @@ PathGraph::PathGraph(WorldMap* arg_worldmap, xmlDocPtr doc, xmlNodePtr cur)
       cur = cur->next;
       cur = XMLhelper::skip_blank(cur);
     }
+
+  // Init the pathfinder cache
+  pathfinder_cache.resize(graph.max_node_handler_value());
+  for(PFinderCache::iterator i = pathfinder_cache.begin();
+      i != pathfinder_cache.end(); ++i)
+    *i = 0;
 }
 
 void
@@ -187,9 +193,14 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
 PathfinderResult
 PathGraph::get_path(NodeId start_id, NodeId end_id)
 {
-  // FIXME: This could get cached by the node
-  Pathfinder<Dot*, Path*> pathfinder(graph, start_id);
-  return pathfinder.get_result(end_id);
+  Pathfinder<Dot*,Path*>*& pfinder = pathfinder_cache[start_id];
+
+  if (!pfinder)
+    {
+      pfinder = new Pathfinder<Dot*, Path*>(graph, start_id);
+    }
+
+  return pfinder->get_result(end_id);
 }
 
 EdgeId

@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.16 2002/09/28 22:24:24 grumbel Exp $
+//  $Id: blitter.cxx,v 1.17 2002/10/16 09:14:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -630,6 +630,37 @@ Blitter::rotate_90 (const CL_Surface& sur)
   canvas->unlock ();
   prov->unlock ();
   return CL_Surface(canvas, true);
+}
+
+
+CL_Surface
+Blitter::rotate_180 (const CL_Surface& sur)
+{
+  return Blitter::rotate_90(Blitter::rotate_90(sur));
+}
+
+CL_Surface
+Blitter::rotate_270 (const CL_Surface& sur)
+{
+  return Blitter::rotate_90(Blitter::rotate_90(Blitter::rotate_90(sur)));
+}
+
+CL_Surface
+Blitter::rotate_90_flip (const CL_Surface& sur)
+{
+  return Blitter::flip_horizontal(Blitter::rotate_90(sur));
+}
+
+CL_Surface
+Blitter::rotate_180_flip (const CL_Surface& sur)
+{
+  return Blitter::flip_horizontal(Blitter::rotate_90(Blitter::rotate_90(sur)));
+}
+
+CL_Surface
+Blitter::rotate_270_flip (const CL_Surface& sur)
+{
+  return Blitter::flip_horizontal(Blitter::rotate_90(Blitter::rotate_90(Blitter::rotate_90(sur))));
 }
 
 /* EOF */

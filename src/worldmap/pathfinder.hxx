@@ -1,4 +1,4 @@
-//  $Id: pathfinder.hxx,v 1.10 2002/10/15 21:58:50 grumbel Exp $
+//  $Id: pathfinder.hxx,v 1.11 2002/10/16 09:14:45 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,6 +76,7 @@ private:
   std::vector<NodeStat>   stat_graph;
   
 public:
+  /** Find pathes to all other nodes, by starting from the node \a s */
   Pathfinder (Graph<T, C>& g, NodeId s)
     : graph (g), start (s), open_nodes(CostComp(*this))
   {

@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.18 2002/10/14 11:15:15 torangan Exp $
+//  $Id: pingus_resource.cxx,v 1.19 2002/10/16 09:14:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -183,22 +183,22 @@ PingusResource::apply_modifier (const CL_Surface& surf, const ResDescriptor& res
       return Blitter::rotate_90(surf);
 
     case ResourceModifierNS::ROT180:
-      return Blitter::rotate_90(Blitter::rotate_90(surf));
+      return Blitter::rotate_180(surf);
 
     case ResourceModifierNS::ROT270:
-      return Blitter::rotate_90(Blitter::rotate_90(Blitter::rotate_90(surf)));
+      return Blitter::rotate_270(surf);
 
     case ResourceModifierNS::ROT0FLIP:
       return Blitter::flip_horizontal(surf);
 
     case ResourceModifierNS::ROT90FLIP:
-      return Blitter::flip_horizontal(Blitter::rotate_90(surf));
+      return Blitter::rotate_90_flip(surf);
 
     case ResourceModifierNS::ROT180FLIP:
-      return Blitter::flip_horizontal(Blitter::rotate_90(Blitter::rotate_90(surf)));
+      return Blitter::rotate_180_flip(surf);
 
     case ResourceModifierNS::ROT270FLIP:
-      return Blitter::flip_horizontal(Blitter::rotate_90(Blitter::rotate_90(Blitter::rotate_90(surf))));
+      return Blitter::rotate_270_flip(surf);
 
     default:
       perr << "PingusResource: Unhandled modifier: " << res_desc.modifier << std::endl;

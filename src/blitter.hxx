@@ -1,4 +1,4 @@
-//  $Id: blitter.hxx,v 1.8 2002/09/27 11:26:43 torangan Exp $
+//  $Id: blitter.hxx,v 1.9 2002/10/16 09:14:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -86,6 +86,16 @@ public:
 
   /** Rotate a surface 90 degrees */
   static CL_Surface rotate_90 (const CL_Surface& sur);
+
+  static CL_Surface rotate_180 (const CL_Surface& sur);
+
+  static CL_Surface rotate_270 (const CL_Surface& sur);
+
+  static CL_Surface rotate_90_flip (const CL_Surface& sur);
+
+  static CL_Surface rotate_180_flip (const CL_Surface& sur);
+
+  static CL_Surface rotate_270_flip (const CL_Surface& sur);
 
   /** Creates a new canvas with the given width and height and
       stretches the source surface onto it, the caller is responsible

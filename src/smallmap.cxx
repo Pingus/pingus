@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.24 2002/10/14 11:15:15 torangan Exp $
+//  $Id: smallmap.cxx,v 1.25 2002/10/16 09:14:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -243,7 +243,7 @@ SmallMap::draw_pingus ()
 void
 SmallMap::update (float delta)
 {
-  float smallmap_update_time = 2.0f;
+  float smallmap_update_time = 1.0f;
 
   update_count += delta;
 

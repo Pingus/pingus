@@ -1,4 +1,4 @@
-//  $Id: path_graph.hxx,v 1.6 2002/10/15 19:13:33 grumbel Exp $
+//  $Id: path_graph.hxx,v 1.7 2002/10/16 09:14:45 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,6 +45,8 @@ public:
   Graph<Dot*, Path*> graph;
 
   std::vector<Dot*> dots;
+  typedef std::vector<Pathfinder<Dot*, Path*>* > PFinderCache;
+  PFinderCache pathfinder_cache;
 private:
 
   // FIXME: This could/should probally be moved inside the graph (or not?!)
