@@ -1,4 +1,4 @@
-//  $Id: col_map.cxx,v 1.9 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: col_map.cxx,v 1.10 2002/09/17 16:23:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,26 +29,21 @@
 #include <config.h>
 #include "my_gettext.hxx"
 
-ColMap::ColMap() 
-  : init(false)
-{
-}
-
 // Obtain the colmap from a memory area
-ColMap::ColMap(unsigned char* b, int w, int h)
+ColMap::ColMap(int w, int h)
+  : width(w),
+    height(h),
+    colmap(new unsigned char[width * height])
 {
-  init = true;
-  colmap = b;
-  width = w;
-  height = h;
 }
 
 ColMap::~ColMap()
 {
-  std::cout << "ColMap:~ColMap" << std::endl;
+  //std::cout << "ColMap:~ColMap" << std::endl;
   delete[] colmap;
 }
 
+#if 0
 int
 ColMap::load(ResDescriptor desc)
 {
@@ -90,12 +85,11 @@ ColMap::load(ResDescriptor desc)
   
   return 0; // never reached
 }
+#endif
 
 int
 ColMap::getpixel(int x, int y)
 {
-  assert(init);
-
   if (x >= 0 && x < width && y >= 0 && y < height) {
     return colmap[x+y*width];
   } else {
@@ -207,6 +201,7 @@ ColMap::put(int x, int y, Groundtype::GPType p)
     }
 }
 
+#if 0
 int
 ColMap::load(unsigned char* b, int w, int h)
 {
@@ -223,7 +218,7 @@ ColMap::load(unsigned char* b, int w, int h)
       return 0;
     }
 }
-
+#endif
 bool
 ColMap::blit_allowed (int x, int y,  Groundtype::GPType gtype)
 {

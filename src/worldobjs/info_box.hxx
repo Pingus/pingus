@@ -1,4 +1,4 @@
-//  $Id: info_box.hxx,v 1.11 2002/09/14 19:06:34 torangan Exp $
+//  $Id: info_box.hxx,v 1.12 2002/09/17 16:23:30 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,8 +32,9 @@ namespace WorldObjs {
 class InfoBox : public WorldObj
 {
 private:
-  bool is_open;
   WorldObjsData::InfoBoxData* const data;
+  Sprite sprite;
+  bool is_open;
 
 public:
   InfoBox (WorldObjsData::InfoBoxData* data_);

@@ -1,4 +1,4 @@
-//  $Id: col_map.hxx,v 1.7 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: col_map.hxx,v 1.8 2002/09/17 16:23:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,31 +35,25 @@ class CL_SurfaceProvider;
 class ColMap
 {
 private:
-  /// A array of uchar, each uchar represents a pixel on the map.
-  unsigned char* colmap;
-
-  /// The width of the collision map.
+  /** The width of the collision map. */
   int    width;
 
-  /// The height of the collision map.
+  /** The height of the collision map. */
   int   height;
-
-  ///
-  bool    init;
   
-public:
-  /// Default constructor, it does nothing
-  ColMap();
+  /** A array of uchar, each uchar represents a pixel on the map. */
+  unsigned char* colmap;
 
+public:
   /** Init the colmap from a given area of memory.
       The memory will be deleted in the destructor. */
-  ColMap(unsigned char* b, int w, int h);
+  ColMap(int w, int h);
 
   /** delete[] the uchar array used for the colmap */
   ~ColMap();
 
   /** Returns the raw uchar array used for the inner representation of
-      the colmap. */
+      the colmap. This is used by the smallmap to create the radar  */
   unsigned char* get_data();
 
   /** Returns the height of the collision map. */
@@ -67,11 +61,6 @@ public:
 
   /** Returns the height of the collision map. */
   int get_width();
-
-  ///
-  int  load(unsigned char*, int w, int h);
-
-  int  load(ResDescriptor desc);
 
   int  getpixel(int x, int y);
   

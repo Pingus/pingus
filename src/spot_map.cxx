@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.16 2002/09/17 01:03:59 grumbel Exp $
+//  $Id: spot_map.cxx,v 1.17 2002/09/17 16:23:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -104,53 +104,17 @@ MapTileSurface::check_empty()
 
 PingusSpotMap::PingusSpotMap(PLF* plf)
 {
-  colmap = 0;
-  load(plf);
-#ifndef NEW_GROUNDPIECES
-  gen_tiles();
-#endif
-}
-
-PingusSpotMap::~PingusSpotMap(void)
-{
-  std::cout << "PingusSpotMap:~PingusSpotMap" << std::endl;
-  std::cout << "Trying to delete the map..." << std::flush;
-
-  delete map_canvas;
-  delete colmap;
-
-  std::cout << "finished" << std::endl;
-}
-
-void
-PingusSpotMap::gen_tiles(void)
-{
-  Timer timer;
-
-  timer.start();
-
-  if (verbose) std::cout << "PingusSpotMap: Generating Tiles..." << std::flush;
-
-  if (verbose > 1) 
-    {
-      std::cout << "PingusSpotMap_TilewWidth: " << width / tile_size << std::endl;
-      std::cout << "PingusSpotMap_TilewHeight: " << height / tile_size << std::endl;
-    }  
-  
-   create_maptiles();
-
-  if (verbose) std::cout << " done " << timer.stop() << std::endl;    
-}
-
-void
-PingusSpotMap::load(PLF* plf)
-{
   width  = plf->get_width();
   height = plf->get_height();
+
+  colmap = new ColMap(width, height);
 
   // Checking that the map has the correct size, only multiples of
   // tile_size are allowed, anything else wouldn't fit very well on
   // the colmap
+
+  // FIXME: This is dirty cruft, the engine should be able to handle
+  // FIXME: all world_sizes and simply display the tiles partly
   if ((width % tile_size) != 0) 
     {
       std::cout << "Warrning: Width is not a multible of " << tile_size << std::endl;
@@ -169,67 +133,11 @@ PingusSpotMap::load(PLF* plf)
   tile.resize(width/tile_size);
   for(TileIter i=0; i < tile.size(); ++i) 
     tile[i].resize(height/tile_size);
-  
-  surfaces = plf->get_groundpieces();
-
-#ifndef NEW_GROUNDPIECES
-  for (vector<GroundpieceData>::iterator i = surfaces.begin();
-       i != surfaces.end();
-       ++i) // WIN32BUG
-    {
-      i->surface = PingusResource::load_surface(i->desc);
-    }
-  create_map();
-#endif
-
 }
 
-void
-PingusSpotMap::create_map()
+PingusSpotMap::~PingusSpotMap(void)
 {
-  // Allocating the map provider
-  map_canvas = new CL_Canvas(width, height);
-  
-  // Is clearing the canvas really needed, or am I just work around
-  // another bug...?
-  Blitter::clear_canvas(map_canvas);
-  
-  // Drawing all surfaces to the provider
-  for(std::vector<GroundpieceData>::iterator i = surfaces.begin(); 
-      i != surfaces.end(); 
-      ++i)
-    {
-      mark_tiles_not_empty((int) i->pos.x, (int) i->pos.y,
-			   i->surface.get_width(), i->surface.get_height());
-      // test cause png
-      if (i->surface.get_provider()->get_depth() == 8)
-	{
-	  if (i->gptype == Groundtype::GP_REMOVE)
-	    {
-	      Blitter::put_alpha_surface(map_canvas, i->surface.get_provider (),
-					 (int) i->pos.x, (int) i->pos.y);
-	    }
-	  else
-	    {
-	      mark_tiles_not_empty((int) i->pos.x, (int) i->pos.y,
-				   i->surface.get_width(), i->surface.get_height());
-	      // FIXME: Replace this with a ClanLib built in
-	      //i->surface->put_target(i->pos.x_pos, i->pos.y_pos, 0, map_canvas);
-	      Blitter::put_surface(map_canvas, i->surface,
-				   (int) i->pos.x, (int) i->pos.y);
-	      }
-	}
-      else
-	{
-	  Blitter::put_surface(map_canvas, i->surface,
-			       (int) i->pos.x, (int) i->pos.y);
-	  //i->surface->put_target(i->pos.x_pos, i->pos.y_pos, 0, map_canvas);
-	}
-    }
-
-  // Generate the map surface
-  map_surface = CL_Surface (map_canvas);
-  //  std::cout << " done " << timer.stop() << std::endl;
+  delete colmap;
 }
 
 void
@@ -246,7 +154,7 @@ PingusSpotMap::draw(GraphicContext& gc)
   //<< " w: " << w << " h: " << h << " s: " << s << std::endl;
   
 #if 0
-  { // calculate number of tiles
+  { // calculate number of used/empty tiles
     int tiles_total = 0;
     int tiles_empty = 0;
     int tiles_used  = 0;
@@ -514,104 +422,7 @@ PingusSpotMap::put(CL_SurfaceProvider* sprovider, int x, int y)
 ColMap*
 PingusSpotMap::get_colmap(void)
 {
-  Timer timer;
-
-  if (colmap) 
-    {
-      return colmap;
-    } 
-  else 
-    {
-      if (verbose) {
-	std::cout << "PingusSpotMap: Starting ColMap creation..." << std::endl;
-      }
-      unsigned char* buffer;
-      
-      // Allocate the space for the colmap buffer
-      // But don't delete it, since the ColMap will do that.
-      buffer = new unsigned char[width * height];
-      
-      if (verbose) {
-	timer.start();
-	std::cout << "PingusSpotMap: Clearing ColMap buffer..." << std::flush;
-      }
-      for(int i=0; i < width * height; ++i) 
-	{
-	  buffer[i] = Groundtype::GP_NOTHING;
-	}
-      
-      if (verbose) std::cout << "done " << timer.stop() << std::endl;
-
-      // Create a empty ColMap
-      colmap = new ColMap(buffer, width, height);
-      
-      if (verbose) {
-	timer.start();
-	std::cout << "PingusSpotMap: Generating Colision Map..." << std::flush;
-      }
-
-#ifndef NEW_GROUNDPIECES
-      for(std::vector<GroundpieceData>::iterator i2 = surfaces.begin();
-	  i2 != surfaces.end(); 
-	  i2++) 
-	{
-	  if (i2->gptype == Groundtype::GP_REMOVE)
-	    colmap->remove(i2->surface.get_provider (), (int) i2->pos.x, (int) i2->pos.y);
-	  else
-	    colmap->put(i2->surface, (int) i2->pos.x, (int) i2->pos.y, i2->gptype);
-	}
-#endif      
-      if (verbose)
-	std::cout << "done " << timer.stop() << std::endl;
-      
-      return colmap;
-    }
-}
-
-CL_Surface
-PingusSpotMap::get_surface(void)
-{
-  std::cout << "PingusSpotMap::get_surface() not supported" << std::endl;
-  return map_surface;
-}
-
-void
-PingusSpotMap::create_maptiles()
-{
-  CL_Canvas* canvas;
-
-  for(TileIter x=0; x < tile.size(); ++x) 
-    {
-      for(TileIter y=0; y < tile[x].size(); ++y) 
-	{
-	  if (!tile[x][y].is_empty())
-	    {
-	      canvas = new CL_Canvas(tile_size, tile_size);
-	      Blitter::clear_canvas(canvas);
-	      //map_surface->put_target(-x * tile_size, -y * tile_size, 0, canvas);
-	      Blitter::put_surface(canvas, map_surface, -x * tile_size, -y * tile_size);
-	      tile[x][y].surface = CL_Surface (canvas, true);
-	    }
-	}
-    }
-}
-
-void
-PingusSpotMap::mark_tiles_not_empty(int x_pos, int y_pos, int sur_width, int sur_height)
-{
-	int start_x = Math::max(0, x_pos / tile_size);
-	int start_y = Math::max(0, y_pos / tile_size);
-  int stop_x  = Math::min(width / tile_size,  (x_pos + sur_width - 1) / tile_size + 1);
-  int stop_y  = Math::min(height / tile_size, (y_pos + sur_height - 1) / tile_size + 1);
-
-  //cout << "X: " << start_x << " Y: " << start_y << endl;
-  //cout << "stop_X: " << stop_x << " stop_Y: " << stop_y << endl;
-
-  for(int y = start_y; y < stop_y; ++y) {
-    for(int x = start_x; x < stop_x; ++x) {
-      tile[x][y].set_empty(false);
-    }
-  }
+  return colmap;
 }
 
 /* EOF */

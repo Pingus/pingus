@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.20 2002/09/17 01:03:59 grumbel Exp $
+//  $Id: xml_plf.cxx,v 1.21 2002/09/17 16:23:30 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -111,9 +111,13 @@ XMLPLF::parse_file()
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "groundpiece"))
 	    {
-#ifdef NEW_GROUNDPIECES
+#ifndef OLD_GROUNDPIECES
 	      // FIXME: This is *not* backward compatible and wreck the levels
-	      worldobjs_data.push_back(WorldObjDataFactory::instance()->create (doc, cur));
+	      // worldobjs_data.push_back(WorldObjDataFactory::instance()->create (doc, cur));
+
+	      // This probally is backward compatible
+	      //groundpieces.push_back(WorldObjsData::GroundpieceData (doc, cur));
+	      worldobjs_data.push_back(new WorldObjsData::GroundpieceData (doc, cur));
 #else
 	      parse_groundpiece(cur);
 #endif

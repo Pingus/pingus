@@ -1,4 +1,4 @@
-//  $Id: spot_map.hxx,v 1.6 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: spot_map.hxx,v 1.7 2002/09/17 16:23:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,15 +61,12 @@ private:
 
   typedef std::vector<MapTileSurface>::size_type TileIter;
 
-  std::vector<WorldObjsData::GroundpieceData> surfaces;
-
-  CL_Canvas* provider;
-  CL_Surface map_surface;
-  CL_Canvas* map_canvas;
-
+  /** The tiles out of which the map is constructed */
   std::vector<std::vector<MapTileSurface> > tile;
 
+  /** Width of the map */
   int width;
+  /** Height of the map */
   int height;
 
 public:
@@ -78,25 +75,26 @@ public:
 
   void draw(GraphicContext& gc);
 
-  void generate_colmap();
   ColMap* get_colmap();
-  void load(PLF* plf);
-  void gen_tiles();
 
-  int  get_height(void);
-  int  get_width(void);
-  CL_Surface get_surface(void);
-  void remove(CL_SurfaceProvider*, int, int);
-  void put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
-			 int x, int y, int real_x, int real_y);
-  void put(CL_SurfaceProvider*, int, int);
-  void create_maptiles();
-  void create_map();
-  void mark_tiles_not_empty(int, int, int, int);
+  int  get_height();
+  int  get_width();
+  
+  /** Put the gives surface provider onto the given coordinates */
+  void put(CL_SurfaceProvider*, int x, int y);
+
+  /** Remove the gives surface provider onto the given coordinates
+      (everything non-transparent is removed from the map) */
+  void remove(CL_SurfaceProvider*, int x, int y);
 
   float get_z_pos () const { return 0; }
   
 private:
+  /** Low level version of the remove() call, acts on a single canvas
+      instead on the complete map-tiles */
+  void put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
+			 int x, int y, int real_x, int real_y);
+
   /** Draw the collision map onto the screen */
   void draw_colmap(GraphicContext& gc);
 

@@ -1,4 +1,4 @@
-//  $Id: info_box_data.hxx,v 1.1 2002/09/14 13:35:38 torangan Exp $
+//  $Id: info_box_data.hxx,v 1.2 2002/09/17 16:23:30 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,6 @@ public:
   CL_Vector pos;
   CL_Vector text_pos;
   Sprite    sprite;
-  CL_Font*  font;
 
 public:
   InfoBoxData ();

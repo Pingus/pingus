@@ -1,4 +1,4 @@
-//  $Id: info_box.cxx,v 1.13 2002/09/14 19:06:34 torangan Exp $
+//  $Id: info_box.cxx,v 1.14 2002/09/17 16:23:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../graphic_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
+#include "../fonts.hxx"
 #include "../world.hxx"
 #include "../worldobjsdata/info_box_data.hxx"
 #include "info_box.hxx"
@@ -30,9 +31,11 @@
 namespace WorldObjs {
 
 InfoBox::InfoBox (WorldObjsData::InfoBoxData* data_)
-  : is_open (false),
-    data(new WorldObjsData::InfoBoxData(*data_))
+  : data(new WorldObjsData::InfoBoxData(*data_)),
+    sprite("infobox", "worldobjs"),
+    is_open (false)
 {
+  sprite.set_align_center_bottom ();
 }
 
 InfoBox::~InfoBox ()
@@ -51,16 +54,16 @@ InfoBox::draw (GraphicContext& gc)
 
   if (is_open)
     {
-      int width = data->font->get_text_width(data->info_text.c_str());
+      int width = Fonts::pingus_small->get_text_width(data->info_text.c_str());
       int border = 6;
       gc.draw_line(data->pos, data->pos + CL_Vector(0, 0 - 100), 0.0f, 1.0f, 0.0f, 1.0f);
       gc.draw(data->sprite, data->pos);
       CL_Display::fill_rect(x_pos - width/2 - border,
                             y_pos - border,
 			    x_pos + width/2 + border,
-			    y_pos + data->font->get_height() + border,
+			    y_pos + Fonts::pingus_small->get_height() + border,
 			    0.0, 0.0, 0.0, 1.0);
-      data->font->print_center(x_pos, y_pos, data->info_text.c_str()); 
+      gc.print_center(Fonts::pingus_small, x_pos, y_pos, data->info_text.c_str()); 
     }
   else
     {
