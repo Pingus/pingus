@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.hxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: groundpiece_data.hxx,v 1.2 2002/06/20 11:07:45 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef GROUNDPIECEDATA_HH
 #define GROUNDPIECEDATA_HH
 
+#include <iofwd>
 #include <ClanLib/Core/Math/cl_vector.h>
 #include <ClanLib/Display/Display/surface.h>
 
