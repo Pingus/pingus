@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.hh,v 1.9 2000/06/21 15:28:28 grumbel Exp $
+//  $Id: ThemeSelector.hh,v 1.10 2000/06/21 20:29:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,8 +44,7 @@ public:
   void draw_offset(int x, int y);
   ///
   bool mouse_over();
-}///
-;
+};
 
 ///
 class ListBox
@@ -62,8 +61,7 @@ public:
   void add_item(std::string);
   ///
   void draw_offset(int x, int y);
-}///
-;
+};
 
 ///
 class ThemeSelector
@@ -110,6 +108,8 @@ private:
   CL_Surface* right_arrow;
   /// The red arrow to the left
   CL_Surface* left_arrow;
+  /// The back button
+  CL_Surface* back;
 
   ///
   bool dir_read;

@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.hh,v 1.6 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: OptionMenu.hh,v 1.7 2000/06/21 20:29:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,7 +60,7 @@ public:
 }///
 ;
 
-///
+/** F***ing, stupid, ugly option menu, need to rewrite that... */
 class OptionMenu
 {
 private:
@@ -71,7 +71,7 @@ private:
   ///
   CL_Surface* background;
   ///
-  CL_Surface* cursor_sur;
+  CL_Surface* back;
   ///
   bool quit;
   ///
@@ -93,8 +93,7 @@ private:
     virtual bool on_button_press(CL_InputDevice *device, const CL_Key &key);
     ///
     virtual bool on_button_release(CL_InputDevice *device, const CL_Key &key);
-  }///
-;
+  };
   ///
   friend class Event;
   ///
@@ -124,8 +123,7 @@ public:
   void add_entry(std::string e, int* v);
   ///
   void add_entry(std::string e, std::string* v);
-}///
-;
+};
 
 ///
 extern OptionMenu option_menu;

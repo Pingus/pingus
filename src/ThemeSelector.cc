@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.20 2000/06/21 15:28:28 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.21 2000/06/21 20:29:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -121,7 +121,7 @@ ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
       int tmp_level;
       switch (key.id)
 	{
-	case 0:
+	case 0: // Left mouse button
 	  tmp_level = theme_selector->mark_level_at_point(key.x, key.y);
 	  if (tmp_level != -1) 
 	    {
@@ -151,7 +151,15 @@ ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 		    theme_selector->current_theme = theme_selector->themes.end();
 		  theme_selector->current_theme--;
 		}
+	      else if (key.x < theme_selector->back->get_width()
+		       && key.y < theme_selector->back->get_height())
+		{
+		  theme_selector->finished = true;
+		}
 	    }
+	  break;
+	case 1: // Middle mouse
+	  theme_selector->finished = true;	  
 	  break;
 	default:
 	  break;
@@ -181,6 +189,7 @@ ThemeSelector::ThemeSelector()
 
   left_arrow = CL_Surface::load("Hotspots/left_arrow", PingusResource::get("global.dat"));
   right_arrow = CL_Surface::load("Hotspots/right_arrow", PingusResource::get("global.dat"));
+  back = CL_Surface::load("Buttons/back", PingusResource::get("menu.dat"));
 
   event = new ThemeSelector::Event;
   event->enabled = false;
@@ -260,7 +269,8 @@ ThemeSelector::draw()
   left_arrow->put_screen(0, (CL_Display::get_height() - left_arrow->get_height()) / 2);
   right_arrow->put_screen(CL_Display::get_width() - right_arrow->get_width(),
 			  (CL_Display::get_height() - right_arrow->get_height()) / 2);
-  
+  back->put_screen(0, 0);
+
   theme_font->print_center(CL_Display::get_width()/2, CL_Display::get_height() - 50,
 			   "..:: Use the cursor keys to select a level ::..");
 
