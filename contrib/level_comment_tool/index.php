@@ -116,10 +116,16 @@ ksort( $cathegories );
 // ==================================================================
 if  ( !isset($_GET["l"]) || !isset($_GET["c"]) )
 {
-  if ( $show_thumbs )
-    print "<a href='$PHP_SELF?showthumbs=0'>[hide thumbnails]</a></br>";
+  if ( !isset($_GET["c"]) )
+    $showCath = '';
   else
-    print "<a href='$PHP_SELF?showthumbs=1'>[show thumbnails]</a></br>";
+    $showCath = '&c=' . $_GET["c"];
+       	
+  if ( $show_thumbs )
+  	print "<a href='$PHP_SELF?showthumbs=0$showCath'>[hide thumbnails]</a></br>";
+      
+  else
+    print "<a href='$PHP_SELF?showthumbs=1$showCath'>[show thumbnails]</a></br>";
 
   if ( !isset($_GET["c"]))
   {
