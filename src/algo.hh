@@ -1,4 +1,4 @@
-//  $Id: algo.hh,v 1.5 2000/03/12 01:56:56 grumbel Exp $
+//  $Id: algo.hh,v 1.6 2000/04/09 17:28:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,14 @@
 // This file contains different algorithmens and other usefull
 // routines which are completly indepentantly of the game.
 #define frand() ((double) rand() / (RAND_MAX+1.0))
+
+#undef MIN
+#undef MAX
+#undef MID
+
+#define MIN(x,y)     (((x) < (y)) ? (x) : (y))
+#define MAX(x,y)     (((x) > (y)) ? (x) : (y))
+#define MID(x,y,z)   MAX((x), MIN((y), (z)))
 
 bool rect_col(int ax1, int ax2, int ay1, int ay2,
               int bx1, int bx2, int by1, int by2);
