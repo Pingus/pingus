@@ -1,0 +1,757 @@
+# Pingus - Serbest Lemmings Benzeri Program
+# Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+# Ingo Ruhnke <grumbel@gmx.de>, 2000
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Pingus 0.5.0\n"
+"POT-Creation-Date: 2001-11-30 07:59+0100\n"
+"PO-Revision-Date: 2001-10-16 20:45+02:00\n"
+"Last-Translator: Giray Devlet <giray@devlet.cc>\n"
+"Language-Team: Giray Devlet <giray@devlet.cc>, Caðrý Çöltekin <cagri@metu."
+"edu.tr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-9\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/blitter.cc:93
+#, c-format
+msgid "Couldn't find palette: %d"
+msgstr ""
+
+#. The credits vector holds the strings to display. The first
+#. character of each string is a special character, which indicates
+#. the size of the font or other special stuff. "-" means large
+#. font, "_" is a small font and "n" means a newline.
+#: src/Credits.cc:52
+msgid "_If I forgot somebody in this"
+msgstr "_Eðer birisini unutuysam,"
+
+#: src/Credits.cc:53
+msgid "_list, just drop me a line and"
+msgstr "_lütfen bana haber verin."
+
+#: src/Credits.cc:54
+msgid "_I'll fix this."
+msgstr "_Hemen düzeltirim."
+
+#: src/Credits.cc:55
+msgid "_Last Updated: 2000/06/27"
+msgstr "_Son Deðiþiklik: 2000/06/27"
+
+#: src/Credits.cc:56
+msgid "n"
+msgstr "n"
+
+#: src/Credits.cc:58
+msgid "-Programming"
+msgstr "-Programlama"
+
+#: src/Credits.cc:64
+msgid "-Gfx"
+msgstr "-Grafikler"
+
+#: src/Credits.cc:72
+msgid "-Music"
+msgstr "-Müzik"
+
+#: src/Credits.cc:77
+msgid "-Special"
+msgstr "-Özel"
+
+#: src/Credits.cc:78
+msgid "-Thanks to"
+msgstr "-Þükranlarýmýz"
+
+#: src/editor/EditorEvent.cc:552
+msgid "Enter filename to save as (without .plf!)"
+msgstr "Dosyayý ne olarak kayit edelim : "
+
+#: src/editor/ObjectSelector.cc:82
+msgid "1 - guillotine"
+msgstr "1 - Keser"
+
+#: src/editor/ObjectSelector.cc:83
+msgid "2 - hammer"
+msgstr "2 - Çekiç"
+
+#: src/editor/ObjectSelector.cc:84
+msgid "3 - spike"
+msgstr "3 - Ýðne"
+
+#: src/editor/ObjectSelector.cc:85
+msgid "4 - laser_exit"
+msgstr "4 - Laser Çýkýþ"
+
+#: src/editor/ObjectSelector.cc:86
+msgid "5 - fake_exit"
+msgstr "5 - Yalancý Çýkýþ"
+
+#: src/editor/ObjectSelector.cc:87
+msgid "6 - smasher"
+msgstr "6 - Ezici"
+
+#: src/editor/ObjectSelector.cc:88
+msgid "7 - bumper"
+msgstr "7 - Ýtici"
+
+#: src/editor/ObjectSelector.cc:175
+msgid "Select a WorldObj"
+msgstr "Bir WorldObj seç"
+
+#: src/editor/ObjectSelector.cc:176
+msgid "1 - teleporter"
+msgstr "1 - Iþýnlayýcý"
+
+#: src/editor/ObjectSelector.cc:177
+msgid "2 - switch and door"
+msgstr "2 - Þalter ve Kapý"
+
+#: src/editor/ObjectSelector.cc:178
+msgid "3 - ConveyorBelt"
+msgstr "3 - YürüyenBant"
+
+#: src/editor/ObjectSelector.cc:179
+msgid "4 - IceBlock"
+msgstr "4 - BuzBloðu"
+
+#: src/editor/ObjectSelector.cc:214
+msgid "Select a weather"
+msgstr "Hava durumunu seç"
+
+#: src/editor/ObjectSelector.cc:215
+msgid "1 - snow"
+msgstr "1 - Kar"
+
+#: src/editor/ObjectSelector.cc:216
+msgid "2 - rain"
+msgstr "2 - Yaðmur"
+
+#: src/editor/ObjectSelector.cc:247
+msgid "Select an entrance"
+msgstr "Bir çýkýþ seç"
+
+#: src/editor/ObjectSelector.cc:248
+msgid "1 - generic"
+msgstr "1 - Genel"
+
+#: src/editor/ObjectSelector.cc:249
+msgid "2 - woodthing"
+msgstr "2 - Ahþap"
+
+#: src/editor/ObjectSelector.cc:250
+msgid "3 - cloud"
+msgstr "3 - Bulut"
+
+#: src/editor/ObjectSelector.cc:322
+#, fuzzy
+msgid "What object type do you want?"
+msgstr "Hangi nesneyi istiyorsun?"
+
+# buna daha iyi biþi uydurabiliyormusun?  -gd
+#: src/editor/ObjectSelector.cc:323 src/editor/ObjectSelector.cc:383
+msgid "h - Hotspot"
+msgstr "h - GrafikParçasý"
+
+#: src/editor/ObjectSelector.cc:324 src/editor/ObjectSelector.cc:378
+msgid "g - Groundpiece (ground)"
+msgstr "g - Yer (ground)"
+
+#: src/editor/ObjectSelector.cc:376
+msgid "Which object do you want?"
+msgstr "Hangi nesneyi istiyorsun?"
+
+#: src/editor/ObjectSelector.cc:377
+msgid "t - Trap"
+msgstr "t - Tuzak"
+
+#: src/editor/ObjectSelector.cc:379
+msgid "s - Groundpiece (solid)"
+msgstr "s - YerParçasi (solid)"
+
+#: src/editor/ObjectSelector.cc:380
+msgid "b - Groundpiece (bridge)"
+msgstr "b - Köprü (bridge)"
+
+#: src/editor/ObjectSelector.cc:381
+msgid "n - Groundpiece (transparent)"
+msgstr "n - YerParçasý (transparan)"
+
+#: src/editor/ObjectSelector.cc:382
+msgid "r - Groundpiece (remove)"
+msgstr "r - YerParçasý (sil)"
+
+#: src/editor/ObjectSelector.cc:384
+msgid "e - Entrance"
+msgstr "e - Giriþ"
+
+#: src/editor/ObjectSelector.cc:385
+#, fuzzy
+msgid "x - Exit"
+msgstr "x - Bitir"
+
+#: src/editor/ObjectSelector.cc:386
+msgid "l - Liquid"
+msgstr "l - Sývý"
+
+#: src/editor/ObjectSelector.cc:387
+msgid "w - Weather"
+msgstr "w - Ýklim"
+
+#: src/editor/ObjectSelector.cc:388
+msgid "o - WorldObject"
+msgstr "o - DünyaNesnesi"
+
+#: src/editor/ObjectSelector.cc:389
+msgid "f - something from file (~/.pingus/images/)"
+msgstr "f - dosyadan (~/.pingus/images/)"
+
+#: src/editor/PanelIcons.cc:26
+#, fuzzy
+msgid "Load a level (F5)"
+msgstr "Seviye yükle"
+
+#: src/editor/PanelIcons.cc:39
+#, fuzzy
+msgid "Exit the editor (Escape)"
+msgstr "Editörden çýk"
+
+#: src/editor/PanelIcons.cc:51
+#, fuzzy
+msgid "Save this level (F6)"
+msgstr "Seviyeyi kayýt et"
+
+#: src/editor/PanelIcons.cc:63
+msgid "Delete marked objects"
+msgstr "Seçili nesneleri sil"
+
+#: src/editor/PanelIcons.cc:75
+#, fuzzy
+msgid "Duplicate current object (d)"
+msgstr "Seçili nesneleri çiftle"
+
+#: src/editor/PanelIcons.cc:87
+msgid "Edit Properties (not implemented)"
+msgstr "Nesne özellikleri (daha geliþtirilmedi)"
+
+#: src/editor/PanelIcons.cc:93
+msgid "Edit Preferences (not implemented)"
+msgstr "Tercihleri ayarla (daha geliþtirilmedi)"
+
+#: src/editor/PanelIcons.cc:112
+#, fuzzy
+msgid "Start the level and test it (F4)"
+msgstr "Seviyeyi baþlat"
+
+#: src/editor/PanelIcons.cc:124
+msgid "Create a new level from scratch"
+msgstr "Sýfýrdan yeni bir seviye yarat"
+
+#: src/editor/PanelIcons.cc:136
+#, fuzzy
+msgid "Insert an object (Insert)"
+msgstr "Nesne ekle"
+
+#: src/editor/PanelIcons.cc:148
+msgid "Zoom into a region"
+msgstr "bir alaný yaklaþtýr"
+
+#: src/editor/PanelIcons.cc:160
+msgid "Zoom in"
+msgstr "Yaklaþtýr"
+
+#: src/editor/PanelIcons.cc:172
+msgid "Zoom out"
+msgstr "Uzaklaþtýr"
+
+#: src/FPSCounter.cc:44
+msgid "unknown"
+msgstr "bilinmeyen"
+
+#: src/GenericMain.cc:71
+msgid "Starting Pingus "
+msgstr "Pingus baþlatýlýyor "
+
+#: src/Intro.cc:66 src/Intro.cc:123
+#, fuzzy
+msgid "..:: Press Start ::.."
+msgstr "..:: Güle güle... ::.."
+
+#: src/Intro.cc:107
+#, fuzzy
+msgid "Start menu"
+msgstr "Baþla"
+
+#: src/OptionMenu.cc:84
+#, fuzzy
+msgid "on"
+msgstr "açýk"
+
+#: src/OptionMenu.cc:86
+msgid "off"
+msgstr "kapalý"
+
+#: src/OptionMenu.cc:102 src/OptionMenu.cc:114
+msgid "Not implemented"
+msgstr "Daha gerçekleþtirilmedi"
+
+#: src/OptionMenu.cc:147
+msgid "OptionMenu::Event: Unknown key released: id="
+msgstr "OptionMenu::Event: Bilinmeyen tuþ býrakýldý: id="
+
+#: src/OptionMenu.cc:156
+msgid "Button 0 pressed"
+msgstr ""
+
+#: src/OptionMenu.cc:160
+msgid "Button 1 pressed"
+msgstr ""
+
+#: src/OptionMenu.cc:163
+msgid "Button 2 pressed"
+msgstr ""
+
+#: src/OptionMenu.cc:166
+msgid "OptionMenu::Event: Unknown mouse button released: id="
+msgstr ""
+
+# bunu bilemedim -cagri
+# -gd ->
+#  gimmick : CAZÝBEARTIRICISÜS  der bi on-line sözlük ... türkçe mi lan bu?
+# sonra 
+#   gimmick : (dikkat çekmek için yapýlan) hile
+#   gimmick : numara
+#  ekstra bir özellik olarak biliyorum ben ...
+#. Bool options
+#: src/OptionMenu.cc:207
+msgid "Gimmicks"
+msgstr "Ekstralar"
+
+#: src/OptionMenu.cc:208
+msgid "Unlimited Actions"
+msgstr "Sýnýrsýz Eylem"
+
+#: src/OptionMenu.cc:209
+msgid "Print fps"
+msgstr "FPS yazdýr"
+
+#.  add_entry("Debug actions", &debug_actions);  
+#: src/OptionMenu.cc:211
+msgid "Cursor enabled"
+msgstr "Ýmleç etkin"
+
+#: src/OptionMenu.cc:212
+msgid "Fast Mode"
+msgstr "Hýzlý Kip"
+
+#. add_entry(_("Pingus Datadir"), &pingus_datadir);
+#: src/OptionMenu.cc:214
+msgid "Game Speed"
+msgstr "Oyun Hýzý"
+
+#: src/OptionMenu.cc:215
+msgid "Verbose"
+msgstr "Ayrýntýlý mesaj"
+
+#: src/OptionMenu.cc:216
+#, fuzzy
+msgid "Music"
+msgstr "Müzik"
+
+#: src/OptionMenu.cc:217
+#, fuzzy
+msgid "Sound"
+msgstr "Ses: "
+
+#: src/OptionMenu.cc:218
+msgid "Level Previews"
+msgstr "Seviye Önizleme"
+
+#: src/OptionMenu.cc:219
+msgid "Draw ColMap"
+msgstr "RenkHaritasi Çiz"
+
+#: src/OptionMenu.cc:220
+msgid "Horizontal Button Panel"
+msgstr "Yatay buton paneli"
+
+#. add_entry(_("Debug GameTime"), &debug_game_time);
+#. add_entry(_("Debug Tiles"), &debug_tiles);
+#: src/OptionMenu.cc:223
+msgid "Auto Scrolling"
+msgstr "Otomatik Kaydýrma"
+
+#. draw_background();
+#: src/OptionMenu.cc:262
+#, fuzzy
+msgid "Pingus Option Menu"
+msgstr "Pingus Seçenekler Menüsü"
+
+#: src/Pingu.cc:122
+msgid "Setting action to a dead pingu"
+msgstr "Ölü pingu'ya atanan aksiyon"
+
+#: src/PinguInfo.cc:45
+#, c-format
+msgid "pingu_id %d"
+msgstr ""
+
+#: src/PinguInfo.cc:51
+#, fuzzy, c-format
+msgid "action %s"
+msgstr "Seçenekler"
+
+#: src/PinguInfo.cc:53
+msgid "action none"
+msgstr ""
+
+#. FIXME: Buffer overflow...
+#: src/PingusCounter.cc:38
+#, c-format
+msgid "Released: %3d/%3d  Out: %3d  Saved: %3d/%3d"
+msgstr "Çýkan: %3d/%3d Dýþarýda olan: %3d  Kurtulan: %3d/%3d"
+
+#: src/PingusLevelDesc.cc:74
+msgid "Designed by "
+msgstr "Tasarlayan "
+
+#: src/PingusLevelDesc.cc:79
+#, c-format
+msgid "Pingus to Save: %d"
+msgstr "Kurtarýlýcak Pingus: %d"
+
+#: src/PingusLevelDesc.cc:81
+#, c-format
+msgid "Number of Pingus: %d"
+msgstr "Pingus sayýsý: %d"
+
+#: src/PingusLevelDesc.cc:86
+msgid "Loading..."
+msgstr "Yükleniyor..."
+
+#: src/PingusLevelDesc.cc:89
+msgid "Loading finished. Press a mouse button to start the level"
+msgstr "Yüklendi! Devam etmek için farenin tuþunu týklat"
+
+#: src/PingusLevelResult.cc:57
+msgid "Results:"
+msgstr "Sonuçlar:"
+
+#. Ending messages are censored for the momement
+#. font->print_center(CL_Display::get_width() / 2, 100,
+#. get_message(100 * world->get_saved_pingus() / world->get_allowed_pingus()).c_str());
+#.
+#: src/PingusLevelResult.cc:63
+#, fuzzy, c-format
+msgid "Pingus saved:   %3d/%3d"
+msgstr "Kurtarýlýcak Pingus: %d"
+
+#: src/PingusLevelResult.cc:68
+#, c-format
+msgid "Pingus killed:  %3d/%3d"
+msgstr "Ölen Pingular:  %3d/%3d"
+
+#: src/PingusLevelResult.cc:83
+msgid "Press button to continue..."
+msgstr "Devam etmek için tuþa bas..."
+
+#. (100%--) survival: Aww, and we wanted to say: 'No Pingus were harmed in the completion of this level'
+#: src/PingusLevelResult.cc:98
+msgid ""
+"As many Pingus escaped as entered the level. Thats going to be hard to "
+"beat.... unless this game becomes pornographic."
+msgstr ""
+"Hocam, Hepsi kurtuldu!  Bu skoru aþabilmek için bu oyuna pornografik biþiler "
+"katmamýz gerekecek."
+
+#: src/PingusLevelResult.cc:100
+msgid "Very impressive indeed."
+msgstr "Helal Olsun ..."
+
+#: src/PingusLevelResult.cc:102
+msgid "Good work. Still room for improvement though."
+msgstr "Aferin. Ama daha fazla çalýþman lazým çekirge."
+
+#: src/PingusLevelResult.cc:104
+msgid "Not too shabby, not too shabby at all."
+msgstr "Fena deðil, hiç fena deðil."
+
+#: src/PingusLevelResult.cc:106
+msgid ""
+"That was OK, but Pingu life insurance premiums have just gotten more "
+"expensive."
+msgstr ""
+"Fena deðil. Fakat Pingu hayat sigortasý aydatlarýnýn pahalýþtýrmayakatkýda "
+"bulundun."
+
+#: src/PingusLevelResult.cc:108
+msgid "Maybe this level calls for a different strategy."
+msgstr "Farklý bir stateji uygulamakta yarar olabilir."
+
+#: src/PingusLevelResult.cc:110
+msgid "Exactly half. Are you saving only the female ones, you kinky sod!?"
+msgstr "Tam yarýsý. Ne o? Sadece diþileri falan mý kurtarýyoruz?!?"
+
+#: src/PingusLevelResult.cc:112
+msgid "If I were a Pingu, I never would have left that entrance."
+msgstr "Ben bir Pingu olsaydým, o kapýdan adýmýmý atmazdým."
+
+#: src/PingusLevelResult.cc:114
+msgid "Maybe you would feel more at home playing Quake."
+msgstr "Abisi, belki de Quake sana daha uygun bi oyun."
+
+#: src/PingusLevelResult.cc:116
+msgid ""
+"Maybe this level calls for a different stratagy. Like attempting to save "
+"them, for example."
+msgstr ""
+"Tikkat tikkat! Stateji deðiþikliði! Bir daha sefere þunlarý kurtarmaya "
+"çalýþalým!"
+
+#: src/PingusLevelResult.cc:118
+msgid "Ever considered a career as a Pingu exterminator?"
+msgstr "Pingo Terminatörü olarak iþ mi arýyoruz?"
+
+#: src/PingusLevelResult.cc:120
+msgid "You missed one! What's your excuse!?"
+msgstr "Ne o? Bi tane kaçýrdýk bakýyorum."
+
+#: src/PingusLevelResult.cc:122
+msgid "Please reassure me that you hit the Armageddon button."
+msgstr "Bu da bir baþarý tabii. Hepsini nasil helak ettin?"
+
+#: src/PingusLevelResult.cc:124
+msgid "You've got a negative save/total value, something is buggy."
+msgstr "Eksi sayýda Pingus kurtardýn, biyerde kesin hata var."
+
+#: src/PingusMain.cc:322
+msgid ""
+"\n"
+"Copyright (C) 1998 Ingo Ruhnke <grumbel@pingus.cx>\n"
+"There is NO warranty.  You may redistribute this software\n"
+"under the terms of the GN General Public License.\n"
+"For more information about these matters, see the files named COPYING."
+msgstr ""
+"\n"
+"Copyright (C) 1998 Ingo Ruhnke <grumbel@gmx.de>\n"
+"Geliþtiriciler bu yazýlýmla ilgili HÝÇBÝR garanti vermemektedir.\n"
+"Pingus serbest bir yazýlýmdýr ve GNU GPL çerçevesinde \n"
+"özgürce daðýtýlabilir. Ayrýntýlar için kaynak \n"
+"kodunda COPYING belgesini okuyun."
+
+#: src/PingusMain.cc:480
+msgid "Unknow char: "
+msgstr "Bilinmeyen karakter: "
+
+#: src/PingusMain.cc:481
+msgid "Usage: "
+msgstr "Kullaným: "
+
+#: src/PingusMain.cc:481
+msgid " [OPTIONS]... [LEVELFILE]"
+msgstr "[SEÇENEKLER]... [SEVÝYE DOSYASI]"
+
+# 'Main' yerine baþka biþi uydurmak lazim buraya -gd
+#: src/PingusMain.cc:757
+msgid "PingusMain: Starting Main: "
+msgstr "PingusMain: Main Baþlatýlýyor: "
+
+#: src/PingusMain.cc:779
+msgid "PingusMain: Levelfile not found, ignoring: "
+msgstr "PingusMain: Seviye Dosyasý bulunamadý, yok sayýlacak: "
+
+#: src/PingusMain.cc:833
+msgid "Error caught from ClanLib: "
+msgstr "ClanLib hatasý: "
+
+#: src/PingusMain.cc:837
+msgid "Error caught from Pingus: "
+msgstr "Pingus'ta hata saptandý: "
+
+#: src/PingusMain.cc:841
+msgid "Pingus: Out of memory!"
+msgstr "Pingus: Bellek yetersiz!"
+
+# bu komik oldu -cagri
+# daha mi iyi boyle :) -gd
+#: src/PingusMain.cc:845
+msgid "Pingus: Standard exception caught!:\n"
+msgstr "Pingus: Genel olaðan dýþý durum saptandý!:\n"
+
+#: src/PingusMain.cc:849
+msgid "Pingus: Unknown throw caught!"
+msgstr "Pingus: Bilinmeyen bir hata saptandý!"
+
+#: src/PingusSpotMap.cc:361
+#, c-format
+msgid "Image has wrong color depth: %d"
+msgstr "Resmin renk derinliði yanlýþ: %d"
+
+#: src/PLTParser.cc:92
+#, c-format
+msgid "Unexpected keyword: '%s' at line: %d"
+msgstr "Beklenmeyen anahtar kelime: '%s'. Bulunan satýr: %d"
+
+#: src/Screenshot.cc:39
+msgid "Screenshot: Saving screenshot to: "
+msgstr "Screenshot: Ekran görüntüsü için dosya adý: "
+
+#: src/Screenshot.cc:41
+msgid "Screnshot: Screenshot is done."
+msgstr "Screenshot: Ekran görüntüsü kaydedildi."
+
+#: src/Screenshot.cc:44
+msgid "Screenshot: Couldn't save screenshot"
+msgstr "Screenshot: Ekran görüntüsü kaydedilemedi"
+
+#: src/Screenshot.cc:64
+#, fuzzy
+msgid "Screenshot: Couldn't write file: "
+msgstr "Screenshot: Dosyaya yazýlamýyor: "
+
+#.  desc["en"] = "..:: Starts the level you played at last ::..";
+#: src/SurfaceButton.cc:159
+msgid "..:: The people who brought this game to you ::.."
+msgstr "..:: Bu oyunu sizin için hazýrlayanlar... ::.."
+
+#. desc["de"] = "..:: Wer hat den dieses Spiel verbrochen...? ::..";
+#: src/SurfaceButton.cc:162
+msgid "Credits"
+msgstr "Yardýmcý olanlar"
+
+#. x_pos = CL_Display::get_width() * 150 / 640; //150;
+#. y_pos = CL_Display::get_height() * 330 / 480; //330;
+#. 150;
+#. 330;
+#: src/SurfaceButton.cc:201
+#, fuzzy
+msgid "..:: Takes you to the options menu ::.."
+msgstr "..:: Seçenekler Menüsüne gider ::.."
+
+#.  desc["de"] = "..:: Einstellungen und Mogeleien ::..";
+#: src/SurfaceButton.cc:204
+msgid "Options"
+msgstr "Seçenekler"
+
+#: src/SurfaceButton.cc:237
+msgid "..:: Bye, bye ::.."
+msgstr "..:: Güle güle... ::.."
+
+#. desc["de"] = "..:: Auf Wiedersehen ::..";
+#: src/SurfaceButton.cc:240
+msgid "Exit"
+msgstr "Çýkýþ"
+
+#: src/SurfaceButton.cc:295
+msgid "..:: Launch the level editor ::.."
+msgstr "..:: Seviye Editörünü Çalýþtýr ::.."
+
+# bu olmadi, c++'tan nefret... -cagri
+# niye c++'den nefret ediyon?
+# Yav tabii turkce'nin yapisindan ortaya cikan bir sorun var .. 'yarat'i cumle
+# sonuna koymak gerekecek ... neyse bi compile edince nasil gozukuyor bakalim ... -gd
+#. desc["de"] = "..:: Den Level Editor starten ::..";
+#: src/SurfaceButton.cc:298
+msgid "Create a"
+msgstr "Yeni Seviye"
+
+#: src/SurfaceButton.cc:299
+msgid "Level"
+msgstr "Yarat"
+
+# bu olmadi -cagri
+# þimdi daha iyi mi? -gd
+#: src/SurfaceButton.cc:341
+#, fuzzy
+msgid "..:: Lets you select a world to start ::.."
+msgstr "..:: Oynamak için bir dünya seçmenizi saðlar ::.."
+
+#. desc["de"] = "..:: Such dir eine Welt zum beginnen aus ::..";
+#: src/SurfaceButton.cc:344
+msgid "Start"
+msgstr "Baþla"
+
+# bu nasil olmuþ? contrib -> katýlýmcý, dýþarlýklý :))) -gd 
+#: src/SurfaceButton.cc:370
+msgid "..:: Start a contrib level ::.."
+msgstr "..:: Harici bir seviye baþlat ::.."
+
+# bu olmadi -cagri
+# bu daha da olmadi galiba -gd
+#: src/SurfaceButton.cc:372
+msgid "Contrib"
+msgstr "Harici"
+
+#: src/SurfaceButton.cc:394
+msgid "..:: Multiplayer Modes... experimental stuff ::.."
+msgstr "..:: Çok oyunculu kipler... Deneysel þeyler ::.."
+
+#: src/SurfaceButton.cc:396
+msgid "Multi"
+msgstr "Çoklu"
+
+#: src/System.cc:65 src/System.cc:97
+msgid "System: Couldn't open: "
+msgstr "Sistem: Açýlamayan dosya: "
+
+#: src/System.cc:156
+msgid "Successfully created: "
+msgstr "Yaratýlan dosya: "
+
+#: src/System.cc:161
+msgid "Found: "
+msgstr "Bulundu: "
+
+#: src/System.cc:212
+#, fuzzy
+msgid "Environment variable $HOME not set, fix that and start again."
+msgstr "$HOME deðiþkeni atanmamýþ, düzeltip yeniden dene."
+
+#: src/System.cc:354
+msgid "System::checksum: Couldn't open file: "
+msgstr "Sistem::checksum: Açýlamayan dosya: "
+
+#: src/System.cc:364
+msgid "System:checksum: file read error"
+msgstr "Sistem:checksum: Dosya okunurken hata oluþtu"
+
+#: src/war/WarMain.cc:50
+msgid "Time for war - Lets fight!"
+msgstr "Savaþ vaktidir ey ahali - haydi savaþa!"
+
+#: src/worldmap/PingusWorldMapGraph.cc:152
+#, fuzzy
+msgid "PingusWorldMapGraph: File not found: "
+msgstr "PingusWorldMapGraph: Dosya bulunamadý: "
+
+#~ msgid "EditorObj: Warrning unknown WorldObjData pointer!"
+#~ msgstr "EditorObj: Uyarý: bilinmeyen WorldObjData imleci!"
+
+#~ msgid " (with sound support)"
+#~ msgstr " (Ses desteði ile)"
+
+#~ msgid " (without sound support)"
+#~ msgstr " (Ses desteði olmaksýzýn)"
+
+#~ msgid "Yes"
+#~ msgstr "Evet"
+
+#~ msgid "No"
+#~ msgstr "Hayýr"
+
+#, fuzzy
+#~ msgid "Pingus Datadir"
+#~ msgstr "Pingus veri dizini: "
+
+#, fuzzy
+#~ msgid "Name: "
+#~ msgstr "Ad: "
+
+#~ msgid "Starting..."
+#~ msgstr "Pingus baþlatýlýyor..."
+
+#~ msgid "Pingus: Gimmicks enabled"
+#~ msgstr "Pingus: Gimmicks etkin"
+
+#~ msgid "Using demofile: "
+#~ msgstr "Demo Dosyasý: "
