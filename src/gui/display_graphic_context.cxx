@@ -1,4 +1,4 @@
-//  $Id: display_graphic_context.cxx,v 1.3 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: display_graphic_context.cxx,v 1.4 2003/04/18 17:08:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -160,8 +160,7 @@ DisplayGraphicContext::clear (float r, float g, float b)
 void 
 DisplayGraphicContext::draw (Sprite& sprite, const Vector& pos)
 {
-  Vector tmp_pos = pos;
-  sprite.put_screen (tmp_pos + offset + center);
+  sprite.put_screen(pos + offset + center);
 }
 
 void 
@@ -169,8 +168,8 @@ DisplayGraphicContext::draw (Sprite& sprite, const Vector& pos, int frame)
 {
   CL_Surface sur (sprite.get_surface ());
   draw (sur, 
-	(int) pos.x + sprite.get_x_align (),
-	(int) pos.y + sprite.get_y_align (), 
+	w2s_x(pos.x + sprite.get_x_align ()),
+	w2s_y(pos.y + sprite.get_y_align ()), 
 	frame);
 }
 
@@ -179,13 +178,11 @@ DisplayGraphicContext::draw (CL_Surface& sur, const Vector& pos)
 {
   if (offset.z == 1.0)
     {   
-      sur.put_screen (int(pos.x + get_x_offset () + center.x),
-		      int(pos.y + get_y_offset () + center.y));
+      sur.put_screen (w2s_x(pos.x), w2s_y(pos.y));
     }
   else
     {
-      sur.put_screen (int((pos.x + get_x_offset ()) * offset.z + center.x),
-		      int((pos.y + get_y_offset ()) * offset.z + center.y),
+      sur.put_screen (w2s_x(pos.x), w2s_y(pos.y),
 		      offset.z, offset.z);
     }
   //CL_Display::draw_line (x1, y1, x2, y2, 1.0, 1.0, 0.0);
@@ -203,14 +200,12 @@ DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos)
 {
   if (offset.z == 1.0)
     {
-      sur.put_screen (int(x_pos + get_x_offset () + center.x),
-		      int(y_pos + get_y_offset () + center.y));
+      sur.put_screen(w2s_x(x_pos), w2s_y(y_pos));
     }
   else
     {
-      sur.put_screen (int((x_pos + get_x_offset ()) * offset.z + center.x),
-		      int((y_pos + get_y_offset ()) * offset.z + center.y),
-		      offset.z, offset.z);
+      sur.put_screen(w2s_x(x_pos), w2s_y(y_pos),
+                     offset.z, offset.z);
     }
 }
 
@@ -219,16 +214,13 @@ DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos, int frame)
 {
   if (offset.z == 1.0)
     {
-      sur.put_screen (int(x_pos + get_x_offset () + center.x),
-		      int(y_pos + get_y_offset () + center.y),
-		      frame);  
+      sur.put_screen (w2s_x(x_pos), w2s_y(y_pos), frame);
     }
   else
     {
-      sur.put_screen (int((x_pos + get_x_offset ()) * offset.z + center.x),
-		      int((y_pos + get_y_offset ()) * offset.z + center.y),
+      sur.put_screen (w2s_x(x_pos), w2s_y(y_pos),
 		      offset.z, offset.z,
-		      frame);  
+		      frame);
     }
 }
 
@@ -236,8 +228,7 @@ void
 DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos, 
 	    float size_x, float size_y, int frame)
 {
-  sur.put_screen (int(x_pos + get_x_offset () + center.x),
-		  int(y_pos + get_y_offset () + center.y),
+  sur.put_screen (w2s_x(x_pos), w2s_y(y_pos),
 		  size_x * offset.z, 
 		  size_y * offset.z, frame); 
 }
@@ -246,40 +237,34 @@ void
 DisplayGraphicContext::draw_line (const Vector& pos1, const Vector& pos2,
 		       float r, float g, float b, float a)
 {
-  draw_line (int(pos1.x), int(pos1.y), int(pos2.x), int(pos2.y), r, g, b, a);
+  draw_line(int(pos1.x), int(pos1.y), int(pos2.x), int(pos2.y), r, g, b, a);
 }
 
 void 
-DisplayGraphicContext::draw_line (int x1_, int y1_, int x2_, int y2_, 
+DisplayGraphicContext::draw_line (int x1, int y1, int x2, int y2, 
 		                  float r, float g, float b, float a)
 {
-  CL_Display::draw_line (static_cast<int>((x1_ + get_x_offset()) * offset.z + center.x),
-			 static_cast<int>((y1_ + get_y_offset()) * offset.z + center.y),
-			 static_cast<int>((x2_ + get_x_offset()) * offset.z + center.x),
-			 static_cast<int>((y2_ + get_y_offset()) * offset.z + center.y),
-			 r, g, b, a);
+  CL_Display::draw_line(w2s_x(x1), w2s_y(y1),
+                        w2s_x(x2), w2s_y(y2),
+                        r, g, b, a);
 }
 
 void 
-DisplayGraphicContext::draw_fillrect (int x1_, int y1_, int x2_, int y2_, 
+DisplayGraphicContext::draw_fillrect (int x1, int y1, int x2, int y2, 
 			              float r, float g, float b, float a)
 {
-  CL_Display::fill_rect (static_cast<int>((x1_ + get_x_offset()) * offset.z + center.x),
-			 static_cast<int>((y1_ + get_y_offset()) * offset.z + center.y), 
-			 static_cast<int>((x2_ + get_x_offset()) * offset.z + center.x),
-			 static_cast<int>((y2_ + get_y_offset()) * offset.z + center.y),
-			 r, g, b, a);
+  CL_Display::fill_rect(w2s_x(x1), w2s_y(y1),
+                        w2s_x(x2), w2s_y(y2),
+                        r, g, b, a);
 }
 
 void 
-DisplayGraphicContext::draw_rect (int x1_, int y1_, int x2_, int y2_, 
-		 float r, float g, float b, float a)
+DisplayGraphicContext::draw_rect (int x1, int y1, int x2, int y2, 
+                                  float r, float g, float b, float a)
 {
-  CL_Display::draw_rect (static_cast<int>((x1_ + get_x_offset()) * offset.z + center.x),
-			 static_cast<int>((y1_ + get_y_offset()) * offset.z + center.y), 
-			 static_cast<int>((x2_ + get_x_offset()) * offset.z + center.x),
-			 static_cast<int>((y2_ + get_y_offset()) * offset.z + center.y),
-			 r, g, b, a);
+  CL_Display::draw_rect(w2s_x(x1), w2s_y(y1),
+                        w2s_x(x2), w2s_y(y2),
+                        r, g, b, a);
 }
 
 void 
@@ -314,25 +299,19 @@ DisplayGraphicContext::draw_circle (int x_pos, int y_pos, int radius,
 void
 DisplayGraphicContext::print_left (FontHandle font, int x_pos, int y_pos, const std::string& str)
 {
-  font->print_left(int(x_pos + get_x_offset () + center.x),
-		   int(y_pos + get_y_offset () + center.y),
-		   str.c_str ());
+  font->print_left(w2s_x(x_pos), w2s_y(y_pos), str.c_str ());
 }
 
 void
 DisplayGraphicContext::print_center (FontHandle font, int x_pos, int y_pos, const std::string& str)
 {
-  font->print_center(int(x_pos + get_x_offset () + center.x),
-		     int(y_pos + get_y_offset () + center.y),
-		     str.c_str ());  
+  font->print_center(w2s_x(x_pos), w2s_y(y_pos), str.c_str ());
 }
   
 void
 DisplayGraphicContext::print_right (FontHandle font, int x_pos, int y_pos, const std::string& str)
 {
-  font->print_right(int(x_pos + get_x_offset () + center.x),
-		    int(y_pos + get_y_offset () + center.y),
-		    str.c_str ());
+  font->print_right(w2s_x(x_pos), w2s_y(y_pos), str.c_str ());
 }
 
 /* EOF */

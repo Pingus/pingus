@@ -1,4 +1,4 @@
-//  $Id: display_graphic_context.hxx,v 1.2 2003/03/16 23:07:02 grumbel Exp $
+//  $Id: display_graphic_context.hxx,v 1.3 2003/04/18 17:08:26 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_DISPLAY_GRAPHIC_CONTEXT_HXX
 
 #include "../vector.hxx"
+#include <vector>
 #include <ClanLib/Core/Math/rect.h>
 
 #include "graphic_context.hxx"
@@ -39,6 +40,22 @@ private:
   /** center of the display */
   Vector center;
 
+  /** Rectangles that need updating */
+  std::vector<CL_Rect> change_rects;
+
+  /** Transform worldcoordinate _x*/
+  int w2s_x(float x) {
+    return static_cast<int>((x + get_x_offset()) * offset.z + center.x);
+  }
+
+  int w2s_y(float y) {
+    return static_cast<int>((y + get_y_offset()) * offset.z + center.y);
+  }
+
+  inline void add_change_rect(int x, int y, int width, int height) 
+  {
+    change_rects.push_back(CL_Rect(x, y, x + width, y + height));
+  }
 public:
   DisplayGraphicContext (int x1, int y1, int x2, int y2, 
 			 int /*x_offset*/, int /*y_offset*/);
