@@ -1,4 +1,4 @@
-//  $Id: path_graph.cxx,v 1.4 2002/10/13 14:19:25 grumbel Exp $
+//  $Id: path_graph.cxx,v 1.5 2002/10/13 16:39:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "worldmap.hxx"
 #include "pathfinder.hxx"
 #include "path_graph.hxx"
+#include "path_drawable.hxx"
 
 namespace WorldMapNS {
 
@@ -137,7 +138,12 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
               
               child_cur = child_cur->next;
               child_cur = XMLhelper::skip_blank(child_cur);
-            }    
+            }
+
+          // FIXME: Memory leak
+          worldmap->add_drawable(new PathDrawable(path, 
+                                                  node_lookup[source], 
+                                                  node_lookup[destination]));
           
           // FIXME: No error checking, 
           graph.add_bi_edge(path, // FIXME: Memory leak!

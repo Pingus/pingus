@@ -1,4 +1,4 @@
-//  $Id: level_dot.hxx,v 1.2 2002/10/13 13:34:40 grumbel Exp $
+//  $Id: level_dot.hxx,v 1.3 2002/10/13 16:39:17 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDMAP_LEVEL_DOT_HXX
 #define HEADER_PINGUS_WORLDMAP_LEVEL_DOT_HXX
 
-#include <ClanLib/Display/Display/surface.h>
+#include "../sprite.hxx"
 #include "dot.hxx"
 
 namespace WorldMapNS {
@@ -29,8 +29,8 @@ namespace WorldMapNS {
 class LevelDot : public Dot
 {
 private:
-  CL_Surface green_dot_sur;
-  CL_Surface red_dot_sur;
+  Sprite green_dot_sur;
+  Sprite red_dot_sur;
 
 public:
   LevelDot(xmlDocPtr doc, xmlNodePtr cur);

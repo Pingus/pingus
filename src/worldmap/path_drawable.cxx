@@ -1,4 +1,4 @@
-//  $Id: level_dot.cxx,v 1.3 2002/10/13 16:39:17 grumbel Exp $
+//  $Id: path_drawable.cxx,v 1.1 2002/10/13 16:39:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,32 +17,21 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <iostream>
-#include "../xml_helper.hxx"
-#include "../pingus_resource.hxx"
-#include "../graphic_context.hxx"
-#include "level_dot.hxx"
+#include "path_drawable.hxx"
 
 namespace WorldMapNS {
 
-LevelDot::LevelDot(xmlDocPtr doc, xmlNodePtr cur)
-  : Dot(doc, XMLhelper::skip_blank(cur->children)),
-    green_dot_sur("misc/dot_green", "core"),
-    red_dot_sur("misc/dot_red", "core")
+PathDrawable::PathDrawable(Path* path, NodeId source, NodeId destination)
 {
-  green_dot_sur.set_align_center();
-  red_dot_sur.set_align_center();
 }
 
 void
-LevelDot::draw(GraphicContext& gc)
+PathDrawable::draw(GraphicContext& gc)
 {
-  std::cout << "Drawing level dat: " << pos << std::endl;
-  gc.draw (green_dot_sur, pos);
 }
 
-void
-LevelDot::update()
+void 
+PathDrawable::update()
 {
 }
 

@@ -1,5 +1,5 @@
-//  $Id: level_dot.cxx,v 1.3 2002/10/13 16:39:17 grumbel Exp $
-//
+//  $Id: path_drawable.hxx,v 1.1 2002/10/13 16:39:17 grumbel Exp $
+// 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,40 +12,39 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+// 
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <iostream>
-#include "../xml_helper.hxx"
-#include "../pingus_resource.hxx"
-#include "../graphic_context.hxx"
-#include "level_dot.hxx"
+#ifndef HEADER_PATH_DRAWABLE_HXX
+#define HEADER_PATH_DRAWABLE_HXX
+
+#include "drawable.hxx"
+#include "path_graph.hxx"
 
 namespace WorldMapNS {
 
-LevelDot::LevelDot(xmlDocPtr doc, xmlNodePtr cur)
-  : Dot(doc, XMLhelper::skip_blank(cur->children)),
-    green_dot_sur("misc/dot_green", "core"),
-    red_dot_sur("misc/dot_red", "core")
+/** Drawable to show the path between two nodes, only used for
+    debugging */
+class PathDrawable : public Drawable
 {
-  green_dot_sur.set_align_center();
-  red_dot_sur.set_align_center();
-}
+private:
+  
+public:
+  PathDrawable(Path* path, NodeId source, NodeId destination);
 
-void
-LevelDot::draw(GraphicContext& gc)
-{
-  std::cout << "Drawing level dat: " << pos << std::endl;
-  gc.draw (green_dot_sur, pos);
-}
+  void draw(GraphicContext& gc);
+  void update();
 
-void
-LevelDot::update()
-{
-}
+  float get_z_pos() const { return 1000; }
+private:
+  PathDrawable (const PathDrawable&);
+  PathDrawable& operator= (const PathDrawable&);
+};
 
 } // namespace WorldMapNS
+
+#endif
 
 /* EOF */
