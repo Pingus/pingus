@@ -20,7 +20,6 @@ src/level_desc.hxx
 src/color.hxx
 src/pingus_error.cxx
 src/pingus_error.hxx
-src/client_gui.hxx
 src/playfield_view.cxx
 src/playfield_view.hxx
 src/intro.cxx
@@ -69,7 +68,6 @@ src/input/axes/multiple_axis.hxx
 src/input/axes/dummy_axis.hxx
 src/input/axes/button_axis.cxx
 src/input/axes/button_axis.hxx
-src/input/gui_button.hxx
 src/input/scroller_factory.cxx
 src/input/scroller_factory.hxx
 src/input/key_helper.cxx
@@ -113,8 +111,6 @@ src/input/scrollers/multiple_scroller.hxx
 src/input/button_event.hxx
 src/input/buttons/mouse_button.cxx
 src/input/buttons/mouse_button.hxx
-src/input/buttons/key_helper.cxx
-src/input/buttons/key_helper.hxx
 src/input/buttons/joystick_button.cxx
 src/input/buttons/joystick_button.hxx
 src/input/buttons/multiple_button.cxx
@@ -168,7 +164,6 @@ src/path_manager.cxx
 src/path_manager.hxx
 src/theme_selector.cxx
 src/theme_selector.hxx
-src/world_impl.hxx
 src/system.cxx
 src/system.hxx
 src/world.cxx
@@ -343,10 +338,8 @@ src/surface_button.cxx
 src/surface_button.hxx
 src/sound.cxx
 src/sound.hxx
-src/property.hxx
 src/playfield.cxx
 src/playfield.hxx
-src/game_delta_recorder.hxx
 src/theme.cxx
 src/theme.hxx
 src/server.cxx
@@ -432,7 +425,6 @@ src/debug_stream.hxx
 src/pingus.hxx
 src/multiplayer_game.cxx
 src/multiplayer_game.hxx
-src/screen_state.hxx
 src/demo_recorder.cxx
 src/demo_recorder.hxx
 src/client.cxx
