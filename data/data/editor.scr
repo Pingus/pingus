@@ -1,6 +1,8 @@
 section Objects
 {
 	start_pos = ../images/editor/start_pos.pcx (type=surface, x=0, y=0, width=53, height=59, tcol=0);
+	weather_rain = ../images/editor/weather_rain.pcx (type=surface, x=0, y=0, width=120, height=101, tcol=0);
+	weather_snow = ../images/editor/weather_snow.pcx (type=surface, x=0, y=0, width=71, height=64, tcol=0);
 }
 
 section Icons

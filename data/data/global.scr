@@ -71,6 +71,7 @@ section Hotspots
 	plate2      = ../images/hotspots/plate2.pcx  (type=surface, x=0, y=0, width=64, height=64);
 	plate_small = ../images/hotspots/plate_small.pcx  (type=surface, x=0, y=0, width=32, height=32);
 
+	tutorial_blocker = ../images/hotspots/tutorial-blocker.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
 	tutorial_digger = ../images/hotspots/tutorial_digger.pcx  (type=surface, x=0, y=0, width=28, height=46, tcol=0);
 	tutorial_bridger  = ../images/hotspots/tutorial_bridger.pcx  (type=surface, x=0, y=0, width=28, height=46, tcol=0);
 	tutorial_left   = ../images/hotspots/tutorial_left.pcx  (type=surface, x=0, y=0, width=28, height=46, tcol=0);

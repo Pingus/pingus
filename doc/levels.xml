@@ -42,6 +42,10 @@
     <button action="miner">20</button>
   </button-list>
 
+  <weather>
+    <type>rain</type>
+  </weather>
+
   <start>
     <position>
       <x-pos>0</x-pos>
