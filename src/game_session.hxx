@@ -1,4 +1,4 @@
-//  $Id: game_session.hxx,v 1.9 2002/10/01 21:48:32 grumbel Exp $
+//  $Id: game_session.hxx,v 1.10 2002/10/02 12:54:18 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,8 +52,13 @@ private:
   unsigned int last_redraw;
   unsigned int last_update;
 
-  unsigned int frames;
-  unsigned int frame_skips;
+  int left_over_time;
+
+  /** Number of updates */
+  unsigned int number_of_updates;
+
+  /** Number of redraws (frameskip == number_of_updates - number_of_redraws) */
+  unsigned int number_of_redraws;
   
 public:
   /** Create a new game session which is launched on start ()
@@ -62,7 +67,7 @@ public:
   PingusGameSession (std::string arg_filename);
 
   /** Clean up */
-  virtual ~PingusGameSession ();
+  ~PingusGameSession ();
 
   /** Get the results of the last gaming session */
   PingusGameSessionResult get_result ();

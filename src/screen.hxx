@@ -1,4 +1,4 @@
-//  $Id: screen.hxx,v 1.10 2002/10/01 21:48:32 grumbel Exp $
+//  $Id: screen.hxx,v 1.11 2002/10/02 12:54:18 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,8 +32,8 @@ class Screen
 private:
     
 public:
-
   Screen () { }
+  virtual ~Screen () {}
   
   /** Draw this screen @return true if draw was successfull, false if
       frameskip has taken place ('causes a skip of flip_display) */

@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.19 2002/10/01 21:48:32 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.20 2002/10/02 12:54:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,10 +32,8 @@
 ScreenManager* ScreenManager::instance_ = 0;
 
 ScreenManager::ScreenManager ()
-  : display_gc (0, 0, CL_Display::get_width (), CL_Display::get_height (), 0, 0),
-    last_screen (0)
+  : display_gc (0, 0, CL_Display::get_width (), CL_Display::get_height (), 0, 0)
 {
-  replace_screen_arg = std::pair<Screen*, bool>(0, false);
   cached_action = none;
 
   // Set the root screen
@@ -92,7 +90,7 @@ ScreenManager::display ()
 	}
       else if (cached_action == replace)
 	{
-	  real_replace_screen (replace_screen_arg.first, replace_screen_arg.second);
+	  real_replace_screen (replace_screen_arg);
 	  cached_action = none;
 	}
       
@@ -105,27 +103,21 @@ ScreenManager::display ()
       else
 	{
 	  std::cout << "ScreenManager: fading screens" << std::endl;
-	  fade_over (last_screen, get_current_screen());
+	  //fade_over (last_screen, get_current_screen());
 	}
 
       // Stupid hack to make this thing take less CPU
       CL_System::sleep (0);
 
       /** Delete all screens that are no longer needed */
-      for (std::vector<Screen*>::iterator i = delete_screens.begin (); 
-	   i != delete_screens.end (); 
-	   ++i)
-	{
-	  delete *i;
-	}
-      delete_screens.clear ();
+      delete_screens.clear();
     } 
 }
 
-Screen*
+ScreenPtr
 ScreenManager::get_current_screen()
 {
-  return screens.back ().first;
+  return screens.back ();
 }
 
 ScreenManager*
@@ -145,11 +137,11 @@ ScreenManager::push_screen (Screen* screen, bool delete_screen)
   if (!screens.empty())
     {
       std::cout << "ScreenManager::push_screen" << std::endl;
-      screens.back ().first->on_shutdown ();
+      screens.back ()->on_shutdown ();
     }
 
   screen->on_startup ();
-  screens.push_back (std::pair<Screen*, bool> (screen, delete_screen));
+  screens.push_back (ScreenPtr(screen, delete_screen));
 }
 
 void
@@ -164,21 +156,20 @@ ScreenManager::replace_screen (Screen* screen, bool delete_screen)
 {
   assert (cached_action == none);
   cached_action = replace;
-  replace_screen_arg = std::pair<Screen*, bool> (screen, delete_screen);
+  replace_screen_arg = ScreenPtr(screen, delete_screen);
 }
 
 void
-ScreenManager::real_replace_screen (Screen* screen, bool delete_screen)
+ScreenManager::real_replace_screen (const ScreenPtr& ptr)
 {
   std::cout << "XXXXXXXX ScreenManager::replace_screen" << std::endl;
 
-  screens.back ().first->on_shutdown ();
+  screens.back ()->on_shutdown ();
 
-  if (screens.back ().second) // delete_screen
-    delete_screens.push_back(screens.back ().first);
+  delete_screens.push_back(screens.back ());
   
-  screens.back () = std::pair<Screen*, bool> (screen, delete_screen);
-  screens.back ().first->on_startup ();
+  screens.back () = ptr;
+  screens.back ()->on_startup ();
 }
 
 void
@@ -186,26 +177,25 @@ ScreenManager::real_pop_screen ()
 {
   std::cout << "XXXXXXXX ScreenManager::pop_screen" << std::endl;
 
-  screens.back ().first->on_shutdown ();
+  screens.back ()->on_shutdown ();
 
-  if (screens.back ().second) // delete_screen
-    delete_screens.push_back(screens.back ().first);
+  delete_screens.push_back(screens.back ());
   
   std::cout << "ScreenManager::real_pop_screen ()" << std::endl;
   screens.pop_back ();
 
   if (!screens.empty ())
     {
-      screens.back ().first->on_startup ();
+      screens.back ()->on_startup ();
     }
 }
 
 void
-ScreenManager::fade_over (Screen* old_screen, Screen* new_screen)
+ScreenManager::fade_over (const ScreenPtr& old_screen, const ScreenPtr& new_screen)
 {
   FadeOut::fade_to_black();
-  UNUSED_ARG(old_screen);
-  UNUSED_ARG(new_screen);
+  //UNUSED_ARG(old_screen);
+  //UNUSED_ARG(new_screen);
 
 #if 0
   DeltaManager delta_manager;

@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.13 2002/10/01 21:48:32 grumbel Exp $
+//  $Id: game_session.cxx,v 1.14 2002/10/02 12:54:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,12 +47,20 @@ PingusGameSession::PingusGameSession (std::string arg_filename)
   last_redraw = CL_System::get_time();
   last_update = CL_System::get_time();
   
-  frames = 0;
-  frame_skips = 0;
+  number_of_redraws = 0;
+  number_of_updates = 0;
+
+  left_over_time = 0;
 }
 
 PingusGameSession::~PingusGameSession ()
 {
+  std::cout << "XXXXXXXX"
+	    << " Redraws: " << number_of_redraws
+	    << " Updates: " << number_of_updates 
+	    << " FrameSkip: " << number_of_updates - number_of_redraws
+	    << std::endl;
+
   delete client;
   delete server;
   delete plf;
@@ -67,6 +75,7 @@ PingusGameSession::get_result ()
 bool
 PingusGameSession::draw (GraphicContext& gc)
 {
+  ++number_of_redraws;
   client->draw (gc);
   last_redraw = CL_System::get_time();
   return true;
@@ -75,16 +84,25 @@ PingusGameSession::draw (GraphicContext& gc)
 void
 PingusGameSession::update (const GameDelta& delta)
 {
-  int time_passed = (CL_System::get_time() - last_update);
+  //std::cout << "Left Over Time: " << left_over_time << std::endl;
+
+  int time_passed = (CL_System::get_time() - last_update) + left_over_time;
   int update_time = game_speed;
+
+  left_over_time = 0;
 
   if (time_passed > update_time)
     {
-      for (int i = 0;  i < time_passed; i += update_time)
+      int i;
+      for (i = 0; i < time_passed; i += update_time)
 	{
 	  // This updates the world and all objects
 	  server->update ();
+	  ++number_of_updates;
 	}
+
+      left_over_time = time_passed % update_time;
+
       // This updates something else... what?! Well, userinterface and
       // things like that...
       last_update = CL_System::get_time();

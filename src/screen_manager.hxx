@@ -1,4 +1,4 @@
-//  $Id: screen_manager.hxx,v 1.13 2002/09/28 22:24:24 grumbel Exp $
+//  $Id: screen_manager.hxx,v 1.14 2002/10/02 12:54:18 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "pingus.hxx"
 #include <vector>
 
+#include "screen_ptr.hxx"
 #include "display_graphic_context.hxx"
 
 class Screen;
@@ -37,17 +38,18 @@ private:
   /** Screen stack (first is the screen, second is delete_screen,
       which tells if the screen should be deleted onces it got poped
       or replaced) */
-  std::vector<std::pair<Screen*, bool> > screens;
+  std::vector<ScreenPtr> screens;
 
   /** Screens in this vector will be deleted at the end of the
-      main-loop */
-  std::vector<Screen*> delete_screens;
+      main-loop. Its really more a keep alive vector, than a deleting
+      one, but well... */
+  std::vector<ScreenPtr> delete_screens;
 
   /** the screen that was used in the last update() */
-  Screen* last_screen;
+  ScreenPtr last_screen;
 
   enum { none, pop, replace } cached_action;
-  std::pair<Screen*, bool> replace_screen_arg;
+  ScreenPtr replace_screen_arg;
 
 protected:
   ScreenManager ();
@@ -69,16 +71,16 @@ public:
 
 private:
   /** Replace the current screen */
-  void real_replace_screen (Screen*, bool delete_screen);
+  void real_replace_screen (const ScreenPtr&);
     
   /** Remove the current screen and fall back to the last one */
   void real_pop_screen ();
 
   /** FadeOver test*/
-  void fade_over (Screen* old_screen, Screen* new_screen);
+  void fade_over (const ScreenPtr& old_screen, const ScreenPtr& new_screen);
 
   /** @return a pointer to the current Screen */
-  Screen* get_current_screen();
+  ScreenPtr get_current_screen();
 
 public:  
   static ScreenManager* instance ();
