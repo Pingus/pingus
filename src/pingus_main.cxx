@@ -935,11 +935,9 @@ PingusMain::main(int argc, char** argv)
   return 0;
 }
 
-
 void
 PingusMain::init_clanlib()
 {
-
   if (render_preview)
     {
       CL_SetupCore::init ();

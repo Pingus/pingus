@@ -6,17 +6,19 @@ Pingus Installation Guide for Windows
    
 Introduction
 
-   The following instructions are only tested with Microsoft Visual C++ 6.
-   To be able to compile pingus you need a working version of ClanLib
-   which is correct installed. You should have both debug and release builds 
-   of the libraries.
+   The following instructions are only tested with Microsoft Visual Studio 6
+   and Visual Studio .NET 2003.
+   
+   To be able to compile pingus you need a working version of ClanLib 0.7.8 
+   or later which is correct installed. You should have both debug and release
+   builds of the libraries.
+   
    Please read also the normal INSTALL documentation.
      _________________________________________________________________
    
 1. Requirements for compiling Pingus
 
-   First of all you need a Win32 operating system (you would not have 
-   guessed that :-) with Visual C++ 6 or Visual Studio 6 installed.
+   First of all you need a Win32 operating system with Visual Studio installed.
  
    To compile Pingus you will need the following libraries:
    
@@ -26,45 +28,45 @@ Introduction
 	-> libxml2
 	-> iconv
 	(Download at http://www.fh-frankfurt.de/~igor/projects/libxml/index.html)
-
-
+    
    To compile ClanLib by yourself you will need several other libraries:
 
 	-> DirectX 8/8.1 SDK
-	(Download at http://msdn.microsoft.com/downloads/sample.asp?url=/MSDN-FILES/027/002/040/msdncompositedoc.xml)
+	(Download at http://msdn.microsoft.com/library/default.asp?url=/downloads/list/directx.asp)
 	
-	-> Hermes 
 	-> ZLib 
 	-> LibJPEG
 	-> LibPNG
 	-> MikMod
 	-> Vorbis
-	(Download at http://www.clanlib.org/download/files/Hermes-1.3.2-win32.zip)
 
 	-> ClanLib itself
 	(Download at http://www.clanlib.org/)
 
-	The sources of Hermes and ClanLib can also be found in the CVS tree 
+    To make it easy, ClanLib provides all these external libs (dx8, xml, iconv,
+    zlib, jpeg, png, mikmod, vorbis) available in their External Libs package.
+    (Download at http://www.clanlib.org/~sphair/download/external/ExternalLibs.zip)
+    
+    If you download this package, you only need to download ClanLib and nothing more
+    to compile both ClanLib and Pingus.
+    
+	The sources of ClanLib can also be found in the CVS tree 
 	(see Pingus website for more information).	
 
      _________________________________________________________________
 
-2. Compile Hermes
-
-   Compiling the Hermes library is easy. It is documented quite well in the
-   INSTALL.Win32 which comes with the sources.
-
-     _________________________________________________________________
-
-3. Compile ClanLib (for further istructions read the INSTALL.win32 file
+2. Compile ClanLib (for further istructions read the INSTALL.win32 file
 		    included in the ClanLib package)	
 
-   Compiling ClanLib is a bit tricky.
- 
    First step is to make sure all above mentioned libs are in the right place
    (a place where MSVC++ can link against them). If you use diffrent paths 
    than your global include and lib path, you have to tell VC++: 
 
+   Developer Studio .NET 2003:
+   Tools->Options->Projects->VC++ Directories
+   Add the Include and Lib paths to "Include Files", and "Library Files".
+
+   Developer Studio 6:
    Extras->Optionen - tab Verzeichnisse    #########FIXME: Dunno how the menunames are in english :-( , someone please translate
 
    After the libs are in the right place, you can open the configure.dsw for 
@@ -97,27 +99,25 @@ Introduction
 
      _________________________________________________________________
 
-4. Compile Pingus
+3. Compile Pingus
 
-   Before compiling Pingus you have to execute the vcfix.reg. It adds support 
-   for .cc and .cxx files to Visual C++.
+   Before compiling Pingus under VC 6, you have to execute the vcfix.reg.
+   It adds support for .cc and .cxx files to Visual C++ 6. This is not
+   neccessary under Visual Studio .NET.
 
-   You have to copy the src\win32\config.h into the directory where your 
-   includes are.
-  
-   Open Pingus.dsw, change the active configuration to the "Win32 Release" build
-   (toolbar "Build") and compile it.
+   Open Pingus.dsw for VC 6, or Pingus.sln for VC.NET 2003, change the active
+   configuration to the "Win32 Release" build (toolbar "Build") and compile it.
    
    If Pingus (or any other library) does not compile correctly, please inform
    the Pingus developer mailing list (see Pingus homepage for information
    about the mailing list)
 
+     _________________________________________________________________
 
+4. Run Pingus
+
+   Pingus needs some DLLs, namely iconv.dll, intl.dll and libxml2.dll. Copy
+   these into the Pingus main dir. They are included in the External Libs
+   package from clanlib.org.
    
-****************************************************************************
-FIXME: I did not yet compile Pingus completely, so this last part is still under construction.
-
- 
-   Copy pingus.exe to the data\data directory.
-   Do "pingus.exe -datafile name.scr name.dat" for every .scr file.
-
+   Hit Ctrl-F5 to run Pingus.

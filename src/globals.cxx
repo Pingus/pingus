@@ -39,7 +39,7 @@ int         tile_size                       = 32;
 #ifdef _DEBUG
 bool        fullscreen_enabled              = false;
 #else
-bool        fullscreen_enabled              = true;
+bool        fullscreen_enabled              = false;
 #endif
 #else
 bool        fullscreen_enabled              = false;
