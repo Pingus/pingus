@@ -1,11 +1,11 @@
 /* This level was created with the PLE
- * $Id: snow5.plf,v 1.1 2000/04/08 20:05:12 grumbel Exp $
+ * $Id: snow5.plf,v 1.2 2000/04/09 17:43:55 grumbel Exp $
  */
 global {
-  start_x_pos = 0;
-  start_y_pos = 0;
-  levelname = "Over the water";
-  description = "Happy Christmas!
+  start_x_pos = 720;
+  start_y_pos = 780;
+  levelname = "Snow 5 - Higher and higher";
+  description = "
 ";
   number_of_pingus = 100;
   number_to_save = 0;

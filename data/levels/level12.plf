@@ -1,0 +1,361 @@
+/* This level was created with the PLE
+ * $Id: level12.plf,v 1.1 2000/04/09 17:43:55 grumbel Exp $
+ */
+global {
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "Get up";
+  description = "
+
+";
+  number_of_pingus = 100;
+  number_to_save = 50;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 2016;
+  height  = 800;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures.dat)"Textures/stars";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
+}
+
+buttons {
+  basher = 20;
+  blocker = 20;
+  bomber = 20;
+  bridger = 20;
+  climber = 20;
+  digger = 20;
+  floater = 20;
+  jumper = 20;
+  miner = 20;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 1319;
+  y_pos = 270;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 1291;
+  y_pos = 269;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 1270;
+  y_pos = 402;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 1307;
+  y_pos = 404;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 935;
+  y_pos = 264;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 927;
+  y_pos = 411;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 1103;
+  y_pos = 265;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 1106;
+  y_pos = 397;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 750;
+  y_pos = 265;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 734;
+  y_pos = 407;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 1202;
+  y_pos = 266;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 1201;
+  y_pos = 400;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 846;
+  y_pos = 266;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 700;
+  y_pos = 539;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 639;
+  y_pos = 656;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 642;
+  y_pos = 543;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 831;
+  y_pos = 411;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 1297;
+  y_pos = 535;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 1281;
+  y_pos = 643;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 1306;
+  y_pos = 539;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 912;
+  y_pos = 649;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 1303;
+  y_pos = 659;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 931;
+  y_pos = 539;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 1007;
+  y_pos = 266;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 1011;
+  y_pos = 397;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 647;
+  y_pos = 267;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 640;
+  y_pos = 408;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 1096;
+  y_pos = 633;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 1109;
+  y_pos = 523;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 727;
+  y_pos = 652;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 751;
+  y_pos = 535;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 1191;
+  y_pos = 636;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 1204;
+  y_pos = 526;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 819;
+  y_pos = 648;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 843;
+  y_pos = 537;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 1009;
+  y_pos = 654;
+  z_pos = -100;
+  speed = -1;
+}
+
+hotspot {
+  image = (resource)"GroundPieces/Rock/granit3";
+  x_pos = 1022;
+  y_pos = 544;
+  z_pos = -100;
+  speed = -1;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 1042;
+  y_pos = 460;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+exit {
+  image = (resource)"Exits/sortie_anim";
+  x_pos = 1098;
+  y_pos = 177;
+  z_pos = 0;
+}
+
+/* EOF */

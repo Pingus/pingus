@@ -8,8 +8,8 @@ global {
 	number_of_pingus = 120 ;     /* Total number of pingus in level*/
 	number_to_save = 100;
 	time = 5000;
-	levelname = "Crystal World";
-	description = "Beautiful crystals and deadly danger
+	levelname = "Crystal 1 - So close, but still so far";
+	description = "
 ";
 
 }
@@ -28,7 +28,7 @@ background {
 	image = (resource:textures.dat) "Textures/crystal";
 	scroll_x = "0.0";
 	scroll_y = "0.0";
-	dim = "0.1";
+	dim = "0.3";
 }
 
 /* Set the ground, with all infos needed by the maptype */
