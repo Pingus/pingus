@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.24 2002/11/03 14:37:20 grumbel Exp $
+//  $Id: bomber.cxx,v 1.25 2002/11/03 17:32:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,6 +79,7 @@ Bomber::update ()
 {
   sprite.update ();
 
+  // Do something according to the action that was in use before
   switch (pingu->get_previous_action())
     {
     case Actions::Faller:

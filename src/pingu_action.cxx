@@ -1,4 +1,4 @@
-//  $Id: pingu_action.cxx,v 1.15 2002/11/03 14:37:20 grumbel Exp $
+//  $Id: pingu_action.cxx,v 1.16 2002/11/03 17:32:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -106,8 +106,10 @@ PinguAction::move_with_forces ()
   // Apply gravity
   pingu->set_velocity(pingu->get_velocity() + Vector(0.0f, 1.0f));
     
+  // FIXME: What does this variable do?
   Vector resultant_force = pingu->get_velocity();
 
+  // FIXME: and what is this all about?! Can't we just use floats?
   // Strictly speaking x_numerator should be initialised with
   // (resultant_force.y / 2) and y_numerator with (resultant_force.x / 2).
   // This would make the algorithm essentially match the Mid-Point Line

@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.32 2002/11/03 13:29:09 grumbel Exp $
+//  $Id: faller.cxx,v 1.33 2002/11/03 17:32:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,8 +35,7 @@ Faller::Faller (Pingu* p)
     faller(Sprite("Pingus/faller" + to_string(pingu->get_owner ()), "pingus")),
     // FIXME: we can save some cpu cycles & memory if we do this when it
     // is necessary
-    tumbler(Sprite("Pingus/tumble" + to_string(pingu->get_owner()), "pingus")),
-    falling(0)
+    tumbler(Sprite("Pingus/tumble" + to_string(pingu->get_owner()), "pingus"))
 { 
   faller .set_align_center_bottom();
   tumbler.set_align_center_bottom();
@@ -58,7 +57,8 @@ Faller::update ()
     }
 
   // FIXME: This should be triggered at a later point, when close to
-  // FIXME: deadly_velocity or something like that
+  // FIXME: deadly_velocity or something like that. A translation
+  // FIXME: animation for the floater might also help
   if (pingu->get_velocity().y > 5.0 && pingu->request_fall_action())
     return;
 
@@ -68,15 +68,8 @@ Faller::update ()
 
   // Now that the Pingu is moved, check if he hits the ground.
   // FIXME: shouldn't this be done by move_with_forces
-  if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING)
-    { // if pingu is not on ground
-      ++falling;
-	  
-      //if (falling > 3) //FIXME: insert floater check here
-      //pingu->environment = ENV_AIR; 
-    }
-  else // Ping is on ground/water/something
-    {
+  if (rel_getpixel(0, -1) != Groundtype::GP_NOTHING)
+    { // Ping is on ground/water/something
       if (   rel_getpixel(0, -1) == Groundtype::GP_WATER
 	  || rel_getpixel(0, -1) == Groundtype::GP_LAVA)
 	{
@@ -97,8 +90,6 @@ Faller::update ()
 	      pout(PINGUS_DEBUG_ACTIONS) << "Pingu: x Smashed on ground, jumping" << std::endl;
 	    }
 	}
-      // Reset the velocity
-      pingu->set_velocity(Vector(-(pingu->get_velocity().x/3), 0));
     }
 }
 
