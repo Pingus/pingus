@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.39 2002/06/12 10:40:05 torangan Exp $
+//  $Id: World.hh,v 1.40 2002/06/12 11:04:03 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 
 #include <list>
 #include <string>
-#include "boost/smart_ptr.hpp"
 #include "WorldObj.hh"
 
 // Forward declarations
@@ -78,7 +77,7 @@ private:
   ActionHolder*   action_holder;
   ColMap*         colmap;
   PLF*            plf;
-  boost::shared_ptr<View> view;
+  View*           view;
 
   void    init_worldobjs (void);
   void    init_map (void);
@@ -150,7 +149,7 @@ public:
 
   /** Sets the main view, it is needed to play stereo wave and for
       other screen orientated effects */
-  void set_view (boost::shared_ptr<View> v);
+  void set_view (View* v);
 
   PinguHolder* get_pingu_p(void);
   void set_action_holder(ActionHolder*);

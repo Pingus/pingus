@@ -1,4 +1,4 @@
-//  $Id: Playfield.cc,v 1.39 2002/06/10 13:03:35 torangan Exp $
+//  $Id: Playfield.cc,v 1.40 2002/06/12 11:04:03 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -78,13 +78,13 @@ Playfield::Playfield(PLF* level_data, World* w,
       {
 	if (verbose)
 	  std::cout << "Playfield: Using gimmick" << std::endl;
-	view.push_back(shared_ptr<View>(new View(0, 21, x2/2, y2/2, 0.5f)));
-	view.push_back(shared_ptr<View>(new View(x2/2, y1, x2, y2, 1.0f)));
-	view.push_back(shared_ptr<View>(new View(0, y2/2, x2/2, y2, 2.0f)));
+	view.push_back(new View(0, 21, x2/2, y2/2, 0.5f));
+	view.push_back(new View(x2/2, y1, x2, y2, 1.0f));
+	view.push_back(new View(0, y2/2, x2/2, y2, 2.0f));
       } 
     else
       { // !gimmicks_enabled
-	view.push_back(shared_ptr<View>(new View(x1, y1, x2, y2)));
+	view.push_back(new View(x1, y1, x2, y2));
 	
 	view[0]->set_x_offset(((x2 - x1) / 2) - level_data->get_startx());
 	view[0]->set_y_offset(((y2 - y1) / 2) - level_data->get_starty());
@@ -98,12 +98,16 @@ Playfield::~Playfield()
 {
   if (verbose)
     std::cout << "Playfield going down" << std::endl;
+    
+  for (std::vector<View*>::iterator it = view.begin(); it != view.end(); ++it) {
+    delete *it;
+  }
 }
 
 void
 Playfield::draw()
 { 
-  for(std::vector<shared_ptr<View> >::iterator i = view.begin();
+  for(std::vector<View*>::iterator i = view.begin();
       i != view.end(); 
       ++i)
     {

@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.77 2002/06/12 10:40:05 torangan Exp $
+//  $Id: World.cc,v 1.78 2002/06/12 11:04:03 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -354,7 +354,7 @@ World::set_action_holder(ActionHolder* a)
 void 
 World::play_wav (std::string name, const CL_Vector& pos, float volume)
 {
-  if (view.get ())
+  if (view)
     {
       CL_Vector center = view->get_center ();
       float panning = pos.x - center.x;
@@ -375,7 +375,7 @@ World::play_wav (std::string name, const CL_Vector& pos, float volume)
 }
 
 void
-World::set_view (shared_ptr<View> v)
+World::set_view (View* v)
 {
   view = v;
 }
