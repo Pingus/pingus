@@ -12,6 +12,13 @@
     <height>800</height>
   </global>
 
+  <action-list>
+    <blocker count="5"/>
+    <bomber count="2"/>
+    <bridger count="20"/>
+    <digger count="5"/>
+  </action-list>
+
 <background type="surface">
   <surface><resource type="datafile">
     <resource-datafile>textures</resource-datafile>
@@ -29,14 +36,12 @@
   <para-y>0.1</para-y>
   <stretch-x>0</stretch-x>
   <stretch-y>0</stretch-y>
+  <position>
+    <x-pos>0</x-pos>
+    <y-pos>0</y-pos>
+    <z-pos>-100</z-pos>
+  </position>
 </background>
-
-  <action-list>
-    <blocker count="5"/>
-    <bomber count="2"/>
-    <bridger count="20"/>
-    <digger count="5"/>
-  </action-list>
 
 <groundpiece type="bridge">
   <surface><resource type="datafile">
@@ -663,8 +668,8 @@
   <owner-id>0</owner-id></exit>
 
   <worldobj type="teleporter">  <position>
-    <x-pos>435</x-pos>
-    <y-pos>289</y-pos>
+    <x-pos>457</x-pos>
+    <y-pos>344</y-pos>
     <z-pos>0</z-pos>
   </position>
     <target>

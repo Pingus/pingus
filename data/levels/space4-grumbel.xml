@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0"  encoding="ISO-8859-1"?>
 
 <pingus-level>
   <global>
@@ -13,6 +13,18 @@
     <width>1216</width>
     <height>608</height>
   </global>
+
+  <action-list>
+    <basher count="20"/>
+    <blocker count="20"/>
+    <bomber count="20"/>
+    <bridger count="20"/>
+    <climber count="20"/>
+    <digger count="20"/>
+    <floater count="20"/>
+    <jumper count="20"/>
+    <miner count="20"/>
+  </action-list>
 
 <background type="surface">
   <surface><resource type="datafile">
@@ -31,25 +43,12 @@
   <para-y>0.5</para-y>
   <stretch-x>0</stretch-x>
   <stretch-y>0</stretch-y>
+  <position>
+    <x-pos>0</x-pos>
+    <y-pos>0</y-pos>
+    <z-pos>-100</z-pos>
+  </position>
 </background>
-
-<background type="starfield">
-  <small-stars count="100"/>
-  <middle-stars count="50"/>
-  <large-stars count="20"/>
-</background>
-
-  <action-list>
-    <basher count="20"/>
-    <blocker count="20"/>
-    <bomber count="20"/>
-    <bridger count="20"/>
-    <climber count="20"/>
-    <digger count="20"/>
-    <floater count="20"/>
-    <jumper count="20"/>
-    <miner count="20"/>
-  </action-list>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
@@ -795,6 +794,12 @@
   </position>
 </groundpiece>
 
+<background type="starfield">
+  <small-stars count="100"/>
+  <middle-stars count="50"/>
+  <large-stars count="20"/>
+</background>
+
 <entrance>
   <position>
     <x-pos>701</x-pos>
@@ -804,19 +809,20 @@
   <type>generic</type>
   <direction>misc</direction>
   <release-rate>50</release-rate>
+  <owner-id>0</owner-id>
 </entrance>
 
-<exit>
+<exit use-old-pos-handling="0">
   <position>
-    <x-pos>143</x-pos>
-    <y-pos>134</y-pos>
+    <x-pos>220</x-pos>
+    <y-pos>252</y-pos>
     <z-pos>0</z-pos>
   </position>
   <surface><resource type="datafile">
     <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/space</resource-ident>
   </resource></surface>
-</exit>
+  <owner-id>0</owner-id></exit>
 
 <hotspot>
   <surface><resource type="datafile">
@@ -839,6 +845,24 @@
     <z-pos>1000</z-pos>
   </position>
   </start-position>
+
+<trap>
+  <type>spike</type>
+  <position>
+    <x-pos>637</x-pos>
+    <y-pos>218</y-pos>
+    <z-pos>-100</z-pos>
+  </position>
+</trap>
+
+<trap>
+  <type>spike</type>
+  <position>
+    <x-pos>450</x-pos>
+    <y-pos>186</y-pos>
+    <z-pos>-100</z-pos>
+  </position>
+</trap>
 
 </pingus-level>
 
