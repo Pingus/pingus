@@ -21,7 +21,6 @@ libpingus_backgrounds_a_SOURCES = thunderstorm_background.cxx     thunderstorm_b
                                   thunderstorm_background_data.cxx thunderstorm_background_data.hxx \
                                   surface_background.cxx          surface_background.hxx          \
                                   surface_background_data.cxx      surface_background_data.hxx      \
-                                  starfield_background.cxx        starfield_background.hxx \
-                                  solidcolor_background.cxx       solidcolor_background.hxx
+                                  starfield_background.cxx        starfield_background.hxx 
 
 # EOF #

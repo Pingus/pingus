@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.16 2002/09/14 19:06:34 torangan Exp $
+//  $Id: object_selector.cxx,v 1.17 2002/09/15 09:54:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,8 +41,9 @@
 
 #include "../backgrounds/starfield_background.hxx"
 #include "../backgrounds/surface_background_data.hxx"
-#include "../backgrounds/solidcolor_background.hxx"
 #include "../backgrounds/thunderstorm_background.hxx"
+
+#include "../worldobjsdata/solid_color_background_data.hxx"
 
 #include "../editorobjs/bumper_obj.hxx"
 #include "../editorobjs/conveyor_belt_obj.hxx"
@@ -59,6 +60,7 @@
 
 using namespace std;
 using namespace EditorObjs;
+using namespace WorldObjsData;
 
 namespace EditorNS {
 
@@ -375,7 +377,6 @@ ObjectSelector::select_obj_type()
 
   CL_Display::clear_display();
   font->print_left(20, 20, _("Which object do you want?"));
-  //font->print_left(20, 50, _("t - Trap"));
   font->print_left(20, 70, _("g - Groundpiece (ground)"));
   font->print_left(20, 90, _("s - Groundpiece (solid)"));
   font->print_left(20,110, _("b - Groundpiece (bridge)"));
@@ -524,15 +525,15 @@ ObjectSelector::get_background()
 	  exit_loop = true;
 	  break;
 	case CL_KEY_2:
-	  lst = SolidColorBackgroundData ().create_EditorObj ();
+	  lst = SolidColorBackgroundData().create_EditorObj();
 	  exit_loop = true;
 	  break;
 	case CL_KEY_3:
-	  lst = StarfieldBackgroundData ().create_EditorObj ();
+	  lst = StarfieldBackgroundData().create_EditorObj();
 	  exit_loop = true;
 	  break;
 	case CL_KEY_4:
-	  lst = ThunderstormBackgroundData ().create_EditorObj ();
+	  lst = ThunderstormBackgroundData ().create_EditorObj();
 	  exit_loop = true;
 	  break;
 	}
@@ -541,7 +542,7 @@ ObjectSelector::get_background()
 }
 
 std::string
-ObjectSelector::select_surface(vector<surface_obj>& sur_list)
+ObjectSelector::select_surface (vector<surface_obj>& sur_list)
 {
   std::cout << "ObjectSelector: Selecting surface out of: " << sur_list.size () << std::endl;
   SurfaceSelector sur_selector(&sur_list);
@@ -550,7 +551,7 @@ ObjectSelector::select_surface(vector<surface_obj>& sur_list)
 }
 
 std::string
-ObjectSelector::select_surface(const std::string & resource_file)
+ObjectSelector::select_surface (const std::string & resource_file)
 {
   std::string str;
   bool datafile_loaded;
