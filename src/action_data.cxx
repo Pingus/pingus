@@ -1,4 +1,4 @@
-//  $Id: action_data.cxx,v 1.2 2002/06/29 16:04:22 grumbel Exp $
+//  $Id: action_data.cxx,v 1.3 2002/06/29 17:39:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ void init_default_actions ()
 {
   default_actions.push_back (ActionData (Basher, 20));
   default_actions.push_back (ActionData (Blocker, 20));
-  default_actions.push_back (ActionData (Boarder, 20));
+  //default_actions.push_back (ActionData (Boarder, 20));
   default_actions.push_back (ActionData (Bomber, 20));
   default_actions.push_back (ActionData (Bridger, 20));
   default_actions.push_back (ActionData (Climber, 20));
@@ -36,9 +36,9 @@ void init_default_actions ()
   default_actions.push_back (ActionData (Floater, 20));
   default_actions.push_back (ActionData (Jumper, 20));
   default_actions.push_back (ActionData (Miner, 20));
-  default_actions.push_back (ActionData (Rocketlauncher, 20));
+  //default_actions.push_back (ActionData (Rocketlauncher, 20));
   default_actions.push_back (ActionData (Slider, 20));
-  default_actions.push_back (ActionData (Superman, 0));
+  //default_actions.push_back (ActionData (Superman, 0));
 }
 
 /* EOF */

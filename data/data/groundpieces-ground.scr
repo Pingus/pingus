@@ -258,6 +258,7 @@ section snow
         groundice = ../images/groundpieces/ground/snow/groundice.png (type=surface);
         ice1 = ../images/groundpieces/ground/snow/ice1.png (type=surface);
         ice2 = ../images/groundpieces/ground/snow/ice2.png (type=surface);
+        iceblock1 = ../images/groundpieces/ground/snow/iceblock1.png (type=surface);
         igloo = ../images/groundpieces/ground/snow/igloo.png (type=surface);
         piece1 = ../images/groundpieces/ground/snow/piece1.png (type=surface);
         piece2 = ../images/groundpieces/ground/snow/piece2.png (type=surface);
