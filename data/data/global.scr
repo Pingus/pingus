@@ -254,12 +254,12 @@ section GroundPieces
 	        granit5 = ../images/groundpieces/solid/rock/granit5.png (type=surface, x=0, y=0, width=138, height=101);
 	        granit6 = ../images/groundpieces/solid/rock/granit6.png (type=surface, x=0, y=0, width=88, height=150);
 
-		rock1   = ../images/groundpieces/ground/rock/rock1.png    (type=surface, x=0, y=0, width=188,  height=98);
-		rock2   = ../images/groundpieces/ground/rock/rock2.png    (type=surface, x=0, y=0, width=152,  height=196);
-		rock3   = ../images/groundpieces/ground/rock/rock3.png    (type=surface, x=0, y=0, width=210,  height=121);
-		rock4   = ../images/groundpieces/ground/rock/rock4.png    (type=surface, x=0, y=0, width=136,  height=191);
-		rock5   = ../images/groundpieces/ground/rock/rock5.png    (type=surface, x=0, y=0, width=101,  height=88);
-		rock6   = ../images/groundpieces/ground/rock/rock6.png    (type=surface, x=0, y=0, width=143,  height=185);
+		rock1   = ../images/groundpieces/ground/foliage/rock1.png    (type=surface, x=0, y=0, width=188,  height=98);
+		rock2   = ../images/groundpieces/ground/foliage/rock2.png    (type=surface, x=0, y=0, width=152,  height=196);
+		rock3   = ../images/groundpieces/ground/foliage/rock3.png    (type=surface, x=0, y=0, width=210,  height=121);
+		rock4   = ../images/groundpieces/ground/foliage/rock4.png    (type=surface, x=0, y=0, width=136,  height=191);
+		rock5   = ../images/groundpieces/ground/foliage/rock5.png    (type=surface, x=0, y=0, width=101,  height=88);
+		rock6   = ../images/groundpieces/ground/foliage/rock6.png    (type=surface, x=0, y=0, width=143,  height=185);
 	}
 
 	section Test

@@ -60,6 +60,12 @@ section foliage
         midtree1 = ../images/groundpieces/ground/foliage/midtree1.png (type=surface);
         midtree2 = ../images/groundpieces/ground/foliage/midtree2.png (type=surface);
         oak1 = ../images/groundpieces/ground/foliage/oak1.png (type=surface);
+        rock1 = ../images/groundpieces/ground/foliage/rock1.png (type=surface);
+        rock2 = ../images/groundpieces/ground/foliage/rock2.png (type=surface);
+        rock3 = ../images/groundpieces/ground/foliage/rock3.png (type=surface);
+        rock4 = ../images/groundpieces/ground/foliage/rock4.png (type=surface);
+        rock5 = ../images/groundpieces/ground/foliage/rock5.png (type=surface);
+        rock6 = ../images/groundpieces/ground/foliage/rock6.png (type=surface);
         smallbush = ../images/groundpieces/ground/foliage/smallbush.png (type=surface);
         smallbush2 = ../images/groundpieces/ground/foliage/smallbush2.png (type=surface);
         smallbush3 = ../images/groundpieces/ground/foliage/smallbush3.png (type=surface);
@@ -242,12 +248,6 @@ section rock
         blackrock2 = ../images/groundpieces/ground/rock/blackrock2.png (type=surface);
         blackrock3 = ../images/groundpieces/ground/rock/blackrock3.png (type=surface);
         blackrock4 = ../images/groundpieces/ground/rock/blackrock4.png (type=surface);
-        rock1 = ../images/groundpieces/ground/rock/rock1.png (type=surface);
-        rock2 = ../images/groundpieces/ground/rock/rock2.png (type=surface);
-        rock3 = ../images/groundpieces/ground/rock/rock3.png (type=surface);
-        rock4 = ../images/groundpieces/ground/rock/rock4.png (type=surface);
-        rock5 = ../images/groundpieces/ground/rock/rock5.png (type=surface);
-        rock6 = ../images/groundpieces/ground/rock/rock6.png (type=surface);
         stone1 = ../images/groundpieces/ground/rock/stone1.png (type=surface);
 }
 
