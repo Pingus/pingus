@@ -106,8 +106,6 @@ config_xml.cxx \
 config_xml.hxx \
 console.cxx \
 console.hxx \
-counter.cxx \
-counter.hxx \
 credits.cxx \
 credits.hxx \
 debug.cxx \
