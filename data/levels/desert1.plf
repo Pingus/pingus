@@ -1,13 +1,13 @@
 /* This level was created with the PLE
- * $Id: desert1.plf,v 1.2 2000/06/25 18:12:58 grumbel Exp $
+ * $Id: desert1.plf,v 1.3 2000/06/26 15:37:26 grumbel Exp $
  */
 global {
-  start_x_pos = 0;
-  start_y_pos = 0;
+  start_x_pos = 348;
+  start_y_pos = 456;
   levelname = "Entering the pyramid";
   description = "After their long and dangerous journey throu the desert they finally reach the large pyramid...";
-  number_of_pingus = 100;
-  number_to_save = 50;
+  number_of_pingus = 50;
+  number_to_save = 30;
   time = 9000;
 }
 
@@ -39,20 +39,38 @@ buttons {
   bridger = 10;
 }
 
-entrance {
-  type  = generic;
-  x_pos = 348;
-  y_pos = 456;
-  z_pos = 0;
-  release_rate = 25;
-  direction = left;
-}
-
 exit {
   image = (resource)"Exits/desert";
-  x_pos = 1039;
+  x_pos = 1179;
   y_pos = 407;
   z_pos = 0;
+}
+
+hotspot {
+  image = (resource)"Entrances/wood_bottom";
+  x_pos = 304;
+  y_pos = 390;
+  z_pos = -100;
+  speed = -1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource)"Entrances/wood_top";
+  x_pos = 304;
+  y_pos = 390;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+entrance {
+  type  = generic;
+  x_pos = 355;
+  y_pos = 418;
+  z_pos = 0;
+  release_rate = 25;
+  direction = right;
 }
 
 /* EOF */

@@ -1,9 +1,9 @@
 /* This level was created with the PLE
- * $Id: desert2.plf,v 1.1 2000/06/25 10:10:14 grumbel Exp $
+ * $Id: desert2.plf,v 1.2 2000/06/26 15:37:26 grumbel Exp $
  */
 global {
-  start_x_pos = 0;
-  start_y_pos = 0;
+  start_x_pos = 290;
+  start_y_pos = 228;
   levelname = "The window room";
   description = "After the Pingus have entered the pyramid, they reach a large room with a large window. The only problem they have is that the entrance to the room is much to high to survive the landing.
 Can you help them?";
@@ -42,6 +42,15 @@ buttons {
   floater = 5;
 }
 
+hotspot {
+  image = (resource)"Entrances/wood_bottom";
+  x_pos = 241;
+  y_pos = 171;
+  z_pos = -100;
+  speed = -1;
+  para = "1";
+}
+
 exit {
   image = (resource)"Exits/desert";
   x_pos = 1282;
@@ -51,11 +60,20 @@ exit {
 
 entrance {
   type  = generic;
-  x_pos = 290;
-  y_pos = 228;
+  x_pos = 293;
+  y_pos = 197;
   z_pos = 0;
   release_rate = 25;
   direction = left;
+}
+
+hotspot {
+  image = (resource)"Entrances/wood_top";
+  x_pos = 241;
+  y_pos = 171;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
 }
 
 /* EOF */

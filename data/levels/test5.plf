@@ -1,5 +1,5 @@
 /* This level was created with the PLE
- * $Id: test5.plf,v 1.1 2000/06/24 15:05:36 grumbel Exp $
+ * $Id: test5.plf,v 1.2 2000/06/26 15:37:26 grumbel Exp $
  */
 global {
   start_x_pos = 0;
@@ -21,7 +21,7 @@ ground {
 }
 
 background {
-  image = (resource:textures.dat)"Textures/crystal";
+  image = (file)"images/bla.pcx";
   dim   = "0";
   red   = "0";
   green = "0";

@@ -43,6 +43,8 @@ section Buttons
 
 section Hotspots
 {
+        engine = ../images/hotspots/engine.tga (type=surface, x=0, y=0, width=108, height=166, array=4x1);
+
 //	star        = ../images/star.tga       (type=surface, x=0, y=0, width=173,  height=173);
 	left_arrow = ../images/hotspots/left_arrow.pcx (type=surface, x=0, y=0, width=100, height=73, tcol=0);
 	right_arrow = ../images/hotspots/right_arrow.pcx (type=surface, x=0, y=0, width=100, height=73, tcol=0);
@@ -110,6 +112,9 @@ section Entrances {
 	space = ../images/entrances/space.tga (type=surface, x=0, y=0, width=62, height=64, array=5x1);
 
 	sun = ../images/hotspots/sun.tga (type=surface, x=0, y=0, width=215, height=215);
+
+        wood_bottom = ../images/entrances/wood_bottom.pcx (type=surface, x=0, y=0, width=100, height=57, tcol=0);
+        wood_top = ../images/entrances/wood_top.pcx (type=surface, x=0, y=0, width=100, height=44, tcol=0);
 }
 
 section GroundPieces

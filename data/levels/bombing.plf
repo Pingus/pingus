@@ -1,8 +1,7 @@
 /* This level was created with the PLE
- * $Id: bombing.plf,v 1.7 2000/06/12 12:05:28 grumbel Exp $
+ * $Id: bombing.plf,v 1.8 2000/06/26 15:37:26 grumbel Exp $
  */
 global {
-  author = "Craig Timpany <timpany@pingus.cx>";
   start_x_pos = 0;
   start_y_pos = 0;
   levelname = "Bombing run";
@@ -43,13 +42,22 @@ buttons {
   miner = 4;
 }
 
-entrance {
-  type  = generic;
-  x_pos = 274;
-  y_pos = 151;
-  z_pos = 0;
-  release_rate = 25;
-  direction = left;
+liquid {
+  image = (resource)"Liquid/lava";
+  x_pos = 257;
+  y_pos = 551;
+  z_pos = -100;
+  width = 800;
+  speed = 50;
+}
+
+hotspot {
+  image = (resource)"Entrances/wood_bottom";
+  x_pos = 221;
+  y_pos = 95;
+  z_pos = -100;
+  speed = -1;
+  para = "1";
 }
 
 exit {
@@ -59,13 +67,22 @@ exit {
   z_pos = 0;
 }
 
-liquid {
-  image = (resource)"Liquid/lava";
-  x_pos = 257;
-  y_pos = 551;
-  z_pos = -100;
-  width = 800;
-  speed = 50;
+entrance {
+  type  = generic;
+  x_pos = 274;
+  y_pos = 121;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+hotspot {
+  image = (resource)"Entrances/wood_top";
+  x_pos = 221;
+  y_pos = 95;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
 }
 
 /* EOF */

@@ -1,5 +1,5 @@
 /* This level was created with the PLE
- * $Id: rockhopping.plf,v 1.1 2000/06/13 17:51:14 grumbel Exp $
+ * $Id: rockhopping.plf,v 1.2 2000/06/26 15:37:26 grumbel Exp $
  */
 global {
   start_x_pos = 0;
@@ -16,7 +16,7 @@ global {
 ground {
   maptype = "SPOT";
   width   = 1216;
-  height  = 608;
+  height  = 800;
   colmap  = (auto);
 }
 
@@ -28,6 +28,10 @@ background {
   blue  = "0";
   scroll_x = 0;
   scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
 }
 
 buttons {
@@ -41,27 +45,45 @@ buttons {
   miner = 1;
 }
 
+trap {
+  name = "laser_exit";
+  x_pos = 413;
+  y_pos = 433;
+  z_pos = -100;
+}
+
 entrance {
   type  = generic;
-  x_pos = 326;
-  y_pos = 13;
+  x_pos = 473;
+  y_pos = 86;
   z_pos = 0;
   release_rate = 25;
   direction = left;
 }
 
+hotspot {
+  image = (resource)"Entrances/wood_bottom";
+  x_pos = 423;
+  y_pos = 60;
+  z_pos = -100;
+  speed = -1;
+  para = "1";
+}
+
 exit {
   image = (resource)"Exits/stone";
-  x_pos = 699;
-  y_pos = 440;
+  x_pos = 875;
+  y_pos = 515;
   z_pos = 0;
 }
 
-trap {
-  name = "laser_exit";
-  x_pos = 237;
-  y_pos = 358;
-  z_pos = 0;
+hotspot {
+  image = (resource)"Entrances/wood_top";
+  x_pos = 423;
+  y_pos = 60;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
 }
 
 /* EOF */

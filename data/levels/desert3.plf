@@ -1,9 +1,9 @@
 /* This level was created with the PLE
- * $Id: desert3.plf,v 1.1 2000/06/25 18:12:58 grumbel Exp $
+ * $Id: desert3.plf,v 1.2 2000/06/26 15:37:26 grumbel Exp $
  */
 global {
-  start_x_pos = 0;
-  start_y_pos = 0;
+  start_x_pos = 286;
+  start_y_pos = 493;
   levelname = "Pass the pedestal";
   description = "After the Pingus successfully passed the large window room, they are entering another great hall. A large pedestal is blocking the way to the entrance.";
   number_of_pingus = 30;
@@ -44,11 +44,27 @@ buttons {
 
 entrance {
   type  = generic;
-  x_pos = 286;
-  y_pos = 493;
+  x_pos = 290;
+  y_pos = 455;
   z_pos = 0;
   release_rate = 75;
   direction = right;
+}
+
+exit {
+  image = (resource)"Exits/desert";
+  x_pos = 1331;
+  y_pos = 467;
+  z_pos = 0;
+}
+
+hotspot {
+  image = (resource)"Entrances/wood_bottom";
+  x_pos = 242;
+  y_pos = 430;
+  z_pos = -100;
+  speed = -1;
+  para = "1";
 }
 
 hotspot {
@@ -60,11 +76,13 @@ hotspot {
   para = "1";
 }
 
-exit {
-  image = (resource)"Exits/desert";
-  x_pos = 1331;
-  y_pos = 467;
-  z_pos = 0;
+hotspot {
+  image = (resource)"Entrances/wood_top";
+  x_pos = 242;
+  y_pos = 431;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
 }
 
 /* EOF */

@@ -1,3 +1,6 @@
+/* This level was created with the PLE
+ * $Id: snow1.plf,v 1.4 2000/06/26 15:37:26 grumbel Exp $
+ */
 global {
   start_x_pos = 0;
   start_y_pos = 0;
@@ -11,7 +14,6 @@ global {
 
 ground {
   maptype = "SPOT";
-  data    = (file)"snow1.psm";
   width   = 2400;
   height  = 928;
   colmap  = (auto);
@@ -19,9 +21,16 @@ ground {
 
 background {
   image = (resource:textures.dat)"Textures/icetile";
-  dim = "0.5";
+  dim   = "0.5";
+  red   = "0";
+  green = "0";
+  blue  = "0";
   scroll_x = 0;
   scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
 }
 
 buttons {
@@ -35,13 +44,20 @@ buttons {
   miner = 0;
 }
 
-entrance {
-  type  = generic;
-  x_pos = 1989;
-  y_pos = 217;
-  z_pos = 0;
-  release_rate = 30;
-  direction = left;
+liquid {
+  image = (resource)"Liquid/water2";
+  x_pos = -43;
+  y_pos = 873;
+  z_pos = -100;
+  width = 2556;
+  speed = 50;
+}
+
+trap {
+  name = "laser_exit";
+  x_pos = 695;
+  y_pos = 281;
+  z_pos = -100;
 }
 
 exit {
@@ -51,12 +67,13 @@ exit {
   z_pos = 0;
 }
 
-liquid {
-  image = (resource)"Liquid/water2";
-  x_pos = -43;
-  y_pos = 873;
+hotspot {
+  image = (resource)"Entrances/wood_bottom";
+  x_pos = 1943;
+  y_pos = 176;
   z_pos = -100;
-  width = 2556;
+  speed = -1;
+  para = "1";
 }
 
 liquid {
@@ -65,13 +82,25 @@ liquid {
   y_pos = 883;
   z_pos = 100;
   width = 2524;
+  speed = 50;
 }
 
-trap {
-  name = "laser_exit";
-  x_pos = 695;
-  y_pos = 281;
-  z_pos = -100;
+entrance {
+  type  = generic;
+  x_pos = 1993;
+  y_pos = 201;
+  z_pos = 0;
+  release_rate = 30;
+  direction = left;
+}
+
+hotspot {
+  image = (resource)"Entrances/wood_top";
+  x_pos = 1943;
+  y_pos = 176;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
 }
 
 /* EOF */

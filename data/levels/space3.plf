@@ -1,13 +1,11 @@
 /* This level was created with the PLE
- * $Id: space3.plf,v 1.1 2000/06/24 15:05:36 grumbel Exp $
+ * $Id: space3.plf,v 1.2 2000/06/26 15:37:26 grumbel Exp $
  */
 global {
-  start_x_pos = 0;
-  start_y_pos = 0;
-  levelname = "PLE Level";
-  description = "This level has no name
-
-";
+  start_x_pos = 980;
+  start_y_pos = 550;
+  levelname = "Danger at Space Station 6";
+  description = "After passing some checkpoints the Pingus finally reach Space Station 6, but the danger has not an end...";
   number_of_pingus = 100;
   number_to_save = 50;
   time = 9000;
@@ -21,7 +19,7 @@ ground {
 }
 
 background {
-  image = (resource:textures.dat)"Textures/space";
+  image = (resource:textures.dat)"Textures/stars";
   dim   = "0";
   red   = "0";
   green = "0";
@@ -46,22 +44,31 @@ buttons {
   miner = 20;
 }
 
+hotspot {
+  image = (resource)"Hotspots/engine";
+  x_pos = 1201;
+  y_pos = 1056;
+  z_pos = 0;
+  speed = 1;
+  para = "1";
+}
+
+hotspot {
+  image = (resource)"Hotspots/engine";
+  x_pos = 683;
+  y_pos = 1056;
+  z_pos = 0;
+  speed = 1;
+  para = "1";
+}
+
 entrance {
   type  = generic;
   x_pos = 979;
   y_pos = 555;
   z_pos = 0;
   release_rate = 25;
-  direction = left;
-}
-
-hotspot {
-  image = (resource)"Entrances/space";
-  x_pos = 950;
-  y_pos = 510;
-  z_pos = 0;
-  speed = -1;
-  para = "1";
+  direction = misc;
 }
 
 exit {
@@ -69,6 +76,15 @@ exit {
   x_pos = 1553;
   y_pos = 949;
   z_pos = 0;
+}
+
+hotspot {
+  image = (resource)"Entrances/space";
+  x_pos = 950;
+  y_pos = 510;
+  z_pos = 100;
+  speed = 1;
+  para = "1";
 }
 
 /* EOF */

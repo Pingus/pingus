@@ -1,8 +1,8 @@
-ground : (resource:global.dat)GroundPieces/Rock/rock2 : 261 : 13;
-ground : (resource:global.dat)GroundPieces/Rock/rock3 : 652 : 488;
-ground : (resource:global.dat)GroundPieces/Rock/rock3 : 198 : 409;
-ground : (resource:global.dat)GroundPieces/Rock/rock5 : 231 : 91;
-ground : (resource:global.dat)GroundPieces/Rock/rock3 : -5 : 289;
-ground : (resource:global.dat)GroundPieces/Rock/rock3 : 361 : 248;
-ground : (resource:global.dat)GroundPieces/Rock/rock6 : 510 : 492;
-ground : (resource:global.dat)GroundPieces/Rock/rock2 : 464 : 413;
+ground : (resource:global.dat)GroundPieces/Rock/rock2 : 439 : 120;
+ground : (resource:global.dat)GroundPieces/Rock/rock3 : 828 : 563;
+ground : (resource:global.dat)GroundPieces/Rock/rock3 : 374 : 484;
+ground : (resource:global.dat)GroundPieces/Rock/rock5 : 409 : 198;
+ground : (resource:global.dat)GroundPieces/Rock/rock3 : 171 : 364;
+ground : (resource:global.dat)GroundPieces/Rock/rock3 : 537 : 323;
+ground : (resource:global.dat)GroundPieces/Rock/rock6 : 686 : 567;
+ground : (resource:global.dat)GroundPieces/Rock/rock2 : 640 : 488;

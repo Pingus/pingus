@@ -1,5 +1,5 @@
 /* This level was created with the PLE
- * $Id: crystal1.plf,v 1.4 2000/06/20 20:35:15 grumbel Exp $
+ * $Id: crystal1.plf,v 1.5 2000/06/26 15:37:26 grumbel Exp $
  */
 global {
   start_x_pos = 0;
@@ -43,45 +43,6 @@ buttons {
   miner = 20;
 }
 
-exit {
-  image = (resource)"Exits/stone";
-  x_pos = 105;
-  y_pos = 660;
-  z_pos = 0;
-}
-
-liquid {
-  image = (resource)"Liquid/water2";
-  x_pos = -32;
-  y_pos = 736;
-  z_pos = -100;
-  width = 1056;
-  speed = 50;
-}
-
-liquid {
-  image = (resource)"Liquid/water2";
-  x_pos = 0;
-  y_pos = 746;
-  z_pos = 100;
-  width = 1024;
-  speed = 50;
-}
-
-trap {
-  name = "guillotine";
-  x_pos = 275;
-  y_pos = 172;
-  z_pos = -100;
-}
-
-trap {
-  name = "spike";
-  x_pos = 265;
-  y_pos = 688;
-  z_pos = 100;
-}
-
 hotspot {
   image = (resource)"GroundPieces/Crystal/block";
   x_pos = 422;
@@ -118,6 +79,22 @@ hotspot {
   para = "1";
 }
 
+liquid {
+  image = (resource)"Liquid/water2";
+  x_pos = -32;
+  y_pos = 736;
+  z_pos = -100;
+  width = 1056;
+  speed = 50;
+}
+
+trap {
+  name = "guillotine";
+  x_pos = 275;
+  y_pos = 172;
+  z_pos = -100;
+}
+
 trap {
   name = "laser_exit";
   x_pos = 455;
@@ -127,11 +104,18 @@ trap {
 
 entrance {
   type  = generic;
-  x_pos = 486;
-  y_pos = 174;
+  x_pos = 453;
+  y_pos = 173;
   z_pos = 0;
   release_rate = 60;
   direction = left;
+}
+
+exit {
+  image = (resource)"Exits/stone";
+  x_pos = 105;
+  y_pos = 660;
+  z_pos = 0;
 }
 
 hotspot {
@@ -177,6 +161,22 @@ hotspot {
   z_pos = 100;
   speed = -1;
   para = "1";
+}
+
+liquid {
+  image = (resource)"Liquid/water2";
+  x_pos = 0;
+  y_pos = 746;
+  z_pos = 100;
+  width = 1024;
+  speed = 50;
+}
+
+trap {
+  name = "spike";
+  x_pos = 265;
+  y_pos = 688;
+  z_pos = 100;
 }
 
 /* EOF */
