@@ -1,4 +1,4 @@
-//  $Id: stat.hxx,v 1.9 2002/10/12 13:30:51 grumbel Exp $
+//  $Id: stat.hxx,v 1.10 2002/10/12 23:34:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,7 +66,7 @@ public:
 
   /** Save the given nodes status to the file from which they are
       loaded */
-  void save (std::list<boost::shared_ptr<Node> >& nodes);
+  //void save (std::list<boost::shared_ptr<Node> >& nodes);
 
   /// @return true if the node is finished
   bool finished (int id);

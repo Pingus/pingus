@@ -1,4 +1,4 @@
-//  $Id: node.hxx,v 1.9 2002/09/28 11:52:26 torangan Exp $
+//  $Id: node.hxx,v 1.10 2002/10/12 23:34:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_WORLDMAP_NODE_HXX
 
 #include "../sprite.hxx"
+#include "graph.hxx"
 #include "node_data.hxx"
 
 class Vector;
@@ -105,8 +106,8 @@ public:
   void draw (Vector offset);
   std::string get_string ();
 
-  int  get_id ()               { return NodeData::get_id(); }
-  Vector get_pos ()         { return NodeData::get_pos(); }
+  NodeId  get_id () { return NodeData::get_id(); }
+  Vector  get_pos () { return NodeData::get_pos(); }
   std::list<int>& get_links () { return NodeData::get_links(); }
       
 private:

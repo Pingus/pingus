@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.13 2002/09/28 11:52:26 torangan Exp $
+//  $Id: pingus.hxx,v 1.14 2002/10/12 23:34:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,14 @@
 #ifndef HEADER_PINGUS_WORLDMAP_PINGUS_HXX
 #define HEADER_PINGUS_WORLDMAP_PINGUS_HXX
 
-#include "../pingus.hxx"
 #include <math.h>
 #include <queue>
-#include "node.hxx"
+
+#include "../sprite.hxx"
+#include "../vector.hxx"
+#include "../pingus.hxx"
+#include "drawable.hxx"
+#include "graph.hxx"
 
 namespace boost {
   template <class T> class shared_ptr;
@@ -33,26 +37,27 @@ namespace WorldMapNS {
 
 /** This is the representation of the horde of Pingus which will walk
     on the worldmap */
-class Pingus
+class Pingus : public Drawable
 {
 private:
-#if TODO
+  Sprite sprite;
+
   /** The node on which the pingu currently stands, 0 if the pingu is
       currently on the move to another node */
-  Node* current_node;
+  NodeId current_node;
   
   /** The node from which the pingu as started its walk to the
       target_node, value is undefined when the pingu is currently
       standing on a node */
-  Node* source_node;
+  NodeId source_node;
  
   /** The node to which the pingu is currently walking, value is
       undefined when the pingu is currently standing on a node */
-  Node* target_node;
+  NodeId target_node;
 
   /** The node path to walk. The edge between two nodes is itself
       represented as a array of positions */
-  std::vector<Node*> node_path;
+  std::vector<NodeId> node_path;
 
   /** The path which represents an edge between two nodes */
   std::vector<Vector> edge_path;
@@ -69,150 +74,32 @@ private:
   /** Current position of the pingu, only for caching purpose */
   Vector pos;
 
-  void draw (GraphicContext& gc);
-
-  void update_walk (float delta)
-  {
-    // Update the position
-    edge_path_position += velocity * delta;
-
-    if (edge_path_position > edge_path_length) // target reached
-      {
-	if (node_path.empty ()) // final target reached
-	  {
-	    current_node = target_node;
-	  }
-	else // edge is traveled, now go to the next node
-	  {
-	    source_node = target_node;
-	    target_node = node_path.top ();
-	    node_path.pop ();
-
-	    edge_path_position = 0.0f;
-	    edge_path = get_edge (source_node, target_node)->data;
-	    edge_path_lenght   = calc_edge_path_length ();
-	  }
-      }
-
-    // Recalc pingu position on the screen
-    pos = calc_pos ();
-  }
-  
-  /** @return true if the node is reachable, false otherwise */
-  bool walk_to_node (Node* target)
-  {
-    if (current_node) // pingu stands still
-      {
-	node_path = worldmap->find_path (current_node, target);
-      }
-    else // pingu between two nodes
-      {
-	node_path1 = worldmap->find_path (source_node, target);
-	node_path2 = worldmap->find_path (target_node, target);
-	
-	// Select the shorter path
-	if (length (node_path1) < length (node_path2))
-	  { // walk to source node, which means to reverse the pingu
-	    node_path = node_path1;
-
-	    // Reverse the pingu
-	    swap(target_node, source_node);
-	    std::reverse(edge_path.begin (), edge_path.end ());
-	    edge_path_position = edge_path_lenght - edge_path_position;
-	  }
-	else
-	  { // walk to target_node
-	    node_path = node_path2;
-	  }	
-      }
-  }
-  
-  /** calculate the position of the pingu */
-  Vector calc_pos ()
-  {
-    if (current_node) // pingu stands still
-      {
-	return current_node->get_pos ();
-      }
-    else // between two nodes
-      {
-	iterator current = edge_path.begin ();
-	iterator next    = edge_path.begin () + 1;
-
-	float comp_length = 0.0f;
-	while (next != end)
-	  {
-	    float length = line_length (current, next);
-
-	    if (comp_length + length > edge_path_position) 
-	      {
-		float perc = (edge_path_position - comp_length) // length to walk from current node
-		  / length;
-
-		return interpol (current, next, perc);
-	      }
-
-	    ++current;
-	    ++next;
-	  }
-	assert (!"This shouldn't happen, traveled bejoint target node");
-	return target_node->get_pos ();
-      }
-  }
-
-  void update (float delta)
-  {
-    sprite.update (delta);
-
-    if (current_node)
-      {
-	// do stuff when pingu is on a node
-      }
-    else // pingu walking
-      {
-	walk (delta);
-      }
-  }
-  
-  /** @return the node on which the pingu is currently standing, 0 is
-      returned if the pingu is currently between two nodes */
-  Node* get_node () {
-    return current_node;
-  }
-#endif 
-
-  Sprite sprite;
-  Vector pos;
-  std::queue<Node*> targets;
-  bool is_left;
-  Node* current_node;
-
+  Vector velocity;
 public:
   Pingus ();
   ~Pingus ();
 
-  void draw (const Vector& offset);
-  void update (float delta);
+  void draw (GraphicContext& gc);
 
-  /** Let the pingu walk to the given node
-      @param node The node to walk to */
-  void walk_to (Node* node);
-
-  /** @return If the pingu is currently between two nodes return
-      true */
-  bool is_walking ();
-
-  /** Set the pingu to the position of a node */
-  void set_position (boost::shared_ptr<Node> node);
-
-  /** @return Current position of the pingu on the screen */
-  Vector get_pos () { return pos; }
-
-  /** @return The node where the pingu is current on 
-
-  FIXME: What should happen if the pingu is between two nodes? */
-  Node* get_node ();
+  void update_walk (float delta);
   
+  /** @return true if the node is reachable, false otherwise */
+  bool walk_to_node (NodeId target);
+  
+  /** calculate the position of the pingu */
+  Vector calc_pos ();
+
+  void update (float delta);
+  
+  /** @return the node on which the pingu is currently standing, 0 is
+      returned if the pingu is currently between two nodes */
+  NodeId get_node () {
+    return current_node;
+  }
+
+  /** Set the pingu to the position of a given node */
+  void set_position (NodeId node);
+
 private:
   Pingus (const Pingus&);
   Pingus& operator= (const Pingus&);

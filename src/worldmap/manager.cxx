@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.14 2002/09/28 22:24:24 grumbel Exp $
+//  $Id: manager.cxx,v 1.15 2002/10/12 23:34:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,9 +34,9 @@ WorldMapManager::WorldMapManager ()
 
   // FIXME: The default startup map should be configurable by some file
   worldmap = boost::shared_ptr<WorldMap>
-    (new WorldMap (path_manager.complete("worldmaps/volcano.xml")));
+    (new WorldMap (path_manager.complete("worldmaps/newvolcano.xml")));
 
-  worldmap->on_startup ();
+  //worldmap->on_startup ();
 
   // FIXME: a bit ugly because of the proteced member, but should work
   // FIXME: well enough. GUIScreen could also use multi-inheritage,
@@ -85,18 +85,19 @@ WorldMapManager::WorldMapComponent::draw (GraphicContext& gc)
 void
 WorldMapManager::WorldMapComponent::update (float delta)
 {
-  WorldMapManager::instance ()->worldmap->update (delta);
+  WorldMapManager::instance ()->worldmap->update ();
 }
 
 void 
 WorldMapManager::WorldMapComponent::on_primary_button_press (int x, int y)
 {
   std::cout << "Buton press" << std::endl;
+  /** Fixme: insert Co. translation here */
   WorldMapManager::instance ()->worldmap->on_primary_button_press (x, y);
 }
 
 void 
-WorldMapManager::change_map (const std::string& filename, int node)
+WorldMapManager::change_map (const std::string& filename, NodeId node)
 {
   // Create the new worldmap and make it the current one
   new_worldmap = boost::shared_ptr<WorldMap>

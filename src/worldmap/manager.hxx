@@ -1,4 +1,4 @@
-//  $Id: manager.hxx,v 1.12 2002/09/27 11:26:49 torangan Exp $
+//  $Id: manager.hxx,v 1.13 2002/10/12 23:34:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,7 @@ class GameDelta;
 
 namespace WorldMapNS {
 
+typedef int NodeId;
 class WorldMap;
 
 /** The WorldMapManager manages the worldmaps and the translation
@@ -92,7 +93,7 @@ public:
   @param filename the filename of the new map, filename must be
   @param filename relative to the worldmap directory
   @param filename Example: "volcano.xml" */
-  void change_map (const std::string& filename, int node);
+  void change_map (const std::string& filename, NodeId node);
 
   /** Singleton access function */
   static WorldMapManager* instance ();

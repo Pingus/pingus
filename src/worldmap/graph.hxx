@@ -1,7 +1,7 @@
-//  $Id: graph.hxx,v 1.13 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: graph.hxx,v 1.14 2002/10/12 23:34:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -17,60 +17,139 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_WORLDMAP_GRAPH_HXX
-#define HEADER_PINGUS_WORLDMAP_GRAPH_HXX
+#ifndef HEADER_GRAPH_HXX
+#define HEADER_GRAPH_HXX
 
-#include "../res_descriptor.hxx"
-#include "../boost/smart_ptr.hpp"
-#include "node.hxx"
+#include <algorithm>
+#include <vector>
 
 namespace WorldMapNS {
 
-//FIXME: #warring "Don't touch me, a rewritten version is somewhere around..."
+typedef int NodeId;
+typedef int EdgeId;
 
-/** The path on the WorldMap is a bidirectional graph, this class
-    managed it FIXME: needs a complete rewrite, EmptyNodes need to
-    be handled differently */
+extern const NodeId NoNode = -1;
+
+template<class NodeType>
+class Node 
+{
+public:
+  Node (const NodeType& d) 
+    : data (d)
+  {}
+
+  Node& operator= (const NodeType& d) 
+  {
+    data = d;
+  }
+
+  NodeType data;
+  std::vector<EdgeId> next;
+};
+
+template<class EdgeType>
+class Edge
+{
+public:
+  NodeId prev;
+  NodeId next;
+  int cost;
+
+  EdgeType data;
+
+  Edge (const EdgeType& arg_data, const NodeId& p, const NodeId& n, int c)
+    : prev (p), next (n), cost (c), data(arg_data)
+  {
+  }
+};
+
+template<class NodeType,
+         class EdgeType>
 class Graph
 {
 private:
-  //Graph<Node>* graph;
-  ResDescriptor bg_desc;
-  std::string music;
-  xmlDocPtr doc;
+  std::vector<Node<NodeType> > nodes;
+  std::vector<Edge<EdgeType> > edges;
   
 public:
-  std::list<boost::shared_ptr<Node> >   nodes;
-  typedef std::list<boost::shared_ptr<Node> >::iterator iterator;
+  Graph () 
+  {
+  }
 
-  Graph ();
-  ~Graph ();
- 
-  /** FIXME: We shouldn't have a background, but instead multiple
-      layers of images */
-  ResDescriptor              get_background ();
+  Graph (const Graph&)
+  {
+    assert (false);
+  }
 
-  /** @return The name of the music file which should be used for
-      @return this level, filename is relative to "data/music/"
-      @return Example: pingus1.it */
-  std::string get_music ();
+  Graph& operator= (const Graph&)
+  {
+    assert (false);
+  }
 
-  /** Draw the edges of the graph to the screen
-      @param offset FIXME: should be handled by GraphicContext instead */
-  void draw (const Vector& offset);
+  ~Graph () 
+  {
+  }
 
-  /** Some functions to parse the data out of an xml file.
-      For syntax description see doc/worldmap.xml
-      @{ */
-  void parse_file (std::string filename);
-private:
-  void parse_node_list (xmlNodePtr);
-  void parse_music (xmlNodePtr);
-  void parse_background (xmlNodePtr);
-  /** @} */
-      
-  Graph (const Graph&);
-  Graph& operator= (const Graph&);
+  NodeId add_node (NodeType d)
+  { 
+    nodes.push_back (Node<NodeType>(d));
+    return NodeId (nodes.size ()-1);
+  }
+  
+  void add_edge (const EdgeType& data, const NodeId& a, const NodeId& b, int cost)
+  {
+    Edge<EdgeType> new_edge (data, a, b, cost);
+    edges.push_back (new_edge);
+    resolve_node (a).next.push_back (edges.size ()-1);
+  }
+
+  void add_bi_edge (const EdgeType& data, const NodeId& a, const NodeId& b, int cost)
+  {
+    add_edge (data, a, b, cost);
+    add_edge (data, b, a, cost);
+  }
+
+  void remove_node (const NodeId& node)
+  {
+    assert (!"remove_node: not implemented");
+  }
+
+  void remove_edge (const NodeId& node1, const NodeId& node2)
+  {
+    assert (!"remove_edge: not implemented");
+  }
+
+  Edge<EdgeType>& resolve_edge (const EdgeId& node)
+  {
+    return edges[node];
+  }
+
+  /** Translates a NodeId into the corresponding Node */
+  Node<NodeType>& resolve_node (const NodeId& node)
+  {
+    return nodes[node];
+  }
+
+  /* FIXME: This might give problems under MSVC, so it could be better to not use it */
+  template<class Func>
+  void for_each_node (Func func) 
+  {
+    std::for_each (nodes.begin (), nodes.end (), func);
+  }
+
+  template<class Func>
+  void for_each_edge (Func func) 
+  {
+    std::for_each (edges.begin (), edges.end (), func);    
+  }
+
+  int nodes_size () {
+    return nodes.size ();
+  }
+  
+  int max_node_handler_value () {
+    return nodes.size ();
+  }
 };
 
 } // namespace WorldMapNS

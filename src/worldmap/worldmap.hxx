@@ -1,4 +1,4 @@
-//  $Id: worldmap.hxx,v 1.14 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: worldmap.hxx,v 1.15 2002/10/12 23:34:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,8 @@
 #ifndef HEADER_PINGUS_WORLDMAP_WORLDMAP_HXX
 #define HEADER_PINGUS_WORLDMAP_WORLDMAP_HXX
 
+#include <vector>
+#include "../libxmlfwd.hxx"
 #include "stat.hxx"
 
 class GraphicContext;
@@ -29,6 +31,11 @@ class CL_InputDevice;
 
 namespace WorldMapNS {
 
+typedef int EdgeId;
+typedef int NodeId;
+
+class PathGraph;
+class Drawable;
 class Pingus;
 
 /** A class for loading, displaying and managing the worldmap. The
@@ -38,117 +45,60 @@ class Pingus;
     events (successfull level completions, etc.). */
 class WorldMap
 {
-#if TODO
+private:
+  /** name of the file to parse */
+  std::string filename;
+
+  typedef std::vector<Drawable*>   ObjectLst;
+  typedef std::vector<Drawable*> DrawableLst;
+
+  /** The graph that represents the path on the map */
+  PathGraph* path_graph;
+  
+  /** A collection of drawable things, allocation and deallocation
+      takes place elsewhere these are only references to other
+      objects */
+  DrawableLst drawables;
+
+  /** A collection of drawables loaded from the xml file, this list
+      gets deleted at the end */
+  ObjectLst objects;
 public:
   /** Load the given*/
   WorldMap (const std::string& filename);
   
   void draw (GraphicContext& gc);
-  void update (float delta)
+  void update ();
   
+  /** The the pingu to the given Node */
+  void set_pingus(NodeId id);
+
   /** @return the shortest path between node1 and node2  */
-  std::vector<Edge*> find_path (Node* node1, Node* node2);
-  
+  std::vector<EdgeId> find_path (NodeId node1, NodeId node2);
+
+  /** x,y are in WorldMap CO, not ScreenCO */
+  void on_primary_button_press(int x, int y);
+private:
+#if 0
   /** @return the node at the given position. x and y are in
       world-COs, not screen. */
-  Node* get_node (int x, int y);
-private:
+  NodeId get_node (int x, int y);
+#endif
+
   /** Parses a WorldMap XML file */
-  void parse_file(xmlNodePtr cur);
+  void parse_file(xmlDocPtr doc, xmlNodePtr cur);
   
   /** Parse the object section of the Worldmap XML file, it contains 
       Sprites, Backgrounds and other things */
-  void parse_objects(xmlNodePtr cur);
+  void parse_objects(xmlDocPtr doc, xmlNodePtr cur);
 
   /** Parse the graph section of the WorldMap XML file, it contains
       the path where the Pingu can walk on. */
-  void parse_graph(xmlNodePtr cur);
+  void parse_graph(xmlDocPtr doc, xmlNodePtr cur);
   
   /** Parse the propertie section of a WorldMap XML file, it contains
       meta data such as the author or the name of the Worldmap */
-  void parse_properties(xmlNodePtr cur);
-
-#endif
-private:
-  CL_Surface background;
-
-  Sprite green_dot;
-  Sprite red_dot;
-  Sprite dot_border;
-  Sprite green_flag; 
-
-  //Graph<PingusWorldMapNode>* graph;
-  Graph graph_data;
-  typedef Graph::iterator GraphIter;
-
-  /** FIXME: Should this be part of the worldmap manager? -> probally
-      FIXME: not, since pingu needs to be z-ordered */
-  Pingus* pingu;
-
-  /** FIXME: What is this? */
-  boost::shared_ptr<Node> last_node;
-  typedef boost::shared_ptr<Node> NodePtr;
-  unsigned int last_node_time;
-  
-  /** This should be the state saving object, which tells which
-      nodes are accessible and which are not. FIXME: might needs a
-      reimplementation. */
-  boost::shared_ptr<PingusWorldMapStat> stat;
-public:
-  /** Load a worldmap from a given worldmap description file
-      @param filename The fully qualified filename (as fopen()
-      @param and friends filename likes it) */
-  WorldMap (std::string filename);
-
-  /** Destruct the worldmap */
-  ~WorldMap ();
-
-  /** Start up the music and other things that need only to me run
-      once on startup of a new WorldMap */
-  void on_startup ();
-
-  /** Save the current status to a file */
-  void save ();
-  
-  /** React on button press:
-      - calculate which level was clicked
-      - calculate the shortest path
-      - let the pingu walk */
-  void on_primary_button_press (int x, int y);
-
-  /** Disable all event catching */
-  void disable_button_events ();
-  
-  /** Enable all event catching */
-  void enable_button_events ();
-  
-  /** Draw the world worldmap */
-  void draw (GraphicContext& gc);
-  
-  /** Let the woldmap do some stuff, like animating smoke, playing
-      sounds or reacting on special events */
-  void update (float delta);
-
-  /** Returns a pointer to the node under the given coordinates */
-  NodePtr get_node (int x, int y);
-  
-  /** Callculate the offset which is used for drawing and collision
-      detection. The offset will be used for scrolling when the
-      background is larger than the screen. 
-
-      FIXME: Do we need this one public? Other classes could
-      FIXME: handle the draw offset via the GraphicContext, 
-      FIXME: collision handling should be done in world-co's
-
-      @return the currently used draw offset */
-  Vector get_offset ();
-
-  /** Set the pingu to the given node with 'id' */
-  void set_pingus (int node_id);
-      
-private:
-  WorldMap (const WorldMap&);
-  WorldMap& operator= (const WorldMap&);
+  void parse_properties(xmlDocPtr doc, xmlNodePtr cur);
 };
 
 } // namespace WorldMapNS
