@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.1 2002/06/12 19:06:12 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.2 2002/06/20 11:23:53 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -24,7 +24,7 @@
 //   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 #include <sys/stat.h>
-
+#include <stdio.h>
 #include <signal.h>
 
 #ifndef WIN32

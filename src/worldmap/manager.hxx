@@ -1,4 +1,4 @@
-//  $Id: manager.hxx,v 1.1 2002/06/12 19:03:33 grumbel Exp $
+//  $Id: manager.hxx,v 1.2 2002/06/20 11:23:53 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef PINGUSWORLDMAPMANAGER_HH
 #define PINGUSWORLDMAPMANAGER_HH
 
+#include <string>
 #include <ClanLib/Signals/slot.h>
 #include "../boost/smart_ptr.hpp"
 
@@ -68,7 +69,7 @@ namespace Pingus
   public:
     /// Display the worldmap and let the user select a level
     void display ();
-    void change_map (std::string filename, int node);
+    void change_map (const std::string& filename, int node);
 
     static WorldMapManager* get_current () { return current_manager; } 
   };

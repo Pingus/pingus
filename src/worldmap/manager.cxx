@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.2 2002/06/13 14:25:13 torangan Exp $
+//  $Id: manager.cxx,v 1.3 2002/06/20 11:23:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -16,6 +16,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+#include <ClanLib/display.h>
 
 #include <ClanLib/Display/Input/input.h>
 #include "../path_manager.hxx"
@@ -111,7 +113,7 @@ WorldMapManager::on_resize(int w, int h)
 }
 
 void 
-WorldMapManager::change_map (std::string filename, int node)
+WorldMapManager::change_map (const std::string& filename, int node)
 {
   new_worldmap = boost::shared_ptr<WorldMap::WorldMap>
     (new WorldMap::WorldMap (path_manager.complete("worldmaps/" + filename)));

@@ -1,4 +1,4 @@
-//  $Id: pingus_counter.cxx,v 1.3 2002/06/17 15:45:26 torangan Exp $
+//  $Id: pingus_counter.cxx,v 1.4 2002/06/20 11:23:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <stdio.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
 #include "pingus_resource.hxx"
