@@ -1,0 +1,32 @@
+<pingus-controller>
+  <controller-config>
+    <standard-pointer>
+      <mouse-pointer />
+    </standard-pointer>
+
+    <primary-button>
+      <mouse-button button="0"/>
+    </primary-button>
+
+    <secondary-button>
+      <mouse-button button="2"/>
+    </secondary-button>
+
+    <pause-button>
+      <key-button key="P"/>
+    </pause-button>
+
+    <fast-forward-button>
+      <key-button key="F"/>
+      <key-button key="SPACE"/>
+    </fast-forward-button>
+
+    <armageddon-button>
+      <key-button key="A"/>
+    </armageddon-button>
+
+    <escape-button>
+      <key-button key="ESCAPE"/>
+    </escape-button>
+  </controller-config>
+</pingus-controller>
