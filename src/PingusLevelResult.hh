@@ -1,4 +1,4 @@
-//  $Id: PingusLevelResult.hh,v 1.6 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: PingusLevelResult.hh,v 1.7 2001/04/13 14:50:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef PINGUSLEVELRESULT_HH
 #define PINGUSLEVELRESULT_HH
 
+#include "Controller.hh"
 #include "World.hh"
 
 ///
@@ -34,9 +35,11 @@ private:
   CL_Font*    font;
   ///
   World*      world;
+  boost::shared_ptr<Controller> controller;
+
 public:
   ///
-  PingusLevelResult(World*);
+  PingusLevelResult(World*, boost::shared_ptr<Controller> c);
 
   ///
   void   draw(void);

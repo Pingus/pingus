@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.48 2001/04/13 13:45:09 grumbel Exp $
+//  $Id: Client.cc,v 1.49 2001/04/13 14:50:59 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -85,7 +85,7 @@ Client::start()
   FadeOut::random();
 
   if (verbose) std::cout << "Displaying results..." << CL_System::get_time()  << std::flush;
-  PingusLevelResult r(server->get_world());
+  PingusLevelResult r(server->get_world(), controller);
   r.draw();
   
   if (verbose) std::cout << "finished " << CL_System::get_time()  << std::endl;
@@ -119,10 +119,7 @@ Client::init_display()
   pcounter->set_client(this);
   small_map->set_client(this);
   hurry_up->set_client(this);
-  
-  /*  if (play_demo)
-      server->set_demo(demo_file);
-  */
+
   playfield->set_clip_rect(0, 0, 
 			   CL_Display::get_width(),
 			   CL_Display::get_height());
@@ -416,7 +413,7 @@ Client::on_keyboard_button_release(const CL_Key& key)
     case CL_KEY_O:
       enabled = false;
       Display::hide_cursor();
-      option_menu.display();
+      option_menu.display ();
       Display::show_cursor();
       enabled = true;
       break;
@@ -556,8 +553,6 @@ Client:: on_left_pressed (const CL_Vector& pos)
   button_panel->on_button_press(key);
   small_map->on_button_press(key);
   playfield->on_button_press(key);
-
-  std::cout << "Left Pressed" << std::endl;
 }
 
 void
@@ -571,8 +566,6 @@ Client:: on_left_released (const CL_Vector& pos)
   
   button_panel->on_button_release(key);
   small_map->on_button_release(key);
-
-  std::cout << "Left Pressed" << std::endl;
 }
 
 
@@ -635,5 +628,3 @@ Client::on_previous_action_pressed (const CL_Vector& pos)
 }
 
 /* EOF */
-
-

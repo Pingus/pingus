@@ -1,4 +1,4 @@
-//  $Id: PingusLevelResult.cc,v 1.17 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: PingusLevelResult.cc,v 1.18 2001/04/13 14:50:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,8 @@
 #include "Display.hh"
 #include "PingusSound.hh"
 
-PingusLevelResult::PingusLevelResult(World* w)
+PingusLevelResult::PingusLevelResult(World* w, boost::shared_ptr<Controller> c)
+  : controller (c)
 {
   font = PingusResource::load_font("Fonts/pingus_small","fonts");
   title = PingusResource::load_font("Fonts/pingus","fonts");
@@ -80,7 +81,7 @@ PingusLevelResult::draw(void)
   //font->print_center(CL_Display::get_width() / 2, 180, str);
 
   font->print_center(CL_Display::get_width()/2, CL_Display::get_height() - 80,
-		     "Press mouse button to continue...");  
+		     "Press button to continue...");  
   Display::flip_display();
 
   while(!CL_Mouse::left_pressed())

@@ -9,6 +9,7 @@ section Pingus
 	tumble      = images/pingus/tumble.png     (type=surface, x=0, y=0, width=32, height=32, array=8x1);
 	bridger     = images/pingus/bridger.png    (type=surface, x=0, y=0, width=32, height=32, array=15x2);
         walker      = images/pingus/walker.png     (type=surface, x=0, y=0, width=32, height=32, array=8x2);
+        walker1      = images/pingus/walker1.png     (type=surface, x=0, y=0, width=32, height=32, array=8x2);
 	blocker     = images/pingus/blocker.png    (type=surface, x=0, y=0, width=32, height=32, array=6x1);
 	floater     = images/pingus/floater.png    (type=surface, x=0, y=0, width=32, height=32, array=8x1);
 	digger      = images/pingus/digger.png     (type=surface, x=0, y=0, width=32, height=32, array=14x1);

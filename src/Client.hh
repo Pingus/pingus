@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.26 2001/04/13 13:45:09 grumbel Exp $
+//  $Id: Client.hh,v 1.27 2001/04/13 14:50:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -119,7 +119,6 @@ public:
 
   ///
   void play_level(boost::shared_ptr<PLF>);
-
 
   /// FIXME: Document me... or rewrite me
   void init_display();
