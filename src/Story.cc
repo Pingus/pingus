@@ -1,4 +1,4 @@
-//  $Id: Story.cc,v 1.7 2001/04/01 18:00:37 grumbel Exp $
+//  $Id: Story.cc,v 1.8 2001/06/14 14:45:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,14 +20,16 @@
 #include <vector>
 #include <string>
 
+#include "worldmap/PingusWorldMapManager.hh"
+#include "Display.hh"
 #include "DeltaManager.hh"
 #include "LayerManager.hh"
 #include "PingusResource.hh"
+#include "PingusMenuManager.hh"
 #include "Story.hh"
 
-Story pingus_story;
-
-Story::Story()
+Story::Story(PingusMenuManager* manager)
+  : PingusSubMenu (manager)
 {
   is_init = false;
 }
@@ -48,59 +50,34 @@ Story::init()
 }
 
 void 
-Story::display()
+Story::update (float delta)
 {
-  LayerManager layer_manager;
-  CL_Surface sur = PingusResource::load_surface ("NewButtons/create_on", "menu");
+}
 
-  layer_manager.add_layer (PingusResource::load_surface ("Layer/layer1", "story"),  0, 0, 2, 0);
-  layer_manager.add_layer (PingusResource::load_surface ("Layer/layer2", "story"),  0, 150, 5, 0);
-  layer_manager.add_layer (PingusResource::load_surface ("Layer/layer3", "story"), 0, 200, 10, 0);
-  layer_manager.add_layer (PingusResource::load_surface ("Layer/layer4", "story"), 0, 377, 25, 0);
-  layer_manager.add_layer (PingusResource::load_surface ("Layer/layer5", "story"), 0, 500, 35, 0);
+void 
+Story::draw()
+{
+  CL_Surface story = PingusResource::load_surface("Story/story1", "story");
 
-  DeltaManager delta;
-  while (true)
-    {
-      layer_manager.update (delta.get ());
-      delta.set ();
-      layer_manager.draw ();
-      
-      sur.put_screen (400, 300);
+  CL_Display::fill_rect (0,0,
+			 CL_Display::get_width (),
+			 CL_Display::get_height (),
+			 0,0,0,0.5);
 
-      CL_System::keep_alive ();
-      CL_Display::flip_display ();
-    }
-
-  /*
-    CL_Surface story;
-
-  story = PingusResource::load_surface("Story/story1", "story");
-
-  for(int y = 0; y < CL_Display::get_height(); y += background->get_height())
-    for(int x = 0; x < CL_Display::get_width(); x += background->get_width())
-      background->put_screen(x, y);
-
-  story->put_screen(CL_Display::get_width()/2 - (story->get_width()/2),
+  story.put_screen(CL_Display::get_width()/2 - (story.get_width()/2),
 		    50);
-  CL_Display::fill_rect(CL_Display::get_width()/2 - (story->get_width()/2) + 25,
-			50 + story->get_height() + 25,
-			CL_Display::get_width()/2 + (story->get_width()/2) - 25,
+  CL_Display::fill_rect(CL_Display::get_width()/2 - (story.get_width()/2) + 25,
+			50 + story.get_height() + 25,
+			CL_Display::get_width()/2 + (story.get_width()/2) - 25,
 			CL_Display::get_height() - 25,
-			1.0, 1.0, 1.0, 0.5);
+			0.0, 0.0, 0.0, 0.5);
 
-  //display_string("Dies ist ein Test....\nBla oeuboeu\naoeuoeuaoue");
-  small_font->print_left(105, 80 + story->get_height() + 25 + (1 * small_font->get_height()), "aoeuoaeu");
-  small_font->print_left(105, 80 + story->get_height() + 25 + (2 * small_font->get_height()), "Bloeuoeua");
-  small_font->print_left(105, 80 + story->get_height() + 25 + (3 * small_font->get_height()), "Bloeuoea");
-  small_font->print_left(105, 80 + story->get_height() + 25 + (4 * small_font->get_height()), "Blaoeuoea");
-  small_font->print_left(105, 80 + story->get_height() + 25 + (5 * small_font->get_height()), "oeuBla");
-  small_font->print_left(105, 80 + story->get_height() + 25 + (6 * small_font->get_height()), "Beouoeula");
-
-  CL_Display::flip_display();
-
-  while(true);
-*/
+  small_font->print_left(125, 80 + story.get_height() + 25 + (1 * small_font->get_height()), "aoeuoaeu");
+  small_font->print_left(125, 80 + story.get_height() + 25 + (2 * small_font->get_height()), "Bloeuoeua");
+  small_font->print_left(125, 80 + story.get_height() + 25 + (3 * small_font->get_height()), "Bloeuoea");
+  small_font->print_left(125, 80 + story.get_height() + 25 + (4 * small_font->get_height()), "Blaoeuoea");
+  small_font->print_left(125, 80 + story.get_height() + 25 + (5 * small_font->get_height()), "oeuBla");
+  small_font->print_left(125, 80 + story.get_height() + 25 + (6 * small_font->get_height()), "Beouoeula");
 }
 
 void
@@ -144,6 +121,16 @@ Story::display_string(std::string current_line)
       small_font->print_left(x_pos, y_pos + j*small_font->get_height(), 
 			     i->c_str());
     }*/
+}
+
+void 
+Story::on_button_press (CL_InputDevice* device,const CL_Key& key)
+{
+  manager->unregister_events ();
+  PingusWorldMapManager worldmap_manager;
+  worldmap_manager.display();
+  manager->register_events ();
+  manager->set_menu (&manager->mainmenu);
 }
 
 /* EOF */

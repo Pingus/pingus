@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.46 2001/06/14 11:07:18 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.47 2001/06/14 14:45:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,7 @@ PingusMenu::preload ()
       buttons.push_back(boost::shared_ptr<SurfaceButton>(new PlayButton ()));
       buttons.push_back(boost::shared_ptr<SurfaceButton>(new QuitButton (this)));
       buttons.push_back(boost::shared_ptr<SurfaceButton>(new MultiplayerButton ()));
-      buttons.push_back(boost::shared_ptr<SurfaceButton>(new ThemeButton ()));
+      buttons.push_back(boost::shared_ptr<SurfaceButton>(new ThemeButton (this)));
       buttons.push_back(editor_button);
     }
 }

@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.32 2001/06/14 11:07:18 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.33 2001/06/14 14:45:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -189,6 +189,8 @@ OptionMenu::~OptionMenu()
 void
 OptionMenu::init() 
 {
+  if (is_init)
+    return;
   //if (!preload_data)
     //loading_screen.draw();
 

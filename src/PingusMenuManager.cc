@@ -1,4 +1,4 @@
-//  $Id: PingusMenuManager.cc,v 1.1 2001/06/14 11:07:19 grumbel Exp $
+//  $Id: PingusMenuManager.cc,v 1.2 2001/06/14 14:45:23 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "globals.hh"
+#include "Display.hh"
 #include "DeltaManager.hh"
 #include "Intro.hh"
 #include "PingusResource.hh"
@@ -27,7 +28,8 @@
 #include "PingusMenuManager.hh"
 
 PingusMenuManager::PingusMenuManager ()
-  : event_register_counter (0), intro (this), mainmenu (this), optionmenu (this), background (this),
+  : event_register_counter (0),
+    intro (this), mainmenu (this), optionmenu (this), background (this), story (this),
     exitmenu (this)
 {
   push_menu (&background);
@@ -69,8 +71,15 @@ PingusMenuManager::on_button_press (CL_InputDevice* device,const CL_Key& key)
   std::cout << "PingusMenuManager::on_button_press (" 
 	    << device << ", " << key.id 
 	    << ")" << std::endl;
-  if (device == CL_Input::keyboards[0] && key.id == CL_KEY_ESCAPE && menu_stack.size () > 2)
-    pop_menu ();
+  if (device == CL_Input::keyboards[0] && key.id == CL_KEY_ESCAPE)
+    {
+      if (menu_stack.size () > 2)
+	pop_menu ();
+      else if (menu_stack.size () == 2 && current_menu ().get () != &mainmenu)
+	set_menu (&mainmenu);
+      else if (menu_stack.size () == 2 && current_menu ().get () == &mainmenu)
+	push_menu (&exitmenu);
+    }
   else
     current_menu ()->on_button_press (device, key);
 }
@@ -84,8 +93,8 @@ PingusMenuManager::on_button_release (CL_InputDevice* device,const CL_Key& key)
 void 
 PingusMenuManager::on_mouse_move (CL_InputDevice* device, int x, int y)
 {
-  std::cout << "PingusMenuManager::on_mouse_move ("
-	    << device << ", " << x << ", " << y << ")" << std::endl;
+  //  std::cout << "PingusMenuManager::on_mouse_move ("
+  //<< device << ", " << x << ", " << y << ")" << std::endl;
   current_menu ()->on_mouse_move (device, x, y);
 }
 
@@ -118,7 +127,7 @@ PingusMenuManager::display ()
       for (MenuStackIter i = menu_stack.begin (); i != menu_stack.end (); ++i)
 	(*i)->update (delta);
       
-      CL_Display::flip_display ();
+      Display::flip_display ();
 
       
       CL_System::keep_alive ();
@@ -181,7 +190,7 @@ PingusMenuManager::fadeout ()
       current_menu ()->update (delta);
       current_menu ()->draw ();
       fadeout.draw ();
-      CL_Display::flip_display ();
+      Display::flip_display ();
 
       CL_System::keep_alive ();
     }
@@ -199,7 +208,7 @@ PingusMenuManager::exit ()
 
   CL_Display::fill_rect (0,0, CL_Display::get_width (), CL_Display::get_height (),
 			 0.0, 0.0, 0.0, 0.5);
-  CL_Display::flip_display ();
+			 Display::flip_display ();
   CL_Display::sync_buffers ();
   while (CL_Mouse::left_pressed ())
     CL_System::keep_alive ();
@@ -207,7 +216,7 @@ PingusMenuManager::exit ()
   while (!CL_Mouse::left_pressed ()) {
     exitmenu.update (delta.getset ());
     exitmenu.draw ();
-    CL_Display::flip_display ();
+    Display::flip_display ();
     CL_System::keep_alive ();
     CL_System::sleep (20);
   }

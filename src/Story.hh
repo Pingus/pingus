@@ -1,4 +1,4 @@
-//  $Id: Story.hh,v 1.2 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: Story.hh,v 1.3 2001/06/14 14:45:23 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,12 @@
 #ifndef STORY_HH
 #define STORY_HH
 
+#include "PingusSubMenu.hh"
+
+class PingusMenuManager;
+
 /** This class displays the story of the Pingus. */
-class Story
+class Story : public PingusSubMenu
 {
 private:
   ///
@@ -35,22 +39,23 @@ private:
 
 public:
   ///
-  Story();
+  Story(PingusMenuManager* manager);
   ///
   ~Story();
 
   /// Load all surfaces into memory.
   void init();
 
-  /// Display the story.
-  void display();
+  void preload () { init (); }
 
-  /// Display a string at the right position, thread line breaks.
+  void on_button_press (CL_InputDevice*,const CL_Key &); 
+
+  void draw ();
+  void update (float delta);
+
+  /// Display a string at the right position
   void display_string(std::string);
 };
-
-///
-extern Story pingus_story;
 
 #endif
 
