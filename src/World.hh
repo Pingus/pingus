@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.38 2002/06/11 18:28:34 torangan Exp $
+//  $Id: World.hh,v 1.39 2002/06/12 10:40:05 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,8 +68,7 @@ private:
   /// The time you have to finish a level
   int exit_time;
 
-  typedef std::list<WorldObj*>::iterator WorldObjIter;
-  std::list<WorldObj*> world_obj;
+  std::list<WorldObj*> * world_obj;
 
   // These pointers hold objects and must be deleted
   ParticleHolder* particle_holder;
