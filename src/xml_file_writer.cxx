@@ -1,4 +1,4 @@
-//  $Id: xml_file_writer.cxx,v 1.1 2002/12/20 18:45:41 grumbel Exp $
+//  $Id: xml_file_writer.cxx,v 1.2 2002/12/28 16:57:38 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
+#include "vector.hxx"
 #include "xml_file_writer.hxx"
 
 XMLFileWriter::XMLFileWriter(std::ostream& out_)

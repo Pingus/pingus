@@ -1,4 +1,4 @@
-//  $Id: delta_manager.hxx,v 1.7 2002/11/27 20:05:42 grumbel Exp $
+//  $Id: delta_manager.hxx,v 1.8 2002/12/28 16:57:38 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,9 @@
 #ifndef HEADER_PINGUS_DELTA_MANAGER_HXX
 #define HEADER_PINGUS_DELTA_MANAGER_HXX
 
-#include "pingus.hxx"
+#include <assert.h>
 #include <ClanLib/Core/System/system.h>
+#include "pingus.hxx"
 
 class DeltaManager
 {

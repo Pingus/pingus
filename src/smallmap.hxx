@@ -1,4 +1,4 @@
-//  $Id: smallmap.hxx,v 1.14 2002/10/10 12:25:53 grumbel Exp $
+//  $Id: smallmap.hxx,v 1.15 2002/12/28 16:57:38 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,8 +24,10 @@
 #include "gui/component.hxx"
 
 class CL_Key;
-class Client;
 class CL_Canvas;
+class Client;
+class Sprite;
+class Vector;
 
 /** This is the map that appears in the corner of the screen */
 class SmallMap : public GUI::Component

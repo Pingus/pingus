@@ -1,4 +1,4 @@
-//  $Id: config_xml.hxx,v 1.2 2002/10/13 13:34:40 grumbel Exp $
+//  $Id: config_xml.hxx,v 1.3 2002/12/28 16:57:38 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_CONFIG_XML_HXX
 #define HEADER_PINGUS_CONFIG_XML_HXX
 
+#include <string>
 #include "libxmlfwd.hxx"
 
 /** Reader for the pingus config file */

@@ -1,4 +1,4 @@
-//  $Id: time_display.hxx,v 1.8 2002/10/24 15:32:48 torangan Exp $
+//  $Id: time_display.hxx,v 1.9 2002/12/28 16:57:38 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_TIME_DISPLAY_HXX
 #define HEADER_PINGUS_TIME_DISPLAY_HXX
 
+#include <ClanLib/Display/Display/surface.h>
 #include "gui/component.hxx"
 
 class CL_Font;

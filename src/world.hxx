@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.20 2002/12/28 16:10:17 torangan Exp $
+//  $Id: world.hxx,v 1.21 2002/12/28 16:57:38 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define HEADER_PINGUS_WORLD_HXX
 
 #include "pingus.hxx"
-#include <list>
 #include <vector>
 #include <string>
 
@@ -48,8 +47,6 @@ class GameTime;
 class SmallMap;
 class GraphicContext;
 
-using std::list;
-using std::string;
 /** The World holds all objects of the pingu enviroment. 
     
     It holds the pingus, traps, exits, entrances, etc.. It keeps

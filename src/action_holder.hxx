@@ -1,4 +1,4 @@
-//  $Id: action_holder.hxx,v 1.10 2002/11/08 01:38:27 grumbel Exp $
+//  $Id: action_holder.hxx,v 1.11 2002/12/28 16:57:38 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_ACTION_HOLDER_HXX
 #define HEADER_PINGUS_ACTION_HOLDER_HXX
 
-#include <string>
 #include <map>
+#include <vector>
 #include "pingu_enums.hxx"
 
 using Actions::ActionName;

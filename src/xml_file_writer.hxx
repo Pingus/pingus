@@ -1,4 +1,4 @@
-//  $Id: xml_file_writer.hxx,v 1.1 2002/12/20 18:45:41 grumbel Exp $
+//  $Id: xml_file_writer.hxx,v 1.2 2002/12/28 16:57:38 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,8 @@
 #ifndef HEADER_XML_FILE_WRITER_HXX
 #define HEADER_XML_FILE_WRITER_HXX
 
-#include <iostream>
 #include <stack>
+#include <iosfwd>
 #include "file_writer.hxx"
 
 /** */

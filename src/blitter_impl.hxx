@@ -1,4 +1,4 @@
-//  $Id: blitter_impl.hxx,v 1.4 2002/10/19 23:23:44 grumbel Exp $
+//  $Id: blitter_impl.hxx,v 1.5 2002/12/28 16:57:38 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,13 @@
 
 #ifndef HEADER_PINGUS_BLITTER_IMPL_HXX
 #define HEADER_PINGUS_BLITTER_IMPL_HXX
+
+#include <iostream>
+#include <ClanLib/Display/SurfaceProviders/canvas.h>
+#include <ClanLib/Display/Display/surface.h>
+#include "indexed_canvas.hxx"
+#include "pingus.hxx"
+
 
 /** A collection of helper functions for the blitter class */
 namespace BlitterImpl

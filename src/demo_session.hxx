@@ -1,4 +1,4 @@
-//  $Id: demo_session.hxx,v 1.2 2002/10/03 12:33:08 grumbel Exp $
+//  $Id: demo_session.hxx,v 1.3 2002/12/28 16:57:38 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 
 class Server;
 class XMLPDF;
+class DemoPlayer;
 class PingusCounter;
 
 /** A DemoSession is analog to a GameSession, but instead of loading a

@@ -1,4 +1,4 @@
-//  $Id: file_writer.hxx,v 1.1 2002/12/20 18:45:41 grumbel Exp $
+//  $Id: file_writer.hxx,v 1.2 2002/12/28 16:57:38 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,8 @@
 #define HEADER_PINGUS_FILE_WRITER_HXX
 
 #include <string>
-#include "vector.hxx"
+
+class Vector;
 
 /** Interface to write out name/value pairs out of some kind of file or
     structure */
