@@ -1,4 +1,4 @@
-//  $Id: event_fwd.hxx,v 1.1 2002/12/20 01:42:07 grumbel Exp $
+//  $Id: event_fwd.hxx,v 1.2 2002/12/20 19:12:33 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,8 +26,8 @@
 // dependencies a bit.
 namespace Input {
 
-union Input::Event;
-typedef std::vector<Input::Event> EventLst;
+union Event;
+typedef std::vector<Event> EventLst;
 
 } // namespace Input
 
