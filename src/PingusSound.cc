@@ -1,4 +1,4 @@
-//  $Id: PingusSound.cc,v 1.16 2000/10/12 19:33:51 grumbel Exp $
+//  $Id: PingusSound.cc,v 1.17 2001/04/01 18:00:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "globals.hh"
+#include "PingusSoundDummy.hh"
 #include "PingusSound.hh"
 
 PingusSound* PingusSound::sound;
@@ -41,10 +42,10 @@ PingusSound::play_mod(std::string filename)
     @param filename The complete filename, it will be passed to the
     PingusSoundProvider */
 void 
-PingusSound::play_wav(std::string filename)
+PingusSound::play_wav(std::string filename, float volume)
 {
   assert (sound);
-  if (sound_enabled) sound->real_play_wav (filename);
+  if (sound_enabled) sound->real_play_wav (filename, volume);
 }
 
 /** Shut down the sound and the music and quit SDL */
@@ -53,27 +54,6 @@ PingusSound::clean_up()
 {
   assert (sound);
   sound->real_clean_up ();
-}
-
-/* PingusSoundDummy */
-
-void
-PingusSoundDummy::real_play_mod (std::string filename)
-{
-  if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
-    std::cout << "PingusSoundDummy::real_play_mod: " << filename << std::endl;
-}
-
-void 
-PingusSoundDummy::real_play_wav(std::string filename)
-{
-  if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
-    std::cout << "PingusSoundDummy::real_play_wav: " << filename << std::endl;
-}
-
-void 
-PingusSoundDummy::real_clean_up()
-{
 }
 
 /* EOF */

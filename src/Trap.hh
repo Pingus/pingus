@@ -1,4 +1,4 @@
-//  $Id: Trap.hh,v 1.13 2001/03/31 11:21:50 grumbel Exp $
+//  $Id: Trap.hh,v 1.14 2001/04/01 18:00:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ public:
   ///
   virtual void update();
   /// return true if the pingu was catched
-  virtual void catch_pingu(boost::shared_ptr<Pingu> );
+  virtual void catch_pingu(boost::shared_ptr<Pingu>);
 };
 
 #endif

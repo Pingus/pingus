@@ -1,4 +1,4 @@
-//  $Id: PingusSoundReal.hh,v 1.3 2000/10/10 13:22:39 grumbel Exp $
+//  $Id: PingusSoundReal.hh,v 1.4 2001/04/01 18:00:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,7 @@ public:
 
       @param filename The complete filename, it will be passed to the
              PingusSoundProvider */
-  virtual void real_play_wav(std::string filename);
+  virtual void real_play_wav(std::string filename, float volume);
 
   /** Shut down the sound and the music and quit SDL */
   virtual void real_clean_up();

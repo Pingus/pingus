@@ -1,4 +1,4 @@
-//  $Id: hammer.cc,v 1.11 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: hammer.cc,v 1.12 2001/04/01 18:00:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ Hammer::~Hammer()
 }
 
 void
-Hammer::update()
+Hammer::update(float delta)
 {
   if (counter == 0) 
     particle_thrown = false;
@@ -58,7 +58,7 @@ Hammer::update()
 }
 
 void
-Hammer::catch_pingu(Pingu* pingu)
+Hammer::catch_pingu(boost::shared_ptr<Pingu> pingu)
 {
   if (counter >= (int)(surface.get_num_frames()) - 3) {
     if (pingu->get_x() > pos.x_pos + 55 && pingu->get_x() < pos.x_pos + 77

@@ -1,4 +1,4 @@
-//  $Id: LaserExit.cc,v 1.11 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: LaserExit.cc,v 1.12 2001/04/01 18:00:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ LaserExit::~LaserExit()
 }
 
 void
-LaserExit::update(void)
+LaserExit::update(float delta)
 {
   if (killing) {
     if (counter.finished()) {
@@ -55,7 +55,7 @@ LaserExit::update(void)
 }
 
 void
-LaserExit::catch_pingu(Pingu* pingu)
+LaserExit::catch_pingu(boost::shared_ptr<Pingu> pingu)
 {
   //if (!pingu->is_alive())
   //return;

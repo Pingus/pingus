@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.38 2001/03/31 11:21:50 grumbel Exp $
+//  $Id: World.cc,v 1.39 2001/04/01 18:00:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -118,7 +118,7 @@ World::draw(int x1, int y1, int w, int h,
 }
 
 void 
-World::update()
+World::update(float delta)
 {
   if (!exit_world && (allowed_pingus == released_pingus || do_armageddon)
       && pingus->size() == 0) 
@@ -164,14 +164,15 @@ World::update()
     {
       (*obj)->update();
     }
-
+  /* FIXME: looks like a cut&paste error
   for(vector<shared_ptr<WorldObj> >::iterator obj = world_obj_fg.begin(); 
       obj != world_obj_fg.end(); 
       obj++)
     {
       (*obj)->update();
     }
-
+  */
+  
   for(PinguIter pingu = pingus->begin(); pingu != pingus->end(); ++pingu)
     {
       (*pingu)->update();
@@ -198,7 +199,7 @@ World::update()
   particle_holder->update();
 
   for (vector<shared_ptr<Background> >::iterator i = backgrounds.begin(); i != backgrounds.end(); i++)
-    (*i)->update();
+    (*i)->update(delta);
 
   // Clear the explosion force list
   ForcesHolder::clear_explo_list();

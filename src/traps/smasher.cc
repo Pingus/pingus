@@ -1,4 +1,4 @@
-//  $Id: smasher.cc,v 1.16 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: smasher.cc,v 1.17 2001/04/01 18:00:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,33 +39,52 @@ Smasher::~Smasher()
 }
 
 void
-Smasher::update()
+Smasher::update(float delta)
 {
-  if (smashing) {
-    if (downwards) {
-      if (count >= 5) {
-	downwards = false;
-	--count; 
+  if (smashing) 
+    {
+      if (downwards) 
+	{
+	  if (count >= 5) 
+	    {
+	      // SMASH!!! The thing hitten earth and kills the pingus
+	      downwards = false;
+	      --count; 
+	      PingusSound::play_wav("tenton", 0.7);
+	      
+	      for(int i=0; i < 20; i++)
+		{
+		  world->get_particle_holder()
+		    ->add_particle(new SmokeParticle(pos.x_pos + 20 + rand() % 260,
+						     pos.y_pos + 180,
+						     frand()-0.5, frand()-0.5));
+		}
 
-	for(int i=0; i < 20; i++)
-	  {
-	    world->get_particle_holder()
-	      ->add_particle(new SmokeParticle(pos.x_pos + 20 + rand() % 260,
-					       pos.y_pos + 180,
-					       frand()-0.5, frand()-0.5));
+	      PinguHolder* holder = world->get_pingu_p();
+	      for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
+		{
+		  if ((*pingu)->is_inside (pos.x_pos + 30, pos.y_pos + 90,
+					pos.x_pos + 250, pos.y_pos + 190))
+		    {
+		      (*pingu)->set_status (dead);
+		    }
+		}
+	    }
+	  else 
+	    {
+	      ++count;
+	    }
+	} 
+      else 
+	{
+	  if (count <= 0) {
+	    count = 0;
+	    smashing = false;
+	  } else {
+	    --count;
 	  }
-      } else {
-	++count;
-      }
-    } else {
-      if (count <= 0) {
-	count = 0;
-	smashing = false;
-      } else {
-	--count;
-      }
+	}
     }
-  }
 }
 
 void
@@ -84,38 +103,22 @@ Smasher::draw_offset(int x, int y, float s)
 }
 
 void 
-Smasher::catch_pingu(Pingu* pingu)
+Smasher::catch_pingu(boost::shared_ptr<Pingu> pingu)
 {
-  //if (!pingu->is_alive())
-  //return;
-
-  // FIXME: The kill catch much be different from the ausloesungs catch
-  if (pingu->get_y() > pos.y_pos + 90 && pingu->get_y() < pos.y_pos + 190) {
-    if (pingu->get_x() > pos.x_pos + 30 && pingu->get_x() < pos.x_pos + 250)
-      {
-	// Activate the smasher if a Pingu is under it
-	if ((pingu->direction.is_left() 
-	     && pingu->get_x() > pos.x_pos + 65 && pingu->get_x() < pos.x_pos + 85)
-	    || 
-	    (pingu->direction.is_right() 
-	     && pingu->get_x() > pos.x_pos + 190 && pingu->get_x() < pos.x_pos + 210))
-	  {
-	    if (!smashing) {
-	      PingusSound::play_wav("sound/OING.WAV");
-	      count = 0;
-	      downwards = true;
-	      smashing = true; 
-	    }
-	  }
-	
-	// Kill the Pingus, when the smasher is down
-	if (count >= 5) 
-	  {
-	    //pingu->set_action(ActionHolder::get_uaction("smashed"));
-	    pingu->set_status((PinguStatus)dead);
-	  }
-      } 
-  }
+  // Activate the smasher if a Pingu is under it
+  if ((pingu->direction.is_left() 
+       && pingu->get_x() > pos.x_pos + 65 && pingu->get_x() < pos.x_pos + 85)
+      || 
+      (pingu->direction.is_right() 
+       && pingu->get_x() > pos.x_pos + 190 && pingu->get_x() < pos.x_pos + 210))
+    {
+      if (!smashing) 
+	{
+	  count = 0;
+	  downwards = true;
+	  smashing = true; 
+	}
+    }
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: LayerManager.hh,v 1.3 2001/03/18 17:45:04 grumbel Exp $
+//  $Id: LayerManager.hh,v 1.4 2001/04/01 18:00:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ private:
       sur.put_screen (x_pos + x_offset - 800, y_pos + y_offset);
     }
 
-    void update () {
+    void update (float delta) {
       x_pos = (x_pos + x_update) % 800;
       y_pos = (y_pos + y_update) % 600;
     }
@@ -65,7 +65,7 @@ public:
 
   void add_layer (const CL_Surface& sur, int x_o, int y_o, int x_u, int y_u);
   void draw ();
-  void update ();
+  void update (float delta);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: Cloud.cc,v 1.8 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: Cloud.cc,v 1.9 2001/04/01 18:00:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ Cloud::Cloud(EntranceData data)
 }
 
 void
-Cloud::update(void)
+Cloud::update(float delta)
 {
 }
 

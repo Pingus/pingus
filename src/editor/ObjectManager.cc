@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.38 2000/12/16 23:11:24 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.39 2001/04/01 18:00:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,11 +49,11 @@ ObjectManager::ObjectManager()
 ObjectManager::~ObjectManager()
 {
   /*
-  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = editor_objs.begin();
-      i != editor_objs.end(); 
-      i++)
+    for(std::list<boost::shared_ptr<EditorObj> >::iterator i = editor_objs.begin();
+    i != editor_objs.end(); 
+    i++)
     {
-      delete *i;
+    delete *i;
     }
   */
   if (plf) delete plf;
@@ -214,11 +214,11 @@ ObjectManager::draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_heig
       (*i)->draw_scroll_map(x_pos, y_pos,
 			    arg_width, arg_height);
       /*
-      Display::draw_rect(x_pos + (*i)->get_x_pos() * arg_width / width,
-			 y_pos + (*i)->get_y_pos() * arg_height / height,
-			 x_pos + (*i)->get_x_pos() * arg_width / width + 10,
-			 y_pos + (*i)->get_y_pos() * arg_height / height + 10,
-			 0.0, 1.0, 0.0, 1.0);*/
+	Display::draw_rect(x_pos + (*i)->get_x_pos() * arg_width / width,
+	y_pos + (*i)->get_y_pos() * arg_height / height,
+	x_pos + (*i)->get_x_pos() * arg_width / width + 10,
+	y_pos + (*i)->get_y_pos() * arg_height / height + 10,
+	0.0, 1.0, 0.0, 1.0);*/
     }  
 }
 
@@ -250,8 +250,11 @@ ObjectManager::save_level (string filename)
   ofstream plf_out;
   ofstream psm_out;
 
-  plf_out.open((filename + ".plf").c_str());
-  psm_out.open((filename + ".psm").c_str());
+  std::string plf_filename = filename + ".plf";
+  std::string psm_filename = filename + ".psm";
+
+  plf_out.open(plf_filename.c_str());
+  psm_out.open(psm_filename.c_str());
 
   if (!plf_out) {
     cout << "Couldn't open plf: " << filename << endl;
@@ -263,10 +266,9 @@ ObjectManager::save_level (string filename)
     return;
   }
 
-  // FIXME: we need some error checking
-  
+  // FIXME: we need some error checking 
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.38 2000/12/16 23:11:24 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.39 2001/04/01 18:00:41 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   
@@ -290,30 +292,33 @@ ObjectManager::save_level (string filename)
 	  << "  colmap  = (auto);\n"
 	  << "}\n"
 	  << endl;
-  SurfaceBackgroundData* sur_background;
 
-  sur_background = dynamic_cast<SurfaceBackgroundData*>(backgrounds.begin()->get());
+  if (!backgrounds.empty ())
+    {
+      SurfaceBackgroundData* sur_background;
+      sur_background = dynamic_cast<SurfaceBackgroundData*>(backgrounds.begin()->get());
 
-  if (sur_background)
-    {
-      plf_out << "background {\n"
-	      << "  image = (resource:" << sur_background->desc.datafile << ")\"" << sur_background->desc.res_name << "\";\n"
-	      << "  dim   = \""   << sur_background->color.alpha   << "\";\n"
-	      << "  red   = \""   << sur_background->color.red   << "\";\n"
-	      << "  green = \""   << sur_background->color.green << "\";\n"
-	      << "  blue  = \""   << sur_background->color.blue << "\";\n"
-	      << "  scroll_x = "  << sur_background->scroll_x << ";\n"
-	      << "  scroll_y = "  << sur_background->scroll_y << ";\n"
-	      << "  para_x = "    << sur_background->para_x << ";\n"
-	      << "  para_y = "    << sur_background->para_y << ";\n"
-	      << "  stretch_x = " << sur_background->stretch_x << ";\n"
-	      << "  stretch_y = " << sur_background->stretch_y << ";\n" 
-	      << "}\n"
-	      << endl;
-    }
-  else
-    {
-      std::cout << "ObjectManager: Background of unknown type, not supported by .plf files" << std::endl;
+      if (sur_background)
+	{
+	  plf_out << "background {\n"
+		  << "  image = (resource:" << sur_background->desc.datafile << ")\"" << sur_background->desc.res_name << "\";\n"
+		  << "  dim   = \""   << sur_background->color.alpha   << "\";\n"
+		  << "  red   = \""   << sur_background->color.red   << "\";\n"
+		  << "  green = \""   << sur_background->color.green << "\";\n"
+		  << "  blue  = \""   << sur_background->color.blue << "\";\n"
+		  << "  scroll_x = "  << sur_background->scroll_x << ";\n"
+		  << "  scroll_y = "  << sur_background->scroll_y << ";\n"
+		  << "  para_x = "    << sur_background->para_x << ";\n"
+		  << "  para_y = "    << sur_background->para_y << ";\n"
+		  << "  stretch_x = " << sur_background->stretch_x << ";\n"
+		  << "  stretch_y = " << sur_background->stretch_y << ";\n" 
+		  << "}\n"
+		  << endl;
+	}
+      else
+	{
+	  std::cout << "ObjectManager: Background of unknown type, not supported by .plf files" << std::endl;
+	}
     }
 
   // Printing actions to file
@@ -331,7 +336,8 @@ ObjectManager::save_level (string filename)
 
   psm_out.close();
   plf_out.close();
-  cout << "Saveing finished" << endl;}
+  cout << "Saveing finished" << endl;
+}
 
 
 /// Save the current level in an xml file
@@ -346,17 +352,15 @@ ObjectManager::save_level_xml (std::string filename)
     throw PingusError("ObjectManager:save_level_xml: Couldn't save level: " + filename);
 
   xml << "<?xml version=\"1.0\"?>\n\n"
-    // << "<!DOCTYPE pingus-level SYSTEM \"http://www.pingus.cx/dtd/pingus-level.dtd\">\n"
-      << "<pingus-level>\n";
- 
-  xml << "  <global>\n";
+      << "<pingus-level>\n"
+      << "  <global>\n";
     
   for(map<std::string, std::string>::const_iterator i = levelname.begin();
       i != levelname.end();
       i++)
     {
-      xml << "    <levelname lang=\"" << i->first
-	  << "\">" << i->second << "</levelname>" << std::endl;
+      xml << "    <levelname lang=\"" << i->first << "\">" 
+	  << i->second << "</levelname>" << std::endl;
     }
 
   for(map<std::string, std::string>::const_iterator i = description.begin();
@@ -383,22 +387,22 @@ ObjectManager::save_level_xml (std::string filename)
     (*i)->write_xml(&xml);
 
   /*  xml << "<background>\n";
-  EditorObj::save_desc_xml(&xml, background.desc);
+      EditorObj::save_desc_xml(&xml, background.desc);
   
-  xml  << "  <color>\n"
-       << "    <red>"   << background.color.red   << "</red>\n"
-       << "    <green>" << background.color.green << "</green>\n"
-       << "    <blue>"  << background.color.blue << "</blue>\n"
-       << "    <alpha>" << background.color.alpha   << "</alpha>\n"
-       << "  </color>\n"
-       << "  <scroll-x>"  << background.scroll_x << "</scroll-x>\n"
-       << "  <scroll-y>"  << background.scroll_y << "</scroll-y>\n"
-       << "  <para-x>"    << background.para_x << "</para-x>\n"
-       << "  <para-y>"    << background.para_y << "</para-y>\n"
-       << "  <stretch-x>" << background.stretch_x << "</stretch-x>\n"
-       << "  <stretch-y>" << background.stretch_y << "</stretch-y>\n" 
-       << "</background>\n"
-       << endl;
+      xml  << "  <color>\n"
+      << "    <red>"   << background.color.red   << "</red>\n"
+      << "    <green>" << background.color.green << "</green>\n"
+      << "    <blue>"  << background.color.blue << "</blue>\n"
+      << "    <alpha>" << background.color.alpha   << "</alpha>\n"
+      << "  </color>\n"
+      << "  <scroll-x>"  << background.scroll_x << "</scroll-x>\n"
+      << "  <scroll-y>"  << background.scroll_y << "</scroll-y>\n"
+      << "  <para-x>"    << background.para_x << "</para-x>\n"
+      << "  <para-y>"    << background.para_y << "</para-y>\n"
+      << "  <stretch-x>" << background.stretch_x << "</stretch-x>\n"
+      << "  <stretch-y>" << background.stretch_y << "</stretch-y>\n" 
+      << "</background>\n"
+      << endl;
   */
   // Printing actions to file
   xml << "  <action-list>\n";

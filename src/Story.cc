@@ -1,4 +1,4 @@
-//  $Id: Story.cc,v 1.6 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: Story.cc,v 1.7 2001/04/01 18:00:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <vector>
 #include <string>
 
+#include "DeltaManager.hh"
 #include "LayerManager.hh"
 #include "PingusResource.hh"
 #include "Story.hh"
@@ -58,9 +59,11 @@ Story::display()
   layer_manager.add_layer (PingusResource::load_surface ("Layer/layer4", "story"), 0, 377, 25, 0);
   layer_manager.add_layer (PingusResource::load_surface ("Layer/layer5", "story"), 0, 500, 35, 0);
 
+  DeltaManager delta;
   while (true)
     {
-      layer_manager.update ();
+      layer_manager.update (delta.get ());
+      delta.set ();
       layer_manager.draw ();
       
       sur.put_screen (400, 300);

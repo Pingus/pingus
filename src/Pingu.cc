@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.43 2001/03/31 11:21:50 grumbel Exp $
+//  $Id: Pingu.cc,v 1.44 2001/04/01 18:00:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -129,6 +129,12 @@ Pingu::set_pos(int x, int y)
 {
   pos.x = x;
   pos.y = y;
+}
+
+void 
+Pingu::set_pos(const CL_Vector& arg_pos)
+{
+  pos = arg_pos;
 }
 
 // Set the action of the pingu (bridger, blocker, bomber, etc.)

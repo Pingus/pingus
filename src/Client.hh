@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.16 2000/07/02 07:39:50 grumbel Exp $
+//  $Id: Client.hh,v 1.17 2001/04/01 18:00:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -140,8 +140,7 @@ public:
   void set_finished();
   ///
   Result get_result();
-}///
-;
+};
 
 #endif
 

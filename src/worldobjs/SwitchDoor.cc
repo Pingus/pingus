@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.cc,v 1.7 2001/03/31 11:21:52 grumbel Exp $
+//  $Id: SwitchDoor.cc,v 1.8 2001/04/01 18:00:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -155,7 +155,7 @@ SwitchDoor::draw_offset(int x_of, int y_of, float s = 1.0)
 }
 
 void
-SwitchDoor::update()
+SwitchDoor::update(float delta)
 {
   if (current_door_height > 0)
     {

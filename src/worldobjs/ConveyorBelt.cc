@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.10 2001/03/31 11:21:52 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.11 2001/04/01 18:00:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,7 +91,6 @@ ConveyorBelt::ConveyorBelt (WorldObjData* data)
   speed = obj->speed;
   width = obj->width;
   counter = 0;
-  catch_counter = 0;
 }
 
 void
@@ -103,7 +102,7 @@ ConveyorBelt::draw_offset (int x_of, int y_of, float s = 1.0)
 			   pos.y_pos + y_of, 
 			   counter);
   right_sur.put_screen (pos.x_pos + left_sur.get_width () + width*middle_sur.get_width () + x_of,
-			 pos.y_pos + y_of, counter);
+			pos.y_pos + y_of, counter);
 }
 
 void
@@ -115,28 +114,26 @@ ConveyorBelt::draw_colmap ()
 }
 
 void 
-ConveyorBelt::update(void)
+ConveyorBelt::update(float delta)
 {
-  counter += speed;
+  counter += speed * delta;
 
-  if (counter > 14)
-    counter = 0;
-  else if (counter < 0)
+  if (counter >= 14.0f)
+    counter = 0.0f;
+  else if (counter < 0.0f)
     counter = middle_sur.get_num_frames () - 1;
 
-  // Move the Pingus only every second step
-  if (catch_counter++ % 2 == 0)
+  PinguHolder* holder = world->get_pingu_p();
+  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
     {
-      PinguHolder* holder = world->get_pingu_p();
-      for (PinguIter pingu = holder->begin (); pingu != holder->end (); pingu++)
+      if (   (*pingu)->get_x() > pos.x_pos
+	     && (*pingu)->get_x() < pos.x_pos + 15*(width+2)
+	     && (*pingu)->get_y() > pos.y_pos - 2
+	     && (*pingu)->get_y() < pos.y_pos + 10)
 	{
-	  if (   (*pingu)->get_x() > pos.x_pos
-		 && (*pingu)->get_x() < pos.x_pos + 15*(width+2)
-		 && (*pingu)->get_y() > pos.y_pos - 2
-		 && (*pingu)->get_y() < pos.y_pos + 10)
-	    {
-	      (*pingu)->set_pos ((*pingu)->get_x () - speed, (*pingu)->get_y ());
-	    }
+	  CL_Vector pos = (*pingu)->get_pos ();
+	  pos.x -= speed * delta;
+	  (*pingu)->set_pos (pos);
 	}
     }
 }
@@ -158,7 +155,7 @@ EditorConveyorBeltObj::EditorConveyorBeltObj (WorldObjData* obj)
   ConveyorBeltData::width = conveyor_belt->width;
   speed = conveyor_belt->speed;
   ConveyorBeltData::width = conveyor_belt->width;
-  counter = 0;
+  counter = 0.0f;
 }
 
 EditorConveyorBeltObj::~EditorConveyorBeltObj ()
@@ -177,10 +174,10 @@ EditorConveyorBeltObj::draw_offset(int x_of, int y_of)
   left_sur.put_screen (pos.x_pos + x_of, pos.y_pos + y_of, counter);
   for (int i=0; i < ConveyorBeltData::width; i++)
     middle_sur.put_screen (pos.x_pos + left_sur.get_width () + i*middle_sur.get_width () + x_of, 
-			    pos.y_pos + y_of, 
-			    counter);
+			   pos.y_pos + y_of, 
+			   counter);
   right_sur.put_screen (pos.x_pos + left_sur.get_width () + ConveyorBeltData::width*middle_sur.get_width () + x_of,
-			 pos.y_pos + y_of, counter);
+			pos.y_pos + y_of, counter);
   counter += speed;
   if (counter > 14)
     counter = 0;

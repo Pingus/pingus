@@ -1,4 +1,4 @@
-//  $Id: fire_hole.cc,v 1.3 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: fire_hole.cc,v 1.4 2001/04/01 18:00:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,12 +32,12 @@ FireHole::~FireHole()
 }
 
 void
-FireHole::update()
+FireHole::update(float delta)
 {
 }
  
 void 
-FireHole::catch_pingu(Pingu* pingu)
+FireHole::catch_pingu(boost::shared_ptr<Pingu> pingu)
 {
 }
 

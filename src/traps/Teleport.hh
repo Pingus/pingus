@@ -37,9 +37,9 @@ public:
   virtual ~Teleport();
   
   ///
-  void update(void);
+  void update(float delta);
   ///
-  void catch_pingu(Pingu*);
+  void catch_pingu(boost::shared_ptr<Pingu>);
 };
 
 #endif

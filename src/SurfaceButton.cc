@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.19 2000/12/16 23:11:20 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.20 2001/04/01 18:00:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include "my_gettext.hh"
 
+#include "PingusSound.hh"
 #include "globals.hh"
 #include "PingusResource.hh"
 #include "Loading.hh"
@@ -34,6 +35,7 @@ SurfaceButton::SurfaceButton()
   font = PingusResource::load_font("Fonts/pingus_small", "fonts");
   font_large = PingusResource::load_font("Fonts/pingus", "fonts");
 
+  is_mouse_over = false;
   //std::cout << "Generating font cache: " << std::flush;
   // We print all available letters, so that they are in the cache
   //font->print_left (0,0, "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
@@ -50,6 +52,12 @@ SurfaceButton::draw()
 {
   if (mouse_over() && !CL_Mouse::left_pressed()) 
     {
+      if (!is_mouse_over) 
+	{
+	  PingusSound::play_wav ("chain", 0.3);
+	}
+
+      is_mouse_over = true;
       // font->print_center(CL_Display::get_width() / 2, 10, desc.c_str());
       font->print_center(CL_Display::get_width() / 2, 
 			 CL_Display::get_height() - 20, 
@@ -105,6 +113,7 @@ SurfaceButton::draw()
     } 
   else 
     {
+      is_mouse_over = false;
       surface_p.put_screen(x_pos - surface_p.get_width()/2,
 			   y_pos - surface_p.get_height()/2);
 
@@ -338,6 +347,7 @@ ThemeButton::~ThemeButton()
 void
 ThemeButton::on_click()
 {
+  PingusSound::play_wav ("letsgo");
   worldmap_manager.display();
   //theme_selector.select();
 }

@@ -1,4 +1,4 @@
-//  $Id: PingusWavProvider.cc,v 1.3 2000/06/23 18:39:56 grumbel Exp $
+//  $Id: PingusWavProvider.cc,v 1.4 2001/04/01 18:00:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 #include "PingusError.hh"
 #include "PingusWavProvider.hh"
 
-std::list<PingusWavProvider::wav_pair> PingusWavProvider::wave;
+std::map<std::string, Mix_Chunk*> PingusWavProvider::wave;
 
 Mix_Chunk*
 PingusWavProvider::load(std::string str)
@@ -30,7 +30,7 @@ PingusWavProvider::load(std::string str)
 #ifdef HAVE_LIBSDL_MIXER
   Mix_Chunk* wav_data;
 
-  wav_data = get(str);
+  wav_data = wave[str];
 
   if (wav_data)
     {
@@ -38,34 +38,21 @@ PingusWavProvider::load(std::string str)
     }
   else
     {
-      wav_pair chunk;
-      chunk.filename = str;
-      chunk.data = Mix_LoadWAV(str.c_str()); 
+      wav_data = Mix_LoadWAV(str.c_str()); 
+      
+      wav_data->volume = 80;
 
-      if (!chunk.data) 
+      if (!wav_data) 
 	{
 	  throw PingusError("PingusWavProvider: Couldn't load " + str + ": " + SDL_GetError());
 	} 
       else
 	{
-	  wave.push_back(chunk);
-	  return chunk.data;
+	  wave[str] = wav_data;
+	  return wav_data;
 	}
     }
 #endif /* HAVE_LIBSDL_MIXER */
-  return 0;
-}
-
-Mix_Chunk*
-PingusWavProvider::get(std::string str)
-{
-  for(std::list<wav_pair>::iterator i = wave.begin(); 
-      i != wave.end(); 
-      ++i)
-    {
-      if (i->filename == str)
-	return i->data;
-    }
   return 0;
 }
 

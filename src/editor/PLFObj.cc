@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.34 2000/12/16 23:11:24 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.35 2001/04/01 18:00:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -497,7 +497,7 @@ LiquidObj::save(ofstream* plf, ofstream* psm)
 void
 LiquidObj::save_xml(std::ofstream* xml)
 {
-  (*xml) << "<liquid>";
+  (*xml) << "<liquid>\n";
   XMLhelper::write_desc_xml(xml, desc);
   XMLhelper::write_position_xml(xml, *position);
   (*xml) << "  <width>" << width << "</width>\n"

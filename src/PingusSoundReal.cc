@@ -1,4 +1,4 @@
-//  $Id: PingusSoundReal.cc,v 1.6 2000/12/30 23:54:05 grumbel Exp $
+//  $Id: PingusSoundReal.cc,v 1.7 2001/04/01 18:00:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ PingusSoundReal::init(int audio_rate, Uint16 audio_format,
 
   if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
     {
-      printf("Initint music: %d Hz %d bit %s, %d bytes audio buffer\n", audio_rate,
+      printf("Initing music: %d Hz %d bit %s, %d bytes audio buffer\n", audio_rate,
 	     (audio_format&0xFF),
 	     (audio_channels > 1) ? "stereo" : "mono", 
 	     audio_buffers);
@@ -108,7 +108,7 @@ PingusSoundReal::real_clean_up()
 }
 
 void
-PingusSoundReal::real_play_wav(std::string arg_str)
+PingusSoundReal::real_play_wav(std::string arg_str, float volume)
 {
   std::string str = "sound/" +  arg_str + ".wav";
   
@@ -119,7 +119,9 @@ PingusSoundReal::real_play_wav(std::string arg_str)
     }
   
   //cout << "PlayingWAV: " << str << endl;
-  Mix_PlayChannel(-1, PingusWavProvider::load(str), 0);
+  Mix_Chunk* chunk = PingusWavProvider::load(str);
+  chunk->volume = int(128.0f * volume);
+  Mix_PlayChannel(-1, chunk, 0);
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.37 2001/03/30 09:19:23 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.38 2001/04/01 18:00:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ void
 EditorEvent::set_editor(Editor* e)
 {
   editor = e;
-  editor->last_level = System::get_statdir() + "levels/dist/";
+  editor->last_level = System::get_statdir() + "levels/";
   object_manager = editor->object_manager;
 }
 
@@ -135,7 +135,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	case CL_KEY_F10:
 	  {
 	    // FIXME
-	    std::cout << "EditorEvent: Background settings is currently not supported" << std::endl;
+	    std::cout << "EditorEvent: Background setting is currently not supported" << std::endl;
 	    /*
 	    SurfaceBackgroundData* sur_bg;
 	    if ((sur_bg = dynamic_cast<SurfaceBackgroundData*>(*(object_manager->backgrounds.begin()))) != 0)
@@ -478,13 +478,13 @@ EditorEvent::editor_load_level()
   StringReader reader("Input filename to load the file (without .plf!)", editor->last_level);
   std::cout << "Loading level, input filename" << std::endl;
 
-  dir = System::opendir(System::get_statdir() + "levels/dist/", "*");
+  dir = System::opendir(System::get_statdir() + "levels/", "*");
 
   for (System::Directory::iterator i = dir.begin(); i != dir.end(); i++)
     {
-      std::cout << "dirs: " << System::get_statdir() + "levels/dist/" +  i->name << std::endl;
+      std::cout << "dirs: " << System::get_statdir() + "levels/" +  i->name << std::endl;
       
-      temp_str = System::get_statdir() + "levels/dist/" + i->name;
+      temp_str = System::get_statdir() + "levels/" + i->name;
 
       strings.push_back(temp_str);
     }
@@ -519,12 +519,12 @@ EditorEvent::editor_save_level_as()
 
   StringReader reader("Input filename to save the file (without .plf!)", editor->last_level);
 
-  dir = System::opendir(System::get_statdir() + "levels/dist/", "*");
+  dir = System::opendir(System::get_statdir() + "levels/", "*");
 
   for (System::Directory::iterator i = dir.begin(); i != dir.end(); i++)
     {
-      std::cout << "dirs: " << System::get_statdir() + "levels/dist/" +  i->name << std::endl;
-      str = System::get_statdir() + "levels/dist/" + i->name;
+      std::cout << "dirs: " << System::get_statdir() + "levels/" +  i->name << std::endl;
+      str = System::get_statdir() + "levels/" + i->name;
 
       strings.push_back(str);
     }
@@ -605,7 +605,7 @@ EditorEvent::editor_insert_new_object()
 void
 EditorEvent::editor_new_level()
 {
-  editor->last_level = System::get_statdir() + "levels/dist/";
+  editor->last_level = System::get_statdir() + "levels/";
   object_manager->new_level();
 }
 

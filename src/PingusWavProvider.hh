@@ -1,4 +1,4 @@
-//  $Id: PingusWavProvider.hh,v 1.2 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: PingusWavProvider.hh,v 1.3 2001/04/01 18:00:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef PINGUSWAVPROVIDER_HH
 #define PINGUSWAVPROVIDER_HH
 
-#include <list>
+#include <map>
 #include <string>
 #include "audio.hh"
 
@@ -28,23 +28,11 @@
 class PingusWavProvider
 {
 private:
-  ///
-  struct wav_pair {
-    ///
-    Mix_Chunk*  data;
-    ///
-    std::string filename;
-  }///
-;
-  ///
-  static std::list<wav_pair> wave;
+  static std::map<std::string, Mix_Chunk*> wave;
 public:
   ///
-  static Mix_Chunk* get(std::string);
-  ///
   static Mix_Chunk* load(std::string);
-}///
-;
+};
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: Cloud.hh,v 1.5 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: Cloud.hh,v 1.6 2001/04/01 18:00:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ public:
   Cloud(EntranceData);
 
   ///
-  virtual void update(void);
+  virtual void update(float delta);
   ///
   virtual void draw_offset(int x, int y, float s = 1.0);
 }///

@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackground.cc,v 1.5 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: ThunderstormBackground.cc,v 1.6 2001/04/01 18:00:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ ThunderstormBackground::create (boost::shared_ptr<BackgroundData>)
 }
 
 void
-ThunderstormBackground::update(void)
+ThunderstormBackground::update(float delta)
 {
   x_pos += 1;
   if (x_pos >= (int) clouds_sur.get_width())

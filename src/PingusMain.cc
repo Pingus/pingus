@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.19 2001/03/18 17:45:04 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.20 2001/04/01 18:00:37 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -69,6 +69,7 @@
 //#include "Story.hh"
 
 #include "PingusSound.hh"
+#include "PingusSoundDummy.hh"
 
 #ifdef HAVE_LIBSDL_MIXER
 #  include "PingusSoundReal.hh"

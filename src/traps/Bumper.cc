@@ -1,4 +1,4 @@
-//  $Id: Bumper.cc,v 1.10 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: Bumper.cc,v 1.11 2001/04/01 18:00:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ Bumper::~Bumper()
 }
 
 void
-Bumper::update()
+Bumper::update(float delta)
 {
   if (upwards) 
     {
@@ -66,7 +66,7 @@ Bumper::draw_offset(int x, int y, float s)
 }
 
 void 
-Bumper::catch_pingu(Pingu* pingu)
+Bumper::catch_pingu(boost::shared_ptr<Pingu> pingu)
 {
   //  if (!pingu->is_alive())
   //  return;

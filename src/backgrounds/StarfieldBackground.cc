@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.cc,v 1.7 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: StarfieldBackground.cc,v 1.8 2001/04/01 18:00:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -130,7 +130,7 @@ StarfieldBackgroundStars::init ()
 }
 
 void
-StarfieldBackgroundStars::update(void)
+StarfieldBackgroundStars::update(float delta)
 {
   x_pos += x_add;
   y_pos += y_add;
@@ -183,12 +183,12 @@ StarfieldBackground::create (boost::shared_ptr<BackgroundData> arg_data)
 
 ///
 void 
-StarfieldBackground::update(void)
+StarfieldBackground::update(float delta)
 {
   for (vector<StarfieldBackgroundStars>::iterator i = stars.begin ();
        i != stars.end (); i++)
     {
-      i->update ();
+      i->update (delta);
     }
 }
 ///

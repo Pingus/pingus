@@ -1,4 +1,4 @@
-//  $Id: WorldObj.hh,v 1.13 2001/03/31 10:54:27 grumbel Exp $
+//  $Id: WorldObj.hh,v 1.14 2001/04/01 18:00:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,14 +59,17 @@ public:
    *  (XXX: What are the bounds of this offset?)
    *  @param x the $x$-coordinate of this object
    *  @param y the $y$-coordinate of this object
-   *  @param s (XXX)
+   *  @param s the scalar by with the object is zoomed (1.0 is default)
    */
   virtual void draw_offset(int x, int y, float s = 1.0) {}
 
-  /// XXX
+  /** Draws the objects collision map to the main collision map, this
+   *  can be used for traps which need a solid ground. */
   virtual void draw_colmap();
 
-  /// XXX
+  /** The update function is called once a game loop, the delta
+   * specifies how much time is passed since the last update
+   * delta = 1.0 means that one second of realtime has passed. */
   virtual void update(float delta = 0.0);
 
   /** Create an WorldObj out of some WorldObj data

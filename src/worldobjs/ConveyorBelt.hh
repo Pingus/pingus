@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.hh,v 1.7 2001/03/31 11:21:52 grumbel Exp $
+//  $Id: ConveyorBelt.hh,v 1.8 2001/04/01 18:00:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,8 +49,8 @@ private:
   CL_Surface left_sur;
   CL_Surface right_sur;
   CL_Surface middle_sur;
-  int counter;
-  int catch_counter;
+  float counter;
+
 public:
   ///
   ConveyorBelt (WorldObjData*);
@@ -61,7 +61,7 @@ public:
   ///
   virtual void draw_colmap();
   ///
-  virtual void update(void);
+  virtual void update(float delta);
   ///
   virtual int  get_z_pos() const { return pos.z_pos; }
 };
@@ -73,7 +73,7 @@ private:
   CL_Surface left_sur;
   CL_Surface right_sur;
   CL_Surface middle_sur;
-  int counter;
+  float counter;
 
 public:
   EditorConveyorBeltObj (WorldObjData* obj);

@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.39 2001/03/18 17:45:04 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.40 2001/04/01 18:00:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -144,9 +144,14 @@ PingusMenu::select(void)
 
   PingusSound::play_mod("../data/music/pingus-1.it");
   
+  unsigned int last_time = CL_System::get_time ();
   while(!do_quit) 
     {
-      layer_manager.update ();
+      float delta = (CL_System::get_time () -  last_time) / 1000.0;
+
+      layer_manager.update (delta);
+      last_time = CL_System::get_time ();
+
       draw ();
       CL_System::keep_alive();
     }
