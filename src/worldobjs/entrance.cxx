@@ -1,4 +1,4 @@
-//  $Id: entrance.cxx,v 1.10 2003/03/03 20:32:18 grumbel Exp $
+//  $Id: entrance.cxx,v 1.11 2003/03/05 17:31:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ namespace WorldObjs {
 Entrance::Entrance (const WorldObjsData::EntranceData& data_)
   : data(new WorldObjsData::EntranceData(data_)),
     smallmap_symbol("misc/smallmap_entrance", "core"),
-    last_release(-data->release_rate)
+    last_release(150 - data->release_rate) // wait ~2sec at startup to allow a 'lets go' sound
 {
   smallmap_symbol.set_align_center_bottom();
   if (verbose > 2)
@@ -54,7 +54,7 @@ Entrance::get_z_pos () const
 bool
 Entrance::pingu_ready ()
 {
-  if (last_release < (world->get_game_time()->get_ticks() - data->release_rate)) {
+  if (last_release + data->release_rate < (world->get_game_time()->get_ticks())) {
     last_release = world->get_game_time()->get_ticks();
     return true;
   } else {

@@ -1,4 +1,4 @@
-//  $Id: exiter.hxx,v 1.11 2002/10/13 16:40:01 grumbel Exp $
+//  $Id: exiter.hxx,v 1.12 2003/03/05 17:31:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@ class Exiter : public PinguAction
 {
 private:
   Sprite sprite;
+  bool sound_played;
   
 public:
   Exiter(Pingu*);

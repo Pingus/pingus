@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.26 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: basher.cxx,v 1.27 2003/03/05 17:31:29 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -16,6 +16,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../sound/sound.hxx"
 #include "../col_map.hxx"
 #include "../debug.hxx"
 #include "../globals.hxx"
@@ -86,6 +87,7 @@ Basher::update ()
 	      || rel_getpixel(0, pingu_height) == Groundtype::GP_SOLID)
 	    {
 	      // Change direction and let walk code walk forward/up to get out.
+              PingusSound::play_sound("chink");
 	      pingu->direction.change();
 	      pingu->set_action(Actions::Walker);
 	    }
