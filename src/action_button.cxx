@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.13 2002/09/14 19:06:33 torangan Exp $
+//  $Id: action_button.cxx,v 1.14 2002/10/03 01:02:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -241,7 +241,7 @@ ArmageddonButton::on_primary_button_click (int x, int y)
 {
   if (pressed)
     {
-      server->set_armageddon();
+      server->send_armageddon_event();
     }
   else
     {

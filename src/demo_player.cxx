@@ -1,4 +1,4 @@
-//  $Id: demo_player.cxx,v 1.4 2002/09/14 23:40:35 grumbel Exp $
+//  $Id: demo_player.cxx,v 1.5 2002/10/03 01:02:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,13 +19,18 @@
 
 #include <iostream>
 #include <fstream>
+#include "server.hxx"
 #include "pingus_error.hxx"
 #include "demo_player.hxx"
+#include "xml_helper.hxx"
 #include "my_gettext.hxx"
+#include "xml_pdf.hxx"
 
 using namespace std;
 
-DemoPlayer::DemoPlayer()
+DemoPlayer::DemoPlayer(Server* s, XMLPDF* pdf)
+  : server(s),
+    events(pdf->get_events())
 {
 }
 
@@ -33,49 +38,25 @@ DemoPlayer::~DemoPlayer()
 {
 }
 
-std::string 
-DemoPlayer::get_levelname()
-{
-  return levelname;
-}
-
 void
-DemoPlayer::load(const std::string& arg_filename)
+DemoPlayer::update()
 {
-  const int buffer_size = 256;
-  char buffer[buffer_size];
-  std::string filename;
-  std::ifstream in;
-  
-  filename = arg_filename;
-
-  in.open(filename.c_str());
-
-  if (!in)
-    PingusError::raise(_("DemoPlayer: Couldn't load ") + filename);
-
-  in >> levelname; 
-  in.get(); // \n ueberlesen
-  std::cout << "DemoPlayer: LevelName=" << levelname << std::endl;
-
-  while(!(in.getline(buffer, buffer_size).eof()))
+  if (!events.empty())
     {
-      cout << "Readline: " << buffer << endl;
-      event_queue.push(PingusEvent(buffer));
-      std::cout << "Parsed: " << event_queue.back().game_time << ":" << event_queue.back().str << std::endl;
+      ServerEvent event = events.back();
+      if (event.time_stamp == server->get_time())
+	{
+	  std::cout << "Sending: ";
+	  event.write_xml(std::cout);
+
+	  event.send(server);
+	  events.pop_back();
+	}
+      else if (event.time_stamp < server->get_time())
+	{
+	  std::cout << "DemoPlayer Bug: We missed a timestamp: " << event.time_stamp << std::endl;
+	}
     }
-}
-
-const PingusEvent& 
-DemoPlayer::peek_event()
-{
-  return event_queue.front();
-}
-
-void
-DemoPlayer::dequeue_event()
-{
-  event_queue.pop();
 }
 
 /* EOF */

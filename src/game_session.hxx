@@ -1,4 +1,4 @@
-//  $Id: game_session.hxx,v 1.10 2002/10/02 12:54:18 grumbel Exp $
+//  $Id: game_session.hxx,v 1.11 2002/10/03 01:02:12 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@ class Client;
 class Server;
 class PLF;
 class PingusGameSessionResult;
+class DemoPlayer;
 
 /** You can use this class to start up a game session, which consist
     of a single level. */
@@ -44,10 +45,6 @@ private:
 
   /// The client
   Client* client;
-
-  /** Create a XMLPLf or a PLFPLF, depending on the file extension,
-      the called must delete the returned PLF object */
-  PLF* create_plf (std::string filename);
 
   unsigned int last_redraw;
   unsigned int last_update;

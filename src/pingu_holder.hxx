@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.hxx,v 1.10 2002/10/02 19:20:19 grumbel Exp $
+//  $Id: pingu_holder.hxx,v 1.11 2002/10/03 01:02:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,6 +62,10 @@ public:
       take care of the deletion. The caller *must* not delete the
       Pingu */
   Pingu* create_pingu(const Vector& pos, int owner_id);
+
+  /** Get a pingu by id 
+   @return the pingu with the id, or 0 if not found */
+  Pingu* get_pingu(int id);
 
   float get_z_pos() const;
 

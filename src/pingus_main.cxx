@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.20 2002/10/01 23:10:41 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.21 2002/10/03 01:02:12 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -66,6 +66,7 @@
 #include "message_box.hxx"
 #include "audio.hxx"
 #include "game_session.hxx"
+#include "demo_session.hxx"
 #include "debug.hxx"
 #include "editor/editor.hxx"
 #include "boost/smart_ptr.hpp"
@@ -857,10 +858,14 @@ PingusMain::start_game(void)
 	    }
 	}    
     }
-  else
+  else if (start_editor)
     { // Start an empty editor workspace
       if (start_editor)
 	ScreenManager::instance()->push_screen(Editor::instance (), false);
+    }
+  else if (!demo_file.empty())
+    {
+      ScreenManager::instance()->push_screen(new DemoSession (demo_file));
     }
 
   // show the main menu, the rest of the game is spawn from there

@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.112 2002/10/02 12:54:17 grumbel Exp $
+#  $Id: Makefile.am,v 1.113 2002/10/03 01:02:12 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -116,6 +116,8 @@ demo_player.cxx \
 demo_player.hxx \
 demo_recorder.cxx \
 demo_recorder.hxx \
+demo_session.hxx \
+demo_session.cxx \
 direction.cxx \
 direction.hxx \
 display.cxx \
@@ -258,6 +260,8 @@ screen_ptr.hxx \
 screen_ptr.cxx \
 server.cxx \
 server.hxx \
+server_event.hxx \
+server_event.cxx \
 smallmap.cxx \
 smallmap.hxx \
 smallmap_image.cxx \
@@ -313,6 +317,8 @@ worldobj_data_factory.hxx \
 xml_helper.cxx \
 xml_helper.hxx \
 xml_plf.cxx \
-xml_plf.hxx
+xml_plf.hxx \
+xml_pdf.hxx \
+xml_pdf.cxx
 
 ## EOF ##

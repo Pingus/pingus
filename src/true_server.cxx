@@ -1,4 +1,4 @@
-//  $Id: true_server.cxx,v 1.13 2002/10/01 21:48:32 grumbel Exp $
+//  $Id: true_server.cxx,v 1.14 2002/10/03 01:02:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -95,13 +95,6 @@ PLF*
 TrueServer::get_plf ()
 {
   return plf;
-}
-
-void
-TrueServer::set_armageddon ()
-{
-  armageddon = true;
-  world->armageddon ();
 }
 
 bool

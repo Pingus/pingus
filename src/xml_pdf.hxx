@@ -1,7 +1,7 @@
-//  $Id: demo_player.hxx,v 1.6 2002/10/03 01:02:12 grumbel Exp $
+//  $Id: xml_pdf.hxx,v 1.1 2002/10/03 01:02:12 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -17,30 +17,43 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_DEMO_PLAYER_HXX
-#define HEADER_PINGUS_DEMO_PLAYER_HXX
+#ifndef HEADER_PINGUS_XML_PDF_HXX
+#define HEADER_PINGUS_XML_PDF_HXX
 
+#include <string>
 #include <vector>
+#include <iostream>
+
 #include "server_event.hxx"
 
-class Server;
-class XMLPDF;
+class PLF;
 
-class DemoPlayer
+/** XMLPDF stands for Pingus Demo File, it contains all the infos
+    necesarry to play a pingus demo recording */
+class XMLPDF
 {
 private:
-  Server* server;
+  PLF* plf;
+  std::string levelname;
   std::vector<ServerEvent> events;
-
 public:
-  DemoPlayer(Server* s, XMLPDF* pdf);
-  ~DemoPlayer();
-  
-  void update();
-  
+  XMLPDF(const std::string& filename);
+  ~XMLPDF();
+
+  /** @return a pointer to the level structure */
+  PLF* get_plf();
+
+  /** @return the levelname */
+  std::string get_levelname();
+
+  /** Returns a reference to the events of this demo */
+  std::vector<ServerEvent> get_events();
+
+  void write_xml(std::ostream& xml);
+
 private:
-  DemoPlayer (const DemoPlayer&);
-  DemoPlayer& operator= (const DemoPlayer&);
+  XMLPDF (const XMLPDF&);
+  XMLPDF& operator= (const XMLPDF&);
 };
 
 #endif

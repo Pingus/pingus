@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.21 2002/10/01 23:10:41 grumbel Exp $
+//  $Id: xml_helper.cxx,v 1.22 2002/10/03 01:02:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ int xmlIsBlankNode(xmlNodePtr node) { return 0; }
 xmlNodePtr
 XMLhelper::skip_blank (xmlNodePtr cur)
 {
-  if (xmlIsBlankNode(cur))
+  if (cur && xmlIsBlankNode(cur))
     return cur->next;
   else
     return cur;

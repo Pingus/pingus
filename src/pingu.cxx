@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.30 2002/10/02 19:20:19 grumbel Exp $
+//  $Id: pingu.cxx,v 1.31 2002/10/03 01:02:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,17 +38,17 @@ const float deadly_velocity = 20.0;
 
 // Init a pingu at the given position while falling
 Pingu::Pingu (int arg_id, const Vector& arg_pos, int owner)
-            : action(0),
-              countdown_action (0),
-              wall_action(0),
-              fall_action(0),
-              id(arg_id),
-              action_time(-1),
-              owner_id(owner),
-              status(PS_ALIVE),
-	      pos_x(arg_pos.x),
-	      pos_y(arg_pos.y),
-              velocity(new Vector(0, 0, 0))
+  : action(0),
+    countdown_action (0),
+    wall_action(0),
+    fall_action(0),
+    id(arg_id),
+    action_time(-1),
+    owner_id(owner),
+    status(PS_ALIVE),
+    pos_x(arg_pos.x),
+    pos_y(arg_pos.y),
+    velocity(new Vector(0, 0, 0))
 {
   direction.left ();
   set_action(Faller);
@@ -125,78 +125,78 @@ Pingu::request_set_action (PinguAction* act)
     {    
       switch (act->get_activation_mode()) {
   
-        case INSTANT:
+      case INSTANT:
   
-          if (act->get_type() == action->get_type()) 
-	    {
-	      pout(PINGUS_DEBUG_ACTIONS) << "Pingu: Already have action" << std::endl;
-	      ret_val = false;
-	    } 
-          else if (action->change_allowed(act->get_type()))
-	    {
-	      pout(PINGUS_DEBUG_ACTIONS) << "setting instant action" << std::endl;
-	      act->set_pingu(this);
-	      set_action(act);
-	      ret_val = true;
-	    }
-          else
-	    {
-	      pout(PINGUS_DEBUG_ACTIONS) << "change from action " << action->get_name () << " not allowed" << std::endl;
-	      ret_val = false;
-	    }
-          break;
+	if (act->get_type() == action->get_type()) 
+	  {
+	    pout(PINGUS_DEBUG_ACTIONS) << "Pingu: Already have action" << std::endl;
+	    ret_val = false;
+	  } 
+	else if (action->change_allowed(act->get_type()))
+	  {
+	    pout(PINGUS_DEBUG_ACTIONS) << "setting instant action" << std::endl;
+	    act->set_pingu(this);
+	    set_action(act);
+	    ret_val = true;
+	  }
+	else
+	  {
+	    pout(PINGUS_DEBUG_ACTIONS) << "change from action " << action->get_name () << " not allowed" << std::endl;
+	    ret_val = false;
+	  }
+	break;
                 
-        case WALL_TRIGGERED:
+      case WALL_TRIGGERED:
     
-          if (wall_action && wall_action->get_type() == act->get_type())
-	    {
-	      pout(PINGUS_DEBUG_ACTIONS) << "Not using wall action, we have already" << std::endl;
-	      ret_val = false;
-	    }
-          else
-	    {
-	      pout(PINGUS_DEBUG_ACTIONS) << "Setting wall action" << std::endl;
-	      wall_action = act;
-	      ret_val = true;
-	    }
-          break;
+	if (wall_action && wall_action->get_type() == act->get_type())
+	  {
+	    pout(PINGUS_DEBUG_ACTIONS) << "Not using wall action, we have already" << std::endl;
+	    ret_val = false;
+	  }
+	else
+	  {
+	    pout(PINGUS_DEBUG_ACTIONS) << "Setting wall action" << std::endl;
+	    wall_action = act;
+	    ret_val = true;
+	  }
+	break;
     
-        case FALL_TRIGGERED:
+      case FALL_TRIGGERED:
   
-          if (fall_action && fall_action->get_type() == act->get_type())
-	    {
-	      pout(PINGUS_DEBUG_ACTIONS) << "Not using fall action, we have already" << std::endl;
-	      ret_val = false;
-	    }
-          else
-	    {
-	      pout(PINGUS_DEBUG_ACTIONS) << "Setting fall action" << std::endl;
-	      fall_action = act;
-	      ret_val = true;
-	    }
-          break;
+	if (fall_action && fall_action->get_type() == act->get_type())
+	  {
+	    pout(PINGUS_DEBUG_ACTIONS) << "Not using fall action, we have already" << std::endl;
+	    ret_val = false;
+	  }
+	else
+	  {
+	    pout(PINGUS_DEBUG_ACTIONS) << "Setting fall action" << std::endl;
+	    fall_action = act;
+	    ret_val = true;
+	  }
+	break;
 
-        case COUNTDOWN_TRIGGERED:
+      case COUNTDOWN_TRIGGERED:
   
-          if (countdown_action && countdown_action->get_type() == act->get_type())
-	    {
-	      pout(PINGUS_DEBUG_ACTIONS) << "Not using countdown action, we have already" << std::endl;
-	      ret_val = false;
-	      break;
-	    }
+	if (countdown_action && countdown_action->get_type() == act->get_type())
+	  {
+	    pout(PINGUS_DEBUG_ACTIONS) << "Not using countdown action, we have already" << std::endl;
+	    ret_val = false;
+	    break;
+	  }
       
-          pout(PINGUS_DEBUG_ACTIONS) << "Setting countdown action" << std::endl;
-          // We set the action and start the countdown
-          action_time = act->activation_time();
-          countdown_action = act;
-          ret_val = true;
-          break;
+	pout(PINGUS_DEBUG_ACTIONS) << "Setting countdown action" << std::endl;
+	// We set the action and start the countdown
+	action_time = act->activation_time();
+	countdown_action = act;
+	ret_val = true;
+	break;
 	  
-        default:
-          pout(PINGUS_DEBUG_ACTIONS) << "unknown action activation_mode" << std::endl;     
-          assert(0);
-          ret_val = false;
-          break;
+      default:
+	pout(PINGUS_DEBUG_ACTIONS) << "unknown action activation_mode" << std::endl;     
+	assert(0);
+	ret_val = false;
+	break;
       }
     }
 

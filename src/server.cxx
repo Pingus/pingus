@@ -1,4 +1,4 @@
-//  $Id: server.cxx,v 1.19 2002/10/02 19:20:19 grumbel Exp $
+//  $Id: server.cxx,v 1.20 2002/10/03 01:02:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <fstream>
 #include <stdio.h>
 #include "system.hxx"
 #include "pingu.hxx"
@@ -93,6 +94,33 @@ Server::Server (PLF* plf)
 
 Server::~Server ()
 {
+  // Here we write down the demo file
+  // FIXME: syntax will be different in the final version, this is just a quick hack
+  std::string date_str;
+  
+  {
+    char buffer[32];
+    time_t curtime;
+    struct tm *loctime;
+    curtime = time (NULL);
+    loctime = localtime(&curtime);
+    strftime(buffer, 32, "%Y%m%d-%H%M%S", loctime);
+
+    date_str = buffer;
+    
+    date_str = System::get_statdir() + "demos/" + date_str + ".xml";
+  }
+
+  std::cout << "Writing demo to: " << date_str << std::endl;
+
+  std::ofstream xml(date_str.c_str());
+  
+  xml << "<pingus-events>" << std::endl;
+  for(std::vector<ServerEvent>::iterator i = events.begin();
+      i != events.end();
+      ++i)
+    i->write_xml(xml);
+  xml << "</pingus-events>" << std::endl;
 }
 
 World*
@@ -104,41 +132,15 @@ Server::get_world()
 void
 Server::update()
 {
-  /*  static PingusEvent event;
-  
-  if (!demo_mode) {
-    return;
-  }
-  
-  if (get_next_event) 
-    {
-      // Getting next event from file
-      get_next_event = false;    
-      //event = demo_in->get_next_event();
-    }
-  
-  // Check if the time for the event is right
-  if (GameTime::get_time() == event.game_time)
-    {
-      process_event(event.str);
-      get_next_event = true;
-    } 
-  else if (GameTime::get_time() >= event.game_time) 
-    {
-      // BUG: If this is reached the demo code is buggy
-      std::cout << "Demo out of sync!: " 
-		<< "GameTime: " << GameTime::get_time()
-		<< " EventTime: " << event.game_time
-		<< std::endl;
-      get_next_event = true;
-    }
-  */
 }
 
 void
 Server::send_armageddon_event()
 {
+  armageddon = true;
   world->armageddon();
+
+  events.push_back(ServerEvent::make_armageddon_event(get_time()));
 }
 
 void
@@ -153,6 +155,8 @@ Server::send_pingu_action_event(Pingu* pingu, Actions::ActionName action)
 	  action_holder.push_action(action);
 	}
     }
+
+  events.push_back(ServerEvent::make_pingu_action_event(get_time(), pingu->get_id(), action));
 }
 
 bool
@@ -175,6 +179,12 @@ ActionHolder*
 Server::get_action_holder()
 {
   return &action_holder;
+}
+
+int
+Server::get_time()
+{
+  return get_world()->get_game_time()->get_ticks();
 }
 
 /* EOF */

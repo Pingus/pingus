@@ -1,4 +1,4 @@
-//  $Id: demo_recorder.cxx,v 1.5 2002/08/16 15:13:59 torangan Exp $
+//  $Id: demo_recorder.cxx,v 1.6 2002/10/03 01:02:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,10 +28,9 @@
 #include <config.h>
 #include "my_gettext.hxx"
 
-
 using namespace std;
 
-DemoRecorder::DemoRecorder() : is_recording(false)
+DemoRecorder::DemoRecorder()
 {
 }
 
@@ -47,8 +46,6 @@ DemoRecorder::set_levelname(const string& levelname)
   //std::cout << "Demo filename: " + filename << std::endl;
   console << "Recording demo to: " << filename << std::endl;
   
-  is_recording = true;
-
   std::cout << "DemoRecorder: levelname = " << levelname << std::endl;
   out.open(filename.c_str());
 
@@ -56,15 +53,6 @@ DemoRecorder::set_levelname(const string& levelname)
 
   if (!out)
     PingusError::raise(_("DemoRecorder: Couldn't open: ") + filename);
-}
-
-void
-DemoRecorder::queue_event(const string& event)
-{
-  if (is_recording) {
-    out << event << std::endl;
-    std::cout << "Recorded: " << event << std::endl;
-  }
 }
 
 string 
