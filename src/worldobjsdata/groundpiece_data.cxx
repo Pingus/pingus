@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.cxx,v 1.16 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: groundpiece_data.cxx,v 1.17 2003/04/01 21:54:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ namespace WorldObjsData {
 
 GroundpieceData::GroundpieceData () 
 {
-  // do nothing
+  gptype = Groundtype::GP_GROUND; 
 }
 
 GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)

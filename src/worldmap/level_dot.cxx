@@ -1,4 +1,4 @@
-//  $Id: level_dot.cxx,v 1.15 2003/03/30 22:09:33 grumbel Exp $
+//  $Id: level_dot.cxx,v 1.16 2003/04/01 21:54:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -129,19 +129,19 @@ LevelDot::draw_hover(GraphicContext& gc)
       gc.print_center(Fonts::pingus_small,
                       int(pos.x), int(pos.y - 30),
                       System::translate(get_plf()->get_levelname()));
-  
-      if (maintainer_mode)
-        {
-          gc.print_center(Fonts::pingus_small,
-                          int(pos.x), int(pos.y - 56),
-                          get_plf()->get_resname());
-        }
     }
   else
     {
       gc.print_center(Fonts::pingus_small,
                       int(pos.x), int(pos.y - 30),
                       _("locked"));
+    }
+
+  if (maintainer_mode)
+    {
+      gc.print_center(Fonts::pingus_small,
+                      int(pos.x), int(pos.y - 56),
+                      get_plf()->get_resname());
     }
 }
 

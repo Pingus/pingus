@@ -1,4 +1,4 @@
-//  $Id: liquid_data.cxx,v 1.12 2003/03/05 19:13:59 grumbel Exp $
+//  $Id: liquid_data.cxx,v 1.13 2003/04/01 21:54:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,7 +68,6 @@ LiquidData::LiquidData (const LiquidData& old)
 void 
 LiquidData::write_xml (std::ostream& xml)
 {
-  std::cout << "LiquidData::write_xml(std::ostream& xml)" << std::endl;
   xml << "<liquid use-old-width-handling=\"" << old_width_handling << "\">\n";
   XMLhelper::write_desc_xml(xml, desc);
   XMLhelper::write_vector_xml(xml, pos);

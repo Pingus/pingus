@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.141 2003/03/28 13:06:55 grumbel Exp $
+#  $Id: Makefile.am,v 1.142 2003/04/01 21:54:55 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -305,5 +305,35 @@ xml_plf.cxx \
 xml_plf.hxx \
 xml_pdf.hxx \
 xml_pdf.cxx
+
+STATICBIN_LIBS = -lclanGUI -lclanCore -lclanDisplay -lclanApp -lclanPNG -lclanJPEG -lHermes \
+-lclanDisplay -lclanMikMod -lclanVorbis -logg -lvorbis -logg -lmikmod -lclanSound -lclanCore  \
+-L/usr/X11R6/lib/ \
+-lstdc++ \
+-lpthread \
+-lxml2 \
+-lm \
+-lbz2 \
+-ldl \
+-lz \
+-ltiff \
+-ljpeg \
+libpng.a \
+-lXext \
+-lXt \
+-lX11 \
+-lSM \
+-lICE \
+-lXxf86vm \
+-lstdc++ \
+-ldl
+
+pingus.static: $(pingus_OBJECTS) $(pingus_DEPENDENCIES)
+	$(CXX) $(CXXFLAGS) -s -static -o $@ $(pingus_OBJECTS) $(pingus_DEPENDENCIES) $(STATICBIN_LIBS) 
+
+pingus.static.comp: pingus.static
+	cp $< $@
+	strip -s $@
+	upx-ucl -q --best $@
 
 ## EOF ##
