@@ -795,9 +795,9 @@
 </groundpiece>
 
 <background type="starfield">
-  <small-stars count="100"/>
-  <middle-stars count="50"/>
-  <large-stars count="20"/>
+    <small-stars>100</small-stars>
+    <middle-stars>50</middle-stars>
+    <large-stars>20</large-stars>
 </background>
 
 <entrance>

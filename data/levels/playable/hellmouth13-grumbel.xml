@@ -63,7 +63,7 @@ haben.</description>
     <z-pos>-100</z-pos>
   </position>
   <width>28</width>
-  <speed>50</speed>
+  <speed>30</speed>
 </liquid>
 
 <groundpiece type="remove">

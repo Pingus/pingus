@@ -17,9 +17,9 @@ else
 fi
 
 echo "Generating ./configure, this may take a while..."
+autoheader
 $ACLOCAL
 $AUTOMAKE --force-missing --add-missing --copy
-autoheader
 autoconf
 
 # EOF #

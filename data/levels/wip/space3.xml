@@ -20,9 +20,9 @@
   </color></background>
 
   <background type="starfield">
-    <small-stars count="500"/>
-    <middle-stars count="300"/>
-    <large-stars count="150"/>
+    <small-stars>500</small-stars>
+    <middle-stars>300</middle-stars>
+    <large-stars>150</large-stars>
   </background>
 <!--
 <background>
