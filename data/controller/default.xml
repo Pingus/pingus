@@ -34,5 +34,18 @@
       </button-axis>
     </action-axis>
 
+    <scroller>
+      <axis-scroller speed="1000">
+        <button-axis angle="0">
+          <key-button key="RIGHT"/>
+          <key-button key="LEFT"/>
+        </button-axis>
+        <button-axis angle="1.5707963268">
+          <key-button key="DOWN"/>
+          <key-button key="UP"/>
+        </button-axis>      
+      </axis-scroller>
+    </scroller>
+
   </controller-config>
 </pingus-controller>
