@@ -1,4 +1,4 @@
-//  $Id: switch_door_data.cxx,v 1.7 2002/09/28 11:52:27 torangan Exp $
+//  $Id: switch_door_data.cxx,v 1.8 2003/02/18 10:14:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "../xml_file_reader.hxx"
 #include "../xml_helper.hxx"
 #include "../editorobjs/switch_door_obj.hxx"
 #include "../worldobjs/switch_door.hxx"
@@ -32,63 +33,15 @@ SwitchDoorData::SwitchDoorData ()
 
 SwitchDoorData::SwitchDoorData (xmlDocPtr doc, xmlNodePtr cur)
 {
-  cur = cur->children;
-  
-  while (cur)
-    {
-      if (xmlIsBlankNode(cur)) {
-	cur = cur->next;
-	continue;
-      }
-      
-      if (XMLhelper::equal_str(cur->name, "switch"))
-	{
-	  xmlNodePtr subcur = cur->children;
-  
-	  while (subcur)
-	    {
-	      if (xmlIsBlankNode(subcur)) {
-		subcur = subcur->next;
-		continue;
-	      }
-	      
-	      if (XMLhelper::equal_str(subcur->name, "position"))
-		{
-		  switch_pos = XMLhelper::parse_vector(doc, subcur);
-		}
-	      else
-		std::cout << "SwitchDoorData: switch: Unhandled " << subcur->name << std::endl;
+  XMLFileReader reader(doc, cur);
+  XMLFileReader subreader;
 
-	      subcur = subcur->next;
-	    }
-	}
-      else if (XMLhelper::equal_str(cur->name, "door"))
-	{
-	  xmlNodePtr subcur = cur->children;
+  reader.read_section("switch", subreader);
+  subreader.read_vector("position", switch_pos);
 
-	  while (subcur)
-	    {
-	      if (xmlIsBlankNode(subcur)) {
-		subcur = subcur->next;
-		continue;
-	      }
-	      
-	      if (XMLhelper::equal_str(subcur->name, "position"))
-		{
-		  door_pos = XMLhelper::parse_vector(doc, subcur);
-		}
-	      else if (XMLhelper::equal_str(subcur->name, "height"))
-		{
-		  door_height = XMLhelper::parse_int(doc, subcur);
-		}
-	      else
-		std::cout << "SwitchDoor::door: Unhandled " << subcur->name << std::endl;
-
-	      subcur = subcur->next;
-	    }
-	}
-      cur = cur->next;
-    }
+  reader.read_section("door", subreader);
+  subreader.read_vector("position", door_pos);
+  subreader.read_int("height", door_height);
 }
 
 SwitchDoorData::SwitchDoorData (const SwitchDoorData& old) 

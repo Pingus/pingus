@@ -1,4 +1,4 @@
-//  $Id: xml_file_reader.hxx,v 1.2 2003/02/18 01:23:51 grumbel Exp $
+//  $Id: xml_file_reader.hxx,v 1.3 2003/02/18 10:14:52 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,12 @@ public:
       @param node is a pointer to the node of the section to read, but
       not a pointer to the first element of the section! */
   XMLFileReader(xmlDocPtr doc, xmlNodePtr node);
-  
+
+  XMLFileReader();
+
+  /** Reinit a reader with a new section to parse */
+  void init(xmlDocPtr d, xmlNodePtr node);
+
   bool read_int   (const char* name, int&);
   bool read_desc  (const char* name, ResDescriptor&);
   bool read_color (const char* name, Color&);
@@ -48,6 +53,8 @@ public:
   bool read_bool  (const char* name, bool&);
   bool read_string(const char* name, std::string&);
   bool read_vector(const char* name, Vector&);
+
+  bool read_section(const char* name, XMLFileReader&);
 
 private:
   XMLFileReader (const XMLFileReader&);

@@ -1,4 +1,4 @@
-//  $Id: teleporter_data.cxx,v 1.7 2002/10/07 23:04:14 grumbel Exp $
+//  $Id: teleporter_data.cxx,v 1.8 2003/02/18 10:14:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <iostream>
 #include "teleporter_data.hxx"
 #include "../xml_helper.hxx"
+#include "../xml_file_reader.hxx"
 #include "../editorobjs/teleporter_obj.hxx"
 #include "../editorobjs/teleporter_target_obj.hxx"
 #include "../worldobjs/teleporter.hxx"
@@ -50,38 +51,12 @@ TeleporterData::write_xml (std::ostream& xml)
 
 TeleporterData::TeleporterData (xmlDocPtr doc, xmlNodePtr cur)
 {
-  cur = cur->children;
-  
-  while (cur)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
+  XMLFileReader reader(doc, cur);
+  XMLFileReader subreader;
 
-      if (XMLhelper::equal_str(cur->name, "position"))
-	{
-	  pos = XMLhelper::parse_vector (doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "target"))
-	{
-	  xmlNodePtr ncur = cur->children;
-
-	  if (xmlIsBlankNode(ncur)) ncur = ncur->next;
-	    
-	  if (ncur)
-	    target_pos = XMLhelper::parse_vector (doc, ncur);
-	  else
-	    std::cout << "TeleporterData::create (): <target> is empty" << std::endl;
-	}
-      else
-	{
-	  std::cout << "TeleportData::create (): Unhandled " << cur->name << std::endl;
-	}
-
-      cur = cur->next;
-    }
+  reader.read_vector("position", pos);
+  reader.read_section("target", subreader);
+  subreader.read_vector("position", target_pos);
 }
 
 WorldObj* 

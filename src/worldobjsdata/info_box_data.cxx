@@ -1,4 +1,4 @@
-//  $Id: info_box_data.cxx,v 1.8 2002/09/28 11:52:27 torangan Exp $
+//  $Id: info_box_data.cxx,v 1.9 2003/02/18 10:14:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "../xml_file_reader.hxx"
 #include "../xml_helper.hxx"
 #include "../editorobjs/info_box_obj.hxx"
 #include "../worldobjs/info_box.hxx"
@@ -47,27 +48,9 @@ InfoBoxData::create_EditorObj ()
 
 InfoBoxData::InfoBoxData (xmlDocPtr doc, xmlNodePtr cur)
 {
-  cur = cur->children;
-  
-  while (cur)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
-      else if (XMLhelper::equal_str(cur->name, "position"))
-	{
-	  pos = XMLhelper::parse_vector (doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "info-text"))
-	{
-	  info_text = XMLhelper::parse_string (doc, cur);
-	}
-      else
-	std::cout << "InfoBox::creata (): Unhandled " << cur->name << std::endl;
-      cur = cur->next;
-    }
+  XMLFileReader reader(doc, cur);
+  reader.read_vector("position", pos);
+  reader.read_string("info-text", info_text);
 }
 
 InfoBoxData::InfoBoxData (const InfoBoxData& old)

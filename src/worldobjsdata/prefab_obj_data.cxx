@@ -1,4 +1,4 @@
-//  $Id: prefab_obj_data.cxx,v 1.5 2002/09/28 19:31:06 torangan Exp $
+//  $Id: prefab_obj_data.cxx,v 1.6 2003/02/18 10:14:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "../xml_file_reader.hxx"
 #include "../xml_helper.hxx"
 #include "../prefab.hxx"
 #include "prefab_obj_data.hxx"
@@ -31,24 +32,9 @@ PrefabObjData::PrefabObjData (xmlDocPtr doc, xmlNodePtr cur)
       std::cout << "PrefabObjData: missing type! Default to test" << std::endl;
       uid = "test";
     }
-    
-  cur = cur->children;
 
-  while (cur)
-    {
-      cur = XMLhelper::skip_blank (cur);
-      
-      if (XMLhelper::equal_str(cur->name, "position"))
-	{
-	  pos = XMLhelper::parse_vector (doc, cur);
-	}
-      else
-	{
-	  std::cout << "PrefabObjData(): Unhandled " << cur->name << std::endl;
-	}
-
-      cur = cur->next;
-    }
+  XMLFileReader reader(doc, cur);
+  reader.read_vector("position", pos);
   
   // try to load the data for this prefab-uid
   data = Prefab::create (uid);

@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.cxx,v 1.9 2002/12/20 19:39:13 grumbel Exp $
+//  $Id: groundpiece_data.cxx,v 1.10 2003/02/18 10:14:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "../xml_file_reader.hxx"
 #include "../editorobjs/groundpiece_obj.hxx"
 #include "../worldobjs/groundpiece.hxx"
 #include "../xml_helper.hxx"
@@ -44,43 +45,20 @@ GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
   else
     std::cout << "XMLPLF: groundtype empty, which might be ok." << std::endl;
 
-  cur = cur->children;
-
-  while (cur)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
-      
-      if (XMLhelper::equal_str(cur->name, "position"))
-	{
-	  pos = XMLhelper::parse_vector(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "surface"))
-	{
-	  desc = XMLhelper::parse_surface(doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "type"))
-	{
-	  std::string type = XMLhelper::parse_string(doc, cur);
-	  gptype = Groundtype::string_to_type (type);
-	}
-      else
-	{
-	  printf("Unhandled: %s\n", (char*)cur->name);
-	}
-      cur = cur->next;	
-    }
+  XMLFileReader reader(doc, cur);
+  reader.read_vector("position", pos);
+  reader.read_desc("surface", desc);
+  std::string type;
+  reader.read_string("type", type);
+  gptype = Groundtype::string_to_type (type);
 }
 
 GroundpieceData::GroundpieceData (const GroundpieceData& old) 
-                                 : WorldObjData(old),
-				   surface(old.surface),
-				   desc(old.desc),
-				   pos(old.pos),
-				   gptype(old.gptype)
+  : WorldObjData(old),
+    surface(old.surface),
+    desc(old.desc),
+    pos(old.pos),
+    gptype(old.gptype)
 {
 }
 

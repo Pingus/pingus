@@ -1,4 +1,4 @@
-//  $Id: xml_file_reader.cxx,v 1.2 2003/02/18 01:23:51 grumbel Exp $
+//  $Id: xml_file_reader.cxx,v 1.3 2003/02/18 10:14:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include "res_descriptor.hxx"
 #include "color.hxx"
+#include "debug.hxx"
+#include "globals.hxx"
 #include "xml_file_reader.hxx"
 
 XMLFileReader::XMLFileReader(xmlDocPtr doc_, xmlNodePtr node)
@@ -26,9 +28,32 @@ XMLFileReader::XMLFileReader(xmlDocPtr doc_, xmlNodePtr node)
 {
 }
 
+XMLFileReader::XMLFileReader()
+  : doc(NULL), section_node(NULL)
+{
+}
+
+void
+XMLFileReader::init(xmlDocPtr doc_, xmlNodePtr node)
+{
+  doc = doc_;
+  section_node = node;
+}
+
 xmlNodePtr
 XMLFileReader::find_node(const char* name)
 {
+  if (doc == NULL)
+    {
+      perr(PINGUS_DEBUG_LOADING) << "XMLFileReader points to nothing, probally not inited" << std::endl;
+      return NULL;
+    }
+  else if (section_node == NULL)
+    {
+      // Whole section is empty
+      return NULL;
+    }  
+
   xmlNodePtr node = section_node->children;
   
   while (node)
@@ -144,6 +169,18 @@ XMLFileReader::read_vector(const char* name, Vector& value)
       return true;
     }
 
+  return false;
+}
+
+bool
+XMLFileReader::read_section(const char* name, XMLFileReader& value)
+{
+  xmlNodePtr node = find_node(name);
+  if (node)
+    {
+      value.init(doc, node);
+      return true;
+    }
   return false;
 }
 
