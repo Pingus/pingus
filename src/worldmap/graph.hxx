@@ -1,4 +1,4 @@
-//  $Id: graph.hxx,v 1.8 2002/09/08 18:13:04 grumbel Exp $
+//  $Id: graph.hxx,v 1.9 2002/09/10 12:46:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,8 @@ namespace pingus {
 namespace worldmap {
 
 #if 0
-/** */
+/** This class manages the path of the WorldMap where the pingu can
+    walk on. */
 class Graph
 {
 public:

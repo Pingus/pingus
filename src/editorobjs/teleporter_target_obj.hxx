@@ -1,4 +1,4 @@
-//  $Id: teleporter_target_obj.hxx,v 1.1 2002/09/10 12:11:29 torangan Exp $
+//  $Id: teleporter_target_obj.hxx,v 1.2 2002/09/10 12:46:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,10 +26,10 @@ namespace EditorObjs {
 
 class TeleporterObj;
 
-/** A pseudo object to represent the teleporter target; all the
-    data itself is handled inside the EditorTeleporterObj, but we
-    need this helper object to be able to show and move the
-    teleporter target inside the editor */
+/** A pseudo object to represent the teleporter target; all the data
+    itself is handled inside the EditorObjsTeleporterObj, but we need
+    this helper object to be able to show and move the teleporter
+    target inside the editor */
 class TeleporterTargetObj : public SpriteEditorObj
 {
 private:
@@ -50,7 +50,7 @@ private:
   TeleporterTargetObj operator= (const TeleporterTargetObj&);
 };
 
-}
+} // namespace EditorObjs
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: teleporter_obj.hxx,v 1.1 2002/09/10 12:11:29 torangan Exp $
+//  $Id: teleporter_obj.hxx,v 1.2 2002/09/10 12:46:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,6 @@ namespace EditorObjs {
 
 class TeleporterTargetObj;
 
-
 class TeleporterObj : public SpriteEditorObj
 {
 private:
@@ -60,7 +59,7 @@ private:
   TeleporterObj operator= (const TeleporterObj&);
 };
 
-}
+} // namespace EditorObjs
 
 #endif
 
