@@ -39,7 +39,7 @@ public:
 
   ActionName get_type () const { return Actions::Waiter; }
 
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
   void update ();
 
 private:

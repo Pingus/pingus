@@ -53,7 +53,7 @@ public:
   bool have_something_to_dig ();
   void dig ();
 
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
   void update ();
 
 private:

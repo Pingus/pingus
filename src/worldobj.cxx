@@ -21,7 +21,7 @@
 #include <typeinfo>
 #include <iostream>
 #include "worldobj.hxx"
-#include "gui/graphic_context.hxx"
+#include "display/drawing_context.hxx"
 
 namespace Pingus {
 
@@ -70,14 +70,16 @@ WorldObj::draw_smallmap(SmallMap* smallmap)
 }
 
 void
-WorldObj::draw (GraphicContext& gc)
+WorldObj::draw (DrawingContext& gc)
 {
   // FIXME: I need some docu on the meaning of get_x_offset() and co.
-  std::cout << "WorldObj:draw(GraphicContext): Using compat-wrapper: "
+  std::cout << "WorldObj:draw(DrawingContext): Using compat-wrapper: "
 	    << typeid(*this).name () << std::endl;
+#if 0 // FIXME:
   draw_offset (static_cast<int>(gc.get_x_offset () + gc.get_width ()/2),
 	       static_cast<int>(gc.get_y_offset () + gc.get_height ()/2),
 	       gc.get_zoom ());
+#endif
 }
 
 } // namespace Pingus

@@ -21,9 +21,7 @@
 #include "../world.hxx"
 #include "../xml_file_reader.hxx"
 #include "../xml_helper.hxx"
-#include "../editorobjs/info_box_obj.hxx"
 #include "../worldobjs/info_box.hxx"
-#include "../editor/editorobj_mgr.hxx"
 #include "info_box_data.hxx"
 
 namespace Pingus {

@@ -23,7 +23,7 @@
 #include <ClanLib/Display/sprite.h>
 #include <vector>
 #include "../libxmlfwd.hxx"
-#include "../gui/display_graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 
 class CL_Key;
 class CL_Font;
@@ -31,7 +31,7 @@ class CL_InputDevice;
 
 namespace Pingus {
 
-class GraphicContext;
+class DrawingContext;
 
 namespace WorldMapNS {
 
@@ -50,8 +50,7 @@ class Pingus;
 class WorldMap
 {
 private:
-  // FIXME: We should use a ScrollGC or something like that here
-  DisplayGraphicContext display_gc;
+  DrawingContext display_gc;
 
   CL_Sprite levelname_bg;
 
@@ -89,7 +88,7 @@ public:
 
   void on_startup();
 
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
   void update (float delta);
 
   /** Enters the level on which the Pingu is currently standing */

@@ -84,7 +84,7 @@ public:
   Pingus (PathGraph* arg_path);
   ~Pingus ();
 
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
   void update (float delta);
 
   /** @return true if the node is reachable, false otherwise */

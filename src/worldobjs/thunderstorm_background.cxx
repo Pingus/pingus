@@ -19,7 +19,7 @@
 
 #include "../resource.hxx"
 #include "../worldobjsdata/thunderstorm_background_data.hxx"
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "thunderstorm_background.hxx"
 
 namespace Pingus {
@@ -52,7 +52,7 @@ ThunderstormBackground::update ()
 }
 
 void
-ThunderstormBackground::draw (GraphicContext& gc)
+ThunderstormBackground::draw (DrawingContext& gc)
 {
   gc.draw(clouds_sur, Vector(x_pos, 0));
 }

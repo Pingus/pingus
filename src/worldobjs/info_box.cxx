@@ -19,7 +19,7 @@
 
 #include <ClanLib/Display/font.h>
 #include <ClanLib/Display/display.h>
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../fonts.hxx"
@@ -44,8 +44,9 @@ InfoBox::~InfoBox ()
 }
 
 void
-InfoBox::draw (GraphicContext& gc)
+InfoBox::draw (DrawingContext& gc)
 {
+#if 0 // FIXME:
   int x = static_cast<int>(gc.get_x_offset() + (gc.get_width ()/2));
   int y = static_cast<int>(gc.get_y_offset() + (gc.get_height()/2));
 
@@ -69,6 +70,7 @@ InfoBox::draw (GraphicContext& gc)
     {
       gc.draw(sprite, data->pos);
     }
+#endif
 }
 
 void

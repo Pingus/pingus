@@ -20,7 +20,7 @@
 #include <iostream>
 #include "plf.hxx"
 #include "world.hxx"
-#include "gui/buffer_graphic_context.hxx"
+//#include "gui/buffer_graphic_context.hxx"
 #include "preview_renderer.hxx"
 
 namespace Pingus {
@@ -29,12 +29,14 @@ void
 PreviewRenderer::render(PLFHandle plf,
                         const std::string& output_file)
 {
+#if 0 // FIXME:
   std::cout << "PreviewRenderer::render: " << output_file << std::endl;
   World* world = new World(*plf);
-  BufferGraphicContext buffer(world->get_width(), world->get_height());
+  BufferDrawingContext buffer(world->get_width(), world->get_height());
   world->draw(buffer);
   buffer.write(output_file);
   delete world;
+#endif
 }
 
 } // namespace Pingus

@@ -100,7 +100,7 @@ public:
   void on_mouse_button_release(const CL_InputEvent &key);
 
   // Overloaded GUIScreen stuff
-  bool draw (GraphicContext& gc);
+  bool draw (DrawingContext& gc);
   void on_startup ();
   void on_shutdown ();
 

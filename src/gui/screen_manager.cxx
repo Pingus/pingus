@@ -23,10 +23,9 @@
 #include "../globals.hxx"
 #include "cursor.hxx"
 #include "display.hxx"
-#include "display_graphic_context.hxx"
-#include "buffer_graphic_context.hxx"
 #include "screen_manager.hxx"
 #include "../path_manager.hxx"
+#include "../display/drawing_context.hxx"
 #include "../input/controller.hxx"
 
 namespace Pingus {
@@ -35,11 +34,15 @@ ScreenManager* ScreenManager::instance_ = 0;
 
 ScreenManager::ScreenManager ()
 {
+#if 0 
+  // FIXME:
   if (render_preview)
     display_gc = new BufferGraphicContext(800, 600);
   else
     display_gc = new DisplayGraphicContext(0, 0, CL_Display::get_width (), CL_Display::get_height (),
                                            0, 0);
+#endif
+  display_gc = new DrawingContext();
 
   cached_action = CA_NONE;
 }
@@ -133,9 +136,13 @@ ScreenManager::display ()
       // skip draw if the screen changed to avoid glitches
       if (last_screen == get_current_screen())
       	{
-	  if (get_current_screen()->draw (*display_gc))
-	    Display::flip_display ();
-	}
+	  if (get_current_screen()->draw(*display_gc))
+            {
+              display_gc->render(CL_Display::get_current_window()->get_gc());
+              Display::flip_display ();
+              display_gc->clear();
+            }
+        }
       else
 	{
 	  //std::cout << "ScreenManager: fading screens" << std::endl;

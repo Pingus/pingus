@@ -55,7 +55,7 @@ public:
 
   virtual void   update ();
 
-  virtual void   draw (GraphicContext& gc);
+  virtual void   draw (DrawingContext& gc);
 
   void  draw_smallmap(SmallMap* smallmap);
 

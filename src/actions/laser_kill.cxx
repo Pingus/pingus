@@ -19,7 +19,7 @@
 
 #include "../vector.hxx"
 #include "../resource.hxx"
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../pingu.hxx"
 #include "laser_kill.hxx"
 
@@ -34,7 +34,7 @@ LaserKill::LaserKill(Pingu* p)
 }
 
 void
-LaserKill::draw (GraphicContext& gc)
+LaserKill::draw (DrawingContext& gc)
 {
   gc.draw(sprite[pingu->direction], pingu->get_pos () + Vector (0, 2));
 }

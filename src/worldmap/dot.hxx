@@ -39,7 +39,7 @@ public:
   Dot(xmlDocPtr doc, xmlNodePtr cur);
 
   /** Draw stuff that should be displayed if the mouse is over the dot */
-  virtual void draw_hover(GraphicContext& gc) =0;
+  virtual void draw_hover(DrawingContext& gc) =0;
 
   Vector get_pos() { return pos; }
   float  get_z_pos() const { return pos.z; }

@@ -37,7 +37,7 @@ public:
 
   ActionName get_type () const { return Actions::Superman; }
 
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
   void update ();
 
 private:

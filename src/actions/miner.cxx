@@ -19,7 +19,7 @@
 
 #include "../pingu_map.hxx"
 #include "../col_map.hxx"
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../world.hxx"
 #include "../resource.hxx"
 #include "../sound/sound.hxx"
@@ -93,7 +93,7 @@ Miner::update ()
 }
 
 void
-Miner::draw (GraphicContext& gc)
+Miner::draw (DrawingContext& gc)
 {
   gc.draw(sprite[pingu->direction], pingu->get_pos());
 }

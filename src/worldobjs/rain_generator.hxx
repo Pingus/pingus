@@ -36,7 +36,7 @@ public:
   ~RainGenerator ();
 
   void update ();
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
   float get_z_pos () const { return 1000; }
 
 private:

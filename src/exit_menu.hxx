@@ -36,7 +36,7 @@ public:
   ExitMenu (PingusMenuManager* manager);
   ~ExitMenu ();
 
-  bool draw (GraphicContext& gc);
+  bool draw (DrawingContext& gc);
   void preload ();
 
 private:

@@ -65,7 +65,7 @@ public:
   static void deinit();
 
   void update (float);
-  void draw_background (GraphicContext& gc);
+  void draw_background (DrawingContext& gc);
 
   void on_startup ();
 

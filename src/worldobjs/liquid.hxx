@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_LIQUID_HXX
 #define HEADER_PINGUS_WORLDOBJS_LIQUID_HXX
 
+#include <ClanLib/Display/sprite.h>
 #include "../worldobj.hxx"
 
 namespace Pingus {
@@ -42,7 +43,7 @@ public:
 
   float get_z_pos () const;
   void  on_startup();
-  void  draw      (GraphicContext& gc);
+  void  draw      (DrawingContext& gc);
   void  update();
 
 private:

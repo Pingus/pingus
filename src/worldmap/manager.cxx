@@ -43,7 +43,7 @@ class WorldMapManagerCloseButton
 public:
   WorldMapManagerCloseButton();
   void on_click();
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
   void on_pointer_enter();
 };
 
@@ -53,7 +53,7 @@ class WorldMapManagerStoryButton
 public:
   WorldMapManagerStoryButton();
   void on_click();
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
   void on_pointer_enter();
 };
 
@@ -64,7 +64,7 @@ class WorldMapManagerCreditsButton
 public:
   WorldMapManagerCreditsButton();
   void on_click();
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
   void on_pointer_enter();
 };
 
@@ -74,7 +74,7 @@ class WorldMapManagerEnterButton
 public:
   WorldMapManagerEnterButton();
   void on_click();
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
   void on_pointer_enter();
 };
 
@@ -97,7 +97,7 @@ WorldMapManagerCreditsButton::on_pointer_enter()
 
 
 void
-WorldMapManagerCreditsButton::draw (GraphicContext& gc)
+WorldMapManagerCreditsButton::draw (DrawingContext& gc)
 {
   SurfaceButton::draw(gc);
   gc.print_left(Fonts::chalk_small, CL_Display::get_width() - 150 + 15, 5, _("Show Ending?"));
@@ -127,7 +127,7 @@ WorldMapManagerStoryButton::on_pointer_enter()
 
 
 void
-WorldMapManagerStoryButton::draw (GraphicContext& gc)
+WorldMapManagerStoryButton::draw (DrawingContext& gc)
 {
   SurfaceButton::draw(gc);
   gc.print_left(Fonts::chalk_small, 10, 5, _("Show Story?"));
@@ -155,7 +155,7 @@ WorldMapManagerCloseButton::on_pointer_enter()
 }
 
 void
-WorldMapManagerCloseButton::draw (GraphicContext& gc)
+WorldMapManagerCloseButton::draw (DrawingContext& gc)
 {
   SurfaceButton::draw(gc);
   gc.print_left(Fonts::chalk_small, 10, CL_Display::get_height() - 20, _("Leave?"));
@@ -186,7 +186,7 @@ WorldMapManagerEnterButton::on_pointer_enter()
 }
 
 void
-WorldMapManagerEnterButton::draw (GraphicContext& gc)
+WorldMapManagerEnterButton::draw (DrawingContext& gc)
 {
   if (WorldMapManager::instance()->get_worldmap()->get_pingus()->is_walking())
     {
@@ -289,7 +289,7 @@ WorldMapManager::update (float delta)
 }
 
 void
-WorldMapManager::WorldMapComponent::draw (GraphicContext& gc)
+WorldMapManager::WorldMapComponent::draw (DrawingContext& gc)
 {
   WorldMapManager::instance()->worldmap->draw(gc);
 }

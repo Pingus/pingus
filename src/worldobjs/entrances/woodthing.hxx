@@ -37,7 +37,7 @@ public:
   WoodThing (const WorldObjsData::EntranceData& data_);
 
   void update();
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
 
 private:
   WoodThing (const WoodThing&);

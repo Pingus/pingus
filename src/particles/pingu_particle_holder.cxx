@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../math.hxx"
 #include "../col_map.hxx"
 #include "../resource.hxx"
@@ -153,7 +153,7 @@ PinguParticleHolder::update ()
 
 
 void
-PinguParticleHolder::draw (GraphicContext& gc)
+PinguParticleHolder::draw (DrawingContext& gc)
 {
   for (std::vector<PinguParticle>::iterator it=particles.begin(); it != particles.end(); ++it)
     {

@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../vector.hxx"
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../pingu.hxx"
 #include "../resource.hxx"
 #include "waiter.hxx"
@@ -45,7 +45,7 @@ Waiter::update ()
 }
 
 void
-Waiter::draw (GraphicContext& gc)
+Waiter::draw (DrawingContext& gc)
 {
   gc.draw(sprite, pingu->get_pos ());
 }

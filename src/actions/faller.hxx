@@ -38,7 +38,7 @@ public:
   Faller(Pingu*);
   virtual ~Faller();
 
-  void  draw (GraphicContext& gc);
+  void  draw (DrawingContext& gc);
   void  update();
 
   bool change_allowed (Actions::ActionName new_action);

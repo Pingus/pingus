@@ -91,13 +91,13 @@ Playfield::~Playfield()
 }
 
 void
-Playfield::draw (GraphicContext& gc)
+Playfield::draw (DrawingContext& gc)
 {
   for(std::vector<View*>::iterator i = view.begin();
       i != view.end();
       ++i)
     {
-      (*i)->draw();
+      (*i)->draw(gc);
     }
 
   if (needs_clear_screen)

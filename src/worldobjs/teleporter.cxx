@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
@@ -48,7 +48,7 @@ Teleporter::get_z_pos () const
 }
 
 void
-Teleporter::draw (GraphicContext& gc)
+Teleporter::draw (DrawingContext& gc)
 {
   gc.draw(sprite, data->pos);
   gc.draw(target_sprite, data->target_pos);

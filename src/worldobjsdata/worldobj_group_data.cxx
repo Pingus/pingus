@@ -19,10 +19,8 @@
 
 #include <iostream>
 #include "../world.hxx"
-#include "../editor/editorobj_group.hxx"
 #include "../xml_helper.hxx"
 #include "../worldobj_data_factory.hxx"
-#include "../editor/editorobj_mgr.hxx"
 #include "worldobj_group_data.hxx"
 
 namespace Pingus {

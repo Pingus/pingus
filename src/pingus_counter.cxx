@@ -40,7 +40,7 @@ PingusCounter::PingusCounter(Server* s)
 }
 
 void
-PingusCounter::draw(GraphicContext& gc)
+PingusCounter::draw(DrawingContext& gc)
 {
   char str[128];
 

@@ -185,7 +185,7 @@ SmallMap::init()
 }
 
 void
-SmallMap::draw (GraphicContext& gc)
+SmallMap::draw (DrawingContext& gc)
 {
   gc_ptr = &gc;
 

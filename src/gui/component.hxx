@@ -24,7 +24,7 @@
 
 namespace Pingus {
 
-class GraphicContext;
+class DrawingContext;
 
 namespace GUI {
 
@@ -37,7 +37,7 @@ private:
 public:
   Component () { }
 
-  virtual void draw (GraphicContext& gc) =0;
+  virtual void draw (DrawingContext& gc) =0;
   virtual void update (float delta) { UNUSED_ARG(delta);}
 
   virtual bool is_at (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); return false; }

@@ -25,7 +25,7 @@
 #include "action_button.hxx"
 #include "true_server.hxx"
 #include "world.hxx"
-#include "gui/graphic_context.hxx"
+#include "display/drawing_context.hxx"
 #include "gui/display.hxx"
 #include "fonts.hxx"
 
@@ -96,7 +96,7 @@ VerticalActionButton::is_at (int x, int y)
 }
 
 void
-VerticalActionButton::draw (GraphicContext& gc)
+VerticalActionButton::draw (DrawingContext& gc)
 {
   UNUSED_ARG(gc);
 
@@ -167,7 +167,7 @@ ArmageddonButton::ArmageddonButton (TrueServer* s, int x, int y)
 ArmageddonButton::~ArmageddonButton () { }
 
 void
-ArmageddonButton::draw (GraphicContext& gc)
+ArmageddonButton::draw (DrawingContext& gc)
 {
   if (server->get_world()->check_armageddon ())
     {
@@ -245,7 +245,7 @@ ForwardButton::ForwardButton (TrueServer* s, int x, int y)
 ForwardButton::~ForwardButton () {}
 
 void
-ForwardButton::draw (GraphicContext& gc)
+ForwardButton::draw (DrawingContext& gc)
 {
   if (server->get_fast_forward())
     {
@@ -294,7 +294,7 @@ PauseButton::PauseButton (TrueServer* s, int x, int y)
 PauseButton::~PauseButton () {}
 
 void
-PauseButton::draw (GraphicContext& gc)
+PauseButton::draw (DrawingContext& gc)
 {
   if (server->get_pause())
     backgroundhl.draw(x_pos, y_pos);

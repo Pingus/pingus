@@ -45,7 +45,7 @@ private:
 public:
   ConveyorBelt (const WorldObjsData::ConveyorBeltData& data_);
 
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
   void on_startup ();
   void update ();
   float get_z_pos () const;

@@ -19,7 +19,7 @@
 
 #include "../col_map.hxx"
 #include "../globals.hxx"
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../pingu.hxx"
 #include "../debug.hxx"
 #include "walker.hxx"
@@ -203,7 +203,7 @@ Walker::update ()
 }
 
 void
-Walker::draw (GraphicContext& gc)
+Walker::draw (DrawingContext& gc)
 {
   gc.draw(walker[pingu->direction], pingu->get_pos());
 

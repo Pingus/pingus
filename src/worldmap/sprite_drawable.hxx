@@ -38,7 +38,7 @@ public:
   SpriteDrawable(xmlDocPtr doc, xmlNodePtr cur);
   ~SpriteDrawable();
 
-  void draw(GraphicContext& gc);
+  void draw(DrawingContext& gc);
 
   void update(float delta)
   {

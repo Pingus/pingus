@@ -20,7 +20,8 @@
 #ifndef HEADER_PINGUS_FONTS_HXX
 #define HEADER_PINGUS_FONTS_HXX
 
-#include "gui/graphic_context.hxx"
+#include <ClanLib/Display/font.h>
+#include "display/drawing_context.hxx"
 
 namespace Pingus {
 namespace Fonts {

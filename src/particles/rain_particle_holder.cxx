@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../math.hxx"
 #include "../col_map.hxx"
 #include "../globals.hxx"
@@ -106,7 +106,7 @@ RainParticleHolder::update ()
 
 
 void
-RainParticleHolder::draw (GraphicContext& gc)
+RainParticleHolder::draw (DrawingContext& gc)
 {
 #ifdef CLANLIB_0_6
   for (std::vector<RainParticle>::iterator it=particles.begin(); it != particles.end(); ++it)

@@ -37,7 +37,7 @@ public:
   void init(void);
   ActionName get_type() const { return Actions::Exiter; }
 
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
   void update();
 
 private:

@@ -330,7 +330,7 @@ Client::on_action_axis_move (float move)
 }
 
 bool
-Client::draw (GraphicContext& gc)
+Client::draw (DrawingContext& gc)
 {
   GUIScreen::draw (gc);
   if (!server->get_plf()->get_playable())

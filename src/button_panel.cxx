@@ -110,7 +110,7 @@ ButtonPanel::get_action_name()
 }
 
 void
-ButtonPanel::draw(GraphicContext& gc)
+ButtonPanel::draw(DrawingContext& gc)
 {
   float alpha;
 

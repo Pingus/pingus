@@ -26,7 +26,7 @@
 #include "../globals.hxx"
 #include "../system.hxx"
 #include "../fonts.hxx"
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../gui/screen_manager.hxx"
 #include "../xml_helper.hxx"
 #include "../resource.hxx"
@@ -73,7 +73,7 @@ LevelDot::LevelDot(xmlDocPtr doc, xmlNodePtr cur)
 }
 
 void
-LevelDot::draw(GraphicContext& gc)
+LevelDot::draw(DrawingContext& gc)
 {
   Vector mpos = gc.screen_to_world(Vector(Input::Controller::get_current()->get_pointer()->get_x_pos(),
                                           Input::Controller::get_current()->get_pointer()->get_y_pos()));
@@ -144,7 +144,7 @@ LevelDot::accessible()
 
 
 void
-LevelDot::draw_hover(GraphicContext& gc)
+LevelDot::draw_hover(DrawingContext& gc)
 {
   int pos_correction = 0;
 
@@ -155,7 +155,7 @@ LevelDot::draw_hover(GraphicContext& gc)
       if (realpos - length < 0)
         pos_correction = realpos - length;
       else if (realpos + length > gc.get_width())
-        pos_correction = realpos + length - gc.get_width();
+        pos_correction = realpos + length - static_cast<int>(gc.get_width());
       
       gc.print_center(Fonts::pingus_small,
                       static_cast<int>(pos.x) - pos_correction,
@@ -169,7 +169,7 @@ LevelDot::draw_hover(GraphicContext& gc)
       if (realpos - length < 0)
         pos_correction = realpos - length;
       else if (realpos + length > gc.get_width())
-        pos_correction = realpos + length - gc.get_width();
+        pos_correction = realpos + length - static_cast<int>(gc.get_width());
         
       gc.print_center(Fonts::pingus_small,
                       static_cast<int>(pos.x) - pos_correction,

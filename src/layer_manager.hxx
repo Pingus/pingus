@@ -23,7 +23,7 @@
 #include "pingus.hxx"
 #include <cmath>
 #include <ClanLib/Display/sprite.h>
-#include "gui/graphic_context.hxx"
+#include "display/drawing_context.hxx"
 
 namespace Pingus {
 
@@ -58,7 +58,7 @@ private:
         x_offset(x_o), y_offset(y_o)
     {}
 
-    void draw (GraphicContext& gc)
+    void draw (DrawingContext& gc)
     {
       gc.draw(sur, Vector(x_pos + x_offset, y_pos + y_offset));
       gc.draw(sur, Vector(x_pos + x_offset - 800, y_pos + y_offset));
@@ -78,7 +78,7 @@ public:
   ~LayerManager();
 
   void add_layer (const CL_Sprite& sur, float x_o, float y_o, float x_u, float y_u);
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
   void update (float delta);
 
 private:

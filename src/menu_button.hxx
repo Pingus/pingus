@@ -54,7 +54,7 @@ public:
   MenuButton();
   virtual ~MenuButton();
 
-  void draw(GraphicContext& gc);
+  void draw(DrawingContext& gc);
   void update (float delta);
 
   bool is_at (int x, int y);

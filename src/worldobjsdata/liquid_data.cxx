@@ -19,11 +19,9 @@
 
 #include <iostream>
 #include "../world.hxx"
-#include "../editorobjs/liquid_obj.hxx"
 #include "../worldobjs/liquid.hxx"
 #include "../xml_helper.hxx"
 #include "../xml_file_reader.hxx"
-#include "../editor/editorobj_mgr.hxx"
 #include "liquid_data.hxx"
 
 namespace Pingus {

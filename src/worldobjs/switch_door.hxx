@@ -55,7 +55,7 @@ public:
  ~SwitchDoor ();
 
   void on_startup();
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
   void update ();
 
   /// The switch and the door should stay above the pingus

@@ -47,7 +47,7 @@ public:
 
   ActionName get_type () const { return Actions::Miner; }
 
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
   void update ();
 
 private:

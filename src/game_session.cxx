@@ -88,7 +88,7 @@ PingusGameSession::get_result ()
 }
 
 bool
-PingusGameSession::draw(GraphicContext& gc)
+PingusGameSession::draw(DrawingContext& gc)
 {
   ++number_of_redraws;
   client->draw (gc);

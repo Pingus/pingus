@@ -59,7 +59,7 @@ StarfieldBackground::update ()
 }
 
 void
-StarfieldBackground::draw (GraphicContext& gc)
+StarfieldBackground::draw (DrawingContext& gc)
 {
   for (std::vector<StarfieldBackgroundStars*>::iterator i = stars.begin();
        i != stars.end(); ++i)

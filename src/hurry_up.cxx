@@ -44,7 +44,7 @@ HurryUp::~HurryUp()
 
 
 void
-HurryUp::draw(GraphicContext& gc)
+HurryUp::draw(DrawingContext& gc)
 {
 #ifdef CLANLIB_0_6
   if (is_finished) return;

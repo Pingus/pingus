@@ -28,7 +28,7 @@ class CL_Font;
 
 namespace Pingus {
 
-class GraphicContext;
+class DrawingContext;
 class World;
 class Server;
 
@@ -42,7 +42,7 @@ public:
   PingusCounter(Server* s);
   virtual ~PingusCounter() {}
 
-  void draw(GraphicContext& gc);
+  void draw(DrawingContext& gc);
 private:
   PingusCounter (const PingusCounter&);
   PingusCounter& operator= (const PingusCounter&);

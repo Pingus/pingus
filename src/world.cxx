@@ -114,7 +114,7 @@ World::~World()
 }
 
 void
-World::draw (GraphicContext& gc)
+World::draw (DrawingContext& gc)
 {
   WorldObj::set_world(this);
 

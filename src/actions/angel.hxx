@@ -38,7 +38,7 @@ public:
   ActionName get_type () const { return Actions::Angel; }
 
   void  update ();
-  void  draw (GraphicContext& gc);
+  void  draw (DrawingContext& gc);
 
 private:
   Angel (const Angel&);

@@ -24,7 +24,7 @@
 
 namespace Pingus {
 
-class GraphicContext;
+class DrawingContext;
 class SmallMap;
 class World;
 class WorldObjData;
@@ -69,8 +69,8 @@ public:
    */
   virtual void draw_offset (int x, int y, float s = 1.0);
 
-  /** Draw the WorldObj to the given GraphicContext */
-  virtual void draw (GraphicContext& gc);
+  /** Draw the WorldObj to the given DrawingContext */
+  virtual void draw(DrawingContext& gc);
   virtual void draw_smallmap(SmallMap* smallmap);
 
   /** Draws the objects collision map to the main collision map, draws

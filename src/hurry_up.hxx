@@ -26,7 +26,7 @@ class CL_Font;
 
 namespace Pingus {
 
-class GraphicContext;
+class DrawingContext;
 class Client;
 
 /** Hurry up if the time goes over... */
@@ -48,7 +48,7 @@ public:
   HurryUp(Client*);
   virtual ~HurryUp();
 
-  void draw(GraphicContext& gc);
+  void draw(DrawingContext& gc);
   void update(float delta);
   void set_client(Client*);
 

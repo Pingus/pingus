@@ -21,7 +21,8 @@
 #include <iostream>
 #include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/pixel_format.h>
-#include "gui/graphic_context.hxx"
+#include <ClanLib/Core/core_iostream.h>
+#include "display/drawing_context.hxx"
 #include "plf.hxx"
 #include "pingus_error.hxx"
 #include "blitter.hxx"
@@ -109,14 +110,14 @@ PingusSpotMap::~PingusSpotMap(void)
 }
 
 void
-PingusSpotMap::draw_colmap(GraphicContext& gc)
+PingusSpotMap::draw_colmap(DrawingContext& gc)
 {
   colmap->draw(gc);
 }
 
 // Draws the map with a offset, needed for scrolling
 void
-PingusSpotMap::draw(GraphicContext& gc)
+PingusSpotMap::draw(DrawingContext& gc)
 {
   const CL_Rect& display = gc.get_clip_rect();
 
@@ -147,7 +148,7 @@ PingusSpotMap::draw(GraphicContext& gc)
                 if (pingus_debug_flags & PINGUS_DEBUG_TILES)
                   gc.draw_fillrect(x * tile_size, y * tile_size,
                                    x * tile_size + tile_size, y * tile_size + tile_size,
-                                   1.0f, 0.0f, 0.0f, 0.3f);
+                                   CL_Color(255, 0, 0, 75));
               }
           }
     }

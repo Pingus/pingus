@@ -36,9 +36,9 @@ SolidColorBackground::~SolidColorBackground ()
 }
 
 void
-SolidColorBackground::draw (GraphicContext& gc)
+SolidColorBackground::draw (DrawingContext& gc)
 {
-  // FIXME: should use GraphicContext, not CL_Display
+  // FIXME: should use DrawingContext, not CL_Display
   CL_Display::clear(Display::to_color(data->color.red, data->color.green, data->color.blue, data->color.alpha));
   UNUSED_ARG(gc);
 }

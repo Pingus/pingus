@@ -28,7 +28,7 @@ class Pingu;
 class PinguAction;
 class Pingu;
 class ButtonPanel;
-class GraphicContext;
+class DrawingContext;
 
 /** The rectangle that is shown when the mouse cursor is above a
     pingu. The rectangle shows the current pingu direction along with
@@ -57,7 +57,7 @@ public:
 
   void set_pingu(Pingu* pingu);
 
-  void draw(GraphicContext& gc);
+  void draw(DrawingContext& gc);
 
 private:
   CaptureRectangle (const CaptureRectangle&);

@@ -26,7 +26,7 @@
 #include "demo_player.hxx"
 #include "pingus_counter.hxx"
 #include "gui/gui_manager.hxx"
-#include "gui/graphic_context.hxx"
+#include "display/drawing_context.hxx"
 #include "demo_session.hxx"
 
 namespace Pingus {
@@ -53,22 +53,23 @@ DemoSession::~DemoSession()
 
 /** Draw this screen */
 void
-DemoSession::draw_background(GraphicContext& gc)
+DemoSession::draw_background(DrawingContext& gc)
 {
   World* world = server->get_world();
 
   if (CL_Keyboard::get_keycode(CL_KEY_LEFT))
-    gc.move(Vector(10.0, 0.0));
+    gc.translate(10.0, 0.0);
 
   if(CL_Keyboard::get_keycode(CL_KEY_RIGHT))
-    gc.move(Vector(-10.0, 0.0));
+    gc.translate(-10.0, 0.0);
 
   if(CL_Keyboard::get_keycode(CL_KEY_UP))
-    gc.move(Vector(0.0, 10.0));
+    gc.translate(0.0, 10.0);
 
   if(CL_Keyboard::get_keycode(CL_KEY_DOWN))
-    gc.move(Vector(0.0, -10.0));
+    gc.translate(0.0, -10.0);
 
+#if 0 // FIXME
   float x_of = -gc.get_x_offset();
   float y_of = -gc.get_y_offset();
 
@@ -81,7 +82,7 @@ DemoSession::draw_background(GraphicContext& gc)
                    world->get_height() - 1 - gc.get_height()/2.0f);
 
   gc.set_offset(-x_of, -y_of);
-
+#endif
 
   world->draw(gc);
   while (CL_Keyboard::get_keycode(CL_KEY_D))

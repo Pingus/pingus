@@ -21,9 +21,7 @@
 #include "../world.hxx"
 #include "../xml_helper.hxx"
 #include "../xml_file_reader.hxx"
-#include "../editorobjs/exit_obj.hxx"
 #include "../worldobjs/exit.hxx"
-#include "../editor/editorobj_mgr.hxx"
 #include "exit_data.hxx"
 
 namespace Pingus {

@@ -39,13 +39,13 @@ PingusMenuManager::~PingusMenuManager ()
 }
 
 bool
-PingusMenuManager::draw (GraphicContext& gc)
+PingusMenuManager::draw (DrawingContext& gc)
 {
   background.draw (gc);
 
   gc.draw_fillrect(0, CL_Display::get_height () - 22,
                    CL_Display::get_width (), CL_Display::get_height (),
-                   0, 0, 0, 1.0f);
+                   CL_Color(0, 0, 0, 255));
 
   for (MenuStackIter i = menu_stack.begin (); i != menu_stack.end (); ++i)
     (*i)->draw (gc);

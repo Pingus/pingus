@@ -47,7 +47,7 @@ public:
   ~DemoSession();
 
   /** Draw this screen */
-  void draw_background(GraphicContext& gc);
+  void draw_background(DrawingContext& gc);
 
   /** Pass a delta to the screen */
   void update(float delta);

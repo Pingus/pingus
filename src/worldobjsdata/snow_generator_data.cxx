@@ -20,9 +20,7 @@
 #include <iostream>
 #include "../world.hxx"
 #include "../xml_file_reader.hxx"
-#include "../editor/weather_obj.hxx"
 #include "../worldobjs/snow_generator.hxx"
-#include "../editor/editorobj_mgr.hxx"
 #include "snow_generator_data.hxx"
 
 namespace Pingus {

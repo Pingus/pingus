@@ -20,7 +20,7 @@
 #include <assert.h>
 #include "../math.hxx"
 #include "../col_map.hxx"
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../pingu_map.hxx"
 #include "../resource.hxx"
 #include "../world.hxx"
@@ -121,7 +121,7 @@ SnowParticleHolder::update ()
 
 
 void
-SnowParticleHolder::draw (GraphicContext& gc)
+SnowParticleHolder::draw (DrawingContext& gc)
 {
   for (std::vector<SnowParticle>::iterator it=particles.begin(); it != particles.end(); ++it)
     {

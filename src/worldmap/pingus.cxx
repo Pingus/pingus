@@ -20,7 +20,7 @@
 #include <iostream>
 #include <math.h>
 #include "../vector.hxx"
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "dot.hxx"
 #include "../math.hxx"
 #include "../direction.hxx"
@@ -52,7 +52,7 @@ Pingus::~Pingus ()
 
 
 void
-Pingus::draw (GraphicContext& gc)
+Pingus::draw (DrawingContext& gc)
 {
   if (final_target_node != NoNode && current_node == NoNode)
     {

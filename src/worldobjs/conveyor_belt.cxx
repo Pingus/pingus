@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../col_map.hxx"
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../resource.hxx"
@@ -38,7 +38,7 @@ ConveyorBelt::ConveyorBelt (const WorldObjsData::ConveyorBeltData& data_)
 }
 
 void
-ConveyorBelt::draw (GraphicContext& gc)
+ConveyorBelt::draw (DrawingContext& gc)
 {
   gc.draw(left_sur, data->pos, static_cast<int>(data->counter));
   for (int i=0; i < data->width; ++i)

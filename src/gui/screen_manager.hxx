@@ -27,7 +27,7 @@
 
 namespace Pingus {
 
-class GraphicContext;
+class DrawingContext;
 class Screen;
 
 class ScreenManager
@@ -35,7 +35,7 @@ class ScreenManager
 private:
   static ScreenManager* instance_;
 
-  GraphicContext* display_gc;
+  DrawingContext* display_gc;
 
   /** Screen stack (first is the screen, second is delete_screen,
       which tells if the screen should be deleted onces it got poped

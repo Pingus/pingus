@@ -43,7 +43,7 @@ class ColMap;
 class WorldObj;
 class GameTime;
 class SmallMap;
-class GraphicContext;
+class DrawingContext;
 
 namespace Particles {
   class PinguParticleHolder;
@@ -106,8 +106,8 @@ public:
       make sure that it will get deleted */
   void add_object (WorldObj* obj);
 
-  /** Draw the world onto the given GraphicContext */
-  void    draw (GraphicContext& gc);
+  /** Draw the world onto the given DrawingContext */
+  void    draw (DrawingContext& gc);
 
   /** Draw the world onte the given SmallMap*/
   void    draw_smallmap(SmallMap* smallmap);

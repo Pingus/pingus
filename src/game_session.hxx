@@ -68,7 +68,7 @@ public:
 
   // Overloaded Screen functions
   /** Draw this screen */
-  bool draw(GraphicContext& gc);
+  bool draw(DrawingContext& gc);
 
   /** Pass a delta to the screen */
   void update (const GameDelta& delta);

@@ -19,7 +19,7 @@
 
 #include "../resource.hxx"
 #include "../vector.hxx"
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../pingu.hxx"
 #include "smashed.hxx"
 
@@ -34,7 +34,7 @@ Smashed::Smashed (Pingu* p)
 }
 
 void
-Smashed::draw (GraphicContext& gc)
+Smashed::draw (DrawingContext& gc)
 {
   gc.draw(sprite, pingu->get_pos ());
 }

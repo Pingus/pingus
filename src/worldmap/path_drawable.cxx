@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "path_drawable.hxx"
 
 namespace Pingus {
@@ -30,14 +30,15 @@ PathDrawable::PathDrawable (const Path& arg_path)
 }
 
 void
-PathDrawable::draw (GraphicContext& gc)
+PathDrawable::draw (DrawingContext& gc)
 {
   Path::iterator prev = path.begin();
 
   for(Path::iterator next = prev + 1; next != path.end(); ++next)
     {
-      gc.draw_line(*prev, *next,
-                   1.0, 1.0, 1.0);
+      gc.draw_line(prev->x, prev->y,
+                   next->x, next->y,
+                   CL_Color(255, 255, 255));
       prev = next;
     }
 }

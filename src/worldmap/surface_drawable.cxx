@@ -22,7 +22,7 @@
 #include "../xml_file_reader.hxx"
 #include "../xml_helper.hxx"
 #include "../resource.hxx"
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "manager.hxx"
 #include "worldmap.hxx"
 #include "pingus.hxx"
@@ -52,7 +52,7 @@ SurfaceDrawable::update(float delta)
 }
 
 void
-SurfaceDrawable::draw(GraphicContext& gc)
+SurfaceDrawable::draw(DrawingContext& gc)
 {
   if (surface)
     {

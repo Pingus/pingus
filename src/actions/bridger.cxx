@@ -20,7 +20,7 @@
 #include <cassert>
 #include <ClanLib/Core/System/clanstring.h>
 #include "../col_map.hxx"
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_map.hxx"
 #include "../resource.hxx"
@@ -50,7 +50,7 @@ Bridger::Bridger (Pingu* p)
 }
 
 void
-Bridger::draw (GraphicContext& gc)
+Bridger::draw (DrawingContext& gc)
 {
   int x_offset(6), y_offset(4);
 

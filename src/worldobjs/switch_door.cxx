@@ -19,7 +19,7 @@
 
 #include <ClanLib/Display/pixel_buffer.h>
 #include "../col_map.hxx"
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
@@ -64,7 +64,7 @@ SwitchDoor::on_startup ()
 }
 
 void
-SwitchDoor::draw (GraphicContext& gc)
+SwitchDoor::draw (DrawingContext& gc)
 {
   gc.draw (door_box, data->door_pos);
   for (int i=0; i < current_door_height; ++i)

@@ -49,7 +49,7 @@ public:
                  const ResDescriptor& button_mouse_over_surface);
   virtual ~SurfaceButton ();
 
-  virtual void draw (GraphicContext& gc);
+  virtual void draw (DrawingContext& gc);
   bool is_at (int x, int y);
 
   void on_primary_button_press (int x, int y);

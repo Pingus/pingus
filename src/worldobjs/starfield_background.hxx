@@ -47,7 +47,7 @@ public:
   float get_z_pos() const { return -10; }
 
   void update ();
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
 
 private:
   StarfieldBackground (const StarfieldBackground&);

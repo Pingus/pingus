@@ -52,7 +52,7 @@ class WorldMapManager : public GUIScreen
     void on_secondary_button_press (int x, int y);
     void on_pointer_move(int x, int y);
 
-    void draw (GraphicContext& gc);
+    void draw (DrawingContext& gc);
     void update (float delta);
 
     bool is_at (int, int) { return true; }

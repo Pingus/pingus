@@ -151,7 +151,7 @@ PingusMenu::on_escape_press ()
 }
 
 void
-PingusMenu::draw_foreground(GraphicContext& gc)
+PingusMenu::draw_foreground(DrawingContext& gc)
 {
   if (gc.get_height() == 480)
     {

@@ -21,7 +21,7 @@
 #include "../debug.hxx"
 #include "../globals.hxx"
 #include "../col_map.hxx"
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_enums.hxx"
 #include "../pingu_map.hxx"
@@ -66,7 +66,7 @@ Bomber::on_successfull_apply ()
 }
 
 void
-Bomber::draw (GraphicContext& gc)
+Bomber::draw (DrawingContext& gc)
 {
   if (sprite[pingu->direction].get_current_frame() >= 13 && !gfx_exploded)
     {

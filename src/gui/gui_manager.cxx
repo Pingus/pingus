@@ -38,7 +38,7 @@ GUIManager::GUIManager ()
 }
 
 void
-GUIManager::draw (GraphicContext& gc)
+GUIManager::draw (DrawingContext& gc)
 {
   for (std::vector<Component*>::iterator i = components.begin ();
        i != components.end (); ++i)

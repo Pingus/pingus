@@ -64,7 +64,7 @@ public:
 
   Actions::ActionName get_action_name();
   void   update(float delta);
-  void   draw(GraphicContext& gc);
+  void   draw(DrawingContext& gc);
 
   /// Set n'th action
   void   set_button(int);

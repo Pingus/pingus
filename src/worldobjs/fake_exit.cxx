@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
@@ -54,7 +54,7 @@ FakeExit::get_z_pos () const
 }
 
 void
-FakeExit::draw (GraphicContext& gc)
+FakeExit::draw (DrawingContext& gc)
 {
   gc.draw (data->surface, data->pos, data->counter.value());
 }

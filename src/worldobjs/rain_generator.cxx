@@ -22,7 +22,7 @@
 #include "../particles/rain_particle_holder.hxx"
 #include "../sound/sound.hxx"
 #include "../world.hxx"
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "rain_generator.hxx"
 
 namespace Pingus {
@@ -39,7 +39,7 @@ RainGenerator::~RainGenerator ()
 }
 
 void
-RainGenerator::draw (GraphicContext& gc)
+RainGenerator::draw (DrawingContext& gc)
 {
   if (do_thunder)
     {
@@ -49,8 +49,7 @@ RainGenerator::draw (GraphicContext& gc)
       	waiter_count = 1.0f;
       }
 
-      gc.draw_fillrect (0, 0, CL_Display::get_width (), CL_Display::get_height (),
-			1.0, 1.0, 1.0, thunder_count);
+      gc.fill_screen(CL_Color(255, 255, 255, static_cast<int>(thunder_count*255)));
     }
 }
 

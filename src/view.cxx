@@ -28,7 +28,7 @@ namespace Pingus {
 World* View::world;
 
 View::View(Client* client, int x1, int y1, int x2, int y2, float s)
-  : display_gc (x1, y1, x2, y2, 0, 0),
+  : //FIXME:display_gc (x1, y1, x2, y2, 0, 0),
     cap (client->get_button_panel ()),
     current_pingu (0)
 {
@@ -56,20 +56,19 @@ View::~View()
 }
 
 void
-View::draw()
+View::draw(DrawingContext& gc)
 {
   assert(world);
 
-  // Update the scroll position
-  //display_gc.set_zoom (2.0f);
-  display_gc.set_offset (x_offset - (x2_pos - x1_pos)/2,
-			 y_offset - (y2_pos - y1_pos)/2);
-  world->draw (display_gc);
+  gc.push_modelview();
+  gc.translate(x_offset, y_offset);
+
+  world->draw(gc);
 
   cap.set_pingu(current_pingu);
-  cap.draw(display_gc);           
+  cap.draw(gc);           
 
-    // FIXME: CL_Display::pop_clip_rect();
+  gc.pop_modelview();
 }
 
 void

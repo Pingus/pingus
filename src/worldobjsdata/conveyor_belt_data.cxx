@@ -21,9 +21,7 @@
 #include "../world.hxx"
 #include "../xml_file_reader.hxx"
 #include "../xml_file_writer.hxx"
-#include "../editorobjs/conveyor_belt_obj.hxx"
 #include "../worldobjs/conveyor_belt.hxx"
-#include "../editor/editorobj_mgr.hxx"
 #include "conveyor_belt_data.hxx"
 
 namespace Pingus {

@@ -18,7 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../resource.hxx"
-#include "graphic_context.hxx"
+#include "../vector.hxx"
+#include "../display/drawing_context.hxx"
 #include "surface_button.hxx"
 
 namespace Pingus {
@@ -41,7 +42,7 @@ SurfaceButton::~SurfaceButton ()
 }
 
 void
-SurfaceButton::draw (GraphicContext& gc)
+SurfaceButton::draw (DrawingContext& gc)
 {
   if (pressed && mouse_over)
     gc.draw(button_pressed_surface, Vector(x_pos, y_pos));

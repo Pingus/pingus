@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
@@ -48,7 +48,7 @@ Guillotine::~Guillotine ()
 }
 
 void
-Guillotine::draw (GraphicContext& gc)
+Guillotine::draw (DrawingContext& gc)
 {
   if (killing) {
     if (data->direction.is_left())

@@ -26,6 +26,7 @@
 
 namespace Pingus {
 
+class DrawingContext;
 class GameDelta;
 
 namespace GUI {
@@ -64,7 +65,7 @@ public:
   GUIManager ();
   virtual ~GUIManager () {}
 
-  virtual void draw (GraphicContext& gc);
+  virtual void draw (DrawingContext& gc);
   virtual void update (const GameDelta& delta);
   virtual void update (float delta) { UNUSED_ARG (delta); }
 

@@ -22,9 +22,7 @@
 #include "../world.hxx"
 #include "../xml_helper.hxx"
 #include "../xml_file_reader.hxx"
-#include "../editorobjs/laser_exit_obj.hxx"
 #include "../worldobjs/laser_exit.hxx"
-#include "../editor/editorobj_mgr.hxx"
 #include "../resource.hxx"
 
 namespace Pingus {

@@ -23,10 +23,10 @@
 namespace Pingus {
 
 PlayfieldView::PlayfieldView (World * w, const CL_Rect& rect)
-  : gc (0, 0, 300, 300, 0, 0), // FIXME: broken
+  : //:gc (0, 0, 300, 300, 0, 0), // FIXME: broken
     world (w), x_offset (0), y_offset (0)
 {
-  // FIXME: Cliprects should be handled in the GraphicContext
+  // FIXME: Cliprects should be handled in the DrawingContext
   set_clip_rect(rect.left, rect.top, rect.right, rect.bottom);
 }
 

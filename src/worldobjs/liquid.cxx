@@ -19,7 +19,7 @@
 
 #include <iostream>
 #include "../col_map.hxx"
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../resource.hxx"
 #include "../world.hxx"
 #include "../worldobjsdata/liquid_data.hxx"
@@ -61,7 +61,7 @@ Liquid::on_startup ()
 }
 
 void
-Liquid::draw (GraphicContext& gc)
+Liquid::draw (DrawingContext& gc)
 {
   for(int x = static_cast<int>(data->pos.x);
       x < data->pos.x + data->width;

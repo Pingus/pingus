@@ -36,7 +36,7 @@ GUIScreen::~GUIScreen ()
 
 /** Draw this screen */
 bool
-GUIScreen::draw (GraphicContext& gc)
+GUIScreen::draw (DrawingContext& gc)
 {
   draw_background(gc);
   gui_manager->draw(gc);

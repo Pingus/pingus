@@ -61,10 +61,9 @@ PrefabObjData::insert_WorldObjs (World* world)
 void
 PrefabObjData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  std::cout << "PrefabObjData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)" << std::endl;
-
+  //std::cout << "PrefabObjData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)" << std::endl;
   // FIXME: Wrong
-  data->get_data()->insert_EditorObjs(obj_mgr);
+  //data->get_data()->insert_EditorObjs(obj_mgr);
 }
 
 } // namespace WorldObjsData

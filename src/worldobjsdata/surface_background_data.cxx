@@ -21,9 +21,7 @@
 #include "../world.hxx"
 #include "../xml_helper.hxx"
 #include "../xml_file_reader.hxx"
-#include "../editorobjs/surface_background_obj.hxx"
 #include "../worldobjs/surface_background.hxx"
-#include "../editor/editorobj_mgr.hxx"
 #include "surface_background_data.hxx"
 
 namespace Pingus {

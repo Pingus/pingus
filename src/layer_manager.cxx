@@ -37,7 +37,7 @@ LayerManager::add_layer (const CL_Sprite& sur, float x_o, float y_o, float x_u, 
 }
 
 void
-LayerManager::draw (GraphicContext& gc)
+LayerManager::draw (DrawingContext& gc)
 {
   for (std::vector<Layer>::iterator i = layers.begin ();
        i != layers.end (); ++i)

@@ -19,7 +19,7 @@
 
 #include "../resource.hxx"
 #include "../vector.hxx"
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../world.hxx"
 #include "../pingu.hxx"
 #include "../worldobj.hxx"
@@ -54,7 +54,7 @@ Splashed::update ()
 }
 
 void
-Splashed::draw (GraphicContext& gc)
+Splashed::draw (DrawingContext& gc)
 {
   gc.draw(sprite, pingu->get_pos ());
 }

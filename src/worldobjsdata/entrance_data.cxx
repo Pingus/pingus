@@ -19,13 +19,11 @@
 
 #include <iostream>
 #include "../world.hxx"
-#include "../editorobjs/entrance_obj.hxx"
 #include "../worldobjs/entrances/woodthing.hxx"
 #include "../worldobjs/entrances/cloud.hxx"
 #include "../pingus_error.hxx"
 #include "../xml_helper.hxx"
 #include "../xml_file_reader.hxx"
-#include "../editor/editorobj_mgr.hxx"
 #include "entrance_data.hxx"
 
 namespace Pingus {

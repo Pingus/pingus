@@ -42,7 +42,7 @@ TimeDisplay::TimeDisplay (Client* c)
 }
 
 void
-TimeDisplay::draw (GraphicContext& gc)
+TimeDisplay::draw (DrawingContext& gc)
 {
   int  time_value = server->get_plf()->get_time() - server->get_world()->get_time_passed();
   std::string time_string;

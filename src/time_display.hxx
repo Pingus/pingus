@@ -30,7 +30,7 @@ namespace Pingus {
 
 class Server;
 class Client;
-class GraphicContext;
+class DrawingContext;
 
 class TimeDisplay : public GUI::Component
 {
@@ -43,7 +43,7 @@ public:
   TimeDisplay(Client* c);
   virtual ~TimeDisplay() {}
 
-  void draw(GraphicContext& gc);
+  void draw(DrawingContext& gc);
 
 private:
   TimeDisplay (const TimeDisplay&);

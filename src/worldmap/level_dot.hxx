@@ -43,8 +43,8 @@ private:
 public:
   LevelDot(xmlDocPtr doc, xmlNodePtr cur);
 
-  void draw(GraphicContext& gc);
-  void draw_hover(GraphicContext& gc);
+  void draw(DrawingContext& gc);
+  void draw_hover(DrawingContext& gc);
 
   void update(float delta);
   PLFHandle get_plf () const { return plf; }

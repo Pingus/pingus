@@ -21,9 +21,7 @@
 #include "../world.hxx"
 #include "../xml_file_reader.hxx"
 #include "../xml_helper.hxx"
-#include "../editorobjs/ice_block_obj.hxx"
 #include "../worldobjs/ice_block.hxx"
-#include "../editor/editorobj_mgr.hxx"
 #include "ice_block_data.hxx"
 
 namespace Pingus {

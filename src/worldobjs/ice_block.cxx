@@ -19,7 +19,7 @@
 
 #include "../col_map.hxx"
 #include "../game_time.hxx"
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../pingu_map.hxx"
@@ -57,7 +57,7 @@ IceBlock::on_startup ()
 }
 
 void
-IceBlock::draw (GraphicContext& gc)
+IceBlock::draw (DrawingContext& gc)
 {
   if (is_finished)
     return;

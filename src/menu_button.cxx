@@ -80,7 +80,7 @@ MenuButton::on_click ()
 }
 
 void
-MenuButton::draw (GraphicContext& gc)
+MenuButton::draw (DrawingContext& gc)
 {
   if (mouse_over && !pressed)
     {

@@ -29,7 +29,7 @@ namespace Pingus {
 class Vector;
 class ActionHolder;
 class PinguAction;
-class GraphicContext;
+class DrawingContext;
 
 /** The class for managing one of the many penguins which are walking
     around in the World. All actions are handled by PinguAction
@@ -176,7 +176,7 @@ public:
   /** Returns true if the pingu needs to catch another pingu */
   bool need_catch ();
 
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
   void apply_force (Vector);
 
   void update();

@@ -88,7 +88,7 @@ private:
   unsigned int colmap_serial;
 
   /** Pointer to the current GC, only valid inside draw() */
-  GraphicContext* gc_ptr;
+  DrawingContext* gc_ptr;
 
 public:
   SmallMap(Client* c);
@@ -108,7 +108,7 @@ public:
   bool is_at (int x, int y);
   bool mouse_over();
 
-  void draw(GraphicContext& gc);
+  void draw(DrawingContext& gc);
   void update(float delta);
   /*}*/
 

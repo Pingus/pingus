@@ -20,12 +20,10 @@
 #include <iostream>
 #include "../world.hxx"
 #include "../xml_file_reader.hxx"
-#include "../editorobjs/groundpiece_obj.hxx"
 #include "../worldobjs/groundpiece.hxx"
 #include "../xml_helper.hxx"
 #include "../file_reader.hxx"
 #include "../file_writer.hxx"
-#include "../editor/editorobj_mgr.hxx"
 #include "groundpiece_data.hxx"
 
 namespace Pingus {

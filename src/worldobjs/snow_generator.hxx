@@ -40,7 +40,7 @@ public:
 
   /** fill the screen with snow flocks */
   void on_startup();
-  void draw(GraphicContext&) {}
+  void draw(DrawingContext&) {}
   void update();
   float get_z_pos() const { return 1000; }
 private:

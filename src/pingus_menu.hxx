@@ -72,7 +72,7 @@ public:
   void preload ();
 
   void on_escape_press ();
-  void draw_foreground(GraphicContext& gc);
+  void draw_foreground(DrawingContext& gc);
 private:
   PingusMenu (const PingusMenu&);
   PingusMenu& operator= (const PingusMenu&);

@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../resource.hxx"
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../pingu.hxx"
 #include "teleported.hxx"
 
@@ -34,7 +34,7 @@ Teleported::Teleported(Pingu* p)
 
 
 void
-Teleported::draw (GraphicContext& gc)
+Teleported::draw (DrawingContext& gc)
 {
   gc.draw(sprite, pingu->get_pos ());
 }

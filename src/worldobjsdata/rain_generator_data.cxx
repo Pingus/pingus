@@ -19,9 +19,7 @@
 
 #include <fstream>
 #include "../world.hxx"
-#include "../editor/weather_obj.hxx"
 #include "../worldobjs/rain_generator.hxx"
-#include "../editor/editorobj_mgr.hxx"
 #include "rain_generator_data.hxx"
 
 namespace Pingus {

@@ -62,8 +62,8 @@ struct z_pos_sorter
 };
 
 WorldMap::WorldMap(const std::string& arg_filename)
-  : display_gc (0, 0, CL_Display::get_width()-1, CL_Display::get_height()-1,
-                0, 0),
+  : /*display_gc (0, 0, CL_Display::get_width()-1, CL_Display::get_height()-1,
+      0, 0),*/
     filename(arg_filename),
     width(1161), height(600), // FIXME: ugly..
     mouse_x(0),
@@ -208,7 +208,7 @@ WorldMap::parse_properties(xmlDocPtr doc, xmlNodePtr cur)
 }
 
 void
-WorldMap::draw (GraphicContext& gc)
+WorldMap::draw (DrawingContext& gc)
 {
   Vector pingu_pos = pingus->get_pos();
 
@@ -220,7 +220,8 @@ WorldMap::draw (GraphicContext& gc)
                           pingu_pos.y,
                           float(height - gc.get_height()/2));
 
-  display_gc.set_offset(-pingu_pos.x, -pingu_pos.y);
+  display_gc.push_modelview();
+  display_gc.translate(-pingu_pos.x, -pingu_pos.y);
 
   std::stable_sort(drawables.begin(), drawables.end(), z_pos_sorter());
 
@@ -268,6 +269,7 @@ WorldMap::draw (GraphicContext& gc)
     {
       dot->draw_hover(display_gc);
     }
+  display_gc.pop_modelview();
 }
 
 void

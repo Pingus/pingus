@@ -338,7 +338,7 @@ Pingu::update ()
 
 // Draws the pingu on the screen with the given offset
 void
-Pingu::draw (GraphicContext& gc)
+Pingu::draw (DrawingContext& gc)
 {
   char str[16];
 

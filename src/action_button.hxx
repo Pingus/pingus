@@ -56,7 +56,7 @@ public:
   ArmageddonButton(TrueServer*, int x, int y);
   virtual ~ArmageddonButton();
 
-  void draw(GraphicContext& gc);
+  void draw(DrawingContext& gc);
   void update(float);
   bool is_at(int x, int y);
   void on_primary_button_click (int x, int y);
@@ -86,7 +86,7 @@ public:
   ForwardButton(TrueServer*, int x, int y);
   virtual ~ForwardButton();
 
-  void draw(GraphicContext& gc);
+  void draw(DrawingContext& gc);
   bool is_at (int x, int y);
   void on_primary_button_click (int x, int y);
 
@@ -115,7 +115,7 @@ public:
   PauseButton(TrueServer*, int x, int y);
   virtual ~PauseButton();
 
-  void draw(GraphicContext& gc);
+  void draw(DrawingContext& gc);
   bool is_at (int x, int y);
   void on_primary_button_click (int x, int y);
 
@@ -183,7 +183,7 @@ public:
   VerticalActionButton(ActionHolder* h, int x, int y, Actions::ActionName name, int owner_id);
   virtual ~VerticalActionButton();
 
-  void draw(GraphicContext& gc);
+  void draw(DrawingContext& gc);
   bool is_at (int x, int y);
 
 private:

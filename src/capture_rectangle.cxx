@@ -47,7 +47,7 @@ CaptureRectangle::~CaptureRectangle ()
 }
 
 void
-CaptureRectangle::draw(GraphicContext& gc)
+CaptureRectangle::draw(DrawingContext& gc)
 {
   if (pingu && pingu->catchable())
     {

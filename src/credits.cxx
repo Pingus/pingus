@@ -214,7 +214,7 @@ Credits::update (float delta)
 }
 
 void
-Credits::draw_background (GraphicContext& gc)
+Credits::draw_background (DrawingContext& gc)
 {
   int x;
   int y;
@@ -226,7 +226,8 @@ Credits::draw_background (GraphicContext& gc)
   gc.draw(background, Vector(gc.get_width()/2, gc.get_height()/2));
   gc.draw(pingu, Vector(gc.get_width()/2, gc.get_height()/2 - 20));
 
-  CL_Display::push_cliprect(CL_Rect(0, gc.get_height()/2-225, 600, gc.get_height()/2+200));
+  CL_Display::push_cliprect(CL_Rect(0, static_cast<int>(gc.get_height()/2-225),
+                                    600, static_cast<int>(gc.get_height()/2+200)));
   yof = 0;
 
   for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); ++i)

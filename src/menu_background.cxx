@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "gui/graphic_context.hxx"
+#include "display/drawing_context.hxx"
 #include "menu_background.hxx"
 #include "resource.hxx"
 
@@ -37,7 +37,7 @@ MenuBackground::~MenuBackground ()
 }
 
 void
-MenuBackground::draw (GraphicContext& gc)
+MenuBackground::draw (DrawingContext& gc)
 {
   layer_manager.draw (gc);
 }

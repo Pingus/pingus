@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_PLAYFIELD_VIEW_HXX
 #define HEADER_PINGUS_PLAYFIELD_VIEW_HXX
 
-#include "gui/display_graphic_context.hxx"
+#include "display/drawing_context.hxx"
 #include "gui_obj.hxx"
 
 class CL_Rect;
@@ -35,7 +35,7 @@ class Pingu;
 class PlayfieldView : public GuiObj
 {
 private:
-  DisplayGraphicContext gc;
+  DrawingContext gc;
   World * world;
   int x_offset;
   int y_offset;

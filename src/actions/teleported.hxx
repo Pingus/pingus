@@ -35,7 +35,7 @@ public:
 
   ActionName get_type() const { return Actions::Teleported; }
 
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
   void update();
 
   bool catchable () { return false; }

@@ -22,10 +22,8 @@
 #include "../world.hxx"
 #include "../xml_helper.hxx"
 #include "../xml_file_reader.hxx"
-#include "../editorobjs/guillotine_obj.hxx"
 #include "../worldobjs/guillotine.hxx"
 #include "../resource.hxx"
-#include "../editor/editorobj_mgr.hxx"
 
 namespace Pingus {
 namespace WorldObjsData {

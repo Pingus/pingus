@@ -24,7 +24,7 @@
 
 namespace Pingus {
 
-class GraphicContext;
+class DrawingContext;
 
 class MenuBackground
 {
@@ -34,7 +34,7 @@ public:
   MenuBackground ();
   ~MenuBackground ();
 
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
   void update (float delta);
 
 private:

@@ -57,7 +57,7 @@ public:
   StoryScreenComponent (const Story&);
   virtual ~StoryScreenComponent () {}
 
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
   void update(float delta);
 
   /** starts to display the next text page */
@@ -120,7 +120,7 @@ StoryScreenComponent::StoryScreenComponent (const Story& arg_story)
 }
 
 void
-StoryScreenComponent::draw (GraphicContext& gc)
+StoryScreenComponent::draw (DrawingContext& gc)
 {
   gc.draw(background, Vector(gc.get_width()/2, gc.get_height()/2));
 

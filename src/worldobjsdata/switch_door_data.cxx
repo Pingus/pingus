@@ -21,9 +21,7 @@
 #include "../world.hxx"
 #include "../xml_file_reader.hxx"
 #include "../xml_helper.hxx"
-#include "../editorobjs/switch_door_obj.hxx"
 #include "../worldobjs/switch_door.hxx"
-#include "../editor/editorobj_mgr.hxx"
 #include "switch_door_data.hxx"
 
 namespace Pingus {

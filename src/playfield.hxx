@@ -71,7 +71,7 @@ public:
 
   void set_viewpoint(int, int);
 
-  void draw(GraphicContext& gc);
+  void draw(DrawingContext& gc);
   void update(float delta);
   void set_world(World*);
   Pingu* current_pingu_find(int x_pos, int y_pos);

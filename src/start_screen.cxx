@@ -47,7 +47,7 @@ private:
 
 public:
   StartScreenComponent(PLFHandle plf);
-  void draw(GraphicContext& gc);
+  void draw(DrawingContext& gc);
   virtual ~StartScreenComponent() {}
 
 private:
@@ -69,7 +69,7 @@ public:
   {
   }
 
-  void draw(GraphicContext& gc) {
+  void draw(DrawingContext& gc) {
     SurfaceButton::draw(gc);
     gc.print_center(Fonts::chalk_normal, x_pos + 32, y_pos - 17, _("Ok"));
   }
@@ -105,7 +105,7 @@ public:
   {
   }
 
-  void draw(GraphicContext& gc) {
+  void draw(DrawingContext& gc) {
     SurfaceButton::draw(gc);
     gc.print_center(Fonts::chalk_normal, x_pos + 55, y_pos, _("Abort"));
   }
@@ -135,7 +135,7 @@ StartScreenComponent::StartScreenComponent(PLFHandle p)
 }
 
 void
-StartScreenComponent::draw(GraphicContext& gc)
+StartScreenComponent::draw(DrawingContext& gc)
 {
   //gc.clear(0,0,0);
   background.draw(CL_Display::get_width()/2,CL_Display::get_height()/2);

@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../world.hxx"
 #include "../pingu_holder.hxx"
 #include "../globals.hxx"
@@ -124,12 +124,12 @@ Entrance::update ()
 }
 
 void
-Entrance::draw (GraphicContext& gc)
+Entrance::draw (DrawingContext& gc)
 {
   if (!surface)
     {
       // Entrances have only a surface for historical reasons
-      //std::cout << "Entrance::draw (GraphicContext& gc): entrance without a surface?!" << std::endl;
+      //std::cout << "Entrance::draw (DrawingContext& gc): entrance without a surface?!" << std::endl;
       return;
     }
 

@@ -22,7 +22,7 @@
 #include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/pixel_format.h>
 #include <ClanLib/Display/surface.h>
-#include "gui/graphic_context.hxx"
+#include "display/drawing_context.hxx"
 #include "globals.hxx"
 #include "col_map.hxx"
 #include "gettext.h"
@@ -251,7 +251,7 @@ ColMap::put(CL_PixelBuffer provider, int sur_x, int sur_y, Groundtype::GPType pi
 }
 
 void
-ColMap::draw(GraphicContext& gc)
+ColMap::draw(DrawingContext& gc)
 {
   CL_PixelBuffer canvas(width, height, width*4, CL_PixelFormat::rgba8888);
   CL_Surface sur;
@@ -298,7 +298,7 @@ ColMap::draw(GraphicContext& gc)
 
   sur = CL_Surface(canvas);
 
-  gc.draw(sur, 0, 0);
+  //FIXME:gc.draw(sur, 0, 0);
 }
 
 unsigned

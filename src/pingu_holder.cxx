@@ -63,7 +63,7 @@ PinguHolder::create_pingu (const Vector& pos, int owner_id)
 }
 
 void
-PinguHolder::draw (GraphicContext& gc)
+PinguHolder::draw (DrawingContext& gc)
 {
   // Draw all walkers
   for(std::list<Pingu*>::iterator pingu = pingus.begin();

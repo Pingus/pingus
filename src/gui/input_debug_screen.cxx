@@ -37,7 +37,7 @@ InputDebugScreen::~InputDebugScreen ()
 
 /** Draw this screen */
 bool
-InputDebugScreen::draw (GraphicContext& gc)
+InputDebugScreen::draw (DrawingContext& gc)
 {
   std::cout << "InputDebugScreen::draw ()" << std::endl;
   CL_System::sleep(100);

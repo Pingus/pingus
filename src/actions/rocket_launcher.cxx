@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 //#include "../particles/particle_holder.hxx"
 //#include "../particles/explosive_particle.hxx"
 #include "../world.hxx"
@@ -57,7 +57,7 @@ RocketLauncher::update ()
 }
 
 void
-RocketLauncher::draw (GraphicContext& gc)
+RocketLauncher::draw (DrawingContext& gc)
 {
   gc.draw(sprite[pingu->direction], pingu->get_pos());
 }

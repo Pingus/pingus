@@ -21,9 +21,7 @@
 #include "../world.hxx"
 #include "../xml_helper.hxx"
 #include "../xml_file_reader.hxx"
-#include "../editorobjs/thunderstorm_background_obj.hxx"
 #include "../worldobjs/thunderstorm_background.hxx"
-#include "../editor/editorobj_mgr.hxx"
 #include "thunderstorm_background_data.hxx"
 
 namespace Pingus {

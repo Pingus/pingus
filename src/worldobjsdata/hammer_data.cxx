@@ -21,9 +21,7 @@
 #include "hammer_data.hxx"
 #include "../xml_helper.hxx"
 #include "../xml_file_reader.hxx"
-#include "../editorobjs/hammer_obj.hxx"
 #include "../worldobjs/hammer.hxx"
-#include "../editor/editorobj_mgr.hxx"
 #include "../resource.hxx"
 
 namespace Pingus {

@@ -41,7 +41,7 @@ public:
   SurfaceDrawable(xmlDocPtr doc, xmlNodePtr cur);
 
   void update(float delta);
-  void draw(GraphicContext&);
+  void draw(DrawingContext&);
 
   float get_z_pos() const { return pos.z; }
 private:

@@ -48,7 +48,7 @@ public:
 
   float get_z_pos () const;
 
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
 
   void update ();
 

@@ -20,9 +20,7 @@
 #include <iostream>
 #include "../world.hxx"
 #include "../xml_file_reader.hxx"
-#include "../editorobjs/starfield_background_obj.hxx"
 #include "../worldobjs/starfield_background.hxx"
-#include "../editor/editorobj_mgr.hxx"
 #include "starfield_background_data.hxx"
 
 namespace Pingus {

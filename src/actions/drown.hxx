@@ -36,7 +36,7 @@ public:
 
   ActionName get_type () const { return Actions::Drown; }
 
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
   void update ();
 
   bool catchable () { return false; }

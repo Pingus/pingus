@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_EXIT_HXX
 #define HEADER_PINGUS_WORLDOBJS_EXIT_HXX
 
+#include <ClanLib/Display/sprite.h>
 #include "../worldobj.hxx"
 
 namespace Pingus {
@@ -44,7 +45,7 @@ public:
 
   void  on_startup ();
 
-  void  draw (GraphicContext& gc);
+  void  draw (DrawingContext& gc);
   void  draw_smallmap(SmallMap* smallmap);
 
   void  update ();

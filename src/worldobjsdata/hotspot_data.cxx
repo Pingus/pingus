@@ -19,12 +19,9 @@
 
 #include <iostream>
 #include "../world.hxx"
-#include "../editorobjs/hotspot_obj.hxx"
 #include "../worldobjs/hotspot.hxx"
 #include "../xml_helper.hxx"
 #include "../xml_file_reader.hxx"
-#include "../editor/editorobj_mgr.hxx"
-#include "../editor/editorobj_mgr.hxx"
 #include "hotspot_data.hxx"
 
 namespace Pingus {

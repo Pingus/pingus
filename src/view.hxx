@@ -24,7 +24,7 @@
 #include <ClanLib/core.h>
 #include "range.hxx"
 #include "capture_rectangle.hxx"
-#include "gui/display_graphic_context.hxx"
+#include "display/drawing_context.hxx"
 
 namespace Pingus {
 
@@ -38,8 +38,6 @@ class Client;
 class View
 {
 private:
-  DisplayGraphicContext display_gc;
-
   CL_Rect clip_rect;
 
   /** The position of the view in the world */
@@ -74,7 +72,7 @@ public:
   View(Client*, int, int, int, int, float s = 1.0);
   ~View();
 
-  void draw();
+  void draw(DrawingContext& gc);
   void update(float);
 
   bool is_over(int x, int y);

@@ -42,7 +42,7 @@ public:
   {
   }
 
-  void draw (GraphicContext& gc) {
+  void draw (DrawingContext& gc) {
     SurfaceButton::draw(gc);
     gc.print_right(Fonts::chalk_large, CL_Display::get_width()/2 - 80,
                    CL_Display::get_height()/2 + 25, _("Yes"));
@@ -75,7 +75,7 @@ public:
   {
   }
 
-  void draw (GraphicContext& gc) {
+  void draw (DrawingContext& gc) {
     SurfaceButton::draw(gc);
     gc.print_right(Fonts::chalk_large, CL_Display::get_width()/2 + 80,
                    CL_Display::get_height()/2 + 25, _("No"));
@@ -105,7 +105,7 @@ ExitMenu::~ExitMenu ()
 }
 
 bool
-ExitMenu::draw (GraphicContext& gc)
+ExitMenu::draw (DrawingContext& gc)
 {
   //gc.draw_fillrect (0, 0, CL_Display::get_width (), CL_Display::get_height (),
   //0, 0, 0, 0.5);

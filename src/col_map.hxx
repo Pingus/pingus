@@ -27,7 +27,7 @@ class CL_PixelBuffer;
 
 namespace Pingus {
 
-class GraphicContext;
+class DrawingContext;
 class ResDescriptor;
 class PixelStatus;
 
@@ -84,7 +84,7 @@ public:
   /// void remove(int x, int y);
   void remove(CL_PixelBuffer, int x, int y);
 
-  void draw(GraphicContext& gc);
+  void draw(DrawingContext& gc);
 
 private:
   ColMap (const ColMap&);

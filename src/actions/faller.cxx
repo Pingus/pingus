@@ -22,7 +22,7 @@
 #include "../colliders/pingu_collider.hxx"
 #include "../debug.hxx"
 #include "../globals.hxx"
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../movers/linear_mover.hxx"
 #include "../pingu.hxx"
 #include "../resource.hxx"
@@ -144,7 +144,7 @@ Faller::update ()
 }
 
 void
-Faller::draw (GraphicContext& gc)
+Faller::draw (DrawingContext& gc)
 {
   if (is_tumbling()) {
     gc.draw(tumbler[pingu->direction], pingu->get_pos ());

@@ -25,7 +25,7 @@
 
 namespace Pingus {
 
-class GraphicContext;
+class DrawingContext;
 
 namespace WorldMapNS {
 
@@ -67,7 +67,7 @@ public:
   bool is_visible() { return visible; }
   std::string get_name() { return name; }
 
-  virtual void draw(GraphicContext& gc) =0;
+  virtual void draw(DrawingContext& gc) =0;
   virtual void update(float delta) =0;
 
   virtual float get_z_pos() const =0;

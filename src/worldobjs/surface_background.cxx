@@ -20,7 +20,7 @@
 #include <iostream>
 #include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/display.h>
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../world.hxx"
 #include "../timer.hxx"
 #include "../resource.hxx"
@@ -144,7 +144,7 @@ SurfaceBackground::update()
 }
 
 void
-SurfaceBackground::draw (GraphicContext& gc)
+SurfaceBackground::draw (DrawingContext& gc)
 {
   if (fast_mode)
     {
@@ -154,14 +154,18 @@ SurfaceBackground::draw (GraphicContext& gc)
     {
       if (render_preview)
         {
+#if 0 // FIXME:
           for(int y = 0; y < gc.get_height();  y += bg_surface.get_height())
             for(int x = 0; x < gc.get_width(); x += bg_surface.get_width())
-              gc.draw(bg_surface, x, y, counter);
+              gc.draw(bg_surface, Vector(x, y));
+#endif
         }
       else
         {
-          int x_of = static_cast<int>(gc.get_x_offset () + (gc.get_width ()/2));
-          int y_of = static_cast<int>(gc.get_y_offset () + (gc.get_height ()/2));
+          int x_offset = 0; // FIXME: gc.get_x_offset()
+          int y_offset = 0; // FIXME: gc.get_y_offset()
+          int x_of = static_cast<int>(x_offset + (gc.get_width ()/2));
+          int y_of = static_cast<int>(y_offset + (gc.get_height ()/2));
 
           int start_x;
           int start_y;

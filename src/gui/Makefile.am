@@ -19,14 +19,10 @@ noinst_LIBRARIES = libpingus_gui.a
 
 libpingus_gui_a_CPPFLAGS = @PINGUS_CFLAGS@
 libpingus_gui_a_SOURCES = \
-        buffer_graphic_context.hxx \
-        buffer_graphic_context.cxx \
 	cursor.cxx \
 	cursor.hxx \
 	display.cxx \
 	display.hxx \
-	display_graphic_context.cxx \
-	display_graphic_context.hxx \
 	game_delta.hxx \
 	gui_manager.cxx \
 	gui_manager.hxx \
@@ -44,7 +40,6 @@ libpingus_gui_a_SOURCES = \
 	screen_ptr.hxx \
         component.hxx \
         graphic_context.hxx \
-        graphic_context.cxx \
         surface_button.cxx \
         surface_button.hxx
 

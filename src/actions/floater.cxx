@@ -19,7 +19,7 @@
 
 #include "../resource.hxx"
 #include "../pingu.hxx"
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../groundtype.hxx"
 #include "floater.hxx"
 
@@ -57,7 +57,7 @@ Floater::update()
 }
 
 void
-Floater::draw (GraphicContext& gc)
+Floater::draw (DrawingContext& gc)
 {
   gc.draw(sprite, pingu->get_pos());
 }

@@ -46,7 +46,7 @@ public:
 
   ResultScreenComponent(Result arg_result);
   virtual ~ResultScreenComponent() {}
-  void draw(GraphicContext& gc) ;
+  void draw(DrawingContext& gc) ;
 };
 
 class ResultScreenOkButton
@@ -93,7 +93,7 @@ public:
   {
   }
 
-  void draw(GraphicContext& gc) {
+  void draw(DrawingContext& gc) {
     SurfaceButton::draw(gc);
     gc.print_center(Fonts::chalk_normal, x_pos + 55, y_pos, _("Abort"));
   }
@@ -155,7 +155,7 @@ ResultScreenComponent::ResultScreenComponent(Result arg_result)
 }
 
 void
-ResultScreenComponent::draw(GraphicContext& gc)
+ResultScreenComponent::draw(DrawingContext& gc)
 {
   gc.draw(background, Vector(gc.get_width()/2, gc.get_height()/2));
 

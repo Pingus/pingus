@@ -43,7 +43,7 @@ public:
   InfoBox (const WorldObjsData::InfoBoxData& data_);
  ~InfoBox ();
 
-  void draw (GraphicContext& gc);
+  void draw (DrawingContext& gc);
   void update ();
   float get_z_pos () const;
 

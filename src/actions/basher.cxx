@@ -20,7 +20,7 @@
 #include "../col_map.hxx"
 #include "../debug.hxx"
 #include "../globals.hxx"
-#include "../gui/graphic_context.hxx"
+#include "../display/drawing_context.hxx"
 #include "../pingu_map.hxx"
 #include "../resource.hxx"
 #include "../pingu.hxx"
@@ -53,7 +53,7 @@ Basher::Basher (Pingu* p)
 }
 
 void
-Basher::draw (GraphicContext& gc)
+Basher::draw (DrawingContext& gc)
 {
   gc.draw(sprite[pingu->direction], pingu->get_pos());
 }
