@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.hh,v 1.7 2001/08/12 18:36:41 grumbel Exp $
+//  $Id: SurfaceBackgroundData.hh,v 1.8 2001/08/13 07:42:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,9 @@ public:
   ResDescriptor desc;
   float para_x;
   float para_y;
+
+  /** Position of the background, only the z_pos is really used. */
+  CL_Vector pos;
 
   /** The amount of pixel the background is scrolled each frame in x
       direction. */

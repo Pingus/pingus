@@ -1,5 +1,7 @@
 section Textures
 {
+        nebula = images/textures/nebular.png (type=surface, x=0, y=0, width=256, height=256);
+
         fruitcaketile = images/textures/fruitcaketile.jpg (type=surface, x=0, y=0, width=256, height=256);
 
 	default          = images/textures/default.png  (type=surface, x=0, y=0, width=64, height=64);

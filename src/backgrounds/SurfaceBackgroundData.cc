@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.cc,v 1.7 2001/08/12 18:36:41 grumbel Exp $
+//  $Id: SurfaceBackgroundData.cc,v 1.8 2001/08/13 07:42:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,10 +17,31 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../editor/EditorObj.hh"
+#include "../editor/SpriteEditorObj.hh"
 #include "../XMLhelper.hh"
 #include "SurfaceBackground.hh"
 #include "SurfaceBackgroundData.hh"
+
+class EditorSurfaceBackground : public SurfaceBackgroundData,
+				public SpriteEditorObj
+{
+private:
+public:
+  EditorSurfaceBackground (const SurfaceBackgroundData& data)
+    : SurfaceBackgroundData (data),
+      SpriteEditorObj (desc.res_name, desc.datafile, pos)
+  {
+    pos = CL_Vector (-192.0f, 0.0f);
+  }
+
+  void write_xml(ofstream* xml) { this->SurfaceBackgroundData::write_xml (xml); }
+
+  boost::shared_ptr<EditorObj> duplicate() {
+    return boost::shared_ptr<EditorObj>(new EditorSurfaceBackground (*this));
+  }
+
+  std::string status_line () { return "SurfaceBackground"; }
+};
 
 SurfaceBackgroundData::SurfaceBackgroundData()
 {
@@ -124,7 +145,9 @@ EditorObjLst
 SurfaceBackgroundData::create_EditorObj()
 {
   std::cout << "SurfaceBackgroundData::create_EditorObj(): not implemented" << std::endl;
-  return EditorObjLst ();
+  EditorObjLst lst;
+  lst.push_back(boost::shared_ptr<EditorObj> (new EditorSurfaceBackground (*this)));
+  return lst;
 }
 
 /* EOF */

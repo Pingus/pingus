@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackgroundData.cc,v 1.5 2001/08/12 23:05:22 grumbel Exp $
+//  $Id: ThunderstormBackgroundData.cc,v 1.6 2001/08/13 07:42:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,9 +17,29 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../editor/EditorObj.hh"
+#include "../editor/SpriteEditorObj.hh"
 #include "ThunderstormBackground.hh"
 #include "ThunderstormBackgroundData.hh"
+
+class EditorThunderstormBackground : public ThunderstormBackgroundData,
+				     public SpriteEditorObj
+{
+private:
+  CL_Vector pos;
+public:
+  EditorThunderstormBackground (const ThunderstormBackgroundData& data)
+    : ThunderstormBackgroundData (data),
+      SpriteEditorObj ("Stars/starfield_icon", "game", pos),
+      pos (-128.0f, 0.0f)
+  {}
+  void write_xml(ofstream* xml) { this->ThunderstormBackgroundData::write_xml (xml); }
+  
+  boost::shared_ptr<EditorObj> duplicate() {
+    return boost::shared_ptr<EditorObj>(new EditorThunderstormBackground (*this));
+  }
+  
+  std::string status_line () { return "ThunderstormBackground"; }
+};
 
 void
 ThunderstormBackgroundData::write_xml(std::ofstream* xml)
@@ -44,8 +64,7 @@ EditorObjLst
 ThunderstormBackgroundData::create_EditorObj()
 {
   EditorObjLst lst;
-  std::cout << "ThunderstormBackgroundData::create_EditorObj(): Not Implemented"
-	    << std::endl;
+  lst.push_back (boost::shared_ptr<EditorObj>(new EditorThunderstormBackground (*this)));
   return lst;
 }
 

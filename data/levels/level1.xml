@@ -15,6 +15,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
     <height>864</height>
   </global>
 
+
 <background type="surface">
   <surface><resource type="datafile">
     <resource-datafile>textures</resource-datafile>
@@ -52,6 +53,27 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
   <stretch-x>0</stretch-x>
   <stretch-y>0</stretch-y>
 </background>
+
+<background type="surface">
+  <surface><resource type="datafile">
+    <resource-datafile>textures</resource-datafile>
+  <resource-ident>Textures/nebula</resource-ident>
+  </resource></surface>
+  <color>
+    <red>0</red>
+    <green>0</green>
+    <blue>0</blue>
+    <alpha>0</alpha>
+  </color>
+  <scroll-x>1</scroll-x>
+  <scroll-y>0</scroll-y>
+  <para-x>0.2</para-x>
+  <para-y>0.2</para-y>
+  <stretch-x>0</stretch-x>
+  <stretch-y>0</stretch-y>
+</background>
+
+
 
   <action-list>
     <rocketlauncher count="20"/>
