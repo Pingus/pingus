@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.36 2002/06/09 14:04:10 torangan Exp $
+//  $Id: World.hh,v 1.37 2002/06/09 14:28:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,22 +71,22 @@ private:
   typedef std::list<boost::shared_ptr<WorldObj> >::iterator WorldObjIter;
   std::list<boost::shared_ptr<WorldObj> > world_obj;
 
-  boost::shared_ptr<ParticleHolder> particle_holder;
-  ActionHolder* action_holder;
-  PinguHolder*  pingus;
-  ColMap*       colmap;
-  PLF*          plf;
+  // These pointers hold objects and must be deleted
+  ParticleHolder* particle_holder;
+  PinguHolder*    pingus;
+
+  // Pointers which are references to objects from other classes
+  ActionHolder*   action_holder;
+  ColMap*         colmap;
+  PLF*            plf;
   boost::shared_ptr<View> view;
 
   void    init_worldobjs (void);
   void    init_map (void);
 
 public:
-  World();
   World(PLF*);
   virtual ~World();
-
-  void    init (PLF*);
 
   /** Draws the world onto the screen
       @param x1 The left corner of the drawing area.

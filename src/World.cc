@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.71 2002/06/09 14:04:10 torangan Exp $
+//  $Id: World.cc,v 1.72 2002/06/09 14:28:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,22 +52,32 @@ struct WorldObj_less
   }
 };
 
-World::World()
-  : view (0)
-{
-  released_pingus = 0;
-  exit_world = false;
-  WorldObj::set_world(this);
-}
-
-World::World(PLF* plf)
+World::World(PLF* arg_plf)
+  : particle_holder (new ParticleHolder()),
+    pingus (new PinguHolder()),
+    plf (arg_plf),
+    view (0)
 { 
+  // Not perfect, but works
   WorldObj::set_world(this);
-  init (plf);
+
+  do_armageddon = false;
+  allowed_pingus = plf->get_pingus();
+  number_to_save = plf->get_number_to_save();
+  released_pingus = 0;
+
+  exit_time = plf->get_time();
+  if (exit_time != -1 && !(exit_time > 100))
+    std::cout << "World: Time is not in the tolerated range: " << exit_time << std::endl;
+  shutdown_time = -1;
+
+  init_map();
+  init_worldobjs();
 }
 
 World::~World()
 {
+  delete particle_holder;
 }
 
 // Merge the different layers on the screen together
@@ -153,28 +163,6 @@ World::update(float delta)
 
   // Clear the explosion force list
   ForcesHolder::clear_explo_list();
-}
-
-void 
-World::init(PLF* plf_data)
-{
-  plf = plf_data;
-  do_armageddon = false;
-  allowed_pingus = plf->get_pingus();
-  number_to_save = plf->get_number_to_save();
-  released_pingus = 0;
-
-  exit_time = plf->get_time();
-  if (exit_time != -1 && !(exit_time > 100))
-    std::cout << "World: Time is not in the tolerated range: " << exit_time << std::endl;
-  shutdown_time = -1;
-
-  init_map();
-
-  particle_holder = shared_ptr<ParticleHolder>(new ParticleHolder());
-  pingus = new PinguHolder();
-
-  init_worldobjs();
 }
 
 void
@@ -328,7 +316,7 @@ World::get_action_holder ()
 ParticleHolder* 
 World::get_particle_holder()
 {
-  return particle_holder.get();
+  return particle_holder;
 }
 
 PLF*
