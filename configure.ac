@@ -1,4 +1,4 @@
-#  $Id: configure.ac,v 1.3 2003/02/19 17:16:58 grumbel Exp $
+#  $Id: configure.ac,v 1.4 2003/03/22 11:20:59 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@ CLANLIB_MINOR_VERSION=6
 CLANLIB_PATCH_VERSION=4
 
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT(Pingus, 0.5.0pre5)
+AC_INIT(Pingus, 0.5.0pre6)
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_SRCDIR(src/pingus_main.cxx)
 AM_INIT_AUTOMAKE

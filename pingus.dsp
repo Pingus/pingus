@@ -1460,6 +1460,14 @@ SOURCE=.\src\menu_background.hxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\menu_button.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\menu_button.hxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\mover.cxx
 # End Source File
 # Begin Source File
@@ -1692,6 +1700,14 @@ SOURCE=.\src\plf.hxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\plf_res_mgr.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\plf_res_mgr.hxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\plt_xml.cxx
 # End Source File
 # Begin Source File
@@ -1737,6 +1753,14 @@ SOURCE=.\src\result.cxx
 # Begin Source File
 
 SOURCE=.\src\result.hxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\result_screen.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\result_screen.hxx
 # End Source File
 # Begin Source File
 
@@ -1804,6 +1828,14 @@ SOURCE=.\src\sound\sound_real.hxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\sound\sound_res_mgr.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\sound\sound_res_mgr.hxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\sound\sounds.hxx
 # End Source File
 # Begin Source File
@@ -1824,19 +1856,27 @@ SOURCE=.\src\sprite.hxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\start_screen.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\start_screen.hxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\story_screen.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\story_screen.hxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\string_converter.cxx
 # End Source File
 # Begin Source File
 
 SOURCE=.\src\string_converter.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\surface_button.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\surface_button.hxx
 # End Source File
 # Begin Source File
 
@@ -2277,14 +2317,6 @@ SOURCE=.\src\worldobjs\thunderstorm_background.cxx
 # Begin Source File
 
 SOURCE=.\src\worldobjs\thunderstorm_background.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjs\worldobj_group.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\worldobjs\worldobj_group.hxx
 # End Source File
 # Begin Source File
 

@@ -1,7 +1,5 @@
 
 Pingus
-
-Ingo Ruhnke
      _________________________________________________________________
    
 Introduction
@@ -20,29 +18,41 @@ Introduction
    If you want to help developing Pingus, have a look on its web page:
    
      * http://pingus.seul.org
-     * http://www.pingus.cc
        
    for up to date information.
      _________________________________________________________________
    
 Mailing Lists
 
- There are currently three mailing lists available:
+ There are currently two mailing lists available:
 
-    * pingus-announce - A extremly low traffic list, where new Pingus releases are announced.
-    * pingus-users - A low traffic list for discussing gaming and playing issues with Pingus.
-    * pingus-devel - A list for discussing development issues, like level creation or code changes.
+    * pingus-devel - A list for discussing development issues, like
+      level creation or code changes, but might as well be used for
+      user issues like how to solve levels and such
 
+    * pingus-cvs - Read-only list to which all CVS commits get
+      submitted, only intersting for developers in general
 
  For information on how to subscribe to any of these lists have a look at:
    
       http://pingus.seul.org/contact.html 
      _________________________________________________________________
    
+IRC
+
+  For a quick help you can try the IRC server irc.freenode.net:6667
+  and the channel #pingus, you can find the project maintainer (nick:
+  grumbel) there most of the time. From time to time there will also be
+  IRC Mettings with larger parts of the development team, once such
+  meetings happen, they will get announced in the news section on the
+  Pingus webpage.
+
+     _________________________________________________________________
+
 Bug Reports
 
    Questions about the game and bug reports should go to pingus-users or
    pingus-devel lists. You may also contact Ingo Ruhnke <grumbel@gmx.de>. 
 
 ---
-Last update  ... gd 2002-06-02
+Last update  ... ir 2003-03-07

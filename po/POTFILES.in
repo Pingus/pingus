@@ -338,6 +338,8 @@ src/main_menu.hxx
 src/math.hxx
 src/menu_background.cxx
 src/menu_background.hxx
+src/menu_button.cxx
+src/menu_button.hxx
 src/mover.cxx
 src/mover.hxx
 src/movers/linear_mover.cxx
@@ -396,6 +398,8 @@ src/playfield_view.cxx
 src/playfield_view.hxx
 src/plf.cxx
 src/plf.hxx
+src/plf_res_mgr.cxx
+src/plf_res_mgr.hxx
 src/plt_xml.cxx
 src/plt_xml.hxx
 src/prefab.cxx
@@ -408,6 +412,8 @@ src/resource_modifier.cxx
 src/resource_modifier.hxx
 src/result.cxx
 src/result.hxx
+src/result_screen.cxx
+src/result_screen.hxx
 src/screenshot.cxx
 src/screenshot.hxx
 src/server.cxx
@@ -424,15 +430,19 @@ src/sound/sound_dummy.cxx
 src/sound/sound_dummy.hxx
 src/sound/sound_real.cxx
 src/sound/sound_real.hxx
+src/sound/sound_res_mgr.cxx
+src/sound/sound_res_mgr.hxx
 src/sound/sounds.hxx
 src/spot_map.cxx
 src/spot_map.hxx
 src/sprite.cxx
 src/sprite.hxx
+src/start_screen.cxx
+src/start_screen.hxx
+src/story_screen.cxx
+src/story_screen.hxx
 src/string_converter.cxx
 src/string_converter.hxx
-src/surface_button.cxx
-src/surface_button.hxx
 src/system.cxx
 src/system.hxx
 src/target_provider.cxx
@@ -543,8 +553,6 @@ src/worldobjs/teleporter.cxx
 src/worldobjs/teleporter.hxx
 src/worldobjs/thunderstorm_background.cxx
 src/worldobjs/thunderstorm_background.hxx
-src/worldobjs/worldobj_group.cxx
-src/worldobjs/worldobj_group.hxx
 src/worldobjsdata/bumper_data.cxx
 src/worldobjsdata/bumper_data.hxx
 src/worldobjsdata/conveyor_belt_data.cxx
