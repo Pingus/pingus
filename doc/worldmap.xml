@@ -1,4 +1,11 @@
 <pingus-worldmap>
+  <properties>
+    <name>My Funny Worldmap</name>
+    <music>pingus-1.it</music>
+    <author>Ingo Ruhnke ...</author>
+    <email>...</email>
+  </properties>
+  
   <!-- The graph specifies the path on which the pingu can walk -->
   <graph>
     <nodes>
@@ -20,7 +27,10 @@
     
     <edges>
       <edge id="egde_1" source="1" destination="2"> 
-	<!-- The path which connect two nodes -->
+	<!-- The path which connect two nodes 
+        
+        source and destination are exchangable, since the graph is
+        multidirect -->
 	<data>
 	  <position>...</position>
 	  <position>...</position>
@@ -32,7 +42,8 @@
   <!-- Objects are other things on the worldmap, most likly background
   surfaces or other animated stuff -->
   <objects>
-    <!-- container for a worldobj -->
+    <!-- container for a worldmapobj, so that the worldmap object can
+    have an id (id's are used to hide/show worldmap objects -->
     <object id="tree_1">
       <sprite>
 	<resource-desc>...</resource-desc>
@@ -40,23 +51,17 @@
 	  ...
 	</position>
       </sprite>
-
-      <birds>
-	<position>
-	  ...
-	</position>
-      </birds>
     </object>
-    ...
-  </objects>
 
-  <properties>
-    <name>My Funny Worldmap</name>
-    <music>pingus-1.it</music>
-    <author>Ingo Ruhnke ...</author>
-    <email>...</email>
-  </properties>
-  
+    <object id="birds_1">
+      <birds>
+        <position>
+          ...
+        </position>
+      </birds>
+    </birds>
+      ...
+  </objects>
 </pingus-worldmap>
 
 <!-- EOF -->     
