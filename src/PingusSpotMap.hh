@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.hh,v 1.9 2000/05/25 15:55:09 grumbel Exp $
+//  $Id: PingusSpotMap.hh,v 1.10 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,65 +31,105 @@
 #include "PSMParser.hh"
 #include "PLF.hh"
 
+///
 class MapTileSurface
 {
 private:
+  ///
   bool empty;
+  ///
   bool needs_reload;
 public:
+  ///
   CL_Surface* surface;
 
+  ///
   MapTileSurface();
+  ///
   virtual ~MapTileSurface();
 
+  ///
   void reload(void);
+  ///
   bool is_empty(void);
+  ///
   void mark_dirty(void);
+  ///
   void check_empty(void);
+  ///
   void set_empty(bool);
 };
 
-// This map type is the defaulh maptype, it is should be used for the
-// most levels. It allows to construct a map, from a set of simple
-// small images, this allows the generation of large map without using 
-// to much diskspace.
+/** This map type is the defaulh maptype, it is should be used for the
+    most levels. It allows to construct a map, from a set of simple
+    small images, this allows the generation of large map without
+    using to much diskspace. */
 class PingusSpotMap : public PinguMap
 {
 private:
+  ///
   ColMap* colmap;
+  ///
   typedef std::vector<MapTileSurface>::size_type TileIter;
+  ///
   std::vector<surface_data> surfaces;
+  ///
   PSMParser psm_parser;
+  ///
   CL_Canvas* provider;
+  ///
   CL_Surface*         map_surface;
+  ///
   CL_Canvas*          map_canvas;
+  ///
   std::vector<std::vector<MapTileSurface> > tile;
+  ///
   int width;
+  ///
   int height;
 
 public:
+  ///
   PingusSpotMap();
+  ///
   PingusSpotMap(PLF*);
+  ///
   virtual ~PingusSpotMap();
 
+  ///
   void generate_colmap();
+  ///
   ColMap* PingusSpotMap::get_colmap();
+  ///
   void load(std::string);
+  ///
   void load(PLF* plf);
+  ///
   void gen_tiles();
+  ///
   void draw(int x, int y, int w, int h, int of_x, int of_y, float s);
+  ///
   void draw_colmap(int x_pos, int y_pos, int w, int h, 
 		   int of_x, int of_y, float s);
+  ///
   int  get_height(void);
+  ///
   int  get_width(void);
+  ///
   CL_Surface* get_surface(void);
+  ///
   void remove(CL_SurfaceProvider*, int, int);
+  ///
   void put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
 			 int x, int y, int real_x, int real_y);
+  ///
   void put(CL_SurfaceProvider*, int, int);
+  ///
   void create_maptiles();
+  ///
   void mark_tiles_not_empty(int, int, int, int);
-};
+}///
+;
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: Counter.hh,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: Counter.hh,v 1.3 2000/06/18 17:01:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,35 +20,59 @@
 #ifndef COUNTER_HH
 #define COUNTER_HH
 
+///
 class Counter
 {
 public:
-  enum CounterType { loop, once, ping_pong, ping_pong_once };
+  ///
+  enum CounterType { loop, once, ping_pong, ping_pong_once }///
+;
 
 private:
+  ///
   int s;
+  ///
   int count;
+  ///
   int add;
+  ///
   CounterType type;
 
 public:
+  ///
   Counter(int s);
+  ///
   Counter();
+  ///
   Counter(const Counter&);
+  ///
   virtual ~Counter();
 
+  ///
   Counter& operator=(const Counter&);
+  ///
   int  inc();
+  ///
   int  operator++();
+  ///
   int  operator--();
+  ///
   int  operator=(int i);
+  ///
   int  get_value() const;
+  ///
   int  size() const;
+  ///
   int  set_count(int i);
+  ///
   int  set_size(int s);
+  ///
   void set_type(CounterType);
-  operator int() const { return count; };
-};
+  ///
+  operator int() const { return count; }///
+;
+}///
+;
 
 #endif
 

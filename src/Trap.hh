@@ -1,4 +1,4 @@
-//  $Id: Trap.hh,v 1.4 2000/06/06 18:51:51 grumbel Exp $
+//  $Id: Trap.hh,v 1.5 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,29 +31,42 @@
 
 // An abstract class for all trap or moving objects in the pingu word
 // which are not under controll of the player (i.e. fire traps,
-// rolling stones, etc.)
+/// rolling stones, etc.)
 class Trap : public WorldObj
 {
 protected:
+  ///
   CL_Surface* surface;
+  ///
   GameCounter counter;
+  ///
   int x_pos;
+  ///
   int y_pos;
 
+  ///
   static ActionHolder* action_holder;
+  ///
   static ParticleHolder* particle; 
 public:
+  ///
   Trap();
+  ///
   virtual ~Trap();
 
+  ///
   virtual void draw_offset(int x, int y, float s = 1.0);
 
+  ///
   virtual void let_move();
-  virtual bool catch_pingu(Pingu* ); // return true if the pingu was catched
+  ///
+  virtual bool catch_pingu(Pingu* ); /// return true if the pingu was catched
 
   static void SetParticleHolder(ParticleHolder* p);
+  ///
   static void set_action_holder(ActionHolder*);
-};
+}///
+;
 
 #endif
 

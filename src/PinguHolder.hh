@@ -1,4 +1,4 @@
-//  $Id: PinguHolder.hh,v 1.6 2000/04/24 13:15:41 grumbel Exp $
+//  $Id: PinguHolder.hh,v 1.7 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,27 +24,38 @@
 #include "Pingu.hh"
 #include "WorldObj.hh"
 
+///
 typedef std::list<Pingu*>::iterator PinguIter;
 
+///
 class PinguHolder : public std::list<Pingu*>, public WorldObj
 {
 private:
-  // The uniq id for the next Pingu
+  /// The uniq id for the next Pingu
   int id_count;
+  ///
   int total_size_count;
+  ///
   int saved_pingus;
 
-  // A std::list holding all Pingus, the PinguHolder itself has only the
-  // active (not dead) ones  
+  /** A std::list holding all Pingus, the PinguHolder itself has only the
+      active (not dead) ones */
   std::list<Pingu*> pingus;
 public:
+  ///
   PinguHolder();
+  ///
   ~PinguHolder();
+  ///
   void draw_offset(int, int, float s = 1.0);
+  ///
   void push_back(Pingu*);
+  ///
   int  total_size();
+  ///
   int  get_saved() { return saved_pingus; }
-};
+}///
+;
 
 #endif
 

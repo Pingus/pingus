@@ -1,4 +1,4 @@
-//  $Id: Direction.hh,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: Direction.hh,v 1.3 2000/06/18 17:01:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,24 +20,36 @@
 #ifndef DIRECTION_HH
 #define DIRECTION_HH
 
-// Simple class for managing the direction of a pingu
+/// Simple class for managing the direction of a pingu
 class Direction
 {
 private:
+  ///
   int direction;
 public:
+  ///
   Direction();
+  ///
   Direction::Direction(const Direction& dir);
+  ///
   ~Direction();
   
+  ///
   Direction& operator=(const Direction&);
+  ///
   operator int() { return direction; }
+  ///
   void change();
+  ///
   void left();
+  ///
   void right();
+  ///
   bool is_left() const;
+  ///
   bool is_right() const;
-};
+}///
+;
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: GameCounter.hh,v 1.4 2000/03/01 22:37:11 grumbel Exp $
+//  $Id: GameCounter.hh,v 1.5 2000/06/18 17:01:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,36 +22,61 @@
 
 #include "GameTime.hh"
 
+///
 class GameCounter
 {
 public:
-  enum CounterType { loop, once, ping_pong };
+  ///
+  enum CounterType { loop, once, ping_pong }///
+;
 private:
+  ///
   int last_time;
+  ///
   double count;
+  ///
   double add;
+  ///
   double size;
+  ///
   bool is_finished;
+  ///
   CounterType type;
 
+  ///
   void check_overflow(void);
 public:
+  ///
   GameCounter();
+  ///
   ~GameCounter();
 
+  ///
   void set_type(CounterType t);
+  ///
   void set_size(int);
+  ///
   int  get_size();
+  ///
   bool finished();
+  ///
   void set_speed(double i);
+  ///
   int  value();
+  ///
   bool enough_time_passed();
+  ///
   int  operator++();
+  ///
   int  operator++(int);
+  ///
   int  operator--();
+  ///
   int  operator=(int i);
+  ///
   operator int ();
-};
+}///
+;
 
 #endif
 

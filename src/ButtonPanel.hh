@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.hh,v 1.4 2000/04/24 13:15:40 grumbel Exp $
+//  $Id: ButtonPanel.hh,v 1.5 2000/06/18 17:01:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,47 +30,73 @@
 #include "TrueServer.hh"
 #include "Client.hh"
 
+///
 class Client;
 
 class ButtonPanel : public GuiObj
 {
 private:
+  ///
   friend class ClientEvent;
+  ///
   std::vector<ActionButton*> a_buttons;
+  ///
   typedef std::vector<ActionButton*>::iterator AButtonIter;
+  ///
   ActionButton*     pressed_button;
 
+  ///
   ArmageddonButton* armageddon;
+  ///
   ForwardButton*    forward;
+  ///
   PauseButton*      pause;
 
+  ///
   Server* server;
+  ///
   Client* client;
+  ///
   int  armageddon_pressed;
+  ///
   AnimCounter arma_counter;
 
+  ///
   bool left_pressed;
+  ///
   unsigned int  last_press;
-  //  static CL_ResourceManager* resource;
+  ///  static CL_ResourceManager* resource;
   static CL_Surface* button_cap;
+  ///
   static CL_Surface* button_cap_pers;
-  //  static CL_Font*    font;
+  ///  static CL_Font*    font;
   World* world;
   
 public:
+  ///
   ButtonPanel(PLF* plf);
+  ///
   ~ButtonPanel();
 
+  ///
   bool on_button_press(const CL_Key& key);
+  ///
   bool on_button_release(const CL_Key& key);
 
+  ///
   std::string get_action_name();
+  ///
   void   let_move();
+  ///
   void   draw();
+  ///
   void   set_server(Server*);
+  ///
   void   set_client(Client*);
+  ///
   void   set_button(int);
-};
+}///
+;
 
 #endif
 

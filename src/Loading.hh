@@ -1,4 +1,4 @@
-//  $Id: Loading.hh,v 1.3 2000/04/24 13:15:41 grumbel Exp $
+//  $Id: Loading.hh,v 1.4 2000/06/18 17:01:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,21 +22,32 @@
 
 #include <ClanLib/core.h>
 
+///
 class Loading
 {
 private:
+  ///
   CL_Surface* sur;
+  ///
   CL_Font*    font;
+  ///
   bool is_init;
 
 public:
+  ///
   Loading();
+  ///
   ~Loading();
+  ///
   void init();
+  ///
   void draw();
+  ///
   void draw_progress(std::string, float);
-};
+}///
+;
 
+///
 extern Loading loading_screen;
 
 #endif

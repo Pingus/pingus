@@ -1,4 +1,4 @@
-//  $Id: FVec.hh,v 1.3 2000/04/24 13:15:41 grumbel Exp $
+//  $Id: FVec.hh,v 1.4 2000/06/18 17:01:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,77 +25,86 @@
 #include <vector>
 #include <ClanLib/core.h>
 
-// Gravity
+/// Gravity
 extern CL_Vector grav;
 
+///
 class GravityForce {
 protected:
-  // The force vector
+  /// The force vector
   CL_Vector ifv; 
   
 public:
+  ///
   GravityForce(CL_Vector fv){
     ifv = fv;
   }
   
   // Applies the force to a velocity vector, v, a position p and
   // returns the new velicty vector. Just adds fv to v, p is ignored
-  // as gravity is universal.
+  /// as gravity is universal.
   CL_Vector apply_forces(CL_Vector p,CL_Vector v){
     return v + ifv;
   }
-};
+}///
+;
 
-// The ExplosionForce class.
+/// The ExplosionForce class.
 class ExplosionForce {
 protected:
-  // The intensity
+  /// The intensity
   float iinten;
   
-  // The size
+  /// The size
   float isize;
 
-  // The position
+  /// The position
   CL_Vector ip;
 
 public:
+  ///
   ExplosionForce(float inten, float size,CL_Vector p){
     iinten = inten;
     isize = size;
     ip = p;
   }
 
+  ///
   CL_Vector apply_forces(CL_Vector p,CL_Vector v);
-};
+}///
+;
 
-// The force holder
+/// The force holder
 class ForcesHolder {
 public:
-  // The gravity force array
+  /// The gravity force array
   static std::vector<GravityForce> grav_array;
+  ///
   typedef std::vector<GravityForce>::iterator GForceIter;
   
-  // The explosion force array
+  /// The explosion force array
   static std::vector<ExplosionForce> explo_array;
+  ///
   typedef std::vector<ExplosionForce>::iterator EForceIter;
 
 public:
   
-  // Add a gravity force
+  /// Add a gravity force
   static void add_force(const GravityForce& f);
 
-  // Add a explosion force
+  /// Add a explosion force
   static void add_force(const ExplosionForce& f);
 
-  // Clear all forces
+  /// Clear all forces
   static void clear_explo_list();
 
-  // Clear all forces
+  /// Clear all forces
   static void clear_all_forces();
 
-  // Apply forces
+  /// Apply forces
   static CL_Vector apply_forces(CL_Vector p,CL_Vector v);
-};
+}///
+;
 
 #endif /* FVEC_HH */
 

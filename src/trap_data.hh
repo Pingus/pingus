@@ -1,4 +1,4 @@
-// $Id: trap_data.hh,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+// $Id: trap_data.hh,v 1.3 2000/06/18 17:01:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,17 +22,26 @@
 
 #include <string>
 
+///
 struct trap_data
 {
+  ///
   std::string name;
+  ///
   int  x_pos;
+  ///
   int  y_pos;
+  ///
   int  x_target;
+  ///
   int  y_target;
+  ///
   int  z_pos;  
 
+  ///
   void clean();
-};
+}///
+;
 
 
 #endif

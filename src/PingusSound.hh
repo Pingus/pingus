@@ -1,4 +1,4 @@
-//  $Id: PingusSound.hh,v 1.9 2000/04/29 13:13:26 grumbel Exp $
+//  $Id: PingusSound.hh,v 1.10 2000/06/18 17:01:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,20 +23,29 @@
 #include "audio.hh"
 #include <string>
 
+///
 class PingusSound
 {
 private:
+  ///
   static bool is_init;
+  ///
   static int audio_open;
+  ///
   static Mix_Music *music;
 
+  ///
   static void init(int audio_rate, Uint16 audio_format,
 		   int audio_channels, int audio_buffers);
 public:
+  ///
   static void play_mod(std::string);
+  ///
   static void play_wav(std::string);
+  ///
   static void clean_up();
-};
+}///
+;
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: Panel.hh,v 1.3 2000/04/24 13:15:43 grumbel Exp $
+//  $Id: Panel.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,45 +25,72 @@
 
 #include "EditorEvent.hh"
 
+///
 class EditorEvent;
 
 class PanelIcon
 {
 protected:
+  ///
   CL_Surface* sur;
+  ///
   CL_Surface* button;
+  ///
   CL_Surface* button_pressed;
 public:
+  ///
   static EditorEvent* event;
 
+  ///
   PanelIcon();
+  ///
   virtual ~PanelIcon();
+  ///
   void start();
+  ///
   void put_screen(int x, int y);
+  ///
   virtual void on_click();
-};
+}///
+;
 
+///
 class Panel
 {
 private:
+  ///
   bool is_init;
+  ///
   std::vector<PanelIcon*> buttons;
+  ///
   std::vector<PanelIcon*>::iterator pressed_button;
+  ///
   EditorEvent* event;
+  ///
   CL_Surface* background;
+  ///
   CL_Surface* logo;
 
 public:
+  ///
   Panel();
+  ///
   ~Panel();
 
+  ///
   void draw();
+  ///
   void init();
+  ///
   void on_click();
+  ///
   void on_release();
+  ///
   bool mouse_over(int x, int y);
+  ///
   void set_event(EditorEvent* e);
-};
+}///
+;
 
 #endif
 

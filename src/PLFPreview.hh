@@ -1,4 +1,4 @@
-//  $Id: PLFPreview.hh,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PLFPreview.hh,v 1.3 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,19 +25,26 @@
 
 #include "PLF.hh"
 
-// A class to load and manage a small level preview surface
+/// A class to load and manage a small level preview surface
 class PLFPreview
 {
 private:
+  ///
   CL_Surface* surface;
+  ///
   CL_Canvas* provider;
+  ///
   PLF* plf;
 public:
+  ///
   PLFPreview(PLF*);
+  ///
   void load(PLF* p = 0);
+  ///
   CL_Surface* get_surface();
   
-};
+}///
+;
 
 #endif
 

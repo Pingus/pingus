@@ -1,4 +1,4 @@
-//  $Id: ColMap.hh,v 1.5 2000/05/03 16:49:44 grumbel Exp $
+//  $Id: ColMap.hh,v 1.6 2000/06/18 17:01:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,15 +26,28 @@
 #include "ResDescriptor.hh"
 #include "PSMParser.hh"
 
+// Collsion Map
+/** The collision map is used to represent the enviroment where the
+    Pingus walk around. The ground can have different properties, it
+    can contain lava or water, it can be solid and many more. */
 class ColMap
 {
 private:
+  /// A array of uchar, each uchar represents a pixel on the map.
   unsigned char* colmap;
+
+  /// The width of the collision map.
   int    width;
+
+  /// The height of the collision map.
   int   height;
+
+  ///
   bool    init;
   
 public:
+  /** Each pixel contains of bit vector...
+   */
   enum PixelStatus { 
 	 NOTHING     = 0,
 	 WALL        = 1<<0,
@@ -43,28 +56,54 @@ public:
 	 SOLID       = 1<<3,
 	 WATER       = 1<<4,
 	 LAVA        = 1<<5
-  };
+  }///
+;
 
+  /// Default constructor, it does nothing
   ColMap();
+
+  /** Init the colmap from a given area of memory.
+      The memory will be deleted in the destructor. */
   ColMap(unsigned char* b, int w, int h);
+
+  /** delete[] the uchar array used for the colmap */
   ~ColMap();
 
+  /** Returns the raw uchar array used for the inner representation of
+      the colmap. */
   unsigned char* get_data();
+
+  /// Returns the height of the collision map.
   int get_height();
+
+  /// Returns the height of the collision map.
   int get_width();
 
+  ///
   int  load(unsigned char*, int w, int h);
+
+  ///
   int  load(ResDescriptor desc);
+
+  ///
   int  getpixel(int x, int y);
 
+  ///
   void put(int x, int y, PixelStatus p = WALL);
+
+  ///
   void put(CL_Surface*, int x, int y, surface_data::Type = surface_data::GROUND);
+
+  ///
   void put(CL_SurfaceProvider*, int x, int y, surface_data::Type = surface_data::GROUND);
 
-  // void remove(int x, int y);
+  /// void remove(int x, int y);
   void remove(CL_Surface*, int x, int y);
+
+  ///
   void remove(CL_SurfaceProvider*, int x, int y);
 
+  ///
   void draw(int, int, float);
 };
 

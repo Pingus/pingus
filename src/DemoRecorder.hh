@@ -1,4 +1,4 @@
-//  $Id: DemoRecorder.hh,v 1.1 2000/06/08 19:57:06 grumbel Exp $
+//  $Id: DemoRecorder.hh,v 1.2 2000/06/18 17:01:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,21 +23,31 @@
 #include <fstream>
 #include <string>
 
+///
 class DemoRecorder
 {
 private:
+  ///
   std::ofstream out;
+  ///
   std::string   filename;
+  ///
   bool     is_recording;
 
+  ///
   std::string get_date();
 public:
+  ///
   DemoRecorder();
+  ///
   ~DemoRecorder();
 
+  ///
   void queue_event(const string&);
+  ///
   void set_levelname(const string&);
-};
+}///
+;
 
 #endif
 

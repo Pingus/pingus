@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.hh,v 1.4 2000/04/24 13:15:42 grumbel Exp $
+//  $Id: ObjectManager.hh,v 1.5 2000/06/18 17:01:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,73 +22,117 @@
 
 #include "EditorObj.hh"
 
-// Manager for all level objects.
+/// Manager for all level objects.
 class ObjectManager
 {
 private:
+  ///
   friend class EditorEvent;
+  ///
   friend class Editor;
   
-  // Other Level data
+  /// Other Level data
   std::string description;
+  ///
   std::string levelname;
+  ///
   std::vector<button_data> actions;
+  ///
   background_data background;
+  ///
   int    number_to_save;
+  ///
   int    number_of_pingus;
+  ///
   int    level_time;
+  ///
   int    height;
+  ///
   int    width;
+  ///
   int    start_x_pos;
+  ///
   int    start_y_pos;
+  ///
   bool   quit;
 
+  ///
   std::list<EditorObj*> editor_objs;
+  ///
   std::list<EditorObj*> current_objs;
 
+  ///
   int x_offset;
+  ///
   int y_offset;
+  ///
   int move_offset;
 
+  ///
   struct { 
+    ///
     float r;
+    ///
     float g;
+    ///
     float b; 
-  } bg;
+  } ///
+ bg;
   
 public:
+  ///
   typedef std::list<EditorObj*>::iterator EditorObjIter;
+  ///
   typedef std::list<EditorObj*>::reverse_iterator EditorObjRIter;
+  ///
   typedef std::list<EditorObj*>::iterator CurrentObjIter;
 
+  ///
   ObjectManager();
+  ///
   ~ObjectManager();
 
-  // Create a new level
+  /// Create a new level
   void new_level ();
+  ///
   void load_level (std::string filename);
-  // Save the current level
+  /// Save the current level
   void save_level (std::string filename);
 
+  ///
   void draw();
   
+  ///
   bool object_selected(EditorObj* c_obj);
+  ///
   void move_obj();
+  ///
   void delete_selection();
+  ///
   void rect_get_current_objs(int x1, int y1, int x2, int y2);
 
+  ///
   void move_current_objs(int x, int y);
+  ///
   void add_to_selection(EditorObj* obj);
+  ///
   void add_to_selection(std::list<EditorObj*> objs);
 
+  ///
   bool raise_obj(EditorObj* obj);
+  ///
   void raise_current_objs();
+  ///
   bool lower_obj(EditorObj* obj);
+  ///
   void lower_current_objs();
 
+  ///
   void unselect_object(EditorObj* c_obj);
+  ///
   EditorObj* select_object(int x, int y);
-};
+}///
+;
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: PanelIcons.hh,v 1.2 2000/02/09 21:43:43 grumbel Exp $
+//  $Id: PanelIcons.hh,v 1.3 2000/06/18 17:01:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,82 +22,126 @@
 
 #include "Panel.hh"
 
+///
 class PanelIconNew : public PanelIcon
 {
 public:
+  ///
   PanelIconNew();
+  ///
   virtual void on_click();
-};
+}///
+;
 
+///
 class PanelIconLoad : public PanelIcon
 {
 public:
+  ///
   PanelIconLoad();
+  ///
   virtual void on_click();
-};
+}///
+;
 
+///
 class PanelIconSave : public PanelIcon
 {
 public:
+  ///
   PanelIconSave();
+  ///
   virtual void on_click();
-};
+}///
+;
 
+///
 class PanelIconCopy : public PanelIcon
 {
 public:
+  ///
   PanelIconCopy();
+  ///
   virtual void on_click();
-};
+}///
+;
 
+///
 class PanelIconPaste : public PanelIcon
 {
 public:
+  ///
   PanelIconPaste();
+  ///
   virtual void on_click();
-};
+}///
+;
 
+///
 class PanelIconEdit : public PanelIcon
 {
 public:
+  ///
   PanelIconEdit();
+  ///
   virtual void on_click();
-};
+}///
+;
 
+///
 class PanelIconPreferences : public PanelIcon
 {
 public:
+  ///
   PanelIconPreferences();
+  ///
   virtual void on_click();
-};
+}///
+;
 
+///
 class PanelIconDelete : public PanelIcon
 {
 public:
+  ///
   PanelIconDelete();
+  ///
   virtual void on_click();
-};
+}///
+;
 
+///
 class PanelIconExit : public PanelIcon
 {
 public:
+  ///
   PanelIconExit();
+  ///
   virtual void on_click();
-};
+}///
+;
 
+///
 class PanelIconRun : public PanelIcon
 {
 public:
+  ///
   PanelIconRun();
+  ///
   virtual void on_click();
-};
+}///
+;
 
+///
 class PanelIconInsertObject : public PanelIcon
 {
 public:
+  ///
   PanelIconInsertObject();
+  ///
   virtual void on_click();
-};
+}///
+;
 
 #endif
 

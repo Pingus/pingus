@@ -1,4 +1,4 @@
-//  $Id: AnimCounter.hh,v 1.3 2000/06/12 14:42:10 grumbel Exp $
+//  $Id: AnimCounter.hh,v 1.4 2000/06/18 17:01:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,25 +27,33 @@
 // AnimCounter is an inherit class from Counter, it act like a normal
 // counter, but it only increase its counter if a specific amount of
 // time is passed. The AnimCounter is mostly used in the sprite
-// animation, to keep them at a constant speed.
+/// animation, to keep them at a constant speed.
 class AnimCounter : public Counter
 {
 private:
+  ///
   bool enough_time_passed(void) const;
+  ///
   int last_time;
+  ///
   unsigned int speed;
 public:
+  ///
   AnimCounter(int s);
+  ///
   AnimCounter();
+  ///
   int operator=(int i);
+  ///
   int operator++();
 
-  // Set the number of miliseconds between a count increase
+  /// Set the number of miliseconds between a count increase
   void set_speed(int s);
 
-  // Returs the speed which is used for this counter
+  /// Returs the speed which is used for this counter
   int  get_speed() const;
-};
+}///
+;
 
 #endif
 

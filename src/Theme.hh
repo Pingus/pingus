@@ -1,4 +1,4 @@
-//  $Id: Theme.hh,v 1.5 2000/05/27 23:11:21 grumbel Exp $
+//  $Id: Theme.hh,v 1.6 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,35 +28,59 @@
 #include "MultiLineText.hh"
 #include "PLTParser.hh"
 
+///
 class Theme
 {
 private:
+  ///
   PLTParser plt;
+  ///
   CL_Surface* surface;
+  ///
   CL_Surface* background;
+  ///
   CL_Font*    font;
+  ///
   CL_Font*    title;
+  ///
   int      accessible_levels;
+  ///
   int      current_level;
+  ///
   std::vector<std::string> levels;
+  ///
   std::vector<std::string> levelnames;
+  ///
   std::string   status_file;
 
+  ///
   bool has_description;
+  ///
   MultiLineText description;
 public:
+  ///
   Theme();
+  ///
   Theme(std::string);
+  ///
   ~Theme();
   
+  ///
   void next_level();
+  ///
   void previous_level();
+  ///
   void load(std::string);
+  ///
   void load_status(std::string);
+  ///
   void load_levels();
+  ///
   void draw_title();
+  ///
   void play();
-};
+}///
+;
 
 #endif
 

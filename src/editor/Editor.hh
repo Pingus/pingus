@@ -1,4 +1,4 @@
-//  $Id: Editor.hh,v 1.4 2000/02/12 20:53:45 grumbel Exp $
+//  $Id: Editor.hh,v 1.5 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,66 +32,81 @@
 #include "ObjectManager.hh"
 #include "Panel.hh"
 
+///
 class EditorEvent;
 class Panel;
 
 class Editor
 {
 private:
+  ///
   EditorEvent* event;
+  ///
   friend class EditorEvent;
   
+  ///
   int event_handler_ref_counter;
 
+  ///
   CL_Font* font;
+  ///
   bool quit;
 
+  ///
   int move_x;
+  ///
   int move_y;
+  ///
   std::string checkpoint;
+  ///
   std::string last_level;
+  ///
   bool always_animate;
 
+  ///
   Panel*  panel;
+  ///
   ObjectManager object_manager;
+  ///
   StatusLine status_line;
+  ///
   ObjectSelector object_selector;
   
 public:
+  ///
   Editor ();
+  ///
   ~Editor ();
 
+  ///
   std::string read_string (std::string prefix = "", std::string default_str = "");
+  ///
   void edit ();
-  //  EditorObj* get_current_obj();
+  ///  EditorObj* get_current_obj();
   void draw ();
+  ///
   void draw_noflip();
+  ///
   void interactive_move_object();
+  ///
   void move_objects();
-  //  bool object_selected(EditorObj* c_obj);
+
+  ///
   void rect_get_current_objs();
-  //  void delete_selection();
-  //  void unmark(EditorObj* c_obj);
+
+  ///
   bool mouse_moved();
+
+  ///
   void scroll();
 
+  ///
   void register_event_handler();
+  ///
   void unregister_event_handler();
 
-  /*
-  bool raise_obj(EditorObj*);
-  bool lower_obj(EditorObj*);
-
-  void raise_current_objs();
-  void lower_current_objs();
-  */
+  ///
   std::string save_tmp_level ();
-  /*  void   save_level (string);
-  void   save_plf (string);
-  void   save_psm (string);
-
-  void load_level ();*/
-  //  void interactive_load();
 };
 
 #endif

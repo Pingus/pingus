@@ -1,4 +1,4 @@
-//  $Id: TimeDisplay.hh,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: TimeDisplay.hh,v 1.3 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,19 +23,28 @@
 #include "GuiObj.hh"
 #include "Server.hh"
 
+///
 class TimeDisplay : public GuiObj
 {
 private:
+  ///
   Server*  server;
+  ///
   CL_Font* font;
+  ///
   char time_string[256];
+  ///
   int  time_value;
 public:
+  ///
   TimeDisplay();
 
+  ///
   void draw();
+  ///
   void set_server(Server*);
-};
+}///
+;
 
 #endif
 

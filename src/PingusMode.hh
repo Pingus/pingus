@@ -1,4 +1,4 @@
-//  $Id: PingusMode.hh,v 1.1 2000/02/04 23:45:18 mbn Exp $
+//  $Id: PingusMode.hh,v 1.2 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,13 +20,15 @@
 #ifndef PINGUSMODE_HH
 #define PINGUSMODE_HH
 
+///
 class PingusMode
 {
 private:
   
 public:
   
-};
+}///
+;
 
 #endif
 

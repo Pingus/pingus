@@ -1,4 +1,4 @@
-//  $Id: globals.hh,v 1.14 2000/06/17 11:46:22 grumbel Exp $
+//  $Id: globals.hh,v 1.15 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,39 +23,38 @@
 #include <string>
 #include <config.h>
 
-// This file defines some global variables, most of them are used to
-// keep the values of command line arguments.
-
-extern int    game_speed;        // -t, --set-speed
-extern bool   print_fps;         // --print-fps
-extern int    verbose;           // -v, --verbose
-extern bool   music_enabled;     // -m, --enable-music
-extern bool   sound_enabled;     // -s, --enable-sound
-extern std::string pingus_datadir;    // -p, --datadir
-extern bool   gimmicks_enabled;  // -i, --enable-gimmicks
-extern bool   intro_disabled;    // -n, --disable-intro
-extern bool   record_demo;       // --record-demo
-extern bool   play_demo;         // --play-demo
-extern bool   cursor_enabled;    // --enable-cursor
-extern bool   debug_actions;     // --debug-actions
-extern bool   fs_preload;        // --fs-preload
-extern bool   fast_mode;         // --fast
-extern bool   previews_enabled;  // --disable-previews
-extern bool   unlimited_actions; // --enable-uactions
-extern bool   quick_play;        // -q, --quick_play
-extern bool   maintainer_mode;   // --maintainer-mode
-extern bool   horizontal_button_panel; 
-extern bool   start_editor;     
-extern std::string demo_file;
-extern bool   auto_scrolling;    // --enable-auto-scrolling
-extern int    tile_size;         // --tile-size  
-extern bool   fullscreen_enabled;        // --enable-fullscreen
-extern int    screen_width;
-extern int    screen_height;
-extern bool   preload_data;
-extern bool   draw_collision_map;
-extern bool   debug_tiles;
-extern bool   swcursor_enabled; // --enable-swcursor
+/** This file defines some global variables, most of them are used to
+    keep the values of command line arguments. */
+extern int    game_speed;        /// -t, --set-speed
+extern bool   print_fps;         /// --print-fps
+extern int    verbose;           /// -v, --verbose
+extern bool   music_enabled;     /// -m, --enable-music
+extern bool   sound_enabled;     /// -s, --enable-sound
+extern std::string pingus_datadir;    /// -p, --datadir
+extern bool   gimmicks_enabled;  /// -i, --enable-gimmicks
+extern bool   intro_disabled;    /// -n, --disable-intro
+extern bool   record_demo;       /// --record-demo
+extern bool   play_demo;         /// --play-demo
+extern bool   cursor_enabled;    /// --enable-cursor
+extern bool   debug_actions;     /// --debug-actions
+extern bool   fs_preload;        /// --fs-preload
+extern bool   fast_mode;         /// --fast
+extern bool   previews_enabled;  /// --disable-previews
+extern bool   unlimited_actions; /// --enable-uactions
+extern bool   quick_play;        /// -q, --quick_play
+extern bool   maintainer_mode;   /// --maintainer-mode
+extern bool   horizontal_button_panel; ///
+extern bool   start_editor;   ///
+extern std::string demo_file; ///
+extern bool   auto_scrolling;    /// --enable-auto-scrolling
+extern int    tile_size;         /// --tile-size  
+extern bool   fullscreen_enabled;        /// --enable-fullscreen
+extern int    screen_width; ///
+extern int    screen_height; ///
+extern bool   preload_data; ///
+extern bool   draw_collision_map; ///
+extern bool   debug_tiles; ///
+extern bool   swcursor_enabled; /// --enable-swcursor
 extern std::string config_file;  // --config-file
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: Liquid.hh,v 1.3 2000/04/10 21:17:07 grumbel Exp $
+//  $Id: Liquid.hh,v 1.4 2000/06/18 17:01:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,24 +25,37 @@
 #include "WorldObj.hh"
 #include "liquid_data.hh"
 
+///
 class Liquid : public WorldObj
 {
 private:
+  ///
   CL_Surface* sur;
+  ///
   int x_pos;
+  ///
   int y_pos;
+  ///
   int width;
+  ///
   int speed;
+  ///
   AnimCounter counter;
 public:
+  ///
   CL_Surface* colmap_sur;
 
+  ///
   Liquid(liquid_data);
+  ///
   ~Liquid();
 
+  ///
   void draw_colmap(ColMap* colmap);
+  ///
   void draw_offset(int, int, float s = 1.0);
-};
+}///
+;
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: TrueServer.hh,v 1.4 2000/06/08 20:05:35 grumbel Exp $
+//  $Id: TrueServer.hh,v 1.5 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,31 +22,49 @@
 
 #include "Server.hh"
 
+///
 class TrueServer : public Server
 {
 private:
+  ///
   bool fast_forward;
+  ///
   bool pause;
+  ///
   unsigned int  last_time;
+  ///
   int  local_game_speed;
+  ///
   bool client_needs_redraw;
 
 public:
+  ///
   TrueServer(PLF* level_data);
+  ///
   TrueServer();
+  ///
   virtual ~TrueServer();
 
+  ///
   void start(PLF* level_data);
+  ///
   bool enough_time_passed(void);
+  ///
   void let_move(void);
+  ///
   bool needs_redraw();
 
+  ///
   void set_fast_forward(bool value);
+  ///
   bool get_fast_forward();
   
+  ///
   void set_pause(bool);
+  ///
   bool get_pause();
-};
+}///
+;
 
 #endif
 

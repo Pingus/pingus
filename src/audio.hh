@@ -1,4 +1,4 @@
-//  $Id: audio.hh,v 1.3 2000/05/01 20:11:15 grumbel Exp $
+//  $Id: audio.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,8 +29,11 @@
 #  include <SDL/SDL.h>
 #  include <SDL/SDL_mixer.h>
 #else 
+///
 typedef unsigned short Uint16;
+///
 typedef void* Mix_Music;
+///
 typedef void* Mix_Chunk;
 
 /* Audio format flags (defaults to LSB byte order) */
@@ -44,10 +47,13 @@ typedef void* Mix_Chunk;
 #define AUDIO_S16	AUDIO_S16LSB
 #endif
 
-// Sound data
+/// Sound data
 extern Uint16 pingus_audio_format;
+///
 extern int    pingus_audio_rate;
+///
 extern int    pingus_audio_channels;
+///
 extern int    pingus_audio_buffers;
 
 #endif

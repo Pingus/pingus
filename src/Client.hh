@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.13 2000/06/11 15:23:29 grumbel Exp $
+//  $Id: Client.hh,v 1.14 2000/06/18 17:01:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,7 @@
 #include "DemoPlayer.hh"
 #include "SmallMap.hh"
 
+///
 class ClientEvent;
 class Playfield;
 class ButtonPanel;
@@ -41,63 +42,107 @@ class PingusCounter;
 class Client
 {
 private:
+  ///
   friend ClientEvent;
+  ///
   ClientEvent* event;
 
+  ///
   PLF* plf;
+  ///
   Result result;
+  ///
   Server* server;
+  ///
   PingusGameMode       mode;
+  ///
   bool fast_forward;
+  ///
   bool pause;
+  ///
   int  skip_frame;
+  ///
   int  current_fps;
+  ///
   bool do_replay;
+  ///
   bool is_finished;
+  ///
   DemoPlayer* player;
 
+  ///
   std::vector<GuiObj* > obj;
 
+  ///
   static bool gui_is_init;
+  ///
   static ButtonPanel*   button_panel;
+  ///
   static PingusCounter* pcounter;
+  ///
   static Playfield*     playfield;
+  ///
   static TimeDisplay*   time_display;
+  ///
   static SmallMap*      small_map;
 
 public:
+  ///
   Client(Server* s);
+  ///
   virtual ~Client();
 
+  ///
   Server*    get_server() { return server; }
+  ///
   Playfield* get_playfield() { return playfield; }
 
+  ///
   void start(std::string filename, PingusGameMode m = (PingusGameMode)INTERACTIVE_MODE);
+  ///
   void start(std::string plf_filename, std::string psm_filename);
+  ///
   void start(DemoPlayer*);
 
+  ///
   void send_next_event();
 
+  ///
   void play_level(std::string plf_filename, std::string psm_filename = "");
 
+  ///
   void init_display();
+  ///
   void deinit_display();
+  ///
   void resize_display();
 
+  ///
   void set_fast_forward(bool value);
+  ///
   bool get_fast_forward();
 
+  ///
   bool get_pause();
+  ///
   void set_pause(bool value);
 
+  ///
   void count_fps();
+  ///
   int  get_fps();
+  ///
   bool replay();
+  ///
   void do_restart();
+  ///
   bool finished();
+  ///
   void set_finished();
+  ///
   Result get_result();
-};
+}///
+;
 
 #endif
 

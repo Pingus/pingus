@@ -1,4 +1,4 @@
-//  $Id: PinguMap.hh,v 1.4 2000/06/11 15:23:29 grumbel Exp $
+//  $Id: PinguMap.hh,v 1.5 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,25 +25,43 @@
 #include "WorldObj.hh"
 #include "ColMap.hh"
 
-enum MapType { BMP, SPOT, RANDOM, UNDEF };
+/** The type of the map, currently we have a random, a bitmap and a
+    spot map, the only map, which is currently supported is the spot
+    map. */
+enum MapType { BMP, SPOT, RANDOM, UNDEF }///
+;
 
+///
 class PinguMap
 {
 private:
 public:
+  ///
   PinguMap();
+  ///
   virtual ~PinguMap();
+  ///
   virtual void draw(int x1, int y1, int w, int h,
 		    int x_of, int y_of, float s=1.0) = 0;
+  ///
   virtual void mark_dirty(int,int,int,int);
+  ///
   virtual ColMap *get_colmap();
+  ///
   virtual int  get_width() = 0;
+  ///
   virtual int  get_height() = 0;
-  virtual void remove(int, int) {};
+  ///
+  virtual void remove(int, int) {}///
+;
+  ///
   virtual void remove(CL_SurfaceProvider*, int, int);
+  ///
   virtual void remove(CL_Surface*, int, int);
+  ///
   virtual void put(CL_SurfaceProvider*, int, int);
-};
+}///
+;
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: PinguBmpMap.hh,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PinguBmpMap.hh,v 1.3 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,21 +25,33 @@
 #include "PinguMap.hh"
 #include "ColMap.hh"
 
+///
 class PinguBmpMap : public PinguMap {
 private:
+  ///
   CL_Surface* surface;
+  ///
   ColMap*     colmap;
 public:
+  ///
   PinguBmpMap();
+  ///
   PinguBmpMap(ResDescriptor fg);
+  ///
   virtual ~PinguBmpMap();
 
+  ///
   void draw_offset(int x, int y, float s=1.0);
+  ///
   int  get_width(void);
+  ///
   int  get_height(void);
+  ///
   ColMap* get_colmap(void);
+  ///
   CL_Surface* get_surface(void);
-};
+}///
+;
 
 #endif
 

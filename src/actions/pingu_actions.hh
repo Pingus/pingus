@@ -1,4 +1,4 @@
-//  $Id: pingu_actions.hh,v 1.2 2000/02/11 16:58:27 grumbel Exp $
+//  $Id: pingu_actions.hh,v 1.3 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,9 +26,10 @@
 
 // List all header for PinguActions which can be set over a button,
 // actions which are only killing actions, don't need to be listend
-// here. 
+/// here. 
 
 void register_actions();
+///
 PinguAction* makePinguAction(std::string action_name);
 
 #endif

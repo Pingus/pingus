@@ -1,4 +1,4 @@
-//  $Id: GameObj.hh,v 1.1 2000/02/04 23:45:18 mbn Exp $
+//  $Id: GameObj.hh,v 1.2 2000/06/18 17:01:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,18 +23,21 @@
 #include <ClanLib/clanlayer2.h>
 
 // Class for most of the objects in the game, it provides and easy way 
-// to load the surfaces from the datafile and avoids global objects.
+/// to load the surfaces from the datafile and avoids global objects.
 class GameObj
 {
 public:
+  ///
   virtual ~GameObj();
   //  static CL_ResourceManager* resource_p;
 
   //static int SetResourceManager( CL_ResourceManager* );
-  //  static CL_ResourceManager* resource();
+  ///  static CL_ResourceManager* resource();
   virtual void let_move();
+  ///
   virtual void draw_offset(int x, int y);
-};
+}///
+;
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: MultiLineText.hh,v 1.1 2000/05/28 16:37:45 grumbel Exp $
+//  $Id: MultiLineText.hh,v 1.2 2000/06/18 17:01:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,23 +24,36 @@
 #include <vector>
 #include <ClanLib/core.h>
 
+///
 class MultiLineText
 {
 private:
+  ///
   CL_Font* font;
+  ///
   std::vector<std::string> text;
+  ///
   int width, height;
 public:
+  ///
   MultiLineText();
 
+  ///
   void set_font(CL_Font*);
+  ///
   void set_text(const std::string&, int width);
+  ///
   void print_left(int, int);
+  ///
   void print_right(int, int);
+  ///
   void print_center(int, int);
+  ///
   int  get_width();
+  ///
   int  get_height();
-};
+}///
+;
 
 #endif
 

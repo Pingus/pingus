@@ -1,4 +1,4 @@
-//  $Id: PSMParser.hh,v 1.8 2000/06/06 18:51:51 grumbel Exp $
+//  $Id: PSMParser.hh,v 1.9 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,54 +28,90 @@
 
 #include "ResDescriptor.hh"
 
+///
 struct surface_data 
 {
+  ///
   CL_Surface* surface;
+  ///
   CL_Resource* resource;
+  ///
   ResDescriptor res_desc;
+  ///
   int x_pos;
+  ///
   int y_pos;
+  ///
   std::string res_name;
+  ///
   std::string name;
+  ///
   std::string type_str; 
-  enum Type { SOLID, TRANSPARENT, GROUND, BRIDGE, WATER, LAVA, NOTHING } type ; 
-};
+  ///
+  enum Type { SOLID, TRANSPARENT, GROUND, BRIDGE, WATER, LAVA, NOTHING } ///
+ type ; 
+}///
+;
 
-struct PSMEOF {};
+///
+struct PSMEOF {}///
+;
 
+///
 struct PSMParseError 
 {
+  ///
   std::string message;
 
+  ///
   PSMParseError(std::string str) { 
     message = str; 
   }
-};
+}///
+;
 
+///
 class PSMParser
 {
 private:
+  ///
   std::vector<surface_data> surface;
+  ///
   bool file_parsed;
+  ///
   std::ifstream in;
+  ///
   int lines;
 
+  ///
   char   get_char(void);
+  ///
   char   get_atom(void);
+  ///
   int    get_int(void);
+  ///
   std::string get_string(void);
+  ///
   ResDescriptor get_resdesc(void);
+  ///
   void   jump_spaces(void);
 
+  ///
   void   expect(char);
 public:
+  ///
   PSMParser();
+  ///
   ~PSMParser();
 
+  ///
   void   load_surfaces(void);
+  ///
   void   parse(std::string filename);
+  ///
   std::vector<surface_data> get_surfaces(void);
-};
+}///
+;
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.hh,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: CaptureRectangle.hh,v 1.3 2000/06/18 17:01:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,27 +22,42 @@
 
 #include <ClanLib/core.h>
 
+///
 class CaptureRectangle
 {
 private:
+  ///
   static Pingu*       pingu; 
+  ///
   static PinguAction* button_action;
   
+  ///
   CL_Surface* good; 
+  ///
   CL_Surface* bad;
+  ///
   CL_Surface* arrow_left;
+  ///
   CL_Surface* arrow_right;
+  ///
   CL_Font* font;
 public:
+  ///
   CaptureRectangle();  
+  ///
   virtual ~CaptureRectangle(); 
   
+  ///
   static void load_data();
+  ///
   static void set_pingu(Pingu* pingu);  
+  ///
   static void set_action(PinguAction*);
 
+  ///
   void draw_offset(int x_offset, int y_offset, float s = 1.0); 
-};
+}///
+;
 
 #endif
 

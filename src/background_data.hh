@@ -1,4 +1,4 @@
-// $Id: background_data.hh,v 1.3 2000/03/16 18:20:19 grumbel Exp $
+// $Id: background_data.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,23 +22,37 @@
 
 #include "ResDescriptor.hh"
 
+///
 struct background_data
 {
+  ///
   ResDescriptor desc;
+  ///
   float para_x;
+  ///
   float para_y;
+  ///
   float scroll_x;
+  ///
   float scroll_y;
+  ///
   float dim;
+  ///
   float red;
+  ///
   float green;
+  ///
   float blue;
 
+  ///
   bool stretch_x;
+  ///
   bool stretch_y;
 
+  ///
   background_data();
-};
+}///
+;
 
 #endif
 

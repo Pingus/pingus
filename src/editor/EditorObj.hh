@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.5 2000/05/22 21:11:13 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.6 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,44 +33,71 @@
 #include "../Trap.hh"
 #include "../PLF.hh"
 
+///
 class EditorObj
 {
 protected:
   
 public:
-  // FIXME: Should be friend
+  /// FIXME: Should be friend
   int x_pos, y_pos, z_pos;
+  ///
   int x_of, y_of;
 
+  ///
   struct {
+    ///
     float r;
+    ///
     float g;
+    ///
     float b;
+    ///
     float a;
-  } mark_color;
+  } ///
+ mark_color;
 
+  ///
   CL_Surface* surf;
+  ///
   ResDescriptor desc;
   
+  ///
   EditorObj();
+  ///
   virtual ~EditorObj();
 
+  ///
   static EditorObj* create(surface_data);
+  ///
   static EditorObj* create(entrance_data);
+  ///
   static EditorObj* create(exit_data);
+  ///
   static EditorObj* create(trap_data);
+  ///
   static EditorObj* create(hotspot_data);
+  ///
   static EditorObj* create(liquid_data);
 
+  ///
   virtual void   draw_offset(int, int);
+  ///
   virtual void   draw_mark_offset(int, int);
+  ///
   virtual bool   mouse_over(int, int);
+  ///
   virtual bool   is_in_rect(int x1, int y1, int x2, int y2);
+  ///
   virtual void   save(std::ofstream* plf, std::ofstream* psm) = 0;
+  ///
   virtual std::string obj_type();
+  ///
   virtual std::string status_line();
+  ///
   virtual EditorObj* duplicate() = 0;
-};
+}///
+;
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: Cloud.hh,v 1.1 2000/02/11 21:22:11 grumbel Exp $
+//  $Id: Cloud.hh,v 1.2 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,15 +23,20 @@
 #include "../GameCounter.hh"
 #include "../Entrance.hh"
 
+///
 class Cloud : public Entrance
 {
 private:
 public:
+  ///
   Cloud(entrance_data);
 
+  ///
   void let_move(void);
+  ///
   void draw_offset(int x, int y, float s = 1.0);
-};
+}///
+;
 
 #endif
 

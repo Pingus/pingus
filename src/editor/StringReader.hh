@@ -1,4 +1,4 @@
-//  $Id: StringReader.hh,v 1.5 2000/04/24 13:15:43 grumbel Exp $
+//  $Id: StringReader.hh,v 1.6 2000/06/18 17:01:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,29 +24,47 @@
 #include <string>
 #include <ClanLib/core.h>
 
+///
 class StringReader
 {
 private:
+  ///
   std::list<std::string>* strings;
+  ///
   std::list<std::string*> completions;
+  ///
   std::string current_string;
+  ///
   std::string default_string;
+  ///
   bool finished;
+  ///
   std::string description;
+  ///
   CL_Font* font;
 
 public:
+  ///
   StringReader();
+  ///
   StringReader(std::string, std::string);
+  ///
   virtual ~StringReader();
 
+  ///
   void   set_strings(std::list<std::string>*);
+  ///
   std::string read_string();
+  ///
   void   draw();
+  ///
   std::string find_uniq();
+  ///
   std::string while_eq(const std::string& a, const std::string& b);
+  ///
   void   complete_string();
-};
+}///
+;
 
 #endif
 

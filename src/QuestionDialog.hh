@@ -1,4 +1,4 @@
-//  $Id: QuestionDialog.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: QuestionDialog.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,19 +25,29 @@
 #include <ClanLib/core.h>
 
 
+///
 class QuestionDialog
 {
 private:
+  ///
   CL_Font* font;
+  ///
   int buttons;
+  ///
   std::string question, button1, button2, button3, button4;
 public:
+  ///
   QuestionDialog(std::string q, std::string b1 = "Yes", std::string b2 = "No", std::string b3 = "", std::string b4="");
+  ///
   int start();
+  ///
   void draw();
+  ///
   void wait_for_mouse();
+  ///
   int  return_value(int i);
-};
+}///
+;
 
 #endif
 

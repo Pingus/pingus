@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.hh,v 1.4 2000/02/16 23:34:11 grumbel Exp $
+//  $Id: EditorEvent.hh,v 1.5 2000/06/18 17:01:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,42 +25,68 @@
 #include "Editor.hh"
 #include "ObjectManager.hh"
 
+///
 class Editor;
 
 class EditorEvent : public CL_Event_ButtonPress, public CL_Event_ButtonRelease
 {
 private:
+  ///
   bool is_enabled;
+  ///
   CL_Font* font;
 public:
+  ///
   EditorEvent();
+  ///
   virtual ~EditorEvent();
 
+  ///
   Editor* editor;
+  ///
   ObjectManager* object_manager;
   
+  ///
   virtual bool on_button_press(CL_InputDevice *device, const CL_Key &key);
+  ///
   virtual bool on_button_release(CL_InputDevice *device, const CL_Key &key);
 
+  ///
   void enable();
+  ///
   void disable();
 
+  ///
   void set_editor(Editor* e);
 
+  ///
   void editor_exit();
+  ///
   void editor_mark_or_move_object();
+  ///
   void editor_mark_all_objects();
+  ///
   void editor_move_object();
+  ///
   void editor_toggle_background_color();
+  ///
   void editor_duplicate_current_selection();
+  ///
   void editor_delete_selected_objects();
+  ///
   void editor_start_current_level();
+  ///
   void editor_save_level_as();
+  ///
   void editor_load_level();
+  ///
   void editor_new_level();
+  ///
   void editor_insert_new_object();
+  ///
   void editor_display_help();
-};
+}///
+;
 
 #endif
 

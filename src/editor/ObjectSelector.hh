@@ -1,4 +1,4 @@
-// $Id: ObjectSelector.hh,v 1.7 2000/05/28 19:30:10 grumbel Exp $
+// $Id: ObjectSelector.hh,v 1.8 2000/06/18 17:01:50 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,31 +28,50 @@
 #include "PSMObj.hh"
 #include "SurfaceSelector.hh"
 
+///
 class ObjectSelector
 {
 private:
+  ///
   CL_Font* font;
+  ///
   int x_offset;
+  ///
   int y_offset;
+  ///
   std::string last_object;
+  ///
   bool data_loaded;
   
 public:
+  ///
   ObjectSelector();
+  ///
   ~ObjectSelector();
   
+  ///
   EditorObj* select_obj_type();
+  ///
   std::string select_surface(std::vector<surface_obj>& sur_list);
+  ///
   int    read_key();
+  ///
   std::string read_string(std::string, std::string);
   
+  ///
   EditorObj* get_obj(int, int);
+  ///
   EditorObj* get_trap();
+  ///
   EditorObj* get_groundpiece(surface_data::Type type);
+  ///
   EditorObj* get_hotspot();
+  ///
   EditorObj* get_entrance();
+  ///
   EditorObj* get_exit();
-};
+}///
+;
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: SnowParticle.hh,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: SnowParticle.hh,v 1.2 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,16 +22,21 @@
 
 #include "Particle.cc"
 
+///
 class SnowParticle : public Particle
 {
 private:
+  ///
   static CL_Surface* snow;
 public:
+  ///
   SnowParticle(int x, int y);
+  ///
   virtual ~SnowParticle();
 
   
-};
+}///
+;
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: Exit.hh,v 1.6 2000/06/07 04:52:56 grumbel Exp $
+//  $Id: Exit.hh,v 1.7 2000/06/18 17:01:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,23 +28,36 @@
 #include "WorldObj.hh"
 #include "ActionHolder.hh"
 
+///
 class Exit : public WorldObj
 {
 private:
+  ///
   CL_Surface* surface;
+  ///
   int x_pos;
+  ///
   int y_pos;
+  ///
   AnimCounter counter;
+  ///
   static ActionHolder* action_holder;
 public:
+  ///
   Exit(int x, int y);
+  ///
   Exit(exit_data data);
 
+  ///
   void draw_colmap(ColMap*);
+  ///
   void draw_offset(int x, int y, float s = 1.0);
+  ///
   bool catch_pingu(Pingu* pingu);
+  ///
   static void set_action_holder(ActionHolder*);
-};
+}///
+;
 
 #endif
 

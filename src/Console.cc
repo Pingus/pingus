@@ -1,4 +1,4 @@
-//  $Id: Console.cc,v 1.10 2000/06/15 19:32:44 grumbel Exp $
+//  $Id: Console.cc,v 1.11 2000/06/18 17:01:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -146,7 +146,7 @@ Console::printf(char* format, ...)
   va_list argp;
 
   va_start(argp, format);
-  vsnprintf(str_buffer, 128, format, argp);
+  vsnprintf(str_buffer, 1024, format, argp);
   va_end(argp);
 
  add_line(str_buffer);

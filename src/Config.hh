@@ -1,4 +1,4 @@
-//  $Id: Config.hh,v 1.2 2000/04/24 13:15:41 grumbel Exp $
+//  $Id: Config.hh,v 1.3 2000/06/18 17:01:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,57 +23,69 @@
 #include <string>
 #include <fstream>
 
+///
 class ConfigParser
 {
 private:
   
-  std::ifstream in;                 // The file to parse
+  ///
+  std::ifstream in;                 /// The file to parse
 
-  char   last_atom;            // The last returned atom
-  int    lineno;               // Current line number
+  char   last_atom;            /// The last returned atom
+  int    lineno;               /// Current line number
   bool   eof;
   //  std::string filename;             // The name of the current file
 
-  // private functions    
-  char   get_char(void);       // Return the next char and to a eof check
-  char   get_atom(void);       // Return the next atom and keep the old one
-  char   get_raw_atom(void);   // Return the next atom (removes all comments)
-  std::string get_valueid(void);    // Return the value identifer
-  std::string get_value(void);      // Return the value
-  void   jump_after(char);     // Jump to the next token, after char
-  void   jump(void);           // Jump over spaces to the next token
-  void   syntax_error(std::string); // Do a clean shutdown on a syntax error
-  void   parse(void);          // Parse the opened file
+  /// private functions    
+  char   get_char(void);       /// Return the next char and to a eof check
+  char   get_atom(void);       /// Return the next atom and keep the old one
+  char   get_raw_atom(void);   /// Return the next atom (removes all comments)
+  std::string get_valueid(void);    /// Return the value identifer
+  std::string get_value(void);      /// Return the value
+  void   jump_after(char);     /// Jump to the next token, after char
+  void   jump(void);           /// Jump over spaces to the next token
+  void   syntax_error(std::string); /// Do a clean shutdown on a syntax error
+  void   parse(void);          /// Parse the opened file
   void   open(std::string);          // Open the file
 
   // Some virtual functions
-  // Put the retrieved value in the correct struct
+  /// Put the retrieved value in the correct struct
   virtual void set_value(std::string valueid,
 			 std::string value) = 0; 
 
 public:
+  ///
   ConfigParser();         
-  ConfigParser(std::string);         // Open the file and parse it
-  virtual ~ConfigParser();      // Close the file
+  ///
+  ConfigParser(std::string);         /// Open the file and parse it
+  virtual ~ConfigParser();      /// Close the file
     
-  void init(std::string);      // Init the PLFParser and start parsing
+  void init(std::string);      /// Init the PLFParser and start parsing
 };
 
+///
 class Config : public ConfigParser
 {
 private:
+  ///
   std::string filename;
 
+  ///
   bool str_to_bool(const std::string&);
+  ///
   int  str_to_int(const std::string&);
   
 public:
+  ///
   Config();
+  ///
   Config(std::string);
 
+  ///
   void set_value(std::string valueid,
 		 std::string value);
-};
+}///
+;
 
 #endif
 

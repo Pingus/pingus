@@ -21,19 +21,27 @@
 #include "../Trap.hh"
 #include "../trap_data.hh"
 
+///
 class Teleport : public Trap
 {
 private:
+  ///
   bool teleporting;
 public:
+  ///
   int x_target, y_target;
 
+  ///
   Teleport(trap_data data);
+  ///
   virtual ~Teleport();
   
+  ///
   void let_move(void);
+  ///
   bool catch_pingu(Pingu*);
-};
+}///
+;
 
 #endif
 

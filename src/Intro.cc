@@ -1,4 +1,4 @@
-//  $Id: Intro.cc,v 1.9 2000/06/12 14:42:10 grumbel Exp $
+//  $Id: Intro.cc,v 1.10 2000/06/18 17:01:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "globals.hh"
 #include "Loading.hh"
 #include "algo.hh"
+#include "Story.hh"
 #include "Intro.hh"
 
 Intro::Intro()
@@ -46,6 +47,8 @@ Intro::draw()
   if (verbose) std::cout << "Intro: adding event handler" << std::endl;
 
   CL_Input::chain_button_release.push_back(event);
+  pingus_story.init();
+  pingus_story.display();
 
   int x_pos = CL_Display::get_width() / 2;
   int y_pos = 0;

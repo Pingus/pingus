@@ -1,4 +1,4 @@
-//  $Id: GuiObj.hh,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: GuiObj.hh,v 1.3 2000/06/18 17:01:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,21 +23,29 @@
 // A GuiObj is an abstract interface for seperate parts of the screen, 
 // the complete screen is representated by a window obtect. A GuiObj
 // must provide a methode to react on input, update the screen and
-// redraw it.
+/// redraw it.
 
 class GuiObj 
 {
 private:
+  ///
   int x1, y1, x2, y2;
 public:
+  ///
   GuiObj();
+  ///
   virtual ~GuiObj();
 
+  ///
   void    set_clip_rect(int, int, int, int);
+  ///
   virtual void draw_clipped();
+  ///
   virtual void draw() = 0;
+  ///
   virtual void let_move();
-};
+}///
+;
 
 #endif
 

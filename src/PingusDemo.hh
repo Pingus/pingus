@@ -1,4 +1,4 @@
-//  $Id: PingusDemo.hh,v 1.4 2000/04/24 13:15:41 grumbel Exp $
+//  $Id: PingusDemo.hh,v 1.5 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,26 +24,41 @@
 #include <fstream>
 #include <string>
 
+///
 struct PingusEvent {
+  ///
   int     game_time;
+  ///
   std::string  str;
-};
+}///
+;
 
-enum PingusDemoMode { play, record };
+///
+enum PingusDemoMode { play, record }///
+;
 
+///
 class PingusDemo
 {
 private:
+  ///
   std::ifstream in;
+  ///
   std::ofstream out;
 public:
+  ///
   PingusDemo();
+  ///
   ~PingusDemo(void);
 
+  ///
   void open(std::string, PingusDemoMode);
+  ///
   PingusEvent get_next_event(void);
+  ///
   void set_next_event(std::string);
-};
+}///
+;
 
 #endif
 

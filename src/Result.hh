@@ -1,4 +1,4 @@
-//  $Id: Result.hh,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: Result.hh,v 1.3 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,16 +20,25 @@
 #ifndef RESULT_HH
 #define RESULT_HH
 
+///
 struct Result
 {
+  ///
   int saved;
+  ///
   int killed;
+  ///
   int total;
+  ///
   int time;
+  ///
   int unknown;
+  ///
   int status;
+  ///
   int needed;
-};
+}///
+;
 
 #endif
 

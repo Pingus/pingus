@@ -20,20 +20,29 @@
 
 #include "../PinguAction.hh"
 
+///
 class Teleported : public PinguAction
 {
 private:
+  ///
   bool particle_thrown;
+  ///
   bool sound_played;
 public:
+  ///
   Teleported();
 
+  ///
   PinguAction* allocate(void);
+  ///
   void   init(void);
+  ///
   void   let_move(void);
 
+  ///
   int x_target, y_target;
-};
+}///
+;
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: fire_hole.hh,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: fire_hole.hh,v 1.2 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,16 +23,22 @@
 #include "../plf_datatypes.hh"
 #include "../Trap.hh"
 
+///
 class FireHole : public Trap
 {
 private:
   
 public:
+  ///
   FireHole(trap_data data);
+  ///
   virtual ~FireHole();
+  ///
   void let_move();
+  ///
   void catch_pingu(Pingu* pingu);
-};
+}///
+;
 
 #endif
 

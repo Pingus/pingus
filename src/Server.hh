@@ -1,4 +1,4 @@
-//  $Id: Server.hh,v 1.6 2000/06/08 20:05:35 grumbel Exp $
+//  $Id: Server.hh,v 1.7 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,51 +26,85 @@
 #include "ActionHolder.hh"
 #include "DemoRecorder.hh"
 
+///
 class PingusEvent {
 public:
+  ///
   PingusEvent();
+  ///
   PingusEvent(std::string);
 
+  ///
   int          game_time;
+  ///
   std::string  str;
-};
+}///
+;
 
+///
 class Server
 {
 protected:
+  ///
   World* world;
+  ///
   ActionHolder action_holder;
+  ///
   bool demo_mode;
+  ///
   std::string demo_file;
+  ///
   bool get_next_event;
+  ///
   DemoRecorder recorder;
+  ///
   bool finished;
 
 public:
+  ///
   Server();
+  ///
   virtual ~Server();
 
+  ///
   virtual bool enough_time_passed() = 0;
+  ///
   virtual void let_move();
-  virtual void start(PLF* level_data) {};
+  ///
+  virtual void start(PLF* level_data) {}///
+;
 
+  ///
   virtual void set_fast_forward(bool) = 0;
+  ///
   virtual bool get_fast_forward() = 0;
 
+  ///
   virtual bool get_pause() = 0;
+  ///
   virtual void set_pause(bool) = 0;
 
+  ///
   virtual bool needs_redraw() = 0;
 
+  ///
   World* get_world();
+  ///
   ActionHolder* get_action_holder();
+  ///
   bool is_finished();
+  ///
   void set_finished();
+  ///
   void process_event(std::string);
+  ///
   void send_event(std::string);
+  ///
   void set_demo(std::string);
+  ///
   void record_demo();
-};
+}///
+;
 
 #endif
 

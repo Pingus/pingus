@@ -1,4 +1,4 @@
-//  $Id: ActionButton.hh,v 1.6 2000/06/11 15:23:29 grumbel Exp $
+//  $Id: ActionButton.hh,v 1.7 2000/06/18 17:01:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,146 +29,205 @@
 #include "Server.hh"
 #include "AnimCounter.hh"
 
-// ----------------- snip --------------------
+/// ----------------- snip --------------------
 class Button
 {
 protected:
+  ///
   int x_pos;
+  ///
   int y_pos;
+  ///
   CL_Surface* surface;
+  ///
   bool pressed;
 public:
+  ///
   Button();
+  ///
   virtual ~Button();
 
+  ///
   virtual void   draw() = 0;
+  ///
   virtual bool   mouse_over() = 0;
-};
+}///
+;
 
-// ----------------- snip --------------------
+/// ----------------- snip --------------------
 
 class EventButton : public Button
 {
 private: 
 public:
+  ///
   EventButton(int x, int y, std::string);
+  ///
   virtual ~EventButton();
   
+  ///
   void   draw();
+  ///
   bool   mouse_over();
-};
+}///
+;
 
-// ----------------- snip --------------------
+/// ----------------- snip --------------------
 
 class ArmageddonButton : public Button
 {
 private:
+  ///
   AnimCounter counter;
+  ///
   Server* server;
+  ///
   friend class ButtonPanel;
 public:
+  ///
   ArmageddonButton(int x, int y);
+  ///
   virtual ~ArmageddonButton();
 
+  ///
   void draw();
+  ///
   bool mouse_over();
-};
+}///
+;
 
-// ----------------- snip --------------------
+/// ----------------- snip --------------------
 
 class ForwardButton : public Button
 {
 private:
+  ///
   Server* server;
+  ///
   friend class ButtonPanel;
 public:
+  ///
   ForwardButton(int x, int y);
+  ///
   virtual ~ForwardButton();
 
+  ///
   void draw();
+  ///
   bool mouse_over();
-};
+}///
+;
 
-// ----------------- snip --------------------
+/// ----------------- snip --------------------
 
 class PauseButton : public Button
 {
 private:
+  ///
   Server* server;
+  ///
   friend class ButtonPanel;
 public:
+  ///
   PauseButton(int x, int y);
+  ///
   virtual ~PauseButton();
 
+  ///
   void draw();
+  ///
   bool mouse_over();
-};
+}///
+;
 
 // ----------------- snip --------------------
 
 // The button class manage a simple button for the button_panel. It
-// keeps his position, his surfaces and his font.
+/// keeps his position, his surfaces and his font.
 class ActionButton : public Button
 {
 protected:
+  ///
   CL_Font*    font;
+  ///
   CL_Font*    font_h;
 
-  // The x and y position of the button
+  /// The x and y position of the button
   std::string name;
+  ///
   int available;
+  ///
   bool is_multi_direct;
 
+  ///
   ActionHolder* action_holder;
+  ///
   AnimCounter action_c;
 public:  
+  ///
   bool pressed;
 
+  ///
   ActionButton();
+  ///
   virtual ~ActionButton();
 
+  ///
   void init(int x, int y, std::string str);
 
-  // Draws the button and increase the animation counter.
+  /// Draws the button and increase the animation counter.
   virtual void   draw() = 0;
  
-  // Not used.
+  /// Not used.
   void   let_move();
 
-  // Returns the name of the action the button represents.
+  /// Returns the name of the action the button represents.
   std::string get_action_name();
 
-  // Returns true if the button is pressed.
+  /// Returns true if the button is pressed.
   bool   is_pressed();
 
+  ///
   virtual bool   mouse_over() = 0;
 
+  ///
   void set_action_holder(ActionHolder* h);
-};
+}///
+;
 
-// ----------------- snip --------------------
+/// ----------------- snip --------------------
 
 class HorizontalActionButton : public ActionButton 
 {
 private:
 public:
+  ///
   HorizontalActionButton(int x, int y, std::string str);
+  ///
   virtual ~HorizontalActionButton();
+  ///
   void draw();
+  ///
   bool mouse_over();
-};
+}///
+;
 
-// ----------------- snip --------------------
+/// ----------------- snip --------------------
 
 class VerticalActionButton : public ActionButton 
 {
 private:
 public:
+  ///
   VerticalActionButton(int x, int y, std::string str);
+  ///
   virtual ~VerticalActionButton();
+  ///
   void draw();
+  ///
   bool mouse_over();
-};
+}///
+;
 
 // ----------------- snip --------------------
 

@@ -1,4 +1,4 @@
-//  $Id: exit_data.hh,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: exit_data.hh,v 1.3 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,16 +22,24 @@
 
 #include "ResDescriptor.hh"
 
+///
 struct exit_data
 {
+  ///
   exit_data();
+  ///
   void clean(void);
 
+  ///
   int  x_pos;
+  ///
   int  y_pos;
+  ///
   int  z_pos;
+  ///
   ResDescriptor desc;
-};
+}///
+;
 
 #endif
 

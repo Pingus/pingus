@@ -1,4 +1,4 @@
-//  $Id: Button.hh,v 1.1 2000/02/04 23:45:18 mbn Exp $
+//  $Id: Button.hh,v 1.2 2000/06/18 17:01:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,18 +20,27 @@
 #ifndef BUTTON_HH
 #define BUTTON_HH
 
+///
 class Button
 {
 private:
+  ///
   int x1, y1;
+  ///
   int x2, y2;
 public:
+  ///
   Button();
+  ///
   virtual ~Button();
+  ///
   void draw();
+  ///
   void let_move();
+  ///
   bool is_over();
-};
+}///
+;
 
 #endif
 

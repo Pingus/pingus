@@ -1,4 +1,4 @@
-//  $Id: algo.hh,v 1.8 2000/05/24 15:45:02 grumbel Exp $
+//  $Id: algo.hh,v 1.9 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,12 +35,17 @@
 // routines which are completly indepentantly of the game.
 #define frand() ((double) rand() / (RAND_MAX+1.0))
 
+///
 bool rect_col(int ax1, int ax2, int ay1, int ay2,
               int bx1, int bx2, int by1, int by2);
 
+///
 std::string add_slash(std::string& str);
+///
 std::string get_directory(std::string s);
+///
 char*  tolowerstr(char*);
+///
 std::string find_file(std::string paths, std::string filename);
 //std::string basename(std::string filename);
 /*template<class T> inline std::string to_string(const T& n)

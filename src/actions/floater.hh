@@ -1,4 +1,4 @@
-//  $Id: floater.hh,v 1.2 2000/02/09 21:43:42 grumbel Exp $
+//  $Id: floater.hh,v 1.3 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,20 +22,30 @@
 
 #include "../PinguAction.hh"
 
+///
 class Floater : public PinguAction
 {
 private:
+  ///
   int falling_depth;
+  ///
   int step;
 public:
+  ///
   Floater();
 
+  ///
   PinguAction* allocate(void);  
-  ActionType get_type(void) { return FALL; };
+  ///
+  ActionType get_type(void) { return FALL; }///
+;
 
+  ///
   void   init(void);
+  ///
   void   let_move();
-};
+}///
+;
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: Particle.hh,v 1.3 2000/03/08 01:37:22 grumbel Exp $
+//  $Id: Particle.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,40 +25,54 @@
 #include "../PinguMap.hh"
 #include "../ColMap.hh"
 
+///
 class Particle
 {
 protected:
+  ///
   static PinguMap* map;
+  ///
   static ColMap*   colmap;
 
+  ///
   CL_Surface* surface;
+  ///
   float x_pos;
+  ///
   float y_pos;
 
+  ///
   float x_add;
+  ///
   float y_add;
+  ///
   int livetime;
 public:
+  ///
   Particle();
+  ///
   Particle(int x, int y, float x_a, float y_a);
 
+  ///
   virtual ~Particle();
 
+  ///
   static void set_map(PinguMap* m);
 
-  // Reinit a allready created particle with now coordinates
+  /// Reinit a allready created particle with now coordinates
   virtual void init(int x, int y, float x_a, float y_a);
 
   // If false is returned the particle gets deleted by the
-  // ParticleHolder 
+  /// ParticleHolder 
   virtual bool is_alive(void);
 
-  // Let the particle move
+  /// Let the particle move
   virtual void let_move(void);
 
-  // Draw the particle with the correct zoom resize
+  /// Draw the particle with the correct zoom resize
   virtual void draw_offset(int, int, float) const;
-};
+}///
+;
 
 #endif
 

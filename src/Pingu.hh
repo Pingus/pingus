@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.10 2000/06/06 18:51:51 grumbel Exp $
+//  $Id: Pingu.hh,v 1.11 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@
 #include "ActionHolder.hh"
 #include "PinguEnums.hh"
 
+///
 class ActionHolder;
 class PinguAction; 
 
@@ -38,84 +39,152 @@ class Pingu
 protected:
   friend class PinguAction;
 
+  ///
   PinguAction* action;
+  ///
   PinguAction* sec_action;
+  ///
   std::vector<PinguAction* > persist;
+  ///
   int id;
 
+  ///
   static bool init;
+  ///
   static CL_Surface* walker; 
+  ///
   static CL_Surface* faller;
+  ///
   static CL_Surface* tumble;
+  ///
   static CL_Font* font;
+  ///
   static CL_ResourceManager* local_res_p;
 
+  ///
   AnimCounter walker_c;
+  ///
   AnimCounter faller_c;
+  ///
   AnimCounter tumble_c;
+  ///
   int action_time;
 
+  ///
   PinguStatus status;
+  ///
   PinguEnvironment environment;
 
 public:
+  ///
   int x_pos;
+  ///
   int y_pos;
+  ///
   int falling;
+  ///
   bool tumbling;
 
+  ///
   Pingu();
+  ///
   Pingu(int x, int y);
+  ///
   ~Pingu();
   
-  // Should be friends
+  /// Should be friends
   static ParticleHolder* particle;
+  ///
   static void SetParticleHolder(ParticleHolder* );
+  ///
   static ColMap* colmap;
+  ///
   static PinguMap*  map;
+  ///
   static ActionHolder* action_holder;
 
+  ///
   Direction direction;
 
   // Force Vector stuff:
-  CL_Vector velocity; // Current velocity
 
+  /// Current velocity
+  CL_Vector velocity; 
+
+  /// Returns the x position of the pingu
   int  get_x(void);
-  int  get_y(void);
-  int  x_offset(void);
-  int  y_offset(void);
-  PinguEnvironment get_environment(); 
-  bool is_alive(void); // Check if the pingu is still alive
 
-  PinguStatus get_status(void) const; // Return the status of the pingu
+  /// Returns the y position of the pingu
+  int  get_y(void);
+
+  ///
+  int  x_offset(void);
+  ///
+  int  y_offset(void);
+  ///
+  PinguEnvironment get_environment(); 
+
+  /// Check if the pingu is still alive
+  bool is_alive(void);
+
+  /// Return the status of the pingu
+  PinguStatus get_status(void) const; 
   PinguStatus set_status(PinguStatus);
-  int  get_id(void);   // Returns the unique id of the pingu
-  int  set_id(int); // Set's the unique id of the pingu
-  void set_pos(int x, int y); // Set the pingu to the given coordinates
-  void set_direction(Direction d); // Set the pingu in the gives direction
+
+  /// Returns the unique id of the pingu
+  int  get_id(void); 
+  
+  /// Set's the unique id of the pingu
+  int  set_id(int);
+  
+  /// Set the pingu to the given coordinates
+  void set_pos(int x, int y);
+ 
+  // Set the pingu in the gives direction
+  void set_direction(Direction d);
+
+  ///
   int  set_action(PinguAction*);
+  ///
   int  set_paction(PinguAction*);
+  ///
   PinguAction* get_action();
+  ///
   int  rel_getpixel(int x, int y);
+  ///
   void catch_pingu(Pingu* pingu);
+  ///
   bool need_catch();
   
+  ///
   void draw_offset(int x, int y, float s = 1.0) const;
+  ///
   void apply_force(CL_Vector);
 
+  ///
   void let_move();
+  ///
   void do_persistent();
+  ///
   void do_normal();
+  ///
   void do_falling();
+  ///
   void do_walking();
 
+  ///
   bool   is_over(int x, int y);
+  ///
   double dist(int x, int y);
 
+  ///
   static CL_ResourceManager* local_res();
   
+  ///
   static void set_colmap(ColMap*);
+  ///
   static void set_map(PinguMap*);
+  ///
   static void set_action_holder(ActionHolder*);
 };
 

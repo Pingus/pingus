@@ -1,4 +1,4 @@
-//  $Id: PingusGame.hh,v 1.5 2000/06/08 20:05:35 grumbel Exp $
+//  $Id: PingusGame.hh,v 1.6 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,22 +26,33 @@
 #include "Client.hh"
 #include "Server.hh"
 
+///
 class PingusGame
 {
 private:
+  ///
   Client* client;
+  ///
   Server* server;
+  ///
   Result  result;
 public:
+  ///
   PingusGame();
+  ///
   ~PingusGame();
 
+  ///
   std::string read_lastlevel_file();
+  ///
   void   write_lastlevel_file(std::string levelfile);
+  ///
   void   start_game(std::string plf_filename = "",
 		    std::string psm_filename = "");
+  ///
   void   start_demo(std::string pdm_filename = "");
-};
+}///
+;
 
 #endif
 

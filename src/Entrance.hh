@@ -1,4 +1,4 @@
-//  $Id: Entrance.hh,v 1.3 2000/06/06 18:51:51 grumbel Exp $
+//  $Id: Entrance.hh,v 1.4 2000/06/18 17:01:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,31 +29,49 @@
 #include "ActionHolder.hh"
 #include "entrance_data.hh"
 
+///
 class Entrance : public WorldObj
 {
 protected:
+  ///
   static CL_Surface* surface;
+  ///
   int last_release;
+  ///
   int release_rate;
+  ///
   entrance_data::Direction direction;
   
+  ///
   int x_pos;
+  ///
   int y_pos;
 
+  ///
   static ParticleHolder* particle;
+  ///
   static ActionHolder* action_holder;
 public:
+  ///
   Entrance();
+  ///
   Entrance(entrance_data data);
 
+  ///
   virtual bool   pingu_ready(void);
+  ///
   virtual Pingu* get_pingu(void);
+  ///
   virtual void   let_move(void);
+  ///
   virtual void   draw_offset(int x, int y, float s = 1.0);
 
+  ///
   static void set_action_holder(ActionHolder* a);
+  ///
   static void SetParticleHolder(ParticleHolder* p);
-};
+}///
+;
 
 #endif
 

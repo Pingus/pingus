@@ -1,4 +1,4 @@
-//  $Id: Display.hh,v 1.5 2000/06/13 22:19:17 grumbel Exp $
+//  $Id: Display.hh,v 1.6 2000/06/18 17:01:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,33 +23,52 @@
 #include <list>
 #include <ClanLib/core.h>
 
+///
 class DisplayHook
 {
 protected:
+  ///
   bool is_visible;
 public:
+  ///
   DisplayHook();
+  ///
   virtual ~DisplayHook() {}
+  ///
   virtual void on_event() = 0;
+  ///
   virtual void toggle_display();
-};
+}///
+;
 
+///
 class Display
 {
 private:
+  ///
   static bool displaying_cursor;
+  ///
   static list<DisplayHook*> display_hooks;
 public:
+  ///
   static void draw_rect(int x1, int y1, int x2, int y2, float r, float g, float b, float a);
 
+  ///
   static void show_cursor(bool show_async=true);
+  ///
   static void hide_cursor();
+  ///
   static void set_cursor(CL_MouseCursorProvider *provider, int frame=0);
+  ///
   static bool cursor_shown();
+  ///
   static void flip_display(bool sync=false);
+  ///
   static void add_flip_screen_hook(DisplayHook*);
+  ///
   static void remove_flip_screen_hook(DisplayHook*);
-};
+}///
+;
 
 #endif
 

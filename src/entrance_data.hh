@@ -1,4 +1,4 @@
-//  $Id: entrance_data.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: entrance_data.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,22 +24,35 @@
 
 #include "ResDescriptor.hh"
 
+///
 struct entrance_data 
 {
-  enum Direction { LEFT, RIGHT, MISC };
+  ///
+  enum Direction { LEFT, RIGHT, MISC }///
+;
+  ///
   Direction direction;
 
+  ///
   ResDescriptor desc;
+  ///
   int  x_pos;
+  ///
   int  y_pos;
+  ///
   int  z_pos;
+  ///
   int  release_rate;
+  ///
   std::string type;
 
+  ///
   entrance_data();
 
+  ///
   void clean(void);
-};
+}///
+;
 
 #endif
 

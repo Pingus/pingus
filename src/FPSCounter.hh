@@ -1,4 +1,4 @@
-//  $Id: FPSCounter.hh,v 1.2 2000/06/13 17:50:46 grumbel Exp $
+//  $Id: FPSCounter.hh,v 1.3 2000/06/18 17:01:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,23 +23,36 @@
 #include <ClanLib/core.h>
 #include "Display.hh"
 
+///
 class FPSCounter : public DisplayHook
 {
 private:
+  ///
   CL_Font* font;
+  ///
   char fps_string[64];
+  ///
   int fps_count;
+  ///
   unsigned int start_time;
+  ///
   bool is_init;
 public:
+  ///
   FPSCounter();
+  ///
   virtual ~FPSCounter();
 
+  ///
   void init();
+  ///
   virtual void on_event();
+  ///
   virtual void update_fps_counter();
-};
+}///
+;
 
+///
 extern FPSCounter fps_counter;
 
 #endif

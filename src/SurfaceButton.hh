@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.hh,v 1.5 2000/04/24 13:15:41 grumbel Exp $
+//  $Id: SurfaceButton.hh,v 1.6 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,84 +28,129 @@
 #include "editor/Editor.hh"
 #include "ThemeSelector.hh"
 #include "PingusMenu.hh"
-// #include "FileSelector.hh"
+/// #include "FileSelector.hh"
 
 class PingusMenu;
 
 class SurfaceButton
 {
 protected:
+  ///
   CL_Surface* surface;
+  ///
   CL_Surface* surface_p;
+  ///
   CL_Font*    font;
+  ///
   int x_pos;
+  ///
   int y_pos;
+  ///
   std::string desc;
 public:
+  ///
   SurfaceButton();
+  ///
   virtual ~SurfaceButton();
   
+  ///
   void draw();
+  ///
   bool mouse_over();
+  ///
   virtual void on_click() = 0;
-};
+}///
+;
 
+///
 class PlayButton : public SurfaceButton
 {
 public:
+  ///
   PlayButton();
+  ///
   virtual ~PlayButton();
+  ///
   void on_click();
-};
+}///
+;
 
+///
 class OptionsButton : public SurfaceButton
 {
 public:
+  ///
   OptionsButton();
+  ///
   virtual ~OptionsButton();
+  ///
   void on_click();
-};
+}///
+;
 
+///
 class QuitButton : public SurfaceButton
 {
 private:
+  ///
   PingusMenu* menu;
 public:
+  ///
   QuitButton();
+  ///
   virtual ~QuitButton();
+  ///
   void set_pingus_menu(PingusMenu*);
+  ///
   void on_click();
-};
+}///
+;
 
+///
 class LoadButton : public SurfaceButton
 {
 private:
-  //  FileSelector file;
+  ///  FileSelector file;
 public:
   LoadButton();
+  ///
   virtual ~LoadButton();
+  ///
   void on_click();
-};
+}///
+;
 
+///
 class EditorButton : public SurfaceButton
 {
 private:
+  ///
   Editor editor;
 public:
+  ///
   EditorButton();
+  ///
   virtual ~EditorButton();
+  ///
   void on_click();
-};
+}///
+;
 
+///
 class ThemeButton : public SurfaceButton
 {
 private:
+  ///
   ThemeSelector theme_selector;
 public:
+  ///
   ThemeButton();
+  ///
   virtual ~ThemeButton();
+  ///
   void on_click();
-};
+}///
+;
 
 
 #endif

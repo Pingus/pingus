@@ -1,4 +1,4 @@
-//  $Id: FadeOut.hh,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: FadeOut.hh,v 1.3 2000/06/18 17:01:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,16 +20,22 @@
 #ifndef FADEOUT_HH
 #define FADEOUT_HH
 
+///
 class FadeOut
 {
 private:
 
 public:
+  ///
   static void random(void);
+  ///
   static void black_rect(int steps = 20);
+  ///
   static void fade_to_black(int steps = 20);
+  ///
   static void clear(void);
-};
+}///
+;
 
 #endif
 

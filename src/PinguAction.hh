@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.5 2000/06/06 18:51:51 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.6 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,11 +26,13 @@
 #include "Pingu.hh"
 #include "PinguEnums.hh"
 
+///
 class Pingu; // FIXME: IMHO Bad style, declare Pingus in an file different than pingu.hh
 class ActionHolder;
 
 enum ActionType
 {
+  ///
   ONCE = 1<<1,
   WALL = 1<<2,
   FALL = 1<<3
@@ -39,102 +41,111 @@ enum ActionType
 // This class provides an abstract interface for pingu actions. It is 
 // used to inherit classes which represent the actions. The actions
 // are stored in a seperate library, have a look in actions/ for some
-// examples.
+/// examples.
 class PinguAction
 {
 protected:
   // True if the animation differ in both direction. draw_offset() then
-  // handle the case apropried.
+  /// handle the case apropried.
   bool is_multi_direct;
 
-  // A pointer to the pingu, which hold the action,
-  // Pingu::set_action() will set this to the correct value.
+  /** A pointer to the pingu, which hold the action,
+      Pingu::set_action() will set this to the correct value. */
   Pingu*      pingu;
 
-  // The basic surface used to display an action, the inherit action
-  // needs to load it in PinguAction::init().
+  /** The basic surface used to display an action, the inherit action
+      needs to load it in PinguAction::init(). */
   CL_Surface* surface;
-
-  // The font used for counting (used by the bomber)
+  
+  /// The font used for counting (used by the bomber)
   CL_Font*    font; 
 
-  // Sets the speed and number of frames, PinguAction::init() needs to
-  // set this to the correct values.
+  /** Sets the speed and number of frames, PinguAction::init() needs to
+      set this to the correct values. */
   AnimCounter counter;
 
-  // The enviroment of the action (see PinguEnvironment).
+  /// The enviroment of the action (see PinguEnvironment).
   PinguEnvironment environment;
 
-  // The name of the action, needs to be set in PinguAction::init().
+  /// The name of the action, needs to be set in PinguAction::init().
   std::string action_name;
 
-  // See is_active()
+  /// See is_active()
   bool        active;  
 
-  // --- Static Variables ---
+  /// --- Static Variables ---
   static CL_ResourceManager* local_res_p;
 
-  // Allocate a new action and return a pointer to it. 
+  /// Allocate a new action and return a pointer to it. 
   virtual PinguAction* allocate(void) = 0;
 
 public:
-  // Indicate if the action should be canceled at the next possible
-  // point. Bug: Only keeped public for lazyness.
+  /** Indicate if the action should be canceled at the next possible
+      point. Bug: Only keeped public for lazyness. */
   bool is_finished;
 
+  ///
   PinguAction();
+  ///
   virtual ~PinguAction();
 
-  // Create a new action of the same type
+  /// Create a new action of the same type
   virtual PinguAction* create(void);
 
-  // Gives the PinguAction class access to the data of the Pingu.
+  /// Gives the PinguAction class access to the data of the Pingu.
   void set_pingu(Pingu*);
 
-  // Get the pixel from the colmap, relative to the pingu position. 
+  /// Get the pixel from the colmap, relative to the pingu position. 
   int  rel_getpixel(int x, int y);
 
-  // True if the action was used the last let_move()
+  /// True if the action was used the last let_move()
   bool is_active(void);
   
   // Returns the enviroment, used to check if an action can be
-  // applied.
+  /// applied.
   PinguEnvironment get_environment();
   
-  // Used to load all data, which is needed by the action, its
-  // seperated and called in set_pingu(), because some data will be
-  // only valid if set_pingu() is called.
-  virtual void  init(void) {};
+  /** Used to load all data, which is needed by the action, its
+      seperated and called in set_pingu(), because some data will be
+      only valid if set_pingu() is called. */
+  virtual void  init(void) {}///
+;
 
-  // The "AI" of the pingu. The walker and faller is in class Pingu
+  /// The "AI" of the pingu. The walker and faller is in class Pingu
   virtual void  let_move(void) = 0;
 
-  // Draws the surfaced defined by the action, can be overwritten if
-  // the action needs a more complicated way of drawing.
+  /** Draws the surfaced defined by the action, can be overwritten if
+      the action needs a more complicated way of drawing. */
   virtual void  draw_offset(int x, int y, float s);
 
+  ///
   virtual int    x_offset(void);
+  ///
   virtual int    y_offset(void);
 
-  // Returns the action type
+  /// Returns the action type
   virtual ActionType get_type(void);
 
-  // The name of the action, used in PinguInfo.hh
+  /// The name of the action, used in PinguInfo.hh
   const std::string& name(void);
   
-  // Catch another pingu and act on it (see blocker.hh)
+  /// Catch another pingu and act on it (see blocker.hh)
   virtual bool  need_catch();
-  virtual void  catch_pingu(Pingu*) { /* do nothing */};
 
-  // The time the action needs to get activated (see bomber.cc)
+  ///
+  virtual void  catch_pingu(Pingu*) { /* do nothing */}
+
+  /// The time the action needs to get activated (see bomber.cc)
   virtual int   activation_time() { return -1; };
   
-  // Get access to the ParticleHolder to be able to place some
-  // particles (see bomber or digger as on example)
+  /** Get access to the ParticleHolder to be able to place some
+      particles (see bomber or digger as on example) */
   static void SetParticleHolder(ParticleHolder* );
   
-  // Keep a seperate file for the Pingu animation and manage it
+  /// Keep a seperate file for the Pingu animation and manage it
   static CL_ResourceManager* local_res();
+
+  ///
   static int  SetResourceManager(CL_ResourceManager* res);
 };
 

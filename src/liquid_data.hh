@@ -1,4 +1,4 @@
-// $Id: liquid_data.hh,v 1.3 2000/02/15 13:09:50 grumbel Exp $
+// $Id: liquid_data.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,17 +22,27 @@
 
 #include "ResDescriptor.hh"
 
+///
 struct liquid_data {
+  ///
   ResDescriptor desc;
+  ///
   int x_pos;
+  ///
   int y_pos;
+  ///
   int z_pos;
+  ///
   int width;
+  ///
   int speed;
 
+  ///
   liquid_data();
+  ///
   void clean();
-};
+}///
+;
 
 #endif
 

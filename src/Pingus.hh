@@ -1,4 +1,4 @@
-//  $Id: Pingus.hh,v 1.9 2000/06/08 20:05:35 grumbel Exp $
+//  $Id: Pingus.hh,v 1.10 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,48 +25,77 @@
 
 #include "Intro.hh"
 
+///
 void segfault_handler(int);
 
+///
 class PingusMain : public CL_ClanApplication
 {
 private:
+  ///
   bool    pingus_datadir_set;
+  ///
   bool    no_config_file;
 
+  ///
   std::string pingus_datafile;
+  ///
   std::string global_datafile;
+  ///
   std::string pingus_soundfile;
+  ///
   std::string levelfile;
+  ///
   std::string resolution;
   
+  ///
   Intro intro;
 
 public:
-  enum GameMode { Lemmings, Worms };
+  ///
+  enum GameMode { Lemmings, Worms }///
+;
 
+  ///
   PingusMain();
+  ///
   virtual ~PingusMain();
 
+  ///
   virtual int main(int argc, char** argv);
+  ///
   virtual char* get_title();
+  ///
   virtual void init_modules();
+  ///
   virtual void deinit_modules();
 
+  ///
   GameMode select_game_mode(void);
+  ///
   void load_resources(std::string filename);
+  ///
   bool do_lemmings_mode(void);
+  ///
   bool do_worms_mode(void);
 
+  ///
   void check_args(int argc, char* argv[]);
+  ///
   void quick_check_args(int argc, char* argv[]);
+  ///
   void read_rc_file(void);
 
+  ///
   void get_filenames(void);
+  ///
   void init(int argc, char* argv[]);
+  ///
   void init_clanlib(void);
-  // void intro(void);
+  /// void intro(void);
   void init_pingus(void);
-} my_app; // notice this line. It creates the global instance.
+} ///
+ my_app; // notice this line. It creates the global instance.
 
 #endif
 

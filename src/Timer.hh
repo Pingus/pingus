@@ -1,4 +1,4 @@
-//  $Id: Timer.hh,v 1.1 2000/05/23 21:08:43 grumbel Exp $
+//  $Id: Timer.hh,v 1.2 2000/06/18 17:01:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,16 +20,23 @@
 #ifndef TIMER_HH
 #define TIMER_HH
 
+///
 class Timer
 {
 private:
+  ///
   int last_time;
+  ///
   bool running;
 public:
+  ///
   Timer();
+  ///
   int start();
+  ///
   int stop();
-};
+}///
+;
 
 #endif
 

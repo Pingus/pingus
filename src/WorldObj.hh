@@ -1,4 +1,4 @@
-//  $Id: WorldObj.hh,v 1.3 2000/04/10 21:14:14 grumbel Exp $
+//  $Id: WorldObj.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,19 +22,28 @@
 
 #include "ColMap.hh"
 
+///
 class WorldObj
 {
 protected:
 public:
+  ///
   int z_pos;
 
+  ///
   WorldObj();
+  ///
   virtual ~WorldObj();
+  ///
   bool operator< (const WorldObj& w);
+  ///
   virtual void draw_offset(int, int, float s = 1.0) = 0;
+  ///
   virtual void draw_colmap(ColMap*);
+  ///
   virtual void let_move(void);
-};
+}///
+;
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: System.hh,v 1.6 2000/04/24 13:15:41 grumbel Exp $
+//  $Id: System.hh,v 1.7 2000/06/18 17:01:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,43 +24,54 @@
 #include <string>
 #include <list>
 
+///
 class System
 {
 private:
   
 public:
+  ///
   struct DirectoryEntry
   {
-    enum FileType { DIRECTORY, FILE } type;
+    ///
+    enum FileType { DIRECTORY, FILE } ///
+ type;
+    ///
     std::string name;
 
+    ///
     DirectoryEntry(const std::string&);
-  };
+  }///
+;
 
+  ///
   typedef std::list<DirectoryEntry> Directory;
   
+  ///
   static Directory opendir(const std::string& pathname, const std::string& pattern = "*");
 
+  ///
   static bool exist(std::string filename);
 
-  // Creates directory if it does not already exist.
+  /// Creates directory if it does not already exist.
   static void create_dir(std::string dir);
   
   // Check if all needed directories are available, if not then create 
-  // them. 
+  /// them. 
   static void init_directories();
 
-  // Strips directory from filenames
+  /// Strips directory from filenames
   static std::string basename(std::string);
 
   // Returns the directory were Pingus can store its user specific
-  // state and config data (savegames, config files, demos, etc.)
+  /// state and config data (savegames, config files, demos, etc.)
   static std::string get_statdir();
 
   // Returns the directory were Pingus can store its system wide
-  // variable game data (highscores, cache images, ...) 
+  /// variable game data (highscores, cache images, ...) 
   static std::string get_vardir();
-};
+}///
+;
 
 #endif
 

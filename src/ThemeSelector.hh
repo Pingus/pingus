@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.hh,v 1.6 2000/06/16 17:41:55 grumbel Exp $
+//  $Id: ThemeSelector.hh,v 1.7 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,64 +29,104 @@
 #include "Theme.hh"
 #include "AlphaButton.hh"
 
+///
 class ListItem
 {
 private:
+  ///
   std::string label;
+  ///
   CL_Font* font;
 public:
+  ///
   ListItem(std::string);
+  ///
   void draw_offset(int x, int y);
+  ///
   bool mouse_over();
-};
+}///
+;
 
+///
 class ListBox
 {
 private:
+  ///
   std::vector<ListItem> items;
+  ///
   typedef std::vector<ListItem>::iterator ListIter;
 public:
+  ///
   ListBox();
+  ///
   void add_item(std::string);
+  ///
   void draw_offset(int x, int y);
-};
+}///
+;
 
+///
 class ThemeSelector
 {
 public:
+  ///
   class Event : public CL_Event_ButtonPress, public CL_Event_ButtonRelease
   {
   public:
+    ///
     bool enabled;
+    ///
     ThemeSelector* theme_selector;
+    ///
     virtual bool on_button_press(CL_InputDevice *device, const CL_Key &key);
+    ///
     virtual bool on_button_release(CL_InputDevice *device, const CL_Key &key);
-  };
+  }///
+;
+  ///
   friend class Event;
+  ///
   Event* event;
   
 private:
+  ///
   std::vector<AlphaButton*> theme;
+  ///
   std::vector<Theme*> themes;
+  ///
   std::vector<Theme*>::iterator current_theme;
 
+  ///
   CL_Font* title_font;
+  ///
   CL_Font* theme_font;
+  ///
   CL_Surface* right_arrow;
+  ///
   CL_Surface* left_arrow;
 
+  ///
   bool dir_read;
+  ///
   bool finished;
+  ///
   ListBox list_box;
 public:
+  ///
   ThemeSelector();
+  ///
   ~ThemeSelector();
  
+  ///
   void   readdir(std::string path);
+  ///
   void   select();
+  ///
   void   draw();
+  ///
   bool key_pressed(int key);
-};
+}///
+;
 
 #endif
 

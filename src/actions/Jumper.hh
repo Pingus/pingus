@@ -1,4 +1,4 @@
-//  $Id: Jumper.hh,v 1.4 2000/05/24 18:48:34 grumbel Exp $
+//  $Id: Jumper.hh,v 1.5 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,18 +22,26 @@
 
 #include "../PinguAction.hh"
 
+///
 class Jumper : public PinguAction
 {
 private:
+  ///
   int c;
+  ///
   static CL_Surface* static_surface;
 public:
+  ///
   Jumper();
 
+  ///
   void  init(void);
+  ///
   void  let_move();
+  ///
   PinguAction* allocate(void);
-};
+}///
+;
 
 #endif
 

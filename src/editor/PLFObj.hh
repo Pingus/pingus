@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.5 2000/05/22 21:11:13 grumbel Exp $
+//  $Id: PLFObj.hh,v 1.6 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,90 +24,153 @@
 #include "../Liquid.hh"
 #include "EditorObj.hh"
 
+///
 class PLFObj : public EditorObj
 {
 private:
   
 public:
+  ///
   PLFObj();
+  ///
   virtual ~PLFObj();
 
+  ///
   virtual void save(std::ofstream* plf, std::ofstream* psm) = 0;
+  ///
   virtual std::string  status_line();
-};
+}///
+;
 
+///
 class HotspotObj : public PLFObj
 {
 private:
+  ///
   int   speed;
+  ///
   float para;
 public:
+  ///
   HotspotObj(hotspot_data);
+  ///
   ~HotspotObj();
+  ///
   EditorObj* duplicate();
+  ///
   void save(std::ofstream* plf, std::ofstream* psm);
-  std::string obj_type() { return "Hotspot"; };
+  ///
+  std::string obj_type() { return "Hotspot"; }///
+;
+  ///
   std::string  status_line();
-};
+}///
+;
 
+///
 class EntranceObj : public PLFObj
 {
 private:
+  ///
   std::string type;
+  ///
   int release_rate;
+  ///
   entrance_data::Direction direction;
 public:
+  ///
   EntranceObj(entrance_data);
+  ///
   ~EntranceObj();
+  ///
   EditorObj* duplicate();
+  ///
   void save(std::ofstream* plf, std::ofstream* psm);  
-  std::string obj_type() { return "Entrance"; };
+  ///
+  std::string obj_type() { return "Entrance"; }///
+;
+  ///
   std::string status_line();
-};
+}///
+;
 
+///
 class ExitObj : public PLFObj
 {
 private:
 public:
+  ///
   ExitObj(exit_data);
+  ///
   ~ExitObj();
+  ///
   EditorObj* duplicate();
+  ///
   void save(std::ofstream* plf, std::ofstream* psm);  
-  std::string obj_type() { return "Exit"; };
-};
+  ///
+  std::string obj_type() { return "Exit"; }///
+;
+}///
+;
 
 
+///
 class TrapObj : public PLFObj
 {
 private:
+  ///
   std::string name;
+  ///
   int    frame;
 public:
+  ///
   TrapObj(trap_data);
+  ///
   ~TrapObj();
+  ///
   EditorObj* duplicate();
+  ///
   void save(std::ofstream* plf, std::ofstream* psm);  
+  ///
   void draw_offset(int x_offset, int y_offset);
-  std::string obj_type() { return "Trap"; };
-};
+  ///
+  std::string obj_type() { return "Trap"; }///
+;
+}///
+;
 
+///
 class LiquidObj : public PLFObj
 {
 private:
+  ///
   int width;
+  ///
   int speed;
+  ///
   AnimCounter counter;
 public:
+  ///
   LiquidObj(liquid_data);
+  ///
   ~LiquidObj();
+  ///
   EditorObj* duplicate();
+  ///
   void draw_offset(int x_offset, int y_offset);
+  ///
   void draw_mark_offset(int x_offset, int y_offset);
+  ///
   bool mouse_over(int, int);
+  ///
   void save(std::ofstream* plf, std::ofstream* psm);
-  std::string obj_type() { return "Liquid"; };
+  ///
+  std::string obj_type() { return "Liquid"; }///
+;
+  ///
   std::string  status_line();
-};
+}///
+;
 
 #endif
 

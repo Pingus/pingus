@@ -1,4 +1,4 @@
-//  $Id: bomber.hh,v 1.4 2000/05/24 15:45:02 grumbel Exp $
+//  $Id: bomber.hh,v 1.5 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,24 +22,40 @@
 
 #include "../PinguAction.hh"
 
+///
 class Bomber : public PinguAction
 {
 private:
+  ///
   bool particle_thrown;
+  ///
   bool sound_played;
+  ///
   static CL_Surface* static_surface;
+  ///
   static CL_Surface* bomber_radius;
+  ///
   static CL_Surface* explo_surf;
 public:
+  ///
   Bomber();
 
+  ///
   void   init(void);
+  ///
   void   draw_offset(int x, int y, float s);
+  ///
   void   let_move();
-  bool   can_reset() { return false; };
-  int    activation_time() { return 50; };
+  ///
+  bool   can_reset() { return false; }///
+;
+  ///
+  int    activation_time() { return 50; }///
+;
+  ///
   PinguAction* allocate(void);
-};
+}///
+;
 
 #endif
 

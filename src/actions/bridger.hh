@@ -1,4 +1,4 @@
-//  $Id: bridger.hh,v 1.6 2000/05/24 18:48:35 grumbel Exp $
+//  $Id: bridger.hh,v 1.7 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,34 +23,54 @@
 #include "../GameCounter.hh"
 #include "../PinguAction.hh"
 
+///
 class Bridger : public PinguAction
 {
 private:
+  ///
   GameCounter counter;
 
+  ///
   static CL_Surface* static_surface;
+  ///
   static CL_Surface* waiter;
+  ///
   static CL_Surface* brick_l;
+  ///
   static CL_Surface* brick_r;
 
+  ///
   int bricks;
+  ///
   int step;
+  ///
   int do_steps;
 
 public:
+  ///
   Bridger();
 
+  ///
   PinguAction* allocate(void);
 
+  ///
   int    x_offset();
+  ///
   int    y_offset();
+  ///
   void   init();
+  ///
   void   let_move();
+  ///
   void   draw_offset(int, int, float s);
+  ///
   bool   way_is_free();
+  ///
   void   place_a_brick();
+  ///
   void   walk_one_step_up();
-};
+}///
+;
 
 #endif
 

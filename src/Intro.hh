@@ -1,4 +1,4 @@
-//  $Id: Intro.hh,v 1.5 2000/04/21 13:25:46 grumbel Exp $
+//  $Id: Intro.hh,v 1.6 2000/06/18 17:01:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,31 +22,47 @@
 
 #include <ClanLib/core.h>
 
+///
 class Intro
 {
 private:
+  ///
   CL_Surface*     logo;
+  ///
   CL_SoundBuffer* sound;
   
+  ///
   CL_SoundBuffer_Session ses_sound;
+  ///
   CL_SoundBuffer_Session* ses_music;
 
+  ///
   bool quit;
 
+  ///
   class Event : public CL_Event_ButtonRelease
   {
   public:
+    ///
     Intro* intro;
+    ///
     virtual bool on_button_release(CL_InputDevice *device, const CL_Key &key);
-  };
+  }///
+;
+  ///
   friend class Event;
+  ///
   Event* event;
 
 public:
+  ///
   Intro();
+  ///
   ~Intro();
+  ///
   void draw();
-};
+}///
+;
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.9 2000/06/06 18:51:51 grumbel Exp $
+//  $Id: World.hh,v 1.10 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,69 +40,115 @@
 
 // World holds all object of the pingu world (pingus, traps, exits,
 // entrances, etc.). It keeps control that all objects become time to
-// move and can catch each other. 
+/// move and can catch each other. 
 class World
 {
 private:
+  ///
   PinguMap*  map;
+  ///
   Background* background;
 
+  ///
   bool do_armageddon;
+  ///
   PinguIter armageddon_count;
 
+  ///
   unsigned int released_pingus;
+  ///
   unsigned int allowed_pingus;
 
+  ///
   unsigned int number_to_save;
 
+  ///
   bool exit_world;
+  ///
   int  exit_time;  
 
+  ///
   std::vector<WorldObj*> world_obj_bg;
+  ///
   std::vector<WorldObj*> world_obj_fg;
+  ///
   std::vector<Entrance*> entrance;
+  ///
   std::vector<Exit*>     exits;
+  ///
   std::vector<Hotspot*>  hotspot;
+  ///
   std::vector<Liquid*>   liquid;
+  ///
   std::vector<Trap*>     traps;
 
+  ///
   ParticleHolder particle;
+  ///
   CL_InputSourceProvider* datafile;
+  ///
   ActionHolder* action_holder;
 
+  ///
   PinguHolder pingus;
+  ///
   ColMap* colmap;
+  ///
   PLF*    plf;
 
 public:
+  ///
   World();
+  ///
   World(PLF*);
+  ///
   virtual ~World();
 
+  ///
   void    init (PLF*);
+  ///
   void    init_background (void);
+  ///
   void    init_worldobjs (void);
+  ///
   void    init_map (void);
+  ///
   void    draw(int x1, int y1, int w, int h,
 	       int x_of, int y_of, float s);
+  ///
   void    let_move (void);
+  ///
   void    armageddon (void);
+  ///
   int     get_height (void);
+  ///
   int     get_width(void);
+  ///
   bool    is_finished(void);
+  ///
   int     get_time (void);
+  ///
   ColMap* get_colmap();
+  ///
   PLF*    get_plf();
 
+  ///
   unsigned int get_released_pingus() { return released_pingus; }
+  ///
   unsigned int get_allowed_pingus() { return allowed_pingus; }
+  ///
   unsigned int get_pingus_out() { return pingus.size(); }
+  ///
   unsigned int get_saved_pingus() { return pingus.get_saved(); }
+  ///
   unsigned int get_number_to_save() { return number_to_save; }
 
+  ///
   PinguHolder* get_pingu_p(void);
+  ///
   void set_action_holder(ActionHolder*);
-};
+}///
+;
 
 #endif
 

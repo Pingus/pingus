@@ -1,4 +1,4 @@
-//  $Id: Range.hh,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: Range.hh,v 1.3 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,31 +24,49 @@
 
 #include <iostream>
 
+///
 class Range
 {
 private:
+  ///
   int count;
+  ///
   int start;
+  ///
   int stop;
+  ///
   void check_range();
 public:
+  ///
   Range();
+  ///
   Range(int b);
+  ///
   Range(int a, int b);
+  ///
   Range(const Range&);
+  ///
   ~Range();
   
+  ///
   Range& operator=(const Range&);
   
+  ///
   operator int() const {
     return count;
   }
+  ///
   Range& operator++();
+  ///
   Range& operator+=(int a);
+  ///
   Range& operator-=(int a);
+  ///
   Range& operator=(int a);
+  ///
   void set_range(int, int);
-};
+}///
+;
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: Console.hh,v 1.6 2000/06/14 21:09:55 grumbel Exp $
+//  $Id: Console.hh,v 1.7 2000/06/18 17:01:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,39 +25,63 @@
 #include <ClanLib/core.h>
 #include "Display.hh"
 
+///
 class Console : public DisplayHook
 {
 private:
   class Endl {};
+  ///
   CL_Font* font;
+  ///
   bool is_init;
+  ///
   int  current_pos;
+  ///
   vector<string> output_buffer;
+  ///
   string current_line;
+  ///
   int number_of_lines;
 
+  ///
   void draw();
+  ///
   void add_line(string);
 public:
+  ///
   static Endl endl;
 
+  ///
   Console();
+  ///
   virtual ~Console();
 
+  ///
   void init();
+  ///
   virtual void on_event();
 
+  ///
   void set_height(int);
+  ///
   int  get_height();
 
+  ///
   Console& operator<<(const Console::Endl&);
+  ///
   Console& operator<<(string);
+  ///
   Console& operator<<(int);
+  ///
   void printf(char* format, ...);
+  ///
   void puts(string);
+  ///
   void newline();
-};
+}///
+;
 
+///
 extern Console console;
 
 #endif

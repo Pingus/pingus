@@ -1,4 +1,4 @@
-//  $Id: MikMod.hh,v 1.2 2000/04/08 20:20:25 grumbel Exp $
+//  $Id: MikMod.hh,v 1.3 2000/06/18 17:01:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,29 +26,42 @@
 #if HAVE_LIBMIKMOD
 #  include <mikmod.h>
 #else
-// Using this as a dummy
+/// Using this as a dummy
 typedef void MODULE;
 #endif /* HAVE_LIBMIKMOD */
 
+///
 class MikMod
 {
 private:
+  ///
   static bool is_init;
+  ///
   static bool delete_on_stop;
 
+  ///
   static MODULE* current_module;
 
 public:
+  ///
   static void init();
+  ///
   static void deinit();
   
+  ///
   static MODULE* load(string, bool del_on_stop = true, int maxchan = 64, bool curious = 0);
+  ///
   static void play(MODULE* m = 0);
+  ///
   static void stop();
+  ///
   static void free(MODULE*);
+  ///
   static bool is_playing();
+  ///
   static void keep_alive();
-};
+}///
+;
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: basher.hh,v 1.6 2000/06/15 19:32:44 grumbel Exp $
+//  $Id: basher.hh,v 1.7 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,25 +23,40 @@
 #include "../PinguAction.hh"
 #include "../GameCounter.hh"
 
+///
 class Basher : public PinguAction
 {
 private:
+  ///
   static CL_Surface* static_surface;
+  ///
   static CL_Surface* bash_radius;
+  ///
   int basher_c;
+  ///
   GameCounter counter;
+  ///
   bool first_bash;
 public:
+  ///
   Basher();
 
+  ///
   PinguAction* allocate(void);
+  ///
   void   init(void);
+  ///
   void draw_offset(int x, int y, float s);
+  ///
   void   let_move();
+  ///
   bool   have_something_to_dig();
+  ///
   void   walk_forward();
+  ///
   void   bash();
-};
+}///
+;
 
 #endif
 

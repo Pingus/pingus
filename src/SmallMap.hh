@@ -1,4 +1,4 @@
-//  $Id: SmallMap.hh,v 1.6 2000/06/08 20:05:35 grumbel Exp $
+//  $Id: SmallMap.hh,v 1.7 2000/06/18 17:01:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,39 +23,65 @@
 #include "Client.hh"
 #include "GuiObj.hh"
 
+///
 class Client;
 
 class SmallMap : public GuiObj
 {
 private:
+  ///
   PLF* plf;
+  ///
   ColMap* colmap;
+  ///
   World* world;
+  ///
   CL_Surface* sur;
+  ///
   Client*     client;
+  ///
   CL_Surface* exit_sur;
+  ///
   CL_Surface* entrance_sur;
+  ///
   int x_pos;
+  ///
   int y_pos;
+  ///
   unsigned int width;
+  ///
   unsigned int height;
+  ///
   bool scroll_mode;
+  ///
   unsigned int rwidth;
+  ///
   unsigned int rheight;
 public:
+  ///
   SmallMap();
+  ///
   ~SmallMap();
   
+  ///
   bool on_button_press(const CL_Key& key);
+  ///
   bool on_button_release(const CL_Key& key);
+  ///
   void set_client(Client* c);
 
+  ///
   bool mouse_over();
+  ///
   void init();
+  ///
   void draw();
+  ///
   void draw_pingus();
+  ///
   void let_move();
-};
+}///
+;
 
 #endif
 

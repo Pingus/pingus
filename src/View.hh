@@ -1,4 +1,4 @@
-//  $Id: View.hh,v 1.3 2000/04/10 21:33:06 grumbel Exp $
+//  $Id: View.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,42 +25,65 @@
 #include "CaptureRectangle.hh"
 
 // A class to controll the rentering of the playfield, each display on 
-// the screen, which displays the pingus world is an view object.
+/// the screen, which displays the pingus world is an view object.
 class View
 {
 private:
+  ///
   CL_ClipRect clip_rect;
-  Range x_offset, y_offset; // The position of the view in the world
+  ///
+  Range x_offset, y_offset; /// The position of the view in the world
   bool mouse_over;
-  double size;              // The zoom of the View, 1 is default
+  ///
+  double size;              /// The zoom of the View, 1 is default
   CaptureRectangle cap;
+  ///
   Pingu* current_pingu;
-  // Static objects which are equal for all Views
+  /// Static objects which are equal for all Views
   static World* world;
 
+  ///
   void make_range();
 public:
-  int x1_pos, y1_pos;       // The upper/left corner of the view
-  int x2_pos, y2_pos;       // The buttom/right corner of the view
+  ///
+  int x1_pos, y1_pos;       /// The upper/left corner of the view
+  int x2_pos, y2_pos;       /// The buttom/right corner of the view
 
   View(int, int, int, int, float s = 1.0);
+  ///
   ~View();
+  ///
   void draw();
+  ///
   bool is_over(int x, int y);
+  ///
   bool is_current();
+  ///
   int  get_x_offset() const;
+  ///
   int  get_y_offset() const;
+  ///
   int  get_x_pos() const;
+  ///
   int  get_y_pos() const; 
+  ///
   void set_x_offset(int);
+  ///
   void set_y_offset(int);
+  ///
   void shift_x_offset(int);
+  ///
   void shift_y_offset(int);
+  ///
   void set_zoom(double);
+  ///
   double get_zoom();
+  ///
   void set_pingu(Pingu* p);
+  ///
   static void set_world(World*);
-};
+}///
+;
 
 #endif
 

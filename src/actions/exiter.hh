@@ -1,4 +1,4 @@
-//  $Id: exiter.hh,v 1.3 2000/02/11 16:58:27 grumbel Exp $
+//  $Id: exiter.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,20 +22,29 @@
 
 #include "../PinguAction.hh"
 
+///
 class Exiter : public PinguAction
 {
 private:
 public:
+  ///
   Exiter();
+  ///
   ~Exiter();
 
+  ///
   PinguAction* allocate(void);
 
+  ///
   void   init(void);
-  std::string name() { return "Exiter"; };
+  ///
+  std::string name() { return "Exiter"; }///
+;
+  ///
   void   let_move();
 
-};
+}///
+;
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: Bumper.hh,v 1.1 2000/05/12 13:29:29 grumbel Exp $
+//  $Id: Bumper.hh,v 1.2 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,20 +23,30 @@
 #include "../Trap.hh"
 #include "../trap_data.hh"
 
+///
 class Bumper : public Trap
 {
 private:
+  ///
   bool upwards;
+  ///
   int count;
 
 public:
+  ///
   Bumper(trap_data data);
+  ///
   virtual ~Bumper();
+  ///
   void draw_offset(int x, int y, float s);
+  ///
   void draw_colmap(ColMap*);
+  ///
   void let_move();
+  ///
   bool catch_pingu(Pingu* pingu);
-};
+}///
+;
 
 #endif
 

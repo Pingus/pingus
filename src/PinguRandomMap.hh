@@ -1,4 +1,4 @@
-//  $Id: PinguRandomMap.hh,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PinguRandomMap.hh,v 1.3 2000/06/18 17:01:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,28 +27,48 @@
 #include "ColMap.hh"
 #include "PinguMap.hh"
 
+///
 class PinguRandomMap : public PinguMap 
 {
 private:
+  ///
   bool need_reload;
+  ///
   ColMap* colmap;
+  ///
   CL_Surface* sub_surface[100][100];
+  ///
   CL_Surface* surface;
+  ///
   int tiles_x;
+  ///
   int tiles_y;
+  ///
   CL_SurfaceProvider* sur_provider;
 public:
+  ///
   PinguRandomMap();
+  ///
   virtual ~PinguRandomMap();
 
+  ///
   ColMap* get_colmap();
+  ///
   void draw_offset(int of_x, int of_y, float s = 1.0);
+  ///
   int  get_width();
+  ///
   int  get_height();
+  ///
   void remove(int, int);
-  void remove(CL_SurfaceProvider*, int, int) {};
-  void put(CL_SurfaceProvider*, int, int) {};
-};
+  ///
+  void remove(CL_SurfaceProvider*, int, int) {}///
+;
+  ///
+  void put(CL_SurfaceProvider*, int, int) {}///
+;
+}///
+;
 
 #endif
 
