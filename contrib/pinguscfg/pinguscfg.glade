@@ -1,0 +1,292 @@
+<?xml version="1.0"?>
+<GTK-Interface>
+
+<project>
+  <name>PingusCfg</name>
+  <program_name>pinguscfg</program_name>
+  <directory></directory>
+  <source_directory>src</source_directory>
+  <pixmaps_directory>pixmaps</pixmaps_directory>
+  <language>C</language>
+  <gnome_support>False</gnome_support>
+  <gettext_support>False</gettext_support>
+</project>
+
+<widget>
+  <class>GtkWindow</class>
+  <name>PingusConfigDialog</name>
+  <title>Pingus Configuration</title>
+  <type>GTK_WINDOW_TOPLEVEL</type>
+  <position>GTK_WIN_POS_NONE</position>
+  <modal>False</modal>
+  <default_width>420</default_width>
+  <default_height>250</default_height>
+  <allow_shrink>False</allow_shrink>
+  <allow_grow>True</allow_grow>
+  <auto_shrink>False</auto_shrink>
+
+  <widget>
+    <class>GtkFixed</class>
+    <name>fixed1</name>
+
+    <widget>
+      <class>GtkButton</class>
+      <name>Start Pingus</name>
+      <x>224</x>
+      <y>16</y>
+      <width>168</width>
+      <height>24</height>
+      <can_focus>True</can_focus>
+      <label>Start Pingus</label>
+      <relief>GTK_RELIEF_NORMAL</relief>
+    </widget>
+
+    <widget>
+      <class>GtkButton</class>
+      <name>button2</name>
+      <x>224</x>
+      <y>48</y>
+      <width>168</width>
+      <height>24</height>
+      <can_focus>True</can_focus>
+      <label>Cancel</label>
+      <relief>GTK_RELIEF_NORMAL</relief>
+    </widget>
+
+    <widget>
+      <class>GtkButton</class>
+      <name>button3</name>
+      <x>24</x>
+      <y>208</y>
+      <width>120</width>
+      <height>24</height>
+      <can_focus>True</can_focus>
+      <label>Reset Defaults</label>
+      <relief>GTK_RELIEF_NORMAL</relief>
+    </widget>
+
+    <widget>
+      <class>GtkButton</class>
+      <name>button4</name>
+      <x>224</x>
+      <y>80</y>
+      <width>168</width>
+      <height>24</height>
+      <can_focus>True</can_focus>
+      <label>About</label>
+      <relief>GTK_RELIEF_NORMAL</relief>
+    </widget>
+
+    <widget>
+      <class>GtkLabel</class>
+      <name>label1</name>
+      <x>8</x>
+      <y>8</y>
+      <width>96</width>
+      <height>16</height>
+      <label>Resolution:</label>
+      <justify>GTK_JUSTIFY_CENTER</justify>
+      <wrap>False</wrap>
+      <xalign>0.5</xalign>
+      <yalign>0.5</yalign>
+      <xpad>0</xpad>
+      <ypad>0</ypad>
+    </widget>
+
+    <widget>
+      <class>GtkCombo</class>
+      <name>combo1</name>
+      <x>24</x>
+      <y>32</y>
+      <width>168</width>
+      <height>24</height>
+      <value_in_list>False</value_in_list>
+      <ok_if_empty>True</ok_if_empty>
+      <case_sensitive>False</case_sensitive>
+      <use_arrows>True</use_arrows>
+      <use_arrows_always>False</use_arrows_always>
+      <items>640x480 (fast-mode)
+800x600 (recoment)
+1024x768
+1280x960
+</items>
+
+      <widget>
+	<class>GtkEntry</class>
+	<child_name>GtkCombo:entry</child_name>
+	<name>combo-entry1</name>
+	<can_focus>True</can_focus>
+	<editable>True</editable>
+	<text_visible>True</text_visible>
+	<text_max_length>0</text_max_length>
+	<text>640x480 (fast-mode)</text>
+      </widget>
+    </widget>
+
+    <widget>
+      <class>GtkCheckButton</class>
+      <name>checkbutton5</name>
+      <x>24</x>
+      <y>64</y>
+      <width>88</width>
+      <height>24</height>
+      <tooltip>Fullscreen might not work as expected if your XF86Config doesn't contain correct Modelines for that mode, it might also lock your X-Server under some conditions, so use with care.</tooltip>
+      <can_focus>True</can_focus>
+      <label>Fullscreen</label>
+      <active>False</active>
+      <draw_indicator>True</draw_indicator>
+    </widget>
+
+    <widget>
+      <class>GtkCheckButton</class>
+      <name>checkbutton1</name>
+      <x>24</x>
+      <y>96</y>
+      <width>100</width>
+      <height>23</height>
+      <tooltip>If debug mode is enabled lots of debug information will be collect and written to ~/.pingus/debug.log, enable this if you want to write a bug report and include the resulting file in the report.</tooltip>
+      <can_focus>True</can_focus>
+      <label>Debug Mode</label>
+      <active>False</active>
+      <draw_indicator>True</draw_indicator>
+    </widget>
+
+    <widget>
+      <class>GtkCheckButton</class>
+      <name>checkbutton2</name>
+      <x>24</x>
+      <y>120</y>
+      <width>100</width>
+      <height>23</height>
+      <tooltip>Fast mode is meant for slow machines, it will turn off several CPU intensive things and might speed up the game by ~50%.</tooltip>
+      <can_focus>True</can_focus>
+      <label>Fast Mode</label>
+      <active>False</active>
+      <draw_indicator>True</draw_indicator>
+    </widget>
+
+    <widget>
+      <class>GtkCheckButton</class>
+      <name>checkbutton4</name>
+      <x>24</x>
+      <y>176</y>
+      <width>100</width>
+      <height>23</height>
+      <tooltip>Enables Music in the game</tooltip>
+      <can_focus>True</can_focus>
+      <label>Enable Music</label>
+      <active>False</active>
+      <draw_indicator>True</draw_indicator>
+    </widget>
+
+    <widget>
+      <class>GtkCheckButton</class>
+      <name>checkbutton3</name>
+      <x>24</x>
+      <y>152</y>
+      <width>100</width>
+      <height>23</height>
+      <tooltip>Enables sound effects in the game</tooltip>
+      <can_focus>True</can_focus>
+      <label>Enable Sound</label>
+      <active>False</active>
+      <draw_indicator>True</draw_indicator>
+    </widget>
+
+    <widget>
+      <class>GtkPixmap</class>
+      <name>pixmap2</name>
+      <x>176</x>
+      <y>184</y>
+      <width>232</width>
+      <height>56</height>
+      <filename>walking.xpm</filename>
+      <xalign>0.5</xalign>
+      <yalign>0.5</yalign>
+      <xpad>0</xpad>
+      <ypad>0</ypad>
+      <build_insensitive>True</build_insensitive>
+    </widget>
+
+    <widget>
+      <class>GtkPixmap</class>
+      <name>pixmap1</name>
+      <x>168</x>
+      <y>104</y>
+      <width>240</width>
+      <height>80</height>
+      <filename>logo_pingus.xpm</filename>
+      <xalign>0.5</xalign>
+      <yalign>0.5</yalign>
+      <xpad>0</xpad>
+      <ypad>0</ypad>
+      <build_insensitive>True</build_insensitive>
+    </widget>
+  </widget>
+</widget>
+
+<widget>
+  <class>GtkWindow</class>
+  <name>About</name>
+  <title>Pingus Configuration - About</title>
+  <type>GTK_WINDOW_DIALOG</type>
+  <position>GTK_WIN_POS_NONE</position>
+  <modal>False</modal>
+  <default_width>360</default_width>
+  <default_height>300</default_height>
+  <allow_shrink>False</allow_shrink>
+  <allow_grow>True</allow_grow>
+  <auto_shrink>False</auto_shrink>
+
+  <widget>
+    <class>GtkFixed</class>
+    <name>fixed2</name>
+
+    <widget>
+      <class>GtkButton</class>
+      <name>button5</name>
+      <x>272</x>
+      <y>264</y>
+      <width>72</width>
+      <height>24</height>
+      <can_focus>True</can_focus>
+      <label>Ok</label>
+      <relief>GTK_RELIEF_NORMAL</relief>
+    </widget>
+
+    <widget>
+      <class>GtkLabel</class>
+      <name>label2</name>
+      <x>64</x>
+      <y>80</y>
+      <width>256</width>
+      <height>32</height>
+      <label>..:: Configuration Dialog ::..
+written by Ingo Ruhnke &lt;grumbel@gmx.de&gt;
+</label>
+      <justify>GTK_JUSTIFY_CENTER</justify>
+      <wrap>False</wrap>
+      <xalign>2.98023e-08</xalign>
+      <yalign>1.22935e-07</yalign>
+      <xpad>0</xpad>
+      <ypad>0</ypad>
+    </widget>
+
+    <widget>
+      <class>GtkPixmap</class>
+      <name>pixmap3</name>
+      <x>72</x>
+      <y>8</y>
+      <width>240</width>
+      <height>72</height>
+      <filename>logo_pingus.xpm</filename>
+      <xalign>0.5</xalign>
+      <yalign>0.5</yalign>
+      <xpad>0</xpad>
+      <ypad>0</ypad>
+      <build_insensitive>True</build_insensitive>
+    </widget>
+  </widget>
+</widget>
+
+</GTK-Interface>
