@@ -1,6 +1,6 @@
 section Window
 {
-	font = ../images/gui/fonts/font_black.tga(
+	font = ../images/gui/font_black.tga(
 		type=font,
 		trans_limit=0.05,
 		x=0, y=0,
@@ -8,7 +8,7 @@ section Window
 		spacelen=4,
 		letters="!'#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_'abcdefghijklmnopqrstuvwxyz{|}~");
 
-	font_disabled = ../images/gui/fonts/font_gray.tga(
+	font_disabled = ../images/gui/font_gray.tga(
 		type=font,
 		trans_limit=0.05,
 		x=0, y=0,
@@ -19,7 +19,7 @@ section Window
 
 section Button
 {
-	font = ../images/gui/fonts/font_black.tga(
+	font = ../images/gui/font_black.tga(
 		type=font,
 		trans_limit=0.05,
 		x=0, y=0,
@@ -27,7 +27,7 @@ section Button
 		spacelen=4,
 		letters="!'#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_'abcdefghijklmnopqrstuvwxyz{|}~");
 
-	font_disabled = ../images/gui/fonts/font_gray.tga(
+	font_disabled = ../images/gui/font_gray.tga(
 		type=font,
 		trans_limit=0.05,
 		x=0, y=0,
@@ -38,7 +38,7 @@ section Button
 
 section InputBox
 {
-	font = ../images/gui/fonts/font_black.tga(
+	font = ../images/gui/font_black.tga(
 		type=font,
 		trans_limit=0.05,
 		x=0, y=0,
@@ -46,7 +46,7 @@ section InputBox
 		spacelen=4,
 		letters="!'#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_'abcdefghijklmnopqrstuvwxyz{|}~");
 
-	font_disabled = ../images/gui/fonts/font_gray.tga(
+	font_disabled = ../images/gui/font_gray.tga(
 		type=font,
 		trans_limit=0.05,
 		x=0, y=0,
@@ -57,7 +57,7 @@ section InputBox
 
 section Label
 {
-	font = ../images/gui/fonts/font_black.tga(
+	font = ../images/gui/font_black.tga(
 		type=font,
 		trans_limit=0.05,
 		x=0, y=0,
@@ -68,7 +68,7 @@ section Label
 
 section ListBox
 {
-	font = ../images/gui/fonts/font_black.tga(
+	font = ../images/gui/font_black.tga(
 		type=font,
 		trans_limit=0.05,
 		x=0, y=0,
@@ -79,7 +79,7 @@ section ListBox
 
 section CheckBox
 {
-	font = ../images/gui/fonts/font_black.tga(
+	font = ../images/gui/font_black.tga(
 		type=font,
 		trans_limit=0.05,
 		x=0, y=0,
@@ -87,15 +87,15 @@ section CheckBox
 		spacelen=4,
 		letters="!'#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_'abcdefghijklmnopqrstuvwxyz{|}~");
 
-	sur_checked = ../images/gui/checkbox/checked.tga (type=surface);
-	sur_unchecked = ../images/gui/checkbox/unchecked.tga (type=surface);
-	sur_checked_disabled = ../images/gui/checkbox/checked_disabled.tga (type=surface);
-	sur_unchecked_disabled = ../images/gui/checkbox/unchecked_disabled.tga (type=surface);
+	sur_checked = ../images/gui/checkbox_checked.png (type=surface);
+	sur_unchecked = ../images/gui/checkbox_unchecked.png (type=surface);
+	sur_checked_disabled = ../images/gui/checkbox_checked_disabled.png (type=surface);
+	sur_unchecked_disabled = ../images/gui/checkbox_unchecked_disabled.png (type=surface);
 }
 
 section RadioButton
 {
-	font = ../images/gui/fonts/font_black.tga(
+	font = ../images/gui/font_black.tga(
 		type=font,
 		trans_limit=0.05,
 		x=0, y=0,
@@ -103,15 +103,15 @@ section RadioButton
 		spacelen=4,
 		letters="!'#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_'abcdefghijklmnopqrstuvwxyz{|}~");
 
-	sur_checked = ../images/gui/radiobutton/checked.tga (type=surface);
-	sur_unchecked = ../images/gui/radiobutton/unchecked.tga (type=surface);
-	sur_checked_disabled = ../images/gui/radiobutton/checked_disabled.tga (type=surface);
-	sur_unchecked_disabled = ../images/gui/radiobutton/unchecked_disabled.tga (type=surface);
+	sur_checked = ../images/gui/radiobutton_checked.png (type=surface);
+	sur_unchecked = ../images/gui/radiobutton_unchecked.png (type=surface);
+	sur_checked_disabled = ../images/gui/radiobutton_checked_disabled.png (type=surface);
+	sur_unchecked_disabled = ../images/gui/radiobutton_unchecked_disabled.png (type=surface);
 }
 
 section TreeViewItem
 {
-	font = ../images/gui/fonts/font_black.tga(
+	font = ../images/gui/font_black.tga(
 		type=font,
 		trans_limit=0.05,
 		x=0, y=0,

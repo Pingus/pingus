@@ -85,11 +85,11 @@ section Other
 	bash_radius       = ../images/pingus/bash_radius.png (type=surface, x=0, y=0, width=32, height=32);
 	bash_radius_gfx   = ../images/pingus/bash_radius_gfx.png (type=surface, x=0, y=0, width=32, height=32);
 
-	digger_radius     = ../images/pingus/digger_radius.png (type=surface, x=0, y=0, width=32, height=16);
-	digger_radius_gfx = ../images/pingus/digger_radius_gfx.png (type=surface, x=0, y=0, width=32, height=16);
+	digger_radius     = ../images/pingus/digger_radius.png (type=surface);
+	digger_radius_gfx = ../images/pingus/digger_radius_gfx.png (type=surface);
 
-	bomber_radius = ../images/pingus/bomber_radius.png (type=surface, x=0, y=0, width=64, height=64);
-	bomber_radius_gfx = ../images/pingus/bomber_radius_gfx.png (type=surface, x=0, y=0, width=64, height=64);
+	bomber_radius = ../images/pingus/bomber_radius.png (type=surface);
+	bomber_radius_gfx = ../images/pingus/bomber_radius_gfx.png (type=surface);
 
 	explo0        = ../images/pingus/explo0.png         (type=surface, x=0, y=0, width=64, height=64);
 	explo1        = ../images/pingus/explo1.png         (type=surface, x=0, y=0, width=64, height=64);

@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.17 2002/09/19 13:30:08 torangan Exp $
+//   $Id: pingus_main.cxx,v 1.18 2002/09/24 17:02:48 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -678,7 +678,10 @@ PingusMain::get_filenames()
 #endif /* !WIN32 */
  
 #ifdef HAVE_GETTEXT
+  std::cout << "Setting gettext path to: " << path_manager.get_base_path () + "/../../locale/" << std::endl;
   bindtextdomain (PACKAGE, (path_manager.get_base_path () + "/../../locale/").c_str());
+  // We use another LOCALEDIR to make static binaries possible
+  // bindtextdomain (PACKAGE, LOCALEDIR);
   textdomain (PACKAGE);
 #endif 
   std::cout << "BasePath: " << path_manager.get_base_path () << std::endl;

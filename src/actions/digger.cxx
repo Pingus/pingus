@@ -1,4 +1,4 @@
-//  $Id: digger.cxx,v 1.14 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: digger.cxx,v 1.15 2002/09/24 17:02:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ void
 Digger::init (void)
 {
   digger_radius = PingusResource::load_surface ("Other/digger_radius", "pingus");
-  digger_radius_gfx = PingusResource::load_surface ("Other/digger_radius_gfx", "pingus");
+  digger_radius_gfx = PingusResource::load_surface ("Other/digger_radius", "pingus");
   sprite = Sprite (std::string("Pingus/digger") + to_string(pingu->get_owner ()),
 		   "pingus");
 #if 0
@@ -54,7 +54,7 @@ Digger::update (float delta)
 {
   sprite.update (delta);
   
-  if (++digger_c >= 3)
+  if (++digger_c >= 5)
     {
       digger_c = 0;
       dig();

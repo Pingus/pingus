@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.106 2002/09/21 16:52:39 torangan Exp $
+#  $Id: Makefile.am,v 1.107 2002/09/24 17:02:48 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,6 @@ EXTRA_DIST = README \
              win32/Getopt1.c \
              win32/config.h  \
              boost/config.hpp \
-             boost/dummy_ptr.hpp \
              boost/smart_ptr.hpp \
              boost/utility.hpp   \
              make_docs.sh

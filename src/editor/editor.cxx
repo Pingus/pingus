@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.33 2002/09/15 00:19:19 grumbel Exp $
+//  $Id: editor.cxx,v 1.34 2002/09/24 17:02:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,6 +41,7 @@
 #include "property_window.hxx"
 #include "level_property_window.hxx"
 #include "editor.hxx"
+#include "../path_manager.hxx"
 
 #include <cstdio>
 
@@ -71,7 +72,7 @@ Editor::Editor () : event_handler_ref_counter(0),
   object_selector = new ObjectSelector;
 
   // FIXME: Should use PingusResource, Memleak
-  CL_ResourceManager* gui_resources = new CL_ResourceManager("../data/data/gui.scr", false);
+  CL_ResourceManager* gui_resources = new CL_ResourceManager(path_manager.complete("data/gui.scr"), false);
   
   style_manager = new CL_StyleManager_Default (gui_resources);
   gui   = new CL_GUIManager (style_manager);
