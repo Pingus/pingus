@@ -1,4 +1,4 @@
-//  $Id: PLFParser.cc,v 1.8 2000/04/25 17:54:39 grumbel Exp $
+//  $Id: PLFParser.cc,v 1.9 2000/04/26 15:27:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -126,11 +126,11 @@ PLFParser::get_raw_atom(void)
     }
   }
   
-  if (std::isspace(c)) {
+  if (isspace(c)) {
     temp_c = c;
-    while (std::isspace(c = get_char()));
+    while (isspace(c = get_char()));
     in.putback(c);
-    if (std::isspace(last_atom)) 
+    if (isspace(last_atom)) 
       return get_atom();
     return temp_c;
   }
@@ -155,7 +155,7 @@ PLFParser::get_groupname(void)
   
   jump();
 
-  while((std::isalpha(atom = get_atom()) || atom == '_')) 
+  while((isalpha(atom = get_atom()) || atom == '_')) 
     {
       ret_val += atom;
     }

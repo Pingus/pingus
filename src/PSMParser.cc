@@ -1,4 +1,4 @@
-//  $Id: PSMParser.cc,v 1.6 2000/04/25 17:54:39 grumbel Exp $
+//  $Id: PSMParser.cc,v 1.7 2000/04/26 15:27:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -138,7 +138,7 @@ void
 PSMParser::jump_spaces()
 {
   char c;
-  while (std::isspace(c = get_char()));
+  while (isspace(c = get_char()));
   in.putback(c);
 }
 
@@ -148,7 +148,7 @@ PSMParser::get_string(void)
   string str;
   char   c;
 
-  while (!std::isspace(c = get_atom()) && c != ':') {
+  while (!isspace(c = get_atom()) && c != ':') {
     str += c;
   }
   
@@ -173,7 +173,7 @@ PSMParser::get_int(void)
   else
     in.putback(c);
 
-  while (std::isdigit(c = get_atom())) {
+  while (isdigit(c = get_atom())) {
     str += c;
   }
 

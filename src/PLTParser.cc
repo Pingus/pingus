@@ -1,4 +1,4 @@
-//  $Id: PLTParser.cc,v 1.4 2000/04/25 17:54:39 grumbel Exp $
+//  $Id: PLTParser.cc,v 1.5 2000/04/26 15:27:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -141,7 +141,7 @@ PLTParser::get_string()
   char c;
   string str;
   
-  while (std::isalnum(c = get_char())) {
+  while (isalnum(c = get_char())) {
     str += c;
   }  
   in.putback(c);
