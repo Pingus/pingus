@@ -1,4 +1,4 @@
-//  $Id: teleporter_data.hxx,v 1.3 2002/09/28 11:52:27 torangan Exp $
+//  $Id: teleporter_data.hxx,v 1.4 2002/10/07 23:04:14 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,9 +33,6 @@ public:
   Vector pos;
   Vector target_pos;
   
-  Sprite sprite;
-  Sprite target_sprite;
-
   TeleporterData ();
   TeleporterData (xmlDocPtr doc, xmlNodePtr cur);
   TeleporterData (const TeleporterData& data);

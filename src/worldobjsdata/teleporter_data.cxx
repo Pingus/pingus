@@ -1,4 +1,4 @@
-//  $Id: teleporter_data.cxx,v 1.6 2002/09/27 18:36:42 torangan Exp $
+//  $Id: teleporter_data.cxx,v 1.7 2002/10/07 23:04:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,17 +26,14 @@
 
 namespace WorldObjsData {
 
-TeleporterData::TeleporterData () 
-  : sprite("teleporter", "worldobjs", 20.0f, Sprite::NONE, Sprite::ONCE),
-    target_sprite("teleportertarget", "worldobjs", 20.0f, Sprite::NONE, Sprite::ONCE)
+TeleporterData::TeleporterData ()
 {
 }
 
-TeleporterData::TeleporterData (const TeleporterData& data) : WorldObjData(data),
-							      pos(data.pos),
-							      target_pos(data.target_pos),
-							      sprite(data.sprite),
-							      target_sprite(data.target_sprite)
+TeleporterData::TeleporterData (const TeleporterData& data)
+  : WorldObjData(data),
+    pos(data.pos),
+    target_pos(data.target_pos)
 {
 }
 

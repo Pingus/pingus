@@ -1,4 +1,4 @@
-//  $Id: surface_background.cxx,v 1.4 2002/10/01 19:53:46 grumbel Exp $
+//  $Id: surface_background.cxx,v 1.5 2002/10/07 23:04:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,12 +37,7 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
     data(new WorldObjsData::SurfaceBackgroundData(data_))
 
 {
-  Timer timer;
-
-  if (verbose) {
-    timer.start();
-    std::cout << "Creating Background..." << std::flush;
-  }
+  Timer timer("Background creation");
 
   if (data->color.alpha > 1.0) 
     std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
@@ -101,8 +96,7 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
       std::cout << "Background: data->stretch_y: " << data->stretch_y << std::endl;
     }
   
-  if (verbose)
-    std::cout << "done" << timer.stop()  << std::endl;
+  timer.stop();
 }
 
 SurfaceBackground::~SurfaceBackground ()

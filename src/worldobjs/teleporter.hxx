@@ -1,4 +1,4 @@
-//  $Id: teleporter.hxx,v 1.16 2002/10/01 19:53:46 grumbel Exp $
+//  $Id: teleporter.hxx,v 1.17 2002/10/07 23:04:06 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,9 @@ class Teleporter : public WorldObj
 {
 private:
   WorldObjsData::TeleporterData* const data;
+  Sprite sprite;
+  Sprite target_sprite;
+
 public:
   Teleporter (const WorldObjsData::TeleporterData& data_);
  ~Teleporter ();

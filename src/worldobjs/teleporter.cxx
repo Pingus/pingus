@@ -1,4 +1,4 @@
-//  $Id: teleporter.cxx,v 1.14 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: teleporter.cxx,v 1.15 2002/10/07 23:04:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,15 +28,16 @@
 namespace WorldObjs {
 
 Teleporter::Teleporter (const WorldObjsData::TeleporterData& data_)
-  : data(new WorldObjsData::TeleporterData(data_))
-
+  : data(new WorldObjsData::TeleporterData(data_)),
+    sprite("teleporter", "worldobjs", 20.0f, Sprite::NONE, Sprite::ONCE),
+    target_sprite("teleportertarget", "worldobjs", 15.0f, Sprite::NONE, Sprite::ONCE)
 {  
-  data->sprite.set_align_center_bottom();
-  data->target_sprite.set_align_center();
+  sprite.set_align_center_bottom();
+  target_sprite.set_align_center();
 
   //FIXME: we need a Sprite::set_frame()
 
-  std::cout << "Teleporter: pos: " << data->pos.x << " "  << data->pos.y << " " << data->pos.z << std::endl;
+  //std::cout << "Teleporter: pos: " << data->pos.x << " "  << data->pos.y << " " << data->pos.z << std::endl;
 }
 
 Teleporter::~Teleporter ()
@@ -53,15 +54,15 @@ Teleporter::get_z_pos () const
 void 
 Teleporter::draw (GraphicContext& gc)
 {
-  gc.draw(data->sprite, data->pos);
-  gc.draw(data->target_sprite, data->target_pos);
+  gc.draw(sprite, data->pos);
+  gc.draw(target_sprite, data->target_pos);
 }
 
 void 
 Teleporter::update ()
 {
-  data->sprite.update();
-  data->target_sprite.update();
+  sprite.update();
+  target_sprite.update();
 
   PinguHolder* holder = world->get_pingus();
 
@@ -70,9 +71,9 @@ Teleporter::update ()
       if (   (*pingu)->get_x() > data->pos.x - 3  && (*pingu)->get_x() < data->pos.x + 3
 	     && (*pingu)->get_y() > data->pos.y - 52 && (*pingu)->get_y() < data->pos.y)
 	{
-	  (*pingu)->set_pos (static_cast<int>(data->target_pos.x), static_cast<int>(data->target_pos.y));
-	  data->sprite.reset ();
-	  data->target_sprite.reset ();
+	  (*pingu)->set_pos (data->target_pos.x, data->target_pos.y);
+	  sprite.reset ();
+          target_sprite.reset ();
 	}
     }
 }
