@@ -1,4 +1,4 @@
-//  $Id: info_box.hxx,v 1.10 2002/09/14 13:35:38 torangan Exp $
+//  $Id: info_box_obj.hxx,v 1.1 2002/09/14 13:35:38 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,38 +17,37 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_WORLDOBJS_INFO_BOX_HXX
-#define HEADER_PINGUS_WORLDOBJS_INFO_BOX_HXX
+#ifndef HEADER_PINGUS_EDITOROBJS_INFO_BOX_OBJ_HXX
+#define HEADER_PINGUS_EDITOROBJS_INFO_BOX_OBJ_HXX
 
-#include "../worldobj.hxx"
 #include "../editor/sprite_editorobj.hxx"
 
 namespace WorldObjsData {
 class InfoBoxData;
 }
 
-namespace WorldObjs {
+namespace EditorObjs {
 
-class InfoBox : public WorldObj
+class InfoBoxObj : public SpriteEditorObj
 {
 private:
-  bool is_open;
   WorldObjsData::InfoBoxData* const data;
 
 public:
-  InfoBox (WorldObjsData::InfoBoxData* data_);
+  InfoBoxObj (WorldObjsData::InfoBoxData* data_);
 
-  void draw (GraphicContext& gc);
-  void update (float delta);
-  float get_z_pos () const;
+  static EditorObjLst create (const CL_Vector& pos);
+
+  void write_xml (std::ostream& xml);
+  EditorObj* duplicate ();
+  std::string status_line ();
   
 private:
-  InfoBox (const InfoBox&);
-  InfoBox operator= (const InfoBox&);
+  InfoBoxObj (const InfoBoxObj&);
+  InfoBoxObj operator= (const InfoBoxObj&);
 };
 
-} // namespace WorldObjs
-
+} // namespace EditorObjs
 
 #endif
 

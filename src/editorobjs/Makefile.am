@@ -22,6 +22,7 @@ libpingus_editorobjs_a_SOURCES = \
 	fake_exit_obj.cxx          fake_exit_obj.hxx \
 	guillotine_obj.cxx         guillotine_obj.hxx \
 	hammer_obj.cxx             hammer_obj.hxx \
+	info_box_obj.cxx	   info_box_obj.hxx \
 	laser_exit_obj.cxx         laser_exit_obj.hxx \
 	smasher_obj.cxx            smasher_obj.hxx \
 	spike_obj.cxx              spike_obj.hxx \

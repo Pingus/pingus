@@ -1,4 +1,4 @@
-//  $Id: info_box.cxx,v 1.11 2002/09/10 21:03:33 torangan Exp $
+//  $Id: info_box.cxx,v 1.12 2002/09/14 13:35:38 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,195 +24,69 @@
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
 #include "../pingus_resource.hxx"
-#include "../xml_helper.hxx"
-#include "info_box.hxx"
 #include "../pingu.hxx"
-
-namespace WorldObjsData {
-
-InfoBoxData::InfoBoxData ()
-{
-}
-
-InfoBoxData::~InfoBoxData ()
-{
-}
-
-WorldObj* 
-InfoBoxData::create_WorldObj()
-{
-  return new WorldObjs::InfoBox (*this);
-}
-
-EditorObjLst
-InfoBoxData::create_EditorObj()
-{
-  EditorObjLst lst;
-  lst.push_back (new EditorObjs::EditorInfoBox (*this));
-  return lst;
-}
-
-InfoBoxData::InfoBoxData (xmlDocPtr doc, xmlNodePtr cur)
-{
-  cur = cur->children;
-  
-  while (cur)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
-      else if (XMLhelper::equal_str(cur->name, "position"))
-	{
-	  pos = XMLhelper::parse_vector (doc, cur);
-	}
-      else if (XMLhelper::equal_str(cur->name, "info-text"))
-	{
-	  info_text = XMLhelper::parse_string (doc, cur);
-	}
-      else
-	std::cout << "InfoBox::creata (): Unhandled " << cur->name << std::endl;
-      cur = cur->next;
-    }
-}
-
-InfoBoxData::InfoBoxData (const InfoBoxData& old) : WorldObjData(old),
-                                                    info_text(old.info_text),
-						    pos(old.pos),
-						    text_pos(old.text_pos)
-{
-}
-
-InfoBoxData
-InfoBoxData::operator= (const InfoBoxData& old)
-{
-  if (this == &old)
-    return *this;
-  
-  WorldObjData::operator=(old);
-  
-  info_text = old.info_text;
-  pos       = old.pos;
-  text_pos  = old.text_pos;
-  
-  return *this;
-}
-
-void 
-InfoBoxData::write_xml(std::ostream& xml)
-{
-  xml << "  <worldobj type=\"infobox\">\n";
-  XMLhelper::write_vector_xml (xml, pos);
-  xml << "   <info-text>" << info_text << "</info-text>\n" 
-      << "  </worldobj>\n" << std::endl;
-}
-
-} // namespace WorldObjsData
+#include "../worldobjsdata/info_box_data.hxx"
+#include "info_box.hxx"
 
 namespace WorldObjs {
 
-InfoBox::InfoBox (const WorldObjsData::InfoBoxData& data)
-  : InfoBoxData (data),
-    sprite ("infobox", "worldobjs"), 
-    is_open (false)
+InfoBox::InfoBox (WorldObjsData::InfoBoxData* data_)
+  : is_open (false),
+    data(new WorldObjsData::InfoBoxData(*data_))
 {
-  sprite.set_align_center_bottom ();
-  font = PingusResource::load_font("Fonts/pingus_small", "fonts");
 }
 
 void
 InfoBox::draw (GraphicContext& gc)
 {
-  int x = int(gc.get_x_offset () + (gc.get_width ()/2));
-  int y = int(gc.get_y_offset () + (gc.get_height ()/2));
+  int x = static_cast<int>(gc.get_x_offset() + (gc.get_width ()/2));
+  int y = static_cast<int>(gc.get_y_offset() + (gc.get_height()/2));
 
-  int x_pos = int(pos.x) + x;
-  int y_pos = int(pos.y) + y - 100;
+  int x_pos = static_cast<int>(data->pos.x) + x;
+  int y_pos = static_cast<int>(data->pos.y) + y - 100;
 
   if (is_open)
     {
-      int width = font->get_text_width (info_text.c_str ());
+      int width = data->font->get_text_width(data->info_text.c_str());
       int border = 6;
-      gc.draw_line (pos, pos + CL_Vector(0, 0 - 100), 0.0f, 1.0f, 0.0f, 1.0f);
-      gc.draw(sprite, pos);
-      CL_Display::fill_rect (x_pos - width/2 - border, y_pos - border,
-			     x_pos + width/2 + border, y_pos + font->get_height () + border,
-			     0.0, 0.0, 0.0, 1.0);
-      font->print_center (x_pos, y_pos, info_text.c_str ()); 
+      gc.draw_line(data->pos, data->pos + CL_Vector(0, 0 - 100), 0.0f, 1.0f, 0.0f, 1.0f);
+      gc.draw(data->sprite, data->pos);
+      CL_Display::fill_rect(x_pos - width/2 - border,
+                            y_pos - border,
+			    x_pos + width/2 + border,
+			    y_pos + data->font->get_height() + border,
+			    0.0, 0.0, 0.0, 1.0);
+      data->font->print_center(x_pos, y_pos, data->info_text.c_str()); 
     }
   else
     {
-      gc.draw (sprite, pos);
+      gc.draw(data->sprite, data->pos);
     }
 }
 
 void
 InfoBox::update (float delta)
 {
-  sprite.update (delta);
+  data->sprite.update(delta);
 
   PinguHolder* holder = world->get_pingu_p();
   for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
     {
-      if ((*pingu)->is_inside (int(pos.x - 16), int(pos.y - 32),
-			       int(pos.x + 16), int(pos.y)))
+      if ((*pingu)->is_inside (static_cast<int>(data->pos.x - 16),
+                               static_cast<int>(data->pos.y - 32),
+			       static_cast<int>(data->pos.x + 16),
+			       static_cast<int>(data->pos.y)))
 	{
 	  is_open = true;
 	}
     }
 }
 
+float
+InfoBox::get_z_pos () const {
+  return data->pos.z;
+}
+
 } // namespace WorldObjs
-
-namespace EditorObjs {
-
-EditorInfoBox::EditorInfoBox(const InfoBoxData& data)
-  : InfoBoxData (data),
-    SpriteEditorObj ("infobox", "worldobjs", &pos)
-{
-  sprite.set_align_center_bottom ();
-}
-
-EditorInfoBox::EditorInfoBox (const EditorInfoBox& old) : InfoBoxData(old), 
-                                                          SpriteEditorObj(old)
-{
-}
-
-EditorInfoBox
-EditorInfoBox::operator= (const EditorInfoBox& old)
-{
-  if (this == &old)
-    return *this;
-    
-  InfoBoxData::operator=(old);
-  SpriteEditorObj::operator=(old);
-  
-  return *this;
-}
-
-EditorObjLst
-EditorInfoBox::create (const CL_Vector& pos)
-{
-  EditorObjLst lst;
-  InfoBoxData data;
-  data.pos = pos;
-  lst.push_back (new EditorInfoBox (data));
-  return lst;
-}
-
-EditorObj*
-EditorInfoBox::duplicate()
-{
-  return new EditorInfoBox (*this);
-}
-
-std::string 
-EditorInfoBox::status_line ()
-{
-  return "InfoBox";
-}
-
-} // namespace EditorObjs
 
 /* EOF */

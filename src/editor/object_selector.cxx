@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.14 2002/09/11 15:27:19 torangan Exp $
+//  $Id: object_selector.cxx,v 1.15 2002/09/14 13:35:38 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,7 @@
 #include "../editorobjs/fake_exit_obj.hxx"
 #include "../editorobjs/guillotine_obj.hxx"
 #include "../editorobjs/hammer_obj.hxx"
+#include "../editorobjs/info_box_obj.hxx"
 #include "../editorobjs/laser_exit_obj.hxx"
 #include "../editorobjs/smasher_obj.hxx"
 #include "../editorobjs/spike_obj.hxx"
@@ -56,7 +57,6 @@
 #include "../editorobjs/teleporter_obj.hxx"
 
 #include "../worldobjs/ice_block.hxx"
-#include "../worldobjs/info_box.hxx"
 #include "../worldobjs/conveyor_belt.hxx"
 
 using namespace std;
@@ -201,7 +201,7 @@ ObjectSelector::get_worldobj()
 	  return EditorIceBlockObj::create (pos);
 
 	case CL_KEY_5:
-	  return EditorInfoBox::create (pos);
+	  return InfoBoxObj::create (pos);
 	  
 	case CL_KEY_ESCAPE:
 	  return EditorObjLst();

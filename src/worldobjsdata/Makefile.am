@@ -22,6 +22,7 @@ libpingus_worldobjsdata_a_SOURCES = \
 	fake_exit_data.cxx   fake_exit_data.hxx \
 	guillotine_data.cxx  guillotine_data.hxx \
 	hammer_data.cxx      hammer_data.hxx \
+	info_box_data.cxx    info_box_data.hxx \
 	laser_exit_data.cxx  laser_exit_data.hxx \
 	smasher_data.cxx     smasher_data.hxx \
 	spike_data.cxx       spike_data.hxx  \

@@ -1,4 +1,4 @@
-//  $Id: info_box.hxx,v 1.10 2002/09/14 13:35:38 torangan Exp $
+//  $Id: info_box_data.hxx,v 1.1 2002/09/14 13:35:38 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,38 +17,45 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_WORLDOBJS_INFO_BOX_HXX
-#define HEADER_PINGUS_WORLDOBJS_INFO_BOX_HXX
+#ifndef HEADER_PINGUS_WORLDOBJSDATA_INFO_BOX_DATA_HXX
+#define HEADER_PINGUS_WORLDOBJSDATA_INFO_BOX_DATA_HXX
 
-#include "../worldobj.hxx"
-#include "../editor/sprite_editorobj.hxx"
+#include <ClanLib/Core/Math/cl_vector.h>
+#include "../sprite.hxx"
+#include "../worldobj_data.hxx"
+#include "../libxmlfwd.hxx"
+
+class CL_Font;
 
 namespace WorldObjsData {
-class InfoBoxData;
-}
 
-namespace WorldObjs {
-
-class InfoBox : public WorldObj
+class InfoBoxData : public WorldObjData
 {
-private:
-  bool is_open;
-  WorldObjsData::InfoBoxData* const data;
+public:
+  std::string info_text;
+  CL_Vector pos;
+  CL_Vector text_pos;
+  Sprite    sprite;
+  CL_Font*  font;
 
 public:
-  InfoBox (WorldObjsData::InfoBoxData* data_);
+  InfoBoxData ();
+  InfoBoxData (xmlDocPtr doc, xmlNodePtr cur);
+  
+  InfoBoxData (const InfoBoxData& old);
+  
+  ~InfoBoxData ();
 
-  void draw (GraphicContext& gc);
-  void update (float delta);
-  float get_z_pos () const;
+  void write_xml (std::ostream& xml);  
+  
+  WorldObj* create_WorldObj ();
+  EditorObjLst create_EditorObj ();
   
 private:
-  InfoBox (const InfoBox&);
-  InfoBox operator= (const InfoBox&);
+  InfoBoxData operator= (const InfoBoxData&);
 };
 
-} // namespace WorldObjs
-
+} // namespace WorldObjsData
 
 #endif
 
