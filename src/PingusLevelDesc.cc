@@ -1,4 +1,4 @@
- //  $Id: PingusLevelDesc.cc,v 1.13 2000/07/31 23:45:02 grumbel Exp $
+ //  $Id: PingusLevelDesc.cc,v 1.14 2000/08/06 00:00:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,11 +80,14 @@ PingusLevelDesc::draw(PingusLevelDesc::LoadingStatus status)
 
   if (status == LOADING) {
     font->print_center(CL_Display::get_width() / 2, CL_Display::get_height() - 80, "Loading...");
+    Display::flip_display();    
   } else {
-    font->print_center(CL_Display::get_width() / 2, CL_Display::get_height() - 80, "Loading finished, the level will start in the next seconds.");
+    font->print_center(CL_Display::get_width() / 2, CL_Display::get_height() - 80, "Loading finished. Press a mouse button to start the level");
+    Display::flip_display();
+    
+    while (!CL_Mouse::left_pressed() && !CL_Mouse::right_pressed() && !CL_Mouse::middle_pressed())
+      CL_System::keep_alive();
   }
-
-  Display::flip_display();
 }
 
 /* EOF */
