@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
-"POT-Creation-Date: 2003-04-18 11:16+0200\n"
+"POT-Creation-Date: 2003-04-19 10:12+0200\n"
 "PO-Revision-Date: 2003-04-16 01:50+0200\n"
 "Last-Translator: Philippe Saint-Pierre <stpere@linuxmail.org>\n"
 "Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx."
@@ -62,35 +62,35 @@ msgstr "-Scénario"
 msgid "-Translation"
 msgstr "-Traduction"
 
-#: src/credits.cxx:104
+#: src/credits.cxx:105
 msgid "-Special"
 msgstr "-Spécial"
 
-#: src/credits.cxx:105
+#: src/credits.cxx:106
 msgid "-Thanks to"
 msgstr "-Remerciements à"
 
-#: src/credits.cxx:142
+#: src/credits.cxx:144
 msgid "_And a very Special Thanks"
 msgstr "_Et un merci spécial"
 
-#: src/credits.cxx:143
+#: src/credits.cxx:145
 msgid "_to all the people who"
 msgstr "_a tout ceux qui"
 
-#: src/credits.cxx:144
+#: src/credits.cxx:146
 msgid "_contribute to"
 msgstr "_contribuent"
 
-#: src/credits.cxx:145
+#: src/credits.cxx:147
 msgid "_Free Software!"
 msgstr "_aux logiciels libres!"
 
-#: src/credits.cxx:151
+#: src/credits.cxx:153
 msgid "_Thank you for"
 msgstr "_Merci de"
 
-#: src/credits.cxx:152
+#: src/credits.cxx:154
 msgid "_playing!"
 msgstr "_jouer!"
 

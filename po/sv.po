@@ -1,231 +1,230 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Ingo Ruhnke
-# This file is distributed under the same license as the PACKAGE package.
+# Pingus.
+# Copyright (C) YEAR Free Software foundation, Inc.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-04-18 11:16+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: Pingus 0.6.0\n"
+"POT-Creation-Date: 2003-04-19 10:12+0200\n"
+"PO-Revision-Date: 2003-04-19 00:55+0200\n"
+"Last-Translator: Jan Morén <jan.moren@lucs.lu.se>\n"
+"Language-Team: sv <jan.moren@lucs.lu.se>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/config.cxx:71
 msgid "Couldn't open: "
-msgstr ""
+msgstr "Kunde inte öppna: "
 
 #: src/config.cxx:170
 msgid "Unexpected char: '"
-msgstr ""
+msgstr "Oväntat tecken: '"
 
 #: src/config.cxx:204
 msgid "Unexpected char '"
-msgstr ""
+msgstr "Oväntat tecken '"
 
 #: src/credits.cxx:46
 msgid "-Idea"
-msgstr ""
+msgstr "-Idé"
 
 #: src/credits.cxx:50
 msgid "-Maintaining"
-msgstr ""
+msgstr "-Underhåller"
 
 #: src/credits.cxx:54
 msgid "-Programming"
-msgstr ""
+msgstr "-Programmering"
 
 #: src/credits.cxx:60
 msgid "-Porting (Win32)"
-msgstr ""
+msgstr "-Portning (Win32)"
 
 #: src/credits.cxx:68
 msgid "-Gfx"
-msgstr ""
+msgstr "-Grafik"
 
 #: src/credits.cxx:79
 msgid "-Music"
-msgstr ""
+msgstr "-Musik"
 
 #: src/credits.cxx:85
 msgid "-Level Design"
-msgstr ""
+msgstr "-Nivådesign"
 
 #: src/credits.cxx:90
 msgid "-Story"
-msgstr ""
+msgstr "-Berättelse"
 
 #: src/credits.cxx:94
 msgid "-Translation"
-msgstr ""
-
-#: src/credits.cxx:104
-msgid "-Special"
-msgstr ""
+msgstr "-Översättning"
 
 #: src/credits.cxx:105
+msgid "-Special"
+msgstr "-Special"
+
+#: src/credits.cxx:106
 msgid "-Thanks to"
-msgstr ""
-
-#: src/credits.cxx:142
-msgid "_And a very Special Thanks"
-msgstr ""
-
-#: src/credits.cxx:143
-msgid "_to all the people who"
-msgstr ""
+msgstr "-Tack till"
 
 #: src/credits.cxx:144
-msgid "_contribute to"
-msgstr ""
+msgid "_And a very Special Thanks"
+msgstr "_Och ett särskilt tack"
 
 #: src/credits.cxx:145
+msgid "_to all the people who"
+msgstr "_till alla de som"
+
+#: src/credits.cxx:146
+msgid "_contribute to"
+msgstr "_bidrar till"
+
+#: src/credits.cxx:147
 msgid "_Free Software!"
-msgstr ""
+msgstr "_Fri mjukvara!"
 
-#: src/credits.cxx:151
+#: src/credits.cxx:153
 msgid "_Thank you for"
-msgstr ""
+msgstr "_Tack för att"
 
-#: src/credits.cxx:152
+#: src/credits.cxx:154
 msgid "_playing!"
-msgstr ""
+msgstr "_du spelar!"
 
 #: src/editor/editor_event.cxx:580
 msgid "Enter filename to save as:"
-msgstr ""
+msgstr "Ange filnamn att spara som:"
 
 #: src/editor/editor_help_screen.cxx:38
 msgid "Editor Helpscreen (hide with F1)"
-msgstr ""
+msgstr "Editor hjälp (göm med F1)"
 
 #: src/editor/editor_help_screen.cxx:45
 msgid "F1 - show/hide this help screen"
-msgstr ""
+msgstr "F1 - visa/göm hjälpen"
 
 #: src/editor/editor_help_screen.cxx:46
 msgid "F2 - launch level building tutorial"
-msgstr ""
+msgstr "F2 - starta kurs i nivåskapande"
 
 #: src/editor/editor_help_screen.cxx:47
 msgid "F3 - toggle background color"
-msgstr ""
+msgstr "F3 - backgrundsfärg av/på"
 
 #: src/editor/editor_help_screen.cxx:48
 msgid "F4 - play/test the level"
-msgstr ""
+msgstr "F4 - spela/testa nivån"
 
 #: src/editor/editor_help_screen.cxx:49
 msgid "F5 - load a level"
-msgstr ""
+msgstr "F5 - läs in en nivå"
 
 #: src/editor/editor_help_screen.cxx:50
 msgid "F6 - save this level"
-msgstr ""
+msgstr "F6 - spara denna nivå"
 
 #: src/editor/editor_help_screen.cxx:51
 msgid "F7 - [unset]"
-msgstr ""
+msgstr "F7 - [välj bort]"
 
 #: src/editor/editor_help_screen.cxx:52
 msgid "F8 - quick save/backup save?!"
-msgstr ""
+msgstr "F8 - snabbspara/gör backup?!"
 
 #: src/editor/editor_help_screen.cxx:53
 msgid "F9 - change level width and height"
-msgstr ""
+msgstr "F9 - ändra höjd och bredd på nivån"
 
 #: src/editor/editor_help_screen.cxx:54
 msgid "F10 - [unset]"
-msgstr ""
+msgstr "F10 - [välj bort]"
 
 #: src/editor/editor_help_screen.cxx:55
 msgid "F11 - toggle fps counter"
-msgstr ""
+msgstr "F11 - fps-räknare av/på"
 
 #: src/editor/editor_help_screen.cxx:56
 msgid "F12 - make screenshot"
-msgstr ""
+msgstr "F12 - ta skärmbild"
 
 #: src/editor/editor_help_screen.cxx:60
 msgid "Home - increase object size"
-msgstr ""
+msgstr "Home - öka objektets storlek"
 
 #: src/editor/editor_help_screen.cxx:61
 msgid "End  - decrease object size"
-msgstr ""
+msgstr "End - minska objektets storlek"
 
 #: src/editor/editor_help_screen.cxx:62
 msgid "Cursor Keys - Move object"
-msgstr ""
+msgstr "piltangenter - flytta objekt"
 
 #: src/editor/editor_help_screen.cxx:63
 msgid "Shift 'Cursor Keys' - Move objects fast "
-msgstr ""
+msgstr "Skift + piltangenter - flytta objekt snabbt "
 
 #: src/editor/editor_help_screen.cxx:64
 msgid "PageUp   - level object up"
-msgstr ""
+msgstr "PageUp   - flytta objektet upp en nivå"
 
 #: src/editor/editor_help_screen.cxx:65
 msgid "PageDown - level object down"
-msgstr ""
+msgstr "PageDown - flytta objektet ner en nivå"
 
 #: src/editor/editor_help_screen.cxx:66
 msgid "Shift PageUp   - increase objects z-pos by 50"
-msgstr ""
+msgstr "Skift + PageUp   - öka objektets z-position med 50"
 
 #: src/editor/editor_help_screen.cxx:67
 msgid "Shift PageDown - decrease objects z-pos by 50"
-msgstr ""
+msgstr "Skift + PageDown   - minska objektets z-position med 50"
 
 #: src/editor/editor_help_screen.cxx:68
 msgid "Enter - Set default zoom (1:1)"
-msgstr ""
+msgstr "Enter - Sätt zoom till standard (1:1)"
 
 #: src/editor/editor_help_screen.cxx:69
 msgid "d - duplicate object"
-msgstr ""
+msgstr "d - kopiera objekt"
 
 #: src/editor/editor_help_screen.cxx:70
 msgid "a - mark all objects"
-msgstr ""
+msgstr "a- markera alla objekt"
 
 #: src/editor/editor_help_screen.cxx:71
 msgid "shift leftmouseclick - add object to selection"
-msgstr ""
+msgstr "skift + vänster musknapp - lägg till objekt till urval"
 
 #: src/editor/editor_help_screen.cxx:72
 msgid "leftmouseclick - select object"
-msgstr ""
+msgstr "vänster musknapp - välj objekt"
 
 #: src/editor/editor_help_screen.cxx:73
 msgid "Insert - insert new object"
-msgstr ""
+msgstr "Insert - lägg till ett nytt objekt"
 
 #: src/editor/editor_help_screen.cxx:74
 msgid "Remove - remove selected object"
-msgstr ""
+msgstr "Ta bort - ta bort valt objekt"
 
 #: src/editor/editor_help_screen.cxx:75
 msgid "g - ungroup/group current selection"
-msgstr ""
+msgstr "g - gruppera/avgruppera nuvarande urval"
 
 #: src/editor/editor_help_screen.cxx:76
 msgid "Ctrl PageUp   - increase objects z-pos by 1"
-msgstr ""
+msgstr "Ctrl PageUp   - öka objektets z-position med 1"
 
 #: src/editor/editor_help_screen.cxx:77
 msgid "Ctrl PageDown - decrease objects z-pos by 1"
-msgstr ""
+msgstr "Ctrl PageDown   - minska objektets z-position med 1"
 
 #: src/editor/editor_help_screen.cxx:83
 msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.xml"
-msgstr ""
+msgstr "Namnstandard: <NIVÅNAMN><NUMMER>-<SKAPARE>.xml"
 
 #: src/editor/editor_help_screen.cxx:85
 msgid ""
@@ -233,947 +232,961 @@ msgid ""
 "release,\n"
 "please mail it to pingus-devel@nongnu.org."
 msgstr ""
+"När du har skapat en nivå och vill ha med den i nästa utgåva av pingus,\n"
+"skicka den till pingus-devel@nongnu.org."
 
 #: src/editor/object_selector.cxx:106
 msgid "1 - guillotine"
-msgstr ""
+msgstr "1 - giljotin"
 
 #: src/editor/object_selector.cxx:107
 msgid "2 - hammer"
-msgstr ""
+msgstr "2 - hammare"
 
 #: src/editor/object_selector.cxx:108
 msgid "3 - spike"
-msgstr ""
+msgstr "3 - spik"
 
 #: src/editor/object_selector.cxx:109
 msgid "4 - laser_exit"
-msgstr ""
+msgstr "4 - laser utgång"
 
 #: src/editor/object_selector.cxx:110
 msgid "5 - fake_exit"
-msgstr ""
+msgstr "5 - falsk utgång"
 
 #: src/editor/object_selector.cxx:111
 msgid "6 - smasher"
-msgstr ""
+msgstr "6 - krossare"
 
 #: src/editor/object_selector.cxx:112
 msgid "7 - bumper"
-msgstr ""
+msgstr "7 - knuffare"
 
 #: src/editor/object_selector.cxx:186
 msgid "Select a WorldObj"
-msgstr ""
+msgstr "Välj ett WorldObj"
 
 #: src/editor/object_selector.cxx:187
 msgid "1 - teleporter"
-msgstr ""
+msgstr "1 - teleportör"
 
 #: src/editor/object_selector.cxx:188
 msgid "2 - switch and door"
-msgstr ""
+msgstr "2 - knapp och dörr"
 
 #: src/editor/object_selector.cxx:189
 msgid "3 - ConveyorBelt"
-msgstr ""
+msgstr "3 - Löpande band"
 
 #: src/editor/object_selector.cxx:190
 msgid "4 - IceBlock"
-msgstr ""
+msgstr "4 - Isblock"
 
 #: src/editor/object_selector.cxx:191
 msgid "5 - InfoBox"
-msgstr ""
+msgstr "5 - InfoBox"
 
 #: src/editor/object_selector.cxx:232
 msgid "Select a weather"
-msgstr ""
+msgstr "Välj väder"
 
 #: src/editor/object_selector.cxx:233
 msgid "1 - snow"
-msgstr ""
+msgstr "1 - snö"
 
 #: src/editor/object_selector.cxx:234
 msgid "2 - rain"
-msgstr ""
+msgstr "2 - regn"
 
 #: src/editor/object_selector.cxx:265
 msgid "Select an entrance"
-msgstr ""
+msgstr "Välj en ingång"
 
 #: src/editor/object_selector.cxx:266
 msgid "1 - generic"
-msgstr ""
+msgstr "1 - generisk"
 
 #: src/editor/object_selector.cxx:267
 msgid "2 - woodthing"
-msgstr ""
+msgstr "2 - träpryl"
 
 #: src/editor/object_selector.cxx:268
 msgid "3 - cloud"
-msgstr ""
+msgstr "3 - moln"
 
 #: src/editor/object_selector.cxx:269
 msgid "h - entrance surface (hotspot)"
-msgstr ""
+msgstr "h - ingångsyta (hotspot)"
 
 #: src/editor/object_selector.cxx:343
 msgid "What object type do you want?"
-msgstr ""
+msgstr "Vilken objettyp vill du ha?"
 
 #: src/editor/object_selector.cxx:344 src/editor/object_selector.cxx:400
 msgid "h - Hotspot"
-msgstr ""
+msgstr "h - Hotspot"
 
 #: src/editor/object_selector.cxx:345
 msgid "g - Groundpiece (ground) [not implemented]"
-msgstr ""
+msgstr "g - Markbit (ground) [ej implementerad]"
 
 #: src/editor/object_selector.cxx:394 src/editor/object_selector.cxx:562
 msgid "Which object do you want?"
-msgstr ""
+msgstr "Vilket objekt vill du ha?"
 
 #: src/editor/object_selector.cxx:395
 msgid "g - Groundpiece (ground)"
-msgstr ""
+msgstr "g - Mark (mark)"
 
 #: src/editor/object_selector.cxx:396
 msgid "s - Groundpiece (solid)"
-msgstr ""
+msgstr "s - Mark (solid)"
 
 #: src/editor/object_selector.cxx:397
 msgid "b - Groundpiece (bridge)"
-msgstr ""
+msgstr "b - Mark (bro)"
 
 #: src/editor/object_selector.cxx:398
 msgid "n - Groundpiece (transparent)"
-msgstr ""
+msgstr "n - Mark (transparent)"
 
 #: src/editor/object_selector.cxx:399
 msgid "r - Groundpiece (remove)"
-msgstr ""
+msgstr "r - Mark (ta bort)"
 
 #: src/editor/object_selector.cxx:401
 msgid "e - Entrance"
-msgstr ""
+msgstr "e - Ingång"
 
 #: src/editor/object_selector.cxx:402
 msgid "x - Exit"
-msgstr ""
+msgstr "x - Avsluta"
 
 #: src/editor/object_selector.cxx:403
 msgid "l - Liquid"
-msgstr ""
+msgstr "l - Vätska"
 
 #: src/editor/object_selector.cxx:404
 msgid "w - Weather"
-msgstr ""
+msgstr "w - Väder"
 
 #: src/editor/object_selector.cxx:405
 msgid "t - Traps"
-msgstr ""
+msgstr "t - Fällor"
 
 #: src/editor/object_selector.cxx:406
 msgid "o - WorldObject"
-msgstr ""
+msgstr "o - WorldObject"
 
 #: src/editor/object_selector.cxx:407
 msgid "z - Background"
-msgstr ""
+msgstr "z - Bakgrund"
 
 #: src/editor/object_selector.cxx:408
 msgid "p - Prefab (ObjectGroup)"
-msgstr ""
+msgstr "p - Fördef (objektgrupp)"
 
 #: src/editor/object_selector.cxx:409
 msgid "f - something from file (~/.pingus/images/)"
-msgstr ""
+msgstr "f - någonting från fil (~/.pingus/images/)"
 
 #: src/editor/object_selector.cxx:498
 msgid "Which prefab do you want?"
-msgstr ""
+msgstr "Vilken Fördef vill du ha?"
 
 #: src/editor/object_selector.cxx:563
 msgid "1 - Surface Background"
-msgstr ""
+msgstr "1 - Bildbakgrund"
 
 #: src/editor/object_selector.cxx:564
 msgid "2 - Solid Color Background"
-msgstr ""
+msgstr "2 - Solid bakgrund"
 
 #: src/editor/object_selector.cxx:565
 msgid "3 - Starfield Background"
-msgstr ""
+msgstr "3 - Stjärnfältsbakgrund"
 
 #: src/editor/object_selector.cxx:566
 msgid "4 - Thunderstorm Background"
-msgstr ""
+msgstr "4 - Åskmolnsbakgrund"
 
 #: src/editor/panel_icons.cxx:31
 msgid "Load a level (F5)"
-msgstr ""
+msgstr "Läs in en nivå (F5)"
 
 #: src/editor/panel_icons.cxx:44
 msgid "Exit the editor (Escape)"
-msgstr ""
+msgstr "Avsluta editorn (Escape)"
 
 #: src/editor/panel_icons.cxx:56
 msgid "Save this level (F6)"
-msgstr ""
+msgstr "Spara nivån (F6)"
 
 #: src/editor/panel_icons.cxx:68
 msgid "Delete marked objects (delete"
-msgstr ""
+msgstr "Ta bort markerade objekt (ta bort"
 
 #: src/editor/panel_icons.cxx:80
 msgid "Duplicate current object (d)"
-msgstr ""
+msgstr "Kopiera nuvarande objekt (d)"
 
 #: src/editor/panel_icons.cxx:92
 msgid "Edit Level Properties"
-msgstr ""
+msgstr "Editera nivåegenskaper"
 
 #: src/editor/panel_icons.cxx:104
 msgid "Edit Object Properties"
-msgstr ""
+msgstr "Editera objektegenskaper"
 
 #: src/editor/panel_icons.cxx:116
 msgid "Start the level and test it (F4)"
-msgstr ""
+msgstr "Starta nivån och testa den (F4)"
 
 #: src/editor/panel_icons.cxx:128
 msgid "Create a new level from scratch"
-msgstr ""
+msgstr "Skapa en ny nivå från början"
 
 #: src/editor/panel_icons.cxx:140
 msgid "Insert an object (Insert)"
-msgstr ""
+msgstr "Sätt in ett objekt (Insert)"
 
 #: src/editor/panel_icons.cxx:152
 msgid "Zoom into a region"
-msgstr ""
+msgstr "Zooma in på ett område"
 
 #: src/editor/panel_icons.cxx:164
 msgid "Zoom in"
-msgstr ""
+msgstr "Zooma in"
 
 #: src/editor/panel_icons.cxx:176
 msgid "Zoom out"
-msgstr ""
+msgstr "Zooma ut"
 
 #: src/editor/panel_icons.cxx:188
 msgid "Setup Number of Actions"
-msgstr ""
+msgstr "Ställ in antal färdigheter"
 
 #: src/editor/panel_icons.cxx:200
 msgid "Display Help Screen (F1)"
-msgstr ""
+msgstr "Visa hjälp (F1)"
 
 #: src/exit_menu.cxx:46
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #: src/exit_menu.cxx:79
 msgid "No"
-msgstr ""
+msgstr "Nej"
 
 #: src/exit_menu.cxx:112
 msgid "Exit Pingus?"
-msgstr ""
+msgstr "Avsluta Pingus?"
 
 #: src/fps_counter.cxx:46
 msgid "unknown"
-msgstr ""
+msgstr "okänd"
 
 #: src/game_time.cxx:68
 msgid "unlimited"
-msgstr ""
+msgstr "obegränsad"
 
 #: src/level_desc.cxx:71
 msgid "Designed by "
-msgstr ""
+msgstr "Designad av "
 
 #: src/level_desc.cxx:76
 #, c-format
 msgid "Pingus to Save: %d"
-msgstr ""
+msgstr "Pingus att Rädda: %d"
 
 #: src/level_desc.cxx:78
 #, c-format
 msgid "Number of Pingus: %d"
-msgstr ""
+msgstr "Antal Pingus: %d"
 
 #: src/level_desc.cxx:83
 msgid "Loading..."
-msgstr ""
+msgstr "Läser..."
 
 #: src/level_desc.cxx:86
 msgid "Loading finished. Press a mouse button to start the level"
-msgstr ""
+msgstr "Inläsning klar. Tryck på en musknapp för att starta nivån"
 
 #: src/level_result.cxx:57
 msgid "Results:"
-msgstr ""
+msgstr "Resutat:"
 
 #: src/level_result.cxx:63
 #, c-format
 msgid "Pingus saved:   %3d/%3d"
-msgstr ""
+msgstr "Räddade Pingus: %3d/%3d"
 
 #: src/level_result.cxx:68
 #, c-format
 msgid "Pingus killed:  %3d/%3d"
-msgstr ""
+msgstr "Dödade Pingus: %3d/%3d"
 
 #: src/level_result.cxx:84
 msgid "Press button to continue..."
-msgstr ""
+msgstr "Tryck på en knapp..."
 
 #: src/level_result.cxx:98
 msgid ""
 "As many Pingus escaped as entered the level. That's going to be hard to "
 "beat.... unless this game becomes pornographic."
 msgstr ""
+"Lika många Pingus räddades som kom in på nivån. Det kommer att bli svårt att "
+"slå.... om inte spelet blir pornografiskt."
 
 #: src/level_result.cxx:100
 msgid "Very impressive indeed."
-msgstr ""
+msgstr "Verkligen imponerande"
 
 #: src/level_result.cxx:102
 msgid "Good work. Still room for improvement though."
-msgstr ""
+msgstr "Bra gjort. Det finns dock fortfarande utrymme för förbättringar."
 
 #: src/level_result.cxx:104
 msgid "Not too shabby, not too shabby at all."
-msgstr ""
+msgstr "Inte dåligt, inte dåligt alls."
 
 #: src/level_result.cxx:106
 msgid ""
 "That was OK, but Pingu life insurance premiums have just gotten more "
 "expensive."
-msgstr ""
+msgstr "Det var okej, men Pingus försäkringspremier gick just upp"
 
 #: src/level_result.cxx:108
 msgid "Maybe this level calls for a different strategy."
-msgstr ""
+msgstr "Den här nivån kräver kanske en annan strategi"
 
 #: src/level_result.cxx:110
 msgid "Exactly half. Are you saving only the female ones?"
-msgstr ""
+msgstr "Precis hälften. Räddar du bara honorna?"
 
 #: src/level_result.cxx:112
 msgid "If I were a Pingu, I never would have left that entrance."
-msgstr ""
+msgstr "Hade jag varit en Pingu hade jag aldrig lämnat ingången."
 
 #: src/level_result.cxx:114
 msgid "Maybe you would feel more at home playing Quake."
-msgstr ""
+msgstr "Kanske är du mera hemma med Quake."
 
 #: src/level_result.cxx:116
 msgid ""
 "Maybe this level calls for a different strategy. Like attempting to save "
 "them, for example."
 msgstr ""
+"Den här nivån kräver en annan strategi, som att försöka rädda dom, till "
+"exempel."
 
 #: src/level_result.cxx:118
 msgid "Ever considered a career as a Pingu exterminator?"
-msgstr ""
+msgstr "Du har inte funderat på en karriär som Pingu-utrotare?"
 
 #: src/level_result.cxx:120
 msgid "You missed one! What's your excuse!?"
-msgstr ""
+msgstr "Du missade en! Vad har du för ursäkt?"
 
 #: src/level_result.cxx:122
 msgid "Please reassure me that you hit the Armageddon button."
-msgstr ""
+msgstr "Snälla säg att du använde Armageddon-knappen."
 
 #: src/level_result.cxx:124
 msgid "You've got a negative save/total value, something is buggy."
-msgstr ""
+msgstr "Du har negativ räddad/totalt-värde, någonting är trasigt."
 
 #: src/menu_button.cxx:177
 msgid "..:: The people who brought this game to you ::.."
-msgstr ""
+msgstr "..:: Folket som skapat spelet åt dig ::.."
 
 #: src/menu_button.cxx:180
 msgid "Credits"
-msgstr ""
+msgstr "Tack"
 
 #: src/menu_button.cxx:212
 msgid "..:: Takes you to the options menu ::.."
-msgstr ""
+msgstr "..:: Tar dig till inställningsmenyn ::.."
 
 #: src/menu_button.cxx:215
 msgid "Options"
-msgstr ""
+msgstr "Inställningar"
 
 #: src/menu_button.cxx:248
 msgid "..:: Bye, bye ::.."
-msgstr ""
+msgstr "..:: Adjö ::.."
 
 #: src/menu_button.cxx:251
 msgid "Exit"
-msgstr ""
+msgstr "Avsluta"
 
 #: src/menu_button.cxx:302
 msgid "..:: Launch the level editor ::.."
-msgstr ""
+msgstr "..:: Starta nivåeditorn ::.."
 
 #: src/menu_button.cxx:305
 msgid "Create a"
-msgstr ""
+msgstr "Skapa en"
 
 #: src/menu_button.cxx:306
 msgid "Level"
-msgstr ""
+msgstr "Nivå"
 
 #: src/menu_button.cxx:340
 msgid "..:: Start the game ::.."
-msgstr ""
+msgstr "..:: Starta spelet ::.."
 
 #: src/menu_button.cxx:341
 msgid "Start"
-msgstr ""
+msgstr "Starta"
 
 #: src/menu_button.cxx:371
 msgid "..:: Start a contrib level ::.."
-msgstr ""
+msgstr "..:: Starta en bidragen nivå ::.."
 
 #: src/menu_button.cxx:373
 msgid "Contrib"
-msgstr ""
+msgstr "Bidrag"
 
 #: src/menu_button.cxx:393
 msgid "..:: Multiplayer Modes... experimental stuff ::.."
-msgstr ""
+msgstr "..:: Multiplayermod... experimentella saker ::.."
 
 #: src/menu_button.cxx:395
 msgid "Multi"
-msgstr ""
+msgstr "Multi"
 
 #: src/pingu_enums.cxx:34
 msgid "Angel"
-msgstr ""
+msgstr "Angel"
 
 #: src/pingu_enums.cxx:35
 msgid "Basher"
-msgstr ""
+msgstr "Basher"
 
 #: src/pingu_enums.cxx:36
 msgid "Blocker"
-msgstr ""
+msgstr "Blocker"
 
 #: src/pingu_enums.cxx:37
 msgid "Boarder"
-msgstr ""
+msgstr "Boarder"
 
 #: src/pingu_enums.cxx:38
 msgid "Bomber"
-msgstr ""
+msgstr "Bomber"
 
 #: src/pingu_enums.cxx:39
 msgid "Bridger"
-msgstr ""
+msgstr "Bridger"
 
 #: src/pingu_enums.cxx:40
 msgid "Climber"
-msgstr ""
+msgstr "Climber"
 
 #: src/pingu_enums.cxx:41
 msgid "Digger"
-msgstr ""
+msgstr "Digger"
 
 #: src/pingu_enums.cxx:42
 msgid "Drown"
-msgstr ""
+msgstr "Drown"
 
 #: src/pingu_enums.cxx:43
 msgid "Exiter"
-msgstr ""
+msgstr "Exiter"
 
 #: src/pingu_enums.cxx:44
 msgid "Faller"
-msgstr ""
+msgstr "Faller"
 
 #: src/pingu_enums.cxx:45
 msgid "Floater"
-msgstr ""
+msgstr "Floater"
 
 #: src/pingu_enums.cxx:46
 msgid "Jumper"
-msgstr ""
+msgstr "Jumper"
 
 #: src/pingu_enums.cxx:47
 msgid "Laserkill"
-msgstr ""
+msgstr "Laserkill"
 
 #: src/pingu_enums.cxx:48
 msgid "Miner"
-msgstr ""
+msgstr "Miner"
 
 #: src/pingu_enums.cxx:49
 msgid "Rocketlauncher"
-msgstr ""
+msgstr "RocketLauncher"
 
 #: src/pingu_enums.cxx:50
 msgid "Slider"
-msgstr ""
+msgstr "Slider"
 
 #: src/pingu_enums.cxx:51
 msgid "Smashed"
-msgstr ""
+msgstr "Smashed"
 
 #: src/pingu_enums.cxx:52
 msgid "Splashed"
-msgstr ""
+msgstr "Splashed"
 
 #: src/pingu_enums.cxx:53
 msgid "Superman"
-msgstr ""
+msgstr "Superman"
 
 #: src/pingu_enums.cxx:54
 msgid "Teleported"
-msgstr ""
+msgstr "Teleported"
 
 #: src/pingu_enums.cxx:55
 msgid "Waiter"
-msgstr ""
+msgstr "Waiter"
 
 #: src/pingu_enums.cxx:56
 msgid "Walker"
-msgstr ""
+msgstr "Walker"
 
 #: src/pingus_counter.cxx:49
 #, c-format
 msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
-msgstr ""
+msgstr "Släppt:%3d/%-3d   Ut:%3d   Räddade:%3d/%-3d"
 
 #: src/pingus_main.cxx:93
 msgid "| segfault_handler: catched a SIGSEGV."
-msgstr ""
+msgstr "| segfault_handler: fångade en SIGSEGV."
 
 #: src/pingus_main.cxx:95
 msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
-msgstr ""
+msgstr "| Oops, Pingus krashade, grattis, du har hittat en bugg."
 
 #: src/pingus_main.cxx:96
 msgid ""
 "| Please write a little bug report to <grumbel@gmx.de>, include informations"
 msgstr ""
+"| Snälla skiv en liten buggrapport till <grumbel@gmx.de>, inkludera "
+"information"
 
 #: src/pingus_main.cxx:97
 msgid "| where exacly the SIGSEGV occured and how to reproduce it."
-msgstr ""
+msgstr "| om precis var SIGSEGV hände och hur man gör det igen."
 
 #: src/pingus_main.cxx:98
 msgid "| Also try include a backtrace, you can get it like this:"
-msgstr ""
+msgstr "| Försök också inkludera en backtrace, du för en så här:"
 
 #: src/pingus_main.cxx:104
 msgid "| If that doesn't work, try this:"
-msgstr ""
+msgstr "| Om det inte fungerar, försök med det här:"
 
 #: src/pingus_main.cxx:108
 msgid "| [play until it crashes again]"
-msgstr ""
+msgstr "| [spela tills det krashar igen]"
 
 #: src/pingus_main.cxx:116
 msgid "| Warning: Pingus recieved a SIGINT, exiting now."
-msgstr ""
+msgstr "| Warning: Pingus fick en SIGINT, avlsutar nu."
 
 #: src/pingus_main.cxx:306
 msgid "Warning: Larger resolution than 800x600 will result in visual problems"
-msgstr ""
+msgstr "Warning: högre upplösning än 800x600 resulterar i visuella problem"
 
 #: src/pingus_main.cxx:487
 msgid "Unknow char: "
-msgstr ""
+msgstr "Okänt tecken: "
 
 #: src/pingus_main.cxx:488
 msgid "Usage: "
-msgstr ""
+msgstr "Användning: "
 
 #: src/pingus_main.cxx:488
 msgid " [OPTIONS]... [LEVELFILE]"
-msgstr ""
+msgstr " [FLAGGOR]... [NIVÅFIL]"
 
 #: src/pingus_main.cxx:491
 msgid "Options:"
-msgstr ""
+msgstr "Flaggor:"
 
 #: src/pingus_main.cxx:493
 msgid "Set the resolution for pingus (default: 800x600)"
-msgstr ""
+msgstr "Sätt upplösningen för pingus (standard: 800x600)"
 
 #: src/pingus_main.cxx:494
 msgid "Displays this help"
-msgstr ""
+msgstr "Visar den här hjälpen"
 
 #: src/pingus_main.cxx:495
 msgid "Disable intro"
-msgstr ""
+msgstr "Avaktivera intro"
 
 #: src/pingus_main.cxx:497
 msgid "Use OpenGL"
-msgstr ""
+msgstr "Använd OpenGL"
 
 #: src/pingus_main.cxx:500
 msgid "Start in Window Mode"
-msgstr ""
+msgstr "Starta i fönstermod"
 
 #: src/pingus_main.cxx:501
 msgid "Start in Fullscreen"
-msgstr ""
+msgstr "Starta i fullskärm"
 
 #: src/pingus_main.cxx:505
 msgid "FILE      "
-msgstr ""
+msgstr "FIL       "
 
 #: src/pingus_main.cxx:505
 msgid "Load a custom level from FILE"
-msgstr ""
+msgstr "Läs in en särskild nivå från FIL"
 
 #: src/pingus_main.cxx:506
 msgid "FILE        "
-msgstr ""
+msgstr "FIL         "
 
 #: src/pingus_main.cxx:506
 msgid "Load a custom worldmap from FILE"
-msgstr ""
+msgstr "Läs in en särskild världskarta från FIL"
 
 #: src/pingus_main.cxx:507
 msgid "Print some more messages to stdout, can be set"
-msgstr ""
+msgstr "Skriv ut fler meddelanden till stdout, kan sättas"
 
 #: src/pingus_main.cxx:508
 msgid "multiple times to increase verbosity"
-msgstr ""
+msgstr "flera gånger för att öka detaljnivån"
 
 #: src/pingus_main.cxx:509
 msgid "Prints version number and exit"
-msgstr ""
+msgstr "Skriver ut versionen och avslutar"
 
 #: src/pingus_main.cxx:510
 msgid "Launch the Level editor (experimental)"
-msgstr ""
+msgstr "Starta nivåeditorn (experimentell)"
 
 #: src/pingus_main.cxx:511
 msgid "Disable automatic scrolling"
-msgstr ""
+msgstr "Avaktivera automatisk skärmrullning"
 
 #: src/pingus_main.cxx:513
 msgid "Enable software cursor"
-msgstr ""
+msgstr "Aktivera mjukvarupekare"
 
 #: src/pingus_main.cxx:516
 msgid "Don't read ~/.pingus/config"
-msgstr ""
+msgstr "Läs inte ~/.pingus/config"
 
 #: src/pingus_main.cxx:517
 msgid "FILE       "
-msgstr ""
+msgstr "FIL        "
 
 #: src/pingus_main.cxx:517
 msgid "Read config from FILE (default: ~/.pingus/config)"
-msgstr ""
+msgstr "Läs in konfiguration från fil (standard: ~/.pingus/config)"
 
 #: src/pingus_main.cxx:518
 msgid "reduce CPU usage, might speed up the game on slower machines"
 msgstr ""
+"minska processoranvändning, kan öka hastigheten på spelet för långsammare "
+"maskiner"
 
 #: src/pingus_main.cxx:519
 msgid "Uses the controller given in FILE"
-msgstr ""
+msgstr "Använd kontrollern som ges i FIL"
 
 #: src/pingus_main.cxx:521
 msgid "Debugging and experimental stuff:"
-msgstr ""
+msgstr "Avlusnings- och experimentella saker:"
 
 #: src/pingus_main.cxx:522
 msgid "Enables some features, only interesting programmers"
-msgstr ""
+msgstr "Aktiverar vissa egenskaper, bara intressant programmerare"
 
 #: src/pingus_main.cxx:523
 msgid "Enable the output of debugging infos, possible"
-msgstr ""
+msgstr "Aktivera utskrift av avslusningsinfo, möjliga"
 
 #: src/pingus_main.cxx:524
 msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
-msgstr ""
+msgstr "FLAGGOR är tiles, gametime, actions, sound, resources, gui,"
 
 #: src/pingus_main.cxx:526
 msgid "Skip at least N frames, larger values speed the game up"
-msgstr ""
+msgstr "Hoppa över minst N bildrutor, högre värde ökar hastigheten på spelet"
 
 #: src/pingus_main.cxx:527
 msgid "Skip at most N frames"
-msgstr ""
+msgstr "Hoppa över högst N bildrutor"
 
 #: src/pingus_main.cxx:528
 msgid "Set both min and max frameskip to N"
-msgstr ""
+msgstr "Sätt både minsta och största bildrutehoppet till N"
 
 #: src/pingus_main.cxx:529
 msgid "Set the game speed (0=fastest, >0=slower)"
-msgstr ""
+msgstr "Sätt spelhastigheten (0=snabbast, >0=långsammare)"
 
 #: src/pingus_main.cxx:530
 msgid "Prints the fps to stdout"
-msgstr ""
+msgstr "Skriver ut fps till stdout"
 
 #: src/pingus_main.cxx:531
 msgid "Set the size of the map tiles (default: 32)"
-msgstr ""
+msgstr "SÄtter storleken på kartrutorna (standard: 32)"
 
 #: src/pingus_main.cxx:532
 msgid "Disable some cpu intensive features"
-msgstr ""
+msgstr "Avaktivera vissa processorintensiva egenskaper"
 
 #: src/pingus_main.cxx:533
 msgid "Reduces the CPU usage by issuing sleep()"
-msgstr ""
+msgstr "Minskar porcessoranvändandet genom att använda sleep()"
 
 #: src/pingus_main.cxx:535
 msgid "Demo playing and recording:"
-msgstr ""
+msgstr "Spela upp och spela in demo:"
 
 #: src/pingus_main.cxx:536
 msgid "FILE     "
-msgstr ""
+msgstr "FIL      "
 
 #: src/pingus_main.cxx:536
 msgid "Plays a demo session from FILE"
-msgstr ""
+msgstr "Spelar upp en demo från FIL"
 
 #: src/pingus_main.cxx:538
 msgid "Record demos for each played level"
-msgstr ""
+msgstr "Spela in en demo för varje spelad nivå"
 
 #: src/pingus_main.cxx:540
 msgid "Sound:"
-msgstr ""
+msgstr "Ljud:"
 
 #: src/pingus_main.cxx:541
 msgid "Disable sound"
-msgstr ""
+msgstr "Avaktivera ljud"
 
 #: src/pingus_main.cxx:542
 msgid "Disable music"
-msgstr ""
+msgstr "Avaktivera musik"
 
 #: src/pingus_main.cxx:712
 msgid "clanVorbis support:           ok"
-msgstr ""
+msgstr "clanVorbis-support:           ok"
 
 #: src/pingus_main.cxx:714
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
-msgstr ""
+msgstr "clanVoribs-support:  saknas (.ogg musikfiler kommer inte kunna spelas)"
 
 #: src/pingus_main.cxx:718
 msgid "clanMikMod support:           ok"
-msgstr ""
+msgstr "clanMikMod-support:           ok"
 
 #: src/pingus_main.cxx:720
 msgid "clanMikMod support:  missing (music files will not be playable)"
-msgstr ""
+msgstr "clanMikMod-support:  saknas (musikfiler kommer inte kunna spelas)"
 
 #: src/pingus_main.cxx:724
 msgid "getext support:               ok"
-msgstr ""
+msgstr "getext-support:               ok"
 
 #: src/pingus_main.cxx:725
 msgid "gettext language:        english"
-msgstr ""
+msgstr "gettext-språk:        engelska"
 
 #: src/pingus_main.cxx:731
 msgid "sound support:           enabled"
-msgstr ""
+msgstr "ljudsupport:           aktiv"
 
 #: src/pingus_main.cxx:733
 msgid "sound support:          disabled"
-msgstr ""
+msgstr "ljudsupport:          inte aktiv"
 
 #: src/pingus_main.cxx:736
 msgid "music support:           enabled"
-msgstr ""
+msgstr "musiksupport:           aktiv"
 
 #: src/pingus_main.cxx:738
 msgid "music support:          disabled"
-msgstr ""
+msgstr "musiksupport:          inte aktiv"
 
 #: src/pingus_main.cxx:740
 msgid "resolution set to:       "
-msgstr ""
+msgstr "upplösning satt till:       "
 
 #: src/pingus_main.cxx:741
 msgid "fullscreen:              "
-msgstr ""
+msgstr "fullskärm:              "
 
 #: src/pingus_main.cxx:742
 msgid " enabled"
-msgstr ""
+msgstr " aktiv"
 
 #: src/pingus_main.cxx:742
 msgid "disabled"
-msgstr ""
+msgstr "inte aktiv"
 
 #: src/pingus_main.cxx:752
 msgid "PingusMain: Starting Main: "
-msgstr ""
+msgstr "PingusMain: Startar Main: "
 
 #: src/pingus_main.cxx:782
 msgid "PingusMain: Levelfile not found, ignoring: "
-msgstr ""
+msgstr "PingusMain: nivåfil hittas inte, ignorerar: "
 
 #: src/pingus_main.cxx:883
 msgid "Error caught from ClanLib: "
-msgstr ""
+msgstr "Fel fångat från ClanLib: "
 
 #: src/pingus_main.cxx:887
 msgid "Error caught from Pingus: "
-msgstr ""
+msgstr "Fel fångat från Pingus: "
 
 #: src/pingus_main.cxx:891
 msgid "Pingus: Out of memory!"
-msgstr ""
+msgstr "Pingus: Slut på minnet!"
 
 #: src/pingus_main.cxx:895
 msgid "Pingus: Standard exception caught!:\n"
-msgstr ""
+msgstr "Pingus: standardavbrott fångat!:\n"
 
 #: src/pingus_main.cxx:899
 msgid "Pingus: Unknown throw caught!"
-msgstr ""
+msgstr "Pingus: okänt kast fångat!"
 
 #: src/result_screen.cxx:97 src/start_screen.cxx:109
 msgid "Abort"
-msgstr ""
+msgstr "Avbryt"
 
 #: src/result_screen.cxx:165
 msgid "Retry"
-msgstr ""
+msgstr "Försök igen"
 
 #: src/result_screen.cxx:173
 msgid "Success!"
-msgstr ""
+msgstr "Succé!"
 
 #: src/result_screen.cxx:180
 msgid "Failure!"
-msgstr ""
+msgstr "Misslyckande!"
 
 #: src/result_screen.cxx:189
 msgid "Perfect! You saved everybody possibly, great!"
-msgstr ""
+msgstr "Perfekt! Du räddade alla som var möjliga, jättebra!"
 
 #: src/result_screen.cxx:191
 msgid "None got killed, pretty good work"
-msgstr ""
+msgstr "Ingen blev dödad, bra gjort"
 
 #: src/result_screen.cxx:193
 msgid ""
 "You saved just what you needed, you made it, but\n"
 "maybe you can do better?"
 msgstr ""
+"Du räddade precis vad du behövde, du klarade det, men\n"
+"kanske kan du göra bättre?"
 
 #: src/result_screen.cxx:196
 msgid "Not everybody could get saved, but still good work!"
-msgstr ""
+msgstr "Inte alla kunde räddas, men bra gjort ändå!"
 
 #: src/result_screen.cxx:198
 msgid "What can I say, you made it, congratulations!"
-msgstr ""
+msgstr "Vad kan jag säga, du klarade det, grattis!"
 
 #: src/result_screen.cxx:203
 msgid "You killed everybody, not good."
-msgstr ""
+msgstr "Du dödade alla, inte bra."
 
 #: src/result_screen.cxx:205
 msgid "None got saved, I know you can do better."
-msgstr ""
+msgstr "Ingen räddades, jag vet att du kan bättre."
 
 #: src/result_screen.cxx:207
 msgid ""
 "You didn't saved enough, but still saved a few, next\n"
 "time you might be better."
 msgstr ""
+"Du räddade inte tillräckligt, men några ändå, nästa\n"
+"gång blir det bättre."
 
 #: src/result_screen.cxx:210
 msgid "Only one more and you would have made it, try again!"
-msgstr ""
+msgstr "Bara en till så hade du klarat det, försök igen!"
 
 #: src/result_screen.cxx:212
 msgid "Only a handfull more and you would have made it, try again!"
-msgstr ""
+msgstr "Bara några till så hade du klarat det, försök igen!"
 
 #: src/result_screen.cxx:214
 msgid "Better luck next time!"
-msgstr ""
+msgstr "Bättre lycka nästa gång!"
 
 #: src/result_screen.cxx:230
 msgid "Saved: "
-msgstr ""
+msgstr "Räddade: "
 
 #: src/result_screen.cxx:234
 msgid "Killed: "
-msgstr ""
+msgstr "Dödade: "
 
 #: src/result_screen.cxx:238
 msgid "Time left: "
-msgstr ""
+msgstr "Tid kvar: "
 
 #: src/screenshot.cxx:43
 msgid "Screenshot: Saving screenshot to: "
-msgstr ""
+msgstr "Skärmdump: Sparar skärmdump till: "
 
 #: src/screenshot.cxx:45
 msgid "Screnshot: Screenshot is done."
-msgstr ""
+msgstr "Skärmdump: SKärmdump är klar."
 
 #: src/screenshot.cxx:51
 msgid "Screenshot: Couldn't save screenshot"
-msgstr ""
+msgstr "Skärmdump: Kunde inte spara skärmdump"
 
 #: src/screenshot.cxx:134
 msgid "Screenshot: Couldn't write file: "
-msgstr ""
+msgstr "Skärmdump: Kund inte skriva till fil: "
 
 #: src/spot_map.cxx:278
 #, c-format
 msgid "Image has wrong color depth: %d"
-msgstr ""
+msgstr "Bild har fel färgdjup: %d"
 
 #: src/start_screen.cxx:73
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: src/start_screen.cxx:156
 msgid "Number of Pingus: "
-msgstr ""
+msgstr "Antal Pingus: "
 
 #: src/start_screen.cxx:159
 msgid "Number to Save: "
-msgstr ""
+msgstr "Antal att Rädda: "
 
 #: src/start_screen.cxx:162
 msgid "Time: "
-msgstr ""
+msgstr "Tid: "
 
 #: src/start_screen.cxx:165
 msgid "Difficulty:"
-msgstr ""
+msgstr "Svårighetsgrad:"
 
 #: src/start_screen.cxx:173
 msgid "Author: "
-msgstr ""
+msgstr "Skapare: "
 
 #: src/start_screen.cxx:176
 msgid "Filename: "
-msgstr ""
+msgstr "Filnamn: "
 
 #: src/story.cxx:39
 msgid "The Journey Continues"
-msgstr ""
+msgstr "Resan Fortsätter"
 
 #: src/story.cxx:44
 msgid ""
@@ -1184,6 +1197,11 @@ msgid ""
 "climated regions the Pingus have to find something else to guide\n"
 "them on their journey.\n"
 msgstr ""
+"Nu när du och Pingus har lärt er grunderna och övat litegrann\n"
+"är det dags att gå vidare och börja färden ut i världen.\n"
+"Eftersom isflaket med vilken Pingus färdades till Nybörjarön\n"
+"inte kan hålla hela vägen in till varmare områden, måste\n"
+"Pingus hitta någonting annat att visa dom vägen.\n"
 
 #: src/story.cxx:56
 msgid ""
@@ -1193,6 +1211,10 @@ msgid ""
 "of this, the large tree at the end of the island provides good\n"
 "wood to construct a float.\n"
 msgstr ""
+"Men som de äldste sade är Nybörjarön inte bara en plats att öva\n"
+"på, utan är även startpunkten ut i världen. Efter lite letande\n"
+"upptäckte Pingus meningen med detta, det stora trädet i änden\n"
+"på ön ger bra trä för att bygga en flotte.\n"
 
 #: src/story.cxx:67
 msgid ""
@@ -1201,6 +1223,11 @@ msgid ""
 "they where prepared to finally start of their journey and leave\n"
 "their familiar ground and enter the unknown parts of the world.\n"
 msgstr ""
+"Så Pingus gav sig iväg och byggde flera stora flottar,\n"
+"tillräckliga för att ta med allihopa. Efter att också ha packat\n"
+"förnödenheter var dom färdiga att till slut påbörja sin resa\n"
+"och lämna sina hemtrakter och färdas in i dom okända delarna\n"
+"av världen.\n"
 
 #: src/story.cxx:77
 msgid ""
@@ -1209,10 +1236,14 @@ msgid ""
 "\n"
 "To be continued..."
 msgstr ""
+"Pingus satt på sin flotte och oroade sig för vad som komma\n"
+"skulle medan dom flöt in i solnedgången.\n"
+"\n"
+"Fortsättning följer..."
 
 #: src/story.cxx:89
 msgid "The Journey Begins"
-msgstr ""
+msgstr "Resan Börjar"
 
 #: src/story.cxx:94
 msgid ""
@@ -1221,6 +1252,10 @@ msgid ""
 "balance and it seemed like nothing could disrupt their peace.  The\n"
 "Pingus where happy and it seemed like this could never end.\n"
 msgstr ""
+"Under en lång tid har Pingus levt lyckliga i fred på sydpolen\n"
+"tillsammans med alla andra djur. Allting var i balans och det\n"
+"verkade som om ingenting kunde störa deras tillvaro. Pingus var\n"
+"lyckliga och det verkade som om det aldrig skulle ta slut.\n"
 
 #: src/story.cxx:104
 msgid ""
@@ -1229,6 +1264,10 @@ msgid ""
 "normal fluctuation in the world's climate, but things seemed to get\n"
 "worse and worse with every year."
 msgstr ""
+"Men så en dag började saker långsamt att förändras, himlen blev\n"
+"mörkare och jorden blev varmare, först trodde de det bara var en\n"
+"normal fluktuation i världens klimat, men allt verkade bli värre\n"
+"och värre för varje år som gick."
 
 #: src/story.cxx:115
 msgid ""
@@ -1237,6 +1276,10 @@ msgid ""
 "for colder areas, but the Pingus knew that this wouldn't help,\n"
 "they knew that they had to do something about this problem."
 msgstr ""
+"Snön började smälta undan i några områden och mat började bli\n"
+"ett problem. Andra djur tenderade att lämna området för att leta\n"
+"efter kallare områden, men Pingus visste att detta inte skulle\n"
+"hjälpa, de visste att de måste göra någonting åt problemet."
 
 #: src/story.cxx:125
 msgid ""
@@ -1245,6 +1288,10 @@ msgid ""
 "to find the cause for this warming. The expedition consisted of\n"
 "hundreds of the bravest Pingus around on the south pole."
 msgstr ""
+"så de äldstes krets samlades för att bestämma vad som skulle\n"
+"göras åt det. De bestämde sig för att skicka ut en expedition ut\n"
+"i världen för att hitta orsaken till uppvärmningen. Expeditionen\n"
+"bestod av hundratals av de modigaste Pingus på sydpolen."
 
 #: src/story.cxx:135
 msgid ""
@@ -1254,6 +1301,10 @@ msgid ""
 "Island. According to the eldest, this island has always been the\n"
 "first stop of Pingus that where send out into the world."
 msgstr ""
+"Dom valde ocksp dig att leda dem på sin resa runt världen.\n"
+"Då resan blir farlig och svår blir ert första mål ön Mogorok,\n"
+"även känd som Nybörjarön. Enligt de äldste har den ön alltid varit\n"
+"första anhalten för Pingus som sänts ut i världen."
 
 #: src/story.cxx:146
 msgid ""
@@ -1262,6 +1313,10 @@ msgid ""
 "to build bridges, climb, bash and all the rest of their talents\n"
 "which they will surely need on their long and dangerous journey."
 msgstr ""
+"Ön består av många områden som är perfekta för att träna Pingus\n"
+"i sina färdigheter. Pingus kan träna sin förmåga att bygga broar,\n"
+"klättra, slå och alla andra talanger dom säkerligen kommer att\n"
+"behöva under sin långa, farliga färd."
 
 #: src/story.cxx:156
 msgid ""
@@ -1271,6 +1326,10 @@ msgid ""
 "since you will need them all for sure on your journey around the\n"
 "world."
 msgstr ""
+"Du kan, å andra sidan, öva din färdighet i att leda och guida\n"
+"Pingus. Du kan också bekanta dig med alla färdigheter Pingus\n"
+"har och lära dig behärska dem, då ni kommer behöva dem all under\n"
+"er färd runt världen."
 
 #: src/story.cxx:167
 msgid ""
@@ -1279,35 +1338,39 @@ msgid ""
 "\n"
 "Good Luck!"
 msgstr ""
+"Nu när du och Pingus har anlänt till Nybörjarön är det dags att\n"
+"ta kommandot och påbörja ert uppdrag.\n"
+"\n"
+"Lycka Till!"
 
 #: src/system.cxx:265
 msgid "Environment variable $HOME not set, fix that and start again."
-msgstr ""
+msgstr "Omgivningsvariablen $HOMe är inte satt, ordna det och starta igen."
 
 #: src/worldmap/level_dot.cxx:162
 msgid "locked"
-msgstr ""
+msgstr "låst"
 
 #: src/worldmap/manager.cxx:102
 msgid "Show Ending?"
-msgstr ""
+msgstr "Visa Slut?"
 
 #: src/worldmap/manager.cxx:132
 msgid "Show Story?"
-msgstr ""
+msgstr "Visa Historia?"
 
 #: src/worldmap/manager.cxx:160
 msgid "Leave?"
-msgstr ""
+msgstr "Lämna?"
 
 #: src/worldmap/manager.cxx:200
 msgid "Enter?"
-msgstr ""
+msgstr "Gå in?"
 
 #: src/worldmap/worldmap.cxx:76
 msgid "WorldMap: File not found: "
-msgstr ""
+msgstr "Världskarta: Fil kan inte hittas: "
 
 #: src/worldmap/worldmap.cxx:249
 msgid "...walking..."
-msgstr ""
+msgstr "...går..."

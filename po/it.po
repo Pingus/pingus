@@ -5,25 +5,25 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
-"POT-Creation-Date: 2003-04-16 01:50+0200\n"
+"POT-Creation-Date: 2003-04-19 10:12+0200\n"
 "PO-Revision-Date: 2003-04-18 17:48+0200\n"
 "Last-Translator: Giuseppe D'Aqui' <kumber@tiscalinet.it>\n"
 "Language-Team: Italiano\n"
-"de>, Giray Devlet <giray@devlet.cc>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+"de>, Giray Devlet <giray@devlet.cc>\n"
 "X-Generator: KBabel 1.0\n"
 
-#: src/config.cxx:68
+#: src/config.cxx:71
 msgid "Couldn't open: "
 msgstr "Impossibile aprire: "
 
-#: src/config.cxx:167
+#: src/config.cxx:170
 msgid "Unexpected char: '"
 msgstr "Carattere inatteso: '"
 
-#: src/config.cxx:201
+#: src/config.cxx:204
 msgid "Unexpected char '"
 msgstr "Carattere inatteso '"
 
@@ -63,35 +63,35 @@ msgstr "-Trama"
 msgid "-Translation"
 msgstr "-Traduzione"
 
-#: src/credits.cxx:103
+#: src/credits.cxx:105
 msgid "-Special"
 msgstr "-Speciale"
 
-#: src/credits.cxx:104
+#: src/credits.cxx:106
 msgid "-Thanks to"
 msgstr "-Ringraziomenti a"
 
-#: src/credits.cxx:138
+#: src/credits.cxx:144
 msgid "_And a very Special Thanks"
 msgstr "_Ed un Ringraziamento Speciale"
 
-#: src/credits.cxx:139
+#: src/credits.cxx:145
 msgid "_to all the people who"
 msgstr "_a tutti quelli che"
 
-#: src/credits.cxx:140
+#: src/credits.cxx:146
 msgid "_contribute to"
 msgstr "_contribuiscono al"
 
-#: src/credits.cxx:141
+#: src/credits.cxx:147
 msgid "_Free Software!"
 msgstr "_Software Libero!"
 
-#: src/credits.cxx:147
+#: src/credits.cxx:153
 msgid "_Thank you for"
 msgstr "_Grazie per"
 
-#: src/credits.cxx:148
+#: src/credits.cxx:154
 msgid "_playing!"
 msgstr "_aver giocato!"
 
@@ -177,11 +177,13 @@ msgstr "PagGiù - metti un oggetto in secondo piano"
 
 #: src/editor/editor_help_screen.cxx:66
 msgid "Shift PageUp   - increase objects z-pos by 50"
-msgstr "Maiusc + PagSu - allontana un oggetto di 50 unità rispetto al primo piano"
+msgstr ""
+"Maiusc + PagSu - allontana un oggetto di 50 unità rispetto al primo piano"
 
 #: src/editor/editor_help_screen.cxx:67
 msgid "Shift PageDown - decrease objects z-pos by 50"
-msgstr "Maiusc + PagGiù - avvicina un oggetto di 50 unità rispetto al primo piano"
+msgstr ""
+"Maiusc + PagGiù - avvicina un oggetto di 50 unità rispetto al primo piano"
 
 #: src/editor/editor_help_screen.cxx:68
 msgid "Enter - Set default zoom (1:1)"
@@ -233,7 +235,8 @@ msgid ""
 "release,\n"
 "please mail it to pingus-devel@nongnu.org."
 msgstr ""
-"Se hai creato un nuovo livello e vuoi che sia inserito nella prossima release di Pingus,\n"
+"Se hai creato un nuovo livello e vuoi che sia inserito nella prossima "
+"release di Pingus,\n"
 "invialo a: pingus-devel@nongnu.org."
 
 #: src/editor/object_selector.cxx:106
@@ -537,8 +540,8 @@ msgid ""
 "As many Pingus escaped as entered the level. That's going to be hard to "
 "beat.... unless this game becomes pornographic."
 msgstr ""
-"Si sono salvati tanti Pingus quanti ne sono entrati. Sarà dura battere questo risultato... "
-" a meno che questo gioco non diventi pornografico."
+"Si sono salvati tanti Pingus quanti ne sono entrati. Sarà dura battere "
+"questo risultato...  a meno che questo gioco non diventi pornografico."
 
 #: src/level_result.cxx:100
 msgid "Very impressive indeed."
@@ -556,7 +559,9 @@ msgstr "Non è male, non è affatto male."
 msgid ""
 "That was OK, but Pingu life insurance premiums have just gotten more "
 "expensive."
-msgstr "Tutto ok, ma i premi dell'assicurazione sulla vita dei Pingus diventeranno piu' costosi."
+msgstr ""
+"Tutto ok, ma i premi dell'assicurazione sulla vita dei Pingus diventeranno "
+"piu' costosi."
 
 #: src/level_result.cxx:108
 msgid "Maybe this level calls for a different strategy."
@@ -575,10 +580,13 @@ msgid "Maybe you would feel more at home playing Quake."
 msgstr "Forse ti sentiresti più a tuo agio giocando a Quake..."
 
 #: src/level_result.cxx:116
+#, fuzzy
 msgid ""
-"Maybe this level calls for a different stratagy. Like attempting to save "
+"Maybe this level calls for a different strategy. Like attempting to save "
 "them, for example."
-msgstr "Forse questo livello richiede una strategia differente. Cercare di salvarli, per esempio."
+msgstr ""
+"Forse questo livello richiede una strategia differente. Cercare di salvarli, "
+"per esempio."
 
 #: src/level_result.cxx:118
 msgid "Ever considered a career as a Pingu exterminator?"
@@ -656,6 +664,102 @@ msgstr "..:: Modo Multigiocatore ::.. sperimentale ::.."
 msgid "Multi"
 msgstr "Multi"
 
+#: src/pingu_enums.cxx:34
+msgid "Angel"
+msgstr ""
+
+#: src/pingu_enums.cxx:35
+msgid "Basher"
+msgstr ""
+
+#: src/pingu_enums.cxx:36
+#, fuzzy
+msgid "Blocker"
+msgstr "bloccato"
+
+#: src/pingu_enums.cxx:37
+msgid "Boarder"
+msgstr ""
+
+#: src/pingu_enums.cxx:38
+msgid "Bomber"
+msgstr ""
+
+#: src/pingu_enums.cxx:39
+msgid "Bridger"
+msgstr ""
+
+#: src/pingu_enums.cxx:40
+msgid "Climber"
+msgstr ""
+
+#: src/pingu_enums.cxx:41
+msgid "Digger"
+msgstr ""
+
+#: src/pingu_enums.cxx:42
+msgid "Drown"
+msgstr ""
+
+#: src/pingu_enums.cxx:43
+#, fuzzy
+msgid "Exiter"
+msgstr "Esci"
+
+#: src/pingu_enums.cxx:44
+msgid "Faller"
+msgstr ""
+
+#: src/pingu_enums.cxx:45
+msgid "Floater"
+msgstr ""
+
+#: src/pingu_enums.cxx:46
+#, fuzzy
+msgid "Jumper"
+msgstr "7 - trampolino"
+
+#: src/pingu_enums.cxx:47
+msgid "Laserkill"
+msgstr ""
+
+#: src/pingu_enums.cxx:48
+msgid "Miner"
+msgstr ""
+
+#: src/pingu_enums.cxx:49
+msgid "Rocketlauncher"
+msgstr ""
+
+#: src/pingu_enums.cxx:50
+msgid "Slider"
+msgstr ""
+
+#: src/pingu_enums.cxx:51
+msgid "Smashed"
+msgstr ""
+
+#: src/pingu_enums.cxx:52
+msgid "Splashed"
+msgstr ""
+
+#: src/pingu_enums.cxx:53
+msgid "Superman"
+msgstr ""
+
+#: src/pingu_enums.cxx:54
+#, fuzzy
+msgid "Teleported"
+msgstr "1 - teletrasporto"
+
+#: src/pingu_enums.cxx:55
+msgid "Waiter"
+msgstr ""
+
+#: src/pingu_enums.cxx:56
+msgid "Walker"
+msgstr ""
+
 #: src/pingus_counter.cxx:49
 #, c-format
 msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
@@ -667,10 +771,12 @@ msgstr "| segfault_handler: intercettato SIGSEGV."
 
 #: src/pingus_main.cxx:95
 msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
-msgstr "| Oops, Pingus è appena andato in crash. Congratulazioni, hai trovato un bug."
+msgstr ""
+"| Oops, Pingus è appena andato in crash. Congratulazioni, hai trovato un bug."
 
 #: src/pingus_main.cxx:96
-msgid "| Please write a little bug report to <grumbel@gmx.de>, include informations"
+msgid ""
+"| Please write a little bug report to <grumbel@gmx.de>, include informations"
 msgstr ""
 "| Per favore, scrivi un piccolo bug-report a <pingus-devel@nongnu.org>, "
 "includendo informazioni"
@@ -697,7 +803,9 @@ msgstr "| Attenzione: Pingus ha ricevuto un SIGINT, uscita in corso."
 
 #: src/pingus_main.cxx:306
 msgid "Warning: Larger resolution than 800x600 will result in visual problems"
-msgstr "Attenzione: Una risoluzione più grande di 800x600 potrebbe portare a problemi di visualizzazione"
+msgstr ""
+"Attenzione: Una risoluzione più grande di 800x600 potrebbe portare a "
+"problemi di visualizzazione"
 
 #: src/pingus_main.cxx:487
 msgid "Unknow char: "
@@ -881,7 +989,8 @@ msgstr "Supporto clanVorbis:          ok"
 
 #: src/pingus_main.cxx:714
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
-msgstr "Supporto clanVorbis: assente (i file musicali .ogg non saranno suonati)"
+msgstr ""
+"Supporto clanVorbis: assente (i file musicali .ogg non saranno suonati)"
 
 #: src/pingus_main.cxx:718
 msgid "clanMikMod support:           ok"
@@ -959,7 +1068,7 @@ msgstr "Pingus: Intercettata eccezione standard!:\n"
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Intercettato throw sconosciuto!"
 
-#: src/result_screen.cxx:97 src/start_screen.cxx:108
+#: src/result_screen.cxx:97 src/start_screen.cxx:109
 msgid "Abort"
 msgstr "Annulla"
 
@@ -1060,39 +1169,39 @@ msgstr "Screenshot: Impossibile scrivere il file: "
 msgid "Image has wrong color depth: %d"
 msgstr "L'immagine ha una profondità di colore sbagliata: %d"
 
-#: src/start_screen.cxx:72
+#: src/start_screen.cxx:73
 msgid "Ok"
 msgstr "Ok"
 
-#: src/start_screen.cxx:155
+#: src/start_screen.cxx:156
 msgid "Number of Pingus: "
 msgstr "Numero di Pingus: "
 
-#: src/start_screen.cxx:158
+#: src/start_screen.cxx:159
 msgid "Number to Save: "
 msgstr "Numero di Pingus da salvare: "
 
-#: src/start_screen.cxx:161
+#: src/start_screen.cxx:162
 msgid "Time: "
 msgstr "Tempo: "
 
-#: src/start_screen.cxx:164
+#: src/start_screen.cxx:165
 msgid "Difficulty:"
 msgstr "Difficoltà:"
 
-#: src/start_screen.cxx:172
+#: src/start_screen.cxx:173
 msgid "Author: "
 msgstr "Autore: "
 
-#: src/start_screen.cxx:175
+#: src/start_screen.cxx:176
 msgid "Filename: "
 msgstr "Nome del file: "
 
-#: src/story.cxx:37
+#: src/story.cxx:39
 msgid "The Journey Continues"
 msgstr "L'Avventura Continua"
 
-#: src/story.cxx:41
+#: src/story.cxx:44
 msgid ""
 "Now after you and the Pingus have learned the basics and\n"
 "practiced a bit it is time to move on and begin the journey into\n"
@@ -1108,7 +1217,7 @@ msgstr ""
 "caldo, i Pingus dovranno trovare un altro mezzo di trasporto per\n"
 "continuare il viaggio.\n"
 
-#: src/story.cxx:51
+#: src/story.cxx:56
 msgid ""
 "But as the eldest have said, the Tutorial Island provides not\n"
 "only a way to practive, but it is also the starting point into\n"
@@ -1122,7 +1231,7 @@ msgstr ""
 "il grande albero alla fine dell'isola potrebbe fornire ottimo legno per\n"
 "costruire una zattera.\n"
 
-#: src/story.cxx:60
+#: src/story.cxx:67
 msgid ""
 "So the Pingus set out and constructed some large floats, enough\n"
 "to carry them all. After also packaging up a bunch of provisions\n"
@@ -1134,7 +1243,7 @@ msgstr ""
 "di provviste, si prepararono finalmente a partire per il loro viaggio,\n"
 "lasciando la terra natìa per entrare nelle zone sconosciute del mondo.\n"
 
-#: src/story.cxx:68
+#: src/story.cxx:77
 msgid ""
 "So the Pingus sat on their float, worrying whats to come and\n"
 "where to go, while floating into the sunset.\n"
@@ -1146,14 +1255,15 @@ msgstr ""
 "\n"
 "Continua..."
 
-#: src/story.cxx:79
+#: src/story.cxx:89
 msgid "The Journey Begins"
 msgstr "L'Avventura Inizia"
 
-#: src/story.cxx:83
+#: src/story.cxx:94
+#, fuzzy
 msgid ""
 "For a long time now the Pingus have lived happily in peace on the\n"
-"south pole along with all the other animals, everything was in\n"
+"south pole along with all the other animals. Everything was in\n"
 "balance and it seemed like nothing could disrupt their peace.  The\n"
 "Pingus where happy and it seemed like this could never end.\n"
 msgstr ""
@@ -1162,11 +1272,12 @@ msgstr ""
 "potesse intaccare la loro tranquillità.  I Pingus erano contenti e\n"
 "sembrava che la cosa potesse durare in eterno.\n"
 
-#: src/story.cxx:91
+#: src/story.cxx:104
+#, fuzzy
 msgid ""
-"But then one day, things began to change slowly, the sky got darker\n"
+"But then one day, things began to slowly change, the sky got darker\n"
 "and the earth got warmer, first of they thought this was just a\n"
-"normal fluctuation in the worlds climate, but things seemed to get\n"
+"normal fluctuation in the world's climate, but things seemed to get\n"
 "worse and worse with every year."
 msgstr ""
 "Ma un giorno, le cose iniziarono a cambiare: il cielo si fece scuro\n"
@@ -1174,10 +1285,11 @@ msgstr ""
 "fluttuazione del clima, ma la situazione si faceva peggiore di anno\n"
 "in anno."
 
-#: src/story.cxx:100
+#: src/story.cxx:115
+#, fuzzy
 msgid ""
 "The snow began to melt away in a few regions and food became an\n"
-"issue. Other animals already tend to leave the region to search\n"
+"issue. Other animals tended to leave the region to search\n"
 "for colder areas, but the Pingus knew that this wouldn't help,\n"
 "they knew that they had to do something about this problem."
 msgstr ""
@@ -1186,7 +1298,7 @@ msgstr ""
 "cerca di aree più fredde, ma i Pingus sapevano che questa non era\n"
 "la soluzione: bisognava fare qualcosa per risolvere il problema."
 
-#: src/story.cxx:108
+#: src/story.cxx:125
 msgid ""
 "So the circle of the eldest came together to decide what to do\n"
 "about it. They decided to send out an expedition around the world\n"
@@ -1198,13 +1310,14 @@ msgstr ""
 "riscaldamento. La spedizione consisteva di centinaia dei Pingus\n"
 "più coraggiosi del Polo Sud."
 
-#: src/story.cxx:116
+#: src/story.cxx:135
+#, fuzzy
 msgid ""
 "And they picked you to lead them on their journey around the\n"
 "world. Since the journey will be dangerous and difficult, your\n"
-"first goal is the Island of Mogorok, also know has Tutorial\n"
+"first goal is the Island of Mogorok, also known has Tutorial\n"
 "Island. According to the eldest, this island has always been the\n"
-"first stop of Pingus which where send out into the world."
+"first stop of Pingus that where send out into the world."
 msgstr ""
 "E scelsero te per guidarli nel loro viaggio intorno al mondo. Dato che\n"
 "il viaggio sarà pericoloso e difficile, il tuo primo obiettivo è l'Isola di\n"
@@ -1212,24 +1325,26 @@ msgstr ""
 "quest'isola è sempre stata la prima tappa dei Pingus in viaggio per\n"
 "il mondo."
 
-#: src/story.cxx:125
+#: src/story.cxx:146
+#, fuzzy
 msgid ""
-"The island consists of many regions which are ideally to train the\n"
-"abilities of the Pingus. The Pingus can train there their ability\n"
+"The island consists of many regions which are ideal to train the\n"
+"abilities of the Pingus. The Pingus can there train their ability\n"
 "to build bridges, climb, bash and all the rest of their talents\n"
-"which they will surly need on their long and dangerous journey."
+"which they will surely need on their long and dangerous journey."
 msgstr ""
 "Quest'isola consiste di molte regioni ideali per apprendere le abilità\n"
 "Pingus. Qui i Pingus possono esercitarsi a costruire ponti, a scavare,\n"
 "ad arrampicarsi ed a fare tutto quello che potrebbe servire durante il\n"
 "loro lungo e pericoloso viaggio."
 
-#: src/story.cxx:133
+#: src/story.cxx:156
+#, fuzzy
 msgid ""
-"While you on the other side can practice there your ability to\n"
-"command and guide the Pingus. You can also get familiar there with\n"
+"You may, on the other hand, practice there your ability to\n"
+"command and guide the Pingus. You can also get familiar with\n"
 "all the abilities the Pingus provide and learn to master them,\n"
-"since you will need them all for sure an your journey around the\n"
+"since you will need them all for sure on your journey around the\n"
 "world."
 msgstr ""
 "D'altra parte, anche tu potrai allenarti a comandare e guidare i\n"
@@ -1237,21 +1352,24 @@ msgstr ""
 "e magari approfondirle, dato che ti serviranno sicuramente in questa\n"
 "avventura intorno al mondo."
 
-#: src/story.cxx:142
+#: src/story.cxx:167
+#, fuzzy
 msgid ""
-"Now that you and the Pingus have arrived at tutorial island it\n"
-"is time to take over the command and begin your mission.\n"
+"Now that you and the Pingus have arrived at Tutorial Island it\n"
+"is time to take command and begin your mission.\n"
 "\n"
-"                                                  Good Luck!"
+"Good Luck!"
 msgstr ""
-"Adesso che tu ed i Pingus diete arrivati all'Isola Tutorial è venuto il momento di\n"
+"Adesso che tu ed i Pingus diete arrivati all'Isola Tutorial è venuto il "
+"momento di\n"
 "prendere il comando ed iniziare la missione.\n"
 "\n"
 "                                                  Buona Fortuna!"
 
 #: src/system.cxx:265
 msgid "Environment variable $HOME not set, fix that and start again."
-msgstr "La variabile d'ambiente $HOME non è definita, correggila e prova ancora."
+msgstr ""
+"La variabile d'ambiente $HOME non è definita, correggila e prova ancora."
 
 #: src/worldmap/level_dot.cxx:162
 msgid "locked"
@@ -1283,4 +1401,3 @@ msgstr "...camminando..."
 
 #~ msgid "input"
 #~ msgstr "input"
-
