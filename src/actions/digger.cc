@@ -1,4 +1,4 @@
-//  $Id: digger.cc,v 1.4 2000/02/16 03:06:31 grumbel Exp $
+//  $Id: digger.cc,v 1.5 2000/03/01 21:15:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,27 +56,31 @@ Digger::init(void)
 void
 Digger::let_move()
 {
-  if (++digger_c >= 3) {
-    pingu->colmap->remove(digger_radius, pingu->x_pos - 15, pingu->y_pos - 2);
-    pingu->map->remove(digger_radius, pingu->x_pos - 15, pingu->y_pos - 2);
-      
-    ++pingu->y_pos;
+  if (++digger_c >= 3)
+    {
+      dig();
+    }
 
-    /* Particles are ugly and slow, so this is disabled
-       if (rand() % 2 == 0) {
-      pingu->particle->add_particle(new GroundParticle(pingu->x_pos,
-						       pingu->y_pos,
-						       frand() * 2 - 1,
-						       frand() * - 1.5));
-						       }*/
-  }
-
-  if (rel_getpixel(0, -1) == ColMap::NOTHING
-      || rel_getpixel(0, -1) == ColMap::SOLID)
+  if (!have_something_to_dig())
     { 
-      // std::cout << "Digging into solid" << std::endl;
       is_finished = true;
     }
+}
+
+bool   
+Digger::have_something_to_dig()
+{
+  return (rel_getpixel(0, -1) != ColMap::NOTHING
+	  && rel_getpixel(0, -1) != ColMap::SOLID);
+}
+
+void
+Digger::dig()
+{
+  pingu->colmap->remove(digger_radius, pingu->x_pos - 15, pingu->y_pos - 2);
+  pingu->map->remove(digger_radius, pingu->x_pos - 15, pingu->y_pos - 2);
+      
+  ++pingu->y_pos;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: digger.hh,v 1.2 2000/02/09 21:43:42 grumbel Exp $
+//  $Id: digger.hh,v 1.3 2000/03/01 21:15:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,9 @@ public:
   Digger();
 
   PinguAction* allocate(void);
+
+  bool   have_something_to_dig();
+  void   dig();
   void   init(void);
   void   let_move();
 };
