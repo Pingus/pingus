@@ -1,0 +1,102 @@
+/* This level was created with the PLE
+ * $Id: editor_tut.plf,v 1.1 2000/07/14 12:14:54 grumbel Exp $
+ */
+global {
+  author = "Ingo Ruhnke <grumbel@gmx.de>";
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "PLE Level";
+  description = "This level has no name
+
+";
+  number_of_pingus = 100;
+  number_to_save = 50;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 1216;
+  height  = 608;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures)"Textures/stars";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
+}
+
+buttons {
+  basher = 20;
+  blocker = 20;
+  bomber = 20;
+  bridger = 20;
+  climber = 20;
+  digger = 20;
+  floater = 20;
+  jumper = 20;
+  miner = 20;
+}
+
+hotspot {
+  image = (resource)"Entrances/wood_bottom";
+  x_pos = 659;
+  y_pos = 223;
+  z_pos = -100;
+  speed = -1;
+  para = "1";
+}
+
+exit {
+  image = (resource)"Exits/stone";
+  x_pos = 379;
+  y_pos = 315;
+  z_pos = -50;
+}
+
+liquid {
+  image = (resource)"Liquid/lava";
+  x_pos = -16;
+  y_pos = 526;
+  z_pos = -100;
+  width = 1400;
+  speed = 50;
+}
+
+liquid {
+  image = (resource)"Liquid/lava";
+  x_pos = -57;
+  y_pos = 547;
+  z_pos = 100;
+  width = 1400;
+  speed = 50;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 706;
+  y_pos = 249;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+hotspot {
+  image = (resource)"Entrances/wood_top";
+  x_pos = 659;
+  y_pos = 222;
+  z_pos = 100;
+  speed = -1;
+  para = "1";
+}
+
+/* EOF */

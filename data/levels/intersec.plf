@@ -1,0 +1,62 @@
+/* This level was created with the PLE
+ * $Id: intersec.plf,v 1.1 2000/07/14 12:14:54 grumbel Exp $
+ */
+global {
+  author = "";
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "Intersection";
+  description = "
+
+";
+  number_of_pingus = 50;
+  number_to_save = 40;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 1504;
+  height  = 608;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures)"Textures/enchantedjungle";
+  dim   = "0.4";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
+}
+
+buttons {
+  basher = 5;
+  bomber = 5;
+  digger = 5;
+  bridger = 10;
+  jumper = 30;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 136;
+  y_pos = 257;
+  z_pos = 0;
+  release_rate = 10;
+  direction = right;
+}
+
+exit {
+  image = (resource)"Exits/stone";
+  x_pos = 574;
+  y_pos = 470;
+  z_pos = 0;
+}
+
+/* EOF */

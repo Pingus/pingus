@@ -1,0 +1,67 @@
+/* This level was created with the PLE
+ * $Id: lonely.plf,v 1.1 2000/07/14 12:14:54 grumbel Exp $
+ */
+global {
+  author = "";
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "The Loneliest Pingu on Earth";
+  description = "
+";
+  number_of_pingus = 1;
+  number_to_save = 1;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 800;
+  height  = 608;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures.dat)"Textures/crystal";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
+}
+
+buttons {
+  climber = 1;
+  bridger = 5;
+  basher = 5;
+  miner = 5;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 337;
+  y_pos = 98;
+  z_pos = 0;
+  release_rate = 30;
+  direction = left;
+}
+
+exit {
+  image = (resource)"Exits/stone";
+  x_pos = 546;
+  y_pos = 415;
+  z_pos = 0;
+}
+
+trap {
+  name = "spike";
+  x_pos = 569;
+  y_pos = 236;
+  z_pos = 100;
+}
+
+/* EOF */
