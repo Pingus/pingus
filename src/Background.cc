@@ -1,4 +1,4 @@
-//  $Id: Background.cc,v 1.15 2000/06/12 09:18:43 grumbel Exp $
+//  $Id: Background.cc,v 1.16 2000/06/15 19:31:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,6 +66,10 @@ Background::load (background_data bg_data)
   if (bg_data.dim > 1.0) 
     std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
   
+  // Testing animatied backgrounds...
+  std::cout << "Res: " << bg_data.desc.res_name << std::endl
+	    << "file: " << bg_data.desc.filename << std::endl;
+
   if (bg_data.desc.res_name == "none")
     {
       std::cout << "Background: No surface set..." << std::endl;
@@ -73,47 +77,18 @@ Background::load (background_data bg_data)
     }
   else
     {
-      try
-	{
-	  // Testing animatied backgrounds...
-	  std::cout << "Res: " << bg_data.desc.res_name << std::endl
-		    << "file: " << bg_data.desc.filename << std::endl;
-
-	  bg_surface = CL_Surface::load(bg_data.desc.res_name.c_str(),
-					PingusResource::get(bg_data.desc.filename));
-	  /*
-	  if (bg_surface->get_num_frames() == 1)
-	    {
-	      // We have a static surface
-     
-	      // Create a canvas from the surface
-	      CL_Canvas* canvas = Blitter::create_canvas(bg_surface);
-	      
-	      // FIXME: fill_rect doesn't act very good at empty canvas;
-	      canvas->fill_rect(0, 0,
-				bg_surface->get_width(), bg_surface->get_height(),
-				bg_data.red, bg_data.green, bg_data.blue,
-				bg_data.dim);
-	    
-	      bg_surface = CL_Surface::create(canvas, true);
-	      surface_need_deletion = true;
-	    }
-	  */
-	}
-
-      catch (CL_Error err)
-	{
-	  std::cout << "-------------------------------------\n" 
-		    << "Bug triggered, workaround enabled\n"
-		    << "The game might crash real soon, sorry\n" 
-		    << "CL_Error: " << err.message  << "\n"
-		    << "-------------------------------------" << std::endl;
-	  bg_surface = 0;
-	}
+      // FIXME: Background + fill_rect() should be here, but that
+      // didn't work, so it is now removed, will be rewritten if I
+      // have a better day.
+      bg_surface = CL_Surface::load(bg_data.desc.res_name.c_str(),
+				    PingusResource::get(bg_data.desc.filename));
     }
 
-  counter.set_size(bg_surface->get_num_frames());
-  counter.set_speed(1.0);
+  if (bg_surface) 
+    {
+      counter.set_size(bg_surface->get_num_frames());
+      counter.set_speed(1.0);
+    }
 
   stretch_x = bg_data.stretch_x;
   stretch_y = bg_data.stretch_y;
@@ -132,16 +107,15 @@ Background::load (background_data bg_data)
       std::cout << "Background: Stretch_X: " << stretch_x << std::endl;
       std::cout << "Background: Stretch_Y: " << stretch_y << std::endl;
     }
- 
 }
 
 void
 Background::let_move()
 {
-  counter++;
-
   if (bg_surface)
     {
+      counter++;
+
       scroll_ox += scroll_x;
       scroll_oy += scroll_y;
   
