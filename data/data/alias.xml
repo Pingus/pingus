@@ -522,4 +522,7 @@
 <alias name="liquids/Liquid/lava" link="liquids/lava" />
 <alias name="liquids/Liquid/slime" link="liquids/slime" />
 
+<alias name="textures/Textures/lunartile" link="textures/lunartile" />
+<alias name="exits/Exits/stone" link="exits/stone" />
+
 </resources>
