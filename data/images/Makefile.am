@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.13 2000/06/08 06:14:18 grumbel Exp $
+#  $Id: Makefile.am,v 1.14 2000/06/16 17:41:55 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,8 +19,7 @@
 
 # Trying to get all the image names out of the .scr files...
 
-EXTRA_DIST = \
-editor/tb_copy.pcx \
+EXTRA_DIST = editor/tb_copy.pcx \
 editor/tb_new.pcx \
 editor/tb_open.pcx \
 editor/tb_save.pcx \
@@ -43,6 +42,7 @@ fonts/smallfont_h.pcx \
 fonts/courier_small2.tga \
 fonts/pingus2.tga \
 fonts/pingus_small3.tga \
+fonts/xterm.pcx \
 misc/logo.tga \
 misc/loading.pcx \
 misc/pingubw.pcx \
@@ -187,6 +187,14 @@ groundpieces/snow/ice1.pcx \
 groundpieces/snow/ice2.pcx \
 groundpieces/snow/igloo.pcx \
 groundpieces/snow/gpiece1.pcx \
+groundpieces/rock/real1.pcx \
+groundpieces/rock/real2.pcx \
+groundpieces/rock/real3.pcx \
+groundpieces/rock/real4.pcx \
+groundpieces/rock/real5.pcx \
+groundpieces/rock/real6.pcx \
+groundpieces/rock/real7.pcx \
+groundpieces/rock/real8.pcx \
 groundpieces/rock/granit1.pcx \
 groundpieces/rock/granit2.pcx \
 groundpieces/rock/granit3.pcx \
@@ -204,6 +212,7 @@ groundpieces/test/test2.pcx \
 groundpieces/test/test3.pcx \
 groundpieces/test/test4.pcx \
 groundpieces/test/test5.pcx \
+groundpieces/test/test6.pcx \
 groundpieces/foliage/flax1.pcx \
 groundpieces/foliage/flax2.pcx \
 groundpieces/foliage/midtree1.pcx \
@@ -316,7 +325,7 @@ pingus/climber.pcx \
 pingus/faller.pcx \
 pingus/faller.pcx \
 pingus/tumble.pcx \
-pingus/bridgerl.pcx \
+pingus/bridgerl3.pcx \
 pingus/walker.pcx \
 pingus/blocker.pcx \
 pingus/floater.pcx \
@@ -368,7 +377,8 @@ traps/guillotineidle.pcx \
 traps/laser_exit.pcx \
 traps/teleporter.tga \
 traps/bumper.pcx \
-traps/bumper_cmap.pcx
+traps/bumper_cmap.pcx 
+
 
 
 # cat ../data/*.scr | sed -n "s/^[ 	]*[A-Za-z0-9_]*[ 	]*=[ 	]*\([^ ]*\) (.*);/\1/p"

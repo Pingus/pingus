@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.hh,v 1.5 2000/04/24 13:15:41 grumbel Exp $
+//  $Id: ThemeSelector.hh,v 1.6 2000/06/16 17:41:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,6 +76,7 @@ private:
   CL_Surface* left_arrow;
 
   bool dir_read;
+  bool finished;
   ListBox list_box;
 public:
   ThemeSelector();

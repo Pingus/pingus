@@ -101,6 +101,8 @@ section Entrances {
 //	gate        = ../images/entrances/gate.tga      (type=surface, x=0, y=0, width=150, height=150, array=6x1);
 	entrance    = ../images/entrances/entrance.pcx   (type=surface, x=0, y=0, width=64, height=32, tcol=0);
 
+	generic = /home/ingo/projects/pingus/cvs/data/images/entrances/generic.pcx (type=surface, x=0, y=0, width=64, height=64, tcol=0);
+
 	woodthing_nmov = ../images/entrances/woodthing_nmov.tga   (type=surface, x=0, y=0, width=151, height=157);
 	woodthing_mov  = ../images/entrances/woodthing_mov.pcx   (type=surface, x=0, y=0, width=105, height=17, array=17x1, tcol=0);
 

@@ -1,13 +1,11 @@
 /* This level was created with the PLE
- * $Id: small1.plf,v 1.1 2000/04/10 21:29:16 grumbel Exp $
+ * $Id: small1.plf,v 1.2 2000/06/16 17:41:55 grumbel Exp $
  */
 global {
-  author = "Ingo Ruhnke <grumbel@gmx.de>";
   start_x_pos = 0;
   start_y_pos = 0;
   levelname = "Claustrophobia";
-  description =
-"This level is currently not working
+  description = "This level is currently not working
 correctly due to some missing features
 in ClanLib (alpha/put_target()). To get
 an idea how this level should look like

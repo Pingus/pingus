@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.17 2000/06/14 21:45:55 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.18 2000/06/16 17:41:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,6 +83,9 @@ ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
     {
       switch (key.id)
 	{
+	case CL_KEY_ESCAPE:
+	  theme_selector->finished = true;
+	  break;
 	case CL_KEY_LEFT:
 	  theme_selector->current_theme++;
 	  if (theme_selector->current_theme == theme_selector->themes.end()) 
@@ -207,7 +210,8 @@ ThemeSelector::select()
   Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
   Display::show_cursor(true);
 
-  while(!key_pressed(CL_KEY_ESCAPE)) 
+  finished = false;
+  while(!finished)
     {
       CL_System::keep_alive();
       draw();
@@ -274,19 +278,6 @@ ThemeSelector::readdir(std::string path)
 	  themes.push_back(new Theme(pathname + "/themes/" + entry->name));
 	}
     }
-}
-
-bool
-ThemeSelector::key_pressed(int key)
-{
-  if (CL_Keyboard::get_keycode(key)) {
-    while(CL_Keyboard::get_keycode(key)) {
-      CL_System::keep_alive();
-    }
-    return true;
-  } else {
-    return false;
-  } 
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: Entrance.cc,v 1.8 2000/06/06 18:51:51 grumbel Exp $
+//  $Id: Entrance.cc,v 1.9 2000/06/16 17:41:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ Entrance::Entrance(entrance_data data)
   z_pos = -10;
   direction = data.direction;
 
-  surface = CL_Surface::load("Entrances/entrance", PingusResource::get("global.dat"));
+  surface = 0;//CL_Surface::load("Entrances/entrance", PingusResource::get("global.dat"));
 }
 
 bool
@@ -120,6 +120,7 @@ Entrance::let_move(void)
 void
 Entrance::draw_offset(int x, int y, float s)
 {
+  if (!surface) return;
   if (s == 1.0) 
     {
       // FIXME: Why do we have still this hardcoded offsets?!

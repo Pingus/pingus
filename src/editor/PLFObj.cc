@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.12 2000/06/06 18:51:52 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.13 2000/06/16 17:41:57 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -108,9 +108,9 @@ EntranceObj::EntranceObj(entrance_data data)
   
   if (type == "generic")
     {
-      surf = CL_Surface::load("Entrances/entrance", PingusResource::get("global.dat"));
-      x_of = -32;
-      y_of = -16;
+      surf = CL_Surface::load("Entrances/generic", PingusResource::get("global.dat"));
+      x_of = -surf->get_width();
+      y_of = -surf->get_height();
     } 
   else if (type == "woodthing") 
     {

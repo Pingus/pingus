@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.10 2000/06/15 19:32:44 grumbel Exp $
+//  $Id: blitter.cc,v 1.11 2000/06/16 17:41:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <algorithm>
 #include <cstdio>
 #include "PingusError.hh"
 #include "blitter.hh"
@@ -121,53 +122,40 @@ Blitter::put_surface_8bit(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
 
 void
 Blitter::put_surface_32bit(CL_Canvas* canvas, CL_SurfaceProvider* provider,
-			   int x, int y)
+			   int x_pos, int y_pos)
 {
   std::cout << "Blitter::put_surface_32bit() --- not implemented" << std::endl;
-  return;
-  int sx1, sx2, sy1, sy2;
-  int tx1, tx2, ty1, ty2;
+  //return;
+  float red, green, blue, alpha;
+  float tred, tgreen, tblue, talpha;
 
   int swidth = provider->get_width();
   int sheight = provider->get_height();
 
-  int twidth = provider->get_width();
+  int twidth = canvas->get_width();
   int theight = canvas->get_height();
 
+  canvas->lock();
+  provider->lock();
+  for(int y=max(0, -y_pos); y < sheight && (y + y_pos) < theight ; y++) {
+    for(int x=max(0,-x_pos); x < swidth && (x + x_pos) < twidth; x++) {
+      provider->get_pixel(x, y, &red, &green, &blue, &alpha);
+      canvas->get_pixel(x + x_pos, y + y_pos, &tred, &tgreen, &tblue, &talpha);
+
+      canvas->draw_pixel(x + x_pos, y + y_pos, 
+			 max(0.0, min(1.0, (red * alpha) + (tred * (1.0-alpha)))),
+			 max(0.0, min(1.0, (green * alpha) +(tgreen * (1.0-alpha)))),
+			 max(0.0, min(1.0, (blue * alpha)  + (tblue * (1.0-alpha)))),
+			 max(0.0, min(1.0, alpha * alpha + (talpha*(1.0-alpha)))));
+    }
+  }
+  provider->unlock();
+  canvas->unlock();
+
+  /*
   unsigned char* tbuffer = static_cast<unsigned char*>(canvas->get_data());
   unsigned char* sbuffer = static_cast<unsigned char*>(provider->get_data());
   
-  if (x < 0) {
-    sx1 = -x;
-    tx1 = 0;
-  } else {
-    tx1 = x;
-    sx1 = 0;
-  }
-
-  if (y < 0) {
-    sy1 = -y;
-    ty1 = 0;
-  } else {
-    ty1 = y;
-    sy1 = 0;
-  }
-
-  if ((x + swidth) > twidth) {
-    sx2 = twidth - x;
-    tx2 = twidth;
-  } else {
-    sx2 = swidth;
-    tx2 = x + swidth;
-  }
-
-  if ((x + sheight) > theight) {
-    sy2 = theight - y;
-    ty2 = theight;
-  } else {
-    sy2 = sheight;
-    ty2 = y + sheight;
-  }
 
   std::cout << "SRegion to draw: W = " << sx2 - sx1 << std::endl;
   std::cout << "                H = " << sy2 - sy1 << std::endl;
@@ -190,7 +178,7 @@ Blitter::put_surface_32bit(CL_Canvas* canvas, CL_SurfaceProvider* provider,
 	}
     }
   provider->unlock();
-  canvas->unlock();
+  canvas->unlock();*/
 }
 
 void
