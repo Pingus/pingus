@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.cxx,v 1.5 2002/06/28 17:05:45 grumbel Exp $
+//  $Id: res_descriptor.cxx,v 1.6 2002/06/28 17:06:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -106,6 +106,7 @@ ResDescriptor::ResDescriptor(const std::string& c_cast, const std::string& value
 bool
 ResDescriptor::operator<(const ResDescriptor& res_desc) const
 {
+  // FIXME: This is ugly and slow
   return (datafile + res_name + to_string (type) + to_string (modifier)) 
     < (res_desc.datafile + res_desc.res_name + to_string (res_desc.type) + to_string (res_desc.modifier));
 }
