@@ -19,10 +19,4 @@ SUBDIRS = src data doc intl po
 
 EXTRA_DIST = ABOUT-NLS BUGS FAQ CREDITS autogen.sh pingus.dsp pingus.dsw vcfix.reg INSTALL.Win32
 
-# install-recursive:
-#	@echo ""
-#	@echo "\"make install\" is currently not supported in this CVS version."
-#	@echo ""
-#	@exit 1
-
 # EOF #

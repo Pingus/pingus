@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.66 2001/08/16 22:00:50 grumbel Exp $
+//  $Id: Pingu.cc,v 1.67 2001/11/18 00:03:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -185,7 +185,7 @@ Pingu::set_action(shared_ptr<PinguAction> act)
 	    }
 	  action_time = act->activation_time();
 	  countdown_action = act;
-	  //PingusSound::play_wav("ohno");
+	  //PingusSound::play("ohno.wav");
 	}
       return true;
     }
@@ -289,7 +289,7 @@ Pingu::update(float delta)
       die. */
   if (rel_getpixel(0, -1) == ColMap::OUTOFSCREEN) 
     {
-      PingusSound::play_wav("die");
+      PingusSound::play("die.wav");
       status = PS_DEAD;
       return;
     }

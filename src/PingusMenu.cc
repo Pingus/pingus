@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.50 2001/08/07 18:14:14 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.51 2001/11/18 00:03:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,7 +73,7 @@ PingusMenu::~PingusMenu()
 void
 PingusMenu::draw()
 {
-  //PingusSound::play_mod("../data/music/pingus-1.it");
+  //PingusSound::play("../data/music/pingus-1.it");
   for(std::list<boost::shared_ptr<SurfaceButton> >::iterator i = buttons.begin();
       i != buttons.end(); ++i)
     (*i)->draw();

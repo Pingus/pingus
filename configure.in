@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.44 2001/08/18 09:56:59 grumbel Exp $
+#  $Id: configure.in,v 1.45 2001/11/18 00:03:28 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -175,7 +175,9 @@ AC_CHECK_LIB( clanCore,   main,, [
 	])
 AC_CHECK_LIB( clanApp,   main)
 AC_CHECK_LIB( clanDisplay,   main)
-dnl AC_CHECK_LIB( clanSound,   main)
+AC_CHECK_LIB( clanSound,   main)
+AC_CHECK_LIB( clanMikMod,   main)
+AC_CHECK_LIB( clanVorbis,   main)
 
 dnl AC_CHECK_LIB( clanGUI,   main,, [
 dnl 	echo "ClanLib is installed, but clanGUI was not found. You probably"

@@ -1,4 +1,4 @@
-//  $Id: PlayfieldView.hh,v 1.3 2001/04/14 14:37:04 grumbel Exp $
+//  $Id: PlayfieldView.hh,v 1.4 2001/11/18 00:03:29 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "boost/dummy_ptr.hpp"
 #include "GuiObj.hh"
 #include "World.hh"
+#include "Pingu.hh"
 
 class PlayfieldView : public GuiObj
 {

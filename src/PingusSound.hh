@@ -1,4 +1,4 @@
-//  $Id: PingusSound.hh,v 1.14 2001/04/03 10:45:49 grumbel Exp $
+//  $Id: PingusSound.hh,v 1.15 2001/11/18 00:03:28 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,27 +27,16 @@ class PingusSound
 protected: 
   static PingusSound* sound;
 
-  virtual void real_play_mod (std::string filename, float volume) =0;
-  virtual void real_play_wav(std::string filename, float volume, float panning) =0;
-  virtual void real_clean_up() =0;
+  virtual void real_play(std::string filename, float volume, float panning) =0;
 
 public:
   static void init (PingusSound* s);
 
-  /** Load a mod and play it immediately.
+  /** Load a music file and play it immediately.
 
-      @param filename The complete filename, it will be passed to the
-      PingusMusicProvider */
-  static void play_mod(std::string filename, float volume = 0.5f);
+      @param filename The complete filename  */
+  static void play(std::string filename, float volume = 0.5f, float panning = 0.0f);
 
-  /** Load a wav and play it immediately.
-
-      @param filename The complete filename, it will be passed to the
-             PingusSoundProvider */
-  static void play_wav(std::string filename, float volume = 0.5f, float panning = 0.0f);
-
-  /** Shut down the sound and the music and quit SDL */
-  static void clean_up();
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: PingusSound.cc,v 1.19 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: PingusSound.cc,v 1.20 2001/11/18 00:03:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,30 +32,18 @@ PingusSound::init (PingusSound* s)
   sound = s;
 }
 
-void
-PingusSound::play_mod(std::string filename, float volume)
-{
-  assert (sound);
-  if (music_enabled) sound->real_play_mod (filename, volume);
-}
 
-/** Load a wav and play it immediately.
+/** Load a sound file and play it immediately.
     
-    @param filename The complete filename, it will be passed to the
-    PingusSoundProvider */
+    @param filename The complete filename */
+    
 void 
-PingusSound::play_wav(std::string filename, float volume, float panning)
+PingusSound::play(std::string filename, float volume, float panning)
 {
   assert (sound);
-  if (sound_enabled) sound->real_play_wav (filename, volume, panning);
+  sound->real_play (filename, volume, panning);
 }
 
-/** Shut down the sound and the music and quit SDL */
-void 
-PingusSound::clean_up()
-{
-  assert (sound);
-  sound->real_clean_up ();
-}
 
 /* EOF */
+

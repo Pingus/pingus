@@ -1,4 +1,4 @@
-//  $Id: PingusSoundReal.cc,v 1.11 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: PingusSoundReal.cc,v 1.12 2001/11/18 00:03:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,150 +19,97 @@
 
 #include <config.h>
 
-#ifdef HAVE_LIBSDL_MIXER
-
 #include <string>
-#include <cstdio>
 #include <iostream>
-#include <config.h>
 
-#include "algo.hh"
-#include "audio.hh"
+#ifdef HAVE_LIBCLANVORBIS
+#  include <ClanLib/vorbis.h>
+#endif
+
+#ifdef HAVE_LIBCLANMIKMOD
+#  include <ClanLib/mikmod.h>
+#endif
+
 #include "globals.hh"
 #include "PingusError.hh"
-#include "PingusMusicProvider.hh"
-#include "PingusWavProvider.hh"
 #include "PingusSoundReal.hh"
 
 PingusSoundReal::PingusSoundReal ()
 {
-  init(pingus_audio_rate, pingus_audio_format,
-       pingus_audio_channels, pingus_audio_buffers);
+  init();
 }
 
-void
-PingusSoundReal::init(int audio_rate, Uint16 audio_format,
-		      int audio_channels, int audio_buffers)
+PingusSoundReal::~PingusSoundReal()
 {
-  music = 0;
+  if (music) {
+    if (music -> is_playing())
+      music -> stop();
+    delete music;
+  }
+}
+
+
+void
+PingusSoundReal::init()
+{
+
   is_init = true;
 
   if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
-    {
-      printf("Initializing music: %d Hz %d bit %s, %d bytes audio buffer\n", audio_rate,
-	     (audio_format&0xFF),
-	     (audio_channels > 1) ? "stereo" : "mono", 
-	     audio_buffers);
-    }
+    cout << "Initializing ClanLib-Sound" << endl;
+    
+  CL_SetupSound::init();
   
-  if ( SDL_Init(SDL_INIT_AUDIO) < 0 ) 
-    {
-      fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
-      exit(255);
-    }
-  printf("SDL init...\n");
-
-  /* Open the audio device */
-  if (Mix_OpenAudio(audio_rate, audio_format, audio_channels, audio_buffers) < 0) {
-    fprintf(stderr, "Couldn't open audio: %s\n", SDL_GetError());
-    exit(2);
-  } else {
-    Mix_QuerySpec(&audio_rate, &audio_format, &audio_channels);
-    if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
-      {
-	printf("Opened audio at %d Hz %d bit %s, %d bytes audio buffer\n", audio_rate,
-	       (audio_format&0xFF),
-	       (audio_channels > 1) ? "stereo" : "mono", 
-	       audio_buffers );
-      }
-    atexit(clean_up);
-  }
-  audio_open = 1;
-
-  Mix_SetMusicCMD(getenv("MUSIC_CMD"));
-
-  printf("SDL init... done\n");
-}
-
-void
-PingusSoundReal::real_clean_up()
-{
-  assert (is_init);
-
-  if( Mix_PlayingMusic() ) 
-    {
-      Mix_FadeOutMusic(1500);
-      SDL_Delay(1500);
-    }
-  
-  if ( music ) 
-    {
-      Mix_FreeMusic(music);
-      music = NULL;
-    }
-  
-  if ( audio_open ) 
-    {
-      Mix_CloseAudio();
-      audio_open = 0;
-    }
-  SDL_Quit();
-}
-
-void
-PingusSoundReal::real_play_wav(std::string arg_str, float volume, float panning)
-{
-  std::string str = "sound/" +  arg_str + ".wav";
-  
-  // FIXME: Ugly hack!
-  if (!is_init)
-    {
-      init(pingus_audio_rate, pingus_audio_format,
-	   pingus_audio_channels, pingus_audio_buffers);
-    }
-  
-  //cout << "PlayingWAV: " << str << endl;
-  Mix_Chunk* chunk = PingusWavProvider::load(str);
-
-  chunk->volume = int(127.0f * volume);
-
-  if (volume > 1.0 || volume < 0)
-    std::cout << "Volume too loud: " << volume << " " << chunk->volume << std::endl;
-
-  Mix_PlayChannel(-1, chunk, 0);
-}
-
-void
-PingusSoundReal::real_play_mod(std::string filename, float volume)
-{
   if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
-    std::cout << "PingusSoundReal: Playing mod file: " << filename << std::endl;
+    cout << "Initializing ClanLib-MikMod" << endl;
   
-  if (music)
-    {
-      Mix_FadeOutMusic(1000);
-      Mix_FreeMusic(music);
-    }
-  
-  try {
-    music = PingusMusicProvider::load(filename);
-  } catch (PingusError err) {
-    std::cout << err.get_message () << std::endl;
-  }
-
-  /* FIXME: gives:
-PingusSoundReal.cc:152: invalid use of undefined type `struct _Mix_Music'
-/usr/include/SDL/SDL_mixer.h:70: forward declaration of `struct _Mix_Music'
-PingusSoundReal.cc:154: invalid use of undefined type `struct _Mix_Music'
-/usr/include/SDL/SDL_mixer.h:70: forward declaration of `struct _Mix_Music'
-
-    music->volume = int(127.0f * volume);
-  if (volume > 1.0 || volume < 0)
-    std::cout << "play_mod:Volume to large: " << volume << " " << music->volume << std::endl;
-  */
-  Mix_FadeInMusic(music,-1,2000);
+#ifdef HAVE_LIBCLANMIKMOD
+  CL_SetupMikMod::init();
+#endif
 }
 
-#endif /* HAVE_LIBSDL_MIXER */
+
+void
+PingusSoundReal::real_play(std::string filename, float volume, float panning)
+{
+
+  if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
+    std::cout << "PingusSoundReal: Playing file: " << filename << std::endl;
+  
+  if (music) {
+    if (music -> is_playing())
+      music -> stop();
+    delete music;
+    music = NULL;
+  }
+
+  sample = 0;
+  if (filename.substr(filename.size()-4, 4) == ".ogg") {
+#ifdef HAVE_LIBCLANVORBIS
+    sample = new CL_SoundBuffer (new CL_VorbisSoundProvider(filename.c_str()), true);
+#endif
+  } else if (filename.substr(filename.size()-4, 4) == ".wav") {
+    std::cout << "Überspringe .WAV" << std::endl;
+    //sample = new CL_SoundBuffer (new CL_Sample(filename.c_str(), NULL), true);
+        
+  } else {  // MikMod wird den Rest schon schaffen ;-)
+#ifdef HAVE_LIBCLANMIKMOD
+    sample = new CL_SoundBuffer (new CL_Streamed_MikModSample(filename.c_str()), true);
+#endif
+  }
+  
+  if (sample)
+    {
+      music = new CL_SoundBuffer_Session(sample -> prepare());
+  
+      std::cout << "vor set_volume\n";
+      music -> set_volume(volume);
+      std::cout << "nach set_volume\n";
+      music -> set_looping(true);
+      music -> play();
+    }
+}
+
 
 /* EOF */
+

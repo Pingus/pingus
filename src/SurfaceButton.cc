@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.31 2001/08/07 18:14:14 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.32 2001/11/18 00:03:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,7 @@ SurfaceButton::draw()
     {
       if (!is_mouse_over) 
 	{
-	  PingusSound::play_wav ("chain", 0.1);
+	  PingusSound::play ("chain.wav", 0.1);
 	}
 
       is_mouse_over = true;
@@ -350,7 +350,7 @@ StoryButton::~StoryButton() {}
 void 
 StoryButton::on_click()
 {
-  PingusSound::play_wav ("letsgo");
+  PingusSound::play ("letsgo.wav");
   
   menu->get_manager ()->set_menu (&menu->get_manager ()->story);
   //worldmap_manager.display();
@@ -371,7 +371,7 @@ ThemeButton::ThemeButton ()
 void
 ThemeButton::on_click()
 {
-  PingusSound::play_wav ("letsgo");
+  PingusSound::play ("letsgo.wav");
   
   //menu->get_manager ()->set_menu (&menu->get_manager ()->story);
 

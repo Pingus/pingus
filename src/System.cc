@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.35 2001/08/15 22:01:45 grumbel Exp $
+//  $Id: System.cc,v 1.36 2001/11/18 00:03:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ std::string System::default_email;
 std::string System::default_username;
 
 System::DirectoryEntry::DirectoryEntry(const std::string& n, FileType t)
-  : name (n), type (t)
+  : type (t), name (n)
 {
 }
 
