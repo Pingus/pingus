@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.29 2002/04/03 21:00:07 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.30 2002/06/01 18:04:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ protected:
   Pingu*      pingu;
 
   /// Height of Pingu.  Used in head collision.
-  const static int pingu_height;
+  static const int pingu_height;
 
 public:
   /** Indicate if the action should be canceled at the next possible

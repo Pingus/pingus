@@ -1,4 +1,4 @@
-//  $Id: basher.hh,v 1.17 2002/04/03 09:05:32 grumbel Exp $
+//  $Id: basher.hh,v 1.18 2002/06/01 18:04:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ public:
   void bash();
   
   /// Defines "wall" height needed so as to determine whether it should be bashed.
-  const static int bash_height;
+  static const int bash_height;
 };
 
 #endif
