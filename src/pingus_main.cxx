@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.41 2003/02/16 18:40:47 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.42 2003/02/18 11:28:41 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -739,7 +739,11 @@ PingusMain::main(int argc, char** argv)
 
       init_clanlib();
       init_pingus();	
-      
+
+      // Avoid uglyness on window opening
+      CL_Display::clear_display();
+      CL_Display::flip_display();
+
       start_game();
     
       deinit_pingus();

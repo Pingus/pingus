@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.28 2002/11/27 20:05:42 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.29 2003/02/18 11:28:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,7 @@ struct z_pos_sorter
 {
   bool operator()(Drawable* a, Drawable* b)
   {
+    std::cout << "a: " << a << " b: " << b << std::endl;
     return a->get_z_pos() < b->get_z_pos();
   }
 };
@@ -72,6 +73,7 @@ WorldMap::WorldMap(const std::string& arg_filename)
   parse_file(doc, cur);
 
   pingus = new Pingus(path_graph);
+  std::cout << "PingusPtr: " << pingus << std::endl;
   // FIXME: This should not be hardcoded, but instead be noted in the
   // savegame or worldmap
   pingus->set_position(0);

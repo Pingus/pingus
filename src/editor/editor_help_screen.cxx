@@ -1,4 +1,4 @@
-//  $Id: editor_help_screen.cxx,v 1.4 2003/02/18 10:30:31 grumbel Exp $
+//  $Id: editor_help_screen.cxx,v 1.5 2003/02/18 11:28:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ EditorHelpScreen::draw ()
   int x_pos;
   int y_pos;
 
-  x_pos = 32;
+  x_pos = 64;
   y_pos = 100;
   font->print_left (x_pos, y_pos +   0, _("F1 - show/hide this help screen"));
   font->print_left (x_pos, y_pos +  20, _("F2 - launch level building tutorial"));
@@ -78,7 +78,7 @@ EditorHelpScreen::draw ()
   //font->print_left (x_pos, y_pos + 320, _(""));
   //font->print_left (x_pos, y_pos + 340, _(""));
   
-  x_pos = 32;
+  x_pos = 64;
   y_pos = 500;
   font->print_left (x_pos, y_pos + 0, _("Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.xml"));
 

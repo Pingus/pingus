@@ -1,4 +1,4 @@
-//  $Id: path_graph.cxx,v 1.17 2002/11/03 23:31:35 grumbel Exp $
+//  $Id: path_graph.cxx,v 1.18 2003/02/18 11:28:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,7 +76,7 @@ PathGraph::parse_nodes(xmlDocPtr doc, xmlNodePtr cur)
   
   while (cur)
     {
-      std::cout << "parsing nodes" << std::endl;
+      //std::cout << "parsing nodes" << std::endl;
 
       Dot* dot = DotFactory::create(doc, cur);
       if (dot)
@@ -84,7 +84,7 @@ PathGraph::parse_nodes(xmlDocPtr doc, xmlNodePtr cur)
           // add the dot to the pathfinding
           NodeId id = graph.add_node(dot);
 
-          std::cout << "Adding to lookup table: " << dot->get_name() << std::endl;
+          //std::cout << "Adding to lookup table: " << dot->get_name() << std::endl;
           node_lookup[dot->get_name()] = id;
 
           // add the dot to the list of drawables

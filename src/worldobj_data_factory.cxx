@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.29 2002/11/02 20:46:10 grumbel Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.30 2003/02/18 11:28:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -150,7 +150,7 @@ WorldObjData*
 WorldObjDataFactory::create (const std::string& id,
 			     xmlDocPtr doc, xmlNodePtr cur)
 {
-  std::cout << "WorldObjDataFactory::create (id, xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
+  //std::cout << "WorldObjDataFactory::create (id, xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
 
   std::map<std::string, WorldObjDataAbstractFactory*>::iterator it = factories.find(id);
   

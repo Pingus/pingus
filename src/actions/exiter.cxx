@@ -1,4 +1,4 @@
-//  $Id: exiter.cxx,v 1.12 2002/10/13 20:25:00 torangan Exp $
+//  $Id: exiter.cxx,v 1.13 2003/02/18 11:28:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,7 @@ namespace Actions {
 
 Exiter::Exiter (Pingu* p)
   : PinguAction(p),
-    sprite(Sprite("Pingus/exit0", "pingus", 10.0f, Sprite::NONE, Sprite::ONCE))
+    sprite(Sprite("Pingus/exit0", "pingus", 15.0f, Sprite::NONE, Sprite::ONCE))
 {
   sprite.set_align_center_bottom();
 }

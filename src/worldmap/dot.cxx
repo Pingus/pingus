@@ -1,4 +1,4 @@
-//  $Id: dot.cxx,v 1.4 2003/02/18 10:31:32 grumbel Exp $
+//  $Id: dot.cxx,v 1.5 2003/02/18 11:28:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ Dot::Dot(xmlDocPtr doc, xmlNodePtr cur)
 {
   assert(cur);
 
-  std::cout << "Dot::Dot: " << cur->name << std::endl;
+  //std::cout << "Dot::Dot: " << cur->name << std::endl;
 
   // cur = <dot>...</dot>
 

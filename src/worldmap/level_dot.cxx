@@ -1,4 +1,4 @@
-//  $Id: level_dot.cxx,v 1.6 2002/11/27 20:05:42 grumbel Exp $
+//  $Id: level_dot.cxx,v 1.7 2003/02/18 11:28:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,12 +52,8 @@ LevelDot::LevelDot(xmlDocPtr doc, xmlNodePtr cur)
       if (XMLhelper::equal_str(cur->name, "levelname"))
         {
           levelname = XMLhelper::parse_string(doc, cur);
-          std::cout << "Levelname: " << levelname << std::endl;         
+          //std::cout << "Levelname: " << levelname << std::endl;         
           plf = PLF::create(path_manager.complete("levels/") + levelname);
-        }
-      else
-        {
-          std::cout << "92834Unknown: " << cur->name  << std::endl;
         }
       
       cur = cur->next;
