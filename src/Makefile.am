@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.32 2000/08/06 13:05:31 grumbel Exp $
+#  $Id: Makefile.am,v 1.33 2000/08/11 01:11:04 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 bindir=$(prefix)/games
 
-SUBDIRS = actions traps particles entrances editor war
+SUBDIRS = actions traps particles entrances editor war caimagemanipulation
 
 EXTRA_DIST = README \
              win32/Getopt.c  \
@@ -30,7 +30,8 @@ EXTRA_DIST = README \
 
 bin_PROGRAMS = pingus
 
-LDADD = traps/libpingu_traps.a          \
+LDADD = caimagemanipulation/libcaimagemanipulation.a \
+	traps/libpingu_traps.a          \
         actions/libpingu_actions.a      \
         entrances/libpingus_entrances.a \
         particles/libpingus_particle.a  \

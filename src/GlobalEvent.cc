@@ -1,4 +1,4 @@
-//  $Id: GlobalEvent.cc,v 1.10 2000/08/09 14:39:37 grumbel Exp $
+//  $Id: GlobalEvent.cc,v 1.11 2000/08/11 01:11:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,7 @@ GlobalEvent global_event;
 void
 GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 {
-  std::cout << "Button pressed..." << std::endl;
+  //  std::cout << "Button pressed..." << std::endl;
 
   if (device == CL_Input::keyboards[0])
     {
