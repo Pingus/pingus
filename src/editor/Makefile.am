@@ -28,6 +28,7 @@ libpingus_editor_a_SOURCES = \
 	entrance_window.cxx entrance_window.hxx \
 	exit_window.cxx exit_window.hxx \
 	groundpiece_window.cxx groundpiece_window.hxx \
+        generic_property_frame.cxx generic_property_frame.hxx \
 	level_property_window.cxx level_property_window.hxx \
 	object_manager.cxx object_manager.hxx \
 	object_selector.cxx object_selector.hxx \

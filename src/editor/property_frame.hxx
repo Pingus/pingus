@@ -1,4 +1,4 @@
-//  $Id: property_frame.hxx,v 1.7 2002/11/28 20:09:54 grumbel Exp $
+//  $Id: property_frame.hxx,v 1.8 2002/11/29 00:17:05 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,9 @@ class CL_Component;
 
 namespace EditorNS {
 
-/** FIXME: Document Me */
+/** Class for things that should be placed in the PropertyWindow, it
+    basically just provides a get_title() function to switch the
+    window title */
 class PropertyFrame : public CL_Frame
 {
 public:

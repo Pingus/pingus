@@ -1,4 +1,4 @@
-//  $Id: surface_background_obj.cxx,v 1.3 2002/09/27 18:36:40 torangan Exp $
+//  $Id: surface_background_obj.cxx,v 1.4 2002/11/29 00:17:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,12 @@
 
 #include "../string_converter.hxx"
 #include "../worldobjsdata/surface_background_data.hxx"
+#include "../editor/editor.hxx"
+#include "../editor/generic_property_frame.hxx"
+#include "../editor/property_window.hxx"
 #include "surface_background_obj.hxx"
+
+using namespace EditorNS;
 
 namespace EditorObjs {
 
@@ -54,6 +59,24 @@ SurfaceBackgroundObj::status_line ()
          + to_string(data->pos.x) + ", "
          + to_string(data->pos.y) + ", "
          + to_string(data->pos.z);
+}
+
+PropertyFrame*
+SurfaceBackgroundObj::get_gui_dialog(Editor* editor)
+{
+  GenericPropertyFrame* propframe 
+    = new GenericPropertyFrame("SurfaceBackground", editor->get_property_window()->get_client_area());
+
+  propframe->add_float_box("Parallax-X", &data->para_x);
+  propframe->add_float_box("Parallax-Y", &data->para_y);
+
+  propframe->add_float_box("Scroll-Speed-X", &data->scroll_x);
+  propframe->add_float_box("Scroll-Speed-Y", &data->scroll_y);
+
+  propframe->add_check_box("Stretch-X", &data->stretch_x);
+  propframe->add_check_box("Stretch-Y", &data->stretch_y);
+
+  return propframe;
 }
 
 } // namespace EditorObjs
