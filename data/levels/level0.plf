@@ -1,0 +1,59 @@
+global {
+	start_x_pos = 140;
+	start_y_pos = 240;
+	levelname = "Level 0" ;
+	description = "Martins test level";
+}
+
+ground {
+	width = 1400;
+	height =  480;
+	maptype = "SPOT";
+	data    = (file)"level0.psm";
+//	colmap  = (resource)"ColMaps/level1";
+	colmap  = (auto);
+}
+
+background {
+	image = (resource:textures.dat)"Textures/stars";
+	scroll_x = 0;
+	scroll_y = 0;
+}
+
+entrance {
+	image =  (resource)"Hotspots/dragon";
+//	colmap = (resource)"Hotspots/dragon";
+	x_pos = 130;
+	y_pos = 250;
+	release_rate = 25;
+	direction = right;
+}
+
+entrance {
+	image =  (resource)"Hotspots/dragon";
+//	colmap = (resource)"Hotspots/dragon";
+	x_pos = 760;
+	y_pos = 250;
+	release_rate = 25;
+	direction = left;
+}
+
+exit {
+	image = (resource)"Exits/ice";
+        x_pos = 420;
+	y_pos = 300;
+        z_pos = 1000;
+}
+
+buttons {
+	basher  = 20;
+	blocker = 20;
+	bomber  = 20;
+	bridger = 20;
+	climber = 20;
+	digger  = 20;
+	floater = 20;
+	miner   = 20;
+}
+
+/* EOF */
