@@ -1,4 +1,4 @@
-//  $Id: button_panel.cxx,v 1.6 2002/07/29 11:57:38 grumbel Exp $
+//  $Id: button_panel.cxx,v 1.7 2002/07/29 22:17:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -168,7 +168,7 @@ ButtonPanel::on_button_press(int x, int y)
 	pressed_button = button;
     }
   
-  if (armageddon->mouse_over(CL_Vector (x, y)))
+  if (armageddon->is_at(x, y))
     {
       last_press = CL_System::get_time();
       

@@ -1,4 +1,4 @@
-//  $Id: action_button.hxx,v 1.3 2002/06/28 15:12:22 torangan Exp $
+//  $Id: action_button.hxx,v 1.4 2002/07/29 22:17:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include <string>
 #include "anim_counter.hxx"
 #include "pingu_enums.hxx"
+#include "gui/component.hxx"
 
 using Pingus::Actions::ActionName;
 
@@ -33,54 +34,32 @@ class CL_Font;
 class CL_Vector;
 
 // ----------------- snip --------------------
-///
 class Button
 {
 protected:
-  ///
   int x_pos;
-  ///
   int y_pos;
-  ///
+
   CL_Surface surface;
-  ///
   bool pressed;
 public:
-  ///
   Button();
-  
   Button (int x, int y);
-  ///
   virtual ~Button();
 
-  ///
   virtual void   draw() = 0;
-  ///
   virtual bool   mouse_over(const CL_Vector& pos) = 0;
 };
 
 // ----------------- snip --------------------
 ///
-class EventButton : public Button
-{
-private: 
-public:
-  ///
-  EventButton(int x, int y, std::string);
-  ///
-  virtual ~EventButton();
-  
-  ///
-  void   draw();
-  ///
-  bool   mouse_over(const CL_Vector& pos);
-};
-
-// ----------------- snip --------------------
-///
-class ArmageddonButton : public Button
+class ArmageddonButton : public GUI::Component
 {
 private:
+  int x_pos;
+  int y_pos;
+  bool pressed;
+  CL_Surface surface;
   CL_Surface background;
   CL_Surface backgroundhl;
 
@@ -92,7 +71,7 @@ public:
   virtual ~ArmageddonButton();
 
   void draw();
-  bool mouse_over(const CL_Vector& pos);
+  bool is_at(int x, int y);
 };
 
 // ----------------- snip --------------------
@@ -138,33 +117,23 @@ public:
 class ActionButton : public Button
 {
 protected:
-  ///
   CL_Font*    font;
-  ///
   CL_Font*    font_h;
   // Added for printing action names next to the button.
   CL_Font*    font_b;
 
   ActionName name;
-  ///
   int available;
-  ///
   bool is_multi_direct;
 
-  ///
   ActionHolder* action_holder;
-  ///
   AnimCounter action_c;
 public:  
-  ///
   bool pressed;
 
-  ///
   ActionButton();
-  ///
   virtual ~ActionButton();
 
-  ///
   void init(int x, int y, ActionName name_, int owner_id);
 
   /// Draws the button and increase the animation counter.
@@ -179,10 +148,8 @@ public:
   /// Returns true if the button is pressed.
   bool   is_pressed();
 
-  ///
   virtual bool   mouse_over(const CL_Vector& pos) = 0;
 
-  ///
   void set_action_holder(ActionHolder* h);
 };
 

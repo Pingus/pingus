@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: surface_button.cxx,v 1.3 2002/07/29 22:17:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,9 @@ SurfaceButton::SurfaceButton()
   font = PingusResource::load_font("Fonts/pingus_small", "fonts");
   font_large = PingusResource::load_font("Fonts/pingus", "fonts");
 
-  is_mouse_over = false;
+  mouse_over = false;
+  pressed = false;
+
   //std::cout << "Generating font cache: " << std::flush;
   // We print all available letters, so that they are in the cache
   //font->print_left (0,0, "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
@@ -53,21 +55,12 @@ SurfaceButton::~SurfaceButton()
 void 
 SurfaceButton::draw()
 {
-  if (mouse_over() && !CL_Mouse::left_pressed()) 
+  if (mouse_over && !pressed)
     {
-      if (!is_mouse_over) 
-	{
-	  PingusSound::play_sound ("sounds/chain.wav", 0.1f);
-	}
-
-      is_mouse_over = true;
-      // font->print_center(CL_Display::get_width() / 2, 10, desc.c_str());
       font->print_center(CL_Display::get_width() / 2, 
 			 CL_Display::get_height() - 20, 
 			 desc.c_str());
 
-      //      surface->put_screen(x_pos - surface->get_width()/2,
-      //			  y_pos - surface->get_height()/2);
       surface_p.put_screen(x_pos - surface_p.get_width()/2,
 			   y_pos - surface_p.get_height()/2);
 
@@ -85,17 +78,13 @@ SurfaceButton::draw()
 				   line2.c_str());
 	}
     }
-  else if (mouse_over() && CL_Mouse::left_pressed()) 
+  else if (mouse_over && pressed)
     {
       float shrink = 0.9f;
       
-      // font->print_center(CL_Display::get_width() / 2, 10, desc.c_str());
       font->print_center(CL_Display::get_width() / 2, 
 			 CL_Display::get_height() - 20, 
 			 desc.c_str());
-
-      //      surface->put_screen(x_pos - surface->get_width()/2,
-      //		  y_pos - surface->get_height()/2);
 
       surface_p.put_screen(int(x_pos - surface_p.get_width()/2 * shrink),
 			   int(y_pos - surface_p.get_height()/2 * shrink),
@@ -116,36 +105,56 @@ SurfaceButton::draw()
     } 
   else 
     {
-      is_mouse_over = false;
       surface_p.put_screen(x_pos - surface_p.get_width()/2,
 			   y_pos - surface_p.get_height()/2);
-
-      //      surface->put_screen(x_pos - surface->get_width()/2,
-      //			  y_pos - surface->get_height()/2);
     }
 }
 
+void
+SurfaceButton::update (float delta)
+{    
+}
+
+void
+SurfaceButton::on_pointer_enter ()
+{
+  mouse_over = true;
+  PingusSound::play_sound ("sounds/chain.wav", 0.1f);
+}
+
+void
+SurfaceButton::on_pointer_leave ()
+{
+  std::cout << "X: " << this << "leave" << std::endl;
+  mouse_over = false;
+}
+
+void
+SurfaceButton::on_pointer_press ()
+{
+  pressed = true;
+}
+ 
+void
+SurfaceButton::on_pointer_release ()
+{
+  pressed = false;
+}
+
 bool
-SurfaceButton::mouse_over()
+SurfaceButton::is_at(int x, int y)
 {
   assert (surface);
 
-  if (CL_Mouse::get_x() > x_pos - int(surface.get_width()) / 2
-      && CL_Mouse::get_x() < x_pos + int(surface.get_width()) / 2
-      && CL_Mouse::get_y() > y_pos - int(surface.get_height()) / 2
-      && CL_Mouse::get_y() < y_pos + int(surface.get_height()) / 2)
-    {
-      return true;
-    }
-  else
-    {
-      return false;
-    }
+  return (x > x_pos - int(surface.get_width()) / 2
+	  && x < x_pos + int(surface.get_width()) / 2
+	  && y > y_pos - int(surface.get_height()) / 2
+	  && y < y_pos + int(surface.get_height()) / 2);
 }
 
 ///////////////////////////////////////////////
 
-PlayButton::PlayButton(PingusMenu* menu)
+CreditButton::CreditButton(PingusMenu* menu)
   : menu (menu)
 {
   // x_pos = CL_Display::get_width() * 500 / 640;
@@ -169,23 +178,15 @@ PlayButton::PlayButton(PingusMenu* menu)
   //surface_p = PingusResource::load_surface("Buttons/play_p", "menu");
 }
 
-PlayButton::~PlayButton()
+CreditButton::~CreditButton()
 {
 }
 
 void 
-PlayButton::on_click()
+CreditButton::on_click()
 {
-  menu->get_manager ()->disable_events ();
   Credits credits;
   credits.display();
-  menu->get_manager ()->enable_events ();
-  
-  // FIXME: Hack, abusing the play button for the credits
-  //  loading_screen.draw();
-
-  /// PingusGame game;
-  // game.start_game();
 }
 
 ///////////////////////////////////////////////
@@ -361,7 +362,6 @@ StoryButton::on_click()
   PingusSound::play_sound ("sounds/letsgo.wav");
   
   menu->get_manager ()->set_menu (&menu->get_manager ()->story);
-  //worldmap_manager.display();
 }
 
 ThemeButton::ThemeButton (PingusMenu* menu)

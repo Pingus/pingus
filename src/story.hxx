@@ -1,4 +1,4 @@
-//  $Id: story.hxx,v 1.2 2002/06/24 22:52:57 grumbel Exp $
+//  $Id: story.hxx,v 1.3 2002/07/29 22:17:53 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,20 +30,14 @@ class PingusMenuManager;
 class Story : public PingusSubMenu
 {
 private:
-  ///
   bool   is_init;
-  ///
   CL_Surface background;
   CL_Surface story;
-  ///
   CL_Font*  large_font;
-  ///
   CL_Font*  small_font;
 
 public:
-  ///
   Story(PingusMenuManager* manager);
-  ///
   ~Story();
 
   /// Load all surfaces into memory.

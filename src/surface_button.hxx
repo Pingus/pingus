@@ -1,4 +1,4 @@
-//  $Id: surface_button.hxx,v 1.3 2002/07/02 15:46:58 torangan Exp $
+//  $Id: surface_button.hxx,v 1.4 2002/07/29 22:17:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,34 +21,23 @@
 #define HEADER_PINGUS_SURFACE_BUTTON_HXX
 
 #include <string>
+#include <ClanLib/Display/Display/surface.h>
+
 #include "worldmap/manager.hxx"
 #include "multiplayer_config.hxx"
-#include <ClanLib/Display/Display/surface.h>
+#include "gui/component.hxx"
 
 class CL_Font;
 class PingusMenu;
 
-/* !FIXME! All this should be rewritten... */
-/* !FIXME! All this should be rewritten... */
-/* !FIXME! All this should be rewritten... */
-/* !FIXME! All this should be rewritten... */
-/* !FIXME! All this should be rewritten... */
-/* !FIXME! All this should be rewritten... */
-/* !FIXME! All this should be rewritten... */
-/* !FIXME! All this should be rewritten... */
-/* !FIXME! All this should be rewritten... */
-/* !FIXME! All this should be rewritten... */
-
-
-///
-class SurfaceButton
+/** Framework for menu buttons */
+class SurfaceButton : public GUI::Component
 {
 protected:
   CL_Surface surface;
   CL_Surface surface_p;
   CL_Font*    font;
   CL_Font*    font_large;
-  bool is_mouse_over;
   
   int x_pos;
   int y_pos;
@@ -56,27 +45,39 @@ protected:
   std::string desc;
   std::string line1;
   std::string line2;
+
+  bool mouse_over;
+  bool pressed;
+
 public:
   SurfaceButton();
   virtual ~SurfaceButton();
   
   void draw();
-  bool mouse_over();
-  virtual void on_click() = 0;
+  void update (float delta);
+
+  bool is_at (int x, int y);
+
+  void on_pointer_enter ();
+  void on_pointer_leave ();
+  void on_pointer_press ();
+  void on_pointer_release ();
+  
+  void on_button_click (int x, int y) { on_click (); }
+
+  virtual void on_click () =0;
 };
 
-///
-class PlayButton : public SurfaceButton
+class CreditButton : public SurfaceButton
 {
 private:
   PingusMenu* menu;
 public:
-  PlayButton(PingusMenu* menu);
-  virtual ~PlayButton();
+  CreditButton(PingusMenu* menu);
+  virtual ~CreditButton();
   void on_click();
 };
 
-///
 class OptionsButton : public SurfaceButton
 {
 private:
@@ -84,11 +85,9 @@ private:
 public:
   OptionsButton(PingusMenu* menu);
   virtual ~OptionsButton();
-
   void on_click();
 };
 
-///
 class QuitButton : public SurfaceButton
 {
 private:
@@ -96,35 +95,26 @@ private:
 public:
   QuitButton(PingusMenu*);
   virtual ~QuitButton();
-
   void on_click();
 };
 
-///
 class LoadButton : public SurfaceButton
 {
-private:
-  ///  FileSelector file;
 public:
   LoadButton();
-  ///
   virtual ~LoadButton();
-  ///
   void on_click();
 };
 
-///
 class EditorButton : public SurfaceButton
 {
 private:
   PingusMenu* menu;
 
 public:
-  ///
   EditorButton(  PingusMenu* menu);
-  ///
   virtual ~EditorButton();
-  ///
+
   void on_click();
   void load_level(const std::string& str);
 };
@@ -140,7 +130,6 @@ public:
   void on_click();
 };
 
-///
 class ThemeButton : public SurfaceButton
 {
 private:
@@ -150,18 +139,14 @@ public:
   void on_click();
 };
 
-///
 class MultiplayerButton : public SurfaceButton
 {
 private:
   MultiplayerConfig multiplayer_config;
   PingusMenu* menu;
 public:
-  ///
   MultiplayerButton(PingusMenu* menu);
-  ///
   virtual ~MultiplayerButton();
-  ///
   void on_click();
 };
 

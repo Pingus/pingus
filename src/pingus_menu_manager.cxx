@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: pingus_menu_manager.cxx,v 1.3 2002/07/29 22:17:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,13 +53,15 @@ PingusMenuManager::register_events ()
   if (event_register_counter == 0)
     {
       ++event_register_counter;
-
+      
+      /*
       on_button_press_slot
 	= CL_Input::sig_button_press ().connect (this, &PingusMenuManager::on_button_press);
       on_button_release_slot
 	= CL_Input::sig_button_release ().connect (this, &PingusMenuManager::on_button_release);
       on_mouse_move_slot
 	= CL_Input::sig_mouse_move ().connect (this, &PingusMenuManager::on_mouse_move);
+      */
     }
   else
     {
@@ -67,13 +69,14 @@ PingusMenuManager::register_events ()
     }
 }
 
-/// Unregister all event-handling stuff
 void 
 PingusMenuManager::unregister_events ()
 {
+  /*
   CL_Input::sig_button_press ().disconnect (on_button_press_slot);
   CL_Input::sig_button_release ().disconnect (on_button_release_slot);
   CL_Input::sig_mouse_move ().disconnect (on_mouse_move_slot);
+  */
 }
 
 void 

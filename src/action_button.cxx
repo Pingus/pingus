@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.3 2002/06/28 15:12:22 torangan Exp $
+//  $Id: action_button.cxx,v 1.4 2002/07/29 22:17:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,39 +39,6 @@ Button::Button (int x, int y) : x_pos(x), y_pos(y)
 
 Button::~Button()
 {
-}
-
-EventButton::EventButton(int x, int y, std::string str) : Button(x, y) 
-{ 
-  surface = PingusResource::load_surface(str, "global");
-}
-
-EventButton::~EventButton() {}
-
-void
-EventButton::draw()
-{
-  if (mouse_over(CL_Vector() /* FIXME */))
-    {
-      CL_Display::fill_rect(x_pos, y_pos, 
-			    x_pos + surface.get_width(), y_pos + surface.get_height(),
-			    1.0, 1.0, 1.0, 1.0);
-    }
-  surface.put_screen(x_pos, y_pos);
-}
-
-bool
-EventButton::mouse_over(const CL_Vector& pos)
-{
-  if (pos.x > x_pos && pos.x < x_pos + int(surface.get_width())
-      && pos.y > y_pos && pos.y < y_pos + int(surface.get_height()))
-    {
-      return true;
-    }
-  else 
-    {
-      return false;
-    }
 }
 
 ActionButton::ActionButton() {}
@@ -218,10 +185,10 @@ VerticalActionButton::draw()
 		     action_c);
 }
 
-ArmageddonButton::ArmageddonButton(int x, int y) : 
-        Button      (x, y),
-        background  (PingusResource::load_surface("buttons/hbuttonbgb", "core")),
-        backgroundhl(PingusResource::load_surface("buttons/hbuttonbg", "core"))
+ArmageddonButton::ArmageddonButton(int x, int y)
+  : x_pos (x), y_pos (y),
+    background  (PingusResource::load_surface("buttons/hbuttonbgb", "core")),
+    backgroundhl(PingusResource::load_surface("buttons/hbuttonbg", "core"))
 {
   pressed      = false;
   surface      = PingusResource::load_surface("buttons/armageddon_anim", "core");
@@ -247,10 +214,10 @@ ArmageddonButton::draw()
 }
 
 bool
-ArmageddonButton::mouse_over(const CL_Vector& pos)
+ArmageddonButton::is_at(int x, int y)
 {
-  if (pos.x > x_pos && pos.x < x_pos + int(surface.get_width())
-      && pos.y > y_pos && pos.y < y_pos + int(surface.get_height()))
+  if (x > x_pos && x < x_pos + int(surface.get_width())
+      && y > y_pos && y < y_pos + int(surface.get_height()))
     {
       return true;
     } else  {

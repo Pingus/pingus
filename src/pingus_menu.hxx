@@ -1,4 +1,4 @@
-//  $Id: pingus_menu.hxx,v 1.2 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: pingus_menu.hxx,v 1.3 2002/07/29 22:17:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,24 +28,28 @@ class CL_Key;
 class CL_InputDevice;
 class SurfaceButton;
 
-///
+namespace GUI
+{
+  class GUIManager;
+}
+
+namespace Input
+{
+  class Controller;
+}
+
 class PingusMenu : public PingusSubMenu
 {
 public:
-  ///
   bool is_init;
 private:
-  ///
-  std::list<SurfaceButton*> buttons;
-  ///
+  GUI::GUIManager* gui_manager;
+  Input::Controller* controller;
+
   SurfaceButton * temp_button;
-  ///
   SurfaceButton * current_button;
-  ///
   CL_Surface background;
-  ///
   LayerManager layer_manager;
-  ///
   CL_Surface cursor_sur;
   
   void on_resize(int w, int h);
@@ -56,15 +60,8 @@ public:
   /// Load all images and other stuff for the menu
   void preload ();
 
-  void update (float /*delta*/) {}
+  void update (float /*delta*/);
   void draw(void);
-
-  void select(void);
-  bool event_enabled;
-
-  void on_button_press(CL_InputDevice *device, const CL_Key &key);
-  void on_button_release(CL_InputDevice *device, const CL_Key &key);
-  void on_mouse_move(CL_InputDevice *,int mouse_x, int mouse_y);
 };
 
 #endif
