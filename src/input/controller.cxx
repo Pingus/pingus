@@ -1,4 +1,4 @@
-//  $Id: controller.cxx,v 1.10 2002/08/15 10:57:15 torangan Exp $
+//  $Id: controller.cxx,v 1.11 2002/08/15 11:35:13 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -152,7 +152,7 @@ namespace Input
   void
   Controller::update (float delta)
   {
-    for (std::list<Event*>::iterator it = events.begin(); it != events.end(); it++)
+    for (std::list<Event*>::iterator it = events.begin(); it != events.end(); ++it)
       delete *it;
 
     events.clear ();
@@ -185,7 +185,7 @@ namespace Input
 	    events.push_back(new ButtonEvent(static_cast<ButtonName>(buttons[i].first), released));
 	}
       
-        
+    std::cout << "ActionAxis: " << action_axis->get_pos() << std::endl;
     if (action_axis->get_pos())
       if (action_axis->get_pos() > 0)
         events.push_back(new AxisEvent(up));
