@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.27 2000/09/20 07:26:04 grumbel Exp $
+#  $Id: configure.in,v 1.28 2000/09/23 20:30:48 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -103,9 +103,42 @@ if test "x$with_sound" != "xno"; then
 	AC_CHECK_LIB(SDL_mixer,   main,,SOUND_SUPPORT=false)
 fi
 
-AC_CHECK_LIB(xml, main,, [
-	echo "Please install libxml correctly and try again."
-	exit])
+dnl AC_CHECK_LIB(xml, main,, [
+dnl	echo "Please install libxml correctly and try again."
+dnl	exit])
+
+dnl ---------------------------------------------------
+dnl Check the location of the XML library and -headers.
+XML_CONFIG="xml-config"
+AC_ARG_WITH(libxml,[  --with-libxml=DIR       set the path to your libxml installation])
+
+if test "x$with_libxml" != "x"
+then
+        AC_MSG_CHECKING(for xml-config)
+        XML_CONFIG="$with_libxml/bin/xml-config"
+        if test -x "$XML_CONFIG"
+        then
+                AC_MSG_RESULT(yes)
+        else
+                AC_MSG_ERROR([
+*** I was not able to find the script \"xml-config\".
+*** Have you given the correct path for --with-libxml ?])
+        fi
+else
+        AC_CHECK_PROG(ac_xml_config,xml-config,yes,no)
+        if test "$ac_xml_config" = "no"
+        then
+                AC_MSG_ERROR([
+*** I was not able to find the script \"xml-config\".
+*** Please check your installation of libxml.])
+        fi
+fi
+
+dnl Add the apropriate xml-flags to CPPFLAGS and LIBS.
+CPPFLAGS="$CPPFLAGS `$XML_CONFIG --cflags`"
+LIBS="$LIBS `$XML_CONFIG --libs`"
+dnl ---------------------------------------------------
+
 
 AC_CHECK_LIB(Hermes,   main,,)
 	
