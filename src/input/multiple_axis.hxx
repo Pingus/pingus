@@ -1,4 +1,4 @@
-//  $Id: multiple_axis.hxx,v 1.1 2002/07/10 11:21:53 torangan Exp $
+//  $Id: multiple_axis.hxx,v 1.2 2002/07/11 14:51:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,8 @@ namespace Input {
         
   public:
   
-    MultipleAxis(float angle_, const std::vector<Axis*>& axes_);
+    MultipleAxis (float angle_, const std::vector<Axis*>& axes_);
+   ~MultipleAxis ();
   
     virtual float get_pos ();
     virtual float get_angle ();

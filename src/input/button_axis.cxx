@@ -1,4 +1,4 @@
-//  $Id: button_axis.cxx,v 1.3 2002/07/05 11:02:47 torangan Exp $
+//  $Id: button_axis.cxx,v 1.4 2002/07/11 14:51:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,13 +22,19 @@
 
 namespace Input
 {
-  ButtonAxis::ButtonAxis(float angle_, Button* button1_, Button* button2_) : 
-                         angle(angle_), button1(button1_), button2(button2_) 
+  ButtonAxis::ButtonAxis (float angle_, Button* button1_, Button* button2_) : 
+                          angle(angle_), button1(button1_), button2(button2_) 
   {
     if (angle < 0)
       angle = (static_cast<int>(angle) % 360) + 360;
     else if (angle > 360)
       angle = static_cast<int>(angle) % 360;
+  }
+
+  ButtonAxis::~ButtonAxis ()
+  {
+    delete button1;
+    delete button2;
   }
 
   float
@@ -50,8 +56,10 @@ namespace Input
   }
   
   void
-  ButtonAxis::update(float)
+  ButtonAxis::update(float delta)
   {
+    button1->update(delta);
+    button2->update(delta);
   }
 }
 

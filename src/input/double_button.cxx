@@ -1,4 +1,4 @@
-//  $Id: axis_scroller.cxx,v 1.2 2002/07/11 14:51:10 torangan Exp $
+//  $Id: double_button.cxx,v 1.1 2002/07/11 14:51:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,46 +17,48 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "axis.hxx"
-#include "axis_scroller.hxx"
+#include "double_button.hxx"
 
 namespace Input {
 
-  AxisScroller::AxisScroller (Axis* axis1_, Axis* axis2_, float speed_) : axis1(axis1_), axis2(axis2_), speed(speed_)
+  DoubleButton::DoubleButton (Button* button1_, Button* button2_) : button1(button1_), button2(button2_),
+                                                                    first_pressed(false), ignore_second(false)
   {
   }
-  
-  AxisScroller::~AxisScroller ()
+
+  DoubleButton::~DoubleButton ()
   {
-    delete axis1;
-    delete axis2;
+    delete button1;
+    delete button2;
   }
-  
-  float
-  AxisScroller::get_x_delta ()
-  {
-    return axis1->get_pos() * speed;
-  }
-  
-  float
-  AxisScroller::get_y_delta ()
-  {
-    return axis2->get_pos() * speed;
-  }
-  
+
   void
-  AxisScroller::get_delta (float& x, float& y)
+  DoubleButton::update (float delta)
   {
-    x = axis1->get_pos() * speed;
-    y = axis2->get_pos() * speed;
+    button1->update(delta);
+    button2->update(delta);
+    
+    if (button1->is_pressed())
+      {
+        if (!first_pressed)
+          {
+	    first_pressed = true;
+	    ignore_second = button2->is_pressed();
+	  }
+      }
+    else
+      {
+        first_pressed = false;
+	ignore_second = true;
+      }
   }
   
-  void
-  AxisScroller::update (float delta)
+  bool
+  DoubleButton::is_pressed ()
   {
-    axis1->update(delta);
-    axis2->update(delta);
+    return ( ! ignore_second && first_pressed && button2->is_pressed());
   }
+  
 }
 
 /* EOF */

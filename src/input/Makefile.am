@@ -28,6 +28,7 @@ libpingus_input_a_SOURCES =       \
 	button_event.hxx \
 	button_factory.hxx button_factory.cxx \
 	controller.hxx controller.cxx \
+	double_button.hxx double_button.cxx \
 	dummy_axis.hxx \
 	dummy_button.hxx \
 	dummy_pointer.hxx \
@@ -35,11 +36,13 @@ libpingus_input_a_SOURCES =       \
 	inverted_axis.hxx inverted_axis.cxx \
 	joystick_axis.hxx joystick_axis.cxx \
         joystick_button.hxx joystick_button.cxx \
+	joystick_scroller.hxx joystick_scroller.cxx \
         key_button.hxx key_button.cxx \
         key_helper.hxx key_helper.cxx \
 	mouse_axis.hxx mouse_axis.cxx \
 	mouse_button.hxx mouse_button.cxx \
         mouse_pointer.hxx mouse_pointer.cxx \
+	mouse_scroller.hxx mouse_scroller.cxx \
 	multiple_axis.hxx multiple_axis.cxx \
 	multiple_button.hxx multiple_button.cxx \
 	multiple_pointer.hxx multiple_pointer.cxx \
@@ -47,6 +50,7 @@ libpingus_input_a_SOURCES =       \
 	pointer_event.hxx \
 	pointer_factory.hxx pointer_factory.cxx \
 	pointer_scroller.hxx pointer_scroller.cxx \
-	scroller.hxx
+	scroller.hxx \
+	triple_button.hxx triple_button.cxx
 
 # EOF #

@@ -1,4 +1,4 @@
-//  $Id: inverted_axis.hxx,v 1.3 2002/07/09 17:00:10 torangan Exp $
+//  $Id: inverted_axis.hxx,v 1.4 2002/07/11 14:51:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,8 @@ namespace Input
     float angle;
     
   public:
-    InvertedAxis(Axis* axis_);
+    InvertedAxis (Axis* axis_);
+   ~InvertedAxis ();
   
     virtual float get_pos ();
     virtual float get_angle ();

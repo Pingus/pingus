@@ -1,4 +1,4 @@
-//  $Id: mouse_axis.hxx,v 1.4 2002/07/11 14:51:10 torangan Exp $
+//  $Id: joystick_scroller.hxx,v 1.1 2002/07/11 14:51:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,27 +17,32 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_INPUT_MOUSE_AXIS_HXX
-#define HEADER_PINGUS_INPUT_MOUSE_AXIS_HXX
+#ifndef HEADER_PINGUS_INPUT_JOYSTICK_SCROLLER_HXX
+#define HEADER_PINGUS_INPUT_JOYSTICK_SCROLLER_HXX
 
-#include "axis.hxx"
+#include "scroller.hxx"
 
 namespace Input {
 
-  class MouseAxis : public Axis {
+  class Axis;
 
+  class JoystickScroller : public Scroller {
     private:
-      int   axis;
-      float angle;
-      float pos;
-      float old_pos;
-    
+      int   id;
+      Axis* axis1;
+      Axis* axis2;
+      float speed;
+      
     public:
-      MouseAxis(int axis_, float angle_);
-
-      virtual float get_pos ();
-      virtual float get_angle ();
-      virtual void  update (float);
+      JoystickScroller (int id_, float speed_);
+     ~JoystickScroller ();
+      
+      float get_x_delta ();
+      float get_y_delta ();
+      
+      void  get_delta (float& x, float& y);
+      
+      void  update (float delta);
   };
 }
 

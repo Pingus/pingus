@@ -1,4 +1,4 @@
-//  $Id: axis_pointer.hxx,v 1.4 2002/07/09 17:00:10 torangan Exp $
+//  $Id: axis_pointer.hxx,v 1.5 2002/07/11 14:51:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,8 @@ namespace Input {
       
     public:
 
-      AxisPointer(float speed, const std::vector<Axis*>& axes_);
+      AxisPointer (float speed, const std::vector<Axis*>& axes_);
+     ~AxisPointer ();
 
       virtual float get_x_pos ();
       virtual float get_y_pos ();

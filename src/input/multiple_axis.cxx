@@ -1,4 +1,4 @@
-//  $Id: multiple_axis.cxx,v 1.1 2002/07/10 11:21:53 torangan Exp $
+//  $Id: multiple_axis.cxx,v 1.2 2002/07/11 14:51:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,13 +21,19 @@
 
 namespace Input
 {
-  MultipleAxis::MultipleAxis(float angle_, const std::vector<Axis*>& axes_) : 
-                             angle(angle_), axes(axes_)
+  MultipleAxis::MultipleAxis (float angle_, const std::vector<Axis*>& axes_) : 
+                              angle(angle_), axes(axes_)
   {
     if (angle < 0)
       angle = (static_cast<int>(angle) % 360) + 360;
     else if (angle > 360)
       angle = static_cast<int>(angle) % 360;
+  }
+
+  MultipleAxis::~MultipleAxis ()
+  {
+    for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
+      delete *it;
   }
 
   float

@@ -1,4 +1,4 @@
-//  $Id: multiple_button.cxx,v 1.2 2002/07/09 15:03:20 torangan Exp $
+//  $Id: multiple_button.cxx,v 1.3 2002/07/11 14:51:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,17 +21,25 @@
 
 namespace Input {
 
-  MultipleButton::MultipleButton(const std::vector<Button*>& buttons_) : buttons(buttons_) { }
+  MultipleButton::MultipleButton (const std::vector<Button*>& buttons_) : buttons(buttons_)
+  {
+  }
+
+  MultipleButton::~MultipleButton ()
+  {
+    for (std::vector<Button*>::iterator it = buttons.begin(); it != buttons.end(); it++)
+      delete *it;
+  }
 
   void
-  MultipleButton::update(float delta)
+  MultipleButton::update (float delta)
   {
     for (std::vector<Button*>::iterator it = buttons.begin(); it != buttons.end(); it++)
       (*it)->update(delta);
   }
   
   bool
-  MultipleButton::is_pressed()
+  MultipleButton::is_pressed ()
   {
     for (std::vector<Button*>::iterator it = buttons.begin(); it != buttons.end(); it++)
       if ((*it)->is_pressed())
