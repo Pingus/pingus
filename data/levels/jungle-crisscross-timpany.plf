@@ -1,0 +1,69 @@
+/* This level was created with the PLE
+ * $Id: jungle-crisscross-timpany.plf,v 1.1 2000/08/11 01:11:41 grumbel Exp $
+ */
+global {
+  author = "";
+  start_x_pos = 350;
+  start_y_pos = 0;
+  levelname = "Overenthusiastic Miners";
+  description = "
+
+";
+  number_of_pingus = 20;
+  number_to_save = 15;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 1216;
+  height  = 608;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures)"Textures/stones";
+  dim   = "0.5";
+  red   = "0";
+  green = "0";
+  blue  = "0.5";
+  scroll_x = 0;
+  scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
+}
+
+buttons {
+  digger = 5;
+  climber = 5;
+  miner = 5;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 994;
+  y_pos = 206;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 398;
+  y_pos = 169;
+  z_pos = 0;
+  release_rate = 25;
+  direction = right;
+}
+
+exit {
+  image = (resource)"Exits/stone";
+  x_pos = 1099;
+  y_pos = 217;
+  z_pos = 0;
+}
+
+/* EOF */

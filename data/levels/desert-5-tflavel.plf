@@ -1,0 +1,65 @@
+/* This level was created with the PLE, and edited with PICO :)
+ * $Id: desert-5-tflavel.plf,v 1.1 2000/08/11 01:11:41 grumbel Exp $
+ */
+global {
+  author = "Tom Flavel <tomflavel@yahoo.co.uk>";
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "Claustrophobia";
+  description = "Hidden deep below the pyramid the pingus come across a small
+underground room, but unfortunatley a large tree root blocks their path...";
+  number_of_pingus = 30;
+  number_to_save = 25;
+  time = 6000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 800;
+  height  = 672;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures)"Textures/desert_room";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 1;
+}
+
+buttons {
+  basher = 1;
+  blocker = 1;
+  bomber = 1;
+  bridger = 1;
+  climber = 1;
+  digger = 1;
+  floater = 1;
+  jumper = 1;
+  miner = 1;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 532;
+  y_pos = 139;
+  z_pos = 0;
+  release_rate = 35;
+  direction = left;
+}
+
+exit {
+  image = (resource:global)"Exits/desert";
+  x_pos = 518;
+  y_pos = 487;
+  z_pos = 0;
+}
+
+/* EOF */
