@@ -1,4 +1,4 @@
-//  $Id: Controller.cc,v 1.3 2001/04/14 11:41:21 grumbel Exp $
+//  $Id: Controller.cc,v 1.4 2001/04/14 14:37:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,6 +42,11 @@ ControllerButton::keep_alive ()
     }
 }
 
+DummyButton::DummyButton (Controller* c)
+  : ControllerButton (c)
+{
+}
+
 InputDeviceButton::InputDeviceButton (Controller* arg_controller, CL_InputButton* arg_button)
   : ControllerButton (arg_controller),
     button (arg_button)
@@ -57,7 +62,16 @@ InputDeviceButton::is_pressed ()
 
 Controller::Controller (int arg_owner_id)
   : owner_id (arg_owner_id),
-    rect (0, 0, CL_Display::get_width ()-1, CL_Display::get_height ()-1)
+    rect (0, 0, CL_Display::get_width ()-1, CL_Display::get_height ()-1),
+    left  (new DummyButton (this)),
+    middle(new DummyButton (this)),
+    right (new DummyButton (this)),
+    abort (new DummyButton (this)),
+    pause (new DummyButton (this)),
+    scroll_left (new DummyButton (this)),
+    scroll_right(new DummyButton (this)),
+    next_action  (new DummyButton (this)),
+    previous_action (new DummyButton (this))
 {
 }
 
@@ -79,6 +93,12 @@ Controller::keep_alive ()
   if (scroll_right.get ()) scroll_right->keep_alive ();
   if (next_action.get ()) next_action->keep_alive ();
   if (previous_action.get ()) previous_action->keep_alive ();
+}
+
+int 
+Controller::get_owner ()
+{
+  return owner_id;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: MultiplayerConfig.cc,v 1.2 2001/04/13 22:17:46 grumbel Exp $
+//  $Id: MultiplayerConfig.cc,v 1.3 2001/04/14 14:37:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,9 +43,9 @@ MultiplayerConfig::display ()
       Display::flip_display ();
       CL_System::keep_alive ();
 
-      if (CL_Keyboard::get_keycode (CL_KEY_ENTER)) {
+      //if (CL_Keyboard::get_keycode (CL_KEY_ENTER)) {
 	start ();
-      }
+	//}
     }
 }
 

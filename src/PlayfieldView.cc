@@ -1,4 +1,4 @@
-//  $Id: PlayfieldView.cc,v 1.2 2001/04/14 11:41:21 grumbel Exp $
+//  $Id: PlayfieldView.cc,v 1.3 2001/04/14 14:37:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ PlayfieldView::update (float delta)
 void 
 PlayfieldView::draw ()
 {
-  std::cout << "Offset: " << x_offset << " " << y_offset << std::endl;
+  //std::cout << "Offset: " << x_offset << " " << y_offset << std::endl;
   world->draw(//x1, y1,
 	      //x2 - x1, y2 - y1,
 	      0, 0, CL_Display::get_width (), CL_Display::get_height (),
@@ -48,8 +48,15 @@ PlayfieldView::draw ()
 void 
 PlayfieldView::scroll (CL_Vector delta)
 {
-  x_offset -= delta.x;
-  y_offset -= delta.y;
+  x_offset += (int) delta.x;
+  y_offset += (int) delta.y;
+}
+
+boost::shared_ptr<Pingu>
+PlayfieldView::get_pingu (const CL_Vector& pos)
+{
+  return world->get_pingu (CL_Vector(pos.x - x1 - x_offset,
+				     pos.y - y1 - y_offset));
 }
 
 /* EOF */

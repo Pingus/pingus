@@ -1,4 +1,4 @@
-//  $Id: MouseController.cc,v 1.4 2001/04/14 11:41:21 grumbel Exp $
+//  $Id: MouseController.cc,v 1.5 2001/04/14 14:37:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,6 +55,20 @@ public:
   bool is_pressed () { return (CL_Keyboard::get_keycode (CL_KEY_P) | CL_Keyboard::get_keycode (CL_KEY_PAUSE)); }
 };
 
+class ScrollLeftButton : public ControllerButton
+{
+public:
+  ScrollLeftButton (Controller* c) : ControllerButton (c) {};
+  bool is_pressed () { return (CL_Keyboard::get_keycode (CL_KEY_LEFT)); }
+};
+
+class ScrollRightButton : public ControllerButton
+{
+public:
+  ScrollRightButton (Controller* c) : ControllerButton (c) {};
+  bool is_pressed () { return (CL_Keyboard::get_keycode (CL_KEY_RIGHT)); }
+};
+
 MouseController::MouseController (int arg_owner_id)
   : Controller (arg_owner_id)
 {
@@ -63,6 +77,8 @@ MouseController::MouseController (int arg_owner_id)
   right = boost::shared_ptr<ControllerButton> (new RightMouseButton (this));
   abort = boost::shared_ptr<ControllerButton> (new AbortMouseButton (this));
   pause = boost::shared_ptr<ControllerButton> (new PauseMouseButton (this));
+  scroll_left  = boost::shared_ptr<ControllerButton> (new ScrollLeftButton (this));
+  scroll_right = boost::shared_ptr<ControllerButton> (new ScrollRightButton(this));
 }
 
 MouseController::~MouseController ()

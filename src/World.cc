@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.45 2001/04/12 09:02:23 grumbel Exp $
+//  $Id: World.cc,v 1.46 2001/04/14 14:37:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -78,13 +78,13 @@ World::~World()
   std::cout << "World:~World" << std::endl;
 
   /*  for (vector<shared_ptr<Background> >::iterator i = backgrounds.begin();
-       i != backgrounds.end(); i++)
-    delete *i;
+      i != backgrounds.end(); i++)
+      delete *i;
 
-  for(vector<WorldObj*>::iterator obj = world_obj_bg.begin();
+      for(vector<WorldObj*>::iterator obj = world_obj_bg.begin();
       obj != world_obj_bg.end();
       obj++)
-    {
+      {
       delete *obj;
       }*/
 }
@@ -236,7 +236,7 @@ World::init_map()
     {
     case SPOT:*/
   gfx_map = shared_ptr<PinguMap>(new PingusSpotMap(plf));
-      /*      break;
+  /*      break;
     case BMP:
     case RANDOM:
     default:
@@ -490,24 +490,50 @@ World::set_action_holder(ActionHolder* a)
 void 
 World::play_wav (std::string name, const CL_Vector& pos, float volume = 0.5f)
 {
-  assert (view.get ());
-  CL_Vector center = view->get_center ();
-  float panning = pos.x - center.x;
-  panning /= view->get_width ()/2;
+  if (view.get ())
+    {
+      CL_Vector center = view->get_center ();
+      float panning = pos.x - center.x;
+      panning /= view->get_width ()/2;
 
-  if (panning > 1.0f)
-    panning = 1.0f;
+      if (panning > 1.0f)
+	panning = 1.0f;
 
-  if (panning < -1.0f)
-    panning = -1.0f;
+      if (panning < -1.0f)
+	panning = -1.0f;
 
-  PingusSound::play_wav (name, volume, panning);
+      PingusSound::play_wav (name, volume, panning);
+    }
+  else // No view available, so no stereo enabled
+    {
+      PingusSound::play_wav (name, volume);
+    }
 }
 
 void
 World::set_view (shared_ptr<View> v)
 {
   view = v;
+}
+
+boost::shared_ptr<Pingu> 
+World::get_pingu (const CL_Vector& pos)
+{
+  boost::shared_ptr<Pingu> current_pingu;
+  double distance = -1.0;
+
+  for (PinguIter i = pingus->begin (); i != pingus->end (); ++i) {
+    if ((*i)->is_over (pos.x, pos.y))
+      {
+	if (distance == -1.0 || distance >= (*i)->dist (pos.x, pos.y))
+	  {
+	    current_pingu = (*i);
+	    distance = (*i)->dist (pos.x, pos.y);
+	  }
+      }
+  }
+  
+  return current_pingu;
 }
 
 /* EOF */

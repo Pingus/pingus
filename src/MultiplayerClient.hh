@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClient.hh,v 1.1 2001/04/14 11:41:21 grumbel Exp $
+//  $Id: MultiplayerClient.hh,v 1.2 2001/04/14 14:37:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,7 @@ private:
   std::vector<boost::shared_ptr<GuiObj> > gui_objs;
   typedef std::vector<boost::shared_ptr<GuiObj> >::iterator GuiObjIter;
   boost::dummy_ptr<Server> server;
+
 public:
   MultiplayerClient (boost::dummy_ptr<Server> s,
 		     boost::shared_ptr<MultiplayerClientChild> child1,

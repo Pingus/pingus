@@ -1,4 +1,4 @@
-//  $Id: GamepadController.cc,v 1.6 2001/04/14 11:41:21 grumbel Exp $
+//  $Id: GamepadController.cc,v 1.7 2001/04/14 14:37:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,8 +38,8 @@ GamepadController::GamepadController (CL_InputDevice* arg_device, int arg_owner_
   left   = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (4)));
   middle = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (2)));
   right  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (0)));
-  scroll_left  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (7)));
-  scroll_right  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (6)));
+  scroll_left  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (6)));
+  scroll_right  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (7)));
   next_action  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (3)));
   previous_action  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (5)));
   abort  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (8)));
@@ -74,8 +74,8 @@ GamepadController::keep_alive ()
   else
     pos += CL_Vector(x_axis->get_pos (), y_axis->get_pos ()) * cdelta * 200 * 1.0;
 
-  std::cout << "x_pos: " << pos.x << " y_pos: " <<  pos.y << std::endl;
-  std::cout << "Rect: " << rect.x1 << " " << rect.y1 << " " << rect.x2 << " " << rect.y2 << std::endl;
+  //std::cout << "x_pos: " << pos.x << " y_pos: " <<  pos.y << std::endl;
+  //std::cout << "Rect: " << rect.x1 << " " << rect.y1 << " " << rect.x2 << " " << rect.y2 << std::endl;
 
   if (pos.x <= rect.x1)
     pos.x = rect.x1;

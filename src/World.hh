@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.25 2001/04/10 21:51:22 grumbel Exp $
+//  $Id: World.hh,v 1.26 2001/04/14 14:37:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -205,6 +205,10 @@ public:
   PinguHolder* get_pingu_p(void);
   ///
   void set_action_holder(ActionHolder*);
+
+  /** @return the pingu at the given word coordinates, an empty
+      shared_ptr is returned if none is there */
+  boost::shared_ptr<Pingu> get_pingu (const CL_Vector& pos);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: TwoPlayerGame.cc,v 1.2 2001/04/14 11:41:21 grumbel Exp $
+//  $Id: TwoPlayerGame.cc,v 1.3 2001/04/14 14:37:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,8 +48,8 @@ TwoPlayerGame::start ()
   try {
   shared_ptr<PLF>               plf (new XMLPLF ("../data/levels/multi1-grumbel.xml"));
   shared_ptr<Server>            server (new TrueServer (plf));
-  shared_ptr<Controller>        controller1 (new GamepadController (CL_Input::joysticks[0]));
-  shared_ptr<Controller>        controller2 (new MouseController ());
+  shared_ptr<Controller>        controller1 (new GamepadController (CL_Input::joysticks[0], 0));
+  shared_ptr<Controller>        controller2 (new MouseController (1));
   shared_ptr<MultiplayerClient> 
     client (new MultiplayerClient 
 	    (server.get (),
@@ -73,6 +73,7 @@ TwoPlayerGame::start ()
       client->draw ();
       Display::flip_display ();
       CL_System::keep_alive ();
+      CL_System::sleep (40);
     }
   } catch (...) {
     std::cout << "TruePlayerGame: Something went wrong" << std::endl;

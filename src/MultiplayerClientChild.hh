@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClientChild.hh,v 1.1 2001/04/14 11:41:21 grumbel Exp $
+//  $Id: MultiplayerClientChild.hh,v 1.2 2001/04/14 14:37:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,15 +29,16 @@
 #include "ButtonPanel.hh"
 #include "Controllable.hh"
 #include "PlayfieldView.hh"
+#include "Sprite.hh"
 
 class MultiplayerClientChild : public Controllable,
 			       public GuiObj
 {
 private:
-  boost::shared_ptr<Controller> controller;
   boost::dummy_ptr<Server> server;
   boost::shared_ptr<Cursor> cursor;
   boost::shared_ptr<ButtonPanel> button_panel;
+  Sprite capture_rect;
   
   std::vector<boost::shared_ptr<GuiObj> > gui_objs;
   typedef std::vector<boost::shared_ptr<GuiObj> >::iterator GuiObjIter;
@@ -45,6 +46,10 @@ private:
   boost::shared_ptr<PlayfieldView> playfield;
 
   CL_Rect rect;
+
+  CL_Vector scroll_left_vec;
+  CL_Vector scroll_right_vec;
+
 public:
   MultiplayerClientChild (boost::shared_ptr<Controller> arg_controller, 
 			  boost::dummy_ptr<Server> s, const CL_Rect& arg_rect);
@@ -59,6 +64,12 @@ public:
 
   void on_scroll_left_press (const CL_Vector& pos);
   void on_scroll_right_press (const CL_Vector& pos);
+
+  void on_scroll_left_release (const CL_Vector& pos);
+  void on_scroll_right_release (const CL_Vector& pos);
+
+  void on_next_action_press (const CL_Vector& pos);
+  void on_previous_action_press (const CL_Vector& pos);
 };
 
 #endif

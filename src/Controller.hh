@@ -1,4 +1,4 @@
-//  $Id: Controller.hh,v 1.5 2001/04/14 11:41:21 grumbel Exp $
+//  $Id: Controller.hh,v 1.6 2001/04/14 14:37:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,6 +44,16 @@ public:
   CL_Signal_v1<const CL_Vector&> signal_released;
 };
 
+class DummyButton : public ControllerButton 
+{
+private:
+public:
+  DummyButton (Controller* );
+  virtual ~DummyButton () {}
+  
+  virtual bool is_pressed () { return false; }
+};
+
 class InputDeviceButton : public ControllerButton 
 {
 private:
@@ -76,6 +86,9 @@ public:
       modes to limit the cursor to the players view */
   virtual void set_range (const CL_Rect& arg_rect);
   
+  /// @return the owner of this controller
+  virtual int get_owner (); 
+
   /// Called once each CL_System::keep_alive () call
   virtual void keep_alive ();
 

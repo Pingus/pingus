@@ -1,4 +1,4 @@
-//  $Id: PlayfieldView.hh,v 1.2 2001/04/14 11:41:21 grumbel Exp $
+//  $Id: PlayfieldView.hh,v 1.3 2001/04/14 14:37:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,9 +35,17 @@ public:
 		 const CL_Rect& rect);
   virtual ~PlayfieldView ();
 
+  // Update the playfield
   void update (float delta);
+  
+  // Draw the playfied
   void draw ();
+  
+  // Scroll the playfield
   void scroll (CL_Vector delta);
+  
+  // Return the pingu at the given *screen* coordinates
+  boost::shared_ptr<Pingu> get_pingu (const CL_Vector& pos);
 };
 
 #endif
