@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.19 2002/10/16 09:14:45 grumbel Exp $
+//  $Id: pingus_resource.cxx,v 1.20 2002/10/19 23:23:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -170,9 +170,6 @@ PingusResource::load_from_cache (const ResDescriptor& res_desc)
 CL_Surface
 PingusResource::apply_modifier (const CL_Surface& surf, const ResDescriptor& res_desc)
 {
-  if (res_desc.modifier != ResourceModifierNS::ROT0)
-    pout << "PingusResource::apply_modifier: Using expensive blitting" << std::endl;
-  
   switch (res_desc.modifier)
     {
       // FIXME: muahhhaa... I write slower code than you....

@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.21 2002/10/03 12:33:08 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.22 2002/10/19 23:23:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,6 +99,8 @@ ScreenManager::display ()
       	{
 	  if (get_current_screen()->draw (display_gc))
 	    Display::flip_display ();
+
+          //CL_Display::put_display(CL_Rect(0, 0, 100, 100));
 	}
       else
 	{

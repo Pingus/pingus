@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.20 2002/10/19 19:40:34 torangan Exp $
+//  $Id: blitter.cxx,v 1.21 2002/10/19 23:23:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -569,46 +569,14 @@ Blitter::convert_to_emptyprovider(CL_SurfaceProvider* sprov)
 CL_Surface
 Blitter::flip_horizontal (const CL_Surface& sur)
 {
-  CL_SurfaceProvider* prov = sur.get_provider ();
-  CL_Canvas* canvas = new CL_Canvas (sur.get_width (), sur.get_height ());
-
-  prov->lock ();
-  canvas->lock ();
-
-  float r, b, g, a;
-  for (unsigned int y = 0; y < sur.get_height (); ++y)
-    for (unsigned int x = 0; x < sur.get_width (); ++x)
-      {
-	prov->get_pixel (sur.get_width () - x - 1, y, &r, &g, &b, &a);
-	canvas->draw_pixel (x, y, r, g, b, a);
-      }
-
-  canvas->unlock ();
-  prov->unlock ();
-  return CL_Surface(canvas, true);
+  return BlitterImpl::modify<BlitterImpl::transform_flip>(sur);
 }
 
 /** Flip a surface vertical */
 CL_Surface
 Blitter::flip_vertical (const CL_Surface& sur)
 {
-  CL_SurfaceProvider* prov = sur.get_provider ();
-  CL_Canvas* canvas = new CL_Canvas (sur.get_width (), sur.get_height ());
-
-  prov->lock ();
-  canvas->lock ();
-
-  float r, b, g, a;
-  for (unsigned int y = 0; y < sur.get_height (); ++y)
-    for (unsigned int x = 0; x < sur.get_width (); ++x)
-      {
-	prov->get_pixel (x, sur.get_height () - y - 1, &r, &g, &b, &a);
-	canvas->draw_pixel (x, y, r, g, b, a);
-      }
-
-  canvas->unlock ();
-  prov->unlock ();
-  return CL_Surface(canvas, true);
+  return BlitterImpl::modify<BlitterImpl::transform_rot180_flip>(sur);
 }
 
 /** Rotate a surface 90 degrees */
@@ -682,19 +650,22 @@ Blitter::rotate_270 (const CL_Surface& sur)
 CL_Surface
 Blitter::rotate_90_flip (const CL_Surface& sur)
 {
-  return Blitter::flip_horizontal(Blitter::rotate_90(sur));
+  return BlitterImpl::modify<BlitterImpl::transform_rot90_flip>(sur);
+  //return Blitter::flip_horizontal(Blitter::rotate_90(sur));
 }
 
 CL_Surface
 Blitter::rotate_180_flip (const CL_Surface& sur)
 {
-  return Blitter::flip_horizontal(Blitter::rotate_180(sur));
+  return BlitterImpl::modify<BlitterImpl::transform_rot180_flip>(sur);
+  //return Blitter::flip_horizontal(Blitter::rotate_180(sur));
 }
 
 CL_Surface
 Blitter::rotate_270_flip (const CL_Surface& sur)
 {
-  return Blitter::flip_horizontal(Blitter::rotate_270(sur));
+  return BlitterImpl::modify<BlitterImpl::transform_rot270_flip>(sur);
+  //return Blitter::flip_horizontal(Blitter::rotate_270(sur));
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: blitter_impl.hxx,v 1.3 2002/10/19 22:22:48 grumbel Exp $
+//  $Id: blitter_impl.hxx,v 1.4 2002/10/19 23:23:44 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 namespace BlitterImpl
 {
 
+/** Rotate a surface 90 degree */
 struct transform_rot90
 {
   static inline int get_index(int width, int height, int x, int y) {
@@ -42,6 +43,7 @@ struct transform_rot90
   static inline int get_height(int width, int height) { return width; }
 };
 
+/** Rotate a surface 180 degree */
 struct transform_rot180
 {
   static inline int get_index(int width, int height, int x, int y) {
@@ -60,18 +62,109 @@ struct transform_rot180
   static inline int get_height(int width, int height) { UNUSED_ARG(width);  return height; }
 };
 
+/** Rotate a surface 270 degree */
 struct transform_rot270
 {
-  static inline int get_index(int width, int height, int x, int y) { UNUSED_ARG(height);
-    return (x * height) + y;
+  static inline int get_index(int width, int height, int x, int y) { 
+    return ((width - x - 1) * height) + y;
   }
 
-  static inline int get_x(int width, int height, int x, int y) { UNUSED_ARG(width); UNUSED_ARG(height); UNUSED_ARG(x);
+  static inline int get_x(int width, int height, int x, int y) { 
+    UNUSED_ARG(width); UNUSED_ARG(height); UNUSED_ARG(x);
     return y;
   }
 
-  static inline int get_y(int width, int height, int x, int y) { UNUSED_ARG(width); UNUSED_ARG(y);
-    return height - x - 1;
+  static inline int get_y(int width, int height, int x, int y) {
+    UNUSED_ARG(height);
+    UNUSED_ARG(y);
+
+    return width - x - 1;
+  }
+
+  static inline int get_width (int width, int height) { UNUSED_ARG(width);  return height; }
+  static inline int get_height(int width, int height) { UNUSED_ARG(height); return width; }
+};
+
+/** flip a surface  */
+struct transform_flip
+{
+  static inline int get_index(int width, int height, int x, int y) {
+    UNUSED_ARG(height);
+    return (y * width) + (width - x - 1);
+  }
+
+  static inline int get_x(int width, int height, int x, int y) { 
+    UNUSED_ARG(height); UNUSED_ARG(y);
+    return width - x - 1;
+  }
+
+  static inline int get_y(int width, int height, int x, int y) { 
+    UNUSED_ARG(width); UNUSED_ARG(height); UNUSED_ARG(x);
+    return y;
+  }
+
+  static inline int get_width (int width, int height) { UNUSED_ARG(height);  return width; }
+  static inline int get_height(int width, int height) { UNUSED_ARG(width); return height; }
+};
+
+/** Rotate a surface 90 degree and then flip it */
+struct transform_rot90_flip
+{
+  static inline int get_index(int width, int height, int x, int y) {
+    UNUSED_ARG(width);
+    return (x * height) + y;
+  }
+
+  static inline int get_x(int width, int height, int x, int y) { 
+    UNUSED_ARG(width); UNUSED_ARG(height); UNUSED_ARG(x);
+    return y;
+  }
+
+  static inline int get_y(int width, int height, int x, int y) { 
+    UNUSED_ARG(width); UNUSED_ARG(height); UNUSED_ARG(y);
+    return x;
+  }
+
+  static inline int get_width (int width, int height) { UNUSED_ARG(width);  return height; }
+  static inline int get_height(int width, int height) { UNUSED_ARG(height); return width; }
+};
+
+/** Rotate a surface 180 degree and then flip it */
+struct transform_rot180_flip
+{
+  static inline int get_index(int width, int height, int x, int y) { 
+    return ((height - y - 1) * width) + x;
+  }
+
+  static inline int get_x(int width, int height, int x, int y) { 
+    UNUSED_ARG(width); UNUSED_ARG(height); UNUSED_ARG(y);
+    return x;
+  }
+
+  static inline int get_y(int width, int height, int x, int y) { 
+    UNUSED_ARG(width); UNUSED_ARG(x);
+    return height - y - 1;
+  }
+
+  static inline int get_width (int width, int height) { UNUSED_ARG(height);  return width; }
+  static inline int get_height(int width, int height) { UNUSED_ARG(width); return height; }
+};
+
+/** Rotate a surface 270 degree and then flip it */
+struct transform_rot270_flip
+{
+  static inline int get_index(int width, int height, int x, int y) {
+    return ((width - x - 1) * height) + height - y - 1;
+  }
+
+  static inline int get_x(int width, int height, int x, int y) { 
+    UNUSED_ARG(width); UNUSED_ARG(x);
+    return height - y - 1;
+  }
+
+  static inline int get_y(int width, int height, int x, int y) { 
+    UNUSED_ARG(height); UNUSED_ARG(y);
+    return width - x - 1;
   }
 
   static inline int get_width (int width, int height) { UNUSED_ARG(width);  return height; }
@@ -133,7 +226,6 @@ CL_Surface modify(const CL_Surface& sur)
       prov->unlock ();
       return CL_Surface(canvas, true);
     }
-
 }
 
 } // namespace BlitterImpl
