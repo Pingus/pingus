@@ -1,4 +1,4 @@
-//  $Id: worldobj_group.cxx,v 1.2 2002/09/15 21:21:47 grumbel Exp $
+//  $Id: worldobj_group.cxx,v 1.3 2002/09/15 21:49:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include "../graphic_context.hxx"
 #include "worldobj_group.hxx"
 
-namespace WorldObj {
+namespace WorldObjs {
 
 WorldObjGroup::WorldObjGroup (const WorldObjsData::WorldObjGroupData& data_)
   : data (new WorldObjsData::WorldObjGroupData(data_))
@@ -41,6 +41,6 @@ WorldObjGroup::draw (GraphicContext& gc)
     (*i)->draw (gc);  
 }
 
-} // namespace WorldObj
+} // namespace WorldObjs
 
 /* EOF */

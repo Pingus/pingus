@@ -1,4 +1,4 @@
-//  $Id: worldobj_group_data.hxx,v 1.2 2002/09/15 21:21:47 grumbel Exp $
+//  $Id: worldobj_group_data.hxx,v 1.3 2002/09/15 21:49:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_WORLDOBJ_GROUP_DATA_HXX
 #define HEADER_PINGUS_WORLDOBJ_GROUP_DATA_HXX
 
-#include "../worldobj_data.hxx"
 #include "../libxmlfwd.hxx"
+#include "../worldobj_data.hxx"
 
 namespace WorldObjsData {
 

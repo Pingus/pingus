@@ -1,4 +1,4 @@
-//  $Id: worldobj_group_data.cxx,v 1.2 2002/09/15 21:21:47 grumbel Exp $
+//  $Id: worldobj_group_data.cxx,v 1.3 2002/09/15 21:49:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,14 +21,9 @@
 #include <fstream>
 #include "../editor/editorobj_group.hxx"
 #include "../xml_helper.hxx"
-#include "../worldobjs/worldobj_group.hxx"
 #include "../worldobj_data_factory.hxx"
-#include "../worldobj.hxx"
-#include "../editor/editorobj_group.hxx"
-#include "../editor/editorobj.hxx"
+#include "../worldobjs/worldobj_group.hxx"
 #include "worldobj_group_data.hxx"
-
-typedef EditorObjLst::iterator EditorObjLstIter;
 
 namespace WorldObjsData {
 
@@ -87,11 +82,9 @@ WorldObjGroupData::write_xml (std::ostream& xml)
 WorldObj* 
 WorldObjGroupData::create_WorldObj ()
 {
-  //return new WorldObjs::WorldObjGroup (*this);
-  return 0;
+  return new WorldObjs::WorldObjGroup (*this);
 }
 
-/** Create an EditorObj from the given data object */
 EditorObjLst 
 WorldObjGroupData::create_EditorObj ()
 {
@@ -102,7 +95,7 @@ WorldObjGroupData::create_EditorObj ()
   for (ObjsIter i = objs.begin (); i != objs.end (); ++i)
     {
       EditorObjLst sublst ((*i)->create_EditorObj ());
-      for (EditorObjLstIter j = sublst.begin (); j != sublst.end (); ++j)
+      for (EditorObjLst::iterator j = sublst.begin (); j != sublst.end (); ++j)
 	{
 	  group->add (*j);
 	}
