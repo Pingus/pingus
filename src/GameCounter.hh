@@ -1,4 +1,4 @@
-//  $Id: GameCounter.hh,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: GameCounter.hh,v 1.3 2000/03/01 02:57:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,6 +41,7 @@ public:
 
   void set_type(CounterType t);
   void set_size(int);
+  int  get_size();
   bool finished(void);
   void set_speed(double i);
   int  value(void);

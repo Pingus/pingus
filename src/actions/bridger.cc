@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.3 2000/03/01 02:50:45 grumbel Exp $
+//  $Id: bridger.cc,v 1.4 2000/03/01 02:57:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,8 +37,8 @@ Bridger::init(void)
   action_name = "Bridger";
 
   surface = CL_Surface::load("Pingus/bridger", local_res());
-  brick_l = CL_Surface::load("Other/brick_left", local_res());
-  brick_r = CL_Surface::load("Other/brick_right", local_res());
+  brick_r = CL_Surface::load("Other/brick_left", local_res());
+  brick_l = CL_Surface::load("Other/brick_right", local_res());
   bricks = 30;
 
   counter.set_size(surface->get_num_frames()/2);

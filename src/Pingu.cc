@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.11 2000/02/28 17:54:21 grumbel Exp $
+//  $Id: Pingu.cc,v 1.12 2000/03/01 02:57:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -143,25 +143,21 @@ Pingu::set_map(PinguMap* a)
 }
 
 // Set the action of the pingu (bridger, blocker, bomber, etc.)
-// The `t' parameter set the amount of time which have to be passed
-// before the action is set. A value of `-1' activates the action
-// directly.
+// This function is used by external stuff, like the ButtonPanel, etc
 int
-Pingu::set_action(PinguAction* act, int t)
+Pingu::set_action(PinguAction* act)
 {
   assert(act);
 
   if (status == dead)
-    return 0;
+    {
+      cout << "Setting action to a dead pingu" << endl;
+      return 0;
+    }
 
   act->set_pingu(this);
 
   // Use the activation time of the action
-  if (t == -2)
-    {
-      //action_time = act->activation_time();
-      t = act->activation_time();
-    }
 
   if (act->get_type() ^ (ActionType)ONCE) 
     {
@@ -194,32 +190,30 @@ Pingu::set_action(PinguAction* act, int t)
 	  return 0; 
 	}
     
-      if (t == -1)
+      if (act->activation_time() == -1)
 	{ // Immediately activate the action
-	  if (action)
+	  if (action && (action->name() == act->name()))
 	    {
-	      if (act->name() == action->name())
-		{
-		  if (verbose) std::cout << "Allready have action" << std::endl;
-		  return false;
-		}
+	      if (verbose > 1) std::cout << "Allready have action" << std::endl;
+	      return false;
 	    }
 	  action = act;
 	  return 1;	    
-	} 
+	}
       else 
 	{ // Use the activation time, given by t
 	  if (sec_action && sec_action->name() == act->name())
 	    {
 	      return false;
 	    }
-	  action_time = t;
+	  action_time = act->activation_time();
 	  sec_action = act;
 	}
       return true;
     }
 }
 
+// Sets an action without any checking
 int
 Pingu::set_paction(PinguAction* act) 
 {
@@ -484,6 +478,7 @@ Pingu::do_walking()
 	  direction.change();
 	}
     }
+
 }
 
 // Draws the pingu on the screen with the given offset

@@ -1,4 +1,4 @@
-//  $Id: smasher.cc,v 1.2 2000/02/09 21:43:45 grumbel Exp $
+//  $Id: smasher.cc,v 1.3 2000/03/01 02:57:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,7 +92,7 @@ Smasher::catch_pingu(Pingu* pingu)
 	// Kill the Pingus, when the smasher is down
 	if (count >= 5) 
 	  {
-	    pingu->set_action(ActionHolder::get_uaction("smashed"), -1);
+	    pingu->set_action(ActionHolder::get_uaction("smashed"));
 	    return true;
 	  }
       } 

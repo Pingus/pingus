@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.9 2000/02/28 17:54:21 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.10 2000/03/01 02:57:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,18 +62,18 @@ PingusMenu::~PingusMenu()
 void
 PingusMenu::draw()
 {
-  CL_Display::clear_display();
-
+  cout << "Drawing..." << endl;
+  // Filling the background with a texture
   for(int y = 0; y < CL_Display::get_height(); y += background->get_height())
     for(int x = 0; x < CL_Display::get_width(); x += background->get_width())
       background->put_screen(x, y);
 
+  // Putting the logo
   bg->put_screen(CL_Display::get_width()/2 - bg->get_width()/2, 3);
 
-  current_button = 0;
   for(list<SurfaceButton*>::iterator i = buttons.begin(); i != buttons.end(); i++)
     {
-      current_button = *i;
+      // Mouse_over drawing is handled in SurfaceButton.cc
       (*i)->draw();
     }
   
@@ -106,50 +106,24 @@ PingusMenu::select(void)
  
   while(!do_quit) 
     {
-      CL_System::sleep(10);
       CL_System::keep_alive();
-      
-      current_button = 0;
-      for(list<SurfaceButton*>::iterator i = buttons.begin(); i != buttons.end(); i++)
-	{
-	  if ((*i)->mouse_over())
-	    {
-	      current_button = *i;
-	      break;
-	    }
-	}
-      
-      if (CL_Mouse::left_pressed()) 
-	{
-	  draw();
-
-	  while(CL_Mouse::left_pressed()) {
-	    CL_System::keep_alive();
-	  }
-
-	  for(list<SurfaceButton*>::iterator i = buttons.begin(); i != buttons.end(); i++)
-	    {
-	      if ((*i)->mouse_over())
-		{
-		  event->enabled = false;
-		  if (&quit_button == *i)
-		    {
-		      do_quit = true;
-		    }
-		  CL_MouseCursor::hide();
-		  (*i)->on_click();
-		  CL_MouseCursor::show();
-  
-		  event->enabled = true;
-		  break;
-		}
-	    }
-	  draw();  
-	}
     }
+
   event->enabled = false;
 
   CL_MouseCursor::hide();
+}
+
+bool
+PingusMenu::Event::on_mouse_move(CL_InputDevice *device)
+{
+  if (!enabled) return true;
+ 
+  if (device == CL_Input::pointers[0])
+    {
+      menu->draw();
+    }
+  return true;
 }
 
 bool
@@ -177,18 +151,18 @@ PingusMenu::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
   else if (device == CL_Input::pointers[0])
     {
       if (verbose) std::cout << "PingusMenu::Event: on_button_press" << std::endl;
-    }  
-  return true;
-}
 
-bool
-PingusMenu::Event::on_mouse_move(CL_InputDevice *device)
-{
-  if (!enabled) return true;
- 
-  if (device == CL_Input::pointers[0])
-    {
-      menu->draw();
+      for(list<SurfaceButton*>::iterator i = menu->buttons.begin(); i != menu->buttons.end(); i++)
+	{
+	  // Mouse_over drawing is handled in SurfaceButton.cc
+	  if ((*i)->mouse_over())
+	    {
+	      enabled = false;
+	      (*i)->on_click();
+	      enabled = true;
+	    }
+	}
+  
     }
   return true;
 }

@@ -1,4 +1,4 @@
-//  $Id: GameCounter.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: GameCounter.cc,v 1.4 2000/03/01 02:57:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -89,6 +89,12 @@ GameCounter::check_overflow(void)
     std::cout << "Size: " << size << std::endl;
     std::cout << "Count: " << count << std::endl;
   }
+}
+
+int
+GameCounter::get_size()
+{
+  return (int)size;
 }
 
 void

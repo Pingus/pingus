@@ -1,4 +1,4 @@
-//  $Id: Teleport.cc,v 1.2 2000/02/09 21:43:44 grumbel Exp $
+//  $Id: Teleport.cc,v 1.3 2000/03/01 02:57:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,10 @@
 #include "Teleport.hh"
 #include "../PingusResource.hh"
 #include "../actions/teleported.hh"
+
+// FIXME: Just for the record, I don't really like to have x_target
+// and y_target in Trap, there should probably some other way of
+// handling this.
 
 Teleport::Teleport(trap_data data)
 {
@@ -69,12 +73,13 @@ Teleport::catch_pingu(Pingu* pingu)
 	teleporting = true; 
       }
 
-      if (counter >= 3 && counter <= 5) {
-	teleported = new Teleported();
-	pingu->set_action(teleported, -1);
-	teleported->x_target = x_target;
-	teleported->y_target = y_target;
-      }
+      if (counter >= 3 && counter <= 5) 
+	{
+	  teleported = new Teleported();
+	  teleported->x_target = x_target;
+	  teleported->y_target = y_target;
+	  pingu->set_action(teleported);
+	}
       return true;
     } else {
       return false;

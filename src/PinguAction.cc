@@ -1,4 +1,4 @@
-//  $Id: PinguAction.cc,v 1.4 2000/02/11 21:26:37 grumbel Exp $
+//  $Id: PinguAction.cc,v 1.5 2000/03/01 02:57:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,6 +67,7 @@ PinguAction::draw_offset(int x, int y, float s)
   if (pingu->get_status() == (dead || exited)) 
     {
       std::cout << "PinguAction: This should never be reached, please report." << std::endl;
+      assert(0);
       return;
     }
   
