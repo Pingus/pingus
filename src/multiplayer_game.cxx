@@ -1,4 +1,4 @@
-//  $Id: multiplayer_game.cxx,v 1.3 2002/06/13 14:25:12 torangan Exp $
+//  $Id: multiplayer_game.cxx,v 1.4 2002/06/20 12:22:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,41 +44,41 @@ MultiplayerGame::start ()
   try {
     PLF* plf = new XMLPLF (path_manager.complete("levels/multi2-grumbel.xml"));
     std::auto_ptr<Server>     server (new TrueServer (plf));
-    std::auto_ptr<Controller> controller1;
-    std::auto_ptr<Controller> controller2;
-    std::auto_ptr<Controller> controller3;
-    std::auto_ptr<Controller> controller4;
+    Controller* controller1;
+    Controller* controller2;
+    Controller* controller3;
+    Controller* controller4;
 
     if (CL_Input::joysticks.size () > 0)
-      controller1 = std::auto_ptr<Controller>(new GamepadController (CL_Input::joysticks[0], 0));
+      controller1 = new GamepadController (CL_Input::joysticks[0], 0);
     else 
-      controller1 = std::auto_ptr<Controller>(new KeyboardController (0));
+      controller1 = new KeyboardController (0);
 
     if (CL_Input::joysticks.size () > 1)
-      controller2 = std::auto_ptr<Controller>(new GamepadController (CL_Input::joysticks[1], 0));
+      controller2 = new GamepadController (CL_Input::joysticks[1], 0);
     else
-      controller2 = std::auto_ptr<Controller>(new MouseController (1));
+      controller2 = new MouseController (1);
 
     if (CL_Input::joysticks.size () > 2)
-      controller3 = std::auto_ptr<Controller>(new GamepadController (CL_Input::joysticks[2], 0));
+      controller3 = new GamepadController (CL_Input::joysticks[2], 0);
     else
-      controller3 = std::auto_ptr<Controller>(new KeyboardController (2));
+      controller3 = new KeyboardController (2);
 
-    controller4 = std::auto_ptr<Controller>(new MouseController (3));
+    controller4 = new MouseController (3);
 
-    std::auto_ptr<MultiplayerClient> client;
+    MultiplayerClient* client;
     int player = 2;
     if (player == 2)
       {
 	client = new MultiplayerClient (server.get (),
-                                        new MultiplayerClientChild (controller1.get(),
+                                        new MultiplayerClientChild (controller1,
 				                                    server.get (),
 					                            CL_Rect (0,0, 
 				                                             CL_Display::get_width ()/2-2,
                                                                              CL_Display::get_height ()
                                                                             )
                                                                    ),
-                                        new MultiplayerClientChild (controller2.get(),
+                                        new MultiplayerClientChild (controller2,
 					                            server.get (),
                                                                     CL_Rect (CL_Display::get_width ()/2, 0,
                                                                              CL_Display::get_width (), 
@@ -90,14 +90,14 @@ MultiplayerGame::start ()
     else
       {
 	client = new MultiplayerClient (server.get (),
-                                        new MultiplayerClientChild (controller1.get(),
+                                        new MultiplayerClientChild (controller1,
 					                            server.get (),
 					                            CL_Rect (0,
 					                                     0,
 						                             CL_Display::get_width  ()/2 - 4,
 						                             CL_Display::get_height ()/2 - 4)
 						                            ),
-                                 	new MultiplayerClientChild (controller2.get(),
+                                 	new MultiplayerClientChild (controller2,
 					                            server.get (),
 					                            CL_Rect (CL_Display::get_width ()/2 + 4,
 						                             0,
@@ -105,7 +105,7 @@ MultiplayerGame::start ()
 						                             CL_Display::get_height ()/2 - 4
 						                            )
 						                   ),
-                                        new MultiplayerClientChild (controller3.get(),
+                                        new MultiplayerClientChild (controller3,
 					                            server.get (),
 					                            CL_Rect (0,
 						                             CL_Display::get_height ()/2 + 4,
@@ -113,7 +113,7 @@ MultiplayerGame::start ()
 						                             CL_Display::get_height ()
 						                            )
 						                   ),
-	                                new MultiplayerClientChild (controller4.get(),
+	                                new MultiplayerClientChild (controller4,
 					                            server.get (),
 					                            CL_Rect (CL_Display::get_width ()/2 + 4,
 					                                     CL_Display::get_height ()/2 + 4,
