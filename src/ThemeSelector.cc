@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.53 2002/01/19 16:13:46 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.54 2002/01/21 11:13:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,15 +20,17 @@
 #include <algorithm>
 #include <config.h>
 #include "globals.hh"
-#include "System.hh"
+#include "ThemeSelector.hh"
 #include "PingusError.hh"
 #include "PingusResource.hh"
 #include "AlphaButton.hh"
 #include "Display.hh"
 #include "Loading.hh"
-#include "ThemeSelector.hh"
 #include "PingusSound.hh"
 #include "PathManager.hh"
+#include "System.hh"
+
+using namespace std;
 
 ListBox::ListBox()
 {

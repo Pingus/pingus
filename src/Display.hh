@@ -1,4 +1,4 @@
-//  $Id: Display.hh,v 1.9 2001/04/12 19:47:09 grumbel Exp $
+//  $Id: Display.hh,v 1.10 2002/01/21 11:13:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,9 @@
 #ifndef DISPLAY_HH
 #define DISPLAY_HH
 
-#include <list>
 #include <ClanLib/core.h>
 #include <ClanLib/display.h>
+#include <list>
 
 ///
 class DisplayHook

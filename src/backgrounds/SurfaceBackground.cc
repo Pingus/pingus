@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackground.cc,v 1.15 2001/08/15 07:35:29 grumbel Exp $
+//  $Id: SurfaceBackground.cc,v 1.16 2002/01/21 11:13:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,17 +53,17 @@ SurfaceBackground::SurfaceBackground(const SurfaceBackgroundData& bg_data)
     {
       std::cout << "SurfaceBackground:: Manipulating background" << std::endl;
       // FIXME: This is extremly buggy and it will crash, no idea why....
-      CL_Surface source_surface(PingusResource::load_surface(bg_data.desc));
+      CL_Surface source_surface = PingusResource::load_surface(bg_data.desc);
       
-      //CL_Canvas* canvas = Blitter::create_canvas(source_surface);
-      //	  canvas->fill_rect(0, 0, 
-			    //			    canvas->get_width(), canvas->get_height(),
-      //			    bg_data.color.red, bg_data.color.green, bg_data.color.blue, 
-      //			    bg_data.color.alpha);
+      CL_Canvas* canvas = Blitter::create_canvas(source_surface);
+      canvas->fill_rect(0, 0, 
+			canvas->get_width()-1, canvas->get_height()-1,
+			bg_data.color.red, bg_data.color.green, bg_data.color.blue, 
+			bg_data.color.alpha);
       
       // FIXME: Sat Jul 21 21:57:15 2001
       std::cout << "BUG: Stuff removed because of linker error" << std::endl;
-      //bg_surface = CL_Surface (canvas, true);
+      bg_surface = CL_Surface (canvas, true);
     }
   else
     {

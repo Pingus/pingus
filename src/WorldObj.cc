@@ -1,4 +1,4 @@
-//  $Id: WorldObj.cc,v 1.18 2002/01/15 11:10:17 grumbel Exp $
+//  $Id: WorldObj.cc,v 1.19 2002/01/21 11:13:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,14 +21,14 @@
 #include <iostream>
 #include "boost/smart_ptr.hpp"
 
-using namespace boost;
-
 #include "PingusError.hh"
 #include "worldobjs/Teleporter.hh"
 #include "worldobjs/IceBlock.hh"
 #include "worldobjs/ConveyorBelt.hh"
 #include "worldobjs/SwitchDoor.hh"
 #include "WorldObj.hh"
+
+using namespace boost;
 
 World* WorldObj::world;
 

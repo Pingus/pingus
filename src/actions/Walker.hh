@@ -1,4 +1,4 @@
-//  $Id: Walker.hh,v 1.3 2001/12/06 10:50:40 grumbel Exp $
+//  $Id: Walker.hh,v 1.4 2002/01/21 11:13:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,12 +22,21 @@
 
 #include "../PinguAction.hh"
 
+#ifdef WIN32
+  static const int max_steps=4; // max nr. of pixels that pingu can walk up/down
+#endif
+
 class Walker : public PinguAction
 {
 private:
   Sprite walker; 
 
+// (Alberto)
+// This stuff does not work under VS, but I don't know why.
+// By now, the unique solution is by using a #define
+#ifndef WIN32
   static const int max_steps=4; // max nr. of pixels that pingu can walk up/down
+#endif
 
 public:
   void  init(void);

@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.28 2002/01/13 15:24:19 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.29 2002/01/21 11:13:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -94,7 +94,7 @@ TeleporterData::create_EditorObj ()
   std::cout << "TeleportData::create_EditorObj () " << std::endl;
   std::list<boost::shared_ptr<EditorObj> > objs;
   
-  boost::shared_ptr<EditorTeleporterObj> teleporter(new EditorTeleporterObj (*this));
+  boost::shared_ptr<EditorTeleporterObj> teleporter (new EditorTeleporterObj (*this));
   boost::shared_ptr<EditorTeleporterTargetObj> teleporter_target(new EditorTeleporterTargetObj (teleporter.get ()));
 
   objs.push_back (teleporter);

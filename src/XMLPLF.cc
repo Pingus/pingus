@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.40 2002/01/04 01:19:46 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.41 2002/01/21 11:13:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,8 @@
 #include "StringConverter.hh"
 #include "WorldObjDataFactory.hh"
 #include "WorldObjGroupData.hh"
+
+using namespace std;
 
 XMLPLF::XMLPLF(const std::string& filename)
 {

@@ -1,4 +1,4 @@
-//  $Id: MultiplayerGame.cc,v 1.4 2002/01/13 15:24:18 grumbel Exp $
+//  $Id: MultiplayerGame.cc,v 1.5 2002/01/21 11:13:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,12 +79,12 @@ MultiplayerGame::start ()
 	client = shared_ptr<MultiplayerClient> 
 	  (new MultiplayerClient 
 		  (server.get (),
-		   shared_ptr<MultiplayerClientChild>(new MultiplayerClientChild (controller1,
+		   shared_ptr<GuiObj>(new MultiplayerClientChild (controller1,
 										  server.get (),
 										  CL_Rect (0,0, 
 											   CL_Display::get_width ()/2-2,
 											   CL_Display::get_height ()))),
-		   shared_ptr<MultiplayerClientChild>(new MultiplayerClientChild (controller2,
+		   shared_ptr<GuiObj>(new MultiplayerClientChild (controller2,
 										  server.get (),
 										  CL_Rect (CL_Display::get_width ()/2, 0,
 											   CL_Display::get_width (), 
@@ -95,25 +95,25 @@ MultiplayerGame::start ()
 	client = shared_ptr<MultiplayerClient> 
 	  (new MultiplayerClient 
 		(server.get (),
-		 shared_ptr<MultiplayerClientChild>(new MultiplayerClientChild (controller1,
+		 shared_ptr<GuiObj>(new MultiplayerClientChild (controller1,
 										server.get (),
 										CL_Rect (0,
 											 0, 
 											 CL_Display::get_width ()/2 - 4,
 											 CL_Display::get_height ()/2 - 4))),
-		 shared_ptr<MultiplayerClientChild>(new MultiplayerClientChild (controller2,
+		 shared_ptr<GuiObj>(new MultiplayerClientChild (controller2,
 										server.get (),
 										CL_Rect (CL_Display::get_width ()/2 + 4,
 											 0,
 											 CL_Display::get_width (), 
 											 CL_Display::get_height ()/2 - 4))),
-		 shared_ptr<MultiplayerClientChild>(new MultiplayerClientChild (controller3,
+		 shared_ptr<GuiObj>(new MultiplayerClientChild (controller3,
 										server.get (),
 										CL_Rect (0,
 											 CL_Display::get_height ()/2 + 4,
 											 CL_Display::get_width ()/2 - 4, 
 											 CL_Display::get_height ()))),
-		 shared_ptr<MultiplayerClientChild>(new MultiplayerClientChild (controller4,
+		 shared_ptr<GuiObj>(new MultiplayerClientChild (controller4,
 										server.get (),
 										CL_Rect (CL_Display::get_width ()/2 + 4,
 											 CL_Display::get_height ()/2 + 4,
