@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.16 2000/06/14 14:57:54 grumbel Exp $
+//  $Id: bridger.cc,v 1.17 2000/06/23 17:08:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -132,7 +132,8 @@ Bridger::let_move()
       else
 	{
 	  // Waiting some seconds after we are out of bricks 
-	  bricks--;
+	  pingu->set_action(pingu->action_holder->get_uaction("waiter"));
+	  // bricks--;
 	}
     }
 }
