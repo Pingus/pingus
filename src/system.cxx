@@ -1,4 +1,4 @@
-//  $Id: system.cxx,v 1.9 2003/03/07 18:49:20 grumbel Exp $
+//  $Id: system.cxx,v 1.10 2003/03/16 10:40:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -442,14 +442,22 @@ System::checksum (std::string filename)
   return to_string (checksum);
 }
 
+
 unsigned int
 System::get_mtime(const std::string& filename)
 {
+#ifndef WIN32
+
   struct stat stat_buf;
   if (stat(filename.c_str(), &stat_buf) == 0)
     return stat_buf.st_mtime;
   else
     return 0;
+    
+#else
+    return 0;
+#endif
 }
+
 
 /* EOF */

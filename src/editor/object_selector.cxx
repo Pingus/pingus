@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.34 2003/03/10 11:29:50 grumbel Exp $
+//  $Id: object_selector.cxx,v 1.35 2003/03/16 10:40:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -291,7 +291,8 @@ ObjectSelector::get_entrance ()
 
 	case CL_KEY_4:
 	case CL_KEY_H:
-	  return get_hotspot("entrances");
+	  //FIXME: what's supposed to happen here?
+	  //return get_hotspot("entrances");
           break;
 
 	default:
@@ -414,7 +415,8 @@ ObjectSelector::select_obj_type ()
       switch (read_key()) 
 	{
 	case CL_KEY_T:
-	  return get_trap();
+          get_trap();
+	  return;
 
 	case CL_KEY_B:
           get_groundpiece(Groundtype::GP_BRIDGE);
