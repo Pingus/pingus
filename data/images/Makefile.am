@@ -168,6 +168,7 @@ fonts/pingus_small.png \
 fonts/pingus_small4_fix_num.png \
 fonts/smallfont.png \
 fonts/smallfont_h.png \
+fonts/verdana11_bold_latin1.png \
 fonts/xterm.png \
 groundpieces/bridge/misc/bridge_left.png \
 groundpieces/bridge/misc/bridge_right.png \
