@@ -1,4 +1,4 @@
-//  $Id: selection.cxx,v 1.5 2002/07/01 18:36:40 grumbel Exp $
+//  $Id: selection.cxx,v 1.6 2002/07/02 08:58:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,52 +26,61 @@
 using namespace Pingus;
 using namespace std;
 
-void EditorSelection::move(float x, float y) {
+void
+EditorSelection::move(float x, float y) {
 
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->set_position_offset(CL_Vector(x, y));
 }
 
-void EditorSelection::move(const CL_Vector& pos) {
+void
+EditorSelection::move(const CL_Vector& pos) {
 
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->set_position_offset(pos);
 }
 
-void EditorSelection::drag() {
+void
+EditorSelection::drag() {
 
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->drag();
 }
 
-void EditorSelection::drop() {
+void
+EditorSelection::drop() {
 
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->drop();
 }
 
-void EditorSelection::add(EditorObj* obj) {
+void
+EditorSelection::add(EditorObj* obj) {
 
   obj_list.push_back(obj);
 }
 
-void EditorSelection::add(vector<EditorObj*> objs) {
+void
+EditorSelection::add(vector<EditorObj*> objs) {
 
   obj_list.insert(obj_list.end(), objs.begin(), objs.end());
 }
 
-void EditorSelection::remove(EditorObj* obj) {
+void
+EditorSelection::remove(EditorObj* obj) {
 
   obj_list.erase(std::find(obj_list.begin(), obj_list.end(), obj));
 }
 
-void EditorSelection::raise() {
+void
+EditorSelection::raise() {
 
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     object_manager->raise_obj(*it);
 }
 
-void EditorSelection::lower() {
+void
+EditorSelection::lower() {
 
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     object_manager->lower_obj(*it);
