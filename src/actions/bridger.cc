@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.12 2000/04/29 13:13:26 grumbel Exp $
+//  $Id: bridger.cc,v 1.13 2000/05/20 17:12:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ Bridger::init(void)
   waiter  = CL_Surface::load("Pingus/blocker", local_res());
   brick_l = CL_Surface::load("Other/brick_left", local_res());
   brick_r = CL_Surface::load("Other/brick_right", local_res());
-  bricks = 30;
+  bricks = 15;
 
   counter.set_size(surface->get_num_frames()/2);
   counter.set_speed(1);
@@ -69,8 +69,9 @@ Bridger::draw_offset(int x, int y, float s)
     {
       if (bricks > 0)
 	{
-	  surface->put_screen(pingu->x_pos + x + x_offset(), pingu->y_pos + y + y_offset() - 1, 
-			      ++counter + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
+	  //	  surface->put_screen(pingu->x_pos + x + x_offset() + 3, pingu->y_pos + y + y_offset() + 3,
+	  surface->put_screen(pingu->x_pos + x + x_offset(), pingu->y_pos + y + y_offset(),
+			      do_steps + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
 	}
       else
 	{
@@ -81,16 +82,22 @@ Bridger::draw_offset(int x, int y, float s)
   else 
     {
       surface->put_screen(int((pingu->x_pos + x + x_offset()) * s), int((pingu->y_pos + y + y_offset() - 1) * s), 
-			  s, s, ++counter + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
+			  s, s, do_steps + ((pingu->direction.is_left()) ? 0 : counter.get_size()));
     }
 }
 
 void
 Bridger::let_move()
 {
-  ++do_steps;
-  
-  if (do_steps > 11) 
+  // Increment the animation only every first and second loop, not at the third
+  if (step > 1) 
+    {
+      ++do_steps;
+      step = 0;
+    }
+  ++step;
+
+  if (do_steps > 8)
     {
       do_steps = 0;
 
@@ -115,7 +122,7 @@ Bridger::let_move()
 	  // Waiting some seconds after we are out of bricks 
 	  bricks--;
 	}
-    }
+      }
 }
 
 bool
@@ -157,8 +164,8 @@ Bridger::place_a_brick()
   if (pingu->direction.is_right())
     {
       pingu->colmap->put(brick_r, 
-			 pingu->x_pos + 15 - brick_r->get_width(),
-			 pingu->y_pos - 1,
+			 pingu->x_pos + 10 - brick_r->get_width(),
+			 pingu->y_pos,
 			 surface_data::BRIDGE);
       pingu->map->put(brick_r->get_provider(), 
 		      pingu->x_pos + 15 - brick_r->get_width(),
@@ -166,8 +173,8 @@ Bridger::place_a_brick()
     }
   else
     {
-      pingu->colmap->put(brick_r, pingu->x_pos - 15,
-			 pingu->y_pos - 1,
+      pingu->colmap->put(brick_r, pingu->x_pos - 10,
+			 pingu->y_pos,
 			 surface_data::BRIDGE);
       pingu->map->put(brick_l->get_provider(), 
 		      pingu->x_pos - 15,
@@ -178,16 +185,21 @@ Bridger::place_a_brick()
 void
 Bridger::walk_one_step_up()
 {
-  pingu->x_pos += 2 * pingu->direction;
-  ++step;
-  
-  if (step >= 2) 
-    {
-      pingu->y_pos -= 2;
-      step = 0;
-    }
-
+  pingu->x_pos += 4 * pingu->direction;
+  pingu->y_pos -= 2;
   counter = 0;
+}
+
+int
+Bridger::x_offset(void)
+{
+  return -16;
+}
+
+int
+Bridger::y_offset(void)
+{
+  return -29;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: bridger.hh,v 1.4 2000/03/01 21:13:11 grumbel Exp $
+//  $Id: bridger.hh,v 1.5 2000/05/20 17:12:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,8 @@ public:
 
   PinguAction* allocate(void);
 
+  int    x_offset();
+  int    y_offset();
   void   init();
   void   let_move();
   void   draw_offset(int, int, float s);
