@@ -30,7 +30,7 @@
     <red>0</red>
     <green>0</green>
     <blue>0</blue>
-    <alpha>0</alpha>
+    <alpha>0.3</alpha>
   </color>
   <scroll-x>0</scroll-x>
   <scroll-y>0</scroll-y>
@@ -121,6 +121,20 @@
 </worldobj>
 
 <worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_large</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1121</x-pos>
+    <y-pos>334</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
   <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
@@ -158,6 +172,20 @@
   <position>
     <x-pos>932</x-pos>
     <y-pos>398</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_large</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1058</x-pos>
+    <y-pos>342</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -228,6 +256,20 @@
   <position>
     <x-pos>620</x-pos>
     <y-pos>253</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_large</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1175</x-pos>
+    <y-pos>329</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -387,6 +429,20 @@
 </worldobj>
 
 <worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_large</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1150</x-pos>
+    <y-pos>273</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
   <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
@@ -477,6 +533,20 @@
   <position>
     <x-pos>596</x-pos>
     <y-pos>444</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1175</x-pos>
+    <y-pos>250</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -608,20 +678,6 @@
 </worldobj>
 
 <worldobj type="groundpiece">
-  <type>solid</type>
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_large</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
-    <x-pos>1058</x-pos>
-    <y-pos>342</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</worldobj>
-
-<worldobj type="groundpiece">
   <type>ground</type>
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
@@ -631,6 +687,20 @@
   <position>
     <x-pos>899</x-pos>
     <y-pos>371</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_large</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1088</x-pos>
+    <y-pos>270</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -993,8 +1063,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1121</x-pos>
-    <y-pos>342</y-pos>
+    <x-pos>1174</x-pos>
+    <y-pos>186</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -1007,8 +1077,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1088</x-pos>
-    <y-pos>278</y-pos>
+    <x-pos>1111</x-pos>
+    <y-pos>211</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -1021,8 +1091,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1088</x-pos>
-    <y-pos>327</y-pos>
+    <x-pos>1087</x-pos>
+    <y-pos>324</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -1035,8 +1105,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1081</x-pos>
-    <y-pos>274</y-pos>
+    <x-pos>1104</x-pos>
+    <y-pos>207</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -1063,8 +1133,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1112</x-pos>
-    <y-pos>338</y-pos>
+    <x-pos>1135</x-pos>
+    <y-pos>271</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -1107,6 +1177,20 @@
   <position>
     <x-pos>861</x-pos>
     <y-pos>222</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1159</x-pos>
+    <y-pos>387</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -1231,8 +1315,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1071</x-pos>
-    <y-pos>395</y-pos>
+    <x-pos>1043</x-pos>
+    <y-pos>402</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -1242,11 +1326,11 @@
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
   <resource-ident>snow/ice2</resource-ident>
-    <modifier>ROT0</modifier>
+    <modifier>ROT0FLIP</modifier>
   </resource></surface>
   <position>
-    <x-pos>1112</x-pos>
-    <y-pos>396</y-pos>
+    <x-pos>1152</x-pos>
+    <y-pos>384</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -1261,6 +1345,62 @@
   <position>
     <x-pos>67</x-pos>
     <y-pos>258</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/ice2</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1112</x-pos>
+    <y-pos>330</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/ice2</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1081</x-pos>
+    <y-pos>266</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/ice2</resource-ident>
+    <modifier>ROT0FLIP</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1170</x-pos>
+    <y-pos>183</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>ground</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/ice2</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1089</x-pos>
+    <y-pos>394</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
