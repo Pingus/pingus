@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.5 2000/02/16 23:34:11 grumbel Exp $
+//  $Id: Pingu.cc,v 1.6 2000/02/25 02:35:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@
 ColMap*             Pingu::colmap;
 PinguMap*           Pingu::map;
 
-bool                Pingu:: init;
+bool                Pingu::init;
 CL_Surface*         Pingu::walker;
 CL_Surface*         Pingu::faller;
 CL_Surface*         Pingu::tumble;

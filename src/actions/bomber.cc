@@ -1,4 +1,4 @@
-//  $Id: bomber.cc,v 1.2 2000/02/09 21:43:42 grumbel Exp $
+//  $Id: bomber.cc,v 1.3 2000/02/25 02:35:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include "bomber.hh"
 #include "../globals.hh"
-#include "../PingusSound.hh"
 #include "../FVec.hh"
 
 CL_Surface* Bomber::static_surface;
@@ -109,12 +108,7 @@ Bomber::let_move()
   if (pingu->get_status() == dead)
     return;
 
-  // Pingu explode
-  if (sound_enabled && counter == 10) 
-    {
-      PingusSound::play(PingusSound::EXPLODE);
-    }
-
+  // Throwing particles
   if (counter > 12 && !particle_thrown) 
     {
       particle_thrown = true;

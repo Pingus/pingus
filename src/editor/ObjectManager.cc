@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.5 2000/02/16 03:15:05 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.6 2000/02/25 02:35:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,6 +53,7 @@ ObjectManager::new_level ()
 
   editor_objs.erase(editor_objs.begin(), editor_objs.end());
 
+  // Set some default actions
   actions.clear();
   actions.push_back(button_data("basher",  20));
   actions.push_back(button_data("blocker", 20));
@@ -61,6 +62,7 @@ ObjectManager::new_level ()
   actions.push_back(button_data("climber", 20));
   actions.push_back(button_data("digger",  20));
   actions.push_back(button_data("floater", 20));
+  actions.push_back(button_data("jumper",  20));
   actions.push_back(button_data("miner",   20));
 }
 
@@ -160,7 +162,7 @@ ObjectManager::save_level (std::string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.5 2000/02/16 03:15:05 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.6 2000/02/25 02:35:27 grumbel Exp $\n"
 	  << " */"
 	  << std::endl;
   

@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.5 2000/02/15 13:09:51 grumbel Exp $
+//  $Id: Editor.cc,v 1.6 2000/02/25 02:35:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -86,6 +86,10 @@ Editor::edit ()
 {
   quit = false;
 
+  CL_MouseCursor::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat"), false));
+  
+  CL_MouseCursor::show();
+
   register_event_handler();
 
   while (!quit) 
@@ -96,6 +100,8 @@ Editor::edit ()
     }
 
   unregister_event_handler();
+
+  CL_MouseCursor::hide();
 }
 
 
@@ -370,6 +376,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.6  2000/02/25 02:35:27  grumbel
+Added a more or less useless small map, which should be used to scroll around in the level, misc other changes/fixes
+
 Revision 1.5  2000/02/15 13:09:51  grumbel
 Misc cleanups, changes some messages to only appear when verbose > 0
 

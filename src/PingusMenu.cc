@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.6 2000/02/22 00:09:48 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.7 2000/02/25 02:35:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,6 @@ PingusMenu::PingusMenu()
 {
   bg         = CL_Surface::load("Game/logo_t", PingusResource::get("game.dat"));
   background = CL_Surface::load("Textures/stones", PingusResource::get("textures.dat"));
-  cursor_sur = CL_Surface::load("Cursors/cursor", PingusResource::get("game.dat"));
  
   event = new Event;
   event->enabled = false;
@@ -61,7 +60,7 @@ PingusMenu::~PingusMenu()
 }
 
 void
-PingusMenu::draw(void)
+PingusMenu::draw()
 {
   CL_Display::clear_display();
 
@@ -101,6 +100,10 @@ PingusMenu::select(void)
 
   event->enabled = true;
 
+  CL_MouseCursor::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat"), false));
+
+  CL_MouseCursor::show();
+ 
   while(!do_quit) 
     {
       CL_System::keep_alive();
@@ -132,7 +135,10 @@ PingusMenu::select(void)
 		    {
 		      do_quit = true;
 		    }
+		  CL_MouseCursor::hide();
 		  (*i)->on_click();
+		  CL_MouseCursor::show();
+  
 		  event->enabled = true;
 		  break;
 		}
@@ -141,6 +147,8 @@ PingusMenu::select(void)
 	}
     }
   event->enabled = false;
+
+  CL_MouseCursor::hide();
 }
 
 bool
@@ -154,9 +162,11 @@ PingusMenu::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	{
 	case CL_KEY_C:
 	  {
+	    enabled = false;
 	    Credits credits;
 	    credits.display();
 	    menu->draw();
+	    enabled = true;
 	  }
 	  break;
 	default:
@@ -177,11 +187,7 @@ PingusMenu::Event::on_mouse_move(CL_InputDevice *device)
  
   if (device == CL_Input::pointers[0])
     {
-      if (menu->current_button != menu->temp_button)
-	{
-	  menu->temp_button = menu->current_button;
-	  menu->draw();
-	}
+      menu->draw();
     }
   return true;
 }

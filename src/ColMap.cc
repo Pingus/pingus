@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.5 2000/02/18 03:08:41 grumbel Exp $
+//  $Id: ColMap.cc,v 1.6 2000/02/25 02:35:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -97,6 +97,24 @@ ColMap::getpixel(int x, int y)
   } else {
     return OUTOFSCREEN; 
   }
+}
+
+unsigned char* 
+ColMap::get_data()
+{
+  return colmap;
+}
+
+int
+ColMap::get_height()
+{
+  return height;
+}
+
+int
+ColMap::get_width()
+{
+  return width;
 }
 
 void 

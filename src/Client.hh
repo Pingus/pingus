@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: Client.hh,v 1.4 2000/02/25 02:35:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,7 @@
 #include "PinguInfo.hh"
 #include "PingusCounter.hh"
 #include "PingusCursor.hh"
+#include "SmallMap.hh"
 
 class ClientEvent;
 class Playfield;
@@ -58,7 +59,7 @@ private:
   PingusCursor*  cursor;
   Playfield*     playfield;
   TimeDisplay*   time_display;
-
+  SmallMap*      small_map;
 public:
   Client(Server* s);
   void start(std::string filename, PingusGameMode m = (PingusGameMode)INTERACTIVE_MODE);

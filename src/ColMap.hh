@@ -1,4 +1,4 @@
-//  $Id: ColMap.hh,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: ColMap.hh,v 1.3 2000/02/25 02:35:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,6 +46,10 @@ public:
   ColMap();
   ColMap(unsigned char* b, int w, int h);
   ~ColMap();
+
+  unsigned char* get_data();
+  int get_height();
+  int get_width();
 
   int  load(unsigned char*, int w, int h);
   int  load(ResDescriptor desc);

@@ -1,4 +1,4 @@
-//  $Id: Credits.cc,v 1.1 2000/02/21 23:58:37 grumbel Exp $
+//  $Id: Credits.cc,v 1.2 2000/02/25 02:35:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,7 @@ Credits::Credits()
   credits.push_back("_Joseph Toscano");
   credits.push_back("n");
 
+  credits.push_back("-Special");
   credits.push_back("-Thanks to");
   credits.push_back("_Johnny Taporg");
   credits.push_back("_Werner Steiner");
@@ -117,6 +118,10 @@ Credits::display()
       CL_Display::flip_display();  
      
       CL_System::keep_alive();
+
+      if (CL_Keyboard::get_keycode(CL_KEY_SPACE))
+	y -= 10;
+	
       if (CL_Keyboard::get_keycode(CL_KEY_ESCAPE))
 	quit = true;
     }

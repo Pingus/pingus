@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.8 2000/02/22 00:09:48 grumbel Exp $
+//  $Id: Client.cc,v 1.9 2000/02/25 02:35:27 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "LevelInterrupt.hh"
 #include "System.hh"
 #include "Result.hh"
+#include "PingusResource.hh"
 #include "PingusLevelResult.hh"
 
 Client::Client(Server* s)
@@ -93,18 +94,22 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
 
   if (verbose) std::cout << "Client: Generating UI elements..." << std::flush;
 
+  CL_MouseCursor::set_cursor(CL_MouseCursorProvider::load("Cursors/cross", PingusResource::get("game.dat"), false));
+  CL_MouseCursor::show();
+
   playfield    = new Playfield(plf, server->get_world());
   button_panel = new ButtonPanel(plf);
   cursor       = new PingusCursor();
   pcounter     = new PingusCounter();
+  small_map    = new SmallMap();
   time_display = new TimeDisplay();
 
-  // debug_gui->set_world(server->get_world());
   button_panel->set_server(server);
   time_display->set_server(server);
   button_panel->set_client(this);
   pcounter->set_world(server->get_world());
-
+  small_map->set_world(server->get_world());
+  
   event->playfield = playfield;
 
   if (play_demo)
@@ -113,29 +118,21 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
   if (record_demo)
     server->set_record_file(demo_file);
 
-  if (music_enabled) {
-    // Constructing Pingus Music
-    music = new PingusMusic(plf);
-    //  music->play();
-  }
-
   playfield->set_clip_rect(0, 0, 
 			   CL_Display::get_width(),
 			   CL_Display::get_height());
 
   // Connect the button_panel with the playfield
   playfield->set_buttons(button_panel);
-  //  playfield->set_pingu_info(pingu_info);
   playfield->set_server(server);
   playfield->set_client(this);
 
-    // Adding all GuiObj's to the screen
-  //  obj.push_back(pingu_info);
+  // Adding all GuiObj's to the screen
   obj.push_back(playfield);
-  //obj.push_back(debug_gui);
   obj.push_back(pcounter);
   obj.push_back(time_display);
   obj.push_back(button_panel);
+  obj.push_back(small_map);
 
   if (cursor_enabled)
     obj.push_back(cursor);
@@ -203,9 +200,12 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
   delete time_display;
   delete button_panel;
   delete playfield;
+  delete small_map;
   delete plf;
 
   event->unregister_event_handler();
+
+  CL_MouseCursor::hide();
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.7 2000/02/22 00:09:48 grumbel Exp $
+//  $Id: World.cc,v 1.8 2000/02/25 02:35:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -273,8 +273,6 @@ World::init_worldobjs()
   // After all objects are in world_obj, sort them to there z_pos
   stable_sort(world_obj.begin(), world_obj.end(), WorldObj_less());
   
-  if (sound_enabled) PingusSound::play(PingusSound::LETSGO);
-
   // Setup the gravity force
   if (force_vectors)
     {
@@ -342,6 +340,12 @@ World::is_finished(void)
     {
       return false;
     }
+}
+
+ColMap*
+World::get_colmap()
+{
+  return colmap;
 }
 
 /* EOF */

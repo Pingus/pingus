@@ -1,4 +1,4 @@
-//  $Id: blocker.cc,v 1.2 2000/02/09 21:43:42 grumbel Exp $
+//  $Id: blocker.cc,v 1.3 2000/02/25 02:35:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ Blocker::init(void)
 
   surface = CL_Surface::load("Pingus/blocker", local_res());
   counter.set_size(4);
-  counter.set_type(Counter::loop);
+  counter.set_type(Counter::ping_pong);
   is_multi_direct = false;
 
   if (rel_getpixel(0,-1) == ColMap::NOTHING && rel_getpixel(0, -2) == ColMap::WALL) {
