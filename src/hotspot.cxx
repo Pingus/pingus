@@ -1,4 +1,4 @@
-//  $Id: hotspot.cxx,v 1.4 2002/09/04 20:30:28 grumbel Exp $
+//  $Id: hotspot.cxx,v 1.5 2002/09/17 21:45:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,30 +23,23 @@
 #include "pingus_resource.hxx"
 
 Hotspot::Hotspot(const HotspotData& spot)
+  : HotspotData(spot)
 {
+  sprite = Sprite(desc);
+  //sprite.set_align_center();
+  
   if (verbose > 2)
     std::cout << "Creating Hotspot" << std::endl;
 
   pos   = spot.pos;
   para  = spot.para;
-  speed = spot.speed;
-
-  surface = PingusResource::load_surface(spot.desc);
-  
-  if (speed != -1)
-    {
-      count.set_size(surface.get_num_frames());
-      count.set_speed(speed);
-      count = 0;
-    }
 }
 
 void 
 Hotspot::draw (GraphicContext& gc)
 {
   // FIXME: para support doesnn't work correctly
-  gc.draw (surface, pos * para, static_cast<int>(count));
-  ++count;
+  gc.draw (sprite, pos * para);
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: info_box_data.cxx,v 1.4 2002/09/17 16:23:30 grumbel Exp $
+//  $Id: info_box_data.cxx,v 1.5 2002/09/17 21:45:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,12 +71,11 @@ InfoBoxData::InfoBoxData (xmlDocPtr doc, xmlNodePtr cur)
     }
 }
 
-InfoBoxData::InfoBoxData (const InfoBoxData& old) : WorldObjData(old),
-                                                    info_text(old.info_text),
-						    pos(old.pos),
-						    text_pos(old.text_pos),
-						    sprite(old.sprite),
-						    font(old.font)
+InfoBoxData::InfoBoxData (const InfoBoxData& old)
+  : WorldObjData(old),
+    info_text(old.info_text),
+    pos(old.pos),
+    text_pos(old.text_pos)
 {
 }
 

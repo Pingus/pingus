@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.35 2002/09/15 15:30:21 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.36 2002/09/17 21:45:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -282,13 +282,6 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	
 	    if (sscanf(tmp_str.c_str(), "%d", &twidth) == 1) 
 	      {
-		if ((twidth % tile_size) != 0)
-		  {
-		    twidth += (tile_size - (twidth % tile_size));
-		    pwarn << "EditorEvent: Width not a multiple of " 
-			  << tile_size << ", fixing width to " << twidth
-			  << std::endl; 
-		  }
 		object_manager->width = twidth;
 	      }
 
@@ -297,14 +290,6 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 
 	    if (sscanf(tmp_str.c_str(), "%d", &theight) == 1) 
 	      {
-		if ((theight % tile_size) != 0)
-		  {
-		    theight += (tile_size - (theight % tile_size));
-		    pwarn << "EditorEvent: Height not a multiple of " 
-			  << tile_size << ", fixing height to " << theight 
-			  << std::endl; 
-		  }
-	   
 		object_manager->height = theight;
 	      }
 	  }

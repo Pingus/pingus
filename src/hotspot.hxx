@@ -1,4 +1,4 @@
-//  $Id: hotspot.hxx,v 1.4 2002/09/04 19:40:19 grumbel Exp $
+//  $Id: hotspot.hxx,v 1.5 2002/09/17 21:45:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,15 +25,15 @@
 #include "worldobj.hxx"
 #include "anim_counter.hxx"
 #include "hotspot_data.hxx"
+#include "sprite.hxx"
 
 class Hotspot : public HotspotData, 
 		public WorldObj
 {
 private:
-  CL_Surface surface;
-  int speed;
+  Sprite sprite;
   float para;
-  AnimCounter count;
+
 public:
   Hotspot(const HotspotData& spot);
   

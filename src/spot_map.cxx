@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.17 2002/09/17 16:23:30 grumbel Exp $
+//  $Id: spot_map.cxx,v 1.18 2002/09/17 21:45:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -113,26 +113,24 @@ PingusSpotMap::PingusSpotMap(PLF* plf)
   // tile_size are allowed, anything else wouldn't fit very well on
   // the colmap
 
-  // FIXME: This is dirty cruft, the engine should be able to handle
-  // FIXME: all world_sizes and simply display the tiles partly
   if ((width % tile_size) != 0) 
     {
-      std::cout << "Warrning: Width is not a multible of " << tile_size << std::endl;
       width += (tile_size - (width % tile_size));
-      std::cout << "Warning: Fixing height to: " << width << std::endl;
     }
   
   if ((height % tile_size) != 0) 
     {
-      std::cout << "Warning: Width is not a multible of " << tile_size << std::endl;
       height += (tile_size - (height % tile_size));
-      std::cout << "Warning: Fixing height to: " << height << std::endl;
     } 
 
   // Allocating tile map
   tile.resize(width/tile_size);
   for(TileIter i=0; i < tile.size(); ++i) 
     tile[i].resize(height/tile_size);
+
+  // fix the height back to the correct values
+  width  = plf->get_width();
+  height = plf->get_height();
 }
 
 PingusSpotMap::~PingusSpotMap(void)
