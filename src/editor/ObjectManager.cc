@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.18 2000/06/26 15:32:26 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.19 2000/06/27 06:32:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,14 @@ ObjectManager::new_level ()
 {
   levelname = "PLE Level";
   description = "This level has no name\n\n";
+
+  author = System::get_username();
+
+  if (!System::get_email().empty())
+    {
+      author += "<" + System::get_email() + ">";
+    }
+
   start_x_pos = 0;
   start_y_pos = 0;
   x_offset = 0;
@@ -137,6 +145,7 @@ ObjectManager::load_level (string filename)
   height      = plf.get_height();
   width       = plf.get_width();
   background  = plf.get_bg();
+  author      = plf.get_author();
   start_x_pos = plf.get_startx();
   start_y_pos = plf.get_starty();
   actions     = plf.get_buttons();
@@ -186,11 +195,12 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.18 2000/06/26 15:32:26 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.19 2000/06/27 06:32:54 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   
   plf_out << "global {\n"
+	  << "  author = " << author << ";\n"
 	  << "  start_x_pos = " << start_x_pos << ";\n"
 	  << "  start_y_pos = " << start_y_pos << ";\n"
 	  << "  levelname = \"" << levelname << "\";\n" 

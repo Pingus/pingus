@@ -1,4 +1,4 @@
-//  $Id: PingusCounter.cc,v 1.4 2000/03/16 21:28:05 grumbel Exp $
+//  $Id: PingusCounter.cc,v 1.5 2000/06/27 06:32:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,26 +33,15 @@ void
 PingusCounter::draw(void)
 {
   char str[256];
+  
+  // FIXME: Buffer overflow...
+  sprintf(str, "Released: %3d/%3d  Out: %3d  Saved: %3d/%3d",
+	  world->get_released_pingus(),
+	  world->get_allowed_pingus(),
+	  world->get_pingus_out(),
+	  world->get_saved_pingus(),
+	  world->get_number_to_save());
 
-  if (!print_fps)
-    {
-      sprintf(str, "Released: %3d/%3d  Out: %3d  Saved: %3d/%3d",
-	      world->get_released_pingus(),
-	      world->get_allowed_pingus(),
-	      world->get_pingus_out(),
-	      world->get_saved_pingus(),
-	      world->get_number_to_save());
-    }
-  else
-    {
-      sprintf(str, "Released: %3d/%3d  Out: %3d  Saved: %3d/%3d FPS: %3d",
-	      world->get_released_pingus(),
-	      world->get_allowed_pingus(),
-	      world->get_pingus_out(),
-	      world->get_saved_pingus(),
-	      world->get_number_to_save(),
-	      client->get_fps());
-    }
   font->print_left(10,5, str);
 }
 

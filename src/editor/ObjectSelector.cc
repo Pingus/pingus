@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.21 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.22 2000/06/27 06:32:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,16 +64,53 @@ ObjectSelector::get_trap()
   trap.y_pos = CL_Mouse::get_y() - y_offset;
   trap.z_pos = 0;
 
-  traps.push_back("guillotine");
-  traps.push_back("hammer");
-  traps.push_back("spike");
-  traps.push_back("laser_exit");
-  traps.push_back("fake_exit");
-  traps.push_back("smasher");
-  traps.push_back("bumper");
+  font->print_left(20, 20, "1 - guillotine");
+  font->print_left(20, 50, "2 - hammer");
+  font->print_left(20, 80, "3 - spike");
+  font->print_left(20,110, "4 - laser_exit");
+  font->print_left(20,140, "5 - fake_exit");
+  font->print_left(20,170, "6 - smasher");
+  font->print_left(20,200, "7 - bumper");
+  CL_Display::flip_display();
 
   current_trap = traps.begin();
 
+  while (!have_name) 
+    {
+      switch (read_key()) 
+	{
+	case CL_KEY_1:
+	  trap.name = "guillotine";	  
+	  have_name = true;
+	  break;
+	case CL_KEY_2:
+	  trap.name = "hammer";
+	  have_name = true;
+	  break;
+	case CL_KEY_3:
+	  trap.name = "spike";
+	  have_name = true;
+	  break;
+	case CL_KEY_4:
+	  trap.name = "laser_exit";
+	  have_name = true;
+	  break;
+	case CL_KEY_5:
+	  trap.name = "fake_exit";
+	  have_name = true;
+	  break;
+	case CL_KEY_6:
+	  trap.name = "smasher";
+	  have_name = true;
+	  break;
+	case CL_KEY_7:
+	  trap.name = "bumper";
+	  have_name = true;
+	  break;
+	}
+    }
+
+  /*
   while (!have_name)
     {
       CL_Display::clear_display();
@@ -114,7 +151,7 @@ ObjectSelector::get_trap()
 	default:
 	  cout << "ObjectSelector:get_trap(): Unknow key pressed" << endl;
 	}
-    }
+    }*/
  
   // FIXME: Can somebody enlight me, why gcc gives here a warrning?: 
   // ObjectSelector.cc:107: warning: control reaches end of non-void function `ObjectSelector::get_trap()'
@@ -408,6 +445,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.22  2000/06/27 06:32:54  grumbel
+Added options for setting the username and email, removed some unused stuff
+
 Revision 1.21  2000/06/25 20:22:18  grumbel
 Rewrote some parts of the resource management, to make it possible to transparently read real files instead of datafiles
 

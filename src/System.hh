@@ -1,4 +1,4 @@
-//  $Id: System.hh,v 1.9 2000/06/20 20:30:53 grumbel Exp $
+//  $Id: System.hh,v 1.10 2000/06/27 06:32:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,6 +79,12 @@ public:
       temporary files is located 
       @return The location of the tmp directory */
   static std::string get_tmpdir();
+
+  /** Returns the Username how the current user or an empty string */
+  static std::string get_username();
+
+  /** Returns the EMail of the user or an empty string */
+  static std::string get_email();
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.29 2000/06/24 15:07:13 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.30 2000/06/27 06:32:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -280,7 +280,7 @@ PingusSpotMap::draw(int x_pos, int y_pos, int w, int h,
 	  int start_x = -of_x/tile_size;
 	  int start_y = -of_y/tile_size;
 	  unsigned int tilemap_width = w / tile_size;
-	  unsigned int tilemap_height = h / tile_size;
+	  unsigned int tilemap_height = h / tile_size + 1;
 
 	  //	  std::cout  << " th: " << tilemap_height << " tw: " << tilemap_width << std::endl;
 

@@ -1,4 +1,4 @@
-//  $Id: Config.cc,v 1.9 2000/06/11 15:23:29 grumbel Exp $
+//  $Id: Config.cc,v 1.10 2000/06/27 06:32:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -381,6 +381,14 @@ Config::set_value(std::string valueid,
   else if (valueid == "swcursor-enabled")
     {
       swcursor_enabled = str_to_bool(value);
+    }
+  else if (valueid == "username")
+    {
+      global_username = valueid;
+    }
+  else if (valueid == "email")
+    {
+      global_email = valueid;
     }
   else
     {

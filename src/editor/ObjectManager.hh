@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.hh,v 1.6 2000/06/18 22:19:48 grumbel Exp $
+//  $Id: ObjectManager.hh,v 1.7 2000/06/27 06:32:54 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,6 +53,8 @@ private:
   int    start_x_pos;
   ///
   int    start_y_pos;
+  ///
+  std::string author;
   ///
   bool   quit;
 

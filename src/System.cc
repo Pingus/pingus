@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.12 2000/06/23 18:39:56 grumbel Exp $
+//  $Id: System.cc,v 1.13 2000/06/27 06:32:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -207,6 +207,44 @@ System::get_tmpdir()
 #else
   return "/tmp/";
 #endif
+}
+
+/** Returns the Username how the current user or an empty string */
+std::string
+System::get_username()
+{
+  if (global_username.empty())
+    {
+      char* username = getenv("USERNAME");
+
+      if (username)
+	return std::string(username);
+      else
+	return "";
+    }
+  else
+    {
+      return global_username;
+    }
+}
+
+/** Returns the EMail of the user or an empty string */
+std::string 
+System::get_email()
+{
+  if (global_email.empty())
+    {
+      char* email = getenv("EMAIL");
+
+      if (email)
+	return std::string(email);
+      else
+	return "";
+    }
+  else
+    {
+      return global_email;
+    }
 }
 
 /* EOF */
