@@ -1,4 +1,4 @@
-//  $Id: WorldObjData.cc,v 1.11 2001/11/30 20:22:20 grumbel Exp $
+//  $Id: WorldObjData.cc,v 1.12 2002/06/09 14:04:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,14 +17,12 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "boost/smart_ptr.hpp"
-#include "PingusError.hh"
-#include "TrapData.hh"
+//#include "PingusError.hh"
+//#include "TrapData.hh"
 //#include "worldobjs/Teleporter.hh"
 //#include "worldobjs/IceBlock.hh"
 //#include "worldobjs/InfoBox.hh"
 //#include "worldobjs/ConveyorBelt.hh"
 //#include "worldobjs/SwitchDoor.hh"
-#include "WorldObjData.hh"
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.70 2002/06/09 13:03:11 grumbel Exp $
+//  $Id: World.cc,v 1.71 2002/06/09 14:04:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,10 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <vector>
 #include <cstdio>
 #include <ctime>
-#include <algorithm>
 #include <functional>
 
 #include "ActionHolder.hh"
@@ -37,8 +35,6 @@
 #include "Timer.hh"
 #include "View.hh"
 #include "World.hh"
-#include "WorldObjData.hh"
-#include "algo.hh"
 #include "globals.hh"
 #include "GameTime.hh"
 #include "particles/ParticleHolder.hh"

@@ -1,4 +1,4 @@
-//  $Id: WorldObj.cc,v 1.21 2002/06/08 16:08:16 grumbel Exp $
+//  $Id: WorldObj.cc,v 1.22 2002/06/09 14:04:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,6 @@
 #include "worldobjs/IceBlock.hh"
 #include "worldobjs/ConveyorBelt.hh"
 #include "worldobjs/SwitchDoor.hh"
-#include "WorldObj.hh"
 
 World* WorldObj::world;
 

@@ -1,4 +1,4 @@
-//  $Id: Theme.hh,v 1.16 2002/06/08 20:19:54 torangan Exp $
+//  $Id: Theme.hh,v 1.17 2002/06/09 14:04:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,6 @@
 
 #ifndef THEME_HH
 #define THEME_HH
-
-#include <string>
-#include <vector>
 
 #include "MultiLineText.hh"
 #include "PLTXML.hh"

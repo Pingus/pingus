@@ -1,4 +1,4 @@
-//  $Id: TrapData.cc,v 1.11 2002/06/09 13:03:11 grumbel Exp $
+//  $Id: TrapData.cc,v 1.12 2002/06/09 14:04:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,10 +26,8 @@
 #include "traps/Bumper.hh"
 
 #include "PingusError.hh"
-#include "Trap.hh"
 #include "editor/PLFObj.hh"
 #include "XMLhelper.hh"
-#include "TrapData.hh"
 
 TrapData::TrapData (xmlDocPtr doc, xmlNodePtr cur)
 {

@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.28 2002/06/09 13:03:11 grumbel Exp $
+//  $Id: Teleporter.hh,v 1.29 2002/06/09 14:04:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,6 @@
 #ifndef TELEPORTER_HH
 #define TELEPORTER_HH
 
-#include <iosfwd>
-
-#include "../Sprite.hh"
 #include "../WorldObj.hh"
 #include "../WorldObjData.hh"
 #include "../editor/SpriteEditorObj.hh"

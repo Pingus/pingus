@@ -1,4 +1,4 @@
-// $Id: TrapData.hh,v 1.14 2002/06/09 13:03:11 grumbel Exp $
+// $Id: TrapData.hh,v 1.15 2002/06/09 14:04:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,6 @@
 #define TRAP_DATA_HH
 
 #include <config.h>
-#include <string>
-#include <iosfwd>
 #include <ClanLib/core.h>
 #include "WorldObjData.hh"
 

@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.35 2002/06/08 20:19:54 torangan Exp $
+//  $Id: World.hh,v 1.36 2002/06/09 14:04:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define WORLD_HH
 
 #include <list>
+#include <string>
 #include "boost/smart_ptr.hpp"
 #include "WorldObj.hh"
 

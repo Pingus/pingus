@@ -1,4 +1,4 @@
-//  $Id: WorldObjDataFactory.hh,v 1.6 2002/06/09 13:03:11 grumbel Exp $
+//  $Id: WorldObjDataFactory.hh,v 1.7 2002/06/09 14:04:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef WORLDOBJFACTORY_HH
 #define WORLDOBJFACTORY_HH
 
-#include <string>
 #include <map>
 #include "WorldObj.hh"
 #include "PingusError.hh"

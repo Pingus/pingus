@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.57 2002/06/08 20:19:54 torangan Exp $
+//  $Id: ThemeSelector.cc,v 1.58 2002/06/09 14:04:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <algorithm>
 #include <config.h>
 #include "globals.hh"
 #include "ThemeSelector.hh"

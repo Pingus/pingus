@@ -1,4 +1,4 @@
-//  $Id: WeatherObj.cc,v 1.13 2002/06/08 21:43:36 grumbel Exp $
+//  $Id: WeatherObj.cc,v 1.14 2002/06/09 14:04:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include "../XMLhelper.hh"
 #include "../PingusResource.hh"
-#include "../editor/EditorObj.hh"
 #include "../boost/smart_ptr.hpp"
 #include "EditorView.hh"
 #include "WeatherObj.hh"
