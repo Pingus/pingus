@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.hxx,v 1.4 2002/07/01 18:36:40 grumbel Exp $
+//  $Id: conveyor_belt.hxx,v 1.5 2002/07/02 10:42:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ public:
   WorldObj* create_WorldObj ();
 
   /** Create an EditorObj from the given data object */
-  std::list<boost::shared_ptr<EditorObj> > create_EditorObj ();
+  EditorObjLst create_EditorObj ();
 };
 
 class ConveyorBelt : private ConveyorBeltData,
@@ -88,10 +88,10 @@ public:
   void set_position_offset(const CL_Vector &);
   
   /// The saving will be done in EditorTeleporterObj::save_xml
-  static std::list<boost::shared_ptr<EditorObj> > create (WorldObjData* obj);
+  static EditorObjLst create (WorldObjData* obj);
 
   /** Create the object with reasonable defaults */
-  static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
+  static EditorObjLst create (const CL_Vector& pos);
 
   CL_Vector get_upper_left_corner() { return pos; }
 

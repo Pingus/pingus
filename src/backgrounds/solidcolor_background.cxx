@@ -1,4 +1,4 @@
-//  $Id: solidcolor_background.cxx,v 1.2 2002/06/25 12:20:33 grumbel Exp $
+//  $Id: solidcolor_background.cxx,v 1.3 2002/07/02 10:42:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,7 +61,7 @@ EditorObjLst
 SolidColorBackgroundData::create_EditorObj()
 {
   EditorObjLst lst;
-  lst.push_back (boost::shared_ptr<EditorObj>(new EditorSolidColorBackground (*this)));
+  lst.push_back (new EditorSolidColorBackground (*this));
   return lst;
 }
 

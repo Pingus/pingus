@@ -1,4 +1,4 @@
-//  $Id: liquid_data.cxx,v 1.3 2002/06/25 12:20:31 grumbel Exp $
+//  $Id: liquid_data.cxx,v 1.4 2002/07/02 10:42:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,7 +91,7 @@ LiquidData::create_EditorObj ()
 { 
   std::cout << "LiquidData::create_EditorObj ()" << std::endl;
   EditorObjLst lst; 
-  lst.push_back (boost::shared_ptr<EditorObj>(new LiquidObj (*this)));
+  lst.push_back (new LiquidObj (*this));
   return lst;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.21 2002/07/02 09:14:20 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.22 2002/07/02 10:42:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -440,7 +440,7 @@ EditorEvent::editor_convert_selection_to_group()
 	       i != selection->get_objects().end();
 	       i++)
 	    { 
-	      if ((*j).get() == *i)
+	      if (*j == *i)
 		{
 		  group->add (*i);
 		  to_erase.push_back(*i);
@@ -472,7 +472,7 @@ EditorEvent::editor_mark_all_objects()
       i != object_manager->editor_objs.end(); 
       ++i) 
     {
-      selection->add((*i).get());
+      selection->add(*i);
     }
 }
 
@@ -648,7 +648,7 @@ EditorEvent::editor_insert_new_object()
 {
   editor->save_tmp_level();
 
-  std::list<boost::shared_ptr<EditorObj> > objs;
+  EditorObjLst objs;
   try 
     {
       disable();
@@ -666,7 +666,7 @@ EditorEvent::editor_insert_new_object()
       
   if (!objs.empty ()) 
     {
-      for (std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin (); i != objs.end (); i++)
+      for (ObjectManager::EditorObjIter i = objs.begin (); i != objs.end (); i++)
 	object_manager->editor_objs.push_back(*i);
     } 
   else 

@@ -1,4 +1,4 @@
-//  $Id: info_box.cxx,v 1.3 2002/07/01 18:36:40 grumbel Exp $
+//  $Id: info_box.cxx,v 1.4 2002/07/02 10:42:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ EditorObjLst
 InfoBoxData::create_EditorObj()
 {
   EditorObjLst lst;
-  lst.push_back (boost::shared_ptr<EditorObj>(new EditorInfoBox (*this)));
+  lst.push_back (new EditorInfoBox (*this));
   return lst;
 }
 
@@ -140,13 +140,13 @@ EditorInfoBox::EditorInfoBox(const InfoBoxData& data)
   sprite.set_align_center_bottom ();
 }
 
-std::list<boost::shared_ptr<EditorObj> >
+EditorObjLst
 EditorInfoBox::create (const CL_Vector& pos)
 {
-  std::list<boost::shared_ptr<EditorObj> > lst;
+  EditorObjLst lst;
   InfoBoxData data;
   data.pos = pos;
-  lst.push_back (boost::shared_ptr<EditorObj>(new EditorInfoBox (data)));
+  lst.push_back (new EditorInfoBox (data));
   return lst;
 }
 

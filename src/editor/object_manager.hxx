@@ -1,4 +1,4 @@
-//  $Id: object_manager.hxx,v 1.11 2002/07/02 09:14:20 grumbel Exp $
+//  $Id: object_manager.hxx,v 1.12 2002/07/02 10:42:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,7 @@ private:
   std::string comment;
 
   /** All objects which are visible in the editor */ 
-  std::vector<boost::shared_ptr<EditorObj> > editor_objs;
+  std::vector<EditorObj*> editor_objs;
 
   /** This list contains all objects, which are in the current
       selection */
@@ -70,9 +70,8 @@ private:
   PLF* plf;
   
 public:
-  typedef std::vector<boost::shared_ptr<EditorObj> >::iterator EditorObjIter;
-  typedef std::vector<boost::shared_ptr<EditorObj> >::reverse_iterator EditorObjRIter;
-  typedef std::vector<boost::shared_ptr<EditorObj> >::iterator CurrentObjIter;
+  typedef std::vector<EditorObj*>::iterator EditorObjIter;
+  typedef std::vector<EditorObj*>::reverse_iterator EditorObjRIter;
 
   ObjectManager();
   ~ObjectManager();

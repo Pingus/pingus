@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background_data.cxx,v 1.3 2002/06/25 12:20:33 grumbel Exp $
+//  $Id: thunderstorm_background_data.cxx,v 1.4 2002/07/02 10:42:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,7 +56,7 @@ EditorObjLst
 ThunderstormBackgroundData::create_EditorObj()
 {
   EditorObjLst lst;
-  lst.push_back (boost::shared_ptr<EditorObj>(new EditorThunderstormBackground (*this)));
+  lst.push_back (new EditorThunderstormBackground (*this));
   return lst;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.cxx,v 1.4 2002/07/01 18:36:40 grumbel Exp $
+//  $Id: conveyor_belt.cxx,v 1.5 2002/07/02 10:42:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,11 +79,11 @@ ConveyorBeltData::create_WorldObj ()
   return new ConveyorBelt (this);
 }
 
-std::list<boost::shared_ptr<EditorObj> > 
+EditorObjLst
 ConveyorBeltData::create_EditorObj ()
 {
   EditorObjLst lst; 
-  lst.push_back(boost::shared_ptr<EditorObj> (new EditorConveyorBeltObj (*this)));
+  lst.push_back(new EditorConveyorBeltObj (*this));
   return lst;
 }
 
@@ -195,13 +195,11 @@ EditorConveyorBeltObj::draw_scroll_map(int /*x_pos*/, int /*y_pos*/, int /*arg_w
   // not supported
 }
 
-std::list<boost::shared_ptr<EditorObj> > 
+EditorObjLst
 EditorConveyorBeltObj::create (const CL_Vector& pos)
 {
   ConveyorBeltData data;
-
   data.pos = pos;
-
   return data.create_EditorObj ();
 }
   

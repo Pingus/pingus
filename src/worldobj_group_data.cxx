@@ -1,4 +1,4 @@
-//  $Id: worldobj_group_data.cxx,v 1.5 2002/07/01 18:36:39 grumbel Exp $
+//  $Id: worldobj_group_data.cxx,v 1.6 2002/07/02 10:42:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -125,14 +125,14 @@ WorldObjGroupData::create_EditorObj ()
 {
   EditorObjLst lst;
   EditorObjGroup* group = new EditorObjGroup();
-  lst.push_back (boost::shared_ptr<EditorObj>(group));
+  lst.push_back (group);
   
   for (ObjsIter i = objs.begin (); i != objs.end (); ++i)
     {
       EditorObjLst sublst ((*i)->create_EditorObj ());
       for (EditorObjLstIter j = sublst.begin (); j != sublst.end (); ++j)
 	{
-	  group->add (j->get ());
+	  group->add (*j);
 	}
     }
 

@@ -1,4 +1,4 @@
-//  $Id: info_box.hxx,v 1.5 2002/07/01 18:36:40 grumbel Exp $
+//  $Id: info_box.hxx,v 1.6 2002/07/02 10:42:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,7 @@ class EditorInfoBox : public InfoBoxData,
 public:
   EditorInfoBox (const InfoBoxData& data);
 
-  static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
+  static EditorObjLst create (const CL_Vector& pos);
 
   void write_xml(std::ostream& xml) { InfoBoxData::write_xml (xml); }
   EditorObj* duplicate();

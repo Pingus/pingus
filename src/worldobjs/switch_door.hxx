@@ -1,4 +1,4 @@
-//  $Id: switch_door.hxx,v 1.5 2002/07/01 18:36:40 grumbel Exp $
+//  $Id: switch_door.hxx,v 1.6 2002/07/02 10:42:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ public:
   WorldObj* create_WorldObj ();
 
   /** Create an EditorObj from the given data object */
-  std::list<boost::shared_ptr<EditorObj> > create_EditorObj ();
+  EditorObjLst create_EditorObj ();
 };
 
 /** A door and a switch, if a pingu is passing the switch, the door
@@ -116,7 +116,7 @@ public:
   
   /** Create this object (and child objects) with reasonable defaults
       for the editor */
-  static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
+  static EditorObjLst create (const CL_Vector& pos);
 
   EditorObj* duplicate();
   float get_z_pos() { return door_pos.z; }

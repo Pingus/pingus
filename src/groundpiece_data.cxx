@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.cxx,v 1.4 2002/06/25 12:20:31 grumbel Exp $
+//  $Id: groundpiece_data.cxx,v 1.5 2002/07/02 10:42:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -118,11 +118,11 @@ GroundpieceData::type_to_string(GPType arg_type)
   }
 
 
-std::list<boost::shared_ptr<EditorObj> >
+EditorObjLst
 GroundpieceData::create_EditorObj()
 {
-  std::list<boost::shared_ptr<EditorObj> > lst;
-  lst.push_back(boost::shared_ptr<EditorObj>(new EditorGroundpieceObj(*this)));
+  EditorObjLst lst;
+  lst.push_back(new EditorGroundpieceObj(*this));
   return lst;
 }
 

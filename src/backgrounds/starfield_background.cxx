@@ -1,4 +1,4 @@
-//  $Id: starfield_background.cxx,v 1.4 2002/06/25 12:20:33 grumbel Exp $
+//  $Id: starfield_background.cxx,v 1.5 2002/07/02 10:42:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -103,7 +103,7 @@ EditorObjLst
 StarfieldBackgroundData::create_EditorObj()
 {
   EditorObjLst lst;
-  lst.push_back (boost::shared_ptr<EditorObj> (new EditorStarfieldBackground (*this)));
+  lst.push_back (new EditorStarfieldBackground (*this));
   return lst;
 }
 

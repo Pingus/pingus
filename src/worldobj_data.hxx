@@ -1,4 +1,4 @@
-//  $Id: worldobj_data.hxx,v 1.3 2002/06/25 12:20:31 grumbel Exp $
+//  $Id: worldobj_data.hxx,v 1.4 2002/07/02 10:42:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJ_DATA_HXX
 #define HEADER_PINGUS_WORLDOBJ_DATA_HXX
 
-#include <list>
+#include <vector>
 
 #include "editor/editorobj.hxx"
 
@@ -31,7 +31,7 @@ namespace boost {
   template <class T> class shared_ptr;
 }
 
-typedef std::list<boost::shared_ptr<EditorObj> > EditorObjLst;
+typedef std::vector<EditorObj*> EditorObjLst;
 
 /** The root data class for all objects in the Pingus world.  Each
     objects needs a data object for creating, which should be
@@ -53,7 +53,8 @@ public:
   /** Create an WorldObj from the given data object */
   virtual WorldObj* create_WorldObj () =0;
 
-  /** Create an EditorObj from the given data object */
+  /** Create an EditorObj from the given data object, caller is
+      responible for deleting the pointers in the vector */
   virtual EditorObjLst create_EditorObj () =0;
 };
 

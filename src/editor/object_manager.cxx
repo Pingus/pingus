@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.19 2002/07/02 09:21:03 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.20 2002/07/02 10:42:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,8 +42,8 @@ using namespace Pingus;
 using namespace Actions;
 
 /** */
-static bool EditorObj_z_pos_sorter (const boost::shared_ptr<EditorObj>& a, 
-				    const boost::shared_ptr<EditorObj>& b)
+static bool EditorObj_z_pos_sorter (EditorObj* a, 
+				    EditorObj* b)
 {
   return a->get_z_pos () < b->get_z_pos ();
 }
@@ -119,7 +119,7 @@ ObjectManager::new_level ()
   //background->desc.res_name = "Textures/default";
 
   delete_all_objs();
-  editor_objs.push_back(boost::shared_ptr<EditorObj>(new StartPos(50, 50)));
+  editor_objs.push_back(new StartPos(50, 50));
 
   // Set some default actions
   actions = default_actions;
@@ -129,7 +129,9 @@ ObjectManager::new_level ()
 void
 ObjectManager::delete_all_objs()
 {
-  // Fixme: Memory hole the pointers needs to be delete'd
+  for (EditorObjIter it = editor_objs.begin(); it != editor_objs.end(); ++it)
+    delete *it;
+
   editor_objs.clear();
 }
 
@@ -154,8 +156,8 @@ ObjectManager::load_level (const std::string& filename)
   //psm.parse (filename + ".psm");
   //psm.load_surfaces();
 
-  editor_objs.push_back(boost::shared_ptr<EditorObj>(new StartPos(plf->get_startx(), 
-								  plf->get_starty())));
+  editor_objs.push_back(new StartPos(plf->get_startx(), 
+				     plf->get_starty()));
 
   vector<GroundpieceData>  temp_surfaces = plf->get_groundpieces();
   for (vector<GroundpieceData>::iterator i = temp_surfaces.begin();
@@ -169,20 +171,20 @@ ObjectManager::load_level (const std::string& filename)
   vector<WorldObjData*> temp_worldobj = plf->get_worldobjs_data();
 
   for (vector<GroundpieceData>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i) {
-    const list<boost::shared_ptr<EditorObj> > & temp = i->create_EditorObj();
+    const EditorObjLst& temp = i->create_EditorObj();
     editor_objs.insert(editor_objs.end(), temp.begin(), temp.end() );
   }
 
 
   for (vector<WeatherData>::iterator i = temp_weather.begin(); i != temp_weather.end(); ++i) {
-    const list<boost::shared_ptr<EditorObj> > & temp = i->create_EditorObj();
+    const EditorObjLst& temp = i->create_EditorObj();
     editor_objs.insert(editor_objs.end(), temp.begin(), temp.end() );
   }
 
   for (vector<WorldObjData*>::iterator i = temp_worldobj.begin();
        i != temp_worldobj.end();
        ++i) {
-    const list<boost::shared_ptr<EditorObj> > & temp = (*i)->create_EditorObj();
+    const EditorObjLst& temp = (*i)->create_EditorObj();
     editor_objs.insert(editor_objs.end(), temp.begin(), temp.end() );
   }
 
@@ -337,7 +339,7 @@ ObjectManager::lower_obj(EditorObj* obj)
   EditorObjIter current;
   EditorObjIter prev;
   
-  current = std::find_if(editor_objs.begin(), editor_objs.end(), EditorObj_finder(obj));
+  current = std::find(editor_objs.begin(), editor_objs.end(), obj);
 
   if (current == editor_objs.begin()) 
     {
@@ -363,7 +365,7 @@ ObjectManager::raise_obj(EditorObj* obj)
   EditorObjIter current;
   EditorObjIter next;
   
-  current = std::find_if (editor_objs.begin(), editor_objs.end(), EditorObj_finder(obj));
+  current = std::find (editor_objs.begin(), editor_objs.end(), obj);
   next    = current;
   next++;
   
@@ -411,7 +413,7 @@ ObjectManager::rect_get_objs(int x1, int y1, int x2, int y2)
 
   for (EditorObjIter it = editor_objs.begin(); it != editor_objs.end(); ++it)
     if ((*it)->is_in_rect(CL_Rect(x1, y1, x2, y2)))
-      retval.push_back(it->get ());
+      retval.push_back(*it);
       
   return retval;
 }
@@ -419,14 +421,15 @@ ObjectManager::rect_get_objs(int x1, int y1, int x2, int y2)
 void
 ObjectManager::add (EditorObj* obj)
 {
-  editor_objs.push_back (boost::shared_ptr<EditorObj>(obj));
+  editor_objs.push_back (obj);
 }
 
 void
 ObjectManager::erase (EditorObj* obj)
 {
-  editor_objs.erase(std::remove_if (editor_objs.begin(), editor_objs.end(), EditorObj_finder(obj)),
+  editor_objs.erase(std::remove (editor_objs.begin(), editor_objs.end(), obj),
 		    editor_objs.end ());
+  delete obj;
 }
 
 void
@@ -434,8 +437,9 @@ ObjectManager::erase (const std::vector<EditorObj*>& objs)
 {
   for (std::vector<EditorObj*>::const_iterator i = objs.begin (); i != objs.end (); ++i)
     {
-      editor_objs.erase(std::remove_if (editor_objs.begin(), editor_objs.end(), EditorObj_finder(*i)),
+      editor_objs.erase(std::remove (editor_objs.begin(), editor_objs.end(), *i),
 			editor_objs.end ());
+      delete *i;
     }
 }
 
@@ -446,7 +450,7 @@ ObjectManager::find_object(const CL_Vector& pos)
     {
       if ((*i)->is_over(pos))
 	{
-	  return i->get ();
+	  return *i;
 	}
     }
   
@@ -510,7 +514,7 @@ ObjectManager::add_object_group_from_file (const std::string& filename)
     {
       xmlNodePtr cur = doc->ROOT;
       WorldObjGroupData* group = new WorldObjGroupData (doc, cur);
-      const std::list<boost::shared_ptr<EditorObj> >& temp = group->create_EditorObj ();
+      const EditorObjLst& temp = group->create_EditorObj ();
       editor_objs.insert(editor_objs.end(),temp.begin(), temp.end());
       delete group;
     }

@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.hxx,v 1.8 2002/06/26 11:23:54 grumbel Exp $
+//  $Id: groundpiece_data.hxx,v 1.9 2002/07/02 10:42:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include <ClanLib/Display/Display/surface.h>
 #include "libxmlfwd.hxx"
 #include "res_descriptor.hxx"
+#include "worldobj_data.hxx"
 
 class EditorObj;
 
@@ -61,7 +62,7 @@ public:
   GroundpieceData ();
   GroundpieceData (xmlDocPtr doc, xmlNodePtr cur);
 
-  std::list<boost::shared_ptr<EditorObj> > create_EditorObj();
+  EditorObjLst create_EditorObj();
   void write_xml(std::ostream& xml);
 
   static GPType string_to_type(const std::string& arg_type);

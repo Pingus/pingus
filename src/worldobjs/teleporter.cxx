@@ -1,4 +1,4 @@
-//  $Id: teleporter.cxx,v 1.3 2002/07/01 18:36:40 grumbel Exp $
+//  $Id: teleporter.cxx,v 1.4 2002/07/02 10:42:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -85,17 +85,17 @@ TeleporterData::create_WorldObj ()
   return new Teleporter (*this);
 }
 
-std::list<boost::shared_ptr<EditorObj> > 
+EditorObjLst
 TeleporterData::create_EditorObj ()
 {
   std::cout << "TeleportData::create_EditorObj () " << std::endl;
-  std::list<boost::shared_ptr<EditorObj> > objs;
+  EditorObjLst objs;
   
   EditorTeleporterObj*       teleporter = new EditorTeleporterObj (*this);
   EditorTeleporterTargetObj* teleporter_target = new EditorTeleporterTargetObj (teleporter);
 
-  objs.push_back (boost::shared_ptr<EditorObj> (teleporter));
-  objs.push_back (boost::shared_ptr<EditorObj> (teleporter_target));
+  objs.push_back ( (teleporter));
+  objs.push_back ( (teleporter_target));
 
   std::cout << "TeleportData::create_EditorObj (): done" << std::endl;
 
@@ -170,21 +170,21 @@ EditorTeleporterObj::duplicate()
   return 0;
 }
 
-std::list<boost::shared_ptr<EditorObj> > 
+EditorObjLst
 EditorTeleporterObj::create (const TeleporterData& data)
 {
-  std::list<boost::shared_ptr<EditorObj> > objs;
+   EditorObjLst objs;
 
   EditorTeleporterObj* teleporter=new EditorTeleporterObj (data);
   EditorTeleporterTargetObj* teleporter_target=new EditorTeleporterTargetObj (teleporter);
 
-  objs.push_back (boost::shared_ptr<EditorObj>(teleporter));
-  objs.push_back (boost::shared_ptr<EditorObj>(teleporter_target));
+  objs.push_back (teleporter);
+  objs.push_back (teleporter_target);
 
   return objs;
 }
 
-std::list<boost::shared_ptr<EditorObj> >
+EditorObjLst
 EditorTeleporterObj::create (const CL_Vector& pos)
 {
   TeleporterData data;

@@ -1,4 +1,4 @@
-//  $Id: surface_background_data.cxx,v 1.2 2002/06/25 12:20:33 grumbel Exp $
+//  $Id: surface_background_data.cxx,v 1.3 2002/07/02 10:42:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -129,7 +129,7 @@ SurfaceBackgroundData::create_EditorObj()
 {
   std::cout << "SurfaceBackgroundData::create_EditorObj(): not implemented" << std::endl;
   EditorObjLst lst;
-  lst.push_back(boost::shared_ptr<EditorObj> (new EditorSurfaceBackground (*this)));
+  lst.push_back(new EditorSurfaceBackground (*this));
   return lst;
 }
 

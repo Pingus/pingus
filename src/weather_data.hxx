@@ -1,4 +1,4 @@
-//  $Id: weather_data.hxx,v 1.2 2002/06/24 22:52:57 grumbel Exp $
+//  $Id: weather_data.hxx,v 1.3 2002/07/02 10:42:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_WEATHER_DATA_HXX
 
 #include <string>
-#include <list>
+#include "worldobj_data.hxx"
 
 class EditorObj;
 
@@ -37,7 +37,7 @@ private:
 public:
   std::string type;
 
-  std::list<boost::shared_ptr<EditorObj> > create_EditorObj ();
+  EditorObjLst create_EditorObj ();
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: teleporter.hxx,v 1.5 2002/07/01 18:36:40 grumbel Exp $
+//  $Id: teleporter.hxx,v 1.6 2002/07/02 10:42:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ public:
   WorldObj* create_WorldObj ();
 
   /** Create an EditorObj from the given data object */
-  std::list<boost::shared_ptr<EditorObj> > create_EditorObj ();
+  EditorObjLst create_EditorObj ();
 };
 
 class Teleporter : private TeleporterData,
@@ -84,13 +84,13 @@ public:
   CL_Vector& get_target_pos_ref () { return target_pos; }
 
   EditorObj* duplicate();
-  static std::list<boost::shared_ptr<EditorObj> > create (const TeleporterData& data);
+  static EditorObjLst create (const TeleporterData& data);
   
   void write_xml(std::ostream& xml) { TeleporterData::write_xml(xml); }
 
   /** Create this object (and child objects) with reasonable defaults
       for the editor */
-  static std::list<boost::shared_ptr<EditorObj> > create (const CL_Vector& pos);
+  static EditorObjLst create (const CL_Vector& pos);
 
   void draw (EditorView * view);
   void save_xml (std::ostream& xml);

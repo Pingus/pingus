@@ -1,4 +1,4 @@
-// $Id: liquid_data.hxx,v 1.4 2002/06/25 12:20:31 grumbel Exp $
+// $Id: liquid_data.hxx,v 1.5 2002/07/02 10:42:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,7 @@ public:
   WorldObj* create_WorldObj ();
 
   /** Create an EditorObj from the given data object */
-  std::list<boost::shared_ptr<EditorObj> > create_EditorObj ();
+  EditorObjLst create_EditorObj ();
 };
 
 #endif

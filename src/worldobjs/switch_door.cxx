@@ -1,4 +1,4 @@
-//  $Id: switch_door.cxx,v 1.4 2002/07/01 18:36:40 grumbel Exp $
+//  $Id: switch_door.cxx,v 1.5 2002/07/02 10:42:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -116,13 +116,13 @@ SwitchDoorData::create_WorldObj ()
 }
 
 /** Create an EditorObj from the given data object */
-std::list<boost::shared_ptr<EditorObj> >
+EditorObjLst
 SwitchDoorData::create_EditorObj ()
 {
   EditorObjLst lst; 
   EditorSwitchDoorObj* obj = new EditorSwitchDoorObj (*this);
-  lst.push_back(boost::shared_ptr<EditorObj> (obj));
-  lst.push_back(boost::shared_ptr<EditorObj> (new EditorSwitchDoorSwitchObj (obj)));
+  lst.push_back(obj);
+  lst.push_back(new EditorSwitchDoorSwitchObj (obj));
   return lst;
 }
 
@@ -248,7 +248,7 @@ EditorSwitchDoorObj::duplicate()
 
 /** Create this object (and child objects) with resonable defaults
     for the editor */
-std::list<boost::shared_ptr<EditorObj> >
+EditorObjLst
 EditorSwitchDoorObj::create (const CL_Vector& pos)
 {
   SwitchDoorData data;

@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.5 2002/06/25 12:20:33 grumbel Exp $
+//  $Id: object_selector.cxx,v 1.6 2002/07/02 10:42:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,7 @@ ObjectSelector::~ObjectSelector()
   
 /** FIXME: Ugly interface, the arguments should not be the offset, but
     instead the absolute position */
-std::list<boost::shared_ptr<EditorObj> >
+EditorObjLst
 ObjectSelector::get_obj(int x_off, int y_off)
 {
 
@@ -82,7 +82,7 @@ ObjectSelector::get_obj(int x_off, int y_off)
   return select_obj_type();
 }
 
-std::list<boost::shared_ptr<EditorObj> >
+EditorObjLst
 ObjectSelector::get_trap()
 {
   TrapData trap;
@@ -127,7 +127,7 @@ ObjectSelector::get_trap()
 	  trap.type = "bumper";
 	  break;
 	case CL_KEY_ESCAPE:
-	  return std::list<boost::shared_ptr<EditorObj> >();
+	  return EditorObjLst();
 	}
       CL_System::keep_alive ();
       CL_System::sleep (20);
@@ -138,7 +138,7 @@ ObjectSelector::get_trap()
   return trap.create_EditorObj ();
 }
 
-std::list<boost::shared_ptr<EditorObj> >
+EditorObjLst
 ObjectSelector::get_groundpiece(const GroundpieceData::GPType & gptype)
 {
   GroundpieceData data;
@@ -153,15 +153,15 @@ ObjectSelector::get_groundpiece(const GroundpieceData::GPType & gptype)
       data.desc = ResDescriptor("resource:" + datafile, str);
       data.gptype = gptype;
 
-      std::list<boost::shared_ptr<EditorObj> > objs;
-      objs.push_back(boost::shared_ptr<EditorObj>(new EditorGroundpieceObj(data)));
+      EditorObjLst objs;
+      objs.push_back(new EditorGroundpieceObj(data));
       return objs;
     }
   
-  return std::list<boost::shared_ptr<EditorObj> >();
+  return EditorObjLst();
 }
 
-std::list<boost::shared_ptr<EditorObj> >
+EditorObjLst
 ObjectSelector::get_hotspot(const std::string& filename)
 {
   HotspotData data;
@@ -173,14 +173,14 @@ ObjectSelector::get_hotspot(const std::string& filename)
       data.desc = ResDescriptor("resource:" + filename, str);
       data.speed = -1;
 
-      std::list<boost::shared_ptr<EditorObj> > objs;
-      objs.push_back(boost::shared_ptr<EditorObj>(new EditorHotspot(data)));
+      EditorObjLst objs;
+      objs.push_back(new EditorHotspot(data));
       return objs;
     }
-  return std::list<boost::shared_ptr<EditorObj> >();
+  return EditorObjLst();
 }
 
-std::list<boost::shared_ptr<EditorObj> >
+EditorObjLst
 ObjectSelector::get_worldobj()
 {
   CL_Display::clear_display();
@@ -213,12 +213,12 @@ ObjectSelector::get_worldobj()
 	  return EditorInfoBox::create (pos);
 	  
 	case CL_KEY_ESCAPE:
-	  return std::list<boost::shared_ptr<EditorObj> >();
+	  return EditorObjLst();
 	}
     }
 }
 
-std::list<boost::shared_ptr<EditorObj> >
+EditorObjLst
 ObjectSelector::get_weather()
 {
   WeatherData weather;
@@ -245,12 +245,10 @@ ObjectSelector::get_weather()
 	}
     }
   
-  std::list<boost::shared_ptr<EditorObj> > objs;
-  objs.push_back(boost::shared_ptr<EditorObj>(new WeatherObj(weather)));
-  return objs;
+  return weather.create_EditorObj ();
 }
 
-std::list<boost::shared_ptr<EditorObj> >
+EditorObjLst
 ObjectSelector::get_entrance()
 {
   EntranceData entrance;
@@ -297,7 +295,7 @@ ObjectSelector::get_entrance()
   return entrance.create_EditorObj ();
 }
 
-std::list<boost::shared_ptr<EditorObj> >
+EditorObjLst
 ObjectSelector::get_exit()
 {
   string str;
@@ -309,16 +307,14 @@ ObjectSelector::get_exit()
   last_object = str;
 
   if (str.empty())
-    return std::list<boost::shared_ptr<EditorObj> >();
+    return EditorObjLst();
   
   data.desc = ResDescriptor("resource:exits", str);
   
-  std::list<boost::shared_ptr<EditorObj> > objs;
-  objs.push_back(boost::shared_ptr<EditorObj>(new ExitObj(data)));
-  return objs;
+  return data.create_EditorObj ();
 }
 
-std::list<boost::shared_ptr<EditorObj> >
+EditorObjLst
 ObjectSelector::get_liquid()
 {
   std::cout << "ObjectSelector::get_liquid() not implemented" << std::endl;
@@ -329,12 +325,10 @@ ObjectSelector::get_liquid()
   data.width = 5;
   data.desc = ResDescriptor("Liquid/slime", "liquids", ResDescriptor::RD_RESOURCE);
 
-  std::list<boost::shared_ptr<EditorObj> > objs;
-  objs.push_back(boost::shared_ptr<EditorObj>(new LiquidObj(data)));
-  return objs;
+  return data.create_EditorObj ();
 }
 
-std::list<boost::shared_ptr<EditorObj> >
+EditorObjLst
 ObjectSelector::get_from_file()
 {
   CL_Display::clear_display();
@@ -371,9 +365,7 @@ ObjectSelector::get_from_file()
 	    data.desc = ResDescriptor ("../../../../../../../../../../../" + file, 
 				       "", ResDescriptor::RD_FILE);
 
-	    std::list<boost::shared_ptr<EditorObj> > objs;
-	    objs.push_back(boost::shared_ptr<EditorObj>(new EditorHotspot(data)));
-	    return objs;
+	    return data.create_EditorObj();
 	  }
 	  break;
 
@@ -382,12 +374,12 @@ ObjectSelector::get_from_file()
 	  break;
 
 	case CL_KEY_ESCAPE:
-	  return std::list<boost::shared_ptr<EditorObj> > (); 
+	  return EditorObjLst (); 
 	}
     }
 }
 
-std::list<boost::shared_ptr<EditorObj> >
+EditorObjLst
 ObjectSelector::select_obj_type()
 {
   bool exit_loop;
@@ -468,11 +460,11 @@ ObjectSelector::select_obj_type()
 	  break;
 	}
     }
-  return std::list<boost::shared_ptr<EditorObj> > ();
+  return EditorObjLst ();
 }
 
 
-std::list<boost::shared_ptr<EditorObj> >
+EditorObjLst
 ObjectSelector::get_prefab()
 {
   CL_DirectoryScanner dir;
@@ -505,10 +497,10 @@ ObjectSelector::get_prefab()
 	  break;
 	}
     }
-  return std::list<boost::shared_ptr<EditorObj> >();
+  return EditorObjLst();
 }
 
-std::list<boost::shared_ptr<EditorObj> >
+EditorObjLst
 ObjectSelector::get_background()
 {
   CL_Display::clear_display();
@@ -519,7 +511,7 @@ ObjectSelector::get_background()
   font->print_left(20,110, _("4 - Thunderstorm Background"));
   Display::flip_display();
 
-  std::list<boost::shared_ptr<EditorObj> > lst;
+  EditorObjLst lst;
 
   bool exit_loop = false;
     
@@ -535,29 +527,22 @@ ObjectSelector::get_background()
 
 	    if (!data.desc.res_name.empty())
 	      {
-		lst.push_back(boost::shared_ptr<EditorObj>
-			      (new EditorSurfaceBackground(data)));
+		lst = data.create_EditorObj ();
 	      }
 	    
 	  }
 	  exit_loop = true;
 	  break;
 	case CL_KEY_2:
-	  lst.push_back(boost::shared_ptr<EditorObj>
-			(new EditorSolidColorBackground 
-			 (SolidColorBackgroundData ())));
+	  lst = SolidColorBackgroundData ().create_EditorObj ();
 	  exit_loop = true;
 	  break;
 	case CL_KEY_3:
-	  lst.push_back(boost::shared_ptr<EditorObj>
-			(new EditorStarfieldBackground 
-			 (StarfieldBackgroundData ())));
+	  lst = StarfieldBackgroundData ().create_EditorObj ();
 	  exit_loop = true;
 	  break;
 	case CL_KEY_4:
-	  lst.push_back(boost::shared_ptr<EditorObj>
-			(new EditorThunderstormBackground 
-			 (ThunderstormBackgroundData ())));
+	  lst = ThunderstormBackgroundData ().create_EditorObj ();
 	  exit_loop = true;
 	  break;
 	}

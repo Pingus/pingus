@@ -1,4 +1,4 @@
-//  $Id: ice_block.cxx,v 1.6 2002/07/01 18:36:40 grumbel Exp $
+//  $Id: ice_block.cxx,v 1.7 2002/07/02 10:42:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,11 +75,11 @@ IceBlockData::create_WorldObj ()
   return new IceBlock (*this);
 }
 
-std::list<boost::shared_ptr<EditorObj> > 
+EditorObjLst
 IceBlockData::create_EditorObj ()
 {
   EditorObjLst lst; 
-  lst.push_back(boost::shared_ptr<EditorObj> (new EditorIceBlockObj (*this)));
+  lst.push_back(new EditorIceBlockObj (*this));
   return lst;
 }
 
@@ -156,7 +156,7 @@ EditorIceBlockObj::EditorIceBlockObj (const IceBlockData& data)
 }
 
 /** Create the object with resonable defaults */
-std::list<boost::shared_ptr<EditorObj> > 
+EditorObjLst
 EditorIceBlockObj::create (const CL_Vector& pos)
 {
   IceBlockData data;

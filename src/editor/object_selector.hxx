@@ -1,4 +1,4 @@
-// $Id: object_selector.hxx,v 1.4 2002/06/24 23:31:24 grumbel Exp $
+// $Id: object_selector.hxx,v 1.5 2002/07/02 10:42:39 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,24 +45,24 @@ public:
   ObjectSelector();
   ~ObjectSelector();
   
-  std::list<boost::shared_ptr<EditorObj> > select_obj_type();
+  EditorObjLst select_obj_type();
   std::string select_surface(std::vector<surface_obj>& sur_list);
   std::string select_surface(const std::string & resource_file);
   int    read_key();
   std::string read_string(const std::string &, const std::string &);
   
-  std::list<boost::shared_ptr<EditorObj> > get_obj(int, int);
-  std::list<boost::shared_ptr<EditorObj> > get_trap();
-  std::list<boost::shared_ptr<EditorObj> > get_groundpiece(const GroundpieceData::GPType & gptype);
-  std::list<boost::shared_ptr<EditorObj> > get_hotspot(const std::string&);
-  std::list<boost::shared_ptr<EditorObj> > get_entrance();
-  std::list<boost::shared_ptr<EditorObj> > get_exit();
-  std::list<boost::shared_ptr<EditorObj> > get_liquid();
-  std::list<boost::shared_ptr<EditorObj> > get_weather();
-  std::list<boost::shared_ptr<EditorObj> > get_worldobj();
-  std::list<boost::shared_ptr<EditorObj> > get_from_file();
-  std::list<boost::shared_ptr<EditorObj> > get_background();
-  std::list<boost::shared_ptr<EditorObj> > get_prefab();
+  EditorObjLst get_obj(int, int);
+  EditorObjLst get_trap();
+  EditorObjLst get_groundpiece(const GroundpieceData::GPType & gptype);
+  EditorObjLst get_hotspot(const std::string&);
+  EditorObjLst get_entrance();
+  EditorObjLst get_exit();
+  EditorObjLst get_liquid();
+  EditorObjLst get_weather();
+  EditorObjLst get_worldobj();
+  EditorObjLst get_from_file();
+  EditorObjLst get_background();
+  EditorObjLst get_prefab();
 };
 
 #endif
