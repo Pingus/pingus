@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.6 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: PLFObj.hh,v 1.7 2000/06/23 17:06:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -152,6 +152,8 @@ private:
 public:
   ///
   LiquidObj(liquid_data);
+  ///
+  LiquidObj(const LiquidObj& data);
   ///
   ~LiquidObj();
   ///

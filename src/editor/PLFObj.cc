@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.16 2000/06/20 20:32:12 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.17 2000/06/23 17:06:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -303,6 +303,18 @@ TrapObj::save(ofstream* plf, ofstream* psm)
 	 << endl;
 }
 
+LiquidObj::LiquidObj(const LiquidObj& data)
+{
+  x_pos = data.x_pos;
+  y_pos = data.y_pos;
+  z_pos = data.z_pos;
+  width = data.width;
+  desc  = data.desc;
+  speed = data.speed;
+  surf  = data.surf;
+  counter = data.counter;
+}
+
 LiquidObj::LiquidObj(liquid_data data)
 {
   x_pos = data.x_pos;
@@ -324,7 +336,7 @@ LiquidObj::~LiquidObj()
 EditorObj* 
 LiquidObj::duplicate()
 {
-  return this;
+  return new LiquidObj(*this);
 }
 
 void

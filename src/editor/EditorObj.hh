@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.7 2000/06/20 17:49:41 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.8 2000/06/23 17:06:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,7 +80,7 @@ public:
   ///
   static EditorObj* create(liquid_data);
 
-  /** Z-Pos sort operators */
+  /** @name Z-Pos sort operators */
   //@{
   /** True if the z_pos of this is smaller than that of w */
   bool operator< (const EditorObj& w);

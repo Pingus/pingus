@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.19 2000/06/13 22:19:17 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.20 2000/06/23 17:06:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -303,8 +303,17 @@ ObjectSelector::get_exit()
 }
 
 EditorObj* 
+ObjectSelector::get_liquid()
+{
+  std::cout << "ObjectSelector::get_liquid() not implemented" << std::endl;
+  return 0;
+}
+
+EditorObj*
 ObjectSelector::select_obj_type()
 {
+  bool exit_loop;
+
   CL_Display::clear_display();
   font->print_left(20, 20, "What object do you want?");
   font->print_left(20, 50, "t - Trap");
@@ -315,9 +324,12 @@ ObjectSelector::select_obj_type()
   font->print_left(20,150, "h - Hotspot");
   font->print_left(20,170, "e - Entrance");
   font->print_left(20,190, "x - Exit");
+  font->print_left(20,210, "l - Liquid");
   Display::flip_display();
+
+  exit_loop = false;
     
-  while (true) 
+  while (!exit_loop) 
     {
       switch (read_key()) 
 	{
@@ -345,8 +357,15 @@ ObjectSelector::select_obj_type()
 	case CL_KEY_X:
 	  return get_exit();
 	  break;
+	case CL_KEY_L:
+	  return get_liquid();
+	  break;
+	case CL_KEY_ESCAPE:
+	  exit_loop = true;
+	  break;
 	}
     }
+  return 0;
 }
 
 string
@@ -390,6 +409,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.20  2000/06/23 17:06:24  grumbel
+Added framework for liquid insertion
+
 Revision 1.19  2000/06/13 22:19:17  grumbel
 Some enhancements to the console... (simple support for linebreaks)
 Added toggle_display() for the display hooks

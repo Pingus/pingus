@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.14 2000/06/20 17:49:41 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.15 2000/06/23 17:06:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -126,9 +126,9 @@ ObjectManager::load_level (string filename)
       
   editor_objs.sort(EditorObj_less());
 
-  std::cout << "After sort" << std::endl;
+  /*std::cout << "After sort" << std::endl;
   for (EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i)
-    std::cout << (*i)->z_pos << std::endl;
+  std::cout << (*i)->z_pos << std::endl;*/
 
   description = plf.get_description();
   levelname   = plf.get_levelname();
@@ -187,7 +187,7 @@ ObjectManager::save_level (string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.14 2000/06/20 17:49:41 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.15 2000/06/23 17:06:24 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   
