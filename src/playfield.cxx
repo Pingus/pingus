@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.12 2002/08/04 12:56:10 grumbel Exp $
+//  $Id: playfield.cxx,v 1.13 2002/08/05 09:19:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -185,6 +185,7 @@ Playfield::update(float delta)
   for(unsigned int i=0; i < view.size(); ++i)
     {
       view[i]->update (delta);
+
       if (view[i]->is_current() && !mouse_scrolling)
 	{ 
 	  current_view = i;
@@ -199,6 +200,7 @@ Playfield::update(float delta)
 void 
 Playfield::on_primary_button_press(int x, int y)
 {
+  std::cout << "Playfield::on_primary_button_press(" << x << ", " << y << std::endl;
   if (current_pingu)
     {
       char str[256];
@@ -228,6 +230,11 @@ Playfield::on_pointer_move (int x, int y)
   // FIXME: useless stuff, but currently the controller doesn't have a state
   mouse_x = x;
   mouse_y = y;
+
+  for(unsigned int i=0; i < view.size(); ++i)
+    {
+      view[i]->on_pointer_move (x, y);
+    }  
 
   if (mouse_scrolling)
     {

@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.13 2002/08/03 11:37:45 grumbel Exp $
+//  $Id: client.cxx,v 1.14 2002/08/05 09:19:08 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,13 +59,6 @@ Client::Client(Server * s)
 {
   //Display::add_flip_screen_hook(cursor);
   
-  gui_manager->add (new GUI::SurfaceButton 
-		    (400, 200,
-		     ResDescriptor ("editor/button", "core", ResDescriptor::RD_RESOURCE),
-		     ResDescriptor ("editor/button_pressed", "core", ResDescriptor::RD_RESOURCE),
-		     ResDescriptor ("editor/actions", "core", ResDescriptor::RD_RESOURCE)));
-
-
   Timer timer;
   
   timer.start();

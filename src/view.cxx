@@ -1,4 +1,4 @@
-//  $Id: view.cxx,v 1.6 2002/08/02 13:17:42 grumbel Exp $
+//  $Id: view.cxx,v 1.7 2002/08/05 09:19:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,7 @@ View::View(Client* client, int x1, int y1, int x2, int y2, float s)
   : cap (client->get_button_panel ()),
     current_pingu (0)
 {
+  mouse_over = false;
   assert(world);
 
   size = s;
@@ -96,12 +97,7 @@ View::set_world(World* w)
 bool
 View::is_over(int x, int y)
 {
-  if (x >= x1_pos && x <= x2_pos 
-      && y >= y1_pos && y <= y2_pos) {
-    return true;
-  } else {
-    return false;
-  }
+  return (x >= x1_pos && x <= x2_pos && y >= y1_pos && y <= y2_pos);
 }
 
 bool
