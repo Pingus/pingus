@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.33 2001/12/05 09:15:51 grumbel Exp $
+//  $Id: blitter.cc,v 1.34 2002/01/16 23:50:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -209,6 +209,7 @@ Blitter::put_surface_32bit(CL_Canvas* canvas, CL_SurfaceProvider* provider,
 	    provider->get_pixel(x, y, &red, &green, &blue, &alpha);
 	    canvas->get_pixel(x + x_pos, y + y_pos, &tred, &tgreen, &tblue, &talpha);
 	  
+	    // FIXME: This doesn't give correct alpha values
 	    canvas->draw_pixel(x + x_pos, y + y_pos, 
 			       max(0.0, min(1.0, (red * alpha) + (tred * (1.0-alpha)))),
 			       max(0.0, min(1.0, (green * alpha) +(tgreen * (1.0-alpha)))),

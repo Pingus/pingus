@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.22 2002/01/15 10:48:53 grumbel Exp $
+//  $Id: Teleporter.hh,v 1.23 2002/01/16 23:51:01 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -102,7 +102,6 @@ class EditorTeleporterTargetObj : public SpriteEditorObj
 {
 private:
   EditorTeleporterObj* teleporter;
-  Sprite sprite;
   
 public:
   /// Basic constructor

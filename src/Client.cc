@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.73 2002/01/15 22:32:06 grumbel Exp $
+//  $Id: Client.cc,v 1.74 2002/01/16 23:50:59 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -209,7 +209,7 @@ Client::play_level(boost::shared_ptr<PLF> arg_plf)
     }
   // FIXME: using this twice will crash with an X Error
   //CL_MouseCursor::show ();
-
+  
   unregister_event_handler();
 }
 

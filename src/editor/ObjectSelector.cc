@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.55 2002/01/15 22:32:06 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.56 2002/01/16 23:51:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -325,7 +325,7 @@ ObjectSelector::get_from_file()
   CL_Display::clear_display();
   font->print_left(20, 20, _("What object type do you want?"));
   font->print_left(20, 50, _("h - Hotspot"));
-  font->print_left(20, 70, _("g - Groundpiece (ground)")); 
+  font->print_left(20, 70, _("g - Groundpiece (ground) [not implemented]")); 
   Display::flip_display();
 
   while (true) 
@@ -363,6 +363,7 @@ ObjectSelector::get_from_file()
 	  break;
 
 	case CL_KEY_G:
+	  console << "ObjectSelector: Inserting groundpieces is not implemented" << std::endl;
 	  break;
 
 	case CL_KEY_ESCAPE:
