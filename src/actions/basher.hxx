@@ -30,8 +30,8 @@ class Basher : public PinguAction
 {
 private:
   CL_Sprite sprite;
-  CL_Surface bash_radius;
-  CL_Surface bash_radius_gfx;
+  CL_PixelBuffer bash_radius;
+  CL_PixelBuffer bash_radius_gfx;
   int basher_c;
   bool first_bash;
 

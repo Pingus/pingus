@@ -232,67 +232,69 @@ Blitter::put_surface_32bit(CL_PixelBuffer target, CL_PixelBuffer source,
 }
 
 void
-Blitter::put_alpha_surface(CL_PixelBuffer provider, CL_PixelBuffer sprovider,
-			   int x, int y)
+Blitter::put_alpha_surface(CL_PixelBuffer target, CL_PixelBuffer source,
+			   int x_pos, int y_pos)
 {
-  int start_i;
-  unsigned char* tbuffer; // Target buffer
-  int twidth, theight, tpitch;
+  assert(target.get_format().get_depth() == 32);
 
-  unsigned char* sbuffer; // Source buffer
-  int swidth, sheight, spitch;
+  target.lock();
+  source.lock();
 
-  CL_Palette palette;
-  int x_offset, y_offset;
+  int swidth  = source.get_width();
+  int twidth  = target.get_width();
 
-  provider.lock();
-  sprovider.lock();
+  int start_x = std::max(0, -x_pos);
+  int start_y = std::max(0, -y_pos);
 
-  //  assert(sprovider.get_format().get_depth() == 8);
-  if (sprovider.get_format().get_depth() != 8)
+  int end_x = std::min(swidth,  twidth  - x_pos);
+  int end_y = std::min(source.get_height(), target.get_height() - y_pos);
+
+  if (end_x - start_x <= 0 || end_y - start_y <= 0)
+    return;
+
+  cl_uint8* target_buf = static_cast<cl_uint8*>(target.get_data());
+  cl_uint8* source_buf = static_cast<cl_uint8*>(source.get_data());
+
+  CL_Palette palette = source.get_palette();
+
+  if (source.get_format().has_colorkey())
     {
-      sprovider.unlock ();
-      provider.unlock ();
-      PingusError::raise("Image has wrong color depth: " + to_string(sprovider.get_format().get_depth()));
+      unsigned int colorkey = source.get_format().get_colorkey();
+
+      for (int y = start_y; y < end_y; ++y)
+        {
+          cl_uint8* tptr = target_buf + 4*((twidth*(y+y_pos)) + x_pos + start_x);
+          cl_uint8* sptr = source_buf + swidth*y + start_x;
+
+          for (int x = start_x; x < end_x; ++x)
+            { 
+              if (*sptr != colorkey)
+                *tptr = 0;
+
+              tptr += 4;
+              sptr += 1;
+            }
+        }
     }
-  //  assert(provider.get_pixel_format() == RGBA8888);
+  else
+    {
+      for (int y = start_y; y < end_y; ++y)
+        {
+          cl_uint8* tptr = target_buf + 4*((twidth*(y+y_pos)) + x_pos + start_x);
+          cl_uint8* sptr = source_buf + swidth*y + start_x;
 
-  tbuffer = static_cast<unsigned char*>(provider.get_data());
-  sbuffer = static_cast<unsigned char*>(sprovider.get_data());
-
-  palette = sprovider.get_palette();
+          for (int x = start_x; x < end_x; ++x)
+            { 
+              *tptr = 0;
+              
+              tptr += 4;
+              sptr += 1;
+            }
+        }
+    }
   
-  twidth  = provider.get_width();
-  theight = provider.get_height();
-  tpitch  = provider.get_pitch();
-
-  swidth  = sprovider.get_width();
-  sheight = sprovider.get_height();
-  spitch  = sprovider.get_pitch();
-
-  if (y < 0)
-    y_offset = 0-y;
-  else
-    y_offset = 0;
-
-  if (x < 0)
-    x_offset = -x;
-  else
-    x_offset = 0;
-
-  for(int line=y_offset; line < sheight && (line + y) < theight; ++line) {
-    start_i = ((line + y) * tpitch) + (x*4);
-
-    for(int i=start_i+(4*x_offset),j=line*spitch+x_offset;
-	i < start_i + (4*swidth) && (i-start_i+(x*4)) < (4*twidth); i+=4,++j) {
-      if (sbuffer[j]) {
-	tbuffer[i + 0] = 0;                                  // alpha
-      }
-    }
-  }
-
-  sprovider.unlock();
-  provider.unlock();
+  source.unlock();
+  target.unlock();
 }
 
 void
@@ -345,7 +347,7 @@ Blitter::fill_rect(CL_PixelBuffer target, const CL_Rect& rect, const CL_Color& c
             { 
               float a = color.get_alpha()/255.0f;
 
-              *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * color.get_alpha()), 255);
+              *tptr++ = Math::mid(0, int(*tptr + a * color.get_alpha()), 255);
               *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * color.get_blue()) , 255);
               *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * color.get_green()), 255);
               *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * color.get_red())  , 255);

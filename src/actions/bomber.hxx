@@ -37,11 +37,11 @@ private:
   bool colmap_exploded;
 
   static bool static_surface_loaded;
-  static CL_Surface bomber_radius;
-  static CL_Surface bomber_radius_gfx;
+  static CL_PixelBuffer bomber_radius;
+  static CL_PixelBuffer bomber_radius_gfx;
 
   Sprite     sprite;
-  CL_Surface explo_surf;
+  CL_Sprite  explo_surf;
 
 public:
   Bomber (Pingu* p);

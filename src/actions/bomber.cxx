@@ -37,8 +37,8 @@ namespace Pingus {
 namespace Actions {
 
 bool Bomber::static_surface_loaded = false;
-CL_Surface Bomber::bomber_radius;
-CL_Surface Bomber::bomber_radius_gfx;
+CL_PixelBuffer Bomber::bomber_radius;
+CL_PixelBuffer Bomber::bomber_radius_gfx;
 
 Bomber::Bomber (Pingu* p)
   : PinguAction(p),
@@ -48,14 +48,14 @@ Bomber::Bomber (Pingu* p)
     colmap_exploded(false),
     sprite("Pingus/bomber" + to_string(pingu->get_owner()), "pingus", 
            17.0f, Sprite::NONE, Sprite::ONCE),
-    explo_surf(PingusResource::load_surface("Other/explo" + to_string(pingu->get_owner()), "pingus"))
+    explo_surf(PingusResource::load_sprite("Other/explo" + to_string(pingu->get_owner()), "pingus"))
 {
   // Only load the surface again if no static_surface is available
   if (!static_surface_loaded)
     {
       static_surface_loaded = true;
-      bomber_radius     = PingusResource::load_surface ("Other/bomber_radius", "pingus");
-      bomber_radius_gfx = PingusResource::load_surface ("Other/bomber_radius_gfx", "pingus");
+      bomber_radius     = PingusResource::load_pixelbuffer("Other/bomber_radius", "pingus");
+      bomber_radius_gfx = PingusResource::load_pixelbuffer("Other/bomber_radius_gfx", "pingus");
     }
   sprite.set_align_center_bottom();
 }
@@ -125,10 +125,10 @@ Bomber::update ()
   if (sprite.get_frame () >= 13 && !colmap_exploded)
     {
       colmap_exploded = true;
-      WorldObj::get_world()->get_colmap()->remove(bomber_radius.get_pixeldata(),
+      WorldObj::get_world()->get_colmap()->remove(bomber_radius,
                                                   static_cast<int>(pingu->get_x () - (bomber_radius.get_width()/2)),
                                                   static_cast<int>(pingu->get_y () - 16 - (bomber_radius.get_width()/2)));
-      WorldObj::get_world()->get_gfx_map()->remove(bomber_radius_gfx.get_pixeldata(),
+      WorldObj::get_world()->get_gfx_map()->remove(bomber_radius_gfx,
                                                    static_cast<int>(pingu->get_x () - (bomber_radius.get_width()/2)),
                                                    static_cast<int>(pingu->get_y () - 16 - (bomber_radius.get_width()/2)));
     }

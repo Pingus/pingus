@@ -34,8 +34,8 @@ namespace Actions {
 
 // Initialise class static
 bool Bridger::static_surfaces_loaded = false;
-CL_Surface Bridger::brick_l;
-CL_Surface Bridger::brick_r;
+CL_PixelBuffer Bridger::brick_l;
+CL_PixelBuffer Bridger::brick_r;
 CL_Surface Bridger::static_surface;
 
 Bridger::Bridger (Pingu* p)
@@ -50,8 +50,8 @@ Bridger::Bridger (Pingu* p)
   if (!static_surfaces_loaded)
     {
       static_surface = PingusResource::load_surface ("Pingus/bridger0", "pingus");
-      brick_l = PingusResource::load_surface ("Other/brick_left", "pingus");
-      brick_r = PingusResource::load_surface ("Other/brick_right", "pingus");
+      brick_l = PingusResource::load_pixelbuffer("Other/brick_left", "pingus");
+      brick_r = PingusResource::load_pixelbuffer("Other/brick_right", "pingus");
       static_surfaces_loaded = true;
     }
 
@@ -236,21 +236,21 @@ Bridger::place_a_brick()
 
   if (pingu->direction.is_right())
     {
-      WorldObj::get_world()->get_colmap()->put(brick_r.get_pixeldata(),
+      WorldObj::get_world()->get_colmap()->put(brick_r,
 					       static_cast<int>(pingu->get_x() + 10 - brick_r.get_width()),
 					       static_cast<int>(pingu->get_y()),
 					       Groundtype::GP_BRIDGE);
-      WorldObj::get_world()->get_gfx_map()->put(brick_r.get_pixeldata(),
+      WorldObj::get_world()->get_gfx_map()->put(brick_r,
 						static_cast<int>(pingu->get_x() + 10 - brick_r.get_width()),
 						static_cast<int>(pingu->get_y()));
     }
   else
     {
-      WorldObj::get_world()->get_colmap()->put(brick_r.get_pixeldata(),
+      WorldObj::get_world()->get_colmap()->put(brick_r,
 					       static_cast<int>(pingu->get_x() - 10),
 					       static_cast<int>(pingu->get_y()),
 					       Groundtype::GP_BRIDGE);
-      WorldObj::get_world()->get_gfx_map()->put(brick_l.get_pixeldata(),
+      WorldObj::get_world()->get_gfx_map()->put(brick_l,
 						static_cast<int>(pingu->get_x() - 10),
 						static_cast<int>(pingu->get_y()));
     }

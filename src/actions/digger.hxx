@@ -29,8 +29,8 @@ namespace Actions {
 class Digger : public PinguAction
 {
 private:
-  CL_Surface digger_radius;
-  CL_Surface digger_radius_gfx;
+  CL_PixelBuffer digger_radius;
+  CL_PixelBuffer digger_radius_gfx;
   Sprite sprite;
   int digger_c;
 

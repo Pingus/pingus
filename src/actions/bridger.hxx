@@ -43,8 +43,8 @@ private:
 
   static bool static_surfaces_loaded;
   static CL_Surface static_surface;
-  static CL_Surface brick_l;
-  static CL_Surface brick_r;
+  static CL_PixelBuffer brick_l;
+  static CL_PixelBuffer brick_r;
 
   int bricks;
   //int step;

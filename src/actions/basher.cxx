@@ -34,8 +34,8 @@ namespace Actions {
 Basher::Basher (Pingu* p)
   : PinguAction(p),
     sprite("Pingus/basher0", resources),
-    bash_radius(PingusResource::load_surface("Other/bash_radius", "pingus")),
-    bash_radius_gfx(PingusResource::load_surface("Other/bash_radius_gfx", "pingus")),
+    bash_radius(PingusResource::load_pixelbuffer("Other/bash_radius", "pingus")),
+    bash_radius_gfx(PingusResource::load_pixelbuffer("Other/bash_radius_gfx", "pingus")),
     basher_c(0),
     first_bash(true)
 {
@@ -112,14 +112,12 @@ Basher::update ()
 void
 Basher::bash()
 {
-#ifdef CLANLIB_0_6
   WorldObj::get_world()->get_colmap()->remove(bash_radius,
 					      static_cast<int>(pingu->get_x () - (bash_radius_width / 2)),
 					      static_cast<int>(pingu->get_y () - bash_radius_width + 1));
   WorldObj::get_world()->get_gfx_map()->remove(bash_radius_gfx,
 					       static_cast<int>(pingu->get_x () - (bash_radius_gfx_width / 2)),
 					       static_cast<int>(pingu->get_y () - bash_radius_gfx_width + 1));
-#endif
 }
 
 void

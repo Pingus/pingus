@@ -346,6 +346,7 @@
       </image>
     </sprite>
   </section>
+
   <section name="Other">
     <sprite name="brick_right">
       <image file="../images/pingus/brick_right.png" />

@@ -33,8 +33,8 @@ namespace Actions {
 
 Digger::Digger (Pingu* p)
   : PinguAction(p),
-    digger_radius(PingusResource::load_surface ("Other/digger_radius", "pingus")),
-    digger_radius_gfx(PingusResource::load_surface ("Other/digger_radius", "pingus")),
+    digger_radius(PingusResource::load_pixelbuffer("Other/digger_radius", "pingus")),
+    digger_radius_gfx(PingusResource::load_pixelbuffer("Other/digger_radius", "pingus")),
     sprite(Sprite (std::string("Pingus/digger") + to_string(pingu->get_owner ()), "pingus")),
     digger_c(0)
 {
@@ -99,10 +99,10 @@ Digger::have_something_to_dig ()
 void
 Digger::dig ()
 {
-  WorldObj::get_world()->get_colmap()->remove(digger_radius.get_pixeldata(),
+  WorldObj::get_world()->get_colmap()->remove(digger_radius,
 					      static_cast<int>(pingu->get_x() - (digger_radius_width / 2)),
 					      static_cast<int>(pingu->get_y() - digger_radius_height + 2));
-  WorldObj::get_world()->get_gfx_map()->remove(digger_radius_gfx.get_pixeldata(),
+  WorldObj::get_world()->get_gfx_map()->remove(digger_radius_gfx,
 					       static_cast<int>(pingu->get_x () - (digger_radius_gfx_width / 2)),
 					       static_cast<int>(pingu->get_y() - digger_radius_gfx_height + 2));
   pingu->set_y(pingu->get_y() + 1);
