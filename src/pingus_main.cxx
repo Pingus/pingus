@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.22 2002/10/04 11:38:28 torangan Exp $
+//   $Id: pingus_main.cxx,v 1.23 2002/10/08 18:06:25 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -212,7 +212,8 @@ PingusMain::check_args(int argc, char** argv)
       {"use-datafile",      no_argument,       0, 150},
       {"use-scriptfile",    no_argument,       0, 151},
       {"max-cpu-usage",     no_argument,       0, 153},
-      {"frame-skip",        required_argument, 0, 154},
+      {"min-frame-skip",    required_argument, 0, 154},
+      {"max-frame-skip",    required_argument, 0, 155},
 #ifdef HAVE_LIBCLANGL
       {"use-opengl",        no_argument,       0, 'G'},
 #endif
@@ -500,7 +501,11 @@ For more information about these matters, see the files named COPYING.\
       break;
 
     case 154:
-      sscanf(optarg, "%f", &frame_skip);
+      sscanf(optarg, "%d", &min_frame_skip);
+      break;
+
+    case 155: // max_frame_skip
+      sscanf(optarg, "%d", &max_frame_skip);
       break;
 
     case 156:
@@ -550,7 +555,8 @@ For more information about these matters, see the files named COPYING.\
 	"   --config-file FILE       Read config from FILE (default: ~/.pingus/config)\n"
 	"   --max-cpu-usage          Use all of the cpu power available, instead of trying to\n"
 	"                            reduce CPU usage, might speed up the game on slower machines\n"
-	"   --frame-skip N           Show only every N's frame, larger values speed the game up\n"
+	"   --min-frame-skip N       Skip at least N frames, larger values speed the game up\n"
+	"   --max-frame-skip N       Skip at most N frames\n"
 
 	"\nDebugging and experimental stuff:\n"
 	"   --maintainer-mode        Enables some features, only interesting programmers\n"

@@ -1,4 +1,4 @@
-//  $Id: globals.cxx,v 1.2 2002/08/16 17:15:31 grumbel Exp $
+//  $Id: globals.cxx,v 1.3 2002/10/08 18:06:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,10 +49,12 @@ std::string config_file;
 bool        background_manipulation_enabled = true;
 bool        use_datafile                    = false;
 bool        max_cpu_usage                   = false;
-float       frame_skip                      = 1.0f;
 bool        use_opengl                      = false;
 bool        action_help                     = true;
 bool        show_input_debug_screen         = false;
+
+int         min_frame_skip                  = 1;
+int         max_frame_skip                  = 5;
 
 std::string global_username;
 std::string global_email; 

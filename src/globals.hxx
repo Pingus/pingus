@@ -1,4 +1,4 @@
-//  $Id: globals.hxx,v 1.8 2002/08/23 15:49:48 torangan Exp $
+//  $Id: globals.hxx,v 1.9 2002/10/08 18:06:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,6 @@ extern bool        background_manipulation_enabled; ///< --enable-bg-manipulatio
 extern bool        debug_game_time;                 ///< --debug-game-time
 extern bool        max_cpu_usage;                   ///< --max-cpu-usage
 extern bool        use_datafile;                    ///< --use-datafile
-extern float       frame_skip;                      ///< --frame-skip
 extern bool        use_opengl;                      ///< --use-opengl
 extern bool        action_help;                     ///< --action-help
 extern bool        show_input_debug_screen;         ///
@@ -69,6 +68,8 @@ extern std::string global_email;                    ///< The email address of th
 extern std::string default_language;                ///< The default language, which is used when the env var LANG is not set
 extern int         pingus_debug_flags;              ///< Set some bits in this thing to get debug infos
 
+extern int         min_frame_skip;                  
+extern int         max_frame_skip;
 
 enum { PINGUS_DEBUG_ACTIONS    = (1 << 0),
        PINGUS_DEBUG_SOUND      = (1 << 1),
