@@ -31,16 +31,15 @@
 namespace Pingus {
 namespace WorldMapNS {
 
-SurfaceDrawable::SurfaceDrawable(xmlDocPtr doc, xmlNodePtr cur)
-  : Drawable(doc, cur)
+SurfaceDrawable::SurfaceDrawable(FileReader reader)
+  : Drawable(reader)
 {
   auto_uncover = false;
   ResDescriptor desc;
 
-  XMLFileReaderOld reader(doc, cur);
-  reader.read_desc ("surface", desc);
-  reader.read_vector ("position", pos);
-  reader.read_bool ("auto-uncover", auto_uncover);
+  reader.read_desc  ("surface", desc);
+  reader.read_vector("position", pos);
+  reader.read_bool  ("auto-uncover", auto_uncover);
 
   surface = Resource::load_sprite(desc);
 }

@@ -34,40 +34,21 @@
 #include "../start_screen.hxx"
 #include "../plf_res_mgr.hxx"
 #include "../savegame_manager.hxx"
+#include "../file_reader.hxx"
 #include "level_dot.hxx"
 
 namespace Pingus {
 namespace WorldMapNS {
 
-LevelDot::LevelDot(xmlDocPtr doc, xmlNodePtr cur)
-  : Dot(doc, XMLhelper::skip_blank(cur->children)),
+LevelDot::LevelDot(FileReader reader)
+  : Dot(reader.read_section("dot")),
     green_dot_sur(Resource::load_sprite("core/worldmap/dot_green")),
     red_dot_sur(Resource::load_sprite("core/worldmap/dot_red")),
     unaccessible_dot_sur(Resource::load_sprite("core/worldmap/dot_invalid")),
     highlight_green_dot_sur(Resource::load_sprite("core/worldmap/dot_green_hl")),
     highlight_red_dot_sur(Resource::load_sprite("core/worldmap/dot_red_hl"))
 {
-  cur = cur->children;
-  // Skip dot entry
-  cur = cur->next;
-  cur = XMLhelper::skip_blank(cur);
-
-  cur = cur->next;
-  cur = XMLhelper::skip_blank(cur);
-
-
-  while(cur)
-    {
-      if (XMLhelper::equal_str(cur->name, "levelname"))
-        {
-          levelname = XMLhelper::parse_string(doc, cur);
-          //std::cout << "Levelname: " << levelname << std::endl;
-          plf = PLFResMgr::load_plf(levelname);
-        }
-
-      cur = cur->next;
-      cur = XMLhelper::skip_blank(cur);
-    }
+  reader.read_string("levelname", levelname);
 }
 
 void

@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_DRAWABLE_HXX
 
 #include "../pingus_error.hxx"
-#include "../xml_helper.hxx"
+#include "../file_reader.hxx"
 
 namespace Pingus {
 
@@ -52,14 +52,10 @@ public:
   {
   }
 
-  Drawable(xmlDocPtr doc, xmlNodePtr cur)
+  Drawable(FileReader reader)
     : visible(true)
   {
-    if (!XMLhelper::get_prop (cur, "name", name))
-      {
-        PingusError::raise("Drawable: Couldn't get name of object");
-      }
-    UNUSED_ARG(doc);
+    reader.read_string("name", name);
   }
 
   virtual ~Drawable() {}

@@ -104,6 +104,14 @@ FileReader::get_sections() const
   return impl->get_sections();
 }
 
+FileReader
+FileReader::read_section(const char* name)   const
+{
+  FileReader reader;
+  read_section(name, reader);
+  return reader;
+}
+
 } // namespace Pingus
 
 /* EOF */

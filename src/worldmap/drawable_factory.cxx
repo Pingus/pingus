@@ -27,15 +27,15 @@ namespace Pingus {
 namespace WorldMapNS {
 
 Drawable*
-DrawableFactory::create(xmlDocPtr doc, xmlNodePtr cur)
+DrawableFactory::create(FileReader reader)
 {
-  if (XMLhelper::equal_str(cur->name, "surface"))
+  if (reader.get_name() == "surface")
     {
-      return new SurfaceDrawable(doc, cur);
+      return new SurfaceDrawable(reader);
     }
   else
     {
-      std::cout << "DrawableFactory::create(): Can't create " << cur->name << std::endl;
+      std::cout << "DrawableFactory::create(): Can't create " << reader.get_name() << std::endl;
       return 0;
     }
 }

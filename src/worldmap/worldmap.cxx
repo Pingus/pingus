@@ -19,7 +19,7 @@
 
 #include <assert.h>
 #include <iostream>
-#include <ClanLib/Core/System/system.h>
+#include <ClanLib/core.h>
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Display/mouse.h>
 #include "../fonts.hxx"
@@ -34,6 +34,7 @@
 #include "../gettext.h"
 #include "pingus.hxx"
 #include "../globals.hxx"
+#include "../xml_file_reader.hxx"
 #include "../debug.hxx"
 #include "worldmap.hxx"
 #include "drawable_factory.hxx"
@@ -67,21 +68,14 @@ WorldMap::WorldMap(const std::string& arg_filename)
     mouse_x(0),
     mouse_y(0)
 {
+  CL_InputSourceProvider_File provider(".");
+  CL_DomDocument doc(provider.open_source(filename), true);
 
-  xmlDocPtr doc = xmlParseFile(filename.c_str());
+  CL_DomElement root = doc.get_document_element();
 
-  if (!doc)
-    {
-      PingusError::raise (_("WorldMap: File not found: ") + filename);
-    }
-
-  xmlNodePtr cur = doc->ROOT;
-  cur = XMLhelper::skip_blank(cur);
-
-  parse_file(doc, cur);
+  parse_file(XMLFileReader(root));
 
   pingus = new Pingus(path_graph);
-  //std::cout << "PingusPtr: " << pingus << std::endl;
 
   std::string node;
   if (StatManager::instance()->get_string("current-tutorial-node", node))
@@ -105,7 +99,6 @@ WorldMap::WorldMap(const std::string& arg_filename)
   add_drawable(pingus);
 
   levelname_bg = Resource::load_sprite("core/worldmap/levelname_bg");
-  xmlFreeDoc(doc);
 }
 
 WorldMap::~WorldMap()
@@ -124,35 +117,13 @@ WorldMap::~WorldMap()
 }
 
 void
-WorldMap::parse_file(xmlDocPtr doc, xmlNodePtr cur)
+WorldMap::parse_file(FileReader reader)
 {
-  if (cur && XMLhelper::equal_str(cur->name, "pingus-worldmap"))
+  if (reader.get_name() == "pingus-worldmap")
     {
-      cur = cur->children;
-      cur = XMLhelper::skip_blank(cur);
-
-      while (cur)
-	{
-	  if (XMLhelper::equal_str(cur->name, "graph"))
-	    {
-	      parse_graph(doc, cur);
-	    }
-	  else if (XMLhelper::equal_str(cur->name, "objects"))
-	    {
-	      parse_objects(doc, cur);
-	    }
-	  else if (XMLhelper::equal_str(cur->name, "properties"))
-	    {
-	      parse_properties(doc, cur);
-	    }
-	  else
-	    {
-	      perr(PINGUS_DEBUG_WORLDMAP) << "WorldMap: Unknown node name: " << cur->name << std::endl;
-	    }
-
-	  cur = cur->next;
-	  cur = XMLhelper::skip_blank(cur);
-	}
+      parse_graph(reader.read_section("graph"));
+      parse_objects(reader.read_section("objects"));
+      parse_properties(reader.read_section("properties"));
     }
   else
     {
@@ -166,14 +137,14 @@ WorldMap::parse_file(xmlDocPtr doc, xmlNodePtr cur)
 }
 
 void
-WorldMap::parse_objects(xmlDocPtr doc, xmlNodePtr cur)
+WorldMap::parse_objects(FileReader reader)
 {
-  cur = cur->children;
-  cur = XMLhelper::skip_blank(cur);
-
-  while (cur)
+  const std::vector<FileReader>& childs = reader.get_sections();
+  
+  for(std::vector<FileReader>::const_iterator i = childs.begin(); 
+      i != childs.end(); ++i)
     {
-      Drawable* drawable = DrawableFactory::create(doc, cur);
+      Drawable* drawable = DrawableFactory::create(*i);
 
       if (drawable)
         {
@@ -184,25 +155,19 @@ WorldMap::parse_objects(xmlDocPtr doc, xmlNodePtr cur)
         {
           std::cout << "WorldMap::parse_objects: Parse Error" << std::endl;
         }
-
-      cur = cur->next;
-      cur = XMLhelper::skip_blank(cur);
     }
 }
 
 void
-WorldMap::parse_graph(xmlDocPtr doc, xmlNodePtr cur)
+WorldMap::parse_graph(FileReader reader)
 {
-  path_graph = new PathGraph(this, doc, cur);
+  path_graph = new PathGraph(this, reader);
 }
 
 void
-WorldMap::parse_properties(xmlDocPtr doc, xmlNodePtr cur)
+WorldMap::parse_properties(FileReader reader)
 {
-  cur = cur->children;
-  cur = XMLhelper::skip_blank(cur);
-
-  UNUSED_ARG(doc);
+  UNUSED_ARG(reader);
 }
 
 void

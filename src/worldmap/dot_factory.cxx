@@ -26,13 +26,13 @@ namespace Pingus {
 namespace WorldMapNS {
 
 Dot*
-DotFactory::create(xmlDocPtr doc, xmlNodePtr cur)
+DotFactory::create(FileReader reader)
 {
-  if (XMLhelper::equal_str(cur->name, "leveldot"))
+  if (reader.get_name() == "leveldot")
     {
 
     }
-  else if (XMLhelper::equal_str(cur->name, "tubedot"))
+  else if (reader.get_name() == "tubedot")
     {
 
     }
@@ -41,7 +41,7 @@ DotFactory::create(xmlDocPtr doc, xmlNodePtr cur)
       //PingusError::raise("DotFactory: unknown tag: ");
     }
 
-  return new LevelDot(doc, cur);
+  return new LevelDot(reader);
 }
 
 } // namespace WorldMapNS

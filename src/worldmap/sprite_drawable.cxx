@@ -23,8 +23,8 @@
 namespace Pingus {
 namespace WorldMapNS {
 
-SpriteDrawable::SpriteDrawable(xmlDocPtr doc, xmlNodePtr cur)
-  : Drawable(doc, cur)
+SpriteDrawable::SpriteDrawable(FileReader reader)
+  : Drawable(reader)
 {
 
 }

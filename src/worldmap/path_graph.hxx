@@ -61,7 +61,7 @@ public:
   /** @param worldmap is a pointer to the worldmap that holds this
       PathGraph, it is used so that the PathGraph can insert its
       drawables into the world */
-  PathGraph(WorldMap* worldmap, xmlDocPtr doc, xmlNodePtr cur);
+  PathGraph(WorldMap* worldmap, FileReader reader);
 
   ~PathGraph();
 
@@ -84,8 +84,8 @@ public:
   std::string lookup_edge(NodeId id);
 
 private:
-  void parse_nodes(xmlDocPtr doc, xmlNodePtr cur);
-  void parse_edges(xmlDocPtr doc, xmlNodePtr cur);
+  void parse_nodes(FileReader reader);
+  void parse_edges(FileReader reader);
 
   PathGraph (const PathGraph&);
   PathGraph& operator= (const PathGraph&);

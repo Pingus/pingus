@@ -35,7 +35,7 @@ private:
   Vector pos;
 
 public:
-  SpriteDrawable(xmlDocPtr doc, xmlNodePtr cur);
+  SpriteDrawable(FileReader reader);
   ~SpriteDrawable();
 
   void draw(DrawingContext& gc);

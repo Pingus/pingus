@@ -32,7 +32,7 @@ class DrawableFactory
 private:
 public:
   /** Create a new drawable */
-  static Drawable* create(xmlDocPtr doc, xmlNodePtr cur);
+  static Drawable* create(FileReader reader);
 private:
   DrawableFactory (const DrawableFactory&);
   DrawableFactory& operator= (const DrawableFactory&);

@@ -38,7 +38,7 @@ private:
       things, while the roof will disapear */
   bool       auto_uncover;
 public:
-  SurfaceDrawable(xmlDocPtr doc, xmlNodePtr cur);
+  SurfaceDrawable(FileReader reader);
 
   void update(float delta);
   void draw(DrawingContext&);

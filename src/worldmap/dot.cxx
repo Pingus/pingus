@@ -19,24 +19,17 @@
 
 #include <iostream>
 #include <assert.h>
-#include "../xml_file_reader_old.hxx"
+#include "../file_reader.hxx"
 #include "dot.hxx"
 
 namespace Pingus {
 namespace WorldMapNS {
 
-Dot::Dot(xmlDocPtr doc, xmlNodePtr cur)
+Dot::Dot(FileReader reader)
   : Drawable()
 {
-  assert(cur);
-
-  //std::cout << "Dot::Dot: " << cur->name << std::endl;
-
-  // cur = <dot>...</dot>
-
-  XMLFileReaderOld reader(doc, cur);
   reader.read_vector("position", pos);
-  reader.read_string("name", name);
+  reader.read_string("name",     name);
 
   assert(!name.empty());
 }

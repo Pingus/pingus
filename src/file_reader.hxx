@@ -53,6 +53,7 @@ public:
   bool read_size  (const char* name, CL_Size&)       const;
   bool read_desc  (const char* name, ResDescriptor&) const;
   bool read_section(const char* name, FileReader&)   const;
+  FileReader read_section(const char* name)   const;
 
   template<class E, class T>
   bool read_enum  (const char* name, E& value, T enum2string) const

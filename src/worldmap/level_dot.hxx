@@ -41,7 +41,7 @@ private:
   PingusLevel plf;
 
 public:
-  LevelDot(xmlDocPtr doc, xmlNodePtr cur);
+  LevelDot(FileReader reader);
 
   void draw(DrawingContext& gc);
   void draw_hover(DrawingContext& gc);

@@ -19,7 +19,7 @@
 
 #include <iostream>
 #include <math.h>
-#include "../xml_helper.hxx"
+#include "../file_reader.hxx"
 #include "../pingus_error.hxx"
 #include "dot.hxx"
 #include "dot_factory.hxx"
@@ -32,34 +32,12 @@
 namespace Pingus {
 namespace WorldMapNS {
 
-PathGraph::PathGraph(WorldMap* arg_worldmap, xmlDocPtr doc, xmlNodePtr cur)
+PathGraph::PathGraph(WorldMap* arg_worldmap, FileReader reader)
   : worldmap(arg_worldmap)
 {
-  //std::cout << "PathGraph::PathGraph(WorldMap* arg_worldmap, xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
-
-  // cur is at <graph>...
-  cur = cur->children;
-  cur = XMLhelper::skip_blank(cur);
-
-  while (cur)
-    {
-      if (XMLhelper::equal_str(cur->name, "nodes"))
-        {
-          parse_nodes(doc, cur);
-        }
-      else if (XMLhelper::equal_str(cur->name, "edges"))
-        {
-          parse_edges(doc, cur);
-        }
-      else
-        {
-          std::cout << "PathGraph: Can't parse: " << cur->name << std::endl;
-        }
-
-      cur = cur->next;
-      cur = XMLhelper::skip_blank(cur);
-    }
-
+  parse_nodes(reader.read_section("nodes"));
+  parse_edges(reader.read_section("edges"));
+  
   // Init the pathfinder cache
   pathfinder_cache.resize(graph.max_node_handler_value());
   for(PFinderCache::iterator i = pathfinder_cache.begin();
@@ -78,18 +56,14 @@ PathGraph::~PathGraph()
 }
 
 void
-PathGraph::parse_nodes(xmlDocPtr doc, xmlNodePtr cur)
+PathGraph::parse_nodes(FileReader reader)
 {
-  cur = cur->children;
-  cur = XMLhelper::skip_blank(cur);
+  const std::vector<FileReader>& childs = reader.get_sections();
 
-  //std::cout << "PathGraph::parse_nodes(xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
-
-  while (cur)
+  for(std::vector<FileReader>::const_iterator i = childs.begin(); 
+      i != childs.end(); ++i)
     {
-      //std::cout << "parsing nodes" << std::endl;
-
-      Dot* dot = DotFactory::create(doc, cur);
+      Dot* dot = DotFactory::create(*i);
       if (dot)
         {
           // add the dot to the pathfinding
@@ -108,60 +82,43 @@ PathGraph::parse_nodes(xmlDocPtr doc, xmlNodePtr cur)
         {
           std::cout << "PathGraph: Couldn't create node" << std::endl;
         }
-
-      cur = cur->next;
-      cur = XMLhelper::skip_blank(cur);
     }
 }
 
 void
-PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
+PathGraph::parse_edges(FileReader reader)
 {
-  cur = cur->children;
-  cur = XMLhelper::skip_blank(cur);
+  const std::vector<FileReader>& childs = reader.get_sections();
 
-  //std::cout << "PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
-
-  while (cur)
+  for(std::vector<FileReader>::const_iterator i = childs.begin(); 
+      i != childs.end(); ++i)
     {
-      if (XMLhelper::equal_str(cur->name, "edge"))
+      if (i->get_name() == "edge")
         {
           std::string name;
           std::string source;
           std::string destination;
 
-          if (!XMLhelper::get_prop(cur, "name", name))
-            {
-              PingusError::raise("PathGraph: Missing Edge Name");
-            }
-
-          if (!XMLhelper::get_prop(cur, "source", source))
-            {
-              PingusError::raise("PathGraph: Missing Source Name");
-            }
-
-          if (!XMLhelper::get_prop(cur, "destination", destination))
-            {
-              PingusError::raise("PathGraph: Missing Destination Name");
-            }
-
+          i->read_string("name",   name);
+          i->read_string("source", source);
+          i->read_string("destination", destination);
+          
           // FIXME: add path-data parsing here
           Path* path = new Path();
-          xmlNodePtr child_cur = XMLhelper::skip_blank(cur->children);
-          while (child_cur)
+          
+          const std::vector<FileReader>& childs2 = reader.read_section("positions").get_sections();
+          
+          for(std::vector<FileReader>::const_iterator j = childs2.begin(); 
+              j != childs2.end(); ++j)
             {
-              if (XMLhelper::equal_str(child_cur->name, "position"))
+              if (j->get_name() == "position")
                 {
-                  Vector pos = XMLhelper::parse_vector(doc, child_cur);
+                  Vector pos;
+                  j->read_float("x", pos.x);
+                  j->read_float("y", pos.y);
+                  j->read_float("z", pos.z);
                   path->push_back(pos);
                 }
-              else
-                {
-                  std::cout << "12929929: " << child_cur->name  << std::endl;
-                }
-
-              child_cur = child_cur->next;
-              child_cur = XMLhelper::skip_blank(child_cur);
             }
 
           Path full_path;
@@ -198,9 +155,6 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
         {
           PingusError::raise("PathGraph: unhandled: ");
         }
-
-      cur = cur->next;
-      cur = XMLhelper::skip_blank(cur);
     }
 }
 

@@ -36,7 +36,7 @@ protected:
   Vector pos;
 
 public:
-  Dot(xmlDocPtr doc, xmlNodePtr cur);
+  Dot(FileReader reader);
 
   /** Draw stuff that should be displayed if the mouse is over the dot */
   virtual void draw_hover(DrawingContext& gc) =0;

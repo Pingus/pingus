@@ -22,7 +22,7 @@
 
 #include <ClanLib/Display/sprite.h>
 #include <vector>
-#include "../libxmlfwd.hxx"
+#include "../file_reader.hxx"
 #include "../display/drawing_context.hxx"
 
 class CL_Key;
@@ -114,19 +114,19 @@ private:
 #endif
 
   /** Parses a WorldMap XML file */
-  void parse_file(xmlDocPtr doc, xmlNodePtr cur);
+  void parse_file(FileReader reader);
 
   /** Parse the object section of the Worldmap XML file, it contains
       Sprites, Backgrounds and other things */
-  void parse_objects(xmlDocPtr doc, xmlNodePtr cur);
+  void parse_objects(FileReader reader);
 
   /** Parse the graph section of the WorldMap XML file, it contains
       the path where the Pingu can walk on. */
-  void parse_graph(xmlDocPtr doc, xmlNodePtr cur);
+  void parse_graph(FileReader reader);
 
   /** Parse the propertie section of a WorldMap XML file, it contains
       meta data such as the author or the name of the Worldmap */
-  void parse_properties(xmlDocPtr doc, xmlNodePtr cur);
+  void parse_properties(FileReader reader);
 
   /** Unlock nodes according to the finished ones */
   void update_locked_nodes();
