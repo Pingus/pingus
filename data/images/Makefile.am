@@ -19,10 +19,12 @@ pkgdatadir = $(datadir)/games/@PACKAGE@/images
 
 EXTRA_DIST = gui/radiobutton_checked_disabled.png \
 gui/font_black.png \
+gui/font_black.tga \
 gui/checkbox_unchecked.png \
 gui/radiobutton_checked.png \
 gui/checkbox_checked.png \
 gui/font_gray.png \
+gui/font_gray.tga \
 gui/checkbox_checked_disabled.png \
 gui/radiobutton_unchecked_disabled.png \
 gui/radiobutton_unchecked.png \
