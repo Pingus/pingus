@@ -89,6 +89,11 @@ section menu
         close_highlight = ../images/core/menu/close_highlight.png(type=surface);
         close_normal    = ../images/core/menu/close_normal.png(type=surface);
         close_pressed   = ../images/core/menu/close_pressed.png(type=surface);
+
+        exit_button_normal  = ../images/core/menu/exit_button_normal.png  (type=surface);
+        exit_button_hover   = ../images/core/menu/exit_button_hover.png   (type=surface);
+        exit_button_pressed = ../images/core/menu/exit_button_pressed.png (type=surface);
+        exit_menu = ../images/core/menu/exit_menu.png (type=surface);
 }
 
 section result

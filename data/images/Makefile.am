@@ -17,7 +17,7 @@
 
 pkgdatadir = $(datadir)/games/@PACKAGE@/images
 
-pkgdata_DATA = backgrounds/large_star.png \
+nobase_pkgdata_DATA = backgrounds/large_star.png \
 backgrounds/middle_star.png \
 backgrounds/small_star.png \
 backgrounds/starfield_icon.png \
@@ -69,6 +69,10 @@ core/menu/close_pressed.png \
 core/menu/create_on.png \
 core/menu/credits_on.png \
 core/menu/enterlevel.png \
+core/menu/exit_button_hover.png \
+core/menu/exit_button_normal.png \
+core/menu/exit_button_pressed.png \
+core/menu/exit_menu.png \
 core/menu/exit_on.png \
 core/menu/exitmenu.png \
 core/menu/ice_off.png \
@@ -113,7 +117,14 @@ core/worldmap/dot_border.png \
 core/worldmap/dot_green.png \
 core/worldmap/dot_invalid.png \
 core/worldmap/dot_red.png \
+core/worldmap/enter_button_hover.png \
+core/worldmap/enter_button_normal.png \
+core/worldmap/enter_button_pressed.png \
 core/worldmap/flaggreen.png \
+core/worldmap/leave_button_hover.png \
+core/worldmap/leave_button_normal.png \
+core/worldmap/leave_button_pressed.png \
+core/worldmap/levelname_bg.png \
 core/worldmap/pingus.png \
 core/worldmap/pingus_standing.png \
 core/worldmap/tube.png \
@@ -810,6 +821,6 @@ worldobjs/teleporter2.png \
 worldobjs/teleportertarget.png \
 gui/font_black.tga gui/font_gray.tga
 
-EXTRA_DIST = $(pkgdata_DATA)
+EXTRA_DIST = $(nobase_pkgdata_DATA)
 
 # EOF #

@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.62 2003/04/01 15:13:33 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.63 2003/04/02 10:34:58 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -701,6 +701,9 @@ PingusMain::print_greeting_message()
     std::cout << _("music support:          disabled") << std::endl;
 
   std::cout << _("resolution set to:       ") << screen_width << "x" << screen_height << std::endl;
+  std::cout << _("fullcscreen:            ")
+            << (fullscreen_enabled ? _(" enabled") : _("disabled"))
+            << std::endl;
 
   std::cout << std::endl;
 }

@@ -1,4 +1,4 @@
-//  $Id: exit_menu.cxx,v 1.13 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: exit_menu.cxx,v 1.14 2003/04/02 10:34:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,55 +17,59 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <iostream>
 #include <ClanLib/Display/Display/display.h>
+#include "my_gettext.hxx"
 #include "pingus_menu_manager.hxx"
 #include "pingus_resource.hxx"
+#include "gui/surface_button.hxx"
 #include "gui/gui_manager.hxx"
 
-class ExitMenuYesButton : public GUI::Component
+class ExitMenuYesButton : public GUI::SurfaceButton
 {
 private:
   PingusMenuManager* manager;
 public:
   ExitMenuYesButton (PingusMenuManager* m) 
-    : manager (m)
+    : GUI::SurfaceButton(230, 315,
+                         ResDescriptor("menu/exit_button_normal", "core"),
+                         ResDescriptor("menu/exit_button_pressed", "core"),
+                         ResDescriptor("menu/exit_button_hover", "core")),
+      manager (m)
   {
   }
  
-  bool is_at (int x, int y) 
-  {
-    return x > 270 && x < 390 && y > 300 && y < 380;
+  void draw (GraphicContext& gc) {
+    GUI::SurfaceButton::draw(gc);
+    gc.print_left(Fonts::chalk_large, 250,  325, _(" Yes"));
   }
 
-  void draw (GraphicContext& gc) { UNUSED_ARG(gc); }
-
-  void on_primary_button_press (int, int)
+  void on_click()
   {
     manager->exit ();
   }
 };
 
-class ExitMenuNoButton : public GUI::Component
+class ExitMenuNoButton : public GUI::SurfaceButton
 {
 private:
   PingusMenuManager* manager;
 public:
   ExitMenuNoButton (PingusMenuManager* m)
-    : manager (m)
+    : GUI::SurfaceButton(420, 315,
+                         ResDescriptor("menu/exit_button_normal", "core"),
+                         ResDescriptor("menu/exit_button_pressed", "core"),
+                         ResDescriptor("menu/exit_button_hover", "core")),
+      manager (m)
   {
   }
-  
-  bool is_at (int x, int y) 
-  {
-    return x > 430 && x < 540 && y > 300 && y < 380;
+
+  void draw (GraphicContext& gc) {
+    GUI::SurfaceButton::draw(gc);
+    gc.print_left(Fonts::chalk_large, 460, 325, _("No"));
   }
 
-  void draw (GraphicContext& gc) { UNUSED_ARG(gc); }
-
-  void on_primary_button_press (int, int)
-  {
-    manager->pop_menu ();
+  void on_click() {
+    manager->pop_menu();
   }
 };
 
@@ -83,23 +87,19 @@ ExitMenu::~ExitMenu ()
 bool 
 ExitMenu::draw (GraphicContext& gc)
 {
-  CL_Display::fill_rect (0, 0, CL_Display::get_width (), CL_Display::get_height (),
-			 0, 0, 0, 0.5);
-  sur.put_screen (CL_Display::get_width ()/2 - sur.get_width ()/2, 
-		  CL_Display::get_height ()/2 - sur.get_height ()/2);
-  UNUSED_ARG(gc);
+  //gc.draw_fillrect (0, 0, CL_Display::get_width (), CL_Display::get_height (),
+  //0, 0, 0, 0.5);
+  gc.draw(sur,  gc.get_width ()/2 - sur.get_width ()/2, 
+          gc.get_height ()/2 - sur.get_height ()/2);
+  gc.print_center(Fonts::chalk_large, gc.get_width()/2, gc.get_height()/2 - 70, _("Exit Pingus?"));
+  PingusSubMenu::draw(gc);
   return true;
-}
-
-void 
-ExitMenu::update (float /*delta*/)
-{
 }
 
 void 
 ExitMenu::preload ()
 {
-  sur = PingusResource::load_surface ("misc/exitmenu", "core");
+  sur = PingusResource::load_surface ("menu/exit_menu", "core");
 }
 
 /* EOF */
