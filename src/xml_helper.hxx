@@ -1,4 +1,4 @@
-//  $Id: xml_helper.hxx,v 1.5 2002/06/25 12:20:31 grumbel Exp $
+//  $Id: xml_helper.hxx,v 1.6 2002/08/16 13:02:06 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include <iosfwd>
 
 #include <ClanLib/Core/Math/cl_vector.h>
+#include "pingus.hxx"
 
 // FIX: Under windows, it's necessary to use libxml/parser.h, or MS's
 // compiler will fails.
@@ -62,6 +63,8 @@ class XMLhelper
 
 public:
   static std::string encode_entities(const std::string& arg_str);
+
+  static xmlNodePtr skip_blank(xmlNodePtr cur);
 
   /// A set of function to parse an xml file
   //@{
