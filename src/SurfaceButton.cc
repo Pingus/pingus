@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.4 2000/02/15 12:33:04 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.5 2000/02/16 14:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 
 SurfaceButton::SurfaceButton()
 {
+  font = CL_Font::load("Fonts/pingus_small", PingusResource::get("fonts.dat"));
 }
 
 SurfaceButton::~SurfaceButton()
@@ -38,12 +39,17 @@ SurfaceButton::draw()
 {
   if (mouse_over() && !CL_Mouse::left_pressed()) 
     {
+      font->print_center(CL_Display::get_width() / 2, 10, desc.c_str());
+
       surface_p->put_screen(x_pos - surface_p->get_width()/2,
 			    y_pos - surface_p->get_height()/2);
     }
   else if (mouse_over() && CL_Mouse::left_pressed()) 
     {
       float shrink = 0.9;
+      
+      font->print_center(CL_Display::get_width() / 2, 10, desc.c_str());
+
       surface_p->put_screen(x_pos - surface_p->get_width()/2 * shrink,
 			    y_pos - surface_p->get_height()/2 * shrink,
 			    shrink, shrink);
@@ -78,6 +84,8 @@ PlayButton::PlayButton()
   x_pos = CL_Display::get_width() * 500 / 640;
   y_pos = CL_Display::get_height() * 420 / 480;
 
+  desc = "..:: Starts the level you played at last ::..";
+
   surface   = CL_Surface::load("Buttons/play", PingusResource::get("menu.dat"));
   surface_p = CL_Surface::load("Buttons/play_p", PingusResource::get("menu.dat"));
 }
@@ -102,6 +110,8 @@ OptionsButton::OptionsButton()
   x_pos = CL_Display::get_width() * 150 / 640; //150;
   y_pos = CL_Display::get_height() * 330 / 480; //330;
 
+  desc = "..:: Brings you to the option menu ::..";
+
   surface   = CL_Surface::load("Buttons/options", PingusResource::get("menu.dat"));
   surface_p = CL_Surface::load("Buttons/options_p", PingusResource::get("menu.dat"));
 }
@@ -122,6 +132,8 @@ QuitButton::QuitButton()
 {
   x_pos = CL_Display::get_width() * 500 / 640; //500;
   y_pos = CL_Display::get_height() * 320 / 480; //320;
+
+  desc = "..:: Bye, bye ::..";
 
   surface   = CL_Surface::load("Buttons/quit", PingusResource::get("menu.dat"));
   surface_p = CL_Surface::load("Buttons/quit_p", PingusResource::get("menu.dat"));  
@@ -166,6 +178,8 @@ EditorButton::EditorButton()
   x_pos = CL_Display::get_width() * 335 / 640; //335;
   y_pos = CL_Display::get_height() * 370 / 480; //370;
 
+  desc = "..:: Launch the level editor ::..";
+
   surface   = CL_Surface::load("Buttons/editor", PingusResource::get("menu.dat"));
   surface_p = CL_Surface::load("Buttons/editor_p", PingusResource::get("menu.dat"));
 }
@@ -189,8 +203,10 @@ ThemeButton::ThemeButton()
   x_pos = CL_Display::get_width() * 150 / 640;  //150;
   y_pos = CL_Display::get_height() * 430 / 480; //430;
 
-  surface   = CL_Surface::load("Buttons/theme", PingusResource::get("menu.dat"));
-  surface_p = CL_Surface::load("Buttons/theme_p", PingusResource::get("menu.dat"));     
+  desc = "..:: Let you select a world to start ::..";
+
+  surface   = CL_Surface::load("Buttons/worlds", PingusResource::get("menu.dat"));
+  surface_p = CL_Surface::load("Buttons/worlds_p", PingusResource::get("menu.dat"));     
 }
 
 ThemeButton::~ThemeButton()

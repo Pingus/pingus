@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.hh,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: SurfaceButton.hh,v 1.3 2000/02/16 14:11:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,6 @@
 
 #include <ClanLib/core.h>
 
-
 #include "editor/Editor.hh"
 #include "ThemeSelector.hh"
 // #include "FileSelector.hh"
@@ -34,8 +33,10 @@ class SurfaceButton
 protected:
   CL_Surface* surface;
   CL_Surface* surface_p;
+  CL_Font*    font;
   int x_pos;
   int y_pos;
+  string desc;
 public:
   SurfaceButton();
   virtual ~SurfaceButton();
