@@ -37,7 +37,7 @@
 
 namespace Pingus {
 
-std::map<std::string, CL_ResourceManager*> PingusResource::resource_map;
+std::map<std::string, CL_ResourceManager> PingusResource::resource_map;
 std::map<ResDescriptor, CL_Surface>        PingusResource::surface_map;
 std::map<ResDescriptor, CL_Font>          PingusResource::font_map;
 
@@ -50,29 +50,21 @@ PingusResource::init()
 void
 PingusResource::deinit()
 {
-//  cleanup();
-  for (std::map<std::string, CL_ResourceManager*>::iterator i = resource_map.begin();
-       i != resource_map.end ();
-       ++i)
-    delete i->second;
-
   resource_map.clear();
   surface_map.clear();
   font_map.clear();
 }
 
-CL_ResourceManager*
+CL_ResourceManager
 PingusResource::get(const std::string& arg_filename)
 {
   std::string filename = arg_filename + ".xml";
 
-  CL_ResourceManager* res_manager;
+  std::map<std::string, CL_ResourceManager>::iterator i = resource_map.find(filename);
 
-  res_manager = resource_map[filename];
-
-  if (res_manager)
+  if (i != resource_map.end())
     {
-      return res_manager;
+      return i->second;
     }
   else
     {
@@ -80,11 +72,10 @@ PingusResource::get(const std::string& arg_filename)
 
       res_filename = "data/" + filename;
 
-      // FIXME: Memory hole...
-      res_manager = new CL_ResourceManager(path_manager.complete(res_filename));
-      					
-
+      CL_ResourceManager res_manager = CL_ResourceManager(path_manager.complete(res_filename));
+      
       resource_map[filename] = res_manager;
+
       return res_manager;
     }
 }
@@ -109,14 +100,14 @@ CL_Sprite
 PingusResource::load_sprite(const std::string& res_name, 
                             const std::string& datafile)
 {
-  std::cout << "PingusResource::load_sprite: " << res_name << ", " << datafile << std::endl;
-  CL_ResourceManager* res = get(datafile);
+  CL_ResourceManager res = get(datafile);
   try {
-    CL_Sprite sprite(res_name, res);
+    CL_Sprite sprite(res_name, &res);
     return sprite;
   } catch (CL_Error& err) {
     std::cout << "PingusResource::load_sprite: CL_Error: " << res_name << ", " << datafile << std::endl;
-    return CL_Sprite("misc/404sprite", get("core"));
+    CL_ResourceManager res_mgr = get("core");
+    return CL_Sprite("misc/404sprite", &res_mgr);
   }
 }
 
@@ -124,7 +115,11 @@ CL_PixelBuffer
 PingusResource::load_surface_provider(const ResDescriptor& desc)
 {
   CL_Sprite sprite = load_sprite(desc);
-  assert(sprite.get_frame_count() > 0);
+  if (sprite.get_frame_count() == 0)
+    {
+      std::cout << "Error: Desc: " << desc << std::endl;
+      assert(0);
+    }
   return sprite.get_frame_surface(0).get_pixeldata();
 }
 
@@ -133,7 +128,11 @@ PingusResource::load_surface_provider(const std::string& res_name,
                                       const std::string& datafile)
 {
   CL_Sprite sprite = load_sprite(res_name, datafile);
-  assert(sprite.get_frame_count() > 0);
+  if (sprite.get_frame_count() == 0)
+    {
+      std::cout << "Error: Desc: " << res_name << " " << datafile << std::endl;
+      assert(0);
+    }
   return sprite.get_frame_surface(0).get_pixeldata();
 }
 
@@ -238,12 +237,14 @@ PingusResource::load_from_source (const ResDescriptor& res_desc)
     {
     case ResDescriptor::RD_RESOURCE:
       try {
-	return CL_Surface (res_desc.res_name.c_str(), get(res_desc.datafile));
+        CL_ResourceManager res_mgr = get(res_desc.datafile);
+	return CL_Surface (res_desc.res_name.c_str(), &res_mgr);
       } catch (CL_Error err) {
 	pout << "PingusResource:" << res_desc
 	     <<  ":-404-:" << err.message << std::endl;
 	try {
-	  return CL_Surface ("misc/404", get("core"));
+          CL_ResourceManager res_mgr = get("core");
+	  return CL_Surface ("misc/404", &res_mgr);
 	} catch (CL_Error err2) {
 	  pout << "PingusResource: Fatal error, important gfx files (404.pcx) couldn't be loaded!" << std::endl;
 	  throw err;
@@ -297,16 +298,16 @@ PingusResource::load_font(const ResDescriptor& res_desc)
 	{
 	case ResDescriptor::RD_RESOURCE:
 	  try {
-	    font = CL_Font(res_desc.res_name,
-                           get(res_desc.datafile));
+            CL_ResourceManager res_mgr = get(res_desc.datafile);
+            font = CL_Font(res_desc.res_name, &res_mgr);
 	  } catch (CL_Error err) {
-            std::list<std::string> lst = get(res_desc.datafile)->get_all_resources();
+            std::list<std::string> lst = get(res_desc.datafile).get_all_resources();
             for(std::list<std::string>::iterator i = lst.begin(); i != lst.end(); ++i)
               {
                 std::cout << "Res: " << *i << std::endl;
               }
             
-            std::cout << "DatafileRes: " << get(res_desc.datafile) << std::endl;
+            std::cout << "DatafileRes: " << res_desc.datafile << std::endl;
 	    pout << "PingusResource: CL_Error: " << err.message << std::endl
 	         << "PingusResource: Couldn't load font: " << res_desc << std::endl;
             assert (!"PingusResource: Fatal error can't continue!");
@@ -366,7 +367,7 @@ PingusResource::get_mtime (const std::string& res_name,
 #ifdef CLANLIB_0_6
   try
     {
-      CL_ResourceManager* res_man = PingusResource::get(datafile);
+      CL_ResourceManager res_man = PingusResource::get(datafile);
 
       CL_Resource& res = res_man->get_resource(res_name);
 

@@ -610,14 +610,14 @@ ObjectSelector::select_surface (const std::string & resource_file)
 {
   std::string str;
   bool datafile_loaded;
-  CL_ResourceManager* res = PingusResource::get(resource_file);
+  CL_ResourceManager res = PingusResource::get(resource_file);
   GroundpieceData data;
 
   datafile_loaded = data_loaded[resource_file];
 
   data.pos = pos;
 
-  std::list<std::string> liste = res->get_resources_of_type("sprite");
+  std::list<std::string> liste = res.get_resources_of_type("sprite");
   surface_obj sur_obj;
   std::vector<surface_obj> sur_list;
   int j = 0;
@@ -667,7 +667,7 @@ std::string
 ObjectSelector::read_string (const std::string & description, const std::string & def_str)
 {
   StringReader reader(description, def_str);
-  reader.set_strings(PingusResource::get("global")->get_resources_of_type("surface"));
+  reader.set_strings(PingusResource::get("global").get_resources_of_type("surface"));
   return reader.read_string();
 }
 

@@ -34,7 +34,7 @@ namespace Pingus {
 class PingusResource
 {
 private:
-  static std::map<std::string, CL_ResourceManager*> resource_map;
+  static std::map<std::string, CL_ResourceManager> resource_map;
   static std::map<ResDescriptor, CL_Surface> surface_map;
   static std::map<ResDescriptor, CL_Font> font_map;
 
@@ -77,7 +77,7 @@ public:
   static void cleanup ();
 
   /** */
-  static CL_ResourceManager* get(const std::string&);
+  static CL_ResourceManager get(const std::string&);
 
 private:
   PingusResource (const PingusResource&);

@@ -20,6 +20,7 @@
 #include <algorithm>
 #include <assert.h>
 #include <iostream>
+#include <typeinfo>
 #include "plf.hxx"
 #include "pingu_holder.hxx"
 #include "sound/sound.hxx"
@@ -133,8 +134,10 @@ World::draw (GraphicContext& gc)
 
   for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
     {
-      (*obj)->draw (gc);
+      std::cout << "drawing: " << typeid(*obj).name() << ": " << *obj << std::endl;
+      (*obj)->draw(gc);
     }
+  std::cout << "Done" << std::endl;
 }
 
 void
