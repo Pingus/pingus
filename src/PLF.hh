@@ -1,4 +1,4 @@
-//  $Id: PLF.hh,v 1.4 2000/02/11 21:26:37 grumbel Exp $
+//  $Id: PLF.hh,v 1.5 2000/03/08 01:48:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,6 +41,7 @@ private:
   std::string levelname;
   std::string psm_filename;
   std::string description;
+  std::string author;
   ResDescriptor fg;
 
   background_data bg;
@@ -100,8 +101,9 @@ public:
   int         get_difficulty();
   MapType     map_type(void);
   int         get_number_to_save();
-  std::string                 get_description(void);
-  std::string                 get_levelname(void);
+  std::string get_description(void);
+  std::string get_levelname(void);
+  std::string get_author(void);
   vector<hotspot_data>   get_hotspot(void);
   vector<entrance_data>  get_entrance(void);
   vector<exit_data>      get_exit(void);

@@ -1,4 +1,4 @@
-//  $Id: PLF.cc,v 1.5 2000/02/16 03:06:23 grumbel Exp $
+//  $Id: PLF.cc,v 1.6 2000/03/08 01:48:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,6 +77,8 @@ PLF::set_value(std::string valueid,
       max_time = str_to_int(value);
     } else if (valueid == "difficulty") {
       difficulty = str_to_int(value);
+    } else if (valueid == "author") {
+      author = value;
     } else {
       throw PingusError("Global: Unknown ValueID: " + valueid);
     }
@@ -507,6 +509,12 @@ int
 PLF::get_difficulty()
 {
   return difficulty;
+}
+
+std::string
+PLF::get_author()
+{
+  return author;
 }
 
 /* EOF */
