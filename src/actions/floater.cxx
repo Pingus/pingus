@@ -1,4 +1,4 @@
-//  $Id: floater.cxx,v 1.3 2002/06/19 15:19:26 torangan Exp $
+//  $Id: floater.cxx,v 1.4 2002/06/26 16:49:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ Floater::update(float delta)
       step = 0;
     }
   } else {
-    is_finished = true;
+    pingu->set_paction ("walker");
   }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.6 2002/06/26 11:23:54 grumbel Exp $
+//  $Id: xml_helper.cxx,v 1.7 2002/06/26 16:49:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -181,6 +181,12 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 	      desc.type = ResDescriptor::RD_RESOURCE;
 	      while (ccur != NULL)
 		{
+		  if (xmlIsBlankNode(cur)) 
+		    {
+		      cur = cur->next;
+		      continue;
+		    }
+
 		  if (strcmp((char*)ccur->name, "resource-file") == 0)
 		    {
 		      char* filename = (char*)xmlNodeListGetString(doc, ccur->children, 1);
@@ -261,7 +267,7 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 		    }
 		  else
 		    {
-		      std::cout << "XMLHelper:parse_surface: unhandled " << ccur->name << std::endl;
+		      std::cout << "XMLHelper:parse_surface2: unhandled " << ccur->name << std::endl;
 		    }
 		  ccur = ccur->next;
 		}

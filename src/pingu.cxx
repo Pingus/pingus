@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.12 2002/06/25 18:15:18 grumbel Exp $
+//  $Id: pingu.cxx,v 1.13 2002/06/26 16:49:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -111,6 +111,8 @@ Pingu::set_pos(const CL_Vector& arg_pos)
 
 // Set the action of the pingu (bridger, blocker, bomber, etc.)
 // This function is used by external stuff, like the ButtonPanel, etc
+// When you select a function on the button panel and click on a
+// pingu, this action will be called with the action name
 bool
 Pingu::set_action(PinguAction* act)
 {
@@ -168,14 +170,14 @@ Pingu::set_action(PinguAction* act)
 	  return true;	    
 	}
       else 
-	{ // Use the activation time, given by t
+	{
 	  if (countdown_action && countdown_action->get_name() == act->get_name())
-	    {
+	    { // We skip the action, since it is already set
 	      return false;
 	    }
+	  // We set the action and start the countdown
 	  action_time = act->activation_time();
 	  countdown_action = act;
-	  //PingusSound::play_sound("sounds/ohno.wav");
 	}
       return true;
     }
@@ -281,13 +283,19 @@ Pingu::update(float delta)
       return;
     }
 
+  // if an countdown action is set, update the countdown time
   if (action_time > -1) 
     --action_time;
 
-  if ( !action_time && countdown_action) 
+  if (action_time == 0 && countdown_action) 
     {
-      action = countdown_action;
-      action->set_pingu(this);
+      std::cout << "COUNTDOWNACTIAN SET: " << countdown_action->get_name () << std::endl;
+
+      set_paction(countdown_action);
+      // Reset the countdown action handlers 
+      countdown_action = 0;
+      action_time = -1;
+      return;
     }
   
   if ( !action || action->is_finished) 
@@ -321,6 +329,9 @@ Pingu::draw_offset(int x, int y, float s)
   
   if (action_time != -1) 
     {
+      // FIXME: some people preffer a 5-0 or a 9-0 countdown, not sure
+      // FIXME: about that got used to the 50-0 countdown [counting is
+      // FIXME: in ticks, should probally be in seconds]
       sprintf(str, "%d", action_time);
       
       if (s == 1.0) 

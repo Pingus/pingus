@@ -1,4 +1,4 @@
-//  $Id: console.cxx,v 1.4 2002/06/21 07:45:35 grumbel Exp $
+//  $Id: console.cxx,v 1.5 2002/06/26 16:49:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -112,7 +112,7 @@ Console::Console()
   is_init = false;
   is_visible = false;
   current_pos = 0;
-  number_of_lines = 10;
+  number_of_lines = 12;
 }
 
 Console::~Console()
@@ -138,34 +138,29 @@ Console::draw()
 {
   assert(is_init);
 
-  int i,j;
-  int start_index;
-  bool draw_current_line = !current_line.empty();
+  /** Callculate the position of the first line on the screen */
   int start_y_pos = 
     CL_Display::get_height() - (font->get_height() * (number_of_lines + 3));
 
-  if (draw_current_line)
-	  start_index =  Math::max(0, current_pos - number_of_lines);
-  else
-	  start_index =  Math::max(0, current_pos - number_of_lines-1);
-
+  // The background of the console
   CL_Display::fill_rect(0, start_y_pos,
 			CL_Display::get_width(),
 			CL_Display::get_height(),
 			0.0, 0.0, 0.0, 0.5);
 
-  std::vector<std::string>* output_buffer = streambuf.get_buffer ();
-  for(i = start_index, j=1; 
-      i < (int)output_buffer->size(); 
-      ++i, ++j)
+  std::vector<std::string>* buffer = streambuf.get_buffer ();
+
+  int window_start = Math::max(0, (int)(buffer->size ()) - number_of_lines);
+
+  for (int i = 0; 
+       i < number_of_lines
+	 && i + window_start < int(buffer->size ()); 
+       ++i)
     {
       font->print_left(10, 
-		       start_y_pos + j * font->get_height(), 
-		       (*output_buffer)[i].c_str());
+		       start_y_pos + (i * (font->get_height() + 2)), 
+		       (*buffer)[i + window_start].c_str());
     }
-  if (draw_current_line)
-    font->print_left(10, start_y_pos + j * font->get_height(),
-		     current_line.c_str());
 }
 
 void
@@ -184,15 +179,15 @@ Console::decrease_lines()
 void 
 Console::scroll_up()
 {
-  /*  if (current_pos - number_of_lines > 0)
-      --current_pos;*/
+  if (current_pos - number_of_lines > 0)
+    --current_pos;
 }
 
 void
 Console::scroll_down()
 {
-  /*if (current_pos - number_of_lines < (int)output_buffer.size())
-    ++current_pos;*/
+  if (current_pos - number_of_lines < (int)streambuf.get_buffer ()->size())
+    ++current_pos;
 }
 
 void

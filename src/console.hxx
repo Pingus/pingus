@@ -1,4 +1,4 @@
-//  $Id: console.hxx,v 1.4 2002/06/24 22:52:54 grumbel Exp $
+//  $Id: console.hxx,v 1.5 2002/06/26 16:49:33 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,14 +27,12 @@
 
 class CL_Font;
 
-#define CONSOLE_BUFFER_SIZE 100
+#define CONSOLE_BUFFER_SIZE 1024
 
 class ConsoleBuffer :
   public std::streambuf
 {
 private:
-  std::string current_line;
-  //bool continue_last;
   std::vector<std::string> buffer;
   char char_buffer[CONSOLE_BUFFER_SIZE];
   
@@ -60,7 +58,8 @@ public:
   CL_Font* font;
   bool is_init;
   int  current_pos;
-  std::string current_line;
+
+  /** number of lines which will get displayed on the screen */
   int number_of_lines;
   void draw();
 public:

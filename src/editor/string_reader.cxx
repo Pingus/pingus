@@ -1,4 +1,4 @@
-//  $Id: string_reader.cxx,v 1.2 2002/06/13 14:25:13 torangan Exp $
+//  $Id: string_reader.cxx,v 1.3 2002/06/26 16:49:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -115,14 +115,12 @@ StringReader::complete_string()
 
   completions.clear();
     
-  std::cout << "\nCompletions:\n" 
-       <<   "~~~~~~~~~~~~" << std::endl;
+  console << "\nCompletions:\n" <<   "~~~~~~~~~~~~" << std::endl;
 
   for(std::list<std::string>::iterator i = strings->begin(); i != strings->end(); i++)
     {
       if (i->find(current_string) == 0)
 	{
-	  std::cout << *i << std::endl;
 	  console << *i << std::endl;
 	  completions_counter++;
 	  completion = &(*i);
