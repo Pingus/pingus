@@ -1,4 +1,4 @@
-//  $Id: controller.cxx,v 1.6 2002/07/12 15:09:47 torangan Exp $
+//  $Id: controller.cxx,v 1.7 2002/07/12 15:19:09 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -148,8 +148,8 @@ namespace Input
   void
   Controller::update (float delta)
   {
-    standard_pointer->update(delta);
     scroller        ->update(delta);
+    standard_pointer->update(delta);
     action_axis     ->update(delta);
 
     for (unsigned int i=0; i < buttons.size(); i++)
