@@ -1,4 +1,4 @@
-//  $Id: Entrance.cc,v 1.23 2001/06/17 17:18:27 grumbel Exp $
+//  $Id: Entrance.cc,v 1.24 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,17 +19,14 @@
 
 #include <cassert>
 
+#include "World.hh"
+#include "PinguHolder.hh"
 #include "PingusResource.hh"
 #include "PingusSound.hh"
 #include "algo.hh"
 #include "globals.hh"
 #include "Entrance.hh"
 #include "GameTime.hh"
-
-Entrance::Entrance()
-{
-  owner_id = 0;
-}
 
 Entrance::Entrance(const EntranceData& data)
 {
@@ -102,6 +99,10 @@ Entrance::get_pingu()
 void
 Entrance::update(float delta)
 {
+  if (pingu_ready ())
+    {
+      world->get_pingu_p()->add (boost::shared_ptr<Pingu>(get_pingu ()));
+    }
 }
 
 void

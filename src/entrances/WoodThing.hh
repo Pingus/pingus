@@ -1,4 +1,4 @@
-//  $Id: WoodThing.hh,v 1.7 2001/04/01 18:00:42 grumbel Exp $
+//  $Id: WoodThing.hh,v 1.8 2001/08/10 10:56:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,20 +27,15 @@
 class WoodThing : public Entrance
 {
 private:
-  ///
   GameCounter counter;
-  ///
   CL_Surface surface2;
+
 public:
-  ///
   WoodThing(EntranceData);
 
-  ///
   void update(float delta);
-  ///
   void draw_offset(int x, int y, float s = 1.0);
-}///
-;
+};
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: TrueServer.cc,v 1.25 2001/07/22 21:17:58 grumbel Exp $
+//  $Id: TrueServer.cc,v 1.26 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include "GameTime.hh"
 #include "Timer.hh"
 #include "globals.hh"
-
+#include "PLF.hh"
 #include "TrueServer.hh"
 
 TrueServer::TrueServer(boost::shared_ptr<PLF> arg_plf)

@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.32 2001/08/09 12:04:49 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.33 2001/08/10 10:56:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,24 +92,8 @@ protected:
   }
 
 public:
-  ///
   EditorObj();
-  ///
   virtual ~EditorObj();
-  ///
-  static std::list<boost::shared_ptr<EditorObj> > create(GroundpieceData);
-  ///
-  static std::list<boost::shared_ptr<EditorObj> > create(EntranceData);
-  ///
-  static std::list<boost::shared_ptr<EditorObj> > create(ExitData);
-  ///
-  static std::list<boost::shared_ptr<EditorObj> > create(TrapData);
-  ///
-  static std::list<boost::shared_ptr<EditorObj> > create(HotspotData);
-  ///
-  static std::list<boost::shared_ptr<EditorObj> > create(LiquidData);
-  ///
-  static std::list<boost::shared_ptr<EditorObj> > create (WeatherData);
 
   /** @name Z-Pos sort operators */
   //@{

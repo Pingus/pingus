@@ -1,4 +1,4 @@
-//  $Id: Guillotine.hh,v 1.8 2001/04/01 18:00:43 grumbel Exp $
+//  $Id: Guillotine.hh,v 1.9 2001/08/10 10:56:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,28 +30,18 @@
 class Guillotine : public Trap
 {
 private:
-  ///
   bool killing;
-  ///
   CL_Surface idle_surf;
-  ///
   Direction  direction;
-  ///
   GameCounter idle_counter;
 public:
-  ///
-  Guillotine(TrapData data);
-  ///
+  Guillotine(const TrapData& data);
   virtual ~Guillotine();
   
-  ///
   void update(float delta);
-  ///
   void draw_offset(int x, int y, float s);
-  ///
   void catch_pingu(boost::shared_ptr<Pingu>);
-}///
-;
+};
 
 #endif
 

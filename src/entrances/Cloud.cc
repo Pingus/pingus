@@ -1,4 +1,4 @@
-//  $Id: Cloud.cc,v 1.11 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: Cloud.cc,v 1.12 2001/08/10 10:56:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 #include "Cloud.hh"
 
 Cloud::Cloud(EntranceData data)
+  : Entrance (data)
 {
   pos = data.pos;
   release_rate = data.release_rate;
@@ -36,11 +37,6 @@ Cloud::Cloud(EntranceData data)
   direction = data.direction;
 
   surface = PingusResource::load_surface("Entrances/cloud","entrances");
-}
-
-void
-Cloud::update(float delta)
-{
 }
 
 void

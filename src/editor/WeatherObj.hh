@@ -1,4 +1,4 @@
-//  $Id: WeatherObj.hh,v 1.2 2000/12/16 23:11:24 grumbel Exp $
+//  $Id: WeatherObj.hh,v 1.3 2001/08/10 10:56:14 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,9 +33,7 @@ public:
   virtual ~WeatherObj();
 
   virtual void save(std::ofstream* plf, std::ofstream* psm) {}
-  ///
   virtual void   save_xml(std::ofstream* xml);
-  ///
   virtual boost::shared_ptr<EditorObj> duplicate();
 };
 

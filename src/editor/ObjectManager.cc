@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.47 2001/08/09 08:56:44 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.48 2001/08/10 10:56:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -147,23 +147,22 @@ ObjectManager::load_level (std::string filename)
   vector<boost::shared_ptr<WorldObjData> > temp_worldobj = plf->get_worldobjs_data();
 
   for(vector<GroundpieceData>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i)
-    ListHelper::append (editor_objs, EditorObj::create(*i));
+    ListHelper::append (editor_objs, i->create_EditorObj ());
 
   for(vector<EntranceData>::iterator i = temp_entraces.begin(); i != temp_entraces.end(); ++i)
-    ListHelper::append (editor_objs, EditorObj::create(*i));
+    ListHelper::append (editor_objs, i->create_EditorObj());
 
   for(vector<ExitData>::iterator i = temp_exits.begin(); i != temp_exits.end(); ++i)
-    ListHelper::append (editor_objs, EditorObj::create(*i));
+    ListHelper::append (editor_objs, i->create_EditorObj ());
       
   for(vector<HotspotData>::iterator i = temp_hotspots.begin(); i != temp_hotspots.end(); ++i)
-    ListHelper::append (editor_objs, EditorObj::create(*i));
+    ListHelper::append (editor_objs, i->create_EditorObj ());
   
-
   for(vector<TrapData>::iterator i = temp_traps.begin(); i != temp_traps.end(); ++i)
-    ListHelper::append (editor_objs, EditorObj::create(*i));
+    ListHelper::append (editor_objs, i->create_EditorObj ());
 
   for(vector<WeatherData>::iterator i = temp_weather.begin(); i != temp_weather.end(); ++i)
-    ListHelper::append (editor_objs, EditorObj::create(*i));
+    ListHelper::append (editor_objs, i->create_EditorObj ());
 
   for(vector<boost::shared_ptr<WorldObjData> >::iterator i = temp_worldobj.begin();
       i != temp_worldobj.end();
@@ -171,7 +170,7 @@ ObjectManager::load_level (std::string filename)
     ListHelper::append (editor_objs, (*i)->create_EditorObj ());
 
   for(vector<LiquidData>::iterator i = temp_liquid.begin(); i != temp_liquid.end(); ++i)
-    ListHelper::append (editor_objs, EditorObj::create(*i));
+    ListHelper::append (editor_objs, i->create_EditorObj ());
 
 
 #ifndef WIN32 // FIXME: Compiler error in Windows
@@ -260,7 +259,7 @@ ObjectManager::save_level (string filename)
 
   // FIXME: we need some error checking 
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.47 2001/08/09 08:56:44 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.48 2001/08/10 10:56:14 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   

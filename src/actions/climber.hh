@@ -1,4 +1,4 @@
-//  $Id: climber.hh,v 1.10 2001/08/02 21:51:03 grumbel Exp $
+//  $Id: climber.hh,v 1.11 2001/08/10 10:56:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef CLIMBER_HH
 #define CLIMBER_HH
 
+#include "../Sprite.hh"
 #include "../PinguAction.hh"
 
 ///

@@ -1,4 +1,4 @@
-//  $Id: smasher.cc,v 1.24 2001/08/05 21:20:53 grumbel Exp $
+//  $Id: smasher.cc,v 1.25 2001/08/10 10:56:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include "../World.hh"
 #include "../ActionHolder.hh"
+#include "../PinguHolder.hh"
 #include "../PingusResource.hh"
 #include "../PingusSound.hh"
 #include "../particles/SmokeParticle.hh"
@@ -29,7 +30,7 @@
 
 using boost::shared_ptr;
 
-Smasher::Smasher(TrapData data)
+Smasher::Smasher(const TrapData& data)
 {
   smashing = false;
   pos = data.pos;

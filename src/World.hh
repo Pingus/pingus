@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.26 2001/04/14 14:37:04 grumbel Exp $
+//  $Id: World.hh,v 1.27 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,8 +26,6 @@
 #include "boost/smart_ptr.hpp"
 
 #include "WorldObj.hh"
-#include "PinguHolder.hh"
-#include "PLF.hh"
 #include "Pingu.hh"
 #include "backgrounds/Background.hh"
 #include "ColMap.hh"
@@ -36,11 +34,11 @@
 #include "Hotspot.hh"
 #include "Liquid.hh"
 #include "Trap.hh"
-#include "traps/traps.hh"
 #include "particles/ParticleHolder.hh"
 #include "PinguMap.hh"
 
 // Forward declarations
+class PLF;
 class WorldObj;
 class Exit;
 class Entrance;
@@ -53,6 +51,8 @@ class ActionHolder;
 class Background;
 class View;
 
+class WorldImpl;
+
 /** The World holds all objects of the pingu enviroment. 
     
     It holds the pingus, traps, exits, entrances, etc.. It keeps
@@ -61,22 +61,15 @@ class View;
 class World
 {
 private:
-  ///
+  WorldImpl* impl;
+
   boost::shared_ptr<PinguMap> gfx_map;
-  ///
   bool do_armageddon;
-  ///
   std::list<boost::shared_ptr<Pingu> >::iterator armageddon_count;
 
-  ///
   unsigned int released_pingus;
-  ///
   unsigned int allowed_pingus;
-
-  ///
   unsigned int number_to_save;
-
-  ///
   bool exit_world;
   
   /** End the world when the given time is reached, this is set by
@@ -86,51 +79,30 @@ private:
   /// The time you have to finish a level
   int exit_time;
 
-  ///
   std::vector<boost::shared_ptr<Background> > backgrounds;
-  ///
   std::vector<boost::shared_ptr<WorldObj> > world_obj_bg;
-  ///
   std::vector<boost::shared_ptr<WorldObj> > world_obj_fg;
-  ///
-  std::vector<boost::shared_ptr<Entrance> > entrance;
-  ///
   std::vector<boost::shared_ptr<Exit> >     exits;
-  ///
   std::vector<boost::shared_ptr<Hotspot> >  hotspot;
-  ///
   std::vector<boost::shared_ptr<Liquid> >   liquid;
-  ///
-  std::vector<boost::shared_ptr<Trap> >     traps;
 
-  ///
   boost::shared_ptr<ParticleHolder> particle_holder;
-  ///
   ActionHolder* action_holder;
-  ///
   boost::shared_ptr<PinguHolder> pingus;
-  ///
   ColMap* colmap;
-  ///
   boost::shared_ptr<PLF>  plf;
-  ///
   boost::shared_ptr<View> view;
+
+  void    init_background (void);
+  void    init_worldobjs (void);
+  void    init_map (void);
+
 public:
-  ///
   World();
-  ///
   World(boost::shared_ptr<PLF>);
-  ///
   virtual ~World();
 
-  ///
   void    init (boost::shared_ptr<PLF>);
-  ///
-  void    init_background (void);
-  ///
-  void    init_worldobjs (void);
-  ///
-  void    init_map (void);
 
   /** Draws the world onto the screen
       @param x1 The left corner of the drawing area.
@@ -174,18 +146,12 @@ public:
   /** @return Pointer to the ActionHolder of the world */
   ActionHolder* get_action_holder();
 
-  ///
   boost::shared_ptr<PLF> get_plf();
 
-  ///
   unsigned int get_released_pingus() { return released_pingus; }
-  ///
   unsigned int get_allowed_pingus() { return allowed_pingus; }
-  ///
   unsigned int get_pingus_out();
-  ///
   unsigned int get_saved_pingus();
-  ///
   unsigned int get_number_to_save() { return number_to_save; }
 
   /** Play a sound as if it would have been generated at the given
@@ -201,9 +167,7 @@ public:
       other screen orientated effects */
   void set_view (boost::shared_ptr<View> v);
 
-  ///
   PinguHolder* get_pingu_p(void);
-  ///
   void set_action_holder(ActionHolder*);
 
   /** @return the pingu at the given word coordinates, an empty

@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.37 2001/08/09 12:04:49 grumbel Exp $
+// $Id: EditorObj.cc,v 1.38 2001/08/10 10:56:14 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,47 +58,6 @@ EditorObj::~EditorObj()
 {
 }
 
-std::list<shared_ptr<EditorObj> >
-EditorObj::create(GroundpieceData data)
-{
-  return make_list(new EditorGroundpieceObj(data));
-}
-
-std::list<shared_ptr<EditorObj> >
-EditorObj::create(EntranceData data)
-{
-  return make_list(new EntranceObj(data));
-}
-
-std::list<shared_ptr<EditorObj> >
-EditorObj::create(ExitData data)
-{
-  return make_list(new ExitObj(data));
-}
-
-std::list<shared_ptr<EditorObj> >
-EditorObj::create(TrapData data)
-{
-  return make_list(new TrapObj(data));
-}
-
-std::list<shared_ptr<EditorObj> >
-EditorObj::create(HotspotData data)
-{
-  return make_list(new HotspotObj(data));
-}
-
-std::list<shared_ptr<EditorObj> >
-EditorObj::create(LiquidData data)
-{
-  return make_list(new LiquidObj(data));
-}
-
-std::list<shared_ptr<EditorObj> >
-EditorObj::create(WeatherData data)
-{
-  return make_list(new WeatherObj(data));
-}
 
 /*
 std::list<boost::shared_ptr<EditorObj> >
@@ -254,6 +213,9 @@ EditorObj::gui_edit_obj()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.38  2001/08/10 10:56:14  grumbel
+Some more reconstruction and code cleanup
+
 Revision 1.37  2001/08/09 12:04:49  grumbel
 Some more worldobj handling cleanup
 

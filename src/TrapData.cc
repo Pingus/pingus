@@ -1,4 +1,4 @@
-//  $Id: TrapData.cc,v 1.5 2001/08/09 08:56:44 grumbel Exp $
+//  $Id: TrapData.cc,v 1.6 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,15 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "traps/smasher.hh"
+#include "traps/hammer.hh"
+#include "traps/FakeExit.hh"
+#include "traps/Guillotine.hh"
+#include "traps/LaserExit.hh"
+#include "traps/Spike.hh"
+#include "traps/Bumper.hh"
+
+#include "PingusError.hh"
 #include "Trap.hh"
 #include "editor/PLFObj.hh"
 #include "XMLhelper.hh"
@@ -25,10 +34,10 @@
 void
 TrapData::write_xml(std::ofstream* xml)
 {
-  (*xml) << "<trap>\n"
+  (*xml) << "<worldobj type=" << type << ">\n"
 	 << "  <type>" << type << "</type>\n";
   XMLhelper::write_position_xml(xml, pos);
-  (*xml) << "</trap>\n"
+  (*xml) << "</worldobj>\n"
 	 << std::endl;
 }
 
@@ -68,8 +77,22 @@ TrapData::create(xmlDocPtr doc, xmlNodePtr cur)
 boost::shared_ptr<WorldObj> 
 TrapData::create_WorldObj ()
 {
-  //return boost::shared_ptr<WorldObj>(new Trap (*this));
-  return boost::shared_ptr<WorldObj>();
+  if (type == "smasher") {
+    return boost::shared_ptr<Trap>(new Smasher(*this));
+  } else if (type == "hammer") {
+    return boost::shared_ptr<Trap>(new Hammer(*this));
+  } else if (type == "fake_exit") {
+    return boost::shared_ptr<Trap>(new FakeExit(*this));
+  } else if (type == "spike") {
+    return boost::shared_ptr<Trap>(new Spike(*this));
+  } else if (type == "guillotine") {
+    return boost::shared_ptr<Trap>(new Guillotine(*this));
+  } else if (type == "laser_exit") {
+    return boost::shared_ptr<Trap>(new LaserExit(*this));
+  } else if (type == "bumper") {
+    return boost::shared_ptr<Trap>(new Bumper(*this));
+  }
+  throw PingusError("Trap: `" + type + "' is unknown");
 }
 
 EditorObjLst

@@ -1,4 +1,4 @@
-//  $Id: GroundpieceData.hh,v 1.7 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: GroundpieceData.hh,v 1.8 2001/08/10 10:56:13 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,10 @@
 
 #include <ClanLib/core.h>
 #include <ClanLib/display.h>
+#include "boost/smart_ptr.hpp"
 #include "ResDescriptor.hh"
+
+class EditorObj;
 
 ///
 class GroundpieceData 
@@ -42,52 +45,13 @@ public:
 	      GP_REMOVE, 
 	      GP_NOTHING } type; 
 
-  static Type string_to_type(const std::string& arg_type) 
-  {
-    if (arg_type == "solid")
-      return GroundpieceData::GP_SOLID;
-    else if (arg_type == "transparent")    
-      return GroundpieceData::GP_TRANSPARENT;
-    else if (arg_type == "ground")
-      return GroundpieceData::GP_GROUND;
-    else if (arg_type == "bridge")
-      return GroundpieceData::GP_BRIDGE;
-    else if (arg_type == "water")
-      return GroundpieceData::GP_WATER;
-    else if (arg_type == "lava") 
-      return GroundpieceData::GP_LAVA;
-    else if (arg_type == "remove") 
-      return GroundpieceData::GP_REMOVE;
-    else
-      {
-	std::cout << "GroundpieceData: Unhandled type: " << arg_type << std::endl;
-	return GroundpieceData::GP_GROUND;
-      }
-  }
+  /********************/
+  /* Static Functions */
+  /********************/
 
-  static std::string type_to_string(Type arg_type) 
-  {
-    switch (arg_type)
-      { 
-      case GroundpieceData::GP_SOLID:
-	return "solid";
-      case GroundpieceData::GP_TRANSPARENT:
-	return "transparent";
-      case GroundpieceData::GP_GROUND:
-	return "ground";
-      case GroundpieceData::GP_BRIDGE:
-	return "bridge";
-      case GroundpieceData::GP_WATER:
-	return "water";
-      case GroundpieceData::GP_LAVA:
-	return "lava";
-      case GroundpieceData::GP_REMOVE:
-	return "remove";
-      default:
-	std::cout << "GroundpieceData: Unhandled type: " << arg_type << std::endl;
-	return "ground";
-      }
-  }
+  std::list<boost::shared_ptr<EditorObj> > create_EditorObj();
+  static Type string_to_type(const std::string& arg_type);
+  static std::string type_to_string(Type arg_type);
 };
 
 /* EOF */

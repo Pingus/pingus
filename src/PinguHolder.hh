@@ -1,4 +1,4 @@
-//  $Id: PinguHolder.hh,v 1.12 2001/08/04 17:39:13 grumbel Exp $
+//  $Id: PinguHolder.hh,v 1.13 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,21 +46,13 @@ private:
   std::list<boost::shared_ptr<Pingu> > pingus;
   
 public:
-  ///
   PinguHolder();
-  ///
   ~PinguHolder();
-  ///
+
   void draw_offset(int, int, float s = 1.0);
-  ///
-  void add (boost::shared_ptr<Pingu>);
-  ///
   int  total_size();
-  ///
   int  get_saved() { return saved_pingus; }
-
-  void push_back(boost::shared_ptr<Pingu> pingu);
-
+  void add (boost::shared_ptr<Pingu> pingu);
   int get_z_pos() const { return 50; }
 
   std::list<boost::shared_ptr<Pingu> >::iterator begin () { return pingus.begin (); }

@@ -1,4 +1,4 @@
-//  $Id: Playfield.cc,v 1.25 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: Playfield.cc,v 1.26 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,7 @@
 #include "GameTime.hh"
 #include "QuestionDialog.hh"
 #include "boost/smart_ptr.hpp"
+#include "PinguHolder.hh"
 
 using boost::shared_ptr;
 

@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.48 2001/08/09 12:50:49 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.49 2001/08/10 10:56:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -121,7 +121,7 @@ ObjectSelector::get_trap()
  
   // FIXME: Can somebody enlight me, why gcc gives here a warrning?: 
   // ObjectSelector.cc:107: warning: control reaches end of non-void function `ObjectSelector::get_trap()'
-  return EditorObj::create(trap);
+  return trap.create_EditorObj ();
 }
 
 std::list<boost::shared_ptr<EditorObj> >
@@ -273,7 +273,7 @@ ObjectSelector::get_entrance()
 	}
     }
   
-  return EditorObj::create(entrance);
+  return entrance.create_EditorObj ();
 }
 
 std::list<boost::shared_ptr<EditorObj> >
@@ -479,6 +479,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.49  2001/08/10 10:56:14  grumbel
+Some more reconstruction and code cleanup
+
 Revision 1.48  2001/08/09 12:50:49  grumbel
 a IceBlock demo level
 

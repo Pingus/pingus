@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.65 2001/08/09 08:56:44 grumbel Exp $
+#  $Id: Makefile.am,v 1.66 2001/08/10 10:56:13 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -135,10 +135,10 @@ pingus_SOURCES = \
                  algo.cc              algo.hh              \
                  blitter.cc           blitter.hh	   \
                  ActionData.hh        \
-	         EntranceData.hh     \
-                 ExitData.hh         \
+	         EntranceData.hh      EntranceData.cc      \
+                 ExitData.hh          ExitData.cc          \
                  globals.cc           globals.hh           \
-                 HotspotData.hh       \
+                 HotspotData.hh       HotspotData.cc       \
                  LiquidData.hh        LiquidData.cc        \
                  TrapData.hh          TrapData.cc \
                  Display.cc           Display.hh           \
@@ -164,7 +164,7 @@ pingus_SOURCES = \
                  SurfaceData.hh \
                  XMLhelper.cc         XMLhelper.hh \
                  PLTXML.cc            PLTXML.hh   \
-                 WeatherData.hh   \
+                 WeatherData.hh       WeatherData.cc \
                  TargetProvider.hh    TargetProvider.cc \
                  PingusMapManager.hh  PingusMapManager.cc \
                  Color.hh              \
@@ -191,7 +191,7 @@ pingus_SOURCES = \
                  ExitMenu.hh         ExitMenu.cc \
                  MenuBackground.hh   MenuBackground.cc \
                  PathManager.cc      PathManager.hh \
-                 GroundpieceData.hh \
+                 GroundpieceData.hh  GroundpieceData.cc \
                  my_gettext.hh \
                  WorldObjDataFactory.cc  WorldObjDataFactory.hh
 

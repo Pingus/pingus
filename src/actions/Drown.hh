@@ -1,4 +1,4 @@
-//  $Id: Drown.hh,v 1.9 2001/08/05 23:50:14 grumbel Exp $
+//  $Id: Drown.hh,v 1.10 2001/08/10 10:56:14 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef DROWN_HH
 #define DROWN_HH
 
+#include "../Sprite.hh"
 #include "../PinguAction.hh"
 
 class Drown : public PinguAction

@@ -1,4 +1,4 @@
-//  $Id: SmallMap.cc,v 1.32 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: SmallMap.cc,v 1.33 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@
 #include "World.hh"
 #include "PingusResource.hh"
 #include "SmallMap.hh"
+#include "PLF.hh"
 
 #ifdef WIN32
 #define for if(0); else for

@@ -1,4 +1,4 @@
-//  $Id: FakeExit.cc,v 1.14 2001/04/21 10:55:16 grumbel Exp $
+//  $Id: FakeExit.cc,v 1.15 2001/08/10 10:56:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 #include "../PingusResource.hh"
 #include "../ActionHolder.hh"
 
-FakeExit::FakeExit(TrapData data)
+FakeExit::FakeExit(const TrapData& data)
 {
   surface = PingusResource::load_surface("Traps/fake_exit", "traps");
   pos = data.pos;

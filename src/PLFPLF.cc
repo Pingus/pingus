@@ -1,4 +1,4 @@
-//  $Id: PLFPLF.cc,v 1.10 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: PLFPLF.cc,v 1.11 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -364,7 +364,7 @@ PLFPLF::set_group_end(void)
     break;
 
   case PLFPLF::LIQUID:
-    liquids.push_back(liquid_s);
+    worldobjs_data.push_back(boost::shared_ptr<WorldObjData> (new LiquidData(liquid_s)));
     liquid_s.clean();
     break;
 

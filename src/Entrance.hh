@@ -1,4 +1,4 @@
-//  $Id: Entrance.hh,v 1.16 2001/04/16 11:58:34 grumbel Exp $
+//  $Id: Entrance.hh,v 1.17 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,31 +30,21 @@
 
 /** A abstract representation of an entrance, the implementation
     currently sucks and needs to be rewritten */
-class Entrance : public EntranceData, 
+class Entrance : public EntranceData,
 		 public WorldObj
 {
 protected:
-  ///
   CL_Surface surface;
-  ///
   int last_release;
   
 public:
-  ///
-  Entrance();
-  ///
   Entrance(const EntranceData& data);
-  ///
   virtual ~Entrance() {}
-  ///
+
   int  get_z_pos() const { return int(pos.z); }
-  ///
   virtual bool   pingu_ready(void);
-  ///
   virtual boost::shared_ptr<Pingu> get_pingu(void);
-  ///
   virtual void   update(float delta);
-  ///
   virtual void   draw_offset(int x, int y, float s = 1.0);
 };
 

@@ -1,4 +1,4 @@
-//  $Id: WeatherData.hh,v 1.1 2000/08/05 19:08:16 grumbel Exp $
+//  $Id: WeatherData.hh,v 1.2 2001/08/10 10:56:13 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,10 @@
 #define WEATHERDATA_HH
 
 #include <string>
-#include "Position.hh"
+#include <list>
+#include "boost/smart_ptr.hpp"
+
+class EditorObj;
 
 class WeatherData
 {
@@ -29,6 +32,8 @@ private:
   
 public:
   std::string type;
+
+  std::list<boost::shared_ptr<EditorObj> > create_EditorObj ();
 };
 
 #endif

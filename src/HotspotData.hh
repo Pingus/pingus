@@ -1,4 +1,4 @@
-//  $Id: HotspotData.hh,v 1.2 2001/04/21 10:55:15 grumbel Exp $
+//  $Id: HotspotData.hh,v 1.3 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,25 +22,20 @@
 
 #include "Position.hh"
 #include "ResDescriptor.hh"
+#include "WorldObjData.hh"
 
-///
-class HotspotData
+class HotspotData : public WorldObjData
 {
 public:
-  ///
   CL_Vector pos;
-  ///
   int   speed;
-  ///
   float para;
-  ///
   ResDescriptor desc;
 
-  ///
   HotspotData() {
     clean();
   }
-  ///
+
   void clean() {
     pos.x = 0;
     pos.y = 0;
@@ -48,6 +43,12 @@ public:
     speed = -1;
     para = 1.0;
   }
+
+  void write_xml(ofstream *);
+  static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
+
+  boost::shared_ptr<WorldObj> create_WorldObj();
+  EditorObjLst create_EditorObj();
 };
 
 #endif

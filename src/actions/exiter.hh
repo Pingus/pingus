@@ -1,4 +1,4 @@
-//  $Id: exiter.hh,v 1.9 2001/08/02 21:51:03 grumbel Exp $
+//  $Id: exiter.hh,v 1.10 2001/08/10 10:56:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef EXITER_HH
 #define EXITER_HH
 
+#include "../Sprite.hh"
 #include "../PinguAction.hh"
 
 ///

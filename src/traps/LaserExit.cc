@@ -1,4 +1,4 @@
-//  $Id: LaserExit.cc,v 1.14 2001/08/02 21:51:03 grumbel Exp $
+//  $Id: LaserExit.cc,v 1.15 2001/08/10 10:56:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 #include "../PingusResource.hh"
 #include "LaserExit.hh"
 
-LaserExit::LaserExit(TrapData data)
+LaserExit::LaserExit(const TrapData& data)
 {
   killing = false;
   pos = data.pos;

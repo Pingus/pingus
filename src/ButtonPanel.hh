@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.hh,v 1.13 2001/04/13 22:17:46 grumbel Exp $
+//  $Id: ButtonPanel.hh,v 1.14 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,17 +23,13 @@
 #include <vector>
 #include "boost/smart_ptr.hpp"
 
-#include "PLF.hh"
-#include "Pingu.hh"
 #include "GuiObj.hh"
 #include "ActionButton.hh"
-#include "World.hh"
-#include "TrueServer.hh"
-#include "Controller.hh"
-#include "Client.hh"
 
-///
 class Client;
+class PLF;
+class World;
+class Controller;
 
 class ButtonPanel : public GuiObj
 {

@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.22 2001/08/07 11:24:40 grumbel Exp $
+//  $Id: PLFObj.hh,v 1.23 2001/08/10 10:56:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,16 +31,11 @@ class PLFObj : public EditorObj
 private:
   
 public:
-  ///
   PLFObj();
-  ///
   virtual ~PLFObj();
 
-  ///
   virtual void save(std::ofstream* plf, std::ofstream* psm) = 0;
-  ///
   virtual void save_xml(std::ofstream* xml) = 0;
-  ///
   virtual std::string  status_line();
 };
 
@@ -51,17 +46,12 @@ class HotspotObj : public    PLFObj,
 private:
 
 public:
-  ///
   HotspotObj(const HotspotData&);
-  ///
   ~HotspotObj();
-  ///
+
   boost::shared_ptr<EditorObj> duplicate();
-  ///
   void save(std::ofstream* plf, std::ofstream* psm);
-  ///
   void save_xml(std::ofstream* xml);
-  ///
   std::string  status_line();
 };
 
@@ -71,17 +61,12 @@ class EntranceObj : public PLFObj,
 {
 private:
 public:
-  ///
   EntranceObj(const EntranceData&);
-  ///
   ~EntranceObj();
-  ///
+
   boost::shared_ptr<EditorObj> duplicate();
-  ///
   void save(std::ofstream* plf, std::ofstream* psm);  
-  ///
   void save_xml(std::ofstream* xml);
-  ///
   std::string status_line();
 };
 
@@ -91,17 +76,12 @@ class ExitObj : public PLFObj,
 {
 private:
 public:
-  ///
   ExitObj(const ExitData&);
-  ///
   ~ExitObj();
-  ///
+
   boost::shared_ptr<EditorObj> duplicate();
-  ///
   void save_xml(std::ofstream* xml);
-  ///
   void save(std::ofstream* plf, std::ofstream* psm);  
-  ///
   std::string  status_line();
 };
 
@@ -113,19 +93,13 @@ class TrapObj : public PLFObj,
 private:
   int frame;
 public:
-  ///
   TrapObj(const TrapData&);
-  ///
   ~TrapObj();
-  ///
+
   boost::shared_ptr<EditorObj> duplicate();
-  ///
   void save(std::ofstream* plf, std::ofstream* psm);  
-  ///
   void save_xml(std::ofstream* xml);
-  ///
   void draw (boost::dummy_ptr<EditorView> view);
-  ///
   std::string  status_line();
 };
 
@@ -138,6 +112,7 @@ public:
   LiquidObj(const LiquidData& data);
   LiquidObj(const LiquidObj& data);
   ~LiquidObj();
+
   boost::shared_ptr<EditorObj> duplicate();
   void draw (boost::dummy_ptr<EditorView> view);
   void draw_mark (boost::dummy_ptr<EditorView> view);

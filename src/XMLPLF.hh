@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.hh,v 1.11 2001/07/27 21:53:22 grumbel Exp $
+//  $Id: XMLPLF.hh,v 1.12 2001/08/10 10:56:14 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,16 +34,10 @@ private:
 
   void parse_background (xmlNodePtr cur);
   void parse_actions (xmlNodePtr cur);
-  void parse_entrance (xmlNodePtr cur);
-  void parse_exit (xmlNodePtr cur);
   void parse_global (xmlNodePtr cur);
   void parse_groundpiece (xmlNodePtr cur);
-  void parse_traps (xmlNodePtr cur);
-  void parse_hotspot (xmlNodePtr cur);
-  void parse_liquid (xmlNodePtr cur);
   void parse_group (xmlNodePtr cur);
   void parse_start_pos (xmlNodePtr cur);
-  void parse_worldobj (xmlNodePtr cur);
   void parse_weather (xmlNodePtr cur);
 
 public:

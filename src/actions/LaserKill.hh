@@ -1,4 +1,4 @@
-//  $Id: LaserKill.hh,v 1.11 2001/08/05 21:20:53 grumbel Exp $
+//  $Id: LaserKill.hh,v 1.12 2001/08/10 10:56:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef LASERKILL_HH
 #define LASERKILL_HH
 
+#include "../Sprite.hh"
 #include "../PinguAction.hh"
 
 ///

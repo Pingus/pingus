@@ -1,4 +1,4 @@
-//  $Id: ListHelper.hh,v 1.2 2001/04/27 20:44:38 grumbel Exp $
+//  $Id: ListHelper.hh,v 1.3 2001/08/10 10:56:14 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,14 +20,10 @@
 #ifndef LISTHELPER_HH
 #define LISTHELPER_HH
 
-class ListHelper
+namespace ListHelper
 {
-private:
-
-public:
-  /** How can it happen that the STL list does not provide an append
-      function? So we need to define our own version.
-      Attach list b to list a.
+  /** Since the STL list does not provide an append function, we need
+      to define our own version. Attach list b to list a.
 
   @param a The vector to which the data should be attached 
   @param b The vector from which the data for the attach is taken */
@@ -37,6 +33,15 @@ public:
     for (std::list<T>::iterator i = b.begin (); i != b.end (); i++)
       a.push_back (*i);
   }
+  /*
+  template<class T>
+  static std::list<T> make_list(EditorObj* obj) 
+  {
+    assert (obj);
+    std::list<boost::shared_ptr<EditorObj> > objs;
+    objs.push_back (boost::shared_ptr<EditorObj>(obj));
+    return objs;
+    }*/
 };
 
 #endif

@@ -17,6 +17,6 @@
 
 noinst_LIBRARIES = libpingus_entrances.a
 
-libpingus_entrances_a_SOURCES = entrances.cc entrances.hh \
+libpingus_entrances_a_SOURCES = \
                                 WoodThing.cc WoodThing.hh \
                                 Cloud.cc     Cloud.hh

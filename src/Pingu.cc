@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.62 2001/08/05 23:50:14 grumbel Exp $
+//  $Id: Pingu.cc,v 1.63 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,6 +52,8 @@ Pingu::Pingu(const CL_Vector& arg_pos, int owner)
     pos (arg_pos)
 {
   action_time = -1;
+
+  direction.left ();
 
   // Set the velocity to zero
   velocity.x = 0;

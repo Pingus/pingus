@@ -18,6 +18,7 @@
 #ifndef TELEPORTED_HH
 #define TELEPORTED_HH
 
+#include "../Sprite.hh"
 #include "../PinguAction.hh"
 
 ///

@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.62 2001/07/27 15:00:47 grumbel Exp $
+//  $Id: Client.cc,v 1.63 2001/08/10 10:56:13 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@
 #include "PingusSound.hh"
 #include "PingusError.hh"
 #include "OptionMenu.hh"
-//#include "PLFPLF.hh"
+#include "PLF.hh"
 // clude "XMLPLF.hh"
 #include "DeltaManager.hh"
 #include "MouseController.hh"

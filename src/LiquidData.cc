@@ -1,4 +1,4 @@
-//  $Id: LiquidData.cc,v 1.1 2001/08/09 12:04:49 grumbel Exp $
+//  $Id: LiquidData.cc,v 1.2 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ boost::shared_ptr<WorldObjData>
 LiquidData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
   std::cout << "LiquidData::create(xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
-  LiquidData* liquid = new LiquidData ();
+  LiquidData* liquid (new LiquidData ());
   
   char* width_handling = (char*)xmlGetProp(cur, (xmlChar*)"use-old-width-handling");
   if (width_handling)

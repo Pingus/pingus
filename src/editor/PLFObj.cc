@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.47 2001/08/07 19:55:22 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.48 2001/08/10 10:56:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,18 +80,6 @@ HotspotObj::save(ofstream* plf, ofstream* psm)
 	 << endl;  
 }
 
-void
-HotspotObj::save_xml(ofstream* xml)
-{
-  (*xml) << "<hotspot>\n";
-  XMLhelper::write_desc_xml(xml, desc);
-  XMLhelper::write_position_xml(xml, *position);
-  (*xml) << "  <speed>" << speed << "</speed>\n"
-	 << "  <parallax>" << para << "</parallax>\n"
-	 << "</hotspot>\n"
-	 << std::endl;  
-}
-
 std::string
 HotspotObj::status_line()
 {
@@ -100,6 +88,12 @@ HotspotObj::status_line()
   sprintf(str, "Hotspot - Speed: %d - X: %.2f - Y: %.2f - Z: %.2f",  speed, position->x, position->y, position->z);
 
   return std::string(str);
+}
+
+void 
+HotspotObj::save_xml(std::ofstream* xml)
+{
+  write_xml (xml);
 }
 
 EntranceObj::EntranceObj(const EntranceData& data)
@@ -145,6 +139,12 @@ EntranceObj::~EntranceObj()
 {
 }
 
+void
+EntranceObj::save_xml(std::ofstream* xml)
+{
+  write_xml (xml);
+}
+
 boost::shared_ptr<EditorObj>
 EntranceObj::duplicate()
 {
@@ -180,35 +180,6 @@ EntranceObj::save(ofstream* plf, ofstream* psm)
 	 << endl;
 }
 
-void
-EntranceObj::save_xml(ofstream* xml)
-{
-  std::string dir_str = "not set - this is a bug";
-
-  switch(direction)
-    {
-    case EntranceData::LEFT:
-      dir_str = "left";
-      break;
-    case EntranceData::RIGHT:
-      dir_str = "right";
-      break;
-    case EntranceData::MISC:
-    default:
-      dir_str = "misc";
-      break;
-    }
-
-  (*xml) << "<entrance>\n";
-  XMLhelper::write_position_xml(xml, *position);
-  (*xml) << "  <type>" << type << "</type>\n"
-	 << "  <direction>" << dir_str << "</direction>\n"
-	 << "  <release-rate>" << release_rate << "</release-rate>\n"
-	 << "  <owner-id>" << owner_id << "</owner-id>\n"
-	 << "</entrance>\n"
-	 << std::endl;  
-}
-
 std::string
 EntranceObj::status_line()
 {
@@ -237,10 +208,10 @@ EntranceObj::status_line()
 ExitObj::ExitObj(const ExitData& data)
   : ExitData (data)
 {
-  surf = PingusResource::load_surface(desc);
-  width = surf.get_width ();
-  height = surf.get_height ();
-  *position  = data.pos;
+  surf      = PingusResource::load_surface(desc);
+  width     = surf.get_width ();
+  height    = surf.get_height ();
+  *position = data.pos;
 
   if (!use_old_pos_handling)
     {

@@ -1,4 +1,4 @@
-//  $Id: Server.hh,v 1.13 2001/04/13 13:45:09 grumbel Exp $
+//  $Id: Server.hh,v 1.14 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,7 +77,7 @@ public:
   ///
   virtual void update(float delta);
   ///
-  virtual void start(boost::shared_ptr<PLF> level_data) {}
+  virtual void start(boost::shared_ptr<PLF> level_data);
 
   ///
   virtual void set_fast_forward(bool) = 0;

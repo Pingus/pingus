@@ -1,4 +1,4 @@
-//  $Id: Spike.cc,v 1.12 2001/08/05 21:20:53 grumbel Exp $
+//  $Id: Spike.cc,v 1.13 2001/08/10 10:56:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 
 #include "Spike.hh"
 
-Spike::Spike(TrapData data)
+Spike::Spike(const TrapData& data)
 {
   killing = false;
   pos = data.pos;

@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.34 2001/08/09 12:04:49 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.35 2001/08/10 10:56:13 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -106,27 +106,27 @@ XMLPLF::parse_file()
 	    }
 	  else if (strcmp((char*)cur->name, "exit") == 0)
 	    {
-	      parse_exit(cur);
+	      worldobjs_data.push_back (ExitData::create (doc, cur));
 	    }
 	  else if (strcmp((char*)cur->name, "entrance") == 0)
 	    {
-	      parse_entrance(cur);
+	      worldobjs_data.push_back (EntranceData::create (doc, cur));
 	    }
 	  else if (strcmp((char*)cur->name, "trap") == 0)
 	    {
-	      parse_traps(cur);
+	      worldobjs_data.push_back (TrapData::create (doc, cur));
 	    }
 	  else if (strcmp((char*)cur->name, "hotspot") == 0)
 	    {
-	      parse_hotspot(cur);
+	      worldobjs_data.push_back(HotspotData::create (doc, cur));
 	    }
 	  else if (strcmp((char*)cur->name, "liquid") == 0)
 	    {
-	      parse_liquid(cur);
+	      worldobjs_data.push_back(LiquidData::create (doc, cur));
 	    }
 	  else if (strcmp ((char*)cur->name, "worldobj") == 0)
 	    {
-	      parse_worldobj (cur);
+	      worldobjs_data.push_back(WorldObjDataFactory::instance ()->create (doc, cur));
 	    }
 	  else if (strcmp((char*)cur->name, "group") == 0)
 	    {
@@ -225,23 +225,23 @@ XMLPLF::parse_group(xmlNodePtr cur)
 	}
       else if (strcmp((char*)cur->name, "exit") == 0)
 	{
-	  parse_exit(cur);
+	  worldobjs_data.push_back (ExitData::create (doc, cur));
 	}
       else if (strcmp((char*)cur->name, "entrance") == 0)
 	{
-	  parse_entrance(cur);
+	  worldobjs_data.push_back (EntranceData::create (doc, cur));
 	}
       else if (strcmp((char*)cur->name, "trap") == 0)
 	{
-	  parse_traps(cur);
+	  worldobjs_data.push_back (TrapData::create (doc, cur));
 	}
       else if (strcmp((char*)cur->name, "hotspot") == 0)
 	{
-	  parse_hotspot(cur);
+	  worldobjs_data.push_back(HotspotData::create (doc, cur));
 	}
       else if (strcmp((char*)cur->name, "liquid") == 0)
 	{
-	  parse_liquid(cur);
+	  worldobjs_data.push_back(LiquidData::create (doc, cur));
 	}
       else if (strcmp((char*)cur->name, "group") == 0)
 	{
@@ -249,7 +249,7 @@ XMLPLF::parse_group(xmlNodePtr cur)
 	}
       else if (strcmp ((char*)cur->name, "worldobj") == 0)
 	{
-	  parse_worldobj (cur);
+	  worldobjs_data.push_back(WorldObjDataFactory::instance ()->create (doc, cur));
 	}
       else
 	{
@@ -257,50 +257,6 @@ XMLPLF::parse_group(xmlNodePtr cur)
 	}
       cur = cur->next;
     } 
-}
-
-void
-XMLPLF::parse_liquid(xmlNodePtr cur)
-{
-  LiquidData liquid;
-
-  char* width_handling = (char*)xmlGetProp(cur, (xmlChar*)"use-old-width-handling");
-  if (width_handling)
-    {
-      std::cout << "XMLPLF: Use Old Width Handling: " << width_handling << std::endl;
-      liquid.old_width_handling = StringConverter::to_int (width_handling);
-      free (width_handling);
-    }
-  else
-    {
-      liquid.old_width_handling = true;
-    }
-
-  cur = cur->children;
-  while (cur != NULL)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
-
-      if (strcmp((char*)cur->name, "position") == 0)
-	liquid.pos = XMLhelper::parse_vector(doc, cur);
-      else if (strcmp((char*)cur->name, "surface") == 0)
-	liquid.desc = XMLhelper::parse_surface(doc, cur);
-      else if (strcmp((char*)cur->name, "speed") == 0)
-	liquid.speed = XMLhelper::parse_int(doc, cur);
-      else if (strcmp((char*)cur->name, "width") == 0)
-	liquid.width = XMLhelper::parse_int(doc, cur);
-      else
-	{
-	  std::cout << "XMLPLF::parse_liquid: Unhandled: " << cur->name << std::endl;
-	}	
-
-      cur = cur->next;
-    }
-  liquids.push_back(liquid);
 }
 
 void 
@@ -348,109 +304,6 @@ XMLPLF::parse_actions(xmlNodePtr cur)
 	  
       cur = cur->next;
     }      
-}
-
-void 
-XMLPLF::parse_entrance(xmlNodePtr cur)
-{
-  EntranceData entrance;
-  cur = cur->children;  
-  while (cur != NULL)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
-
-      if (strcmp((char*)cur->name, "type") == 0)
-	{
-	  char* name = (char*)xmlNodeListGetString(doc, cur->children, 1); 
-	  entrance.type = name;
-	  free(name);
-	}
-      else if (strcmp((char*)cur->name, "owner-id") == 0)
-	{
-	  entrance.owner_id = XMLhelper::parse_int(doc, cur);
-	}
-      else if (strcmp((char*)cur->name, "position") == 0)
-	{
-	  entrance.pos = XMLhelper::parse_vector(doc, cur);
-	}
-      else if (strcmp((char*)cur->name, "release-rate") == 0)
-	{
-	  char* release_rate = (char*)xmlNodeListGetString(doc, cur->children, 1);
-	  entrance.release_rate = StringConverter::to_int(release_rate);
-	  free(release_rate);
-	}
-      else if (strcmp((char*)cur->name, "direction") == 0)
-	{
-	  char* direction = (char*)xmlNodeListGetString(doc, cur->children, 1);
-
-	  if (strcmp(direction, "left") == 0)
-	    entrance.direction = EntranceData::LEFT;
-	  else if (strcmp(direction, "right") == 0)
-	    entrance.direction = EntranceData::RIGHT;
-	  else if (strcmp(direction, "misc") == 0)
-	    entrance.direction = EntranceData::MISC;
-	  
-	  free(direction);
-	}
-      else
-	{
-	  printf("Unhandled: %s\n", (char*)cur->name);
-	}	
-      cur = cur->next;	
-    }   
-  entrances.push_back(entrance);
-}
-
-void 
-XMLPLF::parse_exit(xmlNodePtr cur)
-{
-  ExitData exit;
-
-  char* pos_handling = (char*)xmlGetProp(cur, (xmlChar*)"use-old-pos-handling");
-  if (pos_handling)
-    {
-      std::cout << "XMLPLF: Use Old Pos Handling: " << pos_handling << std::endl;
-      exit.use_old_pos_handling = StringConverter::to_int (pos_handling);
-      free (pos_handling);
-    }
-  else
-    {
-      exit.use_old_pos_handling = true;
-    }
-
-  cur = cur->children;
-  while (cur != NULL)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
-      
-      if (strcmp((char*)cur->name, "position") == 0)
-	{
-	  exit.pos = XMLhelper::parse_vector(doc, cur);
-	}
-      else if (strcmp((char*)cur->name, "surface") == 0)
-	{
-	  exit.desc = XMLhelper::parse_surface(doc, cur);
-	}
-      else if (strcmp((char*)cur->name, "owner-id") == 0)
-	{
-	  exit.owner_id = XMLhelper::parse_int(doc, cur);
-	}
-      else
-	{
-	  std::cout << "XMLPLF: Unhandled exit tag: " << (char*)cur->name << std::endl;
-	}
-      cur = cur->next;	
-    }
-
-  exits.push_back(exit);
 }
 
 void
@@ -574,86 +427,6 @@ XMLPLF::parse_groundpiece(xmlNodePtr cur)
       cur = cur->next;	
     }
   groundpieces.push_back(surface);
-}
-
-void
-XMLPLF::parse_traps(xmlNodePtr cur)
-{
-  TrapData trap;
-  cur = cur->children;
-  while (cur != NULL)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
-
-      if (strcmp((char*)cur->name, "type") == 0)
-	{
-	  char* name = (char*)xmlNodeListGetString(doc, cur->children, 1);
-	  if (name)
-	    {
-	      // std::cout << "parse_trap: name = " << name << std::endl;
-	      trap.type = name;
-	      free(name);
-	    }
-	} 
-      else if (strcmp((char*)cur->name, "position") == 0) 
-	{
-	  trap.pos = XMLhelper::parse_vector(doc, cur);
-	}
-
-      cur = cur->next;
-    }
-  traps.push_back(trap);
-}  
-
-void
-XMLPLF::parse_hotspot(xmlNodePtr cur)
-{
-  HotspotData hotspot;
-  cur = cur->children;
-  while (cur != NULL)
-    {
-      if (xmlIsBlankNode(cur)) 
-	{
-	  cur = cur->next;
-	  continue;
-	}
-      
-      if (strcmp((char*)cur->name, "surface") == 0)
-	{
-	  hotspot.desc = XMLhelper::parse_surface(doc, cur);
-	} 
-      else if (strcmp((char*)cur->name, "position") == 0) 
-	{
-	  hotspot.pos = XMLhelper::parse_vector(doc, cur);
-	}
-      else if (strcmp((char*)cur->name, "speed") == 0) 
-	{
-	  hotspot.speed = XMLhelper::parse_int(doc, cur);
-	}
-      else if (strcmp((char*)cur->name, "parallax") == 0) 
-	{
-	  hotspot.para = XMLhelper::parse_int(doc, cur);
-	}
-      else
-	{
-	  std::cout << "XMLPLF: parse_hotspot: Unhandled: " << cur->name << std::endl;
-	}
-      cur = cur->next;
-    }
-  hotspots.push_back(hotspot);
-}
-
-void 
-XMLPLF::parse_worldobj (xmlNodePtr cur)
-{
-  std::cout << "Creating WorldObjData..." << std::endl;
-  // The alloctated objects are delete'd in the destructor
-  worldobjs_data.push_back(WorldObjDataFactory::instance ()->create (doc, cur));
- std::cout << "Creating WorldObjData...done" << std::endl;
 }
 
 /* EOF */

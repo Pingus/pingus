@@ -1,4 +1,4 @@
-//  $Id: Trap.hh,v 1.17 2001/04/21 10:55:15 grumbel Exp $
+//  $Id: Trap.hh,v 1.18 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,24 +37,18 @@ class Trap : public TrapData,
 	     public WorldObj
 {
 protected:
-  ///
   CL_Surface surface;
-  ///
   GameCounter counter;
 
 public:
-  ///
   Trap();
-  ///
   virtual ~Trap();
-  ///
+
   virtual int  get_z_pos() const { return (int) pos.z; }
-  ///
   virtual void draw_offset(int x, int y, float s = 1.0);
-  ///
   virtual void update(float delta);
   /// return true if the pingu was catched
-  virtual void catch_pingu(boost::shared_ptr<Pingu>);
+  virtual void catch_pingu(boost::shared_ptr<Pingu>) =0;
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: PLF.hh,v 1.22 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: PLF.hh,v 1.23 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,66 +48,37 @@
 class PLF 
 {
 protected:
-  ///
   std::map<std::string, std::string> levelname;
 
   /// The name of the file from were the current level was loaded
   std::string filename;
 
-  ///
   std::string psm_filename;
-  ///
   std::map<std::string, std::string> description;
-  ///
   std::string author;
-  ///
   ResDescriptor foreground;
-  ///
   std::vector<boost::shared_ptr<BackgroundData> > backgrounds;
-  ///
   ResDescriptor music;
-  ///
   ResDescriptor col;
-  //
-  //MapType  maptype;
-  ///
-  int  bg_speed;
-  ///
+
   int  start_x_pos;
-  ///
   int  start_y_pos;
-  ///
   int  width;
-  ///
   int  height;
-  ///
   int  max_time;
-  ///
-  int release_rate;
-  ///
+  int  release_rate;
   int  number_of_pingus;
-  ///
   int  number_to_save;
-  ///
   int  difficulty;
   
-  ///
   std::vector<ActionData>   actions;
-  ///
   std::vector<EntranceData> entrances;
-  ///
   std::vector<ExitData>     exits;
-  ///
   std::vector<HotspotData>  hotspots;
-  ///
   std::vector<LiquidData>   liquids;
-  ///
   std::vector<TrapData>     traps;
-  /// 
   std::vector<GroundpieceData>  groundpieces;
-  ///
   std::vector<WeatherData>  weathers;
-  ///
   std::vector<boost::shared_ptr<WorldObjData> > worldobjs_data;
 public:
   ///

@@ -1,4 +1,4 @@
-//  $Id: WorldObjData.hh,v 1.7 2001/08/09 08:56:44 grumbel Exp $
+//  $Id: WorldObjData.hh,v 1.8 2001/08/10 10:56:13 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ public:
   virtual void write_xml (std::ofstream* xml) =0;
 
   /** We are reading a <worldobj> tag and decide which sub-worldobj it will be. */
-  static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
+  //static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
 
   /** Create an WorldObj from the given data object */
   virtual boost::shared_ptr<WorldObj> create_WorldObj () =0;

@@ -1,4 +1,4 @@
-//  $Id: Hotspot.hh,v 1.7 2001/04/21 10:55:15 grumbel Exp $
+//  $Id: Hotspot.hh,v 1.8 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include <map>
 #include <string>
 #include <ClanLib/core.h>
+#include <ClanLib/display.h>
 
 #include "WorldObj.hh"
 #include "AnimCounter.hh"
@@ -33,20 +34,13 @@ class Hotspot : public HotspotData,
 		public WorldObj
 {
 private:
-  ///
   CL_Surface surface;
-  ///
   int speed;
-  ///
   float para;
-  ///
   AnimCounter count;
 public:
-  ///
-  Hotspot(HotspotData spot);
-  ///
-  virtual ~Hotspot() {}
-  ///
+  Hotspot(const HotspotData& spot);
+  
   void draw_offset(int x, int y, float s = 1.0);
   virtual int  get_z_pos() const { return (int) pos.z; }
 };

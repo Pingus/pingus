@@ -1,4 +1,4 @@
-//  $Id: Server.cc,v 1.20 2001/06/11 20:40:16 grumbel Exp $
+//  $Id: Server.cc,v 1.21 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,9 @@ using namespace boost;
 #include "Server.hh"
 #include "GameTime.hh"
 #include "Pingu.hh"
+#include "PinguHolder.hh"
 #include "PingusError.hh"
+#include "PLF.hh"
 
 using namespace std;
 
@@ -60,6 +62,11 @@ Server::Server()
 }
 
 Server::~Server()
+{
+}
+
+void 
+Server::start(boost::shared_ptr<PLF> level_data)
 {
 }
 
@@ -151,6 +158,7 @@ Server::process_event(std::string event)
       
       token = strtok(NULL, delimiters); // Get Pingu id
       pingu_id = atoi(token.c_str());
+
 
       token = strtok(NULL, delimiters); // Get action name
       action = token;

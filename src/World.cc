@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.53 2001/08/09 12:04:49 grumbel Exp $
+//  $Id: World.cc,v 1.54 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,8 @@
 #include <functional>
 
 #include "PingusSpotMap.hh"
-
+#include "PinguHolder.hh"
+#include "PLF.hh"
 #include "PingusSound.hh"
 #include "View.hh"
 #include "PingusError.hh"
@@ -32,7 +33,6 @@
 #include "globals.hh"
 #include "backgrounds/SurfaceBackground.hh"
 #include "World.hh"
-#include "traps/traps.hh"
 #include "Result.hh"
 #include "Liquid.hh"
 #include "ActionHolder.hh"
@@ -138,6 +138,7 @@ World::update(float delta)
     }
   
   // Create new pingus, if enough time is passed
+  /*
   if (!do_armageddon)
     {
       for(vector<shared_ptr<Entrance> >::iterator i = entrance.begin(); i != entrance.end(); i++) 
@@ -148,7 +149,7 @@ World::update(float delta)
 	      ++released_pingus;
 	    }
 	}
-    }
+	}*/
   
   // Let all pingus move and
   // Let the pingus catch each other and
@@ -177,9 +178,9 @@ World::update(float delta)
 	  (*pingu)->catch_pingu(i->get());
 	}
       }
-    
-      for(vector<shared_ptr<Trap> >::iterator obj = traps.begin(); obj != traps.end(); obj++)
-	(*obj)->catch_pingu(*pingu);
+      
+      //for(vector<shared_ptr<Trap> >::iterator obj = traps.begin(); obj != traps.end(); obj++)
+	//(*obj)->catch_pingu(*pingu);
       
       for(vector<shared_ptr<Exit> >::iterator obj = exits.begin(); obj != exits.end(); obj++) 
 	(*obj)->catch_pingu(*pingu);
@@ -267,16 +268,29 @@ World::init_worldobjs()
   vector<LiquidData>   liquid_d   = plf->get_liquids();
   vector<WeatherData>  weather_d  = plf->get_weather();
   vector<shared_ptr<WorldObjData> > worldobj_d = plf->get_worldobjs_data ();
+  vector<shared_ptr<WorldObjData> > tmy_worldobj = plf->get_worldobjs_data ();
 
   // Creating Exit and Entrance
   for(vector<ExitData>::iterator i = exit_d.begin(); i != exit_d.end(); i++) 
     exits.push_back(shared_ptr<Exit>(new Exit(*i)));
   
-  for(vector<EntranceData>::size_type i = 0; i < entrance_d.size(); ++i) 
-    entrance.push_back(get_entrance(entrance_d[i]));
+  for(vector<EntranceData>::iterator i = entrance_d.begin ();
+      i != entrance_d.end (); ++i)
+    {
+      if (i->pos.z > 0)
+	world_obj_fg.push_back(i->create_WorldObj ());
+      else
+	world_obj_bg.push_back(i->create_WorldObj ()); 
+    }
 
-  for(vector<shared_ptr<TrapData> >::size_type i=0; i < trap_d.size(); ++i)
-    traps.push_back(get_trap(trap_d[i]));
+  for(vector<EntranceData>::iterator i = entrance_d.begin ();
+      i != entrance_d.end (); ++i)
+    {
+      if (i->pos.z > 0)
+	world_obj_fg.push_back(i->create_WorldObj ());
+      else
+	world_obj_bg.push_back(i->create_WorldObj ()); 
+    }
 
   // Creating the foreground and background hotspots
   for(vector<shared_ptr<HotspotData> >::size_type i = 0; i < hspot_d.size(); ++i)
@@ -314,12 +328,12 @@ World::init_worldobjs()
 	world_obj_fg.push_back(exits[i]);
     }  
   
-  for(vector<EntranceData>::size_type i=0; i < entrance.size(); ++i)
+  for(vector<EntranceData>::iterator i= entrance_d.begin (); i != entrance_d.end(); ++i)
     {
-      if (entrance[i]->pos.z <= 0)
-	world_obj_bg.push_back(entrance[i]);
+      if (i->pos.z <= 0)
+	world_obj_bg.push_back(i->create_WorldObj ());
       else 
-	world_obj_fg.push_back(entrance[i]);
+	world_obj_fg.push_back(i->create_WorldObj ());
     }
   
   for(vector<LiquidData>::size_type i=0; i < liquid_d.size(); ++i)
@@ -330,12 +344,12 @@ World::init_worldobjs()
 	world_obj_fg.push_back(liquid[i]);
     }
   
-  for(vector<TrapData>::size_type i=0; i < traps.size(); ++i) 
+  for(vector<TrapData>::iterator i = trap_d.begin (); i < trap_d.end(); ++i)
     {
-      if (traps[i]->pos.z <= 0)
-	world_obj_bg.push_back(traps[i]);
+      if (i->pos.z <= 0)
+	world_obj_bg.push_back(i->create_WorldObj ());
       else 
-	world_obj_fg.push_back(traps[i]);
+	world_obj_fg.push_back(i->create_WorldObj ());
     }
 
   for (vector<shared_ptr<WorldObjData> >::iterator i = worldobj_d.begin ();

@@ -1,4 +1,4 @@
-//  $Id: ExitData.hh,v 1.5 2001/04/21 10:55:15 grumbel Exp $
+//  $Id: ExitData.hh,v 1.6 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,9 +22,10 @@
 
 #include <ClanLib/core.h>
 #include "ResDescriptor.hh"
+#include "WorldObjData.hh"
 
 ///
-class ExitData
+class ExitData : public WorldObjData
 {
 public:
   CL_Vector pos;
@@ -46,6 +47,12 @@ public:
     owner_id = 0; 
     use_old_pos_handling = true;
   }
+
+  void write_xml(ofstream *);
+  static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
+  
+  boost::shared_ptr<WorldObj> create_WorldObj();
+  EditorObjLst create_EditorObj();
 };
 
 #endif

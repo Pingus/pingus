@@ -1,4 +1,4 @@
-//  $Id: FakeExit.hh,v 1.7 2001/04/01 18:00:43 grumbel Exp $
+//  $Id: FakeExit.hh,v 1.8 2001/08/10 10:56:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,17 +27,12 @@
 class FakeExit : public Trap
 {
 private:
-  ///
   bool smashing;
 public:
-  ///
-  FakeExit(TrapData data);
-  ///
+  FakeExit(const TrapData& data);
   virtual ~FakeExit();
   
-  ///
   void update(float delta);
-  ///
   void catch_pingu(boost::shared_ptr<Pingu>);
 };
 

@@ -1,4 +1,4 @@
-//  $Id: Angel.hh,v 1.2 2001/08/02 21:51:02 grumbel Exp $
+//  $Id: Angel.hh,v 1.3 2001/08/10 10:56:14 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef ANGEL_HH
 #define ANGEL_HH
 
+#include "../Sprite.hh"
 #include "../PinguAction.hh"
 
 class Angel : public PinguAction

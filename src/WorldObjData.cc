@@ -1,4 +1,4 @@
-//  $Id: WorldObjData.cc,v 1.9 2001/06/11 20:40:16 grumbel Exp $
+//  $Id: WorldObjData.cc,v 1.10 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "worldobjs/SwitchDoor.hh"
 #include "WorldObjData.hh"
 
+/*
 boost::shared_ptr<WorldObjData>
 WorldObjData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
@@ -54,6 +55,6 @@ WorldObjData::create(xmlDocPtr doc, xmlNodePtr cur)
 	}
     }
   return data;
-}
+}*/
 
 /* EOF */

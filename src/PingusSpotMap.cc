@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.43 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.44 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -98,7 +98,6 @@ PingusSpotMap::PingusSpotMap(boost::shared_ptr<PLF> plf)
       break;
 
     case ResDescriptor::FILE:
-      //if (verbose) std::cout << "PingusSpotMap: Loading... " << CL_System::get_time() << std::endl;
       load(plf);
       gen_tiles();
       break;
@@ -180,28 +179,7 @@ PingusSpotMap::load(boost::shared_ptr<PLF> plf)
     }
   create_map();
 }
-/*
-// Load the map from a *.psm (Pingu Spot Map) file and load the surfaces
-void
-PingusSpotMap::load_psm(std::string filename)
-{
-  Timer timer;
 
-  timer.start();
-  std::cout << "PingusSpotMap: Parsing file..." << std::flush;
-  psm_parser.parse(filename);
-  std::cout << " done " << timer.stop() << std::endl;
-
-  timer.start();
-  std::cout << "PingusSpotMap: Loading surfaces..." << std::flush;
-  psm_parser.load_surfaces();
-  std::cout << " done " << timer.stop() << std::endl;
-
-  timer.start();
-  std::cout << "PingusSpotMap: Generating Map..." << std::flush;
-  surfaces = psm_parser.get_surfaces();
-}
-*/
 void
 PingusSpotMap::create_map()
 {

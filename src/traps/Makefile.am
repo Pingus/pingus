@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.4 2000/07/30 01:47:38 grumbel Exp $
+#  $Id: Makefile.am,v 1.5 2001/08/10 10:56:14 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@ noinst_LIBRARIES = libpingu_traps.a
 EXTRA_DIST = README
 
 libpingu_traps_a_SOURCES =           \
-         traps.hh      traps.cc      \
          smasher.cc    smasher.hh    \
          hammer.cc     hammer.hh     \
          FakeExit.cc   FakeExit.hh   \

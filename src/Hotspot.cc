@@ -1,4 +1,4 @@
-//  $Id: Hotspot.cc,v 1.9 2001/04/21 10:55:15 grumbel Exp $
+//  $Id: Hotspot.cc,v 1.10 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,10 +23,9 @@
 
 #include "Hotspot.hh"
 #include "globals.hh"
-#include "PLF.hh"
 #include "PingusResource.hh"
 
-Hotspot::Hotspot(HotspotData spot)
+Hotspot::Hotspot(const HotspotData& spot)
 {
   if (verbose > 2)
     std::cout << "Creating Hotspot" << std::endl;

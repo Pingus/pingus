@@ -1,4 +1,4 @@
-//  $Id: EntranceData.hh,v 1.4 2001/04/10 21:51:22 grumbel Exp $
+//  $Id: EntranceData.hh,v 1.5 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,11 +22,11 @@
 
 #include <string>
 
+#include "WorldObjData.hh"
 #include "Position.hh"
 #include "ResDescriptor.hh"
 
-///
-class EntranceData 
+class EntranceData : public WorldObjData
 {
 public:
   enum EntranceDirection { LEFT, RIGHT, MISC };
@@ -43,12 +43,20 @@ public:
     clean();
   }
   
+  virtual ~EntranceData () {}
+
   void clean(void) {
     type = "generic";
     direction = MISC;
     release_rate = 50;
     owner_id = 0;
   }
+
+  void write_xml(ofstream *);
+  static boost::shared_ptr<WorldObjData> create(xmlDocPtr doc, xmlNodePtr cur);
+
+  EditorObjLst create_EditorObj();
+  boost::shared_ptr<WorldObj> create_WorldObj();
 };
 
 #endif

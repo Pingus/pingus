@@ -1,4 +1,4 @@
-//  $Id: Drown.cc,v 1.11 2001/08/09 12:50:48 grumbel Exp $
+//  $Id: Drown.cc,v 1.12 2001/08/10 10:56:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/core.h>
+#include "../Pingu.hh"
 #include "../PingusResource.hh"
 #include "Drown.hh"
 

@@ -1,4 +1,4 @@
-//  $Id: teleported.cc,v 1.12 2001/08/05 21:20:53 grumbel Exp $
+//  $Id: teleported.cc,v 1.13 2001/08/10 10:56:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../Pingu.hh"
 #include "../PingusResource.hh"
 #include "teleported.hh"
 

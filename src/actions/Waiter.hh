@@ -1,4 +1,4 @@
-//  $Id: Waiter.hh,v 1.8 2001/08/02 21:51:03 grumbel Exp $
+//  $Id: Waiter.hh,v 1.9 2001/08/10 10:56:14 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef WAITER_HH
 #define WAITER_HH
 
+#include "../Sprite.hh"
 #include "../PinguAction.hh"
 
 /** A Waiting action for the bridger, it gets activated when the

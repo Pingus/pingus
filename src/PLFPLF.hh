@@ -1,4 +1,4 @@
-//  $Id: PLFPLF.hh,v 1.3 2000/12/16 23:11:20 grumbel Exp $
+//  $Id: PLFPLF.hh,v 1.4 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,39 +46,28 @@ class PLFPLF : public PLFParser, public PLF
 {
 private:
   boost::shared_ptr<SurfaceBackgroundData> sur_background;
-  ///
+
   EntranceData entrance_s;
-  ///
   ExitData     exit_s;
-  ///
   HotspotData  hotspot_s;
-  ///
-  LiquidData   liquid_s;
-  ///
   TrapData     trap_s;
-  ///
+  LiquidData   liquid_s;
+
   enum plf_groups { GLOBAL, BACKGROUND, GROUND, MUSIC, EXIT, LIQUID,
 		    ENTRANCE, TRAP, HOTSPOT, BUTTONS, NONE };
   plf_groups current_group;
 
   /// Private functions
   void set_group_start(std::string);
-  ///
   void set_group_end(void);
-  ///
   void set_value(std::string valueid,
 		 std::string cast,
 		 std::string value);
-  ///
   int   str_to_int(const std::string& str);
-  ///
   float str_to_float(const std::string& str);
-  ///
   bool  str_to_bool(const std::string& str);
 public:
-  ///
   PLFPLF(std::string);
-  ///
   virtual ~PLFPLF();
 };
 

@@ -1,4 +1,4 @@
-//  $Id: hammer.cc,v 1.13 2001/04/21 10:55:16 grumbel Exp $
+//  $Id: hammer.cc,v 1.14 2001/08/10 10:56:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "../algo.hh"
 #include "../ActionHolder.hh"
 
-Hammer::Hammer(TrapData data)
+Hammer::Hammer(const TrapData& data)
 {
   pos = data.pos;
 

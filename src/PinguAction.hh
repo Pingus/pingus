@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.23 2001/08/05 23:50:14 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.24 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,9 +24,7 @@
 #include "boost/smart_ptr.hpp"
 
 #include "WorldObj.hh"
-#include "AnimCounter.hh"
 #include "PinguEnums.hh"
-#include "Pingu.hh"
 #include "my_gettext.hh"
 
 ///

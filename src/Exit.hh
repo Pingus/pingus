@@ -1,4 +1,4 @@
-//  $Id: Exit.hh,v 1.15 2001/04/21 10:55:15 grumbel Exp $
+//  $Id: Exit.hh,v 1.16 2001/08/10 10:56:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,29 +29,22 @@
 #include "ActionHolder.hh"
 #include "Sprite.hh"
 
-///
 class Exit : public ExitData,
 	     public WorldObj
 {
 private:
-  ///
   Sprite sprite;
   Sprite flag;
+
 public:
-  ///
-  Exit(ExitData data);
-  ///
-  virtual ~Exit();
-  ///
+  Exit(const ExitData& data);
+  ~Exit();
+  
   void draw_colmap();
-  ///
   void draw_offset(int x, int y, float s = 1.0);
-  ///
   void update (float delta);
-  ///
   bool catch_pingu(boost::shared_ptr<Pingu> pingu);
-  ///
-  virtual int  get_z_pos() const { return (int) pos.z; }
+  int  get_z_pos() const { return (int) pos.z; }
 };
 
 #endif
