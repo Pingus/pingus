@@ -1,4 +1,4 @@
-//  $Id: system.cxx,v 1.21 2003/08/13 13:46:39 sphair Exp $
+//  $Id: system.cxx,v 1.21.2.1 2003/11/01 21:19:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,7 @@
 
 #include <iostream>
 
+#include "pingus_error.hxx"
 #include "globals.hxx"
 #include "string_converter.hxx"
 #include "system.hxx"
@@ -182,11 +183,16 @@ void
 System::create_dir(std::string directory)
 {
 #ifndef WIN32
+  if (pingus_debug_flags & PINGUS_DEBUG_DIRECTORIES)
+    {
+      std::cout << "System::create_dir: " << directory << std::endl;
+    }
+
   if (!exist(directory))
     {
       if (mkdir(directory.c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) != 0)
 	{
-	  throw Error(directory + ": " + strerror(errno));
+	  throw PingusError("System::create_dir: " + directory + ": " + strerror(errno));
 	}
       else
 	{
@@ -262,7 +268,7 @@ System::get_statdir()
     }
   else
     {
-      throw Error(_("Environment variable $HOME not set, fix that and start again."));
+      throw PingusError(_("Environment variable $HOME not set, fix that and start again."));
     }
 #endif
 }
@@ -432,7 +438,7 @@ System::checksum (std::string filename)
 
       if (bytes_read == -1)
 	{
-	  throw Error ("System:checksum: file read error");
+	  throw PingusError("System:checksum: file read error");
 	}
 
       for (int i=0; i < bytes_read; ++i)

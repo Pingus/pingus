@@ -1,4 +1,4 @@
-//  $Id: globals.hxx,v 1.18 2003/08/16 20:51:28 grumbel Exp $
+//  $Id: globals.hxx,v 1.18.2.1 2003/11/01 21:19:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,20 +67,21 @@ extern int         pingus_debug_flags;              ///< Set some bits in this t
 extern int         min_frame_skip;
 extern int         max_frame_skip;
 
-enum { PINGUS_DEBUG_ACTIONS    = (1 << 0),
-       PINGUS_DEBUG_SOUND      = (1 << 1),
-       PINGUS_DEBUG_GAMETIME   = (1 << 2),
-       PINGUS_DEBUG_TILES      = (1 << 3),
-       PINGUS_DEBUG_LOADING    = (1 << 4),
-       PINGUS_DEBUG_EDITOR     = (1 << 5),
-       PINGUS_DEBUG_BLITTER    = (1 << 6),
-       PINGUS_DEBUG_TRANSLATOR = (1 << 7),
-       PINGUS_DEBUG_RESOURCES  = (1 << 8),
-       PINGUS_DEBUG_GUI        = (1 << 9),
-       PINGUS_DEBUG_INPUT      = (1 << 10),
-       PINGUS_DEBUG_WORLDMAP   = (1 << 11),
-       PINGUS_DEBUG_PATHMGR    = (1 << 12),
-       PINGUS_DEBUG_ALL        = (~0)
+enum { PINGUS_DEBUG_ACTIONS     = (1 << 0),
+       PINGUS_DEBUG_SOUND       = (1 << 1),
+       PINGUS_DEBUG_GAMETIME    = (1 << 2),
+       PINGUS_DEBUG_TILES       = (1 << 3),
+       PINGUS_DEBUG_LOADING     = (1 << 4),
+       PINGUS_DEBUG_EDITOR      = (1 << 5),
+       PINGUS_DEBUG_BLITTER     = (1 << 6),
+       PINGUS_DEBUG_TRANSLATOR  = (1 << 7),
+       PINGUS_DEBUG_RESOURCES   = (1 << 8),
+       PINGUS_DEBUG_GUI         = (1 << 9),
+       PINGUS_DEBUG_INPUT       = (1 << 10),
+       PINGUS_DEBUG_WORLDMAP    = (1 << 11),
+       PINGUS_DEBUG_PATHMGR     = (1 << 12),
+       PINGUS_DEBUG_DIRECTORIES = (1 << 13),
+       PINGUS_DEBUG_ALL         = (~0)
      };
 
 
