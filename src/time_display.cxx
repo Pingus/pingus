@@ -1,4 +1,4 @@
-//  $Id: time_display.cxx,v 1.17 2003/10/20 13:33:43 grumbel Exp $
+//  $Id: time_display.cxx,v 1.18 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,8 @@
 #include "game_time.hxx"
 #include "fonts.hxx"
 #include "string_converter.hxx"
+
+namespace Pingus {
 
 TimeDisplay::TimeDisplay (Client* c)
   : server(c->get_server()),
@@ -68,5 +70,7 @@ TimeDisplay::draw (GraphicContext& gc)
 
   UNUSED_ARG(gc);
 }
+
+} // namespace Pingus
 
 /* EOF */

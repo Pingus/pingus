@@ -1,4 +1,4 @@
-//  $Id: sprite_drawable.cxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: sprite_drawable.cxx,v 1.5 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include "../gui/graphic_context.hxx"
 #include "sprite_drawable.hxx"
 
+namespace Pingus {
 namespace WorldMapNS {
 
 SpriteDrawable::SpriteDrawable(xmlDocPtr doc, xmlNodePtr cur)
@@ -40,5 +41,6 @@ SpriteDrawable::draw(GraphicContext& gc)
 }
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 /* EOF */

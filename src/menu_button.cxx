@@ -1,4 +1,4 @@
-//  $Id: menu_button.cxx,v 1.13 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: menu_button.cxx,v 1.14 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,7 +64,7 @@ SurfaceButton::draw (GraphicContext& gc)
   if (mouse_over && !pressed)
     {
       gc.print_center(font, CL_Display::get_width() / 2,
-                      CL_Display::get_height() - font->get_height(),
+                      CL_Display::get_height() - font.get_height(),
                       desc.c_str());
 
       gc.draw(surface_p, x_pos - surface_p.get_width()/2,
@@ -73,12 +73,12 @@ SurfaceButton::draw (GraphicContext& gc)
       if (line2.empty())
 	{
 	  gc.print_center(font_large, x_pos + 32,
-                          y_pos - 32 - font_large->get_height()/2,
+                          y_pos - 32 - font_large.get_height()/2,
                           line1.c_str());
 	}
       else
 	{
-	  gc.print_center(font_large, x_pos + 32, y_pos - 32 - (font_large->get_height() - 5),
+	  gc.print_center(font_large, x_pos + 32, y_pos - 32 - (font_large.get_height() - 5),
                           line1.c_str());
 	  gc.print_center(font_large, x_pos + 32, y_pos - 32,
                           line2.c_str());
@@ -101,13 +101,13 @@ SurfaceButton::draw (GraphicContext& gc)
 	{
 	  gc.print_center(font_large,
                           x_pos + 32,
-                          y_pos - 32 - font_large->get_height()/2,
+                          y_pos - 32 - font_large.get_height()/2,
                           line1.c_str());
 	}
       else
 	{
 	  gc.print_center(font_large,
-                          x_pos + 32, y_pos - 32 - font_large->get_height(),
+                          x_pos + 32, y_pos - 32 - font_large.get_height(),
                           line1.c_str());
 	  gc.print_center(font_large, x_pos + 32, y_pos - 32,
                           line2.c_str());
@@ -132,7 +132,7 @@ void
 SurfaceButton::on_pointer_enter ()
 {
   mouse_over = true;
-  PingusSound::play_sound ("tick");
+  Sound::PingusSound::play_sound ("tick");
   //std::cout << "X: " << this << "enter" << std::endl;
 }
 
@@ -349,7 +349,7 @@ StoryButton::~StoryButton () {}
 void
 StoryButton::on_click ()
 {
-  PingusSound::play_sound ("letsgo");
+  Sound::PingusSound::play_sound ("letsgo");
 
   bool story_seen = false;
   StatManager::instance()->get_bool("story-seen", story_seen);
@@ -379,7 +379,7 @@ ThemeButton::ThemeButton (PingusMenu* menu_)
 void
 ThemeButton::on_click ()
 {
-  PingusSound::play_sound ("letsgo");
+  Sound::PingusSound::play_sound ("letsgo");
 
   ThemeSelector theme_selector;
   theme_selector.display();

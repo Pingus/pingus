@@ -1,4 +1,4 @@
-//  $Id: level_dot.cxx,v 1.25 2003/10/20 19:28:55 grumbel Exp $
+//  $Id: level_dot.cxx,v 1.26 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -152,11 +152,12 @@ LevelDot::accessible()
 void
 LevelDot::draw_hover(GraphicContext& gc)
 {
+#ifdef CLANLIB_0_6
   int pos_correction = 0;
 
   if (accessible())
     {
-      int length = Fonts::pingus_small->get_text_width(System::translate(get_plf()->get_levelname())) / 2;
+      int length = Fonts::pingus_small.get_text_width(System::translate(get_plf()->get_levelname())) / 2;
       int realpos = static_cast<int>(gc.world_to_screen(Vector(pos.x, pos.y, 0)).x);
       if (realpos - length < 0)
         pos_correction = realpos - length;
@@ -170,7 +171,7 @@ LevelDot::draw_hover(GraphicContext& gc)
     }
   else
     {
-      int length = Fonts::pingus_small->get_text_width(_("locked")) / 2;
+      int length = Fonts::pingus_small.get_text_width(_("locked")) / 2;
       int realpos = static_cast<int>(gc.world_to_screen(Vector(pos.x, pos.y, 0)).x);
       if (realpos - length < 0)
         pos_correction = realpos - length;
@@ -189,6 +190,7 @@ LevelDot::draw_hover(GraphicContext& gc)
                       int(pos.x), int(pos.y - 56),
                       get_plf()->get_resname());
     }
+#endif
 }
 
 void

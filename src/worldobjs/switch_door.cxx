@@ -1,4 +1,4 @@
-//  $Id: switch_door.cxx,v 1.27 2003/10/20 19:28:55 grumbel Exp $
+//  $Id: switch_door.cxx,v 1.28 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,10 +70,10 @@ SwitchDoor::draw (GraphicContext& gc)
   gc.draw (door_box, data->door_pos);
   for (int i=0; i < current_door_height; ++i)
     gc.draw(door_tile,
-	    static_cast<int>(data->door_pos.x),
-	    static_cast<int>(data->door_pos.y)
-	    + i * door_tile.get_height()
-	    + door_box.get_height());
+	    Vector(static_cast<int>(data->door_pos.x),
+                   static_cast<int>(data->door_pos.y)
+                   + i * door_tile.get_height()
+                   + door_box.get_height()));
 
   gc.draw(switch_sur, data->switch_pos);
 }
@@ -108,6 +108,7 @@ SwitchDoor::update ()
 	  // it, we remove the door from the colmap
 	  if (current_door_height + 10 < data->door_height)
 	    {
+#ifdef CLANLIB_0_6
 	      world->get_colmap()->put(door_box,
 	                               static_cast<int>(data->door_pos.x),
 				       static_cast<int>(data->door_pos.y),
@@ -118,6 +119,7 @@ SwitchDoor::update ()
 					 static_cast<int>(data->door_pos.y) + i * door_tile.get_height()
 					                                    + door_box.get_height(),
 					 Groundtype::GP_NOTHING);
+#endif
 	    }
 	}
     }

@@ -1,4 +1,4 @@
-//  $Id: global_event.cxx,v 1.12 2003/10/20 19:28:54 grumbel Exp $
+//  $Id: global_event.cxx,v 1.13 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,11 +21,14 @@
 #include <stdio.h>
 #include <algorithm>
 #include <ClanLib/Display/keyboard.h>
+#include <ClanLib/Display/keys.h>
 #include "screenshot.hxx"
 #include "console.hxx"
 #include "fps_counter.hxx"
 #include "global_event.hxx"
 #include "globals.hxx"
+
+namespace Pingus {
 
 GlobalEvent global_event;
 
@@ -121,5 +124,7 @@ GlobalEvent::on_button_release(const CL_InputEvent& event)
 
     }
 }
+
+} // namespace Pingus
 
 /* EOF */

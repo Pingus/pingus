@@ -1,4 +1,4 @@
-//  $Id: fade_out.cxx,v 1.10 2003/10/20 19:28:54 grumbel Exp $
+//  $Id: fade_out.cxx,v 1.11 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -103,7 +103,9 @@ FadeOut::black_rect (int steps)
   double step_w = (CL_Display::get_width()  / 2.0) / steps;
   double step_h = (CL_Display::get_height() / 2.0) / steps ;
 
+#ifdef CLANLIB_0_6
   CL_Display::sync_buffers();
+#endif
 
   for(int i=0; i <= steps; ++i)
     {
@@ -112,7 +114,8 @@ FadeOut::black_rect (int steps)
       x2 = static_cast<int>((CL_Display::get_width()  / 2) + (step_w * i));
       y2 = static_cast<int>((CL_Display::get_height() / 2) + (step_h * i));
 
-      CL_Display::fill_rect(x1, y1, x2, y2, 0.0, 0.0, 0.0, 1.0);
+      CL_Display::fill_rect(CL_Rect(x1, y1, x2, y2),
+                            Display::to_color(0.0, 0.0, 0.0, 1.0));
       CL_System::sleep(0);
       Display::flip_display(true);
     }
@@ -122,15 +125,17 @@ FadeOut::black_rect (int steps)
 void
 FadeOut::fade_to_black (int steps)
 {
+#ifdef CLANLIB_0_6
   CL_Display::sync_buffers();
+#endif
 
   for(int i = 0; i < steps; ++i)
     {
-      CL_Display::fill_rect(0, 0,
-			    CL_Display::get_width(),
-			    CL_Display::get_height(),
-			    0.0f, 0.0f, 0.0f,
-			    static_cast<float>(i)/steps);
+      CL_Display::fill_rect(CL_Rect(0, 0,
+                                    CL_Display::get_width(),
+                                    CL_Display::get_height()),
+			    Display::to_color(0.0f, 0.0f, 0.0f,
+                                              static_cast<float>(i)/steps));
 
       Display::flip_display(true);
     }
@@ -141,7 +146,9 @@ FadeOut::clear (void)
 {
   CL_Display::clear();
   Display::flip_display();
+#ifdef CLANLIB_0_6
   CL_Display::sync_buffers();
+#endif
 }
 
 void
@@ -149,8 +156,8 @@ EnlargingRectFadeOut::draw ()
 {
   //std::cout << "EnlargingRectFadeOut:: draw" << std::endl;
   int width = int(CL_Display::get_width () * get_progress ());
-  CL_Display::fill_rect (0, 0, width, CL_Display::get_height (),
-			 color.red,  color.green, color.blue);
+  CL_Display::fill_rect (CL_Rect(0, 0, width, CL_Display::get_height ()),
+			 Display::to_color(color.red,  color.green, color.blue, 1.0f));
 }
 
 } // namespace Pingus

@@ -1,4 +1,4 @@
-//  $Id: fps_counter.hxx,v 1.8 2003/10/18 12:11:30 grumbel Exp $
+//  $Id: fps_counter.hxx,v 1.9 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,8 @@
 #ifndef HEADER_PINGUS_FPS_COUNTER_HXX
 #define HEADER_PINGUS_FPS_COUNTER_HXX
 
+#include <ClanLib/Dislpay/font.h>
 #include "gui/display.hxx"
-
-class CL_Font;
 
 namespace Pingus {
 
@@ -31,7 +30,7 @@ class FPSCounter : public DisplayHook
 {
 private:
   /** The font... */
-  CL_Font* font;
+  CL_Font font;
 
   /** Used to know when the frame has changed */
   bool odd_frame;

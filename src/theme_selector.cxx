@@ -1,4 +1,4 @@
-//  $Id: theme_selector.cxx,v 1.14 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: theme_selector.cxx,v 1.15 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -95,13 +95,13 @@ ListItem::draw_offset(int x, int y)
 // ---=== ThemeSelector ===---
 
 void
-ThemeSelector::Event::on_button_release(CL_InputDevice * /*device*/, const CL_Key & /*key*/)
+ThemeSelector::Event::on_button_release(const CL_InputEvent& event)
 {
   if (!enabled) return;
 }
 
 void
-ThemeSelector::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
+ThemeSelector::Event::on_button_press(const CL_InputEvent& event)
 {
   if (!enabled) return;
 

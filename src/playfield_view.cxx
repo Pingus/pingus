@@ -1,4 +1,4 @@
-//  $Id: playfield_view.cxx,v 1.5 2003/04/19 10:23:17 torangan Exp $
+//  $Id: playfield_view.cxx,v 1.6 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include "playfield_view.hxx"
 #include "world.hxx"
+
+namespace Pingus {
 
 PlayfieldView::PlayfieldView (World * w, const CL_Rect& rect)
   : gc (0, 0, 300, 300, 0, 0), // FIXME: broken
@@ -56,5 +58,7 @@ PlayfieldView::get_pingu (const Vector& pos)
   return world->get_pingu (Vector(pos.x - x1 - x_offset,
 				     pos.y - y1 - y_offset));
 }
+
+} // namespace Pingus
 
 /* EOF */

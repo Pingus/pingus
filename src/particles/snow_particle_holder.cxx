@@ -1,4 +1,4 @@
-//  $Id: snow_particle_holder.cxx,v 1.8 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: snow_particle_holder.cxx,v 1.9 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -102,7 +102,7 @@ SnowParticleHolder::update ()
 	}
 
       it->velocity.x += (Math::frand() - 0.5f) / 10;
-
+#ifdef CLANLIB_0_6
       if (it->colliding)
         {
           int pixel = world->get_colmap()->getpixel(static_cast<int>(it->pos.x), static_cast<int>(it->pos.y));
@@ -114,6 +114,7 @@ SnowParticleHolder::update ()
 	      it->alive = false;
 	    }
 	}
+#endif
     }
 
 }

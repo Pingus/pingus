@@ -1,4 +1,4 @@
-//  $Id: pingus_counter.hxx,v 1.12 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: pingus_counter.hxx,v 1.13 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_PINGUS_COUNTER_HXX
 
 #include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/font.h>
 #include "gui/component.hxx"
 
 class CL_Font;
@@ -34,7 +35,7 @@ class PingusCounter : public GUI::Component
 {
 private:
   Server* server;
-  CL_Font* font;
+  CL_Font font;
   CL_Surface background;
 public:
   PingusCounter(Server* s);

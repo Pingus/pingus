@@ -1,4 +1,4 @@
-//  $Id: exiter.cxx,v 1.19 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: exiter.cxx,v 1.20 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ Exiter::update ()
   if (!sound_played)
     {
       sound_played = true;
-      PingusSound::play_sound("yipee");
+      Sound::PingusSound::play_sound("yipee");
     }
 
   if (sprite.finished())

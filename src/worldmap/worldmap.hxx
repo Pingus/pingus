@@ -1,4 +1,4 @@
-//  $Id: worldmap.hxx,v 1.30 2003/10/20 19:28:55 grumbel Exp $
+//  $Id: worldmap.hxx,v 1.31 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,10 +25,13 @@
 #include "../libxmlfwd.hxx"
 #include "../gui/display_graphic_context.hxx"
 
-class GraphicContext;
 class CL_Key;
 class CL_Font;
 class CL_InputDevice;
+
+namespace Pingus {
+
+class GraphicContext;
 
 namespace WorldMapNS {
 
@@ -133,6 +136,7 @@ private:
 };
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 #endif
 

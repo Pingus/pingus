@@ -1,4 +1,4 @@
-//  $Id: capture_rectangle.cxx,v 1.15 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: capture_rectangle.cxx,v 1.16 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,13 +70,14 @@ CaptureRectangle::draw_offset (int x_offset, int y_offset, float s)
 	  // Draw the caputure rectangle
 	  sur->draw(pingu->get_center_pos() + Vector(x_offset,y_offset));
 
-	  font->print_center(static_cast<int>(pingu->get_center_pos().x) + x_offset,
-			     static_cast<int>(pingu->get_center_pos().y) + y_offset - 32,
-			     action_str.c_str());
+#ifdef CLANLIB_0_6
+	  font.print_center(static_cast<int>(pingu->get_center_pos().x) + x_offset,
+                            static_cast<int>(pingu->get_center_pos().y) + y_offset - 32,
+                            action_str.c_str());
 	  /*font->print_center(pingu->get_center_pos().x + x_offset,
 			     pingu->get_center_pos().y + y_offset - 16 + 62,
 			     to_string(pingu->get_owner()).c_str());*/
-
+#endif
 
 	  // Paint the direction arrow
 	  if (pingu->direction.is_left())

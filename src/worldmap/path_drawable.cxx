@@ -1,4 +1,4 @@
-//  $Id: path_drawable.cxx,v 1.8 2003/04/19 10:23:19 torangan Exp $
+//  $Id: path_drawable.cxx,v 1.9 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "../gui/graphic_context.hxx"
 #include "path_drawable.hxx"
 
+namespace Pingus {
 namespace WorldMapNS {
 
 PathDrawable::PathDrawable (const Path& arg_path)
@@ -48,5 +49,6 @@ PathDrawable::update (float delta)
 }
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 /* EOF */

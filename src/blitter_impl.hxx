@@ -1,4 +1,4 @@
-//  $Id: blitter_impl.hxx,v 1.14 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: blitter_impl.hxx,v 1.15 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/surface.h>
 #include "pingus.hxx"
+#include "canvas.hxx"
 
 namespace Pingus {
 
@@ -188,8 +189,7 @@ CL_Surface modify(const CL_Surface& sur, const TransF&)
 
   if (prov->is_indexed())
     {
-      //std::cout << "Using indexed blitter" << std::endl;
-
+#ifdef CLANLIB_0_6
       IndexedCanvas* canvas = new IndexedCanvas(TransF::get_width (pwidth, pheight),
                                                 TransF::get_height(pwidth, pheight));
       if (prov->uses_src_colorkey())
@@ -202,6 +202,7 @@ CL_Surface modify(const CL_Surface& sur, const TransF&)
 
       unsigned char* source_buf = static_cast<unsigned char*>(prov->get_data());
       unsigned char* target_buf = static_cast<unsigned char*>(canvas->get_data());
+#endif
 
       for (int y = 0; y < pheight; ++y)
         for (int x = 0; x < pwidth; ++x)

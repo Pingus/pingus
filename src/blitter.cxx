@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.32 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: blitter.cxx,v 1.33 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,6 +42,7 @@ void
 Blitter::put_surface(CL_PixelBuffer* canvas, const CL_Surface& sur,
 		     int x, int y)
 {
+#ifdef CLANLIB_0_6
   //Blitter::put_surface(canvas, sur->get_provider(), x, y);
   /*  if (sur->get_provider()->get_depth() != 8)
       sur->put_target(x, y, 0, canvas);
@@ -49,12 +50,14 @@ Blitter::put_surface(CL_PixelBuffer* canvas, const CL_Surface& sur,
   assert (sur);
   assert (canvas);
   Blitter::put_surface(canvas, sur.get_provider(), x, y);
+#endif
 }
 
 void
 Blitter::put_surface(CL_PixelBuffer* canvas, CL_PixelBuffer* provider,
 		     int x, int y)
 {
+#ifdef CLANLIB_0_6
   assert (provider);
   assert (canvas);
   switch(provider->get_depth())
@@ -69,12 +72,14 @@ Blitter::put_surface(CL_PixelBuffer* canvas, CL_PixelBuffer* provider,
       PingusError::raise("Blitter:put_surface:Unknown color depth: " + to_string(provider->get_depth()));
       break;
     }
+#endif
 }
 
 void
 Blitter::put_surface_8bit(CL_PixelBuffer* provider, CL_PixelBuffer* sprovider,
 			  int x, int y)
 {
+#ifdef CLANLIB_0_6
   assert (provider);
   assert (sprovider);
   int start_i;
@@ -175,12 +180,14 @@ Blitter::put_surface_8bit(CL_PixelBuffer* provider, CL_PixelBuffer* sprovider,
   sprovider->unlock();
   provider->unlock();
 #endif
+#endif
 }
 
 void
 Blitter::put_surface_32bit(CL_PixelBuffer* canvas, CL_PixelBuffer* provider,
 			   const int x_pos, const int y_pos)
 {
+#ifdef CLANLIB_0_6
   assert (canvas);
   assert (provider);
 
@@ -231,12 +238,14 @@ Blitter::put_surface_32bit(CL_PixelBuffer* canvas, CL_PixelBuffer* provider,
   provider->unlock();
   canvas->unlock();
 #endif
+#endif
 }
 
 void
 Blitter::put_alpha_surface(CL_PixelBuffer* provider, CL_PixelBuffer* sprovider,
 			   int x, int y)
 {
+#ifdef CLANLIB_0_6
   assert (provider);
   assert (sprovider);
   int start_i;
@@ -307,11 +316,14 @@ Blitter::put_alpha_surface(CL_PixelBuffer* provider, CL_PixelBuffer* sprovider,
   sprovider->unlock();
   provider->unlock();
 #endif
+
+#endif
 }
 
 CL_PixelBuffer*
 Blitter::clear_canvas(CL_PixelBuffer* canvas)
 {
+#ifdef CLANLIB_0_6
   assert (canvas);
   unsigned char* buffer;
 
@@ -322,18 +334,23 @@ Blitter::clear_canvas(CL_PixelBuffer* canvas)
   //canvas->unlock();
 
   return canvas;
+#endif
+  return 0;
 }
 
 CL_PixelBuffer*
 Blitter::create_canvas(const CL_Surface& sur)
 {
+#ifdef CLANLIB_0_6
   assert (sur);
   return create_canvas(sur.get_provider());
+#endif
 }
 
 CL_PixelBuffer*
 Blitter::create_canvas(CL_PixelBuffer* prov)
 {
+#ifdef CLANLIB_0_6
   assert (prov);
   CL_PixelBuffer* canvas = new CL_PixelBuffer(prov->get_width(), prov->get_height());
 
@@ -378,18 +395,23 @@ Blitter::create_canvas(CL_PixelBuffer* prov)
       break;
     }
   return canvas;
+#endif
+  return 0;
 }
 
 CL_Surface
 Blitter::scale_surface (const CL_Surface& sur, int width, int height)
 {
+#ifdef CLANLIB_0_6
   assert (sur);
   return CL_Surface(Blitter::scale_surface_to_canvas(sur, width, height), true);
+#endif
 }
 
 CL_PixelBuffer*
 Blitter::scale_surface_to_canvas (const CL_Surface& sur, int width, int height)
 {
+#ifdef CLANLIB_0_6
   assert (sur);
 
   Color color;
@@ -494,6 +516,8 @@ Blitter::scale_surface_to_canvas (const CL_Surface& sur, int width, int height)
 #endif
 
   return canvas;
+#endif
+  return 0;
 }
 
 /*

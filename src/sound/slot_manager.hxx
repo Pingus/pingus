@@ -1,4 +1,4 @@
-//  $Id: slot_manager.hxx,v 1.2 2003/04/19 10:23:19 torangan Exp $
+//  $Id: slot_manager.hxx,v 1.3 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_SLOT_MANAGER_HXX
 #define HEADER_PINGUS_SLOT_MANAGER_HXX
 
+namespace Pingus {
 namespace Sound {
 
 struct SlotEntry
@@ -58,6 +59,7 @@ private:
 };
 
 } // namespace Sound
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: pingus_map_manager.cxx,v 1.5 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: pingus_map_manager.cxx,v 1.6 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #include <ClanLib/Display/pixel_buffer.h>
 #include "pingus_map_manager.hxx"
 
+namespace Pingus {
+
 std::string PingusMapManager::directory;
 
 CL_Surface
@@ -33,6 +35,7 @@ PingusMapManager::get_surface (const std::string& level_filename)
 void
 PingusMapManager::set_surface (const std::string& level_filename, const CL_Surface& surf)
 {
+#ifdef CLANLIB_0_6
   CL_PixelBuffer* provider = surf.get_provider ();
 
   assert (provider);
@@ -44,6 +47,9 @@ PingusMapManager::set_surface (const std::string& level_filename, const CL_Surfa
   provider->unlock ();
 
   UNUSED_ARG(level_filename);
+#endif
 }
+
+} // namespace Pingus
 
 /* EOF */

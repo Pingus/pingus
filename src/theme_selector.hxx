@@ -1,4 +1,4 @@
-//  $Id: theme_selector.hxx,v 1.8 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: theme_selector.hxx,v 1.9 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,9 +83,9 @@ public:
   public:
     Event () { }
 
-    virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
-    virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
-    virtual void on_mouse_move(CL_InputDevice *,int mouse_x, int mouse_y);
+    virtual void on_button_press(const CL_InputEvent& event);
+    virtual void on_button_release(const CL_InputEvent& event);
+    virtual void on_mouse_move(const CL_InputEvent& event);
 
   private:
     Event (const Event&);

@@ -1,4 +1,4 @@
-//  $Id: joystick_axis.cxx,v 1.5 2003/10/20 19:28:55 grumbel Exp $
+//  $Id: joystick_axis.cxx,v 1.6 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,9 @@ JoystickAxis::get_angle () const
 void
 JoystickAxis::update (float)
 {
+#ifdef CLANLIB_0_6
   pos = CL_Input::joysticks[id]->get_axis(axis)->get_pos();
+#endif
 }
 
 } // namespace Axes

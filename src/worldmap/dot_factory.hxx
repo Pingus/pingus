@@ -1,4 +1,4 @@
-//  $Id: dot_factory.hxx,v 1.2 2003/04/19 10:23:19 torangan Exp $
+//  $Id: dot_factory.hxx,v 1.3 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_DOT_FACTORY_HXX
 #define HEADER_PINGUS_DOT_FACTORY_HXX
 
+namespace Pingus {
 namespace WorldMapNS {
 
 class Dot;
@@ -37,6 +38,7 @@ private:
 };
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 #endif
 

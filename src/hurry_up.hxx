@@ -1,4 +1,4 @@
-//  $Id: hurry_up.hxx,v 1.9 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: hurry_up.hxx,v 1.10 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ class Client;
 class HurryUp : public GUI::Component
 {
 private:
-  CL_Font* font;
+  CL_Font font;
   bool is_running;
   bool is_finished;
   bool center_reached;

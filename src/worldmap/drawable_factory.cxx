@@ -1,4 +1,4 @@
-//  $Id: drawable_factory.cxx,v 1.1 2002/10/12 23:37:23 grumbel Exp $
+//  $Id: drawable_factory.cxx,v 1.2 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "sprite_drawable.hxx"
 #include "drawable_factory.hxx"
 
+namespace Pingus {
 namespace WorldMapNS {
 
 Drawable*
@@ -40,5 +41,6 @@ DrawableFactory::create(xmlDocPtr doc, xmlNodePtr cur)
 }
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 /* EOF */

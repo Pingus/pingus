@@ -1,4 +1,4 @@
-//  $Id: alpha_button.hxx,v 1.7 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: alpha_button.hxx,v 1.8 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,8 +31,8 @@ class AlphaButton
 {
 private:
   bool pressed;
-  CL_Font* font;
-  CL_Font* font_h;
+  CL_Font font;
+  CL_Font font_h;
   std::string name;
   int x1_pos, y1_pos, x2_pos, y2_pos;
 public:

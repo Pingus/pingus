@@ -1,4 +1,4 @@
-//  $Id: exit_menu.cxx,v 1.22 2003/10/20 19:28:54 grumbel Exp $
+//  $Id: exit_menu.cxx,v 1.23 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,14 +50,14 @@ public:
 
   void on_click()
   {
-    PingusSound::play_sound ("yipee");
+    Sound::PingusSound::play_sound ("yipee");
     manager->exit ();
   }
 
   void on_pointer_enter()
   {
     SurfaceButton::on_pointer_enter();
-    PingusSound::play_sound ("tick");
+    Sound::PingusSound::play_sound ("tick");
   }
 };
 
@@ -82,14 +82,14 @@ public:
   }
 
   void on_click() {
-    PingusSound::play_sound ("yipee");
+    Sound::PingusSound::play_sound ("yipee");
     manager->pop_menu();
   }
 
   void on_pointer_enter()
   {
     SurfaceButton::on_pointer_enter();
-    PingusSound::play_sound ("tick");
+    Sound::PingusSound::play_sound ("tick");
   }
 };
 

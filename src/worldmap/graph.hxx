@@ -1,4 +1,4 @@
-//  $Id: graph.hxx,v 1.23 2003/04/19 10:23:19 torangan Exp $
+//  $Id: graph.hxx,v 1.24 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include <iostream>
 #include <vector>
 
+namespace Pingus {
 namespace WorldMapNS {
 
 typedef int NodeId;
@@ -179,6 +180,7 @@ public:
 };
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 #endif
 

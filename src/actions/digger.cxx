@@ -1,4 +1,4 @@
-//  $Id: digger.cxx,v 1.25 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: digger.cxx,v 1.26 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -84,7 +84,7 @@ Digger::have_something_to_dig ()
     {
       if (rel_getpixel(0, -1) ==  Groundtype::GP_SOLID)
 	{
-	  PingusSound::play_sound("chink");
+	  Sound::PingusSound::play_sound("chink");
 	  return false;
 	}
       else
@@ -99,13 +99,14 @@ Digger::have_something_to_dig ()
 void
 Digger::dig ()
 {
+#ifdef CLANLIB_0_6
   WorldObj::get_world()->get_colmap()->remove(digger_radius,
 					      static_cast<int>(pingu->get_x() - (digger_radius_width / 2)),
 					      static_cast<int>(pingu->get_y() - digger_radius_height + 2));
   WorldObj::get_world()->get_gfx_map()->remove(digger_radius_gfx,
 					       static_cast<int>(pingu->get_x () - (digger_radius_gfx_width / 2)),
 					       static_cast<int>(pingu->get_y() - digger_radius_gfx_height + 2));
-
+#endif
   pingu->set_y(pingu->get_y() + 1);
 }
 

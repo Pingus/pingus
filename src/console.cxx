@@ -1,4 +1,4 @@
-//  $Id: console.cxx,v 1.17 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: console.cxx,v 1.18 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -157,7 +157,7 @@ Console::draw()
 
   /** Callculate the position of the first line on the screen */
   int start_y_pos =
-    CL_Display::get_height() - (font->get_height() * (number_of_lines + 3));
+    CL_Display::get_height() - (font.get_height() * (number_of_lines + 3));
 
   // The background of the console
   CL_Display::fill_rect(0, start_y_pos - 15,
@@ -179,8 +179,8 @@ Console::draw()
        i < number_of_lines && i + window_start < buffer.size();
        ++it, ++i)
     {
-      font->print_left(10,
-		       start_y_pos + (i * (font->get_height() + 2)),
+      font.print_left(10,
+                      start_y_pos + (i * (font.get_height() + 2)),
 		       it->c_str()
 		      );
     }

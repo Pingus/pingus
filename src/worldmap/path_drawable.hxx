@@ -1,4 +1,4 @@
-//  $Id: path_drawable.hxx,v 1.5 2003/04/19 10:23:19 torangan Exp $
+//  $Id: path_drawable.hxx,v 1.6 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "drawable.hxx"
 #include "path_graph.hxx"
 
+namespace Pingus {
 namespace WorldMapNS {
 
 /** Drawable to show the path between two nodes, only used for
@@ -44,6 +45,7 @@ private:
 };
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: globals.cxx,v 1.16 2003/08/16 20:51:28 grumbel Exp $
+//  $Id: globals.cxx,v 1.17 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "globals.hxx"
+
+namespace Pingus {
 
 int         game_speed                      = 20;
 bool        print_fps                       = false;
@@ -63,5 +65,7 @@ std::string global_email;
 std::string default_language                = "en";
 
 int         pingus_debug_flags              = 0;
+
+} // namespace Pingus
 
 /* EOF */

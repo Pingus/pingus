@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.30 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: basher.cxx,v 1.31 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -88,7 +88,7 @@ Basher::update ()
 	      || rel_getpixel(0, pingu_height) == Groundtype::GP_SOLID)
 	    {
 	      // Change direction and let walk code walk forward/up to get out.
-              PingusSound::play_sound("chink");
+              Sound::PingusSound::play_sound("chink");
 	      pingu->direction.change();
 	      pingu->set_action(Actions::Walker);
 	    }
@@ -110,12 +110,14 @@ Basher::update ()
 void
 Basher::bash()
 {
+#ifdef CLANLIB_0_6
   WorldObj::get_world()->get_colmap()->remove(bash_radius,
 					      static_cast<int>(pingu->get_x () - (bash_radius_width / 2)),
 					      static_cast<int>(pingu->get_y () - bash_radius_width + 1));
   WorldObj::get_world()->get_gfx_map()->remove(bash_radius_gfx,
 					       static_cast<int>(pingu->get_x () - (bash_radius_gfx_width / 2)),
 					       static_cast<int>(pingu->get_y () - bash_radius_gfx_width + 1));
+#endif
 }
 
 void

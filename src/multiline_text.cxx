@@ -1,4 +1,4 @@
-//  $Id: multiline_text.cxx,v 1.8 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: multiline_text.cxx,v 1.9 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,6 +40,7 @@ MultiLineText::set_font(CL_Font* f)
 void
 MultiLineText::set_text(const std::string& str, int text_width)
 {
+#ifdef CLANLIB_0_6
   int last_pos;
 
   assert(font);
@@ -82,6 +83,7 @@ MultiLineText::set_text(const std::string& str, int text_width)
 	  width = Math::max(width, font->get_text_width(i->c_str()));
 
   height = text.size() * font->get_height();
+#endif
 }
 
 void
@@ -93,7 +95,7 @@ MultiLineText::print_left(int x_pos, int y_pos)
       i != text.end();
       ++i)
     {
-      font->print_left(x_pos, y_pos + y_inc, i->c_str());
+      font.draw(x_pos, y_pos + y_inc, i->c_str());
       y_inc += font->get_height();
     }
 }
@@ -101,6 +103,7 @@ MultiLineText::print_left(int x_pos, int y_pos)
 void
 MultiLineText::print_right(int x_pos, int y_pos)
 {
+#ifdef CLANLIB_0_6
   int y_inc = 0;
 
   for(std::vector<std::string>::iterator i = text.begin();
@@ -110,6 +113,7 @@ MultiLineText::print_right(int x_pos, int y_pos)
       font->print_right(x_pos, y_pos + y_inc, i->c_str());
       y_inc += font->get_height();
     }
+#endif
 }
 
 void

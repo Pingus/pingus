@@ -1,4 +1,4 @@
-//  $Id: graph.cxx,v 1.11 2002/10/14 00:38:22 grumbel Exp $
+//  $Id: graph.cxx,v 1.12 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,11 +19,13 @@
 
 #include "graph.hxx"
 
+namespace Pingus {
 namespace WorldMapNS {
 
 const NodeId NoNode = -1;
 const EdgeId NoEdge = -1;
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 /* EOF */

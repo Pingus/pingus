@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.30 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: pingus_resource.cxx,v 1.31 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ namespace Pingus {
 
 std::map<std::string, CL_ResourceManager*> PingusResource::resource_map;
 std::map<ResDescriptor, CL_Surface>        PingusResource::surface_map;
-std::map<ResDescriptor, CL_Font*>          PingusResource::font_map;
+std::map<ResDescriptor, CL_Font>          PingusResource::font_map;
 
 void
 PingusResource::init()

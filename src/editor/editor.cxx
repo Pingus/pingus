@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.56 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: editor.cxx,v 1.57 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -136,7 +136,7 @@ Editor::~Editor ()
 void
 Editor::on_startup ()
 {
-  PingusSound::stop_music();
+  Sound::PingusSound::stop_music();
   event->enable ();
 }
 

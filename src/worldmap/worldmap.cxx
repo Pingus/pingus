@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.51 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.52 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,8 @@
 #include <assert.h>
 #include <iostream>
 #include <ClanLib/Core/System/system.h>
-#include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Input/mouse.h>
+#include <ClanLib/Display/display.h>
+#include <ClanLib/Display/mouse.h>
 #include "../fonts.hxx"
 #include "../path_manager.hxx"
 #include "../stat_manager.hxx"
@@ -359,7 +359,7 @@ WorldMap::on_primary_button_press(int x, int y)
             }
           else
             {
-              PingusSound::play_sound("chink");
+              Sound::PingusSound::play_sound("chink");
             }
         }
     }

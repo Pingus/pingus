@@ -1,4 +1,4 @@
-//  $Id: sound_real.cxx,v 1.10 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: sound_real.cxx,v 1.11 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -146,7 +146,9 @@ PingusSoundReal::real_play_music (const std::string & arg_filename, float volume
     }
   else if (filename.substr(filename.size()-4, 4) == ".wav")
     {
+#ifdef CLANLIB_0_6
       music_sample = new CL_SoundBuffer (new CL_Sample(filename.c_str(), NULL), true);
+#endif
     }
   else
     {  // MikMod should support the rest...

@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.40 2003/10/20 19:28:54 grumbel Exp $
+//  $Id: credits.cxx,v 1.41 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -207,6 +207,7 @@ Credits::update (float delta)
 void
 Credits::draw_background (GraphicContext& gc)
 {
+#ifdef CLANLIB_0_6
   int x;
   int y;
   int yof;
@@ -225,7 +226,7 @@ Credits::draw_background (GraphicContext& gc)
 			CL_Display::get_width(), CL_Display::get_height(),
 			0.0, 0.0, 0.0, 1.0);*/
 
-  CL_Display::push_clip_rect(CL_ClipRect(0, gc.get_height()/2-225, 600, gc.get_height()/2+200));
+  CL_Display::push_clip_rect(CL_Rect(0, gc.get_height()/2-225, 600, gc.get_height()/2+200));
   yof = 0;
   for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); ++i)
     {
@@ -248,6 +249,7 @@ Credits::draw_background (GraphicContext& gc)
 	}
     }
   CL_Display::pop_clip_rect();
+#endif
 }
 
 void

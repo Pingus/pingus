@@ -1,4 +1,4 @@
-//  $Id: path.cxx,v 1.7 2003/04/19 10:23:19 torangan Exp $
+//  $Id: path.cxx,v 1.8 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include <assert.h>
 #include "path.hxx"
 
+namespace Pingus {
 namespace WorldMapNS {
 
 Path::Path()
@@ -107,5 +108,6 @@ Path::reverse()
 }
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 /* EOF */

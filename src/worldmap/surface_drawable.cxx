@@ -1,4 +1,4 @@
-//  $Id: surface_drawable.cxx,v 1.6 2003/04/19 10:23:19 torangan Exp $
+//  $Id: surface_drawable.cxx,v 1.7 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 #include "pingus.hxx"
 #include "surface_drawable.hxx"
 
+namespace Pingus {
 namespace WorldMapNS {
 
 SurfaceDrawable::SurfaceDrawable(xmlDocPtr doc, xmlNodePtr cur)
@@ -78,5 +79,6 @@ SurfaceDrawable::draw(GraphicContext& gc)
 }
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 /* EOF */

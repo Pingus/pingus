@@ -1,4 +1,4 @@
-//  $Id: surface_background.cxx,v 1.13 2003/10/20 13:11:09 grumbel Exp $
+//  $Id: surface_background.cxx,v 1.14 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,6 +91,7 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
      FIXME: the bug might be in create_canvas() and not in fill_rect()
   */
 
+#ifdef CLANLIB_0_6
   if (data->color.alpha != 0.0 && data->color != Color(0, 0, 0, 1.0f))
     { // Workaround for a bug which caused all levels to have the
       // wrong background color
@@ -99,12 +100,15 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
                         data->color.red, data->color.green, data->color.blue,
                         data->color.alpha);
     }
+#endif
 
   bg_surface = CL_Surface(canvas, true);
 
+#ifdef CLANLIB_0_6
   //bg_surface = CAImageManipulation::changeHSV(bg_surface, 150, 100, 0);
   counter.set_size(bg_surface.get_frame_count());
   counter.set_speed(1.0);
+#endif
 
   timer.stop();
 }
@@ -189,7 +193,9 @@ SurfaceBackground::draw (GraphicContext& gc)
                   x < CL_Display::get_width();
                   x += bg_surface.get_width())
                 {
+#ifdef CLANLIB_0_6
                   bg_surface.put_screen(x, y, counter); // FIXME: should use gc
+#endif
                 }
             }
         }

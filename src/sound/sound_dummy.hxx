@@ -1,4 +1,4 @@
-//  $Id: sound_dummy.hxx,v 1.2 2003/04/19 10:23:19 torangan Exp $
+//  $Id: sound_dummy.hxx,v 1.3 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include "sound.hxx"
 
+namespace Pingus {
 namespace Sound {
 
 class PingusSoundDummy : public PingusSound
@@ -38,6 +39,7 @@ private:
 };
 
 } // namespace Sound
+} // namespace Pingus
 
 #endif
 

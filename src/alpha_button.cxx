@@ -1,4 +1,4 @@
-//  $Id: alpha_button.cxx,v 1.6 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: alpha_button.cxx,v 1.7 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Display/font.h>
 #include <ClanLib/Display/mouse.h>
+#include <ClanLib/Display/keys.h>
 #include "fonts.hxx"
 #include "alpha_button.hxx"
 
@@ -40,6 +41,7 @@ AlphaButton::AlphaButton(std::string str, int x1, int y1, int w, int h) :
 void
 AlphaButton::draw(void)
 {
+#ifdef CLANLIB_0_6
   if (is_pressed()) {
     CL_Display::fill_rect(x1_pos, y1_pos, x2_pos, y2_pos,
 			  1.0, 1.0, 1.0, 0.5);
@@ -51,12 +53,13 @@ AlphaButton::draw(void)
     font->print_center(x1_pos + (x2_pos - x1_pos)/2, y1_pos + (y2_pos - y1_pos)/2,
 		       name.c_str());
   }
+#endif
 }
 
 bool
 AlphaButton::is_pressed()
 {
-  if (mouse_over() && CL_Mouse::left_pressed()) {
+  if (mouse_over() && CL_Mouse::get_keycode(CL_MOUSE_LEFT)) {
     return true;
   } else {
     return false;

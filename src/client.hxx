@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.29 2003/10/20 13:33:43 grumbel Exp $
+//  $Id: client.hxx,v 1.30 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,10 +21,11 @@
 #define HEADER_PINGUS_CLIENT_HXX
 
 #include <ClanLib/Signals/slot.h>
-#include <ClanLib/Display/inputdevice.h>
+#include <ClanLib/Display/input_device.h>
 #include "gui/gui_screen.hxx"
-#include "result.hxx"
 #include "sprite.hxx"
+
+class CL_InputEvent;
 
 namespace Pingus {
 
@@ -40,7 +41,6 @@ namespace GUI {
 class RootGUIManager;
 } // namespace GUI
 
-class CL_Key;
 class Vector;
 class ButtonPanel;
 class Controller;
@@ -57,7 +57,6 @@ class TimeDisplay;
 class Client : public GUIScreen
 {
 private:
-  Result result;
   TrueServer* server;
 
   int  skip_frame;
@@ -97,8 +96,8 @@ public:
   void on_primary_button_press(int x, int y);
   void on_primary_button_release(int x, int y);
 
-  void on_butmouse_button_press(const CL_Key &key);
-  void on_mouse_button_release(const CL_Key &key);
+  void on_butmouse_button_press(const CL_InputEvent &key);
+  void on_mouse_button_release(const CL_InputEvent &key);
 
   // Overloaded GUIScreen stuff
   bool draw (GraphicContext& gc);

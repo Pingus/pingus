@@ -1,4 +1,4 @@
-//  $Id: capture_rectangle.hxx,v 1.8 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: capture_rectangle.hxx,v 1.9 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,7 +50,7 @@ private:
   Sprite arrow_right;
 
   ButtonPanel* button_panel;
-  CL_Font* font;
+  CL_Font font;
 
 public:
   CaptureRectangle(ButtonPanel*);

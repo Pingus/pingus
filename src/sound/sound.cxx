@@ -1,4 +1,4 @@
-//  $Id: sound.cxx,v 1.6 2003/10/20 19:28:55 grumbel Exp $
+//  $Id: sound.cxx,v 1.7 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,10 +26,9 @@
 #include "sound_real.hxx"
 
 namespace Pingus {
+namespace Sound {
 
 PingusSound* PingusSound::sound;
-
-using namespace Sound;
 
 void
 PingusSound::init (PingusSound* s)
@@ -124,6 +123,7 @@ PingusSound::stop_music()
   sound->real_stop_music();
 }
 
+} // namespace Sound
 } // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: action_button.hxx,v 1.19 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: action_button.hxx,v 1.20 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -133,11 +133,11 @@ protected:
   Sprite sprite;
   int x_pos;
   int y_pos;
-  CL_Font*    font;
+  CL_Font    font;
   // Added for printing action names next to the button.
-  CL_Font*    font_b;
+  CL_Font    font_b;
 
-  ActionName name;
+  Actions::ActionName name;
   bool is_multi_direct;
 
   ActionHolder* action_holder;
@@ -148,13 +148,13 @@ public:
   ActionButton(ActionHolder*);
   virtual ~ActionButton();
 
-  void init(int x, int y, ActionName name_, int owner_id);
+  void init(int x, int y, Actions::ActionName name_, int owner_id);
 
   /// Not used.
   void update(float delta);
 
   /// Returns the name of the action the button represents.
-  ActionName get_action_name();
+  Actions::ActionName get_action_name();
 
   /// Returns true if the button is pressed.
   bool   is_pressed();
@@ -179,7 +179,7 @@ private:
   CL_Surface backgroundhl;
 
 public:
-  VerticalActionButton(ActionHolder* h, int x, int y, ActionName name, int owner_id);
+  VerticalActionButton(ActionHolder* h, int x, int y, Actions::ActionName name, int owner_id);
   virtual ~VerticalActionButton();
 
   void draw(GraphicContext& gc);

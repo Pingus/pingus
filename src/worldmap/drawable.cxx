@@ -1,4 +1,4 @@
-//  $Id: drawable.cxx,v 1.1 2002/10/12 23:37:23 grumbel Exp $
+//  $Id: drawable.cxx,v 1.2 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include "drawable.hxx"
 
-
+namespace Pingus {
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: info_box.cxx,v 1.23 2003/10/20 13:11:09 grumbel Exp $
+//  $Id: info_box.cxx,v 1.24 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,6 +46,7 @@ InfoBox::~InfoBox ()
 void
 InfoBox::draw (GraphicContext& gc)
 {
+#ifdef CLANLIB_0_6
   int x = static_cast<int>(gc.get_x_offset() + (gc.get_width ()/2));
   int y = static_cast<int>(gc.get_y_offset() + (gc.get_height()/2));
 
@@ -54,7 +55,6 @@ InfoBox::draw (GraphicContext& gc)
 
   if (is_open)
     {
-#ifdef CLANLIB_0_6
       int width = Fonts::pingus_small.get_text_width(data->info_text.c_str());
       int border = 6;
       gc.draw_line(data->pos, data->pos + Vector(0, 0 - 100), 0.0f, 1.0f, 0.0f, 1.0f);
@@ -65,12 +65,12 @@ InfoBox::draw (GraphicContext& gc)
 			    y_pos + Fonts::pingus_small->get_height() + border,
 			    0.0, 0.0, 0.0, 1.0);
       gc.print_center(Fonts::pingus_small, x_pos, y_pos, data->info_text.c_str());
-#endif
     }
   else
     {
       gc.draw(data->sprite, data->pos);
     }
+#endif
 }
 
 void

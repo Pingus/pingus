@@ -1,4 +1,4 @@
-//  $Id: button_panel.cxx,v 1.26 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: button_panel.cxx,v 1.27 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,7 +70,7 @@ ButtonPanel::ButtonPanel(Client* c, int arg_x_pos, int arg_y_pos)
 }
 
 void
-ButtonPanel::on_wheel_move(const CL_Key& key)
+ButtonPanel::on_wheel_move(const CL_InputEvent& key)
 {
   if (key.id == CL_MOUSE_WHEELDOWN)
     {

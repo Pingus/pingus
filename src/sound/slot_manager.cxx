@@ -1,4 +1,4 @@
-//  $Id: slot_manager.cxx,v 1.2 2003/04/19 10:23:19 torangan Exp $
+//  $Id: slot_manager.cxx,v 1.3 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,11 @@
 
 #include "slot_manager.hxx"
 
-SlotEntry& find_slot(const std::string& name)
+namespace Pingus {
+namespace Sound {
+
+SlotEntry&
+SlotManager::find_slot(const std::string& name)
 {
 
 }
@@ -44,5 +48,8 @@ SlotManager::play_sound(const std::string& name)
   sess.set_looping(false);
   sess.play();
 }
+
+} // namespace Sound
+} // namespace Pingus
 
 /* EOF */

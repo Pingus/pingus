@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.cxx,v 1.27 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: pingus_menu_manager.cxx,v 1.28 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include "gui/screen_manager.hxx"
 #include "sound/sound.hxx"
 #include "pingus_menu_manager.hxx"
+
+namespace Pingus {
 
 PingusMenuManager* PingusMenuManager::instance_ = 0;
 
@@ -162,5 +164,7 @@ PingusMenuManager::deinit()
 {
   delete instance_;
 }
+
+} // namespace Pingus
 
 /* EOF */

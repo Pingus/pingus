@@ -1,4 +1,4 @@
-//  $Id: pathfinder.hxx,v 1.12 2003/04/19 10:23:19 torangan Exp $
+//  $Id: pathfinder.hxx,v 1.13 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include <queue>
 #include "graph.hxx"
 
+namespace Pingus {
 namespace WorldMapNS {
 
 struct PathfinderResult
@@ -179,6 +180,7 @@ private:
 };
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: sound_res_mgr.cxx,v 1.4 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: sound_res_mgr.cxx,v 1.5 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ SoundResMgr::load(const std::string& name)
   if (i == sound_map.end())
     {
       std::string filename = path_manager.complete("sounds/" + name + ".wav");
-      CL_SoundBuffer* buffer = new CL_SoundBuffer (new CL_Sample(filename, NULL), true);
+      CL_SoundBuffer* buffer = new CL_SoundBuffer (filename, true);
       pout(PINGUS_DEBUG_LOADING) << "SoundResMgr: Loading sound from disk: "
                                  << name << " -> " << filename << std::endl;
 

@@ -1,4 +1,4 @@
-//  $Id: sound.hxx,v 1.3 2003/04/19 10:23:19 torangan Exp $
+//  $Id: sound.hxx,v 1.4 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include <string>
 #include "sounds.hxx"
 
+namespace Pingus {
+namespace Sound {
 class PingusSound
 {
 protected:
@@ -56,6 +58,9 @@ private:
   PingusSound (const PingusSound&);
   PingusSound& operator= (const PingusSound&);
 };
+
+} // namespace Sound
+} // namespace Pingus
 
 #endif
 

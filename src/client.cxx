@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.49 2003/10/20 19:28:54 grumbel Exp $
+//  $Id: client.cxx,v 1.50 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -353,11 +353,11 @@ Client::on_startup ()
 
   if (server->get_plf()->get_music() == "none")
     {
-      PingusSound::stop_music();
+      Sound::PingusSound::stop_music();
     }
   else
     {
-      PingusSound::play_music(server->get_plf ()->get_music());
+      Sound::PingusSound::play_music(server->get_plf ()->get_music());
     }
 
   if (verbose)

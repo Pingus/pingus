@@ -1,4 +1,4 @@
-//  $Id: col_map.hxx,v 1.13 2003/10/20 13:33:43 grumbel Exp $
+//  $Id: col_map.hxx,v 1.14 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,10 +80,8 @@ public:
 
   void put(int x, int y, Groundtype::GPType p = Groundtype::GP_GROUND);
   void put(const CL_PixelBuffer&, int x, int y, Groundtype::GPType);
-  void put(CL_PixelBuffer*, int x, int y, Groundtype::GPType);
 
   /// void remove(int x, int y);
-  void remove(const CL_Surface&, int x, int y);
   void remove(const CL_PixelBuffer&, int x, int y);
 
   void draw(GraphicContext& gc);

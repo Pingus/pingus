@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.33 2003/04/19 10:23:19 torangan Exp $
+//  $Id: pingus.cxx,v 1.34 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "../math.hxx"
 #include "pingus.hxx"
 
+namespace Pingus {
 namespace WorldMapNS {
 
 Pingus::Pingus (PathGraph* arg_path)
@@ -261,5 +262,6 @@ Pingus::is_walking()
 }
 
 } // namespace WorldMapNS
+} // namespace Pingus
 
 /* EOF */

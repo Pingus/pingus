@@ -1,4 +1,4 @@
-//  $Id: pingu_map.cxx,v 1.9 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: pingu_map.cxx,v 1.10 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,12 +49,6 @@ PinguMap::get_colmap()
 }
 
 void
-PinguMap::remove(const CL_Surface& sur, int x, int y)
-{
-  remove(sur.get_provider(), x, y);
-}
-
-void
 PinguMap::remove(const CL_PixelBuffer&, int, int)
 {
 
@@ -64,12 +58,6 @@ void
 PinguMap::put(const CL_PixelBuffer&, int, int)
 {
 
-}
-
-void
-PinguMap::put(const CL_Surface& sur, int x, int y)
-{
-  put (sur.get_provider (), x, y);
 }
 
 } // namespace Pingus

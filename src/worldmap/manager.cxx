@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.40 2003/10/20 19:28:55 grumbel Exp $
+//  $Id: manager.cxx,v 1.41 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,7 +91,7 @@ void
 WorldMapManagerCreditsButton::on_pointer_enter()
 {
   SurfaceButton::on_pointer_enter();
-  PingusSound::play_sound ("tick");
+  Sound::PingusSound::play_sound ("tick");
 }
 
 
@@ -121,7 +121,7 @@ void
 WorldMapManagerStoryButton::on_pointer_enter()
 {
   SurfaceButton::on_pointer_enter();
-  PingusSound::play_sound ("tick");
+  Sound::PingusSound::play_sound ("tick");
 }
 
 
@@ -151,7 +151,7 @@ void
 WorldMapManagerCloseButton::on_pointer_enter()
 {
   SurfaceButton::on_pointer_enter();
-  PingusSound::play_sound ("tick");
+  Sound::PingusSound::play_sound ("tick");
 }
 
 void
@@ -181,7 +181,7 @@ WorldMapManagerEnterButton::on_pointer_enter()
   SurfaceButton::on_pointer_enter();
   if (!WorldMapManager::instance()->get_worldmap()->get_pingus()->is_walking())
     {
-      PingusSound::play_sound ("tick");
+      Sound::PingusSound::play_sound ("tick");
     }
 }
 
@@ -246,7 +246,7 @@ void
 WorldMapManager::on_startup ()
 {
   exit_worldmap = false;
-  PingusSound::stop_music();
+  Sound::PingusSound::stop_music();
 
   if (!worldmap)
     {

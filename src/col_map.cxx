@@ -1,4 +1,4 @@
-//  $Id: col_map.cxx,v 1.21 2003/10/20 19:28:54 grumbel Exp $
+//  $Id: col_map.cxx,v 1.22 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,11 @@
 #include <iostream>
 #include <assert.h>
 #include <ClanLib/Display/pixel_buffer.h>
+#include <ClanLib/Display/surface.h>
 #include "gui/graphic_context.hxx"
 #include "globals.hxx"
 #include "col_map.hxx"
+#include "canvas.hxx"
 #include "gettext.h"
 
 #define COLMAP_WITH_MEMORY_HOLE 1
@@ -83,24 +85,25 @@ ColMap::remove(const CL_Surface& sur, int x, int y)
 }
 
 void
-ColMap::remove(CL_PixelBuffer* provider, int x, int y)
+ColMap::remove(const CL_PixelBuffer& provider, int x, int y)
 {
+#ifdef CLANLIB_0_6
   ++serial;
 
   assert(provider);
 
-  if (provider->get_depth() == 32)
+  if (provider.get_depth() == 32)
     {
       unsigned char* buffer;
-      int swidth = provider->get_width();
-      int sheight = provider->get_height();
+      int swidth = provider.get_width();
+      int sheight = provider.get_height();
       int y_offset = -y;
       int x_offset = -x;
       if (y_offset < 0) y_offset = 0;
       if (x_offset < 0) x_offset = 0;
 
-      provider->lock();
-      buffer = static_cast<unsigned char*>(provider->get_data());
+      provider.lock();
+      buffer = static_cast<unsigned char*>(provider.get_data());
 
       for(int line = y_offset; line < sheight && (line + y) < height; ++line)
 	{
@@ -114,21 +117,21 @@ ColMap::remove(CL_PixelBuffer* provider, int x, int y)
 	    }
 	}
 #if COLMAP_WITH_MEMORY_HOLE
-      provider->unlock();
+      provider.unlock();
 #endif
     }
-  else if (provider->get_depth() == 8)
+  else if (provider.get_depth() == 8)
     {
       unsigned char* buffer;
-      int swidth = provider->get_width();
-      int sheight = provider->get_height();
+      int swidth = provider.get_width();
+      int sheight = provider.get_height();
       int y_offset = -y;
       int x_offset = -x;
       if (y_offset < 0) y_offset = 0;
       if (x_offset < 0) x_offset = 0;
 
-      provider->lock();
-      buffer = static_cast<unsigned char*>(provider->get_data());
+      provider.lock();
+      buffer = static_cast<unsigned char*>(provider.get_data());
 
       for(int line = y_offset; line < sheight && (line + y) < height; ++line)
 	{
@@ -142,13 +145,14 @@ ColMap::remove(CL_PixelBuffer* provider, int x, int y)
 	    }
 	}
 #if COLMAP_WITH_MEMORY_HOLE
-      provider->unlock();
+      provider.unlock();
 #endif
     }
   else
     {
       assert(!"ColMap::remove: Color depth not supported");
     }
+#endif
 }
 
 void
@@ -183,12 +187,6 @@ ColMap::blit_allowed (int x, int y,  Groundtype::GPType gtype)
     }
 }
 
-void
-ColMap::put(const CL_Surface& sur, int sur_x, int sur_y, Groundtype::GPType gptype)
-{
-  put(sur.get_provider(), sur_x, sur_y, gptype);
-}
-
 // Puts a surface on the colmap
 void
 ColMap::put(const CL_PixelBuffer& provider, int sur_x, int sur_y, Groundtype::GPType pixel)
@@ -207,16 +205,16 @@ ColMap::put(const CL_PixelBuffer& provider, int sur_x, int sur_y, Groundtype::GP
       return;
     }
 
-  provider->lock();
+  provider.lock();
 
-  if (provider->get_depth() == 32)
+  if (provider.get_depth() == 32)
     {
       float r, g, b, a;
       // Rewritting blitter for 32bit depth (using get_pixel())
-      for (unsigned int y=0; y < provider->get_height(); ++y)
-	for (unsigned int x=0; x < provider->get_width(); ++x)
+      for (unsigned int y=0; y < provider.get_height(); ++y)
+	for (unsigned int x=0; x < provider.get_width(); ++x)
 	  {
-	    provider->get_pixel(x, y, &r, &g, &b, &a);
+	    provider.get_pixel(x, y, &r, &g, &b, &a);
 	    if (a > 0.1) // Alpha threshold
 	      {
 		if (blit_allowed (x + sur_x, y + sur_y, pixel))
@@ -224,22 +222,22 @@ ColMap::put(const CL_PixelBuffer& provider, int sur_x, int sur_y, Groundtype::GP
 	      }
 	  }
     }
-  else if (provider->get_depth() == 8)
+  else if (provider.get_depth() == 8)
     {
       unsigned char* buffer;
-      int swidth = provider->get_width();
-      int sheight = provider->get_height();
+      int swidth = provider.get_width();
+      int sheight = provider.get_height();
       int y_offset = -sur_y;
       int x_offset = -sur_x;
       if (y_offset < 0) y_offset = 0;
       if (x_offset < 0) x_offset = 0;
 
-      //provider->lock();
-      buffer = static_cast<unsigned char*>(provider->get_data());
+      //provider.lock();
+      buffer = static_cast<unsigned char*>(provider.get_data());
 
-      if (provider->uses_src_colorkey())
+      if (provider.uses_src_colorkey())
 	{
-	  unsigned int colorkey = provider->get_src_colorkey();
+	  unsigned int colorkey = provider.get_src_colorkey();
 	  for(int line = y_offset; line < sheight && (line + sur_y) < height; ++line)
 	    for (int i = x_offset; i < swidth && (i+sur_x) < width; ++i)
 	      {
@@ -265,18 +263,18 @@ ColMap::put(const CL_PixelBuffer& provider, int sur_x, int sur_y, Groundtype::GP
       std::cout << "ColMap: Unsupported color depth, ignoring" << std::endl;
     }
   // FIXME: Memory hole
-  // provider->unlock();
+  // provider.unlock();
 }
 
 void
 ColMap::draw(GraphicContext& gc)
 {
-  CL_Canvas* canvas = new CL_Canvas(width, height);
+  CL_PixelBuffer canvas = Canvas::create(width, height);
   CL_Surface sur;
   unsigned char* buffer;
 
-  canvas->lock();
-  buffer = static_cast<unsigned char*>(canvas->get_data());
+  canvas.lock();
+  buffer = static_cast<unsigned char*>(canvas.get_data());
 
   for(int i = 0; i < (width * height); ++i)
     {
@@ -314,7 +312,7 @@ ColMap::draw(GraphicContext& gc)
 
   // FIXME: Memory hole
 #if COLMAP_WITH_MEMORY_HOLE
-  canvas->unlock();
+  canvas.unlock();
 #endif
 
   sur = CL_Surface(canvas, true);

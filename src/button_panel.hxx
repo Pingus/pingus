@@ -1,4 +1,4 @@
-//  $Id: button_panel.hxx,v 1.19 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: button_panel.hxx,v 1.20 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 
 #include "action_button.hxx"
 
-class CL_Key;
+class CL_InputEvent;
 
 namespace Pingus {
 
@@ -52,7 +52,7 @@ private:
   int x_pos, y_pos;
 
   CL_Slot wheel_slot;
-  void on_wheel_move(const CL_Key& key);
+  void on_wheel_move(const CL_InputEvent& key);
 public:
   ButtonPanel(Client* c, int arg_x_pos, int arg_y_pos);
   virtual ~ButtonPanel();
@@ -62,7 +62,7 @@ public:
 
   bool is_at (int x, int y);
 
-  ActionName get_action_name();
+  Actions::ActionName get_action_name();
   void   update(float delta);
   void   draw(GraphicContext& gc);
 

@@ -1,4 +1,4 @@
-//  $Id: pingus_counter_bar.cxx,v 1.9 2003/10/20 19:28:54 grumbel Exp $
+//  $Id: pingus_counter_bar.cxx,v 1.10 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "pingus_counter_bar.hxx"
 #include "pingu_holder.hxx"
 #include "server.hxx"
+#include "display.hxx"
 #include "world.hxx"
 
 namespace Pingus {
@@ -51,20 +52,20 @@ PingusCounterBar::draw ()
   int current_saved = server->get_world ()->get_pingus()->get_number_of_exited();
 
   //std::cout << "Drawing Counterbar: " << rect << std::endl;
-  CL_Display::fill_rect (rect.left, rect.top, rect.right, rect.bottom,
-			 0.0, 0.0, 1.0, 0.5);
+  CL_Display::fill_rect (CL_Rect(rect.left, rect.top, rect.right, rect.bottom),
+			 Display::to_color(0.0, 0.0, 1.0, 0.5));
 
   int y_pos = rect.bottom;
   int tmp_y_pos = y_pos;
 
   y_pos -= (current_saved * length) / complete;
-  CL_Display::fill_rect (rect.left, tmp_y_pos, rect.right, y_pos,
-			 0.0f, 1.0f, 0.0f, 0.8f);
+  CL_Display::fill_rect (CL_Rect(rect.left, tmp_y_pos, rect.right, y_pos),
+			 Display::to_color(0.0f, 1.0f, 0.0f, 0.8f));
   tmp_y_pos = y_pos;
 
   y_pos -= ((current_out - current_saved) * length) / complete;
-  CL_Display::fill_rect (rect.left, tmp_y_pos, rect.right, y_pos,
-			 1.0f, 0.0f, 0.0f, 0.8f);
+  CL_Display::fill_rect (CL_Rect(rect.left, tmp_y_pos, rect.right, y_pos),
+			 Display::to_color(1.0f, 0.0f, 0.0f, 0.8f));
   tmp_y_pos = y_pos;
 }
 

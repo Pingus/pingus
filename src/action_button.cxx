@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.34 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: action_button.cxx,v 1.35 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "world.hxx"
 #include "gui/graphic_context.hxx"
 #include "string_converter.hxx"
+#include "gui/display.hxx"
 #include "fonts.hxx"
 
 namespace Pingus {
@@ -45,7 +46,6 @@ ActionButton::init(int x, int y, ActionName name_, int owner_id)
   x_pos = x;
   y_pos = y;
   name = name_;
-
 
   font   = Fonts::pingus_small;
   font_b = Fonts::pingus_large;
@@ -117,8 +117,8 @@ VerticalActionButton::draw (GraphicContext& gc)
   if (pressed)
     {
       if (fast_mode) {
-        CL_Display::fill_rect(x_pos, y_pos, x_pos + 60, y_pos + 35,
-                              1.0, 1.0, 1.0, 1.0);
+        CL_Display::fill_rect(CL_Rect(x_pos, y_pos, x_pos + 60, y_pos + 35),
+                              Display::to_color(1.0, 1.0, 1.0, 1.0));
       } else {
         //CL_Display::fill_rect(x_pos, y_pos, x_pos + 60, y_pos + 35 ,
         //1.0, 1.0, 1.0, 0.5);
@@ -140,6 +140,7 @@ VerticalActionButton::draw (GraphicContext& gc)
     sprite.set_direction(Sprite::RIGHT);
   gc.draw(sprite, Vector(x_pos + 20, y_pos + 32));
 
+#ifdef CLANLIB_0_6
   // print the action name next to the button, when mouse pointer is on
   // the button.
   // FIXME: this should use the GUI events, not CL_Mouse
@@ -160,6 +161,7 @@ VerticalActionButton::draw (GraphicContext& gc)
       std::string str = to_string(action_holder->get_available(name));
       font->print_center(x_pos + 46, y_pos + 5, str.c_str ());
     }
+#endif
 }
 
 ArmageddonButton::ArmageddonButton (TrueServer* s, int x, int y)

@@ -1,4 +1,4 @@
-//  $Id: loading.cxx,v 1.8 2003/10/20 19:28:54 grumbel Exp $
+//  $Id: loading.cxx,v 1.9 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,9 +70,11 @@ Loading::draw_progress(const std::string& str, float progress)
   sur.draw((CL_Display::get_width() - sur.get_width())/2,
 		 (CL_Display::get_height() - sur.get_height())/2);
 
+#ifdef CLANLIB_0_6
   font.print_center(CL_Display::get_width() / 2,
 		     CL_Display::get_height() - 130,
 		     str.c_str());
+#endif
 
   CL_Display::fill_rect(50, CL_Display::get_height() - 100,
 			CL_Display::get_width() - 50, CL_Display::get_height() - 50,

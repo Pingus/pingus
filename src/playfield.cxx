@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.37 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: playfield.cxx,v 1.38 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -105,8 +105,8 @@ Playfield::draw (GraphicContext& gc)
 	  i != clipping_rectangles.end();
 	  i++)
 	{
-	  CL_Display::fill_rect(i->x1, i->y1,
-				i->x2 + 1, i->y2 + 1,
+	  CL_Display::fill_rect(i->left, i->top,
+				i->right + 1, i->bottom + 1,
 				0.0, 0.0, 0.0, 1.0);
 	}
     }

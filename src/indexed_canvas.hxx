@@ -1,4 +1,4 @@
-//  $Id: indexed_canvas.hxx,v 1.5 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: indexed_canvas.hxx,v 1.6 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/palette.h>
+
+namespace Pingus {
 
 /** This class is analog to CL_Canvas, but instead of being true
     color, it is indexed */
@@ -66,6 +68,8 @@ private:
   IndexedCanvas (const IndexedCanvas&);
   IndexedCanvas& operator= (const IndexedCanvas&);
 };
+
+} // namespace Pingus
 
 #endif
 

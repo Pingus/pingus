@@ -1,4 +1,4 @@
-//  $Id: rain_generator.cxx,v 1.12 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: rain_generator.cxx,v 1.13 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,7 @@ RainGenerator::update()
       do_thunder = true;
       thunder_count = 1.0f;
       waiter_count = 1.0f;
-      PingusSound::play_sound ("sounds/thunder.wav");
+      Sound::PingusSound::play_sound ("sounds/thunder.wav");
     }
 
   if (do_thunder)

@@ -1,4 +1,4 @@
-//  $Id: action_holder.cxx,v 1.13 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: action_holder.cxx,v 1.14 2003/10/21 11:01:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,8 @@
 
 namespace Pingus {
 
+using namespace Actions;
+
 ActionHolder::ActionHolder (PLF* plf)
 {
   std::vector<ActionData> action_data = plf->get_actions();
@@ -44,7 +46,7 @@ ActionHolder::~ActionHolder ()
 {
 }
 
-std::vector<ActionName>
+std::vector<Actions::ActionName>
 ActionHolder::get_available_actions()
 {
   std::vector<ActionName> ret;
