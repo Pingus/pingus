@@ -1,4 +1,4 @@
-//  $Id: mouse_axis.hxx,v 1.2 2002/07/09 17:00:10 torangan Exp $
+//  $Id: mouse_axis.hxx,v 1.3 2002/07/11 11:23:45 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,17 +26,18 @@ namespace Input
 {
   class MouseAxis : public Axis {
 
-  private:
-    int     axis;
-    float   angle;
-
+    private:
+      int   axis;
+      float angle;
+      float pos;
+      float old_pos;
     
-  public:
-    MouseAxis(int axis_, float angle_);
+    public:
+      MouseAxis(int axis_, float angle_);
 
-    virtual float get_pos ();
-    virtual float get_angle ();
-    virtual void  update (float);
+      virtual float get_pos ();
+      virtual float get_angle ();
+      virtual void  update (float);
   };
 }
 

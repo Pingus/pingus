@@ -1,4 +1,4 @@
-//  $Id: mouse_axis.cxx,v 1.1 2002/07/08 14:47:35 torangan Exp $
+//  $Id: mouse_axis.cxx,v 1.2 2002/07/11 11:23:44 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,23 +19,32 @@
 
 #include <ClanLib/Display/Input/input.h>
 #include <ClanLib/Display/Input/inputdevice.h>
-#include <ClanLib/Display/Input/inputaxis.h>
+#include <ClanLib/Display/Input/inputcursor.h>
 #include "mouse_axis.hxx"
 
 namespace Input
 {
-  MouseAxis::MouseAxis(int axis_, float angle_) : axis(axis_), angle(angle_)
+  MouseAxis::MouseAxis(int axis_, float angle_) : axis(axis_), angle(angle_), pos(0)
   {
     if (angle < 0)
       angle = (static_cast<int>(angle) % 360) + 360;
     else if (angle > 360)
       angle = static_cast<int>(angle) % 360;
+      
+    switch (axis)
+      {
+        case 0:  old_pos = CL_Input::pointers[0]->get_cursor(0)->get_x();
+	         break;
+        case 1:  old_pos = CL_Input::pointers[0]->get_cursor(0)->get_y();
+	         break;
+	default: old_pos = 0;
+      }
   }
 
   float
   MouseAxis::get_pos ()
   {
-    return CL_Input::pointers[0]->get_axis(axis)->get_pos();
+    return pos;
   }
 
   float
@@ -47,6 +56,33 @@ namespace Input
   void
   MouseAxis::update(float)
   {
+    switch (axis)
+      {
+        case 0:  if (old_pos != CL_Input::pointers[0]->get_cursor(0)->get_x())
+	           {
+		     pos     = CL_Input::pointers[0]->get_cursor(0)->get_x() - old_pos;
+		     old_pos = CL_Input::pointers[0]->get_cursor(0)->get_x();
+		    
+		     if (pos < -1)
+		       pos = -1;
+		     else if (pos > 1)
+		       pos = 1;
+ 		   }
+	         break;
+		
+        case 1:  if (old_pos != CL_Input::pointers[0]->get_cursor(0)->get_y())
+	           {
+		     pos     = CL_Input::pointers[0]->get_cursor(0)->get_y() - old_pos;
+		     old_pos = CL_Input::pointers[0]->get_cursor(0)->get_y();
+		     
+		     if (pos < -1)
+		       pos = -1;
+		     else if (pos > 1)
+		       pos = 1;
+		   }
+	         break;
+        default: break; // do nothing
+      }
   }
 }
 
