@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.36 2001/03/31 11:33:55 grumbel Exp $
+#  $Id: configure.in,v 1.37 2001/04/15 12:34:33 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -164,16 +164,15 @@ dnl ---------------------------------------------------
 
 AC_CHECK_LIB(Hermes,   main,,)
 
-AC_CHECK_LIB( clanDisplay,   main)
-AC_CHECK_LIB( clanSound,   main)
 AC_CHECK_LIB( clanCore,   main,, [
 	echo "ClanLib installed, but -lclanCore not found, run 'ldconfig' and try again,"
 	echo "if that doesn't help have a look at the file config.log and look into"
 	echo "the FAQ."
 	exit
 	])
-
 AC_CHECK_LIB( clanApp,   main)
+AC_CHECK_LIB( clanDisplay,   main)
+AC_CHECK_LIB( clanSound,   main)
 
 dnl AC_CHECK_LIB( clanGUI,   main,, [
 dnl 	echo "ClanLib is installed, but clanGUI was not found. You probably"
