@@ -1,4 +1,4 @@
-//  $Id: Console.cc,v 1.6 2000/06/14 17:24:43 grumbel Exp $
+//  $Id: Console.cc,v 1.7 2000/06/14 17:26:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -106,6 +106,7 @@ Console::add_line(string str)
   while(current_line.size() >= 80) {
     tmp_string = current_line.substr(0, 80);
     output_buffer.push_back(tmp_string);
+    current_pos++;
     current_line = current_line.substr(80);
   }
 }
