@@ -40,7 +40,7 @@ libpingus_editorobjs_a_SOURCES = \
 	switch_door_obj.cxx             switch_door_obj.hxx \
         switch_door_switch_obj.cxx      switch_door_switch_obj.hxx \
 	teleporter_obj.cxx              teleporter_obj.hxx \
-	teleporter_target_obj.cxx       teleporter_target_obj.cxx \
+	teleporter_target_obj.cxx       teleporter_target_obj.hxx \
 	thunderstorm_background_obj.cxx thunderstorm_background_obj.hxx
 
 # EOF #

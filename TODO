@@ -222,7 +222,7 @@ Random crash while scrolling
 'grep' at the sources for "Bug" or "FIXME" that should give you some
 more known bugs and other stuff. 
 
-$Date: 2002/11/27 20:05:41 $
+$Date: 2003/02/17 18:00:27 $
 
 =======
 
@@ -734,6 +734,9 @@ Current language:  auto; currently c++
     at pingus_main.cxx:783
 #9  0x401a8d5b in main (argc=2, argv=0xbffffac4) at Sources/Application/Unix/clanapp.cpp:32
 (gdb) 
+
+Generic Property Frame for objects
+==================================
 
 
 
