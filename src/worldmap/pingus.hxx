@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.5 2002/08/22 02:24:59 grumbel Exp $
+//  $Id: pingus.hxx,v 1.6 2002/08/22 09:24:18 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDMAP_PINGUS_HXX
 #define HEADER_PINGUS_WORLDMAP_PINGUS_HXX
 
-#ifdef WIN32
-#pragma warning(disable:4786)
-#endif
-
+#include "../pingus.hxx"
 #include <math.h>
 #include <queue>
 #include "node.hxx"
