@@ -109,6 +109,7 @@ section misc
         bpiece5 = ../images/groundpieces/ground/misc/bpiece5.png (type=surface);
         bpiece6 = ../images/groundpieces/ground/misc/bpiece6.png (type=surface);
         bpiece7 = ../images/groundpieces/ground/misc/bpiece7.png (type=surface);
+        bpiece8 = ../images/groundpieces/ground/misc/bpiece8.png (type=surface);
         brick1 = ../images/groundpieces/ground/misc/brick1.png (type=surface);
         brick2 = ../images/groundpieces/ground/misc/brick2.png (type=surface);
         brick3 = ../images/groundpieces/ground/misc/brick3.png (type=surface);
@@ -209,6 +210,7 @@ section real
         real29 = ../images/groundpieces/ground/real/real29.png (type=surface);
         real3 = ../images/groundpieces/ground/real/real3.png (type=surface);
         real30 = ../images/groundpieces/ground/real/real30.png (type=surface);
+        real34 = ../images/groundpieces/ground/real/real34.png (type=surface);
         real35 = ../images/groundpieces/ground/real/real35.png (type=surface);
         real36 = ../images/groundpieces/ground/real/real36.png (type=surface);
         real37 = ../images/groundpieces/ground/real/real37.png (type=surface);
@@ -330,11 +332,15 @@ section sweets
 section test
 {
         test1 = ../images/groundpieces/ground/test/test1.png (type=surface);
+        test10 = ../images/groundpieces/ground/test/test10.png (type=surface);
         test2 = ../images/groundpieces/ground/test/test2.png (type=surface);
         test3 = ../images/groundpieces/ground/test/test3.png (type=surface);
         test4 = ../images/groundpieces/ground/test/test4.png (type=surface);
         test5 = ../images/groundpieces/ground/test/test5.png (type=surface);
         test6 = ../images/groundpieces/ground/test/test6.png (type=surface);
+        test7 = ../images/groundpieces/ground/test/test7.png (type=surface);
+        test8 = ../images/groundpieces/ground/test/test8.png (type=surface);
+        test9 = ../images/groundpieces/ground/test/test9.png (type=surface);
 }
 
 // EOF //
