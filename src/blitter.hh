@@ -1,4 +1,4 @@
-//  $Id: blitter.hh,v 1.7 2000/06/18 18:14:47 grumbel Exp $
+//  $Id: blitter.hh,v 1.8 2000/10/01 21:28:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,6 +65,15 @@ public:
   /** Sets all pixels of a canvas to zero */
   static CL_Canvas* clear_canvas(CL_Canvas*);
   
+  /** Creates a new surface (based on a canvas) with the given width
+      and height and stretches the source surface onto it
+
+      @param sur The source surface
+      @param width The new width of the surface. 
+      @param height The new height of the surface. 
+      @return A newly created surface, the caller is responsible to delete it. */
+  static CL_Surface* scale_surface (CL_Surface* sur, int width, int height);
+
   //static CL_Surface* convert_to_emptyprovider(CL_Surface*);
   //static CL_Canvas* convert_to_emptyprovider(CL_SurfaceProvider*);
 };

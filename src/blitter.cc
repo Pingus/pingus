@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.17 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: blitter.cc,v 1.18 2000/10/01 21:28:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 #include <assert.h>
 #include "PingusError.hh"
 #include "blitter.hh"
-
+#include "Color.hh"
 
 void
 Blitter::put_surface(CL_Canvas* canvas, CL_Surface* sur,
@@ -303,6 +303,68 @@ Blitter::create_canvas(CL_SurfaceProvider* prov)
       break;
     }
   return canvas;
+}
+
+CL_Surface* 
+Blitter::scale_surface (CL_Surface* sur, int width, int height)
+{
+  Color color;
+  CL_SurfaceProvider* provider = sur->get_provider ();
+  CL_Canvas* canvas = new CL_Canvas (width, height);
+
+  provider->lock ();
+  canvas->lock ();
+
+  std::cout << "starting scale..." << std::endl;
+  
+  switch (provider->get_bytes_per_pixel ())
+    {
+    case 3:
+      {
+	unsigned char* sbuffer = static_cast<unsigned char*>(provider->get_data ());
+	unsigned char* tbuffer = static_cast<unsigned char*>(canvas->get_data ());
+	int cwidth = canvas->get_width ();
+	int cheight = canvas->get_height ();
+	int pwidth = provider->get_width ();
+	int pheight = provider->get_height ();
+
+	// We assume that we have the data in RGB888, which might not be
+	// the case
+	for (int y = 0; y < height; y++)
+	  for (int x = 0; x < width; x++)
+	    {
+	      int ti = (y * cwidth + x) * 4;
+	      int si = ((y * pheight / height) * pwidth
+			+ (x * pwidth / width)) * 3;
+		
+	      tbuffer[ti + 0] = 255; // alpha
+	      tbuffer[ti + 1] = sbuffer[(si + 0)]; // blue
+	      tbuffer[ti + 2] = sbuffer[(si + 1)]; // green
+	      tbuffer[ti + 3] = sbuffer[(si + 2)]; // red
+	    }
+      }
+      break;
+    default:
+      // Slow but generic, using get_data () would be better, but would
+      // require quite a bit of work
+      for (int y = 0; y < height; y++)
+	for (int x = 0; x < width; x++)
+	  {
+	    // std::cout << "X: " << x << " Y: " << y << std::endl;
+	    provider->get_pixel (x * provider->get_width () / width ,
+				 y * provider->get_height () / height,
+				 &color.red, &color.green, &color.blue, &color.alpha);
+	    // ignoring the source alpha due to get_pixel brokeness... no time to test the patch
+	    canvas->draw_pixel (x, y, color.red, color.green, color.blue, 1.0);
+	  }
+      break;
+    }
+
+  std::cout << "scale done" << std::endl;
+  canvas->unlock ();
+  provider->unlock ();
+
+  return CL_Surface::create (canvas, true);
 }
 
 /*
