@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.22 2000/10/12 22:19:18 grumbel Exp $
+//  $Id: System.cc,v 1.23 2000/10/14 16:09:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -147,7 +147,7 @@ System::create_dir(std::string directory)
 	}
       else
 	{
-	  std::cout << "Successfully created: " << directory << std::endl;
+	  std::cout << _("Successfully created: ") << directory << std::endl;
 	}
     }  else
     {
@@ -175,6 +175,7 @@ System::init_directories()
   create_dir(statdir + "levels/");
   create_dir(statdir + "levels/dist");
   create_dir(statdir + "stat/");
+  create_dir(statdir + "cache/");
   create_dir(statdir + "demos/");
   create_dir(statdir + "screenshots/");
   create_dir(statdir + "themes/");
@@ -196,9 +197,15 @@ System::get_statdir()
     }
   else
     {
-      throw PingusError("Enviroment variable $HOME not set, fix that and start again.");
+      throw PingusError(_("Enviroment variable $HOME not set, fix that and start again."));
     }
 #endif
+}
+
+std::string 
+System::get_cachedir()
+{
+  return get_statdir() + "cache/";
 }
 
 std::string
@@ -306,7 +313,7 @@ System::checksum (std::string filename)
 
   if (!in)
     {
-      std::cout << "System::checksum: Couldn't open file: " << filename << std::endl;
+      std::cout << _("System::checksum: Couldn't open file: ") << filename << std::endl;
       return "";
     }
 
@@ -316,7 +323,7 @@ System::checksum (std::string filename)
       
       if (bytes_read == -1)
 	{
-	  throw PingusError ("System:checksum: fileerror");
+	  throw PingusError (_("System:checksum: file read error"));
 	}
 
       for (int i=0; i < bytes_read; i++)

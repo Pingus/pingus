@@ -51,6 +51,8 @@ libpingus_editor_a_SOURCES = \
      ScrollMap.hh         \
      ScrollMap.cc         \
      EditorWorldObj.cc    \
-     EditorWorldObj.hh
+     EditorWorldObj.hh    \
+     ThumbCache.cc        \
+     ThumbCache.hh
 
 # EOF #

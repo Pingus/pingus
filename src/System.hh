@@ -1,4 +1,4 @@
-//  $Id: System.hh,v 1.15 2000/10/13 12:19:46 grumbel Exp $
+//  $Id: System.hh,v 1.16 2000/10/14 16:09:45 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,9 +71,13 @@ public:
       @param filename The complete filename */
   static std::string basename(std::string filename);
 
-  /** Returns the directory were Pingus can store its user specific
+  /** Returns the directory where Pingus can store its user specific
       state and config data (savegames, config files, demos, etc.) */
   static std::string get_statdir();
+
+  /** Returns the directory where Pingus can store things that needs
+      to be cached, for example thumbnails */
+  static std::string get_cachedir();
 
   /** Returns the directory were Pingus can store its system wide
       variable game data (highscores, cache images, ...) */

@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.20 2000/10/09 19:17:30 grumbel Exp $
+//  $Id: blitter.cc,v 1.21 2000/10/14 16:09:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -328,6 +328,12 @@ Blitter::create_canvas(CL_SurfaceProvider* prov)
 CL_Surface* 
 Blitter::scale_surface (CL_Surface* sur, int width, int height)
 {
+  return CL_Surface::create (Blitter::scale_surface_to_canvas(sur, width, height), true);
+}
+
+CL_Canvas* 
+Blitter::scale_surface_to_canvas (CL_Surface* sur, int width, int height)
+{
   Color color;
   CL_SurfaceProvider* provider = sur->get_provider ();
   CL_Canvas* canvas = new CL_Canvas (width, height);
@@ -400,7 +406,7 @@ Blitter::scale_surface (CL_Surface* sur, int width, int height)
   canvas->unlock ();
   provider->unlock ();
 
-  return CL_Surface::create (canvas, true);
+  return canvas;
 }
 
 /*

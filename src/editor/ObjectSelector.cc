@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.30 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.31 2000/10/14 16:09:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,14 +22,16 @@
 #include <iostream>
 
 #include "../globals.hh"
-#include "StringReader.hh"
 #include "../Display.hh"
 #include "../PingusResource.hh"
 #include "../Position.hh"
 #include "../Display.hh"
 #include "../Loading.hh"
+#include "../blitter.hh"
+#include "StringReader.hh"
 #include "WeatherObj.hh"
 #include "ObjectSelector.hh"
+#include "ThumbCache.hh"
 
 using namespace std;
 
@@ -363,9 +365,17 @@ ObjectSelector::select_surface(std::string resource_file)
   for(list<string>::iterator i = liste->begin(); i != liste->end(); i++)
     {
       ++j;
-      sur_obj.sur = CL_Surface::load(i->c_str(), res);
-      cout << "Loading: " << *i  << endl;
       sur_obj.name = *i;
+      sur_obj.sur = ThumbCache::load (*i, resource_file);
+
+      if (sur_obj.sur == 0)
+	{
+	  sur_obj.sur = CL_Surface::load(sur_obj.name.c_str (), res);
+	  sur_obj.sur = Blitter::scale_surface (sur_obj.sur, 50, 50);
+	  ThumbCache::cache (sur_obj.sur, sur_obj.name, resource_file);
+
+	  cout << "Loading: " << sur_obj.name  << endl;
+	}
       sur_list.push_back(sur_obj);
 
       if (!datafile_loaded && (j % 5) == 0)
@@ -413,6 +423,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.31  2000/10/14 16:09:46  grumbel
+Added a thumbnail cacher to the editor, but it still needs enhanchements, since it is to slow
+
 Revision 1.30  2000/08/28 00:34:39  grumbel
 Added support for multiple background types and multiple background layers
 Removed some .disconnect() cause they segfault here
