@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.40 2003/04/02 19:11:28 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.41 2003/04/05 20:59:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,6 +44,11 @@
 #include "../plf_handle.hxx"
 #include "../plf.hxx"
 #include "../math.hxx"
+#include "../stat_manager.hxx"
+
+#include "../story.hxx"
+#include "../story_screen.hxx"
+#include "../gui/screen_manager.hxx"
 
 namespace WorldMapNS {
 
@@ -397,8 +402,28 @@ struct unlock_nodes
 
 void
 WorldMap::update_locked_nodes()
-{
+{ // FIXME: This shouldn't be a polling function
   path_graph->graph.for_each_node(unlock_nodes(path_graph));
+
+  bool credits_unlocked = false;
+  StatManager::instance()->get_bool("credits-unlocked", credits_unlocked);
+  
+  if (!credits_unlocked)
+    {
+      Dot* dot = path_graph->get_dot(path_graph->lookup_node("leveldot_19"));
+      if (dot)
+        {
+          if (dot->finished())
+            {
+              ScreenManager::instance()->replace_screen(new StoryScreen(Story::credits), true);
+              StatManager::instance()->set_bool("credits-unlocked", true);
+            }
+        }
+      else
+        {
+          std::cout << "Error: WorldMap: Last level missing" << std::endl;
+        }
+    }
 }
 
 } // namespace WorldMapNS

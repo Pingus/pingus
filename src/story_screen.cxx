@@ -1,4 +1,4 @@
-//  $Id: story_screen.cxx,v 1.11 2003/04/05 20:24:16 grumbel Exp $
+//  $Id: story_screen.cxx,v 1.12 2003/04/05 20:59:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -145,7 +145,8 @@ StoryScreen::on_escape_press ()
 void 
 StoryScreen::on_startup()
 {
-  PingusSound::play_sound ("letsgo");
+  //PingusSound::play_sound ("letsgo");
+  PingusSound::play_music("pingus-4.it", .5f);
 }
 
 void
