@@ -1,4 +1,4 @@
-//  $Id: PingusWavProvider.cc,v 1.6 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: PingusWavProvider.cc,v 1.7 2001/04/10 10:45:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <config.h>
+#include "globals.hh"
 #include "audio.hh"
 #include "PingusError.hh"
 #include "PingusWavProvider.hh"
@@ -32,7 +33,8 @@ PingusWavProvider::load(std::string str)
 
   wav_data = wave[str];
 
-  std::cout << "Loading: " << str << " data: " << wav_data << std::endl;
+  if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
+    std::cout << "Loading: " << str << " data: " << wav_data << std::endl;
 
   if (wav_data)
     {

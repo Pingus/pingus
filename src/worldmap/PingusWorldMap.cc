@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.21 2001/04/07 21:03:42 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.22 2001/04/10 10:45:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,6 @@ PingusWorldMap::PingusWorldMap (std::string filename) :
   //background = Blitter::scale_surface (background, CL_Display::get_width (), CL_Display::get_height ());
   
   pingus = new PingusWorldMapPingus;
-  pingus->set_position (&(*graph_data.nodes.begin ()));
 
   stat = boost::shared_ptr<PingusWorldMapStat>(new PingusWorldMapStat (System::basename(filename)));
   
@@ -68,6 +67,12 @@ PingusWorldMap::PingusWorldMap (std::string filename) :
 	  if (!i->accessible)
 	    i->accessible = stat->accessible (i->id);
 	}
+      
+      pingus->set_position (&(*graph_data.nodes.begin ()));
+    }
+  else
+    {
+      pingus->set_position (&(*graph_data.nodes.begin ()));
     }
 }
 

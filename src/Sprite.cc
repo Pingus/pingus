@@ -1,4 +1,4 @@
-//  $Id: Sprite.cc,v 1.7 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: Sprite.cc,v 1.8 2001/04/10 10:45:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,18 @@
 
 #include "PingusResource.hh"
 #include "Sprite.hh"
+
+Sprite::Sprite (const Sprite& sprite) :
+  frame (sprite.frame),
+  frames_per_second (sprite.frames_per_second),
+  sur (sprite.sur),
+  direction (sprite.direction),
+  looptype (sprite.looptype),
+  is_finished (sprite.is_finished),
+  x_align (sprite.x_align),
+  y_align (sprite.y_align)
+{
+}
 
 Sprite::Sprite (std::string arg_sur_name,
 		std::string arg_datafile,
@@ -119,6 +131,18 @@ Sprite::previous_frame ()
 
   if (frame < 0)
     frame = sur.get_num_frames () - 1;  
+}
+
+int 
+Sprite::get_frame ()
+{
+  return int(frame);
+}
+
+float 
+Sprite::get_progress ()
+{
+  return float(frame)/max_frames ();
 }
 
 int 

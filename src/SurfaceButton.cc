@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.21 2001/04/03 10:45:49 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.22 2001/04/10 10:45:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -218,7 +218,8 @@ OptionsButton::on_click()
 
 ///////////////////////////////////////////////
 
-QuitButton::QuitButton()
+QuitButton::QuitButton(PingusMenu* m)
+  : menu (m)
 {
   // x_pos = CL_Display::get_width() * 500 / 640; 
   // y_pos = CL_Display::get_height() * 320 / 480; 
@@ -242,12 +243,6 @@ QuitButton::QuitButton()
 
 QuitButton::~QuitButton()
 {
-}
-
-void
-QuitButton::set_pingus_menu(PingusMenu* m)
-{
-  menu = m;
 }
 
 void
@@ -350,6 +345,30 @@ ThemeButton::on_click()
   PingusSound::play_wav ("letsgo");
   worldmap_manager.display();
   //theme_selector.select();
+}
+
+MultiplayerButton::MultiplayerButton ()
+{
+  x_pos = CL_Display::get_width() * 320 / 640;
+  y_pos = CL_Display::get_height() * 369 / 480;
+
+  desc = _("..:: Multiplayer Modes... experimental stuff ::..");
+    
+  line1 = _("Multi");
+  
+  surface = PingusResource::load_surface("menu/ice_off", "core");
+  surface_p = PingusResource::load_surface("menu/multi_on", "core");
+}
+ 
+MultiplayerButton::~MultiplayerButton ()
+{
+}
+ 
+void
+MultiplayerButton::on_click()
+{
+  std::cout << "MultiplayerButton: Launching MultiplayerGame" << std::endl;
+  multiplayer_config.display ();
 }
 
 /* EOF */

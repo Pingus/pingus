@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.hh,v 1.16 2001/03/18 17:45:04 grumbel Exp $
+//  $Id: PingusMenu.hh,v 1.17 2001/04/10 10:45:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,11 +31,6 @@
 
 ///
 class SurfaceButton;
-class PlayButton;
-class OptionsButton;
-class QuitButton;
-class EditorButton;
-class ThemeButton;
 
 class PingusMenu
 {
@@ -52,7 +47,7 @@ private:
   //
   CL_Slot on_resize_slot;
   ///
-  std::list<SurfaceButton*> buttons;
+  std::list<boost::shared_ptr<SurfaceButton> > buttons;
   ///
   SurfaceButton* temp_button;
   ///
@@ -73,17 +68,6 @@ private:
   int quit_x, quit_y;
   ///
   int temp_mouse_x, temp_mouse_y;
-  ///
-  PlayButton* play_button;
-  ///
-  OptionsButton* options_button;
-  ///
-  QuitButton*  quit_button;
-  ///
-  EditorButton* editor_button;
-  ///
-  ThemeButton* theme_button;
-  
 
   void on_resize(int w, int h);
 public:

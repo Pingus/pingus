@@ -1,4 +1,4 @@
-//  $Id: Sprite.hh,v 1.5 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: Sprite.hh,v 1.6 2001/04/10 10:45:14 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,8 @@ private:
   int max_frames ();
   
 public:
-
+  Sprite (const Sprite& sprite);
+  
   Sprite (std::string arg_sur_name,
 	  std::string arg_datafile,
 	  float arg_frames_per_second = 10.0f,
@@ -59,7 +60,9 @@ public:
 	  Sprite::Direction dir = NONE,
 	  LoopType arg_loop_type = ENDLESS);
 
-  /** */
+  /** High level version of put_screen (), it handles the frame count
+      and the aligment, might be used when you don't have a CL_Vector
+      at hand. */
   void put_screen (int x, int y);
 
   /** High level version put_screen (), it handles the framecount and
@@ -74,8 +77,19 @@ public:
   /** Shortcut for setting the aligment to the center of the surface */
   void set_align_center ();
   
+  /** Go to the next frame */
   void next_frame ();
+
+  /** Go to the previous frame */
   void previous_frame ();
+
+  /** Get the currently displaed frame 
+      @return the currently displayed frame */
+  int get_frame ();
+
+  /** Get the current position in percent @return The current
+      animation position in percent relative to max_frames () */
+  float get_progress ();
 
   /** Set the current direction of the surface, WARNING: Does only
       work in a few case... FIXME: rewrite when
@@ -83,13 +97,21 @@ public:
   @param dir Direction: LEFT, RIGHT, NONE */
   void set_direction (Sprite::Direction dir) { direction = dir; }
 
+  /** Update the sprites status and go one speed further if needed
+      @param delta The amount of time which has been pasted since the
+      last update in seconds */
   void update (float delta);
 
+  // @return width of the sprite
   int get_width () { return sur.get_width (); }
+
+  // @return height of the sprite
   int get_height () { return sur.get_height (); }
 
+  /// @return true when the animation is played/finished
   bool finished ();
 
+  /// @return the surface which is used internally
   CL_Surface get_surface ();
 };
 

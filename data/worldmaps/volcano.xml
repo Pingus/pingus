@@ -22,7 +22,7 @@
 
     <node id="2">
       <link id="3"/>
-      <level name="level1.xml"/>
+      <level name="level2.xml"/>
       <position>
 	<x-pos>180</x-pos>
 	<y-pos>345</y-pos>
@@ -30,7 +30,7 @@
     </node>
 
     <node id="3">
-      <level name="level1.xml"/>
+      <level name="level3.xml"/>
       <link id="31"/>
       <link id="7"/>
       <position>
@@ -48,7 +48,7 @@
     </node>
 
     <node id="4">
-      <level name="level1.xml"/>
+      <level name="level4.xml"/>
       <link id="41"/>
       <position>
 	<x-pos>418</x-pos>
@@ -65,7 +65,7 @@
     </node>
 
     <node id="5">
-      <level name="level1.xml"/>
+      <level name="level5.xml"/>
       <link id="51"/>
       <position>
 	<x-pos>370</x-pos>
@@ -82,7 +82,7 @@
     </node>
 
     <node id="6">
-      <level name="level1.xml"/>
+      <level name="level6.xml"/>
       <position>
 	<x-pos>469</x-pos>
 	<y-pos>177</y-pos>
@@ -90,7 +90,7 @@
     </node>
 
     <node id="7">
-      <level name="level1.xml"/>
+      <level name="level7.xml"/>
       <link id="8"/>
       <link id="13"/>
       <position>
@@ -100,7 +100,7 @@
     </node>
 
     <node id="8">
-      <level name="level1.xml"/>
+      <level name="level8.xml"/>
       <link id="9"/>
       <position>
 	<x-pos>418</x-pos>
@@ -109,7 +109,7 @@
     </node>
 
     <node id="9">
-      <level name="level1.xml"/>
+      <level name="level9.xml"/>
       <link id="10"/>
       <position>
 	<x-pos>498</x-pos>
@@ -118,7 +118,7 @@
     </node>
 
     <node id="10">
-      <level name="level1.xml"/>
+      <level name="level10.xml"/>
       <link id="11"/>
       <position>
 	<x-pos>581</x-pos>
@@ -127,7 +127,7 @@
     </node>
 
     <node id="11">
-      <level name="level1.xml"/>
+      <level name="level11.xml"/>
       <link id="12"/>
       <link id="15"/>
       <position>
@@ -137,7 +137,7 @@
     </node>
 
     <node id="12">
-      <level name="level1.xml"/>
+      <level name="level12.xml"/>
       <position>
 	<x-pos>744</x-pos>
 	<y-pos>377</y-pos>
@@ -145,7 +145,7 @@
     </node>
 
     <node id="13">
-      <level name="level1.xml"/>
+      <level name="level13.xml"/>
       <link id="14"/>
       <position>
 	<x-pos>424</x-pos>
@@ -154,7 +154,7 @@
     </node>
 
     <node id="14">
-      <level name="level1.xml"/>
+      <level name="level14.xml"/>
       <link id="15"/>
       <position>
 	<x-pos>535</x-pos>
@@ -163,7 +163,7 @@
     </node>
 
     <node id="15">
-      <level name="level1.xml"/>
+      <level name="level15.xml"/>
       <link id="14"/>
       <link id="11"/>
       <position>

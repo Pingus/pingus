@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.hh,v 1.14 2001/04/01 18:00:37 grumbel Exp $
+//  $Id: SurfaceButton.hh,v 1.15 2001/04/10 10:45:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 #include "worldmap/PingusWorldMapManager.hh"
 #include "ThemeSelector.hh"
 #include "PingusMenu.hh"
+#include "MultiplayerConfig.hh"
 // #include "FileSelector.hh"
 
 class PingusMenu;
@@ -103,11 +104,9 @@ private:
   PingusMenu* menu;
 public:
   ///
-  QuitButton();
+  QuitButton(PingusMenu*);
   ///
   virtual ~QuitButton();
-  ///
-  void set_pingus_menu(PingusMenu*);
   ///
   void on_click();
 };
@@ -123,8 +122,7 @@ public:
   virtual ~LoadButton();
   ///
   void on_click();
-}///
-;
+};
 
 ///
 class EditorButton : public SurfaceButton
@@ -157,6 +155,20 @@ public:
   void on_click();
 };
 
+///
+class MultiplayerButton : public SurfaceButton
+{
+private:
+  MultiplayerConfig multiplayer_config;
+  
+public:
+  ///
+  MultiplayerButton();
+  ///
+  virtual ~MultiplayerButton();
+  ///
+  void on_click();
+};
 
 #endif
 

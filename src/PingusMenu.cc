@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.41 2001/04/04 10:21:16 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.42 2001/04/10 10:45:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,6 @@ PingusMenu::PingusMenu()
   is_init = false;
   // We need this button a bit earlier than the other ones, so we
   // allocate it here.
-  editor_button = new EditorButton;
 }
 
 void
@@ -66,20 +65,13 @@ PingusMenu::init ()
   //on_mouse_move_slot     = CL_Input::sig_mouse_move.connect (CL_CreateSlot(event, &PingusMenu::on_mouse_move));
 
   on_resize_slot = CL_Display::get_sig_resize().connect(CL_CreateSlot(this, &PingusMenu::on_resize));
-  //CL_Display::get_sig_resize().disconnect(on_resize_slot);
 
-  options_button = new OptionsButton;
-  play_button    = new PlayButton;
-  quit_button    = new QuitButton;
-  theme_button   = new ThemeButton;
-
-  quit_button->set_pingus_menu(this);
-
-  buttons.push_back(editor_button);
-  buttons.push_back(options_button);
-  buttons.push_back(play_button);
-  buttons.push_back(quit_button);
-  buttons.push_back(theme_button);
+  buttons.push_back(boost::shared_ptr<SurfaceButton>(new OptionsButton ()));
+  buttons.push_back(boost::shared_ptr<SurfaceButton>(new PlayButton ()));
+  buttons.push_back(boost::shared_ptr<SurfaceButton>(new QuitButton (this)));
+  buttons.push_back(boost::shared_ptr<SurfaceButton>(new MultiplayerButton ()));
+  buttons.push_back(boost::shared_ptr<SurfaceButton>(new ThemeButton ()));
+  buttons.push_back(boost::shared_ptr<SurfaceButton>(new EditorButton ()));
 }
 
 PingusMenu::~PingusMenu()
@@ -104,7 +96,7 @@ PingusMenu::draw()
   // Putting the logo
   //bg->put_screen(CL_Display::get_width()/2 - bg->get_width()/2, 3);
 
-  for(std::list<SurfaceButton*>::iterator i = buttons.begin();
+  for(std::list<boost::shared_ptr<SurfaceButton> >::iterator i = buttons.begin();
       i != buttons.end(); 
       i++)
     {
@@ -119,17 +111,6 @@ PingusMenu::draw()
 void
 PingusMenu::select(void)
 {
-  if (quick_play) 
-    {
-      PingusGame game;
-      game.start_game();
-      quick_play = false;
-    }
-  
-  if (start_editor) {
-    editor_button->on_click ();
-  }
-
   if (!is_init) init();
 
   do_quit = false;
@@ -218,7 +199,7 @@ PingusMenu::on_button_release(CL_InputDevice *device, const CL_Key &key)
     {
       if (verbose) std::cout << "PingusMenu::Event: on_button_press" << std::endl;
 
-      for(std::list<SurfaceButton*>::iterator i = buttons.begin(); 
+      for(std::list<boost::shared_ptr<SurfaceButton> >::iterator i = buttons.begin(); 
 	  i != buttons.end(); 
 	  i++)
 	{

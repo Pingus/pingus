@@ -78,6 +78,7 @@ section menu
 	ice_off = images/core/menu/ice_off.png (type=surface, x=0, y=0, width=228, height=189);
 	options_on = images/core/menu/options_on.png (type=surface, x=0, y=0, width=200, height=127);
 	play_on = images/core/menu/play_on.png (type=surface, x=0, y=0, width=201, height=127);
+	multi_on = images/core/menu/multi_on.png (type=surface, x=0, y=0, width=201, height=127);
 
 	layer1 = images/core/menu/layer1.png (type=surface, x=0, y=0, width=800, height=268);
 	layer2 = images/core/menu/layer2.png (type=surface, x=0, y=0, width=800, height=362);
