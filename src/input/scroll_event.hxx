@@ -1,4 +1,4 @@
-//  $Id: event.hxx,v 1.3 2002/07/11 15:15:19 torangan Exp $
+//  $Id: scroll_event.hxx,v 1.1 2002/07/11 15:15:19 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,18 +17,23 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_INPUT_EVENT_HXX
-#define HEADER_PINGUS_INPUT_EVENT_HXX
+#ifndef HEADER_PINGUS_INPUT_SCROLL_EVENT_HXX
+#define HEADER_PINGUS_INPUT_SCROLL_EVENT_HXX
+
+#include "event.hxx"
 
 namespace Input {
 
-  enum EventType { ButtonEventType, PointerEventType, AxisEventType, ScrollEventType };
-
-  class Event {
+  class ScrollEvent : public Event {
+  
     public:
-    
-      virtual ~Event () { }
-      virtual EventType get_type ()=0;
+      float x_delta;
+      float y_delta;
+           
+    public:
+      ScrollEvent (float x_delta_, float y_delta_) : x_delta(x_delta_), y_delta(y_delta_) { }
+      
+      EventType get_type () { return ScrollEventType; }
   };
 
 }

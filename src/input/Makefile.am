@@ -51,6 +51,7 @@ libpingus_input_a_SOURCES =       \
 	pointer_factory.hxx pointer_factory.cxx \
 	pointer_scroller.hxx pointer_scroller.cxx \
 	scroller.hxx \
+	scroll_event.hxx \
 	triple_button.hxx triple_button.cxx
 
 # EOF #
