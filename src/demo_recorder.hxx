@@ -1,4 +1,4 @@
-//  $Id: demo_recorder.hxx,v 1.7 2002/10/03 12:33:08 grumbel Exp $
+//  $Id: demo_recorder.hxx,v 1.8 2002/10/07 12:25:07 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,10 @@ class ServerEvent;
 class DemoRecorder
 {
 private:
+  /** Set to true to record a demo, set to false to ignore
+      record_event() messages */
+  bool record_demo;
+
   /** Stream to which the events are written */
   std::ofstream out;
 

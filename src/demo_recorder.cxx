@@ -1,4 +1,4 @@
-//  $Id: demo_recorder.cxx,v 1.8 2002/10/06 19:20:14 grumbel Exp $
+//  $Id: demo_recorder.cxx,v 1.9 2002/10/07 12:25:07 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,7 @@
 using namespace std;
 
 DemoRecorder::DemoRecorder(Server* server)
+  : record_demo (true)
 {
   std::string levelname = server->get_plf()->get_filename();
 
@@ -45,33 +46,50 @@ DemoRecorder::DemoRecorder(Server* server)
 
       if (!out)
 	{
-	  assert(!"DemoRecorder: Couldn't write DemoFile");
+          record_demo = false;
+
+	  std::cout << "DemoRecorder: Error: Couldn't write DemoFile, demo recording will be disabled" << std::endl;
 	}
-      
-      // Write file header
-      out << "<pingus-demo>\n"
-	  << "  <level>" << levelname << "</level>\n"
-	  << "  <events>" << std::endl;
+      else
+        {
+          record_demo = true;
+
+          // Write file header
+          out << "<pingus-demo>\n"
+              << "  <level>" << levelname << "</level>\n"
+              << "  <events>" << std::endl;
+        }
     }
   else
     {
-      assert(!"DemoRecorder Couldn't get levelname");
+      record_demo = false;
+      // This point should only be reachable if we have a bug
+      // somewhere or provide a way to get a PLF without using XMLPLF,
+      // since we don't do that, a bug must be somewhere when we reach
+      // this.
+      assert(!"ERROR: DemoRecorder: Couldn't get levelname, please report this as a bug!");
     }
 }
 
 DemoRecorder::~DemoRecorder()
 {
-  // Write file footer
-  out << "  </events>\n"
-      << "</pingus-demo>" << std::endl;
-  out.close();
+  if (record_demo)
+    {
+      // Write file footer
+      out << "  </events>\n"
+          << "</pingus-demo>" << std::endl;
+      out.close();
+    }
 }
 
 void
 DemoRecorder::record_event (const ServerEvent& event)
 {
-  event.write_xml(out);  
-  event.write_xml(std::cout);
+  if (record_demo)
+    {
+      event.write_xml(out);  
+      event.write_xml(std::cout);
+    }
 }
 
 string 
@@ -82,7 +100,7 @@ DemoRecorder::get_date()
   struct tm *loctime;
   curtime = time (NULL);
   loctime = localtime(&curtime);
-  strftime(buffer, 32, "%Y-%m-%d_%H%M%S", loctime);
+  strftime(buffer, 32, "%Y%m%d-%H%M%S", loctime);
 
   return string(buffer);
 }
