@@ -1,4 +1,4 @@
-//  $Id: timer.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: timer.cxx,v 1.3 2002/10/07 23:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,29 +17,22 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <cassert>
 #include <ClanLib/Core/System/system.h>
+#include <iostream>
 #include "timer.hxx"
 
-Timer::Timer()
+Timer::Timer(const char* desc)
+  : description(desc),
+    start_time (CL_System::get_time())
 {
-  running = false;
 }
 
-int
-Timer::start()
-{
-  assert(!running);
-  running = true;
-  return (last_time = CL_System::get_time());
-}
-
-int
+void
 Timer::stop()
 {
-  assert(running);
-  running = false;
-  return CL_System::get_time() - last_time;
+  unsigned int time = CL_System::get_time() - start_time;
+  std::cout << "Timer: '" << description << "' took " 
+            << time << "msec" << std::endl;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.17 2002/10/04 16:54:04 grumbel Exp $
+//  $Id: game_session.cxx,v 1.18 2002/10/07 23:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,19 +31,17 @@
 PingusGameSession::PingusGameSession (std::string arg_filename)
   : filename (arg_filename)
 {
-  Timer timer;
-  
-  timer.start();
+  Timer plf_timer("GameSession plf creation");
   plf    = PLF::create(filename);
-  std::cout << "Timer: Level loading took: " << timer.stop() << std::endl;
+  plf_timer.stop();
 
-  timer.start();
+  Timer server_timer("GameSession server creation");
   server = new TrueServer(plf);
-  std::cout << "Timer: TrueServer creation took: " << timer.stop() << std::endl;
+  server_timer.stop();
 
-  timer.start();
+  Timer client_timer("GameSession client creation");
   client = new Client(server);
-  std::cout << "Timer: Client creation took: " << timer.stop() << std::endl;
+  client_timer.stop();
 
   last_redraw = CL_System::get_time();
   last_update = CL_System::get_time();
@@ -95,11 +93,14 @@ PingusGameSession::update (const GameDelta& delta)
   int time_passed = (CL_System::get_time() - last_update) + left_over_time;
   int update_time = game_speed;
   int min_frame_skip = 0;
+  int max_frame_skip = 0;
 
   left_over_time = 0;
 
   int i;
-  for (i = 0; i * update_time < time_passed || i < min_frame_skip; i += 1)
+  for (i = 0; 
+       (i * update_time < time_passed && i < min_frame_skip + 1); 
+       ++i)
     {
       // This updates the world and all objects
       server->update ();

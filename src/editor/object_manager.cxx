@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.35 2002/09/28 11:52:23 torangan Exp $
+//  $Id: object_manager.cxx,v 1.36 2002/10/07 23:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -292,6 +292,7 @@ void
 ObjectManager::add (EditorObj* obj)
 {
   editor_objs.push_back (obj);
+  z_pos_sort();
 }
 
 void
@@ -300,6 +301,7 @@ ObjectManager::erase (EditorObj* obj)
   editor_objs.erase(std::remove (editor_objs.begin(), editor_objs.end(), obj),
 		    editor_objs.end ());
   delete obj;
+  z_pos_sort();
 }
 
 void
@@ -311,6 +313,7 @@ ObjectManager::erase (const std::vector<EditorObj*>& objs)
 			editor_objs.end ());
       delete *i;
     }
+  z_pos_sort(); 
 }
 
 EditorObj*

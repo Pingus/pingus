@@ -1,4 +1,4 @@
-//  $Id: timer.hxx,v 1.5 2002/09/27 11:26:44 torangan Exp $
+//  $Id: timer.hxx,v 1.6 2002/10/07 23:11:09 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,18 +27,16 @@
 class Timer
 {
 private:
-  int last_time;
-  bool running;
+  const char* description;
+  unsigned int start_time;
 
 public:
-  Timer();
+  /** Init a timer with a description and start it */
+  Timer(const char* desc);
 
-  /** Start the timer
-      @return The current time, as returned by CL_System::get_time() */
-  int start();
   /** Stop the timer
       @return The time passed since the last start() */
-  int stop();
+  void stop();
   
 private:
   Timer (const Timer&);
