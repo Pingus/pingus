@@ -94,7 +94,14 @@ section menu
 section result
 {
 	retry = ../images/core/menu/result_retry.png (type=surface);
-	ok    = ../images/core/menu/result_ok.png (type=surface);
+	ok         = ../images/core/menu/result_ok.png (type=surface);
+}
+
+section start
+{
+	ok         = ../images/core/misc/start_ok.png (type=surface);
+	ok_hover   = ../images/core/misc/start_ok_hover.png (type=surface);
+	ok_clicked = ../images/core/misc/start_ok_clicked.png (type=surface);
 }
 
 section misc

@@ -9,8 +9,7 @@ so that they can float to the ground smoothly. If Pingus fall to
 far, they will not be able to survive the fall, so keep your eyes
 open!</description>
 
-    <author>Ingo Ruhnke
-    &lt;grumbel@gmx.de&gt;</author>
+    <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>20</number-of-pingus>
     <number-to-save>10</number-to-save> <time>-1</time>
     <width>1230</width> <height>900</height>

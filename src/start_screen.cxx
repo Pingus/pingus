@@ -1,4 +1,4 @@
-//  $Id: start_screen.cxx,v 1.4 2003/03/30 13:12:35 grumbel Exp $
+//  $Id: start_screen.cxx,v 1.5 2003/03/30 14:24:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,10 +49,10 @@ private:
   StartScreen* parent;
 public:
   StartScreenOkButton(StartScreen* p)
-    : GUI::SurfaceButton(300, 500, 
-                         ResDescriptor("result/ok", "core", ResDescriptor::RD_RESOURCE),
-                         ResDescriptor("result/ok", "core", ResDescriptor::RD_RESOURCE),
-                         ResDescriptor("result/ok", "core", ResDescriptor::RD_RESOURCE)),
+    : GUI::SurfaceButton(625, 425, 
+                         ResDescriptor("start/ok", "core", ResDescriptor::RD_RESOURCE),
+                         ResDescriptor("start/ok_clicked", "core", ResDescriptor::RD_RESOURCE),
+                         ResDescriptor("start/ok_hover", "core", ResDescriptor::RD_RESOURCE)),
       parent(p)
   {
   }
@@ -62,6 +62,8 @@ public:
     parent->start_game();
   }
 };
+
+//cancel button 122, 444
 
 StartScreen::~StartScreen()
 {
@@ -79,20 +81,21 @@ StartScreenComponent::draw(GraphicContext& gc)
 {
   //gc.clear(0,0,0);
   background.put_screen(0,0);
+  
   gc.print_center(Fonts::chalk_large, gc.get_width()/2, 100, System::translate(plf->get_levelname()));
   gc.print_left(Fonts::chalk_normal, 130, 160, System::translate(plf->get_description()));
 
-  gc.print_left (Fonts::chalk_normal, 300, 290, _("Number of Pingus: "));
-  gc.print_right(Fonts::chalk_normal, 500, 290, to_string(plf->get_pingus()));
+  gc.print_left (Fonts::chalk_normal, 300, 310, _("Number of Pingus: "));
+  gc.print_right(Fonts::chalk_normal, 500, 310, to_string(plf->get_pingus()));
 
-  gc.print_left (Fonts::chalk_normal, 300, 320, _("Number to Save: "));
-  gc.print_right(Fonts::chalk_normal, 500, 320, to_string(plf->get_number_to_save()));
+  gc.print_left (Fonts::chalk_normal, 300, 340, _("Number to Save: "));
+  gc.print_right(Fonts::chalk_normal, 500, 340, to_string(plf->get_number_to_save()));
 
-  gc.print_left (Fonts::chalk_normal, 300, 350, _("Time: "));
-  gc.print_right(Fonts::chalk_normal, 500, 350, to_string(plf->get_time()));
+  gc.print_left (Fonts::chalk_normal, 300, 370, _("Time: "));
+  gc.print_right(Fonts::chalk_normal, 500, 370, to_string(plf->get_time()));
   
-  gc.print_left (Fonts::chalk_normal, 300, 380, _("Difficulty:"));
-  gc.print_right(Fonts::chalk_normal, 500, 380, to_string(plf->get_difficulty() + "/100"));
+  gc.print_left (Fonts::chalk_normal, 300, 400, _("Difficulty:"));
+  gc.print_right(Fonts::chalk_normal, 500, 400, to_string(plf->get_difficulty()) + "/100");
 
   /*for (int i = 0; plf->get_difficulty())
     {
