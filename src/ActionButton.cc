@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.25 2002/01/14 23:37:59 grumbel Exp $
+//  $Id: ActionButton.cc,v 1.26 2002/01/15 16:55:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -184,9 +184,9 @@ VerticalActionButton::draw()
       } else {
 	//CL_Display::fill_rect(x_pos, y_pos, x_pos + 60, y_pos + 35 ,
 	//1.0, 1.0, 1.0, 0.5);
-	backgroundhl.put_screen (x_pos + 2, y_pos + 1);
+	backgroundhl.put_screen (x_pos, y_pos);
       }
-      font_h->print_center(x_pos + 48, y_pos + 11, str.c_str ());
+      font_h->print_center(x_pos + 46, y_pos + 10, str.c_str ());
     }
   else
     {
@@ -195,9 +195,9 @@ VerticalActionButton::draw()
       if (fast_mode) {
 	// do nothing
       } else {
-	background.put_screen (x_pos + 2, y_pos + 1);
+	background.put_screen (x_pos, y_pos);
       }
-      font->print_center(x_pos + 47, y_pos + 11, str.c_str ());
+      font->print_center(x_pos + 46, y_pos + 10, str.c_str ());
     }
 
   // print the action name next to the button, when mouse pointer is on

@@ -1,4 +1,4 @@
-//  $Id: PinguInfo.cc,v 1.9 2001/12/05 09:15:51 grumbel Exp $
+//  $Id: PinguInfo.cc,v 1.10 2002/01/15 16:55:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,18 +38,21 @@ PinguInfo::PinguInfo()
 void
 PinguInfo::draw()
 {
-  CL_Display::fill_rect(CL_Display::get_width()  - 220,
-			CL_Display::get_height() - 55,
-			CL_Display::get_width()  - 5,
-			CL_Display::get_height() - 5,
+  int x_pos = 100;
+  int y_pos = 5;
+
+  CL_Display::fill_rect(x_pos + CL_Display::get_width()  - 220,
+			y_pos + CL_Display::get_height() - 55,
+			x_pos + CL_Display::get_width()  - 5,
+			y_pos + CL_Display::get_height() - 5,
 			0.2f, 0.2f, 0.2f, 1.0f);
   if (pingu.get()) {
     char str1[256];
     char str2[256];
 
     sprintf(str1, _("pingu_id %d"), pingu->get_id());
-    font->print_left(CL_Display::get_width() - 185, 
-		     CL_Display::get_height() - 50,
+    font->print_left(x_pos + CL_Display::get_width() - 185, 
+		     y_pos + CL_Display::get_height() - 50,
 		     tolowerstr(str1));
 
     if (pingu->get_action().get()) {
@@ -58,12 +61,12 @@ PinguInfo::draw()
       sprintf(str2, _("action none"));
     }
 
-    font->print_left(CL_Display::get_width() - 185, 
-		     CL_Display::get_height() - 30,
+    font->print_left(x_pos + CL_Display::get_width() - 185, 
+		     y_pos + CL_Display::get_height() - 30,
 		     tolowerstr(str2));
   } else {
-    font->print_left(CL_Display::get_width() - 200, 
-		     CL_Display::get_height() - 50,
+    font->print_left(x_pos + CL_Display::get_width() - 200, 
+		     y_pos + CL_Display::get_height() - 50,
 		     "none selected");
   }
 }

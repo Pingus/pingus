@@ -82,7 +82,6 @@ src/FadeOut.cc
 src/FPSCounter.cc
 src/FVec.cc
 src/GameCounter.cc
-src/GameObj.cc
 src/GamepadController.cc
 src/GameTime.cc
 src/generic/Graph.cc
@@ -103,8 +102,6 @@ src/LiquidData.cc
 src/Loading.cc
 src/MainMenu.cc
 src/MenuBackground.cc
-src/MikMod.cc
-src/MikMod_dummy.cc
 src/MouseController.cc
 src/MultiLineText.cc
 src/MultiplayerClient.cc
@@ -132,7 +129,6 @@ src/Pingu.cc
 src/PinguHolder.cc
 src/PinguInfo.cc
 src/PinguMap.cc
-src/PinguRandomMap.cc
 src/PingusCounterBar.cc
 src/PingusCounter.cc
 src/PingusDemo.cc
