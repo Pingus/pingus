@@ -1,4 +1,4 @@
-//  $Id: action_data.cxx,v 1.4 2002/07/29 10:44:12 grumbel Exp $
+//  $Id: action_data.cxx,v 1.5 2002/08/25 09:08:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include "pingu_enums.hxx"
 #include "action_data.hxx"
 
-using namespace Pingus::Actions;
+using namespace Actions;
 
 std::vector<ActionData> default_actions; 
 

@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.10 2002/08/23 15:49:52 torangan Exp $
+//  $Id: xml_plf.cxx,v 1.11 2002/08/25 09:08:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@
 #include "liquid_data.hxx"
 
 using namespace std;
-using Pingus::Actions::action_from_string;
+using Actions::action_from_string;
 
 XMLPLF::XMLPLF(const std::string& filename)
 {

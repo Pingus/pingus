@@ -1,4 +1,4 @@
-//  $Id: blocker.cxx,v 1.4 2002/08/23 15:49:53 torangan Exp $
+//  $Id: blocker.cxx,v 1.5 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,84 +26,88 @@
 #include "../string_converter.hxx"
 #include "blocker.hxx"
 
-Blocker::Blocker()
-{
-}
+namespace Actions {
 
-void
-Blocker::init(void)
-{
-  sprite = Sprite(PingusResource::load_surface ("Pingus/blocker" 
-						+ to_string (pingu->get_owner ()),
-						"pingus"));
-  sprite.set_align_center_bottom ();
+  Blocker::Blocker()
+  {
+  }
 
-  if (rel_getpixel(0,-1)     ==  GroundpieceData::GP_NOTHING
-      && rel_getpixel(0, -2) ==  GroundpieceData::GP_GROUND)
-    {
-      ++pingu->pos.x;
-    } 
-  else if (rel_getpixel(0,-1) ==  GroundpieceData::GP_NOTHING
-	   && rel_getpixel(0, -2) ==  GroundpieceData::GP_NOTHING
-	   && rel_getpixel(0,-3) ==  GroundpieceData::GP_GROUND)
-    {
-      ++pingu->pos.y;
-      ++pingu->pos.y;
-    }
-}
+  void
+  Blocker::init(void)
+  {
+    sprite = Sprite(PingusResource::load_surface ("Pingus/blocker" 
+						  + to_string (pingu->get_owner ()),
+						  "pingus"));
+    sprite.set_align_center_bottom ();
 
-void
-Blocker::update(float delta)
-{
-  if (!standing_on_ground())
-    {
-      pingu->set_action(Pingus::Actions::Faller);
-    }
-    
-  UNUSED_ARG(delta);
-}
-
-void
-Blocker::draw_offset(int x, int y, float s)
-{
-  sprite.put_screen (pingu->pos + CL_Vector(x, y));
-  UNUSED_ARG(s);
-}
-
-bool
-Blocker::standing_on_ground()
-{
-  return (rel_getpixel(0,-1) !=  GroundpieceData::GP_NOTHING);
-}
-
-bool
-Blocker::need_catch()
-{
-  return true;
-}
-
-
-void
-Blocker::catch_pingu(Pingu* target)
-{
-  if (target->get_x () > pingu->get_x () - 16 
-      && target->get_x () < pingu->get_x () + 16
-      && target->get_y () > pingu->get_y () - 32
-      && target->get_y () < pingu->get_y () + 5
-      ) 
-    {
-      if (target->get_x () > pingu->get_x ()) {
-	target->direction.right();
-      } else {
-	target->direction.left();
+    if (rel_getpixel(0,-1)     ==  GroundpieceData::GP_NOTHING
+        && rel_getpixel(0, -2) ==  GroundpieceData::GP_GROUND)
+      {
+        ++pingu->pos.x;
+      } 
+    else if (rel_getpixel(0,-1) ==  GroundpieceData::GP_NOTHING
+	     && rel_getpixel(0, -2) ==  GroundpieceData::GP_NOTHING
+	     && rel_getpixel(0,-3) ==  GroundpieceData::GP_GROUND)
+      {
+        ++pingu->pos.y;
+        ++pingu->pos.y;
       }
-    }
-}
+  }
 
-int
-Blocker::y_offset(void)
-{
-  return -33;
+  void
+  Blocker::update(float delta)
+  {
+    if (!standing_on_ground())
+      {
+        pingu->set_action(Actions::Faller);
+      }
+    
+    UNUSED_ARG(delta);
+  }
+
+  void
+  Blocker::draw_offset(int x, int y, float s)
+  {
+    sprite.put_screen (pingu->pos + CL_Vector(x, y));
+    UNUSED_ARG(s);
+  }
+
+  bool
+  Blocker::standing_on_ground()
+  {
+    return (rel_getpixel(0,-1) !=  GroundpieceData::GP_NOTHING);
+  }
+
+  bool
+  Blocker::need_catch()
+  {
+    return true;
+  }
+
+
+  void
+  Blocker::catch_pingu(Pingu* target)
+  {
+    if (target->get_x () > pingu->get_x () - 16 
+        && target->get_x () < pingu->get_x () + 16
+        && target->get_y () > pingu->get_y () - 32
+        && target->get_y () < pingu->get_y () + 5
+        ) 
+      {
+        if (target->get_x () > pingu->get_x ()) {
+	  target->direction.right();
+        } else {
+	  target->direction.left();
+        }
+      }
+  }
+
+  int
+  Blocker::y_offset(void)
+  {
+    return -33;
+  }
+
 }
 
 /* EOF */

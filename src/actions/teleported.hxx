@@ -21,28 +21,32 @@
 #include "../sprite.hxx"
 #include "../pingu_action.hxx"
 
-class Teleported : public PinguAction
-{
-private:
-  //bool particle_thrown;
-  bool sound_played;
-  Sprite sprite;
-public:
-  Teleported();
+namespace Actions {
 
-  std::string get_name() const { return "Teleported"; }
-  Pingus::Actions::ActionName get_type() const { return Pingus::Actions::Teleported; }
-  void init(void);
-  void update(float delta);
-  void draw_offset(int x, int y, float s);
-  bool catchable () { return false; }
+  class Teleported : public PinguAction
+  {
+  private:
+    //bool particle_thrown;
+    bool sound_played;
+    Sprite sprite;
+  public:
+    Teleported();
 
-  int x_target, y_target; // <- FIXME: Ugly!
+    std::string get_name() const { return "Teleported"; }
+    ActionName get_type() const { return Actions::Teleported; }
+    void init(void);
+    void update(float delta);
+    void draw_offset(int x, int y, float s);
+    bool catchable () { return false; }
+
+    int x_target, y_target; // <- FIXME: Ugly!
   
-private:
-  Teleported (const Teleported&);
-  Teleported operator= (const Teleported&);
-};
+  private:
+    Teleported (const Teleported&);
+    Teleported operator= (const Teleported&);
+  };
+
+}
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: digger.cxx,v 1.8 2002/08/23 15:49:53 torangan Exp $
+//  $Id: digger.cxx,v 1.9 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,76 +28,80 @@
 #include "../pingu.hxx"
 #include "digger.hxx"
 
-Digger::Digger() : digger_c(0)
-{
-}
+namespace Actions {
 
-void
-Digger::init(void)
-{
-  digger_radius = PingusResource::load_surface ("Other/digger_radius", "pingus");
-  digger_radius_gfx = PingusResource::load_surface ("Other/digger_radius_gfx", "pingus");
-  sprite = Sprite (std::string("Pingus/digger") + to_string(pingu->get_owner ()),
-		   "pingus");
+  Digger::Digger() : digger_c(0)
+  {
+  }
+
+  void
+  Digger::init(void)
+  {
+    digger_radius = PingusResource::load_surface ("Other/digger_radius", "pingus");
+    digger_radius_gfx = PingusResource::load_surface ("Other/digger_radius_gfx", "pingus");
+    sprite = Sprite (std::string("Pingus/digger") + to_string(pingu->get_owner ()),
+		     "pingus");
 #if 0
-  // FIXME: Just an idea...
-  sprite = Sprite (std::string("Pingus/digger") + to_string(pingu->get_owner ()),
-		   "pingus", PropertyMgr::instance()->get_int ("actions/digger/sprite-fps", 20));
+    // FIXME: Just an idea...
+    sprite = Sprite (std::string("Pingus/digger") + to_string(pingu->get_owner ()),
+		     "pingus", PropertyMgr::instance()->get_int ("actions/digger/sprite-fps", 20));
 #endif
-  sprite.set_align_center_bottom ();
-}
+    sprite.set_align_center_bottom ();
+  }
 
-void
-Digger::update(float delta)
-{
-  sprite.update (delta);
+  void
+  Digger::update(float delta)
+  {
+    sprite.update (delta);
   
-  if (++digger_c >= 3)
-    {
-      digger_c = 0;
-      dig();
-    }
+    if (++digger_c >= 3)
+      {
+        digger_c = 0;
+        dig();
+      }
 
-  if (!have_something_to_dig())
-    { 
-      dig ();
-      pingu->set_action(Pingus::Actions::Walker);
-    }
-}
+    if (!have_something_to_dig())
+      { 
+        dig ();
+        pingu->set_action(Actions::Walker);
+      }
+  }
 
-bool   
-Digger::have_something_to_dig()
-{
-  if (rel_getpixel(0, -1) !=  GroundpieceData::GP_NOTHING)
-    {
-      if (rel_getpixel(0, -1) ==  GroundpieceData::GP_SOLID)
-	{
-	  PingusSound::play_sound("sounds/chink.wav");
-	  return false;  
-	}
-      else
-	return true;
-    }
-  else
-    {
-      return false;
-    }
-}
+  bool   
+  Digger::have_something_to_dig()
+  {
+    if (rel_getpixel(0, -1) !=  GroundpieceData::GP_NOTHING)
+      {
+        if (rel_getpixel(0, -1) ==  GroundpieceData::GP_SOLID)
+	  {
+	    PingusSound::play_sound("sounds/chink.wav");
+	    return false;  
+	  }
+        else
+	  return true;
+      }
+    else
+      {
+        return false;
+      }
+  }
 
-void
-Digger::dig()
-{
-  pingu->get_world()->get_colmap()->remove(digger_radius, pingu->get_x () - 16, pingu->get_y() - 14);
-  pingu->get_world()->get_gfx_map()->remove(digger_radius_gfx, pingu->get_x () - 16, pingu->get_y() - 14);
+  void
+  Digger::dig()
+  {
+    pingu->get_world()->get_colmap()->remove(digger_radius, pingu->get_x () - 16, pingu->get_y() - 14);
+    pingu->get_world()->get_gfx_map()->remove(digger_radius_gfx, pingu->get_x () - 16, pingu->get_y() - 14);
       
-  ++pingu->pos.y;
-}
+    ++pingu->pos.y;
+  }
 
-void  
-Digger::draw_offset(int x, int y, float /*s*/)
-{
-  //std::cout << "DRawing digger" << std::endl;
-  sprite.put_screen (int(pingu->pos.x + x), int(pingu->pos.y + y));
+  void  
+  Digger::draw_offset(int x, int y, float /*s*/)
+  {
+    //std::cout << "DRawing digger" << std::endl;
+    sprite.put_screen (int(pingu->pos.x + x), int(pingu->pos.y + y));
+  }
+
 }
 
 /* EOF */

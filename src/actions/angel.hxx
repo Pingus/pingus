@@ -1,4 +1,4 @@
-//  $Id: angel.hxx,v 1.6 2002/08/23 15:49:53 torangan Exp $
+//  $Id: angel.hxx,v 1.7 2002/08/25 09:08:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,36 +20,32 @@
 #ifndef HEADER_PINGUS_ACTIONS_ANGEL_HXX
 #define HEADER_PINGUS_ACTIONS_ANGEL_HXX
 
-//
-// Necessary for Windows environment
-//
-// Does it work really on Linux?
-//
-#ifdef WIN32
-#include <math.h>
-#endif
-
 #include "../sprite.hxx"
 #include "../pingu_action.hxx"
 
-class Angel : public PinguAction
-{
-private:
-  double counter;
-  double x_pos;
-  Sprite sprite;
-public:
-  Angel ();
-  void  init();
-  std::string get_name() const { return "Angel"; }
-  Pingus::Actions::ActionName get_type() const { return Pingus::Actions::Angel; }
-  void  update(float delta);
-  void  draw_offset(int, int, float s);
 
-private:
-  Angel (const Angel&);
-  Angel operator= (const Angel&);
-};
+namespace Actions {
+
+  class Angel : public PinguAction
+  {
+  private:
+    double counter;
+    double x_pos;
+    Sprite sprite;
+  public:
+    Angel ();
+    void  init();
+    std::string get_name() const { return "Angel"; }
+    ActionName get_type() const { return Actions::Angel; }
+    void  update(float delta);
+    void  draw_offset(int, int, float s);
+
+  private:
+    Angel (const Angel&);
+    Angel operator= (const Angel&);
+  };
+
+}
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: action_window.cxx,v 1.7 2002/08/16 13:03:35 torangan Exp $
+//  $Id: action_window.cxx,v 1.8 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@
  [    ok     ]  [  cancel  ]
 ****************************/
 
-using namespace Pingus::Actions;
+using namespace Actions;
 
 ActionWindow::ActionWindow (CL_Component* arg_parent, std::vector<ActionData>* arg_actions)
   : parent (arg_parent), actions (arg_actions)

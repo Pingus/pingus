@@ -1,4 +1,4 @@
-//  $Id: server.cxx,v 1.11 2002/08/23 15:49:50 torangan Exp $
+//  $Id: server.cxx,v 1.12 2002/08/25 09:08:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@
 #include "world.hxx"
 
 using namespace std;
-using Pingus::Actions::action_from_string;
+using Actions::action_from_string;
 
 PingusEvent::PingusEvent()
 {

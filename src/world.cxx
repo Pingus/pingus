@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.18 2002/08/23 15:49:52 torangan Exp $
+//  $Id: world.cxx,v 1.19 2002/08/25 09:08:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@
 #include "game_time.hxx"
 
 using namespace std;
-using Pingus::Actions::Bomber;
+using Actions::Bomber;
 
 static 
 bool WorldObj_less (WorldObj* a, WorldObj* b) 

@@ -1,4 +1,4 @@
-// $Id: miner.cxx,v 1.6 2002/08/23 15:49:53 torangan Exp $
+// $Id: miner.cxx,v 1.7 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,74 +25,78 @@
 #include "../pingu.hxx"
 #include "miner.hxx"
 
-Miner::Miner()
-{
-}
+namespace Actions {
 
-void
-Miner::init(void)
-{
-  miner_radius = PingusResource::load_surface ("Other/bash_radius", "pingus");
-  miner_radius_gfx = PingusResource::load_surface ("Other/bash_radius_gfx", "pingus");
-  sprite = Sprite ("Pingus/miner0", "pingus", 20.0f);
-  sprite.set_align_center_bottom ();
-  slow_count = 0;
-}
+  Miner::Miner()
+  {
+  }
 
-void
-Miner::update(float delta)
-{
-  sprite.update (delta);
+  void
+  Miner::init(void)
+  {
+    miner_radius = PingusResource::load_surface ("Other/bash_radius", "pingus");
+    miner_radius_gfx = PingusResource::load_surface ("Other/bash_radius_gfx", "pingus");
+    sprite = Sprite ("Pingus/miner0", "pingus", 20.0f);
+    sprite.set_align_center_bottom ();
+    slow_count = 0;
+  }
+
+  void
+  Miner::update(float delta)
+  {
+    sprite.update (delta);
   
-  // FIXME: Direction handling is ugly
-  if (pingu->direction.is_left ())
-    sprite.set_direction (Sprite::LEFT);
-  else
-    sprite.set_direction (Sprite::RIGHT);
+    // FIXME: Direction handling is ugly
+    if (pingu->direction.is_left ())
+      sprite.set_direction (Sprite::LEFT);
+    else
+      sprite.set_direction (Sprite::RIGHT);
 
-  ++slow_count;
-  if (slow_count % 4  == 0) 
-    {
-      if (slow_count % 3 == 0) 
-	{
-	  pingu->get_world()->get_colmap()->remove(miner_radius.get_provider(), 
-						   pingu->get_x () - 16 + pingu->direction, 
-						   pingu->get_y () - 31);
-	  pingu->get_world()->get_gfx_map()->remove(miner_radius_gfx.get_provider(), 
-						    pingu->get_x () - 16 + pingu->direction, 
-						    pingu->get_y () - 31);
-	}
+    ++slow_count;
+    if (slow_count % 4  == 0) 
+      {
+        if (slow_count % 3 == 0) 
+	  {
+	    pingu->get_world()->get_colmap()->remove(miner_radius.get_provider(), 
+						     pingu->get_x () - 16 + pingu->direction, 
+						     pingu->get_y () - 31);
+	    pingu->get_world()->get_gfx_map()->remove(miner_radius_gfx.get_provider(), 
+						      pingu->get_x () - 16 + pingu->direction, 
+						      pingu->get_y () - 31);
+	  }
 
-      pingu->pos.x += pingu->direction;
-      pingu->pos.y += 1;
-    }
+        pingu->pos.x += pingu->direction;
+        pingu->pos.y += 1;
+      }
   
-  if (rel_getpixel(0, -1) ==  GroundpieceData::GP_NOTHING)
-    {
-      pingu->get_world()->get_colmap()->remove(miner_radius, 
-					       pingu->get_x () - 16 + pingu->direction, 
-					       pingu->get_y () - 29);
-      pingu->get_world()->get_gfx_map()->remove(miner_radius_gfx,
-						pingu->get_x () - 16 + pingu->direction, 
-						pingu->get_y () - 29);
-      pingu->set_action(Pingus::Actions::Walker);
-    }
-  else if (rel_getpixel(0, -1) ==  GroundpieceData::GP_SOLID)
-    {
-      PingusSound::play_sound("sounds/chink.wav");
-      pingu->get_world()->get_colmap()->remove(miner_radius, pingu->get_x () - 16 + pingu->direction, 
-					       pingu->get_y () - 31);
-      pingu->get_world()->get_gfx_map()->remove(miner_radius_gfx, pingu->get_x () - 16 + pingu->direction, 
-						pingu->get_y () - 31);
-      pingu->set_action(Pingus::Actions::Walker);
-    }
-}
+    if (rel_getpixel(0, -1) ==  GroundpieceData::GP_NOTHING)
+      {
+        pingu->get_world()->get_colmap()->remove(miner_radius, 
+					         pingu->get_x () - 16 + pingu->direction, 
+					         pingu->get_y () - 29);
+        pingu->get_world()->get_gfx_map()->remove(miner_radius_gfx,
+						  pingu->get_x () - 16 + pingu->direction, 
+						  pingu->get_y () - 29);
+        pingu->set_action(Actions::Walker);
+      }
+    else if (rel_getpixel(0, -1) ==  GroundpieceData::GP_SOLID)
+      {
+        PingusSound::play_sound("sounds/chink.wav");
+        pingu->get_world()->get_colmap()->remove(miner_radius, pingu->get_x () - 16 + pingu->direction, 
+					         pingu->get_y () - 31);
+        pingu->get_world()->get_gfx_map()->remove(miner_radius_gfx, pingu->get_x () - 16 + pingu->direction, 
+						  pingu->get_y () - 31);
+        pingu->set_action(Actions::Walker);
+      }
+  }
 
-void 
-Miner::draw_offset(int x, int y, float s)
-{
-  sprite.put_screen (pingu->get_pos () + CL_Vector(x, y));
-  UNUSED_ARG(s);
+  void 
+  Miner::draw_offset(int x, int y, float s)
+  {
+    sprite.put_screen (pingu->get_pos () + CL_Vector(x, y));
+    UNUSED_ARG(s);
+  }
+
 }
 
 /* EOF */

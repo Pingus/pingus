@@ -1,4 +1,4 @@
-//  $Id: bridger.hxx,v 1.8 2002/08/23 15:49:53 torangan Exp $
+//  $Id: bridger.hxx,v 1.9 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,48 +25,56 @@
 #include "../pingu_action.hxx"
 #include "../sprite.hxx"
 
-/** 
- */
-class Bridger : public PinguAction
-{
-private:
-  Sprite walk_sprite;
-  Sprite build_sprite;
+namespace Actions {
 
-  GameCounter counter;
+  class Bridger : public PinguAction
+  {
+  private:
+    enum Mode { B_WALKING, B_BUILDING } mode;
+    enum { MAX_BRICKS = 15 };
 
-  static bool static_surfaces_loaded;
-  static CL_Surface static_surface;
-  static CL_Surface brick_l;
-  static CL_Surface brick_r;
+  private:
+    Sprite walk_sprite;
+    Sprite build_sprite;
 
-  int bricks;
-  //int step;
-  //int do_steps;
-  bool block_build;
+    GameCounter counter;
 
-  CL_Vector last_pos;
+    static bool static_surfaces_loaded;
+    static CL_Surface static_surface;
+    static CL_Surface brick_l;
+    static CL_Surface brick_r;
 
-  enum Mode { B_WALKING, B_BUILDING } mode;
-  enum { MAX_BRICKS = 15 };
-public:
-  Bridger();
+    int bricks;
+    //int step;
+    //int do_steps;
+    bool block_build;
 
-  void   init();
-  std::string get_name () const;
-  Pingus::Actions::ActionName get_type() const { return Pingus::Actions::Bridger; }
-  void   update(float delta);
-  void   update_build (float delta);
-  void   update_walk (float delta);
-  void   draw_offset(int, int, float s);
-  bool   way_is_free();
-  void   place_a_brick();
-  void   walk_one_step_up();
+    CL_Vector last_pos;
+
+    std::string name;
+  public:
+    Bridger();
+
+    void   init ();
+    std::string get_name () const;
+    ActionName get_type () const { return Actions::Bridger; }
+    
+    void   update (float delta);
+    void   update_build (float delta);
+    void   update_walk (float delta);
+    
+    void   draw_offset (int, int, float s);
+    
+    bool   way_is_free ();
+    void   place_a_brick ();
+    void   walk_one_step_up ();
   
-private:
-  Bridger (const Bridger&);
-  Bridger operator= (const Bridger&); 
-};
+  private:
+    Bridger (const Bridger&);
+    Bridger operator= (const Bridger&); 
+  };
+
+}
 
 #endif
 

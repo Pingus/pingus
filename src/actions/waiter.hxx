@@ -1,4 +1,4 @@
-//  $Id: waiter.hxx,v 1.5 2002/08/23 15:49:53 torangan Exp $
+//  $Id: waiter.hxx,v 1.6 2002/08/25 09:08:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,28 +23,33 @@
 #include "../sprite.hxx"
 #include "../pingu_action.hxx"
 
-/** A Waiting action for the bridger, it gets activated when the
-    bridger is out of bridges. It then waits two seconds (meanwhile doing a
-    funny animation) and then he changes back to a normal walker. */
-class Waiter : public PinguAction
-{
-private:
-  float countdown;
-  Sprite sprite;
-public:
-  Waiter();
-  void init();
+namespace Actions {
+
+  /** A Waiting action for the bridger, it gets activated when the
+      bridger is out of bridges. It then waits two seconds (meanwhile doing a
+      funny animation) and then he changes back to a normal walker. */
+  class Waiter : public PinguAction
+  {
+  private:
+    float countdown;
+    Sprite sprite;
   
-  std::string get_name() const { return "Waiter"; }
-  Pingus::Actions::ActionName get_type() const { return Pingus::Actions::Waiter; }
+  public:
+    Waiter();
+    void init();
   
-  void update(float delta);
-  void  draw_offset(int x, int y, float s);
+    std::string get_name() const { return "Waiter"; }
+    ActionName get_type() const { return Actions::Waiter; }
   
-private:
-  Waiter (const Waiter&);
-  Waiter operator= (const Waiter&);
-};
+    void update(float delta);
+    void  draw_offset(int x, int y, float s);
+  
+  private:
+    Waiter (const Waiter&);
+    Waiter operator= (const Waiter&);
+  };
+
+}
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: teleported.cxx,v 1.4 2002/08/23 15:49:53 torangan Exp $
+//  $Id: teleported.cxx,v 1.5 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,31 +20,35 @@
 #include "../pingu.hxx"
 #include "teleported.hxx"
 
-Teleported::Teleported(void) : sound_played(false)
-{
-}
+namespace Actions {
 
-void
-Teleported::init(void)
-{
-  sprite = Sprite ("Pingus/bomber0", "pingus");
-}
+  Teleported::Teleported(void) : sound_played(false)
+  {
+  }
 
-
-void 
-Teleported::draw_offset(int x, int y, float s)
-{
-  sprite.put_screen (x, y);
-  UNUSED_ARG(s);
-}
+  void
+  Teleported::init(void)
+  {
+    sprite = Sprite ("Pingus/bomber0", "pingus");
+  }
 
 
-void
-Teleported::update(float /*delta*/)
-{
-  pingu->set_pos (x_target, y_target);
-  pingu->set_status(PS_ALIVE);
-  pingu->set_action(Pingus::Actions::Walker);
+  void 
+  Teleported::draw_offset(int x, int y, float s)
+  {
+    sprite.put_screen (x, y);
+    UNUSED_ARG(s);
+  }
+
+
+  void
+  Teleported::update(float /*delta*/)
+  {
+    pingu->set_pos (x_target, y_target);
+    pingu->set_status(PS_ALIVE);
+    pingu->set_action(Actions::Walker);
+  }
+
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: plf_plf.cxx,v 1.7 2002/08/23 15:49:50 torangan Exp $
+//  $Id: plf_plf.cxx,v 1.8 2002/08/25 09:08:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@
 #include "pingu_enums.hxx"
 
 using namespace std;
-using Pingus::Actions::action_from_string;
+using Actions::action_from_string;
 
 int    str_to_int(const string& str);
 float str_to_float(const string& str);

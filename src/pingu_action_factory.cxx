@@ -1,4 +1,4 @@
-//  $Id: pingu_action_factory.cxx,v 1.7 2002/08/23 15:49:49 torangan Exp $
+//  $Id: pingu_action_factory.cxx,v 1.8 2002/08/25 09:08:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,6 +46,8 @@
 
 #include "pingu_action_factory.hxx"
 
+using namespace Actions;
+
 PinguActionFactory::PinguActionFactory ()
 {
 }
@@ -66,29 +68,29 @@ PinguActionFactory::instance ()
 void 
 PinguActionFactory::register_core_actions ()
 {
-  new PinguActionFactoryImpl<class Angel>          (Pingus::Actions::Angel);
-  new PinguActionFactoryImpl<class Basher>         (Pingus::Actions::Basher);
-  new PinguActionFactoryImpl<class Blocker>        (Pingus::Actions::Blocker);
-  new PinguActionFactoryImpl<class Boarder>        (Pingus::Actions::Boarder);
-  new PinguActionFactoryImpl<class Bomber>         (Pingus::Actions::Bomber);
-  new PinguActionFactoryImpl<class Bridger>        (Pingus::Actions::Bridger);
-  new PinguActionFactoryImpl<class Climber>        (Pingus::Actions::Climber);
-  new PinguActionFactoryImpl<class Digger>         (Pingus::Actions::Digger);
-  new PinguActionFactoryImpl<class Drown>          (Pingus::Actions::Drown);
-  new PinguActionFactoryImpl<class Exiter>         (Pingus::Actions::Exiter);
-  new PinguActionFactoryImpl<class Faller>         (Pingus::Actions::Faller);
-  new PinguActionFactoryImpl<class Floater>        (Pingus::Actions::Floater);
-  new PinguActionFactoryImpl<class Jumper>         (Pingus::Actions::Jumper);
-  new PinguActionFactoryImpl<class LaserKill>      (Pingus::Actions::Laserkill);
-  new PinguActionFactoryImpl<class Miner>          (Pingus::Actions::Miner);
-  new PinguActionFactoryImpl<class RocketLauncher> (Pingus::Actions::Rocketlauncher);
-  new PinguActionFactoryImpl<class Slider>         (Pingus::Actions::Slider);
-  new PinguActionFactoryImpl<class Smashed>        (Pingus::Actions::Smashed);
-  new PinguActionFactoryImpl<class Splashed>       (Pingus::Actions::Splashed);
-  new PinguActionFactoryImpl<class Superman>       (Pingus::Actions::Superman);
-  new PinguActionFactoryImpl<class Teleported>     (Pingus::Actions::Teleported);
-  new PinguActionFactoryImpl<class Waiter>         (Pingus::Actions::Waiter);
-  new PinguActionFactoryImpl<class Walker>         (Pingus::Actions::Walker);
+  new PinguActionFactoryImpl<class Angel>          (Angel);
+  new PinguActionFactoryImpl<class Basher>         (Basher);
+  new PinguActionFactoryImpl<class Blocker>        (Blocker);
+  new PinguActionFactoryImpl<class Boarder>        (Boarder);
+  new PinguActionFactoryImpl<class Bomber>         (Bomber);
+  new PinguActionFactoryImpl<class Bridger>        (Bridger);
+  new PinguActionFactoryImpl<class Climber>        (Climber);
+  new PinguActionFactoryImpl<class Digger>         (Digger);
+  new PinguActionFactoryImpl<class Drown>          (Drown);
+  new PinguActionFactoryImpl<class Exiter>         (Exiter);
+  new PinguActionFactoryImpl<class Faller>         (Faller);
+  new PinguActionFactoryImpl<class Floater>        (Floater);
+  new PinguActionFactoryImpl<class Jumper>         (Jumper);
+  new PinguActionFactoryImpl<class LaserKill>      (Laserkill);
+  new PinguActionFactoryImpl<class Miner>          (Miner);
+  new PinguActionFactoryImpl<class RocketLauncher> (Rocketlauncher);
+  new PinguActionFactoryImpl<class Slider>         (Slider);
+  new PinguActionFactoryImpl<class Smashed>        (Smashed);
+  new PinguActionFactoryImpl<class Splashed>       (Splashed);
+  new PinguActionFactoryImpl<class Superman>       (Superman);
+  new PinguActionFactoryImpl<class Teleported>     (Teleported);
+  new PinguActionFactoryImpl<class Waiter>         (Waiter);
+  new PinguActionFactoryImpl<class Walker>         (Walker);
 }
 
 PinguAction* 

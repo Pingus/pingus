@@ -1,4 +1,4 @@
-//  $Id: pingu_action.hxx,v 1.11 2002/08/23 15:49:49 torangan Exp $
+//  $Id: pingu_action.hxx,v 1.12 2002/08/25 09:08:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,7 +65,7 @@ public:
   int  rel_getpixel(int x, int y);
 
   /** Checks if this action allows to be overwritten with the given new action */
-  virtual bool change_allowed (Pingus::Actions::ActionName) { return true; }
+  virtual bool change_allowed (Actions::ActionName) { return true; }
   
   /** Used to load all data, which is needed by the action, its
       seperated and called in set_pingu(), because some data will be
@@ -87,7 +87,7 @@ public:
   virtual std::string get_name () const =0;
   
   /// The type of the action
-  virtual Pingus::Actions::ActionName get_type () const =0;
+  virtual Actions::ActionName get_type () const =0;
   
   /** Return the character that is shown when a persitent action is
       activated in the CaptureRectangle. */

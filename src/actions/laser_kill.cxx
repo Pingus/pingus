@@ -1,4 +1,4 @@
-//  $Id: laser_kill.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: laser_kill.cxx,v 1.3 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,29 +20,34 @@
 #include "../pingu.hxx"
 #include "laser_kill.hxx"
 
-LaserKill::LaserKill()
-{
-}
+namespace Actions {
 
-void
-LaserKill::init(void)
-{
-  sprite = Sprite ("Other/laser_kill0", "pingus");
-}
+  LaserKill::LaserKill()
+  {
+  }
 
-void 
-LaserKill::draw_offset(int x, int y, float /*s*/)
-{
-  sprite.put_screen (x, y);
-}
+  void
+  LaserKill::init(void)
+  {
+    sprite = Sprite ("Other/laser_kill0", "pingus");
+  }
 
-void
-LaserKill::update(float /*delta*/)
-{
-  //if (counter >= (int)(surface.get_num_frames()) - 1) 
-  //{
-      pingu->set_status(PS_DEAD);
-      //}
+  void 
+  LaserKill::draw_offset(int x, int y, float s)
+  {
+    sprite.put_screen (x, y);
+    UNUSED_ARG(s);
+  }
+
+  void
+  LaserKill::update(float /*delta*/)
+  {
+    //if (counter >= (int)(surface.get_num_frames()) - 1) 
+    //{
+        pingu->set_status(PS_DEAD);
+        //}
+  }
+
 }
 
 /* EOF */

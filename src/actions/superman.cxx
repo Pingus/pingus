@@ -1,4 +1,4 @@
-//  $Id: superman.cxx,v 1.2 2002/07/02 13:36:06 torangan Exp $
+//  $Id: superman.cxx,v 1.3 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,40 +22,44 @@
 #include "../string_converter.hxx"
 #include "superman.hxx"
 
-Superman::Superman ()
-{
-}
+namespace Actions {
 
-void
-Superman::init()
-{
-  x_pos = pingu->pos.x;
-  counter = 0.0;
-  sprite = Sprite (PingusResource::load_surface 
-		   ("Pingus/superman" + to_string(pingu->get_owner ()),
-		    "pingus"));
-  sprite.set_align_center_bottom (); 
-}
+  Superman::Superman ()
+  {
+  }
 
-void  
-Superman::update(float delta)
-{
-  sprite.update (delta);
-  counter += delta;
-  pingu->pos.x += 40.0f * delta;
-  pingu->pos.y -= 200.0f * delta;
+  void
+  Superman::init()
+  {
+    x_pos = pingu->pos.x;
+    counter = 0.0;
+    sprite = Sprite (PingusResource::load_surface 
+		     ("Pingus/superman" + to_string(pingu->get_owner ()),
+		      "pingus"));
+    sprite.set_align_center_bottom (); 
+  }
 
-  if (pingu->pos.y < -32)
-    {
-      pingu->set_status (PS_DEAD);
-    }
-}
+  void  
+  Superman::update(float delta)
+  {
+    sprite.update (delta);
+    counter += delta;
+    pingu->pos.x += 40.0f * delta;
+    pingu->pos.y -= 200.0f * delta;
 
-void   
-Superman::draw_offset(int x_of, int y_of, float /*s*/)
-{
-  sprite.put_screen (pingu->get_x () + x_of,
-		     pingu->get_y () + y_of);
+    if (pingu->pos.y < -32)
+      {
+        pingu->set_status (PS_DEAD);
+      }
+  }
+
+  void   
+  Superman::draw_offset(int x_of, int y_of, float /*s*/)
+  {
+    sprite.put_screen (pingu->get_x () + x_of,
+		       pingu->get_y () + y_of);
+  }
+
 }
 
 /* EOF */

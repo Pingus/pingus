@@ -1,4 +1,4 @@
-//  $Id: blocker.hxx,v 1.6 2002/08/23 15:49:53 torangan Exp $
+//  $Id: blocker.hxx,v 1.7 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,33 +23,35 @@
 #include "../sprite.hxx"
 #include "../pingu_action.hxx"
 
-///
-class Blocker : public PinguAction
-{
-private:
-  Sprite sprite;
-public:
-  ///
-  Blocker();
-  ///
-  int   y_offset();
-  ///
-  void  init();
-  std::string get_name () const { return "Blocker"; }
-  Pingus::Actions::ActionName get_type() const { return Pingus::Actions::Blocker; }
- 
-  void  update(float delta);
-  void  draw_offset(int, int, float s);
-  bool  standing_on_ground();
-  ///
-  bool  need_catch();
-  ///
-  void  catch_pingu(Pingu* pingu);
+namespace Actions {
+
+  class Blocker : public PinguAction
+  {
+  private:
+    Sprite sprite;
   
-private:
-  Blocker (const Blocker&);
-  Blocker operator= (const Blocker&);
-};
+  public:
+    Blocker ();
+    void  init ();
+
+    int   y_offset ();
+  
+    std::string get_name () const { return "Blocker"; }
+    ActionName get_type() const { return Actions::Blocker; }
+ 
+    void  update(float delta);
+    void  draw_offset(int, int, float s);
+    bool  standing_on_ground();
+
+    bool  need_catch();
+    void  catch_pingu(Pingu* pingu);
+  
+  private:
+    Blocker (const Blocker&);
+    Blocker operator= (const Blocker&);
+  };
+
+}
 
 #endif
 

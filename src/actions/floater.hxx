@@ -1,4 +1,4 @@
-//  $Id: floater.hxx,v 1.7 2002/08/23 15:49:53 torangan Exp $
+//  $Id: floater.hxx,v 1.8 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,30 +23,33 @@
 #include "../sprite.hxx"
 #include "../pingu_action.hxx"
 
-///
-class Floater : public PinguAction
-{
-private:
-  int falling_depth;
-  int step;
-  Sprite sprite;
-public:
-  ///
-  Floater();
+namespace Actions {
 
-  std::string get_name() const { return "Floater"; }
-  Pingus::Actions::ActionName get_type() const { return Pingus::Actions::Faller; }
-  ActionType get_activation_mode() const { return FALL_TRIGGERED; }
-  void init(void);
-  void update(float delta);
-  void draw_offset (int x, int y, float s);
-  char get_persistent_char () { return 'f'; }
-  bool change_allowed (Pingus::Actions::ActionName new_action);
+  class Floater : public PinguAction
+  {
+  private:
+    int falling_depth;
+    int step;
+    Sprite sprite;
+  public:
+    Floater();
+
+    std::string get_name() const { return "Floater"; }
+    ActionName get_type() const { return Actions::Floater; }
+    ActionType get_activation_mode() const { return FALL_TRIGGERED; }
+    
+    void init(void);
+    void update(float delta);
+    void draw_offset (int x, int y, float s);
+    char get_persistent_char () { return 'f'; }
+    bool change_allowed (ActionName new_action);
   
-private:
-  Floater (const Floater&);
-  Floater operator= (const Floater&);
-};
+  private:
+    Floater (const Floater&);
+    Floater operator= (const Floater&);
+  };
+
+}
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: superman.hxx,v 1.6 2002/08/23 15:49:53 torangan Exp $
+//  $Id: superman.hxx,v 1.7 2002/08/25 09:08:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,26 +23,30 @@
 #include "../sprite.hxx"
 #include "../pingu_action.hxx"
 
-class Superman : public PinguAction
-{
-private:
-  double counter;
-  double x_pos;
-  Sprite sprite;
-  
-public:
-  Superman ();
-  void init ();
-  std::string get_name () const { return "Superman"; }
-  Pingus::Actions::ActionName get_type () const { return Pingus::Actions::Superman; }
-  
-  void update (float delta);
-  void draw_offset (int, int, float s);
+namespace Actions {
 
-private:
-  Superman (const Superman&);
-  Superman operator= (const Superman&);
-};
+  class Superman : public PinguAction
+  {
+  private:
+    double counter;
+    double x_pos;
+    Sprite sprite;
+  
+  public:
+    Superman ();
+    void init ();
+    std::string get_name () const { return "Superman"; }
+    ActionName get_type () const { return Actions::Superman; }
+  
+    void update (float delta);
+    void draw_offset (int, int, float s);
+
+  private:
+    Superman (const Superman&);
+    Superman operator= (const Superman&);
+  };
+
+}
 
 #endif
 

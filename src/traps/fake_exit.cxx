@@ -1,4 +1,4 @@
-//  $Id: fake_exit.cxx,v 1.4 2002/06/28 15:12:23 torangan Exp $
+//  $Id: fake_exit.cxx,v 1.5 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@
 
 #include "fake_exit.hxx"
 
-using namespace Pingus::Actions;
+using namespace Actions;
 
 FakeExit::FakeExit(const TrapData& data) : smashing(false)
 {

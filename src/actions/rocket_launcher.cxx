@@ -1,4 +1,4 @@
-//  $Id: rocket_launcher.cxx,v 1.4 2002/08/23 15:49:53 torangan Exp $
+//  $Id: rocket_launcher.cxx,v 1.5 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,42 +25,46 @@
 #include "../pingu.hxx"
 #include "rocket_launcher.hxx"
 
-void
-RocketLauncher::init()
-{
-  sprite = Sprite (PingusResource::load_surface 
-		   ("Pingus/rocketlauncher" + to_string(pingu->get_owner ()),
-		    "pingus"), 10.0f, Sprite::NONE, Sprite::ONCE);
-  sprite.set_align_center_bottom ();
-  launched = false;
+namespace Actions {
 
-  pingu->get_world ()->get_particle_holder()->add_particle 
-    (new ExplosiveParticle ((int) pingu->pos.x, (int)pingu->pos.y - 12, 
-			    pingu->direction.is_left() ? -400.0f : 400.0f,
-			    0.0f));
-}
+  void
+  RocketLauncher::init()
+  {
+    sprite = Sprite (PingusResource::load_surface 
+		     ("Pingus/rocketlauncher" + to_string(pingu->get_owner ()),
+		      "pingus"), 10.0f, Sprite::NONE, Sprite::ONCE);
+    sprite.set_align_center_bottom ();
+    launched = false;
 
-void
-RocketLauncher::update(float delta)
-{
-  if (sprite.finished ())
-    {
-      pingu->set_action(Pingus::Actions::Walker);
-    }
+    pingu->get_world ()->get_particle_holder()->add_particle 
+      (new ExplosiveParticle ((int) pingu->pos.x, (int)pingu->pos.y - 12, 
+			      pingu->direction.is_left() ? -400.0f : 400.0f,
+			      0.0f));
+  }
 
-  sprite.update (delta);
-}
+  void
+  RocketLauncher::update(float delta)
+  {
+    if (sprite.finished ())
+      {
+        pingu->set_action(Actions::Walker);
+      }
 
-void
-RocketLauncher::draw_offset(int x, int y, float s)
-{
-  if (pingu->direction.is_left ())
-    sprite.set_direction (Sprite::LEFT);
-  else
-    sprite.set_direction (Sprite::RIGHT);
-  sprite.put_screen (pingu->pos + CL_Vector (x, y));
+    sprite.update (delta);
+  }
+
+  void
+  RocketLauncher::draw_offset(int x, int y, float s)
+  {
+    if (pingu->direction.is_left ())
+      sprite.set_direction (Sprite::LEFT);
+    else
+      sprite.set_direction (Sprite::RIGHT);
+    sprite.put_screen (pingu->pos + CL_Vector (x, y));
   
-  UNUSED_ARG(s);
+    UNUSED_ARG(s);
+  }
+
 }
 
 /* EOF */

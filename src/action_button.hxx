@@ -1,4 +1,4 @@
-//  $Id: action_button.hxx,v 1.8 2002/08/23 15:49:47 torangan Exp $
+//  $Id: action_button.hxx,v 1.9 2002/08/25 09:08:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
 #include "pingu_enums.hxx"
 #include "gui/component.hxx"
 
-using Pingus::Actions::ActionName;
+using Actions::ActionName;
 
 class Server;
 class ActionHolder;

@@ -1,4 +1,4 @@
-//  $Id: jumper.cxx,v 1.6 2002/08/23 15:49:53 torangan Exp $
+//  $Id: jumper.cxx,v 1.7 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,40 +21,44 @@
 #include "../string_converter.hxx"
 #include "jumper.hxx"
 
-Jumper::Jumper()
-{
-  // do nothing
-}
+namespace Actions {
 
-void
-Jumper::init(void)
-{
-  sprite = Sprite("Pingus/jumper" + to_string(pingu->get_owner ()),
-		  "pingus");
-}
-
-void 
-Jumper::draw_offset(int x, int y, float s)
-{
-  // FIXME: Huh! Does this work?!
-  sprite.put_screen (x, y);
-  UNUSED_ARG(s);
-}
-
-void
-Jumper::update(float delta)
-{
-  if (pingu->direction.is_right()) {
-    pingu->velocity += CL_Vector(10.0, -10.0);
-  } else {
-    pingu->velocity += CL_Vector(-10.0, -10.0);
+  Jumper::Jumper()
+  {
+    // do nothing
   }
 
-  // Move the pingu in the air, so that it can start 'falling'
-  pingu->pos.y -= 1;
+  void
+  Jumper::init(void)
+  {
+    sprite = Sprite("Pingus/jumper" + to_string(pingu->get_owner ()),
+		    "pingus");
+  }
 
-  pingu->set_action (Pingus::Actions::Faller);
-  UNUSED_ARG(delta);
+  void 
+  Jumper::draw_offset(int x, int y, float s)
+  {
+    // FIXME: Huh! Does this work?!
+    sprite.put_screen (x, y);
+    UNUSED_ARG(s);
+  }
+
+  void
+  Jumper::update(float delta)
+  {
+    if (pingu->direction.is_right()) {
+      pingu->velocity += CL_Vector(10.0, -10.0);
+    } else {
+      pingu->velocity += CL_Vector(-10.0, -10.0);
+    }
+
+    // Move the pingu in the air, so that it can start 'falling'
+    pingu->pos.y -= 1;
+
+    pingu->set_action (Actions::Faller);
+    UNUSED_ARG(delta);
+  }
+
 }
 
 /* EOF */

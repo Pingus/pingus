@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.19 2002/08/23 15:49:49 torangan Exp $
+//  $Id: pingu.cxx,v 1.20 2002/08/25 09:08:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@
 #include "debug.hxx"
 #include "string_converter.hxx"
 
-using namespace Pingus::Actions;
+using namespace Actions;
 
 const float deadly_velocity = 20.0;
 int   Pingu::id_counter = 0;

@@ -1,4 +1,4 @@
-//  $Id: drown.hxx,v 1.5 2002/08/23 15:49:53 torangan Exp $
+//  $Id: drown.hxx,v 1.6 2002/08/25 09:08:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,24 +23,32 @@
 #include "../sprite.hxx"
 #include "../pingu_action.hxx"
 
-class Drown : public PinguAction
-{
-private:
-  Sprite sprite;
+namespace Actions {
+
+  class Drown : public PinguAction
+  {
+  private:
+    Sprite sprite;
   
-public:
-  Drown () { }
-  void init();
-  std::string get_name() const { return "Drown"; }
-  Pingus::Actions::ActionName get_type() const { return Pingus::Actions::Drown; }
-  void update(float delta);
-  void draw_offset(int x, int y, float s);
-  bool catchable () { return false; }
+  public:
+    Drown () { }
+    void init ();
+    
+    std::string get_name () const { return "Drown"; }
+    ActionName get_type () const { return Actions::Drown; }
+    
+    void update (float delta);
+    
+    void draw_offset (int x, int y, float s);
+    
+    bool catchable () { return false; }
   
-private:
-  Drown (const Drown&);
-  Drown operator= (const Drown&);
-};
+  private:
+    Drown (const Drown&);
+    Drown operator= (const Drown&);
+  };
+
+}
 
 #endif
 

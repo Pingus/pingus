@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.16 2002/08/23 15:49:53 torangan Exp $
+//  $Id: walker.cxx,v 1.17 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,185 +24,189 @@
 #include "../debug.hxx"
 #include "walker.hxx"
 
-void
-Walker::init(void)
-{
-  walker = Sprite ("Pingus/walker" + to_string(pingu->get_owner ()), "pingus");
-  walker.set_align_center_bottom ();
+namespace Actions {
+
+  void
+  Walker::init(void)
+  {
+    walker = Sprite ("Pingus/walker" + to_string(pingu->get_owner ()), "pingus");
+    walker.set_align_center_bottom ();
   
-  // Reset the velocity
-  pingu->velocity = CL_Vector ();
-}
+    // Reset the velocity
+    pingu->velocity = CL_Vector ();
+  }
 
-void
-Walker::update(float delta)
-{
-  // update the sprite
-  walker.update (delta);
+  void
+  Walker::update(float delta)
+  {
+    // update the sprite
+    walker.update (delta);
 
-  CL_Vector last_pos = pingu->pos;
+    CL_Vector last_pos = pingu->pos;
 
-  /* How should this code work?
+    /* How should this code work?
      
-  1) Check that the Pingu stands still on ground, if not turn it into
-  a faller or drown. The reason we do so, is that we catch situations
-  where a digger or a similar action removed the ground under the
-  walker.
+    1) Check that the Pingu stands still on ground, if not turn it into
+    a faller or drown. The reason we do so, is that we catch situations
+    where a digger or a similar action removed the ground under the
+    walker.
   
-  2) If pingu is still on ground, we can preprare the next step
+    2) If pingu is still on ground, we can preprare the next step
 
-  3) Check if up-hill or down-hill is required
+    3) Check if up-hill or down-hill is required
   
 
-  4)
+    4)
   
-  */
+    */
 
-  if (rel_getpixel(0, -1) ==  GroundpieceData::GP_WATER)
-    {
-      pingu->set_action (Pingus::Actions::Drown);
-      return;
-    }
+    if (rel_getpixel(0, -1) ==  GroundpieceData::GP_WATER)
+      {
+        pingu->set_action (Actions::Drown);
+        return;
+      }
 
-  // The Pingu stands no longer on ground, the cause for this could be
-  // a digger, miner or a bomber
-  if (rel_getpixel(0, -1) ==  GroundpieceData::GP_NOTHING)
-    { 
-      // We search for the nearest ground below the pingu, if we can't
-      // find anything within a few pixels, we will turn into a faller
-      bool found_ground = false;
-      int i;
-      for (i = -2; i > -5; --i)
-	{
-	  if (!(rel_getpixel(0, i) == GroundpieceData::GP_NOTHING))
-	    {
-	      found_ground = true;
-	      break;
-	    }
-	}
+    // The Pingu stands no longer on ground, the cause for this could be
+    // a digger, miner or a bomber
+    if (rel_getpixel(0, -1) ==  GroundpieceData::GP_NOTHING)
+      { 
+        // We search for the nearest ground below the pingu, if we can't
+        // find anything within a few pixels, we will turn into a faller
+        bool found_ground = false;
+        int i;
+        for (i = -2; i > -5; --i)
+	  {
+	    if (!(rel_getpixel(0, i) == GroundpieceData::GP_NOTHING))
+	      {
+	        found_ground = true;
+	        break;
+	      }
+	  }
 	
-      if (found_ground)
-	{
-	  pingu->pos.y -= i;
-	}
-      else
-	{
-	  pingu->set_action (Pingus::Actions::Faller);
-	  return;
-	}
-    }
+        if (found_ground)
+	  {
+	    pingu->pos.y -= i;
+	  }
+        else
+	  {
+	    pingu->set_action (Actions::Faller);
+	    return;
+	  }
+      }
 
   
-  // FIXME: here we could/should scan more pixels
-  if (rel_getpixel(1, 0) == GroundpieceData::GP_BRIDGE
-      && !head_collision_on_walk(1, 1))  // bridge
-    {
-      // simple, stupid, but working bridge code
-      // FIXME: We don't check if we 'drift' into a solid ground block
-      pingu->pos.x += pingu->direction;
-      pingu->pos.y -= 1; // pingus 'float' through bridges
-    }
-  else 
-    { 
-      // Non of the trivial moves worked, so we do up-hill or down-hill walking
-      // FIXME: currently the pingu takes multiple steps at once when
-      // FIXME: working uphill, this looks kind of ugly
+    // FIXME: here we could/should scan more pixels
+    if (rel_getpixel(1, 0) == GroundpieceData::GP_BRIDGE
+        && !head_collision_on_walk(1, 1))  // bridge
+      {
+        // simple, stupid, but working bridge code
+        // FIXME: We don't check if we 'drift' into a solid ground block
+        pingu->pos.x += pingu->direction;
+        pingu->pos.y -= 1; // pingus 'float' through bridges
+      }
+    else 
+      { 
+        // Non of the trivial moves worked, so we do up-hill or down-hill walking
+        // FIXME: currently the pingu takes multiple steps at once when
+        // FIXME: working uphill, this looks kind of ugly
 
 
-      // FIXME: rel_getpixel works on the current pos, so modifing pos
-      // FIXME: is evil, a backup copy might help
+        // FIXME: rel_getpixel works on the current pos, so modifing pos
+        // FIXME: is evil, a backup copy might help
 
-      // if infront is a pixel 
-      // Pingu is walking up the mountain 
-      // we can continue walking up. search for the correct y_pos
-      int y_inc = 0;
-      int possible_y_step = 0;
-      bool found_next_step = false;
-      for(y_inc=-max_steps; y_inc <= max_steps; y_inc++)
-	{// up/down-hill scan
-	  if ((rel_getpixel(1, y_inc) ==  GroundpieceData::GP_NOTHING
-	       || rel_getpixel(1, y_inc) ==  GroundpieceData::GP_BRIDGE) // FIXME: This causes a rather huge step
-	      && rel_getpixel(1, y_inc - 1) !=  GroundpieceData::GP_NOTHING)
-	    { // FIXME:
-	      found_next_step = true;
-	      possible_y_step = y_inc;
-	      // No break here, since we always want to use the highest possible position
-	      //break;
-	    }
-	}
+        // if infront is a pixel 
+        // Pingu is walking up the mountain 
+        // we can continue walking up. search for the correct y_pos
+        int y_inc = 0;
+        int possible_y_step = 0;
+        bool found_next_step = false;
+        for(y_inc=-max_steps; y_inc <= max_steps; y_inc++)
+	  {// up/down-hill scan
+	    if ((rel_getpixel(1, y_inc) ==  GroundpieceData::GP_NOTHING
+	         || rel_getpixel(1, y_inc) ==  GroundpieceData::GP_BRIDGE) // FIXME: This causes a rather huge step
+	        && rel_getpixel(1, y_inc - 1) !=  GroundpieceData::GP_NOTHING)
+	      { // FIXME:
+	        found_next_step = true;
+	        possible_y_step = y_inc;
+	        // No break here, since we always want to use the highest possible position
+	        //break;
+	      }
+	  }
       
-      if (found_next_step)
-	{
-	  pingu->pos.x += pingu->direction;
-	  pingu->pos.y -= possible_y_step; // pos.y has a reversed co-system to rel_getpixel()?
-	}
-      else
-	{
-	  if (rel_getpixel(1, 0) !=  GroundpieceData::GP_NOTHING)
-	    {
-	      // We reached a wall
-              if (pingu->request_wall_action()) 
-                {
-		  pout(PINGUS_DEBUG_ACTIONS) 
-		    << "Pingu: We are in front of a wall, setting persistant action" << std::endl;
-		  return;
-                }
+        if (found_next_step)
+	  {
+	    pingu->pos.x += pingu->direction;
+	    pingu->pos.y -= possible_y_step; // pos.y has a reversed co-system to rel_getpixel()?
+	  }
+        else
+	  {
+	    if (rel_getpixel(1, 0) !=  GroundpieceData::GP_NOTHING)
+	      {
+	        // We reached a wall
+                if (pingu->request_wall_action()) 
+                  {
+		    pout(PINGUS_DEBUG_ACTIONS) 
+		      << "Pingu: We are in front of a wall, setting persistant action" << std::endl;
+		    return;
+                  }
 	     
-	      // No persitent action found, so change the direction
-	      pingu->direction.change();	      
-	    }
-	  else
-	    {
-	      // We take the step, so that we are in the air
-	      pingu->pos.x += pingu->direction;
-	      // We reached a cliff
-	      pingu->set_action (Pingus::Actions::Faller);
-	      return;
-	    }
-	}
-    }
+	        // No persitent action found, so change the direction
+	        pingu->direction.change();	      
+	      }
+	    else
+	      {
+	        // We take the step, so that we are in the air
+	        pingu->pos.x += pingu->direction;
+	        // We reached a cliff
+	        pingu->set_action (Actions::Faller);
+	        return;
+	      }
+	  }
+      }
 
 
-  // This is moved here to fix the bug where pingu stuck turning both
-  // sides indefinetely when a head collision occured. the fix needs the
-  // above downhill walk being done before head collision check.
-  if (head_collision_on_walk(0, 0))
-    {
-      pout(PINGUS_DEBUG_ACTIONS) << "Pingu: Head collision" << std::endl;
+    // This is moved here to fix the bug where pingu stuck turning both
+    // sides indefinetely when a head collision occured. the fix needs the
+    // above downhill walk being done before head collision check.
+    if (head_collision_on_walk(0, 0))
+      {
+        pout(PINGUS_DEBUG_ACTIONS) << "Pingu: Head collision" << std::endl;
 
-      //if the new position causes a head collision, we are already
-      //stuck in a wall, so lets go back to the old position
-      pingu->direction.change();
-      pingu->pos = last_pos;
-      return;
-    }
+        //if the new position causes a head collision, we are already
+        //stuck in a wall, so lets go back to the old position
+        pingu->direction.change();
+        pingu->pos = last_pos;
+        return;
+      }
       
-  /*
-    for(int y_inc=1; y_inc <= max_steps; ++y_inc) 
-    {
-    if (rel_getpixel(1, -y_inc) == ColMap::WATER) 
-    {
-    pingu->set_paction ("drown");
-    return;
-    } 
-    else if(rel_getpixel(1, -y_inc) != ColMap::NOTHING)
-    { // there is land
-    pingu->pos.y += y_inc - 1;
-    break;
-    }
-    }
-  */
-}
+    /*
+      for(int y_inc=1; y_inc <= max_steps; ++y_inc) 
+      {
+      if (rel_getpixel(1, -y_inc) == ColMap::WATER) 
+      {
+      pingu->set_paction ("drown");
+      return;
+      } 
+      else if(rel_getpixel(1, -y_inc) != ColMap::NOTHING)
+      { // there is land
+      pingu->pos.y += y_inc - 1;
+      break;
+      }
+      }
+    */
+  }
 
-void  
-Walker::draw_offset(int x, int y, float /*s*/)
-{
-  if (pingu->direction.is_left ())
-    walker.set_direction (Sprite::LEFT);
-  else
-    walker.set_direction (Sprite::RIGHT);
+  void  
+  Walker::draw_offset(int x, int y, float /*s*/)
+  {
+    if (pingu->direction.is_left ())
+      walker.set_direction (Sprite::LEFT);
+    else
+      walker.set_direction (Sprite::RIGHT);
 
-  walker.put_screen (pingu->pos + CL_Vector (x, y));
+    walker.put_screen (pingu->pos + CL_Vector (x, y));
+  }
+
 }
 
 /* EOF */

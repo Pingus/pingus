@@ -1,4 +1,4 @@
-//  $Id: pingu_enums.cxx,v 1.1 2002/06/28 15:10:25 torangan Exp $
+//  $Id: pingu_enums.cxx,v 1.2 2002/08/25 09:08:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,70 +19,68 @@
 
 #include "pingu_enums.hxx"
 
-namespace Pingus {
+namespace Actions {
 
-  namespace Actions {
+  std::string action_to_string(ActionName action) {
 
-    std::string action_to_string(ActionName action) {
+    switch (action) {
 
-      switch (action) {
- 
-        case Angel          : return "angel";
-        case Basher         : return "basher";
-        case Blocker        : return "blocker";
-        case Boarder        : return "boarder";
-        case Bomber         : return "bomber";
-        case Bridger        : return "bridger";
-        case Climber        : return "climber";
-        case Digger         : return "digger";
-        case Drown          : return "drown";
-        case Exiter         : return "exiter";
-        case Faller         : return "faller";
-        case Floater        : return "floater";
-        case Jumper         : return "jumper";
-        case Laserkill      : return "laserkill";
-        case Miner          : return "miner";
-        case Rocketlauncher : return "rocketlauncher";
-        case Slider         : return "slider";
-        case Smashed        : return "smashed";
-        case Splashed       : return "splashed";
-        case Superman       : return "superman";
-        case Teleported     : return "teleported";
-        case Waiter         : return "waiter";
-        case Walker         : return "walker";
-        default             : return "Fehler";
-     }
-    }
-
-    ActionName action_from_string(const std::string& action) {
-
-      if (action == "angel")          return Angel;
-      if (action == "basher")         return Basher;
-      if (action == "blocker")        return Blocker;
-      if (action == "boarder")        return Boarder;
-      if (action == "bomber")         return Bomber;
-      if (action == "bridger")        return Bridger;
-      if (action == "climber")        return Climber;
-      if (action == "digger")         return Digger;
-      if (action == "drown")          return Drown;
-      if (action == "exiter")         return Exiter;
-      if (action == "faller")         return Faller;
-      if (action == "floater")        return Floater;
-      if (action == "jumper")         return Jumper;
-      if (action == "laserkill")      return Laserkill;
-      if (action == "miner")          return Miner;
-      if (action == "rocketlauncher") return Rocketlauncher;
-      if (action == "slider")         return Slider;
-      if (action == "smashed")        return Smashed;
-      if (action == "splashed")       return Splashed;
-      if (action == "superman")       return Superman;
-      if (action == "teleported")     return Teleported;
-      if (action == "waiter")         return Waiter;
-      if (action == "walker")         return Walker;
- 
-      return Walker;
-    }
-
+      case Angel          : return "angel";
+      case Basher         : return "basher";
+      case Blocker        : return "blocker";
+      case Boarder        : return "boarder";
+      case Bomber         : return "bomber";
+      case Bridger        : return "bridger";
+      case Climber        : return "climber";
+      case Digger         : return "digger";
+      case Drown          : return "drown";
+      case Exiter         : return "exiter";
+      case Faller         : return "faller";
+      case Floater        : return "floater";
+      case Jumper         : return "jumper";
+      case Laserkill      : return "laserkill";
+      case Miner          : return "miner";
+      case Rocketlauncher : return "rocketlauncher";
+      case Slider         : return "slider";
+      case Smashed        : return "smashed";
+      case Splashed       : return "splashed";
+      case Superman       : return "superman";
+      case Teleported     : return "teleported";
+      case Waiter         : return "waiter";
+      case Walker         : return "walker";
+      default             : return "Fehler";
+   }
   }
+
+  ActionName action_from_string(const std::string& action) {
+
+    if (action == "angel")          return Angel;
+    if (action == "basher")         return Basher;
+    if (action == "blocker")        return Blocker;
+    if (action == "boarder")        return Boarder;
+    if (action == "bomber")         return Bomber;
+    if (action == "bridger")        return Bridger;
+    if (action == "climber")        return Climber;
+    if (action == "digger")         return Digger;
+    if (action == "drown")          return Drown;
+    if (action == "exiter")         return Exiter;
+    if (action == "faller")         return Faller;
+    if (action == "floater")        return Floater;
+    if (action == "jumper")         return Jumper;
+    if (action == "laserkill")      return Laserkill;
+    if (action == "miner")          return Miner;
+    if (action == "rocketlauncher") return Rocketlauncher;
+    if (action == "slider")         return Slider;
+    if (action == "smashed")        return Smashed;
+    if (action == "splashed")       return Splashed;
+    if (action == "superman")       return Superman;
+    if (action == "teleported")     return Teleported;
+    if (action == "waiter")         return Waiter;
+    if (action == "walker")         return Walker;
+
+    return Walker;
+  }
+
 }
 
+/* EOF */

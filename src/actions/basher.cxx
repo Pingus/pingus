@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.10 2002/08/23 15:49:53 torangan Exp $
+//  $Id: basher.cxx,v 1.11 2002/08/25 09:08:49 torangan Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -27,111 +27,114 @@
 
 using namespace std;
 
-// Initialise class static.
-const int Basher::bash_height = 4;
+namespace Actions {
 
-Basher::Basher() : basher_c(0), first_bash(true)
-{
-}
-
-void
-Basher::init(void)
-{
-  first_bash = true;
-  bash_radius = PingusResource::load_surface ("Other/bash_radius", "pingus");
-  bash_radius_gfx = PingusResource::load_surface ("Other/bash_radius_gfx", "pingus");
-  sprite = Sprite (PingusResource::load_surface ("Pingus/basher0", "pingus"));
-  sprite.set_align_center_bottom ();
-
-  // Start a bash even so the action will stops instantly after the
-  // first bash
-  bash ();
-}
-
-void
-Basher::draw_offset(int x, int y, float /*s*/)
-{
-  if (pingu->direction.is_left ())
-    sprite.set_direction (Sprite::LEFT);
-  else
-    sprite.set_direction (Sprite::RIGHT);
-
-  sprite.put_screen (pingu->get_pos () + CL_Vector(x, y));
-}
-
-void
-Basher::update(float delta)
-{
-  sprite.update (delta);
-
-  ++basher_c;
-  if (basher_c % 3 == 0)
-    {
-      walk_forward();
-
-      if (have_something_to_dig())
-	{
-	  // We only bash every second step, cause the Pingus would
-	  // get trapped otherwise in the bashing area.
-	  if (basher_c % 2 == 0)
-	    bash();
-	}
-      else if (sprite.get_progress () > 0.6f)
-	{
-	  pingu->set_action(Pingus::Actions::Walker);
-	}
-    }
-}
-
-void
-Basher::bash()
-{
-  pingu->get_world()->get_colmap()->remove(bash_radius,
-					   pingu->get_x () - (bash_radius.get_width()/2),
-					   pingu->get_y () - 31);
-  pingu->get_world()->get_gfx_map()->remove(bash_radius_gfx,
-					    pingu->get_x () - (bash_radius_gfx.get_width()/2),
-					    pingu->get_y () - 31);
-}
-
-void
-Basher::walk_forward()
-{
-  if (rel_getpixel(0, -1) ==  GroundpieceData::GP_NOTHING) {
-    // We are in the air... lets fall...
-    pingu->set_action(Pingus::Actions::Faller);
-  } else {
-    // On ground, walk forward...
-    pingu->pos.x += pingu->direction;
+  Basher::Basher() : basher_c(0), first_bash(true)
+  {
   }
-}
 
-bool
-Basher::have_something_to_dig()
-{
-  if (first_bash)
-    {
-      first_bash = false;
-      return true;
+  void
+  Basher::init(void)
+  {
+    first_bash = true;
+    bash_radius = PingusResource::load_surface ("Other/bash_radius", "pingus");
+    bash_radius_gfx = PingusResource::load_surface ("Other/bash_radius_gfx", "pingus");
+    sprite = Sprite (PingusResource::load_surface ("Pingus/basher0", "pingus"));
+    sprite.set_align_center_bottom ();
+
+    // Start a bash even so the action will stops instantly after the
+    // first bash
+    bash ();
+  }
+
+  void
+  Basher::draw_offset(int x, int y, float s)
+  {
+    if (pingu->direction.is_left ())
+      sprite.set_direction (Sprite::LEFT);
+    else
+      sprite.set_direction (Sprite::RIGHT);
+
+    sprite.put_screen (pingu->get_pos () + CL_Vector(x, y));
+    
+    UNUSED_ARG(s);
+  }
+
+  void
+  Basher::update(float delta)
+  {
+    sprite.update (delta);
+
+    ++basher_c;
+    if (basher_c % 3 == 0)
+      {
+        walk_forward();
+
+        if (have_something_to_dig())
+	  {
+	    // We only bash every second step, cause the Pingus would
+	    // get trapped otherwise in the bashing area.
+	    if (basher_c % 2 == 0)
+	      bash();
+	  }
+        else if (sprite.get_progress () > 0.6f)
+	  {
+	    pingu->set_action(Actions::Walker);
+	  }
+      }
+  }
+
+  void
+  Basher::bash()
+  {
+    pingu->get_world()->get_colmap()->remove(bash_radius,
+					     pingu->get_x () - (bash_radius.get_width()/2),
+					     pingu->get_y () - 31);
+    pingu->get_world()->get_gfx_map()->remove(bash_radius_gfx,
+					      pingu->get_x () - (bash_radius_gfx.get_width()/2),
+					      pingu->get_y () - 31);
+  }
+
+  void
+  Basher::walk_forward()
+  {
+    if (rel_getpixel(0, -1) ==  GroundpieceData::GP_NOTHING) {
+      // We are in the air... lets fall...
+      pingu->set_action(Actions::Faller);
+    } else {
+      // On ground, walk forward...
+      pingu->pos.x += pingu->direction;
     }
+  }
 
-  for(int i = 0; i < 16; ++i)
-    {
-      // Check that there is a high enough wall (i.e. not 1 pixel) to bash.
-      // Probably best to check from where Pingu can't automatically walk up
-      // up to head collision height.
-      for (int j = bash_height + 1; j <= 26; ++j)
-        {
-          if (rel_getpixel(i,j) == GroundpieceData::GP_GROUND)
-	    {
-	      pout(PINGUS_DEBUG_ACTIONS) << "Basher: Found something to dig..." << std::endl;
-	      return true;
-	    }
-	}
-    }
+  bool
+  Basher::have_something_to_dig()
+  {
+    if (first_bash)
+      {
+        first_bash = false;
+        return true;
+      }
 
-  cout << "nothing to dig found" << endl;
-  return false;
+    for(int i = 0; i < 16; ++i)
+      {
+        // Check that there is a high enough wall (i.e. not 1 pixel) to bash.
+        // Probably best to check from where Pingu can't automatically walk up
+        // up to head collision height.
+        for (int j = bash_height + 1; j <= 26; ++j)
+          {
+            if (rel_getpixel(i,j) == GroundpieceData::GP_GROUND)
+	      {
+	        pout(PINGUS_DEBUG_ACTIONS) << "Basher: Found something to dig..." << std::endl;
+	        return true;
+	      }
+	  }
+      }
+
+    cout << "nothing to dig found" << endl;
+    return false;
+  }
+
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: slider.cxx,v 1.4 2002/08/23 15:49:53 torangan Exp $
+//  $Id: slider.cxx,v 1.5 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,57 +22,61 @@
 #include "../pingu.hxx"
 #include "slider.hxx"
 
-Slider::Slider ()
-{
-}
+namespace Actions {
 
-void
-Slider::init(void)
-{
-  sprite = Sprite("Pingus/slider" + to_string(pingu->get_owner ()),
-		  "pingus");
-  sprite.set_align_center_bottom();
-  speed = 10;
-}
+  Slider::Slider ()
+  {
+  }
 
-void
-Slider::update(float delta)
-{
-  if (pingu->direction.is_left ())
-    sprite.set_direction (Sprite::LEFT);
-  else
-    sprite.set_direction (Sprite::RIGHT);
+  void
+  Slider::init(void)
+  {
+    sprite = Sprite("Pingus/slider" + to_string(pingu->get_owner ()),
+		    "pingus");
+    sprite.set_align_center_bottom();
+    speed = 10;
+  }
 
-  sprite.update (delta);
+  void
+  Slider::update(float delta)
+  {
+    if (pingu->direction.is_left ())
+      sprite.set_direction (Sprite::LEFT);
+    else
+      sprite.set_direction (Sprite::RIGHT);
 
-  for (int i = 0; i < speed; ++i)
-    {
-      pingu->pos.x += pingu->direction;
+    sprite.update (delta);
+
+    for (int i = 0; i < speed; ++i)
+      {
+        pingu->pos.x += pingu->direction;
       
-      if (rel_getpixel(0, -1) ==  GroundpieceData::GP_NOTHING)
-	{
-	  speed = (speed > 5 ? 5 : speed);
+        if (rel_getpixel(0, -1) ==  GroundpieceData::GP_NOTHING)
+	  {
+	    speed = (speed > 5 ? 5 : speed);
 
-	  if (pingu->direction.is_right()) {
-	    pingu->velocity += CL_Vector(speed, 0.0);
-	  } else {
-	    pingu->velocity += CL_Vector(-speed, 0.0);
+	    if (pingu->direction.is_right()) {
+	      pingu->velocity += CL_Vector(speed, 0.0);
+	    } else {
+	      pingu->velocity += CL_Vector(-speed, 0.0);
+	    }
+
+	    pingu->set_action(Actions::Walker);
 	  }
+      }
 
-	  pingu->set_action(Pingus::Actions::Walker);
-	}
-    }
+    speed -= 7 * delta;
+    if (speed < 1)
+      pingu->set_action(Actions::Walker);
+  }
 
-  speed -= 7 * delta;
-  if (speed < 1)
-    pingu->set_action(Pingus::Actions::Walker);
-}
+  void
+  Slider::draw_offset(int x, int y, float s)
+  {
+    sprite.put_screen (pingu->pos + CL_Vector(x, y - 2));
+    UNUSED_ARG(s);
+  }
 
-void
-Slider::draw_offset(int x, int y, float s)
-{
-  sprite.put_screen (pingu->pos + CL_Vector(x, y - 2));
-  UNUSED_ARG(s);
 }
 
 /* EOF */

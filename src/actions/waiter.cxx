@@ -1,4 +1,4 @@
-//  $Id: waiter.cxx,v 1.3 2002/08/23 15:49:53 torangan Exp $
+//  $Id: waiter.cxx,v 1.4 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,33 +21,38 @@
 #include "../pingus_resource.hxx"
 #include "waiter.hxx"
 
-Waiter::Waiter()
-{
-}
+namespace Actions {
 
-void
-Waiter::update(float delta)
-{
-  sprite.update (delta);
+  Waiter::Waiter()
+  {
+  }
+
+  void
+  Waiter::update(float delta)
+  {
+    sprite.update (delta);
   
-  if (countdown < 0)
-    pingu->set_action(Pingus::Actions::Walker);
+    if (countdown < 0)
+      pingu->set_action(Actions::Walker);
   
-  countdown -= delta;
-}
+    countdown -= delta;
+  }
 
-void
-Waiter::init()
-{
-  sprite = PingusResource::load_surface ("Pingus/blocker0", "pingus");
-  sprite.set_align_center_bottom ();
-  countdown = 2.0;
-}
+  void
+  Waiter::init()
+  {
+    sprite = PingusResource::load_surface ("Pingus/blocker0", "pingus");
+    sprite.set_align_center_bottom ();
+    countdown = 2.0;
+  }
 
-void
-Waiter::draw_offset(int x, int y, float /*s*/)
-{
-  sprite.put_screen (pingu->get_pos () + CL_Vector(x, y));
+  void
+  Waiter::draw_offset(int x, int y, float s)
+  {
+    sprite.put_screen (pingu->get_pos () + CL_Vector(x, y));
+    UNUSED_ARG(s);
+  }
+
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: hammer.cxx,v 1.7 2002/08/23 15:49:56 torangan Exp $
+//  $Id: hammer.cxx,v 1.8 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "../pingu_holder.hxx"
 #include "../pingu.hxx"
 
-using namespace Pingus::Actions;
+using namespace Actions;
 
 Hammer::Hammer(const TrapData& data)
 {

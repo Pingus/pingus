@@ -1,4 +1,4 @@
-//  $Id: splashed.hxx,v 1.5 2002/08/23 15:49:53 torangan Exp $
+//  $Id: splashed.hxx,v 1.6 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,27 +23,31 @@
 #include "../sprite.hxx"
 #include "../pingu_action.hxx"
 
-class Splashed : public PinguAction
-{
-private:
-  bool particle_thrown;
-  bool sound_played;
-  Sprite sprite;
-public:
-  Splashed();
-  void init (void);
+namespace Actions {
+
+  class Splashed : public PinguAction
+  {
+  private:
+    bool particle_thrown;
+    bool sound_played;
+    Sprite sprite;
+  public:
+    Splashed();
+    void init (void);
   
-  std::string get_name () const { return "Splashed"; }
-  Pingus::Actions::ActionName get_type () const { return Pingus::Actions::Splashed; }
+    std::string get_name () const { return "Splashed"; }
+    ActionName get_type () const { return Actions::Splashed; }
   
-  void update (float delta);
-  void draw_offset (int x, int y, float s);
-  bool catchable () { return false; }
+    void update (float delta);
+    void draw_offset (int x, int y, float s);
+    bool catchable () { return false; }
   
-private:
-  Splashed (const Splashed&);
-  Splashed operator= (const Splashed&);
-};
+  private:
+    Splashed (const Splashed&);
+    Splashed operator= (const Splashed&);
+  };
+
+}
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: multiplayer_client_child.cxx,v 1.8 2002/08/12 22:52:04 grumbel Exp $
+//  $Id: multiplayer_client_child.cxx,v 1.9 2002/08/25 09:08:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,7 +99,7 @@ void MultiplayerClientChild::on_left_press (const CL_Vector& pos)
       char str[256];
       sprintf(str, "Pingu: %d:%s",
 	      pingu->get_id(), 
-		  Pingus::Actions::action_to_string(button_panel->get_action_name()).c_str());
+		  Actions::action_to_string(button_panel->get_action_name()).c_str());
       server->send_event(str);
     }
   */

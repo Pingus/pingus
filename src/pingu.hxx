@@ -1,4 +1,4 @@
-//  $Id: pingu.hxx,v 1.10 2002/08/23 15:49:49 torangan Exp $
+//  $Id: pingu.hxx,v 1.11 2002/08/25 09:08:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,9 +27,6 @@
 #include "direction.hxx"
 #include "pingu_enums.hxx"
 #include "worldobj.hxx"
-#include "pingu_enums.hxx"
-
-using Pingus::Actions::ActionName;
 
 // Forward declarations
 class CL_Font;
@@ -109,7 +106,7 @@ public:
   int  get_y(void);
 
   /** Checks if this action allows to be overwritten with the given new action */
-  bool change_allowed (ActionName new_action);
+  bool change_allowed (Actions::ActionName new_action);
 
   /// Check if the pingu is still alive
   bool is_alive(void);
@@ -141,11 +138,11 @@ public:
       action, it will be hold back for later execution, same with a
       timed action, normal action will be applied if the current
       action allows that. */
-  bool request_set_action (ActionName action_name);
+  bool request_set_action (Actions::ActionName action_name);
 
   /** Set an action without any checking, the action will take
       instantly control. */
-  void set_action (ActionName action_name);
+  void set_action (Actions::ActionName action_name);
   
   /// set the wall action if we have one
   bool request_wall_action ();

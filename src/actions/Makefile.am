@@ -50,7 +50,6 @@ EXTRA_DIST = README
 noinst_LIBRARIES = libpingu_actions.a
 
 libpingu_actions_a_SOURCES =       \
-	 waiter.cxx   waiter.hxx \
          angel.cxx    angel.hxx \
          basher.cxx   basher.hxx     \
          blocker.cxx  blocker.hxx    \
@@ -72,6 +71,7 @@ libpingu_actions_a_SOURCES =       \
          splashed.cxx splashed.hxx \
          superman.cxx superman.hxx \
          teleported.cxx teleported.hxx \
+	 waiter.cxx   waiter.hxx \
          walker.cxx   walker.hxx
 
 # EOF #

@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.8 2002/08/22 10:21:29 grumbel Exp $
+//  $Id: bomber.cxx,v 1.9 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,106 +29,110 @@
 #include "../particles/particle_holder.hxx"
 #include "bomber.hxx"
 
-bool Bomber::static_surface_loaded = false;
-CL_Surface Bomber::bomber_radius;
-CL_Surface Bomber::bomber_radius_gfx;
+namespace Actions {
 
-Bomber::Bomber() 
-  : particle_thrown(false),
-    sound_played(false), 
-    gfx_exploded(false),
-    colmap_exploded(false)
-{
-}
+  bool Bomber::static_surface_loaded = false;
+  CL_Surface Bomber::bomber_radius;
+  CL_Surface Bomber::bomber_radius_gfx;
 
-void
-Bomber::on_successfull_apply (Pingu* pingu)
-{
-  pingu->get_world ()->play_wav("sounds/ohno.wav", pingu->get_pos ());
-}
-
-void
-Bomber::init()
-{
-  // Only load the surface again if no static_surface is available
-  if (!static_surface_loaded) 
-    {
-      static_surface_loaded = true;
-      bomber_radius = PingusResource::load_surface ("Other/bomber_radius", "pingus");
-      bomber_radius_gfx = PingusResource::load_surface ("Other/bomber_radius_gfx", "pingus");
-    }
-
-  explo_surf = PingusResource::load_surface ("Other/explo" + to_string (pingu->get_owner ()), "pingus");
-  sprite = Sprite(PingusResource::load_surface ("Pingus/bomber" + to_string(pingu->get_owner ()), "pingus"),
-		  17.0f, Sprite::NONE, Sprite::ONCE);
-  sprite.set_align_center_bottom ();
-
-  sound_played = false;
-}
-
-void
-Bomber::draw_offset(int x, int y, float /*s*/)
-{
-  if (sprite.get_frame () >= 13 && !gfx_exploded) 
-    {
-      explo_surf.put_screen(pingu->get_x () - 32 + x, pingu->get_y () - 48 + y);
-      gfx_exploded = true;
-    }
-
-  sprite.put_screen(pingu->get_x () + x, pingu->get_y () + y);
-}
-
-void
-Bomber::update(float delta)
-{
-  sprite.update (delta);
-
-  if (sprite.get_frame () > 9 && !sound_played) {
-    pingu->get_world ()->play_wav("sounds/plop.wav", pingu->get_pos ());
-    sound_played = true;
+  Bomber::Bomber() 
+    : particle_thrown(false),
+      sound_played(false), 
+      gfx_exploded(false),
+      colmap_exploded(false)
+  {
   }
 
-  // Throwing particles
-  if (sprite.get_frame () > 12 && !particle_thrown) 
-    {
-      particle_thrown = true;
-      pingu->get_world()->get_particle_holder()->add_pingu_explo(pingu->get_x (), pingu->get_y () - 5);
+  void
+  Bomber::on_successfull_apply (Pingu* pingu)
+  {
+    pingu->get_world ()->play_wav("sounds/ohno.wav", pingu->get_pos ());
+  }
+
+  void
+  Bomber::init()
+  {
+    // Only load the surface again if no static_surface is available
+    if (!static_surface_loaded) 
+      {
+        static_surface_loaded = true;
+        bomber_radius = PingusResource::load_surface ("Other/bomber_radius", "pingus");
+        bomber_radius_gfx = PingusResource::load_surface ("Other/bomber_radius_gfx", "pingus");
+      }
+
+    explo_surf = PingusResource::load_surface ("Other/explo" + to_string (pingu->get_owner ()), "pingus");
+    sprite = Sprite(PingusResource::load_surface ("Pingus/bomber" + to_string(pingu->get_owner ()), "pingus"),
+		    17.0f, Sprite::NONE, Sprite::ONCE);
+    sprite.set_align_center_bottom ();
+
+    sound_played = false;
+  }
+
+  void
+  Bomber::draw_offset(int x, int y, float /*s*/)
+  {
+    if (sprite.get_frame () >= 13 && !gfx_exploded) 
+      {
+        explo_surf.put_screen(pingu->get_x () - 32 + x, pingu->get_y () - 48 + y);
+        gfx_exploded = true;
+      }
+
+    sprite.put_screen(pingu->get_x () + x, pingu->get_y () + y);
+  }
+
+  void
+  Bomber::update(float delta)
+  {
+    sprite.update (delta);
+
+    if (sprite.get_frame () > 9 && !sound_played) {
+      pingu->get_world ()->play_wav("sounds/plop.wav", pingu->get_pos ());
+      sound_played = true;
     }
 
+    // Throwing particles
+    if (sprite.get_frame () > 12 && !particle_thrown) 
+      {
+        particle_thrown = true;
+        pingu->get_world()->get_particle_holder()->add_pingu_explo(pingu->get_x (), pingu->get_y () - 5);
+      }
 
-  if (sprite.get_frame () >= 13 && !colmap_exploded)
-    {
-      colmap_exploded = true;
 
-      pingu->get_world()->get_colmap()->remove(bomber_radius,
-					       pingu->get_x () - (bomber_radius.get_width()/2),
-					       pingu->get_y () - 16 - (bomber_radius.get_width()/2));
-      pingu->get_world()->get_gfx_map()->remove(bomber_radius_gfx, 
-						pingu->get_x () - (bomber_radius.get_width()/2),
-						pingu->get_y () - 16 - (bomber_radius.get_width()/2));
+    if (sprite.get_frame () >= 13 && !colmap_exploded)
+      {
+        colmap_exploded = true;
+
+        pingu->get_world()->get_colmap()->remove(bomber_radius,
+					         pingu->get_x () - (bomber_radius.get_width()/2),
+					         pingu->get_y () - 16 - (bomber_radius.get_width()/2));
+        pingu->get_world()->get_gfx_map()->remove(bomber_radius_gfx, 
+						  pingu->get_x () - (bomber_radius.get_width()/2),
+						  pingu->get_y () - 16 - (bomber_radius.get_width()/2));
       
-      // Add an explosion to the forces list
-      ForcesHolder::add_force(ExplosionForce(5,30,CL_Vector(pingu->get_x (),
-							     pingu->get_y () - 20)));
-    }
+        // Add an explosion to the forces list
+        ForcesHolder::add_force(ExplosionForce(5,30,CL_Vector(pingu->get_x (),
+							       pingu->get_y () - 20)));
+      }
 
 
-  // The pingu explode
-  if (sprite.finished ())
-    {
-      pingu->set_status(PS_DEAD);
-    }
-}
+    // The pingu explode
+    if (sprite.finished ())
+      {
+        pingu->set_status(PS_DEAD);
+      }
+  }
 
-void
-Bomber::update_position(float delta)
-{
-  // Apply all forces
-  pingu->velocity = ForcesHolder::apply_forces(pingu->pos, pingu->velocity);
-  // FIXME:
-  pingu->pos += pingu->velocity;
+  void
+  Bomber::update_position(float delta)
+  {
+    // Apply all forces
+    pingu->velocity = ForcesHolder::apply_forces(pingu->pos, pingu->velocity);
+    // FIXME:
+    pingu->pos += pingu->velocity;
   
-  if(delta);
+    if(delta);
+  }
+
 }
 
 /* EOF */

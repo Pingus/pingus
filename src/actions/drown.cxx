@@ -1,4 +1,4 @@
-//  $Id: drown.cxx,v 1.3 2002/06/26 19:13:13 grumbel Exp $
+//  $Id: drown.cxx,v 1.4 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,41 +20,43 @@
 #include "../pingu.hxx"
 #include "drown.hxx"
 
-///
-void 
-Drown::init()
-{
-  //if (pingu->environment == ENV_AIR)
-    sprite = Sprite ("Pingus/drownfall0", "pingus", 60.0f,
-		     Sprite::NONE, Sprite::ONCE);
-    //else
-    //sprite = Sprite ("Pingus/drownwalk0", "pingus", 30.0f,
-    //	     Sprite::NONE, Sprite::ONCE);
+namespace Actions {
 
-  sprite.set_align_center_bottom ();
-}
+  void 
+  Drown::init()
+  {
+    //if (pingu->environment == ENV_AIR)
+      sprite = Sprite ("Pingus/drownfall0", "pingus", 60.0f,
+		       Sprite::NONE, Sprite::ONCE);
+      //else
+      //sprite = Sprite ("Pingus/drownwalk0", "pingus", 30.0f,
+      //	     Sprite::NONE, Sprite::ONCE);
 
-void 
-Drown::draw_offset(int x, int y, float /*s*/)
-{
-  // FIXME: Direction handling is ugly
-  if (pingu->direction.is_left ())
-    sprite.set_direction (Sprite::LEFT);
-  else
-    sprite.set_direction (Sprite::RIGHT);
+    sprite.set_align_center_bottom ();
+  }
 
-  sprite.put_screen (pingu->pos + CL_Vector(x, y));
-}
+  void 
+  Drown::draw_offset(int x, int y, float /*s*/)
+  {
+    // FIXME: Direction handling is ugly
+    if (pingu->direction.is_left ())
+      sprite.set_direction (Sprite::LEFT);
+    else
+      sprite.set_direction (Sprite::RIGHT);
 
-///
-void 
-Drown::update(float delta)
-{
-  sprite.update (delta);
-  if (sprite.finished ())
-    {
-      pingu->set_status(PS_DEAD);
-    }
+    sprite.put_screen (pingu->pos + CL_Vector(x, y));
+  }
+
+  void 
+  Drown::update(float delta)
+  {
+    sprite.update (delta);
+    if (sprite.finished ())
+      {
+        pingu->set_status(PS_DEAD);
+      }
+  }
+
 }
 
 /* EOF */

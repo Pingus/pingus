@@ -1,4 +1,4 @@
-//  $Id: slider.hxx,v 1.5 2002/08/23 15:49:53 torangan Exp $
+//  $Id: slider.hxx,v 1.6 2002/08/25 09:08:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,24 +23,28 @@
 #include "../sprite.hxx"
 #include "../pingu_action.hxx"
 
-class Slider : public PinguAction
-{
-private:
-  Sprite sprite;
-  float  speed;
-public:
-  Slider ();
+namespace Actions {
 
-  void  init(void);
-  std::string get_name() const { return "Slider"; }
-  Pingus::Actions::ActionName get_type() const { return Pingus::Actions::Slider; }
-  void  update(float delta);
-  void  draw_offset(int x, int y, float s);
+  class Slider : public PinguAction
+  {
+  private:
+    Sprite sprite;
+    float  speed;
+  public:
+    Slider ();
+
+    void  init(void);
+    std::string get_name() const { return "Slider"; }
+    ActionName get_type() const { return Actions::Slider; }
+    void  update(float delta);
+    void  draw_offset(int x, int y, float s);
   
-private:
-  Slider (const Slider&);
-  Slider operator= (const Slider&);
-};
+  private:
+    Slider (const Slider&);
+    Slider operator= (const Slider&);
+  };
+
+}
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.9 2002/08/14 12:45:01 torangan Exp $
+//  $Id: action_button.cxx,v 1.10 2002/08/25 09:08:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@
 #include "world.hxx"
 #include "string_converter.hxx"
 
-using namespace Pingus::Actions;
+using namespace Actions;
 
 ActionButton::ActionButton() {}
 

@@ -1,4 +1,4 @@
-//  $Id: bomber.hxx,v 1.8 2002/08/23 15:49:53 torangan Exp $
+//  $Id: bomber.hxx,v 1.9 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,40 +23,44 @@
 #include "../sprite.hxx"
 #include "../pingu_action.hxx"
 
-/** An action with lets the Pingu explode. After the explosion the the
-    Pingu leaves a hole inside the ground. */
-class Bomber : public PinguAction
-{
-private:
-  bool particle_thrown;
-  bool sound_played;
-  bool gfx_exploded; 
-  bool colmap_exploded; 
+namespace Actions {
 
-  static bool static_surface_loaded;
-  Sprite sprite;
-  static CL_Surface bomber_radius;
-  static CL_Surface bomber_radius_gfx;
+  /** An action with lets the Pingu explode. After the explosion the the
+      Pingu leaves a hole inside the ground. */
+  class Bomber : public PinguAction
+  {
+  private:
+    bool particle_thrown;
+    bool sound_played;
+    bool gfx_exploded; 
+    bool colmap_exploded; 
 
-  CL_Surface explo_surf;
+    static bool static_surface_loaded;
+    Sprite sprite;
+    static CL_Surface bomber_radius;
+    static CL_Surface bomber_radius_gfx;
 
-public:
-  Bomber();
+    CL_Surface explo_surf;
+
+  public:
+    Bomber ();
   
-  void   init(void);
-  std::string get_name () const { return "Bomber"; }
-  Pingus::Actions::ActionName get_type() const { return Pingus::Actions::Bomber; }
-  ActionType get_activation_mode() const { return COUNTDOWN_TRIGGERED; }
-  void   draw_offset(int x, int y, float s);
-  void   update(float delta);
-  void   update_position(float delta);
-  int    activation_time() { return 50; }
-  void on_successfull_apply (Pingu*);
+    void   init (void);
+    std::string get_name () const { return "Bomber"; }
+    ActionName get_type() const { return Actions::Bomber; }
+    ActionType get_activation_mode() const { return COUNTDOWN_TRIGGERED; }
+    void   draw_offset(int x, int y, float s);
+    void   update(float delta);
+    void   update_position(float delta);
+    int    activation_time() { return 50; }
+    void on_successfull_apply (Pingu*);
   
-private:
-  Bomber (const Bomber&);
-  Bomber operator= (const Bomber&);
-};
+  private:
+    Bomber (const Bomber&);
+    Bomber operator= (const Bomber&);
+  };
+
+}
 
 #endif
 

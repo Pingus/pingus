@@ -1,4 +1,4 @@
-//  $Id: action_holder.hxx,v 1.4 2002/08/23 15:49:47 torangan Exp $
+//  $Id: action_holder.hxx,v 1.5 2002/08/25 09:08:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include <map>
 #include "pingu_enums.hxx"
 
-using Pingus::Actions::ActionName;
+using Actions::ActionName;
 
 class PLF;
 class PinguAction;

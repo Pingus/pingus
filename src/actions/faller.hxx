@@ -1,4 +1,4 @@
-//  $Id: faller.hxx,v 1.10 2002/08/23 15:49:53 torangan Exp $
+//  $Id: faller.hxx,v 1.11 2002/08/25 09:08:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,35 +23,39 @@
 #include "../sprite.hxx"
 #include "../pingu_action.hxx"
 
-class Faller : public PinguAction
-{
-private:
-  Sprite faller;
-  Sprite tumbler;
+namespace Actions {
 
-  int falling;
+  class Faller : public PinguAction
+  {
+  private:
+    Sprite faller;
+    Sprite tumbler;
 
-  static const float deadly_velocity;
+    int falling;
 
-public:
-  Faller();
-  virtual ~Faller();
-  
-  void  init(void);
-  
-  void  update(float delta);
-  void  draw_offset(int x, int y, float s);
+    static const float deadly_velocity;
 
-  bool change_allowed (Pingus::Actions::ActionName new_action);
+  public:
+    Faller();
+    virtual ~Faller();
   
-  std::string get_name() const { return "Faller"; }
-  Pingus::Actions::ActionName get_type() const { return Pingus::Actions::Faller; }
-  bool is_tumbling () const;
+    void  init(void);
   
-private:
-  Faller (const Faller&);
-  Faller operator= (const Faller&);
-};
+    void  update(float delta);
+    void  draw_offset(int x, int y, float s);
+
+    bool change_allowed (Actions::ActionName new_action);
+  
+    std::string get_name() const { return "Faller"; }
+    ActionName get_type() const { return Actions::Faller; }
+    bool is_tumbling () const;
+  
+  private:
+    Faller (const Faller&);
+    Faller operator= (const Faller&);
+  };
+
+}
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: smashed.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: smashed.cxx,v 1.3 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,24 +20,27 @@
 #include "../pingu.hxx"
 #include "smashed.hxx"
 
-void
-Smashed::init(void)
-{
-  sprite = Sprite ("Pingus/bomber0", "pingus");
-  sound_played = false;  
-}
+namespace Actions {
 
-void 
-Smashed::draw_offset(int x, int y, float /*s*/)
-{
-  sprite.put_screen (x, y);
-}
+  void
+  Smashed::init(void)
+  {
+    sprite = Sprite ("Pingus/bomber0", "pingus");
+    sound_played = false;  
+  }
 
-void
-Smashed::update(float /*delta*/)
-{
-  //  pingu->particle->add_pingu_explo(pingu->x_pos, pingu->y_pos - 16);
-  pingu->set_status(PS_DEAD);
-}
+  void 
+  Smashed::draw_offset(int x, int y, float /*s*/)
+  {
+    sprite.put_screen (x, y);
+  }
 
+  void
+  Smashed::update(float /*delta*/)
+  {
+    //  pingu->particle->add_pingu_explo(pingu->x_pos, pingu->y_pos - 16);
+    pingu->set_status(PS_DEAD);
+  }
+
+}
 /* EOF */

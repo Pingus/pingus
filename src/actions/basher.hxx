@@ -1,4 +1,4 @@
-//  $Id: basher.hxx,v 1.6 2002/08/23 15:49:53 torangan Exp $
+//  $Id: basher.hxx,v 1.7 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,35 +23,38 @@
 #include "../sprite.hxx"
 #include "../pingu_action.hxx"
 
-///
-class Basher : public PinguAction
-{
-private:
-  Sprite sprite;
-  CL_Surface bash_radius;
-  CL_Surface bash_radius_gfx;
-  int basher_c;
-  bool first_bash;
-public:
-  Basher();
-  virtual ~Basher() {}
+namespace Actions {
+
+  class Basher : public PinguAction
+  {
+  private:
+    Sprite sprite;
+    CL_Surface bash_radius;
+    CL_Surface bash_radius_gfx;
+    int basher_c;
+    bool first_bash;
+  public:
+    Basher();
+    virtual ~Basher() {}
   
-  void   init(void);
-  std::string get_name () const { return "Basher"; }
-  Pingus::Actions::ActionName get_type() const { return Pingus::Actions::Basher; }
-  void draw_offset(int x, int y, float s);
-  void update(float delta);
-  bool have_something_to_dig();
-  void walk_forward();
-  void bash();
+    void   init (void);
+    std::string get_name () const { return "Basher"; }
+    ActionName get_type() const { return Actions::Basher; }
+    void draw_offset(int x, int y, float s);
+    void update(float delta);
+    bool have_something_to_dig();
+    void walk_forward();
+    void bash();
   
-  /// Defines "wall" height needed so as to determine whether it should be bashed.
-  static const int bash_height;
+    /// Defines "wall" height needed so as to determine whether it should be bashed.
+    enum { bash_height = 4 };
   
-private:
-  Basher (const Basher&);
-  Basher operator= (const Basher&);
-};
+  private:
+    Basher (const Basher&);
+    Basher operator= (const Basher&);
+  };
+
+}
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: pingu_action_factory.hxx,v 1.4 2002/08/23 15:49:49 torangan Exp $
+//  $Id: pingu_action_factory.hxx,v 1.5 2002/08/25 09:08:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ private:
   /** This vector saves all allocated actions to delete them at a later point */
   std::vector<PinguAction*> all_actions;
 
-  std::map<ActionName, PinguActionAbstractFactory*> factories;
+  std::map<Actions::ActionName, PinguActionAbstractFactory*> factories;
   static PinguActionFactory* instance_;
   
   PinguActionFactory ();
@@ -40,7 +40,7 @@ private:
   
 public:
   static PinguActionFactory* instance ();
-  void register_factory (ActionName id, PinguActionAbstractFactory*);
+  void register_factory (Actions::ActionName id, PinguActionAbstractFactory*);
 
   /** Delete all actions which this class has allocated. This needs to
       be called seperatly from the constructor, due to the used
@@ -48,7 +48,7 @@ public:
   void delete_actions ();
 
   /** Allocate the given action */
-  PinguAction* create (ActionName id);
+  PinguAction* create (Actions::ActionName id);
   
 private:
   PinguActionFactory (const PinguActionFactory&);
@@ -58,7 +58,7 @@ private:
 class PinguActionAbstractFactory
 {
 public:
-  PinguActionAbstractFactory (ActionName id) {
+  PinguActionAbstractFactory (Actions::ActionName id) {
     PinguActionFactory::instance ()-> register_factory (id, this);
   }
   
@@ -73,7 +73,7 @@ template<class T>
 class PinguActionFactoryImpl : public PinguActionAbstractFactory
 {
 public:
-  PinguActionFactoryImpl (ActionName id)
+  PinguActionFactoryImpl (Actions::ActionName id)
     : PinguActionAbstractFactory (id)
   {
   }

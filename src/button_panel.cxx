@@ -1,4 +1,4 @@
-//  $Id: button_panel.cxx,v 1.11 2002/08/17 17:56:23 torangan Exp $
+//  $Id: button_panel.cxx,v 1.12 2002/08/25 09:08:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,7 @@
 #include "world.hxx"
 #include "plf.hxx"
 
-using namespace Pingus::Actions;
+using namespace Actions;
 
 CL_Surface ButtonPanel::button_cap;
 

@@ -1,4 +1,4 @@
-//  $Id: pingu_enums.hxx,v 1.6 2002/08/23 15:49:49 torangan Exp $
+//  $Id: pingu_enums.hxx,v 1.7 2002/08/25 09:08:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,45 +27,42 @@
     good idea. Maybe that should be changed to a bitmask. */
 enum PinguStatus { PS_ALIVE, PS_EXITED, PS_DEAD };
 
-///
 enum PingusGameMode { 
   INTERACTIVE_MODE,
   DEMO_MODE 
 };
 
-namespace Pingus {
-
-  namespace Actions {
+namespace Actions {
     
-     enum ActionName { Angel,
-                       Basher,
-                       Blocker,
-                       Boarder,
-                       Bomber,
-                       Bridger,
-                       Climber,
-                       Digger,
-                       Drown,
-                       Exiter,
-                       Faller,
-                       Floater,
-                       Jumper,
-                       Laserkill,
-                       Miner,
-                       Rocketlauncher,
-                       Slider,
-                       Smashed,
-                       Splashed,
-                       Superman,
-                       Teleported,
-                       Waiter,
-                       Walker
-                  };
+  enum ActionName { Angel,
+                    Basher,
+                    Blocker,
+                    Boarder,
+                    Bomber,
+                    Bridger,
+                    Climber,
+                    Digger,
+                    Drown,
+                    Exiter,
+                    Faller,
+                    Floater,
+                    Jumper,
+                    Laserkill,
+                    Miner,
+                    Rocketlauncher,
+                    Slider,
+                    Smashed,
+                    Splashed,
+                    Superman,
+                    Teleported,
+                    Waiter,
+                    Walker
+               };
      
-     std::string action_to_string (ActionName action);
-     ActionName  action_from_string (const std::string& action);
-   }
+  std::string action_to_string (ActionName action);
+  ActionName  action_from_string (const std::string& action);
 }
+
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: string_converter.hxx,v 1.5 2002/08/23 15:49:51 torangan Exp $
+//  $Id: string_converter.hxx,v 1.6 2002/08/25 09:08:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,17 +37,16 @@
 class CL_Vector;
 
 template <class T>
-std::string to_string(const T& any)
+std::string to_string (const T& any)
 {
 #ifdef HAVE_SSTREAM
   std::ostringstream oss;
+  oss << any ;
 #else
   std::ostrstream oss;
-#endif
-  oss << any;
-  return oss.str();
   oss << any << std::ends;
-  oss.str();
+#endif
+  return oss.str();
 }
 
 

@@ -1,4 +1,4 @@
-//  $Id: laser_kill.hxx,v 1.5 2002/08/23 15:49:53 torangan Exp $
+//  $Id: laser_kill.hxx,v 1.6 2002/08/25 09:08:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,25 +23,28 @@
 #include "../sprite.hxx"
 #include "../pingu_action.hxx"
 
-///
-class LaserKill : public PinguAction
-{
-private:
-  Sprite sprite;
-public:
-  ///
-  LaserKill ();
-  std::string get_name () const { return "LaserKill"; }
-  Pingus::Actions::ActionName get_type () const { return Pingus::Actions::Laserkill; }
-  void init (void);
-  void update (float delta);
-  void draw_offset (int x, int y, float s);
-  bool catchable () { return false; }
+namespace Actions {
+
+  class LaserKill : public PinguAction
+  {
+  private:
+    Sprite sprite;
   
-private:
-  LaserKill (const LaserKill&);
-  LaserKill operator= (const LaserKill&);
-};
+  public:
+    LaserKill ();
+    std::string get_name () const { return "LaserKill"; }
+    ActionName get_type () const { return Actions::Laserkill; }
+    void init (void);
+    void update (float delta);
+    void draw_offset (int x, int y, float s);
+    bool catchable () { return false; }
+  
+  private:
+    LaserKill (const LaserKill&);
+    LaserKill operator= (const LaserKill&);
+  };
+
+}
 
 #endif
 

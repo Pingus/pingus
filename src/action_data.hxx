@@ -1,4 +1,4 @@
-//  $Id: action_data.hxx,v 1.4 2002/06/29 14:01:32 grumbel Exp $
+//  $Id: action_data.hxx,v 1.5 2002/08/25 09:08:48 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,10 +27,10 @@ class ActionData
 {
 public:
   ActionData() {}
-  ActionData(Pingus::Actions::ActionName name_, int i) : name(name_), number_of(i)
+  ActionData(Actions::ActionName name_, int i) : name(name_), number_of(i)
   {}
 
-  Pingus::Actions::ActionName   name;
+  Actions::ActionName   name;
   int number_of;
 };
 
