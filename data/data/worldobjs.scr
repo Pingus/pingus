@@ -8,5 +8,6 @@ iceblock_cmap = images/worldobjs/iceblock_cmap.png (type=surface, x=0, y=0, widt
 conveyorbelt_left   = images/worldobjs/conveyorbelt_left.png   (type=surface, x=0, y=0, width=15, height=14, array=3x1);
 conveyorbelt_middle = images/worldobjs/conveyorbelt_middle.png (type=surface, x=0, y=0, width=15, height=14, array=3x1);
 conveyorbelt_right  = images/worldobjs/conveyorbelt_right.png  (type=surface, x=0, y=0, width=15, height=14, array=3x1);
+conveyorbelt_cmap  = images/worldobjs/conveyorbelt_cmap.png  (type=surface, x=0, y=0, width=15, height=14);
 
 // EOF //

@@ -575,18 +575,24 @@
   </position>
 </trap>
 
-<trap>
-  <type>teleport</type>
-  <position>
-    <x-pos>700</x-pos>
-    <y-pos>360</y-pos>
-    <z-pos>100</z-pos>
-  </position>
-</trap>
+  <worldobj type="teleporter">
+    <position>
+      <x-pos>700</x-pos>
+      <y-pos>360</y-pos>
+      <z-pos>100</z-pos>
+    </position>
+    <target>
+    <position>
+      <x-pos>0</x-pos>
+      <y-pos>0</y-pos>
+      <z-pos>0</z-pos>
+    </position>
+    </target>
+  </worldobj>
 
   <start-position>
-  <position>
-    <x-pos>351</x-pos>
+    <position>
+      <x-pos>351</x-pos>
     <y-pos>153</y-pos>
     <z-pos>1000</z-pos>
   </position>
