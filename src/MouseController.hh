@@ -1,4 +1,4 @@
-//  $Id: MouseController.hh,v 1.1 2001/04/12 19:51:41 grumbel Exp $
+//  $Id: MouseController.hh,v 1.2 2001/04/12 20:52:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,6 +53,9 @@ public:
 
   bool next_action () { return false; }
   bool previous_action () { return false; }  
+
+  bool scroll_left() { return false; }
+  bool scroll_right() { return false; }
 };
 
 #endif

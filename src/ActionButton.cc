@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.15 2001/04/12 19:47:08 grumbel Exp $
+//  $Id: ActionButton.cc,v 1.16 2001/04/12 20:52:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,8 +56,8 @@ EventButton::draw()
 bool
 EventButton::mouse_over(const CL_Vector& pos)
 {
-  if (CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + int(surface.get_width())
-      && CL_Mouse::get_y() > y_pos && CL_Mouse::get_y() < y_pos + int(surface.get_height()))
+  if (pos.x > x_pos && pos.x < x_pos + int(surface.get_width())
+      && pos.y > y_pos && pos.y < y_pos + int(surface.get_height()))
     {
       return true;
     }
@@ -143,8 +143,8 @@ HorizontalActionButton::~HorizontalActionButton() {}
 bool
 HorizontalActionButton::mouse_over(const CL_Vector& pos)
 {
-  if (CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() <= x_pos + 37
-      && CL_Mouse::get_y() > y_pos && CL_Mouse::get_y() < y_pos + 55) 
+  if (pos.x > x_pos && pos.x <= x_pos + 37
+      && pos.y > y_pos && pos.y < y_pos + 55) 
     {
       return true;
     } 
@@ -204,8 +204,8 @@ VerticalActionButton::~VerticalActionButton() {}
 bool
 VerticalActionButton::mouse_over(const CL_Vector& pos)
 {
-  if (CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + 60
-      && CL_Mouse::get_y() > y_pos && CL_Mouse::get_y() <= y_pos + 35) 
+  if (pos.x > x_pos && pos.x < x_pos + 60
+      && pos.y > y_pos && pos.y <= y_pos + 35) 
     {
       return true;
     } 
@@ -286,8 +286,8 @@ ArmageddonButton::draw()
 bool
 ArmageddonButton::mouse_over(const CL_Vector& pos)
 {
-  if (CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + int(surface.get_width())
-      && CL_Mouse::get_y() > y_pos && CL_Mouse::get_y() < y_pos + int(surface.get_height()))
+  if (pos.x > x_pos && pos.x < x_pos + int(surface.get_width())
+      && pos.y > y_pos && pos.y < y_pos + int(surface.get_height()))
     {
       return true;
     } else  {
@@ -320,8 +320,8 @@ ForwardButton::draw()
 bool
 ForwardButton::mouse_over(const CL_Vector& pos)
 {
-  if (CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + int(surface.get_width())
-      && CL_Mouse::get_y() > y_pos && CL_Mouse::get_y() < y_pos + int(surface.get_height()))
+  if (pos.x > x_pos && pos.x < x_pos + int(surface.get_width())
+      && pos.y > y_pos && pos.y < y_pos + int(surface.get_height()))
     {
       return true;
     } else  {
@@ -353,8 +353,8 @@ PauseButton::draw()
 bool
 PauseButton::mouse_over(const CL_Vector& pos)
 {
-  if (CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + int(surface.get_width())
-      && CL_Mouse::get_y() > y_pos && CL_Mouse::get_y() < y_pos + int(surface.get_height()))
+  if (pos.x > x_pos && pos.x < x_pos + int(surface.get_width())
+      && pos.y > y_pos && pos.y < y_pos + int(surface.get_height()))
     {
       return true;
     } else  {

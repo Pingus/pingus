@@ -1,4 +1,4 @@
-//  $Id: GamepadController.hh,v 1.1 2001/04/12 19:51:41 grumbel Exp $
+//  $Id: GamepadController.hh,v 1.2 2001/04/12 20:52:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,7 @@ private:
   CL_InputAxis* y_axis;
   CL_Vector pos;
   DeltaManager delta;
+  float acceleration;
 
 public:
   GamepadController (int arg_owner_id, CL_InputDevice*);
@@ -46,7 +47,7 @@ public:
 
   /** Limit the range to the given area, might be used in multiplayer
       modes to limit the cursor to the players view */
-  void set_range (int x1, int y1, int x2, int y2) =0;
+  void set_range (int x1, int y1, int x2, int y2);
   
   /// @return true when the left mouse button is pressed
   bool left_pressed ();
@@ -64,6 +65,9 @@ public:
 
   bool pause_pressed ();
   
+  bool scroll_left ();
+  bool scroll_right ();
+
   void keep_alive ();
 };
 

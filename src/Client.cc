@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.43 2001/04/12 19:47:09 grumbel Exp $
+//  $Id: Client.cc,v 1.44 2001/04/12 20:52:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,9 +35,10 @@
 #include "OptionMenu.hh"
 #include "PLFPLF.hh"
 #include "XMLPLF.hh"
-#include "MouseController.hh"
 #include "DeltaManager.hh"
 #include "Cursor.hh"
+#include "MouseController.hh"
+#include "GamepadController.hh"
 
 using boost::shared_ptr;
 
@@ -58,7 +59,10 @@ Client::Client(Server* s)
   skip_frame = 0;
   do_replay = false;
   is_finished = false;
-  controller = shared_ptr<Controller>(new MouseController ());
+  if (CL_Input::joysticks.size () > 0)
+    controller = shared_ptr<Controller>(new GamepadController (0, CL_Input::joysticks[0]));
+  else
+    controller = shared_ptr<Controller>(new MouseController());
   Display::add_flip_screen_hook(new Cursor (controller));
 }
 
@@ -279,6 +283,26 @@ Client::update (float delta)
   // Let the server process a game loop
   server->update(delta);
   send_next_event();
+
+  if (controller->scroll_left ())
+    {
+      playfield->enable_scroll_mode ();
+      playfield->scroll_speed = 50;
+      playfield->view[playfield->current_view]->set_x_offset(playfield->view[playfield->current_view]->get_x_offset() + playfield->scroll_speed);
+      std::cout << "Scrolling left" << playfield->view[playfield->current_view]->get_x_offset() << std::endl;
+    }
+  else
+    playfield->disable_scroll_mode ();
+
+  if (controller->scroll_right ()) 
+    {
+      playfield->scroll_speed = 50;
+      playfield->enable_scroll_mode ();
+      playfield->view[playfield->current_view]->set_x_offset(playfield->view[playfield->current_view]->get_x_offset() + playfield->scroll_speed);
+      std::cout << "Scrolling right: " << playfield->view[playfield->current_view]->get_x_offset() << std::endl;
+    }
+  else
+    playfield->disable_scroll_mode ();
 }
 
 void

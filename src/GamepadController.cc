@@ -1,4 +1,4 @@
-//  $Id: GamepadController.cc,v 1.1 2001/04/12 19:51:41 grumbel Exp $
+//  $Id: GamepadController.cc,v 1.2 2001/04/12 20:52:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,9 +23,10 @@
 GamepadController::GamepadController (int arg_owner_id, CL_InputDevice* arg_device)
   : Controller (arg_owner_id),
     device (arg_device),
-    pos (320, 200)
+    pos (320, 200),
+    acceleration (1.0)
 {
-  x_axis = device->get_axis (0);;
+  x_axis = device->get_axis (0);
   y_axis = device->get_axis (1);
 
   if (!x_axis || !y_axis)
@@ -60,6 +61,7 @@ bool
 GamepadController::left_pressed ()
 {
   CL_InputButton* button = device->get_button (4);
+  std::cout << "Button 4: " << button << std::endl;
   if (button)
     return button->is_pressed ();
   else
@@ -107,6 +109,26 @@ GamepadController::previous_action ()
 }
 
 bool 
+GamepadController::scroll_left ()
+{
+  CL_InputButton* button = device->get_button (7);
+  if (button) 
+    return button->is_pressed ();
+  else
+    return false;
+}
+
+bool 
+GamepadController::scroll_right ()
+{
+  CL_InputButton* button = device->get_button (6);
+    if (button)
+    return button->is_pressed ();
+  else
+    return false;
+}
+
+bool 
 GamepadController::abort_pressed ()
 {
   CL_InputButton* button = device->get_button (8);
@@ -116,11 +138,21 @@ GamepadController::abort_pressed ()
     return false;
 }
 
+bool 
+GamepadController::pause_pressed ()
+{
+  CL_InputButton* button = device->get_button (7);
+  if (button)
+    return button->is_pressed ();
+  else
+    return false;  
+}
+
 void 
 GamepadController::keep_alive ()
 {
   float cdelta = delta.getset ();
-  pos += CL_Vector(x_axis->get_pos (), y_axis->get_pos ()) * cdelta * 1000;
+  pos += CL_Vector(x_axis->get_pos (), y_axis->get_pos ()) * cdelta * 200 * acceleration;
   Controller::keep_alive();
 }
 

@@ -1,4 +1,4 @@
-//  $Id: CaptureRectangle.cc,v 1.7 2001/04/10 23:00:43 grumbel Exp $ 
+//  $Id: CaptureRectangle.cc,v 1.8 2001/04/12 20:52:40 grumbel Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -116,9 +116,6 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
 void 
 CaptureRectangle::set_action(shared_ptr<PinguAction> action)
 {
-  /*  if (button_action) 
-    delete button_action;*/
-  
   button_action = action;
 }
 

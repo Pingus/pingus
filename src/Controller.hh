@@ -1,4 +1,4 @@
-//  $Id: Controller.hh,v 1.1 2001/04/12 19:51:41 grumbel Exp $
+//  $Id: Controller.hh,v 1.2 2001/04/12 20:52:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,7 +56,10 @@ public:
   virtual bool abort_pressed () =0;
 
   /** @return true if pause is pressed */
-  bool pause_pressed ();
+  virtual bool pause_pressed () =0;
+
+  virtual bool scroll_left () =0;
+  virtual bool scroll_right () =0;
 
   /// Called once each CL_System::keep_alive () call
   virtual void keep_alive () {}
@@ -66,6 +69,8 @@ public:
   CL_Signal_v1<CL_Vector> signal_right_pressed;
   CL_Signal_v1<CL_Vector> signal_abort_pressed;
   CL_Signal_v1<CL_Vector> signal_pause_pressed;
+  CL_Signal_v1<CL_Vector> signal_scroll_left;
+  CL_Signal_v1<CL_Vector> signal_scroll_right;
 };
 
 #endif
