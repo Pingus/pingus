@@ -1,4 +1,4 @@
-//  $Id: gui_manager.hxx,v 1.7 2002/08/14 12:45:02 torangan Exp $
+//  $Id: gui_manager.hxx,v 1.8 2002/08/17 01:02:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,8 @@ class GameDelta;
 namespace Input
 {
   class Event;
+  class PointerEvent;
+  class ButtonEvent;
 }
 
 namespace GUI
@@ -60,16 +62,15 @@ namespace GUI
     int y_pos;
 
     void process_input (const std::list<Input::Event*>& events);
+    void process_pointer_event (Input::PointerEvent* event);
+    void process_button_event (Input::ButtonEvent* event);
   public:
     GUIManager ();
     virtual ~GUIManager () {}
     
     virtual void draw ();
     virtual void update (const GameDelta& delta);
-    virtual void update (float delta) { if(delta); }
-
-    /** Called once an unhandled event is recieved */
-    virtual void unhandled_event ();
+    virtual void update (float delta) { UNUSED_ARG (delta); }
 
     /** Add a component to the manager, if delete_component is true
 	the component will get deleted on destruction of the manager,
