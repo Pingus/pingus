@@ -1,4 +1,4 @@
-//  $Id: joystick_axis.cxx,v 1.1 2002/07/04 14:03:43 torangan Exp $
+//  $Id: joystick_axis.cxx,v 1.2 2002/07/05 10:06:35 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,8 +24,13 @@
 
 namespace Input
 {
-  JoystickAxis::JoystickAxis(int id_, int axis_, float angle_) : id(id_), axis(axis_), angle(angle_) { }
-
+  JoystickAxis::JoystickAxis(int id_, int axis_, float angle_) : id(id_), axis(axis_), angle(angle_)
+  {
+    if (angle < 0)
+      angle = (angle % 360) + 360;
+    else if (angle > 360)
+      angle = angle % 360;
+  }
 
   float
   JoystickAxis::get_pos ()
