@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.8 2000/02/25 02:35:27 grumbel Exp $
+//  $Id: World.cc,v 1.9 2000/02/27 21:05:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -165,8 +165,7 @@ World::let_move()
   background->let_move();
   
   // Clear the explosion force list
-  if (force_vectors)
-    ForcesHolder::clear_explo_list();
+  ForcesHolder::clear_explo_list();
 }
 
 void 
@@ -274,12 +273,9 @@ World::init_worldobjs()
   stable_sort(world_obj.begin(), world_obj.end(), WorldObj_less());
   
   // Setup the gravity force
-  if (force_vectors)
-    {
-      // Clear all old forces
-      ForcesHolder::clear_all_forces();
-      ForcesHolder::add_force(GravityForce(grav));
-    }
+  // Clear all old forces
+  ForcesHolder::clear_all_forces();
+  ForcesHolder::add_force(GravityForce(grav));
 }
 
 PinguHolder*

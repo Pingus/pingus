@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.6 2000/02/16 03:06:23 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.7 2000/02/27 21:05:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -212,7 +212,6 @@ OptionMenu::init()
   //  add_entry("Music", &music_enabled);
   //  add_entry("Sound", &sound_enabled);
   add_entry("Level Previews", &previews_enabled);
-  add_entry("Force Vectors", &force_vectors);
   add_entry("Horizontal Button Panel", &horizontal_button_panel);
 }
 

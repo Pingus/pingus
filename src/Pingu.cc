@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.7 2000/02/26 03:17:06 grumbel Exp $
+//  $Id: Pingu.cc,v 1.8 2000/02/27 21:05:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -397,12 +397,15 @@ Pingu::let_move(void)
       else
 	{
 	  // Did we stop too fast?
-	  if (((v.x - old_v.x > 15) || (v.x - old_v.x < - 15))
-	      || ((v.y - old_v.y > 15) || (v.y - old_v.y < - 15))) 
+	  if (std::fabs(v.x - old_v.x) > 15)
 	    {
 	      // FIXME: This is a LinuxTag Hack and should be replaced
 	      // with a real ground smashing action! 
 	      set_action(new Smashed);
+	    }
+	  else if (std::fabs(v.y - old_v.y) > 15)
+	    {
+	      cout << "x Smashed on ground, jumping" << endl;
 	    }
 	  
 	  // Reset the velocity

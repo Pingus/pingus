@@ -1,4 +1,4 @@
-//  $Id: globals.hh,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: globals.hh,v 1.4 2000/02/27 21:05:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,6 @@ extern bool   fs_preload;        // --fs-preload
 extern bool   fast_mode;         // --fast
 extern bool   previews_enabled;  // --disable-previews
 extern bool   unlimited_actions; // --enable-uactions
-extern bool   force_vectors;     // Enable the new force vectors?
 extern bool   quick_play;        // -q, --quick_play
 extern bool   maintainer_mode;   // --maintainer-mode
 extern bool   horizontal_button_panel; 

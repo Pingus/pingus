@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.10 2000/02/26 16:16:32 grumbel Exp $
+//   $Id: Pingus.cc,v 1.11 2000/02/27 21:05:06 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -187,7 +187,6 @@ PingusMain::check_args(int argc, char* argv[])
     {"fast",            no_argument,       0, 132},
     {"disable-previews",no_argument,       0, 133}, // FIXME: is the number stuff correct?
     {"maintainer-mode", no_argument,       0, 134},
-    {"enable-forces",   no_argument,       0, 135},
     {"enable-uactions", no_argument,       0, 136},
     {"disable-auto-scrolling",   no_argument,       0, 137},
     {0, 0, 0, 0}
@@ -305,9 +304,6 @@ PingusMain::check_args(int argc, char* argv[])
 	   << "--- Maintainer Mode activated ---" << endl
 	   << "---------------------------------" << std::endl; 
       maintainer_mode = true;
-      break;
-    case 135:
-      force_vectors = true;
       break;
     case 136:
       unlimited_actions = true;

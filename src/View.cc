@@ -1,4 +1,4 @@
-//  $Id: View.cc,v 1.4 2000/02/22 00:09:48 grumbel Exp $
+//  $Id: View.cc,v 1.5 2000/02/27 21:05:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,9 @@ View::View(int x1, int y1, int x2, int y2, float s)
   assert(world);
 
   size = s;
+
+  cout <<  "X1: " << x1 << " X2: " << x2 
+       << " Y1: " << y1 << " Y2: " << y2 << endl;
 
   clip_rect = CL_ClipRect(x1, y1, x2, y2);
 
