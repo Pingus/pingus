@@ -19,7 +19,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/digger-tutorial2-grumbel</levelname>
+        <levelname>tutorial/digger-tutorial2-grumbel</levelname>
       </leveldot>
 
       <leveldot>
@@ -32,19 +32,19 @@
           </position>
 
         </dot>
-        <levelname>playable/floater-tutorial-grumbel</levelname>
+        <levelname>tutorial/floater-tutorial-grumbel</levelname>
       </leveldot>
 
       <leveldot>
         <dot>
           <name>leveldot_3</name>
           <position>
-            <x-pos>293</x-pos>
-            <y-pos>363</y-pos>
+            <x-pos>324</x-pos>
+            <y-pos>357</y-pos>
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow8-grumbel</levelname>
+        <levelname>tutorial/snow8-grumbel</levelname>
       </leveldot>
 
       <leveldot>
@@ -57,7 +57,7 @@
           </position>
 
         </dot>
-        <levelname>playable/basher-tutorial-grumbel</levelname>
+        <levelname>tutorial/basher-tutorial-grumbel</levelname>
       </leveldot>
 
 
@@ -66,12 +66,12 @@
           <name>leveldot_5</name>
           <position>
             <x-pos>520</x-pos>
-            <y-pos>283</y-pos>
+            <y-pos>288</y-pos>
             <z-pos>0</z-pos>
           </position>
 
         </dot>
-        <levelname>playable/snow9-grumbel</levelname>
+        <levelname>tutorial/snow9-grumbel</levelname>
       </leveldot>
 
 
@@ -84,7 +84,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow10-grumbel</levelname>
+        <levelname>tutorial/snow10-grumbel</levelname>
       </leveldot>
 
 
@@ -98,7 +98,7 @@
           </position>
 
         </dot>
-        <levelname>playable/jumper-tutorial-grumbel</levelname>
+        <levelname>tutorial/jumper-tutorial-grumbel</levelname>
       </leveldot>
 
 
@@ -111,7 +111,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/miner-tutorial2-grumbel</levelname>
+        <levelname>tutorial/miner-tutorial2-grumbel</levelname>
       </leveldot>
 
 
@@ -124,7 +124,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow19-grumbel</levelname>
+        <levelname>tutorial/snow19-grumbel</levelname>
       </leveldot>
 
 
@@ -137,7 +137,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/bomber-tutorial2-grumbel</levelname>
+        <levelname>tutorial/bomber-tutorial2-grumbel</levelname>
       </leveldot>
 
 
@@ -150,7 +150,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/placeholder</levelname>
+        <levelname>tutorial/placeholder</levelname>
       </leveldot>
 
 
@@ -163,7 +163,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow14-grumbel</levelname>
+        <levelname>tutorial/snow14-grumbel</levelname>
       </leveldot>
 
 
@@ -176,7 +176,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow21-grumbel</levelname>
+        <levelname>tutorial/snow21-grumbel</levelname>
       </leveldot>
 
 
@@ -189,7 +189,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow15-grumbel</levelname>
+        <levelname>tutorial/snow15-grumbel</levelname>
       </leveldot>
 
 
@@ -197,12 +197,12 @@
         <dot>
           <name>leveldot_15</name>
           <position>
-            <x-pos>626</x-pos>
-            <y-pos>462</y-pos>
+            <x-pos>630</x-pos>
+            <y-pos>467</y-pos>
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow16-grumbel</levelname>
+        <levelname>tutorial/snow16-grumbel</levelname>
       </leveldot>
 
 
@@ -210,12 +210,12 @@
         <dot>
           <name>leveldot_16</name>
           <position>
-            <x-pos>713</x-pos>
-            <y-pos>469</y-pos>
+            <x-pos>718</x-pos>
+            <y-pos>475</y-pos>
             <z-pos>150</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow17-grumbel</levelname>
+        <levelname>tutorial/snow17-grumbel</levelname>
       </leveldot>
 
 
@@ -224,11 +224,11 @@
           <name>leveldot_17</name>
           <position>
             <x-pos>844</x-pos>
-            <y-pos>441</y-pos>
+            <y-pos>445</y-pos>
             <z-pos>150</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow11-grumbel</levelname>
+        <levelname>tutorial/snow11-grumbel</levelname>
       </leveldot>
 
 
@@ -237,11 +237,11 @@
           <name>leveldot_18</name>
           <position>
             <x-pos>954</x-pos>
-            <y-pos>382</y-pos>
+            <y-pos>385</y-pos>
             <z-pos>150</z-pos>
           </position>
         </dot>
-        <levelname>playable/placeholder</levelname>
+        <levelname>tutorial/placeholder</levelname>
       </leveldot>
 
 
@@ -254,7 +254,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/placeholder</levelname>
+        <levelname>tutorial/placeholder</levelname>
       </leveldot>
 
 
@@ -262,12 +262,12 @@
         <dot>
           <name>leveldot_20</name>
           <position>
-            <x-pos>719</x-pos>
+            <x-pos>729</x-pos>
             <y-pos>403</y-pos>
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/placeholder</levelname>
+        <levelname>tutorial/placeholder</levelname>
       </leveldot>
 
 
@@ -280,7 +280,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow12-grumbel</levelname>
+        <levelname>tutorial/snow12-grumbel</levelname>
       </leveldot>
 
     </nodes>
@@ -295,21 +295,69 @@
       <edge name="egde_7" source="leveldot_7" destination="leveldot_8"/>
 
       <edge name="egde_8"  source="leveldot_7" destination="leveldot_8"/>
-      <edge name="egde_9"  source="leveldot_8" destination="leveldot_9"/>
+      <edge name="egde_9"  source="leveldot_8" destination="leveldot_9">
+        <position>
+          <x-pos>768</x-pos>
+          <y-pos>233</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+        <position>
+          <x-pos>810</x-pos>
+          <y-pos>280</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+      </edge>
       <edge name="egde_10" source="leveldot_9" destination="leveldot_10"/>
       <edge name="egde_11" source="leveldot_10" destination="leveldot_11"/>
       <edge name="egde_12" source="leveldot_11" destination="leveldot_12"/>
-      <edge name="egde_13" source="leveldot_12" destination="leveldot_13"/>
+      <edge name="egde_13" source="leveldot_12" destination="leveldot_13">
+        <position>
+          <x-pos>444</x-pos>
+          <y-pos>379</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+      </edge>
+
 
       <edge name="egde_22" source="leveldot_13" destination="leveldot_14"/>
 
-      <edge name="egde_14" source="leveldot_14" destination="leveldot_15"/>
+      <edge name="egde_14" source="leveldot_14" destination="leveldot_15">
+        <position>
+          <x-pos>503</x-pos>
+          <y-pos>470</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+        <position>
+          <x-pos>568</x-pos>
+          <y-pos>471</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+      </edge>
       <edge name="egde_15" source="leveldot_15" destination="leveldot_16"/>
       <edge name="egde_16" source="leveldot_16" destination="leveldot_17"/>
-      <edge name="egde_17" source="leveldot_17" destination="leveldot_18"/>
+      <edge name="egde_17" source="leveldot_17" destination="leveldot_18">
+        <position>
+          <x-pos>905</x-pos>
+          <y-pos>417</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+      </edge>
       <edge name="egde_18" source="leveldot_18" destination="leveldot_19"/>
-      <edge name="egde_19" source="leveldot_15" destination="leveldot_20"/>
-      <edge name="egde_20" source="leveldot_20" destination="leveldot_21"/>
+      <edge name="egde_19" source="leveldot_15" destination="leveldot_20">
+        <position>
+          <x-pos>678</x-pos>
+          <y-pos>449</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+      </edge>
+
+      <edge name="egde_20" source="leveldot_20" destination="leveldot_21">
+        <position>
+          <x-pos>787</x-pos>
+          <y-pos>384</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+      </edge>
       <edge name="egde_21" source="leveldot_21" destination="leveldot_18"/>
     </edges>
   </graph>
@@ -331,6 +379,21 @@
       </position>
     </surface>
 
+    <surface name="background_1">
+      <surface>
+        <resource type="datafile">
+          <resource-datafile>worldmaps</resource-datafile>
+          <resource-ident>tutorial/layer3</resource-ident>
+        </resource>
+      </surface>
+
+      <position>
+        <x-pos>705</x-pos>
+        <y-pos>405</y-pos>
+        <z-pos>100</z-pos>
+      </position>
+    </surface>
+
     
     <surface name="mountain_1">
       <surface>
@@ -341,11 +404,11 @@
       </surface>
 
       <position>
-        <x-pos>309</x-pos>
-        <y-pos>305</y-pos>
+        <x-pos>208</x-pos>
+        <y-pos>306</y-pos>
         <z-pos>100</z-pos>
       </position>
-      <auto-uncover>0</auto-uncover>
+      <auto-uncover>1</auto-uncover>
     </surface>
 
 
@@ -358,8 +421,8 @@
       </surface>
 
       <position>
-        <x-pos>770</x-pos>
-        <y-pos>352</y-pos>
+        <x-pos>788</x-pos>
+        <y-pos>343</y-pos>
         <z-pos>100</z-pos>
       </position>
       
