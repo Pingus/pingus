@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.22 2001/04/20 20:53:55 grumbel Exp $
+//  $Id: basher.cc,v 1.23 2001/06/09 20:37:35 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -39,20 +39,27 @@ Basher::init(void)
   
   sprite = Sprite (PingusResource::load_surface ("Pingus/basher0", "pingus"));
 
-  is_multi_direct = true;
+  sprite.set_align_center_bottom ();
+
   first_bash = true;
 }
 
 void
 Basher::draw_offset(int x, int y, float s)
 {
+  if (pingu->direction.is_left ())
+    sprite.set_direction (Sprite::LEFT);
+  else
+    sprite.set_direction (Sprite::RIGHT);
+
   sprite.put_screen (pingu->get_pos () + CL_Vector(x, y));
 }
 
 void
 Basher::update(float delta)
 {
-  ++counter;
+  sprite.update (delta);
+
   ++basher_c;
   if (basher_c % 3 == 0)
     {
