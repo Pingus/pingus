@@ -42,22 +42,6 @@ if test "x$enable_debug" != "xno"; then
    CXXFLAGS="-g -ggdb -O0 -Wall -Werror"
 fi
 
-AC_ARG_WITH(gettext,
-	[  --without-gettext       disable support for multiple languages])
-
-if test "x$with_gettext" != "xno"; then
-	dnl -- gettext macros --
-	ALL_LINGUAS="cs de da es fi fr it no pt sr sv tr nl"
-
-	dnl AM_WITH_NLS
-	dnl AM_LC_MESSAGES
-        AM_ICONV
-	AM_GNU_GETTEXT
-else
-	echo "Gnu gettext disabled"
-	dnl We probally need a AC_SUBST(@INTLLIBS@) here
-fi
-
 dnl -- Static Libaries --
 AC_PROG_RANLIB
 
@@ -108,10 +92,6 @@ AC_CHECK_FUNCS(select strdup)
 dnl Checking for the install prefix and then use it to define PINGUS_DATADIR
 PINGUS_EXPAND_DIR(pingus_datadir, "$datadir/games/$PACKAGE")
 AC_DEFINE_UNQUOTED(PINGUS_DATADIR, "$pingus_datadir", [Location of Pingus data files])
-
-dnl -- Define the localedir, needed for gettext --
-PINGUS_EXPAND_DIR(localedir, "$datadir/locale")
-AC_DEFINE_UNQUOTED(LOCALEDIR, "$localedir", [Location of gettext files])
 
 AC_SUBST(PINGUS_CFLAGS)
 AC_SUBST(PINGUS_LIBS)
