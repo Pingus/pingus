@@ -1,0 +1,9 @@
+OBJECTS = plf2xml.o ../PingusResource.o ../PLF.o ../PLFParser.o ../PSMParser.o ../PingusError.o ../ResDescriptor.o ../*_data.o ../globals.o ../algo.o ../System.o
+LIBS    = -lclanCore
+
+plf2xml : $(OBJECTS)
+	g++ -o  $@ $(OBJECTS) $(LIBS)
+
+plf2xml.o : plf2xml.cc
+
+# EOF #
