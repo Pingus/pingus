@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.18 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.19 2002/09/16 20:52:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,8 +22,6 @@
 #include "pingus_error.hxx"
 
 // Backgrounds
-#include "backgrounds/surface_background_data.hxx"
-#include "backgrounds/starfield_background.hxx"
 #include "backgrounds/thunderstorm_background_data.hxx"
 
 // Special Objects
@@ -44,6 +42,8 @@
 #include "worldobjsdata/smasher_data.hxx"
 #include "worldobjsdata/solid_color_background_data.hxx"
 #include "worldobjsdata/spike_data.hxx"
+#include "worldobjsdata/starfield_background_data.hxx"
+#include "worldobjsdata/surface_background_data.hxx"
 #include "worldobjsdata/switch_door_data.hxx"
 #include "worldobjsdata/teleporter_data.hxx"
 #include "worldobjsdata/rain_generator_data.hxx"

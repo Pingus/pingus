@@ -31,6 +31,8 @@ libpingus_worldobjsdata_a_SOURCES = \
 	smasher_data.cxx                smasher_data.hxx \
 	solid_color_background_data.cxx solid_color_background_data.hxx \
 	spike_data.cxx                  spike_data.hxx  \
+	starfield_background_data.cxx   starfield_background_data.hxx \
+	surface_background_data.cxx	surface_background_data.hxx \
 	switch_door_data.cxx            switch_door_data.hxx \
 	teleporter_data.cxx             teleporter_data.hxx \
         worldobj_group_data.hxx         worldobj_group_data.cxx \

@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.21 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: object_selector.cxx,v 1.22 2002/09/16 20:52:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,11 +39,11 @@
 #include "../path_manager.hxx"
 #include "../editor_hotspot.hxx"
 
-#include "../backgrounds/starfield_background.hxx"
-#include "../backgrounds/surface_background_data.hxx"
 #include "../backgrounds/thunderstorm_background.hxx"
 
 #include "../worldobjsdata/solid_color_background_data.hxx"
+#include "../worldobjsdata/starfield_background_data.hxx"
+#include "../worldobjsdata/surface_background_data.hxx"
 
 #include "../editorobjs/bumper_obj.hxx"
 #include "../editorobjs/conveyor_belt_obj.hxx"

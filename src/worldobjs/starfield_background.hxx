@@ -1,7 +1,7 @@
-//  $Id: groundpiece.hxx,v 1.3 2002/09/16 20:52:22 torangan Exp $
+//  $Id: starfield_background.hxx,v 1.1 2002/09/16 20:52:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -17,34 +17,38 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_GROUNDPIECE_HXX
-#define HEADER_GROUNDPIECE_HXX
+#ifndef HEADER_PINGUS_WORLDOJBS_STARFIELD_BACKGROUND_HXX
+#define HEADER_PINGUS_WORLDOBJS_STARFIELD_BACKGROUND_HXX
 
 #include "../worldobj.hxx"
-#include "../worldobjsdata/groundpiece_data.hxx"
+
+namespace WorldObjsData {
+class StarfieldBackgroundData;
+}
 
 namespace WorldObjs {
 
-/** Groundpieces form the ground on which the pingus can walk, which
-    they can dig and which they can detonate away */
-class Groundpiece : public WorldObj
+class StarfieldBackgroundStars;
+
+class StarfieldBackground : public WorldObj
 {
 private:
-  WorldObjsData::GroundpieceData data;
-  CL_Surface surface;
+  WorldObjsData::StarfieldBackgroundData* const data;
+  std::vector<StarfieldBackgroundStars*>        stars;
 
 public:
-  Groundpiece(const WorldObjsData::GroundpieceData& data_);
-  ~Groundpiece() {};
+  StarfieldBackground (WorldObjsData::StarfieldBackgroundData* data_);
+ ~StarfieldBackground ();
 
-  float get_z_pos () const { return 0; }
+  // FIXME: Make z_pos handling editable via xml
+  float get_z_pos() const { return -10; }
 
-  void draw(GraphicContext&) {}
-  void on_startup();
-  bool purge_after_startup() { return true; }
+  void update (float delta);
+  void draw_offset (int x_of, int y_of, float s = 1.0);
+  
 private:
-  Groundpiece (const Groundpiece&);
-  Groundpiece operator= (const Groundpiece&);
+  StarfieldBackground (const StarfieldBackground&);
+  StarfieldBackground operator= (const StarfieldBackground&);
 };
 
 } // namespace WorldObjs

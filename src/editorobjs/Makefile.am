@@ -30,9 +30,11 @@ libpingus_editorobjs_a_SOURCES = \
 	smasher_obj.cxx                smasher_obj.hxx \
 	solid_color_background_obj.cxx solid_color_background_obj.hxx \
 	spike_obj.cxx                  spike_obj.hxx \
+	starfield_background_obj.cxx   starfield_background_obj.hxx \
+	surface_background_obj.cxx     surface_background_obj.hxx \
 	switch_door_obj.cxx            switch_door_obj.hxx \
+        switch_door_switch_obj.cxx     switch_door_switch_obj.hxx \
 	teleporter_obj.cxx             teleporter_obj.hxx \
-	teleporter_target_obj.cxx      teleporter_target_obj.cxx \
-        switch_door_switch_obj.cxx     switch_door_switch_obj.hxx
+	teleporter_target_obj.cxx      teleporter_target_obj.cxx 
 
 # EOF #

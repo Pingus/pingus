@@ -1,4 +1,4 @@
-//  $Id: plt_xml.hxx,v 1.5 2002/09/06 17:33:29 torangan Exp $
+//  $Id: plt_xml.hxx,v 1.6 2002/09/16 20:52:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,9 @@
 #define HEADER_PINGUS_PLT_XML_HXX
 
 #include <map>
-#include "backgrounds/surface_background_data.hxx"
+#include "worldobjsdata/surface_background_data.hxx"
+
+using WorldObjsData::SurfaceBackgroundData;
 
 class PLTXML
 {

@@ -1,4 +1,4 @@
-//  $Id: worldobj_group_data.cxx,v 1.3 2002/09/15 21:49:58 grumbel Exp $
+//  $Id: worldobj_group_data.cxx,v 1.4 2002/09/16 20:52:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,8 @@ WorldObjGroupData::WorldObjGroupData (xmlDocPtr doc, xmlNodePtr cur)
 }
 
 WorldObjGroupData::WorldObjGroupData (const WorldObjGroupData& data)
-  : objs (data.objs)
+  : WorldObjData(data),
+    objs (data.objs)
 {
   // FIXME: no deep copy
   std::cout << "WorldObjGroupData::WorldObjGroupData (const WorldObjGroupData&): fixme no deep copy" << std::endl;

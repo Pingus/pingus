@@ -1,4 +1,4 @@
-//  $Id: solid_color_background_obj.cxx,v 1.1 2002/09/15 09:54:34 torangan Exp $
+//  $Id: solid_color_background_obj.cxx,v 1.2 2002/09/16 20:52:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,9 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ostream>
 #include "../string_converter.hxx"
-#include "../xml_helper.hxx"
 #include "../editor/editor_view.hxx"
 #include "../worldobjsdata/solid_color_background_data.hxx"
 #include "solid_color_background_obj.hxx"

@@ -18,9 +18,6 @@
 noinst_LIBRARIES = libpingus_backgrounds.a
 
 libpingus_backgrounds_a_SOURCES = thunderstorm_background.cxx     thunderstorm_background.hxx     \
-                                  thunderstorm_background_data.cxx thunderstorm_background_data.hxx \
-                                  surface_background.cxx          surface_background.hxx          \
-                                  surface_background_data.cxx      surface_background_data.hxx      \
-                                  starfield_background.cxx        starfield_background.hxx 
+                                  thunderstorm_background_data.cxx thunderstorm_background_data.hxx
 
 # EOF #

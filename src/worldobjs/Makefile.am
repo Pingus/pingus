@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.11 2002/09/16 19:18:56 grumbel Exp $
+#  $Id: Makefile.am,v 1.12 2002/09/16 20:52:22 torangan Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,22 +20,25 @@
 noinst_LIBRARIES = libpingus_worldobjs.a
 
 libpingus_worldobjs_a_SOURCES = \
-	bumper.cxx                 bumper.hxx        \
-        conveyor_belt.cxx          conveyor_belt.hxx \
-	fake_exit.cxx              fake_exit.hxx     \
-	guillotine.cxx             guillotine.hxx    \
-        groundpiece.hxx            groundpiece.cxx   \
-	hammer.cxx                 hammer.hxx        \
-        ice_block.cxx              ice_block.hxx     \
-        info_box.cxx               info_box.hxx      \
-	laser_exit.cxx             laser_exit.hxx    \
-	smasher.cxx                smasher.hxx       \
-	solid_color_background.cxx solid_color_background.hxx \
-	spike.cxx                  spike.hxx         \
-        switch_door.cxx            switch_door.hxx   \
-        teleporter.cxx             teleporter.hxx    \
-        worldobj_group.hxx         worldobj_group.cxx \
-        rain_generator.hxx         rain_generator.cxx \
-        snow_generator.hxx         snow_generator.cxx
+	bumper.cxx                     bumper.hxx        \
+        conveyor_belt.cxx              conveyor_belt.hxx \
+	fake_exit.cxx                  fake_exit.hxx     \
+	guillotine.cxx                 guillotine.hxx    \
+        groundpiece.hxx                groundpiece.cxx   \
+	hammer.cxx                     hammer.hxx        \
+        ice_block.cxx                  ice_block.hxx     \
+        info_box.cxx                   info_box.hxx      \
+	laser_exit.cxx                 laser_exit.hxx    \
+	smasher.cxx                    smasher.hxx       \
+	solid_color_background.cxx     solid_color_background.hxx \
+	spike.cxx                      spike.hxx         \
+	starfield_background.cxx       starfield_background.hxx \
+	starfield_background_stars.cxx starfield_background_stars.hxx \
+	surface_background.cxx	       surface_background.hxx \
+        switch_door.cxx                switch_door.hxx   \
+        teleporter.cxx                 teleporter.hxx    \
+        worldobj_group.hxx             worldobj_group.cxx\
+        rain_generator.hxx             rain_generator.cxx \
+        snow_generator.hxx             snow_generator.cxx 
 
 ## EOF ##
