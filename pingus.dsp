@@ -1154,22 +1154,6 @@ SOURCE=.\src\multiline_text.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\multiplayer_client.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\multiplayer_client_child.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\multiplayer_config.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\multiplayer_game.cxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\music_provider.cxx
 # End Source File
 # Begin Source File
