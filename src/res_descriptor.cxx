@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.cxx,v 1.3 2002/06/25 21:31:40 grumbel Exp $
+//  $Id: res_descriptor.cxx,v 1.4 2002/06/26 09:29:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,11 +22,14 @@
 #include "res_descriptor.hxx"
 #include "pingus_error.hxx"
 
+using namespace Pingus;
+
 ResDescriptor::ResDescriptor()
 {
   type = RD_RESOURCE;
   res_name = "";
   datafile = "global";
+  modifier = ROT0;
 }
 
 ResDescriptor::ResDescriptor(const ResDescriptor& res_desc)
@@ -34,7 +37,7 @@ ResDescriptor::ResDescriptor(const ResDescriptor& res_desc)
   type     = res_desc.type;
   datafile = res_desc.datafile;
   res_name = res_desc.res_name;
-  modifier = Pingus::ROT0;
+  modifier = res_desc.modifier;
 }
 
 ResDescriptor::ResDescriptor(const std::string& arg_res_name,

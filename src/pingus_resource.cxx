@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.10 2002/06/25 21:31:40 grumbel Exp $
+//  $Id: pingus_resource.cxx,v 1.11 2002/06/26 09:29:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -123,46 +123,13 @@ PingusResource::load_surface(const std::string& res_name,
 CL_Surface
 PingusResource::load_surface(const ResDescriptor& res_desc)
 {
-  pout(PINGUS_DEBUG_LOADING) << "PingusResource: Loading surface: " << res_desc << std::endl;
+  pout(PINGUS_DEBUG_RESOURCES) << "PingusResource: Loading surface: " << res_desc << std::endl;
 
   CL_Surface surf(surface_map[res_desc]);
+
+  std::cout << "Desc.Modifier: " << rs_to_string(res_desc.modifier) << std::endl;
   
-  if (surf) 
-    {
-      // FIXME: buggy... and in the wrong place
-      switch (res_desc.modifier)
-	{
-	  // FIXME: muahhhaa... I write slower code than you....
-	case ROT0:
-	  return surf;
-      
-	case ROT90:
-	  return Blitter::rotate_90(surf);
-
-	case ROT180:
-	  return Blitter::rotate_90(Blitter::rotate_90(surf));
-
-	case ROT270:
-	  return Blitter::rotate_90(Blitter::rotate_90(Blitter::rotate_90(surf)));
-
-	case ROT0FLIP:
-	  return Blitter::flip_horizontal(Blitter::rotate_90(surf));
-
-	case ROT90FLIP:
-	  return Blitter::flip_horizontal(Blitter::rotate_90(surf));
-
-	case ROT180FLIP:
-	  return Blitter::flip_horizontal(Blitter::rotate_90(Blitter::rotate_90(surf)));
-
-	case ROT270FLIP:
-	  return Blitter::flip_horizontal(Blitter::rotate_90(Blitter::rotate_90(Blitter::rotate_90(surf))));
-
-	default:
-	  std::cout << "PingusResource: Unhandled modifier: " << res_desc.modifier << std::endl;
-	  return surf;
-	}
-    }
-  else
+  if (!surf)
     {
       //std::cout << "PingusResource: Loading resource: " << res_desc.type << ":" 
       //<< res_desc.datafile << " - " << res_desc.res_name << std::endl;
@@ -185,7 +152,7 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
 	    }
 	  }
 	  surface_map[res_desc] = surf;
-	  return surf;
+	  break;
 	  
 	case ResDescriptor::RD_FILE:
 	  {
@@ -196,7 +163,7 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
 	    surf = CL_Surface(new CL_PNGProvider(filename, NULL), false);
 	    pout << "DONE" << std::endl;
 	    surface_map[res_desc] = surf;
-	    return surf;
+	    break;
 	  }
 	  
 	case ResDescriptor::RD_AUTO:
@@ -206,8 +173,41 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
 	default:
 	  perr << "PingusResource: Unknown ResDescriptor::type: " << res_desc.type  << std::endl;
 	  assert (false);
-	  return CL_Surface();
+	  surf = CL_Surface();
+	  break;
 	}
+    }
+  
+  switch (res_desc.modifier)
+    {
+      // FIXME: muahhhaa... I write slower code than you....
+    case ROT0:
+      return surf;
+      
+    case ROT90:
+      return Blitter::rotate_90(surf);
+
+    case ROT180:
+      return Blitter::rotate_90(Blitter::rotate_90(surf));
+
+    case ROT270:
+      return Blitter::rotate_90(Blitter::rotate_90(Blitter::rotate_90(surf)));
+
+    case ROT0FLIP:
+      return Blitter::flip_horizontal(surf);
+
+    case ROT90FLIP:
+      return Blitter::flip_horizontal(Blitter::rotate_90(surf));
+
+    case ROT180FLIP:
+      return Blitter::flip_horizontal(Blitter::rotate_90(Blitter::rotate_90(surf)));
+
+    case ROT270FLIP:
+      return Blitter::flip_horizontal(Blitter::rotate_90(Blitter::rotate_90(Blitter::rotate_90(surf))));
+
+    default:
+      std::cout << "PingusResource: Unhandled modifier: " << res_desc.modifier << std::endl;
+      return surf;
     }
 }
 
@@ -264,7 +264,7 @@ PingusResource::load_font(const ResDescriptor& res_desc)
 void
 PingusResource::cleanup ()
 {
-  pout(PINGUS_DEBUG_RESOURCES) << "XXXX PingusResource::cleanup ()" << std::endl;
+  pout(PINGUS_DEBUG_RESOURCES) << "PingusResource::cleanup ()" << std::endl;
   
   for (std::map<ResDescriptor, CL_Surface>::iterator i = surface_map.begin ();
        i != surface_map.end (); ++i)

@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.10 2002/06/25 21:31:40 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.11 2002/06/26 09:29:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -96,6 +96,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	    { // rotate 90 clockwise
 	      editor_rotate_90_current_selection ();
 	    }
+	  break;
 
 	case CL_KEY_H: // horizontal flip
 	  editor_horizontal_flip_current_selection ();

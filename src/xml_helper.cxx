@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.4 2002/06/25 12:20:31 grumbel Exp $
+//  $Id: xml_helper.cxx,v 1.5 2002/06/26 09:29:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,11 +22,14 @@
 #include "xml_helper.hxx"
 #include "color.hxx"
 #include "res_descriptor.hxx"
+#include "resource_modifier.hxx"
 
 // Hack: if xmlIsBlankNode() is not present, we define an empty dummy
 #ifdef NO_XMLISBLANKNODE
 int xmlIsBlankNode(xmlNodePtr node) { return 0; }
 #endif
+
+using namespace Pingus;
 
 std::string
 XMLhelper::encode_entities(const std::string& arg_str)
@@ -188,6 +191,17 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 			  free(filename);
 			}       
 		    }
+		  else if (strcmp((char*) ccur->name, "modifier") == 0)
+		    {
+		      char* ident = (char*)xmlNodeListGetString(doc, ccur->children, 1);
+		      if (ident) 
+			{
+			  std::cout << "Seen: modifier: " << ident << std::endl;
+
+			  desc.modifier = rs_from_string(ident);
+			  free(ident);
+			}
+		    }
 		  else
 		    {
 		      std::cout << __FILE__ ":"
@@ -226,6 +240,22 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 			  desc.res_name = ident;
 			  free(ident);		  
 			}
+		    }
+		  else if (strcmp((char*)ccur->name, "modifier") == 0)
+		    {
+		      std::cout << "Modifier!!!!!" << std::endl;
+		      char* ident = (char*)xmlNodeListGetString(doc, ccur->children, 1);
+		      if (ident) 
+			{
+			  std::cout << "Seen: modifier: " << ident << std::endl;
+		      
+			  desc.modifier = rs_from_string(ident);
+			  free(ident);
+			}
+		    }
+		  else
+		    {
+		      std::cout << "XMLHelper:parse_surface: unhandled " << ccur->name << std::endl;
 		    }
 		  ccur = ccur->next;
 		}
@@ -290,7 +320,8 @@ XMLhelper::write_desc_xml(std::ostream& xml, ResDescriptor desc)
       std::cout << "EditorObj::save_desc_xml(): Unhandled resource type" << std::endl;
       break;
     }
-  
+
+  xml << "    <modifier>" << rs_to_string(desc.modifier) << "</modifier>" << std::endl;
   xml << "  </resource></surface>" << std::endl;
 }
 
