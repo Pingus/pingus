@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.hh,v 1.4 2000/12/16 23:11:22 grumbel Exp $
+//  $Id: SurfaceBackgroundData.hh,v 1.5 2001/01/17 22:02:15 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef SURFACEBACKGROUNDDATA_HH
 #define SURFACEBACKGROUNDDATA_HH
 
+#include "../boost/smart_ptr.hpp"
 #include "BackgroundData.hh"
 
 class SurfaceBackground;

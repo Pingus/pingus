@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.hh,v 1.11 2000/12/30 23:54:05 grumbel Exp $
+//  $Id: ActionHolder.hh,v 1.12 2001/01/17 22:02:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,49 +30,88 @@
 ///
 class PinguAction;
 
+/**
+ * The ActionHolder is the backend of the ButtonPanel. It is responsible for
+ * creating new PinguActions and (if necessary) restricting the number of
+ * actions that can be created.
+ *
+ */
 class ActionHolder
 {
 private:
-  /// A map holding the number of available actions.
+  /** A map holding the number of available actions. 
+   *  For each action <i>name</i> there is a map (<i>name</i>, <i>n</i>)
+   *  where the integer <i>n</i> indicates how much more actions 
+   *  called <i>name</i> can be created.
+   */
   std::map<std::string, int> available_actions;
 
-  // A stack of all the allocated actions, they will be deleted on
-  /// destruction. 
+  /** A stack of all the allocated actions, they will be deleted on
+   *  destruction. 
+   */
   std::vector<boost::shared_ptr<PinguAction> > action_stack;
 
-  /// Returns a newed action coresponding to the given name.
+  /** Returns a newed action coresponding to the given name.
+   */
   static boost::shared_ptr<PinguAction> translate_action(const std::string&);
 
 public:
-  ///
+  /**
+   * Creates a new ActionHolder
+   */
   ActionHolder();
-  ///
+
+  /**
+   * Destroys this ActionHolder
+   */
   ~ActionHolder();
 
-  /// Sets the number of actions, which are available in the pool.
-  void ActionHolder::set_actions(const std::string& name, int available);
+  /** Sets the number of actions, which are available in the pool.
+   * @param name the name of the action
+   * @param available the number of actions available
+   */
+  void set_actions(const std::string& name, int available);
   
-  /// Adds an action to the pool of actions.
-  void ActionHolder::push_action(const std::string& name);
+  /** Adds an action to the pool of actions, making one more action available
+   * @param name the name of the action
+   */
+  void push_action(const std::string& name);
 
-  /// Sets a given number of actions to the pool.
+  /** Sets a given number of actions to the pool.
+   * @deprecated This method does the same as 'set_actions', there is no
+   *  implementation and no-one uses it anyways.
+   */
   void set_action(const std::string& name, int available);
 
-  // Returns the number of actions which are available thru
-  /// get_action() 
+  /** Returns the number of actions of the specified name which are available 
+   *  thru get_action() 
+   * @return 0 if the name is unknown
+   */
   int  get_available(const std::string&);
 
-  // Returns a newly allocated or cached action by a given name. It
-  // returns it from a pool of action, if the actions are out, it
-  /// returns 0. The deletion of the action is handled by this class.  
+  /** Returns a newly allocated or cached action by a given name. It
+   *  returns it from the action pool and decreases the number of available
+   *  actions if necessary. If the actions are out, it returns 0. 
+   *  The deletion of the action is handled by this class.  
+   */
   boost::shared_ptr<PinguAction> get_action(const std::string&);
 
-  // Returns a newly allocated action, an unlimited number of actions
-  // can be returned, so this will never return 0, but it throws an
-  /// exception if the given action name is unknown.
+  /** Returns a newly allocated action by a given name. The action is not 
+   *  taken from the pool, so an unlimited number of actions
+   *  can be returned. In other words, this will never return 0, 
+   *  but it throws an exception if the given action name is unknown.
+   *
+   * @exception PingusError
+   */
   boost::shared_ptr<PinguAction> get_uaction(const std::string&);
 };
 
 #endif
 
 /* EOF */
+
+
+
+
+
+

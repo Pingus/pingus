@@ -1,4 +1,4 @@
-//  $Id: Position.hh,v 1.3 2000/12/04 23:12:12 grumbel Exp $
+//  $Id: Position.hh,v 1.4 2001/01/17 22:02:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,10 +22,32 @@
 
 #include <iostream>
 
+/**
+ * z_position contains aliases for the integers that specify 
+ * the z_position of an object.
+ */
+enum z_position { 
+  background = -100,
+  ground = 0,
+  pingus = 75,
+  foreground = 100}
+
+/**
+ * A Position is a three-dimensional point in the pingu-world. 
+ * The x- and y-positions are measured from the upper-left corner of
+ * the World. The z-position indicates the depth of the object,
+ * where higher z-values are closer to the foreground.
+ */
 class Position
 {
 public:
-  Position(int arg_x_pos = 0, int arg_y_pos = 0, int arg_z_pos = 0) {
+  /**
+   * Creates a new Position
+   * @param arg_x_pos defaults to zero (the left side of the world)
+   * @param arg_y_pos defaults to zero (the upper side of the world)
+   * @param arg_y_pos defaults to zero (the 'ground' level)
+   */
+  Position(int arg_x_pos = 0, int arg_y_pos = 0, int arg_z_pos = ground) {
     x_pos = arg_x_pos;
     y_pos = arg_y_pos;
     z_pos = arg_z_pos;
@@ -40,3 +62,6 @@ ostream& operator<<(ostream& s, const Position& pos);
 #endif
 
 /* EOF */
+
+
+
