@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.31 2000/10/12 19:31:23 grumbel Exp $
+#  $Id: configure.in,v 1.32 2000/10/12 20:18:12 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,10 +58,11 @@ AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_MAKE_SET
 
+dnl -- gettext macros --
 ALL_LINGUAS="de"
 
-AM_WITH_NLS
-AM_LC_MESSAGES
+dnl AM_WITH_NLS
+dnl AM_LC_MESSAGES
 AM_GNU_GETTEXT
 
 dnl -- Static Libaries --
@@ -281,8 +282,10 @@ AC_OUTPUT( Makefile
            data/data/Makefile
            data/demos/Makefile
            data/data/Makefile
-           doc/Makefile
-           )
+           doc/Makefile 
+
+intl/Makefile po/Makefile.in
+)
 
 # ----------------------------------------
 
