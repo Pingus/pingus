@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.3 2000/02/16 03:06:30 grumbel Exp $
+//  $Id: basher.cc,v 1.4 2000/03/01 21:12:44 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -40,40 +40,72 @@ Basher::init(void)
   bash_radius = CL_Surface::load("Other/bash_radius", local_res());
   
   counter.set_size(surface->get_num_frames() / 2);
-  counter.set_type(Counter::loop);
-  counter.set_count(0);
+  counter.set_type(GameCounter::loop);
+  //counter.set_count(0);
   counter.set_speed(1);
 
-  basher_c.set_size(4);
-  basher_c.set_count(0);
+  basher_c.set_size(2);
+  basher_c.set_speed(1);
 
   is_multi_direct = true;
+  first_bash = true;
 }
 
 void
 Basher::let_move()
 {
-  int i;
-   
-  if (++basher_c >= 3) 
+  ++counter;
+  walk_forward();
+
+  if (basher_c++ == 0)
     {
-      pingu->colmap->remove(bash_radius->get_provider(), pingu->x_pos - 16, pingu->y_pos - 32);
-      pingu->map->remove(bash_radius->get_provider(), pingu->x_pos - 16, pingu->y_pos - 32);
-      pingu->x_pos += pingu->direction;
+      if (have_something_to_dig())
+	{
+	  bash();
+	}
+      else
+	{
+	  is_finished = true;
+	}
     }
-  /* Particles are ugly and slow, so this is disabled
-  pingu->particle->add_particle(new GroundParticle(pingu->x_pos,
-						   pingu->y_pos - 16,
-						   frand() * -4 * pingu->direction,
-						   frand() * -3));
-  */
-   i=2;
-   while( is_finished == false && i <= 6 ) {
-     i++;
-     if ( rel_getpixel(i,0) == ColMap::NOTHING ||
-        rel_getpixel(i,0) == ColMap::SOLID )
-       is_finished = true;
-   }
+}
+
+void
+Basher::bash()
+{
+  pingu->colmap->remove(bash_radius->get_provider(), 
+			pingu->x_pos - (bash_radius->get_width()/2), pingu->y_pos - 32);
+  pingu->map->remove(bash_radius->get_provider(), 
+		     pingu->x_pos - (bash_radius->get_width()/2), pingu->y_pos - 32);
+}
+
+void
+Basher::walk_forward()
+{
+  pingu->x_pos += pingu->direction;
+}
+
+bool
+Basher::have_something_to_dig()
+{
+  if (first_bash)
+    {
+      first_bash = false;
+      return true;
+    }
+
+  for(int i = 0; is_finished == false && i < 16; i++)
+    {
+      cout << rel_getpixel(i,0) << " " << flush;
+      if (rel_getpixel(i,0) & ColMap::WALL)
+	{
+	  cout << "Found something to dig..." << endl;
+	  return true;
+	}
+    }
+
+  cout << "nothing to dig found" << endl;
+  return false;
 }
 
 /* EOF */
