@@ -1,4 +1,4 @@
-//  $Id: ListHelper.hh,v 1.4 2001/08/16 17:46:51 grumbel Exp $
+//  $Id: ListHelper.hh,v 1.5 2002/06/01 17:53:38 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ namespace ListHelper
   template<class T>
   static void append (std::list<T> &a, std::list<T> b)
   {
-    for (std::list<T>::iterator i = b.begin (); i != b.end (); i++)
+    for (typename std::list<T>::iterator i = b.begin (); i != b.end (); i++)
       a.push_back (*i);
   }
   /*
