@@ -1,4 +1,4 @@
-//  $Id: exit.cxx,v 1.4 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: exit.cxx,v 1.5 2002/10/10 12:25:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "../pingu_action.hxx"
 #include "../pingu.hxx"
 #include "../worldobjsdata/exit_data.hxx"
+#include "../smallmap.hxx"
 #include "exit.hxx"
 
 namespace WorldObjs {
@@ -34,13 +35,16 @@ namespace WorldObjs {
 Exit::Exit (const WorldObjsData::ExitData& data_)
   : data(new WorldObjsData::ExitData(data_)),
     sprite(data->desc, 10.0f),
-    flag("misc/flag" + to_string(data->owner_id), "core")
+    flag("misc/flag" + to_string(data->owner_id), "core"),
+    smallmap_symbol("misc/smallmap_exit", "core")
 {
   flag.set_align_center_bottom();
   if (verbose > 2)
     std::cout << "Creating Exit" << std::endl;
 
   sprite.set_align_center_bottom();
+
+  smallmap_symbol.set_align_center_bottom();
 
   if (data->use_old_pos_handling) {
     data->pos.x += sprite.get_width() / 2;
@@ -67,6 +71,12 @@ Exit::draw (GraphicContext& gc)
 {
   gc.draw(sprite, data->pos);
   gc.draw(flag, data->pos + Vector(40, 0));
+}
+
+void
+Exit::draw_smallmap(SmallMap* smallmap)
+{
+  smallmap->draw_sprite(smallmap_symbol, data->pos);
 }
 
 void

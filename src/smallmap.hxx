@@ -1,4 +1,4 @@
-//  $Id: smallmap.hxx,v 1.13 2002/10/07 23:09:14 grumbel Exp $
+//  $Id: smallmap.hxx,v 1.14 2002/10/10 12:25:53 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,28 +80,41 @@ private:
 
   unsigned int colmap_serial;
 
+  /** Pointer to the current GC, only valid inside draw() */
+  GraphicContext* gc_ptr;
+
 public:
   SmallMap();
   virtual ~SmallMap();
-  
+
+  /*{ @name Stuff called from the GUIManager */
   void on_primary_button_press(int x, int y);
   void on_primary_button_release(int x, int y);
   void on_pointer_move(int x, int y);
 
-  void set_client(Client* c);
-  bool mouse_over();
-  void init();
-  void draw(GraphicContext& gc);
-  void draw_pingus();
-  void update(float delta);
-
-  bool is_at (int x, int y);
-
   // Events
   void on_pointer_enter ();
   void on_pointer_leave ();
+
+  void set_client(Client* c);
+
+  bool is_at (int x, int y);
+  bool mouse_over();
+
+  void draw(GraphicContext& gc);
+  void update(float delta);
+  /*}*/
+
+  /** draws a symbolic sprite onto the smallmap 
+      @param sprite the Sprite to draw, it will keep its original size
+      @param pos the position to draw it in World COs, it will get
+      recalculated to screen CO */
+  void draw_sprite(Sprite sprite, Vector pos);
   
 private:
+  void init();
+  void draw_pingus();
+  
   SmallMap (const SmallMap&);
   SmallMap& operator= (const SmallMap&);
 };

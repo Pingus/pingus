@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.23 2002/10/08 18:06:25 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.24 2002/10/10 12:25:53 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -61,6 +61,7 @@
 #include "pingus_error.hxx"
 #include "global_event.hxx"
 #include "config.hxx"
+#include "config_xml.hxx"
 #include "console.hxx"
 #include "fps_counter.hxx"
 #include "message_box.hxx"
@@ -151,6 +152,7 @@ PingusMain::read_rc_file (void)
 
       // FIXME: kind of weird...
       boost::shared_ptr<Config> config(new Config(rcfile));
+      //ConfigXML("/home/ingo/projects/pingus/cvs/data/levels/stone3-grumbel.xml");
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: screenshot.cxx,v 1.8 2002/10/06 17:33:32 torangan Exp $
+//  $Id: screenshot.cxx,v 1.9 2002/10/10 12:25:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -131,12 +131,6 @@ Screenshot::save_generic_target_to_file(CL_Target* target, std::string filename)
   std::cout << "Target: bit: " << target->get_depth() << "\n"
 	    << "        bitperpiexel: " << target->get_bytes_per_pixel()  << std::endl;
 
-  /*  printf("ColorMask: r:%x g:%x b:%x a:%x\n",
-	 target->get_red_mask(),
-	 target->get_green_mask(),
-	 target->get_blue_mask(),
-	 target->get_alpha_mask());
-  */
   out << "P3\n" 
       << "# CREATOR: Pingus... some version\n"
       << target->get_width() << " "
@@ -144,15 +138,16 @@ Screenshot::save_generic_target_to_file(CL_Target* target, std::string filename)
       << "255" << std::endl;
 
   target->lock();
-  for (unsigned int y=0; y < target->get_height(); ++y) {
-    for (unsigned int x=0; x < target->get_width(); ++x)
-      {
-	target->get_pixel(x, y, &red, &green, &blue, &alpha);
-	out << (int)(red * 255) << " " 
-	    << (int)(green * 255) << " "
-	    << (int)(blue * 255) << "\n";
-      }
-  }
+  for (unsigned int y=0; y < target->get_height(); ++y) 
+    {
+      for (unsigned int x=0; x < target->get_width(); ++x)
+        {
+          target->get_pixel(x, y, &red, &green, &blue, &alpha);
+          out << (int)(red * 255) << " " 
+              << (int)(green * 255) << " "
+              << (int)(blue * 255) << "\n";
+        }
+    }
   target->unlock();
 }
 

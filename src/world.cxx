@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.31 2002/10/08 00:09:55 grumbel Exp $
+//  $Id: world.cxx,v 1.32 2002/10/10 12:25:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -143,6 +143,15 @@ World::draw (GraphicContext& gc)
   
   // FIXME: Shouldn't the particle_holder be a worldobj in the above list?
   particle_holder->draw (gc); 
+}
+
+void
+World::draw_smallmap(SmallMap* smallmap)
+{
+  for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
+    {
+      (*obj)->draw_smallmap (smallmap);
+    } 
 }
 
 void 

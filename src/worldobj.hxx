@@ -1,4 +1,4 @@
-//  $Id: worldobj.hxx,v 1.10 2002/10/01 19:53:44 grumbel Exp $
+//  $Id: worldobj.hxx,v 1.11 2002/10/10 12:25:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "pingus.hxx"
 
 class GraphicContext;
+class SmallMap;
 class World;
 class WorldObjData;
 
@@ -68,6 +69,7 @@ public:
 
   /** Draw the WorldObj to the given GraphicContext */
   virtual void draw (GraphicContext& gc);
+  virtual void draw_smallmap(SmallMap* smallmap);
 
   /** Draws the objects collision map to the main collision map, draws
       stuff onto the gfx map or do other manipulations to the World */

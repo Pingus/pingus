@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.22 2002/10/07 23:09:14 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.23 2002/10/10 12:25:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,8 @@ using namespace std;
 
 SmallMap::SmallMap()
   : canvas(0),
-    update_count(0)
+    update_count(0),
+    gc_ptr(0)
 {
   max_width = 175;
   max_height = 100;
@@ -149,24 +150,6 @@ SmallMap::init()
             }
 	}
     }
-  /* FIXME: due to API change in PLF disabled
-     std::vector<ExitData>     exit_d     = plf->get_exit();
-     for(std::vector<ExitData>::iterator i = exit_d.begin(); i != exit_d.end(); ++i)
-     {
-     // FIXME: Replace this with put_target() when it is bug free
-     Blitter::put_surface(canvas, exit_sur, 
-     i->pos.x * width / colmap->get_width() - (exit_sur.get_width()/2), 
-     i->pos.y * height / colmap->get_height());
-     }
-
-     std::vector<EntranceData>     entrance_d     = plf->get_entrance();
-     for(std::vector<EntranceData>::iterator i = entrance_d.begin(); i != entrance_d.end(); ++i)
-     {
-     Blitter::put_surface(canvas, entrance_sur,
-     i->pos.x * width / colmap->get_width() - (entrance_sur.get_width()/2),
-     i->pos.y * height / colmap->get_height() - (entrance_sur.get_height()));
-     }
-  */
   canvas->unlock();
 
   //Timer surface_timer("Smallmap surface creation");
@@ -190,6 +173,8 @@ SmallMap::set_client (Client* c)
 void
 SmallMap::draw (GraphicContext& gc)
 {
+  gc_ptr = &gc;
+
   Playfield* playfield = client->get_playfield();
 
   int x_of = playfield->get_x_offset();
@@ -228,8 +213,11 @@ SmallMap::draw (GraphicContext& gc)
 			       i->y_pos * height / colmap->get_height() + y_pos);
     }
   */
+  client->get_server()->get_world()->draw_smallmap(this);
+
   draw_pingus();
-  UNUSED_ARG(gc);
+
+  gc_ptr = 0;
 }
 
 void
@@ -257,7 +245,6 @@ SmallMap::update (float delta)
 {
   float smallmap_update_time = 2.0f;
 
-  UNUSED_ARG(delta);
   update_count += delta;
 
   if (update_count > smallmap_update_time)
@@ -270,6 +257,16 @@ SmallMap::update (float delta)
           init();
         }
     }
+}
+
+void
+SmallMap::draw_sprite(Sprite sprite, Vector pos)
+{
+  World* world = client->get_server()->get_world();
+  float x = x_pos + (pos.x * width  / world->get_colmap()->get_width());
+  float y = y_pos + (pos.y * height / world->get_colmap()->get_height());
+  
+  gc_ptr->draw(sprite, Vector(x, y));
 }
 
 bool

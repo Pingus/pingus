@@ -1,4 +1,4 @@
-//  $Id: goal_manager.hxx,v 1.2 2002/10/09 23:09:45 grumbel Exp $
+//  $Id: goal_manager.hxx,v 1.3 2002/10/10 12:25:53 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ private:
   GoalType goal;
 
   /** time at which is_finished() will return true */
-  unsigned int exit_time;
+  int exit_time;
 
 public:
   GoalManager(Server* plf);

@@ -1,4 +1,4 @@
-//  $Id: worldobj.cxx,v 1.9 2002/10/01 19:53:44 grumbel Exp $
+//  $Id: worldobj.cxx,v 1.10 2002/10/10 12:25:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,6 +59,12 @@ WorldObj::draw_offset(int /*x*/, int /*y*/, float /*s*/)
   // do nothing
   std::cout << "WorldObj::draw_offset(): not implemented, probally a bug: " 
 	    << typeid(*this).name () << std::endl;
+}
+
+void
+WorldObj::draw_smallmap(SmallMap* smallmap)
+{
+  UNUSED_ARG(smallmap);
 }
 
 void

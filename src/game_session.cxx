@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.21 2002/10/08 18:18:21 grumbel Exp $
+//  $Id: game_session.cxx,v 1.22 2002/10/10 12:25:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,6 +83,11 @@ PingusGameSession::draw(GraphicContext& gc)
 void
 PingusGameSession::update (const GameDelta& delta)
 {
+  if (number_of_redraws == 1)
+    {
+      last_update = CL_System::get_time();
+    }
+
   if (server->is_finished())
     {
       ScreenManager::instance()->pop_screen();

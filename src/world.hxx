@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.18 2002/10/08 00:09:55 grumbel Exp $
+//  $Id: world.hxx,v 1.19 2002/10/10 12:25:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,6 +42,7 @@ class View;
 class ColMap;
 class WorldObj;
 class GameTime;
+class SmallMap;
 class GraphicContext;
 
 using std::list;
@@ -87,6 +88,9 @@ public:
 
   /** Draw the world onto the given GraphicContext */
   void    draw (GraphicContext& gc);
+
+  /** Draw the world onte the given SmallMap*/
+  void    draw_smallmap(SmallMap* smallmap);
 
   /** Update the World */
   void    update ();

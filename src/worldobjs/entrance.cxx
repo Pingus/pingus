@@ -1,4 +1,4 @@
-//  $Id: entrance.cxx,v 1.6 2002/10/04 16:54:04 grumbel Exp $
+//  $Id: entrance.cxx,v 1.7 2002/10/10 12:25:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,12 +25,14 @@
 #include "../pingu.hxx"
 #include "../game_time.hxx"
 #include "../worldobjsdata/entrance_data.hxx"
+#include "../smallmap.hxx"
 #include "entrance.hxx"
 
 namespace WorldObjs {
 
 Entrance::Entrance (const WorldObjsData::EntranceData& data_)
   : data(new WorldObjsData::EntranceData(data_)),
+    smallmap_symbol("misc/smallmap_entrance", "core"),
     last_release(-data->release_rate)
 {
   if (verbose > 2)
@@ -129,6 +131,12 @@ Entrance::draw (GraphicContext& gc)
 
   // FIXME: Why do we still have these hardcoded offsets?!
   gc.draw(surface, Vector(data->pos.x - 32, data->pos.y - 16));
+}
+
+void
+Entrance::draw_smallmap(SmallMap* smallmap)
+{
+  smallmap->draw_sprite(smallmap_symbol, data->pos);
 }
 
 } // namespace WorldObjs

@@ -1,4 +1,4 @@
-//  $Id: entrance.hxx,v 1.3 2002/10/02 19:20:19 grumbel Exp $
+//  $Id: entrance.hxx,v 1.4 2002/10/10 12:25:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_ENTRANCE_HXX
 
 #include <ClanLib/Display/Display/surface.h>
+#include "../sprite.hxx"
 #include "../worldobj.hxx"
 
 namespace WorldObjsData {
@@ -37,7 +38,8 @@ class Entrance : public WorldObj
 {
 protected:
   WorldObjsData::EntranceData* const data;
-  
+
+  Sprite smallmap_symbol; 
   CL_Surface surface;
   int        last_release;
   
@@ -53,6 +55,8 @@ public:
   virtual void   update ();
   
   virtual void   draw (GraphicContext& gc);
+
+  void  draw_smallmap(SmallMap* smallmap);
   
 private:
   Entrance (const Entrance&);
