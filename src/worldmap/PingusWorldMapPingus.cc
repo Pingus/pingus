@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapPingus.cc,v 1.8 2001/03/31 11:21:52 grumbel Exp $
+//  $Id: PingusWorldMapPingus.cc,v 1.9 2001/04/04 10:21:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,12 +23,9 @@
 #include "PingusWorldMapPingus.hh"
 
 PingusWorldMapPingus::PingusWorldMapPingus ()
+  : sprite ("Pingus/walker", "pingus", 20.0f, Sprite::RIGHT)
 {
-  sur = PingusResource::load_surface ("Pingus/walker", "pingus");
-
-  std::cout << "PingusWorldMap: walker: num_frames = " << sur.get_num_frames () << std::endl;
-
-  counter.set_size(sur.get_num_frames()/2);
+  //std::cout << "PingusWorldMap: walker: num_frames = " << sur.get_num_frames () << std::endl;
   is_left = false;
 }
 
@@ -56,10 +53,9 @@ PingusWorldMapPingus::draw ()
   float x_scale = CL_Display::get_width () / 800.0;
   float y_scale = CL_Display::get_height () / 600.0;
 
-  sur.put_screen ((pos.x_pos - (sur.get_width()/2)) * x_scale,
-		  (pos.y_pos + 4 - sur.get_height()) * y_scale,
-		  ++counter + ((is_left ? 0 :
-				counter.size())));
+  sprite.set_direction (is_left ? Sprite::LEFT : Sprite::RIGHT);
+  sprite.put_screen ((pos.x - (sprite.get_width()/2)) * x_scale,
+		     (pos.y + 4 - sprite.get_height()) * y_scale);
 }
 
 bool
@@ -69,15 +65,17 @@ PingusWorldMapPingus::is_walking ()
 }
 
 void
-PingusWorldMapPingus::update ()
+PingusWorldMapPingus::update (float delta)
 {
+  sprite.update (delta);
+
   if (!targets.empty ())
     {
       // Pingus found the target node
-      if (pos.x_pos > targets.front ()->pos.x_pos - 3
-	  && pos.x_pos < targets.front ()->pos.x_pos + 3
-	  && pos.y_pos > targets.front ()->pos.y_pos - 3
-	  && pos.y_pos < targets.front ()->pos.y_pos + 3)
+      if (pos.x > targets.front ()->pos.x - 3
+	  && pos.x < targets.front ()->pos.x + 3
+	  && pos.y > targets.front ()->pos.y - 3
+	  && pos.y < targets.front ()->pos.y + 3)
 	{ 
 	  pos = targets.front()->pos;
 	  current_node = targets.front();
@@ -86,11 +84,11 @@ PingusWorldMapPingus::update ()
       // Pingus needs to walk a bit to find the right node
       else
 	{
-	  float x_off = targets.front ()->pos.x_pos - pos.x_pos;
-	  float y_off = targets.front ()->pos.y_pos - pos.y_pos;
+	  float x_off = targets.front ()->pos.x - pos.x;
+	  float y_off = targets.front ()->pos.y - pos.y;
 
-	  float x_delta = x_off * 4.0 / sqrt(x_off * x_off  + y_off * y_off);
-	  float y_delta = y_off * 4.0 / sqrt(x_off * x_off  + y_off * y_off);
+	  float x_delta = x_off * 45.0 / sqrt(x_off * x_off  + y_off * y_off);
+	  float y_delta = y_off * 45.0 / sqrt(x_off * x_off  + y_off * y_off);
      
 	  current_node = 0;
  
@@ -99,20 +97,8 @@ PingusWorldMapPingus::update ()
 	  else
 	    is_left = true;
 
-	  pos.x_pos += x_delta;
-	  pos.y_pos += y_delta;
-      
-	  /*
-	    if (pos.x_pos < targets.front ().x_pos)
-	    pos.x_pos += 5;
-	    else if (pos.x_pos > targets.front ().x_pos)
-	    pos.x_pos -= 5;  
-
-	    if (pos.y_pos < targets.front ().y_pos)
-	    pos.y_pos += 3;
-	    else if (pos.y_pos > targets.front ().y_pos)
-	    pos.y_pos -= 3;  
-	  */
+	  pos.x += x_delta * delta;
+	  pos.y += y_delta * delta;
 	}  
     }
 }

@@ -1,4 +1,4 @@
-//  $Id: PLTXML.cc,v 1.5 2000/09/30 21:34:42 grumbel Exp $
+//  $Id: PLTXML.cc,v 1.6 2001/04/04 10:21:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "XMLhelper.hh"
 #include "globals.hh"
 #include "PingusError.hh"
 #include "XMLhelper.hh"

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.hh,v 1.10 2001/03/31 11:21:52 grumbel Exp $
+//  $Id: PingusWorldMap.hh,v 1.11 2001/04/04 10:21:17 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,7 +66,7 @@ public:
   
   /** Let the woldmap do some stuff, like animating smoke, playing
       sounds or reacting on special events */
-  virtual void update ();
+  virtual void update (float delta);
 
   /** Returns a pointer to the node under the given coordinates */
   PingusWorldMapNode* get_node (int x, int y);

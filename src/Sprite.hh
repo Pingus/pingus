@@ -1,4 +1,4 @@
-//  $Id: Sprite.hh,v 1.1 2001/03/31 09:54:51 grumbel Exp $
+//  $Id: Sprite.hh,v 1.2 2001/04/04 10:21:16 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,18 +24,28 @@
 
 class Sprite
 {
-private:
-  CL_Surface sur;
-  int frame;
-
 public:
-  //  enum {     };
+  enum Direction { NONE, LEFT, RIGHT };
+
+private:
+  float frame;
+  float frames_per_second;
+  CL_Surface sur;
+  Direction direction;
+  
+  int max_frames ();
+  
+public:
 
   Sprite (std::string arg_sur_name,
 	  std::string arg_datafile,
+	  float arg_frames_per_second = 10.0f,
+	  Sprite::Direction dir = NONE,
 	  int arg_loop_type = 0);
 
   Sprite (const CL_Surface& sur,
+	  float frames_per_second = 10.0f,
+	  Sprite::Direction dir = NONE,
 	  int arg_loop_type = 0);
 
   void put_screen (int x, int y);
@@ -43,6 +53,12 @@ public:
 
   void next_frame ();
   void previous_frame ();
+
+  void set_direction (Sprite::Direction dir) { direction = dir; }
+  void update (float delta);
+
+  int get_width () { return sur.get_width (); }
+  int get_height () { return sur.get_height (); }
 };
 
 #endif

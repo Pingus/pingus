@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.cc,v 1.7 2000/10/09 19:17:30 grumbel Exp $
+//  $Id: XMLhelper.cc,v 1.8 2001/04/04 10:21:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,6 +72,40 @@ XMLhelper::parse_position(xmlDocPtr doc, xmlNodePtr cur)
 	    pos.y_pos = StringConverter::to_int(ident);
 	  } else if (strcmp((char*)cur->name, "z-pos") == 0) {
 	    pos.z_pos = StringConverter::to_int(ident);
+	  } else {
+	    std::cout << "Unhandled position ident: " << ident << std::endl;
+	  }
+	  free(ident);
+	}
+      cur = cur->next;
+    }
+  return pos;
+}
+
+CL_Vector
+XMLhelper::parse_vector(xmlDocPtr doc, xmlNodePtr cur)
+{
+  CL_Vector pos;
+  cur = cur->children;  
+  while (cur != NULL)
+    {
+      if (xmlIsBlankNode(cur)) 
+	{
+	  cur = cur->next;
+	  continue;
+	}
+
+      char* ident = (char*)xmlNodeListGetString(doc, cur->children, 1);
+
+      if (ident)
+	{
+	  //std::cout << "parse_position: ident = " << ident << std::endl;
+	  if (strcmp((char*)cur->name, "x-pos") == 0) {
+	    pos.x = StringConverter::to_float(ident);
+	  } else if (strcmp((char*)cur->name, "y-pos") == 0) {
+	    pos.y = StringConverter::to_float(ident);
+	  } else if (strcmp((char*)cur->name, "z-pos") == 0) {
+	    pos.z = StringConverter::to_float(ident);
 	  } else {
 	    std::cout << "Unhandled position ident: " << ident << std::endl;
 	  }

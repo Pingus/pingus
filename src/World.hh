@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.23 2001/04/03 10:45:50 grumbel Exp $
+//  $Id: World.hh,v 1.24 2001/04/04 10:21:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -114,7 +114,7 @@ private:
   ///
   PLF*    plf;
   ///
-  View* view;
+  boost::shared_ptr<View> view;
 public:
   ///
   World();
@@ -199,7 +199,7 @@ public:
 
   /** Sets the main view, it is needed to play stereo wave and for
       other screen orientated effects */
-  void set_view (View* v);
+  void set_view (boost::shared_ptr<View> v);
 
   ///
   PinguHolder* get_pingu_p(void);

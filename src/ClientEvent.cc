@@ -1,4 +1,4 @@
-//  $Id: ClientEvent.cc,v 1.15 2001/03/30 09:19:23 grumbel Exp $
+//  $Id: ClientEvent.cc,v 1.16 2001/04/04 10:21:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -142,32 +142,32 @@ ClientEvent::on_keyboard_button_release(const CL_Key& key)
 
       // Playfield scrolling	
     case CL_KEY_LEFT:
-      playfield->view[playfield->current_view].set_x_offset(playfield->view[playfield->current_view].get_x_offset() + playfield->scroll_speed);
+      playfield->view[playfield->current_view]->set_x_offset(playfield->view[playfield->current_view]->get_x_offset() + playfield->scroll_speed);
       break;
 	  
     case CL_KEY_RIGHT:
-      playfield->view[playfield->current_view].set_x_offset(playfield->view[playfield->current_view].get_x_offset() - playfield->scroll_speed);
+      playfield->view[playfield->current_view]->set_x_offset(playfield->view[playfield->current_view]->get_x_offset() - playfield->scroll_speed);
       break;
 	  
     case CL_KEY_UP:
-      playfield->view[playfield->current_view].set_y_offset(playfield->view[playfield->current_view].get_y_offset() + playfield->scroll_speed);
+      playfield->view[playfield->current_view]->set_y_offset(playfield->view[playfield->current_view]->get_y_offset() + playfield->scroll_speed);
       break;
       
     case CL_KEY_DOWN:
-      playfield->view[playfield->current_view].set_y_offset(playfield->view[playfield->current_view].get_y_offset() - playfield->scroll_speed);
+      playfield->view[playfield->current_view]->set_y_offset(playfield->view[playfield->current_view]->get_y_offset() - playfield->scroll_speed);
       break;
 
       // Playfield zooming
     case CL_KEY_PAGEDOWN:
-      playfield->view[playfield->current_view].set_zoom(playfield->view[playfield->current_view].get_zoom() / 1.05);
+      playfield->view[playfield->current_view]->set_zoom(playfield->view[playfield->current_view]->get_zoom() / 1.05);
       break;
       
     case CL_KEY_PAGEUP:
-      playfield->view[playfield->current_view].set_zoom(playfield->view[playfield->current_view].get_zoom() / 0.95);
+      playfield->view[playfield->current_view]->set_zoom(playfield->view[playfield->current_view]->get_zoom() / 0.95);
       break;
       
     case CL_KEY_END:
-      playfield->view[playfield->current_view].set_zoom(1.0);
+      playfield->view[playfield->current_view]->set_zoom(1.0);
       break;
 
       // Misc

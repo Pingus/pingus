@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.40 2001/04/01 18:00:37 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.41 2001/04/04 10:21:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,11 +46,11 @@ PingusMenu::init ()
 {
   background         = PingusResource::load_surface("misc/logo_t", "core");
 
-  layer_manager.add_layer (PingusResource::load_surface ("menu/layer1", "core"),  0, 0, 2, 0);
-  layer_manager.add_layer (PingusResource::load_surface ("menu/layer2", "core"),  0, 150, 5, 0);
-  layer_manager.add_layer (PingusResource::load_surface ("menu/layer3", "core"), 0, 200, 10, 0);
-  layer_manager.add_layer (PingusResource::load_surface ("menu/layer4", "core"), 0, 377, 25, 0);
-  layer_manager.add_layer (PingusResource::load_surface ("menu/layer5", "core"), 0, 500, 35, 0);
+  layer_manager.add_layer (PingusResource::load_surface ("menu/layer1", "core"),  0, 0, 12, 0);
+  layer_manager.add_layer (PingusResource::load_surface ("menu/layer2", "core"),  0, 150, 25, 0);
+  layer_manager.add_layer (PingusResource::load_surface ("menu/layer3", "core"), 0, 200, 50, 0);
+  layer_manager.add_layer (PingusResource::load_surface ("menu/layer4", "core"), 0, 377, 100, 0);
+  layer_manager.add_layer (PingusResource::load_surface ("menu/layer5", "core"), 0, 500, 200, 0);
 
   background = Blitter::scale_surface (background, CL_Display::get_width (), CL_Display::get_height ());
   //  background = PingusResource::load_surface("Textures/stones", "textures");

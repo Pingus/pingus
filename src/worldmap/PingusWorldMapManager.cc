@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapManager.cc,v 1.9 2001/03/31 11:21:52 grumbel Exp $
+//  $Id: PingusWorldMapManager.cc,v 1.10 2001/04/04 10:21:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../DeltaManager.hh"
 #include "../globals.hh"
 #include "../algo.hh"
 #include "../Display.hh"
@@ -55,11 +56,11 @@ PingusWorldMapManager::display ()
   worldmap->init ();
 
   exit_worldmap = false;
+  DeltaManager delta;
   while (!exit_worldmap)
     {
       worldmap->draw ();
-      // if (enough_time_passed ())
-      worldmap->update ();
+      worldmap->update (delta.getset ());
 
       CL_System::keep_alive ();
       Display::flip_display ();

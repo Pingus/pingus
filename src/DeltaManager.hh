@@ -1,4 +1,4 @@
-//  $Id: DeltaManager.hh,v 1.1 2001/04/01 18:30:24 grumbel Exp $
+//  $Id: DeltaManager.hh,v 1.2 2001/04/04 10:21:16 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,13 @@ public:
   DeltaManager ()
     : last_time (CL_System::get_time ())
   {}
+
+  float getset ()
+  {
+    float ret = get ();
+    set ();
+    return ret;
+  }
   
   void set () 
   {

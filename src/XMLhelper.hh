@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.hh,v 1.9 2000/10/09 19:17:30 grumbel Exp $
+//  $Id: XMLhelper.hh,v 1.10 2001/04/04 10:21:16 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../config.h"
 #include <string>
 #include <fstream>
+#include <ClanLib/core.h>
 
 // FIXME: This should be <libxml/parser.h>, but that doesn't work with
 // libxml1.x :-/
@@ -56,6 +57,7 @@ public:
   //@{
   static ResDescriptor parse_surface(xmlDocPtr doc, xmlNodePtr cur);
   static Position      parse_position(xmlDocPtr doc, xmlNodePtr cur);
+  static CL_Vector     parse_vector(xmlDocPtr doc, xmlNodePtr cur);
   static std::string   parse_string(xmlDocPtr doc, xmlNodePtr cur);
   static int           parse_int(xmlDocPtr doc, xmlNodePtr cur);
   static float         parse_float(xmlDocPtr doc, xmlNodePtr cur);

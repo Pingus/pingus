@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.7 2001/03/18 17:45:05 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.8 2001/04/04 10:21:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -132,7 +132,7 @@ PingusWorldMapGraph::parse_node (xmlNodePtr cur)
 	}
       else if (strcmp((char*)cur->name, "position") == 0)
 	{
-	  node.pos = XMLhelper::parse_position (doc, cur);
+	  node.pos = XMLhelper::parse_vector (doc, cur);
 	}
       else if (strcmp((char*)cur->name, "link") == 0)
 	{
@@ -208,8 +208,8 @@ PingusWorldMapGraph::draw ()
 	   k != i->links.end();
 	   k++)
 	if (j->id == *k)
-	  CL_Display::draw_line (j->pos.x_pos * x_scale, j->pos.y_pos * y_scale,
-				 i->pos.x_pos * x_scale, i->pos.y_pos * y_scale,
+	  CL_Display::draw_line (j->pos.x * x_scale, j->pos.y * y_scale,
+				 i->pos.x * x_scale, i->pos.y * y_scale,
 				 1.0, 1.0, 1.0, 1.0);
       
     }

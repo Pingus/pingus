@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.40 2001/04/03 10:45:49 grumbel Exp $
+//  $Id: World.cc,v 1.41 2001/04/04 10:21:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@
 #include "WorldObjData.hh"
 
 using namespace std;
-using namespace boost;
+using boost::shared_ptr;
 
 // Workaround for a VC bug
 #ifdef WIN32
@@ -498,7 +498,7 @@ World::set_action_holder(ActionHolder* a)
 void 
 World::play_wav (std::string name, const CL_Vector& pos, float volume = 0.5f)
 {
-  assert (view);
+  assert (view.get ());
   CL_Vector center = view->get_center ();
   float panning = pos.x - center.x;
   panning /= view->get_width ()/2;
@@ -514,7 +514,7 @@ World::play_wav (std::string name, const CL_Vector& pos, float volume = 0.5f)
 }
 
 void
-World::set_view (View* v)
+World::set_view (shared_ptr<View> v)
 {
   view = v;
 }

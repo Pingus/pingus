@@ -1,4 +1,4 @@
-//  $Id: Playfield.cc,v 1.18 2001/04/03 10:45:49 grumbel Exp $
+//  $Id: Playfield.cc,v 1.19 2001/04/04 10:21:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,9 @@
 #include "CaptureRectangle.hh"
 #include "GameTime.hh"
 #include "QuestionDialog.hh"
+#include "boost/smart_ptr.hpp"
+
+using boost::shared_ptr;
 
 Playfield::Playfield()
 {
@@ -77,18 +80,18 @@ Playfield::Playfield(PLF* level_data, World* w)
       {
 	if (verbose)
 	  std::cout << "Playfield: Using gimmick" << std::endl;
-	view.push_back(View(x2/2, y1, x2, y2));
-	view.push_back(View(0, 21, x2/2, y2/2, 0.5));
-	view.push_back(View(0, y2/2, x2/2, y2, 2.0));
+	view.push_back(shared_ptr<View>(new View(0, 21, x2/2, y2/2, 0.5f)));
+	view.push_back(shared_ptr<View>(new View(x2/2, y1, x2, y2, 1.0f)));
+	view.push_back(shared_ptr<View>(new View(0, y2/2, x2/2, y2, 2.0f)));
       } 
     else
       { // !gimmicks_enabled
-	view.push_back(View(x1, y1, x2, y2));
+	view.push_back(shared_ptr<View>(new View(x1, y1, x2, y2)));
 	
-	view[0].set_x_offset(((x2 - x1) / 2) - level_data->get_startx());
-	view[0].set_y_offset(((y2 - y1) / 2) - level_data->get_starty());
+	view[0]->set_x_offset(((x2 - x1) / 2) - level_data->get_startx());
+	view[0]->set_y_offset(((y2 - y1) / 2) - level_data->get_starty());
 	
-	world->set_view (&view[0]);
+	world->set_view (view[0]);
       }
   }
 }
@@ -102,9 +105,11 @@ Playfield::~Playfield()
 void
 Playfield::draw()
 { 
-  for(std::vector<View>::iterator i = view.begin(); i != view.end(); i++)
+  for(std::vector<shared_ptr<View> >::iterator i = view.begin();
+      i != view.end(); 
+      ++i)
     {
-      i->draw();
+      (*i)->draw();
     }
 
   if (needs_clear_screen)
@@ -170,20 +175,20 @@ Playfield::process_input_interactive()
 
       if (CL_Mouse::get_x() < 2) 
 	{
-	  view[current_view].set_x_offset(view[current_view].get_x_offset() + scroll_speed);
+	  view[current_view]->set_x_offset(view[current_view]->get_x_offset() + scroll_speed);
 	} 
       else if (CL_Mouse::get_x() > CL_Display::get_width() - 3) 
 	{
-	  view[current_view].set_x_offset(view[current_view].get_x_offset() - scroll_speed);
+	  view[current_view]->set_x_offset(view[current_view]->get_x_offset() - scroll_speed);
 	}
   
       if (CL_Mouse::get_y() < 2) 
 	{
-	  view[current_view].set_y_offset(view[current_view].get_y_offset() + scroll_speed);
+	  view[current_view]->set_y_offset(view[current_view]->get_y_offset() + scroll_speed);
 	}
       else if (CL_Mouse::get_y() > CL_Display::get_height() - 3) 
 	{
-	  view[current_view].set_y_offset(view[current_view].get_y_offset() - scroll_speed);
+	  view[current_view]->set_y_offset(view[current_view]->get_y_offset() - scroll_speed);
 	}
     }
 }
@@ -201,12 +206,12 @@ Playfield::update()
 {
   for(unsigned int i=0; i < view.size(); ++i)
     {
-      if (view[i].is_current() && !mouse_scrolling)
+      if (view[i]->is_current() && !mouse_scrolling)
 	{ 
 	  current_view = i;
-	  current_pingu = current_pingu_find(CL_Mouse::get_x() - view[i].get_x_pos() - (view[i].get_x_offset()),
-					     CL_Mouse::get_y() - view[i].get_y_pos() - (view[i].get_y_offset())); 
-	  view[i].set_pingu(current_pingu);
+	  current_pingu = current_pingu_find(CL_Mouse::get_x() - view[i]->get_x_pos() - (view[i]->get_x_offset()),
+					     CL_Mouse::get_y() - view[i]->get_y_pos() - (view[i]->get_y_offset())); 
+	  view[i]->set_pingu(current_pingu);
 	  break;
 	}
     }
@@ -264,8 +269,8 @@ Playfield::do_scrolling()
 {
   if (mouse_scrolling)
     {
-      view[current_view].shift_x_offset((scroll_center_x - CL_Mouse::get_x()) / 5);
-      view[current_view].shift_y_offset((scroll_center_y - CL_Mouse::get_y()) / 5);
+      view[current_view]->shift_x_offset((scroll_center_x - CL_Mouse::get_x()) / 5);
+      view[current_view]->shift_y_offset((scroll_center_y - CL_Mouse::get_y()) / 5);
     }
 }
 
@@ -279,20 +284,20 @@ Playfield::disable_scroll_mode()
 int
 Playfield::get_x_offset()
 {
-  return view[0].get_x_offset();
+  return view[0]->get_x_offset();
 }
 
 int
 Playfield::get_y_offset()
 {
-  return view[0].get_y_offset();  
+  return view[0]->get_y_offset();  
 }
 
 void
 Playfield::set_viewpoint(int x, int y)
 {
-  view[0].set_x_offset((CL_Display::get_width() / 2) - x);
-  view[0].set_y_offset((CL_Display::get_height() / 2) - y);
+  view[0]->set_x_offset((CL_Display::get_width() / 2) - x);
+  view[0]->set_y_offset((CL_Display::get_height() / 2) - y);
 }
 
 void 

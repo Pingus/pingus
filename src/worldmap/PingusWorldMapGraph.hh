@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.hh,v 1.6 2000/10/10 13:22:40 grumbel Exp $
+//  $Id: PingusWorldMapGraph.hh,v 1.7 2001/04/04 10:21:17 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ public:
     accessible = false;
   }
   std::string levelname;
-  Position pos;
+  CL_Vector pos;
   list<int> links;
   int id;
   bool accessible;

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapPingus.hh,v 1.6 2001/03/31 11:21:52 grumbel Exp $
+//  $Id: PingusWorldMapPingus.hh,v 1.7 2001/04/04 10:21:17 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,18 +21,16 @@
 #define PINGUSWORLDMAPPINGUS_HH
 
 #include <queue>
-#include "../generic/FloatPosition.hh"
-#include "../AnimCounter.hh"
 #include "PingusWorldMapGraph.hh"
+#include "../Sprite.hh"
 
 /** This is the representation of the horde of Pingus which will walk
     on the worldmap */
 class PingusWorldMapPingus
 {
 private:
-  CL_Surface sur;
-  FloatPosition pos;
-  AnimCounter counter;
+  Sprite sprite;
+  CL_Vector pos;
   queue<PingusWorldMapNode*> targets;
   bool is_left;
   PingusWorldMapNode* current_node;
@@ -42,7 +40,7 @@ public:
   ~PingusWorldMapPingus ();
 
   void draw ();
-  void update ();
+  void update (float delta);
   void walk_to (PingusWorldMapNode* node);
   bool is_walking ();
   void set_position (PingusWorldMapNode* node);

@@ -1,4 +1,4 @@
-//  $Id: Console.cc,v 1.15 2000/10/09 19:17:30 grumbel Exp $
+//  $Id: Console.cc,v 1.16 2001/04/04 10:21:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,7 +80,7 @@ Console::draw()
 
   for(i = start_index, j=1; 
       i < (int)output_buffer.size(); 
-      i++, j++)
+      ++i, ++j)
     {
       font->print_left(10, 
 		       start_y_pos + j * font->get_height(), 

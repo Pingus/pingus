@@ -1,4 +1,4 @@
-//  $Id: LayerManager.hh,v 1.4 2001/04/01 18:00:37 grumbel Exp $
+//  $Id: LayerManager.hh,v 1.5 2001/04/04 10:21:16 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,30 +31,32 @@ private:
   {
   public:
     Layer () {
-      x_pos = 0;
-      y_pos = 0;
+      x_pos = 0.0f;
+      y_pos = 0.0f;
     }
     
     void draw () {
-      sur.put_screen (x_pos + x_offset, y_pos + y_offset);
-      sur.put_screen (x_pos + x_offset - 800, y_pos + y_offset);
+      sur.put_screen (int(x_pos + x_offset),
+		      int(y_pos + y_offset));
+      sur.put_screen (int(x_pos + x_offset - 800),
+		      int(y_pos + y_offset));
     }
 
     void update (float delta) {
-      x_pos = (x_pos + x_update) % 800;
-      y_pos = (y_pos + y_update) % 600;
+      x_pos = fmod((x_pos + x_update * delta),800);
+      y_pos = fmod((y_pos + y_update * delta),600);
     }
     
     CL_Surface sur;
     
-    int x_update;
-    int y_update;
+    float x_update;
+    float y_update;
 
-    int x_offset;
-    int y_offset;
+    float x_offset;
+    float y_offset;
 
-    int x_pos;
-    int y_pos;
+    float x_pos;
+    float y_pos;
   };
 
   vector<Layer> layers;
@@ -63,7 +65,7 @@ public:
   LayerManager ();
   ~LayerManager();
 
-  void add_layer (const CL_Surface& sur, int x_o, int y_o, int x_u, int y_u);
+  void add_layer (const CL_Surface& sur, float x_o, float y_o, float x_u, float y_u);
   void draw ();
   void update (float delta);
 };

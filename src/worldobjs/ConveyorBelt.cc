@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.12 2001/04/03 10:45:51 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.13 2001/04/04 10:21:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -222,7 +222,7 @@ std::string
 EditorConveyorBeltObj::status_line()
 {
   char str[1024];
-  sprintf (str, "ConveyorBelt - (%d, %d, %d) Speed: %d", pos.x_pos, pos.y_pos, pos.z_pos, speed);
+  sprintf (str, "ConveyorBelt - (%d, %d, %d) Speed: %f", pos.x_pos, pos.y_pos, pos.z_pos, speed);
   return str;
 }
 
