@@ -15,6 +15,7 @@
     <difficulty>5</difficulty>
     <playable>0</playable>
     <comment></comment>
+    <music>none</music>
   </global>
 
   <action-list>
@@ -47,6 +48,7 @@
   <para-y>0.5</para-y>
   <stretch-x>0</stretch-x>
   <stretch-y>0</stretch-y>
+  <keep-aspect>0</keep-aspect>
   <position>
     <x-pos>0</x-pos>
     <y-pos>0</y-pos>
@@ -90,8 +92,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>908</x-pos>
-    <y-pos>256</y-pos>
+    <x-pos>884</x-pos>
+    <y-pos>533</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -146,8 +148,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>995</x-pos>
-    <y-pos>256</y-pos>
+    <x-pos>971</x-pos>
+    <y-pos>533</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -202,8 +204,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>952</x-pos>
-    <y-pos>214</y-pos>
+    <x-pos>1117</x-pos>
+    <y-pos>339</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -354,12 +356,12 @@
 
 <entrance>
   <position>
-    <x-pos>882</x-pos>
-    <y-pos>213</y-pos>
+    <x-pos>832</x-pos>
+    <y-pos>131</y-pos>
     <z-pos>0</z-pos>
   </position>
   <type>generic</type>
-  <direction>left</direction>
+  <direction>misc</direction>
   <release-rate>25</release-rate>
   <owner-id>0</owner-id>
 </entrance>
