@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.5 2000/12/05 23:17:57 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.6 2000/12/06 08:54:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -134,11 +134,11 @@ EditorTeleporterObj::~EditorTeleporterObj ()
 }
 
 std::list<EditorObj*> 
-EditorTeleporterObj::create (WorldObjData* obj)
+EditorTeleporterObj::create (WorldObjData* data)
 {
   std::list<EditorObj*> objs;
-  EditorTeleporterObj* teleporter = new EditorTeleporterObj (obj);
-  EditorTeleporterTargetObj* teleporter_target = new EditorTeleporterTargetObj (obj, teleporter->get_target_pos_p ());
+  EditorTeleporterObj* teleporter = new EditorTeleporterObj (data);
+  EditorTeleporterTargetObj* teleporter_target = new EditorTeleporterTargetObj (data, teleporter->get_target_pos_p ());
 
   objs.push_back (teleporter);
   objs.push_back (teleporter_target);
@@ -189,8 +189,8 @@ EditorTeleporterTargetObj::EditorTeleporterTargetObj (WorldObjData* obj, Positio
 
   TeleporterData* data = dynamic_cast<TeleporterData*> (obj);
   assert (data);
-
-  *pos = data->target_pos;
+  assert (pos);
+  //*pos = data->target_pos;
   position = pos;
 }
 

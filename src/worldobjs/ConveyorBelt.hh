@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.hh,v 1.3 2000/11/17 19:09:22 grumbel Exp $
+//  $Id: ConveyorBelt.hh,v 1.4 2000/12/06 08:54:41 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -85,6 +85,10 @@ public:
   
   /// The saveing will be done in EditorTeleporterObj::save_xml
   static std::list<EditorObj*> create (WorldObjData* obj);
+
+  /** Create the object with resonable defaults */
+  static std::list<EditorObj*> create (const Position& pos);
+
   virtual void save_xml (std::ofstream* xml);
   virtual std::string status_line();
 };

@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.cc,v 1.2 2000/12/04 23:12:13 grumbel Exp $
+//  $Id: SwitchDoor.cc,v 1.3 2000/12/06 08:54:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -218,6 +218,20 @@ EditorSwitchDoorObj::create (WorldObjData* obj)
   objs.push_back (new EditorSwitchDoorSwitchObj (switchdoor_obj));
 
   return objs;
+}
+
+/** Create this object (and child objects) with resonable defaults
+    for the editor */
+std::list<EditorObj*>
+EditorSwitchDoorObj::create (const Position& pos)
+{
+  SwitchDoorData data;
+
+  data.door_pos = pos;
+  data.switch_pos = pos;
+  data.door_height = 15;
+
+  return EditorObj::create (&data);
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.33 2000/12/05 23:17:56 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.34 2000/12/06 08:54:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,9 @@
 #include "ThumbCache.hh"
 
 #include "../worldobjs/Teleporter.hh"
+#include "../worldobjs/IceBlock.hh"
+#include "../worldobjs/ConveyorBelt.hh"
+#include "../worldobjs/SwitchDoor.hh"
 
 using namespace std;
 
@@ -186,13 +189,16 @@ ObjectSelector::get_worldobj()
 						       CL_Mouse::get_y() - y_offset));
 	  
 	case CL_KEY_2:
-	  break;
+	  return EditorSwitchDoorObj::create (Position(CL_Mouse::get_x() - x_offset, 
+						       CL_Mouse::get_y() - y_offset));
 
 	case CL_KEY_3:
-	  break;
+	  return EditorConveyorBeltObj::create (Position(CL_Mouse::get_x() - x_offset, 
+						       CL_Mouse::get_y() - y_offset));
 
 	case CL_KEY_4:
-	  break;
+	  return EditorIceBlockObj::create (Position(CL_Mouse::get_x() - x_offset, 
+						       CL_Mouse::get_y() - y_offset));
 
 	case CL_KEY_ESCAPE:
 	  return list<EditorObj*>();
@@ -472,6 +478,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.34  2000/12/06 08:54:41  grumbel
+Added support for inserting iceblocks, conveyorbelts and switchdoors into the editor
+
 Revision 1.33  2000/12/05 23:17:56  grumbel
 Added support for inserting teleporters in the editor (other worldobjs will follow tomorrow
 

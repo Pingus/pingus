@@ -1,4 +1,4 @@
-//  $Id: IceBlock.cc,v 1.5 2000/11/17 19:09:22 grumbel Exp $
+//  $Id: IceBlock.cc,v 1.6 2000/12/06 08:54:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -155,6 +155,17 @@ EditorIceBlockObj::create (WorldObjData* obj)
   std::list<EditorObj*> objs;
   objs.push_back (new EditorIceBlockObj(obj));
   return objs;
+}
+
+/** Create the object with resonable defaults */
+std::list<EditorObj*> 
+EditorIceBlockObj::create (const Position& pos)
+{
+  IceBlockData data;
+  
+  data.pos = pos;
+
+  return EditorObj::create (&data);
 }
 
 void

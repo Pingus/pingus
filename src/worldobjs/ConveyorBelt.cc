@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.4 2000/11/17 21:50:57 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.5 2000/12/06 08:54:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -193,6 +193,16 @@ EditorConveyorBeltObj::create (WorldObjData* obj)
   std::list<EditorObj*> objs;
   objs.push_back (new EditorConveyorBeltObj(obj));
   return objs;
+}
+
+std::list<EditorObj*> 
+EditorConveyorBeltObj::create (const Position& pos)
+{
+  ConveyorBeltData data;
+
+  data.pos = pos;
+
+  return EditorObj::create (&data);
 }
   
 void
