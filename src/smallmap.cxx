@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.40 2003/10/20 19:28:54 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.41 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Display/display.h>
-#include <ClanLib/Display/pixel_buffer.h>
 #include "pingu_holder.hxx"
 #include "gui/display.hxx"
 #include "playfield.hxx"
@@ -26,6 +25,7 @@
 #include "pingus_resource.hxx"
 #include "smallmap.hxx"
 #include "col_map.hxx"
+#include "canvas.hxx"
 #include "true_server.hxx"
 #include "pingu.hxx"
 #include "math.hxx"
@@ -57,7 +57,6 @@ SmallMap::SmallMap(Client* c)
 
 SmallMap::~SmallMap()
 {
-  delete canvas;
 }
 
 void
@@ -95,7 +94,7 @@ SmallMap::init()
           height = max_height;
         }
 
-      canvas = new CL_Canvas(width, height);
+      canvas = Canvas::create_rgba8888(width, height);
     }
 
   canvas->lock();
@@ -252,9 +251,9 @@ SmallMap::draw_pingus ()
       y = static_cast<int>(y_pos + ((*i)->get_y() * height / world->get_colmap()->get_height()));
 
       //FIXME: Replace this with draw_pixel (only availabe in 0.7)
-      CL_Display::draw_line(x,   y, x,   y, 1.0, 1.0, 0.0, 1.0);
-      CL_Display::draw_line(x, y-1, x, y-1, 1.0, 1.0, 0.0, 1.0);
-      CL_Display::draw_line(x, y-2, x, y-2, 1.0, 1.0, 0.0, 1.0);
+      CL_Display::draw_line(x,   y, x,   y, Display::to_color(1.0, 1.0, 0.0, 1.0));
+      CL_Display::draw_line(x, y-1, x, y-1, Display::to_color(1.0, 1.0, 0.0, 1.0));
+      CL_Display::draw_line(x, y-2, x, y-2, Display::to_color(1.0, 1.0, 0.0, 1.0));
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: console.hxx,v 1.15 2003/10/20 19:28:54 grumbel Exp $
+//  $Id: console.hxx,v 1.16 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include <string>
 #include <iostream>
+#include <ClanLib/Display/font.h>
 #include "gui/display.hxx"
 
 class CL_Font;

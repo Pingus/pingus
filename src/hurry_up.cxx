@@ -1,4 +1,4 @@
-//  $Id: hurry_up.cxx,v 1.9 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: hurry_up.cxx,v 1.10 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,18 +46,20 @@ HurryUp::~HurryUp()
 void
 HurryUp::draw(GraphicContext& gc)
 {
+#ifdef CLANLIB_0_6
   if (is_finished) return;
 
   if (is_running)
     {
-      font->print_right(CL_Display::get_width() - static_cast<int>(x_pos),
+      font.print_right(CL_Display::get_width() - static_cast<int>(x_pos),
 			CL_Display::get_height()/2 - font->get_height(),
 			"Hurry");
-      font->print_left(static_cast<int>(x_pos),
+      font.print_left(static_cast<int>(x_pos),
 		       CL_Display::get_height()/2 - font->get_height(),
 		       "Up");
     }
   UNUSED_ARG(gc);
+#endif
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: result.hxx,v 1.8 2003/04/19 10:23:17 torangan Exp $
+//  $Id: result.hxx,v 1.9 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include "plf_handle.hxx"
 #include "pingus.hxx"
+
+namespace Pingus {
 
 /** Result of a Pingus game */
 struct Result
@@ -51,6 +53,8 @@ struct Result
     return (saved >= needed);
   }
 };
+
+} // namespace Pingus
 
 #endif
 

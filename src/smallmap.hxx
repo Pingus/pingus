@@ -1,4 +1,4 @@
-//  $Id: smallmap.hxx,v 1.20 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: smallmap.hxx,v 1.21 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,10 +21,10 @@
 #define HEADER_PINGUS_SMALLMAP_HXX
 
 #include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/pixel_buffer.h>
 #include "gui/component.hxx"
 
 class CL_Key;
-class CL_Canvas;
 
 namespace Pingus {
 
@@ -48,7 +48,7 @@ private:
   CL_Surface sur;
 
   /** The canvas that represents the small-colmap */
-  CL_Canvas* canvas;
+  CL_PixelBuffer* canvas;
 
   /** Horizontal position of the small map */
   int x_pos;

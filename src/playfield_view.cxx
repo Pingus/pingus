@@ -1,4 +1,4 @@
-//  $Id: playfield_view.cxx,v 1.6 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: playfield_view.cxx,v 1.7 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,7 @@ PlayfieldView::PlayfieldView (World * w, const CL_Rect& rect)
     world (w), x_offset (0), y_offset (0)
 {
   // FIXME: Cliprects should be handled in the GraphicContext
-  set_clip_rect(rect.x1, rect.y1, rect.x2, rect.y2);
+  set_clip_rect(rect.left, rect.top, rect.right, rect.bottom);
 }
 
 PlayfieldView::~PlayfieldView ()

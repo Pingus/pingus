@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.101 2003/10/20 19:28:54 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.102 2003/10/21 21:37:06 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___
@@ -1003,7 +1003,7 @@ PingusMain::init_pingus()
   Story::init();
   ScreenManager::init();
   PingusMenuManager::init();
-  PingusSound::init();
+  Sound::PingusSound::init();
   PingusResource::init();
   XMLhelper::init();
   PinguActionFactory::init();
@@ -1026,7 +1026,7 @@ PingusMain::deinit_pingus()
   XMLhelper::deinit();
   Fonts::deinit();
   PingusResource::deinit();
-  PingusSound::deinit();
+  Sound::PingusSound::deinit();
   PingusMenuManager::deinit();
   PLFResMgr::free_plf_map();
   WorldObjDataFactory::deinit();

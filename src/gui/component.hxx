@@ -1,4 +1,4 @@
-//  $Id: component.hxx,v 1.15 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: component.hxx,v 1.16 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,9 +22,10 @@
 
 #include "../pingus.hxx"
 
+namespace Pingus {
+
 class GraphicContext;
 
-namespace Pingus {
 namespace GUI {
 
 /** A component represents an area which recivies events in the GUI,

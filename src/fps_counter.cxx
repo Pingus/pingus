@@ -1,4 +1,4 @@
-//  $Id: fps_counter.cxx,v 1.10 2003/10/20 19:28:54 grumbel Exp $
+//  $Id: fps_counter.cxx,v 1.11 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,12 +52,13 @@ FPSCounter::init()
 void
 FPSCounter::on_event()
 {
+#ifdef CLANLIB_0_6
   update_fps_counter();
 
   if (odd_frame)
     {
-      font->print_right(CL_Display::get_width(),
-			CL_Display::get_height() - (2 * font->get_height()),
+      font.print_right(CL_Display::get_width(),
+			CL_Display::get_height() - (2 * font.get_height()),
 			"o");
       odd_frame = false;
     }
@@ -66,9 +67,10 @@ FPSCounter::on_event()
       odd_frame = true;
     }
 
-  font->print_right(CL_Display::get_width(),
-		    CL_Display::get_height() - font->get_height(),
-		    fps_string);
+  font.print_right(CL_Display::get_width(),
+                   CL_Display::get_height() - font.get_height(),
+                   fps_string);
+#endif
 }
 
 void

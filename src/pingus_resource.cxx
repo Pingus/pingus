@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.31 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: pingus_resource.cxx,v 1.32 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -270,12 +270,12 @@ PingusResource::load_font(const std::string& res_name,
 				 ResDescriptor::RD_RESOURCE));
 }
 
-CL_Font*
+CL_Font
 PingusResource::load_font(const ResDescriptor& res_desc)
 {
   pout(PINGUS_DEBUG_RESOURCES) << "PingusResource: Loading font: " << res_desc << std::endl;
 
-  CL_Font* font = font_map[res_desc];
+  CL_Font font = font_map[res_desc];
 
   if (font)
     {
@@ -315,6 +315,7 @@ PingusResource::load_font(const ResDescriptor& res_desc)
 void
 PingusResource::cleanup ()
 {
+#ifdef CLANLIB_0_6
   pout(PINGUS_DEBUG_RESOURCES) << "PingusResource::cleanup ()" << std::endl;
 
   for (std::map<ResDescriptor, CL_Surface>::iterator i = surface_map.begin ();
@@ -338,6 +339,7 @@ PingusResource::cleanup ()
 	  surface_map.erase(i);
 	}
     }
+#endif
 }
 
 unsigned int

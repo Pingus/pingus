@@ -1,4 +1,4 @@
-//  $Id: global_event.cxx,v 1.13 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: global_event.cxx,v 1.14 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include <stdio.h>
 #include <algorithm>
 #include <ClanLib/Display/keyboard.h>
+#include <ClanLib/Display/input_event.h>
 #include <ClanLib/Display/keys.h>
 #include "screenshot.hxx"
 #include "console.hxx"
@@ -39,7 +40,7 @@ GlobalEvent::GlobalEvent ()
 void
 GlobalEvent::on_button_press(const CL_InputEvent& event)
 {
-  if (device == CL_Input::keyboards[0])
+  if (event.device.get_type() == CL_InputEvent::keyboard)
     {
       switch (key.id)
 	{
@@ -119,10 +120,6 @@ GlobalEvent::on_button_press(const CL_InputEvent& event)
 void
 GlobalEvent::on_button_release(const CL_InputEvent& event)
 {
-  if (device == CL_Input::keyboards[0])
-    {
-
-    }
 }
 
 } // namespace Pingus

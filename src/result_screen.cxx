@@ -1,4 +1,4 @@
-//  $Id: result_screen.cxx,v 1.19 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: result_screen.cxx,v 1.20 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,12 +69,12 @@ public:
   void on_pointer_enter ()
   {
     SurfaceButton::on_pointer_enter();
-    PingusSound::play_sound("tick");
+    Sound::PingusSound::play_sound("tick");
   }
 
   void on_click() {
     parent->close_screen();
-    PingusSound::play_sound("yipee");
+    Sound::PingusSound::play_sound("yipee");
   }
 };
 
@@ -107,7 +107,7 @@ public:
   void on_pointer_enter()
   {
     SurfaceButton::on_pointer_enter();
-    PingusSound::play_sound ("tick");
+    Sound::PingusSound::play_sound ("tick");
   }
 };
 
@@ -135,7 +135,7 @@ public:
   void on_pointer_enter()
   {
     SurfaceButton::on_pointer_enter();
-    PingusSound::play_sound ("tick");
+    Sound::PingusSound::play_sound ("tick");
   }
 };
 
@@ -268,11 +268,11 @@ ResultScreen::on_startup()
 {
   if (result.success())
     {
-      PingusSound::play_music("success_1.it");
+      Sound::PingusSound::play_music("success_1.it");
     }
   else
     {
-      PingusSound::play_music("pingus-2.it");
+      Sound::PingusSound::play_music("pingus-2.it");
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: target_provider.cxx,v 1.3 2003/10/20 19:28:54 grumbel Exp $
+//  $Id: target_provider.cxx,v 1.4 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/SurfaceProviders/canvas.h>
+#include <ClanLib/Display/pixel_buffer.h>
 #include "target_provider.hxx"
 
 namespace Pingus {

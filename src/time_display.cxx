@@ -1,4 +1,4 @@
-//  $Id: time_display.cxx,v 1.18 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: time_display.cxx,v 1.19 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,7 +65,9 @@ TimeDisplay::draw (GraphicContext& gc)
 	  time_string = to_string(time_value);
 	}
 
-      font->print_right(CL_Display::get_width() - 5, 3, time_string);
+#ifdef CLANLIB_0_6
+      font.print_right(CL_Display::get_width() - 5, 3, time_string);
+#endif
     }
 
   UNUSED_ARG(gc);

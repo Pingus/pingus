@@ -1,4 +1,4 @@
-//  $Id: theme.hxx,v 1.8 2003/10/20 19:28:55 grumbel Exp $
+//  $Id: theme.hxx,v 1.9 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,8 +35,8 @@ private:
   PLTXML plt;
   CL_Surface surface;
   CL_Surface background;
-  CL_Font*    font;
-  CL_Font*    title;
+  CL_Font font;
+  CL_Font title;
 
   /** The last level, which is accessible */
   int      accessible_levels;

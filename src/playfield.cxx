@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.38 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: playfield.cxx,v 1.39 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 #include "server.hxx"
 #include "true_server.hxx"
 #include "pingu.hxx"
+#include "gui/display.hxx"
 #include "button_panel.hxx"
 
 namespace Pingus {
@@ -105,9 +106,9 @@ Playfield::draw (GraphicContext& gc)
 	  i != clipping_rectangles.end();
 	  i++)
 	{
-	  CL_Display::fill_rect(i->left, i->top,
-				i->right + 1, i->bottom + 1,
-				0.0, 0.0, 0.0, 1.0);
+	  CL_Display::fill_rect(CL_Rect(i->left, i->top,
+                                        i->right + 1, i->bottom + 1),
+				Display::to_color(0.0, 0.0, 0.0, 1.0));
 	}
     }
 
@@ -116,7 +117,7 @@ Playfield::draw (GraphicContext& gc)
     {
        CL_Display::draw_line (mouse_x, mouse_y,
 			      scroll_center_x, scroll_center_y-15,
-			      0.0f, 1.0f, 0.0f, 1.0f);
+			      Display::to_color(0.0f, 1.0f, 0.0f, 1.0f));
 
        CL_Display::draw_line (mouse_x, mouse_y,
 			      scroll_center_x, scroll_center_y,

@@ -1,4 +1,4 @@
-//  $Id: col_map.cxx,v 1.22 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: col_map.cxx,v 1.23 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,15 +77,7 @@ ColMap::get_width()
 }
 
 void
-ColMap::remove(const CL_Surface& sur, int x, int y)
-{
-#ifdef CLANLIB_0_6
-  remove(sur.get_provider(), x, y);
-#endif
-}
-
-void
-ColMap::remove(const CL_PixelBuffer& provider, int x, int y)
+ColMap::remove(CL_PixelBuffer& provider, int x, int y)
 {
 #ifdef CLANLIB_0_6
   ++serial;
@@ -189,7 +181,7 @@ ColMap::blit_allowed (int x, int y,  Groundtype::GPType gtype)
 
 // Puts a surface on the colmap
 void
-ColMap::put(const CL_PixelBuffer& provider, int sur_x, int sur_y, Groundtype::GPType pixel)
+ColMap::put(CL_PixelBuffer& provider, int sur_x, int sur_y, Groundtype::GPType pixel)
 {
   // transparent groundpieces are only drawn on the gfx map, not on the colmap
   if (pixel == Groundtype::GP_TRANSPARENT)
@@ -207,6 +199,7 @@ ColMap::put(const CL_PixelBuffer& provider, int sur_x, int sur_y, Groundtype::GP
 
   provider.lock();
 
+#ifdef CLANLIB_0_6
   if (provider.get_depth() == 32)
     {
       float r, g, b, a;
@@ -262,6 +255,8 @@ ColMap::put(const CL_PixelBuffer& provider, int sur_x, int sur_y, Groundtype::GP
     {
       std::cout << "ColMap: Unsupported color depth, ignoring" << std::endl;
     }
+#endif
+
   // FIXME: Memory hole
   // provider.unlock();
 }
@@ -269,12 +264,12 @@ ColMap::put(const CL_PixelBuffer& provider, int sur_x, int sur_y, Groundtype::GP
 void
 ColMap::draw(GraphicContext& gc)
 {
-  CL_PixelBuffer canvas = Canvas::create(width, height);
+  CL_PixelBuffer* canvas = Canvas::create_rgba8888(width, height);
   CL_Surface sur;
   unsigned char* buffer;
 
-  canvas.lock();
-  buffer = static_cast<unsigned char*>(canvas.get_data());
+  canvas->lock();
+  buffer = static_cast<unsigned char*>(canvas->get_data());
 
   for(int i = 0; i < (width * height); ++i)
     {
@@ -312,7 +307,7 @@ ColMap::draw(GraphicContext& gc)
 
   // FIXME: Memory hole
 #if COLMAP_WITH_MEMORY_HOLE
-  canvas.unlock();
+  canvas->unlock();
 #endif
 
   sur = CL_Surface(canvas, true);

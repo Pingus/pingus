@@ -1,4 +1,4 @@
-//  $Id: sprite.cxx,v 1.16 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: sprite.cxx,v 1.17 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ Sprite::Sprite ()
 Sprite::Sprite (const Sprite& sprite) 
   : frame (sprite.frame),
     frames_per_second (sprite.frames_per_second),
-    sur (sprite.sur),
+    sur(sprite.sur),
     direction (sprite.direction),
     looptype (sprite.looptype),
     is_finished (sprite.is_finished),

@@ -1,4 +1,4 @@
-//  $Id: demo_session.cxx,v 1.11 2003/10/20 19:28:54 grumbel Exp $
+//  $Id: demo_session.cxx,v 1.12 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Display/keyboard.h>
+#include <ClanLib/Display/keys.h>
 #include "math.hxx"
 #include "xml_pdf.hxx"
 #include "true_server.hxx"
@@ -54,6 +55,7 @@ DemoSession::~DemoSession()
 void
 DemoSession::draw_background(GraphicContext& gc)
 {
+#ifdef CLANLIB_0_6
   World* world = server->get_world();
 
   if (CL_Keyboard::get_keycode(CL_KEY_LEFT))
@@ -88,6 +90,7 @@ DemoSession::draw_background(GraphicContext& gc)
       server->get_world()->draw(gc);
       CL_System::keep_alive();
     }
+#endif
 }
 
 /** Pass a delta to the screen */

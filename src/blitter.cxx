@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.33 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: blitter.cxx,v 1.34 2003/10/21 21:37:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -345,6 +345,7 @@ Blitter::create_canvas(const CL_Surface& sur)
   assert (sur);
   return create_canvas(sur.get_provider());
 #endif
+  return 0;
 }
 
 CL_PixelBuffer*
@@ -406,6 +407,7 @@ Blitter::scale_surface (const CL_Surface& sur, int width, int height)
   assert (sur);
   return CL_Surface(Blitter::scale_surface_to_canvas(sur, width, height), true);
 #endif
+  return CL_Surface();
 }
 
 CL_PixelBuffer*
@@ -608,6 +610,7 @@ Blitter::flip_vertical (const CL_Surface& sur)
 CL_Surface
 Blitter::rotate_90 (const CL_Surface& sur)
 {
+#ifdef CLANLIB_0_6
   CL_PixelBuffer* prov = sur.get_provider ();
 
   if (prov->is_indexed())
@@ -646,8 +649,8 @@ Blitter::rotate_90 (const CL_Surface& sur)
       canvas->lock ();
 
       float r, b, g, a;
-      for (unsigned int y = 0; y < sur.get_height (); ++y)
-        for (unsigned int x = 0; x < sur.get_width (); ++x)
+      for (int y = 0; y < sur.get_height (); ++y)
+        for (int x = 0; x < sur.get_width (); ++x)
           {
             prov->get_pixel (x, y, &r, &g, &b, &a);
             canvas->draw_pixel (sur.get_height () - 1 - y, x , r, g, b, a);
@@ -657,6 +660,8 @@ Blitter::rotate_90 (const CL_Surface& sur)
       prov->unlock ();
       return CL_Surface(canvas, true);
     }
+#endif
+  return CL_Surface();
 }
 
 

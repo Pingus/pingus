@@ -1,4 +1,4 @@
-//  $Id: hurry_up.hxx,v 1.10 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: hurry_up.hxx,v 1.11 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@ class CL_Font;
 
 namespace Pingus {
 
+class GraphicContext;
 class Client;
 
 /** Hurry up if the time goes over... */

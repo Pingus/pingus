@@ -1,4 +1,4 @@
-//  $Id: string_format.cxx,v 1.3 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: string_format.cxx,v 1.4 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 namespace Pingus {
 
 std::string
-StringFormat::break_line (std::string text, int length, CL_Font* font)
+StringFormat::break_line (std::string text, int length, const CL_Font& font)
 {
   unsigned int pos = 0;
   while ((pos = text.find('\t', pos)) != std::string::npos)
@@ -42,7 +42,7 @@ StringFormat::break_line (std::string text, int length, CL_Font* font)
 	}
       else if (pos < text.length() - 1 && text[pos + 1] == ' ' && text[pos + 2] == '\n')
         {
-            text.replace(pos, 3, 1, '\n');		  // whitespace between the two \n doesn't matter
+          text.replace(pos, 3, 1, '\n');		  // whitespace between the two \n doesn't matter
 	}
       else
         {
@@ -54,7 +54,7 @@ StringFormat::break_line (std::string text, int length, CL_Font* font)
         text.replace(pos - 1, 2, 1, '\n');		  // no whitespace in front
 
       if (pos < text.length() && text[pos + 1] == ' ')
-         text.replace(pos, 2, 1, '\n');			  // no whitespace behind
+        text.replace(pos, 2, 1, '\n');			  // no whitespace behind
 
       ++pos;						  // we don't want to find it again
     }
@@ -63,23 +63,24 @@ StringFormat::break_line (std::string text, int length, CL_Font* font)
   while ((pos = text.find("  ", pos)) != std::string::npos)
     text.replace(pos, 2, 1, ' ');
 
-
+#ifdef CLANLIB_0_6
   int start_pos      = 0;
   int previous_space = 0;
   pos = 0;
+
   while ((pos = text.find(' ', pos + 1)) != std::string::npos)
     {
-      if (font->get_text_width(text.substr(start_pos, pos - start_pos)) > length)
+      if (font.get_text_width(text.substr(start_pos, pos - start_pos)) > length)
         {
 	  text[previous_space] = '\n';
 	  start_pos = previous_space + 1;
 	}
-      else if (font->get_text_width(text.substr(start_pos, text.length())) <= length)
+      else if (font.get_text_width(text.substr(start_pos, text.length())) <= length)
         break;
 
       previous_space = pos;
     }
-
+#endif
   return text;
 }
 

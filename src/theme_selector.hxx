@@ -1,4 +1,4 @@
-//  $Id: theme_selector.hxx,v 1.9 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: theme_selector.hxx,v 1.10 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ class ListItem
 {
 private:
   std::string label;
-  CL_Font* font;
+  CL_Font font;
 
 public:
   ListItem(std::string);
@@ -102,10 +102,10 @@ private:
   std::vector<Theme*>::iterator current_theme;
 
   /** A large font, used for the Title Name */
-  CL_Font* title_font;
+  CL_Font title_font;
 
   /** This font is used for the levelnames */
-  CL_Font* theme_font;
+  CL_Font theme_font;
 
   /// The red arrow to the right
   CL_Surface right_arrow;

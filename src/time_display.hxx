@@ -1,4 +1,4 @@
-//  $Id: time_display.hxx,v 1.13 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: time_display.hxx,v 1.14 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_TIME_DISPLAY_HXX
 
 #include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/font.h>
 #include "gui/component.hxx"
 
 class CL_Font;
@@ -29,12 +30,13 @@ namespace Pingus {
 
 class Server;
 class Client;
+class GraphicContext;
 
 class TimeDisplay : public GUI::Component
 {
 private:
   Server*  server;
-  CL_Font* font;
+  CL_Font  font;
   CL_Surface infinity_symbol;
 
 public:

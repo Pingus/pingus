@@ -1,4 +1,4 @@
-//  $Id: theme_selector.cxx,v 1.15 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: theme_selector.cxx,v 1.16 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 #include <iostream>
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Display/font.h>
-#include <ClanLib/Display/input.h>
 #include <ClanLib/Display/keyboard.h>
 #include <ClanLib/Display/mouse.h>
 #include <ClanLib/Core/System/system.h>
@@ -49,8 +48,8 @@ void
 ListBox::draw_offset(int x, int y)
 {
   int i = 0;
-  CL_Display::fill_rect(x, y, x + 200, CL_Display::get_height() - 20,
-			0.0, 0.0, 0.0, 0.5);
+  CL_Display::fill_rect(CL_Rect(x, y, x + 200, CL_Display::get_height() - 20),
+			Display::to_color(0.0, 0.0, 0.0, 0.5));
   for(ListIter item = items.begin(); item != items.end(); ++item) {
     item->draw_offset(x, y + (i++ * 20)); // FIXME i++ is a bit ambigious here
   }

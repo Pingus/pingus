@@ -1,4 +1,4 @@
- //  $Id: theme.cxx,v 1.21 2003/10/20 19:28:55 grumbel Exp $
+ //  $Id: theme.cxx,v 1.22 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,10 +38,10 @@
 namespace Pingus {
 
 Theme::Theme (const std::string& filename_)
-            : font(Fonts::pingus_small),
-	      title(Fonts::pingus_large),
-	      filename (filename_),
-	      is_loaded(false)
+  : font(Fonts::pingus_small),
+    title(Fonts::pingus_large),
+    filename (filename_),
+    is_loaded(false)
 {
 }
 
@@ -111,12 +111,12 @@ Theme::mark_level_at_point(int x, int y)
       i < levelnames.end();
       ++i, ++j)
     {
-      int width = font->get_text_width(i->c_str());
+      int width = font.get_text_width(i->c_str());
 
       if ((CL_Display::get_width()/2 - width/2) < x
 	  && (CL_Display::get_width()/2 + width/2) > x
 	  && y_pos < y
-	  && (y_pos + font->get_height()) > y)
+	  && (y_pos + font.get_height()) > y)
 	{
 	  if (j <= accessible_levels)
 	    {
@@ -126,7 +126,7 @@ Theme::mark_level_at_point(int x, int y)
 	    }
 	  return -1;
 	}
-      y_pos += font->get_height() + 4;
+      y_pos += font.get_height() + 4;
     }
   return -1;
 }
@@ -190,34 +190,34 @@ Theme::draw_title()
       if (j > accessible_levels)
 	{
 	  // Level is not yet accessible
-	  font->print_center(x_center, y_pos, (*i).c_str());
-	  CL_Display::fill_rect(x_center - font->get_text_width(i->c_str())/2 - 1,
+	  font.print_center(x_center, y_pos, (*i).c_str());
+	  CL_Display::fill_rect(x_center - font.get_text_width(i->c_str())/2 - 1,
 				y_pos - 1,
-				x_center + font->get_text_width(i->c_str())/2 + 1,
-				y_pos + font->get_height() + 1,
+				x_center + font.get_text_width(i->c_str())/2 + 1,
+				y_pos + font.get_height() + 1,
 				0.0, 0.0, 0.0, 0.5);
 	}
       else if (j == current_level)
 	{
 	  // Level is accessible
-	  CL_Display::fill_rect(x_center - font->get_text_width(i->c_str())/2 - 1,
+	  CL_Display::fill_rect(x_center - font.get_text_width(i->c_str())/2 - 1,
 				y_pos - 1,
-				x_center + font->get_text_width(i->c_str())/2 + 1,
-				y_pos + font->get_height() + 1,
+				x_center + font.get_text_width(i->c_str())/2 + 1,
+				y_pos + font.get_height() + 1,
 				0.0f, 0.0f, 0.0f, 1.0f);
-	  CL_Display::draw_rect(x_center - font->get_text_width(i->c_str())/2 - 1,
+	  CL_Display::draw_rect(x_center - font.get_text_width(i->c_str())/2 - 1,
 				y_pos - 1,
-				x_center + font->get_text_width(i->c_str())/2 + 1,
-				y_pos + font->get_height() + 1,
+				x_center + font.get_text_width(i->c_str())/2 + 1,
+				y_pos + font.get_height() + 1,
 				1.0f, 1.0f, 1.0f, 1.0f);
-	  font->print_center(x_center, y_pos, (*i).c_str());
+	  font.print_center(x_center, y_pos, (*i).c_str());
 	}
       else
 	{
-	  font->print_center(x_center, y_pos, (*i).c_str());
+	  font.print_center(x_center, y_pos, (*i).c_str());
 	}
       ++j;
-      y_pos += font->get_height() + 4;
+      y_pos += font.get_height() + 4;
     }
 }
 

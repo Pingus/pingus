@@ -1,4 +1,4 @@
-//  $Id: gui_obj.cxx,v 1.3 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: gui_obj.cxx,v 1.4 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,10 +47,9 @@ GuiObj::set_clip_rect(int ax1, int ay1, int ax2, int ay2)
 void
 GuiObj::draw_clipped()
 {
-  CL_Display::push_clip_rect();
-  CL_Display::set_clip_rect(CL_ClipRect(x1, y1, x2, y2));
+  CL_Display::push_cliprect(CL_Rect(x1, y1, x2, y2));
   draw();
-  CL_Display::pop_clip_rect();
+  CL_Display::pop_cliprect();
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: console.cxx,v 1.18 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: console.cxx,v 1.19 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -103,9 +103,9 @@ ConsoleBuffer::fill_buffer (bool append)
 	      str = str.substr(pos, str.size());
 	    }
 
-	   buffer.push_back(str);
-	   buffer.pop_front();
-	   str = "";
+          buffer.push_back(str);
+          buffer.pop_front();
+          str = "";
 	}
     }
 
@@ -160,10 +160,10 @@ Console::draw()
     CL_Display::get_height() - (font.get_height() * (number_of_lines + 3));
 
   // The background of the console
-  CL_Display::fill_rect(0, start_y_pos - 15,
-			CL_Display::get_width(),
-			CL_Display::get_height(),
-			0.0, 0.0, 0.0, 0.5);
+  CL_Display::fill_rect(CL_Rect(0, start_y_pos - 15,
+                                CL_Display::get_width(),
+                                CL_Display::get_height()),
+			Display::to_color(0.0, 0.0, 0.0, 0.5));
 
   const std::list<std::string>& buffer = streambuf.get_buffer ();
 
@@ -179,10 +179,10 @@ Console::draw()
        i < number_of_lines && i + window_start < buffer.size();
        ++it, ++i)
     {
-      font.print_left(10,
-                      start_y_pos + (i * (font.get_height() + 2)),
-		       it->c_str()
-		      );
+      font.draw(10,
+                start_y_pos + (i * (font.get_height() + 2)),
+                it->c_str()
+                );
     }
 }
 

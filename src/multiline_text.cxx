@@ -1,4 +1,4 @@
-//  $Id: multiline_text.cxx,v 1.9 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: multiline_text.cxx,v 1.10 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,11 +28,10 @@ MultiLineText::MultiLineText()
 {
   width = -1;
   height = -1;
-  font = 0;
 }
 
 void
-MultiLineText::set_font(CL_Font* f)
+MultiLineText::set_font(CL_Font f)
 {
   font = f;
 }
@@ -96,7 +95,7 @@ MultiLineText::print_left(int x_pos, int y_pos)
       ++i)
     {
       font.draw(x_pos, y_pos + y_inc, i->c_str());
-      y_inc += font->get_height();
+      y_inc += font.get_height();
     }
 }
 
@@ -125,8 +124,10 @@ MultiLineText::print_center(int x_pos, int y_pos)
       i != text.end();
       ++i)
     {
-      font->print_center(x_pos, y_pos + y_inc, i->c_str());
-      y_inc += font->get_height();
+#ifdef CLANLIB_0_6
+      font.print_center(x_pos, y_pos + y_inc, i->c_str());
+#endif
+      y_inc += font.get_height();
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: menu_button.hxx,v 1.6 2003/10/20 19:28:54 grumbel Exp $
+//  $Id: menu_button.hxx,v 1.7 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,10 +22,8 @@
 
 #include <string>
 #include <ClanLib/Display/surface.h>
-
+#include <ClanLib/Display/font.h>
 #include "gui/component.hxx"
-
-class CL_Font;
 
 namespace Pingus {
 

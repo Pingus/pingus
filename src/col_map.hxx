@@ -1,4 +1,4 @@
-//  $Id: col_map.hxx,v 1.14 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: col_map.hxx,v 1.15 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,10 +79,10 @@ public:
   bool blit_allowed (int x, int y,  Groundtype::GPType);
 
   void put(int x, int y, Groundtype::GPType p = Groundtype::GP_GROUND);
-  void put(const CL_PixelBuffer&, int x, int y, Groundtype::GPType);
+  void put(CL_PixelBuffer&, int x, int y, Groundtype::GPType);
 
   /// void remove(int x, int y);
-  void remove(const CL_PixelBuffer&, int x, int y);
+  void remove(CL_PixelBuffer&, int x, int y);
 
   void draw(GraphicContext& gc);
 

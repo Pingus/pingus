@@ -1,4 +1,4 @@
-//  $Id: start_screen.cxx,v 1.21 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: start_screen.cxx,v 1.22 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,7 +77,7 @@ public:
 
   void on_click()
   {
-    PingusSound::play_sound("yipee");
+    Sound::PingusSound::play_sound("yipee");
     parent->start_game();
   }
 
@@ -85,7 +85,7 @@ public:
   void on_pointer_enter()
   {
     SurfaceButton::on_pointer_enter();
-    PingusSound::play_sound ("tick");
+    Sound::PingusSound::play_sound ("tick");
   }
 };
 
@@ -118,7 +118,7 @@ public:
   void on_pointer_enter()
   {
     SurfaceButton::on_pointer_enter();
-    PingusSound::play_sound ("tick");
+    Sound::PingusSound::play_sound ("tick");
   }
 };
 

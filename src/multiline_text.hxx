@@ -1,4 +1,4 @@
-//  $Id: multiline_text.hxx,v 1.8 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: multiline_text.hxx,v 1.9 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ private:
 public:
   MultiLineText();
 
-  void set_font(CL_Font*);
+  void set_font(CL_Font font);
   void set_text(const std::string&, int width);
   void print_left(int, int);
   void print_right(int, int);

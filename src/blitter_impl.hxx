@@ -1,4 +1,4 @@
-//  $Id: blitter_impl.hxx,v 1.15 2003/10/21 11:01:52 grumbel Exp $
+//  $Id: blitter_impl.hxx,v 1.16 2003/10/21 21:37:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -183,6 +183,7 @@ template<class TransF>
 inline
 CL_Surface modify(const CL_Surface& sur, const TransF&)
 {
+#ifdef CLANLIB_0_6
   CL_PixelBuffer* prov = sur.get_provider ();
   int pwidth  = prov->get_width();
   int pheight = prov->get_height();
@@ -237,8 +238,8 @@ CL_Surface modify(const CL_Surface& sur, const TransF&)
       canvas->lock ();
 
       float r, b, g, a;
-      for (unsigned int y = 0; y < sur.get_height (); ++y)
-        for (unsigned int x = 0; x < sur.get_width (); ++x)
+      for (int y = 0; y < sur.get_height (); ++y)
+        for (int x = 0; x < sur.get_width (); ++x)
           {
             prov->get_pixel (x, y, &r, &g, &b, &a);
             canvas->draw_pixel (TransF::get_x(pwidth, pheight, x, y),
@@ -250,6 +251,8 @@ CL_Surface modify(const CL_Surface& sur, const TransF&)
       prov->unlock ();
       return CL_Surface(canvas, true);
     }
+#endif
+  return CL_Surface();
 }
 
 } // namespace BlitterImpl

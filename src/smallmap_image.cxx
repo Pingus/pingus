@@ -1,4 +1,4 @@
-//  $Id: smallmap_image.cxx,v 1.12 2003/10/20 19:28:54 grumbel Exp $
+//  $Id: smallmap_image.cxx,v 1.13 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "world.hxx"
 #include "smallmap_image.hxx"
 #include "col_map.hxx"
+#include "canvas.hxx"
 #include "server.hxx"
 
 namespace Pingus {
@@ -51,7 +52,7 @@ SmallMapImage::update (float delta)
 CL_Surface
 SmallMapImage::create_surface (Server * server, int width, int height)
 {
-  CL_Canvas*  canvas;
+  CL_PixelBuffer* canvas;
   unsigned char* buffer;
   unsigned char* cbuffer;
   unsigned char  current_pixel;
@@ -62,7 +63,7 @@ SmallMapImage::create_surface (Server * server, int width, int height)
   ColMap* colmap = world->get_colmap();
   buffer = colmap->get_data();
 
-  canvas = new CL_Canvas(width, height);
+  canvas = Canvas::create_rgba8888(width, height);
 
   canvas->lock();
 

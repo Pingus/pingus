@@ -1,4 +1,4 @@
-//  $Id: screenshot.cxx,v 1.16 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: screenshot.cxx,v 1.17 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,16 +24,18 @@
 #include <iostream>
 
 #include <ClanLib/Display/display.h>
-#include <ClanLib/Display/target.h>
 #include "system.hxx"
 #include "screenshot.hxx"
 #include "gettext.h"
+
+namespace Pingus {
 
 // Saves a screenshot to file, it return the filename the screenshot
 // was saved to.
 std::string
 Screenshot::make_screenshot()
 {
+#ifdef CLANLIB_0_6
   CL_Target* target = CL_Display::get_target();
 
   if (target)
@@ -51,6 +53,8 @@ Screenshot::make_screenshot()
       std::cout << _("Screenshot: Couldn't save screenshot") << std::endl;
       return "";
     }
+#endif
+  return "";
 }
 
 void
@@ -62,6 +66,7 @@ Screenshot::save_target_to_file(CL_Target* target, const std::string& filename)
 void
 Screenshot::save_target_to_file_fast(CL_Target* target, const std::string& filename)
 {
+#ifdef CLANLIB_0_6
   target->lock();
   int num_pixels = target->get_width() * target->get_height();
   unsigned char* buffer = new unsigned char[num_pixels * 3];
@@ -119,6 +124,7 @@ Screenshot::save_target_to_file_fast(CL_Target* target, const std::string& filen
   target->unlock();
   save_ppm(filename, buffer, target->get_width(), target->get_height());
   delete[] buffer;
+#endif
 }
 
 void
@@ -149,6 +155,7 @@ Screenshot::save_ppm(const std::string& filename, unsigned char* buffer, int wid
 void
 Screenshot::save_target_to_file_slow(CL_Target* target, const std::string& filename)
 {
+#ifdef CLANLIB_0_6
   std::ofstream out(filename.c_str());
 
   out << "P3\n"
@@ -172,6 +179,7 @@ Screenshot::save_target_to_file_slow(CL_Target* target, const std::string& filen
     }
 
   target->unlock();
+#endif
 }
 
 std::string
@@ -204,5 +212,6 @@ Screenshot::get_date()
   return std::string(buffer);
 }
 
+} // namespace Pingus
 
 /* EOF */

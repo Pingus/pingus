@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.29 2003/10/20 19:28:54 grumbel Exp $
+//  $Id: spot_map.cxx,v 1.30 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,7 +66,9 @@ MapTileSurface::set_empty(bool e)
 void
 MapTileSurface::reload(void)
 {
+#ifdef CLANLIB_0_6
   surface.reload();
+#endif
 }
 
 void
@@ -78,6 +80,7 @@ MapTileSurface::mark_dirty()
 void
 MapTileSurface::check_empty()
 {
+#ifdef CLANLIB_0_6
   // FIXME: obsolete
   CL_PixelBuffer* provider = surface.get_provider();
   unsigned char* buffer;
@@ -98,6 +101,7 @@ MapTileSurface::check_empty()
   }
 
   surface.get_provider()->unlock();
+#endif
 }
 
 PingusSpotMap::PingusSpotMap(PLF* plf)
