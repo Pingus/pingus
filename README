@@ -9,10 +9,12 @@ Introduction
    check the file COPYING, for more information.
    
    See 'INSTALL' for instructions on how to compile and run Pingus from
-   source. 
+   source. See README.binary on informations how to use the binary
+   versions of the game, precompiled binaries are available at the
+   Pingus webpage.
 
    Information about the game, new versions and additional
-   documentation can be found at:
+   documentation can be found at the Pingus webpage:
    
      * http://pingus.seul.org
        
@@ -36,12 +38,12 @@ Mailing Lists
    
 IRC
 
-  For a quick help you can try the IRC server irc.freenode.net:6667
-  and the channel #pingus, you can find the project maintainer (nick:
-  grumbel) there most of the time. From time to time there will also be
-  IRC Mettings with larger parts of the development team, once such
-  meetings happen, they will get announced in the news section on the
-  Pingus webpage.
+     For a quick help you can try the IRC server irc.freenode.net:6667
+     and the channel #pingus, you can find the project maintainer
+     (nick: grumbel) there most of the time. From time to time there
+     will also be IRC Mettings with larger parts of the development
+     team, once such meetings happen, they will get announced in the
+     news section on the Pingus webpage.
 
      _________________________________________________________________
 

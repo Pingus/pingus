@@ -6,7 +6,8 @@ Foreword:
 If you run GNU/Linux on a x86 it is strongly recomment that you use
 the static-binares provided at the Pingus Webpage http://pingus.seul.org.
 Compiling Pingus is only needed if you run a non-x86 architekture or a
-non-Linux Unix like OS.
+non-Linux Unix like OS (FreeBSD, GNU/Hurd or something like that).
+
 
 Installation:
 =============
@@ -24,8 +25,10 @@ For full music and sound support you also need:
 Compile Hermes, MikMod, libxml2 and Voribs before ClanLib. To compile
 ClanLib you need to apply all the patches to it from the
 contrib/clanlib/ subdirectory to it, without them Pingus will have a
-few non-critical bugs. Once all libraries are in place, compile Pingus
-with:
+few bugs (editor windows have a close button, which on click results
+in freeze or crash, console will be showable/hidable with many keys,
+scrollwheel support will be missing). Once all libraries are in place,
+compile Pingus with:
 
  % ./configure
  % make

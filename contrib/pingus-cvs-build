@@ -28,7 +28,7 @@ if [ ! "x$answer" = "xy" ]; then
     exit 0
 fi
 
-CVSROOT=':pserver:anonymous@dark.x.dtu.dk:/usr/local/cvsroot'
+CVSROOT=':pserver:anonymous@cvs.clanlib.org:/var/lib/cvs'
 export CVSROOT
 
 echo "### Setting up environment variables."
@@ -54,9 +54,9 @@ cd "$TARGET_DIRECTORY/src/"
 # FIXME: insert version check here
 if [ ! -x "$TARGET_DIRECTORY/bin/autoconf" ]; then
     echo "### downloading new automake and autoconf"
-    wget -c ftp://ftp.gnu.org/gnu/autoconf/autoconf-2.53.tar.gz
-    tar --extract --verbose --gzip --file  autoconf-2.53.tar.gz
-    pushd autoconf-2.53
+    wget -c ftp://ftp.gnu.org/gnu/autoconf/autoconf-2.57.tar.gz
+    tar --extract --verbose --gzip --file  autoconf-2.57.tar.gz
+    pushd autoconf-2.57
     ./configure --prefix="$TARGET_DIRECTORY"
     make
     make install
@@ -64,10 +64,10 @@ if [ ! -x "$TARGET_DIRECTORY/bin/autoconf" ]; then
 fi
 
 # FIXME: insert version check here
-if [ ! -x "$TARGET_DIRECTORY/bin/automake" ]; then
-    wget -c ftp://ftp.gnu.org/gnu/automake/automake-1.6.2.tar.gz
-    tar --extract --verbose  --gzip --file automake-1.6.2.tar.gz
-    pushd automake-1.6.2
+if [ ! -x "$TARGET_DIRECTORY/bin/automake-1.7" ]; then
+    wget -c ftp://ftp.gnu.org/gnu/automake/automake-1.7.3.tar.gz
+    tar --extract --verbose  --gzip --file automake-1.7.3.tar.gz
+    pushd automake-1.7.3
     ./configure --prefix="$TARGET_DIRECTORY"
     make
     make install
