@@ -22,8 +22,6 @@
 #include "../xml_file_reader.hxx"
 #include "../worldobjs/groundpiece.hxx"
 #include "../xml_helper.hxx"
-#include "../file_reader.hxx"
-#include "../file_writer.hxx"
 #include "groundpiece_data.hxx"
 
 namespace Pingus {
@@ -63,30 +61,6 @@ void
 GroundpieceData::insert_WorldObjs (World* world)
 {
   world->add_object(new WorldObjs::Groundpiece(*this));
-}
-
-void
-GroundpieceData::serialize(FileWriter& writer)
-{
-  writer.begin_section("groundpiece");
-  writer.write_string("type", Groundtype::type_to_string (gptype));
-  //writer.write_desc  ("desc", desc);
-  writer.write_vector("pos",  pos);
-  writer.end_section();
-}
-
-void
-GroundpieceData::deserialize(FileReader& reader)
-{
-  std::string gptype_str = "default value";
-
-  // Factory in the Reader ensures that we are in the 'groundpiece'
-  // section
-  reader.read_string("type", gptype_str);
-  //reader.read_desc  ("desc", desc);
-  reader.read_vector("pos",  pos);
-
-  gptype = Groundtype::string_to_type (gptype_str);
 }
 
 } // namespace WorldObjsData

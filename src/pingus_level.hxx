@@ -25,10 +25,9 @@
 #include <string>
 #include <map>
 
-class CL_DomNode;
-
 namespace Pingus {
 
+class FileReader;
 class PingusLevelImpl;
 
 /** This class represents a Pingus Level, its metadata and its body
@@ -73,7 +72,7 @@ public:
   const std::string& get_music() const;
 
   /** Returns the body of this file */
-  const CL_DomNode& get_body() const;
+  const FileReader& get_body() const;
 
 private:
   CL_SharedPtr<PingusLevelImpl> impl;

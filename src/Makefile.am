@@ -122,7 +122,9 @@ direction.cxx \
 direction.hxx \
 exit_menu.cxx \
 exit_menu.hxx \
+file_reader_impl.hxx \
 file_reader.hxx \
+file_reader.cxx \
 file_writer.hxx \
 fonts.hxx \
 fonts.cxx \

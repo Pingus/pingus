@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Core/XML/dom_node.h>
+#include "file_reader.hxx"
 #include "pingus_level.hxx"
 
 namespace Pingus {
@@ -106,10 +107,10 @@ PingusLevel::get_music() const
   return impl->music;
 }
 
-const CL_DomNode&
+const FileReader&
 PingusLevel::get_body() const
 {
-  static CL_DomNode node;
+  static FileReader node;
   return node;
 }
 

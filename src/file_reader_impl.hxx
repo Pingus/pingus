@@ -1,7 +1,7 @@
-//  $Id: groundpiece_data.hxx,v 1.10 2003/10/20 13:11:09 grumbel Exp $
-//
+//  $Id$
+// 
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -12,45 +12,29 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+// 
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_GROUNDPIECE_DATA_HXX
-#define HEADER_PINGUS_GROUNDPIECE_DATA_HXX
-
-#include "../vector.hxx"
-#include <ClanLib/Display/sprite.h>
-#include "../libxmlfwd.hxx"
-#include "../res_descriptor.hxx"
-#include "../worldobj_data.hxx"
-#include "../groundtype.hxx"
+#ifndef HEADER_FILE_READER_IMPL_HXX
+#define HEADER_FILE_READER_IMPL_HXX
 
 namespace Pingus {
 
-class FileWriter;
-class FileReader;
-
-namespace WorldObjsData {
-
-class GroundpieceData : public WorldObjData
+/** */
+class FileReaderImpl
 {
 public:
-  ResDescriptor desc;
-  Vector pos;
-
-  Groundtype::GPType gptype;
-
-  GroundpieceData ();
-  GroundpieceData (xmlDocPtr doc, xmlNodePtr cur);
-
-  ~GroundpieceData ();
-
-  void insert_WorldObjs (World*);
+  virtual std::string get_name()                           const =0;
+  virtual bool read_int   (const char* name, int&)         const =0;
+  virtual bool read_float (const char* name, float&)       const =0;
+  virtual bool read_bool  (const char* name, bool&)        const =0;
+  virtual bool read_string(const char* name, std::string&) const =0;
+  virtual bool read_vector(const char* name, Vector&)      const =0;
+  virtual bool read_color (const char* name, CL_Colorf&)   const =0;
 };
 
-} // namespace WorldObjsData
 } // namespace Pingus
 
 #endif

@@ -21,20 +21,34 @@
 #define HEADER_PINGUS_FILE_READER_HXX
 
 #include <string>
-#include "vector.hxx"
+#include <ClanLib/Core/System/sharedptr.h>
+
+class CL_Colorf;
+class Vector;
 
 namespace Pingus {
+
+class FileReaderImpl;
 
 /** Interface to read name/value pairs out of some kind of file or
     structure */
 class FileReader
 {
 public:
-  virtual bool read_int   (const char* name, int&) =0;
-  virtual bool read_float (const char* name, float&) =0;
-  virtual bool read_bool  (const char* name, bool&) =0;
-  virtual bool read_string(const char* name, std::string&) =0;
-  virtual bool read_vector(const char* name, Vector&) =0;
+  FileReader(CL_SharedPtr<FileReaderImpl> impl_);
+  FileReader();
+
+  std::string get_name() const;
+
+  bool read_int   (const char* name, int&);
+  bool read_float (const char* name, float&);
+  bool read_bool  (const char* name, bool&);
+  bool read_string(const char* name, std::string&);
+  bool read_vector(const char* name, Vector&);
+  bool read_color (const char* name, CL_Colorf&);
+  
+private:
+  CL_SharedPtr<FileReaderImpl> impl;
 };
 
 } // namespace Pingus

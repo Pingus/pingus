@@ -22,12 +22,11 @@
 
 #include <ClanLib/Display/color.h>
 #include "xml_helper.hxx"
-#include "file_reader.hxx"
 
 namespace Pingus {
 
 /** */
-class XMLFileReader : public FileReader
+class XMLFileReader
 {
 private:
   /** Pointer to the XML document */

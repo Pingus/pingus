@@ -54,18 +54,7 @@ XMLPLF::XMLPLF (const std::string& arg_filename)
 XMLPLF::~XMLPLF()
 {
   xmlFreeDoc(doc);
-  /*
-  // Free all the allocated memory
-  for(vector<BackgroundData*>::iterator i = backgrounds.begin ();
-  i != backgrounds.end ();
-  i++)
-  delete *i;
 
-  for(vector<WorldObjData*>::iterator i = worldobjs_data.begin ();
-  i != worldobjs_data.end ();
-  i++)
-  delete *i;
-  */
 }
 
 void
