@@ -1,4 +1,4 @@
-//  $Id: surface_background_data.cxx,v 1.7 2003/02/18 17:04:13 grumbel Exp $
+//  $Id: surface_background_data.cxx,v 1.8 2003/02/18 18:50:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,7 +72,7 @@ SurfaceBackgroundData::write_xml (std::ostream& xml)
       << "  <para-y>"    << para_y << "</para-y>\n"
       << "  <stretch-x>" << stretch_x << "</stretch-x>\n"
       << "  <stretch-y>" << stretch_y << "</stretch-y>\n"
-      << "  <keep-aspect>" << keep_aspect << "</keep_aspect>\n";
+      << "  <keep-aspect>" << keep_aspect << "</keep-aspect>\n";
   XMLhelper::write_vector_xml(xml, pos);
   xml << "</background>\n"
       << std::endl;
