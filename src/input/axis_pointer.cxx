@@ -1,4 +1,4 @@
-//  $Id: axis_pointer.cxx,v 1.3 2002/07/08 14:52:04 torangan Exp $
+//  $Id: axis_pointer.cxx,v 1.4 2002/07/09 17:00:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,14 +23,7 @@
 
 namespace Input
 {
-  AxisPointer::AxisPointer(float speed_, Axis* axis1, Axis* axis2) : speed(speed_), axes(2)
-  {
-    assert(axis1 && axis2);
-    axes[0] = axis1;
-    axes[1] = axis2;
-  }
-
-  AxisPointer::AxisPointer(float speed_, std::vector<Axis*> axes_) : speed(speed_), axes(axes_)
+  AxisPointer::AxisPointer(float speed_, const std::vector<Axis*>& axes_) : speed(speed_), axes(axes_)
   {
     assert(axes.size() >= 2);
   }

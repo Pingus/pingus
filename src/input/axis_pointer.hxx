@@ -1,4 +1,4 @@
-//  $Id: axis_pointer.hxx,v 1.3 2002/07/08 14:52:04 torangan Exp $
+//  $Id: axis_pointer.hxx,v 1.4 2002/07/09 17:00:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,11 +23,12 @@
 #include <vector>
 #include "pointer.hxx"
 
-class Axis;
 
-namespace Input
-{
-  class AxisPointer : Pointer {
+namespace Input {
+
+  class Axis;
+
+  class AxisPointer : public Pointer {
   
     private:
 
@@ -39,8 +40,7 @@ namespace Input
       
     public:
 
-      AxisPointer(float speed, Axis* axis1, Axis* axis2);
-      AxisPointer(float speed, std::vector<Axis*> axes_);
+      AxisPointer(float speed, const std::vector<Axis*>& axes_);
 
       virtual float get_x_pos ();
       virtual float get_y_pos ();

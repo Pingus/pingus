@@ -1,4 +1,4 @@
-//  $Id: multiple_button.hxx,v 1.2 2002/07/09 15:03:20 torangan Exp $
+//  $Id: multiple_button.hxx,v 1.3 2002/07/09 17:00:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@
 
 namespace Input {
 
-  class MultipleButton : Button {
+  class MultipleButton : public Button {
   
     private:
       std::vector<Button*> buttons;

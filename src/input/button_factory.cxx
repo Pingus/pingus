@@ -1,4 +1,4 @@
-//  $Id: button_factory.cxx,v 1.1 2002/07/09 15:26:55 torangan Exp $
+//  $Id: button_factory.cxx,v 1.2 2002/07/09 17:00:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,8 +31,6 @@ namespace Input {
 
   Button* ButtonFactory::create(xmlNodePtr cur)
   {
-    cur = cur->children;
-    
     if (xmlIsBlankNode(cur)) 
       cur = cur->next;
 

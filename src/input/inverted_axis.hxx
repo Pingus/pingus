@@ -1,4 +1,4 @@
-//  $Id: inverted_axis.hxx,v 1.2 2002/07/05 10:06:20 torangan Exp $
+//  $Id: inverted_axis.hxx,v 1.3 2002/07/09 17:00:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 
 namespace Input
 {
-  class InvertedAxis : Axis {
+  class InvertedAxis : public Axis {
 
   private:
     Axis* axis;

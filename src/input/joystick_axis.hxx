@@ -1,4 +1,4 @@
-//  $Id: joystick_axis.hxx,v 1.2 2002/07/08 14:49:08 torangan Exp $
+//  $Id: joystick_axis.hxx,v 1.3 2002/07/09 17:00:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 
 namespace Input
 {
-  class JoystickAxis : Axis {
+  class JoystickAxis : public Axis {
 
   private:
     int     id;

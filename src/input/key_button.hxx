@@ -1,4 +1,4 @@
-//  $Id: key_button.hxx,v 1.1 2002/07/04 11:32:18 torangan Exp $
+//  $Id: key_button.hxx,v 1.2 2002/07/09 17:00:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 
 namespace Input {
 
-  class KeyButton : Button {
+  class KeyButton : public Button {
   
     private:
       int button;

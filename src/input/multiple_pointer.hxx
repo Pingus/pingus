@@ -1,4 +1,4 @@
-//  $Id: multiple_pointer.hxx,v 1.1 2002/07/05 11:02:28 torangan Exp $
+//  $Id: multiple_pointer.hxx,v 1.2 2002/07/09 17:00:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,23 +25,26 @@
 
 namespace Input
 {
-  class MultiplePointer : Pointer
-  {
-  private:
-    std::vector<Pointer*> pointers;
-    std::vector<float> x_pos_list;
-    std::vector<float> y_pos_list;
+  class MultiplePointer : public Pointer {
+  
+    private:
+      std::vector<Pointer*> pointers;
+      std::vector<float> x_pos_list;
+      std::vector<float> y_pos_list;
 
-    float x_pos;
-    float y_pos;
+      float x_pos;
+      float y_pos;
 
-  public:
+    public:
 
-    MultiplePointer (std::vector<Pointer*> pointers_);
+      MultiplePointer (const std::vector<Pointer*>& pointers_);
     
-    virtual float get_x_pos ();
-    virtual float get_y_pos ();
-    virtual void  update (float delta);
+      virtual float get_x_pos ();
+      virtual float get_y_pos ();
+    
+      virtual void  set_pos (float x_pos, float y_pos);
+    
+      virtual void  update (float delta);
   };
 }
 

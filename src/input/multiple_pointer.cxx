@@ -1,4 +1,4 @@
-//  $Id: multiple_pointer.cxx,v 1.1 2002/07/05 11:02:28 torangan Exp $
+//  $Id: multiple_pointer.cxx,v 1.2 2002/07/09 17:00:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 
 namespace Input
 {
-  MultiplePointer::MultiplePointer(std::vector<Pointer*> pointers_) : 
+  MultiplePointer::MultiplePointer(const std::vector<Pointer*>& pointers_) : 
                                    pointers(pointers_), x_pos_list(pointers.size()), y_pos_list(pointers.size())
   {
   }
@@ -37,6 +37,13 @@ namespace Input
   {
     return y_pos;
   }
+
+  void
+  MultiplePointer::set_pos (float x_pos, float y_pos)
+  {
+    for (unsigned int i = 0; i < pointers.size(); i++)
+      pointers[i]->set_pos(x_pos, y_pos);
+  }    
 
   void
   MultiplePointer::update(float delta)
