@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_INFO_BOX_HXX
 #define HEADER_PINGUS_WORLDOBJS_INFO_BOX_HXX
 
+#include <ClanLib/Display/sprite.h>
 #include "../worldobj.hxx"
 #include "../editor/sprite_editorobj.hxx"
 
@@ -35,7 +36,7 @@ class InfoBox : public WorldObj
 {
 private:
   WorldObjsData::InfoBoxData* const data;
-  Sprite sprite;
+  CL_Sprite sprite;
   bool is_open;
 
 public:

@@ -21,6 +21,7 @@
 #include "laser_exit_obj.hxx"
 #include "../editor/editor_view.hxx"
 #include "../worldobjsdata/laser_exit_data.hxx"
+#include "../resource.hxx"
 
 namespace Pingus {
 namespace EditorObjs {
@@ -30,7 +31,7 @@ LaserExitObj::LaserExitObj (const WorldObjsData::LaserExitData& data_)
     frame(0)
 {
   data->pos.z = -100;
-  sprite = Sprite("Traps/laser_exit", "traps");
+  sprite = Resource::load_sprite("Traps/laser_exit", "traps");
   //sprite.set_align_center_bottom ();
   pos_ref = &data->pos;
 }

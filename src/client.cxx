@@ -42,7 +42,7 @@ Client::Client (TrueServer * s)
     skip_frame   (0),
     do_replay    (false),
     is_finished  (false),
-    unplayable   ("misc/unplayable2", "core"),
+    unplayable   (Resource::load_sprite("misc/unplayable2", "core")),
     button_panel (0),
     pcounter     (0),
     playfield    (0),
@@ -50,8 +50,6 @@ Client::Client (TrueServer * s)
     small_map    (0),
     hurry_up     (0)
 {
-  unplayable.set_align_center();
-
   Timer timer("Client UI generation");
 
   // These object will get deleted by the gui_manager

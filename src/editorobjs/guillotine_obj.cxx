@@ -21,6 +21,7 @@
 #include "guillotine_obj.hxx"
 #include "../editor/editor_view.hxx"
 #include "../worldobjsdata/guillotine_data.hxx"
+#include "../resource.hxx"
 
 namespace Pingus {
 namespace EditorObjs {
@@ -30,7 +31,7 @@ GuillotineObj::GuillotineObj (const WorldObjsData::GuillotineData& data_)
     frame(0)
 {
   data->pos.z = -100;
-  sprite = Sprite("Traps/guillotineidle", "traps");
+  sprite = Resource::load_sprite("Traps/guillotineidle", "traps");
   pos_ref = &data->pos;
 }
 

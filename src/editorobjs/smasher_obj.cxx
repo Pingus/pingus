@@ -21,6 +21,7 @@
 #include "smasher_obj.hxx"
 #include "../editor/editor_view.hxx"
 #include "../worldobjsdata/smasher_data.hxx"
+#include "../resource.hxx"
 
 namespace Pingus {
 namespace EditorObjs {
@@ -30,7 +31,7 @@ SmasherObj::SmasherObj (const WorldObjsData::SmasherData& data_)
     frame(0)
 {
   data->pos.z = -100;
-  sprite = Sprite("Traps/smasher", "traps");
+  sprite = Resource::load_sprite("Traps/smasher", "traps");
   pos_ref = &data->pos;
 }
 

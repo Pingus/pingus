@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_WORLDOBJSDATA_INFO_BOX_DATA_HXX
 #define HEADER_PINGUS_WORLDOBJSDATA_INFO_BOX_DATA_HXX
 
+#include <string>
 #include "../vector.hxx"
-#include "../sprite.hxx"
 #include "../worldobj_data.hxx"
 #include "../libxmlfwd.hxx"
 
@@ -36,7 +36,6 @@ public:
   std::string info_text;
   Vector pos;
   Vector text_pos;
-  Sprite    sprite;
 
 public:
   InfoBoxData ();

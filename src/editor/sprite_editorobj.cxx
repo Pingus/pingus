@@ -22,6 +22,7 @@
 #include <ClanLib/Display/pixel_buffer.h>
 #include "../math.hxx"
 #include "../res_descriptor.hxx"
+#include "../resource.hxx"
 #include "editor_view.hxx"
 #include "sprite_editorobj.hxx"
 
@@ -40,15 +41,15 @@ SpriteEditorObj::SpriteEditorObj (Vector* arg_pos)
 
 SpriteEditorObj::SpriteEditorObj (const ResDescriptor& desc,
 				  Vector* arg_pos)
-  : sprite (desc.res_name, desc.datafile),
-    pos_ref (arg_pos)
+  : sprite(Resource::load_sprite(desc)),
+    pos_ref(arg_pos)
 {
 }
 
 SpriteEditorObj::SpriteEditorObj (const std::string& sur_name,
 				  const std::string& datafile,
 				  Vector* arg_pos)
-  : sprite (sur_name, datafile),
+  : sprite(Resource::load_sprite(sur_name, datafile)),
     pos_ref (arg_pos)
 {
 }

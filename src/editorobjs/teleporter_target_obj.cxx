@@ -26,12 +26,11 @@ namespace Pingus {
 namespace EditorObjs {
 
 TeleporterTargetObj::TeleporterTargetObj (TeleporterObj* arg_teleporter)
-  : SpriteEditorObj ("teleporter2",
-		     "worldobjs",
-		     &arg_teleporter->get_target_pos_ref()),
+  : SpriteEditorObj("teleporter2",
+                    "worldobjs",
+                    &arg_teleporter->get_target_pos_ref()),
     teleporter(arg_teleporter)
 {
-  sprite.set_align_center();
 }
 
 EditorNS::EditorObj*

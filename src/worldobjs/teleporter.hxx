@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_TELEPORTER_HXX
 #define HEADER_PINGUS_WORLDOBJS_TELEPORTER_HXX
 
+#include <ClanLib/Display/sprite.h>
 #include "../worldobj.hxx"
 
 namespace Pingus {
@@ -34,8 +35,8 @@ class Teleporter : public WorldObj
 {
 private:
   WorldObjsData::TeleporterData* const data;
-  Sprite sprite;
-  Sprite target_sprite;
+  CL_Sprite sprite;
+  CL_Sprite target_sprite;
 
 public:
   Teleporter (const WorldObjsData::TeleporterData& data_);

@@ -18,6 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Display/mouse.h>
+#include <ClanLib/Display/input_event.h>
+#include <ClanLib/Display/keys.h>
 #include <iostream>
 #include <algorithm>
 #include "globals.hxx"

@@ -276,7 +276,7 @@ SmallMap::update (float delta)
 }
 
 void
-SmallMap::draw_sprite(Sprite sprite, Vector pos)
+SmallMap::draw_sprite(CL_Sprite sprite, Vector pos)
 {
   World* world = client->get_server()->get_world();
   float x = x_pos + (pos.x * width  / world->get_colmap()->get_width());

@@ -21,6 +21,7 @@
 #include "../worldobjsdata/hotspot_data.hxx"
 #include "../globals.hxx"
 #include "../gui/graphic_context.hxx"
+#include "../resource.hxx"
 #include "hotspot.hxx"
 
 namespace Pingus {
@@ -28,7 +29,7 @@ namespace WorldObjs {
 
 Hotspot::Hotspot (const WorldObjsData::HotspotData& data_)
   : data(new WorldObjsData::HotspotData(data_)),
-    sprite(data->desc.res_name, data->desc.datafile)
+    sprite(Resource::load_sprite(data->desc))
 {
   if (verbose > 2)
     std::cout << "Creating Hotspot" << std::endl;

@@ -71,9 +71,6 @@ public:
   virtual void draw (CL_Sprite sprite, const Vector& pos) =0;
   virtual void draw (CL_Sprite sprite, const Vector& pos, int frame) =0;
 
-  virtual void draw (Sprite& sprite, const Vector& pos) =0;
-  virtual void draw (Sprite& sprite, const Vector& pos, int frame) =0;
-
   virtual void draw (CL_Surface sur, const Vector& pos);
   virtual void draw (CL_Surface sur, const Vector& pos, int frame);
 

@@ -21,7 +21,6 @@
 #define HEADER_PINGUS_WORLDOBJS_EXIT_HXX
 
 #include "../worldobj.hxx"
-#include "../sprite.hxx"
 
 namespace Pingus {
 
@@ -35,9 +34,9 @@ class Exit : public WorldObj
 {
 private:
   WorldObjsData::ExitData* const data;
-  Sprite sprite;
-  Sprite flag;
-  Sprite smallmap_symbol;
+  CL_Sprite sprite;
+  CL_Sprite flag;
+  CL_Sprite smallmap_symbol;
 
 public:
   Exit (const WorldObjsData::ExitData& data_);

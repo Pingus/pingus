@@ -23,6 +23,7 @@
 #include "../editor/property_window.hxx"
 #include "../editor/generic_property_frame.hxx"
 #include "../editor/editor.hxx"
+#include "../resource.hxx"
 #include "entrance_obj.hxx"
 
 namespace Pingus {
@@ -38,19 +39,18 @@ EntranceObj::EntranceObj (const WorldObjsData::EntranceData& data_)
 
   if (data->type == "generic")
     {
-      sprite = Sprite("Entrances/generic", "entrances");
-      sprite.set_align_center_bottom();
+      sprite = Resource::load_sprite("Entrances/generic", "entrances");
     }
   else if (data->type == "woodthing")
     {
-      sprite = Sprite("Entrances/woodthing_mov", "entrances");
-      sprite.set_align(0  - sprite.get_width()/2,
-		       32 - sprite.get_height());
+      sprite = Resource::load_sprite("Entrances/woodthing_mov", "entrances");
+      /*sprite.set_align(0  - sprite.get_width()/2,
+        32 - sprite.get_height());*/
     }
   else if (data->type == "cloud")
     {
-      sprite = Sprite("Entrances/cloud", "entrances");
-      sprite.set_align(-115, -75);
+      sprite = Resource::load_sprite("Entrances/cloud", "entrances");
+      //sprite.set_align(-115, -75);
     }
   else
     {

@@ -92,9 +92,6 @@ public:
 
   void clear (float r, float g, float b);
 
-  void draw(Pingus::Sprite&, const Pingus::Vector&);
-  void draw(Pingus::Sprite&, const Pingus::Vector&, int);
-
   void draw (CL_Sprite sprite, const Vector& pos);
   void draw (CL_Sprite, const Pingus::Vector&, int);
 

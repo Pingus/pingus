@@ -21,6 +21,7 @@
 #include "fake_exit_obj.hxx"
 #include "../editor/editor_view.hxx"
 #include "../worldobjsdata/fake_exit_data.hxx"
+#include "../resource.hxx"
 
 namespace Pingus {
 namespace EditorObjs {
@@ -30,9 +31,8 @@ FakeExitObj::FakeExitObj (const WorldObjsData::FakeExitData& data_)
     frame(0)
 {
   data->pos.z = -100;
-  sprite = Sprite("Traps/fake_exit", "traps");
-  sprite.set_align_center_bottom ();
-
+  sprite = Resource::load_sprite("Traps/fake_exit", "traps");
+ 
   pos_ref = &data->pos;
 }
 

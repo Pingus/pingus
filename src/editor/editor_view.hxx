@@ -29,8 +29,6 @@ class CL_Sprite;
 
 namespace Pingus {
 
-class Sprite;
-
 namespace EditorNS {
 
 /** The EdtiorView is basically the graphic context to which the
@@ -84,8 +82,6 @@ public:
 
   void draw (CL_Sprite& sur, const Vector& pos, int frame);
   void draw (CL_Sprite& sur, const Vector& pos);
-  void draw (Sprite& sprite, const Vector& pos);
-  void draw (Sprite& sprite, const Vector& pos, int frame);
   void draw (CL_Surface& sur, const Vector& pos);
   void draw (CL_Surface& sur, const Vector& pos, int frame);
   void draw (CL_Surface& sur, int x_pos, int y_pos);

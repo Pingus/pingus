@@ -21,7 +21,6 @@
 #define HEADER_PINGUS_TRAPS_FAKE_EXIT_HXX
 
 #include "../worldobj.hxx"
-#include "../sprite.hxx"
 
 namespace Pingus {
 
@@ -41,7 +40,7 @@ class FakeExit : public WorldObj
 private:
   WorldObjsData::FakeExitData* const data;
   bool smashing;
-  Sprite smallmap_symbol;
+  CL_Sprite smallmap_symbol;
 
 public:
   FakeExit (const WorldObjsData::FakeExitData& data_);

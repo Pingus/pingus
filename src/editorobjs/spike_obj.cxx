@@ -21,6 +21,7 @@
 #include "spike_obj.hxx"
 #include "../editor/editor_view.hxx"
 #include "../worldobjsdata/spike_data.hxx"
+#include "../resource.hxx"
 
 namespace Pingus {
 namespace EditorObjs {
@@ -29,7 +30,7 @@ SpikeObj::SpikeObj (const WorldObjsData::SpikeData& data_)
   : data(new WorldObjsData::SpikeData(data_))
 {
   data->pos.z = -100;
-  sprite = Sprite("Traps/spike", "traps");
+  sprite  = Resource::load_sprite("Traps/spike", "traps");
   pos_ref = &(data->pos);
 }
 

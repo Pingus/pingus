@@ -27,6 +27,7 @@
 #include "../pingu.hxx"
 #include "../worldobjsdata/exit_data.hxx"
 #include "../smallmap.hxx"
+#include "../resource.hxx"
 #include "exit.hxx"
 
 namespace Pingus {
@@ -34,18 +35,12 @@ namespace WorldObjs {
 
 Exit::Exit (const WorldObjsData::ExitData& data_)
   : data(new WorldObjsData::ExitData(data_)),
-    sprite(data->desc.res_name, data->desc.datafile,
-           10.0f),
-    flag("misc/flag" + CL_String::to(data->owner_id), "core"),
-    smallmap_symbol("misc/smallmap_exit", "core")
+    sprite(Resource::load_sprite(data->desc)),
+    flag(Resource::load_sprite("misc/flag" + CL_String::to(data->owner_id), "core")),
+    smallmap_symbol(Resource::load_sprite("misc/smallmap_exit", "core"))
 {
-  flag.set_align_center_bottom();
   if (verbose > 2)
     std::cout << "Creating Exit" << std::endl;
-
-  sprite.set_align_center_bottom();
-
-  smallmap_symbol.set_align_center_bottom();
 
   if (data->use_old_pos_handling) {
     data->pos.x += sprite.get_width() / 2;
@@ -62,7 +57,7 @@ Exit::~Exit ()
 void
 Exit::on_startup ()
 {
-  CL_PixelBuffer pixelbuffer = sprite.get_sprite().get_frame_surface(0).get_pixeldata();
+  CL_PixelBuffer pixelbuffer = sprite.get_frame_surface(0).get_pixeldata();
   world->get_colmap()->remove(pixelbuffer,
 			      static_cast<int>(data->pos.x) - sprite.get_width()/2,
 			      static_cast<int>(data->pos.y) - sprite.get_height());

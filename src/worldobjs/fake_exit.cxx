@@ -23,6 +23,7 @@
 #include "../world.hxx"
 #include "../worldobjsdata/fake_exit_data.hxx"
 #include "../smallmap.hxx"
+#include "../resource.hxx"
 #include "fake_exit.hxx"
 
 namespace Pingus {
@@ -31,7 +32,7 @@ namespace WorldObjs {
 FakeExit::FakeExit (const WorldObjsData::FakeExitData& data_)
   : data (new WorldObjsData::FakeExitData(data_)),
     smashing(false),
-    smallmap_symbol("misc/smallmap_exit", "core")
+    smallmap_symbol(Resource::load_sprite("misc/smallmap_exit", "core"))
 {
   data->counter.set_size(data->surface.get_frame_count());
   data->counter.set_type(GameCounter::once);
@@ -39,8 +40,6 @@ FakeExit::FakeExit (const WorldObjsData::FakeExitData& data_)
   data->counter = data->surface.get_frame_count() - 1;
 
   data->pos -= Vector(data->surface.get_width ()/2, data->surface.get_height ());
-
-  smallmap_symbol.set_align_center_bottom();
 }
 
 FakeExit::~FakeExit()

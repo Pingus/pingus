@@ -23,7 +23,6 @@
 #include "menu_background.hxx"
 #include "exit_menu.hxx"
 #include "pingus_menu.hxx"
-#include "sprite.hxx"
 
 namespace Pingus {
 

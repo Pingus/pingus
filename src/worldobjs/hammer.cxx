@@ -22,6 +22,7 @@
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
 #include "../worldobjsdata/hammer_data.hxx"
+#include "../resource.hxx"
 #include "hammer.hxx"
 
 namespace Pingus {
@@ -30,7 +31,7 @@ namespace WorldObjs {
 Hammer::Hammer (const WorldObjsData::HammerData& data_)
   : data(new WorldObjsData::HammerData(data_))
 {
-  sprite = Sprite("traps/hammer");
+  sprite = Resource::load_sprite("traps/hammer");
 }
 
 Hammer::~Hammer ()
@@ -47,7 +48,7 @@ Hammer::get_z_pos () const
 void
 Hammer::draw (GraphicContext& gc)
 {
-  gc.draw (sprite, data->pos);
+  gc.draw(sprite, data->pos);
 }
 
 void
@@ -55,7 +56,7 @@ Hammer::update ()
 {
   sprite.update();
 
-  if (sprite.finished())
+  if (sprite.is_finished())
     {
       PinguHolder* holder = world->get_pingus();
 
@@ -69,7 +70,7 @@ Hammer::update ()
 		  pingu->set_action(Actions::Splashed);
 	    }
 	}
-      sprite.reset();
+      sprite.restart();
     }
 }
 

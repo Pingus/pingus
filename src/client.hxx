@@ -21,9 +21,9 @@
 #define HEADER_PINGUS_CLIENT_HXX
 
 #include <ClanLib/Signals/slot.h>
+#include <ClanLib/Display/sprite.h>
 #include <ClanLib/Display/input_device.h>
 #include "gui/gui_screen.hxx"
-#include "sprite.hxx"
 
 class CL_InputEvent;
 
@@ -63,7 +63,7 @@ private:
   bool do_replay;
   bool is_finished;
 
-  Sprite unplayable;
+  CL_Sprite unplayable;
 
   ButtonPanel*   button_panel;
   PingusCounter* pcounter;

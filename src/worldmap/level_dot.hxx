@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDMAP_LEVEL_DOT_HXX
 #define HEADER_PINGUS_WORLDMAP_LEVEL_DOT_HXX
 
-#include "../sprite.hxx"
+#include <ClanLib/Display/sprite.h>
 #include "../plf_handle.hxx"
 #include "dot.hxx"
 

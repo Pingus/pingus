@@ -20,7 +20,6 @@
 #include <iostream>
 #include <ClanLib/Core/Math/rect.h>
 #include <ClanLib/display.h>
-#include "../sprite.hxx"
 #include "../gui/display.hxx"
 #include "editor_view.hxx"
 #include "../math.hxx"
@@ -175,24 +174,6 @@ EditorView::draw (CL_Sprite& sur, const Vector& pos)
 {
   sur.draw(int(pos.x + get_x_offset () + center.x),
            int(pos.y + get_y_offset () + center.y));
-}
-
-void
-EditorView::draw (Sprite& sprite, const Vector& pos)
-{
-  draw(sprite.get_sprite(), pos);
-}
-
-void
-EditorView::draw (Sprite& sprite, const Vector& pos, int frame)
-{
-#ifdef CLANLIB_0_6
-  CL_Surface sur (sprite.get_surface ());
-  draw (sur,
-	(int) pos.x + sprite.get_x_align (),
-	(int) pos.y + sprite.get_y_align (),
-	frame);
-#endif
 }
 
 void

@@ -19,6 +19,7 @@
 
 #include <iostream>
 #include "../xml_helper.hxx"
+#include "../resource.hxx"
 #include "editor_view.hxx"
 #include "weather_obj.hxx"
 
@@ -33,16 +34,16 @@ WeatherObj::WeatherObj(const std::string& type_)
 
   if (type == "rain-generator")
     {
-      sprite = Sprite("editor/weather_rain", "core");
+      sprite = Resource::load_sprite("editor/weather_rain", "core");
     }
   else if (type == "snow-generator")
     {
-      sprite = Sprite("editor/weather_snow", "core");
+      sprite = Resource::load_sprite("editor/weather_snow", "core");
     }
   else
     {
       std::cout << "WeatherObj: Unknown weather type: " << type << std::endl;
-      sprite = Sprite("editor/weather_rain", "core");
+      sprite = Resource::load_sprite("editor/weather_rain", "core");
     }
 
   pos_ref = &pos;

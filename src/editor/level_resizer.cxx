@@ -29,8 +29,6 @@ namespace EditorNS {
 LevelResizer::LevelResizer(ObjectManager* m)
   : SpriteEditorObj("cursors/scroll_cur", "core", &pos), obj_manager (m), dragged(false)
 {
-  sprite.set_align_center();
-
   pos.x = obj_manager->get_width();
   pos.y = obj_manager->get_height();
 }

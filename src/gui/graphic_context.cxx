@@ -19,7 +19,8 @@
 
 #include <assert.h>
 #include <iostream>
-#include "../sprite.hxx"
+#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/sprite.h>
 #include "graphic_context.hxx"
 
 namespace Pingus {

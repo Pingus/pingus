@@ -49,18 +49,7 @@ ActionButton::init(int x, int y, ActionName name_, int owner_id)
   font   = Fonts::pingus_small;
   font_b = Fonts::pingus_large;
 
-  sprite = Sprite("pingus/" + action_to_string(name) + "/right");
-
-  // FIXME: Big fat hack
-  if (   name == Digger  || name == Bomber
-      || name == Floater || name == Blocker)
-    {
-      is_multi_direct = false;
-    }
-  else
-    {
-      is_multi_direct = true;
-    }
+  sprite = Resource::load_sprite("pingus/" + action_to_string(name) + "/right");
 }
 
 bool
@@ -133,8 +122,6 @@ VerticalActionButton::draw (GraphicContext& gc)
       }
     }
 
-  if (is_multi_direct)
-    sprite.set_direction(Sprite::RIGHT);
   gc.draw(sprite, Vector(x_pos + 20, y_pos + 32));
 
   CL_Font myfont  = font;
@@ -174,7 +161,7 @@ ArmageddonButton::ArmageddonButton (TrueServer* s, int x, int y)
     backgroundhl(Resource::load_sprite("buttons/hbuttonbg", "core"))
 {
   pressed      = false;
-  sprite       = Sprite("buttons/armageddon_anim", "core");
+  sprite       = Resource::load_sprite("buttons/armageddon_anim", "core");
 }
 
 ArmageddonButton::~ArmageddonButton () { }
@@ -200,7 +187,7 @@ ArmageddonButton::draw (GraphicContext& gc)
 void
 ArmageddonButton::update (float delta)
 {
-  sprite.update(0.010f); // FIXME: Dirty hack
+  sprite.update(delta);
 
   if (pressed)
     {

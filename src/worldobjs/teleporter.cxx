@@ -22,6 +22,7 @@
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
+#include "../resource.hxx"
 #include "../worldobjsdata/teleporter_data.hxx"
 #include "teleporter.hxx"
 
@@ -30,15 +31,9 @@ namespace WorldObjs {
 
 Teleporter::Teleporter (const WorldObjsData::TeleporterData& data_)
   : data(new WorldObjsData::TeleporterData(data_)),
-    sprite("teleporter", "worldobjs", 20.0f, Sprite::NONE, Sprite::ONCE),
-    target_sprite("teleportertarget", "worldobjs", 15.0f, Sprite::NONE, Sprite::ONCE)
+    sprite(Resource::load_sprite("teleporter", "worldobjs")),
+    target_sprite(Resource::load_sprite("teleportertarget", "worldobjs"))
 {
-  sprite.set_align_center_bottom();
-  target_sprite.set_align_center();
-
-  //FIXME: we need a Sprite::set_frame()
-
-  //std::cout << "Teleporter: pos: " << data->pos.x << " "  << data->pos.y << " " << data->pos.z << std::endl;
 }
 
 Teleporter::~Teleporter ()
@@ -73,8 +68,8 @@ Teleporter::update ()
 	     && (*pingu)->get_y() > data->pos.y - 52 && (*pingu)->get_y() < data->pos.y)
 	{
 	  (*pingu)->set_pos (data->target_pos.x, data->target_pos.y);
-	  sprite.reset ();
-          target_sprite.reset ();
+	  sprite.restart();
+          target_sprite.restart();
 	}
     }
 }

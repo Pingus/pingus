@@ -21,7 +21,6 @@
 #define HEADER_PINGUS_WORLDOBJSDATA_TELEPORTER_DATA_HXX
 
 #include "../vector.hxx"
-#include "../sprite.hxx"
 #include "../worldobj_data.hxx"
 #include "../libxmlfwd.hxx"
 

@@ -21,9 +21,10 @@
 #define HEADER_PINGUS_ACTION_BUTTON_HXX
 
 #include <ClanLib/Display/sprite.h>
+#include <ClanLib/Display/font.h>
 #include <string>
 #include "pingu_enums.hxx"
-#include "sprite.hxx"
+#include "state_sprite.hxx"
 #include "gui/component.hxx"
 
 class CL_Font;
@@ -46,7 +47,7 @@ private:
   int   y_pos;
   bool  pressed;
   float press_time;
-  Sprite sprite;
+  CL_Sprite sprite;
   CL_Sprite background;
   CL_Sprite backgroundhl;
 
@@ -130,7 +131,7 @@ private:
 class ActionButton : public GUI::Component
 {
 protected:
-  Sprite sprite;
+  CL_Sprite sprite;
   int x_pos;
   int y_pos;
   CL_Font    font;

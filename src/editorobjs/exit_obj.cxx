@@ -29,7 +29,6 @@ ExitObj::ExitObj (const WorldObjsData::ExitData& data_)
     data(new WorldObjsData::ExitData(data_))
 {
   pos_ref = &data->pos;
-  sprite.set_align_center_bottom();
 
   if (data->use_old_pos_handling)
     {

@@ -25,6 +25,7 @@
 #include "../fonts.hxx"
 #include "../world.hxx"
 #include "../worldobjsdata/info_box_data.hxx"
+#include "../resource.hxx"
 #include "info_box.hxx"
 
 namespace Pingus {
@@ -32,10 +33,9 @@ namespace WorldObjs {
 
 InfoBox::InfoBox (const WorldObjsData::InfoBoxData& data_)
   : data(new WorldObjsData::InfoBoxData(data_)),
-    sprite("infobox", "worldobjs"),
+    sprite(Resource::load_sprite("infobox", "worldobjs")),
     is_open (false)
 {
-  sprite.set_align_center_bottom();
 }
 
 InfoBox::~InfoBox ()
@@ -57,7 +57,7 @@ InfoBox::draw (GraphicContext& gc)
       int width = Fonts::pingus_small.bounding_rect(0, 0, data->info_text).get_width();
       int border = 6;
       gc.draw_line(data->pos, data->pos + Vector(0, 0 - 100), 0.0f, 1.0f, 0.0f, 1.0f);
-      gc.draw(data->sprite, data->pos);
+      gc.draw(sprite, data->pos);
       CL_Display::fill_rect(CL_Rect(x_pos - width/2 - border,
                                     y_pos - border,
                                     x_pos + width/2 + border,
@@ -67,14 +67,14 @@ InfoBox::draw (GraphicContext& gc)
     }
   else
     {
-      gc.draw(data->sprite, data->pos);
+      gc.draw(sprite, data->pos);
     }
 }
 
 void
 InfoBox::update ()
 {
-  data->sprite.update();
+  sprite.update();
 
   PinguHolder* holder = world->get_pingus();
   for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)

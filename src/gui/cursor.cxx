@@ -19,14 +19,14 @@
 
 #include "../input/controller.hxx"
 #include "../input/pointer.hxx"
+#include "../resource.hxx"
 #include "cursor.hxx"
 
 namespace Pingus {
 
 Cursor::Cursor (std::string ident, std::string datafile)
-  : sprite (ident, datafile, 15.0f)
+  : sprite(Resource::load_sprite(ident, datafile))
 {
-  sprite.set_align_center();
 }
 
 Cursor::~Cursor ()

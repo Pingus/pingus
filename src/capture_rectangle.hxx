@@ -20,8 +20,6 @@
 #ifndef HEADER_PINGUS_CAPTURE_RECTANGLE_HXX
 #define HEADER_PINGUS_CAPTURE_RECTANGLE_HXX
 
-#include "sprite.hxx"
-
 class CL_Font;
 
 namespace Pingus {

@@ -21,6 +21,7 @@
 #include "bumper_obj.hxx"
 #include "../editor/editor_view.hxx"
 #include "../worldobjsdata/bumper_data.hxx"
+#include "../resource.hxx"
 
 namespace Pingus {
 namespace EditorObjs {
@@ -32,8 +33,7 @@ BumperObj::BumperObj (const WorldObjsData::BumperData& data_)
     frame(0)
 {
   data->pos.z = -100;
-  sprite = Sprite("Traps/bumper", "traps");
-  sprite.set_align_center_bottom();
+  sprite = Resource::load_sprite("Traps/bumper", "traps");
 
   pos_ref = &data->pos;
 }

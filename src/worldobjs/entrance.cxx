@@ -26,6 +26,7 @@
 #include "../game_time.hxx"
 #include "../worldobjsdata/entrance_data.hxx"
 #include "../smallmap.hxx"
+#include "../resource.hxx"
 #include "entrance.hxx"
 
 namespace Pingus {
@@ -33,10 +34,9 @@ namespace WorldObjs {
 
 Entrance::Entrance (const WorldObjsData::EntranceData& data_)
   : data(new WorldObjsData::EntranceData(data_)),
-    smallmap_symbol("misc/smallmap_entrance", "core"),
+    smallmap_symbol(Resource::load_sprite("misc/smallmap_entrance", "core")),
     last_release(150 - data->release_rate) // wait ~2sec at startup to allow a 'lets go' sound
 {
-  smallmap_symbol.set_align_center_bottom();
   if (verbose > 2)
     std::cout << "Creating Entrance" << std::endl;
 }

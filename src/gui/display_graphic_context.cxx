@@ -20,10 +20,10 @@
 #include <iostream>
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Display/font.h>
+#include <ClanLib/Display/sprite.h>
 #include <config.h>
 #include "display.hxx"
 #include "display_graphic_context.hxx"
-#include "../sprite.hxx"
 #include "../math.hxx"
 
 namespace Pingus {
@@ -158,18 +158,6 @@ void
 DisplayGraphicContext::clear (float r, float g, float b)
 {
   CL_Display::clear(Display::to_color(r, g, b, 1.0f));
-}
-
-void
-DisplayGraphicContext::draw(Pingus::Sprite& sprite, const Pingus::Vector& pos)
-{
-  draw(sprite.get_sprite(), pos);
-}
-
-void
-DisplayGraphicContext::draw(Pingus::Sprite& sprite, const Pingus::Vector& pos, int frame)
-{
-  draw(sprite.get_sprite(), pos, frame);
 }
 
 void

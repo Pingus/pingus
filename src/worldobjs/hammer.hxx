@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_HAMMER_HXX
 #define HEADER_PINGUS_WORLDOBJS_HAMMER_HXX
 
-#include "../sprite.hxx"
 #include "../worldobj.hxx"
 
 namespace Pingus {
@@ -37,7 +36,7 @@ class Hammer : public WorldObj
 {
 private:
   WorldObjsData::HammerData* const data;
-  Sprite sprite;
+  CL_Sprite sprite;
 
 public:
   Hammer (const WorldObjsData::HammerData& data_);

@@ -21,7 +21,6 @@
 #define HEADER_PINGUS_ENTRANCE_HXX
 
 #include <ClanLib/Display/sprite.h>
-#include "../sprite.hxx"
 #include "../worldobj.hxx"
 
 namespace Pingus {
@@ -41,7 +40,7 @@ class Entrance : public WorldObj
 protected:
   WorldObjsData::EntranceData* const data;
 
-  Sprite smallmap_symbol;
+  CL_Sprite smallmap_symbol;
   CL_Sprite surface;
   int        last_release;
 

@@ -20,8 +20,9 @@
 #ifndef HEADER_PINGUS_EDITOR_SPRITE_EDITOROBJ_HXX
 #define HEADER_PINGUS_EDITOR_SPRITE_EDITOROBJ_HXX
 
-#include "../sprite.hxx"
+#include <ClanLib/Display/sprite.h>
 #include "rect_editorobj.hxx"
+#include "../res_descriptor.hxx"
 
 namespace Pingus {
 
@@ -32,7 +33,7 @@ namespace EditorNS {
 class SpriteEditorObj : public RectEditorObj
 {
 protected:
-  Sprite sprite;
+  CL_Sprite sprite;
 
   /** Pointer to the position member of the child object
 
