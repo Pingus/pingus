@@ -1,4 +1,4 @@
-//  $Id: digger.cc,v 1.5 2000/03/01 21:15:12 grumbel Exp $
+//  $Id: digger.cc,v 1.6 2000/04/10 21:24:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,7 +71,7 @@ bool
 Digger::have_something_to_dig()
 {
   return (rel_getpixel(0, -1) != ColMap::NOTHING
-	  && rel_getpixel(0, -1) != ColMap::SOLID);
+	  && !(rel_getpixel(0, -1) & ColMap::SOLID));
 }
 
 void
