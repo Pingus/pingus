@@ -1,0 +1,37 @@
+global {
+	start_x_pos = 950;
+	start_y_pos = 185;
+	levelname = "Level 1";
+	description = 
+"This level demonstrates the woodthing entrance.
+Its is not meant to be finished or playable.
+";
+}
+
+ground {
+	maptype = "SPOT";
+	data    = (file)"snow.psm";
+	width   = 1504;
+	height  = 544;
+	colmap  = (auto);
+}
+
+background {
+	image = (resource)"Game/clouds";
+	dim = "1.0";
+	scroll_x = 0;
+	scroll_y = 0;
+}
+
+buttons {
+	basher  = 20;
+	blocker = 20;
+	bomber  = 20;
+	bridger = 20;
+	climber = 20;
+	digger  = 20;
+	floater = 20;
+	miner   = 20;
+}
+
+/* EOF */

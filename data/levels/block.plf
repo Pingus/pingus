@@ -1,0 +1,75 @@
+global {
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "Hard work to dig!";
+  description = "This level demonstrates the woodthing entrance.
+Its is not meant to be finished or playable.
+";
+  number_of_pingus = 100;
+  number_to_save = 50;
+}
+
+ground {
+  maptype = "SPOT";
+  data    = (file)"block.psm";
+  width   = 1728;
+  height  = 864;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource)"Textures/rockagglo";
+  dim = "0.5";
+  scroll_x = 0;
+  scroll_y = 0;
+}
+
+buttons {
+  basher  = 20;
+  blocker = 20;
+  bomber  = 20;
+  bridger = 20;
+  climber = 20;
+  digger  = 20;
+  floater = 20;
+  miner   = 20;
+}
+
+entrance {
+  type  = woodthing;
+  x_pos = 323;
+  y_pos = 331;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+exit {
+  image = (resource)"Exits/stone";
+  x_pos = 1478;
+  y_pos = 597;
+  z_pos = 0;
+}
+
+exit {
+  image = (resource)"Exits/stone";
+  x_pos = 1182;
+  y_pos = 216;
+  z_pos = 0;
+}
+
+hotspot {
+  image = (resource)"Entrances/woodthing_nmov";
+  x_pos = 247;
+  y_pos = 196;
+  z_pos = 100;
+}
+
+trap {
+  name = "spike";
+  x_pos = 1405;
+  y_pos = 624;
+  z_pos = 100;
+}
+
+/* EOF */

@@ -1,0 +1,13 @@
+ground : (resource:global.dat)GroundPieces/Test/test1 : 223 : 205;
+ground : (resource:global.dat)GroundPieces/Test/test1 : 399 : 205;
+ground : (resource:global.dat)GroundPieces/Test/test2 : 198 : 332;
+ground : (resource:global.dat)GroundPieces/Test/test3 : 607 : 304;
+ground : (resource:global.dat)GroundPieces/Test/test3 : 311 : 208;
+ground : (resource:global.dat)GroundPieces/Test/test3 : 172 : 355;
+ground : (resource:global.dat)GroundPieces/Test/test3 : 259 : 355;
+ground : (resource:global.dat)GroundPieces/Test/test3 : 346 : 355;
+ground : (resource:global.dat)GroundPieces/Test/test3 : 85 : 355;
+ground : (resource:global.dat)GroundPieces/Test/test3 : 533 : 340;
+ground : (resource:global.dat)GroundPieces/Test/test3 : 433 : 355;
+ground : (resource:global.dat)GroundPieces/Test/test4 : 489 : 338;
+ground : (resource:global.dat)GroundPieces/Test/test5 : 377 : 321;

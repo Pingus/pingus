@@ -1,0 +1,183 @@
+
+   [ [1]Europe | [2]USA ]
+   [ [3]What is Pingus? | [4]Screenshots | [5]Development | [6]Download |
+   [7]FAQ | [8]History | [9]Task List | [10]Links ]
+   
+                       FAQ - Frequently Asked Questions
+                                       
+General
+
+   Question:
+   
+   Pingus didn't started, it failed with some wired assertion in Hermes.
+   
+   Answer:
+   
+   Please update to the newest version of Hermes, which is available at
+   [11]http://hermes.terminal.at.
+   
+   Question:
+   
+   Something went wrong while compiling or running Pingus, what should I
+   do?
+   
+   Answer:
+   
+   The chances are good that you discovered a bug, so report is to
+   [12]grumbel@gmx.de or the Pingus mailing list. Please try to include
+   as much details as possible into your report:
+     * Which display target did you choose?
+     * When did the error occured exactly?
+     * If the configure script fails or the complilation failed, please
+       attach the file config.log to your email.
+     * If Pingus segfault, than also add the backtrace
+            ____________________________________________________
+   
+   Question:
+   
+   Pingus 0.2.2 fails to compile:
+        In file included from PingusSpotMap.cc:20:
+        blitter.hh:24: `CL_LockableSurface' was not declared in this scope
+        blitter.hh:24: `provider' was not declared in this scope
+        blitter.hh:24: parse error before `*'
+
+
+   Answer:
+   
+   Sorry there are some problems with the Pingus 0.2.2 release. Pingus
+   0.2.2 won't compile with ClanLib 0.1.18.
+   But there is a simple workaround:
+   Add the following line to the middle of
+   /usr/local/include/ClanLib/clanlib.h or where ever you installed
+   ClanLib:
+                #include "Layer1/Display/API/lockable_surface.h"
+        
+
+   After that try again to compile Pingus.
+            ____________________________________________________
+   
+   Question:
+   
+   Where can I download the CVS version of ClanLib, I can't find it on
+   the ClanLib page. Can You give me the URL?
+   
+   Answer:
+   
+   No, a CVS version cannot be downloaded in a normal way. CVS is a
+   system to coordinate develoment of different programmers. To get a
+   snapshot of a CVS version you have to do a checkout with cvs. Please
+   read the infos given on the ClanLib page in the download section.
+            ____________________________________________________
+   
+   Question:
+   
+   What the hell is lemmings, I haven't heard anything about it, can you
+   give me a hint?
+   
+   Answer:
+   
+   Have a look at the Lemmings pages on the [13]Links page. For example
+   the site [14]"The World of the Lemmings" is a good place to start.
+            ____________________________________________________
+   
+   Question:
+   
+   I get, after typing 'pingus' a message like:
+   libclan.so can't find file
+   
+   Answer:
+   
+   You forgot to run ldconfig after building ClanLib, so run ldconfig and
+   redo a make in the pingus diretory, because the build may be
+   incomplete.
+            ____________________________________________________
+   
+   Question:
+   
+   I have installed ClanLib, but I still get the following message while
+   running configure:
+checking for a BSD compatible install... /usr/bin/install -c
+checking whether make sets ${MAKE}... (cached) yes
+checking for ranlib... ranlib
+checking how to run the C++ preprocessor... c++ -E
+checking for ClanLib/clanlib.h... yes
+checking for main in -lclan... no
+Please get ClanLib from http://www.clanlib.org
+
+
+   Answer:
+   
+   You need to run ldconfig after the make install of ClanLib. If that
+   didn't help ensure that you have /usr/local/lib in your
+   /etc/ld.so.conf. You you still can't configure pingus, please have a
+   look at the file config.log. Mail it if you can't find out what is
+   going on.
+            ____________________________________________________
+   
+Development
+
+   Question:
+   Pingus is a nice project how can I help?
+   
+   Answer:
+   
+   Of coures, for a start have a look at the [15]development section of
+   this page, for information, how you can help with the development. The
+   best to do, is first subscribe to the mailing list and then have a
+   look at the [16]task list
+            ____________________________________________________
+   
+   Question:
+   
+   Why does Pingus use an uncommon libary like [17]ClanLib? Nobody has
+   that libary and it makes compiling much harder?
+   
+   Answer:
+   
+   At the moment there aren't any common game programming libaries for
+   linux. [18]ClanLib provides some nice features, like different display
+   target (window, fullscreen, etc.) and at the moment it is the only
+   portable high level 2D C++ libary that I know.
+   
+   [ [19]What is Pingus? | [20]Screenshots | [21]Development |
+   [22]Download | [23]FAQ | [24]History | [25]Task List | [26]Links ]
+   [ [27]Europe | [28]USA ]
+   
+                   Copyright © 1999 [29]Ingo Ruhnke, [30]<grumbel@gmx.de>
+                                    Last update: Thu Sep 30 13:19:20 1999
+                                                                         
+            This page was automatically generated with [31]WML.
+
+References
+
+   1. http://dark.x.dtu.dk/~grumbel/pingus/
+   2. http://pingus.seul.org/
+   3. file://localhost/home/ingo/homepage/pingus/index.html
+   4. file://localhost/home/ingo/homepage/pingus/screenshots.html
+   5. file://localhost/home/ingo/homepage/pingus/development.html
+   6. file://localhost/home/ingo/homepage/pingus/download.html
+   7. file://localhost/home/ingo/homepage/pingus/faq.html
+   8. file://localhost/home/ingo/homepage/pingus/history.html
+   9. file://localhost/home/ingo/homepage/pingus/tasks.html
+  10. file://localhost/home/ingo/homepage/pingus/links.html
+  11. http://hermes.terminal.at/
+  12. mailto:grumbel@gmx.de
+  13. file://localhost/home/ingo/homepage/pingus/links.html
+  14. http://www.kallex.de/lemmings/
+  15. file://localhost/home/ingo/homepage/pingus/development.html
+  16. file://localhost/home/ingo/homepage/pingus/tasks.html
+  17. http://www.clanlib.org/
+  18. http://www.clanlib.org/
+  19. file://localhost/home/ingo/homepage/pingus/index.html
+  20. file://localhost/home/ingo/homepage/pingus/screenshots.html
+  21. file://localhost/home/ingo/homepage/pingus/development.html
+  22. file://localhost/home/ingo/homepage/pingus/download.html
+  23. file://localhost/home/ingo/homepage/pingus/faq.html
+  24. file://localhost/home/ingo/homepage/pingus/history.html
+  25. file://localhost/home/ingo/homepage/pingus/tasks.html
+  26. file://localhost/home/ingo/homepage/pingus/links.html
+  27. http://dark.x.dtu.dk/~grumbel/pingus/
+  28. http://pingus.seul.org/
+  29. http://privat.schlund.de/grumbel/
+  30. mailto:grumbel@gmx.de?subject=[Pingus]
+  31. http://www.engelschall.com/sw/wml/

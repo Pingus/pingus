@@ -1,0 +1,9 @@
+ground : (resource:global.dat)GroundPieces/Jungle/branch1 : -4 : 228;
+ground : (resource:global.dat)GroundPieces/Jungle/branch1 : 421 : 327;
+ground : (resource:global.dat)GroundPieces/Jungle/branch1 : 730 : 378;
+ground : (resource:global.dat)GroundPieces/Jungle/branch2 : 469 : 149;
+ground : (resource:global.dat)Hotspots/stone0 : 649 : 246;
+ground : (resource:global.dat)Hotspots/stone2 : -34 : 187;
+ground : (resource:global.dat)Hotspots/colum : 1069 : 318;
+ground : (resource:global.dat)Hotspots/colum : 1069 : 502;
+ground : (resource:global.dat)Hotspots/colum : 1069 : 686;

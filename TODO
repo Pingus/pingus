@@ -1,0 +1,82 @@
+Last updated: Sat Jul 31 15:11:43 1999
+
+For 0.3.0
+~~~~~~~~~
+* fixed Cursor keys for scrolling
+* fixed PgUp/PgDown for zooming
+* fixed Info pannel for dead, etc pingus
+tump nail for level
+Actions in the foreground
+* fixed hotkeys F1-F6
+blendout is to fast.
+colmap manipulation for liquid
+Animated entrances
+right/left/random/left'n'right
+hotspot in leveldescritpion
+
+Important Things:
+~~~~~~~~~~~~~~~~~
+
+-= FEATURES =-
+* Fix unfinished actions
+* Implement persitant action for example the floater and the climber
+* Make the map paintable 
+* Water
+* Scrolling backgrounds
+* Scroll the screen if the cursor is near the borders
+* Support for animated exits and entrances
+* require double click on the armageddon button
+* animated backgrounds (using derived objects)
+
+-= GRAPHIC WORK =-
+* Painting more hotspot and traps.
+* More Backgrounds (fullscreen backgrounds)
+* Some exits and entrances
+
+-= SOUND WORK =-
+* Creating some sound effects
+
+-= OTHER =-
+* Create some levels
+
+-= BIG STUFF =-
+* Create a level editor.
+
+Less Important Things:
+~~~~~~~~~~~~~~~~~~~~~~
+-= FEATURES =-
+* More pingu actions
+* Autorepeat actions
+* Dynamic linking of PinguAction's
+* "Forces" - which push pingus and other mobile objects. eg a fan (a
+  la Lemmings 2), and from explosions      
+* Implementing Demo recording/playing to the menu    
+* Parallax scrolling backgrounds
+
+-= GRAPHIC WORK =-
+* Draw more pingu actions. 
+
+-= SOUND WORK =-
+* Creating some more music
+
+-= BIG STUFF =-
+* "Worms" mode. 
+
+Misc:
+~~~~~
+Level Start Screen:
+===================
+Number of Pingus     XX
+Number to be saved  XXX
+Release Rate         XX
+
+Time               X:XX
+
+Level End Screen
+================
+Congratulation, you finished this level successfull.
+
+You needed: X
+You saved:  X
+
+-= EOF =-

@@ -1,0 +1,67 @@
+global {
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "X-Mas '99 - 2";
+  description = "Happy Christmas!
+";
+}
+
+ground {
+  maptype = "SPOT";
+  data    = (file)"snow4.psm";
+  width   = 1504;
+  height  = 480;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource)"Textures/stars";
+  dim = "0.0";
+  scroll_x = 0;
+  scroll_y = 0;
+}
+
+buttons {
+  basher  = 20;
+  blocker = 20;
+  bomber  = 20;
+  bridger = 20;
+  climber = 20;
+  digger  = 20;
+  floater = 20;
+  miner   = 20;
+}
+
+entrance {
+  x_pos = 202;
+  y_pos = 174;
+  z_pos = 0;
+}
+
+liquid {
+	image = (resource)"Liquid/water3";
+	x_pos = 800;
+	y_pos = 430;
+        z_pos = -10;
+	width = 460;
+	speed = 20;
+}
+
+liquid {
+	image = (resource)"Liquid/water3";
+	x_pos = 768;
+	y_pos = 426;
+        z_pos = -100;
+	width = 492;
+	speed = 20;
+}
+
+exit {
+	image = (resource)"Exits/ice";
+	x_pos = 1400;
+	y_pos = 184;
+        z_pos = -1100;
+}
+
+
+/* EOF */

@@ -1,0 +1,12 @@
+section Traps
+{
+	smasher     = ../images/traps/smasher.tga   (type=surface, x=0, y=0, width=282, height=189, array=6x1);
+	smasher_cmap = ../images/traps/smasher_cmap.pcx   (type=surface, x=0, y=0, width=275, height=7,tcol=0);
+	hammer      = ../images/traps/hammer.tga    (type=surface, x=0, y=0, width=151, height=181, array=13x1);
+	fake_exit   = ../images/traps/fake_exit.pcx (type=surface, x=0, y=0, width=75, height=112, tcol=0, array=9x1);
+	spike       = ../images/traps/spike.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0,   array=14x1);
+	guillotinekill = ../images/traps/guillotinekill.pcx (type=surface, x=0, y=0, width=80, height=96, tcol=0, array=12x2);
+	guillotineidle = ../images/traps/guillotineidle.pcx (type=surface, x=0, y=0, width=80, height=96, tcol=0, array=7x1);
+	laser_exit  = ../images/traps/laser_exit.pcx (type=surface, x=0, y=0, width=75, height=60, tcol=0, array=6x1);
+	teleporter = ../images/traps/teleporter.tga    (type=surface, x=0, y=0, width=35, height=52, tcol = 0, array=6x1);
+}

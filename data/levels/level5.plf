@@ -1,0 +1,69 @@
+global {
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "Alone in the desert.";
+  description = "Just a demo of the nice dessert column.";
+}
+
+ground {
+  maptype = "SPOT";
+  data    = (file)"level5.psm";
+  width   = 1401;
+  height  = 542;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource)"Textures/clouds";
+  dim = "0.5";
+  scroll_x = 0;
+  scroll_y = 0;
+}
+
+buttons {
+  basher  = 20;
+  blocker = 20;
+  bomber  = 20;
+  bridger = 20;
+  climber = 20;
+  digger  = 20;
+  floater = 20;
+  miner   = 20;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 234;
+  y_pos = 319;
+  z_pos = 0;
+  release_rate = 30;
+  direction = left;
+}
+
+exit {
+  image = (resource)"Exits/stone";
+  x_pos = 1124;
+  y_pos = 293;
+  z_pos = 0;
+}
+
+hotspot {
+  image = (resource)"Entrances/gate";
+  x_pos = 225;
+  y_pos = 75; 
+  z_pos = 100;
+  speed = 10;
+  para = "2.0";
+}
+
+hotspot {
+  image = (resource)"Entrances/gate";
+  x_pos = 900;
+  y_pos = 300; 
+  z_pos = -200;
+  speed = 10;
+  para = "0.5";
+}
+
+
+/* EOF */

@@ -1,0 +1,25 @@
+Keyboard:
+~~~~~~~~~
+F2     - toggle animations
+F4     - test level
+F5     - load level
+F6     - save level
+F7     - set checkpoint
+F8     - restore checkpoint
+F9     - change width/height of the level
+F10    - change background
+Ins    - Insert an new object
+Del    - Delete an object
+a      - mark all
+RShift - Move faster
+LShift - Add object to selection
+Esc    - Leave the editor
+Cursor keys - Move marked object around
+
+Mouse:
+~~~~~~
+left   - move or mark an object
+middle - mark rectangle 
+right  - scroll around
+
+For more info, have a look at the info documentation.

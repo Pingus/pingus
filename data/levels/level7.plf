@@ -1,0 +1,72 @@
+global {
+	start_x_pos = 1200;
+	start_y_pos = 240;
+	levelname = "Level 7" ;
+	description = 
+"Same as level 8, just some background changes.
+A totaly unfinished dragon cave, most of
+the gfx which isn't used at the moment is 
+packed into this level, gives also an example
+of a scrolling background.";
+}
+
+ground {
+	maptype = "SPOT";
+	data    = (file)"level7.psm";
+	width = 1400;
+	height = 480;
+//	colmap  = (resource)"ColMaps/level1";
+	colmap  = (auto);
+}
+
+background {
+	image = (resource)"Textures/clouds";
+	scroll_x = 50;
+	scroll_y = 0;
+	dim = "0.8"; // You have to quote double values, sorry will fix that later
+}
+
+entrance {
+	image =  (resource)"Entrances/entrance";
+//	colmap = (resource)"Hotspots/dragon";
+	x_pos = 150;
+	y_pos = 150;
+	release_rate = 25;
+	direction = left;
+}
+
+entrance {
+	image = (resource)"Entrances/entrance";
+	x_pos = 850;
+	y_pos = 150;
+	release_rate = 25;
+	direction = left;
+}
+
+liquid {
+	image = (resource)"Liquid/water";
+	x_pos = 0;
+	y_pos = 450;
+	z_pos = 1000;
+	width = 1400;
+}
+
+trap {
+	name = smasher;
+	x_pos = 585;
+	y_pos = 71;
+	z_pos = 10000;
+}
+
+buttons {
+	basher  = 20;
+	blocker = 20;
+	bomber  = 20;
+	bridger = 20;
+	climber = 20;
+	digger  = 20;
+	floater = 20;
+	miner   = 20;
+}
+
+/* EOF */

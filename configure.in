@@ -1,0 +1,174 @@
+#  $Id: configure.in,v 1.1 2000/02/04 23:45:09 mbn Exp $
+#
+#  Pingus - A free Lemmings clone
+#  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
+#
+#  This program is free software; you can redistribute it and/or
+#  modify it under the terms of the GNU General Public License
+#  as published by the Free Software Foundation; either version 2
+#  of the License, or (at your option) any later version.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with this program; if not, write to the Free Software
+#  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+dnl BUG: This file should be updated with the macros from 'configure.scan'
+
+dnl Process this file with autoconf to produce a configure script.
+AC_INIT( src/Pingus.cc )
+AM_CONFIG_HEADER( config.h )
+
+PACKAGE=pingus
+
+# The Pingus Version
+MAJOR_VERSION=0
+MINOR_VERSION=3
+PATCH_VERSION=1
+
+# The required ClanLib version
+CLANLIB_MAJOR_VERSION=0
+CLANLIB_MINOR_VERSION=1
+CLANLIB_PATCH_VERSION=18
+
+VERSION=${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION}
+
+dnl Similar to following are already done by AM_INIT_AUTOMAKE:
+dnl (but different in terms of producing quoted vs bare strings)
+dnl  AC_DEFINE_UNQUOTED(PACKAGE, $PACKAGE)
+dnl  AC_DEFINE_UNQUOTED(VERSION, $VERSION)
+dnl  AC_SUBST(VERSION)
+
+AC_DEFINE_UNQUOTED(MAJOR_VERSION, $MAJOR_VERSION)
+AC_DEFINE_UNQUOTED(MINOR_VERSION, $MINOR_VERSION)
+AC_DEFINE_UNQUOTED(PATCH_VERSION, $PATCH_VERSION)
+AC_DEFINE_UNQUOTED(VERSION_STRING, "${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION}")
+
+AM_INIT_AUTOMAKE( $PACKAGE, $VERSION )
+
+dnl Checks for programs.
+AC_PROG_AWK
+AC_PROG_CC
+AC_PROG_CXX
+AC_PROG_INSTALL
+AC_PROG_LN_S
+AC_PROG_MAKE_SET
+
+dnl -- Static Libaries --
+AC_PROG_RANLIB
+
+dnl -- Dynamic Libraies --
+dnl AM_PROG_LIBTOOL
+
+AC_LANG_CPLUSPLUS
+dnl AC_CHECK_LIB(clan, ,,, -L/usr/X11R6/lib -lz -lX11 -lXext -lvga /usr/lib/libz.a)
+
+PINGUS_EXTRA_PATHS
+
+dnl BUG This guesses that the X libs are in that directory
+LIBS="-L/usr/X11R6/lib $LIBS"
+dnl BUG end
+
+
+dnl Checks for libraries.
+dnl Checking for ClanLib
+
+dnl FIXME this is a hack:
+LIBS="$LIBS -lHermes"
+
+AC_CHECK_HEADER(ClanLib/core.h,, [echo "Please get ClanLib from http://www.clanlib.org"; exit])
+AC_CHECK_LIB( clanCore,   main,, [
+	echo "ClanLib installed, but -lclanCore not found, run 'ldconfig' and try again,"
+	echo "if that doesn't help have a look at the file config.log and look into"
+	echo " the FAQ."
+	exit
+	], -lclanCore)
+
+dnl AC_CHECK_LIB( clanlayer2,   main,, [echo "Only half of ClanLib detected, something is really wrong. Try to reinstall ClanLib."; exit])
+
+dnl Checking if ClanLib is new enough
+echo -n "checking for working ClanLib >= $CLANLIB_MAJOR_VERSION.$CLANLIB_MINOR_VERSION.$CLANLIB_PATCH_VERSION... "
+# # AC_TRY_RUN([
+# #include <ClanLib/clanlib.h>
+# main(){
+# if (CL_CURRENT_VERSION >= CL_VERSION($CLANLIB_MAJOR_VERSION,$CLANLIB_MINOR_VERSION,$CLANLIB_PATCH_VERSION))
+# 	return 0;
+# else
+# 	return 1;
+# }
+
+# ],
+# 	[echo "yes"],
+# 	[echo ; echo;
+# 	 echo "Your ClanLib is to old or some other thing went wrong while compiling"
+# 	 echo "the test application, you need at least version $CLANLIB_MAJOR_VERSION.$CLANLIB_MINOR_VERSION.$CLANLIB_PATCH_VERSION"
+# 	 echo "or greater. If you have that version installed have a look at the file"
+# 	 echo "config.log to see what went wrong."
+# 	 echo "The ClanLib webpage is at:"; echo;
+# 	 echo "                    http://www.clanlib.org";
+#          echo
+# 	 echo "The ClanLib source tarball can be found at:"
+# 	 echo
+# 	 echo "   http://dark.x.dtu.dk/clansoft/clanlib/download/ClanLib-$CLANLIB_MAJOR_VERSION.$CLANLIB_MINOR_VERSION.$CLANLIB_PATCH_VERSION.tar.gz"
+# 	 echo
+# 	 exit],
+# 	[echo "cross compiling detected, assuming that this is correct and continue"]
+# )
+
+# AC_CHECK_PROG(HAVE_DATAFILE_COMPILER, datafile_compiler, "yes")
+# if test "x$HAVE_DATAFILE_COMPILER" != "xyes" ; then
+# 	echo
+# 	echo "Couldn't find the ClanLib datafile_compiler. Make sure"
+# 	echo "it is correctly installed and the path were it is"
+# 	echo "installed is in you PATH.";
+# 	echo
+# 	exit;
+# fi
+
+dnl Checks for header files.
+AC_HEADER_DIRENT
+AC_HEADER_STDC
+AC_CHECK_HEADERS(unistd.h)
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+dnl AC_C_CONST
+
+dnl Checks for library functions.
+AC_FUNC_FNMATCH
+AC_TYPE_SIGNAL
+AC_CHECK_FUNCS(select strdup)
+
+dnl Checking for the install prefix and then use it to define PINGUS_DATADIR
+
+PINGUS_EXPAND_DIR(pingus_datadir, "$datadir/games/$PACKAGE")
+AC_DEFINE_UNQUOTED( PINGUS_DATADIR, "$pingus_datadir")
+
+AC_OUTPUT( Makefile 
+           src/Makefile 
+           src/actions/Makefile
+           src/traps/Makefile
+           src/particles/Makefile
+           src/entrances/Makefile
+           src/editor/Makefile
+           data/Makefile 
+           data/images/Makefile 
+           data/levels/Makefile
+           data/themes/Makefile
+           data/data/Makefile
+           data/demos/Makefile
+           data/data/Makefile
+           doc/Makefile
+dnl         tools/Makefile
+dnl         tools/ple/Makefile
+dnl         tools/ple/src/Makefile
+           )
+
+# ----------------------------------------
+
+echo ""
+echo "Pingus is now configured, now you can start \`make'."
+echo ""

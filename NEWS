@@ -1,0 +1,297 @@
+Release 0.3.1 (0?/Feb/1999)
+===========================
+* Fixed a huge memory hole, the game should be more stable and faster
+* Updated Pingus to use ClanLib 0.3.x
+* the 'dim' of the background uses now alpha values (0.0 - 1.0)
+* background can also have different colors applied (see level1.plf)
+* directory's under "./pingus" are now created correctly with the
+  right permissions
+* saving of the game status should work automatically 
+* Some optimizations
+* a nice icon panel in the editor
+* tab completion in the editor
+* Input handling is now event based
+* some new levels
+* some new gfx
+
+
+Release 0.3.0 (24/Dec/1999)
+===========================
+* lots of compiler warnings are removed
+* a new (better looking) main menu
+* a new "Intro" (just a logo scroller)
+* a (working!) level editor
+* much better forces support
+* level grouping ('themes')
+* lots of new gfx
+* lots of new levels
+* some special x-mas levels
+* some more Info documentation
+* some huge memory holes (see BUGS)
+* a working bridger
+* the Level selector is temporary removed
+
+
+Release 0.2.4 (07/Nov/1999)
+===========================
+* a laser trap
+* a guillotine trap
+* a spike trap
+* complete redesign of the GUI
+* a ugly main menu is present
+* an option menu (press 'O' while playing)
+* some optimizations of the menus
+* Actions are now limited, an option for unlimited actions is
+  provided 
+* experimental forces support is included
+* some new gfx
+* a new level
+* the hammer and smasher trap are improved
+* A new Armageddon button
+
+
+Release 0.2.3 (01/Oct/1999)
+==========================
+* Some new levels, some older ones removed
+* Some new groundpices
+* A new water animation
+* Config file support (have a look 'doc/options')
+* (finally) the Pingus can dig into the ground
+* Some more background properties (dim)
+* A new entrance (woodthing)
+* A Windows port is available (not compileable, but a binary is
+  available)
+* Misc fixes which cause throuble with gcc 2.95
+
+
+Release 0.2.2 (10/Sep/1999)
+===========================
+* Armageddon button requires now a double click
+* Fixed the Level Selector a bit (level preview is now available), use
+  the little 'Play' button to start a level
+* You can now dig holes into the ground, see bridges, press 'U' to
+  update the ground state or use --lsurfaces to make that
+  automatically (buggy) 
+* Fixed the Floater and added Climber action
+* Removed lots of nasty debug messages
+* Added some particle dust (try the digger or the basher)
+* Changed the keyboard mappings (PgUp/PgDown to zoom, cursor keys to
+  scroll, F1 - F8 to select an action)
+* Changed the level format a bit width/height are now no longer in the
+  psm file, instead they are in the plf file 
+* Wrote a new PSM parser
+* Level can now have a time limit
+
+
+Release 0.2.1 (25/Aug/1999)
+===========================
+* Changed the directory layout a bit
+* Added --with-extra-include=DIR and --with-extra-libs=DIR to the
+  configure script (untested)
+* Added support for multible datafiles, levels are now complitly
+  seperatly distributable, for an example see the pingus webpage
+  (mostly untested)
+* Fixed the stupid bug which caused the game to get stuck on level
+  startup 
+* Removed the obsolete tile map
+* Background scrolling works now correct
+* Fast forward works now on slower machines
+* Level start position works now
+* Added check for ClanLib version (should be >= 0.1.16)
+* Change the look of the Level Selector
+
+
+Release 0.2.0 (11/Aug/1999)
+===========================
+* Added Result window, after finishing a level (not correct working)
+* Added fps printer is back again
+* A software cursor is now available, it can be enabled with
+  --enable-cursor, usefull for graphic modes, which doesn't provide
+  one, for example GGI.
+* Liquid Data Type (water, lava, ...), see level2 or level8
+* Some new gfx (many thank to Joel Fauche)
+* A new trap and a new exit
+* Some new levels
+* Automatic generated collision maps, no more need for a seperate pcx
+  file.
+* A pause, armageddon and a forward button
+* Misc bug fixes
+* Some of the new feature can break some old stuff, so this releas
+  could be a bit more unstable than the last.
+
+
+Release 0.1.2 (27/Jul/1999)
+===========================
+Included some more levels, nothing special, mostly examples of using
+different approaches to generate the levelmap and or colmap.
+Fixed some bugs in the particle system and added some funnier
+explosions. 
+
+10/Jul/1999
+Merged PinguData and Pingu. Cleanup of PinguAction.hh. Some more
+internal changes. Seperated all pingu animation to a seperate
+datafile. Improved the buttons, only the active button is animated
+now. ColMap's can now be loaded from a 256 color pcx. Rewrote the plf
+reader and changed the level format of pingus.
+
+07/Jul/1999
+Moved all pingus images to data/images/pingus/.  Renamed SoundSpecs to
+PingusSound.  Added a man page. The level is now exited automatically
+if no more pingus are present.
+
+06/Jul/1999
+Fixed a bug, which causes -d to segfault. Changed -d to -p. Added the
+posibility to record and play a demo, try -d ../data/demo/level1.dem.
+
+30/Jun/1999
+Added a simple file selector for levels. Fixed zooming, the capture
+rectangle works now while zooming.
+Added some GUI components, the level can now be selected from a menu,
+on ESC a nice yes/no box pops up and F1 pressents a nice help screen.
+
+28/Jun/1999
+Released LinuxTag Special Edition
+It includes three new levels (parsec, linuxtag and worldforge). Fixed
+the zooming and added primitive scrolling backgrounds.
+
+22/Jun/1999
+Fixed some bugs in 'make install'. Added zoom support. Fixed the
+handling of music files. Added armageddon button, press 'a'.
+Added font support. Added a pingu info display. The bomber shows now a 
+nice count down.
+
+Release 0.0.16 binary - 07/Jun/1999
+===================================
+Added View class for easier split screening.
+
+Release 0.0.15 - 30/May/1999
+============================
+Added event/message handling code from PenguinPlay.
+`make install' puts pingus now in the correct places, `pingus' to
+`/usr/local/games/', the info files to `/usr/local/info/' and the data 
+to `/usr/local/share/games/pingus/'. The `make install' is full
+working, but not tested much, so bug reports are welcome.
+
+29/May/1999
+-=-=-=-=-=-
+Fixed the random map, it now blow correct holes in the ground, but its
+still very slow.
+Renamed all files which doesn't have the same name as the classes they
+contain. Added Werner Steiner patch for the basher, the basher is now
+full working.
+
+23/May/1999
+-=-=-=-=-=-
+Implemented random map, see example `level4.plf' and dig in the ground.
+
+22/May/1999
+-=-=-=-=-=-
+Renamed class Button to ActionButton. Primitive Armageddon function
+integraded, press the `a' key. The bomber now waits some seconds
+before he explode. Moved the levels from `date/' to `data/level'.
+
+21/May/1999
+-=-=-=-=-=-
+Added multible resolution. They can be activated with:
+
+  $ ./pingus -r 800x600
+
+19/May/1999
+-=-=-=-=-=-
+Added inherit particles (GroundParticle, PinguParticle). The digger
+throws now particles if he is digging.
+Added patch for capture recangles (they change the color if the action 
+can't be set).
+
+16/May/1999
+-=-=-=-=-=-
+Added particle system. Added Enviroment system, so that some action
+can't be set while the pingu is in the air.
+
+15/May/1999
+-=-=-=-=-=-
+Included GameTime, release rate is now constant. Long comment are now
+allowed in the plf files ( /* ... */ )
+
+14/May/1999
+-=-=-=-=-=-
+Included a time wrapper, presh space. Reimplemented the resource
+management. The objects are now inherit from GameObj. Some Sound
+support is now pressend, but read the data/sound/README first!
+
+Release 0.0.14 - 09/May/1999
+============================
+Included verbose switch, created two new levels to demonstrate the bmp 
+and the spot map.
+
+Release 0.0.13 - 25/Apr/1999
+============================
+Included pause modus. Hotspot preferences are now read from a
+file. Animated hotspots are possible. Split screen playing is now
+possible, but not perfect (Try 's' while the game is running).
+
+16/Apr/1999
+-=-=-=-=-=-
+Included new tile set and parallax scrolling. Made the configure
+script more robust. 
+
+14/Apr/1999
+-=-=-=-=-=-
+Improved startup speed, now twice as fast as before (<5sec on my
+P133). Included digger action.
+
+09/Apr/1999
+-=-=-=-=-=-
+Put pingus under CVS control.
+
+Release 0.0.10 - 04/Apr/1999
+============================
+The Blocker is back again and this time it works (a bit
+more). Scrolling is improved, Exits and Entrances are now read from
+the level file. Hotspot (foreground/background) are now possible.
+
+Release 0.0.9 - 28/Mar/1999
+===========================
+Now uses getopt_long, instead of getopt. Bomber and Faller should be
+included. 
+
+Release 0.0.8 - 21/Mar/1999
+===========================
+Scrolling is now possible and the entrance and exits are ready. The
+Pingu class is completely rewritten now separated in PinguAction,
+PinguData and Pingu. Most action needs to be reimplemented.
+
+Release 0.0.7 - 14/Mar/1999
+===========================
+Included the gfx which I forgot in 0.0.6. The walker pingu is now
+included. It should compile fine which a ClanLib CVS snapshot
+
+Release 0.0.6 - 07/Mar/1999
+===========================
+More user interactions possible, more bugs and
+more trouble to get it compiled.
+
+Release 0.0.5 - 20/Feb/1999
+===========================
+Simple user interactions now possible. Some
+more command line options (try "pingus -?"). Resolution lowered to
+640x480 for faster display.
+
+Release 0.0.4 - 31/Jan/1999
+===========================
+Not much visible changed. Most changes are intern. The levels are now
+read from a file and command line arguments are accepted.
+
+Release 0.0.3 - 17/Jan/1999
+===========================
+Looks better than 0.0.2 and the drawing routines are more complete but
+it is now extremely slow.
+
+Release 0.0.2 - 03/Jan/1999
+===========================
+It compiles and run, but no user interaction and totally unfinished
+graphics.
+
+Release 0.0.1 - 06/Dec/1998
+===========================
+won't work or compile

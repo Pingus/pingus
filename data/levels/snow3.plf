@@ -1,0 +1,44 @@
+global {
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "PLE Test level";
+  description = "PLE - Not implemented";
+}
+
+ground {
+  maptype = "SPOT";
+  data    = (file)"snow3.psm";
+  width   = 1504;
+  height  = 544;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource)"Game/clouds";
+  dim = "0.0";
+  scroll_x = 0;
+  scroll_y = 0;
+}
+
+
+entrance {
+	image = (resource)"Game/entrance";
+	x_pos = 450;
+	y_pos = 130;
+	direction = right;
+	release_rate = 30;
+}
+
+buttons {
+	basher  = 20;
+	blocker = 20;
+	bomber  = 20;
+	bridger = 20;
+	climber = 20;
+	digger  = 20;
+	floater = 20;
+	miner   = 20;
+}
+
+
+/* EOF */

@@ -1,0 +1,11 @@
+Pingus is also compilable under Windows, but it needs a special hacked
+version of ClanLib. The following files could be helpfull:
+
+Project files for VC6:
+~~~~~~~~~~~~~~~~~~~~~~
+pingus.dsp
+pingus.dsw
+
+Registry fix to support *.hh and *.cc files:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+vcfix.reg 

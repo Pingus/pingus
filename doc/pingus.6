@@ -1,0 +1,62 @@
+.TH PINGUS 6 
+.\" NAME should be all caps, SECTION should be 1-8, maybe w/ subsection
+.\" other parms are allowed: see man(7), man(1)
+.SH NAME
+Pingus \- A free Lemmings(TM) clone
+.SH SYNOPSIS
+.B pingus
+.I "[options...] [levelfile]"
+.SH "DESCRIPTION"
+Pingus is a free Lemmings clone covered under the GPL. Pingus uses ClanLib, which allows you to compile Pingus under Windows and Linux, other operating systems might follow.
+.SH OPTIONS
+.TP
+.B \-g, --geometry {width}x{height}
+Set the resolution for pingus (default: 640x480)
+.TP
+.B \-h, --help
+Show brief command line help
+.TP
+.B \-s, --enable-sound
+Enable sound
+.TP
+.B \-m, --enable-music
+Enable music
+.TP
+.B \-i, --enable-gimmicks
+Enable some buggy development stuff
+.TP
+.B \-S, --sound-specs FILE
+Use files mentioned in FILE
+.TP
+.B \-d, --datadir PATH
+Set the path to load the data files to `path'
+.TP
+.B \-l, --level FILE
+Load a custom level from `file', it can either be the complete
+pathname of the level file or just the filename, Pingus will then
+search in PINGUS_DATADIR for the levelfile.
+.TP
+.B \-t, --speed SPEED
+Set the game speed (0=fastest, >0=slower)
+.TP
+.B \-b, --print-fps 
+Prints the fps to stdout
+.TP
+.B \-v, --verbose
+Print some more messages to stdout, can be set multiple times to increase verbosity
+.TP
+.B \-V, --version
+Prints version number and exits
+.TP
+.B \--maintainer-mode
+Enables the maintainer mode
+.TP
+.B \--disable-previews
+Disables the level previews in the Level Selector
+.SH "SEE ALSO"
+/usr/doc/pingus
+.SH AUTHOR
+This manual page was written by Daniel Patterson <danpat@debian.org>,
+for the Debian GNU/Linux system (but may be used by others).
+
+The Pingus homepage is located at: http://pingus.seul.org

@@ -1,0 +1,16 @@
+ground : GroundPieces/Misc/bigprickpiece : 100 : 500 ;
+ground : GroundPieces/Misc/bigprickpiece : 400 : 500 ;
+ground : GroundPieces/Misc/bigprickpiece : 700 : 500 ;
+ground : GroundPieces/Misc/bigprickpiece :1000 : 500 ;
+ground : GroundPieces/Misc/bigprickpiece : 250 : 350 ;
+ground : GroundPieces/Misc/bigprickpiece : 550 : 350 ;
+ground : GroundPieces/Misc/middleprickpiece : 400 : 275 ;
+ground : GroundPieces/Misc/middleprickpiece : 550 : 275 ;
+ground : GroundPieces/Misc/smallbrickpiece : 475 : 237;
+ground : GroundPieces/Misc/smallbrickpiece : 550 : 237 ;
+ground : GroundPieces/Misc/smallbrickpiece : 475 : 199;
+ground : GroundPieces/Misc/smallbrickpiece : 550 : 199 ;
+ground : Hotspots/pillar1 :  950 : 339 ;
+ground : Hotspots/pillar1 : 1000 : 339 ;
+ground : Hotspots/pillar1 : 1050 : 339 ;
+

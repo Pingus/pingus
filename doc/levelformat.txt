@@ -1,0 +1,260 @@
+A short intro to the Pingus Levelformat
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+There are at the moment three maptypes in Pingus, the spot, the
+random and the bmp map. They use a different aproach of creating the
+map, the bmp map uses a large bitmap, the random map creates a random
+level at runtime and the spot map uses small bitmaps to greate large
+level out of them. The main maptype which should be used for all
+Pingus levels is the spot map, it requires very few diskspace space
+and is very flexible, a level editor for this map type will 
+follow. This intro will only explain how the spot map work. The other
+map types should *not* be use, they might be removed in futher
+Pingus versions.
+
+
+A SpotMap Level
+~~~~~~~~~~~~~~~
+A spot map level in Pingus needs two files to work. A PLF (Pingus
+Level File) file and a PSM (Pingus Spot Map) file. The PLF file holds,
+all maptype independend data, which are special objects, like exits,
+entrances, water and the available actions. The PSM file holds the
+position information for all the images that are used to build the
+map. 
+
+An example PLF file would look as follows:
+
+------------------------------- snip --------------------------------
+global {
+	start_x_pos= 0;
+	start_y_pos = 0;
+	number_of_pingus = 120;
+	levelname = "Level 2";
+	description = 
+"This is a spot map based level, the colmap is
+at the moment a seperate file, but will be at a
+later state automaticly generated.";
+}
+
+ground {
+	maptype = SPOT;
+	data = (file)"spot.psm";
+	colmap = (auto);
+}
+
+background {
+	image = (resource)"Textures/stone_dark";
+	scroll_x = 0;
+	scroll_y = 0;
+}
+
+music {
+	data = (file)"guitsane.it";
+}
+
+exit {
+	image = (resource)"Exits/stone";
+	x_pos = 460;
+	y_pos = 180;
+        z_pos = -1100;
+}
+
+entrance {
+	image = (resource)"Game/entrance";
+	x_pos = 200;
+	y_pos = 150;
+	direction = right;
+	release_rate = 30;
+}
+entrance {
+	image = (resource)"Game/entrance";
+	x_pos = 700;
+	y_pos = 150;
+	direction = left;
+	release_rate = 30;
+}
+
+trap {
+	name = fake_exit;
+	x_pos = 290;
+	y_pos = 135;
+	z_pos = -1000;
+}
+
+liquid {
+	image = (resource)"Hotspots/water";
+	x_pos = 0;
+	y_pos = 390p;
+	width = 1000;
+}
+
+buttons {
+	basher  = 20;
+	blocker = 20;
+	bomber  = 20;
+	bridger = 20;
+	climber = 20;
+	digger  = 20;
+	floater = 20;
+	miner   = 20;
+}
+------------------------------- snip --------------------------------
+
+It has different section:
+
+* global
+* ground
+* background
+* music
+* exit
+* entrance
+* trap
+* liquid
+* buttons
+
+and a C style syntax, which looks as follows:
+
+// COMMENT
+/* COMMENT */
+sectionname {
+	valuename = value;
+}
+
+The value can have different types, it can be integers, doubles,
+strings or resdesc (Resourcedescriptors). RESDESC can look like the
+following: 
+
+(auto) <- is only valid for the colmap
+(file)"bla.psm" <- use the given file
+(resource)"game/gfx" <- use the resource from the file global.dat
+(resource:bla.dat)"bla/blub" <- use the resource from the file bla.dat
+
+
+I'll try to explain the sections:
+
+global section
+~~~~~~~~~~~~~~
+It contains a leveldescription, the levelname, the number of pingus
+and the viewpoint start position of the level:
+
+start_x_pos = INT       Defines were the camera starts
+start_y_pos = INT
+number_of_pingus = INT  Defines the number of pingus, which will be in
+                        the level
+levelname = STRING      A short one line level name
+description = STRING    A long level descrition, maybe a short story
+                        of the level and the name of the level
+                        designer 
+
+ground section
+~~~~~~~~~~~~~~
+It contains the map type and the information were to find the
+informations needed for the maptype.
+
+maptype = MAPTYPE       Maptype can be SPOT, RANDOM or BMP
+data = RESDESC          Depends on the maptype, for a spotmap its the
+                        filename of the PSM file and for a bitmap map
+                        it is the ground image 
+colmap = RESDESC        Tells how to generate the colmap, can be
+                        "(auto)" or an image, should be (auto) in the
+                        most cases.
+
+background section
+~~~~~~~~~~~~~~~~~~
+Contains infos which image should be used for the background and the
+scroll speed.
+
+image = RESDESC         The image which should be used.
+scroll_x = DOUBLE       The number of pixel the background should
+scroll_y = DOUBLE       scroll per frame
+dim = DOUBLE            Sets the darkness of the background, should be
+                        between (1.0 -  3.0)
+
+music section
+~~~~~~~~~~~~~
+
+data = RESDESC          The music file which should be used, only mod
+                        files should work for now.
+
+exit section
+~~~~~~~~~~~~
+
+Defines an exit, where the Pingus can leave the level.
+
+image = RESDESC         The image, which is used for the exit
+x_pos = INT             The position of the exit
+y_pos = INT
+z_pos = INT             The z_pos of the exit, will be used to order
+                        the exit along with other objects in the
+                        Pingus world, can be usefull if the exit is
+                        hidden by an other objects. 
+
+entrance section
+~~~~~~~~~~~~~~~~
+The entrance where the pingus enter a level and defines its
+parameters, like release rate and direction.
+
+image = RESDESC
+x_pos = INT             The position of the entrance
+y_pos = INT
+direction = right/left  The direction in which the Pingus should walk,
+                        after leaving the exit
+release_rate = INT      The wait time until the next pingu should be
+                        released 
+
+
+trap section
+~~~~~~~~~~~~
+Defines a trap, which type it should be and the position. Traps are
+for example the smasher or the hammer, most traps will kill the
+pingus.
+
+name = STRING           The name of the trap, have a look at
+                        'src/traps/traps.cc' for the available traps. 
+x_pos = INT
+y_pos = INT
+z_pos = INT
+
+liquid section
+~~~~~~~~~~~~~~~
+Liquids can be used for water/lava or similar stuff. The given image
+is repeted until the given width is filled out. The image should be an
+animated one, if you want a nice water animation.
+
+image = RESDESC
+x_pos = INT
+y_pos = INT
+width = INT
+
+
+buttons section
+~~~~~~~~~~~~~~~
+Defines which actions are available in a level and how much how them. 
+
+ACTION = INT         Where ACTION is the name of the action
+                     (floater/basher/etc.) and INT is the number of
+                     actions, which should be available in the level 
+
+The PSM file
+~~~~~~~~~~~~
+PSM files are used to build the basic ground, where the pingus are
+walking on and where they can dig into.
+The format of the PSM files looks as follows:
+
+Comments are not working in version 0.2.3, but might be added later.
+
+An example file looks like this:
+--------------------- snip ----------------------
+// Comment
+Hotspots/well : 130 : 206;
+Hotspots/pillar1 : 200 : 100;
+Hotspots/pillar2 : 250 : 130;
+Hotspots/pillar3 : 430 : 113;
+/* Comment */
+Hotspots/colum : 550 : -30;
+--------------------- snip ----------------------
+
+The syntax is:
+IMAGE : XPOS : YPOS;
+IMAGE : XPOS : YPOS;
+IMAGE : XPOS : YPOS;
+...

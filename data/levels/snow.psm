@@ -1,0 +1,10 @@
+ground : GroundPieces/Misc/piece1 : 500 : 300 ;
+ground : GroundPieces/Misc/piece2 : 400 : 100 ;
+ground : GroundPieces/Misc/piece7 : 850 : 240 ;
+ground : GroundPieces/Misc/piece8 : 720 : 270 ;
+ground : GroundPieces/Misc/piece9 : 570 : 300 ;
+ground : GroundPieces/Snow/snowman : 40 : 200 ;
+ground : GroundPieces/Snow/piece1 : 350 : 200 ;
+ground : GroundPieces/Snow/piece2 : 450 : 200 ;
+ground : GroundPieces/Snow/piece3 : 550 : 200 ;
+ground : GroundPieces/Snow/xmas-tree : 550 : 200 ;

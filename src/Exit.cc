@@ -1,0 +1,79 @@
+//  $Id: Exit.cc,v 1.1 2000/02/04 23:45:18 mbn Exp $
+//
+//  Pingus - A free Lemmings clone
+//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
+//
+//  This program is free software; you can redistribute it and/or
+//  modify it under the terms of the GNU General Public License
+//  as published by the Free Software Foundation; either version 2
+//  of the License, or (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program; if not, write to the Free Software
+//  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+#include <cassert>
+
+#include "globals.hh"
+#include "PingusResource.hh"
+#include "Exit.hh"
+#include "ActionHolder.hh"
+#include "actions/exiter.hh"
+
+CL_Surface* Exit::surface;
+
+Exit::Exit(int x, int y)
+{
+  x_pos = x;
+  y_pos = y;
+  z_pos = -10;
+}
+
+Exit::Exit(exit_data data)
+{
+  if (verbose > 2)
+    cout << "Creating Exit" << endl;
+  x_pos = data.x_pos;
+  y_pos = data.y_pos;
+  z_pos = data.z_pos;
+
+  surface = CL_Surface::load(data.desc.res_name.c_str(),
+				 PingusResource::get(data.desc.filename));
+}
+
+bool
+Exit::catch_pingu(Pingu* pingu)
+{
+  int x = x_pos + (surface->get_width() / 2);
+  int y = y_pos + surface->get_height();
+
+  if (pingu->get_x() > x - 1 && pingu->get_x() < x + 1
+      && pingu->get_y() > y - 5 && pingu->get_y() < y + 1)
+    {
+      if (pingu->get_status() != exited
+	  && pingu->get_status() != dead)
+	{
+	  pingu->set_action(ActionHolder::get_uaction("exiter"));
+	}
+      return true;
+    }
+  return false;
+}
+
+void
+Exit::draw_offset(int x_of, int y_of, float s)
+{
+  if (s == 1.0) {
+    surface->put_screen(x_pos + x_of, y_pos + y_of);
+  } else {
+    surface->put_screen((int)((x_pos + x_of) * s), (int)((y_pos + y_of) * s),
+			s, s);
+  }
+}
+
+/* EOF */

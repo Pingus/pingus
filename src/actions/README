@@ -1,0 +1,7 @@
+pingus/src/actions/
+-=-=-=-=-=-=-=-=-=-
+
+This directory contains all actions for the pingus, the actions are
+inherited objects from PinguAction. The 'let_move' member is the
+function with does all the AI stuff, the constructor is used to
+initializes all surfaces and other things for the action.

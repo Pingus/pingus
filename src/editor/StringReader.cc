@@ -1,0 +1,175 @@
+//  $Id: StringReader.cc,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//
+//  Pingus - A free Lemmings clone
+//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+//
+//  This program is free software; you can redistribute it and/or
+//  modify it under the terms of the GNU General Public License
+//  as published by the Free Software Foundation; either version 2
+//  of the License, or (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program; if not, write to the Free Software
+//  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+#include "../PingusResource.hh"
+
+#include "StringReader.hh"
+
+StringReader::StringReader()
+{
+  strings = 0;
+  font = CL_Font::load("Fonts/courier_small",PingusResource::get("fonts.dat"));
+}
+
+StringReader::StringReader(string d, string def)
+{
+  strings = 0;
+  description = d;
+  current_string = def;
+  font = CL_Font::load("Fonts/courier_small",PingusResource::get("fonts.dat"));
+}
+
+StringReader::~StringReader()
+{
+}
+
+void
+StringReader::set_strings(list<string>* s)
+{
+  strings = s;
+}
+
+string
+StringReader::read_string()
+{
+  finished = false;
+  CL_InputBuffer keys;
+  CL_Key key;
+
+  CL_System::keep_alive();
+
+  current_string = "";
+
+
+  keys.clear();
+
+  draw();
+
+  finished = false;
+  while (!finished) 
+    {
+      CL_System::keep_alive();
+
+      if (keys.peek_key().state != CL_Key::NoKey)
+	{
+	  key = keys.get_key();
+  
+	  if (key.state == CL_Key::Pressed)
+	    {
+	      switch (key.id)
+		{
+		case CL_KEY_ENTER:
+		  finished = true;
+		  break;
+		case CL_KEY_ESCAPE:
+		  finished = true;
+		  current_string = "";
+		  break;
+		case CL_KEY_DELETE:
+		case CL_KEY_BACKSPACE:
+		  if (!current_string.empty())
+		    current_string = current_string.substr(0, current_string.size() - 1); 
+		  break;
+		case CL_KEY_TAB:
+		case CL_KEY_SPACE:
+		  complete_string();
+		  break;
+		default:
+		  if (key.ascii > 0)
+		    current_string += key.ascii;
+		}
+	      draw();
+	    }
+	}
+    }
+  keys.clear();
+
+  return current_string;
+}
+
+void
+StringReader::complete_string()
+{
+  int completions_counter = 0;
+  string* completion;
+
+  completions.clear();
+    
+  cout << "\nCompletions:\n" 
+       <<   "~~~~~~~~~~~~" << endl;
+
+  for(list<string>::iterator i = strings->begin(); i != strings->end(); i++)
+    {
+      if (i->find(current_string) == 0)
+	{
+	  cout << *i << endl;
+	  completions_counter++;
+	  completion = &(*i);
+	  completions.push_back(&(*i));
+	}
+    }
+
+  if (completions_counter >= 1)
+    {
+      current_string = find_uniq(); 
+    }
+  // cout << "Searching finished" << endl;
+}
+
+string
+StringReader::find_uniq()
+{
+  list<string*>::iterator i = completions.begin();
+  string ret_string = **(completions.begin());
+
+  while (i != completions.end())
+    {
+      ret_string = while_eq(ret_string, **i);
+      i++;
+    }
+
+  return ret_string;
+}
+
+string
+StringReader::while_eq(const string& a, const string& b)
+{
+  string ret_string;
+  
+  for(string::size_type i = 0;
+      i < a.size() && i < b.size() && a[i] == b[i];
+      i++)
+    {
+      ret_string += a[i];
+    }
+  
+  return ret_string;
+}
+
+void
+StringReader::draw()
+{
+  CL_Display::clear_display();
+  font->print_left(20, 20, description.c_str());
+  font->print_left(20, 40, current_string.c_str());
+  CL_Display::flip_display();
+}
+
+
+/* EOF */

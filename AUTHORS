@@ -1,0 +1,81 @@
+I tried to list here all people, which have contributed to pingus. If
+you know somebody who I have missed please drop me a quick reminder to 
+<grumbel@gmx.de>.
+
+Ingo Ruhnke <grumbel@gmx.de>
+	* some gfx (mostly placeholder, ...)
+	* level design
+	* project maintainer
+	* programming
+
+Michael KÅ‰ser <michaelk@gmx.ch>
+	* maintainer of the Windows version
+
+Joel Fauche <joel.fauche@wanadoo.fr>
+	* most of the pingus (floater, walker, ...)
+
+Jules Bean <jmlb2@hermes.cam.ac.uk>
+	* Mailing List
+
+Michael Mestre <mmestre@teaser.fr>
+	* some gfx (rock tile, weed, traps)
+
+Craig Timpany <timpany@es.co.nz>
+	* some pingu gfx(digger, tumbler)
+	* traps
+
+David Philippi <david@torangan.saar.de>
+	* RPM version maintainer
+
+Johnny Taporg <taporg@yahoo.com>
+	* Banner for the pingus homepage
+
+Thomas Prokosch <Thomas.Prokosch@jk.uni-linz.ac.at>
+	* another Banner for the pingus homepage
+
+Robert Wittams <rob@conspiracy.nu>
+	* Programming (misc)
+
+Werner Steiner <werner@rmdata-linux.dhs.org>
+	* Programming (Blocker)
+
+H. Matthew Smith <matthew@synature.com>
+	* music
+
+Joseph Toscano <scarjt@buffnet.net>
+	* music
+
+Magnus Norddahl <mbn@dark.x.dtu.dk>
+	* RPM Packages
+
+Stefan Stiasny <sc@swi.priv.at>
+	* miner, stopper
+	* http://sc.ist.org/pingus/
+
+Alan Tennent <rdt@post.queensu.ca>
+	* shotgun
+	* bazooker
+	* http://www.geocities.com/SiliconValley/Mouse/8254/
+
+Kenneth GangstÅ¯ <kennethg@iname.com>
+	* Some fonts
+
+Peter Todd <retep@penguinpowered.com>
+	* Programming (forces)
+	* http://retep.tripod.com
+
+David Fauthoux <david.fauthoux@free.fr>
+	* armageddon button animation
+
+David M. Turner <turnerd@reed.edu>
+	* Gfx
+	* Programming
+
+David Flores <davidf@linuxfan.com>
+	* Programming
+	* fixed the bridger
+
+Tuomas (Tigert) Kuosmanen <tigert@gimp.org>
+	* Editor Icons (riped out of gnome-stock)
+
+-- EOF --

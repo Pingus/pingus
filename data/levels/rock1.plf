@@ -1,0 +1,70 @@
+/* This level was created with the PLE
+ * $Id: rock1.plf,v 1.1 2000/02/04 23:45:17 mbn Exp $
+ */
+global {
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "Rock 1";
+  description = "";
+  number_of_pingus = 150;
+  number_to_save = 25;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  data    = (file)"rock1.psm";
+  width   = 1280;
+  height  = 640;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource)"Textures/rockagglo";
+  dim   = "0.5";
+  red   = "0.5";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+}
+
+buttons {
+  basher  = 20;
+  blocker = 20;
+  bomber  = 20;
+  bridger = 20;
+  climber = 20;
+  digger  = 20;
+  floater = 20;
+  miner   = 20;
+}
+
+
+entrance {
+  type  = generic;
+  x_pos = 339;
+  y_pos = 121;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+liquid {
+  image = (resource)"Liquid/lava";
+  x_pos = -37;
+  y_pos = 578;
+  z_pos = -100;
+  width = 1300;
+}
+
+liquid {
+  image = (resource)"Liquid/lava";
+  x_pos = -5;
+  y_pos = 583;
+  z_pos = 100;
+  width = 1300;
+}
+
+
+/* EOF */

@@ -1,0 +1,47 @@
+Pingus (development version)
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+See `INSTALL' for instructions on how to install and run pingus and
+read the file `FAQ' if you have throuble getting things to work.
+
+Pingus is a free Lemmings(tm) clone for Linux and other operating
+systems supported by ClanLib. It can run in a lot of resolutions in X
+and in fullscreen (if supported by svgalib, fbdev or OpenPTC). It is
+covered under the GPL, check the file COPYING, for more informations.
+
+It will have most features of Lemmings and some more. If you want to
+have music and sound you need the pingus-sound pak, it is distributed
+seperatly. You can grap it on the pingus home page.
+
+If you want to help developing pingus, have a look on its web page:
+
+	http://dark.x.dtu.dk/~grumbel/pingus/index.html
+
+for up to date informations.
+
+Mailing Lists
+=============
+Pingus Developers List
+~~~~~~~~~~~~~~~~~~~~~~~
+To subscribe to the pingus developers mailing list send a mail to
+<pingus-devel-request@lists.deus.net> with 'subscribe' in the body. To
+send mails to the list use the address <pingus-devel@lists.deus.net>.
+Questions about the mailing list should go to Jules Bean
+<jmlb2@hermes.cam.ac.uk>, the admin of the list.
+
+CVS Mailing List
+~~~~~~~~~~~~~~~~
+There is also a CVS Mailing for infos on how to subscribe have a look
+at:
+        http://dark.x.dtu.dk/~grumbel/pingus/development.html
+
+Bug Reports
+===========
+Questions about the game and bug reports should go to Ingo Ruhnke
+<grumbel@gmx.de> or if you are subscribed to the Mailing List, to it
+instead. 
+
+For more information on specific parts of pingus, have a lock at the
+README's in the different subdirectories, they contain information, on 
+which files are present and who created them.
+
+Last updated: $Date: 2000/02/04 23:45:09 $

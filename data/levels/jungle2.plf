@@ -1,0 +1,71 @@
+global {
+  start_x_pos = 100;
+  start_y_pos = 100;
+  levelname = "The jungle / have fun part two";
+  description = "You should have hired tarzus, not pingus : )
+";
+  number_of_pingus = 50;
+  number_to_save = 30;
+  time = 5000;
+}
+
+ground {
+  maptype = "SPOT";
+  data    = (file)"jungle2.psm";
+  width   = 1400;
+  height  = 864;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource)"Textures/nightjungle";
+  dim = "0.1";
+  red = "1.0";
+  blue = "1.0";
+  green = "1.0";
+  scroll_x = 0;
+  scroll_y = 0;
+}
+
+buttons {
+  basher = 10;
+  blocker = 10;
+  bomber = 10;
+  bridger = 15;
+  climber = 10;
+  digger = 10;
+  floater = 10;
+  miner = 10;
+}
+
+entrance {
+  type  = woodthing;
+  x_pos = 92;
+  y_pos = 151;
+  z_pos = 0;
+  release_rate = 40;
+  direction = left;
+}
+
+exit {
+  image = (resource)"Exits/stone";
+  x_pos = 1102;
+  y_pos = 258;
+  z_pos = 0;
+}
+
+hotspot {
+  image = (resource)"Entrances/woodthing_nmov";
+  x_pos = 16;
+  y_pos = 16;
+  z_pos = 100;
+}
+
+trap {
+  name = "laser_exit";
+  x_pos = 660;
+  y_pos = 115;
+  z_pos = 0;
+}
+
+/* EOF */

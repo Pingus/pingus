@@ -1,0 +1,67 @@
+global {
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "Stones";
+  description = "
+";
+}
+
+ground {
+  maptype = "SPOT";
+  data    = (file)"stone.psm";
+  width   = 1604;
+  height  = 580;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource)"Textures/stone";
+  dim = "0.5";
+  scroll_x = 0;
+  scroll_y = 0;
+}
+
+buttons {
+  basher  = 20;
+  blocker = 20;
+  bomber  = 20;
+  bridger = 20;
+  climber = 20;
+  digger  = 20;
+  floater = 20;
+  miner   = 20;
+}
+
+liquid {
+  image = (resource)"Liquid/water2";
+  x_pos = 431;
+  y_pos = 252;
+  z_pos = -110;
+  width = 150;
+}
+
+liquid {
+  image = (resource)"Liquid/water2";
+  x_pos = 453;
+  y_pos = 256;
+  z_pos = -100;
+  width = 150;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 213;
+  y_pos = 177;
+  z_pos = 0;
+  release_rate = 20;
+  direction = left;
+}
+
+exit {
+  image = (resource)"Exits/ice";
+  x_pos = 1340;
+  y_pos = 227;
+  z_pos = 0;
+}
+
+/* EOF */

@@ -1,0 +1,49 @@
+global {
+	start_x_pos = 0;
+	start_y_pos = 0;
+	number_of_pingus = 100;
+	levelname = "Level 4";
+	description = 
+"This is a simple random generated level,
+the algorithms is totaly primitive and will
+be changed at a later state. The level will
+also get a nice texture surface.";
+  time = 2500;
+}
+
+ground {
+	maptype = RANDOM;
+	// colmap  = (resource)"ColMaps/level1";
+	colmap  = (auto);
+}
+
+background {
+	image = (resource)"Textures/rooftile";
+}
+
+entrance {
+	image = (resource)"Entrances/entrance";
+	x_pos = 150;
+	y_pos =  200;
+	direction = right;
+	release_rate = 25;
+}
+
+entrance {
+	image = (resource)"Game/entrance";
+	x_pos = 450;
+	y_pos = 180;
+	direction = right;
+	release_rate = 25;
+}
+
+buttons {
+	basher  = 20;
+	blocker = 20;
+	bomber  = 20;
+	bridger = 20;
+	climber = 20;
+	digger  = 20;
+	floater = 20;
+	miner   = 20;
+}

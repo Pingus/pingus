@@ -1,0 +1,27 @@
+
+section Fonts
+{
+//	font    = ../images/fonts/clanfont.pcx (type=font, x=129, y=209, tcol=0, spacelen=6, letters=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789);
+	font	= ../images/fonts/font.pcx (type=font, x=1, y=1, tcol=0, spacelen=8, letters=abcdefghijklmnopqrstuvwxyz1234567890-?!.);
+	numbers = ../images/fonts/number_fnt.pcx (type=font, x=1, y=1, tcol=0, spacelen=9, letters=" 0123456789:");
+
+// courier font with size 20
+	courier   = ../images/fonts/courier.pcx   (type=font, x=1, y=1, tcol=0, spacelen=8, letters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-\/=[]().,");
+	courier_h = ../images/fonts/courier_h.pcx (type=font, x=1, y=1, tcol=0, spacelen=8, letters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-\/=[]().,");
+	smallfont = ../images/fonts/smallfont.pcx (type=font, x=1, y=1, tcol=0, spacelen=8, letters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-\/=[]().,");
+	smallfont_h = ../images/fonts/smallfont_h.pcx (type=font, x=1, y=1, tcol=0, spacelen=8, letters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-\/=[]().,");
+	clanfont  = ../images/fonts/clanfont.pcx (type=font, x=129, y=209, tcol=0, spacelen=6, letters=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789);
+
+	courier_small = ../images/fonts/courier_small2.tga (type=font,
+					                    spacelen=8,
+					   		    trans_limit=0.25,
+                                    				subtract_width=0,letters="!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
+	danger = ../images/fonts/danger.pcx (type=surface, x=0, y=0, width=215, height=121, tcol=0);
+
+	left_arrow = ../images/fonts/left_arrow.pcx (type=surface, x=0, y=0, width=100, height=73, tcol=0);
+	right_arrow = ../images/fonts/right_arrow.pcx (type=surface, x=0, y=0, width=100, height=73, tcol=0);
+
+	up_arrow = ../images/fonts/up_arrow.pcx (type=surface, x=0, y=0, width=73, height=99, tcol=0);
+	down_arrow = ../images/fonts/down_arrow.pcx (type=surface, x=0, y=0, width=73, height=99, tcol=0);
+
+}
