@@ -105,8 +105,6 @@ client.cxx \
 client.hxx \
 col_map.cxx \
 col_map.hxx \
-color.hxx \
-color.cxx \
 config.cxx \
 config.hxx \
 config_xml.cxx \

@@ -97,7 +97,7 @@ ObjectManager::new_level ()
       // people tend to get confused by no background, so well, we set one per default
       SolidColorBackgroundData bg_data;
       bg_data.pos   = Vector(0,0, -100);
-      bg_data.color = Color(.3f, 0.0f, 0.0f);
+      bg_data.color = CL_Colorf(.3f, 0.0f, 0.0f);
       bg_data.insert_EditorObjs(this);
     }
 
@@ -258,7 +258,7 @@ ObjectManager::save_level_xml (const std::string & filename)
   // Printing actions to file
   xml << "  <action-list>\n";
   for (std::vector<ActionData>::iterator i = actions.begin(); i != actions.end(); ++i) {
-    xml << "    <" << action_CL_String::to((*i).name) << " count=\"" << (*i).number_of << "\"/>" << std::endl;
+    xml << "    <" << action_to_string((*i).name) << " count=\"" << (*i).number_of << "\"/>" << std::endl;
   }
   xml << "  </action-list>\n" << std::endl;
 

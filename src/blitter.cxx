@@ -27,7 +27,6 @@
 #include <ClanLib/Display/pixel_format.h>
 
 #include "pingus_error.hxx"
-#include "color.hxx"
 #include "globals.hxx"
 #include "math.hxx"
 #include "blitter.hxx"
@@ -487,7 +486,7 @@ Blitter::scale_surface_to_canvas (CL_PixelBuffer provider, int width, int height
 
   if (provider.get_format().get_type() ==  pixelformat_index)
     {
-      Color color;
+      CL_Colorf color;
   
       // Slow but generic, using get_data () would be better, but would
       // require quite a bit of work
@@ -509,7 +508,7 @@ Blitter::scale_surface_to_canvas (CL_PixelBuffer provider, int width, int height
 		color.alpha = 1.0f;
               
 	      // FIXME: ignoring the source alpha due to get_pixel brokeness... no time to test the patch
-	      canvas.draw_pixel (x, y, color.to_cl_color());
+	      canvas.draw_pixel(x, y, CL_Color(color));
 	    }
 	}
     }

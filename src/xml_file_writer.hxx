@@ -22,11 +22,10 @@
 
 #include <stack>
 #include <iosfwd>
+#include <ClanLib/Display/color.h>
 #include "file_writer.hxx"
 
 namespace Pingus {
-
-class Color;
 
 /** */
 class XMLFileWriter : public FileWriter
@@ -48,7 +47,7 @@ public:
   void write_int    (const char* name, int);
   void write_float  (const char* name, float);
   void write_bool   (const char* name, bool);
-  void write_color  (const char* name, const Color&);
+  void write_color  (const char* name, const CL_Colorf&);
   void write_string (const char* name, const std::string&);
   void write_vector (const char* name, const Vector&);
 

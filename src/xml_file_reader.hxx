@@ -20,6 +20,7 @@
 #ifndef HEADER_XML_FILE_READER_HXX
 #define HEADER_XML_FILE_READER_HXX
 
+#include <ClanLib/Display/color.h>
 #include "xml_helper.hxx"
 #include "file_reader.hxx"
 
@@ -50,7 +51,7 @@ public:
 
   bool read_int   (const char* name, int&);
   bool read_desc  (const char* name, ResDescriptor&);
-  bool read_color (const char* name, Color&);
+  bool read_color (const char* name, CL_Colorf&);
   bool read_float (const char* name, float&);
   bool read_bool  (const char* name, bool&);
   bool read_string(const char* name, std::string&);

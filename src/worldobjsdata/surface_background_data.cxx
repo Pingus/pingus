@@ -35,7 +35,7 @@ SurfaceBackgroundData::SurfaceBackgroundData ()
     pos(Vector(0, 0, -150)),
     scroll_x(0.0),
     scroll_y(0.0),
-    color(Color(0,0,0,0)),
+    color(CL_Colorf(0,0,0,0)),
     stretch_x(false),
     stretch_y(false),
     keep_aspect(false)

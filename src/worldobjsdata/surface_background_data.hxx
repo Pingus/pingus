@@ -20,9 +20,9 @@
 #ifndef HEADER_PINGUS_WORLDOBJSDATA_SURFACE_BACKGROUND_DATA_HXX
 #define HEADER_PINGUS_WORLDOBJSDATA_SURFACE_BACKGROUND_DATA_HXX
 
+#include <ClanLib/Display/color.h>
 #include "../vector.hxx"
 #include "../worldobj_data.hxx"
-#include "../color.hxx"
 #include "../res_descriptor.hxx"
 #include "../libxmlfwd.hxx"
 
@@ -50,7 +50,7 @@ public:
   /** fill_rect() components
       An fill_rect() can be drawn over the background, the following
       for components are passed to the fill_rect() call. */
-  Color color;
+  CL_Colorf color;
 
   /** Stretch the background to the full screen size in x direction */
   bool stretch_x;

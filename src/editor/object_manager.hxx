@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_EDITOR_OBJECT_MANAGER_HXX
 
 #include <map>
-#include "../color.hxx"
+#include <ClanLib/Display/color.h>
 #include "../action_data.hxx"
 #include "editorobj.hxx"
 #include "editorobj_mgr.hxx"
@@ -65,7 +65,7 @@ private:
 
   int move_offset;
 
-  Color bg;
+  CL_Colorf bg;
 
 public:
   typedef std::vector<EditorObj*>::iterator EditorObjIter;

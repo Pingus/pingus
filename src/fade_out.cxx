@@ -27,7 +27,7 @@
 
 namespace Pingus {
 
-FadeOut::FadeOut (float seconds, Color color_)
+FadeOut::FadeOut (float seconds, CL_Colorf color_)
   : complete_time(seconds), passed_time(0),
     color(color_)
 {

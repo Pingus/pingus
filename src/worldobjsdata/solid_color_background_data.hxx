@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_WORLDOBJSDATA_SOLID_COLOR_BACKGROUND_DATA_HXX
 #define HEADER_PINGUS_WORLDOBJSDATA_SOLID_COLOR_BACKGROUND_DATA_HXX
 
+#include <ClanLib/Display/color.h>
 #include "../vector.hxx"
-#include "../color.hxx"
 #include "../worldobj_data.hxx"
 #include "../libxmlfwd.hxx"
 
@@ -32,7 +32,7 @@ class SolidColorBackgroundData : public WorldObjData
 {
 public:
   Vector pos;
-  Color     color;
+  CL_Colorf     color;
 
   // FIXME: Add z_pos handling here
 

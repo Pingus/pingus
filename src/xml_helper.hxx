@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_XML_HELPER_HXX
 
 #include "pingus.hxx"
+#include <ClanLib/Display/color.h>
 #include <config.h>
 #include <string>
 #include <iosfwd>
@@ -55,7 +56,6 @@
 namespace Pingus {
 
 class Vector;
-class Color;
 class ResDescriptor;
 
 class XMLhelper
@@ -112,7 +112,7 @@ public:
   static bool          parse_bool    (xmlDocPtr doc, xmlNodePtr cur);
   static int           parse_int     (xmlDocPtr doc, xmlNodePtr cur);
   static float         parse_float   (xmlDocPtr doc, xmlNodePtr cur);
-  static Color         parse_color   (xmlDocPtr doc, xmlNodePtr cur);
+  static CL_Colorf     parse_color   (xmlDocPtr doc, xmlNodePtr cur);
   //@}
 
   /// A set of functions to write data down to an xml file

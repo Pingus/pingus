@@ -75,13 +75,13 @@ SurfaceBackgroundObj::get_gui_dialog(EditorNS::Editor* editor)
   propframe->add_float_box("Scroll-Speed-X", &data->scroll_x);
   propframe->add_float_box("Scroll-Speed-Y", &data->scroll_y);
 
-  propframe->add_check_box("Stretch-X", &data->stretch_x);
-  propframe->add_check_box("Stretch-Y", &data->stretch_y);
+  propframe->add_check_box("Stretch-X",  &data->stretch_x);
+  propframe->add_check_box("Stretch-Y",  &data->stretch_y);
   propframe->add_check_box("KeepAspect", &data->keep_aspect);
 
-  propframe->add_float_box("Color Red", &data->color.red);
+  propframe->add_float_box("Color Red",   &data->color.red);
   propframe->add_float_box("Color Green", &data->color.green);
-  propframe->add_float_box("Color Blue", &data->color.blue);
+  propframe->add_float_box("Color Blue",  &data->color.blue);
   propframe->add_float_box("Color Alpha", &data->color.alpha);
 
   //propframe->add_button_box("Hello World", Functor);

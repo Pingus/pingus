@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "res_descriptor.hxx"
-#include "color.hxx"
 #include "debug.hxx"
 #include "globals.hxx"
 #include "xml_file_reader.hxx"
@@ -91,7 +90,7 @@ XMLFileReader::read_desc  (const char* name, ResDescriptor& value)
 }
 
 bool
-XMLFileReader::read_color (const char* name, Color& value)
+XMLFileReader::read_color (const char* name, CL_Colorf& value)
 {
   xmlNodePtr node = find_node(name);
 

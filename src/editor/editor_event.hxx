@@ -22,7 +22,6 @@
 
 #include <vector>
 #include <ClanLib/Display/font.h>
-#include "../color.hxx"
 
 class CL_Key;
 class CL_Font;
@@ -41,7 +40,7 @@ private:
   bool is_enabled;
   CL_Font font;
 
-  std::vector<Color> background_colors;
+  std::vector<CL_Colorf> background_colors;
 
 public:
   EditorEvent();

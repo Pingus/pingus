@@ -19,7 +19,6 @@
 
 #include <iostream>
 #include "vector.hxx"
-#include "color.hxx"
 #include "xml_file_writer.hxx"
 #include "xml_helper.hxx"
 
@@ -72,7 +71,7 @@ XMLFileWriter::write_float  (const char* name, float value)
 }
 
 void
-XMLFileWriter::write_color  (const char* name, const Color& color)
+XMLFileWriter::write_color  (const char* name, const CL_Colorf& color)
 {
   (*out) << "<" << name << ">\n"
          << "  <red>"   << color.red   << "</red>\n"

@@ -20,6 +20,7 @@
 #include <algorithm>
 #include <stdio.h>
 #include <fstream>
+#include <ClanLib/Display/color.h>
 #include <ClanLib/GUI/gui_manager.h>
 #include <ClanLib/Core/System/error.h>
 #include <ClanLib/Display/input_event.h>
@@ -60,15 +61,15 @@ EditorEvent::EditorEvent()
   : is_enabled (false)
 {
   for (float i = 0; i < 1.0f; i += 0.1f)
-    background_colors.push_back (Color (i, i, i));
+    background_colors.push_back (CL_Colorf (i, i, i));
 
-  background_colors.push_back (Color (1.0, 1.0, 0.0));
-  background_colors.push_back (Color (0.0, 1.0, 1.0));
-  background_colors.push_back (Color (1.0, 0.0, 1.0));
+  background_colors.push_back(CL_Colorf(1.0, 1.0, 0.0));
+  background_colors.push_back(CL_Colorf(0.0, 1.0, 1.0));
+  background_colors.push_back(CL_Colorf(1.0, 0.0, 1.0));
 
-  background_colors.push_back (Color (0.0, 1.0, 0.0));
-  background_colors.push_back (Color (1.0, 0.0, 0.0));
-  background_colors.push_back (Color (0.0, 0.0, 1.0));
+  background_colors.push_back(CL_Colorf(0.0, 1.0, 0.0));
+  background_colors.push_back(CL_Colorf(1.0, 0.0, 0.0));
+  background_colors.push_back(CL_Colorf(0.0, 0.0, 1.0));
 }
 
 EditorEvent::~EditorEvent()
@@ -489,7 +490,7 @@ EditorEvent::editor_mark_all_objects()
 void
 EditorEvent::editor_toggle_background_color()
 {
-  std::vector<Color>::iterator i =
+  std::vector<CL_Colorf>::iterator i =
     std::find(background_colors.begin (), background_colors.end (), object_manager->bg);
 
   if (i == background_colors.end ())

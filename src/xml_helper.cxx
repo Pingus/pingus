@@ -20,7 +20,6 @@
 #include <iostream>
 #include "globals.hxx"
 #include "vector.hxx"
-#include "color.hxx"
 #include "res_descriptor.hxx"
 #include "xml_helper.hxx"
 
@@ -237,10 +236,10 @@ XMLhelper::parse_float (xmlDocPtr doc, xmlNodePtr cur)
   return number;
 }
 
-Color
+CL_Colorf
 XMLhelper::parse_color (xmlDocPtr doc, xmlNodePtr cur)
 {
-  Color color;
+  CL_Colorf color;
   cur = cur->children;
 
   while (cur)

@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_FADE_OUT_HXX
 #define HEADER_PINGUS_FADE_OUT_HXX
 
-#include "color.hxx"
+#include <ClanLib/Display/color.h>
 
 namespace Pingus {
 
@@ -35,11 +35,11 @@ private:
   float passed_time;
 
 protected:
-  Color color;
+  CL_Colorf color;
 public:
   /** @return seconds number of seconds until the fadeout is
       complete */
-  FadeOut (float seconds = 1.0f, Color color = Color ());
+  FadeOut (float seconds = 1.0f, CL_Colorf color = CL_Colorf ());
   virtual ~FadeOut ();
 
   // Reset the fadeout to the start
@@ -69,7 +69,7 @@ class EnlargingRectFadeOut : public FadeOut
 {
 private:
 public:
-  EnlargingRectFadeOut (float seconds = 1.0f, Color color_ = Color())
+  EnlargingRectFadeOut (float seconds = 1.0f, CL_Colorf color_ = CL_Colorf())
   : FadeOut (seconds, color_) {}
   ~EnlargingRectFadeOut () {}
 
