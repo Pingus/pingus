@@ -10,9 +10,9 @@
     <levelname lang="sr">Skakutanje... i glodanje...</levelname>
 
     <description lang="en">It's panic time again. The Pingus will not come out very fast, but
-		           since they turn around on walls you will soon have some trouble
+		           since they turn around when they hit walls you will soon have some trouble
 		           coordinating them all. Since you only need to save 5 it should be doable,
-		           but if all fails use the pause-mode ('p') to get an overview again.
+		           but if all else fails use the pause-mode ('p') to get an overview again.
     </description>
     <description lang="de">Es ist wieder Zeit für Panik. Die Pingus kommen nicht sehr schnell heraus,
 		           aber da sie sich drehen wenn sie eine Wand erreichen,

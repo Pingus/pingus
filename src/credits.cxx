@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.27 2003/04/17 07:15:35 torangan Exp $
+//  $Id: credits.cxx,v 1.28 2003/04/18 08:41:57 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -114,6 +114,7 @@ Credits::Credits()
   credits.push_back("_Giuseppe D'Aqui");
   credits.push_back("_Henri Manson");
   credits.push_back("_Jan Moren");
+  credits.push_back("_Jeff Binder");
   credits.push_back("_Jens Henrik Goebbert");
   credits.push_back("_Johnny Taporg");
   credits.push_back("_Jules Bean");
