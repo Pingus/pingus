@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.20 2002/07/01 18:36:39 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.21 2002/07/02 09:14:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -386,15 +386,13 @@ EditorEvent::editor_convert_group_to_selection()
 {
   if (selection->get_current_obj())
     {
-      boost::shared_ptr<EditorObj> obj(selection->get_current_obj());
-      EditorObjGroup* group = dynamic_cast<EditorObjGroup*>(obj.get());
+      EditorObj* obj = selection->get_current_obj();
+      EditorObjGroup* group = dynamic_cast<EditorObjGroup*>(obj);
 
       if (group)
 	{      
 	  std::vector<EditorObj*>* objs = group->get_objs();
-	  object_manager->editor_objs.erase(std::find(object_manager->editor_objs.begin(), 
-						      object_manager->editor_objs.end(),
-						      obj));
+	  object_manager->erase (*objs);
 	  selection->clear();
 	  for(std::vector<EditorObj*>::iterator i = objs->begin();
 	      i != objs->end();
@@ -431,7 +429,6 @@ EditorEvent::editor_convert_selection_to_group()
   if (selection->size() > 1)
     {
       EditorObjGroup* group = new EditorObjGroup();
-      boost::shared_ptr<EditorObj> group_obj(group);
       std::vector<EditorObj*> to_erase;
 
       // We need to collect the objects out of the editor_objs list to keep the correct sorting
@@ -456,9 +453,9 @@ EditorEvent::editor_convert_selection_to_group()
 	  i++)
 	object_manager->erase(*i);
 
-      object_manager->editor_objs.push_back(group_obj);
+      object_manager->add (group);
       selection->clear();
-      selection->add(group_obj.get());
+      selection->add(group);
     }
   else
     {
@@ -699,13 +696,13 @@ EditorEvent::editor_mark_or_move_object()
   if (editor->tool != Editor::SELECTOR_TOOL)
     return;
 
-  boost::shared_ptr<EditorObj> obj 
+  EditorObj* obj 
     = object_manager->find_object(editor->view->screen_to_world (CL_Vector(CL_Mouse::get_x(), 
-									     CL_Mouse::get_y())));
+									   CL_Mouse::get_y())));
   
-  if (obj.get())
+  if (obj)
     {
-      if (selection->object_selected(obj.get()))
+      if (selection->object_selected(obj))
 	{
 	  editor->interactive_move_object();
 	}
@@ -714,7 +711,7 @@ EditorEvent::editor_mark_or_move_object()
 	  if (!CL_Keyboard::get_keycode(CL_KEY_LSHIFT))
 	    selection->clear();
 	  
-	  selection->add(obj.get());
+	  selection->add(obj);
 	}
     }
   else

@@ -1,4 +1,4 @@
-//  $Id: object_manager.hxx,v 1.10 2002/07/01 18:36:40 grumbel Exp $
+//  $Id: object_manager.hxx,v 1.11 2002/07/02 09:14:20 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,9 +36,7 @@ class EditorView;
 class ObjectManager
 {
 private:
-  ///
   friend class EditorEvent;
-  ///
   friend class Editor;
   
   /// Other Level data
@@ -128,7 +126,7 @@ public:
   void erase (EditorObj*);
 
   /** Erase objects from the ObjectManager and delete them */
-  void erase (std::vector<EditorObj*>);
+  void erase (const std::vector<EditorObj*>&);
 
   //void lower_current_objs();
 
@@ -136,7 +134,7 @@ public:
   //void unselect_object(boost::shared_ptr<EditorObj> c_obj);
 
   /** Add the object at the given position to the selection */
-  boost::shared_ptr<EditorObj> find_object(const CL_Vector & pos);
+  EditorObj* find_object(const CL_Vector & pos);
 
   std::vector<ActionData>* get_actions ();
 };

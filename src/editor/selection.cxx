@@ -1,4 +1,4 @@
-//  $Id: selection.cxx,v 1.6 2002/07/02 08:58:22 torangan Exp $
+//  $Id: selection.cxx,v 1.7 2002/07/02 09:14:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,61 +27,59 @@ using namespace Pingus;
 using namespace std;
 
 void
-EditorSelection::move(float x, float y) {
-
+EditorSelection::move(float x, float y) 
+{
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->set_position_offset(CL_Vector(x, y));
 }
 
 void
-EditorSelection::move(const CL_Vector& pos) {
-
+EditorSelection::move(const CL_Vector& pos) 
+{
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->set_position_offset(pos);
 }
 
 void
-EditorSelection::drag() {
-
+EditorSelection::drag() 
+{
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->drag();
 }
 
-void
-EditorSelection::drop() {
-
+void EditorSelection::drop() 
+{
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->drop();
 }
 
-void
-EditorSelection::add(EditorObj* obj) {
-
+void EditorSelection::add(EditorObj* obj)
+{
   obj_list.push_back(obj);
 }
 
 void
-EditorSelection::add(vector<EditorObj*> objs) {
-
+EditorSelection::add(vector<EditorObj*> objs)
+{
   obj_list.insert(obj_list.end(), objs.begin(), objs.end());
 }
 
 void
-EditorSelection::remove(EditorObj* obj) {
-
+EditorSelection::remove(EditorObj* obj)
+{
   obj_list.erase(std::find(obj_list.begin(), obj_list.end(), obj));
 }
 
 void
-EditorSelection::raise() {
-
+EditorSelection::raise() 
+{
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     object_manager->raise_obj(*it);
 }
 
 void
-EditorSelection::lower() {
-
+EditorSelection::lower() 
+{
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     object_manager->lower_obj(*it);
 }
@@ -95,13 +93,19 @@ EditorSelection::select_rect(float x1_, float y1_, float x2_, float y2_)
       && !CL_Keyboard::get_keycode(CL_KEY_RSHIFT))
     clear();
     
+  // Rotate the rectangle, so that x1,y1 is top/left und x2,y2 is
+  // bottom right
   x1 = static_cast<int> (Math::min(x1_, x2_));
   x2 = static_cast<int> (Math::max(x1_, x2_));
   y1 = static_cast<int> (Math::min(y1_, y2_));
   y2 = static_cast<int> (Math::max(y1_, y2_));
+
+  std::cout << "Rect: " << x1 << " " << y1 << " "  << x2 << " "  << y2 << " "  << std::endl;
   
   const vector<EditorObj*> & erg = object_manager->rect_get_objs(x1, x2, y1, y2);
   
+  std::cout << "Size: " << erg.size () << std::endl;
+
   obj_list.insert(obj_list.end(), erg.begin(), erg.end());
 }
 

@@ -1,4 +1,4 @@
-//  $Id: editor.hxx,v 1.7 2002/07/01 16:10:29 torangan Exp $
+//  $Id: editor.hxx,v 1.8 2002/07/02 09:14:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -109,7 +109,6 @@ public:
 
   bool mouse_moved();
   void scroll();
-  void edit_current_objs();
   void zoom_mode ();
   void load_level (const std::string& str);
 

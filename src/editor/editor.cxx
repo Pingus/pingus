@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.16 2002/07/01 16:47:30 grumbel Exp $
+//  $Id: editor.cxx,v 1.17 2002/07/02 09:14:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -420,9 +420,6 @@ Editor::rect_get_current_objs()
 {
   CL_Vector start_pos (CL_Mouse::get_x(),
 		       CL_Mouse::get_y ());
-  
-  //std::cout << "Editor: Selecting rectangle... " << std::flush;
-
   CL_Vector end_pos;
 
   while (CL_Mouse::middle_pressed())
@@ -447,9 +444,8 @@ Editor::rect_get_current_objs()
   start_pos = view->screen_to_world (start_pos);
   end_pos = view->screen_to_world (end_pos);
 
-  selection->select_rect(start_pos.x, start_pos.y, end_pos.x, end_pos.y);
-
-  //std::cout << "finished" << std::endl;
+  selection->select_rect(start_pos.x, start_pos.y, 
+			 end_pos.x, end_pos.y);
 }
 
 bool
@@ -509,18 +505,6 @@ Editor::interactive_move_object()
       CL_System::keep_alive();
     }
   selection->drop ();
-}
-
-void
-Editor::edit_current_objs()
-{
-  std::cout << "Editor::edit_current_objs(): Not implemented" << std::endl;
-  /*  boost::shared_ptr<EditorObj> obj = object_manager->get_current_obj();
-
-  if (obj.get())
-    obj->gui_edit_obj();
-  else
-  std::cout << "No single object selected" << std::endl;*/
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.17 2002/07/01 18:36:40 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.18 2002/07/02 09:14:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -331,42 +331,6 @@ ObjectManager::save_level_xml (const std::string & filename)
   xml << "</pingus-level>\n" << std::endl;
 }
 
-/*
-void
-ObjectManager::delete_selection()
-{
-  current_objs.erase(current_objs.begin(), current_objs.end());  
-}
-*/
-
-/*
-void
-ObjectManager::unselect_object(boost::shared_ptr<EditorObj> c_obj)
-{
-  current_objs.erase(std::find(current_objs.begin(), current_objs.end(),
-			       c_obj));
-}
-
-
-void
-ObjectManager::raise_current_objs()
-{
-  for(CurrentObjIter i = current_objs.begin(); i != current_objs.end(); ++i) 
-    {
-      raise_obj(*i);
-    }
-}
-
-void 
-ObjectManager::lower_current_objs()
-{
-  for(CurrentObjIter i = current_objs.begin(); i != current_objs.end(); i++) 
-    {
-      lower_obj(*i);
-    }
-}
-*/
-
 bool
 ObjectManager::lower_obj(EditorObj* obj)
 {
@@ -445,7 +409,7 @@ ObjectManager::rect_get_objs(int x1, int y1, int x2, int y2)
 {
   vector<EditorObj*> retval;
 
-  for (EditorObjIter it = editor_objs.begin(); it != editor_objs.end(); it++)
+  for (EditorObjIter it = editor_objs.begin(); it != editor_objs.end(); ++it)
     if ((*it)->is_in_rect(CL_Rect(x1, y1, x2, y2)))
       retval.push_back(it->get ());
       
@@ -453,21 +417,27 @@ ObjectManager::rect_get_objs(int x1, int y1, int x2, int y2)
 }
 
 void
-ObjectManager::add (EditorObj*)
+ObjectManager::add (EditorObj* obj)
 {
   std::cout << "ObjectManager::add (EditorObj*)" << std::endl;
+  editor_objs.push_back (boost::shared_ptr<EditorObj>(obj));
 }
 
 void
-ObjectManager::erase (EditorObj*)
+ObjectManager::erase (EditorObj* obj)
 {
-  std::cout << "ObjectManager::erase (EditorObj*): Not implemented" << std::endl;
+  editor_objs.erase(std::remove_if (editor_objs.begin(), editor_objs.end(), EditorObj_finder(obj)),
+		    editor_objs.end ());
 }
 
 void
-ObjectManager::erase (std::vector<EditorObj*> obj)
+ObjectManager::erase (const std::vector<EditorObj*>& objs)
 {
-  std::cout << "ObjectManager::erase (std::vector<EditorObj*> obj): Not implemented" << std::endl;
+  for (std::vector<EditorObj*>::const_iterator i = objs.begin (); i != objs.end (); ++i)
+    {
+      editor_objs.erase(std::remove_if (editor_objs.begin(), editor_objs.end(), EditorObj_finder(*i)),
+			editor_objs.end ());
+    }
 }
 
 /*
@@ -483,18 +453,18 @@ ObjectManager::object_selected(boost::shared_ptr<EditorObj> c_obj)
 }
 */
 
-boost::shared_ptr<EditorObj>
-ObjectManager::find_object(const CL_Vector & pos)
+EditorObj*
+ObjectManager::find_object(const CL_Vector& pos)
 {
   for(EditorObjRIter i = editor_objs.rbegin(); i != editor_objs.rend(); ++i) 
     {
       if ((*i)->is_over(pos))
 	{
-	  return *i;
+	  return i->get ();
 	}
     }
   
-  return boost::shared_ptr<EditorObj>();
+  return 0;
 }
 
 /*
