@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.3 2002/06/17 15:45:26 torangan Exp $
+//  $Id: playfield.cxx,v 1.4 2002/06/18 14:16:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ using boost::shared_ptr;
 
 Playfield::Playfield(PLF* level_data, World* w,
 		     Controller* arg_controller)
-  : controller (arg_controller)
+  : current_view(0), controller (arg_controller)
 {
   world = w;
   mouse_scrolling = false;
