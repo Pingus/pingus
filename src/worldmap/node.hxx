@@ -1,4 +1,4 @@
-//  $Id: node.hxx,v 1.10 2002/10/12 23:34:43 grumbel Exp $
+//  $Id: node.hxx,v 1.11 2002/10/24 13:01:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include "../sprite.hxx"
 #include "graph.hxx"
 #include "node_data.hxx"
+
+#error "This file should not be used! Remove it from the projects file list!"
 
 class Vector;
 class PLF;
