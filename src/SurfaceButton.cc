@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.4 2000/02/15 12:33:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include "globals.hh"
 #include "PingusResource.hh"
+#include "Loading.hh"
 #include "PingusGame.hh"
 #include "OptionMenu.hh"
 
@@ -74,8 +75,9 @@ SurfaceButton::mouse_over()
 
 PlayButton::PlayButton()
 {
-  x_pos = 500;
-  y_pos = 420;
+  x_pos = CL_Display::get_width() * 500 / 640;
+  y_pos = CL_Display::get_height() * 420 / 480;
+
   surface   = CL_Surface::load("Buttons/play", PingusResource::get("menu.dat"));
   surface_p = CL_Surface::load("Buttons/play_p", PingusResource::get("menu.dat"));
 }
@@ -87,6 +89,8 @@ PlayButton::~PlayButton()
 void 
 PlayButton::on_click()
 {
+  loading_screen.draw();
+
   PingusGame game;
   game.start();
 }
@@ -95,8 +99,9 @@ PlayButton::on_click()
 
 OptionsButton::OptionsButton()
 {
-  x_pos = 150;
-  y_pos = 330;
+  x_pos = CL_Display::get_width() * 150 / 640; //150;
+  y_pos = CL_Display::get_height() * 330 / 480; //330;
+
   surface   = CL_Surface::load("Buttons/options", PingusResource::get("menu.dat"));
   surface_p = CL_Surface::load("Buttons/options_p", PingusResource::get("menu.dat"));
 }
@@ -115,8 +120,9 @@ OptionsButton::on_click()
 
 QuitButton::QuitButton()
 {
-  x_pos = 500;
-  y_pos = 320;
+  x_pos = CL_Display::get_width() * 500 / 640; //500;
+  y_pos = CL_Display::get_height() * 320 / 480; //320;
+
   surface   = CL_Surface::load("Buttons/quit", PingusResource::get("menu.dat"));
   surface_p = CL_Surface::load("Buttons/quit_p", PingusResource::get("menu.dat"));  
 }
@@ -134,8 +140,9 @@ void QuitButton::on_click()
 
 LoadButton::LoadButton()
 {
-  x_pos = 150;
-  y_pos = 420;
+  x_pos = CL_Display::get_width() * 150 / 640; //150;
+  y_pos = CL_Display::get_height() * 420 / 480; //420;
+
   surface   = CL_Surface::load("Buttons/load", PingusResource::get("menu.dat"));
   surface_p = CL_Surface::load("Buttons/load_p", PingusResource::get("menu.dat"));
 }
@@ -156,8 +163,9 @@ void LoadButton::on_click()
 
 EditorButton::EditorButton()
 {
-  x_pos = 335;
-  y_pos = 370;
+  x_pos = CL_Display::get_width() * 335 / 640; //335;
+  y_pos = CL_Display::get_height() * 370 / 480; //370;
+
   surface   = CL_Surface::load("Buttons/editor", PingusResource::get("menu.dat"));
   surface_p = CL_Surface::load("Buttons/editor_p", PingusResource::get("menu.dat"));
 }
@@ -178,8 +186,9 @@ EditorButton::on_click()
 
 ThemeButton::ThemeButton()
 {
-  x_pos = 150;
-  y_pos = 430;
+  x_pos = CL_Display::get_width() * 150 / 640;  //150;
+  y_pos = CL_Display::get_height() * 430 / 480; //430;
+
   surface   = CL_Surface::load("Buttons/theme", PingusResource::get("menu.dat"));
   surface_p = CL_Surface::load("Buttons/theme_p", PingusResource::get("menu.dat"));     
 }
@@ -191,6 +200,7 @@ ThemeButton::~ThemeButton()
 void
 ThemeButton::on_click()
 {
+  loading_screen.draw();
   theme_selector.select();
 }
 

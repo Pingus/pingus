@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.4 2000/02/12 20:53:42 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.5 2000/02/15 12:33:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 
 #include "globals.hh"
 #include "PingusResource.hh"
-
+#include "Loading.hh"
 #include "OptionMenu.hh"
 
 // Define the global option menu
@@ -129,7 +129,7 @@ OptionEntry::mouse_over()
 bool
 OptionMenu::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 {
-  std::cout << "Got putten press" << std::endl;
+  if (verbose) std::cout << "Got putten press" << std::endl;
   return true;
 }
 
@@ -144,7 +144,7 @@ OptionMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
 	  option_menu->quit = true;
 	  break;
 	default:
-	  std::cout << "OptionMenu::Event: Unknown key released: id=" << key.id << std::endl;
+	  if (verbose) std::cout << "OptionMenu::Event: Unknown key released: id=" << key.id << std::endl;
 	  break;
 	} 
     }
@@ -152,15 +152,18 @@ OptionMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
     {
       switch(key.id)
 	{
+	case 0:
+	  if (verbose)std::cout << "Button 0 pressed" << std::endl;
+	  break;
 	case 1:
+	  option_menu->quit = true;
+	  if (verbose) std::cout << "Button 1 pressed" << std::endl;
 	  break;
 	case 2:
-	  break;
-	case 3:
-	  option_menu->quit = true;
+	  if (verbose) std::cout << "Button 2 pressed" << std::endl;
 	  break;
 	default:
-	  std::cout << "OptionMenu::Event: Unknown mouse key released: id=" << key.id << std::endl;
+	  if (verbose) std::cout << "OptionMenu::Event: Unknown mouse key released: id=" << key.id << std::endl;
 	  break;  
 	}
     }
@@ -187,6 +190,8 @@ OptionMenu::~OptionMenu()
 void
 OptionMenu::init() 
 {
+  loading_screen.draw();
+
   font = CL_Font::load("Fonts/smallfont_h",  PingusResource::get("fonts.dat"));
   title_font = CL_Font::load("Fonts/pingus", PingusResource::get("fonts.dat"));
   background =  CL_Surface::load("Textures/rocktile", PingusResource::get("textures.dat"));
@@ -288,8 +293,12 @@ OptionMenu::display()
 
   quit = false;
 
+  std::cout << "Registering" << endl;
   CL_Input::chain_button_press.push_back(event);
   CL_Input::chain_button_release.push_back(event);
+  std::cout << "Registering don" << endl;
+
+  draw();
 
   while(!quit)
     {

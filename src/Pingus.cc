@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.6 2000/02/12 20:53:43 grumbel Exp $
+//   $Id: Pingus.cc,v 1.7 2000/02/15 12:33:04 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -50,6 +50,7 @@
 #include "PingusGame.hh"
 #include "Playfield.hh"
 #include "PingusError.hh"
+#include "Loading.hh"
 
 #include "PingusMenu.hh"
 #include "PingusMessageBox.hh"
@@ -122,23 +123,25 @@ PingusMain::read_rc_file(void)
   } 
   
   std::cout << "PingusMain: Parsing config file" << std::endl;
-  while(true) {
-    in.getline(line, 1023);
-    ++lineno;
-    if(in.eof()) {
-      break;
-    }
+  
+  while(true) 
+    {
+      in.getline(line, 1023);
+      ++lineno;
+      if(in.eof()) {
+	break;
+      }
     
-    remove_comments(line);
-    if (!line_empty(line)) {
-      if (sscanf(line, "%s %s", option, argument) == 2) {
-	pargv[pargc++] = strdup((string("--") + option).c_str());
-	pargv[pargc++] = strdup(argument);
-      } else {
-	pargv[pargc++] = strdup((string("--") + option).c_str());
+      remove_comments(line);
+      if (!line_empty(line)) {
+	if (sscanf(line, "%s %s", option, argument) == 2) {
+	  pargv[pargc++] = strdup((string("--") + option).c_str());
+	  pargv[pargc++] = strdup(argument);
+	} else {
+	  pargv[pargc++] = strdup((string("--") + option).c_str());
+	}
       }
     }
-  }
   
   if (pargc == 1) {
     check_args(pargc, pargv);
@@ -255,7 +258,7 @@ PingusMain::check_args(int argc, char* argv[])
       intro_disabled = true;
       break;
     case 'V':
-      std::cout << "Pingus" << " version " << VERSION << std::endl;
+      std::cout << PACKAGE << " version " << VERSION << std::endl;
       std::cout <<
 	"\n"
 	"Copyright (C) 1998 Ingo Ruhnke <grumbel@gmx.de>\n"
