@@ -1,0 +1,14 @@
+How to create a background:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Create a new class, with the data which is required for the
+background and a member function to parse the data out of an xml
+file, the class needs to inherit from BackgroundData
+
+2. Create another class, which inherit from the data class and from
+"Background"
+
+3. Add the new class to the class chooser in
+BackgroundData::parse_... and Background::create(BackgroundData)
+
+EOF
