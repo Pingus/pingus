@@ -1,4 +1,4 @@
-//  $Id: pingu.hxx,v 1.22 2002/10/12 00:24:26 grumbel Exp $
+//  $Id: pingu.hxx,v 1.23 2002/10/12 13:30:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,7 +69,7 @@ private:
   Vector* const velocity; 
 
   bool request_set_action (PinguAction*);
-  void  set_action (PinguAction*);
+  void set_action (PinguAction*);
 
 public:
 

@@ -1,4 +1,4 @@
-//  $Id: stat.hxx,v 1.8 2002/09/27 11:26:49 torangan Exp $
+//  $Id: stat.hxx,v 1.9 2002/10/12 13:30:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,7 @@ private:
   xmlDocPtr doc;
 
   /** Load the given file */
-  void parse_file (std::string filename);
+  void parse_file ();
   
   /** Parse a given node */
   void parse_node (xmlNodePtr);
