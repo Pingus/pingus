@@ -1,0 +1,181 @@
+<pingus-worldmap>
+  <surface>
+    <resource type="datafile">
+      <resource-datafile>worldmaps</resource-datafile>
+      <resource-ident>volcano</resource-ident>
+    </resource>
+  </surface>
+
+  <node-list>
+
+    <node id="1">
+      <link id="2"/>
+      <level name="level1.xml"/>
+      <position>
+	<x-pos>50</x-pos>
+	<y-pos>377</y-pos>
+      </position>
+    </node>
+
+    <node id="2">
+      <link id="3"/>
+      <level name="level1.xml"/>
+      <position>
+	<x-pos>180</x-pos>
+	<y-pos>345</y-pos>
+      </position>
+    </node>
+
+    <node id="3">
+      <level name="level1.xml"/>
+      <link id="31"/>
+      <link id="7"/>
+      <position>
+	<x-pos>261</x-pos>
+	<y-pos>358</y-pos>
+      </position>
+    </node>
+
+    <node id="31">
+      <link id="4"/>
+      <position>
+	<x-pos>336</x-pos>
+	<y-pos>325</y-pos>
+      </position>
+    </node>
+
+    <node id="4">
+      <level name="level1.xml"/>
+      <link id="41"/>
+      <position>
+	<x-pos>418</x-pos>
+	<y-pos>310</y-pos>
+      </position>
+    </node>
+
+    <node id="41">
+      <link id="5"/>
+      <position>
+	<x-pos>381</x-pos>
+	<y-pos>277</y-pos>
+      </position>
+    </node>
+
+    <node id="5">
+      <level name="level1.xml"/>
+      <link id="51"/>
+      <position>
+	<x-pos>370</x-pos>
+	<y-pos>247</y-pos>
+      </position>
+    </node>
+
+    <node id="51">
+      <link id="6"/>
+      <position>
+	<x-pos>422</x-pos>
+	<y-pos>230</y-pos>
+      </position>
+    </node>
+
+    <node id="6">
+      <level name="level1.xml"/>
+      <position>
+	<x-pos>469</x-pos>
+	<y-pos>177</y-pos>
+      </position>
+    </node>
+
+    <node id="7">
+      <level name="level1.xml"/>
+      <link id="8"/>
+      <link id="13"/>
+      <position>
+	<x-pos>353</x-pos>
+	<y-pos>388</y-pos>
+      </position>
+    </node>
+
+    <node id="8">
+      <level name="level1.xml"/>
+      <link id="9"/>
+      <position>
+	<x-pos>418</x-pos>
+	<y-pos>374</y-pos>
+      </position>
+    </node>
+
+    <node id="9">
+      <level name="level1.xml"/>
+      <link id="10"/>
+      <position>
+	<x-pos>498</x-pos>
+	<y-pos>386</y-pos>
+      </position>
+    </node>
+
+    <node id="10">
+      <level name="level1.xml"/>
+      <link id="11"/>
+      <position>
+	<x-pos>581</x-pos>
+	<y-pos>406</y-pos>
+      </position>
+    </node>
+
+    <node id="11">
+      <level name="level1.xml"/>
+      <link id="12"/>
+      <position>
+	<x-pos>691</x-pos>
+	<y-pos>392</y-pos>
+      </position>
+    </node>
+
+    <node id="12">
+      <level name="level1.xml"/>
+      <position>
+	<x-pos>744</x-pos>
+	<y-pos>377</y-pos>
+      </position>
+    </node>
+
+    <node id="13">
+      <level name="level1.xml"/>
+      <link id="14"/>
+      <position>
+	<x-pos>424</x-pos>
+	<y-pos>448</y-pos>
+      </position>
+    </node>
+
+    <node id="14">
+      <level name="level1.xml"/>
+      <link id="15"/>
+      <position>
+	<x-pos>535</x-pos>
+	<y-pos>451</y-pos>
+      </position>
+    </node>
+
+    <node id="15">
+      <level name="level1.xml"/>
+      <link id="14"/>
+      <position>
+	<x-pos>639</x-pos>
+	<y-pos>447</y-pos>
+      </position>
+    </node>
+
+    <node id="16">
+      <level name="level1.xml"/>
+      <link id="12"/>
+      <position>
+	<x-pos>693</x-pos>
+	<y-pos>391</y-pos>
+      </position>
+    </node>
+
+  </node-list>
+
+</pingus-worldmap>
