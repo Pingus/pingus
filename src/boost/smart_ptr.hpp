@@ -357,7 +357,7 @@ template<typename T>
 // It's still a controversial question whether this is better than supplying
 // a full range of comparison operators (<, >, <=, >=).
 
-/*template<typename T>
+template<typename T>
   struct less< boost::shared_ptr<T> >
     : binary_function<boost::shared_ptr<T>, boost::shared_ptr<T>, bool>
   {
@@ -374,7 +374,7 @@ template<typename T>
         const boost::shared_array<T>& b) const
       { return less<T*>()(a.get(),b.get()); }
   };
-*/
+
 } // namespace std
 
 #endif  // ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
