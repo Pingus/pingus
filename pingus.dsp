@@ -325,6 +325,14 @@ SOURCE=.\src\blitter_impl.hxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\blitter_test.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\blitter_test.hxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\button_panel.cxx
 # End Source File
 # Begin Source File
@@ -1001,6 +1009,14 @@ SOURCE=.\src\groundtype.hxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\gui\buffer_graphic_context.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\gui\buffer_graphic_context.hxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\gui\component.hxx
 # End Source File
 # Begin Source File
@@ -1030,6 +1046,10 @@ SOURCE=.\src\gui\display_graphic_context.hxx
 # Begin Source File
 
 SOURCE=.\src\gui\game_delta.hxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\gui\graphic_context.cxx
 # End Source File
 # Begin Source File
 
@@ -1125,14 +1145,6 @@ SOURCE=.\src\hurry_up.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\indexed_canvas.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\indexed_canvas.hxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\input\axes\button_axis.cxx
 # End Source File
 # Begin Source File
@@ -1158,14 +1170,6 @@ SOURCE=.\src\input\axes\joystick_axis.cxx
 # Begin Source File
 
 SOURCE=.\src\input\axes\joystick_axis.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\axes\mouse_axis.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\axes\mouse_axis.hxx
 # End Source File
 # Begin Source File
 
@@ -1382,30 +1386,6 @@ SOURCE=.\src\layer_manager.cxx
 # Begin Source File
 
 SOURCE=.\src\layer_manager.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\level_desc.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\level_desc.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\level_interrupt.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\level_interrupt.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\level_result.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\level_result.hxx
 # End Source File
 # Begin Source File
 
@@ -1681,6 +1661,14 @@ SOURCE=.\src\prefab.hxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\preview_renderer.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\preview_renderer.hxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\range.cxx
 # End Source File
 # Begin Source File
@@ -1697,19 +1685,19 @@ SOURCE=.\src\res_descriptor.hxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\resource.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\resource.hxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\resource_modifier.cxx
 # End Source File
 # Begin Source File
 
 SOURCE=.\src\resource_modifier.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\result.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\result.hxx
 # End Source File
 # Begin Source File
 
@@ -1845,6 +1833,14 @@ SOURCE=.\src\stat_manager.hxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\state_sprite.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\state_sprite.hxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\story.cxx
 # End Source File
 # Begin Source File
@@ -1885,27 +1881,11 @@ SOURCE=.\src\system.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\target_provider.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\target_provider.hxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\theme.cxx
 # End Source File
 # Begin Source File
 
 SOURCE=.\src\theme.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\theme_selector.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\theme_selector.hxx
 # End Source File
 # Begin Source File
 
@@ -2509,6 +2489,14 @@ SOURCE=.\src\worldobjsdata\worldobj_group_data.hxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\xml_eval.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\xml_eval.hxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\xml_file_reader.cxx
 # End Source File
 # Begin Source File
@@ -2546,6 +2534,14 @@ SOURCE=.\src\xml_plf.cxx
 # Begin Source File
 
 SOURCE=.\src\xml_plf.hxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\xmlgz_reader.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\xmlgz_reader.hxx
 # End Source File
 # Begin Source File
 
