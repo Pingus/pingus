@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.5 2002/06/20 11:23:53 grumbel Exp $
+//  $Id: playfield.cxx,v 1.6 2002/06/24 14:25:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@
 
 using boost::shared_ptr;
 
-Playfield::Playfield(PLF* level_data, World* w,
+Playfield::Playfield(Client* client, PLF* level_data, World* w,
 		     Controller* arg_controller)
   : current_view(0), controller (arg_controller)
 {
@@ -70,13 +70,13 @@ Playfield::Playfield(PLF* level_data, World* w,
       {
 	if (verbose)
 	  std::cout << "Playfield: Using gimmick" << std::endl;
-	view.push_back(new View(0, 21, x2/2, y2/2, 0.5f));
-	view.push_back(new View(x2/2, y1, x2, y2, 1.0f));
-	view.push_back(new View(0, y2/2, x2/2, y2, 2.0f));
+	view.push_back(new View(client, 0, 21, x2/2, y2/2, 0.5f));
+	view.push_back(new View(client, x2/2, y1, x2, y2, 1.0f));
+	view.push_back(new View(client, 0, y2/2, x2/2, y2, 2.0f));
       } 
     else
       { // !gimmicks_enabled
-	view.push_back(new View(x1, y1, x2, y2));
+	view.push_back(new View(client, x1, y1, x2, y2));
 	
 	view[0]->set_x_offset(((x2 - x1) / 2) - level_data->get_startx());
 	view[0]->set_y_offset(((y2 - y1) / 2) - level_data->get_starty());

@@ -1,4 +1,4 @@
-//  $Id: pingu_action.hxx,v 1.2 2002/06/24 09:40:58 grumbel Exp $
+//  $Id: pingu_action.hxx,v 1.3 2002/06/24 14:25:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,6 +70,9 @@ public:
   /** Returns the enviroment, used to check if an action can be
       applied. */
   virtual PinguEnvironment get_environment() const =0;
+
+  /** Checks if this action allows to be overwritten with the given new action */
+  virtual bool change_allowed (const std::string&) { return true; }
   
   /** Used to load all data, which is needed by the action, its
       seperated and called in set_pingu(), because some data will be

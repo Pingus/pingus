@@ -1,4 +1,4 @@
-//  $Id: playfield.hxx,v 1.3 2002/06/18 21:17:16 grumbel Exp $
+//  $Id: playfield.hxx,v 1.4 2002/06/24 14:25:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,7 +70,7 @@ private:
 
   Controller* controller;
 public:
-  Playfield(PLF* plf, World*,
+  Playfield(Client*, PLF* plf, World*,
 	    Controller*);
   ~Playfield();
 

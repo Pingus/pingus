@@ -1,4 +1,4 @@
-//  $Id: pingu.hxx,v 1.2 2002/06/21 16:51:22 torangan Exp $
+//  $Id: pingu.hxx,v 1.3 2002/06/24 14:25:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ class PinguAction;
     objects. */
 class Pingu : public WorldObj
 {
-public:
+private:
   /** Static id_counter, which holds the id last pingu, which
       got created. */
   static int id_counter;
@@ -46,14 +46,15 @@ public:
   /** The primary action with is currently in use */
   PinguAction* action;
 
-  /** A secondary action with will turn active after a given amount of time
+  /** A secondary action which will turn active after a given amount of time
       The only example is currently the bomber. */
   PinguAction* countdown_action;
 
-  /** A list of action with are activated on-demand, so when the pingu
-      is in the air a floater will get activated, if he needs to climb
-      a climber gets active. */
-  std::vector<PinguAction*> persist;
+  /** the action that gets triggered when the pingu hits a wall */
+  PinguAction* wall_action;
+
+  /** the action that gets triggered when the pingu falls */
+  PinguAction* fall_action;
 
   /** The uniq id of the Pingu, this is used to refer to the Pingu in
       a demo file or in a network connection */
@@ -61,11 +62,23 @@ public:
 
   CL_Font* font;
   int action_time;
-  PinguStatus status;
-  PinguEnvironment environment;
   int owner_id;
 
-  // The postion of the pingu (CL_Vector::z is always zero)
+public:
+  /** A list of action with are activated on-demand, so when the pingu
+      is in the air a floater will get activated, if he needs to climb
+      a climber gets active. 
+      
+      FIXME: This will get obsolete sooner or later
+  */
+  std::vector<PinguAction*> persist;
+
+
+  // The stat of the pingu, these can be modified by PinguActions
+  
+  PinguStatus status;
+  PinguEnvironment environment;
+  /// The postion of the pingu (CL_Vector::z is always zero)
   CL_Vector pos;
   Direction direction;
   CL_Vector velocity; 
@@ -99,6 +112,9 @@ public:
   ///
   PinguEnvironment get_environment(); 
 
+  /** Checks if this action allows to be overwritten with the given new action */
+  bool change_allowed (const std::string&);
+
   /// Check if the pingu is still alive
   bool is_alive(void);
 
@@ -123,11 +139,15 @@ public:
   // Set the pingu in the gives direction
   void set_direction(Direction d);
 
+  /** Set an action if it is appliable to the current pingu, if its a
+      persistent action, it will be hold back for later execution */
   bool set_action (PinguAction*);
   void set_action (const std::string& action_name);
 
-  /// FIXME: Stupid function name, need a better one.
+  /** Set an action without any checking, the action will take
+      instantly control */
   void  set_paction (PinguAction*);
+
   void  set_paction (const std::string& action_name);
 
   ///

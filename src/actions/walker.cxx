@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.4 2002/06/24 12:30:02 grumbel Exp $
+//  $Id: walker.cxx,v 1.5 2002/06/24 14:25:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ const int Walker::max_steps=5;
 void
 Walker::init(void)
 {
-  walker = Sprite ("Pingus/walker" + to_string(pingu->owner_id), "pingus");
+  walker = Sprite ("Pingus/walker" + to_string(pingu->get_owner ()), "pingus");
   walker.set_align_center_bottom ();
 }
 
@@ -138,7 +138,8 @@ Walker::update(float delta)
 		{
 		  if (pingu->persist[i]->get_type() & (ActionType)WALL) 
 		    {
-		      pout(PINGUS_DEBUG_ACTIONS) << "Pingu: We are in front of a wall, setting persistant action" << std::endl;
+		      pout(PINGUS_DEBUG_ACTIONS) 
+			<< "Pingu: We are in front of a wall, setting persistant action" << std::endl;
 		      // pingu->set_paction(pingu->persist[i]->get_name());
 		      // FIXME: above fails because of Capitalised name
 		      // returned from get_name(). May be we should 

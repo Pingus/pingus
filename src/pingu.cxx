@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.9 2002/06/24 09:40:58 grumbel Exp $
+//  $Id: pingu.cxx,v 1.10 2002/06/24 14:25:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ Pingu::Pingu(const CL_Vector& arg_pos, int owner)
   velocity.x = 0;
   velocity.y = 0;
 
-  set_action("faller");
+  set_paction("faller");
 }
 
 Pingu::~Pingu()
@@ -86,6 +86,13 @@ PinguEnvironment
 Pingu::get_environment()
 {
   return environment;
+}
+
+bool
+Pingu::change_allowed (const std::string& new_action)
+{
+  assert (action);
+  return action->change_allowed (new_action);
 }
 
 // Set the position of the pingu

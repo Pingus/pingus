@@ -1,4 +1,4 @@
-//  $Id: capture_rectangle.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $ 
+//  $Id: capture_rectangle.cxx,v 1.3 2002/06/24 14:25:03 grumbel Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,24 +23,25 @@
 #include "pingus_resource.hxx"
 #include "capture_rectangle.hxx"
 #include "pingu_action.hxx"
+#include "button_panel.hxx"
 
 using namespace boost;
 
-CaptureRectangle::CaptureRectangle()
+CaptureRectangle::CaptureRectangle(ButtonPanel* arg_button_panel)
   : pingu (0),
-    button_action (0),
     owner_id (0),
     good (PingusResource::load_surface("Cursors/capgood", "game")),
     bad (PingusResource::load_surface("Cursors/capbad",  "game")),
     arrow_left (PingusResource::load_surface("Cursors/arrow_left",  "game")),
     arrow_right (PingusResource::load_surface("Cursors/arrow_right", "game")),
+    button_panel(arg_button_panel),
     font (PingusResource::load_font("Fonts/courier_small", "fonts"))
 {
   good.set_align_center ();
   bad.set_align_center ();
   arrow_left.set_align_center ();
   arrow_right.set_align_center ();
-} 
+}
 
 CaptureRectangle::~CaptureRectangle()
 {
@@ -53,16 +54,18 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
     {
       Sprite * sur;
       
-      if (button_action && (button_action->get_environment() & pingu->get_environment()))
-	sur = &bad;
-      else 
+      // FIXME: A check for surface good/bad should  be placed here
+      if (pingu->change_allowed (button_panel->get_action_name ()))
 	sur = &good;
+      else
+	sur = &bad;
       
       if (s == 1.0) 
 	{
 	  std::string action_str = pingu->get_action()->get_name();
 
 	  std::vector<PinguAction*>* persitant = pingu->get_persistent_actions ();
+	  // FIXME: This needs to get changed if we want to use action slots
 	  if (persitant->size() > 0)
 	    {
 	      action_str += " [";
@@ -104,14 +107,6 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
 	  sur->put_screen(pingu->get_center_pos() + CL_Vector (x_offset, y_offset));
 	}
     }
-}
-
-// Sets the current buttons action, it is used to change the color of
-// the cap rect, if the action can't be applied.
-void 
-CaptureRectangle::set_action(PinguAction* action)
-{
-  button_action = action;
 }
 
 void

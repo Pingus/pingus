@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.4 2002/06/23 19:16:41 torangan Exp $
+//  $Id: faller.cxx,v 1.5 2002/06/24 14:25:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,12 +39,12 @@ Faller::~Faller() { }
 void
 Faller::init(void)
 {
-  faller = Sprite("Pingus/faller" + to_string(pingu->owner_id), "pingus");
+  faller = Sprite("Pingus/faller" + to_string(pingu->get_owner ()), "pingus");
   faller.set_align_center_bottom ();
   
   // FIXME: we can save some cpu cycles & memory if we do this when it
   // is necessary
-  tumbler = Sprite("Pingus/tumble" + to_string(pingu->owner_id), "pingus");
+  tumbler = Sprite("Pingus/tumble" + to_string(pingu->get_owner()), "pingus");
   tumbler.set_align_center_bottom ();
 }
 
@@ -161,6 +161,15 @@ Faller::is_tumbling () const
     {
       return false;
     }
+}
+
+bool
+Faller::change_allowed (const std::string& new_action)
+{
+  if (new_action == "floater")
+    return true;
+  else
+    return false;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: view.cxx,v 1.3 2002/06/21 07:45:35 grumbel Exp $
+//  $Id: view.cxx,v 1.4 2002/06/24 14:25:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,12 +22,14 @@
 #include "mouse_controller.hxx"
 #include "view.hxx"
 #include "world.hxx"
+#include "client.hxx"
 
 // static variables
 World* View::world;
 
-View::View(int x1, int y1, int x2, int y2, float s)
-  : current_pingu (0),
+View::View(Client* client, int x1, int y1, int x2, int y2, float s)
+  : cap (client->get_button_panel ()),
+    current_pingu (0),
     controller (new MouseController ()) 
 {
   assert(world);

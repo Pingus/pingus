@@ -1,4 +1,4 @@
-//  $Id: view.hxx,v 1.1 2002/06/12 19:09:38 grumbel Exp $
+//  $Id: view.hxx,v 1.2 2002/06/24 14:25:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,21 +27,20 @@
 class Pingu;
 class World;
 class Controller;
+class Client;
 
 /** A class to controll the rentering of the playfield, each display on 
     the screen, which displays the pingus world is an view object. */
 class View
 {
 private:
-  ///
   CL_ClipRect clip_rect;
-  ///
-  Range x_offset, y_offset; /// The position of the view in the world
+  /// The position of the view in the world
+  Range x_offset, y_offset; 
   bool mouse_over;
-  ///
-  double size;              /// The zoom of the View, 1 is default
+  /// The zoom of the View, 1 is default
+  double size;              
   CaptureRectangle cap;
-  ///
   Pingu* current_pingu;
   /// Static objects which are equal for all Views
   static World* world;
@@ -65,7 +64,7 @@ public:
   int y2_pos;
   //@}
 
-  View(int, int, int, int, float s = 1.0);
+  View(Client*, int, int, int, int, float s = 1.0);
   ~View();
 
   void draw();

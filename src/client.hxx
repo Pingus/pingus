@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: client.hxx,v 1.2 2002/06/24 14:25:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -123,6 +123,8 @@ public:
 
   /** Update all parts of the world */
   void update (float delta);
+
+  ButtonPanel* get_button_panel () { return button_panel; }
 
   virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
   virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);

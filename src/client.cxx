@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.3 2002/06/19 15:19:26 torangan Exp $
+//  $Id: client.cxx,v 1.4 2002/06/24 14:25:03 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -109,9 +109,8 @@ Client::init_display()
 						   PingusResource::get("game")));
   Display::show_cursor();
   
-  playfield = new Playfield(plf, server->get_world(), controller);
-    
   button_panel = new ButtonPanel(plf, controller, 2, CL_Display::get_height()/2);
+  pcounter     = new PingusCounter();  playfield = new Playfield(this, plf, server->get_world(), controller);
   pcounter     = new PingusCounter();
   small_map    = new SmallMap();
   time_display = new TimeDisplay();
