@@ -1,4 +1,4 @@
-//  $Id: PingusLevelResult.cc,v 1.11 2000/04/29 13:13:26 grumbel Exp $
+//  $Id: PingusLevelResult.cc,v 1.12 2000/05/01 20:11:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,6 +44,8 @@ PingusLevelResult::draw(void)
 #ifdef HAVE_LIBSDL_MIXER
   PingusSound::play_mod("../data/music/pingus-2.it");
 #endif
+
+  CL_MouseCursor::hide();
 
   for(int y = 0; y < CL_Display::get_height(); y += background->get_height())
     for(int x = 0; x < CL_Display::get_width(); x += background->get_width())

@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.20 2000/04/29 13:13:26 grumbel Exp $
+//  $Id: Client.cc,v 1.21 2000/05/01 20:11:15 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -78,7 +78,7 @@ void
 Client::init_display()
 {
   CL_MouseCursor::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
-  CL_MouseCursor::show();
+  CL_MouseCursor::show(true);
 
   playfield    = new Playfield(plf, server->get_world());
   button_panel = new ButtonPanel(plf);

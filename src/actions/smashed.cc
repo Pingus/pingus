@@ -1,4 +1,4 @@
-//  $Id: smashed.cc,v 1.3 2000/03/12 01:41:31 grumbel Exp $
+//  $Id: smashed.cc,v 1.4 2000/05/01 20:11:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,9 +49,11 @@ void
 Smashed::let_move(void)
 {
   if (pingu->get_status() == dead)
-    return;
+    {
+      return;
+    }
 
-  pingu->particle->add_pingu_explo(pingu->x_pos, pingu->y_pos - 16);
+  //  pingu->particle->add_pingu_explo(pingu->x_pos, pingu->y_pos - 16);
   pingu->set_status(dead);
 }
 

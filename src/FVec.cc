@@ -1,4 +1,4 @@
-//  $Id: FVec.cc,v 1.3 2000/04/24 13:15:41 grumbel Exp $
+//  $Id: FVec.cc,v 1.4 2000/05/01 20:11:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,9 +56,9 @@ ExplosionForce::apply_forces(CL_Vector p,CL_Vector v)
   imod = -(iinten * ((isize - dist) / isize));
 
   if (p.y > ip.y)
-    tmpv.y += imod;
+    tmpv.y += (imod / 2);
   else
-    tmpv.y -= imod;
+    tmpv.y -= (imod / 2);
 
   return tmpv;
 }

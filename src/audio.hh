@@ -1,4 +1,4 @@
-//  $Id: audio.hh,v 1.2 2000/04/29 13:13:26 grumbel Exp $
+//  $Id: audio.hh,v 1.3 2000/05/01 20:11:15 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,7 @@
 #else 
 typedef unsigned short Uint16;
 typedef void* Mix_Music;
+typedef void* Mix_Chunk;
 
 /* Audio format flags (defaults to LSB byte order) */
 #define AUDIO_U8	0x0008	/* Unsigned 8-bit samples */

@@ -1,4 +1,4 @@
-// $Id: miner.cc,v 1.3 2000/04/29 13:13:26 grumbel Exp $
+// $Id: miner.cc,v 1.4 2000/05/01 20:11:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,13 +49,14 @@ Miner::init(void)
 void
 Miner::let_move()
 {
-  if (slow_count == 0) {
-    pingu->colmap->remove(miner_radius->get_provider(), pingu->x_pos - 16 + pingu->direction, pingu->y_pos - 31);
-    pingu->map->remove(miner_radius->get_provider(), pingu->x_pos - 16 + pingu->direction, pingu->y_pos - 31);
+  if (slow_count == 0) 
+    {
+      pingu->colmap->remove(miner_radius->get_provider(), pingu->x_pos - 16 + pingu->direction, pingu->y_pos - 32);
+      pingu->map->remove(miner_radius->get_provider(), pingu->x_pos - 16 + pingu->direction, pingu->y_pos - 32);
     
-    pingu->x_pos += pingu->direction;
-    pingu->y_pos += 1;
-  }
+      pingu->x_pos += pingu->direction;
+      pingu->y_pos += 1;
+    }
   
   if (rel_getpixel(0, -1) == ColMap::NOTHING)
     is_finished = true;
