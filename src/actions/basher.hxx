@@ -1,4 +1,4 @@
-//  $Id: basher.hxx,v 1.8 2002/09/04 14:55:12 torangan Exp $
+//  $Id: basher.hxx,v 1.9 2002/09/04 20:30:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ namespace Actions {
     std::string get_name () const { return "Basher"; }
     ActionName get_type () const { return Actions::Basher; }
     
-    void draw_offset (int x, int y, float s);
+    void draw (GraphicContext& gc);
     void update (float delta);
     
     bool have_something_to_dig ();

@@ -1,4 +1,4 @@
-//  $Id: blocker.hxx,v 1.7 2002/08/25 09:08:49 torangan Exp $
+//  $Id: blocker.hxx,v 1.8 2002/09/04 20:30:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,8 +39,8 @@ namespace Actions {
     std::string get_name () const { return "Blocker"; }
     ActionName get_type() const { return Actions::Blocker; }
  
+    void  draw (GraphicContext& gc);
     void  update(float delta);
-    void  draw_offset(int, int, float s);
     bool  standing_on_ground();
 
     bool  need_catch();

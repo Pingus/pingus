@@ -1,4 +1,4 @@
-//  $Id: hotspot.cxx,v 1.3 2002/09/04 19:40:19 grumbel Exp $
+//  $Id: hotspot.cxx,v 1.4 2002/09/04 20:30:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,6 +44,7 @@ Hotspot::Hotspot(const HotspotData& spot)
 void 
 Hotspot::draw (GraphicContext& gc)
 {
+  // FIXME: para support doesnn't work correctly
   gc.draw (surface, pos * para, static_cast<int>(count));
   ++count;
 }

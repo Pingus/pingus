@@ -1,4 +1,4 @@
-//  $Id: info_box.cxx,v 1.6 2002/09/04 19:40:20 grumbel Exp $
+//  $Id: info_box.cxx,v 1.7 2002/09/04 20:30:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -128,7 +128,7 @@ InfoBox::draw (GraphicContext& gc)
     {
       int width = font->get_text_width (info_text.c_str ());
       int border = 6;
-      gc.draw_line (pos, pos + CL_Vector(x, y - 100), 0.0f, 1.0f, 0.0f, 1.0f);
+      gc.draw_line (pos, pos + CL_Vector(0, 0 - 100), 0.0f, 1.0f, 0.0f, 1.0f);
       gc.draw(sprite, pos);
       CL_Display::fill_rect (x_pos - width/2 - border, y_pos - border,
 			     x_pos + width/2 + border, y_pos + font->get_height () + border,

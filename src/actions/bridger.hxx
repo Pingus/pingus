@@ -1,4 +1,4 @@
-//  $Id: bridger.hxx,v 1.9 2002/08/25 09:08:49 torangan Exp $
+//  $Id: bridger.hxx,v 1.10 2002/09/04 20:30:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,7 @@ namespace Actions {
     void   update_build (float delta);
     void   update_walk (float delta);
     
-    void   draw_offset (int, int, float s);
+    void   draw (GraphicContext& gc);
     
     bool   way_is_free ();
     void   place_a_brick ();

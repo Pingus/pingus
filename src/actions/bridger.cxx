@@ -1,4 +1,4 @@
-//  $Id: bridger.cxx,v 1.12 2002/09/04 14:55:12 torangan Exp $
+//  $Id: bridger.cxx,v 1.13 2002/09/04 20:30:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,9 +66,8 @@ namespace Actions {
   }
 
   void
-  Bridger::draw_offset (int x, int y, float s)
+  Bridger::draw (GraphicContext& gc)
   {
-
     int x_offset(6), y_offset(4);
 
     if (bricks == MAX_BRICKS) {
@@ -91,22 +90,19 @@ namespace Actions {
         else
 	  build_sprite.set_direction (Sprite::RIGHT);
       
-        build_sprite.put_screen(static_cast<int>(pingu->get_x () + x - (x_offset * pingu->direction)),
-			        static_cast<int>(pingu->get_y () + y + y_offset));
+        gc.draw(build_sprite, CL_Vector(pingu->get_x () - (x_offset * pingu->direction),
+					pingu->get_y () + y_offset));
         break;
       
       case B_WALKING:
         if (pingu->direction.is_left ())
 	  walk_sprite.set_direction (Sprite::LEFT);
         else
-	  walk_sprite.set_direction (Sprite::RIGHT);
-      
-        walk_sprite.put_screen(static_cast<int>(pingu->get_x () + x - (x_offset * pingu->direction)),
-			       static_cast<int>(pingu->get_y () + y + y_offset));
+          walk_sprite.set_direction (Sprite::RIGHT);
+	  gc.draw (walk_sprite, CL_Vector(static_cast<int>(pingu->get_x () - (x_offset * pingu->direction)),
+		                          static_cast<int>(pingu->get_y () + y_offset)));
         break;
       }
-      
-    UNUSED_ARG(s);
   }
 
   void

@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.cxx,v 1.5 2002/09/04 14:55:11 torangan Exp $
+//  $Id: pingu_holder.cxx,v 1.6 2002/09/04 20:30:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,7 @@ PinguHolder::create_pingu (const CL_Vector& pos, int owner_id)
 }
 
 void
-PinguHolder::draw_offset(int x_of, int y_of, float s)
+PinguHolder::draw (GraphicContext& gc)
 {
   PinguIter pingu = pingus.begin();
   
@@ -85,7 +85,7 @@ PinguHolder::draw_offset(int x_of, int y_of, float s)
 	  // We don't draw the actions here, since we want them above
 	  // all other pingus, for better visibility
 	  if (!(*pingu)->get_action())
-	    (*pingu)->draw_offset(x_of, y_of, s);
+	    (*pingu)->draw (gc);
 	  
 	  // move to the next Pingu
 	  pingu++;
@@ -96,7 +96,7 @@ PinguHolder::draw_offset(int x_of, int y_of, float s)
   for(pingu = pingus.begin(); pingu != pingus.end(); pingu++)
     {
       if ((*pingu)->get_action()) 
-	(*pingu)->draw_offset(x_of, y_of, s);
+	(*pingu)->draw (gc);
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: laser_kill.hxx,v 1.6 2002/08/25 09:08:49 torangan Exp $
+//  $Id: laser_kill.hxx,v 1.7 2002/09/04 20:30:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,8 +35,10 @@ namespace Actions {
     std::string get_name () const { return "LaserKill"; }
     ActionName get_type () const { return Actions::Laserkill; }
     void init (void);
+
+    void draw (GraphicContext& gc);
     void update (float delta);
-    void draw_offset (int x, int y, float s);
+
     bool catchable () { return false; }
   
   private:

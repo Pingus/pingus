@@ -1,4 +1,4 @@
-//  $Id: angel.cxx,v 1.8 2002/09/04 14:55:12 torangan Exp $
+//  $Id: angel.cxx,v 1.9 2002/09/04 20:30:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,11 +53,9 @@ namespace Actions {
   }
 
   void   
-  Angel::draw_offset (int x_of, int y_of, float s)
+  Angel::draw (GraphicContext& gc)
   {
-    sprite.put_screen (static_cast<int>(pingu->get_x () + x_of),
-		       static_cast<int>(pingu->get_y () + y_of));
-    UNUSED_ARG(s);
+    gc.draw (sprite, pingu->get_pos ());
   }
 
 }

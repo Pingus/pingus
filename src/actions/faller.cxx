@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.17 2002/09/04 14:55:12 torangan Exp $
+//  $Id: faller.cxx,v 1.18 2002/09/04 20:30:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -147,15 +147,13 @@ namespace Actions {
   }
 
   void 
-  Faller::draw_offset (int x, int y, float s)
+  Faller::draw (GraphicContext& gc)
   {
     if (is_tumbling()) {
-      tumbler.put_screen(static_cast<int>(pingu->get_x() + x), static_cast<int>(pingu->get_y() + y));
+      gc.draw(tumbler, pingu->get_pos ());
     } else {
-      faller.put_screen (static_cast<int>(pingu->get_x() + x), static_cast<int>(pingu->get_y() + y));
+      gc.draw(tumbler, pingu->get_pos ());
     }
-    
-    UNUSED_ARG(s);
   }
 
   bool

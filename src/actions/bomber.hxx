@@ -1,4 +1,4 @@
-//  $Id: bomber.hxx,v 1.9 2002/08/25 09:08:49 torangan Exp $
+//  $Id: bomber.hxx,v 1.10 2002/09/04 20:30:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,10 +49,12 @@ namespace Actions {
     std::string get_name () const { return "Bomber"; }
     ActionName get_type() const { return Actions::Bomber; }
     ActionType get_activation_mode() const { return COUNTDOWN_TRIGGERED; }
-    void   draw_offset(int x, int y, float s);
-    void   update(float delta);
-    void   update_position(float delta);
-    int    activation_time() { return 50; }
+
+    void draw (GraphicContext& gc);
+    void update(float delta);
+
+    void update_position(float delta);
+    int  activation_time() { return 50; }
     void on_successfull_apply (Pingu*);
   
   private:

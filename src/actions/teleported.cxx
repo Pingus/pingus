@@ -1,4 +1,4 @@
-//  $Id: teleported.cxx,v 1.5 2002/08/25 09:08:49 torangan Exp $
+//  $Id: teleported.cxx,v 1.6 2002/09/04 20:30:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,10 +34,9 @@ namespace Actions {
 
 
   void 
-  Teleported::draw_offset(int x, int y, float s)
+  Teleported::draw (GraphicContext& gc)
   {
-    sprite.put_screen (x, y);
-    UNUSED_ARG(s);
+    gc.draw(sprite, pingu->get_pos ());
   }
 
 

@@ -1,4 +1,4 @@
-//  $Id: climber.hxx,v 1.6 2002/08/25 09:08:49 torangan Exp $
+//  $Id: climber.hxx,v 1.7 2002/09/04 20:30:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ namespace Actions {
     ActionName get_type () const { return Actions::Climber; }
     ActionType get_activation_mode () const { return WALL_TRIGGERED; }
     
-    void draw_offset (int x, int y, float s=1.0);
+    void draw (GraphicContext& gc);
     
     void update (float delta);
     

@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.hxx,v 1.3 2002/08/23 15:49:49 torangan Exp $
+//  $Id: pingu_holder.hxx,v 1.4 2002/09/04 20:30:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ public:
   PinguHolder();
   ~PinguHolder();
 
-  void draw_offset(int, int, float s = 1.0);
+  void draw (GraphicContext& gc);
   int  total_size();
   int  get_saved() { return saved_pingus; }
   

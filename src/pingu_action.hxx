@@ -1,4 +1,4 @@
-//  $Id: pingu_action.hxx,v 1.13 2002/09/04 14:55:11 torangan Exp $
+//  $Id: pingu_action.hxx,v 1.14 2002/09/04 20:30:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_PINGU_ACTION_HXX
 #define HEADER_PINGUS_PINGU_ACTION_HXX
 
+#include "graphic_context.hxx"
 #include "pingu_enums.hxx"
 
 class Pingu;
@@ -74,9 +75,8 @@ public:
   /// The "AI" of the pingu.
   virtual void update (float delta) = 0;
 
-  /** Draws the surfaced defined by the action, can be overwritten if
-      the action needs a more complicated way of drawing. */
-  virtual void draw_offset (int x, int y, float s) =0;
+  /** Draws the action */
+  virtual void draw (GraphicContext& gc) =0;
 
   /// Returns the activation mode
   virtual ActionType get_activation_mode (void) const;

@@ -1,4 +1,4 @@
-//  $Id: boarder.hxx,v 1.7 2002/08/25 09:08:49 torangan Exp $
+//  $Id: boarder.hxx,v 1.8 2002/09/04 20:30:29 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,8 +41,8 @@ namespace Actions {
     std::string get_name () const { return "Boarder"; }
     ActionName get_type () const { return Actions::Boarder; }
   
+    void  draw (GraphicContext& gc);
     void  update (float delta);
-    void  draw_offset (int, int, float s);
   
   private:
     bool on_ground ();

@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.12 2002/09/04 14:55:12 torangan Exp $
+//  $Id: basher.cxx,v 1.13 2002/09/04 20:30:29 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -47,16 +47,14 @@ namespace Actions {
   }
 
   void
-  Basher::draw_offset (int x, int y, float s)
+  Basher::draw (GraphicContext& gc)
   {
     if (pingu->direction.is_left())
       sprite.set_direction (Sprite::LEFT);
     else
       sprite.set_direction (Sprite::RIGHT);
 
-    sprite.put_screen(pingu->get_pos() + CL_Vector(x, y));
-    
-    UNUSED_ARG(s);
+    gc.draw (sprite, pingu->get_pos());
   }
 
   void

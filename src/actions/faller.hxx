@@ -1,4 +1,4 @@
-//  $Id: faller.hxx,v 1.11 2002/08/25 09:08:49 torangan Exp $
+//  $Id: faller.hxx,v 1.12 2002/09/04 20:30:29 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,8 +41,8 @@ namespace Actions {
   
     void  init(void);
   
+    void  draw (GraphicContext& gc);
     void  update(float delta);
-    void  draw_offset(int x, int y, float s);
 
     bool change_allowed (Actions::ActionName new_action);
   

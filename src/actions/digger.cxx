@@ -1,4 +1,4 @@
-//  $Id: digger.cxx,v 1.10 2002/09/04 14:55:12 torangan Exp $
+//  $Id: digger.cxx,v 1.11 2002/09/04 20:30:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -100,10 +100,9 @@ namespace Actions {
   }
 
   void  
-  Digger::draw_offset (int x, int y, float s)
+  Digger::draw (GraphicContext& gc)
   {
-    sprite.put_screen (static_cast<int>(pingu->get_x() + x), static_cast<int>(pingu->get_y() + y));
-    UNUSED_ARG(s);
+    gc.draw(sprite, pingu->get_pos ());
   }
 
 }

@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.21 2002/09/04 14:55:11 torangan Exp $
+//  $Id: pingu.cxx,v 1.22 2002/09/04 20:30:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -319,12 +319,11 @@ Pingu::update (float delta)
 
 // Draws the pingu on the screen with the given offset
 void
-Pingu::draw_offset (int x, int y, float s)
+Pingu::draw (GraphicContext& gc)
 {
   char str[16];
-  y += 2;
 
-  action->draw_offset(x, y,s);
+  action->draw (gc);
   
   if (action_time != -1) 
     {
@@ -333,21 +332,9 @@ Pingu::draw_offset (int x, int y, float s)
       // FIXME: in ticks, should probally be in seconds]
       snprintf(str, 16, "%d", action_time);
       
-      if (s == 1.0) 
-	{
-	  font->print_center(static_cast<int>(pos_x + x), static_cast<int>(pos_y - 45) + y, str);
-	} 
-      else if (s > 1.0) 
-	{
-	  font->print_left(static_cast<int>((pos_x + x) * s),
-	                   static_cast<int>((pos_y - 45 + y) * s) - (static_cast<int>(font->get_text_width(str) * s) / 2),
-			   static_cast<int>(s), static_cast<int>(s),
-			   str);
-	}
-      else 
-	{
-	  // Don't draw the font if the zoom is smaller than default (1.0)
-	}
+      font->print_center(static_cast<int>(pos_x), 
+			 static_cast<int>(pos_y - 45) + 2, 
+			 str);
     }
 }
 

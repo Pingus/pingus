@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.10 2002/09/04 14:55:12 torangan Exp $
+//  $Id: bomber.cxx,v 1.11 2002/09/04 20:30:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,18 +69,16 @@ namespace Actions {
   }
 
   void
-  Bomber::draw_offset (int x, int y, float s)
+  Bomber::draw (GraphicContext& gc)
   {
     if (sprite.get_frame () >= 13 && !gfx_exploded) 
       {
-        explo_surf.put_screen(static_cast<int>(pingu->get_x () - 32 + x), 
-	                      static_cast<int>(pingu->get_y () - 48 + y));
+        gc.draw (explo_surf, CL_Vector(static_cast<int>(pingu->get_x () - 32), 
+				       static_cast<int>(pingu->get_y () - 48)));
         gfx_exploded = true;
       }
 
-    sprite.put_screen(static_cast<int>(pingu->get_x () + x, pingu->get_y () + y));
-    
-    UNUSED_ARG(s);
+    gc.draw(sprite, pingu->get_pos ());
   }
 
   void

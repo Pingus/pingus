@@ -1,4 +1,4 @@
-//  $Id: pingu.hxx,v 1.12 2002/09/04 14:55:11 torangan Exp $
+//  $Id: pingu.hxx,v 1.13 2002/09/04 20:30:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_PINGU_HXX
 #define HEADER_PINGUS_PINGU_HXX
 
+#include "graphic_context.hxx"
 #include "direction.hxx"
 #include "pingu_enums.hxx"
 
@@ -174,7 +175,7 @@ public:
   /** Returns true if the pingu needs to catch another pingu */
   bool need_catch ();
   
-  void draw_offset (int x, int y, float s = 1.0);
+  void draw (GraphicContext& gc);
   void apply_force (CL_Vector);
   
   void update (float delta);
