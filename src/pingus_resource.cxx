@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.24 2003/03/04 10:26:18 grumbel Exp $
+//  $Id: pingus_resource.cxx,v 1.25 2003/04/02 19:43:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -144,7 +144,16 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
 CL_Surface
 PingusResource::load_from_cache (const ResDescriptor& res_desc)
 {
-  return surface_map[res_desc];
+  std::map<ResDescriptor, CL_Surface>::iterator i = surface_map.find(res_desc);
+  if (i == surface_map.end())
+    {
+      std::cout << "PingusResource::load_from_cache: no surface cached: " << res_desc << std::endl;
+      return CL_Surface();
+    }
+  else
+    {
+      return i->second;
+    }
 }
 
 CL_Surface
