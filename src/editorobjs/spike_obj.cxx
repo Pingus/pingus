@@ -1,4 +1,4 @@
-//  $Id: spike_obj.cxx,v 1.8 2002/09/27 18:36:40 torangan Exp $
+//  $Id: spike_obj.cxx,v 1.9 2002/09/28 11:52:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ SpikeObj::~SpikeObj ()
 }
 
 EditorObjLst
-SpikeObj::create (const CL_Vector& pos)
+SpikeObj::create (const Vector& pos)
 {
   WorldObjsData::SpikeData spike_data;
   spike_data.pos = pos;

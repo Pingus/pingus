@@ -1,4 +1,4 @@
-//  $Id: solid_color_background_data.hxx,v 1.2 2002/09/27 11:26:49 torangan Exp $
+//  $Id: solid_color_background_data.hxx,v 1.3 2002/09/28 11:52:27 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJSDATA_SOLID_COLOR_BACKGROUND_DATA_HXX
 #define HEADER_PINGUS_WORLDOBJSDATA_SOLID_COLOR_BACKGROUND_DATA_HXX
 
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "../vector.hxx"
 #include "../color.hxx"
 #include "../worldobj_data.hxx"
 #include "../libxmlfwd.hxx"
@@ -30,7 +30,7 @@ namespace WorldObjsData {
 class SolidColorBackgroundData : public WorldObjData
 {
 public:
-  CL_Vector pos;
+  Vector pos;
   Color     color;
 
   // FIXME: Add z_pos handling here

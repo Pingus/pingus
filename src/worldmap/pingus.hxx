@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.12 2002/09/27 11:26:49 torangan Exp $
+//  $Id: pingus.hxx,v 1.13 2002/09/28 11:52:26 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,7 @@ private:
   std::vector<Node*> node_path;
 
   /** The path which represents an edge between two nodes */
-  std::vector<CL_Vector> edge_path;
+  std::vector<Vector> edge_path;
   
   /** The length of the edge_path in pixels */
   float edge_path_length;
@@ -67,7 +67,7 @@ private:
   float edge_path_position;
 
   /** Current position of the pingu, only for caching purpose */
-  CL_Vector pos;
+  Vector pos;
 
   void draw (GraphicContext& gc);
 
@@ -128,7 +128,7 @@ private:
   }
   
   /** calculate the position of the pingu */
-  CL_Vector calc_pos ()
+  Vector calc_pos ()
   {
     if (current_node) // pingu stands still
       {
@@ -182,7 +182,7 @@ private:
 #endif 
 
   Sprite sprite;
-  CL_Vector pos;
+  Vector pos;
   std::queue<Node*> targets;
   bool is_left;
   Node* current_node;
@@ -191,7 +191,7 @@ public:
   Pingus ();
   ~Pingus ();
 
-  void draw (const CL_Vector& offset);
+  void draw (const Vector& offset);
   void update (float delta);
 
   /** Let the pingu walk to the given node
@@ -206,7 +206,7 @@ public:
   void set_position (boost::shared_ptr<Node> node);
 
   /** @return Current position of the pingu on the screen */
-  CL_Vector get_pos () { return pos; }
+  Vector get_pos () { return pos; }
 
   /** @return The node where the pingu is current on 
 

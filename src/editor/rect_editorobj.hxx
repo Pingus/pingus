@@ -1,4 +1,4 @@
-//  $Id: rect_editorobj.hxx,v 1.6 2002/09/27 11:26:45 torangan Exp $
+//  $Id: rect_editorobj.hxx,v 1.7 2002/09/28 11:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ public:
   RectEditorObj ();
 
   /** Returns the position of the upper left corner of the object */
-  virtual CL_Vector get_upper_left_corner () =0;
+  virtual Vector get_upper_left_corner () =0;
 
   /// Return the object width
   virtual int get_width () =0;
@@ -41,7 +41,7 @@ public:
   virtual void   draw_mark (EditorNS::EditorView * view);
   
   /** Return true when the object is under the given coordinates */
-  virtual bool   is_over (const CL_Vector&);
+  virtual bool   is_over (const Vector&);
 
   /** Return true if the current object is inside the current
       selection rectangle */

@@ -1,4 +1,4 @@
-//  $Id: info_box_data.hxx,v 1.3 2002/09/27 11:26:49 torangan Exp $
+//  $Id: info_box_data.hxx,v 1.4 2002/09/28 11:52:27 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJSDATA_INFO_BOX_DATA_HXX
 #define HEADER_PINGUS_WORLDOBJSDATA_INFO_BOX_DATA_HXX
 
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "../vector.hxx"
 #include "../sprite.hxx"
 #include "../worldobj_data.hxx"
 #include "../libxmlfwd.hxx"
@@ -33,8 +33,8 @@ class InfoBoxData : public WorldObjData
 {
 public:
   std::string info_text;
-  CL_Vector pos;
-  CL_Vector text_pos;
+  Vector pos;
+  Vector text_pos;
   Sprite    sprite;
 
 public:

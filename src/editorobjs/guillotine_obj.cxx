@@ -1,4 +1,4 @@
-//  $Id: guillotine_obj.cxx,v 1.8 2002/09/27 18:36:40 torangan Exp $
+//  $Id: guillotine_obj.cxx,v 1.9 2002/09/28 11:52:24 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ GuillotineObj::~GuillotineObj ()
 }
 
 EditorObjLst
-GuillotineObj::create (const CL_Vector& pos)
+GuillotineObj::create (const Vector& pos)
 {
   WorldObjsData::GuillotineData newdata;
   newdata.pos = pos;

@@ -1,4 +1,4 @@
-//  $Id: graphic_context.hxx,v 1.2 2002/09/05 11:26:35 grumbel Exp $
+//  $Id: graphic_context.hxx,v 1.3 2002/09/28 11:52:21 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_GRAPHIC_CONTEXT_HXX
 
 #include <string>
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "vector.hxx"
 #include <ClanLib/Core/Math/rect.h>
 
 class Sprite;
@@ -35,7 +35,7 @@ class GraphicContext
 {
 private:
 public:
-  virtual CL_Vector get_offset () =0;
+  virtual Vector get_offset () =0;
 
   /** Return the rectandle which represents the visible part of the
       world, so that objects outsite it can be cliped away easily */
@@ -55,17 +55,17 @@ public:
   virtual void zoom_to (const CL_Rect & rect) =0;
 
   /// Scroll the view by the given delta
-  virtual void move (const CL_Vector & delta) =0;
+  virtual void move (const Vector & delta) =0;
 
   /** Converts a given screen coordinate, as returned by
       CL_Mouse::get_x(), into the world coordinate system. */
-  virtual CL_Vector screen_to_world (CL_Vector pos) =0;
-  virtual CL_Vector world_to_screen (CL_Vector pos) =0;
+  virtual Vector screen_to_world (Vector pos) =0;
+  virtual Vector world_to_screen (Vector pos) =0;
 
-  virtual void draw (Sprite& sprite, const CL_Vector& pos) =0;
-  virtual void draw (Sprite& sprite, const CL_Vector& pos, int frame) =0;
-  virtual void draw (CL_Surface& sur, const CL_Vector& pos) =0;
-  virtual void draw (CL_Surface& sur, const CL_Vector& pos, int frame) =0;
+  virtual void draw (Sprite& sprite, const Vector& pos) =0;
+  virtual void draw (Sprite& sprite, const Vector& pos, int frame) =0;
+  virtual void draw (CL_Surface& sur, const Vector& pos) =0;
+  virtual void draw (CL_Surface& sur, const Vector& pos, int frame) =0;
 
   virtual void draw (CL_Surface& sur, int x_pos, int y_pos) =0;
   virtual void draw (CL_Surface& sur, int x_pos, int y_pos, int frame) =0;
@@ -75,7 +75,7 @@ public:
 		     float size_x, float size_y, int frame) =0;
 
   /** Draw a line */
-  virtual void draw_line (const CL_Vector& pos1, const CL_Vector& pos2,
+  virtual void draw_line (const Vector& pos1, const Vector& pos2,
 			  float r, float g, float b, float a = 1.0f) =0;
   /** Draw a line */
   virtual void draw_line (int x1, int y1, int x2, int y2, 

@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.18 2002/09/27 11:26:43 torangan Exp $
+//  $Id: client.hxx,v 1.19 2002/09/28 11:52:21 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ class RootGUIManager;
 } // namespace GUI
 
 class CL_Key;
-class CL_Vector;
+class Vector;
 class ButtonPanel;
 class Controller;
 class Cursor;

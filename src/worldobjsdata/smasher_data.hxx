@@ -1,4 +1,4 @@
-//  $Id: smasher_data.hxx,v 1.3 2002/09/27 11:26:49 torangan Exp $
+//  $Id: smasher_data.hxx,v 1.4 2002/09/28 11:52:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJSDATA_SMASHER_DATA_HXX
 #define HEADER_PINGUS_WORLDOBJSDATA_SMASHER_DATA_HXX
 
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "../vector.hxx"
 #include <ClanLib/Display/Display/surface.h>
 #include "../libxmlfwd.hxx"
 #include "../worldobj_data.hxx"
@@ -30,7 +30,7 @@ namespace WorldObjsData {
 class SmasherData : public WorldObjData {
 public:
   CL_Surface  surface;
-  CL_Vector   pos;
+  Vector   pos;
       
 public:
   SmasherData ();

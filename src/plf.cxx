@@ -1,4 +1,4 @@
-//  $Id: plf.cxx,v 1.9 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: plf.cxx,v 1.10 2002/09/28 11:52:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,12 +17,11 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "xml_plf.hxx"
 #include "globals.hxx"
 #include "system.hxx"
 #include "pingus_error.hxx"
-
-using namespace std;
 
 PLF::PLF()
 {
@@ -78,7 +77,7 @@ PLF::get_pingus()
   return number_of_pingus;
 }
 
-vector<ActionData>
+std::vector<ActionData>
 PLF::get_actions()
 {
   // FIXME: we should merge duplicated actions
@@ -91,7 +90,7 @@ PLF::get_music()
   return music;
 }
 
-map<std::string, std::string>
+std::map<std::string, std::string>
 PLF::get_description()
 {
   return description;
@@ -103,7 +102,7 @@ PLF::get_filename()
   return filename;
 }
 
-map<std::string, std::string>
+std::map<std::string, std::string>
 PLF::get_levelname()
 {
   return levelname;
@@ -139,7 +138,7 @@ PLF::get_comment ()
   return comment;
 }
 
-string
+std::string
 PLF::get_author()
 {
   return author;

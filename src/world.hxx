@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.13 2002/09/27 11:26:44 torangan Exp $
+//  $Id: world.hxx,v 1.14 2002/09/28 11:52:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
 #include <string>
 
 // Forward declarations
-class CL_Vector;
+class Vector;
 class ActionHolder;
 class Entrance;
 class Exit;
@@ -169,7 +169,7 @@ public:
       going to be ignored) void play_wav (std::string name, const
       @param volume The volume of the sound
   */
-  void play_wav (std::string name, const CL_Vector& pos, float volume = 0.5f);
+  void play_wav (std::string name, const Vector& pos, float volume = 0.5f);
 
   /** Sets the main view, it is needed to play stereo wave and for
       other screen orientated effects 
@@ -183,7 +183,7 @@ public:
 
   /** @return the pingu at the given word coordinates, an empty
       shared_ptr is returned if none is there */
-  Pingu* get_pingu (const CL_Vector& pos);
+  Pingu* get_pingu (const Vector& pos);
   
   /** Return a pointer to the GameTime object of this World */
   GameTime* get_game_time ();

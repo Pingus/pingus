@@ -1,4 +1,4 @@
-//  $Id: teleporter_obj.cxx,v 1.6 2002/09/27 18:36:40 torangan Exp $
+//  $Id: teleporter_obj.cxx,v 1.7 2002/09/28 11:52:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <fstream>
 #include <stdio.h>
+#include <iostream>
 #include "teleporter_obj.hxx"
 #include "../editor/editor_view.hxx"
 #include "../worldobjsdata/teleporter_data.hxx"
@@ -38,7 +38,7 @@ TeleporterObj::~TeleporterObj ()
   delete data;
 }
 
-CL_Vector&
+Vector&
 TeleporterObj::get_target_pos_ref ()
 {
   return data->target_pos;
@@ -52,7 +52,7 @@ TeleporterObj::duplicate()
 }
 
 EditorObjLst
-TeleporterObj::create (const CL_Vector& pos)
+TeleporterObj::create (const Vector& pos)
 {
   WorldObjsData::TeleporterData newdata;
 

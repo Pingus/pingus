@@ -1,4 +1,4 @@
-//  $Id: xml_helper.hxx,v 1.11 2002/09/27 11:26:44 torangan Exp $
+//  $Id: xml_helper.hxx,v 1.12 2002/09/28 11:52:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@
   int xmlIsBlankNode(xmlNodePtr node);
 #endif
 
-class CL_Vector;
+class Vector;
 class Color;
 class ResDescriptor;
 
@@ -78,7 +78,7 @@ public:
   /// A set of function to parse an xml file
   //@{
   static ResDescriptor parse_surface (xmlDocPtr doc, xmlNodePtr cur);
-  static CL_Vector     parse_vector  (xmlDocPtr doc, xmlNodePtr cur);
+  static Vector        parse_vector  (xmlDocPtr doc, xmlNodePtr cur);
   static std::string   parse_string  (xmlDocPtr doc, xmlNodePtr cur);
   static int           parse_int     (xmlDocPtr doc, xmlNodePtr cur);
   static float         parse_float   (xmlDocPtr doc, xmlNodePtr cur);
@@ -89,8 +89,8 @@ public:
   //@{
   /** Writes the given res_desc to the ofstream */
   static void write_desc_xml (std::ostream& xml, ResDescriptor desc);
-  /** Write a CL_Vector to an xml stream */
-  static void write_vector_xml (std::ostream& xml, const CL_Vector& pos);
+  /** Write a Vector to an xml stream */
+  static void write_vector_xml (std::ostream& xml, const Vector& pos);
   //@}
   
 private:

@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.26 2002/09/18 10:50:57 grumbel Exp $
+//  $Id: world.cxx,v 1.27 2002/09/28 11:52:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <algorithm>
 #include <assert.h>
+#include <iostream>
 #include "force_vector.hxx"
 #include "plf.hxx"
 #include "pingu_holder.hxx"
@@ -30,7 +31,6 @@
 #include "pingu.hxx"
 #include "game_time.hxx"
 
-using namespace std;
 using Actions::Bomber;
 
 static 
@@ -82,9 +82,9 @@ World::World(PLF* plf)
 void
 World::init_worldobjs(PLF* plf)
 {
-  vector<WorldObjData*> worldobj_d = plf->get_worldobjs_data ();
+  std::vector<WorldObjData*> worldobj_d = plf->get_worldobjs_data();
 
-  for (vector<WorldObjData*>::iterator i = worldobj_d.begin ();
+  for (std::vector<WorldObjData*>::iterator i = worldobj_d.begin();
        i != worldobj_d.end ();
        ++i)
     {
@@ -165,7 +165,7 @@ World::update(float delta)
       && pingus->size() == 0) 
     {
       if (verbose)
-	std::cout << "World: world finished, going down in the next seconds..." << endl;
+	std::cout << "World: world finished, going down in the next seconds..." << std::endl;
 
       exit_world = true;
       shutdown_time = game_time->get_ticks() + 75;
@@ -299,11 +299,11 @@ World::get_particle_holder()
 }
 
 void 
-World::play_wav (std::string name, const CL_Vector& pos, float volume)
+World::play_wav (std::string name, const Vector& pos, float volume)
 {
   if (view)
     {
-      CL_Vector center = view->get_center ();
+      Vector center = view->get_center ();
       float panning = pos.x - center.x;
       panning /= view->get_width ()/2;
 
@@ -328,7 +328,7 @@ World::set_view (View* v)
 }
 
 Pingu*
-World::get_pingu (const CL_Vector& pos)
+World::get_pingu (const Vector& pos)
 {
   Pingu* current_pingu = 0;
   double distance = -1.0;

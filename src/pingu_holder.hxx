@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.hxx,v 1.7 2002/09/27 11:26:44 torangan Exp $
+//  $Id: pingu_holder.hxx,v 1.8 2002/09/28 11:52:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include <vector>
 #include "worldobj.hxx"
 
-class CL_Vector;
+class Vector;
 class Pingu;
 
 typedef std::list<Pingu*>::iterator PinguIter;
@@ -65,7 +65,7 @@ public:
   /** Return a reference to a newly create Pingu, the PinguHolder will
       take care of the deletion. The caller *must* not delete the
       Pingu */
-  Pingu* create_pingu (const CL_Vector& pos, int owner_id);
+  Pingu* create_pingu (const Vector& pos, int owner_id);
 
   float get_z_pos() const;
 

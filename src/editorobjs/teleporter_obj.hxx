@@ -1,4 +1,4 @@
-//  $Id: teleporter_obj.hxx,v 1.7 2002/09/27 18:36:40 torangan Exp $
+//  $Id: teleporter_obj.hxx,v 1.8 2002/09/28 11:52:25 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ public:
   TeleporterObj (const WorldObjsData::TeleporterData& data_);
  ~TeleporterObj ();
 
-  CL_Vector& get_target_pos_ref ();
+  Vector& get_target_pos_ref ();
 
   EditorObj* duplicate ();
 
@@ -52,7 +52,7 @@ public:
 
   /** Create this object (and child objects) with reasonable defaults
       for the editor */
-  static EditorObjLst create (const CL_Vector& pos);
+  static EditorObjLst create (const Vector& pos);
 
   void draw (EditorNS::EditorView * view);
   std::string status_line ();

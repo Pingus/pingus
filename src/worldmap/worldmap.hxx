@@ -1,4 +1,4 @@
-//  $Id: worldmap.hxx,v 1.12 2002/09/27 11:26:49 torangan Exp $
+//  $Id: worldmap.hxx,v 1.13 2002/09/28 11:52:26 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -139,7 +139,7 @@ public:
       FIXME: collision handling should be done in world-co's
 
       @return the currently used draw offset */
-  CL_Vector get_offset ();
+  Vector get_offset ();
 
   /** Set the pingu to the given node with 'id' */
   void set_pingus (int node_id);

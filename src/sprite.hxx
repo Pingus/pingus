@@ -1,4 +1,4 @@
-//  $Id: sprite.hxx,v 1.6 2002/09/27 11:26:44 torangan Exp $
+//  $Id: sprite.hxx,v 1.7 2002/09/28 11:52:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include "pingus.hxx"
 #include <ClanLib/Display/Display/surface.h>
 
-class CL_Vector;
+class Vector;
 class ResDescriptor;
 
 class Sprite
@@ -72,13 +72,13 @@ public:
 	  LoopType arg_loop_type = ENDLESS);
 
   /** High level version of put_screen (), it handles the frame count
-      and the aligment, might be used when you don't have a CL_Vector
+      and the aligment, might be used when you don't have a Vector
       at hand. */
   void put_screen (int x, int y);
 
   /** High level version put_screen (), it handles the framecount and
       the alignment */
-  void put_screen (const CL_Vector& pos);
+  void put_screen (const Vector& pos);
 
   /** Set the alignment (aka offset) of the surface 
    @param arg_x The x offset by which the surface drawn

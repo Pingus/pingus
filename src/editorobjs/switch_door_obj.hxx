@@ -1,4 +1,4 @@
-//  $Id: switch_door_obj.hxx,v 1.5 2002/09/27 18:36:40 torangan Exp $
+//  $Id: switch_door_obj.hxx,v 1.6 2002/09/28 11:52:25 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ public:
   
   /** Create this object (and child objects) with reasonable defaults
       for the editor */
-  static EditorObjLst create (const CL_Vector& pos);
+  static EditorObjLst create (const Vector& pos);
 
   EditorObj* duplicate();
   float get_z_pos ();
@@ -57,9 +57,9 @@ public:
   void make_larger ();
   void make_smaller ();
   void write_xml (std::ostream& xml);
-  CL_Vector get_upper_left_corner ();
+  Vector get_upper_left_corner ();
 
-  void set_position_offset(const CL_Vector &);
+  void set_position_offset(const Vector &);
 
   void draw (EditorNS::EditorView* view);
   void save_xml (std::ostream& xml);

@@ -1,4 +1,4 @@
-//  $Id: editorobj_group.hxx,v 1.11 2002/09/27 11:26:45 torangan Exp $
+//  $Id: editorobj_group.hxx,v 1.12 2002/09/28 11:52:23 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_EDITOR_EDITOROBJ_GROUP_HXX
 
 #include <vector>
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "../vector.hxx"
 #include "editorobj.hxx"
 
 class EditorObjGroup : public EditorObj
@@ -29,7 +29,7 @@ class EditorObjGroup : public EditorObj
 private:
   std::vector<EditorObj*> objs;
   
-  CL_Vector upper_left_corner;
+  Vector upper_left_corner;
   //int width, height;
   //bool init;
 public:
@@ -39,7 +39,7 @@ public:
 
   float get_z_pos();
 
-  void set_position_offset(const CL_Vector& offset);
+  void set_position_offset(const Vector& offset);
   void draw(EditorNS::EditorView *);
   void draw_mark (EditorNS::EditorView * view);
   
@@ -49,7 +49,7 @@ public:
   ///
   std::vector<EditorObj*>* get_objs();
   
-  bool is_over(const CL_Vector &);
+  bool is_over(const Vector &);
   bool is_in_rect(const CL_Rect &);
     
   void   write_xml(std::ostream& xml);

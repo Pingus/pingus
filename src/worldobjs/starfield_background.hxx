@@ -1,4 +1,4 @@
-//  $Id: starfield_background.hxx,v 1.4 2002/09/27 18:36:41 torangan Exp $
+//  $Id: starfield_background.hxx,v 1.5 2002/09/28 11:52:26 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOJBS_STARFIELD_BACKGROUND_HXX
 #define HEADER_PINGUS_WORLDOBJS_STARFIELD_BACKGROUND_HXX
 
-#include "../graphic_context.hxx"
+#include <vector>
 #include "../worldobj.hxx"
 
 namespace WorldObjsData {

@@ -1,4 +1,4 @@
-//  $Id: playfield_view.cxx,v 1.3 2002/09/14 19:06:33 torangan Exp $
+//  $Id: playfield_view.cxx,v 1.4 2002/09/28 11:52:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,16 +44,16 @@ PlayfieldView::draw ()
 }
 
 void 
-PlayfieldView::scroll (CL_Vector delta)
+PlayfieldView::scroll (Vector delta)
 {
   x_offset += (int) delta.x;
   y_offset += (int) delta.y;
 }
 
 Pingu*
-PlayfieldView::get_pingu (const CL_Vector& pos)
+PlayfieldView::get_pingu (const Vector& pos)
 {
-  return world->get_pingu (CL_Vector(pos.x - x1 - x_offset,
+  return world->get_pingu (Vector(pos.x - x1 - x_offset,
 				     pos.y - y1 - y_offset));
 }
 

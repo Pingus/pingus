@@ -1,4 +1,4 @@
-//  $Id: status_line.cxx,v 1.8 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: status_line.cxx,v 1.9 2002/09/28 11:52:24 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,7 @@ StatusLine::draw(EditorView * view)
   
   font->print_left(50, 5, status_line_text.c_str());
 
-  CL_Vector pos = view->screen_to_world(CL_Vector (CL_Mouse::get_x(), CL_Mouse::get_y ()));
+  Vector pos = view->screen_to_world(Vector (CL_Mouse::get_x(), CL_Mouse::get_y ()));
   snprintf(mouse_co, 256, "X:%-3d Y:%-3d", static_cast<int>(pos.x), static_cast<int>(pos.y));
 
   font->print_left(CL_Display::get_width() - 100, 5, mouse_co);

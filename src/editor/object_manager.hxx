@@ -1,4 +1,4 @@
-//  $Id: object_manager.hxx,v 1.20 2002/09/27 11:26:45 torangan Exp $
+//  $Id: object_manager.hxx,v 1.21 2002/09/28 11:52:23 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -140,7 +140,7 @@ public:
   void erase (const std::vector<EditorObj*>&);
 
   /** Add the object at the given position to the selection */
-  EditorObj* find_object(const CL_Vector & pos);
+  EditorObj* find_object(const Vector & pos);
 
   std::vector<ActionData>* get_actions ();
 

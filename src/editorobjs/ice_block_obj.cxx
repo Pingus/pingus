@@ -1,4 +1,4 @@
-//  $Id: ice_block_obj.cxx,v 1.4 2002/09/27 18:36:40 torangan Exp $
+//  $Id: ice_block_obj.cxx,v 1.5 2002/09/28 11:52:24 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ IceBlockObj::~IceBlockObj ()
 
 /** Create the object with resonable defaults */
 EditorObjLst
-IceBlockObj::create (const CL_Vector& pos)
+IceBlockObj::create (const Vector& pos)
 {
   WorldObjsData::IceBlockData newdata;
   newdata.pos = pos;

@@ -1,4 +1,4 @@
-//  $Id: fake_exit_obj.cxx,v 1.9 2002/09/27 18:36:40 torangan Exp $
+//  $Id: fake_exit_obj.cxx,v 1.10 2002/09/28 11:52:24 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ FakeExitObj::~FakeExitObj ()
 }
 
 EditorObjLst
-FakeExitObj::create (const CL_Vector& pos)
+FakeExitObj::create (const Vector& pos)
 {
   WorldObjsData::FakeExitData newdata;
   newdata.pos = pos;

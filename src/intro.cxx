@@ -1,4 +1,4 @@
-//  $Id: intro.cxx,v 1.4 2002/09/14 19:06:33 torangan Exp $
+//  $Id: intro.cxx,v 1.5 2002/09/28 11:52:21 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -109,8 +109,8 @@ Intro::preload ()
   font = PingusResource::load_font ("Fonts/pingus","fonts");
   logo = PingusResource::load_surface ("misc/logo", "core");
 
-  velocity = CL_Vector (0, -75);
-  pos = CL_Vector (CL_Display::get_width ()/2,
+  velocity = Vector (0, -75);
+  pos = Vector (CL_Display::get_width ()/2,
 		   CL_Display::get_height () + logo.get_height ());
   
   

@@ -1,4 +1,4 @@
-//  $Id: start_pos.hxx,v 1.8 2002/09/28 11:52:24 torangan Exp $
+//  $Id: vector.hxx,v 1.1 2002/09/28 11:52:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,27 +17,43 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_EDITOR_START_POS_HXX
-#define HEADER_PINGUS_EDITOR_START_POS_HXX
+#ifndef HEADER_PINGUS_VECTOR_HXX
+#define HEADER_PINGUS_VECTOR_HXX
 
-#include "../vector.hxx"
-#include "sprite_editorobj.hxx"
+#include <iosfwd>
+#include "pingus.hxx"
 
-class StartPos : public SpriteEditorObj
+class Vector
 {
-private:
-  Vector pos;
+public:
+  float x;
+  float y;
+  float z;
   
 public:
-  StartPos(int arg_x_pos, int arg_y_pos);
-
-  virtual void write_xml(std::ostream& xml);
-  virtual EditorObj* duplicate();
+  explicit Vector (float x_=0, float y_=0, float z_=0);
   
-private:
-  StartPos (const StartPos&);
-  StartPos& operator= (const StartPos&);
+  Vector (const Vector& old);
+  Vector& operator= (const Vector& old);
+
+  Vector operator- () const;
+
+  Vector operator+ (const Vector& add) const;
+  Vector operator- (const Vector& sub) const;
+  Vector operator* (       float  mul) const;
+  
+  Vector& operator+= (const Vector& add);
+  Vector& operator-= (const Vector& sub);
+  Vector& operator*= (      float   mul);
+  
+  void normalize ();
+  
+  Vector rotate (float angle, const Vector& pos) const;
+
+  friend std::ostream& operator<< (std::ostream& os, const Vector& v);
 };
+
+std::ostream& operator<< (std::ostream& os, const Vector& v);
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.34 2002/09/24 17:02:48 grumbel Exp $
+//  $Id: editor.cxx,v 1.35 2002/09/28 11:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -197,7 +197,7 @@ Editor::scroll()
 
       if (mouse_x != CL_Mouse::get_x() || mouse_y != CL_Mouse::get_y())
 	{
-	  view->move (CL_Vector ((mouse_x - CL_Mouse::get_x()) / 5,
+	  view->move (Vector ((mouse_x - CL_Mouse::get_x()) / 5,
 				 (mouse_y - CL_Mouse::get_y()) / 5));
       //	  object_manager->x_offset += (mouse_x - CL_Mouse::get_x()) / 5;
       //  object_manager->y_offset += (mouse_y - CL_Mouse::get_y()) / 5;
@@ -364,15 +364,15 @@ Editor::zoom_mode ()
 void
 Editor::rect_get_current_objs()
 {
-  CL_Vector start_pos (CL_Mouse::get_x(),
+  Vector start_pos (CL_Mouse::get_x(),
 		       CL_Mouse::get_y ());
-  CL_Vector end_pos;
+  Vector end_pos;
 
   while (CL_Mouse::middle_pressed())
     {
       CL_System::keep_alive();
 
-      end_pos = CL_Vector(CL_Mouse::get_x(),
+      end_pos = Vector(CL_Mouse::get_x(),
 			  CL_Mouse::get_y ());
         
       // Draw the screen
@@ -439,10 +439,10 @@ Editor::interactive_move_object()
   CL_System::keep_alive();
 
   selection->drag ();
-  CL_Vector old_pos (view->screen_to_world(CL_Vector(CL_Mouse::get_x(), CL_Mouse::get_y())));
+  Vector old_pos (view->screen_to_world(Vector(CL_Mouse::get_x(), CL_Mouse::get_y())));
   while (CL_Mouse::left_pressed()) 
     {
-      CL_Vector new_pos (view->screen_to_world(CL_Vector(CL_Mouse::get_x(), CL_Mouse::get_y())));
+      Vector new_pos (view->screen_to_world(Vector(CL_Mouse::get_x(), CL_Mouse::get_y())));
       selection->move(new_pos.x - old_pos.x, new_pos.y - old_pos.y);
       old_pos = new_pos;
       

@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.36 2002/09/17 21:45:56 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.37 2002/09/28 11:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -241,11 +241,11 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	
 	  if (CL_Keyboard::get_keycode(CL_KEY_RSHIFT)) 
 	    {
-	      selection->move(CL_Vector(0, 0, -50));
+	      selection->move(Vector(0, 0, -50));
 	    }
 	  else if (CL_Keyboard::get_keycode(CL_KEY_RCTRL))
 	    {
-	      selection->move(CL_Vector(0, 0, -1));
+	      selection->move(Vector(0, 0, -1));
 	    }
 	  break;
     
@@ -254,11 +254,11 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  selection->raise();
 	  if (CL_Keyboard::get_keycode(CL_KEY_RSHIFT)) 
 	    {
-	      selection->move(CL_Vector(0, 0, 50));
+	      selection->move(Vector(0, 0, 50));
 	    }
 	  else if (CL_Keyboard::get_keycode(CL_KEY_RCTRL)) 
 	    {
-	      selection->move(CL_Vector(0, 0, 1));
+	      selection->move(Vector(0, 0, 1));
 	    }
 	  break;
 
@@ -323,7 +323,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
   else if (device == CL_Input::pointers[0])
     {
       /*std::cout << "Mouse: (" << CL_Mouse::get_x () << ", " << CL_Mouse::get_y () << ") "
-		<< "World: " << editor->view->screen_to_world (CL_Vector(CL_Mouse::get_x (), CL_Mouse::get_y ()))
+		<< "World: " << editor->view->screen_to_world (Vector(CL_Mouse::get_x (), CL_Mouse::get_y ()))
 		<< std::endl;*/
       
       switch (key.id)
@@ -618,7 +618,7 @@ EditorEvent::editor_duplicate_current_selection()
 	{
 	  // Apply object offset (not really needed, but makes it
 	  // easier to see that the object got duplicated)
-	  obj->set_position_offset (CL_Vector(8, 8));
+	  obj->set_position_offset (Vector(8, 8));
 
 	  // FIXME: We don't take the object position into account!
 	  object_manager->add (obj); // ObjectManager will take care of the deletion
@@ -684,7 +684,7 @@ EditorEvent::editor_mark_or_move_object()
     return;
 
   EditorObj* obj 
-    = object_manager->find_object(editor->view->screen_to_world (CL_Vector(CL_Mouse::get_x(), 
+    = object_manager->find_object(editor->view->screen_to_world (Vector(CL_Mouse::get_x(), 
 									   CL_Mouse::get_y())));
   
   if (obj)

@@ -1,4 +1,4 @@
-//  $Id: string_converter.hxx,v 1.7 2002/09/27 11:26:44 torangan Exp $
+//  $Id: string_converter.hxx,v 1.8 2002/09/28 11:52:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@
 #include <strstream>
 #endif
 
-class CL_Vector;
+class Vector;
 
 template <class T>
 std::string to_string (const T& any)

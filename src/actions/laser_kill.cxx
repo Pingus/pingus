@@ -1,4 +1,4 @@
-//  $Id: laser_kill.cxx,v 1.9 2002/09/14 22:41:31 grumbel Exp $
+//  $Id: laser_kill.cxx,v 1.10 2002/09/28 11:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "../vector.hxx"
 #include "../graphic_context.hxx"
 #include "../pingu.hxx"
 #include "laser_kill.hxx"
@@ -44,7 +44,7 @@ LaserKill::draw (GraphicContext& gc)
   else
     sprite.set_direction(Sprite::RIGHT);
 
-  gc.draw(sprite, pingu->get_pos () + CL_Vector (0, 2));
+  gc.draw(sprite, pingu->get_pos () + Vector (0, 2));
 }
 
 void

@@ -1,4 +1,4 @@
-// $Id: object_selector.hxx,v 1.12 2002/09/27 11:26:45 torangan Exp $
+// $Id: object_selector.hxx,v 1.13 2002/09/28 11:52:23 torangan Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include <config.h>
 #include <map>
 #include <list>
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "../vector.hxx"
 #include "../groundtype.hxx"
 #include "surface_selector.hxx"
 #include "editorobj.hxx"
@@ -43,7 +43,7 @@ private:
   int x_offset;
   int y_offset;
 
-  CL_Vector pos;
+  Vector pos;
 
   std::string last_object;
   std::map<std::string, bool> data_loaded;

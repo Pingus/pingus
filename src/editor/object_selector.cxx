@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.28 2002/09/27 18:36:40 torangan Exp $
+//  $Id: object_selector.cxx,v 1.29 2002/09/28 11:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -90,7 +90,7 @@ ObjectSelector::get_obj (int x_off, int y_off)
   x_offset = x_off;
   y_offset = y_off;
 
-  pos = CL_Vector (CL_Mouse::get_x () - x_offset,
+  pos = Vector (CL_Mouse::get_x () - x_offset,
 		   CL_Mouse::get_y () - y_offset, 
 		   0.0f);
 

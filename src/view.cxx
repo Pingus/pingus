@@ -1,4 +1,4 @@
-//  $Id: view.cxx,v 1.12 2002/09/17 22:52:36 grumbel Exp $
+//  $Id: view.cxx,v 1.13 2002/09/28 11:52:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -178,10 +178,10 @@ View::set_pingu(Pingu* p)
   current_pingu = p;
 }
 
-CL_Vector 
+Vector 
 View::get_center ()
 {
-  return CL_Vector (-x_offset + get_width ()/2, -y_offset + get_height ()/2);
+  return Vector (-x_offset + get_width ()/2, -y_offset + get_height ()/2);
 }
 
 void

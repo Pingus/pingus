@@ -1,4 +1,4 @@
-//  $Id: sprite.cxx,v 1.6 2002/09/27 11:26:44 torangan Exp $
+//  $Id: sprite.cxx,v 1.7 2002/09/28 11:52:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,11 +18,12 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <assert.h>
-#include <ClanLib/Core/Math/cl_vector.h>
+#include <iostream>
+#include "vector.hxx"
 #include "pingus_resource.hxx"
 #include "sprite.hxx"
 
-int round(float f) 
+int round (float f) 
 {
   if (f >= 0.0f)
     return int(f + 0.5f);
@@ -134,7 +135,7 @@ Sprite::put_screen (int x, int y)
 }
 
 void 
-Sprite::put_screen (const CL_Vector& pos)
+Sprite::put_screen (const Vector& pos)
 {
   put_screen (int(pos.x), int(pos.y));
 }

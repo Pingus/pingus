@@ -1,4 +1,4 @@
-//  $Id: fake_exit.cxx,v 1.6 2002/09/27 18:36:41 torangan Exp $
+//  $Id: fake_exit.cxx,v 1.7 2002/09/28 11:52:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ FakeExit::FakeExit (const WorldObjsData::FakeExitData& data_)
   data->counter.set_speed(2.5);
   data->counter = data->surface.get_num_frames() - 1;
 
-  data->pos -= CL_Vector(data->surface.get_width ()/2, data->surface.get_height ());
+  data->pos -= Vector(data->surface.get_width ()/2, data->surface.get_height ());
 }
 
 FakeExit::~FakeExit()

@@ -1,4 +1,4 @@
-//  $Id: capture_rectangle.cxx,v 1.7 2002/09/14 19:06:33 torangan Exp $ 
+//  $Id: capture_rectangle.cxx,v 1.8 2002/09/28 11:52:21 torangan Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "vector.hxx"
 #include <ClanLib/Display/Font/font.h>
 #include "pingu.hxx"
 #include "pingus_resource.hxx"
@@ -79,7 +79,7 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
           }
 
 	  // Draw the caputure rectangle
-	  sur->put_screen(pingu->get_center_pos() + CL_Vector(x_offset,y_offset));
+	  sur->put_screen(pingu->get_center_pos() + Vector(x_offset,y_offset));
 	  
 	  // If pingu has an action, print its name
 	  if (pingu->get_action())
@@ -96,16 +96,16 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
 	  // Paint the direction arrow
 	  if (pingu->direction.is_left()) 
 	    {
-	      arrow_left.put_screen(pingu->get_center_pos() + CL_Vector (x_offset, y_offset + 28));
+	      arrow_left.put_screen(pingu->get_center_pos() + Vector (x_offset, y_offset + 28));
 	    }
 	  else
 	    {
-	      arrow_right.put_screen(pingu->get_center_pos() + CL_Vector (x_offset, y_offset + 28));
+	      arrow_right.put_screen(pingu->get_center_pos() + Vector (x_offset, y_offset + 28));
 	    }
 	} 
       else 
 	{
-	  sur->put_screen(pingu->get_center_pos() + CL_Vector (x_offset, y_offset));
+	  sur->put_screen(pingu->get_center_pos() + Vector (x_offset, y_offset));
 	}
     }
 }

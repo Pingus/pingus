@@ -1,4 +1,4 @@
-//  $Id: weather_obj.cxx,v 1.10 2002/09/16 17:17:17 grumbel Exp $
+//  $Id: weather_obj.cxx,v 1.11 2002/09/28 11:52:24 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <fstream>
+#include <iostream>
 #include "../xml_helper.hxx"
 #include "editor_view.hxx"
 #include "weather_obj.hxx"
@@ -64,7 +64,7 @@ WeatherObj::draw (EditorNS::EditorView * view)
 	}
     }
 
-  CL_Vector tmp_pos (pos);
+  Vector tmp_pos (pos);
   pos.x = int((pos.x + sprite.get_width ()/2)
 	      /sprite.get_width ()) * sprite.get_width ();
   pos.y = int((pos.y - sprite.get_height ()/2)

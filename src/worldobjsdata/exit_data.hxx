@@ -1,4 +1,4 @@
-//  $Id: exit_data.hxx,v 1.1 2002/09/27 16:01:55 torangan Exp $
+//  $Id: exit_data.hxx,v 1.2 2002/09/28 11:52:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJSDATA_EXIT_DATA_HXX
 #define HEADER_PINGUS_WORLDOBJSDATA_EXIT_DATA_HXX
 
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "../vector.hxx"
 #include "../libxmlfwd.hxx"
 #include "../res_descriptor.hxx"
 #include "../worldobj_data.hxx"
@@ -30,7 +30,7 @@ namespace WorldObjsData {
 class ExitData : public WorldObjData
 {
 public:
-  CL_Vector pos;
+  Vector pos;
   ResDescriptor desc;
   int owner_id;
   

@@ -1,4 +1,4 @@
-//  $Id: solid_color_background_obj.hxx,v 1.3 2002/09/27 18:36:40 torangan Exp $
+//  $Id: solid_color_background_obj.hxx,v 1.4 2002/09/28 11:52:25 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,11 +49,11 @@ public:
 
   float get_z_pos ();
 
-  CL_Vector get_upper_left_corner ();
+  Vector get_upper_left_corner ();
 
   void draw (EditorNS::EditorView* view);
   
-  void set_position_offset (const CL_Vector& offset);  
+  void set_position_offset (const Vector& offset);  
 
   std::string status_line ();
   	 

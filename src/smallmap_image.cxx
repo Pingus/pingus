@@ -1,4 +1,4 @@
-//  $Id: smallmap_image.cxx,v 1.7 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: smallmap_image.cxx,v 1.8 2002/09/28 11:52:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "col_map.hxx"
 #include "server.hxx"
 
-SmallMapImage::SmallMapImage (Server * s, CL_Vector arg_pos, int width, int height)
+SmallMapImage::SmallMapImage (Server * s, Vector arg_pos, int width, int height)
   : sur (create_surface (s, width, height)),
     pos (arg_pos)
 {  

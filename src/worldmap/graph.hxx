@@ -1,4 +1,4 @@
-//  $Id: graph.hxx,v 1.11 2002/09/27 11:26:49 torangan Exp $
+//  $Id: graph.hxx,v 1.12 2002/09/28 11:52:26 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,7 +77,7 @@ public:
 
   /** Draw the edges of the graph to the screen
       @param offset FIXME: should be handled by GraphicContext instead */
-  void draw (const CL_Vector& offset);
+  void draw (const Vector& offset);
 
   /** Some functions to parse the data out of an xml file.
       For syntax description see doc/worldmap.xml

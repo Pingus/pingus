@@ -1,4 +1,4 @@
-//  $Id: switch_door.hxx,v 1.16 2002/09/27 18:36:41 torangan Exp $
+//  $Id: switch_door.hxx,v 1.17 2002/09/28 11:52:26 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_SWITCH_DOOR_HXX
 #define HEADER_PINGUS_WORLDOBJS_SWITCH_DOOR_HXX
 
+#include <ClanLib/Display/Display/surface.h>
 #include "../worldobj.hxx"
 
 namespace WorldObjsData {

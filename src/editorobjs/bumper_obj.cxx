@@ -1,4 +1,4 @@
-//  $Id: bumper_obj.cxx,v 1.8 2002/09/27 18:36:40 torangan Exp $
+//  $Id: bumper_obj.cxx,v 1.9 2002/09/28 11:52:24 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ BumperObj::~BumperObj ()
 }
 
 EditorObjLst
-BumperObj::create (const CL_Vector& pos)
+BumperObj::create (const Vector& pos)
 {
   WorldObjsData::BumperData newdata;
   newdata.pos = pos;

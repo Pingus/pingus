@@ -1,4 +1,4 @@
-//  $Id: sprite_editorobj.cxx,v 1.7 2002/09/27 11:26:45 torangan Exp $
+//  $Id: sprite_editorobj.cxx,v 1.8 2002/09/28 11:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,13 +27,13 @@ SpriteEditorObj::SpriteEditorObj ()
 {
 }
 
-SpriteEditorObj::SpriteEditorObj (CL_Vector* arg_pos)
+SpriteEditorObj::SpriteEditorObj (Vector* arg_pos)
   : pos_ref (arg_pos)
 {
 }
 
 SpriteEditorObj::SpriteEditorObj (const ResDescriptor& desc,
-				  CL_Vector* arg_pos)
+				  Vector* arg_pos)
   : sprite (desc),
     pos_ref (arg_pos)
 {
@@ -41,7 +41,7 @@ SpriteEditorObj::SpriteEditorObj (const ResDescriptor& desc,
 
 SpriteEditorObj::SpriteEditorObj (const std::string& sur_name,
 				  const std::string& datafile,
-				  CL_Vector* arg_pos)
+				  Vector* arg_pos)
   : sprite (sur_name, datafile),
     pos_ref (arg_pos)
 {
@@ -84,22 +84,22 @@ SpriteEditorObj::draw(EditorNS::EditorView * view)
 
 
 void 
-SpriteEditorObj::set_position_offset(const CL_Vector& offset)
+SpriteEditorObj::set_position_offset(const Vector& offset)
 {
   assert (pos_ref);
   *pos_ref += offset;
 }
 
-CL_Vector 
+Vector 
 SpriteEditorObj::get_upper_left_corner() 
 { 
   assert (pos_ref);
-  CL_Vector pos(*pos_ref);
-  return pos + CL_Vector(sprite.get_x_align (), sprite.get_y_align ()); 
+  Vector pos(*pos_ref);
+  return pos + Vector(sprite.get_x_align (), sprite.get_y_align ()); 
 }
 
 bool
-SpriteEditorObj::is_over(const CL_Vector& pos)
+SpriteEditorObj::is_over(const Vector& pos)
 {
   // FIXME: We don't handle animated objects special (do we need to?)
   if (RectEditorObj::is_over (pos))
@@ -110,7 +110,7 @@ SpriteEditorObj::is_over(const CL_Vector& pos)
       CL_SurfaceProvider* provider = sprite.get_surface ().get_provider ();
       float r, g, b, a;
       // Position relative to the surface, not world
-      CL_Vector provider_pos = pos;
+      Vector provider_pos = pos;
       provider_pos -= *pos_ref;
 
       provider->get_pixel (int(provider_pos.x), int(provider_pos.y), &r, &g, &b, &a);

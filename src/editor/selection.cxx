@@ -1,4 +1,4 @@
-//  $Id: selection.cxx,v 1.14 2002/09/13 18:28:26 grumbel Exp $
+//  $Id: selection.cxx,v 1.15 2002/09/28 11:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <algorithm>
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "../vector.hxx"
 #include <ClanLib/Display/Input/keyboard.h>
 #include <ClanLib/Display/Input/key.h>
 #include "selection.hxx"
@@ -32,11 +32,11 @@ void
 Selection::move(float x, float y) 
 {
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
-    (*it)->set_position_offset(CL_Vector(x, y));
+    (*it)->set_position_offset(Vector(x, y));
 }
 
 void
-Selection::move(const CL_Vector& pos) 
+Selection::move(const Vector& pos) 
 {
   for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->set_position_offset(pos);

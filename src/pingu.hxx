@@ -1,4 +1,4 @@
-//  $Id: pingu.hxx,v 1.17 2002/09/27 11:26:43 torangan Exp $
+//  $Id: pingu.hxx,v 1.18 2002/09/28 11:52:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "pingu_enums.hxx"
 
 // Forward declarations
-class CL_Vector;
+class Vector;
 class ActionHolder;
 class PinguAction;
 class GraphicContext;
@@ -65,7 +65,7 @@ private:
   float pos_x;
   float pos_y;
   
-  CL_Vector* const velocity; 
+  Vector* const velocity; 
 
 public:
 
@@ -79,7 +79,7 @@ public:
   /** Creates a new Pingu at the given coordinates
       @param pos The start position of the pingu
       @param owner The owner id of the pingu (used for multiplayer) */
-  Pingu (const CL_Vector& pos, int owner);
+  Pingu (const Vector& pos, int owner);
   
   /** Destruct the pingu... */
   ~Pingu ();
@@ -87,11 +87,11 @@ public:
   /** Return the logical pingus position, this is the position which
       is used for collision detection to the ground (the pingus
       feet) */
-  CL_Vector get_pos () const;
+  Vector get_pos () const;
 
   /** Returns the visible position of the pingu, the graphical center
       of the pingu. */
-  CL_Vector get_center_pos () const;
+  Vector get_center_pos () const;
 
   /** Returns the x position of the pingu
    * For backward comp. only
@@ -129,11 +129,11 @@ public:
   void set_y (float y);
 
   /// Set the pingu to the given coordinates
-  void set_pos (const CL_Vector& arg_pos);
+  void set_pos (const Vector& arg_pos);
 
-  const CL_Vector& get_velocity () const { return *velocity; }
+  const Vector& get_velocity () const { return *velocity; }
   
-  void set_velocity (const CL_Vector& velocity_);
+  void set_velocity (const Vector& velocity_);
       
   // Set the pingu in the gives direction
   void set_direction (Direction d);
@@ -174,7 +174,7 @@ public:
   bool need_catch ();
   
   void draw (GraphicContext& gc);
-  void apply_force (CL_Vector);
+  void apply_force (Vector);
   
   void update (float delta);
   

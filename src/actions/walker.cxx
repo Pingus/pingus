@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.23 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: walker.cxx,v 1.24 2002/09/28 11:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ Walker::init (void)
   walker.set_align_center_bottom();
   
   // Reset the velocity
-  pingu->set_velocity(CL_Vector());
+  pingu->set_velocity(Vector());
 }
 
 void
@@ -43,7 +43,7 @@ Walker::update (float delta)
   // update the sprite
   walker.update(delta);
 
-  CL_Vector last_pos = pingu->get_pos();
+  Vector last_pos = pingu->get_pos();
 
   /* How should this code work?
      
@@ -204,7 +204,7 @@ Walker::draw (GraphicContext& gc)
   else
     walker.set_direction(Sprite::RIGHT);
 
-  gc.draw (walker, pingu->get_pos() + CL_Vector (0, +2));
+  gc.draw (walker, pingu->get_pos() + Vector (0, +2));
 }
 
 } // namespace Actions

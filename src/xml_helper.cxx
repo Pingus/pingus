@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.17 2002/09/14 19:06:33 torangan Exp $
+//  $Id: xml_helper.cxx,v 1.18 2002/09/28 11:52:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <fstream>
-#include <ClanLib/Core/Math/cl_vector.h>
+#include <iostream>
+#include "vector.hxx"
 #include "string_converter.hxx"
 #include "color.hxx"
 #include "res_descriptor.hxx"
@@ -72,10 +72,10 @@ XMLhelper::encode_entities (const std::string& arg_str)
   return str;
 }
 
-CL_Vector
+Vector
 XMLhelper::parse_vector(xmlDocPtr doc, xmlNodePtr cur)
 {
-  CL_Vector pos;
+  Vector pos;
   cur = cur->children;  
   while (cur)
     {
@@ -355,7 +355,7 @@ XMLhelper::write_desc_xml(std::ostream& xml, ResDescriptor desc)
 }
 
 void 
-XMLhelper::write_vector_xml(std::ostream& xml, const CL_Vector& pos)
+XMLhelper::write_vector_xml(std::ostream& xml, const Vector& pos)
 {
   xml << "  <position>\n"
       << "    <x-pos>" << pos.x << "</x-pos>\n"

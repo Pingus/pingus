@@ -1,4 +1,4 @@
-//  $Id: entrance_data.hxx,v 1.1 2002/09/27 11:26:49 torangan Exp $
+//  $Id: entrance_data.hxx,v 1.2 2002/09/28 11:52:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_ENTRANCE_DATA_HXX
 #define HEADER_PINGUS_ENTRANCE_DATA_HXX
 
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "../vector.hxx"
 #include "../libxmlfwd.hxx"
 #include "../res_descriptor.hxx"
 #include "../worldobj_data.hxx"
@@ -35,7 +35,7 @@ public:
 public:
   EntranceDirection direction;
   ResDescriptor     desc;
-  CL_Vector         pos;
+  Vector         pos;
   int               release_rate;
   int               owner_id;
   

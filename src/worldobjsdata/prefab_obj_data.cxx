@@ -1,4 +1,4 @@
-//  $Id: prefab_obj_data.cxx,v 1.3 2002/09/15 20:33:45 grumbel Exp $
+//  $Id: prefab_obj_data.cxx,v 1.4 2002/09/28 11:52:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "../xml_helper.hxx"
 #include "../prefab.hxx"
 #include "prefab_obj_data.hxx"

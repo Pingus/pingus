@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.13 2002/09/14 19:06:34 torangan Exp $
+//  $Id: worldmap.cxx,v 1.14 2002/09/28 11:52:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <assert.h>
+#include <iostream>
 #include <ClanLib/Core/System/system.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Input/mouse.h>
@@ -86,13 +87,13 @@ WorldMap::save ()
   stat->save (graph_data.nodes);
 }
 
-CL_Vector 
+Vector 
 WorldMap::get_offset ()
 {
   // FIXME: Handling of background smaller than screen isn't handled
   assert (pingu);
 
-  CL_Vector offset = pingu->get_pos ();
+  Vector offset = pingu->get_pos ();
   offset *= -1.0;
 
   if (CL_Display::get_width () <= int(background.get_width ()))
@@ -135,7 +136,7 @@ WorldMap::on_startup ()
 void 
 WorldMap::on_primary_button_press (int x, int y)
 {
-  CL_Vector offset = get_offset ();
+  Vector offset = get_offset ();
 
   {      
     NodePtr node
@@ -205,7 +206,7 @@ WorldMap::on_primary_button_press (int x, int y)
 void
 WorldMap::draw (GraphicContext& gc)
 {
-  CL_Vector offset = get_offset ();
+  Vector offset = get_offset ();
   
   if (offset.x > 0)
     CL_Display::clear_display ();
@@ -265,7 +266,7 @@ WorldMap::get_node (int x, int y)
        i != graph_data.nodes.end ();
        i++)
     {
-      CL_Vector pos = (*i)->get_pos ();
+      Vector pos = (*i)->get_pos ();
 
       if (   pos.x - (int)(red_dot.get_width()/2) - 3 < x
 	     && pos.x + (int)(red_dot.get_width()/2) + 3 > x

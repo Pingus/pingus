@@ -1,4 +1,4 @@
-//  $Id: graph.cxx,v 1.7 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: graph.cxx,v 1.8 2002/09/28 11:52:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include <ClanLib/Display/Display/display.h>
 #include "../my_gettext.hxx"
 #include "../pingus_error.hxx"
@@ -161,7 +162,7 @@ Graph::get_music ()
   }*/
 
 void
-Graph::draw (const CL_Vector& offset)
+Graph::draw (const Vector& offset)
 {
   for (iterator i = nodes.begin();
        i != nodes.end();
@@ -171,8 +172,8 @@ Graph::draw (const CL_Vector& offset)
 	   j != nodes.end();
 	   ++j)
 	{
-	  CL_Vector i_pos = (*i)->get_pos ();
-	  CL_Vector j_pos = (*j)->get_pos ();
+	  Vector i_pos = (*i)->get_pos ();
+	  Vector j_pos = (*j)->get_pos ();
 
 	  for (std::list<int>::iterator k = (*i)->get_links ().begin();
 	       k != (*i)->get_links ().end();

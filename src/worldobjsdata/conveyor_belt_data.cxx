@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_data.cxx,v 1.5 2002/09/27 18:36:41 torangan Exp $
+//  $Id: conveyor_belt_data.cxx,v 1.6 2002/09/28 11:52:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../pingus_resource.hxx"
 #include "../xml_helper.hxx"
 #include "../editorobjs/conveyor_belt_obj.hxx"
 #include "../worldobjs/conveyor_belt.hxx"

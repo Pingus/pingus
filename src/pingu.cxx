@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.27 2002/09/16 23:49:56 grumbel Exp $
+//  $Id: pingu.cxx,v 1.28 2002/09/28 11:52:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ const float deadly_velocity = 20.0;
 int   Pingu::id_counter = 0;
 
 // Init a pingu at the given position while falling
-Pingu::Pingu (const CL_Vector& arg_pos, int owner)
+Pingu::Pingu (const Vector& arg_pos, int owner)
             : action(0),
               countdown_action (0),
               wall_action(0),
@@ -48,7 +48,7 @@ Pingu::Pingu (const CL_Vector& arg_pos, int owner)
               status(PS_ALIVE),
 	      pos_x(arg_pos.x),
 	      pos_y(arg_pos.y),
-              velocity(new CL_Vector(0, 0, 0))
+              velocity(new Vector(0, 0, 0))
 {
   direction.left ();
   set_action(Faller);
@@ -94,14 +94,14 @@ Pingu::set_pos (float x, float y)
 }
 
 void
-Pingu::set_pos (const CL_Vector& arg_pos)
+Pingu::set_pos (const Vector& arg_pos)
 {
   set_x (arg_pos.x);
   set_y (arg_pos.y);
 }
 
 void
-Pingu::set_velocity (const CL_Vector& velocity_)
+Pingu::set_velocity (const Vector& velocity_)
 {
   *velocity = velocity_;
 }
@@ -273,7 +273,7 @@ Pingu::set_status (PinguStatus s)
 bool
 Pingu::is_over (int x, int y)
 {
-  CL_Vector center = get_center_pos ();
+  Vector center = get_center_pos ();
 
   return (center.x + 16 > x && center.x - 16 < x &&
 	  center.y + 16 > y && center.y - 16 < y);
@@ -294,7 +294,7 @@ Pingu::is_inside (int x1, int y1, int x2, int y2)
 double
 Pingu::dist (int x, int y)
 {
-  CL_Vector p = get_center_pos ();
+  Vector p = get_center_pos ();
   
   return sqrt(((p.x - x) * (p.x - x) + (p.y - y) * (p.y - y)));
 }
@@ -394,7 +394,7 @@ Pingu::get_action ()
 }
 
 void
-Pingu::apply_force (CL_Vector arg_v)
+Pingu::apply_force (Vector arg_v)
 {
   *velocity += arg_v;
   // Moving the pingu on pixel up, so that the force can take effect
@@ -402,16 +402,16 @@ Pingu::apply_force (CL_Vector arg_v)
   --pos_y; 
 }
 
-CL_Vector
+Vector
 Pingu::get_pos () const
 {
-  return CL_Vector(pos_x, pos_y, 0);
+  return Vector(pos_x, pos_y, 0);
 }
 
-CL_Vector
+Vector
 Pingu::get_center_pos () const
 {
-  return CL_Vector(pos_x, pos_y) + CL_Vector (0, -16); 
+  return Vector(pos_x, pos_y) + Vector (0, -16); 
 }
 
 int 

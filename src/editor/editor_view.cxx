@@ -1,4 +1,4 @@
-//  $Id: editor_view.cxx,v 1.3 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: editor_view.cxx,v 1.4 2002/09/28 11:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include <ClanLib/Core/Math/rect.h>
 #include <ClanLib/Display/Display/display.h>
 #include "../sprite.hxx"
@@ -29,7 +30,7 @@ EditorView::EditorView (int x1, int y1, int x2, int y2,
 			int /*x_offset*/, int /*y_offset*/)
   : x1 (x1), y1 (y1), x2 (x2), y2 (y2), offset (-(x2 - x1)/2.0f, -(y2-x1)/2.0f, 1.0f)
 {
-  center = CL_Vector ((x2 - x1)/2.0f + x1,
+  center = Vector ((x2 - x1)/2.0f + x1,
 		      (y2 - y1)/2.0f + y1);
   std::cout << "View: " << x1 << ", " << y1 << ", " << x2 << ", " << y2 
 	    << std::endl;
@@ -39,7 +40,7 @@ EditorView::~EditorView ()
 {
 }
 
-CL_Vector
+Vector
 EditorView::get_offset ()
 {
   return offset;
@@ -68,10 +69,10 @@ EditorView::zoom_to (const CL_Rect & arg_rect)
   rect.y1 = Math::min (arg_rect.y1, arg_rect.y2);
   rect.y2 = Math::max (arg_rect.y1, arg_rect.y2);
   
-  CL_Vector pos1 = screen_to_world (CL_Vector(rect.x1, rect.y1));
-  CL_Vector pos2 = screen_to_world (CL_Vector(rect.x2, rect.y2));
+  Vector pos1 = screen_to_world (Vector(rect.x1, rect.y1));
+  Vector pos2 = screen_to_world (Vector(rect.x2, rect.y2));
 
-  CL_Vector center = (pos2 + pos1) * 0.5f;
+  Vector center = (pos2 + pos1) * 0.5f;
   offset = -center;
 
   float width  = pos2.x - pos1.x;
@@ -106,19 +107,19 @@ EditorView::get_height ()
 }
 
 void 
-EditorView::move (const CL_Vector & delta)
+EditorView::move (const Vector & delta)
 {
   offset += delta;
 }
 
-CL_Vector
-EditorView::screen_to_world (CL_Vector pos)
+Vector
+EditorView::screen_to_world (Vector pos)
 {
   return ((pos - center) * (1.0f/offset.z)) - offset;
 }
 
-CL_Vector
-EditorView::world_to_screen (CL_Vector pos)
+Vector
+EditorView::world_to_screen (Vector pos)
 {
   return ((pos + offset) * offset.z) + center;
 }
@@ -136,7 +137,7 @@ EditorView::get_y_offset ()
 }
 
 void 
-EditorView::draw (Sprite& sprite, const CL_Vector& pos)
+EditorView::draw (Sprite& sprite, const Vector& pos)
 {
   CL_Surface sur (sprite.get_surface ());
   draw (sur, 
@@ -145,7 +146,7 @@ EditorView::draw (Sprite& sprite, const CL_Vector& pos)
 }
 
 void 
-EditorView::draw (Sprite& sprite, const CL_Vector& pos, int frame)
+EditorView::draw (Sprite& sprite, const Vector& pos, int frame)
 {
   CL_Surface sur (sprite.get_surface ());
   draw (sur, 
@@ -155,7 +156,7 @@ EditorView::draw (Sprite& sprite, const CL_Vector& pos, int frame)
 }
 
 void 
-EditorView::draw (CL_Surface& sur, const CL_Vector& pos)
+EditorView::draw (CL_Surface& sur, const Vector& pos)
 {
   if (offset.z == 1.0)
     {   
@@ -173,7 +174,7 @@ EditorView::draw (CL_Surface& sur, const CL_Vector& pos)
 }
 
 void 
-EditorView::draw (CL_Surface& sur, const CL_Vector& pos, int frame)
+EditorView::draw (CL_Surface& sur, const Vector& pos, int frame)
 {
   draw (sur, int(pos.x), int(pos.y), frame);
 }
@@ -223,7 +224,7 @@ EditorView::draw (CL_Surface& sur, int x_pos, int y_pos,
 }
 
 void 
-EditorView::draw_line (const CL_Vector& pos1, const CL_Vector& pos2,
+EditorView::draw_line (const Vector& pos1, const Vector& pos2,
 		       float r, float g, float b, float a)
 {
   draw_line (int(pos1.x), int(pos1.y), int(pos2.x), int(pos2.y), r, g, b, a);
@@ -278,8 +279,8 @@ EditorView::draw_circle (int x_pos, int y_pos, int radius,
   // FIXME: Probally not the fast circle draw algo on this world...
   const float pi = 3.1415927f * 2.0f;
   const float steps = 8;
-  CL_Vector current (radius, 0);
-  CL_Vector next = current.rotate (pi/steps, CL_Vector (0, 0, 1.0f));
+  Vector current (radius, 0);
+  Vector next = current.rotate (pi/steps, Vector (0, 0, 1.0f));
 
   for (int i = 0; i < steps; ++i)
     {
@@ -287,7 +288,7 @@ EditorView::draw_circle (int x_pos, int y_pos, int radius,
 		 int(x_pos + next.x), int(y_pos + next.y),
 		 r, g, b, a);
       current = next;
-      next = next.rotate (pi/8, CL_Vector (0, 0, 1.0f));
+      next = next.rotate (pi/8, Vector (0, 0, 1.0f));
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.24 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: faller.cxx,v 1.25 2002/09/28 11:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,8 +68,8 @@ Faller::update (float delta)
   // Apply all forces
   pingu->set_velocity(ForcesHolder::apply_forces(pingu->get_pos(), pingu->get_velocity()));
     
-  CL_Vector newp = pingu->get_velocity();
-  CL_Vector last_pos;
+  Vector newp = pingu->get_velocity();
+  Vector last_pos;
   
   // Update x and y by moving the penguin to it's target *slowly*
   // and checking if the penguin has hit the bottom at each loop
@@ -138,7 +138,7 @@ Faller::update (float delta)
 	    }
 	}
       // Reset the velocity
-      pingu->set_velocity(CL_Vector(-(pingu->get_velocity().x/3), 0));
+      pingu->set_velocity(Vector(-(pingu->get_velocity().x/3), 0));
       pingu->set_pos(last_pos);
 
       // FIXME: UGLY!

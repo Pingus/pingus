@@ -1,4 +1,4 @@
-//  $Id: intro.hxx,v 1.5 2002/09/27 11:26:43 torangan Exp $
+//  $Id: intro.hxx,v 1.6 2002/09/28 11:52:21 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_INTRO_HXX
 #define HEADER_PINGUS_INTRO_HXX
 
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "vector.hxx"
 #include <ClanLib/Display/Display/surface.h>
 
 class CL_Key;
@@ -34,8 +34,8 @@ class Intro : public PingusSubMenu
 {
 private:
   CL_Surface logo;
-  CL_Vector  pos;
-  CL_Vector  velocity;
+  Vector  pos;
+  Vector  velocity;
   unsigned int start_time;
   enum { SCROLL_UP, SLOWDOWN, WAITING, FINISHED } stage;
   CL_Font* font;

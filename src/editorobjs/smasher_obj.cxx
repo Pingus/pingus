@@ -1,4 +1,4 @@
-//  $Id: smasher_obj.cxx,v 1.7 2002/09/27 18:36:40 torangan Exp $
+//  $Id: smasher_obj.cxx,v 1.8 2002/09/28 11:52:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ SmasherObj::~SmasherObj ()
 }
 
 EditorObjLst
-SmasherObj::create (const CL_Vector& pos)
+SmasherObj::create (const Vector& pos)
 {
   WorldObjsData::SmasherData smasher_data;
   smasher_data.pos = pos;

@@ -1,4 +1,4 @@
-//  $Id: usb_mouse_controller.hxx,v 1.5 2002/08/23 15:49:51 torangan Exp $
+//  $Id: usb_mouse_controller.hxx,v 1.6 2002/09/28 11:52:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,7 @@ public:
   int get_x ();
   int get_y ();
   
-  CL_Vector get_pos ();
+  Vector get_pos ();
 
   void keep_alive ();
 };

@@ -1,4 +1,4 @@
-//  $Id: weather_obj.hxx,v 1.9 2002/09/27 11:26:46 torangan Exp $
+//  $Id: weather_obj.hxx,v 1.10 2002/09/28 11:52:24 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,14 +20,14 @@
 #ifndef HEADER_PINGUS_EDITOR_WEATHER_OBJ_HXX
 #define HEADER_PINGUS_EDITOR_WEATHER_OBJ_HXX
 
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "../vector.hxx"
 #include "sprite_editorobj.hxx"
 
 class WeatherObj : public SpriteEditorObj
 {
 private:
   std::string type;
-  CL_Vector pos;
+  Vector pos;
   bool dragging;
   
 public:

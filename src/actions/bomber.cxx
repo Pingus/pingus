@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.13 2002/09/14 19:06:33 torangan Exp $
+//  $Id: bomber.cxx,v 1.14 2002/09/28 11:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,7 +71,7 @@ Bomber::draw (GraphicContext& gc)
 {
   if (sprite.get_frame () >= 13 && !gfx_exploded) 
     {
-      gc.draw (explo_surf, CL_Vector(static_cast<int>(pingu->get_x () - 32), 
+      gc.draw (explo_surf, Vector(static_cast<int>(pingu->get_x () - 32), 
 				     static_cast<int>(pingu->get_y () - 48)));
       gfx_exploded = true;
     }
@@ -110,7 +110,7 @@ Bomber::update (float delta)
 						   static_cast<int>(pingu->get_y () - 16 - (bomber_radius.get_width()/2)));
       
       // Add an explosion to the forces list
-      ForcesHolder::add_force(ExplosionForce(5,30,CL_Vector(pingu->get_x (),
+      ForcesHolder::add_force(ExplosionForce(5,30,Vector(pingu->get_x (),
 							    pingu->get_y () - 20)));
     }
 

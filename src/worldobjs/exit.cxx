@@ -1,4 +1,4 @@
-//  $Id: exit.cxx,v 1.1 2002/09/27 16:01:55 torangan Exp $
+//  $Id: exit.cxx,v 1.2 2002/09/28 11:52:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "../graphic_context.hxx"
 #include "../col_map.hxx"
 #include "../world.hxx"
@@ -65,7 +66,7 @@ void
 Exit::draw (GraphicContext& gc)
 {
   gc.draw(sprite, data->pos);
-  gc.draw(flag, data->pos + CL_Vector(40, 0));
+  gc.draw(flag, data->pos + Vector(40, 0));
 }
 
 void

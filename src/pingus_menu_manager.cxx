@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.cxx,v 1.13 2002/09/14 19:06:33 torangan Exp $
+//  $Id: pingus_menu_manager.cxx,v 1.14 2002/09/28 11:52:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include <ClanLib/Display/Display/display.h>
 #include "screen_manager.hxx"
 #include "pingus_menu_manager.hxx"
@@ -47,7 +48,7 @@ PingusMenuManager::draw (GraphicContext& gc)
 {
   background.draw ();
   
-  gc.draw (unplayable, CL_Vector(CL_Display::get_width ()/2, 30));
+  gc.draw (unplayable, Vector(CL_Display::get_width ()/2, 30));
 
   CL_Display::fill_rect(0, CL_Display::get_height () - 22,
 			CL_Display::get_width (), CL_Display::get_height (),

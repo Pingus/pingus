@@ -1,4 +1,4 @@
-//  $Id: jumper.cxx,v 1.12 2002/09/14 19:06:33 torangan Exp $
+//  $Id: jumper.cxx,v 1.13 2002/09/28 11:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "../vector.hxx"
 #include "../graphic_context.hxx"
 #include "../pingu.hxx"
 #include "../string_converter.hxx"
@@ -47,13 +47,13 @@ Jumper::draw (GraphicContext& gc)
 void
 Jumper::update (float delta)
 {
-  //FIXME CL_Vector
-  CL_Vector temp(pingu->get_velocity());
+  //FIXME Vector
+  Vector temp(pingu->get_velocity());
     
   if (pingu->direction.is_right()) {
-    pingu->set_velocity(temp + CL_Vector(10.0, -10.0));
+    pingu->set_velocity(temp + Vector(10.0, -10.0));
   } else {
-    pingu->set_velocity(temp + CL_Vector(-10.0, -10.0));
+    pingu->set_velocity(temp + Vector(-10.0, -10.0));
   }
 
   // Move the pingu in the air, so that it can start 'falling'

@@ -1,4 +1,4 @@
-//  $Id: usb_mouse_controller.cxx,v 1.1 2002/06/12 19:09:38 grumbel Exp $
+//  $Id: usb_mouse_controller.cxx,v 1.2 2002/09/28 11:52:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,10 +49,10 @@ USBMouseController::get_y ()
   return mouse.y;
 }
   
-CL_Vector
+Vector
 USBMouseController::get_pos ()
 {
-  return CL_Vector (mouse.x, mouse.y);
+  return Vector (mouse.x, mouse.y);
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background_obj.cxx,v 1.2 2002/09/27 18:36:40 torangan Exp $
+//  $Id: thunderstorm_background_obj.cxx,v 1.3 2002/09/28 11:52:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@ ThunderstormBackgroundObj::ThunderstormBackgroundObj (const WorldObjsData::Thund
   : SpriteEditorObj ("Stars/starfield_icon", "game"),
     data(new WorldObjsData::ThunderstormBackgroundData(data_))
 {
-  data->pos = CL_Vector(-128.0f, 0.0f);
+  data->pos = Vector(-128.0f, 0.0f);
   pos_ref = &data->pos;
 }
 

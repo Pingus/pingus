@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.9 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: pingus.cxx,v 1.10 2002/09/28 11:52:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ Pingus::walk_to (Node* node)
 }
 
 void
-Pingus::draw (const CL_Vector& offset)
+Pingus::draw (const Vector& offset)
 {
   sprite.set_direction (is_left ? Sprite::LEFT : Sprite::RIGHT);
   if (!targets.empty ())
@@ -74,7 +74,7 @@ Pingus::update (float delta)
 
   if (!targets.empty ())
     {
-      CL_Vector t_pos = targets.front ()->get_pos ();
+      Vector t_pos = targets.front ()->get_pos ();
 
       // Pingus found the target node
       if (pos.x > t_pos.x - 3

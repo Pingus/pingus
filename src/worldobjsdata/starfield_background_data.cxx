@@ -1,4 +1,4 @@
-//  $Id: starfield_background_data.cxx,v 1.3 2002/09/27 18:36:41 torangan Exp $
+//  $Id: starfield_background_data.cxx,v 1.4 2002/09/28 11:52:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../string_converter.hxx"
 #include "../xml_helper.hxx"
 #include "../editorobjs/starfield_background_obj.hxx"
 #include "../worldobjs/starfield_background.hxx"

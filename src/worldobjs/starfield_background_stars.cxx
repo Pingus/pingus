@@ -1,4 +1,4 @@
-//  $Id: starfield_background_stars.cxx,v 1.2 2002/09/24 14:51:36 grumbel Exp $
+//  $Id: starfield_background_stars.cxx,v 1.3 2002/09/28 11:52:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -82,7 +82,7 @@ StarfieldBackgroundStars::update (float delta)
 void
 StarfieldBackgroundStars::draw (GraphicContext& gc)
 {
-  gc.draw(sur, CL_Vector (x_pos, y_pos));
+  gc.draw(sur, Vector (x_pos, y_pos));
 }
 
 } // namespace WorldObjs

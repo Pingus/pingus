@@ -1,4 +1,4 @@
-//  $Id: particle_holder.cxx,v 1.4 2002/09/04 19:40:20 grumbel Exp $
+//  $Id: particle_holder.cxx,v 1.5 2002/09/28 11:52:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "../globals.hxx"
 #include "../graphic_context.hxx"
 #include "../algo.hxx"
@@ -24,18 +25,18 @@
 
 #include "particle_holder.hxx"
 
-ParticleHolder::ParticleHolder()
+ParticleHolder::ParticleHolder ()
 {
   init_particles();
 }
 
-ParticleHolder::~ParticleHolder()
+ParticleHolder::~ParticleHolder ()
 {
   std::cout << "ParticleHolder:~ParticleHolder" << std::endl;
 }
 
 void
-ParticleHolder::update(float delta)
+ParticleHolder::update (float delta)
 {
   for(std::list<Particle*>::iterator i = this->begin(); i != this->end(); ++i) 
     {
@@ -52,7 +53,7 @@ ParticleHolder::update(float delta)
 }
 
 void
-ParticleHolder::draw_offset(int x, int y, float s) // const
+ParticleHolder::draw_offset (int x, int y, float s) // const
 {
   // FIXME: obsolete
   for(std::list<Particle*>::iterator i = this->begin(); i != this->end(); ++i) 

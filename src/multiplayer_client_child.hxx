@@ -1,4 +1,4 @@
-//  $Id: multiplayer_client_child.hxx,v 1.6 2002/09/27 11:26:43 torangan Exp $
+//  $Id: multiplayer_client_child.hxx,v 1.7 2002/09/28 11:52:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_MULTIPLAYER_CLIENT_CHILD_HXX
 #define HEADER_PINGUS_MULTIPLAYER_CLIENT_CHILD_HXX
 
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "vector.hxx"
 #include "cursor.hxx"
 #include "button_panel.hxx"
 #include "playfield_view.hxx"
@@ -46,7 +46,7 @@ private:
 
   CL_Rect rect;
 
-  CL_Vector scroll_vec;
+  Vector scroll_vec;
 
 public:
   MultiplayerClientChild (Server * s, const CL_Rect& arg_rect);
@@ -55,22 +55,22 @@ public:
   void draw ();
   void update (float delta);
 
-  void on_left_press (const CL_Vector& pos);
-  void on_right_press (const CL_Vector& pos);
-  void on_right_release (const CL_Vector& pos);
+  void on_left_press (const Vector& pos);
+  void on_right_press (const Vector& pos);
+  void on_right_release (const Vector& pos);
 
-  void on_scroll_left_press (const CL_Vector& pos);
-  void on_scroll_right_press (const CL_Vector& pos);
-  void on_scroll_up_press (const CL_Vector& pos);
-  void on_scroll_down_press (const CL_Vector& pos);
+  void on_scroll_left_press (const Vector& pos);
+  void on_scroll_right_press (const Vector& pos);
+  void on_scroll_up_press (const Vector& pos);
+  void on_scroll_down_press (const Vector& pos);
 
-  void on_scroll_left_release (const CL_Vector& pos);
-  void on_scroll_right_release (const CL_Vector& pos);
-  void on_scroll_up_release (const CL_Vector& pos);
-  void on_scroll_down_release (const CL_Vector& pos);
+  void on_scroll_left_release (const Vector& pos);
+  void on_scroll_right_release (const Vector& pos);
+  void on_scroll_up_release (const Vector& pos);
+  void on_scroll_down_release (const Vector& pos);
 
-  void on_next_action_press (const CL_Vector& pos);
-  void on_previous_action_press (const CL_Vector& pos);
+  void on_next_action_press (const Vector& pos);
+  void on_previous_action_press (const Vector& pos);
   
 private:
   MultiplayerClientChild (const MultiplayerClientChild&);

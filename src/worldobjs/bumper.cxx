@@ -1,4 +1,4 @@
-//  $Id: bumper.cxx,v 1.7 2002/09/27 18:36:40 torangan Exp $
+//  $Id: bumper.cxx,v 1.8 2002/09/28 11:52:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include <ClanLib/Display/Display/surfaceprovider.h>
 #include "../col_map.hxx"
 #include "../graphic_context.hxx"
@@ -100,7 +101,7 @@ Bumper::catch_pingu (Pingu* pingu)
           && pingu->get_x() > data->pos.x + 0
 	  && pingu->get_x() < data->pos.x + 60)
 	{
-	  pingu->apply_force(CL_Vector((pingu->get_x() - 30)/6, -5));
+	  pingu->apply_force(Vector((pingu->get_x() - 30)/6, -5));
 	}
     }
 }

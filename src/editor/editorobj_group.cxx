@@ -1,4 +1,4 @@
-//  $Id: editorobj_group.cxx,v 1.5 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: editorobj_group.cxx,v 1.6 2002/09/28 11:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <fstream>
+#include <iostream>
 #include "editorobj_group.hxx"
 
 /******************/
@@ -47,7 +47,7 @@ EditorObjGroup::~EditorObjGroup()
 }
 
 void 
-EditorObjGroup::set_position_offset(const CL_Vector& offset)
+EditorObjGroup::set_position_offset(const Vector& offset)
 {
   upper_left_corner += offset;
   for(std::vector<EditorObj*>::iterator i = objs.begin();
@@ -161,7 +161,7 @@ EditorObjGroup::duplicate()
 }
 
 bool 
-EditorObjGroup::is_over(const CL_Vector& pos)
+EditorObjGroup::is_over(const Vector& pos)
 {
   for(std::vector<EditorObj*>::iterator i = objs.begin();
       i != objs.end();

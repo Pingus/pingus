@@ -1,4 +1,4 @@
-//  $Id: action_button.hxx,v 1.12 2002/09/27 11:26:43 torangan Exp $
+//  $Id: action_button.hxx,v 1.13 2002/09/28 11:52:21 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ using Actions::ActionName;
 class Server;
 class ActionHolder;
 class CL_Font;
-class CL_Vector;
+class Vector;
 
 /** ArmageddonButton, press it to start the armageddon and to turn all
     pingus into bomber

@@ -1,4 +1,4 @@
-//  $Id: node.cxx,v 1.9 2002/09/14 19:06:34 torangan Exp $
+//  $Id: node.cxx,v 1.10 2002/09/28 11:52:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "manager.hxx"
 #include "../my_gettext.hxx"
 #include "../path_manager.hxx"
@@ -48,7 +49,7 @@ TubeNode::on_click ()
 }
 
 void 
-TubeNode::draw (CL_Vector offset)
+TubeNode::draw (Vector offset)
 {
   tube.put_screen (pos + offset);
 }
@@ -134,7 +135,7 @@ LevelNode::mark (bool value)
 }
 
 void 
-LevelNode::draw (CL_Vector offset)
+LevelNode::draw (Vector offset)
 {
   if (!levelname.empty())
     {

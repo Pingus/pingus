@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.34 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.35 2002/09/28 11:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <fstream>
+#include <iostream>
 #include <algorithm>
 #include <ClanLib/Core/Math/rect.h>
 #include "../plf.hxx"
@@ -313,7 +314,7 @@ ObjectManager::erase (const std::vector<EditorObj*>& objs)
 }
 
 EditorObj*
-ObjectManager::find_object(const CL_Vector& pos)
+ObjectManager::find_object(const Vector& pos)
 {
   // We go reverse about the list, since the top-most object is the
   // last in the list

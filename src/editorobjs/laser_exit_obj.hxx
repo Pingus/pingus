@@ -1,4 +1,4 @@
-//  $Id: laser_exit_obj.hxx,v 1.7 2002/09/27 18:36:40 torangan Exp $
+//  $Id: laser_exit_obj.hxx,v 1.8 2002/09/28 11:52:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ public:
   LaserExitObj (const WorldObjsData::LaserExitData& data_);
   ~LaserExitObj ();
 
-  static EditorObjLst create (const CL_Vector& pos);
+  static EditorObjLst create (const Vector& pos);
 
    
   EditorObj* duplicate ();

@@ -1,4 +1,4 @@
-//  $Id: editor_view.hxx,v 1.6 2002/09/27 11:26:45 torangan Exp $
+//  $Id: editor_view.hxx,v 1.7 2002/09/28 11:52:23 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define header_pingus_editor_editor_view_hxx
 
 #include "../pingus.hxx"
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "../vector.hxx"
 
 class Sprite;
 class CL_Rect;
@@ -37,19 +37,19 @@ class EditorView
 {
 private:
   int x1, y1, x2, y2;
-  CL_Vector center;
+  Vector center;
   
   /** The current view position, x and y component are the current
       position in the level in world coordinates and the z componet is
       the zoom of the level (1.0 is default)*/
-  CL_Vector offset;
+  Vector offset;
 
 public:
   EditorView (int x1, int y1, int x2, int y2, 
 	      int x_offset = 0, int y_offset = 0);
   virtual ~EditorView ();
   
-  CL_Vector get_offset ();
+  Vector get_offset ();
 
   float get_x_offset ();
   float get_y_offset ();
@@ -65,23 +65,23 @@ public:
   void zoom_to (const CL_Rect & rect);
 
   /// Scroll the view by the given delta
-  void move (const CL_Vector & delta);
+  void move (const Vector & delta);
 
   /** Converts a given screen coordinate, as returned by
       CL_Mouse::get_x(), into the world coordinate system. */
-  CL_Vector screen_to_world (CL_Vector pos);
-  CL_Vector world_to_screen (CL_Vector pos);
+  Vector screen_to_world (Vector pos);
+  Vector world_to_screen (Vector pos);
 
-  void draw (Sprite& sprite, const CL_Vector& pos);
-  void draw (Sprite& sprite, const CL_Vector& pos, int frame);
-  void draw (CL_Surface& sur, const CL_Vector& pos);
-  void draw (CL_Surface& sur, const CL_Vector& pos, int frame);
+  void draw (Sprite& sprite, const Vector& pos);
+  void draw (Sprite& sprite, const Vector& pos, int frame);
+  void draw (CL_Surface& sur, const Vector& pos);
+  void draw (CL_Surface& sur, const Vector& pos, int frame);
   void draw (CL_Surface& sur, int x_pos, int y_pos);
   void draw (CL_Surface& sur, int x_pos, int y_pos, int frame);
   void draw (CL_Surface& sur, int x_pos, int y_pos, 
 	     float size_x, float size_y, int frame);
 
-  void draw_line (const CL_Vector& pos1, const CL_Vector& pos2,
+  void draw_line (const Vector& pos1, const Vector& pos2,
 		  float r, float g, float b, float a = 1.0f);
   void draw_line (int x1, int y1, int x2, int y2, 
 		  float r, float g, float b, float a = 1.0f);

@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.12 2002/09/14 19:06:34 torangan Exp $
+//  $Id: manager.cxx,v 1.13 2002/09/28 11:52:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "../screen_manager.hxx"
 #include "../path_manager.hxx"
 #include "worldmap.hxx"
@@ -24,7 +25,7 @@
 
 namespace WorldMapNS {
 
-WorldMapManager* WorldMapManager::instance_ = 0;
+WorldMapManager* WorldMapManager::instance_(0);
 
 WorldMapManager::WorldMapManager ()
 {

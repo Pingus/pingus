@@ -1,4 +1,4 @@
-//  $Id: solid_color_background_obj.cxx,v 1.3 2002/09/27 18:36:40 torangan Exp $
+//  $Id: solid_color_background_obj.cxx,v 1.4 2002/09/28 11:52:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ SolidColorBackgroundObj::get_z_pos ()
   return data->pos.z;
 }
 
-CL_Vector
+Vector
 SolidColorBackgroundObj::get_upper_left_corner ()
 { 
   return data->pos; 
@@ -72,7 +72,7 @@ SolidColorBackgroundObj::draw (EditorNS::EditorView* view)
 }
 
 void
-SolidColorBackgroundObj::set_position_offset (const CL_Vector& offset)
+SolidColorBackgroundObj::set_position_offset (const Vector& offset)
 {
   data->pos += offset;
 }  

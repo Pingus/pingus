@@ -1,4 +1,4 @@
-//  $Id: ice_block.cxx,v 1.17 2002/09/27 18:36:41 torangan Exp $
+//  $Id: ice_block.cxx,v 1.18 2002/09/28 11:52:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <fstream>
 #include "../col_map.hxx"
 #include "../game_time.hxx"
 #include "../graphic_context.hxx"

@@ -1,4 +1,4 @@
-//  $Id: switch_door_data.hxx,v 1.3 2002/09/27 11:26:49 torangan Exp $
+//  $Id: switch_door_data.hxx,v 1.4 2002/09/28 11:52:27 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJSDATA_SWITCH_DOOR_DATA_HXX
 #define HEADER_PINGUS_WORLDOBJSDATA_SWITCH_DOOR_DATA_HXX
 
-#include <ClanLib/Core/Math/cl_vector.h>
-#include <ClanLib/Display/Display/surface.h>
+#include "../vector.hxx"
 #include "../worldobj_data.hxx"
 #include "../libxmlfwd.hxx"
 
@@ -33,10 +32,10 @@ class SwitchDoorData : public WorldObjData
 {
 public:
   /// The upper/middle pos of the door 
-  CL_Vector door_pos;
+  Vector door_pos;
   
   /// The bottom/middle pos of the switch
-  CL_Vector switch_pos;
+  Vector switch_pos;
 
   // The height of the door in graphic tiles
   int door_height;

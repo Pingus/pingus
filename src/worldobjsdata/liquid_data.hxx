@@ -1,4 +1,4 @@
-// $Id: liquid_data.hxx,v 1.2 2002/09/27 11:26:49 torangan Exp $
+// $Id: liquid_data.hxx,v 1.3 2002/09/28 11:52:27 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJSDATA_LIQUID_DATA_HXX
 #define HEADER_PINGUS_WORLDOBJSDATA_LIQUID_DATA_HXX
 
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "../vector.hxx"
 #include "../libxmlfwd.hxx"
 #include "../res_descriptor.hxx"
 #include "../worldobj_data.hxx"
@@ -31,7 +31,7 @@ class LiquidData : public WorldObjData
 {
 public:
   ResDescriptor desc;
-  CL_Vector pos;
+  Vector pos;
 
   /** Cause to interpret the width in pixels instead of tiles */
   bool old_width_handling;

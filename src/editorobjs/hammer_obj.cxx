@@ -1,4 +1,4 @@
-//  $Id: hammer_obj.cxx,v 1.8 2002/09/27 18:36:40 torangan Exp $
+//  $Id: hammer_obj.cxx,v 1.9 2002/09/28 11:52:24 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ HammerObj::duplicate ()
 }
 
 EditorObjLst
-HammerObj::create (const CL_Vector& pos)
+HammerObj::create (const Vector& pos)
 {
   WorldObjsData::HammerData hammer_data;
   hammer_data.pos = pos;

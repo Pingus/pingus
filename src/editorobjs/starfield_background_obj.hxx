@@ -1,4 +1,4 @@
-//  $Id: starfield_background_obj.hxx,v 1.3 2002/09/27 18:36:40 torangan Exp $
+//  $Id: starfield_background_obj.hxx,v 1.4 2002/09/28 11:52:25 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_EDITOROBJS_STARFIELD_BACKGROUND_OBJ_HXX
 #define HEADER_PINGUS_EDITOROBJS_STARFIELD_BACKGROUND_OBJ_HXX
 
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "../vector.hxx"
 #include "../string_converter.hxx"
 #include "../editor/sprite_editorobj.hxx"
 
@@ -34,7 +34,7 @@ class StarfieldBackgroundObj : public SpriteEditorObj
 {
 private:
   WorldObjsData::StarfieldBackgroundData* const data;
-  CL_Vector pos;
+  Vector pos;
   
 public:
   StarfieldBackgroundObj (const WorldObjsData::StarfieldBackgroundData& data_);

@@ -1,4 +1,4 @@
-//  $Id: switch_door_obj.cxx,v 1.5 2002/09/27 18:36:40 torangan Exp $
+//  $Id: switch_door_obj.cxx,v 1.6 2002/09/28 11:52:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdio.h>
-#include <fstream>
+#include <iostream>
 #include "switch_door_obj.hxx"
 #include "../editor/editor_view.hxx"
 #include "../pingus_resource.hxx"
@@ -67,7 +67,7 @@ SwitchDoorObj::get_height ()
 /** Create this object (and child objects) with resonable defaults
     for the editor */
 EditorObjLst
-SwitchDoorObj::create (const CL_Vector& pos)
+SwitchDoorObj::create (const Vector& pos)
 {
   WorldObjsData::SwitchDoorData newdata;
 
@@ -131,14 +131,14 @@ SwitchDoorObj::write_xml (std::ostream& xml)
   data->write_xml(xml);
 }
 
-CL_Vector
+Vector
 SwitchDoorObj::get_upper_left_corner ()
 {
   return data->door_pos;
 }
 
 void 
-SwitchDoorObj::set_position_offset (const CL_Vector& offset)
+SwitchDoorObj::set_position_offset (const Vector& offset)
 {
   data->door_pos += offset;
 }

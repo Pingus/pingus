@@ -1,4 +1,4 @@
-//  $Id: teleporter_data.hxx,v 1.2 2002/09/27 11:26:49 torangan Exp $
+//  $Id: teleporter_data.hxx,v 1.3 2002/09/28 11:52:27 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJSDATA_TELEPORTER_DATA_HXX
 #define HEADER_PINGUS_WORLDOBJSDATA_TELEPORTER_DATA_HXX
 
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "../vector.hxx"
 #include "../sprite.hxx"
 #include "../worldobj_data.hxx"
 #include "../libxmlfwd.hxx"
@@ -30,8 +30,8 @@ namespace WorldObjsData {
 class TeleporterData : public WorldObjData
 {
 public:
-  CL_Vector pos;
-  CL_Vector target_pos;
+  Vector pos;
+  Vector target_pos;
   
   Sprite sprite;
   Sprite target_sprite;

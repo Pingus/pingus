@@ -1,4 +1,4 @@
-//  $Id: start_pos.cxx,v 1.6 2002/09/10 14:33:07 grumbel Exp $
+//  $Id: start_pos.cxx,v 1.7 2002/09/28 11:52:24 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,11 +17,11 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <fstream>
+#include <iostream>
 #include "../xml_helper.hxx"
 #include "start_pos.hxx"
 
-StartPos::StartPos(int arg_x_pos, int arg_y_pos)
+StartPos::StartPos (int arg_x_pos, int arg_y_pos)
   : SpriteEditorObj("editor/start_pos", "core")
 {
   pos.x = arg_x_pos;
@@ -32,7 +32,7 @@ StartPos::StartPos(int arg_x_pos, int arg_y_pos)
 }
 
 void
-StartPos::write_xml(std::ostream& xml)
+StartPos::write_xml (std::ostream& xml)
 {
   xml << "  <start-position>\n";
   XMLhelper::write_vector_xml(xml, pos);
@@ -40,7 +40,7 @@ StartPos::write_xml(std::ostream& xml)
 }
 
 EditorObj*
-StartPos::duplicate()
+StartPos::duplicate ()
 {
   std::cout << "StartPos: The start position can't be duplicated" << std::endl;
   return 0;

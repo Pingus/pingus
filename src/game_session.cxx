@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.10 2002/09/17 21:45:56 grumbel Exp $
+//  $Id: game_session.cxx,v 1.11 2002/09/28 11:52:21 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "client.hxx"
 #include "true_server.hxx"
 #include "game_session.hxx"
@@ -30,11 +31,11 @@ PingusGameSession::PingusGameSession (std::string arg_filename)
   Timer timer;
   
   timer.start();
-  plf    = PLF::create (filename);
+  plf    = PLF::create(filename);
   std::cout << "Timer: Level loading took: " << timer.stop() << std::endl;
 
   timer.start();
-  server = new TrueServer (plf);
+  server = new TrueServer(plf);
   std::cout << "Timer: TrueServer creation took: " << timer.stop() << std::endl;
 
   timer.start();

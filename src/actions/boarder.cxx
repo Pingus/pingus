@@ -1,4 +1,4 @@
-//  $Id: boarder.cxx,v 1.9 2002/09/14 19:06:33 torangan Exp $
+//  $Id: boarder.cxx,v 1.10 2002/09/28 11:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "../vector.hxx"
 #include "../graphic_context.hxx"
 #include "../pingu.hxx"
 #include "../pingus_resource.hxx"
@@ -71,7 +71,7 @@ Boarder::update(float delta)
 	      pingu->set_x(old_pos); // + (pingu->direction * 10);
 	      ////pingu->pos.y = 10;
 
-	      pingu->apply_force (CL_Vector(speed * pingu->direction * 0.5,
+	      pingu->apply_force (Vector(speed * pingu->direction * 0.5,
 					    -speed * abs(pingu->direction) * 0.5));
 	      pingu->set_action(Actions::Walker);
 	      return;
@@ -80,7 +80,7 @@ Boarder::update(float delta)
     }
   else
     {
-      pingu->apply_force (CL_Vector(speed * pingu->direction, 0));
+      pingu->apply_force (Vector(speed * pingu->direction, 0));
       pingu->set_action(Actions::Walker);
     }
 }

@@ -1,4 +1,4 @@
-//  $Id: guillotine_data.hxx,v 1.3 2002/09/27 11:26:49 torangan Exp $
+//  $Id: guillotine_data.hxx,v 1.4 2002/09/28 11:52:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJSDATA_GUILLOTINE_DATA_HXX
 #define HEADER_PINGUS_WORLDOBJSDATA_GUILLOTINE_DATA_HXX
 
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "../vector.hxx"
 #include <ClanLib/Display/Display/surface.h>
 #include "../direction.hxx"
 #include "../game_counter.hxx"
@@ -33,7 +33,7 @@ class GuillotineData : public WorldObjData {
 public:
   CL_Surface  surface;
   CL_Surface  idle_surf;
-  CL_Vector   pos;
+  Vector   pos;
   Direction   direction;
   GameCounter counter;
   GameCounter idle_counter;

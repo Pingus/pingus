@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.cxx,v 1.9 2002/09/18 12:07:13 grumbel Exp $
+//  $Id: pingu_holder.cxx,v 1.10 2002/09/28 11:52:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ PinguHolder::add (Pingu* pingu)
 }
 
 Pingu*
-PinguHolder::create_pingu (const CL_Vector& pos, int owner_id)
+PinguHolder::create_pingu (const Vector& pos, int owner_id)
 {
   Pingu* pingu = new Pingu (pos, owner_id);
   // This list will get evaluated and deleted and destruction

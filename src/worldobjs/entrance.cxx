@@ -1,4 +1,4 @@
-//  $Id: entrance.cxx,v 1.1 2002/09/27 11:26:49 torangan Exp $
+//  $Id: entrance.cxx,v 1.2 2002/09/28 11:52:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "../graphic_context.hxx"
 #include "../world.hxx"
 #include "../pingu_holder.hxx"
@@ -124,7 +125,7 @@ Entrance::draw (GraphicContext& gc)
     }
 
   // FIXME: Why do we still have these hardcoded offsets?!
-  gc.draw(surface, CL_Vector(data->pos.x - 32, data->pos.y - 16));
+  gc.draw(surface, Vector(data->pos.x - 32, data->pos.y - 16));
 }
 
 } // namespace WorldObjs

@@ -1,4 +1,4 @@
-//  $Id: ice_block.hxx,v 1.13 2002/09/27 18:36:41 torangan Exp $
+//  $Id: ice_block.hxx,v 1.14 2002/09/28 11:52:26 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_ICE_BLOCK_HXX
 #define HEADER_PINGUS_WORLDOBJS_ICE_BLOCK_HXX
 
+#include <ClanLib/Display/Display/surface.h>
 #include "../worldobj.hxx"
 
 namespace WorldObjsData {

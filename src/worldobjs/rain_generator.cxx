@@ -1,4 +1,4 @@
-//  $Id: rain_generator.cxx,v 1.3 2002/09/16 16:47:41 grumbel Exp $
+//  $Id: rain_generator.cxx,v 1.4 2002/09/28 11:52:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include <ClanLib/Display/Display/display.h>
-#include "../world.hxx"
 #include "../particles/particle_holder.hxx"
 #include "../particles/rain_particle.hxx"
 #include "../sound.hxx"
@@ -39,7 +39,7 @@ RainGenerator::~RainGenerator ()
 }
 
 void 
-RainGenerator::draw(GraphicContext& gc)
+RainGenerator::draw (GraphicContext& gc)
 {
   if (do_thunder)
     {

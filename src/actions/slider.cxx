@@ -1,4 +1,4 @@
-//  $Id: slider.cxx,v 1.10 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: slider.cxx,v 1.11 2002/09/28 11:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,12 +56,12 @@ Slider::update (float delta)
 	{
 	  speed = (speed > 5) ? 5 : speed;
 
-	  //FIXME CL_Vector
-	  CL_Vector temp(pingu->get_velocity());
+	  //FIXME Vector
+	  Vector temp(pingu->get_velocity());
 	  if (pingu->direction.is_right()) {
-	    pingu->set_velocity(temp + CL_Vector(speed, 0.0));
+	    pingu->set_velocity(temp + Vector(speed, 0.0));
 	  } else {
-	    pingu->set_velocity(temp + CL_Vector(-speed, 0.0));
+	    pingu->set_velocity(temp + Vector(-speed, 0.0));
 	  }
 
 	  pingu->set_action(Actions::Walker);
@@ -76,7 +76,7 @@ Slider::update (float delta)
 void
 Slider::draw (GraphicContext& gc)
 {
-  gc.draw (sprite, pingu->get_pos() + CL_Vector(0, -2));
+  gc.draw (sprite, pingu->get_pos() + Vector(0, -2));
 }
 
 } // namespace Actions

@@ -1,4 +1,4 @@
-//  $Id: exit_menu.cxx,v 1.9 2002/09/19 13:30:08 torangan Exp $
+//  $Id: exit_menu.cxx,v 1.10 2002/09/28 11:52:21 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include <ClanLib/Display/Display/display.h>
 #include "pingus_menu_manager.hxx"
 #include "pingus_resource.hxx"

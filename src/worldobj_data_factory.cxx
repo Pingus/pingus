@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.25 2002/09/27 16:01:55 torangan Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.26 2002/09/28 11:52:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "pingus_error.hxx"
 #include "worldobj_data_factory.hxx"
 #include "xml_helper.hxx"

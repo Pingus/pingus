@@ -1,4 +1,4 @@
-//  $Id: playfield_view.hxx,v 1.6 2002/09/27 11:26:44 torangan Exp $
+//  $Id: playfield_view.hxx,v 1.7 2002/09/28 11:52:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 #include "gui_obj.hxx"
 
 class CL_Rect;
-class CL_Vector;
+class Vector;
 class World;
 class Pingu;
 
@@ -47,10 +47,10 @@ public:
   void draw ();
   
   // Scroll the playfield
-  void scroll (CL_Vector delta);
+  void scroll (Vector delta);
   
   // Return the pingu at the given *screen* coordinates
-  Pingu* get_pingu (const CL_Vector& pos);
+  Pingu* get_pingu (const Vector& pos);
   
 private:
   PlayfieldView (const PlayfieldView&);

@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.110 2002/09/27 16:01:55 torangan Exp $
+#  $Id: Makefile.am,v 1.111 2002/09/28 11:52:21 torangan Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -293,6 +293,8 @@ timer.cxx \
 timer.hxx \
 true_server.cxx \
 true_server.hxx \
+vector.cxx \
+vector.hxx \
 view.cxx \
 view.hxx \
 wav_provider.cxx \

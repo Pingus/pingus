@@ -1,4 +1,4 @@
-//  $Id: sprite_editorobj.hxx,v 1.8 2002/09/27 11:26:45 torangan Exp $
+//  $Id: sprite_editorobj.hxx,v 1.9 2002/09/28 11:52:24 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include "../sprite.hxx"
 #include "rect_editorobj.hxx"
 
-class CL_Vector;
+class Vector;
 
 class SpriteEditorObj : public RectEditorObj
 {
@@ -34,20 +34,20 @@ protected:
       
   FIXME: A bit ugly, but requires less changes than a full blown
   FIXME: get/set handling, it also looks nicer  */
-  CL_Vector* pos_ref;
+  Vector* pos_ref;
 
 public:
   /** Empty constructor, you *must* initialise pos_ref manually */
   SpriteEditorObj ();
 
-  SpriteEditorObj (CL_Vector* arg_pos);
+  SpriteEditorObj (Vector* arg_pos);
 
   SpriteEditorObj (const std::string& sur_name,
 		   const std::string& datafile,
-		   CL_Vector* arg_pos = 0);
+		   Vector* arg_pos = 0);
 
   SpriteEditorObj (const ResDescriptor&,
-		   CL_Vector* arg_pos = 0);
+		   Vector* arg_pos = 0);
 
   /// Return the object width
   virtual int get_width() { return sprite.get_width (); }
@@ -56,15 +56,15 @@ public:
 
   virtual float get_z_pos();
 
-  virtual CL_Vector get_upper_left_corner ();
+  virtual Vector get_upper_left_corner ();
 
   virtual void draw (EditorNS::EditorView *);
 
-  virtual void set_position_offset (const CL_Vector& offset);
+  virtual void set_position_offset (const Vector& offset);
 
   /** This will be overritten to provide pixel exact click
       detection */
-  virtual bool   is_over (const CL_Vector&);
+  virtual bool   is_over (const Vector&);
   
 protected:
   SpriteEditorObj (const SpriteEditorObj& old);

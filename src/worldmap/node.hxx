@@ -1,4 +1,4 @@
-//  $Id: node.hxx,v 1.8 2002/09/27 11:26:49 torangan Exp $
+//  $Id: node.hxx,v 1.9 2002/09/28 11:52:26 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include "../sprite.hxx"
 #include "node_data.hxx"
 
-class CL_Vector;
+class Vector;
 class PLF;
 
 namespace WorldMapNS {
@@ -40,11 +40,11 @@ public:
   
   virtual void on_click () =0;
   virtual void mark (bool /*value*/) {}
-  virtual void draw (CL_Vector /*offset*/) {}
+  virtual void draw (Vector /*offset*/) {}
   virtual std::string get_string () =0;
 
   virtual int  get_id () =0;
-  virtual CL_Vector get_pos () =0;
+  virtual Vector get_pos () =0;
   virtual std::list<int>& get_links () =0;
       
 private:
@@ -64,11 +64,11 @@ public:
 public:  
   TubeNode (const TubeNodeData&);
   void on_click ();
-  void draw (CL_Vector offset);
+  void draw (Vector offset);
   std::string get_string ();
 
   int  get_id ()               { return NodeData::get_id();    }
-  CL_Vector get_pos ()         { return NodeData::get_pos();   }
+  Vector get_pos ()         { return NodeData::get_pos();   }
   std::list<int>& get_links () { return NodeData::get_links(); }
 
 private:
@@ -102,11 +102,11 @@ public:
   virtual ~LevelNode ();
   void on_click ();
   void mark (bool value);
-  void draw (CL_Vector offset);
+  void draw (Vector offset);
   std::string get_string ();
 
   int  get_id ()               { return NodeData::get_id(); }
-  CL_Vector get_pos ()         { return NodeData::get_pos(); }
+  Vector get_pos ()         { return NodeData::get_pos(); }
   std::list<int>& get_links () { return NodeData::get_links(); }
       
 private:

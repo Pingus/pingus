@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_obj.hxx,v 1.4 2002/09/27 18:36:40 torangan Exp $
+//  $Id: conveyor_belt_obj.hxx,v 1.5 2002/09/28 11:52:24 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_EDITOROBJS_CONVEYOR_BELT_OBJ_HXX
 #define HEADER_PINGUS_EDITOROBJS_CONVEYOR_BELT_OBJ_HXX
 
+#include <ClanLib/Display/Display/surface.h>
 #include "../editor/rect_editorobj.hxx"
 
 class WorldObjData;
@@ -52,14 +53,14 @@ public:
 
   float get_z_pos ();
 
-  void set_position_offset (const CL_Vector &);
+  void set_position_offset (const Vector &);
   
   static EditorObjLst create (WorldObjData* obj);
 
   /** Create the object with reasonable defaults */
-  static EditorObjLst create (const CL_Vector& pos);
+  static EditorObjLst create (const Vector& pos);
 
-  CL_Vector get_upper_left_corner ();
+  Vector get_upper_left_corner ();
 
   void write_xml (std::ostream& xml);
   std::string status_line ();

@@ -1,4 +1,4 @@
-//  $Id: ice_block_data.hxx,v 1.3 2002/09/27 11:26:49 torangan Exp $
+//  $Id: ice_block_data.hxx,v 1.4 2002/09/28 11:52:27 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJSDATA_ICE_BLOCK_DATA_HXX
 #define HEADER_PINGUS_WORLDOBJSDATA_ICE_BLOCK_DATA_HXX
 
-#include <ClanLib/Core/Math/cl_vector.h>
-#include <ClanLib/Display/Display/surface.h>
+#include "../vector.hxx"
 #include "../libxmlfwd.hxx"
 #include "../worldobj_data.hxx"
 
@@ -31,7 +30,7 @@ class IceBlockData : public WorldObjData
 {
 public:
   /// The upper/left position  of the iceblock's
-  CL_Vector pos;
+  Vector pos;
 
   /** The number of iceblocks, only complete blocks are supported */  
   int width;

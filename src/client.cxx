@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.23 2002/09/19 13:30:08 torangan Exp $
+//  $Id: client.cxx,v 1.24 2002/09/28 11:52:21 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include <config.h>
 #include <ClanLib/Core/System/system.h>
 #include <ClanLib/Display/Display/display.h>
@@ -442,7 +443,7 @@ Client::draw (GraphicContext& gc)
 {
   GUIScreen::draw (gc);
   if (!server->get_plf()->get_playable())
-    gc.draw(unplayable, CL_Vector(400, 50));
+    gc.draw(unplayable, Vector(400, 50));
 }
 
 void

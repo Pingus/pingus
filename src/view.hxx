@@ -1,4 +1,4 @@
-//  $Id: view.hxx,v 1.9 2002/09/27 11:26:44 torangan Exp $
+//  $Id: view.hxx,v 1.10 2002/09/28 11:52:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -86,7 +86,7 @@ public:
   void shift_y_offset(int);
 
   /** Returns the current center of the screen in World coordinates. */
-  CL_Vector get_center ();
+  Vector get_center ();
 
   int get_width () { return x2_pos - x1_pos; }
   int get_height () { return y2_pos - y1_pos; }

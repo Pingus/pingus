@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_obj.cxx,v 1.4 2002/09/27 18:36:40 torangan Exp $
+//  $Id: conveyor_belt_obj.cxx,v 1.5 2002/09/28 11:52:24 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,7 +75,7 @@ ConveyorBeltObj::draw_scroll_map (int x_pos, int y_pos, int arg_width, int arg_h
 }
 
 EditorObjLst
-ConveyorBeltObj::create (const CL_Vector& pos)
+ConveyorBeltObj::create (const Vector& pos)
 {
   WorldObjsData::ConveyorBeltData newdata;
   newdata.pos = pos;
@@ -110,12 +110,12 @@ ConveyorBeltObj::get_z_pos () {
 }
 
 void 
-ConveyorBeltObj::set_position_offset (const CL_Vector& offset)
+ConveyorBeltObj::set_position_offset (const Vector& offset)
 {
   data->pos += offset;
 }
 
-CL_Vector
+Vector
 ConveyorBeltObj::get_upper_left_corner () {
   return data->pos;
 }

@@ -1,4 +1,4 @@
-//  $Id: explosive_particle.cxx,v 1.2 2002/09/04 14:55:12 torangan Exp $
+//  $Id: explosive_particle.cxx,v 1.3 2002/09/28 11:52:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,9 +40,9 @@ ExplosiveParticle::~ExplosiveParticle ()
 void 
 ExplosiveParticle::update(float delta)
 {
-  CL_Vector new_pos = pos + velocity * delta;
+  Vector new_pos = pos + velocity * delta;
   
-  CL_Vector incr = pos - new_pos;
+  Vector incr = pos - new_pos;
   incr.normalize ();
 
   // FIXME: This thing needs to be more abstract, we just need it far

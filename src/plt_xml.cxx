@@ -1,4 +1,4 @@
-//  $Id: plt_xml.cxx,v 1.7 2002/09/10 21:03:32 torangan Exp $
+//  $Id: plt_xml.cxx,v 1.8 2002/09/28 11:52:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "globals.hxx"
 #include "pingus_error.hxx"
 #include "xml_helper.hxx"

@@ -1,4 +1,4 @@
-//  $Id: liquid_obj.cxx,v 1.2 2002/09/27 18:36:40 torangan Exp $
+//  $Id: liquid_obj.cxx,v 1.3 2002/09/28 11:52:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../worldobjsdata/liquid_data.hxx"
 #include "../editor/editor_view.hxx"
 #include "liquid_obj.hxx"
 
@@ -51,7 +50,7 @@ void
 LiquidObj::draw (EditorNS::EditorView* view)
 {
   for (int i = 0; i < data->width; ++i)
-    view->draw(sprite, data->pos + CL_Vector(i * sprite.get_width(), 0));
+    view->draw(sprite, data->pos + Vector(i * sprite.get_width(), 0));
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: multiplayer_client.cxx,v 1.4 2002/09/14 19:06:33 torangan Exp $
+//  $Id: multiplayer_client.cxx,v 1.5 2002/09/28 11:52:21 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ MultiplayerClient::MultiplayerClient (Server * s,
   gui_objs[1] = child2;
   gui_objs[2] = child3;
   gui_objs[3] = child4;
-  //  gui_objs[4] = new SmallMapImage (s, CL_Vector (CL_Display::get_width ()/2 - 100,
+  //  gui_objs[4] = new SmallMapImage (s, Vector (CL_Display::get_width ()/2 - 100,
   // 				   CL_Display::get_height ()/2 - 75), 200, 150);
 }
 

@@ -1,4 +1,4 @@
-//  $Id: force_vector.cxx,v 1.6 2002/09/27 11:26:43 torangan Exp $
+//  $Id: force_vector.cxx,v 1.7 2002/09/28 11:52:21 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 #include <math.h>
 #include "force_vector.hxx"
 
-CL_Vector grav(0.0,1.0);
+Vector grav(0.0,1.0);
 
 std::vector<GravityForce>   ForcesHolder::grav_array;
 std::vector<ExplosionForce> ForcesHolder::explo_array;
@@ -51,10 +51,10 @@ ExplosionForce& ExplosionForce::operator= (const ExplosionForce& old)
 }
 
 // Apply the explosion force
-CL_Vector
-ExplosionForce::apply_forces(CL_Vector p,CL_Vector v)
+Vector
+ExplosionForce::apply_forces(Vector p,Vector v)
 {
-  CL_Vector tmpv = v;
+  Vector tmpv = v;
   float imod,dist;
 
   // Is p within the radius of the explosion?
@@ -109,10 +109,10 @@ ForcesHolder::clear_all_forces()
   clear_explo_list();
 }
 
-CL_Vector
-ForcesHolder::apply_forces(CL_Vector p,CL_Vector v)
+Vector
+ForcesHolder::apply_forces(Vector p,Vector v)
 {
-  CL_Vector tv = v;
+  Vector tv = v;
 
   // Go through all of the forces and apply them all
   for (GForceIter i = grav_array.begin(); i != grav_array.end(); ++i)

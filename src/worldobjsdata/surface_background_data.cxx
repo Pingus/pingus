@@ -1,4 +1,4 @@
-//  $Id: surface_background_data.cxx,v 1.3 2002/09/27 18:36:41 torangan Exp $
+//  $Id: surface_background_data.cxx,v 1.4 2002/09/28 11:52:27 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,7 @@ namespace WorldObjsData {
 
 SurfaceBackgroundData::SurfaceBackgroundData () : para_x(0.5),
 						  para_y(0.5),
-						  pos(CL_Vector(0, 0, -150)),
+						  pos(Vector(0, 0, -150)),
 						  scroll_x(0.0),
                                                   scroll_y(0.0),
 						  color(Color(0,0,0,0)),

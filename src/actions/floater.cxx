@@ -1,4 +1,4 @@
-//  $Id: floater.cxx,v 1.16 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: floater.cxx,v 1.17 2002/09/28 11:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ Floater::update(float delta)
 {
   sprite.update (delta);
 
-  pingu->set_velocity(CL_Vector(0.0, 0.0));
+  pingu->set_velocity(Vector(0.0, 0.0));
   if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING) {
     ++step;
     if (step > 0) {

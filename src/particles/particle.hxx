@@ -1,5 +1,5 @@
 
-//  $Id: particle.hxx,v 1.5 2002/09/27 11:26:49 torangan Exp $
+//  $Id: particle.hxx,v 1.6 2002/09/28 11:52:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #ifndef HEADER_PINGUS_PARTICLES_PARTICLE_HXX
 #define HEADER_PINGUS_PARTICLES_PARTICLE_HXX
 
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "../vector.hxx"
 #include <ClanLib/Display/Display/surface.h>
 
 class Particle
@@ -30,12 +30,12 @@ protected:
   CL_Surface surface;
   
   /// The current position of the particle
-  CL_Vector pos;
+  Vector pos;
   
   /// The velocity of the particle
-  CL_Vector velocity;
+  Vector velocity;
 
-  CL_Vector force;
+  Vector force;
   int livetime;
   
 public:

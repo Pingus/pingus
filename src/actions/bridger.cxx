@@ -1,4 +1,4 @@
-//  $Id: bridger.cxx,v 1.17 2002/09/24 17:03:28 grumbel Exp $
+//  $Id: bridger.cxx,v 1.18 2002/09/28 11:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,7 +91,7 @@ Bridger::draw (GraphicContext& gc)
       else
 	build_sprite.set_direction (Sprite::RIGHT);
       
-      gc.draw(build_sprite, CL_Vector(pingu->get_x () - (x_offset * pingu->direction),
+      gc.draw(build_sprite, Vector(pingu->get_x () - (x_offset * pingu->direction),
 				      pingu->get_y () + y_offset));
       break;
       
@@ -100,7 +100,7 @@ Bridger::draw (GraphicContext& gc)
 	walk_sprite.set_direction (Sprite::LEFT);
       else
 	walk_sprite.set_direction (Sprite::RIGHT);
-      gc.draw (walk_sprite, CL_Vector(static_cast<int>(pingu->get_x () - (x_offset * pingu->direction)),
+      gc.draw (walk_sprite, Vector(static_cast<int>(pingu->get_x () - (x_offset * pingu->direction)),
 				      static_cast<int>(pingu->get_y () + y_offset)));
       break;
     }

@@ -1,4 +1,4 @@
-//  $Id: teleporter_target_obj.cxx,v 1.4 2002/09/16 23:49:56 grumbel Exp $
+//  $Id: teleporter_target_obj.cxx,v 1.5 2002/09/28 11:52:25 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdio.h>
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "../vector.hxx"
 #include "teleporter_obj.hxx"
 #include "teleporter_target_obj.hxx"
 
@@ -42,7 +42,7 @@ TeleporterTargetObj::duplicate ()
 std::string
 TeleporterTargetObj::status_line()
 {
-  const CL_Vector& pos_ref = teleporter->get_target_pos_ref();
+  const Vector& pos_ref = teleporter->get_target_pos_ref();
   char str[128];
   snprintf(str, 128, "TeleporterTarget - %f %f %f", pos_ref.x, pos_ref.y, pos_ref.z);
   return str;

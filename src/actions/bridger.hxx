@@ -1,4 +1,4 @@
-//  $Id: bridger.hxx,v 1.13 2002/09/27 11:26:44 torangan Exp $
+//  $Id: bridger.hxx,v 1.14 2002/09/28 11:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_ACTIONS_BRIDGER_HXX
 #define HEADER_PINGUS_ACTIONS_BRIDGER_HXX
 
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "../vector.hxx"
 #include "../game_counter.hxx"
 #include "../pingu_action.hxx"
 #include "../sprite.hxx"

@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.cxx,v 1.17 2002/09/27 18:36:40 torangan Exp $
+//  $Id: conveyor_belt.cxx,v 1.18 2002/09/28 11:52:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <fstream>
 #include "../col_map.hxx"
 #include "../graphic_context.hxx"
 #include "../pingu.hxx"
@@ -82,7 +81,7 @@ ConveyorBelt::update (float delta)
 	  && (*pingu)->get_y() > data->pos.y - 2
 	  && (*pingu)->get_y() < data->pos.y + 10)
 	{
-	  CL_Vector pos = (*pingu)->get_pos();
+	  Vector pos = (*pingu)->get_pos();
 	  data->pos.x -= data->speed * delta;
 	  (*pingu)->set_pos(pos);
 	}

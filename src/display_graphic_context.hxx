@@ -1,4 +1,4 @@
-//  $Id: display_graphic_context.hxx,v 1.3 2002/09/27 11:26:43 torangan Exp $
+//  $Id: display_graphic_context.hxx,v 1.4 2002/09/28 11:52:21 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_DISPLAY_GRAPHIC_CONTEXT_HXX
 #define HEADER_DISPLAY_GRAPHIC_CONTEXT_HXX
 
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "vector.hxx"
 #include <ClanLib/Core/Math/rect.h>
 
 #include "graphic_context.hxx"
@@ -34,17 +34,17 @@ private:
   int x1, y1, x2, y2;
 
   /** scroll offset */
-  CL_Vector offset;
+  Vector offset;
 
   /** center of the display */
-  CL_Vector center;
+  Vector center;
 
 public:
   DisplayGraphicContext (int x1, int y1, int x2, int y2, 
 			 int /*x_offset*/, int /*y_offset*/);
   virtual ~DisplayGraphicContext ();
   
-  CL_Vector get_offset ();
+  Vector get_offset ();
 
   float get_x_offset ();
   float get_y_offset ();
@@ -64,17 +64,17 @@ public:
   void zoom_to (const CL_Rect & rect);
 
   /// Scroll the view by the given delta
-  void move (const CL_Vector & delta);
+  void move (const Vector & delta);
 
   /** Converts a given screen coordinate, as returned by
       CL_Mouse::get_x(), into the world coordinate system. */
-  CL_Vector screen_to_world (CL_Vector pos);
-  CL_Vector world_to_screen (CL_Vector pos);
+  Vector screen_to_world (Vector pos);
+  Vector world_to_screen (Vector pos);
 
-  void draw (Sprite& sprite, const CL_Vector& pos);
-  void draw (Sprite& sprite, const CL_Vector& pos, int frame);
-  void draw (CL_Surface& sur, const CL_Vector& pos);
-  void draw (CL_Surface& sur, const CL_Vector& pos, int frame);
+  void draw (Sprite& sprite, const Vector& pos);
+  void draw (Sprite& sprite, const Vector& pos, int frame);
+  void draw (CL_Surface& sur, const Vector& pos);
+  void draw (CL_Surface& sur, const Vector& pos, int frame);
 
   void draw (CL_Surface& sur, int x_pos, int y_pos);
   void draw (CL_Surface& sur, int x_pos, int y_pos, int frame);
@@ -84,7 +84,7 @@ public:
 	     float size_x, float size_y, int frame);
 
   /** Draw a line */
-  void draw_line (const CL_Vector& pos1, const CL_Vector& pos2,
+  void draw_line (const Vector& pos1, const Vector& pos2,
 		  float r, float g, float b, float a = 1.0f);
   /** Draw a line */
   void draw_line (int x1, int y1, int x2, int y2, 

@@ -1,4 +1,4 @@
-//  $Id: selection.hxx,v 1.11 2002/09/27 11:26:45 torangan Exp $
+//  $Id: selection.hxx,v 1.12 2002/09/28 11:52:23 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 
 #include "object_manager.hxx"
 
-class CL_Vector;
+class Vector;
 
 namespace EditorNS {
 
@@ -43,7 +43,7 @@ public:
   void clear() { obj_list.clear(); }
     
   void move(float x, float y);
-  void move(const CL_Vector& pos);
+  void move(const Vector& pos);
   void drag();
   void drop();
     

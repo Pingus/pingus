@@ -1,4 +1,4 @@
-//  $Id: smallmap_image.hxx,v 1.7 2002/09/27 11:26:44 torangan Exp $
+//  $Id: smallmap_image.hxx,v 1.8 2002/09/28 11:52:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 
 #include "pingus.hxx"
 #include <ClanLib/Display/Display/surface.h>
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "vector.hxx"
 
 class Server;
 
@@ -32,9 +32,9 @@ class SmallMapImage
 {
 private:
   CL_Surface sur;
-  CL_Vector pos;
+  Vector pos;
 public:
-  SmallMapImage (Server * s, CL_Vector pos, int width, int height);
+  SmallMapImage (Server * s, Vector pos, int width, int height);
   virtual ~SmallMapImage ();
 
   void draw ();

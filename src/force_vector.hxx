@@ -1,4 +1,4 @@
-//  $Id: force_vector.hxx,v 1.5 2002/09/27 11:26:43 torangan Exp $
+//  $Id: force_vector.hxx,v 1.6 2002/09/28 11:52:21 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,27 +24,27 @@
 
 #include "pingus.hxx"
 #include <vector>
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "vector.hxx"
 
 /// Gravity
-extern CL_Vector grav;
+extern Vector grav;
 
 /** A Gravity Force is a force which points in one direction */
 class GravityForce {
 protected:
   /// The force vector
-  CL_Vector ifv; 
+  Vector ifv; 
   
 public:
   ///
-  GravityForce(CL_Vector fv) : ifv(fv)
+  GravityForce(Vector fv) : ifv(fv)
   {
   }
   
   /** Applies the force to a velocity vector, v, a position p and
       returns the new velicty vector. Just adds fv to v, p is ignored
       as gravity is universal. */
-  CL_Vector apply_forces(CL_Vector p,CL_Vector v)
+  Vector apply_forces(Vector p,Vector v)
   {
     UNUSED_ARG(p);
     return v + ifv;
@@ -68,10 +68,10 @@ protected:
   float isize;
 
   /// The position
-  CL_Vector ip;
+  Vector ip;
 
 public:
-  ExplosionForce(float inten, float size,CL_Vector p) : iinten(inten), isize(size), ip(p) 
+  ExplosionForce(float inten, float size,Vector p) : iinten(inten), isize(size), ip(p) 
   {
   }
 
@@ -81,7 +81,7 @@ public:
 
   ExplosionForce& operator= (const ExplosionForce& old);
 
-  CL_Vector apply_forces(CL_Vector p,CL_Vector v);
+  Vector apply_forces(Vector p,Vector v);
 
 };
 
@@ -113,7 +113,7 @@ public:
   static void clear_all_forces();
 
   /// Apply forces
-  static CL_Vector apply_forces(CL_Vector p,CL_Vector v);
+  static Vector apply_forces(Vector p,Vector v);
   
 private:
   ForcesHolder (const ForcesHolder&);

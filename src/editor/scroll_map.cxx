@@ -1,4 +1,4 @@
-//  $Id: scroll_map.cxx,v 1.4 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: scroll_map.cxx,v 1.5 2002/09/28 11:52:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ ScrollMap::ScrollMap()
     view (new EditorView(x_pos, y_pos, x_pos + width, y_pos + height))
 {
   view->set_zoom (0.1f);
-  view->move (CL_Vector (-640, -480));
+  view->move (Vector (-640, -480));
 }
 
 ScrollMap::~ScrollMap()

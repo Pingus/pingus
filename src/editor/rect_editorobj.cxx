@@ -1,4 +1,4 @@
-// $Id: rect_editorobj.cxx,v 1.6 2002/09/27 11:26:45 torangan Exp $
+// $Id: rect_editorobj.cxx,v 1.7 2002/09/28 11:52:23 torangan Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ RectEditorObj::operator= (const RectEditorObj& old)
 void
 RectEditorObj::draw_mark (EditorNS::EditorView * view) 
 {
-  CL_Vector ul (get_upper_left_corner ());
+  Vector ul (get_upper_left_corner ());
 
   view->draw_rect(int(ul.x), 
 		  int(ul.y),
@@ -51,9 +51,9 @@ RectEditorObj::draw_mark (EditorNS::EditorView * view)
 }
 
 bool
-RectEditorObj::is_over(const CL_Vector& pos)
+RectEditorObj::is_over(const Vector& pos)
 {
-  CL_Vector ul (get_upper_left_corner ());
+  Vector ul (get_upper_left_corner ());
 
   return  (ul.x < pos.x
 	   && ul.x + get_width () > pos.x
@@ -64,7 +64,7 @@ RectEditorObj::is_over(const CL_Vector& pos)
 bool
 RectEditorObj::is_in_rect(const CL_Rect& rect)
 {
-  CL_Vector pos (get_upper_left_corner ());
+  Vector pos (get_upper_left_corner ());
   
   // FIXME: Simple, stupid and wrong,... but works good =;-)
   return (pos.x >= rect.x1 && pos.x < rect.x2

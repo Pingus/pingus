@@ -1,4 +1,4 @@
-//  $Id: node_data.hxx,v 1.9 2002/09/27 11:26:49 torangan Exp $
+//  $Id: node_data.hxx,v 1.10 2002/09/28 11:52:26 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include <iosfwd>
 #include <list>
 #include <string>
-#include <ClanLib/Core/Math/cl_vector.h>
+#include "../vector.hxx"
 
 #include "../libxmlfwd.hxx"
 
@@ -64,7 +64,7 @@ protected:
 
   /** The position of the node in the worldmap, pos.z is used for
       z-sorting */
-  CL_Vector pos;
+  Vector pos;
 
 public:
   NodeData () { }
@@ -75,7 +75,7 @@ public:
   virtual ~NodeData () { }
 
   int       get_id () { return id; } 
-  CL_Vector get_pos () { return pos; } 
+  Vector get_pos () { return pos; } 
   std::list<int>& get_links () { return links; } 
 
   void assign (const NodeData& data) 

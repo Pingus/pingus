@@ -1,4 +1,4 @@
-//  $Id: editorobj.hxx,v 1.16 2002/09/27 11:26:45 torangan Exp $
+//  $Id: editorobj.hxx,v 1.17 2002/09/28 11:52:23 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
 #include <vector>
 
 class CL_Rect;
-class CL_Vector;
+class Vector;
 class CL_Component;
 
 class EditorObj;
@@ -65,7 +65,7 @@ public:
   virtual void draw_mark (EditorNS::EditorView * view) =0;
 
   /** Return true when the object is under the given coordinates */
-  virtual bool is_over(const CL_Vector&) =0;
+  virtual bool is_over(const Vector&) =0;
 
   /** Return true if the object is inside the given rectangle */
   virtual bool is_in_rect(const CL_Rect& rect) =0;
@@ -75,7 +75,7 @@ public:
   virtual float get_z_pos() =0;
 
   /** Move the object to the given offset */
-  virtual void set_position_offset(const CL_Vector& offset) =0;
+  virtual void set_position_offset(const Vector& offset) =0;
 
   /** Generic operations that can make an object larger, what exactly
       happens is object dependend. Default is to do nothing */

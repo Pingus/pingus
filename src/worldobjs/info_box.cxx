@@ -1,4 +1,4 @@
-//  $Id: info_box.cxx,v 1.15 2002/09/27 18:36:41 torangan Exp $
+//  $Id: info_box.cxx,v 1.16 2002/09/28 11:52:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <fstream>
 #include <ClanLib/Display/Font/font.h>
 #include <ClanLib/Display/Display/display.h>
 #include "../graphic_context.hxx"
@@ -56,7 +55,7 @@ InfoBox::draw (GraphicContext& gc)
     {
       int width = Fonts::pingus_small->get_text_width(data->info_text.c_str());
       int border = 6;
-      gc.draw_line(data->pos, data->pos + CL_Vector(0, 0 - 100), 0.0f, 1.0f, 0.0f, 1.0f);
+      gc.draw_line(data->pos, data->pos + Vector(0, 0 - 100), 0.0f, 1.0f, 0.0f, 1.0f);
       gc.draw(data->sprite, data->pos);
       CL_Display::fill_rect(x_pos - width/2 - border,
                             y_pos - border,

@@ -1,4 +1,4 @@
-//  $Id: entrance_obj.cxx,v 1.1 2002/09/27 11:26:46 torangan Exp $
+//  $Id: entrance_obj.cxx,v 1.2 2002/09/28 11:52:24 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdio.h>
+#include <iostream>
 #include "../pingus_error.hxx"
 #include "../editor/entrance_window.hxx"
 #include "entrance_obj.hxx"

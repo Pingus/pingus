@@ -1,4 +1,4 @@
-//  $Id: teleporter.cxx,v 1.11 2002/09/27 18:36:41 torangan Exp $
+//  $Id: teleporter.cxx,v 1.12 2002/09/28 11:52:26 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <fstream>
+#include <iostream>
 #include "../graphic_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
