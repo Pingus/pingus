@@ -25,3 +25,32 @@ section Buttons
 	worlds          = ../images/buttons/worlds.tga         (type=surface, x=0, y=0, width=245, height=104);
 	worlds_p        = ../images/buttons/worlds_p.tga       (type=surface, x=0, y=0, width=245, height=104);
 }
+
+section NewButtons
+{
+	background = ../images/menu/background.jpg (type=surface, x=0, y=0, width=800, height=600);
+
+	ice_off = ../images/menu/ice_off.tga (type=surface, x=0, y=0, width=304, height=252);
+
+//	create_off = ../images/menu/create_off.pcx (type=surface, x=0, y=0, width=152, height=126, tcol=0);
+//	create_on = ../images/menu/create_on.pcx (type=surface, x=0, y=0, width=152, height=126, tcol=0);
+	create_on = ../images/menu/create_on.tga (type=surface, x=0, y=0, width=267, height=170);
+
+//	credits_off = ../images/menu/credits_off.pcx (type=surface, x=0, y=0, width=152, height=126, tcol=0);
+//	credits_on = ../images/menu/credits_on.pcx (type=surface, x=0, y=0, width=152, height=126, tcol=0);
+	credits_on = ../images/menu/credits_on.tga (type=surface, x=0, y=0, width=267, height=170);
+
+//	exit_off = ../images/menu/exit_off.pcx (type=surface, x=0, y=0, width=152, height=126, tcol=0);
+//	exit_on = ../images/menu/exit_on.pcx (type=surface, x=0, y=0, width=152, height=126, tcol=0);
+	exit_on = ../images/menu/exit_on.tga (type=surface, x=0, y=0, width=266, height=173);
+
+//	options_off = ../images/menu/options_off.pcx (type=surface, x=0, y=0, width=152, height=126, tcol=0);
+//	options_on = ../images/menu/options_on.pcx (type=surface, x=0, y=0, width=152, height=126, tcol=0);
+	options_on = ../images/menu/options_on.tga (type=surface, x=0, y=0, width=267, height=169);
+
+//	play_off = ../images/menu/play_off.pcx (type=surface, x=0, y=0, width=152, height=126, tcol=0);
+//	play_on = ../images/menu/play_on.pcx (type=surface, x=0, y=0, width=152, height=126, tcol=0);
+	play_on = ../images/menu/play_on.tga (type=surface, x=0, y=0, width=268, height=169);
+}
+
+// EOF
