@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.26 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: faller.cxx,v 1.27 2002/10/03 00:47:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,15 +69,12 @@ Faller::update ()
   pingu->set_velocity(ForcesHolder::apply_forces(pingu->get_pos(), pingu->get_velocity()));
     
   Vector newp = pingu->get_velocity();
-  Vector last_pos;
   
   // Update x and y by moving the penguin to it's target *slowly*
   // and checking if the penguin has hit the bottom at each loop
-  while(rel_getpixel(0, 0) == Groundtype::GP_NOTHING
+  while(rel_getpixel(0, -1) == Groundtype::GP_NOTHING
 	&& (fabs(newp.x) >= 1 || fabs(newp.y) >= 1))
     {
-      last_pos = pingu->get_pos();
-
       if (fabs(newp.x) >= 1)
 	{ 
 	  // Since the velocity might be a
@@ -110,7 +107,7 @@ Faller::update ()
     }
 
   // Now that the Pingu is moved, check if he hits the ground.
-  if (rel_getpixel(0, 0) == Groundtype::GP_NOTHING)
+  if (rel_getpixel(0, -1) == Groundtype::GP_NOTHING)
     { // if pingu is not on ground
       ++falling;
 	  
@@ -119,7 +116,7 @@ Faller::update ()
     }
   else // Ping is on ground/water/something
     {
-      if (rel_getpixel(0, 0) == Groundtype::GP_WATER)
+      if (rel_getpixel(0, -1) == Groundtype::GP_WATER)
 	{
 	  pingu->set_action(Actions::Drown);
 	  return;
@@ -139,10 +136,6 @@ Faller::update ()
 	}
       // Reset the velocity
       pingu->set_velocity(Vector(-(pingu->get_velocity().x/3), 0));
-      pingu->set_pos(last_pos);
-
-      // FIXME: UGLY!
-      //pingu->set_action (Walker);
     }
 }
 

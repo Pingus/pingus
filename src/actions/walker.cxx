@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.25 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: walker.cxx,v 1.26 2002/10/03 00:47:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -102,7 +102,8 @@ Walker::update ()
     {
       // simple, stupid, but working bridge code
       // FIXME: We don't check if we 'drift' into a solid ground block
-      pingu->set_pos(pingu->get_x() + pingu->direction, pingu->get_y() - 1); // pingus 'float' through bridges
+      pingu->set_pos(pingu->get_x() + pingu->direction,
+		     pingu->get_y() - 1); // pingus 'float' through bridges
     }
   else 
     { 
@@ -136,7 +137,8 @@ Walker::update ()
       if (found_next_step)
 	{
 	  // pos.y has a reversed co-system to rel_getpixel()?
-	  pingu->set_pos(pingu->get_x() + pingu->direction, pingu->get_y() - possible_y_step);
+	  pingu->set_pos(pingu->get_x() + pingu->direction, 
+			 pingu->get_y() - possible_y_step);
 	}
       else
 	{
