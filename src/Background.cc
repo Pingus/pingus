@@ -1,4 +1,4 @@
-//  $Id: Background.cc,v 1.8 2000/03/16 21:26:22 grumbel Exp $
+//  $Id: Background.cc,v 1.9 2000/04/08 17:01:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,28 +41,50 @@ Background::Background(background_data bg)
     {
       try
 	{
-	  /* Testing animatied backgrounds...
+	  /* Testing animatied backgrounds... */
 	  sur = CL_Surface::load(bg.desc.res_name.c_str(), PingusResource::get(bg.desc.filename));
 
-	  canvas = new CL_Canvas(sur->get_width(), sur->get_height());
-	  canvas->lock();
-	  sur->put_target(0,0,0, canvas);
-	  
-	  if (bg.dim > 1.0) 
-	    cerr << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
-	  
-	  canvas->fill_rect(0, 0, sur->get_width(), sur->get_height(),
-			    bg.red, bg.green, bg.blue, bg.dim);
-	  canvas->unlock();
-	  bg_surface = CL_Surface::create(canvas, false);
+	  if (sur->get_num_frames() > 1)
+	    {
+	      bg_surface = sur;
+	    }
+	  else
+	    {
+	      canvas = new CL_Canvas(sur->get_width(), sur->get_height(), sur->get_num_frames());
+	    
+	      if (bg.dim > 1.0) 
+		std::cerr << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
 
-	  delete canvas;
-	  */
+	      canvas->fill_rect(0, 0,
+				sur->get_width(),
+				sur->get_height() * sur->get_num_frames(),
+				1.0, 1.0, 1.0, 1.0);
+	      /*
+	      std::cout << "width:" << canvas->get_width() << std::endl;
+	      std::cout << "height:" << canvas->get_height() << std::endl;
+	      std::cout << "pitch:" << canvas->get_pitch() << std::endl;
 
-	  bg_surface = CL_Surface::load(bg.desc.res_name.c_str(), PingusResource::get(bg.desc.filename));
-
+	      std::cout << "---------------------" << std::endl;
+	      */
+	      for (unsigned int i = 0; i < sur->get_num_frames(); i++)
+		{
+		  sur->put_target(0,i * sur->get_height(), i, canvas);
+	      
+		  canvas->fill_rect(0, 
+				    i * sur->get_height(),
+				    sur->get_width(),
+				    i * sur->get_height() + sur->get_height(),
+				    bg.red, bg.green, bg.blue, bg.dim);
+		}
+	      bg_surface = CL_Surface::create(canvas, false);
+	      /*
+	      std::cout << "Frames: " << bg_surface->get_num_frames() << std::endl;
+	      std::cout << "width: " << bg_surface->get_width() << std::endl;
+	      std::cout << "height: " << bg_surface->get_height() << std::endl;
+	      */
+	      delete canvas;
+	    }	  
 	  counter.set_size(bg_surface->get_num_frames());
-	  //	  counter.set_type(Counter::loop);
 	  counter.set_speed(1.0);
 	}
 
@@ -89,8 +111,8 @@ Background::Background(background_data bg)
   scroll_ox = 0;
   scroll_oy = 0;
 
-  cout << "Stretch_X: " << stretch_x << endl;
-  cout << "Stretch_Y: " << stretch_y << endl;
+  std::cout << "Stretch_X: " << stretch_x << std::endl;
+  std::cout << "Stretch_Y: " << stretch_y << std::endl;
 }
 
 Background::~Background()
@@ -166,7 +188,7 @@ Background::draw_offset(int x_of, int y_of, float s)
 	}
       else 
 	{
-	  cout << "Zooming not supported" << endl;
+	  std::cout << "Zooming not supported" << std::endl;
 	  for(int y=(y_of/2); y < CL_Display::get_height(); y += (int)(bg_surface->get_height() * s)) {
 	    for(int x = start_x; x < CL_Display::get_width(); x += (int)(bg_surface->get_width() * s)) {
 	      bg_surface->put_screen(x, y, s, s);
