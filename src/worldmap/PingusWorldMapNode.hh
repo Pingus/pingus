@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapNode.hh,v 1.2 2002/06/06 09:34:28 grumbel Exp $
+//  $Id: PingusWorldMapNode.hh,v 1.3 2002/06/08 16:36:20 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -86,7 +86,7 @@ namespace Pingus
       Sprite dot_border;
       Sprite green_flag;
 
-      boost::shared_ptr<PLF> plf;
+      PLF* plf;
   
       /** true if the level is invalid, which means that the levelfile
 	  could not be loaded or had errors. false is the default */
@@ -94,9 +94,10 @@ namespace Pingus
 
     public:
       bool finished;
-      boost::shared_ptr<PLF> get_plf ();
+      PLF* get_plf ();
 
       LevelNode (const LevelNodeData&);
+      virtual ~LevelNode ();
       void on_click ();
       void mark (bool value);
       void draw (CL_Vector offset);

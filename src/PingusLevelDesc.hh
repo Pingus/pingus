@@ -1,4 +1,4 @@
-//  $Id: PingusLevelDesc.hh,v 1.10 2001/04/13 13:45:09 grumbel Exp $
+//  $Id: PingusLevelDesc.hh,v 1.11 2002/06/08 16:36:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,30 +30,19 @@
 class PingusLevelDesc
 {
 private:
-  ///
   CL_Surface background;
-  ///
   CL_Surface level;
-  ///
   CL_Font* font;
-  ///
   CL_Font* title;
-  ///
-  boost::shared_ptr<PLF>    plf;
+  PLF* plf;
   
-  ///
   MultiLineText description;
-  ///
   boost::shared_ptr<Controller> controller;
-  ///
   std::string         levelname;
 public:
-  ///
   enum LoadingStatus { LOADING, FINISHED };
-  ///
-  PingusLevelDesc(boost::shared_ptr<PLF>,  boost::shared_ptr<Controller>);
+  PingusLevelDesc(PLF*,  boost::shared_ptr<Controller>);
   
-  ///
   void draw(PingusLevelDesc::LoadingStatus status);
 };
 

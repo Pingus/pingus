@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapNode.cc,v 1.3 2002/06/06 14:05:44 grumbel Exp $
+//  $Id: PingusWorldMapNode.cc,v 1.4 2002/06/08 16:36:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,6 +65,7 @@ LevelNode::LevelNode (const LevelNodeData& data)
     invalid_dot ("worldmap/dot_invalid", "core"),
     dot_border ("Game/dot_border", "game"),
     green_flag ("worldmap/flaggreen", "core"),
+    plf (0),
     invalid (false)
 {
   //accessible = false;
@@ -75,6 +76,22 @@ LevelNode::LevelNode (const LevelNodeData& data)
   invalid_dot.set_align_center ();
   red_dot.set_align_center ();
   dot_border.set_align_center ();
+
+  try 
+    {
+      plf = new XMLPLF (path_manager.complete (levelname));
+    } 
+  catch (PingusError& e) 
+    {
+      std::cout << "PingusWorldMapGraph: Caught PingusError (" << e.get_message () << ")" << std::endl;
+      std::cout << "PingusWorldMapGraph: Failed to load '" << levelname << "', fallback to level1.xml" << std::endl;
+      invalid = true;
+    }
+}
+
+LevelNode::~LevelNode ()
+{
+  delete plf;
 }
 
 void 
@@ -86,6 +103,7 @@ LevelNode::on_click ()
 	std::cout << "Start a level...: " << levelname << std::endl;
 		  
       PingusSound::play_sound(path_manager.complete("sounds/letsgo.wav"));
+      /** We could reuse the plf here */
       PingusGameSession game (path_manager.complete(levelname));
       
       // Launch the game and wait until it is finished
@@ -141,38 +159,15 @@ LevelNode::draw (CL_Vector offset)
 std::string
 LevelNode::get_string ()
 {
-  boost::shared_ptr<PLF> plf = get_plf ();
-  
   if (!invalid)
     return System::translate(plf->get_levelname ());
   else
     return _("invalid level");
 }
 
-boost::shared_ptr<PLF>
+PLF*
 LevelNode::get_plf ()
 {
-  if (plf.get () == 0)
-    {
-      if (!invalid) 
-	{
-	  //console << "Loading " << levelname << std::endl;
-	  try {
-	    plf = boost::shared_ptr<PLF> (new XMLPLF (path_manager.complete (levelname)));
-	  } catch (PingusError& e) {
-	    std::cout << "PingusWorldMapGraph: Caught PingusError (" << e.get_message () << ")" << std::endl;
-	    std::cout << "PingusWorldMapGraph: Failed to load '" << levelname << "', fallback to level1.xml" << std::endl;
-	    //plf = boost::shared_ptr<PLF> (new XMLPLF (path_manager.complete ("levels/level1.xml")));
-	    invalid = true;
-	    return boost::shared_ptr<PLF>();
-	  }
-	}
-      else
-	{
-	  return boost::shared_ptr<PLF>();
-	}
-    }
-  
   return plf;
 }
 
