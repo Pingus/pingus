@@ -1,4 +1,4 @@
-//  $Id: ice_block.hxx,v 1.8 2002/09/04 19:40:20 grumbel Exp $
+//  $Id: ice_block.hxx,v 1.9 2002/09/14 19:06:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,48 +20,25 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_ICE_BLOCK_HXX
 #define HEADER_PINGUS_WORLDOBJS_ICE_BLOCK_HXX
 
-#include "../worldobj_data.hxx"
-#include "../editor/sprite_editorobj.hxx"
+#include "../worldobj.hxx"
 
-class WorldObj;
+namespace WorldObjsData {
+class IceBlockData;
+}
 
-class IceBlockData : public WorldObjData
-{
-public:
-  /// The upper/left position  of the iceblock's
-  CL_Vector pos;
-  /** The number of iceblocks, only complete blocks are supported */
-  int width;
+namespace WorldObjs {
 
-  int last_contact;
-
-  IceBlockData ();
-  IceBlockData (xmlDocPtr doc, xmlNodePtr cur);
-
-  /** Write the content of this object formatted as xml to the given
-      stream */
-  void write_xml(std::ostream& xml);
-  
-  /** Create an WorldObj from the given data object */
-  WorldObj* create_WorldObj ();
-
-  /** Create an EditorObj from the given data object */
-  EditorObjLst create_EditorObj ();
-  
-private:
-  IceBlockData (const IceBlockData&);
-  IceBlockData operator= (const IceBlockData&);
-};
-
-class IceBlock : public IceBlockData, 
-		 public WorldObj
+class IceBlock : public WorldObj
 {
 private:
-  CL_Surface block_sur;
   float thickness;
-  bool is_finished;
+  bool  is_finished;
+  int   last_contact;
+  WorldObjsData::IceBlockData* const data;
+  
 public:
-  IceBlock (const IceBlockData& data);
+  IceBlock (WorldObjsData::IceBlockData* data_);
+ ~IceBlock ();
 
   float get_z_pos () const { return 100; }
   void draw_colmap ();
@@ -73,30 +50,8 @@ private:
   IceBlock operator= (const IceBlock&);
 };
 
-
-class EditorIceBlockObj : public IceBlockData,
-			  public SpriteEditorObj			  
-{
-private:
-  
-public:
-  EditorIceBlockObj (const IceBlockData& data);
-
-  /** Create the object with resonable defaults */
-  static EditorObjLst create (const CL_Vector& pos);
-
-  void write_xml(std::ostream& xml) { IceBlockData::write_xml (xml); }
-  EditorObj* duplicate();
-  std::string status_line();
-  
-private:
-  EditorIceBlockObj (const EditorIceBlockObj&);
-  EditorIceBlockObj operator= (const EditorIceBlockObj&);
-};
+} // namespace WorldObjs
 
 #endif
 
 /* EOF */
-
-
-

@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.15 2002/09/14 13:35:38 torangan Exp $
+//  $Id: object_selector.cxx,v 1.16 2002/09/14 19:06:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <string>
 #include <ClanLib/Core/System/system.h>
 #include <ClanLib/Core/IOData/directory_scanner.h>
 #include <ClanLib/Display/Input/mouse.h>
@@ -46,18 +45,17 @@
 #include "../backgrounds/thunderstorm_background.hxx"
 
 #include "../editorobjs/bumper_obj.hxx"
+#include "../editorobjs/conveyor_belt_obj.hxx"
 #include "../editorobjs/fake_exit_obj.hxx"
 #include "../editorobjs/guillotine_obj.hxx"
 #include "../editorobjs/hammer_obj.hxx"
+#include "../editorobjs/ice_block_obj.hxx"
 #include "../editorobjs/info_box_obj.hxx"
 #include "../editorobjs/laser_exit_obj.hxx"
 #include "../editorobjs/smasher_obj.hxx"
 #include "../editorobjs/spike_obj.hxx"
 #include "../editorobjs/switch_door_obj.hxx"
 #include "../editorobjs/teleporter_obj.hxx"
-
-#include "../worldobjs/ice_block.hxx"
-#include "../worldobjs/conveyor_belt.hxx"
 
 using namespace std;
 using namespace EditorObjs;
@@ -189,19 +187,19 @@ ObjectSelector::get_worldobj()
       switch (read_key()) 
 	{
 	case CL_KEY_1:
-	  return TeleporterObj::create (pos);
+	  return TeleporterObj::create(pos);
 	  
 	case CL_KEY_2:
-	  return SwitchDoorObj::create (pos);
+	  return SwitchDoorObj::create(pos);
 
 	case CL_KEY_3:
-	  return EditorConveyorBeltObj::create (pos);
+	  return ConveyorBeltObj::create(pos);
 
 	case CL_KEY_4:
-	  return EditorIceBlockObj::create (pos);
+	  return IceBlockObj::create(pos);
 
 	case CL_KEY_5:
-	  return InfoBoxObj::create (pos);
+	  return InfoBoxObj::create(pos);
 	  
 	case CL_KEY_ESCAPE:
 	  return EditorObjLst();

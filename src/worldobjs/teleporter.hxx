@@ -1,4 +1,4 @@
-//  $Id: teleporter.hxx,v 1.12 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: teleporter.hxx,v 1.13 2002/09/14 19:06:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,7 @@ private:
   WorldObjsData::TeleporterData* const data;
 public:
   Teleporter (WorldObjsData::TeleporterData* data_);
+ ~Teleporter ();
 
   int   get_z_pos () { return 0; }
     

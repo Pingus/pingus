@@ -1,4 +1,4 @@
-//  $Id: switch_door.hxx,v 1.11 2002/09/11 15:27:19 torangan Exp $
+//  $Id: switch_door.hxx,v 1.12 2002/09/14 19:06:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,6 +44,7 @@ private:
 
 public:
   SwitchDoor (WorldObjsData::SwitchDoorData* data_);
+ ~SwitchDoor ();
   
   void draw_colmap ();
   void draw (GraphicContext& gc);

@@ -1,4 +1,4 @@
-//  $Id: teleporter_obj.hxx,v 1.5 2002/09/14 19:06:34 torangan Exp $
+//  $Id: conveyor_belt_obj.hxx,v 1.1 2002/09/14 19:06:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,49 +17,55 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_EDITOROBJS_TELEPORTER_OBJ_HXX
-#define HEADER_PINGUS_EDITOROBJS_TELEPORTER_OBJ_HXX
+#ifndef HEADER_PINGUS_EDITOROBJS_CONVEYOR_BELT_OBJ_HXX
+#define HEADER_PINGUS_EDITOROBJS_CONVEYOR_BELT_OBJ_HXX
 
-#include "../editor/sprite_editorobj.hxx"
+#include "../editor/rect_editorobj.hxx"
 
-namespace EditorNS {
-class EditorView;
-} // namespace EditorNS
+class WorldObjData;
 
 namespace WorldObjsData {
-class TeleporterData;
+class ConveyorBeltData;
 }
 
 namespace EditorObjs {
 
-class TeleporterTargetObj;
-
-class TeleporterObj : public SpriteEditorObj
+class ConveyorBeltObj : public RectEditorObj
 {
 private:
-  WorldObjsData::TeleporterData* const data;
-  TeleporterTargetObj* target;
+  WorldObjsData::ConveyorBeltData* const data;
 
 public:
-  TeleporterObj (WorldObjsData::TeleporterData* data_);
- ~TeleporterObj ();
-
-  CL_Vector& get_target_pos_ref ();
+  ConveyorBeltObj (WorldObjsData::ConveyorBeltData* data_);
 
   EditorObj* duplicate ();
+  
+  void draw (EditorNS::EditorView * view);
+  void draw_scroll_map (int x_pos, int y_pos, int arg_width, int arg_height);
 
-  void write_xml (std::ostream& xml);
+  int get_width ();
+  int get_height ();
 
-  /** Create this object (and child objects) with reasonable defaults
-      for the editor */
+  float get_z_pos ();
+
+  void set_position_offset (const CL_Vector &);
+  
+  static EditorObjLst create (WorldObjData* obj);
+
+  /** Create the object with reasonable defaults */
   static EditorObjLst create (const CL_Vector& pos);
 
-  void draw (EditorNS::EditorView * view);
+  CL_Vector get_upper_left_corner ();
+
+  void write_xml (std::ostream& xml);
   std::string status_line ();
 
+  void make_larger ();
+  void make_smaller ();
+  
 private:
-  TeleporterObj (const TeleporterObj&);
-  TeleporterObj operator= (const TeleporterObj&);
+  ConveyorBeltObj (const ConveyorBeltObj&);
+  ConveyorBeltObj operator= (const ConveyorBeltObj&);
 };
 
 } // namespace EditorObjs

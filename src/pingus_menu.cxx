@@ -1,4 +1,4 @@
-//  $Id: pingus_menu.cxx,v 1.7 2002/08/17 00:28:30 grumbel Exp $
+//  $Id: pingus_menu.cxx,v 1.8 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,23 +17,13 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/Input/input.h>
-#include <ClanLib/Display/Input/keyboard.h>
-#include <ClanLib/Display/Input/inputdevice.h>
-
-#include "globals.hxx"
-#include "alpha_button.hxx"
 #include "surface_button.hxx"
-#include "credits.hxx"
 #include "pingus_resource.hxx"
-#include "pingus_menu.hxx"
-#include "display.hxx"
 #include "sound.hxx"
 #include "debug.hxx"
 #include "pingus_menu_manager.hxx"
-#include "game_delta.hxx"
 
-PingusMenu::PingusMenu(PingusMenuManager* m)
+PingusMenu::PingusMenu (PingusMenuManager* m)
   : PingusSubMenu (m)
 {
   is_init = false;

@@ -1,4 +1,4 @@
-//  $Id: switch_door.cxx,v 1.14 2002/09/11 15:27:19 torangan Exp $
+//  $Id: switch_door.cxx,v 1.15 2002/09/14 19:06:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,10 +19,10 @@
 
 #include <fstream>
 #include "../col_map.hxx"
-#include "../world.hxx"
-#include "../pingu_holder.hxx"
-#include "../xml_helper.hxx"
+#include "../graphic_context.hxx"
 #include "../pingu.hxx"
+#include "../pingu_holder.hxx"
+#include "../world.hxx"
 #include "../worldobjsdata/switch_door_data.hxx"
 #include "switch_door.hxx"
 
@@ -33,6 +33,11 @@ SwitchDoor::SwitchDoor (WorldObjsData::SwitchDoorData* data_)
                        current_door_height(data->door_height),
 		       data(new WorldObjsData::SwitchDoorData(*data_))
 {
+}
+
+SwitchDoor::~SwitchDoor ()
+{
+  delete data;
 }
 
 void 

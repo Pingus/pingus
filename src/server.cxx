@@ -1,4 +1,4 @@
-//  $Id: server.cxx,v 1.13 2002/09/04 14:55:11 torangan Exp $
+//  $Id: server.cxx,v 1.14 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include "system.hxx"
 #include "pingu.hxx"
 #include "server.hxx"
-#include "game_time.hxx"
 #include "pingu_holder.hxx"
 #include "pingus_error.hxx"
 #include "string_converter.hxx"

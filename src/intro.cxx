@@ -1,4 +1,4 @@
-//  $Id: intro.cxx,v 1.3 2002/08/16 17:15:31 grumbel Exp $
+//  $Id: intro.cxx,v 1.4 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,6 @@
 #include <ClanLib/Core/System/system.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
-#include <ClanLib/Display/Input/input.h>
-#include <ClanLib/Display/Input/keyboard.h>
 #include "pingus_menu_manager.hxx"
 #include "pingus_resource.hxx"
 

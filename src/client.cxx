@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.20 2002/09/05 12:24:01 grumbel Exp $
+//  $Id: client.cxx,v 1.21 2002/09/14 19:06:33 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,17 +18,14 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <config.h>
+#include <ClanLib/Core/System/system.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Display/mousecursor_provider.h>
-#include <ClanLib/Display/Input/input.h>
-#include <ClanLib/Display/Input/keyboard.h>
-#include <ClanLib/Core/System/system.h>
 #include "globals.hxx"
 #include "playfield.hxx"
 #include "timer.hxx"
 #include "pingus_resource.hxx"
 #include "sound.hxx"
-#include "option_menu.hxx"
 #include "time_display.hxx"
 #include "pingus_counter.hxx"
 #include "smallmap.hxx"
@@ -40,10 +37,7 @@
 #include "button_panel.hxx"
 #include "screen_manager.hxx"
 
-// GUI
-#include "gui/surface_button.hxx"
-
-Client::Client(Server * s)
+Client::Client (Server * s)
   : server       (s),
     skip_frame   (0),
     do_replay    (false),

@@ -1,4 +1,4 @@
-//  $Id: info_box_data.cxx,v 1.1 2002/09/14 13:35:38 torangan Exp $
+//  $Id: info_box_data.cxx,v 1.2 2002/09/14 19:06:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <fstream>
-#include <ClanLib/Display/Font/font.h>
 #include "../pingus_resource.hxx"
 #include "../xml_helper.hxx"
 #include "../editorobjs/info_box_obj.hxx"

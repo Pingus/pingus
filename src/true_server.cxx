@@ -1,4 +1,4 @@
-//  $Id: true_server.cxx,v 1.5 2002/08/03 12:00:58 grumbel Exp $
+//  $Id: true_server.cxx,v 1.6 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Core/System/system.h>
-#include "game_time.hxx"
 #include "globals.hxx"
 #include "plf.hxx"
 #include "true_server.hxx"

@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.15 2002/09/05 12:24:02 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.16 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,8 +22,6 @@
 #include "globals.hxx"
 #include "input/controller.hxx"
 #include "delta_manager.hxx"
-#include "game_delta.hxx"
-#include "screen.hxx"
 #include "display.hxx"
 #include "pingus_menu_manager.hxx"
 #include "screen_manager.hxx"

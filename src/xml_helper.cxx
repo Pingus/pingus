@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.16 2002/09/11 12:45:57 grumbel Exp $
+//  $Id: xml_helper.cxx,v 1.17 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 #include "string_converter.hxx"
 #include "color.hxx"
 #include "res_descriptor.hxx"
-#include "resource_modifier.hxx"
 #include "xml_helper.hxx"
 
 // Hack: if xmlIsBlankNode() is not present, we define an empty dummy

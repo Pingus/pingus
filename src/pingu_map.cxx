@@ -1,4 +1,4 @@
-//  $Id: pingu_map.cxx,v 1.2 2002/09/04 19:40:19 grumbel Exp $
+//  $Id: pingu_map.cxx,v 1.3 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/Display/display.h>
 #include "col_map.hxx"
 #include "pingu_map.hxx"
 

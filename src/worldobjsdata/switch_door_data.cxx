@@ -1,4 +1,4 @@
-//  $Id: switch_door_data.cxx,v 1.1 2002/09/11 15:27:19 torangan Exp $
+//  $Id: switch_door_data.cxx,v 1.2 2002/09/14 19:06:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #include "../pingus_resource.hxx"
 #include "../xml_helper.hxx"
 #include "../editorobjs/switch_door_obj.hxx"
-#include "../editorobjs/switch_door_switch_obj.hxx"
 #include "../worldobjs/switch_door.hxx"
 #include "switch_door_data.hxx"
 

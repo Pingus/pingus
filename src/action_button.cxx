@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.12 2002/09/06 17:33:29 torangan Exp $
+//  $Id: action_button.cxx,v 1.13 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Core/Math/cl_vector.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
 #include <ClanLib/Display/Input/mouse.h>
@@ -26,7 +25,6 @@
 #include "pingus_resource.hxx"
 #include "action_button.hxx"
 #include "server.hxx"
-#include "world.hxx"
 #include "string_converter.hxx"
 
 using namespace Actions;

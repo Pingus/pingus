@@ -1,4 +1,4 @@
-//  $Id: teleporter.cxx,v 1.9 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: teleporter.cxx,v 1.10 2002/09/14 19:06:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,11 +18,12 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <fstream>
-#include "teleporter.hxx"
-#include "../world.hxx"
-#include "../pingu_holder.hxx"
+#include "../graphic_context.hxx"
 #include "../pingu.hxx"
+#include "../pingu_holder.hxx"
+#include "../world.hxx"
 #include "../worldobjsdata/teleporter_data.hxx"
+#include "teleporter.hxx"
 
 namespace WorldObjs {
 
@@ -36,6 +37,11 @@ Teleporter::Teleporter (WorldObjsData::TeleporterData* data_)
   //FIXME: we need a Sprite::set_frame()
 
   std::cout << "Teleporter: pos: " << data->pos.x << " "  << data->pos.y << " " << data->pos.z << std::endl;
+}
+
+Teleporter::~Teleporter ()
+{
+  delete data;
 }
 
 float

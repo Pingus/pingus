@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.cxx,v 1.10 2002/09/11 12:45:57 grumbel Exp $
+//  $Id: res_descriptor.cxx,v 1.11 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #include <assert.h>
 #include <iostream>
 #include "res_descriptor.hxx"
-#include "string_converter.hxx"
 #include "pingus_error.hxx"
 
 ResDescriptor::ResDescriptor()

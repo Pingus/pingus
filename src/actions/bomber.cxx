@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.12 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: bomber.cxx,v 1.13 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,15 +17,14 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../pingu_map.hxx"
 #include "../col_map.hxx"
-#include "../world.hxx"
-#include "../globals.hxx"
-#include "../pingus_resource.hxx"
 #include "../force_vector.hxx"
-#include "../string_converter.hxx"
+#include "../graphic_context.hxx"
 #include "../pingu.hxx"
-#include "../sounds.hxx"
+#include "../pingu_map.hxx"
+#include "../pingus_resource.hxx"
+#include "../string_converter.hxx"
+#include "../world.hxx"
 #include "../particles/particle_holder.hxx"
 #include "bomber.hxx"
 
@@ -35,11 +34,10 @@ bool Bomber::static_surface_loaded = false;
 CL_Surface Bomber::bomber_radius;
 CL_Surface Bomber::bomber_radius_gfx;
 
-Bomber::Bomber() 
-  : particle_thrown(false),
-    sound_played(false), 
-    gfx_exploded(false),
-    colmap_exploded(false)
+Bomber::Bomber () : particle_thrown(false),
+                    sound_played(false), 
+                    gfx_exploded(false),
+                    colmap_exploded(false)
 {
 }
 
@@ -125,7 +123,7 @@ Bomber::update (float delta)
 }
 
 void
-Bomber::update_position(float delta)
+Bomber::update_position (float delta)
 {
   // Apply all forces
   pingu->set_velocity(ForcesHolder::apply_forces(pingu->get_pos(), pingu->get_velocity()));

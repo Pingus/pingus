@@ -1,4 +1,4 @@
-//  $Id: surface_background_data.cxx,v 1.5 2002/09/10 21:03:32 torangan Exp $
+//  $Id: surface_background_data.cxx,v 1.6 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include <fstream>
 #include "../xml_helper.hxx"
-#include "../string_converter.hxx"
 #include "surface_background.hxx"
 
 SurfaceBackgroundData::SurfaceBackgroundData () : para_x(0.5),

@@ -1,4 +1,4 @@
-//  $Id: hammer.hxx,v 1.3 2002/09/09 16:55:07 grumbel Exp $
+//  $Id: hammer.hxx,v 1.4 2002/09/14 19:06:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ private:
     
 public:
   Hammer (WorldObjsData::HammerData* data_);
-  ~Hammer ();
+ ~Hammer ();
 
   float get_z_pos () const;
 

@@ -1,4 +1,4 @@
-//  $Id: climber.cxx,v 1.10 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: climber.cxx,v 1.11 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../pingu.hxx"
 #include "../col_map.hxx"
+#include "../graphic_context.hxx"
+#include "../pingu.hxx"
 #include "climber.hxx"
 
 namespace Actions {

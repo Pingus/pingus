@@ -1,4 +1,4 @@
-//  $Id: story.cxx,v 1.10 2002/09/11 12:45:57 grumbel Exp $
+//  $Id: story.cxx,v 1.11 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,14 +18,12 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Font/font.h>
 #include "fonts.hxx"
 #include "pingus_resource.hxx"
 #include "pingus_menu_manager.hxx"
 #include "screen_manager.hxx"
 #include "worldmap/manager.hxx"
 
-// using NS_Pingus::NS_WorldMap::WorldMapManager;
 using WorldMapNS::WorldMapManager;
 
 Story::Story(PingusMenuManager* manager)

@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.hxx,v 1.9 2002/09/11 12:45:59 grumbel Exp $
+//  $Id: conveyor_belt.hxx,v 1.10 2002/09/14 19:06:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,54 +25,23 @@
 #include "../editor/rect_editorobj.hxx"
 
 namespace WorldObjsData {
-
-class ConveyorBeltData : public WorldObjData
-{
-public:
-  CL_Vector pos;
-  int width;
-  double speed;
-
-  ConveyorBeltData ();
-  ConveyorBeltData (xmlDocPtr doc, xmlNodePtr cur);
-  
-  ConveyorBeltData (const ConveyorBeltData& old);
-  ConveyorBeltData operator= (const ConveyorBeltData& old);
-
-  /** Write the content of this object formatted as xml to the given
-      stream */
-  void write_xml(std::ostream& xml);
-  ///
-
-  /** Create an WorldObj from the given data object */
-  WorldObj* create_WorldObj ();
-
-  /** Create an EditorObj from the given data object */
-  EditorObjLst create_EditorObj ();
-};
-
-} // namespace WorldObjsData
-
+class ConveyorBeltData;
+}
 
 namespace WorldObjs {
 
-// FIXME: Make ConveyorBeltData
-class ConveyorBelt : private WorldObjsData::ConveyorBeltData,
-		     public  WorldObj
+class ConveyorBelt : public  WorldObj
 {
 private:
-  CL_Surface left_sur;
-  CL_Surface right_sur;
-  CL_Surface middle_sur;
-  float counter;
-
+  WorldObjsData::ConveyorBeltData* const data;
+  
 public:
-  ConveyorBelt (WorldObjData*);
+  ConveyorBelt (WorldObjsData::ConveyorBeltData* data_);
   
   void draw (GraphicContext& gc);
-  void draw_colmap();
-  void update(float delta);
-  float get_z_pos() const { return pos.z; }
+  void draw_colmap ();
+  void update (float delta);
+  float get_z_pos () const;
   
 private:
   ConveyorBelt (const ConveyorBelt&);
@@ -80,52 +49,6 @@ private:
 };
 
 } // namespace WorldObjs
-
-namespace EditorObjs {
-
-class EditorConveyorBeltObj : public RectEditorObj,
-			      public WorldObjsData::ConveyorBeltData
-{
-private:
-  CL_Surface left_sur;
-  CL_Surface right_sur;
-  CL_Surface middle_sur;
-  float counter;
-
-public:
-  EditorConveyorBeltObj (const ConveyorBeltData&);
-
-  EditorObj* duplicate();
-  void draw (EditorNS::EditorView * view);
-  void draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height);
-
-  int get_width ();
-  int get_height ();
-
-  float get_z_pos () { return pos.z; }
-
-  void set_position_offset(const CL_Vector &);
-  
-  /// The saving will be done in EditorTeleporterObj::save_xml
-  static EditorObjLst create (WorldObjData* obj);
-
-  /** Create the object with reasonable defaults */
-  static EditorObjLst create (const CL_Vector& pos);
-
-  CL_Vector get_upper_left_corner() { return pos; }
-
-  void write_xml (std::ostream& xml) { ConveyorBeltData::write_xml (xml); }
-  std::string status_line();
-
-  void make_larger ();
-  void make_smaller ();
-  
-private:
-  EditorConveyorBeltObj (const EditorConveyorBeltObj&);
-  EditorConveyorBeltObj operator= (const EditorConveyorBeltObj&);
-};
-
-} // namespace EditorObjs
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: pingu.hxx,v 1.15 2002/09/05 11:26:35 grumbel Exp $
+//  $Id: pingu.hxx,v 1.16 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_PINGU_HXX
 #define HEADER_PINGUS_PINGU_HXX
 
-#include "graphic_context.hxx"
 #include "direction.hxx"
 #include "pingu_enums.hxx"
 
@@ -28,6 +27,7 @@
 class CL_Vector;
 class ActionHolder;
 class PinguAction;
+class GraphicContext;
 
 /** The class for managing one of the many penguins which are walking
     around in the World. All actions are handled by PinguAction

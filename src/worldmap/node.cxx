@@ -1,4 +1,4 @@
-//  $Id: node.cxx,v 1.8 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: node.cxx,v 1.9 2002/09/14 19:06:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,12 +22,9 @@
 #include "../path_manager.hxx"
 #include "../system.hxx"
 #include "../game_session.hxx"
-#include "../game_session_result.hxx"
-#include "../console.hxx"
 #include "../xml_plf.hxx"
 #include "../pingus_error.hxx"
 #include "../sound.hxx"
-#include "../pingus_resource.hxx"
 #include "../globals.hxx"
 #include "../screen_manager.hxx"
 #include "node.hxx"

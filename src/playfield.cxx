@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.21 2002/09/06 17:33:29 torangan Exp $
+//  $Id: playfield.cxx,v 1.22 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,9 +27,8 @@
 #include "server.hxx"
 #include "pingu.hxx"
 #include "button_panel.hxx"
-#include "pingu_enums.hxx"
 
-Playfield::Playfield(Client* client, PLF* level_data, World* w)
+Playfield::Playfield (Client* client, PLF* level_data, World* w)
   : current_pingu(0), current_view(0)
 {
   world = w;

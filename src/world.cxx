@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.21 2002/09/04 19:40:19 grumbel Exp $
+//  $Id: world.cxx,v 1.22 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,11 +26,9 @@
 #include "spot_map.hxx"
 #include "view.hxx"
 #include "world.hxx"
-#include "game_time.hxx"
 #include "particles/particle_holder.hxx"
 #include "particles/weather_generator.hxx"
 #include "pingu.hxx"
-#include "worldobj_data.hxx"
 #include "game_time.hxx"
 
 using namespace std;

@@ -1,4 +1,4 @@
-//  $Id: info_box.cxx,v 1.12 2002/09/14 13:35:38 torangan Exp $
+//  $Id: info_box.cxx,v 1.13 2002/09/14 19:06:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,10 +21,9 @@
 #include <ClanLib/Display/Font/font.h>
 #include <ClanLib/Display/Display/display.h>
 #include "../graphic_context.hxx"
+#include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
-#include "../pingus_resource.hxx"
-#include "../pingu.hxx"
 #include "../worldobjsdata/info_box_data.hxx"
 #include "info_box.hxx"
 
@@ -34,6 +33,11 @@ InfoBox::InfoBox (WorldObjsData::InfoBoxData* data_)
   : is_open (false),
     data(new WorldObjsData::InfoBoxData(*data_))
 {
+}
+
+InfoBox::~InfoBox ()
+{
+  delete data;
 }
 
 void

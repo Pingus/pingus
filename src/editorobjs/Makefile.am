@@ -19,9 +19,11 @@ noinst_LIBRARIES = libpingus_editorobjs.a
 
 libpingus_editorobjs_a_SOURCES = \
 	bumper_obj.cxx             bumper_obj.hxx \
+	conveyor_belt_obj.cxx      conveyer_belt_obj.hxx \
 	fake_exit_obj.cxx          fake_exit_obj.hxx \
 	guillotine_obj.cxx         guillotine_obj.hxx \
 	hammer_obj.cxx             hammer_obj.hxx \
+	ice_block_obj.cxx	   ice_block_obj.hxx \
 	info_box_obj.cxx	   info_box_obj.hxx \
 	laser_exit_obj.cxx         laser_exit_obj.hxx \
 	smasher_obj.cxx            smasher_obj.hxx \

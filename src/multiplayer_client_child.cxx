@@ -1,4 +1,4 @@
-//  $Id: multiplayer_client_child.cxx,v 1.10 2002/09/04 14:55:11 torangan Exp $
+//  $Id: multiplayer_client_child.cxx,v 1.11 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,12 +19,8 @@
 
 #include <stdio.h>
 #include <ClanLib/Display/Input/key.h>
-#include "pingu.hxx"
 #include "server.hxx"
-
-#include "string_converter.hxx"
 #include "multiplayer_client_child.hxx"
-#include "pingu_enums.hxx"
 
 MultiplayerClientChild::MultiplayerClientChild (Server * s, const CL_Rect& arg_rect)
   : server (s),

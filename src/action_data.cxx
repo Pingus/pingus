@@ -1,4 +1,4 @@
-//  $Id: action_data.cxx,v 1.5 2002/08/25 09:08:48 torangan Exp $
+//  $Id: action_data.cxx,v 1.6 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "pingu_enums.hxx"
 #include "action_data.hxx"
 
 using namespace Actions;

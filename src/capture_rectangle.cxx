@@ -1,4 +1,4 @@
-//  $Id: capture_rectangle.cxx,v 1.6 2002/09/04 14:55:11 torangan Exp $ 
+//  $Id: capture_rectangle.cxx,v 1.7 2002/09/14 19:06:33 torangan Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #include <ClanLib/Core/Math/cl_vector.h>
 #include <ClanLib/Display/Font/font.h>
 #include "pingu.hxx"
-#include "string_converter.hxx"
 #include "pingus_resource.hxx"
 #include "capture_rectangle.hxx"
 #include "pingu_action.hxx"

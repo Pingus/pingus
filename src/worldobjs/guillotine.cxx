@@ -1,4 +1,4 @@
-//  $Id: guillotine.cxx,v 1.3 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: guillotine.cxx,v 1.4 2002/09/14 19:06:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,13 +18,11 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../graphic_context.hxx"
-#include "guillotine.hxx"
-#include "../pingus_resource.hxx"
+#include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
-#include "../pingu.hxx"
-#include "../worldobj.hxx"
 #include "../worldobjsdata/guillotine_data.hxx"
+#include "guillotine.hxx"
 
 namespace WorldObjs {
 

@@ -1,4 +1,4 @@
-//  $Id: gui_screen.cxx,v 1.7 2002/09/05 12:24:02 grumbel Exp $
+//  $Id: gui_screen.cxx,v 1.8 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #include <iostream>
 #include "globals.hxx"
 #include "debug.hxx"
-#include "gui/gui_manager.hxx"
 #include "input/button_event.hxx"
 #include "input/axis_event.hxx"
 #include "gui_screen.hxx"

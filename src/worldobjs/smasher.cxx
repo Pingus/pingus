@@ -1,4 +1,4 @@
-//  $Id: smasher.cxx,v 1.3 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: smasher.cxx,v 1.4 2002/09/14 19:06:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,17 +17,18 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "smasher.hxx"
+#include "../algo.hxx"
 #include "../col_map.hxx"
-#include "../world.hxx"
+#include "../graphic_context.hxx"
+#include "../particles/smoke_particle.hxx"
+#include "../particles/particle_holder.hxx"
+#include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../pingus_resource.hxx"
 #include "../sound.hxx"
-#include "../particles/smoke_particle.hxx"
-#include "../particles/particle_holder.hxx"
-#include "../algo.hxx"
-#include "../pingu.hxx"
+#include "../world.hxx"
 #include "../worldobjsdata/smasher_data.hxx"
+#include "smasher.hxx"
 
 namespace WorldObjs {
 

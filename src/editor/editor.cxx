@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.31 2002/09/13 18:28:26 grumbel Exp $
+//  $Id: editor.cxx,v 1.32 2002/09/14 19:06:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Core/System/system.h>
-#include <ClanLib/Core/Resources/resource_manager.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Input/input.h>
 #include <ClanLib/Display/Display/mousecursor_provider.h>
@@ -41,7 +40,6 @@
 #include "action_window.hxx"
 #include "property_window.hxx"
 #include "level_property_window.hxx"
-#include "../algo.hxx"
 #include "editor.hxx"
 
 #include <cstdio>

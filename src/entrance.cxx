@@ -1,4 +1,4 @@
-//  $Id: entrance.cxx,v 1.6 2002/09/04 22:10:47 grumbel Exp $
+//  $Id: entrance.cxx,v 1.7 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 #include "pingu_holder.hxx"
 #include "globals.hxx"
 #include "entrance.hxx"
-#include "game_time.hxx"
 #include "pingu.hxx"
 #include "game_time.hxx"
 

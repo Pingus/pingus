@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.10 2002/09/04 14:55:11 torangan Exp $
+//  $Id: credits.cxx,v 1.11 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,11 +19,7 @@
 
 #include <iostream>
 #include <ClanLib/Display/Display/display.h>
-#include <ClanLib/Display/Input/keyboard.h>
 #include <ClanLib/Display/Font/font.h>
-#include <ClanLib/Display/Input/key.h>
-#include "delta_manager.hxx"
-#include "display.hxx"
 #include "sound.hxx"
 #include "pingus_resource.hxx"
 #include "credits.hxx"

@@ -1,4 +1,4 @@
-//  $Id: fake_exit.cxx,v 1.3 2002/09/10 15:36:44 grumbel Exp $
+//  $Id: fake_exit.cxx,v 1.4 2002/09/14 19:06:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,12 +17,12 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "fake_exit.hxx"
-#include "../world.hxx"
-#include "../pingus_resource.hxx"
-#include "../pingu_holder.hxx"
+#include "../graphic_context.hxx"
 #include "../pingu.hxx"
+#include "../pingu_holder.hxx"
+#include "../world.hxx"
 #include "../worldobjsdata/fake_exit_data.hxx"
+#include "fake_exit.hxx"
 
 namespace WorldObjs {
 

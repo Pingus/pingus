@@ -1,4 +1,4 @@
-//  $Id: bridger.cxx,v 1.14 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: bridger.cxx,v 1.15 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,14 +18,14 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <cassert>
+#include "../col_map.hxx"
+#include "../graphic_context.hxx"
+#include "../pingu.hxx"
 #include "../pingu_map.hxx"
-#include "../world.hxx"
 #include "../pingus_resource.hxx"
 #include "../sound.hxx"
-#include "../algo.hxx"
-#include "../col_map.hxx"
 #include "../string_converter.hxx"
-#include "../pingu.hxx"
+#include "../world.hxx"
 #include "bridger.hxx"
 
 using namespace std;

@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.cxx,v 1.9 2002/09/10 21:03:32 torangan Exp $
+//  $Id: groundpiece_data.cxx,v 1.10 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <fstream>
-#include "xml_helper.hxx"
 #include "editor/editor_groundpiece_obj.hxx"
 #include "xml_helper.hxx"
 

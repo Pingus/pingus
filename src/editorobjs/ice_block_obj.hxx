@@ -1,5 +1,5 @@
-//  $Id: root_gui_manager.cxx,v 1.7 2002/09/14 19:06:34 torangan Exp $
-//
+//  $Id: ice_block_obj.hxx,v 1.1 2002/09/14 19:06:34 torangan Exp $
+// 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,35 +12,46 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+// 
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "root_gui_manager.hxx"
-#include "../input/controller.hxx"
+#ifndef HEADER_PINGUS_EDITOROBJS_ICE_BLOCK_OBJ_HXX
+#define HEADER_PINGUS_EDITOROBJS_ICE_BLOCK_OBJ_HXX
 
-using namespace GUI;
-using namespace Input;
+#include "../editor/sprite_editorobj.hxx"
 
-RootGUIManager::RootGUIManager (Input::Controller* c)
-  : controller(c)
-{  
+namespace WorldObjsData {
+class IceBlockData;
 }
 
-RootGUIManager::~RootGUIManager ()
-{
-}
+namespace EditorObjs {
 
-void
-RootGUIManager::update (float delta)
+class IceBlockObj : public SpriteEditorObj			  
 {
-  assert (!"ERROR RootGUIManager absolete");
-  assert (controller);
-  //GUIManager::update (delta);
-  //process_input (controller->get_events ());
+private:
+  WorldObjsData::IceBlockData* const data;
   
-  UNUSED_ARG(delta);
-}
+public:
+  IceBlockObj (WorldObjsData::IceBlockData* data_);
+ ~IceBlockObj ();
+
+  /** Create the object with resonable defaults */
+  static EditorObjLst create (const CL_Vector& pos);
+
+  void write_xml (std::ostream& xml);
+  
+  EditorObj* duplicate ();
+  std::string status_line ();
+  
+private:
+  IceBlockObj (const IceBlockObj&);
+  IceBlockObj operator= (const IceBlockObj&);
+};
+
+} // namespace EditorObjs
+
+#endif
 
 /* EOF */

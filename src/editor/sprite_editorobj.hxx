@@ -1,4 +1,4 @@
-//  $Id: sprite_editorobj.hxx,v 1.6 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: sprite_editorobj.hxx,v 1.7 2002/09/14 19:06:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,7 +56,7 @@ public:
 
   virtual float get_z_pos();
 
-  virtual CL_Vector get_upper_left_corner();
+  virtual CL_Vector get_upper_left_corner ();
 
   virtual void draw (EditorNS::EditorView *);
 

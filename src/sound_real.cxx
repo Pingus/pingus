@@ -1,4 +1,4 @@
-//  $Id: sound_real.cxx,v 1.7 2002/09/04 14:55:11 torangan Exp $
+//  $Id: sound_real.cxx,v 1.8 2002/09/14 19:06:33 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 
-#include <ClanLib/Core/System/cl_assert.h>
 #include <ClanLib/sound.h>
 
 #include "globals.hxx"

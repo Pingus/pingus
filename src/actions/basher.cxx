@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.14 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: basher.cxx,v 1.15 2002/09/14 19:06:33 torangan Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -17,12 +17,13 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../col_map.hxx"
-#include "../pingu_map.hxx"
-#include "../world.hxx"
-#include "../pingus_resource.hxx"
-#include "../globals.hxx"
-#include "../pingu.hxx"
 #include "../debug.hxx"
+#include "../globals.hxx"
+#include "../graphic_context.hxx"
+#include "../pingu_map.hxx"
+#include "../pingus_resource.hxx"
+#include "../pingu.hxx"
+#include "../world.hxx"
 #include "basher.hxx"
 
 using namespace std;

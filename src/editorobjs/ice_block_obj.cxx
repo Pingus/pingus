@@ -1,4 +1,4 @@
-//  $Id: info_box_obj.cxx,v 1.2 2002/09/14 19:06:34 torangan Exp $
+//  $Id: ice_block_obj.cxx,v 1.1 2002/09/14 19:06:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,46 +17,49 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../worldobjsdata/info_box_data.hxx"
-#include "info_box_obj.hxx"
+#include "../worldobjsdata/ice_block_data.hxx"
+#include "ice_block_obj.hxx"
 
 namespace EditorObjs {
 
-InfoBoxObj::InfoBoxObj (WorldObjsData::InfoBoxData* data_)
-  : SpriteEditorObj ("InfoBoxObj", "worldobjs", &data->pos),
-    data(new WorldObjsData::InfoBoxData(*data_))
+IceBlockObj::IceBlockObj (WorldObjsData::IceBlockData* data_)
+  : SpriteEditorObj ("iceblock", "worldobjs", &data->pos),
+    data(new WorldObjsData::IceBlockData(*data_))
 {
 }
 
-InfoBoxObj::~InfoBoxObj ()
+IceBlockObj::~IceBlockObj ()
 {
   delete data;
 }
 
+/** Create the object with resonable defaults */
 EditorObjLst
-InfoBoxObj::create (const CL_Vector& pos)
+IceBlockObj::create (const CL_Vector& pos)
 {
-  WorldObjsData::InfoBoxData newdata;
+  WorldObjsData::IceBlockData newdata;
   newdata.pos = pos;
-  return EditorObjLst(1, new InfoBoxObj(&newdata));
+  return newdata.create_EditorObj();
+}
+
+std::string 
+IceBlockObj::status_line ()
+{
+  char str[256];
+  snprintf (str, 256, "IceBlock - %f %f %f", data->pos.x, data->pos.y, data->pos.z);
+  return str;
 }
 
 void
-InfoBoxObj::write_xml (std::ostream& xml)
+IceBlockObj::write_xml (std::ostream& xml)
 {
   data->write_xml(xml);
 }
 
 EditorObj*
-InfoBoxObj::duplicate ()
+IceBlockObj::duplicate ()
 {
-  return new InfoBoxObj(data);
-}
-
-std::string 
-InfoBoxObj::status_line ()
-{
-  return "InfoBoxObj";
+  return new IceBlockObj(data);
 }
 
 } // namespace EditorObjs

@@ -1,4 +1,4 @@
-//  $Id: info_box.hxx,v 1.10 2002/09/14 13:35:38 torangan Exp $
+//  $Id: info_box.hxx,v 1.11 2002/09/14 19:06:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,7 @@ private:
 
 public:
   InfoBox (WorldObjsData::InfoBoxData* data_);
+ ~InfoBox ();
 
   void draw (GraphicContext& gc);
   void update (float delta);

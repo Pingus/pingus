@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.14 2002/09/11 12:45:57 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.15 2002/09/14 19:06:33 torangan Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -36,7 +36,6 @@
 #  include "win32/getopt.h"
 #endif /* !WIN32 */
 
-#include <ClanLib/core.h>
 #include <ClanLib/Core/System/system.h>
 #include <ClanLib/Display/setupdisplay.h>
 #include <ClanLib/Display/Display/display.h>
@@ -57,10 +56,8 @@
 #include "pingus_main.hxx"
 #include "algo.hxx"
 #include "globals.hxx"
-#include "pingus_resource.hxx"
 #include "system.hxx"
 #include "pingus_error.hxx"
-#include "loading.hxx"
 #include "global_event.hxx"
 #include "config.hxx"
 #include "console.hxx"
@@ -730,7 +727,7 @@ PingusMain::get_filenames()
 }
   
 void
-PingusMain::init(int argc, char** argv)
+PingusMain::init (int argc, char** argv)
 {
   char c;
 
@@ -756,7 +753,7 @@ PingusMain::init(int argc, char** argv)
 }
 
 void
-PingusMain::init_clanlib()
+PingusMain::init_clanlib ()
 {
   // Init ClanLib
   if (verbose) 
