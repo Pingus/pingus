@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.5 2002/08/01 21:40:01 grumbel Exp $
+//  $Id: client.hxx,v 1.6 2002/08/01 21:46:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include <ClanLib/Signals/slot.h>
 #include <ClanLib/Display/Input/inputdevice.h>
 #include <vector>
+#include "result.hxx"
+#include "gui_screen.hxx"
 
 namespace Input 
 {
@@ -31,8 +33,6 @@ namespace Input
   class PointerEvent;
   class AxisEvent;
 }
-
-#include "result.hxx"
 
 namespace GUI
 {
