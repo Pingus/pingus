@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<pingus-level>
+  <global>
+    <levelname lang="en">EditorDefaultValue: Please give me a name...</levelname>
+    <description lang="en">EditorDefaultValue: ...and a short descriptions</description>
+    <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
+    <number-of-pingus>50</number-of-pingus>
+    <number-to-save>25</number-to-save>
+    <time>9000</time>
+    <width>1200</width>
+    <height>600</height>
+  </global>
+
+  <action-list>
+    <basher count="20"/>
+    <blocker count="20"/>
+    <bomber count="20"/>
+    <bridger count="20"/>
+    <climber count="20"/>
+    <digger count="20"/>
+    <floater count="20"/>
+    <jumper count="20"/>
+    <miner count="20"/>
+  </action-list>
+
+  <worldobj type="conveyorbelt">  <position>
+    <x-pos>84</x-pos>
+    <y-pos>149</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+    <width>10</width>
+    <speed>4</speed>
+  </worldobj>
+
+
+  <worldobj type="conveyorbelt">  <position>
+    <x-pos>84</x-pos>
+    <y-pos>149</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+    <width>10</width>
+    <speed>2</speed>
+  </worldobj>
+
+  <start-position>
+  <position>
+    <x-pos>50</x-pos>
+    <y-pos>50</y-pos>
+    <z-pos>1000</z-pos>
+  </position>
+  </start-position>
+
+</pingus-level>
+

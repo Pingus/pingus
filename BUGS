@@ -1,21 +1,28 @@
 Pingus BUGS:
 ~~~~~~~~~~~~ 
 
+
 * Pressing Armageddon crashes the game from time to time
+
 * While loading a level it sometimes quits with a message that a
   resource wasn't found, but the resource should be pressent
+
 * Sound Support is very primitive
+
 * Music support isn't much tested
+
 * Zooming is broken
+
 * Some non Critical Errors (file not found, etc.)  quit Pingus, when
   it still should be able to contiune
+
 * Bridger's bridges are put wrongly to the colmap
+
 * Extremly short mouse clicks are not registered (its a bug in
   ClanLibs event system)
-* Shift selection in editor can capture an object twice
 
 'grep' at the sources for "Bug" or "FIXME" that should give you some
 more known bugs and other stuff. 
 
-$Date: 2000/07/31 23:49:45 $
+$Date: 2001/06/16 15:03:53 $
 

@@ -93,9 +93,9 @@ section XMas
 section Particles
 {
 	particle    = images/particles/particle.png   (type=surface, x=0, y=0, width=3,   height=3);
-	ground      = images/particles/ground.tga     (type=surface, x=0, y=0, width=32, height=32, array=4x1);
-	smoke       = images/particles/smoke.tga     (type=surface, x=0, y=0, width=32, height=32, array=8x1);
-	smoke2       = images/particles/smoke2.tga     (type=surface, x=0, y=0, width=32, height=32, array=8x1);
+	ground      = images/particles/ground.png     (type=surface, x=0, y=0, width=32, height=32, array=4x1);
+	smoke       = images/particles/smoke.png     (type=surface, x=0, y=0, width=32, height=32, array=8x1);
+	smoke2       = images/particles/smoke2.png     (type=surface, x=0, y=0, width=32, height=32, array=8x1);
 
 	snow1 = images/particles/snow1.png (type=surface, x=0, y=0, width=8, height=8);
 	snow2 = images/particles/snow2.png (type=surface, x=0, y=0, width=12, height=12);

@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.28 2001/06/14 11:07:18 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.29 2001/06/16 15:01:53 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -49,6 +49,7 @@
 
 // #include "efence.h"
 
+#include "PathManager.hh"
 #include "PingusMain.hh"
 #include "algo.hh"
 #include "globals.hh"
@@ -109,7 +110,6 @@ segfault_handler(int signo)
 
 PingusMain::PingusMain()
 {
-  pingus_datadir_set = false;
 }
 
 PingusMain::~PingusMain()
@@ -298,11 +298,18 @@ PingusMain::check_args(int argc, char* argv[])
       music_enabled = true;
       break;
     case 'd': // -d, --datadir
-      pingus_datadir = optarg;
-      pingus_datadir_set = true;
-      if (verbose)
-	std::cout << "check_args: Pingus Data Dir = "
-			  << pingus_datadir << std::endl;
+      if (optarg) 
+	{
+	  path_manager.add_path(optarg);
+	 
+	  if (verbose)
+	    std::cout << "check_args: Pingus Data Dir = "
+		      << optarg << std::endl;
+	}
+      else
+	{
+	  std::cout << "PingusMain: -d: optarg is (null)" << std::endl;
+	}
       break;
     case 'n':
       intro_disabled = true;
@@ -562,55 +569,11 @@ PingusMain::init_pingus()
 
   fps_counter.init();
   console.init();
-  /*
-  if (preload_data)
-    {
-      load_resources("global";
-      load_resources("game";
-      load_resources("textures";
-      load_resources("editor";
-      load_resources("fonts";
-      load_resources("menu";
-      load_resources("pingus";
-      load_resources("traps";
-    }
-  */
 }
 
 void
 PingusMain::load_resources(std::string filename)
 {
-  // Loading all resources
-  /*
-  {
-    CL_ResourceManager* res = global";
-
-    loading_screen.draw_progress("..:: " + filename + " ::..",
-				 0.0);
-    res->load_all_resources();
-    loading_screen.draw_progress("..:: " + filename + " ::..",
-				 1.0);
-
-    list<std::string>* liste = res->get_resources_of_type("surface");
-    list<std::string>::size_type count = 0;
-    list<std::string>::size_type list_size = liste->size();
-    
-    for(std::list<std::string>::iterator i = liste->begin(); i != liste->end(); i++)
-      {
-	// Loading surfaces to /dev/null...
-	CL_Surface::load(i->c_str(), res);
-	
-	count++;
-	if (count  % (list_size / 25) == 0)
-	  {
-	    loading_screen.draw_progress("..:: " + filename + " ::..",
-					 (float)(count) / list_size);
-	  }
-	CL_System::keep_alive();
-      }
-    loading_screen.draw_progress("..:: " + filename + " ::..", 1.0);
-  }
-    */
 }
       
 // Get all filenames and directories
@@ -620,7 +583,7 @@ PingusMain::get_filenames()
   System::init_directories();
 
 #ifndef WIN32
-  if (!pingus_datadir_set)
+  /*if (!pingus_datadir_set)
     {
       if (System::exist("../data/data/global.scr"))
 	{
@@ -639,35 +602,48 @@ PingusMain::get_filenames()
       else
 	{
 	  if (verbose)
-	    std::cout << "Using intern macro PINGUS_DATADIR" << std::endl;
+	    std::cout << "Using intern macro PINGUS_DATADIR (" << PINGUS_DATADIR << ")" << std::endl;
       
 	  pingus_datadir = PINGUS_DATADIR;
 	  pingus_datadir_set = true;
 	}
-    }
-#else /* !WIN32 */
-  //If the User uses Windows, the Datadir is always the Subdirectory "data"
-  pingus_datadir_set = true;
-  pingus_datadir = "data\\";
-#endif /* !WIN32 */
+	}*/
 
-  if (verbose)
-    std::cout << "pingus_datadir: " << pingus_datadir << std::endl;
+  char* pingus_datadir_env = getenv ("PINGUS_DATADIR");
+  if (pingus_datadir_env)
+    path_manager.add_path (pingus_datadir_env);
 
-  if (System::exist (pingus_datadir))
+  /* Some magic for detecting the path */
+  path_manager.add_path ("../data/");     // started from 'src/'
+  path_manager.add_path ("data/");        // started from base directory with 'src/pingus'
+  path_manager.add_path ("share/games/pingus/");  // started from base directory of the binary
+  path_manager.add_path ("../share/games/pingus/");  // started from base directory of the binary
+  path_manager.add_path (PINGUS_DATADIR); // started from $PATH
+  // As a last hope we try this:
+  path_manager.add_path ("/usr/share/pingus/");
+  path_manager.add_path ("/usr/local/share/pingus/");
+  
+  std::list<std::string> file_list;
+
+  file_list.push_back ("data/core.scr");
+  file_list.push_back ("images/core/misc/404.png");
+
+  if (!path_manager.find_path (file_list))
     {
-      if (verbose > 1)
-	std::cout << "Pingus Datadir exist, all looks ok" << std::endl;
-      System::change_dir (pingus_datadir);
-    } 
-  else 
-    {
-      std::cout << "FIXME: Couldn't find `global.scr', please set the enviroment variable\n"
+      std::cout << "Error: Couldn't find `global.scr', please set the enviroment variable\n"
 		<< "PINGUS_DATADIR to the path of the file `pingus.scr' or use the\n"
 		<< "-d option." << std::endl;
       exit(EXIT_FAILURE);
     }
-  
+
+#else /* !WIN32 */
+  //If the User uses Windows, the Datadir is always the Subdirectory "data"
+  path_manager.set_path("data\\");
+#endif /* !WIN32 */
+ 
+  // FIXME: Workaround for ClanLib-0.5.0 bug
+  System::change_dir (path_manager.get_base_path ());
+
   // First we try to open the file which was given, if that is not
   // there then we try again with filename+".plf". If still no success
   // we try to search for that file in the pingus_path, if its not

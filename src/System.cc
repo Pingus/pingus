@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.31 2001/06/11 08:45:21 grumbel Exp $
+//  $Id: System.cc,v 1.32 2001/06/16 15:01:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -202,7 +202,7 @@ System::get_statdir()
     }
   else
     {
-      throw Error(_("Enviroment variable $HOME not set, fix that and start again."));
+      throw Error(_("Environment variable $HOME not set, fix that and start again."));
     }
 #endif
 }

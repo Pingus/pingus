@@ -1,9 +1,3 @@
-Editor:
-
-Zooming in the menu panel
-region zooming
-
-
 * alterration of the lemmings rate
 
 What we need before we have a finished game:
@@ -13,7 +7,7 @@ What we need before we have a finished game:
 * we need connection between the worlds, probally some story text, or
   some cut-scene like images
 * we need to solve the problem of pingus stuck in a wall
-* we need to fix up all action to work probally in most situations
+* we need to fix up all action to work probally in most/all situations
 * we need some more worldobjects 
 
 ---------------------
@@ -320,6 +314,6 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
 
 
 
-$Date: 2001/05/19 09:48:24 $
+$Date: 2001/06/16 15:03:53 $
 
 -= EOF =-

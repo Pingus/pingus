@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.hh,v 1.17 2001/06/14 14:45:23 grumbel Exp $
+//  $Id: SurfaceButton.hh,v 1.18 2001/06/16 15:01:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,8 @@
 // #include "FileSelector.hh"
 
 class PingusMenu;
+
+/* !FIXME! All this should be rewritten... */
 
 ///
 class SurfaceButton
@@ -130,11 +132,12 @@ public:
 class EditorButton : public SurfaceButton
 {
 private:
+  PingusMenu* menu;
   ///
   Editor editor;
 public:
   ///
-  EditorButton();
+  EditorButton(  PingusMenu* menu);
   ///
   virtual ~EditorButton();
   ///

@@ -2,8 +2,8 @@ LDADD = caimagemanipulation/libcaimagemanipulation.a         worldobjs/libpingus
 
 LIBS =   libclanstatic.a libHermes.a \
 -L/usr/X11R6/lib/ \
--static \
 -lpthread \
+-lxml \
 -lm \
 -lbz2 \
 -ldl \
@@ -18,8 +18,19 @@ LIBS =   libclanstatic.a libHermes.a \
 -lICE \
 -lXxf86vm
 
+SDLLIBS=-lSDL -lSDL_mixer
 
-pingus.static:
-	g++ -O2 -Wall $(LDADD) $(LIBS) -o pingus.static *.o
+all : pingus.static pingus.static.comp
+
+pingus.static.comp : pingus.static
+	cp pingus.static pingus.static.comp
+	strip pingus.static.comp
+	upx-nrv -q --best pingus.static.comp
+
+pingus.static: Makefile.static pingus
+	g++ -O2 -Wall -static -o pingus.static *.o $(LDADD) $(LIBS) 
+
+clean :
+	rm -f pingus.static.comp pingus.static
 
 # EOF #

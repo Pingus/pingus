@@ -1,4 +1,4 @@
-//  $Id: PingusMain.hh,v 1.5 2001/06/14 11:07:18 grumbel Exp $
+//  $Id: PingusMain.hh,v 1.6 2001/06/16 15:01:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,8 +32,6 @@ void segfault_handler(int);
 class PingusMain : public AbstractMain
 {
 private:
-  ///
-  bool    pingus_datadir_set;
   ///
   bool    no_config_file;
   ///

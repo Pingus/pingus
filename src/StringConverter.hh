@@ -1,4 +1,4 @@
-//  $Id: StringConverter.hh,v 1.5 2001/06/11 08:45:21 grumbel Exp $
+//  $Id: StringConverter.hh,v 1.6 2001/06/16 15:01:53 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,15 +48,18 @@ std::string to_string(const T& any)
 template <class T>
 void from_string(const std::string& rep, T& x)
 {
+ // this is necessary so that if "x" is not modified if the conversion fails
+  T temp;
 #ifdef HAVE_SSTREAM
   std::istringstream iss(rep);
 #else
   std::istrstream iss(rep.c_str());
 #endif
-  iss >> x;
+  iss >> temp;
   if (iss.fail())
     throw std::invalid_argument
-      ("Exception: Failed to extract type T from rep: " + rep);
+      ("Exception: 'failed to extract type T from rep' " __FILE__ ": " + rep);
+  x = temp;
 }
 
 class StringConverter

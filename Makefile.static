@@ -1,0 +1,36 @@
+PACKAGE=pingus
+VERSION=0.5.0pre1-binary-i386
+TMPDIR=$(PACKAGE)-$(VERSION)
+TARNAME=$(PACKAGE)-$(VERSION).tar.bz2
+
+all : tarball
+
+binary : src/pingus.static src/pingus src/Makefile.static
+	cd src/ && $(MAKE) -f Makefile.static
+ 
+tarball : binary src/pingus.static 
+	mkdir -p $(TMPDIR)/bin/
+	mkdir -p $(TMPDIR)/share/games/pingus/
+	mkdir -p $(TMPDIR)/share/games/pingus/data/
+	mkdir -p $(TMPDIR)/share/games/pingus/worldmaps/
+	mkdir -p $(TMPDIR)/share/games/pingus/levels/plf/
+	mkdir -p $(TMPDIR)/share/doc/pingus/
+	mkdir -p $(TMPDIR)/man/man6/
+	cp doc/pingus.6 $(TMPDIR)/man/man6/
+	cp data/data/*.scr $(TMPDIR)/share/games/pingus/data/
+	cp data/worldmaps/*.xml $(TMPDIR)/share/games/pingus/worldmaps/
+	cp data/levels/*.xml $(TMPDIR)/share/games/pingus/levels/
+	cp data/levels/*.psm data/levels/*.plf $(TMPDIR)/share/games/pingus/levels/plf/
+	cp README README.binary AUTHORS COPYING $(TMPDIR)/share/doc/pingus/
+
+	cp src/pingus.static.comp $(TMPDIR)/bin/pingus
+	
+	for i in `find XXX/ -name "*.png" -o -name "*.jpg" | grep -v "\.xvpics\\|/old/|/.thumbnails/" | sed "s/XXX\///g"`; \
+	do \
+		mkdir -p `dirname $(TMPDIR)/share/games/pingus/$$i`; \
+		cp  data/$$i  $(TMPDIR)/share/games/pingus/$$i; \
+	done
+	
+	tar cjf $(TARNAME) $(TMPDIR)
+	rm -rf $(TMPDIR)
+

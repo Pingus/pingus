@@ -1,4 +1,4 @@
-//  $Id: Intro.cc,v 1.17 2001/06/14 11:07:18 grumbel Exp $
+//  $Id: Intro.cc,v 1.18 2001/06/16 15:01:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,9 +60,6 @@ Intro::draw()
 void 
 Intro::update (float delta)
 {
-  if (CL_Keyboard::get_keycode (CL_KEY_SPACE))
-    manager->set_menu (&manager->mainmenu);
-  
   switch (stage)
     {
     case SCROLL_UP:
@@ -102,6 +99,14 @@ Intro::preload ()
 		   CL_Display::get_height () + logo.get_height ());
   
   stage = SCROLL_UP;
+}
+
+
+void 
+Intro::on_button_press (CL_InputDevice* device,const CL_Key& key)
+{
+  if (device == CL_Input::keyboards[0] && key.id == CL_KEY_SPACE)
+    manager->set_menu (&(manager->mainmenu));
 }
 
 /* EOF */

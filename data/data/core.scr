@@ -38,7 +38,7 @@ section editor
 
 	button = images/core/editor/button.png (type=surface, x=0, y=0, width=24,  height=24);
 	button_pressed = images/core/editor/button_pressed.png (type=surface, x=0, y=0, width=24,  height=24);
-	
+
 	logo = images/core/editor/logo.png (type=surface, x=0, y=0, width=25,  height=207);
 }
 
@@ -74,7 +74,10 @@ section misc
 {
 	404 = images/core/misc/404.png (type=surface, x=0, y=0, width=64, height=64);
 
-	logo_t        = images/core/misc/logo.png       (type=surface, x=0, y=0, width=598, height=259);
+	exitmenu = images/core/menu/exitmenu.png (type=surface, x=0, y=0, width=400, height=296);
+
+	logo = images/core/misc/logo.png (type=surface, x=0, y=0, width=610, height=210);
+//	logo_t        = images/core/misc/logo.png       (type=surface, x=0, y=0, width=598, height=259);
 
 	loading        = images/core/misc/loading.png       (type=surface, x=0, y=0, width=175, height=66,tcol=0);
 	pingubw = images/core/misc/pingubw.png (type=surface, x=0, y=0, width=307, height=400);

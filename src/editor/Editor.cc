@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.27 2001/05/20 13:00:59 grumbel Exp $
+//  $Id: Editor.cc,v 1.28 2001/06/16 15:01:54 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -121,6 +121,8 @@ Editor::edit ()
 
   while (!quit) 
     {
+      // FIXME: This busy loop should be replaced by redraw events
+      CL_System::sleep (20);
       CL_System::keep_alive();
       move_objects();
       draw();
@@ -491,6 +493,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.28  2001/06/16 15:01:54  grumbel
+Some fixup for the 0.5.0 release
+
 Revision 1.27  2001/05/20 13:00:59  grumbel
 Some small fixes to the actions
 

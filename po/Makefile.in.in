@@ -53,7 +53,9 @@ POTFILES = \
 
 CATALOGS = @CATALOGS@
 CATOBJEXT = @CATOBJEXT@
-INSTOBJEXT = @INSTOBJEXT@
+
+## FIXME: dirty hack to hardcode .mo, why doesn't get '@INSTOBJEXT@' expanded?
+INSTOBJEXT = .mo
 
 .SUFFIXES:
 .SUFFIXES: .c .o .po .pox .gmo .mo .msg .cat

@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.26 2001/06/14 14:45:23 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.27 2001/06/16 15:01:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -279,7 +279,8 @@ void LoadButton::on_click()
     }*/
 }
 
-EditorButton::EditorButton()
+EditorButton::EditorButton(  PingusMenu* menu)
+  : menu (menu)
 {
   // x_pos = CL_Display::get_width() * 335 / 640;
   // y_pos = CL_Display::get_height() * 370 / 480;
@@ -312,10 +313,9 @@ EditorButton::~EditorButton()
 void
 EditorButton::on_click()
 {
+  menu->get_manager ()->unregister_events ();
   editor.edit();
-
-  while (CL_Keyboard::get_keycode(CL_KEY_ESCAPE))
-    CL_System::keep_alive();
+  menu->get_manager ()->register_events ();
 }
 
 ThemeButton::ThemeButton(PingusMenu* menu)

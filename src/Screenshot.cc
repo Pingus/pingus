@@ -1,4 +1,4 @@
-//  $Id: Screenshot.cc,v 1.9 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: Screenshot.cc,v 1.10 2001/06/16 15:01:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,7 +61,7 @@ Screenshot::save_16bit_target_to_file(CL_Target* target, std::string filename)
 
   if (!out) {
     perror(filename.c_str());
-    std::cout << _("Screenshot: Coudn't write file: ") << filename << std::endl;
+    std::cout << _("Screenshot: Couldn't write file: ") << filename << std::endl;
     return;
   }
 

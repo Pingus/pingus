@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.47 2001/06/14 14:45:23 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.48 2001/06/16 15:01:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ PingusMenu::preload ()
       std::cout << "PingusMenu::init ()" << std::endl;
       event_enabled = true;
       is_init = true;
-      boost::shared_ptr<SurfaceButton> editor_button (new EditorButton ());
+      boost::shared_ptr<SurfaceButton> editor_button (new EditorButton (this));
  
       if (start_editor)
 	editor_button->on_click ();

@@ -1,4 +1,4 @@
-//  $Id: GenericMain.cc,v 1.7 2001/06/11 08:45:21 grumbel Exp $
+//  $Id: GenericMain.cc,v 1.8 2001/06/16 15:01:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 
 #include <iostream>
 
-#include <locale.h>
+#include <clocale>
 
 #include "my_gettext.hh"
 

@@ -1,3 +1,4 @@
+
 AC_DEFUN(AC_LIB_CLANLIB, [
 	echo "checking for ClanLib... assuming yes, but haven't tested";
 	LIBS="-lclan -lclanlayer2 $LIBS"]
