@@ -10,6 +10,9 @@
     <time>9000</time>
     <width>1280</width>
     <height>1024</height>
+    <difficulty>5</difficulty>
+    <playable>0</playable>
+    <comment></comment>
   </global>
 
   <action-list>
@@ -22,15 +25,6 @@
     <floater count="20"/>
     <miner count="20"/>
   </action-list>
-
-<trap>
-  <type>fake_exit</type>
-  <position>
-    <x-pos>650</x-pos>
-    <y-pos>772</y-pos>
-    <z-pos>-1000</z-pos>
-  </position>
-</trap>
 
 <background type="surface">
   <surface><resource type="datafile">
@@ -251,6 +245,15 @@
     <z-pos>41</z-pos>
   </position>
 </groundpiece>
+
+<trap>
+  <type>fake_exit</type>
+  <position>
+    <x-pos>650</x-pos>
+    <y-pos>772</y-pos>
+    <z-pos>-3</z-pos>
+  </position>
+</trap>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">

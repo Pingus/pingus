@@ -105,6 +105,30 @@
   <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
+    <x-pos>305</x-pos>
+    <y-pos>193</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>306</x-pos>
+    <y-pos>136</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>test/test3</resource-ident>
+  </resource></surface>
+  <position>
     <x-pos>285</x-pos>
     <y-pos>428</y-pos>
     <z-pos>0</z-pos>
@@ -129,6 +153,18 @@
   <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
+    <x-pos>794</x-pos>
+    <y-pos>174</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>test/test3</resource-ident>
+  </resource></surface>
+  <position>
     <x-pos>800</x-pos>
     <y-pos>428</y-pos>
     <z-pos>0</z-pos>
@@ -141,8 +177,32 @@
   <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
+    <x-pos>600</x-pos>
+    <y-pos>154</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>test/test3</resource-ident>
+  </resource></surface>
+  <position>
     <x-pos>628</x-pos>
     <y-pos>428</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>708</x-pos>
+    <y-pos>174</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -177,8 +237,32 @@
   <resource-ident>test/test3</resource-ident>
   </resource></surface>
   <position>
+    <x-pos>449</x-pos>
+    <y-pos>174</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>test/test3</resource-ident>
+  </resource></surface>
+  <position>
     <x-pos>455</x-pos>
     <y-pos>428</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>test/test3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>536</x-pos>
+    <y-pos>174</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -219,10 +303,22 @@
   </position>
 </groundpiece>
 
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>test/test10</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>463</x-pos>
+    <y-pos>374</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
 <entrance>
   <position>
-    <x-pos>395</x-pos>
-    <y-pos>331</y-pos>
+    <x-pos>563</x-pos>
+    <y-pos>132</y-pos>
     <z-pos>0</z-pos>
   </position>
   <type>generic</type>
@@ -251,14 +347,14 @@
   </position>
   </start-position>
 
-<groundpiece type="ground">
+<groundpiece type="bridge">
   <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>test/test10</resource-ident>
+    <resource-datafile>groundpieces-bridge</resource-datafile>
+  <resource-ident>misc/bridge_left</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>463</x-pos>
-    <y-pos>374</y-pos>
+    <x-pos>385</x-pos>
+    <y-pos>151</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
