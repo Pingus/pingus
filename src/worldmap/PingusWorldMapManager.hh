@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapManager.hh,v 1.9 2002/06/06 14:05:44 grumbel Exp $
+//  $Id: PingusWorldMapManager.hh,v 1.10 2002/06/06 16:24:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,19 @@
 #ifndef PINGUSWORLDMAPMANAGER_HH
 #define PINGUSWORLDMAPMANAGER_HH
 
-#include "PingusWorldMap.hh"
+#include <ClanLib/core.h>
+#include "../boost/smart_ptr.hpp"
+
+class CL_InputDevice;
+class CL_Key;
 
 namespace Pingus
 {
+  namespace WorldMap
+  {
+    class WorldMap;
+  }
+
   /**  */
   class WorldMapManager
   {
@@ -50,13 +59,10 @@ namespace Pingus
   private:
     /// Load all required resources if not already done
     void init ();
-    ///
+
     void on_button_press (CL_InputDevice *device, const CL_Key &key);
-    ///
     void on_button_release (CL_InputDevice *device, const CL_Key &key);
-    ///
     void on_mouse_move(CL_InputDevice *,int mouse_x, int mouse_y);
-    ///
     void on_resize(int w, int h);
 
   public:

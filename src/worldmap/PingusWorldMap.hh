@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.hh,v 1.22 2002/06/06 14:05:44 grumbel Exp $
+//  $Id: PingusWorldMap.hh,v 1.23 2002/06/06 16:24:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,7 +64,7 @@ namespace Pingus
       WorldMap (std::string filename);
 
       /** Destruct the worldmap */
-      virtual ~WorldMap ();
+      ~WorldMap ();
 
       /** Launch the level at the given node
 	  @param node The current node from which the level should be started */
@@ -93,15 +93,15 @@ namespace Pingus
       void enable_button_events ();
   
       /** Draw the world worldmap */
-      virtual void draw ();
+      void draw ();
   
       /** Returns true if the worldmap is finished and the
 	  PingusWorldMapManager can quit */
-      bool do_exit () { return do_quit; }
+      bool do_exit ();
 
       /** Let the woldmap do some stuff, like animating smoke, playing
 	  sounds or reacting on special events */
-      virtual void update (float delta);
+      void update (float delta);
 
       /** Returns a pointer to the node under the given coordinates */
       NodePtr get_node (int x, int y);

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapManager.cc,v 1.22 2002/06/06 14:05:44 grumbel Exp $
+//  $Id: PingusWorldMapManager.cc,v 1.23 2002/06/06 16:24:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "../globals.hh"
 #include "../algo.hh"
 #include "../Display.hh"
+#include "PingusWorldMap.hh"
 #include "PingusWorldMapManager.hh"
 
 using namespace Pingus;
