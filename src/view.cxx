@@ -1,4 +1,4 @@
-//  $Id: view.cxx,v 1.11 2002/09/14 19:06:33 torangan Exp $
+//  $Id: view.cxx,v 1.12 2002/09/17 22:52:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,14 +58,6 @@ View::draw()
 {
   assert(world);
   
-  // FIXME: CL_Display::push_clip_rect();
-  // FIXME: CL_Display::set_clip_rect(clip_rect);
-
-  // Drawing the world
-  /*world->draw(x1_pos, y1_pos,
-	      x2_pos - x1_pos + 1, y2_pos - y1_pos + 1,
-	      x_offset, y_offset, size);*/
-
   // Update the scroll position
   //display_gc.set_zoom (2.0f);
   display_gc.set_offset (x_offset - (x2_pos - x1_pos)/2,
@@ -170,8 +162,8 @@ void
 View::make_range()
 {
   // Bug: this works not very good
-  x_offset.set_range(0, (int)(x2_pos - x1_pos - (world->get_width()  * size)));
-  y_offset.set_range(0, (int)(y2_pos - y1_pos - (world->get_height() * size)));
+  x_offset.set_range(0, (int)((x2_pos - x1_pos + 1) - (world->get_width()  * size)));
+  y_offset.set_range(0, (int)((y2_pos - y1_pos + 1) - (world->get_height() * size)));
 }
 
 double
