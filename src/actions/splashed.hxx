@@ -1,4 +1,4 @@
-//  $Id: splashed.hxx,v 1.11 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: splashed.hxx,v 1.12 2002/10/13 16:40:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,8 +32,7 @@ private:
   bool sound_played;
   Sprite sprite;
 public:
-  Splashed();
-  void init (void);
+  Splashed(Pingu*);
   
   std::string get_name () const { return "Splashed"; }
   ActionName get_type () const { return Actions::Splashed; }

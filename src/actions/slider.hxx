@@ -1,4 +1,4 @@
-//  $Id: slider.hxx,v 1.10 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: slider.hxx,v 1.11 2002/10/13 16:40:01 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,9 +31,8 @@ private:
   Sprite sprite;
   float  speed;
 public:
-  Slider ();
+  Slider (Pingu* p);
 
-  void  init(void);
   std::string get_name() const { return "Slider"; }
   ActionName get_type() const { return Actions::Slider; }
 

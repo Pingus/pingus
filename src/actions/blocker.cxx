@@ -1,4 +1,4 @@
-//  $Id: blocker.cxx,v 1.13 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: blocker.cxx,v 1.14 2002/10/13 16:40:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,12 +29,8 @@
 
 namespace Actions {
 
-Blocker::Blocker()
-{
-}
-
-void
-Blocker::init(void)
+Blocker::Blocker(Pingu* p)
+  : PinguAction(p)
 {
   sprite = Sprite(PingusResource::load_surface ("Pingus/blocker" 
 						+ to_string (pingu->get_owner ()),

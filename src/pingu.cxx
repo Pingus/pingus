@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.35 2002/10/12 00:49:10 torangan Exp $
+//  $Id: pingu.cxx,v 1.36 2002/10/13 16:39:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,8 +55,7 @@ Pingu::Pingu (int arg_id, const Vector& arg_pos, int owner)
 
   // Initialisize the action, after this step the action ptr will
   // always be valid in the pingu class
-  action = PinguActionFactory::instance()->create(Faller);
-  action->set_pingu(this);
+  action = PinguActionFactory::instance()->create(this, Faller);
 }
 
 Pingu::~Pingu ()
@@ -219,13 +218,13 @@ Pingu::request_set_action (PinguAction* act)
 bool 
 Pingu::request_set_action (ActionName action_name)
 {
-  return request_set_action (PinguActionFactory::instance ()->create (action_name));
+  return request_set_action (PinguActionFactory::instance ()->create (this, action_name));
 }
 
 void
 Pingu::set_action (ActionName action_name) 
 {
-  set_action(PinguActionFactory::instance()->create(action_name));
+  set_action(PinguActionFactory::instance()->create(this, action_name));
 }
 
 // Sets an action without any checking
@@ -237,7 +236,6 @@ Pingu::set_action (PinguAction* act)
   previous_action = action->get_type();
 
   action = act;
-  action->set_pingu(this);
 }
 
 bool

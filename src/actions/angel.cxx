@@ -1,4 +1,4 @@
-//  $Id: angel.cxx,v 1.13 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: angel.cxx,v 1.14 2002/10/13 16:39:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,12 +27,10 @@
 
 namespace Actions {
 
-Angel::Angel () : counter(0.0), x_pos(0)
-{
-}
-
-void
-Angel::init ()
+Angel::Angel(Pingu* p) 
+  : PinguAction(p),
+    counter(0.0), 
+    x_pos(0)  
 {
   x_pos = pingu->get_x();
   counter = 0.0;

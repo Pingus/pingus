@@ -1,4 +1,4 @@
-//  $Id: bridger.cxx,v 1.22 2002/10/07 23:10:20 grumbel Exp $
+//  $Id: bridger.cxx,v 1.23 2002/10/13 16:40:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,16 +40,12 @@ CL_Surface Bridger::brick_l;
 CL_Surface Bridger::brick_r;
 CL_Surface Bridger::static_surface;
 
-Bridger::Bridger () : mode(B_BUILDING),
-		      bricks(MAX_BRICKS),
-		      block_build(false),
-		      name("Bridger (" + to_string(bricks) + ")")
-
-{
-}
-
-void
-Bridger::init (void)
+Bridger::Bridger (Pingu* p) 
+  : PinguAction(p),
+    mode(B_BUILDING),
+    bricks(MAX_BRICKS),
+    block_build(false),
+    name("Bridger (" + to_string(bricks) + ")")
 {
   if (!static_surfaces_loaded)
     {

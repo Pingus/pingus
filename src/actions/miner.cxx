@@ -1,4 +1,4 @@
-// $Id: miner.cxx,v 1.14 2002/10/04 11:38:29 torangan Exp $
+// $Id: miner.cxx,v 1.15 2002/10/13 16:40:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,12 +28,8 @@
 
 namespace Actions {
 
-Miner::Miner()
-{
-}
-
-void
-Miner::init (void)
+Miner::Miner(Pingu* p)
+  : PinguAction(p)
 {
   miner_radius = PingusResource::load_surface("Other/bash_radius", "pingus");
   miner_radius_gfx = PingusResource::load_surface("Other/bash_radius_gfx", "pingus");

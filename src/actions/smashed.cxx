@@ -1,4 +1,4 @@
-//  $Id: smashed.cxx,v 1.10 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: smashed.cxx,v 1.11 2002/10/13 16:40:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,8 +24,8 @@
 
 namespace Actions {
 
-void
-Smashed::init (void)
+Smashed::Smashed (Pingu* p)
+  : PinguAction(p)
 {
   sprite = Sprite("Pingus/bomber0", "pingus");
   sound_played = false;  

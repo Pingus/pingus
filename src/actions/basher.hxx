@@ -1,4 +1,4 @@
-//  $Id: basher.hxx,v 1.13 2002/10/08 17:53:10 grumbel Exp $
+//  $Id: basher.hxx,v 1.14 2002/10/13 16:40:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,8 +42,7 @@ private:
   enum { max_steps_down = 3 };
     
 public:
-  Basher ();
-  void   init (void);
+  Basher (Pingu* p);
     
   std::string get_name () const { return "Basher"; }
   ActionName get_type () const { return Actions::Basher; }

@@ -1,4 +1,4 @@
-//  $Id: pingu_action.hxx,v 1.18 2002/10/12 00:49:10 torangan Exp $
+//  $Id: pingu_action.hxx,v 1.19 2002/10/13 16:39:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,8 +48,7 @@ protected:
   static const int pingu_height;
 
 public:
-
-  PinguAction();
+  PinguAction(Pingu* p);
   virtual ~PinguAction();
 
   /// Gives the PinguAction class access to the data of the Pingu.
@@ -67,11 +66,6 @@ public:
   /** Checks if this action allows to be overwritten with the given new action */
   virtual bool change_allowed (Actions::ActionName) { return true; }
   
-  /** Used to load all data, which is needed by the action, its
-      seperated and called in set_pingu(), because some data will be
-      only valid if set_pingu() is called. */
-  virtual void init (void) {};
-
   /// The "AI" of the pingu.
   virtual void update () = 0;
 

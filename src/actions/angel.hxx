@@ -1,4 +1,4 @@
-//  $Id: angel.hxx,v 1.12 2002/10/01 19:53:44 grumbel Exp $
+//  $Id: angel.hxx,v 1.13 2002/10/13 16:39:59 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,8 +34,8 @@ private:
   Sprite sprite;
     
 public:
-  Angel ();
-  void  init ();
+  Angel (Pingu* p);
+
   std::string get_name () const { return "Angel"; }
   ActionName get_type () const { return Actions::Angel; }
     

@@ -1,4 +1,4 @@
-//  $Id: pingu_action.cxx,v 1.8 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: pingu_action.cxx,v 1.9 2002/10/13 16:39:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,20 +27,13 @@
 // Initialise class static.
 const int PinguAction::pingu_height = 26;
 
-PinguAction::PinguAction () : pingu (0)
+PinguAction::PinguAction (Pingu* p)
+  : pingu (p)
 {
 }
 
 PinguAction::~PinguAction ()
 {
-}
-
-void
-PinguAction::set_pingu (Pingu* pingu_data)
-{
-  pingu = pingu_data;
-  assert(pingu);
-  init();
 }
 
 // Checks if the pingu action needs to catch another pingu (needed for 

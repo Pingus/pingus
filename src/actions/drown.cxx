@@ -1,4 +1,4 @@
-//  $Id: drown.cxx,v 1.10 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: drown.cxx,v 1.11 2002/10/13 16:40:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,8 +24,8 @@
 
 namespace Actions {
 
-void 
-Drown::init ()
+Drown::Drown (Pingu* p)
+  : PinguAction(p) 
 {
   //if (pingu->environment == ENV_AIR)
   sprite = Sprite("Pingus/drownfall0", "pingus", 60.0f,

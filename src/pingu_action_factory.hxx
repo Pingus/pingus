@@ -1,4 +1,4 @@
-//  $Id: pingu_action_factory.hxx,v 1.7 2002/09/27 11:26:44 torangan Exp $
+//  $Id: pingu_action_factory.hxx,v 1.8 2002/10/13 16:39:59 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,7 @@ public:
   void delete_actions ();
 
   /** Allocate the given action */
-  PinguAction* create (Actions::ActionName id);
+  PinguAction* create (Pingu* p, Actions::ActionName id);
   
 private:
   PinguActionFactory (const PinguActionFactory&);
@@ -63,7 +63,7 @@ public:
     PinguActionFactory::instance ()-> register_factory (id, this);
   }
   
-  virtual PinguAction* create () =0;
+  virtual PinguAction* create (Pingu* p) =0;
   
 private:
   PinguActionAbstractFactory (const PinguActionAbstractFactory&);
@@ -79,8 +79,8 @@ public:
   {
   }
 
-  PinguAction* create () {
-    return new T ();
+  PinguAction* create (Pingu* p) {
+    return new T (p);
   }
   
 private:

@@ -1,4 +1,4 @@
-//  $Id: slider.cxx,v 1.14 2002/10/12 00:24:26 grumbel Exp $
+//  $Id: slider.cxx,v 1.15 2002/10/13 16:40:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,12 +25,8 @@
 
 namespace Actions {
 
-Slider::Slider ()
-{
-}
-
-void
-Slider::init (void)
+Slider::Slider (Pingu* p)
+  : PinguAction(p)
 {
   sprite = Sprite("Pingus/slider" + to_string(pingu->get_owner()),
 		  "pingus");

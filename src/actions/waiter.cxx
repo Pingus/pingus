@@ -1,4 +1,4 @@
-//  $Id: waiter.cxx,v 1.10 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: waiter.cxx,v 1.11 2002/10/13 16:40:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,8 +25,12 @@
 
 namespace Actions {
 
-Waiter::Waiter ()
+Waiter::Waiter (Pingu* p)
+  : PinguAction(p)
 {
+  sprite = PingusResource::load_surface("Pingus/blocker0", "pingus");
+  sprite.set_align_center_bottom();
+  countdown = 2.0;
 }
 
 void
@@ -38,14 +42,6 @@ Waiter::update ()
     pingu->set_action(Actions::Walker);
   
   countdown -= 0.025f;
-}
-
-void
-Waiter::init ()
-{
-  sprite = PingusResource::load_surface("Pingus/blocker0", "pingus");
-  sprite.set_align_center_bottom();
-  countdown = 2.0;
 }
 
 void

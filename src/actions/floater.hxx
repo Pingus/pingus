@@ -1,4 +1,4 @@
-//  $Id: floater.hxx,v 1.12 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: floater.hxx,v 1.13 2002/10/13 16:40:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ private:
   int step;
   Sprite sprite;
 public:
-  Floater();
+  Floater(Pingu* p);
 
   std::string get_name() const { return "Floater"; }
   ActionName get_type() const { return Actions::Floater; }

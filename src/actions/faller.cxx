@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.28 2002/10/04 11:38:29 torangan Exp $
+//  $Id: faller.cxx,v 1.29 2002/10/13 16:40:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,13 +31,10 @@ namespace Actions {
 
 const float Faller::deadly_velocity = 20.0f;
 
-Faller::Faller() : falling(0) { }
-
-Faller::~Faller() { }
-
-void
-Faller::init(void)
-{
+Faller::Faller(Pingu* p)
+  : PinguAction(p),
+    falling(0) 
+{ 
   faller = Sprite("Pingus/faller" + to_string(pingu->get_owner ()), "pingus");
   faller.set_align_center_bottom ();
   
@@ -46,6 +43,8 @@ Faller::init(void)
   tumbler = Sprite("Pingus/tumble" + to_string(pingu->get_owner()), "pingus");
   tumbler.set_align_center_bottom();
 }
+
+Faller::~Faller() { }
 
 void
 Faller::update ()

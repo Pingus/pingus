@@ -1,4 +1,4 @@
-//  $Id: digger.cxx,v 1.16 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: digger.cxx,v 1.17 2002/10/13 16:40:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,12 +30,9 @@
 
 namespace Actions {
 
-Digger::Digger () : digger_c(0)
-{
-}
-
-void
-Digger::init (void)
+Digger::Digger (Pingu* p)
+  : PinguAction(p),
+    digger_c(0)
 {
   digger_radius = PingusResource::load_surface ("Other/digger_radius", "pingus");
   digger_radius_gfx = PingusResource::load_surface ("Other/digger_radius", "pingus");

@@ -1,4 +1,4 @@
-//  $Id: pingu_action_factory.cxx,v 1.8 2002/08/25 09:08:48 torangan Exp $
+//  $Id: pingu_action_factory.cxx,v 1.9 2002/10/13 16:39:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -94,7 +94,7 @@ PinguActionFactory::register_core_actions ()
 }
 
 PinguAction* 
-PinguActionFactory::create (ActionName id)
+PinguActionFactory::create (Pingu* pingu, ActionName id)
 {
   std::map<ActionName, PinguActionAbstractFactory*>::iterator it = factories.find(id);
   
@@ -102,7 +102,7 @@ PinguActionFactory::create (ActionName id)
     PingusError::raise("PinguActionFactory: Invalid id: " + id);
   else 
     {
-      PinguAction* action = it->second->create ();
+      PinguAction* action = it->second->create (pingu);
       all_actions.push_back (action);
       return action;
     }

@@ -1,4 +1,4 @@
-//  $Id: floater.cxx,v 1.19 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: floater.cxx,v 1.20 2002/10/13 16:40:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,12 +24,9 @@
 
 namespace Actions {
 
-Floater::Floater() : falling_depth(0), step(0)
-{
-}
-
-void
-Floater::init(void)
+Floater::Floater(Pingu* p) 
+  : PinguAction(p),
+    falling_depth(0), step(0)
 {
   falling_depth = 0;
   step = 0;

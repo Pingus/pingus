@@ -1,4 +1,4 @@
-//  $Id: rocket_launcher.cxx,v 1.10 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: rocket_launcher.cxx,v 1.11 2002/10/13 16:40:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,8 +29,8 @@
 
 namespace Actions {
 
-void
-RocketLauncher::init ()
+RocketLauncher::RocketLauncher(Pingu* p)
+  : PinguAction(p)
 {
   sprite = Sprite (PingusResource::load_surface 
 		   ("Pingus/rocketlauncher" + to_string(pingu->get_owner ()),

@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.20 2002/10/08 17:53:10 grumbel Exp $
+//  $Id: basher.cxx,v 1.21 2002/10/13 16:39:59 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -30,12 +30,10 @@ using namespace std;
 
 namespace Actions {
 
-Basher::Basher () : basher_c(0), first_bash(true)
-{
-}
-
-void
-Basher::init (void)
+Basher::Basher (Pingu* p) 
+  : PinguAction(p),
+    basher_c(0), 
+    first_bash(true)
 {
   bash_radius = PingusResource::load_surface ("Other/bash_radius", "pingus");
   bash_radius_gfx = PingusResource::load_surface ("Other/bash_radius_gfx", "pingus");
@@ -108,15 +106,15 @@ Basher::walk_forward()
 
   if (y_inc < -max_steps_down)
     {
-    // The step down is too much.  So stop being a Basher and be a Faller.
-    pingu->set_action(Actions::Faller);
+      // The step down is too much.  So stop being a Basher and be a Faller.
+      pingu->set_action(Actions::Faller);
     }
   else
     {
-    // Note that Pingu::set_pos() is the 'reverse' of the y co-ords of
-    // rel_getpixel()
-    pingu->set_pos(pingu->get_x() + static_cast<int>(pingu->direction),
-		   pingu->get_y() - y_inc);
+      // Note that Pingu::set_pos() is the 'reverse' of the y co-ords of
+      // rel_getpixel()
+      pingu->set_pos(pingu->get_x() + static_cast<int>(pingu->direction),
+                     pingu->get_y() - y_inc);
     }
 }
 

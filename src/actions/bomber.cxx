@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.19 2002/10/12 00:49:10 torangan Exp $
+//  $Id: bomber.cxx,v 1.20 2002/10/13 16:40:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,22 +38,12 @@ bool Bomber::static_surface_loaded = false;
 CL_Surface Bomber::bomber_radius;
 CL_Surface Bomber::bomber_radius_gfx;
 
-Bomber::Bomber () 
-  : particle_thrown(false),
+Bomber::Bomber (Pingu* p) 
+  : PinguAction(p),
+    particle_thrown(false),
     sound_played(false), 
     gfx_exploded(false),
     colmap_exploded(false)
-{
-}
-
-void
-Bomber::on_successfull_apply ()
-{
-  WorldObj::get_world()->play_wav("sounds/ohno.wav", pingu->get_pos ());
-}
-
-void
-Bomber::init ()
 {
   // Only load the surface again if no static_surface is available
   if (!static_surface_loaded) 
@@ -69,6 +59,12 @@ Bomber::init ()
   sprite.set_align_center_bottom ();
 
   sound_played = false;
+}
+
+void
+Bomber::on_successfull_apply ()
+{
+  WorldObj::get_world()->play_wav("sounds/ohno.wav", pingu->get_pos ());
 }
 
 void

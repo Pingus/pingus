@@ -1,4 +1,4 @@
-//  $Id: drown.hxx,v 1.10 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: drown.hxx,v 1.11 2002/10/13 16:40:01 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,8 +31,7 @@ private:
   Sprite sprite;
   
 public:
-  Drown () { }
-  void init ();
+  Drown (Pingu* p);
     
   std::string get_name () const { return "Drown"; }
   ActionName get_type () const { return Actions::Drown; }

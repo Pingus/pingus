@@ -1,4 +1,4 @@
-//  $Id: digger.hxx,v 1.11 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: digger.hxx,v 1.12 2002/10/13 16:40:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,8 +34,7 @@ private:
   int digger_c;
 
 public:
-  Digger();
-  void init (void);
+  Digger(Pingu*);
     
   std::string get_name () const { return "Digger"; }
   ActionName get_type () const { return Actions::Digger; }

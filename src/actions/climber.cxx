@@ -1,4 +1,4 @@
-//  $Id: climber.cxx,v 1.16 2002/10/04 11:38:29 torangan Exp $
+//  $Id: climber.cxx,v 1.17 2002/10/13 16:40:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,12 +24,8 @@
 
 namespace Actions {
 
-Climber::Climber()
-{
-}
-
-void
-Climber::init(void)
+Climber::Climber(Pingu* p)
+  : PinguAction(p)
 {
   sprite = Sprite ("Pingus/climber0", "pingus");
 

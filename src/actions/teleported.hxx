@@ -30,11 +30,10 @@ private:
   bool sound_played;
   Sprite sprite;
 public:
-  Teleported();
+  Teleported(Pingu*);
 
   std::string get_name() const { return "Teleported"; }
   ActionName get_type() const { return Actions::Teleported; }
-  void init(void);
 
   void draw (GraphicContext& gc);
   void update();

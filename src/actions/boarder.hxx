@@ -1,4 +1,4 @@
-//  $Id: boarder.hxx,v 1.11 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: boarder.hxx,v 1.12 2002/10/13 16:40:01 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,8 +35,7 @@ private:
   double speed;
   Sprite sprite;
 public:
-  Boarder ();
-  void  init();
+  Boarder (Pingu* p);
   
   std::string get_name () const { return "Boarder"; }
   ActionName get_type () const { return Actions::Boarder; }

@@ -1,4 +1,4 @@
-//  $Id: superman.cxx,v 1.8 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: superman.cxx,v 1.9 2002/10/13 16:40:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,12 +25,8 @@
 
 namespace Actions {
 
-Superman::Superman ()
-{
-}
-
-void
-Superman::init ()
+Superman::Superman (Pingu* p)
+  : PinguAction(p)
 {
   x_pos = pingu->get_x();
   counter = 0.0;

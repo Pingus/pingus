@@ -1,4 +1,4 @@
-//  $Id: rocket_launcher.hxx,v 1.10 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: rocket_launcher.hxx,v 1.11 2002/10/13 16:40:01 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,10 +31,8 @@ private:
   Sprite sprite;
   bool launched;
 public:
-  RocketLauncher () {}
-  ~RocketLauncher () {}
-
-  void  init ();
+  RocketLauncher(Pingu*);
+  ~RocketLauncher() {}
   
   std::string get_name () const { return "RocketLauncher"; }
   ActionName get_type () const { return Actions::Rocketlauncher; }
