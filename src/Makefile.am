@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.87 2002/08/01 21:40:01 grumbel Exp $
+#  $Id: Makefile.am,v 1.88 2002/08/09 22:02:13 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -100,10 +100,6 @@ config.cxx \
 config.hxx \
 console.cxx \
 console.hxx \
-controllable.cxx \
-controllable.hxx \
-controller.cxx \
-controller.hxx \
 counter.cxx \
 counter.hxx \
 credits.cxx \
@@ -112,8 +108,6 @@ cursor.cxx \
 cursor.hxx \
 debug.cxx \
 debug.hxx \
-debug_gui.cxx \
-debug_gui.hxx \
 debug_stream.cxx \
 debug_stream.hxx \
 delta_manager.hxx \
@@ -152,8 +146,6 @@ game_session_result.cxx \
 game_session_result.hxx \
 game_time.cxx \
 game_time.hxx \
-gamepad_controller.cxx \
-gamepad_controller.hxx \
 generic_main.cxx \
 generic_main.hxx \
 global_event.cxx \
@@ -162,8 +154,8 @@ globals.cxx \
 globals.hxx \
 groundpiece_data.cxx \
 groundpiece_data.hxx \
-gui_obj.cxx \
 gui_obj.hxx \
+gui_obj.cxx \
 gui_screen.cxx \
 gui_screen.hxx \
 hotspot.cxx \
@@ -177,8 +169,6 @@ hurry_up.hxx \
 input_event.hxx \
 intro.cxx \
 intro.hxx \
-keyboard_controller.cxx \
-keyboard_controller.hxx \
 layer_manager.cxx \
 layer_manager.hxx \
 level_desc.cxx \
@@ -201,8 +191,6 @@ menu_background.cxx \
 menu_background.hxx \
 message_box.cxx \
 message_box.hxx \
-mouse_controller.cxx \
-mouse_controller.hxx \
 multiline_text.cxx \
 multiline_text.hxx \
 multiplayer_client.cxx \
@@ -213,7 +201,6 @@ multiplayer_config.cxx \
 multiplayer_config.hxx \
 multiplayer_game.cxx \
 multiplayer_game.hxx \
-multiplex_controller.hxx \
 music_provider.cxx \
 music_provider.hxx \
 my_gettext.hxx \
@@ -327,8 +314,6 @@ trap_data.cxx \
 trap_data.hxx \
 true_server.cxx \
 true_server.hxx \
-usb_mouse_controller.cxx \
-usb_mouse_controller.hxx \
 view.cxx \
 view.hxx \
 wav_provider.cxx \

@@ -1,4 +1,4 @@
-//  $Id: bridger.cxx,v 1.8 2002/07/02 13:36:06 torangan Exp $
+//  $Id: bridger.cxx,v 1.9 2002/08/09 22:02:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -132,8 +132,7 @@ Bridger::update_walk (float delta)
 	 }
       else // We reached a wall...
 	 {
-           // Let Walker sort out change of direction (so that in case
-           // of a climber, we would start to climb instead of direction change)
+	   pingu->direction.change ();
 	   pingu->set_action (Walker);
 	   pingu->pos = last_pos;
 	   return;

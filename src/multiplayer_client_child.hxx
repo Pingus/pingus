@@ -1,4 +1,4 @@
-//  $Id: multiplayer_client_child.hxx,v 1.2 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: multiplayer_client_child.hxx,v 1.3 2002/08/09 22:02:13 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,14 +23,12 @@
 #include <ClanLib/Core/Math/cl_vector.h>
 #include "cursor.hxx"
 #include "button_panel.hxx"
-#include "controllable.hxx"
 #include "playfield_view.hxx"
 #include "pingus_counter_bar.hxx"
 
 class Server;
 
-class MultiplayerClientChild : public Controllable,
-			       public GuiObj
+class MultiplayerClientChild : public GuiObj
 {
 private:
 
@@ -50,8 +48,7 @@ private:
   CL_Vector scroll_vec;
 
 public:
-  MultiplayerClientChild (Controller* arg_controller, 
-			  Server * s, const CL_Rect& arg_rect);
+  MultiplayerClientChild (Server * s, const CL_Rect& arg_rect);
   ~MultiplayerClientChild ();
 
   void draw ();

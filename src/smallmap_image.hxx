@@ -1,4 +1,4 @@
-//  $Id: smallmap_image.hxx,v 1.3 2002/07/29 10:44:12 grumbel Exp $
+//  $Id: smallmap_image.hxx,v 1.4 2002/08/09 22:02:13 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,13 +22,12 @@
 
 #include <ClanLib/Display/Display/surface.h>
 #include <ClanLib/Core/Math/cl_vector.h>
-#include "gui_obj.hxx"
 
 class Server;
 
 /** The base image of the small map, it doesn't handle any userinput,
     it only generates the surface */
-class SmallMapImage : public GuiObj
+class SmallMapImage
 {
 private:
   CL_Surface sur;

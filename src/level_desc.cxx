@@ -1,4 +1,4 @@
-//  $Id: level_desc.cxx,v 1.3 2002/06/20 11:23:53 grumbel Exp $
+//  $Id: level_desc.cxx,v 1.4 2002/08/09 22:02:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,6 @@
 #include "level_desc.hxx"
 #include "system.hxx"
 #include "plf.hxx"
-#include "controller.hxx"
 
 /* Headers needed for i18n / gettext */
 #include <clocale>
@@ -34,9 +33,7 @@
 #include "my_gettext.hxx"
 
 
-PingusLevelDesc::PingusLevelDesc(PLF* arg_plf,
-				 Controller* arg_controller)
-  : controller (arg_controller)
+PingusLevelDesc::PingusLevelDesc(PLF* arg_plf)
 {
   plf = arg_plf;
 
@@ -95,12 +92,14 @@ PingusLevelDesc::draw(PingusLevelDesc::LoadingStatus status)
     font->print_center(CL_Display::get_width() / 2, CL_Display::get_height() - 80, _("Loading finished. Press a mouse button to start the level"));
     Display::flip_display();
     
+    /*
     // FIXME: Busy waiting... ugly
     while (!controller->pause->is_pressed () && !controller->left->is_pressed ())
       {
 	CL_System::keep_alive();
 	CL_System::sleep (50);
       }
+    */
   }
 }
 

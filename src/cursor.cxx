@@ -1,4 +1,4 @@
-//  $Id: cursor.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: cursor.cxx,v 1.2 2002/08/09 22:02:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,12 +18,9 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "cursor.hxx"
-#include "controller.hxx"
 
-Cursor::Cursor (std::string ident, std::string datafile,
-		Controller* arg_controller)
-  : sprite (ident, datafile, 15.0f),
-    controller (arg_controller)
+Cursor::Cursor (std::string ident, std::string datafile)
+  : sprite (ident, datafile, 15.0f)
 {
   sprite.set_align_center();
 }
@@ -41,7 +38,7 @@ Cursor::update (float delta)
 void 
 Cursor::on_event()
 {
-  sprite.put_screen (controller->get_pos ());
+  //sprite.put_screen (controller->get_pos ());
 }
 
 /* EOF */

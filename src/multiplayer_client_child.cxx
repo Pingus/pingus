@@ -1,4 +1,4 @@
-//  $Id: multiplayer_client_child.cxx,v 1.6 2002/08/02 11:25:46 grumbel Exp $
+//  $Id: multiplayer_client_child.cxx,v 1.7 2002/08/09 22:02:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,14 +22,10 @@
 #include "multiplayer_client_child.hxx"
 #include "pingu.hxx"
 #include "server.hxx"
-#include "controller.hxx"
 
-
-MultiplayerClientChild::MultiplayerClientChild (Controller* arg_controller,
-						Server * s, const CL_Rect& arg_rect)
-  : Controllable (arg_controller),
-    server (s),
-    cursor (new Cursor ("cursors/cross", "core", controller)),
+MultiplayerClientChild::MultiplayerClientChild (Server * s, const CL_Rect& arg_rect)
+  : server (s),
+    cursor (new Cursor ("cursors/cross", "core")),
     button_panel (new ButtonPanel (s->get_plf (), arg_rect.x1, arg_rect.y1)),
     capture_rect ("cursors/capgood", "core"),
     playfield (new PlayfieldView (server->get_world (), arg_rect)),
@@ -47,7 +43,7 @@ MultiplayerClientChild::MultiplayerClientChild (Controller* arg_controller,
   //gui_objs.push_back (button_panel);
   gui_objs.push_back (counterbar);
 
-  controller->set_range (rect);
+  //controller->set_range (rect);
 
   set_clip_rect(rect.x1, rect.y1, rect.x2, rect.y2);
 
@@ -70,9 +66,11 @@ MultiplayerClientChild::draw ()
   for (GuiObjIter i = gui_objs.begin (); i != gui_objs.end (); ++i)
     (*i)->draw_clipped ();
 
+  /*
   Pingu* pingu = playfield->get_pingu (controller->get_pos ());
   if (pingu && pingu->get_owner () == controller->get_owner ())
     capture_rect.put_screen(controller->get_pos ());
+  */
 }
 
 void 
@@ -92,7 +90,7 @@ void MultiplayerClientChild::on_left_press (const CL_Vector& pos)
   key.y = pos.y;
   //button_panel->on_button_press(key);
 
-  Pingu* pingu = playfield->get_pingu (controller->get_pos ());
+  /*Pingu* pingu = playfield->get_pingu (controller->get_pos ());
   if (pingu && pingu->get_owner () == controller->get_owner ())
     {
       char str[256];
@@ -101,6 +99,7 @@ void MultiplayerClientChild::on_left_press (const CL_Vector& pos)
 	      action_to_string(button_panel->get_action_name()).c_str());
       server->send_event(str);
     }
+  */
 }
 
 void MultiplayerClientChild::on_right_press (const CL_Vector& /*pos*/)

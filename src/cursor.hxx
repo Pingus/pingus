@@ -1,4 +1,4 @@
-//  $Id: cursor.hxx,v 1.2 2002/06/24 22:52:54 grumbel Exp $
+//  $Id: cursor.hxx,v 1.3 2002/08/09 22:02:13 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,8 +24,6 @@
 #include "display.hxx"
 #include "sprite.hxx"
 
-class Controller;
-
 /** A simple mouse cursor class and stupid. We can't use the X11/win32
     nativ mouse cursor because we want also to support non-mouse input
     devices and because we want to support multiple cursors */
@@ -33,10 +31,9 @@ class Cursor : public DisplayHook
 {
 private:
   Sprite sprite;
-  Controller* controller;
   
 public:
-  Cursor (std::string ident, std::string datafile, Controller*);
+  Cursor (std::string ident, std::string datafile);
   virtual ~Cursor ();
   
   virtual void update (float delta);

@@ -1,4 +1,4 @@
-//  $Id: level_desc.hxx,v 1.2 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: level_desc.hxx,v 1.3 2002/08/09 22:02:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,6 @@
 
 class CL_Font;
 class PLF;
-class Controller;
 
 ///
 class PingusLevelDesc
@@ -38,11 +37,10 @@ private:
   PLF* plf;
   
   MultiLineText description;
-  Controller* controller;
   std::string         levelname;
 public:
   enum LoadingStatus { LOADING, FINISHED };
-  PingusLevelDesc(PLF*, Controller*);
+  PingusLevelDesc(PLF*);
   
   void draw(PingusLevelDesc::LoadingStatus status);
 };

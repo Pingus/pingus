@@ -1,4 +1,4 @@
-//  $Id: multiplayer_game.cxx,v 1.6 2002/06/20 13:28:37 torangan Exp $
+//  $Id: multiplayer_game.cxx,v 1.7 2002/08/09 22:02:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,9 +23,6 @@
 #include "true_server.hxx"
 #include "multiplayer_client.hxx"
 #include "xml_plf.hxx"
-#include "mouse_controller.hxx"
-#include "gamepad_controller.hxx"
-#include "keyboard_controller.hxx"
 #include "multiplayer_game.hxx"
 #include "multiplayer_client_child.hxx"
 
@@ -44,6 +41,7 @@ MultiplayerGame::start ()
   try {
     PLF* plf = new XMLPLF (path_manager.complete("levels/multi2-grumbel.xml"));
     std::auto_ptr<Server>     server (new TrueServer (plf));
+#if 0
     Controller* controller1;
     Controller* controller2;
     Controller* controller3;
@@ -144,6 +142,7 @@ MultiplayerGame::start ()
     delete controller2;
     delete controller3;
     delete controller4;
+#endif 
   } catch (...) {
     std::cout << "MultiplayerGame: Something went wrong and we have probally a memory leak." << std::endl;
   }

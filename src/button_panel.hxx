@@ -1,4 +1,4 @@
-//  $Id: button_panel.hxx,v 1.7 2002/08/02 22:55:19 grumbel Exp $
+//  $Id: button_panel.hxx,v 1.8 2002/08/09 22:02:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 
 #include <vector>
 
-#include "gui_obj.hxx"
 #include "action_button.hxx"
 #include "gui/component.hxx"
 
