@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.26 2002/10/20 21:38:54 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.27 2002/10/26 17:29:02 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -215,7 +215,7 @@ PingusMain::check_args(int argc, char** argv)
       {"enable-bg-manipulation", no_argument,  0, 148},
       {"use-datafile",      no_argument,       0, 150},
       {"use-scriptfile",    no_argument,       0, 151},
-      {"max-cpu-usage",     no_argument,       0, 153},
+      {"min-cpu-usage",     no_argument,       0, 153},
       {"min-frame-skip",    required_argument, 0, 154},
       {"max-frame-skip",    required_argument, 0, 155},
 #ifdef HAVE_LIBCLANGL
@@ -501,7 +501,7 @@ For more information about these matters, see the files named COPYING.\
       break;
 
     case 153:
-      max_cpu_usage = true;
+      max_cpu_usage = false;
       break;
 
     case 154:
@@ -557,7 +557,7 @@ For more information about these matters, see the files named COPYING.\
           "   --enable-action-help     Enable action button help strings(default)\n"
           "   --no-cfg-file            Don't read ~/.pingus/config\n"
           "   --config-file FILE       Read config from FILE (default: ~/.pingus/config)\n"
-          "   --max-cpu-usage          Use all of the cpu power available, instead of trying to\n"
+          "   --min-cpu-usage          Reduces the CPU usage by issuing sleep()\n"
           "                            reduce CPU usage, might speed up the game on slower machines\n"
           "   --min-frame-skip N       Skip at least N frames, larger values speed the game up\n"
           "   --max-frame-skip N       Skip at most N frames\n"
