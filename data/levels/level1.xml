@@ -43,6 +43,10 @@
     <miner>20</miner>
   </action-list>
 
+  <weather>
+    <type>rain</type>
+  </weather>
+
 <liquid>  <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
   <resource-ident>Liquid/lava</resource-ident>
