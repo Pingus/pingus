@@ -1,4 +1,4 @@
-//  $Id: SnowParticle.cc,v 1.6 2000/08/04 22:46:20 grumbel Exp $
+//  $Id: SnowParticle.cc,v 1.7 2000/08/04 23:01:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -111,11 +111,12 @@ CollidingSnowParticle::let_move()
   assert(ground_snow);
   SnowParticle::let_move();
 
-  if (world->get_colmap()->getpixel(x_pos, y_pos) != ColMap::NOTHING
-      && world->get_colmap()->getpixel(x_pos, y_pos) != ColMap::LAVA
-      && world->get_colmap()->getpixel(x_pos, y_pos) != ColMap::WATER)
+  int pixel = world->get_colmap()->getpixel(x_pos, y_pos);
+
+  if (pixel != ColMap::NOTHING && pixel != ColMap::LAVA
+      && pixel != ColMap::WATER && pixel != ColMap::OUTOFSCREEN)
     {
-      std::cout << "Snow: touch down: " << x_pos << " " << y_pos << std::endl;
+      //std::cout << "Snow: touch down: " << x_pos << " " << y_pos << std::endl;
       world->get_gfx_map()->put(ground_snow->get_provider(), 
 				(int)x_pos - 1,
 				(int)y_pos - 1);
