@@ -6,3 +6,4 @@ src/GenericMain.cc
 src/Screenshot.cc
 src/SurfaceButton.cc
 src/Credits.cc
+src/PingusLevelDesc.cc

@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.32 2000/10/12 20:18:12 grumbel Exp $
+#  $Id: configure.in,v 1.33 2000/10/13 18:08:33 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -259,9 +259,12 @@ AC_TYPE_SIGNAL
 AC_CHECK_FUNCS(select strdup)
 
 dnl Checking for the install prefix and then use it to define PINGUS_DATADIR
-
 PINGUS_EXPAND_DIR(pingus_datadir, "$datadir/games/$PACKAGE")
 AC_DEFINE_UNQUOTED(PINGUS_DATADIR, "$pingus_datadir")
+
+dnl -- Define the localedir, needed for gettext --
+PINGUS_EXPAND_DIR(localedir, "$datadir/locale")
+AC_DEFINE_UNQUOTED(LOCALEDIR, "$localedir")
 
 AC_OUTPUT( Makefile 
            src/Makefile 
@@ -279,6 +282,7 @@ AC_OUTPUT( Makefile
            data/images/Makefile 
            data/levels/Makefile
            data/themes/Makefile
+           data/worldmaps/Makefile
            data/data/Makefile
            data/demos/Makefile
            data/data/Makefile

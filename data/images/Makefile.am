@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.20 2000/10/13 12:19:46 grumbel Exp $
+#  $Id: Makefile.am,v 1.21 2000/10/13 18:08:33 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,7 @@
 #  along with this program; if not, write to the Free Software
 #  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-# Trying to get all the image names out of the .scr files...
+pkgdatadir = $(datadir)/games/@PACKAGE@/images
 
 EXTRA_DIST = \
 editor/start_pos.pcx \
@@ -575,6 +575,72 @@ traps/teleporter.tga \
 traps/bumper.pcx \
 traps/bumper_cmap.pcx \
 worldmaps/volcano.jpg
+
+my_pkgdata_DATA = $(EXTRA_DIST)
+
+# We don't use automake's stuff to install the data, since it is
+# unable to handle recursive directory trees.
+# The list was produced by:
+# find . -type d -and -not -name "CVS" -and -not -name ".xvpics" > /tmp/inst-dirs
+install-data-local: $(my_pkgdata_DATA)
+	$(mkinstalldirs) \
+                         $(pkgdatadir)/buttons \
+                         $(pkgdatadir)/cursors \
+                         $(pkgdatadir)/editor \
+                         $(pkgdatadir)/entrances \
+                         $(pkgdatadir)/entrances/sortie \
+                         $(pkgdatadir)/entrances/old \
+                         $(pkgdatadir)/exits \
+                         $(pkgdatadir)/fonts \
+                         $(pkgdatadir)/groundpieces \
+                         $(pkgdatadir)/groundpieces/crystal \
+                         $(pkgdatadir)/groundpieces/sweets \
+                         $(pkgdatadir)/groundpieces/foliage \
+                         $(pkgdatadir)/groundpieces/foliage/grass \
+                         $(pkgdatadir)/groundpieces/jungle \
+                         $(pkgdatadir)/groundpieces/misc \
+                         $(pkgdatadir)/groundpieces/rock \
+                         $(pkgdatadir)/groundpieces/snow \
+                         $(pkgdatadir)/groundpieces/test \
+                         $(pkgdatadir)/groundpieces/space \
+                         $(pkgdatadir)/groundpieces/sortie \
+                         $(pkgdatadir)/groundpieces/mushroom \
+                         $(pkgdatadir)/groundpieces/desert \
+                         $(pkgdatadir)/groundpieces/industrial \
+                         $(pkgdatadir)/groundpieces/industrial/gunge \
+                         $(pkgdatadir)/hotspots \
+                         $(pkgdatadir)/hotspots/signposts \
+                         $(pkgdatadir)/liquids \
+                         $(pkgdatadir)/misc \
+                         $(pkgdatadir)/particles \
+                         $(pkgdatadir)/pingus \
+                         $(pkgdatadir)/textures \
+                         $(pkgdatadir)/themes \
+                         $(pkgdatadir)/traps \
+                         $(pkgdatadir)/banner \
+                         $(pkgdatadir)/story \
+                         $(pkgdatadir)/menu \
+                         $(pkgdatadir)/menu/old \
+                         $(pkgdatadir)/gui \
+                         $(pkgdatadir)/gui/gui \
+                         $(pkgdatadir)/gui/button \
+                         $(pkgdatadir)/gui/checkbox \
+                         $(pkgdatadir)/gui/combobox \
+                         $(pkgdatadir)/gui/listbox \
+                         $(pkgdatadir)/gui/menu \
+                         $(pkgdatadir)/gui/scrollbar \
+                         $(pkgdatadir)/worldmaps
+	@$(NORMAL_INSTALL)
+	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)
+	@list='$(my_pkgdata_DATA)'; for p in $$list; do \
+	  if test -f $(srcdir)/$$p; then \
+	    echo " $(INSTALL_DATA) $(srcdir)/$$p $(DESTDIR)$(pkgdatadir)/$$p"; \
+	    $(INSTALL_DATA) $(srcdir)/$$p $(DESTDIR)$(pkgdatadir)/$$p; \
+	  else if test -f $$p; then \
+	    echo " $(INSTALL_DATA) $$p $(DESTDIR)$(pkgdatadir)/$$p"; \
+	    $(INSTALL_DATA) $$p $(DESTDIR)$(pkgdatadir)/$$p; \
+	  fi; fi; \
+	done
 
 # cat ../data/*.scr | sed -n "s/^[ 	]*[A-Za-z0-9_]*[ 	]*=[ 	]*\([^ ]*\) (.*);/\1/p"
 

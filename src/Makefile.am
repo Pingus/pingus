@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.43 2000/10/13 12:19:46 grumbel Exp $
+#  $Id: Makefile.am,v 1.44 2000/10/13 18:08:33 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,9 +21,9 @@ bindir=$(prefix)/games
 
 # The next lines are for gettext
 localedir = $(datadir)/locale
-DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
+# DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
 LIBS = @INTLLIBS@ @LIBS@
-INCLUDES = -I$(srcdir) -I.. -I$(top_srcdir)/lib -I../intl -I$(top_srcdir)/intl
+# INCLUDES = -I$(srcdir) -I.. -I$(top_srcdir)/lib -I../intl -I$(top_srcdir)/intl
 
 SUBDIRS = \
 	actions             \

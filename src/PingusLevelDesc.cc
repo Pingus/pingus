@@ -1,4 +1,4 @@
- //  $Id: PingusLevelDesc.cc,v 1.14 2000/08/06 00:00:56 grumbel Exp $
+ //  $Id: PingusLevelDesc.cc,v 1.15 2000/10/13 18:08:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,10 @@
 #include <iostream>
 #include <cstdio>
 #include <string>
+
+// -- Gettext -- //
+#include <libintl.h>
+#define _(String) gettext (String)
 
 #include "Display.hh"
 #include "PingusResource.hh"
@@ -67,22 +71,22 @@ PingusLevelDesc::draw(PingusLevelDesc::LoadingStatus status)
     {
       font->print_center(CL_Display::get_width() / 2, 
 			 CL_Display::get_height() - 30,
-			 ("Designed by " + plf->get_author()).c_str());
+			 (_("Designed by ") + plf->get_author()).c_str());
     }
 
   {
     char str[1024];
-    sprintf(str, "Pingus to Save: %d", plf->get_number_to_save());
+    sprintf(str, _("Pingus to Save: %d"), plf->get_number_to_save());
     font->print_center(CL_Display::get_width() / 2, y_pos, str);
-    sprintf(str, "Number of Pingus: %d", plf->get_pingus());
+    sprintf(str, _("Number of Pingus: %d"), plf->get_pingus());
     font->print_center(CL_Display::get_width() / 2, (y_pos += 20), str);
   }
 
   if (status == LOADING) {
-    font->print_center(CL_Display::get_width() / 2, CL_Display::get_height() - 80, "Loading...");
+    font->print_center(CL_Display::get_width() / 2, CL_Display::get_height() - 80, _("Loading..."));
     Display::flip_display();    
   } else {
-    font->print_center(CL_Display::get_width() / 2, CL_Display::get_height() - 80, "Loading finished. Press a mouse button to start the level");
+    font->print_center(CL_Display::get_width() / 2, CL_Display::get_height() - 80, _("Loading finished. Press a mouse button to start the level"));
     Display::flip_display();
     
     while (!CL_Mouse::left_pressed() && !CL_Mouse::right_pressed() && !CL_Mouse::middle_pressed())

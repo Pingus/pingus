@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2000-10-13 13:44+0200\n"
-"PO-Revision-Date: 2000-10-13 13:47+02:00\n"
+"POT-Creation-Date: 2000-10-13 17:44+0200\n"
+"PO-Revision-Date: 2000-10-13 17:47+02:00\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: Ingo Ruhnke <grumbel@gmx.de>\n"
 "MIME-Version: 1.0\n"
@@ -153,7 +153,7 @@ msgstr "..:: Such dir eine Welt zum starten aus ::.."
 #: src/SurfaceButton.cc:319
 #, fuzzy
 msgid "Start"
-msgstr "Pingus wird gestartet..."
+msgstr "Start"
 
 #. The credits vector holds the strings to display. The first
 #. character of each string is a special character, which indicates
@@ -169,11 +169,11 @@ msgstr "_bitte eine kurze Mail mich."
 
 #: src/Credits.cc:55
 msgid "_I'll fix this."
-msgstr " "
+msgstr "n"
 
 #: src/Credits.cc:56
 msgid "_Last Updated: 2000/06/27"
-msgstr ""
+msgstr "_Letzte Aenderung: 2000/06/27"
 
 #: src/Credits.cc:57
 msgid "n"
@@ -198,6 +198,29 @@ msgstr "-Besonderen"
 #: src/Credits.cc:79
 msgid "-Thanks to"
 msgstr "-Dank an"
+
+#: src/PingusLevelDesc.cc:74
+msgid "Designed by "
+msgstr "Erstellt von "
+
+#: src/PingusLevelDesc.cc:79
+#, c-format
+msgid "Pingus to Save: %d"
+msgstr "Zu rettende Pingus: %d"
+
+#: src/PingusLevelDesc.cc:81
+#, c-format
+msgid "Number of Pingus: %d"
+msgstr "Anzahl an Pingus: %d"
+
+#: src/PingusLevelDesc.cc:86
+#, fuzzy
+msgid "Loading..."
+msgstr "Ladevorgang laeuft..."
+
+#: src/PingusLevelDesc.cc:89
+msgid "Loading finished. Press a mouse button to start the level"
+msgstr "Ladevorgang abgeschloss. Drücke eine Maus Taste um den Level zu starten"
 
 #~ msgid "Pingus: Gimmicks enabled"
 #~ msgstr "Pingus: Spielereinen eingeschaltet"

@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.13 2000/10/13 12:19:46 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.14 2000/10/13 18:08:33 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -605,7 +605,7 @@ PingusMain::get_filenames()
 	{
 	  if (verbose) std::cout << "Assuming that you are running the binary version" << std::endl;
       
-	  pingus_datadir += "./data/"; 
+	  pingus_datadir = "./data/"; 
 	  pingus_datadir_set = true; 
 	}
       else
@@ -613,8 +613,8 @@ PingusMain::get_filenames()
 	  if (verbose)
 	    std::cout << "Using intern macro PINGUS_DATADIR" << std::endl;
       
-	  pingus_datadir += ":";
-	  pingus_datadir += PINGUS_DATADIR;
+	  pingus_datadir = PINGUS_DATADIR;
+	  pingus_datadir_set = true;
 	}
     }
 #else /* !WIN32 */

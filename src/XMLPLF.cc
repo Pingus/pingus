@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.15 2000/09/30 21:34:42 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.16 2000/10/13 18:08:33 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,9 @@ XMLPLF::XMLPLF()
 XMLPLF::XMLPLF(const string& filename)
 {
   //  std::cout << "----- Parsing .xml file" << std::endl;
+  std::cout << "--- Checksum: " << std::flush;
+  std::string str = System::checksum (filename);
+  std::cout << str << std::endl;
 
   doc = xmlParseFile(filename.c_str());
 

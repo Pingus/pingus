@@ -15,10 +15,12 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-SUBDIRS = images levels demos data themes
+SUBDIRS = images levels demos data themes worldmaps
 
 # Tweaking the `datadir' to install the files in the correct location
 pkgdatadir = $(datadir)/games/@PACKAGE@
 
 EXTRA_DIST = README
 pkgdata_DATA = $(EXTRA_DIST)
+
+# EOF #
