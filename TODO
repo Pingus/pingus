@@ -1,5 +1,7 @@
 Release Critical:
 ~~~~~~~~~~~~~~~~~
+ o Resource aren't found from time to time, even if they are present
+   (probably a memory problem, time for efence I guess)
  o Miner graebt durch solid
  o Add feature flag to list features compiled into pingus
  o You can scroll when you shoudn't be able to scroll (800x600)
@@ -164,6 +166,6 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
 
 
 
-$Date: 2000/06/20 20:35:15 $
+$Date: 2000/06/21 23:00:40 $
 
 -= EOF =-
