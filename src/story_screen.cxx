@@ -1,4 +1,4 @@
-//  $Id: story_screen.cxx,v 1.5 2003/03/25 23:15:22 grumbel Exp $
+//  $Id: story_screen.cxx,v 1.6 2003/03/28 12:06:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 #include "fonts.hxx"
 #include "story_screen.hxx"
 #include "res_descriptor.hxx"
+#include "worldmap/manager.hxx"
 #include "sound/sound.hxx"
 
 class StoryPage
@@ -173,7 +174,8 @@ StoryScreen::on_fast_forward_press ()
 void
 StoryScreen::on_escape_press ()
 {
-  ScreenManager::instance()->replace_screen (PingusMenuManager::instance (), false);
+  if (1 /* story_seen */)
+    ScreenManager::instance()->replace_screen(WorldMapNS::WorldMapManager::instance ());
 }
 
 void 
@@ -204,7 +206,8 @@ StoryScreenComponent::next_text()
       else
         {
           std::cout << "StoryScreenComponent: Out of story pages" << std::endl;
-          ScreenManager::instance()->replace_screen (PingusMenuManager::instance (), false);
+          //ScreenManager::instance()->replace_screen (PingusMenuManager::instance (), false);
+          ScreenManager::instance()->replace_screen(WorldMapNS::WorldMapManager::instance ());
         }
     }
 }

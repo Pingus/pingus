@@ -1,4 +1,4 @@
-//  $Id: savegame_manager.cxx,v 1.1 2003/03/26 12:01:17 grumbel Exp $
+//  $Id: savegame_manager.cxx,v 1.2 2003/03/28 12:06:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,7 +75,7 @@ SavegameManager::SavegameManager(const std::string& arg_filename)
                     }
                   else
                     {
-                      std::cout << "SavegameManager: Loading savegame for: " << savegame->levelname << std::endl;
+                      //std::cout << "SavegameManager: Loading savegame for: " << savegame->levelname << std::endl;
                       savegames[savegame->levelname] = savegame;
                     }
                 }

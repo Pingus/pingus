@@ -1,4 +1,4 @@
-//  $Id: thumb_cache.cxx,v 1.11 2002/10/14 11:15:15 torangan Exp $
+//  $Id: thumb_cache.cxx,v 1.12 2003/03/28 12:06:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,8 @@ ThumbCache::uncached_load (const std::string & res_ident, const std::string & da
 {
   CL_Surface sur = PingusResource::load_surface (res_ident, datafile);
 
-  pout << "ThumbCache: Loading: " << res_ident << " (" << datafile << ")"  << std::endl;
+  if (maintainer_mode)
+    pout << "ThumbCache: Loading: " << res_ident << " (" << datafile << ")"  << std::endl;
   
   // Add object to cache
   return ThumbCache::cache (sur, res_ident, datafile);
@@ -129,8 +130,9 @@ ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const s
       && sur.get_provider ()->get_width () < 50)
     {
       // If the image is smaller than the thumbnail, there is no need to cache it
-      pout << "ThumbCache: image too small for cache: " << res_ident << std::endl;
-      std::cout << "ThumbCache: image too small for cache: " << res_ident << std::endl;
+      if (maintainer_mode)
+        pout << "ThumbCache: image too small for cache: " << res_ident << std::endl;
+      
       return sur;
     }
     
@@ -144,8 +146,9 @@ ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const s
 
   unsigned int timestamp = PingusResource::get_mtime (res_ident, datafile);
 
-  pout << "ThumbCache: Writing cache file: " << filename 
-       << " timestamp: " << timestamp << std::endl;
+  if (maintainer_mode)
+    pout << "ThumbCache: Writing cache file: " << filename 
+         << " timestamp: " << timestamp << std::endl;
   
   try 
     {

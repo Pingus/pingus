@@ -1,4 +1,4 @@
-//  $Id: menu_button.cxx,v 1.4 2003/03/27 15:57:22 grumbel Exp $
+//  $Id: menu_button.cxx,v 1.5 2003/03/28 12:06:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@
 #include "menu_button.hxx"
 #include "gui/screen_manager.hxx"
 #include "worldmap/manager.hxx"
+#include "story_screen.hxx"
 #include "my_gettext.hxx"
 
 using EditorNS::Editor;
@@ -360,7 +361,10 @@ void
 StoryButton::on_click ()
 {
   PingusSound::play_sound ("letsgo");
-  ScreenManager::instance()->push_screen(WorldMapNS::WorldMapManager::instance ());
+  if (1 /* story_seen */)
+    ScreenManager::instance()->push_screen(new StoryScreen(), true);
+  else
+    ScreenManager::instance()->push_screen(WorldMapNS::WorldMapManager::instance ());
 }
 
 ThemeButton::ThemeButton (PingusMenu* menu_)

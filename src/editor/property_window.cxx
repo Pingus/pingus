@@ -1,4 +1,4 @@
-//  $Id: property_window.cxx,v 1.14 2002/11/30 17:11:55 grumbel Exp $
+//  $Id: property_window.cxx,v 1.15 2003/03/28 12:06:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ PropertyWindow::update_frame (EditorObj* obj)
 {
   if (current_frame)
     { // Clean up the old frame
-      std::cout << "PropertyWindow::update_frame: cleanup" << std::endl;
+      //std::cout << "PropertyWindow::update_frame: cleanup" << std::endl;
       get_client_area ()->remove_child (current_frame);
       delete current_frame;
       current_frame = 0;
@@ -64,7 +64,7 @@ PropertyWindow::update_frame (EditorObj* obj)
     { // current object provides a GUI
       set_title(current_frame->get_title ());
       label.show (false);
-      std::cout << "Got GUI" << std::endl;
+      //std::cout << "Got GUI" << std::endl;
       set_client_size (current_frame->get_width () + 1, 
                        current_frame->get_height () + 40);
       close_button.set_position(110, current_frame->get_height () +  10);
@@ -73,7 +73,7 @@ PropertyWindow::update_frame (EditorObj* obj)
     {
       label.show (true);
       set_title("Property Dialog");
-      std::cout << "No GUI" << std::endl;
+      //std::cout << "No GUI" << std::endl;
       set_client_size (200, 50);
       close_button.set_position(110, 20);
     }

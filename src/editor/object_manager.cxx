@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.42 2003/03/04 12:53:47 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.43 2003/03/28 12:06:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -143,7 +143,7 @@ ObjectManager::load_level (const std::string& filename)
 
   std::stable_sort(editor_objs.begin (), editor_objs.end (), EditorObj_z_pos_sorter);
 
-  std::cout << "Reading props" << std::endl;
+  //std::cout << "Reading props" << std::endl;
   description = plf->get_description();
   levelname   = plf->get_levelname();
   level_time  = plf->get_time();

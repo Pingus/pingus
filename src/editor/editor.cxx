@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.46 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: editor.cxx,v 1.47 2003/03/28 12:06:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -152,7 +152,6 @@ Editor::update (const GameDelta& delta)
   // FIXME: This should be moved to the object manager
   if (tmp_selection != selection->get_objects())
     {
-      std::cout << "Exit: Selection changed" << std::endl;
       tmp_selection = selection->get_objects();
 
       // FIXME: dirty hack, should only be called if the selection changed

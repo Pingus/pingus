@@ -1,4 +1,4 @@
-//  $Id: action_window.cxx,v 1.12 2002/11/28 20:09:54 grumbel Exp $
+//  $Id: action_window.cxx,v 1.13 2003/03/28 12:06:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,7 +77,7 @@ ActionWindow::ActionWindow (CL_Component* arg_parent, std::vector<ActionData>* a
 void
 ActionWindow::show ()
 {
-  std::cout << "show" << std::endl;
+  //std::cout << "show" << std::endl;
   read_data ();
   window->show (true);
 }
@@ -85,14 +85,14 @@ ActionWindow::show ()
 void
 ActionWindow::hide ()
 {
-  std::cout << "hide" << std::endl;
+  //std::cout << "hide" << std::endl;
   window->show (false);
 }
 
 void 
 ActionWindow::ok_clicked ()
 {
-  std::cout << "OK Clicked" << std::endl;
+  //std::cout << "OK Clicked" << std::endl;
   write_data ();
   hide ();
 }
@@ -100,7 +100,7 @@ ActionWindow::ok_clicked ()
 void
 ActionWindow::cancel_clicked ()
 {
-  std::cout << "Cancel Clicked" << std::endl;
+  //std::cout << "Cancel Clicked" << std::endl;
   hide ();
 }
 
@@ -123,7 +123,7 @@ public:
 void
 ActionWindow::read_data ()
 {
-  std::cout << "Reading data" << std::endl;
+  //std::cout << "Reading data" << std::endl;
   for (unsigned int i = 0; i <  default_actions.size(); ++i)
     {
       std::vector<ActionData>::iterator act = std::find_if (actions->begin (), actions->end (),
@@ -144,7 +144,7 @@ ActionWindow::read_data ()
 void
 ActionWindow::write_data ()
 {
-  std::cout << "Writing data" << std::endl;
+  //std::cout << "Writing data" << std::endl;
 
   for (unsigned int i = 0; i < default_actions.size(); ++i)  
     {

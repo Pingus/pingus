@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.52 2003/03/26 12:01:17 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.53 2003/03/28 12:06:32 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -588,8 +588,9 @@ PingusMain::init_path_finder()
   System::init_directories();
 
 #ifndef WIN32
-  std::cout << "Directory name of " << executable_name << " - " << System::dirname(executable_name)
-	    << std::endl;
+  if (maintainer_mode)
+    std::cout << "Directory name of " << executable_name << " - " << System::dirname(executable_name)
+              << std::endl;
 
   // FIXME: Do we need this any longer?
   char* pingus_datadir_env = getenv ("PINGUS_DATADIR");
@@ -626,7 +627,8 @@ PingusMain::init_path_finder()
 #endif /* !WIN32 */
  
 #ifdef HAVE_GETTEXT
-  std::cout << "Setting gettext path to: " << path_manager.get_base_path () + "/../../locale" << std::endl;
+  if (maintainer_mode)
+    std::cout << "Setting gettext path to: " << path_manager.get_base_path () + "/../../locale" << std::endl;
   const char* ret = setlocale (LC_ALL, "");
   if (ret == NULL)
     {
@@ -648,7 +650,7 @@ void
 PingusMain::print_greeting_message()
 {
   std::cout << "Welcome to Pingus "VERSION"!\n"
-            << "=========================\n" << std::endl;
+            << "=======================\n" << std::endl;
   
 #ifdef HAVE_LIBCLANVORBIS
   std::cout << "clanVorbis support: ok" << std::endl;
@@ -747,14 +749,16 @@ PingusMain::start_game ()
     }
   else // start a normal game
     {
-      //ScreenManager::instance()->push_screen (PingusMenuManager::instance (), false);
-      ScreenManager::instance()->push_screen (new StoryScreen(), true);
+      ScreenManager::instance()->push_screen (PingusMenuManager::instance (), false);
+      //ScreenManager::instance()->push_screen (new StoryScreen(), true);
     }
 
   // show the main menu, the rest of the game is spawn from there
-  std::cout << "PingusMain::start screen manager" << std::endl;
+  if (maintainer_mode)
+    std::cout << "PingusMain::start screen manager" << std::endl;
   ScreenManager::instance ()->display ();
-  std::cout << "PingusMain::quit game and screen_manager" << std::endl;
+  if (maintainer_mode)
+    std::cout << "PingusMain::quit game and screen_manager" << std::endl;
   
   // unregister the global event catcher
   CL_Input::sig_button_press ().disconnect (on_button_press_slot);
@@ -848,7 +852,9 @@ PingusMain::init_clanlib()
   CL_Display::set_videomode(screen_width, screen_height, 16, 
 			    fullscreen_enabled, 
 			    false); // allow resize
-
+  CL_Display::clear_display();
+  CL_Display::flip_display();
+  
 #ifdef HAVE_LIBCLANGL
   if (use_opengl)
     {

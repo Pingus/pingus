@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.3 2003/03/22 23:28:51 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.4 2003/03/28 12:06:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <iostream>
 #include <ClanLib/Display/Display/display.h>
 
+#include "../globals.hxx"
 #include "display.hxx"
 #include "screen_manager.hxx"
 #include "../fade_out.hxx"
@@ -51,8 +52,9 @@ ScreenManager::display ()
 
       if (time_delta > 1.0)
 	{
-	  std::cout << "ScreenManager: detected large delta (" << delta_manager.get()
-		    << "), ignoring and doing frameskip" << std::endl;
+          if (maintainer_mode)
+            std::cout << "ScreenManager: detected large delta (" << time_delta
+                      << "), ignoring and doing frameskip" << std::endl;
 	  continue;
 	}
 
