@@ -1,4 +1,4 @@
-//  $Id: ExitMenu.cc,v 1.2 2002/01/17 23:34:33 grumbel Exp $
+//  $Id: ExitMenu.cc,v 1.3 2002/06/01 18:05:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ ExitMenu::draw ()
 }
 
 void 
-ExitMenu::update (float delta)
+ExitMenu::update (float /*delta*/)
 {
 }
 

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapManager.cc,v 1.20 2002/02/24 20:40:26 grumbel Exp $
+//  $Id: PingusWorldMapManager.cc,v 1.21 2002/06/01 18:05:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -84,7 +84,7 @@ PingusWorldMapManager::display ()
 }
 
 void
-PingusWorldMapManager::on_mouse_move (CL_InputDevice *, int mouse_x, int mouse_y)
+PingusWorldMapManager::on_mouse_move (CL_InputDevice *, int /*mouse_x*/, int /*mouse_y*/)
 {
   //  std::cout << "mouse: " << mouse_x << " " << mouse_y << std::endl;  
 }
@@ -96,7 +96,7 @@ PingusWorldMapManager::on_button_press (CL_InputDevice *device, const CL_Key &ke
 }
 
 void 
-PingusWorldMapManager::on_button_release (CL_InputDevice *device, const CL_Key &key)
+PingusWorldMapManager::on_button_release (CL_InputDevice * /*device*/, const CL_Key & /*key*/)
 {
   //  std::cout << "key release: " << key.id << std::endl;
 }

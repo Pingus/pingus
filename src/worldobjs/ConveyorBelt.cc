@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.29 2002/01/24 23:07:38 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.30 2002/06/01 18:05:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -111,7 +111,7 @@ ConveyorBelt::ConveyorBelt (WorldObjData* data)
 }
 
 void
-ConveyorBelt::draw_offset (int x_of, int y_of, float s)
+ConveyorBelt::draw_offset (int x_of, int y_of, float /*s*/)
 {
   left_sur.put_screen (int(pos.x + x_of), int(pos.y + y_of), int(counter));
   for (int i=0; i < width; i++)
@@ -196,7 +196,7 @@ EditorConveyorBeltObj::draw (boost::dummy_ptr<EditorView> view)
 }
 
 void
-EditorConveyorBeltObj::draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height)
+EditorConveyorBeltObj::draw_scroll_map(int /*x_pos*/, int /*y_pos*/, int /*arg_width*/, int /*arg_height*/)
 {
   // not supported
 }

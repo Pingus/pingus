@@ -1,4 +1,4 @@
-//  $Id: EditorView.cc,v 1.10 2002/01/15 10:48:51 grumbel Exp $
+//  $Id: EditorView.cc,v 1.11 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #include "EditorView.hh"
 
 EditorView::EditorView (int x1, int y1, int x2, int y2, 
-			int x_offset, int y_offset)
+			int /*x_offset*/, int /*y_offset*/)
   : x1 (x1), y1 (y1), x2 (x2), y2 (y2), offset (-(x2 - x1)/2.0f, -(y2-x1)/2.0f, 1.0f)
 {
   center = CL_Vector ((x2 - x1)/2.0f + x1,
@@ -258,8 +258,8 @@ EditorView::draw_rect (int x1, int y1, int x2, int y2,
 }
 
 void 
-EditorView::draw_pixel (int x_pos, int y_pos, 
-		   float r, float g, float b, float a)
+EditorView::draw_pixel (int /*x_pos*/, int /*y_pos*/, 
+		   float /*r*/, float /*g*/, float /*b*/, float /*a*/)
 {
   //CL_Display::put_pixel (x1 + get_x_offset (),
   //			 y1 + get_y_offset (), r, g, b, a);

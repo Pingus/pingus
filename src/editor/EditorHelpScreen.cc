@@ -1,4 +1,4 @@
-//  $Id: EditorHelpScreen.cc,v 1.3 2002/01/29 20:43:18 grumbel Exp $
+//  $Id: EditorHelpScreen.cc,v 1.4 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -85,7 +85,7 @@ EditorHelpScreen::draw ()
 }
 
 void
-EditorHelpScreen::update (float delta)
+EditorHelpScreen::update (float /*delta*/)
 {
 }
 

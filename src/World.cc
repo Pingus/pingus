@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.66 2002/02/14 22:23:52 grumbel Exp $
+//  $Id: World.cc,v 1.67 2002/06/01 18:05:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,7 +76,7 @@ World::~World()
 
 // Merge the different layers on the screen together
 void 
-World::draw(int x1, int y1, int w, int h,
+World::draw(int x1, int y1, int /*w*/, int /*h*/,
 	    int x_of, int y_of, float s)
 {
   x_of += x1;

@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.41 2002/02/24 20:40:25 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.42 2002/06/01 18:05:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -134,7 +134,7 @@ OptionEntry::mouse_over()
 }
 
 void
-OptionMenu::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
+OptionMenu::Event::on_button_press(CL_InputDevice * /*device*/, const CL_Key & /*key*/)
 {
 }
 
@@ -289,7 +289,7 @@ OptionMenu::check_click()
 }
 
 void
-OptionMenu::update (float delta)
+OptionMenu::update (float /*delta*/)
 {
   EntryIter item = EntryIter();
   item = current_item();

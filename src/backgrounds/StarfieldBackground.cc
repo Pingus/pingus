@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.cc,v 1.18 2002/03/01 23:04:33 japj Exp $
+//  $Id: StarfieldBackground.cc,v 1.19 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ StarfieldBackgroundData::write_xml(std::ofstream* xml)
 }
  
 boost::shared_ptr<WorldObjData>
-StarfieldBackgroundData::create(xmlDocPtr doc, xmlNodePtr cur)
+StarfieldBackgroundData::create(xmlDocPtr /*doc*/, xmlNodePtr cur)
 {
   StarfieldBackgroundData* data = new StarfieldBackgroundData ();
 
@@ -157,7 +157,7 @@ StarfieldBackgroundStars::init ()
 }
 
 void
-StarfieldBackgroundStars::update(float delta)
+StarfieldBackgroundStars::update(float /*delta*/)
 {
   x_pos += x_add;
   y_pos += y_add;
@@ -170,7 +170,7 @@ StarfieldBackgroundStars::update(float delta)
 }
 
 void
-StarfieldBackgroundStars::draw_offset(int x_of, int y_of, float s)
+StarfieldBackgroundStars::draw_offset(int x_of, int y_of, float /*s*/)
 {
   sur.put_screen (int(x_pos + x_of), int(y_pos + y_of));
 }
@@ -216,7 +216,7 @@ StarfieldBackground::update(float delta)
 }
 ///
 void 
-StarfieldBackground::draw_offset(int x_of, int y_of, float s)
+StarfieldBackground::draw_offset(int x_of, int y_of, float /*s*/)
 {
   for (std::vector<StarfieldBackgroundStars>::iterator i = stars.begin ();
        i != stars.end (); i++)

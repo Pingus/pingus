@@ -1,4 +1,4 @@
-//  $Id: LaserExit.cc,v 1.17 2001/12/16 03:23:44 cagri Exp $
+//  $Id: LaserExit.cc,v 1.18 2002/06/01 18:05:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ LaserExit::~LaserExit()
 }
 
 void
-LaserExit::update(float delta)
+LaserExit::update(float /*delta*/)
 {
 
   PinguHolder* holder = world->get_pingu_p ();

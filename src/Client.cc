@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.77 2002/02/24 20:40:25 grumbel Exp $
+//  $Id: Client.cc,v 1.78 2002/06/01 18:05:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -400,7 +400,7 @@ Client::on_button_release(CL_InputDevice *device, const CL_Key &key)
 }
 
 void
-Client::on_keyboard_button_press(const CL_Key& key)
+Client::on_keyboard_button_press(const CL_Key& /*key*/)
 {
   if (CL_Keyboard::get_keycode(CL_KEY_LSHIFT)
       || CL_Keyboard::get_keycode(CL_KEY_RSHIFT))
@@ -579,64 +579,64 @@ Client:: on_left_released (const CL_Vector& pos)
 
 
 void
-Client:: on_middle_pressed (const CL_Vector& pos)
+Client:: on_middle_pressed (const CL_Vector& /*pos*/)
 {
   std::cout << "Middle Pressed" << std::endl;
 }
 
 void
-Client:: on_right_pressed (const CL_Vector& pos)
+Client:: on_right_pressed (const CL_Vector& /*pos*/)
 {
   //std::cout << "Right Pressed" << std::endl;
   playfield->enable_scroll_mode();
 }
 
 void 
-Client::on_right_released (const CL_Vector& pos)
+Client::on_right_released (const CL_Vector& /*pos*/)
 {
   //std::cout << "Right released" << std::endl;
   playfield->disable_scroll_mode();
 }
 
 void
-Client:: on_abort_pressed (const CL_Vector& pos)
+Client:: on_abort_pressed (const CL_Vector& /*pos*/)
 {
   server->set_finished();
 }
 
 void
-Client:: on_pause_pressed (const CL_Vector& pos)
+Client:: on_pause_pressed (const CL_Vector& /*pos*/)
 {
   set_pause (!get_pause ());
 }
 
 void 
-Client::on_fast_forward_pressed (const CL_Vector& pos)
+Client::on_fast_forward_pressed (const CL_Vector& /*pos*/)
 {
   set_fast_forward(!get_fast_forward());
 }
 
 void
-Client::on_scroll_left_pressed (const CL_Vector& pos)
+Client::on_scroll_left_pressed (const CL_Vector& /*pos*/)
 {
   std::cout << "Scroll left pressed" << std::endl;
 }
 
 void
-Client::on_scroll_right_pressed (const CL_Vector& pos)
+Client::on_scroll_right_pressed (const CL_Vector& /*pos*/)
 {
   std::cout << "Scroll right pressed" << std::endl;
 }
 
 void 
-Client::on_next_action_pressed (const CL_Vector& pos)
+Client::on_next_action_pressed (const CL_Vector& /*pos*/)
 {
   std::cout << "Action next pressed" << std::endl;
   button_panel->next_action();
 }
 
 void 
-Client::on_previous_action_pressed (const CL_Vector& pos)
+Client::on_previous_action_pressed (const CL_Vector& /*pos*/)
 {
   std::cout << "Action previous pressed" << std::endl;
   button_panel->previous_action();

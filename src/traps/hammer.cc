@@ -1,4 +1,4 @@
-//  $Id: hammer.cc,v 1.16 2001/12/16 03:23:45 cagri Exp $
+//  $Id: hammer.cc,v 1.17 2002/06/01 18:05:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ Hammer::~Hammer()
 }
 
 void
-Hammer::update(float delta)
+Hammer::update(float /*delta*/)
 {
   if (counter == 0) 
     particle_thrown = false;

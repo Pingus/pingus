@@ -1,4 +1,4 @@
-//  $Id: Controllable.hh,v 1.3 2001/04/15 11:00:41 grumbel Exp $
+//  $Id: Controllable.hh,v 1.4 2002/06/01 18:05:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,36 +91,36 @@ public:
   void wrapper_on_previous_action_release (const CL_Vector& pos) { on_previous_action_release (pos); }
 
   
-   virtual void on_left_press (const CL_Vector& pos) {}
-   virtual void on_middle_press (const CL_Vector& pos) {}
-   virtual void on_right_press (const CL_Vector& pos) {}
+   virtual void on_left_press (const CL_Vector& /*pos*/) {}
+   virtual void on_middle_press (const CL_Vector& /*pos*/) {}
+   virtual void on_right_press (const CL_Vector& /*pos*/) {}
 
-   virtual void on_abort_press (const CL_Vector& pos) {}
-   virtual void on_pause_press (const CL_Vector& pos) {}
+   virtual void on_abort_press (const CL_Vector& /*pos*/) {}
+   virtual void on_pause_press (const CL_Vector& /*pos*/) {}
 
-   virtual void on_scroll_left_press (const CL_Vector& pos) {}
-   virtual void on_scroll_right_press (const CL_Vector& pos) {}
-   virtual void on_scroll_up_press (const CL_Vector& pos) {}
-   virtual void on_scroll_down_press (const CL_Vector& pos) {}
+   virtual void on_scroll_left_press (const CL_Vector& /*pos*/) {}
+   virtual void on_scroll_right_press (const CL_Vector& /*pos*/) {}
+   virtual void on_scroll_up_press (const CL_Vector& /*pos*/) {}
+   virtual void on_scroll_down_press (const CL_Vector& /*pos*/) {}
 
-   virtual void on_next_action_press (const CL_Vector& pos) {}
-   virtual void on_previous_action_press (const CL_Vector& pos) {}
+   virtual void on_next_action_press (const CL_Vector& /*pos*/) {}
+   virtual void on_previous_action_press (const CL_Vector& /*pos*/) {}
 
 
-   virtual void on_left_release (const CL_Vector& pos) {}
-   virtual void on_middle_release (const CL_Vector& pos) {}
-   virtual void on_right_release (const CL_Vector& pos) {}
+   virtual void on_left_release (const CL_Vector& /*pos*/) {}
+   virtual void on_middle_release (const CL_Vector& /*pos*/) {}
+   virtual void on_right_release (const CL_Vector& /*pos*/) {}
 
-   virtual void on_abort_release (const CL_Vector& pos) {}
-   virtual void on_pause_release (const CL_Vector& pos) {}
+   virtual void on_abort_release (const CL_Vector& /*pos*/) {}
+   virtual void on_pause_release (const CL_Vector& /*pos*/) {}
 
-   virtual void on_scroll_left_release (const CL_Vector& pos) {}
-   virtual void on_scroll_right_release (const CL_Vector& pos) {}
-   virtual void on_scroll_up_release (const CL_Vector& pos) {}
-   virtual void on_scroll_down_release (const CL_Vector& pos) {}
+   virtual void on_scroll_left_release (const CL_Vector& /*pos*/) {}
+   virtual void on_scroll_right_release (const CL_Vector& /*pos*/) {}
+   virtual void on_scroll_up_release (const CL_Vector& /*pos*/) {}
+   virtual void on_scroll_down_release (const CL_Vector& /*pos*/) {}
 
-   virtual void on_next_action_release (const CL_Vector& pos) {}
-   virtual void on_previous_action_release (const CL_Vector& pos) {}
+   virtual void on_next_action_release (const CL_Vector& /*pos*/) {}
+   virtual void on_previous_action_release (const CL_Vector& /*pos*/) {}
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: Slider.cc,v 1.1 2002/01/26 00:36:40 grumbel Exp $
+//  $Id: Slider.cc,v 1.2 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,7 @@ Slider::update(float delta)
 }
 
 void
-Slider::draw_offset(int x, int y, float s)
+Slider::draw_offset(int x, int y, float /*s*/)
 {
   sprite.put_screen (pingu->pos + CL_Vector(x, y - 2));
 }

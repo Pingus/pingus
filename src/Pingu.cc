@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.71 2002/02/10 22:14:06 grumbel Exp $
+//  $Id: Pingu.cc,v 1.72 2002/06/01 18:05:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -254,7 +254,7 @@ Pingu::dist (int x, int y)
 }
 
 void
-Pingu::update_persistent(float delta)
+Pingu::update_persistent(float /*delta*/)
 {
   // 
   if (environment == ENV_AIR && action.get() == 0 && rel_getpixel(0, -1) == ColMap::NOTHING) 
@@ -320,7 +320,7 @@ Pingu::update(float delta)
 
 // Check if the pingu is on ground and then do something.
 void 
-Pingu::update_normal(float delta)
+Pingu::update_normal(float /*delta*/)
 {
   std::cout << "Pingu: No action set, setting action." << std::endl;
   if (rel_getpixel(0,-1) == ColMap::NOTHING)

@@ -1,4 +1,4 @@
-//  $Id: GuiObj.cc,v 1.6 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: GuiObj.cc,v 1.7 2002/06/01 18:05:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ GuiObj::draw_clipped()
 }
 
 void
-GuiObj::update(float delta)
+GuiObj::update(float /*delta*/)
 {
 }
 

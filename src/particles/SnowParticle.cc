@@ -1,4 +1,4 @@
-//  $Id: SnowParticle.cc,v 1.15 2001/08/12 18:36:42 grumbel Exp $
+//  $Id: SnowParticle.cc,v 1.16 2002/06/01 18:05:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,7 +74,7 @@ SnowParticle::~SnowParticle()
 }
 
 void
-SnowParticle::update(float delta)
+SnowParticle::update(float /*delta*/)
 {
   pos.x += velocity.x;
   pos.y += velocity.y;

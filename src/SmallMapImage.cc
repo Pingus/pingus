@@ -1,4 +1,4 @@
-//  $Id: SmallMapImage.cc,v 1.6 2001/12/01 17:08:26 torangan Exp $
+//  $Id: SmallMapImage.cc,v 1.7 2002/06/01 18:05:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ SmallMapImage::draw ()
 }
 
 void 
-SmallMapImage::update (float delta)
+SmallMapImage::update (float /*delta*/)
 {
   // FIXME: Updating not implemented!
 }

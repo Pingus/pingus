@@ -1,4 +1,4 @@
-//  $Id: bomber.cc,v 1.29 2002/02/17 23:49:31 grumbel Exp $
+//  $Id: bomber.cc,v 1.30 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,7 @@ Bomber::init()
 }
 
 void
-Bomber::draw_offset(int x, int y, float s)
+Bomber::draw_offset(int x, int y, float /*s*/)
 {
   if (sprite.get_frame () >= 13 && !exploded) 
     {

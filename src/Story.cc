@@ -1,4 +1,4 @@
-//  $Id: Story.cc,v 1.12 2001/07/27 19:35:36 grumbel Exp $
+//  $Id: Story.cc,v 1.13 2002/06/01 18:05:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ Story::init()
 }
 
 void 
-Story::update (float delta)
+Story::update (float /*delta*/)
 {
 }
 
@@ -80,7 +80,7 @@ Story::draw()
 }
 
 void
-Story::display_string(std::string current_line)
+Story::display_string(std::string /*current_line*/)
 {
   /*  while ((pos = str.find("\n")) != string::npos) 
     {
@@ -123,7 +123,7 @@ Story::display_string(std::string current_line)
 }
 
 void 
-Story::on_button_press (CL_InputDevice* device,const CL_Key& key)
+Story::on_button_press (CL_InputDevice* /*device*/,const CL_Key& /*key*/)
 {
   manager->disable_events ();
   // FIXME: This looks ugly... 

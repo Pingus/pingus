@@ -1,4 +1,4 @@
-// $Id: miner.cc,v 1.29 2002/02/17 23:49:32 grumbel Exp $
+// $Id: miner.cc,v 1.30 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -89,7 +89,7 @@ Miner::update(float delta)
 }
 
 void 
-Miner::draw_offset(int x, int y, float s)
+Miner::draw_offset(int x, int y, float /*s*/)
 {
   sprite.put_screen (pingu->get_pos () + CL_Vector(x, y));
 }

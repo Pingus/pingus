@@ -1,4 +1,4 @@
-//  $Id: Panel.cc,v 1.14 2001/07/22 21:17:58 grumbel Exp $
+//  $Id: Panel.cc,v 1.15 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ PanelIcon::start()
 }
 
 void 
-PanelIcon::put_screen(int x, int y)
+PanelIcon::put_screen(int /*x*/, int y)
 {
   if (CL_Mouse::get_x() < 25 && CL_Mouse::get_y() > y && CL_Mouse::get_y() < y + 25)
     {
@@ -175,7 +175,7 @@ Panel::on_release()
 }
 
 bool
-Panel::mouse_over(int x, int y)
+Panel::mouse_over(int x, int /*y*/)
 {
   return (x <= 25);
 }

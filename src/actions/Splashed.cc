@@ -1,4 +1,4 @@
-//  $Id: Splashed.cc,v 1.22 2001/12/02 11:02:13 torangan Exp $
+//  $Id: Splashed.cc,v 1.23 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,7 +56,7 @@ Splashed::update(float delta)
 }
 
 void 
-Splashed::draw_offset(int x_of, int y_of, float s)
+Splashed::draw_offset(int x_of, int y_of, float /*s*/)
 {
   sprite.put_screen (pingu->get_x () + x_of,
 		     pingu->get_y () + y_of);

@@ -1,4 +1,4 @@
-//  $Id: teleported.cc,v 1.13 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: teleported.cc,v 1.14 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,14 +34,14 @@ Teleported::init(void)
 
 
 void 
-Teleported::draw_offset(int x, int y, float s)
+Teleported::draw_offset(int x, int y, float /*s*/)
 {
   sprite.put_screen (x, y);
 }
 
 
 void
-Teleported::update(float delta)
+Teleported::update(float /*delta*/)
 {
   pingu->set_pos (x_target, y_target);
   pingu->set_status(PS_ALIVE);

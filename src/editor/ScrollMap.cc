@@ -1,4 +1,4 @@
-//  $Id: ScrollMap.cc,v 1.7 2001/08/15 22:01:45 grumbel Exp $
+//  $Id: ScrollMap.cc,v 1.8 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,14 +38,14 @@ ScrollMap::~ScrollMap()
 
 ///
 void
-ScrollMap::on_button_release(CL_InputDevice *device, const CL_Key& key)
+ScrollMap::on_button_release(CL_InputDevice * /*device*/, const CL_Key& /*key*/)
 {
 
 }
 
 ///
 void
-ScrollMap::on_button_press(CL_InputDevice *device, const CL_Key& key)
+ScrollMap::on_button_press(CL_InputDevice * /*device*/, const CL_Key& /*key*/)
 {
   //int click_x_pos = (int) key.x - x_pos;
   //int click_y_pos = (int) key.y - y_pos;

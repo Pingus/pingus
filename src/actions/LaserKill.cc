@@ -1,4 +1,4 @@
-//  $Id: LaserKill.cc,v 1.13 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: LaserKill.cc,v 1.14 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,13 +36,13 @@ LaserKill::init(void)
 }
 
 void 
-LaserKill::draw_offset(int x, int y, float s)
+LaserKill::draw_offset(int x, int y, float /*s*/)
 {
   sprite.put_screen (x, y);
 }
 
 void
-LaserKill::update(float delta)
+LaserKill::update(float /*delta*/)
 {
   //if (counter >= (int)(surface.get_num_frames()) - 1) 
   //{

@@ -1,4 +1,4 @@
-//  $Id: GlobalEvent.cc,v 1.16 2002/01/19 12:57:54 grumbel Exp $
+//  $Id: GlobalEvent.cc,v 1.17 2002/06/01 18:05:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -93,7 +93,7 @@ GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 }
 
 void
-GlobalEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
+GlobalEvent::on_button_release(CL_InputDevice *device, const CL_Key & /*key*/)
 {
   if (device == CL_Input::keyboards[0])
     {

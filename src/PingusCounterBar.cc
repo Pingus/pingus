@@ -1,4 +1,4 @@
-//  $Id: PingusCounterBar.cc,v 1.4 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: PingusCounterBar.cc,v 1.5 2002/06/01 18:05:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ PingusCounterBar::~PingusCounterBar ()
 }
 
 void 
-PingusCounterBar::update(float delta)
+PingusCounterBar::update(float /*delta*/)
 {  
 }
 

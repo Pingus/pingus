@@ -1,4 +1,4 @@
-//  $Id: SolidColorBackground.cc,v 1.11 2002/01/26 10:53:36 grumbel Exp $
+//  $Id: SolidColorBackground.cc,v 1.12 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,7 +75,7 @@ SolidColorBackground::SolidColorBackground (const SolidColorBackgroundData& data
 }
 
 void
-SolidColorBackground::draw_offset (int x_of, int y_of, float s)
+SolidColorBackground::draw_offset (int /*x_of*/, int /*y_of*/, float /*s*/)
 {
   // FIXME: Probally fill_rect is better here, but slower?
   CL_Display::clear_display (color.red, color.green, color.blue, color.alpha);

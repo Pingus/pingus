@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.50 2002/02/14 22:23:52 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.51 2002/06/01 18:05:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -228,7 +228,7 @@ PingusSpotMap::create_map()
 }
 
 void
-PingusSpotMap::draw_colmap(int x_pos, int y_pos, int w, int h, 
+PingusSpotMap::draw_colmap(int /*x_pos*/, int /*y_pos*/, int /*w*/, int /*h*/, 
 			   int x_of, int y_of, float s)
 {
   colmap->draw(x_of, y_of, s);

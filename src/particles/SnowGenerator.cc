@@ -1,4 +1,4 @@
-//  $Id: SnowGenerator.cc,v 1.11 2001/08/12 18:36:42 grumbel Exp $
+//  $Id: SnowGenerator.cc,v 1.12 2002/06/01 18:05:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ SnowGenerator::~SnowGenerator()
 }
 
 void 
-SnowGenerator::update(float delta)
+SnowGenerator::update(float /*delta*/)
 {
   world->get_particle_holder()->add_particle(new SnowParticle(rand() % world->get_width(), -32));
   world->get_particle_holder()->add_particle(new SnowParticle(rand() % world->get_width(), -32));

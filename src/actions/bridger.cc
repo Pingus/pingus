@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.50 2002/04/03 09:05:32 grumbel Exp $
+//  $Id: bridger.cc,v 1.51 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,7 @@ Bridger::init(void)
 }
 
 void
-Bridger::draw_offset(int x, int y, float s)
+Bridger::draw_offset(int x, int y, float /*s*/)
 {
   switch (mode)
     {

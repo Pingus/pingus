@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.hh,v 1.14 2002/01/15 10:48:53 grumbel Exp $
+//  $Id: PingusWorldMapGraph.hh,v 1.15 2002/06/01 18:05:37 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,8 +43,8 @@ public:
   virtual ~PingusWorldMapNode () {}
 
   virtual void on_click () =0;
-  virtual void mark (bool value) {}
-  virtual void draw (CL_Vector offset) {}
+  virtual void mark (bool /*value*/) {}
+  virtual void draw (CL_Vector /*offset*/) {}
   virtual std::map<std::string, std::string> get_string () =0;
 };
 

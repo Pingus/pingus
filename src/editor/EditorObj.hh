@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.37 2002/01/15 10:48:51 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.38 2002/06/01 18:05:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ public:
 
   /** Called once a game loop, the delta is the time passed since the
       last update in seconds */
-  virtual void update (float delta) {};
+  virtual void update (float /*delta*/) {};
 
   /** Draw a rectangle or shape around the object to the given view */
   virtual void draw_mark (boost::dummy_ptr<EditorView> view) =0;

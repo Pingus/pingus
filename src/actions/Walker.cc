@@ -1,4 +1,4 @@
-//  $Id: Walker.cc,v 1.10 2002/01/20 14:38:59 grumbel Exp $
+//  $Id: Walker.cc,v 1.11 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -128,7 +128,7 @@ Walker::update(float delta)
 }
 
 void  
-Walker::draw_offset(int x, int y, float s)
+Walker::draw_offset(int x, int y, float /*s*/)
 {
   if (pingu->direction.is_left ())
     walker.set_direction (Sprite::LEFT);

@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.53 2002/01/17 23:34:33 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.54 2002/06/01 18:05:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,7 +83,7 @@ PingusMenu::draw()
 }
 
 void
-PingusMenu::on_mouse_move(CL_InputDevice *, int mouse_x, int mouse_y)
+PingusMenu::on_mouse_move(CL_InputDevice *, int /*mouse_x*/, int /*mouse_y*/)
 {
 }
 

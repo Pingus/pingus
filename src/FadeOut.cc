@@ -1,4 +1,4 @@
-//  $Id: FadeOut.cc,v 1.8 2001/11/29 10:47:44 grumbel Exp $
+//  $Id: FadeOut.cc,v 1.9 2002/06/01 18:05:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ FadeOut::update (float delta)
 }
 
 void
-FadeOut::set_progress (float progress)
+FadeOut::set_progress (float /*progress*/)
 {
   
 }

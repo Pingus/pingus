@@ -1,4 +1,4 @@
-//  $Id: InfoBox.cc,v 1.3 2001/12/04 12:18:50 grumbel Exp $
+//  $Id: InfoBox.cc,v 1.4 2002/06/01 18:05:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -96,7 +96,7 @@ InfoBox::InfoBox (const InfoBoxData& data)
 }
 
 void
-InfoBox::draw_offset (int x, int y, float s)
+InfoBox::draw_offset (int x, int y, float /*s*/)
 {
   int x_pos = int(pos.x) + x;
   int y_pos = int(pos.y) + y - 100;

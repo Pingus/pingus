@@ -1,4 +1,4 @@
-//  $Id: PlayfieldView.cc,v 1.4 2001/08/12 18:36:40 grumbel Exp $
+//  $Id: PlayfieldView.cc,v 1.5 2002/06/01 18:05:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ PlayfieldView::~PlayfieldView ()
 }
 
 void 
-PlayfieldView::update (float delta)
+PlayfieldView::update (float /*delta*/)
 {
 }
 

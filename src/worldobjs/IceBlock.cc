@@ -1,4 +1,4 @@
-//  $Id: IceBlock.cc,v 1.23 2002/02/18 10:24:37 grumbel Exp $
+//  $Id: IceBlock.cc,v 1.24 2002/06/01 18:05:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -107,7 +107,7 @@ IceBlock::draw_colmap()
 
 ///
 void 
-IceBlock::draw_offset(int x_of, int y_of, float s)
+IceBlock::draw_offset(int x_of, int y_of, float /*s*/)
 {
   if (is_finished)
     return;
@@ -118,7 +118,7 @@ IceBlock::draw_offset(int x_of, int y_of, float s)
 
 ///
 void 
-IceBlock::update(float delta)
+IceBlock::update(float /*delta*/)
 {
   if (is_finished)
     return;

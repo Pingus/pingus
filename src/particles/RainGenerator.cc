@@ -1,4 +1,4 @@
-//  $Id: RainGenerator.cc,v 1.10 2002/01/15 10:48:52 grumbel Exp $
+//  $Id: RainGenerator.cc,v 1.11 2002/06/01 18:05:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ RainGenerator::~RainGenerator ()
 }
 
 void 
-RainGenerator::draw_offset(int x, int y, float s)
+RainGenerator::draw_offset(int /*x*/, int /*y*/, float /*s*/)
 {
   if (do_thunder)
     {

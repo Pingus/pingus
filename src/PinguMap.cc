@@ -1,4 +1,4 @@
-//  $Id: PinguMap.cc,v 1.7 2001/12/01 17:53:56 torangan Exp $
+//  $Id: PinguMap.cc,v 1.8 2002/06/01 18:05:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,7 +68,7 @@ PinguMap::put(const CL_Surface& sur, int x, int y)
 }
 
 void 
-PinguMap::update (float delta)
+PinguMap::update (float /*delta*/)
 {
   
 }

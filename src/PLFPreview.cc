@@ -1,4 +1,4 @@
-//  $Id: PLFPreview.cc,v 1.8 2001/04/10 21:51:22 grumbel Exp $
+//  $Id: PLFPreview.cc,v 1.9 2002/06/01 18:05:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ PLFPreview::get_surface()
 }
 
 void
-PLFPreview::load(boost::shared_ptr<PLF> p)
+PLFPreview::load(boost::shared_ptr<PLF> /*p*/)
 {
   if (surface)
     return;

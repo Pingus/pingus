@@ -1,4 +1,4 @@
-//  $Id: digger.cc,v 1.33 2002/02/17 23:49:31 grumbel Exp $
+//  $Id: digger.cc,v 1.34 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -89,7 +89,7 @@ Digger::dig()
 }
 
 void  
-Digger::draw_offset(int x, int y, float s)
+Digger::draw_offset(int x, int y, float /*s*/)
 {
   //std::cout << "DRawing digger" << std::endl;
   sprite.put_screen (int(pingu->pos.x + x), int(pingu->pos.y + y));

@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.24 2002/01/24 16:11:36 grumbel Exp $
+//  $Id: Teleporter.hh,v 1.25 2002/06/01 18:05:37 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -112,7 +112,7 @@ public:
   boost::shared_ptr<EditorObj> duplicate() { return teleporter->duplicate (); }
 
   /// The saving will be done in EditorTeleporterObj::save_xml
-  void write_xml (std::ofstream* xml) {}
+  void write_xml (std::ofstream* /*xml*/) {}
   std::string status_line();
 };
 

@@ -1,4 +1,4 @@
-//  $Id: Faller.cc,v 1.9 2002/01/15 10:48:50 grumbel Exp $
+//  $Id: Faller.cc,v 1.10 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -135,7 +135,7 @@ Faller::update (float delta)
 }
 
 void 
-Faller::draw_offset(int x, int y, float s)
+Faller::draw_offset(int x, int y, float /*s*/)
 {
   if (is_tumbling ()) {
     tumbler.put_screen (int(pingu->pos.x + x), int(pingu->pos.y + y));

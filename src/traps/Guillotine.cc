@@ -1,4 +1,4 @@
-//  $Id: Guillotine.cc,v 1.15 2001/12/16 03:23:44 cagri Exp $
+//  $Id: Guillotine.cc,v 1.16 2002/06/01 18:05:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ Guillotine::~Guillotine()
 }
 
 void
-Guillotine::draw_offset(int x, int y, float s)
+Guillotine::draw_offset(int x, int y, float /*s*/)
 {
   if (killing) {
     if (direction.is_left())
@@ -59,7 +59,7 @@ Guillotine::draw_offset(int x, int y, float s)
 }
 
 void
-Guillotine::update(float delta)
+Guillotine::update(float /*delta*/)
 {
   if (counter.finished()) {
     counter = 0;

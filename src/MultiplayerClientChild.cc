@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClientChild.cc,v 1.8 2002/01/15 10:48:49 grumbel Exp $
+//  $Id: MultiplayerClientChild.cc,v 1.9 2002/06/01 18:05:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -96,70 +96,70 @@ void MultiplayerClientChild::on_left_press (const CL_Vector& pos)
     }
 }
 
-void MultiplayerClientChild::on_right_press (const CL_Vector& pos)
+void MultiplayerClientChild::on_right_press (const CL_Vector& /*pos*/)
 {
 }
 
-void MultiplayerClientChild::on_right_release (const CL_Vector& pos)
+void MultiplayerClientChild::on_right_release (const CL_Vector& /*pos*/)
 {
 }
 
 void 
-MultiplayerClientChild::on_scroll_left_press (const CL_Vector& pos)
+MultiplayerClientChild::on_scroll_left_press (const CL_Vector& /*pos*/)
 {
   scroll_vec += CL_Vector (450.0f, 0.0f);
 }
 
 void 
-MultiplayerClientChild::on_scroll_right_press (const CL_Vector& pos)
+MultiplayerClientChild::on_scroll_right_press (const CL_Vector& /*pos*/)
 {
   scroll_vec += CL_Vector (-450.0f, 0.0f);
 }
 
 void 
-MultiplayerClientChild::on_scroll_left_release (const CL_Vector& pos)
+MultiplayerClientChild::on_scroll_left_release (const CL_Vector& /*pos*/)
 {
   scroll_vec -= CL_Vector (450.0f,0.0f);
 }
 
 void 
-MultiplayerClientChild::on_scroll_right_release (const CL_Vector& pos)
+MultiplayerClientChild::on_scroll_right_release (const CL_Vector& /*pos*/)
 {
   scroll_vec -= CL_Vector (-450.0f, 0.0f);
 }
 
 void 
-MultiplayerClientChild::on_scroll_up_press (const CL_Vector& pos)
+MultiplayerClientChild::on_scroll_up_press (const CL_Vector& /*pos*/)
 {
   scroll_vec += CL_Vector (0.0f, 450.0f);
 }
 
 void 
-MultiplayerClientChild::on_scroll_up_release (const CL_Vector& pos)
+MultiplayerClientChild::on_scroll_up_release (const CL_Vector& /*pos*/)
 {
   scroll_vec -= CL_Vector (0.0f, 450.0f);
 }
 
 void 
-MultiplayerClientChild::on_scroll_down_press (const CL_Vector& pos)
+MultiplayerClientChild::on_scroll_down_press (const CL_Vector& /*pos*/)
 {
   scroll_vec += CL_Vector (0.0f, -450.0f);
 }
 
 void 
-MultiplayerClientChild::on_scroll_down_release (const CL_Vector& pos)
+MultiplayerClientChild::on_scroll_down_release (const CL_Vector& /*pos*/)
 {
   scroll_vec -= CL_Vector (0.0f, -450.0f);
 }
 
 void 
-MultiplayerClientChild::on_next_action_press (const CL_Vector& pos)
+MultiplayerClientChild::on_next_action_press (const CL_Vector& /*pos*/)
 {
   button_panel->next_action ();
 }
 
 void 
-MultiplayerClientChild::on_previous_action_press (const CL_Vector& pos)
+MultiplayerClientChild::on_previous_action_press (const CL_Vector& /*pos*/)
 {
   button_panel->previous_action ();
 }

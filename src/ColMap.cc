@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.29 2001/12/05 09:15:50 grumbel Exp $
+//  $Id: ColMap.cc,v 1.30 2002/06/01 18:05:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -324,7 +324,7 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, GroundpieceData:
 }
 
 void
-ColMap::draw(int x_of, int y_of, float s)
+ColMap::draw(int x_of, int y_of, float /*s*/)
 {
   CL_Canvas* canvas = new CL_Canvas(width, height);
   CL_Surface sur;

@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.28 2002/02/11 00:09:49 grumbel Exp $
+//  $Id: ActionButton.cc,v 1.29 2002/06/01 18:05:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -122,7 +122,7 @@ ActionButton::is_pressed()
 }
 
 void
-ActionButton::update(float delta)
+ActionButton::update(float /*delta*/)
 {
   ++action_c;
 }

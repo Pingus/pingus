@@ -1,4 +1,4 @@
-//  $Id: Drown.cc,v 1.12 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: Drown.cc,v 1.13 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ Drown::init()
 }
 
 void 
-Drown::draw_offset(int x, int y, float s)
+Drown::draw_offset(int x, int y, float /*s*/)
 {
   // FIXME: Direction handling is ugly
   if (pingu->direction.is_left ())

@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.hh,v 1.18 2001/08/13 21:35:38 grumbel Exp $
+//  $Id: SwitchDoor.hh,v 1.19 2002/06/01 18:05:37 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,7 +99,7 @@ public:
   
   boost::shared_ptr<EditorObj> duplicate();
 
-  void write_xml (std::ofstream* xml) {}
+  void write_xml (std::ofstream* /*xml*/) {}
   std::string status_line();
 };
 

@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.hh,v 1.19 2001/08/07 18:14:14 grumbel Exp $
+//  $Id: PingusMenu.hh,v 1.20 2002/06/01 18:05:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,7 @@ public:
   /// Load all images and other stuff for the menu
   void preload ();
   ////
-  void update (float delta) {}
+  void update (float /*delta*/) {}
   ///
   void draw(void);
   ///

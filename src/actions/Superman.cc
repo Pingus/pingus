@@ -1,4 +1,4 @@
-//  $Id: Superman.cc,v 1.5 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: Superman.cc,v 1.6 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ Superman::update(float delta)
 }
 
 void   
-Superman::draw_offset(int x_of, int y_of, float s)
+Superman::draw_offset(int x_of, int y_of, float /*s*/)
 {
   sprite.put_screen (pingu->get_x () + x_of,
 		     pingu->get_y () + y_of);

@@ -1,4 +1,4 @@
-//  $Id: PingusWavProvider.cc,v 1.8 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: PingusWavProvider.cc,v 1.9 2002/06/01 18:05:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,6 +66,7 @@ PingusWavProvider::load(std::string str)
 	}
     }
 #endif /* HAVE_LIBSDL_MIXER */
+  if (str.size()); // suppress warning about unused argument
   return 0;
 }
 

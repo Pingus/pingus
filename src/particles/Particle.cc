@@ -1,4 +1,4 @@
-//  $Id: Particle.cc,v 1.11 2002/01/15 10:48:52 grumbel Exp $
+//  $Id: Particle.cc,v 1.12 2002/06/01 18:05:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ Particle::init(int x, int y, float x_a, float y_a)
 }
 
 void
-Particle::update(float delta)
+Particle::update(float /*delta*/)
 {
   pos.x += velocity.x;
   pos.y += velocity.y;

@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.58 2002/03/23 07:37:09 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.59 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -200,7 +200,7 @@ ObjectManager::load_level (std::string filename)
 }
 
 void
-ObjectManager::draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height)
+ObjectManager::draw_scroll_map(int /*x_pos*/, int /*y_pos*/, int /*arg_width*/, int /*arg_height*/)
 {
   /*
   for (EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) 

@@ -1,4 +1,4 @@
-//  $Id: Jumper.cc,v 1.17 2002/01/26 00:36:40 grumbel Exp $
+//  $Id: Jumper.cc,v 1.18 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,14 +34,14 @@ Jumper::init(void)
 }
 
 void 
-Jumper::draw_offset(int x, int y, float s)
+Jumper::draw_offset(int x, int y, float /*s*/)
 {
   // FIXME: Huh! Does this work?!
   sprite.put_screen (x, y);
 }
 
 void
-Jumper::update(float delta)
+Jumper::update(float /*delta*/)
 {
   if (pingu->direction.is_right()) {
     pingu->velocity += CL_Vector(10.0, -10.0);

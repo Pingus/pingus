@@ -1,4 +1,4 @@
-//  $Id: smasher.cc,v 1.30 2001/12/16 03:23:45 cagri Exp $
+//  $Id: smasher.cc,v 1.31 2002/06/01 18:05:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ Smasher::~Smasher()
 }
 
 void
-Smasher::update(float delta)
+Smasher::update(float /*delta*/)
 {
 
   PinguHolder* holder = world->get_pingu_p();
@@ -107,7 +107,7 @@ Smasher::draw_colmap()
 }
 
 void 
-Smasher::draw_offset(int x, int y, float s)
+Smasher::draw_offset(int x, int y, float /*s*/)
 {
   surface.put_screen(int(pos.x + x), int(pos.y + y), count);
 }

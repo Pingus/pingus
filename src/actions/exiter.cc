@@ -1,4 +1,4 @@
-//  $Id: exiter.cc,v 1.22 2001/12/02 11:02:13 torangan Exp $
+//  $Id: exiter.cc,v 1.23 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ Exiter::update(float delta)
 }
 
 void 
-Exiter::draw_offset(int x, int y, float s)
+Exiter::draw_offset(int x, int y, float /*s*/)
 {
   if (pingu->direction.is_left ())
     sprite.set_direction (Sprite::LEFT);

@@ -1,4 +1,4 @@
-//  $Id: Playfield.cc,v 1.28 2001/11/22 20:08:34 grumbel Exp $
+//  $Id: Playfield.cc,v 1.29 2002/06/01 18:05:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -197,7 +197,7 @@ Playfield::updateX()
 }
 
 void
-Playfield::update(float delta)
+Playfield::update(float /*delta*/)
 {
   for(unsigned int i=0; i < view.size(); ++i)
     {
@@ -213,7 +213,7 @@ Playfield::update(float delta)
 }
 
 bool 
-Playfield::on_button_press(const CL_Key &key)
+Playfield::on_button_press(const CL_Key & /*key*/)
 {
   if (current_pingu.get())
     {
@@ -306,7 +306,7 @@ Playfield::generate_clipping_rects(int x1, int y1, int x2, int y2)
 }
 
 void 
-Playfield::scroll (int x, int y)
+Playfield::scroll (int /*x*/, int /*y*/)
 {
   
 }

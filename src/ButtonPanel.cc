@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.25 2002/01/15 22:32:06 grumbel Exp $
+//  $Id: ButtonPanel.cc,v 1.26 2002/06/01 18:05:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -195,7 +195,7 @@ ButtonPanel::on_button_press(const CL_Key &key)
 }
 
 void
-ButtonPanel::on_button_release(const CL_Key &key)
+ButtonPanel::on_button_release(const CL_Key & /*key*/)
 {
 
   //forward->pressed = false;

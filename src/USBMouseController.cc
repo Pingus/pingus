@@ -1,4 +1,4 @@
-//  $Id: USBMouseController.cc,v 1.1 2002/05/07 08:49:23 grumbel Exp $
+//  $Id: USBMouseController.cc,v 1.2 2002/06/01 18:05:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include "PingusError.hh"
 #include "USBMouseController.hh"
 
-USBMouseController::USBMouseController (int arg_owner_id, std::string mousedev)
+USBMouseController::USBMouseController (int /*arg_owner_id*/, std::string mousedev)
 {
   fd = open (mousedev.c_str (), O_RDWR);
   if (!(fd > 0))

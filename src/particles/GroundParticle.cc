@@ -1,4 +1,4 @@
-//  $Id: GroundParticle.cc,v 1.9 2001/05/14 08:17:32 grumbel Exp $
+//  $Id: GroundParticle.cc,v 1.10 2002/06/01 18:05:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ GroundParticle::GroundParticle(int x, int y, float x_a, float y_a)
 }
 
 void
-GroundParticle::update(float delta)
+GroundParticle::update(float /*delta*/)
 {
   pos.x += velocity.x;
   pos.y += velocity.y;

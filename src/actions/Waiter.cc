@@ -1,4 +1,4 @@
-//  $Id: Waiter.cc,v 1.16 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: Waiter.cc,v 1.17 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ Waiter::init()
 }
 
 void
-Waiter::draw_offset(int x, int y, float s)
+Waiter::draw_offset(int x, int y, float /*s*/)
 {
   sprite.put_screen (pingu->get_pos () + CL_Vector(x, y));
 }

@@ -1,4 +1,4 @@
-//  $Id: FVec.hh,v 1.5 2000/06/19 07:26:08 grumbel Exp $
+//  $Id: FVec.hh,v 1.6 2002/06/01 18:05:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ public:
   /** Applies the force to a velocity vector, v, a position p and
       returns the new velicty vector. Just adds fv to v, p is ignored
       as gravity is universal. */
-  CL_Vector apply_forces(CL_Vector p,CL_Vector v){
+  CL_Vector apply_forces(CL_Vector /*p*/,CL_Vector v){
     return v + ifv;
   }
 };

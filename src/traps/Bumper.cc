@@ -1,4 +1,4 @@
-//  $Id: Bumper.cc,v 1.17 2001/12/16 03:23:44 cagri Exp $
+//  $Id: Bumper.cc,v 1.18 2002/06/01 18:05:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ Bumper::~Bumper()
 }
 
 void
-Bumper::update(float delta)
+Bumper::update(float /*delta*/)
 {
 
   PinguHolder* holder = world->get_pingu_p ();
@@ -68,7 +68,7 @@ Bumper::draw_colmap()
 }
 
 void 
-Bumper::draw_offset(int x, int y, float s)
+Bumper::draw_offset(int x, int y, float /*s*/)
 {
   surface.put_screen(int(pos.x + x), int(pos.y + y), count);
 }

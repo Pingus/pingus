@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackground.cc,v 1.18 2002/01/21 12:08:24 grumbel Exp $
+//  $Id: SurfaceBackground.cc,v 1.19 2002/06/01 18:05:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -198,7 +198,7 @@ SurfaceBackground::load (SurfaceBackgroundData bg_data)
 }
 */
 void
-SurfaceBackground::update(float delta)
+SurfaceBackground::update(float /*delta*/)
 {
   counter++;
 

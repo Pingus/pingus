@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.32 2002/03/01 23:09:26 japj Exp $
+//  $Id: Teleporter.cc,v 1.33 2002/06/01 18:05:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -125,7 +125,7 @@ Teleporter::Teleporter (const TeleporterData& data)
 }
 
 void 
-Teleporter::draw_offset (int x_of, int y_of, float s)
+Teleporter::draw_offset (int x_of, int y_of, float /*s*/)
 {
   //std::cout << "Teleporter::draw_offset ()" << std::endl;
   //view->draw (sur, pos);

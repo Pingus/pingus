@@ -1,4 +1,4 @@
-//  $Id: PinguParticle.cc,v 1.15 2001/08/12 18:36:42 grumbel Exp $
+//  $Id: PinguParticle.cc,v 1.16 2002/06/01 18:05:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,7 @@ PinguParticle::init(int x, int y, float x_a, float y_a)
 }
 
 void
-PinguParticle::draw_offset(int ofx, int ofy, float s)
+PinguParticle::draw_offset(int ofx, int ofy, float /*s*/)
 {
   surface.put_screen(int(pos.x + ofx), int(pos.y + ofy));
   /* Particle resizeing is disabled, because it is to slow
@@ -78,7 +78,7 @@ PinguParticle::draw_offset(int ofx, int ofy, float s)
 }
 
 void
-PinguParticle::update(float delta)
+PinguParticle::update(float /*delta*/)
 {
   float tmp_x_add = 0.0;
   float tmp_y_add = 0.0;

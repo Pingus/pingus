@@ -1,4 +1,4 @@
-//  $Id: DebugGui.cc,v 1.8 2001/06/11 08:45:21 grumbel Exp $
+//  $Id: DebugGui.cc,v 1.9 2002/06/01 18:05:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ DebugGui::~DebugGui()
 }
 
 void
-DebugGui::update(float delta)
+DebugGui::update(float /*delta*/)
 {
   // do nothing
 }

@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.55 2002/02/24 20:40:26 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.56 2002/06/01 18:05:35 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,7 +70,7 @@ ListItem::draw_offset(int x, int y)
 // ---=== ThemeSelector ===---
 
 void 
-ThemeSelector::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
+ThemeSelector::Event::on_button_release(CL_InputDevice * /*device*/, const CL_Key & /*key*/)
 {
   if (!enabled) return;  
 }
