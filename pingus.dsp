@@ -604,31 +604,19 @@ SOURCE=.\src\particles\ground_particle.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\particles\particle.cxx
+SOURCE=.\src\particles\pingu_particle_holder.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\particles\particle_cache.cxx
+SOURCE=.\src\particles\rain_particle_holder.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\particles\particle_holder.cxx
+SOURCE=.\src\particles\smoke_particle_holder.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\particles\pingu_particle.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\particles\rain_particle.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\particles\smoke_particle.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\particles\snow_particle.cxx
+SOURCE=.\src\particles\snow_particle_holder.cxx
 # End Source File
 # End Group
 # Begin Group "worldmap"
@@ -1143,10 +1131,6 @@ SOURCE=.\src\multiline_text.cxx
 # Begin Source File
 
 SOURCE=.\src\multiplayer_client.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\multiplayer_client_child.cxx
 # End Source File
 # Begin Source File
 
