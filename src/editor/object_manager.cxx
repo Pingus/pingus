@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.5 2002/06/21 07:45:35 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.6 2002/06/21 08:11:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ static bool EditorObj_z_pos_sorter (const boost::shared_ptr<EditorObj>& a,
   return a->get_z_pos () < b->get_z_pos ();
 }
 
-// #ifdef WIN32
+#ifdef WIN32
 //FIXME: ingo: This is a workaround around the std::list::sort()
 //FIXME: problem under MSVC6. This is copy&paste from an usenet
 //FIXME: article, so it might work or not, never tested it.
@@ -54,7 +54,7 @@ static bool EditorObj_z_pos_sorter (const boost::shared_ptr<EditorObj>& a,
 //{
 //  return EditorObj_z_pos_sorter (a, b);
 //} 
-//#endif
+#endif
 
 ObjectManager::ObjectManager()
 {
@@ -178,15 +178,15 @@ ObjectManager::load_level (const std::string & filename)
     editor_objs.insert(editor_objs.end(), temp.begin(), temp.end() );
   }
 
-// #ifdef WIN32
+#ifdef WIN32
 //FIXME: ingo: This is a workaround around the std::list::sort()
 //FIXME: problem under MSVC6. This is copy&paste from an usenet
 //FIXME: article, so it might work or not, never tested it.
 // Alpha notes that this does NOT work.
 //  world_obj.sort(std::greater<CWorldObjPtr>());
-// #else
-//  editor_objs.sort(EditorObj_z_pos_sorter);
-// #endif
+#else
+  editor_objs.sort(EditorObj_z_pos_sorter);
+#endif
 
   std::cout << "Reading props" << std::endl;
   description = plf->get_description();

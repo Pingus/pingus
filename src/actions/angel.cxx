@@ -1,4 +1,4 @@
-//  $Id: angel.cxx,v 1.3 2002/06/21 07:45:35 grumbel Exp $
+//  $Id: angel.cxx,v 1.4 2002/06/21 08:11:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include "../string_converter.hxx"
 #include "angel.hxx"
 
-Angel::Angel () : x_pos(0), counter(0.0)
+Angel::Angel () : counter(0.0), x_pos(0)
 {
 }
 

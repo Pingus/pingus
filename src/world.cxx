@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.8 2002/06/21 07:45:35 grumbel Exp $
+//  $Id: world.cxx,v 1.9 2002/06/21 08:11:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ bool WorldObj_less (WorldObj* a, WorldObj* b)
   return a->get_z_pos () < b->get_z_pos ();
 }
 
-// #ifdef WIN32
+#ifdef WIN32
 //FIXME: ingo: This is a workaround around the std::list::sort()
 //FIXME: problem under MSVC6. This is copy&paste from an usenet
 //FIXME: article, so it might work or not, never tested it.
@@ -53,7 +53,7 @@ bool WorldObj_less (WorldObj* a, WorldObj* b)
 // {
 //  return WorldObj_less (a, b);
 // } 
-// #endif
+#endif
 
 World::World(PLF* arg_plf)
   : world_obj (new std::list<WorldObj*>),
@@ -210,17 +210,16 @@ World::init_worldobjs()
    world_obj->push_back(pingus);
 
   // After all objects are in world_obj, sort them to there z_pos
-// #ifdef WIN32
+#ifdef WIN32
   //FIXME: ingo: This is a workaround around the std::list::sort()
   //FIXME: problem under MSVC6. This is copy&paste from an usenet
   //FIXME: article, so it might work or not, never tested it.
 // world_obj->sort(std::greater<CWorldObjPtr>());
-// #else
-//  world_obj->sort(WorldObj_less);
-// #endif
+#else
+   world_obj->sort(WorldObj_less);
+#endif
   // FIXME: If the above thing causes throuble under windows we could
   // use a vector instead of a list and use stable_sort() instead.
-
 
   // Drawing all world objs to the colmap
   for(WorldObjIter obj = world_obj->begin(); obj != world_obj->end(); ++obj)
