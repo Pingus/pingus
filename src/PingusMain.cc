@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.36 2001/08/07 18:14:14 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.37 2001/08/18 09:54:26 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -814,7 +814,7 @@ PingusMain::start_game(void)
     PingusMessageBox box(std::string("CL_Error: " + err.message));
   }
   
-  catch (PingusError err) {
+  catch (PingusError& err) {
     PingusMessageBox(" PingusError: " + err.get_message ());
   }
 

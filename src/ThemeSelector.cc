@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.42 2001/07/27 19:35:36 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.43 2001/08/18 09:54:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -326,7 +326,7 @@ ThemeSelector::readdir(std::string path)
 	  if (verbose) std::cout << "ThemeSelelector: Name of entry: " << pathname + entry->name << std::endl;
 	  try {
 	    themes.push_back(new Theme(pathname + entry->name));
-	  } catch (PingusError err) {
+	  } catch (PingusError& err) {
 	    std::cout << "ThemeSelector: PingusError: " << err.get_message () << std::endl;
 	  }
 	}

@@ -1,4 +1,4 @@
- //  $Id: Theme.cc,v 1.31 2001/08/04 12:46:22 grumbel Exp $
+ //  $Id: Theme.cc,v 1.32 2001/08/18 09:54:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,7 +73,7 @@ Theme::load(std::string filename)
 	surface = PingusResource::load_surface(plt.get_surface(), "global");
     }
   
-  catch (CL_Error err) 
+  catch (CL_Error& err) 
     {
       if (verbose) std::cout << "Theme:CL_Error:" << filename << ":" << err.message << std::endl;
     }
@@ -83,7 +83,7 @@ Theme::load(std::string filename)
       if (plt.get_background().desc.res_name != "-")
 	background = PingusResource::load_surface(plt.get_background().desc);
     }
-  catch (CL_Error err) 
+  catch (CL_Error& err) 
     {
       if (verbose) 
 	{
@@ -267,7 +267,7 @@ Theme::play()
       out.close();
     }
 
-  catch (PingusError err) 
+  catch (PingusError& err) 
     {
       std::string str = "Pingus_Error: ";
       str += err.get_message ();
@@ -334,7 +334,7 @@ Theme::load_levels()
 	      levelnames.push_back(System::translate(plf.get_levelname()));
 	    }
 	}
-      catch (PingusError err) 
+      catch (PingusError& err) 
 	{
 	  std::cout << "Theme: PingusError: " << err.get_message () << std::endl;
 	}

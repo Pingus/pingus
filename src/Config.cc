@@ -1,4 +1,4 @@
-//  $Id: Config.cc,v 1.13 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: Config.cc,v 1.14 2001/08/18 09:54:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,7 +50,7 @@ ConfigParser::init(std::string filename)
     parse();
   }
 
-  catch (PingusError err) {
+  catch (PingusError& err) {
     std::cout << err.get_message () << std::endl;
   }
 }

@@ -1,4 +1,4 @@
-//  $Id: GamepadController.cc,v 1.10 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: GamepadController.cc,v 1.11 2001/08/18 09:54:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ GamepadController::GamepadController (CL_InputDevice* arg_device, int arg_owner_
     previous_action  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (5)));
     abort  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (8)));
     pause  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (9)));
-  } catch (PingusError e) {
+  } catch (PingusError& e) {
     std::cout << "PingusError: " << e.get_message () << std::endl;
   }
 }
