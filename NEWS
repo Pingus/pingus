@@ -17,7 +17,7 @@ Release 0.3.2 (15/Mar/1999)
 * Fixed the bridger
 * Fixed a clipping bug in the colmap
 * Fixed image color -> colmap color translation (level10.plf)
-
+* Software mouse cursor support
 
 Release 0.3.1 (17/Feb/1999)
 ===========================
