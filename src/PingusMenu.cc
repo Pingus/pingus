@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.11 2000/03/10 19:33:29 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.12 2000/03/12 01:42:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,20 +38,34 @@ PingusMenu::PingusMenu()
   event = new Event;
   event->enabled = false;
   event->menu = this;
-  
+
   CL_Input::chain_button_press.push_back(event);
   CL_Input::chain_button_release.push_back(event);
   CL_Input::chain_mouse_move.push_back(event);
 
-  buttons.push_back(&options_button);
-  buttons.push_back(&play_button);
-  buttons.push_back(&quit_button);
-  buttons.push_back(&editor_button);
-  buttons.push_back(&theme_button);
+  editor_button  = new EditorButton;
+  options_button = new OptionsButton;
+  play_button    = new PlayButton;
+  quit_button    = new QuitButton;
+  theme_button   = new ThemeButton;
+
+  quit_button->set_pingus_menu(this);
+
+  buttons.push_back(editor_button);
+  buttons.push_back(options_button);
+  buttons.push_back(play_button);
+  buttons.push_back(quit_button);
+  buttons.push_back(theme_button);
 }
 
 PingusMenu::~PingusMenu()
 {
+  delete play_button;
+  delete options_button;
+  delete quit_button;
+  delete editor_button;
+  delete theme_button;
+
   CL_Input::chain_mouse_move.remove(event);
   CL_Input::chain_button_release.remove(event);
   CL_Input::chain_button_press.remove(event);
@@ -90,7 +104,7 @@ PingusMenu::select(void)
     }
   
   if (start_editor) {
-    editor_button.on_click ();
+    editor_button->on_click ();
   }
 
   do_quit = false;

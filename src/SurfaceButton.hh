@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.hh,v 1.3 2000/02/16 14:11:24 grumbel Exp $
+//  $Id: SurfaceButton.hh,v 1.4 2000/03/12 01:42:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,9 +24,13 @@
 
 #include <ClanLib/core.h>
 
+#include "PingusMenu.hh"
 #include "editor/Editor.hh"
 #include "ThemeSelector.hh"
+#include "PingusMenu.hh"
 // #include "FileSelector.hh"
+
+class PingusMenu;
 
 class SurfaceButton
 {
@@ -64,9 +68,12 @@ public:
 
 class QuitButton : public SurfaceButton
 {
+private:
+  PingusMenu* menu;
 public:
   QuitButton();
   virtual ~QuitButton();
+  void set_pingus_menu(PingusMenu*);
   void on_click();
 };
 

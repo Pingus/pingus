@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.6 2000/02/16 23:34:11 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.7 2000/03/12 01:42:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -143,9 +143,16 @@ QuitButton::~QuitButton()
 {
 }
 
-void QuitButton::on_click()
+void
+QuitButton::set_pingus_menu(PingusMenu* m)
 {
-  
+  menu = m;
+}
+
+void
+QuitButton::on_click()
+{
+  menu->do_quit = true;
 }
 
 ///////////////////////////////////////////////

@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.hh,v 1.3 2000/02/16 23:34:11 grumbel Exp $
+//  $Id: PingusMenu.hh,v 1.4 2000/03/12 01:42:12 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,13 @@
 #include "OptionMenu.hh"
 #include "AlphaButton.hh"
 
+class SurfaceButton;
+class PlayButton;
+class OptionsButton;
+class QuitButton;
+class EditorButton;
+class ThemeButton;
+
 class PingusMenu
 {
 public:
@@ -54,7 +61,6 @@ private:
   SurfaceButton* temp_button;
   SurfaceButton* current_button;
   
-  bool do_quit;
   CL_Surface* bg;
   CL_Surface* background;
   CL_Surface* cursor_sur;
@@ -65,14 +71,15 @@ private:
   int temp_mouse_x, temp_mouse_y;
   PingusMenuItem current_item;
   
-  PlayButton     play_button;
-  OptionsButton  options_button;
-  QuitButton     quit_button;
-  //  LoadButton     load_button;
-  EditorButton   editor_button;
-  ThemeButton    theme_button;
+  PlayButton*     play_button;
+  OptionsButton*  options_button;
+  QuitButton*     quit_button;
+  EditorButton*   editor_button;
+  ThemeButton*    theme_button;
 
 public:
+  bool do_quit;
+
   PingusMenu();
   ~PingusMenu();
 
