@@ -1,4 +1,4 @@
-//  $Id: goal_manager.cxx,v 1.4 2002/11/08 01:38:27 grumbel Exp $
+//  $Id: goal_manager.cxx,v 1.5 2003/01/15 21:16:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "server.hxx"
 #include "world.hxx"
 #include "plf.hxx"

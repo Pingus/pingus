@@ -1,4 +1,4 @@
-//  $Id: xml_pdf.hxx,v 1.1 2002/10/03 01:02:12 grumbel Exp $
+//  $Id: xml_pdf.hxx,v 1.2 2003/01/15 21:16:41 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 
 #include <string>
 #include <vector>
-#include <iostream>
+#include <iosfwd>
 
 #include "server_event.hxx"
 

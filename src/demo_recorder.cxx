@@ -1,4 +1,4 @@
-//  $Id: demo_recorder.cxx,v 1.11 2002/12/29 23:29:00 torangan Exp $
+//  $Id: demo_recorder.cxx,v 1.12 2003/01/15 21:16:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <time.h>
+#include <iostream>
 #include "system.hxx"
 #include "demo_recorder.hxx"
 #include "server.hxx"

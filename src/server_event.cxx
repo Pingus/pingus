@@ -1,4 +1,4 @@
-//  $Id: server_event.cxx,v 1.4 2002/12/29 23:29:00 torangan Exp $
+//  $Id: server_event.cxx,v 1.5 2003/01/15 21:16:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <assert.h>
+#include <iostream>
 #include "string_converter.hxx"
 #include "pingus_error.hxx"
 #include "server.hxx"

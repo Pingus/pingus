@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.37 2002/12/29 23:29:00 torangan Exp $
+//  $Id: client.cxx,v 1.38 2003/01/15 21:16:41 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Display/mousecursor_provider.h>
 #include "globals.hxx"

@@ -1,4 +1,4 @@
-//  $Id: server_event.hxx,v 1.2 2002/10/03 12:33:08 grumbel Exp $
+//  $Id: server_event.hxx,v 1.3 2003/01/15 21:16:41 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_SERVER_EVENT_HXX
 #define HEADER_PINGUS_SERVER_EVENT_HXX
 
-#include <iostream>
+#include <iosfwd>
 #include "xml_helper.hxx"
 #include "pingu_enums.hxx"
 

@@ -1,4 +1,4 @@
-//  $Id: demo_player.cxx,v 1.7 2002/12/29 23:29:00 torangan Exp $
+//  $Id: demo_player.cxx,v 1.8 2003/01/15 21:16:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "server.hxx"
 #include "demo_player.hxx"
 #include "xml_pdf.hxx"
