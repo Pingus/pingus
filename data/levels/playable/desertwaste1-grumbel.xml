@@ -283,7 +283,7 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>829</x-pos>
+    <x-pos>824</x-pos>
     <y-pos>301</y-pos>
     <z-pos>0</z-pos>
   </position>
@@ -365,8 +365,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>979</x-pos>
-    <y-pos>336</y-pos>
+    <x-pos>974</x-pos>
+    <y-pos>337</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -376,11 +376,11 @@
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-solid</resource-datafile>
   <resource-ident>desert/smallbrickpiece</resource-ident>
-    <modifier>ROT0</modifier>
+    <modifier>ROT180FLIP</modifier>
   </resource></surface>
   <position>
-    <x-pos>1058</x-pos>
-    <y-pos>293</y-pos>
+    <x-pos>1050</x-pos>
+    <y-pos>301</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -434,8 +434,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>1022</x-pos>
-    <y-pos>317</y-pos>
+    <x-pos>974</x-pos>
+    <y-pos>301</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
@@ -660,6 +660,34 @@
   <position>
     <x-pos>542</x-pos>
     <y-pos>193</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>desert/leftsmallbrick</resource-ident>
+    <modifier>ROT180FLIP</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>1050</x-pos>
+    <y-pos>337</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>desert/leftsmallbrick</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>911</x-pos>
+    <y-pos>263</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>

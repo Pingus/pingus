@@ -15,6 +15,7 @@ Can you help them?</description>
     <difficulty>80</difficulty>
     <playable>0</playable>
     <comment>got broken due to the new head-bounce feature</comment>
+    <music>pingus-3.it</music>
   </global>
 
 <background>

@@ -12,6 +12,7 @@ underground room, but unfortunatley a large tree root blocks their path...</desc
     <width>800</width>
     <height>672</height>
     <comment>suffers solid-groundpiece confusion</comment>
+    <music>pingus-3.it</music>
   </global>
 
 <background type="surface">

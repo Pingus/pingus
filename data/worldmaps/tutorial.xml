@@ -19,7 +19,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/digger-tutorial2-grumbel.xml</levelname>
+        <levelname>playable/digger-tutorial2-grumbel</levelname>
       </leveldot>
 
       <leveldot>
@@ -32,7 +32,7 @@
           </position>
 
         </dot>
-        <levelname>playable/floater-tutorial-grumbel.xml</levelname>
+        <levelname>playable/floater-tutorial-grumbel</levelname>
       </leveldot>
 
       <leveldot>
@@ -44,7 +44,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow8-grumbel.xml</levelname>
+        <levelname>playable/snow8-grumbel</levelname>
       </leveldot>
 
       <leveldot>
@@ -57,7 +57,7 @@
           </position>
 
         </dot>
-        <levelname>playable/basher-tutorial-grumbel.xml</levelname>
+        <levelname>playable/basher-tutorial-grumbel</levelname>
       </leveldot>
 
 
@@ -71,7 +71,7 @@
           </position>
 
         </dot>
-        <levelname>playable/snow9-grumbel.xml</levelname>
+        <levelname>playable/snow9-grumbel</levelname>
       </leveldot>
 
 
@@ -84,7 +84,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow10-grumbel.xml</levelname>
+        <levelname>playable/snow10-grumbel</levelname>
       </leveldot>
 
 
@@ -98,7 +98,7 @@
           </position>
 
         </dot>
-        <levelname>playable/jumper-tutorial-grumbel.xml</levelname>
+        <levelname>playable/jumper-tutorial-grumbel</levelname>
       </leveldot>
 
 
@@ -111,7 +111,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/miner-tutorial2-grumbel.xml</levelname>
+        <levelname>playable/miner-tutorial2-grumbel</levelname>
       </leveldot>
 
 
@@ -124,7 +124,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow11-grumbel.xml</levelname>
+        <levelname>playable/snow11-grumbel</levelname>
       </leveldot>
 
 
@@ -137,7 +137,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow12-grumbel.xml</levelname>
+        <levelname>playable/snow12-grumbel</levelname>
       </leveldot>
 
 
@@ -150,7 +150,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/bomber-tutorial2-grumbel.xml</levelname>
+        <levelname>playable/bomber-tutorial2-grumbel</levelname>
       </leveldot>
 
 
@@ -163,7 +163,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow14-grumbel.xml</levelname>
+        <levelname>playable/snow14-grumbel</levelname>
       </leveldot>
 
 
@@ -176,7 +176,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow15-grumbel.xml</levelname>
+        <levelname>playable/snow15-grumbel</levelname>
       </leveldot>
 
 
@@ -189,7 +189,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow16-grumbel.xml</levelname>
+        <levelname>playable/snow16-grumbel</levelname>
       </leveldot>
 
 
@@ -202,7 +202,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/snow17-grumbel.xml</levelname>
+        <levelname>playable/snow17-grumbel</levelname>
       </leveldot>
 
 
@@ -215,7 +215,7 @@
             <z-pos>150</z-pos>
           </position>
         </dot>
-        <levelname>playable/bridger-tutorial-grumbel.xml</levelname>
+        <levelname>playable/bridger-tutorial-grumbel</levelname>
       </leveldot>
 
 
@@ -228,7 +228,7 @@
             <z-pos>150</z-pos>
           </position>
         </dot>
-        <levelname>playable/placeholder.xml</levelname>
+        <levelname>playable/placeholder</levelname>
       </leveldot>
 
 
@@ -241,7 +241,7 @@
             <z-pos>150</z-pos>
           </position>
         </dot>
-        <levelname>playable/placeholder.xml</levelname>
+        <levelname>playable/placeholder</levelname>
       </leveldot>
 
 
@@ -254,7 +254,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/placeholder.xml</levelname>
+        <levelname>playable/placeholder</levelname>
       </leveldot>
 
 
@@ -267,7 +267,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/placeholder.xml</levelname>
+        <levelname>playable/placeholder</levelname>
       </leveldot>
 
 
@@ -280,7 +280,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>playable/placeholder.xml</levelname>
+        <levelname>playable/placeholder</levelname>
       </leveldot>
 
     </nodes>

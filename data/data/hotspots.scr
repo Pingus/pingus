@@ -42,6 +42,7 @@ section signposts
         floater = ../images/hotspots/signposts/floater.png (type=surface);
         miner = ../images/hotspots/signposts/miner.png (type=surface);
         nogo = ../images/hotspots/signposts/nogo.png (type=surface);
+        danger = ../images/hotspots/signposts/danger.png (type=surface);
 }
 
 section space
