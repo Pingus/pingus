@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.5 2000/02/26 03:17:06 grumbel Exp $
+//  $Id: Client.hh,v 1.6 2000/03/08 01:36:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,6 @@
 #include "TimeDisplay.hh"
 #include "PinguInfo.hh"
 #include "PingusCounter.hh"
-#include "PingusCursor.hh"
 #include "SmallMap.hh"
 
 class ClientEvent;
@@ -44,6 +43,7 @@ private:
   friend ClientEvent;
   ClientEvent* event;
 
+  PLF* plf;
   Result result;
   Server* server;
   PingusMusic*     music;
@@ -54,12 +54,14 @@ private:
   bool do_replay;
   bool is_finished;
 
+  vector<GuiObj* > obj;
+ 
   ButtonPanel*   button_panel;
   PingusCounter* pcounter;
-  PingusCursor*  cursor;
   Playfield*     playfield;
   TimeDisplay*   time_display;
   SmallMap*      small_map;
+
 public:
   Client(Server* s);
 
@@ -70,12 +72,17 @@ public:
   void start(std::string plf_filename, std::string psm_filename);
   void play_level(std::string plf_filename, std::string psm_filename = "");
 
+  void init_display();
+  void deinit_display();
+  void resize_display();
+
   void set_fast_forward(bool value);
   bool get_fast_forward();
 
   bool get_pause();
   void set_pause(bool value);
 
+  void count_fps();
   bool replay();
   void do_restart();
   bool finished();

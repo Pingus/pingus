@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.12 2000/03/01 02:57:48 grumbel Exp $
+//  $Id: Client.cc,v 1.13 2000/03/08 01:36:14 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,35 +71,14 @@ Client::start(std::string plf_filename, std::string psm_filename)
   FadeOut::random();
 }
 
-void
-Client::play_level(std::string plf_filename, std::string psm_filename)
+void 
+Client::init_display()
 {
-  vector<GuiObj* > obj;
- 
-  std::cout << "Client::play_level(), Reading PLF..." << std::flush;
-  PLF*         plf          = new PLF(plf_filename);
-  std::cout << "done" << std::endl;
-
-  // FIXME: dirty hack, should replace or merge the psm files
-  {
-    string filename = plf_filename.substr(0, plf_filename.size() - 4);
-    
-    if (verbose > 1) std::cout << "PSM: " << filename + ".psm" << std::endl;
-    
-    plf->set_psm_filename(filename + ".psm");
-  }
-  
-  server->start(plf);
-  event->register_event_handler();
-
-  if (verbose) std::cout << "Client: Generating UI elements..." << std::flush;
-
   CL_MouseCursor::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
   CL_MouseCursor::show();
 
   playfield    = new Playfield(plf, server->get_world());
   button_panel = new ButtonPanel(plf);
-  cursor       = new PingusCursor();
   pcounter     = new PingusCounter();
   small_map    = new SmallMap();
   time_display = new TimeDisplay();
@@ -134,14 +113,54 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
   obj.push_back(button_panel);
   obj.push_back(small_map);
 
-  if (cursor_enabled)
-    obj.push_back(cursor);
-
   if (verbose) std::cout << "done" << std::endl;
+}
+
+void 
+Client::deinit_display()
+{
+  CL_MouseCursor::hide();
+
+  // Delete all alocated objects
+  delete pcounter;
+  delete time_display;
+  delete button_panel;
+  delete playfield;
+  delete small_map;
+  delete plf;
+}
+
+void
+Client::resize_display()
+{
+}
+
+void
+Client::play_level(std::string plf_filename, std::string psm_filename)
+{
+  std::cout << "Client::play_level(), Reading PLF..." << std::flush;
+  plf          = new PLF(plf_filename);
+  std::cout << "done" << std::endl;
+
+  // FIXME: dirty hack, should replace or merge the psm files
+  {
+    string filename = plf_filename.substr(0, plf_filename.size() - 4);
+    
+    if (verbose > 1) std::cout << "PSM: " << filename + ".psm" << std::endl;
+    
+    plf->set_psm_filename(filename + ".psm");
+  }
+  
+  server->start(plf);
+  event->register_event_handler();
+
+  if (verbose) std::cout << "Client: Generating UI elements..." << std::flush;
+
+  init_display(); 
 
   if (verbose)
     std::cout << "Client: Entering main_loop. Startup time: " 
-	 << CL_System::get_time() << " msec." << std::endl;
+	      << CL_System::get_time() << " msec." << std::endl;
 
 
   // Clear both buffers
@@ -149,64 +168,51 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
   CL_Display::flip_display();
   CL_Display::clear_display();
     
-  unsigned int last_time = 0;
-  int fps_count = 0;
-  
   // Main Game Loop
   while (!server->is_finished()) {
     CL_System::keep_alive(); // Update all input
     
     server->let_move();
     
-    if (CL_Keyboard::get_keycode(CL_KEY_O)) {
-
-    }
-    
-    if (CL_Keyboard::get_keycode(CL_KEY_D)) {
-      //debug_gui->toggle_debug();
-      while(CL_Keyboard::get_keycode(CL_KEY_D))
-	CL_System::keep_alive();
-    }
-    
     // Let the window move its content
     for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
       obj[i]->let_move();
     
-    if (!fast_forward || skip_frame >= 10) {
-      skip_frame = 0;
-      //    if (server->needs_redraw() && (skip_frame % 10 == 0)) {
+    if (!fast_forward || skip_frame >= 10) 
+      {
+	skip_frame = 0;
 
-      for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) {
-	obj[i]->draw_clipped();
-      }
-      CL_Display::flip_display();
+	for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
+	  obj[i]->draw_clipped();
       
-      ++fps_count;
-      // Print the fps rate every 2secs
-      if (print_fps && (last_time + 1000 < CL_System::get_time())) {
-	cout << "Client: " << fps_count << "fps" << std::endl;
-	fps_count = 0;
-	last_time = CL_System::get_time();
+	CL_Display::flip_display();
+      
+	count_fps();
       }
-    } else {
-      ++skip_frame;
-    }
+    else 
+      {
+	++skip_frame;
+      }
   }
-  
-  // Delete all alocated objects
-  //delete debug_gui;
-  delete cursor;
-  delete pcounter;
-  delete time_display;
-  delete button_panel;
-  delete playfield;
-  delete small_map;
-  delete plf;
 
   event->unregister_event_handler();
-
-  CL_MouseCursor::hide();
 }
+
+void
+Client::count_fps()
+{
+  unsigned int last_time = 0;
+  int fps_count = 0;
+  
+  ++fps_count;
+  // Print the fps rate every 2secs
+  if (print_fps && (last_time + 1000 < CL_System::get_time())) 
+    {
+      cout << "Client: " << fps_count << "fps" << std::endl;
+      fps_count = 0;
+      last_time = CL_System::get_time();
+    }
+} 
 
 void
 Client::set_fast_forward(bool value)
