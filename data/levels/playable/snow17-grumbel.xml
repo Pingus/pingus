@@ -13,6 +13,7 @@
     <difficulty>40</difficulty>
     <playable>1</playable>
     <comment></comment>
+    <music>none</music>
   </global>
 
   <action-list>
@@ -40,12 +41,28 @@
   <para-y>0.5</para-y>
   <stretch-x>0</stretch-x>
   <stretch-y>1</stretch-y>
+  <keep-aspect>0</keep-aspect>
   <position>
     <x-pos>-26.714</x-pos>
     <y-pos>-227.286</y-pos>
     <z-pos>-150</z-pos>
   </position>
 </background>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/snow_back</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>286.668</x-pos>
+    <y-pos>41.2828</y-pos>
+    <z-pos>-50</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
 
 <worldobj type="groundpiece">
   <type>ground</type>
@@ -385,8 +402,8 @@
 
 <entrance>
   <position>
-    <x-pos>332.357</x-pos>
-    <y-pos>96.1426</y-pos>
+    <x-pos>334.357</x-pos>
+    <y-pos>83.1426</y-pos>
     <z-pos>0</z-pos>
   </position>
   <type>generic</type>
@@ -1121,6 +1138,21 @@
     <z-pos>0</z-pos>
   </position>
 </worldobj>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/snow_front</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>286.688</x-pos>
+    <y-pos>41.3324</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
 
   <start-position>
   <position>

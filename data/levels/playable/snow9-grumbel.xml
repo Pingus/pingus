@@ -11,7 +11,7 @@
     <width>1500</width>
     <height>600</height>
     <difficulty>40</difficulty>
-    <playable>0</playable>
+    <playable>1</playable>
     <comment></comment>
     <music>none</music>
   </global>
@@ -95,21 +95,6 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>340.5</x-pos>
-    <y-pos>118.5</y-pos>
-    <z-pos>-50</z-pos>
-  </position>
-  <speed>-1</speed>
-  <parallax>1</parallax>
-</hotspot>
-
-<hotspot>
-  <surface><resource type="datafile">
-    <resource-datafile>hotspots</resource-datafile>
-  <resource-ident>signposts/digger</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
-  <position>
     <x-pos>563</x-pos>
     <y-pos>116</y-pos>
     <z-pos>-50</z-pos>
@@ -140,8 +125,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>418</x-pos>
-    <y-pos>85</y-pos>
+    <x-pos>358.14</x-pos>
+    <y-pos>40.4519</y-pos>
     <z-pos>-50</z-pos>
   </position>
   <speed>-1</speed>
@@ -1144,12 +1129,12 @@
 
 <entrance>
   <position>
-    <x-pos>463</x-pos>
-    <y-pos>131</y-pos>
+    <x-pos>403.14</x-pos>
+    <y-pos>86.4519</y-pos>
     <z-pos>0</z-pos>
   </position>
   <type>generic</type>
-  <direction>misc</direction>
+  <direction>right</direction>
   <release-rate>150</release-rate>
   <owner-id>0</owner-id>
 </entrance>
@@ -1295,6 +1280,62 @@
   </position>
 </worldobj>
 
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_horiz</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>372</x-pos>
+    <y-pos>159</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_small</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>340</x-pos>
+    <y-pos>127</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_small</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>340</x-pos>
+    <y-pos>208</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
+<worldobj type="groundpiece">
+  <type>solid</type>
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-solid</resource-datafile>
+  <resource-ident>misc/metalplate_small</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>564</x-pos>
+    <y-pos>211</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</worldobj>
+
 <hotspot>
   <surface><resource type="datafile">
     <resource-datafile>entrances</resource-datafile>
@@ -1302,8 +1343,8 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>418.778</x-pos>
-    <y-pos>85.131</y-pos>
+    <x-pos>358.918</x-pos>
+    <y-pos>40.5829</y-pos>
     <z-pos>100</z-pos>
   </position>
   <speed>-1</speed>

@@ -15,6 +15,7 @@
     <difficulty>40</difficulty>
     <playable>0</playable>
     <comment></comment>
+    <music>none</music>
   </global>
 
   <action-list>
@@ -41,12 +42,28 @@
   <para-y>0.5</para-y>
   <stretch-x>0</stretch-x>
   <stretch-y>0</stretch-y>
+  <keep-aspect>0</keep-aspect>
   <position>
     <x-pos>-26</x-pos>
     <y-pos>-3</y-pos>
     <z-pos>-150</z-pos>
   </position>
 </background>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/snow_back</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>191.49</x-pos>
+    <y-pos>72.4898</y-pos>
+    <z-pos>-50</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
 
 <worldobj type="groundpiece">
   <type>bridge</type>
@@ -819,8 +836,8 @@
 
 <entrance>
   <position>
-    <x-pos>242.5</x-pos>
-    <y-pos>172</y-pos>
+    <x-pos>240.5</x-pos>
+    <y-pos>114</y-pos>
     <z-pos>0</z-pos>
   </position>
   <type>generic</type>
@@ -1165,6 +1182,21 @@
   </position>
 </worldobj>
 
+<liquid use-old-width-handling="0">
+  <surface><resource type="datafile">
+    <resource-datafile>liquids</resource-datafile>
+  <resource-ident>Liquid/water2</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>-71</x-pos>
+    <y-pos>522</y-pos>
+    <z-pos>-50</z-pos>
+  </position>
+  <width>22</width>
+  <speed>55</speed>
+</liquid>
+
 <worldobj type="groundpiece">
   <type>ground</type>
   <surface><resource type="datafile">
@@ -1179,13 +1211,43 @@
   </position>
 </worldobj>
 
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/snow_front</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>192.265</x-pos>
+    <y-pos>73.0204</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
   <start-position>
   <position>
-    <x-pos>236</x-pos>
-    <y-pos>279</y-pos>
+    <x-pos>301</x-pos>
+    <y-pos>247</y-pos>
     <z-pos>1000</z-pos>
   </position>
   </start-position>
+
+<liquid use-old-width-handling="0">
+  <surface><resource type="datafile">
+    <resource-datafile>liquids</resource-datafile>
+  <resource-ident>Liquid/water2</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>-106</x-pos>
+    <y-pos>537</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <width>22</width>
+  <speed>60</speed>
+</liquid>
 
 </pingus-level>
 

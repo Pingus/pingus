@@ -5,8 +5,8 @@
     <levelname lang="en">EditorDefaultValue: Please give me a name...</levelname>
     <description lang="en">EditorDefaultValue: ...and a short description</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
-    <number-of-pingus>50</number-of-pingus>
-    <number-to-save>25</number-to-save>
+    <number-of-pingus>35</number-of-pingus>
+    <number-to-save>15</number-to-save>
     <time>-1</time>
     <width>1200</width>
     <height>1000</height>
@@ -39,7 +39,7 @@
   <para-y>0.5</para-y>
   <stretch-x>0</stretch-x>
   <stretch-y>1</stretch-y>
-  <keep-aspect>0</keep-aspect>
+  <keep-aspect>1</keep-aspect>
   <position>
     <x-pos>-35</x-pos>
     <y-pos>68.5</y-pos>
@@ -61,6 +61,21 @@
   <speed>-1</speed>
   <parallax>1</parallax>
 </hotspot>
+
+<liquid use-old-width-handling="0">
+  <surface><resource type="datafile">
+    <resource-datafile>liquids</resource-datafile>
+  <resource-ident>Liquid/water2</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>-46</x-pos>
+    <y-pos>935</y-pos>
+    <z-pos>-50</z-pos>
+  </position>
+  <width>20</width>
+  <speed>55</speed>
+</liquid>
 
 <worldobj type="groundpiece">
   <type>ground</type>
@@ -1445,6 +1460,21 @@
   <speed>-1</speed>
   <parallax>1</parallax>
 </hotspot>
+
+<liquid use-old-width-handling="0">
+  <surface><resource type="datafile">
+    <resource-datafile>liquids</resource-datafile>
+  <resource-ident>Liquid/water2</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>-63</x-pos>
+    <y-pos>944</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <width>20</width>
+  <speed>60</speed>
+</liquid>
 
   <start-position>
   <position>

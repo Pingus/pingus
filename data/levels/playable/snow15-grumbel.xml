@@ -49,6 +49,36 @@
   </position>
 </background>
 
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/snow_back</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>220.371</x-pos>
+    <y-pos>235.335</y-pos>
+    <z-pos>-50</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/snow_back</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>976.371</x-pos>
+    <y-pos>223.335</y-pos>
+    <z-pos>-50</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
 <worldobj type="groundpiece">
   <type>ground</type>
   <surface><resource type="datafile">
@@ -470,8 +500,8 @@
 
 <entrance>
   <position>
-    <x-pos>246</x-pos>
-    <y-pos>291.5</y-pos>
+    <x-pos>266</x-pos>
+    <y-pos>277.5</y-pos>
     <z-pos>0</z-pos>
   </position>
   <type>generic</type>
@@ -482,8 +512,8 @@
 
 <entrance>
   <position>
-    <x-pos>1035</x-pos>
-    <y-pos>271.5</y-pos>
+    <x-pos>1021</x-pos>
+    <y-pos>264.5</y-pos>
     <z-pos>0</z-pos>
   </position>
   <type>generic</type>
@@ -1074,7 +1104,7 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>663</x-pos>
+    <x-pos>662</x-pos>
     <y-pos>106</y-pos>
     <z-pos>0</z-pos>
   </position>
@@ -1088,11 +1118,41 @@
     <modifier>ROT0</modifier>
   </resource></surface>
   <position>
-    <x-pos>629</x-pos>
+    <x-pos>628</x-pos>
     <y-pos>105</y-pos>
     <z-pos>0</z-pos>
   </position>
 </worldobj>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/snow_front</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>220</x-pos>
+    <y-pos>235</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/snow_front</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+  <position>
+    <x-pos>976</x-pos>
+    <y-pos>223</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
 
   <start-position>
   <position>
