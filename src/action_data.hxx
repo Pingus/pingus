@@ -1,4 +1,4 @@
-//  $Id: action_data.hxx,v 1.3 2002/06/28 15:12:22 torangan Exp $
+//  $Id: action_data.hxx,v 1.4 2002/06/29 14:01:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,28 +20,22 @@
 #ifndef HEADER_PINGUS_ACTION_DATA_HXX
 #define HEADER_PINGUS_ACTION_DATA_HXX
 
-#include <string>
+#include <vector>
 #include "pingu_enums.hxx"
 
-using Pingus::Actions::ActionName;
-
-///
 class ActionData
 {
 public:
-  ///
   ActionData() {}
+  ActionData(Pingus::Actions::ActionName name_, int i) : name(name_), number_of(i)
+  {}
 
-  ///
-  ActionData(ActionName name_, int i) : name(name_), number_of(i)
-  {
-  }
-
-  ///
-  ActionName   name;
-  ///
+  Pingus::Actions::ActionName   name;
   int number_of;
 };
+
+extern std::vector<ActionData> default_actions; 
+void init_default_actions ();
 
 #endif
 

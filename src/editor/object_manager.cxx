@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.11 2002/06/28 22:21:59 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.12 2002/06/29 14:01:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -107,16 +107,7 @@ ObjectManager::new_level ()
   editor_objs.push_back(boost::shared_ptr<EditorObj>(new StartPos(50, 50)));
 
   // Set some default actions
-  actions.clear();
-  actions.push_back(ActionData(Basher,  20));
-  actions.push_back(ActionData(Blocker, 20));
-  actions.push_back(ActionData(Bomber,  20));
-  actions.push_back(ActionData(Bridger, 20));
-  actions.push_back(ActionData(Climber, 20));
-  actions.push_back(ActionData(Digger,  20));
-  actions.push_back(ActionData(Floater, 20));
-  actions.push_back(ActionData(Jumper,  20));
-  actions.push_back(ActionData(Miner,   20));
+  actions = default_actions;
 }
 
 ///

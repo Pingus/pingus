@@ -1,4 +1,4 @@
-//  $Id: action_window.hxx,v 1.3 2002/06/29 11:54:22 grumbel Exp $
+//  $Id: action_window.hxx,v 1.4 2002/06/29 14:01:32 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,8 +30,8 @@ private:
   CL_Component* parent;
   std::vector<ActionData>* actions;
   CL_Window* window;
+  std::vector<CL_CheckBox*> checkboxes;
   std::vector<CL_InputBox*> inputs;
-  std::vector<CL_Label*> labels;
 
   CL_Button* ok_button;
   CL_Button* cancel_button;

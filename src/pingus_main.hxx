@@ -1,4 +1,4 @@
-//  $Id: pingus_main.hxx,v 1.2 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: pingus_main.hxx,v 1.3 2002/06/29 14:01:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,30 +42,20 @@ private:
   CL_Slot on_button_release_slot;
 
 public:
-  ///
   PingusMain();
-  ///
   virtual ~PingusMain();
 
-  ///
   virtual int main(int argc, char** argv);
-  ///
   virtual char* get_title();
 
   void start_game(void);
 
-  ///
   void check_args(int argc, char** argv);
-  ///
   void quick_check_args(int argc, char** argv);
-  ///
   void read_rc_file(void);
 
-  ///
   void get_filenames(void);
-  ///
   void init(int argc, char** argv);
-  ///
   void init_clanlib(void);
   /// void intro(void);
   void init_pingus(void);

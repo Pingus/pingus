@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.4 2002/06/24 12:09:22 torangan Exp $
+//   $Id: pingus_main.cxx,v 1.5 2002/06/29 14:01:32 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -73,6 +73,7 @@
 #include "boost/smart_ptr.hpp"
 #include "pingus_menu_manager.hxx"
 #include "sound_dummy.hxx"
+#include "action_data.hxx"
 
 #include "sound_real.hxx"
 
@@ -724,6 +725,8 @@ PingusMain::init(int argc, char** argv)
   PingusMain::quick_check_args(argc, argv);
   PingusMain::read_rc_file();
   PingusMain::check_args(argc, argv);
+
+  init_default_actions ();
 
   // Translate the geometry std::string to some int's
   if (!resolution.empty())

@@ -1,4 +1,4 @@
-//  $Id: action_window.cxx,v 1.3 2002/06/29 11:54:22 grumbel Exp $
+//  $Id: action_window.cxx,v 1.4 2002/06/29 14:01:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,8 @@
  [    ok     ]  [  cancel  ]
 ****************************/
 
+using namespace Pingus::Actions;
+
 ActionWindow::ActionWindow (CL_Component* arg_parent, std::vector<ActionData>* arg_actions)
   : parent (arg_parent), actions (arg_actions)
 {
@@ -39,12 +41,13 @@ ActionWindow::ActionWindow (CL_Component* arg_parent, std::vector<ActionData>* a
   
   //window = new CL_Frame (CL_Rect (0, 0, 200, (actions->size() * 20) + 80), parent);
   //window->enable_fill (true);
-  
+
+  // Create all the default gui stuff
   int y = 30;
-  for (std::vector<ActionData>::iterator i = actions->begin (); i != actions->end (); ++i)
+  for (std::vector<ActionData>::iterator i = default_actions.begin (); i != default_actions.end (); ++i)
     {
+      checkboxes.push_back(new CL_CheckBox(CL_Point (10, y), action_to_string(i->name), window));
       inputs.push_back(new CL_InputBox (CL_Rect(100, y, 190, 0), to_string(i->number_of), window));
-      labels.push_back(new CL_Label (CL_Point(10, y), action_to_string(i->name), window));
       y += 20;
     }
 
@@ -90,16 +93,71 @@ ActionWindow::cancel_clicked ()
   hide ();
 }
 
+class is_equal
+{
+private:
+  ActionName action;
+
+public:
+  is_equal (ActionName a) : action (a)
+  {
+  }
+
+  bool operator() (const ActionData& b)
+  {
+    return action == b.name;
+  }
+};
+
 void
 ActionWindow::read_data ()
 {
   std::cout << "Reading data" << std::endl;
+  for (unsigned int i = 0; i <  default_actions.size(); ++i)
+    {
+      std::vector<ActionData>::iterator act = std::find_if (actions->begin (), actions->end (),
+							    is_equal (default_actions[i].name));
+      if (act == actions->end ())
+	{
+	  checkboxes[i]->set_checked (false);
+	  //inputs[i]->set_text (to_string(0));
+	}
+      else
+	{
+	  checkboxes[i]->set_checked (true);
+	  inputs[i]->set_text (to_string(act->number_of));
+	}
+    }
 }
 
 void
 ActionWindow::write_data ()
 {
   std::cout << "Writing data" << std::endl;
+  for (unsigned int i = 0; i < default_actions.size(); ++i)  
+    {
+      if (checkboxes[i]->is_checked ())
+	{
+	  std::vector<ActionData>::iterator act = std::find_if (actions->begin (), actions->end (),
+								is_equal (default_actions[i].name));
+	  if (act == actions->end ())
+	    {
+	      ActionData data;
+	      from_string(inputs[i]->get_text (), data.number_of);
+	      data.name = default_actions[i].name;
+	      
+	      actions->push_back (data);
+	    }
+	  else
+	    {
+	      from_string(inputs[i]->get_text (), act->number_of); 
+	    }
+	}
+      else
+	{
+	  std::remove_if (actions->begin (), actions->end (), is_equal(default_actions[i].name));
+	}
+    }
 }
 
 /* EOF */

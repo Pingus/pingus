@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.82 2002/06/28 15:10:48 torangan Exp $
+#  $Id: Makefile.am,v 1.83 2002/06/29 14:01:32 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,6 +68,7 @@ pingus_SOURCES = \
 action_button.cxx \
 action_button.hxx \
 action_data.hxx \
+action_data.cxx \
 action_holder.cxx \
 action_holder.hxx \
 algo.cxx \
