@@ -65,6 +65,7 @@ Current Bugs:
 * Extremely short mouse clicks are not registered (its a bug in
   ClanLibs event system)
 
+<<<<<<< TODO
 * with-extra-libs broken
 
 * sstream buggy, doesn't work with gcc-3.0
@@ -74,7 +75,7 @@ Current Bugs:
 'grep' at the sources for "Bug" or "FIXME" that should give you some
 more known bugs and other stuff. 
 
-$Date: 2002/04/06 18:43:29 $
+$Date: 2002/04/21 18:56:37 $
 
 =======
 
@@ -212,6 +213,155 @@ Todo and Bugs from ROADMAP:
 BUGS:
 ~~~~~
 Random crash while scrolling
+=======
+* with-extra-libs broken
+
+* sstream buggy, doesn't work with gcc-3.0
+
+* plf entrances are buggy
+
+'grep' at the sources for "Bug" or "FIXME" that should give you some
+more known bugs and other stuff. 
+
+$Date: 2002/04/21 18:56:37 $
+
+=======
+
+Todo and Bugs from ROADMAP:
+
+  - upload an uptodate doxygen source docu (might be incomplete)
+
+  - upload a tutorial game introduction
+
+  - update the level building tutorial and include it in the tarball
+
+  - all docu should be included in the tarball (source code docu might
+    only be on the webpage due to space issues)
+
+- why the f*** is GameTime a class with static member function?! It
+  should be a normal non-static class and placed in World.
+
+- temporary saving should be reworked
+
+- duplicating multilpe iceblocks leads to a crash
+
+- seperate colmap and gfx remover surfaces for digger, miner, etc. would be nice
+  the current ones don't work very good since the remove path is too smooth
+  - keep_trans,alpha blitters would also be very nice (darken the border of a digging path or something like that)
+
+- diggers leave a small pixel barier when finished with there digging,
+  which can be abused as a step
+
+- check for z-pos on groundpieces, which don't make much sense
+
+- replace all '9000' time levels with '-1' time or correct time
+
+- fix author in all levels
+
+- update email addrs and missing author fields in level files
+
+- floater and jumper don't work together
+
+- hint system via herring or flower (it should show the path to walk)
+
+- [important] diggers seem to be extremly slow in some situations
+  (transparent groundpieces?!), no idea what could causing this...
+  Node: this is caused by RGB groundpieces, so they shall *never* be
+  used as groundpieces!
+
+- convert all remaining plf's to xml (nameing convention, etc.)
+
+- smasher doesn't correctly check the y-coordinate
+
+- 'translation bug' should be solved
+
+- write some guile scripts to check properties of levels
+
+- pingus should act more gracefully on errors 
+
+  - missing music should just get printed to the console
+
+  - missing images => 404 and console error
+
+- menu background should be repainted/fixed
+
+- back-button in option menu causes freeze when music running, see backtrace:
+
+,----
+| 0x4040884e in select () from /lib/libc.so.6
+| (gdb) where
+| #0  0x4040884e in select () from /lib/libc.so.6
+| #1  0x400894a0 in __DTOR_END__ () from /usr/local/lib/libclanSound.so.1
+| #2  0x40079220 in CL_CSMixer::wait() (this=0x81e28ac)
+|     at Sources/Sound/Sound/ClanSound/mixer.cpp:62
+| #3  0x40078d8d in CL_SoundCard_ClanSound::run() (this=0x0)
+|     at Sources/Sound/Sound/ClanSound/soundcard_clan.cpp:140
+| #4  0x40187d75 in CL_Thread_Generic::run_init(void*) (_self=0x800)
+|     at Sources/Core/System/Unix/thread_pthread.cpp:99
+| #5  0x401d4f0a in pthread_start_thread () from /lib/libpthread.so.0
+| #6  0x401d4f51 in pthread_start_thread_event () from /lib/libpthread.so.0
+`----
+
+- Pingu::id handling is very dirty
+
+- music and sound should be up and running and included in the game [important - release critical]
+
+- door-duplication crashes
+
+- z_pos sorting might be incorrect 
+
+- all working actions in default level
+
+- walker fly in the air (see test1)
+
+- bridger<->walker bug still there
+
+- pingus can walk over slime (hellmouth2)
+
+- diggers can dead-lock and not start digging
+
+- show floater and climber in the 'cursor'
+
+- insertion of surface backgrounds in the editor
+
+- exit/entrance on smallmap doesn't get shown
+
+- fix all the bugs at
+  http://sourceforge.net/tracker/?group_id=5358&atid=105358
+
+- check that the editor is fully working
+
+- background manipulation in the editor should be working
+
+- a property gui in the editor would be nice
+
+- one tutorial world should be present, other worlds have to wait for
+  the 1.0.0 release
+
+- contrib could need a bit cleanup
+
+- playable and non-playable levels should be sorted
+
+- add better load-from-file support for hotspots, backgrounds, etc.
+
+- fix screenshot segfault
+
+- pingus doesn't die when out-of-screen
+
+- result screens
+
+- html like behaviour for level descriptions
+
+- description screen and result screen must be reworked
+
+- thumbnail handling should be reviewed
+
+
+
+BUGS:
+~~~~~
+Random crash while scrolling
+>>>>>>> 1.47
 
 ---Type <return> to continue, or q <return> to quit---
 #0  0x08090697 in Playfield::do_scrolling() (this=0x954d678)
@@ -501,6 +651,15 @@ xmas-blockblow-timpany - pingus get stuck
 =======
 Additional bugs found by Phlog:
 
+Added Sat Apr 20, 2002:
+
+* Floaters shouldn't float until they've fallen the minimum distance
+it'd take for a regular Pingu to splat. That way, you wouldn't have
+to worry about floaters moving so slowly a lot of the time, when
+unnecessary
+
+Older:
+
 * Level selection box at the bottom of the level selection screen is
   mostly cutoff by the bottom of the screen
 
@@ -549,37 +708,3 @@ Additional bugs found by Phlog:
 
 * In space levels, Pingu that fall off of a cliff into space don't
   die, though they should just like in water or lava.
-
-Particular levels: (only levels with bugs are noted)
-
-Xmas:
-
-* Over The Water: no exit, water stops before the final rock, making
-  square water
-* Snow 5: this should be a space level, for a space world
-* Dragon Illusion: drop off on the far right too high.. building up
-  a bridge from the left would be a major hassle.. or just make this
-  a very difficult level.
-
-All Standard:
-
-* Evil in the Dark: right exit not touching the ground below it
-  (Pingu can't be saved there).
-
-Space:
-
-* Danger at Space Station 6: this level is way too difficult to be
-  any fun.
-
-Medium:
-
-* Rockhoppin': Pingu that fall to the bottom don't die.
-* Smashing Zone - DejaVu: I think 4 blockers are needed..
-* Blocked Exit: Isnt't this impossible?
-
-Hard
-
-* Lather, Rinse, Repeat: Pingu walk on air right above the plant.
-  Also, Pingu get trapped in middle of plant and stuck on the
-  left side of the map (at the top) too easily.
-* Almost Nearly not quite a level: Not too exciting.. just hard

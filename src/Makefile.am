@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.70 2002/01/15 16:55:56 grumbel Exp $
+#  $Id: Makefile.am,v 1.71 2002/04/21 18:56:37 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@ bindir=$(prefix)/games
 # The next lines are for gettext
 localedir = $(datadir)/locale
 # DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
-LIBS = @INTLLIBS@ @LIBS@
 # INCLUDES = -I$(srcdir) -I.. -I$(top_srcdir)/lib -I../intl -I$(top_srcdir)/intl
 
 SUBDIRS = \
@@ -51,7 +50,11 @@ EXTRA_DIST = README \
 
 bin_PROGRAMS = pingus
 
-LDADD = caimagemanipulation/libcaimagemanipulation.a \
+pingus_LDADD = \
+        @INTLLIBS@ \
+        @LIBS@     \
+        \
+        caimagemanipulation/libcaimagemanipulation.a \
         worldobjs/libpingus_worldobjs.a \
 	traps/libpingu_traps.a          \
         actions/libpingu_actions.a      \
