@@ -1,4 +1,4 @@
-//  $Id: controller.hxx,v 1.5 2002/07/10 18:08:00 torangan Exp $
+//  $Id: controller.hxx,v 1.6 2002/07/12 15:09:47 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include <list>
 #include <string>
 #include <vector>
+#include <utility>
 #include "../libxmlfwd.hxx"
 
 namespace Input
@@ -31,33 +32,23 @@ namespace Input
   class Button;
   class Event;
   class Pointer;
+  class Scroller;
 
   class Controller {
 
     private:
-      Pointer* standard_pointer;
-      Pointer* scroll_pointer;
+      Pointer*  standard_pointer;
+      Scroller* scroller;
     
-      Button* armageddon_button;
-      Button* escape_button;
-      Button* fast_forward_button;
-      Button* pause_button;
-      Button* primary_button;
-      Button* secondary_button;
-      Button* scroll_modifier;
-    
-      std::vector<Button*> action_buttons;
-    
+      std::vector<std::pair<int, Button*> > buttons;
+
       Axis* action_axis;
       
       std::list<Event*> events;
 
-      float std_pointer_x, std_pointer_y, scr_pointer_x, scr_pointer_y;
-      bool  armageddon_pressed, escape_pressed, fast_forward_pressed, pause_pressed,
-            primary_pressed, secondary_pressed, scroll_modifier_pressed;
-      bool  action_1_pressed, action_2_pressed, action_3_pressed, action_4_pressed, 
-            action_5_pressed, action_6_pressed, action_7_pressed, action_8_pressed, 
-	    action_9_pressed, action_10_pressed;
+      float             std_pointer_x;
+      float             std_pointer_y;
+      std::vector<bool> button_states;
 
     public:
       explicit Controller (const std::string& configfile);
