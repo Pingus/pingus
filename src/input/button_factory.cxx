@@ -1,4 +1,4 @@
-//  $Id: button_factory.cxx,v 1.5 2002/08/16 13:03:36 torangan Exp $
+//  $Id: button_factory.cxx,v 1.6 2002/08/16 15:14:00 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ namespace Input {
   Button* ButtonFactory::create(xmlNodePtr cur)
   {
     if (!cur)
-      throw PingusError("ButtonFactory called without an element");
+      PingusError::raise("ButtonFactory called without an element");
   
     if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "double-button"))
       return double_button(XMLhelper::skip_blank(cur->children));
@@ -55,7 +55,9 @@ namespace Input {
       return triple_button(XMLhelper::skip_blank(cur->children));
     
     else
-      throw PingusError(std::string("Unknown button type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
+      PingusError::raise(std::string("Unknown button type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
+      
+    return 0; // never reached
   }
   
   Button* ButtonFactory::double_button (xmlNodePtr cur)
@@ -74,11 +76,11 @@ namespace Input {
   {
     char * id_str     = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("id")));
     if (!id_str)
-      throw PingusError("JoystickButton without id parameter");
+      PingusError::raise("JoystickButton without id parameter");
 
     char * button_str = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("button")));
     if (!button_str)
-      throw PingusError("JoystickButton without button parameter");
+      PingusError::raise("JoystickButton without button parameter");
     
     int id     = strtol(id_str,     reinterpret_cast<char**>(NULL), 10);
     int button = strtol(button_str, reinterpret_cast<char**>(NULL), 10);
@@ -93,7 +95,7 @@ namespace Input {
   {
     char * key_str = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("key")));
     if (!key_str)
-      throw PingusError("KeyButton without key parameter");
+      PingusError::raise("KeyButton without key parameter");
     
     int key = KeyHelper::string_to_key(key_str);
     
@@ -106,7 +108,7 @@ namespace Input {
   {
     char * button_str = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("button")));
     if (!button_str)
-      throw PingusError("MouseButton without button parameter");
+      PingusError::raise("MouseButton without button parameter");
     
     int button = strtol(button_str, reinterpret_cast<char**>(NULL), 10);
     free(button_str);

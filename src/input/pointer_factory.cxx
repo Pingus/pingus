@@ -1,4 +1,4 @@
-//  $Id: pointer_factory.cxx,v 1.3 2002/08/16 13:03:36 torangan Exp $
+//  $Id: pointer_factory.cxx,v 1.4 2002/08/16 15:14:00 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ namespace Input {
   Pointer* PointerFactory::create(xmlNodePtr cur)
   {
     if (!cur)
-      throw PingusError("PointerFactory called without an element");
+      PingusError::raise("PointerFactory called without an element");
 
     if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "axis-pointer"))
       return axis_pointer(cur);
@@ -44,14 +44,16 @@ namespace Input {
       return multiple_pointer(cur->children);
       
     else
-      throw PingusError(std::string("Unknown pointer type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
+      PingusError::raise(std::string("Unknown pointer type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
+      
+    return 0; // never reached
   }
   
   Pointer* PointerFactory::axis_pointer (xmlNodePtr cur)
   {
     char* speed_str = reinterpret_cast<char*>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("speed")));
     if (!speed_str)
-      throw PingusError("AxisPointer without speed parameter");
+      PingusError::raise("AxisPointer without speed parameter");
 
     float speed = strtod(speed_str, reinterpret_cast<char**>(NULL));
     free(speed_str);

@@ -1,4 +1,4 @@
-//  $Id: plt_parser.cxx,v 1.3 2002/06/20 12:22:51 grumbel Exp $
+//  $Id: plt_parser.cxx,v 1.4 2002/08/16 15:13:59 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ PLTParser::parse(string filename)
   in.open(filename.c_str());
 
   if (!in) 
-    throw PingusError("PLTParser: Cannot open: " + filename);
+    PingusError::raise("PLTParser: Cannot open: " + filename);
   
   try 
     {
@@ -89,7 +89,7 @@ PLTParser::add_pair(string keyword, string value)
   } else {
     char str[1024];
     sprintf(str, _("Unexpected keyword: '%s' at line: %d"), keyword.c_str(), lineno);
-    throw PingusError(str);
+    PingusError::raise(str);
   }
 }
 
@@ -130,7 +130,7 @@ PLTParser::expect(char ch)
   if (c != ch) {
     char str[1024];
     sprintf(str, "Unexpected '%c' at line: %d", c, lineno);
-    throw PingusError(str);
+    PingusError::raise(str);
   }
   jump_spaces();
 }

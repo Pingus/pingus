@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.6 2002/06/30 09:01:02 grumbel Exp $
+//  $Id: xml_plf.cxx,v 1.7 2002/08/16 15:13:59 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ XMLPLF::XMLPLF(const std::string& filename)
   doc = xmlParseFile(filename.c_str());
 
   if (doc == NULL)
-    throw PingusError("XMLPLF: Couldn't open \"" + filename + "\"");
+    PingusError::raise("XMLPLF: Couldn't open \"" + filename + "\"");
 
   parse_file();
 }
@@ -155,7 +155,7 @@ XMLPLF::parse_file()
 	}
       //puts("global done");
     } else {
-      throw PingusError("XMLPLF: This is no valid Pingus level");
+      PingusError::raise("XMLPLF: This is no valid Pingus level");
     }
 }
 

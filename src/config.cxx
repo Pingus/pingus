@@ -1,4 +1,4 @@
-//  $Id: config.cxx,v 1.3 2002/06/20 12:22:51 grumbel Exp $
+//  $Id: config.cxx,v 1.4 2002/08/16 15:13:59 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,7 +68,7 @@ ConfigParser::open(std::string filename)
   eof = false;
 
   if (!in) 
-    throw PingusError(_("Couldn't open: ") + filename);
+    PingusError::raise(_("Couldn't open: ") + filename);
     
   if (verbose > 1)
     std::cout << "Successfully opened plf file." << std::endl;
@@ -82,7 +82,7 @@ ConfigParser::get_char(void)
 
   if (eof) {
     if (verbose > 1) std::cout << "ConfigParser: Result of get_char() will be undefined" << std::endl;
-    throw PingusError("");
+    PingusError::raise("");
   }
 
   c = in.get();
@@ -261,7 +261,7 @@ ConfigParser::syntax_error(std::string error = "")
   if (error != "")
     error_str += "PLF:" + error + "\n";
 
-  throw PingusError(error_str);
+  PingusError::raise(error_str);
 }
 
 // Parse the file and fill all structs with the values.
@@ -401,7 +401,7 @@ Config::set_value(std::string valueid,
     }
   else
     {
-      throw PingusError(_("Config: Unknown valueid: ") + valueid);
+      PingusError::raise(_("Config: Unknown valueid: ") + valueid);
     }
 }
 
@@ -418,8 +418,10 @@ Config::str_to_bool(const std::string& str)
     }
   else
     {
-      throw PingusError(_("Config: value: ") + str + _(" is not of type bool."));
+      PingusError::raise(_("Config: value: ") + str + _(" is not of type bool."));
     }
+    
+  return false; // never reached
 }
 
 int
@@ -429,7 +431,7 @@ Config::str_to_int(const std::string& str)
 
   if (sscanf(str.c_str(), "%d", &ret_val) != 1) 
     {
-      throw PingusError(_("Config: Couldn't convert std::string to integer: ") + str);
+      PingusError::raise(_("Config: Couldn't convert std::string to integer: ") + str);
     }
 
   return ret_val;

@@ -1,4 +1,4 @@
-//  $Id: plfobj.cxx,v 1.6 2002/07/02 13:36:07 torangan Exp $
+//  $Id: plfobj.cxx,v 1.7 2002/08/16 15:14:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ EntranceObj::EntranceObj(const EntranceData& data)
   else 
     {
       std::cout << "Entrance obj error!" << endl;
-      throw PingusError("EntranceObj: Unknown entrance type: " + type);
+      PingusError::raise("EntranceObj: Unknown entrance type: " + type);
     }
 }
 
@@ -165,7 +165,7 @@ TrapObj::TrapObj(const TrapData& data)
     sprite = Sprite("Traps/teleporter", "traps");
     sprite.set_align_center_bottom ();
   } else {
-    throw PingusError("'" + type + "': trap is not implemented in editor");
+    PingusError::raise("'" + type + "': trap is not implemented in editor");
   }
 }
 

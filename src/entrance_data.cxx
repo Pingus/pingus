@@ -1,4 +1,4 @@
-//  $Id: entrance_data.cxx,v 1.3 2002/07/02 10:42:38 grumbel Exp $
+//  $Id: entrance_data.cxx,v 1.4 2002/08/16 15:13:59 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -120,8 +120,10 @@ EntranceData::create_WorldObj()
   } else if (type == "cloud") {
     return new Cloud(*this);
   } else {
-    throw PingusError("Entrance: Entrance type in PLF file is unknown: " + type);
+    PingusError::raise("Entrance: Entrance type in PLF file is unknown: " + type);
   }
+  
+  return 0; // never reached
 }
 
 EditorObjLst 

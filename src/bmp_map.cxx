@@ -1,4 +1,4 @@
-//  $Id: bmp_map.cxx,v 1.1 2002/06/12 19:04:45 grumbel Exp $
+//  $Id: bmp_map.cxx,v 1.2 2002/08/16 15:13:59 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ PinguBmpMap::PinguBmpMap(ResDescriptor res_desc)
   surface = PingusResource::load_surface(res_desc);
   
   if (!surface) {
-    throw PingusError(res_desc.res_name + _(": Could not open file\n"));;
+    PingusError::raise(res_desc.res_name + _(": Could not open file\n"));;
   }
 }
 
@@ -98,7 +98,7 @@ PinguBmpMap::get_colmap()
     vbuffer = provider->get_data();
     assert(vbuffer);
     if (provider->get_depth() != 8)
-      throw PingusError(_("PingusBmpMap::get_colmap: Surface has wrong pixel format, need 8bpp!"));
+      PingusError::raise(_("PingusBmpMap::get_colmap: Surface has wrong pixel format, need 8bpp!"));
     
     buffer = new unsigned char [provider->get_pitch() * provider->get_height()];
     memcpy(buffer, vbuffer, provider->get_pitch() *  provider->get_height());

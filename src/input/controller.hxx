@@ -1,4 +1,4 @@
-//  $Id: controller.hxx,v 1.7 2002/07/29 10:41:17 grumbel Exp $
+//  $Id: controller.hxx,v 1.8 2002/08/16 15:14:00 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include <vector>
 #include <utility>
 #include "../libxmlfwd.hxx"
+#include "button_event.hxx"
 
 namespace Input
 {
@@ -34,15 +35,17 @@ namespace Input
   class Pointer;
   class Scroller;
 
+  typedef std::pair<ButtonName, Button*> ButtonEntry;
+  
   class Controller {
 
     private:
+      Axis*     action_axis;
       Pointer*  standard_pointer;
       Scroller* scroller;
     
-      std::vector<std::pair<int, Button*> > buttons;
-
-      Axis* action_axis;
+      std::vector<std::pair<ButtonName, Button*> > buttons;
+                  
       
       std::list<Event*> events;
 
@@ -55,10 +58,18 @@ namespace Input
       
       std::list<Event*>& get_events () { return events; }
       
+      const Pointer * get_pointer     () const { return standard_pointer; }
+      const Scroller* get_scroller    () const { return scroller;         }
+      const Axis    * get_action_axis () const { return action_axis;      }
+
+      const Button* get_button (ButtonName name) const;
+      
       void update(float delta);
 
     private:
-      void create_action_buttons(xmlNodePtr cur);
+      void create_action_buttons (xmlNodePtr cur);
+      
+      const Button* find_button (ButtonName name) const;
          
   };
 }

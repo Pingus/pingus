@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.25 2002/08/16 13:03:36 torangan Exp $
+//  $Id: object_manager.cxx,v 1.26 2002/08/16 15:14:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -189,7 +189,7 @@ ObjectManager::save_level_xml (const std::string & filename)
   xml.open(filename.c_str());
 
   if (!xml)
-    throw PingusError("ObjectManager:save_level_xml: Couldn't save level: " + filename);
+    PingusError::raise("ObjectManager:save_level_xml: Couldn't save level: " + filename);
 
   xml << "<?xml version=\"1.0\"  encoding=\"ISO-8859-1\"?>\n\n"
       << "<pingus-level>\n"

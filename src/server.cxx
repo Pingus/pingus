@@ -1,4 +1,4 @@
-//  $Id: server.cxx,v 1.8 2002/06/28 15:12:22 torangan Exp $
+//  $Id: server.cxx,v 1.9 2002/08/16 15:13:59 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ PingusEvent::PingusEvent(std::string event_str)
   str = event_str.substr(split_pos + 1);
 
   if (sscanf(game_time_str.c_str(), "%d", &game_time) != 1) {
-    throw PingusError("PingusEvent: Unable to parse: " + event_str);
+    PingusError::raise("PingusEvent: Unable to parse: " + event_str);
   }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: plf_plf.cxx,v 1.4 2002/06/28 15:12:22 torangan Exp $
+//  $Id: plf_plf.cxx,v 1.5 2002/08/16 15:13:59 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -290,7 +290,7 @@ PLFPLF::set_value(string valueid,
     break;
     
   default:
-    throw PingusError("PLF:set_value(): Internal Parser error!");
+    PingusError::raise("PLF:set_value(): Internal Parser error!");
   }
 }
 
@@ -318,7 +318,7 @@ PLFPLF::set_group_start(string groupname)
   } else if (groupname == "buttons") {
     current_group = PLFPLF::BUTTONS;
   } else {
-    throw PingusError("Parse error: Unknown groupname: '" + groupname + "'");
+    PingusError::raise("Parse error: Unknown groupname: '" + groupname + "'");
   }  
 }
 
@@ -371,7 +371,7 @@ PLFPLF::str_to_int(const string& str)
   int ret_val;
 
   if (sscanf(str.c_str(), "%d", &ret_val) != 1) {
-    throw PingusError("PLF: Couldn't convert string to integer: " + str);
+    PingusError::raise("PLF: Couldn't convert string to integer: " + str);
   }
 
   return ret_val;
@@ -383,7 +383,7 @@ PLFPLF::str_to_float(const string& str)
   float ret_val;
 
   if (sscanf(str.c_str(), "%f", &ret_val) != 1) {
-    throw PingusError("PLF: Couldn't convert string to float: " + str);
+    PingusError::raise("PLF: Couldn't convert string to float: " + str);
   }
 
   return ret_val;
@@ -402,8 +402,10 @@ PLFPLF::str_to_bool(const string& str)
     }
   else
     {
-      throw PingusError("PLF: value: " + str + " is not of type bool.");
+      PingusError::raise("PLF: value: " + str + " is not of type bool.");
     }
+    
+  return false; // never reached
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: plt_xml.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: plt_xml.cxx,v 1.3 2002/08/16 15:13:59 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ PLTXML::parse(std::string filename)
     }
   else
     {
-      throw PingusError("PLTXML: Couldn't load : " + filename);
+      PingusError::raise("PLTXML: Couldn't load : " + filename);
     }
 }
 

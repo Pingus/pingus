@@ -1,4 +1,4 @@
-//  $Id: psm_parser.cxx,v 1.3 2002/06/20 11:23:53 grumbel Exp $
+//  $Id: psm_parser.cxx,v 1.4 2002/08/16 15:13:59 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ PSMParser::parse(string filename)
     in.open(filename.c_str());
 
     if (!in) 
-      throw PingusError("Cannot open: " + filename);
+      PingusError::raise("Cannot open: " + filename);
     
     GroundpieceData temp;
     
@@ -74,7 +74,7 @@ PSMParser::parse(string filename)
   }
   catch (PSMParseError err) {
     cout << "PSMParseError occured: " << err.message << " at line: " << lines << endl;
-    throw PingusError(err.message);
+    PingusError::raise(err.message);
   }
   catch (PSMEOF) {}
   file_parsed = true;

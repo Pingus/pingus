@@ -1,4 +1,4 @@
-//  $Id: specs_reader.cxx,v 1.1 2002/06/12 19:09:38 grumbel Exp $
+//  $Id: specs_reader.cxx,v 1.2 2002/08/16 15:13:59 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -90,7 +90,7 @@ SpecsReader::open(const char* filename)
     mes += filename;
     mes += "'";
 
-    throw PingusError(mes);
+    PingusError::raise(mes);
   }
 
   while(!in.eof()) {

@@ -1,4 +1,4 @@
-//  $Id: pingus_error.hxx,v 1.4 2002/08/16 13:03:35 torangan Exp $
+//  $Id: pingus_error.hxx,v 1.5 2002/08/16 15:13:59 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,9 +38,13 @@ public:
     when the thing is properly working. */
 class PingusBug : public PingusException 
 {
-public:
+private:
   PingusBug(std::string mes);
+
+public:
   virtual std::string get_message() const;
+  
+  static void raise (std::string msg);
 };
 
 
@@ -48,11 +52,13 @@ public:
     invalid user input, file not found events or similar stuff. */
 class PingusError : public PingusException
 {
-public:
-  ///
+private:
   PingusError(std::string mes);
-  ///
+
+public:
   virtual std::string get_message () const;
+  
+  static void raise (std::string msg);
 };
 
 #endif

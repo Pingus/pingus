@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.cxx,v 1.7 2002/06/28 17:48:42 grumbel Exp $
+//  $Id: res_descriptor.cxx,v 1.8 2002/08/16 15:13:59 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -98,7 +98,7 @@ ResDescriptor::ResDescriptor(const std::string& c_cast, const std::string& value
   } else if (cast == "auto") {
     type = RD_AUTO;
   } else {
-    throw PingusError("ResDescriptor: Wrong cast '"+cast+"' for value '"+value+"'\n");
+    PingusError::raise("ResDescriptor: Wrong cast '"+cast+"' for value '"+value+"'\n");
   }
   res_name = value;
 }

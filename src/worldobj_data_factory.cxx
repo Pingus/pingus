@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.2 2002/06/18 10:04:11 torangan Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.3 2002/08/16 15:13:59 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -87,8 +87,10 @@ WorldObjDataFactory::create (xmlDocPtr doc, xmlNodePtr cur)
     }
   else
     {
-      throw PingusError ("WorldObjDataFactory::create: Error, no type given.");
+      PingusError::raise ("WorldObjDataFactory::create: Error, no type given.");
     }
+    
+  return 0; //never reached
 }
 
 WorldObjData*
@@ -100,9 +102,11 @@ WorldObjDataFactory::create (const std::string& id,
   std::map<std::string, WorldObjDataAbstractFactory*>::iterator it = factories.find(id);
   
   if (it == factories.end())
-    throw PingusError("WorldObjDataFactory: Invalid id: " + id);
+    PingusError::raise("WorldObjDataFactory: Invalid id: " + id);
   else 
     return it->second->create (doc, cur);
+    
+  return 0; // never reached
 }
 
 void

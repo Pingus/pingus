@@ -1,4 +1,4 @@
-//  $Id: scroller_factory.cxx,v 1.4 2002/08/16 13:03:36 torangan Exp $
+//  $Id: scroller_factory.cxx,v 1.5 2002/08/16 15:14:00 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ namespace Input {
   ScrollerFactory::create(xmlNodePtr cur)
   {
     if (!cur)
-      throw PingusError("ScrollerFactory called without an element");
+      PingusError::raise("ScrollerFactory called without an element");
   
     if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "axis-scroller"))
       return axis_scroller(cur);
@@ -61,7 +61,9 @@ namespace Input {
       return pointer_scroller(XMLhelper::skip_blank(cur->children));
       
     else
-      throw PingusError(std::string("Unknown scroller type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
+      PingusError::raise(std::string("Unknown scroller type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
+      
+    return 0; // never reached
   }
   
   Scroller*
@@ -69,7 +71,7 @@ namespace Input {
   {
     char * speed_str = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("speed")));
     if (!speed_str)
-      throw PingusError("AxisScroller without speed parameter");
+      PingusError::raise("AxisScroller without speed parameter");
     
     float speed = strtod(speed_str, reinterpret_cast<char**>(NULL));
     free(speed_str);
@@ -97,11 +99,11 @@ namespace Input {
   {
     char * invert_x_str = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("invert-x")));
     if (!invert_x_str)
-      throw PingusError("InvertedScroller without invert X parameter");
+      PingusError::raise("InvertedScroller without invert X parameter");
     
     char * invert_y_str = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("invert-y")));
     if (!invert_y_str)
-      throw PingusError("InvertedScroller without invert Y parameter");
+      PingusError::raise("InvertedScroller without invert Y parameter");
       
     bool invert_x = strtol(invert_x_str, reinterpret_cast<char**>(NULL), 10);
     bool invert_y = strtol(invert_x_str, reinterpret_cast<char**>(NULL), 10);
@@ -121,11 +123,11 @@ namespace Input {
   {
     char * id_str = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("id")));
     if (!id_str)
-      throw PingusError("JoystickScroller without id parameter");
+      PingusError::raise("JoystickScroller without id parameter");
     
     char * speed_str = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("speed")));
     if (!speed_str)
-      throw PingusError("JoystickScroller without speed parameter");
+      PingusError::raise("JoystickScroller without speed parameter");
 
     int   id    = strtol(id_str,    reinterpret_cast<char**>(NULL), 10);
     float speed = strtod(speed_str, reinterpret_cast<char**>(NULL));

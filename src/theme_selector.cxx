@@ -1,4 +1,4 @@
-//  $Id: theme_selector.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: theme_selector.cxx,v 1.3 2002/08/16 15:13:59 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -339,7 +339,7 @@ ThemeSelector::readdir(std::string path)
 
   if (themes.size() == 0)
     {
-      throw PingusError ("ThemeSelector: Couldn't find any themes");
+      PingusError::raise ("ThemeSelector: Couldn't find any themes");
     }
   else
     {

@@ -1,4 +1,4 @@
-//  $Id: axis_factory.cxx,v 1.6 2002/08/16 13:03:36 torangan Exp $
+//  $Id: axis_factory.cxx,v 1.7 2002/08/16 15:14:00 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ namespace Input {
   Axis* AxisFactory::create(xmlNodePtr cur)
   {
     if (!cur)
-      throw PingusError("AxisFactory called without an element");
+      PingusError::raise("AxisFactory called without an element");
 
     if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "button-axis"))
       return button_axis(cur);
@@ -52,14 +52,16 @@ namespace Input {
       return multiple_axis(cur->children);
       
     else
-      throw PingusError(std::string("Unknown axis type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
+      PingusError::raise(std::string("Unknown axis type: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
+      
+    return 0; // never reached
   }
   
   Axis* AxisFactory::button_axis (xmlNodePtr cur)
   {
     char * angle_str = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("angle")));
     if (!angle_str)
-      throw PingusError("ButtonAxis without angle parameter");
+      PingusError::raise("ButtonAxis without angle parameter");
       
     float angle = strtod(angle_str, reinterpret_cast<char**>(NULL));
     free(angle_str);
@@ -82,15 +84,15 @@ namespace Input {
   {
     char * angle_str = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("angle")));
     if (!angle_str)
-      throw PingusError("JoystickAxis without angle parameter");
+      PingusError::raise("JoystickAxis without angle parameter");
 
     char * id_str    = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("id")));
     if (!id_str)
-      throw PingusError("JoystickAxis without id parameter");
+      PingusError::raise("JoystickAxis without id parameter");
       
     char * axis_str  = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("axis")));
     if (!axis_str)
-      throw PingusError("JoystickAxis without axis parameter");
+      PingusError::raise("JoystickAxis without axis parameter");
     
     float angle = strtod(angle_str, reinterpret_cast<char**>(NULL));
     int   id    = strtol(id_str,    reinterpret_cast<char**>(NULL), 10);
@@ -107,11 +109,11 @@ namespace Input {
   {
     char * angle_str = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("angle")));
     if (!angle_str)
-      throw PingusError("MouseAxis without angle parameter");
+      PingusError::raise("MouseAxis without angle parameter");
       
     char * axis_str  = reinterpret_cast<char *>(xmlGetProp(cur, reinterpret_cast<const xmlChar*>("axis")));
     if (!axis_str)
-      throw PingusError("MouseAxis without axis parameter");
+      PingusError::raise("MouseAxis without axis parameter");
     
     float angle = strtod(angle_str, reinterpret_cast<char**>(NULL));
     int   axis  = strtol(axis_str,  reinterpret_cast<char**>(NULL), 10);
@@ -139,7 +141,7 @@ namespace Input {
       }
       
     if (!axes.size())
-      throw PingusError("MultipleAxis without any axis");
+      PingusError::raise("MultipleAxis without any axis");
 
     return new MultipleAxis(axes);
   }

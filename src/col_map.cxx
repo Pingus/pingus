@@ -1,4 +1,4 @@
-//  $Id: col_map.cxx,v 1.5 2002/06/25 18:15:18 grumbel Exp $
+//  $Id: col_map.cxx,v 1.6 2002/08/16 15:13:59 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ ColMap::load(ResDescriptor desc)
 {
   switch(desc.type) {
   case ResDescriptor::RD_FILE:
-    throw PingusError(_("ColMap: File load - Feature is no longer implemented")); //    return load(desc.res_name);
+    PingusError::raise(_("ColMap: File load - Feature is no longer implemented")); //    return load(desc.res_name);
     break;
   case ResDescriptor::RD_RESOURCE:
     {
@@ -63,7 +63,7 @@ ColMap::load(ResDescriptor desc)
       sur = PingusResource::load_surface(desc);
       provider = sur.get_provider();
       if (provider->get_depth() != 8)
-	throw PingusError(_("PingusBmpMap::get_colmap: Surface has wrong pixel format, need 8bpp!")); 
+	PingusError::raise(_("PingusBmpMap::get_colmap: Surface has wrong pixel format, need 8bpp!")); 
 
       width  = provider->get_width();
       height = provider->get_height();
@@ -86,6 +86,8 @@ ColMap::load(ResDescriptor desc)
     return 0;
     break;
   }
+  
+  return 0; // never reached
 }
 
 int
@@ -216,7 +218,7 @@ ColMap::load(unsigned char* b, int w, int h)
       height = h;
       return 1;
     } else {
-      throw PingusError(_("ColMap::load: Reloaded ColMap!"));
+      PingusError::raise(_("ColMap::load: Reloaded ColMap!"));
       return 0;
     }
 }

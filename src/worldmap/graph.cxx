@@ -1,4 +1,4 @@
-//  $Id: graph.cxx,v 1.2 2002/06/13 14:25:13 torangan Exp $
+//  $Id: graph.cxx,v 1.3 2002/08/16 15:14:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ Graph::parse_file (std::string filename)
   doc = xmlParseFile(filename.c_str());
 
   if (!doc) {
-    throw PingusError (_("Graph: File not found: ") + filename);
+    PingusError::raise (_("Graph: File not found: ") + filename);
   }    
 
   xmlNodePtr cur = doc->ROOT;

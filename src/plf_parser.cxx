@@ -1,4 +1,4 @@
-//  $Id: plf_parser.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: plf_parser.cxx,v 1.3 2002/08/16 15:13:59 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,7 @@ PLFParser::open(string filename)
   eof = false;
 
   if (!in) {
-    throw PingusError("Couldn't open: " + filename);
+    PingusError::raise("Couldn't open: " + filename);
   }
   
   if (verbose > 1)
@@ -74,7 +74,7 @@ PLFParser::get_char(void)
 
   if (eof) {
     if (verbose > 1) cout << "PLFParser: Result of get_char() will be undefined" << endl;
-    // throw PingusError("");
+    // PingusError::raise("");
   }
 
   c = in.get();
@@ -304,7 +304,7 @@ PLFParser::syntax_error(string error = "")
   if (error != "")
     error_str += ":PLF:" + error + "\n";
 
-  throw PingusError(error_str);
+  PingusError::raise(error_str);
 }
 
 // Parse the file and fill all structs with the values.

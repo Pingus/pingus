@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.5 2002/06/25 18:15:18 grumbel Exp $
+//  $Id: spot_map.cxx,v 1.6 2002/08/16 15:13:59 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,7 +91,7 @@ PingusSpotMap::PingusSpotMap(PLF* plf)
   switch(plf->get_foreground().type) 
     {
     case ResDescriptor::RD_RESOURCE:
-      throw PingusError("PingusSpotMap: ResType RESOURCE is not implemented, sorry");
+      PingusError::raise("PingusSpotMap: ResType RESOURCE is not implemented, sorry");
       break;
 
     case ResDescriptor::RD_FILE:
@@ -100,7 +100,7 @@ PingusSpotMap::PingusSpotMap(PLF* plf)
       break;
 
     default:
-      throw PingusError("PingusSpotMap: Unknown resource type, bailing out");
+      PingusError::raise("PingusSpotMap: Unknown resource type, bailing out");
       break;
     }
 }
@@ -357,7 +357,7 @@ PingusSpotMap::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovi
     {
       char str[1024];
       sprintf(str, _("Image has wrong color depth: %d"), sprovider->get_depth());
-      throw PingusError(str);
+      PingusError::raise(str);
     }
   //  assert(provider->get_pixel_format() == RGBA8888);
 

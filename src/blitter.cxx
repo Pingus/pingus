@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.10 2002/06/25 21:31:40 grumbel Exp $
+//  $Id: blitter.cxx,v 1.11 2002/08/16 15:13:59 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,7 +64,7 @@ Blitter::put_surface(CL_Canvas* canvas, CL_SurfaceProvider* provider,
       put_surface_32bit(canvas, provider, x, y);
       break;
     default: 
-      throw PingusError("Blitter:put_surface:Unknown color depth: " + to_string(provider->get_depth()));
+      PingusError::raise("Blitter:put_surface:Unknown color depth: " + to_string(provider->get_depth()));
       break;
     }    
 }
@@ -98,7 +98,7 @@ Blitter::put_surface_8bit(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
     {
       char str[1024];
       sprintf(str, _("Couldn't find palette: %d"), sprovider->get_depth());
-      throw PingusError(str);
+      PingusError::raise(str);
     }
 
   twidth = provider->get_width();
@@ -250,7 +250,7 @@ Blitter::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
       // FIXME: Memory hole
       //sprovider->unlock ();
       //provider->unlock ();
-      throw PingusError("Image has wrong color depth: " + to_string(sprovider->get_depth()));
+      PingusError::raise("Image has wrong color depth: " + to_string(sprovider->get_depth()));
     }
   //  assert(provider->get_pixel_format() == RGBA8888);
 

@@ -1,4 +1,4 @@
-//  $Id: stat.cxx,v 1.2 2002/06/13 19:53:22 torangan Exp $
+//  $Id: stat.cxx,v 1.3 2002/08/16 15:14:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ PingusWorldMapStat::parse_file (std::string filename)
   doc = xmlParseFile(filename.c_str());
 
   if (doc == NULL)
-    throw PingusError("Couldn't open \"" + filename + "\" or syntax error.");
+    PingusError::raise("Couldn't open \"" + filename + "\" or syntax error.");
 
   xmlNodePtr cur = doc->ROOT;
 

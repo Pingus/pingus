@@ -1,4 +1,4 @@
-//  $Id: demo_recorder.cxx,v 1.4 2002/06/21 07:45:35 grumbel Exp $
+//  $Id: demo_recorder.cxx,v 1.5 2002/08/16 15:13:59 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,7 @@ DemoRecorder::set_levelname(const string& levelname)
   out << levelname << std::endl;
 
   if (!out)
-    throw PingusError(_("DemoRecorder: Couldn't open: ") + filename);
+    PingusError::raise(_("DemoRecorder: Couldn't open: ") + filename);
 }
 
 void

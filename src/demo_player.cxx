@@ -1,4 +1,4 @@
-//  $Id: demo_player.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: demo_player.cxx,v 1.3 2002/08/16 15:13:59 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ DemoPlayer::load(const std::string& arg_filename)
   in.open(filename.c_str());
 
   if (!in)
-    throw PingusError(_("DemoPlayer: Couldn't load ") + filename);
+    PingusError::raise(_("DemoPlayer: Couldn't load ") + filename);
 
   in >> levelname; 
   in.get(); // \n ueberlesen
