@@ -1,4 +1,4 @@
-//  $Id: gui_manager.cxx,v 1.13 2002/09/14 19:06:34 torangan Exp $
+//  $Id: gui_manager.cxx,v 1.14 2002/10/04 11:38:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -137,10 +137,10 @@ GUIManager::is_at (int x, int y)
 void
 GUIManager::process_pointer_event (Input::PointerEvent* event)
 {
-  x_pos = int(event->x);
-  y_pos = int(event->y);
+  x_pos = static_cast<int>(event->x);
+  y_pos = static_cast<int>(event->y);
 
-  Component* comp = component_at (x_pos, y_pos);//FIXME
+  Component* comp = component_at(x_pos, y_pos);//FIXME
 
   if (primary_pressed_component)
     primary_pressed_component->on_pointer_move (x_pos, y_pos);

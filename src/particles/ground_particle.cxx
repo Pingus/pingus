@@ -1,4 +1,4 @@
-//  $Id: ground_particle.cxx,v 1.1 2002/06/12 19:11:31 grumbel Exp $
+//  $Id: ground_particle.cxx,v 1.2 2002/10/04 11:38:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #include "../pingus_resource.hxx"
 #include "ground_particle.hxx"
 
-GroundParticle::GroundParticle(int x, int y, float x_a, float y_a)
+GroundParticle::GroundParticle (int x, int y, float x_a, float y_a)
   : Particle (x,y, x_a, y_a)
 {
   surface = PingusResource::load_surface("Particles/ground", "pingus");
@@ -30,7 +30,7 @@ GroundParticle::GroundParticle(int x, int y, float x_a, float y_a)
 }
 
 void
-GroundParticle::update(float /*delta*/)
+GroundParticle::update (float /*delta*/)
 {
   pos.x += velocity.x;
   pos.y += velocity.y;
@@ -41,18 +41,21 @@ GroundParticle::update(float /*delta*/)
 }
 
 void
-GroundParticle::draw_offset(int ofx, int ofy, float s)
+GroundParticle::draw_offset (int ofx, int ofy, float s)
 {
   if (fast_mode)
     return;
 
   if (s == 1.0) {
     // FIXME: This segfaults from time to time, don't know why
-    surface.put_screen(int(pos.x + ofx - 16), int(pos.y + ofy - 16), 3 - (livetime * 4 / time));
+    surface.put_screen(static_cast<int>(pos.x + ofx - 16), 
+                       static_cast<int>(pos.y + ofy - 16),
+		       3 - (livetime * 4 / time));
   } else {
-    int width  = (int)(surface.get_width() * s);
-    int height = (int)(surface.get_height() * s);
-    surface.put_screen((int)((pos.x + ofx) * s) - width/2, (int)((pos.y + ofy) * s) - height/2,
+    int width  = static_cast<int>(surface.get_width () * s);
+    int height = static_cast<int>(surface.get_height() * s);
+    surface.put_screen(static_cast<int>((pos.x + ofx) * s) - width  / 2,
+                       static_cast<int>((pos.y + ofy) * s) - height / 2,
 		       width, height, 3 - (livetime * 4 / time));
   }
 }

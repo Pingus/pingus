@@ -1,4 +1,4 @@
-//  $Id: climber.cxx,v 1.15 2002/10/03 12:33:09 grumbel Exp $
+//  $Id: climber.cxx,v 1.16 2002/10/04 11:38:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -112,10 +112,7 @@ Climber::draw (GraphicContext& gc)
 bool
 Climber::change_allowed(ActionName new_action)
 {
-  if (new_action == Actions::Floater)
-    return true;
-  else
-    return false;
+  return (new_action == Actions::Floater);
 }
 
 } // namespace Actions

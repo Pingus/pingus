@@ -1,4 +1,4 @@
-//  $Id: slider.cxx,v 1.12 2002/10/01 19:53:45 grumbel Exp $
+//  $Id: slider.cxx,v 1.13 2002/10/04 11:38:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ Slider::Slider ()
 void
 Slider::init (void)
 {
-  sprite = Sprite("Pingus/slider" + to_string(pingu->get_owner ()),
+  sprite = Sprite("Pingus/slider" + to_string(pingu->get_owner()),
 		  "pingus");
   sprite.set_align_center_bottom();
   speed = 10;
@@ -46,7 +46,7 @@ Slider::update ()
   else
     sprite.set_direction(Sprite::RIGHT);
 
-  sprite.update ();
+  sprite.update();
 
   for (int i = 0; i < speed; ++i)
     {
@@ -56,12 +56,10 @@ Slider::update ()
 	{
 	  speed = (speed > 5) ? 5 : speed;
 
-	  //FIXME Vector
-	  Vector temp(pingu->get_velocity());
 	  if (pingu->direction.is_right()) {
-	    pingu->set_velocity(temp + Vector(speed, 0.0));
+	    pingu->set_velocity(pingu->get_velocity() + Vector(speed, 0.0));
 	  } else {
-	    pingu->set_velocity(temp + Vector(-speed, 0.0));
+	    pingu->set_velocity(pingu->get_velocity() + Vector(-speed, 0.0));
 	  }
 
 	  pingu->set_action(Actions::Walker);
@@ -76,7 +74,7 @@ Slider::update ()
 void
 Slider::draw (GraphicContext& gc)
 {
-  gc.draw (sprite, pingu->get_pos() + Vector(0, -2));
+  gc.draw(sprite, pingu->get_pos() + Vector(0, -2));
 }
 
 } // namespace Actions

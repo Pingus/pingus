@@ -1,4 +1,4 @@
-//  $Id: explosive_particle.cxx,v 1.3 2002/09/28 11:52:25 torangan Exp $
+//  $Id: explosive_particle.cxx,v 1.4 2002/10/04 11:38:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ ExplosiveParticle::~ExplosiveParticle ()
 }
 
 void 
-ExplosiveParticle::update(float delta)
+ExplosiveParticle::update (float delta)
 {
   Vector new_pos = pos + velocity * delta;
   
@@ -47,25 +47,26 @@ ExplosiveParticle::update(float delta)
 
   // FIXME: This thing needs to be more abstract, we just need it far
   // to often to reimplement it over and over again.
-  while (int(new_pos.x) != int(pos.x)
-	 || int(new_pos.y) != int(pos.y))
+  while (   static_cast<int>(new_pos.x) != static_cast<int>(pos.x)
+	 || static_cast<int>(new_pos.y) != static_cast<int>(pos.y))
     {
       pos -= incr;
 
-      if (pos.x < 0 || pos.y < 0 
+      if (   pos.x < 0 
+          || pos.y < 0 
 	  || pos.x + 1 > WorldObj::get_world()->get_width ()
-	  || pos.y + 1 > WorldObj::get_world()->get_height ())
+	  || pos.y + 1 > WorldObj::get_world()->get_height())
 	{
 	  alive = false;
 	  return;
 	}
 
-      if (WorldObj::get_world()->get_colmap ()->getpixel ((int) pos.x, (int) pos.y))
+      if (WorldObj::get_world()->get_colmap()->getpixel(static_cast<int>(pos.x), static_cast<int>(pos.y)))
 	{
-	  detonate ();
+	  detonate();
 	}
     }
- 
+
   pos = new_pos;
 }
 

@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.21 2002/10/03 01:02:12 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.22 2002/10/04 11:38:28 torangan Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -138,7 +138,7 @@ PingusMain::get_title()
 }
 
 void
-PingusMain::read_rc_file(void)
+PingusMain::read_rc_file (void)
 {
   if (!no_config_file)
     {

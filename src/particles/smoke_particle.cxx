@@ -1,4 +1,4 @@
-//  $Id: smoke_particle.cxx,v 1.3 2002/06/28 17:48:42 grumbel Exp $
+//  $Id: smoke_particle.cxx,v 1.4 2002/10/04 11:38:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ SmokeParticle::SmokeParticle()
 
 // FIXME: Why the heck do I get an unresolved reference in
 // WoodThing.cc when I try to use SmokeParticle there?!
-SmokeParticle::SmokeParticle(int x, int y, float x_a, float y_a)
+SmokeParticle::SmokeParticle (int x, int y, float x_a, float y_a)
   : Particle (x, y, x_a, y_a)
 {
   // FIXME: Probably slow??
@@ -52,7 +52,7 @@ SmokeParticle::SmokeParticle(int x, int y, float x_a, float y_a)
 }
 
 void
-SmokeParticle::update(float /*delta*/)
+SmokeParticle::update (float delta)
 {
   pos.x += velocity.x;
   pos.y += velocity.y;
@@ -60,6 +60,8 @@ SmokeParticle::update(float /*delta*/)
 
   if (livetime > 0)
     --livetime;
+    
+  UNUSED_ARG(delta);
 }
 
 void
@@ -70,14 +72,15 @@ SmokeParticle::draw_offset(int ofx, int ofy, float s)
 
   if (s == 1.0) {
     // FIXME: This segfaults from time to time, don't know why
-    surface.put_screen(int(pos.x + ofx - 16), int(pos.y + ofy - 16),
+    surface.put_screen(static_cast<int>(pos.x + ofx - 16),
+                       static_cast<int>(pos.y + ofy - 16),
 		       3 - (livetime * 4 / time));
   } else {
-    int width  = (int)(surface.get_width() * s);
-    int height = (int)(surface.get_height() * s);
-    surface.put_screen((int)((pos.x + ofx) * s) - width/2,
-		       (int)((pos.y + ofy) * s) - height/2,
-			width, height, 3 - (livetime * 4 / time));
+    int width  = static_cast<int>(surface.get_width() * s);
+    int height = static_cast<int>(surface.get_height() * s);
+    surface.put_screen(static_cast<int>((pos.x + ofx) * s) - width  / 2,
+		       static_cast<int>((pos.y + ofy) * s) - height / 2,
+		       width, height, 3 - (livetime * 4 / time));
   }
 }
 

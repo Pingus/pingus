@@ -1,4 +1,4 @@
-//  $Id: capture_rectangle.hxx,v 1.5 2002/09/27 11:26:43 torangan Exp $
+//  $Id: capture_rectangle.hxx,v 1.6 2002/10/04 11:38:28 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,8 @@ class ButtonPanel;
 class CaptureRectangle
 {
 private:
-  Pingu*       pingu; 
+  Pingu*      pingu; 
+  std::string action_str;  
 
   /// The id of the owner of this capture rectangle
   int owner_id;
@@ -47,6 +48,7 @@ private:
 
   ButtonPanel* button_panel;
   CL_Font* font;
+
 public:
   CaptureRectangle(ButtonPanel*);
   ~CaptureRectangle(); 

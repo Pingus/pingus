@@ -1,4 +1,4 @@
-//  $Id: action_holder.cxx,v 1.5 2002/08/23 15:49:47 torangan Exp $
+//  $Id: action_holder.cxx,v 1.6 2002/10/04 11:38:28 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,9 +25,9 @@
 
 ActionHolder::ActionHolder (PLF* plf)
 {
-  std::vector<ActionData> action_data = plf->get_actions ();
+  std::vector<ActionData> action_data = plf->get_actions();
   
-  for(std::vector<ActionData>::iterator i = action_data.begin(); i != action_data.end(); ++i) {
+  for (std::vector<ActionData>::iterator i = action_data.begin(); i != action_data.end(); ++i) {
     set_actions(i->name, i->number_of);
   }
 }
@@ -37,33 +37,33 @@ ActionHolder::~ActionHolder ()
   //FIXME: This is not really a good place to free the actions
   //FIXME: But not otherwise to possible at the moment due to the
   //FIXME: singleton thing.
-  PinguActionFactory::instance ()->delete_actions ();
+  PinguActionFactory::instance()->delete_actions();
 }
 
 void
-ActionHolder::set_actions(ActionName name, int available)
+ActionHolder::set_actions (ActionName name, int available)
 {
   available_actions[name] = available;
 }
 
 void
-ActionHolder::push_action(ActionName name)
+ActionHolder::push_action (ActionName name)
 {
   available_actions[name]++;
 }
 
 int
-ActionHolder::get_available(ActionName name)
+ActionHolder::get_available (ActionName name)
 {
   return available_actions[name];
 }
 
 PinguAction*
-ActionHolder::get_action(ActionName name)
+ActionHolder::get_action (ActionName name)
 {
   if (unlimited_actions) // runtime option; defined in global.hh
     {    
-      return PinguActionFactory::instance ()->create(name);
+      return PinguActionFactory::instance()->create(name);
     } 
   else 
     {
@@ -71,7 +71,7 @@ ActionHolder::get_action(ActionName name)
       if (count > 0) 
 	{
 	  --count;
-	  return PinguActionFactory::instance ()->create(name);
+	  return PinguActionFactory::instance()->create(name);
 	}
       else // Out of actions
 	{

@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.27 2002/10/03 00:47:05 grumbel Exp $
+//  $Id: faller.cxx,v 1.28 2002/10/04 11:38:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,19 +44,19 @@ Faller::init(void)
   // FIXME: we can save some cpu cycles & memory if we do this when it
   // is necessary
   tumbler = Sprite("Pingus/tumble" + to_string(pingu->get_owner()), "pingus");
-  tumbler.set_align_center_bottom ();
+  tumbler.set_align_center_bottom();
 }
 
 void
 Faller::update ()
 {
-  tumbler.update ();
-  faller.update ();
+  tumbler.update();
+  faller.update();
 
   // Pingu stands on ground
   if (rel_getpixel(0, -1) !=  Groundtype::GP_NOTHING)
     { 
-      pingu->set_action (Actions::Walker);
+      pingu->set_action(Actions::Walker);
       return;
     }
 
@@ -72,7 +72,7 @@ Faller::update ()
   
   // Update x and y by moving the penguin to it's target *slowly*
   // and checking if the penguin has hit the bottom at each loop
-  while(rel_getpixel(0, -1) == Groundtype::GP_NOTHING
+  while (  rel_getpixel(0, -1) == Groundtype::GP_NOTHING
 	&& (fabs(newp.x) >= 1 || fabs(newp.y) >= 1))
     {
       if (fabs(newp.x) >= 1)
@@ -153,24 +153,14 @@ bool
 Faller::is_tumbling () const
 {
   // If we are going fast enough to get smashed, start tumbling
-  if (fabs(pingu->get_velocity().x) > deadly_velocity
-      || fabs(pingu->get_velocity().y) > deadly_velocity)
-    {
-      return true;
-    }
-  else
-    {
-      return false;
-    }
+  return (   fabs(pingu->get_velocity().x) > deadly_velocity
+          || fabs(pingu->get_velocity().y) > deadly_velocity);
 }
 
 bool
 Faller::change_allowed (ActionName new_action)
 {
-  if (new_action == Actions::Floater)
-    return true;
-  else
-    return false;
+  return (new_action == Actions::Floater);
 }
 
 } // namespace Actions

@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.26 2002/10/03 00:47:05 grumbel Exp $
+//  $Id: walker.cxx,v 1.27 2002/10/04 11:38:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -123,8 +123,8 @@ Walker::update ()
       bool found_next_step = false;
       for (y_inc = -max_steps; y_inc <= max_steps; ++y_inc)
 	{// up/down-hill scan
-	  if ((   rel_getpixel(1, y_inc)     == Groundtype::GP_NOTHING
-		  || rel_getpixel(1, y_inc)     == Groundtype::GP_BRIDGE) // FIXME: This causes a rather huge step
+	  if ((  rel_getpixel(1, y_inc)     == Groundtype::GP_NOTHING
+              || rel_getpixel(1, y_inc)     == Groundtype::GP_BRIDGE) // FIXME: This causes a rather huge step
 	      && rel_getpixel(1, y_inc - 1) != Groundtype::GP_NOTHING)
 	    { // FIXME:
 	      found_next_step = true;

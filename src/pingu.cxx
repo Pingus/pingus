@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.31 2002/10/03 01:02:12 grumbel Exp $
+//  $Id: pingu.cxx,v 1.32 2002/10/04 11:38:28 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -221,7 +221,7 @@ Pingu::request_set_action (ActionName action_name)
 void
 Pingu::set_action (ActionName action_name) 
 {
-  set_action (PinguActionFactory::instance ()->create (action_name));
+  set_action(PinguActionFactory::instance()->create(action_name));
 }
 
 // Sets an action without any checking

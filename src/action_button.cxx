@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.14 2002/10/03 01:02:12 grumbel Exp $
+//  $Id: action_button.cxx,v 1.15 2002/10/04 11:38:28 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -129,21 +129,18 @@ VerticalActionButton::draw (GraphicContext& gc)
   // FIXME: around, doesn't look like a good idea. 
   available = action_holder->get_available(name);
 
-  if (unlimited_actions) {
-    str = "";
-  } else {
+  if (!unlimited_actions)
     str = to_string(available);
-  }
 
   if (pressed) 
     {
       if (fast_mode) {
-	CL_Display::fill_rect(x_pos, y_pos, x_pos + 60, y_pos + 35 ,
+	CL_Display::fill_rect(x_pos, y_pos, x_pos + 60, y_pos + 35,
 			      1.0, 1.0, 1.0, 1.0);
       } else {
 	//CL_Display::fill_rect(x_pos, y_pos, x_pos + 60, y_pos + 35 ,
 	//1.0, 1.0, 1.0, 0.5);
-	backgroundhl.put_screen (x_pos, y_pos);
+	backgroundhl.put_screen(x_pos, y_pos);
       }
       font_h->print_center(x_pos + 46, y_pos + 10, str.c_str ());
     }
@@ -161,22 +158,23 @@ VerticalActionButton::draw (GraphicContext& gc)
 
   // print the action name next to the button, when mouse pointer is on
   // the button.
-  if(action_help 
-     && CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + 60
-     && CL_Mouse::get_y() < y_pos + 35 && CL_Mouse::get_y() > y_pos) 
+  if (    action_help 
+      && CL_Mouse::get_x() > x_pos      && CL_Mouse::get_x() < x_pos + 60
+      && CL_Mouse::get_y() < y_pos + 35 && CL_Mouse::get_y() > y_pos) 
   {
-	font_b->print_left (x_pos + 65, y_pos, action_to_string(name).c_str());
+	font_b->print_left(x_pos + 65, y_pos, action_to_string(name).c_str());
   }
 
   surface.put_screen(x_pos + 20 - surface.get_width ()/2,
-		     y_pos + 17 - surface.get_height ()/2,
+		     y_pos + 17 - surface.get_height()/2,
 		     action_c);
   UNUSED_ARG(gc);
 }
 
 ArmageddonButton::ArmageddonButton (Server* s, int x, int y)
   : server (s),
-    x_pos (x), y_pos (y),
+    x_pos (x),
+    y_pos (y),
     background  (PingusResource::load_surface("buttons/hbuttonbgb", "core")),
     backgroundhl(PingusResource::load_surface("buttons/hbuttonbg", "core"))
 {

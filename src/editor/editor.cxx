@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.36 2002/10/03 12:33:09 grumbel Exp $
+//  $Id: editor.cxx,v 1.37 2002/10/04 11:38:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -133,21 +133,21 @@ void
 Editor::update (const GameDelta&)
 {
   // FIXME: This should be moved to the object manager
-  if (tmp_selection != selection->get_objects ())
+  if (tmp_selection != selection->get_objects())
     {
       std::cout << "Exit: Selection changed" << std::endl;
-      tmp_selection = selection->get_objects ();
+      tmp_selection = selection->get_objects();
 
       // FIXME: dirty hack
       if (selection->size() == 1)
 	{
-	  EditorObj* obj = selection->get_current_obj ();
-	  property_window->update_frame (obj);
+	  EditorObj* obj = selection->get_current_obj();
+	  property_window->update_frame(obj);
 	  //CL_Component* comp = obj->get_gui_dialog (editor->property_window);
 	}
       else
 	{
-	  property_window->update_frame (0);
+	  property_window->update_frame(0);
 	  std::cout << "EditorEvent::editor_show_object_properties (): error: multiple objects selected" << std::endl;
 	}
     }  
@@ -190,7 +190,7 @@ Editor::draw ()
 
 
 void
-Editor::scroll()
+Editor::scroll ()
 {
   int mouse_x = CL_Mouse::get_x();
   int mouse_y = CL_Mouse::get_y();

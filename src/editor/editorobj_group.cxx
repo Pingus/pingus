@@ -1,4 +1,4 @@
-//  $Id: editorobj_group.cxx,v 1.6 2002/09/28 11:52:23 torangan Exp $
+//  $Id: editorobj_group.cxx,v 1.7 2002/10/04 11:38:29 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,7 +69,7 @@ EditorObjGroup::draw (EditorNS::EditorView * view)
 }
 
 float 
-EditorObjGroup::get_z_pos()
+EditorObjGroup::get_z_pos ()
 {
   /*for(std::vector<boost::shared_ptr<EditorObj> >::iterator i = objs.begin();
       i != objs.end();
