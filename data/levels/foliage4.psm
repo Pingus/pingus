@@ -1,0 +1,8 @@
+ground : (resource:global.dat)GroundPieces/Mushroom/toadstool4 : 94 : 238;
+ground : (resource:global.dat)GroundPieces/Mushroom/toadstool3 : 333 : 262;
+ground : (resource:global.dat)GroundPieces/Foliage/smallbush2 : 325 : 363;
+ground : (resource:global.dat)GroundPieces/Mushroom/toadstool1 : 197 : 371;
+ground : (resource:global.dat)GroundPieces/Mushroom/toadstool2 : 434 : 261;
+ground : (resource:global.dat)GroundPieces/Foliage/midtree2 : 503 : 186;
+ground : (resource:global.dat)GroundPieces/Foliage/midtree1 : 103 : 285;
+ground : (resource:global.dat)GroundPieces/Foliage/talltree : 121 : 293;
