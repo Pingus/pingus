@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.5 2000/12/06 08:54:41 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.6 2000/12/08 17:53:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 ConveyorBeltData::ConveyorBeltData ()
 {
   width = 5;
+  speed = 2;
 }
 
 /** Writte the content of this object formated as xml to the given
@@ -33,7 +34,8 @@ ConveyorBeltData::write_xml(ofstream* xml)
 {
   (*xml) << "  <worldobj type=\"conveyorbelt\">";
   XMLhelper::write_position_xml (xml, pos);
-  (*xml) << "    <width>" << width << "</width>"
+  (*xml) << "    <width>" << width << "</width>\n"
+	 << "    <speed>" << speed << "</speed>\n"
 	 << "  </worldobj>\n" << std::endl;
 }
 
@@ -113,11 +115,12 @@ ConveyorBelt::draw_colmap ()
 void 
 ConveyorBelt::let_move(void)
 {
-  std::cout << "let_move ConveyorBelt" << std::endl;
-  ++counter;
+  counter += speed;
 
   if (counter > 2)
     counter = 0;
+  else if (counter < 0)
+    counter = middle_sur->get_num_frames () - 1;
 
   // Move the Pingus only every second step
   if (catch_counter++ % 2 == 0)
@@ -130,7 +133,7 @@ ConveyorBelt::let_move(void)
 		 && (*pingu)->get_y() > pos.y_pos - 2
 		 && (*pingu)->get_y() < pos.y_pos + 10)
 	    {
-	      (*pingu)->set_pos ((*pingu)->get_x () + 1, (*pingu)->get_y ());
+	      (*pingu)->set_pos ((*pingu)->get_x () - speed, (*pingu)->get_y ());
 	    }
 	}
     }
@@ -176,9 +179,12 @@ EditorConveyorBeltObj::draw_offset(int x_of, int y_of)
 			    counter);
   right_sur->put_screen (pos.x_pos + left_sur->get_width () + ConveyorBeltData::width*middle_sur->get_width () + x_of,
 			 pos.y_pos + y_of, counter);
-  counter++;
+  counter += speed;
   if (counter > 2)
     counter = 0;
+  else if (counter < 0)
+    counter = middle_sur->get_num_frames () - 1;
+
 }
 
 void
