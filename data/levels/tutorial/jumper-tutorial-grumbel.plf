@@ -11,6 +11,7 @@
     <levelname lang="fr">Saute de joie</levelname>
     <levelname lang="sr">Skok za uzivanje</levelname>
     <levelname lang="fi">Hypi riemusta</levelname>
+    <levelname lang="pt">Salta por prazer</levelname>
     <levelname lang="no">Hopp av glede</levelname>
 
     <description lang="cs">Nekdy se pingove potrebuji dostat na plosinu, ktera je sice jen kousek
@@ -48,6 +49,11 @@
     <description lang="fi">Toisinaan pingun pitäisi päästä tasanteelle, joka on kaukana edessäpäin,
                            mutta jolle ei pääse kävellen. Hyppääjä auttaa. Sen avulla pingun
                            saa hyppäytettyä lyhyitä matkoja ylävistoon.
+    </description>
+    <description lang="pt">Por vezes, um Pingu precisa de chegar a uma plataforma que está um pouco afastada,
+                           não podendo ser atingida a pé. É aí que os Saltadores tornam-se úteis -
+                           permitem que um Pingu execute um pequeno salto, permitindo assim que este
+                           atinge a plataforma.
     </description>
     <description lang="no">Noen ganger trenger en Pingu å nå en plattform som er langt borte, men
                            ikke kan nås ved å gå. Det er da en Jumper er hendig - den tillater

@@ -10,6 +10,7 @@
     <levelname lang="fr">L'acier bloque le passage</levelname>
     <levelname lang="sr">Cvrsto zemljiste moze blokirati put</levelname>
     <levelname lang="fi">Maasto voi tukkia tien</levelname>
+    <levelname lang="pt">Piso sólido pode bloquear a passagem</levelname>
     <levelname lang="no">Fast grunn kan blokkere veien</levelname>
 
     <description lang="en">As you have learned in earlier levels your Pingus can dig through
@@ -59,6 +60,12 @@
                            materiaalia ne eivät saa rikki: terästä. Teräksiset alueet
                            on merkittu karttaan tummanharmaalla ja koska niitä ei hajotettua
 			   mitenkään, ne täytyy vain kiertää.
+    </description>
+    <description lang="pt">Tal como aprendido nos passados níveis, os teus Pingus podem escavar através
+                           de basicamente qualquer tipo de terreno, mas há um material o qual não são capazes
+                           de penetrar: aço. Estas regiões estão assinaladas a
+                           cizento escuro no mapa do nível e não podem ser destruídas, por isso,
+			   precisas de encontrar um caminho entre estas.
     </description>
     <description lang="no">Som du har lært i tidligere brett kan Pingusene dine grave gjennom
                            nesten hvilket som helst terreng, men det er et materiale de ikke kan

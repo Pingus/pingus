@@ -10,6 +10,7 @@
     <levelname lang="fr">Deux groupes en parallËle, coordination essentielle</levelname>
     <levelname lang="sr">Dve grupe istovremeno, budi mudar</levelname>
     <levelname lang="fi">Kaksi ryhm‰‰ rinnakkain, koordinoi viisaasti</levelname>
+    <levelname lang="pt">Dois grupos em paralelo, cordena-os sabiamente</levelname>
     <levelname lang="no">To grupper i parallel, koordiner smart</levelname>
 
     <description lang="en">You have two groups to coordinate this time. No need to panic, since
@@ -43,6 +44,10 @@
     <description lang="fi">T‰ll‰ kertaa johdettavanasi on kaksi eri ryhm‰‰. Ei kuitenkaan syyt‰
                            paniikkiin, sill‰ kent‰n ratkaisuun on varattu aikaa yllin kyllin.
                            Siin‰ t‰m‰nkertaiset vihjeet, onnea matkaan!
+    </description>
+    <description lang="pt">Tens dois grupos para cordenares desta vez. N„o h· necessidade de entrares em p‚nico, visto
+                           ser-te dado tempo suficiente para ponderares todas as tuas decisıes. Desta
+                           vez, n„o h· mais pistas, mas boa sorte!
     </description>
     <description lang="no">Du har to grupper Â koordinere denne gangen. Ingen grunn til panikk, siden
                            dette brettet gir deg nok tid til Â tenke gjennom handlingene dine. Ingen

@@ -10,6 +10,7 @@
     <levelname lang="fr">Un fais le travail, les autres suivent</levelname>
     <levelname lang="sr">Jedan priprema, ostali ga prate</levelname>
     <levelname lang="fi">Yksi selvittää reitin, muut seuraavat perässä</levelname>
+    <levelname lang="pt">Um precisa de preparar, o resto de o seguir</levelname>
     <levelname lang="no">En må gjøre det klart, resten må følge etter</levelname>
 
     <description lang="en">Sometimes there are situations where you don't have a Blocker at
@@ -45,6 +46,11 @@
                            Pysäyttäjää, mutta sellaista tarvittaisiin. Tällöin joudut kehittelemään
                            muita tapoja pingujen kaitsemiseen sillä välin kun yksinäinen sankari
                            on raivaamassa tietä muille.
+    </description>
+    <description lang="pt">Por vezes, há situações em que não tens um Bloqueador à
+                           mão para cordenar os Pingus. Vais ter de achar outros meios
+                           para mantê-los controlados, enquanto um apenas prepara
+                           o caminho para os outros.
     </description>
     <description lang="no">Noen ganger er det situasjoner der du ikke har en Blocker tilgjengelig
                            til å koordinere Pingusene dine. Du må finne andre måter å kontrollere

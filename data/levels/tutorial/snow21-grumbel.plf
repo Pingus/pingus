@@ -10,6 +10,7 @@
     <levelname lang="fr">Grimpe, Grimpe, Grimpe... et construit un pont</levelname>
     <levelname lang="sr">Penjanje, pentranje... i mostogradnja</levelname>
     <levelname lang="fi">Kiipeä, Kiipeäjä, kiipeä... ja rakenna sitten silta</levelname>
+    <levelname lang="pt">Trepa, Trepador, Trepa... e contrói uma ponte</levelname>
     <levelname lang="no">Klatre, klatrer, klatre... og bygg en bro</levelname>
 
     <description lang="en">Once again you get access to a new action. The Climber action allows
@@ -43,6 +44,10 @@
     <description lang="fi">Saat taas käyttöösi uuden toiminnon. Kiipeäjän avulla
                            pingun saa nousemaan pystysuoraa seinää pitkin ja pääsemään siten
                            paikkoihin, joihin ei niiden korkeuden vuoksi muilla keinoin ole asiaa.
+    </description>
+    <description lang="pt">Uma vez de novo, tens acesso a uma nova acção. A acção de Trepador permite
+			   a um Pingu, trepar paredes lisas, permitindo, assim, chegar a tudo
+		           que seria demasiado elevado de chegar por outros meios.
     </description>
     <description lang="no">Atter en gang for du tilgang til en ny handling. Climber handlingen gir
                            en Pingus muligheten til å klatre opp loddrette vegger, noe som gir han

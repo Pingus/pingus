@@ -10,6 +10,7 @@
     <levelname lang="fr">Sacrifie quelques-uns pour sauver les autres</levelname>
     <levelname lang="sr">Zrtvuj nekoliko da spases ostale</levelname>
     <levelname lang="fi">Uhraa muutama ja pelasta loput</levelname>
+    <levelname lang="pt">Sacrifica uns poucos e salva o resto</levelname>
     <levelname lang="no">Ofre noen få og redd resten</levelname>
 
     <description lang="en">Sometimes no other actions are available, so you have to bomb your
@@ -50,6 +51,11 @@
                            räjäytellä tie selväksi. Räjäyttämisen yhteydessä pingu
                            tietysti kuolee, mutta toisinaan on tarpeen uhrata muutama loppujen
                            hyväksi.
+    </description>
+    <description lang="pt">Por vezes mais nenhuma acção nos é disponível, portanto temos de rebentar com
+                           o nosso caminho, recorrendo a explosões. pelo solo. Os Pingus podem fazê-lo através da
+                           auto-destruição. Isto irá matá-los, mas é por vezes
+                           necessário sacrificar alguns, para que os outros sejam salvos.
     </description>
     <description lang="no">Noen ganger er ikke noen andre handlinger tilgjengelige, så du må bombe
                            deg vei gjennom bakken. Pingusene kan gjøre dette ved å selvdestruere.

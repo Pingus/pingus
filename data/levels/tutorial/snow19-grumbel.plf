@@ -10,6 +10,7 @@
     <levelname lang="fr">Apprenez a utiliser le pont</levelname>
     <levelname lang="sr">Nauci da koristis most</levelname>
     <levelname lang="fi">Opettele rakentamaan siltoja</levelname>
+    <levelname lang="pt">Aprendendo a usar a ponte</levelname>
     <levelname lang="no">Lær og bruke broen</levelname>
 
     <description lang="en">If no Jumper is at hand and a large hole needs to be passed, a bridge
@@ -48,6 +49,10 @@
                            Siltaajasta voi olla hyötyä. Sillan rakentaminen kestää hieman,
                            mutta toisin kuin Hypääjän kanssa, sillan avulla muutkin pingut
                            pääsevät perille.
+    </description>
+    <description lang="pt">Se nenhum Saltador estiver à mão e um grande buraco precisa de ser ultrapassado, uma ponte
+			   pode ser bastente útil. Leva algum tempo a construir, mas, ao contrário da
+			   acção de saltador, esta permite que outros Pingus sigam e atinjam também o fim.
     </description>
     <description lang="no">Hvis du ikke har en Jumper tilgjengelig og du trenger å passere et stort
                            hull, kan en bro være ganske hjelpsom. Den tar litt tid å bygge, men i forhold

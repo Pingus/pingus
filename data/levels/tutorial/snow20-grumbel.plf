@@ -10,6 +10,7 @@
     <levelname lang="fr">Trois solutions, c'est votre choix</levelname>
     <levelname lang="sr">Tri resenja, pa ti vidi</levelname>
     <levelname lang="fi">Kolme ratkaisua, valitse minkä haluat</levelname>
+    <levelname lang="pt">Três soluções, agora é contigo</levelname>
     <levelname lang="no">Tre løsninger, det er opp til deg</levelname>
 
     <description lang="en">Now that you've learned all the actions, it's time for some
@@ -43,6 +44,10 @@
     <description lang="fi">Nyt kun hallitset kaikki toiminnot, on aika pienen
                            lisäharjoituksen. Tämän kentän voi ratkaista kolmella eri tavalla.
                            Valitse itse, mitä niistä haluat kokeilla.
+    </description>
+    <description lang="pt">Agora que já sabes todas as acções de cor, é altura de um maior
+                           exercício. Este nível apresenta-te, pelo menos, três
+                           diferentes maneiras de o resolver. Só te resta optar por uma delas.
     </description>
     <description lang="no">Nå som du har lært alle handlingene er det på tide å øve litt mer.
                            Det er minst tre måter å løse dette brettet på. Hvilken du velger

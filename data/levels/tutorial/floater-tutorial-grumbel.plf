@@ -10,6 +10,7 @@
     <levelname lang="fr">Flotte ou Meurt</levelname>
     <levelname lang="sr">Lebdi ili umri</levelname>
     <levelname lang="fi">Leiju tai kuole</levelname>
+    <levelname lang="pt">Flutua ou Morre</levelname>
     <levelname lang="no">Flyt eller dø</levelname>
 
     <description lang="en">Well done in mission one! Now let's start the next one. This
@@ -51,6 +52,11 @@
                            pingut pienillä propelleilla, joiden avulla ne leijuvat pehmeästi
                            maahan. Pingut nimittäin liiskautuvat pudotessaan liian korkealta.
                            Pidä siis silmät auki ja hermot kurissa!
+    </description>
+    <description lang="pt">Parabéns pela tua primeira missão! Agora partiremos para a seguinte. Desta
+                           vez, vais ter que equipar os teus Pingus com uma hélice,
+                           para que estes possam flutuar suavemente até ao chão. Se os Pingus cairem
+                           de muito alto, não irão conseguir sobreviver à queda, portanto mantém os olhos bem abertos!
     </description>
     <description lang="no">Godt gjort i oppdrag en! La oss nå starte på det neste. Denne gangen trenger
                            du å utstyre Pingusene dine med en liten propell, så de kan flyte fint til bakken.

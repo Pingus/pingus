@@ -10,6 +10,7 @@
     <levelname lang="fr">Apprendre à creuser</levelname>
     <levelname lang="sr">Ucimo kopanje</levelname>
     <levelname lang="fi">Opettele kaivamaan</levelname>
+    <levelname lang="pt">Aprendendo a escavar</levelname>
     <levelname lang="no">Lær å grave</levelname>
 
     <description lang="en">This is your first mission. As always, it's pretty easy. All you
@@ -55,6 +56,11 @@
                            melko halppo. Komennat vain haluamaasi pingua kaivamaan
                            kolon maahan niin, että kaikki pääsevät uloskäynnille. Kaivaminen
                            hoituu yksinkertaisesti klikkaamalla pingua.
+    </description>
+    <description lang="pt">Esta é a tua primeira missão. Como vais comprovar, é bastante fácil. Tudo o que
+                           tens de fazer é dar o comando a um Pingu para fazer um buraco no solo,
+                           para que possam chegar à saída. Isto pode ser atingido,
+                           através de um simples clique num Pingu.
     </description>
     <description lang="no">Dette er ditt første oppdrag. Som alltid er det ganske enkelt. Alt du trenger
     			   å gjøre er å gi en Pingu ordre om å grave et hull i bakken så du kan nå utgangen.

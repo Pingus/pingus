@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt\n"
 "POT-Creation-Date: 2003-08-27 12:59+0100\n"
-"PO-Revision-Date: 2003-08-28 15:34+0100\n"
+"PO-Revision-Date: 2003-08-29 21:01+0100\n"
 "Last-Translator: Ricardo Cruz <rick2@aeiou.pt>\n"
 "Language-Team: Portuguese\n"
 "MIME-Version: 1.0\n"
@@ -1364,11 +1364,11 @@ msgstr "trancado"
 
 #: src/worldmap/manager.cxx:102
 msgid "Show Ending?"
-msgstr "Mostrar Final?"
+msgstr "Mostrar Final"
 
 #: src/worldmap/manager.cxx:132
 msgid "Show Story?"
-msgstr "Mostrar História?"
+msgstr "Mostrar História"
 
 #: src/worldmap/manager.cxx:160
 msgid "Leave?"

@@ -10,6 +10,7 @@
     <levelname lang="fr">Creuse, défonce et d'autres problèmes</levelname>
     <levelname lang="sr">Kopanje, glodanje i drugi problemi</levelname>
     <levelname lang="fi">Kaivamista, murskausta ja muuta mukavaa</levelname>
+    <levelname lang="pt">Escavar, perfurar e outros problemas</levelname>
     <levelname lang="no">Grav, slå og andre problemer</levelname>
 
     <description lang="en">The more levels you master, the more difficult they will get,
@@ -58,6 +59,13 @@
                            temppuja niin se tuskin tuottaa erityisemmin ongelmia. Jos alkaa tuntua,
                            että olet onnistunut pilaamaan ratkaisumahdollisuutesi, paina ruudun
                            alanurkassa olevaa joukkotuhonappia ja yritä uudelleen.
+    </description>
+    <description lang="pt">Quantos mais níveis tu avanças, mais difíceis estes irão ficar,
+                           mas não entres em pânico, visto este ser bastante fácil. Apenas tens que aplicar tudo
+                           o que já aprendeste nos níveis anteriores e não deves ter problemas
+                           de maior. Se julgas que chegaste a um ponto em que não
+                           consegues mais resolver o nível, faz um duplo clique no botão de armagedão,
+                           situado em baixo à direita.
     </description>
     <description lang="no">Jo flere brett du klarer, jo vanskeligere vil de bli, men ingen grunn til
                            panikk, da dette fortsatt er ganske enkelt. Bare bruk de tingene du har lært

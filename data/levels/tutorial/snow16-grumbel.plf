@@ -10,6 +10,7 @@
     <levelname lang="fr">La construction de pont devient complexe...</levelname>
     <levelname lang="sr">Mostogradnja se komplikuje...</levelname>
     <levelname lang="fi">Mutkikkaampaa siltailua...</levelname>
+    <levelname lang="pt">A construção começa a complicar...</levelname>
     <levelname lang="no">Brobygging blir mer komplisert...</levelname>
 
     <description lang="en">Once again you have to combine actions carefully and wisely. If you
@@ -43,6 +44,10 @@
     <description lang="fi">On jälleen aika yhdistellä viisaasti eri toimintoja. Hätiköimällä
                            voit saada aikaan kolon juuri ennen uloskäyntiä, joten mieti
                            tarkaan mitä teet.
+    </description>
+    <description lang="pt">Novamente, tens de combinar as acções cuidadosamente e sabiamente. Se
+                           não conseguires passar pelo buraco mesmo à porta da saída,
+                           pensa em como evitá-lo.
     </description>
     <description lang="no">Nok en gang må du kombinere handlinger nøye og klokt. Hvis ikke kan du
                            ende opp i hullet rett før utgangen, så tenk på hvordan du kan unngå det.

@@ -10,6 +10,7 @@
     <levelname lang="fr">Bloque la route</levelname>
     <levelname lang="sr">Blok i stena</levelname>
     <levelname lang="fi">Stop'n Roll</levelname>
+    <levelname lang="pt">Destrói a Rocha</levelname>
     <levelname lang="no">Blokk og spreng</levelname>
 
     <description lang="en">Once again it's time to combine the stuff you have learned in your
@@ -43,6 +44,10 @@
     <description lang="fi">Jälleen on aika yhdistellä edellisissä kentissä opittua.
                            Räjäytä tie auki mutta varmista samalla, että loput pingut
                            pysyvät hallinnassa. Pysäyttäjistä on apua.
+    </description>
+    <description lang="pt">Mais uma vez, é altura de combinares tudo o que aprendeste nos
+                           níveis passados. Destrói a passagem e assegura-te que manténs,
+                           ao mesmo tempo, os restantes Pingus debaixo de olho. A acção dos Bloqueadores ser-te-á certamente útil.
     </description>
     <description lang="no">Atter en gang er det tid for å kombinere tingene du har lært i de forrige
                            brettene. Spreng deg vei og sørg for at du også holder resten av Pingusene

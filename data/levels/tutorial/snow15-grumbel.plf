@@ -10,6 +10,7 @@
     <levelname lang="fr">Plus haut, Plus haut, ... Boum!</levelname>
     <levelname lang="sr">Penjanje, pentranje,... Bum!</levelname>
     <levelname lang="fi">Kiipeä, Kiipeäjä... Pum!</levelname>
+    <levelname lang="pt">Trepa, Trepador... Pum!</levelname>
     <levelname lang="no">Klatre, klatrer,... Boom!</levelname>
 
     <description lang="en">As you might have already figured out from previous levels, you
@@ -51,6 +52,11 @@
                            täytyy usein yhdistellä luovasti. Koska tästä kentästä puuttuu
                            Kaivajia, niiden tilalla täytyy käyttää Pommittajia, mutta
                            miten Pommittajat saa räjähtämään oikeaan aikaan?
+    </description>
+    <description lang="pt">Tal como já te deves ter apercebido pelos níveis anteriores, tens
+                           frequentemente de combinar diferentes acções para acabares o trabalho. Devido
+                           à falta da acção de Escavador neste nível, o Bombista precisa de
+                           saltar para dentro, mas como chegará ele ao local a explodir?
     </description>
     <description lang="no">Som du kan ha skjønt fra tidligere brett, trenger du ofte å kombinere
                            forskjellige handlinger for å få jobben gjort. Siden det mangler en

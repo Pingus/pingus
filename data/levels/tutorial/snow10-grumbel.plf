@@ -10,6 +10,7 @@
     <levelname lang="fr">Ile de la Panique (float/bash)</levelname>
     <levelname lang="sr">Ostrvo panike (lebdi/glodaj)</levelname>
     <levelname lang="fi">Paniikkisaari (leiju/murksaa)</levelname>
+    <levelname lang="pt">Ilha de Pânico (flutuar/perfurar)</levelname>
     <levelname lang="no">Panikkøya (flyt/slå)</levelname>
 
     <description lang="en">While the previous levels have not required much quick action from
@@ -48,6 +49,11 @@
                            alkaakin olla jo vähän hankalampi. Pinguja tulee samaan aikaan
                            kahdesta eri sisäänkäynnistä ja tehtäväsi on koordinoida ryhmiä
                            järkevästi.
+    </description>
+    <description lang="pt">Enquanto que os anteriores níveis não requeriram muita rapidez da tua
+                           parte, este torna-se um pouco mais trabalhoso. Os Pingus partem de
+                           duas entradas em paralelo e a tua tarefa é a de cordenar os
+                           dois grupos sabiamente.
     </description>
     <description lang="no">De tidligere brettene har ikke krevd mye rask handling av deg, men
                            dette blir litt vanskeligere. Pingusene kommer ut av to innganger

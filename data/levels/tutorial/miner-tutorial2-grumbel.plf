@@ -10,6 +10,7 @@
     <levelname lang="fr">Paradis des mineurs</levelname>
     <levelname lang="sr">Rudarski raj</levelname>
     <levelname lang="fi">Louhijan toiveuni</levelname>
+    <levelname lang="pt">Paraíso dos Mineiros</levelname>
     <levelname lang="no">Gruvearbeiderens himmel</levelname>
 
     <description lang="en">Another action hits the street - another digging action, this
@@ -50,6 +51,10 @@
                            tuottaa suoran sijaan viiston tunnelin. Sen avulla perästä tulevat
                            pingut pääsevät samaan aikaan sekä sivulle että alaspäin. Toiminnon
                            nimi on Louhija.
+    </description>
+    <description lang="pt">Outra acção chega até nós - outra acção de escavação, mas desta
+                           vez na diagonal. Permite a um Pingu escavar na diagonal através do
+                           solo, e, assim, criar um caminho para que os outros Pingus o sigam. Esta acção é a do Mineiro.
     </description>
     <description lang="no">En ny handling ser dagens lys - en ny grave handling, denne gangen en
                            diagonal en. Den lar en Pingu grave diagonalt gjennom bakken, slik at

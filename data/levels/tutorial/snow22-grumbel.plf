@@ -10,6 +10,7 @@
     <levelname lang="fr">Entrée haute, Sortie basse</levelname>
     <levelname lang="sr">Ulaz visoko, izlaz nisko</levelname>
     <levelname lang="fi">Sisäänkäynti ylhäällä, uloskäynti alhaalla</levelname>
+    <levelname lang="pt">Entrada elevada, Saída baixa</levelname>
     <levelname lang="no">Inngang høyt, utgang lavt</levelname>
 
     <description lang="en">If you don't have enough floaters to bring all the Pingus down to
@@ -53,6 +54,11 @@
                            löydettävä muita tapoja saattaa pingut ehjänä alas. Olet jo varmasti
                            oppinut edellisissä kentissä riittävästi tämänkin kentän ratkaisemiseen,
                            joten suuria ongelmia tuskin on odotettavissa.
+    </description>
+    <description lang="pt">Se não tiveres Flutuadores em número suficiente para trazeres os Pingus para baixo,
+                           à saída, - tens que encontrar outras maneiras de os liderares para baixo. Já
+			   deves ter aprendido tudo o que precisas para passares este nível,
+                           portanto não deve ser um problema de maior para ti.
     </description>
     <description lang="no">Hvis du ikke har nok floatere til å få alle pingusene til utgangen - må
                            du finne en annen måte å få dem ned på. Du skulle nå ha lært alt du
