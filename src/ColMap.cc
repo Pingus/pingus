@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.7 2000/04/09 11:35:50 grumbel Exp $
+//  $Id: ColMap.cc,v 1.8 2000/04/10 21:15:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -199,7 +199,7 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, surface_data::Ty
 {
   if ((sur_x > width) || (sur_y > height)) {
     //    throw PingusError("Spot out of screen, please repair");
-    if (verbose) std::cerr << "Warning: ColMap: Spot out of screen, please repair" << std::endl;
+    if (verbose) std::cout << "Warning: ColMap: Spot out of screen, please repair" << std::endl;
     return;
   }
 
@@ -226,8 +226,7 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, surface_data::Ty
 	      if (i < 0 || i > (width * height))
 		continue;
 	  
-	      //cout << " " << (int)buffer[j*4] << flush;
-	      if (buffer[j*4] != 0) 
+	      if (buffer[j]) 
 		{
 		  switch (type) 
 		    {
@@ -235,13 +234,16 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, surface_data::Ty
 		      colmap[i] = WALL;
 		      break;
 		    case surface_data::SOLID:
-		      colmap[i] = SOLID;
+		      colmap[i] = SOLID | WALL;
 		      break;
 		    case surface_data::BRIDGE:
-		      colmap[i] = BRIDGE;
+		      colmap[i] = BRIDGE | WALL;
 		      break;
-		    default:
-		      std::cout << "Colmap::put() Undefinit type" << std::endl;
+		    case surface_data::WATER:
+		      colmap[i] = SOLID | WATER;
+		      break;
+		    case surface_data::LAVA:
+		      colmap[i] = SOLID | LAVA;
 		      break;
 		    }
 		}
@@ -267,22 +269,29 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, surface_data::Ty
 	    if (i < 0 || i > (width * height))
 	      continue;
 	  
-	    if (buffer[j]) {
-	      switch (type) {
-	      case surface_data::GROUND:
-		colmap[i] = WALL;
-		break;
-	      case surface_data::SOLID:
-		colmap[i] = SOLID;
-		break;
-	      case surface_data::BRIDGE:
-		colmap[i] = BRIDGE;
-		break;
-	      default:
-		std::cout << "Colmap::put() Undefinit type" << std::endl;
-		break;
+	    if (!provider->uses_src_colorkey() || buffer[j] != provider->get_src_colorkey())
+	      {
+		switch (type) {
+		case surface_data::GROUND:
+		  colmap[i] = WALL;
+		  break;
+		case surface_data::SOLID:
+		  colmap[i] = SOLID | WALL;
+		  break;
+		case surface_data::BRIDGE:
+		  colmap[i] = BRIDGE | WALL;
+		  break;
+		case surface_data::WATER:
+		  colmap[i] = SOLID | WATER;
+		  break;
+		case surface_data::LAVA:
+		  colmap[i] = SOLID | LAVA;
+		  break;
+		default:
+		  std::cout << "Colmap::put() Undefinit type" << std::endl;
+		  break;
+		}
 	      }
-	    }
 	  }
       }
     }
@@ -291,6 +300,51 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, surface_data::Ty
       std::cout << "ColMap: Unsupported color depth, ignoring" << std::endl;
     }
   provider->unlock();
+}
+
+void
+ColMap::draw(int x_of, int y_of, float s)
+{
+  CL_Canvas* canvas = new CL_Canvas(width, height);
+  CL_Surface* sur;
+  unsigned char* buffer;
+
+  canvas->lock();
+  buffer = static_cast<unsigned char*>(canvas->get_data());
+  
+  for(int i = 0; i < (width * height); i++)
+    {
+      switch(colmap[i])
+	{
+	case ColMap::NOTHING:
+	  buffer[i * 4 + 0] = 0;
+	  buffer[i * 4 + 1] = 0;
+	  buffer[i * 4 + 2] = 0;
+	  buffer[i * 4 + 3] = 0;
+	  break;
+	case ColMap::SOLID:
+	  buffer[i * 4 + 0] = 255;
+	  buffer[i * 4 + 1] = 100;
+	  buffer[i * 4 + 2] = 100;
+	  buffer[i * 4 + 3] = 100;
+	  break;
+	default:
+	  buffer[i * 4 + 0] = 255;
+	  buffer[i * 4 + 1] = 200;
+	  buffer[i * 4 + 2] = 200;
+	  buffer[i * 4 + 3] = 200;
+	  break;
+	}
+    }
+
+  canvas->unlock();
+
+  sur = CL_Surface::create(canvas, false);
+
+  sur->put_screen(x_of, y_of);
+
+  delete sur;
+  delete canvas;
 }
 
 /* EOF */

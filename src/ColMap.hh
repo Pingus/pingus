@@ -1,4 +1,4 @@
-//  $Id: ColMap.hh,v 1.3 2000/02/25 02:35:27 grumbel Exp $
+//  $Id: ColMap.hh,v 1.4 2000/04/10 21:15:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,11 +36,13 @@ private:
   
 public:
   enum PixelStatus { 
-	 NOTHING = 0,
-	 WALL    = 1<<1,
+	 NOTHING     = 0,
+	 WALL        = 1<<1,
 	 OUTOFSCREEN = 1<<2,
-	 BRIDGE = WALL | 1<<3,
-	 SOLID = WALL | 1<<4
+	 BRIDGE      = 1<<3,
+	 SOLID       = 1<<4,
+	 WATER       = 1<<5,
+	 LAVA        = 1<<6
   };
 
   ColMap();
@@ -62,6 +64,8 @@ public:
   // void remove(int x, int y);
   void remove(CL_Surface*, int x, int y);
   void remove(CL_SurfaceProvider*, int x, int y);
+
+  void draw(int, int, float);
 };
 
 #endif /* COLMAP_HH */
