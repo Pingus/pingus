@@ -1,4 +1,4 @@
-//  $Id: pointer_scroller.cxx,v 1.4 2003/06/19 11:00:10 torangan Exp $
+//  $Id: pointer_scroller.cxx,v 1.5 2003/10/20 13:33:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,73 +21,75 @@
 #include "../pointer.hxx"
 #include "pointer_scroller.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Scrollers {
 
-  namespace Scrollers {
+PointerScroller::PointerScroller (Pointer* pointer_, Button* modifier_)
+  : pointer(pointer_),
+    modifier(modifier_),
+    x_delta(0),
+    y_delta(0),
+    x_pos(-1),
+    y_pos(-1)
+{
+}
 
-    PointerScroller::PointerScroller (Pointer* pointer_, Button* modifier_) : pointer(pointer_),
-                                                                              modifier(modifier_),
-                                                                              x_delta(0),
-                                                                              y_delta(0),
-                                                                              x_pos(-1),
-                                                                              y_pos(-1)
+PointerScroller::~PointerScroller ()
+{
+  delete pointer;
+  delete modifier;
+}
+
+const float&
+PointerScroller::get_x_delta () const
+{
+  return x_delta;
+}
+
+const float&
+PointerScroller::get_y_delta () const
+{
+  return y_delta;
+}
+
+void
+PointerScroller::get_delta (float& x, float& y) const
+{
+  x = x_delta;
+  y = y_delta;
+}
+
+void
+PointerScroller::update (float delta)
+{
+  pointer ->update(delta);
+  modifier->update(delta);
+
+  if (modifier->is_pressed())
     {
-    }
-
-    PointerScroller::~PointerScroller ()
-    {
-      delete pointer;
-      delete modifier;
-    }
-
-    const float&
-    PointerScroller::get_x_delta () const
-    {
-      return x_delta;
-    }
-
-    const float&
-    PointerScroller::get_y_delta () const
-    {
-      return y_delta;
-    }
-
-    void
-    PointerScroller::get_delta (float& x, float& y) const
-    {
-      x = x_delta;
-      y = y_delta;
-    }
-
-    void
-    PointerScroller::update (float delta)
-    {
-      pointer ->update(delta);
-      modifier->update(delta);
-
-      if (modifier->is_pressed())
+      if (x_pos == -1)
         {
-          if (x_pos == -1)
-            {
-              x_pos = pointer->get_x_pos();
-              y_pos = pointer->get_y_pos();
-	           }
-          else
-            {
-              x_delta = pointer->get_x_pos() - x_pos;
-              y_delta = pointer->get_y_pos() - y_pos;
-
-              pointer->set_pos(x_pos, y_pos);
-	          }
+          x_pos = pointer->get_x_pos();
+          y_pos = pointer->get_y_pos();
         }
       else
         {
-          x_pos = -1;
-          y_pos = -1;
+          x_delta = pointer->get_x_pos() - x_pos;
+          y_delta = pointer->get_y_pos() - y_pos;
+
+          pointer->set_pos(x_pos, y_pos);
         }
     }
-
-  }
+  else
+    {
+      x_pos = -1;
+      y_pos = -1;
+    }
 }
+
+} // namespace Axes
+} // namespace Input
+} // namespace Pingus
 
 /* EOF */

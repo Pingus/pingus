@@ -1,4 +1,4 @@
-//  $Id: joystick_axis.cxx,v 1.3 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: joystick_axis.cxx,v 1.4 2003/10/20 13:33:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,16 +17,18 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/input.h>
-#include <ClanLib/Display/inputdevice.h>
-#include <ClanLib/Display/inputaxis.h>
+//#include <ClanLib/Display/input.h>
+#include <ClanLib/Display/input_device.h>
+//#include <ClanLib/Display/inputaxis.h>
 #include "joystick_axis.hxx"
 #include "../../pingus_error.hxx"
 
+namespace Pingus {
 namespace Input {
 namespace Axes {
 
-JoystickAxis::JoystickAxis(int id_, int axis_, float angle_) : id(id_), axis(axis_), pos(0), angle(angle_)
+JoystickAxis::JoystickAxis(int id_, int axis_, float angle_) 
+  : id(id_), axis(axis_), pos(0), angle(angle_)
 {
   if (static_cast<unsigned int> (id) >= CL_Input::joysticks.size())
     PingusError::raise("JoystickAxis: Invalid joystick id");
@@ -58,7 +60,8 @@ JoystickAxis::update (float)
   pos = CL_Input::joysticks[id]->get_axis(axis)->get_pos();
 }
 
-}
-}
+} // namespace Axes
+} // namespace Input
+} // namespace Pingus
 
 /* EOF */

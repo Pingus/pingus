@@ -1,4 +1,4 @@
-//  $Id: controller.hxx,v 1.19 2003/04/19 10:23:18 torangan Exp $
+//  $Id: controller.hxx,v 1.20 2003/10/20 13:33:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 
 #include "event.hxx"
 
+namespace Pingus {
 namespace Input {
 
 class Axis;
@@ -75,6 +76,7 @@ private:
 };
 
 } // namespace Input
+} // namespace Pingus
 
 #endif
 

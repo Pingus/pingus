@@ -1,4 +1,4 @@
-//  $Id: button_factory.cxx,v 1.12 2003/04/19 10:23:18 torangan Exp $
+//  $Id: button_factory.cxx,v 1.13 2003/10/20 13:33:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 #include "buttons/multiple_button.hxx"
 #include "buttons/triple_button.hxx"
 
+namespace Pingus {
 namespace Input {
 
 using namespace Buttons;
@@ -138,6 +139,7 @@ Button* ButtonFactory::triple_button (xmlNodePtr cur)
   return new TripleButton(button1, button2, button3);
 }
 
-}
+} // namespace Input
+} // namespace Pingus
 
 /* EOF */

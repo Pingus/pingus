@@ -1,4 +1,4 @@
-//  $Id: graphic_context.hxx,v 1.7 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: graphic_context.hxx,v 1.8 2003/10/20 13:33:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,6 +69,7 @@ public:
   virtual void clear (float r, float g, float b) =0;
 
   virtual void draw (CL_Sprite& sprite, const Vector& pos);
+  virtual void draw (CL_Sprite& sprite, const Vector& pos, int frame);
 
   virtual void draw (Sprite& sprite, const Vector& pos);
   virtual void draw (Sprite& sprite, const Vector& pos, int frame);

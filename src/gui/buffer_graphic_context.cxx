@@ -1,4 +1,4 @@
-//  $Id: buffer_graphic_context.cxx,v 1.4 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: buffer_graphic_context.cxx,v 1.5 2003/10/20 13:33:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <ClanLib/display.h>
 #include "../pingus_error.hxx"
 #include "../blitter.hxx"
 #include "../canvas.hxx"
@@ -62,6 +63,7 @@ BufferGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos)
 void
 BufferGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos, int frame)
 {
+#ifdef CLANLIB_0_6
   //std::cout << "BufferGraphicContext: " << x_pos << ", " << y_pos  << " frame: " << frame << std::endl;
   try {
     Blitter::put_surface(canvas, sur.get_provider(), x_pos, y_pos);
@@ -69,6 +71,7 @@ BufferGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos, int frame)
     std::cout << "BufferGraphicContext: " << err.get_message() << std::endl;
   }
   UNUSED_ARG(frame);
+#endif
 }
 
 void
@@ -87,10 +90,12 @@ BufferGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos,
 void
 BufferGraphicContext::write(const std::string& filename)
 {
+#ifdef CLANLIB_0_6
   std::cout << "BufferGraphicContext::write: " << filename << std::endl;
   canvas->lock();
   Screenshot::save_target_to_file(canvas, filename);
   canvas->unlock();
+#endif
 }
 
 } // namespace Pingus

@@ -1,4 +1,4 @@
-//  $Id: timer.hxx,v 1.7 2003/04/19 10:23:17 torangan Exp $
+//  $Id: timer.hxx,v 1.8 2003/10/20 13:33:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include "pingus.hxx"
 
+namespace Pingus {
+
 /** A simple class for benchmark purpose. It lets you start and stop a
     timer and recieve the time passed.*/
 class Timer
@@ -42,6 +44,8 @@ private:
   Timer (const Timer&);
   Timer& operator= (const Timer&);
 };
+
+} // namespace Pingus
 
 #endif
 

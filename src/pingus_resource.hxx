@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.hxx,v 1.17 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: pingus_resource.hxx,v 1.18 2003/10/20 13:33:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,6 +59,7 @@ public:
 
   /** Load a surface from the ResDescriptor */
   static CL_Surface load_surface(const ResDescriptor&);
+  static CL_Sprite  load_sprite(const ResDescriptor&);
   static CL_Sprite  load_sprite(const std::string& res_name,
                                 const std::string& datafile);
 

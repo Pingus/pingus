@@ -1,4 +1,4 @@
-//  $Id: switch_door_obj.hxx,v 1.9 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: switch_door_obj.hxx,v 1.10 2003/10/20 13:33:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,10 +35,10 @@ class SwitchDoorObj : public EditorNS::RectEditorObj
 private:
   WorldObjsData::SwitchDoorData* const data;
 
-  CL_Surface door_box;
-  CL_Surface door_tile;
-  CL_Surface door_tile_cmap;
-  CL_Surface switch_sur;
+  CL_Sprite door_box;
+  CL_Sprite door_tile;
+  CL_PixelBuffer door_tile_cmap;
+  CL_Sprite switch_sur;
 
 public:
   friend class SwitchDoorSwitchObj;

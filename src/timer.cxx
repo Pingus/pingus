@@ -1,4 +1,4 @@
-//  $Id: timer.cxx,v 1.5 2003/04/19 10:23:17 torangan Exp $
+//  $Id: timer.cxx,v 1.6 2003/10/20 13:33:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include "globals.hxx"
 #include "timer.hxx"
 
+namespace Pingus {
+
 Timer::Timer(const char* desc)
   : description(desc),
     start_time (CL_System::get_time())
@@ -36,5 +38,7 @@ Timer::stop()
     << "Timer: '" << description << "' took "
     << time << "msec" << std::endl;
 }
+
+} // namespace Pingus
 
 /* EOF */

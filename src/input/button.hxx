@@ -1,4 +1,4 @@
-//  $Id: button.hxx,v 1.10 2003/04/19 10:23:18 torangan Exp $
+//  $Id: button.hxx,v 1.11 2003/10/20 13:33:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,25 +22,27 @@
 
 #include "../pingus.hxx"
 
+namespace Pingus {
 namespace Input {
 
-  /// abstract base class which defines the button interface
-  class Button
-  {
-  public:
-    Button () { }
-    virtual ~Button () { }
+/// abstract base class which defines the button interface
+class Button
+{
+public:
+  Button () { }
+  virtual ~Button () { }
 
-    /// returns true if the button is pressed, false otherwise
-    virtual bool is_pressed ()      const =0;
-    virtual void update     (float)       =0;
+  /// returns true if the button is pressed, false otherwise
+  virtual bool is_pressed ()      const =0;
+  virtual void update     (float)       =0;
 
-  private:
-    Button (const Button&);
-    Button& operator= (const Button&);
-  };
+private:
+  Button (const Button&);
+  Button& operator= (const Button&);
+};
 
-}
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

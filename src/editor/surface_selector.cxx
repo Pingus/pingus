@@ -1,4 +1,4 @@
-//  $Id: surface_selector.cxx,v 1.10 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: surface_selector.cxx,v 1.11 2003/10/20 13:33:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -125,6 +125,7 @@ SurfaceSelector::draw ()
   //CL_Display::get_width(), y+1/10,
   //1.0, 1.0, 1.0, 1.0);
 
+#ifdef CLANLIB_0_6
   // Draw the current object in the bottom/left corner when the
   // surface is selected for more then 1sec
   if (c_obj != std::vector<surface_obj>::iterator()
@@ -141,6 +142,8 @@ SurfaceSelector::draw ()
 			    0.5f, 0.5f, 0.5f, 0.8f);
       c_obj->large_sur.draw(0, CL_Display::get_height() - c_obj->large_sur.get_height());
     }
+#endif
+
   Display::flip_display();
 }
 

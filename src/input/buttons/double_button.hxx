@@ -1,4 +1,4 @@
-//  $Id: double_button.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: double_button.hxx,v 1.5 2003/10/20 13:33:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,42 +22,43 @@
 
 #include "../button.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Buttons {
 
-  namespace Buttons {
+/**
+   @brief allows two buttons to be used in combination
 
-    /**
-      @brief allows two buttons to be used in combination
+   XML definition: <double-button><button1><button2></double-button>
 
-      XML definition: <double-button><button1><button2></double-button>
+   This class allows combinations like CTRL-X whereby it's important that the first
+   key is pressed before the second else the DoubleButton itself won't change it's
+   own state to pressed.
+*/
+class DoubleButton : public Button {
 
-      This class allows combinations like CTRL-X whereby it's important that the first
-      key is pressed before the second else the DoubleButton itself won't change it's
-      own state to pressed.
-      */
-    class DoubleButton : public Button {
+private:
+  Button* const button1;
+  Button* const button2;
+  bool          first_pressed;
+  bool          ignore_second;
 
-      private:
-        Button* const button1;
-        Button* const button2;
-        bool          first_pressed;
-        bool          ignore_second;
+public:
 
-      public:
+  DoubleButton (Button* button1_, Button* button2_);
+  ~DoubleButton ();
 
-        DoubleButton (Button* button1_, Button* button2_);
-       ~DoubleButton ();
+  virtual bool is_pressed () const;
+  virtual void update (float delta);
 
-        virtual bool is_pressed () const;
-        virtual void update (float delta);
+private:
+  DoubleButton (const DoubleButton&);
+  DoubleButton& operator= (const DoubleButton&);
+};
 
-      private:
-        DoubleButton (const DoubleButton&);
-        DoubleButton& operator= (const DoubleButton&);
-    };
-
-  }
-}
+} // namespace Buttons
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

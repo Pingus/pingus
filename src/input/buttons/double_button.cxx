@@ -1,4 +1,4 @@
-//  $Id: double_button.cxx,v 1.2 2003/04/19 10:23:19 torangan Exp $
+//  $Id: double_button.cxx,v 1.3 2003/10/20 13:33:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,49 +19,50 @@
 
 #include "double_button.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Buttons {
 
-  namespace Buttons {
-
-    DoubleButton::DoubleButton (Button* button1_, Button* button2_) : button1(button1_), button2(button2_),
-                                                                      first_pressed(false), ignore_second(false)
-    {
-    }
-
-    DoubleButton::~DoubleButton ()
-    {
-      delete button1;
-      delete button2;
-    }
-
-    void
-    DoubleButton::update (float delta)
-    {
-      button1->update(delta);
-      button2->update(delta);
-
-      if (button1->is_pressed())
-        {
-          if (!first_pressed)
-            {
-	      first_pressed = true;
-	      ignore_second = button2->is_pressed();
-	    }
-        }
-      else
-        {
-          first_pressed = false;
-	  ignore_second = true;
-        }
-    }
-
-    bool
-    DoubleButton::is_pressed () const
-    {
-      return ( ! ignore_second && first_pressed && button2->is_pressed());
-    }
-
-  }
+DoubleButton::DoubleButton (Button* button1_, Button* button2_) : button1(button1_), button2(button2_),
+                                                                  first_pressed(false), ignore_second(false)
+{
 }
+
+DoubleButton::~DoubleButton ()
+{
+  delete button1;
+  delete button2;
+}
+
+void
+DoubleButton::update (float delta)
+{
+  button1->update(delta);
+  button2->update(delta);
+
+  if (button1->is_pressed())
+    {
+      if (!first_pressed)
+        {
+          first_pressed = true;
+          ignore_second = button2->is_pressed();
+        }
+    }
+  else
+    {
+      first_pressed = false;
+      ignore_second = true;
+    }
+}
+
+bool
+DoubleButton::is_pressed () const
+{
+  return ( ! ignore_second && first_pressed && button2->is_pressed());
+}
+
+} // namespace Buttons
+} // namespace Input
+} // namespace Pingus
 
 /* EOF */

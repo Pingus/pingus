@@ -1,4 +1,4 @@
-//  $Id: mouse_button.hxx,v 1.6 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: mouse_button.hxx,v 1.7 2003/10/20 13:33:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,9 @@
 #include <ClanLib/Signals/slot.h>
 #include "../button.hxx"
 
-class CL_Key;
+class CL_InputEvent;
 
+namespace Pingus {
 namespace Input {
 namespace Buttons {
 
@@ -48,15 +49,16 @@ public:
   virtual void update (float);
 
 private:
-  void   press_handler (const CL_Key& number);
-  void release_handler (const CL_Key& number);
+  void   press_handler (const CL_InputEvent& number);
+  void release_handler (const CL_InputEvent& number);
       
   MouseButton (const MouseButton&);
   MouseButton& operator= (const MouseButton&);
 };
 
-}
-}
+} // namespace Buttons
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

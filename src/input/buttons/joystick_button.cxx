@@ -1,4 +1,4 @@
-//  $Id: joystick_button.cxx,v 1.4 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: joystick_button.cxx,v 1.5 2003/10/20 13:33:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,16 +24,19 @@
 #include "../../string_converter.hxx"
 #include "../../pingus_error.hxx"
 
+namespace Pingus {
 namespace Input {
 namespace Buttons {
 
 JoystickButton::JoystickButton(int id_, int button_) : id(id_), button(button_)
 {
+#ifdef CLANLIB_0_6
   if (static_cast<unsigned int>(id) >= CL_Input::joysticks.size())
     PingusError::raise("JoystickButton: Invalid joystick id: " + to_string(id));
 
   if (button > CL_Input::joysticks[id]->get_num_buttons())
     PingusError::raise("JoystickButton: Invalid joystick button id: " + to_string(button));
+#endif
 }
 
 void
@@ -44,10 +47,15 @@ JoystickButton::update(float)
 bool
 JoystickButton::is_pressed() const
 {
+#ifdef CLANLIB_0_6
   return CL_Input::joysticks[id]->get_button(button)->is_pressed();
+#else
+  return false;
+#endif
 }
 
-}
-}
+} // namespace Buttons
+} // namespace Input
+} // namespace Pingus
 
 /* EOF */

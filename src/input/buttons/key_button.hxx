@@ -1,4 +1,4 @@
-//  $Id: key_button.hxx,v 1.7 2003/06/19 11:00:10 torangan Exp $
+//  $Id: key_button.hxx,v 1.8 2003/10/20 13:33:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,43 +23,44 @@
 #include <ClanLib/Signals/slot.h>
 #include "../button.hxx"
 
-class CL_Key;
+class CL_InputEvent;
 class CL_InputDevice;
 
+namespace Pingus {
 namespace Input {
+namespace Buttons {
 
-  namespace Buttons {
+/**
+   @brief maps a keyboard key to a button
 
-    /**
-      @brief maps a keyboard key to a button
+   XML definition: <key-button button="key name"/>
+*/
+class KeyButton : public Button {
 
-      XML definition: <key-button button="key name"/>
-      */
-    class KeyButton : public Button {
+private:
+  int     button;
+  CL_Slot key_press;
+  CL_Slot key_release;
+  bool    pressed;
 
-      private:
-        int     button;
-        CL_Slot key_press;
-        CL_Slot key_release;
-        bool    pressed;
+public:
 
-      public:
+  KeyButton (int button_);
 
-        KeyButton (int button_);
+  virtual bool is_pressed () const;
+  virtual void update (float);
 
-        virtual bool is_pressed () const;
-        virtual void update (float);
-
-      private:
-        void key_press_handler (CL_InputDevice*, const CL_Key&);
-        void key_release_handler (CL_InputDevice*, const CL_Key&);
+private:
+  void key_press_handler (const CL_InputEvent& event);
+  void key_release_handler (const CL_InputEvent& event);
       
-        KeyButton (const KeyButton&);
-        KeyButton& operator= (const KeyButton&);
-    };
+  KeyButton (const KeyButton&);
+  KeyButton& operator= (const KeyButton&);
+};
 
-  }
-}
+} // namespace Buttons
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

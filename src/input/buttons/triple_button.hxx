@@ -1,4 +1,4 @@
-//  $Id: triple_button.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: triple_button.hxx,v 1.5 2003/10/20 13:33:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,43 +22,44 @@
 
 #include "../button.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Buttons {
 
-  namespace Buttons {
+/**
+   @brief allows three buttons to be used in combination
 
-    /**
-      @brief allows three buttons to be used in combination
+   XML definition: <triple-button> <button1><button2><button3> </triple-button>
 
-      XML definition: <triple-button> <button1><button2><button3> </triple-button>
+   This class allows combinations like CTRL-ALT-R whereby it's important that the first
+   two keys are pressed before the third else the TripleButton itself won't change it's
+   own state to pressed. The order in which the first two keys are pressed is of no
+   importance, such behaviour may be created by using nested DoubleButtons.
+*/
+class TripleButton : public Button {
 
-      This class allows combinations like CTRL-ALT-R whereby it's important that the first
-      two keys are pressed before the third else the TripleButton itself won't change it's
-      own state to pressed. The order in which the first two keys are pressed is of no
-      importance, such behaviour may be created by using nested DoubleButtons.
-      */
-    class TripleButton : public Button {
+private:
+  Button* const button1;
+  Button* const button2;
+  Button* const button3;
+  bool          first_second_pressed;
+  bool          ignore_third;
 
-      private:
-        Button* const button1;
-        Button* const button2;
-        Button* const button3;
-        bool          first_second_pressed;
-        bool          ignore_third;
+public:
+  TripleButton (Button* button1_, Button* button2_, Button* button3_);
+  ~TripleButton ();
 
-      public:
-        TripleButton (Button* button1_, Button* button2_, Button* button3_);
-       ~TripleButton ();
+  virtual bool is_pressed () const;
+  virtual void update (float delta);
 
-        virtual bool is_pressed () const;
-        virtual void update (float delta);
+private:
+  TripleButton (const TripleButton&);
+  TripleButton& operator= (const TripleButton&);
+};
 
-      private:
-        TripleButton (const TripleButton&);
-        TripleButton& operator= (const TripleButton&);
-    };
-
-  }
-}
+} // namespace Buttons
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

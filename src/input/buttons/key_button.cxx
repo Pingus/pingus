@@ -1,4 +1,4 @@
-//  $Id: key_button.cxx,v 1.4 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: key_button.cxx,v 1.5 2003/10/20 13:33:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,18 +17,20 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-//#include <ClanLib/Display/input.h>
+#include <ClanLib/Display/keyboard.h>
+#include <ClanLib/Display/input_event.h>
 #include "key_button.hxx"
 
 #include <iostream>
 
+namespace Pingus {
 namespace Input {
 namespace Buttons {
 
 KeyButton::KeyButton (int button_) 
   : button(button_),
-    key_press  (CL_Input::sig_button_press  ().connect(this, &Input::Buttons::KeyButton::key_press_handler)),
-    key_release(CL_Input::sig_button_release().connect(this, &Input::Buttons::KeyButton::key_release_handler)),
+    key_press  (CL_Keyboard::sig_key_down().connect(this, &Input::Buttons::KeyButton::key_press_handler)),
+    key_release(CL_Keyboard::sig_key_up().connect(this, &Input::Buttons::KeyButton::key_release_handler)),
     pressed(false)
 {
 }
@@ -45,20 +47,21 @@ KeyButton::is_pressed () const
 }
 
 void
-KeyButton::key_press_handler (CL_InputDevice*, const CL_Key& key)
+KeyButton::key_press_handler (const CL_InputEvent& event)
 {
-  if (key.id == button)
+  if (event.id == button)
     pressed = true;
 }
 
 void
-KeyButton::key_release_handler (CL_InputDevice*, const CL_Key& key)
+KeyButton::key_release_handler (const CL_InputEvent& event)
 {
-  if (key.id == button)
+  if (event.id == button)
     pressed = false;
 }
 
-}
-}
+} // namespace Buttons
+} // namespace Input
+} // namespace Pingus
 
 /* EOF */

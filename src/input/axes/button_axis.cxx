@@ -1,4 +1,4 @@
-//  $Id: button_axis.cxx,v 1.6 2003/04/19 10:23:19 torangan Exp $
+//  $Id: button_axis.cxx,v 1.7 2003/10/20 13:33:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,61 +20,62 @@
 #include "button_axis.hxx"
 #include "../button.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Axes {
 
-  namespace Axes {
-
-    ButtonAxis::ButtonAxis (float angle_, Button* button1_, Button* button2_) :
-                            pos(0), angle(angle_), button1(button1_), button2(button2_)
-    {
-      if (angle < 0)
-        angle = static_cast<float>((static_cast<int>(angle) % 360) + 360);
-      else if (angle > 360)
-        angle = static_cast<float>((static_cast<int>(angle) % 360) + 0);
-    }
-
-    ButtonAxis::~ButtonAxis ()
-    {
-      delete button1;
-      delete button2;
-    }
-
-    const float&
-    ButtonAxis::get_pos () const
-    {
-      return pos;
-    }
-
-    const float&
-    ButtonAxis::get_angle () const
-    {
-      return angle;
-    }
-
-    void
-    ButtonAxis::update (float delta)
-    {
-      button1->update(delta);
-      button2->update(delta);
-
-      if (button1->is_pressed() == button2->is_pressed())
-        {
-          pos = 0;
-	  return;
-        }
-
-      if (button1->is_pressed() && pos > -1.0f)
-        pos -= delta;
-      else if (pos < 1.0f)
-        pos += delta;
-
-      if (pos < -1.0f)
-        pos = -1.0f;
-      else if (pos > 1.0f)
-        pos = 1.0f;
-    }
-
-  }
+ButtonAxis::ButtonAxis (float angle_, Button* button1_, Button* button2_) :
+  pos(0), angle(angle_), button1(button1_), button2(button2_)
+{
+  if (angle < 0)
+    angle = static_cast<float>((static_cast<int>(angle) % 360) + 360);
+  else if (angle > 360)
+    angle = static_cast<float>((static_cast<int>(angle) % 360) + 0);
 }
+
+ButtonAxis::~ButtonAxis ()
+{
+  delete button1;
+  delete button2;
+}
+
+const float&
+ButtonAxis::get_pos () const
+{
+  return pos;
+}
+
+const float&
+ButtonAxis::get_angle () const
+{
+  return angle;
+}
+
+void
+ButtonAxis::update (float delta)
+{
+  button1->update(delta);
+  button2->update(delta);
+
+  if (button1->is_pressed() == button2->is_pressed())
+    {
+      pos = 0;
+      return;
+    }
+
+  if (button1->is_pressed() && pos > -1.0f)
+    pos -= delta;
+  else if (pos < 1.0f)
+    pos += delta;
+
+  if (pos < -1.0f)
+    pos = -1.0f;
+  else if (pos > 1.0f)
+    pos = 1.0f;
+}
+
+} // namespace Axes
+} // namespace Input
+} // namespace Pingus
 
 /* EOF */

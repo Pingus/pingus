@@ -1,4 +1,4 @@
-//  $Id: mouse_scroller.cxx,v 1.2 2003/04/19 10:23:19 torangan Exp $
+//  $Id: mouse_scroller.cxx,v 1.3 2003/10/20 13:33:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,49 +17,46 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/Input/input.h>
-#include <ClanLib/Display/Input/inputdevice.h>
-#include <ClanLib/Display/Input/inputcursor.h>
+#include <ClanLib/Display/mouse.h>
 #include "mouse_scroller.hxx"
 
 namespace Input {
+namespace Scrollers {
 
-  namespace Scrollers {
+MouseScroller::MouseScroller () : old_x(0), old_y(0), x_delta(0), y_delta(0)
+{
+}
 
-    MouseScroller::MouseScroller () : old_x(0), old_y(0), x_delta(0), y_delta(0)
-    {
-    }
+const float&
+MouseScroller::get_x_delta () const
+{
+  return x_delta;
+}
 
-    const float&
-    MouseScroller::get_x_delta () const
-    {
-      return x_delta;
-    }
+const float&
+MouseScroller::get_y_delta () const
+{
+  return y_delta;
+}
 
-    const float&
-    MouseScroller::get_y_delta () const
-    {
-      return y_delta;
-    }
+void
+MouseScroller::get_delta (float& x, float& y) const
+{
+  x = x_delta;
+  y = y_delta;
+}
 
-    void
-    MouseScroller::get_delta (float& x, float& y) const
-    {
-      x = x_delta;
-      y = y_delta;
-    }
+void
+MouseScroller::update (float)
+{
+  x_delta = CL_Mouse::get_x() - old_x;
+  y_delta = CL_Mouse::get_y() - old_y;
 
-    void
-    MouseScroller::update (float)
-    {
-      x_delta = CL_Input::pointers[0]->get_cursor(0)->get_x() - old_x;
-      y_delta = CL_Input::pointers[0]->get_cursor(0)->get_x() - old_y;
+  old_x = CL_Mouse::get_x();
+  old_y = CL_Mouse::get_y();
+}
 
-      old_x = CL_Input::pointers[0]->get_cursor(0)->get_x();
-      old_y = CL_Input::pointers[0]->get_cursor(0)->get_y();
-    }
-
-  }
+}
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: triple_button.cxx,v 1.2 2003/04/19 10:23:19 torangan Exp $
+//  $Id: triple_button.cxx,v 1.3 2003/10/20 13:33:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,55 +19,56 @@
 
 #include "triple_button.hxx"
 
+namespace Pingus {
 namespace Input {
+namespace Buttons {
 
-  namespace Buttons {
-
-    TripleButton::TripleButton (Button* button1_, Button* button2_, Button* button3_)
-                              : button1(button1_),
-			        button2(button2_),
-			        button3(button3_),
-			        first_second_pressed(false),
-			        ignore_third(false)
-    {
-    }
-
-    TripleButton::~TripleButton ()
-    {
-      delete button1;
-      delete button2;
-      delete button3;
-    }
-
-    void
-    TripleButton::update (float delta)
-    {
-      button1->update(delta);
-      button2->update(delta);
-      button3->update(delta);
-
-      if (button1->is_pressed() && button2->is_pressed())
-        {
-          if (!first_second_pressed)
-            {
-	      first_second_pressed = true;
-	      ignore_third = button3->is_pressed();
-	    }
-        }
-      else
-        {
-          first_second_pressed = false;
-	  ignore_third         = true;
-        }
-    }
-
-    bool
-    TripleButton::is_pressed() const
-    {
-      return ( ! ignore_third && first_second_pressed && button3->is_pressed());
-    }
-
-  }
+TripleButton::TripleButton (Button* button1_, Button* button2_, Button* button3_)
+  : button1(button1_),
+    button2(button2_),
+    button3(button3_),
+    first_second_pressed(false),
+    ignore_third(false)
+{
 }
+
+TripleButton::~TripleButton ()
+{
+  delete button1;
+  delete button2;
+  delete button3;
+}
+
+void
+TripleButton::update (float delta)
+{
+  button1->update(delta);
+  button2->update(delta);
+  button3->update(delta);
+
+  if (button1->is_pressed() && button2->is_pressed())
+    {
+      if (!first_second_pressed)
+        {
+          first_second_pressed = true;
+          ignore_third = button3->is_pressed();
+        }
+    }
+  else
+    {
+      first_second_pressed = false;
+      ignore_third         = true;
+    }
+}
+
+bool
+TripleButton::is_pressed() const
+{
+  return ( ! ignore_third && first_second_pressed && button3->is_pressed());
+}
+
+} // namespace Buttons
+} // namespace Input
+} // namespace Pingus
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.49 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.50 2003/10/20 13:33:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -140,7 +140,7 @@ ObjectManager::load_level (const std::string& filename)
        i != temp_surfaces.end();
        i++)
     {
-      i->surface = PingusResource::load_surface(i->desc);
+      i->surface = PingusResource::load_sprite(i->desc);
     }
 
   std::vector<WorldObjData*> temp_worldobj = plf->get_worldobjs_data();

@@ -1,4 +1,4 @@
-//  $Id: mouse_button.cxx,v 1.4 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: mouse_button.cxx,v 1.5 2003/10/20 13:33:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,21 +23,20 @@
 #include "mouse_button.hxx"
 #include "../../pingus_error.hxx"
 
-
+namespace Pingus {
 namespace Input {
 namespace Buttons {
   
-void   press_handler (const CL_Key&);
-void release_handler (const CL_Key&);
-
 MouseButton::MouseButton (int button_)
   : button(button_),
-    button_press_slot  (CL_Mouse::sig_button_press  ().connect(this, &Input::Buttons::MouseButton::press_handler)),
-    button_release_slot(CL_Mouse::sig_button_release().connect(this, &Input::Buttons::MouseButton::release_handler)),
+    button_press_slot  (CL_Mouse::sig_key_down().connect(this, &Input::Buttons::MouseButton::press_handler)),
+    button_release_slot(CL_Mouse::sig_key_up().connect(this, &Input::Buttons::MouseButton::release_handler)),
     pressed(false)
 {
-  if (button > CL_Input::pointers[0]->get_num_buttons())
+#ifdef CLANLIB_0_6
+  if (button > CL_Mouse::get_num_buttons())
     PingusError::raise("MouseButton: Invalid button id");
+#endif
 }
 
 void
@@ -95,7 +94,8 @@ MouseButton::release_handler (const CL_InputEvent& signal) // may not be a membe
     }
 }
     
-}
-}
+} // namespace Buttons
+} // namespace Input
+} // namespace Pingus
 
 /* EOF */

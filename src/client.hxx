@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.28 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: client.hxx,v 1.29 2003/10/20 13:33:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_CLIENT_HXX
 
 #include <ClanLib/Signals/slot.h>
-#include <ClanLib/Display/Input/inputdevice.h>
+#include <ClanLib/Display/inputdevice.h>
 #include "gui/gui_screen.hxx"
 #include "result.hxx"
 #include "sprite.hxx"

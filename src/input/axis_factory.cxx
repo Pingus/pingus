@@ -1,4 +1,4 @@
-//  $Id: axis_factory.cxx,v 1.15 2003/06/16 20:58:11 torangan Exp $
+//  $Id: axis_factory.cxx,v 1.16 2003/10/20 13:33:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 #include "axes/multiple_axis.hxx"
 #include "../debug.hxx"
 
+namespace Pingus {
 namespace Input {
 
 using namespace Axes;
@@ -114,6 +115,7 @@ Axis* AxisFactory::multiple_axis (xmlNodePtr cur)
   return new MultipleAxis(axes);
 }
 
-}
+} // namespace Input
+} // namespace Pingus
 
 /* EOF */

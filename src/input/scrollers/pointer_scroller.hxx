@@ -1,4 +1,4 @@
-//  $Id: pointer_scroller.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: pointer_scroller.hxx,v 1.5 2003/10/20 13:33:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,51 +22,53 @@
 
 #include "../scroller.hxx"
 
+namespace Pingus {
 namespace Input {
 
-  class Button;
-  class Pointer;
+class Button;
+class Pointer;
 
-  namespace Scrollers {
+namespace Scrollers {
 
-    /**
-      @brief allows a Pointer to be used as a Scroller
+/**
+   @brief allows a Pointer to be used as a Scroller
 
-      XML definition: <pointer-scroller> <pointer><button> </pointer-scroller>
+   XML definition: <pointer-scroller> <pointer><button> </pointer-scroller>
 
-      A PointerScroller creates ScrollEvents whenever the associated Button is pressed.
-      The Pointer itself is then reset to it's original position to prevent the visible
-      pointer from moving while the Pointer is used as a Scroller.
-      */
-    class PointerScroller : public Scroller {
-      private:
-        Pointer* const pointer;
-        Button*  const modifier;
+   A PointerScroller creates ScrollEvents whenever the associated Button is pressed.
+   The Pointer itself is then reset to it's original position to prevent the visible
+   pointer from moving while the Pointer is used as a Scroller.
+*/
+class PointerScroller : public Scroller {
+private:
+  Pointer* const pointer;
+  Button*  const modifier;
 
-        float x_delta;
-        float y_delta;
-        float x_pos;
-        float y_pos;
+  float x_delta;
+  float y_delta;
+  float x_pos;
+  float y_pos;
 
-      public:
+public:
 
-        PointerScroller (Pointer* pointer_, Button* modifier_);
-       ~PointerScroller ();
+  PointerScroller (Pointer* pointer_, Button* modifier_);
+  ~PointerScroller ();
 
-        const float& get_x_delta () const;
-        const float& get_y_delta () const;
+  const float& get_x_delta () const;
+  const float& get_y_delta () const;
 
-        void  get_delta (float& x, float& y) const;
+  void  get_delta (float& x, float& y) const;
 
-        void  update (float delta);
+  void  update (float delta);
 
-      private:
-        PointerScroller (const PointerScroller&);
-        PointerScroller& operator= (const PointerScroller&);
-    };
+private:
+  PointerScroller (const PointerScroller&);
+  PointerScroller& operator= (const PointerScroller&);
+};
 
-  }
-}
+} // namespace Pointer
+} // namespace Input
+} // namespace Pingus
 
 #endif
 

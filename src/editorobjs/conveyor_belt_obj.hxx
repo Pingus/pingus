@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_obj.hxx,v 1.10 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: conveyor_belt_obj.hxx,v 1.11 2003/10/20 13:33:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_EDITOROBJS_CONVEYOR_BELT_OBJ_HXX
 #define HEADER_PINGUS_EDITOROBJS_CONVEYOR_BELT_OBJ_HXX
 
-#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/sprite.h>
 #include "../editor/rect_editorobj.hxx"
 
 namespace Pingus {

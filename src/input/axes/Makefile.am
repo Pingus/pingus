@@ -17,7 +17,7 @@
 
 noinst_LIBRARIES = libpingus_input_axes.a
 
-libpingus_input_axes_CPPFLAGS = @PINGUS_CFLAGS@
+libpingus_input_axes_a_CPPFLAGS = @PINGUS_CFLAGS@
 libpingus_input_axes_a_SOURCES =       \
         button_axis.hxx button_axis.cxx \
 	dummy_axis.hxx \

@@ -1,4 +1,4 @@
-//  $Id: switch_door_obj.cxx,v 1.10 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: switch_door_obj.cxx,v 1.11 2003/10/20 13:33:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,10 +29,10 @@ namespace EditorObjs {
 
 SwitchDoorObj::SwitchDoorObj (const WorldObjsData::SwitchDoorData& data_)
   : data(new WorldObjsData::SwitchDoorData(data_)),
-    door_box      (PingusResource::load_surface("switchdoor_box"      , "worldobjs")),
-    door_tile     (PingusResource::load_surface("switchdoor_tile"     , "worldobjs")),
-    door_tile_cmap(PingusResource::load_surface("switchdoor_tile_cmap", "worldobjs")),
-    switch_sur    (PingusResource::load_surface("switchdoor_switch"   , "worldobjs"))
+    door_box      (PingusResource::load_sprite("switchdoor_box"      , "worldobjs")),
+    door_tile     (PingusResource::load_sprite("switchdoor_tile"     , "worldobjs")),
+    door_tile_cmap(PingusResource::load_surface_provider("switchdoor_tile_cmap", "worldobjs")),
+    switch_sur    (PingusResource::load_sprite("switchdoor_switch"   , "worldobjs"))
 {
 }
 

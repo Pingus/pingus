@@ -17,6 +17,7 @@
 
 noinst_LIBRARIES = libpingus_input_scrollers.a
 
+libpingus_input_scrollers_a_CPPFLAGS = @PINGUS_CFLAGS@
 libpingus_input_scrollers_a_SOURCES =       \
 	axis_scroller.hxx axis_scroller.cxx \
 	dummy_scroller.hxx \

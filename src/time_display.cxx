@@ -1,4 +1,4 @@
-//  $Id: time_display.cxx,v 1.16 2003/10/18 23:17:27 grumbel Exp $
+//  $Id: time_display.cxx,v 1.17 2003/10/20 13:33:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include <assert.h>
 #include <stdio.h>
-#include <ClanLib/Display/Display/display.h>
+#include <ClanLib/Display/display.h>
 #include <ClanLib/Display/font.h>
 #include "globals.hxx"
 #include "pingus_resource.hxx"

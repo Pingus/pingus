@@ -1,4 +1,4 @@
-//  $Id: joystick_axis.hxx,v 1.4 2003/04/19 10:23:19 torangan Exp $
+//  $Id: joystick_axis.hxx,v 1.5 2003/10/20 13:33:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,8 +22,8 @@
 
 #include "../axis.hxx"
 
+namespace Pingus {
 namespace Input {
-
 namespace Axes {
 
   /**
@@ -55,6 +55,7 @@ namespace Axes {
 
 } // namespace Axes
 } // namespace Input
+} // namespace Pingus
 
 #endif
 

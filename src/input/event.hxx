@@ -1,4 +1,4 @@
-//  $Id: event.hxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
+//  $Id: event.hxx,v 1.9 2003/10/20 13:33:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include <vector>
 #include "../pingus.hxx"
 
+namespace Pingus {
 namespace Input {
 
 enum EventType { ButtonEventType, PointerEventType, AxisEventType, ScrollEventType };
@@ -132,6 +133,7 @@ inline Event makeScrollEvent (float x_delta, float y_delta)
 }
 
 } // namespace Input
+} // namespace Pingus
 
 #endif
 

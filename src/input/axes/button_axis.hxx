@@ -1,4 +1,4 @@
-//  $Id: button_axis.hxx,v 1.5 2003/04/19 10:23:19 torangan Exp $
+//  $Id: button_axis.hxx,v 1.6 2003/10/20 13:33:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,43 +22,45 @@
 
 #include "../axis.hxx"
 
+namespace Pingus {
 namespace Input {
 
-  class Button;
+class Button;
 
-  namespace Axes {
+namespace Axes {
 
-    /**
-      @brief maps two buttons into an axis
+/**
+   @brief maps two buttons into an axis
 
-      XML definition: <button-axis angle=?> <some button 1><some button 2> </button-axis>
-    */
-    class ButtonAxis : public Axis {
+   XML definition: <button-axis angle=?> <some button 1><some button 2> </button-axis>
+*/
+class ButtonAxis : public Axis {
 
-    private:
-      float pos;
-      float angle;
+private:
+  float pos;
+  float angle;
 
-      Button* const button1;
-      Button* const button2;
+  Button* const button1;
+  Button* const button2;
 
-    public:
+public:
 
-      ButtonAxis (float angle_, Button* button1_, Button* button2_);
-     ~ButtonAxis ();
+  ButtonAxis (float angle_, Button* button1_, Button* button2_);
+  ~ButtonAxis ();
 
-      virtual const float& get_pos () const;
-      virtual const float& get_angle () const;
+  virtual const float& get_pos () const;
+  virtual const float& get_angle () const;
 
-      virtual void  update (float delta);
+  virtual void  update (float delta);
 
-    private:
-      ButtonAxis (const ButtonAxis&);
-      ButtonAxis& operator= (const ButtonAxis&);
-    };
+private:
+  ButtonAxis (const ButtonAxis&);
+  ButtonAxis& operator= (const ButtonAxis&);
+};
 
-  }
-}
+} // namespace Axes
+} // namespace Input
+} // namespace Pingus
 
 #endif
 
