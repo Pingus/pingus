@@ -16,6 +16,13 @@
 #undef LIBXML_2
 #undef NO_XMLISBLANKNODE
 
+/* Gettext specific stuff */
+#undef ENABLE_NLS
+#undef HAVE_CATGETS
+#undef HAVE_GETTEXT
+#undef HAVE_LC_MESSAGES
+#undef HAVE_STPCPY
+
 @BOTTOM@
 
 #endif /* PINGUS_CONFIG_H */
