@@ -1,4 +1,4 @@
-//  $Id: soundtest.cxx,v 1.1 2003/02/18 14:21:20 grumbel Exp $
+//  $Id: soundtest.cxx,v 1.2 2003/02/18 15:03:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,21 @@ Soundtest::main(int argc, char** argv)
   bool left_down = false;
   while (true)
     {
+      if (CL_Keyboard::get_keycode(CL_KEY_1))
+        PingusSound::play_music("music/pingus-1.it");
+      else if (CL_Keyboard::get_keycode(CL_KEY_2))
+        PingusSound::play_music("music/pingus-2.it");
+      else if (CL_Keyboard::get_keycode(CL_KEY_3))
+        PingusSound::play_music("music/pingus-3.it");
+      else if (CL_Keyboard::get_keycode(CL_KEY_4))
+        PingusSound::play_music("music/pingus-5.it");
+      else if (CL_Keyboard::get_keycode(CL_KEY_5))
+        PingusSound::play_music("music/pingus-5.it");
+      else if (CL_Keyboard::get_keycode(CL_KEY_6))
+        PingusSound::play_music("music/pingus-6.it");      
+      else if (CL_Keyboard::get_keycode(CL_KEY_0))
+        PingusSound::stop_music();
+      
       if (CL_Mouse::left_pressed() && !left_down)
         {
           left_down = true;
