@@ -94,8 +94,8 @@ while ($file = $dir->read())
     $levels = Array();
     $dir2 = dir("data/levels/".$file);
     while ($file2 = $dir2->read())
-      if (strpos($file2, ".plf") !== FALSE)
-        $levels[] = str_replace( ".plf", "", $file2 );
+      if (strpos($file2, ".pingus") !== FALSE)
+        $levels[] = str_replace( ".pingus", "", $file2 );
     $dir2->close();
     natcasesort( $levels );
 
@@ -174,7 +174,7 @@ if  ( !isset($_GET["l"]) || !isset($_GET["c"]) )
             print "Rating:" . str_repeat( "*", intval($ldata["avgrating"])) . "<br>";
           print " view <a href='http://pingus.seul.org/levels/50/$jpg' target='levelview'>half</a>" .
             "/<a href='http://pingus.seul.org/levels/100/$jpg' target='levelview'>full</a> | " .
-            "play with <a href='data/levels/" . urlencode($c["name"]) . "/" . urlencode($l) . ".plf'>CVS</a>" .
+            "play with <a href='data/levels/" . urlencode($c["name"]) . "/" . urlencode($l) . ".pingus'>Subversion</a>" .
             " / <a href='data/levels/" . urlencode($c["name"]) . "/" . urlencode($l) . ".xml'>0.6</a> version" .
             "<br>";
           print "</small></td>\n";
@@ -201,7 +201,7 @@ else
   $l = $_GET["l"];
   $curlevelmd5 = FALSE;
 
-  $levelfile = sandbox_check( "data/levels/$c/$l.plf", "data/" );
+  $levelfile = sandbox_check( "data/levels/$c/$l.pingus", "data/" );
   if ( !is_file( $levelfile ))
   {
     print "<h2>Level '" . htmlentities($c) . " / " .
@@ -253,7 +253,7 @@ else
           "  <img src='http://pingus.seul.org/levels/thumb/$jpg' border='1'><br/>\n".
           "  see <a href='http://pingus.seul.org/levels/50/$jpg' target='levelview'>half</a> / \n".
           "  <a href='http://pingus.seul.org/levels/100/$jpg' target='levelview'>full</a> size\n<br>".
-          "<a href='data/levels/" . htmlentities($c) . "/" . htmlentities($l) . ".plf'>play</a>\n" .
+          "<a href='data/levels/" . htmlentities($c) . "/" . htmlentities($l) . ".pingus'>play</a>\n" .
           "</td>\n" );
       }
     }
@@ -316,7 +316,7 @@ else
         "  <comment>" . xmlentities(decode_html(stripslashes($_POST["comment"]))) . "</comment>\n" .
         "</pingus-level-comment>\n";
 
-      $filename = "comments/$c/$l/" . substr(md5($str),0,8) . ".plf";
+      $filename = "comments/$c/$l/" . substr(md5($str),0,8) . ".pingus";
       if ( !file_exists($filename) || is_writable($filename))
       {
         if (!$fp = fopen($filename, 'w'))
