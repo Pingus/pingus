@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapPingus.cc,v 1.13 2001/07/23 21:49:14 grumbel Exp $
+//  $Id: PingusWorldMapPingus.cc,v 1.14 2002/06/04 21:23:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ PingusWorldMapPingus::~PingusWorldMapPingus ()
 void 
 PingusWorldMapPingus::set_position (boost::shared_ptr<PingusWorldMapNode> node)
 {
-  pos = node->pos;
+  pos = node->get_pos ();
   current_node = node.get ();
 }
 
@@ -67,21 +67,23 @@ PingusWorldMapPingus::update (float delta)
 
   if (!targets.empty ())
     {
+      CL_Vector t_pos = targets.front ()->get_pos ();
+
       // Pingus found the target node
-      if (pos.x > targets.front ()->pos.x - 3
-	  && pos.x < targets.front ()->pos.x + 3
-	  && pos.y > targets.front ()->pos.y - 3
-	  && pos.y < targets.front ()->pos.y + 3)
+      if (pos.x > t_pos.x - 3
+	  && pos.x < t_pos.x + 3
+	  && pos.y > t_pos.y - 3
+	  && pos.y < t_pos.y + 3)
 	{ 
-	  pos = targets.front()->pos;
+	  pos = t_pos;
 	  current_node = targets.front();
 	  targets.pop ();
 	}
       // Pingus needs to walk a bit to find the right node
       else
 	{
-	  float x_off = targets.front ()->pos.x - pos.x;
-	  float y_off = targets.front ()->pos.y - pos.y;
+	  float x_off = t_pos.x - pos.x;
+	  float y_off = t_pos.y - pos.y;
 
 	  float x_delta = x_off * 45.0 / sqrt(x_off * x_off  + y_off * y_off);
 	  float y_delta = y_off * 45.0 / sqrt(x_off * x_off  + y_off * y_off);

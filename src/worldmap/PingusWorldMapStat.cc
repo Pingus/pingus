@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapStat.cc,v 1.3 2001/07/23 21:49:14 grumbel Exp $
+//  $Id: PingusWorldMapStat.cc,v 1.4 2002/06/04 21:23:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -153,8 +153,8 @@ PingusWorldMapStat::save (std::list<boost::shared_ptr<PingusWorldMapNode> >& nod
 
 	  if (node)
 	    {
-	      out << "  <node id=\"" << node->id << "\" "
-		  << "accessible=\"" << node->accessible  << "\" "
+	      out << "  <node id=\"" << node->get_id () << "\" "
+		//<< "accessible=\"" << node->accessible  << "\" "
 		  << "finished=\"" << node->finished  << "\" "
 		  << "checksum=\"not-impl\""
 		  << "/>" << std::endl;

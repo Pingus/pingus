@@ -7,40 +7,52 @@
   </surface>
 
   <node-list>
-    <node id="1" accessible="1">
-      <link id="2"/>
-      <level name="pacman1-yingwan.xml"/>
-      <position>
-	<x-pos>321</x-pos>
-	<y-pos>297</y-pos>
-      </position>
-    </node>
+    <level id="1" accessible="1">
+      <node id="2">
+	<link id="2"/>
+	
+	<position>
+	  <x-pos>321</x-pos>
+	  <y-pos>297</y-pos>
+	</position>
+      </node>
 
-    <tube id="4">
+      <level name="pacman1-yingwan.xml"/>
+    </level>
+
+    <tube>
+      <node id="4">
       <link id="1"/>
-      <worldmap linknode="12">volcano.xml</worldmap>
       <position>
 	<x-pos>232</x-pos>
 	<y-pos>297</y-pos>
       </position>
+      </node>
+      <worldmap linknode="12">volcano.xml</worldmap>
     </tube>
 
-    <node id="2">
+    <level>
+      <node id="2">
       <link id="3"/>
-      <level name="pacman2-yingwan.xml"/>
       <position>
 	<x-pos>432</x-pos>
 	<y-pos>297</y-pos>
       </position>
-    </node>
+      </node>
 
-    <node id="3">
-      <level name="pacman3-yingwan.xml"/>
+      <level name="pacman2-yingwan.xml"/>
+    </level>
+
+    <level>
+      <node id="3">
       <position>
 	<x-pos>542</x-pos>
 	<y-pos>297</y-pos>
       </position>
-    </node>
+      </node>
+
+      <level name="pacman3-yingwan.xml"/>
+    </level>
   </node-list>
 
 </pingus-worldmap>

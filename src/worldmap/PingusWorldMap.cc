@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.35 2002/06/02 21:32:38 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.36 2002/06/04 21:23:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,10 +64,10 @@ PingusWorldMap::PingusWorldMap (std::string filename) :
 	   i != graph_data.nodes.end ();
 	   ++i)
 	{
-	  (*i)->mark(stat->finished ((*i)->id));
+	  (*i)->mark(stat->finished ((*i)->get_id ()));
       
 	  if (!(*i)->accessible)
-	    (*i)->accessible = stat->accessible ((*i)->id);
+	    (*i)->accessible = stat->accessible ((*i)->get_id ());
 	}
       
       pingus->set_position (*graph_data.nodes.begin ());
@@ -185,25 +185,25 @@ PingusWorldMap::on_button_press (CL_InputDevice *device, const CL_Key &key)
 		PingusWorldMapNode* pingus_node = pingus->get_node ();
 		if (maintainer_mode)
 		  {
-		    std::cout << "Click on: " << node->id << std::endl;
-		    std::cout << "Pingu at: " << pingus_node->id << std::endl;
+		    std::cout << "Click on: " << node->get_id () << std::endl;
+		    std::cout << "Pingu at: " << pingus_node->get_id () << std::endl;
 		  }
 
-		if (pingus_node && pingus_node->id == node->id)
+		if (pingus_node && pingus_node->get_id () == node->get_id ())
 		  {
 		    disable_button_events ();
 		    node->on_click ();
 		    
 		    // FIXME: Ugly marking code... should be rewritten
-		    for (std::list<int>::iterator k = node->links.begin();
-			 k != node->links.end();
+		    for (std::list<int>::iterator k = node->get_links ().begin();
+			 k != node->get_links ().end();
 			 ++k)
 		      {
 			for (GraphIter i = graph_data.nodes.begin ();
 			     i != graph_data.nodes.end ();
 			     ++i)
 			  {
-			    if ((*i)->id == *k)
+			    if ((*i)->get_id () == *k)
 			      (*i)->accessible = true;
 			  }
 		      }
@@ -275,7 +275,7 @@ PingusWorldMap::draw ()
 
   if (last_node.get () && last_node->accessible)
     {
-      dot_border.put_screen (last_node->pos + offset);
+      dot_border.put_screen (last_node->get_pos () + offset);
       
       font->print_center (CL_Display::get_width ()/2, CL_Display::get_height () - 40,
 			  last_node->get_string().c_str ());
@@ -331,14 +331,18 @@ PingusWorldMap::get_node (int x, int y)
   for (GraphIter i = graph_data.nodes.begin ();
        i != graph_data.nodes.end ();
        i++)
-    if ((*i)->pos.x - (int)(red_dot.get_width()/2) - 3 < x
-	&& (*i)->pos.x + (int)(red_dot.get_width()/2) + 3 > x
-	&& (*i)->pos.y - (int)(red_dot.get_width()/2) - 3 < y
-	&& (*i)->pos.y + (int)(red_dot.get_width()/2) + 3 > y)
-      {
-	if (!(*i)->get_string ().empty ())
-	  return *i;
-      }
+    {
+      CL_Vector pos = (*i)->get_pos ();
+
+      if (   pos.x - (int)(red_dot.get_width()/2) - 3 < x
+	     && pos.x + (int)(red_dot.get_width()/2) + 3 > x
+	     && pos.y - (int)(red_dot.get_width()/2) - 3 < y
+	     && pos.y + (int)(red_dot.get_width()/2) + 3 > y)
+	{
+	  if (!(*i)->get_string ().empty ())
+	    return *i;
+	}
+    }
   return boost::shared_ptr<PingusWorldMapNode>(0);
 }
 
@@ -349,7 +353,7 @@ PingusWorldMap::set_pingus (int node_id)
        i != graph_data.nodes.end ();
        i++)
     {
-      if ((*i)->id == node_id)
+      if ((*i)->get_id () == node_id)
 	{
 	  pingus->set_position (*i);
 	  return;

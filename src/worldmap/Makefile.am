@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.2 2001/04/07 16:48:30 grumbel Exp $
+#  $Id: Makefile.am,v 1.3 2002/06/04 21:23:42 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,16 +19,20 @@
 
 noinst_LIBRARIES = libpingus_worldmap.a
 
-libpingus_worldmap_a_SOURCES = \
-	PingusWorldMap.cc \
-	PingusWorldMap.hh \
-        PingusWorldMapManager.cc \
-        PingusWorldMapManager.hh \
-        PingusWorldMapGraph.cc   \
-        PingusWorldMapGraph.hh   \
-        PingusWorldMapPingus.cc  \
-        PingusWorldMapPingus.hh  \
-        PingusWorldMapStat.hh    \
-        PingusWorldMapStat.cc
+libpingus_worldmap_a_SOURCES =    \
+	PingusWorldMap.cc         \
+	PingusWorldMap.hh         \
+        PingusWorldMapManager.cc  \
+        PingusWorldMapManager.hh  \
+        PingusWorldMapGraph.cc    \
+        PingusWorldMapGraph.hh    \
+        PingusWorldMapPingus.cc   \
+        PingusWorldMapPingus.hh   \
+        PingusWorldMapStat.hh     \
+        PingusWorldMapStat.cc     \
+        PingusWorldMapNode.hh     \
+        PingusWorldMapNode.cc     \
+        PingusWorldMapNodeData.hh \
+        PingusWorldMapNodeData.cc
 
 # EOF #
