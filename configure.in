@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.33 2000/10/13 18:08:33 grumbel Exp $
+#  $Id: configure.in,v 1.34 2000/10/30 15:55:27 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,12 +58,19 @@ AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_MAKE_SET
 
-dnl -- gettext macros --
-ALL_LINGUAS="de"
+AC_ARG_WITH(gettext,
+	[  --without-gettext         disable support for multiple languages])
 
-dnl AM_WITH_NLS
-dnl AM_LC_MESSAGES
-AM_GNU_GETTEXT
+if test "x$with_gettext" != "xno"; then
+	dnl -- gettext macros --
+	ALL_LINGUAS="de"
+
+	dnl AM_WITH_NLS
+	dnl AM_LC_MESSAGES
+	AM_GNU_GETTEXT
+else
+	echo "Gnu gettext disabled"
+fi
 
 dnl -- Static Libaries --
 AC_PROG_RANLIB
@@ -235,6 +242,15 @@ AC_CHECK_LIB( clanJPEG,   main,, [
 	exit
 	])
 
+AC_CHECK_LIB( clanPNG,   main,, [
+	echo "ClanLib is installed, but clanPNG was not found. You probably"
+	echo "forgot to compile clanPNG, which is part of the ClanLib package"
+	echo "or you need to run 'ldconfig'."
+	echo "If you think you have everything correctly installed have a look at"
+	echo "the file 'config.log' to see what went wrong"
+	exit
+	])
+
 # AC_CHECK_PROG(HAVE_DATAFILE_COMPILER, datafile_compiler, "yes")
 # if test "x$HAVE_DATAFILE_COMPILER" != "xyes" ; then
 # 	echo
@@ -276,6 +292,7 @@ AC_OUTPUT( Makefile
            src/editor/Makefile
            src/caimagemanipulation/Makefile
            src/war/Makefile
+           src/worldobjs/Makefile
 	   src/generic/Makefile
 	   src/worldmap/Makefile
            data/Makefile 
