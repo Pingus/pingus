@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.7 2000/02/16 23:34:11 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.8 2000/03/12 01:56:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../globals.hh"
 #include "../System.hh"
 #include "../PingusError.hh"
+#include "../System.hh"
 #include "StringReader.hh"
 #include "EditorEvent.hh"
 
@@ -41,7 +42,7 @@ void
 EditorEvent::set_editor(Editor* e)
 {
   editor = e;
-  editor->last_level = pingus_homedir + "levels/dist/";
+  editor->last_level = System::get_statdir() + "levels/dist/";
   object_manager = &(editor->object_manager);
 }
 
@@ -347,13 +348,13 @@ EditorEvent::editor_load_level()
   StringReader reader("Input filename to load the file (without .plf!)", editor->last_level);
   std::cout << "Loading level, input filename" << std::endl;
 
-  dir = System::opendir(pingus_homedir + "levels/dist/", "*.plf");
+  dir = System::opendir(System::get_statdir() + "levels/dist/", "*.plf");
 
   for (System::Directory::iterator i = dir.begin(); i != dir.end(); i++)
     {
-      std::cout << "dirs: " << pingus_homedir + "levels/dist/" +  i->name << std::endl;
+      std::cout << "dirs: " << System::get_statdir() + "levels/dist/" +  i->name << std::endl;
       
-      temp_str = pingus_homedir + "levels/dist/" + i->name;
+      temp_str = System::get_statdir() + "levels/dist/" + i->name;
 
       strings.push_back(temp_str.substr(0, temp_str.size() - 4));
     }
@@ -388,12 +389,12 @@ EditorEvent::editor_save_level_as()
 
   StringReader reader("Input filename to save the file (without .plf!)", editor->last_level);
 
-  dir = System::opendir(pingus_homedir + "levels/dist/", "*.plf");
+  dir = System::opendir(System::get_statdir() + "levels/dist/", "*.plf");
 
   for (System::Directory::iterator i = dir.begin(); i != dir.end(); i++)
     {
-      std::cout << "dirs: " << pingus_homedir + "levels/dist/" +  i->name << std::endl;
-      str = pingus_homedir + "levels/dist/" + i->name;
+      std::cout << "dirs: " << System::get_statdir() + "levels/dist/" +  i->name << std::endl;
+      str = System::get_statdir() + "levels/dist/" + i->name;
 
       strings.push_back(str.substr(0, str.size() - 4));
     }
@@ -460,7 +461,7 @@ EditorEvent::editor_insert_new_object()
 void
 EditorEvent::editor_new_level()
 {
-  editor->last_level = pingus_homedir + "levels/dist/";
+  editor->last_level = System::get_statdir() + "levels/dist/";
   object_manager->new_level();
 }
 

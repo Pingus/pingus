@@ -1,4 +1,4 @@
-//  $Id: Theme.cc,v 1.6 2000/02/16 23:34:11 grumbel Exp $
+//  $Id: Theme.cc,v 1.7 2000/03/12 01:56:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -128,6 +128,7 @@ Theme::draw_title()
   if (plt.get_description() != "-")
     font->print_center(x_center, y_pos, plt.get_description().c_str());
 
+  y_pos += 20;
   int j = 0;
 
   for(std::vector<std::string>::iterator i = levelnames.begin(); i < levelnames.end(); i++) 
@@ -170,22 +171,28 @@ Theme::load_status(std::string name)
   if (verbose > 1) std::cout << "Filename: " << status_file << std::endl;
   if (verbose > 1) std::cout << "Rawfile: " << status_file.substr(0, status_file.rfind(".")) << std::endl;
   
-  status_file = pingus_homedir + "stat/" + rawname + ".pst";
+  status_file = System::get_statdir() + "stat/" + rawname + ".pst";
+  
   if (verbose > 1) std::cout << "Filename to open: " << status_file << std::endl;
 
-  if (exist(status_file)) {
-    std::ifstream in;
-    in.open(status_file.c_str());
-    in >> accessible_levels;
-    in.close();
-  } else {
-    if (verbose) std::cout << "Theme: No Savegame for this theme found" << std::endl;
-    accessible_levels = 0;
-  }
-  if ((unsigned int)(accessible_levels) >= levels.size()) {
-    if (verbose) std::cout << "Warrning: Accessible_Level is to high! " << accessible_levels << std::endl;
-    accessible_levels = levels.size() - 1;
-  }
+  if (System::exist(status_file)) 
+    {
+      std::ifstream in;
+      in.open(status_file.c_str());
+      in >> accessible_levels;
+      in.close();
+    } 
+  else 
+    {
+      if (verbose) std::cout << "Theme: No Savegame for this theme found" << std::endl;
+      accessible_levels = 0;
+    }
+
+  if ((unsigned int)(accessible_levels) >= levels.size()) 
+    {
+      if (verbose) std::cout << "Warrning: Accessible_Level is to high! " << accessible_levels << std::endl;
+      accessible_levels = levels.size() - 1;
+    }
   current_level = accessible_levels;
 }
 

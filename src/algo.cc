@@ -1,4 +1,4 @@
-//  $Id: algo.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: algo.cc,v 1.4 2000/03/12 01:56:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,10 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 //  02111-1307, USA. 
 
+#include "System.hh"
 #include "algo.hh"
+
+// Die algo, die.
 
 bool rect_col(int ax1, int ax2, int ay1, int ay2,
               int bx1, int bx2, int by1, int by2)
@@ -70,17 +73,6 @@ add_slash(string& str)
   return str;
 }
 
-bool exist(std::string filename)
-{
-  return exist(filename.c_str());
-}
-
-// Simply wrapper to check if a given file exitst
-bool exist(const char* filename)
-{
-  return !access(filename, F_OK);
-}
-
 char*
 tolowerstr(char* s)
 {
@@ -105,11 +97,11 @@ find_file(std::string paths, std::string filename)
   for(token = strtok(path, ":"); token != 0; token = strtok(0, ":")) {
     token_str = token;
 #ifndef WIN32
-    if (exist(token_str + "/" + filename)) { 
+    if (System::exist(token_str + "/" + filename)) { 
       return token_str + "/" + filename;
     }
 #else /* !WIN32 */
-    if (exist(token_str + "\\" + filename)) { 
+    if (System::exist(token_str + "\\" + filename)) { 
       return token_str + "\\" + filename;
     }
 #endif

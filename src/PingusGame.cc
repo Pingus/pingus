@@ -1,4 +1,4 @@
-//  $Id: PingusGame.cc,v 1.6 2000/02/22 00:09:48 grumbel Exp $
+//  $Id: PingusGame.cc,v 1.7 2000/03/12 01:56:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <fstream>
 
+#include "System.hh"
 #include "globals.hh"
 #include "PingusError.hh"
 #include "PingusMessageBox.hh"
@@ -52,7 +53,7 @@ PingusGame::read_lastlevel_file()
   std::string filename;
   std::string levelfile;
 
-  filename = pingus_homedir + "stat/last_level";
+  filename = System::get_statdir() + "stat/last_level";
 
   in.open(filename.c_str());
 
@@ -73,7 +74,7 @@ PingusGame::write_lastlevel_file(std::string levelfile)
   ofstream out;
   std::string filename;
 
-  filename += pingus_homedir + "stat/last_level";
+  filename += System::get_statdir() + "stat/last_level";
 
   out.open(filename.c_str());
   

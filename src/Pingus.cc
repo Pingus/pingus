@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.13 2000/03/10 19:00:43 grumbel Exp $
+//   $Id: Pingus.cc,v 1.14 2000/03/12 01:56:56 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -29,12 +29,13 @@
 #include <string>
 #include <fstream>
 #include <sys/stat.h>
+
 #ifndef WIN32
-#include <config.h>
-#include <getopt.h>
+#  include <config.h>
+#  include <getopt.h>
 #else /* !WIN32 */
-#include "win32/config.h"
-#include "win32/getopt.h"
+#  include "win32/config.h"
+#  include "win32/getopt.h"
 #endif /* !WIN32 */
 
 #include <ClanLib/core.h>
@@ -46,7 +47,7 @@
 #include "Pingus.hh"
 #include "algo.hh"
 #include "globals.hh"
-#include "PingusSound.hh"
+#include "System.hh"
 #include "PingusGame.hh"
 #include "Playfield.hh"
 #include "PingusError.hh"
@@ -59,25 +60,19 @@
 
 PingusMain::PingusMain()
 {
-  std::string temp;
-
-  temp = string(PACKAGE) + " " + VERSION + " - A free Lemmings clone";
-  temp += " - http://pingus.seul.org";
-
-  title = strdup(temp.c_str());
-
   pingus_datadir_set = false;
 }
 
 PingusMain::~PingusMain()
 {
-  free(title);
 }
 
 char* 
 PingusMain::get_title()
 {
+  static char title[] = "Pingus - http://pingus.seul.org";
   return title;
+  //return (string(PACKAGE) + " " + VERSION + " - http://pingus.seul.org").c_str();
 }
 
 void
@@ -92,7 +87,6 @@ void PingusMain::deinit_modules()
   CL_SetupCore::deinit();   
 }
 
-// FIXME: This sucks, it has lots of memory leaks!!!
 void
 PingusMain::read_rc_file(void)
 {
@@ -106,43 +100,9 @@ PingusMain::read_rc_file(void)
     rcfile = string(homedir) + "/.pingus/config";
   }
 
-  //ifstream in(rcfile.c_str());
-
-  /*  if (!in) {
-    std::cout << "PingusMain: No config file found at: " << rcfile << std::endl;
-    return;
-  } 
-  */
-  std::cout << "PingusMain: Parsing config file" << std::endl;
-
   // FIXME: kind of weird...
   config = new Config(rcfile);
   delete config;
-  /*
-  while(true) 
-    {
-      in.getline(line, 1023);
-      ++lineno;
-      if(in.eof()) {
-	break;
-      }
-    
-      remove_comments(line);
-      if (!line_empty(line)) {
-	if (sscanf(line, "%s %s", option, argument) == 2) {
-	  pargv[pargc++] = strdup((string("--") + option).c_str());
-	  pargv[pargc++] = strdup(argument);
-	} else {
-	  pargv[pargc++] = strdup((string("--") + option).c_str());
-	}
-      }
-    }
-  
-  if (pargc == 1) {
-    check_args(pargc, pargv);
-  } else { 
-    check_args(pargc, pargv);
-  }*/
 }
 
 // check_ars() checks the command line for options and set the
@@ -389,60 +349,15 @@ PingusMain::init_pingus()
 void
 PingusMain::get_filenames()
 {
-  char* home = getenv("HOME");
-  
-  if (verbose)
-    clog << "Getting filenames..." << std::endl;
-  
-  if (home) 
-    {
-      pingus_homedir = home;
-      pingus_homedir += "/.pingus/";
-    }
-  else 
-    {
-      pingus_homedir = "user/";
-    }
-  
-  if (exist(pingus_homedir)) 
-    {
-      if (verbose) std::cout << "PingusMain: pingus_homedir = " << pingus_homedir << std::endl;
-    } 
-  else 
-    {
-      if (verbose) std::cout << "PingusMain: Creating directory: " << pingus_homedir << "... " << std::flush;
-      
-      if (mkdir(pingus_homedir.c_str(),                 S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) == 0
-	  && mkdir((pingus_homedir + "levels").c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) == 0
-	  && mkdir((pingus_homedir + "levels/dist").c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) == 0
-	  && mkdir((pingus_homedir + "stat").c_str(),   S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) == 0
-	  && mkdir((pingus_homedir + "themes").c_str(), S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP) == 0)
-	{
-	  std::cout << "Created directories:\n"
-		    << pingus_homedir + "levels" << "\n"
-		    << pingus_homedir + "levels/dist" << "\n"
-		    << pingus_homedir + "stat" << "\n"
-		    << pingus_homedir + "themes" << "\n"
-		    << std::endl;
-	  if (verbose) std::cout << "finished" << std::endl;
-	}
-      else 
-	{
-	  std::cout << "error" << std::endl
-		    << "---------------------------------------------------------------" << std::endl
-		    << "Error while creating a directory:" << std::endl;
-	  perror(pingus_homedir.c_str());
-	  std::cout << "---------------------------------------------------------------" << std::endl;
-	}
-    }
-  
+  System::init_directories();
+
 #ifndef WIN32
   char* env;
 
   if (pingus_datadir_set)
     pingus_datadir += ":";
   
-  pingus_datadir += pingus_homedir;
+  pingus_datadir += System::get_statdir();
 
   // Search different places for the datadir path, if none can be
   // found, then fail.
@@ -466,9 +381,9 @@ PingusMain::get_filenames()
 	}
 
       // Correct the path name, if no slash is pressent
-      //add_slash(pingus_datadir);
+      // add_slash(pingus_datadir);
   
-      if (exist("../data/data/global.dat")) 
+      if (System::exist("../data/data/global.dat")) 
 	{
 	  if (verbose > 1)
 	    std::cout << "Assuming that you haven't installed pingus, overriding current value." << std::endl;
@@ -493,7 +408,7 @@ PingusMain::get_filenames()
   global_datafile   = find_file(pingus_datadir, "data/global.dat");
   pingus_datafile   = find_file(pingus_datadir, "data/pingus.dat");
   
-  if (exist(pingus_datafile)) 
+  if (System::exist(pingus_datafile)) 
     {
       if (verbose > 1)
 	cout << "Pingus Datadir exist, all looks ok" << std::endl;
@@ -515,26 +430,17 @@ PingusMain::get_filenames()
   pingus_datafile = pingus_datadir + "data\\pingus.dat";
 #endif /* !WIN32 */
   
-  if (sound_enabled) {
-    if (pingus_soundfile.empty())
-      pingus_soundfile = find_file(pingus_datadir, "sounds/sound.specs");
-    std::cout << "PingusMain: Reading Sound Specs" << std::endl;
-
-    PingusSound::init(pingus_soundfile);
-    std::cout << "PingusMain: Reading Sound Specs finished" << std::endl;
-  }
-
   std::string custom_levelfile = levelfile;
   if (!levelfile.empty()) 
     {
-      if (!exist(custom_levelfile)) 
+      if (!System::exist(custom_levelfile)) 
 	{
 	  if (verbose)
 	    std::cout << "Levelfile not found, trying fallbacks" << std::endl;
 	  
 	  // Search for the level in the datadir
 	  custom_levelfile = find_file(pingus_datadir, "/levels/" + custom_levelfile);
-	  if (!exist(custom_levelfile.c_str())) 
+	  if (!System::exist(custom_levelfile.c_str())) 
 	    {
 	      std::cout << "Couldn't find level file: \"" << custom_levelfile << "\"" << std::endl;
 	      exit(EXIT_FAILURE);
@@ -551,8 +457,6 @@ void
 PingusMain::init(int argc, char* argv[])
 {
   char c;
-
-  argv_0 = argv[0];
 
   PingusMain::check_args(argc, argv);
   PingusMain::read_rc_file();
@@ -717,27 +621,6 @@ PingusMain::main(int argc, char** argv)
   }
 
   return 0;
-}
-
-void
-PingusMain::remove_comments(char* line)
-{
-  for (int i=0; line[i] != '\0'; ++i) {
-    if (line[i] == '#') {
-      line[i] = '\0';
-      break;
-    }
-  }
-}
-
-bool 
-PingusMain::line_empty(char* line)
-{
-  for (int i=0; line[i] != '\0'; i++) {
-    if (!isspace(line[i]))
-      return false;
-  }
-  return true;
 }
 
 /* EOF */
