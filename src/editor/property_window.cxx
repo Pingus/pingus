@@ -1,4 +1,4 @@
-//  $Id: property_window.cxx,v 1.3 2002/07/01 09:09:31 grumbel Exp $
+//  $Id: property_window.cxx,v 1.4 2002/07/01 09:36:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ PropertyWindow::update_frame (boost::shared_ptr<EditorObj> obj)
 {
   if (current_frame)
     {
-      remove_child (current_frame);
+      get_client_area ()->remove_child (current_frame);
       delete current_frame;
       current_frame = 0;
     }
@@ -45,15 +45,12 @@ PropertyWindow::update_frame (boost::shared_ptr<EditorObj> obj)
   if (obj.get ())
     {
       // We are responsible to delete comp
-      Pingus::Editor::PropertyFrame* comp = obj->get_gui_dialog (this);
+      Pingus::Editor::PropertyFrame* comp = obj->get_gui_dialog (get_client_area ());
    
       if (comp)
 	{
 	  set_title(comp->get_title ());
 	  label.show (false);
-	  // FIXME: This looks like a workaround for a missing feature in
-	  // FIXME: CL_Window
-	  comp->set_position (2, 22);
 
 	  std::cout << "Got GUI" << std::endl;
 	  current_frame = comp;
