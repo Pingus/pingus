@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.15 2002/09/14 19:06:33 torangan Exp $
+//  $Id: surface_button.cxx,v 1.16 2002/10/12 00:49:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -161,8 +161,8 @@ SurfaceButton::is_at(int x, int y)
 
 ///////////////////////////////////////////////
 
-CreditButton::CreditButton(PingusMenu* menu)
-  : menu (menu)
+CreditButton::CreditButton (PingusMenu* menu_)
+  : menu(menu_)
 {
   // x_pos = CL_Display::get_width() * 500 / 640;
   // y_pos = CL_Display::get_height() * 420 / 480;
@@ -185,12 +185,12 @@ CreditButton::CreditButton(PingusMenu* menu)
   //surface_p = PingusResource::load_surface("Buttons/play_p", "menu");
 }
 
-CreditButton::~CreditButton()
+CreditButton::~CreditButton ()
 {
 }
 
 void 
-CreditButton::on_click()
+CreditButton::on_click ()
 {
   std::cout << "Pushing credits screen" << std::endl;
   ScreenManager::instance()->push_screen (Credits::instance(), false);
@@ -198,8 +198,8 @@ CreditButton::on_click()
 
 ///////////////////////////////////////////////
 
-OptionsButton::OptionsButton(PingusMenu* menu)
-  : menu (menu)
+OptionsButton::OptionsButton (PingusMenu* menu_)
+  : menu(menu_)
 {
   // x_pos = CL_Display::get_width() * 150 / 640; //150;
   // y_pos = CL_Display::get_height() * 330 / 480; //330;
@@ -221,7 +221,7 @@ OptionsButton::OptionsButton(PingusMenu* menu)
   // surface_p = PingusResource::load_surface("Buttons/options_p", "menu");
 }
 
-OptionsButton::~OptionsButton()
+OptionsButton::~OptionsButton ()
 {
 }
 
@@ -295,8 +295,8 @@ void LoadButton::on_click()
     }*/
 }
 
-EditorButton::EditorButton(  PingusMenu* menu)
-  : menu (menu)
+EditorButton::EditorButton (PingusMenu* menu_)
+  : menu(menu_)
 {
   // x_pos = CL_Display::get_width() * 335 / 640;
   // y_pos = CL_Display::get_height() * 370 / 480;
@@ -321,13 +321,13 @@ EditorButton::EditorButton(  PingusMenu* menu)
   surface_p = PingusResource::load_surface("menu/create_on", "core");
 }
 
-EditorButton::~EditorButton()
+EditorButton::~EditorButton ()
 {
 
 }
 
 void 
-EditorButton::load_level(const std::string& str)
+EditorButton::load_level (const std::string& str)
 {
   Editor::instance ()->load_level (str);
 }
@@ -338,8 +338,8 @@ EditorButton::on_click()
   ScreenManager::instance()->push_screen (Editor::instance(), false);
 }
 
-StoryButton::StoryButton (PingusMenu* menu)
-  : menu (menu)
+StoryButton::StoryButton (PingusMenu* menu_)
+  : menu(menu_)
 {
   // x_pos = CL_Display::get_width() * 150 / 640; 
   // y_pos = CL_Display::get_height() * 430 / 480;
@@ -360,10 +360,10 @@ StoryButton::StoryButton (PingusMenu* menu)
   surface_p = PingusResource::load_surface("menu/play_on", "core");     
 }
 
-StoryButton::~StoryButton() {}
+StoryButton::~StoryButton () {}
 
 void 
-StoryButton::on_click()
+StoryButton::on_click ()
 {
   PingusSound::play_sound ("sounds/letsgo.wav");
   std::cout << "Set story" << std::endl;
@@ -371,8 +371,8 @@ StoryButton::on_click()
   std::cout << "Set done" << std::endl;
 }
 
-ThemeButton::ThemeButton (PingusMenu* menu)
-  : menu (menu)
+ThemeButton::ThemeButton (PingusMenu* menu_)
+  : menu(menu_)
 {
   x_pos = CL_Display::get_width() * 321 / 640; 
   y_pos = CL_Display::get_height() * 100 / 480;
@@ -385,7 +385,7 @@ ThemeButton::ThemeButton (PingusMenu* menu)
 }
 
 void
-ThemeButton::on_click()
+ThemeButton::on_click ()
 {
   PingusSound::play_sound ("sounds/letsgo.wav");
   
@@ -393,8 +393,8 @@ ThemeButton::on_click()
   theme_selector.display();
 }
 
-MultiplayerButton::MultiplayerButton (PingusMenu* menu)
-  : menu (menu)
+MultiplayerButton::MultiplayerButton (PingusMenu* menu_)
+  : menu(menu_)
 {
   x_pos = CL_Display::get_width() * 320 / 640;
   y_pos = CL_Display::get_height() * 369 / 480;
@@ -412,7 +412,7 @@ MultiplayerButton::~MultiplayerButton ()
 }
  
 void
-MultiplayerButton::on_click()
+MultiplayerButton::on_click ()
 {
   multiplayer_config.display ();
 }

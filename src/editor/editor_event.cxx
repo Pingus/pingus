@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.37 2002/09/28 11:52:23 torangan Exp $
+//  $Id: editor_event.cxx,v 1.38 2002/10/12 00:49:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -393,7 +393,7 @@ EditorEvent::editor_convert_group_to_selection()
 	      i != objs->end();
 	      ++i)
 	    {
-	      EditorObj* obj = (*i)->duplicate ();
+	      obj = (*i)->duplicate ();
 	      if (obj)
 		{
 		  object_manager->add (obj);

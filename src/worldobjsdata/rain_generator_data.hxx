@@ -1,4 +1,4 @@
-//  $Id: rain_generator_data.hxx,v 1.2 2002/09/27 11:26:49 torangan Exp $
+//  $Id: rain_generator_data.hxx,v 1.3 2002/10/12 00:49:11 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ class RainGeneratorData : public WorldObjData
 {
 private:
 public:
-  RainGeneratorData(xmlDocPtr doc, xmlNodePtr cur) {}
+  RainGeneratorData(xmlDocPtr doc, xmlNodePtr cur) { UNUSED_ARG(doc); UNUSED_ARG(cur); }
 
   WorldObj* create_WorldObj ();
   EditorObjLst create_EditorObj ();

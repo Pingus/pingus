@@ -1,4 +1,4 @@
-//  $Id: pingu_action.hxx,v 1.17 2002/10/01 19:53:44 grumbel Exp $
+//  $Id: pingu_action.hxx,v 1.18 2002/10/12 00:49:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ public:
   virtual ~PinguAction();
 
   /// Gives the PinguAction class access to the data of the Pingu.
-  void set_pingu(Pingu*);
+  void set_pingu (Pingu*);
 
   /** Get the pixel from the colmap, relative to the pingu position.
 
@@ -62,7 +62,7 @@ public:
 
       @param y 1 is up, -1 is down
    */
-  int  rel_getpixel(int x, int y);
+  int  rel_getpixel (int x, int y);
 
   /** Checks if this action allows to be overwritten with the given new action */
   virtual bool change_allowed (Actions::ActionName) { return true; }
@@ -96,10 +96,10 @@ public:
   virtual bool  need_catch();
 
   ///
-  virtual void  catch_pingu(Pingu*) { /* do nothing */}
+  virtual void  catch_pingu (Pingu*) { /* do nothing */}
 
   /// The time the action needs to get activated (see bomber.cxx)
-  virtual int   activation_time() { return -1; };
+  virtual int   activation_time () { return -1; };
 
   /** Return true if the pingu can be catched with the mouse and
       another action can be applied, false otherwise (exiter,
@@ -110,7 +110,7 @@ public:
   bool head_collision_on_walk (int x, int y);
 
   /** Called if the action was successfully applied via request_set_action */
-  virtual void on_successfull_apply (Pingu*) { }
+  virtual void on_successfull_apply () { }
 
   /** Called if the request_set_action failded to apply this action */
   virtual void on_failed_apply (Pingu*) { }

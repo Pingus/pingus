@@ -1,4 +1,4 @@
-//  $Id: snow_generator_data.hxx,v 1.4 2002/09/28 11:52:27 torangan Exp $
+//  $Id: snow_generator_data.hxx,v 1.5 2002/10/12 00:49:11 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ class SnowGeneratorData : public WorldObjData
 {
 private:
 public:
-  SnowGeneratorData(xmlDocPtr doc, xmlNodePtr cur) {}
+  SnowGeneratorData(xmlDocPtr doc, xmlNodePtr cur) { UNUSED_ARG(doc); UNUSED_ARG(cur); }
   
   WorldObj* create_WorldObj ();
   EditorObjLst create_EditorObj ();

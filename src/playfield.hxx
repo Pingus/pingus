@@ -1,4 +1,4 @@
-//  $Id: playfield.hxx,v 1.12 2002/09/27 11:26:44 torangan Exp $
+//  $Id: playfield.hxx,v 1.13 2002/10/12 00:49:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,7 +91,6 @@ public:
   void set_pingu_info(PinguInfo*);
   void set_buttons(ButtonPanel*);
   void set_server(Server*);
-  void set_client(Client*);
 
   bool is_at (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); return true; }
   

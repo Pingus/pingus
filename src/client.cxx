@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.29 2002/10/07 23:11:09 grumbel Exp $
+//  $Id: client.cxx,v 1.30 2002/10/12 00:49:09 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -89,8 +89,7 @@ Client::Client (TrueServer * s)
   // Connect the button_panel with the playfield
   playfield->set_buttons(button_panel);
   playfield->set_server(server);
-  playfield->set_client(this);
-  
+
   timer.stop();
 }
 

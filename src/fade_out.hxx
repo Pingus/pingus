@@ -1,4 +1,4 @@
-//  $Id: fade_out.hxx,v 1.4 2002/09/27 11:26:43 torangan Exp $
+//  $Id: fade_out.hxx,v 1.5 2002/10/12 00:49:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,8 +67,8 @@ class EnlargingRectFadeOut : public FadeOut
 {
 private:
 public:
-  EnlargingRectFadeOut (float seconds = 1.0f, Color color = Color ())
-  : FadeOut (seconds, color) {}
+  EnlargingRectFadeOut (float seconds = 1.0f, Color color_ = Color())
+  : FadeOut (seconds, color_) {}
   ~EnlargingRectFadeOut () {}
   
   void draw ();

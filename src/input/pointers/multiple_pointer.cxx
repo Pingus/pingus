@@ -1,4 +1,4 @@
-//  $Id: multiple_pointer.cxx,v 1.1 2002/08/24 11:37:31 torangan Exp $
+//  $Id: multiple_pointer.cxx,v 1.2 2002/10/12 00:49:10 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,10 +51,10 @@ namespace Input {
     }
 
     void
-    MultiplePointer::set_pos (float x_pos, float y_pos)
+    MultiplePointer::set_pos (float x_pos_, float y_pos_)
     {
       for (unsigned int i = 0; i < pointers.size(); ++i)
-        pointers[i]->set_pos(x_pos, y_pos);
+        pointers[i]->set_pos(x_pos_, y_pos_);
     }    
 
     void

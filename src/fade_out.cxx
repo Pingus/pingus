@@ -1,4 +1,4 @@
-//  $Id: fade_out.cxx,v 1.4 2002/09/11 12:45:57 grumbel Exp $
+//  $Id: fade_out.cxx,v 1.5 2002/10/12 00:49:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,9 +27,9 @@
 
 using namespace std;
 
-FadeOut::FadeOut (float seconds, Color color)
-  : complete_time (seconds), passed_time (0),
-    color (color)
+FadeOut::FadeOut (float seconds, Color color_)
+  : complete_time(seconds), passed_time(0),
+    color(color_)
 {
 }
 

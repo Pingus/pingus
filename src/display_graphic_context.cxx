@@ -1,4 +1,4 @@
-//  $Id: display_graphic_context.cxx,v 1.6 2002/09/28 22:24:24 grumbel Exp $
+//  $Id: display_graphic_context.cxx,v 1.7 2002/10/12 00:49:09 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,10 +25,10 @@
 #include "sprite.hxx"
 #include "display_graphic_context.hxx"
 
-DisplayGraphicContext::DisplayGraphicContext (int x1, int y1, int x2, int y2, 
+DisplayGraphicContext::DisplayGraphicContext (int x1_, int y1_, int x2_, int y2_, 
 					      int /*x_offset*/, int /*y_offset*/)
-  : x1 (x1), y1 (y1), x2 (x2), y2 (y2), offset (-(x2 - x1)/2.0f, -(y2-x1)/2.0f, 1.0f)
-{
+  : x1(x1_), y1(y1_), x2(x2_), y2(y2_), offset(-(x2_ - x1_) / 2.0f, -(y2_ - x1_) / 2.0f, 1.0f)
+{ 
   center = Vector ((x2 - x1)/2.0f + x1,
 		      (y2 - y1)/2.0f + y1);
   std::cout << "View: " << x1 << ", " << y1 << ", " << x2 << ", " << y2 
@@ -85,8 +85,8 @@ DisplayGraphicContext::zoom_to (const CL_Rect & arg_rect)
   Vector pos1 = screen_to_world (Vector(rect.x1, rect.y1));
   Vector pos2 = screen_to_world (Vector(rect.x2, rect.y2));
 
-  Vector center = (pos2 + pos1) * 0.5f;
-  offset = -center;
+  Vector center_ = (pos2 + pos1) * 0.5f;
+  offset = -center_;
 
   float width  = pos2.x - pos1.x;
   float height = pos2.y - pos1.y;
@@ -242,35 +242,35 @@ DisplayGraphicContext::draw_line (const Vector& pos1, const Vector& pos2,
 }
 
 void 
-DisplayGraphicContext::draw_line (int x1, int y1, int x2, int y2, 
-		       float r, float g, float b, float a)
+DisplayGraphicContext::draw_line (int x1_, int y1_, int x2_, int y2_, 
+		                  float r, float g, float b, float a)
 {
-  CL_Display::draw_line (int((x1 + get_x_offset ()) * offset.z + center.x),
-			 int((y1 + get_y_offset ()) * offset.z + center.y),
-			 int((x2 + get_x_offset ()) * offset.z + center.x),
-			 int((y2 + get_y_offset ()) * offset.z + center.y),
+  CL_Display::draw_line (static_cast<int>((x1_ + get_x_offset()) * offset.z + center.x),
+			 static_cast<int>((y1_ + get_y_offset()) * offset.z + center.y),
+			 static_cast<int>((x2_ + get_x_offset()) * offset.z + center.x),
+			 static_cast<int>((y2_ + get_y_offset()) * offset.z + center.y),
 			 r, g, b, a);
 }
 
 void 
-DisplayGraphicContext::draw_fillrect (int x1, int y1, int x2, int y2, 
-			   float r, float g, float b, float a)
+DisplayGraphicContext::draw_fillrect (int x1_, int y1_, int x2_, int y2_, 
+			              float r, float g, float b, float a)
 {
-  CL_Display::fill_rect (int((x1 + get_x_offset ()) * offset.z + center.x),
-			 int((y1 + get_y_offset ()) * offset.z + center.y), 
-			 int((x2 + get_x_offset ()) * offset.z + center.x),
-			 int((y2 + get_y_offset ()) * offset.z + center.y),
+  CL_Display::fill_rect (static_cast<int>((x1_ + get_x_offset()) * offset.z + center.x),
+			 static_cast<int>((y1_ + get_y_offset()) * offset.z + center.y), 
+			 static_cast<int>((x2_ + get_x_offset()) * offset.z + center.x),
+			 static_cast<int>((y2_ + get_y_offset()) * offset.z + center.y),
 			 r, g, b, a);
 }
 
 void 
-DisplayGraphicContext::draw_rect (int x1, int y1, int x2, int y2, 
+DisplayGraphicContext::draw_rect (int x1_, int y1_, int x2_, int y2_, 
 		 float r, float g, float b, float a)
 {
-  CL_Display::draw_rect (int((x1 + get_x_offset ()) * offset.z + center.x),
-			 int((y1 + get_y_offset ()) * offset.z + center.y), 
-			 int((x2 + get_x_offset ()) * offset.z + center.x),
-			 int((y2 + get_y_offset ()) * offset.z + center.y),
+  CL_Display::draw_rect (static_cast<int>((x1_ + get_x_offset()) * offset.z + center.x),
+			 static_cast<int>((y1_ + get_y_offset()) * offset.z + center.y), 
+			 static_cast<int>((x2_ + get_x_offset()) * offset.z + center.x),
+			 static_cast<int>((y2_ + get_y_offset()) * offset.z + center.y),
 			 r, g, b, a);
 }
 

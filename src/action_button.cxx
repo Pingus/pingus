@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.16 2002/10/04 16:54:03 grumbel Exp $
+//  $Id: action_button.cxx,v 1.17 2002/10/12 00:49:09 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,11 +99,11 @@ ActionButton::set_action_holder(ActionHolder* h)
   action_holder = h;
 }
 
-VerticalActionButton::VerticalActionButton(int x, int y, ActionName name, int owner_id) :
+VerticalActionButton::VerticalActionButton(int x, int y, ActionName name_, int owner_id) :
     background (PingusResource::load_surface("buttons/buttonbackground", "core")),
     backgroundhl (PingusResource::load_surface("buttons/buttonbackgroundhl", "core"))
 {
-  init(x, y, name, owner_id);
+  init(x, y, name_, owner_id);
 }
 
 VerticalActionButton::~VerticalActionButton () {}

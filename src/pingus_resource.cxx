@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.16 2002/09/11 12:45:57 grumbel Exp $
+//  $Id: pingus_resource.cxx,v 1.17 2002/10/12 00:49:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -142,7 +142,7 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
 	}
       else // never loaded, need to load it from source
 	{
-	  ResDescriptor desc = res_desc;
+	  desc = res_desc;
 	  desc.modifier = ResourceModifierNS::ROT0;
 
 	  pout(PINGUS_DEBUG_RESOURCES) << "PingusResource: Loading surface from source: " << res_desc << std::endl;
@@ -232,9 +232,8 @@ PingusResource::load_from_source (const ResDescriptor& res_desc)
 	// FIXME: Memory leak?
 	pout << "PingusResource::load_surface(" << res_desc.res_name << ")" << std::endl;
 	// FIXME: Add pcx, jpeg, tga support here 
-	return CL_Surface(new CL_PNGProvider(filename, NULL), true);
 	pout << "DONE" << std::endl;
-	break;
+	return CL_Surface(new CL_PNGProvider(filename, NULL), true);
       }
 	  
     case ResDescriptor::RD_AUTO:
@@ -244,8 +243,7 @@ PingusResource::load_from_source (const ResDescriptor& res_desc)
     default:
       perr << "PingusResource: Unknown ResDescriptor::type: " << res_desc.type  << std::endl;
       assert (false);
-      return CL_Surface();
-      break;
+      //return CL_Surface();
     }
 }
 

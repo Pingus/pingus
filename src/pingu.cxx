@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.34 2002/10/12 00:24:26 grumbel Exp $
+//  $Id: pingu.cxx,v 1.35 2002/10/12 00:49:10 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ Pingu::Pingu (int arg_id, const Vector& arg_pos, int owner)
     countdown_action (0),
     wall_action(0),
     fall_action(0),
-    previous_action (Actions::Faller),
+    previous_action(Actions::Faller),
     id(arg_id),
     action_time(-1),
     owner_id(owner),
@@ -198,19 +198,19 @@ Pingu::request_set_action (PinguAction* act)
 	  
       default:
 	pout(PINGUS_DEBUG_ACTIONS) << "unknown action activation_mode" << std::endl;     
-	assert(0);
 	ret_val = false;
+	assert(0);
 	break;
       }
     }
 
-  if (ret_val == true) // Action successfull applied
+  if (ret_val) // Action successfull applied
     {
-      act->on_successfull_apply (this);
+      act->on_successfull_apply();
     }
   else // Action failed to be set
     {
-      act->on_failed_apply (this);
+      act->on_failed_apply(this);
     }
     
   return ret_val;
