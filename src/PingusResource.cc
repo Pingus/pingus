@@ -1,4 +1,4 @@
-//  $Id: PingusResource.cc,v 1.13 2000/10/30 16:17:50 grumbel Exp $
+//  $Id: PingusResource.cc,v 1.14 2000/11/03 22:21:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -108,7 +108,7 @@ CL_Surface*
 PingusResource::load_surface(const ResDescriptor& res_desc)
 {
   if (pingus_debug_flags & PINGUS_DEBUG_LOADING)
-    std::cout << "PingusResource: Loading: " << res_desc << std::endl;
+    std::cout << "PingusResource: Loading surface: " << res_desc << std::endl;
 
   CL_Surface* surf = surface_map[res_desc];
   
@@ -167,6 +167,9 @@ PingusResource::load_font(const std::string& res_name,
 CL_Font* 
 PingusResource::load_font(const ResDescriptor& res_desc)
 {
+  if (pingus_debug_flags & PINGUS_DEBUG_LOADING)
+    std::cout << "PingusResource: Loading font: " << res_desc << std::endl;
+
   CL_Font* font = font_map[res_desc];
   
   if (font) 
@@ -182,7 +185,8 @@ PingusResource::load_font(const ResDescriptor& res_desc)
 	  font = CL_Font::load(res_desc.res_name.c_str(),
 			       get(suffix_fixer(res_desc.datafile)));
 	  } catch (CL_Error err) {
-	    std::cout << "PingusResource: CL_Error: Couldn't load font: " << res_desc << std::endl;
+	    std::cout << "PingusResource: " << err.message << std::endl;
+	    std::cout << "PingusResource: Couldn't load font: " << res_desc << std::endl;
 	    assert (!"PingusResource: Fatal error can't continue!");
 	  }
 	  font_map[res_desc] = font;
