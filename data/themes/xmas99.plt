@@ -1,6 +1,6 @@
 Name:        -
 Image:       Themes/xmas99
-Description: Happy Christmas!
+Description: -
 Background:  (resource:textures.dat)Textures/blueflame
 
 snow1.plf
