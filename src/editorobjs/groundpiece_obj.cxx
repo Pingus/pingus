@@ -1,4 +1,4 @@
-//  $Id: groundpiece_obj.cxx,v 1.3 2002/09/28 11:52:24 torangan Exp $
+//  $Id: groundpiece_obj.cxx,v 1.4 2002/10/07 13:12:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,9 @@ GroundpieceObj::GroundpieceObj (const WorldObjsData::GroundpieceData& data_)
     data(new WorldObjsData::GroundpieceData(data_)),
     gptype(data->gptype)
 {
+  // Groundpieces must not have a z-pos
+  data->pos.z = 0;
+
   pos_ref = &data->pos;
 }
 

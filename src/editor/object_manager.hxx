@@ -1,4 +1,4 @@
-//  $Id: object_manager.hxx,v 1.21 2002/09/28 11:52:23 torangan Exp $
+//  $Id: object_manager.hxx,v 1.22 2002/10/07 13:12:47 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,8 @@ class EditorView;
 class ObjectManager
 {
 private:
+  // FIXME: The object manager should really not have these friends,
+  // FIXME: but instead provide a better interface to interact with him.
   friend class EditorEvent;
   friend class Editor;
   

@@ -1,4 +1,4 @@
-//  $Id: demo_recorder.cxx,v 1.9 2002/10/07 12:25:07 grumbel Exp $
+//  $Id: demo_recorder.cxx,v 1.10 2002/10/07 13:12:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,6 @@ DemoRecorder::DemoRecorder(Server* server)
   if (!levelname.empty())
     {
       std::string filename = System::get_statdir() + "demos/" + levelname + "-" + get_date() + ".xml";
-      std::cout << "DemoRecorder: Writing demo to: " << filename << std::endl;
       out.open(filename.c_str());
 
       if (!out)
@@ -52,6 +51,7 @@ DemoRecorder::DemoRecorder(Server* server)
 	}
       else
         {
+          std::cout << "DemoRecorder: Writing demo to: " << filename << std::endl;
           record_demo = true;
 
           // Write file header
