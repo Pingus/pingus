@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.19 2000/04/14 18:18:23 grumbel Exp $
+//   $Id: Pingus.cc,v 1.20 2000/04/20 17:12:11 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -151,10 +151,12 @@ PingusMain::check_args(int argc, char* argv[])
     {"maintainer-mode", no_argument,       0, 134},
     {"enable-uactions", no_argument,       0, 136},
     {"disable-auto-scrolling",   no_argument,       0, 137},
-    {"sample-rate",     required_argument, 0, 138},
-    {"bit-rate",        required_argument, 0, 139},
-    {"mono",        required_argument, 0, 140},
-    {"stereo",        required_argument, 0, 141},
+
+    // Sound stuff
+    {"audio-format",     required_argument, 0, 138},
+    {"audio-rate",       required_argument, 0, 139},
+    {"audio-channels",   required_argument, 0, 140},
+    {"audio-buffers",    required_argument, 0, 141},
     {0, 0, 0, 0}
   };
 
@@ -281,12 +283,34 @@ PingusMain::check_args(int argc, char* argv[])
 	   << "---------------------------------" << std::endl; 
       maintainer_mode = true;
       break;
+
     case 136:
       unlimited_actions = true;
       break;
+
     case 137:
       auto_scrolling = false;
       break;
+
+    case 138:
+      if (strcmp(optarg, "8") == 0)
+	pingus_audio_format = AUDIO_S8;
+      else
+	pingus_audio_format = AUDIO_S16;
+      break;
+
+    case 139:
+      sscanf(optarg, "%d", &pingus_audio_rate);
+      break;
+      
+    case 140:
+      sscanf(optarg, "%d", &pingus_audio_channels);
+      break; 
+      
+    case 141:
+      sscanf(optarg, "%d", &pingus_audio_buffers);
+      break;
+
     default:
       
       std::cout << "Unknow char: " << c << endl << std::endl;
@@ -319,6 +343,12 @@ PingusMain::check_args(int argc, char* argv[])
 	"   --maintainer-mode        Enables some features, only interesting programmers\n"
 	"   -e, --editor             Launch the Level editor (experimental)\n"
 	"   --disable-auto_scrolling Disable automatic scrolling\n"
+	"\nSound:\n"
+	"   --audio-format {8,16}    Number of bits (default: 16)\n"
+	"   --audio-rate INT         Audio rate in Hz (default: 44000)\n"
+	"   --audio-channels {1,2}   Mono(1) or Stereo(2) output (default: 2)\n"
+	"   --audio-buffers INT      Audio buffer (default: 4096)\n"
+
 	   << std::endl;
       exit(EXIT_SUCCESS);
       break;
@@ -355,11 +385,8 @@ PingusMain::init_pingus()
 
   if (music_enabled)
     {
-      //#ifdef HAVE_LIBSDL_MIXER
-      //      PingusSound::init(44000, AUDIO_S16, 2, 4096);
-      PingusSound::init(11000, AUDIO_S8, 1, 4096);
-      //#endif
-      //      MikMod::init();
+      PingusSound::init(pingus_audio_rate, pingus_audio_format,
+			pingus_audio_channels, pingus_audio_channels);
     }
 
   if (preload_data)
@@ -614,11 +641,20 @@ PingusMain::do_lemmings_mode(void)
 	    << ",-------------------------------------------.\n"
 	    << "| Thank you for playing Pingus!             |\n"
 	    << "|                                           |\n"
+	    << "| The newest version can allways be found   |\n"
+	    << "| at:                                       |\n"
+	    << "|           http://pingus.seul.org          |\n"
+	    << "|                                           |\n"
 	    << "| If you have suggestions or bug reports    |\n"
 	    << "| don't hesitate to write a email to:       |\n"
 	    << "|                                           |\n"
 	    << "|        Ingo Ruhnke <grumbel@gmx.de>       |\n"
-	    << "|           http://pingus.seul.org          |\n"
+	    << "|                                           |\n"
+	    << "| Comments about the music? Send a mail to: |\n"
+	    << "|                                           |\n"
+	    << "|    Matthew Smith <matthew@synature.com>   |\n"
+	    << "|    Joseph Toscano <scarjt@buffnet.net>    |\n"
+	    << "|                                           |\n"
 	    << "`-------------------------------------------'\n"
 	    << std::endl;
   

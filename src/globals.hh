@@ -1,4 +1,4 @@
-//  $Id: globals.hh,v 1.9 2000/04/10 21:21:02 grumbel Exp $
+//  $Id: globals.hh,v 1.10 2000/04/20 17:12:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #define GLOBALS_HH
 
 #include <string>
+#include <SDL/SDL.h>
+#include <SDL/SDL_mixer.h>
 
 // This file defines some global variables, most of them are used to
 // keep the values of command line arguments.
@@ -53,6 +55,12 @@ extern int    screen_width;
 extern int    screen_height;
 extern bool   preload_data;
 extern bool   draw_collision_map;
+
+// Sound data
+extern Uint16 pingus_audio_format;
+extern int    pingus_audio_rate;
+extern int    pingus_audio_channels;
+extern int    pingus_audio_buffers;
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: Config.cc,v 1.5 2000/04/08 20:20:25 grumbel Exp $
+//  $Id: Config.cc,v 1.6 2000/04/20 17:12:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -356,6 +356,25 @@ Config::set_value(std::string valueid,
   else if (valueid == "preload_data")
     {
       preload_data = str_to_bool(value);
+    }
+  else if (valueid == "audio-format")
+    {
+      if (value == "8")
+	pingus_audio_format = AUDIO_S8;
+      else
+	pingus_audio_format = AUDIO_S16;
+    }
+  else if (valueid == "audio-rate")
+    {
+      pingus_audio_rate = str_to_int(value);
+    }
+  else if (valueid == "audio-channels")
+    {
+      pingus_audio_buffers = str_to_int(value);      
+    }
+  else if (valueid == "audio-buffers")
+    {
+      pingus_audio_buffers = str_to_int(value);
     }
   else
     {
