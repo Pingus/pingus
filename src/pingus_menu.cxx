@@ -1,4 +1,4 @@
-//  $Id: pingus_menu.cxx,v 1.11 2003/02/18 15:04:47 grumbel Exp $
+//  $Id: pingus_menu.cxx,v 1.12 2003/02/18 17:04:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include "surface_button.hxx"
 #include "pingus_resource.hxx"
-#include "sound/sound.hxx"
 #include "debug.hxx"
 #include "pingus_menu_manager.hxx"
 #include "gui/gui_manager.hxx"
@@ -51,10 +50,6 @@ PingusMenu::preload ()
       gui_manager->add(new StoryButton(this));
       gui_manager->add(editor_button);
     }
-
-  // FIXME: Preload is probally the wrong place for this, there should
-  // be show_hook and remove_hook
-  PingusSound::play_music("../data/music/pingus-1.it");
 }
 
 PingusMenu::~PingusMenu()

@@ -1,4 +1,4 @@
-//  $Id: liquid.cxx,v 1.5 2002/12/01 17:45:22 grumbel Exp $
+//  $Id: liquid.cxx,v 1.6 2003/02/18 17:04:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "../col_map.hxx"
 #include "../graphic_context.hxx"
 #include "../pingus_resource.hxx"
@@ -28,7 +29,7 @@ namespace WorldObjs {
 
 Liquid::Liquid (const WorldObjsData::LiquidData& data_) :
   data(new WorldObjsData::LiquidData(data_)),
-  sur(data->desc, data->speed)
+  sur(data->desc, 1000.0f/data->speed)
 {
   if (!data->old_width_handling)
     data->width *= sur.get_width();
@@ -67,9 +68,9 @@ Liquid::draw (GraphicContext& gc)
 }
 
 void
-Liquid::update(float delta)
+Liquid::update()
 {
-  sur.update(delta);
+  sur.update();
 }
 
 } // namespace WorldObjs

@@ -1,4 +1,4 @@
-//  $Id: surface_background_data.hxx,v 1.3 2002/09/28 11:52:27 torangan Exp $
+//  $Id: surface_background_data.hxx,v 1.4 2003/02/18 17:04:13 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,11 +51,14 @@ public:
       for components are passed to the fill_rect() call. */
   Color color;
 
-  /// Stretch the background to the full screen size in x direction
+  /** Stretch the background to the full screen size in x direction */
   bool stretch_x;
 
-  /// Stretch the background to the full screen size in x direction
+  /** Stretch the background to the full screen size in x direction */
   bool stretch_y;
+
+  /** If streched in x or y direction keep the aspect ratio */
+  bool keep_aspect;
 
 public:
   /// Init all fields with some usefull defaults values.

@@ -1,4 +1,4 @@
-// $Id: liquid_data.hxx,v 1.3 2002/09/28 11:52:27 torangan Exp $
+// $Id: liquid_data.hxx,v 1.4 2003/02/18 17:04:13 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,8 @@ public:
   bool old_width_handling;
   
   int width;
+
+  /** Number of miliseconds between frames */
   int speed;
 
 public:  

@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.44 2003/02/18 10:30:31 grumbel Exp $
+//  $Id: editor.cxx,v 1.45 2003/02/18 17:04:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,10 +27,12 @@
 #include <ClanLib/Display/Input/keyboard.h>
 #include <ClanLib/GUI/gui_manager.h>
 #include <ClanLib/GUI/stylemanager_default.h>
+
 #include "../globals.hxx"
 #include "../display.hxx"
 #include "../pingus_resource.hxx"
 #include "../system.hxx"
+#include "../sound/sound.hxx"
 #include "editor_event.hxx"
 #include "panel.hxx"
 #include "scroll_map.hxx"
@@ -128,7 +130,7 @@ void
 Editor::on_startup ()
 {
   std::cout << "Editor::on_startup ()" << std::endl;
-
+  PingusSound::stop_music();
   Display::set_cursor(CL_MouseCursorProvider::load("cursors/cursor", PingusResource::get("core")));
   Display::show_cursor();
   event->enable ();

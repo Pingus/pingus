@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.hxx,v 1.16 2002/11/05 03:02:48 grumbel Exp $
+//  $Id: pingus_menu_manager.hxx,v 1.17 2003/02/18 17:04:13 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -84,6 +84,8 @@ public:
   /** Add's a new menu to the menu stack. This is used for yes/no
       dialoges and such things.*/
   void push_menu (PingusSubMenu * menu);
+
+  void on_startup();
 
   static PingusMenuManager* instance ();
   static void init();

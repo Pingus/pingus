@@ -1,4 +1,4 @@
-//  $Id: liquid_data.cxx,v 1.6 2003/02/18 01:23:52 grumbel Exp $
+//  $Id: liquid_data.cxx,v 1.7 2003/02/18 17:04:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,8 +39,6 @@ LiquidData::LiquidData (xmlDocPtr doc, xmlNodePtr cur)
     width(0),
     speed(0)
 {
-  std::cout << "LiquidData::create(xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
-  
   if (XMLhelper::get_prop(cur, "use-old-width-handling", old_width_handling))
     {
       std::cout << "XMLPLF: Use Old Width Handling: " << old_width_handling << std::endl;
@@ -53,12 +51,13 @@ LiquidData::LiquidData (xmlDocPtr doc, xmlNodePtr cur)
   reader.read_int("width", width);
 }
 
-LiquidData::LiquidData (const LiquidData& old) : WorldObjData(old),
-                                                 desc(old.desc),
-						 pos(old.pos),
-						 old_width_handling(old.old_width_handling),
-						 width(old.width),
-						 speed(old.speed)
+LiquidData::LiquidData (const LiquidData& old)
+  : WorldObjData(old),
+    desc(old.desc),
+    pos(old.pos),
+    old_width_handling(old.old_width_handling),
+    width(old.width),
+    speed(old.speed)
 {
 }
 
@@ -78,14 +77,12 @@ LiquidData::write_xml (std::ostream& xml)
 WorldObj* 
 LiquidData::create_WorldObj ()
 {
-  std::cout << "LiquidData::create_WorldObj ()" << std::endl;
   return new WorldObjs::Liquid(*this);
 }
 
 EditorObjLst
 LiquidData::create_EditorObj () 
 { 
-  std::cout << "LiquidData::create_EditorObj ()" << std::endl;
   return EditorObjLst(1, new EditorObjs::LiquidObj(*this));
 }
 

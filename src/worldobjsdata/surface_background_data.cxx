@@ -1,4 +1,4 @@
-//  $Id: surface_background_data.cxx,v 1.6 2003/02/18 01:23:52 grumbel Exp $
+//  $Id: surface_background_data.cxx,v 1.7 2003/02/18 17:04:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,8 @@ SurfaceBackgroundData::SurfaceBackgroundData ()
     scroll_y(0.0),
     color(Color(0,0,0,0)),
     stretch_x(false),
-    stretch_y(false)
+    stretch_y(false),
+    keep_aspect(false)
 {
 }
 
@@ -48,7 +49,8 @@ SurfaceBackgroundData::SurfaceBackgroundData (const SurfaceBackgroundData& old)
     scroll_y(old.scroll_y),
     color(old.color),
     stretch_x(old.stretch_x),
-    stretch_y(old.stretch_y)
+    stretch_y(old.stretch_y),
+    keep_aspect(old.keep_aspect)
 {
 }
 
@@ -69,7 +71,8 @@ SurfaceBackgroundData::write_xml (std::ostream& xml)
       << "  <para-x>"    << para_x << "</para-x>\n"
       << "  <para-y>"    << para_y << "</para-y>\n"
       << "  <stretch-x>" << stretch_x << "</stretch-x>\n"
-      << "  <stretch-y>" << stretch_y << "</stretch-y>\n";
+      << "  <stretch-y>" << stretch_y << "</stretch-y>\n"
+      << "  <keep-aspect>" << keep_aspect << "</keep_aspect>\n";
   XMLhelper::write_vector_xml(xml, pos);
   xml << "</background>\n"
       << std::endl;
@@ -80,6 +83,8 @@ SurfaceBackgroundData::SurfaceBackgroundData (xmlDocPtr doc, xmlNodePtr cur)
   pos.z = -150;
 
   XMLFileReader reader(doc, cur);
+
+  reader.read_vector("position", pos);
 
   reader.read_desc("surface", desc);
   reader.read_color("color", color);
@@ -93,7 +98,7 @@ SurfaceBackgroundData::SurfaceBackgroundData (xmlDocPtr doc, xmlNodePtr cur)
   reader.read_bool("stretch-x", stretch_x);
   reader.read_bool("stretch-y", stretch_y);
 
-  reader.read_vector("position", pos);
+  reader.read_bool("keep-aspect", keep_aspect);
 }
 
 WorldObj* 

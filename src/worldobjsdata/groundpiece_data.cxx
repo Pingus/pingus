@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.cxx,v 1.11 2003/02/18 11:28:41 grumbel Exp $
+//  $Id: groundpiece_data.cxx,v 1.12 2003/02/18 17:04:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,10 @@ GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
 {
   gptype = Groundtype::GP_GROUND;
 
+  XMLFileReader reader(doc, cur);
+  reader.read_vector("position", pos);
+  reader.read_desc("surface", desc);
+
   std::string gptype_string;
   if (XMLhelper::get_prop(cur, "type", gptype_string))
     {
@@ -45,15 +49,10 @@ GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
     }
   else
     {
-      //std::cout << "XMLPLF: groundtype empty, which might be ok." << std::endl;
+      std::string type;
+      reader.read_string("type", type);
+      gptype = Groundtype::string_to_type (type);
     }
-
-  XMLFileReader reader(doc, cur);
-  reader.read_vector("position", pos);
-  reader.read_desc("surface", desc);
-  std::string type;
-  reader.read_string("type", type);
-  gptype = Groundtype::string_to_type (type);
 }
 
 GroundpieceData::GroundpieceData (const GroundpieceData& old) 

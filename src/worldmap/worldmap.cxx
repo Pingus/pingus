@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.30 2003/02/18 15:04:47 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.31 2003/02/18 17:04:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,6 @@ struct z_pos_sorter
 {
   bool operator()(Drawable* a, Drawable* b)
   {
-    std::cout << "a: " << a << " b: " << b << std::endl;
     return a->get_z_pos() < b->get_z_pos();
   }
 };

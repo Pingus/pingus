@@ -1,4 +1,4 @@
-//  $Id: surface_background.cxx,v 1.5 2002/10/07 23:04:06 grumbel Exp $
+//  $Id: surface_background.cxx,v 1.6 2003/02/18 17:04:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,20 +48,47 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
 
   if (background_manipulation_enabled)
     {
-      std::cout << "------ SurfaceBackground:: Manipulating background ------" << std::endl;
       CL_Surface source_surface = PingusResource::load_surface(data->desc);
       
       CL_Canvas* canvas;
 
       // Scaling Code
       if (data->stretch_x && data->stretch_y)
-	canvas = Blitter::scale_surface_to_canvas(source_surface, world->get_width(), world->get_height());
+        {
+          canvas = Blitter::scale_surface_to_canvas(source_surface, world->get_width(), world->get_height());
+        }
       else if (data->stretch_x && !data->stretch_y)
-	canvas = Blitter::scale_surface_to_canvas(source_surface, world->get_width(), source_surface.get_height());
+        {
+          if (data->keep_aspect)
+            {
+              float aspect = source_surface.get_height()/float(source_surface.get_width());
+              canvas = Blitter::scale_surface_to_canvas(source_surface, 
+                                                        world->get_width(), 
+                                                        int(world->get_width()*aspect));
+            }
+          else
+            {
+              canvas = Blitter::scale_surface_to_canvas(source_surface, source_surface.get_width(), world->get_height());
+            }
+        }
       else if (!data->stretch_x && data->stretch_y)
-	canvas = Blitter::scale_surface_to_canvas(source_surface, source_surface.get_width(), world->get_height());
+        {
+          if (data->keep_aspect)
+            {
+              float aspect = float(source_surface.get_width())/source_surface.get_height();
+              canvas = Blitter::scale_surface_to_canvas(source_surface,
+                                                        int(world->get_height() * aspect),
+                                                        world->get_height());
+            }
+          else
+            {
+              canvas = Blitter::scale_surface_to_canvas(source_surface, source_surface.get_width(), world->get_height());
+            }
+        }
       else
-	canvas = Blitter::create_canvas(source_surface);
+        {
+          canvas = Blitter::create_canvas(source_surface);
+        }
 
       /* FIXME: fill_rect doesn't work with RGB images
 	 FIXME: seems to work fine with indexed images
@@ -79,7 +106,6 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
 	}
       
       bg_surface = CL_Surface(canvas, true);
-      std::cout << "Surface: " << bg_surface.get_width() << " " << bg_surface.get_height() << std::endl;
     }
   else
     {
@@ -90,12 +116,6 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
   counter.set_size(bg_surface.get_num_frames());
   counter.set_speed(1.0);
 
-  if (verbose > 1)
-    {
-      std::cout << "Background: data->stretch_x: " << data->stretch_x << std::endl;
-      std::cout << "Background: data->stretch_y: " << data->stretch_y << std::endl;
-    }
-  
   timer.stop();
 }
 

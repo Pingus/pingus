@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.43 2003/02/18 15:04:47 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.44 2003/02/18 17:04:13 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -292,15 +292,6 @@ PingusMain::check_args(int argc, char** argv)
 #endif
 
     case 's': // -s, --enable-sound
-      if (verbose) std::cout << "check_args: Sound Effects enabled" << std::endl;
-      std::cout <<
-	_("\n"
-	  "=================================================================\n"
-	  "                            WARNING!                             \n"
-	  "=================================================================\n"
-	  "Be warned, at the moment there is only some sound code pressent, \n"
-	  "there are *no* sound files, so this will fail.\n"
-	  "=================================================================\n") << std::endl;
       sound_enabled = true;
       break;
     case 'g':

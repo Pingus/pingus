@@ -1,4 +1,4 @@
-//  $Id: teleporter_data.cxx,v 1.8 2003/02/18 10:14:52 grumbel Exp $
+//  $Id: teleporter_data.cxx,v 1.9 2003/02/18 17:04:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,7 +68,6 @@ TeleporterData::create_WorldObj ()
 EditorObjLst
 TeleporterData::create_EditorObj ()
 {
-  std::cout << "TeleportData::create_EditorObj () " << std::endl;
   EditorObjLst objs(2);
   
   EditorObjs::TeleporterObj*       teleporter        = new EditorObjs::TeleporterObj(*this);
@@ -76,8 +75,6 @@ TeleporterData::create_EditorObj ()
 
   objs[0] = teleporter;
   objs[1] = teleporter_target;
-
-  std::cout << "TeleportData::create_EditorObj (): done" << std::endl;
 
   return objs;
 }
