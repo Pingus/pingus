@@ -1,4 +1,4 @@
-//  $Id: Exit.hh,v 1.3 2000/04/14 18:28:26 grumbel Exp $
+//  $Id: Exit.hh,v 1.4 2000/05/01 11:40:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@
 class Exit : public WorldObj
 {
 private:
-  static CL_Surface* surface;
+  CL_Surface* surface;
   int x_pos;
   int y_pos;
   AnimCounter counter;
