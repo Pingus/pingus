@@ -1,3 +1,64 @@
+2003-04-12 01:52  grumbel
+
+	* po/de.po, po/tr.po, src/story.cxx: some spelling fixes
+
+2003-04-12 00:01  grumbel
+
+	* src/editor/editor.cxx: added rotating files for backups in the
+	editor
+
+2003-04-11 23:15  grumbel
+
+	* data/data/fonts.scr, data/images/fonts/chalk_large.png,
+	data/images/fonts/chalk_normal.png, src/pingus_main.cxx: - added ß
+	character to fonts - added setlocale(LC_CTYPE,), without it we will
+	get german, but without umlauts
+
+2003-04-11 18:51  grumbel
+
+	* pingus.dsp, po/POTFILES.in, src/Makefile.am, src/color.cxx,
+	src/color.hxx, src/pingus_main.cxx, src/pingus_resource.cxx:
+	setlocale bug, added operator<< for color
+
+2003-04-11 18:24  torangan
+
+	* po/de.po: tiny alignment fix
+
+2003-04-11 17:15  torangan
+
+	* Makefile.am, data/levels/tutorial/basher-tutorial-grumbel.xml,
+	data/levels/tutorial/bomber-tutorial2-grumbel.xml,
+	data/levels/tutorial/digger-tutorial2-grumbel.xml,
+	data/levels/tutorial/floater-tutorial-grumbel.xml,
+	data/levels/tutorial/jumper-tutorial-grumbel.xml,
+	data/levels/tutorial/miner-tutorial2-grumbel.xml,
+	data/levels/tutorial/snow10-grumbel.xml,
+	data/levels/tutorial/snow12-grumbel.xml,
+	data/levels/tutorial/snow14-grumbel.xml,
+	data/levels/tutorial/snow15-grumbel.xml,
+	data/levels/tutorial/snow16-grumbel.xml,
+	data/levels/tutorial/snow17-grumbel.xml,
+	data/levels/tutorial/snow19-grumbel.xml,
+	data/levels/tutorial/snow20-grumbel.xml,
+	data/levels/tutorial/snow22-grumbel.xml,
+	data/levels/tutorial/snow7-grumbel.xml,
+	data/levels/tutorial/snow8-grumbel.xml,
+	data/levels/tutorial/snow9-grumbel.xml,
+	data/levels/tutorial/solid-tutorial-grumbel.xml, po/de.po,
+	src/layer_manager.hxx, src/start_screen.cxx, src/start_screen.hxx:
+	- translations stuff - small fixes
+
+2003-04-11 16:33  grumbel
+
+	* po/de.po: fix for broken format string
+
+2003-04-11 16:30  grumbel
+
+	* ChangeLog, pingus.dsp, po/POTFILES.in, po/de.po, src/Makefile.am,
+	src/option_menu.cxx, src/option_menu.hxx, src/pingus_main.cxx,
+	src/pingus_menu_manager.cxx, src/pingus_menu_manager.hxx: - removed
+	unused stuff
+
 2003-04-11 15:17  grumbel
 
 	* po/POTFILES.in: [no log message]
