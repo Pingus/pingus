@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.43 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: world.cxx,v 1.44 2003/03/25 00:56:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,8 @@ World::World(PLF* plf)
     do_armageddon(false),
     pingus(new PinguHolder(plf)),
     colmap(gfx_map->get_colmap()),
-    view(0)
+    view(0),
+    gravitational_acceleration(0.25f)
 { 
   WorldObj::set_world(this);
 
@@ -292,6 +293,11 @@ GameTime*
 World::get_game_time ()
 {
   return game_time;
+}
+
+float World::get_gravity()
+{
+  return gravitational_acceleration;
 }
 
 /* EOF */

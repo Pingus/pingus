@@ -1,4 +1,4 @@
-//  $Id: pingu_particle_holder.cxx,v 1.7 2003/03/16 23:06:12 grumbel Exp $
+//  $Id: pingu_particle_holder.cxx,v 1.8 2003/03/25 00:56:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,7 +83,7 @@ PinguParticleHolder::update ()
       float tmp_y_add = 0.0f;
 
       // Simulated gravity
-      it->velocity.y += 0.2f;
+      it->velocity.y += WorldObj::get_world()->get_gravity();
 
       if (it->velocity.y > 0)
         {

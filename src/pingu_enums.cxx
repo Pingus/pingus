@@ -1,4 +1,4 @@
-//  $Id: pingu_enums.cxx,v 1.3 2003/02/12 22:40:47 torangan Exp $
+//  $Id: pingu_enums.cxx,v 1.4 2003/03/25 00:56:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,9 +19,10 @@
 
 #include "pingu_enums.hxx"
 
-// Pingu "globals"
+// Pingu "globals".  Make [deadly_velocity = 20 * sqrt("normal gravity")] so
+// that the "deadly distance" is the same and therefore doesn't break levels.
+const float deadly_velocity = 10.0f;
 const int pingu_height = 26;
-const float deadly_velocity = 20.0f;
 
 namespace Actions {
 

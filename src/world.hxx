@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.26 2003/03/03 20:32:18 grumbel Exp $
+//  $Id: world.hxx,v 1.27 2003/03/25 00:56:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -94,6 +94,9 @@ private:
 
   void    init_worldobjs (PLF* plf);
 
+  /** Acceleration due to gravity in the world */
+  const float gravitational_acceleration;
+
 public:
   World(PLF*);
   virtual ~World();
@@ -171,6 +174,10 @@ public:
   
   int get_start_x() const { return start_x_pos; }
   int get_start_y() const { return start_y_pos; }
+
+  /** Get the acceleration due to gravity in the world */
+  float get_gravity();
+
 private:
   World (const World&);
   World& operator= (const World&);

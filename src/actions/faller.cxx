@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.38 2003/03/18 17:03:02 torangan Exp $
+//  $Id: faller.cxx,v 1.39 2003/03/25 00:56:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "../movers/linear_mover.hxx"
 #include "../pingu.hxx"
 #include "../string_converter.hxx"
+#include "../world.hxx"
 #include "../worldobj.hxx"
 #include "faller.hxx"
 
@@ -64,7 +65,8 @@ Faller::update ()
     return;
 
   // Apply gravity
-  pingu->set_velocity(pingu->get_velocity() + Vector(0.0f, 1.0f));
+  pingu->set_velocity(pingu->get_velocity()
+		      + Vector(0.0f, WorldObj::get_world()->get_gravity()) );
 
   bool collided;
 
