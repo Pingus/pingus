@@ -1,4 +1,4 @@
-//  $Id: EditorHotspot.hh,v 1.2 2001/12/04 12:18:49 grumbel Exp $
+//  $Id: EditorHotspot.hh,v 1.3 2002/01/24 23:07:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ public:
   void write_xml(std::ofstream* xml) { HotspotData::write_xml (xml); }
 
   boost::shared_ptr<EditorObj> duplicate() {
-    return boost::shared_ptr<EditorObj>(new EditorHotspot(*this));
+    return boost::shared_ptr<EditorObj>(new EditorHotspot(static_cast<HotspotData>(*this)));
   }
 
   std::string status_line () { return "Hotspot: " + to_string(pos); }

@@ -1,3 +1,13 @@
+- diggers can dead-lock
+
+- show floater and climber in the 'cursor'
+
+- groundpiece sorting in the editor is causing throuble, see level9
+
+- insertion of surface backgrounds in the editor
+
+- exit/entrance on smallmap doesn't get shown
+
 - fix all the bugs at
   http://sourceforge.net/tracker/?group_id=5358&atid=105358
 
@@ -65,7 +75,7 @@ Happened while doing an armageddon in level one (probally out-of-screen remove):
 #14 0x4035665f in __libc_start_main () from /lib/libc.so.6
 
 
-In the editor while increasing an liquid object (pressing Pos1)
+In the editor while increasing two marked liquid object at once (pressing Pos1)
 
 #0  0x080fbfcc in EditorEvent::on_button_press(CL_InputDevice*, CL_Key const&) (
     this=0x82a8c90, device=0x81e8750, key=@0xbffff2a0) at ../boost/smart_ptr.hpp:207
@@ -110,35 +120,20 @@ half  := half playable and needs some cleanup/testplay
 nonplayable := currently not playable, but can be fixed
 test := just a test level, completly useless
 
-level1 - fully
-level2 - half, FakeExit has position bug
-level3 - nonplayable, looks boring
-level5 - half, boring
-level7 - nonplayable, but usefull
-level8 - see level7, hammer trap needs fixing
-level9 - nonplayable, exit is missing (position bug)
-level10 - nonplayable, boring
-level12 - half, currently to hard/boring
-level13 - half, has bugs (solid)
-foliage1 - nonplayable
-foliage3 - half
-foliage4 - nonplayable
-doors-grumbel - fully, nedes actions cleanup
-doors2-grumbel - maybe playable, needs testing (currently to large)
 Dentist - 
 Lev4 - 
 Stair - 
 bg-test - 
 bla - 
-block-timpany - 
 block - 
+block-timpany - 
 blockers-timpany-tutorial - 
 bombing - 
 cages - 
 candy-timpany-premoi - 
 candy1 - 
 chouser02 - 
-conv - 
+conv - useless
 crystal1 - 
 crystal2 - 
 crystal3 - 
@@ -146,24 +141,29 @@ crystal4 -
 crystal5 - 
 desert1 - 
 desert2 - 
-desert3-tflavel - 
 desert3 - 
+desert3-tflavel - solid surface confusion
 desert4 - 
-desert5-tflavel - 
 desert5 - 
-doors-grumbel - 
+desert5-tflavel - solid surface confusion
+doors-grumbel - fully, nedes actions cleanup
+doors-grumbel - playable
 doors2-grumbel - 
+doors2-grumbel - maybe playable, needs testing (currently to large)
 editor_tut - 
 foliage1 - 
+foliage1 - nonplayable
 foliage3 - 
+foliage3 - half
 foliage4 - 
-future1-jgoebbert - 
+foliage4 - nonplayable
+future1-jgoebbert - need cleanup, but looks good
 future2-jgoebbert - 
 future3-jgoebbert - 
-granit1 - 
-headbang - 
+granit1 - testing
+headbang - playable maybe, needs testing
 hellmouth1-grumbel - 
-iceblock-grumbel1 - 
+iceblock-grumbel1 - testing, but could be fixed
 indiana-yingwan - 
 industrial1-grumbel - 
 industrial2-grumbel - 
@@ -176,17 +176,22 @@ jungle1 -
 jungle2 - 
 large1 - 
 level0 - 
+level1 - fully
 level1-xml - 
-level1 - 
-level10 - 
-level12 - 
-level13 - 
+level10 - nonplayable, boring
+level12 - half, currently to hard/boring
+level13 - half, has bugs (solid)
 level2 - 
+level2 - half, FakeExit has position bug
 level3 - 
+level3 - nonplayable, looks boring
 level5 - 
+level5 - half, boring
 level7 - 
+level7 - nonplayable, but usefull
 level8 - 
-level9 - 
+level8 - see level7, hammer trap needs fixing
+level9 - nearly playable, editor sorting bug
 lone_jumper - 
 lonely - 
 longway - 
@@ -197,22 +202,21 @@ pacman1-yingwan -
 pacman2-yingwan - 
 pacman3-yingwan - 
 parallel - 
-park-mkoller - 
-partic2 - 
-particle - 
-pipes1 - 
+park-mkoller - could need cleanup, looks ugly
+partic2 - solid-groundpiece confusion
+particle -  solid-groundpiece confusion
+pipes1 - gfx demo, testing
 pyramid1-yingwan - 
 pyramid2-yingwan - 
-real1 - 
-real2 - 
-real3 - 
-real4 - 
-real5 - 
-real6 - 
+real1 - ugly, but playable
+real2 - trash
+real3 - trash
+real4 - trash
+real5 - playable
+real6 - playable
 rinse - 
-rock1 - 
-rockhopping - 
-sample_groundpieces - 
+rock1 - testing, no gamplay present
+rockhopping - playable, probally to easy
 sas - 
 small1 - 
 snow1 - 
@@ -225,23 +229,23 @@ sortie1 -
 sortie2 - 
 sortie3 - 
 space-9-tom - 
-space1 - 
-space2 - 
-space3 - 
-space4-grumbel - 
-stone-castle-timpany - 
+space1 - playable, could need cleanup
+space2 - playable, could need cleanup
+space3 - not-playable
+space4-grumbel - wrongly placed traps
 stone - 
-stone2 - 
-stone3-grumbel - 
-stone4-grumbel - 
+stone-castle-timpany - might be playable
+stone2 - testing
+stone3-grumbel - playable, but could need more elements, good demo of conveyor belt
+stone4-grumbel - nice gfx demo, testing
 teleporter1-grumbel - 
 tutorial1 - 
 tutorial2 - 
 tutorial3 - 
 tutorial4 - 
 tutorial5 - 
-wland - 
-xmas-blockblow-timpany - 
+wland - playable, but doesn't work due to new walker behaviour (3pixel-up walks)
+xmas-blockblow-timpany - pingus get stuck
 
 
 

@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.hh,v 1.18 2001/08/13 21:35:38 grumbel Exp $
+//  $Id: ConveyorBelt.hh,v 1.19 2002/01/24 23:07:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -98,6 +98,9 @@ public:
 
   void write_xml (std::ofstream* xml) { ConveyorBeltData::write_xml (xml); }
   std::string status_line();
+
+  void make_larger ();
+  void make_smaller ();
 };
 
 #endif

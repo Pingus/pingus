@@ -27,8 +27,8 @@ section Hotspots
 
 	danger      = ../images/groundpieces/ground/signposts/danger.png (type=surface, x=0, y=0, width=215, height=121);
 //	crystal     = ../images/hotspots/crystal.png    (type=surface, x=0, y=0, width=60,  height=109);
-	colum       = ../images/groundpieces/ground/misc/colum.png      (type=surface, x=0, y=0, width=142, height=184);
-	colum_flat  = ../images/groundpieces/ground/misc/colum_flat.png (type=surface, x=0, y=0, width=184, height=122);
+	colum       = ../images/groundpieces/ground/misc/column.png      (type=surface);
+	colum_flat  = ../images/groundpieces/ground/misc/column_flat.png (type=surface);
 
 	colum_piece1 = ../images/groundpieces/ground/desert/column_piece1.png      (type=surface, x=0, y=0, width=103, height=66);
 	colum_piece2 = ../images/groundpieces/ground/desert/column_piece2.png      (type=surface, x=0, y=0, width=128, height=66);

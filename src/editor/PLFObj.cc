@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.58 2002/01/24 16:11:36 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.59 2002/01/24 23:07:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -132,7 +132,7 @@ TrapObj::TrapObj(const TrapData& data)
 
   if (type == "guillotine") {
     sprite = Sprite("Traps/guillotineidle", "traps");
-    sprite.set_align_center_bottom ();
+    //sprite.set_align_center_bottom ();
   } else if (type == "fake_exit") {
     sprite = Sprite("Traps/fake_exit", "traps");
     sprite.set_align_center_bottom ();
