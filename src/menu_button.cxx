@@ -1,4 +1,4 @@
-//  $Id: menu_button.cxx,v 1.6 2003/03/28 13:06:55 grumbel Exp $
+//  $Id: menu_button.cxx,v 1.7 2003/04/05 20:24:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,7 @@
 #include "story_screen.hxx"
 #include "my_gettext.hxx"
 #include "stat_manager.hxx"
+#include "story.hxx"
 
 using EditorNS::Editor;
 
@@ -368,7 +369,7 @@ StoryButton::on_click ()
 
   if (!story_seen)
     {
-      ScreenManager::instance()->push_screen(new StoryScreen(), true);
+      ScreenManager::instance()->push_screen(new StoryScreen(Story::intro), true);
     }
   else
     {

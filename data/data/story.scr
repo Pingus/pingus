@@ -10,6 +10,11 @@ section Story
 	story5 = ../images/story/story5.png (type=surface);
 	story6 = ../images/story/story6.png (type=surface);
 
+	credits1 = ../images/story/credits1.png (type=surface);
+	credits2 = ../images/story/credits2.png (type=surface);
+	credits3 = ../images/story/credits3.png (type=surface);
+	credits4 = ../images/story/credits4.png (type=surface);
+
         background = ../images/core/menu/worldscreenbg.jpg (type=surface);
 }
 

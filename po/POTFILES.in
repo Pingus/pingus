@@ -445,6 +445,8 @@ src/start_screen.cxx
 src/start_screen.hxx
 src/stat_manager.cxx
 src/stat_manager.hxx
+src/story.cxx
+src/story.hxx
 src/story_screen.cxx
 src/story_screen.hxx
 src/string_converter.cxx

@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.32 2003/04/05 18:36:51 grumbel Exp $
+//  $Id: manager.cxx,v 1.33 2003/04/05 20:24:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 #include "worldmap.hxx"
 #include "pingus.hxx"
 #include "manager.hxx"
+#include "../story.hxx"
 #include "../story_screen.hxx"
 
 namespace WorldMapNS {
@@ -104,7 +105,7 @@ WorldMapManagerCreditsButton::draw (GraphicContext& gc)
 void
 WorldMapManagerCreditsButton::on_click()
 {
-  ScreenManager::instance()->replace_screen(new StoryScreen(), true);
+  ScreenManager::instance()->replace_screen(new StoryScreen(Story::credits), true);
 }
 
 WorldMapManagerStoryButton::WorldMapManagerStoryButton()
@@ -134,7 +135,7 @@ WorldMapManagerStoryButton::draw (GraphicContext& gc)
 void
 WorldMapManagerStoryButton::on_click()
 {
-  ScreenManager::instance()->replace_screen(new StoryScreen(), true);
+  ScreenManager::instance()->replace_screen(new StoryScreen(Story::intro), true);
 }
 
 WorldMapManagerCloseButton::WorldMapManagerCloseButton()

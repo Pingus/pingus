@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.142 2003/04/01 21:54:55 grumbel Exp $
+#  $Id: Makefile.am,v 1.143 2003/04/05 20:24:16 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -264,6 +264,8 @@ start_screen.hxx \
 start_screen.cxx \
 stat_manager.hxx \
 stat_manager.cxx \
+story.hxx \
+story.cxx \
 story_screen.hxx \
 story_screen.cxx \
 string_converter.cxx \

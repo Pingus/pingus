@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.64 2003/04/03 17:03:24 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.65 2003/04/05 20:24:16 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -87,6 +87,7 @@
 #include "credits.hxx"
 #include "sound/sound.hxx"
 #include "worldmap/manager.hxx"
+#include "story.hxx"
 #include "cheat.hxx"
 
 using EditorNS::Editor;
@@ -928,6 +929,7 @@ PingusMain::init_pingus()
   SavegameManager::instance();
   StatManager::init();
  
+  Story::init();
   ScreenManager::init();
   PingusSound::init();
   PingusResource::init();

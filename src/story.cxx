@@ -1,0 +1,148 @@
+//  $Id: story.cxx,v 1.16 2003/04/05 20:24:16 grumbel Exp $
+//
+//  Pingus - A free Lemmings clone
+//  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
+//
+//  This program is free software; you can redistribute it and/or
+//  modify it under the terms of the GNU General Public License
+//  as published by the Free Software Foundation; either version 2
+//  of the License, or (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program; if not, write to the Free Software
+//  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+#include <algorithm>
+#include "my_gettext.hxx"
+#include "story.hxx"
+
+std::vector<StoryPage> Story::credits;
+std::vector<StoryPage> Story::intro;
+
+void
+Story::init()
+{
+  init_intro();
+  init_credits();
+}
+  
+void
+Story::init_credits()
+{
+  credits.push_back
+    (StoryPage
+     (ResDescriptor("Story/credits1", "story"), 
+      _("Now after you and the Pingus have learned the basics and\n"
+        "practiced a bit it is time to move on and begin the journey into\n"
+        "the world. Since the floe with which the Pingus traveled to the\n"
+        "Tutorial Island isn't going to hold the whole way into the warmer\n"
+        "climated regions the Pingus have to find something else to guide\n"
+        "there on there journey.\n")));
+
+  credits.push_back
+    (StoryPage
+     (ResDescriptor("Story/credits2", "story"), 
+      _("But as the eldest have said, the Tutorial Island provides not\n"
+        "only a way to practive, but it is also the starting point into\n"
+        "the world, cause the wood if the large tree at the end of the\n"
+        "island is brings good wood to construct a float.\n")));
+     
+  credits.push_back
+    (StoryPage
+     (ResDescriptor("Story/credits3", "story"), 
+      _("So the Pingus set out and constructed a some large floats, enough\n"
+        "to carry them all. After also packaging up a bunch of provisions\n"
+        "they where prepared to finally start of there journey and leave\n"
+        "their familiar ground and entering the unknown parts of the\n"
+        "world.\n")));
+     
+  credits.push_back
+    (StoryPage
+     (ResDescriptor("Story/credits4", "story"), 
+      _("So the Pingus sat on there float, worrying whats to come and\n"
+        "where to go, while floating into the sunset.\n"
+        "\n"
+        "To be continued...")));
+
+  std::reverse(credits.begin(), credits.end());
+}
+
+void
+Story::init_intro() 
+{   
+  intro.push_back
+    (StoryPage
+     (ResDescriptor("Story/story0", "story"), 
+      _("For a long time now the Pingus have lived happily in peace on the\n"
+        "south pole along with all the other animals, everything was in\n"
+        "balance and it seemed like nothing could disrupt there peace.  The\n"
+        "Pingus where happy and it seemed like this could never end.\n")));
+
+  intro.push_back
+    (StoryPage
+     (ResDescriptor("Story/story1", "story"), 
+      _("But then one day, things began to change slowly, the sky got darker\n"
+        "and the earth got warmer, first of they thought this was just a\n"
+        "normal fluctuation in the worlds climate, but things seemed to get\n"
+        "worse and worse with every year.")));
+
+
+  intro.push_back
+    (StoryPage
+     (ResDescriptor("Story/story2", "story"), 
+      _("The snow began to melt away in a few regions and food became an\n"
+        "issue. Other animals already tend to leave the region to search\n"
+        "for colder areas, but the Pingus knew that this couldn't help,\n"
+        "they knew that they had to do something about this problem.")));
+
+  intro.push_back
+    (StoryPage
+     (ResDescriptor("Story/story3", "story"), 
+      _("So the circle of the eldest came together to decide what to do\n"
+        "about it. They decided to send out an expedition around the world\n"
+        "to find the cause for this warming. The expedition consisted of\n"
+        "hundreds of the bravest Pingus around on the south pole.")));
+    
+  intro.push_back
+    (StoryPage
+     (ResDescriptor("Story/story4", "story"), 
+      _("And they picked you to lead them on there journey around the\n"
+        "world. Since the journey will be dangerous and difficult. Your\n"
+        "first goal is the Island of Mogorok, also know has Tutorial\n"
+        "Island. According to the eldest, this island has always been the\n"
+        "first stop of Pingus which where send out into the world.")));
+
+  intro.push_back
+    (StoryPage
+     (ResDescriptor("Story/story5", "story"), 
+      _("The island consists of many regions which are ideally to train the\n"
+        "abilities of the Pingus. The Pingus can train there their ability\n"
+        "to build bridges, climb, bash and all the rest of there talents\n"
+        "which they will surly need on there long and dangerous journey.")));
+
+  intro.push_back
+    (StoryPage
+     (ResDescriptor("Story/story6", "story"), 
+      _("While you on the other site can practice there your ability to\n"
+        "command and guide the Pingus. You can also get familiar there with\n"
+        "all the abilities the Pingus provide and learn to master them,\n"
+        "since you will need them all for sure an your journey around the\n"
+        "world.")));
+
+  intro.push_back
+    (StoryPage
+     (ResDescriptor("Story/story6", "story"), 
+      _("Now that you and the Pingus have arrive at tutorial island it\n"
+        "is time to take over the command and begin your mission\n"
+        "\n"
+        "                                                  Good Luck!")));
+
+  std::reverse(intro.begin(), intro.end());
+}
+
+/* EOF */

@@ -1885,6 +1885,14 @@ SOURCE=.\src\stat_manager.hxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\story.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\story.hxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\story_screen.cxx
 # End Source File
 # Begin Source File

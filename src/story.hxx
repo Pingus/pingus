@@ -1,4 +1,4 @@
-//  $Id: story_screen.hxx,v 1.4 2003/04/05 20:24:16 grumbel Exp $
+//  $Id: story.hxx,v 1.12 2003/04/05 20:24:16 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,44 +17,23 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_STORY_SCREEN_HXX
-#define HEADER_PINGUS_STORY_SCREEN_HXX
+#ifndef HEADER_PINGUS_STORY_HXX
+#define HEADER_PINGUS_STORY_HXX
 
-#include <string>
-#include "res_descriptor.hxx"
-#include "gui/gui_screen.hxx"
-
-class StoryScreenComponent;
-
-class StoryPage
-{
-public:
-  StoryPage() {}
-
-  StoryPage(ResDescriptor arg_image, std::string arg_text)
-    : image(arg_image), text(arg_text)
-      
-  {}
-
-  ResDescriptor image;
-  std::string   text;
-};
+#include "story_screen.hxx"
 
 /** */
-class StoryScreen : public GUIScreen
+class Story
 {
 private:
-  StoryScreenComponent* story_comp;
 public:
-  StoryScreen(const std::vector<StoryPage>& pages);
-  ~StoryScreen();
+  static std::vector<StoryPage> credits;
+  static std::vector<StoryPage> intro;
 
-  void on_startup();
-  void on_fast_forward_press ();
-  void on_escape_press ();
+  static void init();
 private:
-  StoryScreen (const StoryScreen&);
-  StoryScreen& operator= (const StoryScreen&);
+  static void init_intro();
+  static void init_credits();
 };
 
 #endif
