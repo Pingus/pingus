@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.30 2000/09/30 22:07:19 grumbel Exp $
+#  $Id: configure.in,v 1.31 2000/10/12 19:31:23 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,6 +57,12 @@ AC_PROG_CXX
 AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_MAKE_SET
+
+ALL_LINGUAS="de"
+
+AM_WITH_NLS
+AM_LC_MESSAGES
+AM_GNU_GETTEXT
 
 dnl -- Static Libaries --
 AC_PROG_RANLIB
@@ -157,15 +163,6 @@ AC_CHECK_LIB( clanCore,   main,, [
 	exit
 	])
 
-AC_CHECK_LIB( clanJPEG,   main,, [
-	echo "ClanLib is installed, but clanMagick was not found. You probably"
-	echo "forgot to compile clanMagick, which is part of the ClanLib package"
-	echo "or you need to run 'ldconfig'."
-	echo "If you think you have everything correctly installed have a look at"
-	echo "the file 'config.log' to see what went wrong"
-	exit
-	])
-
 dnl AC_CHECK_LIB( clanGUI,   main,, [
 dnl 	echo "ClanLib is installed, but clanGUI was not found. You probably"
 dnl 	echo "forgot to compile clanGUI, which is part of the ClanLib package"
@@ -228,6 +225,15 @@ AC_TRY_RUN([
  	[echo "cross compiling detected, assuming that this is correct and continue"]
  )
 
+AC_CHECK_LIB( clanJPEG,   main,, [
+	echo "ClanLib is installed, but clanJPEG was not found. You probably"
+	echo "forgot to compile clanJPEG, which is part of the ClanLib package"
+	echo "or you need to run 'ldconfig'."
+	echo "If you think you have everything correctly installed have a look at"
+	echo "the file 'config.log' to see what went wrong"
+	exit
+	])
+
 # AC_CHECK_PROG(HAVE_DATAFILE_COMPILER, datafile_compiler, "yes")
 # if test "x$HAVE_DATAFILE_COMPILER" != "xyes" ; then
 # 	echo
@@ -254,7 +260,7 @@ AC_CHECK_FUNCS(select strdup)
 dnl Checking for the install prefix and then use it to define PINGUS_DATADIR
 
 PINGUS_EXPAND_DIR(pingus_datadir, "$datadir/games/$PACKAGE")
-AC_DEFINE_UNQUOTED( PINGUS_DATADIR, "$pingus_datadir")
+AC_DEFINE_UNQUOTED(PINGUS_DATADIR, "$pingus_datadir")
 
 AC_OUTPUT( Makefile 
            src/Makefile 
@@ -280,18 +286,8 @@ AC_OUTPUT( Makefile
 
 # ----------------------------------------
 
-echo "sdlmixer: $HAVE_LIBSDL_MIXER"
+dnl Add here a list of the supported features
 
-# env
-
-if test $HAVE_LIBSDL_MIXER; then
-	echo "Sound support enabled"
-else
- 	echo "Sound support is disabled"
-fi
-
-# echo "sound     = $WITH_SOUND"
-# echo "sdl_mixer = $HAVE_LIBSDL_MIXER"
 echo ""
 echo "Pingus is now configured, now you can start \`make'."
 echo ""
