@@ -1,4 +1,4 @@
-//  $Id: Config.cc,v 1.3 2000/03/12 02:07:27 grumbel Exp $
+//  $Id: Config.cc,v 1.4 2000/03/12 17:08:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,9 +42,15 @@ ConfigParser::init(std::string filename)
   last_atom = ' ';
   lineno = 1;
 
-  // Start parsing
-  open(filename);
-  parse();
+  try {
+    // Start parsing
+    open(filename);
+    parse();
+  }
+
+  catch (PingusError err) {
+    std::cout << err.message << std::endl;
+  }
 }
 
 // Open the file and do some error checking.
@@ -54,10 +60,9 @@ ConfigParser::open(std::string filename)
   in.open(filename.c_str());
   eof = false;
 
-  if (!in) {
+  if (!in) 
     throw PingusError("Couldn't open: " + filename);
-  }
-  
+    
   if (verbose > 1)
     std::cout << "Opened plf file successfully" << std::endl;
 }

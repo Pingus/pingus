@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.12 2000/03/01 02:57:48 grumbel Exp $
+//  $Id: Pingu.cc,v 1.13 2000/03/12 17:08:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -329,7 +329,7 @@ Pingu::let_move(void)
 PinguEnvironment
 Pingu::check_enviroment()
 {
-  
+  // FIXME: We need some code here...
 }
 
 // Check if the pingu is on ground and then do something.
@@ -414,7 +414,6 @@ Pingu::do_falling()
 	{
 	  // FIXME: This is a LinuxTag Hack and should be replaced
 	  // with a real ground smashing action! 
-	  cout << "Smashing..." << endl;
 	  set_action(new Smashed);
 	}
       else if (std::fabs(velocity.x) > deadly_velocity)

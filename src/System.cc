@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.6 2000/03/12 01:38:49 grumbel Exp $
+//  $Id: System.cc,v 1.7 2000/03/12 17:08:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -135,10 +135,7 @@ System::create_dir(std::string directory)
 	}
       else
 	{
-	  if (verbose) 
-	    {
-	      std::cout << "Successfully created: directory" << std::endl;
-	    }
+	  std::cout << "Successfully created: " << directory << std::endl;
 	}
     }
 }
@@ -155,7 +152,7 @@ System::init_directories()
   create_dir(statdir + "stat/");
   create_dir(statdir + "themes/");
 
-  create_dir(vardir);
+  // create_dir(vardir);
 }
  
 std::string
@@ -168,11 +165,11 @@ System::get_statdir()
 
   if (homedir) 
     {
-      throw PingusError("Enviroment variable $HOME not set, fix that and start again.");
+      return string(homedir) + "/.pingus/";
     }
   else
     {
-      return string(homedir) + "/.pingus/";
+      throw PingusError("Enviroment variable $HOME not set, fix that and start again.");
     }
 #endif
 }

@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.7 2000/02/28 03:50:43 grumbel Exp $
+//  $Id: Editor.cc,v 1.8 2000/03/12 17:08:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "../PingusMessageBox.hh"
 #include "../Display.hh"
 #include "../PingusResource.hh"
+#include "../System.hh"
 #include "Editor.hh"
 
 Editor::Editor ()
@@ -155,7 +156,7 @@ Editor::read_string (std::string prefix, std::string default_str)
     {
       if (last_level.empty()) 
 	{
-	  str = pingus_homedir + "levels/";
+	  str = System::get_statdir() + "levels/";
 	} 
       else 
 	{
@@ -376,6 +377,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.8  2000/03/12 17:08:40  grumbel
+Misc fixes I forgot yesterday
+
 Revision 1.7  2000/02/28 03:50:43  grumbel
 Some mouse cursor changes, to keep up with ClanLib
 
