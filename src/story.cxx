@@ -1,4 +1,4 @@
-//  $Id: story.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: story.cxx,v 1.3 2002/08/01 21:40:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include <ClanLib/Display/Font/font.h>
 #include "pingus_resource.hxx"
 #include "pingus_menu_manager.hxx"
+#include "screen_manager.hxx"
 #include "worldmap/manager.hxx"
 
 Story::Story(PingusMenuManager* manager)
@@ -118,14 +119,24 @@ Story::display_string(std::string /*current_line*/)
 }
 
 void 
-Story::on_button_press (CL_InputDevice* /*device*/,const CL_Key& /*key*/)
+Story::unhandled_event ()
 {
-  manager->disable_events ();
+  // FIXME: Since we havn't yet a button to continue with the story,
+  // we contiune on the first unhandled event (most likly a button
+  // press
+
   // FIXME: This looks ugly... 
-  Pingus::WorldMapManager worldmap_manager;
-  worldmap_manager.display();
-  manager->enable_events ();
+  ScreenManager::instance()->push_screen(Pingus::WorldMapManager::instance ());
+  //worldmap_manager.display();
+  //manager->enable_events ();
   manager->set_menu (&manager->mainmenu);
+}
+
+bool
+Story::is_at (int x, int y)
+{
+  std::cout << "bla" << std::endl; 
+  return true;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.4 2002/07/02 13:36:07 torangan Exp $
+//  $Id: manager.cxx,v 1.5 2002/08/01 21:40:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,12 +27,24 @@
 using namespace Pingus;
 using namespace Pingus::WorldMap;
 
-WorldMapManager* WorldMapManager::current_manager;
+WorldMapManager* WorldMapManager::instance_ = 0;
 
 WorldMapManager::WorldMapManager ()
 {
-  current_manager = this;
   is_init = false;
+  exit_worldmap = false;
+
+  init ();
+
+  worldmap = boost::shared_ptr<WorldMap::WorldMap>
+    (new WorldMap::WorldMap (path_manager.complete("worldmaps/volcano.xml")));
+
+  worldmap->init ();
+
+  // FIXME: a bit ugly because of the proteced member, but should work
+  // FIXME: well enough. GUIScreen could also use multi-inheritage,
+  // FIXME: but that could lead to member function name conflicts
+  gui_manager->add (&worldmap_component);
 }
 
 WorldMapManager::~WorldMapManager ()
@@ -49,21 +61,11 @@ WorldMapManager::init ()
     }
 }
 
+  /*
+
 void
 WorldMapManager::display ()
 {
-  on_button_press_slot   = CL_Input::sig_button_press ().connect (this, &WorldMapManager::on_button_press);
-  on_button_release_slot = CL_Input::sig_button_release ().connect (this, &WorldMapManager::on_button_release);
-  on_mouse_move_slot     = CL_Input::sig_mouse_move ().connect (this, &WorldMapManager::on_mouse_move);
-
-  init ();
-
-  worldmap = boost::shared_ptr<WorldMap::WorldMap>
-    (new WorldMap::WorldMap (path_manager.complete("worldmaps/volcano.xml")));
-
-  worldmap->init ();
-
-  exit_worldmap = false;
   DeltaManager delta;
   while (!worldmap->do_exit ())
     {
@@ -80,34 +82,28 @@ WorldMapManager::display ()
       CL_System::keep_alive ();
       Display::flip_display ();
     }
+}
+  */
 
-  CL_Input::sig_button_press ().disconnect(on_button_press_slot);
-  CL_Input::sig_button_release ().disconnect(on_button_release_slot);
-  CL_Input::sig_mouse_move ().disconnect(on_mouse_move_slot);
+
+void
+WorldMapManager::WorldMapComponent::draw ()
+{
+  WorldMapManager::instance ()->worldmap->draw ();
 }
 
 void
-WorldMapManager::on_mouse_move (CL_InputDevice *, int /*mouse_x*/, int /*mouse_y*/)
+WorldMapManager::WorldMapComponent::update (float delta)
 {
-  //  std::cout << "mouse: " << mouse_x << " " << mouse_y << std::endl;  
+  //std::cout << "update press" << std::endl;
+  WorldMapManager::instance ()->worldmap->update (delta);
 }
 
 void 
-WorldMapManager::on_button_press (CL_InputDevice *device, const CL_Key &key)
+WorldMapManager::WorldMapComponent::on_button_press (int x, int y)
 {
-  worldmap->on_button_press (device, key);
-}
-
-void 
-WorldMapManager::on_button_release (CL_InputDevice * /*device*/, const CL_Key & /*key*/)
-{
-  //  std::cout << "key release: " << key.id << std::endl;
-}
-
-void
-WorldMapManager::on_resize(int w, int h)
-{
-  std::cout << "Width: " << w << " Height: " << h << std::endl;
+  std::cout << "Buton press" << std::endl;
+  WorldMapManager::instance ()->worldmap->on_button_press (x, y);
 }
 
 void 
@@ -116,6 +112,15 @@ WorldMapManager::change_map (const std::string& filename, int node)
   new_worldmap = boost::shared_ptr<WorldMap::WorldMap>
     (new WorldMap::WorldMap (path_manager.complete("worldmaps/" + filename)));
   new_worldmap->set_pingus (node);
+}
+
+WorldMapManager*
+WorldMapManager::instance ()
+{
+  if (instance_)
+    return instance_;
+  else
+    return instance_ = new WorldMapManager ();
 }
 
 /* EOF */

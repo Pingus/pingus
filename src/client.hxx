@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.4 2002/07/29 10:44:12 grumbel Exp $
+//  $Id: client.hxx,v 1.5 2002/08/01 21:40:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ class SmallMap;
 class TimeDisplay;
 
 /** FIXME: This whole Server/Client concept is a bit screwed */
-class Client
+class Client : public GUIScreen
 {
 private:
   

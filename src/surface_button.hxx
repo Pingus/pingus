@@ -1,4 +1,4 @@
-//  $Id: surface_button.hxx,v 1.4 2002/07/29 22:17:53 grumbel Exp $
+//  $Id: surface_button.hxx,v 1.5 2002/08/01 21:40:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include <string>
 #include <ClanLib/Display/Display/surface.h>
 
-#include "worldmap/manager.hxx"
 #include "multiplayer_config.hxx"
 #include "gui/component.hxx"
 
@@ -123,7 +122,6 @@ class StoryButton : public SurfaceButton
 {
 private:
   PingusMenu* menu;
-  Pingus::WorldMapManager worldmap_manager;
 public:
   StoryButton(PingusMenu* menu);
   ~StoryButton();

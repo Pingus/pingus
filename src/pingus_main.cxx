@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.7 2002/07/30 14:57:25 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.8 2002/08/01 21:40:01 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -71,7 +71,7 @@
 #include "debug.hxx"
 #include "editor/editor.hxx"
 #include "boost/smart_ptr.hpp"
-#include "pingus_menu_manager.hxx"
+#include "screen_manager.hxx"
 #include "sound_dummy.hxx"
 #include "action_data.hxx"
 
@@ -842,9 +842,12 @@ PingusMain::start_game(void)
 
   // show the main menu, the rest of the game is spawn from there
   try {
-    PingusMenuManager menu;
+    //PingusMenuManager menu;
     // This is the main loop
-    menu.display ();
+    //menu.display ();
+    std::cout << "PingusMain::start screen manager" << std::endl;
+    ScreenManager::instance ()->display ();
+    std::cout << "PingusMain::quit game and screen_manager" << std::endl;
   }
   
   catch (const CL_Error& err) {

@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.4 2002/07/29 22:29:22 grumbel Exp $
+//  $Id: surface_button.cxx,v 1.5 2002/08/01 21:40:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -334,7 +334,6 @@ EditorButton::on_click()
 StoryButton::StoryButton (PingusMenu* menu)
   : menu (menu)
 {
-
   // x_pos = CL_Display::get_width() * 150 / 640; 
   // y_pos = CL_Display::get_height() * 430 / 480;
 

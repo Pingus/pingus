@@ -1,4 +1,4 @@
-//  $Id: manager.hxx,v 1.3 2002/06/24 22:52:59 grumbel Exp $
+//  $Id: manager.hxx,v 1.4 2002/08/01 21:40:02 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,10 +22,13 @@
 
 #include <string>
 #include <ClanLib/Signals/slot.h>
+#include "../gui/gui_manager.hxx"
 #include "../boost/smart_ptr.hpp"
+#include "../gui_screen.hxx"
 
 class CL_InputDevice;
 class CL_Key;
+class GameDelta;
 
 namespace Pingus
 {
@@ -35,43 +38,39 @@ namespace Pingus
   }
 
   /**  */
-  class WorldMapManager
+  class WorldMapManager : public GUIScreen
   {
+    class WorldMapComponent : public GUI::Component
+    {
+    public:
+      void on_button_press (int x, int y);
+
+      void draw ();
+      void update (float delta);
+      
+      bool is_at (int, int) { return true; }
+    } worldmap_component;
+    
+    friend class WorldMapComponent;
   private:
+    static WorldMapManager* instance_;
+
     bool is_init;
     bool exit_worldmap;
     boost::shared_ptr<WorldMap::WorldMap> worldmap;
     boost::shared_ptr<WorldMap::WorldMap> new_worldmap;
 
-    /// Some slots to manage the event handling
-    //@{
-    CL_Slot on_button_press_slot;
-    CL_Slot on_button_release_slot;
-    CL_Slot on_mouse_move_slot;
-    CL_Slot on_resize_slot;
-    //@}
-
-    static WorldMapManager* current_manager;
-
-  public:
     WorldMapManager ();
+  public:
     ~WorldMapManager ();
   
   private:
     /// Load all required resources if not already done
     void init ();
 
-    void on_button_press (CL_InputDevice *device, const CL_Key &key);
-    void on_button_release (CL_InputDevice *device, const CL_Key &key);
-    void on_mouse_move(CL_InputDevice *,int mouse_x, int mouse_y);
-    void on_resize(int w, int h);
-
   public:
-    /// Display the worldmap and let the user select a level
-    void display ();
     void change_map (const std::string& filename, int node);
-
-    static WorldMapManager* get_current () { return current_manager; } 
+    static WorldMapManager* instance ();
   };
 
 }

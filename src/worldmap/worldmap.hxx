@@ -1,4 +1,4 @@
-//  $Id: worldmap.hxx,v 1.2 2002/06/24 22:52:59 grumbel Exp $
+//  $Id: worldmap.hxx,v 1.3 2002/08/01 21:40:02 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,11 +80,8 @@ namespace Pingus
 	  - calculate which level was clicked
 	  - calculate the shortest path
 	  - let the pingu walk */
-      void on_button_press (CL_InputDevice *device, const CL_Key &key);
+      void on_button_press (int x, int y);
  
-      /** React on button release */
-      void on_button_release (CL_InputDevice *device, const CL_Key &key);
-
       /** Disable all event catching */
       void disable_button_events ();
   

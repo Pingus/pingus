@@ -1,4 +1,4 @@
-//  $Id: component.hxx,v 1.4 2002/07/30 01:58:16 grumbel Exp $
+//  $Id: component.hxx,v 1.5 2002/08/01 21:40:02 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,8 @@ namespace GUI
     /** return true if currently pressed */
     bool is_pressed ();
 
-    /** true if mouse is currently over */
+    /** true if mouse is currently over, FIXME: these seem to be
+	unimplementable without renaming on_pointer_enter() and wrapp them */
     bool pointer_over ();
   };
 }

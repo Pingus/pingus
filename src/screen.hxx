@@ -1,4 +1,4 @@
-//  $Id: screen.hxx,v 1.3 2002/07/02 16:06:51 grumbel Exp $
+//  $Id: screen.hxx,v 1.4 2002/08/01 21:40:01 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,27 +20,22 @@
 #ifndef HEADER_PINGUS_SCREEN_HXX
 #define HEADER_PINGUS_SCREEN_HXX
 
-#error "Don't used this the moment, its underdevelopment and not compilable"
-
 #include "game_delta.hxx"
 
-namespace Pingus
+/** A interface for screens. A screen is a Pingus 'thing' which gets
+    complete controll over the display and input. Examples of
+    screens are the PingusMenu or a PingusGameSession */
+class Screen
 {
-  /** A interface for screens. A screen is a Pingus 'thing' which gets
-      complete controll over the display and input. Examples of
-      screens are the PingusMenu or a PingusGameSession */
-  class Screen
-  {
-  private:
+private:
     
-  public:
-    /** Draw this screen */
-    void draw () =0;
+public:
+  /** Draw this screen */
+  virtual void draw () =0;
 
-    /** Pass a delta to the screen */
-    void update (const GameDelta& delta) =0;
-  };
-}
+  /** Pass a delta to the screen */
+  virtual void update (const GameDelta& delta) =0;
+};
 
 #endif
 

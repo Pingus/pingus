@@ -1,4 +1,4 @@
-//  $Id: gui_manager.hxx,v 1.4 2002/07/30 14:57:26 grumbel Exp $
+//  $Id: gui_manager.hxx,v 1.5 2002/08/01 21:40:02 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,8 +33,15 @@ namespace Input
 
 namespace GUI
 {
-  /** interface class which holds all GUI components and displays
-      them */
+  /** The GUIManager class holds a group of components and manages
+      them. It dispatches the GameDelta to each individual
+      component 
+  
+      FIXME: We translate GameDelta into another 'language' which is
+      then understood by the GUI, this seems unclear, not sure at
+      which point it is best to split the GameDelta into
+      on_button_press(), etc.
+  */
   class GUIManager : public Component
   {
   private:
@@ -60,6 +67,9 @@ namespace GUI
     virtual void update (const GameDelta& delta);
     virtual void update (float delta) {}
 
+    /** Called once an unhandled event is recieved */
+    virtual void unhandled_event ();
+
     /** Add a component to the manager, if delete_component is true
 	the component will get deleted on destruction of the manager,
 	if false is supplied the user has to handle the component
@@ -70,7 +80,7 @@ namespace GUI
     void remove (Component*);
 
     Component* component_at (int x, int y);  
-    bool is_at (int x, int y);
+    virtual bool is_at (int x, int y);
   };
 }
 

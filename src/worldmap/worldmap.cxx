@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.3 2002/07/02 13:36:07 torangan Exp $
+//  $Id: worldmap.cxx,v 1.4 2002/08/01 21:40:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -152,113 +152,92 @@ WorldMap::enable_button_events ()
 }
 
 void 
-WorldMap::on_button_press (CL_InputDevice *device, const CL_Key &key)
+WorldMap::on_button_press (int x, int y)
 {
   if (!catch_input) return;
 
-  if (device == CL_Input::keyboards[0])
-    {
+  /*  if (device == CL_Input::keyboards[0])
+      {
       switch(key.id)
-	{
-	case CL_KEY_ESCAPE:
-	  do_quit = true;
-	  break;
-	default:
-	  break;
-	}
-    }
-  else if (device == CL_Input::pointers[0])
+      {
+      case CL_KEY_ESCAPE:
+      do_quit = true;
+      break;
+      default:
+      break;
+      }
+      }
+  */
+  CL_Vector offset = get_offset ();
+
+  {      
+    NodePtr node
+      = get_node ((int) (x - offset.x), (int) (y - offset.y));
+
+    if (node.get() && !node->accessible)
+      {
+	PingusSound::play_sound("sounds/chink.wav");
+      }
+    else if (node.get() && node->accessible)
+      {
+	Pingus::WorldMap::Node* pingus_node = pingus->get_node ();
+	if (maintainer_mode)
+	  {
+	    std::cout << "Click on: " << node->get_id () << std::endl;
+	    std::cout << "Pingu at: " << pingus_node->get_id () << std::endl;
+	  }
+
+	if (pingus_node && pingus_node->get_id () == node->get_id ())
+	  {
+	    disable_button_events ();
+	    node->on_click ();
+		    
+	    // FIXME: Ugly marking code... should be rewritten
+	    for (std::list<int>::iterator k = node->get_links ().begin();
+		 k != node->get_links ().end();
+		 ++k)
+	      {
+		for (GraphIter i = graph_data.nodes.begin ();
+		     i != graph_data.nodes.end ();
+		     ++i)
+		  {
+		    if ((*i)->get_id () == *k)
+		      (*i)->accessible = true;
+		  }
+	      }
+		    
+	    // Save the changes
+	    save ();
+      
+	    enable_button_events ();
+	  }
+	else
+	  {
+	    pingus->walk_to (node.get ());
+	  }
+      }
+    else
+      {
+	if (maintainer_mode)
+	  std::cout << "no id clicked" << std::endl;
+      }
+  }
+
+
+  /*
+    case CL_MOUSE_MIDDLEBUTTON:
     {
-      CL_Vector offset = get_offset ();
-      
-      switch (key.id)
-	{
-	case CL_MOUSE_LEFTBUTTON:
-	  {
-	    NodePtr node
-	      = get_node ((int) (key.x - offset.x), (int) (key.y - offset.y));
-
-	    if (node.get() && !node->accessible)
-	      {
-		PingusSound::play_sound("sounds/chink.wav");
-	      }
-	    else if (node.get() && node->accessible)
-	      {
-		Pingus::WorldMap::Node* pingus_node = pingus->get_node ();
-		if (maintainer_mode)
-		  {
-		    std::cout << "Click on: " << node->get_id () << std::endl;
-		    std::cout << "Pingu at: " << pingus_node->get_id () << std::endl;
-		  }
-
-		if (pingus_node && pingus_node->get_id () == node->get_id ())
-		  {
-		    disable_button_events ();
-		    node->on_click ();
-		    
-		    // FIXME: Ugly marking code... should be rewritten
-		    for (std::list<int>::iterator k = node->get_links ().begin();
-			 k != node->get_links ().end();
-			 ++k)
-		      {
-			for (GraphIter i = graph_data.nodes.begin ();
-			     i != graph_data.nodes.end ();
-			     ++i)
-			  {
-			    if ((*i)->get_id () == *k)
-			      (*i)->accessible = true;
-			  }
-		      }
-		    
-		    // Save the changes
-		    save ();
-      
-		    enable_button_events ();
-		  }
-		else
-		  {
-		    pingus->walk_to (node.get ());
-		  }
-	      }
-	    else
-	      {
-		if (maintainer_mode)
-		  std::cout << "no id clicked" << std::endl;
-	      }
-	  }
-	  break;
-	case CL_MOUSE_MIDDLEBUTTON:
-	  {
-	    if (maintainer_mode)
-	      {
-		std::cout << "<position>" << std::endl;
-		std::cout << "  <x-pos>" << key.x - offset.x << "</x-pos>" << std::endl;
-		std::cout << "  <y-pos>" << key.y - offset.y << "</y-pos>" << std::endl;
-		std::cout << "</position>" << std::endl;
-	      }
-	  }
-	  break;
-	case CL_MOUSE_RIGHTBUTTON:
-	  {
-	    //Node* node = get_node (key.x - offset.x, key.y - offset.y);
-
-	    /*if (node) {
-	      std::cout << "Node: " << node->id << std::endl;
-	      } else {
-	      std::cout << "No node selected" << std::endl;
-	      }*/
-	  }
-	  break;
-	}
+    if (maintainer_mode)
+    {
+    std::cout << "<position>" << std::endl;
+    std::cout << "  <x-pos>" << key.x - offset.x << "</x-pos>" << std::endl;
+    std::cout << "  <y-pos>" << key.y - offset.y << "</y-pos>" << std::endl;
+    std::cout << "</position>" << std::endl;
     }
+    }
+    break;*/
 }
  
-void 
-WorldMap::on_button_release (CL_InputDevice * /*device*/, const CL_Key & /*key*/)
-{
-  if (!catch_input) return;
-}
-
 void
 WorldMap::start_level (Pingus::WorldMap::Node* /*node*/)
 {

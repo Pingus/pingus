@@ -1,4 +1,4 @@
-//  $Id: screen_manager.hxx,v 1.3 2002/07/02 16:06:51 grumbel Exp $
+//  $Id: screen_manager.hxx,v 1.4 2002/08/01 21:40:01 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,36 +20,39 @@
 #ifndef HEADER_PINGUS_SCREEN_MANAGER_HXX
 #define HEADER_PINGUS_SCREEN_MANAGER_HXX
 
-#error "Don't used this the moment, its underdevelopment and not compilable"
+#include <vector>
 
-namespace Pingus
+class Screen;
+
+class ScreenManager
 {
-  class ScreenManager
-  {
-  private:
-    /** The stack of screens */
-    std::stack<Screen*> screen_stack;
-  public:
-    ScreenManager ();
-    ~ScreenManager ();
+private:
+  static ScreenManager* instance_;
 
-    /** Start the screen manager and let it take controll, this will
-	not return until the screen stack is empty. */
-    void display ();
+  /** Screen stack (first is the screen, second is delete_screen,
+      which tells if the screen should be deleted onces it got poped
+      or replaced) */
+  std::vector<std::pair<Screen*, bool> > screens;
 
-    int number_of_screens ();
+  ScreenManager ();
+public:
+  ~ScreenManager ();
 
-    /** Replace the current screen */
-    void replace_screen (Screen*);
+  /** Start the screen manager and let it take controll, this will
+      not return until the somebody signals a quit() */
+  void display ();
+
+  /** Replace the current screen */
+  void replace_screen (Screen*, bool delete_screen = false);
     
-    /** Add a screen on top of another screen */
-    void push_screen (Screen*);
+  /** Add a screen on top of another screen */
+  void push_screen (Screen*, bool delete_screen = false);
 
-    /** Remove the current screen */
-    void pop_screen ();
-  };
-  
-}
+  /** Remove the current screen and fall back to the last one */
+  void pop_screen ();
+
+  static ScreenManager* instance ();
+};
 
 #endif
 

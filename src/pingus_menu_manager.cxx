@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.cxx,v 1.6 2002/07/30 14:57:25 grumbel Exp $
+//  $Id: pingus_menu_manager.cxx,v 1.7 2002/08/01 21:40:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,8 @@
 #include "fade_out.hxx"
 #include "input/controller.hxx"
 #include "pingus_menu_manager.hxx"
+
+PingusMenuManager* PingusMenuManager::instance_ = 0;
 
 PingusMenuManager::PingusMenuManager ()
   : event_register_counter (0),
@@ -131,6 +133,7 @@ PingusMenuManager::on_mouse_move (CL_InputDevice* device, int x, int y)
 }
 */
 
+/*
 void 
 PingusMenuManager::display ()
 {
@@ -154,12 +157,6 @@ PingusMenuManager::display ()
       // the scrolling (for example when starting a level and then
       // after some minutes going back to the menu would cause delta's
       // from >100, not nice)
-      if (time_delta > 1.0)
-	{
-	  std::cout << "PingusMenuManager: detected large delta (" << time_delta
-		    << "), ignoring and doing frameskip" << std::endl;
-	  continue;
-	}
 
       GameDelta delta (time_delta, input_controller.get_events ());
 
@@ -180,6 +177,24 @@ PingusMenuManager::display ()
       CL_System::sleep (0);
     }
   unregister_events ();
+}
+*/
+void
+PingusMenuManager::draw ()
+{
+  for (MenuStackIter i = menu_stack.begin (); i != menu_stack.end (); ++i)
+    (*i)->draw ();
+}
+
+void
+PingusMenuManager::update (const GameDelta& delta)
+{
+  // We copy the menu_stack so that we don't invalidate our
+  // iterators when menu's are removed/added in update()
+  std::vector<PingusSubMenu *> tmp_menu_stack = menu_stack;
+
+  for (MenuStackIter i = tmp_menu_stack.begin (); i != tmp_menu_stack.end (); ++i)
+    (*i)->update (delta);
 }
 
 void 
@@ -277,6 +292,15 @@ PingusMenuManager::exit ()
 
   if (loop == false)
   fadeout ();*/
+}
+
+PingusMenuManager*
+PingusMenuManager::instance ()
+{
+  if (instance_)
+    return instance_;
+  else
+    return instance_ = new PingusMenuManager ();
 }
 
 /* EOF */

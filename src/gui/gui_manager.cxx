@@ -1,4 +1,4 @@
-//  $Id: gui_manager.cxx,v 1.4 2002/07/30 14:57:26 grumbel Exp $
+//  $Id: gui_manager.cxx,v 1.5 2002/08/01 21:40:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -124,24 +124,36 @@ GUIManager::process_input (const std::list<Input::Event*>& events)
 		  {
 		    /** Send the release event to the same component
 			which got the press event */
-		    assert (pressed_component);
-		    pressed_component->on_button_release (x_pos, y_pos);
-
-		    if (pressed_component == comp)
+		    if (pressed_component)
 		      {
-			comp->on_button_click (x_pos, y_pos);
+			pressed_component->on_button_release (x_pos, y_pos);
+
+			if (pressed_component == comp)
+			  {
+			    comp->on_button_click (x_pos, y_pos);
+			  }
+			else
+			  {
+			    // discard click
+			  }
+			pressed_component = 0;
 		      }
 		    else
 		      {
-			// discard click
+			/* FIXME: This happens when you press a button
+			   FIXME: in one GUIManager and switch in the
+			   FIXME: on_button_press() method to another
+			   FIXME: manager, not sure if there is or
+			   FIXME: should be a workaround */
+			std::cout << "GUIManager: Got a release without a press, possibly a bug" << std::endl;
 		      }
-
-		    pressed_component = 0;
 		  }
 	      }
 	    else
 	      {
-		std::cout << "RootGUIManager: Clicked into a non managed region" << std::endl;
+		std::cout << "GUIManager: Clicked into a non managed region" << std::endl;
+		unhandled_event ();
+
 		if (pressed_component)
 		  {
 		    pressed_component->on_button_release (x_pos, y_pos);
@@ -151,7 +163,7 @@ GUIManager::process_input (const std::list<Input::Event*>& events)
 	    break;
 	  }
 	default:
-	  std::cout << "RootGUIManager: unhandled event type " << (*i)->get_type() << std::endl;
+	  std::cout << "GUIManager: unhandled event type " << (*i)->get_type() << std::endl;
 	  break;
 	}
     }
@@ -192,6 +204,12 @@ GUIManager::is_at (int x, int y)
     }
 
   return false;
+}
+
+void
+GUIManager::unhandled_event ()
+{
+  std::cout << "GUIManager::unhandled_event ()" << std::endl;
 }
 
 /* EOF */

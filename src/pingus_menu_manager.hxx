@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.hxx,v 1.5 2002/07/30 14:57:25 grumbel Exp $
+//  $Id: pingus_menu_manager.hxx,v 1.6 2002/08/01 21:40:01 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,12 +26,15 @@
 #include "pingus_menu.hxx"
 #include "intro.hxx"
 #include "option_menu.hxx"
+#include "game_delta.hxx"
+#include "screen.hxx"
 
 class PingusSubMenu;
 
-class PingusMenuManager
+class PingusMenuManager : public Screen
 {
 private:
+  static PingusMenuManager* instance_;
   /** Menu stack. the menu on top is .end (), the bottom menu .begin () */
   std::vector<PingusSubMenu *> menu_stack;
   typedef std::vector<PingusSubMenu *>::iterator MenuStackIter;
@@ -46,6 +49,8 @@ private:
 
   /// Unregister all event-handling stuff
   void unregister_events ();
+  PingusMenuManager ();
+
 public:
   /* Menu's FIXME: These shouldn't get exported to the outsite,
      instead only handles (enum's) should be visible */
@@ -56,11 +61,7 @@ public:
   Story story;
   ExitMenu exitmenu;
 
-  PingusMenuManager ();
-  ~PingusMenuManager ();
-
-  /// Display the menu (this is basically the game's main loop)
-  void display ();
+  virtual ~PingusMenuManager ();
 
   /// Disable events
   void enable_events ();
@@ -68,6 +69,9 @@ public:
   void disable_events ();
 
   void fadeout ();
+
+  void draw ();
+  void update (const GameDelta&);
 
   // !FIXME! Should use controller instead
   /*
@@ -90,6 +94,8 @@ public:
   /** Add's a new menu to the menu stack. This is used for yes/no
       dialoges and such things.*/
   void push_menu (PingusSubMenu * menu);
+
+  static PingusMenuManager* instance ();
 };
 
 #endif

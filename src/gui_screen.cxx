@@ -1,5 +1,5 @@
-//  $Id: story.hxx,v 1.4 2002/08/01 21:40:01 grumbel Exp $
-// 
+//  $Id: gui_screen.cxx,v 1.1 2002/08/01 21:40:01 grumbel Exp $
+//
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -12,50 +12,38 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_STORY_HXX
-#define HEADER_PINGUS_STORY_HXX
+#include "gui/gui_manager.hxx"
+#include "gui_screen.hxx"
 
-#include <ClanLib/Display/Display/surface.h>
-#include "pingus_sub_menu.hxx"
+using namespace GUI;
 
-class CL_Font;
-class PingusMenuManager;
-
-/** This class displays the story of the Pingus. */
-class Story : public PingusSubMenu
+GUIScreen::GUIScreen ()
+  : gui_manager (new GUIManager ())
 {
-private:
-  bool   is_init;
-  CL_Surface background;
-  CL_Surface story;
-  CL_Font*  large_font;
-  CL_Font*  small_font;
+}
 
-public:
-  Story(PingusMenuManager* manager);
-  ~Story();
+GUIScreen::~GUIScreen ()
+{
+  delete gui_manager;
+}
 
-  /// Load all surfaces into memory.
-  void init();
+  /** Draw this screen */
+void
+GUIScreen::draw ()
+{
+  gui_manager->draw ();
+}
 
-  void preload () { init (); }
-
-  void draw ();
-  void update (float delta);
-
-  /// Display a string at the right position
-  void display_string(std::string);
-
-  bool is_at (int x, int y);
-
-  void unhandled_event ();
-};
-
-#endif
+  /** Pass a delta to the screen */
+void
+GUIScreen::update (const GameDelta& delta)
+{
+  gui_manager->update (delta);
+}
 
 /* EOF */
