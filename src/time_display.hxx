@@ -1,4 +1,4 @@
-//  $Id: time_display.hxx,v 1.5 2002/08/23 15:49:51 torangan Exp $
+//  $Id: time_display.hxx,v 1.6 2002/09/05 12:24:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ public:
   TimeDisplay();
   virtual ~TimeDisplay() {}
 
-  void draw();
+  void draw(GraphicContext& gc);
   void set_server(Server*);
   
 private:

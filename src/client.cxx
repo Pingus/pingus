@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.19 2002/09/04 19:40:19 grumbel Exp $
+//  $Id: client.cxx,v 1.20 2002/09/05 12:24:01 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -440,9 +440,9 @@ Client::on_action_axis_move (float move)
 }
 
 void
-Client::draw ()
+Client::draw (GraphicContext& gc)
 {
-  GUIScreen::draw ();
+  GUIScreen::draw (gc);
 }
 
 void

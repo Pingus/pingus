@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.10 2002/08/25 09:08:48 torangan Exp $
+//  $Id: action_button.cxx,v 1.11 2002/09/05 12:24:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -124,7 +124,7 @@ VerticalActionButton::is_at(int x, int y)
 }
 
 void
-VerticalActionButton::draw()
+VerticalActionButton::draw(GraphicContext& gc)
 {
   std::string str;
   // FIXME: This could need some optimization, throwing strings all
@@ -190,7 +190,7 @@ ArmageddonButton::ArmageddonButton(Server* s, int x, int y)
 ArmageddonButton::~ArmageddonButton() { }
 
 void
-ArmageddonButton::draw()
+ArmageddonButton::draw(GraphicContext& gc)
 {
   if (server->get_armageddon ())
     {
@@ -262,7 +262,7 @@ ForwardButton::ForwardButton(Server* s, int x, int y)
 ForwardButton::~ForwardButton() {}
 
 void
-ForwardButton::draw()
+ForwardButton::draw(GraphicContext& gc)
 {
   if (server->get_fast_forward())
     {
@@ -308,7 +308,7 @@ PauseButton::PauseButton(Server* s, int x, int y)
 PauseButton::~PauseButton() {}
 
 void
-PauseButton::draw()
+PauseButton::draw(GraphicContext& gc)
 {
   if (server->get_pause()) 
     backgroundhl.put_screen (x_pos, y_pos);

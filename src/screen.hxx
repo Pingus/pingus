@@ -1,4 +1,4 @@
-//  $Id: screen.hxx,v 1.7 2002/08/23 15:49:50 torangan Exp $
+//  $Id: screen.hxx,v 1.8 2002/09/05 12:24:02 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include "game_delta.hxx"
 
+class GraphicContext;
+
 /** A interface for screens. A screen is a Pingus 'thing' which gets
     complete controll over the display and input. Examples of
     screens are the PingusMenu or a PingusGameSession */
@@ -34,7 +36,7 @@ public:
   Screen () { }
   
   /** Draw this screen */
-  virtual void draw () =0;
+  virtual void draw (GraphicContext& gc) =0;
 
   /** Pass a delta to the screen */
   virtual void update (const GameDelta& delta) =0;

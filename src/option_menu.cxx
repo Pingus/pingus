@@ -1,4 +1,4 @@
-//  $Id: option_menu.cxx,v 1.3 2002/08/23 15:49:49 torangan Exp $
+//  $Id: option_menu.cxx,v 1.4 2002/09/05 12:24:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -130,7 +130,7 @@ OptionEntry::~OptionEntry ()
 }
 
 void
-OptionEntry::draw()
+OptionEntry::draw(GraphicContext& gc)
 {
   if (!mouse_over()) {
     CL_Display::fill_rect(x_pos - 7, y_pos - 1,
@@ -325,14 +325,14 @@ OptionMenu::draw_background()
 }
 
 void
-OptionMenu::draw()
+OptionMenu::draw(GraphicContext& gc)
 {  
   //draw_background();
   
   title_font->print_center(CL_Display::get_width() / 2, 10, _("Pingus Option Menu"));
 
   for(EntryIter item = entry.begin(); item != entry.end(); ++item) {
-    item->draw();
+    item->draw(gc);
   }
 
   back.put_screen(CL_Display::get_width () - back.get_width (), 0);
@@ -370,7 +370,7 @@ OptionMenu::update (float /*delta*/)
 
       if (item != EntryIter()) 
 	item->toggle();
-      draw();
+      //draw();
       while(CL_Mouse::left_pressed())
 	CL_System::keep_alive();
     }
@@ -379,7 +379,7 @@ OptionMenu::update (float /*delta*/)
     {
       if (item != EntryIter()) 
 	item->rtoggle();
-      draw();
+      //draw();
       while(CL_Mouse::right_pressed())
 	CL_System::keep_alive();
     }
@@ -388,6 +388,7 @@ OptionMenu::update (float /*delta*/)
 void
 OptionMenu::display()
 {
+  assert (!"kaputtt");
   if (!is_init)
     init();
 
@@ -411,14 +412,12 @@ OptionMenu::display()
 						   PingusResource::get("game")));
   Display::show_cursor();
 
-  draw();
+  //draw();
 
   while(!quit)
     {
-
-
       {
-	draw();
+	//draw();
 	temp_item = item;
       }
       update (0.1f);

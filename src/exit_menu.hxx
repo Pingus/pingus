@@ -1,4 +1,4 @@
-//  $Id: exit_menu.hxx,v 1.6 2002/08/23 15:49:48 torangan Exp $
+//  $Id: exit_menu.hxx,v 1.7 2002/09/05 12:24:01 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ public:
   ExitMenu (PingusMenuManager* manager);
   ~ExitMenu ();
 
-  void draw ();
+  void draw (GraphicContext& gc);
   void update (float delta);
   void preload ();
   

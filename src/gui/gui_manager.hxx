@@ -1,4 +1,4 @@
-//  $Id: gui_manager.hxx,v 1.9 2002/08/23 15:49:55 torangan Exp $
+//  $Id: gui_manager.hxx,v 1.10 2002/09/05 12:24:02 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,7 +68,7 @@ namespace GUI
     GUIManager ();
     virtual ~GUIManager () {}
     
-    virtual void draw ();
+    virtual void draw (GraphicContext& gc);
     virtual void update (const GameDelta& delta);
     virtual void update (float delta) { UNUSED_ARG (delta); }
 

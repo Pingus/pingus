@@ -1,4 +1,4 @@
-//  $Id: hurry_up.cxx,v 1.1 2002/06/12 19:09:37 grumbel Exp $
+//  $Id: hurry_up.cxx,v 1.2 2002/09/05 12:24:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ HurryUp::~HurryUp()
 
 
 void
-HurryUp::draw()
+HurryUp::draw(GraphicContext& gc)
 {
   if (is_finished) return;
 

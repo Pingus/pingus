@@ -1,4 +1,4 @@
-//  $Id: worldmap.hxx,v 1.6 2002/08/23 15:49:57 torangan Exp $
+//  $Id: worldmap.hxx,v 1.7 2002/09/05 12:24:02 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include "stat.hxx"
 
+class GraphicContext;
 class CL_Key;
 class CL_Font;
 class CL_InputDevice;
@@ -89,7 +90,7 @@ namespace Pingus
       void enable_button_events ();
   
       /** Draw the world worldmap */
-      void draw ();
+      void draw (GraphicContext& gc);
   
       /** Returns true if the worldmap is finished and the
 	  PingusWorldMapManager can quit */

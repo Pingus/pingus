@@ -1,4 +1,4 @@
-//  $Id: option_menu.hxx,v 1.4 2002/08/23 15:49:49 torangan Exp $
+//  $Id: option_menu.hxx,v 1.5 2002/09/05 12:24:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ public:
   ~OptionEntry ();
     
   bool mouse_over();
-  void draw();
+  void draw(GraphicContext& gc);
   void toggle();
   void rtoggle();
 };
@@ -99,7 +99,7 @@ public:
   void draw_background ();
   void preload () { init (); }
   void update (float delta);
-  void draw ();
+  void draw (GraphicContext& gc);
   void check_click ();
   EntryIter current_item ();
   void add_entry (const std::string& e, bool* v);

@@ -1,4 +1,4 @@
-//  $Id: manager.hxx,v 1.7 2002/08/23 15:49:57 torangan Exp $
+//  $Id: manager.hxx,v 1.8 2002/09/05 12:24:02 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ namespace Pingus
       
       void on_primary_button_press (int x, int y);
  
-      void draw ();
+      void draw (GraphicContext& gc);
       void update (float delta);
       
       bool is_at (int, int) { return true; }

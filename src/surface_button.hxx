@@ -1,4 +1,4 @@
-//  $Id: surface_button.hxx,v 1.8 2002/08/23 15:49:51 torangan Exp $
+//  $Id: surface_button.hxx,v 1.9 2002/09/05 12:24:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ public:
   SurfaceButton();
   virtual ~SurfaceButton();
   
-  void draw();
+  void draw(GraphicContext& gc);
   void update (float delta);
 
   bool is_at (int x, int y);

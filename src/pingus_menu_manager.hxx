@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.hxx,v 1.10 2002/09/04 14:55:11 torangan Exp $
+//  $Id: pingus_menu_manager.hxx,v 1.11 2002/09/05 12:24:02 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,7 +61,7 @@ public:
 
   void fadeout ();
 
-  void draw ();
+  void draw (GraphicContext& gc);
   void update (const GameDelta&);
 
   // !FIXME! Should use controller instead

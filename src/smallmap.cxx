@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.12 2002/09/04 14:55:11 torangan Exp $
+//  $Id: smallmap.cxx,v 1.13 2002/09/05 12:24:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -151,7 +151,7 @@ SmallMap::set_client(Client* c)
 }
 
 void
-SmallMap::draw()
+SmallMap::draw(GraphicContext& gc)
 {
   Playfield* playfield = client->get_playfield();
 

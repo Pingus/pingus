@@ -1,4 +1,4 @@
-//  $Id: view.cxx,v 1.9 2002/09/04 19:40:19 grumbel Exp $
+//  $Id: view.cxx,v 1.10 2002/09/05 12:24:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,6 +69,7 @@ View::draw()
 	      x_offset, y_offset, size);*/
 
   // Update the scroll position
+  //display_gc.set_zoom (2.0f);
   display_gc.set_offset (x_offset - (x2_pos - x1_pos)/2,
 			 y_offset - (y2_pos - y1_pos)/2);
   world->draw (display_gc);

@@ -1,4 +1,4 @@
-//  $Id: input_debug_screen.hxx,v 1.1 2002/08/16 17:15:31 grumbel Exp $
+//  $Id: input_debug_screen.hxx,v 1.2 2002/09/05 12:24:02 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ public:
   virtual ~InputDebugScreen ();
 
   /** Draw this screen */
-  void draw ();
+  void draw (GraphicContext& gc);
 
   /** Pass a delta to the screen */
   void update (const GameDelta& delta);

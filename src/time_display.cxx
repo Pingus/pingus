@@ -1,4 +1,4 @@
-//  $Id: time_display.cxx,v 1.5 2002/09/04 14:55:11 torangan Exp $
+//  $Id: time_display.cxx,v 1.6 2002/09/05 12:24:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ TimeDisplay::TimeDisplay()
 }
 
 void
-TimeDisplay::draw()
+TimeDisplay::draw(GraphicContext& gc)
 {
   int time_value = server->get_world()->get_time_left();
   char time_string[8];

@@ -1,4 +1,4 @@
-//  $Id: input_debug_screen.cxx,v 1.1 2002/08/16 17:15:31 grumbel Exp $
+//  $Id: input_debug_screen.cxx,v 1.2 2002/09/05 12:24:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ InputDebugScreen::~InputDebugScreen ()
 
 /** Draw this screen */
 void
-InputDebugScreen::draw ()
+InputDebugScreen::draw (GraphicContext& gc)
 {
   std::cout << "InputDebugScreen::draw ()" << std::endl;
 }

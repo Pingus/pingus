@@ -1,4 +1,4 @@
-//  $Id: action_button.hxx,v 1.9 2002/08/25 09:08:48 torangan Exp $
+//  $Id: action_button.hxx,v 1.10 2002/09/05 12:24:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ public:
   ArmageddonButton(Server*, int x, int y);
   virtual ~ArmageddonButton();
 
-  void draw();
+  void draw(GraphicContext& gc);
   void update(float);
   bool is_at(int x, int y);
   void on_primary_button_click (int x, int y);
@@ -80,7 +80,7 @@ public:
   ForwardButton(Server*, int x, int y);
   virtual ~ForwardButton();
 
-  void draw();
+  void draw(GraphicContext& gc);
   bool is_at (int x, int y);
   void on_primary_button_click (int x, int y);
   
@@ -106,7 +106,7 @@ public:
   PauseButton(Server*, int x, int y);
   virtual ~PauseButton();
 
-  void draw();
+  void draw(GraphicContext& gc);
   bool is_at (int x, int y);
   void on_primary_button_click (int x, int y);
   
@@ -144,11 +144,8 @@ public:
 
   void init(int x, int y, ActionName name_, int owner_id);
 
-  /// Draws the button and increase the animation counter.
-  virtual void   draw() = 0;
- 
   /// Not used.
-  void   update(float delta);
+  void update(float delta);
 
   /// Returns the name of the action the button represents.
   ActionName get_action_name();
@@ -177,7 +174,7 @@ public:
   VerticalActionButton(int x, int y, ActionName name, int owner_id);
   virtual ~VerticalActionButton();
 
-  void draw();
+  void draw(GraphicContext& gc);
   bool is_at (int x, int y);
   
 private:

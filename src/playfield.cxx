@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.19 2002/09/04 14:55:11 torangan Exp $
+//  $Id: playfield.cxx,v 1.20 2002/09/05 12:24:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -94,7 +94,7 @@ Playfield::~Playfield()
 }
 
 void
-Playfield::draw()
+Playfield::draw(GraphicContext& gc)
 { 
   for(std::vector<View*>::iterator i = view.begin();
       i != view.end(); 

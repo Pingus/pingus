@@ -1,4 +1,4 @@
-//  $Id: game_session.hxx,v 1.6 2002/08/23 15:49:48 torangan Exp $
+//  $Id: game_session.hxx,v 1.7 2002/09/05 12:24:02 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,7 @@ public:
 
   // Overloaded Screen functions 
   /** Draw this screen */
-  void draw ();
+  void draw (GraphicContext& gc);
 
   /** Pass a delta to the screen */
   void update (const GameDelta& delta);

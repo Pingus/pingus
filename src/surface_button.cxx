@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.10 2002/08/22 00:36:30 grumbel Exp $
+//  $Id: surface_button.cxx,v 1.11 2002/09/05 12:24:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ SurfaceButton::~SurfaceButton()
 }
 
 void 
-SurfaceButton::draw()
+SurfaceButton::draw(GraphicContext& gc)
 {
   if (mouse_over && !pressed)
     {

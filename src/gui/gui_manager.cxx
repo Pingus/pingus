@@ -1,4 +1,4 @@
-//  $Id: gui_manager.cxx,v 1.11 2002/08/17 01:02:38 grumbel Exp $
+//  $Id: gui_manager.cxx,v 1.12 2002/09/05 12:24:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,12 +42,12 @@ GUIManager::GUIManager ()
 }
 
 void
-GUIManager::draw ()
+GUIManager::draw (GraphicContext& gc)
 {
   for (std::vector<Component*>::iterator i = components.begin (); 
        i != components.end (); ++i)
     {
-      (*i)->draw ();
+      (*i)->draw (gc);
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: playfield.hxx,v 1.10 2002/08/23 15:49:50 torangan Exp $
+//  $Id: playfield.hxx,v 1.11 2002/09/05 12:24:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,7 +71,7 @@ public:
 
   void set_viewpoint(int, int);
 
-  void draw();
+  void draw(GraphicContext& gc);
   void update(float delta);
   void set_world(World*);
   Pingu* current_pingu_find(int x_pos, int y_pos);

@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.6 2002/08/03 09:59:23 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.7 2002/09/05 12:24:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -233,7 +233,7 @@ WorldMap::start_level (Pingus::WorldMap::Node* /*node*/)
 }
 
 void
-WorldMap::draw ()
+WorldMap::draw (GraphicContext& gc)
 {
   CL_Vector offset = get_offset ();
   

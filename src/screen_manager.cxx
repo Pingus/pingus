@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.14 2002/08/22 00:36:30 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.15 2002/09/05 12:24:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,8 @@
 ScreenManager* ScreenManager::instance_ = 0;
 
 ScreenManager::ScreenManager ()
-  : last_screen (0)
+  : display_gc (0, 0, CL_Display::get_width (), CL_Display::get_height (), 0, 0),
+    last_screen (0)
 {
   replace_screen_arg = std::pair<Screen*, bool>(0, false);
   cached_action = none;
@@ -101,7 +102,7 @@ ScreenManager::display ()
       // skip draw if the screen changed
       if (last_screen == current_screen)
       	{
-	  current_screen->draw ();
+	  current_screen->draw (display_gc);
 	  Display::flip_display ();
 	}
       else
@@ -213,13 +214,13 @@ ScreenManager::fade_over (Screen* old_screen, Screen* new_screen)
 
       //std::cout << "FadeOver: " << border_x << " " << border_y << std::endl;
 
-      new_screen->draw ();
+      new_screen->draw (display_gc);
 
       CL_Display::push_clip_rect(CL_ClipRect (0 + border_x, 
 					      0 + border_y,
 					      CL_Display::get_width () - border_x,
 					      CL_Display::get_height () - border_y));
-      old_screen->draw ();
+      old_screen->draw (display_gc);
 
       GameDelta delta (time_delta, events);
       new_screen->update (delta);

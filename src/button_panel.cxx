@@ -1,4 +1,4 @@
-//  $Id: button_panel.cxx,v 1.12 2002/08/25 09:08:48 torangan Exp $
+//  $Id: button_panel.cxx,v 1.13 2002/09/05 12:24:01 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -88,7 +88,7 @@ ButtonPanel::get_action_name()
 }
 
 void 
-ButtonPanel::draw() 
+ButtonPanel::draw(GraphicContext& gc) 
 {
   float alpha;
 
@@ -105,7 +105,7 @@ ButtonPanel::draw()
       else
 	(*button)->pressed = false;
 
-      (*button)->draw();
+      (*button)->draw(gc);
     }
 }
 

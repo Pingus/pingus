@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.7 2002/08/03 09:59:23 grumbel Exp $
+//  $Id: manager.cxx,v 1.8 2002/09/05 12:24:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -107,9 +107,9 @@ WorldMapManager::update (float)
 }
 
 void
-WorldMapManager::WorldMapComponent::draw ()
+WorldMapManager::WorldMapComponent::draw (GraphicContext& gc)
 {
-  WorldMapManager::instance ()->worldmap->draw ();
+  WorldMapManager::instance ()->worldmap->draw (gc);
 }
 
 void
