@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.20 2002/07/02 10:42:38 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.21 2002/07/02 13:36:06 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,16 +18,12 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Core/Math/rect.h>
-#include <ClanLib/Display/Input/keyboard.h>
-#include <ClanLib/Display/Input/key.h>
 #include "../globals.hxx"
-#include "../math.hxx"
 #include "../system.hxx"
 #include "../plf_plf.hxx"
 #include "../xml_helper.hxx"
 #include "../pingus_resource.hxx"
 #include "../pingus_error.hxx"
-#include "../xml_helper.hxx"
 #include "../worldobj_group_data.hxx"
 #include "start_pos.hxx"
 #include "object_manager.hxx"
@@ -41,48 +37,20 @@ using namespace std;
 using namespace Pingus;
 using namespace Actions;
 
-/** */
+
 static bool EditorObj_z_pos_sorter (EditorObj* a, 
 				    EditorObj* b)
 {
   return a->get_z_pos () < b->get_z_pos ();
 }
 
-class EditorObj_finder
-{
-private:
-  EditorObj* object;
-public:
-  EditorObj_finder (EditorObj* obj) 
-    : object (obj)
-  {}
-
-  bool operator() (boost::shared_ptr<EditorObj> a) {
-    return (a.get() == object);
-  }
-};
-
-#ifdef WIN32
-//FIXME: ingo: This is a workaround around the std::list::sort()
-//FIXME: problem under MSVC6. This is copy&paste from an usenet
-//FIXME: article, so it might work or not, never tested it.
-// typedef boost::shared_ptr<EditorObj>& CEditorObjPtr;
-// template<>
-// bool std::greater<CEditorObjPtr>::operator()(shared_ptr<EditorObj>& a, shared_ptr<EditorObj>& b) const
-//{
-//  return EditorObj_z_pos_sorter (a, b);
-//} 
-#endif
-
 ObjectManager::ObjectManager()
 {
-  plf = 0;
   new_level();
 }
 
 ObjectManager::~ObjectManager()
 {
-  if (plf) delete plf;
 }
 
 void
@@ -113,11 +81,6 @@ ObjectManager::new_level ()
   number_to_save   = 25;
   number_of_pingus = 50;
   
-  //backgrounds.push_back(new SurfaceBackgroundData ());
-
-  //background->desc.datafile = "textures";
-  //background->desc.res_name = "Textures/default";
-
   delete_all_objs();
   editor_objs.push_back(new StartPos(50, 50));
 
@@ -148,13 +111,7 @@ ObjectManager::load_level (const std::string& filename)
   std::cout << "Editor: Clearing current level..." << endl;
   std::cout << "Loading new level: " << filename << endl;
   
-  //PSMParser psm;
-
-  //FIXME: Where do we delete the plf? Most likly a memory hole
-  plf = PLF::create(filename);
-  
-  //psm.parse (filename + ".psm");
-  //psm.load_surfaces();
+  PLF* plf = PLF::create(filename);
 
   editor_objs.push_back(new StartPos(plf->get_startx(), 
 				     plf->get_starty()));
@@ -188,15 +145,7 @@ ObjectManager::load_level (const std::string& filename)
     editor_objs.insert(editor_objs.end(), temp.begin(), temp.end() );
   }
 
-#ifdef WIN32
-  //FIXME: ingo: This is a workaround around the std::list::sort()
-  //FIXME: problem under MSVC6. This is copy&paste from an usenet
-  //FIXME: article, so it might work or not, never tested it.
-  // Alpha notes that this does NOT work.
-  //  world_obj.sort(std::greater<CWorldObjPtr>());
-#else
   std::sort(editor_objs.begin (), editor_objs.end (), EditorObj_z_pos_sorter);
-#endif
 
   std::cout << "Reading props" << std::endl;
   description = plf->get_description();
@@ -206,7 +155,6 @@ ObjectManager::load_level (const std::string& filename)
   number_of_pingus = plf->get_pingus();
   height      = plf->get_height();
   width       = plf->get_width();
-  //backgrounds  = plf->get_backgrounds();
   author      = plf->get_author();
   start_x_pos = plf->get_startx();
   start_y_pos = plf->get_starty();
@@ -215,25 +163,8 @@ ObjectManager::load_level (const std::string& filename)
   comment = plf->get_comment ();
   difficulty = plf->get_difficulty ();
   playable = plf->get_playable ();
-
-  //  delete plf;
-}
-
-void
-ObjectManager::draw_scroll_map(int /*x_pos*/, int /*y_pos*/, int /*arg_width*/, int /*arg_height*/)
-{
-  /*
-    for (EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) 
-    {
-    (*i)->draw_scroll_map(x_pos, y_pos,
-    arg_width, arg_height);
-			    
-    Display::draw_rect(x_pos + (*i)->get_x_pos() * arg_width / width,
-    y_pos + (*i)->get_y_pos() * arg_height / height,
-    x_pos + (*i)->get_x_pos() * arg_width / width + 10,
-    y_pos + (*i)->get_y_pos() * arg_height / height + 10,
-    0.0, 1.0, 0.0, 1.0);
-    }*/
+  
+  delete plf;
 }
 
 void 
@@ -296,29 +227,6 @@ ObjectManager::save_level_xml (const std::string & filename)
       << "  </global>\n"
       << std::endl;
   
-  /*for (std::vector<boost::shared_ptr<BackgroundData> >::iterator i = backgrounds.begin();
-    i != backgrounds.end();
-    i++)
-    (*i)->write_xml(&xml);
-  */
-  /*  xml << "<background>\n";
-      EditorObj::save_desc_xml(&xml, background.desc);
-  
-      xml  << "  <color>\n"
-      << "    <red>"   << background.color.red   << "</red>\n"
-      << "    <green>" << background.color.green << "</green>\n"
-      << "    <blue>"  << background.color.blue << "</blue>\n"
-      << "    <alpha>" << background.color.alpha   << "</alpha>\n"
-      << "  </color>\n"
-      << "  <scroll-x>"  << background.scroll_x << "</scroll-x>\n"
-      << "  <scroll-y>"  << background.scroll_y << "</scroll-y>\n"
-      << "  <para-x>"    << background.para_x << "</para-x>\n"
-      << "  <para-y>"    << background.para_y << "</para-y>\n"
-      << "  <stretch-x>" << background.stretch_x << "</stretch-x>\n"
-      << "  <stretch-y>" << background.stretch_y << "</stretch-y>\n" 
-      << "</background>\n"
-      << endl;
-  */
   // Printing actions to file
   xml << "  <action-list>\n";
   for (vector<ActionData>::iterator i = actions.begin(); i != actions.end(); ++i) {
@@ -351,11 +259,6 @@ ObjectManager::lower_obj(EditorObj* obj)
   prev--;
 
   swap(*prev, *current);
-  /* FIXME: not sure if we need this on windows, if not delete it
-     boost::shared_ptr<EditorObj> tmp = *prev;
-     *prev = *current;
-     *current = tmp;
-     */
   return true;
 }
 
@@ -376,35 +279,8 @@ ObjectManager::raise_obj(EditorObj* obj)
     }
   
   swap(*next, *current);
-  /* FIXME: not sure if we need this on windows, if not delete it
-     boost::shared_ptr<EditorObj> tmp = *next;
-     *next = *current;
-     *current = tmp;
-     */
   return true;
 }
-/*
-void
-ObjectManager::rect_get_current_objs(float x_1, float y_1, float x_2, float y_2)
-{
-  float x1, x2, y1, y2;
-
-  if (!CL_Keyboard::get_keycode(CL_KEY_LSHIFT)
-      && !CL_Keyboard::get_keycode(CL_KEY_RSHIFT))
-    delete_selection();
-  
-  x1 = Math::min(x_1, x_2);
-  x2 = Math::max(x_1, x_2);
-  y1 = Math::min(y_1, y_2);
-  y2 = Math::max(y_1, y_2);  
-
-  for(EditorObjIter i = editor_objs.begin(); i != editor_objs.end(); ++i) 
-    {
-      if ((*i)->is_in_rect(CL_Rect((int) x1, (int) y1, (int) x2, (int) y2)))
-	current_objs.push_back(*i);
-    }
-}
-*/
 
 vector<EditorObj*>
 ObjectManager::rect_get_objs(int x1, int y1, int x2, int y2)
@@ -457,53 +333,6 @@ ObjectManager::find_object(const CL_Vector& pos)
   return 0;
 }
 
-/*
-void
-ObjectManager::move_current_objs(float x, float y)
-{
-  for (CurrentObjIter i = current_objs.begin(); i != current_objs.end(); i++) 
-    {
-      (*i)->set_position_offset(CL_Vector(x, y));
-    }
-}
-
-void 
-ObjectManager::drag_current_objs ()
-{
-  for (CurrentObjIter i = current_objs.begin(); i != current_objs.end(); ++i)
-    (*i)->drag ();
-}
-
-void 
-ObjectManager::drop_current_objs ()
-{
-  for (CurrentObjIter i = current_objs.begin(); i != current_objs.end(); ++i)
-    (*i)->drop ();
-}
-
-void
-ObjectManager::add_to_selection(boost::shared_ptr<EditorObj> obj)
-{
-  current_objs.push_back(obj);
-}
-
-void 
-ObjectManager::add_to_selection(std::list<boost::shared_ptr<EditorObj> > objs)
-{
-  for(std::list<boost::shared_ptr<EditorObj> >::iterator i = objs.begin(); 
-      i != objs.end(); i++)
-    current_objs.push_back(*i);
-}
-
-boost::shared_ptr<EditorObj> 
-ObjectManager::get_current_obj()
-{
-  if (current_objs.size() == 1)
-    return *current_objs.begin();
-  else
-    return boost::shared_ptr<EditorObj>();
-}
-*/
 void
 ObjectManager::add_object_group_from_file (const std::string& filename)
 {

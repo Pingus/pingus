@@ -1,4 +1,4 @@
-//  $Id: stat.hxx,v 1.3 2002/06/24 22:52:59 grumbel Exp $
+//  $Id: stat.hxx,v 1.4 2002/07/02 13:36:07 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,8 +22,6 @@
 
 #include <map>
 #include "graph.hxx"
-
-#include "../libxmlfwd.hxx"
 
 /** This class holds the information on a level's completeness, etc.
     It's only here for internal use by PingusWorldMapStat. */

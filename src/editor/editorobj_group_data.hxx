@@ -1,4 +1,4 @@
-//  $Id: editorobj_group_data.hxx,v 1.3 2002/06/25 12:20:33 grumbel Exp $
+//  $Id: editorobj_group_data.hxx,v 1.4 2002/07/02 13:36:06 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_EDITOR_EDITOROBJ_GROUP_DATA_HXX
 #define HEADER_PINGUS_EDITOR_EDITOROBJ_GROUP_DATA_HXX
 
-#include <vector>
+#include "../libxmlfwd.hxx"
 #include "../worldobj_data.hxx"
 
 class EditorObjGroupData : public WorldObjData

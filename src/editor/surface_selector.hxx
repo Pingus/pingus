@@ -1,4 +1,4 @@
-//  $Id: surface_selector.hxx,v 1.3 2002/06/24 22:52:58 grumbel Exp $
+//  $Id: surface_selector.hxx,v 1.4 2002/07/02 13:36:07 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,9 @@
 
 #include <string>
 #include <vector>
+#include <ClanLib/Display/Display/surface.h>
+
+class CL_Font;
 
 ///
 struct surface_obj

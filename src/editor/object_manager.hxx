@@ -1,4 +1,4 @@
-//  $Id: object_manager.hxx,v 1.12 2002/07/02 10:42:39 grumbel Exp $
+//  $Id: object_manager.hxx,v 1.13 2002/07/02 13:36:07 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,17 +20,12 @@
 #ifndef HEADER_PINGUS_EDITOR_OBJECT_MANAGER_HXX
 #define HEADER_PINGUS_EDITOR_OBJECT_MANAGER_HXX
 
-#include <list>
 #include <map>
 #include "../color.hxx"
 #include "../action_data.hxx"
-#include "../boost/smart_ptr.hpp"
 #include "editorobj.hxx"
 
-class PLF;
 class EditorView;
-
-
 
 /// Manager for all level objects.
 class ObjectManager
@@ -60,14 +55,9 @@ private:
   /** All objects which are visible in the editor */ 
   std::vector<EditorObj*> editor_objs;
 
-  /** This list contains all objects, which are in the current
-      selection */
-  //std::vector<boost::shared_ptr<EditorObj> > current_objs;
-
   int move_offset;
 
   Color bg;
-  PLF* plf;
   
 public:
   typedef std::vector<EditorObj*>::iterator EditorObjIter;
@@ -85,35 +75,17 @@ public:
   void save_level_xml (const std::string & filename);
 
   void draw(EditorView * view);
-  void draw_scroll_map(int x_pos, int y_pos, int arg_width, int arg_height);
 
-  //bool object_selected(boost::shared_ptr<EditorObj> c_obj);
-  //void move_obj();
-
-  //void delete_selection();
   void delete_all_objs();
 
   void add_object_group_from_file (const std::string& filename);
 
-  //void rect_get_current_objs(float x1, float y1, float x2, float y2);
   std::vector<EditorObj*> rect_get_objs(int x1, int y1, int x2, int y2);
 
   int get_width() { return width; }
   int get_height() { return height; }
 
-  /** Return the currently selected object, if none is selected or
-      multiple objects are selected return 0 */
-  //boost::shared_ptr<EditorObj> get_current_obj();
-  
-  //void move_current_objs(float x, float y);
-  //void drag_current_objs ();
-  //void drop_current_objs ();
-
-  //void add_to_selection(boost::shared_ptr<EditorObj> obj);
-  //void add_to_selection(std::vector<boost::shared_ptr<EditorObj> > objs);
-
   bool raise_obj(EditorObj* obj);
-  //void raise_current_objs();
   bool lower_obj(EditorObj* obj);
 
   /** Add a new object to the ObjectManager. The ObjectManager will
@@ -126,11 +98,6 @@ public:
 
   /** Erase objects from the ObjectManager and delete them */
   void erase (const std::vector<EditorObj*>&);
-
-  //void lower_current_objs();
-
-  /** Remove an object from the current selection */
-  //void unselect_object(boost::shared_ptr<EditorObj> c_obj);
 
   /** Add the object at the given position to the selection */
   EditorObj* find_object(const CL_Vector & pos);

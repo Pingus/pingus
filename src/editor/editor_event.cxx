@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.22 2002/07/02 10:42:38 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.23 2002/07/02 13:36:06 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #include <fstream>
 #include <ClanLib/Display/Input/input.h>
 #include <ClanLib/Display/Input/keyboard.h>
-#include <ClanLib/Core/System/error.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Input/mouse.h>
 
@@ -30,12 +29,10 @@
 #include "../globals.hxx"
 #include "../game_session.hxx"
 #include "../message_box.hxx"
-#include "../globals.hxx"
 #include "../system.hxx"
 #include "../pingus_error.hxx"
 #include "../loading.hxx"
 #include "../my_gettext.hxx"
-#include "object_manager.hxx"
 #include "selection.hxx"
 #include "editorobj_group.hxx"
 #include "string_reader.hxx"

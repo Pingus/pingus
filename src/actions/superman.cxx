@@ -1,4 +1,4 @@
-//  $Id: superman.cxx,v 1.1 2002/06/12 19:01:42 grumbel Exp $
+//  $Id: superman.cxx,v 1.2 2002/07/02 13:36:06 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include "../pingu.hxx"
 #include "../pingus_resource.hxx"
-#include "../sprite.hxx"
 #include "../string_converter.hxx"
 #include "superman.hxx"
 

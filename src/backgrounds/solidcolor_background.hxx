@@ -1,4 +1,4 @@
-//  $Id: solidcolor_background.hxx,v 1.5 2002/07/01 18:36:39 grumbel Exp $
+//  $Id: solidcolor_background.hxx,v 1.6 2002/07/02 13:36:06 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,6 @@
 #include "../worldobj_data.hxx"
 #include "../editor/rect_editorobj.hxx"
 #include "../editor/editor_view.hxx"
-#include "../boost/smart_ptr.hpp"
 
 #include "../libxmlfwd.hxx"
 

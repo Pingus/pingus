@@ -1,4 +1,4 @@
-//  $Id: editorobj.hxx,v 1.9 2002/07/01 18:36:39 grumbel Exp $
+//  $Id: editorobj.hxx,v 1.10 2002/07/02 13:36:06 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,10 +35,6 @@ namespace Pingus
   {
     class PropertyFrame;
   }
-}
-
-namespace boost {
-  template <class T> class shared_ptr;
 }
 
 /** Interface for all objects which can be shown in the editor */

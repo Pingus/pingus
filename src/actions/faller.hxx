@@ -1,4 +1,4 @@
-//  $Id: faller.hxx,v 1.6 2002/06/28 15:12:22 torangan Exp $
+//  $Id: faller.hxx,v 1.7 2002/07/02 13:36:06 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_ACTIONS_FALLER_HXX
 #define HEADER_PINGUS_ACTIONS_FALLER_HXX
 
+#include "../sprite.hxx"
 #include "../pingu_action.hxx"
-
 
 class Faller : public PinguAction
 {

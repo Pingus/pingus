@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.3 2002/06/26 15:38:44 grumbel Exp $
+//  $Id: bomber.cxx,v 1.4 2002/07/02 13:36:06 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #include "../col_map.hxx"
 #include "../world.hxx"
 #include "../globals.hxx"
-#include "../algo.hxx"
 #include "../pingus_resource.hxx"
 #include "../force_vector.hxx"
 #include "../string_converter.hxx"

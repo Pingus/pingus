@@ -1,4 +1,4 @@
-// $Id: object_selector.hxx,v 1.5 2002/07/02 10:42:39 grumbel Exp $
+// $Id: object_selector.hxx,v 1.6 2002/07/02 13:36:07 torangan Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_EDITOR_OBJECT_SELECTOR_HXX
 
 #include <config.h>
+#include <map>
 #include <list>
 #include "../groundpiece_data.hxx"
 #include "surface_selector.hxx"

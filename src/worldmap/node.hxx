@@ -1,4 +1,4 @@
-//  $Id: node.hxx,v 1.2 2002/06/24 22:52:59 grumbel Exp $
+//  $Id: node.hxx,v 1.3 2002/07/02 13:36:07 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #define HEADER_PINGUS_WORLDMAP_NODE_HXX
 
 #include "../sprite.hxx"
-#include "../globals.hxx"
 #include "node_data.hxx"
 
 class CL_Vector;

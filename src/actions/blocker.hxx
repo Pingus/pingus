@@ -1,4 +1,4 @@
-//  $Id: blocker.hxx,v 1.4 2002/06/28 15:12:22 torangan Exp $
+//  $Id: blocker.hxx,v 1.5 2002/07/02 13:36:06 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,8 @@
 #ifndef HEADER_PINGUS_ACTIONS_BLOCKER_HXX
 #define HEADER_PINGUS_ACTIONS_BLOCKER_HXX
 
+#include "../sprite.hxx"
 #include "../pingu_action.hxx"
-
-class Sprite;
 
 ///
 class Blocker : public PinguAction

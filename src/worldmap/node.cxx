@@ -1,4 +1,4 @@
-//  $Id: node.cxx,v 1.3 2002/06/18 21:17:16 grumbel Exp $
+//  $Id: node.cxx,v 1.4 2002/07/02 13:36:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 #include "../pingus_error.hxx"
 #include "../sound.hxx"
 #include "../pingus_resource.hxx"
+#include "../globals.hxx"
 #include "node.hxx"
 
 using namespace Pingus::WorldMap;

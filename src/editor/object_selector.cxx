@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.6 2002/07/02 10:42:39 grumbel Exp $
+//  $Id: object_selector.cxx,v 1.7 2002/07/02 13:36:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,11 +28,9 @@
 #include "../globals.hxx"
 #include "../pingus_resource.hxx"
 #include "../loading.hxx"
-#include "../blitter.hxx"
 #include "string_reader.hxx"
 #include "weather_obj.hxx"
 #include "object_selector.hxx"
-#include "surface_selector.hxx"
 #include "thumb_cache.hxx"
 #include "editor_groundpiece_obj.hxx"
 #include "plfobj.hxx"

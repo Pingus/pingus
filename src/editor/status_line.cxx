@@ -1,4 +1,4 @@
-//  $Id: status_line.cxx,v 1.5 2002/07/01 16:47:31 grumbel Exp $
+//  $Id: status_line.cxx,v 1.6 2002/07/02 13:36:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include <ClanLib/Display/Input/mouse.h>
 #include <ClanLib/Display/Display/display.h>
 #include "../pingus_resource.hxx"
-#include "../boost/smart_ptr.hpp"
 #include "editor_view.hxx"
 #include "status_line.hxx"
 #include "editorobj.hxx"

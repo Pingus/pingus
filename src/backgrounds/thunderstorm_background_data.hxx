@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background_data.hxx,v 1.5 2002/07/01 18:36:39 grumbel Exp $
+//  $Id: thunderstorm_background_data.hxx,v 1.6 2002/07/02 13:36:06 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,6 @@
 
 #include "../worldobj_data.hxx"
 #include "../editor/sprite_editorobj.hxx"
-#include "../boost/smart_ptr.hpp"
 
 #include "../libxmlfwd.hxx"
 

@@ -1,4 +1,4 @@
-//  $Id: graph.hxx,v 1.3 2002/06/24 22:52:59 grumbel Exp $
+//  $Id: graph.hxx,v 1.4 2002/07/02 13:36:07 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,6 @@
 #include "../res_descriptor.hxx"
 #include "../boost/smart_ptr.hpp"
 #include "node.hxx"
-
-#include "../libxmlfwd.hxx"
 
 namespace Pingus
 {

@@ -1,4 +1,4 @@
-//  $Id: property_window.cxx,v 1.6 2002/07/01 16:31:40 grumbel Exp $
+//  $Id: property_window.cxx,v 1.7 2002/07/02 13:36:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../boost/smart_ptr.hpp"
 #include "editorobj.hxx"
 #include "property_frame.hxx"
 #include "property_window.hxx"

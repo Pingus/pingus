@@ -1,4 +1,4 @@
-//  $Id: plfobj.cxx,v 1.5 2002/07/01 18:36:40 grumbel Exp $
+//  $Id: plfobj.cxx,v 1.6 2002/07/02 13:36:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include <stdio.h>
 #include "../pingus_error.hxx"
-#include "../boost/smart_ptr.hpp"
 #include "editor_view.hxx"
 #include "plfobj.hxx"
 #include "entrance_window.hxx"

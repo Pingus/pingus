@@ -1,4 +1,4 @@
-//  $Id: editor_groundpiece_obj.cxx,v 1.8 2002/07/01 18:36:39 grumbel Exp $
+//  $Id: editor_groundpiece_obj.cxx,v 1.9 2002/07/02 13:36:06 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,10 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdio.h>
-#include "../boost/smart_ptr.hpp"
 #include "../pingus_resource.hxx"
 #include "groundpiece_window.hxx"
-#include "editor_groundpiece_obj.hxx"
 
 using namespace Pingus;
 

@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.2 2002/06/21 07:45:36 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.3 2002/07/02 13:36:07 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,18 +25,10 @@
 #include <ClanLib/Display/Font/font.h>
 #include <ClanLib/Display/Input/mouse.h>
 #include "../path_manager.hxx"
-#include "../pingus_error.hxx"
 #include "../system.hxx"
-#include "../globals.hxx"
-#include "../display.hxx"
-#include "../target_provider.hxx"
 #include "../pingus_resource.hxx"
 #include "../globals.hxx"
-#include "../algo.hxx"
-#include "../game_session.hxx"
-#include "../blitter.hxx"
 #include "../sound.hxx"
-#include "../console.hxx"
 #include "worldmap.hxx"
 #include "pingus.hxx"
 

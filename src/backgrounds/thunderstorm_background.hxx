@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background.hxx,v 1.2 2002/06/24 22:52:58 grumbel Exp $
+//  $Id: thunderstorm_background.hxx,v 1.3 2002/07/02 13:36:06 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_BACKGROUNDS_THUNDERSTORM_BACKGROUND_HXX
 #define HEADER_PINGUS_BACKGROUNDS_THUNDERSTORM_BACKGROUND_HXX
 
-#include <vector>
 #include "../worldobj.hxx"
 #include "thunderstorm_background_data.hxx"
 

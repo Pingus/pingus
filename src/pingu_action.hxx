@@ -1,4 +1,4 @@
-//  $Id: pingu_action.hxx,v 1.8 2002/06/28 18:11:10 grumbel Exp $
+//  $Id: pingu_action.hxx,v 1.9 2002/07/02 13:36:06 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,8 @@
 
 #include "worldobj.hxx"
 #include "pingu_enums.hxx"
-#include "pingu.hxx"
+
+class Pingu;
 
 using namespace Pingus::Actions;
 

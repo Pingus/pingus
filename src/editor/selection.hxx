@@ -1,4 +1,4 @@
-//  $Id: selection.hxx,v 1.6 2002/07/02 09:14:20 grumbel Exp $
+//  $Id: selection.hxx,v 1.7 2002/07/02 13:36:07 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,6 @@
 #ifndef HEADER_PINGUS_EDITOR_SELECTION_HXX
 #define HEADER_PINGUS_EDITOR_SELECTION_HXX
 
-#include <list>
-#include "editorobj.hxx"
 #include "object_manager.hxx"
 
 class CL_Vector;

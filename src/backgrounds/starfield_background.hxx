@@ -1,4 +1,4 @@
-//  $Id: starfield_background.hxx,v 1.5 2002/07/01 18:36:39 grumbel Exp $
+//  $Id: starfield_background.hxx,v 1.6 2002/07/02 13:36:06 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,7 @@
 #include "../string_converter.hxx"
 #include "../worldobj.hxx"
 #include "../worldobj_data.hxx"
-#include "../boost/smart_ptr.hpp"
-
+#include "../editor/sprite_editorobj.hxx"
 #include "../libxmlfwd.hxx"
 
 class StarfieldBackgroundData : public WorldObjData

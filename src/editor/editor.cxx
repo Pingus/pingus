@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.17 2002/07/02 09:14:20 grumbel Exp $
+//  $Id: editor.cxx,v 1.18 2002/07/02 13:36:06 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,10 +20,7 @@
 #include <cstdio>
 #include <string>
 
-#include <ClanLib/gui.h>
-
 #include <ClanLib/Core/System/system.h>
-#include <ClanLib/Core/Math/rect.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Input/input.h>
 #include <ClanLib/Display/Display/mousecursor_provider.h>
@@ -33,8 +30,6 @@
 #include <ClanLib/Display/Input/keyboard.h>
 #include "../algo.hxx"
 #include "../globals.hxx"
-#include "../pingus_error.hxx"
-#include "../message_box.hxx"
 #include "../display.hxx"
 #include "../pingus_resource.hxx"
 #include "../system.hxx"
@@ -44,7 +39,6 @@
 #include "scroll_map.hxx"
 #include "status_line.hxx"
 #include "object_selector.hxx"
-#include "object_manager.hxx"
 #include "selection.hxx"
 #include "action_window.hxx"
 #include "property_window.hxx"

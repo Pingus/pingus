@@ -1,4 +1,4 @@
-//  $Id: editor_event.hxx,v 1.10 2002/07/01 16:10:29 torangan Exp $
+//  $Id: editor_event.hxx,v 1.11 2002/07/02 13:36:06 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_EDITOR_EDITOR_EVENT_HXX
 #define HEADER_PINGUS_EDITOR_EDITOR_EVENT_HXX
 
+#include <vector>
 #include "../color.hxx"
 
 class CL_Key;
