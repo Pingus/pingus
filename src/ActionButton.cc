@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.29 2002/06/01 18:05:34 torangan Exp $
+//  $Id: ActionButton.cc,v 1.30 2002/06/07 09:42:16 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include "globals.hh"
 #include "PingusResource.hh"
 #include "ActionButton.hh"
+#include "ActionHolder.hh"
+#include "Server.hh"
 
 Button::Button()
 {

@@ -1,4 +1,4 @@
-//  $Id: ActionData.hh,v 1.1 2000/07/30 02:27:47 grumbel Exp $
+//  $Id: ActionData.hh,v 1.2 2002/06/07 09:42:16 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,6 @@
 #include <string>
 #include <vector>
 
-#include "Direction.hh"
-#include "ResDescriptor.hh"
 
 ///
 class ActionData

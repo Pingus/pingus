@@ -1,4 +1,4 @@
-//  $Id: Credits.hh,v 1.6 2001/04/21 20:31:52 grumbel Exp $
+//  $Id: Credits.hh,v 1.7 2002/06/07 09:42:16 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,10 @@
 
 #ifndef CREDITS_HH
 #define CREDITS_HH
+
+#include <ClanLib/display.h>
+
+class CL_Font;
 
 ///
 class Credits

@@ -1,4 +1,4 @@
-//  $Id: AnimCounter.hh,v 1.4 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: AnimCounter.hh,v 1.5 2002/06/07 09:42:16 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,8 +19,6 @@
 
 #ifndef ANIM_COUNTER_HH
 #define ANIM_COUNTER_HH
-
-#include <ClanLib/core.h>
 
 #include "Counter.hh"
 
