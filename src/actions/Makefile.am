@@ -71,6 +71,7 @@ libpingu_actions_a_SOURCES =       \
          Boarder.cc  Boarder.hh \
          Faller.cc   Faller.hh \
          Walker.cc   Walker.hh \
-         RocketLauncher.cc  RocketLauncher.hh 
+         RocketLauncher.cc  RocketLauncher.hh \
+         Slider.cc   Slider.hh
 
 # EOF #

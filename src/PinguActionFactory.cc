@@ -1,4 +1,4 @@
-//  $Id: PinguActionFactory.cc,v 1.2 2001/08/16 22:00:50 grumbel Exp $
+//  $Id: PinguActionFactory.cc,v 1.3 2002/01/26 00:36:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,7 @@
 #include "actions/floater.hh"
 #include "actions/miner.hh"
 #include "actions/Jumper.hh"
+#include "actions/Slider.hh"
 #include "actions/teleported.hh"
 #include "actions/exiter.hh"
 #include "actions/smashed.hh"
@@ -67,7 +68,7 @@ PinguActionFactory::register_core_actions ()
 {
   new PinguActionFactoryImpl<RocketLauncher> ("rocketlauncher");
   new PinguActionFactoryImpl<Boarder> ("boarder");
-  new PinguActionFactoryImpl<Superman> ("");
+  new PinguActionFactoryImpl<Superman> ("superman");
   new PinguActionFactoryImpl<Angel> ("angel");
   new PinguActionFactoryImpl<Basher> ("basher");
   new PinguActionFactoryImpl<Blocker> ("blocker");
@@ -79,6 +80,7 @@ PinguActionFactory::register_core_actions ()
   new PinguActionFactoryImpl<Floater> ("floater");
   new PinguActionFactoryImpl<Miner> ("miner");
   new PinguActionFactoryImpl<Jumper> ("jumper");
+  new PinguActionFactoryImpl<Slider> ("slider");
   new PinguActionFactoryImpl<Teleported> ("teleporter");
   new PinguActionFactoryImpl<Exiter> ("exiter");
   new PinguActionFactoryImpl<Smashed> ("smashed");
