@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.13 2000/12/16 23:11:24 grumbel Exp $
+//  $Id: PLFObj.hh,v 1.14 2001/04/12 09:02:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,6 +75,8 @@ private:
   std::string type;
   ///
   int release_rate;
+  ///
+  int owner_id;
   ///
   EntranceData::EntranceDirection direction;
 public:
