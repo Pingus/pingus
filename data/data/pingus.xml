@@ -298,13 +298,13 @@
       </image>
     </sprite>
 
-    <sprite name="splash_debris0">
+    <sprite name="splash_debris">
       <image file="../images/pingus/splash_debris.png">
         <grid pos="0,0" size="32,32" array="6,2"/>
       </image>
     </sprite>
 
-    <sprite name="splat0">
+    <sprite name="splat">
       <image file="../images/pingus/splat.png">
         <grid pos="0,0" size="32,32" array="16,1"/>
       </image>

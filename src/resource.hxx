@@ -33,9 +33,8 @@ namespace Pingus {
     needed to do a better handling of the resources. */
 class Resource
 {
-private:
+public:
   static CL_ResourceManager resmgr;
-  static std::map<std::string, CL_ResourceManager> resource_map;
   static std::map<ResDescriptor, CL_Surface> surface_map;
 
   static CL_Surface load_from_source (const ResDescriptor& res_desc);
@@ -73,9 +72,6 @@ public:
 
   /** Cleanup all currently unused surfaces */
   static void cleanup ();
-
-  /** */
-  static CL_ResourceManager get(const std::string&);
 
 private:
   Resource (const Resource&);

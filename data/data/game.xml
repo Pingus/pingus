@@ -18,53 +18,54 @@
     <sprite name="dot_border">
       <image file="../images/core/worldmap/dot_border.png"/>
     </sprite>
-  </section>
-  <section name="Cursors">
-    <sprite name="editor">
-      <image file="../images/core/cursors/editor.png"/>
-    </sprite>
-    <sprite name="cursor">
-      <image file="../images/core/cursors/cursor.png"/>
-    </sprite>
-    <sprite name="scroll_cur">
-      <image file="../images/core/cursors/scroll.png"/>
-    </sprite>
-    <sprite name="capgood">
-      <image file="../images/core/cursors/cap.png"/>
-    </sprite>
-    <sprite name="capbad">
-      <image file="../images/core/cursors/capwrong.png"/>
-    </sprite>
-    <sprite name="cross">
-      <image file="../images/core/cursors/cross.png"/>
-    </sprite>
-    <sprite name="arrow_right">
-      <image file="../images/core/cursors/arrow_right.png"/>
-    </sprite>
-    <sprite name="arrow_left">
-      <image file="../images/core/cursors/arrow_left.png"/>
-    </sprite>
-  </section>
-  <section name="SmallMap">
-    <sprite name="entrance">
-      <image file="../images/core/misc/smallmap_entrance.png"/>
-    </sprite>
-    <sprite name="exit">
-      <image file="../images/core/misc/smallmap_exit.png"/>
-    </sprite>
-  </section>
-  <section name="Stars">
-    <sprite name="large_star">
-      <image file="../images/backgrounds/large_star.png"/>
-    </sprite>
-    <sprite name="middle_star">
-      <image file="../images/backgrounds/middle_star.png"/>
-    </sprite>
-    <sprite name="small_star">
-      <image file="../images/backgrounds/small_star.png"/>
-    </sprite>
-    <sprite name="starfield_icon">
-      <image file="../images/backgrounds/starfield_icon.png"/>
-    </sprite>
+
+    <section name="cursors">
+      <sprite name="editor">
+        <image file="../images/core/cursors/editor.png"/>
+      </sprite>
+      <sprite name="cursor">
+        <image file="../images/core/cursors/cursor.png"/>
+      </sprite>
+      <sprite name="scroll_cur">
+        <image file="../images/core/cursors/scroll.png"/>
+      </sprite>
+      <sprite name="capgood">
+        <image file="../images/core/cursors/cap.png"/>
+      </sprite>
+      <sprite name="capbad">
+        <image file="../images/core/cursors/capwrong.png"/>
+      </sprite>
+      <sprite name="cross">
+        <image file="../images/core/cursors/cross.png"/>
+      </sprite>
+      <sprite name="arrow_right">
+        <image file="../images/core/cursors/arrow_right.png"/>
+      </sprite>
+      <sprite name="arrow_left">
+        <image file="../images/core/cursors/arrow_left.png"/>
+      </sprite>
+    </section>
+    <section name="smallmap">
+      <sprite name="entrance">
+        <image file="../images/core/misc/smallmap_entrance.png"/>
+      </sprite>
+      <sprite name="exit">
+        <image file="../images/core/misc/smallmap_exit.png"/>
+      </sprite>
+    </section>
+    <section name="stars">
+      <sprite name="large_star">
+        <image file="../images/backgrounds/large_star.png"/>
+      </sprite>
+      <sprite name="middle_star">
+        <image file="../images/backgrounds/middle_star.png"/>
+      </sprite>
+      <sprite name="small_star">
+        <image file="../images/backgrounds/small_star.png"/>
+      </sprite>
+      <sprite name="starfield_icon">
+        <image file="../images/backgrounds/starfield_icon.png"/>
+      </sprite>
+    </section>
   </section>
 </resources>

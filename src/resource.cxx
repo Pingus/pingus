@@ -38,7 +38,6 @@
 namespace Pingus {
 
 CL_ResourceManager Resource::resmgr;
-std::map<std::string, CL_ResourceManager> Resource::resource_map;
 std::map<ResDescriptor, CL_Surface>       Resource::surface_map;
 
 std::string 
@@ -81,45 +80,14 @@ Resource::init()
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/traps.xml")));
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/worldmaps.xml")));
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/worldobjs.xml")));
+  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/alias.xml")));
+
 }
 
 void
 Resource::deinit()
 {
-  resource_map.clear();
   surface_map.clear();
-}
-
-CL_ResourceManager
-Resource::get(const std::string& arg_filename)
-{
-  if (arg_filename.empty())
-    {
-      return resmgr;
-    }
-  else
-    {
-      std::string filename = arg_filename + ".xml";
-
-      std::map<std::string, CL_ResourceManager>::iterator i = resource_map.find(filename);
-
-      if (i != resource_map.end())
-        {
-          return i->second;
-        }
-      else
-        {
-          std::string res_filename;
-
-          res_filename = "data/" + filename;
-
-          CL_ResourceManager res_manager = CL_ResourceManager(path_manager.complete(res_filename));
-      
-          resource_map[filename] = res_manager;
-
-          return res_manager;
-        }
-    }
 }
 
 CL_Surface
@@ -322,8 +290,7 @@ Resource::load_from_source (const ResDescriptor& res_desc)
     pout << "Resource:" << res_desc
          <<  ":-404-:" << err.message << std::endl;
     try {
-      CL_ResourceManager res_mgr = get("core");
-      return CL_Surface ("core/misc/404", &res_mgr);
+      return CL_Surface ("core/misc/404", &resmgr);
     } catch (CL_Error err2) {
       pout << "Resource: Fatal error, important gfx files (404.pcx) couldn't be loaded!" << std::endl;
       throw err;
