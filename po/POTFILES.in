@@ -71,6 +71,7 @@ src/collider.cxx
 src/collider.hxx
 src/colliders/pingu_collider.cxx
 src/colliders/pingu_collider.hxx
+src/color.cxx
 src/color.hxx
 src/config.cxx
 src/config.hxx

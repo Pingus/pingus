@@ -389,6 +389,10 @@ SOURCE=.\src\colliders\pingu_collider.hxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\color.cxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\color.hxx
 # End Source File
 # Begin Source File

@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.73 2003/04/11 14:30:05 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.74 2003/04/11 16:51:15 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -615,7 +615,7 @@ PingusMain::init_path_finder()
 #ifdef HAVE_GETTEXT
   if (maintainer_mode)
     std::cout << "Setting gettext path to: " << path_manager.get_base_path () + "/../../locale" << std::endl;
-  const char* ret = setlocale (LC_ALL, "");
+  const char* ret = setlocale (LC_MESSAGES, "");
   if (ret == NULL)
     {
       std::cout << "ERROR: setlocale failed!" <<  std::endl;

@@ -1,4 +1,4 @@
-//  $Id: color.hxx,v 1.5 2002/09/27 11:26:43 torangan Exp $
+//  $Id: color.hxx,v 1.6 2003/04/11 16:51:15 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_COLOR_HXX
 
 #include "pingus.hxx"
+#include <iostream>
 
 class Color
 {
@@ -64,6 +65,8 @@ public:
   }
   
 };
+
+std::ostream& operator<<(std::ostream& s, const Color& color);
 
 #endif
 
