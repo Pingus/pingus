@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.30 2003/03/03 20:32:18 grumbel Exp $
+//  $Id: game_session.cxx,v 1.31 2003/03/04 17:02:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -101,20 +101,22 @@ PingusGameSession::update (const GameDelta& delta)
 
   left_over_time = 0;
 
-  int i;
-  for (i = 0; 
-       ((i * update_time < time_passed)
-        || i < min_frame_skip)
-         && !(i > max_frame_skip);
-       ++i)
-    {
-      // This updates the world and all objects
-      server->update ();
-      ++number_of_updates;
-    }
-
-  // Time that got not used for updates
-  left_over_time = time_passed - (i * update_time);
+  {
+    int i;
+    for (i = 0; 
+         ((i * update_time < time_passed)
+          || i < min_frame_skip)
+           && !(i > max_frame_skip);
+         ++i)
+      {
+        // This updates the world and all objects
+        server->update ();
+        ++number_of_updates;
+      }
+      
+    // Time that got not used for updates
+    left_over_time = time_passed - (i * update_time);
+  }
 
   if (!max_cpu_usage && left_over_time < 0)
     {

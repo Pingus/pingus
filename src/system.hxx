@@ -1,4 +1,4 @@
-//  $Id: system.hxx,v 1.6 2002/09/27 11:26:44 torangan Exp $
+//  $Id: system.hxx,v 1.7 2003/03/04 17:02:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -121,7 +121,10 @@ public:
 
   /** Choose the correct translation out of the map, if there is none
       present, fall back to the default language */
-  static const std::string& translate(const std::map<std::string, std::string>& strs);
+  static std::string translate(const std::map<std::string, std::string>& strs);
+
+  /** Translate to 'en' */
+  static std::string translate_default(const std::map<std::string, std::string>& strs);
 
   /** Read a file and generate a checksum and return it. The checksum
    generation is very primitiv and should probably be replaced by CRC

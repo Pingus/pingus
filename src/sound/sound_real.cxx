@@ -1,4 +1,4 @@
-//  $Id: sound_real.cxx,v 1.4 2003/03/04 13:59:44 grumbel Exp $
+//  $Id: sound_real.cxx,v 1.5 2003/03/04 17:02:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,8 +83,7 @@ PingusSoundReal::real_play_sound(const std::string& name, float volume, float pa
   if (!sound_enabled)
     return;
 
-
-  CL_SoundBuffer         * buffer;
+  SoundHandle buffer;
   CL_SoundBuffer_Session sess;
   
   try {

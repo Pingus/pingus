@@ -1,4 +1,4 @@
-//  $Id: liquid_data.cxx,v 1.10 2003/03/04 12:53:47 grumbel Exp $
+//  $Id: liquid_data.cxx,v 1.11 2003/03/04 17:02:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,8 @@ LiquidData::LiquidData (xmlDocPtr doc, xmlNodePtr cur)
 {
   if (XMLhelper::get_prop(cur, "use-old-width-handling", old_width_handling))
     {
-      std::cout << "XMLPLF: Use Old Width Handling: " << old_width_handling << std::endl;
+      if (old_width_handling)
+        std::cout << "XMLPLF: Using Old Width Handling: " << std::endl;
     }
 
   XMLFileReader reader(doc, cur);

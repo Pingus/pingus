@@ -1,4 +1,4 @@
-//  $Id: system.cxx,v 1.7 2003/02/18 18:41:59 grumbel Exp $
+//  $Id: system.cxx,v 1.8 2003/03/04 17:02:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -357,13 +357,9 @@ System::get_language()
     return lang.substr (0, 2);
 }
 
-const std::string&
+std::string
 System::translate(const std::map<std::string, std::string>& strs)
 {
-  // FIXME: Hack...
-  static std::string nothing1 = "<translator bug1>";
-  static std::string nothing2 = "<translator bug2>";
-
   if (pingus_debug_flags & PINGUS_DEBUG_TRANSLATOR)
     {
       std::cout << ",-- [ Translator: lang=" << System::get_language () 
@@ -378,22 +374,36 @@ System::translate(const std::map<std::string, std::string>& strs)
 
   std::map<std::string, std::string>::const_iterator p = strs.find(System::get_language());
 
-  if (p != strs.end ())
-    {
-      const std::string& str = p->second;
-  
-      if (str.empty())
+  if (p == strs.end ())
+    { // No native-language text found, fallback to default
+      return translate_default(strs);
+    }
+  else
+    { // Native language was empty, try default fallback
+      if (p->second.empty())
 	{
-	  std::map<std::string, std::string>::const_iterator p2 = strs.find(default_language);
-	  if (p2 != strs.end ())
-	    return p2->second;
-	  else
-	    return nothing2;
+          return translate_default(strs);
 	}
       else
-	return str;
+        {
+          return p->second;
+        }
     }
-  return nothing1;
+}
+
+std::string
+System::translate_default(const std::map<std::string, std::string>& strs)
+{
+  std::map<std::string, std::string>::const_iterator default_text = strs.find(default_language);
+
+  if (default_text == strs.end())
+    { // no 'en' default text given probally a bug in the level data
+      return "<Translation Bug: no 'en' text given>";
+    }
+  else
+    {
+      return default_text->second;
+    }
 }
 
 /** Read file and create a checksum and return it */
