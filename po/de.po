@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2000-10-14 14:04+0200\n"
+"POT-Creation-Date: 2000-11-01 14:14+0100\n"
 "PO-Revision-Date: 2000-10-14 14:07+02:00\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: Ingo Ruhnke <grumbel@gmx.de>\n"
@@ -13,15 +13,15 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/PingusMain.cc:307
+#: src/PingusMain.cc:309
 msgid " (with sound support)"
 msgstr " (mit Sound Unterstützung)"
 
-#: src/PingusMain.cc:309
+#: src/PingusMain.cc:311
 msgid " (without sound support)"
 msgstr " (ohne Sound Unterstützung)"
 
-#: src/PingusMain.cc:313
+#: src/PingusMain.cc:315
 msgid ""
 "\n"
 "Copyright (C) 1998 Ingo Ruhnke <grumbel@pingus.cx>\n"
@@ -36,51 +36,55 @@ msgstr ""
 "Einsatz-\n"
 "faehigkeit fuer einen bestimmten Zweck."
 
-#: src/PingusMain.cc:451
+#: src/PingusMain.cc:461
 msgid "Unknow char: "
 msgstr "Unbekannter Buchstabe: "
 
-#: src/PingusMain.cc:452
+#: src/PingusMain.cc:462
 msgid "Usage: "
 msgstr "Benutzung: "
 
-#: src/PingusMain.cc:452
+#: src/PingusMain.cc:462
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr "[OPTIONEN]... [LEVELDATEI]"
 
-#: src/PingusMain.cc:760
+#: src/PingusMain.cc:773
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Hauptteil wird gestartet: "
 
-#: src/PingusMain.cc:880
+#: src/PingusMain.cc:800
+msgid "PingusMain: Levelfile not found, ignoring: "
+msgstr ""
+
+#: src/PingusMain.cc:905
 msgid "Error caught from ClanLib: "
 msgstr "ClanLib Fehler abgefangen: "
 
-#: src/PingusMain.cc:884
+#: src/PingusMain.cc:909
 msgid "Error caught from Pingus: "
 msgstr "Pingus Fehler wurde abgefangen: "
 
-#: src/PingusMain.cc:888
+#: src/PingusMain.cc:913
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Speicher ist ausgegangen"
 
-#: src/PingusMain.cc:892
+#: src/PingusMain.cc:917
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Standard Ausnahme abgefangen!:\n"
 
-#: src/PingusMain.cc:896
+#: src/PingusMain.cc:921
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Unbekannte Ausnahme abgefangen!"
 
-#: src/System.cc:62
+#: src/System.cc:61
 msgid "System: Couldn't open: "
 msgstr "System: Datei oder Verzeichnis konnte nicht geoeffnet werden: "
 
-#: src/System.cc:150
+#: src/System.cc:149
 msgid "Successfully created: "
 msgstr "Verzeichnis erstellt: "
 
-#: src/System.cc:154
+#: src/System.cc:153
 msgid "Found: "
 msgstr "Gefunden: "
 
@@ -88,41 +92,42 @@ msgstr "Gefunden: "
 msgid "Enviroment variable $HOME not set, fix that and start again."
 msgstr "Umgebungs Variable $HOME ist nicht gesetzt."
 
-#: src/System.cc:309
+#: src/System.cc:315
 msgid "System::checksum: Couldn't open file: "
-msgstr "System::checksum: Datei oder Verzeichnis konnte nicht geoeffnet werden: "
+msgstr ""
+"System::checksum: Datei oder Verzeichnis konnte nicht geoeffnet werden: "
 
-#: src/System.cc:319
+#: src/System.cc:325
 msgid "System:checksum: file read error"
 msgstr "System:checksum: Fehler beim Lesen von Datei"
 
-#: src/GenericMain.cc:74
+#: src/GenericMain.cc:61
 msgid "Starting..."
 msgstr "Pingus wird gestartet..."
 
-#: src/Screenshot.cc:41
+#: src/Screenshot.cc:39
 msgid "Screenshot: Saving screenshot to: "
 msgstr "Screenshot: Speichere Screenshot als: "
 
-#: src/Screenshot.cc:43
+#: src/Screenshot.cc:41
 msgid "Screnshot: Screenshot is done."
 msgstr "Screenshot: Screenshot wurde erstellt."
 
-#: src/Screenshot.cc:46
+#: src/Screenshot.cc:44
 msgid "Screenshot: Couldn't save screenshot"
 msgstr "Screenshot: Screenshot konnte nicht gespeichert werden"
 
-#: src/Screenshot.cc:66
+#: src/Screenshot.cc:64
 msgid "Screenshot: Coudn't write file: "
 msgstr "Screenshot: Datei konnte nicht geschrieben werden: "
 
 #.  desc["en"] = "..:: Starts the level you played at last ::..";
-#: src/SurfaceButton.cc:139
+#: src/SurfaceButton.cc:137
 msgid "..:: The people who brought this game to you ::.."
 msgstr "..:: Die Leute die fuer dieses Spiel verantwortlich sind... ::.."
 
 #. desc["de"] = "..:: Wer hat den dieses Spiel verbrochen...? ::..";
-#: src/SurfaceButton.cc:142
+#: src/SurfaceButton.cc:140
 msgid "Credits"
 msgstr "Mitwirkende"
 
@@ -130,43 +135,43 @@ msgstr "Mitwirkende"
 #. y_pos = CL_Display::get_height() * 330 / 480; //330;
 #. 150;
 #. 330;
-#: src/SurfaceButton.cc:180
+#: src/SurfaceButton.cc:178
 msgid "..:: Brings you to the option menu ::.."
 msgstr "..:: Einstellungen, Cheats und Debugging stuff ::.."
 
 #.  desc["de"] = "..:: Einstellungen und Mogeleien ::..";
-#: src/SurfaceButton.cc:183
+#: src/SurfaceButton.cc:181
 msgid "Options"
 msgstr "Einstellungen"
 
-#: src/SurfaceButton.cc:214
+#: src/SurfaceButton.cc:212
 msgid "..:: Bye, bye ::.."
 msgstr "..:: Auf Wiedersehen ::.."
 
 #. desc["de"] = "..:: Auf Wiedersehen ::..";
-#: src/SurfaceButton.cc:217
+#: src/SurfaceButton.cc:215
 msgid "Exit"
 msgstr "Beenden"
 
-#: src/SurfaceButton.cc:277
+#: src/SurfaceButton.cc:275
 msgid "..:: Launch the level editor ::.."
 msgstr "..:: Erstelle deinen Eigenen Level ::.."
 
 #. desc["de"] = "..:: Den Level Editor starten ::..";
-#: src/SurfaceButton.cc:280
+#: src/SurfaceButton.cc:278
 msgid "Create a"
 msgstr "Bau einen"
 
-#: src/SurfaceButton.cc:281
+#: src/SurfaceButton.cc:279
 msgid "Level"
 msgstr "Level"
 
-#: src/SurfaceButton.cc:316
+#: src/SurfaceButton.cc:314
 msgid "..:: Let you select a world to start ::.."
 msgstr "..:: Such dir eine Welt zum starten aus ::.."
 
 #. desc["de"] = "..:: Such dir eine Welt zum beginnen aus ::..";
-#: src/SurfaceButton.cc:319
+#: src/SurfaceButton.cc:317
 msgid "Start"
 msgstr "Start"
 
@@ -174,65 +179,65 @@ msgstr "Start"
 #. character of each string is a special character, which indicates
 #. the size of the font or other special stuff. "-" means large
 #. font, "_" is a small font and "n" means a newline.
-#: src/Credits.cc:53
+#: src/Credits.cc:51
 msgid "_If I forgot somebody in this"
 msgstr "_Wenn ich irgendwen vergessen habe,"
 
-#: src/Credits.cc:54
+#: src/Credits.cc:52
 msgid "_list, just drop me a line and"
 msgstr "_bitte eine kurze Mail mich."
 
-#: src/Credits.cc:55
+#: src/Credits.cc:53
 msgid "_I'll fix this."
 msgstr "n"
 
-#: src/Credits.cc:56
+#: src/Credits.cc:54
 msgid "_Last Updated: 2000/06/27"
 msgstr "_Letzte Aenderung: 2000/06/27"
 
-#: src/Credits.cc:57
+#: src/Credits.cc:55
 msgid "n"
 msgstr "n"
 
-#: src/Credits.cc:59
+#: src/Credits.cc:57
 msgid "-Programming"
 msgstr "-Programmierung"
 
-#: src/Credits.cc:65
+#: src/Credits.cc:63
 msgid "-Gfx"
 msgstr "-Grafiken"
 
-#: src/Credits.cc:73
+#: src/Credits.cc:71
 msgid "-Music"
 msgstr "-Musik"
 
-#: src/Credits.cc:78
+#: src/Credits.cc:76
 msgid "-Special"
 msgstr "-Besonderen"
 
-#: src/Credits.cc:79
+#: src/Credits.cc:77
 msgid "-Thanks to"
 msgstr "-Dank an"
 
-#: src/PingusLevelDesc.cc:74
+#: src/PingusLevelDesc.cc:72
 msgid "Designed by "
 msgstr "Erstellt von "
 
-#: src/PingusLevelDesc.cc:79
+#: src/PingusLevelDesc.cc:77
 #, c-format
 msgid "Pingus to Save: %d"
 msgstr "Zu rettende Pingus: %d"
 
-#: src/PingusLevelDesc.cc:81
+#: src/PingusLevelDesc.cc:79
 #, c-format
 msgid "Number of Pingus: %d"
 msgstr "Anzahl an Pingus: %d"
 
-#: src/PingusLevelDesc.cc:86
+#: src/PingusLevelDesc.cc:84
 msgid "Loading..."
 msgstr "Ladevorgang laeuft..."
 
-#: src/PingusLevelDesc.cc:89
+#: src/PingusLevelDesc.cc:87
 msgid "Loading finished. Press a mouse button to start the level"
 msgstr ""
 "Ladevorgang abgeschloss. Drücke eine Maus Taste um den Level zu starten"

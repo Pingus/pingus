@@ -19,3 +19,17 @@ configure
 Makefile.in
 bugs
 README.binary
+INSTALL.dvi
+INSTALL.man
+INSTALL.info
+INSTALL.texi
+INSTALL.texi.refs
+db2texi.refs
+INSTALL.sgml.refs
+INSTALL.fot
+README.dsl
+README.txt
+README.dvi
+README.fot
+INSTALL.txt
+old

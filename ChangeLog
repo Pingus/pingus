@@ -1,3 +1,3275 @@
-$Id $
-	
-No ChangeLog is given, have a look at the CVS history.
+2000-10-18 22:36  grumbel
+
+	* data/data/menu.scr, data/data/textures.scr,
+	data/levels/level1.xml, intl/Makefile, po/de.po: some file
+	renamings and some more translation
+
+2000-10-18 22:19  grumbel
+
+	* src/GroundpieceData.hh: Renamed SurfaceData to GroundpieceData (I
+	need that name for another thing) ;-)
+
+2000-10-18 22:16  grumbel
+
+	* src/: ColMap.cc, ColMap.hh, Liquid.cc, Makefile.am, PLF.cc,
+	PLF.hh, PSMParser.cc, PSMParser.hh, PingusMain.cc, PingusMenu.cc,
+	PingusMenu.hh, PingusSpotMap.cc, PingusSpotMap.hh: Added a
+	scrolling background to the menu
+
+2000-10-18 22:15  grumbel
+
+	* data/images/menu/: layer1.pcx, layer2.pcx, layer3.pcx,
+	layer4.pcx, layer5.pcx: Some images for the menu background (just
+	experimental, they will be replaced later)
+
+2000-10-18 22:13  grumbel
+
+	* data/images/textures/: green_tendrils.pcx, mountain.pcx: Some
+	experimental gfx...
+
+2000-10-18 22:12  grumbel
+
+	* src/: LayerManager.cc, LayerManager.hh: stupid little class...
+
+2000-10-18 13:46  sphair
+
+	* data/images/: hotspots/sun.tga, textures/desert.jpg: Changing
+	machines, have to commit...
+
+2000-10-18 12:09  grumbel
+
+	* data/worldmaps/Makefile.am: ...
+
+2000-10-14 18:29  grumbel
+
+	* data/images/Makefile.am: liitle bug in the variable naming
+
+2000-10-13 20:08  grumbel
+
+	* acconfig.h, configure.in, data/Makefile.am,
+	data/data/Makefile.am, data/images/Makefile.am,
+	data/levels/Makefile.am, intl/Makefile, po/POTFILES.in, po/de.po,
+	src/Makefile.am, src/PingusLevelDesc.cc, src/PingusMain.cc: * Some
+	translation fixes * Fixed most of "make install" * starting levels
+	does currently not work
+
+2000-10-13 14:19  grumbel
+
+	* Makefile.am, data/images/Makefile.am,
+	data/images/extract_images.sh, intl/Makefile, po/POTFILES.in,
+	po/de.po, src/Credits.cc, src/GenericMain.cc, src/Makefile.am,
+	src/PingusMain.cc:  * Added some german translation, most of the
+	startup should now get translated
+	 * Fixed some bugs in "make dist", tarball building should work
+	again
+
+2000-10-13 09:56  grumbel
+
+	* po/ChangeLog: We need this to make 'make dist' happy
+
+2000-10-13 00:19  grumbel
+
+	* .cvsignore, AUTHORS, CREDITS, TODO, data/levels/level2.xml,
+	data/levels/level3.xml, data/worldmaps/volcano.xml, intl/Makefile,
+	po/Makefile.in.in, po/POTFILES.in, po/de.po, src/Makefile.am,
+	src/PingusMain.cc: Some more gettext adds
+
+2000-10-12 22:18  grumbel
+
+	* Makefile.am, configure.in, src/Makefile.am: some fixes... don't
+	now what
+
+2000-10-12 21:47  grumbel
+
+	* po/de.po, ABOUT-NLS, acconfig.h: gettext stuff
+
+2000-10-12 21:33  grumbel
+
+	* src/: OptionMenu.cc, Pingu.cc, PingusMain.cc, PingusSound.cc,
+	PingusSoundReal.cc, PingusSpotMap.cc: Some resorting and cleanup of
+	the debugging options
+
+2000-10-12 21:31  grumbel
+
+	* configure.in, Makefile.am: some gettext stuff
+
+2000-10-12 21:26  grumbel
+
+	* intl/: ChangeLog, Makefile, Makefile.in, VERSION, bindtextdom.c,
+	cat-compat.c, dcgettext.c, dgettext.c, explodename.c, finddomain.c,
+	gettext.c, gettext.h, gettextP.h, hash-string.h, intl-compat.c,
+	l10nflist.c, libgettext.h, linux-msg.sed, loadinfo.h, loadmsgcat.c,
+	localealias.c, po2tbl.sed, po2tbl.sed.in, textdomain.c,
+	xopen-msg.sed: some automatic generated stuff from gettext
+
+2000-10-10 20:14  grumbel
+
+	* src/: Credits.cc, Pingu.cc, PingusSound.cc, PingusSoundReal.cc:
+	Some more fixes to the music and sound code Good news is that it is
+	up and running ok, bad news is that it requires a hole bunch of CPU
+	usage :-(
+
+2000-10-10 15:22  grumbel
+
+	* src/: PingusMain.cc, PingusMusicProvider.cc, PingusSoundReal.cc,
+	PingusSoundReal.hh: Some fixes to the music code and support for
+	playing music files inside the worldmap
+
+2000-10-09 21:17  grumbel
+
+	* src/: Client.cc, ColMap.hh, Console.cc, Console.hh,
+	DemoPlayer.cc, FileSelector.cc, PLF.cc, Pingu.cc, PinguMap.hh,
+	PingusGame.cc, PingusMain.cc, PingusMain.hh, PingusResource.cc,
+	PingusSoundReal.cc: Some changes to the resource system...
+
+2000-10-05 11:22  grumbel
+
+	* data/music/: gd-cancn.it, gd-giirm.s3m, gd-ite.it, gd-matth.it,
+	gd-myla.it, pingus-1.it, pingus-2.it, pingus-3.it, pingus-4.it,
+	pingus-5.it, pingus-6.it, pingus-7.it, pingus-8.it, pingus-9.it:
+	some music files... time to fix the bugs in the music support
+
+2000-10-04 11:13  grumbel
+
+	* data/levels/: block.xml, cages.xml, candy1.xml, crystal1.xml,
+	crystal4.xml, crystal5.xml, desert1.xml, desert3.xml, desert4.xml,
+	desert5.xml, future2-jgoebbert.xml, future3-jgoebbert.xml,
+	headbang.xml, industrial1-grumbel.xml, level1.xml, level3.xml,
+	level5.xml, level8.xml, space-9-tom.xml, space1.xml, space2.xml,
+	space3.xml, space4-grumbel.xml, tutorial1.xml, wland.xml,
+	xmas-blockblow-timpany.xml: bye, bye doctype
+
+2000-10-04 01:51  grumbel
+
+	* data/worldmaps/volcano.xml: yafif
+
+2000-10-04 01:39  grumbel
+
+	* data/images/misc/: dot_border.pcx, 404.pcx: [no log message]
+
+2000-10-03 22:01  grumbel
+
+	* src/: ColMap.cc, Pingu.cc, PingusMenu.cc: * some -Wall cleanup *
+	some speedup of the main menu * made climber be tolerant to bridges
+	* fixed the background handling in the editor and removed a
+	segfault
+
+2000-10-03 15:18  grumbel
+
+	* data/data/: game.scr, global.scr: Some new gfx entries
+
+2000-10-03 15:18  grumbel
+
+	* data/images/misc/: large_star.pcx, middle_star.pcx,
+	small_star.pcx: Some stars for the starfield background
+
+2000-10-03 15:16  grumbel
+
+	* data/images/groundpieces/misc/: bridge_left.pcx,
+	bridge_right.pcx: some bridge objects
+
+2000-10-01 17:12  grumbel
+
+	* src/: PingusMapManager.cc, PingusMapManager.hh: hmpf, just
+	framework...
+
+2000-10-01 00:07  grumbel
+
+	* acconfig.h, configure.in: Some more libxml backward compatibility
+
+2000-09-30 23:34  grumbel
+
+	* src/: BackgroundData.hh, PLTXML.cc, PLTXML.hh, PingusMain.cc,
+	PingusSoundReal.hh: Some libxml1 compatibility fixes some better
+	debug print out support
+
+2000-09-29 18:21  grumbel
+
+	* src/: Makefile.am, PingusMain.cc, PingusSound.cc, PingusSound.hh,
+	PingusSoundReal.cc, PingusSoundReal.hh, PingusSpotMap.cc: Some
+	framework sound code and some things I don't remember...
+
+2000-09-26 14:35  grumbel
+
+	* AUTHORS, TODO, configure.in, data/data/game.scr,
+	data/levels/future1-jgoebbert.xml,
+	data/levels/future2-jgoebbert.xml, data/levels/level1.xml,
+	src/GenericMain.cc, src/PingusMain.cc: Goodbye clanMagick, hello
+	clanJPEG (and see you later clanGUI... disabled for the moment)
+
+2000-09-25 18:29  grumbel
+
+	* src/Makefile.am: - the teleporter should be up and running again
+	(not tested) - some more tolerance with blank node's in xml files -
+	syntax change for <action> - some framework for worldobj support in
+	the editor - support for locked levels in the worldmap and
+	hi-lighting of dots
+
+2000-09-24 02:22  grumbel
+
+	* src/: BackgroundData.cc, Credits.cc, PLF.cc, Pingu.cc: Teleporter
+	should be working again, editor suppot is still missing
+
+2000-09-23 22:30  grumbel
+
+	* configure.in: Better libxml detection, thanks to Bernhard Trummer
+
+2000-09-23 20:19  grumbel
+
+	* src/: Makefile.am, PLF.cc, PLF.hh, PingusResource.cc: Some
+	changes to make the world objects creation more flexible, the
+	teleporter will also come back when this is done.
+
+2000-09-20 17:12  grumbel
+
+	* data/images/groundpieces/: pipe1.pcx, pipe2.pcx, pipe3.pcx,
+	pipe4.pcx, pipe5.pcx, pipe6.pcx, pipe7.pcx, pipe8.pcx,
+	misc/smallbrickpiece.pcx: Some general cleanup
+
+2000-09-20 16:47  grumbel
+
+	* data/: data/game.scr, images/misc/dot_green.tga,
+	images/misc/dot_red.tga, images/worldmaps/volcano.jpg,
+	levels/level1.xml: Some new images
+
+2000-09-20 16:33  grumbel
+
+	* src/Makefile.am: Replaced the theme selector
+
+2000-09-20 09:26  grumbel
+
+	* AUTHORS, configure.in, data/data/textures.scr,
+	data/data/worldmaps.scr, data/images/worldmaps/volcano.jpg: Added
+	the worldmap code to the makefiles
+
+2000-09-20 09:20  grumbel
+
+	* src/: .cvsignore, Makefile.am: Some more framework for the
+	worldmap
+
+2000-09-19 13:09  grumbel
+
+	* data/levels/chouser02.xml: a new level
+
+2000-09-18 14:22  grumbel
+
+	* src/: BackgroundData.hh, Credits.cc, Credits.hh, PLTXML.cc,
+	PLTXML.hh: Switched to libxml2 - it will no longer work with
+	libxml1 Changed type of catch_pingu() from bool to void Fixed some
+	bugs in the credits source
+
+2000-09-14 02:47  grumbel
+
+	* data/images/pingus/splat.pcx: Yet another file I missed...
+
+2000-09-14 02:35  grumbel
+
+	* data/levels/: Dentist.xml, Lev4.xml, Stair.xml, Stone.xml,
+	block-timpany.xml, bombing.xml, desert5-tflavel.xml,
+	editor_tut.xml, foliage1.xml, foliage3.xml, foliage4.xml,
+	granit1.xml, intensiv-timpany.xml, intersec.xml, jewel.xml,
+	jungle-crisscross-timpany.xml, jungle1.xml, jungle2.xml,
+	large1.xml, level0.xml, lonely.xml, longway.xml, mushroom.xml,
+	parallel.xml, park-mkoller.xml, partic2.xml, particle.xml,
+	pipes1.xml, real1.xml, real2.xml, real3.xml, real4.xml, real5.xml,
+	real6.xml, rinse.xml, rock1.xml, rockhopping.xml, sas.xml,
+	small1.xml, snow1.xml, snow2.xml, snow3.xml, snow4.xml, snow5.xml,
+	snow6.xml, sortie1.xml, sortie2.xml, stone.xml, stone2.xml,
+	tutorial2.xml, tutorial3.xml, tutorial4.xml, tutorial5.xml: Ieks,
+	there was a bug in the plf reading code when I converted all the
+	levels, so all levels got broken :-( This patch should fix all
+	those levels
+
+2000-09-14 01:14  grumbel
+
+	* data/: images/groundpieces/desert/bigblock-broken1.pcx,
+	images/groundpieces/desert/bigblock-broken2.pcx,
+	images/groundpieces/desert/bigblock-broken3.pcx,
+	images/groundpieces/desert/bigdune1.pcx,
+	images/groundpieces/desert/bigprickpiece-old.pcx,
+	images/groundpieces/desert/bigprickpiece.pcx,
+	images/groundpieces/desert/domedune.pcx,
+	images/groundpieces/desert/flatdune.pcx,
+	images/groundpieces/desert/middleprickpiece.pcx,
+	images/groundpieces/desert/peakdune.pcx,
+	images/groundpieces/desert/smallbrickpiece.pcx,
+	images/groundpieces/space/smallblock1.pcx,
+	images/groundpieces/space/smallblock2.pcx,
+	images/groundpieces/space/smallblock3.pcx,
+	levels/candy-timpany-premoi.xml: more gfx and levels
+
+2000-09-14 00:56  grumbel
+
+	* data/images/groundpieces/: industrial/joint1.pcx,
+	industrial/joint2.pcx, industrial/joint3.pcx,
+	industrial/joint4.pcx, industrial/joint5.pcx, industrial/weld1.pcx,
+	industrial/weld2.pcx, industrial/weld3.pcx, industrial/weld4.pcx,
+	industrial/weld5.pcx, industrial/weld6.pcx, industrial/weld7.pcx,
+	misc/bigprickpiece.pcx, misc/middleprickpiece.pcx,
+	misc/pipe_bl.pcx, misc/pipe_br.pcx, misc/pipe_ul.pcx,
+	misc/pipe_ur.pcx, misc/stoneblock5.pcx, misc/stoneblock6.pcx,
+	sweets/cake1.pcx, sweets/cake2.pcx, sweets/cake3.pcx,
+	sweets/cake4.pcx, sweets/cake5.pcx: More files I forgot to commit
+	%-/
+
+2000-09-14 00:39  grumbel
+
+	* data/images/hotspots/signposts/: basher.pcx, blocker.pcx,
+	bomber.pcx, bridger.pcx, climber.pcx, digger.pcx, e.pcx,
+	floater.pcx, miner.pcx, n.pcx, ne.pcx, nogo.pcx, nw.pcx, s.pcx,
+	se.pcx, sw.pcx, w.pcx: Some more images I forgot to commit
+
+2000-09-13 21:44  grumbel
+
+	* data/data/: entrances.scr, exits.scr: Woops, forgot to commit
+	these...
+
+2000-09-13 02:14  grumbel
+
+	* TODO, data/data/game.scr, data/data/global.scr,
+	data/data/pingus.scr, data/data/textures.scr, data/data/traps.scr,
+	data/levels/level1.xml, data/themes/crystal.xml,
+	data/themes/desert.xml, data/themes/jungle.xml,
+	data/themes/misc.xml, data/themes/newlevs.xml,
+	data/themes/playable.plt, data/themes/playable.xml,
+	data/themes/playable2.xml, data/themes/space.xml,
+	data/themes/standard.xml, data/themes/test.xml,
+	data/themes/tutorial.xml, data/themes/xmas99.xml: Fixed the theme
+	handling
+
+2000-09-12 13:11  grumbel
+
+	* src/: ClientEvent.cc, Pingu.cc, PingusMain.cc, PingusMenu.cc,
+	PingusMenu.hh: Reinserted the signal disconnect()'s
+
+2000-09-11 16:58  grumbel
+
+	* data/images/textures/fruitcaketile.jpg: Even more gfx
+
+2000-09-11 16:48  grumbel
+
+	* data/images/: exits/desert_tut.pcx,
+	groundpieces/foliage/grass/grass1.pcx,
+	groundpieces/foliage/grass/grass10.pcx,
+	groundpieces/foliage/grass/grass14.pcx,
+	groundpieces/foliage/grass/grass2.pcx,
+	groundpieces/foliage/grass/grass5.pcx, pingus/digger_radius.pcx,
+	traps/tut.pcx: Some more gfx
+
+2000-09-07 11:45  grumbel
+
+	* src/: Makefile.am, PLF.hh, PingusResource.cc, PingusSound.cc: -
+	Moved Background and BackgroundData into a subdir - Added dummy
+	gfx, when a requested resource couldn't be found - Pseudo Sound
+	goes to stdout - Fixed bug in the < operator of ResDescriptor -
+	Added a greater catch radius for the blocker - Fixed the miner goes
+	through solid bug
+
+2000-09-07 11:41  grumbel
+
+	* src/: PLFPLF.cc, PLFPLF.hh: Fixed a bug in the background_data
+	allocation, BackgroundData now contains the right values again
+
+2000-09-02 14:11  grumbel
+
+	* data/images/groundpieces/industrial/: greybri1.pcx, greybri2.pcx,
+	greybri3.pcx, greybri5.pcx, peakdune.pcx, pipe1.pcx, pipe2.pcx,
+	pipe3.pcx, pipe4.pcx, pipe5.pcx, pipe6.pcx, pipe7.pcx, pipe8.pcx,
+	pipe_bl.pcx, pipe_br.pcx, pipe_ul.pcx, pipe_ur.pcx, rivet.pcx,
+	screw.pcx, steel1.pcx, steel2.pcx, steel3.pcx, steel4.pcx,
+	steel5.pcx, gunge/gunge1.pcx, gunge/gunge10.pcx, gunge/gunge11.pcx,
+	gunge/gunge12.pcx, gunge/gunge13.pcx, gunge/gunge14.pcx,
+	gunge/gunge15.pcx, gunge/gunge2.pcx, gunge/gunge3.pcx,
+	gunge/gunge4.pcx, gunge/gunge5.pcx, gunge/gunge6.pcx,
+	gunge/gunge7.pcx, gunge/gunge8.pcx, gunge/gunge9.pcx: Some more gfx
+
+2000-08-31 01:50  grumbel
+
+	* data/levels/: Dentist.plf, Dentist.psm, Lev4.plf, Lev4.psm,
+	Stair.plf, Stair.psm, Stone.plf, Stone.plf~, Stone.psm,
+	block-timpany.plf, block-timpany.psm, block.plf, block.psm,
+	blockers-timpany-tutorial.plf, blockers-timpany-tutorial.psm,
+	bombing.plf, bombing.psm, cages.plf, cages.psm, candy1.plf,
+	candy1.psm, crystal1.plf, crystal1.psm, crystal2.plf, crystal2.psm,
+	crystal3.plf, crystal3.psm, crystal4.plf, crystal4.psm,
+	crystal5.plf, crystal5.psm, desert-3-tflavel.plf,
+	desert-3-tflavel.psm, desert-5-tflavel.plf, desert-5-tflavel.psm,
+	desert1.plf, desert1.psm, desert2.plf, desert2.psm, desert3.plf,
+	desert3.psm, editor_tut.plf, editor_tut.psm, foliage1.plf,
+	foliage1.psm, foliage3.plf, foliage3.psm, foliage4.plf,
+	foliage4.psm, granit1.plf, granit1.psm, headbang.plf, headbang.psm,
+	intensiv-timpany.plf, intensiv-timpany.psm, intersec.plf,
+	intersec.psm, jewel.plf, jewel.psm, jungle-crisscross-timpany.plf,
+	jungle-crisscross-timpany.psm, jungle1.plf, jungle1.psm,
+	jungle2.plf, jungle2.psm, large1.plf, large1.psm, level0.plf,
+	level0.psm, level1.plf, level1.psm, level10.plf, level10.psm,
+	level11.plf, level11.psm, level12.plf, level12.psm, level13.plf,
+	level13.psm, level2.plf, level2.psm, level3.plf, level3.psm,
+	level4.plf, level5.plf, level5.psm, level7.plf, level7.psm,
+	level8.plf, level8.psm, level9.plf, level9.psm, lonely.plf,
+	lonely.psm, longway.plf, longway.psm, mushroom.plf, mushroom.psm,
+	parallel.plf, parallel.psm, park-mkoller.plf, park-mkoller.psm,
+	partic2.plf, partic2.psm, particle.plf, particle.psm, pipes1.plf,
+	pipes1.psm, real1.plf, real1.psm, real2.plf, real2.psm, real3.plf,
+	real3.psm, real4.plf, real4.psm, real5.plf, real5.psm, real6.plf,
+	real6.psm, rinse.plf, rinse.psm, rock1.plf, rock1.psm,
+	rockhopping.plf, rockhopping.psm, sas.plf, sas.psm, small1.plf,
+	small1.psm, snow.plf, snow.psm, snow1.plf, snow1.psm, snow2.plf,
+	snow2.psm, snow3.plf, snow3.psm, snow4.plf, snow4.psm, snow5.plf,
+	snow5.psm, snow6.plf, snow6.psm, sortie1.plf, sortie1.psm,
+	sortie2.plf, sortie2.psm, space1.plf, space1.psm, space2.plf,
+	space2.psm, space3.plf, space3.psm, stone.plf, stone.psm,
+	stone2.plf, stone2.psm, test1.plf, test1.psm, test2.plf, test2.psm,
+	test3.plf, test3.psm, test4.plf, test4.psm, test5.plf, test5.psm,
+	test6.xml, tile.ptm, tile2.ptm, tutorial1.plf, tutorial1.psm,
+	tutorial2.plf, tutorial2.psm, tutorial3.plf, tutorial3.psm,
+	tutorial4.plf, tutorial4.psm, tutorial5.plf, tutorial5.psm,
+	wland.plf, wland.psm, xmas-blockblow-timpany.plf,
+	xmas-blockblow-timpany.psm, xmltest.xml: Bye, bye old plf files...
+
+2000-08-31 01:42  grumbel
+
+	* data/levels/: Dentist.xml, Lev4.xml, Stair.xml, Stone.xml,
+	block-timpany.xml, block.xml, blockers-timpany-tutorial.xml,
+	bombing.xml, cages.xml, candy1.xml, crystal1.xml, crystal2.xml,
+	crystal3.xml, crystal4.xml, crystal5.xml, desert1.xml, desert2.xml,
+	desert3-tflavel.xml, desert3.xml, desert4.xml, desert5-tflavel.xml,
+	desert5.xml, editor_tut.xml, foliage1.xml, foliage3.xml,
+	foliage4.xml, granit1.xml, headbang.xml, industrial1-grumbel.xml,
+	industrial2-grumbel.xml, intensiv-timpany.xml, intersec.xml,
+	jewel.xml, jungle-crisscross-timpany.xml, jungle1.xml, jungle2.xml,
+	large1.xml, level0.xml, level1-xml.xml, level1.xml, level10.xml,
+	level12.xml, level13.xml, level2.xml, level3.xml, level5.xml,
+	level7.xml, level8.xml, level9.xml, lonely.xml, longway.xml,
+	mushroom.xml, parallel.xml, park-mkoller.xml, partic2.xml,
+	particle.xml, pipes1.xml, real1.xml, real2.xml, real3.xml,
+	real4.xml, real5.xml, real6.xml, rinse.xml, rock1.xml,
+	rockhopping.xml, sas.xml, small1.xml, snow1.xml, snow2.xml,
+	snow3.xml, snow4.xml, snow5.xml, snow6.xml, sortie1.xml,
+	sortie2.xml, sortie3.xml, space-loop-timpany.plf,
+	space-loop-timpany.psm, space1.xml, space2.xml, space3.xml,
+	stone.xml, stone2.xml, tutorial1.xml, tutorial2.xml, tutorial3.xml,
+	tutorial4.xml, tutorial5.xml, wland.xml,
+	xmas-blockblow-timpany.xml: Converted all remaining levels to xml
+
+2000-08-29 22:32  grumbel
+
+	* data/images/entrances/: industrial.pcx, industrial_top.pcx: Some
+	new gfx
+
+2000-08-28 02:42  grumbel
+
+	* data/images/exits/crystal.pcx: Added a crystal exit
+
+2000-08-28 02:39  grumbel
+
+	* AUTHORS, NEWS, README.CVS, TODO, configure.in,
+	data/data/Makefile.am, data/data/editor.scr, data/data/fonts.scr,
+	data/data/game.scr, data/data/global.scr, data/data/menu.scr,
+	data/data/pingus.scr, data/data/story.scr, data/data/textures.scr,
+	data/data/traps.scr, data/levels/block.xml,
+	data/levels/crystal1.xml, data/levels/crystal2.xml,
+	data/levels/crystal3.xml, data/levels/crystal5.xml,
+	data/levels/level1-xml.xml, data/levels/level1.xml,
+	data/levels/level10.xml, data/levels/level2.xml: Added support for
+	multiple background types and multiple background layers Removed
+	some .disconnect() cause they segfault here
+
+2000-08-28 02:34  grumbel
+
+	* src/: Background.cc, Background.hh, BackgroundData.cc,
+	BackgroundData.hh, ClientEvent.cc, Counter.cc, Intro.cc,
+	Makefile.am, PLF.cc, PLF.hh, PLFPLF.cc, PLTXML.cc, PLTXML.hh,
+	PingusMain.cc, PingusMenu.cc, PingusSpotMap.cc: Added support for
+	multiple background types and multiple background layers Removed
+	some .disconnect() cause they segfault here
+
+2000-08-27 04:17  grumbel
+
+	* data/images/exits/industrial.pcx: Added an exit for the
+	industrial theme
+
+2000-08-15 00:09  grumbel
+
+	* data/images/entrances/: entrance_eyes.tga,
+	entrance_eyes_anim.tga, underlay_eyes.tga: Added Joel Fauches cool
+	entrance
+
+2000-08-15 00:03  grumbel
+
+	* data/: data/global.scr, data/menu.scr, data/pingus.scr,
+	images/buttons/armageddon_anim.tga,
+	images/groundpieces/foliage/grass/grass1.pcx,
+	images/groundpieces/foliage/grass/grass14.pcx,
+	images/groundpieces/foliage/grass/grass2.pcx,
+	images/groundpieces/foliage/grass/grass5.pcx,
+	images/groundpieces/sweets/aquachoc.pcx,
+	images/groundpieces/sweets/goldchoc.pcx, images/menu/create_on.tga,
+	images/menu/credits_on.tga, images/menu/exit_on.tga,
+	images/menu/ice_off.tga, images/menu/options_on.tga,
+	images/menu/play_on.tga: Resized the menu buttons and added Tom
+	Flaves gfx
+
+2000-08-14 23:58  grumbel
+
+	* data/levels/: industrial1-grumbel.xml, sortie3.xml,
+	space-loop-timpany.plf, space-loop-timpany.psm, tutorial1.xml: More
+	levels
+
+2000-08-14 23:49  grumbel
+
+	* data/levels/: blockers-timpany-tutorial.psm,
+	blockers-timpany-tutorial.xml, intensiv-timpany.psm, level1.xml,
+	sortie2.plf, space3.xml, tutorial1.plf, tutorial3.plf: Fixed the
+	resource path to fit the new sign-hotspots
+
+2000-08-12 23:53  grumbel
+
+	* data/: data/global.scr, data/textures.scr,
+	images/buttons/armageddon_anim.tga, images/liquids/slime.tga,
+	images/textures/bwsortiebg.jpg, images/textures/cyanspace.jpg,
+	levels/level1.xml: A lot of new gfx and some gfx reworked
+
+2000-08-11 03:20  grumbel
+
+	* data/images/groundpieces/foliage/grass/: grass1.pcx, grass10.pcx,
+	grass11.pcx, grass12.pcx, grass13.pcx, grass14.pcx, grass15.pcx,
+	grass16.pcx, grass2.pcx, grass3.pcx, grass4.pcx, grass5.pcx,
+	grass6.pcx, grass7.pcx, grass8.pcx, grass9.pcx: Lots of green green
+	grass images
+
+2000-08-11 03:13  grumbel
+
+	* data/levels/: blockers-timpany-tutorial.xml, desert4.xml,
+	desert5.xml: Some new levels
+
+2000-08-11 03:12  grumbel
+
+	* configure.in: Added src/caimagemanipulation/
+
+2000-08-11 03:11  grumbel
+
+	* data/levels/: desert-3-tflavel.plf, desert-3-tflavel.psm,
+	desert-5-tflavel.plf, desert-5-tflavel.psm,
+	jungle-crisscross-timpany.plf, jungle-crisscross-timpany.psm: More
+	levels...
+
+2000-08-11 03:11  grumbel
+
+	* src/: ActionHolder.cc, GlobalEvent.cc, Makefile.am, Pingu.cc:
+	Added drown and exit pingu Misc source clean-ups Added
+	caimagemanipulation from trophy
+
+2000-08-11 02:54  grumbel
+
+	* data/data/pingus.scr: One exit and two drown pingus
+
+2000-08-11 02:54  grumbel
+
+	* data/images/pingus/: drownfall.pcx, drownwalk.pcx, exit.pcx: One
+	exit and two drown pingus, thanks Tom
+
+2000-08-10 17:13  grumbel
+
+	* src/: ClientEvent.hh, PingusMain.cc, PingusMain.hh: Misc fixes
+
+2000-08-09 16:39  grumbel
+
+	* configure.in, data/data/fonts.scr, data/levels/level1.xml,
+	src/ButtonPanel.cc, src/ButtonPanel.hh, src/ClientEvent.cc,
+	src/ClientEvent.hh, src/GenericMain.cc, src/GlobalEvent.cc,
+	src/GlobalEvent.hh, src/HurryUp.cc, src/Intro.cc, src/Intro.hh,
+	src/OptionMenu.cc, src/OptionMenu.hh, src/PingusMain.cc,
+	src/PingusMenu.cc, src/PingusMenu.hh: Updated Pingus to use ClanLib
+	0.5 CVS, it will no longer work with ClanLib 0.4
+
+2000-08-09 03:26  grumbel
+
+	* src/: PingusMain.cc, PingusMain.hh: Added missing files
+
+2000-08-07 00:11  grumbel
+
+	* src/ColMap.cc: Replaced the put() blitter with the remove() one,
+	hope it works now correct
+
+2000-08-06 15:29  grumbel
+
+	* configure.in: Misc updates
+
+2000-08-06 15:05  grumbel
+
+	* src/: GenericMain.cc, GenericMain.hh, Makefile.am, Pingus.cc,
+	Pingus.hh: Added some framework for the worms mode
+
+2000-08-06 02:59  grumbel
+
+	* data/data/editor.scr, data/data/global.scr, doc/levels.xml: Misc
+	updates
+
+2000-08-06 02:56  grumbel
+
+	* data/images/hotspots/tutorial-blocker.pcx: [no log message]
+
+2000-08-06 02:00  grumbel
+
+	* src/PingusLevelDesc.cc: Added "Press mouse button to start"
+	function and message
+
+2000-08-05 21:46  grumbel
+
+	* data/images/editor/: weather_rain.pcx, weather_snow.pcx: Some new
+	images...
+
+2000-08-05 20:54  grumbel
+
+	* data/levels/: blockers-timpany-tutorial.plf,
+	blockers-timpany-tutorial.psm, level1.xml: A new level by Craig
+
+2000-08-05 20:52  grumbel
+
+	* src/: Makefile.am, PLF.cc, PLF.hh: Added support for weather
+	loading/saving and inserting into the editor Weather is now saved
+	in the level file
+
+2000-08-05 02:04  grumbel
+
+	* data/levels/: block.xml, cages.xml, candy1.xml, crystal1.xml,
+	crystal2.xml, crystal3.xml, crystal4.xml, crystal5.xml,
+	desert1.xml, desert2.xml, desert3.xml, level1-xml.xml, level1.xml,
+	level10.xml, level12.xml, level13.xml, level2.xml, level3.xml,
+	level5.xml, level7.xml, level8.xml, level9.xml, space1.xml,
+	space2.xml, space3.xml, test6.xml, wland.xml, xmltest.xml:
+	Converted some levels to xml, the rest will follow
+
+2000-08-05 02:00  grumbel
+
+	* src/: Makefile.am, PLTXML.cc: Added theme-xml support cleaned up
+	the xmlparser stuff a bit
+
+2000-08-05 01:54  grumbel
+
+	* data/themes/: crystal.xml, desert.xml, jungle.xml, misc.xml,
+	newlevs.xml, playable.xml, playable2.xml, space.xml, standard.plt,
+	standard.xml, test.xml, tutorial.xml, xmas99.xml: Converted all
+	worlds to xml
+
+2000-08-05 01:28  grumbel
+
+	* data/images/particles/ground_snow.pcx: Added some snow
+
+2000-08-05 00:19  grumbel
+
+	* src/: PLTXML.cc, PLTXML.hh: Added parser for xml-worlds
+
+2000-08-04 23:01  grumbel
+
+	* data/images/groundpieces/sweets/: goldchoc.pcx,
+	greenjellybaby.pcx, jube1.pcx, purpchoc.pcx, redjellybaby.pcx:
+	Added missing files
+
+2000-08-04 21:31  grumbel
+
+	* src/Color.hh: Added missing file
+
+2000-08-04 18:09  grumbel
+
+	* data/: data/editor.scr, images/editor/start_pos.pcx: Added
+	start_pos image
+
+2000-08-03 21:23  grumbel
+
+	* AUTHORS, NEWS, data/levels/Stone.plf, data/levels/Stone.plf~,
+	data/levels/Stone.psm: Misc updates
+
+2000-08-03 21:20  grumbel
+
+	* data/levels/: headbang.xml, intensiv-timpany.plf,
+	intensiv-timpany.psm, park-mkoller.plf, park-mkoller.psm,
+	xmas-blockblow-timpany.plf, xmas-blockblow-timpany.psm,
+	xmas-blockblow-timpany.xml: Added some more levels I forgot to
+	commit
+
+2000-08-03 21:12  grumbel
+
+	* src/: EntranceData.hh, PLFPLF.cc, Pingu.hh, PingusSpotMap.cc:
+	Made the plf parser more tolerant Fixed PingusSpotMap::put() a bit
+	Init bug in EntranceData
+
+2000-08-03 21:08  grumbel
+
+	* data/: data/pingus.scr, images/particles/rain1.pcx,
+	images/particles/rain_splash.pcx, levels/snow4.plf: Added rain gfx
+	(ugly)
+
+2000-08-03 12:31  grumbel
+
+	* src/: Entrance.cc, Entrance.hh, Exit.cc, Exit.hh, Hotspot.hh,
+	Liquid.cc, Liquid.hh, Makefile.am, PLF.cc, PLF.hh, PLFPLF.cc,
+	PLFPreview.cc, Pingu.cc, Pingu.hh, PinguAction.cc, PinguAction.hh,
+	PinguBmpMap.hh, PinguHolder.hh, PinguMap.hh: Made the world
+	accessible from all WorldObj's
+
+2000-08-02 21:02  grumbel
+
+	* src/: Background.cc, BackgroundData.hh, PLFPLF.cc: Added some
+	snow (hard coded at the moment) Changed the color handling
+
+2000-08-02 20:58  grumbel
+
+	* data/: images/particles/snow1.pcx, images/particles/snow2.pcx,
+	images/particles/snow3.pcx, images/particles/snow4.pcx,
+	images/particles/snow5.pcx, data/pingus.scr: Added some snow images
+
+2000-08-01 01:49  grumbel
+
+	* BUGS, NEWS, README.sgml, TODO, make-binary-dist.sh,
+	data/data/global.scr, data/images/groundpieces/sweets/aquachoc.pcx,
+	data/images/groundpieces/sweets/chocbloc-topleft.pcx,
+	data/images/groundpieces/sweets/chocbloc-topright.pcx,
+	data/images/textures/darkjungle.jpg,
+	data/images/textures/enchantedjungle.jpg,
+	data/images/textures/happyclouds.jpg,
+	data/images/textures/icetile.jpg, doc/levels.xml,
+	doc/pingus-level.dtd: misc updates
+
+2000-08-01 01:45  grumbel
+
+	* src/: ButtonPanel.cc, PLF.hh, PingusLevelDesc.cc: Fixed xml
+	reader and writer Fixed multi language support Some more
+	improvements to the menu Added group/ungroup support to the editor
+	(press g or G)
+
+2000-07-31 18:43  grumbel
+
+	* data/images/extract_images.sh: added script
+
+2000-07-31 18:37  grumbel
+
+	* doc/config: added missing file
+
+2000-07-31 02:43  grumbel
+
+	* doc/: levels.xml, pingus-level.dtd, pingus-world.dtd, worlds.xml:
+	Some dtd's for pingus xml
+
+2000-07-31 02:20  grumbel
+
+	* data/images/groundpieces/misc/: pipe_bl.pcx, pipe_br.pcx,
+	pipe_ur.pcx: Added missing gfx
+
+2000-07-31 02:16  grumbel
+
+	* data/images/groundpieces/misc/pipe_ul.pcx: Added missing gfx
+
+2000-07-31 01:52  grumbel
+
+	* configure.in: Added error message when libxml is not found
+
+2000-07-30 19:46  grumbel
+
+	* data/data/menu.scr: Added new menu gfx, removed some old ones
+
+2000-07-30 19:45  grumbel
+
+	* data/images/menu/: background.jpg, create_on.tga, credits_on.tga,
+	exit_on.tga, ice_off.tga, options_on.tga, play_on.tga: Added new
+	menu gfx
+
+2000-07-30 04:27  grumbel
+
+	* src/: ActionData.hh, BackgroundData.hh, EntranceData.hh,
+	ExitData.hh, HotspotData.hh, LiquidData.hh: LiquidData.hh
+
+2000-07-30 03:47  grumbel
+
+	* src/: Background.cc, Background.hh, ButtonPanel.cc, Client.cc,
+	ColMap.cc, ColMap.hh, DemoRecorder.cc, Entrance.cc, Entrance.hh,
+	Exit.cc, Exit.hh, Hotspot.cc, Hotspot.hh, Liquid.cc, Liquid.hh,
+	Makefile.am, PLF.cc, PLF.hh, PLFPLF.cc, PLFPLF.hh, PSMParser.cc,
+	PSMParser.hh, PinguHolder.cc, PinguHolder.hh, Pingus.cc,
+	PingusLevelDesc.cc, PingusMenu.cc, PingusSpotMap.cc,
+	PingusSpotMap.hh: XML support, currently not activated
+
+2000-07-16 09:01  grumbel
+
+	* README: Updated readme
+
+2000-07-14 21:41  grumbel
+
+	* src/PingusSound.cc: added missing header...
+
+2000-07-14 21:39  grumbel
+
+	* data/themes/newlevs.plt: A theme for the new levels...
+
+2000-07-14 14:18  grumbel
+
+	* TODO, make-binary-dist.sh, data/data/global.scr,
+	data/data/menu.scr, data/data/traps.scr, data/themes/desert.plt,
+	data/themes/playable.plt, doc/levels.xml, src/Makefile.static,
+	src/PSMParser.cc, src/Pingu.cc, src/Pingus.cc,
+	src/PingusLevelDesc.cc, src/PingusSound.cc, src/PingusSpotMap.cc:
+	Fixed misc glitches for the 0.4.0 release
+
+2000-07-14 14:14  grumbel
+
+	* data/levels/: block-timpany.plf, block-timpany.psm,
+	editor_tut.plf, editor_tut.psm, headbang.plf, headbang.psm,
+	intersec.plf, intersec.psm, lonely.plf, lonely.psm, parallel.plf,
+	parallel.psm, sas.plf, sas.psm, wland.plf, wland.psm: Added Craig's
+	new levels
+
+2000-07-14 14:10  grumbel
+
+	* data/levels/: Wland.plf, Wland.psm, block.plf, cages.plf,
+	candy1.plf, crystal1.plf, crystal2.plf, desert1.plf, desert2.plf,
+	desert3.plf, foliage1.plf, foliage3.plf, foliage4.plf, granit1.plf,
+	jewel.plf, level10.plf, level13.plf, level7.plf, mushroom.plf,
+	partic2.plf, particle.plf, real3.plf, real4.plf, real6.plf,
+	rockhopping.plf, small1.plf, snow.plf, snow1.plf, snow2.plf,
+	snow3.plf, snow4.plf, snow5.plf, snow6.plf, sortie1.plf,
+	sortie2.plf, space1.plf, space2.plf, space3.plf, stone.plf,
+	test1.plf, test2.plf, test3.plf, test4.plf, test5.plf,
+	tutorial1.plf, tutorial2.plf, tutorial3.plf, tutorial4.plf,
+	tutorial5.plf: Removed obsolete level
+
+2000-07-11 22:40  grumbel
+
+	* data/images/textures/sortie.jpg: Added missing file
+
+2000-07-11 17:53  grumbel
+
+	* TODO, data/data/global.scr, src/PSMParser.cc, src/PSMParser.hh:
+	Added surface selectors to all insert functions in the editor, no
+	more typing of resource names required Fixed misc bugs in the
+	resource handling, time to rewrite that to use XML...
+
+2000-07-10 20:48  grumbel
+
+	* data/: images/textures/default.pcx, levels/level0.plf,
+	levels/level0.psm: Added a boring default background...
+
+2000-07-10 20:42  grumbel
+
+	* BUGS, NEWS, TODO, configure.in, data/data/global.scr,
+	data/images/Makefile.am, data/levels/crystal1.plf,
+	data/levels/crystal2.plf, data/levels/crystal3.plf,
+	data/levels/crystal4.plf, data/levels/crystal4.psm,
+	data/levels/crystal5.plf, data/levels/crystal5.psm,
+	data/levels/snow6.plf, data/levels/snow6.psm,
+	data/themes/crystal.plt, data/themes/misc.plt,
+	data/themes/playable2.plt, data/themes/space.plt,
+	data/themes/tutorial.plt, data/themes/xmas99.plt, doc/levels.xml,
+	src/Makefile.static, src/OptionMenu.cc, src/PLF.hh,
+	src/PingusResource.cc: Some more level fixing and some small code
+	fixes
+
+2000-07-10 16:46  grumbel
+
+	* data/: images/groundpieces/sortie/column2.pcx,
+	images/groundpieces/sortie/column3.pcx, levels/level13.plf,
+	levels/real1.plf, levels/real5.plf, levels/real6.plf,
+	levels/real6.psm, levels/rockhopping.plf, levels/rockhopping.psm,
+	levels/sortie1.plf, levels/sortie2.plf, levels/sortie2.psm,
+	themes/playable2.plt: Fixed some more levels to be playable...
+
+2000-07-10 14:42  grumbel
+
+	* data/: data/textures.scr, images/textures/rocktile.jpg,
+	levels/level12.plf, levels/level12.psm, levels/level13.plf,
+	levels/level3.plf, levels/real1.plf, levels/real1.psm,
+	levels/real3.plf, levels/real3.psm, levels/sortie1.plf,
+	levels/sortie1.psm, levels/sortie2.plf, themes/playable.plt,
+	themes/playable2.plt: Made some more levels playable...
+
+2000-07-08 15:21  grumbel
+
+	* src/HurryUp.cc: Fixed hurry_up timing, fixed the game clock to
+	display always the correct time
+
+2000-07-08 11:13  grumbel
+
+	* doc/: config.xml, levels.xml, worlds.xml: Added draft version of
+	.xml files, all pingus files will be changed to xml soon
+
+2000-07-06 21:28  grumbel
+
+	* src/Makefile.static: A hacked makefile to produce a static linked
+	binary ...
+
+2000-07-05 09:25  grumbel
+
+	* src/: Client.cc, HurryUp.cc, HurryUp.hh: Some more hurry-up
+	support...
+
+2000-07-05 01:01  grumbel
+
+	* BUGS, TODO, data/levels/level1.plf, data/levels/level1.psm: Misc
+	fixes...
+
+2000-07-05 00:59  grumbel
+
+	* src/: Client.cc, GuiObj.cc, GuiObj.hh, HurryUp.cc, HurryUp.hh,
+	Liquid.cc, OptionMenu.cc, PSMParser.cc, Pingu.cc, Pingus.cc,
+	Pingus.hh, PingusMenu.cc, PingusResource.cc: Fixed scrolling to be
+	no longer fast-forward depended, thanks to Alan Cox for finding
+	this and some other bugs :-) Added support for reading datafile or
+	scriptfile (--use-datafile, --use-scriptfile)
+
+2000-07-02 09:39  grumbel
+
+	* src/: Client.cc, Client.hh, ColMap.cc, HurryUp.cc, HurryUp.hh,
+	Makefile.am, OptionMenu.cc: Hurry up message when out of time
+
+2000-06-28 21:49  grumbel
+
+	* data/levels/desert1.plf, doc/z_pos, src/Config.cc,
+	src/OptionMenu.cc, src/PinguHolder.cc, src/PingusMessageBox.cc:
+	Last commit before the linuxtag...
+
+2000-06-27 18:08  grumbel
+
+	* data/themes/space.plt: Misc fixes
+
+2000-06-27 18:05  grumbel
+
+	* src/: ActionButton.cc, AlphaButton.cc, Client.cc, Console.cc,
+	Credits.cc, DebugGui.cc, Entrance.cc, Exit.cc, FPSCounter.cc,
+	FileSelector.cc, Hotspot.cc, Intro.cc, Liquid.cc, Loading.cc,
+	OptionMenu.cc, PLFPreview.cc, PSMParser.cc, Pingu.cc,
+	PinguAction.cc, PinguEnums.hh, PinguInfo.cc, Pingus.cc,
+	PingusCounter.cc, PingusLevelDesc.cc, PingusLevelResult.cc,
+	PingusMenu.cc, PingusMessageBox.cc: Replaced all CL_*::load with
+	PingusResource::load_* Tried to fix the bridger with not much
+	success...
+
+2000-06-27 18:02  grumbel
+
+	* data/levels/: crystal4.plf, crystal4.psm, crystal5.plf,
+	crystal5.psm, real5.plf, real5.psm, real6.plf, real6.psm: Some new
+	levels
+
+2000-06-27 08:35  grumbel
+
+	* data/: levels/Dentist.plf, levels/Lev4.plf, levels/Stair.plf,
+	levels/Stair.psm, levels/bombing.plf, levels/space3.plf,
+	levels/space3.psm, themes/misc.plt: Misc fixes
+
+2000-06-27 08:32  grumbel
+
+	* src/: Config.cc, PingusCounter.cc, PingusSpotMap.cc: Added
+	options for setting the username and email, removed some unused
+	stuff
+
+2000-06-26 21:21  grumbel
+
+	* Makefile.am, data/images/Makefile.am: Misc fixes...
+
+2000-06-26 17:37  grumbel
+
+	* data/data/global.scr, data/levels/bombing.plf,
+	data/levels/crystal1.plf, data/levels/desert1.plf,
+	data/levels/desert1.psm, data/levels/desert2.plf,
+	data/levels/desert3.plf, data/levels/foliage1.plf,
+	data/levels/foliage1.psm, data/levels/foliage4.plf,
+	data/levels/foliage4.psm, data/levels/rockhopping.plf,
+	data/levels/rockhopping.psm, data/levels/snow1.plf,
+	data/levels/space3.plf, data/levels/test5.plf, doc/z_pos: Misc
+	changes
+
+2000-06-26 17:32  grumbel
+
+	* src/: ActionButton.cc, Background.cc, Client.cc, Client.hh,
+	OptionMenu.cc, Pingu.cc, Pingus.cc, PingusLevelResult.cc,
+	PingusMenu.cc: Added option to debug the gametime, changed some
+	CL_Surface::load to PingusResource::load...
+
+2000-06-26 17:31  grumbel
+
+	* data/images/: entrances/wood_bottom.pcx, entrances/wood_top.pcx,
+	hotspots/engine.tga: Added a normal entrance and a animated space
+	engine
+
+2000-06-26 08:45  grumbel
+
+	* src/: Client.cc, DemoRecorder.cc, PSMParser.cc,
+	PingusResource.cc, PingusResource.hh: Some fixes to the resource
+	loading, it should be working now correctly again...
+
+2000-06-25 22:25  grumbel
+
+	* data/levels/: real4.plf, real4.psm: another test level, btw my
+	resource rewrite might have broken some thing, will fix that
+	tomorrow...
+
+2000-06-25 22:23  grumbel
+
+	* configure.in: Misc fixes..
+
+2000-06-25 22:22  grumbel
+
+	* src/: ActionButton.cc, AlphaButton.cc, Background.cc,
+	CaptureRectangle.cc, ColMap.cc, Exit.cc, Hotspot.cc, OptionMenu.cc,
+	PSMParser.cc, PinguBmpMap.cc, PingusResource.cc, PingusResource.hh:
+	Rewrote some parts of the resource management, to make it possible
+	to transparently read real files instead of datafiles
+
+2000-06-25 20:17  grumbel
+
+	* data/images/textures/desert_room.jpg: Added new desert background
+
+2000-06-25 20:16  grumbel
+
+	* data/: data/textures.scr, images/Makefile.am: misc changes...
+
+2000-06-25 20:14  grumbel
+
+	* data/themes/desert.plt: The desert theme is coming along nicely..
+
+2000-06-25 20:12  grumbel
+
+	* data/levels/: desert1.plf, desert1.psm, desert3.plf, desert3.psm,
+	test3.plf, test3.psm: Some new desert levels
+
+2000-06-25 20:12  grumbel
+
+	* data/images/textures/: crystal.jpg, enchantedjungle.jpg,
+	happyclouds.jpg, icetile.jpg, nightjungle.jpg, rockagglo.jpg:
+	Blurred some textures, that gives a nice pseudo 3D feeling...
+
+2000-06-25 12:10  grumbel
+
+	* data/: levels/desert1.plf, levels/desert1.psm,
+	levels/desert2.plf, levels/desert2.psm, themes/desert.plt: Added a
+	desert theme and two new levels, the second level should be
+	playable
+
+2000-06-24 22:51  grumbel
+
+	* src/: Background.cc, Pingus.cc: Added option to enable buggy
+	background-overdrawing...
+
+2000-06-24 22:50  grumbel
+
+	* data/: images/groundpieces/rock/real35.pcx,
+	images/groundpieces/rock/real36.pcx,
+	images/groundpieces/rock/real37.pcx, data/global.scr: And again new
+	scanned gfx...
+
+2000-06-24 22:48  grumbel
+
+	* INSTALL.Win32, pingus.dsp, pingus.dsw: Added some win32 files...
+
+2000-06-24 17:07  grumbel
+
+	* src/PingusSpotMap.cc: Fixed the last-tile-line-missing problem
+
+2000-06-24 17:06  grumbel
+
+	* data/images/: groundpieces/space/diagonalr.pcx,
+	hotspots/tutorial_left.pcx, hotspots/tutorial_right.pcx: ...
+
+2000-06-24 17:05  grumbel
+
+	* data/levels/: real2.plf, real2.psm, real3.plf, real3.psm,
+	space3.plf, space3.psm, test5.plf, test5.psm: Some new levels,
+	nothing playable...
+
+2000-06-24 17:04  grumbel
+
+	* data/data/global.scr: new gfx..
+
+2000-06-24 17:04  grumbel
+
+	* data/levels/tutorial5.plf: Misc fixes...
+
+2000-06-24 17:02  grumbel
+
+	* data/images/groundpieces/rock/: fish.pcx, green1.pcx, green2.pcx,
+	real22.pcx, real24.pcx, real26.pcx, real27.pcx, real28.pcx,
+	real29.pcx, real30.pcx, real31.pcx, real32.pcx, real33.pcx,
+	real34.pcx, real9.pcx: A bunch of new stones..
+
+2000-06-24 16:58  grumbel
+
+	* data/images/groundpieces/space/diagonal.pcx: A new gfx...
+
+2000-06-23 22:51  grumbel
+
+	* data/data/.cvsignore: ...
+
+2000-06-23 22:48  grumbel
+
+	* data/images/: hotspots/sun.tga, textures/desert.jpg: New gfx...
+
+2000-06-23 22:48  grumbel
+
+	* pingus.dsw: Removed pingus.dsw
+
+2000-06-23 22:45  grumbel
+
+	* pingus.dsp: removing...
+
+2000-06-23 20:39  grumbel
+
+	* src/: Console.cc, Console.hh, DebugGui.cc, DemoPlayer.cc,
+	DemoRecorder.cc, DemoRecorder.hh, Display.cc, Display.hh, FVec.cc,
+	Pingu.cc, PinguHolder.cc, PingusDemo.hh, PingusGame.cc,
+	PingusMusicProvider.cc, PingusSpotMap.cc, PingusWavProvider.cc:
+	Applied Michaels win32 patch... ^M's suck...
+
+2000-06-23 19:13  grumbel
+
+	* NEWS, data/data/global.scr, data/data/textures.scr,
+	data/levels/space1.plf, data/levels/space1.psm,
+	data/levels/space2.plf, data/levels/space2.psm,
+	data/levels/test3.plf, src/ActionHolder.cc, src/DemoPlayer.cc,
+	src/DemoRecorder.cc, src/Makefile.am, src/PLF.cc,
+	src/PinguAction.hh, src/Pingus.cc: Misc changes
+
+2000-06-23 19:05  grumbel
+
+	* src/OptionMenu.cc: Added back button highlighting (my gui code is
+	crap... and should be rewritten...)
+
+2000-06-23 19:03  grumbel
+
+	* data/images/entrances/space.tga: A new space entrance...
+
+2000-06-23 19:02  grumbel
+
+	* data/images/groundpieces/rock/: fish.pcx, real10.pcx, real11.pcx,
+	real12.pcx, real13.pcx, real14.pcx, real15.pcx, real16.pcx,
+	real17.pcx, real18.pcx, real19.pcx, real20.pcx, real21.pcx,
+	real22.pcx, real23.pcx, real24.pcx, real25.pcx, real9.pcx: A hole
+	bunch of new groundpieces (all scaned...)
+
+2000-06-22 01:00  grumbel
+
+	* TODO, data/data/global.scr: ...
+
+2000-06-21 22:55  grumbel
+
+	* data/data/menu.scr, data/images/Makefile.am,
+	data/images/buttons/back.pcx, data/themes/playable.plt,
+	src/PingusMenu.cc: Misc fixes
+
+2000-06-21 22:46  grumbel
+
+	* configure.in: Some cleanups
+
+2000-06-21 22:30  grumbel
+
+	* src/: FPSCounter.cc, FPSCounter.hh: Add little 'o' when the
+	screen is flipped
+
+2000-06-21 22:30  grumbel
+
+	* src/Pingus.cc: Remove all sound options, when SDL_mixer is not
+	present...
+
+2000-06-21 22:29  grumbel
+
+	* src/: OptionMenu.cc, OptionMenu.hh: Added (back) button
+
+2000-06-20 22:35  grumbel
+
+	* TODO, data/levels/crystal1.plf, data/levels/crystal1.psm,
+	data/levels/level10.plf, data/levels/level10.psm,
+	data/levels/level13.plf, data/levels/level13.psm,
+	data/levels/real1.plf, data/levels/real1.psm,
+	data/levels/rock1.plf, data/levels/rock1.psm, doc/pingus.texi: Misc
+	other fixes
+
+2000-06-20 22:34  grumbel
+
+	* configure.in: Added --without-sound option
+
+2000-06-20 19:52  grumbel
+
+	* src/: DemoPlayer.cc, PLF.cc, PLF.hh: Fixed the filename handling
+	in demofiles
+
+2000-06-19 22:10  grumbel
+
+	* src/: Console.cc, Console.hh, Entrance.cc, Entrance.hh,
+	GlobalEvent.cc, Intro.cc, Pingu.cc, Pingus.cc, PingusSpotMap.cc:
+	Fixed caputure rectangle and misc other stuff...
+
+2000-06-19 09:26  grumbel
+
+	* src/: ActionButton.hh, Background.cc, CaptureRectangle.cc,
+	Console.hh, FVec.hh, PLF.cc, PLF.hh, PLFParser.hh, Pingu.cc,
+	PingusSound.hh: Misc fixes to make CVS compileable again...
+
+2000-06-19 00:19  grumbel
+
+	* src/: ActionButton.hh, Console.hh, GuiObj.hh: Added missing files
+
+2000-06-18 20:24  grumbel
+
+	* src/: Button.cc, Button.hh: Cleaning up...
+
+2000-06-18 20:06  grumbel
+
+	* TODO, data/data/story.scr, data/images/Makefile.am,
+	data/themes/Makefile.am, doc/html/images/logo.png,
+	src/ActionButton.hh, src/GuiObj.hh, src/Pingu.hh,
+	src/PinguEnums.hh: Made the doc++ output a bit nicer...
+
+2000-06-18 19:01  grumbel
+
+	* src/: ActionButton.hh, ActionHolder.hh, AlphaButton.hh,
+	AnimCounter.hh, Background.hh, Button.hh, ButtonPanel.hh,
+	CaptureRectangle.hh, Client.hh, ClientEvent.hh, ColMap.hh,
+	Config.hh, Console.cc, Console.hh, Counter.hh, Credits.hh,
+	DebugGui.hh, DemoPlayer.hh, DemoRecorder.hh, Direction.hh,
+	Display.hh, Entrance.hh, Exit.hh, FPSCounter.hh, FVec.hh,
+	FadeOut.hh, FileSelector.hh, GameCounter.hh, GameObj.hh,
+	GameTime.hh, GlobalEvent.hh, GuiObj.hh, Hotspot.hh, Intro.cc,
+	Intro.hh, LevelInterrupt.hh, Liquid.hh, Loading.hh, MainMenu.hh,
+	Makefile.am, MikMod.hh, MultiLineText.hh, OptionMenu.hh, PLF.hh,
+	PLFParser.hh, PLFPreview.hh, PLTParser.hh, PSMParser.hh, Pingu.hh,
+	PinguAction.hh, PinguBmpMap.hh, PinguEnums.hh, PinguHolder.hh,
+	PinguInfo.hh, PinguMap.hh, PinguRandomMap.hh, Pingus.hh,
+	PingusCounter.hh, PingusDemo.hh, PingusError.hh, PingusGame.hh,
+	PingusLevelDesc.hh, PingusLevelResult.hh, PingusMenu.hh,
+	PingusMessageBox.hh, PingusMode.hh, PingusMusicProvider.hh,
+	PingusResource.hh, PingusSound.hh, PingusSpotMap.hh,
+	PingusWavProvider.hh: Added doc++ comments (mostly empty)
+
+2000-06-17 13:46  grumbel
+
+	* src/Pingus.cc: Added option for reading another config file,
+	slowed the miner and the basher down (they are now a bit too slow,
+	need to speed them up a bit more
+
+2000-06-17 01:28  grumbel
+
+	* data/data/global.scr: Shame on me, how could that hardcoded path
+	slip into a commit... :-/
+
+2000-06-16 19:41  grumbel
+
+	* TODO, configure.in, data/data/global.scr,
+	data/images/Makefile.am, data/images/entrances/generic.pcx,
+	data/levels/small1.plf, data/levels/small1.psm, src/Entrance.cc,
+	src/PingusSpotMap.cc: Added a 32bit alpha blitter (slow as hell,
+	but working), changed the generic entrance to have no surface at
+	all (for more flexibility
+
+2000-06-15 23:08  grumbel
+
+	* NEWS, TODO: Misc updates
+
+2000-06-15 21:32  grumbel
+
+	* src/: Console.cc, GlobalEvent.cc, Pingus.cc, PingusMenu.cc,
+	PingusSpotMap.cc: Misc changes
+
+2000-06-15 21:31  grumbel
+
+	* src/Background.cc: This background bug drives me mad, I removed
+	the buggy code now...
+
+2000-06-15 08:08  grumbel
+
+	* data/: data/fonts.scr, images/fonts/xterm.pcx: Added a fixed
+	width version of the xterm font (gimp does suck completly when it
+	comes to editing indexed images...)
+
+2000-06-14 23:59  grumbel
+
+	* data/levels/space1.psm: Added bridge proberty, the grid in
+	space1.plf acts now like in Lemmings
+
+2000-06-14 23:45  grumbel
+
+	* src/: Console.cc, DemoRecorder.cc, GlobalEvent.cc, PSMParser.cc,
+	PingusSpotMap.cc: Console is now working correct (maybe a bit slow)
+	Added bridge type for groundpieces Removed some debugging cout's
+
+2000-06-14 23:09  grumbel
+
+	* src/: Console.cc, Console.hh, PingusGame.cc: Fixed the console,
+	should finally work as expected
+
+2000-06-14 19:24  grumbel
+
+	* src/: Console.cc, Console.cc: Misc fixes
+
+2000-06-14 18:30  grumbel
+
+	* src/: Console.cc, Console.hh, GlobalEvent.cc: Misc fixes
+
+2000-06-14 18:11  grumbel
+
+	* NEWS, doc/pingus.texi, src/Console.cc, src/Console.hh,
+	src/GlobalEvent.cc, data/images/groundpieces/test/test6.pcx,
+	data/images/pingus/bridgerl3.pcx: Misc updates...
+
+2000-06-14 16:57  grumbel
+
+	* src/: Console.cc, Console.hh, GlobalEvent.cc: Misc fixes
+
+2000-06-14 16:54  grumbel
+
+	* data/data/: fonts.scr, global.scr, pingus.scr: Misc fixes
+
+2000-06-14 16:51  grumbel
+
+	* data/images/fonts/xterm.tga: Fixed the font
+
+2000-06-14 16:44  grumbel
+
+	* data/levels/: Dentist.plf, Dentist.psm: A new level...
+
+2000-06-14 06:51  grumbel
+
+	* data/images/fonts/xterm.tga: The Xterm font used in the Console
+
+2000-06-14 00:19  grumbel
+
+	* src/: Console.cc, Console.hh, Display.cc, Display.hh,
+	GlobalEvent.cc, Pingus.cc: Some enhancements to the console...
+	(simple support for linebreaks) Added toggle_display() for the
+	display hooks Placed the Console on F1 and Fpscounter on F11 Made
+	the 16bit screenshot default, since it doesn't contain 16bit
+	specific code ....  Added the nice groundpiece surface selector to
+	the hotspot selection
+
+2000-06-13 19:51  grumbel
+
+	* data/levels/: README, rockhopping.plf, rockhopping.psm,
+	test2.plf, test2.psm, tutorial3.plf, tutorial4.plf, tutorial4.psm,
+	tutorial5.plf: A new level, by Martijn Meijers
+
+2000-06-13 19:50  grumbel
+
+	* src/: Console.cc, Console.hh, FPSCounter.cc, FPSCounter.hh,
+	GlobalEvent.cc, GlobalEvent.hh, Makefile.am, Pingus.cc: Added a
+	simple console (output only), can be activated with ` or ^ Fixed
+	the groundpiece selection dialog in the editor made fps_counter a
+	global object
+
+2000-06-12 22:33  grumbel
+
+	* src/: FPSCounter.cc, FPSCounter.hh: added global fps counter
+
+2000-06-12 22:31  grumbel
+
+	* src/: Makefile.am, Pingus.cc: Fixed handling of transparent spots
+	in the editor Added a faster screenshot function (only for 16bit)
+	Added global fps display
+
+2000-06-12 16:42  grumbel
+
+	* src/: AnimCounter.hh, Client.cc, Credits.cc, Display.cc,
+	Display.hh, FadeOut.cc, FileSelector.cc, GlobalEvent.cc,
+	GlobalEvent.hh, Intro.cc, Loading.cc, Makefile.am, OptionMenu.cc,
+	Pingus.cc, PingusLevelDesc.cc, PingusLevelResult.cc, PingusMenu.cc,
+	PingusMessageBox.cc: Added screenshot support (F12) Added wrapper
+	around flip_display(), cappable of using hooks
+
+2000-06-12 14:05  grumbel
+
+	* data/levels/: bombing.plf, bombing.psm, cages.plf, cages.psm,
+	jewel.plf, jewel.psm, longway.plf, longway.psm, partic2.plf,
+	partic2.psm, particle.plf, particle.psm, rinse.plf, rinse.psm: some
+	levels updates... kind of a hell to overwrite files in cvs ... %-)
+
+2000-06-12 14:03  grumbel
+
+	* data/levels/: bombing.psm, cages.plf, cages.psm, jewel.plf,
+	jewel.psm, longway.plf, longway.psm, partic2.plf, partic2.psm,
+	particle.plf, particle.psm, rinse.plf, rinse.psm: Removed
+	bombing.psm cages.plf cages.psm jewel.plf jewel.psm longway.plf
+	longway.psm partic2.plf partic2.psm particle.plf particle.psm
+	rinse.plf rinse.psm
+
+2000-06-12 14:02  grumbel
+
+	* data/levels/: cages.plf, cages.psm, jewel.plf, jewel.psm,
+	partic2.plf, partic2.psm, particle.plf, particle.psm, real1.plf,
+	real1.psm: ...
+
+2000-06-12 13:57  grumbel
+
+	* data/levels/bombing.plf: ...
+
+2000-06-12 13:44  grumbel
+
+	* data/levels/: bombing.plf, bombing.psm, longway.plf, longway.psm,
+	rinse.plf, rinse.psm: Some level fixes and clean ups
+
+2000-06-12 13:44  grumbel
+
+	* data/levels/: Cages.plf, Cages.psm, Jewel.plf, Jewel.psm,
+	Partic2.plf, Partic2.psm, Particle.plf, Particle.psm: Removing...
+
+2000-06-12 11:18  grumbel
+
+	* src/: Background.cc, PingusSpotMap.cc: Misc cleanups in the
+	blitters, added a not working 32bit blitter, added function to copy
+	a canvas and tried to fix a bug in Background.cc with no success
+
+2000-06-11 22:59  grumbel
+
+	* data/levels/test3.plf, doc/pingus.texi, src/Background.cc: Misc
+	fixes
+
+2000-06-11 19:38  grumbel
+
+	* src/: ActionButton.cc, Background.cc, PingusSpotMap.cc: Misc
+	fixes, it should compile now again
+
+2000-06-11 18:09  grumbel
+
+	* contrib/clanlib_make_datafile.sh: Added directory for all those
+	small helpfull scripts..
+
+2000-06-11 17:23  grumbel
+
+	* src/: ActionButton.cc, ActionButton.hh, Background.cc,
+	Background.hh, Client.cc, Client.hh, ColMap.cc, Config.cc,
+	Display.cc, Display.hh, GameCounter.cc, PinguHolder.cc,
+	PinguMap.cc, PinguMap.hh, Pingus.cc, PingusSpotMap.cc: More memory
+	hole cleanups... it seems that there are still some holes left, but
+	its getting better... (time to try a leak tracer...) Made the
+	hardware cursor default, since Software cursor seems buggy and is
+	slow as hell...
+
+2000-06-11 00:04  grumbel
+
+	* data/data/global.scr: Added some new images
+
+2000-06-10 23:53  grumbel
+
+	* data/images/groundpieces/rock/: real1.pcx, real2.pcx, real3.pcx,
+	real4.pcx, real5.pcx, real6.pcx, real7.pcx, real8.pcx: Added some
+	new images (scanned stones)
+
+2000-06-10 10:23  grumbel
+
+	* TODO, data/levels/tutorial3.plf, data/levels/tutorial3.psm: Misc
+	changes
+
+2000-06-10 09:56  grumbel
+
+	* src/: ActionHolder.cc, Client.cc, ClientEvent.cc, Display.cc,
+	Display.hh, Intro.cc, Loading.cc, OptionMenu.cc, Pingus.cc,
+	PingusLevelResult.cc, PingusMenu.cc: Added wrapper around
+	CL_MouseCursor and added an option to disable the software cursor,
+	due to probable bugs in CL_MouseCursor
+
+2000-06-08 22:05  grumbel
+
+	* src/: Client.cc, Client.hh, Makefile.am, Pingus.cc, Pingus.hh,
+	PingusGame.cc, PingusGame.hh, PingusMenu.cc: Added support for demo
+	recording and playing (again), should be basically working, but
+	haven't tested it much
+
+2000-06-08 21:57  grumbel
+
+	* src/: DemoPlayer.cc, DemoPlayer.hh, DemoRecorder.cc,
+	DemoRecorder.hh: Added support for demo recording and playing
+	(again), should be basically working, but haven't tested it much
+
+2000-06-08 08:14  grumbel
+
+	* TODO, configure.in, data/data/fonts.scr, data/data/global.scr,
+	data/images/Makefile.am, data/levels/Makefile.am,
+	data/levels/foliage4.plf, data/levels/foliage4.psm, src/Pingus.cc:
+	misc changes
+
+2000-06-07 15:52  grumbel
+
+	* src/Exit.cc: Misc fixes
+
+2000-06-07 06:52  grumbel
+
+	* src/Exit.hh: Fixed missing set_action_holder() declaration
+
+2000-06-06 20:51  grumbel
+
+	* src/: ActionHolder.cc, ActionHolder.hh, Entrance.cc, Entrance.hh,
+	Exit.cc, Exit.hh, PSMParser.hh, Pingu.cc, Pingu.hh, PinguAction.hh:
+	Rewrote the ActionHolder, the game sholud now be playable again (or
+	probably not, I didn't tested it much
+
+2000-06-03 23:47  grumbel
+
+	* data/levels/: Cages.plf, Cages.psm, Jewel.plf, Jewel.psm: Some
+	new levels by Craig
+
+2000-05-28 22:01  grumbel
+
+	* data/themes/test.plt: A new theme...
+
+2000-05-28 21:54  grumbel
+
+	* AUTHORS, NEWS, TODO, data/data/global.scr,
+	data/images/Makefile.am,
+	data/images/groundpieces/crystal/block.pcx,
+	data/images/groundpieces/desert/Sluggydu.pcx,
+	data/images/groundpieces/desert/blobdune.pcx,
+	data/images/groundpieces/desert/pillar1.pcx,
+	data/images/groundpieces/desert/pillar2.pcx,
+	data/images/groundpieces/desert/pillar3.pcx,
+	data/images/groundpieces/snow/slopedr.pcx,
+	data/images/story/story0.jpg, data/levels/Particle.plf,
+	data/levels/Particle.psm, src/ActionHolder.cc, src/OptionMenu.cc:
+	Some new levels and gfx...
+
+2000-05-28 21:45  grumbel
+
+	* data/levels/: Partic2.plf, Partic2.psm, tutorial3.plf: And
+	another level by craig
+
+2000-05-28 18:47  grumbel
+
+	* src/: ActionHolder.cc, PingusLevelDesc.cc, PingusLevelDesc.hh,
+	PingusSpotMap.cc: Some more nice multi line support and some more
+	breaks in the action allocation. CVS is currently not playable
+
+2000-05-28 18:46  grumbel
+
+	* data/levels/: Lev4.plf, Makefile.am, Stair.plf, bombing.plf,
+	candy1.plf, crystal1.plf, foliage4.plf, jungle1.plf, jungle2.plf,
+	large1.plf, level1.plf, level13.plf, level2.plf, level3.plf,
+	snow4.plf, snow5.plf, space1.plf, space2.plf, stone.plf,
+	stone2.plf, test1.plf, test2.plf, test3.plf, test4.plf,
+	tutorial1.plf, tutorial2.plf, tutorial4.plf, tutorial5.plf: Fixed
+	some description tags
+
+2000-05-28 18:37  grumbel
+
+	* src/: MultiLineText.cc, MultiLineText.hh: Added support for multi
+	line texts
+
+2000-05-28 01:11  grumbel
+
+	* src/Makefile.am: Added better support for long lines
+
+2000-05-26 20:15  grumbel
+
+	* NEWS, TODO, configure.in, data/images/Makefile.am,
+	data/levels/Makefile.am, data/levels/foliage3.plf,
+	data/themes/misc.plt, data/themes/standard.plt,
+	data/themes/tutorial.plt: Misc fixes for the next release make dist
+	should now build a working tarball, just some Pingus bugs needs to
+	be fixed for the next release.
+
+2000-05-26 20:13  grumbel
+
+	* src/PingusSpotMap.cc: More mem leak fixing...
+
+2000-05-26 20:11  grumbel
+
+	* data/levels/: Wland.plf, Wland.psm: Changed the grass to use
+	transparent groundpieces instead of hotspots
+
+2000-05-26 20:00  grumbel
+
+	* src/Pingus.cc: Added command line option to change tile-size
+
+2000-05-26 19:59  grumbel
+
+	* src/ButtonPanel.cc: Fixing memory holes...
+
+2000-05-26 19:54  grumbel
+
+	* src/: Client.cc, Client.hh: Added a destructor... fixing some
+	memory leaks...
+
+2000-05-25 19:20  grumbel
+
+	* data/images/traps/: bumper.pcx, bumper_cmap.pcx: A wip trap
+
+2000-05-25 19:16  grumbel
+
+	* src/ActionHolder.cc, src/ActionHolder.hh, src/PingusGame.cc,
+	TODO: Misc changes
+
+2000-05-25 18:46  grumbel
+
+	* data/: images/cursors/capture.tga, images/cursors/editor.pcx,
+	images/pingus/.cvsignore, images/pingus/bridger2.pcx,
+	images/pingus/bridgerl.pcx, images/pingus/splash_debris.pcx,
+	levels/foliage4.plf, levels/foliage4.psm, levels/pipes1.plf,
+	levels/pipes1.psm, levels/rinse.psm: Misc adds
+
+2000-05-25 17:55  grumbel
+
+	* src/: PingusSpotMap.cc, PingusSpotMap.hh: Changed the way empty
+	tiles are marked (now done before the blitting)
+
+2000-05-25 17:45  grumbel
+
+	* data/levels/: Lev4.plf, Lev4.psm, Stair.plf, Stair.psm,
+	mushroom.plf, mushroom.psm, rinse.plf, sortie2.plf, sortie2.psm,
+	test4.plf, test4.psm: A bunch of new levels, mostly just test stuff
+
+2000-05-24 20:48  grumbel
+
+	* TODO, data/data/pingus.scr, data/levels/Wland.plf,
+	data/levels/test3.plf, data/levels/test3.psm,
+	data/levels/tutorial4.psm, src/ActionHolder.cc,
+	src/ActionHolder.hh: Misc (useless?\!) changes
+
+2000-05-24 17:45  grumbel
+
+	* src/: ActionHolder.cc, Background.cc, Client.cc, Client.hh,
+	Makefile.am, Pingus.cc, PingusGame.cc: Removed the MAX, MIN macros
+	and replaced them with <algorithm> Added some benchmarking
+	information (Timer)
+
+2000-05-24 17:40  grumbel
+
+	* src/: PingusSpotMap.cc, PingusSpotMap.hh: Changed the way how
+	empty tiles are marked, should be a bit faster now
+
+2000-05-24 17:39  grumbel
+
+	* src/: ColMap.cc, PSMParser.cc, PSMParser.hh: Added a new
+	groundpiece type (transparent)
+
+2000-05-21 14:03  grumbel
+
+	* data/levels/: Wland.plf, bombing.plf, longway.plf, longway.psm:
+	Another new level, misc other fixes
+
+2000-05-20 19:22  grumbel
+
+	* TODO, data/data/pingus.scr: Misc changes
+
+2000-05-20 14:09  grumbel
+
+	* data/levels/: bombing.plf, bombing.psm: Made the solid objects
+	solid and placed the entrance some pixel more left
+
+2000-05-20 14:07  grumbel
+
+	* data/levels/: Wland.plf, Wland.psm: Another new level from Craig
+	Timpany
+
+2000-05-19 20:41  grumbel
+
+	* data/levels/: bombing.plf, bombing.psm: a new level, by Craig
+	Timpany
+
+2000-05-19 16:27  grumbel
+
+	* README, TODO, data/data/global.scr, data/data/pingus.scr,
+	data/levels/stone2.plf, data/levels/stone2.psm: Misc changes
+
+2000-05-19 16:21  grumbel
+
+	* data/images/groundpieces/sortie/: column.pcx, column2.pcx,
+	column3.pcx: A new column
+
+2000-05-19 16:19  grumbel
+
+	* data/images/: groundpieces/crystal/skinnycrystal.pcx,
+	textures/crystal.jpg: Some image updates
+
+2000-05-15 08:50  grumbel
+
+	* src/: Pingus.cc, Pingus.hh: Added option for not reading the
+	config file and added a segfault catcher
+
+2000-05-12 15:53  grumbel
+
+	* data/: data/traps.scr, images/Makefile.am,
+	images/cursors/cross.tga: Added some mushrooms
+
+2000-05-12 15:34  grumbel
+
+	* src/: ActionButton.cc, ActionButton.hh, Makefile.am, Pingu.cc,
+	Pingu.hh: Misc changes
+
+2000-05-12 15:25  grumbel
+
+	* data/levels/: stone2.plf, stone2.psm: Added a new level, fixed
+	others
+
+2000-05-10 22:34  grumbel
+
+	* data/data/: game.scr, global.scr, pingus.scr, traps.scr: Added
+	the entries needed for the new images
+
+2000-05-10 22:33  grumbel
+
+	* data/images/traps/smasher_cmap.pcx: Made a more complete colmap
+
+2000-05-10 22:30  grumbel
+
+	* data/images/groundpieces/mushroom/: toadstool1.pcx,
+	toadstool2.pcx, toadstool3.pcx, toadstool4.pcx: Added some mushroom
+	images
+
+2000-05-09 19:03  grumbel
+
+	* data/images/pingus/bridger.pcx: Woops, looks like I commited this
+	as RGB, converted it back to indexed.
+
+2000-05-09 18:48  grumbel
+
+	* data/images/particles/: smoke.tga, smoke2.tga: Added another
+	smoke particle variant and changed the color to white
+
+2000-05-04 22:19  grumbel
+
+	* src/Pingus.cc: Misc small changes Note no myself, *NEVER* do a
+	search/replace over the complete Pingus source again... or at least
+	know what you are doing the next time...
+
+2000-05-03 20:41  grumbel
+
+	* src/: ClientEvent.cc, Liquid.cc, Pingu.cc, Pingu.hh: Misc changes
+
+2000-05-03 19:32  grumbel
+
+	* data/data/story.scr: Forgot that one...
+
+2000-05-03 19:03  grumbel
+
+	* data/levels/level1.plf: Solid objects need no longer to be
+	inserted as HotSpots
+
+2000-05-03 19:00  grumbel
+
+	* TODO: Why are TODO list allways getting longer...
+
+2000-05-03 18:53  grumbel
+
+	* src/: ClientEvent.cc, PingusSound.cc, PingusSpotMap.hh,
+	PingusWavProvider.cc: Misc changes
+
+2000-05-03 18:49  grumbel
+
+	* src/ColMap.hh: Forgot bit on position 1
+
+2000-05-03 18:49  grumbel
+
+	* src/ColMap.cc: fixed SOLID handling
+
+2000-05-03 18:34  grumbel
+
+	* src/PingusSpotMap.cc: Solid pixel are no longer removed
+
+2000-05-01 22:11  grumbel
+
+	* src/: Client.cc, FVec.cc, Loading.cc, PingusLevelResult.cc,
+	PingusMenu.cc, PingusSpotMap.cc: Misc small fixes
+
+2000-05-01 19:43  grumbel
+
+	* configure.in: added checks for pthread and Hermes, some system
+	seem to require them.
+
+2000-05-01 13:55  grumbel
+
+	* data/data/global.scr: Misc updates
+
+2000-05-01 13:54  grumbel
+
+	* data/levels/: sortie1.plf, sortie1.psm: Added a test level for
+	Joels new gfx
+
+2000-05-01 13:40  grumbel
+
+	* src/: Exit.cc, Exit.hh: Never declare something static if you
+	don't want to have it static...  How could this bug life for so
+	long?
+
+2000-05-01 13:38  grumbel
+
+	* data/images/groundpieces/sortie/: plate_forme.pcx,
+	plate_forme_left.pcx, plate_forme_right.pcx: Added some new gfx
+	from Joel Fauche...
+
+2000-05-01 12:35  grumbel
+
+	* BUGS, TODO, acconfig.h, configure.in, data/data/Makefile.am: Misc
+	changes
+
+2000-04-29 22:10  grumbel
+
+	* src/PingusWavProvider.cc: Looks like I forgot this one...
+
+2000-04-29 22:03  grumbel
+
+	* src/: ButtonPanel.cc, ClientEvent.cc: Changed in-game mouse
+	handling to event based stuff
+
+2000-04-29 16:08  grumbel
+
+	* AUTHORS: updating...
+
+2000-04-29 15:13  grumbel
+
+	* src/: Client.cc, Entrance.cc, Makefile.am, OptionMenu.cc,
+	Pingu.cc, Pingus.cc, PingusLevelResult.cc, PingusMenu.cc,
+	PingusSound.cc, PingusSound.hh: Added sound support and fixed music
+	support, you need now to ./pingus -s -m to get music and sound
+
+2000-04-29 15:12  grumbel
+
+	* data/images/story/: story1.jpg, story2.jpg, story3.jpg: Time for
+	a Pingus story... so here the first images, text will follow
+	later...
+
+2000-04-26 17:48  grumbel
+
+	* src/PLFParser.cc: Forgot some, here again: Removed some std::
+	infront of is..., old libstdc++ doesn't like that
+
+2000-04-26 17:27  grumbel
+
+	* src/: PLFParser.cc, PLTParser.cc, PSMParser.cc: Removed some
+	std:: infront of is..., old libstdc++ doesn't like that
+
+2000-04-25 19:54  grumbel
+
+	* src/: Config.cc, Credits.cc, Credits.hh, Loading.cc, Makefile.am,
+	OptionMenu.cc, OptionMenu.hh, PLF.cc, PLFParser.cc, PLTParser.cc,
+	PSMParser.cc, PinguHolder.cc, PingusGame.cc, PingusLevelDesc.cc,
+	PingusLevelDesc.hh, PingusLevelResult.cc, PingusMenu.cc,
+	PingusMusicProvider.cc, PingusMusicProvider.hh, PingusResource.cc,
+	PingusSound.cc, PingusSpotMap.cc, PingusSpotMap.hh: Added  Felix
+	Natter's namespace clean ups - Part 2 (untested)
+
+2000-04-24 15:15  grumbel
+
+	* src/: ActionButton.cc, ActionButton.hh, ActionHolder.cc,
+	ActionHolder.hh, ButtonPanel.cc, ButtonPanel.hh, Client.cc,
+	Client.hh, ColMap.cc, Config.hh, FVec.cc, FVec.hh, Liquid.cc,
+	Loading.hh, OptionMenu.cc, OptionMenu.hh, PLF.hh, PLFParser.hh,
+	PLTParser.hh, PSMParser.hh, Pingu.hh, PinguHolder.hh, Pingus.cc,
+	Pingus.hh, PingusDemo.hh, PingusMenu.hh, PingusMessageBox.hh,
+	PingusResource.hh, PingusSound.hh: Added  Felix Natter's namespace
+	clean ups
+
+2000-04-21 15:50  grumbel
+
+	* configure.in: removed mikmod check
+
+2000-04-21 15:35  grumbel
+
+	* src/Config.cc: Misc changes
+
+2000-04-21 15:25  grumbel
+
+	* src/: Intro.cc, Intro.hh: Misc changes
+
+2000-04-21 13:26  grumbel
+
+	* src/: Client.cc, Intro.cc, Intro.hh, Pingus.cc: Removed some more
+	mikmod support
+
+2000-04-21 11:47  grumbel
+
+	* src/: Client.cc, Makefile.am, PingusLevelResult.cc,
+	PingusMusicProvider.cc, PingusMusicProvider.hh, PingusSound.cc,
+	PingusSound.hh: Added wrapper around SDL.h and SDL_mixer.h
+
+2000-04-20 19:23  grumbel
+
+	* configure.in: Increasing the version number...
+
+2000-04-20 19:17  grumbel
+
+	* src/: Makefile.am, PingusMenu.cc, PingusMusicProvider.cc,
+	PingusMusicProvider.hh, PingusSound.cc, PingusSound.hh: Added some
+	better? handling of loading music files
+
+2000-04-20 19:16  grumbel
+
+	* NEWS: updating
+
+2000-04-20 19:12  grumbel
+
+	* src/: Config.cc, Pingus.cc: Added some options to change the
+	audio output
+
+2000-04-14 21:07  grumbel
+
+	* data/levels/: large1.plf, large1.psm, level13.plf, level13.psm:
+	Some more level
+
+2000-04-14 20:42  grumbel
+
+	* BUGS, NEWS, TODO, data/levels/foliage3.plf,
+	data/levels/level5.plf: Misc changes
+
+2000-04-14 20:28  grumbel
+
+	* src/: ColMap.cc, Exit.cc, Exit.hh, Makefile.am, PSMParser.hh,
+	Pingu.cc: Fixed ColMap again, bridger should work correctly again
+
+2000-04-14 20:25  grumbel
+
+	* configure.in: Added checks for SDL and SDL_mixer, Pingus doesn't
+	care about the checks, so don't wonder if Pingus does not compile
+
+2000-04-14 20:18  grumbel
+
+	* src/: Client.cc, Pingus.cc, PingusGame.cc, PingusLevelResult.cc,
+	PingusMenu.cc: Added music support (SDL_mixer)
+
+2000-04-14 19:38  grumbel
+
+	* src/: PingusSound.cc, PingusSound.hh: Added music support for
+	SDL_mixer, MikMod will be removed later
+
+2000-04-13 22:27  grumbel
+
+	* configure.in, src/Makefile.am: Fixed configuring for MikMod
+
+2000-04-10 23:33  grumbel
+
+	* src/: Background.cc, PLF.cc, Pingus.cc: Misc changes
+
+2000-04-10 23:29  grumbel
+
+	* data/levels/: small1.plf, small1.psm: Test level for black.tga
+
+2000-04-10 23:28  grumbel
+
+	* data/images/groundpieces/misc/black.tga: Added experimental
+	darken image
+
+2000-04-10 23:27  grumbel
+
+	* NEWS, TODO: Updating...
+
+2000-04-10 23:21  grumbel
+
+	* src/OptionMenu.cc: Added drawing of the colmap
+
+2000-04-10 23:20  grumbel
+
+	* data/: data/fonts.scr, data/global.scr, data/pingus.scr,
+	images/liquids/water_cmap.pcx, images/misc/brick_left.pcx,
+	images/misc/brick_right.pcx, images/pingus/bridger.pcx,
+	levels/Makefile.am, levels/foliage1.plf, levels/foliage3.plf,
+	levels/level5.plf, levels/level7.psm, levels/stone.plf: Added water
+	colmap
+
+2000-04-10 23:18  grumbel
+
+	* src/: PingusSpotMap.cc, PingusSpotMap.hh: Fixed empty screen bug,
+	when the screen was to large
+
+2000-04-10 23:17  grumbel
+
+	* src/: Liquid.cc, Liquid.hh, PSMParser.hh, Pingu.cc: Added colmap
+	handling for water/lava
+
+2000-04-10 23:15  grumbel
+
+	* src/: ColMap.cc, ColMap.hh: Changed handling of bit mask
+
+2000-04-09 19:43  grumbel
+
+	* data/levels/: crystal1.plf, level12.plf, level12.psm, level5.plf,
+	level5.psm, snow5.plf: Another new level and other changes
+
+2000-04-09 19:28  grumbel
+
+	* data/images/pingus/bomber_radius.pcx: Added larger bomb radius
+
+2000-04-09 13:35  grumbel
+
+	* src/ColMap.cc: Fixed a clipping bug (overflow if x to large)
+
+2000-04-08 22:28  grumbel
+
+	* data/levels/crystal1.plf: Another new level
+
+2000-04-08 22:27  grumbel
+
+	* data/images/exits/sortie.tga: Added a animated version of Joels
+	new exit
+
+2000-04-08 22:26  grumbel
+
+	* data/images/pingus/splash.pcx: Added Craigs bloody splash
+	animation
+
+2000-04-08 22:25  grumbel
+
+	* data/images/groundpieces/rock/: granit1.pcx, granit2.pcx,
+	granit3.pcx, granit4.pcx, granit5.pcx, granit6.pcx: Added a new set
+	of groudpieces
+
+2000-04-08 22:24  grumbel
+
+	* src/MikMod_dummy.cc: Added empty mikmod dummy
+
+2000-04-08 22:23  grumbel
+
+	* data/images/textures/anim_fire.jpg: Added experimental animated
+	backgrounds
+
+2000-04-08 22:20  grumbel
+
+	* NEWS, TODO, configure.in, data/data/global.scr,
+	data/data/pingus.scr, data/images/Makefile.am,
+	data/themes/xmas99.plt, src/ActionHolder.cc, src/Config.cc,
+	src/Credits.cc, src/Entrance.cc, src/Exit.cc, src/Intro.cc,
+	src/Intro.hh, src/Loading.cc, src/Loading.hh, src/Makefile.am,
+	src/MikMod.cc, src/MikMod.hh, src/OptionMenu.cc, src/Pingu.cc,
+	src/Pingus.cc, src/Pingus.hh, src/PingusMenu.cc,
+	src/PingusSpotMap.cc: Misc...
+
+2000-04-08 22:13  grumbel
+
+	* data/levels/: level6.plf, level6.psm: Removing...
+
+2000-04-08 22:06  grumbel
+
+	* data/levels/: crystal1.psm, crystal3.plf, crystal3.psm,
+	granit1.plf, granit1.psm: Added some levels
+
+2000-04-08 22:05  grumbel
+
+	* data/levels/: crystal2.plf, foliage1.plf, foliage3.plf,
+	level7.plf, level7.psm, snow5.plf, snow5.psm, tutorial3.plf,
+	tutorial4.plf, tutorial5.plf: Aded a new level
+
+2000-04-08 19:04  grumbel
+
+	* data/themes/: crystal.plt, misc.plt, standard.plt: Misc fixes
+
+2000-04-08 19:01  grumbel
+
+	* src/Background.cc: Fixed the support for animated backgrounds
+
+2000-03-24 18:54  grumbel
+
+	* data/images/exits/sortie.pcx: Added a new exit from Joel Fauche
+
+2000-03-22 15:32  grumbel
+
+	* src/: ActionHolder.cc, Pingu.cc: Added new splash animation
+
+2000-03-20 19:59  grumbel
+
+	* data/levels/: foliage3.plf, foliage3.psm: one new level
+
+2000-03-20 19:58  grumbel
+
+	* AUTHORS, TODO, acconfig.h, configure.in, data/data/global.scr,
+	data/data/textures.scr, data/levels/Makefile.am,
+	data/levels/crystal2.plf, data/levels/level2.plf,
+	data/levels/snow2.plf, data/themes/standard.plt: Added some
+	primitive, ugly and slow music code
+
+2000-03-20 19:55  grumbel
+
+	* src/: Client.cc, Makefile.am, MikMod.cc, MikMod.hh, PLFParser.cc,
+	Pingus.cc, PingusMenu.cc, PingusSpotMap.cc: Added some primitive,
+	ugly and slow music code
+
+2000-03-19 01:12  grumbel
+
+	* src/PingusSpotMap.cc: Minor changes
+
+2000-03-16 22:46  grumbel
+
+	* src/: PLFPreview.cc, Pingus.cc: Misc changes
+
+2000-03-16 22:36  grumbel
+
+	* src/: PinguMap.hh, PingusSpotMap.cc, PingusSpotMap.hh: A little
+	optimization to the tile drawing, should get probably one frame or
+	two
+
+2000-03-16 22:33  grumbel
+
+	* src/: PLF.cc, PLF.hh: Changed all double to floats
+
+2000-03-16 22:28  grumbel
+
+	* src/: Client.cc, Client.hh, PingusCounter.cc, PingusCounter.hh:
+	Added fps counter to GUI
+
+2000-03-16 22:26  grumbel
+
+	* src/: Background.cc, Background.hh: added some new Background
+	properties
+
+2000-03-16 04:53  grumbel
+
+	* data/images/textures/lunartile.pcx: Removed lunartile.pcx
+
+2000-03-16 04:52  grumbel
+
+	* data/images/textures/: junglebg.pcx, rooftile.pcx, rooftile2.pcx,
+	stars.pcx: Removed junglebg.pcx rooftile.pcx rooftile2.pcx
+	stars.pcx
+
+2000-03-16 04:50  grumbel
+
+	* data/images/textures/: blueflame.pcx, crystal.pcx, flamebg.pcx,
+	icetile.pcx, rocktile.pcx, stone.pcx: Removed crystal.pcx
+	rocktile.pcx icetile.pcx blueflame.pcx stone.pcx flamebg.pcx
+
+2000-03-13 20:19  grumbel
+
+	* data/themes/crystal2.plt: Removed obsolete theme
+
+2000-03-13 20:18  grumbel
+
+	* data/levels/: crystal2.plf, crystal2.psm: Added a new level
+
+2000-03-13 01:44  grumbel
+
+	* missing: Should missing be in CVS?
+
+2000-03-12 18:08  grumbel
+
+	* src/: Config.cc, Pingu.cc: Misc fixes I forgot yesterday
+
+2000-03-12 03:26  grumbel
+
+	* data/: images/misc/smallmap_entrance.pcx,
+	images/misc/smallmap_exit.pcx, levels/test2.plf, levels/test2.psm,
+	levels/test3.plf, levels/test3.psm: Added some gfx and some new
+	test levels
+
+2000-03-12 03:21  grumbel
+
+	* INSTALL, NEWS, README.sgml, TODO: Misc changes
+
+2000-03-12 03:13  grumbel
+
+	* data/: data/game.scr, data/global.scr, images/Makefile.am,
+	images/groundpieces/misc/bridge1.pcx,
+	images/groundpieces/space/way.pcx,
+	images/hotspots/tutorial_bridger.pcx: Added some new gfx
+
+2000-03-12 03:09  grumbel
+
+	* data/: levels/Makefile.am, levels/tutorial2.plf,
+	levels/tutorial2.psm, levels/tutorial3.plf, levels/tutorial3.psm,
+	levels/tutorial4.plf, levels/tutorial4.psm, levels/tutorial5.plf,
+	levels/tutorial5.psm, themes/tutorial.plt: Added some tutorial
+	levels
+
+2000-03-12 03:07  grumbel
+
+	* src/: Config.cc, Credits.cc: Misc changes/fixes, not worth a
+	comment
+
+2000-03-12 03:05  grumbel
+
+	* src/Pingus.hh: Changes cause of System.hh
+
+2000-03-12 02:57  grumbel
+
+	* src/: Client.hh, Makefile.am: Removed some rodden music/sound
+	code
+
+2000-03-12 02:56  grumbel
+
+	* src/: Pingus.cc, PingusGame.cc: Misc changes to use the new stuff
+	in System.cc
+
+2000-03-12 02:42  grumbel
+
+	* src/: PingusMenu.cc, PingusMenu.hh: Brought the quit button back
+	to live
+
+2000-03-12 02:41  grumbel
+
+	* src/: ButtonPanel.cc, Entrance.cc: Bye, bye old crappy sound
+	support
+
+2000-03-12 02:33  grumbel
+
+	* src/: PingusMusic.cc, PingusMusic.hh, PingusSound.cc,
+	PingusSound.hh: Bye, bye old music and sound stuff, on the way to
+	rewrite you...
+
+2000-03-10 20:46  grumbel
+
+	* src/Config.cc: Just a little typo
+
+2000-03-10 20:33  grumbel
+
+	* src/: Config.cc, Config.hh, Makefile.am, PingusDemo.cc,
+	PingusMenu.cc: Misc fixes
+
+2000-03-10 20:00  grumbel
+
+	* src/: Pingus.cc, Pingus.hh: Changed some details for the new
+	Config reader
+
+2000-03-10 19:54  grumbel
+
+	* src/: PLFParser.cc, PLFParser.hh: Removed unused members
+
+2000-03-10 19:52  grumbel
+
+	* src/Background.cc: Changed the way the bg is deleted (shit, I
+	have to rethink the way I handle the memory management...)
+
+2000-03-09 01:20  grumbel
+
+	* BUGS, NEWS, TODO, data/images/Makefile.am,
+	data/levels/level11.plf, src/Background.cc: Misc updates
+
+2000-03-09 01:15  grumbel
+
+	* src/PingusLevelDesc.cc: Designed by is not shown when author not
+	set
+
+2000-03-09 01:11  grumbel
+
+	* INSTALL.sgml, README.sgml: Converted stuff to SGML, which is of
+	course complete useless... %-)
+
+2000-03-09 01:10  grumbel
+
+	* README: Converted stuff to SGML
+
+2000-03-08 03:02  grumbel
+
+	* data/levels/: jungle1.plf, jungle2.plf, level1.plf, level10.plf,
+	level11.plf, level2.plf, level3.plf, level4.plf, level5.plf,
+	level6.plf, level7.plf, level8.plf, level9.plf: Added author tags
+
+2000-03-08 02:57  grumbel
+
+	* src/: Pingus.cc, PingusLevelDesc.cc: Misc changes
+
+2000-03-08 02:49  grumbel
+
+	* src/: Makefile.am, PingusCursor.cc, PingusCursor.hh: Removed
+	obsolete files
+
+2000-03-08 02:48  grumbel
+
+	* src/: PLF.cc, PLF.hh: Added 'author' tag to .plf files
+
+2000-03-08 02:36  grumbel
+
+	* src/: Client.cc, Client.hh: Code cleanup and preperation for
+	resize events...
+
+2000-03-03 00:50  grumbel
+
+	* data/images/misc/: brick_left.pcx, brick_right.pcx: bridge bricks
+	for left/right direction
+
+2000-03-02 03:28  grumbel
+
+	* BUGS, INSTALL, README, TODO, acinclude.m4, configure.in,
+	data/Makefile.am, data/data/pingus.scr, data/images/misc/brick.pcx,
+	data/levels/level1.psm, doc/pingu_ai.txt: Misc update
+
+2000-03-01 23:37  grumbel
+
+	* src/: GameCounter.cc, GameCounter.hh: Further fixes to the
+	bridger
+
+2000-03-01 23:29  grumbel
+
+	* data/images/pingus/: bridger.pcx, tumble.pcx: Fixed some offset
+	bugs
+
+2000-03-01 03:57  grumbel
+
+	* src/: Client.cc, GameCounter.cc, GameCounter.hh, Pingu.cc,
+	Pingu.hh, PinguAction.cc, PingusMenu.cc: Misc clean ups
+
+2000-02-28 18:54  grumbel
+
+	* src/: Pingu.cc, Pingu.hh, PingusMenu.cc: Misc changed to the
+	Pingu AI
+
+2000-02-28 05:12  grumbel
+
+	* src/Pingu.cc: Renamed v to velocity
+
+2000-02-28 04:50  grumbel
+
+	* src/: Client.cc, PingusMenu.cc: Some mouse cursor changes, to
+	keep up with ClanLib
+
+2000-02-28 04:41  grumbel
+
+	* src/: Pingu.cc, Pingu.hh: Started with cleaning/rewriting the
+	PinguAI, some things might be broken now.
+
+2000-02-27 22:05  grumbel
+
+	* src/: OptionMenu.cc, Pingu.cc, Pingus.cc: Removed all non-forces
+	stuff
+
+2000-02-26 17:24  grumbel
+
+	* NEWS, configure.in, data/images/Makefile.am: Added some images to
+	the Makefile
+
+2000-02-26 17:16  grumbel
+
+	* src/Pingus.cc: Changed default resolution to 800x600
+
+2000-02-26 04:19  grumbel
+
+	* doc/pingu_ai.txt: Added some docu for the actions
+
+2000-02-26 04:17  grumbel
+
+	* src/: Client.cc, Client.hh, ClientEvent.cc, Pingu.cc, Pingu.hh:
+	Added mouse support to the small map
+
+2000-02-25 03:51  grumbel
+
+	* data/data/game.scr: Misc adds
+
+2000-02-25 03:47  grumbel
+
+	* data/images/cursors/cross.tga: Added placeholder for the standard
+	pingus cursor
+
+2000-02-25 03:35  grumbel
+
+	* src/: Client.cc, Client.hh, ColMap.cc, ColMap.hh, Credits.cc,
+	Makefile.am, Pingu.cc, PingusMenu.cc: Added a more or less useless
+	small map, which should be used to scroll around in the level, misc
+	other changes/fixes
+
+2000-02-22 04:21  grumbel
+
+	* data/levels/: candy1.plf, candy1.psm: Added a non playable candy
+	demo level
+
+2000-02-22 01:29  grumbel
+
+	* AUTHORS, NEWS, TODO, data/data/game.scr, data/data/global.scr,
+	data/data/textures.scr: Misc changes
+
+2000-02-22 01:09  grumbel
+
+	* src/: ActionHolder.cc, Client.cc, ClientEvent.cc, Makefile.am,
+	PSMParser.cc, PingusGame.cc, PingusMenu.cc, PingusResource.cc,
+	PingusSpotMap.cc: Misc cout clean ups
+
+2000-02-22 00:58  grumbel
+
+	* src/: Credits.cc, Credits.hh: Added credits screen
+
+2000-02-22 00:46  grumbel
+
+	* data/images/: buttons/.cvsignore, exits/sweetexit.pcx,
+	misc/pingubw.pcx, textures/happyclouds.jpg: Added a bunch of new
+	images from Craig
+
+2000-02-22 00:19  grumbel
+
+	* data/images/groundpieces/sweets/: allsort1.pcx, allsort2.pcx,
+	aquachoc.pcx, canestalk.pcx, canestub.pcx, canetop.pcx,
+	chocbar.pcx, chocbloc-lowleft.pcx, chocbloc-lowright.pcx,
+	chocbloc-topleft.pcx, chocbloc-topright.pcx, chocbloc.pcx,
+	icecream.pcx, jellybaby.tga, jellybaby2.tga, jube1.tga, jube2.tga,
+	lollipop-purp.tga, lollipop.tga, mmblue.pcx, mmbrown.pcx,
+	mmred.pcx, mmyellow.pcx, purplechoc.pcx: Added a bunch of new
+	images from Craig
+
+2000-02-18 04:08  grumbel
+
+	* src/: Background.cc, ColMap.cc, PingusDemo.cc, PingusSpotMap.cc,
+	PingusSpotMap.hh: Added primitve support for Alpha groundpieces,
+	put_target() doesn't seem to work well with 32bit images
+
+2000-02-17 03:12  grumbel
+
+	* BUGS, NEWS: Misc fixes
+
+2000-02-17 02:25  grumbel
+
+	* src/: Background.cc, Client.cc, PingusLevelResult.cc,
+	PingusSpotMap.cc: Some small bug fixes and a workaround for a wired
+	bug
+
+2000-02-17 00:34  grumbel
+
+	* AUTHORS, NEWS, data/data/menu.scr, data/images/Makefile.am,
+	data/images/buttons/theme.tga, data/images/buttons/theme_p.tga,
+	data/images/buttons/worlds.tga, data/images/buttons/worlds_p.tga,
+	data/images/groundpieces/way.pcx, data/images/misc/logo.pcx,
+	data/levels/foliage1.plf, data/levels/level6.plf,
+	data/levels/level8.plf, data/levels/snow3.plf,
+	data/levels/space1.plf, data/levels/stone.plf,
+	data/levels/test1.plf, data/themes/Makefile.am, src/ButtonPanel.cc,
+	src/Client.cc, src/PLFParser.cc, src/Pingu.cc, src/Pingus.cc,
+	src/PingusMenu.cc, src/PingusMenu.hh, src/PingusSpotMap.cc: Misc
+	release critical fixes
+
+2000-02-16 04:15  grumbel
+
+	* data/levels/: level7.plf, level7.psm: Fixed/Changed the level a
+	bit
+
+2000-02-16 04:06  grumbel
+
+	* TODO, data/images/buttons/play_p.tga, data/levels/level7.plf,
+	data/levels/test1.plf, data/levels/test1.psm, src/ActionHolder.cc,
+	src/Client.cc, src/OptionMenu.cc, src/PLF.cc, src/PSMParser.cc,
+	src/PinguHolder.cc, src/PinguHolder.hh, src/Pingus.cc,
+	src/PingusGame.cc, src/PingusGame.hh, src/PingusLevelResult.cc,
+	src/PingusLevelResult.hh: Disabled smoke particles Fixed saved
+	Pingus counter Fixed time handling Changed start object in the
+	editor
+
+2000-02-15 16:22  grumbel
+
+	* data/images/groundpieces/space/smalltower.pcx: Added a new gfx
+
+2000-02-15 14:42  grumbel
+
+	* TODO, configure.in, data/data/global.scr,
+	data/images/Makefile.am, doc/Makefile.am, doc/options,
+	doc/pingus.6, doc/pingus.texi: Misc changes
+
+2000-02-15 14:27  grumbel
+
+	* data/themes/: crystal.plt, misc.plt, standard.plt: Added some
+	levels to the themes and other clean ups
+
+2000-02-15 14:27  grumbel
+
+	* data/levels/: block.plf, foliage1.plf, level10.plf, level3.plf,
+	level6.plf, level7.plf, level8.plf, level8.psm, level9.plf,
+	snow1.plf, snow2.plf, snow2.psm, snow3.plf, snow3.psm, snow4.plf,
+	snow6.plf, space2.plf, space2.psm, stone.plf, stone.psm: Changed
+	the level names, added some entrances and other cleanups
+
+2000-02-15 14:09  grumbel
+
+	* src/: ActionHolder.cc, ClientEvent.cc, ColMap.cc, FadeOut.cc,
+	Intro.cc, Makefile.am, PLFParser.cc, Pingu.cc, PinguHolder.cc,
+	PingusGame.cc, PingusMenu.cc, PingusSpotMap.cc: Misc cleanups,
+	changes some messages to only appear when verbose > 0
+
+2000-02-15 14:06  grumbel
+
+	* src/Entrance.cc: Added MISC direction
+
+2000-02-15 13:33  grumbel
+
+	* src/: OptionMenu.cc, Pingus.cc: Added a loading screen
+
+2000-02-15 13:30  grumbel
+
+	* src/: PinguHolder.hh, PingusCounter.cc, PingusLevelDesc.cc,
+	PingusLevelResult.cc: Fixed the PinguCounter and related stuff
+
+2000-02-15 13:28  grumbel
+
+	* data/images/misc/loading.pcx, src/Loading.cc, src/Loading.hh,
+	data/data/game.scr: Added a simple loading screen
+
+2000-02-12 21:53  grumbel
+
+	* src/: Display.cc, Display.hh, Makefile.am, OptionMenu.cc,
+	Pingus.cc: Changed the rectangle selection in the editor to use non
+	filled rects
+
+2000-02-12 17:53  grumbel
+
+	* data/levels/Makefile.am, data/levels/jungle1.plf,
+	data/levels/jungle2.plf, data/levels/jungle2.psm, src/Pingus.cc:
+	Misc changes
+
+2000-02-12 17:19  grumbel
+
+	* data/themes/: Makefile.am, jungle.plt, misc.plt: Added a new
+	theme
+
+2000-02-12 13:04  grumbel
+
+	* data/data/.cvsignore: Misc changes
+
+2000-02-12 13:00  grumbel
+
+	* NEWS, TODO, WISHLIST, configure.in, data/data/global.scr,
+	data/images/Makefile.am, data/images/themes/xmas99.tga,
+	data/levels/foliage1.plf, data/levels/foliage1.psm,
+	data/levels/space2.plf, data/levels/space2.psm, doc/pingus.texi,
+	src/Pingus.cc, src/PingusLevelResult.cc: Misc changes
+
+2000-02-12 12:24  grumbel
+
+	* data/images/groundpieces/space/tower1.pcx: Misc changes
+
+2000-02-12 12:13  grumbel
+
+	* data/images/textures/: enchantedjungle.tga, latejungle.tga,
+	nightjungle.tga: Misc changes
+
+2000-02-12 00:47  grumbel
+
+	* data/images/textures/darkjungle.tga: Removing...
+
+2000-02-12 00:36  grumbel
+
+	* data/images/textures/darkjungle.jpg: Added missing image
+
+2000-02-11 22:26  grumbel
+
+	* src/: ActionHolder.cc, ActionHolder.hh, Client.cc, PLF.cc,
+	PLF.hh, PinguAction.cc, PinguAction.hh: Misc namespace cleanups
+
+2000-02-11 18:56  grumbel
+
+	* data/themes/: space.plt, xmas99.plt: misc changes
+
+2000-02-11 18:11  grumbel
+
+	* data/images/entrances/cloudent.pcx: Added another gfx
+
+2000-02-11 18:09  grumbel
+
+	* data/images/groundpieces/foliage/: turfconcave.pcx, turfflat.pcx,
+	turfslopeleft.pcx, turfslopeleft20.pcx, turfsloperight.pcx,
+	turfsloperight20.pcx, turfsmallbump.pcx, turfsmallnook.pcx,
+	turftufty.pcx: added some gfx
+
+2000-02-11 18:08  grumbel
+
+	* data/levels/: Makefile.am, foliage1.plf, foliage1.psm,
+	space2.plf, space2.psm: Added a new level
+
+2000-02-11 18:02  grumbel
+
+	* data/images/textures/darkjungle.jpg: Removed darkjungle.jpg
+
+2000-02-11 17:58  grumbel
+
+	* src/: ActionButton.cc, ActionButton.hh, ActionHolder.cc,
+	ActionHolder.hh, AlphaButton.cc, AlphaButton.hh, Background.cc,
+	ButtonPanel.cc, ButtonPanel.hh, Client.cc, Client.hh,
+	ClientEvent.cc, ColMap.cc, Counter.cc, DebugGui.cc, Entrance.cc,
+	Exit.cc, FadeOut.cc, FileSelector.cc, FileSelector.hh,
+	GameCounter.cc, GameObj.cc, Hotspot.cc, Intro.cc, OptionMenu.cc,
+	OptionMenu.hh, PLF.cc, PLF.hh, PLFParser.cc, PLFParser.hh,
+	PLFPreview.cc, PLTParser.cc, PLTParser.hh, PSMParser.cc,
+	PSMParser.hh, Pingu.cc, PinguAction.cc, PinguAction.hh,
+	PinguBmpMap.cc, PinguHolder.hh, PinguRandomMap.cc, Pingus.cc,
+	Pingus.hh, PingusDemo.cc, PingusDemo.hh, PingusError.cc,
+	PingusError.hh, PingusGame.cc, PingusGame.hh, PingusLevelDesc.cc,
+	PingusLevelDesc.hh, PingusLevelResult.cc, PingusLevelResult.hh,
+	PingusMenu.cc, PingusMessageBox.cc, PingusMessageBox.hh,
+	PingusMusic.cc, PingusResource.cc, PingusResource.hh,
+	PingusSound.cc, PingusSound.hh, PingusSpotMap.cc: Added correct
+	namespaces
+
+2000-02-11 11:33  grumbel
+
+	* data/images/themes/: space.tga, tutorial.tga: Added missing files
+
+2000-02-11 11:25  grumbel
+
+	* data/images/groundpieces/space/: block1.pcx, grid1.pcx,
+	grid2.pcx, grid3.pcx, tower1.pcx: Added missing files
+
+2000-02-11 11:21  grumbel
+
+	* data/images/groundpieces/foliage/: midtree2.pcx, smallbush2.pcx,
+	smallbush3.pcx: Added missing files
+
+2000-02-11 11:16  grumbel
+
+	* data/images/exits/: desertexit.pcx, space1.tga: [no log message]
+
+2000-02-11 11:12  grumbel
+
+	* data/themes/space.plt: [no log message]
+
+2000-02-11 11:09  grumbel
+
+	* data/: data/textures.scr, images/hotspots/danger.pcx: Added
+	missing files
+
+2000-02-11 11:05  grumbel
+
+	* data/images/fonts/: pingus2.tga, pingus_small3.tga: added missing
+	files
+
+2000-02-11 11:01  grumbel
+
+	* data/images/hotspots/: down_arrow.pcx, left_arrow.pcx,
+	right_arrow.pcx, up_arrow.pcx, tutorial_bridger.pcx,
+	tutorial_digger.pcx, tutorial_left.pcx, tutorial_right.pcx: [no log
+	message]
+
+2000-02-11 10:56  grumbel
+
+	* data/levels/: space1.plf, space1.psm: Added missing files
+
+2000-02-10 16:50  grumbel
+
+	* data/levels/: tutorial1.plf, tutorial1.psm: Added missing levels
+
+2000-02-10 16:04  grumbel
+
+	* data/themes/tutorial.plt: Added a missing file
+
+2000-02-09 23:19  grumbel
+
+	* data/images/textures/: blueflame.jpg, clouds.jpg, crystal.jpg,
+	darkjungle.jpg, enchantedjungle.jpg, flamebg.jpg, icetile.jpg,
+	latejungle.jpg, lunartile.jpg, nightjungle.jpg, rockagglo.jpg,
+	rocktile.jpg, rooftile.jpg, rooftile2.jpg, stars.jpg, stone.jpg:
+	CVS should be up to date again...
+
+2000-02-09 23:13  grumbel
+
+	* AUTHORS, INSTALL, README, TODO, configure.in, mkinstalldirs,
+	data/data/Makefile.am, data/data/fonts.scr, data/data/global.scr,
+	data/images/Makefile.am, data/images/README,
+	data/images/textures/README, data/levels/Makefile.am,
+	data/levels/block.plf, data/levels/foliage1.plf,
+	data/levels/foliage1.psm, data/levels/level1.plf,
+	data/levels/level10.plf, data/levels/level11.plf,
+	data/levels/level2.plf, data/levels/level3.plf,
+	data/levels/level4.plf, data/levels/level5.plf,
+	data/levels/level6.plf, data/levels/level7.plf,
+	data/levels/level8.plf, data/levels/level9.plf,
+	data/levels/rock1.plf, data/levels/snow1.plf,
+	data/levels/snow1.psm, data/levels/snow2.plf,
+	data/levels/snow3.plf, data/levels/snow4.plf,
+	data/levels/snow6.plf, data/levels/stone.plf,
+	data/levels/test1.plf, data/themes/Makefile.am,
+	data/themes/crystal.plt, data/themes/misc.plt,
+	data/themes/standard.plt, data/themes/xmas99.plt, doc/pingus.texi,
+	doc/texinfo.tex: CVS should be up to date again...
+
+2000-02-09 22:43  grumbel
+
+	* src/: ActionButton.cc, ActionButton.hh, ActionHolder.cc,
+	ActionHolder.hh, AlphaButton.cc, AlphaButton.hh, AnimCounter.cc,
+	AnimCounter.hh, Background.cc, Background.hh, ButtonPanel.cc,
+	ButtonPanel.hh, CaptureRectangle.cc, CaptureRectangle.hh,
+	Client.cc, Client.hh, ClientEvent.cc, ClientEvent.hh, ColMap.cc,
+	ColMap.hh, Counter.cc, Counter.hh, DebugGui.cc, DebugGui.hh,
+	Direction.cc, Direction.hh, Entrance.cc, Entrance.hh, Exit.cc,
+	Exit.hh, FVec.cc, FVec.hh, FadeOut.cc, FadeOut.hh, GameCounter.cc,
+	GameCounter.hh, GameTime.cc, GameTime.hh, GuiObj.cc, GuiObj.hh,
+	Hotspot.cc, Hotspot.hh, Intro.cc, Intro.hh, LevelInterrupt.cc,
+	LevelInterrupt.hh, Liquid.cc, Liquid.hh, MainMenu.cc, MainMenu.hh,
+	Makefile.am, OptionMenu.cc, OptionMenu.hh, PLF.cc, PLF.hh,
+	PLFParser.cc, PLFParser.hh, PLFPreview.cc, PLFPreview.hh,
+	PLTParser.cc, PLTParser.hh, PSMParser.cc, PSMParser.hh, Pingu.cc,
+	Pingu.hh, PinguAction.cc, PinguAction.hh, PinguBmpMap.cc,
+	PinguBmpMap.hh, PinguEnums.hh, PinguHolder.cc, PinguHolder.hh,
+	PinguInfo.cc, PinguInfo.hh, PinguMap.cc, PinguMap.hh,
+	PinguRandomMap.cc, PinguRandomMap.hh, Pingus.cc, Pingus.hh,
+	PingusCounter.cc, PingusCounter.hh, PingusCursor.cc,
+	PingusCursor.hh, PingusDemo.cc, PingusDemo.hh, PingusError.cc,
+	PingusError.hh, PingusGame.cc, PingusGame.hh, PingusLevelDesc.cc,
+	PingusLevelDesc.hh, PingusLevelResult.cc, PingusLevelResult.hh,
+	PingusMenu.cc, PingusMenu.hh, PingusMessageBox.cc,
+	PingusMessageBox.hh, PingusMusic.cc, PingusMusic.hh,
+	PingusResource.cc, PingusResource.hh, PingusSound.cc,
+	PingusSound.hh, PingusSpotMap.cc, PingusSpotMap.hh: CVS should be
+	up to date again...
+
+2000-02-05 14:53  grumbel
+
+	* src/PingusMode.cc: Testing..
+
+2000-02-05 00:45  mbn
+
+	* .cvsignore, AUTHORS, BUGS, COPYING, CREDITS, ChangeLog, FAQ,
+	INSTALL, Makefile.am, NEWS, README, README.Win32, THANKS, TODO,
+	WISHLIST, acconfig.h, acinclude.m4, autogen.sh, configure.in,
+	install-sh, make-binary-dist.sh, missing, mkinstalldirs,
+	pingus.dsp, pingus.dsw, pingus.spec, vcfix.reg, data/.cvsignore,
+	data/Makefile.am, data/README, data/data/.cvsignore,
+	data/data/Makefile.am, data/data/editor.scr, data/data/fonts.scr,
+	data/data/game.scr, data/data/global.scr, data/data/menu.scr,
+	data/data/pingus.scr, data/data/traps.scr, data/demos/.cvsignore,
+	data/demos/Makefile.am, data/demos/level1.pde,
+	data/images/.cvsignore, data/images/Makefile.am,
+	data/images/README, data/images/buttons/.cvsignore,
+	data/images/buttons/Makefile.am,
+	data/images/buttons/armageddon.pcx,
+	data/images/buttons/armageddon.tga,
+	data/images/buttons/armageddon_anim.tga,
+	data/images/buttons/down.pcx, data/images/buttons/down.tga,
+	data/images/buttons/editor.tga, data/images/buttons/editor_p.tga,
+	data/images/buttons/fast_forward.pcx,
+	data/images/buttons/fast_forward.tga, data/images/buttons/load.tga,
+	data/images/buttons/load_p.tga, data/images/buttons/options.tga,
+	data/images/buttons/options_p.tga, data/images/buttons/pause.pcx,
+	data/images/buttons/pause.tga, data/images/buttons/play.tga,
+	data/images/buttons/play_p.tga, data/images/buttons/quit.tga,
+	data/images/buttons/quit_p.tga, data/images/buttons/theme.tga,
+	data/images/buttons/theme_p.tga, data/images/buttons/up.tga,
+	data/images/cursors/.cvsignore, data/images/cursors/Makefile.am,
+	data/images/cursors/arrow_left.pcx,
+	data/images/cursors/arrow_right.pcx, data/images/cursors/cap.pcx,
+	data/images/cursors/cap.tga, data/images/cursors/capwrong.tga,
+	data/images/cursors/cursor.pcx, data/images/cursors/scroll.pcx,
+	data/images/editor/button.pcx,
+	data/images/editor/button_pressed.pcx, data/images/editor/logo.tga,
+	data/images/editor/tb_clock_run.pcx,
+	data/images/editor/tb_copy.pcx, data/images/editor/tb_edit.pcx,
+	data/images/editor/tb_exit.pcx, data/images/editor/tb_help.pcx,
+	data/images/editor/tb_index.pcx, data/images/editor/tb_new.pcx,
+	data/images/editor/tb_open.pcx,
+	data/images/editor/tb_preferences.pcx,
+	data/images/editor/tb_save.pcx, data/images/editor/tb_trash.pcx,
+	data/images/entrances/entrance.pcx, data/images/entrances/gate.tga,
+	data/images/entrances/woodthing_mov.pcx,
+	data/images/entrances/woodthing_mov.tga,
+	data/images/entrances/woodthing_nmov.tga,
+	data/images/exits/ice.pcx, data/images/exits/stone.pcx,
+	data/images/fonts/.cvsignore, data/images/fonts/Makefile.am,
+	data/images/fonts/clanfont.pcx, data/images/fonts/courier.pcx,
+	data/images/fonts/courier_h.pcx,
+	data/images/fonts/courier_small.tga,
+	data/images/fonts/courier_small2.tga, data/images/fonts/danger.pcx,
+	data/images/fonts/down_arrow.pcx, data/images/fonts/font.pcx,
+	data/images/fonts/left_arrow.pcx, data/images/fonts/number_fnt.pcx,
+	data/images/fonts/right_arrow.pcx, data/images/fonts/smallfont.pcx,
+	data/images/fonts/smallfont_h.pcx, data/images/fonts/up_arrow.pcx,
+	data/images/groundpieces/bpice1.pcx,
+	data/images/groundpieces/bpice2.pcx,
+	data/images/groundpieces/bpice3.pcx,
+	data/images/groundpieces/bpice4.pcx,
+	data/images/groundpieces/bpice5.pcx,
+	data/images/groundpieces/bpice6.pcx,
+	data/images/groundpieces/gpice1.pcx,
+	data/images/groundpieces/gpice2.pcx,
+	data/images/groundpieces/gpice3.pcx,
+	data/images/groundpieces/gpice4.pcx,
+	data/images/groundpieces/gpice5.pcx,
+	data/images/groundpieces/gpice6.pcx,
+	data/images/groundpieces/green1.pcx,
+	data/images/groundpieces/green2.pcx,
+	data/images/groundpieces/pfosten.pcx,
+	data/images/groundpieces/pipe1.pcx,
+	data/images/groundpieces/pipe2.pcx,
+	data/images/groundpieces/pipe3.pcx,
+	data/images/groundpieces/pipe4.pcx,
+	data/images/groundpieces/pipe5.pcx,
+	data/images/groundpieces/pipe6.pcx,
+	data/images/groundpieces/pipe7.pcx,
+	data/images/groundpieces/pipe8.pcx,
+	data/images/groundpieces/tree.pcx,
+	data/images/groundpieces/way.pcx,
+	data/images/groundpieces/weed1.pcx,
+	data/images/groundpieces/weed2.pcx,
+	data/images/groundpieces/crystal/block.pcx,
+	data/images/groundpieces/crystal/column.pcx,
+	data/images/groundpieces/crystal/diagcrystal.pcx,
+	data/images/groundpieces/crystal/hexcrystal.pcx,
+	data/images/groundpieces/crystal/horiz.pcx,
+	data/images/groundpieces/crystal/horiz2.pcx,
+	data/images/groundpieces/crystal/pipe.pcx,
+	data/images/groundpieces/crystal/pipeend.pcx,
+	data/images/groundpieces/crystal/platform.pcx,
+	data/images/groundpieces/crystal/platform2.pcx,
+	data/images/groundpieces/crystal/pointleft.pcx,
+	data/images/groundpieces/crystal/pointright.pcx,
+	data/images/groundpieces/crystal/skinnycrystal.pcx,
+	data/images/groundpieces/crystal/smcrystal.pcx,
+	data/images/groundpieces/crystal/tesselate.pcx,
+	data/images/groundpieces/foliage/flax1.pcx,
+	data/images/groundpieces/foliage/flax2.pcx,
+	data/images/groundpieces/foliage/midtree1.pcx,
+	data/images/groundpieces/foliage/oak1.pcx,
+	data/images/groundpieces/foliage/smallbush.pcx,
+	data/images/groundpieces/foliage/talltree.pcx,
+	data/images/groundpieces/jungle/branch1.pcx,
+	data/images/groundpieces/jungle/branch2.pcx,
+	data/images/groundpieces/jungle/branch3.pcx,
+	data/images/groundpieces/jungle/branch4.pcx,
+	data/images/groundpieces/jungle/branch5.pcx,
+	data/images/groundpieces/jungle/branch6.pcx,
+	data/images/groundpieces/jungle/carabatree.pcx,
+	data/images/groundpieces/jungle/carabatreemedium.pcx,
+	data/images/groundpieces/jungle/carabatreesmall.pcx,
+	data/images/groundpieces/jungle/stick1.pcx,
+	data/images/groundpieces/jungle/stick2.pcx,
+	data/images/groundpieces/jungle/stick3.pcx,
+	data/images/groundpieces/jungle/stick4.pcx,
+	data/images/groundpieces/jungle/stick5.pcx,
+	data/images/groundpieces/jungle/twist.pcx,
+	data/images/groundpieces/jungle/twistsmooth.pcx,
+	data/images/groundpieces/misc/bigprickpiece.pcx,
+	data/images/groundpieces/misc/brick1.pcx,
+	data/images/groundpieces/misc/brick2.pcx,
+	data/images/groundpieces/misc/brick3.pcx,
+	data/images/groundpieces/misc/brick4.pcx,
+	data/images/groundpieces/misc/brick5.pcx,
+	data/images/groundpieces/misc/middleprickpiece.pcx,
+	data/images/groundpieces/misc/pfosten.pcx,
+	data/images/groundpieces/misc/piece1.pcx,
+	data/images/groundpieces/misc/piece2.pcx,
+	data/images/groundpieces/misc/piece3.pcx,
+	data/images/groundpieces/misc/piece4.pcx,
+	data/images/groundpieces/misc/piece5.pcx,
+	data/images/groundpieces/misc/piece6.pcx,
+	data/images/groundpieces/misc/piece7.pcx,
+	data/images/groundpieces/misc/piece8.pcx,
+	data/images/groundpieces/misc/piece9.pcx,
+	data/images/groundpieces/misc/smallbrickpiece.pcx,
+	data/images/groundpieces/misc/spike.pcx,
+	data/images/groundpieces/misc/stoneblock1.pcx,
+	data/images/groundpieces/misc/stoneblock2.pcx,
+	data/images/groundpieces/misc/stoneblock3.pcx,
+	data/images/groundpieces/misc/way.pcx,
+	data/images/groundpieces/misc/way_left.pcx,
+	data/images/groundpieces/misc/way_right.pcx,
+	data/images/groundpieces/rock/rock1.pcx,
+	data/images/groundpieces/rock/rock2.pcx,
+	data/images/groundpieces/rock/rock3.pcx,
+	data/images/groundpieces/rock/rock4.pcx,
+	data/images/groundpieces/rock/rock5.pcx,
+	data/images/groundpieces/rock/rock6.pcx,
+	data/images/groundpieces/snow/gpiece1.pcx,
+	data/images/groundpieces/snow/ice1.pcx,
+	data/images/groundpieces/snow/ice2.pcx,
+	data/images/groundpieces/snow/igloo.pcx,
+	data/images/groundpieces/snow/piece1.pcx,
+	data/images/groundpieces/snow/piece2.pcx,
+	data/images/groundpieces/snow/piece3.pcx,
+	data/images/groundpieces/snow/snowman.pcx,
+	data/images/groundpieces/snow/xmas-tree.pcx,
+	data/images/groundpieces/test/test1.pcx,
+	data/images/groundpieces/test/test2.pcx,
+	data/images/groundpieces/test/test3.pcx,
+	data/images/groundpieces/test/test4.pcx,
+	data/images/groundpieces/test/test5.pcx,
+	data/images/hotspots/.cvsignore, data/images/hotspots/Makefile.am,
+	data/images/hotspots/bridge.pcx, data/images/hotspots/bridge2.pcx,
+	data/images/hotspots/cabin.pcx,
+	data/images/hotspots/cabin_winter.pcx,
+	data/images/hotspots/colum.pcx,
+	data/images/hotspots/colum_flat.pcx,
+	data/images/hotspots/colum_pice1.pcx,
+	data/images/hotspots/colum_pice2.pcx,
+	data/images/hotspots/colum_pice3.pcx,
+	data/images/hotspots/crystal.tga, data/images/hotspots/dragon.pcx,
+	data/images/hotspots/pillar1.pcx, data/images/hotspots/pillar2.pcx,
+	data/images/hotspots/pillar3.pcx, data/images/hotspots/plate.pcx,
+	data/images/hotspots/plate2.pcx,
+	data/images/hotspots/plate_small.pcx,
+	data/images/hotspots/stone0.pcx, data/images/hotspots/stone1.pcx,
+	data/images/hotspots/stone2.pcx, data/images/hotspots/tree.pcx,
+	data/images/hotspots/well.pcx, data/images/liquids/lava.pcx,
+	data/images/liquids/swater.pcx, data/images/liquids/water.pcx,
+	data/images/liquids/water2.pcx, data/images/liquids/water3.pcx,
+	data/images/liquids/water3.tga, data/images/liquids/water4.tga,
+	data/images/misc/brick.pcx, data/images/misc/cap.pcx,
+	data/images/misc/capwrong.pcx, data/images/misc/logo.pcx,
+	data/images/misc/logo.tga, data/images/misc/logo_bg.pcx,
+	data/images/particles/ground.tga,
+	data/images/particles/particle.pcx,
+	data/images/particles/smoke.tga, data/images/pingus/.cvsignore,
+	data/images/pingus/Makefile.am, data/images/pingus/README,
+	data/images/pingus/bash_radius.pcx, data/images/pingus/basher.pcx,
+	data/images/pingus/blocker.pcx, data/images/pingus/bomber.pcx,
+	data/images/pingus/bomber_radius.pcx,
+	data/images/pingus/bridger.pcx, data/images/pingus/climber.pcx,
+	data/images/pingus/digger.pcx,
+	data/images/pingus/digger_radius.pcx, data/images/pingus/explo.pcx,
+	data/images/pingus/explo.tga, data/images/pingus/faller.pcx,
+	data/images/pingus/floater.pcx, data/images/pingus/laser_kill.tga,
+	data/images/pingus/miner.pcx, data/images/pingus/stopper.pcx,
+	data/images/pingus/tumble.pcx, data/images/pingus/walker.pcx,
+	data/images/pingus/xmas-walker.pcx,
+	data/images/textures/.cvsignore, data/images/textures/Makefile.am,
+	data/images/textures/README, data/images/textures/blueflame.pcx,
+	data/images/textures/crystal.pcx,
+	data/images/textures/darkjungle.tga,
+	data/images/textures/enchantedjungle.tga,
+	data/images/textures/flamebg.pcx, data/images/textures/icetile.pcx,
+	data/images/textures/junglebg.pcx,
+	data/images/textures/latejungle.tga,
+	data/images/textures/lunartile.pcx,
+	data/images/textures/nightjungle.tga,
+	data/images/textures/rocktile.pcx,
+	data/images/textures/rooftile.pcx,
+	data/images/textures/rooftile2.pcx,
+	data/images/textures/solartile.pcx, data/images/textures/stars.pcx,
+	data/images/textures/stone.pcx, data/images/textures/stones.pcx,
+	data/images/themes/crystal.pcx, data/images/themes/xmas99.tga,
+	data/images/traps/.cvsignore, data/images/traps/Makefile.am,
+	data/images/traps/fake_exit.pcx, data/images/traps/gateway.pcx,
+	data/images/traps/guillotineidle.pcx,
+	data/images/traps/guillotinekill.pcx, data/images/traps/hammer.tga,
+	data/images/traps/laser_exit.pcx, data/images/traps/smasher.tga,
+	data/images/traps/smasher_cmap.pcx, data/images/traps/spike.pcx,
+	data/images/traps/teleporter.tga,
+	data/images/traps/teleporter2.tga, data/levels/.cvsignore,
+	data/levels/Makefile.am, data/levels/README, data/levels/block.plf,
+	data/levels/block.psm, data/levels/foliage1.plf,
+	data/levels/foliage1.psm, data/levels/jungle1.plf,
+	data/levels/jungle1.psm, data/levels/jungle2.plf,
+	data/levels/jungle2.psm, data/levels/level1.plf,
+	data/levels/level1.psm, data/levels/level10.plf,
+	data/levels/level10.psm, data/levels/level11.plf,
+	data/levels/level11.psm, data/levels/level2.plf,
+	data/levels/level2.psm, data/levels/level3.plf,
+	data/levels/level3.psm, data/levels/level4.plf,
+	data/levels/level5.plf, data/levels/level5.psm,
+	data/levels/level6.plf, data/levels/level6.psm,
+	data/levels/level7.plf, data/levels/level7.psm,
+	data/levels/level8.plf, data/levels/level8.psm,
+	data/levels/level9.plf, data/levels/level9.psm,
+	data/levels/rock1.plf, data/levels/rock1.psm, data/levels/snow.plf,
+	data/levels/snow.psm, data/levels/snow1.plf, data/levels/snow1.psm,
+	data/levels/snow2.plf, data/levels/snow2.psm,
+	data/levels/snow3.plf, data/levels/snow3.psm,
+	data/levels/snow4.plf, data/levels/snow4.psm,
+	data/levels/snow6.plf, data/levels/snow6.psm, data/levels/spot.psm,
+	data/levels/stone.plf, data/levels/stone.psm,
+	data/levels/test1.plf, data/levels/test1.psm, data/levels/tile.ptm,
+	data/levels/tile2.ptm, data/themes/.cvsignore,
+	data/themes/Makefile.am, data/themes/crystal.plt,
+	data/themes/crystal2.plt, data/themes/misc.plt,
+	data/themes/standard.plt, data/themes/xmas99.plt, doc/.cvsignore,
+	doc/Makefile.am, doc/editor, doc/levelformat.txt, doc/options,
+	doc/pingus.6, doc/pingus.texi, doc/texinfo.tex, src/.cvsignore,
+	src/ActionButton.cc, src/ActionButton.hh, src/ActionHolder.cc,
+	src/ActionHolder.hh, src/AlphaButton.cc, src/AlphaButton.hh,
+	src/AnimCounter.cc, src/AnimCounter.hh, src/Background.cc,
+	src/Background.hh, src/Button.cc, src/Button.hh,
+	src/ButtonPanel.cc, src/ButtonPanel.hh, src/CaptureRectangle.cc,
+	src/CaptureRectangle.hh, src/Client.cc, src/Client.hh,
+	src/ClientEvent.cc, src/ClientEvent.hh, src/ColMap.cc,
+	src/ColMap.hh, src/Counter.cc, src/Counter.hh, src/DebugGui.cc,
+	src/DebugGui.hh, src/Direction.cc, src/Direction.hh,
+	src/Entrance.cc, src/Entrance.hh, src/Exit.cc, src/Exit.hh,
+	src/FVec.cc, src/FVec.hh, src/FadeOut.cc, src/FadeOut.hh,
+	src/FileSelector.cc, src/FileSelector.hh, src/GameCounter.cc,
+	src/GameCounter.hh, src/GameObj.cc, src/GameObj.hh,
+	src/GameTime.cc, src/GameTime.hh, src/GuiObj.cc, src/GuiObj.hh,
+	src/Hotspot.cc, src/Hotspot.hh, src/Intro.cc, src/Intro.hh,
+	src/LevelInterrupt.cc, src/LevelInterrupt.hh, src/Liquid.cc,
+	src/Liquid.hh, src/MainMenu.cc, src/MainMenu.hh, src/Makefile.am,
+	src/OptionMenu.cc, src/OptionMenu.hh, src/PLF.cc, src/PLF.hh,
+	src/PLFParser.cc, src/PLFParser.hh, src/PLFPreview.cc,
+	src/PLFPreview.hh, src/PLTParser.cc, src/PLTParser.hh,
+	src/PSMParser.cc, src/PSMParser.hh, src/Pingu.cc, src/Pingu.hh,
+	src/PinguAction.cc, src/PinguAction.hh, src/PinguBmpMap.cc,
+	src/PinguBmpMap.hh, src/PinguEnums.hh, src/PinguHolder.cc,
+	src/PinguHolder.hh, src/PinguInfo.cc, src/PinguInfo.hh,
+	src/PinguMap.cc, src/PinguMap.hh, src/PinguRandomMap.cc,
+	src/PinguRandomMap.hh, src/Pingus.cc, src/Pingus.hh,
+	src/PingusCounter.cc, src/PingusCounter.hh, src/PingusCursor.cc,
+	src/PingusCursor.hh, src/PingusDemo.cc, src/PingusDemo.hh,
+	src/PingusError.cc, src/PingusError.hh, src/PingusGame.cc,
+	src/PingusGame.hh, src/PingusLevelDesc.cc, src/PingusLevelDesc.hh,
+	src/PingusLevelResult.cc, src/PingusLevelResult.hh,
+	src/PingusMenu.cc, src/PingusMenu.hh, src/PingusMessageBox.cc,
+	src/PingusMessageBox.hh, src/PingusMode.cc, src/PingusMode.hh,
+	src/PingusMusic.cc, src/PingusMusic.hh, src/PingusResource.cc,
+	src/PingusResource.hh, src/PingusSound.cc, src/PingusSound.hh,
+	src/PingusSpotMap.cc, src/PingusSpotMap.hh: Initial revision
+
+2000-02-05 00:45  mbn
+
+	* .cvsignore, AUTHORS, BUGS, COPYING, CREDITS, ChangeLog, FAQ,
+	INSTALL, Makefile.am, NEWS, README, README.Win32, THANKS, TODO,
+	WISHLIST, acconfig.h, acinclude.m4, autogen.sh, configure.in,
+	install-sh, make-binary-dist.sh, missing, mkinstalldirs,
+	pingus.dsp, pingus.dsw, pingus.spec, vcfix.reg, data/.cvsignore,
+	data/Makefile.am, data/README, data/data/.cvsignore,
+	data/data/Makefile.am, data/data/editor.scr, data/data/fonts.scr,
+	data/data/game.scr, data/data/global.scr, data/data/menu.scr,
+	data/data/pingus.scr, data/data/traps.scr, data/demos/.cvsignore,
+	data/demos/Makefile.am, data/demos/level1.pde,
+	data/images/.cvsignore, data/images/Makefile.am,
+	data/images/README, data/images/buttons/.cvsignore,
+	data/images/buttons/Makefile.am,
+	data/images/buttons/armageddon.pcx,
+	data/images/buttons/armageddon.tga,
+	data/images/buttons/armageddon_anim.tga,
+	data/images/buttons/down.pcx, data/images/buttons/down.tga,
+	data/images/buttons/editor.tga, data/images/buttons/editor_p.tga,
+	data/images/buttons/fast_forward.pcx,
+	data/images/buttons/fast_forward.tga, data/images/buttons/load.tga,
+	data/images/buttons/load_p.tga, data/images/buttons/options.tga,
+	data/images/buttons/options_p.tga, data/images/buttons/pause.pcx,
+	data/images/buttons/pause.tga, data/images/buttons/play.tga,
+	data/images/buttons/play_p.tga, data/images/buttons/quit.tga,
+	data/images/buttons/quit_p.tga, data/images/buttons/theme.tga,
+	data/images/buttons/theme_p.tga, data/images/buttons/up.tga,
+	data/images/cursors/.cvsignore, data/images/cursors/Makefile.am,
+	data/images/cursors/arrow_left.pcx,
+	data/images/cursors/arrow_right.pcx, data/images/cursors/cap.pcx,
+	data/images/cursors/cap.tga, data/images/cursors/capwrong.tga,
+	data/images/cursors/cursor.pcx, data/images/cursors/scroll.pcx,
+	data/images/editor/button.pcx,
+	data/images/editor/button_pressed.pcx, data/images/editor/logo.tga,
+	data/images/editor/tb_clock_run.pcx,
+	data/images/editor/tb_copy.pcx, data/images/editor/tb_edit.pcx,
+	data/images/editor/tb_exit.pcx, data/images/editor/tb_help.pcx,
+	data/images/editor/tb_index.pcx, data/images/editor/tb_new.pcx,
+	data/images/editor/tb_open.pcx,
+	data/images/editor/tb_preferences.pcx,
+	data/images/editor/tb_save.pcx, data/images/editor/tb_trash.pcx,
+	data/images/entrances/entrance.pcx, data/images/entrances/gate.tga,
+	data/images/entrances/woodthing_mov.pcx,
+	data/images/entrances/woodthing_mov.tga,
+	data/images/entrances/woodthing_nmov.tga,
+	data/images/exits/ice.pcx, data/images/exits/stone.pcx,
+	data/images/fonts/.cvsignore, data/images/fonts/Makefile.am,
+	data/images/fonts/clanfont.pcx, data/images/fonts/courier.pcx,
+	data/images/fonts/courier_h.pcx,
+	data/images/fonts/courier_small.tga,
+	data/images/fonts/courier_small2.tga, data/images/fonts/danger.pcx,
+	data/images/fonts/down_arrow.pcx, data/images/fonts/font.pcx,
+	data/images/fonts/left_arrow.pcx, data/images/fonts/number_fnt.pcx,
+	data/images/fonts/right_arrow.pcx, data/images/fonts/smallfont.pcx,
+	data/images/fonts/smallfont_h.pcx, data/images/fonts/up_arrow.pcx,
+	data/images/groundpieces/bpice1.pcx,
+	data/images/groundpieces/bpice2.pcx,
+	data/images/groundpieces/bpice3.pcx,
+	data/images/groundpieces/bpice4.pcx,
+	data/images/groundpieces/bpice5.pcx,
+	data/images/groundpieces/bpice6.pcx,
+	data/images/groundpieces/gpice1.pcx,
+	data/images/groundpieces/gpice2.pcx,
+	data/images/groundpieces/gpice3.pcx,
+	data/images/groundpieces/gpice4.pcx,
+	data/images/groundpieces/gpice5.pcx,
+	data/images/groundpieces/gpice6.pcx,
+	data/images/groundpieces/green1.pcx,
+	data/images/groundpieces/green2.pcx,
+	data/images/groundpieces/pfosten.pcx,
+	data/images/groundpieces/pipe1.pcx,
+	data/images/groundpieces/pipe2.pcx,
+	data/images/groundpieces/pipe3.pcx,
+	data/images/groundpieces/pipe4.pcx,
+	data/images/groundpieces/pipe5.pcx,
+	data/images/groundpieces/pipe6.pcx,
+	data/images/groundpieces/pipe7.pcx,
+	data/images/groundpieces/pipe8.pcx,
+	data/images/groundpieces/tree.pcx,
+	data/images/groundpieces/way.pcx,
+	data/images/groundpieces/weed1.pcx,
+	data/images/groundpieces/weed2.pcx,
+	data/images/groundpieces/crystal/block.pcx,
+	data/images/groundpieces/crystal/column.pcx,
+	data/images/groundpieces/crystal/diagcrystal.pcx,
+	data/images/groundpieces/crystal/hexcrystal.pcx,
+	data/images/groundpieces/crystal/horiz.pcx,
+	data/images/groundpieces/crystal/horiz2.pcx,
+	data/images/groundpieces/crystal/pipe.pcx,
+	data/images/groundpieces/crystal/pipeend.pcx,
+	data/images/groundpieces/crystal/platform.pcx,
+	data/images/groundpieces/crystal/platform2.pcx,
+	data/images/groundpieces/crystal/pointleft.pcx,
+	data/images/groundpieces/crystal/pointright.pcx,
+	data/images/groundpieces/crystal/skinnycrystal.pcx,
+	data/images/groundpieces/crystal/smcrystal.pcx,
+	data/images/groundpieces/crystal/tesselate.pcx,
+	data/images/groundpieces/foliage/flax1.pcx,
+	data/images/groundpieces/foliage/flax2.pcx,
+	data/images/groundpieces/foliage/midtree1.pcx,
+	data/images/groundpieces/foliage/oak1.pcx,
+	data/images/groundpieces/foliage/smallbush.pcx,
+	data/images/groundpieces/foliage/talltree.pcx,
+	data/images/groundpieces/jungle/branch1.pcx,
+	data/images/groundpieces/jungle/branch2.pcx,
+	data/images/groundpieces/jungle/branch3.pcx,
+	data/images/groundpieces/jungle/branch4.pcx,
+	data/images/groundpieces/jungle/branch5.pcx,
+	data/images/groundpieces/jungle/branch6.pcx,
+	data/images/groundpieces/jungle/carabatree.pcx,
+	data/images/groundpieces/jungle/carabatreemedium.pcx,
+	data/images/groundpieces/jungle/carabatreesmall.pcx,
+	data/images/groundpieces/jungle/stick1.pcx,
+	data/images/groundpieces/jungle/stick2.pcx,
+	data/images/groundpieces/jungle/stick3.pcx,
+	data/images/groundpieces/jungle/stick4.pcx,
+	data/images/groundpieces/jungle/stick5.pcx,
+	data/images/groundpieces/jungle/twist.pcx,
+	data/images/groundpieces/jungle/twistsmooth.pcx,
+	data/images/groundpieces/misc/bigprickpiece.pcx,
+	data/images/groundpieces/misc/brick1.pcx,
+	data/images/groundpieces/misc/brick2.pcx,
+	data/images/groundpieces/misc/brick3.pcx,
+	data/images/groundpieces/misc/brick4.pcx,
+	data/images/groundpieces/misc/brick5.pcx,
+	data/images/groundpieces/misc/middleprickpiece.pcx,
+	data/images/groundpieces/misc/pfosten.pcx,
+	data/images/groundpieces/misc/piece1.pcx,
+	data/images/groundpieces/misc/piece2.pcx,
+	data/images/groundpieces/misc/piece3.pcx,
+	data/images/groundpieces/misc/piece4.pcx,
+	data/images/groundpieces/misc/piece5.pcx,
+	data/images/groundpieces/misc/piece6.pcx,
+	data/images/groundpieces/misc/piece7.pcx,
+	data/images/groundpieces/misc/piece8.pcx,
+	data/images/groundpieces/misc/piece9.pcx,
+	data/images/groundpieces/misc/smallbrickpiece.pcx,
+	data/images/groundpieces/misc/spike.pcx,
+	data/images/groundpieces/misc/stoneblock1.pcx,
+	data/images/groundpieces/misc/stoneblock2.pcx,
+	data/images/groundpieces/misc/stoneblock3.pcx,
+	data/images/groundpieces/misc/way.pcx,
+	data/images/groundpieces/misc/way_left.pcx,
+	data/images/groundpieces/misc/way_right.pcx,
+	data/images/groundpieces/rock/rock1.pcx,
+	data/images/groundpieces/rock/rock2.pcx,
+	data/images/groundpieces/rock/rock3.pcx,
+	data/images/groundpieces/rock/rock4.pcx,
+	data/images/groundpieces/rock/rock5.pcx,
+	data/images/groundpieces/rock/rock6.pcx,
+	data/images/groundpieces/snow/gpiece1.pcx,
+	data/images/groundpieces/snow/ice1.pcx,
+	data/images/groundpieces/snow/ice2.pcx,
+	data/images/groundpieces/snow/igloo.pcx,
+	data/images/groundpieces/snow/piece1.pcx,
+	data/images/groundpieces/snow/piece2.pcx,
+	data/images/groundpieces/snow/piece3.pcx,
+	data/images/groundpieces/snow/snowman.pcx,
+	data/images/groundpieces/snow/xmas-tree.pcx,
+	data/images/groundpieces/test/test1.pcx,
+	data/images/groundpieces/test/test2.pcx,
+	data/images/groundpieces/test/test3.pcx,
+	data/images/groundpieces/test/test4.pcx,
+	data/images/groundpieces/test/test5.pcx,
+	data/images/hotspots/.cvsignore, data/images/hotspots/Makefile.am,
+	data/images/hotspots/bridge.pcx, data/images/hotspots/bridge2.pcx,
+	data/images/hotspots/cabin.pcx,
+	data/images/hotspots/cabin_winter.pcx,
+	data/images/hotspots/colum.pcx,
+	data/images/hotspots/colum_flat.pcx,
+	data/images/hotspots/colum_pice1.pcx,
+	data/images/hotspots/colum_pice2.pcx,
+	data/images/hotspots/colum_pice3.pcx,
+	data/images/hotspots/crystal.tga, data/images/hotspots/dragon.pcx,
+	data/images/hotspots/pillar1.pcx, data/images/hotspots/pillar2.pcx,
+	data/images/hotspots/pillar3.pcx, data/images/hotspots/plate.pcx,
+	data/images/hotspots/plate2.pcx,
+	data/images/hotspots/plate_small.pcx,
+	data/images/hotspots/stone0.pcx, data/images/hotspots/stone1.pcx,
+	data/images/hotspots/stone2.pcx, data/images/hotspots/tree.pcx,
+	data/images/hotspots/well.pcx, data/images/liquids/lava.pcx,
+	data/images/liquids/swater.pcx, data/images/liquids/water.pcx,
+	data/images/liquids/water2.pcx, data/images/liquids/water3.pcx,
+	data/images/liquids/water3.tga, data/images/liquids/water4.tga,
+	data/images/misc/brick.pcx, data/images/misc/cap.pcx,
+	data/images/misc/capwrong.pcx, data/images/misc/logo.pcx,
+	data/images/misc/logo.tga, data/images/misc/logo_bg.pcx,
+	data/images/particles/ground.tga,
+	data/images/particles/particle.pcx,
+	data/images/particles/smoke.tga, data/images/pingus/.cvsignore,
+	data/images/pingus/Makefile.am, data/images/pingus/README,
+	data/images/pingus/bash_radius.pcx, data/images/pingus/basher.pcx,
+	data/images/pingus/blocker.pcx, data/images/pingus/bomber.pcx,
+	data/images/pingus/bomber_radius.pcx,
+	data/images/pingus/bridger.pcx, data/images/pingus/climber.pcx,
+	data/images/pingus/digger.pcx,
+	data/images/pingus/digger_radius.pcx, data/images/pingus/explo.pcx,
+	data/images/pingus/explo.tga, data/images/pingus/faller.pcx,
+	data/images/pingus/floater.pcx, data/images/pingus/laser_kill.tga,
+	data/images/pingus/miner.pcx, data/images/pingus/stopper.pcx,
+	data/images/pingus/tumble.pcx, data/images/pingus/walker.pcx,
+	data/images/pingus/xmas-walker.pcx,
+	data/images/textures/.cvsignore, data/images/textures/Makefile.am,
+	data/images/textures/README, data/images/textures/blueflame.pcx,
+	data/images/textures/crystal.pcx,
+	data/images/textures/darkjungle.tga,
+	data/images/textures/enchantedjungle.tga,
+	data/images/textures/flamebg.pcx, data/images/textures/icetile.pcx,
+	data/images/textures/junglebg.pcx,
+	data/images/textures/latejungle.tga,
+	data/images/textures/lunartile.pcx,
+	data/images/textures/nightjungle.tga,
+	data/images/textures/rocktile.pcx,
+	data/images/textures/rooftile.pcx,
+	data/images/textures/rooftile2.pcx,
+	data/images/textures/solartile.pcx, data/images/textures/stars.pcx,
+	data/images/textures/stone.pcx, data/images/textures/stones.pcx,
+	data/images/themes/crystal.pcx, data/images/themes/xmas99.tga,
+	data/images/traps/.cvsignore, data/images/traps/Makefile.am,
+	data/images/traps/fake_exit.pcx, data/images/traps/gateway.pcx,
+	data/images/traps/guillotineidle.pcx,
+	data/images/traps/guillotinekill.pcx, data/images/traps/hammer.tga,
+	data/images/traps/laser_exit.pcx, data/images/traps/smasher.tga,
+	data/images/traps/smasher_cmap.pcx, data/images/traps/spike.pcx,
+	data/images/traps/teleporter.tga,
+	data/images/traps/teleporter2.tga, data/levels/.cvsignore,
+	data/levels/Makefile.am, data/levels/README, data/levels/block.plf,
+	data/levels/block.psm, data/levels/foliage1.plf,
+	data/levels/foliage1.psm, data/levels/jungle1.plf,
+	data/levels/jungle1.psm, data/levels/jungle2.plf,
+	data/levels/jungle2.psm, data/levels/level1.plf,
+	data/levels/level1.psm, data/levels/level10.plf,
+	data/levels/level10.psm, data/levels/level11.plf,
+	data/levels/level11.psm, data/levels/level2.plf,
+	data/levels/level2.psm, data/levels/level3.plf,
+	data/levels/level3.psm, data/levels/level4.plf,
+	data/levels/level5.plf, data/levels/level5.psm,
+	data/levels/level6.plf, data/levels/level6.psm,
+	data/levels/level7.plf, data/levels/level7.psm,
+	data/levels/level8.plf, data/levels/level8.psm,
+	data/levels/level9.plf, data/levels/level9.psm,
+	data/levels/rock1.plf, data/levels/rock1.psm, data/levels/snow.plf,
+	data/levels/snow.psm, data/levels/snow1.plf, data/levels/snow1.psm,
+	data/levels/snow2.plf, data/levels/snow2.psm,
+	data/levels/snow3.plf, data/levels/snow3.psm,
+	data/levels/snow4.plf, data/levels/snow4.psm,
+	data/levels/snow6.plf, data/levels/snow6.psm, data/levels/spot.psm,
+	data/levels/stone.plf, data/levels/stone.psm,
+	data/levels/test1.plf, data/levels/test1.psm, data/levels/tile.ptm,
+	data/levels/tile2.ptm, data/themes/.cvsignore,
+	data/themes/Makefile.am, data/themes/crystal.plt,
+	data/themes/crystal2.plt, data/themes/misc.plt,
+	data/themes/standard.plt, data/themes/xmas99.plt, doc/.cvsignore,
+	doc/Makefile.am, doc/editor, doc/levelformat.txt, doc/options,
+	doc/pingus.6, doc/pingus.texi, doc/texinfo.tex, src/.cvsignore,
+	src/ActionButton.cc, src/ActionButton.hh, src/ActionHolder.cc,
+	src/ActionHolder.hh, src/AlphaButton.cc, src/AlphaButton.hh,
+	src/AnimCounter.cc, src/AnimCounter.hh, src/Background.cc,
+	src/Background.hh, src/Button.cc, src/Button.hh,
+	src/ButtonPanel.cc, src/ButtonPanel.hh, src/CaptureRectangle.cc,
+	src/CaptureRectangle.hh, src/Client.cc, src/Client.hh,
+	src/ClientEvent.cc, src/ClientEvent.hh, src/ColMap.cc,
+	src/ColMap.hh, src/Counter.cc, src/Counter.hh, src/DebugGui.cc,
+	src/DebugGui.hh, src/Direction.cc, src/Direction.hh,
+	src/Entrance.cc, src/Entrance.hh, src/Exit.cc, src/Exit.hh,
+	src/FVec.cc, src/FVec.hh, src/FadeOut.cc, src/FadeOut.hh,
+	src/FileSelector.cc, src/FileSelector.hh, src/GameCounter.cc,
+	src/GameCounter.hh, src/GameObj.cc, src/GameObj.hh,
+	src/GameTime.cc, src/GameTime.hh, src/GuiObj.cc, src/GuiObj.hh,
+	src/Hotspot.cc, src/Hotspot.hh, src/Intro.cc, src/Intro.hh,
+	src/LevelInterrupt.cc, src/LevelInterrupt.hh, src/Liquid.cc,
+	src/Liquid.hh, src/MainMenu.cc, src/MainMenu.hh, src/Makefile.am,
+	src/OptionMenu.cc, src/OptionMenu.hh, src/PLF.cc, src/PLF.hh,
+	src/PLFParser.cc, src/PLFParser.hh, src/PLFPreview.cc,
+	src/PLFPreview.hh, src/PLTParser.cc, src/PLTParser.hh,
+	src/PSMParser.cc, src/PSMParser.hh, src/Pingu.cc, src/Pingu.hh,
+	src/PinguAction.cc, src/PinguAction.hh, src/PinguBmpMap.cc,
+	src/PinguBmpMap.hh, src/PinguEnums.hh, src/PinguHolder.cc,
+	src/PinguHolder.hh, src/PinguInfo.cc, src/PinguInfo.hh,
+	src/PinguMap.cc, src/PinguMap.hh, src/PinguRandomMap.cc,
+	src/PinguRandomMap.hh, src/Pingus.cc, src/Pingus.hh,
+	src/PingusCounter.cc, src/PingusCounter.hh, src/PingusCursor.cc,
+	src/PingusCursor.hh, src/PingusDemo.cc, src/PingusDemo.hh,
+	src/PingusError.cc, src/PingusError.hh, src/PingusGame.cc,
+	src/PingusGame.hh, src/PingusLevelDesc.cc, src/PingusLevelDesc.hh,
+	src/PingusLevelResult.cc, src/PingusLevelResult.hh,
+	src/PingusMenu.cc, src/PingusMenu.hh, src/PingusMessageBox.cc,
+	src/PingusMessageBox.hh, src/PingusMode.cc, src/PingusMode.hh,
+	src/PingusMusic.cc, src/PingusMusic.hh, src/PingusResource.cc,
+	src/PingusResource.hh, src/PingusSound.cc, src/PingusSound.hh,
+	src/PingusSpotMap.cc, src/PingusSpotMap.hh: Pingus cvs reimported.
+	Hope it solves some problems.  Btw. does this get posted to the
+	pingus cvs list? (mail me if it does).
+

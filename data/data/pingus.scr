@@ -16,7 +16,7 @@ section Pingus
 	splash      = images/pingus/splash.png     (type=surface, x=0, y=0, width=32, height=32, array=12x1);
 	splash_debris = images/pingus/splash_debris.png     (type=surface, x=0, y=0, width=32, height=32, array=6x2);
 
-	splat = images/pingus/splat.png     (type=surface, x=0, y=0, width=32, height=32, array=16x2);
+	splat = images/pingus/splat.png     (type=surface, x=0, y=0, width=32, height=32, array=16x1);
 
 	exit        = images/pingus/exit.png (type=surface, x=0, y=0, width=32, height=32, array=9x2);
 	drownfall   = images/pingus/drownfall.png (type=surface, x=0, y=0, width=32, height=32, array=15x2);

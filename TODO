@@ -1,3 +1,94 @@
+print version on startup
+---------------------
+
+What we need before we have a finished game:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* first of we need worldmaps for all different themes we have
+* we need connection between the worlds, probally some story text, or
+  some cut-scene like images
+* we need to solve the problem of pingus stuck in a wall
+* we need to fix up all action to work probally in most situations
+* we need some more worldobjects 
+
+---------------------
+
+
+---Type <return> to continue, or q <return> to quit---
+Reading symbols from /usr/local/lib/ClanLib/libclan-display-x11.so.0.5.0...done.
+Loaded symbols for /usr/local/lib/ClanLib/libclan-display-x11.so.0.5.0
+#0  0x4010114d in CL_Surface::get_provider (this=0x813878e) at Sources/Core/Display/Generic/surface.cpp:100
+100     Sources/Core/Display/Generic/surface.cpp: No such file or directory.
+(gdb) where
+#0  0x4010114d in CL_Surface::get_provider (this=0x813878e) at Sources/Core/Display/Generic/surface.cpp:100
+#1  0x80a917c in Blitter::scale_surface_to_canvas (sur=0x813878e, width=640, height=480) at blitter.cc:331
+#2  0x80a9140 in Blitter::scale_surface (sur=0x813878e, width=640, height=480) at blitter.cc:324
+#3  0x80844b9 in PingusMenu::init (this=0xbffff7d8) at PingusMenu.cc:55
+#4  0x8085a6a in PingusMenu::select (this=0xbffff7d8) at PingusMenu.cc:146
+#5  0x805228f in PingusMain::do_lemmings_mode (this=0x81ccd48) at PingusMain.cc:811
+#6  0x8052cc1 in PingusMain::main (this=0x81ccd48, argc=1, argv=0xbffff9a4) at PingusMain.cc:895
+#7  0x804e71f in GenericMain::main (this=0x81ca7e0, argc=1, argv=0xbffff9a4) at GenericMain.cc:78
+#8  0x40144625 in main (argc=1, argv=0xbffff9a4) at Sources/Core/System/Unix/init_linux.cpp:510
+#9  0x403eac1c in __libc_start_main () from /lib/libc.so.6
+Current language:  auto; currently c++
+(gdb) 
+
+libxml check broken
+
+Platform that only allows some pingus on it
+
+Editor can't handle backgrounds, it can only load and save them.
+
+Editor can't handle worldobj, teleporter and probablly other stuff
+
+> 1.  basher: The basher can go through small solid objects. He does
+> not bash them away, so nobody can follow. But anyway it looks
+> strange.  I have this problem in the level I send to you (level_2)
+> because the width of the vertical solid objects is so small.
+
+> 2. digger: The digger can dig to the left and the right through
+> solid objects if there width is small. I saw this problem in my
+> level_2.
+
+
+Log file
+
+GFX ToDo:
+~~~~~~~~~
+
+Desert Theme:
+ * entrance
+ * mummie/grave
+ * integration of the desert column 
+
+Industrial Theme:
+ * smaller/bigger pipes
+
+Space Theme:
+ * more groundpieces
+ * space shuttels
+ * launch pad
+ * rockets
+
+Jungle Theme:
+ * entrance/exit
+
+Snow/X-Mas Theme:
+ * entrance
+ * exit fixing, beautifying
+
+Stone Theme:
+ * Entrance
+ * more grass/mose 
+
+Foliage Theme:
+ * entrance/exit
+ * probably merge with jungle
+
+Crystal Theme:
+ * entrance 
+
+
 Editor can't handle backgrounds, it can only load and save them.
 
 Editor can't handle worldobj, teleporter and probablly other stuff
@@ -157,10 +248,7 @@ Less Important Things:
 * More pingu actions
 * Autorepeat actions
 * Dynamic linking of PinguAction's
-* "Forces" - which push pingus and other mobile objects. eg a fan (a
-  la Lemmings 2), and from explosions      
 * Implementing Demo recording/playing to the menu    
-* Parallax scrolling backgrounds
 
 -= BIG STUFF =-
 * "Worms" mode. 
@@ -227,6 +315,6 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
 
 
 
-$Date: 2000/10/12 22:19:17 $
+$Date: 2001/03/31 11:33:55 $
 
 -= EOF =-

@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.35 2001/03/18 17:45:04 grumbel Exp $
+#  $Id: configure.in,v 1.36 2001/03/31 11:33:55 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -172,6 +172,7 @@ AC_CHECK_LIB( clanCore,   main,, [
 	echo "the FAQ."
 	exit
 	])
+
 AC_CHECK_LIB( clanApp,   main)
 
 dnl AC_CHECK_LIB( clanGUI,   main,, [
@@ -312,10 +313,9 @@ AC_OUTPUT( Makefile
            data/data/Makefile
            data/demos/Makefile
            data/data/Makefile
-           doc/Makefile 
-
-intl/Makefile po/Makefile.in
-)
+           doc/Makefile
+           intl/Makefile po/Makefile.in
+          )
 
 # ----------------------------------------
 

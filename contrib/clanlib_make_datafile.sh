@@ -11,10 +11,10 @@ for filename in $@; do
 #    echo "Identifing: $0 $out ..."
 
     identify -verbose $filename > $out
-    width=`grep "  geometry" $out | sed "s/  geometry: \([0-9]*\)x[0-9]*/\1/"`
-    height=`grep "  geometry" $out | sed "s/  geometry: [0-9]*x\([0-9]*\)/\1/"`
+    width=`grep "  Geometry" $out | sed "s/  Geometry: \([0-9]*\)x[0-9]*/\1/"`
+    height=`grep "  Geometry" $out | sed "s/  Geometry: [0-9]*x\([0-9]*\)/\1/"`
     name=`basename $filename | sed "s/.jpg$//" | sed "s/.pcx$//" | sed "s/.tga$//"`
-    type=`grep "  format:" $out | sed "s/  format: \(.*\)/\1/"`
+    type=`grep "  Format:" $out | sed "s/  Format: \(.*\)/\1/"`
 
     #echo "Height: $height"
     #echo "Width:  $width"

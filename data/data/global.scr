@@ -49,8 +49,8 @@ section Hotspots
 	pillar3     = images/hotspots/pillar3.png (type=surface, x=0, y=0, width=36, height=147, tcol=0);
 
 	well        = images/hotspots/well.png    (type=surface, x=0, y=0, width=32, height=54, tcol=0);
-	plate       = images/groundpieces/solid/misc/metalplate_large.png   (type=surface, x=0, y=0, width=64, height=32);
-	plate2      = images/groundpieces/solid/misc/metalplate_horiz.png  (type=surface, x=0, y=0, width=64, height=64);
+	plate       = images/groundpieces/solid/misc/metalplate_horiz.png   (type=surface, x=0, y=0, width=64, height=32);
+	plate2      = images/groundpieces/solid/misc/metalplate_large.png  (type=surface, x=0, y=0, width=64, height=64);
 	plate_small = images/groundpieces/solid/misc/metalplate_small.png  (type=surface, x=0, y=0, width=32, height=32);
 
 	section signposts {
