@@ -1,4 +1,4 @@
-//  $Id: action_holder.hxx,v 1.5 2002/08/25 09:08:48 torangan Exp $
+//  $Id: action_holder.hxx,v 1.6 2002/09/14 22:41:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,6 +46,8 @@ private:
   std::map<ActionName, int> available_actions;
 
 public:
+  /** Create an action holder from the number of actions given in a
+      PLF file */
   ActionHolder (PLF* plf);
   ~ActionHolder ();
 
@@ -62,7 +64,7 @@ public:
 
   /** Returns the number of actions of the specified name which are available 
    *  thru get_action() 
-   * @return 0 if the name is unknown
+   * @return 0 if the name is unknown FIXME: should use .find instead of []
    */
   int  get_available(ActionName);
 
@@ -81,9 +83,3 @@ private:
 #endif
 
 /* EOF */
-
-
-
-
-
-

@@ -1,4 +1,4 @@
-//  $Id: smallmap_image.cxx,v 1.5 2002/08/23 15:49:50 torangan Exp $
+//  $Id: smallmap_image.cxx,v 1.6 2002/09/14 22:41:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,9 +55,6 @@ SmallMapImage::create_surface (Server * server, int width, int height)
   unsigned char* cbuffer;
   unsigned char  current_pixel;
   int tx, ty;
-
-  CL_Surface entrance_sur = PingusResource::load_surface("misc/smallmap_entrance", "core");
-  CL_Surface exit_sur     = PingusResource::load_surface("misc/smallmap_exit", "core");
 
   World* world = server->get_world();
 
@@ -118,6 +115,13 @@ SmallMapImage::create_surface (Server * server, int width, int height)
     }
 
 #if 0
+  /* This draws the exits and entrances to the smallmap, due to the
+     class reordering this is no longer working, a generic
+     WorldObj::draw_smallmap (SmallMap* / CL_Canvas*) should help
+     here. */
+  CL_Surface entrance_sur = PingusResource::load_surface("misc/smallmap_entrance", "core");
+  CL_Surface exit_sur     = PingusResource::load_surface("misc/smallmap_exit", "core");
+
   PLF* plf = world->get_plf();
 
   std::vector<ExitData>     exit_d     = plf->get_exit();
@@ -144,11 +148,6 @@ SmallMapImage::create_surface (Server * server, int width, int height)
 
   canvas->unlock();
   
-  //  sur = CL_Surface(canvas, true);
-  
-  //rwidth = CL_Display::get_width() * width / client->get_server()->get_world()->get_colmap()->get_width();
-  //rheight = CL_Display::get_height() * height / client->get_server()->get_world()->get_colmap()->get_height();
-
   return CL_Surface(canvas, true);
 }
 

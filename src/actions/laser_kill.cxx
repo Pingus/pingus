@@ -1,4 +1,4 @@
-//  $Id: laser_kill.cxx,v 1.8 2002/09/14 20:41:25 grumbel Exp $
+//  $Id: laser_kill.cxx,v 1.9 2002/09/14 22:41:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,8 +52,8 @@ LaserKill::update (float delta)
 {
   if (sprite.finished())
     pingu->set_status(PS_DEAD);
-
-  sprite.update(delta);
+  else
+    sprite.update(delta);
 }
 
 } // namespace Actions

@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.10 2002/09/04 19:40:19 grumbel Exp $
+//  $Id: world.hxx,v 1.11 2002/09/14 22:41:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,6 @@ class Pingu;
 class Trap;
 class View;
 class ColMap;
-class WorldImpl;
 class WorldObj;
 class GameTime;
 class GraphicContext;
@@ -55,23 +54,37 @@ using std::string;
 class World
 {
 private:
-  WorldImpl* impl;
-
+  /** groundmap for the pingus */
   PinguMap* gfx_map;
+
+  /** manager class for the time in the pingus world */
   GameTime* game_time;
+
+  /** set to true once an armageddon got started */
   bool do_armageddon;
+
+  /** FIXME: ugly hack to iterate over all pingus and make bombers out
+      of them, should use pingus_id instead */
   std::list<Pingu*>::iterator armageddon_count;
 
+  /** number of already released pingus */
   unsigned int released_pingus;
+
+  /** number of total pingus available in this level */
   unsigned int allowed_pingus;
+
+  /** number of pingus to save */
   unsigned int number_to_save;
+
+  /** */
   bool exit_world;
   
   /** End the world when the given time is reached, this is set by
       armageddon or similar events.  */
   int  shutdown_time;  
 
-  /// The time you have to finish a level
+  /** The time in which you have to finish a level, aka the time limit
+      of a level */
   int exit_time;
 
   std::vector<WorldObj*> world_obj;
@@ -84,11 +97,10 @@ private:
   // Pointers which are references to objects from other classes
   ActionHolder*   action_holder;
   ColMap*         colmap;
-  PLF*            plf;
   View*           view;
 
-  void    init_worldobjs (void);
-  void    init_map (void);
+  void    init_worldobjs (PLF* plf);
+  void    init_map (PLF* plf);
 
 public:
   World(PLF*);
@@ -100,14 +112,17 @@ public:
   /** Update the World */
   void    update (float delta);
 
-  /// Issue an armageddon, all Pingus will explode in some seconds.
+  /** Issue an armageddon, all Pingus will explode in some seconds. */
   void    armageddon ();
 
   /** @return The absolute height of the world. */
   int     get_height ();
   /** @return The absolute width of the world */
   int     get_width();
-  ///
+
+  /** @return true if the world is finished, meaning the time limit
+      has passed or the world is out of pingus (which is simulated by
+      the time => FIXME: hack) */
   bool    is_finished ();
 
   /** Returns the time passed since the level was started */
@@ -129,34 +144,43 @@ public:
   /** @return A pointer to the worlds particle holder */
   ParticleHolder* get_particle_holder();
   
-  /** @return Pointer to the ActionHolder of the world */
-  ActionHolder* get_action_holder();
-
-  PLF* get_plf();
-
   unsigned int get_released_pingus() { return released_pingus; }
   void         inc_released_pingus() { ++released_pingus; }
-  unsigned int check_armageddon() { return do_armageddon; }
+
+  /** @return true if the world is currently doing an armageddon */
+  bool check_armageddon() { return do_armageddon; }
+
+  /** @return the number of totally allowed pingus */
   unsigned int get_allowed_pingus() { return allowed_pingus; }
-  unsigned int get_pingus_out();
-  unsigned int get_saved_pingus();
+
+  /** @return the number of pingus currently moving around in the
+      world, exited, killed and not yet released pingus are not
+      counted */
+  unsigned int get_pingus_out(); unsigned int get_saved_pingus(); 
+
+  /** @return number of pingus which need to get saved in this level
+      to finish it successfull */
   unsigned int get_number_to_save() { return number_to_save; }
 
   /** Play a sound as if it would have been generated at the given
       position, adjust panning and volume by the position relative to
       the center of the screen 
       @param name Filename of the wav file to play
-      @param pos Position from which the sound seems to come (z-pos is going to be ignored) void play_wav (std::string name, const
+      @param pos Position from which the sound seems to come (z-pos is
+      going to be ignored) void play_wav (std::string name, const
       @param volume The volume of the sound
   */
   void play_wav (std::string name, const CL_Vector& pos, float volume = 0.5f);
 
   /** Sets the main view, it is needed to play stereo wave and for
-      other screen orientated effects */
+      other screen orientated effects 
+
+      FIXME: This is really ugly and should be handled otherwise, by a
+      FIXME: play_sound (View*) analog to draw() and update() or something
+      FIXME: like that */
   void set_view (View* v);
 
   PinguHolder* get_pingu_p(void);
-  void set_action_holder(ActionHolder*);
 
   /** @return the pingu at the given word coordinates, an empty
       shared_ptr is returned if none is there */

@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.22 2002/09/14 19:06:33 torangan Exp $
+//  $Id: world.cxx,v 1.23 2002/09/14 22:41:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,11 +52,10 @@ bool WorldObj_less (WorldObj* a, WorldObj* b)
 // } 
 #endif
 
-World::World(PLF* arg_plf)
+World::World(PLF* plf)
   : game_time (new GameTime (game_speed)),
     particle_holder (new ParticleHolder()),
     pingus (new PinguHolder()),
-    plf (arg_plf),
     view (0)
 { 
   // Not perfect, but works
@@ -73,8 +72,60 @@ World::World(PLF* arg_plf)
     std::cout << "World: Time is not in the tolerated range: " << exit_time << std::endl;
   shutdown_time = -1;
 
-  init_map();
-  init_worldobjs();
+  init_map(plf);
+  init_worldobjs(plf);
+}
+
+void
+World::init_map(PLF* plf)
+{
+  gfx_map = new PingusSpotMap(plf);
+  colmap = gfx_map->get_colmap();
+
+  world_obj.push_back (gfx_map);
+}
+
+void
+World::init_worldobjs(PLF* plf)
+{
+  vector<WeatherData>   weather_d  = plf->get_weather();
+  vector<WorldObjData*> worldobj_d = plf->get_worldobjs_data ();
+
+  for(vector<WeatherData>::iterator i = weather_d.begin();
+      i != weather_d.end();
+      ++i)
+    {
+      world_obj.push_back(WeatherGenerator::create(*i));
+    }
+
+  for (vector<WorldObjData*>::iterator i = worldobj_d.begin ();
+       i != worldobj_d.end ();
+       ++i)
+    {
+      WorldObj* obj = (*i)->create_WorldObj ();
+      if (obj)
+	{
+	  world_obj.push_back(obj);
+	}
+      else
+	{
+	  std::cout << "World: Couldn't create object from data" << std::endl;
+	}
+    }
+
+   world_obj.push_back(pingus);
+
+   //world_obj->sort(WorldObj_less);
+   std::stable_sort (world_obj.begin (), world_obj.end (), WorldObj_less);
+
+  // Drawing all world objs to the colmap
+  for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
+    (*obj)->draw_colmap();
+
+  // Setup the gravity force
+  // Clear all old forces
+  ForcesHolder::clear_all_forces();
+  ForcesHolder::add_force(GravityForce(grav));
 }
 
 World::~World()
@@ -121,12 +172,14 @@ World::update(float delta)
 {
   game_time->update ();
 
-  //std::cout << "World::update (" << delta << ")" << std::endl;
-
+  // if a exit condition is schedule a shutdown of the world in the
+  // next 75 ticks
   if (!exit_world && (allowed_pingus == released_pingus || do_armageddon)
       && pingus->size() == 0) 
     {
-      if (verbose) std::cout << "World: world finished, going down in the next seconds..." << endl;
+      if (verbose)
+	std::cout << "World: world finished, going down in the next seconds..." << endl;
+
       exit_world = true;
       shutdown_time = game_time->get_ticks() + 75;
     }
@@ -163,56 +216,11 @@ World::update(float delta)
       }
     }
 
+  // FIXME: Why is the particle holder still a seperate object?
   particle_holder->update(delta);
 
   // Clear the explosion force list
   ForcesHolder::clear_explo_list();
-}
-
-void
-World::init_map()
-{
-  gfx_map = new PingusSpotMap(plf);
-  colmap = gfx_map->get_colmap();
-
-  world_obj.push_back (gfx_map);
-}
-
-void
-World::init_worldobjs()
-{
-  vector<WeatherData>   weather_d  = plf->get_weather();
-  vector<WorldObjData*> worldobj_d = plf->get_worldobjs_data ();
-
-  for(vector<WeatherData>::iterator i = weather_d.begin();
-      i != weather_d.end();
-      ++i)
-    {
-      world_obj.push_back(WeatherGenerator::create(*i));
-    }
-
-  for (vector<WorldObjData*>::iterator i = worldobj_d.begin ();
-       i != worldobj_d.end ();
-       ++i)
-    {
-      WorldObj* obj = (*i)->create_WorldObj ();
-      if (obj)
-      	world_obj.push_back(obj);
-    }
-
-   world_obj.push_back(pingus);
-
-   //world_obj->sort(WorldObj_less);
-   std::stable_sort (world_obj.begin (), world_obj.end (), WorldObj_less);
-
-  // Drawing all world objs to the colmap
-  for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
-    (*obj)->draw_colmap();
-
-  // Setup the gravity force
-  // Clear all old forces
-  ForcesHolder::clear_all_forces();
-  ForcesHolder::add_force(GravityForce(grav));
 }
 
 PinguHolder*
@@ -305,28 +313,16 @@ World::get_gfx_map ()
   return gfx_map;
 }
 
-ActionHolder*
+/*ActionHolder*
 World::get_action_holder ()
 {
   return action_holder;
-}
+}*/
 
 ParticleHolder* 
 World::get_particle_holder()
 {
   return particle_holder;
-}
-
-PLF*
-World::get_plf()
-{
-  return plf;
-}
-
-void
-World::set_action_holder(ActionHolder* a)
-{
-  action_holder = a;
 }
 
 void 

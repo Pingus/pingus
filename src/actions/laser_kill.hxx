@@ -1,4 +1,4 @@
-//  $Id: laser_kill.hxx,v 1.8 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: laser_kill.hxx,v 1.9 2002/09/14 22:41:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,8 @@
 
 namespace Actions {
 
+/** This action is triggered by the LaserExit trap and causes the
+    pingu to 'burn-away' */
 class LaserKill : public PinguAction
 {
 private:

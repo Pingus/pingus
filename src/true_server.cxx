@@ -1,4 +1,4 @@
-//  $Id: true_server.cxx,v 1.6 2002/09/14 19:06:33 torangan Exp $
+//  $Id: true_server.cxx,v 1.7 2002/09/14 22:41:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,10 +47,6 @@ TrueServer::TrueServer(PLF* arg_plf)
   local_game_speed = game_speed;
 
   world = new World (plf);
-
-  // FIXME: this is complete trash, delete it and place it in world
-  // object or so...
-  world->set_action_holder(&action_holder);
 }
 
 TrueServer::~TrueServer()
