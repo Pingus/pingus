@@ -1,8 +1,0 @@
-ground : (resource:global)GroundPieces/Jungle/stick3 : 255 : 212;
-bridge : (resource:global)GroundPieces/pipe_dl : 22 : 337;
-ground : (resource:global)GroundPieces/pipe_v : 22 : 305;
-ground : (resource:global)GroundPieces/pipe_v : 22 : 211;
-ground : (resource:global)GroundPieces/pipe_v : 22 : 274;
-ground : (resource:global)GroundPieces/pipe_pv : 22 : 242;
-ground : (resource:global)Hotspots/plate : 113 : 345;
-ground : (resource:global)Hotspots/plate : 52 : 346;
