@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.7 2000/02/25 02:35:27 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.8 2000/02/28 03:50:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -100,7 +100,7 @@ PingusMenu::select(void)
 
   event->enabled = true;
 
-  CL_MouseCursor::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat"), false));
+  CL_MouseCursor::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
 
   CL_MouseCursor::show();
  

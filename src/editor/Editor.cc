@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.6 2000/02/25 02:35:27 grumbel Exp $
+//  $Id: Editor.cc,v 1.7 2000/02/28 03:50:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -86,7 +86,7 @@ Editor::edit ()
 {
   quit = false;
 
-  CL_MouseCursor::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat"), false));
+  CL_MouseCursor::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
   
   CL_MouseCursor::show();
 
@@ -376,6 +376,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.7  2000/02/28 03:50:43  grumbel
+Some mouse cursor changes, to keep up with ClanLib
+
 Revision 1.6  2000/02/25 02:35:27  grumbel
 Added a more or less useless small map, which should be used to scroll around in the level, misc other changes/fixes
 
