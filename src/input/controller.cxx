@@ -1,4 +1,4 @@
-//  $Id: controller.cxx,v 1.4 2002/07/10 17:28:13 torangan Exp $
+//  $Id: controller.cxx,v 1.5 2002/07/10 18:08:00 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,12 @@ namespace Input
 							   armageddon_pressed(false), escape_pressed(false),
 							   fast_forward_pressed(false), pause_pressed(false),
 							   primary_pressed(false), secondary_pressed(false),
-							   scroll_modifier_pressed(false)
+							   scroll_modifier_pressed(false),
+							   action_1_pressed(false), action_2_pressed(false),
+							   action_3_pressed(false), action_4_pressed(false),
+							   action_5_pressed(false), action_6_pressed(false),
+							   action_7_pressed(false), action_8_pressed(false),
+							   action_9_pressed(false), action_10_pressed(false)
   {
     xmlDocPtr doc = xmlParseFile(configfile.c_str());
     
@@ -165,6 +170,10 @@ namespace Input
       
     if (!action_axis)
       action_axis = new DummyAxis;
+      
+    if (action_buttons.size() < 10)
+      for (unsigned int i=action_buttons.size(); i <= 10; i++)
+        action_buttons.push_back(new DummyButton);
   }
 
   void
@@ -224,7 +233,190 @@ namespace Input
 	  }
       }
       
+    if (scr_pointer_x != scroll_pointer->get_x_pos() || scr_pointer_y != scroll_pointer->get_y_pos())
+      {
+        scr_pointer_x = scroll_pointer->get_x_pos();
+	scr_pointer_y = scroll_pointer->get_y_pos();
+	
+	events.push_back(new PointerEvent(scroll, scr_pointer_x, scr_pointer_y));
+      }
     
+    if (armageddon_pressed != armageddon_button->is_pressed())
+      {
+        armageddon_pressed = armageddon_button->is_pressed();
+	
+	if (armageddon_pressed)
+	  events.push_back(new ButtonEvent(armageddon, pressed));
+	else
+	  events.push_back(new ButtonEvent(armageddon, released));
+      }
+    
+    if (escape_pressed != escape_button->is_pressed())
+      {
+        escape_pressed = escape_button->is_pressed();
+	
+	if (escape_pressed)
+	  events.push_back(new ButtonEvent(escape, pressed));
+	else
+	  events.push_back(new ButtonEvent(escape, released));
+      }
+    
+    if (armageddon_pressed != armageddon_button->is_pressed())
+      {
+        armageddon_pressed = armageddon_button->is_pressed();
+	
+	if (armageddon_pressed)
+	  events.push_back(new ButtonEvent(armageddon, pressed));
+	else
+	  events.push_back(new ButtonEvent(armageddon, released));
+      }
+    
+    if (fast_forward_pressed != fast_forward_button->is_pressed())
+      {
+        fast_forward_pressed = fast_forward_button->is_pressed();
+	
+	if (fast_forward_pressed)
+	  events.push_back(new ButtonEvent(fast_forward, pressed));
+	else
+	  events.push_back(new ButtonEvent(fast_forward, released));
+      }
+    
+    if (pause_pressed != pause_button->is_pressed())
+      {
+        pause_pressed = pause_button->is_pressed();
+	
+	if (pause_pressed)
+	  events.push_back(new ButtonEvent(pause, pressed));
+	else
+	  events.push_back(new ButtonEvent(pause, released));
+      }
+    
+    if (primary_pressed != primary_button->is_pressed())
+      {
+        primary_pressed = primary_button->is_pressed();
+	
+	if (primary_pressed)
+	  events.push_back(new ButtonEvent(primary, pressed));
+	else
+	  events.push_back(new ButtonEvent(primary, released));
+      }
+    
+    if (secondary_pressed != secondary_button->is_pressed())
+      {
+        secondary_pressed = secondary_button->is_pressed();
+	
+	if (secondary_pressed)
+	  events.push_back(new ButtonEvent(secondary, pressed));
+	else
+	  events.push_back(new ButtonEvent(secondary, released));
+      }
+    
+    if (action_1_pressed != action_buttons[0]->is_pressed())
+      {
+        action_1_pressed = action_buttons[0]->is_pressed();
+	
+	if (action_1_pressed)
+	  events.push_back(new ButtonEvent(action_1, pressed));
+	else
+	  events.push_back(new ButtonEvent(action_1, released));
+      }
+    
+    if (action_2_pressed != action_buttons[1]->is_pressed())
+      {
+        action_2_pressed = action_buttons[1]->is_pressed();
+	
+	if (action_2_pressed)
+	  events.push_back(new ButtonEvent(action_2, pressed));
+	else
+	  events.push_back(new ButtonEvent(action_2, released));
+      }
+    
+    if (action_3_pressed != action_buttons[2]->is_pressed())
+      {
+        action_3_pressed = action_buttons[2]->is_pressed();
+	
+	if (action_3_pressed)
+	  events.push_back(new ButtonEvent(action_3, pressed));
+	else
+	  events.push_back(new ButtonEvent(action_3, released));
+      }
+    
+    if (action_4_pressed != action_buttons[3]->is_pressed())
+      {
+        action_4_pressed = action_buttons[3]->is_pressed();
+	
+	if (action_4_pressed)
+	  events.push_back(new ButtonEvent(action_4, pressed));
+	else
+	  events.push_back(new ButtonEvent(action_4, released));
+      }
+    
+    if (action_5_pressed != action_buttons[4]->is_pressed())
+      {
+        action_5_pressed = action_buttons[4]->is_pressed();
+	
+	if (action_5_pressed)
+	  events.push_back(new ButtonEvent(action_5, pressed));
+	else
+	  events.push_back(new ButtonEvent(action_5, released));
+      }
+    
+    if (action_6_pressed != action_buttons[5]->is_pressed())
+      {
+        action_6_pressed = action_buttons[5]->is_pressed();
+	
+	if (action_6_pressed)
+	  events.push_back(new ButtonEvent(action_6, pressed));
+	else
+	  events.push_back(new ButtonEvent(action_6, released));
+      }
+    
+    if (action_7_pressed != action_buttons[6]->is_pressed())
+      {
+        action_7_pressed = action_buttons[6]->is_pressed();
+	
+	if (action_7_pressed)
+	  events.push_back(new ButtonEvent(action_7, pressed));
+	else
+	  events.push_back(new ButtonEvent(action_7, released));
+      }
+    
+    if (action_8_pressed != action_buttons[7]->is_pressed())
+      {
+        action_8_pressed = action_buttons[7]->is_pressed();
+	
+	if (action_8_pressed)
+	  events.push_back(new ButtonEvent(action_8, pressed));
+	else
+	  events.push_back(new ButtonEvent(action_8, released));
+      }
+    
+    if (action_9_pressed != action_buttons[8]->is_pressed())
+      {
+        action_9_pressed = action_buttons[8]->is_pressed();
+	
+	if (action_9_pressed)
+	  events.push_back(new ButtonEvent(action_9, pressed));
+	else
+	  events.push_back(new ButtonEvent(action_9, released));
+      }
+    
+    if (action_10_pressed != action_buttons[9]->is_pressed())
+      {
+        action_10_pressed = action_buttons[9]->is_pressed();
+	
+	if (action_10_pressed)
+	  events.push_back(new ButtonEvent(action_10, pressed));
+	else
+	  events.push_back(new ButtonEvent(action_10, released));
+      }
+    
+    if (action_axis->get_pos())
+      if (action_axis->get_pos() > 0)
+        events.push_back(new AxisEvent(up));
+      else
+        events.push_back(new AxisEvent(down));
+
   }
 
 }

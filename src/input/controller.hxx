@@ -1,4 +1,4 @@
-//  $Id: controller.hxx,v 1.4 2002/07/10 17:28:13 torangan Exp $
+//  $Id: controller.hxx,v 1.5 2002/07/10 18:08:00 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,6 +55,9 @@ namespace Input
       float std_pointer_x, std_pointer_y, scr_pointer_x, scr_pointer_y;
       bool  armageddon_pressed, escape_pressed, fast_forward_pressed, pause_pressed,
             primary_pressed, secondary_pressed, scroll_modifier_pressed;
+      bool  action_1_pressed, action_2_pressed, action_3_pressed, action_4_pressed, 
+            action_5_pressed, action_6_pressed, action_7_pressed, action_8_pressed, 
+	    action_9_pressed, action_10_pressed;
 
     public:
       explicit Controller (const std::string& configfile);
