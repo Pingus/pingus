@@ -1,4 +1,4 @@
-//  $Id: Entrance.hh,v 1.4 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: Entrance.hh,v 1.5 2000/06/19 20:10:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,12 +29,13 @@
 #include "ActionHolder.hh"
 #include "entrance_data.hh"
 
-///
+/** A abstract representation of an entrance, the implementation
+    currently sucks and needs to be rewritten */
 class Entrance : public WorldObj
 {
 protected:
   ///
-  static CL_Surface* surface;
+  CL_Surface* surface;
   ///
   int last_release;
   ///

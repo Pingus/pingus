@@ -1,4 +1,4 @@
-//  $Id: Story.cc,v 1.1 2000/06/18 22:19:48 grumbel Exp $
+//  $Id: Story.cc,v 1.2 2000/06/19 20:10:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,8 +38,8 @@ Story::~Story()
 void
 Story::init()
 {
-  small_font = CL_Font::load("Fonts/pingus", PingusResource::get("fonts.dat"));
-  large_font = CL_Font::load("Fonts/pingus_small", PingusResource::get("fonts.dat"));
+  small_font = CL_Font::load("Fonts/pingus_small", PingusResource::get("fonts.dat"));
+  large_font = CL_Font::load("Fonts/pingus", PingusResource::get("fonts.dat"));
   background = CL_Surface::load("Textures/stones", PingusResource::get("textures.dat"));  
 
   is_init = true;
@@ -57,14 +57,21 @@ Story::display()
       background->put_screen(x, y);
 
   story->put_screen(CL_Display::get_width()/2 - (story->get_width()/2),
-		    80);
+		    50);
   CL_Display::fill_rect(CL_Display::get_width()/2 - (story->get_width()/2) + 25,
-			80 - story->get_height()/2 + 25,
-			CL_Display::get_width()/2 + (story->get_width()/2) + 25,
-			80 + story->get_height()/2 + 25,
-			0.0, 0.0, 0.0, 0.8);
+			50 + story->get_height() + 25,
+			CL_Display::get_width()/2 + (story->get_width()/2) - 25,
+			CL_Display::get_height() - 25,
+			1.0, 1.0, 1.0, 0.5);
 
-  display_string("Dies ist ein Test....\nBla oeuboeu\naoeuoeuaoue");
+  //display_string("Dies ist ein Test....\nBla oeuboeu\naoeuoeuaoue");
+  small_font->print_left(105, 80 + story->get_height() + 25 + (1 * small_font->get_height()), "aoeuoaeu");
+  small_font->print_left(105, 80 + story->get_height() + 25 + (2 * small_font->get_height()), "Bloeuoeua");
+  small_font->print_left(105, 80 + story->get_height() + 25 + (3 * small_font->get_height()), "Bloeuoea");
+  small_font->print_left(105, 80 + story->get_height() + 25 + (4 * small_font->get_height()), "Blaoeuoea");
+  small_font->print_left(105, 80 + story->get_height() + 25 + (5 * small_font->get_height()), "oeuBla");
+  small_font->print_left(105, 80 + story->get_height() + 25 + (6 * small_font->get_height()), "Beouoeula");
+
   CL_Display::flip_display();
 
   while(true);
@@ -73,26 +80,31 @@ Story::display()
 void
 Story::display_string(std::string current_line)
 {
+  /*  while ((pos = str.find("\n")) != string::npos) 
+    {
+      tmp_string = str.substr(0, pos);
+      small_font->print_left(current_line + tmp_string);
+      current_pos++;
+      current_line = "";
+      str = str.substr(pos+1);
+    }
+  */
+  /*
   std::string tmp_string;
   std::vector<std::string> output_buffer;
-  int current_pos;
-  //  std::string current_line = "Dies ist ein Test....\nBla oeuboeu\naoeuoeuaoue"
 
   // FIXME: This could be optimized if xterm would be a fixed font...
   while(small_font->get_text_width(current_line.c_str()) > (CL_Display::get_width() - 100))
     {
-      int pos = current_line.size();
-      
-      while (small_font->get_text_width(current_line.substr(0, pos).c_str())
-	     > (CL_Display::get_width() - 100))
-	{
-	  pos--;
-	}
+      int pos;
+      for (pos = current_line.size();
+	   small_font->get_text_width(current_line.substr(0, pos).c_str())
+	     > (CL_Display::get_width() - 100);
+	   pos--);
       
       tmp_string = current_line.substr(0, pos);
       
       output_buffer.push_back(tmp_string);
-      //current_pos++;
       current_line = current_line.substr(pos);
     }
   
@@ -105,7 +117,7 @@ Story::display_string(std::string current_line)
     {
       small_font->print_left(x_pos, y_pos + j*small_font->get_height(), 
 			     i->c_str());
-    }
+    }*/
 }
 
 /* EOF */

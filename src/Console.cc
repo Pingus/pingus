@@ -1,4 +1,4 @@
-//  $Id: Console.cc,v 1.11 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: Console.cc,v 1.12 2000/06/19 20:10:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -87,13 +87,40 @@ Console::draw()
 }
 
 void
-Console::set_height(int a)
+Console::increase_lines()
+{
+  ++number_of_lines;
+}
+
+void
+Console::decrease_lines()
+{
+  if (number_of_lines > 0)
+    --number_of_lines;
+}
+
+void 
+Console::scroll_up()
+{
+  if (current_pos - number_of_lines > 0)
+    --current_pos;
+}
+
+void
+Console::scroll_down()
+{
+  if (current_pos - number_of_lines < (int)output_buffer.size())
+    ++current_pos;
+}
+
+void
+Console::set_lines(int a)
 {
   number_of_lines = a;
 }
 
 int
-Console::get_height()
+Console::get_lines()
 {
   return number_of_lines;
 }

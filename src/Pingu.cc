@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.22 2000/06/19 07:26:08 grumbel Exp $
+//  $Id: Pingu.cc,v 1.23 2000/06/19 20:10:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -245,8 +245,8 @@ bool
 Pingu::is_over(int x, int y)
 {
   // FIXME: We should use the x/y_offset here
-  if (x > x_pos + x_offset() && x < x_pos - x_offset()
-      && y > y_pos + y_offset() && y < - y_offset())
+  if (x > x_pos + x_offset() && x < x_pos + x_offset() + 32
+      && y > y_pos + y_offset() && y < y_pos + y_offset() + 32)
     {
       return true;
     } 
@@ -633,13 +633,9 @@ int
 Pingu::x_offset(void)
 {
   if (action)
-    {
-      return action->x_offset();
-    }
+    return action->x_offset();
   else
-    {
-      return -16;
-    }
+    return -16;
 }
 
 int
@@ -647,13 +643,9 @@ Pingu::y_offset(void)
 
 {
   if (action) 
-    {
-      return action->y_offset();
-    }
+    return action->y_offset();
   else 
-    {
-      return -32;
-    }
+    return -32;
 }
 
 void

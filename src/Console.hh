@@ -1,4 +1,4 @@
-//  $Id: Console.hh,v 1.9 2000/06/19 07:26:08 grumbel Exp $
+//  $Id: Console.hh,v 1.10 2000/06/19 20:10:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,11 +64,24 @@ public:
   ///
   virtual void on_event();
 
-  /// Sets the number of lines to the given int.
-  void set_height(int);
+  /** Sets the number of lines, which are displayed
+      @param lines The number of lines which are displayed */
+  void set_lines(int lines);
 
   /// Returns the height in number of lines, {\em not} in pixels.
-  int  get_height();
+  int  get_lines();
+
+  /** Increase the number of lines, which are displayed */
+  void increase_lines();
+
+  /** Decrease the number of lines, which are displayed */
+  void decrease_lines();
+
+  /** Scroll up */
+  void scroll_up();
+
+  /** Scroll up */
+  void scroll_down();
 
   /** @name Output operators, similar to std::cout */
   //@{

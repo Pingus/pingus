@@ -1,4 +1,4 @@
-//  $Id: Entrance.cc,v 1.9 2000/06/16 17:41:55 grumbel Exp $
+//  $Id: Entrance.cc,v 1.10 2000/06/19 20:10:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,6 @@
 #include "Entrance.hh"
 #include "GameTime.hh"
 
-CL_Surface*     Entrance::surface;
 ParticleHolder* Entrance::particle;
 ActionHolder*   Entrance::action_holder;
 

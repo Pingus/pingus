@@ -1,4 +1,4 @@
-//  $Id: GlobalEvent.cc,v 1.8 2000/06/15 19:32:44 grumbel Exp $
+//  $Id: GlobalEvent.cc,v 1.9 2000/06/19 20:10:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,9 +31,30 @@ GlobalEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
     {
       switch (key.id)
 	{
+	  // F1 is the general console modifer key...
+	case CL_KEY_PAGEUP:
+	  if (CL_Keyboard::get_keycode(CL_KEY_F1))
+	    console.increase_lines();
+	  break;
+
+	case CL_KEY_PAGEDOWN:
+	  if (CL_Keyboard::get_keycode(CL_KEY_F1))
+	    console.decrease_lines();
+	  break;
+
+	case CL_KEY_UP:
+	  if (CL_Keyboard::get_keycode(CL_KEY_F1))
+	    console.scroll_up();
+	  break;
+
+	case CL_KEY_DOWN:
+	  if (CL_Keyboard::get_keycode(CL_KEY_F1))
+	    console.scroll_down();	  
+	  break;
+
 	case CL_KEY_F1:
 	  console.toggle_display();
-	  return false;
+	  break; 
 
 	case CL_KEY_F11:
 	  fps_counter.toggle_display();

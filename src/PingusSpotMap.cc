@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.26 2000/06/16 17:41:55 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.27 2000/06/19 20:10:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -210,6 +210,10 @@ PingusSpotMap::load(std::string filename)
   
   // Allocating the map provider
    map_canvas = new CL_Canvas(width, height);
+
+   // Is clearing the canvas really needed, or am I just work around
+   // another bug...?
+   Blitter::clear_canvas(map_canvas);
 
   // Drawing all surfaces to the provider
   for(std::vector<surface_data>::iterator i = surfaces.begin(); 
@@ -562,6 +566,7 @@ PingusSpotMap::create_maptiles()
 	  if (!tile[x][y].is_empty())
 	    {
 	      canvas = new CL_Canvas(tile_size, tile_size);
+	      Blitter::clear_canvas(canvas);
 	      map_surface->put_target(-x * tile_size, -y * tile_size, 0, canvas);
 	      tile[x][y].surface = CL_Surface::create(canvas, true);
 	    }

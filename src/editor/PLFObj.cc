@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.13 2000/06/16 17:41:57 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.14 2000/06/19 20:10:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,7 +92,7 @@ HotspotObj::status_line()
 {
   char str[256];
 
-  sprintf(str, "Hotspot - Speed: %d",  speed);
+  sprintf(str, "Hotspot - Speed: %d - X: %d - Y: %d - Z: %d",  speed, x_pos, y_pos, z_pos);
 
   return std::string(str);
 }
@@ -109,7 +109,7 @@ EntranceObj::EntranceObj(entrance_data data)
   if (type == "generic")
     {
       surf = CL_Surface::load("Entrances/generic", PingusResource::get("global.dat"));
-      x_of = -surf->get_width();
+      x_of = -(surf->get_width()/2);
       y_of = -surf->get_height();
     } 
   else if (type == "woodthing") 
