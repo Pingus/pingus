@@ -5,6 +5,7 @@
     <levelname lang="en">Bridging gets more complicated...</levelname>
     <levelname lang="de">Brückenbauen wird schwieriger...</levelname>
     <levelname lang="cs">Mosty se zacinaji zeslozitovat...</levelname>
+    <levelname lang="tr">Köprü yapýmý karmaþýklaþýyor...</levelname>
 
     <description lang="en">And again you have to combine actions carefully and wisely, without
                            doing that you would end up in the hole short before the exit, so
@@ -17,6 +18,10 @@
     <description lang="cs">Opet by si mel peclive a mazane zkombinovat vice akci dohromady,
                            jinak skoncis v pasti kousek pred cilem. Takze zapremyslej, jak
                            se tomu vyhnout.
+    </description>
+    <description lang="tr">Ve yine birden fazla eylemi akýllýca ve dikkatlice birleþtirmen
+                           gerekiyor. Eðer iyi oynamazsan, Pingularý çýkýþa götüremek bir 
+                           tarafa, hepsini uçuruma yuvarlayýverebilirsin.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

@@ -5,6 +5,7 @@
     <levelname lang="en">Learn to use the bridge</levelname>
     <levelname lang="de">Lerne Brücken zu bauen</levelname>
     <levelname lang="cs">Nauc se stavet mosty</levelname>
+    <levelname lang="tr">Köprü yapmayý öðreniyoruz</levelname>
 
     <description lang="en">If no Jumper is at hand and a large hole needs to be passed a bridge
                            can be pretty helpful. It takes some time to build, but it allows
@@ -19,6 +20,11 @@
                            tak muzes postavit most. Stavba sice zabere nejaky cas, ale
                            zato budou moci vsichni ostatni prejit, coz by jeden skokan
                            nedokazal.
+    </description>
+    <description lang="tr">Eðer Jumper kullanamýyorsak ve bir hendek atlamak gerekiyorsa,
+                           bu sorunu bir köprü yaparak çözmek mümkün. Yapmasý biraz zaman
+                           alýcý, ama 'Jumper'dan farklý olarak arkadan gelen bütün Pingularýn 
+                           da güvenle karþýya geçmelerini saðlayacaksýn.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

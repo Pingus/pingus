@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-10 22:58+0200\n"
+"POT-Creation-Date: 2003-04-12 20:10+0200\n"
 "PO-Revision-Date: 2001-12-04 22:50+02:00\n"
 "Last-Translator: Çaðrý Çöltekin <cagri@metu.edu.tr>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Caðrý Çöltekin <cagri@metu."
@@ -28,11 +28,11 @@ msgstr "Beklenmeyen harf: '"
 
 #: src/credits.cxx:46
 msgid "-Idea"
-msgstr ""
+msgstr "-Fikir"
 
 #: src/credits.cxx:50
 msgid "-Maintaining"
-msgstr ""
+msgstr "-Proje Yöneticisi"
 
 #: src/credits.cxx:54
 msgid "-Programming"
@@ -40,7 +40,7 @@ msgstr "-Programlama"
 
 #: src/credits.cxx:60
 msgid "-Porting (Win32)"
-msgstr ""
+msgstr "-Taþýma (Win32)"
 
 #: src/credits.cxx:68
 msgid "-Gfx"
@@ -52,49 +52,47 @@ msgstr "-Müzik"
 
 #: src/credits.cxx:85
 msgid "-Level Design"
-msgstr ""
+msgstr "-Seviye Tasarýmý"
 
 #: src/credits.cxx:90
 msgid "-Story"
-msgstr ""
+msgstr "-Öykü"
 
 #: src/credits.cxx:94
 msgid "-Translation (german)"
-msgstr ""
+msgstr "-Çeviri (Almanca)"
 
-#: src/credits.cxx:99
+#: src/credits.cxx:100
 msgid "-Special"
 msgstr "-Özel"
 
-#: src/credits.cxx:100
+#: src/credits.cxx:101
 msgid "-Thanks to"
 msgstr "-Þükranlarýmýz"
 
-#: src/credits.cxx:134
-msgid "_And a very Special Thanks"
-msgstr ""
-
 #: src/credits.cxx:135
-msgid "_to all the people who"
-msgstr ""
+msgid "_And a very Special Thanks"
+msgstr "_Ve Özgür Yazýlýma"
 
 #: src/credits.cxx:136
-msgid "_contribute to"
-msgstr ""
+msgid "_to all the people who"
+msgstr "_katkýda bulunan"
 
 #: src/credits.cxx:137
-msgid "_Free Software!"
-msgstr ""
+msgid "_contribute to"
+msgstr "_herkese..."
 
-#: src/credits.cxx:143
-msgid "_Thank you for"
-msgstr ""
+#: src/credits.cxx:138
+msgid "_Free Software!"
+msgstr "_Teþekkürler!"
 
 #: src/credits.cxx:144
+msgid "_Thank you for"
+msgstr "_Oynadýðýnýz için"
+
+#: src/credits.cxx:145
 msgid "_playing!"
-msgstr ""
-"Bir seviye hazýrladýysanýz ve Pingus ile daðýtýlmasýný istiyorsanýz,\n"
-"pingus-devel@nongnu.org adresine gönderin."
+msgstr "_teþekkürler!"
 
 #: src/editor/editor_event.cxx:580
 msgid "Enter filename to save as:"
@@ -383,7 +381,7 @@ msgstr "o - DünyaNesnesi"
 msgid "z - Background"
 msgstr "z - Arkaplan"
 
-#  FIXME: preab ne demek
+#  FIXME: prefab ne demek
 #: src/editor/object_selector.cxx:408
 msgid "p - Prefab (ObjectGroup)"
 msgstr "p - Prefab (Nesne Grubu)"
@@ -499,12 +497,12 @@ msgstr "Tasarlayan "
 #: src/level_desc.cxx:76
 #, c-format
 msgid "Pingus to Save: %d"
-msgstr "Kurtarýlacak Pingus: %d"
+msgstr "Kurtarýlacak Pingu: %d"
 
 #: src/level_desc.cxx:78
 #, c-format
 msgid "Number of Pingus: %d"
-msgstr "Pingus sayýsý: %d"
+msgstr "Pingu sayýsý: %d"
 
 #: src/level_desc.cxx:83
 msgid "Loading..."
@@ -600,31 +598,31 @@ msgstr "Bu da bir baþarý tabii. Hepsini nasil helak ettin?"
 msgid "You've got a negative save/total value, something is buggy."
 msgstr "Eksi sayýda Pingus kurtardýn, biyerde kesin hata var."
 
-#: src/menu_button.cxx:179
+#: src/menu_button.cxx:177
 msgid "..:: The people who brought this game to you ::.."
 msgstr "..:: Bu oyunu sizin için hazýrlayanlar... ::.."
 
-#: src/menu_button.cxx:182
+#: src/menu_button.cxx:180
 msgid "Credits"
 msgstr "Yardýmcý olanlar"
 
-#: src/menu_button.cxx:215
+#: src/menu_button.cxx:212
 msgid "..:: Takes you to the options menu ::.."
 msgstr "..:: Seçenekler Menüsüne gider ::.."
 
-#: src/menu_button.cxx:218
+#: src/menu_button.cxx:215
 msgid "Options"
 msgstr "Seçenekler"
 
-#: src/menu_button.cxx:252
+#: src/menu_button.cxx:248
 msgid "..:: Bye, bye ::.."
 msgstr "..:: Güle güle... ::.."
 
-#: src/menu_button.cxx:255
+#: src/menu_button.cxx:251
 msgid "Exit"
 msgstr "Çýkýþ"
 
-#: src/menu_button.cxx:307
+#: src/menu_button.cxx:302
 msgid "..:: Launch the level editor ::.."
 msgstr "..:: Seviye Editörünü Çalýþtýr ::.."
 
@@ -632,120 +630,40 @@ msgstr "..:: Seviye Editörünü Çalýþtýr ::.."
 # niye c++'den nefret ediyon?
 # Yav tabii turkce'nin yapisindan ortaya cikan bir sorun var .. 'yarat'i cumle
 # sonuna koymak gerekecek ... neyse bi compile edince nasil gozukuyor bakalim ... -gd
-#: src/menu_button.cxx:310
+#: src/menu_button.cxx:305
 msgid "Create a"
 msgstr "Yeni Seviye"
 
-#: src/menu_button.cxx:311
+#: src/menu_button.cxx:306
 msgid "Level"
 msgstr "Yarat"
 
-#: src/menu_button.cxx:347
+#: src/menu_button.cxx:340
 msgid "..:: Start the game ::.."
 msgstr "..:: Oyunu baþlat ::.."
 
-#: src/menu_button.cxx:350
+#: src/menu_button.cxx:341
 msgid "Start"
 msgstr "Baþla"
 
-# bu nasil olmuþ? contrib -> katýlýmcý, dýþarlýklý :))) -gd 
-#: src/menu_button.cxx:386
+# FIXME: bu nasil olmuþ? contrib -> katýlýmcý, dýþarlýklý :))) -gd 
+#: src/menu_button.cxx:371
 msgid "..:: Start a contrib level ::.."
 msgstr "..:: Harici bir seviye baþlat ::.."
 
-# bu olmadi -cagri
+# FIXME: bu olmadi -cagri
 # bu daha da olmadi galiba -gd
-#: src/menu_button.cxx:388
+#: src/menu_button.cxx:373
 msgid "Contrib"
 msgstr "Harici"
 
-#: src/menu_button.cxx:409
+#: src/menu_button.cxx:393
 msgid "..:: Multiplayer Modes... experimental stuff ::.."
 msgstr "..:: Çok oyunculu kipler... Deneysel þeyler ::.."
 
-#: src/menu_button.cxx:411
+#: src/menu_button.cxx:395
 msgid "Multi"
 msgstr "Çoklu"
-
-#: src/option_menu.cxx:145
-msgid "on"
-msgstr "açýk"
-
-#: src/option_menu.cxx:147
-msgid "off"
-msgstr "kapalý"
-
-#: src/option_menu.cxx:164 src/option_menu.cxx:176
-msgid "Not implemented"
-msgstr "Daha gerçekleþtirilmedi"
-
-#: src/option_menu.cxx:215
-msgid "OptionMenu::Event: Unknown key released: id="
-msgstr "OptionMenu::Event: Bilinmeyen tuþ býrakýldý: id="
-
-#: src/option_menu.cxx:224
-msgid "Button 0 pressed"
-msgstr "Buton 0'a basýldý"
-
-#: src/option_menu.cxx:228
-msgid "Button 1 pressed"
-msgstr "Buton 1'e basýldý"
-
-#: src/option_menu.cxx:231
-msgid "Button 2 pressed"
-msgstr "Buton 2'ye basýldý"
-
-#: src/option_menu.cxx:234
-msgid "OptionMenu::Event: Unknown mouse button released: id="
-msgstr "OptionMenu::Event: Bilinmiyen fare butonu serbest býrakýldý: id="
-
-#: src/option_menu.cxx:275
-msgid "Unlimited Actions"
-msgstr "Sýnýrsýz Eylem"
-
-#: src/option_menu.cxx:276
-msgid "Print fps"
-msgstr "FPS yazdýr"
-
-#: src/option_menu.cxx:278
-msgid "Cursor enabled"
-msgstr "Ýmleç etkin"
-
-#: src/option_menu.cxx:279
-msgid "Fast Mode"
-msgstr "Hýzlý Kip"
-
-#: src/option_menu.cxx:281
-msgid "Game Speed"
-msgstr "Oyun Hýzý"
-
-#: src/option_menu.cxx:282
-msgid "Verbose"
-msgstr "Ayrýntýlý mesaj"
-
-#: src/option_menu.cxx:283
-msgid "Music"
-msgstr "Müzik"
-
-#: src/option_menu.cxx:284
-msgid "Sound"
-msgstr "Ses"
-
-#: src/option_menu.cxx:285
-msgid "Draw ColMap"
-msgstr "RenkHaritasi Çiz"
-
-#: src/option_menu.cxx:286
-msgid "Auto Scrolling"
-msgstr "Otomatik Kaydýrma"
-
-#: src/option_menu.cxx:287
-msgid "Action Help Strings"
-msgstr "Eylem Yardým Mesajlarý"
-
-#: src/option_menu.cxx:328
-msgid "Pingus Option Menu"
-msgstr "Pingus Seçenekler Menüsü"
 
 #: src/pingu.cxx:122
 msgid "Setting action to a dead pingu"
@@ -793,250 +711,276 @@ msgstr ""
 msgid "| Also try include a backtrace, you can get it like this:"
 msgstr "| anlat.  Bir de bir 'backtrace' ekle ... Aþagýdaki gibi mesela:"
 
-#: src/pingus_main.cxx:109
-msgid "| $ gdb pingus core"
-msgstr "| $ gdb pingus core"
-
-#: src/pingus_main.cxx:110
-msgid "| (gdb) bt"
-msgstr "| (gdb) bt"
-
-#: src/pingus_main.cxx:111 src/pingus_main.cxx:118
-msgid "| ..."
-msgstr "| ..."
-
 #: src/pingus_main.cxx:113
 msgid "| If that doesn't work, try this:"
 msgstr "| Bu çalýþmazsa, þöyle de olabilir:"
-
-#: src/pingus_main.cxx:115
-msgid "| $ gdb pingus"
-msgstr "| $ gdb pingus"
-
-#: src/pingus_main.cxx:116
-msgid "| (gdb) r"
-msgstr "| (gdb) r"
 
 #: src/pingus_main.cxx:117
 msgid "| [play until it crashes again]"
 msgstr "| [... ve çökene kadar tekrar oyna ... ]"
 
-#: src/pingus_main.cxx:120
-msgid "'------------------------------------------------------------------------\n"
-msgstr "'------------------------------------------------------------------------\n"
-
-#: src/pingus_main.cxx:124
-msgid ""
-"\n"
-",------------------------------------------------------------------------"
-msgstr ""
-"\n"
-"Seçenekler:\n"
-"   -g, --geometry {geniþlik}x{yükseklik}\n"
-"                            Çözünürlüðü ayarla (640x480)\n"
-"   -h, --help               Yardým ekranýný göster\n"
-"   --disable-intro          Intro'yu kapat\n"
-
 #: src/pingus_main.cxx:125
 msgid "| Warning: Pingus recieved a SIGINT, exiting now."
 msgstr "| Uyarý: SIGINT sinyali aldýk, oyundan çýkýyoruz."
 
-#: src/pingus_main.cxx:349
-msgid ""
-"\n"
-"Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n"
-"There is NO warranty.  You may redistribute this software\n"
-"under the terms of the GNU General Public License.\n"
-"For more information about these matters, see the files named COPYING."
-msgstr ""
-"\n"
-"Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n"
-"Geliþtiriciler bu yazýlýmla ilgili HÝÇBÝR garanti vermemektedir.\n"
-"Pingus serbest bir yazýlýmdýr ve GNU GPL çerçevesinde \n"
-"özgürce daðýtýlabilir. Ayrýntýlar için kaynak \n"
-"kodunda COPYING belgesini okuyun."
-
-#: src/pingus_main.cxx:488
+#: src/pingus_main.cxx:486
 msgid "Unknow char: "
 msgstr "Bilinmeyen karakter: "
 
-#: src/pingus_main.cxx:489
+#: src/pingus_main.cxx:487
 msgid "Usage: "
 msgstr "Kullaným: "
 
-#: src/pingus_main.cxx:489
+#: src/pingus_main.cxx:487
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr "[SEÇENEKLER]... [SEVÝYE DOSYASI]"
 
-#: src/pingus_main.cxx:491
-msgid ""
-"\n"
-"Options:\n"
-"   -g, --geometry {width}x{height}\n"
-"                            Set the resolution for pingus (default: "
-"800x600)\n"
-"   -h, --help               Displays this screen\n"
-"   --disable-intro          Disable intro\n"
-msgstr ""
-"\n"
-"Seçenekler:\n"
-"   -g, --geometry {geniþlik}x{yükseklik}\n"
-"                            Çözünürlüðü ayarla (640x480)\n"
-"   -h, --help               Yardým ekranýný göster\n"
-"   --disable-intro          Intro'yu kapat\n"
+#: src/pingus_main.cxx:490
+msgid "Options:"
+msgstr "Seçenekler:"
 
-#: src/pingus_main.cxx:498
-msgid "   -G, --use-opengl         Use OpenGL\n"
-msgstr "   -G, --use-opengl         OpenGL kullan\n"
+#: src/pingus_main.cxx:492
+msgid "Set the resolution for pingus (default: 800x600)"
+msgstr "Pingus çözünürlüðünü ayarla (öntanýlý: 640x480)"
 
-#: src/pingus_main.cxx:501
-msgid ""
-"   -w, --window             Start in Window Mode\n"
-"   -f, --fullscreen         Start in Fullscreen\n"
-"   -d, --datadir PATH       Set the path to load the data files to `path'\n"
-"   -l, --level FILE         Load a custom level from FILE\n"
-"   -w, --worldmap FILE      Load a custom worldmap from FILE\n"
-"   -v, --verbose            Print some more messages to stdout, can be set\n"
-"                            multible times to increase verbosity\n"
-"   -V, --version            Prints version number and exit\n"
-"   -e, --editor             Launch the Level editor (experimental)\n"
-"   --disable-auto-scrolling Disable automatic scrolling\n"
-"   --no-cfg-file            Don't read ~/.pingus/config\n"
-"   --config-file FILE       Read config from FILE (default: ~/.pingus/"
-"config)\n"
-"                            reduce CPU usage, might speed up the game on "
-"slower machines\n"
-"\n"
-"Debugging and experimental stuff:\n"
-"   --maintainer-mode        Enables some features, only interesting "
-"programmers\n"
-"   --debug OPTION           Enable the output of debugging infos, possible\n"
-"                            OPTION's are tiles, gametime, actions, sound, "
-"resources, gui,\n"
-"                            input\n"
-"   --min-frame-skip N       Skip at least N frames, larger values speed the "
-"game up\n"
-"   --max-frame-skip N       Skip at most N frames\n"
-"   --frame-skip N           Set both min and max frameskip to N\n"
-"   -t, --speed SPEED        Set the game speed (0=fastest, >0=slower)\n"
-"   -b, --print-fps          Prints the fps to stdout\n"
-"   --tile-size INT          Set the size of the map tiles (default: 32)\n"
-"   --fast-mode              Disable some cpu intensive features\n"
-"   --min-cpu-usage          Reduces the CPU usage by issuing sleep()\n"
-"\n"
-"\n"
-"Demo playing and recording:\n"
-"   -p, --play-demo FILE     Plays a demo session from FILE\n"
-"   -r, --enable-demo-recording\n"
-"                            Record demos for each played level\n"
-msgstr ""
-"Ama zamanla, durum yavaþ yavaþ deðiþmeye baþladý. Gökyüzü kararmaya,\n"
-"dünya daha sýcak olmaya baþladý. Önceleri bunun sýradan iklim\n"
-"farký olduðunu düþündüler, ama hergeçen yýl durum daha kötüye\n"
-"gittmekteydi"
+#: src/pingus_main.cxx:493
+msgid "Displays this help"
+msgstr "Bu yardým ekranýný göster"
+
+#: src/pingus_main.cxx:494
+msgid "Disable intro"
+msgstr "Intoroyu kapat"
+
+#: src/pingus_main.cxx:496
+msgid "Use OpenGL"
+msgstr "OpenGL kullan"
+
+# FIXME: needs a better translation
+#: src/pingus_main.cxx:499
+msgid "Start in Window Mode"
+msgstr "Pencerede baþlat"
+
+#: src/pingus_main.cxx:500
+msgid "Start in Fullscreen"
+msgstr "Tümekran baþlat"
+
+#: src/pingus_main.cxx:504 src/pingus_main.cxx:505
+msgid "FILE      "
+msgstr "DOSYA     "
+
+#: src/pingus_main.cxx:504
+msgid "Load a custom level from FILE"
+msgstr "DOSYAdan özel seviye yükle"
+
+# worldmap = ??
+#: src/pingus_main.cxx:505
+msgid "Load a custom worldmap from FILE"
+msgstr "DOSYAdan özel worldmap yükle"
+
+#: src/pingus_main.cxx:506
+msgid "Print some more messages to stdout, can be set"
+msgstr "Stdout'a ayrýntýlý bilgi ver, daha cok `v' ile"
+
+#: src/pingus_main.cxx:507
+msgid "multible times to increase verbosity"
+msgstr "ayrýntý artýrýlabilinir."
+
+#: src/pingus_main.cxx:508
+msgid "Prints version number and exit"
+msgstr "Sürümü ekrana basar ve çýkar"
+
+#: src/pingus_main.cxx:509
+msgid "Launch the Level editor (experimental)"
+msgstr "Seviye editörü'nu baþlat (deneysel)"
+
+#: src/pingus_main.cxx:510
+msgid "Disable automatic scrolling"
+msgstr "Automatik kaydýrmayý kapat"
+
+#: src/pingus_main.cxx:515
+msgid "Don't read ~/.pingus/config"
+msgstr "~/.pingus/config dosyasýný okuma"
+
+#: src/pingus_main.cxx:516
+msgid "FILE       "
+msgstr "DOSYA      "
+
+#: src/pingus_main.cxx:516
+msgid "Read config from FILE (default: ~/.pingus/config)"
+msgstr "Ayarlarý `DOSYA'dan oku (öntanýmlý: ~/.pingus/config)"
+
+#: src/pingus_main.cxx:517
+msgid "reduce CPU usage, might speed up the game on slower machines"
+msgstr "CPU kullanýmýný azalt. Bu yavaþ makinalarda oyunu hýzlandýrabilir"
+
+#: src/pingus_main.cxx:518
+msgid "Debugging and experimental stuff:"
+msgstr "Deneyseyl þeyler:"
+
+#: src/pingus_main.cxx:519
+msgid "Enables some features, only interesting programmers"
+msgstr "Sadece programcýlariçin ilginç olan, bazý özellikleri çalýþtýrýr."
+
+# debug = ?
+#: src/pingus_main.cxx:520
+msgid "Enable the output of debugging infos, possible"
+msgstr "Debug mesajlarýný ekrana bas"
+
+#: src/pingus_main.cxx:521
+msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
+msgstr "SEÇENEKLER: tiles, gametime, actions, sound, resources, gui."
+
+#: src/pingus_main.cxx:522
+msgid "input"
+msgstr "girdi"
+
+#: src/pingus_main.cxx:523
+msgid "Skip at least N frames, larger values speed the game up"
+msgstr "En az N resim karesini atla. Büyük N oyunu hýzlandýrýr"
+
+#: src/pingus_main.cxx:524
+msgid "Skip at most N frames"
+msgstr "En fazla N resim karesi atla"
+
+#: src/pingus_main.cxx:525
+msgid "Set both min and max frameskip to N"
+msgstr "Tam N resim karesi atla"
+
+#: src/pingus_main.cxx:526
+msgid "Set the game speed (0=fastest, >0=slower)"
+msgstr "Oyun hýzýný ayarla (0=en hýzlý, >0=daha yavaþ)"
+
+#: src/pingus_main.cxx:527
+msgid "Prints the fps to stdout"
+msgstr "stdout'a fps deðerini bas"
+
+# FIXME: better translation.
+#: src/pingus_main.cxx:528
+msgid "Set the size of the map tiles (default: 32)"
+msgstr "Döþeme boyutunu ayarla (öntanýmlý: 32)"
+
+#: src/pingus_main.cxx:529
+msgid "Disable some cpu intensive features"
+msgstr "Ýþlemci gerektiren bazý özellikleri kapat"
+
+#: src/pingus_main.cxx:530
+msgid "Reduces the CPU usage by issuing sleep()"
+msgstr "CPU kullanýmýný sleep() kullanarak azalt"
+
+#: src/pingus_main.cxx:533
+msgid "FILE     "
+msgstr "DOSYA    "
+
+#: src/pingus_main.cxx:533
+msgid "Plays a demo session from FILE"
+msgstr "DOSYA'dan bir demo oynat"
+
+#: src/pingus_main.cxx:535
+msgid "Record demos for each played level"
+msgstr "Oynanan her oyun için demo kaydet"
+
+#: src/pingus_main.cxx:538
+msgid "Sound:"
+msgstr "Ses"
+
+#: src/pingus_main.cxx:539
+msgid "Disable sound"
+msgstr "Sesi Kapat"
 
 #: src/pingus_main.cxx:540
-msgid ""
-"\n"
-"Sound:\n"
-"   -s, --enable-sound       Enable sound\n"
-"   -m, --enable-music       Enable music\n"
-msgstr ""
-"\n"
-"Ses:\n"
-"   -s, --enable-sound       Sesi aç\n"
-"   -m, --enable-music       Müziði aç\n"
+msgid "Disable music"
+msgstr "Müziði Kapat"
 
-#: src/pingus_main.cxx:649
+#: src/pingus_main.cxx:661
 msgid "clanVorbis support:           ok"
-msgstr "clanVoribs desteði:          var"
+msgstr "clanVoribs desteði:      var"
 
-#: src/pingus_main.cxx:651
+#: src/pingus_main.cxx:663
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr "clanVoribs desteði: yok (.ogg müzik dosyalarý çalýþmayacak)"
 
-#: src/pingus_main.cxx:655
+#: src/pingus_main.cxx:667
 msgid "clanMikMod support:           ok"
-msgstr "clanMikMod desteði:          var"
+msgstr "clanMikMod desteði:      var"
 
-#: src/pingus_main.cxx:657
+#: src/pingus_main.cxx:669
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr "clanMikMod desteði: yok (müzik dosyalarý çalýþmayacak) "
 
-#: src/pingus_main.cxx:661
-msgid "getext support:               ok"
-msgstr "gettext desteði:             var"
-
-#: src/pingus_main.cxx:662
-msgid "gettext language:        english"
-msgstr "gettext dili:           türkeçe"
-
-#: src/pingus_main.cxx:668
-msgid "sound support:           enabled"
-msgstr "ses:                    etkin"
-
-#: src/pingus_main.cxx:670
-msgid "sound support:          disabled"
-msgstr "ses:                   etkin deðil"
-
 #: src/pingus_main.cxx:673
+msgid "getext support:               ok"
+msgstr "gettext desteði:         var"
+
+#: src/pingus_main.cxx:674
+msgid "gettext language:        english"
+msgstr "gettext dili:            türkeçe"
+
+#: src/pingus_main.cxx:680
+msgid "sound support:           enabled"
+msgstr "ses:                     etkin"
+
+#: src/pingus_main.cxx:682
+msgid "sound support:          disabled"
+msgstr "ses:                    etkin deðil"
+
+#: src/pingus_main.cxx:685
 msgid "music support:           enabled"
-msgstr "müzik desteði:          etkin"
+msgstr "müzik desteði:           etkin"
 
-#: src/pingus_main.cxx:675
+#: src/pingus_main.cxx:687
 msgid "music support:          disabled"
-msgstr "müzik desteði:         etkin deðil"
+msgstr "müzik desteði:          etkin deðil"
 
-#: src/pingus_main.cxx:677
+#: src/pingus_main.cxx:689
 msgid "resolution set to:       "
-msgstr "çözünürlük: "
+msgstr "çözünürlük:              "
 
-#: src/pingus_main.cxx:678
+#: src/pingus_main.cxx:690
 msgid "fullscreen:              "
-msgstr "tümekran:               "
+msgstr "tümekran:                "
 
-#: src/pingus_main.cxx:679
+#: src/pingus_main.cxx:691
 msgid " enabled"
 msgstr " etkin"
 
-#: src/pingus_main.cxx:679
+#: src/pingus_main.cxx:691
 msgid "disabled"
-msgstr " etkin deðil"
+msgstr "etkin deðil"
 
 # 'Main' yerine baþka biþi uydurmak lazim buraya -gd
-#: src/pingus_main.cxx:689
+#: src/pingus_main.cxx:701
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Main Baþlatýlýyor: "
 
-#: src/pingus_main.cxx:719
+#: src/pingus_main.cxx:731
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Seviye Dosyasý bulunamadý, yok sayýlacak: "
 
-#: src/pingus_main.cxx:810
+#: src/pingus_main.cxx:822
 msgid "Error caught from ClanLib: "
 msgstr "ClanLib hatasý: "
 
-#: src/pingus_main.cxx:814
+#: src/pingus_main.cxx:826
 msgid "Error caught from Pingus: "
 msgstr "Pingus'ta hata saptandý: "
 
-#: src/pingus_main.cxx:818
+#: src/pingus_main.cxx:830
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Bellek yetersiz!"
 
 # bu komik oldu -cagri
 # daha mi iyi boyle :) -gd
-#: src/pingus_main.cxx:822
+#: src/pingus_main.cxx:834
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Genel olaðan dýþý durum saptandý!:\n"
 
-#: src/pingus_main.cxx:826
+#: src/pingus_main.cxx:838
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Bilinmeyen bir hata saptandý!"
 
-#: src/result_screen.cxx:97 src/start_screen.cxx:107
+#: src/result_screen.cxx:97 src/start_screen.cxx:108
 msgid "Abort"
-msgstr "Durdur"
+msgstr "Çýk"
 
 #: src/result_screen.cxx:165
 msgid "Retry"
@@ -1048,7 +992,7 @@ msgstr "Baþrý!"
 
 #: src/result_screen.cxx:180
 msgid "Failure!"
-msgstr "Hata!"
+msgstr "Olmadý!"
 
 #: src/result_screen.cxx:189
 msgid "Perfect! You saved everybody possibly, great!"
@@ -1068,7 +1012,7 @@ msgstr ""
 
 #: src/result_screen.cxx:196
 msgid "Not everybody could get saved, but still good work!"
-msgstr "Herkes kurtarýlamadý, ama yine de baþarýlýydýn!"
+msgstr "Herkesi kurtaramadýn, ama yine de iyi iþ çýkardýn!"
 
 #: src/result_screen.cxx:198
 msgid "What can I say, you made it, congratulations!"
@@ -1080,7 +1024,7 @@ msgstr "Herkesi öldürdun. Hiç hoþ degil."
 
 #: src/result_screen.cxx:205
 msgid "None got saved, I know you can do better."
-msgstr "Hiç kimseyi kurtaramadin, daha iyisini yapabileceðinden eminim."
+msgstr "Hiç kimseyi kurtaramadýn, daha iyisini yapabileceðinden eminim."
 
 #: src/result_screen.cxx:207
 msgid ""
@@ -1108,7 +1052,7 @@ msgstr "Kurtarýlan: "
 
 #: src/result_screen.cxx:234
 msgid "Killed: "
-msgstr "Ölenler: "
+msgstr "Ölen: "
 
 #: src/result_screen.cxx:238
 msgid "Time left: "
@@ -1135,31 +1079,31 @@ msgstr "Screenshot: Dosyaya yazýlamýyor: "
 msgid "Image has wrong color depth: %d"
 msgstr "Resmin renk derinliði yanlýþ: %d"
 
-#: src/start_screen.cxx:71
+#: src/start_screen.cxx:72
 msgid "Ok"
 msgstr "Tamam"
 
-#: src/start_screen.cxx:154
+#: src/start_screen.cxx:155
 msgid "Number of Pingus: "
-msgstr "Pingus sayýsý: "
+msgstr "Pingu sayýsý: "
 
-#: src/start_screen.cxx:157
+#: src/start_screen.cxx:158
 msgid "Number to Save: "
 msgstr "Kurtarýlýcak Pingus: "
 
-#: src/start_screen.cxx:160
+#: src/start_screen.cxx:161
 msgid "Time: "
-msgstr "Zaman: "
+msgstr "Süre: "
 
-#: src/start_screen.cxx:163
+#: src/start_screen.cxx:164
 msgid "Difficulty:"
 msgstr "Zorluk:"
 
-#: src/start_screen.cxx:171
+#: src/start_screen.cxx:172
 msgid "Author: "
 msgstr "Tasarlayan: "
 
-#: src/start_screen.cxx:174
+#: src/start_screen.cxx:175
 msgid "Filename: "
 msgstr "Dosya adý: "
 
@@ -1174,35 +1118,35 @@ msgid ""
 "the world. Since the floe with which the Pingus traveled to the\n"
 "Tutorial Island isn't going to hold the whole way into the warmer\n"
 "climated regions the Pingus have to find something else to guide\n"
-"there on their journey.\n"
+"them on their journey.\n"
 msgstr ""
-"Artýk Pingular ve sen temel bilgileri öðrendiðinize ve biraz\n"
-"alýþtýrma yaptýðýnýza göre, devam edip yolculuða baþlamanýn\n"
-"zamanýdýr. Pingularýn eðitim adasýna gelmek için kullandýklarý\n"
-"buz platform sýcak bölgelere dahanmayacaðýndan, sýcak\n"
-"iklimlerde de iþe yarayacak bir yöntem bulmalarý gerekecek.\n"
+"Pingular ve sen temel bilgileri öðrenip, biraz da alýþtýrma\n"
+"yaptýðýnýza göre, yola koyulmanýn zamanýdýr artýk. Pingularýn\n"
+"eðitim adasýna gelmek için kullandýklarý buz platform sýcak\n"
+"bölgelere dayanmayacaðýndan, yolculuk için yeni bir yöntem\n"
+"bulmalarý gerekecek.\n"
 
 #: src/story.cxx:51
 msgid ""
 "But as the eldest have said, the Tutorial Island provides not\n"
 "only a way to practive, but it is also the starting point into\n"
-"the world, cause the wood of the large tree at the end of the\n"
-"island brings good wood to construct a float.\n"
+"the world. After some search the Pingus discovered the meaning\n"
+"of this, the large tree at the end of the island provides good\n"
+"wood to construct a float.\n"
 msgstr ""
 "Ama yaþlýlarýn söylediði gibi, eðitim adasý sadece alýþtýrma\n"
 "yapmaya yaramaz, ayný zamanda dünyaya açýlan bir kapýdýr da.\n"
-"Çünkü adanýn diðer ucundaki sal yapmak için kullanmaya\n"
+"Çünkü adanýn diðer ucundaki aðaçýn odunu, sal yapmak için\n"
 "birebirdir.\n"
 
-#: src/story.cxx:59
+#: src/story.cxx:60
 msgid ""
-"So the Pingus set out and constructed a some large floats, enough\n"
+"So the Pingus set out and constructed some large floats, enough\n"
 "to carry them all. After also packaging up a bunch of provisions\n"
 "they where prepared to finally start of their journey and leave\n"
-"their familiar ground and entering the unknown parts of the\n"
-"world.\n"
+"their familiar ground and enter the unknown parts of the world.\n"
 msgstr ""
-"Sonunda Pingular harekete geçip herkesi taþýyacak yetecek birkaç\n"
+"Pingular harekete geçip, herkesi taþýmaya yetecek birkaç\n"
 "sal yaptýlar. Yanlarýna biraz azýk da aldýktan sonra, tanýdýk\n"
 "buzullardan ayrýlýp dünyanýn bilinmedik yerlerine doðru\n"
 "yolculuða hazýrlar.\n"
@@ -1214,9 +1158,10 @@ msgid ""
 "\n"
 "To be continued..."
 msgstr ""
-"Sonunda Pingular sallarýnýn üzerinde, gidecekleri yaban\n"
-"ellerininve baþlarýna gelebileceklerin kaygýsýyla gün\n"
-"batýmýna yol almaya baþladýlar.\n"
+"Sonunda Pingular sallarýnýn üzerinde, gidecekleri yaban ellerde\n"
+"baþlarýna gelebileceklerin kaygýsýyla gün batýmýna doðru yol\n"
+"almaya baþladýlar.\n"
+"\n"
 "                                                Devam edecek..."
 
 #: src/story.cxx:79
@@ -1230,7 +1175,7 @@ msgid ""
 "balance and it seemed like nothing could disrupt their peace.  The\n"
 "Pingus where happy and it seemed like this could never end.\n"
 msgstr ""
-"Uzun yýllar Pingular diðer hayvanlarla birlikte Güney Kutbu'nda\n"
+"Pingular yüzyýllardýr diðer hayvanlarla birlikte Güney Kutbu'nda\n"
 "barýþ içinde yaþamaktaydýlar. Herþey uyum içindeydi, hiçbirþey bu\n"
 "güzel ortamý deðiþtiremeyecek gibiydi. \n"
 
@@ -1241,22 +1186,22 @@ msgid ""
 "normal fluctuation in the worlds climate, but things seemed to get\n"
 "worse and worse with every year."
 msgstr ""
-"Ama zamanla, durum yavaþ yavaþ deðiþmeye baþladý. Gökyüzü kararmaya,\n"
-"dünya daha sýcak olmaya baþladý. Önceleri bunun sýradan iklim\n"
-"farký olduðunu düþündüler, ama hergeçen yýl durum daha kötüye\n"
-"gittmekteydi"
+"Ama zamanla, durum yavaþ yavaþ deðiþmeye baþladý. Gökyüzü\n" 
+"kararmaya, dünya daha sýcak olmaya baþladý. Önceleri bunun\n"
+"sýradan iklim farký olduðunu düþündüler, ama her geçen yýl\n"
+"durum daha kötüye\ngitmekteydi"
 
 #: src/story.cxx:100
 msgid ""
 "The snow began to melt away in a few regions and food became an\n"
 "issue. Other animals already tend to leave the region to search\n"
-"for colder areas, but the Pingus knew that this couldn't help,\n"
+"for colder areas, but the Pingus knew that this wouldn't help,\n"
 "they knew that they had to do something about this problem."
 msgstr ""
 "Bazý bölgelerde karlar eridi, yiyecek bulmak giderek zorlaþtý.\n"
-"Diðer hayvanlar çoktan bölgeyi tekerdip daha soðuk yerler arama\n"
-"eðilimindeydiler, ama Pingular bunun iþe yaramayacaðýný,\n"
-"birþeyler yapmalarý gerektiðini biliyorlardý."
+"Diðer hayvanlar bölgeyi terkedip daha soðuk yerler aramaeðilimine\n"
+"girmiþlerdi bile. Ama Pingular bunun iþe yaramayacaðýný, birþeyler\n"
+"yapmalarý gerektiðini biliyorlardý."
 
 #: src/story.cxx:108
 msgid ""
@@ -1265,10 +1210,10 @@ msgid ""
 "to find the cause for this warming. The expedition consisted of\n"
 "hundreds of the bravest Pingus around on the south pole."
 msgstr ""
-"Sonunda yaþlýlar kurulu karar vermek için toplandý ve dünyayý dolaþip\n"
-"bu ýsýnmanýn nedenini araþtýracak bir araþtýrma ekibi kurmaya\n"
-"karar verdiler. Bu ekip Güney Kutbu'nun heryerinden gelen\n"
-"yüzlerce cesur Pingudan oluþuyor."
+"Sonunda yaþlýlar kurulu karar vermek için toplandý ve dünyayý dolaþýp\n"
+"bu ýsýnmanýn nedenini araþtýracak bir ekip kurmaya karar verdi.\n"
+"Böylece Güney Kutbu'nun heryerinden gelenyüzlerce cesur Pingudan\n"
+"oluþan bir ekip kuruldu."
 
 #: src/story.cxx:116
 msgid ""
@@ -1281,8 +1226,8 @@ msgstr ""
 "Ve Pingular seni dünya çevresindeki bu yolculuklarýnda onlara\n"
 "yol göstermen için seçtiler. Yolculuk tehlikeli ve zor\n"
 "olacaðýndan, ilk hedefimiz eðitim adasý diye de bilinen \n"
-"Magorok Adasý. Yaþlýlara göre, bu ada görev için yola düþen\n"
-"Pingular için herzaman ilk duraktýr."
+"Magorok Adasý. Yaþlýlar der ki, bu ada, görev için yola düþen\n"
+"Pingularýn herzaman ilk durakðý olmuþtur."
 
 #: src/story.cxx:125
 msgid ""
@@ -1292,7 +1237,7 @@ msgid ""
 "which they will surly need on their long and dangerous journey."
 msgstr ""
 "Ada, bir Pingunun yeteneklerini gelistirmek için çalýþabileceði\n"
-"birçok bolgeden oluþmakta. Pingular önlerindeki zorlu yolcukta\n"
+"birçok bolgeden oluþuyor. Pingular önlerindeki zorlu yolcukta\n"
 "kesinlikle gerekli olacak týrmanmak, kazmak, köprü yapmak ve\n"
 "benzeri biçok becerilerini burada geliþtirebilecekler."
 
@@ -1304,10 +1249,10 @@ msgid ""
 "since you will need them all for sure an your journey around the\n"
 "world."
 msgstr ""
-"Ayný zamanda sen de onlarý yönlendirip yönetme yeteneðini burada\n"
+"Bu arada sen de, onlarý yönlendirip yönetme yeteneðini burada\n"
 "deneyebilirsin. Ayný zamanda, Pingularýn bütün becerilerini\n"
-"tanýyabilir, bu becerileri en iyi þekilde kullanmayý\n"
-"öðrenebilirsin. Bu zorlu yolculukta hepsine gereksinim duyacaksýn"
+"tanýyabilir, bu becerileri en iyi þekilde kullanmayý öðrenebilirsin\n"
+"Bu zorlu yolculukta hepsine gereksinim duyacaksýn."
 
 #: src/story.cxx:142
 msgid ""
@@ -1317,7 +1262,7 @@ msgid ""
 "                                                  Good Luck!"
 msgstr ""
 "Artýk sen ve Pingular eðitim adasýna vardýðýnýza göre, komutayý\n"
-"devralýp göreve baþlamanýn zamanýdýr.\n"
+"devralýp, göreve baþlamanýn zamanýdýr.\n"
 "\n"
 "                                                  Baþarýlar!"
 
@@ -1347,7 +1292,7 @@ msgstr "Sistem:checksum: Dosya okunurken hata oluþtu"
 
 #: src/worldmap/level_dot.cxx:159
 msgid "locked"
-msgstr "kilitli"
+msgstr "kapalý"
 
 #: src/worldmap/manager.cxx:102
 msgid "Show Ending?"
@@ -1372,6 +1317,184 @@ msgstr "WorldMap: Dosya bulunamadý: "
 #: src/worldmap/worldmap.cxx:246
 msgid "...walking..."
 msgstr "...yürüyor..."
+
+#~ msgid "on"
+#~ msgstr "açýk"
+
+#~ msgid "off"
+#~ msgstr "kapalý"
+
+#~ msgid "Not implemented"
+#~ msgstr "Daha gerçekleþtirilmedi"
+
+#~ msgid "OptionMenu::Event: Unknown key released: id="
+#~ msgstr "OptionMenu::Event: Bilinmeyen tuþ býrakýldý: id="
+
+#~ msgid "Button 0 pressed"
+#~ msgstr "Buton 0'a basýldý"
+
+#~ msgid "Button 1 pressed"
+#~ msgstr "Buton 1'e basýldý"
+
+#~ msgid "Button 2 pressed"
+#~ msgstr "Buton 2'ye basýldý"
+
+#~ msgid "OptionMenu::Event: Unknown mouse button released: id="
+#~ msgstr "OptionMenu::Event: Bilinmiyen fare butonu serbest býrakýldý: id="
+
+#~ msgid "Unlimited Actions"
+#~ msgstr "Sýnýrsýz Eylem"
+
+#~ msgid "Print fps"
+#~ msgstr "FPS yazdýr"
+
+#~ msgid "Cursor enabled"
+#~ msgstr "Ýmleç etkin"
+
+#~ msgid "Fast Mode"
+#~ msgstr "Hýzlý Kip"
+
+#~ msgid "Game Speed"
+#~ msgstr "Oyun Hýzý"
+
+#~ msgid "Verbose"
+#~ msgstr "Ayrýntýlý mesaj"
+
+#~ msgid "Music"
+#~ msgstr "Müzik"
+
+#~ msgid "Draw ColMap"
+#~ msgstr "RenkHaritasi Çiz"
+
+#~ msgid "Auto Scrolling"
+#~ msgstr "Otomatik Kaydýrma"
+
+#~ msgid "Action Help Strings"
+#~ msgstr "Eylem Yardým Mesajlarý"
+
+#~ msgid "Pingus Option Menu"
+#~ msgstr "Pingus Seçenekler Menüsü"
+
+#~ msgid "| $ gdb pingus core"
+#~ msgstr "| $ gdb pingus core"
+
+#~ msgid "| (gdb) bt"
+#~ msgstr "| (gdb) bt"
+
+#~ msgid "| ..."
+#~ msgstr "| ..."
+
+#~ msgid "| $ gdb pingus"
+#~ msgstr "| $ gdb pingus"
+
+#~ msgid "| (gdb) r"
+#~ msgstr "| (gdb) r"
+
+#~ msgid "'------------------------------------------------------------------------\n"
+#~ msgstr "'------------------------------------------------------------------------\n"
+
+#~ msgid ""
+#~ "\n"
+#~ ",------------------------------------------------------------------------"
+#~ msgstr ""
+#~ "\n"
+#~ "Seçenekler:\n"
+#~ "   -g, --geometry {geniþlik}x{yükseklik}\n"
+#~ "                            Çözünürlüðü ayarla (640x480)\n"
+#~ "   -h, --help               Yardým ekranýný göster\n"
+#~ "   --disable-intro          Intro'yu kapat\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n"
+#~ "There is NO warranty.  You may redistribute this software\n"
+#~ "under the terms of the GNU General Public License.\n"
+#~ "For more information about these matters, see the files named COPYING."
+#~ msgstr ""
+#~ "\n"
+#~ "Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n"
+#~ "Geliþtiriciler bu yazýlýmla ilgili HÝÇBÝR garanti vermemektedir.\n"
+#~ "Pingus serbest bir yazýlýmdýr ve GNU GPL çerçevesinde \n"
+#~ "özgürce daðýtýlabilir. Ayrýntýlar için kaynak \n"
+#~ "kodunda COPYING belgesini okuyun."
+
+#~ msgid ""
+#~ "\n"
+#~ "Options:\n"
+#~ "   -g, --geometry {width}x{height}\n"
+#~ "                            Set the resolution for pingus (default: "
+#~ "800x600)\n"
+#~ "   -h, --help               Displays this screen\n"
+#~ "   --disable-intro          Disable intro\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Seçenekler:\n"
+#~ "   -g, --geometry {geniþlik}x{yükseklik}\n"
+#~ "                            Çözünürlüðü ayarla (640x480)\n"
+#~ "   -h, --help               Yardým ekranýný göster\n"
+#~ "   --disable-intro          Intro'yu kapat\n"
+
+#~ msgid "   -G, --use-opengl         Use OpenGL\n"
+#~ msgstr "   -G, --use-opengl         OpenGL kullan\n"
+
+#~ msgid ""
+#~ "   -w, --window             Start in Window Mode\n"
+#~ "   -f, --fullscreen         Start in Fullscreen\n"
+#~ "   -d, --datadir PATH       Set the path to load the data files to "
+#~ "`path'\n"
+#~ "   -l, --level FILE         Load a custom level from FILE\n"
+#~ "   -w, --worldmap FILE      Load a custom worldmap from FILE\n"
+#~ "   -v, --verbose            Print some more messages to stdout, can be "
+#~ "set\n"
+#~ "                            multible times to increase verbosity\n"
+#~ "   -V, --version            Prints version number and exit\n"
+#~ "   -e, --editor             Launch the Level editor (experimental)\n"
+#~ "   --disable-auto-scrolling Disable automatic scrolling\n"
+#~ "   --no-cfg-file            Don't read ~/.pingus/config\n"
+#~ "   --config-file FILE       Read config from FILE (default: ~/.pingus/"
+#~ "config)\n"
+#~ "                            reduce CPU usage, might speed up the game on "
+#~ "slower machines\n"
+#~ "\n"
+#~ "Debugging and experimental stuff:\n"
+#~ "   --maintainer-mode        Enables some features, only interesting "
+#~ "programmers\n"
+#~ "   --debug OPTION           Enable the output of debugging infos, "
+#~ "possible\n"
+#~ "                            OPTION's are tiles, gametime, actions, sound, "
+#~ "resources, gui,\n"
+#~ "                            input\n"
+#~ "   --min-frame-skip N       Skip at least N frames, larger values speed "
+#~ "the game up\n"
+#~ "   --max-frame-skip N       Skip at most N frames\n"
+#~ "   --frame-skip N           Set both min and max frameskip to N\n"
+#~ "   -t, --speed SPEED        Set the game speed (0=fastest, >0=slower)\n"
+#~ "   -b, --print-fps          Prints the fps to stdout\n"
+#~ "   --tile-size INT          Set the size of the map tiles (default: 32)\n"
+#~ "   --fast-mode              Disable some cpu intensive features\n"
+#~ "   --min-cpu-usage          Reduces the CPU usage by issuing sleep()\n"
+#~ "\n"
+#~ "\n"
+#~ "Demo playing and recording:\n"
+#~ "   -p, --play-demo FILE     Plays a demo session from FILE\n"
+#~ "   -r, --enable-demo-recording\n"
+#~ "                            Record demos for each played level\n"
+#~ msgstr ""
+#~ "Ama zamanla, durum yavaþ yavaþ deðiþmeye baþladý. Gökyüzü kararmaya,\n"
+#~ "dünya daha sýcak olmaya baþladý. Önceleri bunun sýradan iklim\n"
+#~ "farký olduðunu düþündüler, ama hergeçen yýl durum daha kötüye\n"
+#~ "gittmekteydi"
+
+#~ msgid ""
+#~ "\n"
+#~ "Sound:\n"
+#~ "   -s, --enable-sound       Enable sound\n"
+#~ "   -m, --enable-music       Enable music\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Ses:\n"
+#~ "   -s, --enable-sound       Sesi aç\n"
+#~ "   -m, --enable-music       Müziði aç\n"
 
 #~ msgid "_If I forgot somebody in this"
 #~ msgstr "_Eðer birisini unutuysam,"
@@ -1477,9 +1600,6 @@ msgstr "...yürüyor..."
 #~ msgid ", LOCALEDIR="
 #~ msgstr "LOCALEDÝZÝNÝ="
 
-#~ msgid "Starting Pingus "
-#~ msgstr "Pingus baþlatýlýyor "
-
 #~ msgid "Build:"
 #~ msgstr "Derleme:"
 
@@ -1522,18 +1642,8 @@ msgstr "...yürüyor..."
 #~ msgid "there are *no* sound files, so this will fail.\n"
 #~ msgstr "belirtmek lazým.  Pek ses dosyasý yok, yani bu çalýþmayacaktýr.\n"
 
-#~ msgid "Options:\n"
-#~ msgstr "Seçenekler:"
-
 #~ msgid "   -g, --geometry {width}x{height}\n"
 #~ msgstr "   -g, --geometry {geniþlik}x{yükseklik}\n"
-
-#~ msgid ""
-#~ "                            Set the resolution for pingus (default: "
-#~ "640x480)\n"
-#~ msgstr ""
-#~ "                            Pingus çözünürlüðünü ayarlar (öntanýlý: "
-#~ "640x480)\n"
 
 #~ msgid "   -h, --help               Displays this screen\n"
 #~ msgstr "   -h, --help               Bu ekraný göster\n"
@@ -1570,25 +1680,6 @@ msgstr "...yürüyor..."
 #~ msgstr "   -l, --level DOSYA         `DOSYA'dan Custom seviye yükle\n"
 
 #~ msgid ""
-#~ "   -v, --verbose            Print some more messages to stdout, can be "
-#~ "set\n"
-#~ msgstr ""
-#~ "   -v, --verbose            stdout'a detayli bilgiler bas, daha cok `v' "
-#~ "ile\n"
-
-#~ msgid "                            multible times to increase verbosity\n"
-#~ msgstr "                            detaylar artýrýlabilinir.\n"
-
-#~ msgid "   -V, --version            Prints version number and exit\n"
-#~ msgstr "   -V, --version            Sürüm sayýsýný basar ve çýkar\n"
-
-#~ msgid "   -e, --editor             Launch the Level editor (experimental)\n"
-#~ msgstr "   -e, --editor             Seviye editörü'nu baþlat (deneysel)\n"
-
-#~ msgid "   --disable-auto-scrolling Disable automatic scrolling\n"
-#~ msgstr "   --disable-auto-scrolling Automatik kaymayý kapa\n"
-
-#~ msgid ""
 #~ "   --disable-swcursor       Disable software cursor, use hw cursor "
 #~ "instead\n"
 #~ msgstr ""
@@ -1597,47 +1688,10 @@ msgstr "...yürüyor..."
 #~ msgid "   --enable-swcursor        Enable software cursor\n"
 #~ msgstr "   --enable-swcursor        Yazýlým imleçini kullan\n"
 
-#~ msgid "   --no-cfg-file            Don't read ~/.pingus/config\n"
-#~ msgstr "   --no-cfg-file            ~/.pingus/config dosyasýný okuma\n"
-
-#~ msgid ""
-#~ "   --config-file FILE       Read config from FILE (default: ~/.pingus/"
-#~ "config)\n"
-#~ msgstr ""
-#~ "   --config-file DOSYA       Ayarlarý `DOSYA'dan oku(öntanýmlý: ~/.pingus/"
-#~ "config)\n"
-
 #~ msgid ""
 #~ "   --max-cpu-usage          Use all of the cpu power available, instead "
 #~ "of trying to\n"
 #~ msgstr "   --max-cpu-usage          Ýþlemcinin bütün gücünu kullan.\n"
-
-#~ msgid ""
-#~ "                            reduce CPU usage, might speed up the game on "
-#~ "slower machines\n"
-#~ msgstr ""
-#~ "                            Bu yavaþ makinalarda oyunu hýzlandýrabilir\n"
-
-#~ msgid ""
-#~ "   --frame-skip N           Show only every N's frame, larger values "
-#~ "speed the game up\n"
-#~ msgstr ""
-#~ "   --frame-skip N           Oyunu hýzlandýrmak icin her `N'inci resim-"
-#~ "karesini gösterBüyük `N' oyunu hýzlandýrýr\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Debugging and experimental stuff:\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Deneyseyl þeyler:\n"
-
-#~ msgid ""
-#~ "   --maintainer-mode        Enables some features, only interesting "
-#~ "programmers\n"
-#~ msgstr ""
-#~ "   --maintainer-mode        Bazý özellikleri çalýþtýrýr. Sadece "
-#~ "programcýlariçin ilginç\n"
 
 #~ msgid ""
 #~ "   --enable-bg-manipulation Enables color manipulation of level "

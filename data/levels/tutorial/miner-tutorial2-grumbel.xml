@@ -5,6 +5,7 @@
     <levelname lang="en">Miners heaven</levelname>
     <levelname lang="de">Miners Himmel</levelname>
     <levelname lang="cs">Raj horniku</levelname>
+    <levelname lang="tr">Madenci cenneti</levelname>
 
     <description lang="en">And another action hits the street, it is again a digging action, this
                            time a diagonal one, it allows a Pingu to dig diagonally through
@@ -18,6 +19,10 @@
     <description lang="cs">A dalsi akce se dostava na vysluni a opet se jedna o kopani do
                            zeme, tentokrat sikmo. Dolovani umozni pingum vyhloubit sikme
                            chodby, kterymi pak mohou ostatni projit.
+    </description>
+    <description lang="tr">Þimdi bir baþka kazma eylemi göreceðiz. Bu eylemi kullandýðýmýzda 
+                           Pingu çapraz bir oyuk açarak diðer Pingularýn da geçebileceði bir
+                           tünel oluþturur. Bu eylemin adýna 'Miner' diyoruz.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

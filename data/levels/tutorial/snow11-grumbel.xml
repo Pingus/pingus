@@ -5,6 +5,7 @@
     <levelname lang="en">Jump'n Bump... and Bash...</levelname>
     <levelname lang="de">Springe... und grabe...</levelname>
     <levelname lang="cs">Skok a dopad... a hrabani...</levelname>
+    <levelname lang="tr">Zýpla, düþ... ve Kaz...</levelname>
 
     <description lang="en">It's panic time again. The Pingus will not come out very fast, but
 		           since they turn around on walls you soon will have some trouble
@@ -22,6 +23,12 @@
                            kdy je nebudes stihat ovladat. Nastesti jich potrebujes do domecku
                            dostat jen 5, tak to snad zvladnes. Kdyz ti to bude delat problemy,
                            muzes pouzivat pauzu ('p').
+    </description>
+    <description lang="tr">Yine panik zamaný. Pingular çok hýzlý gelmeyecekler, ancak 
+                           duvarlardan geri döneceklerinden, eni sonu baþýna dert açacaklar.
+                           Sadece üçünü kurtarmak gerektiði için yapabilmelisin, ama eðer çok
+                           zor gelirse bir ipucu: zaman zaman 'p' ile oyunu durdurarak daha 
+                           kolay çözebilirsin.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

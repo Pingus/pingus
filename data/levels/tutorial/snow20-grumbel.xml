@@ -5,6 +5,7 @@
     <levelname lang="en">Three solutions, it's up to you</levelname>
     <levelname lang="de">Drei Lösungen, es liegt bei Dir</levelname>
     <levelname lang="cs">Tri reseni - zvol si, ktere chces</levelname>
+    <levelname lang="tr">Üç çözüm, istediðini kullan</levelname>
 
     <description lang="en">Now that you have learned all the actions, it's time for some
                            more practice, this levels presents you with at least three
@@ -17,6 +18,10 @@
     <description lang="cs">Ted, kdyz jsi se uz naucil vsechny akce, nastava cas, aby jsi se
                            vice procvicil. Tyto ukoly maji nejmene tri ruzna reseni a je jen
                            na tobe, ktere si vyberes.
+    </description>
+    <description lang="tr">Bütün eylemleri öðrendik, þimdi biraz daha alýþtýrma yapacaðýz.
+                           Bu kez en az üç farklý çözüm var, hangisini kullanacaðýn tamamen
+                           sana kalmýþ.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

@@ -6,6 +6,8 @@
     <levelname lang="cs">Skakani pro zabavu</levelname>
     <levelname lang="de">Springe aus Freude</levelname>
     <levelname lang="en">Jump for joy</levelname>
+    <levelname lang="tr">Zevkle zýpla</levelname>
+
     <description lang="cs">Nekdy se pingu potrebuje dostat na plosinu, ktera je sice jen kus
                            od nej, ale nelze na ni dojit. Pak prijde vhod skakani, ktere
                            umozni pingovi kus poskocit a dostat se tak na kyzene misto.
@@ -20,6 +22,11 @@
                            it allows the Pingu to make a small jump and enables him so to
                            reach the platform.
      </description>
+    <description lang="tr">Bazen Pingulara hendek atlatmak gerekir. Deveye hendek atlatmaktan 
+                           daha kolay olan bu iþi, 'Jumper' eylemi ile yapýyoruz. 'Jumper' olarak 
+                           seçtiðimiz Pingu göbeðinin izin verdiði bir uzaklýða atlayýverir.
+     </description>
+
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>25</number-of-pingus>
     <number-to-save>5</number-to-save>

@@ -5,6 +5,7 @@
     <levelname lang="en">Dig, bash and other problems</levelname>
     <levelname lang="de">Graben und andere Probleme</levelname>
     <levelname lang="cs">Kopani, hrabani a dalsi problemy</levelname>
+    <levelname lang="tr">Kaz, oy ve diðer sorunlar</levelname>
 
     <description lang="en">The more levels you have mastered, the more difficult they will get,
                            but don't panic this one is still pretty easy. Just use the stuff that
@@ -23,6 +24,11 @@
                            nasledujici je zatim celkem snadna. Proste pouzij vse, co jsi se
                            zatim naucil a nebudes mit potize. Kdyz se dostanes do bezvy-
                            chodne situace, dvojklikni na tlacitko armagedon vpravo dole.
+    </description>
+    <description lang="tr">Daha çok seviye geçtikçe daha zorlarýyla karþýlaþacaksýn, ama korkma
+                           sýradaki de oldukça kolay. Daha önceki öðrendiklerile bu seviyeyi 
+                           aþman da sorun olmamalý. Ancak, eðer içinden çýkamayacaðýn bir duruma
+                           düþersen, sað alt köþedekil 'armageddon' butonuna çift týkla.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

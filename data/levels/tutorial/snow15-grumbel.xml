@@ -5,6 +5,7 @@
     <levelname lang="en">Climb, Climber,... Boom!</levelname>
     <levelname lang="de">Kletter, Climber... Boom!</levelname> 
     <levelname lang="cs">Splhej horolezce,... Bum!</levelname>
+    <levelname lang="tr">Týrman, týrman,... Bum!</levelname>
 
     <description lang="en">As you might have already figured out from previous levels you
                            often have to combine different actions to get the job done. Due
@@ -20,6 +21,11 @@
                            zkloubit vice ruznych akci dohromady, aby se dosahlo potrebneho
                            cile. Protoze momentalne nemas k dispozici zadneho kopace, tak
                            budes muset pouzit explozi. Jak se ale dostat na misto odpalu?
+    </description>
+    <description lang="tr">Çoktan farkýna varmýþ olduðun gibi, genellikle birden fazla 
+                           eylemi birleþtirmen gerekiyor. Bu seviyede Digger eylemi olmadýðý
+                           için yine yolu bomba ile açman gerek. Ama bombacý patlatmasý gereken
+                           yere nasýl varacak?
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

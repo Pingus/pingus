@@ -5,6 +5,7 @@
     <levelname lang="en">Sacrify a few and save the rest</levelname>
     <levelname lang="de">Opfere einige und rette den Rest</levelname>
     <levelname lang="cs">Par obetuj a zachran ostatni</levelname>
+    <levelname lang="tr">Çoðunluk için birkaçýný feda etmek gerek</levelname>
 
     <description lang="en">Sometimes if no other actions are available, you have to bomb your
                            way through the ground. The Pingus can to this by actually self
@@ -20,6 +21,10 @@
                            cestu skrz zemi vybuchem. Pingu to ale umi udelat jen tak, ze se
                            pri tom sam znici. Pres to, ze je to zabiji, tak je obcas nutne
                            jich nekolik obetovat, aby ostatni mohli byt zachraneni.
+    </description>
+    <description lang="tr">Bazen, eðer baþka olasýlýk yoksa, yolu bombayla açman gerekebilir.
+                           Pingular bunu, kendilerini feda ederek yapabilirler. Bu kayýp
+                           bazan grubun geri kalanýný kurtarmak için gerekli olabilir.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

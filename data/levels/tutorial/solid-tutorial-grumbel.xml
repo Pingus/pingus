@@ -5,6 +5,7 @@
     <levelname lang="en">Solid ground can block the path</levelname>
     <levelname lang="de">Fester Boden kann den Weg blockieren</levelname>
     <levelname lang="cs">Pevne podlozi muze omezit cestu</levelname>
+    <levelname lang="tr">Katý bloklar yolu týkayabilir</levelname>
 
     <description lang="en">As you have learned in earlier levels your Pingus can dig through
                            basically every ground, but there is one thing which they can't
@@ -23,6 +24,12 @@
                            ty, ktere prokopat nemuzes. Tyto veci jsou na mapce vyznaceny
                            tmave sedou barvou a nemohou byt nijak zniceny. Musis je
                            obejit.
+    </description>
+    <description lang="tr">Daha önceki seviylerde, Pingularýmýz istedikleri yeri 
+                           delebiliyoralardý, ama çelikten yapýlmýþ bazý nesneleri delmeleri
+                           mümkün deðil. Bu tür nesneler haritmýzda koyu gri ile gösterilen 
+                           yerlerdir. Bunlarý yok edemeyeceðin için çevrelerinden dolaþmanýn 
+                           bir yolunu bulman gerekiyor.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

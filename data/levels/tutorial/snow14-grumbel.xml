@@ -5,6 +5,7 @@
     <levelname lang="en">Block'a Rock</levelname>
     <levelname lang="de">Blockiere und sprenge</levelname>
     <levelname lang="cs">Blokovani</levelname>
+    <levelname lang="tr">Blokla ve patlat</levelname>
 
     <description lang="en">Again is the time to combine the stuff you have learned in your
                            previous levels. Blast your way free and make sure you also keep the
@@ -17,6 +18,10 @@
     <description lang="cs">A mame tu znovu prilezitost zkombinovat znalosti, ktere jsi se
                            drive naucil. Uvolni si cestu k cili a zaroven davej pozor na
                            ostatni pinguse. Pomuze ti nova akce - zablokovani cesty.
+    </description>
+    <description lang="tr">Bu seviyede de, daha önce öðrendiðin eylemleri birleþtirme þansýn
+                           olacak. Yoldaki bloklarý bombala ve ayný zamanda gerideki Pingularý da 
+                           kontrol altýnda tutmaya çalýþ. 'Blocker' bu konuda yardýmcý olacaktýr.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
