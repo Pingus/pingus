@@ -19,16 +19,10 @@ SUBDIRS = src data doc intl po
 
 EXTRA_DIST = ABOUT-NLS BUGS FAQ CREDITS autogen.sh pingus.dsp pingus.dsw vcfix.reg INSTALL.Win32
 
-install:
-	echo "\"make install\" is not supported in the CVS version"
-	exit
-
-install-exec-local :
-	echo "\"make install\" is not supported in the CVS version"
-	exit
-
-install-data-local :
-	echo "\"make install\" is not supported in the CVS version"
-	exit
+install-recursive:
+	@echo ""
+	@echo "\"make install\" is currently not supported in this CVS version."
+	@echo ""
+	@exit 1
 
 # EOF #
