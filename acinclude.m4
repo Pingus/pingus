@@ -1,10 +1,6 @@
 AC_DEFUN(AC_LIB_CLANLIB, [
 	echo "checking for ClanLib... assuming yes, but haven't tested";
 	LIBS="-lclan -lclanlayer2 $LIBS"]
-	dnl This next check is dirty hack, it doesn't check for ClanLib, only
-	dnl for its headers, and it also links some untested libs to it.
-	dnl The following entry should enable static linkage
-	dnl LIBS="-lz  /usr/local/lib/libclan.a /usr/local/lib/libclanlayer2.a /usr/lib/libz.a /usr/local/lib/libHermes.a $LIBS"
 	)
 
 dnl PINGUS_EXPAND_DIR(VARNAME, DIR)

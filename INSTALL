@@ -20,12 +20,10 @@ Table of Contents
   First you have to make sure that you have all required libaries
   installed, these are:
 
-  zlib - http://www.gzip.org
-    * http://www.gzip.org/zlib.tar.gz 
-  Hermes - http://hermes.terminal.at/
-    * http://hermes.terminal.at/files/Hermes-1.2.5.tar.gz 
-  ClanLib - http://www.clanlib.org
-    * http://dark.x.dtu.dk/clansoft/clanlib/download/ClanLib-0.1.19.tar.gz 
+    * zlib
+    * Hermes
+    * ImageMagick
+    * ClanLib
 
   If you are trying to compile the CVS version of pingus, you first have
   run:
@@ -33,8 +31,7 @@ Table of Contents
     $ ./autogen.sh
 
   To generate the `Makefile.in's' and the `configure' script. If you are
-  compiling a normal pingus release, for example pingus-0.0.15.tar.gz,
-  then you can go to step 2.).
+  compiling a normal pingus release then you can go to step 2.).
 
 
 2.) ---=== Configuration and Compilation ===---
@@ -57,17 +54,21 @@ Table of Contents
 
 3.) ---=== Running Pingus The First Time ===---
 
-  To run pingus without installing it, `cd' to the pingus source dir
+  To run pingus without installing it, `cd' to the Pingus source dir 'src/' 
   and type:
 
   $ ./pingus
 
-  If you have installed pingus you can just type:
+  If you have installed Pingus you can just type:
 
   $ pingus
 
 
 4.) ---=== Running Pingus The Second Time ===---
+
+***
+*** This section is out of date, I'll rewrite it at time
+***
 
   If you have successfully build pingus and got it to run, you may
   want to play another level or try some things which are in development 
@@ -82,10 +83,9 @@ Table of Contents
 
     There are some levels provided at the moment:
 
-
   * Speeding things up 
 
-    Pingus is to slow for you? Than you have diferent choises, you can 
+    Pingus is to slow for you? Than you have different choices, you can 
     set another speed with: (0 is the fastest, greater values are slower)
       
       $ ./pingus --set-speed 0
@@ -130,7 +130,7 @@ Have fun!
 
    Ingo Ruhnke <grumbel@gmx.de>
 
-Last update: $Date: 2000/02/09 22:13:18 $
+Last update: $Date: 2000/03/02 02:29:00 $
 
 
 6.) ---=== Generic Installation Instructions ===---

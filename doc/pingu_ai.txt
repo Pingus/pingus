@@ -1,3 +1,8 @@
+Pingu Status:
+~~~~~~~~~~~~~
+dead/alive/killed
+falling/not falling
+
 Pingu AI
 ~~~~~~~~
 

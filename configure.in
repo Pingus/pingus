@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.5 2000/02/26 16:24:13 grumbel Exp $
+#  $Id: configure.in,v 1.6 2000/03/02 02:29:00 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,8 +32,8 @@ PATCH_VERSION=2
 
 # The required ClanLib version
 CLANLIB_MAJOR_VERSION=0
-CLANLIB_MINOR_VERSION=3
-CLANLIB_PATCH_VERSION=1
+CLANLIB_MINOR_VERSION=4
+CLANLIB_PATCH_VERSION=0
 
 VERSION=${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION}
 
@@ -82,49 +82,73 @@ LIBS="$LIBS -lHermes"
 
 AC_CHECK_HEADER(ClanLib/core.h,, [echo "Please get ClanLib from http://www.clanlib.org"; exit])
 
-AC_CHECK_LIB( clanMagick,   main,, [
-	echo " ---------"
-	exit
-	], -lclanCore)
-
 AC_CHECK_LIB( clanCore,   main,, [
 	echo "ClanLib installed, but -lclanCore not found, run 'ldconfig' and try again,"
 	echo "if that doesn't help have a look at the file config.log and look into"
-	echo " the FAQ."
+	echo "the FAQ."
 	exit
-	], -lclanCore)
+	])
 
+AC_CHECK_LIB( clanMagick,   main,, [
+	echo "ClanLib is installed, but clanMagick was not found. You probably"
+	echo "forgot to compile clanMagick or you need to run 'ldconfig'."
+	echo "If you think you have everything correctly installed have a look at"
+	echo "the file 'config.log' to see what went wrong"
+	exit
+	])
 
-dnl AC_CHECK_LIB( clanlayer2,   main,, [echo "Only half of ClanLib detected, something is really wrong. Try to reinstall ClanLib."; exit])
+AC_CHECK_PROG( HAVE_CLANLIB_CONFIG, clanlib-config, "yes")
+if test "x$HAVE_CLANLIB_CONFIG" != "xyes" ; then
+	echo
+	echo "Couldn't find 'clanlib-config. Make sure that you"
+	echo "have installed ClanLib and that clanlib-config"
+	echo "is installed in you PATH.";
+	echo "Since Pingus does not use clanlib-config you can ignore"
+        echo "this" 
+	echo 
+fi
+
+clanlib_config_major_version=`clanlib-config --version | \
+           sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
+clanlib_config_minor_version=`clanlib-config --version | \
+           sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\2/'`
+clanlib_config_micro_version=`clanlib-config --version | \
+           sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\3/'`
+
+dnl if test $clanlib_config_major_version -eq $CLANLIB_MAJOR_VERSION; then
+dnl 	if test $clanlib_config_minor_version -eq $CLANLIB_MINOR_VERSION; then
+dnl 		if test $clanlib_config_patch_version -eq $CLANLIB_PATCH_VERSION; then
+dnl 		fi
+dnl 	fi
+dnl fi
 
 dnl Checking if ClanLib is new enough
-# echo -n "checking for working ClanLib >= $CLANLIB_MAJOR_VERSION.$CLANLIB_MINOR_VERSION.$CLANLIB_PATCH_VERSION... "
-# # AC_TRY_RUN([
-# #include <ClanLib/clanlib.h>
-# main(){
-# if (CL_CURRENT_VERSION >= CL_VERSION($CLANLIB_MAJOR_VERSION,$CLANLIB_MINOR_VERSION,$CLANLIB_PATCH_VERSION))
-# 	return 0;
-# else
-# 	return 1;
-# }
-
-# ],
-# 	[echo "yes"],
-# 	[echo ; echo;
-# 	 echo "Your ClanLib is to old or some other thing went wrong while compiling"
-# 	 echo "the test application, you need at least version $CLANLIB_MAJOR_VERSION.$CLANLIB_MINOR_VERSION.$CLANLIB_PATCH_VERSION"
-# 	 echo "or greater. If you have that version installed have a look at the file"
-# 	 echo "config.log to see what went wrong."
-# 	 echo "The ClanLib webpage is at:"; echo;
-# 	 echo "                    http://www.clanlib.org";
-#          echo
-# 	 echo "The ClanLib source tarball can be found at:"
-# 	 echo
-# 	 echo "   http://dark.x.dtu.dk/clansoft/clanlib/download/ClanLib-$CLANLIB_MAJOR_VERSION.$CLANLIB_MINOR_VERSION.$CLANLIB_PATCH_VERSION.tar.gz"
-# 	 echo
-# 	 exit],
-# 	[echo "cross compiling detected, assuming that this is correct and continue"]
-# )
+echo -n "checking for working ClanLib >= $CLANLIB_MAJOR_VERSION.$CLANLIB_MINOR_VERSION.$CLANLIB_PATCH_VERSION... "
+AC_TRY_RUN([
+#include <ClanLib/core.h>
+ main(){
+ if (CL_CURRENT_VERSION >= CL_VERSION($CLANLIB_MAJOR_VERSION,$CLANLIB_MINOR_VERSION,$CLANLIB_PATCH_VERSION))
+ 	return 0;
+ else
+ 	return 1;
+ }
+ ],
+ 	[echo "yes"],
+ 	[echo ; echo;
+ 	 echo "Your ClanLib is to old or some other thing went wrong while compiling"
+ 	 echo "the test application, you need at least version $CLANLIB_MAJOR_VERSION.$CLANLIB_MINOR_VERSION.$CLANLIB_PATCH_VERSION"
+ 	 echo "or greater. If you have that version installed have a look at the file"
+	 echo "config.log to see what went wrong."
+ 	 echo "The ClanLib webpage is at:"; echo;
+ 	 echo "                    http://www.clanlib.org";
+          echo
+ 	 echo "The ClanLib source tarball can be found at:"
+ 	 echo
+ 	 echo "   http://dark.x.dtu.dk/clansoft/clanlib/download/ClanLib-$CLANLIB_MAJOR_VERSION.$CLANLIB_MINOR_VERSION.$CLANLIB_PATCH_VERSION.tar.gz"
+ 	 echo
+ 	 exit],
+ 	[echo "cross compiling detected, assuming that this is correct and continue"]
+ )
 
 # AC_CHECK_PROG(HAVE_DATAFILE_COMPILER, datafile_compiler, "yes")
 # if test "x$HAVE_DATAFILE_COMPILER" != "xyes" ; then

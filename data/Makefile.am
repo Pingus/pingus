@@ -21,3 +21,4 @@ SUBDIRS = images levels demos data themes
 pkgdatadir = $(datadir)/games/@PACKAGE@
 
 EXTRA_DIST = README
+pkgdata_DATA = $(EXTRA_DIST)

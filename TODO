@@ -1,4 +1,12 @@
-Last updated: Sat Jul 31 15:11:43 1999
+Sometimes when I make one pingus explode, many others explode.
+Forces bug
+
+Digger  - fixing
+Basher  - fixing
+Builder - Animation tuning
+Blocker - fall throu fixen
+Jumper  - Animation?!
+Floater - check if killed if falling to height
 
 For 0.3.x
 ~~~~~~~~~
@@ -41,5 +49,7 @@ Less Important Things:
 
 -= BIG STUFF =-
 * "Worms" mode. 
+
+$Date: 2000/03/02 02:29:00 $
 
 -= EOF =-

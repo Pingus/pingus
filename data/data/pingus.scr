@@ -1,5 +1,3 @@
-// location = datafile("pingus.dat");
-
 // The surfaces for the different pingu actions
 section Pingus
 {
@@ -19,7 +17,9 @@ section Pingus
 
 section Other
 {
-	brick         = ../images/misc/brick.pcx         (type=surface, x=0, y=0, width=12, height=2);
+	brick_right   = ../images/misc/brick_right.pcx     (type=surface, x=0, y=0, width=12, height=2);
+	brick_left    = ../images/misc/brick_left.pcx      (type=surface, x=0, y=0, width=12, height=2);
+
 	bash_radius   = ../images/pingus/bash_radius.pcx (type=surface, x=0, y=0, width=32, height=32, tcol=0);
 	digger_radius = ../images/pingus/digger_radius.pcx (type=surface, x=0, y=0, width=30, height=4, tcol=0);
 	bomber_radius = ../images/pingus/bomber_radius.pcx (type=surface, x=0, y=0, width=48, height=48, tcol=0);
