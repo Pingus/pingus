@@ -1,4 +1,4 @@
-//  $Id: IceBlock.hh,v 1.1 2000/11/14 22:22:56 grumbel Exp $
+//  $Id: IceBlock.hh,v 1.2 2000/11/15 08:26:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,14 +48,14 @@ class IceBlock : public IceBlockData,
 private:
   CL_Surface* block_sur;
   float thickness;
-
+  bool is_finished;
 public:
   ///
   IceBlock (WorldObjData* data);
   ///
   virtual ~IceBlock ();
   ///
-  virtual int  get_z_pos() const { return pos.z_pos; }
+  virtual int  get_z_pos() const { return 100; }
   ///
   virtual void draw_colmap();
   ///

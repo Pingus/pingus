@@ -1,4 +1,4 @@
-//  $Id: IceBlock.cc,v 1.1 2000/11/14 22:22:56 grumbel Exp $
+//  $Id: IceBlock.cc,v 1.2 2000/11/15 08:26:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,6 +66,8 @@ IceBlockData::create(xmlDocPtr doc, xmlNodePtr cur)
   return data;
 }
 
+
+
 IceBlock::IceBlock (WorldObjData* data)
 {
   IceBlockData* ice_block = dynamic_cast<IceBlockData*>(data);
@@ -75,6 +77,7 @@ IceBlock::IceBlock (WorldObjData* data)
   width = ice_block->width;
   block_sur = PingusResource::load_surface ("iceblock", "worldobjs");
   thickness = 1.0;
+  is_finished = false;
 }
 
 ///
@@ -87,18 +90,17 @@ void
 IceBlock::draw_colmap()
 {
   CL_SurfaceProvider* prov
-    = PingusResource::load_surface("worldobjs/iceblock_cmap", "traps")->get_provider();
-  world->get_colmap()->put(prov, pos.x_pos, pos.y_pos, GroundpieceData::SOLID);
+    = PingusResource::load_surface("iceblock_cmap", "worldobjs")->get_provider();
+  world->get_colmap()->put(prov, pos.x_pos, pos.y_pos, GroundpieceData::GROUND);
 }
 
 ///
 void 
 IceBlock::draw_offset(int x_of, int y_of, float s = 1.0)
 {
-  if (thickness <= 0.0)
+  if (is_finished)
     return;
 
-  //std::cout << "thick: " << thickness << " " << (1.0 - thickness) * (block_sur->get_num_frames () - 1) << std::endl;
   block_sur->put_screen (pos.x_pos + x_of, pos.y_pos + y_of, 
 			 (int)((1.0 - thickness) * (block_sur->get_num_frames () - 1)));
 }
@@ -107,12 +109,8 @@ IceBlock::draw_offset(int x_of, int y_of, float s = 1.0)
 void 
 IceBlock::let_move()
 {
-
-  if (thickness == 0.0)
-    {
-      return ;
-    }
-
+  if (is_finished)
+    return;
 
   PinguHolder* holder = world->get_pingu_p();
 
@@ -122,18 +120,19 @@ IceBlock::let_move()
 	  && (*pingu)->get_y() > pos.y_pos - 2 && (*pingu)->get_y() < pos.y_pos + 10)
 	{
 	  //std::cout << "IceBlock: Catched Pingu: " << thickness  << std::endl;
-	  thickness -= 0.1;
+	  thickness -= 0.02;
+
+	  if (thickness < 0.0)
+	    {
+	      is_finished = true;
+	      thickness = 0.0;
+	      CL_SurfaceProvider* prov
+		= PingusResource::load_surface("iceblock_cmap", "worldobjs")->get_provider();
+	      world->get_colmap()->remove(prov, pos.x_pos, pos.y_pos);
+	      return;
+	    }
 	  return;
 	}
-    }
-
-  if (thickness <= 0.0)
-    {
-      thickness = 0.0;
-      CL_SurfaceProvider* prov
-	= PingusResource::load_surface("worldobjs/iceblock_cmap", "traps")->get_provider();
-      world->get_colmap()->remove(prov, pos.x_pos, pos.y_pos);
-      return;
     }
 }
 
