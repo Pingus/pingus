@@ -16,6 +16,8 @@ section Pingus
 	splash      = ../images/pingus/splash.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=12x1);
 	splash_debris = ../images/pingus/splash_debris.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=6x2);
 
+	splat = ../images/pingus/splat.pcx     (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=16x2);
+
 	exit        = ../images/pingus/exit.pcx (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=9x2);
 	drownfall   = ../images/pingus/drownfall.pcx (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=15x2);
 	drownwalk   = ../images/pingus/drownwalk.pcx (type=surface, x=0, y=0, width=32, height=32, tcol=0, array=15x2);

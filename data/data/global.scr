@@ -72,11 +72,31 @@ section Hotspots
 	plate2      = ../images/hotspots/plate2.pcx  (type=surface, x=0, y=0, width=64, height=64);
 	plate_small = ../images/hotspots/plate_small.pcx  (type=surface, x=0, y=0, width=32, height=32);
 
-	tutorial_blocker = ../images/hotspots/tutorial-blocker.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
-	tutorial_digger = ../images/hotspots/tutorial_digger.pcx  (type=surface, x=0, y=0, width=28, height=46, tcol=0);
-	tutorial_bridger  = ../images/hotspots/tutorial_bridger.pcx  (type=surface, x=0, y=0, width=28, height=46, tcol=0);
-	tutorial_left   = ../images/hotspots/tutorial_left.pcx  (type=surface, x=0, y=0, width=28, height=46, tcol=0);
-	tutorial_right  = ../images/hotspots/tutorial_right.pcx  (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+	section signposts {
+		basher = ../images/hotspots/signposts/basher.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		blocker = ../images/hotspots/signposts/blocker.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		bomber = ../images/hotspots/signposts/bomber.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		bridger = ../images/hotspots/signposts/bridger.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		climber = ../images/hotspots/signposts/climber.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		digger = ../images/hotspots/signposts/digger.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		floater = ../images/hotspots/signposts/floater.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		miner = ../images/hotspots/signposts/miner.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		nogo = ../images/hotspots/signposts/nogo.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		e = ../images/hotspots/signposts/e.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		ne = ../images/hotspots/signposts/ne.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		n = ../images/hotspots/signposts/n.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		nw = ../images/hotspots/signposts/nw.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		w = ../images/hotspots/signposts/w.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);	
+		sw = ../images/hotspots/signposts/sw.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		s = ../images/hotspots/signposts/s.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+		se = ../images/hotspots/signposts/se.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+	}
+
+//	tutorial_blocker = ../images/hotspots/tutorial-blocker.pcx (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+//	tutorial_digger = ../images/hotspots/tutorial_digger.pcx  (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+//	tutorial_bridger  = ../images/hotspots/tutorial_bridger.pcx  (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+//	tutorial_left   = ../images/hotspots/tutorial_left.pcx  (type=surface, x=0, y=0, width=28, height=46, tcol=0);
+//	tutorial_right  = ../images/hotspots/tutorial_right.pcx  (type=surface, x=0, y=0, width=28, height=46, tcol=0);
 }
 
 section Exits {
@@ -105,6 +125,10 @@ section Entrances {
 
         wood_bottom = ../images/entrances/wood_bottom.pcx (type=surface, x=0, y=0, width=100, height=57, tcol=0);
         wood_top = ../images/entrances/wood_top.pcx (type=surface, x=0, y=0, width=100, height=44, tcol=0);
+
+	entrance_eyes = ../images/entrances/entrance_eyes.tga (type=surface, x=0, y=0, width=273, height=221);
+	entrance_eyes_anim = ../images/entrances/entrance_eyes_anim.tga (type=surface, x=0, y=0, width=166, height=72, array=7x1);
+	underlay_eyes = ../images/entrances/underlay_eyes.tga (type=surface, x=0, y=0, width=166, height=72);
 }
 
 section GroundPieces
@@ -420,21 +444,21 @@ section Steel
 
 section Gunge
 {
-	gunge1 = ../images/gunge/gunge1.pcx (type=surface, x=0, y=0, width=65, height=59, tcol=0);
-	gunge10 = ../images/gunge/gunge10.pcx (type=surface, x=0, y=0, width=147, height=45, tcol=0);
-	gunge11 = ../images/gunge/gunge11.pcx (type=surface, x=0, y=0, width=69, height=51, tcol=0);
-	gunge12 = ../images/gunge/gunge12.pcx (type=surface, x=0, y=0, width=32, height=4, tcol=0);
-	gunge13 = ../images/gunge/gunge13.pcx (type=surface, x=0, y=0, width=75, height=4, tcol=0);
-	gunge14 = ../images/gunge/gunge14.pcx (type=surface, x=0, y=0, width=129, height=10, tcol=0);
-	gunge15 = ../images/gunge/gunge15.pcx (type=surface, x=0, y=0, width=98, height=10, tcol=0);
-	gunge2 = ../images/gunge/gunge2.pcx (type=surface, x=0, y=0, width=13, height=17, tcol=0);
-	gunge3 = ../images/gunge/gunge3.pcx (type=surface, x=0, y=0, width=18, height=10, tcol=0);
-	gunge4 = ../images/gunge/gunge4.pcx (type=surface, x=0, y=0, width=38, height=16, tcol=0);
-	gunge5 = ../images/gunge/gunge5.pcx (type=surface, x=0, y=0, width=9, height=26, tcol=0);
-	gunge6 = ../images/gunge/gunge6.pcx (type=surface, x=0, y=0, width=14, height=27, tcol=0);
-	gunge7 = ../images/gunge/gunge7.pcx (type=surface, x=0, y=0, width=11, height=24, tcol=0);
-	gunge8 = ../images/gunge/gunge8.pcx (type=surface, x=0, y=0, width=89, height=33, tcol=0);
-	gunge9 = ../images/gunge/gunge9.pcx (type=surface, x=0, y=0, width=24, height=9, tcol=0);
+	gunge1 = ../images/groundpieces/gunge/gunge1.pcx (type=surface, x=0, y=0, width=65, height=59, tcol=0);
+	gunge10 = ../images/groundpieces/gunge/gunge10.pcx (type=surface, x=0, y=0, width=147, height=45, tcol=0);
+	gunge11 = ../images/groundpieces/gunge/gunge11.pcx (type=surface, x=0, y=0, width=69, height=51, tcol=0);
+	gunge12 = ../images/groundpieces/gunge/gunge12.pcx (type=surface, x=0, y=0, width=32, height=4, tcol=0);
+	gunge13 = ../images/groundpieces/gunge/gunge13.pcx (type=surface, x=0, y=0, width=75, height=4, tcol=0);
+	gunge14 = ../images/groundpieces/gunge/gunge14.pcx (type=surface, x=0, y=0, width=129, height=10, tcol=0);
+	gunge15 = ../images/groundpieces/gunge/gunge15.pcx (type=surface, x=0, y=0, width=98, height=10, tcol=0);
+	gunge2 = ../images/groundpieces/gunge/gunge2.pcx (type=surface, x=0, y=0, width=13, height=17, tcol=0);
+	gunge3 = ../images/groundpieces/gunge/gunge3.pcx (type=surface, x=0, y=0, width=18, height=10, tcol=0);
+	gunge4 = ../images/groundpieces/gunge/gunge4.pcx (type=surface, x=0, y=0, width=38, height=16, tcol=0);
+	gunge5 = ../images/groundpieces/gunge/gunge5.pcx (type=surface, x=0, y=0, width=9, height=26, tcol=0);
+	gunge6 = ../images/groundpieces/gunge/gunge6.pcx (type=surface, x=0, y=0, width=14, height=27, tcol=0);
+	gunge7 = ../images/groundpieces/gunge/gunge7.pcx (type=surface, x=0, y=0, width=11, height=24, tcol=0);
+	gunge8 = ../images/groundpieces/gunge/gunge8.pcx (type=surface, x=0, y=0, width=89, height=33, tcol=0);
+	gunge9 = ../images/groundpieces/gunge/gunge9.pcx (type=surface, x=0, y=0, width=24, height=9, tcol=0);
 }
 
 section Grass
