@@ -50,8 +50,7 @@ ActionButton::init(int x, int y, ActionName name_, int owner_id)
   font   = Fonts::pingus_small;
   font_b = Fonts::pingus_large;
 
-  sprite = Sprite("Pingus/" + action_to_string(name) + to_string(owner_id), "pingus", 25.0f);
-  sprite.set_align_center_bottom();
+  sprite = Sprite("pingus/" + action_to_string(name) + "/right");
 
   // FIXME: Big fat hack
   if (   name == Digger  || name == Bomber

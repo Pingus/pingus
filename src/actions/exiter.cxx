@@ -28,7 +28,7 @@ namespace Actions {
 
 Exiter::Exiter (Pingu* p)
   : PinguAction(p),
-    sprite(Sprite("Pingus/exit0", "pingus", 15.0f, Sprite::NONE, Sprite::ONCE)),
+    sprite(Sprite("pingus/exit0", "pingus", 15.0f, Sprite::NONE, Sprite::ONCE)),
     sound_played(false)
 {
   sprite.set_align_center_bottom();

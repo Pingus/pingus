@@ -25,6 +25,7 @@
 #include "../gui/graphic_context.hxx"
 #include "../movers/linear_mover.hxx"
 #include "../pingu.hxx"
+#include "../pingus_resource.hxx"
 #include "../string_converter.hxx"
 #include "../world.hxx"
 #include "../worldobj.hxx"
@@ -34,14 +35,13 @@ namespace Pingus {
 namespace Actions {
 
 Faller::Faller (Pingu* p)
-  : PinguAction(p),
-    faller(Sprite("Pingus/faller" + to_string(pingu->get_owner ()), "pingus")),
-    // FIXME: we can save some cpu cycles & memory if we do this when it
-    // is necessary
-    tumbler(Sprite("Pingus/tumble" + to_string(pingu->get_owner()), "pingus"))
+  : PinguAction(p)
 {
-  faller .set_align_center_bottom();
-  tumbler.set_align_center_bottom();
+  faller.load(Direction::LEFT,  PingusResource::load_sprite("pingus/faller/left"));
+  faller.load(Direction::RIGHT, PingusResource::load_sprite("pingus/faller/right"));
+
+  tumbler.load(Direction::LEFT,  PingusResource::load_sprite("pingus/tumbler/left"));
+  tumbler.load(Direction::RIGHT, PingusResource::load_sprite("pingus/tumbler/right"));
 }
 
 Faller::~Faller () { }
@@ -49,8 +49,8 @@ Faller::~Faller () { }
 void
 Faller::update ()
 {
-  tumbler.update();
-  faller.update();
+  tumbler(pingu->direction).update();
+  faller(pingu->direction).update();
 
   // Pingu stands on ground
   if (rel_getpixel(0, -1) !=  Groundtype::GP_NOTHING)
@@ -148,9 +148,9 @@ void
 Faller::draw (GraphicContext& gc)
 {
   if (is_tumbling()) {
-    gc.draw(tumbler, pingu->get_pos ());
+    gc.draw(tumbler(pingu->direction), pingu->get_pos ());
   } else {
-    gc.draw(faller, pingu->get_pos ());
+    gc.draw(faller(pingu->direction), pingu->get_pos ());
   }
 }
 

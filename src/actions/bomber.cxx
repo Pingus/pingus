@@ -46,16 +46,15 @@ Bomber::Bomber (Pingu* p)
     sound_played(false),
     gfx_exploded(false),
     colmap_exploded(false),
-    sprite("Pingus/bomber" + to_string(pingu->get_owner()), "pingus", 
-           17.0f, Sprite::NONE, Sprite::ONCE),
-    explo_surf(PingusResource::load_sprite("Other/explo" + to_string(pingu->get_owner()), "pingus"))
+    sprite("pingus/bomber", "pingus", 17.0f, Sprite::NONE, Sprite::ONCE),
+    explo_surf(PingusResource::load_sprite("other/explo"))
 {
   // Only load the surface again if no static_surface is available
   if (!static_surface_loaded)
     {
       static_surface_loaded = true;
-      bomber_radius     = PingusResource::load_pixelbuffer("Other/bomber_radius", "pingus");
-      bomber_radius_gfx = PingusResource::load_pixelbuffer("Other/bomber_radius_gfx", "pingus");
+      bomber_radius     = PingusResource::load_pixelbuffer("other/bomber_radius");
+      bomber_radius_gfx = PingusResource::load_pixelbuffer("other/bomber_radius_gfx");
     }
   sprite.set_align_center_bottom();
 }

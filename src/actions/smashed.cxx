@@ -28,7 +28,7 @@ namespace Actions {
 Smashed::Smashed (Pingu* p)
   : PinguAction(p),
     sound_played(false),
-    sprite("Pingus/bomber0", "pingus")
+    sprite("pingus/bomber")
 {
   sprite.set_align_center_bottom();
 }

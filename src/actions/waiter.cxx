@@ -29,7 +29,7 @@ namespace Actions {
 Waiter::Waiter (Pingu* p)
   : PinguAction(p),
     countdown(2.0f),
-    sprite("Pingus/waiter", "pingus", 5.0f)
+    sprite("pingus/waiter", "pingus", 5.0f)
 {
   sprite.set_align_center_bottom();
 }

@@ -30,7 +30,7 @@ Superman::Superman (Pingu* p)
   : PinguAction(p),
     counter(0.0f),
     x_pos(pingu->get_x()),
-    sprite("Pingus/superman" + to_string(pingu->get_owner()), "pingus")
+    sprite("pingus/superman", "pingus")
 {
   sprite.set_align_center_bottom();
 }

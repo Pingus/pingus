@@ -28,7 +28,7 @@ namespace Actions {
 
 Jumper::Jumper (Pingu* p)
   : PinguAction(p),
-    sprite(Sprite("Pingus/jumper" + to_string(pingu->get_owner ()), "pingus"))
+    sprite("pingus/jumper")
 {
   sprite.set_align_center_bottom();
 }

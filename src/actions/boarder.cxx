@@ -31,7 +31,7 @@ Boarder::Boarder (Pingu* p)
   : PinguAction(p),
     x_pos(pingu->get_x()),
     speed(0.0),
-    sprite("Pingus/boarder" + to_string(pingu->get_owner()), "pingus")
+    sprite("pingus/boarder")
 {
   sprite.set_align_center_bottom();
 }

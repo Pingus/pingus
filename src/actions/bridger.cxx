@@ -41,17 +41,17 @@ CL_Surface Bridger::static_surface;
 Bridger::Bridger (Pingu* p)
   : PinguAction(p),
     mode(B_BUILDING),
-    walk_sprite(Sprite("Pingus/bridger_walk" + to_string(pingu->get_owner()), "pingus", 15.0f, Sprite::NONE, Sprite::ONCE)),
-    build_sprite(Sprite("Pingus/bridger_build" + to_string(pingu->get_owner()), "pingus", 15.0f, Sprite::NONE, Sprite::ONCE)),
+    walk_sprite(Sprite("pingus/bridger_walk", "pingus", 15.0f, Sprite::NONE, Sprite::ONCE)),
+    build_sprite(Sprite("pingus/bridger_build", "pingus", 15.0f, Sprite::NONE, Sprite::ONCE)),
     bricks(MAX_BRICKS),
     block_build(false),
     name(_("Bridger") + std::string(" (") + to_string(bricks) + ")")
 {
   if (!static_surfaces_loaded)
     {
-      static_surface = PingusResource::load_surface ("Pingus/bridger0", "pingus");
-      brick_l = PingusResource::load_pixelbuffer("Other/brick_left", "pingus");
-      brick_r = PingusResource::load_pixelbuffer("Other/brick_right", "pingus");
+      static_surface = PingusResource::load_surface ("pingus/bridger");
+      brick_l = PingusResource::load_pixelbuffer("other/brick_left");
+      brick_r = PingusResource::load_pixelbuffer("other/brick_right");
       static_surfaces_loaded = true;
     }
 

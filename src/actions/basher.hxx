@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_ACTIONS_BASHER_HXX
 #define HEADER_PINGUS_ACTIONS_BASHER_HXX
 
-#include "../sprite.hxx"
+#include "../state_sprite.hxx"
 #include "../pingu_action.hxx"
 
 namespace Pingus {
@@ -29,7 +29,7 @@ namespace Actions {
 class Basher : public PinguAction
 {
 private:
-  CL_Sprite sprite;
+  StateSprite sprite;
   CL_PixelBuffer bash_radius;
   CL_PixelBuffer bash_radius_gfx;
   int basher_c;

@@ -31,26 +31,21 @@ namespace Actions {
 
 Miner::Miner (Pingu* p)
   : PinguAction(p),
-    miner_radius(PingusResource::load_pixelbuffer("Other/bash_radius", "pingus")),
-    miner_radius_gfx(PingusResource::load_pixelbuffer("Other/bash_radius_gfx", "pingus")),
-    sprite(Sprite("Pingus/miner0", "pingus", 20.0f)),
+    miner_radius(PingusResource::load_pixelbuffer("other/bash_radius")),
+    miner_radius_gfx(PingusResource::load_pixelbuffer("other/bash_radius_gfx")),
     slow_count(0)
 {
-  sprite.set_align_center_bottom();
+  sprite.load(Direction::LEFT,  PingusResource::load_sprite("pingus/miner/left"));
+  sprite.load(Direction::RIGHT, PingusResource::load_sprite("pingus/miner/right"));
 
   miner_radius_width = miner_radius.get_width();
   miner_radius_gfx_width = miner_radius_gfx.get_width();
-
-  if (pingu->direction.is_left())
-    sprite.set_direction(Sprite::LEFT);
-  else
-    sprite.set_direction(Sprite::RIGHT);
 }
 
 void
 Miner::update ()
 {
-  sprite.update();
+  sprite(pingu->direction).update();
 
   ++slow_count;
   if (!(slow_count % 4))
@@ -100,7 +95,7 @@ Miner::update ()
 void
 Miner::draw (GraphicContext& gc)
 {
-  gc.draw(sprite, pingu->get_pos());
+  gc.draw(sprite(pingu->direction), pingu->get_pos());
 }
 
 } // namespace Actions

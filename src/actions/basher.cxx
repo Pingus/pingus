@@ -32,13 +32,13 @@ namespace Actions {
 
 Basher::Basher (Pingu* p)
   : PinguAction(p),
-    sprite(PingusResource::load_sprite("Pingus/basher0", "pingus")),
-    bash_radius(PingusResource::load_pixelbuffer("Other/bash_radius", "pingus")),
-    bash_radius_gfx(PingusResource::load_pixelbuffer("Other/bash_radius_gfx", "pingus")),
+    bash_radius(PingusResource::load_pixelbuffer("other/bash_radius")),
+    bash_radius_gfx(PingusResource::load_pixelbuffer("other/bash_radius_gfx")),
     basher_c(0),
     first_bash(true)
 {
-  sprite.set_alignment(origin_bottom_center);
+  sprite.load(Direction::LEFT,  PingusResource::load_sprite("pingus/basher"));
+  sprite.load(Direction::RIGHT, PingusResource::load_sprite("pingus/basher"));
 
   bash_radius_width     = bash_radius.get_width();
   bash_radius_gfx_width = bash_radius_gfx.get_width();
@@ -55,19 +55,13 @@ Basher::Basher (Pingu* p)
 void
 Basher::draw (GraphicContext& gc)
 {
-#ifdef CLANLIB_0_6
-  if (pingu->direction.is_left())
-    sprite.set_direction (Sprite::LEFT);
-  else
-    sprite.set_direction (Sprite::RIGHT);
-#endif
-  gc.draw (sprite, pingu->get_pos() + Vector (0, +1));
+  gc.draw(sprite(pingu->direction), pingu->get_pos());
 }
 
 void
 Basher::update ()
 {
-  sprite.update ();
+  sprite(pingu->direction).update();
 
   ++basher_c;
   if (basher_c % 3 == 0)
@@ -100,8 +94,9 @@ Basher::update ()
 	      if (basher_c % 2 == 0)
 		bash();
 	    }
-	  else if (sprite.get_current_frame()/float(sprite.get_frame_count()) > 0.6f) // FIXME: EVIL!
-	    {
+	  else if (sprite(pingu->direction).get_current_frame() 
+                   / float(sprite(pingu->direction).get_frame_count()) > 0.6f) 
+	    { // FIXME: EVIL! Engine must not relay on graphic
 	      pingu->set_action(Actions::Walker);
 	    }
 	}

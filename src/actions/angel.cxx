@@ -32,7 +32,7 @@ Angel::Angel (Pingu* p)
   : PinguAction(p),
     counter(0.0),
     x_pos(pingu->get_x()),
-    sprite("Pingus/angel" + to_string(pingu->get_owner()), "pingus")
+    sprite("pingus/angel")
 {
   sprite.set_align_center_bottom();
 }

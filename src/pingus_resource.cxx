@@ -37,6 +37,7 @@
 
 namespace Pingus {
 
+CL_ResourceManager PingusResource::resmgr;
 std::map<std::string, CL_ResourceManager> PingusResource::resource_map;
 std::map<ResDescriptor, CL_Surface>        PingusResource::surface_map;
 std::map<ResDescriptor, CL_Font>          PingusResource::font_map;
@@ -45,6 +46,7 @@ void
 PingusResource::init()
 {
   // do nothing
+  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/pingus.xml")));
 }
 
 void
@@ -58,6 +60,12 @@ PingusResource::deinit()
 CL_ResourceManager
 PingusResource::get(const std::string& arg_filename)
 {
+  if (arg_filename.empty())
+    {
+      return resmgr;
+    }
+  else
+    {
   std::string filename = arg_filename + ".xml";
 
   std::map<std::string, CL_ResourceManager>::iterator i = resource_map.find(filename);
@@ -77,6 +85,7 @@ PingusResource::get(const std::string& arg_filename)
       resource_map[filename] = res_manager;
 
       return res_manager;
+    }
     }
 }
 

@@ -34,6 +34,7 @@ namespace Pingus {
 class PingusResource
 {
 private:
+  static CL_ResourceManager resmgr;
   static std::map<std::string, CL_ResourceManager> resource_map;
   static std::map<ResDescriptor, CL_Surface> surface_map;
   static std::map<ResDescriptor, CL_Font>    font_map;
@@ -53,7 +54,7 @@ public:
 
   /** Load a surface with res_name from datafile */
   static CL_Surface load_surface(const std::string& res_name,
-				 const std::string& datafile,
+				 const std::string& datafile  = "",
 				 ResourceModifierNS::ResourceModifier modifier
 				 = ResourceModifierNS::ROT0);
 
@@ -61,12 +62,11 @@ public:
   static CL_Surface load_surface(const ResDescriptor&);
   static CL_Sprite  load_sprite(const ResDescriptor&);
   static CL_Sprite  load_sprite(const std::string& res_name,
-                                const std::string& datafile);
+                                const std::string& datafile = "");
   static CL_SpriteDescription load_sprite_desc(const std::string& res_name,
-                                               const std::string& datafile);
-
+                                               const std::string& datafile = "");
   static CL_PixelBuffer load_pixelbuffer(const std::string& res_name,
-                                              const std::string& datafile);
+                                              const std::string& datafile = "");
   static CL_PixelBuffer load_pixelbuffer(const ResDescriptor&);
 
   /** Load a font with res_name from datafile */

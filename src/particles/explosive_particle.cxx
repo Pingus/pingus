@@ -28,9 +28,6 @@ ExplosiveParticle::ExplosiveParticle (int x, int y, float x_a, float y_a)
                                     : Particle (x, y, x_a, y_a),
                                       alive (true)
 {
-//  sprite = Sprite (PingusResource::load_surface
-//		   ("Particles/explosive",
-//		    "pingus"));
 }
 
 ExplosiveParticle::~ExplosiveParticle ()

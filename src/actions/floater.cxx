@@ -29,7 +29,7 @@ Floater::Floater(Pingu* p)
   : PinguAction(p),
     falling_depth(0),
     step(0),
-    sprite(Sprite ("Pingus/floater0", "pingus"))
+    sprite(Sprite ("pingus/floater0", "pingus"))
 {
   sprite.set_align_center_bottom();
 }

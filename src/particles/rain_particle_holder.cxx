@@ -37,9 +37,9 @@ RainParticleHolder::RainParticle::RainParticle(int x, int y)
 
 
 RainParticleHolder::RainParticleHolder ()
-  : rain1_surf (PingusResource::load_sprite("Particles/rain1", "pingus")),
-    rain2_surf (PingusResource::load_sprite("Particles/rain2", "pingus")),
-    rain_splash(PingusResource::load_sprite("Particles/rain_splash", "pingus"))
+  : rain1_surf (PingusResource::load_sprite("particles/rain1")),
+    rain2_surf (PingusResource::load_sprite("particles/rain2")),
+    rain_splash(PingusResource::load_sprite("particles/rain_splash"))
 {
 }
 

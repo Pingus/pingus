@@ -33,16 +33,11 @@ namespace Actions {
 
 Digger::Digger (Pingu* p)
   : PinguAction(p),
-    digger_radius(PingusResource::load_pixelbuffer("Other/digger_radius", "pingus")),
-    digger_radius_gfx(PingusResource::load_pixelbuffer("Other/digger_radius", "pingus")),
-    sprite(Sprite (std::string("Pingus/digger") + to_string(pingu->get_owner ()), "pingus")),
+    digger_radius(PingusResource::load_pixelbuffer("other/digger_radius")),
+    digger_radius_gfx(PingusResource::load_pixelbuffer("other/digger_radius")),
+    sprite("pingus/digger"),
     digger_c(0)
 {
-#if 0
-  // FIXME: Just an idea...
-  sprite = Sprite (std::string("Pingus/digger") + to_string(pingu->get_owner ()),
-		   "pingus", PropertyMgr::instance()->get_int ("actions/digger/sprite-fps", 20));
-#endif
   sprite.set_align_center_bottom();
 
   digger_radius_width  = digger_radius.get_width();

@@ -33,7 +33,7 @@ namespace Actions {
 
 Blocker::Blocker(Pingu* p)
   : PinguAction(p),
-    sprite(PingusResource::load_sprite("Pingus/blocker" + to_string(pingu->get_owner()), "pingus")) // 6.0f)
+    sprite(PingusResource::load_sprite("pingus/blocker")) // 6.0f)
 {
   sprite.set_alignment(origin_bottom_center);
 

@@ -50,7 +50,7 @@ public:
   Sprite ();
 
   Sprite (std::string arg_sur_name,
-	  std::string arg_datafile,
+	  std::string arg_datafile = "",
 	  float arg_frames_per_second = 10.0f,
 	  Direction dir = NONE,
 	  LoopType arg_loop_type = ENDLESS);

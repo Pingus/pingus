@@ -27,7 +27,7 @@ namespace Actions {
 
 Climber::Climber (Pingu* p)
   : PinguAction(p),
-    sprite(Sprite ("Pingus/climber0", "pingus")),
+    sprite(Sprite ("pingus/climber0")),
     sprite_width(sprite.get_width()),
     sprite_height(sprite.get_height())
 {

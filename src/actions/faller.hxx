@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_ACTIONS_FALLER_HXX
 #define HEADER_PINGUS_ACTIONS_FALLER_HXX
 
-#include "../sprite.hxx"
+#include "../state_sprite.hxx"
 #include "../pingu_action.hxx"
 
 namespace Pingus {
@@ -29,8 +29,8 @@ namespace Actions {
 class Faller : public PinguAction
 {
 private:
-  Sprite faller;
-  Sprite tumbler;
+  StateSprite faller;
+  StateSprite tumbler;
 
   int falling;
 

@@ -32,8 +32,7 @@ namespace Actions {
 
 RocketLauncher::RocketLauncher (Pingu* p)
   : PinguAction(p),
-    sprite("Pingus/rocketlauncher" + to_string(pingu->get_owner()), "pingus",
-           10.0f, Sprite::NONE, Sprite::ONCE),
+    sprite("pingus/rocketlauncher", "pingus", 10.0f, Sprite::NONE, Sprite::ONCE),
     launched(false)
 {
   sprite.set_align_center_bottom();

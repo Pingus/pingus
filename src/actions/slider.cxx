@@ -28,7 +28,7 @@ namespace Actions {
 
 Slider::Slider (Pingu* p)
   : PinguAction(p),
-    sprite("Pingus/slider" + to_string(pingu->get_owner()), "pingus"),
+    sprite("pingus/slider"),
     speed(10)
 {
   sprite.set_align_center_bottom();

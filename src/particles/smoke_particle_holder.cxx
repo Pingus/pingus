@@ -34,8 +34,8 @@ SmokeParticleHolder::SmokeParticle::SmokeParticle (int x, int y, float vel_x, fl
 
 
 SmokeParticleHolder::SmokeParticleHolder ()
-  : surf1(PingusResource::load_sprite("Particles/smoke", "pingus")),
-    surf2(PingusResource::load_sprite("Particles/smoke2", "pingus"))
+  : surf1(PingusResource::load_sprite("particles/smoke", "pingus")),
+    surf2(PingusResource::load_sprite("particles/smoke2", "pingus"))
 {
 }
 

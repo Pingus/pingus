@@ -1,3 +1,19 @@
+Resource String Cleanup:
+========================
+Old:
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>snow/block2</resource-ident>
+    <modifier>ROT0</modifier>
+  </resource></surface>
+
+Should be:
+  <surface>
+    <name>groundpieces/ground/snow/block2</name>
+    <modifier>ROT0</modifier>
+  </surface>
+
+
 Roadmap for Pingus 0.5.0
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
