@@ -1,4 +1,4 @@
-//  $Id: liquid.cxx,v 1.3 2002/10/12 00:49:10 torangan Exp $
+//  $Id: liquid.cxx,v 1.4 2002/10/12 13:02:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,10 +51,10 @@ Liquid::get_z_pos () const
 void
 Liquid::on_startup ()
 {
-  CL_Surface sur_ = PingusResource::load_surface("Liquid/water_cmap", "global");
+  CL_Surface colmap_sur = PingusResource::load_surface("Liquid/water_cmap", "global");
 
   for(int i=0; i < data->width; ++i)
-    world->get_colmap()->put(sur_,
+    world->get_colmap()->put(colmap_sur,
                              static_cast<int>(data->pos.x + i),
 			     static_cast<int>(data->pos.y),
 			     Groundtype::GP_WATER);

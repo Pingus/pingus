@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.38 2002/10/12 00:49:10 torangan Exp $
+//  $Id: editor_event.cxx,v 1.39 2002/10/12 13:01:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -381,8 +381,7 @@ EditorEvent::editor_convert_group_to_selection()
 {
   if (selection->get_current_obj())
     {
-      EditorObj* obj = selection->get_current_obj();
-      EditorObjGroup* group = dynamic_cast<EditorObjGroup*>(obj);
+      EditorObjGroup* group = dynamic_cast<EditorObjGroup*>(selection->get_current_obj());
 
       if (group)
 	{      
@@ -393,7 +392,7 @@ EditorEvent::editor_convert_group_to_selection()
 	      i != objs->end();
 	      ++i)
 	    {
-	      obj = (*i)->duplicate ();
+	      EditorObj* obj = (*i)->duplicate ();
 	      if (obj)
 		{
 		  object_manager->add (obj);
