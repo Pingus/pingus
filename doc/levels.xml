@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<pingus-level>
+  
+  <global>
+    <author>Ingo Ruhnke grumbel@gmx.de</author>
+    <start-x-pos>0</start-x-pos>
+    <start-y-pos>0</start-y-pos>
+    <levelname>Pipe Panic in Penguin World</levelname>
+    <description>This level show a simple pipe system,
+      which can be created with just a few 
+      pipe tiles.</description>
+    <number-of-pingus>100</number-of-pingus>
+    <number-to-save>50</number-to-save>
+  </global>
+
+  <ground>
+    <maptype>SPOT</maptype>
+    <data><file>level3.psm</file></data>
+    <width>1100</width>
+    <height>800</height>
+    <colmap></colmap>
+  </ground>
+
+  <background>
+    <image><resource>
+	<resource-file>textures.dat</resource-file>
+	<resource-ident>Textures/stars</resource-ident>
+      </resource></image>
+    <dim>0.0</dim>
+    <scroll-x>0</scroll-x>
+    <scroll-y>0</scroll-y>
+  </background>
+
+  <buttons>
+    <basher>20</basher>
+    <button action="blocker">20</button>
+    <button action="bomber">20</button>
+    <button action="bridger">20</button>
+    <button action="climber">20</button>
+    <button action="digger">20</button>
+    <button action="floater">20</button>
+    <button action="miner">20</button>
+  </buttons>
+
+  <world-objs>
+    <entrance>
+      <type>generic</type>
+      <x-pos>324</x-pos>
+      <y-pos>242</y-pos>
+      <z-pos>0</z-pos>
+      <release-rate>30</release-rate>
+      <direction>left</direction>
+    </entrance>
+
+    <entrance>
+      <type>generic</type>
+      <x-pos>824</x-pos>
+      <y-pos>342</y-pos>
+      <z-pos>0</z-pos>
+      <release-rate>30</release-rate>
+      <direction>left</direction>
+    </entrance>
+
+    <exit>
+      <image><resource>Exits/stone</resource></image>
+      <x-pos>783</x-pos>
+      <y-pos>436</y-pos>
+      <z-pos>0</z-pos>
+    </exit>
+
+    <trap>
+      <name>guillotine</name>
+      <x-pos>399</x-pos>
+      <y-pos>205</y-pos>
+      <z-pos>-10</z-pos>
+    </trap>
+  </world-objs>
+  
+  <ground-objs>
+
+    <spot>
+      <type>ground</type>
+      <image><resource>
+	  <resource-file>textures.dat</resource-file>
+	  <resource-ident>Textures/stars</resource-ident>
+	</resource></image>
+      <position>
+	<x-pos>399</x-pos>
+	<y-pos>205</y-pos>
+	<z-pos>-10</z-pos>    
+      </position>
+    </spot>
+
+  </ground-objs>
+
+</pingus-level>
+  
+<!-- EOF -->

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<pingus-world>
+  <name>Playable Levels</name>
+  
+  <description-list>
+    <description lang=en>
+      When we have enough, these levels will be
+      catagorised into worlds. More levels are very welcome.
+    </description>
+    
+    <description lang=de_DE>
+      Wenn gen&uuml;gend spielbare Level vorhanden sind wird das hier
+      etwas aufgeraeumt und die Level bekommen jeweils ihre eigene
+      Welt.
+    </description>
+  </description-list>
+
+  <background>
+    <image><resource>
+	<resource-file>textures.dat</resource-file>
+	<resource-ident>Textures/stars</resource-ident>
+      </resource></image>
+  </background>
+
+  <level-list>
+    <level>longway.plf</level>
+    <level>rinse.plf</level>
+    <level>Lev4.plf</level>
+    <level>Wland.plf</level>
+    <level>particle.plf</level>
+    <level>Stair.plf</level>
+    <level>cages.plf</level>
+    <level>partic2.plf</level>
+    <level>jewel.plf</level>
+    <level>bombing.plf</level>
+  </level-list>
+  
+</pingus-world>
+
+<!-- EOF -->
