@@ -1,4 +1,4 @@
-//  $Id: menu_background.cxx,v 1.5 2003/02/18 00:13:13 grumbel Exp $
+//  $Id: menu_background.cxx,v 1.6 2003/03/24 11:18:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "gui/graphic_context.hxx"
 #include "menu_background.hxx"
 #include "pingus_resource.hxx"
 
@@ -34,9 +35,9 @@ MenuBackground::~MenuBackground ()
 }
 
 void 
-MenuBackground::draw ()
+MenuBackground::draw (GraphicContext& gc)
 {
-  layer_manager.draw ();
+  layer_manager.draw (gc);
 }
 
 void 

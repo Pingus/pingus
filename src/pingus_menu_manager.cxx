@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.cxx,v 1.20 2003/02/19 11:33:00 grumbel Exp $
+//  $Id: pingus_menu_manager.cxx,v 1.21 2003/03/24 11:18:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,13 +47,13 @@ PingusMenuManager::~PingusMenuManager ()
 bool
 PingusMenuManager::draw (GraphicContext& gc)
 {
-  background.draw ();
+  background.draw (gc);
   
   gc.draw (unplayable, Vector(CL_Display::get_width ()/2, 30));
 
-  CL_Display::fill_rect(0, CL_Display::get_height () - 22,
-			CL_Display::get_width (), CL_Display::get_height (),
-			0, 0, 0, 1.0f);
+  gc.draw_fillrect(0, CL_Display::get_height () - 22,
+                   CL_Display::get_width (), CL_Display::get_height (),
+                   0, 0, 0, 1.0f);
 
   for (MenuStackIter i = menu_stack.begin (); i != menu_stack.end (); ++i)
     (*i)->draw (gc);

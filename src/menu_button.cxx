@@ -1,4 +1,4 @@
-//  $Id: menu_button.cxx,v 1.1 2003/03/18 17:24:55 torangan Exp $
+//  $Id: menu_button.cxx,v 1.2 2003/03/24 11:18:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,56 +58,61 @@ SurfaceButton::draw (GraphicContext& gc)
 {
   if (mouse_over && !pressed)
     {
-      font->print_center(CL_Display::get_width() / 2, 
-			 CL_Display::get_height() - 20, 
-			 desc.c_str());
+      gc.print_center(font, CL_Display::get_width() / 2, 
+                      CL_Display::get_height() - 20, 
+                      desc.c_str());
 
-      surface_p.put_screen(x_pos - surface_p.get_width()/2,
-			   y_pos - surface_p.get_height()/2);
+      gc.draw(surface_p, x_pos - surface_p.get_width()/2,
+              y_pos - surface_p.get_height()/2);
 
       if (line2.empty())
 	{
-	  font_large->print_center(x_pos + 32, 
-				   y_pos - 32 - font_large->get_height()/2,
-				   line1.c_str());
+	  gc.print_center(font_large, x_pos + 32, 
+                          y_pos - 32 - font_large->get_height()/2,
+                          line1.c_str());
 	}
       else
 	{
-	  font_large->print_center(x_pos + 32, y_pos - 32 - font_large->get_height(), 
-				   line1.c_str());
-	  font_large->print_center(x_pos + 32, y_pos - 32,
-				   line2.c_str());
+	  gc.print_center(font_large, x_pos + 32, y_pos - 32 - font_large->get_height(), 
+                          line1.c_str());
+	  gc.print_center(font_large, x_pos + 32, y_pos - 32,
+                          line2.c_str());
 	}
     }
   else if (mouse_over && pressed)
     {
       float shrink = 0.9f;
       
-      font->print_center(CL_Display::get_width() / 2, 
-			 CL_Display::get_height() - 20, 
-			 desc.c_str());
+      gc.print_center(font, CL_Display::get_width() / 2, 
+                      CL_Display::get_height() - 20, 
+                      desc.c_str());
 
-      surface_p.put_screen(static_cast<int>(x_pos - surface_p.get_width()/2 * shrink),
-			   static_cast<int>(y_pos - surface_p.get_height()/2 * shrink),
-			   shrink, shrink);
+      gc.draw(surface_p, 
+              static_cast<int>(x_pos - surface_p.get_width()/2 * shrink),
+              static_cast<int>(y_pos - surface_p.get_height()/2 * shrink),
+              shrink, shrink, 0);
+
       if (line2.empty())
 	{
-	  font_large->print_center(x_pos + 32, 
-				   y_pos - 32 - font_large->get_height()/2,
-				   line1.c_str());
+	  gc.print_center(font_large,
+                          x_pos + 32, 
+                          y_pos - 32 - font_large->get_height()/2,
+                          line1.c_str());
 	}
       else
 	{
-	  font_large->print_center(x_pos + 32, y_pos - 32 - font_large->get_height(), 
-				   line1.c_str());
-	  font_large->print_center(x_pos + 32, y_pos - 32,
-				   line2.c_str());
+	  gc.print_center(font_large, 
+                          x_pos + 32, y_pos - 32 - font_large->get_height(), 
+                          line1.c_str());
+	  gc.print_center(font_large, x_pos + 32, y_pos - 32,
+                          line2.c_str());
 	}
     } 
   else 
     {
-      surface_p.put_screen(x_pos - surface_p.get_width()/2,
-			   y_pos - surface_p.get_height()/2);
+      gc.draw(surface_p, 
+              x_pos - surface_p.get_width()/2,
+              y_pos - surface_p.get_height()/2);
     }
   UNUSED_ARG(gc);
 }

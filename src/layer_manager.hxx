@@ -1,4 +1,4 @@
-//  $Id: layer_manager.hxx,v 1.6 2002/09/27 11:26:43 torangan Exp $
+//  $Id: layer_manager.hxx,v 1.7 2003/03/24 11:18:53 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "pingus.hxx"
 #include <cmath>
 #include <ClanLib/Display/Display/surface.h>
+#include "gui/graphic_context.hxx"
 
 class LayerManager
 {
@@ -33,11 +34,11 @@ private:
     Layer () : x_pos(0.0f), y_pos(0.0f) {
     }
     
-    void draw () {
-      sur.put_screen (int(x_pos + x_offset),
-		      int(y_pos + y_offset));
-      sur.put_screen (int(x_pos + x_offset - 800),
-		      int(y_pos + y_offset));
+    void draw (GraphicContext& gc) {
+      gc.draw(sur, int(x_pos + x_offset),
+              int(y_pos + y_offset));
+      gc.draw(sur, int(x_pos + x_offset - 800),
+              int(y_pos + y_offset));
     }
 
     void update (float delta) {
@@ -85,7 +86,7 @@ public:
   ~LayerManager();
 
   void add_layer (const CL_Surface& sur, float x_o, float y_o, float x_u, float y_u);
-  void draw ();
+  void draw (GraphicContext& gc);
   void update (float delta);
   
 private:

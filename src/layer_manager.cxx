@@ -1,4 +1,4 @@
-//  $Id: layer_manager.cxx,v 1.3 2003/02/18 00:13:13 grumbel Exp $
+//  $Id: layer_manager.cxx,v 1.4 2003/03/24 11:18:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,11 +42,11 @@ LayerManager::add_layer (const CL_Surface& sur, float x_o, float y_o, float x_u,
 }
 
 void
-LayerManager::draw ()
+LayerManager::draw (GraphicContext& gc)
 {
   for (std::vector<Layer>::iterator i = layers.begin (); 
        i != layers.end (); ++i)
-    i->draw ();
+    i->draw (gc);
 }
 
 void 

@@ -1,4 +1,4 @@
-//  $Id: menu_background.hxx,v 1.6 2002/09/27 11:26:43 torangan Exp $
+//  $Id: menu_background.hxx,v 1.7 2003/03/24 11:18:53 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include "layer_manager.hxx"
 
+class GraphicContext;
+
 class MenuBackground
 {
 private:
@@ -30,7 +32,7 @@ public:
   MenuBackground ();
   ~MenuBackground ();
 
-  void draw ();
+  void draw (GraphicContext& gc);
   void update (float delta);
   
 private:
