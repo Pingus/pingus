@@ -1,15 +1,14 @@
-# -*- mode: po; coding: iso-latin-1; -*-
-# Pingus - Ein Freier Lemmings Klone
-# Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
-# Ingo Ruhnke <grumbel@gmx.de>, 2000
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-11 17:16+0200\n"
-"PO-Revision-Date: 2003-04-11 16:32+0200\n"
+"Project-Id-Version: Pingus 0.6.0\n"
+"POT-Creation-Date: 2003-04-12 01:50+0200\n"
+"PO-Revision-Date: 2003-04-12 01:51+0200\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
-"Language-Team: Ingo Ruhnke <grumbel@gmx.de>, Giray Devlet <giray@devlet.cc>\n"
+"Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx.de>, Giray Devlet <giray@devlet.cc>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -881,90 +880,90 @@ msgstr "Sound aktivieren"
 msgid "Enable music"
 msgstr "Musik Aktivieren"
 
-#: src/pingus_main.cxx:651
+#: src/pingus_main.cxx:663
 msgid "clanVorbis support:           ok"
 msgstr "clanVorbis Unterstützung:    ok"
 
-#: src/pingus_main.cxx:653
+#: src/pingus_main.cxx:665
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr ""
 "clanVorbis Unterstützung: fehlt (.ogg Musik Datein können nicht abgespielt "
 "werden)"
 
-#: src/pingus_main.cxx:657
+#: src/pingus_main.cxx:669
 msgid "clanMikMod support:           ok"
 msgstr "clanMikMod Unterstützung:    ok"
 
-#: src/pingus_main.cxx:659
+#: src/pingus_main.cxx:671
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr ""
 "clanMikMod Untersützung: fehlt (Musikdateien können nicht abgespielt werden)"
 
-#: src/pingus_main.cxx:663
+#: src/pingus_main.cxx:675
 msgid "getext support:               ok"
 msgstr "gettext Unterstützung:       ok"
 
-#: src/pingus_main.cxx:664
+#: src/pingus_main.cxx:676
 msgid "gettext language:        english"
 msgstr "gettext Sprache:        deutsch"
 
-#: src/pingus_main.cxx:670
+#: src/pingus_main.cxx:682
 msgid "sound support:           enabled"
 msgstr "Sound Unterstützung:         an"
 
-#: src/pingus_main.cxx:672
+#: src/pingus_main.cxx:684
 msgid "sound support:          disabled"
 msgstr "Sound Unterstützung:        aus"
 
-#: src/pingus_main.cxx:675
+#: src/pingus_main.cxx:687
 msgid "music support:           enabled"
 msgstr "Musik Unterstützung:         an"
 
-#: src/pingus_main.cxx:677
+#: src/pingus_main.cxx:689
 msgid "music support:          disabled"
 msgstr "Musik Unterstützung:        aus"
 
-#: src/pingus_main.cxx:679
+#: src/pingus_main.cxx:691
 msgid "resolution set to:       "
 msgstr "Auflösung:              "
 
-#: src/pingus_main.cxx:680
+#: src/pingus_main.cxx:692
 msgid "fullscreen:              "
 msgstr "Vollbild:           "
 
-#: src/pingus_main.cxx:681
+#: src/pingus_main.cxx:693
 msgid " enabled"
 msgstr "aktiviert"
 
-#: src/pingus_main.cxx:681
+#: src/pingus_main.cxx:693
 msgid "disabled"
 msgstr "deaktiviert"
 
-#: src/pingus_main.cxx:691
+#: src/pingus_main.cxx:703
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Hauptteil wird gestartet: "
 
-#: src/pingus_main.cxx:721
+#: src/pingus_main.cxx:733
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Leveldatei nicht gefunden, Fehler wird ignoriert: "
 
-#: src/pingus_main.cxx:812
+#: src/pingus_main.cxx:824
 msgid "Error caught from ClanLib: "
 msgstr "ClanLib Fehler abgefangen: "
 
-#: src/pingus_main.cxx:816
+#: src/pingus_main.cxx:828
 msgid "Error caught from Pingus: "
 msgstr "Pingus Fehler wurde abgefangen: "
 
-#: src/pingus_main.cxx:820
+#: src/pingus_main.cxx:832
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Speicher ist ausgegangen"
 
-#: src/pingus_main.cxx:824
+#: src/pingus_main.cxx:836
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Standard Ausnahme abgefangen!:\n"
 
-#: src/pingus_main.cxx:828
+#: src/pingus_main.cxx:840
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Unbekannte Ausnahme abgefangen!"
 
@@ -1108,7 +1107,7 @@ msgid ""
 "the world. Since the floe with which the Pingus traveled to the\n"
 "Tutorial Island isn't going to hold the whole way into the warmer\n"
 "climated regions the Pingus have to find something else to guide\n"
-"there on their journey.\n"
+"them on their journey.\n"
 msgstr ""
 "Nachdem Du und die Pingus nun die Grundlagen gelernt haben und\n"
 "ein wenig Übung haben, ist es an der Zeit weiter zu gehen und die\n"
@@ -1121,21 +1120,21 @@ msgstr ""
 msgid ""
 "But as the eldest have said, the Tutorial Island provides not\n"
 "only a way to practive, but it is also the starting point into\n"
-"the world, cause the wood of the large tree at the end of the\n"
-"island brings good wood to construct a float.\n"
+"the world. After some search the Pingus discovered the meaning\n"
+"of this, the large tree at the end of the island provides good\n"
+"wood to construct a float.\n"
 msgstr ""
 "Aber wie die Ältesten sagten, Tutorial Island liefert nicht nur\n"
 "einen Weg zum Üben, es ist auch der erste Schritt in die Welt, denn\n"
 "das Holz der Bäume am Ende der Insel liefert gutes Material um ein\n"
 "Floß zu bauen.\n"
 
-#: src/story.cxx:59
+#: src/story.cxx:60
 msgid ""
-"So the Pingus set out and constructed a some large floats, enough\n"
+"So the Pingus set out and constructed some large floats, enough\n"
 "to carry them all. After also packaging up a bunch of provisions\n"
 "they where prepared to finally start of their journey and leave\n"
-"their familiar ground and entering the unknown parts of the\n"
-"world.\n"
+"their familiar ground and enter the unknown parts of the world.\n"
 msgstr ""
 "So gingen die Pingus dann hin und konstruierten ein paar große\n"
 "Flöße, genug um alle zu tragen. Nachdem sie auch noch einigen\n"
@@ -1187,7 +1186,7 @@ msgstr ""
 msgid ""
 "The snow began to melt away in a few regions and food became an\n"
 "issue. Other animals already tend to leave the region to search\n"
-"for colder areas, but the Pingus knew that this couldn't help,\n"
+"for colder areas, but the Pingus knew that this wouldn't help,\n"
 "they knew that they had to do something about this problem."
 msgstr ""
 "Der Schnee begann in einigen Bereichen zu schmelzen und Nahrung\n"

@@ -1,4 +1,4 @@
-//  $Id: story.cxx,v 1.21 2003/04/08 19:56:40 torangan Exp $
+//  $Id: story.cxx,v 1.22 2003/04/11 23:52:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,24 +43,24 @@ Story::init_credits()
         "the world. Since the floe with which the Pingus traveled to the\n"
         "Tutorial Island isn't going to hold the whole way into the warmer\n"
         "climated regions the Pingus have to find something else to guide\n"
-        "there on their journey.\n")));
+        "them on their journey.\n")));
 
   credits.pages.push_back
     (StoryPage
      (ResDescriptor("Story/credits2", "story"), 
       _("But as the eldest have said, the Tutorial Island provides not\n"
         "only a way to practive, but it is also the starting point into\n"
-        "the world, cause the wood of the large tree at the end of the\n"
-        "island brings good wood to construct a float.\n")));
+        "the world. After some search the Pingus discovered the meaning\n"
+        "of this, the large tree at the end of the island provides good\n"
+        "wood to construct a float.\n")));
      
   credits.pages.push_back
     (StoryPage
      (ResDescriptor("Story/credits3", "story"), 
-      _("So the Pingus set out and constructed a some large floats, enough\n"
+      _("So the Pingus set out and constructed some large floats, enough\n"
         "to carry them all. After also packaging up a bunch of provisions\n"
         "they where prepared to finally start of their journey and leave\n"
-        "their familiar ground and entering the unknown parts of the\n"
-        "world.\n")));
+        "their familiar ground and enter the unknown parts of the world.\n")));
      
   credits.pages.push_back
     (StoryPage
@@ -99,7 +99,7 @@ Story::init_intro()
      (ResDescriptor("Story/story2", "story"), 
       _("The snow began to melt away in a few regions and food became an\n"
         "issue. Other animals already tend to leave the region to search\n"
-        "for colder areas, but the Pingus knew that this couldn't help,\n"
+        "for colder areas, but the Pingus knew that this wouldn't help,\n"
         "they knew that they had to do something about this problem.")));
 
   intro.pages.push_back

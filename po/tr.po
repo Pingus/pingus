@@ -93,6 +93,8 @@ msgstr ""
 #: src/credits.cxx:144
 msgid "_playing!"
 msgstr ""
+"Bir seviye hazýrladýysanýz ve Pingus ile daðýtýlmasýný istiyorsanýz,\n"
+"pingus-devel@nongnu.org adresine gönderin."
 
 #: src/editor/editor_event.cxx:580
 msgid "Enter filename to save as:"
@@ -828,6 +830,12 @@ msgid ""
 "\n"
 ",------------------------------------------------------------------------"
 msgstr ""
+"\n"
+"Seçenekler:\n"
+"   -g, --geometry {geniþlik}x{yükseklik}\n"
+"                            Çözünürlüðü ayarla (640x480)\n"
+"   -h, --help               Yardým ekranýný göster\n"
+"   --disable-intro          Intro'yu kapat\n"
 
 #: src/pingus_main.cxx:125
 msgid "| Warning: Pingus recieved a SIGINT, exiting now."
@@ -922,6 +930,10 @@ msgid ""
 "   -r, --enable-demo-recording\n"
 "                            Record demos for each played level\n"
 msgstr ""
+"Ama zamanla, durum yavaþ yavaþ deðiþmeye baþladý. Gökyüzü kararmaya,\n"
+"dünya daha sýcak olmaya baþladý. Önceleri bunun sýradan iklim\n"
+"farký olduðunu düþündüler, ama hergeçen yýl durum daha kötüye\n"
+"gittmekteydi"
 
 #: src/pingus_main.cxx:540
 msgid ""
