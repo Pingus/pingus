@@ -1,4 +1,4 @@
-//  $Id: string_converter.cxx,v 1.4 2002/06/26 19:13:13 grumbel Exp $
+//  $Id: string_converter.cxx,v 1.5 2002/07/08 17:05:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <algorithm>
 #include <stdio.h>
 #include "string_converter.hxx"
 

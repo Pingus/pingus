@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.7 2002/07/02 13:36:07 torangan Exp $
+//  $Id: object_selector.cxx,v 1.8 2002/07/08 17:05:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <string>
 #include <ClanLib/Core/System/system.h>
 #include <ClanLib/Core/IOData/directory_scanner.h>
 #include <ClanLib/Display/Input/mouse.h>

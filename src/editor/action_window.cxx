@@ -1,4 +1,4 @@
-//  $Id: action_window.cxx,v 1.5 2002/06/30 09:01:02 grumbel Exp $
+//  $Id: action_window.cxx,v 1.6 2002/07/08 17:05:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
+#include <algorithm>
 #include "../string_converter.hxx"
 #include "action_window.hxx"
 

@@ -1,4 +1,4 @@
-//  $Id: string_reader.cxx,v 1.4 2002/07/02 13:36:07 torangan Exp $
+//  $Id: string_reader.cxx,v 1.5 2002/07/08 17:05:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Core/System/system.h>
+#include <ClanLib/Display/Input/inputdevice.h>
 #include <ClanLib/Display/Input/inputbuffer.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
