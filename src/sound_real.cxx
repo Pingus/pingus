@@ -1,4 +1,4 @@
-//  $Id: sound_real.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: sound_real.cxx,v 1.3 2002/06/23 19:16:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 
 #include "globals.hxx"
 #include "sound_real.hxx"
+#include "debug.hxx"
 
 
 #ifdef HAVE_LIBCLANVORBIS
@@ -71,13 +72,11 @@ PingusSoundReal::init()
 
   is_init = true;
 
-  if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
-    std::cout << "Initializing ClanLib-Sound" << std::endl;
+  pout(PINGUS_DEBUG_SOUND) << "Initializing ClanLib-Sound" << std::endl;
     
   CL_SetupSound::init();
   
-  if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
-    std::cout << "Initializing ClanLib-MikMod" << std::endl;
+  pout(PINGUS_DEBUG_SOUND) << "Initializing ClanLib-MikMod" << std::endl;
   
 #ifdef HAVE_LIBCLANMIKMOD
   CL_SetupMikMod::init();
@@ -88,8 +87,7 @@ void
 PingusSoundReal::real_play_sound(const std::string & filename, float volume, float panning)
 {
 
-  if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
-    std::cout << "PingusSoundReal: Playing sound: " << filename << "Buffer-Size: " << sound_holder.size() << std::endl;
+  pout(PINGUS_DEBUG_SOUND) << "PingusSoundReal: Playing sound: " << filename << "Buffer-Size: " << sound_holder.size() << std::endl;
 
   if (!sound_enabled)
     return;
@@ -113,8 +111,7 @@ PingusSoundReal::real_play_sound(const std::string & filename, float volume, flo
     buffer = new CL_SoundBuffer (new CL_Sample(filename.c_str(), NULL), true);
     sess   = new CL_SoundBuffer_Session(buffer -> prepare());
   } catch (const CL_Error & e) {
-    if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
-      std::cout << "Can't open file " << filename << " -- skipping\n";
+    pout(PINGUS_DEBUG_SOUND) << "Can't open file " << filename << " -- skipping\n";
     return;
   }
   
@@ -137,8 +134,7 @@ PingusSoundReal::real_play_music(const std::string & arg_filename, float volume)
   if (!music_enabled)
     return;
 
-  if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
-    std::cout << "PingusSoundReal: Playing music: " << filename << std::endl;
+  pout(PINGUS_DEBUG_SOUND) << "PingusSoundReal: Playing music: " << filename << std::endl;
   
   if (music) {
     if (music -> is_playing())
@@ -182,6 +178,4 @@ PingusSoundReal::real_play_music(const std::string & arg_filename, float volume)
 
 
 /* EOF */
-
-
 

@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.7 2002/06/21 16:50:20 torangan Exp $
+//  $Id: pingu.cxx,v 1.8 2002/06/23 19:16:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,13 +30,15 @@
 #include "pingu_action.hxx"
 #include "pingu_action_factory.hxx"
 #include "my_gettext.hxx"
+#include "debug.hxx"
 
 const float deadly_velocity = 20.0;
 int   Pingu::id_counter = 0;
 
 // Init a pingu at the given position while falling
 Pingu::Pingu(const CL_Vector& arg_pos, int owner)
-  : countdown_action (0),
+  : action(0),
+    countdown_action (0),
     id (++id_counter),
     font (PingusResource::load_font("Fonts/numbers", "fonts")),
     status (PS_ALIVE),
@@ -109,8 +111,7 @@ Pingu::set_action(PinguAction* act)
 
   if (status == PS_DEAD)
     {
-      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
-	std::cout << _("Setting action to a dead pingu") << std::endl;
+      pout(PINGUS_DEBUG_ACTIONS) << _("Setting action to a dead pingu") << std::endl;
       return false;
     }
 
@@ -119,21 +120,15 @@ Pingu::set_action(PinguAction* act)
   // check for persistent actions
   if (act->get_type() != (ActionType)ONCE) 
     {
-      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
-	{
-	  std::cout << "Pingu: Found some persistant action" << std::endl;
-	  std::cout << "Pingu: Action is FALL: " 
-		    << int(act->get_type() & (ActionType)FALL) << std::endl;
-	  std::cout << "Pingu: Action is WALL: " 
-		    << int(act->get_type() & (ActionType)WALL) << std::endl;
-	}
+      pout(PINGUS_DEBUG_ACTIONS) << "Pingu: Found some persistant action" << std::endl
+	                         << "Pingu: Action is " 
+	                         << (act->get_type() == FALL) ? "FALL" : "WALL";
       
       for(std::vector<PinguAction*>::iterator i = persist.begin(); i != persist.end(); i++)
 	{
 	  if ((*i)->get_name() == act->get_name()) 
 	    {
-	      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
-		std::cout << "Not using action, we have allready" << std::endl;
+	      pout(PINGUS_DEBUG_ACTIONS) << "Not using action, we have already" << std::endl;
 	      return false;
 	    }
 	}
@@ -159,8 +154,7 @@ Pingu::set_action(PinguAction* act)
 	{ // Immediately activate the action
 	  if (action && (action->get_name() == act->get_name()))
 	    {
-	      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
-		std::cout << "Pingu: Already have action" << std::endl;
+	      pout(PINGUS_DEBUG_ACTIONS) << "Pingu: Already have action" << std::endl;
 	      return false;
 	    }
 	  action = act;
@@ -300,7 +294,7 @@ Pingu::update(float delta)
 void 
 Pingu::update_action(float /*delta*/)
 {
-  std::cout << "Pingu: No action set, setting action." << std::endl;
+  pout(PINGUS_DEBUG_ACTIONS) << "Pingu: No action set, setting action." << std::endl;
   if (rel_getpixel(0,-1) == ColMap::NOTHING)
     set_action("faller");
   else

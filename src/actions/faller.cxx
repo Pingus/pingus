@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.3 2002/06/21 07:45:35 grumbel Exp $
+//  $Id: faller.cxx,v 1.4 2002/06/23 19:16:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "../world.hxx"
 #include "../string_converter.hxx"
 #include "../pingu.hxx"
+#include "../debug.hxx"
 #include "faller.hxx"
 
 const float Faller::deadly_velocity = 20.0f;
@@ -126,8 +127,7 @@ Faller::update (float delta)
 	    }
 	  else if (fabs(pingu->velocity.x) > deadly_velocity)
 	    {
-	      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
-		std::cout << "Pingu: x Smashed on ground, jumping" << std::endl;
+	      pout(PINGUS_DEBUG_ACTIONS) << "Pingu: x Smashed on ground, jumping" << std::endl;
 	    }
 	}
       // Reset the velocity

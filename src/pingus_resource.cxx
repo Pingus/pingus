@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.7 2002/06/23 11:54:10 grumbel Exp $
+//  $Id: pingus_resource.cxx,v 1.8 2002/06/23 19:16:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@
 #include "path_manager.hxx"
 #include "globals.hxx"
 #include "pingus_resource.hxx"
+#include "debug.hxx"
 
 std::map<std::string, CL_ResourceManager*> PingusResource::resource_map;
 std::map<ResDescriptor, CL_Surface>       PingusResource::surface_map;
@@ -117,8 +118,7 @@ PingusResource::load_surface(const std::string& res_name,
 CL_Surface
 PingusResource::load_surface(const ResDescriptor& res_desc)
 {
-  if (pingus_debug_flags & PINGUS_DEBUG_LOADING)
-    std::cout << "PingusResource: Loading surface: " << res_desc << std::endl;
+  pout(PINGUS_DEBUG_LOADING) << "PingusResource: Loading surface: " << res_desc << std::endl;
 
   CL_Surface surf(surface_map[res_desc]);
   
@@ -139,12 +139,12 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
 	    //	    CL_Surface::load(res_desc.res_name.c_str(),
 	    //  get(suffix_fixer(res_desc.datafile)));
 	  } catch (CL_Error err) {
-	    std::cout << "PingusResource:" << res_desc
-		      <<  ":-404-:" << err.message << std::endl;
+	    pout << "PingusResource:" << res_desc
+	         <<  ":-404-:" << err.message << std::endl;
 	    try {
 	      surf = CL_Surface ("misc/404", get(suffix_fixer("core")));
 	    } catch (CL_Error err2) {
-	      std::cout << "PingusResource: Fatal error, important gfx files (404.pcx) couldn't be loaded!" << std::endl;
+	      pout << "PingusResource: Fatal error, important gfx files (404.pcx) couldn't be loaded!" << std::endl;
 	      throw err;
 	    }
 	  }
@@ -155,21 +155,20 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
 	  {
 	    std::string filename = System::get_statdir() + "images/" + res_desc.res_name;
 	    // FIXME: Memory leak?
-	    std::cout << "PingusResource::load_surface(" << res_desc.res_name << ")" << std::endl;
+	    pout << "PingusResource::load_surface(" << res_desc.res_name << ")" << std::endl;
 	    // FIXME: Add pcx, jpeg, tga support here 
-	    surf = CL_Surface(new CL_PNGProvider(filename,
-						 NULL), false);
-	    std::cout << "DONE" << std::endl;
+	    surf = CL_Surface(new CL_PNGProvider(filename, NULL), false);
+	    pout << "DONE" << std::endl;
 	    surface_map[res_desc] = surf;
 	    return surf;
 	  }
 	  
 	case ResDescriptor::RD_AUTO:
-	  std::cerr << "PingusResource: ResDescriptor::AUTO not implemented" << std::endl;
+	  perr << "PingusResource: ResDescriptor::AUTO not implemented" << std::endl;
 	  assert (false);
 
 	default:
-	  std::cerr << "PingusResource: Unknown ResDescriptor::type: " << res_desc.type  << std::endl;
+	  perr << "PingusResource: Unknown ResDescriptor::type: " << res_desc.type  << std::endl;
 	  assert (false);
 	  return CL_Surface();
 	}
@@ -187,8 +186,7 @@ PingusResource::load_font(const std::string& res_name,
 CL_Font* 
 PingusResource::load_font(const ResDescriptor& res_desc)
 {
-  if (pingus_debug_flags & PINGUS_DEBUG_LOADING)
-    std::cout << "PingusResource: Loading font: " << res_desc << std::endl;
+  pout(PINGUS_DEBUG_LOADING) << "PingusResource: Loading font: " << res_desc << std::endl;
 
   CL_Font* font = font_map[res_desc];
   
@@ -205,23 +203,23 @@ PingusResource::load_font(const ResDescriptor& res_desc)
 	    font = CL_Font::load(res_desc.res_name.c_str(),
 				 get(suffix_fixer(res_desc.datafile)));
 	  } catch (CL_Error err) {
-	    std::cout << "PingusResource: " << err.message << std::endl;
-	    std::cout << "PingusResource: Couldn't load font: " << res_desc << std::endl;
+	    pout << "PingusResource: " << err.message << std::endl
+	         << "PingusResource: Couldn't load font: " << res_desc << std::endl;
 	    assert (!"PingusResource: Fatal error can't continue!");
 	  }
 	  font_map[res_desc] = font;
 	  return font;
 	  
 	case ResDescriptor::RD_FILE:
-	  std::cout << "PingusResource: ResDescriptor::FILE not implemented" << std::endl;
+	  pout << "PingusResource: ResDescriptor::FILE not implemented" << std::endl;
 	  return 0;
 	  
 	case ResDescriptor::RD_AUTO:
-	  std::cout << "PingusResource: ResDescriptor::AUTO not implemented" << std::endl;
+	  pout << "PingusResource: ResDescriptor::AUTO not implemented" << std::endl;
 	  return 0;
 
 	default:
-	  std::cout << "PingusResource: Unknown ResDescriptor::type: " << res_desc.type  << std::endl;
+	  pout << "PingusResource: Unknown ResDescriptor::type: " << res_desc.type  << std::endl;
 	  return 0;
 	}
     }
@@ -230,7 +228,7 @@ PingusResource::load_font(const ResDescriptor& res_desc)
 void
 PingusResource::cleanup ()
 {
-  std::cout << "XXXX PingusResource::cleanup ()" << std::endl;
+  pout << "XXXX PingusResource::cleanup ()" << std::endl;
   
   for (std::map<ResDescriptor, CL_Surface>::iterator i = surface_map.begin ();
        i != surface_map.end (); ++i)
@@ -238,15 +236,15 @@ PingusResource::cleanup ()
       if (i->first.type == ResDescriptor::RD_FILE
 	  && i->second.get_reference_count () == 1)
 	{
-	  std::cout << "XXX Releasing File: " << i->first
-		    << " => " << i->second.get_reference_count () << std::endl;
+	  pout << "XXX Releasing File: " << i->first
+	       << " => " << i->second.get_reference_count () << std::endl;
 	  surface_map.erase(i);
 	}
       else if (i->first.type == ResDescriptor::RD_RESOURCE
 	       && i->second.get_reference_count () == 2)
 	{
-	  std::cout << "XXX Releasing Resource : " << i->first
-		    << " => " << i->second.get_reference_count () << std::endl;
+	  pout << "XXX Releasing Resource : " << i->first
+	       << " => " << i->second.get_reference_count () << std::endl;
 	  surface_map.erase(i);
 	}
     }

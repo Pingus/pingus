@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.7 2002/06/23 14:15:47 grumbel Exp $
+//  $Id: blitter.cxx,v 1.8 2002/06/23 19:16:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "globals.hxx"
 #include "math.hxx"
 #include "blitter.hxx"
+#include "debug.hxx"
 
 /* Headers needed for i18n / gettext */
 #include <clocale>
@@ -178,16 +179,11 @@ Blitter::put_surface_32bit(CL_Canvas* canvas, CL_SurfaceProvider* provider,
   assert (canvas);
   assert (provider);
 
-  if (pingus_debug_flags & PINGUS_DEBUG_BLITTER)
-    {
-      std::cout << "Blitting: SurfaceProvider:" << provider->get_width () << "x" << provider->get_height ()
-		<< ":" << provider 
-		<< " Canvas:" << canvas->get_width () << "x" 
-		<< canvas->get_height () << ":" << canvas << std::endl;
-    }
+  pout(PINGUS_DEBUG_BLITTER) << "Blitting: SurfaceProvider:" << provider->get_width () 
+                             << "x" << provider->get_height () << ":" << provider 
+                	     << " Canvas:" << canvas->get_width () << "x" 
+                             << canvas->get_height () << ":" << canvas << std::endl;
 
-  //std::cout << "Blitter::put_surface_32bit() --- not implemented" << std::endl;
-  //return;
   float red, green, blue, alpha;
   float tred, tgreen, tblue, talpha;
 

@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.1 2002/06/12 19:01:43 grumbel Exp $
+//  $Id: walker.cxx,v 1.2 2002/06/23 19:16:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "../globals.hxx"
 #include "../string_converter.hxx"
 #include "../pingu.hxx"
+#include "../debug.hxx"
 #include "walker.hxx"
 
 const int Walker::max_steps=4;
@@ -71,13 +72,11 @@ Walker::update(float delta)
 		{
 		  if (pingu->action && pingu->persist[i]->get_name() == pingu->action->get_name()) 
 		    {
-		      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
-			std::cout << "Pingu: Not using action, we already did." << std::endl;
+		      pout(PINGUS_DEBUG_ACTIONS) << "Pingu: Not using action, we already did." << std::endl;
 		    } 
 		  else 
 		    {
-		      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
-			std::cout << "Pingu: We are in front of a wall, setting persistant action" << std::endl;
+		      pout(PINGUS_DEBUG_ACTIONS) << "Pingu: We are in front of a wall, setting persistant action" << std::endl;
 		      // pingu->set_paction(pingu->persist[i]->get_name());
 		      // FIXME: above fails because of Capitalised name
 		      // returned from get_name(). May be we should 
@@ -99,7 +98,7 @@ Walker::update(float delta)
       
       for(y_inc=2; y_inc <= max_steps + 1; y_inc++) 
        {
-         if (rel_getpixel(0, -y_inc) & ColMap::WATER) 
+         if (rel_getpixel(0, -y_inc) == ColMap::WATER) 
           {
             pingu->set_paction ("drown");
             return;
@@ -121,10 +120,9 @@ Walker::update(float delta)
   // This is moved here to fix the bug where pingu stuck turning both
   // sides indefinetely when a head collision occured. the fix needs the
   // above downhill walk being done before head collision check.
-  if (rel_getpixel(0, 26) != ColMap::NOTHING && !(rel_getpixel(0, 26) & ColMap::BRIDGE))
+  if (rel_getpixel(0, 26) != ColMap::NOTHING && !(rel_getpixel(0, 26) == ColMap::BRIDGE))
     {
-      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
-	std::cout << "Pingu: Head collision" << std::endl;
+      pout(PINGUS_DEBUG_ACTIONS) << "Pingu: Head collision" << std::endl;
       pingu->direction.change();
       return;
     }

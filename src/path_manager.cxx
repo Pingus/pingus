@@ -1,4 +1,4 @@
-//  $Id: path_manager.cxx,v 1.1 2002/06/12 19:06:12 grumbel Exp $
+//  $Id: path_manager.cxx,v 1.2 2002/06/23 19:16:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "globals.hxx"
 #include "system.hxx"
 #include "path_manager.hxx"
+#include "debug.hxx"
 
 PathManager path_manager;
 
@@ -43,8 +44,7 @@ std::string
 PathManager::complete (std::string relative_path)
 {
   std::string comp_path = base_path + "/" + relative_path;
-  if (pingus_debug_flags & PINGUS_DEBUG_LOADING)
-    std::cout << "PathManager: " << relative_path << " -> " << comp_path << std::endl;
+  pout(PINGUS_DEBUG_LOADING) << "PathManager: " << relative_path << " -> " << comp_path << std::endl;
   
   return comp_path;
 }
@@ -65,15 +65,13 @@ PathManager::find_path (std::list<std::string> file_list)
 	  path_found = true;
 	  base_path = *i;
 
-	  if (pingus_debug_flags & PINGUS_DEBUG_LOADING)
-	    std::cout << "PathManager: Using base_path: " << base_path << std::endl;
+	  pout(PINGUS_DEBUG_LOADING) << "PathManager: Using base_path: " << base_path << std::endl;
 
 	  return true;
 	}
     }
 
-  if (pingus_debug_flags & PINGUS_DEBUG_LOADING)
-    std::cout << "PathManager: No base path found" << std::endl;
+  pout(PINGUS_DEBUG_LOADING) << "PathManager: No base path found" << std::endl;
 
   return false;
 }
@@ -89,15 +87,13 @@ PathManager::find_path (std::string file)
 	  path_found = true;
 	  base_path = *i;
 
-	  if (pingus_debug_flags & PINGUS_DEBUG_LOADING)
-	    std::cout << "PathManager: Using base_path: " << base_path << std::endl;
+	  pout(PINGUS_DEBUG_LOADING) << "PathManager: Using base_path: " << base_path << std::endl;
 
 	  return true;
 	}
     }
 
-  if (pingus_debug_flags & PINGUS_DEBUG_LOADING)
-    std::cout << "PathManager: No base path found" << std::endl;
+  pout(PINGUS_DEBUG_LOADING) << "PathManager: No base path found" << std::endl;
 
   return false;
 }

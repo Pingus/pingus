@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.3 2002/06/19 15:19:26 torangan Exp $
+//  $Id: basher.cxx,v 1.4 2002/06/23 19:16:41 torangan Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -22,6 +22,7 @@
 #include "../pingus_resource.hxx"
 #include "../globals.hxx"
 #include "../pingu.hxx"
+#include "../debug.hxx"
 #include "basher.hxx"
 
 using namespace std;
@@ -116,8 +117,7 @@ Basher::have_something_to_dig()
         {
           if (rel_getpixel(i,j) & ColMap::WALL)
 	    {
-	      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
-	        std::cout << "Basher: Found something to dig..." << std::endl;
+	      pout(PINGUS_DEBUG_ACTIONS) << "Basher: Found something to dig..." << std::endl;
 	      return true;
 	    }
 	}

@@ -1,4 +1,4 @@
-//  $Id: sound_dummy.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: sound_dummy.cxx,v 1.3 2002/06/23 19:16:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,24 +19,20 @@
 
 #include "globals.hxx"
 #include "sound_dummy.hxx"
-#include <iostream>
+#include "debug.hxx"
 
 
 void 
-PingusSoundDummy::real_play_sound(const std::string & filename, float volume, float panning)
+PingusSoundDummy::real_play_sound(const std::string & filename, float /*volume*/, float /*panning*/)
 {
-  if (filename.size()); if(volume); if(panning);  // prevent warning - optimizer will remove those
-  if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
-    std::cout << "PingusSoundDummy::real_play_sound: " << filename << std::endl;
+  pout(PINGUS_DEBUG_SOUND) << "PingusSoundDummy::real_play_sound: " << filename << std::endl;
 }
 
 
 void 
-PingusSoundDummy::real_play_music(const std::string & filename, float volume)
+PingusSoundDummy::real_play_music(const std::string & filename, float /*volume*/)
 {
-  if (filename.size()); if(volume); // prevent warning - optimizer will remove those
-  if (pingus_debug_flags & PINGUS_DEBUG_SOUND)
-    std::cout << "PingusSoundDummy::real_play_music: " << filename << std::endl;
+  pout(PINGUS_DEBUG_SOUND) << "PingusSoundDummy::real_play_music: " << filename << std::endl;
 }
 
 

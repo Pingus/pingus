@@ -1,4 +1,4 @@
-//  $Id: thumb_cache.cxx,v 1.6 2002/06/23 12:47:50 grumbel Exp $
+//  $Id: thumb_cache.cxx,v 1.7 2002/06/23 19:16:42 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "../globals.hxx"
 #include "../blitter.hxx"
 #include "../system.hxx"
+#include "../debug.hxx"
 #include "../pingus_resource.hxx"
 #include "../math.hxx"
 #include "thumb_cache.hxx"
@@ -51,7 +52,7 @@ ThumbCache::uncached_load (const std::string & res_ident, const std::string & da
 {
   CL_Surface sur = PingusResource::load_surface (res_ident, datafile);
 
-  std::cout << "ThumbCache: Loading: " << res_ident << " (" << datafile << ")"  << std::endl;
+  pout << "ThumbCache: Loading: " << res_ident << " (" << datafile << ")"  << std::endl;
   
   // Add object to cache
   return ThumbCache::cache (sur, res_ident, datafile);
@@ -104,8 +105,8 @@ ThumbCache::load (const std::string & res_ident, const std::string & datafile)
 	  
 	  if (read_size != buffer_size)
 	    {
-	      if (pingus_debug_flags & PINGUS_DEBUG_EDITOR)
-		std::cerr << "ThumbCache: " << filename << ": read error: wanted " << buffer_size << " got " << read_size << std::endl;
+	      perr(PINGUS_DEBUG_EDITOR) << "ThumbCache: " << filename << ": read error: wanted " 
+	                                << buffer_size << " got " << read_size << std::endl;
 	      delete canvas;
 	      return uncached_load (res_ident, datafile);
 	    }
@@ -129,6 +130,7 @@ ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const s
       && sur.get_provider ()->get_width () < 50)
     {
       // If the image is smaller than the thumbnail, there is no need to cache it
+      pout << "ThumbCache: image too small for cache: " << res_ident << std::endl;
       std::cout << "ThumbCache: image too small for cache: " << res_ident << std::endl;
       return sur;
     }
@@ -143,9 +145,8 @@ ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const s
 
   unsigned int timestamp = PingusResource::get_mtime (res_ident, datafile);
 
-  std::cout <<"ThumbCache: Writing cache file: " << filename 
-	    << " timestamp: " << timestamp
-	    << std::endl;
+  pout << "ThumbCache: Writing cache file: " << filename 
+       << " timestamp: " << timestamp << std::endl;
   
   try 
     {
@@ -179,7 +180,7 @@ ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const s
     }
   catch (CL_Error& err) 
     {
-      std::cout << "ThumbCache: Couldn't open file for writing: " << filename << std::endl;
+      perr << "ThumbCache: Couldn't open file for writing: " << filename << std::endl;
       
       // If writing the surface fails, we return the surface without
       // writing it to the cache
