@@ -1,4 +1,4 @@
-//  $Id: story.cxx,v 1.18 2003/04/07 11:58:19 grumbel Exp $
+//  $Id: story.cxx,v 1.19 2003/04/07 12:04:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -82,7 +82,7 @@ Story::init_intro()
      (ResDescriptor("Story/story0", "story"), 
       _("For a long time now the Pingus have lived happily in peace on the\n"
         "south pole along with all the other animals, everything was in\n"
-        "balance and it seemed like nothing could disrupt there peace.  The\n"
+        "balance and it seemed like nothing could disrupt their peace.  The\n"
         "Pingus where happy and it seemed like this could never end.\n")));
 
   intro.pages.push_back
