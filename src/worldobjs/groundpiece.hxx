@@ -1,4 +1,4 @@
-//  $Id: groundpiece.hxx,v 1.8 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: groundpiece.hxx,v 1.9 2003/10/20 13:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_GROUNDPIECE_HXX
 #define HEADER_PINGUS_WORLDOBJS_GROUNDPIECE_HXX
 
-#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/sprite.h>
 #include "../worldobj.hxx"
 
 namespace Pingus {
@@ -37,7 +37,7 @@ class Groundpiece : public WorldObj
 {
 private:
   WorldObjsData::GroundpieceData* const data;
-  CL_Surface surface;
+  CL_Sprite surface;
 
 public:
   Groundpiece (const WorldObjsData::GroundpieceData& data_);

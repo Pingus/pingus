@@ -1,4 +1,4 @@
-//  $Id: laser_exit_data.cxx,v 1.12 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: laser_exit_data.cxx,v 1.13 2003/10/20 13:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,8 @@ LaserExitData::LaserExitData ()
 {
 }
 
-LaserExitData::LaserExitData (xmlDocPtr doc, xmlNodePtr cur) : surface(PingusResource::load_surface("Traps/laser_exit", "traps"))
+LaserExitData::LaserExitData (xmlDocPtr doc, xmlNodePtr cur) 
+  : surface(PingusResource::load_sprite("Traps/laser_exit", "traps"))
 {
   XMLFileReader reader(doc, cur);
   reader.read_vector("position", pos);

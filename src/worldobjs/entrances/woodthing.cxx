@@ -1,4 +1,4 @@
-//  $Id: woodthing.cxx,v 1.8 2003/10/19 12:25:48 grumbel Exp $
+//  $Id: woodthing.cxx,v 1.9 2003/10/20 13:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,13 +32,13 @@ namespace Entrances {
 WoodThing::WoodThing (const WorldObjsData::EntranceData& data_)
   : Entrance(data_)
 {
-  surface  = PingusResource::load_surface("Entrances/woodthing_mov" , "entrances");
-  surface2 = PingusResource::load_surface("Entrances/woodthing_nmov", "entrances");
+  surface  = PingusResource::load_sprite("Entrances/woodthing_mov" , "entrances");
+  surface2 = PingusResource::load_sprite("Entrances/woodthing_nmov", "entrances");
 
-  counter.set_size(surface.get_num_frames());
+  counter.set_size(surface.get_frame_count());
   counter.set_type(GameCounter::once);
   counter.set_speed(2);
-  counter = surface.get_num_frames() - 1;
+  counter = surface.get_frame_count() - 1;
 }
 
 void
@@ -61,9 +61,9 @@ void
 WoodThing::draw (GraphicContext& gc)
 {
   gc.draw(surface,
-	  static_cast<int>(data->pos.x - surface.get_width () /  2),
-	  static_cast<int>(data->pos.y - surface.get_height() + 32),
-	  counter);
+	  Vector(static_cast<int>(data->pos.x - surface.get_width () /  2),
+                 static_cast<int>(data->pos.y - surface.get_height() + 32)),
+	  (int)counter);
 }
 
 } // namespace Entrances

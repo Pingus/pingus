@@ -1,4 +1,4 @@
-//  $Id: starfield_background_stars.cxx,v 1.9 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: starfield_background_stars.cxx,v 1.10 2003/10/20 13:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,13 +30,13 @@ StarfieldBackgroundStars::StarfieldBackgroundStars (Type type)
   switch (type)
     {
     case SMALL_STAR:
-      sur = PingusResource::load_surface("Stars/small_star" , "game");
+      sur = PingusResource::load_sprite("Stars/small_star" , "game");
       break;
     case MIDDLE_STAR:
-      sur = PingusResource::load_surface("Stars/middle_star", "game");
+      sur = PingusResource::load_sprite("Stars/middle_star", "game");
       break;
     case LARGE_STAR:
-      sur = PingusResource::load_surface("Stars/large_star" , "game");
+      sur = PingusResource::load_sprite("Stars/large_star" , "game");
       break;
     }
 

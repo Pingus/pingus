@@ -1,4 +1,4 @@
-//  $Id: bumper.cxx,v 1.15 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: bumper.cxx,v 1.16 2003/10/20 13:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Display/surfaceprovider.h>
+#include <ClanLib/Display/pixel_buffer.h>
 #include "../col_map.hxx"
 #include "../gui/graphic_context.hxx"
 #include "../pingu.hxx"
@@ -60,7 +60,7 @@ Bumper::update ()
   if (upwards)
     {
       ++count;
-      if (count >= static_cast<int>(data->surface.get_num_frames()) )
+      if (count >= static_cast<int>(data->surface.get_frame_count()) )
 	{
 	  count = 0;
 	  upwards = false;
@@ -73,7 +73,7 @@ Bumper::on_startup ()
 {
   std::cout << "Drawing colmap entry" << std::endl;
 
-  CL_SurfaceProvider* prov = CL_SurfaceProvider::load("Traps/bumper_cmap", PingusResource::get("traps"));
+  CL_PixelBuffer prov = PingusResource::load_surface_provider("Traps/bumper_cmap", "traps");
   world->get_colmap()->put(prov, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y), Groundtype::GP_SOLID);
 }
 

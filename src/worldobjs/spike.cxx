@@ -1,4 +1,4 @@
-//  $Id: spike.cxx,v 1.11 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: spike.cxx,v 1.12 2003/10/20 13:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ Spike::Spike (const WorldObjsData::SpikeData& data_)
   : data(new WorldObjsData::SpikeData(data_)),
     killing(false)
 {
-  data->counter.set_size(data->surface.get_num_frames());
+  data->counter.set_size(data->surface.get_frame_count());
   data->counter.set_type(GameCounter::once);
   data->counter.set_speed(1);
   data->counter = 0;
@@ -69,7 +69,7 @@ Spike::update()
     catch_pingu(*pingu);
   }
 
-  if (data->counter == static_cast<int>(data->surface.get_num_frames()) - 1) {
+  if (data->counter == static_cast<int>(data->surface.get_frame_count()) - 1) {
     killing = false;
     data->counter = 0;
   }

@@ -1,4 +1,4 @@
-//  $Id: fake_exit.cxx,v 1.15 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: fake_exit.cxx,v 1.16 2003/10/20 13:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,10 +33,10 @@ FakeExit::FakeExit (const WorldObjsData::FakeExitData& data_)
     smashing(false),
     smallmap_symbol("misc/smallmap_exit", "core")
 {
-  data->counter.set_size(data->surface.get_num_frames());
+  data->counter.set_size(data->surface.get_frame_count());
   data->counter.set_type(GameCounter::once);
   data->counter.set_speed(2.5);
-  data->counter = data->surface.get_num_frames() - 1;
+  data->counter = data->surface.get_frame_count() - 1;
 
   data->pos -= Vector(data->surface.get_width ()/2, data->surface.get_height ());
 

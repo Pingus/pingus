@@ -1,4 +1,4 @@
-//  $Id: cloud.cxx,v 1.3 2003/10/19 12:25:48 grumbel Exp $
+//  $Id: cloud.cxx,v 1.4 2003/10/20 13:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ Cloud::Cloud (const WorldObjsData::EntranceData& data_)
 {
   data->pos.z = 100;
 
-  surface = PingusResource::load_surface("Entrances/cloud","entrances");
+  surface = PingusResource::load_sprite("Entrances/cloud","entrances");
 }
 
 void

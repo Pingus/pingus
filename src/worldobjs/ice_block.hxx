@@ -1,4 +1,4 @@
-//  $Id: ice_block.hxx,v 1.17 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: ice_block.hxx,v 1.18 2003/10/20 13:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_ICE_BLOCK_HXX
 #define HEADER_PINGUS_WORLDOBJS_ICE_BLOCK_HXX
 
-#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/sprite.h>
 #include "../worldobj.hxx"
 
 namespace Pingus {
@@ -39,7 +39,7 @@ private:
   float thickness;
   bool  is_finished;
   int   last_contact;
-  CL_Surface block_sur;
+  CL_Sprite block_sur;
 
 public:
   IceBlock (const WorldObjsData::IceBlockData& data_);

@@ -1,4 +1,4 @@
-//  $Id: guillotine.cxx,v 1.10 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: guillotine.cxx,v 1.11 2003/10/20 13:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,12 +31,12 @@ Guillotine::Guillotine (const WorldObjsData::GuillotineData& data_)
   : data(new WorldObjsData::GuillotineData(data_)),
     killing(false)
 {
-  data->counter.set_size(data->surface.get_num_frames()/2);
+  data->counter.set_size(data->surface.get_frame_count()/2);
   data->counter.set_type(GameCounter::once);
   data->counter.set_speed(0.7);
   data->counter = 0;
 
-  data->idle_counter.set_size(data->idle_surf.get_num_frames());
+  data->idle_counter.set_size(data->idle_surf.get_frame_count());
   data->idle_counter.set_type(GameCounter::loop);
   data->idle_counter.set_speed(0.3);
   data->idle_counter = 0;

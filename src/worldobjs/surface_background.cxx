@@ -1,4 +1,4 @@
-//  $Id: surface_background.cxx,v 1.12 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: surface_background.cxx,v 1.13 2003/10/20 13:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Display/SurfaceProviders/canvas.h>
+#include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/display.h>
 #include "../gui/graphic_context.hxx"
 #include "../world.hxx"
@@ -45,7 +45,7 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
 
   CL_Surface source_surface = PingusResource::load_surface(data->desc);
 
-  CL_Canvas* canvas;
+  CL_PixelBuffer* canvas;
 
   // Scaling Code
   if (data->stretch_x && data->stretch_y)
@@ -103,7 +103,7 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
   bg_surface = CL_Surface(canvas, true);
 
   //bg_surface = CAImageManipulation::changeHSV(bg_surface, 150, 100, 0);
-  counter.set_size(bg_surface.get_num_frames());
+  counter.set_size(bg_surface.get_frame_count());
   counter.set_speed(1.0);
 
   timer.stop();

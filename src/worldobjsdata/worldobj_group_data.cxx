@@ -1,4 +1,4 @@
-//  $Id: worldobj_group_data.cxx,v 1.13 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: worldobj_group_data.cxx,v 1.14 2003/10/20 13:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -93,7 +93,7 @@ WorldObjGroupData::insert_WorldObjs (World* world)
 void
 WorldObjGroupData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  EditorObjGroup* group = new EditorObjGroup();
+  EditorNS::EditorObjGroup* group = new EditorNS::EditorObjGroup();
 
   for (ObjsIter i = objs.begin (); i != objs.end (); ++i)
     {

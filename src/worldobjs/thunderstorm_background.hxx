@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background.hxx,v 1.9 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: thunderstorm_background.hxx,v 1.10 2003/10/20 13:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_THUNDERSTORM_BACKGROUND_HXX
 #define HEADER_PINGUS_WORLDOBJS_THUNDERSTORM_BACKGROUND_HXX
 
-#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/sprite.h>
 #include "../worldobj.hxx"
 
 namespace Pingus {
@@ -35,8 +35,7 @@ class ThunderstormBackground : public WorldObj
 {
 private:
   WorldObjsData::ThunderstormBackgroundData* const data;
-  CL_Surface clouds_sur;
-  //std::vector<CL_Surface> flash_sur;
+  CL_Sprite clouds_sur;
   int x_pos;
 
 public:

@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.hxx,v 1.9 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: groundpiece_data.hxx,v 1.10 2003/10/20 13:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_GROUNDPIECE_DATA_HXX
 
 #include "../vector.hxx"
-#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/sprite.h>
 #include "../libxmlfwd.hxx"
 #include "../res_descriptor.hxx"
 #include "../worldobj_data.hxx"
@@ -37,7 +37,7 @@ namespace WorldObjsData {
 class GroundpieceData : public WorldObjData
 {
 public:
-  CL_Surface surface;
+  CL_Sprite surface;
   ResDescriptor desc;
   Vector pos;
 

@@ -1,4 +1,4 @@
-//  $Id: switch_door.hxx,v 1.21 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: switch_door.hxx,v 1.22 2003/10/20 13:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_SWITCH_DOOR_HXX
 #define HEADER_PINGUS_WORLDOBJS_SWITCH_DOOR_HXX
 
-#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/sprite.h>
 #include "../worldobj.hxx"
 
 namespace Pingus {
@@ -38,10 +38,10 @@ class SwitchDoor : public WorldObj
 private:
   WorldObjsData::SwitchDoorData* const data;
 
-  CL_Surface door_box;
-  CL_Surface door_tile;
-  CL_Surface door_tile_cmap;
-  CL_Surface switch_sur;
+  CL_Sprite door_box;
+  CL_Sprite door_tile;
+  CL_PixelBuffer door_tile_cmap;
+  CL_Sprite switch_sur;
 
   /** True if the door is opening */
   bool is_opening;

@@ -1,4 +1,4 @@
-//  $Id: groundpiece.cxx,v 1.4 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: groundpiece.cxx,v 1.5 2003/10/20 13:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@ namespace WorldObjs {
 
 Groundpiece::Groundpiece (const WorldObjsData::GroundpieceData& data_)
   : data(new WorldObjsData::GroundpieceData(data_)),
-    surface (PingusResource::load_surface(data->desc))
+    surface (PingusResource::load_sprite(data->desc))
 {
   // FIXME: we don't need to load surfaces here, providers would be
   // FIXME: enough and should be faster
@@ -43,6 +43,8 @@ Groundpiece::~Groundpiece ()
 void
 Groundpiece::on_startup ()
 {
+  CL_PixelBuffer surface = PingusResource::load_surface_provider(data->desc);
+
   // FIXME: overdrawing of bridges and similar things aren't handled
   // FIXME: here
   if (data->gptype == Groundtype::GP_REMOVE)

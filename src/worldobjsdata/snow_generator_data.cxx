@@ -1,4 +1,4 @@
-//  $Id: snow_generator_data.cxx,v 1.9 2003/10/18 23:17:28 grumbel Exp $
+//  $Id: snow_generator_data.cxx,v 1.10 2003/10/20 13:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ SnowGeneratorData::insert_WorldObjs (World* world)
 void
 SnowGeneratorData::insert_EditorObjs (EditorNS::EditorObjMgr* obj_mgr)
 {
-  obj_mgr->add(new WeatherObj("snow-generator"));
+  obj_mgr->add(new EditorNS::WeatherObj("snow-generator"));
 }
 
 } // namespace WorldObjsData

@@ -1,4 +1,4 @@
-//  $Id: ice_block.cxx,v 1.23 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: ice_block.cxx,v 1.24 2003/10/20 13:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ IceBlock::IceBlock (const WorldObjsData::IceBlockData& data_)
     thickness(1.0),
     is_finished(false),
     last_contact(0),
-    block_sur(PingusResource::load_surface ("iceblock", "worldobjs"))
+    block_sur(PingusResource::load_sprite ("iceblock", "worldobjs"))
 {
 }
 
@@ -48,7 +48,7 @@ IceBlock::~IceBlock ()
 void
 IceBlock::on_startup ()
 {
-  CL_Surface surf(PingusResource::load_surface("iceblock_cmap", "worldobjs"));
+  CL_PixelBuffer surf(PingusResource::load_surface_provider("iceblock_cmap", "worldobjs"));
 
   world->get_colmap()->put(surf,
                            static_cast<int>(data->pos.x),
@@ -64,7 +64,7 @@ IceBlock::draw (GraphicContext& gc)
 
   gc.draw(block_sur,
           data->pos,
-	  static_cast<int>((1.0 - thickness) * (block_sur.get_num_frames() - 1)));
+	  static_cast<int>((1.0 - thickness) * (block_sur.get_frame_count() - 1)));
 }
 
 void
@@ -93,7 +93,8 @@ IceBlock::update()
 	{
 	  is_finished = true;
 	  thickness = 0;
-	  CL_Surface surf(PingusResource::load_surface("iceblock_cmap", "worldobjs"));
+
+	  CL_PixelBuffer surf(PingusResource::load_surface_provider("iceblock_cmap", "worldobjs"));
 	  world->get_colmap ()->remove(surf, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y));
 	  world->get_gfx_map()->remove(surf, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y));
 	  return;

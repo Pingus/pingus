@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.hxx,v 1.19 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: conveyor_belt.hxx,v 1.20 2003/10/20 13:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_CONVEYOR_BELT_HXX
 #define HEADER_PINGUS_WORLDOBJS_CONVEYOR_BELT_HXX
 
-#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/sprite.h>
 #include "../worldobj.hxx"
 #include "../worldobj_data.hxx"
 #include "../editor/rect_editorobj.hxx"
@@ -38,9 +38,9 @@ class ConveyorBelt : public  WorldObj
 private:
   WorldObjsData::ConveyorBeltData* const data;
 
-  CL_Surface left_sur;
-  CL_Surface right_sur;
-  CL_Surface middle_sur;
+  CL_Sprite left_sur;
+  CL_Sprite right_sur;
+  CL_Sprite middle_sur;
 
 public:
   ConveyorBelt (const WorldObjsData::ConveyorBeltData& data_);

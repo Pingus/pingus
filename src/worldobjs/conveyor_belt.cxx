@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.cxx,v 1.24 2003/10/19 12:25:47 grumbel Exp $
+//  $Id: conveyor_belt.cxx,v 1.25 2003/10/20 13:11:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,9 +31,9 @@ namespace WorldObjs {
 
 ConveyorBelt::ConveyorBelt (const WorldObjsData::ConveyorBeltData& data_)
   : data(new WorldObjsData::ConveyorBeltData(data_)),
-    left_sur  (PingusResource::load_surface ("conveyorbelt_left",   "worldobjs")),
-    right_sur (PingusResource::load_surface ("conveyorbelt_right",  "worldobjs")),
-    middle_sur(PingusResource::load_surface ("conveyorbelt_middle", "worldobjs"))
+    left_sur  (PingusResource::load_sprite ("conveyorbelt_left",   "worldobjs")),
+    right_sur (PingusResource::load_sprite ("conveyorbelt_right",  "worldobjs")),
+    middle_sur(PingusResource::load_sprite ("conveyorbelt_middle", "worldobjs"))
 {
 }
 
@@ -43,20 +43,21 @@ ConveyorBelt::draw (GraphicContext& gc)
   gc.draw(left_sur, data->pos, static_cast<int>(data->counter));
   for (int i=0; i < data->width; ++i)
     gc.draw(middle_sur,
-	    static_cast<int>(data->pos.x + left_sur.get_width() + i * middle_sur.get_width()),
-	    static_cast<int>(data->pos.y),
+	    Vector(static_cast<int>(data->pos.x + left_sur.get_width() + i * middle_sur.get_width()),
+                  static_cast<int>(data->pos.y)),
 	    static_cast<int>(data->counter));
 
   gc.draw(right_sur,
-	  static_cast<int>(data->pos.x + left_sur.get_width() + data->width * middle_sur.get_width()),
-	  static_cast<int>(data->pos.y),
+	  Vector(static_cast<int>(data->pos.x + left_sur.get_width() + data->width * middle_sur.get_width()),
+                 static_cast<int>(data->pos.y)),
 	  static_cast<int>(data->counter));
 }
 
 void
 ConveyorBelt::on_startup ()
 {
-  CL_Surface sur(PingusResource::load_surface("conveyorbelt_cmap", "worldobjs"));
+  CL_PixelBuffer sur(PingusResource::load_surface_provider("conveyorbelt_cmap", "worldobjs"));
+
   for (int i=0; i < (data->width + 2); ++i)
     world->get_colmap()->put(sur,
                              static_cast<int>(data->pos.x) + (15 * i),
@@ -72,7 +73,7 @@ ConveyorBelt::update ()
   if (data->counter >= 14.0f)
     data->counter = 0.0f;
   else if (data->counter < 0.0f)
-    data->counter = middle_sur.get_num_frames() - 1;
+    data->counter = middle_sur.get_frame_count() - 1;
 
   PinguHolder* holder = world->get_pingus();
   for (PinguIter pingu = holder->begin(); pingu != holder->end(); ++pingu)
