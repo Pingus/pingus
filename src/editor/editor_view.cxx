@@ -1,4 +1,4 @@
-//  $Id: editor_view.cxx,v 1.9 2003/06/17 14:09:20 grumbel Exp $
+//  $Id: editor_view.cxx,v 1.10 2003/08/22 10:19:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,30 @@ void
 EditorView::set_zoom (float new_zoom)
 {
   offset.z = new_zoom;
-  //std::cout << "Zoom: " << offset.z << std::endl;
+}
+
+void
+EditorView::zoom_out(int screen_x, int screen_y)
+{
+  float old_zoom = offset.z;
+  set_zoom(old_zoom / 1.2f);
+  if (0)
+    { // FIXME: Code below doesn't work because of 'center'
+      offset.x += screen_x/offset.z - screen_x/old_zoom;
+      offset.y += screen_y/offset.z - screen_y/old_zoom;
+    }
+}
+
+void
+EditorView::zoom_in (int screen_x, int screen_y)
+{
+  float old_zoom = offset.z;
+  set_zoom(old_zoom * 1.2f);
+  if (0)
+    {  // FIXME: Code below doesn't work because of 'center'
+      offset.x += screen_x/offset.z - screen_x/old_zoom;
+      offset.y += screen_y/offset.z - screen_y/old_zoom;
+    }
 }
 
 void

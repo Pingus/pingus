@@ -1,4 +1,4 @@
-//  $Id: editor_view.hxx,v 1.8 2003/04/19 10:23:18 torangan Exp $
+//  $Id: editor_view.hxx,v 1.9 2003/08/22 10:19:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,6 +59,12 @@ public:
 
   float     get_zoom ();
   void      set_zoom (float new_zoom);
+
+  /** Zoom out of the given screen coordinates */
+  void zoom_out(int screen_x, int screen_y);
+
+  /** Zoom into of the given screen coordinates */
+  void zoom_in (int screen_x, int screen_y);
 
   /** Set the current zoom and offset, so that the given rectangle is
       completly visible on the screen and maximally zoomed. */

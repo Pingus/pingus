@@ -1,4 +1,4 @@
-//  $Id: editor_event.hxx,v 1.18 2003/04/19 10:23:18 torangan Exp $
+//  $Id: editor_event.hxx,v 1.19 2003/08/22 10:19:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -102,8 +102,12 @@ public:
       current object */
   void editor_decrease_count ();
 
-  void editor_zoom_in ();
-  void editor_zoom_out ();
+  /** Zoom into the given screen coordinates */
+  void editor_zoom_in (int x, int y);
+
+  /** Zoom out off the given screen coordinates */
+  void editor_zoom_out (int x, int y);
+
   void zoom_mode ();
 
 private:

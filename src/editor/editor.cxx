@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.53 2003/08/19 19:56:55 torangan Exp $
+//  $Id: editor.cxx,v 1.54 2003/08/22 10:19:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -113,7 +113,7 @@ Editor::Editor () : event_handler_ref_counter(0),
   scroll_map->editor_event = event;
 
   //std::cout << "Editor: registering event handler" << event << "... " << std::flush;
-  on_button_press_slot = CL_Input::sig_button_press ().connect(event, &EditorEvent::on_button_press);
+  on_button_press_slot   = CL_Input::sig_button_press ().connect(event, &EditorEvent::on_button_press);
   on_button_release_slot = CL_Input::sig_button_release ().connect(event, &EditorEvent::on_button_release);
 }
 

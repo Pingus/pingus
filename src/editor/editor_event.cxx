@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.61 2003/08/19 19:56:55 torangan Exp $
+//  $Id: editor_event.cxx,v 1.62 2003/08/22 10:19:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -161,26 +161,26 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  // Set a checkpoint.
 	case CL_KEY_F7:
 	  /*
-	  editor->save_tmp_level();
-	  editor->checkpoint = std::string(tmpnam(0)) + ".pingus";
-	  if (verbose) std::cout << "Setting checkpoint: " << editor->checkpoint << std::endl;
-	  object_manager->save_level(editor->checkpoint);*/
+            editor->save_tmp_level();
+            editor->checkpoint = std::string(tmpnam(0)) + ".pingus";
+            if (verbose) std::cout << "Setting checkpoint: " << editor->checkpoint << std::endl;
+            object_manager->save_level(editor->checkpoint);*/
 	  break;
 
 	  // Restore a previously created checkpoint.
 	case CL_KEY_F8:
 	  /*
-	  editor->save_tmp_level();
-	  if (!editor->checkpoint.empty())
+            editor->save_tmp_level();
+            if (!editor->checkpoint.empty())
 	    {
-	      if (verbose) std::cout << "Restoring checkpoint: " << editor->checkpoint << std::endl;
-	      selection->clear ();
-	      object_manager->load_level(editor->checkpoint);
+            if (verbose) std::cout << "Restoring checkpoint: " << editor->checkpoint << std::endl;
+            selection->clear ();
+            object_manager->load_level(editor->checkpoint);
 	    }
-	  else
+            else
 	    {
-	      if (verbose) std::cout << "No checkpoint set, no restoring done. " << std::endl;
-	      }*/
+            if (verbose) std::cout << "No checkpoint set, no restoring done. " << std::endl;
+            }*/
 	  break;
 
 	  // Insert a new object, present the ObjectsSelector to select
@@ -206,10 +206,10 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  break;
 
 	  /*	case CL_KEY_F11:
-	  CL_Display::set_videomode(screen_width, screen_height, 16,
-				    fullscreen_enabled,
-				    true); // allow resize
-	  break;
+                CL_Display::set_videomode(screen_width, screen_height, 16,
+                fullscreen_enabled,
+                true); // allow resize
+                break;
 	  */
 	case CL_KEY_F12:
 	  // FIXME: disable cause it gives a segfault
@@ -307,11 +307,11 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  break;
 
 	case CL_KEY_Z: // FIXME: stupid key binding
-	  editor_zoom_in ();
+	  editor_zoom_in(CL_Mouse::get_x(), CL_Mouse::get_y());
 	  break;
 
 	case CL_KEY_W: // FIXME: stupid key binding
-	  editor_zoom_out ();
+	  editor_zoom_out(CL_Mouse::get_x(), CL_Mouse::get_y());
 	  break;
 
 	case CL_KEY_ENTER:
@@ -329,9 +329,12 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
     }
   else if (device == CL_Input::pointers[0])
     {
-      /*std::cout << "Mouse: (" << CL_Mouse::get_x () << ", " << CL_Mouse::get_y () << ") "
-		<< "World: " << editor->view->screen_to_world (Vector(CL_Mouse::get_x (), CL_Mouse::get_y ()))
-		<< std::endl;*/
+      if (0)
+        {
+          std::cout << "Mouse: (" << CL_Mouse::get_x () << ", " << CL_Mouse::get_y () << ") "
+                    << "World: " << editor->view->screen_to_world (Vector(CL_Mouse::get_x (), CL_Mouse::get_y ()))
+                    << std::endl;
+        }
 
       switch (key.id)
 	{
@@ -343,9 +346,21 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  else
 	    editor_mark_or_move_object();
 	  break;
+
 	case CL_MOUSE_MIDDLEBUTTON:
 	  editor->rect_get_current_objs();
 	  break;
+
+        case CL_MOUSE_WHEELDOWN:
+	  editor_zoom_out(static_cast<int>(key.x),
+                          static_cast<int>(key.y));
+          break;
+
+        case CL_MOUSE_WHEELUP:
+	  editor_zoom_in(static_cast<int>(key.x),
+                         static_cast<int>(key.y)); 
+          break;
+
 	case CL_MOUSE_RIGHTBUTTON:
 	  editor->scroll();
 	  break;
@@ -739,15 +754,15 @@ EditorEvent::editor_decrease_count ()
 }
 
 void
-EditorEvent::editor_zoom_in ()
+EditorEvent::editor_zoom_in(int x, int y)
 {
-  editor->view->set_zoom(editor->view->get_zoom () * 1.4f);
+  editor->view->zoom_in(x, y);
 }
 
 void
-EditorEvent::editor_zoom_out ()
+EditorEvent::editor_zoom_out(int x, int y)
 {
-  editor->view->set_zoom(editor->view->get_zoom () / 1.4f);
+  editor->view->zoom_out(x, y);
 }
 
 void

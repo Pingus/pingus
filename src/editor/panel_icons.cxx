@@ -1,4 +1,4 @@
-//  $Id: panel_icons.cxx,v 1.11 2003/07/27 17:34:04 torangan Exp $
+//  $Id: panel_icons.cxx,v 1.12 2003/08/22 10:19:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <ClanLib/Display/Display/display.h>
 #include "../gettext.h"
 #include "../pingus_resource.hxx"
 #include "panel_icons.hxx"
@@ -168,7 +169,8 @@ PanelIconZoomIn::PanelIconZoomIn()
 void
 PanelIconZoomIn::on_click()
 {
-  editor->get_event ()->editor_zoom_in ();
+  editor->get_event ()->editor_zoom_in(CL_Display::get_width()/2, 
+                                       CL_Display::get_height()/2);
 }
 
 PanelIconZoomOut::PanelIconZoomOut()
@@ -180,7 +182,8 @@ PanelIconZoomOut::PanelIconZoomOut()
 void
 PanelIconZoomOut::on_click()
 {
-  editor->get_event ()->editor_zoom_out ();
+  editor->get_event ()->editor_zoom_out (CL_Display::get_width()/2, 
+                                         CL_Display::get_height()/2);
 }
 
 PanelIconSetupActions::PanelIconSetupActions ()
