@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.5 2000/02/16 23:34:11 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.6 2000/02/17 01:25:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -313,7 +313,7 @@ PingusSpotMap::get_colmap(void)
 	  buffer[i] = 0;
 	}
       
-      std::cout << " done" << std::endl;
+      if (verbose) std::cout << " done" << std::endl;
 
       // Create a empty ColMap
       colmap = new ColMap(buffer, width, height);

@@ -1,4 +1,4 @@
-//  $Id: Background.cc,v 1.3 2000/02/11 16:58:25 grumbel Exp $
+//  $Id: Background.cc,v 1.4 2000/02/17 01:25:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,18 +39,31 @@ Background::Background(background_data bg)
     }
   else
     {
-      sur = CL_Surface::load(bg.desc.res_name.c_str(), PingusResource::get(bg.desc.filename));
-      
-      canvas = convert_to_emptyprovider(sur->get_provider());
-      canvas->lock();
-      
-      if (bg.dim > 1.0) 
-	cerr << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
-      
-      canvas->fill_rect(0, 0, sur->get_width(), sur->get_height(),
-			bg.red, bg.green, bg.blue, bg.dim);
-      canvas->unlock();
-      bg_surface = CL_Surface::create(canvas, true);
+      try
+	{
+	  sur = CL_Surface::load(bg.desc.res_name.c_str(), PingusResource::get(bg.desc.filename));
+
+	  canvas = convert_to_emptyprovider(sur->get_provider());
+	  canvas->lock();
+	  
+	  if (bg.dim > 1.0) 
+	    cerr << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
+	  
+	  canvas->fill_rect(0, 0, sur->get_width(), sur->get_height(),
+			    bg.red, bg.green, bg.blue, bg.dim);
+	  canvas->unlock();
+	  bg_surface = CL_Surface::create(canvas, true);
+	}
+
+      catch (CL_Error err)
+	{
+	  std::cout << "-------------------------------------\n" 
+		    << "Bug triggered, workaround enabled\n"
+		    << "The game might crash real soon, sorry\n" 
+		    << "CL_Error: " << err.message  << "\n"
+		    << "-------------------------------------" << std::endl;
+	  bg_surface = 0;
+	}
     }
   scroll_x = bg.scroll_x;
   scroll_y = bg.scroll_y;
@@ -66,25 +79,28 @@ Background::~Background()
 void
 Background::let_move()
 {
-  scroll_ox += scroll_x;
-  scroll_oy += scroll_y;
+  if (bg_surface)
+    {
+      scroll_ox += scroll_x;
+      scroll_oy += scroll_y;
   
-  if (scroll_ox > bg_surface->get_width()) 
-    {
-      scroll_ox -= bg_surface->get_width();
-    } 
-  else if (-scroll_ox > bg_surface->get_width()) 
-    {
-      scroll_ox += bg_surface->get_width();
-    }
+      if (scroll_ox > bg_surface->get_width()) 
+	{
+	  scroll_ox -= bg_surface->get_width();
+	} 
+      else if (-scroll_ox > bg_surface->get_width()) 
+	{
+	  scroll_ox += bg_surface->get_width();
+	}
   
-  if (scroll_oy > bg_surface->get_height()) 
-    {
-      scroll_oy -= bg_surface->get_height();
-    } 
-  else if (-scroll_oy > bg_surface->get_height()) 
-    {
-      scroll_oy += bg_surface->get_height();
+      if (scroll_oy > bg_surface->get_height()) 
+	{
+	  scroll_oy -= bg_surface->get_height();
+	} 
+      else if (-scroll_oy > bg_surface->get_height()) 
+	{
+	  scroll_oy += bg_surface->get_height();
+	}
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: Server.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: Server.cc,v 1.4 2000/02/17 01:25:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -147,7 +147,6 @@ bool
 Server::is_finished()
 {
   if (finished) {
-    std::cout << "Finished" << std::endl;
     return true;
   } else {
     return world->is_finished();

@@ -1,4 +1,4 @@
-//  $Id: ResDescriptor.cc,v 1.4 2000/02/16 23:34:11 grumbel Exp $
+//  $Id: ResDescriptor.cc,v 1.5 2000/02/17 01:25:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,8 +35,7 @@ ResDescriptor::ResDescriptor(std::string str)
   //cout << "Resdes: " << str << std::endl;
 
   type = RESOURCE;
-
-
+  
   pos1 = str.find_first_of(':');
   pos2 = str.find_first_of(')');
   
@@ -44,10 +43,6 @@ ResDescriptor::ResDescriptor(std::string str)
     {
       filename = str.substr(pos1 + 1, (pos2 - pos1 - 1));
       res_name = str.substr(pos2 + 1);
-      /*
-      std::cout << "res: " <<  filename << std::endl;
-      std::cout << "data: " << res_name  << std::endl;
-      */
     }
   else
     {
@@ -60,20 +55,13 @@ ResDescriptor::ResDescriptor(std::string c_cast, std::string value)
 {
   std::string cast;
 
-  cout << "Cast: " << c_cast << " Value: " << value << endl;
-
   if (c_cast.find_first_of(":") == string::npos) {
     cast = c_cast;
     filename = "global.dat";
   } else {
     cast     = c_cast.substr(0, c_cast.find_first_of(":"));
     filename = c_cast.substr(c_cast.find_first_of(":") + 1);
-    //    throw PingusError("ResDescriptor: Using other resource files than\n"
-    //	      "global.dat isn't supported at the moment, sorry.");
   }
-
-  //  if (verbose > 1)
-  //cout << "C_Cast: " << value << " - " <<  cast << ":" << filename << std::endl;
   
   if (cast == "file") {
     type = FILE;

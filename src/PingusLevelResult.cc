@@ -1,4 +1,4 @@
-//  $Id: PingusLevelResult.cc,v 1.6 2000/02/16 03:06:24 grumbel Exp $
+//  $Id: PingusLevelResult.cc,v 1.7 2000/02/17 01:25:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -81,8 +81,6 @@ PingusLevelResult::draw(void)
 string
 PingusLevelResult::get_message(int saved)
 {
-  std::cout << "get_message(): Saved: " << saved << std::endl;
-  
   if (saved == 100) {
     // (100%--) survival: Aww, and we wanted to say: 'No Pingus were harmed in the completion of this level'
     return "As many Pingus escaped as entered the level. Thats going to be hard to beat.... unless this game gets pornographic.";
