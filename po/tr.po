@@ -463,9 +463,8 @@ msgid "unknown"
 msgstr "bilinmeyen"
 
 #: src/game_time.cxx:66
-#, fuzzy
 msgid "unlimited"
-msgstr "Sýnýrsýz Eylem"
+msgstr "sýnýrsýz"
 
 #: src/intro.cxx:62 src/intro.cxx:113
 msgid "..:: Press Start ::.."
@@ -1409,9 +1408,6 @@ msgstr "...yürüyor..."
 
 #~ msgid "Config: Couldn't convert std::string to integer: "
 #~ msgstr "Config: std::string'i integer'e dönüþtürelemedi"
-
-#~ msgid "unlimited"
-#~ msgstr "sýnýrsýz"
 
 #~ msgid "PingusBug: "
 #~ msgstr "PingusBöceði: "
