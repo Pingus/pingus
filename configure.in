@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.11 2000/04/20 17:23:00 grumbel Exp $
+#  $Id: configure.in,v 1.12 2000/04/21 13:50:52 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -86,8 +86,10 @@ dnl LIBS="$LIBS -lHermes"
 
 AC_CHECK_HEADER(ClanLib/core.h,, [echo "Please get ClanLib from http://www.clanlib.org"; exit])
 
-AC_CHECK_LIB(mikmod,   main,, HAVE_LIBMIKMOD=no)
-AC_CHECK_HEADER(mikmod.h, HAVE_LIBMIKMOD=yes, HAVE_LIBMIKMOD=no)
+dnl AC_CHECK_LIB(mikmod,   main,, HAVE_LIBMIKMOD=no)
+dnl AC_CHECK_HEADER(mikmod.h, HAVE_LIBMIKMOD=yes, HAVE_LIBMIKMOD=no)
+
+dnl Checking for SDL libraries, used for sound and music support
 AC_CHECK_LIB(SDL,   main,,)
 AC_CHECK_LIB(SDL_mixer,   main,,)
 
@@ -188,15 +190,6 @@ dnl Checking for the install prefix and then use it to define PINGUS_DATADIR
 PINGUS_EXPAND_DIR(pingus_datadir, "$datadir/games/$PACKAGE")
 AC_DEFINE_UNQUOTED( PINGUS_DATADIR, "$pingus_datadir")
 
-MIKMOD_CC_FILE="MikMod_dummy.cc"
-MIKMOD_O_FILE="MikMod_dummy.o"
-
-if test x$HAVE_LIBMIKMOD=xyes ;  then
-	AC_DEFINE_UNQUOTED( HAVE_LIBMIKMOD, 1)
-	MIKMOD_CC_FILE="MikMod.cc"
-	MIKMOD_O_FILE="MikMod.o"
-fi
-
 AC_SUBST(MIKMOD_CC_FILE)
 AC_SUBST(MIKMOD_O_FILE)
 
@@ -221,17 +214,6 @@ dnl         tools/ple/src/Makefile
            )
 
 # ----------------------------------------
-
-echo 
-if test x$HAVE_LIBMIKMOD=xyes ;  then
-	if test x$ENABLE_LIBMIKMOD=xtrue ; then
-		echo "The music support is enabled."
-	else
-		echo "The music support is explicit disabled."
-	fi
-else
-	echo "You don't have LibMikMod installed, the music support is therefore disabled."
-fi
 
 echo ""
 echo "Pingus is now configured, now you can start \`make'."
