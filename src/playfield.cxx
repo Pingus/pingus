@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.10 2002/08/02 13:17:42 grumbel Exp $
+//  $Id: playfield.cxx,v 1.11 2002/08/02 22:55:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -195,7 +195,7 @@ Playfield::update(float delta)
 }
 
 void 
-Playfield::on_button_press(int x, int y)
+Playfield::on_primary_button_press(int x, int y)
 {
   if (current_pingu)
     {
@@ -207,11 +207,31 @@ Playfield::on_button_press(int x, int y)
 }
 
 void
+Playfield::on_secondary_button_press (int x, int y)
+{
+  mouse_scrolling = true;
+  scroll_center_x = x;
+  scroll_center_y = y;
+}
+
+void
+Playfield::on_secondary_button_release (int x, int y)
+{
+  mouse_scrolling = false;
+}
+
+void
 Playfield::on_pointer_move (int x, int y)
 {
   // FIXME: useless stuff, but currently the controller doesn't have a state
   mouse_x = x;
   mouse_y = y;
+
+  if (mouse_scrolling)
+    {
+      view[current_view]->shift_x_offset((scroll_center_x - mouse_x) / 5);
+      view[current_view]->shift_y_offset((scroll_center_y - mouse_y) / 5);
+    }
 }
 
 void
@@ -236,37 +256,6 @@ void
 Playfield::set_client(Client* c)
 {
   client = c;
-}
-
-void
-Playfield::enable_scroll_mode()
-{
-  if (verbose) std::cout << "Started scrolling..." << std::flush;
-  mouse_scrolling = true;
-
-#if 0
-  scroll_center_x = controller->get_x();
-  scroll_center_y = controller->get_y();
-#endif
-}  
-
-void
-Playfield::do_scrolling()
-{
-#if 0
-  if (mouse_scrolling)
-    {
-      view[current_view]->shift_x_offset((scroll_center_x - controller->get_x()) / 5);
-      view[current_view]->shift_y_offset((scroll_center_y - controller->get_y()) / 5);
-    }
-#endif 
-}
-
-void
-Playfield::disable_scroll_mode()
-{
-  if (verbose) std::cout << "done" << std::endl;
-  mouse_scrolling = false;
 }
 
 int

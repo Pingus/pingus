@@ -1,4 +1,4 @@
-//  $Id: button_panel.hxx,v 1.6 2002/08/02 11:25:46 grumbel Exp $
+//  $Id: button_panel.hxx,v 1.7 2002/08/02 22:55:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,9 +38,6 @@ private:
   std::vector<ActionButton*> a_buttons;
   typedef std::vector<ActionButton*>::iterator AButtonIter;
   AButtonIter  pressed_button;
-  ArmageddonButton* armageddon;
-  ForwardButton*    forward;
-  PauseButton*      pause;
 
   Server* server;
   Client* client;
@@ -52,14 +49,13 @@ private:
   unsigned int  last_press;
   static CL_Surface button_cap;
 
-
   int x_pos, y_pos;
 public:
   ButtonPanel(PLF* plf, int arg_x_pos, int arg_y_pos);
   virtual ~ButtonPanel();
 
-  void on_button_press(int x, int y);
-  void on_button_release(int x, int y);
+  void on_primary_button_press(int x, int y);
+  void on_primary_button_release(int x, int y);
 
   bool is_at (int x, int y);
 

@@ -1,4 +1,4 @@
-//  $Id: surface_button.hxx,v 1.1 2002/07/29 10:44:12 grumbel Exp $
+//  $Id: surface_button.hxx,v 1.2 2002/08/02 22:55:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,9 +50,9 @@ namespace GUI
     void draw ();
     bool is_at (int x, int y);
 
-    void on_button_press (int x, int y);
-    void on_button_release (int x, int y);
-    void on_button_click (int x, int y);
+    void on_primary_button_press (int x, int y);
+    void on_primary_button_release (int x, int y);
+    void on_primary_button_click (int x, int y);
 
     void on_pointer_enter ();
     void on_pointer_leave ();

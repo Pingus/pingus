@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.10 2002/08/02 13:17:42 grumbel Exp $
+//  $Id: client.cxx,v 1.11 2002/08/02 22:55:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -84,7 +84,7 @@ Client::Client(Server * s)
   pcounter     = new PingusCounter();  
   small_map    = new SmallMap();
   time_display = new TimeDisplay();
-   
+
   button_panel->set_client(this);
   button_panel->set_server(server);
   hurry_up->set_client(this);
@@ -98,6 +98,10 @@ Client::Client(Server * s)
   gui_manager->add (pcounter, true);
   gui_manager->add (small_map, true);
   gui_manager->add (time_display, true);
+
+  gui_manager->add (new ArmageddonButton(server, CL_Display::get_width() - 40,     CL_Display::get_height() - 62), true);
+  gui_manager->add (new ForwardButton   (server, CL_Display::get_width() - 40 * 2, CL_Display::get_height() - 62), true);
+  gui_manager->add (new PauseButton     (server, CL_Display::get_width() - 40 * 3, CL_Display::get_height() - 62), true);
 
   /*playfield->set_clip_rect(0, 0, 
 			   CL_Display::get_width(),
@@ -331,35 +335,6 @@ Client::set_finished()
 }
 
 #if 0
-void 
-Client::register_event_handler()
-{
-  if (verbose > 1) std::cout << "Client: register_event_handler()" << std::endl;
-  enabled = true;
-}
-
-void
-Client::on_button_press(CL_InputDevice *device, const CL_Key &key)
-{
-  if (!enabled)
-    return;
-  
-  std::cout << "Got button press: " << enabled << std::endl;
-
-  if (device == CL_Input::keyboards[0])
-    {
-      on_keyboard_button_press(key);
-    }
-  else if (device == CL_Input::pointers[0])
-    {
-      on_mouse_button_press(key);
-    }
-  else
-    {
-      if (verbose > 1) std::cout << "Unknown device pressed: device=" << device << "; key.id=" << key.id << std::endl;
-    }
-}
-
 void
 Client::on_keyboard_button_press(const CL_Key& /*key*/)
 {

@@ -1,4 +1,4 @@
-//  $Id: action_button.hxx,v 1.5 2002/08/02 11:25:46 grumbel Exp $
+//  $Id: action_button.hxx,v 1.6 2002/08/02 22:55:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,28 +34,11 @@ class CL_Font;
 class CL_Vector;
 
 // ----------------- snip --------------------
-class Button
-{
-protected:
-  int x_pos;
-  int y_pos;
-
-  CL_Surface surface;
-  bool pressed;
-public:
-  Button();
-  Button (int x, int y);
-  virtual ~Button();
-
-  virtual void   draw() = 0;
-  virtual bool   mouse_over (int x, int y) = 0;
-};
-
-// ----------------- snip --------------------
 ///
 class ArmageddonButton : public GUI::Component
 {
 private:
+  Server* server;
   int x_pos;
   int y_pos;
   bool pressed;
@@ -64,59 +47,70 @@ private:
   CL_Surface backgroundhl;
 
   AnimCounter counter;
-  Server* server;
   friend class ButtonPanel;
 public:
-  ArmageddonButton(int x, int y);
+  ArmageddonButton(Server*, int x, int y);
   virtual ~ArmageddonButton();
 
   void draw();
   bool is_at(int x, int y);
+  void on_primary_button_click (int x, int y);
 };
 
 // ----------------- snip --------------------
 
 ///
-class ForwardButton : public Button
+class ForwardButton : public GUI::Component
 {
 private:
+  Server* server;
+  int x_pos;
+  int y_pos;
+  CL_Surface surface;
   CL_Surface background;
   CL_Surface backgroundhl;
-  Server* server;
   friend class ButtonPanel;
 public:
-  ForwardButton(int x, int y);
+  ForwardButton(Server*, int x, int y);
   virtual ~ForwardButton();
 
   void draw();
-  bool mouse_over (int x, int y);
+  bool is_at (int x, int y);
+  void on_primary_button_click (int x, int y);
 };
 
 // ----------------- snip --------------------
 
 ///
-class PauseButton : public Button
+class PauseButton : public GUI::Component
 {
 private:
+  Server* server;
+  int x_pos;
+  int y_pos;
+  CL_Surface surface;
   CL_Surface background;
   CL_Surface backgroundhl;
-  Server* server;
   friend class ButtonPanel;
 public:
-  PauseButton(int x, int y);
+  PauseButton(Server*, int x, int y);
   virtual ~PauseButton();
 
   void draw();
-  bool mouse_over (int x, int y);
+  bool is_at (int x, int y);
+  void on_primary_button_click (int x, int y);
 };
 
 // ----------------- snip --------------------
 
 /** The button class manage a simple button for the button_panel. It
     keeps his position, his surfaces and his font. */
-class ActionButton : public Button
+class ActionButton : public GUI::Component
 {
 protected:
+  CL_Surface surface;
+  int x_pos;
+  int y_pos;
   CL_Font*    font;
   CL_Font*    font_h;
   // Added for printing action names next to the button.
@@ -148,7 +142,7 @@ public:
   /// Returns true if the button is pressed.
   bool   is_pressed();
 
-  virtual bool   mouse_over(int x, int y) = 0;
+  virtual bool   is_at(int x, int y) = 0;
 
   void set_action_holder(ActionHolder* h);
 };
@@ -166,7 +160,7 @@ public:
   virtual ~VerticalActionButton();
 
   void draw();
-  bool mouse_over (int x, int y);
+  bool is_at (int x, int y);
 };
 
 // ----------------- snip --------------------

@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.8 2002/08/02 11:53:52 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.9 2002/08/02 22:55:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -239,7 +239,7 @@ SmallMap::on_pointer_move(int x, int y)
 }
 
 void
-SmallMap::on_button_press(int x, int y)
+SmallMap::on_primary_button_press(int x, int y)
 {
   scroll_mode = true;
 
@@ -252,19 +252,19 @@ SmallMap::on_button_press(int x, int y)
 }
 
 void
-SmallMap::on_button_release(int x, int y)
+SmallMap::on_primary_button_release(int x, int y)
 {
   scroll_mode = false;
 }
 
 void
-SmallMap::on_mouse_enter ()
+SmallMap::on_pointer_enter ()
 {
   has_focus = true;  
 }
 
 void
-SmallMap::on_mouse_leave ()
+SmallMap::on_pointer_leave ()
 {
   has_focus = false;  
 }

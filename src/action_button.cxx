@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.5 2002/08/02 11:25:46 grumbel Exp $
+//  $Id: action_button.cxx,v 1.6 2002/08/02 22:55:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,21 +26,10 @@
 #include "pingus_resource.hxx"
 #include "action_button.hxx"
 #include "server.hxx"
+#include "world.hxx"
 #include "string_converter.hxx"
 
 using namespace Pingus::Actions;
-
-Button::Button()
-{
-}
-
-Button::Button (int x, int y) : x_pos(x), y_pos(y)
-{
-}
-
-Button::~Button()
-{
-}
 
 ActionButton::ActionButton() {}
 
@@ -74,7 +63,7 @@ ActionButton::init(int x, int y, ActionName name_, int owner_id)
   font_h = PingusResource::load_font("Fonts/pingus_small", "fonts");
   font_b = PingusResource::load_font("Fonts/pingus",       "fonts");
 
-  surface   = PingusResource::load_surface("Pingus/" + action_to_string(name) + to_string(owner_id), "pingus");
+  surface = PingusResource::load_surface("Pingus/" + action_to_string(name) + to_string(owner_id), "pingus");
   if (is_multi_direct)
     {
       action_c.set_size(surface.get_num_frames()/2);
@@ -121,7 +110,7 @@ VerticalActionButton::VerticalActionButton(int x, int y, ActionName name, int ow
 VerticalActionButton::~VerticalActionButton() {}
 
 bool
-VerticalActionButton::mouse_over(int x, int y)
+VerticalActionButton::is_at(int x, int y)
 {
   if (x > x_pos && x < x_pos + 60
       && y > y_pos && y <= y_pos + 35) 
@@ -186,8 +175,9 @@ VerticalActionButton::draw()
 		     action_c);
 }
 
-ArmageddonButton::ArmageddonButton(int x, int y)
-  : x_pos (x), y_pos (y),
+ArmageddonButton::ArmageddonButton(Server* s, int x, int y)
+  : server (s),
+    x_pos (x), y_pos (y),
     background  (PingusResource::load_surface("buttons/hbuttonbgb", "core")),
     backgroundhl(PingusResource::load_surface("buttons/hbuttonbg", "core"))
 {
@@ -226,10 +216,18 @@ ArmageddonButton::is_at(int x, int y)
     } 
 }
 
-ForwardButton::ForwardButton(int x, int y) :
-        Button      (x, y),
-        background  (PingusResource::load_surface("buttons/hbuttonbgb", "core")),
-        backgroundhl(PingusResource::load_surface("buttons/hbuttonbg", "core"))
+void
+ArmageddonButton::on_primary_button_click (int x, int y)
+{
+  pressed = true; // FIXME: should check the server state instead
+  server->get_world()->armageddon();
+}
+
+ForwardButton::ForwardButton(Server* s, int x, int y) 
+  : server (s),
+    x_pos (x), y_pos (y),
+    background  (PingusResource::load_surface("buttons/hbuttonbgb", "core")),
+    backgroundhl(PingusResource::load_surface("buttons/hbuttonbg", "core"))
 { 
   surface = PingusResource::load_surface("buttons/fast_forward", "core");
 }
@@ -248,7 +246,7 @@ ForwardButton::draw()
 }
 
 bool
-ForwardButton::mouse_over(int x, int y)
+ForwardButton::is_at(int x, int y)
 {
   if (x > x_pos && x < x_pos + int(surface.get_width())
       && y > y_pos && y < y_pos + int(surface.get_height()))
@@ -259,10 +257,17 @@ ForwardButton::mouse_over(int x, int y)
     } 
 }
 
-PauseButton::PauseButton(int x, int y) :
-        Button      (x, y),
-        background  (PingusResource::load_surface("buttons/hbuttonbgb", "core")),
-        backgroundhl(PingusResource::load_surface("buttons/hbuttonbg", "core"))
+void
+ForwardButton::on_primary_button_click (int x, int y)
+{
+  server->set_fast_forward(server->get_fast_forward());
+}
+
+PauseButton::PauseButton(Server* s, int x, int y) 
+  : server (s),
+    x_pos(x), y_pos(y),
+    background  (PingusResource::load_surface("buttons/hbuttonbgb", "core")),
+    backgroundhl(PingusResource::load_surface("buttons/hbuttonbg", "core"))
 { 
   surface = PingusResource::load_surface("buttons/pause", "core");
 }
@@ -281,7 +286,7 @@ PauseButton::draw()
 }
 
 bool
-PauseButton::mouse_over (int x, int y)
+PauseButton::is_at (int x, int y)
 {
   if (x > x_pos && x < x_pos + int(surface.get_width())
       && y > y_pos && y < y_pos + int(surface.get_height()))
@@ -290,6 +295,12 @@ PauseButton::mouse_over (int x, int y)
     } else  {
       return false;
     } 
+}
+
+void
+PauseButton::on_primary_button_click (int x, int y)
+{
+  server->set_pause(!server->get_pause ());
 }
 
 /* EOF */

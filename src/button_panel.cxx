@@ -1,4 +1,4 @@
-//  $Id: button_panel.cxx,v 1.8 2002/08/02 11:25:46 grumbel Exp $
+//  $Id: button_panel.cxx,v 1.9 2002/08/02 22:55:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,15 +58,6 @@ ButtonPanel::ButtonPanel(PLF* plf, int arg_x_pos, int arg_y_pos)
 						    buttons_data[i].name,
 						    0)); //FIXMEcontroller->get_owner ()));
     }
-
-  armageddon = new ArmageddonButton(CL_Display::get_width() - 40,     CL_Display::get_height() - 62);
-  forward    = new ForwardButton   (CL_Display::get_width() - 40 * 2, CL_Display::get_height() - 62);
-  pause      = new PauseButton     (CL_Display::get_width() - 40 * 3, CL_Display::get_height() - 62);
-
-  forward->pressed = false;
-  pause->pressed   = false;
-    
-  
   
   pressed_button = a_buttons.begin();
 }
@@ -77,10 +68,6 @@ ButtonPanel::~ButtonPanel()
   {
     delete *it;
   }
-  
-  delete armageddon;
-  delete forward;
-  delete pause;
 }
 
 void
@@ -120,10 +107,6 @@ ButtonPanel::draw()
 
       (*button)->draw();
     }
-
-  armageddon->draw();
-  pause->draw();
-  forward->draw();
 }
 
 void
@@ -135,10 +118,6 @@ ButtonPanel::set_server(Server* s)
     {
       (*button)->set_action_holder(server->get_action_holder());
     }
-
-  pause->server = server;
-  armageddon->server = server;
-  forward->server = server;
 }
 
 void
@@ -157,15 +136,16 @@ ButtonPanel::set_button(int i)
 }
 
 void
-ButtonPanel::on_button_press(int x, int y)
+ButtonPanel::on_primary_button_press(int x, int y)
 {
   for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); button++)
     {
-      if ((*button)->mouse_over(x, y))
+      if ((*button)->is_at(x, y))
 	pressed_button = button;
     }
   
-  if (armageddon->is_at(x, y))
+
+  /*  if (armageddon->is_at(x, y))
     {
       last_press = CL_System::get_time();
       
@@ -182,7 +162,7 @@ ButtonPanel::on_button_press(int x, int y)
       return;
     }
     
-  if (pause->mouse_over(x, y))
+  if (pause->is_mouse_over(x, y))
     {
       client->set_pause(!client->get_pause());
       return;
@@ -192,6 +172,7 @@ ButtonPanel::on_button_press(int x, int y)
       client->set_fast_forward(!client->get_fast_forward());
       return;
     }
+  */
 }
 
 bool
@@ -199,19 +180,15 @@ ButtonPanel::is_at (int x, int y)
 {
   for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); button++)
     {
-      if ((*button)->mouse_over(x, y))
+      if ((*button)->is_at(x, y))
 	return true;
     }
   return false;
 }
 
 void
-ButtonPanel::on_button_release(int x, int y)
+ButtonPanel::on_primary_button_release(int x, int y)
 {
-
-  //forward->pressed = false;
-  //pause->pressed = false;
-  
 }
 
 /// Select the next action

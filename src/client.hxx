@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.8 2002/08/02 13:17:42 grumbel Exp $
+//  $Id: client.hxx,v 1.9 2002/08/02 22:55:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -105,8 +105,8 @@ public:
 
   ButtonPanel* get_button_panel () { return button_panel; }
 
-  void on_button_press(int x, int y);
-  void on_button_release(int x, int y);
+  void on_primary_button_press(int x, int y);
+  void on_primary_button_release(int x, int y);
 
   void on_butmouse_button_press(const CL_Key &key);
   void on_mouse_button_release(const CL_Key &key);

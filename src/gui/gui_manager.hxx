@@ -1,4 +1,4 @@
-//  $Id: gui_manager.hxx,v 1.5 2002/08/01 21:40:02 grumbel Exp $
+//  $Id: gui_manager.hxx,v 1.6 2002/08/02 22:55:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ namespace GUI
       FIXME: We translate GameDelta into another 'language' which is
       then understood by the GUI, this seems unclear, not sure at
       which point it is best to split the GameDelta into
-      on_button_press(), etc.
+      on_primary_button_press(), etc.
   */
   class GUIManager : public Component
   {
@@ -48,7 +48,8 @@ namespace GUI
     std::vector<Component*> components;
 
     /** The component which recieved the last pressed event */
-    Component* pressed_component;
+    Component* primary_pressed_component;
+    Component* secondary_pressed_component;
 
     /** The component over which the mouse was in the last update,
 	used to detecte enter/leave events */

@@ -1,4 +1,4 @@
-//  $Id: smallmap.hxx,v 1.6 2002/07/29 11:57:38 grumbel Exp $
+//  $Id: smallmap.hxx,v 1.7 2002/08/02 22:55:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,8 +47,8 @@ public:
   SmallMap();
   virtual ~SmallMap();
   
-  void on_button_press(int x, int y);
-  void on_button_release(int x, int y);
+  void on_primary_button_press(int x, int y);
+  void on_primary_button_release(int x, int y);
   void on_pointer_move(int x, int y);
 
   void set_client(Client* c);
@@ -61,8 +61,8 @@ public:
   bool is_at (int x, int y);
 
   // Events
-  void on_mouse_enter ();
-  void on_mouse_leave ();
+  void on_pointer_enter ();
+  void on_pointer_leave ();
 };
 
 #endif

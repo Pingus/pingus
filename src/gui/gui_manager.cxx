@@ -1,4 +1,4 @@
-//  $Id: gui_manager.cxx,v 1.6 2002/08/02 11:53:52 grumbel Exp $
+//  $Id: gui_manager.cxx,v 1.7 2002/08/02 22:55:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,9 @@ using namespace GUI;
 using namespace Input;
 
 GUIManager::GUIManager ()
-  : pressed_component (0), mouse_over_component (0),
+  : primary_pressed_component (0),
+    secondary_pressed_component (0),
+    mouse_over_component (0),
     x_pos (400), y_pos (300)
 {
 }
@@ -73,8 +75,8 @@ GUIManager::process_input (const std::list<Input::Event*>& events)
 
 	    Component* comp = component_at (x_pos, y_pos);//FIXME
 
-	    if (pressed_component)
-	      pressed_component->on_pointer_move (x_pos, y_pos);
+	    if (primary_pressed_component)
+	      primary_pressed_component->on_pointer_move (x_pos, y_pos);
 	    else if (comp)
 	      {
 		comp->on_pointer_move (x_pos, y_pos);
@@ -109,7 +111,7 @@ GUIManager::process_input (const std::list<Input::Event*>& events)
 	case Input::ButtonEventType:
 	  {
 	    ButtonEvent* event = dynamic_cast<ButtonEvent*>(*i);
-	    //std::cout << "RootGUIManager: Got button event: " << event->name << " " << event->state << std::endl;
+	    std::cout << "GUIManager: Got button event: " << event->name << " " << event->state << std::endl;
 
 	    Component* comp = component_at (x_pos, y_pos);//FIXME
 
@@ -117,47 +119,85 @@ GUIManager::process_input (const std::list<Input::Event*>& events)
 	      {
 		if (event->name == primary && event->state == Input::pressed) 
 		  {
-		    pressed_component = comp;
-		    comp->on_button_press (x_pos, y_pos); // FIXME: dummy data
+		    primary_pressed_component = comp;
+		    comp->on_primary_button_press (x_pos, y_pos);
 		  }
 		else if (event->name == primary && event->state == Input::released) 
 		  {
 		    /** Send the release event to the same component
 			which got the press event */
-		    if (pressed_component)
+		    if (primary_pressed_component)
 		      {
-			pressed_component->on_button_release (x_pos, y_pos);
+			primary_pressed_component->on_primary_button_release (x_pos, y_pos);
 
-			if (pressed_component == comp)
+			if (primary_pressed_component == comp)
 			  {
-			    comp->on_button_click (x_pos, y_pos);
+			    std::cout << "GUIManager: calling on_primary_button_click ()" << std::endl;
+			    comp->on_primary_button_click (x_pos, y_pos);
 			  }
 			else
 			  {
 			    // discard click
 			  }
-			pressed_component = 0;
+			primary_pressed_component = 0;
 		      }
 		    else
 		      {
 			/* FIXME: This happens when you press a button
 			   FIXME: in one GUIManager and switch in the
-			   FIXME: on_button_press() method to another
+			   FIXME: on_primary_button_press() method to another
 			   FIXME: manager, not sure if there is or
 			   FIXME: should be a workaround */
 			std::cout << "GUIManager: Got a release without a press, possibly a bug" << std::endl;
 		      }
 		  }
+		
+		// Secondary button
+		if (event->name == secondary && event->state == Input::pressed) 
+		  {
+		    secondary_pressed_component = comp;
+		    comp->on_secondary_button_press (x_pos, y_pos);
+		  }
+		else if (event->name == secondary && event->state == Input::released) 
+		  {
+		    /** Send the release event to the same component
+			which got the press event */
+		    if (secondary_pressed_component)
+		      {
+			secondary_pressed_component->on_secondary_button_release (x_pos, y_pos);
+
+			if (secondary_pressed_component == comp)
+			  {
+			    std::cout << "GUIManager: calling on_secondary_button_click ()" << std::endl;
+			    comp->on_secondary_button_click (x_pos, y_pos);
+			  }
+			else
+			  {
+			    // discard click
+			  }
+			secondary_pressed_component = 0;
+		      }
+		    else
+		      {
+			/* FIXME: This happens when you press a button
+			   FIXME: in one GUIManager and switch in the
+			   FIXME: on_secondary_button_press() method to another
+			   FIXME: manager, not sure if there is or
+			   FIXME: should be a workaround */
+			std::cout << "GUIManager: Got a release without a press, possibly a bug" << std::endl;
+		      }
+		  }
+
 	      }
 	    else
 	      {
 		std::cout << "GUIManager: Clicked into a non managed region" << std::endl;
 		unhandled_event ();
 
-		if (pressed_component)
+		if (secondary_pressed_component)
 		  {
-		    pressed_component->on_button_release (x_pos, y_pos);
-		    pressed_component = 0;
+		    secondary_pressed_component->on_secondary_button_release (x_pos, y_pos);
+		    secondary_pressed_component = 0;
 		  }
 	      }
 	    break;

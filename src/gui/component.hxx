@@ -1,4 +1,4 @@
-//  $Id: component.hxx,v 1.5 2002/08/01 21:40:02 grumbel Exp $
+//  $Id: component.hxx,v 1.6 2002/08/02 22:55:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,14 +36,19 @@ namespace GUI
 
     // Events
     /** Gets issued once the primary button is pressed */
-    virtual void on_button_press (int x, int y) {}
+    virtual void on_primary_button_press (int x, int y) {}
     
     /** Gets issued once the primary button is released */
-    virtual void on_button_release (int x, int y) {}
+    virtual void on_primary_button_release (int x, int y) {}
+
+    virtual void on_secondary_button_press (int x, int y) {}
+    virtual void on_secondary_button_release (int x, int y) {}
 
     /** Gets emmited when a button is pressed and released over the
 	same component */
-    virtual void on_button_click (int x, int y) {}
+    virtual void on_primary_button_click (int x, int y) {}
+
+    virtual void on_secondary_button_click (int x, int y) {}
 
     /** Emmitted when pointer enters the region of the component */
     virtual void on_pointer_enter () {}

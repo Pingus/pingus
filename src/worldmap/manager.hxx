@@ -1,4 +1,4 @@
-//  $Id: manager.hxx,v 1.4 2002/08/01 21:40:02 grumbel Exp $
+//  $Id: manager.hxx,v 1.5 2002/08/02 22:55:19 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ namespace Pingus
     class WorldMapComponent : public GUI::Component
     {
     public:
-      void on_button_press (int x, int y);
+      void on_primary_button_press (int x, int y);
 
       void draw ();
       void update (float delta);
