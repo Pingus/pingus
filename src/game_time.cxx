@@ -1,4 +1,4 @@
-//  $Id: game_time.cxx,v 1.7 2003/04/09 21:57:24 grumbel Exp $
+//  $Id: game_time.cxx,v 1.8 2003/04/13 21:50:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <stdio.h>
 #include "my_gettext.hxx"
 #include "globals.hxx"
 #include "game_time.hxx"
