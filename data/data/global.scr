@@ -263,6 +263,7 @@ section GroundPieces
 
 	section Misc
 	{
+                bridge1     = ../images/groundpieces/misc/bridge1.pcx    (type=surface, x=0, y=0, width=216, height=42, tcol=0);
 		way         = ../images/groundpieces/misc/way.pcx        (type=surface, x=0, y=0, width=117, height=35, tcol=0);
 
 		way_left    = ../images/groundpieces/misc/way_left.pcx        (type=surface, x=0, y=0, width=81, height=28, tcol=0);
@@ -305,6 +306,7 @@ section GroundPieces
 		block1 = ../images/groundpieces/space/block1.pcx  (type=surface, x=0, y=0, width=201,  height=61); 
 		tower1 = ../images/groundpieces/space/tower1.pcx  (type=surface, x=0, y=0, width=64,  height=166, tcol=0); 
 		smalltower = ../images/groundpieces/space/smalltower.pcx  (type=surface, x=0, y=0, width=6,  height=200); 
+		way        = ../images/groundpieces/space/way.pcx  (type=surface, x=0, y=0, width=100,  height=6); 
 	}
 }
 

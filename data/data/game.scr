@@ -26,3 +26,9 @@ section Cursors
 	arrow_left = ../images/cursors/arrow_left.pcx  (type=surface, x=0, y=0, width=23, height=9, tcol=0);
 }
 
+
+section SmallMap
+{
+	entrance = ../images/misc/smallmap_entrance.pcx (type=surface, x=0, y=0, width=6, height=6, tcol=0);
+	exit     = ../images/misc/smallmap_exit.pcx     (type=surface, x=0, y=0, width=6, height=6, tcol=0);
+}

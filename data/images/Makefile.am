@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.7 2000/03/09 00:20:03 grumbel Exp $
+#  $Id: Makefile.am,v 1.8 2000/03/12 02:13:48 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -259,6 +259,7 @@ GROUNDPIECES = \
                groundpieces/misc/way.pcx              \
                groundpieces/misc/way_left.pcx         \
                groundpieces/misc/way_right.pcx        \
+               groundpieces/misc/bridge1.pcx         \
                groundpieces/weed1.pcx                 \
                groundpieces/weed2.pcx                 \
                groundpieces/tree.pcx                  \
@@ -318,6 +319,7 @@ GROUNDPIECES = \
                groundpieces/space/block1.pcx \
                groundpieces/space/tower1.pcx \
                groundpieces/space/smalltower.pcx \
+               groundpieces/space/way.pcx \
                \
                groundpieces/sweets/allsort1.pcx \
                groundpieces/sweets/allsort2.pcx \
