@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.hh,v 1.8 2001/04/06 13:21:44 grumbel Exp $
+//  $Id: PingusWorldMapGraph.hh,v 1.9 2001/04/06 15:04:46 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,7 +61,7 @@ public:
   Graph<PingusWorldMapNode>* get_graph ();
   std::string get_music ();
   
-  void draw ();
+  void draw (const CL_Vector&);
 
   /// Some functions to parse the data out of an xml file
   //@{ 

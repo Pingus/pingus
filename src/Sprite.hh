@@ -1,4 +1,4 @@
-//  $Id: Sprite.hh,v 1.3 2001/04/06 12:49:19 grumbel Exp $
+//  $Id: Sprite.hh,v 1.4 2001/04/06 15:04:45 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,6 +65,9 @@ public:
    @param arg_x The x offset by which the surface drawn
    @param arg_y The y offset by which the surface drawn */
   void set_align (int arg_x, int arg_y);
+  
+  /** Shortcut for setting the aligment to the center of the surface */
+  void set_align_center ();
   
   void next_frame ();
   void previous_frame ();

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.17 2001/04/06 13:21:44 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.18 2001/04/06 15:04:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,18 +30,21 @@
 #include "PingusWorldMap.hh"
 
 PingusWorldMap::PingusWorldMap (std::string filename)
-  : green_flag ("worldmap/flaggreen", "core")
+  : green_dot ("worldmap/dot_green", "core"),
+    red_dot ("worldmap/dot_red", "core"),
+    dot_border ("Game/dot_border", "game"),
+    green_flag ("worldmap/flaggreen", "core")
 {
   green_flag.set_align (-24, -36);
-  green_dot  = PingusResource::load_surface ("Game/dot_green", "game");
-  red_dot    = PingusResource::load_surface ("Game/dot_red", "game");
-  dot_border = PingusResource::load_surface ("Game/dot_border", "game");
+  green_dot.set_align_center ();
+  red_dot.set_align_center ();
+  dot_border.set_align_center ();
 
   graph_data.parse_file (filename);
 
   background = PingusResource::load_surface (graph_data.get_background ());
 
-  background = Blitter::scale_surface (background, CL_Display::get_width (), CL_Display::get_height ());
+  //background = Blitter::scale_surface (background, CL_Display::get_width (), CL_Display::get_height ());
   
   pingus = new PingusWorldMapPingus;
   pingus->set_position (&(*graph_data.nodes.begin ()));
@@ -100,7 +103,7 @@ PingusWorldMap::on_button_press (CL_InputDevice *device, const CL_Key &key)
 		std::cout << "no id clicked" << std::endl;
 	    }
       	}
-      else 
+      else if (key.id == CL_MOUSE_MIDDLEBUTTON)
 	{
 	  if (maintainer_mode)
 	    {
@@ -109,6 +112,15 @@ PingusWorldMap::on_button_press (CL_InputDevice *device, const CL_Key &key)
 	      std::cout << "  <y-pos>" << key.y << "</y-pos>" << std::endl;
 	      std::cout << "</position>" << std::endl;
 	    }
+	}
+      else if (key.id == CL_MOUSE_RIGHTBUTTON)
+	{
+	  PingusWorldMapNode* node = get_node (key.x, key.y);
+	  if (node) {
+	    std::cout << "Node: " << node->id << std::endl;
+	  } else {
+	    std::cout << "No node selected" << std::endl;
+	  }
 	}
     }
 }
@@ -181,48 +193,45 @@ PingusWorldMap::start_level (PingusWorldMapNode* node)
 void
 PingusWorldMap::draw ()
 {
-  // The node positions are based up on a 800x600 screen, so we need
-  // to scale if the screen has another size
-  float x_scale = CL_Display::get_width () / 800.0;
-  float y_scale = CL_Display::get_height () / 600.0;
+  CL_Vector offset = pingus->get_pos ();
+  offset *= -1.0;
+  offset.x += CL_Display::get_width ()/2;
+  offset.y += CL_Display::get_height ()/2;
 
-  //background->put_screen (0,0, CL_Display::get_width (), CL_Display::get_height ());
-  background.put_screen (0,0);
+  if (offset.x > 0) offset.x = 0;
+  if (offset.y > 0) offset.y = 0;
 
-  graph_data.draw();
+  background.put_screen (offset.x, offset.y);
+
+  graph_data.draw(offset);
 
   for (list<PingusWorldMapNode>::iterator i = graph_data.nodes.begin ();
        i != graph_data.nodes.end ();
-       i++)
+       ++i)
     {
       if (!i->levelname.empty())
 	{
 	  if (i->accessible) 
 	    {
-	      green_dot.put_screen ((i->pos.x - (red_dot.get_width()/2)) * x_scale,
-				    (i->pos.y - (red_dot.get_height()/2)) * y_scale);
+	      green_dot.put_screen (i->pos + offset);
 	      if (i->finished) {
-		green_flag.put_screen (i->pos.x * x_scale,
-				       i->pos.y * y_scale);
+		green_flag.put_screen (i->pos);
 	      }
 	    }
 	  else
 	    {
-	      red_dot.put_screen ((i->pos.x - (red_dot.get_width()/2)) * x_scale,
-				  (i->pos.y - (red_dot.get_height()/2)) * y_scale);
+	      red_dot.put_screen (i->pos + offset);
 	    }
 	}
     }
   
   PingusWorldMapNode* node = get_node (CL_Mouse::get_x (), CL_Mouse::get_y ());
-
   if (node)
     {
-      dot_border.put_screen ((node->pos.x - (dot_border.get_width()/2)) * x_scale,
-			     (node->pos.y - (dot_border.get_height()/2)) * y_scale);
+      dot_border.put_screen (node->pos + offset);
     }
 
-  pingus->draw ();
+  pingus->draw (offset);
 }
 
 void
@@ -234,16 +243,13 @@ PingusWorldMap::update (float delta)
 PingusWorldMapNode* 
 PingusWorldMap::get_node (int x, int y)
 {
-  float x_scale = 800.0 / CL_Display::get_width ();
-  float y_scale = 600.0 / CL_Display::get_height ();
-
   for (list<PingusWorldMapNode>::iterator i = graph_data.nodes.begin ();
        i != graph_data.nodes.end ();
        i++)
-    if (i->pos.x - (int)(red_dot.get_width()/2) - 3 < x * x_scale
-	&& i->pos.x + (int)(red_dot.get_width()/2) + 3 > x * x_scale
-	&& i->pos.y - (int)(red_dot.get_width()/2) - 3 < y * y_scale
-	&& i->pos.y + (int)(red_dot.get_width()/2) + 3 > y * y_scale)
+    if (i->pos.x - (int)(red_dot.get_width()/2) - 3 < x
+	&& i->pos.x + (int)(red_dot.get_width()/2) + 3 > x
+	&& i->pos.y - (int)(red_dot.get_width()/2) - 3 < y
+	&& i->pos.y + (int)(red_dot.get_width()/2) + 3 > y)
       {
 	if (!i->levelname.empty ())
 	  return &(*i);

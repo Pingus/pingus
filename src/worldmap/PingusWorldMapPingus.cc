@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapPingus.cc,v 1.10 2001/04/06 12:49:20 grumbel Exp $
+//  $Id: PingusWorldMapPingus.cc,v 1.11 2001/04/06 15:04:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,14 +48,10 @@ PingusWorldMapPingus::walk_to (PingusWorldMapNode* node)
 }
 
 void
-PingusWorldMapPingus::draw ()
+PingusWorldMapPingus::draw (const CL_Vector& offset)
 {
-  float x_scale = CL_Display::get_width () / 800.0;
-  float y_scale = CL_Display::get_height () / 600.0;
-
   sprite.set_direction (is_left ? Sprite::LEFT : Sprite::RIGHT);
-  sprite.put_screen (pos.x * x_scale,
-		     pos.y * y_scale);
+  sprite.put_screen (pos + offset);
 }
 
 bool

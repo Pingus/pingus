@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.hh,v 1.13 2001/04/06 13:21:44 grumbel Exp $
+//  $Id: PingusWorldMap.hh,v 1.14 2001/04/06 15:04:46 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,9 +33,9 @@ private:
   CL_Surface background;
 
   CL_Surface scaled_background;
-  CL_Surface green_dot;
-  CL_Surface red_dot;
-  CL_Surface dot_border;
+  Sprite green_dot;
+  Sprite red_dot;
+  Sprite dot_border;
   Sprite green_flag; 
 
   Graph<PingusWorldMapNode>* graph;
