@@ -1,4 +1,4 @@
-//  $Id: PingusLevelDesc.cc,v 1.5 2000/03/08 01:57:02 grumbel Exp $
+//  $Id: PingusLevelDesc.cc,v 1.6 2000/03/09 00:15:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,9 +76,12 @@ PingusLevelDesc::draw(PingusLevelDesc::LoadingStatus status)
   for(unsigned int i=0; i < description.size(); ++i)
     font->print_center(CL_Display::get_width() / 2 - 20, 120 + (20 * i), description[i].c_str());
 
-  font->print_center(CL_Display::get_width() / 2 - 20, 
-		     CL_Display::get_height() - 30,
-		     ("Designed by " + plf->get_author()).c_str());
+  if (!plf->get_author().empty())
+    {
+      font->print_center(CL_Display::get_width() / 2 - 20, 
+			 CL_Display::get_height() - 30,
+			 ("Designed by " + plf->get_author()).c_str());
+    }
 
   if (status == LOADING) {
     font->print_center(CL_Display::get_width() / 2 - 20, CL_Display::get_height() - 80, "Loading...");
