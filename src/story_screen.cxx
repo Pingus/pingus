@@ -1,4 +1,4 @@
-//  $Id: story_screen.cxx,v 1.2 2003/03/22 23:28:51 grumbel Exp $
+//  $Id: story_screen.cxx,v 1.3 2003/03/23 01:01:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <algorithm>
 #include <ClanLib/Display/Display/surface.h>
 #include "pingus_resource.hxx"
 #include "gui/gui_manager.hxx"
@@ -27,21 +28,45 @@
 #include "pingus_menu_manager.hxx"
 #include "fonts.hxx"
 #include "story_screen.hxx"
+#include "res_descriptor.hxx"
 #include "sound/sound.hxx"
+
+class StoryPage
+{
+public:
+  StoryPage() {}
+
+  StoryPage(ResDescriptor arg_image, std::string arg_text)
+    : image(arg_image), text(arg_text)
+      
+  {}
+
+  ResDescriptor image;
+  std::string   text;
+};
 
 class StoryScreenComponent : public GUI::Component
 {
 private:
-  CL_Surface sur;
   CL_Surface background;
-  std::string text;
   std::string display_text;
   float time_passed;
+
+  bool page_displayed_completly;
+
+  //std::string current_page.text;
+  std::vector<StoryPage> pages;
+  CL_Surface page_surface;
+  StoryPage  current_page;
 public:
   StoryScreenComponent ();
   virtual ~StoryScreenComponent () {}
+
   void draw (GraphicContext& gc);
   void update(float delta);
+
+  /** starts to display the next text page */
+  void next_text();
 };
 
 class StoryScreenContinueButton : public GUI::SurfaceButton
@@ -66,8 +91,8 @@ public:
 
 StoryScreen::StoryScreen()
 {
-  StoryScreenComponent* comp = new StoryScreenComponent();
-  gui_manager->add (comp);
+  story_comp = new StoryScreenComponent();
+  gui_manager->add (story_comp);
   gui_manager->add (new StoryScreenContinueButton());
 }
 
@@ -77,24 +102,46 @@ StoryScreen::~StoryScreen()
 
 StoryScreenComponent::StoryScreenComponent ()
 {
-  time_passed = 0;
-  sur = PingusResource::load_surface("Story/story1", "story");
-  background = PingusResource::load_surface("Story/background", "story");
+  page_displayed_completly = false;
+  time_passed  = 0;
 
-  text = 
-    "Dies ist ein Tet blabla, sehr lang blabla und mit umbruechen blabal\n"
-    "Zeile zwei mehr text blabla umbrauchuauaneh usnthu snaotehu nostehusano\n"
-    "authh nth pte thuat nth auntheun tahneuth oentuh oentuhontu hoantuhetuh\n"
-    "aoeuth htnh30  003 0238p[ 8eu ntuhnt hnthneat'hur  rcg rg th th tnh ";
+  pages.push_back(StoryPage(ResDescriptor("Story/story0", "story"), 
+                            "Page 1Dies ist ein Tet blabla, sehr lang blabla und mit umbruechen blabal\n"
+                            "Zeile zwei mehr text blabla umbrauchuauaneh usnthu snaotehu nostehusano\n"
+                            "authh nth pte thuat nth auntheun tahneuth oentuh oentuhontu hoantuhetuh\n"
+                            "aoeuth htnh30  003 0238p[ 8eu ntuhnt hnthneat'hur  rcg rg th th tnh "));
+
+  pages.push_back(StoryPage(ResDescriptor("Story/story1", "story"), 
+                            "Page 2Dies ist ein Tet blabla, sehr lang blabla und mit umbruechen blabal\n"
+                            "Zeile zwei mehr text blabla umbrauchuauaneh usnthu snaotehu nostehusano\n"
+                            "authh nth pte thuat nth auntheun tahneuth oentuh oentuhontu hoantuhetuh\n"
+                            "aoeuth htnh30  003 0238p[ 8eu ntuhnt hnthneat'hur  rcg rg th th tnh "));
+
+  pages.push_back(StoryPage(ResDescriptor("Story/story2", "story"), 
+                            "Page 3Dies ist ein Tet blabla, sehr lang blabla und mit umbruechen blabal\n"
+                            "Zeile zwei mehr text blabla umbrauchuauaneh usnthu snaotehu nostehusano\n"
+                            "authh nth pte thuat nth auntheun tahneuth oentuh oentuhontu hoantuhetuh\n"
+                            "aoeuth htnh30  003 0238p[ 8eu ntuhnt hnthneat'hur  rcg rg th th tnh "));  
+
+  pages.push_back(StoryPage(ResDescriptor("Story/story3", "story"), 
+                            "Page 4Dies ist ein Tet blabla, sehr lang blabla und mit umbruechen blabal\n"
+                            "Zeile zwei mehr text blabla umbrauchuauaneh usnthu snaotehu nostehusano\n"
+                            "authh nth pte thuat nth auntheun tahneuth oentuh oentuhontu hoantuhetuh\n"
+                            "aoeuth htnh30  003 0238p[ 8eu ntuhnt hnthneat'hur  rcg rg th th tnh "));
+
+  std::reverse(pages.begin(), pages.end());
+
+  current_page = pages.back();
+  page_surface = PingusResource::load_surface(current_page.image);
+  background   = PingusResource::load_surface("Story/background", "story");
 }
 
 void
 StoryScreenComponent::draw (GraphicContext& gc)
 {
-  //gc.clear(0,0,0);
   gc.draw(background, 0, 0);
   gc.print_center(Fonts::pingus_large, 400, 20, "Chapter 1 - Enter the unknown...");
-  sur.put_screen(400-320, 90);
+  gc.draw(page_surface,  gc.get_width()/2 - page_surface.get_width()/2, 90);
   gc.print_left(Fonts::pingus_small, 100, 315, display_text);
 }
 
@@ -103,15 +150,55 @@ StoryScreenComponent::update(float delta)
 {
   time_passed += delta;
 
-  int i = Math::min(text.length(), (unsigned int)(15.0f * time_passed));
+  if (!page_displayed_completly)
+    {
+      int i = Math::min(current_page.text.length(), (unsigned int)(15.0f * time_passed));
+      display_text = current_page.text.substr(0, i);
 
-  display_text = text.substr(0, i);
+      if (current_page.text.length() < (unsigned int)(15.0f * time_passed))
+        {
+          page_displayed_completly = true;
+        }
+    }
+}
+
+void
+StoryScreen::on_fast_forward_press ()
+{
+  story_comp->next_text();
 }
 
 void 
 StoryScreen::on_startup()
 {
   PingusSound::play_sound ("letsgo");
+}
+
+void
+StoryScreenComponent::next_text()
+{
+  if (!page_displayed_completly)
+    {
+      page_displayed_completly = true;
+      display_text = current_page.text;  
+    }
+  else
+    {
+      pages.pop_back();
+      if (!pages.empty())
+        {
+          current_page = pages.back();
+          page_surface = PingusResource::load_surface(current_page.image);
+          display_text = "";
+          time_passed = 0;
+          page_displayed_completly = false;
+        }
+      else
+        {
+          std::cout << "StoryScreenComponent: Out of story pages" << std::endl;
+          ScreenManager::instance()->replace_screen (PingusMenuManager::instance (), false);
+        }
+    }
 }
 
 /* EOF */

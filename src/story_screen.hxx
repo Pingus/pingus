@@ -1,4 +1,4 @@
-//  $Id: story_screen.hxx,v 1.1 2003/03/21 22:40:12 grumbel Exp $
+//  $Id: story_screen.hxx,v 1.2 2003/03/23 01:01:16 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,15 +22,19 @@
 
 #include "gui/gui_screen.hxx"
 
+class StoryScreenComponent;
+
 /** */
 class StoryScreen : public GUIScreen
 {
 private:
+  StoryScreenComponent* story_comp;
 public:
   StoryScreen();
   ~StoryScreen();
 
   void on_startup();
+  void on_fast_forward_press ();
 private:
   StoryScreen (const StoryScreen&);
   StoryScreen& operator= (const StoryScreen&);
