@@ -69,14 +69,16 @@ StringFormat::break_line (std::string text, int length, CL_Font* font)
     {
       if (font->get_text_width(text.substr(start_pos, pos - start_pos)) > length)
         {
-	  text[previous_space] = '\n';
-	  start_pos = previous_space + 1;
-	}
+          text[previous_space] = '\n';
+          start_pos = previous_space + 1;
+          previous_space = pos;
+        }
       else if (font->get_text_width(text.substr(start_pos, text.length())) <= length)
         break;
-
-      previous_space = pos;
     }
+
+	if (font->get_text_width(text.substr(start_pos, text.length() - start_pos)) > length)
+		text[text.rfind(' ')] = '\n';
 
   return text;
 }
