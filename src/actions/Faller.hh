@@ -1,4 +1,4 @@
-//  $Id: Faller.hh,v 1.4 2002/01/15 10:48:50 grumbel Exp $
+//  $Id: Faller.hh,v 1.5 2002/06/04 10:25:40 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,10 +31,9 @@ private:
   Sprite tumbler;
 
   int falling;
-/* curious : this const-declaration does not work under MS's compiler ? */
-#ifndef WIN32 
-  static const float deadly_velocity = 20.0f;
-#endif 
+
+  static const float deadly_velocity;
+
 public:
   void  init(void);
   
