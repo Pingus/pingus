@@ -1,4 +1,4 @@
-//  $Id: menu_button.cxx,v 1.7 2003/04/05 20:24:16 grumbel Exp $
+//  $Id: menu_button.cxx,v 1.8 2003/04/12 13:18:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -156,12 +156,10 @@ SurfaceButton::on_pointer_release ()
 bool
 SurfaceButton::is_at(int x, int y)
 {
-  assert (surface);
-
-  return (x > x_pos - int(surface.get_width()) / 2
-	  && x < x_pos + int(surface.get_width()) / 2
-	  && y > y_pos - int(surface.get_height()) / 2
-	  && y < y_pos + int(surface.get_height()) / 2);
+  return (x > x_pos - int(surface_p.get_width()) / 2
+	  && x < x_pos + int(surface_p.get_width()) / 2
+	  && y > y_pos - int(surface_p.get_height()) / 2
+	  && y < y_pos + int(surface_p.get_height()) / 2);
 }
 
 ///////////////////////////////////////////////
@@ -182,7 +180,6 @@ CreditButton::CreditButton (PingusMenu* menu_)
   line1 = _("Credits");
   //line1["de"] = "Credits";
 
-  surface = PingusResource::load_surface("menu/ice_off", "core");
   surface_p = PingusResource::load_surface("menu/credits_on", "core");
   //  surface   = PingusResource::load_surface("NewButtons/credits_off", "menu");
 
@@ -218,7 +215,6 @@ OptionsButton::OptionsButton (PingusMenu* menu_)
   line1 = _("Options");
   //line1["de"] = "Einstellungen";
 
-  surface   = PingusResource::load_surface("menu/ice_off", "core");
   //  surface   = PingusResource::load_surface("NewButtons/options_off", "menu");
   surface_p = PingusResource::load_surface("menu/options_on", "core");
 
@@ -259,7 +255,6 @@ QuitButton::QuitButton(PingusMenu* m)
   // surface_p = PingusResource::load_surface("Buttons/quit_p", "menu");  
 
   //  surface   = PingusResource::load_surface("NewButtons/exit_off", "menu");
-  surface   = PingusResource::load_surface("menu/ice_off", "core");
   surface_p = PingusResource::load_surface("menu/exit_on", "core");  
 }
 
@@ -280,7 +275,7 @@ LoadButton::LoadButton()
   x_pos = CL_Display::get_width() * 400 / 800;
   y_pos = CL_Display::get_height() * 500 / 600; 
 
-  surface   = PingusResource::load_surface("menu/load", "core");
+  //surface   = PingusResource::load_surface("menu/load", "core");
   surface_p = PingusResource::load_surface("menu/load_p", "core");
 }
 
@@ -316,8 +311,6 @@ EditorButton::EditorButton (PingusMenu* menu_)
   // surface   = PingusResource::load_surface("Buttons/editor", "menu");
   // surface_p = PingusResource::load_surface("Buttons/editor_p", "menu");
 
-  //  surface   = PingusResource::load_surface("NewButtons/ice_off", "menu");
-  surface   = PingusResource::load_surface("menu/ice_off", "core");
   surface_p = PingusResource::load_surface("menu/create_on", "core");
 }
 
@@ -345,15 +338,7 @@ StoryButton::StoryButton (PingusMenu* menu_)
   y_pos = CL_Display::get_height() * 370 / 600; 
 
   desc = _("..:: Start the game ::..");
-  //desc["de"] = "..:: Such dir eine Welt zum beginnen aus ::..";
-
   line1 = _("Start");
-
-  // surface   = PingusResource::load_surface("Buttons/worlds", "menu");
-  // surface_p = PingusResource::load_surface("Buttons/worlds_p", "menu");     
-
-  surface   = PingusResource::load_surface("menu/ice_off", "core");
-  //  surface   = PingusResource::load_surface("NewButtons/play_off", "menu");
   surface_p = PingusResource::load_surface("menu/play_on", "core");     
 }
 
@@ -386,7 +371,6 @@ ThemeButton::ThemeButton (PingusMenu* menu_)
   desc = _("..:: Start a contrib level ::..");
 
   line1 = _("Contrib");
-  surface   = PingusResource::load_surface("menu/ice_off", "core");
   surface_p = PingusResource::load_surface("menu/play_on", "core");
 }
 
@@ -410,7 +394,6 @@ MultiplayerButton::MultiplayerButton (PingusMenu* menu_)
     
   line1 = _("Multi");
   
-  surface = PingusResource::load_surface("menu/ice_off", "core");
   surface_p = PingusResource::load_surface("menu/multi_on", "core");
 }
  

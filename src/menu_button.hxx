@@ -1,4 +1,4 @@
-//  $Id: menu_button.hxx,v 1.1 2003/03/18 17:24:55 torangan Exp $
+//  $Id: menu_button.hxx,v 1.2 2003/04/12 13:18:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,6 @@ class PingusMenu;
 class SurfaceButton : public GUI::Component
 {
 protected:
-  CL_Surface surface;
   CL_Surface surface_p;
   CL_Font*    font;
   CL_Font*    font_large;
