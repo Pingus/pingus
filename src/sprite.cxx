@@ -1,4 +1,4 @@
-//  $Id: sprite.cxx,v 1.12 2002/12/28 16:10:17 torangan Exp $
+//  $Id: sprite.cxx,v 1.13 2002/12/28 16:31:37 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -218,7 +218,7 @@ void
 Sprite::update ()
 {
   // FIXME: game_speed is incorrect, but should work
-  update(1.0f/float(game_speed));
+  update(game_speed / 1000.0f);
 }
 
 void
