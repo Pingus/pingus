@@ -1,4 +1,4 @@
-//  $Id: blitter_impl.hxx,v 1.2 2002/10/19 19:40:34 torangan Exp $
+//  $Id: blitter_impl.hxx,v 1.3 2002/10/19 22:22:48 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,7 @@ struct transform_rot180
 struct transform_rot270
 {
   static inline int get_index(int width, int height, int x, int y) { UNUSED_ARG(height);
-    return (x * width) + y;
+    return (x * height) + y;
   }
 
   static inline int get_x(int width, int height, int x, int y) { UNUSED_ARG(width); UNUSED_ARG(height); UNUSED_ARG(x);
