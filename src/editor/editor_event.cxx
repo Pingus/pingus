@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.46 2003/01/27 22:14:51 torangan Exp $
+//  $Id: editor_event.cxx,v 1.47 2003/02/18 00:13:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -183,8 +183,8 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  // Insert a new object, present the ObjectsSelector to select
 	  // one. 
 	case CL_KEY_INSERT:
-	  //editor_insert_new_object();
-          new ObjectSelectorWindow(editor->gui);
+	  editor_insert_new_object();
+          // FIXME: GUI stuff new ObjectSelectorWindow(editor->gui);
 	  break;
     
 	  // Load a level from file.

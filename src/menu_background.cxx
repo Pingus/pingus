@@ -1,4 +1,4 @@
-//  $Id: menu_background.cxx,v 1.4 2002/10/06 19:23:43 torangan Exp $
+//  $Id: menu_background.cxx,v 1.5 2003/02/18 00:13:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,8 @@ void
 MenuBackground::update (float delta)
 {
 #ifndef WIN32
-   layer_manager.update (delta);
+  // FIXME: WIN32 shouldn't be an issue here
+  layer_manager.update (delta);
 #endif
 }
 

@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.129 2003/02/17 18:23:05 grumbel Exp $
+#  $Id: Makefile.am,v 1.130 2003/02/18 00:13:13 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -316,6 +316,8 @@ xml_file_writer.cxx \
 xml_plf.cxx \
 xml_plf.hxx \
 xml_pdf.hxx \
-xml_pdf.cxx
+xml_pdf.cxx \
+xml_reader.hxx \
+xml_reader.cxx
 
 ## EOF ##
