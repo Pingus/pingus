@@ -1,3 +1,4 @@
+* alterration of the lemmings rate
 print version on startup
 ---------------------
 
@@ -315,6 +316,6 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
 
 
 
-$Date: 2001/03/31 11:33:55 $
+$Date: 2001/05/13 18:45:08 $
 
 -= EOF =-

@@ -3,7 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Smashing Zone</levelname>
-    <description lang="en">Whats a nice temple, lets look a little closer...</description>
+    <description lang="en">What a nice temple, let's look a little closer...</description>
     <author></author>
     <number-of-pingus>100</number-of-pingus>
     <number-to-save>50</number-to-save>

@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.31 2001/04/27 20:44:38 grumbel Exp $
+// $Id: EditorObj.cc,v 1.32 2001/05/13 18:45:08 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -255,6 +255,9 @@ EditorObj::gui_edit_obj()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.32  2001/05/13 18:45:08  grumbel
+Some more spelling error fixes by Felix
+
 Revision 1.31  2001/04/27 20:44:38  grumbel
 Some fixes to make it work with g++-3.0 and current ClanLib-CVS
 
@@ -299,7 +302,7 @@ Revision 1.19  2000/10/30 16:17:51  grumbel
 - fixed some resource names to fit the new directory structure
 
 I am now starting to move to the new directory structure and to the png
-files, this will take some time, so expect some throuble when you do a
+files, this will take some time, so expect some trouble when you do a
 cvs update
 
 Revision 1.18  2000/10/18 20:16:36  grumbel

@@ -3,7 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Smashing Zone - DejaVu</levelname>
-    <description lang="en">Hm, this looks exactly the same as the last time, but some one seems to have blocked the way to the exit...</description>
+    <description lang="en">Hm, this looks exactly the same as the last time, but someone seems to have blocked the way to the exit...</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>100</number-of-pingus>
     <number-to-save>50</number-to-save>

@@ -3,7 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Crystals in a cave</levelname>
-    <description lang="en">The exit is low for a jump, whats the work around?</description>
+    <description lang="en">The exit is too low for a jump, what's the work around?</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>60</number-of-pingus>
     <number-to-save>45</number-to-save>

@@ -3,9 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Blockers and crowd control</levelname>
-    <description lang="en">Use a blocker to stop the Pingus walking off the cliff. You
-can make it stop by giving it another job.
-
+    <description lang="en">Use a blocker to keep the Pingus from walking off the cliff. Afterwards you can make them stop by giving them another job.
 </description>
     <author></author>
     <number-of-pingus>100</number-of-pingus>

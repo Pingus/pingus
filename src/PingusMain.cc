@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.25 2001/04/27 20:44:37 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.26 2001/05/13 18:45:08 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -844,7 +844,7 @@ PingusMain::do_lemmings_mode(void)
 	    << ",-------------------------------------------.\n"
 	    << "| Thank you for playing Pingus!             |\n"
 	    << "|                                           |\n"
-	    << "| The newest version can allways be found   |\n"
+	    << "| The newest version can always be found    |\n"
 	    << "| at:                                       |\n"
 	    << "|           http://pingus.seul.org          |\n"
 	    << "|                                           |\n"

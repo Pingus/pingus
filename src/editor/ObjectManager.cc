@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.41 2001/04/21 20:31:53 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.42 2001/05/13 18:45:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,7 @@ void
 ObjectManager::new_level ()
 {
   levelname[default_language] = "EditorDefaultValue: Please give me a name...";
-  description[default_language] = "EditorDefaultValue: ...and a short descriptions";
+  description[default_language] = "EditorDefaultValue: ...and a short description";
 
   author = System::get_username();
 
@@ -269,7 +269,7 @@ ObjectManager::save_level (string filename)
 
   // FIXME: we need some error checking 
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.41 2001/04/21 20:31:53 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.42 2001/05/13 18:45:09 grumbel Exp $\n"
 	  << " */"
 	  << endl;
   

@@ -3,7 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Blocked Exit</levelname>
-    <description lang="en">The exit is surrounded by iron plates, how can they reach it?</description>
+    <description lang="en">The exit is surrounded by iron plates, so how can they reach it?</description>
     <author></author>
     <number-of-pingus>50</number-of-pingus>
     <number-to-save>10</number-to-save>

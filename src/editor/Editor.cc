@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.23 2001/03/18 17:45:05 grumbel Exp $
+//  $Id: Editor.cc,v 1.24 2001/05/13 18:45:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -437,6 +437,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.24  2001/05/13 18:45:08  grumbel
+Some more spelling error fixes by Felix
+
 Revision 1.23  2001/03/18 17:45:05  grumbel
 q&d ported pingus to the newest clanlib cvs, some things like mouse button events are not fully working yet
 
@@ -449,7 +452,7 @@ Revision 1.21  2000/10/30 16:17:50  grumbel
 - fixed some resource names to fit the new directory structure
 
 I am now starting to move to the new directory structure and to the png
-files, this will take some time, so expect some throuble when you do a
+files, this will take some time, so expect some trouble when you do a
 cvs update
 
 Revision 1.20  2000/09/12 11:11:36  grumbel

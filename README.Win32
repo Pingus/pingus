@@ -9,3 +9,5 @@ pingus.dsw
 Registry fix to support *.hh and *.cc files:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 vcfix.reg 
+
+http://www.mvps.org/vcfaq/ide/1.htm

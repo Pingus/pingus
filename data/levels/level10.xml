@@ -3,7 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Beat the pyramid</levelname>
-    <description lang="en">Pingus are captured in agypt and must escape.
+    <description lang="en">The Pingus are captured in Egypt and must escape.
 </description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>100</number-of-pingus>

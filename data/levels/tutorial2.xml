@@ -2,7 +2,7 @@
 
 <pingus-level>
   <global>
-    <levelname lang="en">Tutorial 2 - Miners have fun</levelname>
+    <levelname lang="en">Tutorial 2 - Miners having fun</levelname>
     <description lang="en">Use the miner action and dig into the ground to reach the exit.</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>100</number-of-pingus>

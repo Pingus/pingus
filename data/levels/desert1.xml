@@ -3,7 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Entering the pyramid</levelname>
-    <description lang="en">After their long and dangerous journey throu the desert they finally reach the large pyramid...</description>
+    <description lang="en">After their long and dangerous journey through the desert they finally reach the large pyramid...</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>50</number-of-pingus>
     <number-to-save>30</number-to-save>

@@ -1,7 +1,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Danger at Space Station 6</levelname>
-    <description lang="en">After passing some checkpoints the Pingus finally reach Space Station 6, but the danger has not an end...</description>
+    <description lang="en">After passing some checkpoints the Pingus finally reach Space Station 6, but the danger has no end...</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>100</number-of-pingus>
     <number-to-save>50</number-to-save>

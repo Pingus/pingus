@@ -2,7 +2,7 @@
 
 <pingus-level>
   <global>
-    <levelname lang="en">A Hammer in the Dragon Cave</levelname>
+    <levelname lang="en">A Hammer in the Dragon-Cave</levelname>
     <description lang="en"></description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>100</number-of-pingus>

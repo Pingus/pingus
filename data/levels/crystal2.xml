@@ -3,8 +3,8 @@
 <pingus-level>
   <global>
     <levelname lang="en">Its getting hot...</levelname>
-    <description lang="en">This is one of the first levels, which
-contains an animated background more 
+    <description lang="en">This is one of the first levels with
+an animated background. More 
 animated backgrounds might follow later.
 </description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

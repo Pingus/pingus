@@ -3,7 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Tutorial 4 - Jump for joy</levelname>
-    <description lang="en">If a Pingu reaches a hole apply a Jumper action to it quickly...</description>
+    <description lang="en">If a Pingu reaches a hole, quickly apply a Jumper action to it...</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>50</number-of-pingus>
     <number-to-save>1</number-to-save>

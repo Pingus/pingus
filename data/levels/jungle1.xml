@@ -3,7 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">The jungle / have fun part one</levelname>
-    <description lang="en">Once you'll have passed the aggressive vegetation, the insects, and the altitude, you'll be able to rest as your penguins die of malaria</description>
+    <description lang="en">Once you've passed the aggressive vegetation and the insects, and mastered the altitude, you are able to rest as your penguins die of malaria</description>
     <author>Michael Mestre &lt;mmestre@teaser.fr&gt;</author>
     <number-of-pingus>50</number-of-pingus>
     <number-to-save>30</number-to-save>

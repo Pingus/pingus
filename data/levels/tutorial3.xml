@@ -2,7 +2,7 @@
 
 <pingus-level>
   <global>
-    <levelname lang="en">Tutorial 3 - Build builder build</levelname>
+    <levelname lang="en">Tutorial 3 - Build, builder, build</levelname>
     <description lang="en"></description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>10</number-of-pingus>

@@ -2,7 +2,7 @@
 
 <pingus-level>
   <global>
-    <levelname lang="en">Which exit is correct?</levelname>
+    <levelname lang="en">Which one is the right exit?</levelname>
     <description lang="en">A short demonstartion of the fake exit and of the new water animation.</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>100</number-of-pingus>

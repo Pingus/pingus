@@ -3,7 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Pipe Panic in Penguin World</levelname>
-    <description lang="en">This level show a simple pipe system, which can be created with just a few pipe tiles.</description>
+    <description lang="en">This level shows a simple pipe-system which can be created with just a few pipe-tiles.</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>100</number-of-pingus>
     <number-to-save>50</number-to-save>

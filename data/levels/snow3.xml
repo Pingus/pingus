@@ -2,7 +2,7 @@
 
 <pingus-level>
   <global>
-    <levelname lang="en">Two exits, its up to you</levelname>
+    <levelname lang="en">Two exits, it's up to you</levelname>
     <description lang="en"></description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>100</number-of-pingus>
