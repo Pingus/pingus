@@ -1,4 +1,4 @@
-//  $Id: Sprite.cc,v 1.3 2001/04/06 12:49:19 grumbel Exp $
+//  $Id: Sprite.cc,v 1.4 2001/04/06 13:21:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -159,6 +159,7 @@ Sprite::finished ()
 
     default:
       assert (!"Wrong looptype!");
+      return false;
     }
 }
 

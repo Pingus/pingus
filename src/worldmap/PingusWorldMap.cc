@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.16 2001/04/06 12:49:20 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.17 2001/04/06 13:21:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,9 @@
 #include "PingusWorldMap.hh"
 
 PingusWorldMap::PingusWorldMap (std::string filename)
+  : green_flag ("worldmap/flaggreen", "core")
 {
+  green_flag.set_align (-24, -36);
   green_dot  = PingusResource::load_surface ("Game/dot_green", "game");
   red_dot    = PingusResource::load_surface ("Game/dot_red", "game");
   dot_border = PingusResource::load_surface ("Game/dot_border", "game");
@@ -154,6 +156,8 @@ PingusWorldMap::start_level (PingusWorldMapNode* node)
       game.start ();
       if (game.get_results ().finished ())
 	{
+	  node->finished = true;
+	  
 	  for (list<int>::iterator k = node->links.begin();
 	       k != node->links.end();
 	       ++k)
@@ -197,6 +201,10 @@ PingusWorldMap::draw ()
 	    {
 	      green_dot.put_screen ((i->pos.x - (red_dot.get_width()/2)) * x_scale,
 				    (i->pos.y - (red_dot.get_height()/2)) * y_scale);
+	      if (i->finished) {
+		green_flag.put_screen (i->pos.x * x_scale,
+				       i->pos.y * y_scale);
+	      }
 	    }
 	  else
 	    {

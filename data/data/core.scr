@@ -103,4 +103,12 @@ section misc
 	smallmap_exit     = images/core/misc/smallmap_exit.png     (type=surface, x=0, y=0, width=6, height=6, tcol=0);
 }
 
+section worldmap
+{
+	dot_green = images/core/worldmap/dot_green.png (type=surface, x=0, y=0, width=32, height=12);
+        dot_red = images/core/worldmap/dot_red.png (type=surface, x=0, y=0, width=32, height=12);
+        dot_border = images/core/worldmap/dot_border.png (type=surface, x=0, y=0, width=34, height=14, tcol=0);
+	flaggreen = images/core/worldmap/flaggreen.png (type=surface, x=0, y=0, width=27, height=38);
+}
+
 // EOF //

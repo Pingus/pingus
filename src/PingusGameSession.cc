@@ -1,4 +1,4 @@
-//  $Id: PingusGameSession.cc,v 1.1 2001/04/06 12:49:19 grumbel Exp $
+//  $Id: PingusGameSession.cc,v 1.2 2001/04/06 13:21:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,6 +55,7 @@ PingusGameSession::start ()
 PingusGameSessionResults 
 PingusGameSession::get_results ()
 {
+  return PingusGameSessionResults ();
 }
 
 /* EOF */
