@@ -230,7 +230,7 @@
             <z-pos>150</z-pos>
           </position>
         </dot>
-        <levelname>tutorial/snow22-grumbel</levelname>
+        <levelname>tutorial/snow12-grumbel</levelname>
       </leveldot>
 
 
@@ -282,7 +282,7 @@
             <z-pos>0</z-pos>
           </position>
         </dot>
-        <levelname>tutorial/snow12-grumbel</levelname>
+        <levelname>tutorial/snow22-grumbel</levelname>
       </leveldot>
 
     </nodes>

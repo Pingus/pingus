@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-06 00:38+0200\n"
+"POT-Creation-Date: 2003-04-06 14:45+0200\n"
 "PO-Revision-Date: 2003-04-02 16:32+0200\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: Ingo Ruhnke <grumbel@gmx.de>, Giray Devlet <giray@devlet.cc>\n"
@@ -1201,7 +1201,11 @@ msgstr "Autor: "
 msgid "Filename: "
 msgstr "Dateiname: "
 
-#: src/story.cxx:40
+#: src/story.cxx:37
+msgid "The Journey Continues"
+msgstr ""
+
+#: src/story.cxx:41
 msgid ""
 "Now after you and the Pingus have learned the basics and\n"
 "practiced a bit it is time to move on and begin the journey into\n"
@@ -1211,7 +1215,7 @@ msgid ""
 "there on there journey.\n"
 msgstr ""
 
-#: src/story.cxx:50
+#: src/story.cxx:51
 msgid ""
 "But as the eldest have said, the Tutorial Island provides not\n"
 "only a way to practive, but it is also the starting point into\n"
@@ -1219,7 +1223,7 @@ msgid ""
 "island is brings good wood to construct a float.\n"
 msgstr ""
 
-#: src/story.cxx:58
+#: src/story.cxx:59
 msgid ""
 "So the Pingus set out and constructed a some large floats, enough\n"
 "to carry them all. After also packaging up a bunch of provisions\n"
@@ -1228,7 +1232,7 @@ msgid ""
 "world.\n"
 msgstr ""
 
-#: src/story.cxx:67
+#: src/story.cxx:68
 msgid ""
 "So the Pingus sat on there float, worrying whats to come and\n"
 "where to go, while floating into the sunset.\n"
@@ -1236,7 +1240,11 @@ msgid ""
 "To be continued..."
 msgstr ""
 
-#: src/story.cxx:81
+#: src/story.cxx:79
+msgid "The Journey Begins"
+msgstr ""
+
+#: src/story.cxx:83
 msgid ""
 "For a long time now the Pingus have lived happily in peace on the\n"
 "south pole along with all the other animals, everything was in\n"
@@ -1244,7 +1252,7 @@ msgid ""
 "Pingus where happy and it seemed like this could never end.\n"
 msgstr ""
 
-#: src/story.cxx:89
+#: src/story.cxx:91
 msgid ""
 "But then one day, things began to change slowly, the sky got darker\n"
 "and the earth got warmer, first of they thought this was just a\n"
@@ -1252,7 +1260,7 @@ msgid ""
 "worse and worse with every year."
 msgstr ""
 
-#: src/story.cxx:98
+#: src/story.cxx:100
 msgid ""
 "The snow began to melt away in a few regions and food became an\n"
 "issue. Other animals already tend to leave the region to search\n"
@@ -1260,7 +1268,7 @@ msgid ""
 "they knew that they had to do something about this problem."
 msgstr ""
 
-#: src/story.cxx:106
+#: src/story.cxx:108
 msgid ""
 "So the circle of the eldest came together to decide what to do\n"
 "about it. They decided to send out an expedition around the world\n"
@@ -1268,7 +1276,7 @@ msgid ""
 "hundreds of the bravest Pingus around on the south pole."
 msgstr ""
 
-#: src/story.cxx:114
+#: src/story.cxx:116
 msgid ""
 "And they picked you to lead them on there journey around the\n"
 "world. Since the journey will be dangerous and difficult. Your\n"
@@ -1277,7 +1285,7 @@ msgid ""
 "first stop of Pingus which where send out into the world."
 msgstr ""
 
-#: src/story.cxx:123
+#: src/story.cxx:125
 msgid ""
 "The island consists of many regions which are ideally to train the\n"
 "abilities of the Pingus. The Pingus can train there their ability\n"
@@ -1285,7 +1293,7 @@ msgid ""
 "which they will surly need on there long and dangerous journey."
 msgstr ""
 
-#: src/story.cxx:131
+#: src/story.cxx:133
 msgid ""
 "While you on the other site can practice there your ability to\n"
 "command and guide the Pingus. You can also get familiar there with\n"
@@ -1294,7 +1302,7 @@ msgid ""
 "world."
 msgstr ""
 
-#: src/story.cxx:140
+#: src/story.cxx:142
 msgid ""
 "Now that you and the Pingus have arrive at tutorial island it\n"
 "is time to take over the command and begin your mission\n"

@@ -15,28 +15,6 @@ Major Items:
 * multiplayer mode should be ripped out if not working correctly (will
    be ripied out)
 
-* meta objects [nearly done]:
-
-  Syntax of a metaobject file:
-
-  <pingus-metaobject>
-	<worldobj type="...">
-        ...
-	</worldobj>
-	<worldobj type="...">
-        ...
-	</worldobj>
-        ...
-  </pingus-metaobject>
-
-  Syntax of a metaobject in a level file:
-
-  <metaobject type="bla.xml">
-	<parameter>
-	
-	</parameter>
-  </metaobject>
-
 * fix all major action bugs [mostly done, needs more testing]
 
 * resource syntax change [not done]
@@ -222,7 +200,7 @@ Random crash while scrolling
 'grep' at the sources for "Bug" or "FIXME" that should give you some
 more known bugs and other stuff. 
 
-$Date: 2003/02/17 18:00:27 $
+$Date: 2003/04/07 11:58:19 $
 
 =======
 

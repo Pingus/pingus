@@ -2,7 +2,7 @@
 
 <pingus-level>
   <global>
-    <levelname lang="en">If to high, your Pingu will die...</levelname>
+    <levelname lang="en">If too high, your Pingu will die...</levelname>
     <levelname lang="de">Zu hoch und dein Pingu wird sterben...</levelname>
 
     <description lang="en">Teamwork is the way to the exit this time. You don't have enough

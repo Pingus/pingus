@@ -1,4 +1,4 @@
-//  $Id: story.cxx,v 1.17 2003/04/06 12:40:47 grumbel Exp $
+//  $Id: story.cxx,v 1.18 2003/04/07 11:58:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -130,7 +130,7 @@ Story::init_intro()
   intro.pages.push_back
     (StoryPage
      (ResDescriptor("Story/story6", "story"), 
-      _("While you on the other site can practice there your ability to\n"
+      _("While you on the other side can practice there your ability to\n"
         "command and guide the Pingus. You can also get familiar there with\n"
         "all the abilities the Pingus provide and learn to master them,\n"
         "since you will need them all for sure an your journey around the\n"
