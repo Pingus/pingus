@@ -1,4 +1,4 @@
-//  $Id: button_event.hxx,v 1.4 2002/09/27 11:26:46 torangan Exp $
+//  $Id: button_event.hxx,v 1.5 2002/10/29 17:47:15 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,8 @@
 namespace Input {
 
   enum ButtonName { primary, secondary, pause, fast_forward, armageddon, escape, action_1, action_2,
-                    action_3, action_4, action_5, action_6, action_7, action_8, action_9, action_10 };
+                    action_3, action_4, action_5, action_6, action_7, action_8, action_9, action_10,
+		    action_up, action_down };
 
   enum State { pressed, released };
 

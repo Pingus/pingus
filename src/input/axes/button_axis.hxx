@@ -1,4 +1,4 @@
-//  $Id: button_axis.hxx,v 1.3 2002/09/27 11:26:47 torangan Exp $
+//  $Id: button_axis.hxx,v 1.4 2002/10/29 17:47:15 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,9 +36,9 @@ namespace Input {
     class ButtonAxis : public Axis {
 
     private:
-      float   pos;
-      float   angle;
-    
+      float pos;
+      float angle;
+
       Button* const button1;
       Button* const button2;
     

@@ -1,4 +1,4 @@
-//  $Id: axis_factory.cxx,v 1.12 2002/09/28 19:31:06 torangan Exp $
+//  $Id: axis_factory.cxx,v 1.13 2002/10/29 17:47:15 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "axes/joystick_axis.hxx"
 #include "axes/mouse_axis.hxx"
 #include "axes/multiple_axis.hxx"
+#include "../debug.hxx"
 
 namespace Input {
 

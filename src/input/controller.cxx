@@ -1,4 +1,4 @@
-//  $Id: controller.cxx,v 1.23 2002/09/11 13:16:45 grumbel Exp $
+//  $Id: controller.cxx,v 1.24 2002/10/29 17:47:15 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,8 +40,7 @@ namespace Input {
   using namespace Pointers;
   using namespace Scrollers;
 
-  Controller::Controller (const std::string& configfile) : action_axis(0),
-                                                           standard_pointer(0), 
+  Controller::Controller (const std::string& configfile) : standard_pointer(0), 
 							   scroller(0),
 							   std_pointer_x(0),
 							   std_pointer_y(0)
@@ -97,8 +96,11 @@ namespace Input {
 	else if (XMLhelper::equal_str(cur->name, "action-buttons"))
 	  create_action_buttons(XMLhelper::skip_blank(cur->children));
 	
-	else if (XMLhelper::equal_str(cur->name, "action-axis"))
-	  action_axis = AxisFactory::create(XMLhelper::skip_blank(cur->children));
+	else if (XMLhelper::equal_str(cur->name, "action-up"))
+	  buttons[action_up].first = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
+	
+	else if (XMLhelper::equal_str(cur->name, "action-down"))
+	  buttons[action_down].first = ButtonFactory::create(XMLhelper::skip_blank(cur->children));
 	  
 	else
 	  PingusError::raise(std::string("Unkown Element in Controller Config: ") + ((cur->name) ? reinterpret_cast<const char*>(cur->name) : ""));
@@ -121,12 +123,6 @@ namespace Input {
       {
         scroller = new DummyScroller;
 	pwarn << "Controller: No scroller - inserting dummy" << std::endl;
-      }
-      
-    if (!action_axis)
-      {
-        action_axis = new DummyAxis;
-	pwarn << "Controller: No action axis button - inserting dummy" << std::endl;
       }
       
     if (!buttons.count(primary))
@@ -163,6 +159,18 @@ namespace Input {
       {
         buttons[escape].first = new DummyButton;
 	pwarn << "Controller: No escape button - inserting dummy" << std::endl;
+      }
+      
+    if (!buttons.count(action_up))
+      {
+        buttons[action_up].first = new DummyButton;
+	pwarn << "Controller: No action up button - inserting dummy" << std::endl;
+      }
+      
+    if (!buttons.count(action_down))
+      {
+        buttons[action_down].first = new DummyButton;
+	pwarn << "Controller: No action down button - inserting dummy" << std::endl;
       }
 
     for (std::map<ButtonName, std::pair<Button*, bool> >::iterator it = buttons.begin(); it != buttons.end(); ++it)
@@ -202,7 +210,6 @@ namespace Input {
 
     scroller        ->update(delta);
     standard_pointer->update(delta);
-    action_axis     ->update(delta);
 
     for (std::map<ButtonName, std::pair<Button*, bool> >::iterator it = buttons.begin(); it != buttons.end(); ++it)
       it->second.first->update(delta);
@@ -227,10 +234,6 @@ namespace Input {
 	  else
 	    events.push_back(new ButtonEvent(it->first, released));
 	}
-    
-    const float& temp = action_axis->get_pos();
-    if (temp)
-      events.push_back(new AxisEvent(temp));
   }
 
   const Button*

@@ -27,13 +27,6 @@
       <key-button key="ESCAPE"/>
     </escape-button>
 
-    <action-axis>
-      <button-axis angle="0">
-	<key-button key="B"/>
-	<key-button key="C"/>
-      </button-axis>
-    </action-axis>
-
     <scroller>
       <axis-scroller speed="1000">
         <button-axis angle="90">
@@ -60,12 +53,13 @@
       <action-button><key-button key="0"/></action-button>
     </action-buttons>
 
-    <action-axis>
-      <button-axis angle="0">
-        <key-button key="PAGEDOWN"/>
-        <key-button key="PAGEUP"/>
-      </button-axis>
-    </action-axis>
+    <action-up>
+      <key-button key="PAGEUP"/>
+    </action-up>
+
+    <action-down>
+      <key-button key="PAGEDOWN"/>
+    </action-down>
 
   </controller-config>
 </pingus-controller>

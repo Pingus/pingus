@@ -1,4 +1,4 @@
-//  $Id: controller.hxx,v 1.14 2002/09/27 11:26:46 torangan Exp $
+//  $Id: controller.hxx,v 1.15 2002/10/29 17:47:15 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,6 @@ namespace Input {
   class Controller {
 
     private:
-      Axis*     action_axis;
       Pointer*  standard_pointer;
       Scroller* scroller;
     
@@ -56,7 +55,6 @@ namespace Input {
       
       const Pointer * get_pointer     () const { return standard_pointer; }
       const Scroller* get_scroller    () const { return scroller;         }
-      const Axis    * get_action_axis () const { return action_axis;      }
 
       /// returns the requested Buttons::Button or 0 if it doesn't exist (e.g. undefined action Buttons::Button)
       const Button* get_button (ButtonName name);
