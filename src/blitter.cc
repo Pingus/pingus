@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.35 2002/01/22 22:17:41 grumbel Exp $
+//  $Id: blitter.cc,v 1.36 2002/01/22 22:48:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -343,9 +343,9 @@ Blitter::create_canvas(CL_SurfaceProvider* prov)
 	    tbuffer[ti + 3] = sbuffer[si + 2];
 	  }
 	  
-	// FIXME: Memory hole
-	//prov->unlock();
-	//canvas->unlock();
+	// -FIXME: Memory hole
+	prov->unlock();
+	canvas->unlock();
       }
       break;
 
@@ -354,9 +354,9 @@ Blitter::create_canvas(CL_SurfaceProvider* prov)
       prov->lock();
       memcpy(canvas->get_data(), prov->get_data(),
  	     sizeof(unsigned char) * prov->get_height() * prov->get_pitch());
-      // FIXME: Memory hole
-      //prov->unlock();
-      //canvas->unlock();
+      // -FIXME: Memory hole
+      prov->unlock();
+      canvas->unlock();
       break;
 
     default:

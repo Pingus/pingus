@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.cc,v 1.13 2001/11/30 20:22:20 grumbel Exp $
+//  $Id: XMLhelper.cc,v 1.14 2002/01/22 22:48:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -217,9 +217,17 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 		      if (filename) 
 			{
 			  desc.res_name = filename;
+			  desc.type = ResDescriptor::RD_FILE;
 			  free(filename);
-			}		      
+			}       
 		    }
+		  else
+		    {
+		      std::cout << __FILE__ ":"
+				<<__FUNCTION__ << ":" 
+				<< __LINE__ << ": unhandled: " << ccur->name << std::endl;
+		    }
+		  ccur = ccur->next;
 		}
 	    }
 	  else if (strcmp(type, "datafile") == 0)

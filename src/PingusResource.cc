@@ -1,4 +1,4 @@
-//  $Id: PingusResource.cc,v 1.24 2002/01/13 15:24:18 grumbel Exp $
+//  $Id: PingusResource.cc,v 1.25 2002/01/22 22:48:05 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include <iostream>
 #include <ClanLib/png.h>
 
+#include "System.hh"
 #include "PathManager.hh"
 #include "PingusError.hh"
 #include "globals.hh"
@@ -148,12 +149,17 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
 	  return surf;
 	  
 	case ResDescriptor::RD_FILE:
-	  // FIXME: Memory leak?
-	  std::cout << "PingusResource::load_surface(" << res_desc.res_name << ")" << std::endl;
-	  surf = CL_Surface(new CL_PNGProvider(res_desc.res_name, NULL), false);
-	  std::cout << "DONE" << std::endl;
-	  surface_map[res_desc] = surf;
-	  return surf;
+	  {
+	    std::string filename = System::get_statdir() + "images/" + res_desc.res_name;
+	    // FIXME: Memory leak?
+	    std::cout << "PingusResource::load_surface(" << res_desc.res_name << ")" << std::endl;
+	    // FIXME: Add pcx, jpeg, tga support here 
+	    surf = CL_Surface(new CL_PNGProvider(filename,
+						 NULL), false);
+	    std::cout << "DONE" << std::endl;
+	    surface_map[res_desc] = surf;
+	    return surf;
+	  }
 	  
 	case ResDescriptor::RD_AUTO:
 	  std::cerr << "PingusResource: ResDescriptor::AUTO not implemented" << std::endl;
