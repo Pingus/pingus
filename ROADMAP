@@ -49,6 +49,13 @@ Major Items:
   - all docu should be included in the tarball (source code docu might
     only be on the webpage due to space issues)
 
+- why the f*** is GameTime a class with static member function?! It
+  should be a normal non-static class and placed in World.
+
+- temporary saving should be reworked
+
+- duplicating multilpe iceblocks leads to a crash
+
 - seperate colmap and gfx remover surfaces for digger, miner, etc. would be nice
   the current ones don't work very good since the remove path is too smooth
   - keep_trans,alpha blitters would also be very nice (darken the border of a digging path or something like that)

@@ -1,4 +1,4 @@
-//  $Id: IceBlock.hh,v 1.17 2002/01/15 10:48:53 grumbel Exp $
+//  $Id: IceBlock.hh,v 1.18 2002/02/18 10:24:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,8 @@ public:
   CL_Vector pos;
   /** The number of iceblocks, only complete blocks are supported */
   int width;
+
+  int last_contact;
 
   IceBlockData ();
 

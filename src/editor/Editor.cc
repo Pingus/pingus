@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.38 2002/02/11 00:10:29 grumbel Exp $
+//  $Id: Editor.cc,v 1.39 2002/02/18 10:24:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -477,6 +477,11 @@ void
 Editor::load_level (const std::string& str)
 {
   std::cout << "Editor::load_level(" << str << std::endl;
+
+  // last_level = str; FIXME: we don't save the last level, since the
+  // filename could be relative, insert a relative->absolute converter
+  // and we might save it.
+
   object_manager->load_level(str);
 }
 

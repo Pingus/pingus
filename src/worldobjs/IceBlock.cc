@@ -1,4 +1,4 @@
-//  $Id: IceBlock.cc,v 1.22 2002/01/15 10:48:53 grumbel Exp $
+//  $Id: IceBlock.cc,v 1.23 2002/02/18 10:24:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 #include "../PingusResource.hh"
 #include "../XMLhelper.hh"
 #include "../GroundpieceData.hh"
+#include "../PinguMap.hh"
+#include "../GameTime.hh"
 #include "IceBlock.hh"
 
 IceBlockData::IceBlockData ()
@@ -91,6 +93,7 @@ IceBlock::IceBlock (const IceBlockData& data)
   block_sur = PingusResource::load_surface ("iceblock", "worldobjs");
   thickness = 1.0;
   is_finished = false;
+  last_contact = 0;
 }
 
 ///
@@ -127,17 +130,22 @@ IceBlock::update(float delta)
       if ((*pingu)->get_x() > pos.x && (*pingu)->get_x() < pos.x + block_sur.get_width()
 	  && (*pingu)->get_y() > pos.y - 4 && (*pingu)->get_y() < pos.y + block_sur.get_height())
 	{
-	  //std::cout << "IceBlock: Catched Pingu: " << thickness  << std::endl;
-	  thickness -= 0.02f;
+	  last_contact = GameTime::get_time ();
+	}
+    }
 
-	  if (thickness < 0.0)
-	    {
-	      is_finished = true;
-	      thickness = 0.0;
-	      CL_Surface surf(PingusResource::load_surface("iceblock_cmap", "worldobjs"));
-	      world->get_colmap()->remove(surf, (int)pos.x, (int)pos.y);
-	      return;
-	    }
+  if (last_contact && last_contact + 1000 > GameTime::get_time ())
+    {
+      //std::cout << "IceBlock: Catched Pingu: " << thickness  << std::endl;
+      thickness -= 0.01f;
+
+      if (thickness < 0.0)
+	{
+	  is_finished = true;
+	  thickness = 0.0;
+	  CL_Surface surf(PingusResource::load_surface("iceblock_cmap", "worldobjs"));
+	  world->get_colmap()->remove(surf, (int)pos.x, (int)pos.y);
+	  world->get_gfx_map()->remove(surf, (int)pos.x, (int)pos.y);
 	  return;
 	}
     }
