@@ -12,6 +12,7 @@
     <levelname lang="fi">Yksi selvittää reitin, muut seuraavat perässä</levelname>
     <levelname lang="pt">Um precisa de preparar, o resto de o seguir</levelname>
     <levelname lang="no">En må gjøre det klart, resten må følge etter</levelname>
+    <levelname lang="es">Uno prepara, el resto le sigue</levelname>
 
     <description lang="en">Sometimes there are situations where you don't have a Blocker at
                            hand to coordinate your Pingus. You'll have to find other ways to
@@ -55,7 +56,12 @@
     <description lang="no">Noen ganger er det situasjoner der du ikke har en Blocker tilgjengelig
                            til å koordinere Pingusene dine. Du må finne andre måter å kontrollere
                            dem mens en enkelt klargjør veien for de andre.
-    </description> 
+    </description>
+    <description lang="es">A veces hay situacion en que no tiene un Bloqueador a mano
+    			   para coordinar a tus pingüinos. Debes encontrar otras formas para
+			   mantenerlos bajo control mientras uno de ellos prepara el camino para
+			   el resto.
+   </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>20</number-of-pingus>

@@ -12,6 +12,7 @@
     <levelname lang="fi">Kaksi ryhm‰‰ rinnakkain, koordinoi viisaasti</levelname>
     <levelname lang="pt">Dois grupos em paralelo, cordena-os sabiamente</levelname>
     <levelname lang="no">To grupper i parallel, koordiner smart</levelname>
+    <levelname lang="es">Dos grupos en paralelo, coordinados sabiamente</levelname>
 
     <description lang="en">You have two groups to coordinate this time. No need to panic, since
                            this level gives you enough time to think your actions through. No
@@ -52,6 +53,10 @@
     <description lang="no">Du har to grupper Â koordinere denne gangen. Ingen grunn til panikk, siden
                            dette brettet gir deg nok tid til Â tenke gjennom handlingene dine. Ingen
                            flere tips denne gangen, men lykke til!
+    </description>
+    <description lang="es">Ahora tienes que coordinar a dos grupos simultaneamente. No te preocupes,
+    			   porque Èste nivel te d· tiempo suficiente para pensar que vas a hacer.
+			   Se acabaron los consejos por ahora, buena suerte !
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

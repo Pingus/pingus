@@ -12,6 +12,7 @@
     <levelname lang="fi">Opettele rakentamaan siltoja</levelname>
     <levelname lang="pt">Aprendendo a usar a ponte</levelname>
     <levelname lang="no">Lær og bruke broen</levelname>
+    <levelname lang="es">Aprende a construir puentes</levelname>
 
     <description lang="en">If no Jumper is at hand and a large hole needs to be passed, a bridge
 			   can be pretty helpful. It takes some time to build, but unlike the
@@ -57,6 +58,11 @@
     <description lang="no">Hvis du ikke har en Jumper tilgjengelig og du trenger å passere et stort
                            hull, kan en bro være ganske hjelpsom. Den tar litt tid å bygge, men i forhold
                            til Jumper handlingen tillater den også de følgende Pingusene å nå den andre enden.
+    </description>
+    <description lang="es">Si no tienes Saltadores a mano y necesitas superar un gran agujero, un puente
+    			   puede ser algo muy práctico. Toma algo de tiempo construirlo, pero al contrario
+			   que el Saltador, ésta habilidad permite que los pingüinos que siguen puedan llegar
+			   al final.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

@@ -12,6 +12,7 @@
     <levelname lang="fi">Louhijan toiveuni</levelname>
     <levelname lang="pt">Paraíso dos Mineiros</levelname>
     <levelname lang="no">Gruvearbeiderens himmel</levelname>
+    <levelname lang="es">El paraiso de los mineros</levelname>
 
     <description lang="en">Another action hits the street - another digging action, this
                            time a diagonal one. It allows a Pingu to dig diagonally through
@@ -59,6 +60,10 @@
     <description lang="no">En ny handling ser dagens lys - en ny grave handling, denne gangen en
                            diagonal en. Den lar en Pingu grave diagonalt gjennom bakken, slik at
                            den lager en vei for Pingusene som kommer etter. Handlingen kalles Miner.
+    </description>
+    <description lang="es">De nuevo llega una habilidad distinta para excavar, en éste caso, en diagonal.
+                           Permite a un Pingüino excavar en diagonal a través del suelo, creando un camino
+			   para seguir a los pingüinos. La habilidad se llamaba 'Minero'.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

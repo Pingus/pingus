@@ -12,6 +12,7 @@
     <levelname lang="fi">Kolme ratkaisua, valitse minkä haluat</levelname>
     <levelname lang="pt">Três soluções, agora é contigo</levelname>
     <levelname lang="no">Tre løsninger, det er opp til deg</levelname>
+    <levelname lang="es">Tres posibilidades, tu eliges</levelname>
 
     <description lang="en">Now that you've learned all the actions, it's time for some
                            more practice. This levels presents you with at least three
@@ -52,6 +53,10 @@
     <description lang="no">Nå som du har lært alle handlingene er det på tide å øve litt mer.
                            Det er minst tre måter å løse dette brettet på. Hvilken du velger
                            er opp til deg.
+    </description>
+    <description lang="es">Ahora que ya has aprendido todas las habilidades, es hora de algo
+                           más de práctica. Éstos niveles te permite al menos tres formas
+			   distintas de solucionarlos. A tu elección.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

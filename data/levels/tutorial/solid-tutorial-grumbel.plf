@@ -12,6 +12,7 @@
     <levelname lang="fi">Maasto voi tukkia tien</levelname>
     <levelname lang="pt">Piso sólido pode bloquear a passagem</levelname>
     <levelname lang="no">Fast grunn kan blokkere veien</levelname>
+    <levelname lang="es">El terreno duro puede bloquear el camino</levelname>
 
     <description lang="en">As you have learned in earlier levels your Pingus can dig through
                            basically any terrain, but there is one material which they can't
@@ -71,6 +72,10 @@
                            nesten hvilket som helst terreng, men det er et materiale de ikke kan
                            komme gjennom: stål. Disse områdene er merket mørk grå på kartet og
                            kan ikke bli ødelagt, så du må finne en vei utenom.
+    </description>
+    <description lang="es">Como ya has visto, tus pingüinos pueden excavar casi cualquier tipo de terreno, excepto
+                           uno : el acero. Éstos terrenos se muestran en color gris, y deberás encontrar alguna
+			   forma de sortearlos.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

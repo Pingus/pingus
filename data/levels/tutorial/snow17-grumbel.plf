@@ -12,6 +12,7 @@
     <levelname lang="fi">Liian korkea pudotus vaarantaa terveytesi...</levelname>
     <levelname lang="pt">Se for muito alto, os teus Pingus irão morrer...</levelname>
     <levelname lang="no">For høyt, og Pingusene dine vil dø...</levelname>
+    <levelname lang="es">Si caen de muy alto, tus pingüinos morirán...</levelname>
 
     <description lang="en">Teamwork is the way to the exit this time. You don't have enough
                            Floaters to reach the exit, so just send a few and let them
@@ -51,6 +52,10 @@
     </description>
     <description lang="no">Samarbeid er veien til utgangen denne gangen. Du har ikke nok Floatere
                            til å nå utgangen, så du må sende noen få og la dem klargjøre veien for resten.
+    </description>
+    <description lang="es">El trabajo en equipo es la forma de alcanzar el éxito ésta vez. Si no tienes
+                           suficientes Voladores para alcanzar la salida, envia unos cuantos y haz que preparen
+			   el camino para el resto
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

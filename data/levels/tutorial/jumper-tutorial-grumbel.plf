@@ -13,6 +13,7 @@
     <levelname lang="fi">Hypi riemusta</levelname>
     <levelname lang="pt">Salta por prazer</levelname>
     <levelname lang="no">Hopp av glede</levelname>
+    <levelname lang="es">Saltar por placer</levelname>
 
     <description lang="cs">Nekdy se pingove potrebuji dostat na plosinu, ktera je sice jen kousek
                            od nich, ale nelze na ni dojit. Pak prijde vhod skakani, ktere
@@ -58,6 +59,10 @@
     <description lang="no">Noen ganger trenger en Pingu å nå en plattform som er langt borte, men
                            ikke kan nås ved å gå. Det er da en Jumper er hendig - den tillater
                            Pingusen å gjøre et lite hopp som gjør at den kan nå plattformen.
+    </description>
+    <description lang="es">A veces un pingüino necesita alcanzar una plataforma lejana, pero
+                           no puede llegar andando. Entonces es cuando el Saltador viene de perlas, ya que
+			   permite al pingüino efectuar un pequeño salto y permitirle alcanzar la plataforma.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>

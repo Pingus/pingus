@@ -12,6 +12,7 @@
     <levelname lang="fi">Mutkikkaampaa siltailua...</levelname>
     <levelname lang="pt">A construção começa a complicar...</levelname>
     <levelname lang="no">Brobygging blir mer komplisert...</levelname>
+    <levelname lang="es">Construir se complica...</levelname>
 
     <description lang="en">Once again you have to combine actions carefully and wisely. If you
                            don't you could end up in the hole just before the exit, so
@@ -51,6 +52,10 @@
     </description>
     <description lang="no">Nok en gang må du kombinere handlinger nøye og klokt. Hvis ikke kan du
                            ende opp i hullet rett før utgangen, så tenk på hvordan du kan unngå det.
+    </description>
+    <description lang="es">Nuevamente, tienes que combinar tus acciones con cuidado y sabiamente;
+                          si no, puedes acabar en la fosa que hay justo delante de la sali, así
+			  que piensa como evitarlo.
     </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
