@@ -1,4 +1,4 @@
-//  $Id: SurfaceSelector.cc,v 1.10 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: SurfaceSelector.cc,v 1.11 2001/05/15 21:34:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,8 @@ SurfaceSelector::SurfaceSelector(vector<surface_obj>* s)
   y_of = 0;
   sur_list = s;
   font = PingusResource::load_font("Fonts/courier_small", "fonts");
+
+  c_obj = vector<surface_obj>::iterator ();
 
   width = CL_Display::get_width() - (CL_Display::get_width() % 50);
   height = (sur_list->size() / (CL_Display::get_width() / 50)) * 50;
@@ -70,7 +72,19 @@ void
 SurfaceSelector::draw()
 {
   // FIXME: This could heavily optimized if ClanLib would have a put_target(x,y,w,h)
-  vector<surface_obj>::iterator c_obj = get_current_obj();
+  vector<surface_obj>::iterator tmp_obj = get_current_obj ();
+  
+  if (c_obj != tmp_obj)
+    {
+      if (tmp_obj != vector<surface_obj>::iterator ())
+	tmp_obj->display_time = CL_System::get_time ();
+      
+      if (c_obj != vector<surface_obj>::iterator ())
+	c_obj->display_time = 0;
+    }
+  
+  c_obj = tmp_obj;
+
   int x = 0;
   int y = -y_of;
 
@@ -109,13 +123,22 @@ SurfaceSelector::draw()
   //CL_Display::get_width(), y+1/10,
   //1.0, 1.0, 1.0, 1.0);
 
-  // Draw the current object in the bottom/left corner
-  if (c_obj != vector<surface_obj>::iterator())
+  // Draw the current object in the bottom/left corner when the
+  // surface is selected for more then 1sec
+  if (c_obj != vector<surface_obj>::iterator()
+      && (c_obj->display_time + 350 < CL_System::get_time ()
+	  || c_obj->large_sur))
     {
-      CL_Display::fill_rect(0, CL_Display::get_height() - c_obj->sur.get_height(),
-			    c_obj->sur.get_width(), CL_Display::get_height(),
+      if (!c_obj->large_sur)
+	{
+	  std::cout << "Loading: " << c_obj->name << " " << c_obj->datafile << std::endl;
+	  c_obj->large_sur = PingusResource::load_surface (c_obj->name, c_obj->datafile);
+	}
+
+      CL_Display::fill_rect(0, CL_Display::get_height() - c_obj->large_sur.get_height(),
+			    c_obj->large_sur.get_width(), CL_Display::get_height(),
 			    0.5, 0.5, 0.5, 0.8);
-      c_obj->sur.put_screen(0, CL_Display::get_height() - c_obj->sur.get_height());
+      c_obj->large_sur.put_screen(0, CL_Display::get_height() - c_obj->large_sur.get_height());
     }
   Display::flip_display();
 }

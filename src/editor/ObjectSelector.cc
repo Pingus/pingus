@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.43 2001/05/15 17:59:46 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.44 2001/05/15 21:34:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -419,6 +419,7 @@ ObjectSelector::select_surface(std::string resource_file)
     {
       ++j;
       sur_obj.name = *i;
+      sur_obj.datafile = resource_file;
       sur_obj.sur = ThumbCache::load (*i, resource_file);
 
       if (sur_obj.sur == 0)
@@ -476,6 +477,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.44  2001/05/15 21:34:03  grumbel
+Added enlargement of object previews to the editor
+
 Revision 1.43  2001/05/15 17:59:46  grumbel
 - added some removeable groundpieces
 - fixed a segfault-bug in the editor

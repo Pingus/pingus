@@ -1,4 +1,4 @@
-//  $Id: SurfaceSelector.hh,v 1.5 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: SurfaceSelector.hh,v 1.6 2001/05/15 21:34:03 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,15 @@ struct surface_obj
   ///
   CL_Surface sur;
   ///
+  CL_Surface large_sur;
+  ///
   std::string      name;
+  ///
+  std::string datafile;
+
+  /** The time the small tumbnail was selected, when the mouse is
+      longer than 1sec above the surface it will be enlarged */
+  unsigned int display_time;
 };
 
 ///
@@ -53,6 +61,8 @@ private:
   void scroll();
   ///
   std::vector<surface_obj>::iterator get_current_obj();
+
+  std::vector<surface_obj>::iterator c_obj;
 public:
   ///
   SurfaceSelector(std::vector<surface_obj>*);
