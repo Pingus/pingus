@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.35 2003/03/05 19:55:14 grumbel Exp $
+//  $Id: xml_plf.cxx,v 1.36 2003/03/30 20:43:52 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,21 +34,18 @@ using Actions::action_from_string;
 
 XMLPLF::XMLPLF (const std::string& arg_filename)
 {
-  //  std::cout << "----- Parsing .xml file" << std::endl;
-  //std::cout << "--- Checksum: " << std::flush;
-  std::string str = System::checksum (arg_filename);
-  //std::cout << str << std::endl;
+  filename = arg_filename;
+  std::string str = System::checksum (filename);
 
-  doc = xmlParseFile(arg_filename.c_str());
+  doc = xmlParseFile(filename.c_str());
 
   if (doc == NULL)
-    PingusError::raise("XMLPLF: Couldn't open \"" + arg_filename + "\"");
+    PingusError::raise("XMLPLF: Couldn't open \"" + filename + "\"");
+
+  resname = System::basename(System::dirname(filename))
+    + "/" + System::basename(filename.substr(0, filename.length()-4));
 
   parse_file();
-
-  // FIXME: Dirty hack, should be replaced with a unified file namespace
-  filename = System::basename(arg_filename);
-  filename = filename.substr(0, filename.length()-4);
 }
 
 XMLPLF::~XMLPLF()

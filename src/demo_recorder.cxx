@@ -1,4 +1,4 @@
-//  $Id: demo_recorder.cxx,v 1.14 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: demo_recorder.cxx,v 1.15 2003/03/30 20:43:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,12 @@
 DemoRecorder::DemoRecorder (Server* server)
   : record_demo (true)
 {
-  std::string levelname = server->get_plf()->get_filename();
+  std::string levelname = server->get_plf()->get_resname();
+  
+  // 'Flatten' the levelname so that we don't need directories
+  for (std::string::iterator i = levelname.begin(); i != levelname.end(); ++i)
+    if (*i == '/')
+      *i = '_';
 
   if (!levelname.empty())
     {
@@ -38,8 +43,8 @@ DemoRecorder::DemoRecorder (Server* server)
       if (!out)
 	{
           record_demo = false;
-
-	  std::cout << "DemoRecorder: Error: Couldn't write DemoFile, demo recording will be disabled" << std::endl;
+	  std::cout << "DemoRecorder: Error: Couldn't write DemoFile '" << filename 
+                    << "', demo recording will be disabled" << std::endl;
 	}
       else
         {

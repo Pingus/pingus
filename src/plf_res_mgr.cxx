@@ -1,4 +1,4 @@
-//  $Id: plf_res_mgr.cxx,v 1.2 2003/03/07 18:49:20 grumbel Exp $
+//  $Id: plf_res_mgr.cxx,v 1.3 2003/03/30 20:43:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,8 @@ PLFHandle
 PLFResMgr::load_plf_raw(const std::string& res_name,
                         const std::string& filename)
 {
+  std::cout << "PLFResMgr: " << res_name << "\n   " << filename << std::endl;
+
   PLFMap::iterator i = plf_map.find(res_name);
   
   if (i == plf_map.end())
@@ -84,12 +86,12 @@ PLFResMgr::load_plf_raw(const std::string& res_name,
 PLFHandle
 PLFResMgr::load_plf_from_filename(const std::string& filename)
 {
-  // FIXME: Might cut of the 'playable/' or 'wip/' directories, not so
-  // good. saving the PLF's under filenames would also lead to
-  // throuble, since multiple filenames can map to the same file
-  // (../../data/levels/bla.xml, ../levels/bla.xml, etc.)
   std::string res_name = System::basename(filename); 
-  return load_plf_raw(res_name.substr(0, res_name.length()-4),
+
+  // This should give us the tutorial/, wip/, etc. part of the res_name
+  std::string dirname  = System::basename(System::dirname(filename)); 
+  
+  return load_plf_raw(dirname + "/" + res_name.substr(0, res_name.length()-4),
                       filename);
 }
 

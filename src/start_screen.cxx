@@ -1,4 +1,4 @@
-//  $Id: start_screen.cxx,v 1.7 2003/03/30 16:51:43 grumbel Exp $
+//  $Id: start_screen.cxx,v 1.8 2003/03/30 20:43:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -144,7 +144,7 @@ StartScreenComponent::draw(GraphicContext& gc)
   gc.print_center(Fonts::chalk_small, 400, 470, _("Author: ") + plf->get_author());
 
   if (maintainer_mode)
-    gc.print_left(Fonts::chalk_small, 110, 430, _("Filename: ") + plf->get_filename());
+    gc.print_left(Fonts::chalk_small, 110, 430, _("Filename: ") + plf->get_resname());
 }
 
 StartScreen::StartScreen(PLFHandle arg_plf)

@@ -1,4 +1,4 @@
-//  $Id: plf.cxx,v 1.14 2003/02/19 11:33:00 grumbel Exp $
+//  $Id: plf.cxx,v 1.15 2003/03/30 20:43:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -100,6 +100,12 @@ std::string
 PLF::get_filename()
 {
   return filename;
+}
+
+std::string
+PLF::get_resname()
+{
+  return resname;
 }
 
 std::map<std::string, std::string>

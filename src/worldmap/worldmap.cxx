@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.35 2003/03/25 23:15:23 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.36 2003/03/30 20:43:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -219,7 +219,7 @@ WorldMap::draw (GraphicContext& gc)
             {
               gc.print_center(Fonts::pingus_small,
                               mouse_x, mouse_y - 56,
-                              leveldot->get_plf()->get_filename());
+                              leveldot->get_plf()->get_resname());
             }
         }
     }

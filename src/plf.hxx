@@ -1,4 +1,4 @@
-//  $Id: plf.hxx,v 1.9 2003/02/19 11:33:00 grumbel Exp $
+//  $Id: plf.hxx,v 1.10 2003/03/30 20:43:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,6 +38,9 @@ protected:
 
   /** The name of the file from were the current level was loaded */
   std::string filename;
+  
+  /** Resource name of the PLF, see PLFResMgr */
+  std::string resname;
 
   std::map<std::string, std::string> description;
   
@@ -138,8 +141,11 @@ public:
   /** Returns the name of the current level, {\em not} the level file name. */
   std::map<std::string, std::string> get_levelname();
 
-  /** Returns the name of the plf file. */
+  /** Returns the name of the plf file, see  */
   std::string get_filename();
+
+  /** Returns the resname of the plf, see PLFResMgr */
+  std::string get_resname();
 
   /** Returns the name of the author, who creates this level */
   std::string get_author();
