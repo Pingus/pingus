@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.34 2002/01/16 23:50:59 grumbel Exp $
+//  $Id: blitter.cc,v 1.35 2002/01/22 22:17:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -347,6 +347,7 @@ Blitter::create_canvas(CL_SurfaceProvider* prov)
 	//prov->unlock();
 	//canvas->unlock();
       }
+      break;
 
     case 4:
       canvas->lock();
