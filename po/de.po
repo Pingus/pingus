@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2001-07-22 20:41+0200\n"
+"POT-Creation-Date: 2001-07-27 21:15+0200\n"
 "PO-Revision-Date: 2001-07-22 20:45+02:00\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: Ingo Ruhnke <grumbel@gmx.de>\n"
@@ -13,79 +13,52 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/OptionMenu.cc:84
-#, fuzzy
-msgid "on"
-msgstr "an"
-
-#: src/OptionMenu.cc:86
-msgid "off"
-msgstr "aus"
-
-#. Bool options
-#: src/OptionMenu.cc:207
-msgid "Gimmicks"
-msgstr "Gimmicks"
-
-#: src/OptionMenu.cc:208
-msgid "Unlimited Actions"
-msgstr "Unbegrenzt Aktionen"
-
-#: src/OptionMenu.cc:209
-msgid "Print fps"
-msgstr "'Bilder pro Sekunde' ausgeben"
-
-#.  add_entry("Debug actions", &debug_actions);  
-#: src/OptionMenu.cc:211
-msgid "Cursor enabled"
-msgstr "Cursor"
-
-#: src/OptionMenu.cc:212
-msgid "Fast Mode"
-msgstr "Schneller Modus"
-
-#. add_entry(_("Pingus Datadir"), &pingus_datadir);
-#: src/OptionMenu.cc:214
-msgid "Game Speed"
-msgstr "Spiel Geschwindigkeit"
-
-#: src/OptionMenu.cc:215
-msgid "Verbose"
+#: src/war/WarMain.cc:50
+msgid "Time for war - Lets fight!"
 msgstr ""
 
-#: src/OptionMenu.cc:216
-#, fuzzy
-msgid "Music"
-msgstr "-Musik"
+#: src/System.cc:66 src/System.cc:95
+msgid "System: Couldn't open: "
+msgstr "System: Datei oder Verzeichnis konnte nicht geoeffnet werden: "
 
-#: src/OptionMenu.cc:217
-#, fuzzy
-msgid "Sound"
+#: src/System.cc:154
+msgid "Successfully created: "
+msgstr "Verzeichnis erstellt: "
+
+#: src/System.cc:159
+msgid "Found: "
 msgstr "Gefunden: "
 
-#: src/OptionMenu.cc:218
-msgid "Level Previews"
-msgstr "Level Vorschau"
-
-#: src/OptionMenu.cc:219
-msgid "Draw ColMap"
-msgstr ""
-
-#: src/OptionMenu.cc:220
-msgid "Horizontal Button Panel"
-msgstr ""
-
-#. add_entry(_("Debug GameTime"), &debug_game_time);
-#. add_entry(_("Debug Tiles"), &debug_tiles);
-#: src/OptionMenu.cc:223
-msgid "Auto Scrolling"
-msgstr "Automatisches Scrolling"
-
-#. draw_background();
-#: src/OptionMenu.cc:262
+#: src/System.cc:205
 #, fuzzy
-msgid "Pingus Option Menu"
-msgstr "Zu rettende Pingus: %d"
+msgid "Environment variable $HOME not set, fix that and start again."
+msgstr "Umgebungs Variable $HOME ist nicht gesetzt."
+
+#: src/System.cc:335
+msgid "System::checksum: Couldn't open file: "
+msgstr ""
+"System::checksum: Datei oder Verzeichnis konnte nicht geoeffnet werden: "
+
+#: src/System.cc:345
+msgid "System:checksum: file read error"
+msgstr "System:checksum: Fehler beim Lesen von Datei"
+
+#: src/Screenshot.cc:39
+msgid "Screenshot: Saving screenshot to: "
+msgstr "Screenshot: Speichere Screenshot als: "
+
+#: src/Screenshot.cc:41
+msgid "Screnshot: Screenshot is done."
+msgstr "Screenshot: Screenshot wurde erstellt."
+
+#: src/Screenshot.cc:44
+msgid "Screenshot: Couldn't save screenshot"
+msgstr "Screenshot: Screenshot konnte nicht gespeichert werden"
+
+#: src/Screenshot.cc:64
+#, fuzzy
+msgid "Screenshot: Couldn't write file: "
+msgstr "Screenshot: Datei konnte nicht geschrieben werden: "
 
 #: src/PingusLevelDesc.cc:74
 msgid "Designed by "
@@ -177,107 +150,49 @@ msgstr ""
 msgid "You've got a negative save/total value, something is buggy."
 msgstr ""
 
-#.  desc["en"] = "..:: Starts the level you played at last ::..";
-#: src/SurfaceButton.cc:155
-msgid "..:: The people who brought this game to you ::.."
-msgstr "..:: Die Leute die fuer dieses Spiel verantwortlich sind... ::.."
+#. The credits vector holds the strings to display. The first
+#. character of each string is a special character, which indicates
+#. the size of the font or other special stuff. "-" means large
+#. font, "_" is a small font and "n" means a newline.
+#: src/Credits.cc:52
+msgid "_If I forgot somebody in this"
+msgstr "_Wenn ich irgendwen vergessen habe,"
 
-#. desc["de"] = "..:: Wer hat den dieses Spiel verbrochen...? ::..";
-#: src/SurfaceButton.cc:158
-msgid "Credits"
-msgstr "Mitwirkende"
+#: src/Credits.cc:53
+msgid "_list, just drop me a line and"
+msgstr "_bitte eine kurze Mail mich."
 
-#. x_pos = CL_Display::get_width() * 150 / 640; //150;
-#. y_pos = CL_Display::get_height() * 330 / 480; //330;
-#. 150;
-#. 330;
-#: src/SurfaceButton.cc:197
-#, fuzzy
-msgid "..:: Takes you to the options menu ::.."
-msgstr "..:: Einstellungen, Cheats und Debugging stuff ::.."
+#: src/Credits.cc:54
+msgid "_I'll fix this."
+msgstr "n"
 
-#.  desc["de"] = "..:: Einstellungen und Mogeleien ::..";
-#: src/SurfaceButton.cc:200
-msgid "Options"
-msgstr "Einstellungen"
+#: src/Credits.cc:55
+msgid "_Last Updated: 2000/06/27"
+msgstr "_Letzte Aenderung: 2000/06/27"
 
-#: src/SurfaceButton.cc:233
-msgid "..:: Bye, bye ::.."
-msgstr "..:: Auf Wiedersehen ::.."
+#: src/Credits.cc:56
+msgid "n"
+msgstr "n"
 
-#. desc["de"] = "..:: Auf Wiedersehen ::..";
-#: src/SurfaceButton.cc:236
-msgid "Exit"
-msgstr "Beenden"
+#: src/Credits.cc:58
+msgid "-Programming"
+msgstr "-Programmierung"
 
-#: src/SurfaceButton.cc:291
-msgid "..:: Launch the level editor ::.."
-msgstr "..:: Erstelle deinen Eigenen Level ::.."
+#: src/Credits.cc:64
+msgid "-Gfx"
+msgstr "-Grafiken"
 
-#. desc["de"] = "..:: Den Level Editor starten ::..";
-#: src/SurfaceButton.cc:294
-msgid "Create a"
-msgstr "Bau einen"
+#: src/Credits.cc:72
+msgid "-Music"
+msgstr "-Musik"
 
-#: src/SurfaceButton.cc:295
-msgid "Level"
-msgstr "Level"
+#: src/Credits.cc:77
+msgid "-Special"
+msgstr "-Besonderen"
 
-#: src/SurfaceButton.cc:330
-#, fuzzy
-msgid "..:: Lets you select a world to start ::.."
-msgstr "..:: Such dir eine Welt zum starten aus ::.."
-
-#. desc["de"] = "..:: Such dir eine Welt zum beginnen aus ::..";
-#: src/SurfaceButton.cc:333
-msgid "Start"
-msgstr "Start"
-
-#: src/SurfaceButton.cc:362
-msgid "..:: Multiplayer Modes... experimental stuff ::.."
-msgstr "..:: Mehrspieler Modus ::.."
-
-#: src/SurfaceButton.cc:364
-msgid "Multi"
-msgstr "Multi"
-
-#: src/System.cc:66 src/System.cc:95
-msgid "System: Couldn't open: "
-msgstr "System: Datei oder Verzeichnis konnte nicht geoeffnet werden: "
-
-#: src/System.cc:154
-msgid "Successfully created: "
-msgstr "Verzeichnis erstellt: "
-
-#: src/System.cc:159
-msgid "Found: "
-msgstr "Gefunden: "
-
-#: src/System.cc:205
-#, fuzzy
-msgid "Environment variable $HOME not set, fix that and start again."
-msgstr "Umgebungs Variable $HOME ist nicht gesetzt."
-
-#: src/System.cc:335
-msgid "System::checksum: Couldn't open file: "
-msgstr ""
-"System::checksum: Datei oder Verzeichnis konnte nicht geoeffnet werden: "
-
-#: src/System.cc:345
-msgid "System:checksum: file read error"
-msgstr "System:checksum: Fehler beim Lesen von Datei"
-
-#: src/war/WarMain.cc:50
-msgid "Time for war - Lets fight!"
-msgstr ""
-
-#: src/editor/EditorEvent.cc:538
-msgid "Enter filename to save as (without .plf!)"
-msgstr "Datei speichern als:  "
-
-#: src/editor/EditorObj.cc:119
-msgid "EditorObj: Warrning unknown WorldObjData pointer!"
-msgstr ""
+#: src/Credits.cc:78
+msgid "-Thanks to"
+msgstr "-Dank an"
 
 #: src/editor/ObjectSelector.cc:76
 msgid "1 - guillotine"
@@ -408,6 +323,14 @@ msgstr "w - Wetter"
 msgid "o - WorldObject"
 msgstr ""
 
+#: src/editor/EditorObj.cc:119
+msgid "EditorObj: Warrning unknown WorldObjData pointer!"
+msgstr ""
+
+#: src/editor/EditorEvent.cc:538
+msgid "Enter filename to save as (without .plf!)"
+msgstr "Datei speichern als:  "
+
 #: src/editor/PanelIcons.cc:26
 msgid "Load a level"
 msgstr ""
@@ -460,85 +383,15 @@ msgstr "Ausschnitt vergroessern"
 msgid "Zoom out"
 msgstr "Ausschnitt verkleinern"
 
-#: src/worldmap/PingusWorldMapGraph.cc:66
-#, fuzzy
-msgid "PingusWorldMapGraph: File not found: "
-msgstr "PingusMain: Leveldatei nicht gefunden, Fehler wird ignoriert: "
-
-#. The credits vector holds the strings to display. The first
-#. character of each string is a special character, which indicates
-#. the size of the font or other special stuff. "-" means large
-#. font, "_" is a small font and "n" means a newline.
-#: src/Credits.cc:52
-msgid "_If I forgot somebody in this"
-msgstr "_Wenn ich irgendwen vergessen habe,"
-
-#: src/Credits.cc:53
-msgid "_list, just drop me a line and"
-msgstr "_bitte eine kurze Mail mich."
-
-#: src/Credits.cc:54
-msgid "_I'll fix this."
-msgstr "n"
-
-#: src/Credits.cc:55
-msgid "_Last Updated: 2000/06/27"
-msgstr "_Letzte Aenderung: 2000/06/27"
-
-#: src/Credits.cc:56
-msgid "n"
-msgstr "n"
-
-#: src/Credits.cc:58
-msgid "-Programming"
-msgstr "-Programmierung"
-
-#: src/Credits.cc:64
-msgid "-Gfx"
-msgstr "-Grafiken"
-
-#: src/Credits.cc:72
-msgid "-Music"
-msgstr "-Musik"
-
-#: src/Credits.cc:77
-msgid "-Special"
-msgstr "-Besonderen"
-
-#: src/Credits.cc:78
-msgid "-Thanks to"
-msgstr "-Dank an"
-
-#: src/FPSCounter.cc:44
-msgid "unknown"
-msgstr "unbekannt"
-
-#: src/Screenshot.cc:39
-msgid "Screenshot: Saving screenshot to: "
-msgstr "Screenshot: Speichere Screenshot als: "
-
-#: src/Screenshot.cc:41
-msgid "Screnshot: Screenshot is done."
-msgstr "Screenshot: Screenshot wurde erstellt."
-
-#: src/Screenshot.cc:44
-msgid "Screenshot: Couldn't save screenshot"
-msgstr "Screenshot: Screenshot konnte nicht gespeichert werden"
-
-#: src/Screenshot.cc:64
-#, fuzzy
-msgid "Screenshot: Couldn't write file: "
-msgstr "Screenshot: Datei konnte nicht geschrieben werden: "
-
-#: src/PingusMain.cc:321
+#: src/PingusMain.cc:322
 msgid " (with sound support)"
 msgstr " (mit Sound Unterstützung)"
 
-#: src/PingusMain.cc:323
+#: src/PingusMain.cc:324
 msgid " (without sound support)"
 msgstr " (ohne Sound Unterstützung)"
 
-#: src/PingusMain.cc:327
+#: src/PingusMain.cc:328
 msgid ""
 "\n"
 "Copyright (C) 1998 Ingo Ruhnke <grumbel@pingus.cx>\n"
@@ -553,58 +406,210 @@ msgstr ""
 "Einsatz-\n"
 "faehigkeit fuer einen bestimmten Zweck."
 
-#: src/PingusMain.cc:481
+#: src/PingusMain.cc:482
 msgid "Unknow char: "
 msgstr "Unbekannter Buchstabe: "
 
-#: src/PingusMain.cc:482
+#: src/PingusMain.cc:483
 msgid "Usage: "
 msgstr "Benutzung: "
 
-#: src/PingusMain.cc:482
+#: src/PingusMain.cc:483
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr "[OPTIONEN]... [LEVELDATEI]"
 
-#: src/PingusMain.cc:760
+#: src/PingusMain.cc:763
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Hauptteil wird gestartet: "
 
-#: src/PingusMain.cc:783
+#: src/PingusMain.cc:785
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Leveldatei nicht gefunden, Fehler wird ignoriert: "
 
-#: src/PingusMain.cc:824
+#: src/PingusMain.cc:834
 msgid "Error caught from ClanLib: "
 msgstr "ClanLib Fehler abgefangen: "
 
-#: src/PingusMain.cc:828
+#: src/PingusMain.cc:838
 msgid "Error caught from Pingus: "
 msgstr "Pingus Fehler wurde abgefangen: "
 
-#: src/PingusMain.cc:832
+#: src/PingusMain.cc:842
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Speicher ist ausgegangen"
 
-#: src/PingusMain.cc:836
+#: src/PingusMain.cc:846
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Standard Ausnahme abgefangen!:\n"
 
-#: src/PingusMain.cc:840
+#: src/PingusMain.cc:850
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Unbekannte Ausnahme abgefangen!"
 
-#: src/GenericMain.cc:69
+#: src/worldmap/PingusWorldMapGraph.cc:152
+#, fuzzy
+msgid "PingusWorldMapGraph: File not found: "
+msgstr "PingusMain: Leveldatei nicht gefunden, Fehler wird ignoriert: "
+
+#: src/GenericMain.cc:71
 msgid "Starting Pingus "
 msgstr "Pingus wird gestartet"
 
-#. /
-#: src/QuestionDialog.hh:41
-msgid "Yes"
-msgstr "Ja"
+#: src/FPSCounter.cc:44
+msgid "unknown"
+msgstr "unbekannt"
 
-#: src/QuestionDialog.hh:41
-msgid "No"
-msgstr "Nein"
+#: src/OptionMenu.cc:84
+#, fuzzy
+msgid "on"
+msgstr "an"
+
+#: src/OptionMenu.cc:86
+msgid "off"
+msgstr "aus"
+
+#. Bool options
+#: src/OptionMenu.cc:207
+msgid "Gimmicks"
+msgstr "Gimmicks"
+
+#: src/OptionMenu.cc:208
+msgid "Unlimited Actions"
+msgstr "Unbegrenzt Aktionen"
+
+#: src/OptionMenu.cc:209
+msgid "Print fps"
+msgstr "'Bilder pro Sekunde' ausgeben"
+
+#.  add_entry("Debug actions", &debug_actions);  
+#: src/OptionMenu.cc:211
+msgid "Cursor enabled"
+msgstr "Cursor"
+
+#: src/OptionMenu.cc:212
+msgid "Fast Mode"
+msgstr "Schneller Modus"
+
+#. add_entry(_("Pingus Datadir"), &pingus_datadir);
+#: src/OptionMenu.cc:214
+msgid "Game Speed"
+msgstr "Spiel Geschwindigkeit"
+
+#: src/OptionMenu.cc:215
+msgid "Verbose"
+msgstr ""
+
+#: src/OptionMenu.cc:216
+#, fuzzy
+msgid "Music"
+msgstr "-Musik"
+
+#: src/OptionMenu.cc:217
+#, fuzzy
+msgid "Sound"
+msgstr "Gefunden: "
+
+#: src/OptionMenu.cc:218
+msgid "Level Previews"
+msgstr "Level Vorschau"
+
+#: src/OptionMenu.cc:219
+msgid "Draw ColMap"
+msgstr ""
+
+#: src/OptionMenu.cc:220
+msgid "Horizontal Button Panel"
+msgstr ""
+
+#. add_entry(_("Debug GameTime"), &debug_game_time);
+#. add_entry(_("Debug Tiles"), &debug_tiles);
+#: src/OptionMenu.cc:223
+msgid "Auto Scrolling"
+msgstr "Automatisches Scrolling"
+
+#. draw_background();
+#: src/OptionMenu.cc:262
+#, fuzzy
+msgid "Pingus Option Menu"
+msgstr "Zu rettende Pingus: %d"
+
+#.  desc["en"] = "..:: Starts the level you played at last ::..";
+#: src/SurfaceButton.cc:154
+msgid "..:: The people who brought this game to you ::.."
+msgstr "..:: Die Leute die fuer dieses Spiel verantwortlich sind... ::.."
+
+#. desc["de"] = "..:: Wer hat den dieses Spiel verbrochen...? ::..";
+#: src/SurfaceButton.cc:157
+msgid "Credits"
+msgstr "Mitwirkende"
+
+#. x_pos = CL_Display::get_width() * 150 / 640; //150;
+#. y_pos = CL_Display::get_height() * 330 / 480; //330;
+#. 150;
+#. 330;
+#: src/SurfaceButton.cc:196
+#, fuzzy
+msgid "..:: Takes you to the options menu ::.."
+msgstr "..:: Einstellungen, Cheats und Debugging stuff ::.."
+
+#.  desc["de"] = "..:: Einstellungen und Mogeleien ::..";
+#: src/SurfaceButton.cc:199
+msgid "Options"
+msgstr "Einstellungen"
+
+#: src/SurfaceButton.cc:232
+msgid "..:: Bye, bye ::.."
+msgstr "..:: Auf Wiedersehen ::.."
+
+#. desc["de"] = "..:: Auf Wiedersehen ::..";
+#: src/SurfaceButton.cc:235
+msgid "Exit"
+msgstr "Beenden"
+
+#: src/SurfaceButton.cc:290
+msgid "..:: Launch the level editor ::.."
+msgstr "..:: Erstelle deinen Eigenen Level ::.."
+
+#. desc["de"] = "..:: Den Level Editor starten ::..";
+#: src/SurfaceButton.cc:293
+msgid "Create a"
+msgstr "Bau einen"
+
+#: src/SurfaceButton.cc:294
+msgid "Level"
+msgstr "Level"
+
+#: src/SurfaceButton.cc:329
+#, fuzzy
+msgid "..:: Lets you select a world to start ::.."
+msgstr "..:: Such dir eine Welt zum starten aus ::.."
+
+#. desc["de"] = "..:: Such dir eine Welt zum beginnen aus ::..";
+#: src/SurfaceButton.cc:332
+msgid "Start"
+msgstr "Start"
+
+#: src/SurfaceButton.cc:357
+msgid "..:: Start a contrib level ::.."
+msgstr ""
+
+#: src/SurfaceButton.cc:359
+msgid "Contrib"
+msgstr ""
+
+#: src/SurfaceButton.cc:381
+msgid "..:: Multiplayer Modes... experimental stuff ::.."
+msgstr "..:: Mehrspieler Modus ::.."
+
+#: src/SurfaceButton.cc:383
+msgid "Multi"
+msgstr "Multi"
+
+#~ msgid "Yes"
+#~ msgstr "Ja"
+
+#~ msgid "No"
+#~ msgstr "Nein"
 
 #, fuzzy
 #~ msgid "Pingus Datadir"

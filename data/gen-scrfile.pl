@@ -3,7 +3,7 @@
 # print @ARGS;
 
 $directory = $ARGV[0];
-$command = "find $directory -name \"*.png\" | grep -v \".xvpics\" |";
+$command = "find $directory -name \"*.png\" | sort | grep -v \".xvpics\" | grep -v \"old/\" | grep -v \".thumbnails\" |";
 open (IN, $command);
 $oldsection = "---";
 $firstsection = 1;

@@ -18,7 +18,7 @@
 # Tweaking the `datadir' to install the files in the correct location
 pkgdatadir = $(datadir)/games/@PACKAGE@/worldmaps
 
-EXTRA_DIST = volcano.xml
+EXTRA_DIST = volcano.xml pacman.xml
 pkgdata_DATA = $(EXTRA_DIST)
 
 # EOF #

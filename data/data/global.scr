@@ -19,11 +19,11 @@ section Hotspots
 {
         engine = images/hotspots/space/engine.png (type=surface, x=0, y=0, width=108, height=166, array=4x1);
 
-	// left_arrow = images/groundpieces/ground/signposts/left_arrow.png (type=surface, x=0, y=0, width=100, height=73);
-	// right_arrow = images/groundpieces/ground/signposts/right_arrow.png (type=surface, x=0, y=0, width=100, height=73);
+	left_arrow = images/fonts/left_arrow.png (type=surface, x=0, y=0, width=100, height=73);
+	right_arrow = images/fonts/right_arrow.png (type=surface, x=0, y=0, width=100, height=73);
 
-//	up_arrow = images/groundpieces/ground/signposts/up_arrow.png (type=surface, x=0, y=0, width=73, height=99);
-//	down_arrow = images/groundpieces/ground/signposts/down_arrow.png (type=surface, x=0, y=0, width=73, height=99);
+	up_arrow = images/fonts/up_arrow.png (type=surface, x=0, y=0, width=73, height=99);
+	down_arrow = images/fonts/down_arrow.png (type=surface, x=0, y=0, width=73, height=99);
 
 	danger      = images/groundpieces/ground/signposts/danger.png (type=surface, x=0, y=0, width=215, height=121);
 //	crystal     = images/hotspots/crystal.png    (type=surface, x=0, y=0, width=60,  height=109);
@@ -48,7 +48,7 @@ section Hotspots
 	pillar2     = images/groundpieces/ground/desert/pillar2.png (type=surface, x=0, y=0, width=37, height=130);
 	pillar3     = images/groundpieces/ground/desert/pillar3.png (type=surface, x=0, y=0, width=36, height=147);
 
-//	well        = images/groundpieces/ground/well.png    (type=surface, x=0, y=0, width=32, height=54);
+	well        = images/groundpieces/ground/misc/well.png    (type=surface, x=0, y=0, width=32, height=54);
 	plate       = images/groundpieces/solid/misc/metalplate_horiz.png   (type=surface, x=0, y=0, width=64, height=32);
 	plate2      = images/groundpieces/solid/misc/metalplate_large.png  (type=surface, x=0, y=0, width=64, height=64);
 	plate_small = images/groundpieces/solid/misc/metalplate_small.png  (type=surface, x=0, y=0, width=32, height=32);
@@ -329,10 +329,10 @@ section GroundPieces
 //		black     = images/groundpieces/ground/misc/black.png    (type=surface, x=0, y=0, width=256, height=228);
 
                 bridge1     = images/groundpieces/ground/misc/bridge1.png    (type=surface, x=0, y=0, width=216, height=42);
-//		way         = images/groundpieces/ground/misc/way.png        (type=surface, x=0, y=0, width=117, height=35);
 
-//		way_left    = images/groundpieces/ground/misc/way_left.png        (type=surface, x=0, y=0, width=81, height=28);
-//		way_right   = images/groundpieces/ground/misc/way_right.png        (type=surface, x=0, y=0, width=62, height=26);
+		way         = images/groundpieces/ground/desert/platform.png        (type=surface, x=0, y=0, width=117, height=35);
+		way_left    = images/groundpieces/ground/desert/platform_left.png        (type=surface, x=0, y=0, width=81, height=28);
+		way_right   = images/groundpieces/ground/desert/platform_right.png        (type=surface, x=0, y=0, width=62, height=26);
 
 		spike     = images/groundpieces/ground/misc/spike.png    (type=surface, x=0, y=0, width=262,  height=125);
 
@@ -580,6 +580,11 @@ section Ywlam
 	blinky = images/special/pacman/blinky.png (type=surface, x=0, y=0, width=32,  height=32); 
 	pinky = images/special/pacman/pinky.png (type=surface, x=0, y=0, width=32,  height=32); 
 	clyde = images/special/pacman/clyde.png (type=surface, x=0, y=0, width=32,  height=32); 
+}
+
+section Buttons
+{
+        pause = images/core/buttons/pause.png (type=surface, x=0, y=0, width=38, height=56);
 }
 
 // EOF //

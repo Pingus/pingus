@@ -1,8 +1,3 @@
-section misc {
-	weed2 = images/groundpieces/transparent/misc/weed2.png (type=surface, x=0, y=0, width=12, height=132);
-	weed1 = images/groundpieces/transparent/misc/weed1.png (type=surface, x=0, y=0, width=29, height=149);
-}
-
 section foliage {
 	grass1 = images/groundpieces/transparent/foliage/grass1.png (type=surface, x=0, y=0, width=31, height=21);
 	grass10 = images/groundpieces/transparent/foliage/grass10.png (type=surface, x=0, y=0, width=14, height=7);
@@ -47,5 +42,10 @@ section industrial {
 	gunge7 = images/groundpieces/transparent/industrial/gunge7.png (type=surface, x=0, y=0, width=11, height=24);
 	gunge8 = images/groundpieces/transparent/industrial/gunge8.png (type=surface, x=0, y=0, width=89, height=33);
 	gunge9 = images/groundpieces/transparent/industrial/gunge9.png (type=surface, x=0, y=0, width=24, height=9);
+}
+
+section misc {
+	weed1 = images/groundpieces/transparent/misc/weed1.png (type=surface, x=0, y=0, width=29, height=149);
+	weed2 = images/groundpieces/transparent/misc/weed2.png (type=surface, x=0, y=0, width=12, height=132);
 }
 

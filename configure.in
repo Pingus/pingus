@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.41 2001/06/17 17:18:26 grumbel Exp $
+#  $Id: configure.in,v 1.42 2001/07/27 19:44:48 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -285,7 +285,7 @@ then
 	AC_CHECK_HEADER(strstream)
 	if test "$ac_cv_header_strstream" = "no" -a "$ac_cv_header_strstream_h" = "no";
 	then
-		AC_MSG_ERROR(couldn't find either <sstream> or <strstream>.)
+		AC_MSG_ERROR(could not find either <sstream> or <strstream>.)
 	fi
 fi
 
@@ -305,6 +305,9 @@ dnl -- Define the localedir, needed for gettext --
 PINGUS_EXPAND_DIR(localedir, "$datadir/locale")
 AC_DEFINE_UNQUOTED(LOCALEDIR, "$localedir")
 
+# po/Makefile.in intl/Makefile <- this must be in one line, if its not
+# po/Makefile will not be generated.
+
 AC_OUTPUT( Makefile 
            src/Makefile 
            src/actions/Makefile
@@ -321,21 +324,88 @@ AC_OUTPUT( Makefile
            data/Makefile 
            data/images/Makefile 
            data/levels/Makefile
+           data/levels/plf/Makefile
            data/themes/Makefile
            data/worldmaps/Makefile
            data/data/Makefile
            data/demos/Makefile
            data/data/Makefile
            doc/Makefile
-           po/Makefile.in intl/Makefile 
+           po/Makefile.in intl/Makefile
+  data/images/core/menu/Makefile
+  data/images/core/misc/Makefile
+  data/images/core/cursors/Makefile
+  data/images/core/editor/Makefile
+  data/images/core/Makefile
+  data/images/core/worldmap/Makefile
+  data/images/core/buttons/Makefile
+  data/images/menu/Makefile
+  data/images/misc/Makefile
+  data/images/backgrounds/Makefile
+  data/images/particles/Makefile
+  data/images/cursors/Makefile
+  data/images/exits/Makefile
+  data/images/fonts/Makefile
+  data/images/story/Makefile
+  data/images/traps/Makefile
+  data/images/groundpieces/solid/misc/Makefile
+  data/images/groundpieces/solid/rock/Makefile
+  data/images/groundpieces/solid/crystal/Makefile
+  data/images/groundpieces/solid/Makefile
+  data/images/groundpieces/solid/industrial/Makefile
+  data/images/groundpieces/bridge/misc/Makefile
+  data/images/groundpieces/bridge/space/Makefile
+  data/images/groundpieces/bridge/Makefile
+  data/images/groundpieces/Makefile
+  data/images/groundpieces/ground/misc/Makefile
+  data/images/groundpieces/ground/real/Makefile
+  data/images/groundpieces/ground/rock/Makefile
+  data/images/groundpieces/ground/snow/Makefile
+  data/images/groundpieces/ground/test/Makefile
+  data/images/groundpieces/ground/crystal/Makefile
+  data/images/groundpieces/ground/space/Makefile
+  data/images/groundpieces/ground/mushroom/Makefile
+  data/images/groundpieces/ground/desert/Makefile
+  data/images/groundpieces/ground/foliage/Makefile
+  data/images/groundpieces/ground/Makefile
+  data/images/groundpieces/ground/jungle/Makefile
+  data/images/groundpieces/ground/pacman/Makefile
+  data/images/groundpieces/ground/sortie/Makefile
+  data/images/groundpieces/ground/sweets/Makefile
+  data/images/groundpieces/ground/industrial/Makefile
+  data/images/groundpieces/ground/signposts/Makefile
+  data/images/groundpieces/remove/misc/Makefile
+  data/images/groundpieces/remove/Makefile
+  data/images/groundpieces/transparent/misc/Makefile
+  data/images/groundpieces/transparent/foliage/Makefile
+  data/images/groundpieces/transparent/Makefile
+  data/images/groundpieces/transparent/industrial/Makefile
+  data/images/liquids/Makefile
+  data/images/worldmaps/Makefile
+  data/images/worldobjs/Makefile
+  data/images/special/Makefile
+  data/images/special/pacman/Makefile
+  data/images/textures/Makefile
+  data/images/Makefile
+  data/images/hotspots/misc/Makefile
+  data/images/hotspots/space/Makefile
+  data/images/hotspots/desert/Makefile
+  data/images/hotspots/Makefile
+  data/images/hotspots/signposts/Makefile
+  data/images/pingus/Makefile
+  data/images/themes/Makefile
+  data/images/entrances/Makefile
+  data/images/buttons/Makefile
           )
+# find . -name "Makefile.am" | grep "\./data/images" | grep -v old | grep -v unsorted | sed "s/^\.\//  /" | sed "s/.am\$//"
+
 
 # ----------------------------------------
 
 dnl Add here a list of the supported features
 
 echo ""
-echo "Pingus is now configured, now you can start \`make'."
+echo "Pingus is now configured, now you can start 'make'."
 echo ""
 
 dnl Local Variables:
