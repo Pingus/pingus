@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
-"POT-Creation-Date: 2003-04-16 01:21+0200\n"
-"PO-Revision-Date: 2003-04-12 17:37+0200\n"
+"POT-Creation-Date: 2003-04-16 01:50+0200\n"
+"PO-Revision-Date: 2003-04-16 01:50+0200\n"
 "Last-Translator: Philippe Saint-Pierre <stpere@linuxmail.org>\n"
 "Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx."
 "de>, Giray Devlet <giray@devlet.cc>\n"
@@ -100,7 +100,7 @@ msgstr "Donnez le nom de fichier de sauvegarde: "
 
 #: src/editor/editor_help_screen.cxx:38
 msgid "Editor Helpscreen (hide with F1)"
-msgstr ""
+msgstr "Écran d'aide de l'éditeur (cacher avec F1)"
 
 #: src/editor/editor_help_screen.cxx:45
 msgid "F1 - show/hide this help screen"
@@ -151,7 +151,6 @@ msgid "F12 - make screenshot"
 msgstr "F12 - prendre une capture d'écran"
 
 #: src/editor/editor_help_screen.cxx:60
-#, fuzzy
 msgid "Home - increase object size"
 msgstr "Début - aggrandir un objet"
 
@@ -712,6 +711,8 @@ msgstr ""
 #: src/pingus_main.cxx:306
 msgid "Warning: Larger resolution than 800x600 will result in visual problems"
 msgstr ""
+" Avertissement: Une résolution supérieure à 800x600 va occasionner des "
+"problèmes visuels"
 
 #: src/pingus_main.cxx:487
 msgid "Unknow char: "
@@ -762,7 +763,6 @@ msgid "Load a custom level from FILE"
 msgstr "Charger un niveau personnalisé à partir de FICHIER"
 
 #: src/pingus_main.cxx:506
-#, fuzzy
 msgid "FILE        "
 msgstr "FICHIER    "
 
@@ -776,7 +776,6 @@ msgstr ""
 "Affiche quelques messages supplémentaires vers stdout, peut-être spécifié"
 
 #: src/pingus_main.cxx:508
-#, fuzzy
 msgid "multiple times to increase verbosity"
 msgstr "plus d'une fois pour augmenter l'explicitation."
 
@@ -794,7 +793,7 @@ msgstr "Désactive le défilement automatique"
 
 #: src/pingus_main.cxx:513
 msgid "Enable software cursor"
-msgstr ""
+msgstr "Activer le curseur logiciel"
 
 #: src/pingus_main.cxx:516
 msgid "Don't read ~/.pingus/config"
@@ -816,7 +815,7 @@ msgstr ""
 
 #: src/pingus_main.cxx:519
 msgid "Uses the controller given in FILE"
-msgstr ""
+msgstr "Utiliser le controller spécifié dans FICHIER"
 
 #: src/pingus_main.cxx:521
 msgid "Debugging and experimental stuff:"
@@ -834,10 +833,6 @@ msgstr "Active la sortie d'information de dévermminage, les OPTIONS"
 #: src/pingus_main.cxx:524
 msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
 msgstr "disponible sont tiles, gametime, actions, sound, resources, gui,"
-
-#: src/pingus_main.cxx:525
-msgid "input, pathmgr"
-msgstr ""
 
 #: src/pingus_main.cxx:526
 msgid "Skip at least N frames, larger values speed the game up"
@@ -873,7 +868,7 @@ msgstr "Réduit l'utilisation du CPU en appelant sleep()"
 
 #: src/pingus_main.cxx:535
 msgid "Demo playing and recording:"
-msgstr ""
+msgstr "Démonstration, enregistrement et lecture:"
 
 #: src/pingus_main.cxx:536
 msgid "FILE     "
