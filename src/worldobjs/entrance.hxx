@@ -42,7 +42,6 @@ class Entrance : public WorldObj
 protected:
   enum EntranceDirection { LEFT, RIGHT, MISC };
   EntranceDirection direction;
-  ResDescriptor     desc;
   Vector            pos;
   int               release_rate;
   int               owner_id;

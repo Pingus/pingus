@@ -39,7 +39,6 @@ namespace WorldObjs {
 class Groundpiece : public WorldObj
 {
 private:
-  ResDescriptor desc;
   Vector        pos;
 
   Groundtype::GPType gptype;

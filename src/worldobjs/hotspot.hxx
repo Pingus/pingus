@@ -35,9 +35,7 @@ class Hotspot : public WorldObj
 {
 private:
   CL_Sprite     sprite;
-  int           speed;
   float         para;
-  ResDescriptor desc;
   Vector        pos;
 
 public:

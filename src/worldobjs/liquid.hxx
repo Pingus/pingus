@@ -37,7 +37,6 @@ class Liquid : public WorldObj
 private:
   CL_Sprite sur;
 
-  ResDescriptor desc;
   Vector pos;
 
   /** Cause to interpret the width in pixels instead of tiles */

@@ -36,7 +36,6 @@ class Exit : public WorldObj
 {
 private:
   Vector pos;
-  ResDescriptor desc;
   int owner_id;
 
   CL_Sprite sprite;

@@ -28,9 +28,10 @@ namespace WorldObjs {
 
 Hotspot::Hotspot(const FileReader& reader)
 {
+  ResDescriptor desc;
+
   reader.read_vector("position", pos);
   reader.read_desc  ("surface",  desc);
-  reader.read_int   ("speed",    speed);
   reader.read_float ("parallax", para);
 
   sprite = Resource::load_sprite(desc);

@@ -48,6 +48,8 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
 
   reader.read_vector("position", pos);
 
+  ResDescriptor desc;
+
   reader.read_desc("surface", desc);
   reader.read_color("color", color);
 

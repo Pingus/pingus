@@ -60,7 +60,7 @@
     </sprite>
     <sprite name="anim_fire">
       <image file="../images/textures/anim_fire.jpg">
-        <grid pos="0,0" size="64,590" array="15x1"/>
+        <grid pos="0,0" size="64,590" array="15,1"/>
       </image>
     </sprite>
     <sprite name="stars">

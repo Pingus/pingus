@@ -29,9 +29,7 @@ namespace WorldObjs {
 
 Liquid::Liquid(const FileReader& reader)
   : old_width_handling(true),
-    width(0),
-    speed(20)
-  //(speed == 0) ? 30 : 1000.0f/speed)
+    width(0)
 {
   /*
   if (XMLhelper::get_prop(cur, "use-old-width-handling", old_width_handling))
@@ -40,10 +38,10 @@ Liquid::Liquid(const FileReader& reader)
         std::cout << "XMLPLF: Using Old Width Handling: " << std::endl;
     }
   */
+  ResDescriptor desc;
 
   reader.read_vector("position", pos);
   reader.read_desc  ("surface",  desc);
-  reader.read_int   ("speed",    speed);
   reader.read_int   ("width",    width);
 
   if (!old_width_handling)

@@ -36,7 +36,6 @@ namespace WorldObjs {
 class SurfaceBackground : public WorldObj
 {
 private:
-  ResDescriptor desc;
   float para_x;
   float para_y;
 

@@ -24,7 +24,7 @@
     <sprite name="space">
       <translation origin="bottom_center"/>
       <image file="../images/exits/space.png">
-        <grid pos="0,0" size="154,118" array="4x1"/>
+        <grid pos="0,0" size="154,118" array="4,1"/>
       </image>
     </sprite>
     <sprite name="sweetexit">
@@ -38,7 +38,7 @@
     <sprite name="sortie_anim">
       <translation origin="bottom_center"/>
       <image file="../images/exits/sortie_anim.png">
-        <grid pos="0,0" size="78,90" array="11x1"/>
+        <grid pos="0,0" size="78,90" array="11,1"/>
       </image>
     </sprite>
     <sprite name="industrial">

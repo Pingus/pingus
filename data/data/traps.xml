@@ -36,7 +36,7 @@
 
     <sprite name="guillotinekill">
       <image file="../images/traps/guillotinekill.png">
-        <grip array="12x2"  height="96" tcol="0" width="80" x="0" y="0" />
+        <grip array="12,2"  height="96" tcol="0" width="80" x="0" y="0" />
       </image>
     </sprite>
     

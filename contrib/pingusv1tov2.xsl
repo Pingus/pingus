@@ -15,7 +15,8 @@
   <xsl:template match="/pingus-level/global/height" />
 
   <xsl:template match="pingus-level">
-    <pingus-level version="1">
+    <pingus-level>
+      <version>2</version>
       <head>
         <xsl:apply-templates select="global/*|action-list"/>
         <levelsize>

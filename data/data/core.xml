@@ -28,7 +28,7 @@
       </sprite>
       <sprite name="animcross">
         <image file="../images/core/cursors/animcross.png">
-          <grid  array="10x1"/>
+          <grid  array="10,1"/>
         </image>
       </sprite>
     </section>
@@ -115,9 +115,6 @@
       <sprite name="buttonbackgroundhl">
         <image file="../images/core/buttons/buttonbackgroundhl.png"/>
       </sprite>
-      <sprite name="back">
-        <image file="../images/core/buttons/back.png"/>
-      </sprite>
       <sprite name="pause">
         <image file="../images/core/buttons/pause.png"/>
       </sprite>
@@ -131,9 +128,6 @@
       </sprite>
     </section>
     <section name="menu">
-      <sprite name="background">
-        <image file="../images/core/menu/background.jpg"/>
-      </sprite>
       <sprite name="startscreenbg">
         <translation origin="center"/>
         <image file="../images/core/menu/startscreenbg.jpg"/>
@@ -146,9 +140,6 @@
       </sprite>
       <sprite name="exit_on">
         <image file="../images/core/menu/exit_on.png"/>
-      </sprite>
-      <sprite name="ice_off">
-        <image file="../images/core/menu/ice_off.png"/>
       </sprite>
       <sprite name="options_on">
         <image file="../images/core/menu/options_on.png"/>
@@ -174,24 +165,6 @@
       <sprite name="layer5">
         <image file="../images/core/menu/layer5.png"/>
       </sprite>
-      <sprite name="enterlevel">
-        <image file="../images/core/menu/enterlevel.png"/>
-      </sprite>
-      <sprite name="enterlevel">
-        <image file="../images/core/menu/enterlevel.png"/>
-      </sprite>
-      <sprite name="enterlevel">
-        <image file="../images/core/menu/enterlevel.png"/>
-      </sprite>
-      <sprite name="close_highlight">
-        <image file="../images/core/menu/close_highlight.png"/>
-      </sprite>
-      <sprite name="close_normal">
-        <image file="../images/core/menu/close_normal.png"/>
-      </sprite>
-      <sprite name="close_pressed">
-        <image file="../images/core/menu/close_pressed.png"/>
-      </sprite>
       <sprite name="exit_button_normal">
         <image file="../images/core/menu/exit_button_normal.png"/>
       </sprite>
@@ -203,14 +176,6 @@
       </sprite>
       <sprite name="exit_menu">
         <image file="../images/core/menu/exit_menu.png"/>
-      </sprite>
-    </section>
-    <section name="result">
-      <sprite name="retry">
-        <image file="../images/core/menu/result_retry.png"/>
-      </sprite>
-      <sprite name="ok">
-        <image file="../images/core/menu/result_ok.png"/>
       </sprite>
     </section>
 
@@ -264,9 +229,6 @@
         <image file="../images/core/misc/404.png"/>
       </sprite>
 
-      <sprite name="exitmenu">
-        <image file="../images/core/menu/exitmenu.png"/>
-      </sprite>
       <sprite name="logo">
         <image file="../images/core/misc/logo.png"/>
       </sprite>
@@ -356,10 +318,6 @@
       <sprite name="dot_red_hl">
         <translation origin="center"/>
         <image file="../images/core/worldmap/dot_red_hl.png"/>
-      </sprite>
-      <sprite name="dot_border">
-        <translation origin="center"/>
-        <image file="../images/core/worldmap/dot_border.png"/>
       </sprite>
       <sprite name="flaggreen">
         <translation origin="center"/>

@@ -29,6 +29,8 @@ namespace WorldObjs {
 
 Groundpiece::Groundpiece(const FileReader& reader)
 {
+  ResDescriptor desc;
+
   reader.read_vector("position", pos);
   reader.read_desc  ("surface",  desc);
 

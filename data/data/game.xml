@@ -15,9 +15,6 @@
     <sprite name="dot_red">
       <image file="../images/core/worldmap/dot_red.png"/>
     </sprite>
-    <sprite name="dot_border">
-      <image file="../images/core/worldmap/dot_border.png"/>
-    </sprite>
 
     <section name="cursors">
       <sprite name="editor">
