@@ -1,4 +1,4 @@
-//  $Id: pingu_action.cxx,v 1.13 2002/11/03 13:29:09 grumbel Exp $
+//  $Id: pingu_action.cxx,v 1.14 2002/11/03 13:41:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -142,9 +142,9 @@ PinguAction::move_with_forces ()
 
   // Keep moving the Pingu until there is only a fraction left
   while (   force_counter.x <= -1 
-         || force_counter.x >=  1
-         || force_counter.y <= -1
-         || force_counter.y >=  1)
+            || force_counter.x >=  1
+            || force_counter.y <= -1
+            || force_counter.y >=  1)
     {
       x_numerator += x_inc;
 
@@ -154,50 +154,24 @@ PinguAction::move_with_forces ()
 	  // Revert back to being a fraction
 	  x_numerator -= denominator;
 
-          // FIXME: Symmetric code is EXTREMLY UGLY!!!!
+          // If there is something to the left of the Pingu
+          if (collision_on_walk(1, 0))
+            {
+              // Make the Pingu reflect off the wall
+              force_counter.x = -(force_counter.x);
+              resultant_force.x = -(resultant_force.x/3);
 
-	  // Move the Pingu depending on what the direction of the force is
-	  if (force_counter.x >= 1)
-	    {
-	      // If there is something to the right of the Pingu
-	      if (collision_on_walk(pingu->direction, 0))
-		{
-		  // Make the Pingu reflect/bounce off the wall
-		  force_counter.x = -(force_counter.x);
-		  resultant_force.x = -(resultant_force.x/3);
+              pingu->set_velocity(resultant_force);
 
-		  pingu->set_velocity(resultant_force);
-
-		  pingu->direction.change();
-		}
-	      else
-		{
-		  // Move the Pingu right
-		  pingu->set_x(pingu->get_x() + 1);
-		  force_counter.x--;
-		}
-	    }
-	  else if (force_counter.x <= -1)
-	    {
-	      // If there is something to the left of the Pingu
-	      if (collision_on_walk(-(pingu->direction), 0))
-		{
-		  // Make the Pingu reflect off the wall
-		  force_counter.x = -(force_counter.x);
-		  resultant_force.x = -(resultant_force.x/3);
-
-		  pingu->set_velocity(resultant_force);
-
-		  pingu->direction.change();
-		}
-	      else
-		{
-		  // Move the Pingu left
-		  pingu->set_x(pingu->get_x() - 1);
-		  force_counter.x++;
-		}
-	    }
-	}
+              pingu->direction.change();
+            }
+          else
+            {
+              // Move the Pingu left
+              pingu->set_x(pingu->get_x() + pingu->direction);
+              force_counter.x -= pingu->direction;
+            }
+        }
 
       y_numerator += y_inc;
 
@@ -245,7 +219,7 @@ PinguAction::move_with_forces ()
 		}
 	    }
 	}
-   }
+    }
 
 }
 
