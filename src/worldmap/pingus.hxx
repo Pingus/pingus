@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.18 2002/10/15 19:13:33 grumbel Exp $
+//  $Id: pingus.hxx,v 1.19 2002/11/02 14:46:29 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,6 +99,7 @@ public:
 
   /** Set the pingu to the position of a given node */
   void set_position (NodeId node); 
+  Vector get_pos() const { return pos; }
 
   float get_z_pos() const;
 

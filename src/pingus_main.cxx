@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.27 2002/10/26 17:29:02 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.28 2002/11/02 14:46:29 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -679,8 +679,8 @@ PingusMain::get_filenames()
 
   if (!path_manager.find_path (file_list))
     {
-      std::cout << "Error: Couldn't find `global.scr', please set the enviroment variable\n"
-		<< "PINGUS_DATADIR to the path of the file `pingus.scr' or use the\n"
+      std::cout << "Error: Couldn't find `data/core.scr', please set the enviroment variable\n"
+		<< "PINGUS_DATADIR to the path of the file `data/core.scr' or use the\n"
 		<< "-d option." << std::endl;
       exit(EXIT_FAILURE);
     }

@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.25 2002/10/29 12:48:33 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.26 2002/11/02 14:46:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,7 @@
 #include "drawable.hxx"
 #include "dot.hxx"
 #include "path_graph.hxx"
+#include "../math.hxx"
 
 namespace WorldMapNS {
 
@@ -51,7 +52,10 @@ struct z_pos_sorter
 };
 
 WorldMap::WorldMap(const std::string& arg_filename) 
-  : filename(arg_filename)
+  : display_gc (0, 0, CL_Display::get_width()-1, CL_Display::get_height()-1, 
+                0, 0),
+    filename(arg_filename),
+    width(1161), height(600) // FIXME: ugly..
 {
   xmlDocPtr doc = xmlParseFile(filename.c_str());
   
@@ -164,11 +168,23 @@ WorldMap::parse_properties(xmlDocPtr doc, xmlNodePtr cur)
 void
 WorldMap::draw (GraphicContext& gc)
 {
+  Vector pingu_pos = pingus->get_pos();
+
+  pingu_pos.x = Math::mid(float(display_gc.get_width()/2), 
+                          pingu_pos.x, 
+                          float(width - display_gc.get_width()/2));
+
+  pingu_pos.y = Math::mid(float(display_gc.get_height()/2), 
+                          pingu_pos.y, 
+                          float(height - display_gc.get_height()/2));
+  
+  display_gc.set_offset(-pingu_pos.x, -pingu_pos.y);
+
   std::stable_sort(drawables.begin(), drawables.end(), z_pos_sorter());
 
   for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)
     {
-      (*i)->draw (gc);
+      (*i)->draw (display_gc);
     }
 }
 
@@ -202,13 +218,15 @@ WorldMap::set_pingus(NodeId id)
 void
 WorldMap::on_primary_button_press(int x, int y)
 {
+  const Vector& click_pos = display_gc.screen_to_world(Vector(x, y));
+
   std::cout << "<position>\n"
-            << "  <x-pos>" << x << "</x-pos>\n"
-            << "  <y-pos>" << y << "</y-pos>\n"
+            << "  <x-pos>" << click_pos.x << "</x-pos>\n"
+            << "  <y-pos>" << click_pos.y << "</y-pos>\n"
             << "  <z-pos>0</z-pos>\n"
             << "</position>\n\n" << std::endl;
 
-  Dot* dot = path_graph->get_dot(x, y);
+  Dot* dot = path_graph->get_dot(click_pos.x, click_pos.y);
   if (dot)
     {
       std::cout << "Clicked on: " << dot->get_name() << std::endl;

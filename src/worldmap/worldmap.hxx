@@ -1,4 +1,4 @@
-//  $Id: worldmap.hxx,v 1.17 2002/10/13 23:02:29 grumbel Exp $
+//  $Id: worldmap.hxx,v 1.18 2002/11/02 14:46:29 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include <vector>
 #include "../libxmlfwd.hxx"
 #include "stat.hxx"
+#include "../display_graphic_context.hxx"
 
 class GraphicContext;
 class CL_Key;
@@ -46,11 +47,17 @@ class Pingus;
 class WorldMap
 {
 private:
+  // FIXME: We should use a ScrollGC or something like that here
+  DisplayGraphicContext display_gc;
+
   /** name of the file to parse */
   std::string filename;
 
   typedef std::vector<Drawable*>   ObjectLst;
   typedef std::vector<Drawable*> DrawableLst;
+
+  int width;
+  int height;
 
   Pingus* pingus;
 
