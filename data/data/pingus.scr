@@ -1,8 +1,8 @@
 // The surfaces for the different pingu actions
 section Pingus
 {
-	angel0     = images/pingus/angel.png     (type=surface, x=0, y=0, width=46, height=30, array=4x1);
-
+	angel0      = images/pingus/angel.png     (type=surface, x=0, y=0, width=46, height=30, array=4x1);
+	superman0   = images/pingus/superman.png     (type=surface, x=0, y=0, width=30, height=30, array=8x1);
 	bomber0     = images/pingus/bomber.png     (type=surface, x=0, y=0, width=32, height=32, array=16x1);
 	basher0     = images/pingus/basher.png     (type=surface, x=0, y=0, width=32, height=32, array=12x2);
 	climber0    = images/pingus/climber.png    (type=surface, x=0, y=0, width=32, height=32, array=8x2);
