@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.4 2000/02/12 12:00:33 grumbel Exp $
+//   $Id: Pingus.cc,v 1.5 2000/02/12 16:53:03 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -365,11 +365,13 @@ PingusMain::init_pingus()
 {
   if (verbose) 
     {
-      std::cout << "------------------------------------------------------\n" 
+      std::cout << "-----------------------------------------------------------------\n" 
 		<< " Verbosity set to: " << verbose  << "\n"
-		<< " If you don't like lots of debug messages set the\n"
-		<< "verbosity down to 0, like this:\n" 
-		<< "$ ./pingus --verbose 0" << std::endl;
+		<< " If you don't like to get lots of debug messages, than set the\n"
+		<< " verbosity down to 0, like this:\n\n" 
+		<< "   $ ./pingus --verbose 0\n" 
+		<< "-----------------------------------------------------------------\n" 
+		<< std::endl;
     }
 }
 

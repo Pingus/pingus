@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.3 2000/02/11 17:08:23 grumbel Exp $
+#  $Id: Makefile.am,v 1.4 2000/02/12 16:53:01 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,10 +42,12 @@ pkgdata_DATA = level1.plf  level1.psm  \
                stone.plf   stone.psm   \
                rock1.plf   rock1.psm   \
                test1.plf   test1.psm   \
-               foliage1.plf foliage1.psm \
+               foliage1.plf foliage1.psm   \
                tutorial1.plf tutorial1.psm \
-               space1.plf  space1.psm \
-               space2.plf  space2.psm 
+               space1.plf  space1.psm      \
+               space2.plf  space2.psm      \
+               jungle1.plf jungle1.psm     \
+               jungle2.plf jungle2.psm 
 
 EXTRA_DIST = README  \
              $(pkgdata_DATA)

@@ -1,3 +1,6 @@
+/* This level was created with the PLE
+ * $Id: jungle2.plf,v 1.2 2000/02/12 16:53:02 grumbel Exp $
+ */
 global {
   start_x_pos = 100;
   start_y_pos = 100;
@@ -11,18 +14,17 @@ global {
 
 ground {
   maptype = "SPOT";
-  data    = (file)"jungle2.psm";
-  width   = 1400;
+  width   = 1600;
   height  = 864;
   colmap  = (auto);
 }
 
 background {
-  image = (resource)"Textures/nightjungle";
-  dim = "0.1";
-  red = "1.0";
-  blue = "1.0";
-  green = "1.0";
+  image = (resource:textures.dat)"Textures/nightjungle";
+  dim   = "0.1";
+  red   = "1";
+  green = "1";
+  blue  = "1";
   scroll_x = 0;
   scroll_y = 0;
 }
@@ -40,8 +42,8 @@ buttons {
 
 entrance {
   type  = woodthing;
-  x_pos = 92;
-  y_pos = 151;
+  x_pos = 328;
+  y_pos = 158;
   z_pos = 0;
   release_rate = 40;
   direction = left;
@@ -49,22 +51,23 @@ entrance {
 
 exit {
   image = (resource)"Exits/stone";
-  x_pos = 1102;
-  y_pos = 258;
+  x_pos = 1338;
+  y_pos = 265;
   z_pos = 0;
 }
 
 hotspot {
   image = (resource)"Entrances/woodthing_nmov";
-  x_pos = 16;
-  y_pos = 16;
+  x_pos = 252;
+  y_pos = 23;
   z_pos = 100;
+  speed = -1;
 }
 
 trap {
   name = "laser_exit";
-  x_pos = 660;
-  y_pos = 115;
+  x_pos = 896;
+  y_pos = 122;
   z_pos = 0;
 }
 

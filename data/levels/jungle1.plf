@@ -20,7 +20,7 @@ ground {
 }
 
 background {
-  image = (resource)"Textures/enchantedjungle";
+  image = (resource:textures.dat)"Textures/enchantedjungle";
   dim = "0.2";
 	red = "1.0";
 	green = "1.0";
