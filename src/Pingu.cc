@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.19 2000/05/03 18:41:14 grumbel Exp $
+//  $Id: Pingu.cc,v 1.20 2000/05/12 13:34:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -653,6 +653,14 @@ Pingu::y_offset(void)
     {
       return -32;
     }
+}
+
+void
+Pingu::apply_force(CL_Vector arg_v)
+{
+  velocity += arg_v;
+  // Moving the pingu on pixel up, so that the force can take effect
+  y_pos -= 1; 
 }
 
 /* EOF */

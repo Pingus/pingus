@@ -1,4 +1,4 @@
-//  $Id: ActionButton.hh,v 1.4 2000/04/24 13:15:40 grumbel Exp $
+//  $Id: ActionButton.hh,v 1.5 2000/05/12 13:34:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -108,6 +108,7 @@ protected:
   // The x and y position of the button
   std::string name;
   int available;
+  bool is_multi_direct;
 
   ActionHolder* action_holder;
   AnimCounter action_c;

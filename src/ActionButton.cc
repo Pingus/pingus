@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.4 2000/04/24 13:15:40 grumbel Exp $
+//  $Id: ActionButton.cc,v 1.5 2000/05/12 13:34:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,7 @@
 
 #include <cstdio>
 
-
+#include "algo.hh"
 #include "globals.hh"
 #include "PingusResource.hh"
 #include "ActionButton.hh"
@@ -80,6 +80,16 @@ ActionButton::init(int x, int y, std::string str)
   y_pos = y;
   name = str;
  
+  if (name == "digger" || name == "bomber" 
+      || name == "floater" || name == "blocker")
+    {
+      is_multi_direct = false;
+    }
+  else
+    {
+      is_multi_direct = true;
+    }
+
   font = CL_Font::load("Fonts/courier_small",PingusResource::get("fonts.dat"));
   font_h = CL_Font::load("Fonts/smallfont", PingusResource::get("fonts.dat"));
 
@@ -87,7 +97,15 @@ ActionButton::init(int x, int y, std::string str)
     {
       surface   = CL_Surface::load(("Pingus/" + str).c_str(),
 				   PingusResource::get("pingus.dat"));
-      action_c.set_size(surface->get_num_frames());
+      if (is_multi_direct)
+	{
+	  action_c.set_size(surface->get_num_frames()/2);
+	}
+      else
+	{
+	  action_c.set_size(surface->get_num_frames());
+	}
+
       action_c.set_speed(50);
     }
   else
@@ -172,6 +190,7 @@ HorizontalActionButton::draw()
     }
   else
     {
+      action_c = (action_c.size() - 1)/2;
       if (fast_mode) {
 	// do nothing
       } else {
@@ -233,6 +252,8 @@ VerticalActionButton::draw()
     }
   else
     {
+      action_c = 0;
+
       if (fast_mode) {
 	// do nothing
       } else {

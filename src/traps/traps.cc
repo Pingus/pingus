@@ -1,4 +1,4 @@
-//  $Id: traps.cc,v 1.2 2000/02/09 21:43:45 grumbel Exp $
+//  $Id: traps.cc,v 1.3 2000/05/12 13:34:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 #include "LaserExit.hh"
 #include "Spike.hh"
 #include "Teleport.hh"
+#include "Bumper.hh"
 
 Trap* get_trap(trap_data data)
 {
@@ -46,7 +47,10 @@ Trap* get_trap(trap_data data)
     return (new Guillotine(data));
   } else if (data.name == "laser_exit") {
     return (new LaserExit(data));
+  } else if (data.name == "bumper") {
+    return (new Bumper(data));
   }
+
 
   throw PingusError("Trap: `" + data.name + "' is unknown");
 }

@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.11 2000/04/24 13:15:42 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.12 2000/05/12 13:34:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "../globals.hh"
 #include "StringReader.hh"
 #include "../PingusResource.hh"
+#include "../Loading.hh"
 
 #include "ObjectSelector.hh"
 
@@ -33,6 +34,7 @@ ObjectSelector::ObjectSelector()
 {
   last_object = "GroundPieces/";
   font = CL_Font::load("Fonts/courier_small",PingusResource::get("fonts.dat"));
+  data_loaded = false;
 }
 
 ObjectSelector::~ObjectSelector()
@@ -68,6 +70,7 @@ ObjectSelector::get_trap()
   traps.push_back("laser_exit");
   traps.push_back("fake_exit");
   traps.push_back("smasher");
+  traps.push_back("bumper");
 
   current_trap = traps.begin();
 
@@ -131,15 +134,22 @@ ObjectSelector::get_groundpiece()
   list<string>* liste = res->get_resources_of_type("surface");
   surface_obj sur_obj;
   vector<surface_obj> sur_list;
+  int j = 0;
 
   for(list<string>::iterator i = liste->begin(); i != liste->end(); i++)
     {
+      ++j;
       sur_obj.sur = CL_Surface::load(i->c_str(), res);
       cout << "Loading: " << *i  << endl;
       sur_obj.name = *i;
       sur_list.push_back(sur_obj);
+
+      if (!data_loaded && (j % 10))
+	{
+	  loading_screen.draw_progress(i->c_str(), (float)j / liste->size());
+	}
     }
-  
+  data_loaded = true;
   str = select_surface(sur_list);
 
   data.res_desc = ResDescriptor("resource:global.dat", str);
@@ -321,6 +331,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.12  2000/05/12 13:34:47  grumbel
+Misc changes
+
 Revision 1.11  2000/04/24 13:15:42  grumbel
 Added  Felix Natter's namespace clean ups
 

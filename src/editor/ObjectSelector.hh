@@ -1,4 +1,4 @@
-// $Id: ObjectSelector.hh,v 1.5 2000/04/24 13:15:42 grumbel Exp $
+// $Id: ObjectSelector.hh,v 1.6 2000/05/12 13:34:47 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,8 @@ private:
   int x_offset;
   int y_offset;
   std::string last_object;
-
+  bool data_loaded;
+  
 public:
   ObjectSelector();
   ~ObjectSelector();

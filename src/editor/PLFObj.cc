@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.7 2000/05/01 11:55:36 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.8 2000/05/12 13:34:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -184,14 +184,20 @@ TrapObj::TrapObj(trap_data data)
     surf = CL_Surface::load("Traps/fake_exit", PingusResource::get("traps.dat"));
   } else if (name == "laser_exit") {
     frame = 5;
+    z_pos = -100;
     surf = CL_Surface::load("Traps/laser_exit", PingusResource::get("traps.dat"));
   } else if (name == "spike") {
     frame = 5;
     surf = CL_Surface::load("Traps/spike", PingusResource::get("traps.dat"));
+    z_pos = 100;
   } else if (name == "hammer") {
     surf = CL_Surface::load("Traps/hammer", PingusResource::get("traps.dat"));    
   } else if (name == "smasher") {
-    surf = CL_Surface::load("Traps/smasher", PingusResource::get("traps.dat"));    
+    surf = CL_Surface::load("Traps/smasher", PingusResource::get("traps.dat"));
+    z_pos = 100;
+  } else if (name == "bumper") {
+    surf = CL_Surface::load("Traps/bumper", PingusResource::get("traps.dat"));
+    z_pos = -100;
   } else {
     cout << name << ": trap is not implemented in editor" << endl;
   }
