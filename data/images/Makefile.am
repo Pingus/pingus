@@ -789,8 +789,6 @@ traps/smasher_cmap.png \
 traps/spike.png \
 traps/tut.png \
 worldmaps/pacman.jpg \
-worldmaps/tutorial_button.jpg \
-worldmaps/tutorial_button_hl.jpg \
 worldmaps/tutorial_layer0.jpg \
 worldmaps/tutorial_layer1.png \
 worldmaps/tutorial_layer2.png \
