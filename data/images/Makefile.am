@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.10 2000/05/12 13:53:16 grumbel Exp $
+#  $Id: Makefile.am,v 1.11 2000/05/26 18:15:58 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,8 @@ EXITS = \
         exits/desertexit.pcx \
         exits/space1.tga     \
         exits/sweetexit.pcx  \
-        exits/sortie.pcx
+        exits/sortie.pcx \
+        exits/sortie.tga
 
 EDITOR = \
         editor/logo.tga           \
@@ -50,7 +51,9 @@ TRAPS = \
         traps/laser_exit.pcx     \
         traps/guillotineidle.pcx \
         traps/guillotinekill.pcx \
-	traps/teleporter.tga 
+	traps/teleporter.tga  \
+        traps/bumper.pcx \
+        traps/bumper_cmap.pcx
 
 HOTSPOTS = \
         hotspots/left_arrow.pcx     \
@@ -121,6 +124,7 @@ TEXTURES = \
         textures/stars.jpg       \
         textures/blueflame.jpg   \
         textures/flamebg.jpg     \
+        textures/anim_fire.jpg     \
         textures/stone.jpg       \
         textures/nightjungle.jpg     \
         textures/latejungle.jpg      \
@@ -138,6 +142,8 @@ PINGUS = \
         pingus/blocker.pcx    \
         pingus/bomber.pcx     \
         pingus/bridger.pcx     \
+        pingus/bridgerl.pcx   \
+        pingus/bridger2.pcx   \
         pingus/climber.pcx    \
         pingus/digger.pcx      \
         pingus/faller.pcx     \
@@ -174,7 +180,9 @@ CURSORS = \
         cursors/capwrong.tga \
         cursors/arrow_left.pcx \
         cursors/arrow_right.pcx \
-        cursors/cross.tga
+        cursors/cross.tga \
+        cursors/editor.pcx \
+        cursors/capture.tga
 
 ENTRANCES = \
              entrances/woodthing_mov.pcx  \
@@ -264,6 +272,7 @@ GROUNDPIECES = \
                groundpieces/weed1.pcx                 \
                groundpieces/weed2.pcx                 \
                groundpieces/tree.pcx                  \
+               groundpieces/misc/black.tga            \
                                                       \
                groundpieces/jungle/twist.pcx            \
                groundpieces/jungle/twistsmooth.pcx      \
@@ -304,6 +313,9 @@ GROUNDPIECES = \
                groundpieces/rock/granit1.pcx  \
                groundpieces/rock/granit2.pcx  \
                groundpieces/rock/granit3.pcx  \
+               groundpieces/rock/granit4.pcx  \
+               groundpieces/rock/granit5.pcx  \
+               groundpieces/rock/granit6.pcx  \
                \
                groundpieces/rock/rock1.pcx  \
                groundpieces/rock/rock2.pcx  \
@@ -354,7 +366,14 @@ GROUNDPIECES = \
                groundpieces/mushroom/toadstool1.pcx \
                groundpieces/mushroom/toadstool2.pcx \
                groundpieces/mushroom/toadstool3.pcx \
-               groundpieces/mushroom/toadstool4.pcx
+               groundpieces/mushroom/toadstool4.pcx \
+               \
+               groundpieces/sortie/column.pcx \
+               groundpieces/sortie/column2.pcx \
+               groundpieces/sortie/column3.pcx \
+               groundpieces/sortie/plate_forme.pcx \
+               groundpieces/sortie/plate_forme_left.pcx \
+               groundpieces/sortie/plate_forme_right.pcx
 
 LIQUIDS = \
           liquids/water.pcx  \
@@ -363,6 +382,7 @@ LIQUIDS = \
           liquids/water4.tga \
           liquids/water3.tga \
           liquids/swater.pcx \
+          liquids/water_cmap.pcx \
           liquids/lava.pcx
 
 PARTICLES = \
@@ -378,7 +398,9 @@ MISC = \
        misc/loading.pcx  \
        misc/pingubw.pcx  \
        misc/brick_right.pcx \
-       misc/brick_left.pcx 
+       misc/brick_left.pcx \
+       misc/smallmap_entrance.pcx \
+       misc/smallmap_exit.pcx
 
 THEMES = \
          themes/crystal.pcx \
@@ -386,9 +408,15 @@ THEMES = \
          themes/tutorial.tga \
          themes/space.tga
 
+STORY = \
+        story/story1.jpg \
+        story/story2.jpg \
+        story/story3.jpg \
+        story/story0.jpg
+
 EXTRA_DIST = \
              $(EXITS) $(TRAPS) $(BUTTONS) $(TEXTURES) $(PINGUS)   \
              $(FONTS) $(CURSORS) $(HOTSPOTS) $(GROUNDPIECES)      \
              $(ENTRANCES) $(LIQUIDS) $(PARTICLES) \
-             $(MISC) $(THEMES) $(EDITOR)
+             $(MISC) $(THEMES) $(EDITOR) $(STORY)
 

@@ -1,6 +1,6 @@
 Name:        -
 Image:       Themes/tutorial
-Description: Some tutorial levels to get familiar with the Game
+Description: Before the real life starts, the Pingus can do some practice in this tutorial levels.
 Background:  (resource:textures.dat)Textures/latejungle
 
 tutorial1.plf

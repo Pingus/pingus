@@ -11,13 +11,16 @@ Release 0.3.2 (15/Mar/1999)
 * Added support for drawing the colmap instead of the spot map
 * Added support for animated backgrounds (crystal2.plf)
 * Added ColMap support for all objects
+* Added a new ground property (transparent)
 * Added some new gfx (pingu splash animation, a new exit), thanks to
-  Craig Timpany and Joel Fauche  
+  Craig Timpany and Joel Fauche
+* Added some more playable levels, thanks to Craig Timpany
 * Fixed the jumper
 * Fixed the bridger
 * Fixed a clipping bug in the colmap
 * Fixed image color -> colmap color translation (level10.plf)
 * Software mouse cursor support
+
 
 Release 0.3.1 (17/Feb/1999)
 ===========================

@@ -1,7 +1,7 @@
 Name:        All Standard
 Image:       -
 Description: -
-Background:  (resource:textures.dat)Textures/flame
+Background:  (resource:textures.dat)Textures/happyclouds
 
 level1.plf
 level2.plf
