@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.13 2000/03/12 17:08:39 grumbel Exp $
+//  $Id: Pingu.cc,v 1.14 2000/03/22 14:34:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -414,7 +414,7 @@ Pingu::do_falling()
 	{
 	  // FIXME: This is a LinuxTag Hack and should be replaced
 	  // with a real ground smashing action! 
-	  set_action(new Smashed);
+	  set_action(ActionHolder::get_uaction("splashed"));
 	}
       else if (std::fabs(velocity.x) > deadly_velocity)
 	{
