@@ -36,8 +36,6 @@
 /* Headers needed for i18n / gettext */
 #include "gettext.h"
 
-#define COMPILE_WITH_MEMORY_HOLE 0
-
 namespace Pingus {
 
 void

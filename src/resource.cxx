@@ -40,6 +40,7 @@ namespace Pingus {
 CL_ResourceManager Resource::resmgr;
 std::map<ResDescriptor, CL_Surface>       Resource::surface_map;
 
+/** Take a res_name and a datafile name and generate */
 std::string 
 fix_file(std::string res_name, std::string datafile)
 {
@@ -49,11 +50,11 @@ fix_file(std::string res_name, std::string datafile)
     }
   else
     {
-  for (std::string::size_type i = 0; i != datafile.size(); ++i)
-    if (datafile[i] == '-')
-      datafile[i] = '/';
+      for (std::string::size_type i = 0; i != datafile.size(); ++i)
+        if (datafile[i] == '-')
+          datafile[i] = '/';
 
-  return datafile + "/" + res_name;
+      return datafile + "/" + res_name;
     }
 }
 
