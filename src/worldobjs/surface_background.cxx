@@ -100,12 +100,12 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
                         data->color.red, data->color.green, data->color.blue,
                         data->color.alpha);
     }
-  bg_surface = CL_Surface(new CL_PixelBuffer(canvas), true);
 
   //bg_surface = CAImageManipulation::changeHSV(bg_surface, 150, 100, 0);
   counter.set_size(bg_surface.get_frame_count());
   counter.set_speed(1.0);
 #endif
+  bg_surface = CL_Surface(new CL_PixelBuffer(canvas), true);
 
   timer.stop();
 }

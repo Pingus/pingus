@@ -24,7 +24,7 @@
 GroundParticle::GroundParticle (int x, int y, float x_a, float y_a)
   : Particle (x,y, x_a, y_a)
 {
-  surface = PingusResource::load_surface("Particles/ground", "pingus");
+  surface = PingusResource::load_sprite("Particles/ground", "pingus");
   livetime = 25 + (rand() % 10);
   time = livetime;
 }

@@ -30,9 +30,8 @@ namespace WorldObjs {
 
 Liquid::Liquid (const WorldObjsData::LiquidData& data_) :
   data(new WorldObjsData::LiquidData(data_)),
-  sur(data->desc.res_name, 
-      data->desc.datafile, 
-      (data->speed == 0) ? 30 : 1000.0f/data->speed)
+  sur(PingusResource::load_sprite(data->desc))
+  //(data->speed == 0) ? 30 : 1000.0f/data->speed)
 {
   if (!data->old_width_handling)
     data->width *= sur.get_width();

@@ -35,7 +35,7 @@ class Liquid : public WorldObj
 {
 private:
   WorldObjsData::LiquidData* const data;
-  Sprite sur;
+  CL_Sprite sur;
 
 public:
   Liquid (const WorldObjsData::LiquidData& data_);

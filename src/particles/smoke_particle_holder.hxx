@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_PARTICLES_SMOKE_PARTICLE_HOLDER_HXX
 
 #include <vector>
-#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/sprite.h>
 #include "../vector.hxx"
 #include "../worldobj.hxx"
 
@@ -44,8 +44,8 @@ class SmokeParticleHolder : public WorldObj
   };
 
 private:
-  CL_Surface surf1;
-  CL_Surface surf2;
+  CL_Sprite surf1;
+  CL_Sprite surf2;
 
   std::vector<SmokeParticle> particles;
 

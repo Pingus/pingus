@@ -58,12 +58,12 @@ SnowParticleHolder::SnowParticle::SnowParticle (int x, int y, bool colliding_)
 
 
 SnowParticleHolder::SnowParticleHolder ()
-  : snow1 (PingusResource::load_surface("Particles/snow1",       "pingus")),
-    snow2 (PingusResource::load_surface("Particles/snow2",       "pingus")),
-    snow3 (PingusResource::load_surface("Particles/snow3",       "pingus")),
-    snow4 (PingusResource::load_surface("Particles/snow4",       "pingus")),
-    snow5 (PingusResource::load_surface("Particles/snow5",       "pingus")),
-    ground(PingusResource::load_surface("Particles/ground_snow", "pingus"))
+  : snow1 (PingusResource::load_sprite("Particles/snow1",       "pingus")),
+    snow2 (PingusResource::load_sprite("Particles/snow2",       "pingus")),
+    snow3 (PingusResource::load_sprite("Particles/snow3",       "pingus")),
+    snow4 (PingusResource::load_sprite("Particles/snow4",       "pingus")),
+    snow5 (PingusResource::load_sprite("Particles/snow5",       "pingus")),
+    ground(PingusResource::load_sprite("Particles/ground_snow", "pingus"))
 {
 }
 

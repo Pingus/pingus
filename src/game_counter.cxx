@@ -86,11 +86,13 @@ GameCounter::check_overflow(void)
       break;
     }
   }
-  if (count >= size || count < 0) {
-    std::cout << "GameCounter: Something is wrong..." << std::endl;
-    std::cout << "GameCounter: Size: " << size << std::endl;
-    std::cout << "GameCounter: Count: " << count << std::endl;
-  }
+
+  if ((count >= size || count < 0) && !(count == 0 && size == 0))
+    {
+      std::cout << "GameCounter: Something is wrong..." << std::endl;
+      std::cout << "GameCounter: Size: " << size << std::endl;
+      std::cout << "GameCounter: Count: " << count << std::endl;
+    }
 }
 
 int

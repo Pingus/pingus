@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_PARTICLES_SNOW_PARTICLE_HOLDER_HXX
 
 #include <vector>
-#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/sprite.h>
 #include "../vector.hxx"
 #include "../worldobj.hxx"
 
@@ -49,12 +49,12 @@ private:
 friend struct SnowParticle;
 
 private:
-  CL_Surface snow1;
-  CL_Surface snow2;
-  CL_Surface snow3;
-  CL_Surface snow4;
-  CL_Surface snow5;
-  CL_Surface ground;
+  CL_Sprite snow1;
+  CL_Sprite snow2;
+  CL_Sprite snow3;
+  CL_Sprite snow4;
+  CL_Sprite snow5;
+  CL_Sprite ground;
 
   std::vector<SnowParticle> particles;
 

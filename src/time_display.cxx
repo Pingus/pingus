@@ -36,7 +36,7 @@ namespace Pingus {
 
 TimeDisplay::TimeDisplay (Client* c)
   : server(c->get_server()),
-    infinity_symbol(PingusResource::load_surface("misc/infinity", "core"))
+    infinity_symbol(PingusResource::load_sprite("misc/infinity", "core"))
 {
   font = Fonts::pingus_small_fix_num;
 }

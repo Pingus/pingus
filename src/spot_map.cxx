@@ -34,7 +34,7 @@ namespace Pingus {
 
 using namespace WorldObjsData;
 
-MapTileSurface::MapTileSurface () : empty(true)
+MapTileSurface::MapTileSurface () : empty(false)
 {
 }
 
@@ -70,6 +70,7 @@ MapTileSurface::reload()
 {
   std::cout << "Reload" << std::endl;
   surface = CL_Surface(new CL_PixelBuffer(buffer), true);
+  empty = false;
 }
 
 void
@@ -78,29 +79,6 @@ MapTileSurface::mark_dirty()
   empty = false;
 }
 
-void
-MapTileSurface::check_empty()
-{
-  // FIXME: obsolete
-  unsigned char* bufptr;
-  int lenght;
-
-  empty = true;
-
-  buffer.lock();
-  lenght = buffer.get_pitch() * buffer.get_height();
-  bufptr = static_cast<unsigned char*>(buffer.get_data());
-
-  // Jumping 4 steps because of RGBA
-  for(int i=0; i < lenght; i += 4) {
-    if (bufptr[i] != 0) {
-      empty = false;
-      return;
-    }
-  }
-
-  buffer.unlock();
-}
 
 PingusSpotMap::PingusSpotMap(PLF* plf)
 {

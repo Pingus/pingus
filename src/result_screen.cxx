@@ -43,7 +43,7 @@ public:
   Sprite background;
   std::string time_str;
 
-  std::vector<CL_Surface> chalk_pingus;
+  std::vector<CL_Sprite> chalk_pingus;
 
   ResultScreenComponent(Result arg_result);
   virtual ~ResultScreenComponent() {}
@@ -145,10 +145,10 @@ ResultScreenComponent::ResultScreenComponent(Result arg_result)
   background = Sprite("menu/startscreenbg", "core");
   background.set_align_center();
 
-  chalk_pingus.push_back(PingusResource::load_surface("misc/chalk_pingu1", "core"));
-  chalk_pingus.push_back(PingusResource::load_surface("misc/chalk_pingu2", "core"));
-  chalk_pingus.push_back(PingusResource::load_surface("misc/chalk_pingu3", "core"));
-  chalk_pingus.push_back(PingusResource::load_surface("misc/chalk_pingu4", "core"));
+  chalk_pingus.push_back(PingusResource::load_sprite("misc/chalk_pingu1", "core"));
+  chalk_pingus.push_back(PingusResource::load_sprite("misc/chalk_pingu2", "core"));
+  chalk_pingus.push_back(PingusResource::load_sprite("misc/chalk_pingu3", "core"));
+  chalk_pingus.push_back(PingusResource::load_sprite("misc/chalk_pingu4", "core"));
 
   if (result.max_time == -1)
     time_str = "-";

@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_SMALLMAP_HXX
 #define HEADER_PINGUS_SMALLMAP_HXX
 
-#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/sprite.h>
 #include <ClanLib/Display/pixel_buffer.h>
 #include "gui/component.hxx"
 
@@ -39,10 +39,10 @@ private:
   Client* client;
 
   /** Graphic surface of the exit */
-  CL_Surface exit_sur;
+  CL_Sprite exit_sur;
 
   /** Graphic surface of the entrance */
-  CL_Surface entrance_sur;
+  CL_Sprite entrance_sur;
 
   /** Graphic surface for the generated rectanglar background of the small map */
   CL_Surface sur;

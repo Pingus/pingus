@@ -46,7 +46,7 @@ class PinguParticleHolder : public WorldObj
   };
 
 private:
-  CL_Surface surface;
+  CL_Sprite surface;
   std::vector<PinguParticle> particles;
 
 public:

@@ -52,9 +52,8 @@ public:
   CL_Surface get_surface() const { return surface; }
   void reload ();
 
-  inline bool is_empty (void) { return empty; }
-  void mark_dirty (void);
-  void check_empty (void);
+  inline bool is_empty() { return empty; }
+  void mark_dirty ();
   void set_empty (bool);
 };
 

@@ -66,8 +66,8 @@ SmallMap::init()
   unsigned char  current_pixel;
   int tx, ty;
 
-  entrance_sur = PingusResource::load_surface("misc/smallmap_entrance", "core");
-  exit_sur     = PingusResource::load_surface("misc/smallmap_exit", "core");
+  entrance_sur = PingusResource::load_sprite("misc/smallmap_entrance", "core");
+  exit_sur     = PingusResource::load_sprite("misc/smallmap_exit", "core");
 
   ColMap* colmap = client->get_server()->get_world()->get_colmap();
   buffer = colmap->get_data();

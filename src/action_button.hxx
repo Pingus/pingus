@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_ACTION_BUTTON_HXX
 #define HEADER_PINGUS_ACTION_BUTTON_HXX
 
-#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/sprite.h>
 #include <string>
 #include "pingu_enums.hxx"
 #include "sprite.hxx"
@@ -47,8 +47,8 @@ private:
   bool  pressed;
   float press_time;
   Sprite     sprite;
-  CL_Surface background;
-  CL_Surface backgroundhl;
+  CL_Sprite background;
+  CL_Sprite backgroundhl;
 
   friend class ButtonPanel;
 public:
@@ -77,9 +77,9 @@ private:
   TrueServer* server;
   int x_pos;
   int y_pos;
-  CL_Surface surface;
-  CL_Surface background;
-  CL_Surface backgroundhl;
+  CL_Sprite surface;
+  CL_Sprite background;
+  CL_Sprite backgroundhl;
   friend class ButtonPanel;
 public:
   ForwardButton(TrueServer*, int x, int y);
@@ -106,9 +106,9 @@ private:
   TrueServer* server;
   int x_pos;
   int y_pos;
-  CL_Surface surface;
-  CL_Surface background;
-  CL_Surface backgroundhl;
+  CL_Sprite surface;
+  CL_Sprite background;
+  CL_Sprite backgroundhl;
   friend class ButtonPanel;
 public:
   PauseButton(TrueServer*, int x, int y);
@@ -175,8 +175,8 @@ private:
 class VerticalActionButton : public ActionButton
 {
 private:
-  CL_Surface background;
-  CL_Surface backgroundhl;
+  CL_Sprite background;
+  CL_Sprite backgroundhl;
 
 public:
   VerticalActionButton(ActionHolder* h, int x, int y, Actions::ActionName name, int owner_id);

@@ -1,30 +1,70 @@
 <resources>
   <section name="Game">
-    <surface file="../images/core/misc/loading.png" height="66" name="loading" tcol="0" width="175" x="0" y="0" />
-    <surface file="../images/core/misc/pingubw.png" height="400" name="pingubw" width="307" x="0" y="0" />
-    <surface file="../images/core/misc/404.png" height="64" name="404" width="64" x="0" y="0" />
-    <surface file="../images/core/worldmap/dot_green.png" height="12" name="dot_green" width="32" x="0" y="0" />
-    <surface file="../images/core/worldmap/dot_red.png" height="12" name="dot_red" width="32" x="0" y="0" />
-    <surface file="../images/core/worldmap/dot_border.png" height="22" name="dot_border" tcol="0" width="44" x="0" y="0" />
+    <sprite name="loading">
+      <image file="../images/core/misc/loading.png"/>
+    </sprite>
+    <sprite name="pingubw">
+      <image file="../images/core/misc/pingubw.png"/>
+    </sprite>
+
+    <surface name="404"  file="../images/core/misc/404.png" />
+
+    <sprite name="dot_green">
+      <image file="../images/core/worldmap/dot_green.png"/>
+    </sprite>
+    <sprite name="dot_red">
+      <image file="../images/core/worldmap/dot_red.png"/>
+    </sprite>
+    <sprite name="dot_border">
+      <image file="../images/core/worldmap/dot_border.png"/>
+    </sprite>
   </section>
   <section name="Cursors">
-    <surface file="../images/core/cursors/editor.png" height="38" name="editor" tcol="0" translate-x="19" translate-y="19" width="38" x="0" y="0" />
-    <surface file="../images/core/cursors/cursor.png" height="16" name="cursor" tcol="0" width="16" x="0" y="0" />
-    <surface file="../images/core/cursors/scroll.png" height="32" name="scroll_cur" tcol="0" width="32" x="0" y="0" />
-    <surface file="../images/core/cursors/cap.png" height="40" name="capgood" width="40" x="0" y="0" />
-    <surface file="../images/core/cursors/capwrong.png" height="40" name="capbad" width="40" x="0" y="0" />
-    <surface file="../images/core/cursors/cross.png" height="40" name="cross" width="40" x="0" y="0" />
-    <surface file="../images/core/cursors/arrow_right.png" height="9" name="arrow_right" tcol="0" width="23" x="0" y="0" />
-    <surface file="../images/core/cursors/arrow_left.png" height="9" name="arrow_left" tcol="0" width="23" x="0" y="0" />
+    <sprite name="editor">
+      <image file="../images/core/cursors/editor.png"/>
+    </sprite>
+    <sprite name="cursor">
+      <image file="../images/core/cursors/cursor.png"/>
+    </sprite>
+    <sprite name="scroll_cur">
+      <image file="../images/core/cursors/scroll.png"/>
+    </sprite>
+    <sprite name="capgood">
+      <image file="../images/core/cursors/cap.png"/>
+    </sprite>
+    <sprite name="capbad">
+      <image file="../images/core/cursors/capwrong.png"/>
+    </sprite>
+    <sprite name="cross">
+      <image file="../images/core/cursors/cross.png"/>
+    </sprite>
+    <sprite name="arrow_right">
+      <image file="../images/core/cursors/arrow_right.png"/>
+    </sprite>
+    <sprite name="arrow_left">
+      <image file="../images/core/cursors/arrow_left.png"/>
+    </sprite>
   </section>
   <section name="SmallMap">
-    <surface file="../images/core/misc/smallmap_entrance.png" height="6" name="entrance" width="6" x="0" y="0" />
-    <surface file="../images/core/misc/smallmap_exit.png" height="6" name="exit" width="6" x="0" y="0" />
+    <sprite name="entrance">
+      <image file="../images/core/misc/smallmap_entrance.png"/>
+    </sprite>
+    <sprite name="exit">
+      <image file="../images/core/misc/smallmap_exit.png"/>
+    </sprite>
   </section>
   <section name="Stars">
-    <surface file="../images/backgrounds/large_star.png" height="24" name="large_star" tcol="0" width="23" x="0" y="0" />
-    <surface file="../images/backgrounds/middle_star.png" height="9" name="middle_star" tcol="0" width="9" x="0" y="0" />
-    <surface file="../images/backgrounds/small_star.png" height="6" name="small_star" tcol="0" width="6" x="0" y="0" />
-    <surface file="../images/backgrounds/starfield_icon.png" height="64" name="starfield_icon" width="64" x="0" y="0" />
+    <sprite name="large_star">
+      <image file="../images/backgrounds/large_star.png"/>
+    </sprite>
+    <sprite name="middle_star">
+      <image file="../images/backgrounds/middle_star.png"/>
+    </sprite>
+    <sprite name="small_star">
+      <image file="../images/backgrounds/small_star.png"/>
+    </sprite>
+    <sprite name="starfield_icon">
+      <image file="../images/backgrounds/starfield_icon.png"/>
+    </sprite>
   </section>
 </resources>

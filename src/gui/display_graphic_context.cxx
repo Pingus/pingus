@@ -163,39 +163,46 @@ DisplayGraphicContext::clear (float r, float g, float b)
 void
 DisplayGraphicContext::draw (CL_Sprite& sprite, const Vector& pos)
 {
-  sprite.draw(w2s_x(pos.x), w2s_y(pos.y));
+  if (sprite)
+    sprite.draw(w2s_x(pos.x), w2s_y(pos.y));
 }
 
 void
 DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos)
 {
-  if (offset.z == 1.0)
+  if (sur)
     {
-      sur.draw(w2s_x(x_pos), w2s_y(y_pos));
-    }
-  else
-    {
-      sur.draw(w2s_x(x_pos), w2s_y(y_pos));
+      if (offset.z == 1.0)
+        {
+          sur.draw(w2s_x(x_pos), w2s_y(y_pos));
+        }
+      else
+        {
+          sur.draw(w2s_x(x_pos), w2s_y(y_pos));
 #ifdef CLANLIB_0_6 // scale issue
-      offset.z, offset.z);
+          offset.z, offset.z;
 #endif
+        }
     }
 }
 
 void
 DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos, int frame)
 {
-  // FIXME: CLANLIB_0_6, no frames in CL_Surface
-  if (offset.z == 1.0)
+  if (sur)
     {
-      sur.draw(w2s_x(x_pos), w2s_y(y_pos));
-    }
-  else
-    {
-      sur.draw(w2s_x(x_pos), w2s_y(y_pos));
+      // FIXME: CLANLIB_0_6, no frames in CL_Surface
+      if (offset.z == 1.0)
+        {
+          sur.draw(w2s_x(x_pos), w2s_y(y_pos));
+        }
+      else
+        {
+          sur.draw(w2s_x(x_pos), w2s_y(y_pos));
 #ifdef CLANLIB_0_6 // no scale in cl_surface
-               offset.z, offset.z);
+          offset.z, offset.z;
 #endif
+        }
     }
 }
 
@@ -203,7 +210,9 @@ void
 DisplayGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos,
 	    float size_x, float size_y, int frame)
 {
-  sur.draw(w2s_x(x_pos), w2s_y(y_pos));
+  if (sur)
+    sur.draw(w2s_x(x_pos), w2s_y(y_pos));
+
 #ifdef CLANLIB_0_6
            size_x * offset.z,
            size_y * offset.z, frame);
