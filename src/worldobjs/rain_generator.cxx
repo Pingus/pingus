@@ -1,4 +1,4 @@
-//  $Id: rain_generator.cxx,v 1.6 2002/10/14 11:15:15 torangan Exp $
+//  $Id: rain_generator.cxx,v 1.7 2002/12/28 16:10:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,8 +19,7 @@
 
 #include <iostream>
 #include <ClanLib/Display/Display/display.h>
-#include "../particles/particle_holder.hxx"
-#include "../particles/rain_particle.hxx"
+#include "../particles/rain_particle_holder.hxx"
 #include "../sound.hxx"
 #include "../world.hxx"
 #include "../graphic_context.hxx"
@@ -44,9 +43,9 @@ RainGenerator::draw (GraphicContext& gc)
   if (do_thunder)
     {
       if (thunder_count < 0.0f) {
-	do_thunder = false;
-	thunder_count = 0.0f;
-	waiter_count = 1.0f;
+      	do_thunder = false;
+      	thunder_count = 0.0f;
+      	waiter_count = 1.0f;
       }
 
       gc.draw_fillrect (0, 0, CL_Display::get_width (), CL_Display::get_height (),
@@ -71,14 +70,8 @@ RainGenerator::update()
 
   waiter_count -= 20.0f * 0.025f;
 
-  get_world()->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  get_world()->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  get_world()->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  get_world()->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  get_world()->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  get_world()->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  get_world()->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
-  get_world()->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
+  for (int i=0; i < 16; ++i)
+    world->get_rain_particle_holder()->add_particle(rand() % (world->get_width() * 2), -32);
 }
 
 } // namespace WorldObjs

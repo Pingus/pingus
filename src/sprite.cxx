@@ -1,4 +1,4 @@
-//  $Id: sprite.cxx,v 1.11 2002/11/26 21:30:37 grumbel Exp $
+//  $Id: sprite.cxx,v 1.12 2002/12/28 16:10:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -135,11 +135,13 @@ Sprite::put_screen (int x, int y)
     }
 }
 
+
 void 
 Sprite::put_screen (const Vector& pos)
 {
   put_screen (int(pos.x), int(pos.y));
 }
+
 
 void 
 Sprite::set_align (int arg_x, int arg_y)
@@ -162,6 +164,7 @@ Sprite::set_align_center_bottom ()
   y_align = -int(sur.get_height ()); 
 }
 
+
 void 
 Sprite::next_frame ()
 {
@@ -171,6 +174,8 @@ Sprite::next_frame ()
     frame = 0;
 }
 
+
+
 void 
 Sprite::previous_frame ()
 {
@@ -179,6 +184,7 @@ Sprite::previous_frame ()
   if (round(frame) < 0)
     frame = sur.get_num_frames () - 1;  
 }
+
 
 int 
 Sprite::get_frame ()
@@ -290,5 +296,3 @@ Sprite::set_frame (int n)
 }
 
 /* EOF */
-
-

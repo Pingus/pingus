@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.25 2002/11/03 17:32:25 grumbel Exp $
+//  $Id: bomber.cxx,v 1.26 2002/12/28 16:10:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@
 #include "../pingus_resource.hxx"
 #include "../string_converter.hxx"
 #include "../world.hxx"
-#include "../particles/particle_holder.hxx"
+#include "../particles/pingu_particle_holder.hxx"
 #include "bomber.hxx"
 
 namespace Actions {
@@ -110,8 +110,8 @@ Bomber::update ()
   if (sprite.get_frame () > 12 && !particle_thrown) 
     {
       particle_thrown = true;
-      WorldObj::get_world()->get_particle_holder()->add_pingu_explo(static_cast<int>(pingu->get_x()),
-								    static_cast<int>(pingu->get_y()) - 5);
+      WorldObj::get_world()->get_pingu_particle_holder()->add_particle(static_cast<int>(pingu->get_x()),
+                                                                       static_cast<int>(pingu->get_y()) - 5);
     }
 
 
@@ -120,11 +120,11 @@ Bomber::update ()
       colmap_exploded = true;
 
       WorldObj::get_world()->get_colmap()->remove(bomber_radius,
-						  static_cast<int>(pingu->get_x () - (bomber_radius.get_width()/2)),
-						  static_cast<int>(pingu->get_y () - 16 - (bomber_radius.get_width()/2)));
+                                                  static_cast<int>(pingu->get_x () - (bomber_radius.get_width()/2)),
+                                                  static_cast<int>(pingu->get_y () - 16 - (bomber_radius.get_width()/2)));
       WorldObj::get_world()->get_gfx_map()->remove(bomber_radius_gfx, 
-						   static_cast<int>(pingu->get_x () - (bomber_radius.get_width()/2)),
-						   static_cast<int>(pingu->get_y () - 16 - (bomber_radius.get_width()/2)));    
+                                                   static_cast<int>(pingu->get_x () - (bomber_radius.get_width()/2)),
+                                                   static_cast<int>(pingu->get_y () - 16 - (bomber_radius.get_width()/2)));    
     }
 
 

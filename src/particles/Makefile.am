@@ -18,13 +18,9 @@
 noinst_LIBRARIES = libpingus_particle.a
 
 libpingus_particle_a_SOURCES = \
-explosive_particle.hxx	particle_holder.hxx  smoke_particle.hxx \
-ground_particle.hxx	pingu_particle.hxx   \
-particle.hxx	        snow_particle.hxx \
-particle_cache.hxx	rain_particle.hxx    \
-explosive_particle.cxx	particle_holder.cxx  smoke_particle.cxx \
-ground_particle.cxx	pingu_particle.cxx  \
-particle.cxx	        snow_particle.cxx \
-particle_cache.cxx	rain_particle.cxx
+pingu_particle_holder.cxx pingu_particle_holder.hxx \
+ rain_particle_holder.cxx  rain_particle_holder.hxx \
+smoke_particle_holder.cxx smoke_particle_holder.hxx \
+ snow_particle_holder.cxx  snow_particle_holder.hxx
 
 ## EOF ##

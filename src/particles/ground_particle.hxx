@@ -1,4 +1,4 @@
-//  $Id: ground_particle.hxx,v 1.4 2002/09/27 11:26:49 torangan Exp $
+//  $Id: ground_particle.hxx,v 1.5 2002/12/28 16:10:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -16,7 +16,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
-
+#if 0
 #ifndef HEADER_PINGUS_PARTICLES_GROUND_PARTICLE_HXX
 #define HEADER_PINGUS_PARTICLES_GROUND_PARTICLE_HXX
 
@@ -41,3 +41,4 @@ private:
 #endif
 
 /* EOF */
+#endif

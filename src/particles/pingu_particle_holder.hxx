@@ -1,5 +1,4 @@
-
-//  $Id: particle.hxx,v 1.7 2002/09/29 20:45:31 grumbel Exp $
+//  $Id: pingu_particle_holder.hxx,v 1.1 2002/12/28 16:10:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,51 +17,50 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_PARTICLES_PARTICLE_HXX
-#define HEADER_PINGUS_PARTICLES_PARTICLE_HXX
+#ifndef HEADER_PINGUS_PARTICLES_PINGU_PARTICLE_HOLDER_HXX
+#define HEADER_PINGUS_PARTICLES_PINGU_PARTICLE_HOLDER_HXX
 
-#include "../vector.hxx"
+#include <vector>
 #include <ClanLib/Display/Display/surface.h>
+#include "../vector.hxx"
+#include "../worldobj.hxx"
 
 class GraphicContext;
 
-class Particle
+class PinguParticleHolder : public WorldObj
 {
-protected:
-  CL_Surface surface;
-  
-  /// The current position of the particle
-  Vector pos;
-  
-  /// The velocity of the particle
-  Vector velocity;
+  struct PinguParticle {
+    int   livetime;    
 
-  Vector force;
-  int livetime;
+    /// The current position of the particle
+    Vector pos;
+  
+    /// The velocity of the particle
+    Vector velocity;
+    
+    PinguParticle (int x, int y);
+  };
+
+private:
+  CL_Surface surface;
+  std::vector<PinguParticle> particles;
   
 public:
-  Particle ();
-  Particle (int x, int y, float x_a, float y_a);
-  virtual ~Particle ();
+  PinguParticleHolder ();
 
-  /// Reinit a allready created particle with now coordinates
-  virtual void init (int x, int y, float x_a, float y_a);
+  void add_particle (int x, int y);
 
-  /** If false is returned the particle gets deleted by the
-      ParticleHolder */
-  virtual bool is_alive (void);
-
-  float get_z_pos () const { return pos.z; }
+  float get_z_pos () const { return 1000.0f; }
 
   /// Let the particle move
-  virtual void update (float delta);
+  void update ();
 
   /// Draw the particle with the correct zoom resize
-  virtual void draw (GraphicContext& gc);
-  
+  void draw (GraphicContext& gc);
+
 private:
-  Particle (const Particle&);
-  Particle& operator= (const Particle&);
+  PinguParticleHolder (const PinguParticleHolder&);
+  PinguParticleHolder& operator= (const PinguParticleHolder&);
 };
 
 #endif

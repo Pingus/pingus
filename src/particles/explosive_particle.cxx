@@ -1,4 +1,4 @@
-//  $Id: explosive_particle.cxx,v 1.4 2002/10/04 11:38:29 torangan Exp $
+//  $Id: explosive_particle.cxx,v 1.5 2002/12/28 16:10:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -16,7 +16,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
-
+#if 0
 #include "../col_map.hxx"
 #include "../pingu_map.hxx"
 #include "../world.hxx"
@@ -28,9 +28,9 @@ ExplosiveParticle::ExplosiveParticle (int x, int y, float x_a, float y_a)
                                     : Particle (x, y, x_a, y_a),
                                       alive (true) 
 {  
-  sprite = Sprite (PingusResource::load_surface 
-		   ("Particles/explosive",
-		    "pingus"));
+//  sprite = Sprite (PingusResource::load_surface 
+//		   ("Particles/explosive",
+//		    "pingus"));
 }
 
 ExplosiveParticle::~ExplosiveParticle ()
@@ -86,11 +86,12 @@ ExplosiveParticle::detonate ()
 			       int(pos.y) - (bomber_radius.get_height()/2));
 }
 
-void 
-ExplosiveParticle::draw_offset(int ofx, int ofy, float /*s*/)
-{
-  sprite.put_screen (int(pos.x + ofx), int(pos.y + ofy));
-}
+//void 
+//ExplosiveParticle::draw_offset(int ofx, int ofy, float /*s*/)
+//{
+//  sprite.put_screen (int(pos.x + ofx), int(pos.y + ofy));
+//}
+
 
 bool 
 ExplosiveParticle::is_alive(void)
@@ -99,3 +100,4 @@ ExplosiveParticle::is_alive(void)
 }
 
 /* EOF */
+#endif

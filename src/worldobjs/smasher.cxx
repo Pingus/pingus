@@ -1,4 +1,4 @@
-//  $Id: smasher.cxx,v 1.14 2002/10/13 20:25:00 torangan Exp $
+//  $Id: smasher.cxx,v 1.15 2002/12/28 16:10:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,7 @@
 #include "../algo.hxx"
 #include "../col_map.hxx"
 #include "../graphic_context.hxx"
-#include "../particles/smoke_particle.hxx"
-#include "../particles/particle_holder.hxx"
+#include "../particles/smoke_particle_holder.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../pingus_resource.hxx"
@@ -63,49 +62,48 @@ Smasher::update ()
   if (smashing) 
     {
       if (downwards) 
-	{
-	  if (count >= 5) 
-	    {
-	      // SMASH!!! The thing hitten earth and kills the pingus
-	      downwards = false;
-	      --count; 
-	      PingusSound::play_sound("sounds/tenton.wav", 0.7f);
+	      {
+	        if (count >= 5) 
+	          {
+	            // SMASH!!! The thing hitten earth and kills the pingus
+	            downwards = false;
+	            --count; 
+	            PingusSound::play_sound("sounds/tenton.wav", 0.7f);
 	    
-	      for(int i=0; i < 20; ++i)
-		{
-		  world->get_particle_holder()
-		    ->add_particle(
-				   new SmokeParticle(static_cast<int>(data->pos.x + 20 + rand() % 260),
-						     static_cast<int>(data->pos.y + 180),
-						     frand()-0.5, frand()-0.5));
-		}
+	            for(int i=0; i < 20; ++i)
+		            {
+		              world->get_smoke_particle_holder()->add_particle(static_cast<int>(data->pos.x + 20 + rand() % 260),
+						                                                       static_cast<int>(data->pos.y + 180),
+						                                                       frand()-0.5, frand()-0.5);
+		            }
 
-	      for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
-		{
-		  if ((*pingu)->is_inside(static_cast<int>(data->pos.x + 30),
-					  static_cast<int>(data->pos.y + 90),
-					  static_cast<int>(data->pos.x + 250),
-					  static_cast<int>(data->pos.y + 190)))
-		    {
-		      if ((*pingu)->get_action() != Actions::Splashed)
-			(*pingu)->set_action(Actions::Splashed);
-		    }
-		}
-	    }
-	  else 
-	    {
-	      ++count;
-	    }
-	} 
+	            for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
+		            {
+		              if ((*pingu)->is_inside(static_cast<int>(data->pos.x + 30),
+					              static_cast<int>(data->pos.y + 90),
+					              static_cast<int>(data->pos.x + 250),
+					              static_cast<int>(data->pos.y + 190)))
+		                {
+		                  if ((*pingu)->get_action() != Actions::Splashed)
+			            (*pingu)->set_action(Actions::Splashed);
+		                }
+		            }
+	          }
+	        else 
+	          {
+	            ++count;
+	          }
+	      } 
       else 
-	{
-	  if (count <= 0) {
-	    count = 0;
-	    smashing = false;
-	  } else {
-	    --count;
-	  }
-	}
+	      {
+	        if (count <= 0)
+		        {
+	            count = 0;
+	            smashing = false;
+	          } else {
+	            --count;
+	          }
+	      }
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.33 2002/11/03 14:37:20 grumbel Exp $
+//  $Id: world.cxx,v 1.34 2002/12/28 16:10:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,10 @@
 #include "spot_map.hxx"
 #include "view.hxx"
 #include "world.hxx"
-#include "particles/particle_holder.hxx"
+#include "particles/pingu_particle_holder.hxx"
+#include "particles/rain_particle_holder.hxx"
+#include "particles/smoke_particle_holder.hxx"
+#include "particles/snow_particle_holder.hxx"
 #include "pingu.hxx"
 #include "game_time.hxx"
 
@@ -51,21 +54,25 @@ bool WorldObj_less (WorldObj* a, WorldObj* b)
 #endif
 
 World::World(PLF* plf)
-  : game_time (new GameTime (game_speed)),
-    particle_holder (new ParticleHolder()),
-    pingus (new PinguHolder(plf)),
-    view (0)
+  : gfx_map(new PingusSpotMap(plf)),
+    game_time(new GameTime (game_speed)),
+    do_armageddon(false),
+    pingu_particle_holder(new PinguParticleHolder()),
+    rain_particle_holder(new RainParticleHolder()),
+    smoke_particle_holder(new SmokeParticleHolder()),
+    snow_particle_holder(new SnowParticleHolder()),
+    pingus(new PinguHolder(plf)),
+    colmap(gfx_map->get_colmap()),
+    view(0)
 { 
   // Not perfect, but works
   WorldObj::set_world(this);
 
-  do_armageddon = false;
-
-  // Create the groundmap
-  gfx_map = new PingusSpotMap(plf);
-  colmap  = gfx_map->get_colmap();
-  world_obj.push_back (gfx_map);
-
+  world_obj.push_back(gfx_map);
+  world_obj.push_back(pingu_particle_holder);
+  world_obj.push_back (rain_particle_holder);
+  world_obj.push_back(smoke_particle_holder);
+  world_obj.push_back (snow_particle_holder);
   init_worldobjs(plf);
 }
 
@@ -102,8 +109,6 @@ World::init_worldobjs(PLF* plf)
 
 World::~World()
 {
-  delete particle_holder;
-  
   for (WorldObjIter it = world_obj.begin(); it != world_obj.end(); ++it) {
     delete *it;
   }
@@ -134,9 +139,6 @@ World::draw (GraphicContext& gc)
     {
       (*obj)->draw (gc);
     }
-  
-  // FIXME: Shouldn't the particle_holder be a worldobj in the above list?
-  particle_holder->draw (gc); 
 }
 
 void
@@ -183,9 +185,6 @@ World::update()
       // needs to catch pingus.
       (*obj)->update();
     }
-
-  // FIXME: Why is the particle holder still a seperate object?
-  particle_holder->update();
 }
 
 PinguHolder*
@@ -240,32 +239,26 @@ World::get_action_holder ()
   return action_holder;
 }*/
 
-ParticleHolder* 
-World::get_particle_holder()
-{
-  return particle_holder;
-}
-
 void 
 World::play_wav (std::string name, const Vector& pos, float volume)
 {
   if (view)
     {
-      Vector center = view->get_center ();
+      Vector center = view->get_center();
       float panning = pos.x - center.x;
-      panning /= view->get_width ()/2;
+      panning /= view->get_width()/2;
 
       if (panning > 1.0f)
-	panning = 1.0f;
+      	panning = 1.0f;
 
       if (panning < -1.0f)
-	panning = -1.0f;
+      	panning = -1.0f;
 
-      PingusSound::play_sound (name, volume, panning);
+      PingusSound::play_sound(name, volume, panning);
     }
   else // No view available, so no stereo enabled
     {
-      PingusSound::play_sound (name, volume);
+      PingusSound::play_sound(name, volume);
     }
 }
 
@@ -284,11 +277,11 @@ World::get_pingu (const Vector& pos)
   for (PinguIter i = pingus->begin (); i != pingus->end (); ++i) {
     if ((*i)->is_over(int(pos.x), int(pos.y)))
       {
-	if (distance == -1.0f || distance >= (*i)->dist((int) pos.x, (int)pos.y))
-	  {
-	    current_pingu = (*i);
-	    distance = (*i)->dist((int)pos.x, (int)pos.y);
-	  }
+	      if (distance == -1.0f || distance >= (*i)->dist((int) pos.x, (int)pos.y))
+	        {
+	          current_pingu = (*i);
+	          distance = (*i)->dist((int)pos.x, (int)pos.y);
+	        }
       }
   }
   
@@ -302,4 +295,3 @@ World::get_game_time ()
 }
 
 /* EOF */
-

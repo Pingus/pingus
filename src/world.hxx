@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.19 2002/10/10 12:25:53 grumbel Exp $
+//  $Id: world.hxx,v 1.20 2002/12/28 16:10:17 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,10 @@ class Exit;
 class Hotspot;
 class Liquid;
 class PLF;
-class ParticleHolder;
+class PinguParticleHolder;
+class RainParticleHolder;
+class SmokeParticleHolder;
+class SnowParticleHolder;
 class PinguHolder;
 class PinguMap;
 class Pingu;
@@ -72,8 +75,11 @@ private:
   typedef std::vector<WorldObj*>::iterator WorldObjIter;
   
   // These pointers hold objects and must be deleted
-  ParticleHolder* particle_holder;
-  PinguHolder*    pingus;
+  PinguParticleHolder* pingu_particle_holder;
+  RainParticleHolder*  rain_particle_holder;
+  SmokeParticleHolder* smoke_particle_holder;
+  SnowParticleHolder*  snow_particle_holder;
+  PinguHolder*         pingus;
 
   // Pointers which are references to objects from other classes
   ActionHolder*   action_holder;
@@ -117,10 +123,19 @@ public:
   /** @return A pointer to the gfx map of this world */
   PinguMap* get_gfx_map();
 
-  /** @return A pointer to the worlds particle holder */
-  ParticleHolder* get_particle_holder();
+  /** @return A pointer to the worlds pingu particle holder */
+  PinguParticleHolder* get_pingu_particle_holder () { return pingu_particle_holder; }
   
-  /** @return true if the world is currently doing an armageddon */
+  /** @return A pointer to the worlds rain particle holder */
+  RainParticleHolder* get_rain_particle_holder () { return rain_particle_holder; }
+
+  /** @return A pointer to the worlds smoke particle holder */
+  SmokeParticleHolder* get_smoke_particle_holder () { return smoke_particle_holder; }
+
+  /** @return A pointer to the worlds snow particle holder */
+  SnowParticleHolder* get_snow_particle_holder () { return snow_particle_holder; }
+
+    /** @return true if the world is currently doing an armageddon */
   bool check_armageddon() { return do_armageddon; }
 
   /** Play a sound as if it would have been generated at the given
