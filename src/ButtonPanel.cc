@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.7 2000/04/29 20:03:04 grumbel Exp $
+//  $Id: ButtonPanel.cc,v 1.8 2000/05/26 17:59:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,6 +61,9 @@ ButtonPanel::ButtonPanel(PLF* plf)
 
 ButtonPanel::~ButtonPanel()
 {
+  for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); ++button)
+    delete (*button);
+
   delete armageddon;
   delete forward;
   delete pause;
@@ -89,34 +92,21 @@ ButtonPanel::draw()
   float alpha;
 
   if (fast_mode)
-    {
-      alpha = 1.0;
-    } 
+    alpha = 1.0;
   else 
-    {
-      alpha = 0.5;
-    }
+    alpha = 0.5;
   
-  /*  CL_Display::fill_rect(0, CL_Display::get_height() - 56,
-			640, CL_Display::get_height(),
-			0.0, 0.0, 0.0, 1.0);
-  */
-
   // draw the buttons
   for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); ++button) 
     {
       if (*button == pressed_button) 
-	{
-	  (*button)->pressed = true;
-	} 
+	(*button)->pressed = true;
       else
-	{
-	  (*button)->pressed = false;
-	}
+	(*button)->pressed = false;
+
       (*button)->draw();
     }
   
-  //FIXME
   armageddon->draw();
   pause->draw();
   forward->draw();

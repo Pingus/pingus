@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.13 2000/05/01 20:11:15 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.14 2000/05/26 18:02:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -172,6 +172,11 @@ ThemeSelector::ThemeSelector()
 
 ThemeSelector::~ThemeSelector()
 {
+  // FIXME: Deleting the stuff, which was allocated in readdir()
+  // FIXME: Should be rewritten
+  for(std::vector<Theme*>::iterator i = themes.begin(); i != themes.end(); i++)
+    delete (*i);
+
   CL_Input::chain_button_press.remove(event);
   CL_Input::chain_button_release.remove(event);
   
@@ -207,6 +212,7 @@ ThemeSelector::select()
       CL_System::keep_alive();
       draw();
     }
+
   CL_MouseCursor::hide();
   event->enabled = false;
 }
