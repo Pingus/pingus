@@ -1,4 +1,4 @@
- //  $Id: theme.cxx,v 1.9 2002/10/12 00:49:10 torangan Exp $
+ //  $Id: theme.cxx,v 1.10 2002/12/01 17:08:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,6 @@
 #include "pingus_resource.hxx"
 #include "pingus_error.hxx"
 #include "game_session.hxx"
-#include "message_box.hxx"
 #include "globals.hxx"
 #include "theme.hxx"
 #include "xml_plf.hxx"
@@ -279,9 +278,7 @@ Theme::play()
 
   catch (PingusError& err) 
     {
-      std::string str = "Pingus_Error: ";
-      str += err.get_message ();
-      PingusMessageBox box(str);
+      std::cout <<  "Pingus_Error: " << err.get_message () << std::endl;
     }
 
   // Wait for escape release

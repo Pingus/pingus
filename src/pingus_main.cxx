@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.37 2002/11/08 01:38:27 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.38 2002/12/01 17:08:47 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -70,8 +70,6 @@
 #include "config_xml.hxx"
 #include "console.hxx"
 #include "fps_counter.hxx"
-#include "message_box.hxx"
-#include "audio.hxx"
 #include "game_session.hxx"
 #include "demo_session.hxx"
 #include "debug.hxx"
@@ -237,14 +235,6 @@ PingusMain::check_args(int argc, char** argv)
       {"disable-previews",no_argument,       0, 133}, 
       {"maintainer-mode", no_argument,       0, 134},
       {"disable-auto-scrolling",   no_argument,       0, 137},
-
-#ifdef HAVE_LIBSDL_MIXER
-      // Sound stuff
-      {"audio-format",     required_argument, 0, 138},
-      {"audio-rate",       required_argument, 0, 139},
-      {"audio-channels",   required_argument, 0, 140},
-      {"audio-buffers",    required_argument, 0, 141},
-#endif
 
       // 
       {"no-cfg-file",    no_argument,       0, 142},
@@ -413,26 +403,6 @@ For more information about these matters, see the files named COPYING.\
     case 137:
       auto_scrolling = false;
       break;
-#ifdef HAVE_LIBSDL_MIXER
-    case 138:
-      if (strcmp(optarg, "8") == 0)
-	pingus_audio_format = AUDIO_S8;
-      else
-	pingus_audio_format = AUDIO_S16;
-      break;
-
-    case 139:
-      sscanf(optarg, "%d", &pingus_audio_rate);
-      break;
-      
-    case 140:
-      sscanf(optarg, "%d", &pingus_audio_channels);
-      break; 
-      
-    case 141:
-      sscanf(optarg, "%d", &pingus_audio_buffers);
-      break;
-#endif
     case 142: // --no-cfg-file
       // Nothing, since that is handled in quick_check_args()
       break;
@@ -592,17 +562,11 @@ For more information about these matters, see the files named COPYING.\
           "   -r, --record-demo FILE   Record a demo session to FILE\n"
           "   -p, --play-demo FILE     Plays a demo session from FILE\n")
                 << std::endl;
-#ifdef HAVE_LIBSDL_MIXER
-      std::cout <<
-	_("\nSound:\n"
-          "   -s, --enable-sound       Enable sound\n"
-          "   -m, --enable-music       Enable music\n"
-          "   --audio-format {8,16}    Number of bits (default: 16)\n"
-          "   --audio-rate INT         Audio rate in Hz (default: 44000)\n"
-          "   --audio-channels {1,2}   Mono(1) or Stereo(2) output (default: 2)\n"
-          "   --audio-buffers INT      Audio buffer (default: 4096)\n")
-                << std::endl;
-#endif
+      std::cout
+        << _("\nSound:\n"
+             "   -s, --enable-sound       Enable sound\n"
+             "   -m, --enable-music       Enable music\n")
+        << std::endl;
       exit(EXIT_SUCCESS);
       break;
     }

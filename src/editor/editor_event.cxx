@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.42 2002/11/29 22:54:22 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.43 2002/12/01 17:08:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,6 @@
 #include "../debug.hxx"
 #include "../globals.hxx"
 #include "../game_session.hxx"
-#include "../message_box.hxx"
 #include "../system.hxx"
 #include "../pingus_error.hxx"
 #include "../loading.hxx"
@@ -46,6 +45,7 @@
 #include "property_window.hxx"
 #include "level_property_window.hxx"
 #include "level_resizer.hxx"
+#include "object_selector_window.hxx"
 #include "../screen_manager.hxx"
 
 namespace EditorNS {
@@ -181,7 +181,8 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  // Insert a new object, present the ObjectsSelector to select
 	  // one. 
 	case CL_KEY_INSERT:
-	  editor_insert_new_object();
+	  //editor_insert_new_object();
+          new ObjectSelectorWindow(editor->gui);
 	  break;
     
 	  // Load a level from file.
@@ -556,7 +557,6 @@ EditorEvent::editor_load_level()
       }
       catch(const PingusError& err) {
 	std::cout << err.get_message () << std::endl;
-	PingusMessageBox(err.get_message ());
       }
     }
 }

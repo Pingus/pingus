@@ -1,4 +1,4 @@
-//  $Id: config.cxx,v 1.8 2002/11/27 20:05:42 grumbel Exp $
+//  $Id: config.cxx,v 1.9 2002/12/01 17:08:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #include <iostream>
 
 #include "globals.hxx"
-#include "audio.hxx"
 #include "pingus_error.hxx"
 #include "config.hxx"
 
@@ -371,25 +370,6 @@ Config::set_value(std::string valueid,
   else if (valueid == "music")
     {
       music_enabled = str_to_bool(value);
-    }
-  else if (valueid == "audio-format")
-    {
-      if (value == "8")
-	pingus_audio_format = AUDIO_S8;
-      else
-	pingus_audio_format = AUDIO_S16;
-    }
-  else if (valueid == "audio-rate")
-    {
-      pingus_audio_rate = str_to_int(value);
-    }
-  else if (valueid == "audio-channels")
-    {
-      pingus_audio_buffers = str_to_int(value);      
-    }
-  else if (valueid == "audio-buffers")
-    {
-      pingus_audio_buffers = str_to_int(value);
     }
   else if (valueid == "swcursor-enabled")
     {

@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.41 2002/11/29 22:54:22 grumbel Exp $
+//  $Id: editor.cxx,v 1.42 2002/12/01 17:08:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -198,7 +198,7 @@ Editor::draw ()
 
   gui->show ();
 
-  if (get_gui_manager ()->get_focus () == get_gui_manager ())
+  if (get_gui_manager()->get_focus () == get_gui_manager ())
     CL_Display::draw_rect (25, 0, CL_Display::get_width (), CL_Display::get_height (),
 			   1.0f, 1.0f, 1.0f);
 
@@ -434,32 +434,40 @@ Editor::mouse_moved()
 void
 Editor::move_objects()
 {
-  int move_speed = 1;
-  move_x = 0;
-  move_y = 0;
-
-  if (CL_Keyboard::get_keycode(CL_KEY_RSHIFT)
-      || CL_Keyboard::get_keycode(CL_KEY_RSHIFT))
+  if (get_gui_manager()->get_focus () == get_gui_manager ())
     {
-      move_speed = 10;
-    }
+      // FIXME: this is really a dirty dirty hack
+      // FIXME: To fix this the whole editor should be build up out of CL_Components
+      int move_speed = 1;
+      move_x = 0;
+      move_y = 0;
 
-  if (CL_Keyboard::get_keycode(CL_KEY_LEFT))
-    move_x = -move_speed;
-  else if (CL_Keyboard::get_keycode(CL_KEY_RIGHT))
-    move_x = move_speed;
+      if (CL_Keyboard::get_keycode(CL_KEY_RSHIFT)
+          || CL_Keyboard::get_keycode(CL_KEY_RSHIFT))
+        {
+          move_speed = 10;
+        }
 
-  if (CL_Keyboard::get_keycode(CL_KEY_UP))
-    move_y = -move_speed;
-  else if (CL_Keyboard::get_keycode(CL_KEY_DOWN))
-    move_y = move_speed;
+      if (CL_Keyboard::get_keycode(CL_KEY_LEFT))
+        move_x = -move_speed;
+      else if (CL_Keyboard::get_keycode(CL_KEY_RIGHT))
+        move_x = move_speed;
+
+      if (CL_Keyboard::get_keycode(CL_KEY_UP))
+        move_y = -move_speed;
+      else if (CL_Keyboard::get_keycode(CL_KEY_DOWN))
+        move_y = move_speed;
         
-  selection->move(move_x, move_y);
+      selection->move(move_x, move_y);
+    }
 }
 
 void
 Editor::interactive_move_object()
 {
+  // FIXME: this is really a dirty dirty hack
+  // FIXME: To fix this the whole editor should be build up out of CL_Components
+
   CL_System::keep_alive();
 
   selection->drag ();

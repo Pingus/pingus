@@ -1,4 +1,4 @@
-//  $Id: generic_property_frame.cxx,v 1.2 2002/11/30 15:06:31 grumbel Exp $
+//  $Id: generic_property_frame.cxx,v 1.3 2002/12/01 17:08:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -174,7 +174,13 @@ public:
   {
   }
 
-  virtual ~EnumDataBox() {}
+  virtual ~EnumDataBox() 
+  {
+    for (RButtonIter i = radio_buttons.begin(); i != radio_buttons.end(); ++i)
+      {
+        delete (*i).second;
+      }  
+  }
 
   void read_data() 
   {

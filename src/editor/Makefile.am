@@ -33,6 +33,7 @@ libpingus_editor_a_SOURCES = \
         level_resizer.hxx level_resizer.cxx \
 	object_manager.cxx object_manager.hxx \
 	object_selector.cxx object_selector.hxx \
+        object_selector_window.hxx object_selector_window.cxx \
 	panel.cxx panel.hxx \
 	panel_icons.cxx panel_icons.hxx \
 	property_frame.cxx property_frame.hxx \

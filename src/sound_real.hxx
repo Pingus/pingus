@@ -1,4 +1,4 @@
-//  $Id: sound_real.hxx,v 1.7 2002/11/02 22:10:52 grumbel Exp $
+//  $Id: sound_real.hxx,v 1.8 2002/12/01 17:08:47 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,6 @@
 
 #include <map>
 #include <vector>
-#include "audio.hxx"
 #include "sound.hxx"
 
 class CL_SoundBuffer;
