@@ -38,17 +38,17 @@
   <resource-ident>Textures/rocktile</resource-ident>
   </resource></surface>
   <color>
-    <red>1</red>
-    <green>0</green>
+    <red>0</red>
+    <green>.5</green>
     <blue>0</blue>
-    <alpha>0.5</alpha>
+    <alpha>0.2</alpha>
   </color>
   <scroll-x>0</scroll-x>
-  <scroll-y>0</scroll-y>
+  <scroll-y>50</scroll-y>
   <para-x>0.2</para-x>
   <para-y>0.2</para-y>
   <stretch-x>0</stretch-x>
-  <stretch-y>0</stretch-y>
+  <stretch-y>1</stretch-y>
   <position>
     <x-pos>26</x-pos>
     <y-pos>224</y-pos>
