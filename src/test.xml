@@ -1,0 +1,40 @@
+<block>
+    <defvar name="foo" value="3" />
+
+    <defun name="dosomething">
+      <foobar />
+
+      <defvarvar name="tmp" var="foo" />
+      <modulo var="tmp" value="2" />
+
+      <if-zero var="tmp">
+        <printvar var="foo" />
+        <print string=" ist gerade!" />
+        <newline />
+      </if-zero>
+
+      <if-non-zero var="tmp">
+        <printvar var="foo" />
+        <print string=" ist ungerade!" />
+        <newline />
+      </if-non-zero>
+
+      <add  var="foo" value="5" />
+      <mult var="foo" value="3" />
+
+      <printvar var="i" />
+      <print string=". Hello World "/>
+      <printvar var="foo" />
+      <newline />
+    </defun>
+
+    <print string="-- Start"/>
+    <newline />
+    
+    <for name="i" start="1" end="5">
+      <funcall name="dosomething" />
+    </for>
+
+    <print string="-- End" />
+    <newline />
+</block>
