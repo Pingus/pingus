@@ -45,7 +45,7 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
 
   CL_Surface source_surface = PingusResource::load_surface(data->desc);
 
-  CL_PixelBuffer* canvas;
+  CL_PixelBuffer canvas;
 
   // Scaling Code
   if (data->stretch_x && data->stretch_y)
@@ -102,7 +102,7 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
     }
 #endif
 
-  bg_surface = CL_Surface(canvas, true);
+  bg_surface = CL_Surface(&canvas, false);
 
 #ifdef CLANLIB_0_6
   //bg_surface = CAImageManipulation::changeHSV(bg_surface, 150, 100, 0);

@@ -42,7 +42,7 @@ public:
   void lock () { target->lock(); }
   void unlock () { target->unlock(); }
   void* get_data () const { return target->get_data (); }
-  bool  is_indexed () const { return target->is_indexed (); }
+  bool  is_indexed () const { return target->get_type() ==  pixelformat_index; }
   unsigned int get_num_frames () const { return target->get_num_frames (); }
   unsigned int get_width () const { return target->get_width (); }
   unsigned int get_height () const { return target->get_height (); }

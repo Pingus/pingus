@@ -70,14 +70,13 @@ CaptureRectangle::draw_offset (int x_offset, int y_offset, float s)
 	  // Draw the caputure rectangle
 	  sur->draw(pingu->get_center_pos() + Vector(x_offset,y_offset));
 
-#ifdef CLANLIB_0_6
-	  font.print_center(static_cast<int>(pingu->get_center_pos().x) + x_offset,
-                            static_cast<int>(pingu->get_center_pos().y) + y_offset - 32,
-                            action_str.c_str());
-	  /*font->print_center(pingu->get_center_pos().x + x_offset,
-			     pingu->get_center_pos().y + y_offset - 16 + 62,
-			     to_string(pingu->get_owner()).c_str());*/
-#endif
+          {
+            CL_Font myfont = font;
+            myfont.set_alignment(origin_top_center);
+            myfont.draw(static_cast<int>(pingu->get_center_pos().x) + x_offset,
+                        static_cast<int>(pingu->get_center_pos().y) + y_offset - 32,
+                        action_str);
+          }
 
 	  // Paint the direction arrow
 	  if (pingu->direction.is_left())

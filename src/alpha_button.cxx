@@ -41,19 +41,21 @@ AlphaButton::AlphaButton(std::string str, int x1, int y1, int w, int h) :
 void
 AlphaButton::draw(void)
 {
-#ifdef CLANLIB_0_6
+  CL_Font font = font_h;
+
+  font.set_alignment(origin_top_center);
+
   if (is_pressed()) {
-    CL_Display::fill_rect(x1_pos, y1_pos, x2_pos, y2_pos,
-			  1.0, 1.0, 1.0, 0.5);
-    font_h->print_center(x1_pos + (x2_pos - x1_pos)/2, y1_pos + (y2_pos - y1_pos)/2,
-			 name.c_str());
+    CL_Display::fill_rect(CL_Rect(x1_pos, y1_pos, x2_pos, y2_pos),
+			  CL_Color(255, 255, 255, 128));
+    font.draw(x1_pos + (x2_pos - x1_pos)/2, y1_pos + (y2_pos - y1_pos)/2,
+			 name);
   } else {
-    CL_Display::fill_rect(x1_pos, y1_pos, x2_pos, y2_pos,
-			  0.0, 0.0, 0.0, 0.5);
-    font->print_center(x1_pos + (x2_pos - x1_pos)/2, y1_pos + (y2_pos - y1_pos)/2,
-		       name.c_str());
+    CL_Display::fill_rect(CL_Rect(x1_pos, y1_pos, x2_pos, y2_pos),
+			  CL_Color(0, 0, 0, 128));
+    font.draw(x1_pos + (x2_pos - x1_pos)/2, y1_pos + (y2_pos - y1_pos)/2,
+              name);
   }
-#endif
 }
 
 bool

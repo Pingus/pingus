@@ -62,11 +62,10 @@ Exit::~Exit ()
 void
 Exit::on_startup ()
 {
-#ifdef CLANLIB_0_6
-  world->get_colmap()->remove(sprite.get_surface(),
+  CL_PixelBuffer pixelbuffer = sprite.get_sprite().get_frame_surface(0).get_pixeldata();
+  world->get_colmap()->remove(pixelbuffer,
 			      static_cast<int>(data->pos.x) - sprite.get_width()/2,
 			      static_cast<int>(data->pos.y) - sprite.get_height());
-#endif
 }
 
 void

@@ -19,6 +19,7 @@
 
 #include <stdio.h>
 #include <ClanLib/Display/pixel_buffer.h>
+#include <ClanLib/Display/pixel_format.h>
 #include "gui/graphic_context.hxx"
 #include "plf.hxx"
 #include "pingus_error.hxx"
@@ -67,9 +68,8 @@ MapTileSurface::set_empty(bool e)
 void
 MapTileSurface::reload(void)
 {
-#ifdef CLANLIB_0_6
-  surface.reload();
-#endif
+  CL_PixelBuffer buf = surface.get_pixeldata();
+  surface = CL_Surface(&buf, false);
 }
 
 void
@@ -81,17 +81,16 @@ MapTileSurface::mark_dirty()
 void
 MapTileSurface::check_empty()
 {
-#ifdef CLANLIB_0_6
   // FIXME: obsolete
-  CL_PixelBuffer* provider = surface.get_provider();
+  CL_PixelBuffer provider = surface.get_pixeldata();
   unsigned char* buffer;
   int lenght;
 
   empty = true;
 
-  provider->lock();
-  lenght = provider->get_pitch() * provider->get_height();
-  buffer = static_cast<unsigned char*>(provider->get_data());
+  provider.lock();
+  lenght = provider.get_pitch() * provider.get_height();
+  buffer = static_cast<unsigned char*>(provider.get_data());
 
   // Jumping 4 steps because of RGBA
   for(int i=0; i < lenght; i += 4) {
@@ -101,8 +100,7 @@ MapTileSurface::check_empty()
     }
   }
 
-  surface.get_provider()->unlock();
-#endif
+  surface.get_pixeldata().unlock();
 }
 
 PingusSpotMap::PingusSpotMap(PLF* plf)
@@ -232,15 +230,14 @@ PingusSpotMap::get_height(void)
 }
 
 void
-PingusSpotMap::remove(CL_PixelBuffer* sprovider, int x, int y)
+PingusSpotMap::remove(const CL_PixelBuffer& sprovider, int x, int y)
 {
-#ifdef CLANLIB_0_6
   // Get the start tile and end tile
   int start_x = Math::max(x / tile_size, 0);
   int start_y = Math::max(y / tile_size, 0);
-  int end_x   = Math::min((x + sprovider->get_width()) / tile_size,
+  int end_x   = Math::min((x + sprovider.get_width()) / tile_size,
                           (width - 1) / tile_size);
-  int end_y   = Math::min((y + sprovider->get_height()) / tile_size,
+  int end_y   = Math::min((y + sprovider.get_height()) / tile_size,
                           (height - 1) / tile_size);
 
   for(int ix = start_x; ix <= end_x; ++ix)
@@ -249,7 +246,9 @@ PingusSpotMap::remove(CL_PixelBuffer* sprovider, int x, int y)
 	{
 	  if (!tile[ix][iy].is_empty())
 	    {
-	      put_alpha_surface(static_cast<CL_PixelBuffer*>(tile[ix][iy].surface.get_provider()),
+              CL_PixelBuffer target    = tile[ix][iy].surface.get_pixeldata();
+              CL_PixelBuffer sprovider = sprovider;
+	      put_alpha_surface(target,
 				sprovider,
 				x - (ix * tile_size), y - (iy * tile_size),
 				// FIXME, I am broken
@@ -259,14 +258,12 @@ PingusSpotMap::remove(CL_PixelBuffer* sprovider, int x, int y)
 	    }
 	}
     }
-#endif
 }
 
 void
-PingusSpotMap::put_alpha_surface(CL_PixelBuffer* provider, CL_PixelBuffer* sprovider,
+PingusSpotMap::put_alpha_surface(CL_PixelBuffer& provider, CL_PixelBuffer& sprovider,
 				 int x, int y, int real_x_arg, int real_y_arg)
 {
-#ifdef CLANLIB_0_6
   int start_i;
   unsigned char* tbuffer; // Target buffer
   int twidth, theight, tpitch;
@@ -280,27 +277,27 @@ PingusSpotMap::put_alpha_surface(CL_PixelBuffer* provider, CL_PixelBuffer* sprov
   int real_y;
 
   //  assert(sprovider->get_depth() == 8);
-  if (sprovider->get_depth() != 8)
+  if (sprovider.get_format().get_depth() != 8)
     {
       char str[128];
-      snprintf(str, 128, _("Image has wrong color depth: %d"), sprovider->get_depth());
+      snprintf(str, 128, _("Image has wrong color depth: %d"), sprovider.get_format().get_depth());
       PingusError::raise(str);
     }
   //  assert(provider->get_pixel_format() == RGBA8888);
 
-  provider->lock();
-  sprovider->lock();
+  provider.lock();
+  sprovider.lock();
 
-  tbuffer = static_cast<unsigned char*>(provider->get_data());
-  sbuffer = static_cast<unsigned char*>(sprovider->get_data());
+  tbuffer = static_cast<unsigned char*>(provider.get_data());
+  sbuffer = static_cast<unsigned char*>(sprovider.get_data());
 
-  twidth = provider->get_width();
-  theight = provider->get_height();
-  tpitch = provider->get_pitch();
+  twidth = provider.get_width();
+  theight = provider.get_height();
+  tpitch = provider.get_pitch();
 
-  swidth = sprovider->get_width();
-  sheight = sprovider->get_height();
-  spitch = sprovider->get_pitch();
+  swidth = sprovider.get_width();
+  sheight = sprovider.get_height();
+  spitch = sprovider.get_pitch();
 
   if (y < 0) {
     y_offset = 0-y;
@@ -357,19 +354,18 @@ PingusSpotMap::put_alpha_surface(CL_PixelBuffer* provider, CL_PixelBuffer* sprov
       ++real_y;
     }
 
-  sprovider->unlock();
-  provider->unlock();
-#endif
+  sprovider.unlock();
+  provider.unlock();
 }
 
 void
-PingusSpotMap::put(CL_PixelBuffer* sprovider, int x, int y)
+PingusSpotMap::put(const CL_PixelBuffer& sprovider, int x, int y)
 {
   // Get the start tile and end tile
   int start_x = x / tile_size;
   int start_y = y / tile_size;
-  int end_x = (x + sprovider->get_width()) / tile_size;
-  int end_y = (y + sprovider->get_height()) / tile_size;
+  int end_x   = (x + sprovider.get_width())  / tile_size;
+  int end_y   = (y + sprovider.get_height()) / tile_size;
 
   if (start_x < 0)
     start_x = 0;
@@ -389,9 +385,9 @@ PingusSpotMap::put(CL_PixelBuffer* sprovider, int x, int y)
 	    {
 	      CL_PixelBuffer* canvas = Canvas::create_rgba8888(tile_size, tile_size);
 
-	      Blitter::clear_canvas(canvas);
+	      Blitter::clear_canvas(*canvas);
 
-	      Blitter::put_surface(canvas, sprovider,
+	      Blitter::put_surface(*canvas, sprovider,
 				   x - (ix * tile_size), y - (iy * tile_size));
 
 	      tile[ix][iy].surface = CL_Surface (canvas, true);

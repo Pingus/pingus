@@ -34,10 +34,10 @@ class Blitter
 {
 private:
   ///
-  static void put_surface_8bit(CL_PixelBuffer*, CL_PixelBuffer*,
+  static void put_surface_8bit(CL_PixelBuffer& target, const CL_PixelBuffer& source,
 			       int x, int y);
   ///
-  static void put_surface_32bit(CL_PixelBuffer*, CL_PixelBuffer*,
+  static void put_surface_32bit(CL_PixelBuffer& target, const CL_PixelBuffer& source,
 			       int x, int y);
 public:
   /*void put_surface(CL_LockableSurface* provider, CL_Surface surface,
@@ -47,28 +47,28 @@ public:
   */
 
   /// Puts a given surface to a given canvas at position x, y.
-  static void put_surface(CL_PixelBuffer*, const CL_Surface&,
+  static void put_surface(CL_PixelBuffer& target, const CL_Surface& source,
 			  int x, int y);
 
   /// Puts a given surface provider to a given canvas at position x, y.
-  static void put_surface(CL_PixelBuffer*, CL_PixelBuffer*,
+  static void put_surface(CL_PixelBuffer& target, const CL_PixelBuffer& source,
 			  int x, int y);
 
   /** Makes all pixels in canvas tranparent, when their indexed value
       in provider is larger than zero.*/
-  static void put_alpha_surface(CL_PixelBuffer* canvas, CL_PixelBuffer* provider,
+  static void put_alpha_surface(CL_PixelBuffer& target, const CL_PixelBuffer& source,
 				int x, int y);
 
   /** Returns a newly allocated canvas. The canvas contains the same
       image as the given surface. */
-  static CL_PixelBuffer* create_canvas(const CL_Surface&);
+  static CL_PixelBuffer create_canvas(const CL_Surface&);
 
   /** Returns a newly allocated canvas. The canvas contains the same
       image as the given surface provider */
-  static CL_PixelBuffer* create_canvas(CL_PixelBuffer*);
+  static CL_PixelBuffer create_canvas(const CL_PixelBuffer& );
 
   /** Sets all pixels of a canvas to zero */
-  static CL_PixelBuffer* clear_canvas(CL_PixelBuffer*);
+  static CL_PixelBuffer clear_canvas(CL_PixelBuffer& );
 
   /** Creates a new surface (based on a canvas) with the given width
       and height and stretches the source surface onto it
@@ -106,7 +106,7 @@ public:
       @param width The new width of the surface.
       @param height The new height of the surface.
       @return A newly created surface, the caller is responsible to delete it. */
-  static CL_PixelBuffer* scale_surface_to_canvas (const CL_Surface& sur, int width, int height);
+  static CL_PixelBuffer scale_surface_to_canvas (const CL_Surface& sur, int width, int height);
 
 private:
   Blitter (const Blitter&);

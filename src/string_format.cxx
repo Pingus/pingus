@@ -63,28 +63,26 @@ StringFormat::break_line (std::string text, int length, const CL_Font& font)
   while ((pos = text.find("  ", pos)) != std::string::npos)
     text.replace(pos, 2, 1, ' ');
 
-#ifdef CLANLIB_0_6
   int start_pos      = 0;
   int previous_space = 0;
   pos = 0;
 
   while ((pos = text.find(' ', pos + 1)) != std::string::npos)
     {
-      if (font.get_text_width(text.substr(start_pos, pos - start_pos)) > length)
+      if (font.bounding_rect(0, 0, (text.substr(start_pos, pos - start_pos))).get_width() > length)
         {
 	  text[previous_space] = '\n';
 	  start_pos = previous_space + 1;
 	}
-      else if (font.get_text_width(text.substr(start_pos, text.length())) <= length)
+      else if (font.bounding_rect(0, 0, text.substr(start_pos, text.length())).get_width() <= length)
         break;
 
       previous_space = pos;
     }
 
-  if (font->get_text_width(text.substr(start_pos, text.length() - start_pos)) > length)
+  if (font.bounding_rect(0, 0, text.substr(start_pos, text.length() - start_pos)).get_width() > length)
     text[text.rfind(' ')] = '\n';
 
-#endif
   return text;
 }
 

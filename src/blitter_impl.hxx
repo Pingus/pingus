@@ -188,7 +188,7 @@ CL_Surface modify(const CL_Surface& sur, const TransF&)
   int pwidth  = prov->get_width();
   int pheight = prov->get_height();
 
-  if (prov->is_indexed())
+  if (prov.get_type() ==  pixelformat_index)
     {
 #ifdef CLANLIB_0_6
       IndexedCanvas* canvas = new IndexedCanvas(TransF::get_width (pwidth, pheight),

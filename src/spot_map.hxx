@@ -84,18 +84,18 @@ public:
   int  get_width();
 
   /** Put the gives surface provider onto the given coordinates */
-  void put(CL_PixelBuffer*, int x, int y);
+  void put(const CL_PixelBuffer&, int x, int y);
 
   /** Remove the gives surface provider onto the given coordinates
       (everything non-transparent is removed from the map) */
-  void remove(CL_PixelBuffer*, int x, int y);
+  void remove(const CL_PixelBuffer&, int x, int y);
 
   float get_z_pos () const { return 0; }
 
 private:
   /** Low level version of the remove() call, acts on a single canvas
       instead on the complete map-tiles */
-  void put_alpha_surface(CL_PixelBuffer* provider, CL_PixelBuffer* sprovider,
+  void put_alpha_surface(CL_PixelBuffer& provider, CL_PixelBuffer& sprovider,
 			 int x, int y, int real_x, int real_y);
 
   /** Draw the collision map onto the screen */
