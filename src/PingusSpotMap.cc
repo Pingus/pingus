@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.34 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.35 2000/09/29 16:21:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -322,7 +322,7 @@ PingusSpotMap::draw(int x_pos, int y_pos, int w, int h,
 	} 
       else 
 	{
-	  std::cout << "Zooming is at the moment not supported" << std::endl;
+	  std::cout << "PingusSpotMap: Zooming is at the moment not supported" << std::endl;
 	  // map_surface->put_screen(int(of_x * s), int(of_y * s), s, s);
 	}
     }

@@ -1,4 +1,4 @@
-//  $Id: PingusSound.hh,v 1.12 2000/09/29 16:21:17 grumbel Exp $
+//  $Id: PingusSoundReal.hh,v 1.1 2000/09/29 16:21:17 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,44 +17,43 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef PINGUSSOUND_HH
+#ifndef PINGUSSOUNDREAL_HH
 #define PINGUSSOUND_HH
 
+#include "audio.hh"
 #include <string>
 
-class PingusSound
+/** A simple wrapper class around SDL_Mixer, it will init itself
+    automatically if a sound is played. */
+class PingusSoundReal
 {
-protected: 
-  static PingusSound* sound;
+private:
+  ///
+  bool is_init;
+  /// 
+  int audio_open;
+  /// The current music file
+  Mix_Music *music;
 
-  virtual void real_play_mod (std::string filename) =0;
-  virtual void real_play_wav(std::string filename) =0;
-  virtual void real_clean_up() =0;
-
+  /// Init SDL_mixer
+  void init(int audio_rate, Uint16 audio_format,
+		   int audio_channels, int audio_buffers);
 public:
-  static void init (PingusSound* s);
+  PingusSoundReal ();
 
   /** Load a mod and play it immediately.
 
       @param filename The complete filename, it will be passed to the
       PingusMusicProvider */
-  static void play_mod(std::string filename);
+  virtual void real_play_mod(std::string filename);
 
   /** Load a wav and play it immediately.
 
       @param filename The complete filename, it will be passed to the
              PingusSoundProvider */
-  static void play_wav(std::string filename);
+  virtual void real_play_wav(std::string filename);
 
   /** Shut down the sound and the music and quit SDL */
-  static void clean_up();
-};
-
-class PingusSoundDummy : public PingusSound
-{
-public:
-  virtual void real_play_mod (std::string filename);
-  virtual void real_play_wav(std::string filename);
   virtual void real_clean_up();
 };
 

@@ -1,4 +1,4 @@
-//  $Id: TargetProvider.hh,v 1.1 2000/09/25 16:23:09 grumbel Exp $
+//  $Id: TargetProvider.hh,v 1.2 2000/09/29 16:21:17 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,17 +34,17 @@ public:
 
   void lock () { target->lock(); }
   void unlock () { target->unlock(); }
-  void* get_data () const { target->get_data (); }
-  bool  is_indexed () const { target->is_indexed (); }
-  unsigned int get_num_frames () const { target->get_num_frames (); }
-  unsigned int get_width () const { target->get_width (); }
-  unsigned int get_height () const { target->get_height (); }
-  unsigned int get_pitch () const { target->get_pitch (); }
-  unsigned int get_red_mask () const { target->get_red_mask (); }
-  unsigned int get_green_mask () const { target->get_green_mask (); }
-  unsigned int get_blue_mask () const { target->get_blue_mask (); }
-  unsigned int get_alpha_mask () const { target->get_alpha_mask (); }
-  CL_Palette*  get_palette () const { target->get_palette (); }
+  void* get_data () const { return target->get_data (); }
+  bool  is_indexed () const { return target->is_indexed (); }
+  unsigned int get_num_frames () const { return target->get_num_frames (); }
+  unsigned int get_width () const { return target->get_width (); }
+  unsigned int get_height () const { return target->get_height (); }
+  unsigned int get_pitch () const { return target->get_pitch (); }
+  unsigned int get_red_mask () const { return target->get_red_mask (); }
+  unsigned int get_green_mask () const { return target->get_green_mask (); }
+  unsigned int get_blue_mask () const { return target->get_blue_mask (); }
+  unsigned int get_alpha_mask () const { return target->get_alpha_mask (); }
+  CL_Palette*  get_palette () const { return target->get_palette (); }
   bool uses_src_colorkey() const { return false; }
   unsigned int get_src_colorkey () const { return 0; }
   

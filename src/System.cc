@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.18 2000/09/25 16:29:43 grumbel Exp $
+//  $Id: System.cc,v 1.19 2000/09/29 16:21:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,9 +30,11 @@
 #  include <fstream>
 #endif
 
+#include <cstdio>
 #include <iostream>
 #include "globals.hh"
 #include "PingusError.hh" 
+#include "StringConverter.hh"
 #include "System.hh"
 
 System::DirectoryEntry::DirectoryEntry(const std::string& n)
@@ -278,6 +280,42 @@ System::translate(std::map<std::string, std::string> strs)
     {
       return str;
     }
+}
+
+/** Read file and create a checksum and return it */
+std::string
+System::checksum (std::string filename)
+{
+  FILE* in;
+  int bytes_read;
+  char buffer[4096];
+  int checksum;
+
+  in = fopen(filename.c_str(), "r");
+
+  if (!in)
+    {
+      std::cout << "System::checksum: Couldn't open file: " << filename << std::endl;
+      return "";
+    }
+
+  do 
+    {
+      bytes_read = fread (buffer, sizeof (char), 4096, in);
+      
+      if (bytes_read == -1)
+	{
+	  throw PingusError ("System:checksum: fileerror");
+	}
+
+      for (int i=0; i < bytes_read; i++)
+	checksum = checksum * 17 + buffer[i];
+    } 
+  while (bytes_read != 0);
+
+  fclose (in);
+
+  return StringConverter::to_string(checksum);
 }
 
 /* EOF */

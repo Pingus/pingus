@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.6 2000/09/26 12:35:35 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.7 2000/09/29 16:21:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -157,10 +157,10 @@ PingusWorldMap::get_node (int x, int y)
   for (list<PingusWorldMapNode>::iterator i = graph_data.nodes.begin ();
        i != graph_data.nodes.end ();
        i++)
-    if (i->pos.x_pos - (red_dot->get_width()/2) - 3 < x
-	&& i->pos.x_pos + (red_dot->get_width()/2) + 3 > x
-	&& i->pos.y_pos - (red_dot->get_width()/2) - 3 < y
-	&& i->pos.y_pos + (red_dot->get_width()/2) + 3 > y)
+    if (i->pos.x_pos - (int)(red_dot->get_width()/2) - 3 < x
+	&& i->pos.x_pos + (int)(red_dot->get_width()/2) + 3 > x
+	&& i->pos.y_pos - (int)(red_dot->get_width()/2) - 3 < y
+	&& i->pos.y_pos + (int)(red_dot->get_width()/2) + 3 > y)
       {
 	if (!i->levelname.empty ())
 	  return &(*i);

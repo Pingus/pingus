@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.6 2000/09/26 12:35:35 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.7 2000/09/29 16:21:17 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -62,6 +62,7 @@
 #include "PingusSound.hh"
 #include "PingusMenu.hh"
 #include "PingusMessageBox.hh"
+#include "audio.hh"
 
 void
 segfault_handler(int signo)
@@ -738,8 +739,14 @@ PingusMain::init_clanlib()
   if (sound_enabled || music_enabled) 
     {
       if (verbose)
-	std::cout << "Init ClanSound" << std::endl;
-      //CL_System::init_sound();
+	std::cout << "Init Sound" << std::endl;
+      PingusSound::init (new PingusSoundDummy ());
+    }
+  else
+    {
+      if (verbose)
+	std::cout << "Sound disabled" << std::endl;
+      PingusSound::init (new PingusSoundDummy ());
     }
 
   if (verbose) 

@@ -1,4 +1,4 @@
-//  $Id: StringConverter.cc,v 1.1 2000/07/30 02:32:09 grumbel Exp $
+//  $Id: StringConverter.cc,v 1.2 2000/09/29 16:21:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,6 +41,22 @@ StringConverter::to_float(const std::string& str)
       throw PingusError("StringConverter: Couldn't convert: \"" + str + "\" to float");
     }
   return i;
+}
+
+std::string 
+StringConverter::to_string (int i)
+{
+  char buffer[64];
+  sprintf (buffer, "%d", i);
+  return buffer;
+}
+
+std::string 
+StringConverter::to_string (float i)
+{
+  char buffer[256];
+  sprintf (buffer, "%d", i);
+  return buffer;
 }
 
 /* EOF */

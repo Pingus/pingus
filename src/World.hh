@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.17 2000/09/07 09:45:39 grumbel Exp $
+//  $Id: World.hh,v 1.18 2000/09/29 16:21:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,6 +48,7 @@ class PinguHolder;
 class Trap;
 class ParticleHolder;
 class ActionHolder;
+class Background;
 
 /** The World holds all objects of the pingu enviroment. 
     

@@ -1,4 +1,4 @@
-//  $Id: PingusSound.cc,v 1.13 2000/09/07 09:45:39 grumbel Exp $
+//  $Id: PingusSound.cc,v 1.14 2000/09/29 16:21:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,138 +17,60 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <string>
-#include <cstdio>
-#include <config.h>
-
-#include "algo.hh"
-#include "globals.hh"
-#include "PingusMusicProvider.hh"
-#include "PingusWavProvider.hh"
 #include "PingusSound.hh"
 
-bool PingusSound::is_init;
-int  PingusSound::audio_open;
-Mix_Music* PingusSound::music;
+PingusSound* PingusSound::sound;
 
 void
-PingusSound::init(int audio_rate, Uint16 audio_format,
-		  int audio_channels, int audio_buffers)
+PingusSound::init (PingusSound* s)
 {
-#ifdef HAVE_LIBSDL_MIXER
-  music = 0;
-  is_init = true;
-
-  printf("Initint music\n");
-  printf("Opened audio at %d Hz %d bit %s, %d bytes audio buffer\n", audio_rate,
-	 (audio_format&0xFF),
-	 (audio_channels > 1) ? "stereo" : "mono", 
-	 audio_buffers );
-  
-  if ( SDL_Init(SDL_INIT_AUDIO) < 0 ) 
-    {
-      fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
-      exit(255);
-    }
-  printf("SDL init...\n");
-
-  /* Open the audio device */
-  if (Mix_OpenAudio(audio_rate, audio_format, audio_channels, audio_buffers) < 0) {
-    fprintf(stderr, "Couldn't open audio: %s\n", SDL_GetError());
-    exit(2);
-  } else {
-    Mix_QuerySpec(&audio_rate, &audio_format, &audio_channels);
-    printf("Opened audio at %d Hz %d bit %s, %d bytes audio buffer\n", audio_rate,
-	   (audio_format&0xFF),
-	   (audio_channels > 1) ? "stereo" : "mono", 
-	   audio_buffers );
-    atexit(clean_up);
-  }
-  audio_open = 1;
-
-  Mix_SetMusicCMD(getenv("MUSIC_CMD"));
-
-  printf("SDL init... done\n");
-#endif /* HAVE_LIBSDL_MIXER */
-}
-
-void
-PingusSound::clean_up()
-{
-#ifdef HAVE_LIBSDL_MIXER
-  if (is_init)
-    {
-      if( Mix_PlayingMusic() ) 
-	{
-	  Mix_FadeOutMusic(1500);
-	  SDL_Delay(1500);
-	}
-  
-      if ( music ) 
-	{
-	  Mix_FreeMusic(music);
-	  music = NULL;
-	}
-  
-      if ( audio_open ) 
-	{
-	  Mix_CloseAudio();
-	  audio_open = 0;
-	}
-      SDL_Quit();
-    }
-#endif /* HAVE_LIBSDL_MIXER */
-}
-
-void
-PingusSound::play_wav(std::string arg_str)
-{
-#ifdef HAVE_LIBSDL_MIXER
-  if (sound_enabled)
-    {
-      std::string str = find_file(pingus_datadir, arg_str);
-
-      if (!is_init)
-	{
-	  init(pingus_audio_rate, pingus_audio_format,
-	       pingus_audio_channels, pingus_audio_buffers);
-	}
-      
-      //cout << "PlayingWAV: " << str << endl;
-      Mix_PlayChannel(-1, PingusWavProvider::load(str), 0);
-    }
-  else
-    {
-      std::cout << "Sound: " << arg_str << std::endl;
-    }
-#endif /* HAVE_LIBSDL_MIXER */  
+  assert (sound == 0);
+  sound = s;
 }
 
 void
 PingusSound::play_mod(std::string filename)
 {
-#ifdef HAVE_LIBSDL_MIXER
-  if (music_enabled)
-    {
-      if (!is_init)
-	{
-	  init(pingus_audio_rate, pingus_audio_format,
-	       pingus_audio_channels, pingus_audio_buffers);
-	}
+  assert (sound);
+  sound->real_play_mod (filename);
+}
 
-      if (music)
-	{
-	  Mix_FadeOutMusic(1000);
-	  Mix_FreeMusic(music);
-	}
-  
-      printf("Playing...\n");
-      music = PingusMusicProvider::load(filename);
+/** Load a wav and play it immediately.
+    
+    @param filename The complete filename, it will be passed to the
+    PingusSoundProvider */
+void 
+PingusSound::play_wav(std::string filename)
+{
+  assert (sound);
+  sound->real_play_wav (filename);
+}
 
-      Mix_FadeInMusic(music,-1,2000);
-      printf("Playing...now\n");
-    }
-#endif /* HAVE_LIBSDL_MIXER */
+/** Shut down the sound and the music and quit SDL */
+void 
+PingusSound::clean_up()
+{
+  assert (sound);
+  sound->real_clean_up ();
+}
+
+/* PingusSoundDummy */
+
+void
+PingusSoundDummy::real_play_mod (std::string filename)
+{
+  std::cout << "PingusSoundDummy::real_play_mod: " << filename << std::endl;
+}
+
+void 
+PingusSoundDummy::real_play_wav(std::string filename)
+{
+  std::cout << "PingusSoundDummy::real_play_wav: " << filename << std::endl;
+}
+
+void 
+PingusSoundDummy::real_clean_up()
+{
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: smasher.cc,v 1.11 2000/09/18 12:22:16 grumbel Exp $
+//  $Id: smasher.cc,v 1.12 2000/09/29 16:21:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -102,7 +102,7 @@ Smasher::catch_pingu(Pingu* pingu)
 	     && pingu->get_x() > pos.x_pos + 190 && pingu->get_x() < pos.x_pos + 210))
 	  {
 	    if (!smashing) {
-	      PingusSound::play_wav(find_file(pingus_datadir, "sound/OING.WAV"));
+	      PingusSound::play_wav("sound/OING.WAV");
 	      count = 0;
 	      downwards = true;
 	      smashing = true; 
