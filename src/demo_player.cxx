@@ -1,4 +1,4 @@
-//  $Id: demo_player.cxx,v 1.5 2002/10/03 01:02:12 grumbel Exp $
+//  $Id: demo_player.cxx,v 1.6 2002/10/03 12:57:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,21 +41,21 @@ DemoPlayer::~DemoPlayer()
 void
 DemoPlayer::update()
 {
-  if (!events.empty())
+  while(!events.empty() && events.back().time_stamp == server->get_time())
     {
-      ServerEvent event = events.back();
-      if (event.time_stamp == server->get_time())
-	{
-	  std::cout << "Sending: ";
-	  event.write_xml(std::cout);
+      ServerEvent& event = events.back();
+      
+      std::cout << "Sending: ";
+      event.write_xml(std::cout);
+      
+      event.send(server);
+      events.pop_back();
+    }
 
-	  event.send(server);
-	  events.pop_back();
-	}
-      else if (event.time_stamp < server->get_time())
-	{
-	  std::cout << "DemoPlayer Bug: We missed a timestamp: " << event.time_stamp << std::endl;
-	}
+  // Check for unexpected things (might happen if the demo file is broken)
+  if (!events.empty() && events.back().time_stamp < server->get_time())
+    {
+      std::cout << "DemoPlayer Bug: We missed a timestamp: " << events.back().time_stamp << std::endl;
     }
 }
 
