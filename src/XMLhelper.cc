@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.cc,v 1.14 2002/01/22 22:48:05 grumbel Exp $
+//  $Id: XMLhelper.cc,v 1.15 2002/03/01 23:04:33 japj Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -224,7 +224,9 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 		  else
 		    {
 		      std::cout << __FILE__ ":"
+#ifndef _MSC_VER
 				<<__FUNCTION__ << ":" 
+#endif
 				<< __LINE__ << ": unhandled: " << ccur->name << std::endl;
 		    }
 		  ccur = ccur->next;

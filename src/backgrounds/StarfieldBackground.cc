@@ -1,4 +1,4 @@
-//  $Id: StarfieldBackground.cc,v 1.17 2002/03/01 22:10:27 grumbel Exp $
+//  $Id: StarfieldBackground.cc,v 1.18 2002/03/01 23:04:33 japj Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -170,7 +170,7 @@ StarfieldBackgroundStars::update(float delta)
 }
 
 void
-StarfieldBackgroundStars::draw_offset(int x_of, int y_of, float s = 1.0)
+StarfieldBackgroundStars::draw_offset(int x_of, int y_of, float s)
 {
   sur.put_screen (int(x_pos + x_of), int(y_pos + y_of));
 }
@@ -216,7 +216,7 @@ StarfieldBackground::update(float delta)
 }
 ///
 void 
-StarfieldBackground::draw_offset(int x_of, int y_of, float s = 1.0)
+StarfieldBackground::draw_offset(int x_of, int y_of, float s)
 {
   for (std::vector<StarfieldBackgroundStars>::iterator i = stars.begin ();
        i != stars.end (); i++)
