@@ -1,4 +1,4 @@
-//  $Id: WeatherGenerator.hh,v 1.6 2001/08/13 21:35:38 grumbel Exp $
+//  $Id: WeatherGenerator.hh,v 1.7 2001/11/22 20:08:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ public:
 
 
   /** Generate an WeatherGenerator which fits to the given data */
-  static boost::shared_ptr<WeatherGenerator> create(WeatherData);
+  static boost::shared_ptr<WorldObj> create(WeatherData);
 };
 
 #endif

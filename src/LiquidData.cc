@@ -1,4 +1,4 @@
-//  $Id: LiquidData.cc,v 1.3 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: LiquidData.cc,v 1.4 2001/11/22 20:08:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,8 @@ LiquidData::create(xmlDocPtr doc, xmlNodePtr cur)
   if (width_handling)
     {
       std::cout << "XMLPLF: Use Old Width Handling: " << width_handling << std::endl;
-      liquid->old_width_handling = StringConverter::to_int (width_handling);
+      liquid->old_width_handling 
+	= static_cast<bool>(StringConverter::to_int (width_handling));
       free (width_handling);
     }
   else

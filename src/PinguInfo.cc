@@ -1,4 +1,4 @@
-//  $Id: PinguInfo.cc,v 1.6 2001/08/02 21:51:02 grumbel Exp $
+//  $Id: PinguInfo.cc,v 1.7 2001/11/22 20:08:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ PinguInfo::draw()
 			CL_Display::get_height() - 55,
 			CL_Display::get_width()  - 5,
 			CL_Display::get_height() - 5,
-			0.2, 0.2, 0.2, 1.0);
+			0.2f, 0.2f, 0.2f, 1.0f);
   if (pingu.get()) {
     char str1[256];
     char str2[256];

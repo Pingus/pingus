@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.66 2001/11/18 23:21:33 grumbel Exp $
+//  $Id: Client.cc,v 1.67 2001/11/22 20:08:33 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -133,12 +133,12 @@ Client::init_display()
   playfield->set_client(this);
 
   // Adding all GuiObj's to the screen
-  obj.push_back(playfield);
-  obj.push_back(pcounter);
-  obj.push_back(time_display);
-  obj.push_back(button_panel);
-  obj.push_back(small_map);
-  obj.push_back(hurry_up);
+  obj.push_back(playfield.get());
+  obj.push_back(pcounter.get());
+  obj.push_back(time_display.get());
+  obj.push_back(button_panel.get());
+  obj.push_back(small_map.get());
+  obj.push_back(hurry_up.get());
 
   if (verbose) std::cout << "done " << timer.stop() << std::endl;
 }
@@ -181,7 +181,7 @@ Client::play_level(boost::shared_ptr<PLF> arg_plf)
 
   /** Main game loop */
   DeltaManager delta;
-  float wannabe_delta = 0.0333;
+  float wannabe_delta = 0.0333f;
   unsigned int frames = 1;
   bool auto_frame_skip = false;
   float current_delta;

@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.34 2001/06/16 15:01:53 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.35 2001/11/22 20:08:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -269,7 +269,7 @@ OptionMenu::draw()
   if (CL_Mouse::get_x() < (int)back.get_width()
       && CL_Mouse::get_y() < (int)back.get_height())
     CL_Display::fill_rect(0, 0, back.get_width(), back.get_height(),
-			  1.0, 1.0, 1.0, 0.3);
+			  1.0f, 1.0f, 1.0f, 0.3f);
 }
 
 void

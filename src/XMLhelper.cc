@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.cc,v 1.11 2001/08/15 22:01:45 grumbel Exp $
+//  $Id: XMLhelper.cc,v 1.12 2001/11/22 20:08:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -137,7 +137,7 @@ XMLhelper::parse_float(xmlDocPtr doc, xmlNodePtr cur)
 {
   cur = cur->children;
   
-  float number = 3.1415927;
+  float number = 3.1415927f;
   char* number_str = (char*)xmlNodeListGetString(doc, cur, 1);
   if (number_str) {
     number = StringConverter::to_float(number_str);

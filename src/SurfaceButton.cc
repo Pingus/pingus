@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.33 2001/11/18 12:43:19 grumbel Exp $
+//  $Id: SurfaceButton.cc,v 1.34 2001/11/22 20:08:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,7 @@ SurfaceButton::draw()
     {
       if (!is_mouse_over) 
 	{
-	  PingusSound::play_sound ("sound/chain.wav", 0.1);
+	  PingusSound::play_sound ("sound/chain.wav", 0.1f);
 	}
 
       is_mouse_over = true;
@@ -85,7 +85,7 @@ SurfaceButton::draw()
     }
   else if (mouse_over() && CL_Mouse::left_pressed()) 
     {
-      float shrink = 0.9;
+      float shrink = 0.9f;
       
       // font->print_center(CL_Display::get_width() / 2, 10, desc.c_str());
       font->print_center(CL_Display::get_width() / 2, 

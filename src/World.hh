@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.29 2001/08/15 07:35:29 grumbel Exp $
+//  $Id: World.hh,v 1.30 2001/11/22 20:08:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ class World
 private:
   WorldImpl* impl;
 
-  boost::shared_ptr<PinguMap> gfx_map;
+  PinguMap* gfx_map;
   bool do_armageddon;
   std::list<boost::shared_ptr<Pingu> >::iterator armageddon_count;
 
@@ -72,7 +72,7 @@ private:
 
   boost::shared_ptr<ParticleHolder> particle_holder;
   ActionHolder* action_holder;
-  boost::shared_ptr<PinguHolder> pingus;
+  PinguHolder* pingus;
   ColMap* colmap;
   boost::shared_ptr<PLF>  plf;
   boost::shared_ptr<View> view;

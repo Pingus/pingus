@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.62 2001/11/18 12:43:19 grumbel Exp $
+//  $Id: World.cc,v 1.63 2001/11/22 20:08:35 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -183,7 +183,7 @@ World::init(boost::shared_ptr<PLF> plf_data)
   init_map();
 
   particle_holder = shared_ptr<ParticleHolder>(new ParticleHolder());
-  pingus = shared_ptr<PinguHolder>(new PinguHolder());
+  pingus = new PinguHolder();
 
   //Timer timer;
   //timer.start();
@@ -195,22 +195,11 @@ World::init(boost::shared_ptr<PLF> plf_data)
 void
 World::init_map()
 {
-  // load the foreground map
-  /*switch (plf->map_type())
-    {
-    case SPOT:*/
-  gfx_map = shared_ptr<PinguMap>(new PingusSpotMap(plf));
-
-  world_obj.push_back (gfx_map);
-
-  /*      break;
-    case BMP:
-    case RANDOM:
-    default:
-      throw PingusError("World: Error in PLF file: Undef or unsupported Maptype");
-      break;
-    } */
+  // FIXME: Warning! Weird memory handling, could cause crash or memleak!11
+  gfx_map = new PingusSpotMap(plf);
   colmap = gfx_map->get_colmap();
+
+  world_obj.push_back (boost::shared_ptr<WorldObj>(gfx_map));
 }
 
 void
@@ -223,8 +212,7 @@ World::init_worldobjs()
       i != weather_d.end();
       i++)
     {
-      shared_ptr<WeatherGenerator> weather_gen = WeatherGenerator::create(*i);
-      world_obj.push_back(weather_gen);
+      world_obj.push_back(WeatherGenerator::create(*i));
     }
 
   for (vector<shared_ptr<WorldObjData> >::iterator i = worldobj_d.begin ();
@@ -236,10 +224,15 @@ World::init_worldobjs()
 	world_obj.push_back(obj);
     }
 
-  world_obj.push_back(pingus);
+  // FIXME: Weird memory handling, shared_ptr<> are evil!
+  world_obj.push_back(boost::shared_ptr<WorldObj>(pingus));
 
   // After all objects are in world_obj, sort them to there z_pos
+#ifdef WIN32
+  // FIXME: Insert something here which will sort a list under win32
+#else
   world_obj.sort(WorldObj_less());
+#endif
   // FIXME: If the above thing causes throuble under windows we could
   // use a vector instead of a list and use stable_sort() instead.
 
@@ -256,20 +249,20 @@ World::init_worldobjs()
 PinguHolder*
 World::get_pingu_p(void)
 {
-  return pingus.get();
+  return pingus;
 }
 
 int
 World::get_width(void)
 {
-  assert(gfx_map.get());
+  assert(gfx_map);
   return gfx_map->get_width();  
 }
 
 int
 World::get_height(void)
 {
-  assert(gfx_map.get());
+  assert(gfx_map);
   return gfx_map->get_height();
 }
 
@@ -338,7 +331,7 @@ World::get_colmap()
 PinguMap* 
 World::get_gfx_map ()
 {
-  return gfx_map.get();
+  return gfx_map;
 }
 
 ActionHolder*

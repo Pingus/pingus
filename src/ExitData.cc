@@ -1,4 +1,4 @@
-//  $Id: ExitData.cc,v 1.3 2001/08/15 07:35:27 grumbel Exp $
+//  $Id: ExitData.cc,v 1.4 2001/11/22 20:08:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ ExitData::create(xmlDocPtr doc, xmlNodePtr cur)
   if (pos_handling)
     {
       std::cout << "XMLPLF: Use Old Pos Handling: " << pos_handling << std::endl;
-      exit->use_old_pos_handling = StringConverter::to_int (pos_handling);
+      exit->use_old_pos_handling = static_cast<bool>(StringConverter::to_int (pos_handling));
       free (pos_handling);
     }
   else

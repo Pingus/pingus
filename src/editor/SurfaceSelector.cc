@@ -1,4 +1,4 @@
-//  $Id: SurfaceSelector.cc,v 1.11 2001/05/15 21:34:03 grumbel Exp $
+//  $Id: SurfaceSelector.cc,v 1.12 2001/11/22 20:08:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -137,7 +137,7 @@ SurfaceSelector::draw()
 
       CL_Display::fill_rect(0, CL_Display::get_height() - c_obj->large_sur.get_height(),
 			    c_obj->large_sur.get_width(), CL_Display::get_height(),
-			    0.5, 0.5, 0.5, 0.8);
+			    0.5f, 0.5f, 0.5f, 0.8f);
       c_obj->large_sur.put_screen(0, CL_Display::get_height() - c_obj->large_sur.get_height());
     }
   Display::flip_display();
