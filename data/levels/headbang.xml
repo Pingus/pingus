@@ -3,15 +3,18 @@
 <pingus-level>
   <global>
     <levelname lang="en">Headbanger</levelname>
-    <description lang="en">
-
-</description>
+    <description lang="en"></description>
     <author></author>
-    <number-of-pingus>100</number-of-pingus>
-    <number-to-save>50</number-to-save>
+    <number-of-pingus>50</number-of-pingus>
+    <number-to-save>40</number-to-save>
     <time>9000</time>
     <width>800</width>
     <height>480</height>
+    
+    <difficulty>70</difficulty>
+    <playable>1</playable>
+    <comment>the obvious solution is not the right one</comment>
+
   </global>
 
 <background>

@@ -13,6 +13,7 @@ section Exits {
 	industrial = ../images/exits/industrial.png (type=surface, x=0, y=0, width=145, height=118, tcol=0);
         crystal = ../images/exits/crystal.png (type=surface, x=0, y=0, width=154, height=105, tcol=0);
         ordina = ../images/exits/ordina.png (type=surface);
+        mud = ../images/exits/mud.png (type=surface);
 }
 
 // EOF //
