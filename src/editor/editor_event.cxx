@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.9 2002/06/25 14:54:01 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.10 2002/06/25 21:31:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -86,6 +86,25 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
     {
       switch (key.id)
 	{
+	case CL_KEY_R: 
+	  if (CL_Keyboard::get_keycode(CL_KEY_RSHIFT)
+	      || CL_Keyboard::get_keycode(CL_KEY_LSHIFT))
+	    { // rotate 90 counterclockwise
+	      editor_rotate_270_current_selection ();
+	    }
+	  else
+	    { // rotate 90 clockwise
+	      editor_rotate_90_current_selection ();
+	    }
+
+	case CL_KEY_H: // horizontal flip
+	  editor_horizontal_flip_current_selection ();
+	  break;
+
+	case CL_KEY_V: // vertical flip
+	  editor_vertical_flip_current_selection ();
+	  break;
+
 	case CL_KEY_I: // import meta-object
 	  editor_import_object_group ();
 	  break;
@@ -756,6 +775,50 @@ void
 EditorEvent::editor_import_object_group ()
 {
   editor->object_manager->add_object_group_from_file ("/tmp/metaobj.xml");
+}
+
+void 
+EditorEvent::editor_horizontal_flip_current_selection()
+{
+  for (ObjectManager::CurrentObjIter i = object_manager->current_objs.begin(); 
+       i != object_manager->current_objs.end();
+       i++)
+    {
+      (*i)->horizontal_flip ();
+    } 
+}
+
+void
+EditorEvent::editor_vertical_flip_current_selection()
+{
+  for (ObjectManager::CurrentObjIter i = object_manager->current_objs.begin(); 
+       i != object_manager->current_objs.end();
+       i++)
+    {
+      (*i)->vertical_flip ();
+    } 
+}
+
+void
+EditorEvent::editor_rotate_90_current_selection()
+{
+  for (ObjectManager::CurrentObjIter i = object_manager->current_objs.begin(); 
+       i != object_manager->current_objs.end();
+       i++)
+    {
+      (*i)->rotate_90 ();
+    }
+}
+
+void
+EditorEvent::editor_rotate_270_current_selection()
+{
+  for (ObjectManager::CurrentObjIter i = object_manager->current_objs.begin(); 
+       i != object_manager->current_objs.end();
+       i++)
+    {
+      (*i)->rotate_270 ();
+    } 
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: blitter.hxx,v 1.4 2002/06/24 22:52:53 grumbel Exp $
+//  $Id: blitter.hxx,v 1.5 2002/06/25 21:31:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,6 +75,15 @@ public:
       @param height The new height of the surface. 
       @return A newly created surface, the caller is responsible to delete it. */
   static CL_Surface scale_surface (const CL_Surface& sur, int width, int height);
+
+  /** Flip a surface horizontal */
+  static CL_Surface flip_horizontal (const CL_Surface& sur);
+
+  /** Flip a surface vertical */
+  static CL_Surface flip_vertical (const CL_Surface& sur);
+
+  /** Rotate a surface 90 degrees */
+  static CL_Surface rotate_90 (const CL_Surface& sur);
 
   /** Creates a new canvas with the given width and height and
       stretches the source surface onto it, the caller is responsible

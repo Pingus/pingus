@@ -1,4 +1,4 @@
-//  $Id: editor_groundpiece_obj.cxx,v 1.3 2002/06/20 11:12:12 grumbel Exp $
+//  $Id: editor_groundpiece_obj.cxx,v 1.4 2002/06/25 21:31:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,11 +19,14 @@
 
 #include <stdio.h>
 #include "../boost/smart_ptr.hpp"
+#include "../pingus_resource.hxx"
 #include "editor_groundpiece_obj.hxx"
+
+using namespace Pingus;
 
 EditorGroundpieceObj::EditorGroundpieceObj(const GroundpieceData& data)
   : GroundpieceData (data),
-    SpriteEditorObj (desc.res_name, desc.datafile, pos)
+    SpriteEditorObj (desc, pos)
 {
 }
 
@@ -45,6 +48,38 @@ EditorGroundpieceObj::status_line()
 	   desc.res_name.c_str(), type_name.c_str());
 
   return std::string(str);
+}
+
+void
+EditorGroundpieceObj::vertical_flip ()
+{
+  std::cout << "Vertical flip" << std::endl;
+  desc.modifier = Pingus::vertical_flip(desc.modifier);
+  sprite.get_surface () = PingusResource::load_surface (desc);
+}
+
+void
+EditorGroundpieceObj::horizontal_flip ()
+{
+  std::cout << "Horz flip" << std::endl;
+  desc.modifier = Pingus::horizontal_flip(desc.modifier);
+  sprite.get_surface () = PingusResource::load_surface (desc);
+}
+
+void
+EditorGroundpieceObj::rotate_90 ()
+{
+  std::cout << "rot90" << std::endl;
+  desc.modifier = Pingus::rotate_90(desc.modifier);
+  sprite.get_surface () = PingusResource::load_surface (desc);
+}
+
+void
+EditorGroundpieceObj::rotate_270 ()
+{
+  std::cout << "rot 270" << std::endl;
+  desc.modifier = Pingus::rotate_270(desc.modifier);
+  sprite.get_surface () = PingusResource::load_surface (desc);
 }
 
 /* EOF */

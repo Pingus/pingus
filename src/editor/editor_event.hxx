@@ -1,4 +1,4 @@
-//  $Id: editor_event.hxx,v 1.3 2002/06/24 22:52:58 grumbel Exp $
+//  $Id: editor_event.hxx,v 1.4 2002/06/25 21:31:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,6 +56,13 @@ public:
   void editor_move_object();
   void editor_toggle_background_color();
   void editor_duplicate_current_selection();
+
+  // Groundpiece modifier
+  void editor_horizontal_flip_current_selection();
+  void editor_vertical_flip_current_selection();
+  void editor_rotate_90_current_selection();
+  void editor_rotate_270_current_selection();
+
   void editor_delete_selected_objects();
   void editor_start_current_level();
   void editor_save_level_as();

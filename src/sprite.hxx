@@ -1,4 +1,4 @@
-//  $Id: sprite.hxx,v 1.2 2002/06/24 22:52:57 grumbel Exp $
+//  $Id: sprite.hxx,v 1.3 2002/06/25 21:31:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -133,7 +133,7 @@ public:
   void reset ();
 
   /// @return the surface which is used internally
-  CL_Surface get_surface ();
+  CL_Surface& get_surface ();
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.cxx,v 1.2 2002/06/21 07:45:35 grumbel Exp $
+//  $Id: res_descriptor.cxx,v 1.3 2002/06/25 21:31:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,19 +34,24 @@ ResDescriptor::ResDescriptor(const ResDescriptor& res_desc)
   type     = res_desc.type;
   datafile = res_desc.datafile;
   res_name = res_desc.res_name;
+  modifier = Pingus::ROT0;
 }
 
 ResDescriptor::ResDescriptor(const std::string& arg_res_name,
 			     const std::string& arg_datafile,
-			     ResourceType arg_type)
+			     ResourceType arg_type,
+			     Pingus::ResourceModifier arg_modifier)
 {
   res_name = arg_res_name;
   datafile = arg_datafile;
   type     = arg_type;
+  modifier = arg_modifier;
 }
 
 ResDescriptor::ResDescriptor(const std::string& str) 
 {
+  modifier = Pingus::ROT0;
+
   std::string::size_type pos1;
   std::string::size_type pos2;
 
@@ -71,6 +76,7 @@ ResDescriptor::ResDescriptor(const std::string& str)
 
 ResDescriptor::ResDescriptor(const std::string& c_cast, const std::string& value) 
 {
+  modifier = Pingus::ROT0;
   std::string cast;
 
   if (c_cast.find_first_of(":") == std::string::npos) {

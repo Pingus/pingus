@@ -1,4 +1,4 @@
-//  $Id: editorobj.hxx,v 1.3 2002/06/25 12:20:33 grumbel Exp $
+//  $Id: editorobj.hxx,v 1.4 2002/06/25 21:31:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,6 +79,18 @@ public:
   /** Generic operations that can make an object smaller, what exactly
       happens is object dependend. Default is to do nothing */
   virtual void make_smaller () {}
+
+  /** Flip the object vertical */
+  virtual void vertical_flip () {}
+
+  /** Flip the object horizontal */
+  virtual void horizontal_flip () {}
+
+  /** Rotate the object 90 degrees */
+  virtual void rotate_90 () {}
+
+  /** Rotate the object -90 degrees */
+  virtual void rotate_270 () {}
 
   /** This function is called once at the start of an interactive move */
   virtual void drag () {}

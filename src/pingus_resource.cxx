@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.cxx,v 1.9 2002/06/24 12:09:22 torangan Exp $
+//  $Id: pingus_resource.cxx,v 1.10 2002/06/25 21:31:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,10 @@
 #include "path_manager.hxx"
 #include "globals.hxx"
 #include "pingus_resource.hxx"
+#include "blitter.hxx"
 #include "debug.hxx"
+
+using namespace Pingus;
 
 std::map<std::string, CL_ResourceManager*> PingusResource::resource_map;
 std::map<ResDescriptor, CL_Surface>       PingusResource::surface_map;
@@ -109,10 +112,12 @@ PingusResource::get(const std::string& arg_filename)
 
 CL_Surface
 PingusResource::load_surface(const std::string& res_name, 
-			     const std::string& datafile)
+			     const std::string& datafile,
+			     ResourceModifier modifier)
 {
   return load_surface(ResDescriptor(res_name, datafile, 
-				    ResDescriptor::RD_RESOURCE));
+				    ResDescriptor::RD_RESOURCE,
+				    modifier));
 }
 
 CL_Surface
@@ -124,7 +129,38 @@ PingusResource::load_surface(const ResDescriptor& res_desc)
   
   if (surf) 
     {
-      return surf;
+      // FIXME: buggy... and in the wrong place
+      switch (res_desc.modifier)
+	{
+	  // FIXME: muahhhaa... I write slower code than you....
+	case ROT0:
+	  return surf;
+      
+	case ROT90:
+	  return Blitter::rotate_90(surf);
+
+	case ROT180:
+	  return Blitter::rotate_90(Blitter::rotate_90(surf));
+
+	case ROT270:
+	  return Blitter::rotate_90(Blitter::rotate_90(Blitter::rotate_90(surf)));
+
+	case ROT0FLIP:
+	  return Blitter::flip_horizontal(Blitter::rotate_90(surf));
+
+	case ROT90FLIP:
+	  return Blitter::flip_horizontal(Blitter::rotate_90(surf));
+
+	case ROT180FLIP:
+	  return Blitter::flip_horizontal(Blitter::rotate_90(Blitter::rotate_90(surf)));
+
+	case ROT270FLIP:
+	  return Blitter::flip_horizontal(Blitter::rotate_90(Blitter::rotate_90(Blitter::rotate_90(surf))));
+
+	default:
+	  std::cout << "PingusResource: Unhandled modifier: " << res_desc.modifier << std::endl;
+	  return surf;
+	}
     }
   else
     {

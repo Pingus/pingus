@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.hxx,v 1.4 2002/06/24 22:52:56 grumbel Exp $
+//  $Id: res_descriptor.hxx,v 1.5 2002/06/25 21:31:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_RES_DESCRIPTOR_HXX
 
 #include <string>
+#include "resource_modifier.hxx"
 
 /// Resource descriptor, tells were to find a resource.
 class ResDescriptor
@@ -36,12 +37,14 @@ public:
   
   /// The name of the data, filename or resourcename ("Textures/desert")
   std::string res_name;
+  
+  Pingus::ResourceModifier modifier;
 
   ResDescriptor();
   ResDescriptor(const ResDescriptor&);
 
   ResDescriptor(const std::string& res_name, const std::string& datafile,
-		ResourceType type);
+		ResourceType type, Pingus::ResourceModifier modifier = Pingus::ROT0);
   ResDescriptor(const std::string& cast, const std::string& value);
   ResDescriptor(const std::string& str);
 

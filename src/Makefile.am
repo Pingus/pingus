@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.79 2002/06/22 17:40:55 grumbel Exp $
+#  $Id: Makefile.am,v 1.80 2002/06/25 21:31:40 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -202,6 +202,7 @@ multiplayer_client_child.cxx  worldobj_group_data.cxx \
 multiplayer_config.cxx	      xml_helper.cxx \
 multiplayer_game.cxx	      xml_plf.cxx \
 math.hxx \
-html_browser.hxx              html_browser.cxx
+html_browser.hxx              html_browser.cxx \
+resource_modifier.hxx         resource_modifier.cxx
 
 ## EOF ##

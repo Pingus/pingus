@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.hxx,v 1.4 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: pingus_resource.hxx,v 1.5 2002/06/25 21:31:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include <map>
 
 #include <ClanLib/Display/Display/surface.h>
+#include "resource_modifier.hxx"
 #include "res_descriptor.hxx"
 
 class CL_Font;
@@ -39,16 +40,6 @@ private:
   static std::map<ResDescriptor, CL_Font*> font_map;
 
 public:
-  /** This array contains possible modifications of a surface */
-  typedef enum {
-    VFLIP  = (1<<0),
-    HVLIP  = (1<<1),
-    
-    ROT90  = (1<<2),
-    ROT180 = (1<<3),
-    ROT270 = (1<<4)
-  } Modifier;
-
   ///
   PingusResource();
   
@@ -58,7 +49,8 @@ public:
 
   /** Load a surface with res_name from datafile */
   static CL_Surface load_surface(const std::string& res_name,
-				 const std::string& datafile);
+				 const std::string& datafile,
+				 Pingus::ResourceModifier modifier = Pingus::ROT0);
   
   /** Load a surface from the ResDescriptor */
   static CL_Surface load_surface(const ResDescriptor&);

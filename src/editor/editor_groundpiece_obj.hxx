@@ -1,4 +1,4 @@
-// $Id: editor_groundpiece_obj.hxx,v 1.3 2002/06/25 12:20:33 grumbel Exp $
+// $Id: editor_groundpiece_obj.hxx,v 1.4 2002/06/25 21:31:40 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,18 @@ class EditorGroundpieceObj : public GroundpieceData,
 {
 public:
   EditorGroundpieceObj(const GroundpieceData& data);
+
+  /** Flip the object vertical */
+  void vertical_flip ();
+
+  /** Flip the object horizontal */
+  void horizontal_flip ();
+
+  /** Rotate the object 90 degrees */
+  void rotate_90 ();
+
+  /** Rotate the object -90 degrees */
+  void rotate_270 ();
 
   void write_xml(std::ostream& xml) { GroundpieceData::write_xml (xml); }
   boost::shared_ptr<EditorObj> duplicate();
