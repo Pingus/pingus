@@ -1,4 +1,4 @@
-//  $Id: pathfinder.hxx,v 1.5 2002/10/15 15:48:49 grumbel Exp $
+//  $Id: pathfinder.hxx,v 1.6 2002/10/15 17:12:59 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,14 +49,27 @@ public:
   };
 
 private:
+  struct CostComp 
+  {
+    Pathfinder<T, C>& pathfinder;
+    
+    CostComp(Pathfinder<T, C>& p) : pathfinder(p) {}
+
+    bool operator()(NodeId a, NodeId b)
+    {
+      std::cout << "Coast: " << pathfinder.stat_graph[a].cost << " " << pathfinder.stat_graph[b].cost << std::endl;
+      return pathfinder.stat_graph[a].cost > pathfinder.stat_graph[b].cost;
+    }
+  };
+
   Graph<T, C>& graph;
   NodeId start;
-  std::priority_queue<NodeId> open_nodes;
+  std::priority_queue<NodeId, std::vector<NodeId>, CostComp> open_nodes;
   std::vector<NodeStat>   stat_graph;
   
 public:
   Pathfinder (Graph<T, C>& g, NodeId s)
-    : graph (g), start (s)
+    : graph (g), start (s), open_nodes(CostComp(*this))
   {
     stat_graph.resize (graph.max_node_handler_value());
     push_to_open (start);

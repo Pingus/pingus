@@ -1,4 +1,4 @@
-//  $Id: path_graph.cxx,v 1.10 2002/10/15 15:48:49 grumbel Exp $
+//  $Id: path_graph.cxx,v 1.11 2002/10/15 17:12:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -167,7 +167,7 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
           }
           
           // FIXME: Memory leak
-          worldmap->add_drawable(new PathDrawable(full_path));
+          //worldmap->add_drawable(new PathDrawable(full_path));
           
           // FIXME: No error checking, 
           EdgeId id1 = graph.add_edge(path, // FIXME: Memory leak!
