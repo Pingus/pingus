@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.21 2000/06/08 20:05:35 grumbel Exp $
+//  $Id: World.cc,v 1.22 2000/06/11 15:23:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,26 +71,17 @@ World::World(PLF* plf)
 
 World::~World()
 {
-  // Bug: This crashes, if pingus is exited
+  std::cout << "World:~World" << std::endl;
+
   delete map;
   delete background;
 
-  for(vector<Exit*>::iterator i = exits.begin(); i != exits.end(); i++)
-    delete *i;
-  
-  // FIXME: Replace this with iterators
-  for(vector<Entrance*>::size_type i = 0; i < entrance.size(); ++i) 
-    delete entrance[i];
- 
-  for(vector<Trap*>::size_type i = 0; i < traps.size(); ++i)
-    delete traps[i];
-
-  for(vector<Hotspot*>::size_type i = 0; i < hotspot.size(); ++i)
-    delete hotspot[i];
-  
-  for(vector<Liquid*>::size_type i = 0; i < liquid.size(); ++i) {
-    delete liquid[i];
-  }
+  for(vector<WorldObj*>::iterator obj = world_obj_bg.begin();
+      obj != world_obj_bg.end();
+      obj++)
+    {
+      delete *obj;
+    }
 }
 
 // Merge the different layers on the screen together
@@ -253,7 +244,6 @@ World::init_worldobjs()
     traps.push_back(get_trap(trap_d[i]));
 
   // Creating the foreground and background hotspots
-
   for(vector<hotspot_data>::size_type i = 0; i < hspot_d.size(); ++i)
     hotspot.push_back(new Hotspot(hspot_d[i]));
   

@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.25 2000/06/10 07:56:58 grumbel Exp $
+//  $Id: Client.cc,v 1.26 2000/06/11 15:23:29 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,7 @@
 #include "Display.hh"
 #include "PingusLevelResult.hh"
 #include "PingusSound.hh"
+#include "PingusError.hh"
 
 bool Client::gui_is_init;
 ButtonPanel*   Client::button_panel;
@@ -41,6 +42,14 @@ SmallMap*      Client::small_map;
 
 Client::Client(Server* s)
 {
+
+  playfield    = 0;
+  button_panel = 0;
+  pcounter     = 0;
+  small_map    = 0;
+  time_display = 0;
+
+
   player = 0;
   server = s;
   fast_forward = false;
@@ -55,6 +64,8 @@ Client::Client(Server* s)
 
 Client::~Client()
 {
+  std::cout << "Client:~Client" << std::endl;
+  deinit_display();
   delete event;
 }
 
@@ -113,7 +124,9 @@ Client::init_display()
   Display::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
   Display::show_cursor();
   
-  playfield    = new Playfield(plf, server->get_world());
+  if (!playfield) playfield    = new Playfield(plf, server->get_world());
+  else throw PingusError("Memory hole");
+  
   button_panel = new ButtonPanel(plf);
   pcounter     = new PingusCounter();
   small_map    = new SmallMap();

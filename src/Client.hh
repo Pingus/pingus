@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.12 2000/06/08 20:05:35 grumbel Exp $
+//  $Id: Client.hh,v 1.13 2000/06/11 15:23:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,7 @@ private:
 
 public:
   Client(Server* s);
-  ~Client();
+  virtual ~Client();
 
   Server*    get_server() { return server; }
   Playfield* get_playfield() { return playfield; }

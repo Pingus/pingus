@@ -1,4 +1,4 @@
-//  $Id: PinguMap.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
+//  $Id: PinguMap.cc,v 1.3 2000/06/11 15:23:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,15 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "PinguMap.hh"
+
+PinguMap::PinguMap()
+{
+}
+
+PinguMap::~PinguMap()
+{
+  std::cout << "PinguMap:~PinguMap()" << std::endl;
+}
 
 void 
 PinguMap::mark_dirty(int x,int y,int w,int h)

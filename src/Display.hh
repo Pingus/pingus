@@ -1,4 +1,4 @@
-//  $Id: Display.hh,v 1.2 2000/06/10 07:56:58 grumbel Exp $
+//  $Id: Display.hh,v 1.3 2000/06/11 15:23:29 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,6 @@ class Display
 {
 private:
   static bool displaying_cursor;
-  static bool cursor_disabled;
 
 public:
   static void draw_rect(int x1, int y1, int x2, int y2, float r, float g, float b, float a);
@@ -35,8 +34,6 @@ public:
   static void hide_cursor();
   static void set_cursor(CL_MouseCursorProvider *provider, int frame=0);
   static bool cursor_shown();
-  static void disable_cursor();
-  static void enable_cursor();
 };
 
 #endif

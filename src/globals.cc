@@ -1,4 +1,4 @@
-//  $Id: globals.cc,v 1.17 2000/05/24 15:45:02 grumbel Exp $
+//  $Id: globals.cc,v 1.18 2000/06/11 15:23:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,5 +48,6 @@ int    screen_height = 600;
 bool   preload_data  = false; // FIXME: Should be default if it would work
 bool   draw_collision_map = false;
 bool   debug_tiles = false;
+bool   swcursor_enabled = false; // --enable-swcursor
 
 /* EOF */

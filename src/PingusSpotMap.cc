@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.20 2000/05/28 16:47:24 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.21 2000/06/11 15:23:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -121,6 +121,7 @@ PingusSpotMap::PingusSpotMap(PLF* plf)
 
 PingusSpotMap::~PingusSpotMap(void)
 {
+  std::cout << "PingusSpotMap:~PingusSpotMap" << std::endl;
   std::cout << "Trying to delete the map..." << std::flush;
 
   delete map_surface;

@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.5 2000/05/12 13:34:47 grumbel Exp $
+//  $Id: ActionButton.cc,v 1.6 2000/06/11 15:23:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,13 +64,8 @@ EventButton::mouse_over()
     }
 }
 
-ActionButton::ActionButton()
-{
-}
-
-ActionButton::~ActionButton()
-{
-}
+ActionButton::ActionButton() {}
+ActionButton::~ActionButton() {}
 
 void
 ActionButton::init(int x, int y, std::string str)
@@ -144,9 +139,7 @@ HorizontalActionButton::HorizontalActionButton(int x, int y, std::string str)
   init(x, y, str);  
 }
 
-HorizontalActionButton::~HorizontalActionButton()
-{
-}
+HorizontalActionButton::~HorizontalActionButton() {}
 
 bool
 HorizontalActionButton::mouse_over()
@@ -207,9 +200,7 @@ VerticalActionButton::VerticalActionButton(int x, int y, std::string str)
   init(x, y, str);
 }
 
-VerticalActionButton::~VerticalActionButton()
-{
-}
+VerticalActionButton::~VerticalActionButton() {}
 
 bool
 VerticalActionButton::mouse_over()
@@ -275,6 +266,8 @@ ArmageddonButton::ArmageddonButton(int x, int y)
   pressed = false;
 }
 
+ArmageddonButton::~ArmageddonButton() {}
+
 void
 ArmageddonButton::draw()
 {
@@ -310,6 +303,8 @@ ForwardButton::ForwardButton(int x, int y)
   y_pos = y;
 }
 
+ForwardButton::~ForwardButton();
+
 void
 ForwardButton::draw()
 {
@@ -341,6 +336,8 @@ PauseButton::PauseButton(int x, int y)
   x_pos = x;
   y_pos = y;
 }
+
+PauseButton::~PauseButton() {}
 
 void
 PauseButton::draw()

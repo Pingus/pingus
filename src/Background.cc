@@ -1,4 +1,4 @@
-//  $Id: Background.cc,v 1.11 2000/05/24 15:45:02 grumbel Exp $
+//  $Id: Background.cc,v 1.12 2000/06/11 15:23:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,11 +38,34 @@ Background::Background(background_data bg)
     std::cout << "Creating Background..." << std::flush;
   }
 
-  CL_Canvas* canvas;
-  CL_Surface* sur;
+  // Load the background
+  load(bg);
   
-  if (bg.desc.filename == "none")
+  if (verbose)
+    std::cout << "done" << timer.stop()  << std::endl;
+}
+
+Background::~Background()
+{
+  std::cout << "Background:~Background" << std::endl;
+
+  if (surface_need_deletion) {
+    std::cout << "Background: Deleting background surface" << std::endl;
+    delete bg_surface;
+  }
+}
+
+void
+Background::load (background_data bg_data)
+{
+  surface_need_deletion = false;
+
+  if (bg_data.dim > 1.0) 
+    std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
+  
+  if (bg_data.desc.res_name == "none")
     {
+      std::cout << "Background: No surface set..." << std::endl;
       bg_surface = 0;
     }
   else
@@ -50,50 +73,32 @@ Background::Background(background_data bg)
       try
 	{
 	  /* Testing animatied backgrounds... */
-	  sur = CL_Surface::load(bg.desc.res_name.c_str(), PingusResource::get(bg.desc.filename));
-
-	  if (sur->get_num_frames() > 1)
+	  bg_surface = CL_Surface::load(bg_data.desc.res_name.c_str(), PingusResource::get(bg_data.desc.filename));
+	  /*
+	  if (sur->get_num_frames() > 1 || true)
 	    {
+	      // We have an animated surface
 	      bg_surface = sur;
+	      surface_need_deletion = false;
 	    }
 	  else
 	    {
-	      canvas = new CL_Canvas(sur->get_width(), sur->get_height(), sur->get_num_frames());
-	    
-	      if (bg.dim > 1.0) 
-		std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
+	      // We have a static surface
 
-	      canvas->fill_rect(0, 0,
-				sur->get_width(),
-				sur->get_height() * sur->get_num_frames(),
-				1.0, 1.0, 1.0, 1.0);
-	      /*
-	      std::cout << "width:" << canvas->get_width() << std::endl;
-	      std::cout << "height:" << canvas->get_height() << std::endl;
-	      std::cout << "pitch:" << canvas->get_pitch() << std::endl;
-
-	      std::cout << "---------------------" << std::endl;
-	      */
-	      for (unsigned int i = 0; i < sur->get_num_frames(); i++)
-		{
-		  sur->put_target(0,i * sur->get_height(), i, canvas);
+	      // Create a canvas as large as the surface
+	      canvas = new CL_Canvas(sur->get_width(), sur->get_height());
 	      
-		  canvas->fill_rect(0, 
-				    i * sur->get_height(),
-				    sur->get_width(),
-				    i * sur->get_height() + sur->get_height(),
-				    bg.red, bg.green, bg.blue, bg.dim);
-		}
-	      bg_surface = CL_Surface::create(canvas, false);
-	      /*
-	      std::cout << "Frames: " << bg_surface->get_num_frames() << std::endl;
-	      std::cout << "width: " << bg_surface->get_width() << std::endl;
-	      std::cout << "height: " << bg_surface->get_height() << std::endl;
-	      */
-	      delete canvas;
-	    }	  
+	      sur->put_target(0, 0, 0, canvas);
+	      
+	      canvas->fill_rect(0, 0,
+				sur->get_width(), sur->get_height(),
+				bg.red, bg.green, bg.blue, bg.dim);
+	    
+	      bg_surface = CL_Surface::create(canvas, true);
+	      surface_need_deletion = true;
+	    }
 	  counter.set_size(bg_surface->get_num_frames());
-	  counter.set_speed(1.0);
+	  counter.set_speed(1.0);*/
 	}
 
       catch (CL_Error err)
@@ -107,14 +112,14 @@ Background::Background(background_data bg)
 	}
     }
 
-  stretch_x = bg.stretch_x;
-  stretch_y = bg.stretch_y;
+  stretch_x = bg_data.stretch_x;
+  stretch_y = bg_data.stretch_y;
 
-  scroll_x = bg.scroll_x;
-  scroll_y = bg.scroll_y;
+  scroll_x = bg_data.scroll_x;
+  scroll_y = bg_data.scroll_y;
 
-  para_x = bg.para_x;
-  para_y = bg.para_y;
+  para_x = bg_data.para_x;
+  para_y = bg_data.para_y;
 
   scroll_ox = 0;
   scroll_oy = 0;
@@ -124,13 +129,7 @@ Background::Background(background_data bg)
       std::cout << "Background: Stretch_X: " << stretch_x << std::endl;
       std::cout << "Background: Stretch_Y: " << stretch_y << std::endl;
     }
-
-  if (verbose)
-    std::cout << "done" << timer.stop()  << std::endl;
-}
-
-Background::~Background()
-{
+ 
 }
 
 void

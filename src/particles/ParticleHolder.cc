@@ -1,4 +1,4 @@
-//  $Id: ParticleHolder.cc,v 1.4 2000/03/08 01:37:22 grumbel Exp $
+//  $Id: ParticleHolder.cc,v 1.5 2000/06/11 15:23:31 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@ ParticleHolder::ParticleHolder()
 
 ParticleHolder::~ParticleHolder()
 {
+  std::cout << "ParticleHolder:~ParticleHolder" << std::endl;
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: Background.hh,v 1.3 2000/03/16 21:26:22 grumbel Exp $
+//  $Id: Background.hh,v 1.4 2000/06/11 15:23:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@
 class Background : public background_data
 {
 private:
+  bool surface_need_deletion;
   CL_Surface* bg_surface_raw;
   CL_Surface* bg_surface;
 
@@ -42,6 +43,8 @@ private:
 public:
   Background(background_data);
   ~Background();
+
+  void load (background_data);
   
   void let_move(void);
   void draw_offset(int x_of, int y_of, float s = 1.0);

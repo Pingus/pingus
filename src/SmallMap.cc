@@ -1,4 +1,4 @@
-//  $Id: SmallMap.cc,v 1.10 2000/06/08 20:05:35 grumbel Exp $
+//  $Id: SmallMap.cc,v 1.11 2000/06/11 15:23:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -182,7 +182,7 @@ SmallMap::draw_pingus()
       x = x_pos + ((*i)->get_x() * width / client->get_server()->get_world()->get_colmap()->get_width());
       y = y_pos + ((*i)->get_y() * height / client->get_server()->get_world()->get_colmap()->get_height());
 
-      CL_Display::draw_line(x, y, x, y-1, 1.0, 0.0, 0.0, 1.0);
+      CL_Display::draw_line(x, y, x, y-1, 1.0, 1.0, 0.0, 1.0);
     }
 }
 

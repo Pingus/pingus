@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.12 2000/05/24 15:39:19 grumbel Exp $
+//  $Id: ColMap.cc,v 1.13 2000/06/11 15:23:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,6 +46,7 @@ ColMap::ColMap(unsigned char* b, int w, int h)
 
 ColMap::~ColMap()
 {
+  std::cout << "ColMap:~ColMap" << std::endl;
   delete[] colmap;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: Config.cc,v 1.8 2000/04/25 17:54:39 grumbel Exp $
+//  $Id: Config.cc,v 1.9 2000/06/11 15:23:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -377,6 +377,10 @@ Config::set_value(std::string valueid,
   else if (valueid == "audio-buffers")
     {
       pingus_audio_buffers = str_to_int(value);
+    }
+  else if (valueid == "swcursor-enabled")
+    {
+      swcursor_enabled = str_to_bool(value);
     }
   else
     {

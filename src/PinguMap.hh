@@ -1,4 +1,4 @@
-//  $Id: PinguMap.hh,v 1.3 2000/03/16 21:36:33 grumbel Exp $
+//  $Id: PinguMap.hh,v 1.4 2000/06/11 15:23:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,8 @@ class PinguMap
 {
 private:
 public:
+  PinguMap();
+  virtual ~PinguMap();
   virtual void draw(int x1, int y1, int w, int h,
 		    int x_of, int y_of, float s=1.0) = 0;
   virtual void mark_dirty(int,int,int,int);

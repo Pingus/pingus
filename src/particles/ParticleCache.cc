@@ -1,4 +1,4 @@
-//  $Id: ParticleCache.cc,v 1.5 2000/02/16 23:34:11 grumbel Exp $
+//  $Id: ParticleCache.cc,v 1.6 2000/06/11 15:23:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@ ParticleCache::ParticleCache()
 
 ParticleCache::~ParticleCache()
 {
+  std::cout << "ParticleCache:~ParticleCache" << std::endl;
   clear();
 }
 

@@ -1,4 +1,4 @@
-//  $Id: ActionButton.hh,v 1.5 2000/05/12 13:34:47 grumbel Exp $
+//  $Id: ActionButton.hh,v 1.6 2000/06/11 15:23:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,6 +40,7 @@ protected:
 public:
   Button();
   virtual ~Button();
+
   virtual void   draw() = 0;
   virtual bool   mouse_over() = 0;
 };
@@ -51,6 +52,8 @@ class EventButton : public Button
 private: 
 public:
   EventButton(int x, int y, std::string);
+  virtual ~EventButton();
+  
   void   draw();
   bool   mouse_over();
 };
@@ -65,6 +68,8 @@ private:
   friend class ButtonPanel;
 public:
   ArmageddonButton(int x, int y);
+  virtual ~ArmageddonButton();
+
   void draw();
   bool mouse_over();
 };
@@ -78,6 +83,8 @@ private:
   friend class ButtonPanel;
 public:
   ForwardButton(int x, int y);
+  virtual ~ForwardButton();
+
   void draw();
   bool mouse_over();
 };
@@ -91,6 +98,8 @@ private:
   friend class ButtonPanel;
 public:
   PauseButton(int x, int y);
+  virtual ~PauseButton();
+
   void draw();
   bool mouse_over();
 };
@@ -144,7 +153,7 @@ class HorizontalActionButton : public ActionButton
 private:
 public:
   HorizontalActionButton(int x, int y, std::string str);
-  ~HorizontalActionButton();
+  virtual ~HorizontalActionButton();
   void draw();
   bool mouse_over();
 };
@@ -156,7 +165,7 @@ class VerticalActionButton : public ActionButton
 private:
 public:
   VerticalActionButton(int x, int y, std::string str);
-  ~VerticalActionButton();
+  virtual ~VerticalActionButton();
   void draw();
   bool mouse_over();
 };
