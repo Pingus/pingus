@@ -1,0 +1,23 @@
+<pingus-demo>
+  <level>Dentist</level>
+  <events>
+  <pingu-action time="265" id="0" action="basher"/>
+  <pingu-action time="299" id="1" action="basher"/>
+  <pingu-action time="319" id="2" action="blocker"/>
+  <pingu-action time="591" id="1" action="basher"/>
+  <pingu-action time="706" id="1" action="jumper"/>
+  <pingu-action time="756" id="1" action="bridger"/>
+  <pingu-action time="1160" id="1" action="bridger"/>
+  <pingu-action time="1728" id="1" action="jumper"/>
+  <pingu-action time="1822" id="1" action="climber"/>
+  <pingu-action time="1822" id="1" action="jumper"/>
+  <pingu-action time="2128" id="1" action="jumper"/>
+  <pingu-action time="2202" id="1" action="miner"/>
+  <pingu-action time="2498" id="1" action="miner"/>
+  <pingu-action time="2498" id="1" action="basher"/>
+  <pingu-action time="2584" id="1" action="miner"/>
+  <pingu-action time="3115" id="34" action="bridger"/>
+  <pingu-action time="3541" id="34" action="bridger"/>
+  <pingu-action time="3845" id="34" action="bridger"/>
+  </events>
+  </pingus-demo>
