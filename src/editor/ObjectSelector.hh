@@ -1,4 +1,4 @@
-// $Id: ObjectSelector.hh,v 1.27 2002/01/26 10:53:37 grumbel Exp $
+// $Id: ObjectSelector.hh,v 1.28 2002/06/04 13:43:19 torangan Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,13 +52,13 @@ public:
   
   std::list<boost::shared_ptr<EditorObj> > select_obj_type();
   std::string select_surface(std::vector<surface_obj>& sur_list);
-  std::string select_surface(std::string resource_file);
+  std::string select_surface(const std::string & resource_file);
   int    read_key();
-  std::string read_string(std::string, std::string);
+  std::string read_string(const std::string &, const std::string &);
   
   std::list<boost::shared_ptr<EditorObj> > get_obj(int, int);
   std::list<boost::shared_ptr<EditorObj> > get_trap();
-  std::list<boost::shared_ptr<EditorObj> > get_groundpiece(GroundpieceData::GPType gptype);
+  std::list<boost::shared_ptr<EditorObj> > get_groundpiece(const GroundpieceData::GPType & gptype);
   std::list<boost::shared_ptr<EditorObj> > get_hotspot(const std::string&);
   std::list<boost::shared_ptr<EditorObj> > get_entrance();
   std::list<boost::shared_ptr<EditorObj> > get_exit();

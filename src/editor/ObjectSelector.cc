@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.59 2002/01/26 11:59:38 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.60 2002/06/04 13:43:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -131,7 +131,7 @@ ObjectSelector::get_trap()
 }
 
 std::list<boost::shared_ptr<EditorObj> >
-ObjectSelector::get_groundpiece(GroundpieceData::GPType gptype)
+ObjectSelector::get_groundpiece(const GroundpieceData::GPType & gptype)
 {
   GroundpieceData data;
   std::string datafile = std::string("groundpieces-") + GroundpieceData::type_to_string (gptype);
@@ -527,7 +527,7 @@ ObjectSelector::select_surface(vector<surface_obj>& sur_list)
 }
 
 std::string
-ObjectSelector::select_surface(std::string resource_file)
+ObjectSelector::select_surface(const std::string & resource_file)
 {
   std::string str;
   bool datafile_loaded;
@@ -594,7 +594,7 @@ ObjectSelector::read_key()
 }
 
 string
-ObjectSelector::read_string(string description, string def_str)
+ObjectSelector::read_string(const string & description, const string & def_str)
 {
   StringReader reader(description, def_str);
   reader.set_strings(PingusResource::get("global")->get_resources_of_type("surface"));

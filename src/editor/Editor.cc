@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.40 2002/02/24 20:40:26 grumbel Exp $
+//  $Id: Editor.cc,v 1.41 2002/06/04 13:43:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -219,7 +219,7 @@ Editor::scroll()
 }
 
 std::string
-Editor::read_string (std::string prefix, std::string default_str)
+Editor::read_string (const std::string & prefix, const std::string & default_str)
 {
   event->disable();
  

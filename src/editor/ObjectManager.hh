@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.hh,v 1.22 2002/02/11 00:10:29 grumbel Exp $
+//  $Id: ObjectManager.hh,v 1.23 2002/06/04 13:43:19 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -85,10 +85,10 @@ public:
   /// Create a new level
   void new_level ();
   ///
-  void load_level (std::string filename);
+  void load_level (const std::string & filename);
 
   /// Save the current level in an xml file
-  void save_level_xml (std::string filename);
+  void save_level_xml (const std::string & filename);
 
   ///
   void draw(boost::dummy_ptr<EditorView> view);
@@ -136,7 +136,7 @@ public:
   void unselect_object(boost::shared_ptr<EditorObj> c_obj);
 
   /** Add the object at the given position to the selection */
-  boost::shared_ptr<EditorObj> select_object(CL_Vector pos);
+  boost::shared_ptr<EditorObj> select_object(const CL_Vector & pos);
 };
 
 #endif

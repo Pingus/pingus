@@ -1,4 +1,4 @@
-//  $Id: EditorView.hh,v 1.5 2001/12/18 00:44:24 cagri Exp $
+//  $Id: EditorView.hh,v 1.6 2002/06/04 13:43:19 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,10 +54,10 @@ public:
 
   /** Set the current zoom and offset, so that the given rectangle is
       completly visible on the screen and maximally zoomed. */
-  void zoom_to (CL_Rect rect);
+  void zoom_to (const CL_Rect & rect);
 
   /// Scroll the view by the given delta
-  void move (CL_Vector delta);
+  void move (const CL_Vector & delta);
 
   /** Converts a given screen coordinate, as returned by
       CL_Mouse::get_x(), into the world coordinate system. */

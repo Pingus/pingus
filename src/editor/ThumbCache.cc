@@ -1,4 +1,4 @@
-//  $Id: ThumbCache.cc,v 1.4 2001/05/18 19:17:08 grumbel Exp $
+//  $Id: ThumbCache.cc,v 1.5 2002/06/04 13:43:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include "ThumbCache.hh"
 
 CL_Surface
-ThumbCache::load (std::string res_ident, std::string datafile)
+ThumbCache::load (const std::string & res_ident, const std::string & datafile)
 {
   std::string filename = res_ident + "-" + datafile;
 
@@ -65,7 +65,7 @@ ThumbCache::load (std::string res_ident, std::string datafile)
 }
 
 void 
-ThumbCache::cache (const CL_Surface& sur, std::string res_ident, std::string datafile)
+ThumbCache::cache (const CL_Surface& sur, const std::string & res_ident, const std::string & datafile)
 {
   if (sur.get_provider ()->get_pitch () * sur.get_provider ()->get_width () < 50 * 50 * 4)
     {

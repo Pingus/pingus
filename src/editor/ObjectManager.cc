@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.59 2002/06/01 18:05:36 torangan Exp $
+//  $Id: ObjectManager.cc,v 1.60 2002/06/04 13:43:19 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -123,7 +123,7 @@ ObjectManager::delete_all_objs()
 }
 
 void
-ObjectManager::load_level (std::string filename)
+ObjectManager::load_level (const std::string & filename)
 {
   std::cout << "ObjectManager::Loading level: " << filename << endl;
 
@@ -238,7 +238,7 @@ ObjectManager::draw(boost::dummy_ptr<EditorView> view)
 
 /// Save the current level in an xml file
 void
-ObjectManager::save_level_xml (std::string filename)
+ObjectManager::save_level_xml (const std::string & filename)
 {
   std::ofstream xml;
 
@@ -432,7 +432,7 @@ ObjectManager::object_selected(boost::shared_ptr<EditorObj> c_obj)
 }
 
 boost::shared_ptr<EditorObj>
-ObjectManager::select_object(CL_Vector pos)
+ObjectManager::select_object(const CL_Vector & pos)
 {
   for(EditorObjRIter i = editor_objs.rbegin(); i != editor_objs.rend(); ++i) 
     {

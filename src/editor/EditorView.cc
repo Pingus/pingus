@@ -1,4 +1,4 @@
-//  $Id: EditorView.cc,v 1.11 2002/06/01 18:05:36 torangan Exp $
+//  $Id: EditorView.cc,v 1.12 2002/06/04 13:43:18 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ EditorView::set_zoom (float new_zoom)
 }
 
 void 
-EditorView::zoom_to (CL_Rect arg_rect)
+EditorView::zoom_to (const CL_Rect & arg_rect)
 {
   CL_Rect rect;
 
@@ -101,7 +101,7 @@ EditorView::get_height ()
 }
 
 void 
-EditorView::move (CL_Vector delta)
+EditorView::move (const CL_Vector & delta)
 {
   offset += delta;
 }
