@@ -1,4 +1,4 @@
-//  $Id: property_window.hxx,v 1.2 2002/06/30 22:32:26 grumbel Exp $
+//  $Id: property_window.hxx,v 1.3 2002/07/01 16:31:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ namespace Pingus
     public:
       PropertyWindow (CL_Component* parent);
 
-      void update_frame (boost::shared_ptr<EditorObj>);
+      void update_frame (EditorObj*);
     };
   }
 }

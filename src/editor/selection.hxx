@@ -1,4 +1,4 @@
-//  $Id: selection.hxx,v 1.1 2002/07/01 16:10:29 torangan Exp $
+//  $Id: selection.hxx,v 1.2 2002/07/01 16:31:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,46 +25,50 @@
 #include "object_manager.hxx"
 
 class CL_Vector;
+class EditorView;
 
 class EditorSelection 
 {
-  private:
+private:
   
-    std::list<EditorObj*> obj_list;
-    ObjectManager*        object_manager;
+  std::list<EditorObj*> obj_list;
+  ObjectManager*        object_manager;
     
-  public:
+public:
   
-    EditorSelection(ObjectManager* mng) : object_manager(mng) { }
-    ~EditorSelection() { }
+  EditorSelection(ObjectManager* mng) : object_manager(mng) { }
+  ~EditorSelection() { }
     
-    void clear() { obj_list.clear(); }
+  void clear() { obj_list.clear(); }
     
-    void move(float x, float y);
-    void move(const CL_Vector& pos);
-    void drag();
-    void drop();
+  void move(float x, float y);
+  void move(const CL_Vector& pos);
+  void drag();
+  void drop();
     
-    void add(EditorObj* obj);
-    void add(list<EditorObj*> objs);
+  void add(EditorObj* obj);
+  void add(list<EditorObj*> objs);
     
-    void remove(EditorObj* obj);
+  void remove(EditorObj* obj);
     
-    void raise();
-    void lower();
+  void raise();
+  void lower();
     
-    void select_rect(float x1_, float y1_, float x2_, float y2_);
+  void select_rect(float x1_, float y1_, float x2_, float y2_);
     
-    bool object_selected(EditorObj* obj);
+  bool object_selected(EditorObj* obj);
     
-    EditorObj* get_current_obj();
-    const list<EditorObj*> & get_current_objs() { return obj_list; }
+  EditorObj* get_current_obj();
+  const list<EditorObj*> & get_objects() { return obj_list; }
+
+  int size () { return obj_list.size (); }
     
-    void horizontal_flip();
-    void vertical_flip();
-    void rotate_90();
-    void rotate_270();
-    
+  void horizontal_flip();
+  void vertical_flip();
+  void rotate_90();
+  void rotate_270();
+
+  void draw(EditorView* view);  
 };
 
 #endif

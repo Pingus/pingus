@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.17 2002/07/01 16:10:29 torangan Exp $
+//  $Id: editor_event.cxx,v 1.18 2002/07/01 16:31:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -164,6 +164,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  if (!editor->checkpoint.empty()) 
 	    {
 	      if (verbose) std::cout << "Restoring checkpoint: " << editor->checkpoint << std::endl;
+	      selection->clear ();
 	      object_manager->load_level(editor->checkpoint);
 	    } 
 	  else 
@@ -420,7 +421,7 @@ EditorEvent::editor_convert_group_to_selection()
 void
 EditorEvent::editor_convert_selection_to_group()
 {
-  if (selection->get_current_objs().size() > 1)
+  if (selection->size() > 1)
     {
       EditorObjGroup* group = new EditorObjGroup();
       boost::shared_ptr<EditorObj> group_obj(group);
@@ -431,8 +432,8 @@ EditorEvent::editor_convert_selection_to_group()
 	   j != object_manager->editor_objs.end();
 	   j++)
 	{
-	  for (list<EditorObj*>::const_iterator i = selection->get_current_objs().begin();
-	       i != selection->get_current_objs().end();
+	  for (list<EditorObj*>::const_iterator i = selection->get_objects().begin();
+	       i != selection->get_objects().end();
 	       i++)
 	    { 
 	      if ((*j).get() == *i)
@@ -496,8 +497,8 @@ EditorEvent::editor_delete_selected_objects()
 {
   editor->save_tmp_level ();
       
-  for (std::list<EditorObj*>::const_iterator i = selection->get_current_objs().begin();
-       i != selection->get_current_objs().end();
+  for (std::list<EditorObj*>::const_iterator i = selection->get_objects().begin();
+       i != selection->get_objects().end();
        i++)
     { 
       object_manager->editor_objs.erase(std::find(object_manager->editor_objs.begin(), object_manager->editor_objs.end(), 
@@ -566,6 +567,7 @@ EditorEvent::editor_load_level()
   if (!str.empty()) 
     {
       try {
+	selection->clear ();
 	object_manager->load_level(str);
 	editor->last_level = str;
       }
@@ -621,8 +623,8 @@ EditorEvent::editor_duplicate_current_selection()
 {
   std::list<EditorObj*> new_objs;
   
-  for (std::list<EditorObj*>::const_iterator i = selection->get_current_objs().begin(); 
-       i != selection->get_current_objs().end();
+  for (std::list<EditorObj*>::const_iterator i = selection->get_objects().begin(); 
+       i != selection->get_objects().end();
        i++)
     {
       ObjectManager::EditorObjIter iter = std::find(object_manager->editor_objs.begin(), 
@@ -763,8 +765,8 @@ EditorEvent::editor_export_object_group_from_selection ()
   std::cout << "EditorEvent:editor_export_object_group_from_selection ()" << std::endl;
   
   std::list<boost::shared_ptr<EditorObj> > temp;
-  for (std::list<EditorObj*>::const_iterator it  = selection->get_current_objs().begin();
-                                             it != selection->get_current_objs().end(); it++)
+  for (std::list<EditorObj*>::const_iterator it  = selection->get_objects().begin();
+       it != selection->get_objects().end(); ++it)
     temp.push_back(boost::shared_ptr<EditorObj>(*it));
   
   EditorObjGroup group (temp);

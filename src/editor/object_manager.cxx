@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.13 2002/07/01 16:10:29 torangan Exp $
+//  $Id: object_manager.cxx,v 1.14 2002/07/01 16:31:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -123,7 +123,6 @@ ObjectManager::load_level (const std::string & filename)
 {
   std::cout << "ObjectManager::Loading level: " << filename << endl;
 
-  delete_selection();
   delete_all_objs();
 
   difficulty = 40;
@@ -231,11 +230,7 @@ ObjectManager::draw(EditorView * view)
       (*i)->draw (view);
     }
 
-  for (CurrentObjIter i = current_objs.begin(); i != current_objs.end(); ++i) 
-    {
-      (*i)->draw_mark(view);
-    }
-
+  // The level window
   view->draw_rect(0, 0, width, height,
 		  bg.red, bg.green, bg.blue, 1.0);
 }
@@ -437,7 +432,7 @@ ObjectManager::rect_get_objs(int x1, int y1, int x2, int y2)
 
   for (EditorObjIter it = editor_objs.begin(); it != editor_objs.end(); it++)
     if ((*it)->is_in_rect(CL_Rect(x1, y1, x2, y2)))
-      retval.push_back(*it.get());
+      retval.push_back(it->get ());
       
   return retval;
 }

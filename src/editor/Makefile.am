@@ -40,7 +40,7 @@ libpingus_editor_a_SOURCES = \
 	rect_editorobj.cxx rect_editorobj.hxx \
 	scroll_map.cxx scroll_map.hxx \
 	selection.cxx selection.hxx \
-	sprite_editorobj.cxx sprite_editorobj.hxx
+	sprite_editorobj.cxx sprite_editorobj.hxx \
 	start_pos.cxx start_pos.hxx \
 	status_line.cxx status_line.hxx \
 	string_reader.cxx string_reader.hxx \

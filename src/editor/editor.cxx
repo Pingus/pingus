@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.14 2002/07/01 16:10:29 torangan Exp $
+//  $Id: editor.cxx,v 1.15 2002/07/01 16:31:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,7 +92,7 @@ Editor::Editor () : event_handler_ref_counter(0),
   
   font = PingusResource::load_font("Fonts/courier_small", "fonts");
   panel->init();
-  status_line->set_current_objs(&selection->get_current_objs());
+  status_line->set_current_objs(&selection->get_objects());
   panel->set_editor(this);
   scroll_map->editor_event = event;
 }
@@ -160,7 +160,7 @@ Editor::edit ()
 
   register_event_handler();
 
-  std::list<boost::shared_ptr<EditorObj> > tmp_selection;
+  std::list<EditorObj*> tmp_selection;
 
   while (!quit) 
     {
@@ -177,21 +177,21 @@ Editor::edit ()
       Display::flip_display(true);
 
       // FIXME: This should be moved to the object manager
-      if (tmp_selection != object_manager->current_objs)
+      if (tmp_selection != selection->get_objects ())
 	{
 	  std::cout << "Selection changed" << std::endl;
-	  tmp_selection = object_manager->current_objs;
+	  tmp_selection = selection->get_objects ();
 
 	  // FIXME: dirty hack
-	  if (object_manager->current_objs.size() == 1)
+	  if (selection->size() == 1)
 	    {
-	      boost::shared_ptr<EditorObj>  obj = *object_manager->current_objs.begin ();
+	      EditorObj* obj = selection->get_current_obj ();
 	      property_window->update_frame (obj);
 	      //CL_Component* comp = obj->get_gui_dialog (editor->property_window);
 	    }
 	  else
 	    {
-	      property_window->update_frame (boost::shared_ptr<EditorObj>());
+	      property_window->update_frame (0);
 	      std::cout << "EditorEvent::editor_show_object_properties (): error: multiple objects selected" << std::endl;
 	    }
 	}
@@ -209,6 +209,7 @@ Editor::draw ()
   CL_Display::clear_display();
 
   object_manager->draw(view);
+  selection->draw (view);
   panel->draw();
 
   /*  {
@@ -434,6 +435,8 @@ Editor::rect_get_current_objs()
       // Draw the screen
       CL_Display::clear_display();
       object_manager->draw(view);
+      selection->draw (view);
+      
       Display::draw_rect((int) start_pos.x, (int)start_pos.y, (int)end_pos.x, (int)end_pos.y,
 			 0.0f, 1.0f, 0.0f, 1.0f);
       panel->draw();
@@ -444,7 +447,7 @@ Editor::rect_get_current_objs()
   start_pos = view->screen_to_world (start_pos);
   end_pos = view->screen_to_world (end_pos);
 
-  object_manager->rect_get_current_objs(start_pos.x, start_pos.y, end_pos.x, end_pos.y);
+  selection->select_rect(start_pos.x, start_pos.y, end_pos.x, end_pos.y);
 
   //std::cout << "finished" << std::endl;
 }
@@ -485,7 +488,7 @@ Editor::move_objects()
   else if (CL_Keyboard::get_keycode(CL_KEY_DOWN))
     move_y = move_speed;
         
-  object_manager->move_current_objs(move_x, move_y);
+  selection->move(move_x, move_y);
 }
 
 void
@@ -493,20 +496,19 @@ Editor::interactive_move_object()
 {
   CL_System::keep_alive();
 
-  object_manager->drag_current_objs ();
+  selection->drag ();
   CL_Vector old_pos (view->screen_to_world(CL_Vector(CL_Mouse::get_x(), CL_Mouse::get_y())));
   while (CL_Mouse::left_pressed()) 
     {
       CL_Vector new_pos (view->screen_to_world(CL_Vector(CL_Mouse::get_x(), CL_Mouse::get_y())));
-      object_manager->move_current_objs(new_pos.x - old_pos.x,
-					new_pos.y - old_pos.y);
+      selection->move(new_pos.x - old_pos.x, new_pos.y - old_pos.y);
       old_pos = new_pos;
       
       draw();
       Display::flip_display (true);
       CL_System::keep_alive();
     }
-  object_manager->drop_current_objs ();
+  selection->drop ();
 }
 
 void
@@ -536,6 +538,7 @@ Editor::load_level (const std::string& str)
   // filename could be relative, insert a relative->absolute converter
   // and we might save it.
 
+  selection->clear ();
   object_manager->load_level(str);
   last_level = str;
 }

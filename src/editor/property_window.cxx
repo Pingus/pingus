@@ -1,4 +1,4 @@
-//  $Id: property_window.cxx,v 1.5 2002/07/01 12:46:22 grumbel Exp $
+//  $Id: property_window.cxx,v 1.6 2002/07/01 16:31:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ PropertyWindow::PropertyWindow (CL_Component* parent)
 }
 
 void
-PropertyWindow::update_frame (boost::shared_ptr<EditorObj> obj)
+PropertyWindow::update_frame (EditorObj* obj)
 {
   if (current_frame)
     {
@@ -43,7 +43,7 @@ PropertyWindow::update_frame (boost::shared_ptr<EditorObj> obj)
       current_frame = 0;
     }
   
-  if (obj.get ())
+  if (obj)
     {
       // We are responsible to delete comp
       Pingus::Editor::PropertyFrame* comp = obj->get_gui_dialog (get_client_area ());

@@ -1,4 +1,4 @@
-//  $Id: level_property_window.cxx,v 1.2 2002/07/01 12:46:22 grumbel Exp $
+//  $Id: level_property_window.cxx,v 1.3 2002/07/01 16:31:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,19 @@ LevelPropertyWindow::LevelPropertyWindow (CL_Component* parent, ObjectManager* m
     pingus_to_save_input (CL_Rect(110, 90, 190, 110), to_string (10), get_client_area ()),
 
     time_label (CL_Rect (10, 110, 90, 130), "Time", get_client_area ()),
-    time_input (CL_Rect(110, 110, 190, 130), to_string (-1), get_client_area ())
+    time_input (CL_Rect(110, 110, 190, 130), to_string (-1), get_client_area ()),
+
+    width_label (CL_Rect (10, 130, 90, 150), "Width", get_client_area ()),
+    width_input (CL_Rect(110, 130, 190, 150), to_string(manager->get_width ()), get_client_area ()),    
+
+    height_label (CL_Rect (10, 150, 90, 170), "Height", get_client_area ()),
+    height_input (CL_Rect(110, 150, 190, 170), to_string(manager->get_height ()), get_client_area ()), 
+
+    difficulty_label (CL_Rect (10, 170, 90, 190), "Difficulty", get_client_area ()),
+    difficulty_input (CL_Rect(110, 170, 190, 190), to_string (50), get_client_area ()),
+
+    comment_label (CL_Rect(10, 190, 90, 210), "Comment", get_client_area ()),
+    playable_checkbox (CL_Point(10, 210), "Playable", get_client_area ())
 {  
   show (false);
 }

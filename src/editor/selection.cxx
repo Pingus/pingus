@@ -1,4 +1,4 @@
-//  $Id: selection.cxx,v 1.1 2002/07/01 16:10:29 torangan Exp $
+//  $Id: selection.cxx,v 1.2 2002/07/01 16:31:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,8 +76,9 @@ void EditorSelection::lower() {
     object_manager->lower_obj(boost::shared_ptr<EditorObj>(*it));
 }
 
-void EditorSelection::select_rect(float x1_, float y1_, float x2_, float y2_) {
-
+void
+EditorSelection::select_rect(float x1_, float y1_, float x2_, float y2_) 
+{
   int x1, x2, y1, y2;
   
   if (!CL_Keyboard::get_keycode(CL_KEY_LSHIFT)
@@ -94,40 +95,56 @@ void EditorSelection::select_rect(float x1_, float y1_, float x2_, float y2_) {
   obj_list.insert(obj_list.end(), erg.begin(), erg.end());
 }
 
-bool EditorSelection::object_selected(EditorObj* obj) {
-
+bool
+EditorSelection::object_selected(EditorObj* obj) 
+{
   return std::find(obj_list.begin(), obj_list.end(), obj) != obj_list.end();
 }
 
-EditorObj* EditorSelection::get_current_obj() {
-
+EditorObj*
+EditorSelection::get_current_obj() 
+{
   if (obj_list.size() == 1)
     return *obj_list.begin();
   else
     return 0;
 }
 
-void EditorSelection::horizontal_flip() {
+void
+EditorSelection::horizontal_flip() 
+{
   for (list<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->horizontal_flip();
 }
 
-void EditorSelection::vertical_flip() {
-
+void
+EditorSelection::vertical_flip() 
+{
   for (list<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->vertical_flip();
 }
 
-void EditorSelection::rotate_90() {
-
+void
+EditorSelection::rotate_90() 
+{
   for (list<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->rotate_90();
 }
 
-void EditorSelection::rotate_270() {
-
+void
+EditorSelection::rotate_270()
+{
   for (list<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->rotate_270();
+}
+
+void
+EditorSelection::draw(EditorView * view)
+{
+  for (list<EditorObj*>::iterator i = obj_list.begin(); i != obj_list.end(); ++i) 
+    {
+      (*i)->draw_mark(view);
+    }
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: level_property_window.hxx,v 1.2 2002/07/01 12:46:22 grumbel Exp $
+//  $Id: level_property_window.hxx,v 1.3 2002/07/01 16:31:40 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,6 +48,19 @@ namespace Pingus
 
       CL_Label    time_label;
       CL_InputBox time_input;
+
+      CL_Label    width_label;
+      CL_InputBox width_input;
+
+      CL_Label    height_label;
+      CL_InputBox height_input;
+
+      CL_Label    difficulty_label;
+      CL_InputBox difficulty_input;
+
+      CL_Label    comment_label;
+      CL_CheckBox playable_checkbox;
+
     public:
       LevelPropertyWindow (CL_Component* parent, ObjectManager*);
       ~LevelPropertyWindow ();
