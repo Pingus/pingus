@@ -5,13 +5,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-15 17:27+0200\n"
+"POT-Creation-Date: 2003-04-15 23:56+0200\n"
 "PO-Revision-Date: 2003-04-11 00:12+0200\n"
 "Last-Translator: Martijn Santen <martijn@jomarsoft.nl>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Martijn Santen "
 "<martijn@jomarsoft.nl>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plin; charset=iso-8859-1\n"
+"Content-Type: text/plin; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/config.cxx:68
@@ -526,25 +526,25 @@ msgstr "Laden...."
 msgid "Loading finished. Press a mouse button to start the level"
 msgstr "Laden klaar. Druk op een muisknop om het nivea te starten"
 
-#: src/level_result.cxx:59
+#: src/level_result.cxx:57
 msgid "Results:"
 msgstr "Resultaten"
 
-#: src/level_result.cxx:65
+#: src/level_result.cxx:63
 #, c-format
 msgid "Pingus saved:   %3d/%3d"
 msgstr "Pingus gered:   %3d/%3d"
 
-#: src/level_result.cxx:70
+#: src/level_result.cxx:68
 #, c-format
 msgid "Pingus killed:  %3d/%3d"
 msgstr "Pingus omgekomen:  %3d/%3d"
 
-#: src/level_result.cxx:86
+#: src/level_result.cxx:84
 msgid "Press button to continue..."
 msgstr "Druk een knop om door te gaan..."
 
-#: src/level_result.cxx:100
+#: src/level_result.cxx:98
 #, fuzzy
 msgid ""
 "As many Pingus escaped as entered the level. That's going to be hard to "
@@ -553,19 +553,19 @@ msgstr ""
 "Net zoveel Pingus konden onsnappen als die het niveau zijn binnen getreden. "
 "Dat zal lastig zijn omte verbeteren... tenzij dit spel pornografisch wordt."
 
-#: src/level_result.cxx:102
+#: src/level_result.cxx:100
 msgid "Very impressive indeed."
 msgstr "Inderdaad erg indrukwekkend."
 
-#: src/level_result.cxx:104
+#: src/level_result.cxx:102
 msgid "Good work. Still room for improvement though."
 msgstr "Goed gedaan. Maar er zijn nog mogelijkheden om te verbeteren."
 
-#: src/level_result.cxx:106
+#: src/level_result.cxx:104
 msgid "Not too shabby, not too shabby at all."
 msgstr "Niet slecht, helemaal niet slecht."
 
-#: src/level_result.cxx:108
+#: src/level_result.cxx:106
 msgid ""
 "That was OK, but Pingu life insurance premiums have just gotten more "
 "expensive."
@@ -573,45 +573,46 @@ msgstr ""
 "Dat was OK, maar je Pingu levensverzekerings premie is zojuist "
 "duurdergeworden"
 
-#: src/level_result.cxx:110
+#: src/level_result.cxx:108
 msgid "Maybe this level calls for a different strategy."
 msgstr "Misschien vraag dit niveau om een andere strategie."
 
-#: src/level_result.cxx:112
+#: src/level_result.cxx:110
 #, fuzzy
 msgid "Exactly half. Are you saving only the female ones?"
 msgstr ""
 "Precies de helft. Probeer je alleen de vrouwtjes te redden, kinky hoor!?"
 
-#: src/level_result.cxx:114
+#: src/level_result.cxx:112
 msgid "If I were a Pingu, I never would have left that entrance."
 msgstr "Als ik een Pingu was, zou ik nooit die uitgang genomen hebben."
 
-#: src/level_result.cxx:116
+#: src/level_result.cxx:114
 msgid "Maybe you would feel more at home playing Quake."
 msgstr "Misschien voel je je meer op je gemak als je Quake zou spelen."
 
-#: src/level_result.cxx:118
+#: src/level_result.cxx:116
+#, fuzzy
 msgid ""
-"Maybe this level calls for a different stratagy. Like attempting to save "
+"Maybe this level calls for a different strategy. Like attempting to save "
 "them, for example."
 msgstr ""
 "Misschien vraagt dit niveau om een andere aanpak. Je zou ze bijvoorbeeld "
 "kunnen proberen te redden"
 
-#: src/level_result.cxx:120
+#: src/level_result.cxx:118
 msgid "Ever considered a career as a Pingu exterminator?"
 msgstr "Al eens een cariere overwogen als Pingu vernietiger? "
 
-#: src/level_result.cxx:122
+#: src/level_result.cxx:120
 msgid "You missed one! What's your excuse!?"
 msgstr "Je hebt er één gemist! Wat is je smoes!?"
 
-#: src/level_result.cxx:124
+#: src/level_result.cxx:122
 msgid "Please reassure me that you hit the Armageddon button."
 msgstr "Beloof me alsjeblieft dat je de Armageddon knop indrukt."
 
-#: src/level_result.cxx:126
+#: src/level_result.cxx:124
 msgid "You've got a negative save/total value, something is buggy."
 msgstr "Je hebt een negatief gered/totaal waarde, iets gaat er mis."
 
@@ -675,10 +676,6 @@ msgstr "..:: Multispeler Mode... experimentele zooi ::.."
 #: src/menu_button.cxx:395
 msgid "Multi"
 msgstr "Multi"
-
-#: src/pingu.cxx:122
-msgid "Setting action to a dead pingu"
-msgstr "Activeer een dode pingu"
 
 #: src/pingu_info.cxx:49
 #, c-format
@@ -816,6 +813,10 @@ msgstr "..:: Start de niveau bewerker ::.."
 msgid "Disable automatic scrolling"
 msgstr ""
 
+#: src/pingus_main.cxx:513
+msgid "Enable software cursor"
+msgstr ""
+
 #: src/pingus_main.cxx:516
 msgid "Don't read ~/.pingus/config"
 msgstr ""
@@ -917,88 +918,88 @@ msgstr ""
 msgid "Disable music"
 msgstr ""
 
-#: src/pingus_main.cxx:712
+#: src/pingus_main.cxx:713
 msgid "clanVorbis support:           ok"
 msgstr ""
 
-#: src/pingus_main.cxx:714
+#: src/pingus_main.cxx:715
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr ""
 
-#: src/pingus_main.cxx:718
+#: src/pingus_main.cxx:719
 msgid "clanMikMod support:           ok"
 msgstr ""
 
-#: src/pingus_main.cxx:720
+#: src/pingus_main.cxx:721
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr ""
 
-#: src/pingus_main.cxx:724
+#: src/pingus_main.cxx:725
 msgid "getext support:               ok"
 msgstr ""
 
-#: src/pingus_main.cxx:725
+#: src/pingus_main.cxx:726
 msgid "gettext language:        english"
 msgstr ""
 
-#: src/pingus_main.cxx:731
+#: src/pingus_main.cxx:732
 msgid "sound support:           enabled"
 msgstr ""
 
-#: src/pingus_main.cxx:733
+#: src/pingus_main.cxx:734
 msgid "sound support:          disabled"
 msgstr ""
 
-#: src/pingus_main.cxx:736
+#: src/pingus_main.cxx:737
 msgid "music support:           enabled"
 msgstr ""
 
-#: src/pingus_main.cxx:738
+#: src/pingus_main.cxx:739
 msgid "music support:          disabled"
 msgstr ""
 
-#: src/pingus_main.cxx:740
+#: src/pingus_main.cxx:741
 msgid "resolution set to:       "
 msgstr ""
 
-#: src/pingus_main.cxx:741
+#: src/pingus_main.cxx:742
 msgid "fullscreen:              "
 msgstr ""
 
-#: src/pingus_main.cxx:742
+#: src/pingus_main.cxx:743
 #, fuzzy
 msgid " enabled"
 msgstr "Cursor aan"
 
-#: src/pingus_main.cxx:742
+#: src/pingus_main.cxx:743
 msgid "disabled"
 msgstr ""
 
-#: src/pingus_main.cxx:752
+#: src/pingus_main.cxx:753
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Starten hoofddeel: "
 
-#: src/pingus_main.cxx:782
+#: src/pingus_main.cxx:783
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMainL Bestand van dit niveau niet gevonden, negeren: "
 
-#: src/pingus_main.cxx:883
+#: src/pingus_main.cxx:884
 msgid "Error caught from ClanLib: "
 msgstr "Fout gevonden in Clanlib: "
 
-#: src/pingus_main.cxx:887
+#: src/pingus_main.cxx:888
 msgid "Error caught from Pingus: "
 msgstr "Error gevonden in Pingus: "
 
-#: src/pingus_main.cxx:891
+#: src/pingus_main.cxx:892
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: te weinig geheugen!"
 
-#: src/pingus_main.cxx:895
+#: src/pingus_main.cxx:896
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Standard uitzondering!:\n"
 
-#: src/pingus_main.cxx:899
+#: src/pingus_main.cxx:900
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Onbekende worp aangetroffen!"
 
@@ -1243,7 +1244,7 @@ msgstr ""
 msgid "Environment variable $HOME not set, fix that and start again."
 msgstr "Omgevings variabele $HOME niet gezet, repareer dat en begin overnieuw"
 
-#: src/worldmap/level_dot.cxx:159
+#: src/worldmap/level_dot.cxx:162
 msgid "locked"
 msgstr ""
 
@@ -1273,6 +1274,9 @@ msgstr "PingusWereldKaart: Bestand niet gevonden: "
 #, fuzzy
 msgid "...walking..."
 msgstr "Laden...."
+
+#~ msgid "Setting action to a dead pingu"
+#~ msgstr "Activeer een dode pingu"
 
 #~ msgid "on"
 #~ msgstr "aan"

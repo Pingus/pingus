@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
-"POT-Creation-Date: 2003-04-15 22:09+0200\n"
+"POT-Creation-Date: 2003-04-15 23:56+0200\n"
 "PO-Revision-Date: 2003-04-15 17:29+0200\n"
 "Last-Translator: Milan Babuskov <mbabuskov@yahoo.com>\n"
 "Language-Team: <mbabuskov@yahoo.com>\n"
@@ -898,87 +898,87 @@ msgstr "Onemoguci zvuk"
 msgid "Disable music"
 msgstr "Onemoguci muziku"
 
-#: src/pingus_main.cxx:712
+#: src/pingus_main.cxx:713
 msgid "clanVorbis support:           ok"
 msgstr "podrska za clanVorbis:        ok"
 
-#: src/pingus_main.cxx:714
+#: src/pingus_main.cxx:715
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr "podrska za clanVorbis:  nedostaje (.ogg fajlovi nece biti pusteni)"
 
-#: src/pingus_main.cxx:718
+#: src/pingus_main.cxx:719
 msgid "clanMikMod support:           ok"
 msgstr "podrska za clanMikMod:        ok"
 
-#: src/pingus_main.cxx:720
+#: src/pingus_main.cxx:721
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr "podrska za clanMikMod:  nedostaje (nece biti muzike)"
 
-#: src/pingus_main.cxx:724
+#: src/pingus_main.cxx:725
 msgid "getext support:               ok"
 msgstr "podrska za gettext:           ok"
 
-#: src/pingus_main.cxx:725
+#: src/pingus_main.cxx:726
 msgid "gettext language:        english"
 msgstr "gettext jezik:           engleski"
 
-#: src/pingus_main.cxx:731
+#: src/pingus_main.cxx:732
 msgid "sound support:           enabled"
 msgstr "podrska za zvuk:       omogucena"
 
-#: src/pingus_main.cxx:733
+#: src/pingus_main.cxx:734
 msgid "sound support:          disabled"
 msgstr "podrska za zvuk:     onemogucena"
 
-#: src/pingus_main.cxx:736
+#: src/pingus_main.cxx:737
 msgid "music support:           enabled"
 msgstr "podrska za muziku:     omogucena"
 
-#: src/pingus_main.cxx:738
+#: src/pingus_main.cxx:739
 msgid "music support:          disabled"
 msgstr "podrska za muziku:   onemogucena"
 
-#: src/pingus_main.cxx:740
+#: src/pingus_main.cxx:741
 msgid "resolution set to:       "
 msgstr "rezolucija postavljna na:"
 
-#: src/pingus_main.cxx:741
+#: src/pingus_main.cxx:742
 msgid "fullscreen:              "
 msgstr "ceo ekran:               "
 
-#: src/pingus_main.cxx:742
+#: src/pingus_main.cxx:743
 msgid " enabled"
 msgstr " omoguceno"
 
-#: src/pingus_main.cxx:742
+#: src/pingus_main.cxx:743
 msgid "disabled"
 msgstr "onemoguceno"
 
-#: src/pingus_main.cxx:752
+#: src/pingus_main.cxx:753
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Pokretanje Main: "
 
-#: src/pingus_main.cxx:782
+#: src/pingus_main.cxx:783
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Fajl nivoa nije nadjen, ignorisano: "
 
-#: src/pingus_main.cxx:883
+#: src/pingus_main.cxx:884
 msgid "Error caught from ClanLib: "
 msgstr "Uhvacena greska iz ClanLiba: "
 
-#: src/pingus_main.cxx:887
+#: src/pingus_main.cxx:888
 msgid "Error caught from Pingus: "
 msgstr "Uhvacena greska iz Pingusa: "
 
-#: src/pingus_main.cxx:891
+#: src/pingus_main.cxx:892
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Nema memorije!"
 
-#: src/pingus_main.cxx:895
+#: src/pingus_main.cxx:896
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Uhvacen standardan izuzetak!:\n"
 
-#: src/pingus_main.cxx:899
+#: src/pingus_main.cxx:900
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Uhvacen nepoznat throw!"
 

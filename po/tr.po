@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
-"POT-Creation-Date: 2003-04-15 22:09+0200\n"
+"POT-Creation-Date: 2003-04-15 23:56+0200\n"
 "PO-Revision-Date: 2003-04-15 17:28+0200\n"
 "Last-Translator: Çaðrý Çöltekin <cagri@metu.edu.tr>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Caðrý Çöltekin <cagri@metu."
@@ -151,9 +151,8 @@ msgid "F12 - make screenshot"
 msgstr "F12 - ekrangörüntüsü kaydet"
 
 #: src/editor/editor_help_screen.cxx:60
-#, fuzzy
 msgid "Home - increase object size"
-msgstr "Pos1 - nesneyi büyüt"
+msgstr "Home - nesneyi büyüt"
 
 #: src/editor/editor_help_screen.cxx:61
 msgid "End  - decrease object size"
@@ -807,9 +806,8 @@ msgid "Disable automatic scrolling"
 msgstr "Automatik kaydýrmayý kapat"
 
 #: src/pingus_main.cxx:513
-#, fuzzy
 msgid "Enable software cursor"
-msgstr "   --enable-swcursor        Yazýlým imleçini kullan\n"
+msgstr "Yazýlým imleci kullan"
 
 #: src/pingus_main.cxx:516
 msgid "Don't read ~/.pingus/config"
@@ -827,9 +825,10 @@ msgstr "Ayarlarý `DOSYA'dan oku (öntanýmlý: ~/.pingus/config)"
 msgid "reduce CPU usage, might speed up the game on slower machines"
 msgstr "CPU kullanýmýný azalt. Bu yavaþ makinalarda oyunu hýzlandýrabilir"
 
+# FIXME: better translation
 #: src/pingus_main.cxx:519
 msgid "Uses the controller given in FILE"
-msgstr ""
+msgstr "DOSYA'daki denetleyiciyi kullan"
 
 #: src/pingus_main.cxx:521
 msgid "Debugging and experimental stuff:"
@@ -887,7 +886,7 @@ msgstr "CPU kullanýmýný sleep() kullanarak azalt"
 
 #: src/pingus_main.cxx:535
 msgid "Demo playing and recording:"
-msgstr ""
+msgstr "Demo oynatma ve kayýt:"
 
 #: src/pingus_main.cxx:536
 msgid "FILE     "
@@ -913,90 +912,90 @@ msgstr "Sesi Kapat"
 msgid "Disable music"
 msgstr "Müziði Kapat"
 
-#: src/pingus_main.cxx:712
+#: src/pingus_main.cxx:713
 msgid "clanVorbis support:           ok"
 msgstr "clanVoribs desteði:      var"
 
-#: src/pingus_main.cxx:714
+#: src/pingus_main.cxx:715
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr "clanVoribs desteði: yok (.ogg müzik dosyalarý çalýþmayacak)"
 
-#: src/pingus_main.cxx:718
+#: src/pingus_main.cxx:719
 msgid "clanMikMod support:           ok"
 msgstr "clanMikMod desteði:      var"
 
-#: src/pingus_main.cxx:720
+#: src/pingus_main.cxx:721
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr "clanMikMod desteði: yok (müzik dosyalarý çalýþmayacak) "
 
-#: src/pingus_main.cxx:724
+#: src/pingus_main.cxx:725
 msgid "getext support:               ok"
 msgstr "gettext desteði:         var"
 
-#: src/pingus_main.cxx:725
+#: src/pingus_main.cxx:726
 msgid "gettext language:        english"
 msgstr "gettext dili:            türkeçe"
 
-#: src/pingus_main.cxx:731
+#: src/pingus_main.cxx:732
 msgid "sound support:           enabled"
 msgstr "ses:                     etkin"
 
-#: src/pingus_main.cxx:733
+#: src/pingus_main.cxx:734
 msgid "sound support:          disabled"
 msgstr "ses:                    etkin deðil"
 
-#: src/pingus_main.cxx:736
+#: src/pingus_main.cxx:737
 msgid "music support:           enabled"
 msgstr "müzik desteði:           etkin"
 
-#: src/pingus_main.cxx:738
+#: src/pingus_main.cxx:739
 msgid "music support:          disabled"
 msgstr "müzik desteði:          etkin deðil"
 
-#: src/pingus_main.cxx:740
+#: src/pingus_main.cxx:741
 msgid "resolution set to:       "
 msgstr "çözünürlük:              "
 
-#: src/pingus_main.cxx:741
+#: src/pingus_main.cxx:742
 msgid "fullscreen:              "
 msgstr "tümekran:                "
 
-#: src/pingus_main.cxx:742
+#: src/pingus_main.cxx:743
 msgid " enabled"
 msgstr " etkin"
 
-#: src/pingus_main.cxx:742
+#: src/pingus_main.cxx:743
 msgid "disabled"
 msgstr "etkin deðil"
 
 # 'Main' yerine baþka biþi uydurmak lazim buraya -gd
-#: src/pingus_main.cxx:752
+#: src/pingus_main.cxx:753
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Main Baþlatýlýyor: "
 
-#: src/pingus_main.cxx:782
+#: src/pingus_main.cxx:783
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Seviye Dosyasý bulunamadý, yok sayýlacak: "
 
-#: src/pingus_main.cxx:883
+#: src/pingus_main.cxx:884
 msgid "Error caught from ClanLib: "
 msgstr "ClanLib hatasý: "
 
-#: src/pingus_main.cxx:887
+#: src/pingus_main.cxx:888
 msgid "Error caught from Pingus: "
 msgstr "Pingus'ta hata saptandý: "
 
-#: src/pingus_main.cxx:891
+#: src/pingus_main.cxx:892
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Bellek yetersiz!"
 
 # bu komik oldu -cagri
 # daha mi iyi boyle :) -gd
-#: src/pingus_main.cxx:895
+#: src/pingus_main.cxx:896
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Genel olaðan dýþý durum saptandý!:\n"
 
-#: src/pingus_main.cxx:899
+#: src/pingus_main.cxx:900
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Bilinmeyen bir hata saptandý!"
 
@@ -1010,11 +1009,11 @@ msgstr "Yeniden dene"
 
 #: src/result_screen.cxx:173
 msgid "Success!"
-msgstr "Baþrý!"
+msgstr "Aferin!"
 
 #: src/result_screen.cxx:180
 msgid "Failure!"
-msgstr "Olmadý!"
+msgstr "Baþaramadýn!"
 
 #: src/result_screen.cxx:189
 msgid "Perfect! You saved everybody possibly, great!"

@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Stefano Brivio <stefab@infinito.it>\n"
 "Language-Team: stefab@infinito.it\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/config.cxx:68

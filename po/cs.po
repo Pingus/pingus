@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
-"POT-Creation-Date: 2003-04-15 22:09+0200\n"
+"POT-Creation-Date: 2003-04-15 23:56+0200\n"
 "PO-Revision-Date: 2003-04-15 21:05+0200\n"
 "Last-Translator: Tomáš Bláha\n"
 "Language-Team: czech\n"
@@ -902,87 +902,87 @@ msgstr "Vypnout zvuk"
 msgid "Disable music"
 msgstr "Vypnout hudbu"
 
-#: src/pingus_main.cxx:712
+#: src/pingus_main.cxx:713
 msgid "clanVorbis support:           ok"
 msgstr "podpora clanVorbis:           ok"
 
-#: src/pingus_main.cxx:714
+#: src/pingus_main.cxx:715
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr "podpora clanVoribs:  chybi (hudba v .ogg souborech nebude prehrana)"
 
-#: src/pingus_main.cxx:718
+#: src/pingus_main.cxx:719
 msgid "clanMikMod support:           ok"
 msgstr "podpora clanMikMod:           ok"
 
-#: src/pingus_main.cxx:720
+#: src/pingus_main.cxx:721
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr "podpora clanMikMod:  chybi (hudebni soubory nebudou prehrany)"
 
-#: src/pingus_main.cxx:724
+#: src/pingus_main.cxx:725
 msgid "getext support:               ok"
 msgstr "podpora getext:               ok"
 
-#: src/pingus_main.cxx:725
+#: src/pingus_main.cxx:726
 msgid "gettext language:        english"
 msgstr "jazyk gettextu:          cestina"
 
-#: src/pingus_main.cxx:731
+#: src/pingus_main.cxx:732
 msgid "sound support:           enabled"
 msgstr "zvukova podpora:         zapnuta"
 
-#: src/pingus_main.cxx:733
+#: src/pingus_main.cxx:734
 msgid "sound support:          disabled"
 msgstr "zvukova podpora:        vypnuta"
 
-#: src/pingus_main.cxx:736
+#: src/pingus_main.cxx:737
 msgid "music support:           enabled"
 msgstr "hudebni podpora:         zapnuta"
 
-#: src/pingus_main.cxx:738
+#: src/pingus_main.cxx:739
 msgid "music support:          disabled"
 msgstr "hudebni podpora:         vypnuta"
 
-#: src/pingus_main.cxx:740
+#: src/pingus_main.cxx:741
 msgid "resolution set to:       "
 msgstr "rozliseni nastaveno na:  "
 
-#: src/pingus_main.cxx:741
+#: src/pingus_main.cxx:742
 msgid "fullscreen:              "
 msgstr "celoobrazovkovy rezim:    "
 
-#: src/pingus_main.cxx:742
+#: src/pingus_main.cxx:743
 msgid " enabled"
 msgstr "zapnut"
 
-#: src/pingus_main.cxx:742
+#: src/pingus_main.cxx:743
 msgid "disabled"
 msgstr "vypnut"
 
-#: src/pingus_main.cxx:752
+#: src/pingus_main.cxx:753
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Spoustim main: "
 
-#: src/pingus_main.cxx:782
+#: src/pingus_main.cxx:783
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Soubor urovne nenalezen, ignoruji: "
 
-#: src/pingus_main.cxx:883
+#: src/pingus_main.cxx:884
 msgid "Error caught from ClanLib: "
 msgstr "Odchycena chyba v ClanLib: "
 
-#: src/pingus_main.cxx:887
+#: src/pingus_main.cxx:888
 msgid "Error caught from Pingus: "
 msgstr "Odchycena chyba v Pingus: "
 
-#: src/pingus_main.cxx:891
+#: src/pingus_main.cxx:892
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Dosla pamet!"
 
-#: src/pingus_main.cxx:895
+#: src/pingus_main.cxx:896
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Odchycena standardni vyjimka!:\n"
 
-#: src/pingus_main.cxx:899
+#: src/pingus_main.cxx:900
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Odchyceno nezname throw!"
 
