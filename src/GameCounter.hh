@@ -1,4 +1,4 @@
-//  $Id: GameCounter.hh,v 1.3 2000/03/01 02:57:48 grumbel Exp $
+//  $Id: GameCounter.hh,v 1.4 2000/03/01 22:37:11 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,12 +42,13 @@ public:
   void set_type(CounterType t);
   void set_size(int);
   int  get_size();
-  bool finished(void);
+  bool finished();
   void set_speed(double i);
-  int  value(void);
-  bool enough_time_passed(void);
-  int  operator++(void);
-  int  operator--(void);
+  int  value();
+  bool enough_time_passed();
+  int  operator++();
+  int  operator++(int);
+  int  operator--();
   int  operator=(int i);
   operator int ();
 };
