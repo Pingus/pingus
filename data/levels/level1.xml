@@ -8,6 +8,8 @@ Doch mit gezieltem graben sollten sie noch eine Chance haben.</description>
     <height>864</height>
   </global>
 
+
+
 <background type="surface">
   <surface><resource type="datafile">
     <resource-datafile>textures</resource-datafile>
@@ -54,7 +56,7 @@ Doch mit gezieltem graben sollten sie noch eine Chance haben.</description>
   <stretch-x>0</stretch-x>
   <stretch-y>0</stretch-y>
 </background>
-
+<background type="starfield"></background>
 
   <action-list>
     <basher count="20"/>

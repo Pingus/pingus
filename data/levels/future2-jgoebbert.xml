@@ -6222,7 +6222,7 @@
 <groundpiece type="solid">
   <surface><resource type="datafile">
     <resource-datafile>entrances</resource-datafile>
-  <resource-ident>Entrances/entrances</resource-ident>
+  <resource-ident>Entrances/entrance</resource-ident>
   </resource></surface>
   <position>
     <x-pos>607</x-pos>
