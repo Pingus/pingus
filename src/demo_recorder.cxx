@@ -1,4 +1,4 @@
-//  $Id: demo_recorder.cxx,v 1.15 2003/03/30 20:43:52 grumbel Exp $
+//  $Id: demo_recorder.cxx,v 1.16 2003/04/04 11:23:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,15 +29,16 @@ DemoRecorder::DemoRecorder (Server* server)
   : record_demo (true)
 {
   std::string levelname = server->get_plf()->get_resname();
-  
+  std::string flat_levelname = levelname;
+
   // 'Flatten' the levelname so that we don't need directories
-  for (std::string::iterator i = levelname.begin(); i != levelname.end(); ++i)
+  for (std::string::iterator i = flat_levelname.begin(); i != flat_levelname.end(); ++i)
     if (*i == '/')
       *i = '_';
 
   if (!levelname.empty())
     {
-      std::string filename = System::get_statdir() + "demos/" + levelname + "-" + get_date() + ".xml";
+      std::string filename = System::get_statdir() + "demos/" + flat_levelname + "-" + get_date() + ".xml";
       out.open(filename.c_str());
 
       if (!out)

@@ -1,4 +1,4 @@
-//  $Id: story_screen.cxx,v 1.7 2003/03/28 13:06:55 grumbel Exp $
+//  $Id: story_screen.cxx,v 1.8 2003/04/04 11:23:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -110,10 +110,7 @@ StoryScreenComponent::StoryScreenComponent ()
   time_passed  = 0;
 
   pages.push_back(StoryPage(ResDescriptor("Story/story0", "story"), 
-                            "Page 1Dies ist ein Tet blabla, sehr lang blabla und mit umbruechen blabal\n"
-                            "Zeile zwei mehr text blabla umbrauchuauaneh usnthu snaotehu nostehusano\n"
-                            "authh nth pte thuat nth auntheun tahneuth oentuh oentuhontu hoantuhetuh\n"
-                            "aoeuth htnh30  003 0238p[ 8eu ntuhnt hnthneat'hur  rcg rg th th tnh "));
+                            "‰ƒ¡”ˆ÷aoeuth htnh30  003 0238p[ 8eu ntuhnt hnthneat'hur  rcg rg th th tnh "));
 
   pages.push_back(StoryPage(ResDescriptor("Story/story1", "story"), 
                             "Page 2Dies ist ein Tet blabla, sehr lang blabla und mit umbruechen blabal\n"
@@ -137,16 +134,17 @@ StoryScreenComponent::StoryScreenComponent ()
 
   current_page = pages.back();
   page_surface = PingusResource::load_surface(current_page.image);
-  background   = PingusResource::load_surface("Story/background", "story");
+  background   = PingusResource::load_surface("menu/startscreenbg", "core");
 }
 
 void
 StoryScreenComponent::draw (GraphicContext& gc)
 {
   gc.draw(background, 0, 0);
-  gc.print_center(Fonts::pingus_large, 400, 20, "Chapter 1 - Enter the unknown...");
-  gc.draw(page_surface,  gc.get_width()/2 - page_surface.get_width()/2, 90);
-  gc.print_left(Fonts::pingus_small, 100, 315, display_text);
+  gc.print_center(Fonts::chalk_large, 400, 100, "Chapter 1 - Training Day - ,bD(B");
+  gc.draw(page_surface,  gc.get_width()/2 - page_surface.get_width()/2,
+          160);
+  gc.print_left(Fonts::chalk_normal, 120, 335, display_text);
 }
 
 void
@@ -213,5 +211,9 @@ StoryScreenComponent::next_text()
         }
     }
 }
+
+// Local Variables: ***
+// coding:iso-latin-1
+// End: ***
 
 /* EOF */

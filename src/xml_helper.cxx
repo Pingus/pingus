@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.27 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: xml_helper.cxx,v 1.28 2003/04/04 11:23:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -119,11 +119,11 @@ XMLhelper::get_prop (xmlNodePtr cur, const char* name, bool& value)
 bool
 XMLhelper::node_list_get_string (xmlDocPtr doc, xmlNodePtr cur, int inLine, std::string& value)
 {
-  char * retval = reinterpret_cast<char*>(xmlNodeListGetString(doc, cur, inLine));
+  xmlChar* retval = xmlNodeListGetString(doc, cur, inLine);
   if (!retval)
     return false;
     
-  value = retval;
+  value = xmlChar2string(retval);
   xmlFree(retval);
   return true;
 }
@@ -455,6 +455,31 @@ XMLhelper::get_line(xmlNodePtr cur)
 #endif
 }
 
+std::string
+XMLhelper::xmlChar2string(const xmlChar* in)
+{
+  int in_len = xmlUTF8Strlen(in) + 1;
+  int out_len = in_len;
+  unsigned char* out = new unsigned char[out_len];
+  int ret = UTF8Toisolat1(out, &out_len, in,  &in_len);
+    
+  if (ret != 0)
+    {
+      std::cout << "Error: XMLhelper: Encoding failed: ret: " << ret 
+                << " in: " << in_len
+                << " out: " << out_len
+                << " str: " << reinterpret_cast<const char*>(in)
+                << std::endl;
+      delete[] out;
+      return reinterpret_cast<const char*>(in);
+    }
+  else
+    {
+      out[out_len-1] = '\0';
+      std::string ret_str = reinterpret_cast<char*>(out);
+      delete[] out;
+      return ret_str;
+    }
+}
+
 /* EOF */
-
-

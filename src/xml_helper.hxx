@@ -1,4 +1,4 @@
-//  $Id: xml_helper.hxx,v 1.19 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: xml_helper.hxx,v 1.20 2003/04/04 11:23:27 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,10 +63,13 @@ class XMLhelper
 public:
   static std::string encode_entities (const std::string& arg_str);
 
+  /** Convert a xmlChar into latin-1 and return it */
+  static std::string xmlChar2string(const xmlChar* str);
+
   /** @return if \a cur is a blank-node, goto the next, else return \a
       cur */
   static xmlNodePtr skip_blank (xmlNodePtr cur);
-  
+
   /** Compare a xmlChar* string with a char* one 
       @return true if both strings are equal */
   static bool equal_str (const xmlChar* comp, const char* orig);
