@@ -1,4 +1,4 @@
-//  $Id: Sprite.hh,v 1.11 2001/07/24 17:01:25 grumbel Exp $
+//  $Id: Sprite.hh,v 1.12 2001/08/05 23:50:14 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -120,6 +120,10 @@ public:
 
   /// @return true when the animation is played/finished
   bool finished ();
+
+  /** Once an animation is finished it can be reseted to its initial
+      position */
+  void reset ();
 
   /// @return the surface which is used internally
   CL_Surface get_surface ();

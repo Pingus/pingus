@@ -1,4 +1,4 @@
-//  $Id: Drown.cc,v 1.9 2001/08/05 21:20:53 grumbel Exp $
+//  $Id: Drown.cc,v 1.10 2001/08/05 23:50:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,31 +22,40 @@
 #include "Drown.hh"
 
 ///
-Drown::Drown()
-{
-}
-
-///
 void 
 Drown::init()
 {
-  sprite = Sprite ("Pingus/drownfall0", "pingus");
+  if (pingu->environment == ENV_AIR)
+    sprite = Sprite ("Pingus/drownfall0", "pingus", 30.0f,
+		     Sprite::NONE, Sprite::ONCE);
+  else
+    sprite = Sprite ("Pingus/drownwalk0", "pingus", 30.0f,
+		     Sprite::NONE, Sprite::ONCE);
+
+  sprite.set_align_center_bottom ();
 }
 
 void 
 Drown::draw_offset(int x, int y, float s)
 {
-  sprite.put_screen (x, y);
+  // FIXME: Direction handling is ugly
+  if (pingu->direction.is_left ())
+    sprite.set_direction (Sprite::LEFT);
+  else
+    sprite.set_direction (Sprite::RIGHT);
+
+  sprite.put_screen (pingu->pos + CL_Vector(x, y));
 }
 
 ///
 void 
 Drown::update(float delta)
 {
-  //if (counter >= (int)(surface.get_num_frames()/2) - 1)
-  //{
-  pingu->set_status(PS_DEAD);
-  //}
+  sprite.update (delta);
+  if (sprite.finished ())
+    {
+      pingu->set_status(PS_DEAD);
+    }
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: bridger.hh,v 1.13 2001/08/02 21:51:03 grumbel Exp $
+//  $Id: bridger.hh,v 1.14 2001/08/05 23:50:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,9 @@
 class Bridger : public PinguAction
 {
 private:
-  Sprite sprite;
+  Sprite walk_sprite;
+  Sprite build_sprite;
+
   GameCounter counter;
 
   static bool static_surfaces_loaded;
@@ -38,7 +40,9 @@ private:
   int bricks;
   int step;
   int do_steps;
+  bool block_build;
 
+  enum Mode { B_WALKING, B_BUILDING } mode;
 public:
   Bridger();
 
@@ -46,6 +50,8 @@ public:
   std::string get_name () const { return "Bridger"; }
   PinguEnvironment get_environment() const { return ENV_LAND; }
   void   update(float delta);
+  void   update_build (float delta);
+  void   update_walk (float delta);
   void   draw_offset(int, int, float s);
   bool   way_is_free();
   void   place_a_brick();

@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.61 2001/08/05 21:20:52 grumbel Exp $
+//  $Id: Pingu.cc,v 1.62 2001/08/05 23:50:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -175,12 +175,12 @@ Pingu::set_action(shared_ptr<PinguAction> act)
 	}
       else 
 	{ // Use the activation time, given by t
-	  if (sec_action.get() && sec_action->get_name() == act->get_name())
+	  if (countdown_action.get() && countdown_action->get_name() == act->get_name())
 	    {
 	      return false;
 	    }
 	  action_time = act->activation_time();
-	  sec_action = act;
+	  countdown_action = act;
 	  //PingusSound::play_wav("ohno");
 	}
       return true;
@@ -248,6 +248,7 @@ Pingu::dist (int x, int y)
 void
 Pingu::update_persistent(float delta)
 {
+  // 
   if (environment == ENV_AIR && action.get() == 0 && rel_getpixel(0, -1) == ColMap::NOTHING) 
     {
       for (unsigned int i=0; i < persist.size(); ++i) 
@@ -288,9 +289,9 @@ Pingu::update(float delta)
   if (action_time > -1) 
     --action_time;
 
-  if (action_time == 0 && sec_action.get()) 
+  if (action_time == 0 && countdown_action.get()) 
     {
-      action = sec_action;
+      action = countdown_action;
       action->set_pingu(this);
     }
   

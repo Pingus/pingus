@@ -1,4 +1,4 @@
-//  $Id: bridger.cc,v 1.41 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: bridger.cc,v 1.42 2001/08/05 23:50:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,6 +38,10 @@ Bridger::Bridger()
 void
 Bridger::init(void)
 {
+  bricks = 15;
+  mode = B_BUILDING;
+  block_build = false;
+
   if (!static_surfaces_loaded)
     {
       static_surface = PingusResource::load_surface ("Pingus/bridger0", "pingus");
@@ -45,65 +49,104 @@ Bridger::init(void)
       brick_r = PingusResource::load_surface ("Other/brick_right", "pingus");
       static_surfaces_loaded = true;
     }
-  sprite = Sprite (PingusResource::load_surface ("Pingus/bridger" + to_string(pingu->get_owner ()),
-						 "pingus"));
-  sprite.set_align_center_bottom ();
-
-  bricks = 15;
-
-  step = 0;
-  do_steps = 0;
+  build_sprite = Sprite ("Pingus/bridger_build" + to_string(pingu->get_owner ()),
+			 "pingus", 15.0f, Sprite::NONE, Sprite::ONCE);
+  walk_sprite = Sprite ("Pingus/bridger_walk" + to_string(pingu->get_owner ()),
+			"pingus", 15.0f, Sprite::NONE, Sprite::ONCE);
+  build_sprite.set_align_center_bottom ();
+  walk_sprite.set_align_center_bottom ();
 }
 
 void
 Bridger::draw_offset(int x, int y, float s)
 {
-  if (pingu->direction.is_left ())
-    sprite.set_direction (Sprite::LEFT);
-  else
-    sprite.set_direction (Sprite::RIGHT);
-
-  sprite.put_screen(pingu->get_x () + x + (2*pingu->direction),
-		    pingu->get_y () + y + 4);
+  switch (mode)
+    {
+    case B_BUILDING:
+      if (pingu->direction.is_left ())
+	build_sprite.set_direction (Sprite::LEFT);
+      else
+	build_sprite.set_direction (Sprite::RIGHT);
+      
+      build_sprite.put_screen(pingu->get_x () + x - (6*pingu->direction),
+			      pingu->get_y () + y + 4);
+      break;
+      
+    case B_WALKING:
+      if (pingu->direction.is_left ())
+	walk_sprite.set_direction (Sprite::LEFT);
+      else
+	walk_sprite.set_direction (Sprite::RIGHT);
+      
+      walk_sprite.put_screen(pingu->get_x () + x - (6*pingu->direction),
+			      pingu->get_y () + y + 5);
+      break;
+    }
 }
 
 void
 Bridger::update(float delta)
 {
-  sprite.update (delta);
-  
-  // Increment the animation only every first and second loop, not at the third
-  if (step > 0) {
-    ++do_steps;
-    step = 0;
-  }
-  ++step;
-
-  if (do_steps > 14)
-    do_steps = 0;
-  
-  if (do_steps == 8)
+  switch (mode)
     {
+    case B_BUILDING:
+      update_build (delta);
+      break;
+
+    case B_WALKING:
+      update_walk (delta);
+      break;
+    }
+}
+
+void
+Bridger::update_walk (float delta)
+{
+  if (walk_sprite.finished ())
+    {
+      mode = B_BUILDING;
+      block_build = false;
+      walk_sprite.reset ();
+      walk_one_step_up();
+    }
+  else
+    {
+      walk_sprite.update (delta);
+    }
+}
+
+void
+Bridger::update_build (float delta)
+{
+  build_sprite.update (delta);
+  
+  if (build_sprite.get_frame () >= 7 && !block_build)
+    {
+      block_build = true;
+
       if (bricks > 0)
 	{
 	  if (way_is_free())
 	    {
 	      place_a_brick();
-	      walk_one_step_up();
 	    }
 	  else // We reached a wall...
 	    {
 	      pingu->direction.change();
 	      is_finished = true;
 	    }
-	}
-      else
+      	}
+      else // Out of bricks
 	{
 	  pingu->set_action(pingu->get_world()->get_action_holder()->get_uaction("waiter"));
-	}
+	}     
     }
 
-  //std::cout << "bricks: " << bricks << std::endl;
+  if (build_sprite.finished ())
+    {
+      mode = B_WALKING;
+      build_sprite.reset ();
+    }
 }
 
 bool

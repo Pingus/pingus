@@ -1,4 +1,4 @@
-//  $Id: Pingu.hh,v 1.34 2001/08/05 21:20:53 grumbel Exp $
+//  $Id: Pingu.hh,v 1.35 2001/08/05 23:50:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ public:
 
   /** A secondary action with will turn active after a given amount of time
       The only example is currently the bomber. */
-  boost::shared_ptr<PinguAction> sec_action;
+  boost::shared_ptr<PinguAction> countdown_action;
 
   /** A list of action with are activated on-demand, so when the pingu
       is in the air a floater will get activated, if he needs to climb

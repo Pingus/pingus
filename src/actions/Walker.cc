@@ -1,4 +1,4 @@
-//  $Id: Walker.cc,v 1.2 2001/08/05 21:20:53 grumbel Exp $
+//  $Id: Walker.cc,v 1.3 2001/08/05 23:50:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,8 +92,6 @@ Walker::update(float delta)
   if (rel_getpixel(0,-1) & ColMap::WATER)
     {
       pingu->set_paction(pingu->get_world ()->get_action_holder()->get_uaction("drown"));
-      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
-	std::cout << "Pingu: Gluck..." << std::endl;
       return;
     }
   else if (rel_getpixel(0,-1) == ColMap::NOTHING

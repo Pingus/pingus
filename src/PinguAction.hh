@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.22 2001/08/05 21:20:53 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.23 2001/08/05 23:50:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,6 @@ class ActionHolder;
 
 enum ActionType
 {
-  ///
   ONCE = 1<<1,
   WALL = 1<<2,
   FALL = 1<<3
