@@ -1,4 +1,4 @@
-//  $Id: Waiter.cc,v 1.2 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: Waiter.cc,v 1.3 2000/06/26 15:19:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,13 +34,13 @@ Waiter::let_move()
   
   --countdown;
 
-  std::cout << "Waiter:count: " << countdown << std::endl;
+  //  std::cout << "Waiter:count: " << countdown << std::endl;
 }
 
 void
 Waiter::init()
 {
-  action_name = "Bridger - Waiter";
+  action_name = "Bridger";
   surface = CL_Surface::load("Pingus/blocker", local_res());
   countdown = 30;
 }

@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.12 2000/06/25 20:22:18 grumbel Exp $
+//  $Id: basher.cc,v 1.13 2000/06/26 15:19:17 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -82,7 +82,10 @@ Basher::let_move()
 
       if (have_something_to_dig())
 	{
-	  bash();
+	  // We only bash every second step, cause the Pingus would
+	  // get trapped otherwise in the bashing area.
+	  if (basher_c % 2 == 0)
+	    bash();
 	}
       else
 	{
