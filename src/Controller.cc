@@ -1,4 +1,4 @@
-//  $Id: Controller.cc,v 1.6 2001/04/15 12:28:14 grumbel Exp $
+//  $Id: Controller.cc,v 1.7 2001/04/15 18:34:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "PingusError.hh"
 #include "Controller.hh"
 
 ControllerButton::ControllerButton (boost::dummy_ptr<Controller> arg_controller)
@@ -51,9 +52,11 @@ InputDeviceButton::InputDeviceButton (Controller* arg_controller, CL_InputButton
   : ControllerButton (arg_controller),
     button (arg_button)
 {
-  assert (button);
+  if (!button) {
+    throw PingusError ("InputDeviceButton: Button not found.");
+  } 
 }
-  
+
 bool 
 InputDeviceButton::is_pressed ()
 {

@@ -1,4 +1,4 @@
-//  $Id: GamepadController.cc,v 1.8 2001/04/15 17:01:51 grumbel Exp $
+//  $Id: GamepadController.cc,v 1.9 2001/04/15 18:34:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,15 +38,19 @@ GamepadController::GamepadController (CL_InputDevice* arg_device, int arg_owner_
   
   set_range (CL_Rect(0, 0, CL_Display::get_width () - 1, CL_Display::get_height () - 1));
 
-  left   = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (4)));
-  middle = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (2)));
-  right  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (0)));
-  scroll_left  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (6)));
-  scroll_right  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (7)));
-  next_action  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (3)));
-  previous_action  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (5)));
-  abort  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (8)));
-  pause  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (9)));
+  try {
+    left   = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (4)));
+    middle = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (2)));
+    right  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (0)));
+    scroll_left  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (6)));
+    scroll_right  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (7)));
+    next_action  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (3)));
+    previous_action  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (5)));
+    abort  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (8)));
+    pause  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (9)));
+  } catch (PingusError e) {
+    std::cout << "PingusError: " << e.get_message () << std::endl;
+  }
 }
 
 int

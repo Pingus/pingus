@@ -1,4 +1,4 @@
-//  $Id: Sprite.hh,v 1.8 2001/04/12 19:47:09 grumbel Exp $
+//  $Id: Sprite.hh,v 1.9 2001/04/15 18:34:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,6 +43,10 @@ private:
   int max_frames ();
   
 public:
+  /// Creates an empty sprite, drawing and updating does nothing
+  Sprite ();
+
+  /// Copy a sprite
   Sprite (const Sprite& sprite);
   
   Sprite (std::string arg_sur_name,

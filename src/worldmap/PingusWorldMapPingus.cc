@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapPingus.cc,v 1.11 2001/04/06 15:04:46 grumbel Exp $
+//  $Id: PingusWorldMapPingus.cc,v 1.12 2001/04/15 18:34:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,7 @@
 #include "PingusWorldMapPingus.hh"
 
 PingusWorldMapPingus::PingusWorldMapPingus ()
-  : sprite ("Pingus/walker", "pingus", 20.0f, Sprite::RIGHT)
+  : sprite ("Pingus/walker0", "pingus", 20.0f, Sprite::RIGHT)
 {
   sprite.set_align (-sprite.get_width()/2,  4 - sprite.get_height());
   is_left = false;

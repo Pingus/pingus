@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.37 2001/04/15 12:34:33 grumbel Exp $
+#  $Id: configure.in,v 1.38 2001/04/15 18:34:43 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -172,7 +172,7 @@ AC_CHECK_LIB( clanCore,   main,, [
 	])
 AC_CHECK_LIB( clanApp,   main)
 AC_CHECK_LIB( clanDisplay,   main)
-AC_CHECK_LIB( clanSound,   main)
+dnl AC_CHECK_LIB( clanSound,   main)
 
 dnl AC_CHECK_LIB( clanGUI,   main,, [
 dnl 	echo "ClanLib is installed, but clanGUI was not found. You probably"
@@ -313,7 +313,8 @@ AC_OUTPUT( Makefile
            data/demos/Makefile
            data/data/Makefile
            doc/Makefile
-           intl/Makefile po/Makefile.in
+           intl/Makefile
+           po/Makefile.in
           )
 
 # ----------------------------------------

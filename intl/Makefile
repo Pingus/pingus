@@ -41,7 +41,7 @@ INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
 MKINSTALLDIRS = ./mkinstalldirs
 
-l = 
+l = @l@
 
 AR = ar
 CC = gcc
@@ -206,12 +206,12 @@ Makefile: Makefile.in ../config.status
 # The dependency for intlh.inst is different in gettext and all other
 # packages.  Because we cannot you GNU make features we have to solve
 # the problem while rewriting Makefile.in.
-#YES#intlh.inst: intlh.inst.in ../config.status
-#YES#	cd .. \
-#YES#	&& CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= \
-#YES#	  $(SHELL) ./config.status
-.PHONY: intlh.inst
-intlh.inst:
+@GT_YES@intlh.inst: intlh.inst.in ../config.status
+@GT_YES@	cd .. \
+@GT_YES@	&& CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= \
+@GT_YES@	  $(SHELL) ./config.status
+@GT_NO@.PHONY: intlh.inst
+@GT_NO@intlh.inst:
 
 # Tell versions [3.59,3.63) of GNU make not to export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

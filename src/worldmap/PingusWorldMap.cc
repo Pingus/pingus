@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.22 2001/04/10 10:45:14 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.23 2001/04/15 18:34:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -247,7 +247,7 @@ PingusWorldMap::start_level (PingusWorldMapNode* node)
     }
   else
     {
-      /* Fade out, fixme, doesn't work at the moment */
+      /* Fade out, fixme, doesn't work at the moment 
       CL_SurfaceProvider* provider = new TargetProvider (target);
       CL_Surface* sur = CL_Surface::create (provider);
 
@@ -262,7 +262,7 @@ PingusWorldMap::start_level (PingusWorldMapNode* node)
 		      
       delete sur;
       delete provider;
-
+      */
       PingusGameSession game (node->levelname);
       
       // Launch the game and wait until it is finished

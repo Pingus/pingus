@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.36 2001/04/12 09:02:24 grumbel Exp $
+//  $Id: PLFObj.cc,v 1.37 2001/04/15 18:34:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -111,7 +111,8 @@ EntranceObj::EntranceObj(EntranceData data)
   type = data.type;
   direction = data.direction;
   release_rate = data.release_rate;
-  
+  owner_id = data.owner_id;
+
   if (type == "generic")
     {
       surf = PingusResource::load_surface("Entrances/generic", "entrances");
@@ -233,8 +234,8 @@ EntranceObj::status_line()
       break;
     }
 
-  sprintf(str, "Entrance: %s Rate: %d Direction: %s",
-	  type.c_str(), release_rate, dir_str.c_str());
+  sprintf(str, "Entrance: %s Rate: %d Direction: %s Owner: %d",
+	  type.c_str(), release_rate, dir_str.c_str(), owner_id);
 
   return std::string(str);
 }
@@ -246,6 +247,7 @@ ExitObj::ExitObj(ExitData data)
   surf = PingusResource::load_surface(desc);
   width = surf.get_width ();
   height = surf.get_height ();
+  owner_id = data.owner_id;
 }
 
 ExitObj::~ExitObj()
@@ -276,7 +278,8 @@ ExitObj::save_xml(std::ofstream* xml)
   (*xml) << "<exit>\n";
   XMLhelper::write_position_xml(xml, *position);
   XMLhelper::write_desc_xml(xml, desc);
-  (*xml) << "</exit>\n"
+  (*xml) << "  <owner-id>" << owner_id << "</owner-id>"
+	 << "</exit>\n"
 	 << std::endl;
 }
 
@@ -285,9 +288,9 @@ ExitObj::status_line()
 {
   char str[256];
 
-  sprintf(str, "Exit - %s - X:%3d Y:%3d Z:%3d",
+  sprintf(str, "Exit - %s - X:%3d Y:%3d Z:%3d OwnerId: %d",
 	  desc.res_name.c_str(),
-	  position->x_pos, position->y_pos, position->z_pos);
+	  position->x_pos, position->y_pos, position->z_pos, owner_id);
 
   return std::string(str);
 }

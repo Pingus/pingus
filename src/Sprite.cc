@@ -1,4 +1,4 @@
-//  $Id: Sprite.cc,v 1.11 2001/04/13 22:17:46 grumbel Exp $
+//  $Id: Sprite.cc,v 1.12 2001/04/15 18:34:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,10 @@ int round(float f)
     return int(f + 0.5f);
   else
     return int(f - 0.5f);
+}
+
+Sprite::Sprite ()
+{
 }
 
 Sprite::Sprite (const Sprite& sprite) :
@@ -86,6 +90,8 @@ Sprite::Sprite (const ResDescriptor& desc,
 void 
 Sprite::put_screen (int x, int y)
 {
+  if (!sur)
+    return;
   // FIXME: HACK
   update (0.0f);
   //std::cout << "Frame: " << round(frame) << " " << frame << " " << max_frames () << std::endl;
@@ -182,6 +188,9 @@ Sprite::max_frames ()
 void
 Sprite::update (float delta)
 {
+  if (!sur)
+    return;
+
   // The sprite contains no frames, so we have nothing to update
   if (max_frames () <= 1)
     return;
