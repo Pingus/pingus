@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.24 2003/04/15 15:24:59 grumbel Exp $
+//  $Id: credits.cxx,v 1.25 2003/04/16 10:08:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,12 +92,13 @@ Credits::Credits()
   credits.push_back("n");
 
   credits.push_back(_("-Translation"));
-  credits.push_back("_David Philippi");
-  credits.push_back("_Ingo Ruhnke");
-  credits.push_back("_Giray Devlet");
-  credits.push_back("_Tomas Blaha");
-  credits.push_back("_Milan Babuskov");
   credits.push_back("_Cagri Coltekin");
+  credits.push_back("_David Philippi");
+  credits.push_back("_Giray Devlet");
+  credits.push_back("_Ingo Ruhnke");
+  credits.push_back("_Milan Babuskov");
+  credits.push_back("_Philippe Saint-Pierre");
+  credits.push_back("_Tomas Blaha");
   credits.push_back("n");
 
   credits.push_back(_("-Special"));
