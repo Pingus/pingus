@@ -37,7 +37,6 @@ namespace WorldObjsData {
 class GroundpieceData : public WorldObjData
 {
 public:
-  CL_Sprite surface;
   ResDescriptor desc;
   Vector pos;
 

@@ -69,7 +69,6 @@ void
 Blitter::put_surface_8bit(CL_PixelBuffer& provider, const CL_PixelBuffer& sprovider_,
 			  int x, int y)
 {
-#if CLANLIB_0_6
   CL_PixelBuffer sprovider = sprovider_;
 
   int start_i;
@@ -89,18 +88,11 @@ Blitter::put_surface_8bit(CL_PixelBuffer& provider, const CL_PixelBuffer& sprovi
 
   //std::cout << "Colorkey: " << sprovider.get_src_colorkey() << std::endl;
 
-  CL_Palette cl_palette = sprovider.get_palette();
+  CL_Palette palette = sprovider.get_palette();
 
-  if (!cl_palette)
-    {
-      char str[128];
-      snprintf(str, 128, "Couldn't find palette: %d", sprovider.get_format().get_depth());
-      PingusError::raise(str);
-    }
-
-  twidth = provider.get_width();
+  twidth  = provider.get_width();
   theight = provider.get_height();
-  tpitch = provider.get_pitch();
+  tpitch  = provider.get_pitch();
 
   swidth  = sprovider.get_width();
   sheight = sprovider.get_height();
@@ -116,9 +108,9 @@ Blitter::put_surface_8bit(CL_PixelBuffer& provider, const CL_PixelBuffer& sprovi
   else
     x_offset = 0;
 
-  if (sprovider.uses_src_colorkey ())
+  if (sprovider.get_format().has_colorkey ())
     {
-      unsigned int colorkey = sprovider.get_src_colorkey();
+      unsigned int colorkey = sprovider.get_format().get_colorkey();
 
       for(int line=y_offset;
 	  line < sheight && (line + y) < theight;
@@ -164,7 +156,6 @@ Blitter::put_surface_8bit(CL_PixelBuffer& provider, const CL_PixelBuffer& sprovi
 
   sprovider.unlock();
   provider.unlock();
-#endif
 }
 
 void
@@ -196,20 +187,19 @@ Blitter::put_surface_32bit(CL_PixelBuffer& canvas, const CL_PixelBuffer& provide
       for(int y = Math::max(0, -y_pos); y < sheight && (y + y_pos) < theight; ++y)
 	for(int x = Math::max(0,-x_pos); x < swidth && (x + x_pos) < twidth; ++x)
 	  {
-#if CLANLIB_0_6
-            float red, green, blue, alpha;
-            float tred, tgreen, tblue, talpha;
+            CL_Color sc = provider.get_pixel(x, y);
+            CL_Color tc = canvas.get_pixel(x + x_pos, y + y_pos);
 
-	    provider.get_pixel(x, y, &red, &green, &blue, &alpha);
-	    canvas.get_pixel(x + x_pos, y + y_pos, &tred, &tgreen, &tblue, &talpha);
-
-	    // FIXME: This doesn't give correct alpha values
+            // FIXME: This doesn't give correct alpha values
 	    canvas.draw_pixel(x + x_pos, y + y_pos,
-                              Math::mid(0.0f, 1.0f, (red   * alpha) + (tred   * (1.0f - alpha))),
-                              Math::mid(0.0f, 1.0f, (green * alpha) + (tgreen * (1.0f - alpha))),
-                              Math::mid(0.0f, 1.0f, (blue  * alpha) + (tblue  * (1.0f - alpha))),
-                              Math::mid(0.0f, 1.0f,  alpha * alpha  + (talpha * (1.0f - alpha))));
-#endif
+                              CL_Color(Math::mid(0, 255, 
+                                                 int((sc.get_red()   * sc.get_alpha()) + (tc.get_red()   * (255 - sc.get_alpha())))),
+                                       Math::mid(0, 255, 
+                                                 int((sc.get_green() * sc.get_alpha()) + (tc.get_green() * (255 - sc.get_alpha())))),
+                                       Math::mid(0, 255,
+                                                 int((sc.get_blue()  * sc.get_alpha()) + (tc.get_blue()  * (255 - sc.get_alpha())))),
+                                       Math::mid(0, 255,
+                                                 int((sc.get_alpha() * sc.get_alpha()  + (tc.get_alpha() * (255 - sc.get_alpha())))))));
 	  }
     }
   else // fast?!

@@ -121,18 +121,20 @@ PingusResource::load_sprite(const std::string& res_name,
 }
 
 CL_PixelBuffer
-PingusResource::load_surface_provider(const ResDescriptor&)
+PingusResource::load_surface_provider(const ResDescriptor& desc)
 {
-  assert(0);
-  return CL_PixelBuffer();
+  CL_Sprite sprite = load_sprite(desc);
+  assert(sprite.get_frame_count() > 0);
+  return sprite.get_frame_surface(0).get_pixeldata();
 }
 
 CL_PixelBuffer
 PingusResource::load_surface_provider(const std::string& res_name,
                                       const std::string& datafile)
 {
-  assert(0);
-  return CL_PixelBuffer(); 
+  CL_Sprite sprite = load_sprite(res_name, datafile);
+  assert(sprite.get_frame_count() > 0);
+  return sprite.get_frame_surface(0).get_pixeldata();
 }
 
 CL_Surface

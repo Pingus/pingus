@@ -70,11 +70,11 @@ Loading::draw_progress(const std::string& str, float progress)
   sur.draw((CL_Display::get_width() - sur.get_width())/2,
 		 (CL_Display::get_height() - sur.get_height())/2);
 
-#ifdef CLANLIB_0_6
-  font.print_center(CL_Display::get_width() / 2,
-		     CL_Display::get_height() - 130,
-		     str.c_str());
-#endif
+  CL_Font myfont = font;
+  myfont.set_alignment(origin_top_center);
+  myfont.draw(CL_Display::get_width() / 2,
+              CL_Display::get_height() - 130,
+              str);
 
   CL_Display::fill_rect(CL_Rect(50, CL_Display::get_height() - 100,
                                 CL_Display::get_width() - 50, CL_Display::get_height() - 50),

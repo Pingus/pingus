@@ -44,6 +44,7 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
     std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
 
   CL_Surface source_surface = PingusResource::load_surface(data->desc);
+#ifdef CLANLIB_0_6
 
   CL_PixelBuffer canvas;
 
@@ -91,7 +92,6 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
      FIXME: the bug might be in create_canvas() and not in fill_rect()
   */
 
-#ifdef CLANLIB_0_6
   if (data->color.alpha != 0.0 && data->color != Color(0, 0, 0, 1.0f))
     { // Workaround for a bug which caused all levels to have the
       // wrong background color
@@ -100,9 +100,9 @@ SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData
                         data->color.red, data->color.green, data->color.blue,
                         data->color.alpha);
     }
-#endif
-
   bg_surface = CL_Surface(&canvas, false);
+#endif
+  bg_surface = source_surface;
 
 #ifdef CLANLIB_0_6
   //bg_surface = CAImageManipulation::changeHSV(bg_surface, 150, 100, 0);

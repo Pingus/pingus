@@ -43,9 +43,6 @@ private:
   LoopType looptype;
   bool is_finished;
 
-  int x_align;
-  int y_align;
-
   int max_frames ();
 
 public:
@@ -81,12 +78,6 @@ public:
   /** Shortcut for setting the aligment to the center of x-axis and to
       the bottom of the y-axis. */
   void set_align_center_bottom ();
-
-  /** Return the x alignment */
-  int get_x_align () { return x_align; }
-
-  /** Return the y alignment */
-  int get_y_align () { return y_align; }
 
   /** Go to the next frame */
   void next_frame ();

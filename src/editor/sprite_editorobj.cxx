@@ -101,7 +101,11 @@ SpriteEditorObj::get_upper_left_corner()
 {
   assert (pos_ref);
   Vector pos(*pos_ref);
+#ifdef CLANLIB_0_6
   return pos + Vector(sprite.get_x_align (), sprite.get_y_align ());
+#else
+  return pos + Vector(0, 0);
+#endif
 }
 
 bool

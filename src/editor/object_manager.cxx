@@ -140,7 +140,9 @@ ObjectManager::load_level (const std::string& filename)
        i != temp_surfaces.end();
        i++)
     {
+#ifdef CLANLIB_0_6
       i->surface = PingusResource::load_sprite(i->desc);
+#endif
     }
 
   std::vector<WorldObjData*> temp_worldobj = plf->get_worldobjs_data();

@@ -59,7 +59,6 @@ GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
 
 GroundpieceData::GroundpieceData (const GroundpieceData& old)
   : WorldObjData(old),
-    surface(old.surface),
     desc(old.desc),
     pos(old.pos),
     gptype(old.gptype)
@@ -74,7 +73,6 @@ GroundpieceData::operator= (const GroundpieceData& old)
 
   WorldObjData::operator=(old);
 
-  surface = old.surface;
   desc    = old.desc;
   pos     = old.pos;
   gptype  = old.gptype;

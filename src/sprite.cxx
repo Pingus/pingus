@@ -42,13 +42,14 @@ Sprite::Sprite (std::string arg_sprite_name,
     frames_per_second (arg_frames_per_second),
     direction (dir),
     looptype (arg_loop_type),
-    is_finished (false),
-    x_align (0), y_align (0)
+    is_finished (false)
 {
 }
 
 void
 Sprite::draw (int x, int y)
+{
+  if (sprite)
 {
   // FIXME: HACK
   update (0.0f);
@@ -57,95 +58,103 @@ Sprite::draw (int x, int y)
     {
     case Sprite::NONE:
       sprite.set_frame(Math::round(frame));
-      sprite.draw(x + x_align, y + y_align);
+      sprite.draw(x, y);
       break;
     case Sprite::LEFT:
       sprite.set_frame(Math::round(frame));
-      sprite.draw(x + x_align, y + y_align);
+      sprite.draw(x, y);
       break;
     case Sprite::RIGHT:
       sprite.set_frame(Math::round(frame) + max_frames ());
-      sprite.draw (x + x_align, y + y_align);
+      sprite.draw (x, y);
       break;
     default:
       std::cout << "Direction: " << direction << std::endl;
       assert(0);
     }
 }
+}
 
 void
 Sprite::draw (const Vector& pos)
 {
-  draw (int(pos.x), int(pos.y));
+  if (sprite)
+    draw (int(pos.x), int(pos.y));
 }
 
 void
 Sprite::draw(GraphicContext& gc, const Vector& pos)
 {
-  if (!sprite)
-    return;
-
-  // FIXME: HACK <- hack for what?
-  update (0.0f);
-
-  int x = int(pos.x);
-  int y = int(pos.y);
-
-  switch (direction)
+  if (sprite)
     {
-    case Sprite::NONE:
-    case Sprite::LEFT:
-      gc.draw(sprite, Vector(x + x_align, y + y_align), Math::round(frame));
-      break;
+      // FIXME: HACK <- hack for what?
+      update (0.0f);
 
-    case Sprite::RIGHT:
-      gc.draw(sprite, Vector(x + x_align, y + y_align), Math::round(frame) + max_frames ());
-      break;
+      int x = int(pos.x);
+      int y = int(pos.y);
 
-    default:
-      std::cout << "Direction: " << direction << std::endl;
-      assert(0);
+      switch (direction)
+        {
+        case Sprite::NONE:
+        case Sprite::LEFT:
+          gc.draw(sprite, Vector(x, y), Math::round(frame));
+          break;
+
+        case Sprite::RIGHT:
+          gc.draw(sprite, Vector(x, y), Math::round(frame) + max_frames ());
+          break;
+
+        default:
+          std::cout << "Direction: " << direction << std::endl;
+          assert(0);
+        }
     }
 }
 
 void
 Sprite::set_align (int arg_x, int arg_y)
 {
-  x_align = arg_x;
-  y_align = arg_y;
+  if (sprite)
+    sprite.set_alignment(origin_top_left, arg_x, arg_y);
 }
 
 void
 Sprite::set_align_center ()
 {
-  x_align = -int(sprite.get_width ())/2;
-  y_align = -int(sprite.get_height ())/2;
+  if (sprite)
+    sprite.set_alignment(origin_center);
 }
 
 void
 Sprite::set_align_center_bottom ()
 {
-  x_align = -int(sprite.get_width ())/2;
-  y_align = -int(sprite.get_height ());
+  if (sprite)
+    sprite.set_alignment(origin_bottom_center);
 }
 
 
 void
 Sprite::next_frame ()
 {
-  ++frame;
+  if (sprite)
+    {
+      ++frame;
 
-  if (Math::round(frame) >= int(sprite.get_frame_count()))
-    frame = 0;
+      if (Math::round(frame) >= int(sprite.get_frame_count()))
+        frame = 0;
+    }
 }
 
 void
 Sprite::previous_frame ()
 {
-  --frame;
+  if (sprite)
+    {
+      --frame;
 
-  if (Math::round(frame) < 0)
-    frame = sprite.get_frame_count() - 1;
+      if (Math::round(frame) < 0)
+        frame = sprite.get_frame_count() - 1;
+    }
 }
 
 
@@ -164,15 +173,22 @@ Sprite::get_progress ()
 int
 Sprite::max_frames ()
 {
-  switch (direction)
+  if (sprite)
     {
-    case NONE:
-      return sprite.get_frame_count();
-    case LEFT:
-    case RIGHT:
-      return sprite.get_frame_count()/2;
-    default:
-      assert (0);
+      switch (direction)
+        {
+        case NONE:
+          return sprite.get_frame_count();
+        case LEFT:
+        case RIGHT:
+          return sprite.get_frame_count()/2;
+        default:
+          assert (0);
+          return 0;
+        }
+    }
+  else
+    {
       return 0;
     }
 }
