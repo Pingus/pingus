@@ -1,4 +1,4 @@
-//  $Id: surface_button.cxx,v 1.12 2002/09/06 17:33:29 torangan Exp $
+//  $Id: surface_button.cxx,v 1.13 2002/09/07 19:29:03 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,8 @@
 #include <ClanLib/Display/Input/mouse.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
+#include "globals.hxx"
+#include "debug.hxx"
 #include "sound.hxx"
 #include "pingus_resource.hxx"
 #include "pingus_menu_manager.hxx"
@@ -226,7 +228,8 @@ void
 OptionsButton::on_click()
 {
   //option_menu.display();
-  menu->get_manager ()->set_menu (&menu->get_manager ()->optionmenu);
+  //menu->get_manager ()->set_menu (&menu->get_manager ()->optionmenu);
+  perr (PINGUS_DEBUG_GUI) << "Option menu currently disabled" << std::endl;
 }
 
 ///////////////////////////////////////////////

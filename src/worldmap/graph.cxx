@@ -1,4 +1,4 @@
-//  $Id: graph.cxx,v 1.3 2002/08/16 15:14:00 torangan Exp $
+//  $Id: graph.cxx,v 1.4 2002/09/07 19:29:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -163,9 +163,6 @@ Graph::get_music ()
 void
 Graph::draw (const CL_Vector& offset)
 {
-  //float x_scale = CL_Display::get_width () / 800.0;
-  //float y_scale = CL_Display::get_height () / 600.0;
-
   for (iterator i = nodes.begin();
        i != nodes.end();
        ++i)

@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.8 2002/09/06 17:33:29 torangan Exp $
+//  $Id: worldmap.cxx,v 1.9 2002/09/07 19:29:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include <ClanLib/Display/Input/keyboard.h>
 #include <ClanLib/Display/Font/font.h>
 #include <ClanLib/Display/Input/mouse.h>
+#include "../fonts.hxx"
 #include "../path_manager.hxx"
 #include "../system.hxx"
 #include "../pingus_resource.hxx"
@@ -34,15 +35,12 @@
 
 using namespace Pingus::WorldMap;
 
-WorldMap::WorldMap (std::string filename) :
-  font (PingusResource::load_font ("Fonts/pingus_small", "fonts")),
-  green_dot ("worldmap/dot_green", "core"),
-  red_dot ("worldmap/dot_red", "core"),
-  dot_border ("Game/dot_border", "game"),
-  green_flag ("worldmap/flaggreen", "core"),
-  catch_input (true),
-  do_quit (false),
-  last_node (0)
+WorldMap::WorldMap (std::string filename) 
+  : green_dot ("worldmap/dot_green", "core"),
+    red_dot ("worldmap/dot_red", "core"),
+    dot_border ("Game/dot_border", "game"),
+    green_flag ("worldmap/flaggreen", "core"),
+    last_node (0)
 {
   green_flag.set_align (-24, -36);
   green_dot.set_align_center ();
@@ -52,8 +50,6 @@ WorldMap::WorldMap (std::string filename) :
   graph_data.parse_file (filename);
 
   background = PingusResource::load_surface (graph_data.get_background ());
-
-  //background = Blitter::scale_surface (background, CL_Display::get_width (), CL_Display::get_height ());
   
   pingus = new PingusWorldMapPingus;
 
@@ -132,7 +128,7 @@ WorldMap::get_offset ()
 }
 
 void
-WorldMap::init ()
+WorldMap::on_startup ()
 {
   std::cout << "PingusWorldMap::init" << std::endl;
   if (!graph_data.get_music ().empty ())
@@ -140,22 +136,8 @@ WorldMap::init ()
 }
 
 void 
-WorldMap::disable_button_events ()
-{
-  catch_input = false;
-}
-  
-void 
-WorldMap::enable_button_events ()
-{
-  catch_input = true;
-}
-
-void 
 WorldMap::on_primary_button_press (int x, int y)
 {
-  if (!catch_input) return;
-
   CL_Vector offset = get_offset ();
 
   {      
@@ -177,7 +159,6 @@ WorldMap::on_primary_button_press (int x, int y)
 
 	if (pingus_node && pingus_node->get_id () == node->get_id ())
 	  {
-	    disable_button_events ();
 	    node->on_click ();
 		    
 	    // FIXME: Ugly marking code... should be rewritten
@@ -196,9 +177,7 @@ WorldMap::on_primary_button_press (int x, int y)
 		    
 	    // Save the changes
 	    save ();
-      
-	    enable_button_events ();
-	  }
+      	  }
 	else
 	  {
 	    pingus->walk_to (node.get ());
@@ -212,7 +191,7 @@ WorldMap::on_primary_button_press (int x, int y)
   }
 
 
-  /*
+  /** 
     case CL_MOUSE_MIDDLEBUTTON:
     {
     if (maintainer_mode)
@@ -227,12 +206,6 @@ WorldMap::on_primary_button_press (int x, int y)
 }
  
 void
-WorldMap::start_level (Pingus::WorldMap::Node* /*node*/)
-{
-
-}
-
-void
 WorldMap::draw (GraphicContext& gc)
 {
   CL_Vector offset = get_offset ();
@@ -246,8 +219,9 @@ WorldMap::draw (GraphicContext& gc)
     {
       dot_border.put_screen (last_node->get_pos () + offset);
       
-      font->print_center (CL_Display::get_width ()/2, CL_Display::get_height () - 40,
-			  last_node->get_string().c_str ());
+      gc.print_center (Fonts::pingus_small, 
+		       CL_Display::get_width ()/2, CL_Display::get_height () - 40,
+		       last_node->get_string().c_str ());
 
       /*
       if (last_node->finished)
@@ -271,6 +245,7 @@ WorldMap::draw (GraphicContext& gc)
   NodePtr node
     = get_node (CL_Mouse::get_x () - (int) offset.x,
 		CL_Mouse::get_y () - (int) offset.y);
+
   // The mouse is over a node
   if (node.get ())
     {
@@ -321,7 +296,7 @@ WorldMap::set_pingus (int node_id)
 {
   for (GraphIter i = graph_data.nodes.begin ();
        i != graph_data.nodes.end ();
-       i++)
+       ++i)
     {
       if ((*i)->get_id () == node_id)
 	{
@@ -329,12 +304,6 @@ WorldMap::set_pingus (int node_id)
 	  return;
 	}
     }
-}
-
-bool
-WorldMap::do_exit () 
-{
-  return do_quit; 
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.8 2002/09/05 12:24:02 grumbel Exp $
+//  $Id: manager.cxx,v 1.9 2002/09/07 19:29:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,12 +35,11 @@ WorldMapManager::WorldMapManager ()
   is_init = false;
   exit_worldmap = false;
 
-  init ();
-
+  // FIXME: The default startup map should be configurable by some file
   worldmap = boost::shared_ptr<WorldMap::WorldMap>
     (new WorldMap::WorldMap (path_manager.complete("worldmaps/volcano.xml")));
 
-  worldmap->init ();
+  worldmap->on_startup ();
 
   // FIXME: a bit ugly because of the proteced member, but should work
   // FIXME: well enough. GUIScreen could also use multi-inheritage,
@@ -58,40 +57,6 @@ WorldMapManager::~WorldMapManager ()
 {
 }
 
-void 
-WorldMapManager::init ()
-{
-  if (!is_init)
-    {
-      //sur = PingusResource::load_surface ("volcano", "worldmaps");
-      is_init = true;
-    }
-}
-
-  /*
-
-void
-WorldMapManager::display ()
-{
-  DeltaManager delta;
-  while (!worldmap->do_exit ())
-    {
-      worldmap->draw ();
-      worldmap->update (delta.getset ());
-
-      if (new_worldmap.get ())
-	{
-	  worldmap = new_worldmap;
-	  new_worldmap = boost::shared_ptr<WorldMap::WorldMap>();
-	}
-
-      CL_System::sleep (20);
-      CL_System::keep_alive ();
-      Display::flip_display ();
-    }
-}
-  */
-
 void
 WorldMapManager::on_escape_press ()
 {
@@ -102,8 +67,16 @@ WorldMapManager::on_escape_press ()
 void
 WorldMapManager::update (float)
 {
+  // Exit the word
   if (exit_worldmap)
     ScreenManager::instance ()->pop_screen ();
+
+  // Check if new worldmap is set and if so, change it
+  if (new_worldmap.get ())
+    {
+      worldmap = new_worldmap;
+      new_worldmap = boost::shared_ptr<WorldMap::WorldMap>();
+    }
 }
 
 void
@@ -115,7 +88,6 @@ WorldMapManager::WorldMapComponent::draw (GraphicContext& gc)
 void
 WorldMapManager::WorldMapComponent::update (float delta)
 {
-  //std::cout << "update press" << std::endl;
   WorldMapManager::instance ()->worldmap->update (delta);
 }
 
@@ -129,6 +101,7 @@ WorldMapManager::WorldMapComponent::on_primary_button_press (int x, int y)
 void 
 WorldMapManager::change_map (const std::string& filename, int node)
 {
+  // Create the new worldmap and make it the current one
   new_worldmap = boost::shared_ptr<WorldMap::WorldMap>
     (new WorldMap::WorldMap (path_manager.complete("worldmaps/" + filename)));
   new_worldmap->set_pingus (node);

@@ -1,4 +1,4 @@
-//  $Id: node.hxx,v 1.4 2002/08/23 15:49:57 torangan Exp $
+//  $Id: node.hxx,v 1.5 2002/09/07 19:29:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ namespace Pingus
 {
   namespace WorldMap
   {
-    /** An object on the worldmap */
+    /** An node in the WorldmapGraph on which the Pingu walks */
     class Node 
     {
     public:
@@ -54,8 +54,10 @@ namespace Pingus
       Node operator= (const Node&);
     };
 
-    /** A wrap object which brings you to the next worldmap */
-    class TubeNode : public Node, public TubeNodeData
+    /** A wrap/beam object which brings you to the next worldmap 
+	FIXME: Multi-Inheritage is evil */
+    class TubeNode : public Node, 
+		     public TubeNodeData
     {
     public:
       std::string worldmap_name;
@@ -76,7 +78,8 @@ namespace Pingus
       TubeNode operator= (const TubeNode&);
     };
 
-    /** The entrance to a level */
+    /** The entrance to a level 
+	FIXME: Multi-Inheritage is evil */
     class LevelNode :  public Pingus::WorldMap::Node,
                        public Pingus::WorldMap::LevelNodeData
     {

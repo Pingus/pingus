@@ -1,4 +1,4 @@
-//  $Id: manager.hxx,v 1.8 2002/09/05 12:24:02 grumbel Exp $
+//  $Id: manager.hxx,v 1.9 2002/09/07 19:29:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,9 +37,12 @@ namespace Pingus
     class WorldMap;
   }
 
-  /**  */
+  /** The WorldMapManager manages the worldmaps and the translation
+      between two worldmaps */
   class WorldMapManager : public GUIScreen
   {
+    /** FIXME: Workaround class to let the worldmap play with well
+	FIXME: with the Screen, should be deleted at a later point. */
     class WorldMapComponent : public GUI::Component
     {
     public:
@@ -72,18 +75,35 @@ namespace Pingus
   public:
     ~WorldMapManager ();
   
+    /** Check if WorldMap manager still needs to run and exit if if
+	not */
     void update (float);
-    void on_escape_press ();
-    void on_startup ();
-  private:
-    /// Load all required resources if not already done
-    void init ();
 
-  public:
+    /** @defgroup WorldMapManagerBindings Controller bindings of the WorldMapManager
+	@{*/
+    /** Calculate the node that was clicked and set the pingu to walk
+	to that node. If a node is double-cliked, the pingu should go
+	faster. */
+    void on_primary_button_press (int x, int y);
+
+    /** Exit the WorldMapManager and return to the previous screen */
+    void on_escape_press ();
+    /** @}*/
+
+    /** Change the current map to the given map 
+
+	@param filename the filename of the new map, filename must be
+	@param filename relative to the worldmap directory
+	@param filename Example: "volcano.xml" */
     void change_map (const std::string& filename, int node);
+
+    /** Singleton access function */
     static WorldMapManager* instance ();
     
   private:
+    /** Startup Hook of the Screen */
+    void on_startup ();
+
     WorldMapManager (const WorldMapManager&);
     WorldMapManager operator= (const WorldMapManager&);
   };

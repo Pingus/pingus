@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.7 2002/08/23 15:49:57 torangan Exp $
+//  $Id: pingus.hxx,v 1.8 2002/09/07 19:29:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,10 +46,24 @@ public:
 
   void draw (const CL_Vector& offset);
   void update (float delta);
+
+  /** Let the pingu walk to the given node
+      @param node The node to walk to */
   void walk_to (Pingus::WorldMap::Node* node);
+
+  /** @return If the pingu is currently between two nodes return
+      true */
   bool is_walking ();
+
+  /** Set the pingu to the position of a node */
   void set_position (boost::shared_ptr<Pingus::WorldMap::Node> node);
+
+  /** @return Current position of the pingu on the screen */
   CL_Vector get_pos () { return pos; }
+
+  /** @return The node where the pingu is current on 
+
+      FIXME: What should happen if the pingu is between two nodes? */
   Pingus::WorldMap::Node* get_node ();
   
 private:

@@ -1,4 +1,4 @@
-//  $Id: worldmap.hxx,v 1.7 2002/09/05 12:24:02 grumbel Exp $
+//  $Id: worldmap.hxx,v 1.8 2002/09/07 19:29:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,12 +33,15 @@ namespace Pingus
   namespace WorldMap
   {
 
-    /** A class for loading, displaying and managing the worldmap. */
+    /** A class for loading, displaying and managing the worldmap. The
+	worldmap is basically a multi-layered image and a path
+	(bidirectional graph) where a pingu can walk on. Parts of the
+	worldmap are hidable and will only get displayed at specific
+	events (successfull level completions). */
     class WorldMap
     {
     private:
       CL_Surface background;
-      CL_Font*   font;
 
       Sprite green_dot;
       Sprite red_dot;
@@ -49,30 +52,30 @@ namespace Pingus
       Graph graph_data;
       typedef Graph::iterator GraphIter;
 
+      /** FIXME: Should this be part of the worldmap manager? */
       PingusWorldMapPingus* pingus;
-  
-      bool catch_input;
 
-      bool do_quit;
+      /** FIXME: What is this? */
       boost::shared_ptr<Pingus::WorldMap::Node> last_node;
       typedef boost::shared_ptr<Pingus::WorldMap::Node> NodePtr;
       unsigned int last_node_time;
   
+      /** This should be the state saving object, which tells which
+	  nodes are accessible and which are not. FIXME: might needs a
+	  reimplementation. */
       boost::shared_ptr<PingusWorldMapStat> stat;
     public:
-      /** Load a worldmap from a given worldmap description file */
+      /** Load a worldmap from a given worldmap description file
+	  @param filename The fully qualified filename (as fopen()
+	  @param and friends filename likes it) */
       WorldMap (std::string filename);
 
       /** Destruct the worldmap */
       ~WorldMap ();
 
-      /** Launch the level at the given node
-	  @param node The current node from which the level should be started */
-      void start_level (Pingus::WorldMap::Node* node);
-
       /** Start up the music and other things that need only to me run
 	  once on startup of a new WorldMap */
-      void init ();
+      void on_startup ();
 
       /** Save the current status to a file */
       void save ();
@@ -92,10 +95,6 @@ namespace Pingus
       /** Draw the world worldmap */
       void draw (GraphicContext& gc);
   
-      /** Returns true if the worldmap is finished and the
-	  PingusWorldMapManager can quit */
-      bool do_exit ();
-
       /** Let the woldmap do some stuff, like animating smoke, playing
 	  sounds or reacting on special events */
       void update (float delta);
@@ -106,6 +105,11 @@ namespace Pingus
       /** Callculate the offset which is used for drawing and collision
 	  detection. The offset will be used for scrolling when the
 	  background is larger than the screen. 
+
+	  FIXME: Do we need this one public? Other classes could
+	  FIXME: handle the draw offset via the GraphicContext, 
+	  FIXME: collision handling should be done in world-co's
+
 	  @return the currently used draw offset */
       CL_Vector get_offset ();
 

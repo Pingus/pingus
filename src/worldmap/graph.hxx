@@ -1,4 +1,4 @@
-//  $Id: graph.hxx,v 1.5 2002/08/23 15:49:56 torangan Exp $
+//  $Id: graph.hxx,v 1.6 2002/09/07 19:29:04 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,30 @@ namespace Pingus
 {
   namespace WorldMap
   {
+#if 0
+    /** */
+    class Graph
+    {
+    public:
+      /** Load a graph from file */
+      Graph (const std::string& filename);
+      ~Graph ();
 
+      /** Draw the graph to the given GC 
+	  @param gc The GraphicContext to draw on */
+      void draw (GraphicContext& gc);
+
+      /** @return a reference to the nodes of this graph */
+      const std::vector<>& get_nodes ();
+
+      /** @return a reference to the edges of this graph */
+      const std::vector<>& get_edges ();
+    };
+#endif 
+
+    /** The path on the WorldMap is a bidirectional graph, this class
+	managed it FIXME: needs a complete rewrite, EmptyNodes need to
+	be handled differently */
     class Graph
     {
     private:
@@ -44,20 +67,55 @@ namespace Pingus
       Graph ();
       ~Graph ();
  
+      /** FIXME: We shouldn't have a background, but instead multiple
+	  layers of images */
       ResDescriptor              get_background ();
-      //Graph<Node>* get_graph ();
-      std::string get_music ();
-  
-      void draw (const CL_Vector&);
 
-      /// Some functions to parse the data out of an xml file
-      //@{ 
+      /** @return The name of the music file which should be used for
+	  @return this level, filename is relative to "data/music/"
+	  @return Example: pingus1.it */
+      std::string get_music ();
+
+      /** Draw the edges of the graph to the screen
+	  @param offset FIXME: should be handled by GraphicContext instead */
+      void draw (const CL_Vector& offset);
+
+      /** Some functions to parse the data out of an xml file
+
+      File Syntax (FIXME: the current implementation is different):
+      
+      <pingus-worldmap>
+        <graph>
+	  <nodes>
+  	    <node id="node_1">
+              <position>...</>
+              <data><tube>...</></>
+	    </node>
+  	    <node id="node_2">
+              <position>...</>
+              <data><level>...</></>
+	    </node>
+            ...
+	  <nodes>
+          <edges>
+            <edge id="egde_1" source="1" destination="2"> 
+              <!-- The path which connect two nodes -->
+              <data>
+                <position>...</>
+                <position>...</>
+              </data>
+            </edge>
+          </edges>
+        <graph>
+      </pingus-worldmap>      
+      
+      @{ */
       void parse_file (std::string filename);
     private:
       void parse_node_list (xmlNodePtr);
       void parse_music (xmlNodePtr);
       void parse_background (xmlNodePtr);
-      //@}
+      /** @} */
       
       Graph (const Graph&);
       Graph operator= (const Graph&);
