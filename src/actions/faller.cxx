@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.33 2002/11/03 17:32:25 grumbel Exp $
+//  $Id: faller.cxx,v 1.34 2002/11/03 22:20:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -78,7 +78,6 @@ Faller::update ()
 	}
       else
 	{
-          std::cout << "Ground hit velocity: " << fabs(pingu->get_velocity().y) << "/" << deadly_velocity << std::endl;
 	  // Did we stop too fast?
 	  if (fabs(pingu->get_velocity().y) > deadly_velocity) 
 	    {

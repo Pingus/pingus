@@ -1,4 +1,4 @@
-//  $Id: vector.hxx,v 1.2 2002/10/15 19:13:32 grumbel Exp $
+//  $Id: vector.hxx,v 1.3 2002/11/03 22:20:29 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,6 +47,8 @@ public:
   Vector& operator*= (      float   mul);
   
   void normalize ();
+
+  float length() const;
   
   Vector rotate (float angle, const Vector& pos) const;
 

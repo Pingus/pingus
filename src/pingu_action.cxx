@@ -1,4 +1,4 @@
-//  $Id: pingu_action.cxx,v 1.17 2002/11/03 20:30:38 grumbel Exp $
+//  $Id: pingu_action.cxx,v 1.18 2002/11/03 22:20:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include <assert.h>
 #include <math.h>
 #include "vector.hxx"
@@ -106,6 +107,52 @@ PinguAction::move_with_forces ()
 {
   // Apply gravity
   pingu->set_velocity(pingu->get_velocity() + Vector(0.0f, 1.0f));
+
+#if 0
+  Vector pos        = pingu->get_pos();
+  Vector target_pos = pos + pingu->get_velocity();
+  Vector dir        = target_pos - pingu->get_pos();
+  Vector velocity   = pingu->get_velocity();
+
+  float length = dir.length();
+  dir.normalize();
+
+  for(float i = 0; i < length; ++i)
+    {
+      pingu->set_pos(pos + (dir * i));
+
+      // If there is something below the Pingu
+      if (rel_getpixel(0, -1) != Groundtype::GP_NOTHING)
+        {
+          // FIXME: this shouldn't be really here, but its a
+          // FIXME: quick&dirty way to kill falling pingus
+          if (velocity.y > Actions::Faller::deadly_velocity+1)
+            {
+              //std::cout << "Velocity: " << velocity << std::endl;
+              pingu->set_action(Actions::Splashed);
+              return;
+            }
+          else
+            {
+              // Make it so that the Pingu won't go down any further.
+              pingu->set_velocity(Vector(0, 0));
+              return;
+            }
+        }
+      else if (head_collision_on_walk(0, 1))
+        {
+          return;
+        }
+      else if (collision_on_walk(1, 0))
+        {
+          // Make the Pingu bounce off the wall
+          velocity.x = -velocity.x / 3.0f;
+          pingu->set_velocity(velocity);
+          pingu->direction.change();
+          return;
+        }
+    }
+#else
     
   // FIXME: What does this variable do?
   Vector resultant_force = pingu->get_velocity();
@@ -142,9 +189,9 @@ PinguAction::move_with_forces ()
 
   // Keep moving the Pingu until there is only a fraction left
   while (   force_counter.x <= -1 
-         || force_counter.x >=  1
-         || force_counter.y <= -1
-         || force_counter.y >=  1)
+            || force_counter.x >=  1
+            || force_counter.y <= -1
+            || force_counter.y >=  1)
     {
       x_numerator += x_inc;
 
@@ -225,7 +272,7 @@ PinguAction::move_with_forces ()
 	    }
 	}
     }
-
+#endif
 }
 
 /* EOF */

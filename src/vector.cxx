@@ -1,4 +1,4 @@
-//  $Id: vector.cxx,v 1.2 2002/10/15 19:13:32 grumbel Exp $
+//  $Id: vector.cxx,v 1.3 2002/11/03 22:20:29 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -104,6 +104,12 @@ Vector::normalize ()
       y /= f;
       z /= f;
     }
+}
+
+float
+Vector::length() const
+{
+  return sqrt(x * x + y * y + z * z);
 }
 
 Vector

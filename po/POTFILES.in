@@ -34,8 +34,6 @@ src/pingus_sub_menu.cxx
 src/pingus_sub_menu.hxx
 src/vector.cxx
 src/vector.hxx
-src/generic_main.cxx
-src/generic_main.hxx
 src/fonts.cxx
 src/fonts.hxx
 src/particles/explosive_particle.cxx
@@ -141,8 +139,6 @@ src/action_button.hxx
 src/timer.cxx
 src/timer.hxx
 src/graphic_context.hxx
-src/force_vector.cxx
-src/force_vector.hxx
 src/game_counter.cxx
 src/game_counter.hxx
 src/direction.cxx

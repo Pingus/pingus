@@ -46,8 +46,8 @@ haben.</description>
   </color>
   <scroll-x>0</scroll-x>
   <scroll-y>0</scroll-y>
-  <para-x>0</para-x>
-  <para-y>0</para-y>
+  <para-x>0.5</para-x>
+  <para-y>0.5</para-y>
   <stretch-x>0</stretch-x>
   <stretch-y>0</stretch-y>
 </background>
