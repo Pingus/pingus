@@ -1,4 +1,4 @@
-//  $Id: smallmap.hxx,v 1.10 2002/09/27 11:26:44 torangan Exp $
+//  $Id: smallmap.hxx,v 1.11 2002/10/06 09:01:32 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,23 +26,52 @@
 class CL_Key;
 class Client;
 
+// Small Map
+/** This is the map that appears in the corner of the screen */
 class SmallMap : public GUI::Component
 {
 private:
   Client* client;
 
+  /// Graphic surface of the exit
   CL_Surface exit_sur;
+
+  /// Graphic surface of the entrance
   CL_Surface entrance_sur;
+
+  /// Graphic surface for the generated rectanglar background of the small map
   CL_Surface sur;
 
+  /// Horizontal position of the small map
   int x_pos;
+
+  /// Vertical position of the small map
   int y_pos;
+
+  /// Width of the small map
   int width;
+
+  /// Height of the small map
   int height;
+
+  /// Max width of the small map
+  int max_width;
+
+  /// Max height of the small map
+  int max_height;
+
+  /** Indicates whether the playfield should can be scrolled around depending 
+      on the position of the cursor in the small map */
   bool scroll_mode;
+
+  /// Width of the rectangle displayed inside the small map
   int rwidth;
+
+  /// Height of the rectangle displayed inside the small map
   int rheight;
+
   bool has_focus;
+
 public:
   SmallMap();
   virtual ~SmallMap();

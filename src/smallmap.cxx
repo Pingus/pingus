@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.19 2002/10/04 16:54:04 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.20 2002/10/06 09:01:32 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,8 +34,14 @@ using namespace std;
 
 SmallMap::SmallMap()
 {
+  max_width = 175;
+  max_height = 100;
+
+  // Don't really need to initialise these now as this values are calculated
+  // later on.  However, initialise here, just in case.
   width = 175;
-  height = 75;
+  height = 100;
+
   scroll_mode = false;
 }
 
@@ -58,6 +64,23 @@ SmallMap::init()
   ColMap* colmap = client->get_server()->get_world()->get_colmap(); 
   buffer = colmap->get_data();
   //Plf* plf = world->get_plf();
+
+  // Scaling values used in order to keep the aspect ratio
+  int x_scaling = colmap->get_width() / max_width;
+  int y_scaling = colmap->get_height() / max_height;
+
+  // If at best one horizontal pixel in the smallmap represents more colmap
+  // pixels than one vertical pixel
+  if (x_scaling > y_scaling)
+    {
+    width = max_width;
+    height = colmap->get_height() / x_scaling;
+    }
+  else
+    {
+    width = colmap->get_width() / y_scaling;
+    height = max_height;
+    }
 
   canvas = new CL_Canvas(width, height);
  
@@ -133,7 +156,7 @@ SmallMap::init()
   
   sur = CL_Surface(canvas, true);
   
-  x_pos = 0;
+  x_pos = 5;
   y_pos = CL_Display::get_height() - sur.get_height();
 
   rwidth = CL_Display::get_width() * width / client->get_server()->get_world()->get_colmap()->get_width();
@@ -155,21 +178,21 @@ SmallMap::draw (GraphicContext& gc)
   int x_of = playfield->get_x_offset();
   int y_of = playfield->get_y_offset();
 
-  sur.put_screen(0, CL_Display::get_height() - sur.get_height()); 
+  sur.put_screen(x_pos, y_pos); 
 
   if (has_focus)
-    Display::draw_rect(0, CL_Display::get_height() - sur.get_height(),
-		       sur.get_width (), CL_Display::get_height() - sur.get_height() + sur.get_height () - 1, 
+    Display::draw_rect(x_pos, y_pos,
+		       x_pos + sur.get_width (), y_pos + sur.get_height () - 1, 
 		       1.0f, 1.0f, 1.0f, 1.0f);
 		       
   
-  x_of = -x_of * width / client->get_server()->get_world()->get_colmap()->get_width();
-  y_of = -y_of * height / client->get_server()->get_world()->get_colmap()->get_height();
+  x_of = x_pos - x_of * width / client->get_server()->get_world()->get_colmap()->get_width();
+  y_of = y_pos - y_of * height / client->get_server()->get_world()->get_colmap()->get_height();
 
   Display::draw_rect(x_of, 
-		     y_of + CL_Display::get_height() - sur.get_height(),
+		     y_of,
 		     x_of + Math::min(rwidth,  static_cast<int>(sur.get_width())),
-		     y_of + Math::min(rheight, static_cast<int>(sur.get_height())) + CL_Display::get_height() - sur.get_height(),
+		     y_of + Math::min(rheight, static_cast<int>(sur.get_height())),
 		     0.0, 1.0, 0.0, 1.0);
   
   // FIXME: This should use put_target(), but put_target(), does not
