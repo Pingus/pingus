@@ -1,4 +1,4 @@
-//  $Id: html_browser.cxx,v 1.1 2002/06/22 17:40:55 grumbel Exp $
+//  $Id: html_browser.cxx,v 1.2 2003/04/01 22:43:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@ void
 HTMLBrowser::launch (const std::string& url)
 {
   std::cout << "HTMLBrowser: Trying to launch: " << url << std::endl;
+
 #ifndef WIN32
   int ret = system (("galeon --existing " + url + " &").c_str ());
   std::cout << "System return value: " << ret << std::endl;

@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.43 2003/03/28 12:06:32 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.44 2003/04/01 22:43:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,9 @@
 #include "../pingus_resource.hxx"
 #include "../pingus_error.hxx"
 #include "../worldobjsdata/worldobj_group_data.hxx"
+#include "../worldobjsdata/solid_color_background_data.hxx"
 #include "../prefab.hxx"
+#include "../stat_manager.hxx"
 #include "start_pos.hxx"
 #include "level_resizer.hxx"
 #include "object_manager.hxx"
@@ -85,6 +87,18 @@ ObjectManager::new_level ()
   
   delete_all_objs();
   editor_objs.push_back(new StartPos(50, 50));
+
+  bool no_default_background = false;
+  StatManager::instance()->get_bool("no-default-background", no_default_background);
+  if (no_default_background == false)
+    {
+      // people tend to get confused by no background, so well, we set one per default
+      SolidColorBackgroundData bg_data;
+      bg_data.pos   = Vector(0,0, -100);
+      bg_data.color = Color(.3f, 0.0f, 0.0f);
+      bg_data.insert_EditorObjs(this);
+    }
+  
   editor_objs.push_back(new LevelResizer(this));
 
   // Set some default actions
