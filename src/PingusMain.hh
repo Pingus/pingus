@@ -1,4 +1,4 @@
-//  $Id: PingusMain.hh,v 1.1 2000/08/09 01:26:52 grumbel Exp $
+//  $Id: PingusMain.hh,v 1.2 2000/08/10 15:13:07 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,6 +51,11 @@ private:
   
   ///
   Intro intro;
+
+  ///
+  thSlot on_button_press_slot;
+  ///
+  thSlot on_button_release_slot;
 
 public:
   ///

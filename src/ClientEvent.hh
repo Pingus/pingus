@@ -1,4 +1,4 @@
-//  $Id: ClientEvent.hh,v 1.4 2000/08/09 14:39:37 grumbel Exp $
+//  $Id: ClientEvent.hh,v 1.5 2000/08/10 15:13:07 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,7 @@ public:
   ///
   ClientEvent();
   ///
-  ~ClientEvent();
+  virtual ~ClientEvent();
 
   ///
   virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
@@ -75,8 +75,7 @@ public:
   void disable_event_handler();
   ///
   void enable_event_handler();
-}///
-;
+};
 
 #endif
 

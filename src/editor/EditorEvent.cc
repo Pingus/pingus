@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.27 2000/08/09 14:39:37 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.28 2000/08/10 15:13:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -471,7 +471,7 @@ EditorEvent::editor_load_level()
   StringReader reader("Input filename to load the file (without .plf!)", editor->last_level);
   std::cout << "Loading level, input filename" << std::endl;
 
-  dir = System::opendir(System::get_statdir() + "levels/dist/", "*.plf");
+  dir = System::opendir(System::get_statdir() + "levels/dist/", "*");
 
   for (System::Directory::iterator i = dir.begin(); i != dir.end(); i++)
     {
