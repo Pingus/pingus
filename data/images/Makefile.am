@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.22 2000/10/14 16:29:24 grumbel Exp $
+#  $Id: Makefile.am,v 1.23 2000/10/22 20:37:53 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -450,26 +450,6 @@ groundpieces/foliage/grass/grass6.pcx \
 groundpieces/foliage/grass/grass7.pcx \
 groundpieces/foliage/grass/grass8.pcx \
 groundpieces/foliage/grass/grass9.pcx \
-gui/combobox/select.tga \
-gui/combobox/select.tga \
-gui/combobox/select.tga \
-gui/checkbox/checked.tga \
-gui/checkbox/unchecked.tga \
-gui/checkbox/disabled.tga \
-gui/scrollbar/hor_increase.tga \
-gui/scrollbar/hor_increase.tga \
-gui/scrollbar/hor_decrease.tga \
-gui/scrollbar/hor_decrease.tga \
-gui/scrollbar/ver_increase.tga \
-gui/scrollbar/ver_increase.tga \
-gui/scrollbar/ver_decrease.tga \
-gui/scrollbar/ver_decrease.tga \
-gui/menu/unchecked.tga \
-gui/menu/checked.tga \
-gui/menu/submenu.tga \
-gui/menu/new.tga \
-gui/menu/open.tga \
-gui/menu/save.tga \
 buttons/back.pcx \
 buttons/editor.tga \
 buttons/editor_p.tga \
