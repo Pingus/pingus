@@ -1,4 +1,4 @@
-//  $Id: dot.cxx,v 1.5 2003/02/18 11:28:41 grumbel Exp $
+//  $Id: dot.cxx,v 1.6 2003/04/18 12:48:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <assert.h>
 #include "../xml_file_reader.hxx"
 #include "dot.hxx"
 

@@ -1,4 +1,4 @@
-//  $Id: console.cxx,v 1.11 2002/12/29 23:29:00 torangan Exp $
+//  $Id: console.cxx,v 1.12 2003/04/18 12:51:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <config.h>
+#include <assert.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
 #include "pingus_resource.hxx"

@@ -1,4 +1,4 @@
-//  $Id: root_gui_manager.cxx,v 1.7 2002/09/14 19:06:34 torangan Exp $
+//  $Id: root_gui_manager.cxx,v 1.8 2003/04/18 12:48:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <assert.h>
 #include "root_gui_manager.hxx"
 #include "../input/controller.hxx"
 

@@ -1,4 +1,4 @@
-//  $Id: col_map.cxx,v 1.16 2003/02/19 09:50:35 grumbel Exp $
+//  $Id: col_map.cxx,v 1.17 2003/04/18 12:51:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <assert.h>
 #include <ClanLib/Display/SurfaceProviders/canvas.h>
 #include "gui/graphic_context.hxx"
 #include "globals.hxx"

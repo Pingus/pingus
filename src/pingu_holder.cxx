@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.cxx,v 1.19 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: pingu_holder.cxx,v 1.20 2003/04/18 12:48:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <assert.h>
 #include "pingu_holder.hxx"
 #include "pingu.hxx"
 #include "plf.hxx"

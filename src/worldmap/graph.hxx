@@ -1,4 +1,4 @@
-//  $Id: graph.hxx,v 1.20 2002/10/20 18:28:49 torangan Exp $
+//  $Id: graph.hxx,v 1.21 2003/04/18 12:48:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define HEADER_GRAPH_HXX
 
 #include <algorithm>
+#include <assert.h>
 #include <vector>
 
 namespace WorldMapNS {

@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.26 2003/04/16 10:04:46 grumbel Exp $
+//  $Id: blitter.cxx,v 1.27 2003/04/18 12:48:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <config.h>
 #include <stdio.h>
+#include <assert.h>
 #include "pingus_error.hxx"
 #include "color.hxx"
 #include "string_converter.hxx"

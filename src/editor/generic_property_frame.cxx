@@ -1,4 +1,4 @@
-//  $Id: generic_property_frame.cxx,v 1.4 2003/03/25 23:15:23 grumbel Exp $
+//  $Id: generic_property_frame.cxx,v 1.5 2003/04/18 12:51:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <assert.h>
 #include <ClanLib/GUI/label.h>
 #include <ClanLib/GUI/inputbox.h>
 #include <ClanLib/GUI/radiogroup.h>

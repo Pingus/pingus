@@ -1,4 +1,4 @@
-//  $Id: savegame_manager.cxx,v 1.5 2003/04/11 12:45:39 grumbel Exp $
+//  $Id: savegame_manager.cxx,v 1.6 2003/04/18 12:50:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <assert.h>
 #include "system.hxx"
 #include "xml_helper.hxx"
 #include "savegame_manager.hxx"
