@@ -1,4 +1,4 @@
-//  $Id: debug_stream.hxx,v 1.3 2002/06/21 08:11:27 grumbel Exp $
+//  $Id: debug_stream.hxx,v 1.4 2002/06/21 08:56:45 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -97,7 +97,7 @@ class NilStream : public std::ostream
         int sync     () { return 0; }
     } buffer;
 
-    NilStream () : std::ostream(&buffer) { }
+   NilStream ();
    ~NilStream () { }
 
     NilStream (const NilStream &); ///< not supported    

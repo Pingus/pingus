@@ -1,4 +1,4 @@
-//  $Id: debug_stream.cxx,v 1.2 2002/06/21 07:45:35 grumbel Exp $
+//  $Id: debug_stream.cxx,v 1.3 2002/06/21 08:56:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -153,5 +153,10 @@ DebugStream::set_prefix (const std::string & prefix)
   buffer.set_prefix(prefix);
 }
 
+
+NilStream::NilStream ()
+  : ostream(&buffer) 
+{ 
+}
 
 /* EOF */
