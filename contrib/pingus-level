@@ -1,0 +1,142 @@
+#!/usr/bin/guile \
+--debug -e main -s
+!#
+
+;; Helper Application to view level information
+(use-modules (xml expat)
+	     (xml mixp)
+	     (ice-9 format))
+
+(use-modules (oop goops))
+
+
+(define (file->string filename)
+  (let ((port (open-input-file filename))
+	(lst  '()))
+    (let loop ((line (read-line port)))
+      (cond ((not (eof-object? line))
+	     (set! lst (cons line lst))
+	     (loop (read-line port)))))
+    (close port)
+    (apply string-append (reverse lst))))
+
+(define (println . str)
+  (for-each display str) (newline))
+
+(define-class <pingus-level> ()
+  (filename #:accessor filename
+	#:init-value #f)
+
+  (author #:accessor author
+	  #:init-value #f)
+  
+  (name #:accessor name
+	#:init-value #f)
+  
+  (description #:accessor description
+	       #:init-value #f)
+
+  (comment #:accessor comment
+	   #:init-value #f)
+
+  (time #:accessor time 
+	#:init-value #f)
+
+  (difficulty #:accessor difficulty
+	      #:init-value #f)
+
+  (playable #:accessor playable
+	    #:init-value #f))
+
+(define-method (file->pingus-level (fname <string>))
+  (let* ((plf (make <pingus-level>))
+	 (document (file->string fname))
+	 (xml-tree (call-with-input-string document
+					   mixp:xml->tree)))
+    (set! (filename plf) (basename fname))
+    (plf:parse plf xml-tree)
+    plf))
+
+;; Parse a pingus level file
+(define-method (plf:parse (plf <pingus-level>) tree)
+  (cond ((not (null? tree))
+	 (let ((node (car tree)))
+	   (cond ((equal? (car node) 'element)
+		  (cond ((equal? (caadr node) "pingus-level")
+			 (plf:parse-main plf (cddr node)))
+			(else
+			 (println "Error: Unknown tag: " (caadr node))
+			 )))
+		 (else
+		  (println "Error: " (car node))))))
+	(else
+	 (plf:parse (cdr tree)))))
+
+;; Parse the <global> part of a pingus level file
+(define-method (plf:parse-global (plf <pingus-level>) tree)
+  (let ((node (car tree)))
+    ;; Insert global check here
+    (for-each (lambda (i)
+		(case (car i)
+		  ((character-data) #f)
+		  ((element)
+		   ;;(println "El: " i)
+		   (cond ((not (null? (cddr i)))
+			  (case (string->symbol (caadr i))
+			    ((playable)   
+			     (set! (playable plf)   (string->number (car (cdaddr i)))))
+			    ((difficulty) 
+			     (set! (difficulty plf) (string->number (car (cdaddr i)))))
+			    ((time)
+			     (set! (time plf)       (string->number (car (cdaddr i)))))
+			    ((author)
+			     (set! (author plf)     (car (cdaddr i))))
+			    ((comment)
+			     (set! (comment plf)    (car (cdaddr i))))
+			    (else  #f ));;     (println (caadr i))))
+			  )))
+		  (else (println "Error: global"))))
+	      (cdr tree))))
+
+(define-method (plf:parse-main (plf <pingus-level>) tree)
+  (cond ((not (null? tree))  
+	 (let ((node (car tree)))
+	   (case (car node)
+	     ((element) 
+	      
+	      (case (string->symbol (caadr node))
+		((global) (plf:parse-global plf (cdr node)))
+		((groundpiece) #f);(println "-groundpiece-: " (caadr node)))
+		((liquid)      #f);(println "-liquid-: " (caadr node)))
+		((hotspot)     #f);(println "-hotspot-: " (caadr node)))
+		((entrance)    #f);(println "-entrance-: " (caadr node)))
+		((exit)        #f);(println "-exit-: " (caadr node)))
+		(else          #f)));(println "else: " (caadr node)))))
+	     ((character-data) 
+	      #f);(println "Cdata: " (cdr node )))
+	     (else
+	      #f);(println "Unknown: " (cdr node)))
+	     ))
+	 (plf:parse-main plf (cdr tree)))))
+
+;; (type element content ...)
+
+(define (main args)
+  (for-each 
+   (lambda (fname)
+     (catch #t
+	    (lambda ()
+	      (let ((plf (file->pingus-level fname)))
+		(println "---- Filename:   " (filename plf) " ----")
+		(println "Author:     " (author plf))
+		(println "Difficulty: " (difficulty plf))
+		(println "Playable:   " (playable plf))
+		(println "Time:       " (time plf))
+		(println "Comment:    " (comment plf))
+		(println)
+		))
+	    (lambda stuff
+	      (println fname ":error: " stuff))))
+   (cdr args)))
+
+  ;; EOF ;;
