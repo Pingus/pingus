@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.18 2000/06/20 20:34:38 grumbel Exp $
+#  $Id: configure.in,v 1.19 2000/06/21 20:46:43 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -86,6 +86,8 @@ AC_CHECK_HEADER(ClanLib/core.h,, [echo "Please get ClanLib from http://www.clanl
 dnl -- Testing for this libs cause some systems need them in addition
 dnl -- to clanCore and SDL 
 
+AC_CHECK_LIB(pthread,   main,,)
+
 dnl Checking for SDL libraries, used for sound and music support
 dnl WITH_SOUND=true
 AC_ARG_WITH(sound, \
@@ -98,7 +100,6 @@ if test "x$with_sound" != "xno"; then
 	AC_CHECK_LIB(SDL_mixer,   main,,)
 fi
 
-AC_CHECK_LIB(pthread,   main,,)
 AC_CHECK_LIB(Hermes,   main,,)
 	
 AC_CHECK_LIB( clanCore,   main,, [
