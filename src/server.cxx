@@ -1,4 +1,4 @@
-//  $Id: server.cxx,v 1.7 2002/06/28 09:51:46 grumbel Exp $
+//  $Id: server.cxx,v 1.8 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@
 #include "world.hxx"
 
 using namespace std;
+using Pingus::Actions::action_from_string;
 
 PingusEvent::PingusEvent()
 {
@@ -161,13 +162,13 @@ Server::process_event(std::string event)
 
       if (pingu != pingus->end()) 
 	{
-	  PinguAction* tmp_action = action_holder.get_action(action);
+	  PinguAction* tmp_action = action_holder.get_action(action_from_string(action));
 	  
 	  if (tmp_action)
 	    {
 	      if (!(*pingu)->request_set_action(tmp_action))
 		{
-		  action_holder.push_action(action);
+		  action_holder.push_action(action_from_string(action));
 		}
 	    }
 	} 

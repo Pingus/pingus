@@ -1,4 +1,4 @@
-//  $Id: action_holder.hxx,v 1.2 2002/06/24 22:52:53 grumbel Exp $
+//  $Id: action_holder.hxx,v 1.3 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,9 @@
 
 #include <string>
 #include <map>
+#include "pingu_enums.hxx"
+
+using Pingus::Actions::ActionName;
 
 class PLF;
 class PinguAction;
@@ -40,7 +43,7 @@ private:
    *  where the integer <i>n</i> indicates how much more actions 
    *  called <i>name</i> can be created.
    */
-  std::map<std::string, int> available_actions;
+  std::map<ActionName, int> available_actions;
 
 public:
   ActionHolder (PLF* plf);
@@ -50,31 +53,25 @@ public:
    * @param name the name of the action
    * @param available the number of actions available
    */
-  void set_actions(const std::string& name, int available);
+  void set_actions(ActionName name, int available);
   
   /** Adds an action to the pool of actions, making one more action available
    * @param name the name of the action
    */
-  void push_action(const std::string& name);
-
-  /** Sets a given number of actions to the pool.
-   * @deprecated This method does the same as 'set_actions', there is no
-   *  implementation and no-one uses it anyways.
-   */
-  void set_action(const std::string& name, int available);
+  void push_action(ActionName name);
 
   /** Returns the number of actions of the specified name which are available 
    *  thru get_action() 
    * @return 0 if the name is unknown
    */
-  int  get_available(const std::string&);
+  int  get_available(ActionName);
 
   /** Returns a newly allocated or cached action by a given name. It
    *  returns it from the action pool and decreases the number of available
    *  actions if necessary. If the actions are out, it returns 0. 
    *  The deletion of the action is handled by this class.  
    */
-  PinguAction* get_action(const std::string&);
+  PinguAction* get_action(ActionName);
 };
 
 #endif

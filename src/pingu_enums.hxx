@@ -1,4 +1,4 @@
-//  $Id: pingu_enums.hxx,v 1.3 2002/06/26 19:13:13 grumbel Exp $
+//  $Id: pingu_enums.hxx,v 1.4 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,8 @@
 #ifndef HEADER_PINGUS_PINGU_ENUMS_HXX
 #define HEADER_PINGUS_PINGU_ENUMS_HXX
 
+#include <string>
+
 /** Haven't yet experimented much with pingu status, but maybe it is a
     good idea. Maybe that should be changed to a bitmask. */
 enum PinguStatus { PS_ALIVE, PS_EXITED, PS_DEAD };
@@ -30,6 +32,41 @@ enum PingusGameMode {
   DEMO_MODE 
 };
 
+namespace Pingus {
+
+  namespace Actions {
+    
+     enum ActionName { Angel,
+                       Basher,
+                       Blocker,
+                       Boarder,
+                       Bomber,
+                       Bridger,
+                       Climber,
+                       Digger,
+                       Drown,
+                       Exiter,
+                       Faller,
+                       Floater,
+                       Jumper,
+                       Laserkill,
+                       Miner,
+                       Rocketlauncher,
+                       Slider,
+                       Smashed,
+                       Splashed,
+                       Superman,
+                       Teleported,
+                       Waiter,
+                       Walker
+                  };
+     
+     std::string action_to_string(ActionName action);
+     ActionName  action_from_string(const std::string& action);
+   }
+}
+
 #endif
+
 
 /* EOF */

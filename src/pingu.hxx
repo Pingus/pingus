@@ -1,4 +1,4 @@
-//  $Id: pingu.hxx,v 1.7 2002/06/26 19:13:13 grumbel Exp $
+//  $Id: pingu.hxx,v 1.8 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,9 @@
 #include "direction.hxx"
 #include "pingu_enums.hxx"
 #include "worldobj.hxx"
+#include "pingu_enums.hxx"
+
+using Pingus::Actions::ActionName;
 
 // Forward declarations
 class CL_Font;
@@ -65,22 +68,20 @@ private:
   int owner_id;
 
 public:
-  /** A list of action with are activated on-demand, so when the pingu
-      is in the air a floater will get activated, if he needs to climb
-      a climber gets active. 
-      
-      FIXME: This will get obsolete sooner or later
-  */
-  std::vector<PinguAction*> persist;
 
-
-  // The stat of the pingu, these can be modified by PinguActions
-  
+  /// The stat of the pingu, these can be modified by PinguActions
   PinguStatus status;
+  
   /// The postion of the pingu (CL_Vector::z is always zero)
   CL_Vector pos;
   Direction direction;
   CL_Vector velocity; 
+
+
+public:
+  bool request_set_action (PinguAction*);
+  
+  void  set_action (PinguAction*);
 
 public:
   /** Creates a new Pingu at the given coordinates
@@ -110,7 +111,7 @@ public:
   int  get_y(void);
 
   /** Checks if this action allows to be overwritten with the given new action */
-  bool change_allowed (const std::string&);
+  bool change_allowed (ActionName new_action);
 
   /// Check if the pingu is still alive
   bool is_alive(void);
@@ -120,6 +121,8 @@ public:
 
   ///
   PinguStatus set_status(PinguStatus);
+
+  PinguAction* get_action();
 
   /// Returns the unique id of the pingu
   int  get_id(void); 
@@ -140,18 +143,21 @@ public:
       action, it will be hold back for later execution, same with a
       timed action, normal action will be applied if the current
       action allows that. */
-  bool request_set_action (PinguAction*);
-  bool request_set_action (const std::string& action_name);
+  bool request_set_action (ActionName action_name);
 
   /** Set an action without any checking, the action will take
       instantly control. */
-  void  set_action (PinguAction*);
-  void  set_action (const std::string& action_name);
+  void set_action (ActionName action_name);
+  
+  /// set the wall action if we have one
+  bool set_wall_action ();
+  
+  /// set the fall action if we have one
+  bool set_fall_action ();
 
-  ///
-  PinguAction* get_action();
-
-  std::vector<PinguAction*>* get_persistent_actions () { return &persist; } 
+  PinguAction* get_wall_action() { return wall_action; }
+  
+  PinguAction* get_fall_action() { return fall_action; }
 
   /** Returns the `color' of the colmap in the walking direction 
       Examples: 
@@ -172,7 +178,6 @@ public:
   void apply_force(CL_Vector);
   
   void update(float delta);
-  void update_action(float delta);
   
   /** Indicate if the pingu's speed is above the deadly velocity */
   //bool is_tumbling () const;
@@ -199,7 +204,4 @@ public:
 #endif /* PINGU_HH */
 
 /* EOF */
-
-
-
 

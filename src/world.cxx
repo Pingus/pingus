@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.12 2002/06/28 09:51:46 grumbel Exp $
+//  $Id: world.cxx,v 1.13 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,7 @@
 
 using namespace std;
 using boost::shared_ptr;
+using Pingus::Actions::Bomber;
 
 typedef std::list<WorldObj*>::iterator WorldObjIter;
 
@@ -136,7 +137,7 @@ World::update(float delta)
   if (do_armageddon && armageddon_count != pingus->end())
     {
       // The iterator here might be invalid
-      (*armageddon_count)->request_set_action("bomber");
+      (*armageddon_count)->request_set_action(Bomber);
       armageddon_count++;
     }
     

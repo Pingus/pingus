@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.8 2002/06/25 12:20:33 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.9 2002/06/28 15:12:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,6 +38,7 @@
 #endif
 
 using namespace Pingus;
+using namespace Actions;
 
 /** */
 static bool EditorObj_z_pos_sorter (const boost::shared_ptr<EditorObj>& a, 
@@ -107,15 +108,15 @@ ObjectManager::new_level ()
 
   // Set some default actions
   actions.clear();
-  actions.push_back(ActionData("basher",  20));
-  actions.push_back(ActionData("blocker", 20));
-  actions.push_back(ActionData("bomber",  20));
-  actions.push_back(ActionData("bridger", 20));
-  actions.push_back(ActionData("climber", 20));
-  actions.push_back(ActionData("digger",  20));
-  actions.push_back(ActionData("floater", 20));
-  actions.push_back(ActionData("jumper",  20));
-  actions.push_back(ActionData("miner",   20));
+  actions.push_back(ActionData(Basher,  20));
+  actions.push_back(ActionData(Blocker, 20));
+  actions.push_back(ActionData(Bomber,  20));
+  actions.push_back(ActionData(Bridger, 20));
+  actions.push_back(ActionData(Climber, 20));
+  actions.push_back(ActionData(Digger,  20));
+  actions.push_back(ActionData(Floater, 20));
+  actions.push_back(ActionData(Jumper,  20));
+  actions.push_back(ActionData(Miner,   20));
 }
 
 ///

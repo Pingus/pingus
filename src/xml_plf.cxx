@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.4 2002/06/24 18:53:14 grumbel Exp $
+//  $Id: xml_plf.cxx,v 1.5 2002/06/28 15:12:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,7 @@
 #include "liquid_data.hxx"
 
 using namespace std;
+using Pingus::Actions::action_from_string;
 
 XMLPLF::XMLPLF(const std::string& filename)
 {
@@ -306,7 +307,7 @@ XMLPLF::parse_actions(xmlNodePtr cur)
 	}
  
       ActionData button;
-      button.name = (char*)cur->name;
+      button.name = action_from_string((const char*) cur->name);
 
       char* count = (char*)xmlGetProp(cur, (xmlChar*)"count");
       if (count)

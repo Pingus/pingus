@@ -1,4 +1,4 @@
-//  $Id: drown.hxx,v 1.3 2002/06/26 19:13:13 grumbel Exp $
+//  $Id: drown.hxx,v 1.4 2002/06/28 15:12:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@ private:
 public:
   void init();
   std::string get_name() const { return "Drown"; }
+  ActionName get_type() const { return Pingus::Actions::Drown; }
   void update(float delta);
   void draw_offset(int x, int y, float s);
   bool catchable () { return false; }

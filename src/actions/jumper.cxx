@@ -1,4 +1,4 @@
-//  $Id: jumper.cxx,v 1.3 2002/06/26 17:43:18 grumbel Exp $
+//  $Id: jumper.cxx,v 1.4 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ Jumper::update(float /*delta*/)
   // Move the pingu in the air, so that it can start 'falling'
   pingu->pos.y -= 1;
 
-  pingu->set_action ("faller");
+  pingu->set_action (Faller);
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.6 2002/06/24 14:25:03 grumbel Exp $
+//  $Id: playfield.cxx,v 1.7 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -219,7 +219,7 @@ Playfield::on_button_press(const CL_Key & /*key*/)
     {
       char str[256];
       sprintf(str, "Pingu: %d:%s", current_pingu->get_id(), 
-	      buttons->get_action_name().c_str());
+	      action_to_string(buttons->get_action_name()).c_str());
       server->send_event(str);
       return true;
     }

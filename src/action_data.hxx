@@ -1,4 +1,4 @@
-//  $Id: action_data.hxx,v 1.2 2002/06/24 22:52:53 grumbel Exp $
+//  $Id: action_data.hxx,v 1.3 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,9 @@
 #define HEADER_PINGUS_ACTION_DATA_HXX
 
 #include <string>
+#include "pingu_enums.hxx"
+
+using Pingus::Actions::ActionName;
 
 ///
 class ActionData
@@ -30,12 +33,12 @@ public:
   ActionData() {}
 
   ///
-  ActionData(const std::string& str, int i) : name(str), number_of(i)
+  ActionData(ActionName name_, int i) : name(name_), number_of(i)
   {
   }
 
   ///
-  std::string   name;
+  ActionName   name;
   ///
   int number_of;
 };

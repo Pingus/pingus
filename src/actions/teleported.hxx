@@ -31,7 +31,8 @@ private:
 public:
   Teleported();
 
-  std::string get_name() const { return "LaserKill"; }
+  std::string get_name() const { return "Teleported"; }
+  ActionName get_type() const { return Pingus::Actions::Teleported; }
   void init(void);
   void update(float delta);
   void draw_offset(int x, int y, float s);

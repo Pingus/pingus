@@ -1,4 +1,4 @@
-//  $Id: walker.hxx,v 1.3 2002/06/26 19:13:13 grumbel Exp $
+//  $Id: walker.hxx,v 1.4 2002/06/28 15:12:23 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,7 @@ public:
   void  draw_offset(int x, int y, float s);
 
   std::string get_name() const { return "Walker"; }
+  ActionName get_type() const { return Pingus::Actions::Walker; }
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: capture_rectangle.cxx,v 1.3 2002/06/24 14:25:03 grumbel Exp $ 
+//  $Id: capture_rectangle.cxx,v 1.4 2002/06/28 15:12:22 torangan Exp $ 
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,18 +64,21 @@ CaptureRectangle::draw_offset(int x_offset, int y_offset, float s)
 	{
 	  std::string action_str = pingu->get_action()->get_name();
 
-	  std::vector<PinguAction*>* persitant = pingu->get_persistent_actions ();
-	  // FIXME: This needs to get changed if we want to use action slots
-	  if (persitant->size() > 0)
-	    {
-	      action_str += " [";
-	      for (std::vector<PinguAction*>::iterator i = persitant->begin ();
-		   i != persitant->end (); ++i)
-		{
-		  action_str += (*i)->get_persistent_char ();
-		}
-	      action_str += "]";
-	    }
+          PinguAction * wall_action = pingu->get_wall_action();
+          PinguAction * fall_action = pingu->get_fall_action();
+          
+          if (wall_action || fall_action) {
+          
+            action_str += " [";
+            
+            if (wall_action)
+              action_str += wall_action->get_persistent_char();
+              
+            if (fall_action)
+              action_str += fall_action->get_persistent_char();
+              
+            action_str += "]";
+          }
 
 	  // Draw the caputure rectangle
 	  sur->put_screen(pingu->get_center_pos() + CL_Vector(x_offset,y_offset));

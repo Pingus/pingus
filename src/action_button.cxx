@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: action_button.cxx,v 1.3 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,8 @@
 #include "action_button.hxx"
 #include "server.hxx"
 #include "string_converter.hxx"
+
+using namespace Pingus::Actions;
 
 Button::Button()
 {
@@ -77,15 +79,15 @@ ActionButton::ActionButton() {}
 ActionButton::~ActionButton() {}
 
 void
-ActionButton::init(int x, int y, std::string str, int owner_id)
+ActionButton::init(int x, int y, ActionName name_, int owner_id)
 {
   //  make_action = func;
   x_pos = x;
   y_pos = y;
-  name = str;
+  name = name_;
  
-  if (name == "digger" || name == "bomber" 
-      || name == "floater" || name == "blocker")
+  if (name == Digger || name == Bomber
+      || name == Floater || name == Blocker)
     {
       is_multi_direct = false;
     }
@@ -100,25 +102,21 @@ ActionButton::init(int x, int y, std::string str, int owner_id)
   font_b = PingusResource::load_font("Fonts/pingus","fonts");
   */
 
-  font = PingusResource::load_font("Fonts/pingus_small", "fonts");
-  font_h = PingusResource::load_font("Fonts/pingus_small","fonts");
-  font_b = PingusResource::load_font("Fonts/pingus","fonts");
+  font   = PingusResource::load_font("Fonts/pingus_small", "fonts");
+  font_h = PingusResource::load_font("Fonts/pingus_small", "fonts");
+  font_b = PingusResource::load_font("Fonts/pingus",       "fonts");
 
-  if (str != "empty") 
+  surface   = PingusResource::load_surface("Pingus/" + action_to_string(name) + to_string(owner_id), "pingus");
+  if (is_multi_direct)
     {
-      surface   = PingusResource::load_surface("Pingus/" + str + to_string(owner_id),
-					       "pingus");
-      if (is_multi_direct)
-	{
-	  action_c.set_size(surface.get_num_frames()/2);
-	}
-      else
-	{
-	  action_c.set_size(surface.get_num_frames());
-	}
-
-      action_c.set_speed(50);
+      action_c.set_size(surface.get_num_frames()/2);
     }
+  else
+    {
+      action_c.set_size(surface.get_num_frames());
+    }
+
+  action_c.set_speed(50);
 }
 
 bool
@@ -133,7 +131,7 @@ ActionButton::update(float /*delta*/)
   ++action_c;
 }
 
-std::string
+ActionName
 ActionButton::get_action_name()
 {
   return name;
@@ -145,11 +143,11 @@ ActionButton::set_action_holder(ActionHolder* h)
   action_holder = h;
 }
 
-VerticalActionButton::VerticalActionButton(int x, int y, std::string str, int owner_id) :
+VerticalActionButton::VerticalActionButton(int x, int y, ActionName name, int owner_id) :
     background (PingusResource::load_surface("buttons/buttonbackground", "core")),
     backgroundhl (PingusResource::load_surface("buttons/buttonbackgroundhl", "core"))
 {
-  init(x, y, str, owner_id);
+  init(x, y, name, owner_id);
 }
 
 VerticalActionButton::~VerticalActionButton() {}
@@ -212,7 +210,7 @@ VerticalActionButton::draw()
      && CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + 60
      && CL_Mouse::get_y() < y_pos + 35 && CL_Mouse::get_y() > y_pos) 
   {
-	font_b->print_left (x_pos + 65, y_pos, name.c_str());
+	font_b->print_left (x_pos + 65, y_pos, action_to_string(name).c_str());
   }
 
   surface.put_screen(x_pos + 20 - surface.get_width ()/2,

@@ -1,4 +1,4 @@
-//  $Id: bridger.hxx,v 1.6 2002/06/26 19:13:13 grumbel Exp $
+//  $Id: bridger.hxx,v 1.7 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,6 +54,7 @@ public:
 
   void   init();
   std::string get_name () const;
+  ActionName get_type() const { return Pingus::Actions::Bridger; }
   void   update(float delta);
   void   update_build (float delta);
   void   update_walk (float delta);

@@ -1,4 +1,4 @@
-//  $Id: pingu_action.hxx,v 1.5 2002/06/26 19:13:13 grumbel Exp $
+//  $Id: pingu_action.hxx,v 1.6 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,16 +22,18 @@
 
 #include "worldobj.hxx"
 #include "pingu_enums.hxx"
+#include "pingu.hxx"
 
-///
-class Pingu;
+using namespace Pingus::Actions;
+
 class ActionHolder;
 
 enum ActionType
 {
-  ONCE = 1<<1,
-  WALL = 1<<2,
-  FALL = 1<<3
+  INSTANT             = 1<<1,
+  WALL_TRIGGERED      = 1<<2,
+  FALL_TRIGGERED      = 1<<3,
+  COUNTDOWN_TRIGGERED = 1<<4
 };
 
 // This class provides an abstract interface for pingu actions. It is 
@@ -48,9 +50,6 @@ protected:
   static const int pingu_height;
 
 public:
-  /** Indicate if the action should be canceled at the next possible
-      point. FIXME: Only keeped public for lazyness. */
-  bool is_finished;
 
   PinguAction();
   virtual ~PinguAction();
@@ -68,25 +67,28 @@ public:
   int  rel_getpixel(int x, int y);
 
   /** Checks if this action allows to be overwritten with the given new action */
-  virtual bool change_allowed (const std::string&) { return true; }
+  virtual bool change_allowed (ActionName) { return true; }
   
   /** Used to load all data, which is needed by the action, its
       seperated and called in set_pingu(), because some data will be
       only valid if set_pingu() is called. */
   virtual void  init(void) {};
 
-  /// The "AI" of the pingu. The walker and faller is in class Pingu
+  /// The "AI" of the pingu.
   virtual void  update(float delta) = 0;
 
   /** Draws the surfaced defined by the action, can be overwritten if
       the action needs a more complicated way of drawing. */
   virtual void  draw_offset(int x, int y, float s) =0;
 
-  /// Returns the action type
-  virtual ActionType get_type(void);
+  /// Returns the activation mode
+  virtual ActionType get_activation_mode(void) const;
 
-  /// The name of the action, used in pingu_info.hxx
+  /// The name of the action
   virtual std::string get_name(void) const =0;
+  
+  /// The type of the action
+  virtual ActionName get_type() const =0;
   
   /** Return the character that is shown when a persitent action is
       activated in the CaptureRectangle. */

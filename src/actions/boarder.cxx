@@ -1,4 +1,4 @@
-//  $Id: boarder.cxx,v 1.2 2002/06/19 15:19:26 torangan Exp $
+//  $Id: boarder.cxx,v 1.3 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,7 +56,7 @@ Boarder::update(float delta)
       
       // Incremental update so that we don't skip pixels
       double new_x_pos = pingu->pos.x + pingu->direction * speed;
-      while (int(new_x_pos) != int(pingu->pos.x) && !is_finished)
+      while (int(new_x_pos) != int(pingu->pos.x))
 	{
 	  double old_pos = pingu->pos.x;
 	  pingu->pos.x += (int(pingu->pos.x) < int(new_x_pos)) ? 1 : -1;
@@ -67,17 +67,17 @@ Boarder::update(float delta)
 	      pingu->pos.x = old_pos;// + (pingu->direction * 10);
 	      ////pingu->pos.y = 10;
 
-	      pingu->direction.change ();
-	      is_finished = true;
-	      pingu->apply_force (CL_Vector(speed * pingu->direction * 0.5,
+       	      pingu->apply_force (CL_Vector(speed * pingu->direction * 0.5,
 					    -speed * abs(pingu->direction) * 0.5));
+              pingu->set_action(Walker);
+              return;
 	    }
 	}
     }
   else
     {
-      is_finished = true;
       pingu->apply_force (CL_Vector(speed * pingu->direction, 0));
+      pingu->set_action(Walker);
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: teleported.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: teleported.cxx,v 1.3 2002/06/28 15:12:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ Teleported::update(float /*delta*/)
 {
   pingu->set_pos (x_target, y_target);
   pingu->set_status(PS_ALIVE);
-  is_finished = true;
+  pingu->set_action(Walker);
 }
 
 /* EOF */

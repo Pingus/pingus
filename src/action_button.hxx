@@ -1,4 +1,4 @@
-//  $Id: action_button.hxx,v 1.2 2002/06/24 22:52:53 grumbel Exp $
+//  $Id: action_button.hxx,v 1.3 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,9 @@
 #include <ClanLib/Display/Display/surface.h>
 #include <string>
 #include "anim_counter.hxx"
+#include "pingu_enums.hxx"
+
+using Pingus::Actions::ActionName;
 
 class Server;
 class ActionHolder;
@@ -142,8 +145,7 @@ protected:
   // Added for printing action names next to the button.
   CL_Font*    font_b;
 
-  /// The x and y position of the button
-  std::string name;
+  ActionName name;
   ///
   int available;
   ///
@@ -163,7 +165,7 @@ public:
   virtual ~ActionButton();
 
   ///
-  void init(int x, int y, std::string str, int owner_id);
+  void init(int x, int y, ActionName name_, int owner_id);
 
   /// Draws the button and increase the animation counter.
   virtual void   draw() = 0;
@@ -172,7 +174,7 @@ public:
   void   update(float delta);
 
   /// Returns the name of the action the button represents.
-  std::string get_action_name();
+  ActionName get_action_name();
 
   /// Returns true if the button is pressed.
   bool   is_pressed();
@@ -193,7 +195,7 @@ private:
   CL_Surface backgroundhl;
 
 public:
-  VerticalActionButton(int x, int y, std::string str, int owner_id);
+  VerticalActionButton(int x, int y, ActionName name, int owner_id);
   virtual ~VerticalActionButton();
 
   void draw();

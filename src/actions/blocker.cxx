@@ -1,4 +1,4 @@
-//  $Id: blocker.cxx,v 1.2 2002/06/25 18:15:18 grumbel Exp $
+//  $Id: blocker.cxx,v 1.3 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,8 +38,6 @@ Blocker::init(void)
 						"pingus"));
   sprite.set_align_center_bottom ();
 
-  is_finished = false;
-
   if (rel_getpixel(0,-1)     ==  GroundpieceData::GP_NOTHING
       && rel_getpixel(0, -2) ==  GroundpieceData::GP_GROUND)
     {
@@ -59,7 +57,7 @@ Blocker::update(float /*delta*/)
 {
   if (!standing_on_ground())
     {
-      is_finished = true;
+      pingu->set_action(Faller);
     }
 }
 

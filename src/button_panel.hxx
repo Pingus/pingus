@@ -1,4 +1,4 @@
-//  $Id: button_panel.hxx,v 1.3 2002/06/24 22:52:54 grumbel Exp $
+//  $Id: button_panel.hxx,v 1.4 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,7 @@ public:
   void on_button_press(const CL_Key& key);
   void on_button_release(const CL_Key& key);
 
-  std::string get_action_name();
+  ActionName get_action_name();
   void   update(float delta);
   void   draw();
   void   set_server(Server*);

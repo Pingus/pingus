@@ -1,4 +1,4 @@
-//  $Id: floater.cxx,v 1.6 2002/06/26 19:13:13 grumbel Exp $
+//  $Id: floater.cxx,v 1.7 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,21 +47,8 @@ Floater::update(float delta)
       step = 0;
     }
   } else {
-    pingu->set_action ("walker");
+    pingu->set_action (Walker);
   }
-
-  // FIXME: use action slots here instead of a for-loop
-  if (rel_getpixel(0, -1) == GroundpieceData::GP_NOTHING) 
-    {
-      for (unsigned int i=0; i < pingu->get_persistent_actions ()->size(); ++i) 
-	{
-	  if ((*(pingu->get_persistent_actions ()))[i]->get_type() == (ActionType)FALL) 
-	    {
-	      // FIXME: Use action slots instead of the persistend vector
-              pingu->set_action("floater");
-	    }
-	}
-    }
 }
 
 void 

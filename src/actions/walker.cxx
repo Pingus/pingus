@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.10 2002/06/28 09:51:46 grumbel Exp $
+//  $Id: walker.cxx,v 1.11 2002/06/28 15:12:23 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,7 @@ Walker::update(float delta)
 
   if (rel_getpixel(0, -1) ==  GroundpieceData::GP_WATER)
     {
-      pingu->set_action ("drown");
+      pingu->set_action (Drown);
       return;
     }
 
@@ -89,7 +89,7 @@ Walker::update(float delta)
 	}
       else
 	{
-	  pingu->set_action ("faller");
+	  pingu->set_action (Faller);
 	  return;
 	}
     }
@@ -139,25 +139,13 @@ Walker::update(float delta)
 	  if (rel_getpixel(1, 0) !=  GroundpieceData::GP_NOTHING)
 	    {
 	      // We reached a wall
-
-	      // Check if there is a persistent action
-	      for (unsigned int i=0; i < pingu->persist.size(); ++i) 
-		{
-		  if (pingu->persist[i]->get_type() & (ActionType)WALL) 
-		    {
-		      pout(PINGUS_DEBUG_ACTIONS) 
-			<< "Pingu: We are in front of a wall, setting persistant action" << std::endl;
-		      // pingu->set_paction(pingu->persist[i]->get_name());
-		      // FIXME: above fails because of Capitalised name
-		      // returned from get_name(). May be we should 
-		      // use capitalised names everywhere. 
-  
-		      // Do we set  any other action here?
-		      pingu->set_action("climber");
-		      return;
-		    }
-		}
-	      
+              if (pingu->set_wall_action()) 
+                {
+		  pout(PINGUS_DEBUG_ACTIONS) 
+		    << "Pingu: We are in front of a wall, setting persistant action" << std::endl;
+		  return;
+                }
+	     
 	      // No persitent action found, so change the direction
 	      pingu->direction.change();	      
 	    }
@@ -166,7 +154,7 @@ Walker::update(float delta)
 	      // We take the step, so that we are in the air
 	      pingu->pos.x += pingu->direction;
 	      // We reached a cliff
-	      pingu->set_action ("faller");
+	      pingu->set_action (Faller);
 	      return;
 	    }
 	}

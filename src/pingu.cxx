@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.15 2002/06/26 19:13:13 grumbel Exp $
+//  $Id: pingu.cxx,v 1.16 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,8 @@
 #include "debug.hxx"
 #include "string_converter.hxx"
 
+using namespace Pingus::Actions;
+
 const float deadly_velocity = 20.0;
 int   Pingu::id_counter = 0;
 
@@ -40,6 +42,8 @@ int   Pingu::id_counter = 0;
 Pingu::Pingu(const CL_Vector& arg_pos, int owner)
   : action(0),
     countdown_action (0),
+    wall_action(0),
+    fall_action(0),
     id (++id_counter),
     font (PingusResource::load_font("Fonts/numbers", "fonts")),
     owner_id (owner),
@@ -54,7 +58,7 @@ Pingu::Pingu(const CL_Vector& arg_pos, int owner)
   velocity.x = 0;
   velocity.y = 0;
 
-  set_action("faller");
+  set_action(Faller);
 }
 
 Pingu::~Pingu()
@@ -82,7 +86,7 @@ Pingu::get_id()
 }
 
 bool
-Pingu::change_allowed (const std::string& new_action)
+Pingu::change_allowed (ActionName new_action)
 {
   assert (action);
   return action->change_allowed (new_action);
@@ -116,69 +120,76 @@ Pingu::request_set_action(PinguAction* act)
       pout(PINGUS_DEBUG_ACTIONS) << _("Setting action to a dead pingu") << std::endl;
       return false;
     }
-  act->set_pingu(this);
+    
+  switch (act->get_activation_mode()) {
+  
+    case INSTANT:
+    
+      if (act->get_type() == action->get_type()) 
+        {
+          pout(PINGUS_DEBUG_ACTIONS) << "Pingu: Already have action" << std::endl;
+          return false;
+        }
+                    
+        if (action->change_allowed(act->get_type()))
+          {
+            act->set_pingu(this);
+            set_action(act);
+            return true;
+          }
+                    
+      return false;
+                  
+    case WALL_TRIGGERED:
+    
+      if (wall_action && wall_action->get_type() == act->get_type())
+        {
+          pout(PINGUS_DEBUG_ACTIONS) << "Not using wall action, we have already" << std::endl;
+          return false;
+        }
 
-  // check for persistent actions
-  if (act->get_type() != (ActionType)ONCE) // action is persistent
-    {
-      pout(PINGUS_DEBUG_ACTIONS) << "Pingu: Found some persistant action" << std::endl
-	                         << "Pingu: Action is " 
-	                         << (act->get_type() == FALL) ? "FALL" : "WALL";
-      
-      for(std::vector<PinguAction*>::iterator i = persist.begin(); i != persist.end(); i++)
-	{
-	  if ((*i)->get_name() == act->get_name()) 
-	    {
-	      pout(PINGUS_DEBUG_ACTIONS) << "Not using action, we have already" << std::endl;
-	      return false;
-	    }
-	}
-
-      persist.push_back(act);
+      wall_action = act;
       return true;
-    }
-  else 
-    {  
-      if (act->activation_time() == -1)
-	{ // Immediately activate the action
-	  if (action && (action->get_name() == act->get_name()))
-	    {
-	      pout(PINGUS_DEBUG_ACTIONS) << "Pingu: Already have action" << std::endl;
-	      return false;
-	    }
+      
+    case FALL_TRIGGERED:
+    
+      if (fall_action && fall_action->get_type() == act->get_type())
+        {
+          pout(PINGUS_DEBUG_ACTIONS) << "Not using fall action, we have already" << std::endl;
+          return false;
+        }
+      
+      fall_action = act;
+      return true;
 
-	  if (act->change_allowed (string_downcase(action->get_name ()))) //FIXME: ugly
-	    {
-	      set_action (act);
-	      return true;
-	    }
-	  else
-	    {
-	      return false;	    
-	    }
-	}
-      else // timed action
-	{
-	  if (countdown_action && countdown_action->get_name() == act->get_name())
-	    { // We skip the action, since it is already set
-	      return false;
-	    }
-	  // We set the action and start the countdown
-	  action_time = act->activation_time();
-	  countdown_action = act;
-	  return true;
-	}
-    }
+    case COUNTDOWN_TRIGGERED:
+    
+      if (countdown_action && countdown_action->get_type() == act->get_type())
+        {
+          pout(PINGUS_DEBUG_ACTIONS) << "Not using countdown action, we have already" << std::endl;
+          return false;
+        }
+        
+      // We set the action and start the countdown
+      action_time = act->activation_time();
+      countdown_action = act;
+      return true;
+      
+   default:
+     
+     assert(0);
+     return false;
+  }
 }
 
 bool 
-Pingu::request_set_action (const std::string& action_name)
+Pingu::request_set_action (ActionName action_name)
 {
   return request_set_action (PinguActionFactory::instance ()->create (action_name));
 }
 
 void
-Pingu::set_action(const std::string& action_name) 
+Pingu::set_action(ActionName action_name) 
 {
   set_action (PinguActionFactory::instance ()->create (action_name));
 }
@@ -190,6 +201,30 @@ Pingu::set_action(PinguAction* act)
   assert(act);
   action = act;
   action->set_pingu(this);
+}
+
+bool
+Pingu::set_fall_action ()
+{
+  if (fall_action)
+    {
+      set_action(fall_action);
+      return true;
+    }
+    
+  return false;
+}
+
+bool
+Pingu::set_wall_action ()
+{
+  if (wall_action)
+    {
+      set_action(wall_action);
+      return true;
+    }
+
+  return false;
 }
 
 PinguStatus
@@ -235,8 +270,6 @@ Pingu::dist (int x, int y)
 }
 
 // Let the pingu do his job (i.e. walk his way)
-// FIXME: This function is *much* too large, it needs a real cut down
-// into smaller pieces.  
 void
 Pingu::update(float delta)
 {
@@ -259,7 +292,7 @@ Pingu::update(float delta)
 
   if (action_time == 0 && countdown_action) 
     {
-      std::cout << "COUNTDOWNACTIAN SET: " << countdown_action->get_name () << std::endl;
+      std::cout << "COUNTDOWNACTION SET: " << countdown_action->get_name () << std::endl;
 
       set_action(countdown_action);
       // Reset the countdown action handlers 
@@ -268,23 +301,7 @@ Pingu::update(float delta)
       return;
     }
   
-  if ( !action || action->is_finished) 
-    {
-      update_action(delta);
-    }
-
   action->update(delta);
-}
-
-// Check if the pingu is on ground and then do something.
-void 
-Pingu::update_action(float /*delta*/)
-{
-  pout(PINGUS_DEBUG_ACTIONS) << "Pingu: No action set, setting action." << std::endl;
-  if (rel_getpixel(0,-1) == GroundpieceData::GP_NOTHING)
-    set_action("faller");
-  else
-    set_action("walker");
 }
 
 // Draws the pingu on the screen with the given offset

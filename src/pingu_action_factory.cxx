@@ -1,4 +1,4 @@
-//  $Id: pingu_action_factory.cxx,v 1.3 2002/06/18 10:04:11 torangan Exp $
+//  $Id: pingu_action_factory.cxx,v 1.4 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,36 +66,35 @@ PinguActionFactory::instance ()
 void 
 PinguActionFactory::register_core_actions ()
 {
-  new PinguActionFactoryImpl<RocketLauncher> ("rocketlauncher");
-  new PinguActionFactoryImpl<Boarder> ("boarder");
-  new PinguActionFactoryImpl<Superman> ("superman");
-  new PinguActionFactoryImpl<Angel> ("angel");
-  new PinguActionFactoryImpl<Basher> ("basher");
-  new PinguActionFactoryImpl<Blocker> ("blocker");
-  new PinguActionFactoryImpl<Bomber> ("bomber");
-  new PinguActionFactoryImpl<Bridger> ("bridger");
-  new PinguActionFactoryImpl<Climber> ("climber");
-  new PinguActionFactoryImpl<Digger> ("digger");
-  new PinguActionFactoryImpl<Exiter> ("exiter");
-  new PinguActionFactoryImpl<Floater> ("floater");
-  new PinguActionFactoryImpl<Miner> ("miner");
-  new PinguActionFactoryImpl<Jumper> ("jumper");
-  new PinguActionFactoryImpl<Slider> ("slider");
-  new PinguActionFactoryImpl<Teleported> ("teleporter");
-  new PinguActionFactoryImpl<Exiter> ("exiter");
-  new PinguActionFactoryImpl<Smashed> ("smashed");
-  new PinguActionFactoryImpl<LaserKill> ("laserkill");
-  new PinguActionFactoryImpl<Splashed> ("splashed");
-  new PinguActionFactoryImpl<Waiter> ("waiter");
-  new PinguActionFactoryImpl<Drown> ("drown");
-  new PinguActionFactoryImpl<Faller> ("faller");
-  new PinguActionFactoryImpl<Walker> ("walker");
+  new PinguActionFactoryImpl<class Angel>          (Pingus::Actions::Angel);
+  new PinguActionFactoryImpl<class Basher>         (Pingus::Actions::Basher);
+  new PinguActionFactoryImpl<class Blocker>        (Pingus::Actions::Blocker);
+  new PinguActionFactoryImpl<class Boarder>        (Pingus::Actions::Boarder);
+  new PinguActionFactoryImpl<class Bomber>         (Pingus::Actions::Bomber);
+  new PinguActionFactoryImpl<class Bridger>        (Pingus::Actions::Bridger);
+  new PinguActionFactoryImpl<class Climber>        (Pingus::Actions::Climber);
+  new PinguActionFactoryImpl<class Digger>         (Pingus::Actions::Digger);
+  new PinguActionFactoryImpl<class Drown>          (Pingus::Actions::Drown);
+  new PinguActionFactoryImpl<class Exiter>         (Pingus::Actions::Exiter);
+  new PinguActionFactoryImpl<class Faller>         (Pingus::Actions::Faller);
+  new PinguActionFactoryImpl<class Floater>        (Pingus::Actions::Floater);
+  new PinguActionFactoryImpl<class Jumper>         (Pingus::Actions::Jumper);
+  new PinguActionFactoryImpl<class LaserKill>      (Pingus::Actions::Laserkill);
+  new PinguActionFactoryImpl<class Miner>          (Pingus::Actions::Miner);
+  new PinguActionFactoryImpl<class RocketLauncher> (Pingus::Actions::Rocketlauncher);
+  new PinguActionFactoryImpl<class Slider>         (Pingus::Actions::Slider);
+  new PinguActionFactoryImpl<class Smashed>        (Pingus::Actions::Smashed);
+  new PinguActionFactoryImpl<class Splashed>       (Pingus::Actions::Splashed);
+  new PinguActionFactoryImpl<class Superman>       (Pingus::Actions::Superman);
+  new PinguActionFactoryImpl<class Teleported>     (Pingus::Actions::Teleported);
+  new PinguActionFactoryImpl<class Waiter>         (Pingus::Actions::Waiter);
+  new PinguActionFactoryImpl<class Walker>         (Pingus::Actions::Walker);
 }
 
 PinguAction* 
-PinguActionFactory::create (const std::string& id)
+PinguActionFactory::create (ActionName id)
 {
-  std::map<std::string, PinguActionAbstractFactory*>::iterator it = factories.find(id);
+  std::map<ActionName, PinguActionAbstractFactory*>::iterator it = factories.find(id);
   
   if (it == factories.end())
     throw PingusError("PinguActionFactory: Invalid id: " + id);
@@ -121,7 +120,7 @@ PinguActionFactory::delete_actions ()
 }
 
 void 
-PinguActionFactory::register_factory (const std::string& id, PinguActionAbstractFactory* factory)
+PinguActionFactory::register_factory (ActionName id, PinguActionAbstractFactory* factory)
 {
   // FIXME: Could need some more error checking
   factories[id] = factory;

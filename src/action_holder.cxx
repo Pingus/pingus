@@ -1,4 +1,4 @@
-//  $Id: action_holder.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: action_holder.cxx,v 1.3 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,6 @@
 #include "pingu_action_factory.hxx"
 #include "action_holder.hxx"
 
-using namespace boost;
-
 ActionHolder::ActionHolder (PLF* plf)
 {
   std::vector<ActionData> action_data = plf->get_actions ();
@@ -43,25 +41,25 @@ ActionHolder::~ActionHolder ()
 }
 
 void
-ActionHolder::set_actions(const std::string& name, int available)
+ActionHolder::set_actions(ActionName name, int available)
 {
   available_actions[name] = available;
 }
 
 void
-ActionHolder::push_action(const std::string& name)
+ActionHolder::push_action(ActionName name)
 {
   available_actions[name]++;
 }
 
 int
-ActionHolder::get_available(const std::string& name)
+ActionHolder::get_available(ActionName name)
 {
   return available_actions[name];
 }
 
 PinguAction*
-ActionHolder::get_action(const std::string& name)
+ActionHolder::get_action(ActionName name)
 {
   if (unlimited_actions) // runtime option; defined in global.hh
     {    

@@ -1,4 +1,4 @@
-//  $Id: pingu_action.cxx,v 1.4 2002/06/25 18:15:18 grumbel Exp $
+//  $Id: pingu_action.cxx,v 1.5 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,6 @@ const int PinguAction::pingu_height = 26;
 PinguAction::PinguAction()
   : pingu (0)
 {
-  is_finished = false;
 }
 
 PinguAction::~PinguAction()
@@ -61,9 +60,9 @@ PinguAction::rel_getpixel(int x, int y)
 }
 
 ActionType
-PinguAction::get_type(void)
+PinguAction::get_activation_mode() const
 {
-  return (ActionType)ONCE;
+  return INSTANT;
 }
 
 char

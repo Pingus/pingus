@@ -1,4 +1,4 @@
-//  $Id: plf_plf.cxx,v 1.3 2002/06/20 11:23:53 grumbel Exp $
+//  $Id: plf_plf.cxx,v 1.4 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,8 +22,10 @@
 #include "pingus_error.hxx"
 #include "psm_parser.hxx"
 #include "plf_plf.hxx"
+#include "pingu_enums.hxx"
 
 using namespace std;
+using Pingus::Actions::action_from_string;
 
 int    str_to_int(const string& str);
 float str_to_float(const string& str);
@@ -263,7 +265,7 @@ PLFPLF::set_value(string valueid,
   case PLFPLF::BUTTONS:
     {
       ActionData temp;
-      temp.name = valueid;
+      temp.name = action_from_string(valueid);
       sscanf(value.c_str(), "%d", &temp.number_of);
       actions.push_back(temp);
     }

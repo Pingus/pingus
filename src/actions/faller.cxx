@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.10 2002/06/26 19:13:13 grumbel Exp $
+//  $Id: faller.cxx,v 1.11 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,21 +54,17 @@ Faller::update (float delta)
   tumbler.update (delta);
   faller.update (delta);
 
-  // FIXME: This should be triggered at a later point, when close to
-  // FIXME: deadly_velocity or something like that
-  for (unsigned int i=0; i < pingu->persist.size(); ++i) {
-    if (pingu->persist[i]->get_name() == "Floater") {
-      pingu->set_action("floater");
-      return;
-    }
-  }
-
   // Pingu stands on ground
   if (rel_getpixel(0, -1) !=  GroundpieceData::GP_NOTHING)
     { 
-      pingu->set_action ("walker");
+      pingu->set_action (Walker);
       return;
     }
+
+  // FIXME: This should be triggered at a later point, when close to
+  // FIXME: deadly_velocity or something like that
+  if (pingu->set_fall_action())
+    return;
 
   // Apply all forces
   pingu->velocity = ForcesHolder::apply_forces(pingu->pos, pingu->velocity);
@@ -126,7 +122,7 @@ Faller::update (float delta)
     {
       if (rel_getpixel(0, 0) == GroundpieceData::GP_WATER)
 	{
-	  pingu->set_action("drown");
+	  pingu->set_action(Drown);
 	  return;
 	}
       else
@@ -134,7 +130,7 @@ Faller::update (float delta)
 	  // Did we stop too fast?
 	  if (fabs(pingu->velocity.y) > deadly_velocity) 
 	    {
-	      pingu->set_action("splashed");
+	      pingu->set_action(Splashed);
 	      return;
 	    }
 	  else if (fabs(pingu->velocity.x) > deadly_velocity)
@@ -149,7 +145,7 @@ Faller::update (float delta)
       pingu->pos = last_pos;
 
       // FIXME: UGLY!
-      //pingu->set_action ("walker");
+      //pingu->set_action (Walker);
     }
 }
 
@@ -179,9 +175,9 @@ Faller::is_tumbling () const
 }
 
 bool
-Faller::change_allowed (const std::string& new_action)
+Faller::change_allowed (ActionName new_action)
 {
-  if (new_action == "floater")
+  if (new_action == Floater)
     return true;
   else
     return false;

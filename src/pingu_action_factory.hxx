@@ -1,4 +1,4 @@
-//  $Id: pingu_action_factory.hxx,v 1.2 2002/06/24 22:52:55 grumbel Exp $
+//  $Id: pingu_action_factory.hxx,v 1.3 2002/06/28 15:12:22 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,13 +22,9 @@
 
 #include <map>
 #include <string>
+#include "pingu.hxx"
 
 class PinguActionAbstractFactory;
-class PinguAction;
-
-namespace boost {
-  template <class T> class shared_ptr;
-}
 
 class PinguActionFactory
 {
@@ -36,14 +32,15 @@ private:
   /** This vector saves all allocated actions to delete them at a later point */
   std::vector<PinguAction*> all_actions;
 
-  std::map<std::string, PinguActionAbstractFactory*> factories;
+  std::map<ActionName, PinguActionAbstractFactory*> factories;
   static PinguActionFactory* instance_;
   
   PinguActionFactory ();
   void register_core_actions ();
+  
 public:
   static PinguActionFactory* instance ();
-  void register_factory (const std::string& id, PinguActionAbstractFactory*);
+  void register_factory (ActionName id, PinguActionAbstractFactory*);
 
   /** Delete all actions which this class has allocated. This needs to
       be called seperatly from the constructor, due to the used
@@ -51,13 +48,13 @@ public:
   void delete_actions ();
 
   /** Allocate the given action */
-  PinguAction* create (const std::string& id);
+  PinguAction* create (ActionName id);
 };
 
 class PinguActionAbstractFactory
 {
 public:
-  PinguActionAbstractFactory (const std::string& id) {
+  PinguActionAbstractFactory (ActionName id) {
     PinguActionFactory::instance ()-> register_factory (id, this);
   }
   
@@ -68,7 +65,7 @@ template<class T>
 class PinguActionFactoryImpl : public PinguActionAbstractFactory
 {
 public:
-  PinguActionFactoryImpl (const std::string& id)
+  PinguActionFactoryImpl (ActionName id)
     : PinguActionAbstractFactory (id)
   {
   }

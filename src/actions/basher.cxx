@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.7 2002/06/26 15:38:44 grumbel Exp $
+//  $Id: basher.cxx,v 1.8 2002/06/28 15:12:22 torangan Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -78,7 +78,7 @@ Basher::update(float delta)
 	}
       else if (sprite.get_progress () > 0.6f)
 	{
-	  is_finished = true;
+	  pingu->set_action(Walker);
 	}
     }
 }
@@ -98,8 +98,8 @@ void
 Basher::walk_forward()
 {
   if (rel_getpixel(0, -1) ==  GroundpieceData::GP_NOTHING) {
-    // We ar e in the air... lets fall...
-    is_finished = true;
+    // We are in the air... lets fall...
+    pingu->set_action(Faller);
   } else {
     // On ground, walk forward...
     pingu->pos.x += pingu->direction;
@@ -115,7 +115,7 @@ Basher::have_something_to_dig()
       return true;
     }
 
-  for(int i = 0; is_finished == false && i < 16; i++)
+  for(int i = 0; i < 16; i++)
     {
       // Check that there is a high enough wall (i.e. not 1 pixel) to bash.
       // Probably best to check from where Pingu can't automatically walk up

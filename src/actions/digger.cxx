@@ -1,4 +1,4 @@
-//  $Id: digger.cxx,v 1.4 2002/06/25 18:15:18 grumbel Exp $
+//  $Id: digger.cxx,v 1.5 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,7 @@ Digger::update(float delta)
   if (!have_something_to_dig())
     { 
       dig ();
-      is_finished = true;
+      pingu->set_action(Walker);
     }
 }
 

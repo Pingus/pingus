@@ -1,4 +1,4 @@
-//  $Id: button_panel.cxx,v 1.4 2002/06/19 15:19:26 torangan Exp $
+//  $Id: button_panel.cxx,v 1.5 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,8 @@
 #include "world.hxx"
 #include "plf.hxx"
 
+using namespace Pingus::Actions;
+
 CL_Surface ButtonPanel::button_cap;
 
 ButtonPanel::ButtonPanel(PLF* plf, Controller* arg_controller,
@@ -47,10 +49,10 @@ ButtonPanel::ButtonPanel(PLF* plf, Controller* arg_controller,
   if (buttons_data.size() == 0)
     {
       std::cout << "ButtonPanel: No actions given in this level, fall back to default" << std::endl;
-      buttons_data.push_back(ActionData("bridger", 20));
-      buttons_data.push_back(ActionData("basher", 20));
-      buttons_data.push_back(ActionData("digger", 20));
-      buttons_data.push_back(ActionData("miner", 20));
+      buttons_data.push_back(ActionData(Bridger, 20));
+      buttons_data.push_back(ActionData(Basher, 20));
+      buttons_data.push_back(ActionData(Digger, 20));
+      buttons_data.push_back(ActionData(Miner, 20));
     }
 
   for(std::vector<ActionData>::size_type i = 0; i < buttons_data.size(); i++)
@@ -95,7 +97,7 @@ ButtonPanel::update(float delta)
     } 
 }
 
-std::string
+ActionName
 ButtonPanel::get_action_name()
 {
   return (*pressed_button)->get_action_name();

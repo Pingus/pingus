@@ -1,4 +1,4 @@
-//  $Id: climber.cxx,v 1.4 2002/06/25 18:15:18 grumbel Exp $
+//  $Id: climber.cxx,v 1.5 2002/06/28 15:12:22 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -84,14 +84,14 @@ Climber::update(float delta)
             }
 
           // Finish climbing.
-	  is_finished = true;
+	  pingu->set_action(Walker);
 	}
     }
   else 
     {
       //    std::cout << "Climber failed, falling down" << std::endl;
       pingu->direction.change();
-      is_finished = true;
+      pingu->set_action(Walker);
     }
 }
 
