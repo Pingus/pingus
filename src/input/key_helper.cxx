@@ -1,4 +1,4 @@
-//  $Id: key_helper.cxx,v 1.2 2002/07/09 14:22:00 grumbel Exp $
+//  $Id: key_helper.cxx,v 1.3 2002/10/29 12:49:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include <ClanLib/Display/Input/key.h>
 #include "key_helper.hxx"
 
@@ -235,6 +236,7 @@ Input::KeyHelper::string_to_key (const std::string& key)
   else if (key == "CL_NUM_KEYS") { return CL_NUM_KEYS; }
   else
     {
+      std::cout << "Key Name " << key << "not known" << std::endl;
       return CL_NO_KEY;
     }  
 }
