@@ -100,8 +100,6 @@ src/credits.cxx
 src/credits.hxx
 src/worldobj_data.cxx
 src/worldobj_data.hxx
-src/hotspot_data.cxx
-src/hotspot_data.hxx
 src/pingus_map_manager.cxx
 src/pingus_map_manager.hxx
 src/delta_manager.hxx
@@ -186,7 +184,6 @@ src/music_provider.cxx
 src/music_provider.hxx
 src/fps_counter.cxx
 src/fps_counter.hxx
-src/generic/list_helper.hxx
 src/pingu_action_factory.cxx
 src/pingu_action_factory.hxx
 src/surface_button.cxx
@@ -319,7 +316,6 @@ src/loading.cxx
 src/loading.hxx
 src/screen_manager.cxx
 src/screen_manager.hxx
-src/editor_hotspot.hxx
 src/story.cxx
 src/story.hxx
 src/pingu_map.cxx
@@ -330,8 +326,6 @@ src/exit_data.cxx
 src/exit_data.hxx
 src/plt_xml.cxx
 src/plt_xml.hxx
-src/hotspot.cxx
-src/hotspot.hxx
 src/layer_manager.cxx
 src/layer_manager.hxx
 src/gui_obj.cxx

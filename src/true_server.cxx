@@ -1,4 +1,4 @@
-//  $Id: true_server.cxx,v 1.8 2002/09/14 23:40:35 grumbel Exp $
+//  $Id: true_server.cxx,v 1.9 2002/09/24 14:51:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,8 +58,6 @@ TrueServer::update(float delta)
 
       if (fast_forward)
 	{
-	  
-
 	  // To let the game run faster we just update it multiple
 	  // times
 	  for (int i = 0; i < 4; ++i)
@@ -73,6 +71,11 @@ TrueServer::update(float delta)
 	  Server::update(delta);
 	  world->update(delta);
 	}
+    }
+  else
+    {
+      std::cout << "Sleeping: " << time_till_next_update() << std::endl;
+      CL_System::sleep(time_till_next_update());
     }
 }
 
@@ -97,6 +100,12 @@ TrueServer::enough_time_passed(void)
       return true;
     }
   }
+}
+
+int
+TrueServer::time_till_next_update()
+{
+  return last_time + local_game_speed - CL_System::get_time();
 }
 
 void

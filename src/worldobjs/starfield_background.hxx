@@ -1,4 +1,4 @@
-//  $Id: starfield_background.hxx,v 1.1 2002/09/16 20:52:22 torangan Exp $
+//  $Id: starfield_background.hxx,v 1.2 2002/09/24 14:51:36 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOJBS_STARFIELD_BACKGROUND_HXX
 #define HEADER_PINGUS_WORLDOBJS_STARFIELD_BACKGROUND_HXX
 
+#include "../graphic_context.hxx"
 #include "../worldobj.hxx"
 
 namespace WorldObjsData {
@@ -44,7 +45,7 @@ public:
   float get_z_pos() const { return -10; }
 
   void update (float delta);
-  void draw_offset (int x_of, int y_of, float s = 1.0);
+  void draw (GraphicContext& gc);
   
 private:
   StarfieldBackground (const StarfieldBackground&);

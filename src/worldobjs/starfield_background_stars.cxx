@@ -1,4 +1,4 @@
-//  $Id: starfield_background_stars.cxx,v 1.1 2002/09/16 20:52:22 torangan Exp $
+//  $Id: starfield_background_stars.cxx,v 1.2 2002/09/24 14:51:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../graphic_context.hxx"
 #include "../world.hxx"
 #include "../pingus_resource.hxx"
 #include "starfield_background_stars.hxx"
@@ -79,10 +80,9 @@ StarfieldBackgroundStars::update (float delta)
 }
 
 void
-StarfieldBackgroundStars::draw_offset (int x_of, int y_of, float s)
+StarfieldBackgroundStars::draw (GraphicContext& gc)
 {
-  sur.put_screen(static_cast<int>(x_pos + x_of), static_cast<int>(y_pos + y_of));
-  UNUSED_ARG(s);
+  gc.draw(sur, CL_Vector (x_pos, y_pos));
 }
 
 } // namespace WorldObjs

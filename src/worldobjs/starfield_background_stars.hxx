@@ -1,4 +1,4 @@
-//  $Id: starfield_background_stars.hxx,v 1.1 2002/09/16 20:52:22 torangan Exp $
+//  $Id: starfield_background_stars.hxx,v 1.2 2002/09/24 14:51:36 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ public:
 
   void init ();
   void update (float delta);
-  void draw_offset (int x_of, int y_of, float s = 1.0);  
+  void draw (GraphicContext& gc);
 
 private:
   StarfieldBackgroundStars (const StarfieldBackgroundStars&);

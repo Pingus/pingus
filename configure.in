@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.68 2002/09/19 15:02:15 torangan Exp $
+#  $Id: configure.in,v 1.69 2002/09/24 14:51:35 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,12 +28,12 @@ PACKAGE=pingus
 # The Pingus Version
 MAJOR_VERSION=0
 MINOR_VERSION=5
-PATCH_VERSION=0pre3
+PATCH_VERSION=0pre4
 
 # The required ClanLib version
 CLANLIB_MAJOR_VERSION=0
 CLANLIB_MINOR_VERSION=6
-CLANLIB_PATCH_VERSION=0
+CLANLIB_PATCH_VERSION=4
 
 VERSION=${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION}
 
@@ -352,7 +352,10 @@ AC_OUTPUT( Makefile
 	   src/worldobjsdata/Makefile
 	   src/worldmap/Makefile
            data/Makefile 
-           data/images/Makefile 
+           data/images/Makefile
+           data/controller/Makefile 
+           data/sounds/Makefile 
+           data/music/Makefile 
            data/levels/Makefile
            data/levels/plf/Makefile
            data/themes/Makefile

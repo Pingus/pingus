@@ -1,4 +1,4 @@
-//  $Id: starfield_background.cxx,v 1.1 2002/09/16 20:52:22 torangan Exp $
+//  $Id: starfield_background.cxx,v 1.2 2002/09/24 14:51:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,15 +58,13 @@ StarfieldBackground::update (float delta)
 }
 
 void 
-StarfieldBackground::draw_offset (int x_of, int y_of, float s)
+StarfieldBackground::draw (GraphicContext& gc)
 {
   for (std::vector<StarfieldBackgroundStars*>::iterator i = stars.begin();
        i != stars.end(); ++i)
     {
-      (*i)->draw_offset(x_of, y_of);
+      (*i)->draw (gc);
     }
-
-  UNUSED_ARG(s);
 }
 
 } // namespace WorldObjs

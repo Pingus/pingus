@@ -1,4 +1,4 @@
-//  $Id: liquid.cxx,v 1.7 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: liquid.cxx,v 1.8 2002/09/24 14:51:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,9 @@ Liquid::on_startup()
 void
 Liquid::draw (GraphicContext& gc)
 {
-  for(int x = static_cast<int>(pos.x); x <= pos.x + width; x += sur.get_width())
+  for(int x = static_cast<int>(pos.x);
+      x < pos.x + width;
+      x += sur.get_width())
     gc.draw(sur, x, static_cast<int>(pos.y), static_cast<int>(counter));
   
   ++counter;

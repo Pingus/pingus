@@ -1,4 +1,4 @@
-//  $Id: true_server.hxx,v 1.4 2002/08/23 15:49:51 torangan Exp $
+//  $Id: true_server.hxx,v 1.5 2002/09/24 14:51:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,6 @@ public:
   TrueServer(PLF* plf);
   virtual ~TrueServer();
 
-  bool enough_time_passed(void);
   void update(float delta);
   bool needs_redraw();
   /** Return a reference to the plf used for this level */
@@ -56,6 +55,9 @@ public:
   bool get_armageddon ();
   
 private:
+  bool enough_time_passed(void);
+  int  time_till_next_update();
+  
   TrueServer (const TrueServer&);
   TrueServer operator= (const TrueServer&);
 };
