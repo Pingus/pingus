@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.10 2002/06/29 16:04:22 grumbel Exp $
+//  $Id: editor.cxx,v 1.11 2002/06/30 09:01:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -161,6 +161,9 @@ Editor::edit ()
       draw();
       gui->show ();
       //std::cout << "GUI has Focus: " << (gui->get_focus () !=  gui) << std::endl;
+      if (get_gui_manager ()->get_focus () == get_gui_manager ())
+	CL_Display::draw_rect (25, 0, CL_Display::get_width (), CL_Display::get_height (),
+			       1.0f, 1.0f, 1.0f);
       Display::flip_display(true);
     }
 

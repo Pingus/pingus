@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.5 2002/06/28 15:12:22 torangan Exp $
+//  $Id: xml_plf.cxx,v 1.6 2002/06/30 09:01:02 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -327,8 +327,9 @@ XMLPLF::parse_actions(xmlNodePtr cur)
 	  }
 	  free(number);
 	}
+
       actions.push_back(button);
-	  
+      
       cur = cur->next;
     }      
 }

@@ -1,4 +1,4 @@
-//  $Id: action_window.cxx,v 1.4 2002/06/29 14:01:32 grumbel Exp $
+//  $Id: action_window.cxx,v 1.5 2002/06/30 09:01:02 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -134,6 +134,7 @@ void
 ActionWindow::write_data ()
 {
   std::cout << "Writing data" << std::endl;
+
   for (unsigned int i = 0; i < default_actions.size(); ++i)  
     {
       if (checkboxes[i]->is_checked ())
@@ -155,7 +156,9 @@ ActionWindow::write_data ()
 	}
       else
 	{
-	  std::remove_if (actions->begin (), actions->end (), is_equal(default_actions[i].name));
+	  std::vector<ActionData>::iterator pos
+	    = std::remove_if (actions->begin (), actions->end (), is_equal(default_actions[i].name));
+	  actions->erase(pos, actions->end ());
 	}
     }
 }
