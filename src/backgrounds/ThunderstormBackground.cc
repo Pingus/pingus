@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackground.cc,v 1.8 2002/01/15 10:48:50 grumbel Exp $
+//  $Id: ThunderstormBackground.cc,v 1.9 2002/01/26 11:59:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,7 @@
 
 ThunderstormBackground::ThunderstormBackground()
 {
-  clouds_sur = PingusResource::load_surface("thunderstorm", "thunderstorm");
+  clouds_sur = PingusResource::load_surface("Textures/thunderstorm", "textures");
   // flash_sur.push_back(PingusResource::load_surface("flash1", "thunderstorm"));
   // flash_sur.push_back(PingusResource::load_surface("flash2", "thunderstorm"));
   x_pos = 0;

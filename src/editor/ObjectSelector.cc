@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.58 2002/01/26 10:53:37 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.59 2002/01/26 11:59:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -480,9 +480,18 @@ ObjectSelector::get_background()
       switch (read_key()) 
 	{
 	case CL_KEY_1:
-	  lst.push_back(boost::shared_ptr<EditorObj>
-			(new EditorSurfaceBackground 
-			 (SurfaceBackgroundData ())));
+	  {
+	    SurfaceBackgroundData data;
+	    data.desc.datafile = "textures";
+	    data.desc.res_name = select_surface("textures");
+
+	    if (!data.desc.res_name.empty())
+	      {
+		lst.push_back(boost::shared_ptr<EditorObj>
+			      (new EditorSurfaceBackground(data)));
+	      }
+	    
+	  }
 	  exit_loop = true;
 	  break;
 	case CL_KEY_2:
@@ -505,7 +514,6 @@ ObjectSelector::get_background()
 	  break;
 	}
     }
-  //select_surface("textures");
   return lst;
 }
 
