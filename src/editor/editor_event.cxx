@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.25 2002/08/02 11:25:47 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.26 2002/08/04 19:57:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@
 #include "../screen_manager.hxx"
 
 EditorEvent::EditorEvent()
-  : is_enabled (1)
+  : is_enabled (false)
 {
   for (float i = 0; i < 1.0f; i += 0.1f)
     background_colors.push_back (Color (i, i, i));
@@ -78,21 +78,15 @@ EditorEvent::set_editor(Editor* e)
 void
 EditorEvent::enable()
 {
-  ++is_enabled;
-  
-  if (is_enabled)
-    editor->get_gui_manager ()->enable_input ();
+  is_enabled = true;
+  editor->get_gui_manager ()->enable_input ();
 }
 
 void
 EditorEvent::disable()
 {
-  --is_enabled;
-
-  if (is_enabled == 0)
-    {
-      editor->get_gui_manager ()->disable_input ();
-    }
+  is_enabled = false;
+  editor->get_gui_manager ()->disable_input ();
 }
 
 void
@@ -510,7 +504,7 @@ EditorEvent::editor_start_current_level()
 
   try {
     std::string levelfile = editor->save_tmp_level();
-    ScreenManager::instance()->push_screen(new PingusGameSession (levelfile));
+    ScreenManager::instance()->push_screen(new PingusGameSession (levelfile), true);
   }
   
   catch(PingusError err) {

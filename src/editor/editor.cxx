@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.20 2002/08/04 15:42:23 grumbel Exp $
+//  $Id: editor.cxx,v 1.21 2002/08/04 19:57:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -89,10 +89,18 @@ Editor::Editor () : event_handler_ref_counter(0),
   status_line->set_current_objs(&selection->get_objects());
   panel->set_editor(this);
   scroll_map->editor_event = event;
+
+  std::cout << "Editor: registering event handler" << event << "... " << std::flush; 
+  on_button_press_slot = CL_Input::sig_button_press ().connect(event, &EditorEvent::on_button_press);
+  on_button_release_slot = CL_Input::sig_button_release ().connect(event, &EditorEvent::on_button_release);
 }
 
 Editor::~Editor ()
 {
+  std::cout << "Editor: unregistering event handler" << event << "... " << std::flush; 
+  CL_Input::sig_button_press ().disconnect (on_button_press_slot);
+  CL_Input::sig_button_release ().disconnect (on_button_release_slot);
+
   delete object_manager;
   delete status_line;
   delete object_selector;
@@ -103,63 +111,22 @@ Editor::~Editor ()
 }
 
 void
-Editor::register_event_handler()
-{
-  if (event_handler_ref_counter == 0)
-    {
-      event_handler_ref_counter++;
-      CL_System::keep_alive();
-      if (verbose) std::cout << "Editor: Registering event handler..." << event << std::flush; 
-
-      //CL_Input::chain_button_press.push_back(event);
-      //CL_Input::chain_button_release.push_back(event);
-
-      on_button_press_slot
-	= CL_Input::sig_button_press ().connect(event, &EditorEvent::on_button_press);
-      on_button_release_slot
-	= CL_Input::sig_button_release ().connect(event, &EditorEvent::on_button_release);
-
-      if (verbose) std::cout << "done: " << event_handler_ref_counter << std::endl;
-    }
-  else
-    {
-      if (verbose) std::cout << "Editor: event_handler already installed" << std::endl;
-    }
-}
-
-void
-Editor::unregister_event_handler()
-{
-  event_handler_ref_counter--;
-  if (verbose) std::cout << "Editor: unregistering event handler" << event << "... " << std::flush; 
-
-  //CL_Input::chain_button_release.remove(event);
-  //CL_Input::chain_button_press.remove(event);
-
-  CL_Input::sig_button_press ().disconnect (on_button_press_slot);
-  CL_Input::sig_button_release ().disconnect (on_button_release_slot);
-
-  CL_System::keep_alive();
-  if (verbose) std::cout << "done: " << event_handler_ref_counter << std::endl;
-}
-
-void
 Editor::on_startup ()
 {
+  std::cout << "Editor::on_startup ()" << std::endl;
   quit = false;
 
   Display::set_cursor(CL_MouseCursorProvider::load("cursors/cursor", PingusResource::get("core")));
-  
   Display::show_cursor();
-
-  register_event_handler();
+  event->enable ();
 }
 
 void
 Editor::on_shutdown ()
 {
-  unregister_event_handler();
+  std::cout << "Editor::on_shutdown ()" << std::endl;
   Display::hide_cursor(); 
+  event->disable ();
 }
 
 void

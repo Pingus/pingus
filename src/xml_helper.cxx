@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.8 2002/06/28 17:48:42 grumbel Exp $
+//  $Id: xml_helper.cxx,v 1.9 2002/08/04 19:57:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -202,7 +202,7 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 		      char* ident = (char*)xmlNodeListGetString(doc, ccur->children, 1);
 		      if (ident) 
 			{
-			  std::cout << "Seen: modifier: " << ident << std::endl;
+			  //std::cout << "Seen: modifier: " << ident << std::endl;
 
 			  desc.modifier = rs_from_string(ident);
 			  free(ident);
@@ -255,11 +255,11 @@ XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
 		    }
 		  else if (strcmp((char*)ccur->name, "modifier") == 0)
 		    {
-		      std::cout << "Modifier!!!!!" << std::endl;
+		      //std::cout << "Modifier!!!!!" << std::endl;
 		      char* ident = (char*)xmlNodeListGetString(doc, ccur->children, 1);
 		      if (ident) 
 			{
-			  std::cout << "Seen: modifier: " << ident << std::endl;
+			  //std::cout << "Seen: modifier: " << ident << std::endl;
 		      
 			  desc.modifier = rs_from_string(ident);
 			  free(ident);

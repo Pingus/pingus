@@ -1,4 +1,4 @@
-//  $Id: screen.hxx,v 1.5 2002/08/02 11:25:47 grumbel Exp $
+//  $Id: screen.hxx,v 1.6 2002/08/04 19:57:15 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,8 @@ public:
       screen */
   virtual void on_startup () {}
 
-  /** Called once the screen gets replaced */ 
+  /** Called once the screen gets replaced or poped or shadowed by a
+      newly pushed screen */ 
   virtual void on_shutdown () {}
 };
 

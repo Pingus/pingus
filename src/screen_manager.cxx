@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.7 2002/08/04 15:42:23 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.8 2002/08/04 19:57:15 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -106,6 +106,14 @@ ScreenManager::instance ()
 void
 ScreenManager::push_screen (Screen* screen, bool delete_screen)
 {
+  std::cout << "XXXXXXXX ScreenManager::push_screen" << std::endl;
+  
+  if (!screens.empty())
+    {
+      std::cout << "ScreenManager::push_screen" << std::endl;
+      screens.back ().first->on_shutdown ();
+    }
+
   screen->on_startup ();
   screens.push_back (std::pair<Screen*, bool> (screen, delete_screen));
 }
@@ -128,6 +136,8 @@ ScreenManager::replace_screen (Screen* screen, bool delete_screen)
 void
 ScreenManager::real_replace_screen (Screen* screen, bool delete_screen)
 {
+  std::cout << "XXXXXXXX ScreenManager::replace_screen" << std::endl;
+
   screens.back ().first->on_shutdown ();
 
   if (screens.back ().second) // delete_screen
@@ -140,6 +150,8 @@ ScreenManager::real_replace_screen (Screen* screen, bool delete_screen)
 void
 ScreenManager::real_pop_screen ()
 {
+  std::cout << "XXXXXXXX ScreenManager::pop_screen" << std::endl;
+
   screens.back ().first->on_shutdown ();
 
   if (screens.back ().second) // delete_screen

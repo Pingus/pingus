@@ -1,4 +1,4 @@
-//  $Id: editor_event.hxx,v 1.11 2002/07/02 13:36:06 torangan Exp $
+//  $Id: editor_event.hxx,v 1.12 2002/08/04 19:57:16 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,7 @@ class EditorSelection;
 class EditorEvent //: public CL_Event_ButtonPress, public CL_Event_ButtonRelease
 {
 private:
-  int is_enabled;
+  bool is_enabled;
   CL_Font* font;
 
   std::vector<Color> background_colors;

@@ -1,4 +1,4 @@
-//  $Id: editor.hxx,v 1.9 2002/08/04 15:42:23 grumbel Exp $
+//  $Id: editor.hxx,v 1.10 2002/08/04 19:57:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -117,9 +117,6 @@ public:
   void load_level (const std::string& str);
 
   void toggle_help_screen ();
-
-  void register_event_handler();
-  void unregister_event_handler();
 
   ObjectManager* get_object_manager() { return object_manager; }
   std::string save_tmp_level ();
