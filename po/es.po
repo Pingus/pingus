@@ -562,7 +562,7 @@ msgid ""
 "That was OK, but Pingu life insurance premiums have just gotten more "
 "expensive."
 msgstr ""
-"Bien, pero las aseguranzas de vida de los pingüinos se han revalorizado al alza".
+"Bien, pero las aseguranzas de vida de los pingüinos se han revalorizado al alza."
 
 #: src/level_result.cxx:109
 msgid "Maybe this level calls for a different strategy."
@@ -602,8 +602,9 @@ msgstr "Porfa asegúrame que le has dado al botón de Armageddon"
 
 #: src/level_result.cxx:125
 msgid "You've got a negative save/total value, something is buggy."
-msgstr "I Pingus da salvare sono più che nel totale, qualcosa non va."
-msgstr "Tu relación de pingüinos en total/salvados es negativa. Algo falla."
+msgstr ""
+"I Pingus da salvare sono più che nel totale, qualcosa non va."
+"Tu relación de pingüinos en total/salvados es negativa. Algo falla."
 
 #: src/menu_button.cxx:177
 msgid "..:: The people who brought this game to you ::.."
@@ -1318,7 +1319,7 @@ msgstr ""
 "Dado que el viaje será peligroso y difícil, tu primer objetivo\n"
 "es la Isla de Mogork, conocida también como Isla Tutorial.\n"
 "De acuerdo a los ancianos, ésta isla siempre ha sido la primera\n"
-"parada de los pingüinos que han sido enviados a explorar el mundo\n"
+"parada de los pingüinos que han sido enviados a explorar el mundo"
 
 #: src/story.cxx:146
 msgid ""
@@ -1356,7 +1357,7 @@ msgstr ""
 "Ahora que tú y los pingüinos habeis finalizado en Isla Tutorial\n"
 "es hora de tomar el mando y empezar tu misión.\n"
 "\n"
-\¡Buena suerte!"
+"¡Buena suerte!"
 
 #: src/system.cxx:265
 msgid "Environment variable $HOME not set, fix that and start again."
