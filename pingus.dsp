@@ -1761,6 +1761,22 @@ SOURCE=.\src\result_screen.hxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\savegame.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\savegame.hxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\savegame_manager.cxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\savegame_manager.hxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\screenshot.cxx
 # End Source File
 # Begin Source File

@@ -1,4 +1,4 @@
-//  $Id: stat.hxx,v 1.10 2002/10/12 23:34:43 grumbel Exp $
+//  $Id: stat.hxx,v 1.11 2003/03/26 12:01:17 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,17 +64,14 @@ public:
   PingusWorldMapStat (std::string worldmap_name);
   ~PingusWorldMapStat ();  
 
-  /** Save the given nodes status to the file from which they are
-      loaded */
-  //void save (std::list<boost::shared_ptr<Node> >& nodes);
-
-  /// @return true if the node is finished
+  /** @return true if the node is finished */
   bool finished (int id);
   
-  /// @return true if the node with the given id is accessible, false otherwise
+  /** @return true if the node with the given id is accessible, false
+      otherwise */
   bool accessible (int id);
 
-  bool empty () { return is_empty; } 
+  bool empty () { return is_empty; }
   
 private:
   PingusWorldMapStat (const PingusWorldMapStat&);

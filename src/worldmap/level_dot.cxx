@@ -1,4 +1,4 @@
-//  $Id: level_dot.cxx,v 1.13 2003/03/25 23:15:23 grumbel Exp $
+//  $Id: level_dot.cxx,v 1.14 2003/03/26 12:01:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@
 #include "../path_manager.hxx"
 #include "../start_screen.hxx"
 #include "../plf_res_mgr.hxx"
+#include "../savegame_manager.hxx"
 #include "level_dot.hxx"
 
 namespace WorldMapNS {
@@ -66,7 +67,21 @@ void
 LevelDot::draw(GraphicContext& gc)
 {
   //std::cout << "Drawing level dat: " << pos << std::endl;
-  gc.draw (green_dot_sur, pos);
+  Savegame* savegame = SavegameManager::instance()->get(levelname);
+  if (savegame 
+      && (savegame->status == Savegame::FINISHED
+          || savegame->status == Savegame::ACCESSIBLE))
+    {
+      gc.draw (green_dot_sur, pos);
+      if (savegame->status == Savegame::FINISHED)
+        {
+          // Draw Flag
+        }
+    }
+  else
+    {
+      gc.draw (red_dot_sur, pos);
+    }
 }
 
 void

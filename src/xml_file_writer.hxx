@@ -1,4 +1,4 @@
-//  $Id: xml_file_writer.hxx,v 1.3 2003/02/18 01:23:51 grumbel Exp $
+//  $Id: xml_file_writer.hxx,v 1.4 2003/03/26 12:01:17 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,6 +49,12 @@ public:
   void write_color  (const char* name, const Color&);
   void write_string (const char* name, const std::string&);
   void write_vector (const char* name, const Vector&);
+
+  template<class E, class F>
+  void write_enum (const char* name, E value, F enum2string) 
+  {
+    (*out) << "<" << name << ">" << enum2string(value) << "</" << name << ">\n";
+  }
   
 private:
   XMLFileWriter (const XMLFileWriter&);

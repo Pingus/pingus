@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.51 2003/03/21 22:08:06 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.52 2003/03/26 12:01:17 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -73,6 +73,7 @@
 #include "game_session.hxx"
 #include "story_screen.hxx"
 #include "start_screen.hxx"
+#include "savegame_manager.hxx"
 #include "demo_session.hxx"
 #include "debug.hxx"
 #include "editor/editor.hxx"
@@ -893,6 +894,8 @@ PingusMain::init_pingus()
 
   fps_counter.init();
   console.init();
+
+  SavegameManager::instance();
  
   // FIXME: See action_data.hxx, a bit ugly
   init_default_actions();

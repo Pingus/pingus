@@ -1,4 +1,4 @@
-//  $Id: xml_file_reader.hxx,v 1.3 2003/02/18 10:14:52 grumbel Exp $
+//  $Id: xml_file_reader.hxx,v 1.4 2003/03/26 12:01:17 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,6 +53,20 @@ public:
   bool read_bool  (const char* name, bool&);
   bool read_string(const char* name, std::string&);
   bool read_vector(const char* name, Vector&);
+
+  template<class E, class T>
+  bool read_enum  (const char* name, E& value, T enum2string)
+  {
+    xmlNodePtr node = find_node(name);
+    
+    if (node)
+      {
+        value = enum2string(XMLhelper::parse_string(doc, node));
+        return true;
+      }
+
+    return false;
+  }
 
   bool read_section(const char* name, XMLFileReader&);
 

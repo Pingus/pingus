@@ -414,6 +414,10 @@ src/result.cxx
 src/result.hxx
 src/result_screen.cxx
 src/result_screen.hxx
+src/savegame.cxx
+src/savegame.hxx
+src/savegame_manager.cxx
+src/savegame_manager.hxx
 src/screenshot.cxx
 src/screenshot.hxx
 src/server.cxx

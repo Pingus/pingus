@@ -782,6 +782,7 @@ worldmaps/tutorial_button_hl.jpg \
 worldmaps/tutorial_layer0.jpg \
 worldmaps/tutorial_layer1.png \
 worldmaps/tutorial_layer2.png \
+worldmaps/tutorial_layer3.png \
 worldmaps/volcano.jpg \
 worldobjs/conveyorbelt_cmap.png \
 worldobjs/conveyorbelt_left.png \
