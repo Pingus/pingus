@@ -1,4 +1,4 @@
-//  $Id: ActionButton.hh,v 1.18 2001/12/04 12:18:49 grumbel Exp $
+//  $Id: ActionButton.hh,v 1.19 2002/01/14 23:37:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -196,24 +196,13 @@ public:
 };
 
 // ----------------- snip --------------------
-
-///
-class HorizontalActionButton : public ActionButton 
-{
-private:
-public:
-  HorizontalActionButton(int x, int y, std::string str, int owner_id);
-  virtual ~HorizontalActionButton();
-
-  void draw();
-  bool mouse_over(const CL_Vector& pos);
-};
-
-// ----------------- snip --------------------
 ///
 class VerticalActionButton : public ActionButton 
 {
 private:
+  CL_Surface background;
+  CL_Surface backgroundhl;
+
 public:
   VerticalActionButton(int x, int y, std::string str, int owner_id);
   virtual ~VerticalActionButton();

@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0"  encoding="ISO-8859-1"?>
 
 <pingus-level>
   <global>
@@ -12,6 +12,17 @@
     <width>5000</width>
     <height>640</height>
   </global>
+
+  <action-list>
+    <basher count="20"/>
+    <blocker count="20"/>
+    <bomber count="20"/>
+    <bridger count="20"/>
+    <climber count="20"/>
+    <digger count="0"/>
+    <floater count="20"/>
+    <miner count="0"/>
+  </action-list>
 
 <background type="surface">
   <surface><resource type="datafile">
@@ -30,18 +41,12 @@
   <para-y>0.5</para-y>
   <stretch-x>0</stretch-x>
   <stretch-y>0</stretch-y>
+  <position>
+    <x-pos>0</x-pos>
+    <y-pos>0</y-pos>
+    <z-pos>-100</z-pos>
+  </position>
 </background>
-
-  <action-list>
-    <basher>20</basher>
-    <blocker>20</blocker>
-    <bomber>20</bomber>
-    <bridger>20</bridger>
-    <climber>20</climber>
-    <digger>0</digger>
-    <floater>20</floater>
-    <miner>0</miner>
-  </action-list>
 
 <groundpiece type="ground">
   <surface><resource type="datafile">
@@ -1114,6 +1119,18 @@
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Snow/gpiece1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>3784</x-pos>
+    <y-pos>245</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
   <resource-ident>GroundPieces/Misc/piece8</resource-ident>
   </resource></surface>
   <position>
@@ -1333,8 +1350,8 @@
   <resource-ident>GroundPieces/Misc/piece7</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>3661</x-pos>
-    <y-pos>220</y-pos>
+    <x-pos>3652</x-pos>
+    <y-pos>231</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -1357,8 +1374,8 @@
   <resource-ident>GroundPieces/Misc/piece7</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>3680</x-pos>
-    <y-pos>382</y-pos>
+    <x-pos>3692</x-pos>
+    <y-pos>348</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -1503,6 +1520,18 @@
   <position>
     <x-pos>3139</x-pos>
     <y-pos>386</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Snow/piece2</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>3740</x-pos>
+    <y-pos>232</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -1954,6 +1983,18 @@
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Snow/piece3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>3681</x-pos>
+    <y-pos>245</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
   <resource-ident>GroundPieces/Snow/gpiece1</resource-ident>
   </resource></surface>
   <position>
@@ -2077,18 +2118,6 @@
   <resource-ident>GroundPieces/Snow/gpiece1</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>3763</x-pos>
-    <y-pos>241</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Snow/gpiece1</resource-ident>
-  </resource></surface>
-  <position>
     <x-pos>4087</x-pos>
     <y-pos>496</y-pos>
     <z-pos>0</z-pos>
@@ -2128,19 +2157,8 @@
   <type>generic</type>
   <direction>left</direction>
   <release-rate>30</release-rate>
+  <owner-id>0</owner-id>
 </entrance>
-
-<exit>
-  <position>
-    <x-pos>4585</x-pos>
-    <y-pos>392</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <surface><resource type="datafile">
-    <resource-datafile>exits</resource-datafile>
-  <resource-ident>Exits/stone</resource-ident>
-  </resource></surface>
-</exit>
 
   <start-position>
   <position>
@@ -2149,6 +2167,18 @@
     <z-pos>1000</z-pos>
   </position>
   </start-position>
+
+<exit use-old-pos-handling="0">
+  <position>
+    <x-pos>4621</x-pos>
+    <y-pos>456</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <surface><resource type="datafile">
+    <resource-datafile>exits</resource-datafile>
+  <resource-ident>exits/ice2</resource-ident>
+  </resource></surface>
+  <owner-id>0</owner-id></exit>
 
 </pingus-level>
 

@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.22 2001/08/10 10:56:13 grumbel Exp $
+//  $Id: ButtonPanel.cc,v 1.23 2002/01/14 23:37:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,22 +50,11 @@ ButtonPanel::ButtonPanel(boost::shared_ptr<PLF> plf,
 
   for(std::vector<ActionData>::size_type i = 0; i < buttons_data.size(); i++)
     {
-      if (horizontal_button_panel) 
-	{
-	  a_buttons.push_back(shared_ptr<ActionButton>(new HorizontalActionButton
-						       (38 * i + x_pos,
-							y_pos,
-							buttons_data[i].name,
-							controller->get_owner ())));
-	}
-      else
-	{
-	  a_buttons.push_back(shared_ptr<ActionButton>(new VerticalActionButton
-						       (x_pos,
-							i * 38 + y_pos,
-							buttons_data[i].name,
-							controller->get_owner ())));
-	}
+      a_buttons.push_back(shared_ptr<ActionButton>(new VerticalActionButton
+						   (x_pos,
+						    i * 38 + y_pos,
+						    buttons_data[i].name,
+						    controller->get_owner ())));
     }
 
   armageddon = shared_ptr<ArmageddonButton>(new ArmageddonButton(CL_Display::get_width() - 38, 

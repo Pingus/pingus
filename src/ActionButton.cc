@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.24 2002/01/13 15:24:18 grumbel Exp $
+//  $Id: ActionButton.cc,v 1.25 2002/01/14 23:37:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -139,79 +139,9 @@ ActionButton::set_action_holder(ActionHolder* h)
   action_holder = h;
 }
 
-
-HorizontalActionButton::HorizontalActionButton(int x, int y, std::string str, int owner_id)
-{
-  init(x, y, str, owner_id);  
-}
-
-HorizontalActionButton::~HorizontalActionButton() {}
-
-bool
-HorizontalActionButton::mouse_over(const CL_Vector& pos)
-{
-  if (pos.x > x_pos && pos.x <= x_pos + 37
-      && pos.y > y_pos && pos.y < y_pos + 55) 
-    {
-      return true;
-    } 
-  else 
-    {
-      return false;
-    }
-}
-
-// HorizontalActionButton
-void
-HorizontalActionButton::draw()
-{
-  std::string str;
-  // FIXME: This could need some optimization, throwing strings all
-  // around, doesn't look like a good idea. 
-  available = action_holder->get_available(name);
-
-  if (unlimited_actions) {
-    str = "oo";
-  } else {
-    str = to_string(available);
-  }
-
-  if (pressed) 
-    {
-      if (fast_mode) {
-	CL_Display::fill_rect(x_pos + 1, y_pos, x_pos + 37, y_pos + 55 ,
-			      1.0f, 1.0f, 1.0f, 1.0f);
-      } else {
-	CL_Display::fill_rect(x_pos + 1, y_pos, x_pos + 37, y_pos + 55 ,
-			      1.0f, 1.0f, 1.0f, 0.5f);
-      }
-      font_h->print_center(x_pos + 25, y_pos + 5, str.c_str ());
-    }
-  else
-    {
-      action_c = (action_c.size() - 1)/2;
-      if (fast_mode) {
-	// do nothing
-      } else {
-	CL_Display::fill_rect(x_pos + 1, y_pos, x_pos + 37, y_pos + 55 ,
-			      0.4f, 0.4f, 0.4f, 0.5f);
-      }
-      font->print_center(x_pos + 25, y_pos + 5, str.c_str ());
-    }
-
-  // print the action name under the button, when mouse pointer is 
-  // on the button.
-  if(action_help
-     && CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + 37
-     && CL_Mouse::get_y() < y_pos + 55 && CL_Mouse::get_y() > y_pos) 
-  {
-	font_b->print_left( x_pos, y_pos + 56, name.c_str());
-  }
-
-  surface.put_screen(x_pos + 3, y_pos + 20, action_c);
-}
-
 VerticalActionButton::VerticalActionButton(int x, int y, std::string str, int owner_id)
+  : background (PingusResource::load_surface("buttons/buttonbackground", "core")),
+    backgroundhl (PingusResource::load_surface("buttons/buttonbackgroundhl", "core"))
 {
   init(x, y, str, owner_id);
 }
@@ -237,7 +167,7 @@ VerticalActionButton::draw()
 {
   std::string str;
   // FIXME: This could need some optimization, throwing strings all
-  // around, doesn't look like a good idea. 
+  // FIXME: around, doesn't look like a good idea. 
   available = action_holder->get_available(name);
 
   if (unlimited_actions) {
@@ -252,10 +182,11 @@ VerticalActionButton::draw()
 	CL_Display::fill_rect(x_pos, y_pos, x_pos + 60, y_pos + 35 ,
 			      1.0, 1.0, 1.0, 1.0);
       } else {
-	CL_Display::fill_rect(x_pos, y_pos, x_pos + 60, y_pos + 35 ,
-			      1.0, 1.0, 1.0, 0.5);
+	//CL_Display::fill_rect(x_pos, y_pos, x_pos + 60, y_pos + 35 ,
+	//1.0, 1.0, 1.0, 0.5);
+	backgroundhl.put_screen (x_pos + 2, y_pos + 1);
       }
-      font_h->print_center(x_pos + 50, y_pos + 16, str.c_str ());
+      font_h->print_center(x_pos + 48, y_pos + 11, str.c_str ());
     }
   else
     {
@@ -264,10 +195,9 @@ VerticalActionButton::draw()
       if (fast_mode) {
 	// do nothing
       } else {
-	CL_Display::fill_rect(x_pos + 1, y_pos, x_pos + 60, y_pos + 35 ,
-			      0.4f, 0.4f, 0.4f, 0.5f);
+	background.put_screen (x_pos + 2, y_pos + 1);
       }
-      font->print_center(x_pos + 50, y_pos + 16, str.c_str ());
+      font->print_center(x_pos + 47, y_pos + 11, str.c_str ());
     }
 
   // print the action name next to the button, when mouse pointer is on
@@ -276,10 +206,12 @@ VerticalActionButton::draw()
      && CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + 60
      && CL_Mouse::get_y() < y_pos + 35 && CL_Mouse::get_y() > y_pos) 
   {
-	font_b->print_left (x_pos + 61, y_pos, name.c_str());
+	font_b->print_left (x_pos + 65, y_pos, name.c_str());
   }
 
-  surface.put_screen(x_pos + 3, y_pos + 1, action_c);
+  surface.put_screen(x_pos + 20 - surface.get_width ()/2,
+		     y_pos + 17 - surface.get_height ()/2,
+		     action_c);
 }
 
 ArmageddonButton::ArmageddonButton(int x, int y)

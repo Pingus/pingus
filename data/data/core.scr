@@ -45,6 +45,9 @@ section editor
 
 section buttons
 {
+	buttonbackground = ../images/core/buttons/buttonbackground.png (type=surface);
+	buttonbackgroundhl = ../images/core/buttons/buttonbackgroundhl.png (type=surface);
+
 	back = ../images/core/buttons/back.png (type=surface, x=0, y=0, width=64, height=34, tcol=0);
 
         pause = ../images/core/buttons/pause.png (type=surface, x=0, y=0, width=38, height=56);

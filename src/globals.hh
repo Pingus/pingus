@@ -1,4 +1,4 @@
-//  $Id: globals.hh,v 1.35 2002/01/13 15:24:18 grumbel Exp $
+//  $Id: globals.hh,v 1.36 2002/01/14 23:37:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,6 @@ extern bool   previews_enabled;  /// --disable-previews
 extern bool   unlimited_actions; /// --enable-uactions
 extern bool   quick_play;        /// -q, --quick_play
 extern bool   maintainer_mode;   /// --maintainer-mode
-extern bool   horizontal_button_panel; ///
 extern bool   start_editor;   ///
 extern std::string demo_file; ///
 extern bool   auto_scrolling;    /// --enable-auto-scrolling

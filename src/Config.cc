@@ -1,4 +1,4 @@
-//  $Id: Config.cc,v 1.15 2001/12/05 09:15:50 grumbel Exp $
+//  $Id: Config.cc,v 1.16 2002/01/14 23:37:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -343,10 +343,6 @@ Config::set_value(std::string valueid,
   else if (valueid == "auto_scrolling")
     {
       auto_scrolling = str_to_bool(value);
-    }
-  else if (valueid == "horizontal_button_panel")
-    {
-      horizontal_button_panel = str_to_bool(value);
     }
   else if (valueid == "verbose")
     {
