@@ -1,4 +1,4 @@
-//  $Id: input_debug_screen.cxx,v 1.6 2002/10/31 13:58:42 torangan Exp $
+//  $Id: input_debug_screen.cxx,v 1.7 2002/12/20 01:22:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,7 @@
 #include <iostream>
 #include <ClanLib/Core/System/system.h>
 #include "input/event.hxx"
-#include "input/scroll_event.hxx"
+//#include "input/scroll_event.hxx"
 #include "input_debug_screen.hxx"
 
 using namespace Input;
@@ -49,35 +49,33 @@ void
 InputDebugScreen::update (const GameDelta& delta)
 {
   std::cout << "InputDebugScreen::update (" << delta.get_time () << ")" << std::endl;
-  for (std::list<Input::Event*>::const_iterator i = delta.get_events ().begin (); 
+  for (Input::EventLst::const_iterator i = delta.get_events ().begin (); 
        i != delta.get_events ().end ();
        ++i)
     {
-      switch((*i)->get_type())
+      switch(i->type)
         {
         case ButtonEventType:
-          std::cout << "InputDebugScreen: Button event : " << (*i)->get_type() << std::endl;
+          std::cout << "InputDebugScreen: Button event : " << i->type << std::endl;
           break;
 
         case PointerEventType:
-          std::cout << "InputDebugScreen: Pointer event : " << (*i)->get_type() << std::endl;
+          std::cout << "InputDebugScreen: Pointer event : " << i->type << std::endl;
           break;
 
         case AxisEventType:
-          std::cout << "InputDebugScreen: Axis event : " << (*i)->get_type() << std::endl;
+          std::cout << "InputDebugScreen: Axis event : " << i->type << std::endl;
 
           break;
         case ScrollEventType:
           { 
-            ScrollEvent* ev = dynamic_cast<ScrollEvent*>(*i);
-            assert(ev);
             std::cout << "InputDebugScreen: Scroll event : " 
-                      << ev->x_delta << " " << ev->y_delta << std::endl;
+                      << i->scroll.x_delta << " " << i->scroll.y_delta << std::endl;
           }
           break;
 
         default:
-          std::cout << "InputDebugScreen: Unknown event : " << (*i)->get_type() << std::endl;
+          std::cout << "InputDebugScreen: Unknown event : " << i->type << std::endl;
           break;
         }
     }

@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.27 2002/10/26 17:31:42 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.28 2002/12/20 01:22:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -189,10 +189,12 @@ SmallMap::draw (GraphicContext& gc)
 
   sur.put_screen(x_pos, y_pos); 
 
+#if 0
   if (has_focus)
     Display::draw_rect(x_pos, y_pos,
 		       x_pos + sur.get_width (), y_pos + sur.get_height () - 1, 
 		       1.0f, 1.0f, 1.0f, 1.0f);
+#endif
 		       
   
   x_of = x_pos - x_of * width / client->get_server()->get_world()->get_colmap()->get_width();

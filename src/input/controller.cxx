@@ -1,4 +1,4 @@
-//  $Id: controller.cxx,v 1.25 2002/11/02 19:21:39 grumbel Exp $
+//  $Id: controller.cxx,v 1.26 2002/12/20 01:22:32 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,18 +20,21 @@
 #include "../debug.hxx"
 #include "../xml_helper.hxx"
 #include "../pingus_error.hxx"
-#include "axis_event.hxx"
+
+/*#include "axis_event.hxx"
 #include "axis_factory.hxx"
 #include "button_factory.hxx"
+#include "pointer_event.hxx"
+*/
 #include "controller.hxx"
 #include "axes/dummy_axis.hxx"
 #include "buttons/dummy_button.hxx"
 #include "pointers/dummy_pointer.hxx"
 #include "scrollers/dummy_scroller.hxx"
-#include "pointer_event.hxx"
 #include "pointer_factory.hxx"
 #include "scroller_factory.hxx"
-#include "scroll_event.hxx"
+#include "button_factory.hxx"
+//#include "scroll_event.hxx"
 
 namespace Input {
 
@@ -212,10 +215,6 @@ Controller::create_action_buttons (xmlNodePtr cur)
 void
 Controller::update (float delta)
 {
-  // FIXME: all this new/delete with events is ugly
-  for (std::list<Event*>::iterator it = events.begin(); it != events.end(); ++it)
-    delete *it;
-
   events.clear ();
 
   scroller        ->update(delta);
@@ -229,20 +228,20 @@ Controller::update (float delta)
       std_pointer_x = standard_pointer->get_x_pos();
       std_pointer_y = standard_pointer->get_y_pos();
 	
-      events.push_back(new PointerEvent(standard, std_pointer_x, std_pointer_y));
+      events.push_back(makePointerEvent(standard, std_pointer_x, std_pointer_y));
     }
       
   if (scroller->get_x_delta() || scroller->get_y_delta())
-    events.push_back(new ScrollEvent(scroller->get_x_delta(), scroller->get_y_delta()));
+    events.push_back(makeScrollEvent(scroller->get_x_delta(), scroller->get_y_delta()));
     
   for (std::map<ButtonName, std::pair<Button*, bool> >::iterator it = buttons.begin(); it != buttons.end(); ++it)
     if (it->second.first->is_pressed() != it->second.second)
       {
         it->second.second = ! it->second.second;
         if (it->second.second)
-          events.push_back(new ButtonEvent(it->first, pressed));
+          events.push_back(makeButtonEvent(it->first, pressed));
         else
-          events.push_back(new ButtonEvent(it->first, released));
+          events.push_back(makeButtonEvent(it->first, released));
       }
 }
 

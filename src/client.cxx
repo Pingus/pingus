@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.35 2002/11/08 01:38:27 grumbel Exp $
+//  $Id: client.cxx,v 1.36 2002/12/20 01:22:32 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,9 +41,6 @@
 // Input
 #include "input/controller.hxx"
 #include "input/event.hxx"
-#include "input/axis_event.hxx"
-#include "input/scroll_event.hxx"
-#include "input/button_event.hxx"
 
 Client::Client (TrueServer * s)
   : server       (s),
@@ -112,31 +109,31 @@ Client::update (const GameDelta& delta)
 void
 Client::process_events (const GameDelta& delta)
 {
-  const std::list<Input::Event*>& events = delta.get_events ();
+  const Input::EventLst& events = delta.get_events ();
 
-  for (std::list<Input::Event*>::const_iterator i = events.begin (); 
+  for (Input::EventLst::const_iterator i = events.begin (); 
        i != events.end (); 
        ++i)
     {
       //std::cout << "Events: " << (*i)->get_type () << std::endl;
     
-      switch ((*i)->get_type ())
+      switch (i->type)
 	{
 	case Input::ButtonEventType:
           {
-            Input::ButtonEvent* ev = dynamic_cast<Input::ButtonEvent* const>(*i);
+            const Input::ButtonEvent& ev = i->button;
             
-            if (ev->state == Input::pressed)
+            if (ev.state == Input::pressed)
               {
-                if (ev->name >= Input::action_1 && ev->name <= Input::action_10)
+                if (ev.name >= Input::action_1 && ev.name <= Input::action_10)
                   {
-                    button_panel->set_button(ev->name - Input::action_1);
+                    button_panel->set_button(ev.name - Input::action_1);
                   }
-                else if (ev->name == Input::action_down)
+                else if (ev.name == Input::action_down)
                   {
                     button_panel->next_action();
                   }
-                else if (ev->name == Input::action_up)
+                else if (ev.name == Input::action_up)
                   {
                     button_panel->previous_action();
                   }
@@ -151,31 +148,31 @@ Client::process_events (const GameDelta& delta)
 
 	case Input::AxisEventType:
           // ???
-	  process_axis_event (dynamic_cast<Input::AxisEvent* const>(*i));
+	  process_axis_event (i->axis);
 	  break;
 	  
         case Input::ScrollEventType:
-          process_scroll_event(dynamic_cast<Input::ScrollEvent* const>(*i));
+          process_scroll_event(i->scroll);
           break;
 
 	default:
 	  // unhandled event
-	  std::cout << "Client::process_events (): unhandled event: " << (*i)->get_type() << std::endl;
+	  std::cout << "Client::process_events (): unhandled event: " << i->type << std::endl;
 	  break;
 	}
     }
 }
 
 void
-Client::process_scroll_event (Input::ScrollEvent* ev)
+Client::process_scroll_event (const Input::ScrollEvent& ev)
 {
   std::cout << "Client::process_scroll_event ()" << std::endl;    
-  playfield->scroll(static_cast<int>(ev->x_delta),
-                    static_cast<int>(ev->y_delta));
+  playfield->scroll(static_cast<int>(ev.x_delta),
+                    static_cast<int>(ev.y_delta));
 }
 
 void
-Client::process_axis_event (Input::AxisEvent* event)
+Client::process_axis_event (const Input::AxisEvent& event)
 {
   std::cout << "Client::process_axis_event ()" << std::endl;
   UNUSED_ARG(event);

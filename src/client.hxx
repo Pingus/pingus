@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.24 2002/10/28 20:13:40 grumbel Exp $
+//  $Id: client.hxx,v 1.25 2002/12/20 01:22:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -111,8 +111,8 @@ public:
 
 private:
   void process_events (const GameDelta& events);
-  void process_scroll_event (Input::ScrollEvent*);
-  void process_axis_event (Input::AxisEvent*);
+  void process_scroll_event (const Input::ScrollEvent&);
+  void process_axis_event (const Input::AxisEvent&);
 
   Client (const Client&);
   Client& operator= (const Client&);

@@ -1,4 +1,4 @@
-//  $Id: controller.hxx,v 1.16 2002/11/02 19:21:39 grumbel Exp $
+//  $Id: controller.hxx,v 1.17 2002/12/20 01:22:32 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,50 +25,51 @@
 #include <string>
 #include <vector>
 #include "../libxmlfwd.hxx"
-#include "button_event.hxx"
+
+#include "event.hxx"
 
 namespace Input {
 
-  class Axis;
-  class Button;
-  class Event;
-  class Pointer;
-  class Scroller;
+class Axis;
+class Button;
+class Pointer;
+class Scroller;
 
-  class Controller {
+class Controller {
 
-    private:
-      Pointer*  standard_pointer;
-      Scroller* scroller;
+private:
+  Pointer*  standard_pointer;
+  Scroller* scroller;
     
-      std::map<ButtonName, std::pair<Button*, bool> > buttons;
+  std::map<ButtonName, std::pair<Button*, bool> > buttons;
       
-      std::list<Event*> events;
+  std::vector<Event> events;
 
-      float             std_pointer_x;
-      float             std_pointer_y;
+  float             std_pointer_x;
+  float             std_pointer_y;
 
-    public:
-      Controller (const std::string& configfile);
-      ~Controller ();
+public:
+  Controller (const std::string& configfile);
+  ~Controller ();
       
-      std::list<Event*>& get_events () { return events; }
+  std::vector<Event>& get_events () { return events; }
       
-      const Pointer * get_pointer     () const { return standard_pointer; }
-      const Scroller* get_scroller    () const { return scroller;         }
+  const Pointer * get_pointer     () const { return standard_pointer; }
+  const Scroller* get_scroller    () const { return scroller;         }
 
-      /// returns the requested Buttons::Button or 0 if it doesn't exist (e.g. undefined action Buttons::Button)
-      const Button* get_button (ButtonName name);
+  /// returns the requested Buttons::Button or 0 if it doesn't exist (e.g. undefined action Buttons::Button)
+  const Button* get_button (ButtonName name);
       
-      void update (float delta);
+  void update (float delta);
 
-    private:
-      void create_action_buttons (xmlNodePtr cur);
+private:
+  void create_action_buttons (xmlNodePtr cur);
       
-      Controller (const Controller&);
-      Controller& operator= (const Controller&);
-  };
-}
+  Controller (const Controller&);
+  Controller& operator= (const Controller&);
+};
+
+} // namespace Input
 
 #endif
 

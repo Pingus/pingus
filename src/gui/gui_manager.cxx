@@ -1,4 +1,4 @@
-//  $Id: gui_manager.cxx,v 1.17 2002/12/05 20:38:10 torangan Exp $
+//  $Id: gui_manager.cxx,v 1.18 2002/12/20 01:22:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,9 +19,7 @@
 
 #include "../debug.hxx"
 #include "../globals.hxx"
-#include "../input/axis_event.hxx"
-#include "../input/button_event.hxx"
-#include "../input/pointer_event.hxx"
+#include "../input/event.hxx"
 #include "../game_delta.hxx"
 
 #include "gui_manager.hxx"
@@ -62,34 +60,27 @@ GUIManager::update (const GameDelta& delta)
 void
 GUIManager::process_input (const GameDelta& delta)
 {
-  const std::list<Input::Event*>& events = delta.get_events();
+  const std::vector<Input::Event>& events = delta.get_events();
 
-  for (std::list<Event*>::const_iterator i = events.begin (); i != events.end (); ++i)
+  for (std::vector<Input::Event>::const_iterator i = events.begin (); i != events.end (); ++i)
     {
-      switch ((*i)->get_type())
+      switch (i->type)
 	{
 	case Input::PointerEventType:
-	  {
-	    PointerEvent* event = dynamic_cast<PointerEvent*>(*i);
-	    process_pointer_event (event);
-	    break;
-	  }
+          process_pointer_event (i->pointer);
+          break;
+            
 	case Input::ButtonEventType:
-	  {
-	    ButtonEvent* event = dynamic_cast<ButtonEvent*>(*i);
-	    process_button_event (delta.get_absolute_time(), event);
-	    break;
-	  }
-	  
+          process_button_event (delta.get_absolute_time(), i->button);
+          break;
+	  	  
 	case Input::AxisEventType:
-	  { // AxisEvents can be ignored in the GUI, they are handled elsewhere
-	    AxisEvent* event = dynamic_cast<AxisEvent*>(*i);
-	    pout (PINGUS_DEBUG_GUI) << "GUIManager: AxisEvent: " << event->dir << std::endl;
-	    break;
-	  }
-	  
+          // AxisEvents can be ignored in the GUI, they are handled elsewhere
+          pout (PINGUS_DEBUG_GUI) << "GUIManager: AxisEvent: " << i->axis.dir << std::endl;
+          break;
+          
 	default:
-	  pwarn (PINGUS_DEBUG_GUI) << "GUIManager: unhandled event type " << (*i)->get_type() << std::endl;
+	  pwarn (PINGUS_DEBUG_GUI) << "GUIManager: unhandled event type " << i->type << std::endl;
 	  break;
 	}
     }
@@ -137,10 +128,10 @@ GUIManager::is_at (int x, int y)
 }
 
 void
-GUIManager::process_pointer_event (Input::PointerEvent* event)
+GUIManager::process_pointer_event (const Input::PointerEvent& event)
 {
-  x_pos = static_cast<int>(event->x);
-  y_pos = static_cast<int>(event->y);
+  x_pos = static_cast<int>(event.x);
+  y_pos = static_cast<int>(event.y);
 
   Component* comp = component_at(x_pos, y_pos);//FIXME
 
@@ -178,22 +169,22 @@ GUIManager::process_pointer_event (Input::PointerEvent* event)
 }
 
 void
-GUIManager::process_button_event (unsigned int time_stamp, Input::ButtonEvent* event)
+GUIManager::process_button_event (unsigned int time_stamp, const Input::ButtonEvent& event)
 {
-  //std::cout << "GUIManager: Got button event: " << event->name << " " << event->state << std::endl;
+  //std::cout << "GUIManager: Got button event: " << event.name << " " << event.state << std::endl;
 
   Component* comp = component_at (x_pos, y_pos);//FIXME: x/y_pos should be inside controller
 
   if (comp)
     {
-      if (event->name == primary && event->state == Input::pressed)
+      if (event.name == primary && event.state == Input::pressed)
 	{
 	  primary_pressed_component = comp;
 	  comp->on_primary_button_press (x_pos, y_pos);
 
           // FIXME: add double click detection here
 	}
-      else if (event->name == primary && event->state == Input::released) 
+      else if (event.name == primary && event.state == Input::released) 
 	{
 	  /** Send the release event to the same component
 	      which got the press event */
@@ -224,12 +215,12 @@ GUIManager::process_button_event (unsigned int time_stamp, Input::ButtonEvent* e
 	}
 		
       // Secondary button
-      if (event->name == secondary && event->state == Input::pressed) 
+      if (event.name == secondary && event.state == Input::pressed) 
 	{
 	  secondary_pressed_component = comp;
 	  comp->on_secondary_button_press (x_pos, y_pos);
 	}
-      else if (event->name == secondary && event->state == Input::released)
+      else if (event.name == secondary && event.state == Input::released)
 	{
 	  /** Send the release event to the same component
 	      which got the press event */

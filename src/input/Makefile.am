@@ -25,19 +25,15 @@ SUBDIRS = \
 
 libpingus_input_a_SOURCES =       \
 	axis.hxx \
-	axis_event.hxx \
 	axis_factory.hxx axis_factory.cxx \
 	button.hxx \
-	button_event.hxx \
 	button_factory.hxx button_factory.cxx \
 	controller.hxx controller.cxx \
 	event.hxx \
 	key_helper.hxx key_helper.cxx \
 	pointer.hxx \
-	pointer_event.hxx \
 	pointer_factory.hxx pointer_factory.cxx \
 	scroller.hxx \
-	scroller_factory.hxx scroller_factory.cxx \
-	scroll_event.hxx 
+	scroller_factory.hxx scroller_factory.cxx
 
 # EOF #

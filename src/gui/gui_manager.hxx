@@ -1,4 +1,4 @@
-//  $Id: gui_manager.hxx,v 1.12 2002/11/27 20:05:42 grumbel Exp $
+//  $Id: gui_manager.hxx,v 1.13 2002/12/20 01:22:32 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,17 +21,10 @@
 #define HEADER_PINGUS_GUI_GUI_MANAGER_HXX
 
 #include <vector>
-#include <list>
+#include "../input/event.hxx"
 #include "component.hxx"
 
 class GameDelta;
-
-namespace Input
-{
-  class Event;
-  class PointerEvent;
-  class ButtonEvent;
-}
 
 namespace GUI
 {
@@ -62,8 +55,8 @@ namespace GUI
     int y_pos;
 
     void process_input (const GameDelta& delta);
-    void process_pointer_event (Input::PointerEvent* event);
-    void process_button_event (unsigned int time_stamp, Input::ButtonEvent* event);
+    void process_pointer_event (const Input::PointerEvent& event);
+    void process_button_event (unsigned int time_stamp, const Input::ButtonEvent& event);
   public:
     GUIManager ();
     virtual ~GUIManager () {}

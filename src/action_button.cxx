@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.24 2002/12/05 20:38:09 torangan Exp $
+//  $Id: action_button.cxx,v 1.25 2002/12/20 01:22:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,18 +50,18 @@ ActionButton::init(int x, int y, ActionName name_, int owner_id)
   font   = PingusResource::load_font("Fonts/pingus_small", "fonts");
   font_b = PingusResource::load_font("Fonts/pingus",       "fonts");
 
-  sprite = Sprite("Pingus/" + action_to_string(name) + to_string(owner_id), "pingus", 20.0f);
+  sprite = Sprite("Pingus/" + action_to_string(name) + to_string(owner_id), "pingus", 25.0f);
   sprite.set_align_center_bottom();
 
   // FIXME: Big fat hack
   if (   name == Digger  || name == Bomber
       || name == Floater || name == Blocker)
     {
-      is_multi_direct = true;
+      is_multi_direct = false;
     }
   else
     {
-      is_multi_direct = false;
+      is_multi_direct = true;
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: gui_screen.cxx,v 1.14 2002/12/01 21:45:14 grumbel Exp $
+//  $Id: gui_screen.cxx,v 1.15 2002/12/20 01:22:32 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,6 @@
 #include <iostream>
 #include "globals.hxx"
 #include "debug.hxx"
-#include "input/button_event.hxx"
-#include "input/axis_event.hxx"
 #include "gui_screen.hxx"
 #include "gui/gui_manager.hxx"
 
@@ -56,10 +54,10 @@ GUIScreen::update (const GameDelta& delta)
 
   update (delta.get_time ());
 
-  for (std::list<Input::Event*>::const_iterator i = delta.get_events ().begin (); 
+  for (Input::EventLst::const_iterator i = delta.get_events ().begin (); 
        i != delta.get_events ().end (); ++i)
     {
-      switch ((*i)->get_type())
+      switch (i->type)
 	{
 	case Input::PointerEventType:
 	  {
@@ -69,16 +67,15 @@ GUIScreen::update (const GameDelta& delta)
 
 	case Input::ButtonEventType:
 	  {
-	    process_button_event (dynamic_cast<Input::ButtonEvent*>(*i));
+	    process_button_event (i->button);
 	  }
 	  break;
 
 	case Input::AxisEventType:
 	  {
-	    Input::AxisEvent* event = dynamic_cast<Input::AxisEvent*>(*i);
-	    if (event->name == Input::action)
+	    if (i->axis.name == Input::action)
 	      {
-		on_action_axis_move (event->dir);
+		on_action_axis_move (i->axis.dir);
 	      }
 	  }
 	  break;
@@ -90,20 +87,20 @@ GUIScreen::update (const GameDelta& delta)
 	  break;
 
 	default:
-	  std::cout << "GUIScreen::update (): unhandled event type: " << (*i)->get_type() << std::endl;
+	  std::cout << "GUIScreen::update (): unhandled event type: " << i->type << std::endl;
 	  break;
 	}
     }
 }
 
 void
-GUIScreen::process_button_event (const Input::ButtonEvent* event)
+GUIScreen::process_button_event (const Input::ButtonEvent& event)
 {
   //std::cout << "GUIScreen::process_button_event (Input::ButtonEvent* event)" << std::endl;
 
-  if (event->state == Input::pressed) 
+  if (event.state == Input::pressed) 
     {
-      switch (event->name)
+      switch (event.name)
 	{
 	case Input::primary:
 	  // ignoring, handled in the gui_manager
@@ -124,13 +121,13 @@ GUIScreen::process_button_event (const Input::ButtonEvent* event)
 	  on_escape_press ();
 	  break;
 	default:
-	  perr(PINGUS_DEBUG_GUI) << "GUIScreen: ButtonEvent: unhandled event: " << event->name << std::endl;
+	  perr(PINGUS_DEBUG_GUI) << "GUIScreen: ButtonEvent: unhandled event: " << event.name << std::endl;
 	  break;
 	}
     }
-  else if (event->state == Input::released) 
+  else if (event.state == Input::released) 
     {
-      switch (event->name)
+      switch (event.name)
 	{
 	case Input::primary:
 	  // ignoring, handled in the gui_manager
@@ -151,14 +148,14 @@ GUIScreen::process_button_event (const Input::ButtonEvent* event)
 	  on_escape_release ();
 	  break;
 	default:
-	  perr(PINGUS_DEBUG_GUI) << "GUIScreen: ButtonEvent: unhandled event: " << event->name << std::endl;
+	  perr(PINGUS_DEBUG_GUI) << "GUIScreen: ButtonEvent: unhandled event: " << event.name << std::endl;
 	  break;
 	}
     }
   else
     {
-      perr(PINGUS_DEBUG_GUI) << "GUIScreen::process_button_event: got unknown event->state: " 
-			     << event->state << std::endl;;
+      perr(PINGUS_DEBUG_GUI) << "GUIScreen::process_button_event: got unknown event.state: " 
+			     << event.state << std::endl;;
     }
 }
 
