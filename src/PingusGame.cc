@@ -1,4 +1,4 @@
-//  $Id: PingusGame.cc,v 1.5 2000/02/16 03:06:24 grumbel Exp $
+//  $Id: PingusGame.cc,v 1.6 2000/02/22 00:09:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -90,6 +90,8 @@ PingusGame::write_lastlevel_file(std::string levelfile)
 void
 PingusGame::start(std::string plf_filename, std::string psm_filename)
 {
+  if (verbose) std::cout << "PingusGame: start" << std::endl;
+
   try 
     {
       if (plf_filename.empty()) {
@@ -106,8 +108,13 @@ PingusGame::start(std::string plf_filename, std::string psm_filename)
 	if (server)
 	  delete server;
     
+	std::cout << "PingusGame: Creating Server..." << std::endl;
 	server = new TrueServer;
+	std::cout << "PingusGame: Creating Server... done" << std::endl;
+
+	std::cout << "PingusGame: Creating Client..." << std::endl;
 	client = new Client(server);
+	std::cout << "PingusGame: Creating Client.. done" << std::endl;
     
 	if (psm_filename.empty()) 
 	  {
@@ -125,6 +132,8 @@ PingusGame::start(std::string plf_filename, std::string psm_filename)
     {
       PingusMessageBox(" PingusError: " + err.message);
     }
+
+  if (verbose) std::cout << "PingusGame: start() done" << std::endl;
 }
 
 /* EOF */

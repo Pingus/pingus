@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.5 2000/02/16 23:34:11 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.6 2000/02/22 00:09:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "globals.hh"
 #include "AlphaButton.hh"
 #include "PingusGame.hh"
+#include "Credits.hh"
 // #include "FileSelector.hh"
 #include "PingusResource.hh"
 #include "PingusMessageBox.hh"
@@ -149,6 +150,18 @@ PingusMenu::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
   
   if (device == CL_Input::keyboards[0])
     {
+      switch(key.id)
+	{
+	case CL_KEY_C:
+	  {
+	    Credits credits;
+	    credits.display();
+	    menu->draw();
+	  }
+	  break;
+	default:
+	  cout << "Unknown key pressed:" << key.ascii << endl;
+	}
     }
   else if (device == CL_Input::pointers[0])
     {

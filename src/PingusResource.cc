@@ -1,4 +1,4 @@
-//  $Id: PingusResource.cc,v 1.3 2000/02/11 16:58:26 grumbel Exp $
+//  $Id: PingusResource.cc,v 1.4 2000/02/22 00:09:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,12 +36,12 @@ PingusResource::open(std::string filename)
 {
   std::string file_n;
 
-  if (verbose)
+  if (verbose > 1)
     std::cout << "PingusResource: Searching for file: " << filename << std::endl;
 
   file_n = find_file(pingus_datadir, "data/" + filename);
 
-  if (verbose)
+  if (verbose > 1)
     std::cout << "PingusResource: Found file: " << file_n << std::endl;
 
   if (filename != file_n) {

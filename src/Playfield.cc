@@ -1,4 +1,4 @@
-//  $Id: Playfield.cc,v 1.4 2000/02/15 13:09:50 grumbel Exp $
+//  $Id: Playfield.cc,v 1.5 2000/02/22 00:09:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,15 +67,6 @@ Playfield::Playfield(PLF* level_data, World* w)
     if (y2 >  CL_Display::get_height())
       y2 =  CL_Display::get_height();
 
-    if (verbose) 
-      {
-	std::cout << "Playfield: Using screen size: " 
-		  << x1 << ", "
-		  << y1 << ", " 
-		  << x2 << ", "
-		  << y2 << std::endl;
-      }
-    
     if (gimmicks_enabled) 
       {
 	if (verbose)

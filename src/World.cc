@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.6 2000/02/16 23:34:11 grumbel Exp $
+//  $Id: World.cc,v 1.7 2000/02/22 00:09:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -180,12 +180,12 @@ World::init(PLF* plf_data)
 
   exit_time = plf->get_time();
   
-  if (verbose)
-    std::cout << "World init" << std::endl;
-
   init_map();
   init_background();
+
+  std::cout << "World: Initing world objects... " << std::flush;
   init_worldobjs();
+  std::cout << "done" << std::endl;
 }
 
 void
@@ -205,21 +205,16 @@ World::init_map()
       break;
     }
   
-  if (verbose) std::cout << "World: Using AutoColMap" << std::endl;
-  
   colmap = map->get_colmap();
-
-  if (verbose) std::cout << "World: Loaded Colmap" << std::endl;
 }
 
 void 
 World::init_background()
 {
   // load the background map
+  if (verbose) std::cout << "World: Loading background..." << std::flush;
   background = new Background(plf->get_bg());
-
-  if (verbose)
-    std::cout << "Loaded Background" << std::endl;
+  if (verbose) std::cout << "done" << std::endl;
 }
 
 void
@@ -277,9 +272,6 @@ World::init_worldobjs()
 
   // After all objects are in world_obj, sort them to there z_pos
   stable_sort(world_obj.begin(), world_obj.end(), WorldObj_less());
-  
-  if (verbose) 
-    std::cout << "Finished Word init" << std::endl;
   
   if (sound_enabled) PingusSound::play(PingusSound::LETSGO);
 

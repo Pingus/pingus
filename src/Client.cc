@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.7 2000/02/17 01:25:26 grumbel Exp $
+//  $Id: Client.cc,v 1.8 2000/02/22 00:09:48 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,25 +75,23 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
 {
   vector<GuiObj* > obj;
  
-  if (verbose) 
-    {
-      std::cout << "Constructing Window Objs: " << plf_filename << std::endl;
-      std::cout << "Starting Level: '" << plf_filename << "'" << std::endl;
-    }
-
+  std::cout << "Client::play_level(), Reading PLF..." << std::flush;
   PLF*         plf          = new PLF(plf_filename);
+  std::cout << "done" << std::endl;
 
   // FIXME: dirty hack, should replace or merge the psm files
   {
     string filename = plf_filename.substr(0, plf_filename.size() - 4);
     
-    if (verbose) std::cout << "PSM: " << filename + ".psm" << std::endl;
+    if (verbose > 1) std::cout << "PSM: " << filename + ".psm" << std::endl;
     
     plf->set_psm_filename(filename + ".psm");
   }
   
   server->start(plf);
   event->register_event_handler();
+
+  if (verbose) std::cout << "Client: Generating UI elements..." << std::flush;
 
   playfield    = new Playfield(plf, server->get_world());
   button_panel = new ButtonPanel(plf);
@@ -114,9 +112,6 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
   
   if (record_demo)
     server->set_record_file(demo_file);
-    
-  if (verbose)
-    std::cout << "Constructing Window Objs finished" << std::endl;
 
   if (music_enabled) {
     // Constructing Pingus Music
@@ -134,10 +129,6 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
   playfield->set_server(server);
   playfield->set_client(this);
 
-  if (verbose)
-    std::cout << "Client: Entering main_loop. Startup time: " 
-	 << CL_System::get_time() << " msec." << std::endl;
-
     // Adding all GuiObj's to the screen
   //  obj.push_back(pingu_info);
   obj.push_back(playfield);
@@ -148,6 +139,13 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
 
   if (cursor_enabled)
     obj.push_back(cursor);
+
+  if (verbose) std::cout << "done" << std::endl;
+
+  if (verbose)
+    std::cout << "Client: Entering main_loop. Startup time: " 
+	 << CL_System::get_time() << " msec." << std::endl;
+
 
   // Clear both buffers
   CL_Display::clear_display();

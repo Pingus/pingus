@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.7 2000/02/18 03:08:41 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.8 2000/02/22 00:09:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -97,9 +97,9 @@ PingusSpotMap::PingusSpotMap(PLF* plf)
     case ResDescriptor::FILE:
       if (verbose) std::cout << "PingusSpotMap: Loading..." << std::endl;
       load(plf);
-      if (verbose) std::cout << "PingusSpotMap: Generating Tiles..." << std::endl;
+      if (verbose) std::cout << "PingusSpotMap: Generating Tiles..." << std::flush;
       gen_tiles();
-      if (verbose) std::cout << "PingusSpotMap: Generating Tiles... done" << std::endl;    
+      if (verbose) std::cout << "done" << std::endl;    
       break;
 
     default:
@@ -126,7 +126,7 @@ PingusSpotMap::~PingusSpotMap(void)
 void
 PingusSpotMap::gen_tiles(void)
 {
-  if (verbose) 
+  if (verbose > 1) 
     {
       std::cout << "PingusSpotMap_TilewWidth: " << width / tile_size << std::endl;
       std::cout << "PingusSpotMap_TilewHeight: " << height / tile_size << std::endl;
@@ -155,8 +155,14 @@ PingusSpotMap::load(PLF* plf)
 void
 PingusSpotMap::load(std::string filename)
 {
+  cout << "PingusSpotMap: Parsing file... " << flush;
   psm_parser.parse(filename);
+  cout << "done" << endl;
+  cout << "PingusSpotMap: Loading surfaces... " << flush;
   psm_parser.load_surfaces();
+  cout << "done" << endl;
+
+  cout << "PingusSpotMap: Generating Map... " << flush;
   surfaces = psm_parser.get_surfaces();
 
   if ((width % tile_size) != 0) 
@@ -199,6 +205,7 @@ PingusSpotMap::load(std::string filename)
   // Generate the map surface
   map_provider = canvas;
   map_surface = CL_Surface::create(map_provider, true);
+  cout << "done" << endl;
 }
 
 // Draws the map with a offset, needed for scrolling
@@ -254,7 +261,7 @@ PingusSpotMap::remove(CL_SurfaceProvider* sprovider, int x, int y)
   if (debug_actions) 
     {
       std::cout << "Bug: Debug actions is no longer supported" << std::endl;
-      put_surface(provider, sprovider, x, y);  
+      //put_surface(provider, sprovider, x, y);  
     } 
   else 
     {
@@ -335,14 +342,15 @@ PingusSpotMap::get_colmap(void)
       // Create a empty ColMap
       colmap = new ColMap(buffer, width, height);
       
-      if (verbose) std::cout << "PingusSpotMap: Putting objects to ColMap" << std::endl;
+      if (verbose) std::cout << "PingusSpotMap: Generating Colision Map..." << std::flush;
+      
       for(std::vector<surface_data>::iterator i = surfaces.begin(); i != surfaces.end(); i++) 
 	{
 	  colmap->put(i->surface, i->x_pos, i->y_pos, i->type);
 	}
       
       if (verbose)
-	cout << "Returning ColMap" << std::endl;
+	cout << "done" << std::endl;
       
       return colmap;
     }

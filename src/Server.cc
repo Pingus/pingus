@@ -1,4 +1,4 @@
-//  $Id: Server.cc,v 1.5 2000/02/18 03:08:41 grumbel Exp $
+//  $Id: Server.cc,v 1.6 2000/02/22 00:09:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,24 +53,28 @@ Server::let_move()
     return;
   }
   
-  if (get_next_event) {
-    // Getting next event from file
-    get_next_event = false;    
-    event = demo_in->get_next_event();
-  }
+  if (get_next_event) 
+    {
+      // Getting next event from file
+      get_next_event = false;    
+      event = demo_in->get_next_event();
+    }
   
   // Check if the time for the event is right
-  if (GameTime::get_time() == event.game_time) {
-    process_event(event.str);
-    get_next_event = true;
-  } else if (GameTime::get_time() >= event.game_time) {
-    // BUG: If this is reached the demo code is buggy
-    std::cout << "Demo out of sync!: " 
-	 << "GameTime: " << GameTime::get_time()
-	 << " EventTime: " << event.game_time
-	 << std::endl;
-    get_next_event = true;
-  }
+  if (GameTime::get_time() == event.game_time) 
+    {
+      process_event(event.str);
+      get_next_event = true;
+    } 
+  else if (GameTime::get_time() >= event.game_time) 
+    {
+      // BUG: If this is reached the demo code is buggy
+      std::cout << "Demo out of sync!: " 
+		<< "GameTime: " << GameTime::get_time()
+		<< " EventTime: " << event.game_time
+		<< std::endl;
+      get_next_event = true;
+    }
 }
 
 // Some simple event management
