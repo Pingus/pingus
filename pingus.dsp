@@ -389,14 +389,6 @@ SOURCE=.\src\colliders\pingu_collider.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\color.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\color.hxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\config.cxx
 # End Source File
 # Begin Source File
@@ -1277,14 +1269,6 @@ SOURCE=.\src\input\event_fwd.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\input\key_helper.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\input\key_helper.hxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\input\pointer.hxx
 # End Source File
 # Begin Source File
@@ -1637,14 +1621,6 @@ SOURCE=.\src\pingus_menu_manager.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\pingus_resource.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\pingus_resource.hxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\pingus_sub_menu.cxx
 # End Source File
 # Begin Source File
@@ -1882,14 +1858,6 @@ SOURCE=.\src\story_screen.cxx
 # Begin Source File
 
 SOURCE=.\src\story_screen.hxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\string_converter.cxx
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\string_converter.hxx
 # End Source File
 # Begin Source File
 
