@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.11 2000/05/03 16:49:09 grumbel Exp $
+//  $Id: ColMap.cc,v 1.12 2000/05/24 15:39:19 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -229,8 +229,10 @@ void
 ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, surface_data::Type type)
 {
   if ((sur_x > width) || (sur_y > height)) {
-    //    throw PingusError("Spot out of screen, please repair");
-    if (verbose) std::cout << "Warning: ColMap: Spot out of screen, please repair" << std::endl;
+    if (verbose > 3) {
+      std::cout << "Warning: ColMap: Spot out of screen" << std::endl;
+      std::cout << "sur_x: " << sur_x << " sur_y: " << sur_y << std::endl;
+    }
     return;
   }
 
@@ -263,6 +265,9 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, surface_data::Ty
 		    {
 		    case surface_data::GROUND:
 		      colmap[i] = WALL;
+		      break;
+		    case surface_data::TRANSPARENT:
+		      // doing nothing
 		      break;
 		    case surface_data::SOLID:
 		      colmap[i] = SOLID | WALL;
@@ -305,26 +310,30 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, surface_data::Ty
 	  
 	    if (!provider->uses_src_colorkey() || buffer[j] != provider->get_src_colorkey())
 	      {
-		switch (type) {
-		case surface_data::GROUND:
-		  colmap[i] = WALL;
-		  break;
-		case surface_data::SOLID:
-		  colmap[i] = SOLID | WALL;
-		  break;
-		case surface_data::BRIDGE:
-		  colmap[i] = BRIDGE | WALL;
-		  break;
-		case surface_data::WATER:
-		  colmap[i] = SOLID | WATER;
-		  break;
-		case surface_data::LAVA:
-		  colmap[i] = SOLID | LAVA;
-		  break;
-		default:
-		  std::cout << "Colmap::put() Undefinit type" << std::endl;
-		  break;
-		}
+		switch (type) 
+		  {
+		  case surface_data::GROUND:
+		    colmap[i] = WALL;
+		    break;
+		  case surface_data::TRANSPARENT:
+		    // doing nothing
+		    break;
+		  case surface_data::SOLID:
+		    colmap[i] = SOLID | WALL;
+		    break;
+		  case surface_data::BRIDGE:
+		    colmap[i] = BRIDGE | WALL;
+		    break;
+		  case surface_data::WATER:
+		    colmap[i] = SOLID | WATER;
+		    break;
+		  case surface_data::LAVA:
+		    colmap[i] = SOLID | LAVA;
+		    break;
+		  default:
+		    std::cout << "Colmap::put() Undefinit type" << std::endl;
+		    break;
+		  }
 	      }
 	  }
       }

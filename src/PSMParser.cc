@@ -1,4 +1,4 @@
-//  $Id: PSMParser.cc,v 1.7 2000/04/26 15:27:39 grumbel Exp $
+//  $Id: PSMParser.cc,v 1.8 2000/05/24 15:39:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,6 +61,8 @@ PSMParser::parse(string filename)
 	temp.type = surface_data::SOLID;
       } else if (temp.type_str == "ground") {
 	temp.type = surface_data::GROUND;
+      } else if (temp.type_str == "transparent") {
+	temp.type = surface_data::TRANSPARENT;
       } else {
 	throw PSMParseError("Object type is not valid: " + temp.type_str);	
       }
