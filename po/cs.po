@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
-"POT-Creation-Date: 2003-04-17 09:08+0200\n"
+"POT-Creation-Date: 2003-04-17 18:38+0200\n"
 "PO-Revision-Date: 2003-04-15 21:05+0200\n"
 "Last-Translator: Tomáš Bláha\n"
 "Language-Team: czech\n"
@@ -583,7 +583,6 @@ msgid "Maybe you would feel more at home playing Quake."
 msgstr "Treba by si radeji hral Quake."
 
 #: src/level_result.cxx:116
-#, fuzzy
 msgid ""
 "Maybe this level calls for a different strategy. Like attempting to save "
 "them, for example."
@@ -1172,7 +1171,7 @@ msgstr ""
 
 #: src/story.cxx:104
 msgid ""
-"But then one day, things began to change slowly, the sky got darker\n"
+"But then one day, things began to slowly change, the sky got darker\n"
 "and the earth got warmer, first of they thought this was just a\n"
 "normal fluctuation in the world's climate, but things seemed to get\n"
 "worse and worse with every year."

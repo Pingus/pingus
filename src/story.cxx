@@ -1,4 +1,4 @@
-//  $Id: story.cxx,v 1.24 2003/04/17 07:15:35 torangan Exp $
+//  $Id: story.cxx,v 1.25 2003/04/17 16:43:47 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -101,7 +101,7 @@ Story::init_intro()
     (StoryPage
      (ResDescriptor("Story/story1", "story"), 
       StringFormat::break_line(
-      _("But then one day, things began to change slowly, the sky got darker\n"
+      _("But then one day, things began to slowly change, the sky got darker\n"
         "and the earth got warmer, first of they thought this was just a\n"
         "normal fluctuation in the world's climate, but things seemed to get\n"
         "worse and worse with every year."), 570, Fonts::chalk_normal)
