@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.22 2002/10/15 23:54:01 grumbel Exp $
+//  $Id: pingus.cxx,v 1.23 2002/10/29 12:48:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -196,7 +196,8 @@ Pingus::set_position (NodeId node)
 float
 Pingus::get_z_pos() const
 {
-  return 2000.0f;
+  // FIXME: Should should be interpolated from the given position on the path
+  return 10.0f;
 }
 
 void

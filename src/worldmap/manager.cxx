@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.18 2002/10/15 15:49:42 grumbel Exp $
+//  $Id: manager.cxx,v 1.19 2002/10/29 12:48:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ WorldMapManager::WorldMapManager ()
 
   // FIXME: The default startup map should be configurable by some file
   worldmap = boost::shared_ptr<WorldMap>
-    (new WorldMap (path_manager.complete("worldmaps/volcano.xml")));
+    (new WorldMap (path_manager.complete("worldmaps/tutorial.xml")));
 
   //worldmap->on_startup ();
 

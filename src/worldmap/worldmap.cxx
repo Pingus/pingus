@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.24 2002/10/17 16:06:21 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.25 2002/10/29 12:48:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,7 +66,9 @@ WorldMap::WorldMap(const std::string& arg_filename)
   parse_file(doc, cur);
 
   pingus = new Pingus(path_graph);
-  pingus->set_position(path_graph->lookup_node("leveldot_3"));
+  // FIXME: This should not be hardcoded, but instead be noted in the
+  // savegame or worldmap
+  pingus->set_position(0);
 
   add_drawable(pingus);
 }
