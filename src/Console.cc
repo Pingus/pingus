@@ -1,4 +1,4 @@
-//  $Id: Console.cc,v 1.7 2000/06/14 17:26:54 grumbel Exp $
+//  $Id: Console.cc,v 1.8 2000/06/14 21:09:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,11 +55,11 @@ Console::draw()
 {
   assert(is_init);
 
+  int i,j;
+  int start_index;
+  bool draw_current_line = !current_line.empty();
   int start_y_pos = 
     CL_Display::get_height() - (font->get_height() * (number_of_lines + 3));
-  bool draw_current_line = current_line.empty();
-   int i,j;
-  int start_index;
 
   if (draw_current_line)
     start_index =  max(0, current_pos - number_of_lines);
@@ -72,7 +72,7 @@ Console::draw()
 			0.0, 0.0, 0.0, 0.5);
 
   for(i = start_index, j=1; 
-      i < output_buffer.size(); 
+      i < (int)output_buffer.size(); 
       i++, j++)
     {
       font->print_left(10, 
@@ -84,6 +84,18 @@ Console::draw()
 		     current_line.c_str());
 }
 
+void
+Console::set_height(int a)
+{
+  number_of_lines = a;
+}
+
+int
+Console::get_height()
+{
+  return number_of_lines;
+}
+
 void 
 Console::add_line(string str)
 {
@@ -92,23 +104,25 @@ Console::add_line(string str)
 
   std::cout << "STR: " << str << std::endl;
 
-  while ((pos = str.find("\n")) != string::npos) {
-    tmp_string = str.substr(0, pos);
-    std::cout << "TMP:" << tmp_string << std::endl;
-    output_buffer.push_back(current_line + tmp_string);
-    current_pos++;
-    current_line = "";
-    str = str.substr(pos+1);
-  }
+  while ((pos = str.find("\n")) != string::npos) 
+    {
+      tmp_string = str.substr(0, pos);
+      std::cout << "TMP:" << tmp_string << std::endl;
+      output_buffer.push_back(current_line + tmp_string);
+      current_pos++;
+      current_line = "";
+      str = str.substr(pos+1);
+    }
 
   current_line += str;
 
-  while(current_line.size() >= 80) {
-    tmp_string = current_line.substr(0, 80);
-    output_buffer.push_back(tmp_string);
-    current_pos++;
-    current_line = current_line.substr(80);
-  }
+  while(font->get_text_width(current_line.c_str()) > (CL_Display::get_width() - 20))
+    {
+      tmp_string = current_line.substr(0, 80);
+      output_buffer.push_back(tmp_string);
+      current_pos++;
+      current_line = current_line.substr(80);
+    }
 }
 
 // Simple wrapper around sprintf, warrning it will only be able to

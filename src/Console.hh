@@ -1,4 +1,4 @@
-//  $Id: Console.hh,v 1.5 2000/06/14 16:30:50 grumbel Exp $
+//  $Id: Console.hh,v 1.6 2000/06/14 21:09:55 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,6 +46,10 @@ public:
 
   void init();
   virtual void on_event();
+
+  void set_height(int);
+  int  get_height();
+
   Console& operator<<(const Console::Endl&);
   Console& operator<<(string);
   Console& operator<<(int);

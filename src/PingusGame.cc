@@ -1,4 +1,4 @@
-//  $Id: PingusGame.cc,v 1.12 2000/06/08 20:05:35 grumbel Exp $
+//  $Id: PingusGame.cc,v 1.13 2000/06/14 21:09:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #include "Timer.hh"
 #include "TrueServer.hh"
 #include "DemoPlayer.hh"
+#include "Console.hh"
 #include "PingusGame.hh"
 
 // A wrapper class around the client and the server, to allow a much
@@ -110,6 +111,10 @@ PingusGame::start_game(std::string plf_filename, std::string psm_filename)
 	write_lastlevel_file(plf_filename);
 
       do {
+	console << "Loading level:\n"
+		<< "  PLF: " << plf_filename << Console::endl
+		<< "  PSM: " << psm_filename << Console::endl;
+    
 	if (client)
 	  delete client;
       
