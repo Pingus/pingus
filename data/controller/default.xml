@@ -47,5 +47,25 @@
       </axis-scroller>
     </scroller>
 
+    <action-buttons>
+      <action-button><key-button key="1"/></action-button>
+      <action-button><key-button key="2"/></action-button>
+      <action-button><key-button key="3"/></action-button>
+      <action-button><key-button key="4"/></action-button>
+      <action-button><key-button key="5"/></action-button>
+      <action-button><key-button key="6"/></action-button>
+      <action-button><key-button key="7"/></action-button>
+      <action-button><key-button key="8"/></action-button>
+      <action-button><key-button key="9"/></action-button>
+      <action-button><key-button key="0"/></action-button>
+    </action-buttons>
+
+    <action-axis>
+      <button-axis angle="0">
+        <key-button key="PAGEDOWN"/>
+        <key-button key="PAGEUP"/>
+      </button-axis>
+    </action-axis>
+
   </controller-config>
 </pingus-controller>

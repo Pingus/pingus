@@ -1,0 +1,164 @@
+<pingus-worldmap>
+  <properties>
+    <name>Tutorial Island</name>
+    <music>pingus-1.it</music>
+    <author>Ingo Ruhnke</author>
+    <email>grumbel@gmx.de</email>
+  </properties>
+
+  <graph>
+    <nodes>
+      <leveldot>
+        <dot>
+          <name>leveldot_1</name>
+          <position>
+            <x-pos>135</x-pos>
+            <y-pos>414</y-pos>
+            <z-pos>0</z-pos>
+          </position>
+        </dot>
+        <levelname>digger-tutorial2-grumbel.xml</levelname>
+      </leveldot>
+
+      <leveldot>
+        <dot>
+          <name>leveldot_2</name>
+          <position>
+            <x-pos>235</x-pos>
+            <y-pos>404</y-pos>
+            <z-pos>0</z-pos>
+          </position>
+
+        </dot>
+        <levelname>floater-tutorial-grumbel.xml</levelname>
+      </leveldot>
+
+      <leveldot>
+        <dot>
+          <name>leveldot_3</name>
+          <position>
+            <x-pos>293</x-pos>
+            <y-pos>363</y-pos>
+            <z-pos>0</z-pos>
+          </position>
+        </dot>
+        <levelname>jumper-tutorial-grumbel.xml</levelname>
+      </leveldot>
+
+      <leveldot>
+        <dot>
+          <name>leveldot_4</name>
+          <position>
+            <x-pos>438</x-pos>
+            <y-pos>319</y-pos>
+            <z-pos>0</z-pos>
+          </position>
+
+        </dot>
+        <levelname>miner-tutorial-grumbel.xml</levelname>
+      </leveldot>
+
+
+      <leveldot>
+        <dot>
+          <name>leveldot_5</name>
+          <position>
+            <x-pos>520</x-pos>
+            <y-pos>283</y-pos>
+            <z-pos>0</z-pos>
+          </position>
+
+        </dot>
+        <levelname>digger-tutorial-grumbel.xml</levelname>
+      </leveldot>
+
+
+      <leveldot>
+        <dot>
+          <name>leveldot_6</name>
+          <position>
+            <x-pos>595</x-pos>
+            <y-pos>280</y-pos>
+            <z-pos>0</z-pos>
+          </position>
+        </dot>
+        <levelname>bomber-tutorial-grumbel.xml</levelname>
+      </leveldot>
+
+
+      <leveldot>
+        <dot>
+          <name>leveldot_7</name>
+          <position>
+            <x-pos>653</x-pos>
+            <y-pos>216</y-pos>
+            <z-pos>0</z-pos>
+          </position>
+
+        </dot>
+        <levelname>climber-tutorial-lukis.xml</levelname>
+      </leveldot>
+
+
+      <leveldot>
+        <dot>
+          <name>leveldot_8</name>
+          <position>
+            <x-pos>739</x-pos>
+            <y-pos>213</y-pos>
+            <z-pos>0</z-pos>
+          </position>
+        </dot>
+        <levelname>bridger-tutorial-grumbel.xml</levelname>
+      </leveldot>
+
+
+    </nodes>
+
+    <edges>
+      <edge name="egde_1" source="leveldot_1" destination="leveldot_2"/>
+      <edge name="egde_2" source="leveldot_2" destination="leveldot_3"/>
+      <edge name="egde_3" source="leveldot_3" destination="leveldot_4"/>
+      <edge name="egde_4" source="leveldot_4" destination="leveldot_5"/>
+      <edge name="egde_5" source="leveldot_5" destination="leveldot_6"/>
+      <edge name="egde_6" source="leveldot_6" destination="leveldot_7"/>
+      <edge name="egde_7" source="leveldot_7" destination="leveldot_8"/>
+    </edges>
+  </graph>
+
+  
+  <objects>
+    <surface name="background_1">
+      <surface>
+        <resource type="datafile">
+          <resource-datafile>worldmaps</resource-datafile>
+          <resource-ident>tutorial/layer0</resource-ident>
+        </resource>
+      </surface>
+
+      <position>
+        <x-pos>0</x-pos>
+        <y-pos>0</y-pos>
+        <z-pos>-100</z-pos>
+      </position>
+    </surface>
+
+    
+    <surface name="mountain_1">
+      <surface>
+        <resource type="datafile">
+          <resource-datafile>worldmaps</resource-datafile>
+          <resource-ident>tutorial/layer1</resource-ident>
+        </resource>
+      </surface>
+
+      <position>
+        <x-pos>309</x-pos>
+        <y-pos>305</y-pos>
+        <z-pos>100</z-pos>
+      </position>
+    </surface>
+
+  </objects>
+
+</pingus-worldmap>
