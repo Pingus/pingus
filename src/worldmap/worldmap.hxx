@@ -1,4 +1,4 @@
-//  $Id: worldmap.hxx,v 1.25 2003/04/01 13:21:20 grumbel Exp $
+//  $Id: worldmap.hxx,v 1.26 2003/04/06 12:40:47 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -84,6 +84,8 @@ public:
   ~WorldMap();
 
   Pingus* get_pingus() { return pingus; }
+
+  void on_startup();
 
   void draw (GraphicContext& gc);
   void update ();

@@ -541,6 +541,10 @@ SOURCE=.\src\editor\editorobj_group.hxx
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\editor\editorobj_mgr.hxx
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\editor\generic_property_frame.cxx
 # End Source File
 # Begin Source File
@@ -1694,6 +1698,10 @@ SOURCE=.\src\plf.cxx
 # Begin Source File
 
 SOURCE=.\src\plf.hxx
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\plf_handle.hxx
 # End Source File
 # Begin Source File
 

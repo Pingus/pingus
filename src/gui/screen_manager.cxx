@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.5 2003/04/03 17:03:24 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.6 2003/04/06 12:40:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,21 +77,23 @@ ScreenManager::display ()
       if (screens.empty ())
 	continue;
 
-      switch (cached_action)
+      while (cached_action != CA_NONE)
         {
-        case CA_POP:
-	  real_pop_screen ();
-          break;
-        case CA_REPLACE:
-          real_replace_screen (replace_screen_arg);
-          break;
-        case CA_CLEAR:
-          real_clear();
-          break;
-        default:
-          break;
+          switch (cached_action)
+            {
+            case CA_POP:
+              real_pop_screen ();
+              break;
+            case CA_REPLACE:
+              real_replace_screen (replace_screen_arg);
+              break;
+            case CA_CLEAR:
+              real_clear();
+              break;
+            default:
+              break;
+            }
         }
-      cached_action = CA_NONE;
 
       // FIXME: is there a more gentel way to do that instead of spreading the checks all around here?
       // Last screen has poped, so we are going to end here
@@ -139,8 +141,8 @@ ScreenManager::push_screen (Screen* screen, bool delete_screen)
       screens.back ()->on_shutdown ();
     }
 
-  screen->on_startup ();
   screens.push_back (ScreenPtr(screen, delete_screen));
+  screen->on_startup ();
 }
 
 void
@@ -161,6 +163,7 @@ ScreenManager::replace_screen (Screen* screen, bool delete_screen)
 void
 ScreenManager::real_replace_screen (const ScreenPtr& ptr)
 {
+  cached_action = CA_NONE;
   screens.back ()->on_shutdown ();
   screens.back () = ptr;
   screens.back ()->on_startup ();
@@ -169,9 +172,10 @@ ScreenManager::real_replace_screen (const ScreenPtr& ptr)
 void
 ScreenManager::real_pop_screen ()
 {
-  screens.back ()->on_shutdown ();
-
-  screens.pop_back ();
+  cached_action = CA_NONE;
+  ScreenPtr back = screens.back ();
+  screens.pop_back();
+  back->on_shutdown();
 
   if (!screens.empty ())
     {
@@ -188,6 +192,7 @@ ScreenManager::clear()
 void
 ScreenManager::real_clear()
 {
+  cached_action = CA_NONE;
   screens.clear();
 }
 

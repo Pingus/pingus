@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.33 2003/04/05 20:24:16 grumbel Exp $
+//  $Id: manager.cxx,v 1.34 2003/04/06 12:40:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -211,11 +211,6 @@ WorldMapManager::WorldMapManager ()
   is_init = false;
   exit_worldmap = false;
  
-  // FIXME: The default startup map should be configurable by some file
-
-
-  //worldmap->on_startup ();
-
   // FIXME: a bit ugly because of the proteced member, but should work
   // FIXME: well enough. GUIScreen could also use multi-inheritage,
   // FIXME: but that could lead to member function name conflicts
@@ -253,6 +248,9 @@ WorldMapManager::on_startup ()
     {
       load(path_manager.complete("worldmaps/tutorial.xml"));
     }
+  
+  if (worldmap)
+    worldmap->on_startup ();
 }
 
 WorldMapManager::~WorldMapManager ()

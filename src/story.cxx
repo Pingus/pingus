@@ -1,4 +1,4 @@
-//  $Id: story.cxx,v 1.16 2003/04/05 20:24:16 grumbel Exp $
+//  $Id: story.cxx,v 1.17 2003/04/06 12:40:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,8 @@
 #include "my_gettext.hxx"
 #include "story.hxx"
 
-std::vector<StoryPage> Story::credits;
-std::vector<StoryPage> Story::intro;
+Story Story::credits;
+Story Story::intro;
 
 void
 Story::init()
@@ -34,7 +34,8 @@ Story::init()
 void
 Story::init_credits()
 {
-  credits.push_back
+  credits.title = _("The Journey Continues");
+  credits.pages.push_back
     (StoryPage
      (ResDescriptor("Story/credits1", "story"), 
       _("Now after you and the Pingus have learned the basics and\n"
@@ -44,7 +45,7 @@ Story::init_credits()
         "climated regions the Pingus have to find something else to guide\n"
         "there on there journey.\n")));
 
-  credits.push_back
+  credits.pages.push_back
     (StoryPage
      (ResDescriptor("Story/credits2", "story"), 
       _("But as the eldest have said, the Tutorial Island provides not\n"
@@ -52,7 +53,7 @@ Story::init_credits()
         "the world, cause the wood if the large tree at the end of the\n"
         "island is brings good wood to construct a float.\n")));
      
-  credits.push_back
+  credits.pages.push_back
     (StoryPage
      (ResDescriptor("Story/credits3", "story"), 
       _("So the Pingus set out and constructed a some large floats, enough\n"
@@ -61,7 +62,7 @@ Story::init_credits()
         "their familiar ground and entering the unknown parts of the\n"
         "world.\n")));
      
-  credits.push_back
+  credits.pages.push_back
     (StoryPage
      (ResDescriptor("Story/credits4", "story"), 
       _("So the Pingus sat on there float, worrying whats to come and\n"
@@ -69,13 +70,14 @@ Story::init_credits()
         "\n"
         "To be continued...")));
 
-  std::reverse(credits.begin(), credits.end());
+  std::reverse(credits.pages.begin(), credits.pages.end());
 }
 
 void
 Story::init_intro() 
 {   
-  intro.push_back
+  intro.title = _("The Journey Begins");
+  intro.pages.push_back
     (StoryPage
      (ResDescriptor("Story/story0", "story"), 
       _("For a long time now the Pingus have lived happily in peace on the\n"
@@ -83,7 +85,7 @@ Story::init_intro()
         "balance and it seemed like nothing could disrupt there peace.  The\n"
         "Pingus where happy and it seemed like this could never end.\n")));
 
-  intro.push_back
+  intro.pages.push_back
     (StoryPage
      (ResDescriptor("Story/story1", "story"), 
       _("But then one day, things began to change slowly, the sky got darker\n"
@@ -92,7 +94,7 @@ Story::init_intro()
         "worse and worse with every year.")));
 
 
-  intro.push_back
+  intro.pages.push_back
     (StoryPage
      (ResDescriptor("Story/story2", "story"), 
       _("The snow began to melt away in a few regions and food became an\n"
@@ -100,7 +102,7 @@ Story::init_intro()
         "for colder areas, but the Pingus knew that this couldn't help,\n"
         "they knew that they had to do something about this problem.")));
 
-  intro.push_back
+  intro.pages.push_back
     (StoryPage
      (ResDescriptor("Story/story3", "story"), 
       _("So the circle of the eldest came together to decide what to do\n"
@@ -108,7 +110,7 @@ Story::init_intro()
         "to find the cause for this warming. The expedition consisted of\n"
         "hundreds of the bravest Pingus around on the south pole.")));
     
-  intro.push_back
+  intro.pages.push_back
     (StoryPage
      (ResDescriptor("Story/story4", "story"), 
       _("And they picked you to lead them on there journey around the\n"
@@ -117,7 +119,7 @@ Story::init_intro()
         "Island. According to the eldest, this island has always been the\n"
         "first stop of Pingus which where send out into the world.")));
 
-  intro.push_back
+  intro.pages.push_back
     (StoryPage
      (ResDescriptor("Story/story5", "story"), 
       _("The island consists of many regions which are ideally to train the\n"
@@ -125,7 +127,7 @@ Story::init_intro()
         "to build bridges, climb, bash and all the rest of there talents\n"
         "which they will surly need on there long and dangerous journey.")));
 
-  intro.push_back
+  intro.pages.push_back
     (StoryPage
      (ResDescriptor("Story/story6", "story"), 
       _("While you on the other site can practice there your ability to\n"
@@ -134,7 +136,7 @@ Story::init_intro()
         "since you will need them all for sure an your journey around the\n"
         "world.")));
 
-  intro.push_back
+  intro.pages.push_back
     (StoryPage
      (ResDescriptor("Story/story6", "story"), 
       _("Now that you and the Pingus have arrive at tutorial island it\n"
@@ -142,7 +144,7 @@ Story::init_intro()
         "\n"
         "                                                  Good Luck!")));
 
-  std::reverse(intro.begin(), intro.end());
+  std::reverse(intro.pages.begin(), intro.pages.end());
 }
 
 /* EOF */

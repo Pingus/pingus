@@ -1,4 +1,4 @@
-//  $Id: story.hxx,v 1.12 2003/04/05 20:24:16 grumbel Exp $
+//  $Id: story.hxx,v 1.13 2003/04/06 12:40:47 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,8 +27,11 @@ class Story
 {
 private:
 public:
-  static std::vector<StoryPage> credits;
-  static std::vector<StoryPage> intro;
+  std::string title;
+  std::vector<StoryPage> pages;
+
+  static Story credits;
+  static Story intro;
 
   static void init();
 private:

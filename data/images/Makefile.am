@@ -102,6 +102,8 @@ core/misc/flag3.png \
 core/misc/infinity.png \
 core/misc/loading.png \
 core/misc/logo.png \
+core/misc/next.png \
+core/misc/next_hover.png \
 core/misc/pingubw.png \
 core/misc/smallmap_entrance.png \
 core/misc/smallmap_exit.png \

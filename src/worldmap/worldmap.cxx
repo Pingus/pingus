@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.41 2003/04/05 20:59:38 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.42 2003/04/06 12:40:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -262,6 +262,11 @@ WorldMap::update ()
     {
       (*i)->update ();
     }
+}
+
+void
+WorldMap::on_startup()
+{
   update_locked_nodes();
 }
 

@@ -1,4 +1,4 @@
-//  $Id: story_screen.cxx,v 1.12 2003/04/05 20:59:38 grumbel Exp $
+//  $Id: story_screen.cxx,v 1.13 2003/04/06 12:40:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,6 +33,7 @@
 #include "res_descriptor.hxx"
 #include "worldmap/manager.hxx"
 #include "stat_manager.hxx"
+#include "story.hxx"
 #include "sound/sound.hxx"
 
 class StoryScreenComponent : public GUI::Component
@@ -44,11 +45,11 @@ private:
 
   bool page_displayed_completly;
 
-  std::vector<StoryPage> pages;
+  Story story;
   CL_Surface page_surface;
   StoryPage  current_page;
 public:
-  StoryScreenComponent (const std::vector<StoryPage>&);
+  StoryScreenComponent (const Story&);
   virtual ~StoryScreenComponent () {}
 
   void draw (GraphicContext& gc);
@@ -64,12 +65,18 @@ private:
   StoryScreenComponent* story_comp;
 public:
   StoryScreenContinueButton(StoryScreenComponent* arg_story_comp)
-    : GUI::SurfaceButton(600, 550, 
-                         ResDescriptor("result/ok", "core", ResDescriptor::RD_RESOURCE),
-                         ResDescriptor("result/ok", "core", ResDescriptor::RD_RESOURCE),
-                         ResDescriptor("result/ok", "core", ResDescriptor::RD_RESOURCE)),
+    : GUI::SurfaceButton(620, 460, 
+                         ResDescriptor("misc/next", "core", ResDescriptor::RD_RESOURCE),
+                         ResDescriptor("misc/next", "core", ResDescriptor::RD_RESOURCE),
+                         ResDescriptor("misc/next_hover", "core", ResDescriptor::RD_RESOURCE)),
       story_comp(arg_story_comp)
   {
+  }
+
+  void on_pointer_enter()
+  {
+    SurfaceButton::on_pointer_enter();
+    PingusSound::play_sound ("tick", .3);
   }
 
   void on_click() 
@@ -80,7 +87,7 @@ public:
 };
 
 
-StoryScreen::StoryScreen(const std::vector<StoryPage>& arg_pages)
+StoryScreen::StoryScreen(const Story& arg_pages)
 {
   story_comp = new StoryScreenComponent(arg_pages);
   gui_manager->add (story_comp);
@@ -91,13 +98,13 @@ StoryScreen::~StoryScreen()
 {
 }
 
-StoryScreenComponent::StoryScreenComponent (const std::vector<StoryPage>& arg_pages)
-  : pages(arg_pages)
+StoryScreenComponent::StoryScreenComponent (const Story& arg_story)
+  : story(arg_story)
 {
   page_displayed_completly = false;
   time_passed  = 0;
 
-  current_page = pages.back();
+  current_page = story.pages.back();
   page_surface = PingusResource::load_surface(current_page.image);
   background   = PingusResource::load_surface("menu/startscreenbg", "core");
 }
@@ -106,7 +113,7 @@ void
 StoryScreenComponent::draw (GraphicContext& gc)
 {
   gc.draw(background, 0, 0);
-  gc.print_center(Fonts::chalk_large, 400, 100, "Chapter I - Tutorial Island");
+  gc.print_center(Fonts::chalk_large, 400, 100, story.title);
   gc.draw(page_surface,  gc.get_width()/2 - page_surface.get_width()/2,
           160);
   gc.print_left(Fonts::chalk_normal, 120, 335, display_text);
@@ -146,7 +153,7 @@ void
 StoryScreen::on_startup()
 {
   //PingusSound::play_sound ("letsgo");
-  PingusSound::play_music("pingus-4.it", .5f);
+  PingusSound::play_music("pingus-4.it", .7f);
 }
 
 void
@@ -159,10 +166,10 @@ StoryScreenComponent::next_text()
     }
   else
     {
-      pages.pop_back();
-      if (!pages.empty())
+      story.pages.pop_back();
+      if (!story.pages.empty())
         {
-          current_page = pages.back();
+          current_page = story.pages.back();
           page_surface = PingusResource::load_surface(current_page.image);
           display_text = "";
           time_passed = 0;

@@ -115,6 +115,8 @@ section start
 
 section misc
 {
+        next = ../images/core/misc/next.png (type=surface);
+        next_hover = ../images/core/misc/next_hover.png (type=surface);
         chalk_pingu1 = ../images/core/misc/chalk_pingu1.png (type=surface);
         chalk_pingu2 = ../images/core/misc/chalk_pingu2.png (type=surface);
         chalk_pingu3 = ../images/core/misc/chalk_pingu3.png (type=surface);

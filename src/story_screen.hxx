@@ -1,4 +1,4 @@
-//  $Id: story_screen.hxx,v 1.4 2003/04/05 20:24:16 grumbel Exp $
+//  $Id: story_screen.hxx,v 1.5 2003/04/06 12:40:47 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "res_descriptor.hxx"
 #include "gui/gui_screen.hxx"
 
+class Story;
 class StoryScreenComponent;
 
 class StoryPage
@@ -46,7 +47,7 @@ class StoryScreen : public GUIScreen
 private:
   StoryScreenComponent* story_comp;
 public:
-  StoryScreen(const std::vector<StoryPage>& pages);
+  StoryScreen(const Story& pages);
   ~StoryScreen();
 
   void on_startup();

@@ -27,7 +27,7 @@ Seite zu erreichen, was die Jumper Fähigkeit nicht tat.</description>
   </global>
 
   <action-list>
-    <bridger count="15"/>
+    <bridger count="25"/>
   </action-list>
 
 <background type="surface">
