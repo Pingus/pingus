@@ -1,4 +1,4 @@
-//  $Id: selection.hxx,v 1.12 2002/09/28 11:52:23 torangan Exp $
+//  $Id: selection.hxx,v 1.13 2002/10/09 14:49:46 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,6 +46,9 @@ public:
   void move(const Vector& pos);
   void drag();
   void drop();
+
+  /** @return true if the obj is already in the selection, false otherwise */
+  bool has_object(EditorObj* obj);
     
   /** Add the given object to the selection */
   void add(EditorObj* obj);
