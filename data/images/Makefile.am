@@ -163,8 +163,8 @@ fonts/courier_small2.png \
 fonts/number_fnt.png \
 fonts/pingus2.png \
 fonts/pingus4.png \
-fonts/pingus_small3.png \
-fonts/pingus_small4.png \
+fonts/pingus_large.png \
+fonts/pingus_small.png \
 fonts/pingus_small4_fix_num.png \
 fonts/smallfont.png \
 fonts/smallfont_h.png \
