@@ -1,4 +1,4 @@
-//  $Id: gui_screen.hxx,v 1.5 2002/08/17 00:26:49 grumbel Exp $
+//  $Id: gui_screen.hxx,v 1.6 2002/08/17 01:03:27 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,6 +62,8 @@ public:
   virtual void on_fast_forward_release () {}
   virtual void on_armageddon_release () {}
   virtual void on_escape_release () {}
+
+  virtual void on_action_axis_move (float) {}
 
 private:
   void process_button_event (Input::ButtonEvent* event);

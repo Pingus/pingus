@@ -1,4 +1,4 @@
-//  $Id: gui_screen.cxx,v 1.5 2002/08/17 00:26:49 grumbel Exp $
+//  $Id: gui_screen.cxx,v 1.6 2002/08/17 01:03:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "debug.hxx"
 #include "gui/gui_manager.hxx"
 #include "input/button_event.hxx"
+#include "input/axis_event.hxx"
 #include "gui_screen.hxx"
 
 using namespace GUI;
@@ -71,7 +72,11 @@ GUIScreen::update (const GameDelta& delta)
 
 	case Input::AxisEventType:
 	  {
-	    
+	    Input::AxisEvent* event = dynamic_cast<Input::AxisEvent*>(*i);
+	    if (event->name == Input::action)
+	      {
+		on_action_axis_move (event->dir);
+	      }
 	  }
 	  break;
 

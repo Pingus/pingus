@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.16 2002/08/14 12:45:01 torangan Exp $
+//  $Id: client.cxx,v 1.17 2002/08/17 01:03:27 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -434,6 +434,15 @@ void
 Client::on_armageddon_press ()
 {
   server->send_event("armageddon");
+}
+
+void
+Client::on_action_axis_move (float move)
+{
+  if (move > 0)
+    button_panel->next_action ();
+  else if (move < 0)
+    button_panel->previous_action ();
 }
 
 void
