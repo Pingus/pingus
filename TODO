@@ -1,3 +1,5 @@
+Demo Mode/automatisches abspielen von demos 
+
 Extrem kleine Maps klappen nicht (overdrawing)
 
 z_pos handlig im editor braucht nen fix
@@ -153,6 +155,6 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
 
 
 
-$Date: 2000/05/03 17:00:49 $
+$Date: 2000/05/19 14:27:36 $
 
 -= EOF =-

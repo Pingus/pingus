@@ -1,4 +1,4 @@
-//  $Id: Splashed.cc,v 1.2 2000/04/29 13:13:26 grumbel Exp $
+//  $Id: Splashed.cc,v 1.3 2000/05/19 14:27:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ Splashed::init(void)
   environment = (PinguEnvironment)(land | sky);
   action_name = "splashed";
 
-  surface = CL_Surface::load("Pingus/splash", local_res());
+  surface = CL_Surface::load("Pingus/splash_debris", local_res());
   counter.set_size(surface->get_num_frames());
   counter.set_type(Counter::once);
   counter.set_count(0);

@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.13 2000/05/15 06:50:06 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.14 2000/05/19 14:27:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -149,6 +149,8 @@ ObjectSelector::get_groundpiece()
 	  loading_screen.draw_progress(i->c_str(), (float)j / liste->size());
 	}
     }
+  // Showing the mousecursor again, since loading_screen hides it
+  CL_MouseCursor::show();
 
   data_loaded = true;
   str = select_surface(sur_list);
@@ -332,6 +334,9 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
+Revision 1.14  2000/05/19 14:27:37  grumbel
+Misc changes
+
 Revision 1.13  2000/05/15 06:50:06  grumbel
 Added option for not reading the config file and added a segfault catcher
 

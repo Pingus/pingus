@@ -331,6 +331,10 @@ section GroundPieces
 
 	section Sortie
 	{
+	        column1   = ../images/groundpieces/sortie/column.pcx (type=surface, x=0, y=0, width=168, height=312, tcol=0);
+	        column2   = ../images/groundpieces/sortie/column2.pcx (type=surface, x=0, y=0, width=168, height=312, tcol=0);
+	        column3   = ../images/groundpieces/sortie/column3.pcx (type=surface, x=0, y=0, width=168, height=312, tcol=0);
+
 	        plate_forme       = ../images/groundpieces/sortie/plate_forme.pcx (type=surface, x=0, y=0, width=267, height=94, tcol=0);
 	        plate_forme_left  = ../images/groundpieces/sortie/plate_forme_left.pcx (type=surface, x=0, y=0, width=243, height=94, tcol=0);
 	        plate_forme_right = ../images/groundpieces/sortie/plate_forme_right.pcx (type=surface, x=0, y=0, width=138, height=84, tcol=0);
