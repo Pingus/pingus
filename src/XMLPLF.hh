@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.hh,v 1.4 2000/08/04 16:08:40 grumbel Exp $
+//  $Id: XMLPLF.hh,v 1.5 2000/08/05 00:00:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,11 +44,6 @@ private:
   void parse_group(xmlNodePtr cur);
   void parse_start_pos(xmlNodePtr cur);
 
-  ResDescriptor parse_surface(xmlNodePtr cur);
-  Position parse_position(xmlNodePtr cur);
-  int   parse_int(xmlNodePtr cur);
-  float parse_float(xmlNodePtr cur);
-  Color parse_color(xmlNodePtr cur);
 public:
   XMLPLF();
   XMLPLF(const string& filename);

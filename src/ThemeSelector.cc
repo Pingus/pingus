@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.27 2000/07/04 22:59:13 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.28 2000/08/05 00:00:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -305,7 +305,7 @@ ThemeSelector::readdir(std::string path)
 	  pathname = path.substr(last_pos, pos - last_pos);
 	}
       
-      dir = System::opendir(pathname + "/themes", "*.plt");
+      dir = System::opendir(pathname + "/themes", "*.xml");
       
       for(System::Directory::iterator entry = dir.begin(); entry != dir.end(); entry++)
 	{

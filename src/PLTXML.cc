@@ -1,4 +1,4 @@
-//  $Id: PLTXML.cc,v 1.1 2000/08/04 22:19:21 grumbel Exp $
+//  $Id: PLTXML.cc,v 1.2 2000/08/05 00:00:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -96,8 +96,6 @@ PLTXML::parse_background(xmlNodePtr cur)
 void 
 PLTXML::parse_description(xmlNodePtr cur)
 {
-  cur = cur->childs;
-
   char* desc = (char*)xmlNodeListGetString(doc, cur->childs, 1);
   char* lang = (char*)xmlGetProp(cur, (xmlChar*)"lang");
 
@@ -115,8 +113,6 @@ PLTXML::parse_description(xmlNodePtr cur)
 void 
 PLTXML::parse_world_name(xmlNodePtr cur)
 {
-  cur = cur->childs;
-  
   char* name = (char*)xmlNodeListGetString(doc, cur->childs, 1);
   char* lang = (char*)xmlGetProp(cur, (xmlChar*)"lang");
 

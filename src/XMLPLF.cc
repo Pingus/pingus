@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.5 2000/08/04 16:08:40 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.6 2000/08/05 00:00:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include "XMLPLF.hh"
-
+#include "XMLhelper.hh"
 #include "globals.hh"
 #include "System.hh"
 #include "PingusError.hh"
@@ -122,7 +122,7 @@ XMLPLF::parse_start_pos(xmlNodePtr cur)
     {
       if (strcmp((char*)cur->name, "position") == 0)
 	{
-	  Position pos = parse_position(cur);
+	  Position pos = XMLhelper::parse_position(doc, cur);
 	  start_x_pos = pos.x_pos;
 	  start_y_pos = pos.y_pos;
 	}
@@ -187,13 +187,13 @@ XMLPLF::parse_liquid(xmlNodePtr cur)
   while (cur != NULL)
     {
       if (strcmp((char*)cur->name, "position") == 0)
-	liquid.pos = parse_position(cur);
+	liquid.pos = XMLhelper::parse_position(doc, cur);
       else if (strcmp((char*)cur->name, "surface") == 0)
-	liquid.desc = parse_surface(cur);
+	liquid.desc = XMLhelper::parse_surface(doc, cur);
       else if (strcmp((char*)cur->name, "speed") == 0)
-	liquid.speed = parse_int(cur);
+	liquid.speed = XMLhelper::parse_int(doc, cur);
       else if (strcmp((char*)cur->name, "width") == 0)
-	liquid.width = parse_int(cur);
+	liquid.width = XMLhelper::parse_int(doc, cur);
       else
 	{
 	  std::cout << "XMLPLF::parse_liquid: Unhandled: " << cur->name << std::endl;
@@ -212,35 +212,35 @@ XMLPLF::parse_background(xmlNodePtr cur)
     {
       if (strcmp((char*)cur->name, "surface") == 0)
 	{
-	  background.desc = parse_surface(cur);
+	  background.desc = XMLhelper::parse_surface(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "color") == 0)
 	{
-	  background.color = parse_color(cur);
+	  background.color = XMLhelper::parse_color(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "para-x") == 0)
 	{
-	  background.para_x = parse_float(cur);
+	  background.para_x = XMLhelper::parse_float(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "para-y") == 0)
 	{
-	  background.para_y = parse_float(cur);
+	  background.para_y = XMLhelper::parse_float(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "scroll-x") == 0)
 	{
-	  background.scroll_x = parse_float(cur);
+	  background.scroll_x = XMLhelper::parse_float(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "scroll-y") == 0)
 	{
-	  background.scroll_y = parse_float(cur);
+	  background.scroll_y = XMLhelper::parse_float(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "stretch-x") == 0)
 	{
-	  background.stretch_x = parse_float(cur);
+	  background.stretch_x = XMLhelper::parse_float(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "stretch-y") == 0)
 	{
-	  background.stretch_y = parse_float(cur);
+	  background.stretch_y = XMLhelper::parse_float(doc, cur);
 	}
       else
 	{
@@ -282,7 +282,7 @@ XMLPLF::parse_entrance(xmlNodePtr cur)
 	}
       else if (strcmp((char*)cur->name, "position") == 0)
 	{
-	  entrance.pos = parse_position(cur);
+	  entrance.pos = XMLhelper::parse_position(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "release-rate") == 0)
 	{
@@ -321,11 +321,11 @@ XMLPLF::parse_exit(xmlNodePtr cur)
     {
       if (strcmp((char*)cur->name, "position") == 0)
 	{
-	  exit.pos = parse_position(cur);
+	  exit.pos = XMLhelper::parse_position(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "surface") == 0)
 	{
-	  exit.desc = parse_surface(cur);
+	  exit.desc = XMLhelper::parse_surface(doc, cur);
 	}
       cur = cur->next;	
     }
@@ -380,23 +380,23 @@ XMLPLF::parse_global(xmlNodePtr cur)
 	}
       else if (strcmp((char*)cur->name, "number-of-pingus") == 0)
 	{
-	  number_of_pingus = parse_int(cur);	  
+	  number_of_pingus = XMLhelper::parse_int(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "number-to-save") == 0)
 	{
-	  number_to_save = parse_int(cur);
+	  number_to_save = XMLhelper::parse_int(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "time") == 0)
 	{
-	  max_time = parse_int(cur);
+	  max_time = XMLhelper::parse_int(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "height") == 0)
 	{
-	  height = parse_int(cur);
+	  height = XMLhelper::parse_int(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "width") == 0)
 	{
-	  width = parse_int(cur);
+	  width = XMLhelper::parse_int(doc, cur);
 	}
       else
 	{
@@ -440,11 +440,11 @@ XMLPLF::parse_groundpiece(xmlNodePtr cur)
     {
       if (strcmp((char*)cur->name, "position") == 0)
 	{
-	  surface.pos = parse_position(cur);
+	  surface.pos = XMLhelper::parse_position(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "surface") == 0)
 	{
-	  surface.desc = parse_surface(cur);
+	  surface.desc = XMLhelper::parse_surface(doc, cur);
 	}	
       else
 	{
@@ -474,7 +474,7 @@ XMLPLF::parse_traps(xmlNodePtr cur)
 	} 
       else if (strcmp((char*)cur->name, "position") == 0) 
 	{
-	  trap.pos = parse_position(cur);
+	  trap.pos = XMLhelper::parse_position(doc, cur);
 	}
 
       cur = cur->next;
@@ -491,19 +491,19 @@ XMLPLF::parse_hotspot(xmlNodePtr cur)
     {
       if (strcmp((char*)cur->name, "surface") == 0)
 	{
-	  hotspot.desc = parse_surface(cur);
+	  hotspot.desc = XMLhelper::parse_surface(doc, cur);
 	} 
       else if (strcmp((char*)cur->name, "position") == 0) 
 	{
-	  hotspot.pos = parse_position(cur);
+	  hotspot.pos = XMLhelper::parse_position(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "speed") == 0) 
 	{
-	  hotspot.speed = parse_int(cur);
+	  hotspot.speed = XMLhelper::parse_int(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "parallax") == 0) 
 	{
-	  hotspot.para = parse_int(cur);
+	  hotspot.para = XMLhelper::parse_int(doc, cur);
 	}
       else
 	{
@@ -512,173 +512,6 @@ XMLPLF::parse_hotspot(xmlNodePtr cur)
       cur = cur->next;
     }
   hotspots.push_back(hotspot);
-}
-
-Position
-XMLPLF::parse_position(xmlNodePtr cur)
-{
-  Position pos;
-  cur = cur->childs;  
-  while (cur != NULL)
-    {
-      char* ident = (char*)xmlNodeListGetString(doc, cur->childs, 1);
-
-      if (ident)
-	{
-	  //std::cout << "parse_position: ident = " << ident << std::endl;
-	  if (strcmp((char*)cur->name, "x-pos") == 0) {
-	    pos.x_pos = StringConverter::to_int(ident);
-	  } else if (strcmp((char*)cur->name, "y-pos") == 0) {
-	    pos.y_pos = StringConverter::to_int(ident);
-	  } else if (strcmp((char*)cur->name, "z-pos") == 0) {
-	    pos.z_pos = StringConverter::to_int(ident);
-	  } else {
-	    std::cout << "Unhandled position ident: " << ident << std::endl;
-	  }
-	  free(ident);
-	}
-      cur = cur->next;
-    }
-  return pos;
-}
-
-int
-XMLPLF::parse_int(xmlNodePtr cur)
-{
-  cur = cur->childs;
-  
-  int number = 999;
-  char* number_str = (char*)xmlNodeListGetString(doc, cur, 1);
-  if (number_str) {
-    number = StringConverter::to_int(number_str);
-    free(number_str);
-  } else {
-    std::cout << "XMLPLF: parse_int: Field empty" << std::endl;
-  }
-  return number;
-}
-
-float
-XMLPLF::parse_float(xmlNodePtr cur)
-{
-  cur = cur->childs;
-  
-  float number = 3.1415927;
-  char* number_str = (char*)xmlNodeListGetString(doc, cur, 1);
-  if (number_str) {
-    number = StringConverter::to_float(number_str);
-    free(number_str);
-  } else {
-    std::cout << "XMLPLF: parse_int: Field empty" << std::endl;
-  }
-  return number;
-}
-
-Color
-XMLPLF::parse_color(xmlNodePtr cur)
-{
-  Color color;
-  cur = cur->childs;
-
-  while (cur != NULL)
-    {  
-      if (strcmp((char*)cur->name, "red") == 0)
-	{
-	  color.red = parse_float(cur);
-	}
-      else if (strcmp((char*)cur->name, "green") == 0)
-	{
-	  color.green = parse_float(cur);
-	}
-      else if (strcmp((char*)cur->name, "blue") == 0)
-	{
-	  color.blue = parse_float(cur);
-	}
-      else if (strcmp((char*)cur->name, "alpha") == 0)
-	{
-	  color.alpha = parse_float(cur);
-	}
-      else
-	{
-	  std::cout << "XMLPLF: Unhandled color ident: " << cur->name << std::endl;	  
-	}
-      cur = cur->next;
-    }
-  return color;
-}
-
-ResDescriptor 
-XMLPLF::parse_surface(xmlNodePtr cur)
-{
-  ResDescriptor desc;
-  cur = cur->childs;  
-  while (cur != NULL)
-    {
-      char* type = (char*)xmlGetProp(cur, (xmlChar*)"type");
-      
-      if (type)
-	{
-	  if (strcmp(type, "file") == 0)
-	    {
-	      desc.type = ResDescriptor::FILE;	 
-	      xmlNodePtr ccur = cur->childs;
-	      desc.type = ResDescriptor::RESOURCE;
-	      while (ccur != NULL)
-		{
-		  if (strcmp((char*)ccur->name, "resource-file") == 0)
-		    {
-		      char* filename = (char*)xmlNodeListGetString(doc, ccur->childs, 1);
-		      if (filename) 
-			{
-			  desc.res_name = filename;
-			  free(filename);
-			}		      
-		    }
-		}
-	    }
-	  else if (strcmp(type, "datafile") == 0)
-	    {
-	      xmlNodePtr ccur = cur->childs;
-	      desc.type = ResDescriptor::RESOURCE;
-	      while (ccur != NULL)
-		{
-		  if (strcmp((char*)ccur->name, "resource-datafile") == 0)
-		    {
-		      char* datafile = (char*)xmlNodeListGetString(doc, ccur->childs, 1);
-		      if (datafile) 
-			{
-			  desc.datafile = datafile;
-			  free(datafile);
-			}
-		      else
-			{
-			  std::cout << "XMLPLF: parse_surface() Empty" << std::endl;
-			}
-		    }
-		  else if (strcmp((char*)ccur->name, "resource-ident") == 0)
-		    {
-		      char* ident = (char*)xmlNodeListGetString(doc, ccur->childs, 1);
-		      if (ident) 
-			{
-			  desc.res_name = ident;
-			  free(ident);		  
-			}
-		    }
-		  ccur = ccur->next;
-		}
-	    }
-	  else
-	    {
-	      std::cout << "XMLPLF: Unhandled resource type: " << type << std::endl;	  
-	    }
-	  free(type);
-	}
-      cur = cur->next;
-    }
-
-  //std::cout << "XML: parse_surface(): " << desc.res_name << " " << desc.datafile  << std::endl;
-
-  return desc;
 }
 
 /* EOF */

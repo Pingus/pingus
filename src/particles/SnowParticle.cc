@@ -1,4 +1,4 @@
-//  $Id: SnowParticle.cc,v 1.7 2000/08/04 23:01:25 grumbel Exp $
+//  $Id: SnowParticle.cc,v 1.8 2000/08/05 00:00:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ SnowParticle::init(int x, int y)
 
   x_pos = x;
   y_pos = y;
-  x_add = 1.0;
+  x_add = 0.0;
 
   switch (rand() % 10)
     {

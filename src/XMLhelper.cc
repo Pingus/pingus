@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.cc,v 1.1 2000/07/30 02:41:19 grumbel Exp $
+//  $Id: XMLhelper.cc,v 1.2 2000/08/05 00:00:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "StringConverter.hh"
 #include "XMLhelper.hh"
 
 std::string
@@ -38,6 +39,175 @@ XMLhelper::encode_entities(const std::string& arg_str)
   //  std::cout << "encode_xml-done: " << str << std::endl;
 
   return str;
+}
+
+
+
+Position
+XMLhelper::parse_position(xmlDocPtr doc, xmlNodePtr cur)
+{
+  Position pos;
+  cur = cur->childs;  
+  while (cur != NULL)
+    {
+      char* ident = (char*)xmlNodeListGetString(doc, cur->childs, 1);
+
+      if (ident)
+	{
+	  //std::cout << "parse_position: ident = " << ident << std::endl;
+	  if (strcmp((char*)cur->name, "x-pos") == 0) {
+	    pos.x_pos = StringConverter::to_int(ident);
+	  } else if (strcmp((char*)cur->name, "y-pos") == 0) {
+	    pos.y_pos = StringConverter::to_int(ident);
+	  } else if (strcmp((char*)cur->name, "z-pos") == 0) {
+	    pos.z_pos = StringConverter::to_int(ident);
+	  } else {
+	    std::cout << "Unhandled position ident: " << ident << std::endl;
+	  }
+	  free(ident);
+	}
+      cur = cur->next;
+    }
+  return pos;
+}
+
+int
+XMLhelper::parse_int(xmlDocPtr doc, xmlNodePtr cur)
+{
+  cur = cur->childs;
+  
+  int number = 999;
+  char* number_str = (char*)xmlNodeListGetString(doc, cur, 1);
+  if (number_str) {
+    number = StringConverter::to_int(number_str);
+    free(number_str);
+  } else {
+    std::cout << "XMLhelper: parse_int: Field empty" << std::endl;
+  }
+  return number;
+}
+
+float
+XMLhelper::parse_float(xmlDocPtr doc, xmlNodePtr cur)
+{
+  cur = cur->childs;
+  
+  float number = 3.1415927;
+  char* number_str = (char*)xmlNodeListGetString(doc, cur, 1);
+  if (number_str) {
+    number = StringConverter::to_float(number_str);
+    free(number_str);
+  } else {
+    std::cout << "XMLhelper: parse_int: Field empty" << std::endl;
+  }
+  return number;
+}
+
+Color
+XMLhelper::parse_color(xmlDocPtr doc, xmlNodePtr cur)
+{
+  Color color;
+  cur = cur->childs;
+
+  while (cur != NULL)
+    {  
+      if (strcmp((char*)cur->name, "red") == 0)
+	{
+	  color.red = parse_float(doc, cur);
+	}
+      else if (strcmp((char*)cur->name, "green") == 0)
+	{
+	  color.green = parse_float(doc, cur);
+	}
+      else if (strcmp((char*)cur->name, "blue") == 0)
+	{
+	  color.blue = parse_float(doc, cur);
+	}
+      else if (strcmp((char*)cur->name, "alpha") == 0)
+	{
+	  color.alpha = parse_float(doc, cur);
+	}
+      else
+	{
+	  std::cout << "XMLhelper: Unhandled color ident: " << cur->name << std::endl;	  
+	}
+      cur = cur->next;
+    }
+  return color;
+}
+
+ResDescriptor 
+XMLhelper::parse_surface(xmlDocPtr doc, xmlNodePtr cur)
+{
+  ResDescriptor desc;
+  cur = cur->childs;  
+  while (cur != NULL)
+    {
+      char* type = (char*)xmlGetProp(cur, (xmlChar*)"type");
+      
+      if (type)
+	{
+	  if (strcmp(type, "file") == 0)
+	    {
+	      desc.type = ResDescriptor::FILE;	 
+	      xmlNodePtr ccur = cur->childs;
+	      desc.type = ResDescriptor::RESOURCE;
+	      while (ccur != NULL)
+		{
+		  if (strcmp((char*)ccur->name, "resource-file") == 0)
+		    {
+		      char* filename = (char*)xmlNodeListGetString(doc, ccur->childs, 1);
+		      if (filename) 
+			{
+			  desc.res_name = filename;
+			  free(filename);
+			}		      
+		    }
+		}
+	    }
+	  else if (strcmp(type, "datafile") == 0)
+	    {
+	      xmlNodePtr ccur = cur->childs;
+	      desc.type = ResDescriptor::RESOURCE;
+	      while (ccur != NULL)
+		{
+		  if (strcmp((char*)ccur->name, "resource-datafile") == 0)
+		    {
+		      char* datafile = (char*)xmlNodeListGetString(doc, ccur->childs, 1);
+		      if (datafile) 
+			{
+			  desc.datafile = datafile;
+			  free(datafile);
+			}
+		      else
+			{
+			  std::cout << "XMLhelper: parse_surface() Empty" << std::endl;
+			}
+		    }
+		  else if (strcmp((char*)ccur->name, "resource-ident") == 0)
+		    {
+		      char* ident = (char*)xmlNodeListGetString(doc, ccur->childs, 1);
+		      if (ident) 
+			{
+			  desc.res_name = ident;
+			  free(ident);		  
+			}
+		    }
+		  ccur = ccur->next;
+		}
+	    }
+	  else
+	    {
+	      std::cout << "XMLhelper: Unhandled resource type: " << type << std::endl;	  
+	    }
+	  free(type);
+	}
+      cur = cur->next;
+    }
+
+  //std::cout << "XML: parse_surface(): " << desc.res_name << " " << desc.datafile  << std::endl;
+
+  return desc;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: Theme.hh,v 1.8 2000/06/21 15:28:28 grumbel Exp $
+//  $Id: Theme.hh,v 1.9 2000/08/05 00:00:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,14 +26,14 @@
 #include <ClanLib/core.h>
 
 #include "MultiLineText.hh"
-#include "PLTParser.hh"
+#include "PLTXML.hh"
 
 ///
 class Theme
 {
 private:
   ///
-  PLTParser plt;
+  PLTXML plt;
   ///
   CL_Surface* surface;
   ///

@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.hh,v 1.1 2000/07/30 02:41:19 grumbel Exp $
+//  $Id: XMLhelper.hh,v 1.2 2000/08/05 00:00:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,10 @@
 #define XMLHELPER_HH
 
 #include <string>
+#include <gnome-xml/parser.h> 
+#include "ResDescriptor.hh"
+#include "Position.hh"
+#include "Color.hh"
 
 class XMLhelper
 {
@@ -28,6 +32,12 @@ private:
 
 public:
   static std::string XMLhelper::encode_entities(const std::string& arg_str);
+
+  static ResDescriptor parse_surface(xmlDocPtr doc, xmlNodePtr cur);
+  static Position      parse_position(xmlDocPtr doc, xmlNodePtr cur);
+  static int           parse_int(xmlDocPtr doc, xmlNodePtr cur);
+  static float         parse_float(xmlDocPtr doc, xmlNodePtr cur);
+  static Color         parse_color(xmlDocPtr doc, xmlNodePtr cur);
 };
 
 #endif
