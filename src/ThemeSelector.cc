@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.30 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.31 2000/09/12 11:11:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -197,6 +197,8 @@ ThemeSelector::ThemeSelector()
   //CL_Input::chain_button_release.push_back(event);
   //CL_Input::chain_mouse_move.push_back(event);
 
+  current_theme = themes.end();
+
   on_button_press_slot = CL_Input::sig_button_press.connect (thCreateSlot(event, &ThemeSelector::Event::on_button_press));
   on_button_release_slot = CL_Input::sig_button_release.connect (thCreateSlot(event, &ThemeSelector::Event::on_button_release));
   on_mouse_move_slot = CL_Input::sig_mouse_move.connect (thCreateSlot(event, &ThemeSelector::Event::on_mouse_move));
@@ -213,9 +215,9 @@ ThemeSelector::~ThemeSelector()
   // CL_Input::chain_button_press.remove(event);
   // CL_Input::chain_button_release.remove(event);
   
-  //CL_Input::sig_button_press.disconnect (on_button_press_slot);
-  //CL_Input::sig_button_release.disconnect (on_button_release_slot);
-  //CL_Input::sig_mouse_move.disconnect (on_mouse_move_slot);
+  CL_Input::sig_button_press.disconnect (on_button_press_slot);
+  CL_Input::sig_button_release.disconnect (on_button_release_slot);
+  CL_Input::sig_mouse_move.disconnect (on_mouse_move_slot);
   
   delete event;
 }
@@ -323,7 +325,10 @@ ThemeSelector::readdir(std::string path)
 int
 ThemeSelector::mark_level_at_point(int x, int y)
 {
-  return (*current_theme)->mark_level_at_point(x, y);
+  if (current_theme == themes.end())
+    return 0;
+  else
+    return (*current_theme)->mark_level_at_point(x, y);
 }
 
 /* EOF */

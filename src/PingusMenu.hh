@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.hh,v 1.7 2000/08/09 14:39:37 grumbel Exp $
+//  $Id: PingusMenu.hh,v 1.8 2000/09/12 11:11:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,8 @@ private:
   thSlot on_button_release_slot;
   ///
   thSlot on_mouse_move_slot;
-
+  //
+  thSlot on_resize_slot;
   ///
   class Event /*: 
     public CL_Event_ButtonPress, 
@@ -109,7 +110,9 @@ private:
   EditorButton*   editor_button;
   ///
   ThemeButton*    theme_button;
+  
 
+  void on_resize(int w, int h);
 public:
   ///
   bool do_quit;

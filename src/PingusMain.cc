@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.4 2000/08/28 00:34:39 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.5 2000/09/12 11:11:36 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -801,8 +801,8 @@ PingusMain::do_lemmings_mode(void)
   //CL_Input::chain_button_press.remove(&global_event);
   //CL_Input::chain_button_release.remove(&global_event);
 
-  // CL_Input::sig_button_press.disconnect (on_button_press_slot);
-  // CL_Input::sig_button_release.disconnect(on_button_release_slot);
+  CL_Input::sig_button_press.disconnect (on_button_press_slot);
+  CL_Input::sig_button_release.disconnect(on_button_release_slot);
 
   //  Display::remove_flip_screen_hook(&console);
   //  Display::remove_flip_screen_hook(&fps_counter);

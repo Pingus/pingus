@@ -1,4 +1,4 @@
-//  $Id: PingusMenu.cc,v 1.30 2000/08/28 00:34:39 grumbel Exp $
+//  $Id: PingusMenu.cc,v 1.31 2000/09/12 11:11:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,9 +46,12 @@ PingusMenu::PingusMenu()
   //  CL_Input::chain_button_release.push_back(event);
   //  CL_Input::chain_mouse_move.push_back(event);
 
-  on_button_press_slot = CL_Input::sig_button_press.connect (thCreateSlot(event, &PingusMenu::Event::on_button_press));
+  on_button_press_slot   = CL_Input::sig_button_press.connect (thCreateSlot(event, &PingusMenu::Event::on_button_press));
   on_button_release_slot = CL_Input::sig_button_release.connect (thCreateSlot(event, &PingusMenu::Event::on_button_release));
-  on_mouse_move_slot = CL_Input::sig_mouse_move.connect (thCreateSlot(event, &PingusMenu::Event::on_mouse_move));
+  on_mouse_move_slot     = CL_Input::sig_mouse_move.connect (thCreateSlot(event, &PingusMenu::Event::on_mouse_move));
+
+  on_resize_slot = CL_Display::get_sig_resize().connect(thCreateSlot(this, &PingusMenu::on_resize));
+  //CL_Display::get_sig_resize().disconnect(on_resize_slot);
 
   editor_button  = new EditorButton;
   options_button = new OptionsButton;
@@ -77,9 +80,9 @@ PingusMenu::~PingusMenu()
   //CL_Input::chain_button_release.remove(event);
   //CL_Input::chain_button_press.remove(event);
 
-  //CL_Input::sig_button_press.disconnect (on_button_press_slot);
-  //CL_Input::sig_button_release.disconnect (on_button_release_slot);
-  //CL_Input::sig_mouse_move.disconnect (on_mouse_move_slot);
+  CL_Input::sig_button_press.disconnect (on_button_press_slot);
+  CL_Input::sig_button_release.disconnect (on_button_release_slot);
+  CL_Input::sig_mouse_move.disconnect (on_mouse_move_slot);
 
   delete event;
 }
@@ -218,6 +221,12 @@ PingusMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
 	}
   
     }
+}
+
+void
+PingusMenu::on_resize(int w, int h)
+{
+  std::cout << "Width: " << w << " Height: " << h << std::endl;
 }
 
 /* EOF */
