@@ -5,8 +5,7 @@
     <levelname lang="en">Bridging gets more complicated...</levelname>
     <description lang="en">If no jumper is at hand and a large hole
     needs to be passed a bridge can be pretty helpfull</description>
-    <author>Ingo Ruhnke
-    &lt;grumbel@gmx.de&gt;</author>
+    <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>25</number-of-pingus>
     <number-to-save>15</number-to-save>
     <time>-1</time>

@@ -620,14 +620,6 @@
   <parallax>1</parallax>
 </hotspot>
 
-  <worldobj type="snow-generator">
-  <position>
-    <x-pos>0</x-pos>
-    <y-pos>0</y-pos>
-    <z-pos>200</z-pos>
-  </position>
-  </worldobj>
-
 <hotspot>
   <surface><resource type="datafile">
     <resource-datafile>entrances</resource-datafile>
