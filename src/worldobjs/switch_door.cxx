@@ -1,4 +1,4 @@
-//  $Id: switch_door.cxx,v 1.1 2002/06/12 19:03:10 grumbel Exp $
+//  $Id: switch_door.cxx,v 1.2 2002/06/22 22:06:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -148,7 +148,7 @@ SwitchDoor::draw_colmap()
   world->get_colmap ()->put (door_box, int(door_pos.x), int(door_pos.y), GroundpieceData::GP_SOLID);
   for (int i=0; i < door_height; i++)
     world->get_colmap ()->put (door_tile_cmap,
-			       int(door_pos.x) + 1, 
+			       int(door_pos.x), 
 			       int(door_pos.y) + i * door_tile.get_height () + door_box.get_height (),
 			       GroundpieceData::GP_SOLID);
 }
@@ -158,7 +158,7 @@ SwitchDoor::draw_offset(int x_of, int y_of, float /*s*/)
 {
   door_box.put_screen (int(door_pos.x) + x_of, int(door_pos.y) + y_of);
   for (int i=0; i < current_door_height; i++)
-    door_tile.put_screen (int(door_pos.x) + x_of + 1, 
+    door_tile.put_screen (int(door_pos.x) + x_of, 
 			  int(door_pos.y) + y_of 
 			  + i * door_tile.get_height ()
 			  + door_box.get_height ());
@@ -198,7 +198,7 @@ SwitchDoor::update(float /*delta*/)
 	      world->get_colmap ()->put (door_box, int(door_pos.x), int(door_pos.y), GroundpieceData::GP_NOTHING);
 	      for (int i=0; i < door_height; i++)
 		world->get_colmap ()->put (door_tile_cmap,
-					   int(door_pos.x) + 1, 
+					   int(door_pos.x), 
 					   int(door_pos.y) + i * door_tile.get_height () + door_box.get_height (),
 					   GroundpieceData::GP_NOTHING);
 	    }
@@ -285,7 +285,7 @@ EditorSwitchDoorObj::draw (EditorView * view)
   for (int i = 0; i < door_height; i++)
     {
       view->draw (door_tile, 
-		  int(door_pos.x + 1), 
+		  int(door_pos.x), 
 		  int(door_pos.y + (i * door_tile.get_height ())
 		      + door_box.get_height ()));
     }

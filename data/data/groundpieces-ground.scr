@@ -232,6 +232,7 @@ section rock
         rock4 = ../images/groundpieces/ground/rock/rock4.png (type=surface);
         rock5 = ../images/groundpieces/ground/rock/rock5.png (type=surface);
         rock6 = ../images/groundpieces/ground/rock/rock6.png (type=surface);
+        stone1 = ../images/groundpieces/ground/rock/stone1.png (type=surface);
 }
 
 section signposts

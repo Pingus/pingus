@@ -11,10 +11,10 @@ conveyorbelt_middle = ../images/worldobjs/conveyorbelt_middle.png (type=surface,
 conveyorbelt_right  = ../images/worldobjs/conveyorbelt_right.png  (type=surface, x=0, y=0, width=15, height=14, array=15x1);
 conveyorbelt_cmap  = ../images/worldobjs/conveyorbelt_cmap.png  (type=surface, x=0, y=0, width=15, height=14);
 
-switchdoor_box    = ../images/worldobjs/switchdoor_box.png (type=surface, x=0, y=0, width=18, height=16);
-switchdoor_switch = ../images/worldobjs/switchdoor_switch.png (type=surface, x=0, y=0, width=15, height=40);
-switchdoor_tile   = ../images/worldobjs/switchdoor_tile.png (type=surface, x=0, y=0, width=16, height=3);
-switchdoor_tile_cmap = ../images/worldobjs/switchdoor_tile_cmap.png (type=surface, x=0, y=0, width=16, height=3);
+switchdoor_box    = ../images/worldobjs/switchdoor_box.png (type=surface);
+switchdoor_switch = ../images/worldobjs/switchdoor_switch.png (type=surface);
+switchdoor_tile   = ../images/worldobjs/switchdoor_tile.png (type=surface);
+switchdoor_tile_cmap = ../images/worldobjs/switchdoor_tile_cmap.png (type=surface);
 
 infobox = ../images/worldobjs/infobox.png (type=surface);
 
