@@ -1,4 +1,4 @@
-//  $Id: bomber.cc,v 1.7 2000/04/29 13:13:26 grumbel Exp $
+//  $Id: bomber.cc,v 1.8 2000/05/24 15:41:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include "bomber.hh"
 
 CL_Surface* Bomber::static_surface;
+CL_Surface* Bomber::bomber_radius;
+CL_Surface* Bomber::explo_surf;
 
 Bomber::Bomber()
 {
@@ -43,12 +45,14 @@ Bomber::init()
   
   // Only load the surface again if no static_surface is available
   if (!static_surface) 
-    {
-      static_surface = CL_Surface::load("Pingus/bomber", local_res());
-    }
+    static_surface = CL_Surface::load("Pingus/bomber", local_res());
 
-  bomber_radius = CL_Surface::load("Other/bomber_radius", local_res());
-  explo_surf = CL_Surface::load("Other/explo", local_res());
+  if (!bomber_radius)
+    bomber_radius = CL_Surface::load("Other/bomber_radius", local_res());
+
+  if (!explo_surf)
+    explo_surf = CL_Surface::load("Other/explo", local_res());
+
   surface = static_surface;
   sound_played = false;
   environment = (PinguEnvironment)(land | sky);
