@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.105 2002/09/20 08:52:46 torangan Exp $
+#  $Id: Makefile.am,v 1.106 2002/09/21 16:52:39 torangan Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -123,7 +123,6 @@ display.cxx \
 display.hxx \
 display_graphic_context.hxx \
 display_graphic_context.cxx \
-editor_hotspot.hxx \
 entrance.cxx \
 entrance.hxx \
 entrance_data.cxx \
@@ -165,10 +164,6 @@ gui_obj.hxx \
 gui_obj.cxx \
 gui_screen.cxx \
 gui_screen.hxx \
-hotspot.cxx \
-hotspot.hxx \
-hotspot_data.cxx \
-hotspot_data.hxx \
 html_browser.cxx \
 html_browser.hxx \
 hurry_up.cxx \

@@ -24,6 +24,7 @@ libpingus_worldobjsdata_a_SOURCES = \
         groundpiece_data.hxx             groundpiece_data.cxx \
 	guillotine_data.cxx              guillotine_data.hxx \
 	hammer_data.cxx                  hammer_data.hxx \
+	hotspot_data.cxx                 hotspot_data.hxx \
 	ice_block_data.cxx               ice_block_data.hxx \
 	info_box_data.cxx                info_box_data.hxx \
 	laser_exit_data.cxx              laser_exit_data.hxx \

@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.23 2002/09/18 15:00:37 torangan Exp $
+//  $Id: object_selector.cxx,v 1.24 2002/09/21 16:52:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,8 +37,9 @@
 #include "../my_gettext.hxx"
 #include "../system.hxx"
 #include "../path_manager.hxx"
-#include "../editor_hotspot.hxx"
+#include "../string_converter.hxx"
 
+#include "../worldobjsdata/hotspot_data.hxx"
 #include "../worldobjsdata/solid_color_background_data.hxx"
 #include "../worldobjsdata/starfield_background_data.hxx"
 #include "../worldobjsdata/surface_background_data.hxx"
@@ -49,6 +50,7 @@
 #include "../editorobjs/fake_exit_obj.hxx"
 #include "../editorobjs/guillotine_obj.hxx"
 #include "../editorobjs/hammer_obj.hxx"
+#include "../editorobjs/hotspot_obj.hxx"
 #include "../editorobjs/ice_block_obj.hxx"
 #include "../editorobjs/info_box_obj.hxx"
 #include "../editorobjs/laser_exit_obj.hxx"
@@ -163,9 +165,7 @@ ObjectSelector::get_hotspot (const std::string& filename)
       data.desc = ResDescriptor("resource:" + filename, str);
       data.speed = -1;
 
-      EditorObjLst objs;
-      objs.push_back(new EditorHotspot(data));
-      return objs;
+      return data.create_EditorObj();
     }
   return EditorObjLst();
 }

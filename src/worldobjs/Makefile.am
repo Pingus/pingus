@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.13 2002/09/18 15:00:37 torangan Exp $
+#  $Id: Makefile.am,v 1.14 2002/09/21 16:52:40 torangan Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,26 +20,27 @@
 noinst_LIBRARIES = libpingus_worldobjs.a
 
 libpingus_worldobjs_a_SOURCES = \
-	bumper.cxx                     bumper.hxx        \
-        conveyor_belt.cxx              conveyor_belt.hxx \
-	fake_exit.cxx                  fake_exit.hxx     \
-	guillotine.cxx                 guillotine.hxx    \
-        groundpiece.hxx                groundpiece.cxx   \
-	hammer.cxx                     hammer.hxx        \
-        ice_block.cxx                  ice_block.hxx     \
-        info_box.cxx                   info_box.hxx      \
-	laser_exit.cxx                 laser_exit.hxx    \
-        rain_generator.hxx             rain_generator.cxx \
-	smasher.cxx                    smasher.hxx       \
-        snow_generator.hxx             snow_generator.cxx \
-	solid_color_background.cxx     solid_color_background.hxx \
-	spike.cxx                      spike.hxx         \
-	starfield_background.cxx       starfield_background.hxx \
+	bumper.cxx                     bumper.hxx                     \
+        conveyor_belt.cxx              conveyor_belt.hxx              \
+	fake_exit.cxx                  fake_exit.hxx                  \
+	guillotine.cxx                 guillotine.hxx                 \
+        groundpiece.hxx                groundpiece.cxx                \
+	hammer.cxx                     hammer.hxx                     \
+	hotspot.cxx		       hotspot.hxx                    \
+        ice_block.cxx                  ice_block.hxx                  \
+        info_box.cxx                   info_box.hxx                   \
+	laser_exit.cxx                 laser_exit.hxx                 \
+        rain_generator.hxx             rain_generator.cxx             \
+	smasher.cxx                    smasher.hxx                    \
+        snow_generator.hxx             snow_generator.cxx             \
+	solid_color_background.cxx     solid_color_background.hxx     \
+	spike.cxx                      spike.hxx                      \
+	starfield_background.cxx       starfield_background.hxx       \
 	starfield_background_stars.cxx starfield_background_stars.hxx \
-	surface_background.cxx	       surface_background.hxx \
-        switch_door.cxx                switch_door.hxx   \
-        teleporter.cxx                 teleporter.hxx    \
-	thunderstorm_background.cxx    thunderstorm_background.hxx \
+	surface_background.cxx	       surface_background.hxx         \
+        switch_door.cxx                switch_door.hxx                \
+        teleporter.cxx                 teleporter.hxx                 \
+	thunderstorm_background.cxx    thunderstorm_background.hxx    \
         worldobj_group.hxx             worldobj_group.cxx
 
 ## EOF ##
