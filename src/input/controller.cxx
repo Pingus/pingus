@@ -1,4 +1,4 @@
-//  $Id: controller.cxx,v 1.14 2002/08/16 17:12:13 grumbel Exp $
+//  $Id: controller.cxx,v 1.15 2002/08/16 18:13:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,24 +54,17 @@ namespace Input
     
     if (!cur || strcmp(reinterpret_cast<const char*>(cur->name), "pingus-controller") != 0)
       PingusError::raise("Controller: invalid config file <" + configfile + ">");
-    
-    cur = XMLhelper::skip_blank(cur);  
-      
-    cur = cur->children;
-    
+    cur = XMLhelper::skip_blank(cur->children);
+
+    if (!cur || strcmp(reinterpret_cast<const char*>(cur->name), "controller-config") != 0)
+      PingusError::raise("Controller: invalid config file <" + configfile + ">");
+    cur = XMLhelper::skip_blank(cur->children);
+	       
     while (cur) 
       {
         if (xmlIsBlankNode(cur)) // explicit check cause we need the continue to check for cur again
 	  {
             cur = cur->next;
-	    continue;
-	  }
-
-	else if ( ! strcmp(reinterpret_cast<const char*>(cur->name), "controller-config"))
-	  {
-	    // FIXME: handling two levels of the xml tree in the same
-	    // FIXME: while-loop isn't really nice
-	    cur = XMLhelper::skip_blank(cur->children);
 	    continue;
 	  }
 
@@ -207,12 +200,10 @@ namespace Input
 	  else
 	    events.push_back(new ButtonEvent(buttons[i].first, released));
 	}
-      
-    if (action_axis->get_pos())
-      if (action_axis->get_pos() > 0)
-        events.push_back(new AxisEvent(up));
-      else 
-        events.push_back(new AxisEvent(down));
+    
+    const float& temp = action_axis->get_pos();
+    if (temp)
+      events.push_back(new AxisEvent(temp));
   }
 
   const Button*

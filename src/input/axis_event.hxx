@@ -1,4 +1,4 @@
-//  $Id: axis_event.hxx,v 1.1 2002/07/10 17:22:11 torangan Exp $
+//  $Id: axis_event.hxx,v 1.2 2002/08/16 18:13:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,17 +24,16 @@
 
 namespace Input {
 
-  enum Direction { up, down };
   enum AxisName  { action };
 
   class AxisEvent : public Event {
   
     public:
-      Direction dir;
+      float     dir;
       AxisName  name;
                  
     public:
-      AxisEvent (Direction dir_, AxisName name_=action) : dir(dir_), name(name_) { }
+      AxisEvent (float dir_, AxisName name_=action) : dir(dir_), name(name_) { }
       
       EventType get_type () { return AxisEventType; }
   };
