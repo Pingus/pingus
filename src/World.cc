@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.15 2000/04/25 17:54:40 grumbel Exp $
+//  $Id: World.cc,v 1.16 2000/05/03 16:53:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -374,11 +374,6 @@ World::is_finished(void)
     {
       return true;
     } 
-  /*  else if (exit_world)
-    {
-      //      cout << "The world will exit in: " << exit_time << " : " << GameTime::get_time() << endl;
-      return true;
-      } */
   else 
     {
       return false;

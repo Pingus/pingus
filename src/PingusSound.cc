@@ -1,4 +1,4 @@
-//  $Id: PingusSound.cc,v 1.9 2000/04/29 13:13:26 grumbel Exp $
+//  $Id: PingusSound.cc,v 1.10 2000/05/03 16:53:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -110,7 +110,7 @@ PingusSound::play_wav(std::string str)
 	       pingus_audio_channels, pingus_audio_buffers);
 	}
       
-      cout << "PlayingWAV: " << str << endl;
+      //cout << "PlayingWAV: " << str << endl;
       Mix_PlayChannel(-1, PingusWavProvider::load(str), 0);
     }
 #endif /* HAVE_LIBSDL_MIXER */  

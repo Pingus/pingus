@@ -1,4 +1,4 @@
-//  $Id: ClientEvent.cc,v 1.7 2000/04/29 20:03:04 grumbel Exp $
+//  $Id: ClientEvent.cc,v 1.8 2000/05/03 16:53:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -217,7 +217,6 @@ ClientEvent::on_keyboard_button_release(const CL_Key& key)
 bool
 ClientEvent::on_mouse_button_press(const CL_Key& key)
 {
-  cout << "ClientEvent: Got button press" << endl;
   if (client->button_panel->on_button_press(key)) return false;
   if (client->small_map->on_button_press(key)) return false;
 

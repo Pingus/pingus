@@ -1,4 +1,4 @@
-//  $Id: PingusWavProvider.cc,v 1.1 2000/04/29 20:10:23 grumbel Exp $
+//  $Id: PingusWavProvider.cc,v 1.2 2000/05/03 16:53:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,6 @@ PingusWavProvider::load(std::string str)
       else
 	{
 	  wave.push_back(chunk);
-	  cout << "--- chunk: " << chunk.data << endl;
 	  return chunk.data;
 	}
     }
