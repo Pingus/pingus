@@ -1,4 +1,4 @@
-//  $Id: screen_manager.hxx,v 1.7 2002/08/16 13:03:35 torangan Exp $
+//  $Id: screen_manager.hxx,v 1.8 2002/08/17 00:30:53 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,6 +65,8 @@ private:
   /** Remove the current screen and fall back to the last one */
   void real_pop_screen ();
 
+  /** FadeOver test*/
+  void fade_over (Screen* old_screen, Screen* new_screen);
 public:  
   static ScreenManager* instance ();
 };

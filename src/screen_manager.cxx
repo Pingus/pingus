@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.10 2002/08/16 17:15:31 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.11 2002/08/17 00:30:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <ClanLib/Display/Display/display.h>
 #include "globals.hxx"
 #include "input/controller.hxx"
 #include "delta_manager.hxx"
@@ -113,7 +114,7 @@ void
 ScreenManager::push_screen (Screen* screen, bool delete_screen)
 {
   std::cout << "XXXXXXXX ScreenManager::push_screen" << std::endl;
-  
+
   if (!screens.empty())
     {
       std::cout << "ScreenManager::push_screen" << std::endl;
@@ -169,6 +170,36 @@ ScreenManager::real_pop_screen ()
   if (!screens.empty ())
     {
       screens.back ().first->on_startup ();
+    }
+}
+
+void
+ScreenManager::fade_over (Screen* old_screen, Screen* new_screen)
+{
+  DeltaManager delta_manager;
+  float passed_time = 0;
+  
+  while (passed_time < 1.0f)
+    {
+      float time_delta = delta_manager.getset ();
+      passed_time += time_delta;
+
+      int border_x = int((CL_Display::get_width ()/2) * passed_time);
+      int border_y = int((CL_Display::get_height ()/2) * passed_time);
+
+      std::cout << "FadeOver: " << border_x << " " << border_y << std::endl;
+
+      new_screen->draw ();
+
+      CL_Display::push_clip_rect(CL_ClipRect (0 + border_x, 
+					      0 + border_y,
+					      CL_Display::get_width () - border_x,
+					      CL_Display::get_height () - border_y));
+      old_screen->draw ();
+      CL_Display::pop_clip_rect ();
+
+      Display::flip_display ();
+      CL_System::keep_alive ();
     }
 }
 
