@@ -1,4 +1,4 @@
-//  $Id: Exit.hh,v 1.13 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: Exit.hh,v 1.14 2001/04/15 11:00:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,6 +36,7 @@ class Exit : public ExitData,
 private:
   ///
   Sprite sprite;
+  Sprite flag;
 public:
   ///
   Exit(ExitData data);

@@ -1,4 +1,4 @@
-//  $Id: Controller.cc,v 1.4 2001/04/14 14:37:04 grumbel Exp $
+//  $Id: Controller.cc,v 1.5 2001/04/15 11:00:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,6 +63,8 @@ InputDeviceButton::is_pressed ()
 Controller::Controller (int arg_owner_id)
   : owner_id (arg_owner_id),
     rect (0, 0, CL_Display::get_width ()-1, CL_Display::get_height ()-1),
+    // We create some dummy buttons, so we don't get SEGFAULTS when
+    // somebody tries to access a NULL pointer
     left  (new DummyButton (this)),
     middle(new DummyButton (this)),
     right (new DummyButton (this)),
@@ -70,6 +72,8 @@ Controller::Controller (int arg_owner_id)
     pause (new DummyButton (this)),
     scroll_left (new DummyButton (this)),
     scroll_right(new DummyButton (this)),
+    scroll_up (new DummyButton (this)),
+    scroll_down(new DummyButton (this)),
     next_action  (new DummyButton (this)),
     previous_action (new DummyButton (this))
 {
@@ -91,6 +95,8 @@ Controller::keep_alive ()
   if (pause.get ()) pause->keep_alive ();
   if (scroll_left.get ()) scroll_left->keep_alive ();
   if (scroll_right.get ()) scroll_right->keep_alive ();
+  if (scroll_up.get ()) scroll_up->keep_alive ();
+  if (scroll_down.get ()) scroll_down->keep_alive ();
   if (next_action.get ()) next_action->keep_alive ();
   if (previous_action.get ()) previous_action->keep_alive ();
 }

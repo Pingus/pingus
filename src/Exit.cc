@@ -1,4 +1,4 @@
-//  $Id: Exit.cc,v 1.17 2001/04/15 00:53:11 grumbel Exp $
+//  $Id: Exit.cc,v 1.18 2001/04/15 11:00:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,10 +24,13 @@
 #include "PingusResource.hh"
 #include "Exit.hh"
 #include "actions/exiter.hh"
+#include "StringConverter.hh"
 
 Exit::Exit(ExitData data)
-  : sprite (data.desc, 10.0f)
+  : sprite (data.desc, 10.0f),
+    flag ("misc/flag" + StringConverter::to_string (data.owner_id), "core")
 {
+  flag.set_align_center_bottom ();
   if (verbose > 2)
     std::cout << "Creating Exit" << std::endl;
 
@@ -70,6 +73,7 @@ Exit::draw_offset(int x_of, int y_of, float s)
 {
   if (s == 1.0) {
     sprite.put_screen(pos.x_pos + x_of, pos.y_pos + y_of);
+    flag.put_screen (pos.x_pos + 40 + x_of, pos.y_pos + y_of);
   } else {
     //sprite.put_screen((int)((pos.x_pos + x_of) * s), (int)((pos.y_pos + y_of) * s),
     //s, s);

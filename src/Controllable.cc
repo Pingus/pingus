@@ -1,4 +1,4 @@
-//  $Id: Controllable.cc,v 1.2 2001/04/14 14:37:04 grumbel Exp $
+//  $Id: Controllable.cc,v 1.3 2001/04/15 11:00:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,8 @@ Controllable::Controllable (boost::shared_ptr<Controller> arg_controller)
   std::cout << "Scroll buttons..." << std::endl;  
   scroll_left_press_slot  = controller->scroll_left->signal_pressed.connect(CL_CreateSlot (this, &Controllable::wrapper_on_scroll_left_press));
   scroll_right_press_slot = controller->scroll_right->signal_pressed.connect(CL_CreateSlot (this, &Controllable::wrapper_on_scroll_right_press));
+  scroll_up_press_slot  = controller->scroll_up->signal_pressed.connect(CL_CreateSlot (this, &Controllable::on_scroll_up_press));
+  scroll_down_press_slot = controller->scroll_down->signal_pressed.connect(CL_CreateSlot (this, &Controllable::on_scroll_down_press));
   
   std::cout << "Action buttons..." << std::endl;  
   next_action_press_slot     = controller->next_action->signal_pressed.connect(CL_CreateSlot (this, &Controllable::wrapper_on_next_action_press));
@@ -51,6 +53,8 @@ Controllable::Controllable (boost::shared_ptr<Controller> arg_controller)
 
   scroll_left_release_slot  = controller->scroll_left->signal_released.connect(CL_CreateSlot (this, &Controllable::wrapper_on_scroll_left_release));
   scroll_right_release_slot = controller->scroll_right->signal_released.connect(CL_CreateSlot (this, &Controllable::wrapper_on_scroll_right_release));
+  scroll_up_release_slot  = controller->scroll_up->signal_released.connect(CL_CreateSlot (this, &Controllable::on_scroll_up_release));
+  scroll_down_release_slot = controller->scroll_down->signal_released.connect(CL_CreateSlot (this, &Controllable::on_scroll_down_release));
 
   next_action_release_slot     = controller->next_action->signal_released.connect(CL_CreateSlot (this, &Controllable::wrapper_on_next_action_release));
   previous_action_release_slot = controller->previous_action->signal_released.connect(CL_CreateSlot (this, &Controllable::wrapper_on_previous_action_release));

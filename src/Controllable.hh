@@ -1,4 +1,4 @@
-//  $Id: Controllable.hh,v 1.2 2001/04/14 14:37:04 grumbel Exp $
+//  $Id: Controllable.hh,v 1.3 2001/04/15 11:00:41 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,8 @@ protected:
 
   CL_Slot scroll_left_press_slot;
   CL_Slot scroll_right_press_slot;
+  CL_Slot scroll_up_press_slot;
+  CL_Slot scroll_down_press_slot;
 
   CL_Slot next_action_press_slot;
   CL_Slot previous_action_press_slot;
@@ -49,6 +51,9 @@ protected:
 
   CL_Slot scroll_left_release_slot;
   CL_Slot scroll_right_release_slot;
+  CL_Slot scroll_up_release_slot;
+  CL_Slot scroll_down_release_slot;
+
 
   CL_Slot next_action_release_slot;
   CL_Slot previous_action_release_slot;
@@ -95,6 +100,8 @@ public:
 
    virtual void on_scroll_left_press (const CL_Vector& pos) {}
    virtual void on_scroll_right_press (const CL_Vector& pos) {}
+   virtual void on_scroll_up_press (const CL_Vector& pos) {}
+   virtual void on_scroll_down_press (const CL_Vector& pos) {}
 
    virtual void on_next_action_press (const CL_Vector& pos) {}
    virtual void on_previous_action_press (const CL_Vector& pos) {}
@@ -109,6 +116,8 @@ public:
 
    virtual void on_scroll_left_release (const CL_Vector& pos) {}
    virtual void on_scroll_right_release (const CL_Vector& pos) {}
+   virtual void on_scroll_up_release (const CL_Vector& pos) {}
+   virtual void on_scroll_down_release (const CL_Vector& pos) {}
 
    virtual void on_next_action_release (const CL_Vector& pos) {}
    virtual void on_previous_action_release (const CL_Vector& pos) {}

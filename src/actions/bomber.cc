@@ -1,4 +1,4 @@
-//  $Id: bomber.cc,v 1.18 2001/04/15 00:53:12 grumbel Exp $
+//  $Id: bomber.cc,v 1.19 2001/04/15 11:00:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "../algo.hh"
 #include "../PingusResource.hh"
 #include "../FVec.hh"
+#include "../StringConverter.hh"
 #include "bomber.hh"
 
 bool Bomber::static_surface_loaded = false;
@@ -44,8 +45,8 @@ Bomber::init()
       bomber_radius = PingusResource::load_surface ("Other/bomber_radius", "pingus");
     }
 
-  explo_surf = PingusResource::load_surface (std::string("Other/explo") + (pingu->get_owner () ? "1" : ""), "pingus");
-  surface = PingusResource::load_surface (std::string("Pingus/bomber") + (pingu->get_owner () ? "1" : ""), "pingus");
+  explo_surf = PingusResource::load_surface ("Other/explo" + StringConverter::to_string (pingu->get_owner ()), "pingus");
+  surface = PingusResource::load_surface ("Pingus/bomber" + StringConverter::to_string(pingu->get_owner ()), "pingus");
 
   sound_played = false;
   environment = (PinguEnvironment)(land | sky);

@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.17 2001/04/15 00:53:11 grumbel Exp $
+//  $Id: ActionButton.cc,v 1.18 2001/04/15 11:00:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,14 +91,9 @@ ActionButton::init(int x, int y, std::string str, int owner_id)
   font = PingusResource::load_font("Fonts/courier_small", "fonts");
   font_h = PingusResource::load_font("Fonts/smallfont","fonts");
 
-  std::string owner;
-
-  if (owner_id == 1)
-    owner = "1";
-
   if (str != "empty") 
     {
-      surface   = PingusResource::load_surface(std::string("Pingus/" + str + owner).c_str(),
+      surface   = PingusResource::load_surface("Pingus/" + str + StringConverter::to_string(owner_id),
 					       "pingus");
       if (is_multi_direct)
 	{

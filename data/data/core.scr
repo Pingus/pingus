@@ -102,6 +102,11 @@ section misc
 
 	smallmap_entrance = images/core/misc/smallmap_entrance.png (type=surface, x=0, y=0, width=6, height=6, tcol=0);
 	smallmap_exit     = images/core/misc/smallmap_exit.png     (type=surface, x=0, y=0, width=6, height=6, tcol=0);
+
+        flag0 = images/core/misc/flag0.png (type=surface, x=0, y=0, width=27, height=38);
+        flag1 = images/core/misc/flag1.png (type=surface, x=0, y=0, width=27, height=38);
+        flag2 = images/core/misc/flag2.png (type=surface, x=0, y=0, width=27, height=38);
+        flag3 = images/core/misc/flag3.png (type=surface, x=0, y=0, width=27, height=38);
 }
 
 section worldmap

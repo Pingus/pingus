@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClientChild.cc,v 1.3 2001/04/14 14:37:04 grumbel Exp $
+//  $Id: MultiplayerClientChild.cc,v 1.4 2001/04/15 11:00:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,8 +73,7 @@ MultiplayerClientChild::update (float delta)
   for (GuiObjIter i = gui_objs.begin (); i != gui_objs.end (); ++i)
     (*i)->update (delta);
 
-  playfield->scroll (scroll_left_vec * delta);
-  playfield->scroll (scroll_right_vec * delta);
+  playfield->scroll (scroll_vec * delta);
 }
 
 void MultiplayerClientChild::on_left_press (const CL_Vector& pos)
@@ -105,27 +104,49 @@ void MultiplayerClientChild::on_right_release (const CL_Vector& pos)
 void 
 MultiplayerClientChild::on_scroll_left_press (const CL_Vector& pos)
 {
-  //std::cout << "Scroll left" << std::endl;
-  scroll_left_vec = CL_Vector (450.0 ,0.0);
+  scroll_vec += CL_Vector (450.0f, 0.0f);
 }
 
 void 
 MultiplayerClientChild::on_scroll_right_press (const CL_Vector& pos)
 {
-  //std::cout << "Scroll right" << std::endl;
-  scroll_right_vec = CL_Vector (-450.0 ,0.0);
+  scroll_vec += CL_Vector (-450.0f, 0.0f);
 }
 
 void 
 MultiplayerClientChild::on_scroll_left_release (const CL_Vector& pos)
 {
-  scroll_left_vec = CL_Vector (0.0 ,0.0);
+  scroll_vec -= CL_Vector (450.0f,0.0f);
 }
 
 void 
 MultiplayerClientChild::on_scroll_right_release (const CL_Vector& pos)
 {
-  scroll_right_vec = CL_Vector (0.0 ,0.0);
+  scroll_vec -= CL_Vector (-450.0f, 0.0f);
+}
+
+void 
+MultiplayerClientChild::on_scroll_up_press (const CL_Vector& pos)
+{
+  scroll_vec += CL_Vector (0.0f, 450.0f);
+}
+
+void 
+MultiplayerClientChild::on_scroll_up_release (const CL_Vector& pos)
+{
+  scroll_vec -= CL_Vector (0.0f, 450.0f);
+}
+
+void 
+MultiplayerClientChild::on_scroll_down_press (const CL_Vector& pos)
+{
+  scroll_vec += CL_Vector (0.0f, -450.0f);
+}
+
+void 
+MultiplayerClientChild::on_scroll_down_release (const CL_Vector& pos)
+{
+  scroll_vec -= CL_Vector (0.0f, -450.0f);
 }
 
 void 

@@ -11,7 +11,8 @@
     <width>1216</width>
     <height>800</height>
   </global>
-<background>
+
+<background type="surface">
   <surface><resource type="datafile">
     <resource-datafile>textures.dat</resource-datafile>
   <resource-ident>Textures/rocktile</resource-ident>
@@ -29,7 +30,6 @@
   <stretch-x>0</stretch-x>
   <stretch-y>0</stretch-y>
 </background>
-
 
   <action-list>
     <basher count="20"/>
@@ -187,62 +187,6 @@
   </position>
 </groundpiece>
 
-  <start-position>
-  <position>
-    <x-pos>562</x-pos>
-    <y-pos>260</y-pos>
-    <z-pos>1000</z-pos>
-  </position>
-  </start-position>
-
-<entrance>
-  <position>
-    <x-pos>190</x-pos>
-    <y-pos>174</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <type>generic</type>
-  <direction>misc</direction>
-  <release-rate>50</release-rate>
-  <owner-id>2</owner-id>
-</entrance>
-
-<entrance>
-  <position>
-    <x-pos>955</x-pos>
-    <y-pos>185</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <type>generic</type>
-  <direction>misc</direction>
-  <release-rate>50</release-rate>
-  <owner-id>1</owner-id>
-</entrance>
-
-<entrance>
-  <position>
-    <x-pos>193</x-pos>
-    <y-pos>513</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <type>generic</type>
-  <direction>misc</direction>
-  <release-rate>50</release-rate>
-  <owner-id>3</owner-id>
-</entrance>
-
-<entrance>
-  <position>
-    <x-pos>939</x-pos>
-    <y-pos>522</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <type>generic</type>
-  <direction>misc</direction>
-  <release-rate>50</release-rate>
-  <owner-id>0</owner-id>
-</entrance>
-
 <groundpiece type="ground">
   <surface><resource type="datafile">
     <resource-datafile>groundpieces-ground</resource-datafile>
@@ -357,8 +301,8 @@
   <resource-ident>desert/platform</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>117</x-pos>
-    <y-pos>240</y-pos>
+    <x-pos>76</x-pos>
+    <y-pos>242</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -2745,8 +2689,8 @@
   <resource-ident>desert/platform_left</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>834</x-pos>
-    <y-pos>251</y-pos>
+    <x-pos>882</x-pos>
+    <y-pos>262</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -2793,8 +2737,8 @@
   <resource-ident>desert/platform</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>915</x-pos>
-    <y-pos>248</y-pos>
+    <x-pos>963</x-pos>
+    <y-pos>259</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
@@ -3165,11 +3109,59 @@
   <resource-ident>desert/platform_right</resource-ident>
   </resource></surface>
   <position>
-    <x-pos>234</x-pos>
-    <y-pos>244</y-pos>
+    <x-pos>193</x-pos>
+    <y-pos>246</y-pos>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
+
+<entrance>
+  <position>
+    <x-pos>190</x-pos>
+    <y-pos>174</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>misc</direction>
+  <release-rate>50</release-rate>
+  <owner-id>0</owner-id>
+</entrance>
+
+<entrance>
+  <position>
+    <x-pos>955</x-pos>
+    <y-pos>185</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>misc</direction>
+  <release-rate>50</release-rate>
+  <owner-id>1</owner-id>
+</entrance>
+
+<entrance>
+  <position>
+    <x-pos>193</x-pos>
+    <y-pos>513</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>misc</direction>
+  <release-rate>50</release-rate>
+  <owner-id>2</owner-id>
+</entrance>
+
+<entrance>
+  <position>
+    <x-pos>939</x-pos>
+    <y-pos>522</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>misc</direction>
+  <release-rate>50</release-rate>
+  <owner-id>3</owner-id>
+</entrance>
 
 <exit>
   <position>
@@ -3181,7 +3173,7 @@
     <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/stone</resource-ident>
   </resource></surface>
-  <owner-id>3</owner-id>
+    <owner-id>0</owner-id>
 </exit>
 
 <exit>
@@ -3194,7 +3186,7 @@
     <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/stone</resource-ident>
   </resource></surface>
-  <owner-id>2</owner-id>
+    <owner-id>1</owner-id>
 </exit>
 
 <exit>
@@ -3207,7 +3199,7 @@
     <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/stone</resource-ident>
   </resource></surface>
-  <owner-id>0</owner-id>
+    <owner-id>2</owner-id>
 </exit>
 
 <exit>
@@ -3220,8 +3212,16 @@
     <resource-datafile>exits</resource-datafile>
   <resource-ident>Exits/stone</resource-ident>
   </resource></surface>
-  <owner-id>1</owner-id>
+    <owner-id>0</owner-id>
 </exit>
+
+  <start-position>
+  <position>
+    <x-pos>562</x-pos>
+    <y-pos>260</y-pos>
+    <z-pos>1000</z-pos>
+  </position>
+  </start-position>
 
 </pingus-level>
 

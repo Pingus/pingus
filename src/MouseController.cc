@@ -1,4 +1,4 @@
-//  $Id: MouseController.cc,v 1.5 2001/04/14 14:37:04 grumbel Exp $
+//  $Id: MouseController.cc,v 1.6 2001/04/15 11:00:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include <ClanLib/display.h>
 #include "MouseController.hh"
+
+/* All this should be rewritten to have a MultiplexButton, a KeyboardButton, etc. */
 
 class LeftMouseButton : public ControllerButton
 {
@@ -69,6 +71,21 @@ public:
   bool is_pressed () { return (CL_Keyboard::get_keycode (CL_KEY_RIGHT)); }
 };
 
+class ScrollUpButton : public ControllerButton
+{
+public:
+  ScrollUpButton (Controller* c) : ControllerButton (c) {};
+  bool is_pressed () { return (CL_Keyboard::get_keycode (CL_KEY_UP)); }
+};
+
+class ScrollDownButton : public ControllerButton
+{
+public:
+  ScrollDownButton (Controller* c) : ControllerButton (c) {};
+  bool is_pressed () { return (CL_Keyboard::get_keycode (CL_KEY_DOWN)); }
+};
+
+
 MouseController::MouseController (int arg_owner_id)
   : Controller (arg_owner_id)
 {
@@ -79,6 +96,8 @@ MouseController::MouseController (int arg_owner_id)
   pause = boost::shared_ptr<ControllerButton> (new PauseMouseButton (this));
   scroll_left  = boost::shared_ptr<ControllerButton> (new ScrollLeftButton (this));
   scroll_right = boost::shared_ptr<ControllerButton> (new ScrollRightButton(this));
+  scroll_up  = boost::shared_ptr<ControllerButton> (new ScrollUpButton (this));
+  scroll_down = boost::shared_ptr<ControllerButton> (new ScrollDownButton(this));
 }
 
 MouseController::~MouseController ()
