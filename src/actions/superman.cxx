@@ -1,4 +1,4 @@
-//  $Id: superman.cxx,v 1.9 2002/10/13 16:40:01 grumbel Exp $
+//  $Id: superman.cxx,v 1.10 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,13 +26,11 @@
 namespace Actions {
 
 Superman::Superman (Pingu* p)
-  : PinguAction(p)
+  : PinguAction(p),
+    counter(0.0f),
+    x_pos(pingu->get_x()),
+    sprite(PingusResource::load_surface("Pingus/superman" + to_string(pingu->get_owner()), "pingus"))
 {
-  x_pos = pingu->get_x();
-  counter = 0.0;
-  sprite = Sprite (PingusResource::load_surface 
-		   ("Pingus/superman" + to_string(pingu->get_owner ()),
-		    "pingus"));
   sprite.set_align_center_bottom(); 
 }
 

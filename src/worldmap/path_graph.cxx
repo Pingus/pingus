@@ -1,4 +1,4 @@
-//  $Id: path_graph.cxx,v 1.6 2002/10/13 19:28:34 grumbel Exp $
+//  $Id: path_graph.cxx,v 1.7 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -171,8 +171,8 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
 std::vector<Vector>
 PathGraph::get_path(NodeId start_id, NodeId end_id)
 {
-  Node<Dot*>& start = graph.resolve_node(start_id);
-  Node<Dot*>& end   = graph.resolve_node(end_id);
+  //Node<Dot*>& start = graph.resolve_node(start_id);
+  //Node<Dot*>& end   = graph.resolve_node(end_id);
 
   Pathfinder<Dot*, Path*> pathfinder(graph, start_id);
   std::vector<NodeId> path = pathfinder.get_path(end_id);

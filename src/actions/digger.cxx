@@ -1,4 +1,4 @@
-//  $Id: digger.cxx,v 1.17 2002/10/13 16:40:01 grumbel Exp $
+//  $Id: digger.cxx,v 1.18 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,18 +32,17 @@ namespace Actions {
 
 Digger::Digger (Pingu* p)
   : PinguAction(p),
+    digger_radius(PingusResource::load_surface ("Other/digger_radius", "pingus")),
+    digger_radius_gfx(PingusResource::load_surface ("Other/digger_radius", "pingus")),
+    sprite(Sprite (std::string("Pingus/digger") + to_string(pingu->get_owner ()), "pingus")),
     digger_c(0)
 {
-  digger_radius = PingusResource::load_surface ("Other/digger_radius", "pingus");
-  digger_radius_gfx = PingusResource::load_surface ("Other/digger_radius", "pingus");
-  sprite = Sprite (std::string("Pingus/digger") + to_string(pingu->get_owner ()),
-		   "pingus");
 #if 0
   // FIXME: Just an idea...
   sprite = Sprite (std::string("Pingus/digger") + to_string(pingu->get_owner ()),
 		   "pingus", PropertyMgr::instance()->get_int ("actions/digger/sprite-fps", 20));
 #endif
-  sprite.set_align_center_bottom ();
+  sprite.set_align_center_bottom();
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: laser_exit.cxx,v 1.9 2002/10/12 00:24:26 grumbel Exp $
+//  $Id: laser_exit.cxx,v 1.10 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include "../graphic_context.hxx"
 #include "../pingu.hxx"
-#include "../pingu_action.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
 #include "../worldobjsdata/laser_exit_data.hxx"

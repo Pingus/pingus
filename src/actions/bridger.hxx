@@ -1,4 +1,4 @@
-//  $Id: bridger.hxx,v 1.16 2002/10/13 16:40:01 grumbel Exp $
+//  $Id: bridger.hxx,v 1.17 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,14 +32,13 @@ class Bridger : public PinguAction
 private:
   enum Mode { B_WALKING, B_BUILDING } mode;
   enum { MAX_BRICKS = 15 };
+  enum { brick_length = 16 };
 
 private:
   Sprite walk_sprite;
   Sprite build_sprite;
 
   GameCounter counter;
-
-  static const int brick_length;
 
   static bool static_surfaces_loaded;
   static CL_Surface static_surface;

@@ -1,4 +1,4 @@
-//  $Id: laser_kill.cxx,v 1.12 2002/10/13 16:40:01 grumbel Exp $
+//  $Id: laser_kill.cxx,v 1.13 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,10 +25,9 @@
 namespace Actions {
 
 LaserKill::LaserKill(Pingu* p)
-  : PinguAction(p)
+  : PinguAction(p),
+    sprite(Sprite ("Other/laser_kill", "pingus", 20.0f, Sprite::NONE, Sprite::ONCE))
 {
-  sprite = Sprite ("Other/laser_kill", "pingus",
-		   20.0f, Sprite::NONE, Sprite::ONCE);
   sprite.set_align_center_bottom();
 }
 

@@ -1,4 +1,4 @@
-//  $Id: drawable.hxx,v 1.4 2002/10/13 14:19:25 grumbel Exp $
+//  $Id: drawable.hxx,v 1.5 2002/10/13 20:25:00 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,6 +57,7 @@ public:
       {
         PingusError::raise("Drawable: Couldn't get name of object");
       }
+    UNUSED_ARG(doc);
   }
 
   virtual ~Drawable() {}

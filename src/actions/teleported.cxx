@@ -1,4 +1,4 @@
-//  $Id: teleported.cxx,v 1.10 2002/10/13 16:40:01 grumbel Exp $
+//  $Id: teleported.cxx,v 1.11 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,9 +25,9 @@ namespace Actions {
 
 Teleported::Teleported(Pingu* p) 
   : PinguAction(p),
-    sound_played(false)
+    sound_played(false),
+    sprite("Pingus/bomber0", "pingus")
 {
-  sprite = Sprite ("Pingus/bomber0", "pingus");
 }
 
 

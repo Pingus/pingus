@@ -1,4 +1,4 @@
-//  $Id: path_drawable.cxx,v 1.2 2002/10/13 19:28:34 grumbel Exp $
+//  $Id: path_drawable.cxx,v 1.3 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,13 +23,13 @@
 
 namespace WorldMapNS {
 
-PathDrawable::PathDrawable(const Path& arg_path)
+PathDrawable::PathDrawable (const Path& arg_path)
   : path(arg_path)
 {
 }
 
 void
-PathDrawable::draw(GraphicContext& gc)
+PathDrawable::draw (GraphicContext& gc)
 {
   Path::iterator prev = path.begin();
 
@@ -45,7 +45,7 @@ PathDrawable::draw(GraphicContext& gc)
 }
 
 void 
-PathDrawable::update()
+PathDrawable::update ()
 {
 }
 

@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.18 2002/10/13 14:19:25 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.19 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -144,7 +144,7 @@ WorldMap::parse_properties(xmlDocPtr doc, xmlNodePtr cur)
   cur = cur->children;
   cur = XMLhelper::skip_blank(cur);
 
-  
+  UNUSED_ARG(doc);
 }
 
 void
@@ -176,17 +176,20 @@ WorldMap::add_drawable(Drawable* drawable)
 void
 WorldMap::remove_drawable(Drawable* drawable)
 {
-  
+  UNUSED_ARG(drawable);
 }
 
 void
 WorldMap::set_pingus(NodeId id)
 {
+  UNUSED_ARG(id);
 }
 
 void
 WorldMap::on_primary_button_press(int x, int y)
 {
+  UNUSED_ARG(x);
+  UNUSED_ARG(y);
 }
 
 } // namespace WorldMapNS

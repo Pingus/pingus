@@ -1,4 +1,4 @@
-//  $Id: pingu_info.cxx,v 1.5 2002/10/12 00:24:26 grumbel Exp $
+//  $Id: pingu_info.cxx,v 1.6 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,7 +21,6 @@
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
 #include "algo.hxx"
-#include "pingu_action.hxx"
 #include "pingus_resource.hxx"
 #include "pingu_info.hxx"
 #include "pingu.hxx"

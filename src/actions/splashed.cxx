@@ -1,4 +1,4 @@
-//  $Id: splashed.cxx,v 1.11 2002/10/13 16:40:01 grumbel Exp $
+//  $Id: splashed.cxx,v 1.12 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,14 +27,12 @@
 namespace Actions {
 
 Splashed::Splashed (Pingu* p)
-  : PinguAction(p)
+  : PinguAction(p),
+    particle_thrown(false),
+    sound_played(false),
+    sprite("Pingus/splat0", "pingus", 30.0f, Sprite::NONE, Sprite::ONCE)
 {
-  sprite = Sprite("Pingus/splat0", "pingus", 30.0f,
-		  Sprite::NONE, Sprite::ONCE);
   sprite.set_align_center_bottom();
-  
-  sound_played    = false;
-  particle_thrown = false;
 }
 
 void

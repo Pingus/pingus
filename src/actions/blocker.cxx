@@ -1,4 +1,4 @@
-//  $Id: blocker.cxx,v 1.14 2002/10/13 16:40:00 grumbel Exp $
+//  $Id: blocker.cxx,v 1.15 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,20 +30,18 @@
 namespace Actions {
 
 Blocker::Blocker(Pingu* p)
-  : PinguAction(p)
+  : PinguAction(p),
+    sprite(PingusResource::load_surface("Pingus/blocker" + to_string(pingu->get_owner()), "pingus"))
 {
-  sprite = Sprite(PingusResource::load_surface ("Pingus/blocker" 
-						+ to_string (pingu->get_owner ()),
-						"pingus"));
-  sprite.set_align_center_bottom ();
+  sprite.set_align_center_bottom();
 
-  if (rel_getpixel(0,-1)     ==  Groundtype::GP_NOTHING
+  if (   rel_getpixel(0,-1)  ==  Groundtype::GP_NOTHING
       && rel_getpixel(0, -2) ==  Groundtype::GP_GROUND)
     {
       pingu->set_x(pingu->get_x() + 1);
     } 
-  else if (rel_getpixel(0,-1) ==  Groundtype::GP_NOTHING
-	   && rel_getpixel(0, -2) ==  Groundtype::GP_NOTHING
+  else if (   rel_getpixel(0,-1) ==  Groundtype::GP_NOTHING
+	   && rel_getpixel(0,-2) ==  Groundtype::GP_NOTHING
 	   && rel_getpixel(0,-3) ==  Groundtype::GP_GROUND)
     {
       pingu->set_y(pingu->get_y() + 2);

@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.11 2002/10/12 23:34:43 grumbel Exp $
+//  $Id: pingus.cxx,v 1.12 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,6 +74,8 @@ Pingus::update_walk (float delta)
 
   // Recalc pingu position on the screen
   pos = calc_pos ();
+#else
+UNUSED_ARG(delta);
 #endif
 }
 
@@ -105,6 +107,8 @@ Pingus::walk_to_node (NodeId target)
           node_path = node_path2;
         }	
     }
+#else
+  UNUSED_ARG(target);
 #endif
   return false;
 }

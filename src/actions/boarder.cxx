@@ -1,4 +1,4 @@
-//  $Id: boarder.cxx,v 1.12 2002/10/13 16:40:01 grumbel Exp $
+//  $Id: boarder.cxx,v 1.13 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,26 +28,23 @@ namespace Actions {
 
 Boarder::Boarder (Pingu* p) 
   : PinguAction(p),
-    x_pos(0), speed(0.0)
+    x_pos(pingu->get_x()),
+    speed(0.0),
+    sprite(PingusResource::load_surface("Pingus/boarder" + to_string(pingu->get_owner ()), "pingus"))
 {
-  x_pos = pingu->get_x();
-  speed = 0.0;
-  sprite = Sprite (PingusResource::load_surface 
-		   ("Pingus/boarder" + to_string(pingu->get_owner ()),
-		    "pingus"));
-  sprite.set_align_center_bottom (); 
+  sprite.set_align_center_bottom(); 
 }
 
 void  
-Boarder::update()
+Boarder::update ()
 {
-  if (pingu->direction.is_left ())
+  if (pingu->direction.is_left())
     sprite.set_direction(Sprite::LEFT); 
   else
     sprite.set_direction(Sprite::RIGHT); 
-  sprite.update ();
+  sprite.update();
 
-  if (on_ground ())
+  if (on_ground())
     {
       if (speed < 15.0)
 	speed += 15.0 * 25.0f/1000.0f;

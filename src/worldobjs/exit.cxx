@@ -1,4 +1,4 @@
-//  $Id: exit.cxx,v 1.6 2002/10/12 00:24:26 grumbel Exp $
+//  $Id: exit.cxx,v 1.7 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,6 @@
 #include "../globals.hxx"
 #include "../pingu_holder.hxx"
 #include "../string_converter.hxx"
-#include "../pingu_action.hxx"
 #include "../pingu.hxx"
 #include "../worldobjsdata/exit_data.hxx"
 #include "../smallmap.hxx"

@@ -1,4 +1,4 @@
-//  $Id: floater.cxx,v 1.20 2002/10/13 16:40:01 grumbel Exp $
+//  $Id: floater.cxx,v 1.21 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,12 +26,11 @@ namespace Actions {
 
 Floater::Floater(Pingu* p) 
   : PinguAction(p),
-    falling_depth(0), step(0)
+    falling_depth(0),
+    step(0),
+    sprite(Sprite ("Pingus/floater0", "pingus"))
 {
-  falling_depth = 0;
-  step = 0;
-  sprite = Sprite ("Pingus/floater0", "pingus");
-  sprite.set_align_center_bottom ();
+  sprite.set_align_center_bottom();
 }
 
 void

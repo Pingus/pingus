@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.20 2002/10/13 16:40:01 grumbel Exp $
+//  $Id: bomber.cxx,v 1.21 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,9 @@ Bomber::Bomber (Pingu* p)
     particle_thrown(false),
     sound_played(false), 
     gfx_exploded(false),
-    colmap_exploded(false)
+    colmap_exploded(false),
+    sprite(PingusResource::load_surface("Pingus/bomber" + to_string(pingu->get_owner()), "pingus"), 17.0f, Sprite::NONE, Sprite::ONCE),
+    explo_surf(PingusResource::load_surface("Other/explo" + to_string(pingu->get_owner()), "pingus"))
 {
   // Only load the surface again if no static_surface is available
   if (!static_surface_loaded) 
@@ -52,13 +54,7 @@ Bomber::Bomber (Pingu* p)
       bomber_radius = PingusResource::load_surface ("Other/bomber_radius", "pingus");
       bomber_radius_gfx = PingusResource::load_surface ("Other/bomber_radius_gfx", "pingus");
     }
-
-  explo_surf = PingusResource::load_surface ("Other/explo" + to_string (pingu->get_owner ()), "pingus");
-  sprite = Sprite(PingusResource::load_surface ("Pingus/bomber" + to_string(pingu->get_owner ()), "pingus"),
-		  17.0f, Sprite::NONE, Sprite::ONCE);
-  sprite.set_align_center_bottom ();
-
-  sound_played = false;
+  sprite.set_align_center_bottom();
 }
 
 void

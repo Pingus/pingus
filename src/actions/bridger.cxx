@@ -1,4 +1,4 @@
-//  $Id: bridger.cxx,v 1.23 2002/10/13 16:40:01 grumbel Exp $
+//  $Id: bridger.cxx,v 1.24 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,8 +33,6 @@ using namespace std;
 namespace Actions {
 
 // Initialise class static
-const int Bridger::brick_length = 16;
-
 bool Bridger::static_surfaces_loaded = false;
 CL_Surface Bridger::brick_l;
 CL_Surface Bridger::brick_r;
@@ -43,6 +41,8 @@ CL_Surface Bridger::static_surface;
 Bridger::Bridger (Pingu* p) 
   : PinguAction(p),
     mode(B_BUILDING),
+    walk_sprite(Sprite("Pingus/bridger_walk" + to_string(pingu->get_owner()), "pingus", 15.0f, Sprite::NONE, Sprite::ONCE)),
+    build_sprite(Sprite("Pingus/bridger_build" + to_string(pingu->get_owner()), "pingus", 15.0f, Sprite::NONE, Sprite::ONCE)),
     bricks(MAX_BRICKS),
     block_build(false),
     name("Bridger (" + to_string(bricks) + ")")
@@ -54,12 +54,9 @@ Bridger::Bridger (Pingu* p)
       brick_r = PingusResource::load_surface ("Other/brick_right", "pingus");
       static_surfaces_loaded = true;
     }
-  build_sprite = Sprite ("Pingus/bridger_build" + to_string(pingu->get_owner ()),
-			 "pingus", 15.0f, Sprite::NONE, Sprite::ONCE);
-  walk_sprite = Sprite ("Pingus/bridger_walk" + to_string(pingu->get_owner ()),
-			"pingus", 15.0f, Sprite::NONE, Sprite::ONCE);
-  build_sprite.set_align_center_bottom ();
-  walk_sprite.set_align_center_bottom ();
+
+  build_sprite.set_align_center_bottom();
+  walk_sprite.set_align_center_bottom();
 }
 
 void

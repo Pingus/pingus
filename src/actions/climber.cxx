@@ -1,4 +1,4 @@
-//  $Id: climber.cxx,v 1.17 2002/10/13 16:40:01 grumbel Exp $
+//  $Id: climber.cxx,v 1.18 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,30 +24,29 @@
 
 namespace Actions {
 
-Climber::Climber(Pingu* p)
-  : PinguAction(p)
+Climber::Climber (Pingu* p)
+  : PinguAction(p),
+    sprite(Sprite ("Pingus/climber0", "pingus"))
 {
-  sprite = Sprite ("Pingus/climber0", "pingus");
-
   // these alignments are necessary to prevent climber walking 
   // inside the wall.
   int sprite_height = sprite.get_height();
   int sprite_width  = sprite.get_width();
 
-  if (pingu->direction.is_left ()) 
+  if (pingu->direction.is_left()) 
     {
-      sprite.set_align (0, -sprite_height/2);
-      sprite.set_direction (Sprite::LEFT); 
+      sprite.set_align(0, -sprite_height/2);
+      sprite.set_direction(Sprite::LEFT); 
     } 
   else 
     {
-      sprite.set_align (-sprite_width, -sprite_height/2);
-      sprite.set_direction (Sprite::RIGHT);
+      sprite.set_align(-sprite_width, -sprite_height/2);
+      sprite.set_direction(Sprite::RIGHT);
     }
 }
 
 void
-Climber::update()
+Climber::update ()
 {
   /*
     std::cout << "Climer update()" << std::endl;

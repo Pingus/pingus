@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.28 2002/10/13 16:40:01 grumbel Exp $
+//  $Id: walker.cxx,v 1.29 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,11 +28,11 @@
 namespace Actions {
 
 Walker::Walker (Pingu* p)
-  : PinguAction(p)
+  : PinguAction(p),
+    walker("Pingus/walker" + to_string(pingu->get_owner()), "pingus")
 {
-  walker = Sprite("Pingus/walker" + to_string(pingu->get_owner ()), "pingus");
   walker.set_align_center_bottom();
-  
+
   // Reset the velocity
   pingu->set_velocity(Vector());
 }

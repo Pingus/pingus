@@ -1,4 +1,4 @@
-//  $Id: jumper.cxx,v 1.16 2002/10/13 16:40:01 grumbel Exp $
+//  $Id: jumper.cxx,v 1.17 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,10 +26,9 @@
 namespace Actions {
 
 Jumper::Jumper (Pingu* p)
-  : PinguAction(p)
+  : PinguAction(p),
+    sprite(Sprite("Pingus/jumper" + to_string(pingu->get_owner ()), "pingus"))
 {
-  sprite = Sprite("Pingus/jumper" + to_string(pingu->get_owner ()),
-		  "pingus");
   sprite.set_align_center_bottom();
 }
 

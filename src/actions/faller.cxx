@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.29 2002/10/13 16:40:01 grumbel Exp $
+//  $Id: faller.cxx,v 1.30 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,20 +31,19 @@ namespace Actions {
 
 const float Faller::deadly_velocity = 20.0f;
 
-Faller::Faller(Pingu* p)
+Faller::Faller (Pingu* p)
   : PinguAction(p),
-    falling(0) 
+    faller(Sprite("Pingus/faller" + to_string(pingu->get_owner ()), "pingus")),
+    // FIXME: we can save some cpu cycles & memory if we do this when it
+    // is necessary
+    tumbler(Sprite("Pingus/tumble" + to_string(pingu->get_owner()), "pingus")),
+    falling(0)
 { 
-  faller = Sprite("Pingus/faller" + to_string(pingu->get_owner ()), "pingus");
-  faller.set_align_center_bottom ();
-  
-  // FIXME: we can save some cpu cycles & memory if we do this when it
-  // is necessary
-  tumbler = Sprite("Pingus/tumble" + to_string(pingu->get_owner()), "pingus");
+  faller .set_align_center_bottom();
   tumbler.set_align_center_bottom();
 }
 
-Faller::~Faller() { }
+Faller::~Faller () { }
 
 void
 Faller::update ()

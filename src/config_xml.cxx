@@ -1,4 +1,4 @@
-//  $Id: config_xml.cxx,v 1.2 2002/10/13 13:34:40 grumbel Exp $
+//  $Id: config_xml.cxx,v 1.3 2002/10/13 20:25:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -82,12 +82,14 @@ ConfigXML::parse_directory(xmlDocPtr doc, xmlNodePtr cur, const std::string& pre
 bool
 ConfigXML::is_directory(xmlDocPtr doc, xmlNodePtr cur)
 {
+  UNUSED_ARG(doc);
   return cur->children && (xmlIsBlankNode(cur->children) || !xmlNodeIsText(cur->children));
 }
 
 bool
 ConfigXML::is_value(xmlDocPtr doc, xmlNodePtr cur)
 {
+  UNUSED_ARG(doc);
   return cur->children && xmlNodeIsText(cur->children);
 }
 
