@@ -1,4 +1,4 @@
-//  $Id: WorldObj.hh,v 1.7 2000/09/23 18:19:00 grumbel Exp $
+//  $Id: WorldObj.hh,v 1.8 2000/12/03 19:11:07 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,29 +26,55 @@
 class World;
 
 /** All objects that act in the world should be derived from this
-    class, it provides access to all the important data from the world */
+ *  class, it provides access to all the important data from the world.
+ *  Each world object has a $z$-position which indicates the depth of the
+ *  object. By default, all world objects live on the same depth.
+ */
 class WorldObj
 {
 protected:
+  /** The World all WorldObjects live in. */
   static World*  world;
 
 public:
-  ///
+  /** Creates a new WorldObj */
   WorldObj();
-  ///
+
+  /** Destroys a world object */
   virtual ~WorldObj();
-  ///
+
+  /** Compares two world objects. An expression $w1 < w2$ is true if the
+   *  object $w1$ has a smaller $z$-position; in other words, $w1 < w2$ iff
+   *  $w1$ is in front of $w2$. (XXX)
+   */
   bool operator< (const WorldObj& w);
-  ///
+
+  /** Returns the $z$-position of this object. By default, every world object
+   *  has $z$-position 0.
+   */
   virtual int  get_z_pos() const { return 0; }
-  ///
-  virtual void draw_offset(int, int, float s = 1.0) {}
-  ///
+
+  /** Draws this WorldObject on the screen with the specified offset. If not
+   *  overloaded, this method does nothing.
+   *  (XXX: What are the bounds of this offset?)
+   *  @param x the $x$-coordinate of this object
+   *  @param y the $y$-coordinate of this object
+   *  @param s (XXX)
+   */
+  virtual void draw_offset(int x, int y, float s = 1.0) {}
+
+  /// XXX
   virtual void draw_colmap();
-  ///
+
+  /// XXX
   virtual void let_move(void);
-  /// Create an WorldObj out of some WorldObj data
+
+  /** Create an WorldObj out of some WorldObj data
+   *  @return a new suitable WorldObj for the specified data, or null if no 
+   *          suitable WorldObj could be found.
+   */
   static WorldObj* create (WorldObjData* data);
+
   /// Set the world pointer for all world objects 
   static void set_world(World*);
 };
@@ -58,3 +84,9 @@ public:
 #endif
 
 /* EOF */
+
+
+
+
+
+
