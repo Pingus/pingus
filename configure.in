@@ -1,4 +1,4 @@
-#  $Id: configure.in,v 1.60 2002/06/09 00:10:15 grumbel Exp $
+#  $Id: configure.in,v 1.61 2002/06/12 23:38:44 giray Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 dnl BUG: This file should be updated with the macros from 'configure.scan'
 
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT( src/PingusMain.cc )
+AC_INIT( src/pingus_main.cxx)
 AM_CONFIG_HEADER( config.h )
 
 PACKAGE=pingus
