@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
-"POT-Creation-Date: 2003-04-12 17:36+0200\n"
+"POT-Creation-Date: 2003-04-13 12:28+0200\n"
 "PO-Revision-Date: 2003-04-12 17:37+0200\n"
 "Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
 "Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx."
@@ -1261,30 +1261,10 @@ msgstr ""
 "\n"
 "                                                  Viel Glück!"
 
-#: src/system.cxx:65 src/system.cxx:97
-msgid "System: Couldn't open: "
-msgstr "System: Datei oder Verzeichnis konnte nicht geöffnet werden: "
-
-#: src/system.cxx:192
-msgid "Successfully created: "
-msgstr "Verzeichnis erstellt: "
-
-#: src/system.cxx:197
-msgid "Found: "
-msgstr "Gefunden: "
-
-#: src/system.cxx:264
+#: src/system.cxx:265
 msgid "Environment variable $HOME not set, fix that and start again."
 msgstr ""
 "Umgebungs Variable $HOME ist nicht gesetzt. Setze sie und starte erneut."
-
-#: src/system.cxx:426
-msgid "System::checksum: Couldn't open file: "
-msgstr "System::checksum: Datei konnte nicht geoeffnet werden: "
-
-#: src/system.cxx:436
-msgid "System:checksum: file read error"
-msgstr "System:checksum: Fehler beim Lesen von Datei"
 
 #: src/worldmap/level_dot.cxx:159
 msgid "locked"

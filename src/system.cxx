@@ -1,4 +1,4 @@
-//  $Id: system.cxx,v 1.14 2003/04/13 09:38:00 torangan Exp $
+//  $Id: system.cxx,v 1.15 2003/04/13 10:34:55 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,7 @@ System::opendir(const std::string& pathname, const std::string& pattern)
 
   if (dp == 0)
     {
-      std::cout << _("System: Couldn't open: ") << pathname << std::endl;
+      std::cout << "System: Couldn't open: " << pathname << std::endl;
     }
   else
     {
@@ -95,7 +95,7 @@ System::opendir(const std::string& pathname, const std::string& pattern)
 
   if (hFind == INVALID_HANDLE_VALUE)
     {
-      std::cout << _("System: Couldn't open: ") << pathname << std::endl;
+      std::cout << "System: Couldn't open: " << pathname << std::endl;
     }
   
   do
@@ -190,12 +190,12 @@ System::create_dir(std::string directory)
 	}
       else
 	{
-	  std::cout << _("Successfully created: ") << directory << std::endl;
+	  std::cout << "Successfully created: " << directory << std::endl;
 	}
     }  
   else
     {
-      if (verbose) std::cout << _("Found: ") << directory << std::endl;
+      if (verbose) std::cout << "Found: " << directory << std::endl;
     }
 #else
   CreateDirectory(directory.c_str(), 0);
@@ -413,7 +413,7 @@ System::checksum (std::string filename)
 
   if (!in)
     {
-      std::cout << _("System::checksum: Couldn't open file: ") << filename << std::endl;
+      std::cout << "System::checksum: Couldn't open file: " << filename << std::endl;
       return "";
     }
 
@@ -423,7 +423,7 @@ System::checksum (std::string filename)
       
       if (bytes_read == -1)
 	{
-	  throw Error (_("System:checksum: file read error"));
+	  throw Error ("System:checksum: file read error");
 	}
 
       for (int i=0; i < bytes_read; ++i)
