@@ -1,4 +1,4 @@
-//  $Id: groundpiece_obj.cxx,v 1.6 2002/11/28 20:09:54 grumbel Exp $
+//  $Id: groundpiece_obj.cxx,v 1.7 2002/11/30 00:10:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,8 +30,7 @@ namespace EditorObjs {
 
 GroundpieceObj::GroundpieceObj (const WorldObjsData::GroundpieceData& data_)
   : SpriteEditorObj(data_.desc),
-    data(new WorldObjsData::GroundpieceData(data_)),
-    gptype(data->gptype)
+    data(new WorldObjsData::GroundpieceData(data_))
 {
   // Groundpieces must not have a z-pos
   data->pos.z = 0;
@@ -64,7 +63,7 @@ std::string
 GroundpieceObj::status_line ()
 {
   char str[1024];  
-  std::string type_name = Groundtype::type_to_string(gptype);
+  std::string type_name = Groundtype::type_to_string(data->gptype);
   
   snprintf(str, 1024, "Groundpiece: %s Type: %s",
 	   data->desc.res_name.c_str(), type_name.c_str());

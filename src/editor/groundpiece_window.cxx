@@ -1,4 +1,4 @@
-//  $Id: groundpiece_window.cxx,v 1.11 2002/11/29 00:17:05 grumbel Exp $
+//  $Id: groundpiece_window.cxx,v 1.12 2002/11/30 00:10:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "editor.hxx"
 #include "object_manager.hxx"
 #include "groundpiece_window.hxx"
+#include "../worldobjsdata/groundpiece_data.hxx"
 #include "../editorobjs/groundpiece_obj.hxx"
 
 /************************
@@ -73,7 +74,7 @@ GroundpieceWindow::convert_to_hotspot ()
 void
 GroundpieceWindow::read_data ()
 {
-  switch (data->gptype)
+  switch (data->data->gptype)
     {
     case Groundtype::GP_SOLID:
       solid_radiobutton.set_checked(true);
@@ -99,16 +100,16 @@ GroundpieceWindow::write_data ()
   if (EditorObj::get_editor()->get_object_manager()->has_object(data))
     {
       if (ground_radiobutton.is_checked())
-	data->gptype = Groundtype::GP_GROUND;
+	data->data->gptype = Groundtype::GP_GROUND;
       else if (transparent_radiobutton.is_checked())
-	data->gptype = Groundtype::GP_TRANSPARENT;
+	data->data->gptype = Groundtype::GP_TRANSPARENT;
       else if (solid_radiobutton.is_checked())
-	data->gptype = Groundtype::GP_SOLID;
+	data->data->gptype = Groundtype::GP_SOLID;
       else if (bridge_radiobutton.is_checked())
-	data->gptype = Groundtype::GP_BRIDGE;
+	data->data->gptype = Groundtype::GP_BRIDGE;
       else
 	{
-	  std::cout << "Unhandled" << std::endl;
+	  std::cout << "GroundpieceWindow: Unhandled groundtype" << std::endl;
 	}
     }
   else

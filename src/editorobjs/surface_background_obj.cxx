@@ -1,4 +1,4 @@
-//  $Id: surface_background_obj.cxx,v 1.4 2002/11/29 00:17:05 grumbel Exp $
+//  $Id: surface_background_obj.cxx,v 1.5 2002/11/30 00:10:29 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,6 +75,11 @@ SurfaceBackgroundObj::get_gui_dialog(Editor* editor)
 
   propframe->add_check_box("Stretch-X", &data->stretch_x);
   propframe->add_check_box("Stretch-Y", &data->stretch_y);
+
+  propframe->add_float_box("Color Red", &data->color.red);
+  propframe->add_float_box("Color Green", &data->color.green);
+  propframe->add_float_box("Color Blue", &data->color.blue);
+  propframe->add_float_box("Color Alpha", &data->color.alpha);
 
   return propframe;
 }

@@ -1,4 +1,4 @@
-// $Id: groundpiece_obj.hxx,v 1.3 2002/11/28 20:09:54 grumbel Exp $
+// $Id: groundpiece_obj.hxx,v 1.4 2002/11/30 00:10:29 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,18 +27,21 @@ namespace WorldObjsData {
 class GroundpieceData;
 }
 
+namespace EditorNS {
+class GroundpieceWindow;
+}
+
 namespace EditorObjs {
 
 class GroundpieceObj : public SpriteEditorObj
 {
+  friend class EditorNS::GroundpieceWindow;
 private:
   WorldObjsData::GroundpieceData* const data;
 
 public:
-  Groundtype::GPType gptype;
-
   GroundpieceObj (const WorldObjsData::GroundpieceData& data_);
- ~GroundpieceObj ();
+  ~GroundpieceObj ();
 
   /** Flip the object vertical */
   void vertical_flip ();
@@ -58,7 +61,7 @@ public:
   std::string status_line ();
 
   EditorNS::PropertyFrame* get_gui_dialog (EditorNS::Editor* parent);
-  
+
 private:
   GroundpieceObj (const GroundpieceObj&);
   GroundpieceObj& operator= (const GroundpieceObj&);
