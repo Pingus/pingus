@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.16 2002/10/15 13:58:31 grumbel Exp $
+//  $Id: pingus.cxx,v 1.17 2002/10/15 15:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,7 @@ Pingus::update_walk (float delta)
 {
   float velocity = 50.0f;
 
-  std::cout << "Updating Walk: " << edge_path_position << "/" << edge_path_length << std::endl;
+  //std::cout << "Updating Walk: " << edge_path_position << "/" << edge_path_length << std::endl;
   // Update the edge_path_position
   edge_path_position += velocity * delta;
   
@@ -196,7 +196,7 @@ Pingus::set_position (NodeId node)
   pos = path->get_dot(node)->get_pos();
   current_node = node;
   std::cout << "Pingu Pos: " << pos << std::endl;
-  walk_to_node(0);
+  //walk_to_node(0);
 }
 
 float
@@ -224,6 +224,12 @@ Pingus:: update_edge_path()
   edge_path.push_back(path->graph.resolve_node(target_node).data->get_pos());
   
   edge_path_length = calc_edge_path_length();
+}
+
+bool
+Pingus::is_walking()
+{
+  return current_node == NoNode;
 }
 
 } // namespace WorldMapNS

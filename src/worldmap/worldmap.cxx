@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.21 2002/10/14 00:38:22 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.22 2002/10/15 15:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,7 @@
 #include "worldmap.hxx"
 #include "drawable_factory.hxx"
 #include "drawable.hxx"
+#include "dot.hxx"
 #include "path_graph.hxx"
 
 namespace WorldMapNS {
@@ -199,8 +200,18 @@ WorldMap::set_pingus(NodeId id)
 void
 WorldMap::on_primary_button_press(int x, int y)
 {
-  UNUSED_ARG(x);
-  UNUSED_ARG(y);
+  std::cout << "<position>\n"
+            << "  <x-pos>" << x << "</x-pos>\n"
+            << "  <y-pos>" << y << "</y-pos>\n"
+            << "  <z-pos>0</z-pos>\n"
+            << "</position>\n\n" << std::endl;
+
+  Dot* dot = path_graph->get_dot(x, y);
+  if (dot)
+    {
+      std::cout << "Clicked on: " << dot->get_name() << std::endl;
+      pingus->walk_to_node(path_graph->lookup_node(dot->get_name()));
+    }
 }
 
 } // namespace WorldMapNS

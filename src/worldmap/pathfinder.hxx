@@ -1,4 +1,4 @@
-//  $Id: pathfinder.hxx,v 1.4 2002/10/14 00:38:22 grumbel Exp $
+//  $Id: pathfinder.hxx,v 1.5 2002/10/15 15:48:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,7 +36,7 @@ public:
     enum { CLOSED, UNKNOWN, OPEN} status;
 
     NodeId parent;
-    int cost;
+    float  cost;
     NodeId handle;
 
     NodeStat ()
@@ -76,7 +76,7 @@ public:
 	  {
 	    NodeId child_node = graph.resolve_edge(*e).destination;
 	    NodeStat& stat = stat_graph[child_node];
-	    int new_cost = stat_graph[current].cost + graph.resolve_edge(*e).cost;
+	    float new_cost = stat_graph[current].cost + graph.resolve_edge(*e).cost;
 	    
 	    if  (stat.status == NodeStat::OPEN 
 		 && stat.cost <= new_cost)

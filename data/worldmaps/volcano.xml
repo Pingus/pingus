@@ -1,224 +1,395 @@
 <pingus-worldmap>
-  <music file="pingus-5.it"/>
+  <properties>
+    <name>Volcano Island</name>
+    <music>pingus-1.it</music>
+    <author>Ingo Ruhnke</author>
+    <email>grumbel@gmx.de</email>
+  </properties>
+  
+  <!-- The graph specifies the path on which the pingu can walk -->
+  <graph>
+    <nodes>
+      <leveldot>
+        <dot>
+          <name>leveldot_1</name>
+          <position>
+            <x-pos>50</x-pos>
+            <y-pos>377</y-pos>
+            <z-pos>10</z-pos>
+          </position>
+        </dot>
+        <levelname>blabla</levelname>
+      </leveldot>
 
-  <surface>
-    <resource type="datafile">
-      <resource-datafile>worldmaps</resource-datafile>
-      <resource-ident>volcano</resource-ident>
-    </resource>
-  </surface>
+      <leveldot>
+        <dot>
+          <name>leveldot_2</name>
+          <position>
+            <x-pos>180</x-pos>
+            <y-pos>345</y-pos>
+            <z-pos>10</z-pos>
+          </position>
+        </dot>
+        <levelname>blabla</levelname>
+      </leveldot>
 
-  <node-list>
+      <leveldot>
+        <dot>
+          <name>leveldot_3</name>
+          <position>
+            <x-pos>261</x-pos>
+            <y-pos>358</y-pos>
+            <z-pos>10</z-pos>
+          </position>
+        </dot>
+        <levelname>blabla</levelname>
+      </leveldot>
 
-    <!-- The first node is always accessible -->
-    <level>
-      <node id="1" accessible="1">
-	<link id="2"/>
-	<position>
-	  <x-pos>50</x-pos>
-	  <y-pos>377</y-pos>
-	</position>
-      </node>
 
-      <level name="level2.xml"/>
-    </level>
+      <leveldot>
+        <dot>
+          <name>leveldot_4</name>
+          <position>
+            <x-pos>336</x-pos>
+            <y-pos>325</y-pos>
+            <z-pos>10</z-pos>
+          </position>
+        </dot>
+        <levelname>blabla</levelname>
+      </leveldot>
 
-    <level>
-      <node id="2">
-	<link id="3"/>
-	<position>
-	  <x-pos>180</x-pos>
-	  <y-pos>345</y-pos>
-	</position>
-      </node>
 
-      <level name="level2.xml"/>
-    </level>
+      <leveldot>
+        <dot>
+          <name>leveldot_5</name>
+          <position>
+            <x-pos>418</x-pos>
+            <y-pos>310</y-pos>
+            <z-pos>10</z-pos>
+          </position>
+        </dot>
+        <levelname>blabla</levelname>
+      </leveldot>
 
-    <level>
-      <node id="3">
-	<link id="31"/>
-	<link id="7"/>
-	<position>
-	  <x-pos>261</x-pos>
-	  <y-pos>358</y-pos>
-	</position>
-      </node>
+      <leveldot>
+        <dot>
+          <name>leveldot_6</name>
+          <position>
+            <x-pos>381</x-pos>
+            <y-pos>277</y-pos>
+            <z-pos>10</z-pos>
+          </position>
+        </dot>
+        <levelname>blabla</levelname>
+      </leveldot>
 
-      <level name="level3.xml"/>
-    </level>
 
-    <level>
-      <node id="31">
-	<link id="4"/>
-	<position>
-	  <x-pos>336</x-pos>
-	  <y-pos>325</y-pos>
-	</position>
-      </node>
+      <leveldot>
+        <dot>
+          <name>leveldot_7</name>
+          <position>
+            <x-pos>370</x-pos>
+            <y-pos>247</y-pos>
+            <z-pos>10</z-pos>
+          </position>
+        </dot>
+        <levelname>blabla</levelname>
+      </leveldot>
 
-      <level name="desert1.xml"/>
-    </level>
 
-    <level>
-      <level name="desert1.xml"/>
+      <leveldot>
+        <dot>
+          <name>leveldot_8</name>
+          <position>
+            <x-pos>422</x-pos>
+            <y-pos>230</y-pos>
+            <z-pos>10</z-pos>
+          </position>
+        </dot>
+        <levelname>blabla</levelname>
+      </leveldot>
 
-      <node id="4">
-	<link id="41"/>
-	<position>
-	  <x-pos>418</x-pos>
-	  <y-pos>310</y-pos>
-	</position>
-      </node>
-    </level>
 
-    <level>
-      <node id="41">
-	<link id="5"/>
-	<position>
-	  <x-pos>381</x-pos>
-	  <y-pos>277</y-pos>
-	</position>
-      </node>
+      <leveldot>
+        <dot>
+          <name>leveldot_9</name>
+          <position>
+            <x-pos>469</x-pos>
+            <y-pos>177</y-pos>
+            <z-pos>10</z-pos>
+          </position>
+        </dot>
+        <levelname>blabla</levelname>
+      </leveldot>
 
-      <level name="desert1.xml"/>
-    </level>
+      <leveldot>
+        <dot>
+          <name>leveldot_10</name>
+          <position>
+            <x-pos>353</x-pos>
+            <y-pos>388</y-pos>
+            <z-pos>10</z-pos>
+          </position>
+        </dot>
+        <levelname>blabla</levelname>
+      </leveldot>
 
-    <level>
-      <level name="level5.xml"/>
+      <leveldot>
+        <dot>
+          <name>leveldot_11</name>
+          <position>
+            <x-pos>498</x-pos>
+            <y-pos>386</y-pos>
+            <z-pos>10</z-pos>
+          </position>
+        </dot>
+        <levelname>blabla</levelname>
+      </leveldot>
 
-      <node id="5">
-	<link id="51"/>
-	<position>
-	  <x-pos>370</x-pos>
-	  <y-pos>247</y-pos>
-	</position>
-      </node>
-    </level>
+      <leveldot>
+        <dot>
+          <name>leveldot_12</name>
+          <position>
+            <x-pos>581</x-pos>
+            <y-pos>406</y-pos>
+            <z-pos>10</z-pos>
+          </position>
+        </dot>
+        <levelname>blabla</levelname>
+      </leveldot>
 
-    <level>
-      <node id="51">
-	<link id="6"/>
-	<position>
-	  <x-pos>422</x-pos>
-	  <y-pos>230</y-pos>
-	</position>
-      </node>
+      <leveldot>
+        <dot>
+          <name>leveldot_13</name>
+          <position>
+            <x-pos>691</x-pos>
+            <y-pos>392</y-pos>
+            <z-pos>10</z-pos>
+          </position>
+        </dot>
+        <levelname>blabla</levelname>
+      </leveldot>
 
-      <level name="desert1.xml"/>
-    </level>
+      <leveldot>
+        <dot>
+          <name>leveldot_14</name>
+          <position>
+            <x-pos>744</x-pos>
+            <y-pos>377</y-pos>
+            <z-pos>10</z-pos>
+          </position>
+        </dot>
+        <levelname>blabla</levelname>
+      </leveldot>
 
-    <level id="6">
-      <level name="desert1.xml"/>
-      <node id="6">
-	<position>
-	  <x-pos>469</x-pos>
-	  <y-pos>177</y-pos>
-	</position>
-      </node>
-    </level>
+      <leveldot>
+        <dot>
+          <name>leveldot_15</name>
+          <position>
+            <x-pos>535</x-pos>
+            <y-pos>451</y-pos>
+            <z-pos>10</z-pos>
+          </position>
+        </dot>
+        <levelname>blabla</levelname>
+      </leveldot>
 
-    <level id="7">
-      <level name="level7.xml"/>
-      <node id="7">
-	<link id="8"/>
-	<link id="13"/>
-	<position>
-	  <x-pos>353</x-pos>
-	  <y-pos>388</y-pos>
-	</position>
-      </node>
-    </level>
+      <leveldot>
+        <dot>
+          <name>leveldot_16</name>
+          <position>
+            <x-pos>639</x-pos>
+            <y-pos>447</y-pos>
+            <z-pos>10</z-pos>
+          </position>
+        </dot>
+        <levelname>blabla</levelname>
+      </leveldot>
 
-    <level id="8">
-      <level name="level8.xml"/>
-      <node id="8">
-	<link id="9"/>
-	<position>
-	  <x-pos>418</x-pos>
-	  <y-pos>374</y-pos>
-	</position>
-      </node>
-    </level>
 
-    <level id="9">
-      <level name="level9.xml"/>
-      <node id="9">
-	<link id="10"/>
-	<position>
-	  <x-pos>498</x-pos>
-	  <y-pos>386</y-pos>
-	</position>
-      </node>
-    </level>
+    </nodes>
+    
+    <edges>
+      <edge name="egde_1" source="leveldot_1" destination="leveldot_2"> 
+        <position>
+          <x-pos>84</x-pos>
+          <y-pos>360</y-pos>
+          <z-pos>0</z-pos>
+        </position>
 
-    <level id="10">
-      <level name="level10.xml"/>
-      <node id="10">
-	<link id="11"/>
-	<position>
-	  <x-pos>581</x-pos>
-	  <y-pos>406</y-pos>
-	</position>
-      </node>
-    </level>
 
-    <level id="11">
-      <level name="desert1.xml"/>
-      <node id="11">
-	<link id="12"/>
-	<link id="15"/>
-	<position>
-	  <x-pos>691</x-pos>
-	  <y-pos>392</y-pos>
-	</position>
-      </node>
-    </level>
+        <position>
+          <x-pos>108</x-pos>
+          <y-pos>353</y-pos>
+          <z-pos>0</z-pos>
+        </position>
 
-    <tube id="12">
-      <worldmap linknode="4">pacman.xml</worldmap>
-      <node id="12">
-	<position>
-	  <x-pos>744</x-pos>
-	  <y-pos>377</y-pos>
-	</position>
-      </node>
-    </tube>
 
-    <level id="13">
-      <level name="level13.xml"/>
-      <node id="13">
-	<link id="14"/>
-	<position>
-	  <x-pos>424</x-pos>
-	  <y-pos>448</y-pos>
-	</position>
-      </node>
-    </level>
+        <position>
+          <x-pos>132</x-pos>
+          <y-pos>350</y-pos>
+          <z-pos>0</z-pos>
+        </position>
 
-    <level id="14">
-      <level name="desert1.xml"/>
-      <node id="14">
-	<link id="15"/>
-	<position>
-	  <x-pos>535</x-pos>
-	  <y-pos>451</y-pos>
-	</position>
-      </node>
-    </level>
 
-    <level id="15">
-      <level name="desert2.xml"/>
-      <node id="15">
-	<link id="14"/>
-	<link id="11"/>
-	<position>
-	  <x-pos>639</x-pos>
-	  <y-pos>447</y-pos>
-	</position>
-      </node>
-    </level>
+        <position>
+          <x-pos>154</x-pos>
+          <y-pos>352</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+      </edge>
 
-  </node-list>
+      <edge name="egde_2" source="leveldot_2" destination="leveldot_3"> 
+      </edge>
 
+      <edge name="egde_3" source="leveldot_3" destination="leveldot_4"> 
+        <position>
+          <x-pos>284</x-pos>
+          <y-pos>347</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+
+        <position>
+          <x-pos>309</x-pos>
+          <y-pos>335</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+      </edge>
+
+      <edge name="egde_4" source="leveldot_4" destination="leveldot_5"></edge>
+      <edge name="egde_5" source="leveldot_5" destination="leveldot_6"></edge>
+      <edge name="egde_6" source="leveldot_6" destination="leveldot_7"></edge>
+      <edge name="egde_7" source="leveldot_7" destination="leveldot_8"></edge>
+      <edge name="egde_8" source="leveldot_8" destination="leveldot_9"></edge>
+
+      <edge name="egde_9" source="leveldot_3" destination="leveldot_10"></edge>
+
+      <edge name="egde_10" source="leveldot_10" destination="leveldot_15">
+        <position>
+          <x-pos>377</x-pos>
+          <y-pos>406</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+
+
+        <position>
+          <x-pos>401</x-pos>
+          <y-pos>428</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+
+
+        <position>
+          <x-pos>423</x-pos>
+          <y-pos>449</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+
+
+        <position>
+          <x-pos>468</x-pos>
+          <y-pos>451</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+
+
+        <position>
+          <x-pos>494</x-pos>
+          <y-pos>449</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+      </edge>
+
+      <edge name="egde_9" source="leveldot_3" destination="leveldot_10"></edge>
+
+      <edge name="egde_9" source="leveldot_10" destination="leveldot_11">
+        <position>
+          <x-pos>394</x-pos>
+          <y-pos>377</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+
+
+        <position>
+          <x-pos>433</x-pos>
+          <y-pos>375</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+
+
+        <position>
+          <x-pos>465</x-pos>
+          <y-pos>377</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+      </edge>
+
+      <edge name="egde_10" source="leveldot_11" destination="leveldot_12">
+        <position>
+          <x-pos>538</x-pos>
+          <y-pos>405</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+      </edge>
+
+      <edge name="egde_11" source="leveldot_12" destination="leveldot_13">
+        <position>
+          <x-pos>621</x-pos>
+          <y-pos>398</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+
+
+        <position>
+          <x-pos>653</x-pos>
+          <y-pos>392</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+      </edge>
+
+      <edge name="egde_12" source="leveldot_13" destination="leveldot_14">
+      </edge>
+
+      <edge name="egde_12" source="leveldot_15" destination="leveldot_16">
+        <position>
+          <x-pos>591</x-pos>
+          <y-pos>453</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+      </edge>
+
+      <edge name="egde_12" source="leveldot_13" destination="leveldot_16">
+        <position>
+          <x-pos>665</x-pos>
+          <y-pos>419</y-pos>
+          <z-pos>0</z-pos>
+        </position>
+      </edge>
+
+    </edges>
+  </graph>
+  
+  <!-- Objects are other things on the worldmap, most likly background
+  surfaces or other animated stuff -->
+  <objects>
+    <!-- container for a worldmapobj, so that the worldmap object can
+    have an id (id's are used to hide/show worldmap objects -->
+    <surface name="background_1">
+      <surface>
+        <resource type="datafile">
+          <resource-datafile>worldmaps</resource-datafile>
+          <resource-ident>volcano</resource-ident>
+        </resource>
+      </surface>
+
+      <position>
+        <x-pos>0</x-pos>
+        <y-pos>0</y-pos>
+        <z-pos>0</z-pos>
+      </position>
+    </surface>
+
+  </objects>
 </pingus-worldmap>
+
+<!-- EOF -->     

@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.16 2002/10/13 20:25:00 torangan Exp $
+//  $Id: manager.cxx,v 1.17 2002/10/15 15:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,7 +92,7 @@ WorldMapManager::WorldMapComponent::update (float delta)
 void 
 WorldMapManager::WorldMapComponent::on_primary_button_press (int x, int y)
 {
-  std::cout << "Buton press" << std::endl;
+  //std::cout << "Buton press" << std::endl;
   /** Fixme: insert Co. translation here */
   WorldMapManager::instance ()->worldmap->on_primary_button_press (x, y);
 }

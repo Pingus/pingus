@@ -1,4 +1,4 @@
-//  $Id: graph.hxx,v 1.18 2002/10/14 00:38:22 grumbel Exp $
+//  $Id: graph.hxx,v 1.19 2002/10/15 15:48:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,11 +54,11 @@ class Edge
 public:
   NodeId source;
   NodeId destination;
-  int cost;
+  float cost;
 
   EdgeType data;
 
-  Edge (const EdgeType& arg_data, const NodeId& s, const NodeId& d, int c)
+  Edge (const EdgeType& arg_data, const NodeId& s, const NodeId& d, float c)
     : source (s), destination (d), cost (c), data(arg_data)
   {
   }
@@ -97,7 +97,7 @@ public:
     return NodeId (nodes.size ()-1);
   }
   
-  EdgeId add_edge (const EdgeType& data, const NodeId& a, const NodeId& b, int cost)
+  EdgeId add_edge (const EdgeType& data, const NodeId& a, const NodeId& b, float cost)
   {
     Edge<EdgeType> new_edge (data, a, b, cost);
     edges.push_back (new_edge);
@@ -106,7 +106,7 @@ public:
   }
 
   std::pair<EdgeId, EdgeId>
-  add_bi_edge (const EdgeType& data, const NodeId& a, const NodeId& b, int cost)
+  add_bi_edge (const EdgeType& data, const NodeId& a, const NodeId& b, float cost)
   {
     std::pair<EdgeId, EdgeId> ret;
     ret.first  = add_edge (data, a, b, cost);

@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.16 2002/10/14 00:38:22 grumbel Exp $
+//  $Id: pingus.hxx,v 1.17 2002/10/15 15:48:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,6 +92,7 @@ public:
   /** calculate the position of the pingu */
   Vector calc_pos ();
 
+  bool is_walking();
   
   /** @return the node on which the pingu is currently standing, 0 is
       returned if the pingu is currently between two nodes */

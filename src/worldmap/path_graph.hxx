@@ -1,4 +1,4 @@
-//  $Id: path_graph.hxx,v 1.4 2002/10/13 23:02:29 grumbel Exp $
+//  $Id: path_graph.hxx,v 1.5 2002/10/15 15:48:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,10 +26,9 @@
 #include "../libxmlfwd.hxx"
 #include "graph.hxx"
 
-class Dot;
-
 namespace WorldMapNS {
 
+class Dot;
 class WorldMap;
 
 typedef std::vector<Vector> Path;
@@ -44,6 +43,8 @@ public:
   // FIXME: Memory leak? Where do we free stuff data inside the graph?
   // FIXME: shouldn't be public
   Graph<Dot*, Path*> graph;
+
+  std::vector<Dot*> dots;
 private:
 
   // FIXME: This could/should probally be moved inside the graph (or not?!)
@@ -63,7 +64,11 @@ public:
       starting from \a start */
   std::vector<NodeId> get_path(NodeId start, NodeId end);
 
+  /** Get a node by it id */
   Dot* get_dot(NodeId id);
+
+  /** Get a node by its position */
+  Dot* get_dot(float x, float y);
 
   EdgeId lookup_edge(const std::string& name);
   NodeId lookup_node(const std::string& name);
