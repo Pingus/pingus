@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.6 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.7 2000/06/20 17:49:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -80,6 +80,14 @@ public:
   ///
   static EditorObj* create(liquid_data);
 
+  /** Z-Pos sort operators */
+  //@{
+  /** True if the z_pos of this is smaller than that of w */
+  bool operator< (const EditorObj& w);
+  /** True if the z_pos of this is greater than that of w */
+  bool operator> (const EditorObj& w);
+  //@}
+
   ///
   virtual void   draw_offset(int, int);
   ///
@@ -98,6 +106,16 @@ public:
   virtual EditorObj* duplicate() = 0;
 }///
 ;
+
+// Structure for the sorting algorithm (stable_sort)
+class EditorObj_less : public binary_function<EditorObj*, EditorObj*, bool>
+{
+public:
+  bool operator() (EditorObj* a, EditorObj* b) const 
+    {
+      return (*a) < (*b);
+    }
+};
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.16 2000/06/13 22:19:17 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.17 2000/06/20 17:49:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -161,7 +161,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 		   i != object_manager->current_objs.end(); 
 		   ++i)
 		{
-		  (*i)->z_pos = -100;
+		  (*i)->z_pos -= 100;
 		}
 	    }
 	  break;
@@ -175,7 +175,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 		   i != object_manager->current_objs.end(); 
 		   ++i) 
 		{
-		  (*i)->z_pos = 100;
+		  (*i)->z_pos += 100;
 		}
 	    }
 	  break;

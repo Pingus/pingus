@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.6 2000/05/22 21:11:13 grumbel Exp $
+// $Id: EditorObj.cc,v 1.7 2000/06/20 17:49:40 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -79,6 +79,18 @@ EditorObj*
 EditorObj::create(liquid_data data)
 {
   return new LiquidObj(data);
+}
+
+bool
+EditorObj::operator< (const EditorObj& w)
+{
+  return (z_pos < w.z_pos);
+}
+
+bool
+EditorObj::operator> (const EditorObj& w)
+{
+  return (z_pos > w.z_pos);
 }
 
 void
@@ -172,6 +184,10 @@ EditorObj::status_line()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.7  2000/06/20 17:49:40  grumbel
+Fixed sorting of objects (caused problems in level12 before)
+added support for teleporter
+
 Revision 1.6  2000/05/22 21:11:13  grumbel
 Added some more usefull infos to the editor status bar
 
