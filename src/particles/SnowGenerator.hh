@@ -1,4 +1,4 @@
-//  $Id: SnowGenerator.hh,v 1.1 2000/08/02 19:00:08 grumbel Exp $
+//  $Id: SnowGenerator.hh,v 1.2 2000/08/03 19:03:58 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,8 +26,8 @@
 class SnowGenerator : public WorldObj
 {
 private:
-  static ParticleHolder* particle;
   int strength;
+
 public:
   ///
   SnowGenerator();
@@ -39,8 +39,6 @@ public:
   virtual void let_move();
   int get_z_pos() const { return 0; };
   void draw_offset(int, int, float) {};
-  ///
-  static void SetParticleHolder(ParticleHolder* p);
 };
 
 #endif

@@ -1,5 +1,5 @@
 
-//  $Id: Particle.hh,v 1.5 2000/08/03 10:31:18 grumbel Exp $
+//  $Id: Particle.hh,v 1.6 2000/08/03 19:03:58 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,8 +55,8 @@ public:
   /// Reinit a allready created particle with now coordinates
   virtual void init(int x, int y, float x_a, float y_a);
 
-  // If false is returned the particle gets deleted by the
-  /// ParticleHolder 
+  /** If false is returned the particle gets deleted by the
+      ParticleHolder */
   virtual bool is_alive(void);
 
   /// Let the particle move

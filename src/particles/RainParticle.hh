@@ -1,7 +1,7 @@
-//  $Id: SnowParticle.hh,v 1.4 2000/08/03 19:03:58 grumbel Exp $
-//
+//  $Id: RainParticle.hh,v 1.1 2000/08/03 19:03:58 grumbel Exp $
+// 
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -12,47 +12,35 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+// 
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef SNOWPARTICLE_HH
-#define SNOWPARTICLE_HH
+#ifndef RAINPARTICLE_HH
+#define RAINPARTICLE_HH
 
 #include <ClanLib/core.h>
-#include "Particle.hh"
 
-///
-class SnowParticle : public Particle
+class RainParticle : public Particle
 {
 private:
+  static CL_Surface* rain_surf;
+  static CL_Surface* rain_splash;
+
+  float add;
+  bool alive;
+  bool splash;
+  int splash_counter;
 
 public:
-  SnowParticle();
-  ///
-  SnowParticle(int x, int y);
-  ///
-  void init(int x, int y);
-  ///
-  virtual ~SnowParticle();
+  RainParticle();
+  RainParticle(int, int);
+  virtual ~RainParticle();
 
+  virtual void draw_offset(int, int, float) const;
   virtual void let_move();
   virtual bool is_alive();
-};
-
-class CollidingSnowParticle : public SnowParticle
-{
-private:
-  bool alive;
-  static CL_Surface* ground_snow;
-public:
-  CollidingSnowParticle();
-  CollidingSnowParticle(int x, int y);
-  virtual ~CollidingSnowParticle();
-
-  virtual void let_move();
-  virtual bool is_alive();  
 };
 
 #endif
