@@ -261,6 +261,8 @@ section signposts
 
 section snow
 {
+        block1 = ../images/groundpieces/ground/snow/block1.png (type=surface);
+        block2 = ../images/groundpieces/ground/snow/block2.png (type=surface);
         cabin = ../images/groundpieces/ground/snow/cabin.png (type=surface);
         cabin_winter = ../images/groundpieces/ground/snow/cabin_winter.png (type=surface);
         gpiece1 = ../images/groundpieces/ground/snow/gpiece1.png (type=surface);
@@ -278,6 +280,7 @@ section snow
         slopedr = ../images/groundpieces/ground/snow/slopedr.png (type=surface);
         snowball1 = ../images/groundpieces/ground/snow/snowball1.png (type=surface);
         snowman = ../images/groundpieces/ground/snow/snowman.png (type=surface);
+        way = ../images/groundpieces/ground/snow/way.png (type=surface);
         xmas-tree = ../images/groundpieces/ground/snow/xmas-tree.png (type=surface);
 }
 
