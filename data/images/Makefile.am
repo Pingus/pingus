@@ -17,7 +17,7 @@
 
 pkgdatadir = $(datadir)/games/@PACKAGE@/images
 
-EXTRA_DIST = backgrounds/large_star.png \
+pkgdata_DATA = backgrounds/large_star.png \
 backgrounds/middle_star.png \
 backgrounds/small_star.png \
 backgrounds/starfield_icon.png \
@@ -104,6 +104,8 @@ core/worldmap/dot_green.png \
 core/worldmap/dot_invalid.png \
 core/worldmap/dot_red.png \
 core/worldmap/flaggreen.png \
+core/worldmap/pingus.png \
+core/worldmap/pingus_standing.png \
 core/worldmap/tube.png \
 entrances/cloudent.png \
 entrances/entrance.png \
@@ -799,5 +801,7 @@ worldobjs/teleporter.png \
 worldobjs/teleporter2.png \
 worldobjs/teleportertarget.png \
 gui/font_black.tga gui/font_gray.tga
+
+EXTRA_DIST = $(pkgdata_DATA)
 
 # EOF #

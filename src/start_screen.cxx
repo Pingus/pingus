@@ -1,4 +1,4 @@
-//  $Id: start_screen.cxx,v 1.2 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: start_screen.cxx,v 1.3 2003/03/28 16:16:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "gui/surface_button.hxx"
 #include "gui/component.hxx"
 #include "gui/screen_manager.hxx"
+#include "my_gettext.hxx"
 #include "game_session.hxx"
 #include "globals.hxx"
 #include "string_converter.hxx"
@@ -89,19 +90,19 @@ StartScreenComponent::draw(GraphicContext& gc)
   gc.print_center(Fonts::chalk_large, gc.get_width()/2, 100, System::translate(plf->get_levelname()));
   gc.print_center(Fonts::chalk_normal, gc.get_width()/2, 160, System::translate(plf->get_description()));
 
-  gc.print_left(Fonts::chalk_normal, 250, 250, "Number of Pingus: " + to_string(plf->get_pingus()));
-  gc.print_left(Fonts::chalk_normal, 250, 280, "Number to Save: " + to_string(plf->get_number_to_save()));
-  gc.print_left(Fonts::chalk_normal, 250, 310, "Time: " + to_string(plf->get_time()));
+  gc.print_left(Fonts::chalk_normal, 250, 250, _("Number of Pingus: ") + to_string(plf->get_pingus()));
+  gc.print_left(Fonts::chalk_normal, 250, 280, _("Number to Save: ") + to_string(plf->get_number_to_save()));
+  gc.print_left(Fonts::chalk_normal, 250, 310, _("Time: ") + to_string(plf->get_time()));
   
-  gc.print_left(Fonts::chalk_normal, 250, 340, "Difficulty: lllllllllll|||||||||");
+  gc.print_left(Fonts::chalk_normal, 250, 340, _("Difficulty:"));
   /*for (int i = 0; plf->get_difficulty())
     {
     }*/
 
-  gc.print_left(Fonts::chalk_small, 110, 460, "Author: " + plf->get_author());
+  gc.print_left(Fonts::chalk_small, 110, 460, _("Author: ") + plf->get_author());
 
   if (maintainer_mode)
-    gc.print_left(Fonts::chalk_small, 110, 430, "Filename: " + plf->get_filename());
+    gc.print_left(Fonts::chalk_small, 110, 430, _("Filename: ") + plf->get_filename());
 }
 
 /* EOF */

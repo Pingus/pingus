@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.27 2003/03/05 17:31:29 grumbel Exp $
+//  $Id: basher.cxx,v 1.28 2003/03/28 16:16:00 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -166,7 +166,7 @@ Basher::have_something_to_dig()
 	}
     }
 
-  std::cout << "nothing to dig found" << std::endl;
+  //std::cout << "nothing to dig found" << std::endl;
   return false;
 }
 

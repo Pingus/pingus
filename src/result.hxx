@@ -1,4 +1,4 @@
-//  $Id: result.hxx,v 1.6 2003/03/16 22:54:32 grumbel Exp $
+//  $Id: result.hxx,v 1.7 2003/03/28 16:16:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,6 +46,10 @@ struct Result
   
   /** Number of Pingus needed to save */
   int needed;
+
+  bool success() {
+    return (saved >= needed);
+  }
 };
 
 #endif

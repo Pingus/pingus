@@ -1,4 +1,4 @@
-//  $Id: gui_manager.cxx,v 1.19 2003/02/19 09:50:36 grumbel Exp $
+//  $Id: gui_manager.cxx,v 1.20 2003/03/28 16:16:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -210,7 +210,8 @@ GUIManager::process_button_event (unsigned int time_stamp, const Input::ButtonEv
 		 FIXME: on_primary_button_press() method to another
 		 FIXME: manager, not sure if there is or
 		 FIXME: should be a workaround */
-	      std::cout << "GUIManager: Got a release without a press, possibly a bug" << std::endl;
+	      if (maintainer_mode)
+                std::cout << "GUIManager: Got a release without a press, possibly a bug" << std::endl;
 	    }
 	}
 		
@@ -246,7 +247,8 @@ GUIManager::process_button_event (unsigned int time_stamp, const Input::ButtonEv
 		 FIXME: on_secondary_button_press() method to another
 		 FIXME: manager, not sure if there is or
 		 FIXME: should be a workaround */
-	      std::cout << "GUIManager: Got a release without a press, possibly a bug" << std::endl;
+              if (maintainer_mode)
+                std::cout << "GUIManager: Got a release without a press, possibly a bug" << std::endl;
 	    }
 	}
 

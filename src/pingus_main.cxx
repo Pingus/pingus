@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.54 2003/03/28 13:06:55 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.55 2003/03/28 16:16:00 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -612,11 +612,10 @@ PingusMain::init_path_finder()
   std::list<std::string> file_list;
 
   file_list.push_back ("data/core.scr");
-  file_list.push_back ("images/core/misc/404.png");
 
   if (!path_manager.find_path (file_list))
     {
-      std::cout << "Error: Couldn't find `data/core.scr', please set the enviroment variable\n"
+      std::cout << "Error: Couldn't find 'data/core.scr', please set the enviroment variable\n"
 		<< "PINGUS_DATADIR to the path of the file `data/core.scr' or use the\n"
 		<< "-d option." << std::endl;
       exit(EXIT_FAILURE);

@@ -1,4 +1,4 @@
-//  $Id: result_screen.cxx,v 1.4 2003/03/25 00:37:44 grumbel Exp $
+//  $Id: result_screen.cxx,v 1.5 2003/03/28 16:16:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,21 +18,27 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "my_gettext.hxx"
 #include "gui/surface_button.hxx"
 #include "gui/gui_manager.hxx"
 #include "gui/screen_manager.hxx"
 #include "res_descriptor.hxx"
+#include "pingus_resource.hxx"
 #include "fonts.hxx"
 #include "plf.hxx"
 #include "string_converter.hxx"
 #include "game_session.hxx"
 #include "system.hxx"
+#include "sound/sound.hxx"
 #include "result_screen.hxx"
 
 class ResultScreenComponent : public GUI::Component
 {
 public:
   Result result;
+  CL_Surface background;
+
+  std::vector<CL_Surface> chalk_pingus;
 
   ResultScreenComponent(Result arg_result);
   void draw(GraphicContext& gc) ;
@@ -80,36 +86,49 @@ public:
 ResultScreenComponent::ResultScreenComponent(Result arg_result)
   : result(arg_result)
 {
+  background = PingusResource::load_surface("menu/startscreenbg", "core");
+
+  chalk_pingus.push_back(PingusResource::load_surface("misc/chalk_pingu1", "core"));
+  chalk_pingus.push_back(PingusResource::load_surface("misc/chalk_pingu2", "core"));
+  chalk_pingus.push_back(PingusResource::load_surface("misc/chalk_pingu3", "core"));
+  chalk_pingus.push_back(PingusResource::load_surface("misc/chalk_pingu4", "core"));
 }
 
 void
 ResultScreenComponent::draw(GraphicContext& gc) 
 {
-  gc.clear(.0f, .0f, .0f);
-  gc.print_center(Fonts::pingus_large, gc.get_width()/2, 20, "Results for ");
-  gc.print_center(Fonts::pingus_large, gc.get_width()/2, 70, "\"" + System::translate(result.plf->get_levelname()) + "\"");
+  gc.draw(background, 0, 0);
+  gc.print_center(Fonts::chalk_large, gc.get_width()/2, 100, System::translate(result.plf->get_levelname()));
+  gc.print_left(Fonts::chalk_large, 150, 180, _("Results:"));
 
-  gc.print_left(Fonts::pingus_small, 100, 180, "Saved: ");
-  gc.print_left(Fonts::pingus_small, 200, 180, to_string(result.saved));
-  gc.print_left(Fonts::pingus_small, 100, 210, "Killed: ");    
-  gc.print_left(Fonts::pingus_small, 200, 210, to_string(result.killed));
+  gc.print_left(Fonts::chalk_small, 150, 280, "Saved: ");
+  for (int i = 0; i < result.saved; ++i)
+    {
+      gc.draw(chalk_pingus[rand() % chalk_pingus.size()], 230 + i * 15, 210);
+    }
+  gc.print_left(Fonts::chalk_small, 650, 280, to_string(result.saved));
 
-  gc.print_left(Fonts::pingus_small, 100, 240, "Needed: ");    
-  gc.print_left(Fonts::pingus_small, 200, 240, to_string(result.needed));
+  gc.print_left(Fonts::chalk_small, 150, 310, "Killed: ");    
+  gc.print_left(Fonts::chalk_small, 250, 310, to_string(result.killed));
 
-  gc.print_left(Fonts::pingus_small, 100, 270, "Time left: ");    
+
+  gc.print_left(Fonts::chalk_small, 150, 340, "Needed: ");    
+  gc.print_left(Fonts::chalk_small, 250, 340, to_string(result.needed));
+
+  gc.print_left(Fonts::chalk_small, 150, 370, "Time left: ");    
   if (result.max_time == -1)
-    gc.print_left(Fonts::pingus_small, 200, 270, "-");
+    gc.print_left(Fonts::chalk_small, 250, 370, "-");
   else
-    gc.print_left(Fonts::pingus_small, 200, 270, to_string(result.max_time - result.used_time));
+    gc.print_left(Fonts::chalk_small, 250, 370, to_string(result.max_time - result.used_time));
 
-  if (result.saved >= result.needed)
-    gc.print_center(Fonts::pingus_large, gc.get_width()/2, 350, "Success! =:-)");
+  if (result.success())
+    gc.print_center(Fonts::chalk_large, gc.get_width()/2, 450, "Success! =:-)");
   else
-    gc.print_center(Fonts::pingus_large, gc.get_width()/2, 350, "Failure! :-(");
+    gc.print_center(Fonts::chalk_large, gc.get_width()/2, 450, "Failure! :-(");
 }
 
-ResultScreen::ResultScreen(Result result)
+ResultScreen::ResultScreen(Result arg_result)
+  : result(arg_result)
 {
   ResDescriptor ok_desc("result/ok", "core", ResDescriptor::RD_RESOURCE);
   ResDescriptor cancel_desc("result/retry", "core", ResDescriptor::RD_RESOURCE);
@@ -119,6 +138,19 @@ ResultScreen::ResultScreen(Result result)
   gui_manager->add(new ResultScreenOkButton());
   gui_manager->add(new ResultScreenRetryButton(comp));
   //gui_manager->add(new GUI::SurfaceButton(500, 500, cancel_desc, cancel_desc, cancel_desc));
+}
+
+void
+ResultScreen::on_startup()
+{
+  if (result.success())
+    {
+      PingusSound::play_music("success_1.it");
+    }
+  else
+    {
+      PingusSound::play_music("pingus-2.it");
+    }
 }
 
 /* EOF */

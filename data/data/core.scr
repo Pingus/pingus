@@ -99,6 +99,13 @@ section result
 
 section misc
 {
+        chalk_pingu1 = ../images/core/misc/chalk_pingu1.png (type=surface);
+        chalk_pingu2 = ../images/core/misc/chalk_pingu2.png (type=surface);
+        chalk_pingu3 = ../images/core/misc/chalk_pingu3.png (type=surface);
+        chalk_pingu4 = ../images/core/misc/chalk_pingu4.png (type=surface);
+
+        flag0 = ../images/core/misc/flag0.png (type=surface, x=0, y=0, width=27, height=38);
+
 	404 = ../images/core/misc/404.png (type=surface, x=0, y=0, width=64, height=64);
 
 	exitmenu = ../images/core/menu/exitmenu.png (type=surface, x=0, y=0, width=400, height=296);

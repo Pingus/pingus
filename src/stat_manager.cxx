@@ -1,4 +1,4 @@
-//  $Id: stat_manager.cxx,v 1.2 2003/03/28 13:12:10 grumbel Exp $
+//  $Id: stat_manager.cxx,v 1.3 2003/03/28 16:16:00 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -156,18 +156,21 @@ void
 StatManager::set_string(const std::string& name, const std::string& value)
 {
   stats[name] = value;
+  flush();
 }
 
 void
 StatManager::set_int(const std::string& name, int value)
 {
   stats[name] = to_string(value);
+  flush();
 }
 
 void
 StatManager::set_bool(const std::string& name, bool value)
 {
   stats[name] = to_string(value);
+  flush();
 }
 
 /* EOF */
