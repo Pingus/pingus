@@ -1,4 +1,4 @@
-//  $Id: entrance_obj.cxx,v 1.3 2002/11/28 20:09:54 grumbel Exp $
+//  $Id: entrance_obj.cxx,v 1.4 2002/12/01 21:45:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,14 +23,16 @@
 #include "../editor/entrance_window.hxx"
 #include "../editor/editor.hxx"
 #include "../editor/property_window.hxx"
+#include "../editor/generic_property_frame.hxx"
+#include "../editor/editor.hxx"
 #include "entrance_obj.hxx"
+
+using namespace WorldObjsData;
 
 namespace EditorObjs {
 
 EntranceObj::EntranceObj (const WorldObjsData::EntranceData& data_)
-  : data(new WorldObjsData::EntranceData(data_)),
-    direction(data->direction),
-    release_rate(data->release_rate)
+  : data(new WorldObjsData::EntranceData(data_))
 {
   pos_ref = &data->pos;
 
@@ -85,7 +87,7 @@ EntranceObj::status_line ()
   std::string dir_str;
   char str[256];
 
-  switch(direction)
+  switch(data->direction)
     {
       case WorldObjsData::EntranceData::LEFT:
         dir_str = "left";
@@ -107,9 +109,22 @@ EntranceObj::status_line ()
 }
 
 EditorNS::PropertyFrame*
-EntranceObj::get_gui_dialog (EditorNS::Editor* parent)
+EntranceObj::get_gui_dialog (EditorNS::Editor* editor)
 {
-  return new EditorNS::EntranceWindow(parent->get_property_window()->get_client_area(), this);
+  EditorNS::GenericPropertyFrame* propframe 
+    = new EditorNS::GenericPropertyFrame("GroundPiece Properties",
+                                         editor->get_property_window()->get_client_area());
+
+  propframe->begin_add_enum_box("Direction", (int*)&data->direction);
+  propframe->add_enum_value("left", EntranceData::LEFT);
+  propframe->add_enum_value("right", EntranceData::RIGHT);
+  propframe->add_enum_value("misc", EntranceData::MISC);
+  propframe->end_add_enum_box();
+
+  propframe->add_integer_box("Release Rate", &data->release_rate);
+  propframe->add_integer_box("Owner ID (Player)", &data->owner_id);
+
+  return propframe;
 }
 
 } // namespace EditorObjs

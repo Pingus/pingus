@@ -1,4 +1,4 @@
-//  $Id: entrance_obj.hxx,v 1.2 2002/11/28 20:09:54 grumbel Exp $
+//  $Id: entrance_obj.hxx,v 1.3 2002/12/01 21:45:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,11 +31,8 @@ private:
   WorldObjsData::EntranceData* const data;
   
 public:
-  WorldObjsData::EntranceData::EntranceDirection direction;
-  int release_rate;
-
   EntranceObj (const WorldObjsData::EntranceData& data_);
- ~EntranceObj ();
+  ~EntranceObj ();
 
   EditorObj* duplicate ();
   

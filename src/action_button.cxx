@@ -1,4 +1,4 @@
-//  $Id: action_button.cxx,v 1.22 2002/12/01 17:45:21 grumbel Exp $
+//  $Id: action_button.cxx,v 1.23 2002/12/01 21:45:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,7 +57,11 @@ ActionButton::init(int x, int y, ActionName name_, int owner_id)
   if (   name == Digger  || name == Bomber
       || name == Floater || name == Blocker)
     {
-      sprite.set_direction(Sprite::LEFT);
+      is_multi_direct = true;
+    }
+  else
+    {
+      is_multi_direct = false;
     }
 }
 
@@ -70,7 +74,7 @@ ActionButton::is_pressed()
 void
 ActionButton::update(float delta)
 {
-  sprite.update(delta);
+  sprite.update(0.010f); // FIXME: Dirty hack
 }
 
 ActionName
@@ -131,8 +135,9 @@ VerticalActionButton::draw (GraphicContext& gc)
       }
     }
 
-
-  gc.draw(sprite, Vector(x_pos, y_pos));
+  if (is_multi_direct)
+    sprite.set_direction(Sprite::RIGHT);
+  gc.draw(sprite, Vector(x_pos + 20, y_pos + 32));
       
   // print the action name next to the button, when mouse pointer is on
   // the button.
@@ -181,6 +186,7 @@ ArmageddonButton::draw (GraphicContext& gc)
     {
       if (!fast_mode)
         background.put_screen (x_pos, y_pos);
+
       sprite.set_frame(7);
       gc.draw(sprite, Vector(x_pos, y_pos));
     }
@@ -189,7 +195,7 @@ ArmageddonButton::draw (GraphicContext& gc)
 void
 ArmageddonButton::update (float delta)
 {
-  sprite.update(delta);
+  sprite.update(0.010f); // FIXME: Dirty hack
 
   if (pressed)
     {
