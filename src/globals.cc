@@ -1,4 +1,4 @@
-//  $Id: globals.cc,v 1.40 2002/06/06 14:05:44 grumbel Exp $
+//  $Id: globals.cc,v 1.41 2002/06/06 15:24:05 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,44 +19,44 @@
 
 #include "globals.hh"
 
-int    game_speed        = 25;
-bool   print_fps         = false;
-int    verbose           = 0;
-bool   music_enabled     = false;
-bool   sound_enabled     = false;
-bool   gimmicks_enabled  = false;
-bool   intro_disabled    = false;
-bool   record_demo       = false;
-bool   play_demo         = false;
-bool   cursor_enabled    = false;
-bool   fs_preload        = false;  
-bool   fast_mode         = false;
-bool   previews_enabled  = true;
-bool   unlimited_actions = false;
-bool   quick_play        = false;
-bool   maintainer_mode   = false;
+int         game_speed                      = 25;
+bool        print_fps                       = false;
+int         verbose                         = 0;
+bool        music_enabled                   = false;
+bool        sound_enabled                   = false;
+bool        gimmicks_enabled                = false;
+bool        intro_disabled                  = false;
+bool        record_demo                     = false;
+bool        play_demo                       = false;
+bool        cursor_enabled                  = false;
+bool        fs_preload                      = false;  
+bool        fast_mode                       = false;
+bool        previews_enabled                = true;
+bool        unlimited_actions               = false;
+bool        quick_play                      = false;
+bool        maintainer_mode                 = false;
 std::string demo_file;
-bool   start_editor       = false;
-bool   auto_scrolling     = true;
-int    tile_size          = 32;
-bool   fullscreen_enabled = false;
-int    screen_width  = 800;
-int    screen_height = 600;
-bool   preload_data  = false; // FIXME: Should be default if it would work
-bool   draw_collision_map = false;
-bool   swcursor_enabled = false; // --enable-swcursor
-std::string config_file;   // --config-file
-bool   background_manipulation_enabled = true; // --enable-bg-manipulation
-bool   use_datafile = false; // --use-datafile
-bool   max_cpu_usage = false;  /// --max-cpu-usage
-float  frame_skip = 1.0f;     /// --frame-skip
-bool   use_opengl = false;
-bool   action_help = true;
+bool        start_editor                    = false;
+bool        auto_scrolling                  = true;
+int         tile_size                       = 32;
+bool        fullscreen_enabled              = false;
+int         screen_width                    = 800;
+int         screen_height                   = 600;
+bool        preload_data                    = false; // FIXME: Should be default if it would work
+bool        draw_collision_map              = false;
+bool        swcursor_enabled                = false;
+std::string config_file;
+bool        background_manipulation_enabled = true;
+bool        use_datafile                    = false;
+bool        max_cpu_usage                   = false;
+float       frame_skip                      = 1.0f;
+bool        use_opengl                      = false;
+bool        action_help                     = true;
 
 std::string global_username;
 std::string global_email; 
-std::string default_language = "en";
+std::string default_language                = "en";
 
-int pingus_debug_flags = 0;
+int         pingus_debug_flags              = 0;
 
 /* EOF */
