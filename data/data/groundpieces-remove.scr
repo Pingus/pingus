@@ -1,5 +1,5 @@
 section misc {
-	column1 = images/groundpieces/remove/misc/column1.png (type=surface, x=0, y=0, width=56, height=113);
-	rect1 = images/groundpieces/remove/misc/rect1.png (type=surface, x=0, y=0, width=64, height=32);
+	column1 = ../images/groundpieces/remove/misc/column1.png (type=surface, x=0, y=0, width=56, height=113);
+	rect1 = ../images/groundpieces/remove/misc/rect1.png (type=surface, x=0, y=0, width=64, height=32);
 }
 

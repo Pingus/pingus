@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.42 2001/11/29 11:38:28 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.43 2001/11/30 20:22:20 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -649,7 +649,7 @@ PingusMain::get_filenames()
 #endif /* !WIN32 */
  
   // FIXME: Workaround for ClanLib-0.5.0 bug
-  System::change_dir (path_manager.get_base_path ());
+  //System::change_dir (path_manager.get_base_path ());
 
   // First we try to open the file which was given, if that is not
   // there then we try again with filename+".plf". If still no success

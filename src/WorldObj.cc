@@ -1,4 +1,4 @@
-//  $Id: WorldObj.cc,v 1.16 2001/08/15 07:35:29 grumbel Exp $
+//  $Id: WorldObj.cc,v 1.17 2001/11/30 20:22:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,23 +59,5 @@ WorldObj::update(float delta)
 {
   // do nothing
 }
-
-/*
-shared_ptr<WorldObj>
-WorldObj::create (shared_ptr<WorldObjData> data)
-{
-  if (dynamic_cast<TeleporterData*>(data.get()) != 0)
-    return shared_ptr<WorldObj>(new Teleporter (data));
-  else if (dynamic_cast<IceBlockData*>(data.get()) != 0)
-    return shared_ptr<WorldObj>(new IceBlock (data.get()));
-  else if (dynamic_cast<ConveyorBeltData*>(data.get()) != 0)
-    return shared_ptr<WorldObj>(new ConveyorBelt (data.get()));
-  else if (dynamic_cast<SwitchDoorData*>(data.get()) != 0)
-    return shared_ptr<WorldObj>(new SwitchDoor (data.get()));
-  else
-    {
-      throw PingusError ("WorldObj::create (): Unknown WorldObjData");
-    }
-}*/
 
 /* EOF */

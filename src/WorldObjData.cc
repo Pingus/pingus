@@ -1,4 +1,4 @@
-//  $Id: WorldObjData.cc,v 1.10 2001/08/10 10:56:13 grumbel Exp $
+//  $Id: WorldObjData.cc,v 1.11 2001/11/30 20:22:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,41 +20,11 @@
 #include "boost/smart_ptr.hpp"
 #include "PingusError.hh"
 #include "TrapData.hh"
-#include "worldobjs/Teleporter.hh"
-#include "worldobjs/IceBlock.hh"
-#include "worldobjs/ConveyorBelt.hh"
-#include "worldobjs/SwitchDoor.hh"
+//#include "worldobjs/Teleporter.hh"
+//#include "worldobjs/IceBlock.hh"
+//#include "worldobjs/InfoBox.hh"
+//#include "worldobjs/ConveyorBelt.hh"
+//#include "worldobjs/SwitchDoor.hh"
 #include "WorldObjData.hh"
-
-/*
-boost::shared_ptr<WorldObjData>
-WorldObjData::create(xmlDocPtr doc, xmlNodePtr cur)
-{
-  boost::shared_ptr<WorldObjData> data;
-  char* type = (char*)xmlGetProp(cur, (xmlChar*)"type");
-  
-  if (type == 0)
-    {
-      std::cout << "WorldObjData::create (): No type given" << std::endl;
-    }
-  else
-    {
-      if (strcmp(type, "teleporter") == 0)
-	data = TeleporterData::create (doc, cur);
-      else if (strcmp(type, "iceblock") == 0)
-	data = IceBlockData::create (doc, cur);
-      else if (strcmp(type, "trap") == 0)	
-	data = TrapData::create (doc, cur);
-      else if (strcmp(type, "conveyorbelt") == 0)
-	data = ConveyorBeltData::create (doc, cur);
-      else if (strcmp(type, "switchdoor") == 0)
-	data = SwitchDoorData::create (doc, cur);
-      else
-	{
-	  throw PingusError("WorldObjData::create (): Unknown type: \"" + std::string(type) + "\"");
-	}
-    }
-  return data;
-}*/
 
 /* EOF */

@@ -1,27 +1,27 @@
 section Objects
 {
-	start_pos = images/core/editor/start_pos.png (type=surface, x=0, y=0, width=53, height=59, tcol=0);
-	weather_rain = images/core/editor/weather_rain.png (type=surface, x=0, y=0, width=120, height=101, tcol=0);
-	weather_snow = images/core/editor/weather_snow.png (type=surface, x=0, y=0, width=71, height=64, tcol=0);
+	start_pos = ../images/core/editor/start_pos.png (type=surface, x=0, y=0, width=53, height=59, tcol=0);
+	weather_rain = ../images/core/editor/weather_rain.png (type=surface, x=0, y=0, width=120, height=101, tcol=0);
+	weather_snow = ../images/core/editor/weather_snow.png (type=surface, x=0, y=0, width=71, height=64, tcol=0);
 }
 
 section Icons
 {
-	copy    = images/core/editor/tb_copy.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
-	new     = images/core/editor/tb_new.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
-	open = images/core/editor/tb_open.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
-	save = images/core/editor/tb_save.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
-	exit = images/core/editor/tb_exit.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
-	clock_run = images/core/editor/tb_clock_run.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
-	edit = images/core/editor/tb_edit.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
-	preferences = images/core/editor/tb_preferences.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
-	help = images/core/editor/tb_help.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
-	delete = images/core/editor/tb_trash.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
-	index = images/core/editor/tb_index.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	copy    = ../images/core/editor/tb_copy.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	new     = ../images/core/editor/tb_new.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	open = ../images/core/editor/tb_open.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	save = ../images/core/editor/tb_save.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	exit = ../images/core/editor/tb_exit.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	clock_run = ../images/core/editor/tb_clock_run.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	edit = ../images/core/editor/tb_edit.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	preferences = ../images/core/editor/tb_preferences.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	help = ../images/core/editor/tb_help.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	delete = ../images/core/editor/tb_trash.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	index = ../images/core/editor/tb_index.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
 
-	region-zoom = images/core/editor/region-zoom.png (type=surface, x=0, y=0, width=24, height=24);
-	zoom-in = images/core/editor/zoom-in.png (type=surface, x=0, y=0, width=24, height=24);
-	zoom-out = images/core/editor/zoom-out.png (type=surface, x=0, y=0, width=24, height=24);
+	region-zoom = ../images/core/editor/region-zoom.png (type=surface, x=0, y=0, width=24, height=24);
+	zoom-in = ../images/core/editor/zoom-in.png (type=surface, x=0, y=0, width=24, height=24);
+	zoom-out = ../images/core/editor/zoom-out.png (type=surface, x=0, y=0, width=24, height=24);
 
 }
 

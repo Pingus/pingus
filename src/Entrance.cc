@@ -1,4 +1,4 @@
-//  $Id: Entrance.cc,v 1.24 2001/08/10 10:56:13 grumbel Exp $
+//  $Id: Entrance.cc,v 1.25 2001/11/30 20:22:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -99,9 +99,12 @@ Entrance::get_pingu()
 void
 Entrance::update(float delta)
 {
-  if (pingu_ready ())
+  if (pingu_ready () 
+      && (world->get_released_pingus() < world->get_allowed_pingus())
+      && (! world->check_armageddon()))
     {
       world->get_pingu_p()->add (boost::shared_ptr<Pingu>(get_pingu ()));
+      world->inc_released_pingus();
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.52 2001/08/31 07:51:51 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.53 2001/11/30 20:22:21 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,7 @@
 
 #include "../worldobjs/Teleporter.hh"
 #include "../worldobjs/IceBlock.hh"
+#include "../worldobjs/InfoBox.hh"
 #include "../worldobjs/ConveyorBelt.hh"
 #include "../worldobjs/SwitchDoor.hh"
 
@@ -177,6 +178,7 @@ ObjectSelector::get_worldobj()
   font->print_left(20,  70, _("2 - switch and door"));
   font->print_left(20,  90, _("3 - ConveyorBelt"));
   font->print_left(20, 110, _("4 - IceBlock"));
+  font->print_left(20, 130, _("5 - InfoBox"));
   //font->print_left(20, 110, _("5 - Liquid"));
   Display::flip_display();
 
@@ -197,6 +199,7 @@ ObjectSelector::get_worldobj()
 	  return EditorIceBlockObj::create (pos);
 
 	case CL_KEY_5:
+	  return EditorInfoBox::create (pos);
 	  
 	case CL_KEY_ESCAPE:
 	  return std::list<boost::shared_ptr<EditorObj> >();

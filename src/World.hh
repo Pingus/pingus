@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.30 2001/11/22 20:08:35 grumbel Exp $
+//  $Id: World.hh,v 1.31 2001/11/30 20:22:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -132,6 +132,8 @@ public:
   boost::shared_ptr<PLF> get_plf();
 
   unsigned int get_released_pingus() { return released_pingus; }
+  void         inc_released_pingus() { ++released_pingus; }
+  unsigned int check_armageddon() { return do_armageddon; }
   unsigned int get_allowed_pingus() { return allowed_pingus; }
   unsigned int get_pingus_out();
   unsigned int get_saved_pingus();

@@ -1,108 +1,108 @@
 section cursors
 {
-	editor      = images/core/cursors/editor.png     (type=surface, x=0, y=0, width=38, height=38, translate-x=19, translate-y=19, tcol=0);
+	editor      = ../images/core/cursors/editor.png     (type=surface, x=0, y=0, width=38, height=38, translate-x=19, translate-y=19, tcol=0);
 
-	cursor      = images/core/cursors/cursor.png     (type=surface, x=0, y=0, width=16, height=16, tcol=0);
-	scroll_cur  = images/core/cursors/scroll.png (type=surface, x=0, y=0, width=32, height=32, tcol=0);
+	cursor      = ../images/core/cursors/cursor.png     (type=surface, x=0, y=0, width=16, height=16, tcol=0);
+	scroll_cur  = ../images/core/cursors/scroll.png (type=surface, x=0, y=0, width=32, height=32, tcol=0);
 
-	capgood     = images/core/cursors/cap.png        (type=surface, x=0, y=0, width=40, height=40);
-	capbad	    = images/core/cursors/capwrong.png   (type=surface, x=0, y=0, width=40, height=40);
+	capgood     = ../images/core/cursors/cap.png        (type=surface, x=0, y=0, width=40, height=40);
+	capbad	    = ../images/core/cursors/capwrong.png   (type=surface, x=0, y=0, width=40, height=40);
 
-	cross	    = images/core/cursors/cross.png   (type=surface, x=0, y=0, width=36, height=36);
+	cross	    = ../images/core/cursors/cross.png   (type=surface, x=0, y=0, width=36, height=36);
 
-	arrow_right = images/core/cursors/arrow_right.png (type=surface, x=0, y=0, width=23, height=9, tcol=0);
-	arrow_left = images/core/cursors/arrow_left.png  (type=surface, x=0, y=0, width=23, height=9, tcol=0);
+	arrow_right = ../images/core/cursors/arrow_right.png (type=surface, x=0, y=0, width=23, height=9, tcol=0);
+	arrow_left = ../images/core/cursors/arrow_left.png  (type=surface, x=0, y=0, width=23, height=9, tcol=0);
 }
 
 section editor
 {
-	start_pos = images/core/editor/start_pos.png (type=surface, x=0, y=0, width=53, height=59, tcol=0);
-	weather_rain = images/core/editor/weather_rain.png (type=surface, x=0, y=0, width=120, height=101);
-	weather_snow = images/core/editor/weather_snow.png (type=surface, x=0, y=0, width=71, height=64);
+	start_pos = ../images/core/editor/start_pos.png (type=surface, x=0, y=0, width=53, height=59, tcol=0);
+	weather_rain = ../images/core/editor/weather_rain.png (type=surface, x=0, y=0, width=120, height=101);
+	weather_snow = ../images/core/editor/weather_snow.png (type=surface, x=0, y=0, width=71, height=64);
 
-	copy    = images/core/editor/tb_copy.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
-	new     = images/core/editor/tb_new.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
-	open = images/core/editor/tb_open.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
-	save = images/core/editor/tb_save.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
-	exit = images/core/editor/tb_exit.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
-	clock_run = images/core/editor/tb_clock_run.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
-	edit = images/core/editor/tb_edit.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
-	preferences = images/core/editor/tb_preferences.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
-	help = images/core/editor/tb_help.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
-	delete = images/core/editor/tb_trash.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
-	index = images/core/editor/tb_index.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	copy    = ../images/core/editor/tb_copy.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	new     = ../images/core/editor/tb_new.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	open = ../images/core/editor/tb_open.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	save = ../images/core/editor/tb_save.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	exit = ../images/core/editor/tb_exit.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	clock_run = ../images/core/editor/tb_clock_run.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	edit = ../images/core/editor/tb_edit.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	preferences = ../images/core/editor/tb_preferences.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	help = ../images/core/editor/tb_help.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	delete = ../images/core/editor/tb_trash.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
+	index = ../images/core/editor/tb_index.png (type=surface, x=0, y=0, width=24,  height=24, tcol=0);
 
-	region-zoom = images/core/editor/region-zoom.png (type=surface, x=0, y=0, width=24, height=24);
-	zoom-in = images/core/editor/zoom-in.png (type=surface, x=0, y=0, width=24, height=24);
-	zoom-out = images/core/editor/zoom-out.png (type=surface, x=0, y=0, width=24, height=24);
+	region-zoom = ../images/core/editor/region-zoom.png (type=surface, x=0, y=0, width=24, height=24);
+	zoom-in = ../images/core/editor/zoom-in.png (type=surface, x=0, y=0, width=24, height=24);
+	zoom-out = ../images/core/editor/zoom-out.png (type=surface, x=0, y=0, width=24, height=24);
 
-	button = images/core/editor/button.png (type=surface, x=0, y=0, width=24,  height=24);
-	button_pressed = images/core/editor/button_pressed.png (type=surface, x=0, y=0, width=24,  height=24);
+	button = ../images/core/editor/button.png (type=surface, x=0, y=0, width=24,  height=24);
+	button_pressed = ../images/core/editor/button_pressed.png (type=surface, x=0, y=0, width=24,  height=24);
 
-	logo = images/core/editor/logo.png (type=surface, x=0, y=0, width=25,  height=207);
+	logo = ../images/core/editor/logo.png (type=surface, x=0, y=0, width=25,  height=207);
 }
 
 section buttons
 {
-	back = images/core/buttons/back.png (type=surface, x=0, y=0, width=64, height=34, tcol=0);
+	back = ../images/core/buttons/back.png (type=surface, x=0, y=0, width=64, height=34, tcol=0);
 
-        pause = images/core/buttons/pause.png (type=surface, x=0, y=0, width=38, height=56);
-        fast_forward = images/core/buttons/fast_forward.png (type=surface, x=0, y=0, width=38, height=56);
-        armageddon_anim = images/core/buttons/armageddon_anim.png (type=surface, x=0, y=0, width=36, height=57, array=14x1);
+        pause = ../images/core/buttons/pause.png (type=surface, x=0, y=0, width=38, height=56);
+        fast_forward = ../images/core/buttons/fast_forward.png (type=surface, x=0, y=0, width=38, height=56);
+        armageddon_anim = ../images/core/buttons/armageddon_anim.png (type=surface, x=0, y=0, width=36, height=57, array=14x1);
 }
 
 section menu 
 {
-	//background = images/core/menu/background.jpg (type=surface, x=0, y=0, width=800, height=600);
+	//background = ../images/core/menu/background.jpg (type=surface, x=0, y=0, width=800, height=600);
 
-	create_on = images/core/menu/create_on.png (type=surface, x=0, y=0, width=200, height=128);
-	credits_on = images/core/menu/credits_on.png (type=surface, x=0, y=0, width=200, height=128);
-	exit_on = images/core/menu/exit_on.png (type=surface, x=0, y=0, width=200, height=130);
-	ice_off = images/core/menu/ice_off.png (type=surface, x=0, y=0, width=228, height=189);
-	options_on = images/core/menu/options_on.png (type=surface, x=0, y=0, width=200, height=127);
-	play_on = images/core/menu/play_on.png (type=surface, x=0, y=0, width=201, height=127);
-	multi_on = images/core/menu/multi_on.png (type=surface, x=0, y=0, width=201, height=127);
+	create_on = ../images/core/menu/create_on.png (type=surface, x=0, y=0, width=200, height=128);
+	credits_on = ../images/core/menu/credits_on.png (type=surface, x=0, y=0, width=200, height=128);
+	exit_on = ../images/core/menu/exit_on.png (type=surface, x=0, y=0, width=200, height=130);
+	ice_off = ../images/core/menu/ice_off.png (type=surface, x=0, y=0, width=228, height=189);
+	options_on = ../images/core/menu/options_on.png (type=surface, x=0, y=0, width=200, height=127);
+	play_on = ../images/core/menu/play_on.png (type=surface, x=0, y=0, width=201, height=127);
+	multi_on = ../images/core/menu/multi_on.png (type=surface, x=0, y=0, width=201, height=127);
 
-	layer1 = images/core/menu/layer1.jpg (type=surface, x=0, y=0, width=800, height=268);
-	layer2 = images/core/menu/layer2.png (type=surface, x=0, y=0, width=800, height=362);
-	layer3 = images/core/menu/layer3.png (type=surface, x=0, y=0, width=800, height=201);
-	layer4 = images/core/menu/layer4.png (type=surface, x=0, y=0, width=800, height=223);
-	layer5 = images/core/menu/layer5.png (type=surface, x=0, y=0, width=302, height=104);
+	layer1 = ../images/core/menu/layer1.jpg (type=surface, x=0, y=0, width=800, height=268);
+	layer2 = ../images/core/menu/layer2.png (type=surface, x=0, y=0, width=800, height=362);
+	layer3 = ../images/core/menu/layer3.png (type=surface, x=0, y=0, width=800, height=201);
+	layer4 = ../images/core/menu/layer4.png (type=surface, x=0, y=0, width=800, height=223);
+	layer5 = ../images/core/menu/layer5.png (type=surface, x=0, y=0, width=302, height=104);
 }
 
 section misc
 {
-	404 = images/core/misc/404.png (type=surface, x=0, y=0, width=64, height=64);
+	404 = ../images/core/misc/404.png (type=surface, x=0, y=0, width=64, height=64);
 
-	exitmenu = images/core/menu/exitmenu.png (type=surface, x=0, y=0, width=400, height=296);
+	exitmenu = ../images/core/menu/exitmenu.png (type=surface, x=0, y=0, width=400, height=296);
 
-	logo = images/core/misc/logo.png (type=surface, x=0, y=0, width=610, height=210);
-//	logo_t        = images/core/misc/logo.png       (type=surface, x=0, y=0, width=598, height=259);
+	logo = ../images/core/misc/logo.png (type=surface, x=0, y=0, width=610, height=210);
+//	logo_t        = ../images/core/misc/logo.png       (type=surface, x=0, y=0, width=598, height=259);
 
-	loading        = images/core/misc/loading.png       (type=surface, x=0, y=0, width=175, height=66,tcol=0);
-	pingubw = images/core/misc/pingubw.png (type=surface, x=0, y=0, width=307, height=400);
+	loading        = ../images/core/misc/loading.png       (type=surface, x=0, y=0, width=175, height=66,tcol=0);
+	pingubw = ../images/core/misc/pingubw.png (type=surface, x=0, y=0, width=307, height=400);
 
-	dot_green = images/core/worldmap/dot_green.png (type=surface, x=0, y=0, width=32, height=12);
-        dot_red = images/core/worldmap/dot_red.png (type=surface, x=0, y=0, width=32, height=12);
-        dot_border = images/core/worldmap/dot_border.png (type=surface, x=0, y=0, width=44, height=22, tcol=0);
+	dot_green = ../images/core/worldmap/dot_green.png (type=surface, x=0, y=0, width=32, height=12);
+        dot_red = ../images/core/worldmap/dot_red.png (type=surface, x=0, y=0, width=32, height=12);
+        dot_border = ../images/core/worldmap/dot_border.png (type=surface, x=0, y=0, width=44, height=22, tcol=0);
 
-	smallmap_entrance = images/core/misc/smallmap_entrance.png (type=surface, x=0, y=0, width=6, height=6, tcol=0);
-	smallmap_exit     = images/core/misc/smallmap_exit.png     (type=surface, x=0, y=0, width=6, height=6, tcol=0);
+	smallmap_entrance = ../images/core/misc/smallmap_entrance.png (type=surface, x=0, y=0, width=6, height=6, tcol=0);
+	smallmap_exit     = ../images/core/misc/smallmap_exit.png     (type=surface, x=0, y=0, width=6, height=6, tcol=0);
 
-        flag0 = images/core/misc/flag0.png (type=surface, x=0, y=0, width=27, height=38);
-        flag1 = images/core/misc/flag1.png (type=surface, x=0, y=0, width=27, height=38);
-        flag2 = images/core/misc/flag2.png (type=surface, x=0, y=0, width=27, height=38);
-        flag3 = images/core/misc/flag3.png (type=surface, x=0, y=0, width=27, height=38);
+        flag0 = ../images/core/misc/flag0.png (type=surface, x=0, y=0, width=27, height=38);
+        flag1 = ../images/core/misc/flag1.png (type=surface, x=0, y=0, width=27, height=38);
+        flag2 = ../images/core/misc/flag2.png (type=surface, x=0, y=0, width=27, height=38);
+        flag3 = ../images/core/misc/flag3.png (type=surface, x=0, y=0, width=27, height=38);
 }
 
 section worldmap
 {
-	tube = images/core/worldmap/tube.png (type=surface, x=0, y=0, width=32, height=37);
+	tube = ../images/core/worldmap/tube.png (type=surface, x=0, y=0, width=32, height=37);
 
-	dot_green = images/core/worldmap/dot_green.png (type=surface, x=0, y=0, width=32, height=12);
-        dot_red = images/core/worldmap/dot_red.png (type=surface, x=0, y=0, width=32, height=12);
-        dot_border = images/core/worldmap/dot_border.png (type=surface, x=0, y=0, width=44, height=22);
-	flaggreen = images/core/worldmap/flaggreen.png (type=surface, x=0, y=0, width=27, height=38);
+	dot_green = ../images/core/worldmap/dot_green.png (type=surface, x=0, y=0, width=32, height=12);
+        dot_red = ../images/core/worldmap/dot_red.png (type=surface, x=0, y=0, width=32, height=12);
+        dot_border = ../images/core/worldmap/dot_border.png (type=surface, x=0, y=0, width=44, height=22);
+	flaggreen = ../images/core/worldmap/flaggreen.png (type=surface, x=0, y=0, width=27, height=38);
 }
 
 // EOF //

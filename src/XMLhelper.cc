@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.cc,v 1.12 2001/11/22 20:08:35 grumbel Exp $
+//  $Id: XMLhelper.cc,v 1.13 2001/11/30 20:22:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -127,7 +127,7 @@ XMLhelper::parse_int(xmlDocPtr doc, xmlNodePtr cur)
     number = StringConverter::to_int(number_str);
     free(number_str);
   } else {
-    std::cout << "XMLhelper: parse_int: Field empty" << std::endl;
+    std::cout << "Error: XMLhelper: parse_int: Field empty" << std::endl;
   }
   return number;
 }

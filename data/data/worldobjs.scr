@@ -1,18 +1,20 @@
 
-teleporter = images/worldobjs/teleporter.png    (type=surface, x=0, y=0, width=35, height=52, tcol = 0, array=6x1);
-teleporter2 = images/worldobjs/teleporter2.png (type=surface, x=0, y=0, width=64, height=64);
+teleporter = ../images/worldobjs/teleporter.png    (type=surface, x=0, y=0, width=35, height=52, tcol = 0, array=6x1);
+teleporter2 = ../images/worldobjs/teleporter2.png (type=surface, x=0, y=0, width=64, height=64);
 
-iceblock = images/worldobjs/iceblock.png (type=surface, x=0, y=0, width=25, height=10, array=6x1);
-iceblock_cmap = images/worldobjs/iceblock_cmap.png (type=surface, x=0, y=0, width=25, height=10);
+iceblock = ../images/worldobjs/iceblock.png (type=surface, x=0, y=0, width=25, height=10, array=6x1);
+iceblock_cmap = ../images/worldobjs/iceblock_cmap.png (type=surface, x=0, y=0, width=25, height=10);
 
-conveyorbelt_left   = images/worldobjs/conveyorbelt_left.png   (type=surface, x=0, y=0, width=15, height=14, array=15x1);
-conveyorbelt_middle = images/worldobjs/conveyorbelt_middle.png (type=surface, x=0, y=0, width=15, height=14, array=15x1);
-conveyorbelt_right  = images/worldobjs/conveyorbelt_right.png  (type=surface, x=0, y=0, width=15, height=14, array=15x1);
-conveyorbelt_cmap  = images/worldobjs/conveyorbelt_cmap.png  (type=surface, x=0, y=0, width=15, height=14);
+conveyorbelt_left   = ../images/worldobjs/conveyorbelt_left.png   (type=surface, x=0, y=0, width=15, height=14, array=15x1);
+conveyorbelt_middle = ../images/worldobjs/conveyorbelt_middle.png (type=surface, x=0, y=0, width=15, height=14, array=15x1);
+conveyorbelt_right  = ../images/worldobjs/conveyorbelt_right.png  (type=surface, x=0, y=0, width=15, height=14, array=15x1);
+conveyorbelt_cmap  = ../images/worldobjs/conveyorbelt_cmap.png  (type=surface, x=0, y=0, width=15, height=14);
 
-switchdoor_box    = images/worldobjs/switchdoor_box.png (type=surface, x=0, y=0, width=18, height=16);
-switchdoor_switch = images/worldobjs/switchdoor_switch.png (type=surface, x=0, y=0, width=15, height=40);
-switchdoor_tile   = images/worldobjs/switchdoor_tile.png (type=surface, x=0, y=0, width=16, height=3);
-switchdoor_tile_cmap = images/worldobjs/switchdoor_tile_cmap.png (type=surface, x=0, y=0, width=16, height=3);
+switchdoor_box    = ../images/worldobjs/switchdoor_box.png (type=surface, x=0, y=0, width=18, height=16);
+switchdoor_switch = ../images/worldobjs/switchdoor_switch.png (type=surface, x=0, y=0, width=15, height=40);
+switchdoor_tile   = ../images/worldobjs/switchdoor_tile.png (type=surface, x=0, y=0, width=16, height=3);
+switchdoor_tile_cmap = ../images/worldobjs/switchdoor_tile_cmap.png (type=surface, x=0, y=0, width=16, height=3);
+
+infobox = ../images/worldobjs/infobox.png (type=surface);
 
 // EOF //

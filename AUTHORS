@@ -120,8 +120,13 @@ Robin Hogan <R.J.Hogan@reading.ac.uk>
 Yuri Sucupira <yuri_sucupira@hotmail.com>
 	* Music
 
-giray@devlet.cc
+Giray Devlet <giray@devlet.cc>
+Cagri Coltekin <cagri@metu.edu.tr>
 	* Font reworked
 	* ToDo Manager
+	* gettext patches
+
+Philippe Descamps <pwrdesc@free.fr>
+	* Levels
 
 -- EOF --

@@ -4,7 +4,7 @@
   <global>
     <levelname lang="de">Ziemlich viel zu graben!</levelname>
     <levelname lang="en">Hard work to dig!</levelname>
-    <description lang="de">Die Pingus scheinen nun in der HÃÂ¶lle gelandet zu sein, um sie herum Lava und Fallen. Der Ausgang scheint unerreichbar.
+    <description lang="de">Die Pingus scheinen nun in der Hoelle gelandet zu sein, um sie herum Lava und Fallen. Der Ausgang scheint unerreichbar.
 Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
     <description lang="en">This level demonstrates the woodthing entrance. Its is not meant to be finished or playable.</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
@@ -15,6 +15,21 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
     <height>864</height>
   </global>
 
+  <action-list>
+    <rocketlauncher count="20"/>
+    <angel count="20"/>
+    <boarder count="20"/>
+    <superman count="20"/>
+    <basher count="20"/>
+    <basher count="20"/>
+    <blocker count="20"/>
+    <bomber count="20"/>
+    <bridger count="20"/>
+    <climber count="20"/>
+    <digger count="20"/>
+    <floater count="20"/>
+    <miner count="20"/>
+  </action-list>
 
 <background type="surface">
   <surface><resource type="datafile">
@@ -33,6 +48,11 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
   <para-y>0.1</para-y>
   <stretch-x>0</stretch-x>
   <stretch-y>0</stretch-y>
+  <position>
+    <x-pos>0</x-pos>
+    <y-pos>0</y-pos>
+    <z-pos>-100</z-pos>
+  </position>
 </background>
 
 <background type="surface">
@@ -52,46 +72,14 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
   <para-y>0.2</para-y>
   <stretch-x>0</stretch-x>
   <stretch-y>0</stretch-y>
+  <position>
+    <x-pos>0</x-pos>
+    <y-pos>0</y-pos>
+    <z-pos>-100</z-pos>
+  </position>
 </background>
 
-<background type="surface">
-  <surface><resource type="datafile">
-    <resource-datafile>textures</resource-datafile>
-  <resource-ident>Textures/nebula</resource-ident>
-  </resource></surface>
-  <color>
-    <red>0</red>
-    <green>0</green>
-    <blue>0</blue>
-    <alpha>0</alpha>
-  </color>
-  <scroll-x>1</scroll-x>
-  <scroll-y>0</scroll-y>
-  <para-x>0.2</para-x>
-  <para-y>0.2</para-y>
-  <stretch-x>0</stretch-x>
-  <stretch-y>0</stretch-y>
-</background>
-
-
-
-  <action-list>
-    <rocketlauncher count="20"/>
-    <angel count="20"/>
-    <boarder count="20"/>
-    <superman count="20"/>
-    <basher count="20"/>
-    <basher count="20"/>
-    <blocker count="20"/>
-    <bomber count="20"/>
-    <bridger count="20"/>
-    <climber count="20"/>
-    <digger count="20"/>
-    <floater count="20"/>
-    <miner count="20"/>
-  </action-list>
-
-<liquid>
+<liquid use-old-width-handling="0">
   <surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>
   <resource-ident>Liquid/slime</resource-ident>
@@ -101,7 +89,7 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
     <y-pos>791</y-pos>
     <z-pos>-100</z-pos>
   </position>
-  <width>1024</width>
+  <width>17</width>
   <speed>50</speed>
 </liquid>
 
@@ -116,21 +104,6 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
     <z-pos>0</z-pos>
   </position>
 </groundpiece>
-
-<worldobj type="liquid">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Liquid/slime</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>-37</x-pos>
-    <y-pos>807</y-pos>
-    <z-pos>100</z-pos>
-  </position>
-  <width>1024</width>
-  <speed>50</speed>
-</worldobj>
-
 
 <groundpiece type="remove">
   <surface><resource type="datafile">
@@ -1068,6 +1041,20 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
   </position>
 </groundpiece>
 
+<liquid use-old-width-handling="0">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Liquid/slime</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-37</x-pos>
+    <y-pos>807</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <width>17</width>
+  <speed>50</speed>
+</liquid>
+
 <hotspot>
   <surface><resource type="datafile">
     <resource-datafile>entrances</resource-datafile>
@@ -1109,25 +1096,6 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
   <speed>-1</speed>
   <parallax>1</parallax>
 </hotspot>
-
-
-<trap>
-  <type>spike</type>
-  <position>
-    <x-pos>690</x-pos>
-    <y-pos>478</y-pos>
-    <z-pos>100</z-pos>
-  </position>
-</trap>
-
-  <weather>
-    <type>rain</type>
-  <position>
-    <x-pos>0</x-pos>
-    <y-pos>0</y-pos>
-    <z-pos>200</z-pos>
-  </position>
-  </weather>
 
 <groundpiece type="remove">
   <surface><resource type="datafile">
@@ -1184,6 +1152,14 @@ Doch mit gezieltem Graben sollten sie noch eine Chance haben.</description>
     <z-pos>1000</z-pos>
   </position>
   </start-position>
+
+  <worldobj type="infobox">  <position>
+    <x-pos>485</x-pos>
+    <y-pos>518</y-pos>
+    <z-pos>4050</z-pos>
+  </position>
+   <info-text>Infobox Test</info-text>
+  </worldobj>
 
 </pingus-level>
 

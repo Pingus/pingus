@@ -1,4 +1,4 @@
-//  $Id: WorldObjDataFactory.cc,v 1.4 2001/08/12 23:05:21 grumbel Exp $
+//  $Id: WorldObjDataFactory.cc,v 1.5 2001/11/30 20:22:20 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 // Special Objects
 #include "worldobjs/SwitchDoor.hh"
 #include "worldobjs/IceBlock.hh"
+#include "worldobjs/InfoBox.hh"
 #include "worldobjs/ConveyorBelt.hh"
 #include "worldobjs/Teleporter.hh"
 
@@ -58,6 +59,7 @@ WorldObjDataFactory::instance ()
 
       // Special Objects 
       new WorldObjDataFactoryImpl<SwitchDoorData>("switchdoor");
+      new WorldObjDataFactoryImpl<InfoBoxData>("infobox");
       new WorldObjDataFactoryImpl<IceBlockData>("iceblock");
       new WorldObjDataFactoryImpl<ConveyorBeltData>("conveyorbelt");
       new WorldObjDataFactoryImpl<TeleporterData>("teleporter");
