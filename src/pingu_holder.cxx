@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.cxx,v 1.2 2002/06/13 14:25:12 torangan Exp $
+//  $Id: pingu_holder.cxx,v 1.3 2002/06/17 09:54:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,8 +34,8 @@ PinguHolder::~PinguHolder()
 {
   // Deleting all Pingu objects
   std::cout << "PinguHolder: Deleting pingus" << std::endl;
-  for(std::vector<Pingu*>::iterator i = all_pingus.begin(); 
-      i != all_pingus.end(); ++i) 
+  for(std::vector<Pingu*>::iterator i = all_pingus.begin();
+      i != all_pingus.end(); ++i)
     delete *i;
 }
 
@@ -66,7 +66,9 @@ PinguHolder::create_pingu (const CL_Vector& pos, int owner_id)
 void
 PinguHolder::draw_offset(int x_of, int y_of, float s)
 {
-  for(PinguIter pingu = pingus.begin(); pingu != pingus.end(); ++pingu)
+  PinguIter pingu = pingus.begin();
+  
+  while(pingu != pingus.end())
     {
       if ((*pingu)->get_status() == PS_DEAD)
 	{
@@ -74,13 +76,11 @@ PinguHolder::draw_offset(int x_of, int y_of, float s)
 	  // the correct possition, no memory hole since pingus will
 	  // keep track of the allocated Pingus
 	  pingu = pingus.erase(pingu);
-	  pingu--;
 	}
       else if ((*pingu)->get_status() == PS_EXITED) 
 	{
 	  saved_pingus++;
 	  pingu = pingus.erase(pingu);
-	  pingu--;	  
 	}
       else 
 	{
@@ -88,11 +88,14 @@ PinguHolder::draw_offset(int x_of, int y_of, float s)
 	  // all other pingus, for better visibility
 	  if (!(*pingu)->get_action())
 	    (*pingu)->draw_offset(x_of, y_of, s);
+	  
+	  // move to the next Pingu
+	  pingu++;
 	}
     }
 
   // We draw all actions here, so we have them above all others
-  for(PinguIter pingu = pingus.begin(); pingu != pingus.end(); pingu++)
+  for(pingu = pingus.begin(); pingu != pingus.end(); pingu++)
     {
       if ((*pingu)->get_action()) 
 	(*pingu)->draw_offset(x_of, y_of, s);
