@@ -6,11 +6,13 @@
     <levelname lang="de">Zu hoch und dein Pingu wird sterben...</levelname>
 
     <description lang="en">Teamwork is the way to the exit this time. You don't have enough
-Floaters to reach the exit, so just send a few and let them
-prepare the path for the rest.</description>
+                           Floaters to reach the exit, so just send a few and let them
+                           prepare the path for the rest.
+    </description>
     <description lang="de">Teamwork ist der Weg zum Ausgang dieses Mal. Du hast nicht genug
-Floater, um den Ausgang zu erreichen, also schicke ein paar
-und lass sie den Weg für den Rest vorbereiten.</description>
+                           Floater, um den Ausgang zu erreichen, also schicke ein paar
+                           und lass sie den Weg für den Rest vorbereiten.
+    </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>15</number-of-pingus>

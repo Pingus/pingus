@@ -6,11 +6,13 @@
     <levelname lang="de">Drei Lösungen, es liegt bei Dir</levelname>
 
     <description lang="en">Now that you have learned all the actions, it's time for some
-more practice, this levels presents you with at least three
-different ways to solve it, which one you pick is your choice.</description>
+                           more practice, this levels presents you with at least three
+                           different ways to solve it, which one you pick is your choice.
+    </description>
     <description lang="de">Nun da du alle Fähigkeiten kennst, ist es an der Zeit für
-etwas mehr Übung. Dieser Level bietet mindestens drei
-verschiedene Lösungswege, welchen Du nimmst ist deine Wahl.</description>
+                           etwas mehr Übung. Dieser Level bietet mindestens drei
+                           verschiedene Lösungswege, welchen Du nimmst ist deine Wahl.
+    </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>20</number-of-pingus>

@@ -1,4 +1,4 @@
-//  $Id: start_screen.cxx,v 1.14 2003/04/10 19:38:51 grumbel Exp $
+//  $Id: start_screen.cxx,v 1.15 2003/04/11 15:15:34 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,14 +41,15 @@ private:
   PLFHandle plf;
   Sprite background;
   std::string time_str;
- 
+  std::string description;
+  
 public:
   StartScreenComponent(PLFHandle plf);
   void draw(GraphicContext& gc);
   virtual ~StartScreenComponent() {}
   
 private:
-  std::string format_description(int length);
+  const std::string& format_description(int length);
 };
 
 class StartScreenOkButton : public GUI::SurfaceButton
@@ -172,17 +173,26 @@ StartScreenComponent::draw(GraphicContext& gc)
 
   if (maintainer_mode)
     gc.print_left(Fonts::chalk_small, 110, 430, _("Filename: ") + plf->get_resname());
+    
+  CL_System::sleep(30);
 }
 
-std::string
+const std::string&
 StartScreenComponent::format_description(int length)
 {
-  std::string description = System::translate(plf->get_description());
+  if (description != "")
+    return description;
+    
+  description = System::translate(plf->get_description());
 
   unsigned int pos = 0;
   while ((pos = description.find('\t', pos)) != std::string::npos)
     description.replace(pos, 1, 1, ' ');
   
+  pos = 0;
+  while ((pos = description.find("  ", pos)) != std::string::npos)
+    description.replace(pos, 2, 1, ' ');
+
   pos = 0;  
   while ((pos = description.find('\n', pos)) != std::string::npos)
     {

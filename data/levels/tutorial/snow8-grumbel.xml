@@ -6,14 +6,16 @@
     <levelname lang="de">Graben und schweben, nicht fallen und sterben</levelname>
 
     <description lang="en">Opposed to the first two levels, you have two actions available in
-this level. Your job again is simple, select an action at the panel
-on the left and apply it to the Pingus so that they will be able
-to reach the exit, make sure that not too many of them die.</description>
+                           this level. Your job again is simple, select an action at the panel
+                           on the left and apply it to the Pingus so that they will be able
+                           to reach the exit, make sure that not too many of them die.
+    </description>
     <description lang="de">Im Gegensatz zu den beiden ersten Levels, hast du hier zwei
-Fähigkeiten zur verfügung. Deine Aufgabe ist wieder einfach, wähle
-eine Fähigkeit in der Liste links und wende sie auf die Pingus an,
-damit sie den Ausgang erreichen können. Stelle sicher das nicht zu
-viele von ihnen sterben.</description>
+                           Fähigkeiten zur verfügung. Deine Aufgabe ist wieder einfach, wähle
+                           eine Fähigkeit in der Liste links und wende sie auf die Pingus an,
+                           damit sie den Ausgang erreichen können. Stelle sicher das nicht zu
+                           viele von ihnen sterben.
+    </description>
 
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>20</number-of-pingus>

@@ -32,7 +32,7 @@ msgstr "-Idee"
 
 #: src/credits.cxx:50
 msgid "-Maintaining"
-msgstr ""
+msgstr "-Verwaltung"
 
 #: src/credits.cxx:54
 msgid "-Programming"
@@ -650,7 +650,7 @@ msgstr "Levels"
 
 #: src/menu_button.cxx:409
 msgid "..:: Multiplayer Modes... experimental stuff ::.."
-msgstr "..:: Mehrspieler Modus ::.."
+msgstr "..:: Mehrspieler Modus ::.. Experimentelles Zeug ::.."
 
 #: src/menu_button.cxx:411
 msgid "Multi"
@@ -727,16 +727,14 @@ msgid " [OPTIONS]... [LEVELFILE]"
 msgstr "[OPTIONEN]... [LEVELDATEI]"
 
 #: src/pingus_main.cxx:492
-#, fuzzy
 msgid "Options:"
 msgstr "Einstellungen"
 
 #: src/pingus_main.cxx:494
 msgid "Set the resolution for pingus (default: 800x600)"
-msgstr ""
+msgstr "Setze die Auflösung für Pingus (Standard: 800x600)"
 
 #: src/pingus_main.cxx:495
-#, fuzzy
 msgid "Displays this help"
 msgstr "Hilfe Anzeigen"
 
@@ -758,7 +756,7 @@ msgstr "Pingus im Vollbild starten"
 
 #: src/pingus_main.cxx:506 src/pingus_main.cxx:507
 msgid "FILE      "
-msgstr ""
+msgstr "Datei     "
 
 #: src/pingus_main.cxx:506
 msgid "Load a custom level from FILE"
@@ -770,20 +768,19 @@ msgstr "Eine Weltkarte aus DATEI laden"
 
 #: src/pingus_main.cxx:508
 msgid "Print some more messages to stdout, can be set"
-msgstr ""
+msgstr "Gibt mehr Nachrichten auf stdout aus, kann"
 
 #: src/pingus_main.cxx:509
 msgid "multible times to increase verbosity"
-msgstr ""
+msgstr "mehrmals gesetzt werden um die Genauigkeit zu erhöhen"
 
 #: src/pingus_main.cxx:510
 msgid "Prints version number and exit"
 msgstr "Versions ausgeben und beenden"
 
 #: src/pingus_main.cxx:511
-#, fuzzy
 msgid "Launch the Level editor (experimental)"
-msgstr "..:: Erstelle deinen Eigenen Level ::.."
+msgstr "Level Editor starten (Experimentell)"
 
 #: src/pingus_main.cxx:512
 msgid "Disable automatic scrolling"
@@ -795,7 +792,7 @@ msgstr "~/.pingus/config nicht einlesen"
 
 #: src/pingus_main.cxx:518
 msgid "FILE       "
-msgstr ""
+msgstr "Datei      "
 
 #: src/pingus_main.cxx:518
 msgid "Read config from FILE (default: ~/.pingus/config)"
@@ -803,85 +800,83 @@ msgstr "Konfiguration aus DATEI lesen"
 
 #: src/pingus_main.cxx:519
 msgid "reduce CPU usage, might speed up the game on slower machines"
-msgstr ""
+msgstr "reduziere CPU Belastung, könnte das Spiel auf langsamen Rechnern beschleunigen"
 
 #: src/pingus_main.cxx:520
 msgid "Debugging and experimental stuff:"
-msgstr ""
+msgstr "Debug und Experimentelles Zeug"
 
 #: src/pingus_main.cxx:521
 msgid "Enables some features, only interesting programmers"
-msgstr ""
+msgstr "Aktiviere einige Funktionen, nur für Programmierer"
 
 #: src/pingus_main.cxx:522
 msgid "Enable the output of debugging infos, possible"
-msgstr ""
+msgstr "Aktiviere die Ausgabe von Debug Informationen, mögliche"
 
 #: src/pingus_main.cxx:523
 msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
-msgstr ""
+msgstr "Optionen sind tiles, gametime, actions, sound, resources, gui,"
 
 #: src/pingus_main.cxx:524
 msgid "input"
-msgstr ""
+msgstr "input"
 
 #: src/pingus_main.cxx:525
 msgid "Skip at least N frames, larger values speed the game up"
-msgstr ""
+msgstr "Überspringe mindestens N Bilder, größere Werte erhöhen die Geschwindigkeit"
 
 #: src/pingus_main.cxx:526
 msgid "Skip at most N frames"
-msgstr ""
+msgstr "Überspringe maximal N Bilder"
 
 #: src/pingus_main.cxx:527
 msgid "Set both min and max frameskip to N"
-msgstr ""
+msgstr "Setze sowohl minimalen als auch maximalen Bildsprung auf N"
 
 #: src/pingus_main.cxx:528
 msgid "Set the game speed (0=fastest, >0=slower)"
-msgstr ""
+msgstr "Setze die Geschwindigkeit (0=schnellste, >0=langsamer)"
 
 #: src/pingus_main.cxx:529
 msgid "Prints the fps to stdout"
-msgstr ""
+msgstr "Schreibe die fps auf stdout"
 
 #: src/pingus_main.cxx:530
 msgid "Set the size of the map tiles (default: 32)"
-msgstr ""
+msgstr "Setze die Größe der Kartenteile (Standard: 32)"
 
 #: src/pingus_main.cxx:531
 msgid "Disable some cpu intensive features"
-msgstr ""
+msgstr "Deaktivere einige CPU intensive Funktionen"
 
 #: src/pingus_main.cxx:532
 msgid "Reduces the CPU usage by issuing sleep()"
-msgstr ""
+msgstr "Reduziert die CPU Belastung durch Verwendung von sleep()"
 
 #: src/pingus_main.cxx:535
 msgid "FILE     "
-msgstr ""
+msgstr "Datei    "
 
 #: src/pingus_main.cxx:535
 msgid "Plays a demo session from FILE"
-msgstr ""
+msgstr "Spielt eine Demo Sitzung aus FILE"
 
 #: src/pingus_main.cxx:537
 msgid "Record demos for each played level"
-msgstr ""
+msgstr "Nehme Demos für jeden gespielten Level auf"
 
 #: src/pingus_main.cxx:540
-#, fuzzy
 msgid "Sound:"
 msgstr "Sound"
 
 #: src/pingus_main.cxx:541
-#, fuzzy
 msgid "Enable sound"
-msgstr "aktiviert"
+msgstr "Sound aktivieren"
 
 #: src/pingus_main.cxx:542
 msgid "Enable music"
-msgstr ""
+msgstr "Musik Aktivieren"
 
 #: src/pingus_main.cxx:651
 msgid "clanVorbis support:           ok"
@@ -1277,13 +1272,11 @@ msgstr "Gefunden: "
 
 #: src/system.cxx:264
 msgid "Environment variable $HOME not set, fix that and start again."
-msgstr ""
-"Umgebungs Variable $HOME ist nicht gesetzt. Setze sie und starte erneut."
+msgstr "Umgebungs Variable $HOME ist nicht gesetzt. Setze sie und starte erneut."
 
 #: src/system.cxx:426
 msgid "System::checksum: Couldn't open file: "
-msgstr ""
-"System::checksum: Datei oder Verzeichnis konnte nicht geoeffnet werden: "
+msgstr "System::checksum: Datei konnte nicht geoeffnet werden: "
 
 #: src/system.cxx:436
 msgid "System:checksum: file read error"
@@ -1315,4 +1308,4 @@ msgstr "Worldmap: Datei nicht gefunden: "
 
 #: src/worldmap/worldmap.cxx:246
 msgid "...walking..."
-msgstr "Ladevorgang läuft..."
+msgstr "...laufe..."

@@ -6,15 +6,18 @@
     <levelname lang="de">Eingang hoch, Ausgang tief</levelname>
 
     <description lang="en">If you don't have enough floaters to bring all Pingus down to
-the exit, you have to find other ways to guide them down. All
-the stuff you need in this level, you should have already
-learned in previous levels, so this shouldn't be to much of a
-problem for you.</description>
+                           the exit, you have to find other ways to guide them down. All
+                           the stuff you need in this level, you should have already
+                           learned in previous levels, so this shouldn't be to much of a
+                           problem for you.
+    </description>
     <description lang="de">Wenn du nicht genug Float hast, um alle Pingus zum Ausgang
-hinunter zu bringen, dann musst Du andere Wege finden sie nach
-unten zu führen. Alles was Du in diesem Level brauchst, solltest
-du bereits in vorangegangen Levels gelernt haben. Von daher
-sollte dies kein sonderliches Problem darstellen.</description>
+                           hinunter zu bringen, dann musst Du andere Wege finden sie nach
+                           unten zu führen. Alles was Du in diesem Level brauchst, solltest
+                           du bereits in vorangegangen Levels gelernt haben. Von daher
+                           sollte dies kein sonderliches Problem darstellen.
+    </description>
+
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>30</number-of-pingus>
     <number-to-save>20</number-to-save>

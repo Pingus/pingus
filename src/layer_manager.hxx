@@ -1,4 +1,4 @@
-//  $Id: layer_manager.hxx,v 1.8 2003/04/11 01:21:21 grumbel Exp $
+//  $Id: layer_manager.hxx,v 1.9 2003/04/11 15:15:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,15 +33,15 @@ private:
   private:
     CL_Surface sur;
 
-    float x_offset;
-    float y_offset;
-    
-    float x_update;
-    float y_update;
-
     float x_pos;
     float y_pos;
 
+    float x_update;
+    float y_update;
+
+    float x_offset;
+    float y_offset;
+    
   public:
     Layer () 
       : x_pos(0), y_pos(0),
@@ -52,8 +52,8 @@ private:
     Layer (const CL_Surface& arg_sur, float x_o, float y_o, float x_u, float y_u)
       : sur(arg_sur),
         x_pos(0), y_pos(0),
-        x_offset(x_o), y_offset(y_o),
-        x_update(x_u), y_update(y_u)
+        x_update(x_u), y_update(y_u),
+        x_offset(x_o), y_offset(y_o)
     {}
     
     void draw (GraphicContext& gc) 

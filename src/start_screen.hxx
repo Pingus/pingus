@@ -1,4 +1,4 @@
-//  $Id: start_screen.hxx,v 1.3 2003/04/09 20:20:20 torangan Exp $
+//  $Id: start_screen.hxx,v 1.4 2003/04/11 15:15:34 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,8 @@
 class StartScreen : public GUIScreen
 {
 private:
-  PLFHandle plf;
+  PLFHandle   plf;
+  
 public:
   StartScreen(PLFHandle plf);
   ~StartScreen();
