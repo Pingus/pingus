@@ -1,6 +1,6 @@
 section Window
 {
-	font = ../images/gui/font_black.tga(
+	font = ../images/gui/font_white.tga(
 		type=font,
 		trans_limit=0.05,
 		x=0, y=0,
