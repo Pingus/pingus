@@ -1,7 +1,7 @@
-//  $Id: worldobj_data.cxx,v 1.1 2002/06/12 19:09:38 grumbel Exp $
-//
+//  $Id: file_reader.hxx,v 1.1 2002/12/20 18:45:41 grumbel Exp $
+// 
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -12,17 +12,29 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+// 
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-//#include "pingus_error.hxx"
-//#include "trap_data.hxx"
-//#include "worldobjs/teleporter.hxx"
-//#include "worldobjs/ice_block.hxx"
-//#include "worldobjs/info_box.hxx"
-//#include "worldobjs/conveyor_belt.hxx"
-//#include "worldobjs/switch_door.hxx"
+#ifndef HEADER_PINGUS_FILE_READER_HXX
+#define HEADER_PINGUS_FILE_READER_HXX
+
+#include <string>
+#include "vector.hxx"
+
+/** Interface to read name/value pairs out of some kind of file or
+    structure */
+class FileReader
+{
+public:
+  virtual bool read_int   (const char* name, int*) =0;
+  virtual bool read_float (const char* name, float*) =0;
+  virtual bool read_bool  (const char* name, bool*) =0;
+  virtual bool read_string(const char* name, std::string*) =0;
+  virtual bool read_vector(const char* name, Vector*) =0;
+};
+
+#endif
 
 /* EOF */

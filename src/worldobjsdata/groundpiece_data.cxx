@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.cxx,v 1.7 2002/09/28 19:31:06 torangan Exp $
+//  $Id: groundpiece_data.cxx,v 1.8 2002/12/20 18:45:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,8 @@
 #include "../editorobjs/groundpiece_obj.hxx"
 #include "../worldobjs/groundpiece.hxx"
 #include "../xml_helper.hxx"
+#include "../file_reader.hxx"
+#include "../file_writer.hxx"
 #include "groundpiece_data.hxx"
 
 namespace WorldObjsData {
@@ -121,6 +123,30 @@ GroundpieceData::write_xml(std::ostream& xml)
   XMLhelper::write_desc_xml(xml, desc);
   XMLhelper::write_vector_xml(xml, pos);
   xml << "</worldobj>\n" << std::endl;
+}
+
+void 
+GroundpieceData::serialize(FileWriter& writer)
+{
+  writer.begin_section("groundpiece");
+  writer.write_string("type", Groundtype::type_to_string (gptype));
+  //writer.write_desc  ("desc", desc);
+  writer.write_vector("pos",  pos);
+  writer.end_section();
+}
+
+void 
+GroundpieceData::deserialize(FileReader& reader)
+{
+  std::string gptype_str = "default value";
+
+  // Factory in the Reader ensures that we are in the 'groundpiece'
+  // section
+  reader.read_string("type", &gptype_str);
+  //reader.read_desc  ("desc", &desc);
+  reader.read_vector("pos",  &pos);
+
+  gptype = Groundtype::string_to_type (gptype_str);
 }
 
 } // namespace WorldObjsData
