@@ -63,4 +63,20 @@ Cyrillic (ISO-8859-5) might also be needed at some point. See:
  * http://czyborra.com/charsets/iso8859.html
 
 
+CVS Usage
+~~~~~~~~~
+
+$ cvs co -r pingus_0_6 # old
+$ cvs co -r HEAD # current
+
+Merging changes:
+
+Edit pingus_0_6, commit as normal. Then goto HEAD and do:
+
+$ cvs update -kk -j pingus_0_6_merged_to_head -j pingus_0_6
+
+finally go back to pingus_0_6 and do:
+
+$ cvs tag pingus_0_6_merged_to_head
+
 # EOF #
