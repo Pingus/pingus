@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-11 19:43+0100\n"
+"POT-Creation-Date: 2005-02-26 23:07+0100\n"
 "PO-Revision-Date: 2003-08-21 18:29+0300\n"
 "Last-Translator: Jarno Elonen <elonen@iki.fi>\n"
 "Language-Team: Finnish <elonen@iki.fi>\n"
@@ -102,384 +102,6 @@ msgstr "_Kiitos sinulle"
 msgid "_playing!"
 msgstr "_pelaamisesta!"
 
-#: src/editor/editor_event.cxx:589
-msgid "Enter filename to save as:"
-msgstr "Tallennettavan tiedoston nimi:"
-
-#: src/editor/editor_help_screen.cxx:43
-msgid "Editor Helpscreen (hide with F1)"
-msgstr "Kenttäeditorin ohjeruutu (F1 piilottaa)"
-
-#: src/editor/editor_help_screen.cxx:51
-msgid "F1 - show/hide this help screen"
-msgstr "F1 - piilota/näytä tämä ohjeruutu"
-
-#: src/editor/editor_help_screen.cxx:52
-msgid "F2 - launch level building tutorial"
-msgstr "F2 - näytä kentänrakennusopas"
-
-#: src/editor/editor_help_screen.cxx:53
-msgid "F3 - toggle background color"
-msgstr "F3 - taustaväri päälle/pois"
-
-#: src/editor/editor_help_screen.cxx:54
-msgid "F4 - play/test the level"
-msgstr "F4 - pelaa/testaa kenttää"
-
-#: src/editor/editor_help_screen.cxx:55
-msgid "F5 - load a level"
-msgstr "F5 - lataa kenttä"
-
-#: src/editor/editor_help_screen.cxx:56
-msgid "F6 - save this level"
-msgstr "F6 - tallenna kenttä"
-
-#: src/editor/editor_help_screen.cxx:57
-msgid "F7 - [unset]"
-msgstr "F7 - [määrittämätön]"
-
-#: src/editor/editor_help_screen.cxx:58
-msgid "F8 - quick save/backup save?!"
-msgstr "F8 - pikatallennus/varakopiointi?!"
-
-#: src/editor/editor_help_screen.cxx:59
-msgid "F9 - change level width and height"
-msgstr "F9 - muuta kentän leveyttä ja korkeutta"
-
-#: src/editor/editor_help_screen.cxx:60
-msgid "F10 - [unset]"
-msgstr "F10 - [määrittämätön]"
-
-#: src/editor/editor_help_screen.cxx:61
-msgid "F11 - toggle fps counter"
-msgstr "F11 - näytä/piilota fps-mittari"
-
-#: src/editor/editor_help_screen.cxx:62
-msgid "F12 - make screenshot"
-msgstr "F12 - ruutukappaus"
-
-#: src/editor/editor_help_screen.cxx:66
-msgid "Home - increase object size"
-msgstr "Home - suurenna objektia"
-
-#: src/editor/editor_help_screen.cxx:67
-msgid "End  - decrease object size"
-msgstr "End  - pienennä objektia"
-
-#: src/editor/editor_help_screen.cxx:68
-msgid "Cursor Keys - Move object"
-msgstr "Nuolinäppäimet - Liikuta objektia"
-
-#: src/editor/editor_help_screen.cxx:69
-msgid "Shift 'Cursor Keys' - Move objects fast "
-msgstr "Vaihto + Nuolinäppäimet - Liikuta objektia nopeammin"
-
-#: src/editor/editor_help_screen.cxx:70
-msgid "PageUp   - level object up"
-msgstr "PageUp   - nosta objekti tasoa ylemmäksi"
-
-#: src/editor/editor_help_screen.cxx:71
-msgid "PageDown - level object down"
-msgstr "PageDown - laskea objektia tasoa alemmaksi"
-
-#: src/editor/editor_help_screen.cxx:72
-msgid "Shift PageUp   - increase objects z-pos by 50"
-msgstr "Vaihto + PageUp   - lisää objektin z-tasoa 50:llä"
-
-#: src/editor/editor_help_screen.cxx:73
-msgid "Shift PageDown - decrease objects z-pos by 50"
-msgstr "Vaihto + PageDown - vähennä objektin z-tasoa 50:llä"
-
-#: src/editor/editor_help_screen.cxx:74
-msgid "Enter - Set default zoom (1:1)"
-msgstr "Enter - Palauta oletus-zoom (1:1)"
-
-#: src/editor/editor_help_screen.cxx:75
-msgid "d - duplicate object"
-msgstr "d - monista objekti"
-
-#: src/editor/editor_help_screen.cxx:76
-msgid "a - mark all objects"
-msgstr "a - valitse kaikki objektit"
-
-#: src/editor/editor_help_screen.cxx:77
-msgid "shift leftmouseclick - add object to selection"
-msgstr "vaihto + vasen hiiren nappi - lisää objekti valintaan"
-
-#: src/editor/editor_help_screen.cxx:78
-msgid "leftmouseclick - select object"
-msgstr "vasen hiiren nappi - valitse objekti"
-
-#: src/editor/editor_help_screen.cxx:79
-msgid "Insert - insert new object"
-msgstr "Insert - lisää uusi objekti"
-
-#: src/editor/editor_help_screen.cxx:80
-msgid "Remove - remove selected object"
-msgstr "Delete - poista valittu objekti"
-
-#: src/editor/editor_help_screen.cxx:81
-msgid "g - ungroup/group current selection"
-msgstr "g - ryhmitä valinta/pura valittu ryhmitys"
-
-#: src/editor/editor_help_screen.cxx:82
-msgid "Ctrl PageUp   - increase objects z-pos by 1"
-msgstr "Ctrl + PageUp   - lisää objektin z-tasoa yhdellä"
-
-#: src/editor/editor_help_screen.cxx:83
-msgid "Ctrl PageDown - decrease objects z-pos by 1"
-msgstr "Ctrl + PageDown - vähennä objektin z-tasoa yhdellä"
-
-#: src/editor/editor_help_screen.cxx:89
-#, fuzzy
-msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.pingus"
-msgstr "Nimeämiskäytäntö: <KENTÄNNIMI><NUMERO>-<TEKIJÄ>.plf"
-
-#: src/editor/editor_help_screen.cxx:91
-msgid ""
-"When you have created a level and want to have it in the next Pingus "
-"release,\n"
-"please mail it to pingus-devel@nongnu.org."
-msgstr ""
-"Jos haluat tekemäsi kentän mukaan Pingusin seuraavaan versioon,\n"
-"lähetä se osoitteeseen pingus-devel@nongnu.org."
-
-#: src/editor/object_selector.cxx:105
-msgid "1 - guillotine"
-msgstr "1 - giljotiini"
-
-#: src/editor/object_selector.cxx:106
-msgid "2 - hammer"
-msgstr "2 - vasara"
-
-#: src/editor/object_selector.cxx:107
-msgid "3 - spike"
-msgstr "3 - piikki"
-
-#: src/editor/object_selector.cxx:108
-msgid "4 - laser_exit"
-msgstr "4 - laser-uloskäynti"
-
-#: src/editor/object_selector.cxx:109
-msgid "5 - fake_exit"
-msgstr "5 - vale-uloskäynti"
-
-#: src/editor/object_selector.cxx:110
-msgid "6 - smasher"
-msgstr "6 - murskain"
-
-#: src/editor/object_selector.cxx:111
-msgid "7 - bumper"
-msgstr "7 - katapultti"
-
-#: src/editor/object_selector.cxx:185
-msgid "Select a WorldObj"
-msgstr "Valitse maailmaobjekti"
-
-#: src/editor/object_selector.cxx:186
-msgid "1 - teleporter"
-msgstr "1 - teleportti"
-
-#: src/editor/object_selector.cxx:187
-msgid "2 - switch and door"
-msgstr "2 - kytkin ja ovi"
-
-#: src/editor/object_selector.cxx:188
-msgid "3 - ConveyorBelt"
-msgstr "3 - Liukuhihna"
-
-#: src/editor/object_selector.cxx:189
-msgid "4 - IceBlock"
-msgstr "4 - Jääpala"
-
-#: src/editor/object_selector.cxx:190
-msgid "5 - InfoBox"
-msgstr "5 - Tietolaatikko"
-
-#: src/editor/object_selector.cxx:231
-msgid "Select a weather"
-msgstr "Valitse sää"
-
-#: src/editor/object_selector.cxx:232
-msgid "1 - snow"
-msgstr "1 - lumisade"
-
-#: src/editor/object_selector.cxx:233
-msgid "2 - rain"
-msgstr "2 - sade"
-
-#: src/editor/object_selector.cxx:264
-msgid "Select an entrance"
-msgstr "Valitse sisäänkäynti"
-
-#: src/editor/object_selector.cxx:265
-msgid "1 - generic"
-msgstr "1 - yleinen"
-
-#: src/editor/object_selector.cxx:266
-msgid "2 - woodthing"
-msgstr "2 - puinen"
-
-#: src/editor/object_selector.cxx:267
-msgid "3 - cloud"
-msgstr "3 - pilvi"
-
-#: src/editor/object_selector.cxx:268
-msgid "h - entrance surface (hotspot)"
-msgstr "h - taustasisäänkäynti (hotspot)"
-
-#: src/editor/object_selector.cxx:343
-msgid "What object type do you want?"
-msgstr "Minkä tyyppisen objektin haluat?"
-
-#: src/editor/object_selector.cxx:344 src/editor/object_selector.cxx:400
-msgid "h - Hotspot"
-msgstr "h - Hotspot"
-
-#: src/editor/object_selector.cxx:345
-msgid "g - Groundpiece (ground) [not implemented]"
-msgstr "g - Maapala [ei toteutettu]"
-
-#: src/editor/object_selector.cxx:394 src/editor/object_selector.cxx:562
-msgid "Which object do you want?"
-msgstr "Minkä objektin haluat?"
-
-#: src/editor/object_selector.cxx:395
-msgid "g - Groundpiece (ground)"
-msgstr "g - Maapala (maa)"
-
-#: src/editor/object_selector.cxx:396
-msgid "s - Groundpiece (solid)"
-msgstr "s - Maapala (kiinteä)"
-
-#: src/editor/object_selector.cxx:397
-msgid "b - Groundpiece (bridge)"
-msgstr "b - Maapala (silta)"
-
-#: src/editor/object_selector.cxx:398
-msgid "n - Groundpiece (transparent)"
-msgstr "n - Maapala (läpinäkyvä)"
-
-#: src/editor/object_selector.cxx:399
-msgid "r - Groundpiece (remove)"
-msgstr "r - Maapala ('poista')"
-
-#: src/editor/object_selector.cxx:401
-msgid "e - Entrance"
-msgstr "e - Sisäänkäynti"
-
-#: src/editor/object_selector.cxx:402
-msgid "x - Exit"
-msgstr "x - Uloskäynti"
-
-#: src/editor/object_selector.cxx:403
-msgid "l - Liquid"
-msgstr "l - Neste"
-
-#: src/editor/object_selector.cxx:404
-msgid "w - Weather"
-msgstr "w - Sää"
-
-#: src/editor/object_selector.cxx:405
-msgid "t - Traps"
-msgstr "t - Ansat"
-
-#: src/editor/object_selector.cxx:406
-msgid "o - WorldObject"
-msgstr "o - Maailmaobjekti"
-
-#: src/editor/object_selector.cxx:407
-msgid "z - Background"
-msgstr "z - Tausta"
-
-#: src/editor/object_selector.cxx:408
-msgid "p - Prefab (ObjectGroup)"
-msgstr "p - Valmispalat (Objektiryhmä)"
-
-#: src/editor/object_selector.cxx:409
-msgid "f - something from file (~/.pingus/images/)"
-msgstr "f - jotain tiedostosta (~/.pingus/images/)"
-
-#: src/editor/object_selector.cxx:498
-msgid "Which prefab do you want?"
-msgstr "Minkä valmispalan haluat?"
-
-#: src/editor/object_selector.cxx:563
-msgid "1 - Surface Background"
-msgstr "1 - Taustakuva"
-
-#: src/editor/object_selector.cxx:564
-msgid "2 - Solid Color Background"
-msgstr "2 - Tasaisen värinen tausta"
-
-#: src/editor/object_selector.cxx:565
-msgid "3 - Starfield Background"
-msgstr "3 - Animoitu tähtitausta"
-
-#: src/editor/object_selector.cxx:566
-msgid "4 - Thunderstorm Background"
-msgstr "4 - Ukkosmyrsytausta"
-
-#: src/editor/panel_icons.cxx:33
-msgid "Load a level (F5)"
-msgstr "Lataa kenttä (F5)"
-
-#: src/editor/panel_icons.cxx:46
-msgid "Exit the editor (Escape)"
-msgstr "Poistu editorista (Esc)"
-
-#: src/editor/panel_icons.cxx:58
-msgid "Save this level (F6)"
-msgstr "Tallenna kenttä (F6)"
-
-#: src/editor/panel_icons.cxx:70
-msgid "Delete marked objects (delete)"
-msgstr "Poista valitut objektit (delete)"
-
-#: src/editor/panel_icons.cxx:82
-msgid "Duplicate current object (d)"
-msgstr "Monista objekti (d)"
-
-#: src/editor/panel_icons.cxx:94
-msgid "Edit Level Properties"
-msgstr "Muokkaa kentän asetuksia"
-
-#: src/editor/panel_icons.cxx:106
-msgid "Edit Object Properties"
-msgstr "Muokkaa objektin asetuksia"
-
-#: src/editor/panel_icons.cxx:118
-msgid "Start the level and test it (F4)"
-msgstr "Kokeile kenttää (F4)"
-
-#: src/editor/panel_icons.cxx:130
-msgid "Create a new level from scratch"
-msgstr "Luo uusi kenttä tyhjästä"
-
-#: src/editor/panel_icons.cxx:142
-msgid "Insert an object (Insert)"
-msgstr "Lisää objekti (Insert)"
-
-#: src/editor/panel_icons.cxx:154
-msgid "Zoom into a region"
-msgstr "Zoomaa valittuun alueeseen"
-
-#: src/editor/panel_icons.cxx:166
-msgid "Zoom in"
-msgstr "Zoomaa sisään"
-
-#: src/editor/panel_icons.cxx:179
-msgid "Zoom out"
-msgstr "Zoomaa ulos"
-
-#: src/editor/panel_icons.cxx:192
-msgid "Setup Number of Actions"
-msgstr "Säädä toimintojen määriä"
-
-#: src/editor/panel_icons.cxx:204
-msgid "Display Help Screen (F1)"
-msgstr "Näytä ohjeruutu (F1)"
-
 #: src/exit_menu.cxx:48
 msgid "Yes"
 msgstr "Kyllä"
@@ -500,115 +122,6 @@ msgstr "tuntematon"
 #, c-format
 msgid "unlimited"
 msgstr "rajaton"
-
-#: src/level_desc.cxx:74
-msgid "Designed by "
-msgstr "Suunnitellut"
-
-#: src/level_desc.cxx:79
-#, c-format
-msgid "Pingus to Save: %d"
-msgstr "Pelastettavia pinguja: %d"
-
-#: src/level_desc.cxx:81
-#, c-format
-msgid "Number of Pingus: %d"
-msgstr "Pinguja yhteensä: %d"
-
-#: src/level_desc.cxx:86
-msgid "Loading..."
-msgstr "Ladataan..."
-
-#: src/level_desc.cxx:89
-msgid "Loading finished. Press a mouse button to start the level"
-msgstr "Lataus valmis. Aloita kenttä painamalla hiiren nappia."
-
-#: src/level_result.cxx:61
-msgid "Results:"
-msgstr "Tulokset:"
-
-#: src/level_result.cxx:67
-#, c-format
-msgid "Pingus saved:   %3d/%3d"
-msgstr "Pelastettuja:   %3d/%3d"
-
-#: src/level_result.cxx:72
-#, c-format
-msgid "Pingus died:  %3d/%3d"
-msgstr "Kuolleita:  %3d/%3d"
-
-#: src/level_result.cxx:88
-msgid "Press button to continue..."
-msgstr "Paina nappia jatkaaksesi..."
-
-#: src/level_result.cxx:102
-msgid ""
-"As many Pingus escaped as entered the level. That's going to be hard to "
-"beat.... unless this game becomes pornographic."
-msgstr ""
-"Yhtä monta pingua selvisi kuin meni sisään. Siitä on vaikea panna "
-"paremmaksi.... ellei peli sitten muutu pornografiseksi."
-
-#: src/level_result.cxx:104
-msgid "Very impressive indeed."
-msgstr "Hyvin vaikuttavaa, etten sanoisi."
-
-#: src/level_result.cxx:106
-msgid "Good work. Still room for improvement though."
-msgstr "Hyvää työtä, tosin parantamisen varaakin vielä on."
-
-#: src/level_result.cxx:108
-msgid "Not too shabby, not too shabby at all."
-msgstr "Eipä yhtään hullummin."
-
-#: src/level_result.cxx:110
-msgid ""
-"That was OK, but Pingu life insurance premiums have just gotten more "
-"expensive."
-msgstr ""
-"Ihan kohtuullinen suoritus, mutta pingujen henkivakuutukset kallistuivat "
-"juuri yllättävästi..."
-
-#: src/level_result.cxx:112
-msgid "Maybe this level calls for a different strategy."
-msgstr "Ehkä kenttä ratkeaisi paremmin jollain toisella strategialla."
-
-#: src/level_result.cxx:114
-msgid "Exactly half. Are you saving only the female ones?"
-msgstr "Tasan puolet. Pelastatko vain naaraat vai mistä on kyse?"
-
-#: src/level_result.cxx:116
-msgid "If I were a Pingu, I never would have left that entrance."
-msgstr "Jos olisin pingu, en olisi ikinä päässyt uloskäynnille saakka."
-
-#: src/level_result.cxx:118
-msgid "Maybe you would feel more at home playing Quake."
-msgstr "Ehkä Quake sopisi sinulle paremmin."
-
-#: src/level_result.cxx:120
-msgid ""
-"Maybe this level calls for a different strategy. Like attempting to save "
-"them, for example."
-msgstr ""
-"Kenttä ratkeaisi ehkä paremmin jollain toisella strategialla - vaikkapa edes "
-"yrittämällä pelastaa ne?"
-
-#: src/level_result.cxx:122
-msgid "Ever considered a career as a Pingu exterminator?"
-msgstr "Oletko harkinnut uraa pinguntorjujana?"
-
-#: src/level_result.cxx:124
-msgid "You missed one! What's your excuse!?"
-msgstr "Yksi jäi listimättä! Mikä on tekosyysi!?"
-
-#: src/level_result.cxx:126
-msgid "Please reassure me that you hit the Armageddon button."
-msgstr "Painoit varmaan joukkotuhonappia, eikö? Sovitaan niin, jooko?"
-
-#: src/level_result.cxx:128
-msgid "You've got a negative save/total value, something is buggy."
-msgstr ""
-"Onnistuit saamaan negatiivisen tuloksen, pelissä on luultavasti jotain vikaa."
 
 #: src/pingu_enums.cxx:35
 msgid "Angel"
@@ -698,395 +211,380 @@ msgstr "Odottaja"
 msgid "Walker"
 msgstr "Kävelijä"
 
-#: src/pingus_counter.cxx:52
+#: src/pingus_counter.cxx:51
 #, c-format
 msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
 msgstr "Tullut:%3d/%-3d   Irti:%3d   Pelastettu:%3d/%-3d"
 
-#: src/pingus_main.cxx:91
+#: src/pingus_main.cxx:85
 msgid "| segfault_handler: catched a SIGSEGV."
 msgstr "| segfault_handler: catched a SIGSEGV."
 
-#: src/pingus_main.cxx:93
+#: src/pingus_main.cxx:87
 msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
 msgstr ""
 "| Hups, Pingus juuri kaatui, onnittelut ohjelmointivirheen löytämisestä."
 
-#: src/pingus_main.cxx:94
+#: src/pingus_main.cxx:88
 msgid ""
 "| Please write a little bug report to <grumbel@gmx.de>, include informations"
 msgstr ""
 "| Ole hyvä ja kirjoita lyhyt, englanninkielinen virheraportti osoitteeseen "
 "<grumbel@gmx.de> ja liitä mukaan tieto siitä,"
 
-#: src/pingus_main.cxx:95
+#: src/pingus_main.cxx:89
 msgid "| where exacly the SIGSEGV occured and how to reproduce it."
 msgstr "| missä SIGSEGV tarkalleen tapahtui ja miten sen saa aikaan."
 
-#: src/pingus_main.cxx:96
+#: src/pingus_main.cxx:90
 msgid "| Also try include a backtrace, you can get it like this:"
 msgstr "| Liitä mukaan myös 'backtrace', jonka saa näin:"
 
-#: src/pingus_main.cxx:102
+#: src/pingus_main.cxx:96
 msgid "| If that doesn't work, try this:"
 msgstr "| Ellei se toimi, kokeile tätä:"
 
-#: src/pingus_main.cxx:106
+#: src/pingus_main.cxx:100
 msgid "| [play until it crashes again]"
 msgstr "| [pelaa kunnes se kaatuu uudestaan]"
 
-#: src/pingus_main.cxx:114
+#: src/pingus_main.cxx:108
 msgid "| Warning: Pingus recieved a SIGINT, exiting now."
 msgstr "| Varoitus: Pingus vastaanotti SIGINT-signaalin, peli lopetetaan."
 
-#: src/pingus_main.cxx:304
+#: src/pingus_main.cxx:292
 msgid "Warning: Larger resolution than 800x600 will result in visual problems"
 msgstr "Varoitus: Suurempi ruutukoko kuin 800x600 aiheuttaa grafiikkaongelmia"
 
-#: src/pingus_main.cxx:495
+#: src/pingus_main.cxx:483
 msgid "Unknow char: "
 msgstr "Tuntematon merkki: "
 
-#: src/pingus_main.cxx:496
+#: src/pingus_main.cxx:484
 msgid "Usage: "
 msgstr "Käyttö: "
 
-#: src/pingus_main.cxx:496
+#: src/pingus_main.cxx:484
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr " [VALITSIMET]... [KENTTÄTIEDOSTO]"
 
-#: src/pingus_main.cxx:499
+#: src/pingus_main.cxx:487
 msgid "Options:"
 msgstr "Valitsimet:"
 
-#: src/pingus_main.cxx:501
+#: src/pingus_main.cxx:489
 msgid "Set the resolution for pingus (default: 800x600)"
 msgstr "Määritä ruutukoko (oletusarvo: 800x600)"
 
-#: src/pingus_main.cxx:502
+#: src/pingus_main.cxx:490
 msgid "Displays this help"
 msgstr "Näytä tämä ohje"
 
-#: src/pingus_main.cxx:503
+#: src/pingus_main.cxx:491
 msgid "Disable intro"
 msgstr "Älä näytä esittelyä"
 
-#: src/pingus_main.cxx:504
+#: src/pingus_main.cxx:492
 msgid "Use OpenGL"
 msgstr "Käytä OpenGL:ää"
 
-#: src/pingus_main.cxx:506
+#: src/pingus_main.cxx:494
 msgid "Start in Window Mode"
 msgstr "Käynnistä ikkunassa"
 
-#: src/pingus_main.cxx:507
+#: src/pingus_main.cxx:495
 msgid "Start in Fullscreen"
 msgstr "Käynnistä koko ruudulla"
 
-#: src/pingus_main.cxx:511
+#: src/pingus_main.cxx:499
 msgid "FILE      "
 msgstr "TIEDOSTO      "
 
-#: src/pingus_main.cxx:511
+#: src/pingus_main.cxx:499
 msgid "Load a custom level from FILE"
 msgstr "Lataa kenttä TIEDOSTOsta"
 
-#: src/pingus_main.cxx:512
+#: src/pingus_main.cxx:500
 msgid "FILE        "
 msgstr "TIEDOSTO        "
 
-#: src/pingus_main.cxx:512
+#: src/pingus_main.cxx:500
 msgid "Load a custom worldmap from FILE"
 msgstr "Lataa maailman kartta TIEDOSTOsta"
 
-#: src/pingus_main.cxx:513
+#: src/pingus_main.cxx:501
 msgid "Print some more messages to stdout, can be set"
 msgstr "Kirjoita enemmän tietoa stdout:iin, voidaan asettaa"
 
-#: src/pingus_main.cxx:514
+#: src/pingus_main.cxx:502
 msgid "multiple times to increase verbosity"
 msgstr "useita kertoja tekstin lisäämiseksi"
 
-#: src/pingus_main.cxx:515
+#: src/pingus_main.cxx:503
 msgid "Prints version number and exit"
 msgstr "Näytä versionumero ja poistu"
 
-#: src/pingus_main.cxx:516
-msgid "Launch the Level editor (experimental)"
-msgstr "Käynnistä kenttäeditori (kokeellinen)"
-
-#: src/pingus_main.cxx:517
+#: src/pingus_main.cxx:504
 msgid "Disable automatic scrolling"
 msgstr "Poista automaattinen vieritys käytöstä"
 
-#: src/pingus_main.cxx:519
+#: src/pingus_main.cxx:506
 msgid "Enable software cursor"
 msgstr "Ota käyttöön ohjelmallinen osoitin"
 
-#: src/pingus_main.cxx:522
+#: src/pingus_main.cxx:509
 msgid "Don't read ~/.pingus/config"
 msgstr "Älä lue ~/.pingus/config:a"
 
-#: src/pingus_main.cxx:523
+#: src/pingus_main.cxx:510
 msgid "FILE       "
 msgstr "TIEDOSTO       "
 
-#: src/pingus_main.cxx:523
+#: src/pingus_main.cxx:510
 msgid "Read config from FILE (default: ~/.pingus/config)"
 msgstr "Lue asetukset TIEDOSTO:sta (oletusarvo: ~/.pingus/config)"
 
-#: src/pingus_main.cxx:524
+#: src/pingus_main.cxx:511
 msgid "reduce CPU usage, might speed up the game on slower machines"
 msgstr "vähennä suorittimen käyttöä; saattaa nopeuttaa peliä hitailla koneilla"
 
-#: src/pingus_main.cxx:525
+#: src/pingus_main.cxx:512
 msgid "Uses the controller given in FILE"
 msgstr "Käyttää TIEDOSTO:ssa annettua ohjainta"
 
-#: src/pingus_main.cxx:527
+#: src/pingus_main.cxx:514
 msgid "Debugging and experimental stuff:"
 msgstr "Kokeellista ja testaukseen liittyvää tavaraa"
 
-#: src/pingus_main.cxx:528
+#: src/pingus_main.cxx:515
 msgid "Enables some features, only interesting programmers"
 msgstr "Kytkee päälle joitain vain ohjelmoijia kiinnostavia ominaisuuksia"
 
-#: src/pingus_main.cxx:529
+#: src/pingus_main.cxx:516
 msgid "Enable the output of debugging infos, possible"
 msgstr "Tulosta testaukseen liittyvää tietoa; mahdolliset"
 
-#: src/pingus_main.cxx:530
+#: src/pingus_main.cxx:517
 msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
 msgstr "VALITSImet ovat tiles, gametime, actions, sound, resources, gui,"
 
-#: src/pingus_main.cxx:532
+#: src/pingus_main.cxx:519
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr "Hyppää yli ainakin N ruutua; suuremmat arvot nopeuttavat peliä"
 
-#: src/pingus_main.cxx:533
+#: src/pingus_main.cxx:520
 msgid "Skip at most N frames"
 msgstr "Hyppää yli korkeintaan N ruutua"
 
-#: src/pingus_main.cxx:534
+#: src/pingus_main.cxx:521
 msgid "Set both min and max frameskip to N"
 msgstr "Aseta sekä minimi- että maksimi-ruudunhyppäys N:ään"
 
-#: src/pingus_main.cxx:535
+#: src/pingus_main.cxx:522
 msgid "Set the game speed (0=fastest, >0=slower)"
 msgstr "Aseta pelin nopeus (0=nopein, >0=hitaampi)"
 
-#: src/pingus_main.cxx:536
+#: src/pingus_main.cxx:523
 msgid "Prints the fps to stdout"
 msgstr "Kirjoittaa fps:n stdout:iin"
 
-#: src/pingus_main.cxx:537
+#: src/pingus_main.cxx:524
 msgid "Set the size of the map tiles (default: 32)"
 msgstr "Aseta karttaruutujen koko (oletusarvo: 32)"
 
-#: src/pingus_main.cxx:538
+#: src/pingus_main.cxx:525
 msgid "Disable some cpu intensive features"
 msgstr "Poista jotain suoritinsyöppöjä ominaisuuksia käytöstä"
 
-#: src/pingus_main.cxx:539
+#: src/pingus_main.cxx:526
 msgid "Reduces the CPU usage by issuing sleep()"
 msgstr "Vähentää suoritinajan käyttöä kutsumalla sleep():iä"
 
-#: src/pingus_main.cxx:541
+#: src/pingus_main.cxx:528
 msgid "Demo playing and recording:"
 msgstr "Demon näyttäminen ja nauhoitus:"
 
-#: src/pingus_main.cxx:542
+#: src/pingus_main.cxx:529
 msgid "FILE     "
 msgstr "TIEDOSTO     "
 
-#: src/pingus_main.cxx:542
+#: src/pingus_main.cxx:529
 msgid "Plays a demo session from FILE"
 msgstr "Näyttää demopelin TIEDOSTOsta"
 
-#: src/pingus_main.cxx:544
+#: src/pingus_main.cxx:531
 msgid "Record demos for each played level"
 msgstr "Nauhoittaa demopelit jokaiselle pelatulle kentälle"
 
-#: src/pingus_main.cxx:546
+#: src/pingus_main.cxx:533
 msgid "Sound:"
 msgstr "Äänet:"
 
-#: src/pingus_main.cxx:547
+#: src/pingus_main.cxx:534
 msgid "Disable sound"
 msgstr "Ei ääniä"
 
-#: src/pingus_main.cxx:548
+#: src/pingus_main.cxx:535
 msgid "Disable music"
 msgstr "Ei musiikkia"
 
-#: src/pingus_main.cxx:727
+#: src/pingus_main.cxx:616
 msgid "clanVorbis support:           ok"
 msgstr "clanVorbis-tuki:           ok"
 
-#: src/pingus_main.cxx:729
+#: src/pingus_main.cxx:618
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr "clanVoribs-tuki:  puuttuu (.ogg-musiikkia ei voida soittaa)"
 
-#: src/pingus_main.cxx:733
+#: src/pingus_main.cxx:622
 msgid "clanMikMod support:           ok"
 msgstr "clanMikMod-tuki:           ok"
 
-#: src/pingus_main.cxx:735
+#: src/pingus_main.cxx:624
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr "clanMikMod-tuki:  puuttuu (musiikkitiedostoja ei voida soittaa)"
 
-#: src/pingus_main.cxx:739
+#: src/pingus_main.cxx:628
 msgid "getext support:               ok"
 msgstr "getext-tuki:               ok"
 
-#: src/pingus_main.cxx:740
+#: src/pingus_main.cxx:629
 msgid "gettext language:        english"
 msgstr "gettext-kieli:        englanti"
 
-#: src/pingus_main.cxx:746
+#: src/pingus_main.cxx:635
 msgid "sound support:           enabled"
 msgstr "äänituki:           päällä"
 
-#: src/pingus_main.cxx:748
+#: src/pingus_main.cxx:637
 msgid "sound support:          disabled"
 msgstr "äänituki:          pois päältä"
 
-#: src/pingus_main.cxx:751
+#: src/pingus_main.cxx:640
 msgid "music support:           enabled"
 msgstr "musiikkituki:           päällä"
 
-#: src/pingus_main.cxx:753
+#: src/pingus_main.cxx:642
 msgid "music support:          disabled"
 msgstr "musiikkituki:          pois päältä"
 
-#: src/pingus_main.cxx:755
+#: src/pingus_main.cxx:644
 msgid "resolution set to:       "
 msgstr "ruutukooksi asetettu:       "
 
-#: src/pingus_main.cxx:756
+#: src/pingus_main.cxx:645
 msgid "fullscreen:              "
 msgstr "koko ruudun tila:              "
 
-#: src/pingus_main.cxx:757
+#: src/pingus_main.cxx:646
 msgid " enabled"
 msgstr " päällä"
 
-#: src/pingus_main.cxx:757
+#: src/pingus_main.cxx:646
 msgid "disabled"
 msgstr "pois päältä"
 
-#: src/pingus_main.cxx:767
+#: src/pingus_main.cxx:656
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Käynnistetään Main: "
 
-#: src/pingus_main.cxx:812
+#: src/pingus_main.cxx:701
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Kenttätiedostoa ei löytynyt, jätetään väliin: "
 
-#: src/pingus_main.cxx:924
+#: src/pingus_main.cxx:800
 msgid "Error caught from ClanLib: "
 msgstr "Virhe ClanLib:ltä: "
 
-#: src/pingus_main.cxx:928
+#: src/pingus_main.cxx:804
 msgid "Error caught from Pingus: "
 msgstr "Virhe Pingusilta: "
 
-#: src/pingus_main.cxx:932
+#: src/pingus_main.cxx:808
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Muisti loppu!"
 
-#: src/pingus_main.cxx:936
+#: src/pingus_main.cxx:812
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Standardikeskeytys!:\n"
 
-#: src/pingus_main.cxx:940
+#: src/pingus_main.cxx:816
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Tuntematon keskytys!"
 
-#: src/pingus_menu.cxx:48
-#, fuzzy
-msgid ""
-"Create a\n"
-"Level"
-msgstr "Luo uusi"
-
-#: src/pingus_menu.cxx:49
-msgid "..:: Launch the level editor ::.."
-msgstr "..:: Käynnistä kenttäeditori ::.."
-
-#: src/pingus_menu.cxx:54
+#: src/pingus_menu.cxx:45
 msgid "Start"
 msgstr "Aloita"
 
-#: src/pingus_menu.cxx:55
+#: src/pingus_menu.cxx:46
 msgid "..:: Start the game ::.."
 msgstr "..:: Aloita peli ::.."
 
-#: src/pingus_menu.cxx:60
+#: src/pingus_menu.cxx:51
 msgid "Exit"
 msgstr "Poistu"
 
-#: src/pingus_menu.cxx:61
+#: src/pingus_menu.cxx:52
 msgid "..:: Bye, bye ::.."
 msgstr "..:: Hei, hei! ::.."
 
-#: src/pingus_menu.cxx:66
+#: src/pingus_menu.cxx:57
 #, fuzzy
 msgid ""
 "Contrib\n"
 "Levels"
 msgstr "Lisäkenttä"
 
-#: src/pingus_menu.cxx:67
+#: src/pingus_menu.cxx:58
 #, fuzzy
 msgid "..:: Play User Build levels ::.."
 msgstr "..:: Aloita lisäkenttä ::.."
 
-#: src/pingus_menu.cxx:72
+#: src/pingus_menu.cxx:63
 #, fuzzy
 msgid "Story"
 msgstr "-Tarina"
 
-#: src/pingus_menu.cxx:73
+#: src/pingus_menu.cxx:64
 #, fuzzy
 msgid "..:: Start the story ::.."
 msgstr "..:: Aloita peli ::.."
 
-#: src/pingus_menu.cxx:78
+#: src/pingus_menu.cxx:69
 #, fuzzy
 msgid "Multiplayer"
 msgstr "Moninpeli"
 
-#: src/pingus_menu.cxx:79
+#: src/pingus_menu.cxx:70
 #, fuzzy
 msgid "..:: Multiplayer Match ::.."
 msgstr "..:: Moninpelit... kokeellista tavaraa ::.."
 
-#: src/result_screen.cxx:99 src/start_screen.cxx:111
+#: src/result_screen.cxx:97 src/start_screen.cxx:110
 msgid "Abort"
 msgstr "Lopeta"
 
-#: src/result_screen.cxx:167
+#: src/result_screen.cxx:164
 msgid "Retry"
 msgstr "Yritä uudelleen"
 
-#: src/result_screen.cxx:175
+#: src/result_screen.cxx:172
 msgid "Success!"
 msgstr "Onnistuit!"
 
-#: src/result_screen.cxx:182
+#: src/result_screen.cxx:179
 msgid "Failure!"
 msgstr "Epäonnistuit."
 
-#: src/result_screen.cxx:191
+#: src/result_screen.cxx:188
 msgid "Perfect! You saved everyone possible - great!"
 msgstr "Täydellistä! Pelastit joka ikisen, loistavaa!"
 
-#: src/result_screen.cxx:193
+#: src/result_screen.cxx:190
 msgid "No-one got killed, pretty good work."
 msgstr "Yksikään ei menehtynyt, hyvin tehty."
 
-#: src/result_screen.cxx:195
+#: src/result_screen.cxx:192
 msgid ""
 "You saved exactly what you needed - you made it, but\n"
 "maybe you can do better?"
@@ -1094,23 +592,23 @@ msgstr ""
 "Pelastit tasan tarvittavan määrän - pääsit kyllä kentän läpi,\n"
 "mutta kai pystyt parempaankin?"
 
-#: src/result_screen.cxx:198
+#: src/result_screen.cxx:195
 msgid "Not everybody was saved, but still good work!"
 msgstr "Ihan kaikki eivät pelastuneet, mutta hyvää työtä joka tapauksessa!"
 
-#: src/result_screen.cxx:200
+#: src/result_screen.cxx:197
 msgid "What can I say, you made it - congratulations!"
 msgstr "Mitästä tässä voi sanoa... Pääsit läpi - onneksi olkoon!"
 
-#: src/result_screen.cxx:205
+#: src/result_screen.cxx:202
 msgid "You killed everybody, not good."
 msgstr "Tapatit kaikki - ei hyvä, ei."
 
-#: src/result_screen.cxx:207
+#: src/result_screen.cxx:204
 msgid "No-one got saved - I know you can do better."
 msgstr "Yksikään ei selvinnyt - pystyt varmasti parempaankin."
 
-#: src/result_screen.cxx:209
+#: src/result_screen.cxx:206
 msgid ""
 "You didn't save enough, but you saved a few.  Next\n"
 "time you might do better."
@@ -1118,78 +616,74 @@ msgstr ""
 "Et pelastanut ihan tarpeeksi, mutta muutaman kuitenkin.\n"
 "Ensi kerralla paremmin, vai mitä?"
 
-#: src/result_screen.cxx:212
+#: src/result_screen.cxx:209
 msgid "Only one more and you would have made it - try again!"
 msgstr ""
 "Vielä yksi lisää maaliin asti niin olisit päässyt läpi - yritä uudestaan!"
 
-#: src/result_screen.cxx:214
+#: src/result_screen.cxx:211
 msgid "Only a handful more and you would have made it - try again!"
 msgstr ""
 "Vain muutama lisää maaliin asti niin olisi päässyt läpi - yritä uudestaan!"
 
-#: src/result_screen.cxx:216
+#: src/result_screen.cxx:213
 msgid "Better luck next time!"
 msgstr "Parempi tuuri ensi kerralla!"
 
-#: src/result_screen.cxx:232
+#: src/result_screen.cxx:229
 msgid "Saved: "
 msgstr "Pelastui: "
 
-#: src/result_screen.cxx:236
+#: src/result_screen.cxx:233
 msgid "Died: "
 msgstr "Kuoli: "
 
-#: src/result_screen.cxx:240
+#: src/result_screen.cxx:237
 msgid "Time left: "
 msgstr "Aikaa jäljellä: "
 
-#: src/screenshot.cxx:47
+#: src/screenshot.cxx:42
 msgid "Screenshot: Saving screenshot to: "
 msgstr "Ruutukaappaus: Tallennetaan kaappausta: "
 
-#: src/screenshot.cxx:49
+#: src/screenshot.cxx:44
 msgid "Screenshot: Screenshot is done."
 msgstr "Ruutukaappaus: Ruutukaappaus valmis."
 
-#: src/screenshot.cxx:55
-msgid "Screenshot: Couldn't save screenshot"
-msgstr "Ruutukaappaus: Tallennus ei onnistunut"
-
-#: src/screenshot.cxx:138
+#: src/screenshot.cxx:125
 msgid "Screenshot: Couldn't write file: "
 msgstr "Ruutukaappaus: Tiedostoon ei voitu kirjoittaa: "
 
-#: src/spot_map.cxx:209
+#: src/spot_map.cxx:208
 #, c-format
 msgid "Image has wrong color depth: %d"
 msgstr "Kuvassa on väärä määrä värejä: %d"
 
-#: src/start_screen.cxx:75
+#: src/start_screen.cxx:74
 msgid "Ok"
 msgstr "OK"
 
-#: src/start_screen.cxx:158
+#: src/start_screen.cxx:157
 msgid "Number of Pingus: "
 msgstr "Pingujen määrä: "
 
-#: src/start_screen.cxx:161
+#: src/start_screen.cxx:160
 msgid "Number to Save: "
 msgstr "Pelastettavien määrä: "
 
-#: src/start_screen.cxx:164
+#: src/start_screen.cxx:163
 msgid "Time: "
 msgstr "Aika: "
 
-#: src/start_screen.cxx:167
+#: src/start_screen.cxx:166
 msgid "Difficulty:"
 msgstr "Vaikeus:"
 
-#: src/start_screen.cxx:175
+#: src/start_screen.cxx:174
 msgid "Author: "
 msgstr "Tekijä: "
 
-#: src/start_screen.cxx:178
+#: src/start_screen.cxx:177
 msgid "Filename: "
 msgstr "Tiedostonimi: "
 
@@ -1355,13 +849,13 @@ msgstr ""
 "\n"
 "Onnea matkaan!"
 
-#: src/system.cxx:273
+#: src/system.cxx:270
 msgid "Environment variable $HOME not set, fix that and start again."
 msgstr ""
 "Ympäristömuuttuja $HOME:a ei ole asetetty, korjataan tilanne ja aloitetaan "
 "alusta."
 
-#: src/worldmap/level_dot.cxx:167 src/worldmap/level_dot.cxx:177
+#: src/worldmap/level_dot.cxx:145 src/worldmap/level_dot.cxx:155
 msgid "locked"
 msgstr "lukittu"
 
@@ -1381,13 +875,395 @@ msgstr "Poistu?"
 msgid "Enter?"
 msgstr "Valitse?"
 
-#: src/worldmap/worldmap.cxx:77
-msgid "WorldMap: File not found: "
-msgstr "WorldMap: Tiedostoa ei löydy: "
-
-#: src/worldmap/worldmap.cxx:261
+#: src/worldmap/worldmap.cxx:225
 msgid "...walking..."
 msgstr "...kävelee..."
+
+#~ msgid "Enter filename to save as:"
+#~ msgstr "Tallennettavan tiedoston nimi:"
+
+#~ msgid "Editor Helpscreen (hide with F1)"
+#~ msgstr "Kenttäeditorin ohjeruutu (F1 piilottaa)"
+
+#~ msgid "F1 - show/hide this help screen"
+#~ msgstr "F1 - piilota/näytä tämä ohjeruutu"
+
+#~ msgid "F2 - launch level building tutorial"
+#~ msgstr "F2 - näytä kentänrakennusopas"
+
+#~ msgid "F3 - toggle background color"
+#~ msgstr "F3 - taustaväri päälle/pois"
+
+#~ msgid "F4 - play/test the level"
+#~ msgstr "F4 - pelaa/testaa kenttää"
+
+#~ msgid "F5 - load a level"
+#~ msgstr "F5 - lataa kenttä"
+
+#~ msgid "F6 - save this level"
+#~ msgstr "F6 - tallenna kenttä"
+
+#~ msgid "F7 - [unset]"
+#~ msgstr "F7 - [määrittämätön]"
+
+#~ msgid "F8 - quick save/backup save?!"
+#~ msgstr "F8 - pikatallennus/varakopiointi?!"
+
+#~ msgid "F9 - change level width and height"
+#~ msgstr "F9 - muuta kentän leveyttä ja korkeutta"
+
+#~ msgid "F10 - [unset]"
+#~ msgstr "F10 - [määrittämätön]"
+
+#~ msgid "F11 - toggle fps counter"
+#~ msgstr "F11 - näytä/piilota fps-mittari"
+
+#~ msgid "F12 - make screenshot"
+#~ msgstr "F12 - ruutukappaus"
+
+#~ msgid "Home - increase object size"
+#~ msgstr "Home - suurenna objektia"
+
+#~ msgid "End  - decrease object size"
+#~ msgstr "End  - pienennä objektia"
+
+#~ msgid "Cursor Keys - Move object"
+#~ msgstr "Nuolinäppäimet - Liikuta objektia"
+
+#~ msgid "Shift 'Cursor Keys' - Move objects fast "
+#~ msgstr "Vaihto + Nuolinäppäimet - Liikuta objektia nopeammin"
+
+#~ msgid "PageUp   - level object up"
+#~ msgstr "PageUp   - nosta objekti tasoa ylemmäksi"
+
+#~ msgid "PageDown - level object down"
+#~ msgstr "PageDown - laskea objektia tasoa alemmaksi"
+
+#~ msgid "Shift PageUp   - increase objects z-pos by 50"
+#~ msgstr "Vaihto + PageUp   - lisää objektin z-tasoa 50:llä"
+
+#~ msgid "Shift PageDown - decrease objects z-pos by 50"
+#~ msgstr "Vaihto + PageDown - vähennä objektin z-tasoa 50:llä"
+
+#~ msgid "Enter - Set default zoom (1:1)"
+#~ msgstr "Enter - Palauta oletus-zoom (1:1)"
+
+#~ msgid "d - duplicate object"
+#~ msgstr "d - monista objekti"
+
+#~ msgid "a - mark all objects"
+#~ msgstr "a - valitse kaikki objektit"
+
+#~ msgid "shift leftmouseclick - add object to selection"
+#~ msgstr "vaihto + vasen hiiren nappi - lisää objekti valintaan"
+
+#~ msgid "leftmouseclick - select object"
+#~ msgstr "vasen hiiren nappi - valitse objekti"
+
+#~ msgid "Insert - insert new object"
+#~ msgstr "Insert - lisää uusi objekti"
+
+#~ msgid "Remove - remove selected object"
+#~ msgstr "Delete - poista valittu objekti"
+
+#~ msgid "g - ungroup/group current selection"
+#~ msgstr "g - ryhmitä valinta/pura valittu ryhmitys"
+
+#~ msgid "Ctrl PageUp   - increase objects z-pos by 1"
+#~ msgstr "Ctrl + PageUp   - lisää objektin z-tasoa yhdellä"
+
+#~ msgid "Ctrl PageDown - decrease objects z-pos by 1"
+#~ msgstr "Ctrl + PageDown - vähennä objektin z-tasoa yhdellä"
+
+#, fuzzy
+#~ msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.pingus"
+#~ msgstr "Nimeämiskäytäntö: <KENTÄNNIMI><NUMERO>-<TEKIJÄ>.plf"
+
+#~ msgid ""
+#~ "When you have created a level and want to have it in the next Pingus "
+#~ "release,\n"
+#~ "please mail it to pingus-devel@nongnu.org."
+#~ msgstr ""
+#~ "Jos haluat tekemäsi kentän mukaan Pingusin seuraavaan versioon,\n"
+#~ "lähetä se osoitteeseen pingus-devel@nongnu.org."
+
+#~ msgid "1 - guillotine"
+#~ msgstr "1 - giljotiini"
+
+#~ msgid "2 - hammer"
+#~ msgstr "2 - vasara"
+
+#~ msgid "3 - spike"
+#~ msgstr "3 - piikki"
+
+#~ msgid "4 - laser_exit"
+#~ msgstr "4 - laser-uloskäynti"
+
+#~ msgid "5 - fake_exit"
+#~ msgstr "5 - vale-uloskäynti"
+
+#~ msgid "6 - smasher"
+#~ msgstr "6 - murskain"
+
+#~ msgid "7 - bumper"
+#~ msgstr "7 - katapultti"
+
+#~ msgid "Select a WorldObj"
+#~ msgstr "Valitse maailmaobjekti"
+
+#~ msgid "1 - teleporter"
+#~ msgstr "1 - teleportti"
+
+#~ msgid "2 - switch and door"
+#~ msgstr "2 - kytkin ja ovi"
+
+#~ msgid "3 - ConveyorBelt"
+#~ msgstr "3 - Liukuhihna"
+
+#~ msgid "4 - IceBlock"
+#~ msgstr "4 - Jääpala"
+
+#~ msgid "5 - InfoBox"
+#~ msgstr "5 - Tietolaatikko"
+
+#~ msgid "Select a weather"
+#~ msgstr "Valitse sää"
+
+#~ msgid "1 - snow"
+#~ msgstr "1 - lumisade"
+
+#~ msgid "2 - rain"
+#~ msgstr "2 - sade"
+
+#~ msgid "Select an entrance"
+#~ msgstr "Valitse sisäänkäynti"
+
+#~ msgid "1 - generic"
+#~ msgstr "1 - yleinen"
+
+#~ msgid "2 - woodthing"
+#~ msgstr "2 - puinen"
+
+#~ msgid "3 - cloud"
+#~ msgstr "3 - pilvi"
+
+#~ msgid "h - entrance surface (hotspot)"
+#~ msgstr "h - taustasisäänkäynti (hotspot)"
+
+#~ msgid "What object type do you want?"
+#~ msgstr "Minkä tyyppisen objektin haluat?"
+
+#~ msgid "h - Hotspot"
+#~ msgstr "h - Hotspot"
+
+#~ msgid "g - Groundpiece (ground) [not implemented]"
+#~ msgstr "g - Maapala [ei toteutettu]"
+
+#~ msgid "Which object do you want?"
+#~ msgstr "Minkä objektin haluat?"
+
+#~ msgid "g - Groundpiece (ground)"
+#~ msgstr "g - Maapala (maa)"
+
+#~ msgid "s - Groundpiece (solid)"
+#~ msgstr "s - Maapala (kiinteä)"
+
+#~ msgid "b - Groundpiece (bridge)"
+#~ msgstr "b - Maapala (silta)"
+
+#~ msgid "n - Groundpiece (transparent)"
+#~ msgstr "n - Maapala (läpinäkyvä)"
+
+#~ msgid "r - Groundpiece (remove)"
+#~ msgstr "r - Maapala ('poista')"
+
+#~ msgid "e - Entrance"
+#~ msgstr "e - Sisäänkäynti"
+
+#~ msgid "x - Exit"
+#~ msgstr "x - Uloskäynti"
+
+#~ msgid "l - Liquid"
+#~ msgstr "l - Neste"
+
+#~ msgid "w - Weather"
+#~ msgstr "w - Sää"
+
+#~ msgid "t - Traps"
+#~ msgstr "t - Ansat"
+
+#~ msgid "o - WorldObject"
+#~ msgstr "o - Maailmaobjekti"
+
+#~ msgid "z - Background"
+#~ msgstr "z - Tausta"
+
+#~ msgid "p - Prefab (ObjectGroup)"
+#~ msgstr "p - Valmispalat (Objektiryhmä)"
+
+#~ msgid "f - something from file (~/.pingus/images/)"
+#~ msgstr "f - jotain tiedostosta (~/.pingus/images/)"
+
+#~ msgid "Which prefab do you want?"
+#~ msgstr "Minkä valmispalan haluat?"
+
+#~ msgid "1 - Surface Background"
+#~ msgstr "1 - Taustakuva"
+
+#~ msgid "2 - Solid Color Background"
+#~ msgstr "2 - Tasaisen värinen tausta"
+
+#~ msgid "3 - Starfield Background"
+#~ msgstr "3 - Animoitu tähtitausta"
+
+#~ msgid "4 - Thunderstorm Background"
+#~ msgstr "4 - Ukkosmyrsytausta"
+
+#~ msgid "Load a level (F5)"
+#~ msgstr "Lataa kenttä (F5)"
+
+#~ msgid "Exit the editor (Escape)"
+#~ msgstr "Poistu editorista (Esc)"
+
+#~ msgid "Save this level (F6)"
+#~ msgstr "Tallenna kenttä (F6)"
+
+#~ msgid "Delete marked objects (delete)"
+#~ msgstr "Poista valitut objektit (delete)"
+
+#~ msgid "Duplicate current object (d)"
+#~ msgstr "Monista objekti (d)"
+
+#~ msgid "Edit Level Properties"
+#~ msgstr "Muokkaa kentän asetuksia"
+
+#~ msgid "Edit Object Properties"
+#~ msgstr "Muokkaa objektin asetuksia"
+
+#~ msgid "Start the level and test it (F4)"
+#~ msgstr "Kokeile kenttää (F4)"
+
+#~ msgid "Create a new level from scratch"
+#~ msgstr "Luo uusi kenttä tyhjästä"
+
+#~ msgid "Insert an object (Insert)"
+#~ msgstr "Lisää objekti (Insert)"
+
+#~ msgid "Zoom into a region"
+#~ msgstr "Zoomaa valittuun alueeseen"
+
+#~ msgid "Zoom in"
+#~ msgstr "Zoomaa sisään"
+
+#~ msgid "Zoom out"
+#~ msgstr "Zoomaa ulos"
+
+#~ msgid "Setup Number of Actions"
+#~ msgstr "Säädä toimintojen määriä"
+
+#~ msgid "Display Help Screen (F1)"
+#~ msgstr "Näytä ohjeruutu (F1)"
+
+#~ msgid "Designed by "
+#~ msgstr "Suunnitellut"
+
+#~ msgid "Pingus to Save: %d"
+#~ msgstr "Pelastettavia pinguja: %d"
+
+#~ msgid "Number of Pingus: %d"
+#~ msgstr "Pinguja yhteensä: %d"
+
+#~ msgid "Loading..."
+#~ msgstr "Ladataan..."
+
+#~ msgid "Loading finished. Press a mouse button to start the level"
+#~ msgstr "Lataus valmis. Aloita kenttä painamalla hiiren nappia."
+
+#~ msgid "Results:"
+#~ msgstr "Tulokset:"
+
+#~ msgid "Pingus saved:   %3d/%3d"
+#~ msgstr "Pelastettuja:   %3d/%3d"
+
+#~ msgid "Pingus died:  %3d/%3d"
+#~ msgstr "Kuolleita:  %3d/%3d"
+
+#~ msgid "Press button to continue..."
+#~ msgstr "Paina nappia jatkaaksesi..."
+
+#~ msgid ""
+#~ "As many Pingus escaped as entered the level. That's going to be hard to "
+#~ "beat.... unless this game becomes pornographic."
+#~ msgstr ""
+#~ "Yhtä monta pingua selvisi kuin meni sisään. Siitä on vaikea panna "
+#~ "paremmaksi.... ellei peli sitten muutu pornografiseksi."
+
+#~ msgid "Very impressive indeed."
+#~ msgstr "Hyvin vaikuttavaa, etten sanoisi."
+
+#~ msgid "Good work. Still room for improvement though."
+#~ msgstr "Hyvää työtä, tosin parantamisen varaakin vielä on."
+
+#~ msgid "Not too shabby, not too shabby at all."
+#~ msgstr "Eipä yhtään hullummin."
+
+#~ msgid ""
+#~ "That was OK, but Pingu life insurance premiums have just gotten more "
+#~ "expensive."
+#~ msgstr ""
+#~ "Ihan kohtuullinen suoritus, mutta pingujen henkivakuutukset kallistuivat "
+#~ "juuri yllättävästi..."
+
+#~ msgid "Maybe this level calls for a different strategy."
+#~ msgstr "Ehkä kenttä ratkeaisi paremmin jollain toisella strategialla."
+
+#~ msgid "Exactly half. Are you saving only the female ones?"
+#~ msgstr "Tasan puolet. Pelastatko vain naaraat vai mistä on kyse?"
+
+#~ msgid "If I were a Pingu, I never would have left that entrance."
+#~ msgstr "Jos olisin pingu, en olisi ikinä päässyt uloskäynnille saakka."
+
+#~ msgid "Maybe you would feel more at home playing Quake."
+#~ msgstr "Ehkä Quake sopisi sinulle paremmin."
+
+#~ msgid ""
+#~ "Maybe this level calls for a different strategy. Like attempting to save "
+#~ "them, for example."
+#~ msgstr ""
+#~ "Kenttä ratkeaisi ehkä paremmin jollain toisella strategialla - vaikkapa "
+#~ "edes yrittämällä pelastaa ne?"
+
+#~ msgid "Ever considered a career as a Pingu exterminator?"
+#~ msgstr "Oletko harkinnut uraa pinguntorjujana?"
+
+#~ msgid "You missed one! What's your excuse!?"
+#~ msgstr "Yksi jäi listimättä! Mikä on tekosyysi!?"
+
+#~ msgid "Please reassure me that you hit the Armageddon button."
+#~ msgstr "Painoit varmaan joukkotuhonappia, eikö? Sovitaan niin, jooko?"
+
+#~ msgid "You've got a negative save/total value, something is buggy."
+#~ msgstr ""
+#~ "Onnistuit saamaan negatiivisen tuloksen, pelissä on luultavasti jotain "
+#~ "vikaa."
+
+#~ msgid "Launch the Level editor (experimental)"
+#~ msgstr "Käynnistä kenttäeditori (kokeellinen)"
+
+#, fuzzy
+#~ msgid ""
+#~ "Create a\n"
+#~ "Level"
+#~ msgstr "Luo uusi"
+
+#~ msgid "..:: Launch the level editor ::.."
+#~ msgstr "..:: Käynnistä kenttäeditori ::.."
+
+#~ msgid "Screenshot: Couldn't save screenshot"
+#~ msgstr "Ruutukaappaus: Tallennus ei onnistunut"
+
+#~ msgid "WorldMap: File not found: "
+#~ msgstr "WorldMap: Tiedostoa ei löydy: "
 
 #~ msgid "..:: The people who brought this game to you ::.."
 #~ msgstr "..:: Näytä pelin tekijät ::.."

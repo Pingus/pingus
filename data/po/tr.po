@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pingus 0.5.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-11 19:43+0100\n"
+"POT-Creation-Date: 2005-02-26 23:07+0100\n"
 "PO-Revision-Date: 2003-04-15 17:28+0200\n"
 "Last-Translator: Çaðrý Çöltekin <cagri@metu.edu.tr>\n"
 "Language-Team: Giray Devlet <giray@devlet.cc>, Caðrý Çöltekin <cagri@metu."
@@ -100,386 +100,6 @@ msgstr "_Oynadýðýnýz için"
 msgid "_playing!"
 msgstr "_teþekkürler!"
 
-#: src/editor/editor_event.cxx:589
-msgid "Enter filename to save as:"
-msgstr "Dosyayý ne olarak kayit edelim: "
-
-#: src/editor/editor_help_screen.cxx:43
-msgid "Editor Helpscreen (hide with F1)"
-msgstr "Editör Yardým Ekraný (F1 ile sakla)"
-
-#: src/editor/editor_help_screen.cxx:51
-msgid "F1 - show/hide this help screen"
-msgstr "F1 - help ekranýný sakla/göster"
-
-#: src/editor/editor_help_screen.cxx:52
-msgid "F2 - launch level building tutorial"
-msgstr "F2 - seviye tasarým dersi"
-
-#: src/editor/editor_help_screen.cxx:53
-msgid "F3 - toggle background color"
-msgstr "F3 - arkaplan rengini deðiþtir"
-
-#: src/editor/editor_help_screen.cxx:54
-msgid "F4 - play/test the level"
-msgstr "F4 - seviyeyi oyna/dene"
-
-#: src/editor/editor_help_screen.cxx:55
-msgid "F5 - load a level"
-msgstr "F5 - seviye yükle"
-
-#: src/editor/editor_help_screen.cxx:56
-msgid "F6 - save this level"
-msgstr "F6 - seviyeyi kaydet"
-
-#: src/editor/editor_help_screen.cxx:57
-msgid "F7 - [unset]"
-msgstr "F7 - [iþlevsiz]"
-
-#: src/editor/editor_help_screen.cxx:58
-msgid "F8 - quick save/backup save?!"
-msgstr "F8 - hýzlý saklama/yedekleme?!"
-
-#: src/editor/editor_help_screen.cxx:59
-msgid "F9 - change level width and height"
-msgstr "F9 - seviye boyutlarýný deðiþtir"
-
-#: src/editor/editor_help_screen.cxx:60
-msgid "F10 - [unset]"
-msgstr "F10 - [iþlevsiz]"
-
-#: src/editor/editor_help_screen.cxx:61
-msgid "F11 - toggle fps counter"
-msgstr "F11 - FPS sayacý"
-
-#: src/editor/editor_help_screen.cxx:62
-msgid "F12 - make screenshot"
-msgstr "F12 - ekrangörüntüsü kaydet"
-
-#: src/editor/editor_help_screen.cxx:66
-msgid "Home - increase object size"
-msgstr "Home - nesneyi büyüt"
-
-#: src/editor/editor_help_screen.cxx:67
-msgid "End  - decrease object size"
-msgstr "End - nesneyi küçült"
-
-#: src/editor/editor_help_screen.cxx:68
-msgid "Cursor Keys - Move object"
-msgstr "Ok tuþlarý - Nesneyi taþý"
-
-#: src/editor/editor_help_screen.cxx:69
-msgid "Shift 'Cursor Keys' - Move objects fast "
-msgstr "Shift 'Ok tuþlarý' - Nesneyi hýzlý taþý"
-
-#: src/editor/editor_help_screen.cxx:70
-msgid "PageUp   - level object up"
-msgstr "PageUp   - nesneyi ön plana taþý"
-
-#: src/editor/editor_help_screen.cxx:71
-msgid "PageDown - level object down"
-msgstr "PageDown - nesneyi arka plana taþý"
-
-#: src/editor/editor_help_screen.cxx:72
-msgid "Shift PageUp   - increase objects z-pos by 50"
-msgstr "Shift PageUp   - nesne z konumunu 50 artýr"
-
-#: src/editor/editor_help_screen.cxx:73
-msgid "Shift PageDown - decrease objects z-pos by 50"
-msgstr "Shift PageUp   - nesne z konumunu 50 azalt"
-
-#: src/editor/editor_help_screen.cxx:74
-msgid "Enter - Set default zoom (1:1)"
-msgstr "Enter - Varsayýlan zumu ayarla (1:1)"
-
-#: src/editor/editor_help_screen.cxx:75
-msgid "d - duplicate object"
-msgstr "d- seçili nesneleri çiftle"
-
-#: src/editor/editor_help_screen.cxx:76
-msgid "a - mark all objects"
-msgstr "a - seçili nesneleri sil"
-
-#: src/editor/editor_help_screen.cxx:77
-msgid "shift leftmouseclick - add object to selection"
-msgstr "shift sol fare tuþu - nesneyi seçime ekle"
-
-#: src/editor/editor_help_screen.cxx:78
-msgid "leftmouseclick - select object"
-msgstr "sol fare tuþu - neneyi seç"
-
-#: src/editor/editor_help_screen.cxx:79
-msgid "Insert - insert new object"
-msgstr "Insert - yeni nesne ekle"
-
-#: src/editor/editor_help_screen.cxx:80
-msgid "Remove - remove selected object"
-msgstr "Remove - seçili neneyi sil"
-
-#: src/editor/editor_help_screen.cxx:81
-msgid "g - ungroup/group current selection"
-msgstr "g - seçili nesneleri grupla/grubu boz"
-
-#: src/editor/editor_help_screen.cxx:82
-msgid "Ctrl PageUp   - increase objects z-pos by 1"
-msgstr "Ctrl PageUp   - nesne z konumunu 1 artýr"
-
-#: src/editor/editor_help_screen.cxx:83
-msgid "Ctrl PageDown - decrease objects z-pos by 1"
-msgstr "Ctrl PageUp   - nesne z konumunu 1 azalt"
-
-#: src/editor/editor_help_screen.cxx:89
-msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.pingus"
-msgstr "Ýsimlendirme yöntemi: <SeviyeAdý><Numara>-<Tasarýmcý>.pingus"
-
-#: src/editor/editor_help_screen.cxx:91
-msgid ""
-"When you have created a level and want to have it in the next Pingus "
-"release,\n"
-"please mail it to pingus-devel@nongnu.org."
-msgstr ""
-"Bir seviye hazýrladýysanýz ve Pingus ile daðýtýlmasýný istiyorsanýz,\n"
-"pingus-devel@nongnu.org adresine gönderin."
-
-#: src/editor/object_selector.cxx:105
-msgid "1 - guillotine"
-msgstr "1 - Keser"
-
-#: src/editor/object_selector.cxx:106
-msgid "2 - hammer"
-msgstr "2 - Çekiç"
-
-#: src/editor/object_selector.cxx:107
-msgid "3 - spike"
-msgstr "3 - Ýðne"
-
-#: src/editor/object_selector.cxx:108
-msgid "4 - laser_exit"
-msgstr "4 - Laser Çýkýþ"
-
-#: src/editor/object_selector.cxx:109
-msgid "5 - fake_exit"
-msgstr "5 - Yalancý Çýkýþ"
-
-#: src/editor/object_selector.cxx:110
-msgid "6 - smasher"
-msgstr "6 - Ezici"
-
-#: src/editor/object_selector.cxx:111
-msgid "7 - bumper"
-msgstr "7 - Ýtici"
-
-#: src/editor/object_selector.cxx:185
-msgid "Select a WorldObj"
-msgstr "Bir WorldObj seç"
-
-#: src/editor/object_selector.cxx:186
-msgid "1 - teleporter"
-msgstr "1 - Iþýnlayýcý"
-
-#: src/editor/object_selector.cxx:187
-msgid "2 - switch and door"
-msgstr "2 - Þalter ve Kapý"
-
-#: src/editor/object_selector.cxx:188
-msgid "3 - ConveyorBelt"
-msgstr "3 - YürüyenBant"
-
-#: src/editor/object_selector.cxx:189
-msgid "4 - IceBlock"
-msgstr "4 - BuzBloðu"
-
-#: src/editor/object_selector.cxx:190
-msgid "5 - InfoBox"
-msgstr "5 - BilgiKutusu"
-
-#: src/editor/object_selector.cxx:231
-msgid "Select a weather"
-msgstr "Hava durumunu seç"
-
-#: src/editor/object_selector.cxx:232
-msgid "1 - snow"
-msgstr "1 - Kar"
-
-#: src/editor/object_selector.cxx:233
-msgid "2 - rain"
-msgstr "2 - Yaðmur"
-
-#: src/editor/object_selector.cxx:264
-msgid "Select an entrance"
-msgstr "Bir çýkýþ seç"
-
-#: src/editor/object_selector.cxx:265
-msgid "1 - generic"
-msgstr "1 - Genel"
-
-#: src/editor/object_selector.cxx:266
-msgid "2 - woodthing"
-msgstr "2 - Ahþap"
-
-#: src/editor/object_selector.cxx:267
-msgid "3 - cloud"
-msgstr "3 - Bulut"
-
-# FIXME: sicaknokta salakligini.
-#: src/editor/object_selector.cxx:268
-msgid "h - entrance surface (hotspot)"
-msgstr "h - giriþ yüzeyi (sýcaknokta)"
-
-#: src/editor/object_selector.cxx:343
-msgid "What object type do you want?"
-msgstr "Hangi nesneyi istiyorsun?"
-
-# buna daha iyi biþi uydurabiliyormusun?  -gd
-#: src/editor/object_selector.cxx:344 src/editor/object_selector.cxx:400
-msgid "h - Hotspot"
-msgstr "h - GrafikParçasý"
-
-#: src/editor/object_selector.cxx:345
-msgid "g - Groundpiece (ground) [not implemented]"
-msgstr "g - Yer (ground) [bozuk]"
-
-#: src/editor/object_selector.cxx:394 src/editor/object_selector.cxx:562
-msgid "Which object do you want?"
-msgstr "Hangi nesneyi istiyorsun?"
-
-#: src/editor/object_selector.cxx:395
-msgid "g - Groundpiece (ground)"
-msgstr "g - Yer (toprak)"
-
-#: src/editor/object_selector.cxx:396
-msgid "s - Groundpiece (solid)"
-msgstr "s - YerParçasi (katý)"
-
-#: src/editor/object_selector.cxx:397
-msgid "b - Groundpiece (bridge)"
-msgstr "b - Köprü (bridge)"
-
-#: src/editor/object_selector.cxx:398
-msgid "n - Groundpiece (transparent)"
-msgstr "n - YerParçasý (þeffaf)"
-
-#: src/editor/object_selector.cxx:399
-msgid "r - Groundpiece (remove)"
-msgstr "r - YerParçasý (silici)"
-
-#: src/editor/object_selector.cxx:401
-msgid "e - Entrance"
-msgstr "e - Giriþ"
-
-#: src/editor/object_selector.cxx:402
-msgid "x - Exit"
-msgstr "x - Bitir"
-
-#: src/editor/object_selector.cxx:403
-msgid "l - Liquid"
-msgstr "l - Sývý"
-
-#: src/editor/object_selector.cxx:404
-msgid "w - Weather"
-msgstr "w - Ýklim"
-
-#: src/editor/object_selector.cxx:405
-msgid "t - Traps"
-msgstr "t - Tuzak"
-
-#: src/editor/object_selector.cxx:406
-msgid "o - WorldObject"
-msgstr "o - DünyaNesnesi"
-
-#: src/editor/object_selector.cxx:407
-msgid "z - Background"
-msgstr "z - Arkaplan"
-
-#  FIXME: prefab ne demek
-#: src/editor/object_selector.cxx:408
-msgid "p - Prefab (ObjectGroup)"
-msgstr "p - Prefab (Nesne Grubu)"
-
-#: src/editor/object_selector.cxx:409
-msgid "f - something from file (~/.pingus/images/)"
-msgstr "f - dosyadan (~/.pingus/images/)"
-
-#: src/editor/object_selector.cxx:498
-msgid "Which prefab do you want?"
-msgstr "Hangi nesneyi istiyorsun?"
-
-#: src/editor/object_selector.cxx:563
-msgid "1 - Surface Background"
-msgstr "1 - Arkaplan"
-
-#: src/editor/object_selector.cxx:564
-msgid "2 - Solid Color Background"
-msgstr "2 - Düz Renk Arkaplan"
-
-#: src/editor/object_selector.cxx:565
-msgid "3 - Starfield Background"
-msgstr "3 - Yýldýzlý Arkaplan"
-
-#: src/editor/object_selector.cxx:566
-msgid "4 - Thunderstorm Background"
-msgstr "4 - Yýldýrýmlý Arkaplan"
-
-#: src/editor/panel_icons.cxx:33
-msgid "Load a level (F5)"
-msgstr "Seviye yükle (F5)"
-
-#: src/editor/panel_icons.cxx:46
-msgid "Exit the editor (Escape)"
-msgstr "Editörden çýk (Escape)"
-
-#: src/editor/panel_icons.cxx:58
-msgid "Save this level (F6)"
-msgstr "Seviyeyi kayýt et (F6)"
-
-#: src/editor/panel_icons.cxx:70
-msgid "Delete marked objects (delete)"
-msgstr "Seçili nesneleri sil (delete)"
-
-#: src/editor/panel_icons.cxx:82
-msgid "Duplicate current object (d)"
-msgstr "Seçili nesneleri çiftle (d)"
-
-#: src/editor/panel_icons.cxx:94
-msgid "Edit Level Properties"
-msgstr "Seviye Özelliklerini Deðiþtir"
-
-#: src/editor/panel_icons.cxx:106
-msgid "Edit Object Properties"
-msgstr "Nesne özelliklerini deðiþtir"
-
-#: src/editor/panel_icons.cxx:118
-msgid "Start the level and test it (F4)"
-msgstr "Seviyeyi baþlat ve test et (F4)"
-
-#: src/editor/panel_icons.cxx:130
-msgid "Create a new level from scratch"
-msgstr "Sýfýrdan yeni bir seviye yarat"
-
-#: src/editor/panel_icons.cxx:142
-msgid "Insert an object (Insert)"
-msgstr "Nesne ekle (Insert)"
-
-#: src/editor/panel_icons.cxx:154
-msgid "Zoom into a region"
-msgstr "bir alaný yaklaþtýr"
-
-#: src/editor/panel_icons.cxx:166
-msgid "Zoom in"
-msgstr "Yaklaþtýr"
-
-#: src/editor/panel_icons.cxx:179
-msgid "Zoom out"
-msgstr "Uzaklaþtýr"
-
-#: src/editor/panel_icons.cxx:192
-msgid "Setup Number of Actions"
-msgstr "Eylem Sayýsýný Ayarla"
-
-#: src/editor/panel_icons.cxx:204
-msgid "Display Help Screen (F1)"
-msgstr "Yardým Ekranýný Göster (F1)"
-
 #: src/exit_menu.cxx:48
 msgid "Yes"
 msgstr "Evet"
@@ -500,114 +120,6 @@ msgstr "bilinmeyen"
 #, c-format
 msgid "unlimited"
 msgstr "sýnýrsýz"
-
-#: src/level_desc.cxx:74
-msgid "Designed by "
-msgstr "Tasarlayan "
-
-#: src/level_desc.cxx:79
-#, c-format
-msgid "Pingus to Save: %d"
-msgstr "Kurtarýlacak Pingu: %d"
-
-#: src/level_desc.cxx:81
-#, c-format
-msgid "Number of Pingus: %d"
-msgstr "Pingu sayýsý: %d"
-
-#: src/level_desc.cxx:86
-msgid "Loading..."
-msgstr "Yükleniyor..."
-
-#: src/level_desc.cxx:89
-msgid "Loading finished. Press a mouse button to start the level"
-msgstr "Yüklendi! Devam etmek için farenin tuþunu týklat"
-
-#: src/level_result.cxx:61
-msgid "Results:"
-msgstr "Sonuçlar:"
-
-#: src/level_result.cxx:67
-#, c-format
-msgid "Pingus saved:   %3d/%3d"
-msgstr "Kurtarýlýcak Pingus: %3d/%3d"
-
-#: src/level_result.cxx:72
-#, c-format
-msgid "Pingus died:  %3d/%3d"
-msgstr "Ölen Pingular:  %3d/%3d"
-
-#: src/level_result.cxx:88
-msgid "Press button to continue..."
-msgstr "Devam etmek için tuþa bas..."
-
-#: src/level_result.cxx:102
-msgid ""
-"As many Pingus escaped as entered the level. That's going to be hard to "
-"beat.... unless this game becomes pornographic."
-msgstr ""
-"Hocam, Hepsi kurtuldu!  Bu skoru aþabilmek için bu oyuna pornografik biþiler "
-"katmamýz gerekecek."
-
-#: src/level_result.cxx:104
-msgid "Very impressive indeed."
-msgstr "Helal Olsun ..."
-
-#: src/level_result.cxx:106
-msgid "Good work. Still room for improvement though."
-msgstr "Aferin. Ama daha fazla çalýþman lazým çekirge."
-
-#: src/level_result.cxx:108
-msgid "Not too shabby, not too shabby at all."
-msgstr "Fena deðil, hiç fena deðil."
-
-#: src/level_result.cxx:110
-msgid ""
-"That was OK, but Pingu life insurance premiums have just gotten more "
-"expensive."
-msgstr ""
-"Fena deðil. Fakat Pingu hayat sigortasý aydatlarýnýn pahalýþtýrmayakatkýda "
-"bulundun."
-
-#: src/level_result.cxx:112
-msgid "Maybe this level calls for a different strategy."
-msgstr "Farklý bir stateji uygulamakta yarar olabilir."
-
-#: src/level_result.cxx:114
-msgid "Exactly half. Are you saving only the female ones?"
-msgstr "Tam yarýsý. Ne o? Sadece diþileri falan mý kurtarýyoruz?!?"
-
-#: src/level_result.cxx:116
-msgid "If I were a Pingu, I never would have left that entrance."
-msgstr "Ben bir Pingu olsaydým, o kapýdan adýmýmý atmazdým."
-
-#: src/level_result.cxx:118
-msgid "Maybe you would feel more at home playing Quake."
-msgstr "Abisi, belki de Quake sana daha uygun bi oyun."
-
-#: src/level_result.cxx:120
-msgid ""
-"Maybe this level calls for a different strategy. Like attempting to save "
-"them, for example."
-msgstr ""
-"Tikkat tikkat! Stateji deðiþikliði! Bir daha sefere þunlarý kurtarmaya "
-"çalýþalým!"
-
-#: src/level_result.cxx:122
-msgid "Ever considered a career as a Pingu exterminator?"
-msgstr "Pingo Terminatörü olarak iþ mi arýyoruz?"
-
-#: src/level_result.cxx:124
-msgid "You missed one! What's your excuse!?"
-msgstr "Ne o? Bi tane kaçýrdýk bakýyorum."
-
-#: src/level_result.cxx:126
-msgid "Please reassure me that you hit the Armageddon button."
-msgstr "Bu da bir baþarý tabii. Hepsini nasil helak ettin?"
-
-#: src/level_result.cxx:128
-msgid "You've got a negative save/total value, something is buggy."
-msgstr "Eksi sayýda Pingus kurtardýn, biyerde kesin hata var."
 
 #: src/pingu_enums.cxx:35
 msgid "Angel"
@@ -697,352 +209,333 @@ msgstr "Waiter"
 msgid "Walker"
 msgstr "Walker"
 
-#: src/pingus_counter.cxx:52
+#: src/pingus_counter.cxx:51
 #, c-format
 msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
 msgstr "Çýkan: %3d/%-3d Dýþarýda: %3d  Kurtulan: %3d/%-3d"
 
-#: src/pingus_main.cxx:91
+#: src/pingus_main.cxx:85
 msgid "| segfault_handler: catched a SIGSEGV."
 msgstr "| segfault_handler: catched a SIGSEGV."
 
-#: src/pingus_main.cxx:93
+#: src/pingus_main.cxx:87
 msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
 msgstr "Amanin booo ...  Pingus çöktü! Tebrikler bir böcek (hata) buldun!"
 
-#: src/pingus_main.cxx:94
+#: src/pingus_main.cxx:88
 msgid ""
 "| Please write a little bug report to <grumbel@gmx.de>, include informations"
 msgstr ""
 "| Lütfen inglizce/almanca olarak <grumbel@gmx.de> adresine kýsa bir hata"
 
-#: src/pingus_main.cxx:95
+#: src/pingus_main.cxx:89
 msgid "| where exacly the SIGSEGV occured and how to reproduce it."
 msgstr ""
 "| raporu yaz. SIGSEGV'in nerede oluþtuðunu ve nasýl tekrarlanabileceðini"
 
-#: src/pingus_main.cxx:96
+#: src/pingus_main.cxx:90
 msgid "| Also try include a backtrace, you can get it like this:"
 msgstr "| anlat.  Bir de bir 'backtrace' ekle ... Aþagýdaki gibi mesela:"
 
-#: src/pingus_main.cxx:102
+#: src/pingus_main.cxx:96
 msgid "| If that doesn't work, try this:"
 msgstr "| Bu çalýþmazsa, þöyle de olabilir:"
 
-#: src/pingus_main.cxx:106
+#: src/pingus_main.cxx:100
 msgid "| [play until it crashes again]"
 msgstr "| [... ve çökene kadar tekrar oyna ... ]"
 
-#: src/pingus_main.cxx:114
+#: src/pingus_main.cxx:108
 msgid "| Warning: Pingus recieved a SIGINT, exiting now."
 msgstr "| Uyarý: SIGINT sinyali aldýk, oyundan çýkýyoruz."
 
-#: src/pingus_main.cxx:304
+#: src/pingus_main.cxx:292
 msgid "Warning: Larger resolution than 800x600 will result in visual problems"
 msgstr "Dikkat: 800x600'den büyük çözünürlük görüntü sorunu yaratabilir"
 
-#: src/pingus_main.cxx:495
+#: src/pingus_main.cxx:483
 msgid "Unknow char: "
 msgstr "Bilinmeyen karakter: "
 
-#: src/pingus_main.cxx:496
+#: src/pingus_main.cxx:484
 msgid "Usage: "
 msgstr "Kullaným: "
 
-#: src/pingus_main.cxx:496
+#: src/pingus_main.cxx:484
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr "[SEÇENEKLER]... [SEVÝYE DOSYASI]"
 
-#: src/pingus_main.cxx:499
+#: src/pingus_main.cxx:487
 msgid "Options:"
 msgstr "Seçenekler:"
 
-#: src/pingus_main.cxx:501
+#: src/pingus_main.cxx:489
 msgid "Set the resolution for pingus (default: 800x600)"
 msgstr "Pingus çözünürlüðünü ayarla (öntanýlý: 640x480)"
 
-#: src/pingus_main.cxx:502
+#: src/pingus_main.cxx:490
 msgid "Displays this help"
 msgstr "Bu yardým ekranýný göster"
 
-#: src/pingus_main.cxx:503
+#: src/pingus_main.cxx:491
 msgid "Disable intro"
 msgstr "Intoroyu kapat"
 
-#: src/pingus_main.cxx:504
+#: src/pingus_main.cxx:492
 msgid "Use OpenGL"
 msgstr "OpenGL kullan"
 
 # FIXME: needs a better translation
-#: src/pingus_main.cxx:506
+#: src/pingus_main.cxx:494
 msgid "Start in Window Mode"
 msgstr "Pencerede baþlat"
 
-#: src/pingus_main.cxx:507
+#: src/pingus_main.cxx:495
 msgid "Start in Fullscreen"
 msgstr "Tümekran baþlat"
 
-#: src/pingus_main.cxx:511
+#: src/pingus_main.cxx:499
 msgid "FILE      "
 msgstr "DOSYA     "
 
-#: src/pingus_main.cxx:511
+#: src/pingus_main.cxx:499
 msgid "Load a custom level from FILE"
 msgstr "DOSYAdan özel seviye yükle"
 
-#: src/pingus_main.cxx:512
+#: src/pingus_main.cxx:500
 msgid "FILE        "
 msgstr "DOSYA       "
 
 # worldmap = ??
-#: src/pingus_main.cxx:512
+#: src/pingus_main.cxx:500
 msgid "Load a custom worldmap from FILE"
 msgstr "DOSYAdan özel worldmap yükle"
 
-#: src/pingus_main.cxx:513
+#: src/pingus_main.cxx:501
 msgid "Print some more messages to stdout, can be set"
 msgstr "Stdout'a ayrýntýlý bilgi ver. Daha cok `v' ile"
 
-#: src/pingus_main.cxx:514
+#: src/pingus_main.cxx:502
 msgid "multiple times to increase verbosity"
 msgstr "ayrýntý artýrýlabilir."
 
-#: src/pingus_main.cxx:515
+#: src/pingus_main.cxx:503
 msgid "Prints version number and exit"
 msgstr "Sürümü ekrana basar ve çýkar"
 
-#: src/pingus_main.cxx:516
-msgid "Launch the Level editor (experimental)"
-msgstr "Seviye editörü'nu baþlat (deneysel)"
-
-#: src/pingus_main.cxx:517
+#: src/pingus_main.cxx:504
 msgid "Disable automatic scrolling"
 msgstr "Automatik kaydýrmayý kapat"
 
-#: src/pingus_main.cxx:519
+#: src/pingus_main.cxx:506
 msgid "Enable software cursor"
 msgstr "Yazýlým imleci kullan"
 
-#: src/pingus_main.cxx:522
+#: src/pingus_main.cxx:509
 msgid "Don't read ~/.pingus/config"
 msgstr "~/.pingus/config dosyasýný okuma"
 
-#: src/pingus_main.cxx:523
+#: src/pingus_main.cxx:510
 msgid "FILE       "
 msgstr "DOSYA      "
 
-#: src/pingus_main.cxx:523
+#: src/pingus_main.cxx:510
 msgid "Read config from FILE (default: ~/.pingus/config)"
 msgstr "Ayarlarý `DOSYA'dan oku (öntanýmlý: ~/.pingus/config)"
 
-#: src/pingus_main.cxx:524
+#: src/pingus_main.cxx:511
 msgid "reduce CPU usage, might speed up the game on slower machines"
 msgstr "CPU kullanýmýný azalt. Bu yavaþ makinalarda oyunu hýzlandýrabilir"
 
 # FIXME: better translation
-#: src/pingus_main.cxx:525
+#: src/pingus_main.cxx:512
 msgid "Uses the controller given in FILE"
 msgstr "DOSYA'daki denetleyiciyi kullan"
 
-#: src/pingus_main.cxx:527
+#: src/pingus_main.cxx:514
 msgid "Debugging and experimental stuff:"
 msgstr "Deneyseyl þeyler:"
 
-#: src/pingus_main.cxx:528
+#: src/pingus_main.cxx:515
 msgid "Enables some features, only interesting programmers"
 msgstr "Sadece programcýlariçin ilginç olan, bazý özellikleri çalýþtýrýr."
 
 # debug = ?
-#: src/pingus_main.cxx:529
+#: src/pingus_main.cxx:516
 msgid "Enable the output of debugging infos, possible"
 msgstr "Debug mesajlarýný ekrana bas"
 
-#: src/pingus_main.cxx:530
+#: src/pingus_main.cxx:517
 msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
 msgstr "SEÇENEKLER: tiles, gametime, actions, sound, resources, gui."
 
-#: src/pingus_main.cxx:532
+#: src/pingus_main.cxx:519
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr "En az N resim karesini atla. Büyük N oyunu hýzlandýrýr"
 
-#: src/pingus_main.cxx:533
+#: src/pingus_main.cxx:520
 msgid "Skip at most N frames"
 msgstr "En fazla N resim karesi atla"
 
-#: src/pingus_main.cxx:534
+#: src/pingus_main.cxx:521
 msgid "Set both min and max frameskip to N"
 msgstr "Tam N resim karesi atla"
 
-#: src/pingus_main.cxx:535
+#: src/pingus_main.cxx:522
 msgid "Set the game speed (0=fastest, >0=slower)"
 msgstr "Oyun hýzýný ayarla (0=en hýzlý, >0=daha yavaþ)"
 
-#: src/pingus_main.cxx:536
+#: src/pingus_main.cxx:523
 msgid "Prints the fps to stdout"
 msgstr "stdout'a fps deðerini bas"
 
 # FIXME: better translation.
-#: src/pingus_main.cxx:537
+#: src/pingus_main.cxx:524
 msgid "Set the size of the map tiles (default: 32)"
 msgstr "Döþeme boyutunu ayarla (öntanýmlý: 32)"
 
-#: src/pingus_main.cxx:538
+#: src/pingus_main.cxx:525
 msgid "Disable some cpu intensive features"
 msgstr "Ýþlemci gerektiren bazý özellikleri kapat"
 
-#: src/pingus_main.cxx:539
+#: src/pingus_main.cxx:526
 msgid "Reduces the CPU usage by issuing sleep()"
 msgstr "CPU kullanýmýný sleep() kullanarak azalt"
 
-#: src/pingus_main.cxx:541
+#: src/pingus_main.cxx:528
 msgid "Demo playing and recording:"
 msgstr "Demo oynatma ve kayýt:"
 
-#: src/pingus_main.cxx:542
+#: src/pingus_main.cxx:529
 msgid "FILE     "
 msgstr "DOSYA    "
 
-#: src/pingus_main.cxx:542
+#: src/pingus_main.cxx:529
 msgid "Plays a demo session from FILE"
 msgstr "DOSYA'dan bir demo oynat"
 
-#: src/pingus_main.cxx:544
+#: src/pingus_main.cxx:531
 msgid "Record demos for each played level"
 msgstr "Oynanan her oyun için demo kaydet"
 
-#: src/pingus_main.cxx:546
+#: src/pingus_main.cxx:533
 msgid "Sound:"
 msgstr "Ses"
 
-#: src/pingus_main.cxx:547
+#: src/pingus_main.cxx:534
 msgid "Disable sound"
 msgstr "Sesi Kapat"
 
-#: src/pingus_main.cxx:548
+#: src/pingus_main.cxx:535
 msgid "Disable music"
 msgstr "Müziði Kapat"
 
-#: src/pingus_main.cxx:727
+#: src/pingus_main.cxx:616
 msgid "clanVorbis support:           ok"
 msgstr "clanVoribs desteði:      var"
 
-#: src/pingus_main.cxx:729
+#: src/pingus_main.cxx:618
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr "clanVoribs desteði: yok (.ogg müzik dosyalarý çalýþmayacak)"
 
-#: src/pingus_main.cxx:733
+#: src/pingus_main.cxx:622
 msgid "clanMikMod support:           ok"
 msgstr "clanMikMod desteði:      var"
 
-#: src/pingus_main.cxx:735
+#: src/pingus_main.cxx:624
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr "clanMikMod desteði: yok (müzik dosyalarý çalýþmayacak) "
 
-#: src/pingus_main.cxx:739
+#: src/pingus_main.cxx:628
 msgid "getext support:               ok"
 msgstr "gettext desteði:         var"
 
-#: src/pingus_main.cxx:740
+#: src/pingus_main.cxx:629
 msgid "gettext language:        english"
 msgstr "gettext dili:            türkeçe"
 
-#: src/pingus_main.cxx:746
+#: src/pingus_main.cxx:635
 msgid "sound support:           enabled"
 msgstr "ses:                     etkin"
 
-#: src/pingus_main.cxx:748
+#: src/pingus_main.cxx:637
 msgid "sound support:          disabled"
 msgstr "ses:                    etkin deðil"
 
-#: src/pingus_main.cxx:751
+#: src/pingus_main.cxx:640
 msgid "music support:           enabled"
 msgstr "müzik desteði:           etkin"
 
-#: src/pingus_main.cxx:753
+#: src/pingus_main.cxx:642
 msgid "music support:          disabled"
 msgstr "müzik desteði:          etkin deðil"
 
-#: src/pingus_main.cxx:755
+#: src/pingus_main.cxx:644
 msgid "resolution set to:       "
 msgstr "çözünürlük:              "
 
-#: src/pingus_main.cxx:756
+#: src/pingus_main.cxx:645
 msgid "fullscreen:              "
 msgstr "tümekran:                "
 
-#: src/pingus_main.cxx:757
+#: src/pingus_main.cxx:646
 msgid " enabled"
 msgstr " etkin"
 
-#: src/pingus_main.cxx:757
+#: src/pingus_main.cxx:646
 msgid "disabled"
 msgstr "etkin deðil"
 
 # 'Main' yerine baþka biþi uydurmak lazim buraya -gd
-#: src/pingus_main.cxx:767
+#: src/pingus_main.cxx:656
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Main Baþlatýlýyor: "
 
-#: src/pingus_main.cxx:812
+#: src/pingus_main.cxx:701
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Seviye Dosyasý bulunamadý, yok sayýlacak: "
 
-#: src/pingus_main.cxx:924
+#: src/pingus_main.cxx:800
 msgid "Error caught from ClanLib: "
 msgstr "ClanLib hatasý: "
 
-#: src/pingus_main.cxx:928
+#: src/pingus_main.cxx:804
 msgid "Error caught from Pingus: "
 msgstr "Pingus'ta hata saptandý: "
 
-#: src/pingus_main.cxx:932
+#: src/pingus_main.cxx:808
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Bellek yetersiz!"
 
 # bu komik oldu -cagri
 # daha mi iyi boyle :) -gd
-#: src/pingus_main.cxx:936
+#: src/pingus_main.cxx:812
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Genel olaðan dýþý durum saptandý!:\n"
 
-#: src/pingus_main.cxx:940
+#: src/pingus_main.cxx:816
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Bilinmeyen bir hata saptandý!"
 
-# bu olmadi, c++'tan nefret... -cagri
-# niye c++'den nefret ediyon?
-# Yav tabii turkce'nin yapisindan ortaya cikan bir sorun var .. 'yarat'i cumle
-# sonuna koymak gerekecek ... neyse bi compile edince nasil gozukuyor bakalim ... -gd
-#: src/pingus_menu.cxx:48
-#, fuzzy
-msgid ""
-"Create a\n"
-"Level"
-msgstr "Yeni Seviye"
-
-#: src/pingus_menu.cxx:49
-msgid "..:: Launch the level editor ::.."
-msgstr "..:: Seviye Editörünü Çalýþtýr ::.."
-
-#: src/pingus_menu.cxx:54
+#: src/pingus_menu.cxx:45
 msgid "Start"
 msgstr "Baþla"
 
-#: src/pingus_menu.cxx:55
+#: src/pingus_menu.cxx:46
 msgid "..:: Start the game ::.."
 msgstr "..:: Oyunu baþlat ::.."
 
-#: src/pingus_menu.cxx:60
+#: src/pingus_menu.cxx:51
 msgid "Exit"
 msgstr "Çýkýþ"
 
-#: src/pingus_menu.cxx:61
+#: src/pingus_menu.cxx:52
 msgid "..:: Bye, bye ::.."
 msgstr "..:: Güle güle... ::.."
 
 # FIXME: bu olmadi -cagri
 # bu daha da olmadi galiba -gd
-#: src/pingus_menu.cxx:66
+#: src/pingus_menu.cxx:57
 #, fuzzy
 msgid ""
 "Contrib\n"
@@ -1050,56 +543,56 @@ msgid ""
 msgstr "Harici"
 
 # FIXME: bu nasil olmuþ? contrib -> katýlýmcý, dýþarlýklý :))) -gd 
-#: src/pingus_menu.cxx:67
+#: src/pingus_menu.cxx:58
 #, fuzzy
 msgid "..:: Play User Build levels ::.."
 msgstr "..:: Harici bir seviye baþlat ::.."
 
-#: src/pingus_menu.cxx:72
+#: src/pingus_menu.cxx:63
 #, fuzzy
 msgid "Story"
 msgstr "-Öykü"
 
-#: src/pingus_menu.cxx:73
+#: src/pingus_menu.cxx:64
 #, fuzzy
 msgid "..:: Start the story ::.."
 msgstr "..:: Oyunu baþlat ::.."
 
-#: src/pingus_menu.cxx:78
+#: src/pingus_menu.cxx:69
 #, fuzzy
 msgid "Multiplayer"
 msgstr "Çoklu"
 
-#: src/pingus_menu.cxx:79
+#: src/pingus_menu.cxx:70
 #, fuzzy
 msgid "..:: Multiplayer Match ::.."
 msgstr "..:: Çok oyunculu kipler... Deneysel þeyler ::.."
 
-#: src/result_screen.cxx:99 src/start_screen.cxx:111
+#: src/result_screen.cxx:97 src/start_screen.cxx:110
 msgid "Abort"
 msgstr "Çýk"
 
-#: src/result_screen.cxx:167
+#: src/result_screen.cxx:164
 msgid "Retry"
 msgstr "Yeniden dene"
 
-#: src/result_screen.cxx:175
+#: src/result_screen.cxx:172
 msgid "Success!"
 msgstr "Aferin!"
 
-#: src/result_screen.cxx:182
+#: src/result_screen.cxx:179
 msgid "Failure!"
 msgstr "Baþaramadýn!"
 
-#: src/result_screen.cxx:191
+#: src/result_screen.cxx:188
 msgid "Perfect! You saved everyone possible - great!"
 msgstr "Mükemmel! Herkesi kurtardýn galiba."
 
-#: src/result_screen.cxx:193
+#: src/result_screen.cxx:190
 msgid "No-one got killed, pretty good work."
 msgstr "Hiçkimse ölmedi, iyi iþ çýkardýn."
 
-#: src/result_screen.cxx:195
+#: src/result_screen.cxx:192
 msgid ""
 "You saved exactly what you needed - you made it, but\n"
 "maybe you can do better?"
@@ -1107,23 +600,23 @@ msgstr ""
 "Tam gerektiði kadar Pingu kurtardýn, geçer not, ama\n"
 "belki daha iyisini yapabilisin, hý?"
 
-#: src/result_screen.cxx:198
+#: src/result_screen.cxx:195
 msgid "Not everybody was saved, but still good work!"
 msgstr "Herkesi kurtaramadýn, ama yine de iyi iþ çýkardýn!"
 
-#: src/result_screen.cxx:200
+#: src/result_screen.cxx:197
 msgid "What can I say, you made it - congratulations!"
 msgstr "Ne diyebilirim, yaptýn, aferin!"
 
-#: src/result_screen.cxx:205
+#: src/result_screen.cxx:202
 msgid "You killed everybody, not good."
 msgstr "Herkesi öldürdun. Hiç hoþ degil."
 
-#: src/result_screen.cxx:207
+#: src/result_screen.cxx:204
 msgid "No-one got saved - I know you can do better."
 msgstr "Hiç kimseyi kurtaramadýn, daha iyisini yapabileceðinden eminim."
 
-#: src/result_screen.cxx:209
+#: src/result_screen.cxx:206
 msgid ""
 "You didn't save enough, but you saved a few.  Next\n"
 "time you might do better."
@@ -1131,76 +624,72 @@ msgstr ""
 "Yeterince kurtaramadýn, ama yine de birkaçý kurtuldu, bir\n"
 "dahakine daha dikkatli ol."
 
-#: src/result_screen.cxx:212
+#: src/result_screen.cxx:209
 msgid "Only one more and you would have made it - try again!"
 msgstr "Bir ya da iki tane daha kurtarsaydýn olacaktý, hadi tekrar!"
 
-#: src/result_screen.cxx:214
+#: src/result_screen.cxx:211
 msgid "Only a handful more and you would have made it - try again!"
 msgstr "Birkaç tane daha kurtarsan olacaktý, tekrar dene!"
 
-#: src/result_screen.cxx:216
+#: src/result_screen.cxx:213
 msgid "Better luck next time!"
 msgstr "Bir dahaki oyunda iyi þanslar!"
 
-#: src/result_screen.cxx:232
+#: src/result_screen.cxx:229
 msgid "Saved: "
 msgstr "Kurtarýlan: "
 
-#: src/result_screen.cxx:236
+#: src/result_screen.cxx:233
 msgid "Died: "
 msgstr "Ölen: "
 
-#: src/result_screen.cxx:240
+#: src/result_screen.cxx:237
 msgid "Time left: "
 msgstr "Kalan zaman: "
 
-#: src/screenshot.cxx:47
+#: src/screenshot.cxx:42
 msgid "Screenshot: Saving screenshot to: "
 msgstr "Screenshot: Ekran görüntüsü için dosya adý: "
 
-#: src/screenshot.cxx:49
+#: src/screenshot.cxx:44
 msgid "Screenshot: Screenshot is done."
 msgstr "Screenshot: Ekran görüntüsü kaydedildi."
 
-#: src/screenshot.cxx:55
-msgid "Screenshot: Couldn't save screenshot"
-msgstr "Screenshot: Ekran görüntüsü kaydedilemedi"
-
-#: src/screenshot.cxx:138
+#: src/screenshot.cxx:125
 msgid "Screenshot: Couldn't write file: "
 msgstr "Screenshot: Dosyaya yazýlamýyor: "
 
-#: src/spot_map.cxx:209
+#: src/spot_map.cxx:208
 #, c-format
 msgid "Image has wrong color depth: %d"
 msgstr "Resmin renk derinliði yanlýþ: %d"
 
-#: src/start_screen.cxx:75
+#: src/start_screen.cxx:74
 msgid "Ok"
 msgstr "Tamam"
 
-#: src/start_screen.cxx:158
+#: src/start_screen.cxx:157
 msgid "Number of Pingus: "
 msgstr "Pingu sayýsý: "
 
-#: src/start_screen.cxx:161
+#: src/start_screen.cxx:160
 msgid "Number to Save: "
 msgstr "Kurtarýlýcak Pingus: "
 
-#: src/start_screen.cxx:164
+#: src/start_screen.cxx:163
 msgid "Time: "
 msgstr "Süre: "
 
-#: src/start_screen.cxx:167
+#: src/start_screen.cxx:166
 msgid "Difficulty:"
 msgstr "Zorluk:"
 
-#: src/start_screen.cxx:175
+#: src/start_screen.cxx:174
 msgid "Author: "
 msgstr "Tasarlayan: "
 
-#: src/start_screen.cxx:178
+#: src/start_screen.cxx:177
 msgid "Filename: "
 msgstr "Dosya adý: "
 
@@ -1364,11 +853,11 @@ msgstr ""
 "\n"
 "                                                  Baþarýlar!"
 
-#: src/system.cxx:273
+#: src/system.cxx:270
 msgid "Environment variable $HOME not set, fix that and start again."
 msgstr "$HOME deðiþkeni atanmamýþ, düzeltip yeniden dene."
 
-#: src/worldmap/level_dot.cxx:167 src/worldmap/level_dot.cxx:177
+#: src/worldmap/level_dot.cxx:145 src/worldmap/level_dot.cxx:155
 msgid "locked"
 msgstr "kapalý"
 
@@ -1388,13 +877,399 @@ msgstr "Çýk?"
 msgid "Enter?"
 msgstr "Gir?"
 
-#: src/worldmap/worldmap.cxx:77
-msgid "WorldMap: File not found: "
-msgstr "WorldMap: Dosya bulunamadý: "
-
-#: src/worldmap/worldmap.cxx:261
+#: src/worldmap/worldmap.cxx:225
 msgid "...walking..."
 msgstr "...yürüyor..."
+
+#~ msgid "Enter filename to save as:"
+#~ msgstr "Dosyayý ne olarak kayit edelim: "
+
+#~ msgid "Editor Helpscreen (hide with F1)"
+#~ msgstr "Editör Yardým Ekraný (F1 ile sakla)"
+
+#~ msgid "F1 - show/hide this help screen"
+#~ msgstr "F1 - help ekranýný sakla/göster"
+
+#~ msgid "F2 - launch level building tutorial"
+#~ msgstr "F2 - seviye tasarým dersi"
+
+#~ msgid "F3 - toggle background color"
+#~ msgstr "F3 - arkaplan rengini deðiþtir"
+
+#~ msgid "F4 - play/test the level"
+#~ msgstr "F4 - seviyeyi oyna/dene"
+
+#~ msgid "F5 - load a level"
+#~ msgstr "F5 - seviye yükle"
+
+#~ msgid "F6 - save this level"
+#~ msgstr "F6 - seviyeyi kaydet"
+
+#~ msgid "F7 - [unset]"
+#~ msgstr "F7 - [iþlevsiz]"
+
+#~ msgid "F8 - quick save/backup save?!"
+#~ msgstr "F8 - hýzlý saklama/yedekleme?!"
+
+#~ msgid "F9 - change level width and height"
+#~ msgstr "F9 - seviye boyutlarýný deðiþtir"
+
+#~ msgid "F10 - [unset]"
+#~ msgstr "F10 - [iþlevsiz]"
+
+#~ msgid "F11 - toggle fps counter"
+#~ msgstr "F11 - FPS sayacý"
+
+#~ msgid "F12 - make screenshot"
+#~ msgstr "F12 - ekrangörüntüsü kaydet"
+
+#~ msgid "Home - increase object size"
+#~ msgstr "Home - nesneyi büyüt"
+
+#~ msgid "End  - decrease object size"
+#~ msgstr "End - nesneyi küçült"
+
+#~ msgid "Cursor Keys - Move object"
+#~ msgstr "Ok tuþlarý - Nesneyi taþý"
+
+#~ msgid "Shift 'Cursor Keys' - Move objects fast "
+#~ msgstr "Shift 'Ok tuþlarý' - Nesneyi hýzlý taþý"
+
+#~ msgid "PageUp   - level object up"
+#~ msgstr "PageUp   - nesneyi ön plana taþý"
+
+#~ msgid "PageDown - level object down"
+#~ msgstr "PageDown - nesneyi arka plana taþý"
+
+#~ msgid "Shift PageUp   - increase objects z-pos by 50"
+#~ msgstr "Shift PageUp   - nesne z konumunu 50 artýr"
+
+#~ msgid "Shift PageDown - decrease objects z-pos by 50"
+#~ msgstr "Shift PageUp   - nesne z konumunu 50 azalt"
+
+#~ msgid "Enter - Set default zoom (1:1)"
+#~ msgstr "Enter - Varsayýlan zumu ayarla (1:1)"
+
+#~ msgid "d - duplicate object"
+#~ msgstr "d- seçili nesneleri çiftle"
+
+#~ msgid "a - mark all objects"
+#~ msgstr "a - seçili nesneleri sil"
+
+#~ msgid "shift leftmouseclick - add object to selection"
+#~ msgstr "shift sol fare tuþu - nesneyi seçime ekle"
+
+#~ msgid "leftmouseclick - select object"
+#~ msgstr "sol fare tuþu - neneyi seç"
+
+#~ msgid "Insert - insert new object"
+#~ msgstr "Insert - yeni nesne ekle"
+
+#~ msgid "Remove - remove selected object"
+#~ msgstr "Remove - seçili neneyi sil"
+
+#~ msgid "g - ungroup/group current selection"
+#~ msgstr "g - seçili nesneleri grupla/grubu boz"
+
+#~ msgid "Ctrl PageUp   - increase objects z-pos by 1"
+#~ msgstr "Ctrl PageUp   - nesne z konumunu 1 artýr"
+
+#~ msgid "Ctrl PageDown - decrease objects z-pos by 1"
+#~ msgstr "Ctrl PageUp   - nesne z konumunu 1 azalt"
+
+#~ msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.pingus"
+#~ msgstr "Ýsimlendirme yöntemi: <SeviyeAdý><Numara>-<Tasarýmcý>.pingus"
+
+#~ msgid ""
+#~ "When you have created a level and want to have it in the next Pingus "
+#~ "release,\n"
+#~ "please mail it to pingus-devel@nongnu.org."
+#~ msgstr ""
+#~ "Bir seviye hazýrladýysanýz ve Pingus ile daðýtýlmasýný istiyorsanýz,\n"
+#~ "pingus-devel@nongnu.org adresine gönderin."
+
+#~ msgid "1 - guillotine"
+#~ msgstr "1 - Keser"
+
+#~ msgid "2 - hammer"
+#~ msgstr "2 - Çekiç"
+
+#~ msgid "3 - spike"
+#~ msgstr "3 - Ýðne"
+
+#~ msgid "4 - laser_exit"
+#~ msgstr "4 - Laser Çýkýþ"
+
+#~ msgid "5 - fake_exit"
+#~ msgstr "5 - Yalancý Çýkýþ"
+
+#~ msgid "6 - smasher"
+#~ msgstr "6 - Ezici"
+
+#~ msgid "7 - bumper"
+#~ msgstr "7 - Ýtici"
+
+#~ msgid "Select a WorldObj"
+#~ msgstr "Bir WorldObj seç"
+
+#~ msgid "1 - teleporter"
+#~ msgstr "1 - Iþýnlayýcý"
+
+#~ msgid "2 - switch and door"
+#~ msgstr "2 - Þalter ve Kapý"
+
+#~ msgid "3 - ConveyorBelt"
+#~ msgstr "3 - YürüyenBant"
+
+#~ msgid "4 - IceBlock"
+#~ msgstr "4 - BuzBloðu"
+
+#~ msgid "5 - InfoBox"
+#~ msgstr "5 - BilgiKutusu"
+
+#~ msgid "Select a weather"
+#~ msgstr "Hava durumunu seç"
+
+#~ msgid "1 - snow"
+#~ msgstr "1 - Kar"
+
+#~ msgid "2 - rain"
+#~ msgstr "2 - Yaðmur"
+
+#~ msgid "Select an entrance"
+#~ msgstr "Bir çýkýþ seç"
+
+#~ msgid "1 - generic"
+#~ msgstr "1 - Genel"
+
+#~ msgid "2 - woodthing"
+#~ msgstr "2 - Ahþap"
+
+#~ msgid "3 - cloud"
+#~ msgstr "3 - Bulut"
+
+# FIXME: sicaknokta salakligini.
+#~ msgid "h - entrance surface (hotspot)"
+#~ msgstr "h - giriþ yüzeyi (sýcaknokta)"
+
+#~ msgid "What object type do you want?"
+#~ msgstr "Hangi nesneyi istiyorsun?"
+
+# buna daha iyi biþi uydurabiliyormusun?  -gd
+#~ msgid "h - Hotspot"
+#~ msgstr "h - GrafikParçasý"
+
+#~ msgid "g - Groundpiece (ground) [not implemented]"
+#~ msgstr "g - Yer (ground) [bozuk]"
+
+#~ msgid "Which object do you want?"
+#~ msgstr "Hangi nesneyi istiyorsun?"
+
+#~ msgid "g - Groundpiece (ground)"
+#~ msgstr "g - Yer (toprak)"
+
+#~ msgid "s - Groundpiece (solid)"
+#~ msgstr "s - YerParçasi (katý)"
+
+#~ msgid "b - Groundpiece (bridge)"
+#~ msgstr "b - Köprü (bridge)"
+
+#~ msgid "n - Groundpiece (transparent)"
+#~ msgstr "n - YerParçasý (þeffaf)"
+
+#~ msgid "r - Groundpiece (remove)"
+#~ msgstr "r - YerParçasý (silici)"
+
+#~ msgid "e - Entrance"
+#~ msgstr "e - Giriþ"
+
+#~ msgid "x - Exit"
+#~ msgstr "x - Bitir"
+
+#~ msgid "l - Liquid"
+#~ msgstr "l - Sývý"
+
+#~ msgid "w - Weather"
+#~ msgstr "w - Ýklim"
+
+#~ msgid "t - Traps"
+#~ msgstr "t - Tuzak"
+
+#~ msgid "o - WorldObject"
+#~ msgstr "o - DünyaNesnesi"
+
+#~ msgid "z - Background"
+#~ msgstr "z - Arkaplan"
+
+#  FIXME: prefab ne demek
+#~ msgid "p - Prefab (ObjectGroup)"
+#~ msgstr "p - Prefab (Nesne Grubu)"
+
+#~ msgid "f - something from file (~/.pingus/images/)"
+#~ msgstr "f - dosyadan (~/.pingus/images/)"
+
+#~ msgid "Which prefab do you want?"
+#~ msgstr "Hangi nesneyi istiyorsun?"
+
+#~ msgid "1 - Surface Background"
+#~ msgstr "1 - Arkaplan"
+
+#~ msgid "2 - Solid Color Background"
+#~ msgstr "2 - Düz Renk Arkaplan"
+
+#~ msgid "3 - Starfield Background"
+#~ msgstr "3 - Yýldýzlý Arkaplan"
+
+#~ msgid "4 - Thunderstorm Background"
+#~ msgstr "4 - Yýldýrýmlý Arkaplan"
+
+#~ msgid "Load a level (F5)"
+#~ msgstr "Seviye yükle (F5)"
+
+#~ msgid "Exit the editor (Escape)"
+#~ msgstr "Editörden çýk (Escape)"
+
+#~ msgid "Save this level (F6)"
+#~ msgstr "Seviyeyi kayýt et (F6)"
+
+#~ msgid "Delete marked objects (delete)"
+#~ msgstr "Seçili nesneleri sil (delete)"
+
+#~ msgid "Duplicate current object (d)"
+#~ msgstr "Seçili nesneleri çiftle (d)"
+
+#~ msgid "Edit Level Properties"
+#~ msgstr "Seviye Özelliklerini Deðiþtir"
+
+#~ msgid "Edit Object Properties"
+#~ msgstr "Nesne özelliklerini deðiþtir"
+
+#~ msgid "Start the level and test it (F4)"
+#~ msgstr "Seviyeyi baþlat ve test et (F4)"
+
+#~ msgid "Create a new level from scratch"
+#~ msgstr "Sýfýrdan yeni bir seviye yarat"
+
+#~ msgid "Insert an object (Insert)"
+#~ msgstr "Nesne ekle (Insert)"
+
+#~ msgid "Zoom into a region"
+#~ msgstr "bir alaný yaklaþtýr"
+
+#~ msgid "Zoom in"
+#~ msgstr "Yaklaþtýr"
+
+#~ msgid "Zoom out"
+#~ msgstr "Uzaklaþtýr"
+
+#~ msgid "Setup Number of Actions"
+#~ msgstr "Eylem Sayýsýný Ayarla"
+
+#~ msgid "Display Help Screen (F1)"
+#~ msgstr "Yardým Ekranýný Göster (F1)"
+
+#~ msgid "Designed by "
+#~ msgstr "Tasarlayan "
+
+#~ msgid "Pingus to Save: %d"
+#~ msgstr "Kurtarýlacak Pingu: %d"
+
+#~ msgid "Number of Pingus: %d"
+#~ msgstr "Pingu sayýsý: %d"
+
+#~ msgid "Loading..."
+#~ msgstr "Yükleniyor..."
+
+#~ msgid "Loading finished. Press a mouse button to start the level"
+#~ msgstr "Yüklendi! Devam etmek için farenin tuþunu týklat"
+
+#~ msgid "Results:"
+#~ msgstr "Sonuçlar:"
+
+#~ msgid "Pingus saved:   %3d/%3d"
+#~ msgstr "Kurtarýlýcak Pingus: %3d/%3d"
+
+#~ msgid "Pingus died:  %3d/%3d"
+#~ msgstr "Ölen Pingular:  %3d/%3d"
+
+#~ msgid "Press button to continue..."
+#~ msgstr "Devam etmek için tuþa bas..."
+
+#~ msgid ""
+#~ "As many Pingus escaped as entered the level. That's going to be hard to "
+#~ "beat.... unless this game becomes pornographic."
+#~ msgstr ""
+#~ "Hocam, Hepsi kurtuldu!  Bu skoru aþabilmek için bu oyuna pornografik "
+#~ "biþiler katmamýz gerekecek."
+
+#~ msgid "Very impressive indeed."
+#~ msgstr "Helal Olsun ..."
+
+#~ msgid "Good work. Still room for improvement though."
+#~ msgstr "Aferin. Ama daha fazla çalýþman lazým çekirge."
+
+#~ msgid "Not too shabby, not too shabby at all."
+#~ msgstr "Fena deðil, hiç fena deðil."
+
+#~ msgid ""
+#~ "That was OK, but Pingu life insurance premiums have just gotten more "
+#~ "expensive."
+#~ msgstr ""
+#~ "Fena deðil. Fakat Pingu hayat sigortasý aydatlarýnýn "
+#~ "pahalýþtýrmayakatkýda bulundun."
+
+#~ msgid "Maybe this level calls for a different strategy."
+#~ msgstr "Farklý bir stateji uygulamakta yarar olabilir."
+
+#~ msgid "Exactly half. Are you saving only the female ones?"
+#~ msgstr "Tam yarýsý. Ne o? Sadece diþileri falan mý kurtarýyoruz?!?"
+
+#~ msgid "If I were a Pingu, I never would have left that entrance."
+#~ msgstr "Ben bir Pingu olsaydým, o kapýdan adýmýmý atmazdým."
+
+#~ msgid "Maybe you would feel more at home playing Quake."
+#~ msgstr "Abisi, belki de Quake sana daha uygun bi oyun."
+
+#~ msgid ""
+#~ "Maybe this level calls for a different strategy. Like attempting to save "
+#~ "them, for example."
+#~ msgstr ""
+#~ "Tikkat tikkat! Stateji deðiþikliði! Bir daha sefere þunlarý kurtarmaya "
+#~ "çalýþalým!"
+
+#~ msgid "Ever considered a career as a Pingu exterminator?"
+#~ msgstr "Pingo Terminatörü olarak iþ mi arýyoruz?"
+
+#~ msgid "You missed one! What's your excuse!?"
+#~ msgstr "Ne o? Bi tane kaçýrdýk bakýyorum."
+
+#~ msgid "Please reassure me that you hit the Armageddon button."
+#~ msgstr "Bu da bir baþarý tabii. Hepsini nasil helak ettin?"
+
+#~ msgid "You've got a negative save/total value, something is buggy."
+#~ msgstr "Eksi sayýda Pingus kurtardýn, biyerde kesin hata var."
+
+#~ msgid "Launch the Level editor (experimental)"
+#~ msgstr "Seviye editörü'nu baþlat (deneysel)"
+
+# bu olmadi, c++'tan nefret... -cagri
+# niye c++'den nefret ediyon?
+# Yav tabii turkce'nin yapisindan ortaya cikan bir sorun var .. 'yarat'i cumle
+# sonuna koymak gerekecek ... neyse bi compile edince nasil gozukuyor bakalim ... -gd
+#, fuzzy
+#~ msgid ""
+#~ "Create a\n"
+#~ "Level"
+#~ msgstr "Yeni Seviye"
+
+#~ msgid "..:: Launch the level editor ::.."
+#~ msgstr "..:: Seviye Editörünü Çalýþtýr ::.."
+
+#~ msgid "Screenshot: Couldn't save screenshot"
+#~ msgstr "Screenshot: Ekran görüntüsü kaydedilemedi"
+
+#~ msgid "WorldMap: File not found: "
+#~ msgstr "WorldMap: Dosya bulunamadý: "
 
 #~ msgid "..:: The people who brought this game to you ::.."
 #~ msgstr "..:: Bu oyunu sizin için hazýrlayanlar... ::.."

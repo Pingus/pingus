@@ -52,7 +52,7 @@ update-po:
    --files-from=./POTFILES --output=pingus.pot \
    --copyright-holder='Ingo Ruhnke'; \
    for lang in *.po; do \
-     echo "Updating $$lang: " \
+     echo "Updating $$lang: "; \
      msgmerge --update $$lang pingus.pot; \
    done
 
