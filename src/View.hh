@@ -1,4 +1,4 @@
-//  $Id: View.hh,v 1.2 2000/02/09 21:43:41 grumbel Exp $
+//  $Id: View.hh,v 1.3 2000/04/10 21:33:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,8 +31,6 @@ class View
 private:
   CL_ClipRect clip_rect;
   Range x_offset, y_offset; // The position of the view in the world
-  int x1_pos, y1_pos;       // The upper/left corner of the view
-  int x2_pos, y2_pos;       // The buttom/right corner of the view
   bool mouse_over;
   double size;              // The zoom of the View, 1 is default
   CaptureRectangle cap;
@@ -42,6 +40,9 @@ private:
 
   void make_range();
 public:
+  int x1_pos, y1_pos;       // The upper/left corner of the view
+  int x2_pos, y2_pos;       // The buttom/right corner of the view
+
   View(int, int, int, int, float s = 1.0);
   ~View();
   void draw();

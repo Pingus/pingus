@@ -1,4 +1,4 @@
-//  $Id: PLF.cc,v 1.7 2000/03/16 21:33:09 grumbel Exp $
+//  $Id: PLF.cc,v 1.8 2000/04/10 21:33:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ PLF::PLF(std::string filename)
   number_to_save = 0;
   pingus = 100;
   difficulty = 5;
-  music = ResDescriptor("file", "gd-walk.it");
+  music = ResDescriptor("file", "pingus-4.it");
 
   col = ResDescriptor("auto", "-Auto ColMap-");
   if (verbose > 1) std::cout << "Starting Parsing" << std::endl;

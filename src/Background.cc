@@ -1,4 +1,4 @@
-//  $Id: Background.cc,v 1.9 2000/04/08 17:01:20 grumbel Exp $
+//  $Id: Background.cc,v 1.10 2000/04/10 21:33:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ Background::Background(background_data bg)
 	      canvas = new CL_Canvas(sur->get_width(), sur->get_height(), sur->get_num_frames());
 	    
 	      if (bg.dim > 1.0) 
-		std::cerr << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
+		std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
 
 	      canvas->fill_rect(0, 0,
 				sur->get_width(),

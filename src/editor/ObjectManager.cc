@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.8 2000/04/09 17:22:22 grumbel Exp $
+//  $Id: ObjectManager.cc,v 1.9 2000/04/10 21:33:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include "../algo.hh"
 #include "../System.hh"
+#include "../Display.hh"
 #include "ObjectManager.hh"
 
 ObjectManager::ObjectManager()
@@ -137,6 +138,9 @@ ObjectManager::draw()
     {
       (*i)->draw_mark_offset(x_offset, y_offset);
     }
+
+  Display::draw_rect(x_offset, y_offset, width + x_offset, height + y_offset,
+		     bg.r, bg.g, bg.b, 1.0);
 }
 
 void
@@ -163,7 +167,7 @@ ObjectManager::save_level (std::string filename)
   // FIXME: we need some error checking
   
   plf_out << "/* This level was created with the PLE\n"
-	  << " * $Id: ObjectManager.cc,v 1.8 2000/04/09 17:22:22 grumbel Exp $\n"
+	  << " * $Id: ObjectManager.cc,v 1.9 2000/04/10 21:33:06 grumbel Exp $\n"
 	  << " */"
 	  << std::endl;
   

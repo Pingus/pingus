@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.17 2000/04/08 20:20:25 grumbel Exp $
+//   $Id: Pingus.cc,v 1.18 2000/04/10 21:33:06 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -142,10 +142,12 @@ PingusMain::check_args(int argc, char* argv[])
     {"quick-play",        no_argument,       0, 'q'},
     {"enable-fullscreen", no_argument,       0, 'f'},
     {"disable-fullscreen", no_argument,      0, 'F'},
+
+    // FIXME: is the number stuff correct?
     {"debug-actions",   no_argument,       0, 129},
     {"fs-preload",      no_argument,       0, 130},
     {"fast",            no_argument,       0, 132},
-    {"disable-previews",no_argument,       0, 133}, // FIXME: is the number stuff correct?
+    {"disable-previews",no_argument,       0, 133}, 
     {"maintainer-mode", no_argument,       0, 134},
     {"enable-uactions", no_argument,       0, 136},
     {"disable-auto-scrolling",   no_argument,       0, 137},
@@ -524,7 +526,7 @@ PingusMain::init(int argc, char* argv[])
     {
       if (sscanf(resolution.c_str(), "%d%c%d", &screen_width, &c, &screen_height) != 3) 
 	{
-	  cerr << "Resolution std::string is wrong, it should be like: \n" 
+	  cout << "Resolution std::string is wrong, it should be like: \n" 
 	       << "\"640x480\" or \"800x600\"" << std::endl;
 	  exit(EXIT_FAILURE);
 	}
