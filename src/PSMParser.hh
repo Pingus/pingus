@@ -1,4 +1,4 @@
-//  $Id: PSMParser.hh,v 1.4 2000/04/10 21:17:52 grumbel Exp $
+//  $Id: PSMParser.hh,v 1.5 2000/04/14 18:28:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,8 @@
 
 #include "ResDescriptor.hh"
 
-struct surface_data {
+struct surface_data 
+{
   CL_Surface* surface;
   CL_Resource* resource;
   ResDescriptor res_desc;
@@ -37,8 +38,7 @@ struct surface_data {
   std::string res_name;
   std::string name;
   std::string type_str; 
-  enum Type { SOLID, GROUND, BRIDGE, WATER, LAVA } type ;
-  
+  enum Type { SOLID, GROUND, BRIDGE, WATER, LAVA, NOTHING } type ; 
 };
 
 struct PSMEOF {};

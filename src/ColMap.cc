@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.8 2000/04/10 21:15:47 grumbel Exp $
+//  $Id: ColMap.cc,v 1.9 2000/04/14 18:28:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -127,32 +127,63 @@ void
 ColMap::remove(CL_SurfaceProvider* provider, int x, int y)
 {
   assert(provider);
-  assert(provider->get_depth() == 8);
 
-  unsigned char* buffer;
-  int swidth = provider->get_width();
-  int sheight = provider->get_height();
-  int y_offset = -y;
-  int x_offset = -x;
-  if (y_offset < 0) y_offset = 0;
-  if (x_offset < 0) x_offset = 0;
-
-  provider->lock();
-  buffer = static_cast<unsigned char*>(provider->get_data());
-
-  for(int line = y_offset; line < sheight && (line + y) < height; ++line) 
+  if (provider->get_depth() == 32) 
     {
-      for (int i = x_offset; i < swidth && (i+x) < width; ++i) 
+      unsigned char* buffer;
+      int swidth = provider->get_width();
+      int sheight = provider->get_height();
+      int y_offset = -y;
+      int x_offset = -x;
+      if (y_offset < 0) y_offset = 0;
+      if (x_offset < 0) x_offset = 0;
+
+      provider->lock();
+      buffer = static_cast<unsigned char*>(provider->get_data());
+
+      for(int line = y_offset; line < sheight && (line + y) < height; ++line) 
 	{
-	  if (buffer[i + (swidth*line)]) 
+	  for (int i = x_offset; i < swidth && (i+x) < width; ++i) 
 	    {
-	      if (colmap[i + (width*(line+y) + x)] != SOLID)
-		colmap[i + (width*(line+y) + x)] = NOTHING;
+	      if (buffer[(i + (swidth*line)) * 4] != 0) 
+		{
+		  if (colmap[i + (width*(line+y) + x)] != SOLID)
+		    colmap[i + (width*(line+y) + x)] = NOTHING;
+		}
 	    }
 	}
+      provider->unlock();
     }
-  
-  provider->unlock();
+  else if (provider->get_depth() == 8)
+    {
+      unsigned char* buffer;
+      int swidth = provider->get_width();
+      int sheight = provider->get_height();
+      int y_offset = -y;
+      int x_offset = -x;
+      if (y_offset < 0) y_offset = 0;
+      if (x_offset < 0) x_offset = 0;
+
+      provider->lock();
+      buffer = static_cast<unsigned char*>(provider->get_data());
+
+      for(int line = y_offset; line < sheight && (line + y) < height; ++line) 
+	{
+	  for (int i = x_offset; i < swidth && (i+x) < width; ++i) 
+	    {
+	      if (buffer[i + (swidth*line)]) 
+		{
+		  if (colmap[i + (width*(line+y) + x)] != SOLID)
+		    colmap[i + (width*(line+y) + x)] = NOTHING;
+		}
+	    }
+	}
+      provider->unlock();
+    }
+  else
+    {
+      assert(!"ColMap::remove: Color depth not supported");
+    }
 }
 
 void
@@ -237,13 +268,16 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, surface_data::Ty
 		      colmap[i] = SOLID | WALL;
 		      break;
 		    case surface_data::BRIDGE:
-		      colmap[i] = BRIDGE | WALL;
+		      colmap[i] = BRIDGE;
 		      break;
 		    case surface_data::WATER:
 		      colmap[i] = SOLID | WATER;
 		      break;
 		    case surface_data::LAVA:
 		      colmap[i] = SOLID | LAVA;
+		      break;
+		    case surface_data::NOTHING:
+		      colmap[i] = 0;
 		      break;
 		    }
 		}

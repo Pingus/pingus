@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.16 2000/04/10 21:17:52 grumbel Exp $
+//  $Id: Pingu.cc,v 1.17 2000/04/14 18:28:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -457,7 +457,7 @@ Pingu::do_walking()
 	  x_pos += direction;
 	  y_pos -= 2;
 	} 
-      else if (rel_getpixel(1,2) == ColMap::BRIDGE) 
+      else if (rel_getpixel(1,2) & ColMap::BRIDGE) 
 	{
 	  x_pos += direction;
 	  y_pos -=3;

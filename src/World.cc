@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.13 2000/04/10 21:14:14 grumbel Exp $
+//  $Id: World.cc,v 1.14 2000/04/14 18:28:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -311,10 +311,11 @@ World::init_worldobjs()
   stable_sort(world_obj_fg.begin(), world_obj_fg.end(), WorldObj_less());
 
   // Drawing all world objs to the colmap
+  for(std::vector<WorldObj*>::iterator obj = world_obj_bg.begin(); obj != world_obj_bg.end(); obj++)
+    (*obj)->draw_colmap(colmap);
+
   for(std::vector<WorldObj*>::iterator obj = world_obj_fg.begin(); obj != world_obj_fg.end(); obj++)
-    {
-      (*obj)->draw_colmap(colmap);
-    }
+    (*obj)->draw_colmap(colmap);
   
   // Setup the gravity force
   // Clear all old forces

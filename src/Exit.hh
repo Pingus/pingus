@@ -1,4 +1,4 @@
-//  $Id: Exit.hh,v 1.2 2000/02/09 21:43:39 grumbel Exp $
+//  $Id: Exit.hh,v 1.3 2000/04/14 18:28:26 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,6 +38,7 @@ public:
   Exit(int x, int y);
   Exit(exit_data data);
 
+  void draw_colmap(ColMap*);
   void draw_offset(int x, int y, float s = 1.0);
   bool catch_pingu(Pingu* pingu);
 };

@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.8 2000/03/12 17:08:40 grumbel Exp $
+//  $Id: Editor.cc,v 1.9 2000/04/14 18:28:27 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -112,6 +112,25 @@ Editor::draw ()
   CL_Display::clear_display();
   object_manager.draw();
   panel->draw();
+
+  {
+    int x1_pos = CL_Display::get_width() - 200;
+    int y1_pos = CL_Display::get_height() - 150;
+    int x2_pos = CL_Display::get_width() - 1;
+    int y2_pos = CL_Display::get_height() - 1;
+    int width  = (CL_Display::get_width() - 25) * 200 / object_manager.width;
+    int height = CL_Display::get_height() * 150 / object_manager.height;;
+
+    Display::draw_rect(x1_pos, y1_pos , x2_pos, y2_pos,
+		       1.0, 1.0, 1.0, 1.0);
+
+    Display::draw_rect(x1_pos - (object_manager.x_offset * 200 / object_manager.width),
+		       y1_pos - (object_manager.y_offset * 150 / object_manager.height),
+		       x1_pos - (object_manager.x_offset * 200 / object_manager.width) + width,  
+		       y1_pos - (object_manager.y_offset * 150 / object_manager.height) + height,
+		       1.0, 1.0, 1.0, 1.0);
+  }
+
   status_line.draw(object_manager.x_offset, object_manager.y_offset);
   CL_Display::flip_display(true);
 }
@@ -377,6 +396,9 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
+Revision 1.9  2000/04/14 18:28:27  grumbel
+Fixed ColMap again, bridger should work correctly again
+
 Revision 1.8  2000/03/12 17:08:40  grumbel
 Misc fixes I forgot yesterday
 
