@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.17 2002/10/13 01:09:18 grumbel Exp $
+//  $Id: worldmap.cxx,v 1.18 2002/10/13 14:19:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,6 +40,14 @@
 #include "path_graph.hxx"
 
 namespace WorldMapNS {
+
+struct z_pos_sorter
+{
+  bool operator()(Drawable* a, Drawable* b)
+  {
+    return a->get_z_pos() < b->get_z_pos();
+  }
+};
 
 WorldMap::WorldMap(const std::string& arg_filename) 
   : filename(arg_filename)
@@ -142,6 +150,8 @@ WorldMap::parse_properties(xmlDocPtr doc, xmlNodePtr cur)
 void
 WorldMap::draw (GraphicContext& gc)
 {
+  std::stable_sort(drawables.begin(), drawables.end(), z_pos_sorter());
+
   for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)
     {
       (*i)->draw (gc);

@@ -1,4 +1,4 @@
-//  $Id: path_graph.cxx,v 1.3 2002/10/13 13:34:40 grumbel Exp $
+//  $Id: path_graph.cxx,v 1.4 2002/10/13 14:19:25 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "dot.hxx"
 #include "dot_factory.hxx"
 #include "worldmap.hxx"
+#include "pathfinder.hxx"
 #include "path_graph.hxx"
 
 namespace WorldMapNS {
@@ -154,8 +155,14 @@ PathGraph::parse_edges(xmlDocPtr doc, xmlNodePtr cur)
 }
 
 std::vector<Vector>
-PathGraph::get_path(NodeId start, NodeId end)
+PathGraph::get_path(NodeId start_id, NodeId end_id)
 {
+  Node<Dot*>& start = graph.resolve_node(start_id);
+  Node<Dot*>& end   = graph.resolve_node(end_id);
+
+  Pathfinder<Dot*, Path*> pathfinder(graph, start_id);
+  std::vector<NodeId> path = pathfinder.get_path(end_id);
+
   // insert pathfinding magic here...
   return std::vector<Vector>();
 }

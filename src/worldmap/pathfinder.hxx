@@ -1,4 +1,4 @@
-//  $Id: pathfinder.hxx,v 1.1 2002/10/12 23:37:23 grumbel Exp $
+//  $Id: pathfinder.hxx,v 1.2 2002/10/13 14:19:25 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,10 @@
 #include <queue>
 #include "graph.hxx"
 
+namespace WorldMapNS {
+
 /** */
-template<class T>
+template<class T, class C>
 class Pathfinder
 {
 public:
@@ -33,9 +35,9 @@ public:
   public:
     enum { CLOSED, UNKNOWN, OPEN} status;
 
-    NodeHandle parent;
+    NodeId parent;
     int cost;
-    NodeHandle handle;
+    NodeId handle;
 
     NodeStat ()
       : status (UNKNOWN),
@@ -47,13 +49,13 @@ public:
   };
 
 private:
-  Graph<T>& graph;
-  NodeHandle start;
-  std::priority_queue<NodeHandle> open_nodes;
+  Graph<T, C>& graph;
+  NodeId start;
+  std::priority_queue<NodeId> open_nodes;
   std::vector<NodeStat>   stat_graph;
   
 public:
-  Pathfinder (Graph<T>& g, NodeHandle s)
+  Pathfinder (Graph<T, C>& g, NodeId s)
     : graph (g), start (s)
   {
     stat_graph.resize (graph.max_node_handler_value());
@@ -61,18 +63,18 @@ public:
 
     while (!open_nodes.empty())
       {
-	NodeHandle current = open_nodes.top ();
+	NodeId current = open_nodes.top ();
 	open_nodes.pop ();
 
 	std::cout << "Current Node: " << current << " "
 		  << stat_graph[current].cost << std::endl;
 
 	Node<T>& node = graph.resolve_node (current);
-	for (std::vector<EdgeHandle>::iterator e = node.next.begin ();
+	for (std::vector<EdgeId>::iterator e = node.next.begin ();
 	     e != node.next.end ();
 	     ++e)
 	  {
-	    NodeHandle child_node = graph.resolve_edge(*e).next;
+	    NodeId child_node = graph.resolve_edge(*e).next;
 	    NodeStat& stat = stat_graph[child_node];
 	    int new_cost = stat_graph[current].cost + graph.resolve_edge(*e).cost;
 	    
@@ -94,10 +96,10 @@ public:
     std::cout << "---DONE---" << std::endl;
   }
 
-  std::vector<NodeHandle> get_path (NodeHandle end) 
+  std::vector<NodeId> get_path (NodeId end) 
   {
-    std::vector<NodeHandle> path;
-    NodeHandle handle = end;
+    std::vector<NodeId> path;
+    NodeId handle = end;
     
     do
       {
@@ -113,7 +115,7 @@ public:
 	else if (handle == -1)
 	  {
 	    // no path found
-	    return  std::vector<NodeHandle>();
+	    return  std::vector<NodeId>();
 	  }
 	else
 	  {
@@ -123,13 +125,13 @@ public:
     while (1);
   }
 
-  void push_to_open (NodeHandle handle)
+  void push_to_open (NodeId handle)
   {
     open_nodes.push (handle);
     stat_graph[handle].status = NodeStat::OPEN;
   }
 
-  bool is_open (NodeHandle handle)
+  bool is_open (NodeId handle)
   {
     return stat_graph[handle].status == NodeStat::OPEN;
   }
@@ -138,6 +140,8 @@ private:
   Pathfinder (const Pathfinder&);
   Pathfinder operator= (const Pathfinder&);
 };
+
+} // namespace WorldMapNS
 
 #endif
 

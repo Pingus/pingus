@@ -1,4 +1,4 @@
-//  $Id: drawable.hxx,v 1.3 2002/10/13 13:34:40 grumbel Exp $
+//  $Id: drawable.hxx,v 1.4 2002/10/13 14:19:25 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,6 +67,8 @@ public:
   virtual void draw(GraphicContext& gc) =0;
   virtual void update() =0;
 
+  virtual float get_z_pos() const =0;
+  
 private:
   Drawable (const Drawable&);
   Drawable operator= (const Drawable&);
