@@ -30,6 +30,8 @@ Looks good...
     <digger count="20"/>
     <floater count="20"/>
     <miner count="20"/>
+
+    <slider count="20"/>
   </action-list>
 
 <background type="surface">
