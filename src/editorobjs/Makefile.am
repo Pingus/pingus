@@ -19,7 +19,7 @@ noinst_LIBRARIES = libpingus_editorobjs.a
 
 libpingus_editorobjs_a_SOURCES = \
 	bumper_obj.cxx                  bumper_obj.hxx \
-	conveyor_belt_obj.cxx           conveyer_belt_obj.hxx \
+	conveyor_belt_obj.cxx           conveyor_belt_obj.hxx \
 	entrance_obj.cxx		entrance_obj.hxx \
 	exit_obj.cxx			exit_obj.hxx \
 	fake_exit_obj.cxx               fake_exit_obj.hxx \

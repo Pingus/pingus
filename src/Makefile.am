@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.127 2003/02/12 22:40:47 torangan Exp $
+#  $Id: Makefile.am,v 1.128 2003/02/16 18:40:47 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,9 +43,6 @@ EXTRA_DIST = README \
              win32/Getopt.h  \
              win32/Getopt1.c \
              win32/config.h  \
-             boost/config.hpp \
-             boost/smart_ptr.hpp \
-             boost/utility.hpp   \
              make_docs.sh
 
 bin_PROGRAMS = pingus
@@ -214,6 +211,7 @@ pingu_info.cxx \
 pingu_info.hxx \
 pingu_map.cxx \
 pingu_map.hxx \
+pingus.hxx \
 pingus_counter.cxx \
 pingus_counter.hxx \
 pingus_counter_bar.cxx \

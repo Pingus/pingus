@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.40 2003/01/25 18:34:36 torangan Exp $
+//   $Id: pingus_main.cxx,v 1.41 2003/02/16 18:40:47 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -229,6 +229,7 @@ PingusMain::check_args(int argc, char** argv)
       // FIXME: is the number stuff correct?
       {"fs-preload",      no_argument,       0, 130},
       {"fast",            no_argument,       0, 132},
+      {"fast-mode",            no_argument,       0, 132},
       {"disable-previews",no_argument,       0, 133}, 
       {"maintainer-mode", no_argument,       0, 134},
       {"disable-auto-scrolling",   no_argument,       0, 137},
@@ -528,7 +529,7 @@ For more information about these matters, see the files named COPYING.\
           "                            multible times to increase verbosity\n"
           "   -V, --version            Prints version number and exit\n"
           //	"   --fs-preload             Preload all Levelpreviews\n"a
-          "   --fast                   Disable some cpu intensive features\n"
+          "   --fast-mode              Disable some cpu intensive features\n"
           //	"   --disable-previews       Disables all level preview in the level selector\n"
           "   -e, --editor             Launch the Level editor (experimental)\n"
           "   --disable-auto-scrolling Disable automatic scrolling\n"

@@ -1,4 +1,4 @@
-//  $Id: editor_view.cxx,v 1.5 2002/10/12 00:49:10 torangan Exp $
+//  $Id: editor_view.cxx,v 1.6 2003/02/16 18:40:47 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,7 +83,7 @@ EditorView::zoom_to (const CL_Rect & arg_rect)
   if (width < 10 && height < 10)
     return ;
 
-  float screen_relation = get_width () / get_height ();
+  float screen_relation = float(get_width ()) / float(get_height ());
   float rect_reation = width / height;
   
   if (rect_reation > screen_relation)
