@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackground.cc,v 1.17 2002/01/21 12:06:09 grumbel Exp $
+//  $Id: SurfaceBackground.cc,v 1.18 2002/01/21 12:08:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,6 +61,11 @@ SurfaceBackground::SurfaceBackground(const SurfaceBackgroundData& bg_data)
       CL_Surface source_surface = PingusResource::load_surface(bg_data.desc);
       
       CL_Canvas* canvas = Blitter::create_canvas(source_surface);
+      /* FIXME: fill_rect doesn't work with RGB images
+	 FIXME: seems to work fine with indexed images
+	 FIXME: not tested with RGBA images
+	 FIXME: the bug might be in create_canvas() and not in fill_rect()
+       */
       canvas->fill_rect(0, 0, 
 			canvas->get_width(), canvas->get_height(),
 			bg_data.color.red, bg_data.color.green, bg_data.color.blue, 
