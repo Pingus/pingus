@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.23 2002/10/14 11:15:15 torangan Exp $
+//  $Id: basher.cxx,v 1.24 2002/11/02 17:43:10 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -60,7 +60,7 @@ Basher::draw (GraphicContext& gc)
   else
     sprite.set_direction (Sprite::RIGHT);
 
-  gc.draw (sprite, pingu->get_pos());
+  gc.draw (sprite, pingu->get_pos() + Vector (0, +1));
 }
 
 void
@@ -73,16 +73,35 @@ Basher::update ()
     {
       walk_forward();
 
-      if (have_something_to_dig())
+      // If on walking forward the Basher has now walked on to water or lava
+      if (rel_getpixel(0, -1) == Groundtype::GP_WATER
+	  || rel_getpixel(0, -1) == Groundtype::GP_LAVA)
 	{
-	  // We only bash every second step, cause the Pingus would
-	  // get trapped otherwise in the bashing area.
-	  if (basher_c % 2 == 0)
-	    bash();
+	  pingu->set_action(Actions::Drown);
 	}
-      else if (sprite.get_progress () > 0.6f) // FIXME: EVIL! 
+      // If walking on to something (i.e. hasn't fallen)
+      else if (rel_getpixel(0, -1) != Groundtype::GP_NOTHING)
 	{
-	  pingu->set_action(Actions::Walker);
+	  // If the Basher has walked into something that it won't be able to
+	  // bash
+	  if (rel_getpixel(0, 0) == Groundtype::GP_SOLID
+	      || rel_getpixel(0, pingu_height) == Groundtype::GP_SOLID)
+	    {
+	      // Change direction and let walk code walk forward/up to get out.
+	      pingu->direction.change();
+	      pingu->set_action(Actions::Walker);
+	    }
+	  else if (have_something_to_dig())
+	    {
+	      // We only bash every second step, cause the Pingus would
+	      // get trapped otherwise in the bashing area.
+	      if (basher_c % 2 == 0)
+		bash();
+	    }
+	  else if (sprite.get_progress () > 0.6f) // FIXME: EVIL! 
+	    {
+	      pingu->set_action(Actions::Walker);
+	    }
 	}
     }
 }
@@ -92,10 +111,10 @@ Basher::bash()
 {
   WorldObj::get_world()->get_colmap()->remove(bash_radius,
 					      static_cast<int>(pingu->get_x () - (bash_radius_width / 2)),
-					      static_cast<int>(pingu->get_y () - bash_radius_width - 1));
+					      static_cast<int>(pingu->get_y () - bash_radius_width + 1));
   WorldObj::get_world()->get_gfx_map()->remove(bash_radius_gfx,
 					       static_cast<int>(pingu->get_x () - (bash_radius_gfx_width / 2)),
-					       static_cast<int>(pingu->get_y () - bash_radius_gfx_width - 1));
+					       static_cast<int>(pingu->get_y () - bash_radius_gfx_width + 1));
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: pingu_enums.hxx,v 1.8 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: pingu_enums.hxx,v 1.9 2002/11/02 17:43:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,41 +32,41 @@
     FIXME: splashed, smashed, etc.) */
 enum PinguStatus { PS_ALIVE, PS_EXITED, PS_DEAD };
 
-enum PingusGameMode { 
-  INTERACTIVE_MODE,
-  DEMO_MODE 
-};
-
 namespace Actions {
-    
-  enum ActionName { Angel,
-                    Basher,
-                    Blocker,
-                    Boarder,
-                    Bomber,
-                    Bridger,
-                    Climber,
-                    Digger,
-                    Drown,
-                    Exiter,
-                    Faller,
-                    Floater,
-                    Jumper,
-                    Laserkill,
-                    Miner,
-                    Rocketlauncher,
-                    Slider,
-                    Smashed,
-                    Splashed,
-                    Superman,
-                    Teleported,
-                    Waiter,
-                    Walker
-               };
+
+/** The order of the actions here are the same as the order of actions
+    in the buttonpanel, so if the order in the buttonpanel is not what
+    it should be it needs to be changed here. */
+enum ActionName
+  { Angel,
+    Basher,
+    Blocker,
+    Boarder,
+    Bomber,
+    Bridger,
+    Climber,
+    Digger,
+    Drown,
+    Exiter,
+    Faller,
+    Floater,
+    Jumper,
+    Laserkill,
+    Miner,
+    Rocketlauncher,
+    Slider,
+    Smashed,
+    Splashed,
+    Superman,
+    Teleported,
+    Waiter,
+    Walker
+  };
      
-  std::string action_to_string (ActionName action);
-  ActionName  action_from_string (const std::string& action);
-}
+std::string action_to_string (ActionName action);
+ActionName  action_from_string (const std::string& action);
+
+} // namespace Actions
 
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: button_panel.cxx,v 1.18 2002/10/29 12:47:55 grumbel Exp $
+//  $Id: button_panel.cxx,v 1.19 2002/11/02 17:43:10 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,12 @@ using namespace Actions;
 
 CL_Surface ButtonPanel::button_cap;
 
+struct action_sorter {
+  bool operator() (const ActionData& a, const ActionData& b) {
+    return a.name < b.name;
+  }
+};
+
 ButtonPanel::ButtonPanel(PLF* plf, int arg_x_pos, int arg_y_pos)
   : armageddon_pressed(false),
     left_pressed(0),
@@ -37,6 +43,10 @@ ButtonPanel::ButtonPanel(PLF* plf, int arg_x_pos, int arg_y_pos)
 {
 
   std::vector<ActionData> buttons_data = plf->get_actions();
+
+  // Sort the action so that they always have the same order in the
+  // panel
+  std::sort(buttons_data.begin(), buttons_data.end(), action_sorter());
 
   y_pos -= (buttons_data.size() * 38)/2 + 70;
 
