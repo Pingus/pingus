@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.cxx,v 1.7 2002/08/23 15:49:48 torangan Exp $
+//  $Id: groundpiece_data.cxx,v 1.8 2002/08/24 11:37:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,13 +22,12 @@
 #include "editor/editor_groundpiece_obj.hxx"
 #include "xml_helper.hxx"
 
-GroundpieceData::GroundpieceData () : resource(0)
+GroundpieceData::GroundpieceData () 
 {
   // do nothing
 }
 
 GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
-                                 : resource(0)
 {
   gptype = GroundpieceData::GP_GROUND;
 
@@ -69,7 +68,6 @@ GroundpieceData::GroundpieceData (xmlDocPtr doc, xmlNodePtr cur)
 
 GroundpieceData::GroundpieceData (const GroundpieceData& old) 
                                  : surface(old.surface),
-				   resource(new CL_Resource(*(old.resource))),
 				   desc(old.desc),
 				   pos(old.pos),
 				   gptype(old.gptype)
@@ -83,7 +81,6 @@ GroundpieceData::operator= (const GroundpieceData& old)
     return *this;
     
   surface  = old.surface;
-  resource = new CL_Resource(*(old.resource));
   desc     = old.desc;
   pos      = old.pos;
   gptype   = old.gptype;
@@ -93,7 +90,6 @@ GroundpieceData::operator= (const GroundpieceData& old)
 
 GroundpieceData::~GroundpieceData ()
 {
-  delete resource;
 }
 
 GroundpieceData::GPType 
