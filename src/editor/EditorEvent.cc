@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.48 2001/07/27 15:00:48 grumbel Exp $
+//  $Id: EditorEvent.cc,v 1.49 2001/07/27 16:47:04 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -604,7 +604,8 @@ EditorEvent::editor_insert_new_object()
     {
       disable();
       std::cout << "Object selector on" << std::endl;
-      objs = editor->object_selector->get_obj(editor->view->get_offset ().x, editor->view->get_offset ().y);
+      objs = editor->object_selector->get_obj(editor->view->get_offset ().x + CL_Display::get_width ()/2,
+					      editor->view->get_offset ().y + CL_Display::get_height ()/2);
       std::cout << "Object selector off" << std::endl;
       enable();
     }

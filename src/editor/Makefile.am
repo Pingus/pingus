@@ -17,6 +17,8 @@
 
 noinst_LIBRARIES = libpingus_editor.a
 
+EXTRA_DIST = EditorObjGroupData.hh EditorObjGroupData.cc
+
 libpingus_editor_a_SOURCES = \
      Editor.cc            \
      Editor.hh            \
