@@ -1,0 +1,75 @@
+/* This level was created with the PLE
+ * $Id: lukis-2.plf,v 1.1 2001/11/29 11:47:20 grumbel Exp $
+ */
+global {
+  author = "Carmen Müller, carmen@othello.ch";
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "Xmas Dream";
+  description = "Not to The DANGER!
+
+";
+  number_of_pingus = 100;
+  number_to_save = 100;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 1024;
+  height  = 512;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures)"Textures/clouds";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
+}
+
+buttons {
+  basher = 2;
+  jumper = 100;
+}
+
+trap {
+  name = "laser_exit";
+  x_pos = 469;
+  y_pos = 361;
+  z_pos = -100;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 130;
+  y_pos = 64;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+exit {
+  image = (resource:global)"GroundPieces/Snow/igloo";
+  x_pos = 904;
+  y_pos = 83;
+  z_pos = 0;
+}
+
+hotspot {
+  image = (resource:global)"Entrances/cloud";
+  x_pos = 15;
+  y_pos = -22;
+  z_pos = 0;
+  speed = -1;
+  para = "1";
+}
+
+/* EOF */
