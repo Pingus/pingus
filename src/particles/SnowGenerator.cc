@@ -1,7 +1,7 @@
-//  $Id: SnowParticle.hh,v 1.3 2000/08/02 19:00:08 grumbel Exp $
+//  $Id: SnowGenerator.cc,v 1.1 2000/08/02 19:00:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -17,28 +17,36 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef SNOWPARTICLE_HH
-#define SNOWPARTICLE_HH
+#include "SnowParticle.hh"
+#include "SnowGenerator.hh"
 
-#include "Particle.hh"
-
-///
-class SnowParticle : public Particle
+ParticleHolder* SnowGenerator::particle;
+ 
+SnowGenerator::SnowGenerator()
 {
-private:
-  ///
-  static CL_Surface* snow;
-public:
-  SnowParticle();
-  ///
-  SnowParticle(int x, int y);
-  ///
-  virtual ~SnowParticle();
+  strength = 100;
+}
 
-  void let_move();
-  bool is_alive();
-};
+SnowGenerator::SnowGenerator(int s)
+{
+  strength = s;
+}
+ 
+SnowGenerator::~SnowGenerator()
+{
+}
 
-#endif
+void 
+SnowGenerator::let_move()
+{
+  particle->add_particle(new SnowParticle(rand() % 1024, -32));
+  particle->add_particle(new SnowParticle(rand() % 1024, -32));
+}
+ 
+void
+SnowGenerator::SetParticleHolder(ParticleHolder* p)
+{
+  particle = p;
+}
 
 /* EOF */
