@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.25 2002/12/20 01:22:32 grumbel Exp $
+//  $Id: client.hxx,v 1.26 2002/12/20 20:45:50 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,17 +22,16 @@
 
 #include <ClanLib/Signals/slot.h>
 #include <ClanLib/Display/Input/inputdevice.h>
-#include <vector>
 #include "result.hxx"
 #include "gui_screen.hxx"
 #include "sprite.hxx"
 
 namespace Input {
 class Controller;
-class ButtonEvent;
-class PointerEvent;
-class ScrollEvent;
-class AxisEvent;
+struct ButtonEvent;
+struct PointerEvent;
+struct ScrollEvent;
+struct AxisEvent;
 } // namespace Input
 
 namespace GUI {
