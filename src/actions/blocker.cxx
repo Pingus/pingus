@@ -1,4 +1,4 @@
-//  $Id: blocker.cxx,v 1.19 2003/04/19 10:23:18 torangan Exp $
+//  $Id: blocker.cxx,v 1.20 2003/08/16 18:37:43 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ namespace Actions {
 
 Blocker::Blocker(Pingu* p)
   : PinguAction(p),
-    sprite(PingusResource::load_surface("Pingus/blocker" + to_string(pingu->get_owner()), "pingus"))
+    sprite(PingusResource::load_surface("Pingus/blocker" + to_string(pingu->get_owner()), "pingus"), 6.0f)
 {
   sprite.set_align_center_bottom();
 
@@ -59,10 +59,11 @@ Blocker::update()
       // FIXME: PinguHolder iterations should be handled otherwise
       PinguHolder* pingus = WorldObj::get_world()->get_pingus();
       for(PinguIter i = pingus->begin(); i != pingus->end(); ++i)
-	{
-	  catch_pingu(*i);
-	}
+        {
+          catch_pingu(*i);
+	      }
     }
+  sprite.update();
 }
 
 void
