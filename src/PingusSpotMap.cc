@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.19 2000/05/26 18:13:35 grumbel Exp $
+//  $Id: PingusSpotMap.cc,v 1.20 2000/05/28 16:47:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -215,12 +215,15 @@ PingusSpotMap::load(std::string filename)
       i != surfaces.end(); 
       i++)
     {
+      mark_tiles_not_empty(i->x_pos, i->y_pos,
+			   i->surface->get_width(), i->surface->get_height());
       // test cause png
       if (i->surface->get_provider()->get_depth() == 8)
 	{
 	  mark_tiles_not_empty(i->x_pos, i->y_pos,
 			      i->surface->get_width(), i->surface->get_height());
-	  //i->surface->put_target(i->x_pos, i->y_pos, 0, canvas);
+
+	  // i->surface->put_target(i->x_pos, i->y_pos, 0, map_canvas);
 	  // FIXME: Replace this with a ClanLib built in
 	  put_surface(map_canvas, i->surface->get_provider(),
 		      i->x_pos, i->y_pos);

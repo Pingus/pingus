@@ -1,4 +1,4 @@
-//  $Id: PingusLevelDesc.hh,v 1.4 2000/04/25 17:54:39 grumbel Exp $
+//  $Id: PingusLevelDesc.hh,v 1.5 2000/05/28 16:47:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 
 #include <ClanLib/core.h>
 
+#include "MultiLineText.hh"
 #include "PLF.hh"
 
 class PingusLevelDesc
@@ -33,7 +34,7 @@ private:
   CL_Font* title;
   PLF*     plf;
   
-  std::vector<std::string> description;
+  MultiLineText description;
   std::string         levelname;
 public:
   enum LoadingStatus { LOADING, FINISHED };

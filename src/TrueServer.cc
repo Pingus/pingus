@@ -1,4 +1,4 @@
-//  $Id: TrueServer.cc,v 1.8 2000/05/25 17:16:21 grumbel Exp $
+//  $Id: TrueServer.cc,v 1.9 2000/05/28 16:47:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,12 +65,13 @@ TrueServer::start(PLF* level_data)
   PingusLevelDesc leveldesc(level_data);
 
   timer.start();
+  
   std::cout << "TrueServer: Generating actions..." << std::flush;
 
   bdata = level_data->get_buttons();
 
   for(std::vector<button_data>::iterator b = bdata.begin(); b != bdata.end(); ++b) {
-    action_holder.add_action(b->name, b->number_of);
+    action_holder.add_action(b->name, 0); //b->number_of);
   }
   std::cout << "done " << timer.stop() << std::endl;
   

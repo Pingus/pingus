@@ -1,4 +1,4 @@
-//  $Id: ActionHolder.cc,v 1.13 2000/05/25 17:16:21 grumbel Exp $
+//  $Id: ActionHolder.cc,v 1.14 2000/05/28 16:47:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -155,24 +155,24 @@ PinguAction*
 ActionHolder::get_uaction(const std::string& name)
 {
   PinguAction* tmp_action;
-  
+  /*
   if (name == "bomber")
     {
-      if (uaction_buffer["bomber"].number >= MAX_ACTION_BUFFER_SIZE)
-	{
+      //      if (uaction_buffer["bomber"].number >= MAX_ACTION_BUFFER_SIZE)
+	//	{
 	  uaction_buffer["bomber"].action.push_back(translate_action("bomber"));
-	}
+	  	}
       else 
 	{
 	  tmp_action = uaction_buffer["bomber"].action[uaction_buffer["bomber"].number++];
 	}
     }
   else
-    {
+    {*/
       tmp_action = translate_action(name);
       
       uactions.push_back(tmp_action);
-    }
+      //    }
 
   return tmp_action;
 }
@@ -196,7 +196,7 @@ ActionHolder::init_uactions()
 
   timer.start();
   std::cout << "ActionHoler:init_uaction(): static Generating actions..." << std::flush;
-  bombers.resize(MAX_ACTION_BUFFER_SIZE);
+  bombers.resize(1000);
   std::cout << "done " << timer.stop()  << std::endl;
 }
 

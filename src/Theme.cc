@@ -1,4 +1,4 @@
-//  $Id: Theme.cc,v 1.9 2000/05/27 23:11:21 grumbel Exp $
+//  $Id: Theme.cc,v 1.10 2000/05/28 16:47:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,8 @@ Theme::load(std::string filename)
 
   if (plt.get_description() != "-")
     {
-      description.set_text(plt.get_description(), 30);
+      description.set_font(font);
+      description.set_text(plt.get_description(), 350);
       has_description = true;
     }
   else
@@ -135,16 +136,23 @@ Theme::draw_title()
       y_pos += surface->get_height() + 20;
     }
 
+  y_pos += 15;
   if (has_description)
-    description.print_center(x_center, y_pos);
+    {
+      CL_Display::fill_rect(x_center - (description.get_width()/2) - 15,
+			    y_pos - 15,
+			    x_center + (description.get_width()/2) + 15,
+			    y_pos + description.get_height() + 15,
+			    1.0, 1.0, 1.0, 0.5);
 
-  y_pos += 20;
+      description.print_center(x_center, y_pos);
+    }
+
+  y_pos += description.get_height() + 15 + 20;
   int j = 0;
 
   for(std::vector<std::string>::iterator i = levelnames.begin(); i < levelnames.end(); i++) 
     {
-      y_pos += font->get_height() + 4;
-      
       if (j > accessible_levels) 
 	{
 	  font->print_center(x_center, y_pos, (*i).c_str());
@@ -167,8 +175,8 @@ Theme::draw_title()
 	{
 	  font->print_center(x_center, y_pos, (*i).c_str());
 	}
-      
       j++;
+      y_pos += font->get_height() + 4;     
     }
 }
 
