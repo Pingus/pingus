@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.44 2001/04/12 20:52:40 grumbel Exp $
+//  $Id: Client.cc,v 1.45 2001/04/13 09:31:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -284,7 +284,7 @@ Client::update (float delta)
   server->update(delta);
   send_next_event();
 
-  if (controller->scroll_left ())
+  if (controller->scroll_left->is_pressed ())
     {
       playfield->enable_scroll_mode ();
       playfield->scroll_speed = 50;
@@ -294,7 +294,7 @@ Client::update (float delta)
   else
     playfield->disable_scroll_mode ();
 
-  if (controller->scroll_right ()) 
+  if (controller->scroll_right->is_pressed ()) 
     {
       playfield->scroll_speed = 50;
       playfield->enable_scroll_mode ();
@@ -399,6 +399,13 @@ Client::register_event_handler()
   on_button_press_slot = CL_Input::sig_button_press.connect (CL_CreateSlot(this, &Client::on_button_press));
   on_button_release_slot = CL_Input::sig_button_release.connect (CL_CreateSlot(this, &Client::on_button_release));
 
+  slot_left_pressed   = controller->left->signal_pressed.connect (CL_CreateSlot (this, &Client::on_left_pressed));
+  slot_middle_pressed = controller->middle->signal_pressed.connect (CL_CreateSlot (this, &Client::on_middle_pressed));
+  slot_right_pressed  = controller->right->signal_pressed.connect (CL_CreateSlot (this, &Client::on_right_pressed));
+  slot_abort_pressed  = controller->abort->signal_pressed.connect (CL_CreateSlot (this, &Client::on_abort_pressed));
+  slot_pause_pressed  = controller->pause->signal_pressed.connect (CL_CreateSlot (this, &Client::on_pause_pressed));
+  slot_scroll_left_pressed  = controller->scroll_left->signal_pressed.connect (CL_CreateSlot (this, &Client::on_scroll_left_pressed));
+  slot_scroll_right_pressed = controller->scroll_right->signal_pressed.connect (CL_CreateSlot (this, &Client::on_scroll_right_pressed));
   enabled = true;
 }
 
@@ -616,6 +623,44 @@ Client::on_mouse_button_release(const CL_Key& key)
       if (verbose > 1) std::cout << "Client: Unknown mouse button released: " << key.id << std::endl;
     }
   return;
+}
+
+void
+Client:: on_left_pressed (const CL_Vector& pos)
+{
+  std::cout << "Left Pressed" << std::endl;
+}
+
+void
+Client:: on_middle_pressed (const CL_Vector& pos)
+{
+  std::cout << "Middle Pressed" << std::endl;
+}
+
+void
+Client:: on_right_pressed (const CL_Vector& pos)
+{
+  std::cout << "Right Pressed" << std::endl;
+}
+
+void
+Client:: on_abort_pressed (const CL_Vector& pos)
+{
+}
+
+void
+Client:: on_pause_pressed (const CL_Vector& pos)
+{
+}
+
+void
+Client::on_scroll_left_pressed (const CL_Vector& pos)
+{
+}
+
+void
+Client::on_scroll_right_pressed (const CL_Vector& pos)
+{
 }
 
 

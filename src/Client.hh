@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.22 2001/04/12 19:47:09 grumbel Exp $
+//  $Id: Client.hh,v 1.23 2001/04/13 09:31:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -86,6 +86,16 @@ private:
   CL_Slot on_button_press_slot;
   ///
   CL_Slot on_button_release_slot;
+
+  // Slots for controller handling
+  CL_Slot slot_left_pressed;
+  CL_Slot slot_middle_pressed;
+  CL_Slot slot_right_pressed;
+  CL_Slot slot_abort_pressed;
+  CL_Slot slot_pause_pressed;
+  CL_Slot slot_scroll_left_pressed;
+  CL_Slot slot_scroll_right_pressed;
+  
   ///
   bool enabled;
 public:
@@ -161,6 +171,15 @@ public:
   void on_keyboard_button_press(const CL_Key &key);
   ///
   void on_keyboard_button_release(const CL_Key &key);
+
+  /// 
+  void on_left_pressed (const CL_Vector& pos);
+  void on_middle_pressed (const CL_Vector& pos);
+  void on_right_pressed (const CL_Vector& pos);
+  void on_abort_pressed (const CL_Vector& pos);
+  void on_pause_pressed (const CL_Vector& pos);
+  void on_scroll_left_pressed (const CL_Vector& pos);
+  void on_scroll_right_pressed (const CL_Vector& pos);
 
   ///
   void register_event_handler();

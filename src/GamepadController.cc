@@ -1,4 +1,4 @@
-//  $Id: GamepadController.cc,v 1.2 2001/04/12 20:52:40 grumbel Exp $
+//  $Id: GamepadController.cc,v 1.3 2001/04/13 09:31:37 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,8 @@
 GamepadController::GamepadController (int arg_owner_id, CL_InputDevice* arg_device)
   : Controller (arg_owner_id),
     device (arg_device),
-    pos (320, 200),
+    pos (CL_Display::get_width ()/2,
+	 CL_Display::get_height ()/2),
     acceleration (1.0)
 {
   x_axis = device->get_axis (0);
@@ -31,6 +32,14 @@ GamepadController::GamepadController (int arg_owner_id, CL_InputDevice* arg_devi
 
   if (!x_axis || !y_axis)
     throw PingusError ("Couldn't find enough axis on joystick");
+  
+  left   = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (4)));
+  middle = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (5)));
+  right  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (1)));
+  scroll_left  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (7)));
+  scroll_right  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (6)));
+  abort  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (8)));
+  pause  = boost::shared_ptr<ControllerButton>(new InputDeviceButton(this, device->get_button (7)));
 }
 
 int
@@ -55,97 +64,6 @@ void
 GamepadController::set_range (int x1, int y1, int x2, int y2)
 {
   // FIXME: Not implemented
-}
-
-bool 
-GamepadController::left_pressed ()
-{
-  CL_InputButton* button = device->get_button (4);
-  std::cout << "Button 4: " << button << std::endl;
-  if (button)
-    return button->is_pressed ();
-  else
-    return false;
-}
-
-bool 
-GamepadController::middle_pressed ()
-{
-  CL_InputButton* button = device->get_button (5);
-  if (button)
-    return button->is_pressed ();
-  else
-    return false;
-}
-
-bool 
-GamepadController::right_pressed ()
-{
-  CL_InputButton* button = device->get_button (1);
-  if (button)
-    return button->is_pressed ();
-  else
-    return false;
-}
-  
-bool 
-GamepadController::next_action ()
-{
-  CL_InputButton* button = device->get_button (7);
-  if (button)
-    return button->is_pressed ();
-  else
-    return false;
-}
-
-bool 
-GamepadController::previous_action ()
-{
-  CL_InputButton* button = device->get_button (6);
-  if (button)
-    return button->is_pressed ();
-  else
-    return false;
-}
-
-bool 
-GamepadController::scroll_left ()
-{
-  CL_InputButton* button = device->get_button (7);
-  if (button) 
-    return button->is_pressed ();
-  else
-    return false;
-}
-
-bool 
-GamepadController::scroll_right ()
-{
-  CL_InputButton* button = device->get_button (6);
-    if (button)
-    return button->is_pressed ();
-  else
-    return false;
-}
-
-bool 
-GamepadController::abort_pressed ()
-{
-  CL_InputButton* button = device->get_button (8);
-  if (button)
-    return button->is_pressed ();
-  else
-    return false;
-}
-
-bool 
-GamepadController::pause_pressed ()
-{
-  CL_InputButton* button = device->get_button (7);
-  if (button)
-    return button->is_pressed ();
-  else
-    return false;  
 }
 
 void 

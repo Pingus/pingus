@@ -1,4 +1,4 @@
-//  $Id: Controller.hh,v 1.2 2001/04/12 20:52:40 grumbel Exp $
+//  $Id: Controller.hh,v 1.3 2001/04/13 09:31:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,42 @@
 #define CONTROLLER_HH
 
 #include <ClanLib/signals.h>
+#include <ClanLib/display.h>
 #include <ClanLib/core.h>
+#include "boost/smart_ptr.hpp"
 
+class Controller;
+
+class ControllerButton 
+{
+private:
+  Controller* controller;
+  bool pressed;
+
+public:
+  ControllerButton (Controller* );
+  virtual ~ControllerButton () {}
+  
+  virtual bool is_pressed () =0;
+  virtual void keep_alive ();
+
+  CL_Signal_v1<const CL_Vector&> signal_pressed;
+  CL_Signal_v1<const CL_Vector&> signal_released;
+};
+
+class InputDeviceButton : public ControllerButton 
+{
+private:
+  CL_InputButton* button;
+public:
+  InputDeviceButton (Controller* arg_controller, CL_InputButton* arg_button);
+  
+  virtual bool is_pressed ();
+};
+
+/** An abstract controller class representing an controlling device
+    for Pingus. Implementations for mouse and the sidewinder gamepad
+    are provided by MouseController and GamepadController. */
 class Controller : public CL_KeepAlive
 {
 protected:
@@ -41,36 +75,16 @@ public:
       modes to limit the cursor to the players view */
   virtual void set_range (int x1, int y1, int x2, int y2) =0;
   
-  /// @return true when the left mouse button is pressed
-  virtual bool left_pressed () =0;
-  /// @return true when the middle mouse button is pressed
-  virtual bool middle_pressed () =0;
-  /// @return true when the right mouse button is pressed
-  virtual bool right_pressed () =0;
-  
-  virtual bool next_action () =0;
-  virtual bool previous_action () =0;
-  
-  /** @return true if the abort button was pressed (usually the escape
-      key) */
-  virtual bool abort_pressed () =0;
-
-  /** @return true if pause is pressed */
-  virtual bool pause_pressed () =0;
-
-  virtual bool scroll_left () =0;
-  virtual bool scroll_right () =0;
-
   /// Called once each CL_System::keep_alive () call
-  virtual void keep_alive () {}
+  virtual void keep_alive ();
 
-  CL_Signal_v1<CL_Vector> signal_left_pressed;
-  CL_Signal_v1<CL_Vector> signal_middle_pressed;
-  CL_Signal_v1<CL_Vector> signal_right_pressed;
-  CL_Signal_v1<CL_Vector> signal_abort_pressed;
-  CL_Signal_v1<CL_Vector> signal_pause_pressed;
-  CL_Signal_v1<CL_Vector> signal_scroll_left;
-  CL_Signal_v1<CL_Vector> signal_scroll_right;
+  boost::shared_ptr<ControllerButton> left;
+  boost::shared_ptr<ControllerButton> middle;
+  boost::shared_ptr<ControllerButton> right;
+  boost::shared_ptr<ControllerButton> abort;
+  boost::shared_ptr<ControllerButton> pause;
+  boost::shared_ptr<ControllerButton> scroll_left;
+  boost::shared_ptr<ControllerButton> scroll_right;
 };
 
 #endif

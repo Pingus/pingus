@@ -1,4 +1,4 @@
-//  $Id: GamepadController.hh,v 1.2 2001/04/12 20:52:40 grumbel Exp $
+//  $Id: GamepadController.hh,v 1.3 2001/04/13 09:31:37 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,25 +49,6 @@ public:
       modes to limit the cursor to the players view */
   void set_range (int x1, int y1, int x2, int y2);
   
-  /// @return true when the left mouse button is pressed
-  bool left_pressed ();
-  /// @return true when the middle mouse button is pressed
-  bool middle_pressed ();
-  /// @return true when the right mouse button is pressed
-  bool right_pressed ();
-  
-  bool next_action ();
-  bool previous_action ();
-  
-  /** @return true if the abort button was pressed (usually the escape
-      key) */
-  bool abort_pressed ();
-
-  bool pause_pressed ();
-  
-  bool scroll_left ();
-  bool scroll_right ();
-
   void keep_alive ();
 };
 

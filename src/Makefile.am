@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.54 2001/04/12 19:47:09 grumbel Exp $
+#  $Id: Makefile.am,v 1.55 2001/04/13 09:31:37 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -171,7 +171,7 @@ pingus_SOURCES = \
                  DeltaManager.hh \
                  PingusGameSession.cc PingusGameSession.hh \
                  MultiplayerConfig.cc MultiplayerConfig.hh \
-                 Controller.hh \
+                 Controller.hh        Controller.cc \
                  MouseController.cc   MouseController.hh \
                  GamepadController.cc GamepadController.hh \
                  Cursor.cc            Cursor.hh
