@@ -33,6 +33,10 @@ some examples
 	en_UK  - English  United Kingdom
 	nl_NL  - Dutch    Holland/Netherlands
 	...
+----
+
+If you want to help the translation effort, please look at
+the README.translate file in the ./po directory
 
 Giray Devlet
 
