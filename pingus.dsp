@@ -1489,10 +1489,6 @@ SOURCE=.\src\multiline_text.hxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\my_gettext.hxx
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\particles\pingu_particle_holder.cxx
 # End Source File
 # Begin Source File
