@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.32 2001/06/16 15:01:53 grumbel Exp $
+//  $Id: System.cc,v 1.33 2001/07/27 21:53:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,14 +36,13 @@
 #include "my_gettext.hh"
 
 //#include "PingusError.hh" 
+#include "globals.hh"
 #include "StringConverter.hh"
 #include "System.hh"
 
 int System::verbose;
 std::string System::default_email;
 std::string System::default_username;
-std::string System::default_language;
-
 
 System::DirectoryEntry::DirectoryEntry(const std::string& n)
 {
@@ -167,6 +166,7 @@ System::create_dir(std::string directory)
 void
 System::change_dir (std::string dir)
 {
+  std::cout << "System: change_dir: " << dir << std::endl;
   chdir (dir.c_str ());
 }
 
@@ -296,7 +296,20 @@ const std::string&
 System::translate(const std::map<std::string, std::string>& strs)
 {
   // FIXME: Hack...
-  static std::string nothing;
+  static std::string nothing1 = "<translator bug1>";
+  static std::string nothing2 = "<translator bug2>";
+
+  if (pingus_debug_flags & PINGUS_DEBUG_TRANSLATOR)
+    {
+      std::cout << ",-- [ Translator: lang=" << System::get_language () 
+		<< " default=" << default_language << " ] --" << std::endl;
+      for (std::map<std::string, std::string>::const_iterator i = strs.begin ();
+	   i != strs.end (); ++i)
+	{
+	  std::cout << "|  [" << i->first << "] ->" <<  i->second << std::endl;
+	}
+      std::cout << "`-- [ End Translator ] -----------------------" << std::endl;
+    }
 
   std::map<std::string, std::string>::const_iterator p = strs.find(System::get_language());
 
@@ -305,18 +318,17 @@ System::translate(const std::map<std::string, std::string>& strs)
       const std::string& str = p->second;
   
       if (str.empty())
-	return strs.find(default_language)->second;
+	{
+	  std::map<std::string, std::string>::const_iterator p2 = strs.find(default_language);
+	  if (p2 != strs.end ())
+	    return p2->second;
+	  else
+	    return nothing2;
+	}
       else
 	return str;
     }
-
-  std::map<std::string, std::string>::const_iterator ret = strs.find(System::get_language());
-  if (ret != strs.end ())
-    return ret->second;
-  else
-    {
-      return nothing;
-    }
+  return nothing1;
 }
 
 /** Read file and create a checksum and return it */

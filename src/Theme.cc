@@ -1,4 +1,4 @@
- //  $Id: Theme.cc,v 1.28 2001/07/27 19:35:36 grumbel Exp $
+ //  $Id: Theme.cc,v 1.29 2001/07/27 21:53:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@
 Theme::Theme(std::string filename)
   : filename (filename)
 {
-  std::cout << "Theme: Constructing: " << filename << std::endl;
+  //std::cout << "Theme: Constructing: " << filename << std::endl;
   title = PingusResource::load_font("Fonts/pingus","fonts");
   font  = PingusResource::load_font("Fonts/pingus_small","fonts");
   is_loaded = false;
@@ -51,7 +51,7 @@ Theme::load(std::string filename)
   plt.parse(filename);
   if (verbose > 1) std::cout << "Theme: Surface: " << plt.get_surface() << std::endl;
 
-  levels = plt.get_levels();
+  level_filenames = plt.get_levels();
   load_levels();
 
   if (System::translate(plt.get_description()) != "-")
@@ -178,8 +178,10 @@ Theme::draw_title()
   
   level_start_y_pos = y_pos;
 
-  for(std::vector<std::string>::iterator i = levelnames.begin(); i < levelnames.end(); i++) 
+  for(std::vector<std::string>::iterator i = levelnames.begin(); i != levelnames.end(); ++i)
     {
+      //std::cout << "XXX Level: " << *i << ": " << i << std::endl;
+
       if (j > accessible_levels) 
 	{
 	  font->print_center(x_center, y_pos, (*i).c_str());
@@ -233,10 +235,10 @@ Theme::load_status(std::string name)
       accessible_levels = 0;
     }
 
-  if ((unsigned int)(accessible_levels) >= levels.size()) 
+  if ((unsigned int)(accessible_levels) >= level_filenames.size()) 
     {
       if (verbose) std::cout << "Warning: Accessible_Level is to high! " << accessible_levels << std::endl;
-      accessible_levels = levels.size() - 1;
+      accessible_levels = level_filenames.size() - 1;
     }
   current_level = accessible_levels;
 }
@@ -255,8 +257,8 @@ Theme::play()
       if (current_level == accessible_levels)
 	++accessible_levels;
             
-      if ((unsigned int)(accessible_levels) >= levels.size())
-	accessible_levels = levels.size() - 1;
+      if ((unsigned int)(accessible_levels) >= level_filenames.size())
+	accessible_levels = level_filenames.size() - 1;
       
       std::ofstream out (status_file.c_str());
       out << accessible_levels;
@@ -282,8 +284,8 @@ Theme::next_level()
 
   current_level++;
 
-  if ((unsigned int)(current_level) >= levels.size()) 
-    current_level = levels.size() - 1;
+  if ((unsigned int)(current_level) >= level_filenames.size()) 
+    current_level = level_filenames.size() - 1;
   
   if (current_level > accessible_levels) 
     current_level  = accessible_levels;
@@ -311,9 +313,10 @@ Theme::load_levels()
   
   if (verbose) std::cout << "Theme opening levels... " << std::flush;
 
-  for(std::vector<std::string>::iterator i = levels.begin(); i < levels.end(); i++)
+  for(std::vector<std::string>::iterator i = level_filenames.begin(); 
+      i != level_filenames.end(); i++)
     {
-      filename = "levels/" + *i;
+      filename = path_manager.complete("levels/" + *i);
 
       try
 	{
@@ -324,18 +327,19 @@ Theme::load_levels()
 	    }
 	  else
 	    {
+	      //std::cout << "Theme: Loading level: " << filename << std::endl;
 	      XMLPLF plf(filename);
 	      levelnames.push_back(System::translate(plf.get_levelname()));
 	    }
 	}
       catch (PingusError err) 
 	{
-	  std::string str = "PingusError: ";
-	  str += err.get_message ();
-	  std::cout << err.get_message () << std::endl;
+	  std::cout << "Theme: PingusError: " << err.get_message () << std::endl;
 	}
     }
   if (verbose) std::cout << "done." << std::endl;
+
+  std::cout << "Levelnames: " << levelnames.size () << std::endl;
 }
 
 void 

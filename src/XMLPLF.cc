@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.30 2001/06/11 20:40:16 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.31 2001/07/27 21:53:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,10 +26,6 @@
 #include "PingusError.hh"
 #include "StringConverter.hh"
 
-XMLPLF::XMLPLF()
-{
-}
-
 XMLPLF::XMLPLF(const std::string& filename)
 {
   //  std::cout << "----- Parsing .xml file" << std::endl;
@@ -40,7 +36,7 @@ XMLPLF::XMLPLF(const std::string& filename)
   doc = xmlParseFile(filename.c_str());
 
   if (doc == NULL)
-    throw PingusError("Couldn't open \"" + filename + "\"");
+    throw PingusError("XMLPLF: Couldn't open \"" + filename + "\"");
 
   parse_file();
 }

@@ -1,4 +1,4 @@
-//  $Id: Theme.hh,v 1.11 2001/07/25 19:49:48 grumbel Exp $
+//  $Id: Theme.hh,v 1.12 2001/07/27 21:53:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,10 +50,13 @@ private:
       accessible_levels */
   int      current_level;
   std::string filename;
-  ///
-  std::vector<std::string> levels;
-  ///
+
+  /** The name of the levels, this is was is displayed */
   std::vector<std::string> levelnames;
+
+  /** The filenames of the levels */
+  std::vector<std::string> level_filenames;
+
   ///
   std::string   status_file;
 

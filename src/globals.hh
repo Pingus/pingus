@@ -1,4 +1,4 @@
-//  $Id: globals.hh,v 1.30 2001/07/23 09:20:02 grumbel Exp $
+//  $Id: globals.hh,v 1.31 2001/07/27 21:53:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,14 +73,15 @@ extern std::string default_language;
 /** Set some bits in this thing to get debug infos */
 extern int pingus_debug_flags;
 
-#define PINGUS_DEBUG_ACTIONS  (1 << 0)
-#define PINGUS_DEBUG_SOUND    (1 << 1)
-#define PINGUS_DEBUG_GAMETIME (1 << 2)
-#define PINGUS_DEBUG_TILES    (1 << 3)
-#define PINGUS_DEBUG_LOADING  (1 << 4)
-#define PINGUS_DEBUG_EDITOR   (1 << 5)
-#define PINGUS_DEBUG_BLITTER  (1 << 6)
-#define PINGUS_DEBUG_ALL      (~0)
+#define PINGUS_DEBUG_ACTIONS    (1 << 0)
+#define PINGUS_DEBUG_SOUND      (1 << 1)
+#define PINGUS_DEBUG_GAMETIME   (1 << 2)
+#define PINGUS_DEBUG_TILES      (1 << 3)
+#define PINGUS_DEBUG_LOADING    (1 << 4)
+#define PINGUS_DEBUG_EDITOR     (1 << 5)
+#define PINGUS_DEBUG_BLITTER    (1 << 6)
+#define PINGUS_DEBUG_TRANSLATOR (1 << 7)
+#define PINGUS_DEBUG_ALL        (~0)
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.hh,v 1.10 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: XMLPLF.hh,v 1.11 2001/07/27 21:53:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,6 @@ private:
   void parse_weather (xmlNodePtr cur);
 
 public:
-  XMLPLF();
   XMLPLF(const std::string& filename);
   virtual ~XMLPLF();
 };

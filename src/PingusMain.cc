@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.34 2001/07/27 19:35:35 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.35 2001/07/27 21:53:22 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -462,6 +462,10 @@ For more information about these matters, see the files named COPYING.\
       else if (strcmp (optarg, "loading") == 0)
 	{
 	  pingus_debug_flags |= PINGUS_DEBUG_LOADING;
+	}
+      else if (strcmp (optarg, "translator") == 0)
+	{
+	  pingus_debug_flags |= PINGUS_DEBUG_TRANSLATOR;
 	}
       else
 	{
