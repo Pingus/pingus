@@ -1,5 +1,5 @@
 /* This level was created with the PLE
- * $Id: test2.plf,v 1.2 2000/05/28 16:46:51 grumbel Exp $
+ * $Id: test2.plf,v 1.3 2000/06/13 17:51:14 grumbel Exp $
  */
 global {
   start_x_pos = 0;
@@ -28,6 +28,10 @@ background {
   blue  = "0";
   scroll_x = 0;
   scroll_y = 0;
+  para_x = 0.5;
+  para_y = 0.5;
+  stretch_x = 0;
+  stretch_y = 0;
 }
 
 buttons {
@@ -44,7 +48,25 @@ buttons {
 
 entrance {
   type  = generic;
-  x_pos = 748;
+  x_pos = 507;
+  y_pos = 263;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 449;
+  y_pos = 264;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 390;
   y_pos = 265;
   z_pos = 0;
   release_rate = 25;
@@ -53,8 +75,8 @@ entrance {
 
 entrance {
   type  = generic;
-  x_pos = 794;
-  y_pos = 265;
+  x_pos = 333;
+  y_pos = 266;
   z_pos = 0;
   release_rate = 25;
   direction = left;
@@ -62,8 +84,8 @@ entrance {
 
 entrance {
   type  = generic;
-  x_pos = 578;
-  y_pos = 278;
+  x_pos = 275;
+  y_pos = 267;
   z_pos = 0;
   release_rate = 25;
   direction = left;
@@ -71,35 +93,8 @@ entrance {
 
 entrance {
   type  = generic;
-  x_pos = 534;
-  y_pos = 250;
-  z_pos = 0;
-  release_rate = 25;
-  direction = left;
-}
-
-entrance {
-  type  = generic;
-  x_pos = 483;
-  y_pos = 211;
-  z_pos = 0;
-  release_rate = 25;
-  direction = left;
-}
-
-entrance {
-  type  = generic;
-  x_pos = 632;
-  y_pos = 299;
-  z_pos = 0;
-  release_rate = 25;
-  direction = left;
-}
-
-entrance {
-  type  = generic;
-  x_pos = 709;
-  y_pos = 265;
+  x_pos = 561;
+  y_pos = 262;
   z_pos = 0;
   release_rate = 25;
   direction = left;

@@ -1,0 +1,67 @@
+/* This level was created with the PLE
+ * $Id: rockhopping.plf,v 1.1 2000/06/13 17:51:14 grumbel Exp $
+ */
+global {
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "Rockhoppin'";
+  description = "Pingus rocks, doesn't it?
+
+";
+  number_of_pingus = 50;
+  number_to_save = 28;
+  time = 9000;
+}
+
+ground {
+  maptype = "SPOT";
+  width   = 1216;
+  height  = 608;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures.dat)"Textures/stars";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+}
+
+buttons {
+  basher = 6;
+  blocker = 4;
+  bomber = 4;
+  bridger = 3;
+  climber = 0;
+  digger = 1;
+  floater = 30;
+  miner = 1;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 326;
+  y_pos = 13;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+exit {
+  image = (resource)"Exits/stone";
+  x_pos = 699;
+  y_pos = 440;
+  z_pos = 0;
+}
+
+trap {
+  name = "laser_exit";
+  x_pos = 237;
+  y_pos = 358;
+  z_pos = 0;
+}
+
+/* EOF */
