@@ -488,7 +488,7 @@ close_cache();
 ?>
     </div>
     <div>
-      <small>Pingus level feedback system &copy; 2003 by Jarno Elonen,
+      <small>Pingus level feedback system &copy; 2003, 2004 by Jarno Elonen,
       Licensed under the GNU General Public License (GPL) 2.0 or newer
       </small>
     </div>
