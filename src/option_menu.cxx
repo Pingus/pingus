@@ -1,4 +1,4 @@
-//  $Id: option_menu.cxx,v 1.8 2002/10/01 21:48:32 grumbel Exp $
+//  $Id: option_menu.cxx,v 1.9 2002/10/03 12:33:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -317,8 +317,10 @@ OptionMenu::add_entry (const std::string& e, std::string* v)
 }
 
 void
-OptionMenu::draw_background()
+OptionMenu::draw_background(GraphicContext& gc)
 {
+  UNUSED_ARG(gc);
+
   for(int y=0; y < CL_Display::get_height(); y += background.get_height()) {
     for(int x=0; x < CL_Display::get_width(); x += background.get_width()) {
       background.put_screen(x, y);

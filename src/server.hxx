@@ -1,4 +1,4 @@
-//  $Id: server.hxx,v 1.10 2002/10/03 01:02:12 grumbel Exp $
+//  $Id: server.hxx,v 1.11 2002/10/03 12:33:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 class Pingu;
 class PLF;
 class World;
+class DemoRecorder;
 
 /** An Event in the Pingus World
 
@@ -54,7 +55,8 @@ public:
 class Server
 {
 protected:
-  std::vector<ServerEvent> events;
+  PLF* plf;
+  DemoRecorder* demo_recorder;
   World* world;
   ActionHolder action_holder;
   bool demo_mode;
@@ -63,7 +65,6 @@ protected:
   bool get_next_event;
   bool finished;
   bool armageddon;
-
 public:
   Server(PLF*);
   virtual ~Server();
@@ -78,7 +79,7 @@ public:
 
   virtual bool get_armageddon () { return armageddon; }
 
-  virtual PLF* get_plf () =0;
+  PLF* get_plf () { return plf; }
 
   int get_time();
 

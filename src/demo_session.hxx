@@ -1,4 +1,4 @@
-//  $Id: demo_session.hxx,v 1.1 2002/10/03 01:02:12 grumbel Exp $
+//  $Id: demo_session.hxx,v 1.2 2002/10/03 12:33:08 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,30 +20,34 @@
 #ifndef HEADER_PINGUS_DEMO_SESSION_HXX
 #define HEADER_PINGUS_DEMO_SESSION_HXX
 
-#include "screen.hxx"
+#include "gui_screen.hxx"
 
 class Server;
 class XMLPDF;
+class PingusCounter;
 
 /** A DemoSession is analog to a GameSession, but instead of loading a
     level and letting the player play a game, a demo file will be
     loaded and the level will be played automatically. */
-class DemoSession : public Screen
+class DemoSession : public GUIScreen
 {
 private:
   XMLPDF*     pdf;
   Server*     server;
   DemoPlayer* demo_player;
+
+  // GUI stuff
+  PingusCounter* pcounter;
 public:
   /** @param filename the complete filename of the demo file */
   DemoSession(const std::string& filename);
   ~DemoSession();
 
   /** Draw this screen */
-  bool draw (GraphicContext& gc);
+  void draw_background(GraphicContext& gc);
 
   /** Pass a delta to the screen */
-  void update (const GameDelta& delta);
+  void update(float delta);
   
 private:
   DemoSession (const DemoSession&);

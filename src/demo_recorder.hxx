@@ -1,4 +1,4 @@
-//  $Id: demo_recorder.hxx,v 1.6 2002/10/03 01:02:12 grumbel Exp $
+//  $Id: demo_recorder.hxx,v 1.7 2002/10/03 12:33:08 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,19 +24,25 @@
 #include <fstream>
 #include <string>
 
+class Server;
+class ServerEvent;
+
 class DemoRecorder
 {
 private:
+  /** Stream to which the events are written */
   std::ofstream out;
+
+  /** Filename to which the events are written */
   std::string   filename;
 
   std::string get_date();
 public:
-  DemoRecorder();
+  DemoRecorder(Server* server);
   ~DemoRecorder();
-
-  void set_levelname(const std::string&);
   
+  void record_event (const ServerEvent& event);
+
 private:
   DemoRecorder (const DemoRecorder&);
   DemoRecorder& operator= (const DemoRecorder&);

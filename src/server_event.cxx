@@ -1,4 +1,4 @@
-//  $Id: server_event.cxx,v 1.1 2002/10/03 01:02:12 grumbel Exp $
+//  $Id: server_event.cxx,v 1.2 2002/10/03 12:33:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,8 @@ ServerEvent::ServerEvent()
 
 ServerEvent::ServerEvent(xmlDocPtr doc, xmlNodePtr cur)
 {
+  UNUSED_ARG(doc);
+
   if (XMLhelper::equal_str(cur->name, "armageddon"))
     {
       type = ARMAGEDDON_EVENT;
@@ -62,7 +64,7 @@ ServerEvent::ServerEvent(xmlDocPtr doc, xmlNodePtr cur)
 }
 
 void
-ServerEvent::write_xml(std::ostream& xml)
+ServerEvent::write_xml(std::ostream& xml) const
 {
   switch(type)
     {

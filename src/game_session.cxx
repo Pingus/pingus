@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.15 2002/10/02 19:20:19 grumbel Exp $
+//  $Id: game_session.cxx,v 1.16 2002/10/03 12:33:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,7 +73,7 @@ PingusGameSession::get_result ()
 }
 
 bool
-PingusGameSession::draw (GraphicContext& gc)
+PingusGameSession::draw(GraphicContext& gc)
 {
   ++number_of_redraws;
   client->draw (gc);

@@ -1,4 +1,4 @@
-//  $Id: pingus_counter.cxx,v 1.7 2002/09/06 17:33:29 torangan Exp $
+//  $Id: pingus_counter.cxx,v 1.8 2002/10/03 12:33:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include "pingus_resource.hxx"
 #include "pingus_counter.hxx"
 #include "world.hxx"
-#include "client.hxx"
 
 /* Headers needed for i18n / gettext */
 #include <clocale>
@@ -32,8 +31,9 @@
 #include "server.hxx"
 
 
-PingusCounter::PingusCounter()
-  : background (PingusResource::load_surface("Buttons/info","core"))
+PingusCounter::PingusCounter(Server* s)
+  : server(s),
+    background (PingusResource::load_surface("Buttons/info","core"))
 {
   font = PingusResource::load_font("Fonts/pingus_small","fonts");
 }
@@ -45,7 +45,7 @@ PingusCounter::draw(GraphicContext& gc)
 
   background.put_screen (CL_Display::get_width ()/2 - background.get_width()/2, 0);
   
-  World* world = client->get_server()->get_world();
+  World* world = server->get_world();
   
   snprintf(str, 128, _("Released: %3d/%3d  Out: %3d  Saved: %3d/%3d"),
 	   world->get_released_pingus(),
@@ -56,12 +56,6 @@ PingusCounter::draw(GraphicContext& gc)
 
   font->print_center(CL_Display::get_width ()/2,3, str);
   UNUSED_ARG(gc);
-}
-
-void
-PingusCounter::set_client(Client* c)
-{
-  client = c;
 }
 
 /* EOF */

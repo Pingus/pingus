@@ -1,4 +1,4 @@
-//  $Id: demo_session.cxx,v 1.1 2002/10/03 01:02:12 grumbel Exp $
+//  $Id: demo_session.cxx,v 1.2 2002/10/03 12:33:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,10 +17,16 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Display/Input/input.h>
+#include <ClanLib/Display/Input/keyboard.h>
 #include "xml_pdf.hxx"
 #include "true_server.hxx"
 #include "world.hxx"
 #include "demo_player.hxx"
+#include "pingus_counter.hxx"
+#include "gui/gui_manager.hxx"
+#include "vector.hxx"
+#include "graphic_context.hxx"
 #include "demo_session.hxx"
 
 DemoSession::DemoSession(const std::string& filename)
@@ -30,8 +36,11 @@ DemoSession::DemoSession(const std::string& filename)
 
   // Create server
   server = new TrueServer(pdf->get_plf());
-
   demo_player = new DemoPlayer(server, pdf);
+
+  // Create GUI
+  pcounter = new PingusCounter(server);
+  gui_manager->add (pcounter, true);
 }
 
 DemoSession::~DemoSession()
@@ -41,19 +50,41 @@ DemoSession::~DemoSession()
 }
 
 /** Draw this screen */
-bool
-DemoSession::draw (GraphicContext& gc)
+void
+DemoSession::draw_background(GraphicContext& gc)
 {
+  if (CL_Keyboard::get_keycode(CL_KEY_LEFT))
+    gc.move(Vector(10.0, 0.0));
+  
+  if(CL_Keyboard::get_keycode(CL_KEY_RIGHT))
+    gc.move(Vector(-10.0, 0.0));
+
+  if(CL_Keyboard::get_keycode(CL_KEY_UP))
+    gc.move(Vector(0.0, 10.0));
+
+  if(CL_Keyboard::get_keycode(CL_KEY_DOWN))
+    gc.move(Vector(0.0, -10.0));
+
   server->get_world()->draw(gc);
 }
 
 /** Pass a delta to the screen */
 void
-DemoSession::update (const GameDelta& delta)
+DemoSession::update(float delta)
 {
+  UNUSED_ARG(delta);
+
   // FIXME: Duplicate all timing code here?!
   server->update();
   demo_player->update();
+
+  int skip_count = 0;
+  while (CL_Keyboard::get_keycode(CL_KEY_SPACE) && skip_count < 10)
+    {
+      ++skip_count;
+      server->update();
+      demo_player->update();
+    }
 }
 
 /* EOF */

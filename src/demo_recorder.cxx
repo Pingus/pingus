@@ -1,4 +1,4 @@
-//  $Id: demo_recorder.cxx,v 1.6 2002/10/03 01:02:12 grumbel Exp $
+//  $Id: demo_recorder.cxx,v 1.7 2002/10/03 12:33:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,9 @@
 #include "console.hxx"
 #include "pingus_error.hxx"
 #include "demo_recorder.hxx"
+#include "server_event.hxx"
+#include "server.hxx"
+#include "plf.hxx"
 
 /* Headers needed for i18n / gettext */
 #include <clocale>
@@ -30,29 +33,45 @@
 
 using namespace std;
 
-DemoRecorder::DemoRecorder()
+DemoRecorder::DemoRecorder(Server* server)
 {
+  std::string levelname = server->get_plf()->get_filename();
+
+  if (!levelname.empty())
+    {
+      std::string filename = System::get_statdir() + "demos/" + levelname + "-" + get_date() + ".xml";
+      std::cout << "DemoRecorder: Writing demo to: " << filename << std::endl;
+      out.open(filename.c_str());
+
+      if (!out)
+	{
+	  assert(!"DemoRecorder: Couldn't write DemoFile");
+	}
+      
+      // Write file header
+      out << "<pingus-demo>\n"
+	  << "  <level>" << levelname << "</level>\n"
+	  << "  <events>" << std::endl;
+    }
+  else
+    {
+      assert(!"DemoRecorder Couldn't get levelname");
+    }
 }
 
 DemoRecorder::~DemoRecorder()
 {
+  // Write file footer
+  out << "  </events>\n"
+      << "</pingus-demo>" << std::endl;
+  out.close();
 }
 
 void
-DemoRecorder::set_levelname(const string& levelname)
+DemoRecorder::record_event (const ServerEvent& event)
 {
-  filename = System::get_statdir() + "demos/" + levelname + "-" + get_date() + ".pdm";
-
-  //std::cout << "Demo filename: " + filename << std::endl;
-  console << "Recording demo to: " << filename << std::endl;
-  
-  std::cout << "DemoRecorder: levelname = " << levelname << std::endl;
-  out.open(filename.c_str());
-
-  out << levelname << std::endl;
-
-  if (!out)
-    PingusError::raise(_("DemoRecorder: Couldn't open: ") + filename);
+  event.write_xml(out);  
+  event.write_xml(std::cout);
 }
 
 string 
@@ -63,7 +82,7 @@ DemoRecorder::get_date()
   struct tm *loctime;
   curtime = time (NULL);
   loctime = localtime(&curtime);
-  strftime(buffer, 32, "%Y%m%d-%H%M%S", loctime);
+  strftime(buffer, 32, "%Y-%m-%d_%H:%M:%S", loctime);
 
   return string(buffer);
 }

@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.35 2002/09/28 11:52:23 torangan Exp $
+//  $Id: editor.cxx,v 1.36 2002/10/03 12:33:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -153,6 +153,14 @@ Editor::update (const GameDelta&)
     }  
 
   move_objects();
+}
+
+bool
+Editor::draw (GraphicContext& gc)
+{
+  draw();
+  UNUSED_ARG(gc);
+  return true;
 }
 
 void

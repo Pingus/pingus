@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.21 2002/10/01 21:48:32 grumbel Exp $
+//  $Id: client.hxx,v 1.22 2002/10/03 12:33:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -115,8 +115,6 @@ public:
   void on_action_axis_move (float);
 
 private:
-  void update (float delta);
-
   Client (const Client&);
   Client& operator= (const Client&);
 };

@@ -1,4 +1,4 @@
-//  $Id: xml_pdf.cxx,v 1.1 2002/10/03 01:02:12 grumbel Exp $
+//  $Id: xml_pdf.cxx,v 1.2 2002/10/03 12:33:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -82,7 +82,7 @@ XMLPDF::XMLPDF(const std::string& filename)
   if (levelname.empty())
     PingusError::raise("XMLPDF: No level given");
 
-  plf = PLF::create(path_manager.complete("levels/" + levelname));
+  plf = PLF::create(path_manager.complete("levels/" + levelname + ".xml"));
 
   std::cout << "XXXXXXXXX Read Demo file: " << std::endl;
   write_xml(std::cout);

@@ -1,4 +1,4 @@
-//  $Id: option_menu.hxx,v 1.7 2002/10/01 21:48:32 grumbel Exp $
+//  $Id: option_menu.hxx,v 1.8 2002/10/03 12:33:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -96,7 +96,7 @@ public:
 
   void init ();
   void display ();
-  void draw_background ();
+  void draw_background (GraphicContext& gc);
   void preload () { init (); }
   void update (float delta);
   bool draw (GraphicContext& gc);

@@ -1,4 +1,4 @@
-//  $Id: server.cxx,v 1.20 2002/10/03 01:02:12 grumbel Exp $
+//  $Id: server.cxx,v 1.21 2002/10/03 12:33:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@
 #include "string_converter.hxx"
 #include "game_time.hxx"
 #include "world.hxx"
+#include "demo_recorder.hxx"
 
 using namespace std;
 using Actions::action_from_string;
@@ -83,44 +84,20 @@ PingusEvent::operator= (const PingusEvent& old)
 }
 
 
-Server::Server (PLF* plf)
-  : action_holder (plf)
+Server::Server (PLF* arg_plf)
+  : plf(arg_plf),
+    action_holder (plf)
 {
   demo_mode = false;
   get_next_event = true;
   finished = false;
-  //demo_out.open("/tmp/demo.plt", (PingusDemoMode)record); 
+  demo_recorder = new DemoRecorder(this);
 }
 
 Server::~Server ()
 {
-  // Here we write down the demo file
-  // FIXME: syntax will be different in the final version, this is just a quick hack
-  std::string date_str;
-  
-  {
-    char buffer[32];
-    time_t curtime;
-    struct tm *loctime;
-    curtime = time (NULL);
-    loctime = localtime(&curtime);
-    strftime(buffer, 32, "%Y%m%d-%H%M%S", loctime);
-
-    date_str = buffer;
-    
-    date_str = System::get_statdir() + "demos/" + date_str + ".xml";
-  }
-
-  std::cout << "Writing demo to: " << date_str << std::endl;
-
-  std::ofstream xml(date_str.c_str());
-  
-  xml << "<pingus-events>" << std::endl;
-  for(std::vector<ServerEvent>::iterator i = events.begin();
-      i != events.end();
-      ++i)
-    i->write_xml(xml);
-  xml << "</pingus-events>" << std::endl;
+  // Demo Server is exited and writes down its log
+  delete demo_recorder;
 }
 
 World*
@@ -140,7 +117,7 @@ Server::send_armageddon_event()
   armageddon = true;
   world->armageddon();
 
-  events.push_back(ServerEvent::make_armageddon_event(get_time()));
+  demo_recorder->record_event(ServerEvent::make_armageddon_event(get_time()));
 }
 
 void
@@ -156,7 +133,7 @@ Server::send_pingu_action_event(Pingu* pingu, Actions::ActionName action)
 	}
     }
 
-  events.push_back(ServerEvent::make_pingu_action_event(get_time(), pingu->get_id(), action));
+  demo_recorder->record_event(ServerEvent::make_pingu_action_event(get_time(), pingu->get_id(), action));
 }
 
 bool

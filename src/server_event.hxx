@@ -1,4 +1,4 @@
-//  $Id: server_event.hxx,v 1.1 2002/10/03 01:02:12 grumbel Exp $
+//  $Id: server_event.hxx,v 1.2 2002/10/03 12:33:08 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,7 @@ public:
   /** Construct an server event from an xml subtree */
   ServerEvent(xmlDocPtr doc, xmlNodePtr cur);
 
-  void write_xml(std::ostream& xml);
+  void write_xml(std::ostream& xml) const;
 
   /** Send this event to the server */
   void send(Server*);

@@ -1,4 +1,4 @@
-//  $Id: client.cxx,v 1.26 2002/10/02 19:20:18 grumbel Exp $
+//  $Id: client.cxx,v 1.27 2002/10/03 12:33:08 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,14 +69,13 @@ Client::Client (Server * s)
   button_panel = new ButtonPanel(server->get_plf (), 2, CL_Display::get_height()/2);
   playfield    = new Playfield(this, server->get_plf (), server->get_world());
   hurry_up     = new HurryUp();
-  pcounter     = new PingusCounter();  
+  pcounter     = new PingusCounter(server);  
   small_map    = new SmallMap();
   time_display = new TimeDisplay();
 
   button_panel->set_client(this);
   button_panel->set_server(server);
   hurry_up->set_client(this);
-  pcounter->set_client(this);
   small_map->set_client(this);
   time_display->set_server(server);
 
@@ -106,16 +105,6 @@ void
 Client::update (const GameDelta& delta)
 {
   GUIScreen::update (delta);
-}
-
-void 
-Client::update (float delta)
-{
-  if (server->is_finished())
-    {
-      std::cout << "Client: update(): Server is finished" << std::endl;
-      ScreenManager::instance ()->pop_screen ();
-    }
 }
 
 #if 0

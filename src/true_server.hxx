@@ -1,4 +1,4 @@
-//  $Id: true_server.hxx,v 1.9 2002/10/03 01:02:12 grumbel Exp $
+//  $Id: true_server.hxx,v 1.10 2002/10/03 12:33:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,7 +22,8 @@
 
 #include "server.hxx"
 
-/** FIXME: This whole Server/Client concept is screwed */
+/** FIXME: This whole Server/Client concept is screwed and the
+    TrueServer/Server thing even more... */
 class TrueServer : public Server
 {
 private:
@@ -31,16 +32,11 @@ private:
   unsigned int  last_time;
   float delta;
 
-  /** Reference to the PLF for this level, this must not be deleted */
-  PLF* plf;
-  
 public:
   TrueServer(PLF* plf);
   virtual ~TrueServer();
 
   void update();
-  /** Return a reference to the plf used for this level */
-  PLF* get_plf ();
   void set_fast_forward(bool value);
   bool get_fast_forward();
   

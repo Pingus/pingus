@@ -1,4 +1,4 @@
-//  $Id: pingus_counter.hxx,v 1.8 2002/09/27 11:26:44 torangan Exp $
+//  $Id: pingus_counter.hxx,v 1.9 2002/10/03 12:33:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,21 +25,19 @@
 
 class CL_Font;
 class World;
-class Client;
+class Server;
 
 class PingusCounter : public GUI::Component
 {
 private:
+  Server* server;
   CL_Font* font;
   CL_Surface background;
-  Client* client;
 public:
-  PingusCounter();
+  PingusCounter(Server* s);
   virtual ~PingusCounter() {}
 
   void draw(GraphicContext& gc);
-  void set_client(Client*);
-  
 private:
   PingusCounter (const PingusCounter&);
   PingusCounter& operator= (const PingusCounter&);

@@ -1,4 +1,4 @@
-//  $Id: editor.hxx,v 1.19 2002/10/01 21:48:32 grumbel Exp $
+//  $Id: editor.hxx,v 1.20 2002/10/03 12:33:09 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -119,7 +119,7 @@ public:
   CL_GUIManager* get_gui_manager ();
 
   // overloaded Screen stuff
-  bool draw (GraphicContext& gc) { draw(); return true; }
+  bool draw (GraphicContext& gc);
   void draw ();
   void update (const GameDelta& delta);
 

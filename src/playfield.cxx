@@ -1,4 +1,4 @@
-//  $Id: playfield.cxx,v 1.24 2002/10/02 19:20:19 grumbel Exp $
+//  $Id: playfield.cxx,v 1.25 2002/10/03 12:33:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -224,6 +224,9 @@ Playfield::update(float delta)
 void 
 Playfield::on_primary_button_press(int x, int y)
 {
+  UNUSED_ARG(x);
+  UNUSED_ARG(y);
+
   if (current_pingu)
     {
       server->send_pingu_action_event(current_pingu, buttons->get_action_name());

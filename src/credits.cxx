@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.11 2002/09/14 19:06:33 torangan Exp $
+//  $Id: credits.cxx,v 1.12 2002/10/03 12:33:08 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -112,8 +112,10 @@ Credits::update (float delta)
 }
 
 void 
-Credits::draw_background ()
+Credits::draw_background (GraphicContext& gc)
 {
+  UNUSED_ARG(gc);
+
   int x;
   int y;
   int yof;
