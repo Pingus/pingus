@@ -4,7 +4,7 @@
   <global>
     <levelname lang="en">Dig and float, but just don't fall and smash</levelname>
     <levelname lang="de">Graben und schweben, nicht fallen und sterben</levelname>
-    <levelname lang="cs">Kopej a let, ale hlavne nespadni</levelname>
+    <levelname lang="cs">Kopej a letej, ale hlavne nespadni</levelname>
     <levelname lang="tr">Kaz ve uç, ama sakýn düþüp ölme</levelname>
 
     <description lang="en">Opposed to the first two levels, you have two actions available in
@@ -18,10 +18,10 @@
                            damit sie den Ausgang erreichen können. Stelle sicher das nicht zu
                            viele von ihnen sterben.
     </description>
-    <description lang="cs">Na rozdil od predchozich dvou urovni budes mit tentokrat k dispo-
-                           zici dve akce. Tvuj ukol bude, jako obvykle, velmi snadny - vybrat
-                           akci na panelu vlevo a pouzit ji na pinguse, aby mohli dojit k cili.
-                           Dej si jen pozor, aby jich moc nezemrelo.
+    <description lang="cs">Na rozdil od predchozich dvou urovni budes mit tentokrat k dispozici
+                           dve schopnosti. Tvuj ukol bude, jako obvykle, velmi snadny - vyberes
+                           schopnost na levem panelu a pouzijes ji na pinga, aby se otevrela cesta k cili.
+                           Jen si dej pozor, aby ti mnoho sverencu nezemrelo.
     </description>
     <description lang="tr">Ýlk iki seviyeden farklý olarak þimdi iki farklý eylem mümkün. Ama
                            iþin yine kolay: soldaki panelden uygun eylemleri seçip, Pingularý

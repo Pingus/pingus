@@ -4,7 +4,7 @@
   <global>
     <levelname lang="en">If the way is blocked, bash away</levelname>
     <levelname lang="de">Ist der Weg blockiert, dann grab ihn frei</levelname>
-    <levelname lang="cs">Kdyz nevede cesta dal, tak ji vyhrab</levelname>
+    <levelname lang="cs">Kdyz nevede cesta dal, tak ji vyhrabej</levelname>
     <levelname lang="tr">Eðer yol kapalýysa, temizlemek gerek</levelname>
 
     <description lang="en">Similar to the Digger action that you already know from previous
@@ -18,8 +18,8 @@
                            Graben eines Digger. Diese neue Fähigkeit heisst Basher.
     </description>
     <description lang="cs">Podobne jako kopani, ktere uz znas z minulych urovni, existuje
-                           take moznost horizontalniho hrabani. Pingu pak nekope jamu pod
-                           sebou, ale hrabe rovne ve smeru chuze.
+                           take moznost vodorovneho hrabani. Pingove pak nekopou jamu pod
+                           sebou, ale prohrabavaji se rovne ve smeru chuze.
     </description>
     <description lang="tr">Daha önce öðrenmiþ olduðumuz 'Digger'e benzeyen bir eylemimiz 
                            daha var. Basher diye adlandýrdýðýmýz bu eylem, Pingunun önündekileri

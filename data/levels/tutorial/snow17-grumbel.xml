@@ -4,7 +4,7 @@
   <global>
     <levelname lang="en">If too high, your Pingu will die...</levelname>
     <levelname lang="de">Zu hoch und dein Pingu wird sterben...</levelname>
-    <levelname lang="cs">Pad z velke vysky pingu neprezije...</levelname>
+    <levelname lang="cs">Pingove nepreziji pad z velke vysky...</levelname>
     <levelname lang="tr">Yüksekten düþen Pingu ölür...</levelname>
 
     <description lang="en">Teamwork is the way to the exit this time. You don't have enough
@@ -15,9 +15,9 @@
                            Floater, um den Ausgang zu erreichen, also schicke ein paar
                            und lass sie den Weg für den Rest vorbereiten.
     </description>
-    <description lang="cs">Tymova prace je tou kyzenou cestou k cili. Protoze nemas dostatek
-                           vrtuli pro vsechny, vysli nekolik pingusu, aby pripravili cestu
-                           ostatnim.
+    <description lang="cs">Tymova prace je tou pravou cestou k cili. Protoze nemas dostatek
+                           vrtuli pro vsechny, vysli nejprve nekolik pingu, aby ostatnim pripravili
+			   cestu.
     </description>
     <description lang="tr">Takým çalýþmasý buradan kaçmanýn tek yolu. Herkesi aþaðýya indirecek
                            kadar Floater yok. Dolayýsýyla birkaçýný önden gönderip, diðerleri

@@ -3,13 +3,13 @@
 <pingus-level>
   <version>1</version>
   <global>
-    <levelname lang="cs">Skakani pro zabavu</levelname>
+    <levelname lang="cs">Skakani je zabavne</levelname>
     <levelname lang="de">Springe aus Freude</levelname>
     <levelname lang="en">Jump for joy</levelname>
     <levelname lang="tr">Zevkle zýpla</levelname>
 
-    <description lang="cs">Nekdy se pingu potrebuje dostat na plosinu, ktera je sice jen kus
-                           od nej, ale nelze na ni dojit. Pak prijde vhod skakani, ktere
+    <description lang="cs">Nekdy se pingove potrebuji dostat na plosinu, ktera je sice jen kousek
+                           od nich, ale nelze na ni dojit. Pak prijde vhod skakani, ktere
                            umozni pingovi kus poskocit a dostat se tak na kyzene misto.
     </description>
     <description lang="de">Manchmal muss ein Pingu eine Platform erreichen, die weit weg
