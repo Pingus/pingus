@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapPingus.cc,v 1.2 2000/09/21 17:26:42 grumbel Exp $
+//  $Id: PingusWorldMapPingus.cc,v 1.3 2000/09/22 22:57:36 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,6 +26,7 @@ PingusWorldMapPingus::PingusWorldMapPingus ()
 {
   sur = PingusResource::load_surface ("Pingus/walker", "pingus");
   counter.set_size(sur->get_num_frames()/2);
+  is_left = false;
 }
 
 PingusWorldMapPingus::~PingusWorldMapPingus ()
@@ -50,32 +51,52 @@ PingusWorldMapPingus::draw ()
 {
   sur->put_screen (pos.x_pos - (sur->get_width()/2),
 		   pos.y_pos + 4 - sur->get_height(),
-		   ++counter);
+		   ++counter + ((is_left ? 0 :
+				 counter.size())));
+}
+
+bool
+PingusWorldMapPingus::is_walking ()
+{
+  return false;
 }
 
 void
 PingusWorldMapPingus::let_move ()
 {
-  if (!targets.empty())
+  if (pos.x_pos > targets.front ().x_pos - 3
+      && pos.x_pos < targets.front ().x_pos + 3
+      && pos.y_pos > targets.front ().y_pos - 3
+      && pos.y_pos < targets.front ().y_pos + 3)
     {
-      float x_off = targets.top ().x_pos - pos.x_pos;
-      float y_off = targets.top ().y_pos - pos.y_pos;
+      pos = targets.front ();
+      targets.pop ();
+    }
+  else if (!targets.empty())
+    {
+      float x_off = targets.front ().x_pos - pos.x_pos;
+      float y_off = targets.front ().y_pos - pos.y_pos;
 
       float x_delta = x_off * 4.0 / sqrt(x_off * x_off  + y_off * y_off);
       float y_delta = y_off * 4.0 / sqrt(x_off * x_off  + y_off * y_off);
       
+      if (x_delta > 0)
+	is_left = false;
+      else
+	is_left = true;
+
       pos.x_pos += x_delta;
       pos.y_pos += y_delta;
       
       /*
-      if (pos.x_pos < targets.top ().x_pos)
+      if (pos.x_pos < targets.front ().x_pos)
 	pos.x_pos += 5;
-      else if (pos.x_pos > targets.top ().x_pos)
+      else if (pos.x_pos > targets.front ().x_pos)
 	pos.x_pos -= 5;  
 
-      if (pos.y_pos < targets.top ().y_pos)
+      if (pos.y_pos < targets.front ().y_pos)
 	pos.y_pos += 3;
-      else if (pos.y_pos > targets.top ().y_pos)
+      else if (pos.y_pos > targets.front ().y_pos)
 	pos.y_pos -= 3;  
       */
     }  

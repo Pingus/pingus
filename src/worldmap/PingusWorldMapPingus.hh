@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapPingus.hh,v 1.2 2000/09/21 17:26:42 grumbel Exp $
+//  $Id: PingusWorldMapPingus.hh,v 1.3 2000/09/22 22:57:36 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,7 @@
 #ifndef PINGUSWORLDMAPPINGUS_HH
 #define PINGUSWORLDMAPPINGUS_HH
 
-#include <stack>
+#include <queue>
 #include "../generic/FloatPosition.hh"
 #include "../AnimCounter.hh"
 #include "PingusWorldMapGraph.hh"
@@ -33,7 +33,8 @@ private:
   CL_Surface* sur;
   FloatPosition pos;
   AnimCounter counter;
-  stack<Position> targets;
+  queue<Position> targets;
+  bool is_left;
 
 public:
   PingusWorldMapPingus ();
@@ -42,6 +43,7 @@ public:
   void draw ();
   void let_move ();
   void walk_to (PingusWorldMapNode node);
+  bool is_walking ();
   void set_position (PingusWorldMapNode node);
 };
 
