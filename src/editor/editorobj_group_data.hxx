@@ -1,4 +1,4 @@
-//  $Id: editorobj_group_data.hxx,v 1.5 2002/08/23 15:49:54 torangan Exp $
+//  $Id: editorobj_group_data.hxx,v 1.6 2002/09/27 11:26:45 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ public:
   
 private:
   EditorObjGroupData (const EditorObjGroupData&);
-  EditorObjGroupData operator= (const EditorObjGroupData&);
+  EditorObjGroupData& operator= (const EditorObjGroupData&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: fade_out.hxx,v 1.3 2002/08/23 15:49:48 torangan Exp $
+//  $Id: fade_out.hxx,v 1.4 2002/09/27 11:26:43 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,7 +60,7 @@ public:
   
 private:
   FadeOut (const FadeOut&);
-  FadeOut operator= (const FadeOut&);
+  FadeOut& operator= (const FadeOut&);
 };
 
 class EnlargingRectFadeOut : public FadeOut
@@ -75,7 +75,7 @@ public:
   
 private:
   EnlargingRectFadeOut (const EnlargingRectFadeOut&);
-  EnlargingRectFadeOut operator= (const EnlargingRectFadeOut&);
+  EnlargingRectFadeOut& operator= (const EnlargingRectFadeOut&);
 };
 
 #endif

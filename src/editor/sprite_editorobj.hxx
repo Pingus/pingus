@@ -1,4 +1,4 @@
-//  $Id: sprite_editorobj.hxx,v 1.7 2002/09/14 19:06:34 torangan Exp $
+//  $Id: sprite_editorobj.hxx,v 1.8 2002/09/27 11:26:45 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,7 +68,7 @@ public:
   
 protected:
   SpriteEditorObj (const SpriteEditorObj& old);
-  void operator= (const SpriteEditorObj& old);
+  SpriteEditorObj& operator= (const SpriteEditorObj& old);
 };
 
 #endif

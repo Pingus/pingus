@@ -1,4 +1,4 @@
-//  $Id: weather_obj.hxx,v 1.8 2002/09/16 15:47:35 grumbel Exp $
+//  $Id: weather_obj.hxx,v 1.9 2002/09/27 11:26:46 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ public:
   
 private:
   WeatherObj (const WeatherObj&);
-  WeatherObj operator= (const WeatherObj&);
+  WeatherObj& operator= (const WeatherObj&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: mouse_axis.hxx,v 1.2 2002/08/26 13:53:04 torangan Exp $
+//  $Id: mouse_axis.hxx,v 1.3 2002/09/27 11:26:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,36 +24,36 @@
 
 namespace Input {
 
-  namespace Axes {
+namespace Axes {
 
-    /**
-      @brief represents an axis of the mouse
+  /**
+    @brief represents an axis of the mouse
+  
+    XML definition: <mouse-axis angle="?" axis="0/1"/>
+    */
+  class MouseAxis : public Axis {
+
+    private:
+      int   axis;
+      float angle;
+      float pos;
+      float old_pos;
+  
+    public:
+      MouseAxis (int axis_, float angle_);
+
+      virtual const float& get_pos   () const;
+      virtual const float& get_angle () const;
     
-      XML definition: <mouse-axis angle="?" axis="0/1"/>
-      */
-    class MouseAxis : public Axis {
-
-      private:
-        int   axis;
-        float angle;
-        float pos;
-        float old_pos;
+      virtual void  update (float);
     
-      public:
-        MouseAxis (int axis_, float angle_);
+    private:
+      MouseAxis (const MouseAxis&);
+      MouseAxis& operator= (const MouseAxis&);
+  };
 
-        virtual const float& get_pos   () const;
-        virtual const float& get_angle () const;
-      
-        virtual void  update (float);
-      
-      private:
-        MouseAxis (const MouseAxis&);
-        MouseAxis operator= (const MouseAxis&);
-    };
-
-  }
-}
+} // namespace Axes
+} // namespace Input
 
 #endif
 

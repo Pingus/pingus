@@ -1,4 +1,4 @@
-//  $Id: surface_selector.hxx,v 1.6 2002/08/23 15:49:55 torangan Exp $
+//  $Id: surface_selector.hxx,v 1.7 2002/09/27 11:26:45 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ struct surface_obj
   
   surface_obj ();
   surface_obj (const surface_obj& old);
-  surface_obj operator= (const surface_obj& old);
+  surface_obj& operator= (const surface_obj& old);
 };
 
 class SurfaceSelector
@@ -73,7 +73,7 @@ public:
   
 private:
   SurfaceSelector (const SurfaceSelector&);
-  SurfaceSelector operator= (const SurfaceSelector&);
+  SurfaceSelector& operator= (const SurfaceSelector&);
 }; 
 
 

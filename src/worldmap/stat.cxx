@@ -1,4 +1,4 @@
-//  $Id: stat.cxx,v 1.9 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: stat.cxx,v 1.10 2002/09/27 11:26:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ PingusWorldMapNodeStat::PingusWorldMapNodeStat (const PingusWorldMapNodeStat& ol
 {
 }
 
-PingusWorldMapNodeStat
+PingusWorldMapNodeStat&
 PingusWorldMapNodeStat::operator= (const PingusWorldMapNodeStat& old)
 {
   if (this == &old)

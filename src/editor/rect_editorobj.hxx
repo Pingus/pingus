@@ -1,4 +1,4 @@
-//  $Id: rect_editorobj.hxx,v 1.5 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: rect_editorobj.hxx,v 1.6 2002/09/27 11:26:45 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,7 @@ public:
   
 protected:
   RectEditorObj (const RectEditorObj& old);
-  void operator= (const RectEditorObj& old);
+  RectEditorObj& operator= (const RectEditorObj& old);
 };
 
 #endif

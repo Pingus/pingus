@@ -1,4 +1,4 @@
-//  $Id: action_button.hxx,v 1.11 2002/09/11 12:45:57 grumbel Exp $
+//  $Id: action_button.hxx,v 1.12 2002/09/27 11:26:43 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,7 @@ public:
   
 private:
   ArmageddonButton (const ArmageddonButton&);
-  ArmageddonButton operator= (const ArmageddonButton&);
+  ArmageddonButton& operator= (const ArmageddonButton&);
 };
 
 // ----------------- snip --------------------
@@ -91,7 +91,7 @@ public:
   
 private:
   ForwardButton (const ForwardButton&);
-  ForwardButton operator= (const ForwardButton&);
+  ForwardButton& operator= (const ForwardButton&);
 };
 
 // ----------------- snip --------------------
@@ -120,7 +120,7 @@ public:
   
 private:
   PauseButton (const PauseButton&);
-  PauseButton operator= (const PauseButton&);
+  PauseButton& operator= (const PauseButton&);
 };
 
 // ----------------- snip --------------------
@@ -167,7 +167,7 @@ public:
   
 private:
   ActionButton (const ActionButton&);
-  ActionButton operator= (const ActionButton&);
+  ActionButton& operator= (const ActionButton&);
 };
 
 // ----------------- snip --------------------
@@ -191,7 +191,7 @@ public:
   
 private:
   VerticalActionButton (const VerticalActionButton&);
-  VerticalActionButton operator= (const VerticalActionButton&);
+  VerticalActionButton& operator= (const VerticalActionButton&);
 };
 
 #endif /* ACTIONBUTTON */

@@ -1,4 +1,4 @@
-//  $Id: ice_block_obj.hxx,v 1.1 2002/09/14 19:06:34 torangan Exp $
+//  $Id: ice_block_obj.hxx,v 1.2 2002/09/27 11:26:46 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ public:
   
 private:
   IceBlockObj (const IceBlockObj&);
-  IceBlockObj operator= (const IceBlockObj&);
+  IceBlockObj& operator= (const IceBlockObj&);
 };
 
 } // namespace EditorObjs

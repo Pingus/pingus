@@ -45,7 +45,7 @@ public:
   
 private:
   Teleported (const Teleported&);
-  Teleported operator= (const Teleported&);
+  Teleported& operator= (const Teleported&);
 };
 
 }

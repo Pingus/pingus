@@ -1,4 +1,4 @@
-//  $Id: button_panel.hxx,v 1.11 2002/09/05 12:24:01 grumbel Exp $
+//  $Id: button_panel.hxx,v 1.12 2002/09/27 11:26:43 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,7 +72,7 @@ public:
   
 private:
   ButtonPanel (const ButtonPanel&);
-  ButtonPanel operator= (const ButtonPanel&); 
+  ButtonPanel& operator= (const ButtonPanel&); 
 };
 
 #endif

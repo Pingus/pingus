@@ -1,4 +1,4 @@
-//  $Id: option_menu.cxx,v 1.5 2002/09/06 17:33:29 torangan Exp $
+//  $Id: option_menu.cxx,v 1.6 2002/09/27 11:26:43 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,7 +92,7 @@ OptionEntry::OptionEntry (const OptionEntry& old) : value_bool(0),
     value_str = new std::string(*(old.value_str));
 }
 
-OptionEntry
+OptionEntry&
 OptionEntry::operator= (const OptionEntry& old)
 {
   if (this == &old)

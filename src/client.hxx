@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.17 2002/09/17 23:11:26 grumbel Exp $
+//  $Id: client.hxx,v 1.18 2002/09/27 11:26:43 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -117,7 +117,7 @@ public:
 
 private:
   Client (const Client&);
-  Client operator= (const Client&);
+  Client& operator= (const Client&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: pingus_error.hxx,v 1.6 2002/08/23 15:49:49 torangan Exp $
+//  $Id: pingus_error.hxx,v 1.7 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ public:
   
 protected:
   PingusException (const PingusException& old);
-  void operator= (const PingusException& old);
+  PingusException& operator= (const PingusException& old);
 };
 
 /** PingusBug gets thrown on events which are a bug in Pingus, this
@@ -45,7 +45,7 @@ class PingusBug : public PingusException
 protected:
   PingusBug (const std::string& mes);
   PingusBug (const PingusBug& old);
-  PingusBug operator= (const PingusBug& old);
+  PingusBug& operator= (const PingusBug& old);
 
 public:
   virtual const std::string& get_message () const;
@@ -61,7 +61,7 @@ class PingusError : public PingusException
 protected:
   PingusError (const std::string& mes);
   PingusError (const PingusError& old);
-  PingusError operator= (const PingusError& old);
+  PingusError& operator= (const PingusError& old);
 
 public:
   virtual const std::string& get_message () const;

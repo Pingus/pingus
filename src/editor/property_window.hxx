@@ -1,4 +1,4 @@
-//  $Id: property_window.hxx,v 1.7 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: property_window.hxx,v 1.8 2002/09/27 11:26:45 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ public:
       
 private:
   PropertyWindow (const PropertyWindow&);
-  PropertyWindow operator= (const PropertyWindow&);
+  PropertyWindow& operator= (const PropertyWindow&);
 };
 
 } // namespace EditorNS

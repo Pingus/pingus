@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.hxx,v 1.1 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: groundpiece_data.hxx,v 1.2 2002/09/27 11:26:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,9 +27,6 @@
 #include "../worldobj_data.hxx"
 #include "../groundtype.hxx"
 
-class EditorObj;
-class WorldObj;
-
 namespace WorldObjsData {
 
 class GroundpieceData : public WorldObjData
@@ -38,21 +35,21 @@ public:
   CL_Surface surface;
   ResDescriptor desc;
   CL_Vector pos;
-  
+
   Groundtype::GPType gptype; 
 
   GroundpieceData ();
   GroundpieceData (xmlDocPtr doc, xmlNodePtr cur);
   
   GroundpieceData (const GroundpieceData& old);
-  GroundpieceData operator= (const GroundpieceData& old);
+  GroundpieceData& operator= (const GroundpieceData& old);
 
   ~GroundpieceData ();
 
-  WorldObj*    create_WorldObj();
-  EditorObjLst create_EditorObj();
+  WorldObj*    create_WorldObj  ();
+  EditorObjLst create_EditorObj ();
 
-  void write_xml(std::ostream& xml);
+  void write_xml (std::ostream& xml);
 };
 
 } // namespace WorldObjsData

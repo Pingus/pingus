@@ -1,4 +1,4 @@
-//  $Id: sound_real.hxx,v 1.5 2002/09/19 13:30:08 torangan Exp $
+//  $Id: sound_real.hxx,v 1.6 2002/09/27 11:26:44 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,7 +71,7 @@ public:
 
 private:
   PingusSoundReal (const PingusSoundReal&);
-  PingusSoundReal operator= (const PingusSoundReal&);  
+  PingusSoundReal& operator= (const PingusSoundReal&);  
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: smasher.hxx,v 1.4 2002/09/16 22:51:33 grumbel Exp $
+//  $Id: smasher.hxx,v 1.5 2002/09/27 11:26:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ protected:
 
 private:
   Smasher (const Smasher&);
-  Smasher operator= (const Smasher&);
+  Smasher& operator= (const Smasher&);
 };
 
 } // namespace WorldObjs

@@ -1,4 +1,4 @@
-//  $Id: spot_map.hxx,v 1.7 2002/09/17 16:23:30 grumbel Exp $
+//  $Id: spot_map.hxx,v 1.8 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ public:
   virtual ~MapTileSurface ();
   
   MapTileSurface (const MapTileSurface& old);
-  MapTileSurface operator= (const MapTileSurface& old);
+  MapTileSurface& operator= (const MapTileSurface& old);
 
   void reload (void);
   inline bool is_empty (void) { return empty; }
@@ -99,7 +99,7 @@ private:
   void draw_colmap(GraphicContext& gc);
 
   PingusSpotMap (const PingusSpotMap&);
-  PingusSpotMap operator= (const PingusSpotMap&);
+  PingusSpotMap& operator= (const PingusSpotMap&);
 };
 
 #endif

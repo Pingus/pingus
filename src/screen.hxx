@@ -1,4 +1,4 @@
-//  $Id: screen.hxx,v 1.8 2002/09/05 12:24:02 grumbel Exp $
+//  $Id: screen.hxx,v 1.9 2002/09/27 11:26:44 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ public:
   
 private:
   Screen (const Screen&);
-  Screen operator= (const Screen&);
+  Screen& operator= (const Screen&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: game_counter.hxx,v 1.5 2002/09/04 14:55:11 torangan Exp $
+//  $Id: game_counter.hxx,v 1.6 2002/09/27 11:26:43 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ public:
   
 private:
   GameCounter (const GameCounter&);
-  GameCounter operator= (const GameCounter&);
+  GameCounter& operator= (const GameCounter&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: liquid_obj.hxx,v 1.1 2002/09/25 17:21:38 torangan Exp $
+//  $Id: liquid_obj.hxx,v 1.2 2002/09/27 11:26:46 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ public:
   
 private:
   LiquidObj (const LiquidObj&);
-  LiquidObj operator= (const LiquidObj&);
+  LiquidObj& operator= (const LiquidObj&);
 };
 
 } // namespace EditorObjs

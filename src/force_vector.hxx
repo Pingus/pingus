@@ -1,4 +1,4 @@
-//  $Id: force_vector.hxx,v 1.4 2002/08/23 15:49:48 torangan Exp $
+//  $Id: force_vector.hxx,v 1.5 2002/09/27 11:26:43 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ public:
   {
   }
 
-  GravityForce operator= (const GravityForce& old);
+  GravityForce& operator= (const GravityForce& old);
 };
 
 /** An Explosion Force is a radial force which points away from its
@@ -79,7 +79,7 @@ public:
   {
   }
 
-  ExplosionForce operator= (const ExplosionForce& old);
+  ExplosionForce& operator= (const ExplosionForce& old);
 
   CL_Vector apply_forces(CL_Vector p,CL_Vector v);
 
@@ -117,7 +117,7 @@ public:
   
 private:
   ForcesHolder (const ForcesHolder&);
-  ForcesHolder operator= (const ForcesHolder&);
+  ForcesHolder& operator= (const ForcesHolder&);
 };
 
 #endif /* FVEC_HH */

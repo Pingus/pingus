@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.11 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: pingus.hxx,v 1.12 2002/09/27 11:26:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -215,7 +215,7 @@ public:
   
 private:
   Pingus (const Pingus&);
-  Pingus operator= (const Pingus&);
+  Pingus& operator= (const Pingus&);
 };
 
 } // namespace WorldMapNS

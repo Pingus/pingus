@@ -1,4 +1,4 @@
-//  $Id: starfield_background.hxx,v 1.2 2002/09/24 14:51:36 grumbel Exp $
+//  $Id: starfield_background.hxx,v 1.3 2002/09/27 11:26:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,7 @@ public:
   
 private:
   StarfieldBackground (const StarfieldBackground&);
-  StarfieldBackground operator= (const StarfieldBackground&);
+  StarfieldBackground& operator= (const StarfieldBackground&);
 };
 
 } // namespace WorldObjs

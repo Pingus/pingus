@@ -1,4 +1,4 @@
-//  $Id: node_data.cxx,v 1.5 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: node_data.cxx,v 1.6 2002/09/27 11:26:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,7 +29,7 @@ NodeData::NodeData (const NodeData& old) : id(old.id),
 {
 }
 
-NodeData
+NodeData&
 NodeData::operator= (const NodeData& old)
 {
   if (this == &old)
@@ -62,7 +62,7 @@ LevelNodeData::LevelNodeData (const LevelNodeData& old) : NodeData(old),
 {
 }
 
-LevelNodeData
+LevelNodeData&
 LevelNodeData::operator= (const LevelNodeData& old)
 {
   if (this == &old)
@@ -121,7 +121,7 @@ TubeNodeData::TubeNodeData (const TubeNodeData& old) : NodeData(old),
 {
 }
 
-TubeNodeData
+TubeNodeData&
 TubeNodeData::operator= (const TubeNodeData& old)
 {
   if (this == &old)

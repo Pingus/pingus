@@ -1,4 +1,4 @@
-//  $Id: server.hxx,v 1.6 2002/09/14 23:40:35 grumbel Exp $
+//  $Id: server.hxx,v 1.7 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ public:
   PingusEvent (const std::string& event_str);
   
   PingusEvent (const PingusEvent& old);
-  PingusEvent operator= (const PingusEvent&);
+  PingusEvent& operator= (const PingusEvent&);
 };
 
 /** A abstract server-like class */
@@ -88,7 +88,7 @@ public:
   
 private:
   Server (const Server&);
-  Server operator= (const Server&);
+  Server& operator= (const Server&);
 };
 
 #endif

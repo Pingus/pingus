@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background_data.hxx,v 1.1 2002/09/18 15:00:37 torangan Exp $
+//  $Id: thunderstorm_background_data.hxx,v 1.2 2002/09/27 11:26:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ public:
   EditorObjLst create_EditorObj ();
 
 private:  
-  ThunderstormBackgroundData operator= (const ThunderstormBackgroundData&);
+  ThunderstormBackgroundData& operator= (const ThunderstormBackgroundData&);
 };
 
 } // namespace WorldObjsData

@@ -1,4 +1,4 @@
-//  $Id: layer_manager.hxx,v 1.5 2002/08/23 15:49:49 torangan Exp $
+//  $Id: layer_manager.hxx,v 1.6 2002/09/27 11:26:43 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,7 @@ private:
 			       x_pos(old.x_pos), y_pos(old.y_pos)
     { }
 
-    Layer operator= (const Layer& old) {
+    Layer& operator= (const Layer& old) {
       if (this == &old)
         return *this;
 	
@@ -90,7 +90,7 @@ public:
   
 private:
   LayerManager (const LayerManager&);
-  LayerManager operator= (const LayerManager&);
+  LayerManager& operator= (const LayerManager&);
 };
 
 #endif

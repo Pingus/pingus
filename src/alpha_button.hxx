@@ -1,4 +1,4 @@
-//  $Id: alpha_button.hxx,v 1.4 2002/08/23 15:49:48 torangan Exp $
+//  $Id: alpha_button.hxx,v 1.5 2002/09/27 11:26:43 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,35 +25,24 @@
 
 class CL_Font;
 
-///
 class AlphaButton
 {
 private:
-  ///
   bool pressed;
-  ///
   CL_Font* font;
-  ///
   CL_Font* font_h;
-  ///
   std::string name;
-  ///
   int x1_pos, y1_pos, x2_pos, y2_pos;
 public:
-  ///
-  AlphaButton(std::string str, int, int, int, int);
-  ///
-  bool is_pressed();
-  ///
-  void draw(void);
-  ///
-  bool mouse_over(void);
+  AlphaButton (std::string str, int, int, int, int);
+  bool is_pressed ();
+  void draw (void);
+  bool mouse_over (void);
   
 private:
   AlphaButton (const AlphaButton&);
-  AlphaButton operator= (const AlphaButton&);
-}///
-;
+  AlphaButton& operator= (const AlphaButton&);
+};
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: worldobj_data.hxx,v 1.6 2002/09/04 14:55:11 torangan Exp $
+//  $Id: worldobj_data.hxx,v 1.7 2002/09/27 11:26:44 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ public:
   WorldObjData (const WorldObjData&) { }
   
   /// Empty placeholder
-  void operator= (const WorldObjData&) { }
+  WorldObjData& operator= (const WorldObjData&) { return *this; }
   
   /// Empty placeholder
   virtual ~WorldObjData() {}

@@ -1,4 +1,4 @@
-//  $Id: string_converter.hxx,v 1.6 2002/08/25 09:08:48 torangan Exp $
+//  $Id: string_converter.hxx,v 1.7 2002/09/27 11:26:44 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,7 +91,7 @@ public:
 private:
   StringConverter ();
   StringConverter (const StringConverter&);
-  StringConverter operator= (const StringConverter&);
+  StringConverter& operator= (const StringConverter&);
 };
 
 #endif

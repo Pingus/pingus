@@ -1,4 +1,4 @@
-//  $Id: laser_exit.hxx,v 1.3 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: laser_exit.hxx,v 1.4 2002/09/27 11:26:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,7 +50,7 @@ protected:
 
 private:
   LaserExit (const LaserExit&);
-  LaserExit operator= (const LaserExit&);
+  LaserExit& operator= (const LaserExit&);
 }; 
 
 } // namespace WorldObjs

@@ -1,4 +1,4 @@
-//  $Id: surface_button.hxx,v 1.9 2002/09/05 12:24:02 grumbel Exp $
+//  $Id: surface_button.hxx,v 1.10 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,7 +68,7 @@ public:
   
 private:
   SurfaceButton (const SurfaceButton&);
-  SurfaceButton operator= (const SurfaceButton&);
+  SurfaceButton& operator= (const SurfaceButton&);
 };
 
 class CreditButton : public SurfaceButton
@@ -82,7 +82,7 @@ public:
   
 private:
   CreditButton (const CreditButton&);
-  CreditButton operator= (const CreditButton&);
+  CreditButton& operator= (const CreditButton&);
 };
 
 class OptionsButton : public SurfaceButton
@@ -96,7 +96,7 @@ public:
   
 private:
   OptionsButton (const OptionsButton&);
-  OptionsButton operator= (const OptionsButton&);
+  OptionsButton& operator= (const OptionsButton&);
 };
 
 class QuitButton : public SurfaceButton
@@ -110,7 +110,7 @@ public:
   
 private:
   QuitButton (const QuitButton&);
-  QuitButton operator= (const QuitButton&);
+  QuitButton& operator= (const QuitButton&);
 };
 
 class LoadButton : public SurfaceButton
@@ -122,7 +122,7 @@ public:
   
 private:
   LoadButton (const LoadButton&);
-  LoadButton operator= (const LoadButton&);
+  LoadButton& operator= (const LoadButton&);
 };
 
 class EditorButton : public SurfaceButton
@@ -139,7 +139,7 @@ public:
   
 private:
   EditorButton (const EditorButton&);
-  EditorButton operator= (const EditorButton&);
+  EditorButton& operator= (const EditorButton&);
 };
 
 class StoryButton : public SurfaceButton
@@ -153,7 +153,7 @@ public:
   
 private:
   StoryButton (const StoryButton&);
-  StoryButton operator= (const StoryButton&);
+  StoryButton& operator= (const StoryButton&);
 };
 
 class ThemeButton : public SurfaceButton
@@ -166,7 +166,7 @@ public:
   
 private:
   ThemeButton (const ThemeButton&);
-  ThemeButton operator= (const ThemeButton&);
+  ThemeButton& operator= (const ThemeButton&);
 };
 
 class MultiplayerButton : public SurfaceButton
@@ -181,7 +181,7 @@ public:
   
 private:
   MultiplayerButton (const MultiplayerButton&);
-  MultiplayerButton operator= (const MultiplayerButton&);
+  MultiplayerButton& operator= (const MultiplayerButton&);
 };
 
 #endif

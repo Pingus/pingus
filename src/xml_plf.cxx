@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.23 2002/09/25 17:21:38 torangan Exp $
+//  $Id: xml_plf.cxx,v 1.24 2002/09/27 11:26:44 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,7 +25,7 @@
 #include "string_converter.hxx"
 #include "worldobj_data_factory.hxx"
 #include "exit_data.hxx"
-#include "entrance_data.hxx"
+#include "worldobjsdata/entrance_data.hxx"
 #include "worldobjsdata/hotspot_data.hxx"
 #include "worldobjsdata/liquid_data.hxx"
 #include "worldobjsdata/worldobj_group_data.hxx"
@@ -123,11 +123,11 @@ XMLPLF::parse_file()
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "exit"))
 	    {
-	      worldobjs_data.push_back (new ExitData (doc, cur));
+	      worldobjs_data.push_back (new ExitData(doc, cur));
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "entrance"))
 	    {
-	      worldobjs_data.push_back (new EntranceData (doc, cur));
+	      worldobjs_data.push_back (new WorldObjsData::EntranceData(doc, cur));
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "trap"))
 	    {
@@ -135,15 +135,15 @@ XMLPLF::parse_file()
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "hotspot"))
 	    {
-	      worldobjs_data.push_back(new WorldObjsData::HotspotData (doc, cur));
+	      worldobjs_data.push_back(new WorldObjsData::HotspotData(doc, cur));
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "liquid"))
 	    {
-	      worldobjs_data.push_back(new WorldObjsData::LiquidData (doc, cur));
+	      worldobjs_data.push_back(new WorldObjsData::LiquidData(doc, cur));
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "worldobj"))
 	    {
-	      worldobjs_data.push_back(WorldObjDataFactory::instance()->create (doc, cur));
+	      worldobjs_data.push_back(WorldObjDataFactory::instance()->create(doc, cur));
 	    }
 	  else if (XMLhelper::equal_str(cur->name, "group"))
 	    {
@@ -187,11 +187,11 @@ XMLPLF::parse_group (xmlNodePtr cur)
 	}
       else if (XMLhelper::equal_str(cur->name, "exit"))
 	{
-	  worldobjs_data.push_back (new ExitData (doc, cur));
+	  worldobjs_data.push_back(new ExitData(doc, cur));
 	}
       else if (XMLhelper::equal_str(cur->name, "entrance"))
 	{
-	  worldobjs_data.push_back (new EntranceData (doc, cur));
+	  worldobjs_data.push_back(new WorldObjsData::EntranceData(doc, cur));
 	}
       else if (XMLhelper::equal_str(cur->name, "trap"))
 	{

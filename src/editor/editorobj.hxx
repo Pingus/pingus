@@ -1,4 +1,4 @@
-//  $Id: editorobj.hxx,v 1.15 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: editorobj.hxx,v 1.16 2002/09/27 11:26:45 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -122,7 +122,7 @@ public:
   
 protected:
   EditorObj (const EditorObj&) { }
-  void operator= (const EditorObj&) { }
+  EditorObj& operator= (const EditorObj&) { return *this; }
 };
 
 #endif

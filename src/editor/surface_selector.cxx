@@ -1,4 +1,4 @@
-//  $Id: surface_selector.cxx,v 1.4 2002/08/23 15:49:55 torangan Exp $
+//  $Id: surface_selector.cxx,v 1.5 2002/09/27 11:26:45 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -204,7 +204,7 @@ surface_obj::surface_obj (const surface_obj& old) : thumbnail(old.thumbnail),
 {
 }
 
-surface_obj surface_obj::operator= (const surface_obj& old)
+surface_obj& surface_obj::operator= (const surface_obj& old)
 {
   if (this == &old)
     return *this;

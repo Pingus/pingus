@@ -1,4 +1,4 @@
-//  $Id: blocker.hxx,v 1.10 2002/09/18 10:50:57 grumbel Exp $
+//  $Id: blocker.hxx,v 1.11 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ private:
   void  catch_pingu(Pingu* pingu);
 
   Blocker (const Blocker&);
-  Blocker operator= (const Blocker&);
+  Blocker& operator= (const Blocker&);
 };
 
 } // namespace Actions

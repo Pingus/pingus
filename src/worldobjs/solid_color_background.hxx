@@ -1,4 +1,4 @@
-//  $Id: solid_color_background.hxx,v 1.1 2002/09/15 09:54:34 torangan Exp $
+//  $Id: solid_color_background.hxx,v 1.2 2002/09/27 11:26:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ public:
   
 private:
   SolidColorBackground (const SolidColorBackground&);
-  SolidColorBackground operator= (const SolidColorBackground&);
+  SolidColorBackground& operator= (const SolidColorBackground&);
 };
 
 } // namespace WorldObjs

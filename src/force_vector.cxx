@@ -1,4 +1,4 @@
-//  $Id: force_vector.cxx,v 1.5 2002/08/23 15:49:48 torangan Exp $
+//  $Id: force_vector.cxx,v 1.6 2002/09/27 11:26:43 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@ std::vector<GravityForce>   ForcesHolder::grav_array;
 std::vector<ExplosionForce> ForcesHolder::explo_array;
 
 
-GravityForce GravityForce::operator= (const GravityForce& old)
+GravityForce& GravityForce::operator= (const GravityForce& old)
 {
   if (this == &old)
     return *this;
@@ -38,7 +38,7 @@ GravityForce GravityForce::operator= (const GravityForce& old)
   return *this;
 }
 
-ExplosionForce ExplosionForce::operator= (const ExplosionForce& old)
+ExplosionForce& ExplosionForce::operator= (const ExplosionForce& old)
 {
   if (this == &old)
     return *this;

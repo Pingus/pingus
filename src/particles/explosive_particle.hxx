@@ -1,4 +1,4 @@
-//  $Id: explosive_particle.hxx,v 1.3 2002/08/23 15:49:56 torangan Exp $
+//  $Id: explosive_particle.hxx,v 1.4 2002/09/27 11:26:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ public:
   
 private:
   ExplosiveParticle (const ExplosiveParticle&);
-  ExplosiveParticle operator= (const ExplosiveParticle&);
+  ExplosiveParticle& operator= (const ExplosiveParticle&);
 };
 
 #endif

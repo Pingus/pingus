@@ -1,4 +1,4 @@
-//  $Id: entrance_window.hxx,v 1.6 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: entrance_window.hxx,v 1.7 2002/09/27 11:26:45 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,14 +26,16 @@
 #include <ClanLib/GUI/radiobutton.h>
 #include "property_frame.hxx"
 
+namespace EditorObjs {
 class EntranceObj;
+}
 
 namespace EditorNS {
 
 class EntranceWindow : public PropertyFrame
 {
 private:
-  EntranceObj* entrance;
+  EditorObjs::EntranceObj* entrance;
 
   CL_Label       direction_label;
   CL_RadioGroup  direction_group;
@@ -45,14 +47,14 @@ private:
   CL_InputBox    release_rate_input;
 
 public:
-  EntranceWindow (CL_Component* parent, EntranceObj* );
+  EntranceWindow (CL_Component* parent, EditorObjs::EntranceObj* );
   ~EntranceWindow ();
 
   std::string get_title () { return "Entrance Properties"; }
       
 private:
   EntranceWindow (const EntranceWindow&);
-  EntranceWindow operator= (const EntranceWindow&);
+  EntranceWindow& operator= (const EntranceWindow&);
 };
 
 } // namespace EditorNS

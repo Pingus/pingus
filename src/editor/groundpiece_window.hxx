@@ -1,4 +1,4 @@
-//  $Id: groundpiece_window.hxx,v 1.8 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: groundpiece_window.hxx,v 1.9 2002/09/27 11:26:45 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,14 +25,17 @@
 #include <ClanLib/GUI/radiogroup.h>
 #include <ClanLib/GUI/radiobutton.h>
 #include "property_frame.hxx"
-#include "editor_groundpiece_obj.hxx"
+
+namespace EditorObjs {
+class GroundpieceObj;
+}
 
 namespace EditorNS {
 
 class GroundpieceWindow : public PropertyFrame
 {
 private:
-  EditorGroundpieceObj* data;
+  EditorObjs::GroundpieceObj* data;
 
   CL_Button convert_to_hotspot_button;
 
@@ -48,7 +51,7 @@ private:
   CL_Slot convert_to_hotspot_button_slot;
 
 public:
-  GroundpieceWindow (CL_Component* parent,  EditorGroundpieceObj* data);
+  GroundpieceWindow (CL_Component* parent,  EditorObjs::GroundpieceObj* data);
   ~GroundpieceWindow ();
 
   void convert_to_hotspot ();
@@ -60,7 +63,7 @@ public:
       
 private:
   GroundpieceWindow (const GroundpieceWindow&);
-  GroundpieceWindow operator= (const GroundpieceWindow&);
+  GroundpieceWindow& operator= (const GroundpieceWindow&);
 };
 
 } // namespace EditorNS

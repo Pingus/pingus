@@ -1,4 +1,4 @@
-//  $Id: intro.hxx,v 1.4 2002/08/23 15:49:49 torangan Exp $
+//  $Id: intro.hxx,v 1.5 2002/09/27 11:26:43 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ public:
   
 private:
   Intro (const Intro&);
-  Intro operator= (const Intro&);
+  Intro& operator= (const Intro&);
 };
 
 #endif

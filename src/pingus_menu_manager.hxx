@@ -1,4 +1,4 @@
-//  $Id: pingus_menu_manager.hxx,v 1.12 2002/09/13 18:28:26 grumbel Exp $
+//  $Id: pingus_menu_manager.hxx,v 1.13 2002/09/27 11:26:44 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -94,7 +94,7 @@ protected:
   
 private:
   PingusMenuManager (const PingusMenuManager&);
-  PingusMenuManager operator= (const PingusMenuManager&);
+  PingusMenuManager& operator= (const PingusMenuManager&);
 };
 
 #endif

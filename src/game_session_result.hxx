@@ -1,4 +1,4 @@
-//  $Id: game_session_result.hxx,v 1.4 2002/08/23 15:49:48 torangan Exp $
+//  $Id: game_session_result.hxx,v 1.5 2002/09/27 11:26:43 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ public:
   PingusGameSessionResult ();
   
   PingusGameSessionResult (const PingusGameSessionResult&) { }
-  void operator= (const PingusGameSessionResult&) { }
+  PingusGameSessionResult& operator= (const PingusGameSessionResult&) { return *this; }
 
   /** Gives information if the level was succeeded or not 
       @return true if the level was succeeded, otherwise false */

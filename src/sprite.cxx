@@ -1,4 +1,4 @@
-//  $Id: sprite.cxx,v 1.5 2002/08/23 15:49:51 torangan Exp $
+//  $Id: sprite.cxx,v 1.6 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,8 @@ Sprite::Sprite (const Sprite& sprite) :
 {
 }
 
-Sprite Sprite::operator= (const Sprite& sprite)
+Sprite&
+Sprite::operator= (const Sprite& sprite)
 {
   if (this == &sprite)
     return *this;

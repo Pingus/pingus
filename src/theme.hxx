@@ -1,4 +1,4 @@
-//  $Id: theme.hxx,v 1.4 2002/09/19 13:30:08 torangan Exp $
+//  $Id: theme.hxx,v 1.5 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,7 +83,7 @@ public:
   
 private:
   Theme (const Theme&);
-  Theme operator= (const Theme&);
+  Theme& operator= (const Theme&);
 };
 
 #endif

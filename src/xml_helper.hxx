@@ -1,4 +1,4 @@
-//  $Id: xml_helper.hxx,v 1.10 2002/09/15 20:33:45 grumbel Exp $
+//  $Id: xml_helper.hxx,v 1.11 2002/09/27 11:26:44 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,9 +72,7 @@ public:
   static bool equal_str (const xmlChar* comp, const char* orig);
   
   /** @return the value of the attribute with the name \a name, caller
-      must free the returned  value via xmlFree()
-
-      FIXME: any reason we don't return a std::string here? */
+      must free the returned  value via xmlFree() */
   static char* get_prop (xmlNodePtr cur, const char* name);
 
   /// A set of function to parse an xml file
@@ -98,7 +96,7 @@ public:
 private:
   XMLhelper ();
   XMLhelper (const XMLhelper&);
-  XMLhelper operator= (const XMLhelper&);
+  XMLhelper& operator= (const XMLhelper&);
 };
 
 #endif

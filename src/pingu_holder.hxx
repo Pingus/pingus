@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.hxx,v 1.6 2002/09/18 12:07:13 grumbel Exp $
+//  $Id: pingu_holder.hxx,v 1.7 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,7 +75,7 @@ public:
   
 private:
   PinguHolder (const PinguHolder&);
-  PinguHolder operator= (const PinguHolder&);
+  PinguHolder& operator= (const PinguHolder&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: action_holder.hxx,v 1.6 2002/09/14 22:41:31 grumbel Exp $
+//  $Id: action_holder.hxx,v 1.7 2002/09/27 11:26:43 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -77,7 +77,7 @@ public:
   
 private:
   ActionHolder (const ActionHolder&);
-  ActionHolder operator= (const ActionHolder&);
+  ActionHolder& operator= (const ActionHolder&);
 };
 
 #endif

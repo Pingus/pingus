@@ -1,4 +1,4 @@
-//  $Id: system.hxx,v 1.5 2002/09/15 00:19:19 grumbel Exp $
+//  $Id: system.hxx,v 1.6 2002/09/27 11:26:44 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -130,7 +130,7 @@ public:
   
 private:
   System (const System&);
-  System operator= (const System&);
+  System& operator= (const System&);
 };
 
 #endif

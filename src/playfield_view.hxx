@@ -1,4 +1,4 @@
-//  $Id: playfield_view.hxx,v 1.5 2002/09/04 19:40:19 grumbel Exp $
+//  $Id: playfield_view.hxx,v 1.6 2002/09/27 11:26:44 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ public:
   
 private:
   PlayfieldView (const PlayfieldView&);
-  PlayfieldView operator= (const PlayfieldView&);
+  PlayfieldView& operator= (const PlayfieldView&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: config.hxx,v 1.5 2002/09/17 16:23:30 grumbel Exp $
+//  $Id: config.hxx,v 1.6 2002/09/27 11:26:43 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,36 +64,28 @@ public:
   
 private:
   ConfigParser (const ConfigParser&);
-  ConfigParser operator= (const ConfigParser&);
+  ConfigParser& operator= (const ConfigParser&);
 };
 
-///
 class Config : public ConfigParser
 {
 private:
-  ///
   std::string filename;
 
-  ///
   bool str_to_bool(const std::string&);
-  ///
   int  str_to_int(const std::string&);
   
 public:
-  ///
-  Config();
-  ///
-  Config(std::string);
+  Config ();
+  Config (std::string);
 
-  ///
   void set_value(std::string valueid,
 		 std::string value);
 		 
 private:
   Config (const Config&);
-  Config operator= (const Config&);
-}///
-;
+  Config& operator= (const Config&);
+};
 
 #endif
 

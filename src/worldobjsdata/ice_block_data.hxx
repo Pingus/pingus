@@ -1,4 +1,4 @@
-//  $Id: ice_block_data.hxx,v 1.2 2002/09/15 11:02:24 grumbel Exp $
+//  $Id: ice_block_data.hxx,v 1.3 2002/09/27 11:26:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ public:
   EditorObjLst create_EditorObj ();
   
 private:
-  IceBlockData operator= (const IceBlockData&);
+  IceBlockData& operator= (const IceBlockData&);
 };
 
 } // namespace WorldObjsData

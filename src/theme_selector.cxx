@@ -1,4 +1,4 @@
-//  $Id: theme_selector.cxx,v 1.5 2002/08/23 15:49:51 torangan Exp $
+//  $Id: theme_selector.cxx,v 1.6 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,7 +71,8 @@ ListItem::ListItem (const ListItem& old) : label(old.label), font(new CL_Font(*(
 {
 }
 
-ListItem ListItem::operator= (const ListItem& old)
+ListItem&
+ListItem::operator= (const ListItem& old)
 {
   if (this == &old)
     return *this;

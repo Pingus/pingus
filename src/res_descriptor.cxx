@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.cxx,v 1.11 2002/09/14 19:06:33 torangan Exp $
+//  $Id: res_descriptor.cxx,v 1.12 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,8 @@ ResDescriptor::ResDescriptor (const ResDescriptor& res_desc)
 {
 }
 
-ResDescriptor ResDescriptor::operator= (const ResDescriptor& old)
+ResDescriptor&
+ResDescriptor::operator= (const ResDescriptor& old)
 {
   if (this == &old)
     return *this;

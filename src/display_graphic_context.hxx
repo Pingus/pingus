@@ -1,4 +1,4 @@
-//  $Id: display_graphic_context.hxx,v 1.2 2002/09/05 11:26:35 grumbel Exp $
+//  $Id: display_graphic_context.hxx,v 1.3 2002/09/27 11:26:43 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -114,7 +114,7 @@ public:
 
 private:
   DisplayGraphicContext (const DisplayGraphicContext&);
-  DisplayGraphicContext operator= (const DisplayGraphicContext&);
+  DisplayGraphicContext& operator= (const DisplayGraphicContext&);
 };
 
 #endif

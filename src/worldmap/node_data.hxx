@@ -1,4 +1,4 @@
-//  $Id: node_data.hxx,v 1.8 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: node_data.hxx,v 1.9 2002/09/27 11:26:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,7 +70,7 @@ public:
   NodeData () { }
       
   NodeData (const NodeData& old);
-  NodeData operator= (const NodeData& old);
+  NodeData& operator= (const NodeData& old);
       
   virtual ~NodeData () { }
 
@@ -102,7 +102,7 @@ public:
       
 private:
   EmptyNodeData (const EmptyNodeData&);
-  EmptyNodeData operator= (const EmptyNodeData&);
+  EmptyNodeData& operator= (const EmptyNodeData&);
 };
 
 /** Level */
@@ -119,7 +119,7 @@ public:
   LevelNodeData () { }
       
   LevelNodeData (const LevelNodeData& old);
-  LevelNodeData operator= (const LevelNodeData& old);
+  LevelNodeData& operator= (const LevelNodeData& old);
       
   virtual ~LevelNodeData () {}
 
@@ -143,7 +143,7 @@ public:
   TubeNodeData () { }
       
   TubeNodeData (const TubeNodeData& old);
-  TubeNodeData operator= (const TubeNodeData& old);
+  TubeNodeData& operator= (const TubeNodeData& old);
   
   virtual ~TubeNodeData () { }
 
@@ -157,5 +157,3 @@ public:
 #endif
 
 /* EOF */
-
-

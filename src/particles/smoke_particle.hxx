@@ -1,4 +1,4 @@
-//  $Id: smoke_particle.hxx,v 1.4 2002/08/23 15:49:56 torangan Exp $
+//  $Id: smoke_particle.hxx,v 1.5 2002/09/27 11:26:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ public:
   
 private:
   SmokeParticle (const SmokeParticle&);
-  SmokeParticle operator= (const SmokeParticle&);
+  SmokeParticle& operator= (const SmokeParticle&);
 };
 
 #endif

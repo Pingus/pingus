@@ -1,4 +1,4 @@
-//  $Id: plfobj.hxx,v 1.11 2002/09/25 17:21:38 torangan Exp $
+//  $Id: plfobj.hxx,v 1.12 2002/09/27 11:26:45 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,25 +20,8 @@
 #ifndef HEADER_PINGUS_EDITOR_PLFOBJ_HXX
 #define HEADER_PINGUS_EDITOR_PLFOBJ_HXX
 
-#include "../entrance_data.hxx"
 #include "../exit_data.hxx"
 #include "sprite_editorobj.hxx"
-
-class EntranceObj : public SpriteEditorObj,
-		    public EntranceData
-{
-public:
-  EntranceObj (const EntranceData&);
-
-  EditorObj* duplicate ();
-  void write_xml (std::ostream& xml) { EntranceData::write_xml (xml); }
-  std::string status_line ();
-  EditorNS::PropertyFrame* get_gui_dialog (CL_Component* parent);
-  
-private:
-  EntranceObj (const EntranceObj&);
-  EntranceObj operator= (const EntranceObj&);
-};
 
 class ExitObj : public SpriteEditorObj,
 		public ExitData
@@ -52,11 +35,10 @@ public:
   
 private:
   ExitObj (const ExitObj&);
-  ExitObj operator= (const ExitObj&);
+  ExitObj& operator= (const ExitObj&);
 };
 
 #endif
 
 /* EOF */
-
 

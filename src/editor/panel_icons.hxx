@@ -1,4 +1,4 @@
-//  $Id: panel_icons.hxx,v 1.6 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: panel_icons.hxx,v 1.7 2002/09/27 11:26:45 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ public:
   
 private:
   PanelIconNew (const PanelIconNew&);
-  PanelIconNew operator= (const PanelIconNew&);
+  PanelIconNew& operator= (const PanelIconNew&);
 };
 
 class PanelIconLoad : public PanelIcon
@@ -43,7 +43,7 @@ public:
   
 private:
   PanelIconLoad (const PanelIconLoad&);
-  PanelIconLoad operator= (const PanelIconLoad&);
+  PanelIconLoad& operator= (const PanelIconLoad&);
 };
 
 class PanelIconSave : public PanelIcon
@@ -54,7 +54,7 @@ public:
   
 private:
   PanelIconSave (const PanelIconSave&);
-  PanelIconSave operator= (const PanelIconSave&);
+  PanelIconSave& operator= (const PanelIconSave&);
 };
 
 class PanelIconCopy : public PanelIcon
@@ -65,7 +65,7 @@ public:
   
 private:
   PanelIconCopy (const PanelIconCopy&);
-  PanelIconCopy operator= (const PanelIconCopy&);
+  PanelIconCopy& operator= (const PanelIconCopy&);
 };
 
 class PanelIconPaste : public PanelIcon
@@ -76,7 +76,7 @@ public:
   
 private:
   PanelIconPaste (const PanelIconPaste&);
-  PanelIconPaste operator= (const PanelIconPaste&);
+  PanelIconPaste& operator= (const PanelIconPaste&);
 };
 
 class PanelIconLevelProperties : public PanelIcon
@@ -87,7 +87,7 @@ public:
   
 private:
   PanelIconLevelProperties (const PanelIconLevelProperties&);
-  PanelIconLevelProperties operator= (const PanelIconLevelProperties&);
+  PanelIconLevelProperties& operator= (const PanelIconLevelProperties&);
 };
 
 class PanelIconObjectProperties : public PanelIcon
@@ -98,7 +98,7 @@ public:
   
 private:
   PanelIconObjectProperties (const PanelIconObjectProperties&);
-  PanelIconObjectProperties operator= (const PanelIconObjectProperties&);
+  PanelIconObjectProperties& operator= (const PanelIconObjectProperties&);
 };
 
 class PanelIconDelete : public PanelIcon
@@ -109,7 +109,7 @@ public:
   
 private:
   PanelIconDelete (const PanelIconDelete&);
-  PanelIconDelete operator= (const PanelIconDelete&);
+  PanelIconDelete& operator= (const PanelIconDelete&);
 };
 
 class PanelIconExit : public PanelIcon
@@ -120,7 +120,7 @@ public:
   
 private:
   PanelIconExit (const PanelIconExit&);
-  PanelIconExit operator= (const PanelIconExit&);
+  PanelIconExit& operator= (const PanelIconExit&);
 };
 
 class PanelIconRun : public PanelIcon
@@ -131,7 +131,7 @@ public:
   
 private:
   PanelIconRun (const PanelIconRun&);
-  PanelIconRun operator= (const PanelIconRun&);
+  PanelIconRun& operator= (const PanelIconRun&);
 };
 
 class PanelIconInsertObject : public PanelIcon
@@ -142,7 +142,7 @@ public:
   
 private:
   PanelIconInsertObject (const PanelIconInsertObject&);
-  PanelIconInsertObject operator= (const PanelIconInsertObject&);
+  PanelIconInsertObject& operator= (const PanelIconInsertObject&);
 };
 
 class PanelIconZoomOut : public PanelIcon
@@ -153,7 +153,7 @@ public:
   
 private:
   PanelIconZoomOut (const PanelIconZoomOut&);
-  PanelIconZoomOut operator= (const PanelIconZoomOut&);
+  PanelIconZoomOut& operator= (const PanelIconZoomOut&);
 };
 
 class PanelIconZoomIn : public PanelIcon
@@ -164,7 +164,7 @@ public:
   
 private:
   PanelIconZoomIn (const PanelIconZoomIn&);
-  PanelIconZoomIn operator= (const PanelIconZoomIn&);
+  PanelIconZoomIn& operator= (const PanelIconZoomIn&);
 };
 
 class PanelIconRegionZoom : public PanelIcon
@@ -175,7 +175,7 @@ public:
   
 private:
   PanelIconRegionZoom (const PanelIconRegionZoom&);
-  PanelIconRegionZoom operator= (const PanelIconRegionZoom&);
+  PanelIconRegionZoom& operator= (const PanelIconRegionZoom&);
 };
 
 class PanelIconSetupActions : public PanelIcon
@@ -186,7 +186,7 @@ public:
   
 private:
   PanelIconSetupActions (const PanelIconSetupActions&);
-  PanelIconSetupActions operator= (const PanelIconSetupActions&);
+  PanelIconSetupActions& operator= (const PanelIconSetupActions&);
 };
 
 } // namespace EditorNS

@@ -1,4 +1,4 @@
-//  $Id: switch_door.hxx,v 1.14 2002/09/16 22:51:33 grumbel Exp $
+//  $Id: switch_door.hxx,v 1.15 2002/09/27 11:26:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,7 +60,7 @@ public:
   
 private:
   SwitchDoor (const SwitchDoor&);
-  SwitchDoor operator= (const SwitchDoor&);
+  SwitchDoor& operator= (const SwitchDoor&);
 };
 
 } // namespace WorldObjs

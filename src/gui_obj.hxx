@@ -1,4 +1,4 @@
-//  $Id: gui_obj.hxx,v 1.6 2002/08/23 15:49:48 torangan Exp $
+//  $Id: gui_obj.hxx,v 1.7 2002/09/27 11:26:43 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -68,7 +68,7 @@ public:
   
 private:
   GuiObj (const GuiObj&);
-  GuiObj operator= (const GuiObj&);
+  GuiObj& operator= (const GuiObj&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: teleporter.hxx,v 1.13 2002/09/14 19:06:34 torangan Exp $
+//  $Id: teleporter.hxx,v 1.14 2002/09/27 11:26:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ public:
   
 private:
   Teleporter (const Teleporter&);
-  Teleporter operator= (const Teleporter&);
+  Teleporter& operator= (const Teleporter&);
 };
 
 } // namespace WorldObjs

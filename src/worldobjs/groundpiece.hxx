@@ -1,4 +1,4 @@
-//  $Id: groundpiece.hxx,v 1.3 2002/09/16 20:52:22 torangan Exp $
+//  $Id: groundpiece.hxx,v 1.4 2002/09/27 11:26:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ private:
   CL_Surface surface;
 
 public:
-  Groundpiece(const WorldObjsData::GroundpieceData& data_);
+  Groundpiece (const WorldObjsData::GroundpieceData& data_);
   ~Groundpiece() {};
 
   float get_z_pos () const { return 0; }
@@ -44,7 +44,7 @@ public:
   bool purge_after_startup() { return true; }
 private:
   Groundpiece (const Groundpiece&);
-  Groundpiece operator= (const Groundpiece&);
+  Groundpiece& operator= (const Groundpiece&);
 };
 
 } // namespace WorldObjs

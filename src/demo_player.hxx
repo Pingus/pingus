@@ -1,4 +1,4 @@
-//  $Id: demo_player.hxx,v 1.4 2002/08/23 15:49:48 torangan Exp $
+//  $Id: demo_player.hxx,v 1.5 2002/09/27 11:26:43 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,41 +24,33 @@
 
 #include "server.hxx"
 
-///
 class DemoPlayer
 {
 private:
-  ///
   std::queue<PingusEvent> event_queue;
-  ///
   std::string levelname;
-  ///
-  //bool is_playing;
 
 public:
-  ///
   DemoPlayer();
-  ///
   ~DemoPlayer();
 
-  ///
+
   void load(const std::string&);
-  ///
+
   std::string get_levelname();
-  ///
+
   const PingusEvent& peek_event();
-  ///
+
   void dequeue_event();
-  ///
+
   bool empty() { 
     return event_queue.empty(); 
   }
   
 private:
   DemoPlayer (const DemoPlayer&);
-  DemoPlayer operator= (const DemoPlayer&);
-}///
-;
+  DemoPlayer& operator= (const DemoPlayer&);
+};
 
 #endif
 

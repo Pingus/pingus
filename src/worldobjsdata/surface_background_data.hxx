@@ -1,4 +1,4 @@
-//  $Id: surface_background_data.hxx,v 1.1 2002/09/16 20:52:22 torangan Exp $
+//  $Id: surface_background_data.hxx,v 1.2 2002/09/27 11:26:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,7 +76,7 @@ public:
   EditorObjLst create_EditorObj ();
 
 private:
-  SurfaceBackgroundData operator= (const SurfaceBackgroundData&);
+  SurfaceBackgroundData& operator= (const SurfaceBackgroundData&);
 };
 
 } // namespace WorldObjsData

@@ -1,4 +1,4 @@
-//  $Id: pointer.hxx,v 1.9 2002/08/26 13:53:04 torangan Exp $
+//  $Id: pointer.hxx,v 1.10 2002/09/27 11:26:46 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ namespace Input {
   
    private:
      Pointer (const Pointer&);
-     Pointer operator= (const Pointer&);
+     Pointer& operator= (const Pointer&);
   };
 
 }

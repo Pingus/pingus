@@ -1,4 +1,4 @@
-//  $Id: exit_data.cxx,v 1.6 2002/09/10 21:03:32 torangan Exp $
+//  $Id: exit_data.cxx,v 1.7 2002/09/27 11:26:43 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -76,7 +76,7 @@ ExitData::ExitData (const ExitData& old) : WorldObjData(old),
 {
 }
 
-ExitData
+ExitData&
 ExitData::operator= (const ExitData& old)
 {
   if (this == &old)

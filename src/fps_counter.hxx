@@ -1,4 +1,4 @@
-//  $Id: fps_counter.hxx,v 1.4 2002/09/04 14:55:11 torangan Exp $
+//  $Id: fps_counter.hxx,v 1.5 2002/09/27 11:26:43 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,7 @@ public:
   
 private:
   FPSCounter (const FPSCounter&);
-  FPSCounter operator= (const FPSCounter&);
+  FPSCounter& operator= (const FPSCounter&);
 };
 
 /** The fps_counter is a global object, so we don't need to construct

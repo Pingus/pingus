@@ -1,4 +1,4 @@
-//  $Id: hammer_obj.hxx,v 1.5 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: hammer_obj.hxx,v 1.6 2002/09/27 11:26:46 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,7 @@ public:
   
 private:
   HammerObj (const HammerObj&);
-  HammerObj operator= (const HammerObj&);
+  HammerObj& operator= (const HammerObj&);
 };
 
 } // namespace EditorObjs

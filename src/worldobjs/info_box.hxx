@@ -1,4 +1,4 @@
-//  $Id: info_box.hxx,v 1.12 2002/09/17 16:23:30 grumbel Exp $
+//  $Id: info_box.hxx,v 1.13 2002/09/27 11:26:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ public:
   
 private:
   InfoBox (const InfoBox&);
-  InfoBox operator= (const InfoBox&);
+  InfoBox& operator= (const InfoBox&);
 };
 
 } // namespace WorldObjs

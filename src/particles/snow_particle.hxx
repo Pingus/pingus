@@ -1,4 +1,4 @@
-//  $Id: snow_particle.hxx,v 1.3 2002/08/23 15:49:56 torangan Exp $
+//  $Id: snow_particle.hxx,v 1.4 2002/09/27 11:26:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ public:
   
 private:
   SnowParticle (const SnowParticle&); 
-  SnowParticle operator= (const SnowParticle&);
+  SnowParticle& operator= (const SnowParticle&);
 };
 
 class CollidingSnowParticle : public SnowParticle
@@ -54,7 +54,7 @@ public:
   
 private:
   CollidingSnowParticle (const CollidingSnowParticle&);
-  CollidingSnowParticle operator= (const CollidingSnowParticle&);
+  CollidingSnowParticle& operator= (const CollidingSnowParticle&);
 };
 
 #endif

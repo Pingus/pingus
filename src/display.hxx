@@ -1,4 +1,4 @@
-//  $Id: display.hxx,v 1.4 2002/08/23 15:49:48 torangan Exp $
+//  $Id: display.hxx,v 1.5 2002/09/27 11:26:43 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ public:
   
 private:
   DisplayHook (const DisplayHook&);
-  DisplayHook operator= (const DisplayHook&);
+  DisplayHook& operator= (const DisplayHook&);
 };
 
 /** This is a kind of wrapper class around CL_Display, it provides
@@ -68,7 +68,7 @@ public:
 private:
   Display ();
   Display (const Display&);
-  Display operator= (const Display&);
+  Display& operator= (const Display&);
 };
 
 #endif

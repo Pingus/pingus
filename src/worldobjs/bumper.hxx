@@ -1,4 +1,4 @@
-//  $Id: bumper.hxx,v 1.4 2002/09/16 22:51:33 grumbel Exp $
+//  $Id: bumper.hxx,v 1.5 2002/09/27 11:26:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ private:
   void catch_pingu (Pingu* pingu);
 
   Bumper (const Bumper&);
-  Bumper operator= (const Bumper&);
+  Bumper& operator= (const Bumper&);
 };
 
 } // namespace WorldObjs

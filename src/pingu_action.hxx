@@ -1,4 +1,4 @@
-//  $Id: pingu_action.hxx,v 1.15 2002/09/14 19:06:33 torangan Exp $
+//  $Id: pingu_action.hxx,v 1.16 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -117,7 +117,7 @@ public:
 
 private:
   PinguAction (const PinguAction&);
-  PinguAction operator= (const PinguAction&);
+  PinguAction& operator= (const PinguAction&);
 };
 
 #endif /* PINGU_ACTION_HH */

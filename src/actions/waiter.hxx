@@ -1,4 +1,4 @@
-//  $Id: waiter.hxx,v 1.8 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: waiter.hxx,v 1.9 2002/09/27 11:26:45 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ public:
   
 private:
   Waiter (const Waiter&);
-  Waiter operator= (const Waiter&);
+  Waiter& operator= (const Waiter&);
 };
 
 } // namespace Actions

@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.12 2002/09/16 19:18:56 grumbel Exp $
+//  $Id: world.hxx,v 1.13 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -190,7 +190,7 @@ public:
   
 private:
   World (const World&);
-  World operator= (const World&);
+  World& operator= (const World&);
 };
 
 #endif

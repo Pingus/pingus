@@ -1,4 +1,4 @@
-//  $Id: switch_door_switch_obj.hxx,v 1.2 2002/09/14 19:06:34 torangan Exp $
+//  $Id: switch_door_switch_obj.hxx,v 1.3 2002/09/27 11:26:46 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ public:
   
 private:
   SwitchDoorSwitchObj (const SwitchDoorSwitchObj&);
-  SwitchDoorSwitchObj operator= (const SwitchDoorSwitchObj&);
+  SwitchDoorSwitchObj& operator= (const SwitchDoorSwitchObj&);
 };
 
 } // namespace EditorObjs

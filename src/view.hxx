@@ -1,4 +1,4 @@
-//  $Id: view.hxx,v 1.8 2002/09/04 19:40:19 grumbel Exp $
+//  $Id: view.hxx,v 1.9 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -100,7 +100,7 @@ public:
   
 private:
   View (const View&);
-  View operator= (const View&);
+  View& operator= (const View&);
 };
 
 #endif

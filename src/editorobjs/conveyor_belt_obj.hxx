@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_obj.hxx,v 1.2 2002/09/15 11:02:24 grumbel Exp $
+//  $Id: conveyor_belt_obj.hxx,v 1.3 2002/09/27 11:26:46 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,7 +69,7 @@ public:
   
 private:
   ConveyorBeltObj (const ConveyorBeltObj&);
-  ConveyorBeltObj operator= (const ConveyorBeltObj&);
+  ConveyorBeltObj& operator= (const ConveyorBeltObj&);
 };
 
 } // namespace EditorObjs

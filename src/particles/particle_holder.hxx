@@ -1,4 +1,4 @@
-//  $Id: particle_holder.hxx,v 1.4 2002/09/04 17:49:48 grumbel Exp $
+//  $Id: particle_holder.hxx,v 1.5 2002/09/27 11:26:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ public:
   
 private:
   ParticleHolder (const ParticleHolder&);
-  ParticleHolder operator= (const ParticleHolder&);
+  ParticleHolder& operator= (const ParticleHolder&);
 };
 
 #endif

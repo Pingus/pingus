@@ -1,4 +1,4 @@
-//  $Id: snow_generator.hxx,v 1.3 2002/09/16 17:17:17 grumbel Exp $
+//  $Id: snow_generator.hxx,v 1.4 2002/09/27 11:26:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ public:
   float get_z_pos() const { return 1000; }
 private:
   SnowGenerator (const SnowGenerator&);
-  SnowGenerator operator= (const SnowGenerator&);
+  SnowGenerator& operator= (const SnowGenerator&);
 };
 
 } // namespace WorldObjs

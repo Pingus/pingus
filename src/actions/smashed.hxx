@@ -1,4 +1,4 @@
-//  $Id: smashed.hxx,v 1.9 2002/09/16 16:47:41 grumbel Exp $
+//  $Id: smashed.hxx,v 1.10 2002/09/27 11:26:45 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ public:
   
 private:
   Smashed (const Smashed&);
-  Smashed operator= (const Smashed&);
+  Smashed& operator= (const Smashed&);
 };
 
 } // namespace Actions

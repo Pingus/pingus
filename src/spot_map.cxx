@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.18 2002/09/17 21:45:56 grumbel Exp $
+//  $Id: spot_map.cxx,v 1.19 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ MapTileSurface::MapTileSurface (const MapTileSurface& old) : empty(old.empty),
 {
 }
 
-MapTileSurface 
+MapTileSurface& 
 MapTileSurface::operator= (const MapTileSurface& old)
 {
   if (this == &old)

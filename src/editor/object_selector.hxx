@@ -1,4 +1,4 @@
-// $Id: object_selector.hxx,v 1.11 2002/09/16 20:31:09 grumbel Exp $
+// $Id: object_selector.hxx,v 1.12 2002/09/27 11:26:45 torangan Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include <config.h>
 #include <map>
 #include <list>
+#include <ClanLib/Core/Math/cl_vector.h>
 #include "../groundtype.hxx"
 #include "surface_selector.hxx"
 #include "editorobj.hxx"
@@ -72,7 +73,7 @@ public:
   
 private:
   ObjectSelector (const ObjectSelector&);
-  ObjectSelector operator= (const ObjectSelector&);
+  ObjectSelector& operator= (const ObjectSelector&);
 };
 
 } // namespace EditorNS

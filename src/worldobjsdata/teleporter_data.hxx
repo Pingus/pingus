@@ -1,4 +1,4 @@
-//  $Id: teleporter_data.hxx,v 1.1 2002/09/10 12:11:29 torangan Exp $
+//  $Id: teleporter_data.hxx,v 1.2 2002/09/27 11:26:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,34 +27,34 @@
 
 namespace WorldObjsData {
 
-  class TeleporterData : public WorldObjData
-  {
-  public:
-    CL_Vector pos;
-    CL_Vector target_pos;
-    
-    Sprite sprite;
-    Sprite target_sprite;
-
-    TeleporterData ();
-    TeleporterData (xmlDocPtr doc, xmlNodePtr cur);
-    TeleporterData (const TeleporterData& data);
+class TeleporterData : public WorldObjData
+{
+public:
+  CL_Vector pos;
+  CL_Vector target_pos;
   
-    /** Write the content of this object formatted as xml to the given
-        stream */
-    void write_xml (std::ostream& xml);
+  Sprite sprite;
+  Sprite target_sprite;
+
+  TeleporterData ();
+  TeleporterData (xmlDocPtr doc, xmlNodePtr cur);
+  TeleporterData (const TeleporterData& data);
+
+  /** Write the content of this object formatted as xml to the given
+      stream */
+  void write_xml (std::ostream& xml);
+
+  /** Create an WorldObj from the given data object */
+  WorldObj* create_WorldObj ();
+
+  /** Create an EditorObj from the given data object */
+  EditorObjLst create_EditorObj ();
   
-    /** Create an WorldObj from the given data object */
-    WorldObj* create_WorldObj ();
+private:
+  TeleporterData& operator= (const TeleporterData& data);
+};
 
-    /** Create an EditorObj from the given data object */
-    EditorObjLst create_EditorObj ();
-    
-  private:
-    TeleporterData operator= (const TeleporterData& data);
-  };
-
-}
+} // namespace WorldObjsData
 
 #endif
 

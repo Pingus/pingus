@@ -1,4 +1,4 @@
-//  $Id: laser_kill.hxx,v 1.9 2002/09/14 22:41:31 grumbel Exp $
+//  $Id: laser_kill.hxx,v 1.10 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ public:
   
 private:
   LaserKill (const LaserKill&);
-  LaserKill operator= (const LaserKill&);
+  LaserKill& operator= (const LaserKill&);
 };
 
 } // namespace Actions

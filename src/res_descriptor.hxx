@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.hxx,v 1.8 2002/09/11 12:45:57 grumbel Exp $
+//  $Id: res_descriptor.hxx,v 1.9 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ public:
 
   ResDescriptor ();
   ResDescriptor (const ResDescriptor& old);
-  ResDescriptor operator= (const ResDescriptor&);
+  ResDescriptor& operator= (const ResDescriptor&);
 
   ResDescriptor (const std::string& res_name, const std::string& datafile,
 		 ResourceType type,

@@ -1,4 +1,4 @@
-//  $Id: event.hxx,v 1.5 2002/08/23 15:49:55 torangan Exp $
+//  $Id: event.hxx,v 1.6 2002/09/27 11:26:46 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ namespace Input {
     
     private:
       Event (const Event&);
-      Event operator= (const Event&);
+      Event& operator= (const Event&);
   };
 
 }

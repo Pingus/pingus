@@ -1,4 +1,4 @@
-//  $Id: floater.hxx,v 1.10 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: floater.hxx,v 1.11 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ public:
   
 private:
   Floater (const Floater&);
-  Floater operator= (const Floater&);
+  Floater& operator= (const Floater&);
 };
 
 } // namespace Actions

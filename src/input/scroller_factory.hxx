@@ -1,4 +1,4 @@
-//  $Id: scroller_factory.hxx,v 1.5 2002/08/26 13:53:04 torangan Exp $
+//  $Id: scroller_factory.hxx,v 1.6 2002/09/27 11:26:47 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ namespace Input {
     private:
       ScrollerFactory ();
       ScrollerFactory (const ScrollerFactory&);
-      ScrollerFactory operator= (const ScrollerFactory&);
+      ScrollerFactory& operator= (const ScrollerFactory&);
   };
 }
 

@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.25 2002/09/25 17:21:38 torangan Exp $
+//  $Id: object_selector.cxx,v 1.26 2002/09/27 11:26:45 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,13 +32,14 @@
 #include "../pingus_resource.hxx"
 #include "../string_converter.hxx"
 #include "../system.hxx"
-#include "editor_groundpiece_obj.hxx"
 #include "object_selector.hxx"
 #include "plfobj.hxx"
 #include "string_reader.hxx"
 #include "thumb_cache.hxx"
 #include "weather_obj.hxx"
 
+#include "../worldobjsdata/entrance_data.hxx"
+#include "../worldobjsdata/groundpiece_data.hxx"
 #include "../worldobjsdata/hotspot_data.hxx"
 #include "../worldobjsdata/liquid_data.hxx"
 #include "../worldobjsdata/solid_color_background_data.hxx"
@@ -50,6 +51,7 @@
 #include "../editorobjs/conveyor_belt_obj.hxx"
 #include "../editorobjs/fake_exit_obj.hxx"
 #include "../editorobjs/guillotine_obj.hxx"
+#include "../editorobjs/groundpiece_obj.hxx"
 #include "../editorobjs/hammer_obj.hxx"
 #include "../editorobjs/hotspot_obj.hxx"
 #include "../editorobjs/ice_block_obj.hxx"
@@ -132,7 +134,7 @@ ObjectSelector::get_trap ()
 }
 
 EditorObjLst
-ObjectSelector::get_groundpiece (const Groundtype::GPType & gptype)
+ObjectSelector::get_groundpiece (const Groundtype::GPType& gptype)
 {
   GroundpieceData data;
   std::string datafile = std::string("groundpieces-") + Groundtype::type_to_string (gptype);
@@ -141,17 +143,18 @@ ObjectSelector::get_groundpiece (const Groundtype::GPType & gptype)
 
   std::string str = select_surface(datafile);
 
+  EditorObjLst objs;
+
   if (!str.empty())
     {
       data.desc = ResDescriptor("resource:" + datafile, str);
       data.gptype = gptype;
 
-      EditorObjLst objs;
-      objs.push_back(new EditorGroundpieceObj(data));
+      objs.push_back(new EditorObjs::GroundpieceObj(&data));
       return objs;
     }
   
-  return EditorObjLst();
+  return objs;
 }
 
 EditorObjLst

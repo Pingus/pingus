@@ -1,4 +1,4 @@
-//  $Id: anim_counter.hxx,v 1.3 2002/08/23 15:49:48 torangan Exp $
+//  $Id: anim_counter.hxx,v 1.4 2002/09/27 11:26:43 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,20 +29,21 @@
 class AnimCounter : public Counter
 {
 private:
-  ///
+
   bool enough_time_passed(void) const;
-  ///
+
   int last_time;
-  ///
+
   unsigned int speed;
+  
 public:
-  ///
+
   AnimCounter(int s);
-  ///
+
   AnimCounter();
-  ///
+
   int operator=(int i);
-  ///
+
   int operator++();
 
   /// Set the number of miliseconds between a count increase
@@ -53,9 +54,8 @@ public:
   
 private:
   AnimCounter (const AnimCounter&);
-  AnimCounter operator= (const AnimCounter&);
-}///
-;
+  AnimCounter& operator= (const AnimCounter&);
+};
 
 #endif
 

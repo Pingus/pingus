@@ -20,7 +20,6 @@ noinst_LIBRARIES = libpingus_editor.a
 libpingus_editor_a_SOURCES = \
 	action_window.cxx action_window.hxx \
 	editor_event.cxx editor_event.hxx \
-	editor_groundpiece_obj.cxx editor_groundpiece_obj.hxx \
 	editor_help_screen.cxx editor_help_screen.hxx \
 	editor.cxx editor.hxx \
 	editorobj_group.cxx editorobj_group.hxx \

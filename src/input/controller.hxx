@@ -1,4 +1,4 @@
-//  $Id: controller.hxx,v 1.13 2002/08/26 13:53:04 torangan Exp $
+//  $Id: controller.hxx,v 1.14 2002/09/27 11:26:46 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,7 @@ namespace Input {
       void create_action_buttons (xmlNodePtr cur);
       
       Controller (const Controller&);
-      Controller operator= (const Controller&);
+      Controller& operator= (const Controller&);
   };
 }
 

@@ -1,4 +1,4 @@
-//  $Id: hotspot_data.hxx,v 1.1 2002/09/24 09:29:04 torangan Exp $
+//  $Id: hotspot_data.hxx,v 1.2 2002/09/27 11:26:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ public:
   EditorObjLst create_EditorObj ();
 
 private:
-  HotspotData operator= (const HotspotData&);
+  HotspotData& operator= (const HotspotData&);
 };
 
 } // namespace WorldObjsData

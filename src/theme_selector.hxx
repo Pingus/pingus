@@ -1,4 +1,4 @@
-//  $Id: theme_selector.hxx,v 1.4 2002/08/23 15:49:51 torangan Exp $
+//  $Id: theme_selector.hxx,v 1.5 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ public:
   bool mouse_over();
   
   ListItem (const ListItem& old);
-  ListItem operator= (const ListItem& old);
+  ListItem& operator= (const ListItem& old);
 };
 
 class ListBox
@@ -59,7 +59,7 @@ public:
   
 private:
   ListBox (const ListBox&);
-  ListBox operator= (const ListBox&);
+  ListBox& operator= (const ListBox&);
 };
 
 class ThemeSelector
@@ -86,7 +86,7 @@ public:
     
   private:
     Event (const Event&);
-    Event operator= (const Event&);
+    Event& operator= (const Event&);
   };
   
   friend class Event;
@@ -135,7 +135,7 @@ public:
   
 private:
   ThemeSelector (const ThemeSelector&);
-  ThemeSelector operator= (const ThemeSelector&);
+  ThemeSelector& operator= (const ThemeSelector&);
 };
 
 #endif

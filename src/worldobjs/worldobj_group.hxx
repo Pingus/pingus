@@ -1,4 +1,4 @@
-//  $Id: worldobj_group.hxx,v 1.4 2002/09/16 10:18:51 grumbel Exp $
+//  $Id: worldobj_group.hxx,v 1.5 2002/09/27 11:26:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ public:
 
 private:
   WorldObjGroup (const WorldObjGroup&);
-  WorldObjGroup operator= (const WorldObjGroup&);
+  WorldObjGroup& operator= (const WorldObjGroup&);
 };
 
 } // namespace WorldObjs

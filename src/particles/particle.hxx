@@ -1,5 +1,5 @@
 
-//  $Id: particle.hxx,v 1.4 2002/09/04 14:55:12 torangan Exp $
+//  $Id: particle.hxx,v 1.5 2002/09/27 11:26:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,7 +60,7 @@ public:
   
 private:
   Particle (const Particle&);
-  Particle operator= (const Particle&);
+  Particle& operator= (const Particle&);
 };
 
 #endif

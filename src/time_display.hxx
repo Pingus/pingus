@@ -1,4 +1,4 @@
-//  $Id: time_display.hxx,v 1.6 2002/09/05 12:24:02 grumbel Exp $
+//  $Id: time_display.hxx,v 1.7 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ public:
   
 private:
   TimeDisplay (const TimeDisplay&);
-  TimeDisplay operator= (const TimeDisplay&);
+  TimeDisplay& operator= (const TimeDisplay&);
 };
 
 #endif

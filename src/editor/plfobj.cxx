@@ -1,4 +1,4 @@
-//  $Id: plfobj.cxx,v 1.13 2002/09/25 17:21:38 torangan Exp $
+//  $Id: plfobj.cxx,v 1.14 2002/09/27 11:26:45 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,86 +18,9 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdio.h>
-#include "../pingus_error.hxx"
-#include "editor_view.hxx"
 #include "plfobj.hxx"
-#include "entrance_window.hxx"
 
-using namespace std;
-
-EntranceObj::EntranceObj(const EntranceData& data)
-  : EntranceData (data)
-{
-  pos_ref = &pos;
-
-  std::cout << "EntranceObj::EntranceObj(const EntranceData& data): " 
-	    << type << std::endl;
-
-  if (type == "generic")
-    {
-      sprite = Sprite("Entrances/generic", "entrances");
-      sprite.set_align_center_bottom ();
-    } 
-  else if (type == "woodthing") 
-    {
-      std::cout << "WOODTHING" << std::endl;
-      sprite = Sprite("Entrances/woodthing_mov", "entrances");
-      sprite.set_align(0  - sprite.get_width()/2,
-		       32 - sprite.get_height());
-    }
-  else if (type == "cloud")
-    {
-      sprite = Sprite("Entrances/cloud", "entrances");
-      sprite.set_align(-115, -75);
-    } 
-  else 
-    {
-      std::cout << "Entrance obj error!" << endl;
-      PingusError::raise("EntranceObj: Unknown entrance type: " + type);
-    }
-}
-
-EditorObj*
-EntranceObj::duplicate()
-{
-  std::cout << "EntranceObj::duplicate()" << std::endl;
-  return new EntranceObj(static_cast<EntranceData>(*this));
-}
-
-std::string
-EntranceObj::status_line()
-{
-  std::string dir_str = "not set - this is a bug";
-  char str[256];
-
-  switch(direction)
-    {
-    case EntranceData::LEFT:
-      dir_str = "left";
-      break;
-    case EntranceData::RIGHT:
-      dir_str = "right";
-      break;
-    case EntranceData::MISC:
-      dir_str = "misc";
-      break;
-    }
-
-  snprintf(str, 256, "Entrance: %s Rate: %d Direction: %s Owner: %d",
-	  type.c_str(), release_rate, dir_str.c_str(), owner_id);
-
-  return std::string(str);
-}
-
-EditorNS::PropertyFrame*
-EntranceObj::get_gui_dialog (CL_Component* parent)
-{
-  // FIXME: due to the shared_ptr<> this is not guaranted to stay here
-  // FIXME: long enough
-  return new EditorNS::EntranceWindow (parent, this);
-}
-
-ExitObj::ExitObj(const ExitData& data)
+ExitObj::ExitObj (const ExitData& data)
   : SpriteEditorObj (data.desc.res_name, data.desc.datafile, &pos),
     ExitData (data)
 {

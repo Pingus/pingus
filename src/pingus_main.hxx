@@ -1,4 +1,4 @@
-//  $Id: pingus_main.hxx,v 1.4 2002/08/23 15:49:50 torangan Exp $
+//  $Id: pingus_main.hxx,v 1.5 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,7 +60,7 @@ public:
   
 private:
   PingusMain (const PingusMain&);
-  PingusMain operator= (const PingusMain&);
+  PingusMain& operator= (const PingusMain&);
 };
 
 

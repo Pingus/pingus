@@ -1,4 +1,4 @@
-//  $Id: server.cxx,v 1.16 2002/09/14 23:46:58 grumbel Exp $
+//  $Id: server.cxx,v 1.17 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,8 @@ PingusEvent::PingusEvent (const PingusEvent& old) : game_time(old.game_time),
 {
 }
 
-PingusEvent PingusEvent::operator= (const PingusEvent& old)
+PingusEvent&
+PingusEvent::operator= (const PingusEvent& old)
 {
   if (this == &old)
     return *this;
@@ -66,7 +67,7 @@ PingusEvent PingusEvent::operator= (const PingusEvent& old)
 }
 
 
-Server::Server(PLF* plf)
+Server::Server (PLF* plf)
   : action_holder (plf)
 {
   demo_mode = false;
@@ -75,7 +76,7 @@ Server::Server(PLF* plf)
   //demo_out.open("/tmp/demo.plt", (PingusDemoMode)record); 
 }
 
-Server::~Server()
+Server::~Server ()
 {
 }
 

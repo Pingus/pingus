@@ -1,4 +1,4 @@
-//  $Id: pingus_resource.hxx,v 1.9 2002/09/11 12:45:57 grumbel Exp $
+//  $Id: pingus_resource.hxx,v 1.10 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,7 +74,7 @@ public:
   
 private:
   PingusResource (const PingusResource&);
-  PingusResource operator= (const PingusResource&);
+  PingusResource& operator= (const PingusResource&);
 };
 
 #endif

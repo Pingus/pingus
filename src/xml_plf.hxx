@@ -1,4 +1,4 @@
-//  $Id: xml_plf.hxx,v 1.8 2002/09/16 10:18:51 grumbel Exp $
+//  $Id: xml_plf.hxx,v 1.9 2002/09/27 11:26:44 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ public:
   
 private:
   XMLPLF (const XMLPLF&);
-  XMLPLF operator= (const XMLPLF&);
+  XMLPLF& operator= (const XMLPLF&);
 };
 
 #endif

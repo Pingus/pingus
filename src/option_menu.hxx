@@ -1,4 +1,4 @@
-//  $Id: option_menu.hxx,v 1.5 2002/09/05 12:24:02 grumbel Exp $
+//  $Id: option_menu.hxx,v 1.6 2002/09/27 11:26:43 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ public:
   OptionEntry (const std::string&, std::string*, int, int);
   
   OptionEntry (const OptionEntry& old);
-  OptionEntry operator= (const OptionEntry& old);
+  OptionEntry& operator= (const OptionEntry& old);
 
   ~OptionEntry ();
     
@@ -83,7 +83,7 @@ private:
     
   private:
     Event (const Event&);
-    Event operator= (const Event&);
+    Event& operator= (const Event&);
   };
   
   
@@ -108,7 +108,7 @@ public:
   
 private:
   OptionMenu (const OptionMenu&);
-  OptionMenu operator= (const OptionMenu&);
+  OptionMenu& operator= (const OptionMenu&);
 };
 
 extern OptionMenu option_menu;

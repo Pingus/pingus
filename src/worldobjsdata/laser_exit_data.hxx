@@ -1,4 +1,4 @@
-//  $Id: laser_exit_data.hxx,v 1.2 2002/09/10 19:24:20 grumbel Exp $
+//  $Id: laser_exit_data.hxx,v 1.3 2002/09/27 11:26:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ public:
   EditorObjLst create_EditorObj ();
       
 private:
-  LaserExitData operator= (const LaserExitData&);
+  LaserExitData& operator= (const LaserExitData&);
       
 };
   

@@ -1,4 +1,4 @@
-//  $Id: liquid.hxx,v 1.1 2002/09/25 17:21:39 torangan Exp $
+//  $Id: liquid.hxx,v 1.2 2002/09/27 11:26:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,7 @@ public:
   
 private:
   Liquid (const Liquid&);
-  Liquid operator= (const Liquid&);
+  Liquid& operator= (const Liquid&);
 };
 
 } // namespace WorldObjs

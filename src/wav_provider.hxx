@@ -1,4 +1,4 @@
-//  $Id: wav_provider.hxx,v 1.4 2002/08/23 15:49:51 torangan Exp $
+//  $Id: wav_provider.hxx,v 1.5 2002/09/27 11:26:44 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ public:
 private:
   PingusWavProvider ();
   PingusWavProvider (const PingusWavProvider&);
-  PingusWavProvider operator= (const PingusWavProvider&);
+  PingusWavProvider& operator= (const PingusWavProvider&);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: rain_generator_data.hxx,v 1.1 2002/09/16 15:47:36 grumbel Exp $
+//  $Id: rain_generator_data.hxx,v 1.2 2002/09/27 11:26:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ public:
   void write_xml(std::ostream& xml);
 private:
   RainGeneratorData (const RainGeneratorData&);
-  RainGeneratorData operator= (const RainGeneratorData&);
+  RainGeneratorData& operator= (const RainGeneratorData&);
 };
 
 } // namespace WorldObjsData

@@ -1,4 +1,4 @@
-//  $Id: miner.hxx,v 1.8 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: miner.hxx,v 1.9 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ public:
   
 private:
   Miner (const Miner&);
-  Miner operator= (const Miner&); 
+  Miner& operator= (const Miner&); 
 };
 
 } // namespace Actions

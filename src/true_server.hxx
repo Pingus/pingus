@@ -1,4 +1,4 @@
-//  $Id: true_server.hxx,v 1.5 2002/09/24 14:51:36 grumbel Exp $
+//  $Id: true_server.hxx,v 1.6 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,7 @@ private:
   int  time_till_next_update();
   
   TrueServer (const TrueServer&);
-  TrueServer operator= (const TrueServer&);
+  TrueServer& operator= (const TrueServer&);
 };
 
 #endif

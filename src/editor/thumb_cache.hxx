@@ -1,4 +1,4 @@
-//  $Id: thumb_cache.hxx,v 1.7 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: thumb_cache.hxx,v 1.8 2002/09/27 11:26:46 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ public:
   
 private:
   ThumbCache (const ThumbCache&);
-  ThumbCache operator= (const ThumbCache&);  
+  ThumbCache& operator= (const ThumbCache&);  
 };
 
 } // namespace EditorNS

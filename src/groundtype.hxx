@@ -1,4 +1,4 @@
-//  $Id: groundtype.hxx,v 1.1 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: groundtype.hxx,v 1.2 2002/09/27 11:26:43 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,8 +40,8 @@ public:
     GP_OUTOFSCREEN
   };
 
-  static GPType string_to_type(const std::string& arg_type);
-  static std::string type_to_string(GPType arg_type);
+  static GPType      string_to_type (const std::string& arg_type);
+  static std::string type_to_string (GPType arg_type);
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: bridger.hxx,v 1.12 2002/09/24 17:03:28 grumbel Exp $
+//  $Id: bridger.hxx,v 1.13 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -72,7 +72,7 @@ public:
   
 private:
   Bridger (const Bridger&);
-  Bridger operator= (const Bridger&); 
+  Bridger& operator= (const Bridger&); 
 };
 
 } // namespace Actions

@@ -1,4 +1,4 @@
-//  $Id: fake_exit.hxx,v 1.3 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: fake_exit.hxx,v 1.4 2002/09/27 11:26:49 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ private:
   void catch_pingu (Pingu*);
     
   FakeExit (const FakeExit&);
-  FakeExit operator= (const FakeExit&);
+  FakeExit& operator= (const FakeExit&);
 };
 
 } // namespace WorldObjs

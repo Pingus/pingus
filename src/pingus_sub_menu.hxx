@@ -1,4 +1,4 @@
-//  $Id: pingus_sub_menu.hxx,v 1.6 2002/08/23 15:49:50 torangan Exp $
+//  $Id: pingus_sub_menu.hxx,v 1.7 2002/09/27 11:26:44 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ public:
   
 private:
   PingusSubMenu (const PingusSubMenu&);
-  PingusSubMenu operator= (const PingusSubMenu&);
+  PingusSubMenu& operator= (const PingusSubMenu&);
 };
 
 #endif

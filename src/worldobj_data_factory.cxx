@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.cxx,v 1.23 2002/09/25 17:21:38 torangan Exp $
+//  $Id: worldobj_data_factory.cxx,v 1.24 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,12 +21,12 @@
 #include "pingus_error.hxx"
 
 // Special Objects
-#include "entrance_data.hxx"
 #include "worldobj_data_factory.hxx"
 
 #include "exit_data.hxx"
 #include "worldobjsdata/bumper_data.hxx"
 #include "worldobjsdata/conveyor_belt_data.hxx"
+#include "worldobjsdata/entrance_data.hxx"
 #include "worldobjsdata/fake_exit_data.hxx"
 #include "worldobjsdata/groundpiece_data.hxx"
 #include "worldobjsdata/guillotine_data.hxx"

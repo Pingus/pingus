@@ -62,7 +62,7 @@ public:
   
 private:
   CAImageManipulation (const CAImageManipulation&);
-  CAImageManipulation operator= (const CAImageManipulation&);
+  CAImageManipulation& operator= (const CAImageManipulation&);
 };
 
 #endif

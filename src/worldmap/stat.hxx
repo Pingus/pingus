@@ -1,4 +1,4 @@
-//  $Id: stat.hxx,v 1.7 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: stat.hxx,v 1.8 2002/09/27 11:26:49 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ public:
   PingusWorldMapNodeStat ();
 
   PingusWorldMapNodeStat (const PingusWorldMapNodeStat& old);
-  PingusWorldMapNodeStat operator= (const PingusWorldMapNodeStat& old);
+  PingusWorldMapNodeStat& operator= (const PingusWorldMapNodeStat& old);
 };
 
 /** Loads a status file and gives you access to the information, which
@@ -78,7 +78,7 @@ public:
   
 private:
   PingusWorldMapStat (const PingusWorldMapStat&);
-  PingusWorldMapStat operator= (const PingusWorldMapStat&);
+  PingusWorldMapStat& operator= (const PingusWorldMapStat&);
 };
 
 } // namespace WorldMapNS

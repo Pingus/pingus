@@ -1,4 +1,4 @@
-//  $Id: inverted_axis.hxx,v 1.2 2002/08/26 13:53:04 torangan Exp $
+//  $Id: inverted_axis.hxx,v 1.3 2002/09/27 11:26:48 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ namespace Input {
   
     private:
       InvertedAxis (const InvertedAxis&);
-      InvertedAxis operator= (const InvertedAxis&);
+      InvertedAxis& operator= (const InvertedAxis&);
     };
 
   }

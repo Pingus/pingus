@@ -1,4 +1,4 @@
-//  $Id: basher.hxx,v 1.10 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: basher.hxx,v 1.11 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,7 +53,7 @@ public:
   
 private:
   Basher (const Basher&);
-  Basher operator= (const Basher&);
+  Basher& operator= (const Basher&);
 };
 
 } // namespace Actions

@@ -1,4 +1,4 @@
-//  $Id: worldobj_data_factory.hxx,v 1.5 2002/08/23 15:49:52 torangan Exp $
+//  $Id: worldobj_data_factory.hxx,v 1.6 2002/09/27 11:26:44 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,7 +58,7 @@ public:
 
 private:
   WorldObjDataFactory (const WorldObjDataFactory&);
-  WorldObjDataFactory operator= (const WorldObjDataFactory&);
+  WorldObjDataFactory& operator= (const WorldObjDataFactory&);
 };
 
 /** WorldObjDataAbstractFactory, interface for creating factories */
@@ -73,7 +73,7 @@ public:
   
 private:
   WorldObjDataAbstractFactory (const WorldObjDataAbstractFactory&);
-  WorldObjDataAbstractFactory operator= (const WorldObjDataAbstractFactory&);
+  WorldObjDataAbstractFactory& operator= (const WorldObjDataAbstractFactory&);
 };
 
 /** Template to create factories, usage:
@@ -91,7 +91,7 @@ public:
 
 private:
   WorldObjDataFactoryImpl (const WorldObjDataFactoryImpl&);
-  WorldObjDataFactoryImpl operator= (const WorldObjDataFactoryImpl&);  
+  WorldObjDataFactoryImpl& operator= (const WorldObjDataFactoryImpl&);  
 };
 
 #endif

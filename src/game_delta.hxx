@@ -1,4 +1,4 @@
-//  $Id: game_delta.hxx,v 1.8 2002/08/23 15:49:48 torangan Exp $
+//  $Id: game_delta.hxx,v 1.9 2002/09/27 11:26:43 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,7 +52,7 @@ public:
   
 private:
   GameDelta (const GameDelta&);
-  GameDelta operator= (const GameDelta&);
+  GameDelta& operator= (const GameDelta&);
 };
 
 #endif

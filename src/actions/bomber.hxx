@@ -1,4 +1,4 @@
-//  $Id: bomber.hxx,v 1.11 2002/09/10 19:24:19 grumbel Exp $
+//  $Id: bomber.hxx,v 1.12 2002/09/27 11:26:44 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,7 +59,7 @@ public:
   
 private:
   Bomber (const Bomber&);
-  Bomber operator= (const Bomber&);
+  Bomber& operator= (const Bomber&);
 };
 
 } // namespace Actions

@@ -1,4 +1,4 @@
-//  $Id: story.hxx,v 1.8 2002/09/07 23:33:47 grumbel Exp $
+//  $Id: story.hxx,v 1.9 2002/09/27 11:26:44 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,7 +57,7 @@ public:
   
 private:
   Story (const Story&);
-  Story operator= (const Story&);
+  Story& operator= (const Story&);
 };
 
 #endif
