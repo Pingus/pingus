@@ -149,7 +149,7 @@
           <position>
             <x-pos>594</x-pos>
             <y-pos>376</y-pos>
-            <z-pos>0</z-pos>
+            <z-pos>5000</z-pos>
           </position>
         </dot>
         <levelname>tutorial/solid-tutorial-grumbel</levelname>
@@ -230,7 +230,7 @@
             <z-pos>150</z-pos>
           </position>
         </dot>
-        <levelname>tutorial/snow11-grumbel</levelname>
+        <levelname>tutorial/snow20-grumbel</levelname>
       </leveldot>
 
 
@@ -243,7 +243,7 @@
             <z-pos>150</z-pos>
           </position>
         </dot>
-        <levelname>tutorial/placeholder</levelname>
+        <levelname>tutorial/snow11-grumbel</levelname>
       </leveldot>
 
 
@@ -253,7 +253,7 @@
           <position>
             <x-pos>1035</x-pos>
             <y-pos>378</y-pos>
-            <z-pos>0</z-pos>
+            <z-pos>150</z-pos>
           </position>
         </dot>
         <levelname>tutorial/placeholder</levelname>
@@ -333,7 +333,7 @@
     <position>
       <x-pos>678</x-pos>
       <y-pos>347</y-pos>
-      <z-pos>0</z-pos>
+      <z-pos>5000</z-pos>
     </position>
       </edge>
       <edge name="egde_12" source="leveldot_11" destination="leveldot_12"/>
@@ -343,11 +343,11 @@
           <y-pos>379</y-pos>
           <z-pos>5000</z-pos>
         </position>
-    <position>
-      <x-pos>389</x-pos>
-      <y-pos>403</y-pos>
-      <z-pos>5000</z-pos>
-    </position>
+        <position>
+          <x-pos>389</x-pos>
+          <y-pos>403</y-pos>
+          <z-pos>5000</z-pos>
+        </position>
       </edge>
 
 
@@ -357,12 +357,12 @@
         <position>
           <x-pos>503</x-pos>
           <y-pos>470</y-pos>
-          <z-pos>0</z-pos>
+          <z-pos>5000</z-pos>
         </position>
         <position>
           <x-pos>568</x-pos>
           <y-pos>471</y-pos>
-          <z-pos>0</z-pos>
+          <z-pos>250</z-pos>
         </position>
       </edge>
       <edge name="egde_15" source="leveldot_15" destination="leveldot_16"/>
@@ -371,7 +371,7 @@
         <position>
           <x-pos>905</x-pos>
           <y-pos>417</y-pos>
-          <z-pos>0</z-pos>
+          <z-pos>250</z-pos>
         </position>
       </edge>
       <edge name="egde_18" source="leveldot_18" destination="leveldot_19"/>
@@ -379,7 +379,7 @@
         <position>
           <x-pos>678</x-pos>
           <y-pos>449</y-pos>
-          <z-pos>0</z-pos>
+          <z-pos>150</z-pos>
         </position>
       </edge>
 
