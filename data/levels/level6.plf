@@ -2,14 +2,16 @@
 
 /* Some global things needed for startup */
 global {
+  author = "Ingo Ruhnke <grumbel@gmx.de>";
 	start_x_pos = 0 ;
 	start_y_pos = 0 ;            /* Starting position of the screen */
 	number_of_pingus = 120 ;     /* Total number of pingus in level*/
 	number_to_save = 100;
 	time = 5000;
-	levelname = "Beautiful crystals and deadly danger" ;
-	description = "
+	levelname = "Crystal World";
+	description = "Beautiful crystals and deadly danger
 ";
+
 }
 
 /* Set the background */
@@ -24,7 +26,7 @@ background {
  * "bla.pcx", somewhere in the search path of pingus.
  */
 	image = (resource:textures.dat) "Textures/crystal";
-	scroll_x = "-1.0";
+	scroll_x = "0.0";
 	scroll_y = "0.0";
 	dim = "0.1";
 }
@@ -45,7 +47,7 @@ entrance {
 	x_pos = "500";
 	y_pos = "180"; 
 	direction = "left";
-	release_rate = "30";	
+	release_rate = "60";	
 }
 
 liquid {

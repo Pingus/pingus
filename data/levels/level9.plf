@@ -1,4 +1,5 @@
 global {
+  author = "Ingo Ruhnke <grumbel@gmx.de>";
 	start_x_pos = 0;
 	start_y_pos = 0;
 	levelname = "Teleporter, Spikes and other funny stuff" ;

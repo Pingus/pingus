@@ -1,4 +1,5 @@
 global {
+  author = "Michael Mestre <mmestre@teaser.fr>";
   start_x_pos = 500;
   start_y_pos = 500;
   levelname = "The jungle / have fun part one";

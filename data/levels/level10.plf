@@ -1,4 +1,5 @@
 global {
+  author = "Ingo Ruhnke <grumbel@gmx.de>";
 	start_x_pos = 1000;
 	start_y_pos = 200;
 	levelname = "Beat the pyramid";

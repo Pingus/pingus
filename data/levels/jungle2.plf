@@ -1,7 +1,8 @@
 /* This level was created with the PLE
- * $Id: jungle2.plf,v 1.2 2000/02/12 16:53:02 grumbel Exp $
+ * $Id: jungle2.plf,v 1.3 2000/03/08 02:02:48 grumbel Exp $
  */
 global {
+  author = "Michael Mestre <mmestre@teaser.fr>";
   start_x_pos = 100;
   start_y_pos = 100;
   levelname = "The jungle / have fun part two";
