@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.9 2000/04/08 20:20:25 grumbel Exp $
+#  $Id: Makefile.am,v 1.10 2000/05/12 13:53:16 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -349,7 +349,12 @@ GROUNDPIECES = \
                groundpieces/sweets/mmbrown.pcx   \
                groundpieces/sweets/mmred.pcx     \
                groundpieces/sweets/mmyellow.pcx  \
-               groundpieces/sweets/purplechoc.pcx
+               groundpieces/sweets/purplechoc.pcx \
+               \
+               groundpieces/mushroom/toadstool1.pcx \
+               groundpieces/mushroom/toadstool2.pcx \
+               groundpieces/mushroom/toadstool3.pcx \
+               groundpieces/mushroom/toadstool4.pcx
 
 LIQUIDS = \
           liquids/water.pcx  \

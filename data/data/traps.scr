@@ -9,4 +9,6 @@ section Traps
 	guillotineidle = ../images/traps/guillotineidle.pcx (type=surface, x=0, y=0, width=80, height=96, tcol=0, array=7x1);
 	laser_exit  = ../images/traps/laser_exit.pcx (type=surface, x=0, y=0, width=75, height=60, tcol=0, array=6x1);
 	teleporter = ../images/traps/teleporter.tga    (type=surface, x=0, y=0, width=35, height=52, tcol = 0, array=6x1);
+        bumper = ../images/traps/bumper.pcx (type=surface, x=0, y=0, width=60, height=102, array=6x1, tcol=0);
+        bumper_cmap = ../images/traps/bumper_cmap.pcx (type=surface, x=0, y=0, width=60, height=102, tcol=0);
 }
