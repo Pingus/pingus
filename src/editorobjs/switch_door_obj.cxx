@@ -1,4 +1,4 @@
-//  $Id: switch_door_obj.cxx,v 1.2 2002/09/14 19:06:34 torangan Exp $
+//  $Id: switch_door_obj.cxx,v 1.3 2002/09/15 11:02:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,12 +20,17 @@
 #include <fstream>
 #include "switch_door_obj.hxx"
 #include "../editor/editor_view.hxx"
+#include "../pingus_resource.hxx"
 #include "../worldobjsdata/switch_door_data.hxx"
 
 namespace EditorObjs { 
 
 SwitchDoorObj::SwitchDoorObj (WorldObjsData::SwitchDoorData* data_)
-                            : data(new WorldObjsData::SwitchDoorData(*data_))
+  : data(new WorldObjsData::SwitchDoorData(*data_)),
+    door_box      (PingusResource::load_surface("switchdoor_box"      , "worldobjs")),
+    door_tile     (PingusResource::load_surface("switchdoor_tile"     , "worldobjs")),
+    door_tile_cmap(PingusResource::load_surface("switchdoor_tile_cmap", "worldobjs")),
+    switch_sur    (PingusResource::load_surface("switchdoor_switch"   , "worldobjs"))
 {
 }
 
@@ -49,13 +54,13 @@ SwitchDoorObj::get_z_pos () {
 int
 SwitchDoorObj::get_width ()
 {
-  return data->door_box.get_width();
+  return door_box.get_width();
 }
 
 int
 SwitchDoorObj::get_height ()
 {
-  return data->door_box.get_height();
+  return door_box.get_height();
 }
 
 /** Create this object (and child objects) with resonable defaults
@@ -92,16 +97,17 @@ SwitchDoorObj::draw (EditorNS::EditorView * view)
 {
   view->draw_line(data->door_pos, data->switch_pos, 1.0, 0.0, 0.0);
 
-  view->draw(data->door_box, 
+  view->draw(door_box, 
              static_cast<int>(data->door_pos.x),
 	     static_cast<int>(data->door_pos.y));
 
   for (int i = 0; i < data->door_height; ++i)
     {
-      view->draw(data->door_tile, 
+      view->draw(door_tile, 
 		 static_cast<int>(data->door_pos.x), 
-		 static_cast<int>(data->door_pos.y + (i * data->door_tile.get_height())
-  	                                           + data->door_box.get_height()));
+		 static_cast<int>(data->door_pos.y 
+				  + (i * door_tile.get_height())
+				  + door_box.get_height()));
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: switch_door_data.cxx,v 1.3 2002/09/15 09:54:34 torangan Exp $
+//  $Id: switch_door_data.cxx,v 1.4 2002/09/15 11:02:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,11 +27,7 @@
 namespace WorldObjsData {
 
 SwitchDoorData::SwitchDoorData () 
-  : door_box      (PingusResource::load_surface("switchdoor_box"      , "worldobjs")),
-    door_tile     (PingusResource::load_surface("switchdoor_tile"     , "worldobjs")),
-    door_tile_cmap(PingusResource::load_surface("switchdoor_tile_cmap", "worldobjs")),
-    switch_sur    (PingusResource::load_surface("switchdoor_switch"   , "worldobjs")),
-    door_height(10)
+  : door_height(10)
 {
 }
 
@@ -98,10 +94,6 @@ SwitchDoorData::SwitchDoorData (xmlDocPtr doc, xmlNodePtr cur)
 
 SwitchDoorData::SwitchDoorData (const SwitchDoorData& old) 
                               : WorldObjData(old),
-			        door_box(old.door_box),
-				door_tile(old.door_tile),
-				door_tile_cmap(old.door_tile_cmap),
-				switch_sur(old.switch_sur),
 			        door_pos(old.door_pos),
 				switch_pos(old.switch_pos),
 				door_height(old.door_height)

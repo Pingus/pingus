@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_data.cxx,v 1.2 2002/09/15 09:54:34 torangan Exp $
+//  $Id: conveyor_belt_data.cxx,v 1.3 2002/09/15 11:02:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,10 +27,7 @@
 namespace WorldObjsData {
 
 ConveyorBeltData::ConveyorBeltData () 
-  : left_sur  (PingusResource::load_surface ("conveyorbelt_left",   "worldobjs")),
-    right_sur (PingusResource::load_surface ("conveyorbelt_right",  "worldobjs")),
-    middle_sur(PingusResource::load_surface ("conveyorbelt_middle", "worldobjs")),
-    width(5),
+  : width(5),
     speed(2),
     counter(0)
 {
@@ -65,14 +62,12 @@ ConveyorBeltData::ConveyorBeltData (xmlDocPtr doc, xmlNodePtr cur)
     }
 }
 
-ConveyorBeltData::ConveyorBeltData (const ConveyorBeltData& old) : WorldObjData(old),
-                                                                   pos(old.pos),
-								   left_sur(old.left_sur),
-								   right_sur(old.right_sur),
-								   middle_sur(old.middle_sur),
-								   width(old.width),
-								   speed(old.speed),
-								   counter(old.counter)
+ConveyorBeltData::ConveyorBeltData (const ConveyorBeltData& old)
+  : WorldObjData(old),
+    pos(old.pos),
+    width(old.width),
+    speed(old.speed),
+    counter(old.counter)
 {
 }
 

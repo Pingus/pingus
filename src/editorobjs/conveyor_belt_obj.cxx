@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_obj.cxx,v 1.1 2002/09/14 19:06:34 torangan Exp $
+//  $Id: conveyor_belt_obj.cxx,v 1.2 2002/09/15 11:02:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,12 +19,16 @@
 
 #include "../editor/editor_view.hxx"
 #include "../worldobjsdata/conveyor_belt_data.hxx"
+#include "../pingus_resource.hxx"
 #include "conveyor_belt_obj.hxx"
 
 namespace EditorObjs {
 
 ConveyorBeltObj::ConveyorBeltObj (WorldObjsData::ConveyorBeltData* data_)
-  : data(new WorldObjsData::ConveyorBeltData(*data_))
+  : data(new WorldObjsData::ConveyorBeltData(*data_)),
+    left_sur  (PingusResource::load_surface ("conveyorbelt_left",   "worldobjs")),
+    right_sur (PingusResource::load_surface ("conveyorbelt_right",  "worldobjs")),
+    middle_sur(PingusResource::load_surface ("conveyorbelt_middle", "worldobjs"))
 {
 }
 
@@ -37,17 +41,17 @@ ConveyorBeltObj::duplicate()
 void
 ConveyorBeltObj::draw (EditorNS::EditorView * view)
 {
-  view->draw(data->left_sur, data->pos, static_cast<int>(data->counter));
+  view->draw(left_sur, data->pos, static_cast<int>(data->counter));
   for (int i=0; i < data->width; ++i)
     {
-      view->draw(data->middle_sur,
-                 static_cast<int>(data->pos.x) + data->left_sur.get_width() + i * data->middle_sur.get_width(),
+      view->draw(middle_sur,
+                 static_cast<int>(data->pos.x) + left_sur.get_width() + i * middle_sur.get_width(),
 	         static_cast<int>(data->pos.y),
 	         static_cast<int>(data->counter));
     }
     
-  view->draw(data->right_sur,
-	     static_cast<int>(data->pos.x) + data->left_sur.get_width() + data->width * data->middle_sur.get_width(),
+  view->draw(right_sur,
+	     static_cast<int>(data->pos.x) + left_sur.get_width() + data->width * middle_sur.get_width(),
 	     static_cast<int>(data->pos.y),
 	     static_cast<int>(data->counter));
 	     
@@ -55,7 +59,7 @@ ConveyorBeltObj::draw (EditorNS::EditorView * view)
   if (data->counter > 14)
     data->counter = 0;
   else if (data->counter < 0)
-    data->counter = data->middle_sur.get_num_frames() - 1;
+    data->counter = middle_sur.get_num_frames() - 1;
 
 }
 
@@ -88,15 +92,15 @@ ConveyorBeltObj::status_line ()
 int 
 ConveyorBeltObj::get_width ()
 {
-  return   data->left_sur  .get_width()
-         + data->right_sur .get_width()
-	 + data->middle_sur.get_width() * data->width;
+  return   left_sur  .get_width()
+         + right_sur .get_width()
+	 + middle_sur.get_width() * data->width;
 }
 
 int 
 ConveyorBeltObj::get_height ()
 {
-  return data->middle_sur.get_height();
+  return middle_sur.get_height();
 }
 
 float

@@ -1,4 +1,4 @@
-//  $Id: ice_block.cxx,v 1.13 2002/09/14 19:06:34 torangan Exp $
+//  $Id: ice_block.cxx,v 1.14 2002/09/15 11:02:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,10 +31,12 @@
 
 namespace WorldObjs {
 
-IceBlock::IceBlock (WorldObjsData::IceBlockData* data_) : thickness(1.0),
-                                                          is_finished(false),
-							  last_contact(0),
-							  data(new WorldObjsData::IceBlockData(*data_))
+IceBlock::IceBlock (WorldObjsData::IceBlockData* data_) 
+  : data(new WorldObjsData::IceBlockData(*data_)), 
+    thickness(1.0),
+    is_finished(false),
+    last_contact(0),
+    block_sur(PingusResource::load_surface ("iceblock", "worldobjs"))
 {
 }
 
@@ -60,9 +62,9 @@ IceBlock::draw (GraphicContext& gc)
   if (is_finished)
     return;
 
-  gc.draw(data->block_sur,
+  gc.draw(block_sur,
           data->pos,
-	  static_cast<int>((1.0 - thickness) * (data->block_sur.get_num_frames() - 1)));
+	  static_cast<int>((1.0 - thickness) * (block_sur.get_num_frames() - 1)));
 }
 
 void 
@@ -75,8 +77,8 @@ IceBlock::update (float /*delta*/)
 
   for (PinguIter pingu = holder->begin(); pingu != holder->end(); ++pingu)
     {
-      if (   (*pingu)->get_x() > data->pos.x     && (*pingu)->get_x() < data->pos.x + data->block_sur.get_width()
-	  && (*pingu)->get_y() > data->pos.y - 4 && (*pingu)->get_y() < data->pos.y + data->block_sur.get_height())
+      if (   (*pingu)->get_x() > data->pos.x     && (*pingu)->get_x() < data->pos.x + block_sur.get_width()
+	  && (*pingu)->get_y() > data->pos.y - 4 && (*pingu)->get_y() < data->pos.y + block_sur.get_height())
 	{
 	  last_contact = world->get_game_time()->get_ticks();
 	}

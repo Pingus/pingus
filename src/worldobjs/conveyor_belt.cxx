@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.cxx,v 1.13 2002/09/14 19:06:34 torangan Exp $
+//  $Id: conveyor_belt.cxx,v 1.14 2002/09/15 11:02:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,22 +30,25 @@
 namespace WorldObjs {
 
 ConveyorBelt::ConveyorBelt (WorldObjsData::ConveyorBeltData* data_)
-  : data(new WorldObjsData::ConveyorBeltData(*data_))
+  : data(new WorldObjsData::ConveyorBeltData(*data_)),
+    left_sur  (PingusResource::load_surface ("conveyorbelt_left",   "worldobjs")),
+    right_sur (PingusResource::load_surface ("conveyorbelt_right",  "worldobjs")),
+    middle_sur(PingusResource::load_surface ("conveyorbelt_middle", "worldobjs"))
 {
 }
 
 void
 ConveyorBelt::draw (GraphicContext& gc)
 {
-  gc.draw(data->left_sur, data->pos, static_cast<int>(data->counter));
+  gc.draw(left_sur, data->pos, static_cast<int>(data->counter));
   for (int i=0; i < data->width; ++i)
-    gc.draw(data->middle_sur, 
-	    static_cast<int>(data->pos.x + data->left_sur.get_width() + i * data->middle_sur.get_width()),
+    gc.draw(middle_sur, 
+	    static_cast<int>(data->pos.x + left_sur.get_width() + i * middle_sur.get_width()),
 	    static_cast<int>(data->pos.y), 
 	    static_cast<int>(data->counter));
   
-  gc.draw(data->right_sur,
-	  static_cast<int>(data->pos.x + data->left_sur.get_width() + data->width * data->middle_sur.get_width()),
+  gc.draw(right_sur,
+	  static_cast<int>(data->pos.x + left_sur.get_width() + data->width * middle_sur.get_width()),
 	  static_cast<int>(data->pos.y),
 	  static_cast<int>(data->counter));
 }
@@ -69,7 +72,7 @@ ConveyorBelt::update (float delta)
   if (data->counter >= 14.0f)
     data->counter = 0.0f;
   else if (data->counter < 0.0f)
-    data->counter = data->middle_sur.get_num_frames() - 1;
+    data->counter = middle_sur.get_num_frames() - 1;
 
   PinguHolder* holder = world->get_pingu_p();
   for (PinguIter pingu = holder->begin(); pingu != holder->end(); ++pingu)

@@ -1,4 +1,4 @@
-//  $Id: switch_door.cxx,v 1.15 2002/09/14 19:06:34 torangan Exp $
+//  $Id: switch_door.cxx,v 1.16 2002/09/15 11:02:24 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,14 +24,19 @@
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
 #include "../worldobjsdata/switch_door_data.hxx"
+#include "../pingus_resource.hxx"
 #include "switch_door.hxx"
 
 namespace WorldObjs {
 
 SwitchDoor::SwitchDoor (WorldObjsData::SwitchDoorData* data_) 
-                     : is_opening(false),
-                       current_door_height(data->door_height),
-		       data(new WorldObjsData::SwitchDoorData(*data_))
+  : door_box      (PingusResource::load_surface("switchdoor_box"      , "worldobjs")),
+    door_tile     (PingusResource::load_surface("switchdoor_tile"     , "worldobjs")),
+    door_tile_cmap(PingusResource::load_surface("switchdoor_tile_cmap", "worldobjs")),
+    switch_sur    (PingusResource::load_surface("switchdoor_switch"   , "worldobjs")),
+    data(new WorldObjsData::SwitchDoorData(*data_)),
+    is_opening(false),
+    current_door_height(data->door_height)
 {
 }
 
@@ -43,29 +48,32 @@ SwitchDoor::~SwitchDoor ()
 void 
 SwitchDoor::draw_colmap ()
 {
-  world->get_colmap()->put(data->door_box,
+  world->get_colmap()->put(door_box,
                            static_cast<int>(data->door_pos.x),
 			   static_cast<int>(data->door_pos.y),
 			   GroundpieceData::GP_SOLID);
 			   
   for (int i=0; i < data->door_height; ++i)
-    world->get_colmap()->put(data->door_tile_cmap,
+    world->get_colmap()->put(door_tile_cmap,
 			     static_cast<int>(data->door_pos.x), 
-			     static_cast<int>(data->door_pos.y) + i * data->door_tile.get_height()
-			                                        + data->door_box.get_height(),
+			     static_cast<int>(data->door_pos.y) 
+			     + i * door_tile.get_height()
+			     + door_box.get_height(),
 			     GroundpieceData::GP_SOLID);
 }
 
 void
 SwitchDoor::draw (GraphicContext& gc)
 {
-  gc.draw (data->door_box, data->door_pos);
+  gc.draw (door_box, data->door_pos);
   for (int i=0; i < current_door_height; ++i)
-    gc.draw(data->door_tile, 
+    gc.draw(door_tile, 
 	    static_cast<int>(data->door_pos.x),  
-	    static_cast<int>(data->door_pos.y) + i * data->door_tile.get_height()
-	                                       + data->door_box.get_height());
-  gc.draw(data->switch_sur, data->switch_pos);
+	    static_cast<int>(data->door_pos.y) 
+	    + i * door_tile.get_height()
+	    + door_box.get_height());
+
+  gc.draw(switch_sur, data->switch_pos);
 }
 
 void
@@ -81,9 +89,9 @@ SwitchDoor::update (float /*delta*/)
 	  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
 	    {
 	      if ((*pingu)->get_x()    > data->switch_pos.x
-		  && (*pingu)->get_x() < data->switch_pos.x + static_cast<int>(data->switch_sur.get_width())
+		  && (*pingu)->get_x() < data->switch_pos.x + static_cast<int>(switch_sur.get_width())
 		  && (*pingu)->get_y() > data->switch_pos.y
-		  && (*pingu)->get_y() < data->switch_pos.y + static_cast<int>(data->switch_sur.get_height()))
+		  && (*pingu)->get_y() < data->switch_pos.y + static_cast<int>(switch_sur.get_height()))
 		{
 		  is_opening = true;
 		}
@@ -98,15 +106,15 @@ SwitchDoor::update (float /*delta*/)
 	  // it, we remove the door from the colmap
 	  if (current_door_height + 10 < data->door_height)
 	    {
-	      world->get_colmap()->put(data->door_box,
+	      world->get_colmap()->put(door_box,
 	                               static_cast<int>(data->door_pos.x),
 				       static_cast<int>(data->door_pos.y),
 				       GroundpieceData::GP_NOTHING);
 	      for (int i=0; i < data->door_height; ++i)
-		world->get_colmap()->put(data->door_tile_cmap,
+		world->get_colmap()->put(door_tile_cmap,
 					 static_cast<int>(data->door_pos.x), 
-					 static_cast<int>(data->door_pos.y) + i * data->door_tile.get_height()
-					                                    + data->door_box.get_height(),
+					 static_cast<int>(data->door_pos.y) + i * door_tile.get_height()
+					                                    + door_box.get_height(),
 					 GroundpieceData::GP_NOTHING);
 	    }
 	}

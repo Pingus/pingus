@@ -1,4 +1,4 @@
-//  $Id: ice_block.hxx,v 1.9 2002/09/14 19:06:34 torangan Exp $
+//  $Id: ice_block.hxx,v 1.10 2002/09/15 11:02:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,10 +31,12 @@ namespace WorldObjs {
 class IceBlock : public WorldObj
 {
 private:
+  WorldObjsData::IceBlockData* const data;
+
   float thickness;
   bool  is_finished;
   int   last_contact;
-  WorldObjsData::IceBlockData* const data;
+  CL_Surface block_sur;
   
 public:
   IceBlock (WorldObjsData::IceBlockData* data_);

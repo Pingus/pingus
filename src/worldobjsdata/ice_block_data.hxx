@@ -1,4 +1,4 @@
-//  $Id: ice_block_data.hxx,v 1.1 2002/09/14 19:06:35 torangan Exp $
+//  $Id: ice_block_data.hxx,v 1.2 2002/09/15 11:02:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,8 +32,6 @@ class IceBlockData : public WorldObjData
 public:
   /// The upper/left position  of the iceblock's
   CL_Vector pos;
-  
-  CL_Surface block_sur;
 
   /** The number of iceblocks, only complete blocks are supported */  
   int width;

@@ -1,4 +1,4 @@
-//  $Id: switch_door_data.hxx,v 1.1 2002/09/11 15:27:19 torangan Exp $
+//  $Id: switch_door_data.hxx,v 1.2 2002/09/15 11:02:24 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,11 +32,6 @@ namespace WorldObjsData {
 class SwitchDoorData : public WorldObjData
 {
 public:
-  CL_Surface door_box;
-  CL_Surface door_tile;
-  CL_Surface door_tile_cmap;
-  CL_Surface switch_sur;
-
   /// The upper/middle pos of the door 
   CL_Vector door_pos;
   
