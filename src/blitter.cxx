@@ -107,15 +107,13 @@ Blitter::put_surface_8bit(CL_PixelBuffer target, CL_PixelBuffer source,
             { 
               if (*sptr != colorkey)
                 {
-                  *tptr++ = 255;
-                  *tptr++ = palette.colors[*sptr].get_blue();
-                  *tptr++ = palette.colors[*sptr].get_green();
-                  *tptr++ = palette.colors[*sptr].get_red();
+                  tptr[0] = 255;
+                  tptr[1] = palette.colors[*sptr].get_blue();
+                  tptr[2] = palette.colors[*sptr].get_green();
+                  tptr[3] = palette.colors[*sptr].get_red();
                 }
-              else
-                {
-                  tptr += 4;
-                }
+
+              tptr += 4;
               sptr += 1;
             }
         }
@@ -129,11 +127,12 @@ Blitter::put_surface_8bit(CL_PixelBuffer target, CL_PixelBuffer source,
 
           for (int x = start_x; x < end_x; ++x)
             { 
-              *tptr++ = 255;
-              *tptr++ = palette.colors[*sptr].get_blue();
-              *tptr++ = palette.colors[*sptr].get_green();
-              *tptr++ = palette.colors[*sptr].get_red();
+              tptr[0] = 255;
+              tptr[1] = palette.colors[*sptr].get_blue();
+              tptr[2] = palette.colors[*sptr].get_green();
+              tptr[3] = palette.colors[*sptr].get_red();
 
+              tptr += 4;
               sptr += 1;
             }
         }
@@ -198,11 +197,12 @@ Blitter::put_surface_32bit(CL_PixelBuffer target, CL_PixelBuffer source,
 
           for (int x = start_x; x < end_x; ++x)
             {
-              *tptr++ = sptr[3];
-              *tptr++ = sptr[0];
-              *tptr++ = sptr[1];
-              *tptr++ = sptr[2];
+              tptr[0] = sptr[3];
+              tptr[1] = sptr[0];
+              tptr[2] = sptr[1];
+              tptr[3] = sptr[2];
 
+              tptr += 4;
               sptr += 4;
             }
         }
@@ -216,11 +216,12 @@ Blitter::put_surface_32bit(CL_PixelBuffer target, CL_PixelBuffer source,
             {
               float a = sptr[3]/255.0f;
               
-              *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * sptr[3]), 255);
-              *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * sptr[0]), 255);
-              *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * sptr[1]), 255);
-              *tptr++ = Math::mid(0, int((1.0f - a) * *tptr + a * sptr[2]), 255);
+              tptr[0] = Math::mid(0, int((1.0f - a) * tptr[0] + a * sptr[3]), 255);
+              tptr[1] = Math::mid(0, int((1.0f - a) * tptr[1] + a * sptr[0]), 255);
+              tptr[2] = Math::mid(0, int((1.0f - a) * tptr[2] + a * sptr[1]), 255);
+              tptr[3] = Math::mid(0, int((1.0f - a) * tptr[3] + a * sptr[2]), 255);
 
+              tptr += 4;
               sptr += 4;
             }
         }
@@ -333,9 +334,10 @@ Blitter::fill_rect(CL_PixelBuffer target, const CL_Rect& rect, const CL_Color& c
 
               for (int x = start_x; x < end_x; ++x)
                 { 
-                  *tptr++ = color.get_red();
-                  *tptr++ = color.get_green();
-                  *tptr++ = color.get_blue();
+                  tptr[0] = color.get_red();
+                  tptr[1] = color.get_green();
+                  tptr[2] = color.get_blue();
+                  tptr += 3;
                 }
             }
         }
@@ -349,11 +351,11 @@ Blitter::fill_rect(CL_PixelBuffer target, const CL_Rect& rect, const CL_Color& c
 
               for (int x = start_x; x < end_x; ++x)
                 { 
-                  cl_uint8* mytptr = tptr; // FIXME: No idea why I have to use mytptr[0..2] and can't use *tptr
+                  tptr[0] = Math::mid(0, int(((1.0f - a) * (tptr[0])) + a * color.get_blue()) , 255); //blue
+                  tptr[1] = Math::mid(0, int(((1.0f - a) * (tptr[1])) + a * color.get_green()), 255); //green
+                  tptr[2] = Math::mid(0, int(((1.0f - a) * (tptr[2])) + a * color.get_red()), 255); //red
 
-                  *tptr++ = Math::mid(0, int(((1.0f - a) * (mytptr[0])) + a * color.get_blue()) , 255); //blue
-                  *tptr++ = Math::mid(0, int(((1.0f - a) * (mytptr[1])) + a * color.get_green()), 255); //green
-                  *tptr++ = Math::mid(0, int(((1.0f - a) * (mytptr[2])) + a * color.get_red()), 255); //red
+                  tptr += 3;
                 }
             }
         }
@@ -368,10 +370,11 @@ Blitter::fill_rect(CL_PixelBuffer target, const CL_Rect& rect, const CL_Color& c
 
               for (int x = start_x; x < end_x; ++x)
                 { 
-                  *tptr++ = 255;
-                  *tptr++ = color.get_blue();
-                  *tptr++ = color.get_green();
-                  *tptr++ = color.get_red();
+                  tptr[0] = 255;
+                  tptr[1] = color.get_blue();
+                  tptr[2] = color.get_green();
+                  tptr[3] = color.get_red();
+                  tptr += 4;
                 }
             }
         }
@@ -384,12 +387,11 @@ Blitter::fill_rect(CL_PixelBuffer target, const CL_Rect& rect, const CL_Color& c
               for (int x = start_x; x < end_x; ++x)
                 { 
                   float a = color.get_alpha()/255.0f;
-                  cl_uint8* mytptr = tptr; // FIXME: No idea why I have to use mytptr[0..2] and can't use *tptr
 
-                  *tptr++ = Math::mid(0, int(mytptr[0] + a * color.get_alpha()), 255);
-                  *tptr++ = Math::mid(0, int((1.0f - a) * mytptr[1] + a * color.get_blue()) , 255);
-                  *tptr++ = Math::mid(0, int((1.0f - a) * mytptr[2] + a * color.get_green()), 255);
-                  *tptr++ = Math::mid(0, int((1.0f - a) * mytptr[3] + a * color.get_red())  , 255);
+                  tptr[0] = Math::mid(0, int(tptr[0] + a * color.get_alpha()), 255);
+                  tptr[1] = Math::mid(0, int((1.0f - a) * tptr[1] + a * color.get_blue()) , 255);
+                  tptr[2] = Math::mid(0, int((1.0f - a) * tptr[2] + a * color.get_green()), 255);
+                  tptr[3] = Math::mid(0, int((1.0f - a) * tptr[3] + a * color.get_red())  , 255);
                 }
             }
         }
