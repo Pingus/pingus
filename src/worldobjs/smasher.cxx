@@ -1,4 +1,4 @@
-//  $Id: smasher.cxx,v 1.6 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: smasher.cxx,v 1.7 2002/09/16 22:51:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -110,7 +110,7 @@ Smasher::update (float delta)
 }
 
 void
-Smasher::draw_colmap ()
+Smasher::on_startup()
 {
   std::cout << "Drawing colmap entry" << std::endl;
   world->get_colmap()->put(PingusResource::load_surface("Traps/smasher_cmap", "traps"),

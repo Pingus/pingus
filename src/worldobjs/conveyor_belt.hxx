@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.hxx,v 1.11 2002/09/15 11:02:24 grumbel Exp $
+//  $Id: conveyor_belt.hxx,v 1.12 2002/09/16 22:51:33 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ public:
   ConveyorBelt (WorldObjsData::ConveyorBeltData* data_);
   
   void draw (GraphicContext& gc);
-  void draw_colmap ();
+  void on_startup();
   void update (float delta);
   float get_z_pos () const;
   

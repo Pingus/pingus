@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.cxx,v 1.15 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: conveyor_belt.cxx,v 1.16 2002/09/16 22:51:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ ConveyorBelt::draw (GraphicContext& gc)
 }
 
 void
-ConveyorBelt::draw_colmap ()
+ConveyorBelt::on_startup()
 {
   CL_Surface sur(PingusResource::load_surface("conveyorbelt_cmap", "worldobjs"));
   for (int i=0; i < (data->width + 2); ++i)

@@ -1,4 +1,4 @@
-//  $Id: switch_door.cxx,v 1.17 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: switch_door.cxx,v 1.18 2002/09/16 22:51:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ SwitchDoor::~SwitchDoor ()
 }
 
 void 
-SwitchDoor::draw_colmap ()
+SwitchDoor::on_startup()
 {
   world->get_colmap()->put(door_box,
                            static_cast<int>(data->door_pos.x),

@@ -1,4 +1,4 @@
-//  $Id: bumper.cxx,v 1.5 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: bumper.cxx,v 1.6 2002/09/16 22:51:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -69,7 +69,7 @@ Bumper::update (float delta)
 }
 
 void
-Bumper::draw_colmap()
+Bumper::on_startup()
 {
   std::cout << "Drawing colmap entry" << std::endl;
 

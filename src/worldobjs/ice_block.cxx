@@ -1,4 +1,4 @@
-//  $Id: ice_block.cxx,v 1.15 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: ice_block.cxx,v 1.16 2002/09/16 22:51:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,7 +46,7 @@ IceBlock::~IceBlock ()
 }
 
 void
-IceBlock::draw_colmap ()
+IceBlock::on_startup()
 {
   CL_Surface surf(PingusResource::load_surface("iceblock_cmap", "worldobjs"));
 

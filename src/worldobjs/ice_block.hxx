@@ -1,4 +1,4 @@
-//  $Id: ice_block.hxx,v 1.10 2002/09/15 11:02:24 grumbel Exp $
+//  $Id: ice_block.hxx,v 1.11 2002/09/16 22:51:33 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ public:
  ~IceBlock ();
 
   float get_z_pos () const { return 100; }
-  void draw_colmap ();
+  void on_startup();
   void draw (GraphicContext& gc);
   void update (float delta);
   
