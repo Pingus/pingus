@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.37 2001/12/05 09:15:50 grumbel Exp $
+//  $Id: OptionMenu.cc,v 1.38 2001/12/06 10:50:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -226,6 +226,7 @@ OptionMenu::init()
   //add_entry(_("Debug GameTime"), &debug_game_time);
   //add_entry(_("Debug Tiles"), &debug_tiles);
   add_entry(_("Auto Scrolling"), &auto_scrolling);
+  add_entry(_("Action Help Strings"), &action_help);
 }
 
 void

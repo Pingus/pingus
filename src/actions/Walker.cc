@@ -1,4 +1,4 @@
-//  $Id: Walker.cc,v 1.6 2001/12/04 12:18:50 grumbel Exp $
+//  $Id: Walker.cc,v 1.7 2001/12/06 10:50:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,7 @@ Walker::init(void)
 void
 Walker::update(float delta)
 {
+  int y_inc = 0;
   walker.update (delta);
 
   pingu->environment = ENV_LAND;
@@ -45,20 +46,13 @@ Walker::update(float delta)
   else 
     { // if infront is a pixel 
       // Pingu is walking up the mountain 
-      if (pingu->rel_getpixel(1,1) == ColMap::NOTHING) 
-	{
+      if (pingu->rel_getpixel(1, max_steps + 1) == ColMap::NOTHING) 
+        { // we can continue walking up. search for the correct y_pos
+	  for(y_inc=1; y_inc <= max_steps; y_inc++)
+            if (rel_getpixel(1, y_inc) == ColMap::NOTHING)
+               break; 
+	  pingu->pos.y -= --y_inc;
 	  pingu->pos.x += pingu->direction;
-	  pingu->pos.y -= 1;
-	} 
-      else if (rel_getpixel(1,2) == ColMap::NOTHING)
-	{
-	  pingu->pos.x += pingu->direction;
-	  pingu->pos.y -= 2;
-	} 
-      else if (rel_getpixel(1,2) & ColMap::BRIDGE) 
-	{
-	  pingu->pos.x += pingu->direction;
-	  pingu->pos.y -=3;
 	}
       else
 	{ // WALL
@@ -85,25 +79,28 @@ Walker::update(float delta)
     }
   
 
-  if (rel_getpixel(0,-1) & ColMap::WATER)
+  if (rel_getpixel(0, -1) == ColMap::NOTHING) // in front there is a step 
     {
-      pingu->set_paction ("drown");
-      return;
-    }
-  // pingu is walking down a hill. 
-  // this should have fixed the following `FIXME'. do we need a 
-  // better transition?
-  // FIXME: We need better translation between walker and faller
-  else if (rel_getpixel(0,-1) == ColMap::NOTHING)
-    {
-       if (rel_getpixel(0,-2) != ColMap::NOTHING) 
-         pingu->pos.y += 1; 
-       else if (rel_getpixel(0,-3) != ColMap::NOTHING) 
-	 pingu->pos.y += 2;  // allow some more steep downhill
-       else {
-         pingu->set_action("faller");
-	 return;
-       }
+      
+      for(y_inc=2; y_inc <= max_steps + 1; y_inc++) 
+       {
+         if (rel_getpixel(0, -y_inc) & ColMap::WATER) 
+          {
+            pingu->set_paction ("drown");
+            return;
+          } 
+         else if(rel_getpixel(0, -y_inc) != ColMap::NOTHING)
+          { // there is land
+            pingu->pos.y += y_inc - 1;
+	    break;
+          }
+        }
+
+       if (rel_getpixel(0,-y_inc) == ColMap::NOTHING)
+        { // out of loop still not land. we should fall.
+          pingu->set_action("faller");
+          return;
+        }
     }
 
   // This is moved here to fix the bug where pingu stuck turning both

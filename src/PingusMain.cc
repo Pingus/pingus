@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.46 2001/12/05 09:15:51 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.47 2001/12/06 10:50:39 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -195,6 +195,8 @@ PingusMain::check_args(int argc, char* argv[])
       {"disable-fullscreen",no_argument,       0, 'F'},
       {"disable-swcursor",  no_argument,       0, 145},
       {"enable-swcursor",   no_argument,       0, 146},
+      {"disable-action-help",no_argument,      0, 156},
+      {"enable-action-help", no_argument,      0, 157},
       {"enable-bg-manipulation", no_argument,  0, 148},
       {"use-datafile",      no_argument,       0, 150},
       {"use-scriptfile",    no_argument,       0, 151},
@@ -482,6 +484,13 @@ For more information about these matters, see the files named COPYING.\
     case 155:
       broken_clanlib_resource_handling = true;
       break;
+    case 156:
+      action_help = false;
+      break;
+
+    case 157:
+      action_help = true;
+      break;
 
     default:
       if (verbose) std::cout << _("Unknow char: ") << c << std::endl << std::endl;
@@ -516,6 +525,8 @@ For more information about these matters, see the files named COPYING.\
 	"   --disable-auto-scrolling Disable automatic scrolling\n"
 	"   --disable-swcursor       Disable software cursor, use hw cursor instead\n"
 	"   --enable-swcursor        Enable software cursor\n"
+	"   --disable-action-help    Disable action button help strings\n"
+	"   --enable-action-help     Enable action button help strings(default)\n"
 	"   --no-cfg-file            Don't read ~/.pingus/config\n"
 	"   --config-file FILE       Read config from FILE (default: ~/.pingus/config)\n"
 	"   --max-cpu-usage          Use all of the cpu power available, instead of trying to\n"

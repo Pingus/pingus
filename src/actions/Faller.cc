@@ -1,4 +1,4 @@
-//  $Id: Faller.cc,v 1.5 2001/08/16 22:00:50 grumbel Exp $
+//  $Id: Faller.cc,v 1.6 2001/12/06 10:50:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -98,8 +98,11 @@ Faller::update (float delta)
       else
 	{
 	  // Did we stop too fast?
-	  if (fabs(pingu->velocity.y) > deadly_velocity)
-	    pingu->set_action("splashed");
+	  if (fabs(pingu->velocity.y) > deadly_velocity) 
+	    {
+	      pingu->set_paction("splashed");
+	      return;
+	    }
 	  else if (fabs(pingu->velocity.x) > deadly_velocity)
 	    {
 	      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)

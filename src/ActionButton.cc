@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.21 2001/12/04 12:18:49 grumbel Exp $
+//  $Id: ActionButton.cc,v 1.22 2001/12/06 10:50:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -195,7 +195,8 @@ HorizontalActionButton::draw()
 
   // print the action name under the button, when mouse pointer is 
   // on the button.
-  if(CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + 37
+  if(action_help
+     && CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + 37
      && CL_Mouse::get_y() < y_pos + 55 && CL_Mouse::get_y() > y_pos) 
   {
 	font_b->print_left( x_pos, y_pos + 56, name.c_str());
@@ -265,7 +266,8 @@ VerticalActionButton::draw()
 
   // print the action name next to the button, when mouse pointer is on
   // the button.
-  if(CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + 60
+  if(action_help 
+     && CL_Mouse::get_x() > x_pos && CL_Mouse::get_x() < x_pos + 60
      && CL_Mouse::get_y() < y_pos + 35 && CL_Mouse::get_y() > y_pos) 
   {
 	font_b->print_left (61, y_pos, name.c_str());
