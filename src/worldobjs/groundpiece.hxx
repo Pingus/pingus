@@ -1,4 +1,4 @@
-//  $Id: groundpiece.hxx,v 1.4 2002/09/27 11:26:49 torangan Exp $
+//  $Id: groundpiece.hxx,v 1.5 2002/09/27 18:36:41 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,11 +17,14 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_GROUNDPIECE_HXX
-#define HEADER_GROUNDPIECE_HXX
+#ifndef HEADER_PINGUS_WORLDOBJS_GROUNDPIECE_HXX
+#define HEADER_PINGUS_WORLDOBJS_GROUNDPIECE_HXX
 
 #include "../worldobj.hxx"
-#include "../worldobjsdata/groundpiece_data.hxx"
+
+namespace WorldObjsData {
+class GroundpieceData;
+}
 
 namespace WorldObjs {
 
@@ -30,18 +33,18 @@ namespace WorldObjs {
 class Groundpiece : public WorldObj
 {
 private:
-  WorldObjsData::GroundpieceData data;
+  WorldObjsData::GroundpieceData* const data;
   CL_Surface surface;
 
 public:
   Groundpiece (const WorldObjsData::GroundpieceData& data_);
-  ~Groundpiece() {};
+  ~Groundpiece ();
 
   float get_z_pos () const { return 0; }
 
-  void draw(GraphicContext&) {}
-  void on_startup();
-  bool purge_after_startup() { return true; }
+  void draw (GraphicContext&) {}
+  void on_startup ();
+  bool purge_after_startup () { return true; }
 private:
   Groundpiece (const Groundpiece&);
   Groundpiece& operator= (const Groundpiece&);

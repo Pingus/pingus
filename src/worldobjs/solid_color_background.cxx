@@ -1,4 +1,4 @@
-//  $Id: solid_color_background.cxx,v 1.1 2002/09/15 09:54:34 torangan Exp $
+//  $Id: solid_color_background.cxx,v 1.2 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,8 @@
 
 namespace WorldObjs {
 
-SolidColorBackground::SolidColorBackground (WorldObjsData::SolidColorBackgroundData* data_)
-  : data(new WorldObjsData::SolidColorBackgroundData(*data_))
+SolidColorBackground::SolidColorBackground (const WorldObjsData::SolidColorBackgroundData& data_)
+  : data(new WorldObjsData::SolidColorBackgroundData(data_))
 {
 }
 

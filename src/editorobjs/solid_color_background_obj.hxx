@@ -1,4 +1,4 @@
-//  $Id: solid_color_background_obj.hxx,v 1.2 2002/09/27 11:26:46 torangan Exp $
+//  $Id: solid_color_background_obj.hxx,v 1.3 2002/09/27 18:36:40 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ private:
   WorldObjsData::SolidColorBackgroundData* const data;
   
 public:
-  SolidColorBackgroundObj (WorldObjsData::SolidColorBackgroundData* data_);
+  SolidColorBackgroundObj (const WorldObjsData::SolidColorBackgroundData& data_);
  ~SolidColorBackgroundObj ();
  
   void write_xml (std::ostream& xml);

@@ -1,4 +1,4 @@
-//  $Id: surface_background.cxx,v 1.1 2002/09/16 20:52:22 torangan Exp $
+//  $Id: surface_background.cxx,v 1.2 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,10 +30,10 @@
 
 namespace WorldObjs {
 
-SurfaceBackground::SurfaceBackground (WorldObjsData::SurfaceBackgroundData* data_)
+SurfaceBackground::SurfaceBackground (const WorldObjsData::SurfaceBackgroundData& data_)
   : scroll_ox(0),
     scroll_oy(0),
-    data(new WorldObjsData::SurfaceBackgroundData(*data_))
+    data(new WorldObjsData::SurfaceBackgroundData(data_))
 
 {
   Timer timer;

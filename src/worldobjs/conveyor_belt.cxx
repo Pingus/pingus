@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.cxx,v 1.16 2002/09/16 22:51:33 grumbel Exp $
+//  $Id: conveyor_belt.cxx,v 1.17 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,8 +29,8 @@
 
 namespace WorldObjs {
 
-ConveyorBelt::ConveyorBelt (WorldObjsData::ConveyorBeltData* data_)
-  : data(new WorldObjsData::ConveyorBeltData(*data_)),
+ConveyorBelt::ConveyorBelt (const WorldObjsData::ConveyorBeltData& data_)
+  : data(new WorldObjsData::ConveyorBeltData(data_)),
     left_sur  (PingusResource::load_surface ("conveyorbelt_left",   "worldobjs")),
     right_sur (PingusResource::load_surface ("conveyorbelt_right",  "worldobjs")),
     middle_sur(PingusResource::load_surface ("conveyorbelt_middle", "worldobjs"))
@@ -54,7 +54,7 @@ ConveyorBelt::draw (GraphicContext& gc)
 }
 
 void
-ConveyorBelt::on_startup()
+ConveyorBelt::on_startup ()
 {
   CL_Surface sur(PingusResource::load_surface("conveyorbelt_cmap", "worldobjs"));
   for (int i=0; i < (data->width + 2); ++i)

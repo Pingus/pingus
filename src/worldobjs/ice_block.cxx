@@ -1,4 +1,4 @@
-//  $Id: ice_block.cxx,v 1.16 2002/09/16 22:51:33 grumbel Exp $
+//  $Id: ice_block.cxx,v 1.17 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,8 +31,8 @@
 
 namespace WorldObjs {
 
-IceBlock::IceBlock (WorldObjsData::IceBlockData* data_) 
-  : data(new WorldObjsData::IceBlockData(*data_)), 
+IceBlock::IceBlock (const WorldObjsData::IceBlockData& data_) 
+  : data(new WorldObjsData::IceBlockData(data_)), 
     thickness(1.0),
     is_finished(false),
     last_contact(0),
@@ -46,7 +46,7 @@ IceBlock::~IceBlock ()
 }
 
 void
-IceBlock::on_startup()
+IceBlock::on_startup ()
 {
   CL_Surface surf(PingusResource::load_surface("iceblock_cmap", "worldobjs"));
 

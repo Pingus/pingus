@@ -1,4 +1,4 @@
-//  $Id: guillotine_data.cxx,v 1.6 2002/09/15 09:54:34 torangan Exp $
+//  $Id: guillotine_data.cxx,v 1.7 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ GuillotineData::GuillotineData (xmlDocPtr doc, xmlNodePtr cur)
     idle_surf(PingusResource::load_surface("Traps/guillotineidle", "traps"))
 {
   if (cur->name)
-    std::cout << (const char*)cur->name << std::endl;
+    std::cout << reinterpret_cast<const char*>(cur->name) << std::endl;
       
   cur = cur->children;
   while (cur)
@@ -47,7 +47,7 @@ GuillotineData::GuillotineData (xmlDocPtr doc, xmlNodePtr cur)
 	  pos = XMLhelper::parse_vector(doc, cur);
 	}
       else
-	std::cout << (const char*)cur->name << std::endl;
+	std::cout << reinterpret_cast<const char*>(cur->name) << std::endl;
 	  
       cur = cur->next;
     }
@@ -71,13 +71,13 @@ GuillotineData::write_xml (std::ostream& xml)
 WorldObj*
 GuillotineData::create_WorldObj ()
 {
-  return new WorldObjs::Guillotine(this);
+  return new WorldObjs::Guillotine(*this);
 }
 
 EditorObjLst
 GuillotineData::create_EditorObj ()
 {
-  return EditorObjLst(1, new EditorObjs::GuillotineObj(this));
+  return EditorObjLst(1, new EditorObjs::GuillotineObj(*this));
 }
 
 } // namespace WorldObjsData

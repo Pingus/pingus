@@ -1,4 +1,4 @@
-//  $Id: rain_generator.hxx,v 1.4 2002/09/27 11:26:49 torangan Exp $
+//  $Id: rain_generator.hxx,v 1.5 2002/09/27 18:36:41 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,12 +31,12 @@ private:
   float thunder_count;
   float waiter_count;
 public:
-  RainGenerator();
-  ~RainGenerator();
+  RainGenerator ();
+  ~RainGenerator ();
 
-  void update(float delta);
-  void draw(GraphicContext& gc);
-  float get_z_pos() const { return 1000; }
+  void update (float delta);
+  void draw (GraphicContext& gc);
+  float get_z_pos () const { return 1000; }
 
 private:
   RainGenerator (const RainGenerator&);

@@ -1,4 +1,4 @@
-//  $Id: hammer.cxx,v 1.4 2002/09/14 19:06:34 torangan Exp $
+//  $Id: hammer.cxx,v 1.5 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,8 +26,8 @@
 
 namespace WorldObjs {
 
-Hammer::Hammer (WorldObjsData::HammerData* data_) : particle_thrown(false),
-						    data (new WorldObjsData::HammerData(*data_))
+Hammer::Hammer (const WorldObjsData::HammerData& data_) : data(new WorldObjsData::HammerData(data_)),
+                                                          particle_thrown(false)
 {
   data->counter.set_size(data->surface.get_num_frames());
   data->counter.set_type(GameCounter::ping_pong);

@@ -1,4 +1,4 @@
-//  $Id: bumper_data.cxx,v 1.6 2002/09/25 17:25:49 grumbel Exp $
+//  $Id: bumper_data.cxx,v 1.7 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,13 +63,13 @@ BumperData::write_xml (std::ostream& xml)
 WorldObj*
 BumperData::create_WorldObj ()
 {
-  return new WorldObjs::Bumper(this);
+  return new WorldObjs::Bumper(*this);
 }
 
 EditorObjLst
 BumperData::create_EditorObj ()
 {
-  return EditorObjLst(1, new EditorObjs::BumperObj(this));
+  return EditorObjLst(1, new EditorObjs::BumperObj(*this));
 }
 
 } // WorldObjsData

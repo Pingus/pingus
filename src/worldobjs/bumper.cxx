@@ -1,4 +1,4 @@
-//  $Id: bumper.cxx,v 1.6 2002/09/16 22:51:33 grumbel Exp $
+//  $Id: bumper.cxx,v 1.7 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,11 +29,11 @@
 
 namespace WorldObjs {
 
-Bumper::Bumper (WorldObjsData::BumperData* data_) : upwards(false),
-						    count(0),
-						    data(new WorldObjsData::BumperData(*data_))
+Bumper::Bumper (const WorldObjsData::BumperData& data_) : data(new WorldObjsData::BumperData(data_)),
+                                                          upwards(false),
+						          count(0)
+						          
 {
-  assert(data);
 }
 
 Bumper::~Bumper ()
@@ -69,7 +69,7 @@ Bumper::update (float delta)
 }
 
 void
-Bumper::on_startup()
+Bumper::on_startup ()
 {
   std::cout << "Drawing colmap entry" << std::endl;
 
@@ -80,21 +80,25 @@ Bumper::on_startup()
 void 
 Bumper::draw (GraphicContext& gc)
 {
-  gc.draw (data->surface, data->pos, count);
+  gc.draw(data->surface, data->pos, count);
 }
 
 void 
-Bumper::catch_pingu(Pingu* pingu)
+Bumper::catch_pingu (Pingu* pingu)
 {
-  if (pingu->get_y() > data->pos.y + 60 && pingu->get_y() < data->pos.y + 100)
+  if (   pingu->get_y() > data->pos.y + 60
+      && pingu->get_y() < data->pos.y + 100)
     {
-      if (pingu->get_x() > data->pos.x + 28 && pingu->get_x() < data->pos.x + 32)
+      if (   pingu->get_x() > data->pos.x + 28 
+          && pingu->get_x() < data->pos.x + 32)
 	{
 	  if (!upwards)
 	    upwards = true;
 	}
 
-      if (upwards && pingu->get_x() > data->pos.x + 0 && pingu->get_x() < data->pos.x + 60)
+      if (   upwards 
+          && pingu->get_x() > data->pos.x + 0
+	  && pingu->get_x() < data->pos.x + 60)
 	{
 	  pingu->apply_force(CL_Vector((pingu->get_x() - 30)/6, -5));
 	}

@@ -1,4 +1,4 @@
-//  $Id: hotspot_obj.cxx,v 1.1 2002/09/24 09:29:04 torangan Exp $
+//  $Id: hotspot_obj.cxx,v 1.2 2002/09/27 18:36:40 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,9 +23,9 @@
 
 namespace EditorObjs {
 
-HotspotObj::HotspotObj (WorldObjsData::HotspotData* data_)
-  : SpriteEditorObj (data_->desc),
-    data(new WorldObjsData::HotspotData(*data_))
+HotspotObj::HotspotObj (const WorldObjsData::HotspotData& data_)
+  : SpriteEditorObj (data_.desc),
+    data(new WorldObjsData::HotspotData(data_))
 {
   pos_ref = &data->pos;
 }
@@ -39,7 +39,7 @@ HotspotObj::write_xml (std::ostream& xml)
 EditorObj*
 HotspotObj::duplicate ()
 {
-  return new HotspotObj(data);
+  return new HotspotObj(*data);
 }
 
 std::string

@@ -1,4 +1,4 @@
-//  $Id: hammer_data.cxx,v 1.6 2002/09/25 17:25:49 grumbel Exp $
+//  $Id: hammer_data.cxx,v 1.7 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,13 +63,13 @@ HammerData::write_xml (std::ostream& xml)
 WorldObj*
 HammerData::create_WorldObj ()
 {
-  return new WorldObjs::Hammer(this);
+  return new WorldObjs::Hammer(*this);
 }
 
 EditorObjLst
 HammerData::create_EditorObj ()
 {
-  return EditorObjLst(1, new EditorObjs::HammerObj(this));
+  return EditorObjLst(1, new EditorObjs::HammerObj(*this));
 }
 
 } // namespace WorldObjsData

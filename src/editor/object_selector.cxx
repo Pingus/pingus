@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.27 2002/09/27 16:01:55 torangan Exp $
+//  $Id: object_selector.cxx,v 1.28 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -151,7 +151,7 @@ ObjectSelector::get_groundpiece (const Groundtype::GPType& gptype)
       data.desc = ResDescriptor("resource:" + datafile, str);
       data.gptype = gptype;
 
-      objs.push_back(new EditorObjs::GroundpieceObj(&data));
+      objs.push_back(new EditorObjs::GroundpieceObj(data));
       return objs;
     }
   

@@ -1,4 +1,4 @@
-//  $Id: spike_obj.hxx,v 1.6 2002/09/27 11:26:46 torangan Exp $
+//  $Id: spike_obj.hxx,v 1.7 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,11 +31,11 @@ namespace EditorObjs {
 class SpikeObj : public SpriteEditorObj
 {
 private:
-  int frame;
   WorldObjsData::SpikeData* const data;
+  int frame;
   
 public:
-  SpikeObj (WorldObjsData::SpikeData* data_);
+  SpikeObj (const WorldObjsData::SpikeData& data_);
   ~SpikeObj ();
    
   static EditorObjLst create (const CL_Vector& pos);

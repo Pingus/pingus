@@ -1,4 +1,4 @@
-//  $Id: switch_door.hxx,v 1.15 2002/09/27 11:26:49 torangan Exp $
+//  $Id: switch_door.hxx,v 1.16 2002/09/27 18:36:41 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,12 +33,12 @@ namespace WorldObjs {
 class SwitchDoor : public WorldObj
 {
 private:
+  WorldObjsData::SwitchDoorData* const data;
+  
   CL_Surface door_box;
   CL_Surface door_tile;
   CL_Surface door_tile_cmap;
   CL_Surface switch_sur;
-
-  WorldObjsData::SwitchDoorData* const data;
 
   /** True if the door is opening */
   bool is_opening;
@@ -48,7 +48,7 @@ private:
   int current_door_height;
 
 public:
-  SwitchDoor (WorldObjsData::SwitchDoorData* data_);
+  SwitchDoor (const WorldObjsData::SwitchDoorData& data_);
  ~SwitchDoor ();
   
   void on_startup();

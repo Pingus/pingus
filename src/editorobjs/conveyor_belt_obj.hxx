@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_obj.hxx,v 1.3 2002/09/27 11:26:46 torangan Exp $
+//  $Id: conveyor_belt_obj.hxx,v 1.4 2002/09/27 18:36:40 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ private:
   CL_Surface middle_sur;
 
 public:
-  ConveyorBeltObj (WorldObjsData::ConveyorBeltData* data_);
+  ConveyorBeltObj (const WorldObjsData::ConveyorBeltData& data_);
 
   EditorObj* duplicate ();
   

@@ -1,4 +1,4 @@
-//  $Id: smasher_obj.cxx,v 1.6 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: smasher_obj.cxx,v 1.7 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,8 +25,8 @@
 namespace EditorObjs {
 
 SmasherObj::SmasherObj (const WorldObjsData::SmasherData& data_)
-  : frame(0),
-    data(new WorldObjsData::SmasherData(data_))
+  : data(new WorldObjsData::SmasherData(data_)),
+    frame(0)
 {
   data->pos.z = -100;
   sprite = Sprite("Traps/smasher", "traps");

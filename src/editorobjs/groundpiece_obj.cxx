@@ -1,4 +1,4 @@
-//  $Id: groundpiece_obj.cxx,v 1.1 2002/09/27 11:26:46 torangan Exp $
+//  $Id: groundpiece_obj.cxx,v 1.2 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,9 +25,9 @@
 
 namespace EditorObjs {
 
-GroundpieceObj::GroundpieceObj (WorldObjsData::GroundpieceData* data_)
-  : SpriteEditorObj(data_->desc),
-    data(new WorldObjsData::GroundpieceData(*data_)),
+GroundpieceObj::GroundpieceObj (const WorldObjsData::GroundpieceData& data_)
+  : SpriteEditorObj(data_.desc),
+    data(new WorldObjsData::GroundpieceData(data_)),
     gptype(data->gptype)
 {
   pos_ref = &data->pos;
@@ -41,7 +41,7 @@ GroundpieceObj::~GroundpieceObj ()
 EditorObj*
 GroundpieceObj::duplicate ()
 {
-  return new GroundpieceObj(data);
+  return new GroundpieceObj(*data);
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: surface_background_obj.cxx,v 1.2 2002/09/17 22:52:36 grumbel Exp $
+//  $Id: surface_background_obj.cxx,v 1.3 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,9 +23,9 @@
 
 namespace EditorObjs {
 
-SurfaceBackgroundObj::SurfaceBackgroundObj (WorldObjsData::SurfaceBackgroundData* data_)
-  : SpriteEditorObj (data_->desc.res_name, data_->desc.datafile),
-    data(new WorldObjsData::SurfaceBackgroundData(*data_))
+SurfaceBackgroundObj::SurfaceBackgroundObj (const WorldObjsData::SurfaceBackgroundData& data_)
+  : SpriteEditorObj (data_.desc.res_name, data_.desc.datafile),
+    data(new WorldObjsData::SurfaceBackgroundData(data_))
 {
   pos_ref = &data->pos;
 }
@@ -44,7 +44,7 @@ SurfaceBackgroundObj::write_xml (std::ostream& xml)
 EditorObj*
 SurfaceBackgroundObj::duplicate ()
 {
-  return new SurfaceBackgroundObj(data);
+  return new SurfaceBackgroundObj(*data);
 }
 
 std::string

@@ -1,4 +1,4 @@
-//  $Id: laser_exit_data.cxx,v 1.6 2002/09/25 17:25:49 grumbel Exp $
+//  $Id: laser_exit_data.cxx,v 1.7 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,13 +63,13 @@ LaserExitData::write_xml (std::ostream& xml)
 WorldObj*
 LaserExitData::create_WorldObj ()
 {
-  return new WorldObjs::LaserExit(this);
+  return new WorldObjs::LaserExit(*this);
 }
 
 EditorObjLst
 LaserExitData::create_EditorObj ()
 {
-  return EditorObjLst(1, new EditorObjs::LaserExitObj(this));
+  return EditorObjLst(1, new EditorObjs::LaserExitObj(*this));
 }
 
 } // namespace WorldObjsData

@@ -1,4 +1,4 @@
-//  $Id: guillotine_obj.hxx,v 1.6 2002/09/27 11:26:46 torangan Exp $
+//  $Id: guillotine_obj.hxx,v 1.7 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,11 +31,11 @@ namespace EditorObjs {
 class GuillotineObj : public SpriteEditorObj
 {
 private:
-  int frame;
   WorldObjsData::GuillotineData* const data;
+  int frame;
   
 public:
-  GuillotineObj (WorldObjsData::GuillotineData* data_);
+  GuillotineObj (const WorldObjsData::GuillotineData& data_);
   ~GuillotineObj ();
    
   static EditorObjLst create (const CL_Vector& pos);

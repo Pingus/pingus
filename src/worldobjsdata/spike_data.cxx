@@ -1,4 +1,4 @@
-//  $Id: spike_data.cxx,v 1.6 2002/09/25 17:25:49 grumbel Exp $
+//  $Id: spike_data.cxx,v 1.7 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,13 +63,13 @@ SpikeData::write_xml (std::ostream& xml)
 WorldObj*
 SpikeData::create_WorldObj ()
 {
-  return new WorldObjs::Spike(this);
+  return new WorldObjs::Spike(*this);
 }
 
 EditorObjLst
 SpikeData::create_EditorObj ()
 {
-  return EditorObjLst(1, new EditorObjs::SpikeObj(this));
+  return EditorObjLst(1, new EditorObjs::SpikeObj(*this));
 }
 
 } // namespace WorldObjsData

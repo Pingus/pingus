@@ -1,4 +1,4 @@
-//  $Id: surface_background_data.cxx,v 1.2 2002/09/25 17:25:49 grumbel Exp $
+//  $Id: surface_background_data.cxx,v 1.3 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -133,15 +133,13 @@ SurfaceBackgroundData::SurfaceBackgroundData (xmlDocPtr doc, xmlNodePtr cur)
 WorldObj* 
 SurfaceBackgroundData::create_WorldObj ()
 {
-  return new WorldObjs::SurfaceBackground(this);
+  return new WorldObjs::SurfaceBackground(*this);
 }
 
 EditorObjLst 
 SurfaceBackgroundData::create_EditorObj ()
 {
-  EditorObjLst lst;
-  lst.push_back(new EditorObjs::SurfaceBackgroundObj(this));
-  return lst;
+  return EditorObjLst(1, new EditorObjs::SurfaceBackgroundObj(*this));
 }
 
 } // namespace WorldObjsData

@@ -1,4 +1,4 @@
-//  $Id: guillotine.cxx,v 1.4 2002/09/14 19:06:34 torangan Exp $
+//  $Id: guillotine.cxx,v 1.5 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,9 +26,9 @@
 
 namespace WorldObjs {
 
-Guillotine::Guillotine (WorldObjsData::GuillotineData* data_) 
-  : killing(false),
-    data (new WorldObjsData::GuillotineData(*data_))
+Guillotine::Guillotine (const WorldObjsData::GuillotineData& data_) 
+  : data(new WorldObjsData::GuillotineData(data_)),
+    killing(false)
 {
   data->counter.set_size(data->surface.get_num_frames()/2);
   data->counter.set_type(GameCounter::once);

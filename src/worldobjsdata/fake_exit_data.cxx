@@ -1,4 +1,4 @@
-//  $Id: fake_exit_data.cxx,v 1.6 2002/09/25 17:25:49 grumbel Exp $
+//  $Id: fake_exit_data.cxx,v 1.7 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,13 +63,13 @@ FakeExitData::write_xml (std::ostream& xml)
 WorldObj*
 FakeExitData::create_WorldObj ()
 {
-  return new WorldObjs::FakeExit(this);
+  return new WorldObjs::FakeExit(*this);
 }
 
 EditorObjLst
 FakeExitData::create_EditorObj ()
 {
-  return EditorObjLst(1, new EditorObjs::FakeExitObj(this));
+  return EditorObjLst(1, new EditorObjs::FakeExitObj(*this));
 }
 
 } // namespace WorldObjsData

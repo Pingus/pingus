@@ -1,4 +1,4 @@
-//  $Id: info_box_obj.hxx,v 1.3 2002/09/27 11:26:46 torangan Exp $
+//  $Id: info_box_obj.hxx,v 1.4 2002/09/27 18:36:40 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ private:
   WorldObjsData::InfoBoxData* const data;
 
 public:
-  InfoBoxObj (WorldObjsData::InfoBoxData* data_);
+  InfoBoxObj (const WorldObjsData::InfoBoxData& data_);
  ~InfoBoxObj ();
 
   static EditorObjLst create (const CL_Vector& pos);

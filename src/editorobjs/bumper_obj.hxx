@@ -1,4 +1,4 @@
-//  $Id: bumper_obj.hxx,v 1.6 2002/09/27 11:26:46 torangan Exp $
+//  $Id: bumper_obj.hxx,v 1.7 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,26 +30,26 @@ namespace EditorObjs {
 
 class BumperObj : public SpriteEditorObj
 {
-  private:
-    int frame;
-    WorldObjsData::BumperData* const data;
-  
-  public:
-    BumperObj (WorldObjsData::BumperData* data_);
-   ~BumperObj ();   
+private:
+  WorldObjsData::BumperData* const data;
+  int frame;
 
-    static EditorObjLst create (const CL_Vector& pos);
+public:
+  BumperObj (const WorldObjsData::BumperData& data_);
+ ~BumperObj ();   
 
-    EditorObj* duplicate ();
-    
-    void write_xml (std::ostream& xml);
-    void draw (EditorNS::EditorView* view);
-    
-    std::string status_line ();
+  static EditorObjLst create (const CL_Vector& pos);
+
+  EditorObj* duplicate ();
   
-  private:
-    BumperObj (const BumperObj&);
-    BumperObj& operator= (const BumperObj&);
+  void write_xml (std::ostream& xml);
+  void draw (EditorNS::EditorView* view);
+  
+  std::string status_line ();
+
+private:
+  BumperObj (const BumperObj&);
+  BumperObj& operator= (const BumperObj&);
 };
 
 } // namespace EditorObjs

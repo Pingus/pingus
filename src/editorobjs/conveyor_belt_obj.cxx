@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt_obj.cxx,v 1.3 2002/09/20 08:43:18 grumbel Exp $
+//  $Id: conveyor_belt_obj.cxx,v 1.4 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,8 +25,8 @@
 
 namespace EditorObjs {
 
-ConveyorBeltObj::ConveyorBeltObj (WorldObjsData::ConveyorBeltData* data_)
-  : data(new WorldObjsData::ConveyorBeltData(*data_)),
+ConveyorBeltObj::ConveyorBeltObj (const WorldObjsData::ConveyorBeltData& data_)
+  : data(new WorldObjsData::ConveyorBeltData(data_)),
     left_sur  (PingusResource::load_surface ("conveyorbelt_left",   "worldobjs")),
     right_sur (PingusResource::load_surface ("conveyorbelt_right",  "worldobjs")),
     middle_sur(PingusResource::load_surface ("conveyorbelt_middle", "worldobjs"))
@@ -34,9 +34,9 @@ ConveyorBeltObj::ConveyorBeltObj (WorldObjsData::ConveyorBeltData* data_)
 }
 
 EditorObj*
-ConveyorBeltObj::duplicate()
+ConveyorBeltObj::duplicate ()
 {
-  return new ConveyorBeltObj(data);
+  return new ConveyorBeltObj(*data);
 }
 
 void

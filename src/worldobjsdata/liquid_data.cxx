@@ -1,4 +1,4 @@
-//  $Id: liquid_data.cxx,v 1.2 2002/09/25 18:09:57 torangan Exp $
+//  $Id: liquid_data.cxx,v 1.3 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -96,14 +96,14 @@ WorldObj*
 LiquidData::create_WorldObj ()
 {
   std::cout << "LiquidData::create_WorldObj ()" << std::endl;
-  return new WorldObjs::Liquid(this);
+  return new WorldObjs::Liquid(*this);
 }
 
 EditorObjLst
 LiquidData::create_EditorObj () 
 { 
   std::cout << "LiquidData::create_EditorObj ()" << std::endl;
-  return EditorObjLst(1, new EditorObjs::LiquidObj(this));
+  return EditorObjLst(1, new EditorObjs::LiquidObj(*this));
 }
 
 } // namespace WorldObjsData

@@ -1,4 +1,4 @@
-//  $Id: bumper.hxx,v 1.5 2002/09/27 11:26:49 torangan Exp $
+//  $Id: bumper.hxx,v 1.6 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,13 +33,12 @@ namespace WorldObjs {
 class Bumper : public WorldObj
 {
 private:
+  WorldObjsData::BumperData* const data;
   bool upwards;
   int  count;
     
-  WorldObjsData::BumperData* const data;
-    
 public:
-  Bumper (WorldObjsData::BumperData* data_);
+  Bumper (const WorldObjsData::BumperData& data_);
   ~Bumper ();
 
   float get_z_pos () const;

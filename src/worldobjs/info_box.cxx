@@ -1,4 +1,4 @@
-//  $Id: info_box.cxx,v 1.14 2002/09/17 16:23:30 grumbel Exp $
+//  $Id: info_box.cxx,v 1.15 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,12 +30,12 @@
 
 namespace WorldObjs {
 
-InfoBox::InfoBox (WorldObjsData::InfoBoxData* data_)
-  : data(new WorldObjsData::InfoBoxData(*data_)),
+InfoBox::InfoBox (const WorldObjsData::InfoBoxData& data_)
+  : data(new WorldObjsData::InfoBoxData(data_)),
     sprite("infobox", "worldobjs"),
     is_open (false)
 {
-  sprite.set_align_center_bottom ();
+  sprite.set_align_center_bottom();
 }
 
 InfoBox::~InfoBox ()

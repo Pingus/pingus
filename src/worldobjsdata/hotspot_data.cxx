@@ -1,4 +1,4 @@
-//  $Id: hotspot_data.cxx,v 1.2 2002/09/25 17:25:49 grumbel Exp $
+//  $Id: hotspot_data.cxx,v 1.3 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -86,13 +86,13 @@ HotspotData::HotspotData (const HotspotData& old) : WorldObjData(old),
 WorldObj* 
 HotspotData::create_WorldObj ()
 {
-  return new WorldObjs::Hotspot(this);
+  return new WorldObjs::Hotspot(*this);
 }
 
 EditorObjLst 
 HotspotData::create_EditorObj ()
 {
-  return EditorObjLst(1, new EditorObjs::HotspotObj(this));
+  return EditorObjLst(1, new EditorObjs::HotspotObj(*this));
 }
 
 } //namespace WorldObjsData

@@ -1,4 +1,4 @@
-//  $Id: starfield_background_obj.hxx,v 1.2 2002/09/27 11:26:46 torangan Exp $
+//  $Id: starfield_background_obj.hxx,v 1.3 2002/09/27 18:36:40 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,11 +33,11 @@ namespace EditorObjs {
 class StarfieldBackgroundObj : public SpriteEditorObj
 {
 private:
-  CL_Vector pos;
   WorldObjsData::StarfieldBackgroundData* const data;
+  CL_Vector pos;
   
 public:
-  StarfieldBackgroundObj (WorldObjsData::StarfieldBackgroundData* data_);
+  StarfieldBackgroundObj (const WorldObjsData::StarfieldBackgroundData& data_);
  ~StarfieldBackgroundObj ();
 
   void write_xml (std::ostream& xml);

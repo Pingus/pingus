@@ -1,4 +1,4 @@
-//  $Id: starfield_background_data.cxx,v 1.2 2002/09/25 17:25:49 grumbel Exp $
+//  $Id: starfield_background_data.cxx,v 1.3 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -108,13 +108,13 @@ StarfieldBackgroundData::write_xml(std::ostream& xml)
 WorldObj* 
 StarfieldBackgroundData::create_WorldObj ()
 {
-  return new WorldObjs::StarfieldBackground(this);
+  return new WorldObjs::StarfieldBackground(*this);
 }
 
 EditorObjLst
 StarfieldBackgroundData::create_EditorObj ()
 {
-  return EditorObjLst(1, new EditorObjs::StarfieldBackgroundObj(this));
+  return EditorObjLst(1, new EditorObjs::StarfieldBackgroundObj(*this));
 }
 
 } // namespace WorldObjsData

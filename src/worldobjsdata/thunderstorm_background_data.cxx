@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background_data.cxx,v 1.2 2002/09/25 17:25:49 grumbel Exp $
+//  $Id: thunderstorm_background_data.cxx,v 1.3 2002/09/27 18:36:42 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -59,13 +59,13 @@ ThunderstormBackgroundData::ThunderstormBackgroundData (xmlDocPtr doc, xmlNodePt
 WorldObj* 
 ThunderstormBackgroundData::create_WorldObj ()
 {
-  return new WorldObjs::ThunderstormBackground(this);
+  return new WorldObjs::ThunderstormBackground(*this);
 }
 
 EditorObjLst 
 ThunderstormBackgroundData::create_EditorObj ()
 {
-  return EditorObjLst(1, new EditorObjs::ThunderstormBackgroundObj(this));
+  return EditorObjLst(1, new EditorObjs::ThunderstormBackgroundObj(*this));
 }
 
 } // namespace WorldObjsData

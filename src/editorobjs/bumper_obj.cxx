@@ -1,4 +1,4 @@
-//  $Id: bumper_obj.cxx,v 1.7 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: bumper_obj.cxx,v 1.8 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,13 +24,13 @@
 
 namespace EditorObjs {
 
-BumperObj::BumperObj (WorldObjsData::BumperData* data_)
-  : frame(0),
-    data(new WorldObjsData::BumperData(*data_))
+BumperObj::BumperObj (const WorldObjsData::BumperData& data_)
+  : data(new WorldObjsData::BumperData(data_)),
+    frame(0)
 {
   data->pos.z = -100;
   sprite = Sprite("Traps/bumper", "traps");
-  sprite.set_align_center_bottom ();
+  sprite.set_align_center_bottom();
 
   pos_ref = &data->pos;
 }
@@ -45,13 +45,13 @@ BumperObj::create (const CL_Vector& pos)
 {
   WorldObjsData::BumperData newdata;
   newdata.pos = pos;
-  return EditorObjLst(1, new BumperObj(&newdata));
+  return EditorObjLst(1, new BumperObj(newdata));
 }
 
 EditorObj*
 BumperObj::duplicate ()
 {
-  return new BumperObj(data);
+  return new BumperObj(*data);
 }
 
 void

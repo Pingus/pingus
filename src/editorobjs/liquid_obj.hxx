@@ -1,4 +1,4 @@
-//  $Id: liquid_obj.hxx,v 1.2 2002/09/27 11:26:46 torangan Exp $
+//  $Id: liquid_obj.hxx,v 1.3 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,7 +35,7 @@ private:
   WorldObjsData::LiquidData* const data;
   
 public:
-  LiquidObj (WorldObjsData::LiquidData* data_);
+  LiquidObj (const WorldObjsData::LiquidData& data_);
  ~LiquidObj ();
 
   EditorObj* duplicate ();

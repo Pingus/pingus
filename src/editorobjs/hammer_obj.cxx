@@ -1,4 +1,4 @@
-//  $Id: hammer_obj.cxx,v 1.7 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: hammer_obj.cxx,v 1.8 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,9 +24,9 @@
 
 namespace EditorObjs {
 
-HammerObj::HammerObj (WorldObjsData::HammerData* data_) 
-  : frame(0),
-    data(new WorldObjsData::HammerData(*data_))
+HammerObj::HammerObj (const WorldObjsData::HammerData& data_) 
+  : data(new WorldObjsData::HammerData(data_)),
+    frame(0)
 {
   data->pos.z = -100;
   sprite = Sprite("Traps/hammer", "traps");
@@ -42,7 +42,7 @@ HammerObj::~HammerObj ()
 EditorObj*
 HammerObj::duplicate ()
 {
-  return new HammerObj(data);
+  return new HammerObj(*data);
 }
 
 EditorObjLst
@@ -50,7 +50,7 @@ HammerObj::create (const CL_Vector& pos)
 {
   WorldObjsData::HammerData hammer_data;
   hammer_data.pos = pos;
-  return EditorObjLst(1, new HammerObj(&hammer_data));
+  return EditorObjLst(1, new HammerObj(hammer_data));
 }
   
 void

@@ -1,4 +1,4 @@
-//  $Id: guillotine.hxx,v 1.4 2002/09/27 11:26:49 torangan Exp $
+//  $Id: guillotine.hxx,v 1.5 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,17 +28,16 @@ class GuillotineData;
 
 class Pingu;
 
-
 namespace WorldObjs {
 
 class Guillotine : public WorldObj
 {
 private:
-  bool killing;
   WorldObjsData::GuillotineData* const data;
+  bool killing;
 
 public:
-  Guillotine (WorldObjsData::GuillotineData* data_);
+  Guillotine (const WorldObjsData::GuillotineData& data_);
   ~Guillotine ();
 
   float get_z_pos () const;

@@ -1,4 +1,4 @@
-//  $Id: switch_door.cxx,v 1.18 2002/09/16 22:51:33 grumbel Exp $
+//  $Id: switch_door.cxx,v 1.19 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,12 +29,12 @@
 
 namespace WorldObjs {
 
-SwitchDoor::SwitchDoor (WorldObjsData::SwitchDoorData* data_) 
-  : door_box      (PingusResource::load_surface("switchdoor_box"      , "worldobjs")),
+SwitchDoor::SwitchDoor (const WorldObjsData::SwitchDoorData& data_) 
+  : data(new WorldObjsData::SwitchDoorData(data_)),
+    door_box      (PingusResource::load_surface("switchdoor_box"      , "worldobjs")),
     door_tile     (PingusResource::load_surface("switchdoor_tile"     , "worldobjs")),
     door_tile_cmap(PingusResource::load_surface("switchdoor_tile_cmap", "worldobjs")),
     switch_sur    (PingusResource::load_surface("switchdoor_switch"   , "worldobjs")),
-    data(new WorldObjsData::SwitchDoorData(*data_)),
     is_opening(false),
     current_door_height(data->door_height)
 {
@@ -46,7 +46,7 @@ SwitchDoor::~SwitchDoor ()
 }
 
 void 
-SwitchDoor::on_startup()
+SwitchDoor::on_startup ()
 {
   world->get_colmap()->put(door_box,
                            static_cast<int>(data->door_pos.x),

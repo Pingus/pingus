@@ -1,4 +1,4 @@
-//  $Id: solid_color_background.hxx,v 1.2 2002/09/27 11:26:49 torangan Exp $
+//  $Id: solid_color_background.hxx,v 1.3 2002/09/27 18:36:41 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ private:
   WorldObjsData::SolidColorBackgroundData* data;
   
 public:
-  SolidColorBackground (WorldObjsData::SolidColorBackgroundData* data_);
+  SolidColorBackground (const WorldObjsData::SolidColorBackgroundData& data_);
  ~SolidColorBackground ();
 
   // FIXME: Make z_position editable

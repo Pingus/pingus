@@ -1,4 +1,4 @@
-//  $Id: groundpiece.cxx,v 1.2 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: groundpiece.cxx,v 1.3 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,33 +21,38 @@
 #include "../pingu_map.hxx"
 #include "../col_map.hxx"
 #include "../pingus_resource.hxx"
+#include "../worldobjsdata/groundpiece_data.hxx"
 #include "groundpiece.hxx"
 
 namespace WorldObjs {
 
-Groundpiece::Groundpiece(const WorldObjsData::GroundpieceData& data_)
-  : data(data_),
-    surface (PingusResource::load_surface(data.desc))
+Groundpiece::Groundpiece (const WorldObjsData::GroundpieceData& data_)
+  : data(new WorldObjsData::GroundpieceData(data_)),
+    surface (PingusResource::load_surface(data->desc))
 {
   // FIXME: we don't need to load surfaces here, providers would be
   // FIXME: enough and should be faster
 }
 
+Groundpiece::~Groundpiece ()
+{
+  delete data;
+}
+
 void
-Groundpiece::on_startup()
+Groundpiece::on_startup ()
 {
   // FIXME: overdrawing of bridges and similar things aren't handled
   // FIXME: here
-  if (data.gptype == Groundtype::GP_REMOVE)
-    get_world()->get_gfx_map()->remove(surface, int(data.pos.x), int(data.pos.y));
+  if (data->gptype == Groundtype::GP_REMOVE)
+    get_world()->get_gfx_map()->remove(surface, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y));
   else
-    get_world()->get_gfx_map()->put(surface, int(data.pos.x), int(data.pos.y));
+    get_world()->get_gfx_map()->put(surface, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y));
 
-  if (data.gptype == Groundtype::GP_REMOVE)
-    get_world()->get_colmap()->remove(surface, int(data.pos.x), int(data.pos.y));
+  if (data->gptype == Groundtype::GP_REMOVE)
+    get_world()->get_colmap()->remove(surface, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y));
   else
-    get_world()->get_colmap()->put(surface, int(data.pos.x), int(data.pos.y),
-				   data.gptype);
+    get_world()->get_colmap()->put(surface, static_cast<int>(data->pos.x), static_cast<int>(data->pos.y), data->gptype);
 }
 
 } // namespace WorldObjs

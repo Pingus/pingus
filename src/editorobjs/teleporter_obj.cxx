@@ -1,4 +1,4 @@
-//  $Id: teleporter_obj.cxx,v 1.5 2002/09/14 19:06:34 torangan Exp $
+//  $Id: teleporter_obj.cxx,v 1.6 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,9 +25,9 @@
 
 namespace EditorObjs {
 
-TeleporterObj::TeleporterObj (WorldObjsData::TeleporterData* data_)
+TeleporterObj::TeleporterObj (const WorldObjsData::TeleporterData& data_)
                             : SpriteEditorObj ("teleporter", "worldobjs"),
-		              data (new WorldObjsData::TeleporterData(*data_))
+		              data(new WorldObjsData::TeleporterData(data_))
 {
   data->sprite.set_align_center_bottom ();
   pos_ref = &data->pos;
@@ -62,7 +62,7 @@ TeleporterObj::create (const CL_Vector& pos)
   newdata.target_pos.x = pos.x + 50;
   newdata.target_pos.y = pos.y + 50;
 
-  return newdata.create_EditorObj();
+  return EditorObjLst(1, new TeleporterObj(newdata));
 }
 
 void

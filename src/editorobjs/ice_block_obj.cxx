@@ -1,4 +1,4 @@
-//  $Id: ice_block_obj.cxx,v 1.3 2002/09/20 08:43:18 grumbel Exp $
+//  $Id: ice_block_obj.cxx,v 1.4 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,10 +23,11 @@
 
 namespace EditorObjs {
 
-IceBlockObj::IceBlockObj (WorldObjsData::IceBlockData* data_)
-  : SpriteEditorObj ("iceblock", "worldobjs", &data_->pos),
-    data(new WorldObjsData::IceBlockData(*data_))   
+IceBlockObj::IceBlockObj (const WorldObjsData::IceBlockData& data_)
+  : SpriteEditorObj ("iceblock", "worldobjs"),
+    data(new WorldObjsData::IceBlockData(data_))   
 {
+  pos_ref = &data->pos;
 }
 
 IceBlockObj::~IceBlockObj ()
@@ -60,7 +61,7 @@ IceBlockObj::write_xml (std::ostream& xml)
 EditorObj*
 IceBlockObj::duplicate ()
 {
-  return new IceBlockObj(data);
+  return new IceBlockObj(*data);
 }
 
 } // namespace EditorObjs

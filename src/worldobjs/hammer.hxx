@@ -1,4 +1,4 @@
-//  $Id: hammer.hxx,v 1.5 2002/09/27 11:26:49 torangan Exp $
+//  $Id: hammer.hxx,v 1.6 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,11 +33,11 @@ namespace WorldObjs {
 class Hammer : public WorldObj
 {
 private:
-  bool particle_thrown;
   WorldObjsData::HammerData* const data;
+  bool particle_thrown;
     
 public:
-  Hammer (WorldObjsData::HammerData* data_);
+  Hammer (const WorldObjsData::HammerData& data_);
  ~Hammer ();
 
   float get_z_pos () const;

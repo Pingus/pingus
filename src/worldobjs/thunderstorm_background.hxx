@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background.hxx,v 1.2 2002/09/27 11:26:49 torangan Exp $
+//  $Id: thunderstorm_background.hxx,v 1.3 2002/09/27 18:36:41 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,13 +31,13 @@ namespace WorldObjs {
 class ThunderstormBackground : public WorldObj
 {
 private:
+  WorldObjsData::ThunderstormBackgroundData* const data;
   CL_Surface clouds_sur;
   //std::vector<CL_Surface> flash_sur;
   int x_pos;
-  WorldObjsData::ThunderstormBackgroundData* const data;
 
 public:
-  ThunderstormBackground (WorldObjsData::ThunderstormBackgroundData* data_);
+  ThunderstormBackground (const WorldObjsData::ThunderstormBackgroundData& data_);
  ~ThunderstormBackground ();
 
   float get_z_pos () const;

@@ -1,4 +1,4 @@
-//  $Id: surface_background.hxx,v 1.2 2002/09/27 11:26:49 torangan Exp $
+//  $Id: surface_background.hxx,v 1.3 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ private:
   WorldObjsData::SurfaceBackgroundData* const data;
   
 public:
-  SurfaceBackground (WorldObjsData::SurfaceBackgroundData* data_);
+  SurfaceBackground (const WorldObjsData::SurfaceBackgroundData& data_);
  ~SurfaceBackground ();
 
   float get_z_pos () const;

@@ -1,4 +1,4 @@
-//  $Id: laser_exit_obj.cxx,v 1.8 2002/09/13 18:28:26 grumbel Exp $
+//  $Id: laser_exit_obj.cxx,v 1.9 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,9 +24,9 @@
 
 namespace EditorObjs {
 
-LaserExitObj::LaserExitObj (WorldObjsData::LaserExitData* data_) 
-  : frame(0),
-    data(new WorldObjsData::LaserExitData(*data_))
+LaserExitObj::LaserExitObj (const WorldObjsData::LaserExitData& data_) 
+  : data(new WorldObjsData::LaserExitData(data_)),
+    frame(0)
 {
   data->pos.z = -100;
   sprite = Sprite("Traps/laser_exit", "traps");
@@ -44,13 +44,13 @@ LaserExitObj::create (const CL_Vector& pos)
 {
   WorldObjsData::LaserExitData newdata;
   newdata.pos = pos;
-  return EditorObjLst(1, new LaserExitObj(&newdata));
+  return EditorObjLst(1, new LaserExitObj(newdata));
 }
 
 EditorObj*
 LaserExitObj::duplicate ()
 {
-  return new LaserExitObj(data);
+  return new LaserExitObj(*data);
 }
 
 void

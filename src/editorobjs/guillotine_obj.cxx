@@ -1,4 +1,4 @@
-//  $Id: guillotine_obj.cxx,v 1.7 2002/09/11 12:45:58 grumbel Exp $
+//  $Id: guillotine_obj.cxx,v 1.8 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,9 +24,9 @@
 
 namespace EditorObjs {
 
-GuillotineObj::GuillotineObj (WorldObjsData::GuillotineData* data_)
-  : frame(0),
-    data(new WorldObjsData::GuillotineData(*data_))
+GuillotineObj::GuillotineObj (const WorldObjsData::GuillotineData& data_)
+  : data(new WorldObjsData::GuillotineData(data_)),
+    frame(0)
 {
   data->pos.z = -100;
   sprite = Sprite("Traps/guillotineidle", "traps");
@@ -43,13 +43,13 @@ GuillotineObj::create (const CL_Vector& pos)
 {
   WorldObjsData::GuillotineData newdata;
   newdata.pos = pos;
-  return EditorObjLst(1, new GuillotineObj(&newdata));
+  return EditorObjLst(1, new GuillotineObj(newdata));
 }
   
 EditorObj*
 GuillotineObj::duplicate ()
 {
-  return new GuillotineObj(data);
+  return new GuillotineObj(*data);
 }
 
 void

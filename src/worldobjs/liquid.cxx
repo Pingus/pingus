@@ -1,4 +1,4 @@
-//  $Id: liquid.cxx,v 1.1 2002/09/25 17:21:39 torangan Exp $
+//  $Id: liquid.cxx,v 1.2 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,8 +26,8 @@
 
 namespace WorldObjs {
 
-Liquid::Liquid (WorldObjsData::LiquidData* data_) :
-  data(new WorldObjsData::LiquidData(*data_)),
+Liquid::Liquid (const WorldObjsData::LiquidData& data_) :
+  data(new WorldObjsData::LiquidData(data_)),
   sur(PingusResource::load_surface(data->desc.res_name, "global"))
 {
   if (!data->old_width_handling)

@@ -1,4 +1,4 @@
-//  $Id: laser_exit.cxx,v 1.5 2002/09/14 19:06:34 torangan Exp $
+//  $Id: laser_exit.cxx,v 1.6 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,8 +27,8 @@
 
 namespace WorldObjs {
 
-LaserExit::LaserExit (WorldObjsData::LaserExitData* data_) : killing(false),
-							     data (new WorldObjsData::LaserExitData(*data_))
+LaserExit::LaserExit (const WorldObjsData::LaserExitData& data_) : data(new WorldObjsData::LaserExitData(data_)),
+                                                                   killing(false)
 {
   data->counter.set_size(data->surface.get_num_frames());
   data->counter.set_type(GameCounter::once);

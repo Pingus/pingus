@@ -1,4 +1,4 @@
-//  $Id: groundpiece_data.cxx,v 1.4 2002/09/27 11:26:49 torangan Exp $
+//  $Id: groundpiece_data.cxx,v 1.5 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "../worldobjs/groundpiece.hxx"
 #include "../world.hxx"
 #include "../xml_helper.hxx"
+#include "groundpiece_data.hxx"
 
 namespace WorldObjsData {
 
@@ -89,10 +90,12 @@ GroundpieceData::operator= (const GroundpieceData& old)
   if (this == &old)
     return *this;
     
-  surface  = old.surface;
-  desc     = old.desc;
-  pos      = old.pos;
-  gptype   = old.gptype;
+  WorldObjData::operator=(old);
+  
+  surface = old.surface;
+  desc    = old.desc;
+  pos     = old.pos;
+  gptype  = old.gptype;
   
   return *this;
 }
@@ -103,7 +106,7 @@ GroundpieceData::~GroundpieceData ()
 EditorObjLst
 GroundpieceData::create_EditorObj ()
 {
-  return EditorObjLst(1, new EditorObjs::GroundpieceObj(this));
+  return EditorObjLst(1, new EditorObjs::GroundpieceObj(*this));
 }
 
 WorldObj*

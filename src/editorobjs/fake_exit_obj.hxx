@@ -1,4 +1,4 @@
-//  $Id: fake_exit_obj.hxx,v 1.7 2002/09/27 11:26:46 torangan Exp $
+//  $Id: fake_exit_obj.hxx,v 1.8 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,11 +31,11 @@ namespace EditorObjs {
 class FakeExitObj : public SpriteEditorObj
 {
 private:
-  int frame;
   WorldObjsData::FakeExitData* const data;
+  int frame;
   
 public:
-  FakeExitObj (WorldObjsData::FakeExitData* data_);
+  FakeExitObj (const WorldObjsData::FakeExitData& data_);
   ~FakeExitObj ();
    
   static EditorObjLst create (const CL_Vector& pos);

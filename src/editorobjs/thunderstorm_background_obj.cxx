@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background_obj.cxx,v 1.1 2002/09/18 15:00:37 torangan Exp $
+//  $Id: thunderstorm_background_obj.cxx,v 1.2 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,11 +22,12 @@
 
 namespace EditorObjs {
 
-ThunderstormBackgroundObj::ThunderstormBackgroundObj (WorldObjsData::ThunderstormBackgroundData* data_)
-  : SpriteEditorObj ("Stars/starfield_icon", "game", &data->pos),
-    data(new WorldObjsData::ThunderstormBackgroundData(*data_))
+ThunderstormBackgroundObj::ThunderstormBackgroundObj (const WorldObjsData::ThunderstormBackgroundData& data_)
+  : SpriteEditorObj ("Stars/starfield_icon", "game"),
+    data(new WorldObjsData::ThunderstormBackgroundData(data_))
 {
   data->pos = CL_Vector(-128.0f, 0.0f);
+  pos_ref = &data->pos;
 }
 
 ThunderstormBackgroundObj::~ThunderstormBackgroundObj ()
@@ -43,7 +44,7 @@ ThunderstormBackgroundObj::write_xml (std::ostream& xml)
 EditorObj*
 ThunderstormBackgroundObj::duplicate ()
 {
-  return new ThunderstormBackgroundObj(data);
+  return new ThunderstormBackgroundObj(*data);
 }
 
 std::string

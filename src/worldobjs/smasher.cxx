@@ -1,4 +1,4 @@
-//  $Id: smasher.cxx,v 1.8 2002/09/18 10:50:57 grumbel Exp $
+//  $Id: smasher.cxx,v 1.9 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,11 +33,11 @@
 
 namespace WorldObjs {
 
-Smasher::Smasher (WorldObjsData::SmasherData* data_)
-  : smashing(false),
+Smasher::Smasher (const WorldObjsData::SmasherData& data_)
+  : data (new WorldObjsData::SmasherData(data_)),
+    smashing(false),
     downwards(false),
-    count(0),
-    data (new WorldObjsData::SmasherData(*data_))
+    count(0)
 {
 }
 
@@ -112,7 +112,7 @@ Smasher::update (float delta)
 }
 
 void
-Smasher::on_startup()
+Smasher::on_startup ()
 {
   std::cout << "Drawing colmap entry" << std::endl;
   world->get_colmap()->put(PingusResource::load_surface("Traps/smasher_cmap", "traps"),

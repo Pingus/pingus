@@ -1,4 +1,4 @@
-//  $Id: info_box_data.cxx,v 1.6 2002/09/25 17:25:49 grumbel Exp $
+//  $Id: info_box_data.cxx,v 1.7 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,13 +37,13 @@ InfoBoxData::~InfoBoxData ()
 WorldObj* 
 InfoBoxData::create_WorldObj ()
 {
-  return new WorldObjs::InfoBox(this);
+  return new WorldObjs::InfoBox(*this);
 }
 
 EditorObjLst
 InfoBoxData::create_EditorObj ()
 {
-  return EditorObjLst(1, new EditorObjs::InfoBoxObj(this));
+  return EditorObjLst(1, new EditorObjs::InfoBoxObj(*this));
 }
 
 InfoBoxData::InfoBoxData (xmlDocPtr doc, xmlNodePtr cur)

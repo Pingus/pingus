@@ -1,4 +1,4 @@
-//  $Id: ice_block.hxx,v 1.12 2002/09/27 11:26:49 torangan Exp $
+//  $Id: ice_block.hxx,v 1.13 2002/09/27 18:36:41 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,11 +39,11 @@ private:
   CL_Surface block_sur;
   
 public:
-  IceBlock (WorldObjsData::IceBlockData* data_);
+  IceBlock (const WorldObjsData::IceBlockData& data_);
  ~IceBlock ();
 
   float get_z_pos () const { return 100; }
-  void on_startup();
+  void on_startup ();
   void draw (GraphicContext& gc);
   void update (float delta);
   

@@ -1,4 +1,4 @@
-//  $Id: thunderstorm_background.cxx,v 1.1 2002/09/18 15:00:37 torangan Exp $
+//  $Id: thunderstorm_background.cxx,v 1.2 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,10 +23,10 @@
 
 namespace WorldObjs {
 
-ThunderstormBackground::ThunderstormBackground (WorldObjsData::ThunderstormBackgroundData* data_)
-  : clouds_sur(PingusResource::load_surface("Textures/thunderstorm", "textures")),
-    x_pos(0),
-    data(new WorldObjsData::ThunderstormBackgroundData(*data_))
+ThunderstormBackground::ThunderstormBackground (const WorldObjsData::ThunderstormBackgroundData& data_)
+  : data(new WorldObjsData::ThunderstormBackgroundData(data_)),
+    clouds_sur(PingusResource::load_surface("Textures/thunderstorm", "textures")),
+    x_pos(0)
 {
   // flash_sur.push_back(PingusResource::load_surface("flash1", "thunderstorm"));
   // flash_sur.push_back(PingusResource::load_surface("flash2", "thunderstorm"));

@@ -1,4 +1,4 @@
-//  $Id: hotspot_obj.hxx,v 1.2 2002/09/27 11:26:46 torangan Exp $
+//  $Id: hotspot_obj.hxx,v 1.3 2002/09/27 18:36:40 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ private:
   WorldObjsData::HotspotData* const data;
   
 public:
-  HotspotObj (WorldObjsData::HotspotData* data_);
+  HotspotObj (const WorldObjsData::HotspotData& data_);
 
   void write_xml (std::ostream& xml);
 

@@ -1,4 +1,4 @@
-//  $Id: starfield_background.hxx,v 1.3 2002/09/27 11:26:49 torangan Exp $
+//  $Id: starfield_background.hxx,v 1.4 2002/09/27 18:36:41 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,7 @@ private:
   std::vector<StarfieldBackgroundStars*>        stars;
 
 public:
-  StarfieldBackground (WorldObjsData::StarfieldBackgroundData* data_);
+  StarfieldBackground (const WorldObjsData::StarfieldBackgroundData& data_);
  ~StarfieldBackground ();
 
   // FIXME: Make z_pos handling editable via xml

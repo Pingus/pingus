@@ -1,4 +1,4 @@
-//  $Id: liquid_obj.cxx,v 1.1 2002/09/25 17:21:38 torangan Exp $
+//  $Id: liquid_obj.cxx,v 1.2 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,9 +23,9 @@
 
 namespace EditorObjs {
 
-LiquidObj::LiquidObj (WorldObjsData::LiquidData* data_)
-  : SpriteEditorObj(data_->desc.res_name, data_->desc.datafile),
-    data(new WorldObjsData::LiquidData(*data_))
+LiquidObj::LiquidObj (const WorldObjsData::LiquidData& data_)
+  : SpriteEditorObj(data_.desc.res_name, data_.desc.datafile),
+    data(new WorldObjsData::LiquidData(data_))
 {
   if (data->old_width_handling)
     {
@@ -44,7 +44,7 @@ LiquidObj::~LiquidObj ()
 EditorObj*
 LiquidObj::duplicate ()
 {
-  return new LiquidObj(data);
+  return new LiquidObj(*data);
 }
 
 void

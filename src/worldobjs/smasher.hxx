@@ -1,4 +1,4 @@
-//  $Id: smasher.hxx,v 1.5 2002/09/27 11:26:49 torangan Exp $
+//  $Id: smasher.hxx,v 1.6 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,19 +33,19 @@ namespace WorldObjs {
 class Smasher : public WorldObj
 {
 private:
+  WorldObjsData::SmasherData* const data;
   bool smashing;
   bool downwards;
   int  count;
-  WorldObjsData::SmasherData* const data;
 
 public:
-  Smasher (WorldObjsData::SmasherData* data_);
+  Smasher (const WorldObjsData::SmasherData& data_);
   ~Smasher ();
 
   float get_z_pos () const;
     
   void draw (GraphicContext& gc);
-  void on_startup();
+  void on_startup ();
   void update (float delta);
 
 protected:

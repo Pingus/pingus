@@ -1,4 +1,4 @@
-//  $Id: ice_block_obj.hxx,v 1.2 2002/09/27 11:26:46 torangan Exp $
+//  $Id: ice_block_obj.hxx,v 1.3 2002/09/27 18:36:40 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ private:
   WorldObjsData::IceBlockData* const data;
   
 public:
-  IceBlockObj (WorldObjsData::IceBlockData* data_);
+  IceBlockObj (const WorldObjsData::IceBlockData& data_);
  ~IceBlockObj ();
 
   /** Create the object with resonable defaults */

@@ -1,4 +1,4 @@
-//  $Id: info_box_obj.cxx,v 1.2 2002/09/14 19:06:34 torangan Exp $
+//  $Id: info_box_obj.cxx,v 1.3 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,10 +22,11 @@
 
 namespace EditorObjs {
 
-InfoBoxObj::InfoBoxObj (WorldObjsData::InfoBoxData* data_)
-  : SpriteEditorObj ("InfoBoxObj", "worldobjs", &data->pos),
-    data(new WorldObjsData::InfoBoxData(*data_))
+InfoBoxObj::InfoBoxObj (const WorldObjsData::InfoBoxData& data_)
+  : SpriteEditorObj ("InfoBoxObj", "worldobjs"),
+    data(new WorldObjsData::InfoBoxData(data_))
 {
+  pos_ref = &data->pos;
 }
 
 InfoBoxObj::~InfoBoxObj ()
@@ -38,7 +39,7 @@ InfoBoxObj::create (const CL_Vector& pos)
 {
   WorldObjsData::InfoBoxData newdata;
   newdata.pos = pos;
-  return EditorObjLst(1, new InfoBoxObj(&newdata));
+  return EditorObjLst(1, new InfoBoxObj(newdata));
 }
 
 void
@@ -50,7 +51,7 @@ InfoBoxObj::write_xml (std::ostream& xml)
 EditorObj*
 InfoBoxObj::duplicate ()
 {
-  return new InfoBoxObj(data);
+  return new InfoBoxObj(*data);
 }
 
 std::string 

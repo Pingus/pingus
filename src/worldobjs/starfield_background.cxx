@@ -1,4 +1,4 @@
-//  $Id: starfield_background.cxx,v 1.2 2002/09/24 14:51:36 grumbel Exp $
+//  $Id: starfield_background.cxx,v 1.3 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,8 +23,8 @@
 
 namespace WorldObjs {
 
-StarfieldBackground::StarfieldBackground (WorldObjsData::StarfieldBackgroundData* data_)
-  : data(new WorldObjsData::StarfieldBackgroundData(*data_))
+StarfieldBackground::StarfieldBackground (const WorldObjsData::StarfieldBackgroundData& data_)
+  : data(new WorldObjsData::StarfieldBackgroundData(data_))
 {
 
   int i;

@@ -1,4 +1,4 @@
-//  $Id: teleporter.cxx,v 1.10 2002/09/14 19:06:34 torangan Exp $
+//  $Id: teleporter.cxx,v 1.11 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,8 +27,8 @@
 
 namespace WorldObjs {
 
-Teleporter::Teleporter (WorldObjsData::TeleporterData* data_)
-  : data(new WorldObjsData::TeleporterData(*data_))
+Teleporter::Teleporter (const WorldObjsData::TeleporterData& data_)
+  : data(new WorldObjsData::TeleporterData(data_))
 
 {  
   data->sprite.set_align_center_bottom();

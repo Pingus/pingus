@@ -1,4 +1,4 @@
-//  $Id: switch_door_obj.cxx,v 1.4 2002/09/16 23:49:56 grumbel Exp $
+//  $Id: switch_door_obj.cxx,v 1.5 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,8 +26,8 @@
 
 namespace EditorObjs { 
 
-SwitchDoorObj::SwitchDoorObj (WorldObjsData::SwitchDoorData* data_)
-  : data(new WorldObjsData::SwitchDoorData(*data_)),
+SwitchDoorObj::SwitchDoorObj (const WorldObjsData::SwitchDoorData& data_)
+  : data(new WorldObjsData::SwitchDoorData(data_)),
     door_box      (PingusResource::load_surface("switchdoor_box"      , "worldobjs")),
     door_tile     (PingusResource::load_surface("switchdoor_tile"     , "worldobjs")),
     door_tile_cmap(PingusResource::load_surface("switchdoor_tile_cmap", "worldobjs")),
@@ -75,13 +75,13 @@ SwitchDoorObj::create (const CL_Vector& pos)
   newdata.switch_pos  = pos;
   newdata.door_height = 15;
 
-  return newdata.create_EditorObj();
+  return EditorObjLst(1, new SwitchDoorObj(newdata));
 }
 
 void
 SwitchDoorObj::save_xml (std::ostream& xml)
 {
-  write_xml (xml);
+  data->write_xml(xml);
 }
 
 std::string 

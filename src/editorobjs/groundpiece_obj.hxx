@@ -1,4 +1,4 @@
-// $Id: groundpiece_obj.hxx,v 1.1 2002/09/27 11:26:46 torangan Exp $
+// $Id: groundpiece_obj.hxx,v 1.2 2002/09/27 18:36:40 torangan Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,7 +37,7 @@ private:
 public:
   Groundtype::GPType gptype;
 
-  GroundpieceObj (WorldObjsData::GroundpieceData* data_);
+  GroundpieceObj (const WorldObjsData::GroundpieceData& data_);
  ~GroundpieceObj ();
 
   /** Flip the object vertical */

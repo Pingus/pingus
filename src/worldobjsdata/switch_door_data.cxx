@@ -1,4 +1,4 @@
-//  $Id: switch_door_data.cxx,v 1.5 2002/09/25 17:25:49 grumbel Exp $
+//  $Id: switch_door_data.cxx,v 1.6 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -118,7 +118,7 @@ SwitchDoorData::write_xml (std::ostream& xml)
 WorldObj* 
 SwitchDoorData::create_WorldObj ()
 {
-  return new WorldObjs::SwitchDoor (this);
+  return new WorldObjs::SwitchDoor(*this);
 }
 
 /** Create an EditorObj from the given data object */
@@ -126,7 +126,7 @@ EditorObjLst
 SwitchDoorData::create_EditorObj ()
 {
   EditorObjLst lst(2); 
-  EditorObjs::SwitchDoorObj* obj = new EditorObjs::SwitchDoorObj(this);
+  EditorObjs::SwitchDoorObj* obj = new EditorObjs::SwitchDoorObj(*this);
   lst[0] = obj;
   lst[1] = new EditorObjs::SwitchDoorSwitchObj(obj);
   return lst;

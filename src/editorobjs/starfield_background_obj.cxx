@@ -1,4 +1,4 @@
-//  $Id: starfield_background_obj.cxx,v 1.1 2002/09/16 20:52:22 torangan Exp $
+//  $Id: starfield_background_obj.cxx,v 1.2 2002/09/27 18:36:40 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,10 +23,10 @@
 
 namespace EditorObjs {
 
-StarfieldBackgroundObj::StarfieldBackgroundObj (WorldObjsData::StarfieldBackgroundData* data_)
+StarfieldBackgroundObj::StarfieldBackgroundObj (const WorldObjsData::StarfieldBackgroundData& data_)
   : SpriteEditorObj ("Stars/starfield_icon", "game"),
-    pos (-64.0f, 0.0f),
-    data(new WorldObjsData::StarfieldBackgroundData(*data_))
+    data(new WorldObjsData::StarfieldBackgroundData(data_)),
+    pos (-64.0f, 0.0f)
 {
   pos_ref = &pos;
 }
@@ -45,7 +45,7 @@ StarfieldBackgroundObj::write_xml (std::ostream& xml)
 EditorObj*
 StarfieldBackgroundObj::duplicate ()
 {
-  return new StarfieldBackgroundObj(data);
+  return new StarfieldBackgroundObj(*data);
 }
 
 std::string

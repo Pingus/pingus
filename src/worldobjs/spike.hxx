@@ -1,4 +1,4 @@
-//  $Id: spike.hxx,v 1.4 2002/09/27 11:26:49 torangan Exp $
+//  $Id: spike.hxx,v 1.5 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,11 +34,11 @@ namespace WorldObjs {
 class Spike : public WorldObj
 {
 private:
-  bool killing;
   WorldObjsData::SpikeData* data;
+  bool killing;
 
 public:
-  Spike (WorldObjsData::SpikeData* data_);
+  Spike (const WorldObjsData::SpikeData& data_);
   ~Spike ();
 
   float get_z_pos () const;

@@ -1,4 +1,4 @@
-//  $Id: surface_background_obj.hxx,v 1.2 2002/09/27 11:26:46 torangan Exp $
+//  $Id: surface_background_obj.hxx,v 1.3 2002/09/27 18:36:40 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ private:
   WorldObjsData::SurfaceBackgroundData* const data;
   
 public:
-  SurfaceBackgroundObj (WorldObjsData::SurfaceBackgroundData* data_);
+  SurfaceBackgroundObj (const WorldObjsData::SurfaceBackgroundData& data_);
  ~SurfaceBackgroundObj ();
  
   void write_xml (std::ostream& xml);

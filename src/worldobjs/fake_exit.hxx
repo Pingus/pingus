@@ -1,4 +1,4 @@
-//  $Id: fake_exit.hxx,v 1.4 2002/09/27 11:26:49 torangan Exp $
+//  $Id: fake_exit.hxx,v 1.5 2002/09/27 18:36:41 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,11 +36,11 @@ namespace WorldObjs {
 class FakeExit : public WorldObj
 {
 private:
-  bool smashing;
   WorldObjsData::FakeExitData* const data;
+  bool smashing;
     
 public:
-  FakeExit (WorldObjsData::FakeExitData* data_);
+  FakeExit (const WorldObjsData::FakeExitData& data_);
   ~FakeExit ();
 
   float get_z_pos () const;
