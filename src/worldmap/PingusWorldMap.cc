@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.34 2002/06/01 18:05:37 torangan Exp $
+//  $Id: PingusWorldMap.cc,v 1.35 2002/06/02 21:32:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -278,7 +278,7 @@ PingusWorldMap::draw ()
       dot_border.put_screen (last_node->pos + offset);
       
       font->print_center (CL_Display::get_width ()/2, CL_Display::get_height () - 40,
-			  System::translate(last_node->get_string()).c_str ());
+			  last_node->get_string().c_str ());
 
       /*
       if (last_node->finished)

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.27 2002/06/02 21:09:11 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.28 2002/06/02 21:32:38 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <ClanLib/core.h>
 #include <ClanLib/display.h>
 
+#include "../System.hh"
 #include "../my_gettext.hh"
 #include "../globals.hh"
 #include "../PingusError.hh"
@@ -53,13 +54,10 @@ PingusWorldMapTubeNode::draw (CL_Vector offset)
   tube.put_screen (pos + offset);
 }
 
-std::map<std::string, std::string>
+std::string
 PingusWorldMapTubeNode::get_string ()
 {
-  std::map<std::string, std::string> str;
-  str["en"] = "Tube";
-
-  return str;
+  return _("Tube");
 }
 
 PingusWorldMapLevelNode::PingusWorldMapLevelNode ()
@@ -141,15 +139,15 @@ PingusWorldMapLevelNode::draw (CL_Vector offset)
     }
 }
 
-std::map<std::string, std::string>
+std::string
 PingusWorldMapLevelNode::get_string ()
 {
   boost::shared_ptr<PLF> plf = get_plf ();
   
   if (!invalid)
-    return plf->get_levelname ();
+    return System::translate(plf->get_levelname ());
   else
-    return std::map<std::string, std::string>();
+    return _("invalid level");
 }
 
 boost::shared_ptr<PLF>

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.hh,v 1.16 2002/06/02 21:09:11 grumbel Exp $
+//  $Id: PingusWorldMapGraph.hh,v 1.17 2002/06/02 21:32:38 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ public:
   virtual void on_click () =0;
   virtual void mark (bool /*value*/) {}
   virtual void draw (CL_Vector /*offset*/) {}
-  virtual std::map<std::string, std::string> get_string () =0;
+  virtual std::string get_string () =0;
 };
 
 /** A wrap object which brings you to the next worldmap */
@@ -60,7 +60,7 @@ public:
   PingusWorldMapTubeNode ();
   void on_click ();
   void draw (CL_Vector offset);
-  std::map<std::string, std::string> get_string ();
+  std::string get_string ();
 };
 
 /** The entrance to a level */
@@ -89,7 +89,7 @@ public:
   void on_click ();
   void mark (bool value);
   void draw (CL_Vector offset);
-  std::map<std::string, std::string> get_string ();
+  std::string get_string ();
 };
 
 class PingusWorldMapGraph
