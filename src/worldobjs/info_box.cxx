@@ -1,4 +1,4 @@
-//  $Id: info_box.cxx,v 1.16 2002/09/28 11:52:26 torangan Exp $
+//  $Id: info_box.cxx,v 1.17 2002/10/01 19:53:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,9 +71,9 @@ InfoBox::draw (GraphicContext& gc)
 }
 
 void
-InfoBox::update (float delta)
+InfoBox::update ()
 {
-  data->sprite.update(delta);
+  data->sprite.update();
 
   PinguHolder* holder = world->get_pingu_p();
   for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)

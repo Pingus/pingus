@@ -1,4 +1,4 @@
-//  $Id: splashed.hxx,v 1.10 2002/09/27 11:26:45 torangan Exp $
+//  $Id: splashed.hxx,v 1.11 2002/10/01 19:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ public:
   ActionName get_type () const { return Actions::Splashed; }
   
   void draw (GraphicContext& gc);
-  void update (float delta);
+  void update ();
 
   bool catchable () { return false; }
   bool change_allowed (Actions::ActionName) { return false; }

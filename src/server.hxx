@@ -1,4 +1,4 @@
-//  $Id: server.hxx,v 1.7 2002/09/27 11:26:44 torangan Exp $
+//  $Id: server.hxx,v 1.8 2002/10/01 19:53:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,16 +63,13 @@ public:
   Server(PLF*);
   virtual ~Server();
 
-  virtual bool enough_time_passed() = 0;
-  virtual void update(float delta);
+  virtual void update();
   
   virtual void set_fast_forward(bool) = 0;
   virtual bool get_fast_forward() = 0;
 
   virtual bool get_pause() = 0;
   virtual void set_pause(bool) = 0;
-
-  virtual bool needs_redraw() = 0;
 
   virtual void set_armageddon () =0;
   virtual bool get_armageddon () =0;

@@ -1,4 +1,4 @@
-//  $Id: climber.cxx,v 1.13 2002/09/16 23:06:01 grumbel Exp $
+//  $Id: climber.cxx,v 1.14 2002/10/01 19:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ Climber::init(void)
 }
 
 void
-Climber::update(float delta)
+Climber::update()
 {
   /*
     std::cout << "Climer update()" << std::endl;
@@ -61,7 +61,7 @@ Climber::update(float delta)
     printf("%3d %3d %3d\n", rel_getpixel(1,-1), rel_getpixel(0,-1),rel_getpixel(-1, -1));
   */  
 
-  sprite.update(delta);
+  sprite.update();
 
   // If above is free
   if (rel_getpixel(0, 1) ==  Groundtype::GP_NOTHING
@@ -107,6 +107,12 @@ void
 Climber::draw (GraphicContext& gc)
 {
   gc.draw (sprite, pingu->get_pos());
+}
+
+bool
+Climber::change_allowed(ActionName new_action)
+{
+  return false;
 }
 
 } // namespace Actions

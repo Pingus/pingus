@@ -1,4 +1,4 @@
-//  $Id: bumper.cxx,v 1.8 2002/09/28 11:52:26 torangan Exp $
+//  $Id: bumper.cxx,v 1.9 2002/10/01 19:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,7 @@ Bumper::get_z_pos () const
 }
 
 void
-Bumper::update (float delta)
+Bumper::update ()
 {
   PinguHolder* holder = world->get_pingu_p ();
   for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu) {
@@ -65,8 +65,6 @@ Bumper::update (float delta)
 	  upwards = false;
 	}
     }
-      
-  UNUSED_ARG(delta);
 }
 
 void

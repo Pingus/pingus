@@ -1,4 +1,4 @@
-//  $Id: boarder.hxx,v 1.10 2002/09/27 11:26:44 torangan Exp $
+//  $Id: boarder.hxx,v 1.11 2002/10/01 19:53:45 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,7 +42,7 @@ public:
   ActionName get_type () const { return Actions::Boarder; }
   
   void  draw (GraphicContext& gc);
-  void  update (float delta);
+  void  update ();
   
 private:
   bool on_ground ();

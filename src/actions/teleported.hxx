@@ -37,7 +37,7 @@ public:
   void init(void);
 
   void draw (GraphicContext& gc);
-  void update(float delta);
+  void update();
 
   bool catchable () { return false; }
 

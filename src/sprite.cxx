@@ -1,4 +1,4 @@
-//  $Id: sprite.cxx,v 1.7 2002/09/28 11:52:22 torangan Exp $
+//  $Id: sprite.cxx,v 1.8 2002/10/01 19:53:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "vector.hxx"
 #include "pingus_resource.hxx"
 #include "sprite.hxx"
+#include "globals.hxx"
 
 int round (float f) 
 {
@@ -204,6 +205,13 @@ Sprite::max_frames ()
     default:
       assert (0);
     }
+}
+
+void
+Sprite::update ()
+{
+  // FIXME: game_speed is incorrect, but should work
+  update(game_speed/1000.0f);
 }
 
 void

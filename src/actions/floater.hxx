@@ -1,4 +1,4 @@
-//  $Id: floater.hxx,v 1.11 2002/09/27 11:26:44 torangan Exp $
+//  $Id: floater.hxx,v 1.12 2002/10/01 19:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ public:
   void init(void);
 
   void draw (GraphicContext& gc);
-  void update(float delta);
+  void update();
 
   char get_persistent_char () { return 'f'; }
   bool change_allowed (ActionName new_action);

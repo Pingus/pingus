@@ -1,4 +1,4 @@
-//  $Id: bumper.hxx,v 1.6 2002/09/27 18:36:40 torangan Exp $
+//  $Id: bumper.hxx,v 1.7 2002/10/01 19:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ public:
     
   void draw (GraphicContext& gc);
   void on_startup();
-  void update (float delta);
+  void update ();
 
 private:    
   void catch_pingu (Pingu* pingu);

@@ -1,4 +1,4 @@
-//  $Id: waiter.cxx,v 1.9 2002/09/28 11:52:23 torangan Exp $
+//  $Id: waiter.cxx,v 1.10 2002/10/01 19:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,14 +30,14 @@ Waiter::Waiter ()
 }
 
 void
-Waiter::update (float delta)
+Waiter::update ()
 {
-  sprite.update(delta);
+  sprite.update();
   
   if (countdown < 0)
     pingu->set_action(Actions::Walker);
   
-  countdown -= delta;
+  countdown -= 0.025f;
 }
 
 void

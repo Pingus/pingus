@@ -1,4 +1,4 @@
-//  $Id: superman.cxx,v 1.7 2002/09/14 19:06:33 torangan Exp $
+//  $Id: superman.cxx,v 1.8 2002/10/01 19:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,11 +41,11 @@ Superman::init ()
 }
 
 void  
-Superman::update (float delta)
+Superman::update ()
 {
-  sprite.update(delta);
-  counter += delta;
-  pingu->set_pos(pingu->get_x() + 40.0f * delta, pingu->get_y() - 200.0f * delta);
+  sprite.update();
+  counter += 0.025f;
+  pingu->set_pos(pingu->get_x() + 40.0f * 0.025f, pingu->get_y() - 200.0f * 0.025f);
 
   if (pingu->get_y() < -32)
     pingu->set_status(PS_DEAD);

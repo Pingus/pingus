@@ -1,4 +1,4 @@
-//  $Id: entrance.hxx,v 1.1 2002/09/27 11:26:49 torangan Exp $
+//  $Id: entrance.hxx,v 1.2 2002/10/01 19:53:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,7 +50,7 @@ public:
   virtual bool   pingu_ready ();
   virtual Pingu* get_pingu ();
   
-  virtual void   update (float delta);
+  virtual void   update ();
   
   virtual void   draw (GraphicContext& gc);
   

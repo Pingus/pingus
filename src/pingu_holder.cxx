@@ -1,4 +1,4 @@
-//  $Id: pingu_holder.cxx,v 1.10 2002/09/28 11:52:22 torangan Exp $
+//  $Id: pingu_holder.cxx,v 1.11 2002/10/01 19:53:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -86,13 +86,13 @@ PinguHolder::draw (GraphicContext& gc)
 }
 
 void
-PinguHolder::update(float delta)
+PinguHolder::update()
 {
   PinguIter pingu = pingus.begin();
   
   while(pingu != pingus.end())
     {
-      (*pingu)->update(delta);
+      (*pingu)->update();
       
       // FIXME: The draw-loop is not the place for things like this,
       // this belongs in the update loop

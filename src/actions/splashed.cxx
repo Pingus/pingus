@@ -1,4 +1,4 @@
-//  $Id: splashed.cxx,v 1.9 2002/09/28 11:52:23 torangan Exp $
+//  $Id: splashed.cxx,v 1.10 2002/10/01 19:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,9 +42,9 @@ Splashed::init (void)
 }
 
 void
-Splashed::update (float delta)
+Splashed::update ()
 {
-  sprite.update (delta);
+  sprite.update ();
 
   if (!particle_thrown)
     {

@@ -1,4 +1,4 @@
-//  $Id: smasher.cxx,v 1.10 2002/09/28 11:52:26 torangan Exp $
+//  $Id: smasher.cxx,v 1.11 2002/10/01 19:53:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ Smasher::get_z_pos () const
 }
 
 void
-Smasher::update (float delta)
+Smasher::update ()
 {
 
   PinguHolder* holder = world->get_pingu_p();
@@ -108,8 +108,6 @@ Smasher::update (float delta)
 	  }
 	}
     }
-      
-  UNUSED_ARG(delta);
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: jumper.cxx,v 1.13 2002/09/28 11:52:23 torangan Exp $
+//  $Id: jumper.cxx,v 1.14 2002/10/01 19:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ Jumper::draw (GraphicContext& gc)
 }
 
 void
-Jumper::update (float delta)
+Jumper::update ()
 {
   //FIXME Vector
   Vector temp(pingu->get_velocity());
@@ -60,7 +60,6 @@ Jumper::update (float delta)
   pingu->set_y(pingu->get_y() - 1);
 
   pingu->set_action (Actions::Faller);
-  UNUSED_ARG(delta);
 }
 
 } // namespace Actions

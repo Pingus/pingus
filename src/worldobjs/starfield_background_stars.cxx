@@ -1,4 +1,4 @@
-//  $Id: starfield_background_stars.cxx,v 1.3 2002/09/28 11:52:26 torangan Exp $
+//  $Id: starfield_background_stars.cxx,v 1.4 2002/10/01 19:53:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -66,7 +66,7 @@ StarfieldBackgroundStars::init ()
 }
 
 void
-StarfieldBackgroundStars::update (float delta)
+StarfieldBackgroundStars::update ()
 {
   x_pos += x_add;
   y_pos += y_add;
@@ -76,7 +76,6 @@ StarfieldBackgroundStars::update (float delta)
       x_pos = -32;
       y_pos = rand() % world->get_height();
     }
-  UNUSED_ARG(delta);
 }
 
 void

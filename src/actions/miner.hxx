@@ -1,4 +1,4 @@
-//  $Id: miner.hxx,v 1.9 2002/09/27 11:26:44 torangan Exp $
+//  $Id: miner.hxx,v 1.10 2002/10/01 19:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ public:
   ActionName get_type () const { return Actions::Miner; }
 
   void draw (GraphicContext& gc);
-  void update (float delta);
+  void update ();
   
 private:
   Miner (const Miner&);

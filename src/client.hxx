@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.19 2002/09/28 11:52:21 torangan Exp $
+//  $Id: client.hxx,v 1.20 2002/10/01 19:53:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -91,7 +91,6 @@ public:
   void set_finished();
 
   /** Update all parts of the world */
-  void update (float delta);
   void update (const GameDelta&);
 
   //void process_events ();
@@ -116,6 +115,8 @@ public:
   void on_action_axis_move (float);
 
 private:
+  void update (float delta);
+
   Client (const Client&);
   Client& operator= (const Client&);
 };

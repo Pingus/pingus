@@ -1,4 +1,4 @@
-//  $Id: pingu.hxx,v 1.18 2002/09/28 11:52:22 torangan Exp $
+//  $Id: pingu.hxx,v 1.19 2002/10/01 19:53:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -176,7 +176,7 @@ public:
   void draw (GraphicContext& gc);
   void apply_force (Vector);
   
-  void update (float delta);
+  void update();
   
   /** Indicate if the pingu's speed is above the deadly velocity */
   //bool is_tumbling () const;

@@ -1,4 +1,4 @@
-//  $Id: blocker.cxx,v 1.11 2002/09/18 10:50:57 grumbel Exp $
+//  $Id: blocker.cxx,v 1.12 2002/10/01 19:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,7 @@ Blocker::init(void)
 }
 
 void
-Blocker::update(float delta)
+Blocker::update()
 {
   if (!standing_on_ground())
     {
@@ -69,8 +69,6 @@ Blocker::update(float delta)
 	  catch_pingu(*i);
 	}
     }
-
-  UNUSED_ARG(delta);
 }
 
 void

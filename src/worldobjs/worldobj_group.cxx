@@ -1,4 +1,4 @@
-//  $Id: worldobj_group.cxx,v 1.4 2002/09/16 10:18:51 grumbel Exp $
+//  $Id: worldobj_group.cxx,v 1.5 2002/10/01 19:53:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,10 +28,10 @@ WorldObjGroup::WorldObjGroup (const WorldObjsData::WorldObjGroupData& data_)
 }
 
 void
-WorldObjGroup::update (float delta)
+WorldObjGroup::update ()
 {
   for (std::vector<WorldObj*>::iterator i = objs.begin (); i != objs.end (); ++i)
-    (*i)->update (delta);
+    (*i)->update ();
 }
 
 void

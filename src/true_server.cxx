@@ -1,4 +1,4 @@
-//  $Id: true_server.cxx,v 1.11 2002/09/28 18:34:21 grumbel Exp $
+//  $Id: true_server.cxx,v 1.12 2002/10/01 19:53:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,6 @@ TrueServer::TrueServer(PLF* arg_plf)
   armageddon = false;
   world = 0;
   finished = false;
-  client_needs_redraw = true;
   fast_forward = false;
   pause = false;
   last_time = 0;
@@ -51,62 +50,23 @@ TrueServer::~TrueServer()
 }
 
 void
-TrueServer::update(float delta)
+TrueServer::update()
 {
-  if (enough_time_passed()) 
+  if (fast_forward)
     {
-      client_needs_redraw = true;
-
-      if (fast_forward)
+      // To let the game run faster we just update it multiple
+      // times
+      for (int i = 0; i < 4; ++i)
 	{
-	  // To let the game run faster we just update it multiple
-	  // times
-	  for (int i = 0; i < 4; ++i)
-	    {
-	      Server::update(delta);
-	      world->update(delta);
-	    }
-	}
-      else
-	{
-	  Server::update(delta);
-	  world->update(delta);
+	  Server::update();
+	  world->update();
 	}
     }
   else
     {
-      //std::cout << "Sleeping: " << time_till_next_update() << std::endl;
-      //CL_System::sleep(time_till_next_update());
+      Server::update();
+      world->update();
     }
-}
-
-bool
-TrueServer::enough_time_passed(void)
-{
-  if (pause) {
-    return false;
-  }
-
-  if (fast_forward) {
-    // FIXME: This should skip some frames, so it also works on slower
-    // machines
-    last_time = CL_System::get_time();
-    return true;
-  } else {
-    if (last_time + local_game_speed > CL_System::get_time()) {
-      return false;
-    } else {
-      delta = (CL_System::get_time () - last_time)/1000.0f;
-      last_time = CL_System::get_time();
-      return true;
-    }
-  }
-}
-
-int
-TrueServer::time_till_next_update()
-{
-  return last_time + local_game_speed - CL_System::get_time();
 }
 
 void
@@ -131,16 +91,6 @@ bool
 TrueServer::get_pause()
 {
   return pause;
-}
-
-bool
-TrueServer::needs_redraw()
-{
-  if (client_needs_redraw) {
-    client_needs_redraw = false;
-    return true;
-  }
-  return false;
 }
 
 PLF*

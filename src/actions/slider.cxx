@@ -1,4 +1,4 @@
-//  $Id: slider.cxx,v 1.11 2002/09/28 11:52:23 torangan Exp $
+//  $Id: slider.cxx,v 1.12 2002/10/01 19:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,14 +39,14 @@ Slider::init (void)
 }
 
 void
-Slider::update (float delta)
+Slider::update ()
 {
   if (pingu->direction.is_left())
     sprite.set_direction(Sprite::LEFT);
   else
     sprite.set_direction(Sprite::RIGHT);
 
-  sprite.update (delta);
+  sprite.update ();
 
   for (int i = 0; i < speed; ++i)
     {
@@ -68,7 +68,7 @@ Slider::update (float delta)
 	}
     }
 
-  speed -= 7 * delta;
+  speed -= 7 * 0.025f;
   if (speed < 1)
     pingu->set_action(Actions::Walker);
 }

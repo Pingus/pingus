@@ -1,4 +1,4 @@
-//  $Id: server.cxx,v 1.17 2002/09/27 11:26:44 torangan Exp $
+//  $Id: server.cxx,v 1.18 2002/10/01 19:53:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -87,7 +87,7 @@ Server::get_world()
 }
 
 void
-Server::update(float /*delta*/)
+Server::update()
 {
   /*  static PingusEvent event;
   

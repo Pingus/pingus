@@ -1,4 +1,4 @@
-//  $Id: solid_color_background.hxx,v 1.3 2002/09/27 18:36:41 torangan Exp $
+//  $Id: solid_color_background.hxx,v 1.4 2002/10/01 19:53:46 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ public:
 
   // FIXME: Make z_position editable
   float get_z_pos () const { return -10; }  
-  void update (float delta) { UNUSED_ARG(delta); }
+  void update () {}
   
   void draw_offset (int x_of, int y_of, float s = 1.0);
   

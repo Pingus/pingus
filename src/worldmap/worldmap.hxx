@@ -1,4 +1,4 @@
-//  $Id: worldmap.hxx,v 1.13 2002/09/28 11:52:26 torangan Exp $
+//  $Id: worldmap.hxx,v 1.14 2002/10/01 19:53:45 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,37 +35,39 @@ class Pingus;
     worldmap is basically a multi-layered image and a path
     (bidirectional graph) where a pingu can walk on. Parts of the
     worldmap are hidable and will only get displayed at specific
-    events (successfull level completions). */
+    events (successfull level completions, etc.). */
 class WorldMap
 {
 #if TODO
-  WorldMap () {
-    load_graph ();
-    load_objects ();
-  }
+public:
+  /** Load the given*/
+  WorldMap (const std::string& filename);
   
-  void draw (GraphicContext& gc) 
-  {
-    for (iterator drawables.begin (); i != drawables.end (); ++i)
-      {
-	i->draw (gc);
-      }
-  }
-
+  void draw (GraphicContext& gc);
   void update (float delta)
-  {
-    for (iterator drawables.begin (); i != drawables.end (); ++i)
-      {
-	i->update (delta);
-      }
-  }
   
   /** @return the shortest path between node1 and node2  */
   std::vector<Edge*> find_path (Node* node1, Node* node2);
   
-  /** @return the node as the given position. x and y are in
+  /** @return the node at the given position. x and y are in
       world-COs, not screen. */
   Node* get_node (int x, int y);
+private:
+  /** Parses a WorldMap XML file */
+  void parse_file(xmlNodePtr cur);
+  
+  /** Parse the object section of the Worldmap XML file, it contains 
+      Sprites, Backgrounds and other things */
+  void parse_objects(xmlNodePtr cur);
+
+  /** Parse the graph section of the WorldMap XML file, it contains
+      the path where the Pingu can walk on. */
+  void parse_graph(xmlNodePtr cur);
+  
+  /** Parse the propertie section of a WorldMap XML file, it contains
+      meta data such as the author or the name of the Worldmap */
+  void parse_properties(xmlNodePtr cur);
+
 #endif
 private:
   CL_Surface background;

@@ -1,4 +1,4 @@
-//  $Id: climber.hxx,v 1.10 2002/09/27 11:26:44 torangan Exp $
+//  $Id: climber.hxx,v 1.11 2002/10/01 19:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,10 +39,11 @@ public:
     
   void draw (GraphicContext& gc);
     
-  void update (float delta);
+  void update ();
     
   char get_persistent_char () { return 'c'; }
-  
+  bool change_allowed(ActionName new_action);
+
 private:
   Climber (const Climber&);
   Climber& operator= (const Climber&);

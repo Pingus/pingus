@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.16 2002/09/16 20:31:09 grumbel Exp $
+//  $Id: basher.cxx,v 1.17 2002/10/01 19:53:45 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -59,9 +59,9 @@ Basher::draw (GraphicContext& gc)
 }
 
 void
-Basher::update (float delta)
+Basher::update ()
 {
-  sprite.update (delta);
+  sprite.update ();
 
   ++basher_c;
   if (basher_c % 3 == 0)
@@ -114,14 +114,14 @@ Basher::have_something_to_dig()
       return true;
     }
 
-  for(int i = 0; i < 16; ++i)
+  for(int x = 0; x < 16; ++x)
     {
       // Check that there is a high enough wall (i.e. not 1 pixel) to bash.
       // Probably best to check from where Pingu can't automatically walk up
       // up to head collision height.
-      for (int j = bash_height + 1; j <= 26; ++j)
+      for (int y = bash_height + 1; y <= 26; ++y)
 	{
-	  if (rel_getpixel(i,j) == Groundtype::GP_GROUND)
+	  if (rel_getpixel(x, y) == Groundtype::GP_GROUND)
 	    {
 	      pout(PINGUS_DEBUG_ACTIONS) << "Basher: Found something to dig..." << std::endl;
 	      return true;

@@ -1,4 +1,4 @@
-//  $Id: digger.cxx,v 1.15 2002/09/24 17:02:48 grumbel Exp $
+//  $Id: digger.cxx,v 1.16 2002/10/01 19:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -50,9 +50,9 @@ Digger::init (void)
 }
 
 void
-Digger::update (float delta)
+Digger::update ()
 {
-  sprite.update (delta);
+  sprite.update ();
   
   if (++digger_c >= 5)
     {

@@ -1,4 +1,4 @@
-//  $Id: pingu.cxx,v 1.28 2002/09/28 11:52:22 torangan Exp $
+//  $Id: pingu.cxx,v 1.29 2002/10/01 19:53:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -301,7 +301,7 @@ Pingu::dist (int x, int y)
 
 // Let the pingu do his job (i.e. walk his way)
 void
-Pingu::update (float delta)
+Pingu::update ()
 {
   if (status == PS_DEAD)
     return;
@@ -329,7 +329,7 @@ Pingu::update (float delta)
       return;
     }
   
-  action->update(delta);
+  action->update();
 }
 
 // Draws the pingu on the screen with the given offset

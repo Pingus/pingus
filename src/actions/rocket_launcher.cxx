@@ -1,4 +1,4 @@
-//  $Id: rocket_launcher.cxx,v 1.9 2002/09/14 19:06:33 torangan Exp $
+//  $Id: rocket_launcher.cxx,v 1.10 2002/10/01 19:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,14 +46,14 @@ RocketLauncher::init ()
 }
 
 void
-RocketLauncher::update (float delta)
+RocketLauncher::update ()
 {
   if (sprite.finished())
     {
       pingu->set_action(Actions::Walker);
     }
 
-  sprite.update(delta);
+  sprite.update();
 }
 
 void

@@ -1,4 +1,4 @@
-//  $Id: conveyor_belt.cxx,v 1.18 2002/09/28 11:52:26 torangan Exp $
+//  $Id: conveyor_belt.cxx,v 1.19 2002/10/01 19:53:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,9 +64,9 @@ ConveyorBelt::on_startup ()
 }
 
 void 
-ConveyorBelt::update (float delta)
+ConveyorBelt::update ()
 {
-  data->counter += data->speed * delta;
+  data->counter += data->speed * 0.025f;
 
   if (data->counter >= 14.0f)
     data->counter = 0.0f;
@@ -82,7 +82,7 @@ ConveyorBelt::update (float delta)
 	  && (*pingu)->get_y() < data->pos.y + 10)
 	{
 	  Vector pos = (*pingu)->get_pos();
-	  data->pos.x -= data->speed * delta;
+	  data->pos.x -= data->speed * 0.025f;
 	  (*pingu)->set_pos(pos);
 	}
     }

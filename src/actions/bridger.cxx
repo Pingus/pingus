@@ -1,4 +1,4 @@
-//  $Id: bridger.cxx,v 1.19 2002/09/29 20:45:31 grumbel Exp $
+//  $Id: bridger.cxx,v 1.20 2002/10/01 19:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -107,22 +107,22 @@ Bridger::draw (GraphicContext& gc)
 }
 
 void
-Bridger::update(float delta)
+Bridger::update()
 {
   switch (mode)
     {
     case B_BUILDING:
-      update_build (delta);
+      update_build ();
       break;
 
     case B_WALKING:
-      update_walk (delta);
+      update_walk ();
       break;
     }
 }
 
 void
-Bridger::update_walk (float delta)
+Bridger::update_walk ()
 {
   if (walk_sprite.finished ())
     {
@@ -142,14 +142,14 @@ Bridger::update_walk (float delta)
     }
   else
     {
-      walk_sprite.update (delta);
+      walk_sprite.update ();
     }
 }
 
 void
-Bridger::update_build (float delta)
+Bridger::update_build ()
 {
-  build_sprite.update (delta);
+  build_sprite.update ();
 
   if (build_sprite.get_frame () >= 7 && !block_build)
     {

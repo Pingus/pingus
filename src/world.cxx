@@ -1,4 +1,4 @@
-//  $Id: world.cxx,v 1.27 2002/09/28 11:52:22 torangan Exp $
+//  $Id: world.cxx,v 1.28 2002/10/01 19:53:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -155,7 +155,7 @@ World::draw (GraphicContext& gc)
 }
 
 void 
-World::update(float delta)
+World::update()
 {
   game_time->update ();
 
@@ -186,11 +186,11 @@ World::update(float delta)
     {
       // catch_pingu() is now done in relevant update() if WorldObj
       // needs to catch pingus.
-      (*obj)->update(delta);
+      (*obj)->update();
     }
 
   // FIXME: Why is the particle holder still a seperate object?
-  particle_holder->update(delta);
+  particle_holder->update();
 
   // Clear the explosion force list
   ForcesHolder::clear_explo_list();

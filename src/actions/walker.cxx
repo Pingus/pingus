@@ -1,4 +1,4 @@
-//  $Id: walker.cxx,v 1.24 2002/09/28 11:52:23 torangan Exp $
+//  $Id: walker.cxx,v 1.25 2002/10/01 19:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,10 +38,10 @@ Walker::init (void)
 }
 
 void
-Walker::update (float delta)
+Walker::update ()
 {
   // update the sprite
-  walker.update(delta);
+  walker.update();
 
   Vector last_pos = pingu->get_pos();
 

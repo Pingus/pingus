@@ -1,4 +1,4 @@
-//  $Id: starfield_background_stars.hxx,v 1.3 2002/09/27 11:26:49 torangan Exp $
+//  $Id: starfield_background_stars.hxx,v 1.4 2002/10/01 19:53:46 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ public:
   float get_z_pos () const { return -100; }
 
   void init ();
-  void update (float delta);
+  void update ();
   void draw (GraphicContext& gc);
 
 private:

@@ -1,4 +1,4 @@
-//  $Id: true_server.hxx,v 1.6 2002/09/27 11:26:44 torangan Exp $
+//  $Id: true_server.hxx,v 1.7 2002/10/01 19:53:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,6 @@ private:
   bool pause;
   unsigned int  last_time;
   int  local_game_speed;
-  bool client_needs_redraw;
   float delta;
   bool armageddon;
 
@@ -41,8 +40,7 @@ public:
   TrueServer(PLF* plf);
   virtual ~TrueServer();
 
-  void update(float delta);
-  bool needs_redraw();
+  void update();
   /** Return a reference to the plf used for this level */
   PLF* get_plf ();
   void set_fast_forward(bool value);
@@ -54,10 +52,7 @@ public:
   void set_armageddon ();
   bool get_armageddon ();
   
-private:
-  bool enough_time_passed(void);
-  int  time_till_next_update();
-  
+private: 
   TrueServer (const TrueServer&);
   TrueServer& operator= (const TrueServer&);
 };

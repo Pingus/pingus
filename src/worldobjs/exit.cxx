@@ -1,4 +1,4 @@
-//  $Id: exit.cxx,v 1.2 2002/09/28 11:52:26 torangan Exp $
+//  $Id: exit.cxx,v 1.3 2002/10/01 19:53:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,9 +70,9 @@ Exit::draw (GraphicContext& gc)
 }
 
 void
-Exit::update (float delta)
+Exit::update ()
 {
-  sprite.update(delta);
+  sprite.update();
 
   PinguHolder* holder = world->get_pingu_p();
 

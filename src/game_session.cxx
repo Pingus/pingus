@@ -1,4 +1,4 @@
-//  $Id: game_session.cxx,v 1.11 2002/09/28 11:52:21 torangan Exp $
+//  $Id: game_session.cxx,v 1.12 2002/10/01 19:53:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,7 +65,7 @@ PingusGameSession::draw (GraphicContext& gc)
 void
 PingusGameSession::update (const GameDelta& delta)
 {
-  server->update (delta.get_time ());
+  server->update ();
   client->update (delta);
 }
 

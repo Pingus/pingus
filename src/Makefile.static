@@ -1,5 +1,6 @@
 LDADD = caimagemanipulation/libcaimagemanipulation.a \
         worldobjsdata/libpingus_worldobjsdata.a \
+        worldobjs/entrances/libpingus_worldobjs_entrances.a \
         worldobjs/libpingus_worldobjs.a \
         editorobjs/libpingus_editorobjs.a \
 	actions/libpingu_actions.a \
@@ -12,7 +13,7 @@ LDADD = caimagemanipulation/libcaimagemanipulation.a \
         input/axes/libpingus_input_axes.a \
         input/buttons/libpingus_input_buttons.a \
 	input/pointers/libpingus_input_pointers.a \
-	input/scrollers/libpingus_input_scrollers.a
+	input/scrollers/libpingus_input_scrollers.a \
 
 LIBS = -lclanGUI -lclanCore -lclanDisplay -lclanApp -lclanPNG -lclanJPEG -lHermes \
 -lclanDisplay -lclanMikMod -lclanVorbis -logg -lvorbis -logg -lmikmod -lclanCore -lclanSound \

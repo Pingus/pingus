@@ -1,4 +1,4 @@
-//  $Id: teleporter.cxx,v 1.12 2002/09/28 11:52:26 torangan Exp $
+//  $Id: teleporter.cxx,v 1.13 2002/10/01 19:53:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,10 +58,10 @@ Teleporter::draw (GraphicContext& gc)
 }
 
 void 
-Teleporter::update (float delta)
+Teleporter::update ()
 {
-  data->sprite.update(delta);
-  data->target_sprite.update(delta);
+  data->sprite.update();
+  data->target_sprite.update();
 
   PinguHolder* holder = world->get_pingu_p();
 

@@ -1,4 +1,4 @@
-//  $Id: switch_door.hxx,v 1.17 2002/09/28 11:52:26 torangan Exp $
+//  $Id: switch_door.hxx,v 1.18 2002/10/01 19:53:46 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,7 +54,7 @@ public:
   
   void on_startup();
   void draw (GraphicContext& gc);
-  void update (float delta);
+  void update ();
   
   /// The switch and the door should stay above the pingus
   float get_z_pos() const { return 100; }

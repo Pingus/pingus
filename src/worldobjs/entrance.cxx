@@ -1,4 +1,4 @@
-//  $Id: entrance.cxx,v 1.2 2002/09/28 11:52:26 torangan Exp $
+//  $Id: entrance.cxx,v 1.3 2002/10/01 19:53:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -103,7 +103,7 @@ Entrance::get_pingu ()
 }
 
 void
-Entrance::update (float /*delta*/)
+Entrance::update ()
 {
   if (   pingu_ready() 
       && (world->get_released_pingus() < world->get_allowed_pingus())

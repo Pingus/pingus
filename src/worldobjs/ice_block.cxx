@@ -1,4 +1,4 @@
-//  $Id: ice_block.cxx,v 1.18 2002/09/28 11:52:26 torangan Exp $
+//  $Id: ice_block.cxx,v 1.19 2002/10/01 19:53:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,7 @@ IceBlock::draw (GraphicContext& gc)
 }
 
 void 
-IceBlock::update (float /*delta*/)
+IceBlock::update()
 {
   if (is_finished)
     return;

@@ -1,4 +1,4 @@
-//  $Id: rain_generator.cxx,v 1.4 2002/09/28 11:52:26 torangan Exp $
+//  $Id: rain_generator.cxx,v 1.5 2002/10/01 19:53:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,7 @@ RainGenerator::draw (GraphicContext& gc)
 }
 
 void
-RainGenerator::update(float delta)
+RainGenerator::update()
 {
   if (waiter_count < 0.0f && rand () % 150 == 0)
     {
@@ -67,9 +67,9 @@ RainGenerator::update(float delta)
     }
   
   if (do_thunder)
-    thunder_count -= 10.0 * delta;
+    thunder_count -= 10.0 * 0.025f;
 
-  waiter_count -= 20.0 * delta;
+  waiter_count -= 20.0 * 0.025f;
 
   get_world()->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));
   get_world()->get_particle_holder()->add_particle(new RainParticle(rand() % world->get_width(), -32));

@@ -1,4 +1,4 @@
-//  $Id: boarder.cxx,v 1.10 2002/09/28 11:52:23 torangan Exp $
+//  $Id: boarder.cxx,v 1.11 2002/10/01 19:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,18 +42,18 @@ Boarder::init()
 }
 
 void  
-Boarder::update(float delta)
+Boarder::update()
 {
   if (pingu->direction.is_left ())
     sprite.set_direction(Sprite::LEFT); 
   else
     sprite.set_direction(Sprite::RIGHT); 
-  sprite.update (delta);
+  sprite.update ();
 
   if (on_ground ())
     {
       if (speed < 15.0)
-	speed += 15.0 * delta;
+	speed += 15.0 * 25.0f/1000.0f;
       else {
 	speed = 15.0;
       }

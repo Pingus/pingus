@@ -1,4 +1,4 @@
-//  $Id: surface_background.hxx,v 1.4 2002/09/28 11:52:26 torangan Exp $
+//  $Id: surface_background.hxx,v 1.5 2002/10/01 19:53:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ public:
 
   float get_z_pos () const;
 
-  void update (float delta);
+  void update ();
   void draw (GraphicContext& gc);
   
 private:

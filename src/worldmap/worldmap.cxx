@@ -1,4 +1,4 @@
-//  $Id: worldmap.cxx,v 1.14 2002/09/28 11:52:26 torangan Exp $
+//  $Id: worldmap.cxx,v 1.15 2002/10/01 19:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,107 @@
 #include "pingus.hxx"
 
 namespace WorldMapNS {
+
+#if TODO
+
+WorldMap::WorldMap(const std::string& filename) 
+{
+  doc = xmlParseFile(filename.c_str());
+  
+  if (!doc) 
+    {
+      PingusError::raise (_("WorldMap: File not found: ") + filename);
+    }    
+
+  xmlNodePtr cur = doc->ROOT;
+  cur = XMLhelper::skip_blank(cur);
+
+  parse_file(cur);
+}
+
+void 
+WorldMap::parse_file(xmlNodePtr cur)
+{
+  if (cur && XMLhelper::equal_str(cur->name, "pingus-worldmap"))
+    {
+      cur = cur->children;
+      cur = XMLhelper::skip_blank(cur);
+	  
+      while (cur)
+	{
+	  if (XMLhelper::equal_str(cur->name, "graph"))
+	    {
+	      parse_graph(cur);
+	    }
+	  else if (XMLhelper::equal_str(cur->name, "objects"))
+	    {
+	      parse_objects(cur);
+	    }
+	  else if (XMLhelper::equal_str(cur->name, "properties"))
+	    {
+	      parse_properties(cur);
+	    }
+	  else
+	    {
+	      perr(PINGUS_DEBUG_WORLDMAP) << "WorldMap: Unknown node name: " << cur->name << std::endl;
+	    }
+
+	  cur = cur->next;
+	  cur = XMLhelper::skip_blank(cur);
+	}
+    }
+  else
+    {
+      PingusError::raise ("WorldMap:" + filename + ": not a Worldmap file");
+    }
+}
+
+void
+WorldMap::parse_objects(xmlNodePtr cur)
+{
+  cur = cur->children;
+  cur = XMLhelper::skip_blank(cur);
+
+
+}
+
+void
+WorldMap::parse_graph(xmlNodePtr cur)
+{
+  cur = cur->children;
+  cur = XMLhelper::skip_blank(cur);
+
+
+}
+
+void
+WorldMap::parse_properties(xmlNodePtr cur)
+{
+  cur = cur->children;
+  cur = XMLhelper::skip_blank(cur);
+
+  
+}
+
+void
+WorldMap::draw (GraphicContext& gc)
+{
+  for (iterator drawables.begin (); i != drawables.end (); ++i)
+    {
+      i->draw (gc);
+    }
+}
+
+void
+WorldMap::update (float delta)
+{
+  for (iterator drawables.begin (); i != drawables.end (); ++i)
+    {
+      i->update (delta);
+    }
+}
+
+#endif
 
 WorldMap::WorldMap (std::string filename) 
   : green_dot ("worldmap/dot_green", "core"),
@@ -190,17 +291,17 @@ WorldMap::on_primary_button_press (int x, int y)
 
 
   /** 
-    case CL_MOUSE_MIDDLEBUTTON:
-    {
-    if (maintainer_mode)
-    {
-    std::cout << "<position>" << std::endl;
-    std::cout << "  <x-pos>" << key.x - offset.x << "</x-pos>" << std::endl;
-    std::cout << "  <y-pos>" << key.y - offset.y << "</y-pos>" << std::endl;
-    std::cout << "</position>" << std::endl;
-    }
-    }
-    break;*/
+      case CL_MOUSE_MIDDLEBUTTON:
+      {
+      if (maintainer_mode)
+      {
+      std::cout << "<position>" << std::endl;
+      std::cout << "  <x-pos>" << key.x - offset.x << "</x-pos>" << std::endl;
+      std::cout << "  <y-pos>" << key.y - offset.y << "</y-pos>" << std::endl;
+      std::cout << "</position>" << std::endl;
+      }
+      }
+      break;*/
 }
  
 void

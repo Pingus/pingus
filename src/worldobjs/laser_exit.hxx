@@ -1,4 +1,4 @@
-//  $Id: laser_exit.hxx,v 1.5 2002/09/27 18:36:41 torangan Exp $
+//  $Id: laser_exit.hxx,v 1.6 2002/10/01 19:53:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ public:
   float get_z_pos () const;
 
   void draw (GraphicContext& gc);
-  void update (float delta);
+  void update ();
 
 protected:
   void catch_pingu (Pingu*);

@@ -1,4 +1,4 @@
-//  $Id: worldobj_group.hxx,v 1.5 2002/09/27 11:26:49 torangan Exp $
+//  $Id: worldobj_group.hxx,v 1.6 2002/10/01 19:53:46 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,7 @@ private:
 public:
   WorldObjGroup (const WorldObjsData::WorldObjGroupData& data_);
   
-  void update (float delta);
+  void update ();
   void draw (GraphicContext& gc);
 
   // FIXME: Position handling is incorrect...

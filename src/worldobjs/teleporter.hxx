@@ -1,4 +1,4 @@
-//  $Id: teleporter.hxx,v 1.15 2002/09/27 18:36:41 torangan Exp $
+//  $Id: teleporter.hxx,v 1.16 2002/10/01 19:53:46 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ public:
   int   get_z_pos () { return 0; }
     
   void  draw (GraphicContext& gc);
-  void  update (float delta);
+  void  update ();
   float get_z_pos () const;
   
 private:

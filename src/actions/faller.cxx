@@ -1,4 +1,4 @@
-//  $Id: faller.cxx,v 1.25 2002/09/28 11:52:23 torangan Exp $
+//  $Id: faller.cxx,v 1.26 2002/10/01 19:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,10 +48,10 @@ Faller::init(void)
 }
 
 void
-Faller::update (float delta)
+Faller::update ()
 {
-  tumbler.update (delta);
-  faller.update (delta);
+  tumbler.update ();
+  faller.update ();
 
   // Pingu stands on ground
   if (rel_getpixel(0, -1) !=  Groundtype::GP_NOTHING)

@@ -1,4 +1,4 @@
-//  $Id: particle_holder.cxx,v 1.6 2002/09/29 20:45:31 grumbel Exp $
+//  $Id: particle_holder.cxx,v 1.7 2002/10/01 19:53:45 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -36,8 +36,10 @@ ParticleHolder::~ParticleHolder ()
 }
 
 void
-ParticleHolder::update (float delta)
+ParticleHolder::update ()
 {
+  float delta = 0.025f;
+
   for(std::list<Particle*>::iterator i = this->begin(); i != this->end(); ++i) 
     {
       if ((*i)->is_alive()) 

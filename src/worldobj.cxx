@@ -1,4 +1,4 @@
-//  $Id: worldobj.cxx,v 1.8 2002/09/16 15:47:35 grumbel Exp $
+//  $Id: worldobj.cxx,v 1.9 2002/10/01 19:53:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ WorldObj::on_startup()
 }
   
 void 
-WorldObj::update(float /*delta*/)
+WorldObj::update()
 {
   // do nothing
 }

@@ -1,4 +1,4 @@
-//  $Id: sprite.hxx,v 1.7 2002/09/28 11:52:22 torangan Exp $
+//  $Id: sprite.hxx,v 1.8 2002/10/01 19:53:44 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -122,6 +122,11 @@ public:
       @param delta The amount of time which has been pasted since the
       last update in seconds */
   void update (float delta);
+
+  /** Update the sprite with the global delta value, note this is not
+      a goto_next_frame, but instead a update(game_speed), so it might
+      actually skip frames */
+  void update ();
 
   // @return width of the sprite
   int get_width () { return sur.get_width (); }

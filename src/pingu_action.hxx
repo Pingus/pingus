@@ -1,4 +1,4 @@
-//  $Id: pingu_action.hxx,v 1.16 2002/09/27 11:26:44 torangan Exp $
+//  $Id: pingu_action.hxx,v 1.17 2002/10/01 19:53:44 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -73,7 +73,7 @@ public:
   virtual void init (void) {};
 
   /// The "AI" of the pingu.
-  virtual void update (float delta) = 0;
+  virtual void update () = 0;
 
   /** Draws the action */
   virtual void draw (GraphicContext& gc) =0;

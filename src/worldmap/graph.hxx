@@ -1,4 +1,4 @@
-//  $Id: graph.hxx,v 1.12 2002/09/28 11:52:26 torangan Exp $
+//  $Id: graph.hxx,v 1.13 2002/10/01 19:53:45 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,27 +26,7 @@
 
 namespace WorldMapNS {
 
-#if 0
-/** This class manages the path of the WorldMap where the pingu can
-    walk on. */
-class Graph
-{
-public:
-  /** Load a graph from file */
-  Graph (const std::string& filename);
-  ~Graph ();
-    
-  /** Draw the graph to the given GC 
-      @param gc The GraphicContext to draw on */
-  void draw (GraphicContext& gc);
-    
-  /** @return a reference to the nodes of this graph */
-  const std::vector<>& get_nodes ();
-
-  /** @return a reference to the edges of this graph */
-  const std::vector<>& get_edges ();
-};
-#endif 
+//FIXME: #warring "Don't touch me, a rewritten version is somewhere around..."
 
 /** The path on the WorldMap is a bidirectional graph, this class
     managed it FIXME: needs a complete rewrite, EmptyNodes need to

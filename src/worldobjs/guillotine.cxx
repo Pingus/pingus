@@ -1,4 +1,4 @@
-//  $Id: guillotine.cxx,v 1.5 2002/09/27 18:36:41 torangan Exp $
+//  $Id: guillotine.cxx,v 1.6 2002/10/01 19:53:46 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,7 +67,7 @@ Guillotine::get_z_pos () const
 }
 
 void
-Guillotine::update (float delta)
+Guillotine::update ()
 {
   if (data->counter.finished()) {
     data->counter = 0;
@@ -83,8 +83,6 @@ Guillotine::update (float delta)
   } else {
     ++data->idle_counter;
   }
-    
-  UNUSED_ARG(delta);
 }
 
 void
