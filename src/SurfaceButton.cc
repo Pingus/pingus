@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.cc,v 1.36 2001/12/01 17:53:56 torangan Exp $
+//  $Id: SurfaceButton.cc,v 1.37 2002/01/17 23:34:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -147,7 +147,8 @@ SurfaceButton::mouse_over()
 
 ///////////////////////////////////////////////
 
-PlayButton::PlayButton()
+PlayButton::PlayButton(PingusMenu* menu)
+  : menu (menu)
 {
   // x_pos = CL_Display::get_width() * 500 / 640;
   // y_pos = CL_Display::get_height() * 420 / 480;
@@ -177,8 +178,10 @@ PlayButton::~PlayButton()
 void 
 PlayButton::on_click()
 {
+  menu->get_manager ()->disable_events ();
   Credits credits;
   credits.display();
+  menu->get_manager ()->enable_events ();
   
   // FIXME: Hack, abusing the play button for the credits
   //  loading_screen.draw();
@@ -255,6 +258,7 @@ QuitButton::~QuitButton()
 void
 QuitButton::on_click()
 {
+  std::cout << "QuitButton: do exit" << std::endl;
   menu->get_manager ()->exit ();
 }
 
@@ -362,7 +366,8 @@ StoryButton::on_click()
   //worldmap_manager.display();
 }
 
-ThemeButton::ThemeButton ()
+ThemeButton::ThemeButton (PingusMenu* menu)
+  : menu (menu)
 {
   x_pos = CL_Display::get_width() * 321 / 640; 
   y_pos = CL_Display::get_height() * 100 / 480;
@@ -379,14 +384,14 @@ ThemeButton::on_click()
 {
   PingusSound::play_sound ("sounds/letsgo.wav");
   
-  //menu->get_manager ()->set_menu (&menu->get_manager ()->story);
-
+  menu->get_manager ()->disable_events ();
   ThemeSelector theme_selector;
   theme_selector.display();
-   //worldmap_manager.display();
+  menu->get_manager ()->enable_events ();
 }
 
-MultiplayerButton::MultiplayerButton ()
+MultiplayerButton::MultiplayerButton (PingusMenu* menu)
+  : menu (menu)
 {
   x_pos = CL_Display::get_width() * 320 / 640;
   y_pos = CL_Display::get_height() * 369 / 480;
@@ -406,8 +411,9 @@ MultiplayerButton::~MultiplayerButton ()
 void
 MultiplayerButton::on_click()
 {
-  //std::cout << "MultiplayerButton: Launching MultiplayerGame" << std::endl;
+  menu->get_manager ()->disable_events ();
   multiplayer_config.display ();
+  menu->get_manager ()->enable_events ();
 }
 
 /* EOF */

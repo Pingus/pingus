@@ -1,4 +1,4 @@
-//  $Id: ExitMenu.cc,v 1.1 2001/06/14 11:08:40 grumbel Exp $
+//  $Id: ExitMenu.cc,v 1.2 2002/01/17 23:34:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -56,9 +56,14 @@ ExitMenu::on_button_release (CL_InputDevice* device, const CL_Key& key)
   if (device == CL_Input::pointers[0])
     {
       if (key.id == CL_MOUSE_LEFTBUTTON && key.x > CL_Display::get_width ()/2)
-	manager->pop_menu ();
+	{
+	  manager->pop_menu ();
+	}
       else
-	exit (EXIT_SUCCESS);	
+	{
+	  std::cout << "ExitMenu: yes pressed, doing exit" << std::endl;
+	  exit (EXIT_SUCCESS);
+	}
     }
 }
 

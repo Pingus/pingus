@@ -1,4 +1,4 @@
-//  $Id: SurfaceButton.hh,v 1.20 2001/08/07 18:14:14 grumbel Exp $
+//  $Id: SurfaceButton.hh,v 1.21 2002/01/17 23:34:33 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,53 +34,50 @@
 class PingusMenu;
 
 /* !FIXME! All this should be rewritten... */
+/* !FIXME! All this should be rewritten... */
+/* !FIXME! All this should be rewritten... */
+/* !FIXME! All this should be rewritten... */
+/* !FIXME! All this should be rewritten... */
+/* !FIXME! All this should be rewritten... */
+/* !FIXME! All this should be rewritten... */
+/* !FIXME! All this should be rewritten... */
+/* !FIXME! All this should be rewritten... */
+/* !FIXME! All this should be rewritten... */
+
 
 ///
 class SurfaceButton
 {
 protected:
-  ///
   CL_Surface surface;
-  ///
   CL_Surface surface_p;
-  ///
   CL_Font*    font;
-  ///
   CL_Font*    font_large;
-  ///
   bool is_mouse_over;
   
-  ///
   int x_pos;
-  ///
   int y_pos;
-  ///
+
   std::string desc;
   std::string line1;
   std::string line2;
 public:
-  ///
   SurfaceButton();
-  ///
   virtual ~SurfaceButton();
   
-  ///
   void draw();
-  ///
   bool mouse_over();
-  ///
   virtual void on_click() = 0;
 };
 
 ///
 class PlayButton : public SurfaceButton
 {
+private:
+  PingusMenu* menu;
 public:
-  ///
-  PlayButton();
-  ///
+  PlayButton(PingusMenu* menu);
   virtual ~PlayButton();
-  ///
   void on_click();
 };
 
@@ -90,27 +87,21 @@ class OptionsButton : public SurfaceButton
 private:
   PingusMenu* menu;
 public:
-  ///
   OptionsButton(PingusMenu* menu);
-  ///
   virtual ~OptionsButton();
-  ///
+
   void on_click();
-}///
-;
+};
 
 ///
 class QuitButton : public SurfaceButton
 {
 private:
-  ///
   PingusMenu* menu;
 public:
-  ///
   QuitButton(PingusMenu*);
-  ///
   virtual ~QuitButton();
-  ///
+
   void on_click();
 };
 
@@ -158,9 +149,9 @@ public:
 class ThemeButton : public SurfaceButton
 {
 private:
- 
+  PingusMenu* menu;
 public:
-  ThemeButton();
+  ThemeButton(PingusMenu* menu);
   void on_click();
 };
 
@@ -169,10 +160,10 @@ class MultiplayerButton : public SurfaceButton
 {
 private:
   MultiplayerConfig multiplayer_config;
-  
+  PingusMenu* menu;
 public:
   ///
-  MultiplayerButton();
+  MultiplayerButton(PingusMenu* menu);
   ///
   virtual ~MultiplayerButton();
   ///
