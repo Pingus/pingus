@@ -1,0 +1,61 @@
+/* This level was created with the PLE
+ * $Id: space1.plf,v 1.1 2000/02/11 09:56:13 grumbel Exp $
+ */
+global {
+  start_x_pos = 0;
+  start_y_pos = 0;
+  levelname = "PLE Level";
+  description = "This level has no name
+
+";
+  number_of_pingus = 100;
+  number_to_save = 50;
+  time = 2;
+}
+
+ground {
+  maptype = "SPOT";
+  data    = (file)"space1.psm";
+  width   = 1700;
+  height  = 600;
+  colmap  = (auto);
+}
+
+background {
+  image = (resource:textures.dat)"Textures/stars";
+  dim   = "0";
+  red   = "0";
+  green = "0";
+  blue  = "0";
+  scroll_x = 0;
+  scroll_y = 0;
+}
+
+buttons {
+  basher = 20;
+  blocker = 20;
+  bomber = 20;
+  bridger = 20;
+  climber = 20;
+  digger = 20;
+  floater = 20;
+  miner = 20;
+}
+
+exit {
+  image = (resource)"Exits/space";
+  x_pos = 719;
+  y_pos = 447;
+  z_pos = 0;
+}
+
+entrance {
+  type  = generic;
+  x_pos = 549;
+  y_pos = 274;
+  z_pos = 0;
+  release_rate = 25;
+  direction = left;
+}
+
+/* EOF */
