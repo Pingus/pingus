@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapPingus.cc,v 1.5 2000/10/02 14:30:04 grumbel Exp $
+//  $Id: PingusWorldMapPingus.cc,v 1.6 2000/11/14 22:22:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,9 @@
 PingusWorldMapPingus::PingusWorldMapPingus ()
 {
   sur = PingusResource::load_surface ("Pingus/walker", "pingus");
+
+  std::cout << "PingusWorldMap: walker: num_frames = " << sur->get_num_frames () << std::endl;
+
   counter.set_size(sur->get_num_frames()/2);
   is_left = false;
 }

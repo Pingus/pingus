@@ -1,4 +1,4 @@
-//  $Id: Teleporter.cc,v 1.1 2000/10/31 21:35:37 grumbel Exp $
+//  $Id: Teleporter.cc,v 1.2 2000/11/14 22:22:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -107,8 +107,6 @@ Teleporter::draw_offset (int x_of, int y_of, float s = 1.0)
 void 
 Teleporter::let_move ()
 {
-  //std::cout << "Teleporter::let_move ()" << std::endl;  
-
   PinguHolder* holder = world->get_pingu_p();
 
   for (PinguIter pingu = holder->begin (); pingu != holder->end (); pingu++)

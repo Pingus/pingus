@@ -1,4 +1,4 @@
-//  $Id: EditorObjGroup.cc,v 1.3 2000/10/30 16:17:51 grumbel Exp $
+//  $Id: EditorObjGroup.cc,v 1.4 2000/11/14 22:22:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -85,7 +85,7 @@ EditorObjGroup::draw_mark_offset(int x_offset, int y_offset, EditorObj::Color* a
 {
   //std::cout << "Group..." << std::endl;
   Color tmp_color = mark_color;
-  Color color(0.0, 0.0, 1.0);
+  Color color(1.0, 0.0, 1.0);
 
   for(list<EditorObj*>::iterator i = objs.begin();
       i != objs.end();
@@ -132,15 +132,25 @@ void
 EditorObjGroup::push_back(EditorObj* obj)
 {
   // Updating the width/height and x_pos/y_pos of the object group
-  if (pos.x_pos > obj->get_x_pos())
-    pos.x_pos = obj->get_x_pos();
-  if (pos.y_pos > obj->get_y_pos())
-    pos.y_pos = obj->get_y_pos();
-  
-  if ((pos.x_pos + width) < (obj->get_x_pos() + obj->get_width()))
-    width = (obj->get_x_pos() + obj->get_width()) - pos.x_pos;
-  if ((pos.y_pos + height) < (obj->get_y_pos() + obj->get_height()))
-    height = (obj->get_y_pos() + obj->get_height()) - pos.y_pos;
+  if (!objs.empty ())
+    {
+      if (pos.x_pos > obj->get_x_pos())
+	pos.x_pos = obj->get_x_pos();
+      if (pos.y_pos > obj->get_y_pos())
+	pos.y_pos = obj->get_y_pos();
+
+      if ((pos.x_pos + width) < (obj->get_x_pos() + obj->get_width()))
+	width = (obj->get_x_pos() + obj->get_width()) - pos.x_pos;
+      if ((pos.y_pos + height) < (obj->get_y_pos() + obj->get_height()))
+	height = (obj->get_y_pos() + obj->get_height()) - pos.y_pos;
+    }
+  else
+    {
+      pos.x_pos = obj->get_x_pos ();
+      pos.y_pos = obj->get_y_pos ();
+      width = obj->get_width ();
+      height = obj->get_height ();
+    }
 
   objs.push_back(obj);
 }

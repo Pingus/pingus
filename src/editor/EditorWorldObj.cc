@@ -1,4 +1,4 @@
-//  $Id: EditorWorldObj.cc,v 1.3 2000/10/30 16:17:51 grumbel Exp $
+//  $Id: EditorWorldObj.cc,v 1.4 2000/11/14 22:22:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "../worldobjs/IceBlock.hh"
 #include "../worldobjs/Teleporter.hh"
 #include "../PingusResource.hh"
 #include "EditorWorldObj.hh"
@@ -32,6 +33,10 @@ EditorWorldObj::create (WorldObjData* data)
   if (dynamic_cast <TeleporterData*>(data))
     {
       return EditorTeleporterObj::create (data);
+    }
+  else if (dynamic_cast <IceBlockData*>(data))
+    {
+      return EditorIceBlockObj::create (data);
     }
   else
     {

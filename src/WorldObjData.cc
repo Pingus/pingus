@@ -1,4 +1,4 @@
-//  $Id: WorldObjData.cc,v 1.4 2000/10/30 16:17:50 grumbel Exp $
+//  $Id: WorldObjData.cc,v 1.5 2000/11/14 22:22:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include "TrapData.hh"
 #include "worldobjs/Teleporter.hh"
+#include "worldobjs/IceBlock.hh"
 #include "WorldObjData.hh"
 
 WorldObjData* 
@@ -36,6 +37,8 @@ WorldObjData::create(xmlDocPtr doc, xmlNodePtr cur)
     {
       if (strcmp(type, "teleporter") == 0)
 	data = TeleporterData::create (doc, cur);
+      else if (strcmp(type, "iceblock") == 0)
+	data = IceBlockData::create (doc, cur);
       else if (strcmp(type, "trap") == 0)	
 	data = TrapData::create (doc, cur);
       else
@@ -45,19 +48,5 @@ WorldObjData::create(xmlDocPtr doc, xmlNodePtr cur)
     }
   return data;
 }
-/*
-WorldObjData* 
-WorldObjData::create (WorldObjData* data)
-{
-  if (dynamic_cast<TeleporterData*>(data))
-    {
-      return new TeleporterData (*dynamic_cast<TeleporterData*>(data));
-    }
-  else
-    {
-      std::cout << "Unhandled WorldObjData" << std::endl;
-      return 0;
-    }
-}
-*/
+
 /* EOF */

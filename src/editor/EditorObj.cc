@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.19 2000/10/30 16:17:51 grumbel Exp $
+// $Id: EditorObj.cc,v 1.20 2000/11/14 22:22:56 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,7 @@
 #include "../PSMParser.hh"
 #include "../PingusResource.hh"
 #include "../worldobjs/Teleporter.hh"
+#include "../worldobjs/IceBlock.hh"
 #include "PSMObj.hh"
 #include "PLFObj.hh"
 #include "WeatherObj.hh"
@@ -110,6 +111,10 @@ EditorObj::create (WorldObjData* obj)
   if (dynamic_cast<TeleporterData*>(obj))
     {
       return EditorTeleporterObj::create (dynamic_cast<TeleporterData*>(obj));
+    }
+  else if (dynamic_cast<IceBlockData*>(obj))
+    {
+      return EditorIceBlockObj::create (dynamic_cast<IceBlockData*>(obj));
     }
   else
     {
@@ -291,6 +296,9 @@ EditorObj::gui_edit_obj()
   
 /*
 $Log: EditorObj.cc,v $
+Revision 1.20  2000/11/14 22:22:56  grumbel
+Added the braking-ice-bridge thing, not working correctly, but the framework is ready
+
 Revision 1.19  2000/10/30 16:17:51  grumbel
 - added support to disable gnu gettext
 - added support for the teleporter in the editor (mostly untested)

@@ -1,4 +1,4 @@
-//  $Id: WorldObj.cc,v 1.7 2000/10/30 16:17:50 grumbel Exp $
+//  $Id: WorldObj.cc,v 1.8 2000/11/14 22:22:55 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 
 #include <iostream>
 #include "worldobjs/Teleporter.hh"
+#include "worldobjs/IceBlock.hh"
 #include "WorldObj.hh"
 
 World* WorldObj::world;
@@ -64,6 +65,10 @@ WorldObj::create (WorldObjData* data)
   if (dynamic_cast<TeleporterData*>(data) != 0)
     {
       return new Teleporter (data);
+    }
+  else if (dynamic_cast<IceBlockData*>(data) != 0)
+    {
+      return new IceBlock (data);
     }
   else
     {

@@ -1,4 +1,4 @@
-//  $Id: PinguParticle.hh,v 1.4 2000/06/18 17:01:50 grumbel Exp $
+//  $Id: PinguParticle.hh,v 1.5 2000/11/14 22:22:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,8 @@ private:
   float size;
   ///
   float size_add;
+  ///
+  static CL_Surface* sur;
 public:
   ///
   PinguParticle();

@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.22 2000/10/30 16:17:50 grumbel Exp $
+//  $Id: blitter.cc,v 1.23 2000/11/14 22:22:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -202,17 +202,19 @@ Blitter::put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
   CL_Palette* palette;
   int x_offset, y_offset;
 
+  provider->lock();
+  sprovider->lock();
+
   //  assert(sprovider->get_depth() == 8);
   if (sprovider->get_depth() != 8)
     {
       char str[1024];
       sprintf(str, "Image has wrong color depth: %d", sprovider->get_depth());
+      sprovider->unlock ();
+      provider->unlock ();
       throw PingusError(str);
     }
   //  assert(provider->get_pixel_format() == RGBA8888);
-
-  provider->lock();
-  sprovider->lock();
 
   tbuffer = static_cast<unsigned char*>(provider->get_data());
   sbuffer = static_cast<unsigned char*>(sprovider->get_data());

@@ -1,4 +1,4 @@
-//  $Id: PinguParticle.cc,v 1.6 2000/08/03 10:31:18 grumbel Exp $
+//  $Id: PinguParticle.cc,v 1.7 2000/11/14 22:22:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 static const float x_collision_decrease = 0.3;
 static const float y_collision_decrease = 0.6;
 
+CL_Surface* PinguParticle::sur = 0;
+
 PinguParticle::PinguParticle()
 {
   surface = PingusResource::load_surface("Particles/particle", "pingus");
@@ -41,8 +43,11 @@ PinguParticle::PinguParticle(int x, int y, float x_a, float y_a)
   size  = 1.0;
   size_add = (frand() - 0.2) / 35;
   livetime = 50 + (rand() % 50);
-  // FIXME: Evil and slow..., should be static
-  surface = PingusResource::load_surface("Particles/particle", "pingus");
+
+  if (sur)
+    surface = sur;
+  else
+    sur = PingusResource::load_surface("Particles/particle", "pingus");
 }
 
 void
