@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.37 2001/04/07 16:48:29 grumbel Exp $
+//  $Id: Client.cc,v 1.38 2001/04/07 21:03:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,27 +32,20 @@
 #include "PingusLevelResult.hh"
 #include "PingusSound.hh"
 #include "PingusError.hh"
+#include "OptionMenu.hh"
 #include "PLFPLF.hh"
 #include "XMLPLF.hh"
 
 bool Client::gui_is_init;
-ButtonPanel*   Client::button_panel;
-PingusCounter* Client::pcounter;
-Playfield*     Client::playfield;
-TimeDisplay*   Client::time_display;
-SmallMap*      Client::small_map;
-HurryUp*       Client::hurry_up;
+boost::shared_ptr<ButtonPanel>   Client::button_panel;
+boost::shared_ptr<PingusCounter> Client::pcounter;
+boost::shared_ptr<Playfield>     Client::playfield;
+boost::shared_ptr<TimeDisplay>   Client::time_display;
+boost::shared_ptr<SmallMap>      Client::small_map;
+boost::shared_ptr<HurryUp>       Client::hurry_up;
 
 Client::Client(Server* s)
 {
-
-  playfield    = 0;
-  button_panel = 0;
-  pcounter     = 0;
-  small_map    = 0;
-  time_display = 0;
-
-
   player = 0;
   server = s;
   fast_forward = false;
@@ -60,16 +53,12 @@ Client::Client(Server* s)
   skip_frame = 0;
   do_replay = false;
   is_finished = false;
-
-  event = new ClientEvent;
-  event->client = this;
 }
 
 Client::~Client()
 {
   std::cout << "Client:~Client" << std::endl;
   deinit_display();
-  delete event;
 }
 
 void
@@ -128,15 +117,13 @@ Client::init_display()
 						   PingusResource::get("game")));
   Display::show_cursor();
   
-  if (!playfield) playfield    = new Playfield(plf, server->get_world());
-  else
-    std::cout << "Playfield already there, assuming thats right" << std::endl;
-  
-  button_panel = new ButtonPanel(plf);
-  pcounter     = new PingusCounter();
-  small_map    = new SmallMap();
-  time_display = new TimeDisplay();
-  hurry_up     = new HurryUp();
+  playfield = boost::shared_ptr<Playfield>(new Playfield(plf, server->get_world()));
+    
+  button_panel = boost::shared_ptr<ButtonPanel>(new ButtonPanel(plf));
+  pcounter     = boost::shared_ptr<PingusCounter>(new PingusCounter());
+  small_map    = boost::shared_ptr<SmallMap>(new SmallMap());
+  time_display = boost::shared_ptr<TimeDisplay>(new TimeDisplay());
+  hurry_up     = boost::shared_ptr<HurryUp>(new HurryUp());
   gui_is_init = true;
    
   button_panel->set_server(server);
@@ -146,8 +133,6 @@ Client::init_display()
   small_map->set_client(this);
   hurry_up->set_client(this);
   
-  event->playfield = playfield;
-
   /*  if (play_demo)
     server->set_demo(demo_file);
   */
@@ -175,15 +160,6 @@ void
 Client::deinit_display()
 {
   Display::hide_cursor();
-
-  // Delete all alocated objects
-  delete pcounter;
-  delete time_display;
-  delete button_panel;
-  delete playfield;
-  delete small_map;
-  delete plf;
-  delete hurry_up;
 }
 
 void
@@ -223,7 +199,7 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
   if (!player)
     server->record_demo();
 
-  event->register_event_handler();
+  register_event_handler();
 
   init_display(); 
 
@@ -298,7 +274,7 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
 	  ++skip_frame;
 	}
     }
-  event->unregister_event_handler();
+  unregister_event_handler();
 }
 
 void
@@ -384,6 +360,236 @@ Client::set_finished()
   is_finished = true;
   server->set_finished();  
 }
+
+void 
+Client::register_event_handler()
+{
+  if (verbose > 1) std::cout << "Client: register_event_handler()" << std::endl;
+  //CL_Input::chain_button_press.push_back(this);
+  //CL_Input::chain_button_release.push_back(this);
+
+  on_button_press_slot = CL_Input::sig_button_press.connect (CL_CreateSlot(this, &Client::on_button_press));
+  on_button_release_slot = CL_Input::sig_button_release.connect (CL_CreateSlot(this, &Client::on_button_release));
+
+  enabled = true;
+}
+
+void
+Client::unregister_event_handler()
+{
+  if (verbose > 1) std::cout << "Client: unregister_event_handler()" << std::endl;
+  //CL_Input::chain_button_release.remove(this);
+  //CL_Input::chain_button_press.remove(this);
+
+  // Disconnect segfaults
+  CL_Input::sig_button_press.disconnect (on_button_press_slot); 
+  CL_Input::sig_button_release.disconnect (on_button_release_slot); 
+
+  enabled = false;
+}
+
+void
+Client::disable_event_handler()
+{
+  enabled = false;
+}
+
+void
+Client::enable_event_handler()
+{
+  enabled = true;
+}
+
+void
+Client::on_button_press(CL_InputDevice *device, const CL_Key &key)
+{
+  if (!enabled)
+    return;
+  
+  if (device == CL_Input::keyboards[0])
+    {
+      on_keyboard_button_press(key);
+    }
+  else if (device == CL_Input::pointers[0])
+    {
+      on_mouse_button_press(key);
+    }
+  else
+    {
+      if (verbose > 1) std::cout << "Unknown device pressed: device=" << device << "; key.id=" << key.id << std::endl;
+    }
+}
+
+void
+Client::on_button_release(CL_InputDevice *device, const CL_Key &key)
+{
+  if (!enabled)
+    return;
+
+  if (device == CL_Input::keyboards[0])
+    {
+      on_keyboard_button_release(key);
+    }
+  else if (device == CL_Input::pointers[0])
+    {
+      on_mouse_button_release(key);
+    }
+  else
+    {
+      if (verbose > 1) std::cout << "Unknown device released: device=" << device << "; key.id=" << key.id << std::endl;
+    }  
+}
+
+void
+Client::on_keyboard_button_press(const CL_Key& key)
+{
+  if (CL_Keyboard::get_keycode(CL_KEY_LSHIFT)
+      || CL_Keyboard::get_keycode(CL_KEY_RSHIFT))
+    {
+      playfield->scroll_speed = 50;
+    }
+  else
+    {
+      playfield->scroll_speed = 15;
+    }
+}
+
+void
+Client::on_keyboard_button_release(const CL_Key& key)
+{
+  switch (key.id)
+    {
+    case CL_KEY_O:
+      enabled = false;
+      Display::hide_cursor();
+      option_menu.display();
+      Display::show_cursor();
+      enabled = true;
+      break;
+
+      // Playfield scrolling	
+    case CL_KEY_LEFT:
+      playfield->view[playfield->current_view]->set_x_offset(playfield->view[playfield->current_view]->get_x_offset() + playfield->scroll_speed);
+      break;
+	  
+    case CL_KEY_RIGHT:
+      playfield->view[playfield->current_view]->set_x_offset(playfield->view[playfield->current_view]->get_x_offset() - playfield->scroll_speed);
+      break;
+	  
+    case CL_KEY_UP:
+      playfield->view[playfield->current_view]->set_y_offset(playfield->view[playfield->current_view]->get_y_offset() + playfield->scroll_speed);
+      break;
+      
+    case CL_KEY_DOWN:
+      playfield->view[playfield->current_view]->set_y_offset(playfield->view[playfield->current_view]->get_y_offset() - playfield->scroll_speed);
+      break;
+
+      // Playfield zooming
+    case CL_KEY_PAGEDOWN:
+      playfield->view[playfield->current_view]->set_zoom(playfield->view[playfield->current_view]->get_zoom() / 1.05);
+      break;
+      
+    case CL_KEY_PAGEUP:
+      playfield->view[playfield->current_view]->set_zoom(playfield->view[playfield->current_view]->get_zoom() / 0.95);
+      break;
+      
+    case CL_KEY_END:
+      playfield->view[playfield->current_view]->set_zoom(1.0);
+      break;
+
+      // Misc
+    case CL_KEY_P:
+      pause = !pause;
+      server->set_pause(pause);
+      break;
+
+    case CL_KEY_A:
+      server->send_event("armageddon");
+      break;
+	  
+    case CL_KEY_R:
+      do_restart();
+      break;
+	  
+    case CL_KEY_SPACE:
+      set_fast_forward(!get_fast_forward());
+      break;
+
+    case CL_KEY_ESCAPE:
+      server->set_finished();
+      break;
+
+    case CL_KEY_F1:
+      button_panel->set_button(0);
+      break;
+    case CL_KEY_F2:
+      button_panel->set_button(1);
+      break;
+    case CL_KEY_F3:
+      button_panel->set_button(2);
+      break;      
+    case CL_KEY_F4:
+      button_panel->set_button(3);
+      break;      
+    case CL_KEY_F5:
+      button_panel->set_button(4);
+      break;      
+    case CL_KEY_F6:
+      button_panel->set_button(5);
+      break;      
+    case CL_KEY_F7:
+      button_panel->set_button(6);
+      break;      
+    case CL_KEY_F8:
+      button_panel->set_button(7);
+      break;      
+    default:
+      if (verbose > 1) std::cout << "Client: Got unknown button: ID=" << key.id << " ASCII=" << char(key.ascii) << std::endl;
+    }
+}
+
+void
+Client::on_mouse_button_press(const CL_Key& key)
+{
+  button_panel->on_button_press(key);
+  small_map->on_button_press(key);
+
+  switch(key.id)
+    {
+    case CL_MOUSE_LEFTBUTTON:
+      playfield->on_button_press(key);
+      break;
+    case CL_MOUSE_MIDDLEBUTTON:
+      break;
+    case CL_MOUSE_RIGHTBUTTON:
+      playfield->enable_scroll_mode();
+      break;
+    default:
+      if (verbose > 1) std::cout << "Client: Unknown mouse button released: " << key.id << std::endl;
+    }
+}
+
+void
+Client::on_mouse_button_release(const CL_Key& key)
+{
+  button_panel->on_button_release(key);
+  small_map->on_button_release(key);
+
+  switch(key.id)
+    {
+    case CL_MOUSE_LEFTBUTTON:
+      break;
+    case CL_MOUSE_MIDDLEBUTTON:
+      break;
+    case CL_MOUSE_RIGHTBUTTON:
+      playfield->disable_scroll_mode();
+      break;
+    default:
+      if (verbose > 1) std::cout << "Client: Unknown mouse button released: " << key.id << std::endl;
+    }
+  return;
+}
+
 
 /* EOF */
 

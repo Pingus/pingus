@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.18 2000/12/16 23:11:20 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.19 2001/04/07 21:03:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -326,7 +326,7 @@ XMLPLF::parse_actions(xmlNodePtr cur)
 	}
       else
 	{
-	  std::cout << "XMLPLF::parse_actions (): No 'count' given, fallback to the old format" << std::endl;
+	  //std::cout << "XMLPLF::parse_actions (): No 'count' given, fallback to the old format" << std::endl;
 	  char* number = (char*)xmlNodeListGetString(doc, cur->children, 1);
 	  if (number) {
 	    //std::cout << "xmlNoder..Result: " << number << std::endl;

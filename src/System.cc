@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.26 2001/04/07 16:48:30 grumbel Exp $
+//  $Id: System.cc,v 1.27 2001/04/07 21:03:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -277,27 +277,29 @@ System::get_email()
 std::string
 System::get_language()
 {
-  char* lang = getenv("LANG");
+  char* clang = getenv("LANG");
+  string lang;
+  
+  if (clang) lang = clang;
 
-  if (lang && strcmp(lang, "C") != 0)
-    {
-      if (strcmp(lang, "de_DE") == 0)
-	return "de";
-      else
-	return lang; 
-    }
-  else
+  if (lang == "C")
+    return "en";
+  else if (lang.empty())
     return default_language;
+  else if (lang.length () < 2)
+    return lang;
+  else 
+    return lang.substr (0, 2);
 }
 
-std::string
-System::translate(std::map<std::string, std::string> strs)
+const std::string&
+System::translate(const std::map<std::string, std::string>& strs)
 {
-  std::string str = strs[System::get_language()];
+  const std::string& str = strs.find(System::get_language())->second;
   
   if (str.empty())
     {
-      return strs[default_language];
+      return strs.find(default_language)->second;
     }
   else 
     {

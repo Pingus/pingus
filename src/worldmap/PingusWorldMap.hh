@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.hh,v 1.16 2001/04/07 16:48:30 grumbel Exp $
+//  $Id: PingusWorldMap.hh,v 1.17 2001/04/07 21:03:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,6 +48,8 @@ private:
   bool catch_input;
 
   bool do_quit;
+  PingusWorldMapNode* last_node;
+  unsigned int last_node_time;
   
   boost::shared_ptr<PingusWorldMapStat> stat;
 public:

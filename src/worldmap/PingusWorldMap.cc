@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.20 2001/04/07 16:48:30 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.21 2001/04/07 21:03:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -38,7 +38,8 @@ PingusWorldMap::PingusWorldMap (std::string filename) :
   dot_border ("Game/dot_border", "game"),
   green_flag ("worldmap/flaggreen", "core"),
   catch_input (true),
-  do_quit (false)
+  do_quit (false),
+  last_node (0)
 {
   green_flag.set_align (-24, -36);
   green_dot.set_align_center ();
@@ -226,6 +227,8 @@ PingusWorldMap::start_level (PingusWorldMapNode* node)
 {
   assert (node);
   
+  disable_button_events ();
+
   if (maintainer_mode) 
     std::cout << "Start a level...: " << node->levelname << std::endl;
 		  
@@ -284,6 +287,7 @@ PingusWorldMap::start_level (PingusWorldMapNode* node)
 	  console.puts("Please try again!");
 	}
     }
+  enable_button_events ();
 }
 
 void
@@ -323,23 +327,32 @@ PingusWorldMap::draw ()
   // The mouse is over a node
   if (node)
     {
-      dot_border.put_screen (node->pos + offset);
-      
-      PingusWorldMapNode* node = pingus->get_node ();
-      if (node)
+      last_node = node;
+      last_node_time = CL_System::get_time ();
+    }
+  else
+    {
+      if (last_node_time + 300 < CL_System::get_time ())
 	{
-	  font->print_center (CL_Display::get_width ()/2, CL_Display::get_height () - 40,
-			      ("Levelname: " + System::translate(node->get_plf ()->get_levelname ())).c_str ());
-
-	  if (node->finished)
-	    font->print_center (CL_Display::get_width ()/2, CL_Display::get_height () - 20,
-				"100%");
-	  else
-	    font->print_center (CL_Display::get_width ()/2, CL_Display::get_height () - 20,
-				"0%");
+	  last_node = 0;
 	}
     }
 
+  if (last_node && last_node->accessible)
+    {
+      dot_border.put_screen (last_node->pos + offset);
+      
+      font->print_center (CL_Display::get_width ()/2, CL_Display::get_height () - 40,
+			  System::translate(last_node->get_plf ()->get_levelname ()).c_str ());
+
+      if (last_node->finished)
+	font->print_center (CL_Display::get_width ()/2, CL_Display::get_height () - 20,
+			    "100%");
+      else
+	font->print_center (CL_Display::get_width ()/2, CL_Display::get_height () - 20,
+			    "0%");
+    }
+ 
   pingus->draw (offset);
 }
 

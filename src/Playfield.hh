@@ -1,4 +1,4 @@
-//  $Id: Playfield.hh,v 1.14 2001/04/04 10:21:16 grumbel Exp $
+//  $Id: Playfield.hh,v 1.15 2001/04/07 21:03:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,7 +39,7 @@ class Playfield : public GuiObj
 {
 private:  
   ///
-  friend class ClientEvent;
+  friend class Client;
 
   ///
   CL_Surface buffer;
@@ -48,7 +48,7 @@ private:
   ///
   Client* client;
   ///Range x_offset2, y_offset2;
-  ButtonPanel* buttons;
+  boost::shared_ptr<ButtonPanel> buttons;
   ///
   PinguHolder* pingus;
   ///
@@ -141,7 +141,7 @@ public:
   /// Members used to communicate between different screen objs
   void set_pingu_info(PinguInfo*);
   ///
-  void set_buttons(ButtonPanel* b);
+  void set_buttons(boost::shared_ptr<ButtonPanel>);
   ///
   void set_server(Server*);
   ///

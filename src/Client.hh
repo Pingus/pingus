@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.18 2001/04/07 16:48:29 grumbel Exp $
+//  $Id: Client.hh,v 1.19 2001/04/07 21:03:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,9 +22,9 @@
 
 #include <string>
 
+#include "boost/smart_ptr.hpp"
 #include "Server.hh"
 #include "Result.hh"
-#include "ClientEvent.hh"
 
 #include "ButtonPanel.hh"
 #include "TimeDisplay.hh"
@@ -34,8 +34,6 @@
 #include "SmallMap.hh"
 #include "HurryUp.hh"
 
-///
-class ClientEvent;
 class Playfield;
 class ButtonPanel;
 class PingusCounter;
@@ -45,11 +43,6 @@ class HurryUp;
 class Client
 {
 private:
-  ///
-  friend ClientEvent;
-  ///
-  ClientEvent* event;
-
   ///
   PLF* plf;
   ///
@@ -72,23 +65,29 @@ private:
   DemoPlayer* player;
 
   ///
-  std::vector<GuiObj* > obj;
+  std::vector<boost::shared_ptr<GuiObj> > obj;
 
   ///
   static bool gui_is_init;
   ///
-  static ButtonPanel*   button_panel;
+  static boost::shared_ptr<ButtonPanel>   button_panel;
   ///
-  static PingusCounter* pcounter;
+  static boost::shared_ptr<PingusCounter> pcounter;
   ///
-  static Playfield*     playfield;
+  static boost::shared_ptr<Playfield>     playfield;
   ///
-  static TimeDisplay*   time_display;
+  static boost::shared_ptr<TimeDisplay>   time_display;
   ///
-  static SmallMap*      small_map;
+  static boost::shared_ptr<SmallMap>      small_map;
   /// 
-  static HurryUp*       hurry_up;
+  static boost::shared_ptr<HurryUp>       hurry_up;
 
+  ///
+  CL_Slot on_button_press_slot;
+  ///
+  CL_Slot on_button_release_slot;
+  ///
+  bool enabled;
 public:
   ///
   Client(Server* s);
@@ -98,7 +97,7 @@ public:
   ///
   Server*    get_server() { return server; }
   ///
-  Playfield* get_playfield() { return playfield; }
+  boost::shared_ptr<Playfield> get_playfield() { return playfield; }
 
   ///
   void start(std::string filename, PingusGameMode m = (PingusGameMode)INTERACTIVE_MODE);
@@ -114,9 +113,9 @@ public:
   void play_level(std::string plf_filename, std::string psm_filename = "");
 
 
-  ///
+  /// FIXME: Document me... or rewrite me
   void init_display();
-  ///
+  /// FIXME: Document me... or rewrite me
   void deinit_display();
   ///
   void resize_display();
@@ -141,6 +140,32 @@ public:
   void set_finished();
   ///
   Result get_result();
+
+  ///
+  virtual void on_button_press(CL_InputDevice *device, const CL_Key &key);
+  ///
+  virtual void on_button_release(CL_InputDevice *device, const CL_Key &key);
+
+  ///
+  void on_mouse_button_press(const CL_Key &key);
+  ///
+  void on_mouse_button_release(const CL_Key &key);
+  
+  ///
+  void on_keyboard_button_press(const CL_Key &key);
+  ///
+  void on_keyboard_button_release(const CL_Key &key);
+
+  ///
+  void register_event_handler();
+  ///
+  void unregister_event_handler();
+
+  ///
+  void disable_event_handler();
+  ///
+  void enable_event_handler();
+
 };
 
 #endif

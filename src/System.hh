@@ -1,4 +1,4 @@
-//  $Id: System.hh,v 1.17 2001/03/30 09:19:23 grumbel Exp $
+//  $Id: System.hh,v 1.18 2001/04/07 21:03:42 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -109,7 +109,7 @@ public:
 
   /** Choose the correct translation out of the map, if there is none
       present, fall back to the default language */
-  static std::string translate(std::map<std::string, std::string> strs);
+  static const std::string& translate(const std::map<std::string, std::string>& strs);
 
   /** Read a file and generate a checksum and return it. The checksum
    generation is very primitiv and should probably be replaced by CRC

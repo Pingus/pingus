@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.11 2001/04/07 16:48:30 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.12 2001/04/07 21:03:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,6 +20,7 @@
 #include <ClanLib/core.h>
 #include <ClanLib/display.h>
 
+#include "../PingusError.hh"
 #include "../XMLPLF.hh"
 #include "../Console.hh"
 #include "../XMLhelper.hh"
@@ -32,7 +33,13 @@ PingusWorldMapNode::get_plf ()
   if (plf.get () == 0) 
     {
       console << "Loading levelname" << std::endl;
-      plf = boost::shared_ptr<PLF> (new XMLPLF (levelname));
+      try {
+	plf = boost::shared_ptr<PLF> (new XMLPLF (levelname));
+      } catch (PingusError e) {
+	std::cout << "PingusWorldMapGraph: Catched PingusError (" << e.get_message () << ")" << std::endl;
+	std::cout << "PingusWorldMapGraph: Failed to load '" << levelname << "', fallback to level1.xml" << std::endl;
+	plf = boost::shared_ptr<PLF> (new XMLPLF ("levels/level1.xml"));
+      }
     }
   
   return plf;

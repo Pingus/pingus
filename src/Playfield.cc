@@ -1,4 +1,4 @@
-//  $Id: Playfield.cc,v 1.19 2001/04/04 10:21:16 grumbel Exp $
+//  $Id: Playfield.cc,v 1.20 2001/04/07 21:03:42 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -231,7 +231,7 @@ Playfield::on_button_press(const CL_Key &key)
 }
 
 void
-Playfield::set_buttons(ButtonPanel* b)
+Playfield::set_buttons(boost::shared_ptr<ButtonPanel> b)
 {
   buttons = b;
 }
