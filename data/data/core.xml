@@ -34,7 +34,11 @@
     <surface file="../images/core/editor/logo.png" name="logo" />
   </section>
   <section name="buttons">
-    <surface file="../images/core/buttons/info.png" name="info" />
+    <sprite name="info">
+      <translation origin="top_center" />
+      <image file="../images/core/buttons/info.png" />
+    </sprite>
+
     <surface file="../images/core/buttons/hbuttonbg.png" name="hbuttonbg" />
     <surface file="../images/core/buttons/hbuttonbgb.png" name="hbuttonbgb" />
     <surface file="../images/core/buttons/buttonbackground.png" name="buttonbackground" />

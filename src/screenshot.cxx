@@ -23,6 +23,8 @@
 #include <fstream>
 #include <iostream>
 
+#include <ClanLib/Display/pixel_format.h>
+#include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/display.h>
 #include "system.hxx"
 #include "screenshot.hxx"
@@ -58,27 +60,26 @@ Screenshot::make_screenshot()
 }
 
 void
-Screenshot::save_target_to_file(CL_Target* target, const std::string& filename)
+Screenshot::save_target_to_file(CL_PixelBuffer target, const std::string& filename)
 {
   save_target_to_file_fast(target, filename);
 }
 
 void
-Screenshot::save_target_to_file_fast(CL_Target* target, const std::string& filename)
+Screenshot::save_target_to_file_fast(CL_PixelBuffer target, const std::string& filename)
 {
-#ifdef CLANLIB_0_6
-  target->lock();
-  int num_pixels = target->get_width() * target->get_height();
+  target.lock();
+  int num_pixels = target.get_width() * target.get_height();
   unsigned char* buffer = new unsigned char[num_pixels * 3];
-  unsigned char* target_buffer = reinterpret_cast<unsigned char*>(target->get_data());
+  unsigned char* target_buffer = reinterpret_cast<unsigned char*>(target.get_data());
 
-  unsigned int rmask = target->get_red_mask();
-  unsigned int gmask = target->get_green_mask();
-  unsigned int bmask = target->get_blue_mask();
+  unsigned int rmask = target.get_format().get_red_mask();
+  unsigned int gmask = target.get_format().get_green_mask();
+  unsigned int bmask = target.get_format().get_blue_mask();
 
-  switch(target->get_bytes_per_pixel())
+  switch(target.get_format().get_depth())
     {
-    case 2: // 16bit
+    case 16: // 16bit
       {
         for (int i = 0; i < num_pixels; ++i)
           {
@@ -90,7 +91,7 @@ Screenshot::save_target_to_file_fast(CL_Target* target, const std::string& filen
           }
         break;
       }
-    case 3: // 24bit
+    case 24: // 24bit
       {
         // that should do the trick - untested !!!
         for (int i = 0; i < num_pixels; ++i)
@@ -108,7 +109,7 @@ Screenshot::save_target_to_file_fast(CL_Target* target, const std::string& filen
           }
         break;
       }
-    case 4: // 32bit
+    case 32: // 32bit
       {
         for (int i = 0; i < num_pixels; ++i)
           {
@@ -121,10 +122,9 @@ Screenshot::save_target_to_file_fast(CL_Target* target, const std::string& filen
 
     }
 
-  target->unlock();
-  save_ppm(filename, buffer, target->get_width(), target->get_height());
+  target.unlock();
+  save_ppm(filename, buffer, target.get_width(), target.get_height());
   delete[] buffer;
-#endif
 }
 
 void
@@ -153,33 +153,30 @@ Screenshot::save_ppm(const std::string& filename, unsigned char* buffer, int wid
 }
 
 void
-Screenshot::save_target_to_file_slow(CL_Target* target, const std::string& filename)
+Screenshot::save_target_to_file_slow(CL_PixelBuffer target, const std::string& filename)
 {
-#ifdef CLANLIB_0_6
   std::ofstream out(filename.c_str());
 
   out << "P3\n"
       << "# CREATOR: Pingus... some version\n"
-      << target->get_width() << " "
-      << target->get_height() << "\n"
+      << target.get_width() << " "
+      << target.get_height() << "\n"
       << "255" << std::endl;
 
-  target->lock();
+  target.lock();
 
-  float red, green, blue, alpha;
-  for (unsigned int y=0; y < target->get_height(); ++y)
+  for (int y=0; y < target.get_height(); ++y)
     {
-      for (unsigned int x=0; x < target->get_width(); ++x)
+      for (int x=0; x < target.get_width(); ++x)
         {
-          target->get_pixel(x, y, &red, &green, &blue, &alpha);
-          out << (int)(red   * 255) << " "
-              << (int)(green * 255) << " "
-              << (int)(blue  * 255) << "\n";
+          CL_Color color = target.get_pixel(x, y);
+          out << (int)(color.get_red())   << " "
+              << (int)(color.get_green()) << " "
+              << (int)(color.get_blue())  << "\n";
         }
     }
 
-  target->unlock();
-#endif
+  target.unlock();
 }
 
 std::string

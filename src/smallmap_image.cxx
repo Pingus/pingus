@@ -18,10 +18,10 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Display/pixel_buffer.h>
+#include <ClanLib/Display/pixel_format.h>
 #include "world.hxx"
 #include "smallmap_image.hxx"
 #include "col_map.hxx"
-#include "canvas.hxx"
 #include "server.hxx"
 
 namespace Pingus {
@@ -63,7 +63,7 @@ SmallMapImage::create_surface (Server * server, int width, int height)
   ColMap* colmap = world->get_colmap();
   buffer = colmap->get_data();
 
-  canvas = Canvas::create_rgba8888(width, height);
+  canvas = new CL_PixelBuffer(width, height, width*4, CL_PixelFormat::rgba8888);
 
   canvas->lock();
 

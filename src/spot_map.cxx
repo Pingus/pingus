@@ -26,7 +26,6 @@
 #include "blitter.hxx"
 #include "spot_map.hxx"
 #include "gettext.h"
-#include "canvas.hxx"
 #include "col_map.hxx"
 #include "math.hxx"
 
@@ -69,7 +68,7 @@ void
 MapTileSurface::reload(void)
 {
   CL_PixelBuffer buf = surface.get_pixeldata();
-  surface = CL_Surface(&buf, false);
+  surface = CL_Surface(new CL_PixelBuffer(buf), true);
 }
 
 void
@@ -383,14 +382,14 @@ PingusSpotMap::put(const CL_PixelBuffer& sprovider, int x, int y)
 	{
 	  if (tile[ix][iy].surface == 0)
 	    {
-	      CL_PixelBuffer* canvas = Canvas::create_rgba8888(tile_size, tile_size);
+	      CL_PixelBuffer canvas(tile_size, tile_size, tile_size * 4, CL_PixelFormat::rgba8888);
 
-	      Blitter::clear_canvas(*canvas);
+	      Blitter::clear_canvas(canvas);
 
-	      Blitter::put_surface(*canvas, sprovider,
+	      Blitter::put_surface(canvas, sprovider,
 				   x - (ix * tile_size), y - (iy * tile_size));
 
-	      tile[ix][iy].surface = CL_Surface (canvas, true);
+	      tile[ix][iy].surface = CL_Surface (new CL_PixelBuffer(canvas), true);
 	    }
 	  else
 	    {

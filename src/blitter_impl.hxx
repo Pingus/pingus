@@ -24,7 +24,6 @@
 #include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/surface.h>
 #include "pingus.hxx"
-#include "canvas.hxx"
 
 namespace Pingus {
 
@@ -214,7 +213,7 @@ CL_Surface modify(const CL_Surface& sur, const TransF&)
 
       canvas.unlock ();
       prov.unlock ();
-      return CL_Surface(&canvas, false);
+      return CL_Surface(new CL_PixelBuffer(&canvas), true);
 #endif
       return CL_Surface();
     }
@@ -239,7 +238,7 @@ CL_Surface modify(const CL_Surface& sur, const TransF&)
 
       canvas.unlock ();
       prov.unlock ();
-      return CL_Surface(&canvas, false);
+      return CL_Surface(new CL_PixelBuffer(canvas), true);
     }
 }
 

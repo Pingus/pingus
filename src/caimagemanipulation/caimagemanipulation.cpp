@@ -19,10 +19,7 @@
 #include <assert.h>
 #include <cmath>
 #include <ClanLib/display.h>
-#include "../canvas.hxx"
 #include "caimagemanipulation.h"
-
-using namespace Pingus;
 
 /** Returns a pointer to a new image, based on 'surface'
     but fliped horizontal or vertical.
@@ -34,7 +31,8 @@ CAImageManipulation::flip( CL_Surface surface, bool horizontal )
 {
   // Create a canvas which contains the original surface:
   //
-  CL_PixelBuffer* can = Canvas::create_rgba8888(surface.get_width(), surface.get_height());
+  CL_PixelBuffer* can = new CL_PixelBuffer(surface.get_width(), surface.get_height(),
+                                           surface.get_width()*4, CL_PixelFormat::rgba8888);
   
   // FIXME:
   assert(0);
@@ -111,8 +109,8 @@ CAImageManipulation::changeHSV(CL_Surface surface,
 {
   // Create a canvas which contains the original surface:
   //
-  CL_PixelBuffer* can = Canvas::create_rgba8888(surface.get_width(),
-                                                surface.get_height());
+  CL_PixelBuffer* can = new CL_PixelBuffer(surface.get_width(), surface.get_height(),
+                                           surface.get_width()*4, CL_PixelFormat::rgba8888);
 
   assert(0);
   // FIXME: surface->put_target( 0,0, 0, can );

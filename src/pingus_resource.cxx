@@ -238,15 +238,14 @@ PingusResource::apply_modifier (const CL_Surface& surf, const ResDescriptor& res
 CL_Surface
 PingusResource::load_from_source (const ResDescriptor& res_desc)
 {
-  //std::cout << "RESDUMP: " << res_desc << std::endl;
-
   switch(res_desc.type)
     {
     case ResDescriptor::RD_RESOURCE:
       try {
         CL_ResourceManager res_mgr = get(res_desc.datafile);
-	return CL_Surface (res_desc.res_name.c_str(), &res_mgr);
+	return CL_Surface(res_desc.res_name.c_str(), &res_mgr);
       } catch (CL_Error err) {
+        pout << "CL_Error: " << err.message << std::endl;
 	pout << "PingusResource:" << res_desc
 	     <<  ":-404-:" << err.message << std::endl;
 	try {

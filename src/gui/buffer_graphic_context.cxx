@@ -21,15 +21,18 @@
 #include <ClanLib/display.h>
 #include "../pingus_error.hxx"
 #include "../blitter.hxx"
-#include "../canvas.hxx"
 #include "../screenshot.hxx"
 #include "buffer_graphic_context.hxx"
 
 namespace Pingus {
 
 BufferGraphicContext::BufferGraphicContext(int width, int height)
+  : canvas(width, height, width*4, CL_PixelFormat::rgba8888)
 {
-  canvas = Canvas::create_rgba8888(width, height);
+}
+
+BufferGraphicContext::~BufferGraphicContext()
+{
 }
 
 CL_Rect
@@ -55,14 +58,12 @@ BufferGraphicContext::draw(CL_Sprite&, const Pingus::Vector&)
 void
 BufferGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos)
 {
-#ifdef CLANLIB_0_6
   //std::cout << "BufferGraphicContext: " << x_pos << ", " << y_pos  << std::endl;
   try {
-    Blitter::put_surface(canvas, sur.get_provider(), x_pos, y_pos);
+    Blitter::put_surface(canvas, sur.get_pixeldata(), x_pos, y_pos);
   } catch (PingusError& err) {
     std::cout << "BufferGraphicContext: " << err.get_message() << std::endl;
   }
-#endif
 }
 
 void
@@ -95,12 +96,10 @@ BufferGraphicContext::draw (CL_Surface& sur, int x_pos, int y_pos,
 void
 BufferGraphicContext::write(const std::string& filename)
 {
-#ifdef CLANLIB_0_6
   std::cout << "BufferGraphicContext::write: " << filename << std::endl;
-  canvas->lock();
+  canvas.lock();
   Screenshot::save_target_to_file(canvas, filename);
-  canvas->unlock();
-#endif
+  canvas.unlock();
 }
 
 } // namespace Pingus

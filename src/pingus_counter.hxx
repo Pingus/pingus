@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_PINGUS_COUNTER_HXX
 #define HEADER_PINGUS_PINGUS_COUNTER_HXX
 
-#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/sprite.h>
 #include <ClanLib/Display/font.h>
 #include "gui/component.hxx"
 
@@ -37,7 +37,7 @@ class PingusCounter : public GUI::Component
 private:
   Server* server;
   CL_Font font;
-  CL_Surface background;
+  CL_Sprite background;
 public:
   PingusCounter(Server* s);
   virtual ~PingusCounter() {}

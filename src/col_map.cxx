@@ -25,7 +25,6 @@
 #include "gui/graphic_context.hxx"
 #include "globals.hxx"
 #include "col_map.hxx"
-#include "canvas.hxx"
 #include "gettext.h"
 
 #define COLMAP_WITH_MEMORY_HOLE 1
@@ -254,12 +253,12 @@ ColMap::put(CL_PixelBuffer provider, int sur_x, int sur_y, Groundtype::GPType pi
 void
 ColMap::draw(GraphicContext& gc)
 {
-  CL_PixelBuffer* canvas = Canvas::create_rgba8888(width, height);
+  CL_PixelBuffer canvas(width, height, width*4, CL_PixelFormat::rgba8888);
   CL_Surface sur;
   unsigned char* buffer;
 
-  canvas->lock();
-  buffer = static_cast<unsigned char*>(canvas->get_data());
+  canvas.lock();
+  buffer = static_cast<unsigned char*>(canvas.get_data());
 
   for(int i = 0; i < (width * height); ++i)
     {
@@ -295,12 +294,9 @@ ColMap::draw(GraphicContext& gc)
 	}
     }
 
-  // FIXME: Memory hole
-#if COLMAP_WITH_MEMORY_HOLE
-  canvas->unlock();
-#endif
+  canvas.unlock();
 
-  sur = CL_Surface(canvas, true);
+  sur = CL_Surface(new CL_PixelBuffer(canvas), true);
 
   gc.draw(sur, 0, 0);
 }

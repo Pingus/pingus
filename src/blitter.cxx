@@ -20,6 +20,7 @@
 #include <config.h>
 #include <stdio.h>
 #include <assert.h>
+#include <ClanLib/Core/IOData/datatypes.h>
 #include <ClanLib/Display/palette.h>
 #include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/pixel_format.h>
@@ -41,14 +42,14 @@
 namespace Pingus {
 
 void
-Blitter::put_surface(CL_PixelBuffer& canvas, const CL_Surface& sur,
+Blitter::put_surface(CL_PixelBuffer canvas, const CL_Surface& sur,
 		     int x, int y)
 {
   Blitter::put_surface(canvas, sur.get_pixeldata(), x, y);
 }
 
 void
-Blitter::put_surface(CL_PixelBuffer& canvas, const CL_PixelBuffer& provider,
+Blitter::put_surface(CL_PixelBuffer canvas, CL_PixelBuffer provider,
 		     int x, int y)
 {
   switch(provider.get_format().get_depth())
@@ -66,11 +67,9 @@ Blitter::put_surface(CL_PixelBuffer& canvas, const CL_PixelBuffer& provider,
 }
 
 void
-Blitter::put_surface_8bit(CL_PixelBuffer& provider, const CL_PixelBuffer& sprovider_,
+Blitter::put_surface_8bit(CL_PixelBuffer provider, CL_PixelBuffer sprovider,
 			  int x, int y)
 {
-  CL_PixelBuffer sprovider = sprovider_;
-
   int start_i;
   unsigned char* tbuffer; // Target buffer
   int twidth, theight, tpitch;
@@ -110,6 +109,8 @@ Blitter::put_surface_8bit(CL_PixelBuffer& provider, const CL_PixelBuffer& sprovi
 
   if (sprovider.get_format().has_colorkey ())
     {
+      std::cout << "8bit blit: " << twidth << "x" << theight << " " << swidth << "x" << sheight << std::endl;
+
       unsigned int colorkey = sprovider.get_format().get_colorkey();
 
       for(int line=y_offset;
@@ -126,15 +127,17 @@ Blitter::put_surface_8bit(CL_PixelBuffer& provider, const CL_PixelBuffer& sprovi
 	      if (sbuffer[j] != colorkey)
 		{
 		  tbuffer[i + 0] = 255;                                  // alpha
-		  tbuffer[i + 1] = palette.colors[sbuffer[j] * 3].get_blue(); // blue
-		  tbuffer[i + 2] = palette.colors[sbuffer[j] * 3].get_green(); // green
-		  tbuffer[i + 3] = palette.colors[sbuffer[j] * 3].get_red(); // red
+		  tbuffer[i + 1] = palette.colors[cl_uint8(sbuffer[j] * 3)].get_blue(); // blue
+		  tbuffer[i + 2] = palette.colors[cl_uint8(sbuffer[j] * 3)].get_green(); // green
+		  tbuffer[i + 3] = palette.colors[cl_uint8(sbuffer[j] * 3)].get_red(); // red
 		}
 	    }
 	}
     }
   else
     {
+      std::cout << "8bit blit: " << twidth << "x" << theight << " " << swidth << "x" << sheight << std::endl;
+
       for(int line=y_offset;
 	  line < sheight && (line + y) < theight;
 	  ++line)
@@ -147,9 +150,9 @@ Blitter::put_surface_8bit(CL_PixelBuffer& provider, const CL_PixelBuffer& sprovi
 	      i += 4, ++j)
 	    {
 	      tbuffer[i + 0] = 255;                                  // alpha
-	      tbuffer[i + 1] = palette[sbuffer[j] * 3 + 2]; // blue
-	      tbuffer[i + 2] = palette[sbuffer[j] * 3 + 1]; // green
-	      tbuffer[i + 3] = palette[sbuffer[j] * 3 + 0]; // red
+	      tbuffer[i + 1] = palette[cl_uint8(sbuffer[j] * 3 + 2)]; // blue
+	      tbuffer[i + 2] = palette[cl_uint8(sbuffer[j] * 3 + 1)]; // green
+	      tbuffer[i + 3] = palette[cl_uint8(sbuffer[j] * 3 + 0)]; // red
 	    }
 	}
     }
@@ -159,7 +162,7 @@ Blitter::put_surface_8bit(CL_PixelBuffer& provider, const CL_PixelBuffer& sprovi
 }
 
 void
-Blitter::put_surface_32bit(CL_PixelBuffer& canvas, const CL_PixelBuffer& provider_,
+Blitter::put_surface_32bit(CL_PixelBuffer canvas, CL_PixelBuffer provider_,
 			   const int x_pos, const int y_pos)
 {
   CL_PixelBuffer provider = provider_;
@@ -212,7 +215,7 @@ Blitter::put_surface_32bit(CL_PixelBuffer& canvas, const CL_PixelBuffer& provide
 }
 
 void
-Blitter::put_alpha_surface(CL_PixelBuffer& provider, CL_PixelBuffer& sprovider,
+Blitter::put_alpha_surface(CL_PixelBuffer provider, CL_PixelBuffer sprovider,
 			   int x, int y)
 {
   int start_i;
@@ -276,7 +279,7 @@ Blitter::put_alpha_surface(CL_PixelBuffer& provider, CL_PixelBuffer& sprovider,
 }
 
 CL_PixelBuffer
-Blitter::clear_canvas(CL_PixelBuffer& canvas)
+Blitter::clear_canvas(CL_PixelBuffer canvas)
 {
   unsigned char* buffer;
 
@@ -346,7 +349,7 @@ CL_Surface
 Blitter::scale_surface (const CL_Surface& sur, int width, int height)
 {
   CL_PixelBuffer buf = Blitter::scale_surface_to_canvas(sur, width, height);
-  return CL_Surface(&buf, false);
+  return CL_Surface(new CL_PixelBuffer(buf), true);
 }
 
 CL_PixelBuffer

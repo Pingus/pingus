@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_SCREENSHOT_HXX
 
 #include "pingus.hxx"
+#include <ClanLib/Display/pixel_buffer.h>
 #include <string>
 
 class CL_Target;
@@ -33,11 +34,11 @@ class Screenshot
 private:
   static std::string get_date();
   static std::string get_filename();
-  static void save_target_to_file_fast(CL_Target*,   const std::string& filename);
-  static void save_target_to_file_slow(CL_Target*, const std::string& filename);
+  static void save_target_to_file_fast(CL_PixelBuffer ,   const std::string& filename);
+  static void save_target_to_file_slow(CL_PixelBuffer , const std::string& filename);
 public:
   static std::string make_screenshot();
-  static void save_target_to_file(CL_Target*, const std::string& filename);
+  static void save_target_to_file(CL_PixelBuffer , const std::string& filename);
 
   /** buffer must be RGB and width*height*3 large */
   static void save_ppm(const std::string& filename, unsigned char* buffer, int width, int height);

@@ -95,8 +95,6 @@ blitter.hxx \
 blitter_impl.hxx \
 button_panel.cxx \
 button_panel.hxx \
-canvas.hxx \
-canvas.cxx \
 capture_rectangle.cxx \
 capture_rectangle.hxx \
 cheat.hxx \

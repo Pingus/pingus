@@ -39,10 +39,11 @@ typedef CL_Font FontHandle;
 class BufferGraphicContext : public GraphicContext
 {
 private:
-  CL_PixelBuffer* canvas; 
+  CL_PixelBuffer canvas; 
 
 public:
   BufferGraphicContext(int width, int height);
+  virtual ~BufferGraphicContext();
   
   Vector get_offset () { return Vector(); }
   void   set_offset (float, float) {}
@@ -52,8 +53,8 @@ public:
   float get_x_offset () { return 0; }
   float get_y_offset () { return 0; }
 
-  int   get_width ()  { return canvas->get_width(); }
-  int   get_height () { return canvas->get_height(); }
+  int   get_width ()  { return canvas.get_width(); }
+  int   get_height () { return canvas.get_height(); }
 
   float get_zoom () { return 1.0f; }
   void  set_zoom (float new_zoom) { UNUSED_ARG(new_zoom); }

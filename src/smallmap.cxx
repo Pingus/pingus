@@ -25,7 +25,6 @@
 #include "pingus_resource.hxx"
 #include "smallmap.hxx"
 #include "col_map.hxx"
-#include "canvas.hxx"
 #include "true_server.hxx"
 #include "pingu.hxx"
 #include "math.hxx"
@@ -94,12 +93,12 @@ SmallMap::init()
           height = max_height;
         }
 
-      canvas = Canvas::create_rgba8888(width, height);
+      canvas = CL_PixelBuffer(width, height, width*4, CL_PixelFormat::rgba8888);
     }
 
-  canvas->lock();
+  canvas.lock();
 
-  cbuffer = static_cast<unsigned char*>(canvas->get_data());
+  cbuffer = static_cast<unsigned char*>(canvas.get_data());
 
   int alpha;
   if (fast_mode)
@@ -172,10 +171,10 @@ SmallMap::init()
             }
 	}
     }
-  canvas->unlock();
+  canvas.unlock();
 
   //Timer surface_timer("Smallmap surface creation");
-  sur = CL_Surface(canvas, false);
+  sur = CL_Surface(new CL_PixelBuffer(canvas), true);
   //surface_timer.stop();
 
   x_pos = 5;

@@ -25,7 +25,6 @@
 #include "../globals.hxx"
 #include "../blitter.hxx"
 #include "../system.hxx"
-#include "../canvas.hxx"
 #include "../debug.hxx"
 #include "../pingus_resource.hxx"
 #include "../math.hxx"
@@ -98,9 +97,9 @@ ThumbCache::load (const std::string & res_ident, const std::string & datafile)
 	      return uncached_load (res_ident, datafile);
 	    }
 
-	  CL_PixelBuffer* canvas = Canvas::create_rgba8888(width, height);
-	  canvas->lock ();
-	  void* buffer = canvas->get_data ();
+	  CL_PixelBuffer canvas(width, height, width*4, CL_PixelFormat::rgba8888);
+	  canvas.lock ();
+	  void* buffer = canvas.get_data ();
 	  size_t buffer_size = width * height * 4;
 
 	  size_t read_size = in.read (buffer, buffer_size);
@@ -109,11 +108,10 @@ ThumbCache::load (const std::string & res_ident, const std::string & datafile)
 	    {
 	      perr(PINGUS_DEBUG_EDITOR) << "ThumbCache: " << filename << ": read error: wanted "
 	                                << buffer_size << " got " << read_size << std::endl;
-	      delete canvas;
 	      return uncached_load (res_ident, datafile);
 	    }
-	  canvas->unlock ();
-	  return CL_Surface (canvas, true);
+	  canvas.unlock ();
+	  return CL_Surface (new CL_PixelBuffer(canvas), true);
 	}
       catch (CL_Error& err)
 	{

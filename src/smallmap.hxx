@@ -48,7 +48,7 @@ private:
   CL_Surface sur;
 
   /** The canvas that represents the small-colmap */
-  CL_PixelBuffer* canvas;
+  CL_PixelBuffer canvas;
 
   /** Horizontal position of the small map */
   int x_pos;

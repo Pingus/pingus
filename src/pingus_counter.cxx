@@ -34,7 +34,7 @@ namespace Pingus {
 
 PingusCounter::PingusCounter(Server* s)
   : server(s),
-    background (PingusResource::load_surface("Buttons/info","core"))
+    background(PingusResource::load_sprite("buttons/info","core"))
 {
   font = Fonts::pingus_small_fix_num;
 }
@@ -45,7 +45,7 @@ PingusCounter::draw(GraphicContext& gc)
   char str[128];
 
   if (!fast_mode)
-    background.draw (CL_Display::get_width ()/2 - background.get_width()/2, 0);
+    background.draw(CL_Display::get_width()/2, 0);
 
   World* world = server->get_world();
 
