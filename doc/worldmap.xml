@@ -1,0 +1,52 @@
+<pingus-worldmap>
+  <!-- The graph specifies the path on which the pingu can walk -->
+  <graph>
+    <nodes>
+      <node id="node_1">
+	<position>...</position>
+	<data>
+	  <tube>...</tube>
+	</data>
+      </node>
+      
+      <node id="node_2">
+	<position>...</position>
+	<data>
+	  <level>...</level>
+	</data>
+      </node>
+      ...
+    </nodes>
+    
+    <edges>
+      <edge id="egde_1" source="1" destination="2"> 
+	<!-- The path which connect two nodes -->
+	<data>
+	  <position>...</position>
+	  <position>...</position>
+	</data>
+      </edge>
+    </edges>
+  </graph>
+  
+  <!-- Objects are other things on the worldmap, most likly background
+  surfaces or other animated stuff -->
+  <objects>
+    <sprite>
+      <resource-desc>...</resource-desc>
+      <position>
+	...
+      </position>
+    </sprite>
+
+    <birds>
+      <position>
+	...
+      </position>
+    </sprite>
+      ...
+  </objects>
+  
+</pingus-worldmap>
+
+<!-- EOF -->     
