@@ -33,6 +33,7 @@ libpingus_input_a_SOURCES =       \
 	mouse_axis.hxx mouse_axis.cxx \
 	mouse_button.hxx mouse_button.cxx \
         mouse_pointer.hxx mouse_pointer.cxx \
+	multiple_axis.hxx multiple_axis.cxx \
 	multiple_button.hxx multiple_button.cxx \
 	multiple_pointer.hxx multiple_pointer.cxx \
         pointer.hxx \
