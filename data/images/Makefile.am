@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.21 2000/10/13 18:08:33 grumbel Exp $
+#  $Id: Makefile.am,v 1.22 2000/10/14 16:29:24 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -576,13 +576,13 @@ traps/bumper.pcx \
 traps/bumper_cmap.pcx \
 worldmaps/volcano.jpg
 
-my_pkgdata_DATA = $(EXTRA_DIST)
+my_pkg_data = $(EXTRA_DIST)
 
 # We don't use automake's stuff to install the data, since it is
 # unable to handle recursive directory trees.
 # The list was produced by:
 # find . -type d -and -not -name "CVS" -and -not -name ".xvpics" > /tmp/inst-dirs
-install-data-local: $(my_pkgdata_DATA)
+install-data-local: $(my_pkg_data)
 	$(mkinstalldirs) \
                          $(pkgdatadir)/buttons \
                          $(pkgdatadir)/cursors \
@@ -632,7 +632,7 @@ install-data-local: $(my_pkgdata_DATA)
                          $(pkgdatadir)/worldmaps
 	@$(NORMAL_INSTALL)
 	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)
-	@list='$(my_pkgdata_DATA)'; for p in $$list; do \
+	@list='$(my_pkg_data)'; for p in $$list; do \
 	  if test -f $(srcdir)/$$p; then \
 	    echo " $(INSTALL_DATA) $(srcdir)/$$p $(DESTDIR)$(pkgdatadir)/$$p"; \
 	    $(INSTALL_DATA) $(srcdir)/$$p $(DESTDIR)$(pkgdatadir)/$$p; \
