@@ -1,4 +1,4 @@
-//  $Id: math.hxx,v 1.1 2002/06/20 15:20:25 grumbel Exp $
+//  $Id: math.hxx,v 1.2 2002/06/20 15:43:44 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@ namespace Pingus
 {
   namespace Math
   {
-    template<class C> 
+    template<class T> 
     T min (const T& a, const T& b) 
     {
       if (a < b)
@@ -40,6 +40,12 @@ namespace Pingus
 	return a;
       else
 	return b;
+    }
+
+    template<class T> 
+    T mid (const T& a, const T& b, const T& c) 
+    {
+      return max((a), min((b), (c)));
     }
   }
 }

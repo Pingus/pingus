@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.3 2002/06/20 11:23:53 grumbel Exp $
+//  $Id: blitter.cxx,v 1.4 2002/06/20 15:41:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,7 @@
 #include "color.hxx"
 #include "string_converter.hxx"
 #include "globals.hxx"
+#include "math.hxx"
 #include "blitter.hxx"
 
 /* Headers needed for i18n / gettext */
@@ -32,7 +33,7 @@
 #include <config.h>
 #include "my_gettext.hxx"
 
-using namespace std;
+using namespace Pingus;
 
 void
 Blitter::put_surface(CL_Canvas* canvas, const CL_Surface& sur,
@@ -212,10 +213,10 @@ Blitter::put_surface_32bit(CL_Canvas* canvas, CL_SurfaceProvider* provider,
 	  
 	    // FIXME: This doesn't give correct alpha values
 	    canvas->draw_pixel(x + x_pos, y + y_pos, 
-			       max(0.0, min(1.0, (red * alpha) + (tred * (1.0-alpha)))),
-			       max(0.0, min(1.0, (green * alpha) +(tgreen * (1.0-alpha)))),
-			       max(0.0, min(1.0, (blue * alpha)  + (tblue * (1.0-alpha)))),
-			       max(0.0, min(1.0, alpha * alpha + (talpha*(1.0-alpha)))));
+			       Math::mid(0.0, 1.0, (red * alpha) + (tred * (1.0-alpha))),
+			       Math::mid(0.0, 1.0, (green * alpha) +(tgreen * (1.0-alpha))),
+			       Math::mid(0.0, 1.0, (blue * alpha)  + (tblue * (1.0-alpha))),
+			       Math::mid(0.0, 1.0, alpha * alpha + (talpha*(1.0-alpha))));
 	  }
     }
   else // fast?!
