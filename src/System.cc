@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.21 2000/10/12 19:33:51 grumbel Exp $
+//  $Id: System.cc,v 1.22 2000/10/12 22:19:18 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,6 +32,10 @@
 
 #include <cstdio>
 #include <iostream>
+
+#include <libintl.h>
+#define _(String) gettext (String)
+
 #include "globals.hh"
 #include "PingusError.hh" 
 #include "StringConverter.hh"
@@ -55,7 +59,7 @@ System::opendir(const std::string& pathname, const std::string& pattern)
 
   if (dp == 0)
     {
-      std::cout << "System: Couldn't open: " << pathname << std::endl;
+      std::cout << _("System: Couldn't open: ") << pathname << std::endl;
     }
   else
     {
@@ -147,7 +151,7 @@ System::create_dir(std::string directory)
 	}
     }  else
     {
-      std::cout << "Found: " << directory << std::endl;
+      std::cout << _("Found: ") << directory << std::endl;
     }
 #else
   CreateDirectory(directory.c_str(), 0);

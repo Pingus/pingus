@@ -17,3 +17,5 @@ patches
 config.log
 configure
 Makefile.in
+bugs
+README.binary

@@ -30,7 +30,7 @@ exec_prefix = ${prefix}
 transform = s,x,x,
 libdir = $(exec_prefix)/lib
 includedir = $(prefix)/include
-datadir = $(prefix)/@DATADIRNAME@
+datadir = $(prefix)/share
 localedir = $(datadir)/locale
 gnulocaledir = $(prefix)/share/locale
 gettextsrcdir = ${prefix}/share/gettext/intl
@@ -39,9 +39,9 @@ subdir = intl
 
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
-MKINSTALLDIRS = @MKINSTALLDIRS@
+MKINSTALLDIRS = ./mkinstalldirs
 
-l = @l@
+l = 
 
 AR = ar
 CC = gcc
@@ -51,7 +51,7 @@ RANLIB = ranlib
 DEFS = -DLOCALEDIR=\"$(localedir)\" -DGNULOCALEDIR=\"$(gnulocaledir)\" \
 -DLOCALE_ALIAS_PATH=\"$(aliaspath)\" -DHAVE_CONFIG_H
 CPPFLAGS =  -I/usr/include/libxml -I/usr/include
-CFLAGS = -g -O2
+CFLAGS = -g -O2 -Wall
 LDFLAGS = 
 
 COMPILE = $(CC) -c $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS) $(XCFLAGS)
@@ -62,7 +62,7 @@ SOURCES = $(COMSRCS) intl-compat.c cat-compat.c
 COMSRCS = bindtextdom.c dcgettext.c dgettext.c gettext.c \
 finddomain.c loadmsgcat.c localealias.c textdomain.c l10nflist.c \
 explodename.c
-OBJECTS = @INTLOBJS@ bindtextdom.$lo dcgettext.$lo dgettext.$lo gettext.$lo \
+OBJECTS =  bindtextdom.$lo dcgettext.$lo dgettext.$lo gettext.$lo \
 finddomain.$lo loadmsgcat.$lo localealias.$lo textdomain.$lo l10nflist.$lo \
 explodename.$lo
 CATOBJS = cat-compat.$lo ../po/cat-id-tbl.$lo
@@ -81,7 +81,7 @@ DISTFILES.gettext = libintl.glibc intlh.inst.in
 
 INCLUDES = -I.. -I. -I$(top_srcdir)/intl -I$(top_srcdir)/lib
 
-all: all-@USE_INCLUDED_LIBINTL@
+all: all-no
 
 all-yes: libintl.$la intlh.inst
 all-no:
@@ -112,7 +112,7 @@ check: all
 install: install-exec install-data
 install-exec: all
 	if test "$(PACKAGE)" = "gettext" \
-	   && test '@INTLOBJS@' = '$(GETTOBJS)'; then \
+	   && test '' = '$(GETTOBJS)'; then \
 	  if test -r $(MKINSTALLDIRS); then \
 	    $(MKINSTALLDIRS) $(libdir) $(includedir); \
 	  else \
@@ -206,12 +206,12 @@ Makefile: Makefile.in ../config.status
 # The dependency for intlh.inst is different in gettext and all other
 # packages.  Because we cannot you GNU make features we have to solve
 # the problem while rewriting Makefile.in.
-@GT_YES@intlh.inst: intlh.inst.in ../config.status
-@GT_YES@	cd .. \
-@GT_YES@	&& CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= \
-@GT_YES@	  $(SHELL) ./config.status
-@GT_NO@.PHONY: intlh.inst
-@GT_NO@intlh.inst:
+#YES#intlh.inst: intlh.inst.in ../config.status
+#YES#	cd .. \
+#YES#	&& CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= \
+#YES#	  $(SHELL) ./config.status
+.PHONY: intlh.inst
+intlh.inst:
 
 # Tell versions [3.59,3.63) of GNU make not to export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

@@ -1,14 +1,46 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Pingus - Ein Freier Lemmings Klone
+# Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+# Ingo Ruhnke <grumbel@gmx.de>, 2000
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: Pingus 0.5.0\n"
+"POT-Creation-Date: 2000-10-12 23:23+0200\n"
+"PO-Revision-Date: 2000-10-12 23:51+02:00\n"
+"Last-Translator: Ingo Ruhnke <grumbel@gmx.de>\n"
+"Language-Team: Ingo Ruhnke <grumbel@gmx.de>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: ENCODING\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../src/PingusMain.cc:761
+msgid "PingusMain: Starting Main: "
+msgstr "PingusMain: Hauptteil wird gestartet: "
+
+#: ../src/PingusMain.cc:881
+msgid "Error caught from ClanLib: "
+msgstr "ClanLib Fehler abgefangen: "
+
+#: ../src/PingusMain.cc:885
+msgid "Error caught from Pingus: "
+msgstr "Pingus Fehler wurde abgefangen: "
+
+#: ../src/PingusMain.cc:889
+msgid "Pingus: Out of memory!"
+msgstr "Pingus: Speicher ist ausgegangen"
+
+#: ../src/PingusMain.cc:893
+msgid "Pingus: Standard exception caught!:\n"
+msgstr "Pingus: Standard Ausnahme abgefangen!:\n"
+
+#: ../src/PingusMain.cc:897
+msgid "Pingus: Unknown throw caught!"
+msgstr "Pingus: Unbekannte Ausnahme abgefangen!"
+
+#: ../src/System.cc:62
+msgid "System: Couldn't open: "
+msgstr "System: Datei oder Verzeichnis konnte nicht geoeffnet werden: "
+
+#: ../src/System.cc:154
+msgid "Found: "
+msgstr "Gefunden: "

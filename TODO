@@ -1,3 +1,7 @@
+Editor can't handle backgrounds, it can only load and save them.
+
+Editor can't handle worldobj, teleporter and probablly other stuff
+
 > 1.  basher: The basher can go through small solid objects. He does
 > not bash them away, so nobody can follow. But anyway it looks
 > strange.  I have this problem in the level I send to you (level_2)
@@ -223,6 +227,6 @@ DOOR.WAV      MOUSEPRE.WAV  OING.WAV	     THUD.WAV
 
 
 
-$Date: 2000/09/26 12:35:34 $
+$Date: 2000/10/12 22:19:17 $
 
 -= EOF =-

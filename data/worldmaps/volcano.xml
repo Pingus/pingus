@@ -1,4 +1,6 @@
 <pingus-worldmap>
+  <music file="pingus-5.it"/>
+
   <surface>
     <resource type="datafile">
       <resource-datafile>worldmaps</resource-datafile>

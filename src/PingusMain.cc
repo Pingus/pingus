@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.11 2000/10/12 19:33:51 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.12 2000/10/12 22:19:18 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -25,8 +25,6 @@
 
 #include <config.h>
 
-#include <libintl.h>
-
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -41,6 +39,11 @@
 #  include "win32/config.h"
 #  include "win32/getopt.h"
 #endif /* !WIN32 */
+
+// -- Gettext -- //
+#include <locale.h>
+#include <libintl.h>
+#define _(String) gettext (String)
 
 #include <ClanLib/core.h>
 #include <ClanLib/jpeg.h>
@@ -479,8 +482,8 @@ PingusMain::check_args(int argc, char* argv[])
 	"\nDebugging and experimental stuff:\n"
 	"   --maintainer-mode        Enables some features, only interesting programmers\n"
 	"   --enable-bg-manipulation Enables color manipulation of level backgrounds\n"
-	"   --debug OPTION           Enable the output of debugging infos, possible 
-                                     OPTION's are tiles, gametime, actions, sound\n"
+	"   --debug OPTION           Enable the output of debugging infos, possible\n"
+        "                            OPTION's are tiles, gametime, actions, sound\n"
 	"   -t, --speed SPEED        Set the game speed (0=fastest, >0=slower)\n"
 	"   -b, --print-fps          Prints the fps to stdout\n"
 	"   -i, --enable-gimmicks    Enable some buggy development stuff\n"
@@ -757,7 +760,7 @@ bool
 PingusMain::do_lemmings_mode(void)
 {
   if (verbose) {
-    std::cout << "PingusMain: Starting Main: " << CL_System::get_time() << std::endl;
+    std::cout << _("PingusMain: Starting Main: ") << CL_System::get_time() << std::endl;
   }
 
   if (print_fps)
@@ -852,6 +855,12 @@ PingusMain::main(int argc, char** argv)
   // Register the segfault_handler
   //signal(SIGSEGV, segfault_handler);
 
+  // Init stuff needed by gettext
+  setlocale (LC_ALL, "");
+  // FIXME: Hardcoded directory! Evil! Evil! Evil!
+  bindtextdomain (PACKAGE, "../po/");
+  textdomain (PACKAGE);
+
   try 
     {
       init(argc, argv);
@@ -877,23 +886,23 @@ PingusMain::main(int argc, char** argv)
   }
   
   catch (CL_Error err) {
-    std::cout << "Error caught from ClanLib: " << err.message << std::endl;
+    std::cout << _("Error caught from ClanLib: ") << err.message << std::endl;
   }
 
   catch (PingusError err) {
-    std::cout << "Error caught from Pingus: " << err.message << std::endl;
+    std::cout << _("Error caught from Pingus: ") << err.message << std::endl;
   }
 
   catch (std::bad_alloc a) {
-    std::cout << "Pingus: Out of memory!" << std::endl;
+    std::cout << _("Pingus: Out of memory!") << std::endl;
   }
 
   catch (std::exception a) {
-    std::cout << "Pingus: Standard exception caught!:\n" << a.what() << std::endl;
+    std::cout << _("Pingus: Standard exception caught!:\n") << a.what() << std::endl;
   }
 
   catch (...) {
-    std::cout << "Pingus: Unknown throw caught!" << std::endl;
+    std::cout << _("Pingus: Unknown throw caught!") << std::endl;
   }
 
   return 0;

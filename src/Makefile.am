@@ -1,4 +1,4 @@
-#  $Id: Makefile.am,v 1.41 2000/10/12 20:18:12 grumbel Exp $
+#  $Id: Makefile.am,v 1.42 2000/10/12 22:19:18 grumbel Exp $
 #
 #  Pingus - A free Lemmings clone
 #  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@ bindir=$(prefix)/games
 
 # The next line is for gettext
 LIBS = @INTLLIBS@ @LIBS@
+INCLUDES = -I../intl
 
 SUBDIRS = \
 	actions             \

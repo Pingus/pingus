@@ -7,7 +7,7 @@
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>100</number-of-pingus>
     <number-to-save>50</number-to-save>
-    <time>1000</time>
+    <time>-1</time>
     <width>1100</width>
     <height>800</height>
   </global>
