@@ -1,4 +1,4 @@
-//  $Id: blitter.hh,v 1.4 2000/06/12 09:18:43 grumbel Exp $
+//  $Id: blitter.hh,v 1.5 2000/06/15 14:08:16 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,9 @@ public:
     void put_surface(CL_LockableSurface* provider, CL_SurfaceProvider* surface,
     int x, int y);
   */
+  static void put_surface(CL_Canvas*, CL_Surface*,
+			  int x, int y);
+
   static void put_surface(CL_Canvas*, CL_SurfaceProvider*,
 			  int x, int y);
 
