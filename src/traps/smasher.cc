@@ -1,4 +1,4 @@
-//  $Id: smasher.cc,v 1.28 2001/11/18 12:43:19 grumbel Exp $
+//  $Id: smasher.cc,v 1.29 2001/12/02 11:02:13 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -57,7 +57,7 @@ Smasher::update(float delta)
 	      // SMASH!!! The thing hitten earth and kills the pingus
 	      downwards = false;
 	      --count; 
-	      PingusSound::play_sound("sound/tenton.wav", 0.7f);
+	      PingusSound::play_sound("sounds/tenton.wav", 0.7f);
 	      
 	      for(int i=0; i < 20; i++)
 		{
