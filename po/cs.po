@@ -2,22 +2,13 @@
 # translation of pingus.po to czech
 # This file is distributed under the same license as the PACKAGE package.
 # Tomáš Bláha, 2003
-# Tomáš Bláha, 2003
-# Tomáš Bláha, 2003
-# Tomáš Bláha, 2003
-# Tomáš Bláha, 2003
-# Tomáš Bláha, 2003
-# Tomáš Bláha, 2003
-# Tomáš Bláha, 2003
-# Tomáš Bláha, 2003
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# Tomáš Bláha, 2003
+# Copyright (C) YEAR Ingo Ruhnke
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
-"POT-Creation-Date: 2003-04-10 22:58+0200\n"
-"PO-Revision-Date: 2003-04-06 14:09+0200\n"
+"POT-Creation-Date: 2003-04-13 12:28+0200\n"
+"PO-Revision-Date: 2003-04-13 13:39+0200\n"
 "Last-Translator: Tomáš Bláha\n"
 "Language-Team: czech\n"
 "MIME-Version: 1.0\n"
@@ -27,211 +18,211 @@ msgstr ""
 
 #: src/config.cxx:68
 msgid "Couldn't open: "
-msgstr ""
+msgstr "Nemohu otevrit: "
 
 #: src/config.cxx:167
 msgid "Unexpected char: '"
-msgstr ""
+msgstr "Neocekavany znak: '"
 
 #: src/config.cxx:201
 msgid "Unexpected char '"
-msgstr ""
+msgstr "Neocekavany znak '"
 
 #: src/credits.cxx:46
 msgid "-Idea"
-msgstr ""
+msgstr "-Namet"
 
 #: src/credits.cxx:50
 msgid "-Maintaining"
-msgstr ""
+msgstr "-Sprava"
 
 #: src/credits.cxx:54
 msgid "-Programming"
-msgstr ""
+msgstr "-Programovani"
 
 #: src/credits.cxx:60
 msgid "-Porting (Win32)"
-msgstr ""
+msgstr "-Prenos na Win32"
 
 #: src/credits.cxx:68
 msgid "-Gfx"
-msgstr ""
+msgstr "-Grafika"
 
 #: src/credits.cxx:79
 msgid "-Music"
-msgstr ""
+msgstr "-Hudba"
 
 #: src/credits.cxx:85
 msgid "-Level Design"
-msgstr ""
+msgstr "-Tvorba urovni"
 
 #: src/credits.cxx:90
 msgid "-Story"
-msgstr ""
+msgstr "-Pribeh"
 
 #: src/credits.cxx:94
 msgid "-Translation (german)"
-msgstr ""
-
-#: src/credits.cxx:99
-msgid "-Special"
-msgstr ""
+msgstr "-Preklad (nemcina)"
 
 #: src/credits.cxx:100
-msgid "-Thanks to"
-msgstr ""
+msgid "-Special"
+msgstr "-Zvlastni podekovani"
 
-#: src/credits.cxx:134
-msgid "_And a very Special Thanks"
-msgstr ""
+#: src/credits.cxx:101
+msgid "-Thanks to"
+msgstr "-zasluhuji"
 
 #: src/credits.cxx:135
-msgid "_to all the people who"
-msgstr ""
+msgid "_And a very Special Thanks"
+msgstr "_A zvlaste dekujeme"
 
 #: src/credits.cxx:136
-msgid "_contribute to"
-msgstr ""
+msgid "_to all the people who"
+msgstr "_vsem lidem,"
 
 #: src/credits.cxx:137
-msgid "_Free Software!"
-msgstr ""
+msgid "_contribute to"
+msgstr "_kteri prispivaji"
 
-#: src/credits.cxx:143
-msgid "_Thank you for"
-msgstr ""
+#: src/credits.cxx:138
+msgid "_Free Software!"
+msgstr "_Svobodnemu softwaru!"
 
 #: src/credits.cxx:144
+msgid "_Thank you for"
+msgstr "_Dekujme Vam,"
+
+#: src/credits.cxx:145
 msgid "_playing!"
-msgstr ""
+msgstr "_ze jste si zahrali!"
 
 #: src/editor/editor_event.cxx:580
 msgid "Enter filename to save as:"
-msgstr ""
+msgstr "Zadejte jmeno pro ulozeni:"
 
 #: src/editor/editor_help_screen.cxx:45
 msgid "F1 - show/hide this help screen"
-msgstr ""
+msgstr "F1 - zobrazi/skryje tuto napovedu"
 
 #: src/editor/editor_help_screen.cxx:46
 msgid "F2 - launch level building tutorial"
-msgstr ""
+msgstr "F2 - spusti vyuku tvorby urovni"
 
 #: src/editor/editor_help_screen.cxx:47
 msgid "F3 - toggle background color"
-msgstr ""
+msgstr "F3 - prepne barvu pozadi"
 
 #: src/editor/editor_help_screen.cxx:48
 msgid "F4 - play/test the level"
-msgstr ""
+msgstr "F4 - hrat/testovat uroven"
 
 #: src/editor/editor_help_screen.cxx:49
 msgid "F5 - load a level"
-msgstr ""
+msgstr "F5 - nahrat uroven"
 
 #: src/editor/editor_help_screen.cxx:50
 msgid "F6 - save this level"
-msgstr ""
+msgstr "F6 - ulozit uroven"
 
 #: src/editor/editor_help_screen.cxx:51
 msgid "F7 - [unset]"
-msgstr ""
+msgstr "F7 - [nepouzito]"
 
 #: src/editor/editor_help_screen.cxx:52
 msgid "F8 - quick save/backup save?!"
-msgstr ""
+msgstr "F8 - rychle/zalozni ulozni?!"
 
 #: src/editor/editor_help_screen.cxx:53
 msgid "F9 - change level width and height"
-msgstr ""
+msgstr "F9 - zmenit rozmery urovne"
 
 #: src/editor/editor_help_screen.cxx:54
 msgid "F10 - [unset]"
-msgstr ""
+msgstr "F10 - [nepouzito]"
 
 #: src/editor/editor_help_screen.cxx:55
 msgid "F11 - toggle fps counter"
-msgstr ""
+msgstr "F11 - prepnout zobrazovani fps"
 
 #: src/editor/editor_help_screen.cxx:56
 msgid "F12 - make screenshot"
-msgstr ""
+msgstr "F12 - vyfotit obrazovku"
 
 #: src/editor/editor_help_screen.cxx:60
 msgid "Pos1 - increase object size"
-msgstr ""
+msgstr "Pos1 - zvetsit velikost objektu"
 
 #: src/editor/editor_help_screen.cxx:61
 msgid "End  - decrease object size"
-msgstr ""
+msgstr "End  - zmensit velikost objektu"
 
 #: src/editor/editor_help_screen.cxx:62
 msgid "Cursor Keys - Move object"
-msgstr ""
+msgstr "Kursorove klavesy - posunout objekt"
 
 #: src/editor/editor_help_screen.cxx:63
 msgid "Shift 'Cursor Keys' - Move objects fast "
-msgstr ""
+msgstr "Shift a kursorove klavesy - rychle posouvat"
 
 #: src/editor/editor_help_screen.cxx:64
 msgid "PageUp   - level object up"
-msgstr ""
+msgstr "PageUp   - vyzdvihnout objekt vyse"
 
 #: src/editor/editor_help_screen.cxx:65
 msgid "PageDown - level object down"
-msgstr ""
+msgstr "PageDown - zatlacit objekt hloubeji"
 
 #: src/editor/editor_help_screen.cxx:66
 msgid "Shift PageUp   - increase objects z-pos by 50"
-msgstr ""
+msgstr "Shift PageUp   - zvetsit z-pozici objektu o 50"
 
 #: src/editor/editor_help_screen.cxx:67
 msgid "Shift PageDown - decrease objects z-pos by 50"
-msgstr ""
+msgstr "Shift PageDown - snizit z-pozici objektu o 50"
 
 #: src/editor/editor_help_screen.cxx:68
 msgid "Enter - Set default zoom (1:1)"
-msgstr ""
+msgstr "Enter - Nastavit vychozi zvetseni (1:1)"
 
 #: src/editor/editor_help_screen.cxx:69
 msgid "d - duplicate object"
-msgstr ""
+msgstr "d - duplikovat objekt"
 
 #: src/editor/editor_help_screen.cxx:70
 msgid "a - mark all objects"
-msgstr ""
+msgstr "a - vybrat vsechny objekty"
 
 #: src/editor/editor_help_screen.cxx:71
 msgid "shift leftmouseclick - add object to selection"
-msgstr ""
+msgstr "shift leve kliknuti - pridat objekt do vyberu"
 
 #: src/editor/editor_help_screen.cxx:72
 msgid "leftmouseclick - select object"
-msgstr ""
+msgstr "leve kliknuti - vybrat objekt"
 
 #: src/editor/editor_help_screen.cxx:73
 msgid "Insert - insert new object"
-msgstr ""
+msgstr "Insert - vlozit novy objekt"
 
 #: src/editor/editor_help_screen.cxx:74
 msgid "Remove - remove selected object"
-msgstr ""
+msgstr "Delete - odstranit vybrany objekt"
 
 #: src/editor/editor_help_screen.cxx:75
 msgid "g - ungroup/group current selection"
-msgstr ""
+msgstr "g - zrusit/vytvorit grupu z vyberu"
 
 #: src/editor/editor_help_screen.cxx:76
 msgid "Ctrl PageUp   - increase objects z-pos by 1"
-msgstr ""
+msgstr "Ctrl PageUp   - zvetsit z-pozici objektu o 1"
 
 #: src/editor/editor_help_screen.cxx:77
 msgid "Ctrl PageDown - decrease objects z-pos by 1"
-msgstr ""
+msgstr "Ctrl PageDown - zmensit z-pozici objektu o 1"
 
 #: src/editor/editor_help_screen.cxx:83
 msgid "Naming Convention: <LEVELNAME><NUMBER>-<CREATOR>.xml"
-msgstr ""
+msgstr "Konvence pojmenovavani: <JMENO UROVNE><CISLO>-<AUTOR>.xml"
 
 #: src/editor/editor_help_screen.cxx:85
 msgid ""
@@ -239,242 +230,244 @@ msgid ""
 "release,\n"
 "please mail it to pingus-devel@nongnu.org."
 msgstr ""
+"Kdyz vytvorite uroven a chteli byste ji mit v pristim vydani Pingus,\n"
+"poslete ji prosim postou na pingus-devel@nongnu.org."
 
 #: src/editor/object_selector.cxx:106
 msgid "1 - guillotine"
-msgstr ""
+msgstr "1 - gilotina"
 
 #: src/editor/object_selector.cxx:107
 msgid "2 - hammer"
-msgstr ""
+msgstr "2 - kladivo"
 
 #: src/editor/object_selector.cxx:108
 msgid "3 - spike"
-msgstr ""
+msgstr "3 - bodec"
 
 #: src/editor/object_selector.cxx:109
 msgid "4 - laser_exit"
-msgstr ""
+msgstr "4 - laserovy vychod"
 
 #: src/editor/object_selector.cxx:110
 msgid "5 - fake_exit"
-msgstr ""
+msgstr "5 - falesny vychod"
 
 #: src/editor/object_selector.cxx:111
 msgid "6 - smasher"
-msgstr ""
+msgstr "6 - lis"
 
 #: src/editor/object_selector.cxx:112
 msgid "7 - bumper"
-msgstr ""
+msgstr "7 - naraznik"
 
 #: src/editor/object_selector.cxx:186
 msgid "Select a WorldObj"
-msgstr ""
+msgstr "Vybrat svetovy objekt"
 
 #: src/editor/object_selector.cxx:187
 msgid "1 - teleporter"
-msgstr ""
+msgstr "1 - teleport"
 
 #: src/editor/object_selector.cxx:188
 msgid "2 - switch and door"
-msgstr ""
+msgstr "2 - vypinac a dvere"
 
 #: src/editor/object_selector.cxx:189
 msgid "3 - ConveyorBelt"
-msgstr ""
+msgstr "3 - dopravni pas"
 
 #: src/editor/object_selector.cxx:190
 msgid "4 - IceBlock"
-msgstr ""
+msgstr "4 - kostka ledu"
 
 #: src/editor/object_selector.cxx:191
 msgid "5 - InfoBox"
-msgstr ""
+msgstr "5 - informacni tabule"
 
 #: src/editor/object_selector.cxx:232
 msgid "Select a weather"
-msgstr ""
+msgstr "Vyberte pocasi"
 
 #: src/editor/object_selector.cxx:233
 msgid "1 - snow"
-msgstr ""
+msgstr "1 - snih"
 
 #: src/editor/object_selector.cxx:234
 msgid "2 - rain"
-msgstr ""
+msgstr "2 - dest"
 
 #: src/editor/object_selector.cxx:265
 msgid "Select an entrance"
-msgstr ""
+msgstr "Vyberte vchod"
 
 #: src/editor/object_selector.cxx:266
 msgid "1 - generic"
-msgstr ""
+msgstr "1 - obecny"
 
 #: src/editor/object_selector.cxx:267
 msgid "2 - woodthing"
-msgstr ""
+msgstr "2 - dreveny"
 
 #: src/editor/object_selector.cxx:268
 msgid "3 - cloud"
-msgstr ""
+msgstr "3 - mrak"
 
 #: src/editor/object_selector.cxx:269
 msgid "h - entrance surface (hotspot)"
-msgstr ""
+msgstr "h - vstupni povrch (hotspot)"
 
 #: src/editor/object_selector.cxx:343
 msgid "What object type do you want?"
-msgstr ""
+msgstr "Jaky typ objektu chcete?"
 
 #: src/editor/object_selector.cxx:344 src/editor/object_selector.cxx:400
 msgid "h - Hotspot"
-msgstr ""
+msgstr "h - Hotspot"
 
 #: src/editor/object_selector.cxx:345
 msgid "g - Groundpiece (ground) [not implemented]"
-msgstr ""
+msgstr "g - Groundpiece (ground) [not implemented]"
 
 #: src/editor/object_selector.cxx:394 src/editor/object_selector.cxx:562
 msgid "Which object do you want?"
-msgstr ""
+msgstr "Jaky objekt chcete?"
 
 #: src/editor/object_selector.cxx:395
 msgid "g - Groundpiece (ground)"
-msgstr ""
+msgstr "g - Groundpiece (ground)"
 
 #: src/editor/object_selector.cxx:396
 msgid "s - Groundpiece (solid)"
-msgstr ""
+msgstr "s - Zeme (pevna)"
 
 #: src/editor/object_selector.cxx:397
 msgid "b - Groundpiece (bridge)"
-msgstr ""
+msgstr "b - Zeme (most)"
 
 #: src/editor/object_selector.cxx:398
 msgid "n - Groundpiece (transparent)"
-msgstr ""
+msgstr "n - Zeme (pruhledna)"
 
 #: src/editor/object_selector.cxx:399
 msgid "r - Groundpiece (remove)"
-msgstr ""
+msgstr "r - Zeme (odstranovac)"
 
 #: src/editor/object_selector.cxx:401
 msgid "e - Entrance"
-msgstr ""
+msgstr "e - Vchod"
 
 #: src/editor/object_selector.cxx:402
 msgid "x - Exit"
-msgstr ""
+msgstr "x - Opustit"
 
 #: src/editor/object_selector.cxx:403
 msgid "l - Liquid"
-msgstr ""
+msgstr "l - Tekutina"
 
 #: src/editor/object_selector.cxx:404
 msgid "w - Weather"
-msgstr ""
+msgstr "w - Pocasi"
 
 #: src/editor/object_selector.cxx:405
 msgid "t - Traps"
-msgstr ""
+msgstr "t - Pasti"
 
 #: src/editor/object_selector.cxx:406
 msgid "o - WorldObject"
-msgstr ""
+msgstr "o - Svetovy objekt"
 
 #: src/editor/object_selector.cxx:407
 msgid "z - Background"
-msgstr ""
+msgstr "z - Pozadi"
 
 #: src/editor/object_selector.cxx:408
 msgid "p - Prefab (ObjectGroup)"
-msgstr ""
+msgstr "p - Polotovary (grupy objektu)"
 
 #: src/editor/object_selector.cxx:409
 msgid "f - something from file (~/.pingus/images/)"
-msgstr ""
+msgstr "f - Neco ze souboru (~/.pingus/images/)"
 
 #: src/editor/object_selector.cxx:498
 msgid "Which prefab do you want?"
-msgstr ""
+msgstr "Jaky polotovar chcete?"
 
 #: src/editor/object_selector.cxx:563
 msgid "1 - Surface Background"
-msgstr ""
+msgstr "1 - Obrazove pozadi"
 
 #: src/editor/object_selector.cxx:564
 msgid "2 - Solid Color Background"
-msgstr ""
+msgstr "2 - Jednobarevne pozadi"
 
 #: src/editor/object_selector.cxx:565
 msgid "3 - Starfield Background"
-msgstr ""
+msgstr "3 - Hvezdne pozadi"
 
 #: src/editor/object_selector.cxx:566
 msgid "4 - Thunderstorm Background"
-msgstr ""
+msgstr "4 - Bourkove pozadi"
 
 #: src/editor/panel_icons.cxx:31
 msgid "Load a level (F5)"
-msgstr ""
+msgstr "Nahrat uroven (F5)"
 
 #: src/editor/panel_icons.cxx:44
 msgid "Exit the editor (Escape)"
-msgstr ""
+msgstr "Opustit editor (Escape)"
 
 #: src/editor/panel_icons.cxx:56
 msgid "Save this level (F6)"
-msgstr ""
+msgstr "Ulozit uroven (F6)"
 
 #: src/editor/panel_icons.cxx:68
 msgid "Delete marked objects (delete"
-msgstr ""
+msgstr "Vymazat vybrane objekty (delete)"
 
 #: src/editor/panel_icons.cxx:80
 msgid "Duplicate current object (d)"
-msgstr ""
+msgstr "Duplikovat vybrany objekt (d)"
 
 #: src/editor/panel_icons.cxx:92
 msgid "Edit Level Properties"
-msgstr ""
+msgstr "Upravit vlastnosti urovne"
 
 #: src/editor/panel_icons.cxx:104
 msgid "Edit Object Properties"
-msgstr ""
+msgstr "Upravit vlastnosti objektu"
 
 #: src/editor/panel_icons.cxx:116
 msgid "Start the level and test it (F4)"
-msgstr ""
+msgstr "Spustit uroven a vyzkouset ji (F4)"
 
 #: src/editor/panel_icons.cxx:128
 msgid "Create a new level from scratch"
-msgstr ""
+msgstr "Vytvorit novou uroven od zakladu"
 
 #: src/editor/panel_icons.cxx:140
 msgid "Insert an object (Insert)"
-msgstr ""
+msgstr "Vlozit objekt (Insert)"
 
 #: src/editor/panel_icons.cxx:152
 msgid "Zoom into a region"
-msgstr ""
+msgstr "Zvetsit oblast"
 
 #: src/editor/panel_icons.cxx:164
 msgid "Zoom in"
-msgstr ""
+msgstr "Zvetsit"
 
 #: src/editor/panel_icons.cxx:176
 msgid "Zoom out"
-msgstr ""
+msgstr "Zmensit"
 
 #: src/editor/panel_icons.cxx:188
 msgid "Setup Number of Actions"
-msgstr ""
+msgstr "Nastavit pocty akci"
 
 #: src/editor/panel_icons.cxx:200
 msgid "Display Help Screen (F1)"
-msgstr ""
+msgstr "Zobrazit napovedu (F1)"
 
 #: src/exit_menu.cxx:46
 msgid "Yes"
@@ -486,15 +479,15 @@ msgstr "Ne"
 
 #: src/exit_menu.cxx:112
 msgid "Exit Pingus?"
-msgstr "Ukončit Pingus?"
+msgstr "Ukoncit Pingus?"
 
 #: src/fps_counter.cxx:46
 msgid "unknown"
-msgstr ""
+msgstr "neznamy"
 
 #: src/game_time.cxx:67
 msgid "unlimited"
-msgstr ""
+msgstr "neomezeny"
 
 #: src/level_desc.cxx:71
 msgid "Designed by "
@@ -598,144 +591,64 @@ msgstr ""
 msgid "You've got a negative save/total value, something is buggy."
 msgstr ""
 
-#: src/menu_button.cxx:179
+#: src/menu_button.cxx:177
 msgid "..:: The people who brought this game to you ::.."
 msgstr ""
 
-#: src/menu_button.cxx:182
+#: src/menu_button.cxx:180
 msgid "Credits"
 msgstr ""
 
-#: src/menu_button.cxx:215
+#: src/menu_button.cxx:212
 msgid "..:: Takes you to the options menu ::.."
 msgstr ""
 
-#: src/menu_button.cxx:218
+#: src/menu_button.cxx:215
 msgid "Options"
 msgstr ""
 
-#: src/menu_button.cxx:252
+#: src/menu_button.cxx:248
 msgid "..:: Bye, bye ::.."
 msgstr "..:: Na shledanou ::.."
 
-#: src/menu_button.cxx:255
+#: src/menu_button.cxx:251
 msgid "Exit"
 msgstr "Konec"
 
-#: src/menu_button.cxx:307
+#: src/menu_button.cxx:302
 msgid "..:: Launch the level editor ::.."
-msgstr "..:: Spustit editor úrovní ::.."
+msgstr "..:: Spustit editor urovni ::.."
 
-#: src/menu_button.cxx:310
+#: src/menu_button.cxx:305
 msgid "Create a"
-msgstr "Vytvořit"
+msgstr "Vytvorit"
 
-#: src/menu_button.cxx:311
+#: src/menu_button.cxx:306
 msgid "Level"
-msgstr "úroveň"
+msgstr "uroven"
 
-#: src/menu_button.cxx:347
+#: src/menu_button.cxx:340
 msgid "..:: Start the game ::.."
 msgstr "..:: Spustit hru ::.."
 
-#: src/menu_button.cxx:350
+#: src/menu_button.cxx:341
 msgid "Start"
 msgstr "Start"
 
-#: src/menu_button.cxx:386
+#: src/menu_button.cxx:371
 msgid "..:: Start a contrib level ::.."
 msgstr ""
 
-#: src/menu_button.cxx:388
+#: src/menu_button.cxx:373
 msgid "Contrib"
 msgstr ""
 
-#: src/menu_button.cxx:409
+#: src/menu_button.cxx:393
 msgid "..:: Multiplayer Modes... experimental stuff ::.."
 msgstr ""
 
-#: src/menu_button.cxx:411
+#: src/menu_button.cxx:395
 msgid "Multi"
-msgstr ""
-
-#: src/option_menu.cxx:145
-msgid "on"
-msgstr ""
-
-#: src/option_menu.cxx:147
-msgid "off"
-msgstr ""
-
-#: src/option_menu.cxx:164 src/option_menu.cxx:176
-msgid "Not implemented"
-msgstr ""
-
-#: src/option_menu.cxx:215
-msgid "OptionMenu::Event: Unknown key released: id="
-msgstr ""
-
-#: src/option_menu.cxx:224
-msgid "Button 0 pressed"
-msgstr ""
-
-#: src/option_menu.cxx:228
-msgid "Button 1 pressed"
-msgstr ""
-
-#: src/option_menu.cxx:231
-msgid "Button 2 pressed"
-msgstr ""
-
-#: src/option_menu.cxx:234
-msgid "OptionMenu::Event: Unknown mouse button released: id="
-msgstr ""
-
-#: src/option_menu.cxx:275
-msgid "Unlimited Actions"
-msgstr ""
-
-#: src/option_menu.cxx:276
-msgid "Print fps"
-msgstr ""
-
-#: src/option_menu.cxx:278
-msgid "Cursor enabled"
-msgstr ""
-
-#: src/option_menu.cxx:279
-msgid "Fast Mode"
-msgstr ""
-
-#: src/option_menu.cxx:281
-msgid "Game Speed"
-msgstr ""
-
-#: src/option_menu.cxx:282
-msgid "Verbose"
-msgstr ""
-
-#: src/option_menu.cxx:283
-msgid "Music"
-msgstr ""
-
-#: src/option_menu.cxx:284
-msgid "Sound"
-msgstr ""
-
-#: src/option_menu.cxx:285
-msgid "Draw ColMap"
-msgstr ""
-
-#: src/option_menu.cxx:286
-msgid "Auto Scrolling"
-msgstr ""
-
-#: src/option_menu.cxx:287
-msgid "Action Help Strings"
-msgstr ""
-
-#: src/option_menu.cxx:328
-msgid "Pingus Option Menu"
 msgstr ""
 
 #: src/pingu.cxx:122
@@ -750,16 +663,16 @@ msgstr ""
 #: src/pingu_info.cxx:55
 #, c-format
 msgid "action %s"
-msgstr ""
+msgstr "akce %s"
 
 #: src/pingu_info.cxx:57
 msgid "action none"
-msgstr ""
+msgstr "zadna akce"
 
 #: src/pingus_counter.cxx:49
 #, c-format
 msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
-msgstr "Vypuštěno:%3d/%-3d   Venku:%3d   Zachráněno:%3d/%-3d"
+msgstr "Vypusteno:%3d/%-3d   Venku:%3d   Doma:%3d/%-3d"
 
 #: src/pingus_main.cxx:102
 msgid "| segfault_handler: catched a SIGSEGV."
@@ -782,221 +695,269 @@ msgstr ""
 msgid "| Also try include a backtrace, you can get it like this:"
 msgstr ""
 
-#: src/pingus_main.cxx:109
-msgid "| $ gdb pingus core"
-msgstr ""
-
-#: src/pingus_main.cxx:110
-msgid "| (gdb) bt"
-msgstr ""
-
-#: src/pingus_main.cxx:111 src/pingus_main.cxx:118
-msgid "| ..."
-msgstr ""
-
 #: src/pingus_main.cxx:113
 msgid "| If that doesn't work, try this:"
-msgstr ""
-
-#: src/pingus_main.cxx:115
-msgid "| $ gdb pingus"
-msgstr ""
-
-#: src/pingus_main.cxx:116
-msgid "| (gdb) r"
 msgstr ""
 
 #: src/pingus_main.cxx:117
 msgid "| [play until it crashes again]"
 msgstr ""
 
-#: src/pingus_main.cxx:120
-msgid "'------------------------------------------------------------------------\n"
-msgstr ""
-
-#: src/pingus_main.cxx:124
-msgid ""
-"\n"
-",------------------------------------------------------------------------"
-msgstr ""
-
 #: src/pingus_main.cxx:125
 msgid "| Warning: Pingus recieved a SIGINT, exiting now."
 msgstr ""
 
-#: src/pingus_main.cxx:349
-msgid ""
-"\n"
-"Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n"
-"There is NO warranty.  You may redistribute this software\n"
-"under the terms of the GNU General Public License.\n"
-"For more information about these matters, see the files named COPYING."
-msgstr ""
-
-#: src/pingus_main.cxx:488
+#: src/pingus_main.cxx:486
 msgid "Unknow char: "
 msgstr ""
 
-#: src/pingus_main.cxx:489
+#: src/pingus_main.cxx:487
 msgid "Usage: "
 msgstr ""
 
-#: src/pingus_main.cxx:489
+#: src/pingus_main.cxx:487
 msgid " [OPTIONS]... [LEVELFILE]"
 msgstr ""
 
-#: src/pingus_main.cxx:491
-msgid ""
-"\n"
-"Options:\n"
-"   -g, --geometry {width}x{height}\n"
-"                            Set the resolution for pingus (default: "
-"800x600)\n"
-"   -h, --help               Displays this screen\n"
-"   --disable-intro          Disable intro\n"
+#: src/pingus_main.cxx:490
+msgid "Options:"
 msgstr ""
 
-#: src/pingus_main.cxx:498
-msgid "   -G, --use-opengl         Use OpenGL\n"
+#: src/pingus_main.cxx:492
+msgid "Set the resolution for pingus (default: 800x600)"
 msgstr ""
 
-#: src/pingus_main.cxx:501
-msgid ""
-"   -w, --window             Start in Window Mode\n"
-"   -f, --fullscreen         Start in Fullscreen\n"
-"   -d, --datadir PATH       Set the path to load the data files to `path'\n"
-"   -l, --level FILE         Load a custom level from FILE\n"
-"   -w, --worldmap FILE      Load a custom worldmap from FILE\n"
-"   -v, --verbose            Print some more messages to stdout, can be set\n"
-"                            multible times to increase verbosity\n"
-"   -V, --version            Prints version number and exit\n"
-"   -e, --editor             Launch the Level editor (experimental)\n"
-"   --disable-auto-scrolling Disable automatic scrolling\n"
-"   --no-cfg-file            Don't read ~/.pingus/config\n"
-"   --config-file FILE       Read config from FILE (default: ~/.pingus/"
-"config)\n"
-"                            reduce CPU usage, might speed up the game on "
-"slower machines\n"
-"\n"
-"Debugging and experimental stuff:\n"
-"   --maintainer-mode        Enables some features, only interesting "
-"programmers\n"
-"   --debug OPTION           Enable the output of debugging infos, possible\n"
-"                            OPTION's are tiles, gametime, actions, sound, "
-"resources, gui,\n"
-"                            input\n"
-"   --min-frame-skip N       Skip at least N frames, larger values speed the "
-"game up\n"
-"   --max-frame-skip N       Skip at most N frames\n"
-"   --frame-skip N           Set both min and max frameskip to N\n"
-"   -t, --speed SPEED        Set the game speed (0=fastest, >0=slower)\n"
-"   -b, --print-fps          Prints the fps to stdout\n"
-"   --tile-size INT          Set the size of the map tiles (default: 32)\n"
-"   --fast-mode              Disable some cpu intensive features\n"
-"   --min-cpu-usage          Reduces the CPU usage by issuing sleep()\n"
-"\n"
-"\n"
-"Demo playing and recording:\n"
-"   -p, --play-demo FILE     Plays a demo session from FILE\n"
-"   -r, --enable-demo-recording\n"
-"                            Record demos for each played level\n"
+#: src/pingus_main.cxx:493
+msgid "Displays this help"
+msgstr ""
+
+#: src/pingus_main.cxx:494
+msgid "Disable intro"
+msgstr ""
+
+#: src/pingus_main.cxx:496
+msgid "Use OpenGL"
+msgstr ""
+
+#: src/pingus_main.cxx:499
+msgid "Start in Window Mode"
+msgstr ""
+
+#: src/pingus_main.cxx:500
+msgid "Start in Fullscreen"
+msgstr ""
+
+#: src/pingus_main.cxx:504 src/pingus_main.cxx:505
+msgid "FILE      "
+msgstr ""
+
+#: src/pingus_main.cxx:504
+msgid "Load a custom level from FILE"
+msgstr ""
+
+#: src/pingus_main.cxx:505
+msgid "Load a custom worldmap from FILE"
+msgstr ""
+
+#: src/pingus_main.cxx:506
+msgid "Print some more messages to stdout, can be set"
+msgstr ""
+
+#: src/pingus_main.cxx:507
+msgid "multible times to increase verbosity"
+msgstr ""
+
+#: src/pingus_main.cxx:508
+msgid "Prints version number and exit"
+msgstr ""
+
+#: src/pingus_main.cxx:509
+msgid "Launch the Level editor (experimental)"
+msgstr ""
+
+#: src/pingus_main.cxx:510
+msgid "Disable automatic scrolling"
+msgstr ""
+
+#: src/pingus_main.cxx:515
+msgid "Don't read ~/.pingus/config"
+msgstr ""
+
+#: src/pingus_main.cxx:516
+msgid "FILE       "
+msgstr ""
+
+#: src/pingus_main.cxx:516
+msgid "Read config from FILE (default: ~/.pingus/config)"
+msgstr ""
+
+#: src/pingus_main.cxx:517
+msgid "reduce CPU usage, might speed up the game on slower machines"
+msgstr ""
+
+#: src/pingus_main.cxx:518
+msgid "Debugging and experimental stuff:"
+msgstr ""
+
+#: src/pingus_main.cxx:519
+msgid "Enables some features, only interesting programmers"
+msgstr ""
+
+#: src/pingus_main.cxx:520
+msgid "Enable the output of debugging infos, possible"
+msgstr ""
+
+#: src/pingus_main.cxx:521
+msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
+msgstr ""
+
+#: src/pingus_main.cxx:522
+msgid "input"
+msgstr ""
+
+#: src/pingus_main.cxx:523
+msgid "Skip at least N frames, larger values speed the game up"
+msgstr ""
+
+#: src/pingus_main.cxx:524
+msgid "Skip at most N frames"
+msgstr ""
+
+#: src/pingus_main.cxx:525
+msgid "Set both min and max frameskip to N"
+msgstr ""
+
+#: src/pingus_main.cxx:526
+msgid "Set the game speed (0=fastest, >0=slower)"
+msgstr ""
+
+#: src/pingus_main.cxx:527
+msgid "Prints the fps to stdout"
+msgstr ""
+
+#: src/pingus_main.cxx:528
+msgid "Set the size of the map tiles (default: 32)"
+msgstr ""
+
+#: src/pingus_main.cxx:529
+msgid "Disable some cpu intensive features"
+msgstr ""
+
+#: src/pingus_main.cxx:530
+msgid "Reduces the CPU usage by issuing sleep()"
+msgstr ""
+
+#: src/pingus_main.cxx:533
+msgid "FILE     "
+msgstr ""
+
+#: src/pingus_main.cxx:533
+msgid "Plays a demo session from FILE"
+msgstr ""
+
+#: src/pingus_main.cxx:535
+msgid "Record demos for each played level"
+msgstr ""
+
+#: src/pingus_main.cxx:538
+msgid "Sound:"
+msgstr ""
+
+#: src/pingus_main.cxx:539
+msgid "Disable sound"
 msgstr ""
 
 #: src/pingus_main.cxx:540
-msgid ""
-"\n"
-"Sound:\n"
-"   -s, --enable-sound       Enable sound\n"
-"   -m, --enable-music       Enable music\n"
-msgstr ""
-
-#: src/pingus_main.cxx:649
-msgid "clanVorbis support:           ok"
-msgstr ""
-
-#: src/pingus_main.cxx:651
-msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
-msgstr ""
-
-#: src/pingus_main.cxx:655
-msgid "clanMikMod support:           ok"
-msgstr ""
-
-#: src/pingus_main.cxx:657
-msgid "clanMikMod support:  missing (music files will not be playable)"
+msgid "Disable music"
 msgstr ""
 
 #: src/pingus_main.cxx:661
-msgid "getext support:               ok"
+msgid "clanVorbis support:           ok"
 msgstr ""
 
-#: src/pingus_main.cxx:662
-msgid "gettext language:        english"
+#: src/pingus_main.cxx:663
+msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr ""
 
-#: src/pingus_main.cxx:668
-msgid "sound support:           enabled"
+#: src/pingus_main.cxx:667
+msgid "clanMikMod support:           ok"
 msgstr ""
 
-#: src/pingus_main.cxx:670
-msgid "sound support:          disabled"
+#: src/pingus_main.cxx:669
+msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr ""
 
 #: src/pingus_main.cxx:673
+msgid "getext support:               ok"
+msgstr ""
+
+#: src/pingus_main.cxx:674
+msgid "gettext language:        english"
+msgstr "gettext language:        czech"
+
+#: src/pingus_main.cxx:680
+msgid "sound support:           enabled"
+msgstr ""
+
+#: src/pingus_main.cxx:682
+msgid "sound support:          disabled"
+msgstr ""
+
+#: src/pingus_main.cxx:685
 msgid "music support:           enabled"
 msgstr ""
 
-#: src/pingus_main.cxx:675
+#: src/pingus_main.cxx:687
 msgid "music support:          disabled"
 msgstr ""
 
-#: src/pingus_main.cxx:677
+#: src/pingus_main.cxx:689
 msgid "resolution set to:       "
 msgstr ""
 
-#: src/pingus_main.cxx:678
+#: src/pingus_main.cxx:690
 msgid "fullscreen:              "
 msgstr ""
 
-#: src/pingus_main.cxx:679
+#: src/pingus_main.cxx:691
 msgid " enabled"
 msgstr ""
 
-#: src/pingus_main.cxx:679
+#: src/pingus_main.cxx:691
 msgid "disabled"
 msgstr ""
 
-#: src/pingus_main.cxx:689
+#: src/pingus_main.cxx:701
 msgid "PingusMain: Starting Main: "
 msgstr ""
 
-#: src/pingus_main.cxx:719
+#: src/pingus_main.cxx:731
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr ""
 
-#: src/pingus_main.cxx:810
+#: src/pingus_main.cxx:822
 msgid "Error caught from ClanLib: "
 msgstr ""
 
-#: src/pingus_main.cxx:814
+#: src/pingus_main.cxx:826
 msgid "Error caught from Pingus: "
 msgstr ""
 
-#: src/pingus_main.cxx:818
+#: src/pingus_main.cxx:830
 msgid "Pingus: Out of memory!"
 msgstr ""
 
-#: src/pingus_main.cxx:822
+#: src/pingus_main.cxx:834
 msgid "Pingus: Standard exception caught!:\n"
 msgstr ""
 
-#: src/pingus_main.cxx:826
+#: src/pingus_main.cxx:838
 msgid "Pingus: Unknown throw caught!"
 msgstr ""
 
-#: src/result_screen.cxx:97 src/start_screen.cxx:107
+#: src/result_screen.cxx:97 src/start_screen.cxx:108
 msgid "Abort"
-msgstr "Zrušit"
+msgstr "Zrusit"
 
 #: src/result_screen.cxx:165
 msgid "Retry"
@@ -1004,65 +965,67 @@ msgstr "Znovu"
 
 #: src/result_screen.cxx:173
 msgid "Success!"
-msgstr "Úspěch!"
+msgstr "Uspech!"
 
 #: src/result_screen.cxx:180
 msgid "Failure!"
-msgstr "Špatně!"
+msgstr "Spatne!"
 
 #: src/result_screen.cxx:189
 msgid "Perfect! You saved everybody possibly, great!"
-msgstr ""
+msgstr "Skvele! Zachranil jsi uplne vsechny, vyborne!"
 
 #: src/result_screen.cxx:191
 msgid "None got killed, pretty good work"
-msgstr ""
+msgstr "Nikdo nezemrel, to byla dobra prace."
 
 #: src/result_screen.cxx:193
 msgid ""
 "You saved just what you needed, you made it, but\n"
 "maybe you can do better?"
 msgstr ""
+"Zachranil jsi jen ty, ktere jsi musel.\n"
+"Sice jsi to zvladl, ale nemohlo to byt lepsi?"
 
 #: src/result_screen.cxx:196
 msgid "Not everybody could get saved, but still good work!"
-msgstr ""
+msgstr "Nezachranil jsi vsechny, ale i tak to je dobre!"
 
 #: src/result_screen.cxx:198
 msgid "What can I say, you made it, congratulations!"
-msgstr ""
+msgstr "Co mohu vice rici - povedlo se ti to, gratuluji!"
 
 #: src/result_screen.cxx:203
 msgid "You killed everybody, not good."
-msgstr ""
+msgstr "Vsechny jsi zabil. To byl hodne spatny vykon."
 
 #: src/result_screen.cxx:205
 msgid "None got saved, I know you can do better."
-msgstr ""
+msgstr "Nikoho jsi nezachranil. Vim, ze to umis i lepe."
 
 #: src/result_screen.cxx:207
 msgid ""
 "You didn't saved enough, but still saved a few, next\n"
 "time you might be better."
 msgstr ""
-"Nezachránil jsi dostatek Pingusů, ale bylo jich alespoň pár.\n"
-"Příště by si měl být lepší."
+"Nezachranil jsi dostatek pingu, ale bylo jich alespon par.\n"
+"Priste by si mel byt lepsi."
 
 #: src/result_screen.cxx:210
 msgid "Only one more and you would have made it, try again!"
-msgstr ""
+msgstr "Jeste jeden a mohl jsi uspet. Zkus to znovu."
 
 #: src/result_screen.cxx:212
 msgid "Only a handfull more and you would have made it, try again!"
-msgstr ""
+msgstr "Jen nekolik dalsich a bylo by to v poradku. Zkus to jeste jednou!"
 
 #: src/result_screen.cxx:214
 msgid "Better luck next time!"
-msgstr ""
+msgstr "Priste ti preju vice stesti."
 
 #: src/result_screen.cxx:230
 msgid "Saved: "
-msgstr "Zachráněno: "
+msgstr "Zachraneno: "
 
 #: src/result_screen.cxx:234
 msgid "Killed: "
@@ -1070,7 +1033,7 @@ msgstr "Zabito: "
 
 #: src/result_screen.cxx:238
 msgid "Time left: "
-msgstr "Zbylý čas: "
+msgstr "Zbyvajici cas: "
 
 #: src/screenshot.cxx:43
 msgid "Screenshot: Saving screenshot to: "
@@ -1093,37 +1056,37 @@ msgstr ""
 msgid "Image has wrong color depth: %d"
 msgstr ""
 
-#: src/start_screen.cxx:71
+#: src/start_screen.cxx:72
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
-#: src/start_screen.cxx:154
+#: src/start_screen.cxx:155
 msgid "Number of Pingus: "
-msgstr "Počet Pingusů: "
+msgstr "Pocet pingu: "
 
-#: src/start_screen.cxx:157
+#: src/start_screen.cxx:158
 msgid "Number to Save: "
-msgstr "Počet k záchraně: "
+msgstr "Nutno zachranit: "
 
-#: src/start_screen.cxx:160
+#: src/start_screen.cxx:161
 msgid "Time: "
-msgstr "Čas: "
+msgstr "Cas: "
 
-#: src/start_screen.cxx:163
+#: src/start_screen.cxx:164
 msgid "Difficulty:"
-msgstr "Obtížnost: "
+msgstr "Obtiznost: "
 
-#: src/start_screen.cxx:171
+#: src/start_screen.cxx:172
 msgid "Author: "
 msgstr "Autor: "
 
-#: src/start_screen.cxx:174
+#: src/start_screen.cxx:175
 msgid "Filename: "
 msgstr ""
 
 #: src/story.cxx:37
 msgid "The Journey Continues"
-msgstr ""
+msgstr "Vyprava pokracuje"
 
 #: src/story.cxx:41
 msgid ""
@@ -1132,25 +1095,37 @@ msgid ""
 "the world. Since the floe with which the Pingus traveled to the\n"
 "Tutorial Island isn't going to hold the whole way into the warmer\n"
 "climated regions the Pingus have to find something else to guide\n"
-"there on their journey.\n"
+"them on their journey.\n"
 msgstr ""
+"Nyni, kdyz ty a pingove jste se naucili zaklady a vsechny jste je\n"
+"procvicily, je cas pokrocit v ceste. Protoze kra, na ktere pingove\n"
+"pripluli na vyukovy ostrov nemuze nest posadku po celou cestu\n"
+"do teplejsich oblasti, pingove musi najit jiny dopravni prostredek.\n"
 
 #: src/story.cxx:51
 msgid ""
 "But as the eldest have said, the Tutorial Island provides not\n"
 "only a way to practive, but it is also the starting point into\n"
-"the world, cause the wood of the large tree at the end of the\n"
-"island brings good wood to construct a float.\n"
+"the world. After some search the Pingus discovered the meaning\n"
+"of this, the large tree at the end of the island provides good\n"
+"wood to construct a float.\n"
 msgstr ""
+"Rada nejstarsich rekla, ze vyukovy ostrov neposkytuje jen\n"
+"moznost vycviku, ale je take vychozim bodem v ceste do sveta\n"
+"Po kratkem hledani pingove pochopili vyznam sdeleni - velky\n"
+"strom na konci ostrova da kvalitni drevo pro konstrukci voru.\n"
 
-#: src/story.cxx:59
+#: src/story.cxx:60
 msgid ""
-"So the Pingus set out and constructed a some large floats, enough\n"
+"So the Pingus set out and constructed some large floats, enough\n"
 "to carry them all. After also packaging up a bunch of provisions\n"
 "they where prepared to finally start of their journey and leave\n"
-"their familiar ground and entering the unknown parts of the\n"
-"world.\n"
+"their familiar ground and enter the unknown parts of the world.\n"
 msgstr ""
+"Takze pingove postavili nekolik velkych voru, dostatek, aby se\n"
+"mohli vsichni prepravit. Jeste sehnali dostatecne zasoby potravin\n"
+"a byli konecne pripraveni opustit znamou zemi a vydat se na svou\n"
+"pout do neznamych oblati sveta.\n"
 
 #: src/story.cxx:68
 msgid ""
@@ -1159,23 +1134,26 @@ msgid ""
 "\n"
 "To be continued..."
 msgstr ""
+"Tak sedeli na svych vorech, premysleli, co je ceka a odplouvali\n"
+"do zapadu slunce.\n"
+"\n"
+"Bude pokracovat..."
 
 #: src/story.cxx:79
 msgid "The Journey Begins"
-msgstr ""
+msgstr "Vyprava zacina"
 
 #: src/story.cxx:83
-#, fuzzy
 msgid ""
 "For a long time now the Pingus have lived happily in peace on the\n"
 "south pole along with all the other animals, everything was in\n"
 "balance and it seemed like nothing could disrupt their peace.  The\n"
 "Pingus where happy and it seemed like this could never end.\n"
 msgstr ""
-"Po dlouhý čas Pingusové žili šťastně a bezstarostně\n"
-"na severním pólu spolu s mnoha jinými zvířaty; všechno bylo\n"
-"v rovnováze a vůbec to nevypadalo, že by něco mohlo tento klid.  The\n"
-"Pingus where happy and it seemed like this could never end.\n"
+"Po dlouhy cas pingove zili stastne a spokojene na severnim\n"
+"polu spolu s ostatnima zviratkama. Vsechno bylo v rovnovaze\n"
+"a vubec to nevypadalo, ze by neco mohlo tento klid vyrusit.\n"
+"Pingove byli statstni a zdalo se, ze tomu bude uz navzdy.\n"
 
 #: src/story.cxx:91
 msgid ""
@@ -1184,17 +1162,22 @@ msgid ""
 "normal fluctuation in the worlds climate, but things seemed to get\n"
 "worse and worse with every year."
 msgstr ""
-"Ale jednoho dne se začala situace pomalu měnit - obloha se zamračila\n"
-"a Země se začala oteplovat. Nejdříve to vypadalo jen jako běžné\n"
-"výkyvy světového podnebí, jenže se situce rok od roku zhoršovala."
+"Ale jednoho dne se zacala situace pozvolna menit - obloha se\n"
+"zamracila a Zeme se zacala oteplovat. Nejdrive to vypadalo jen\n"
+"jako bezne vykyvy svetoveho podnebi, jenze se situce rok od roku\n"
+"zhorsovala."
 
 #: src/story.cxx:100
 msgid ""
 "The snow began to melt away in a few regions and food became an\n"
 "issue. Other animals already tend to leave the region to search\n"
-"for colder areas, but the Pingus knew that this couldn't help,\n"
+"for colder areas, but the Pingus knew that this wouldn't help,\n"
 "they knew that they had to do something about this problem."
 msgstr ""
+"Snih pomalu tal a mizel a v nekolika oblastech se obevily problemy\n"
+"se shanenim potravy. Ostatni zviratka odesla pryc hledat chladnejsi\n"
+"oblasti. Pingove ale vedeli, ze to pranic nepomuze, ze musi neco\n"
+"podniknout, aby zkaze zabranili."
 
 #: src/story.cxx:108
 msgid ""
@@ -1203,6 +1186,10 @@ msgid ""
 "to find the cause for this warming. The expedition consisted of\n"
 "hundreds of the bravest Pingus around on the south pole."
 msgstr ""
+"Takze se sesel kruh nejstarsich, aby rozhodl, co delat. Nakonec\n"
+"se rozhodli vyslat vypravu kolem sveta, ktera by nasla pricinu\n"
+"oteplovani. Expedici tvorily stovky nejstatecnejsich pingu z celeho\n"
+"severniho polu."
 
 #: src/story.cxx:116
 msgid ""
@@ -1212,6 +1199,11 @@ msgid ""
 "Island. According to the eldest, this island has always been the\n"
 "first stop of Pingus which where send out into the world."
 msgstr ""
+"A ty jsi byl vybran, aby jsi je vedl na teto pouti kolem sveta.\n"
+"Potoze cesta bude obtizna a nebezpecna, vasi prvni zastavkou\n"
+"bude ostrov Mogorok, tez znamy jako vyukovy ostrov. Podle\n"
+"starsich byl ostrov vzdy prvni metou vyprav, ktere do sveta\n"
+"smerovaly."
 
 #: src/story.cxx:125
 msgid ""
@@ -1220,6 +1212,10 @@ msgid ""
 "to build bridges, climb, bash and all the rest of their talents\n"
 "which they will surly need on their long and dangerous journey."
 msgstr ""
+"Na ostrove se nachazi spousta oblasti, ktere jsou idealni\n"
+"k trenovani schopnosti pingu. Pingove si tu mohou zdokonalit\n"
+"sve schopnosti staveni mostu, lezeni, hrabani a dalsi schopnosi,\n"
+"ktere urcite budou cestou potrebovat."
 
 #: src/story.cxx:133
 msgid ""
@@ -1229,6 +1225,10 @@ msgid ""
 "since you will need them all for sure an your journey around the\n"
 "world."
 msgstr ""
+"Ty si zase procvicis velitelske umeni. Mel by si se seznamit\n"
+"se vsemi schopnostmi, kterymi pingove oplyvaji. Musis je\n"
+"opravdu dokonale zvladnout, protoze je vsechny budes cestou\n"
+"potrebovat."
 
 #: src/story.cxx:142
 msgid ""
@@ -1237,29 +1237,13 @@ msgid ""
 "\n"
 "                                                  Good Luck!"
 msgstr ""
+"Nyni, kdyz jsi se svou partou dorazil na vyukovy ostrov,\n"
+"je cas zacit a prevzit veleni mise.\n"
+"\n"
+"                                                   Hodne stesti!"
 
-#: src/system.cxx:65 src/system.cxx:97
-msgid "System: Couldn't open: "
-msgstr ""
-
-#: src/system.cxx:192
-msgid "Successfully created: "
-msgstr ""
-
-#: src/system.cxx:197
-msgid "Found: "
-msgstr ""
-
-#: src/system.cxx:264
+#: src/system.cxx:265
 msgid "Environment variable $HOME not set, fix that and start again."
-msgstr ""
-
-#: src/system.cxx:426
-msgid "System::checksum: Couldn't open file: "
-msgstr ""
-
-#: src/system.cxx:436
-msgid "System:checksum: file read error"
 msgstr ""
 
 #: src/worldmap/level_dot.cxx:159
@@ -1268,11 +1252,11 @@ msgstr "zamknuto"
 
 #: src/worldmap/manager.cxx:102
 msgid "Show Ending?"
-msgstr ""
+msgstr "Ukazat konec?"
 
 #: src/worldmap/manager.cxx:132
 msgid "Show Story?"
-msgstr "Ukázat příběh?"
+msgstr "Ukazat pribeh?"
 
 #: src/worldmap/manager.cxx:160
 msgid "Leave?"
