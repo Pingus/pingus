@@ -17,8 +17,10 @@
     </pause-button>
 
     <fast-forward-button>
-      <key-button key="F"/>
-      <key-button key="SPACE"/>
+      <multiple-button>
+        <key-button key="F"/>
+        <key-button key="SPACE"/>
+      </multiple-button>
     </fast-forward-button>
 
     <armageddon-button>
