@@ -1,0 +1,719 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?>
+
+<pingus-level>
+  <global>
+    <levelname lang="en">EditorDefaultValue: Please give me a name...</levelname>
+    <description lang="en">EditorDefaultValue: ...and a short description</description>
+    <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
+    <number-of-pingus>50</number-of-pingus>
+    <number-to-save>25</number-to-save>
+    <time>9000</time>
+    <width>1408</width>
+    <height>608</height>
+  </global>
+
+  <action-list>
+    <basher count="20"/>
+    <blocker count="20"/>
+    <bomber count="20"/>
+    <bridger count="20"/>
+    <climber count="20"/>
+    <digger count="20"/>
+    <floater count="20"/>
+    <jumper count="20"/>
+    <miner count="20"/>
+  </action-list>
+
+<background type="surface">
+  <surface><resource type="datafile">
+    <resource-datafile>textures</resource-datafile>
+  <resource-ident>textures/rooftile2</resource-ident>
+  </resource></surface>
+  <color>
+    <red>0</red>
+    <green>0</green>
+    <blue>0</blue>
+    <alpha>0.5</alpha>
+  </color>
+  <scroll-x>0</scroll-x>
+  <scroll-y>0</scroll-y>
+  <para-x>0.5</para-x>
+  <para-y>0.5</para-y>
+  <stretch-x>0</stretch-x>
+  <stretch-y>0</stretch-y>
+  <position>
+    <x-pos>1</x-pos>
+    <y-pos>17</y-pos>
+    <z-pos>-150</z-pos>
+  </position>
+</background>
+
+<trap>
+  <type>spike</type>
+  <position>
+    <x-pos>968</x-pos>
+    <y-pos>142</y-pos>
+    <z-pos>-100</z-pos>
+  </position>
+</trap>
+
+<trap>
+  <type>spike</type>
+  <position>
+    <x-pos>970</x-pos>
+    <y-pos>173</y-pos>
+    <z-pos>-100</z-pos>
+  </position>
+</trap>
+
+<trap>
+  <type>spike</type>
+  <position>
+    <x-pos>972</x-pos>
+    <y-pos>204</y-pos>
+    <z-pos>-100</z-pos>
+  </position>
+</trap>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/wood_bottom</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>182</x-pos>
+    <y-pos>94</y-pos>
+    <z-pos>-50</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<liquid use-old-width-handling="0">
+  <surface><resource type="datafile">
+    <resource-datafile>liquids</resource-datafile>
+  <resource-ident>Liquid/slime</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-61</x-pos>
+    <y-pos>537</y-pos>
+    <z-pos>-50</z-pos>
+  </position>
+  <width>24</width>
+  <speed>50</speed>
+</liquid>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/stone6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1021</x-pos>
+    <y-pos>268</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/stone6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>773</x-pos>
+    <y-pos>267</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/stone6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>511</x-pos>
+    <y-pos>267</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/stone6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>248</x-pos>
+    <y-pos>266</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/stone6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1021</x-pos>
+    <y-pos>439</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/stone6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>773</x-pos>
+    <y-pos>438</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/stone6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>511</x-pos>
+    <y-pos>438</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/stone6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>248</x-pos>
+    <y-pos>437</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/stone6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1023</x-pos>
+    <y-pos>354</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/stone6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>775</x-pos>
+    <y-pos>353</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/stone6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>513</x-pos>
+    <y-pos>353</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/stone6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>250</x-pos>
+    <y-pos>352</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/stone6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1023</x-pos>
+    <y-pos>525</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/stone6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>775</x-pos>
+    <y-pos>524</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/stone6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>513</x-pos>
+    <y-pos>524</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/stone6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>250</x-pos>
+    <y-pos>523</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/grey_stone4</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>948</x-pos>
+    <y-pos>230</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/grey_stone4</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>700</x-pos>
+    <y-pos>229</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/grey_stone4</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>438</x-pos>
+    <y-pos>229</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/grey_stone4</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>175</x-pos>
+    <y-pos>228</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/grey_stone3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1009</x-pos>
+    <y-pos>551</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/grey_stone3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>761</x-pos>
+    <y-pos>550</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/grey_stone3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>429</x-pos>
+    <y-pos>540</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/grey_stone3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>243</x-pos>
+    <y-pos>549</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/grey_stone3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>186</x-pos>
+    <y-pos>536</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/grey_stone6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>520</x-pos>
+    <y-pos>533</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/grey_stone6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>952</x-pos>
+    <y-pos>524</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>misc/grey_stone6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>704</x-pos>
+    <y-pos>523</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="bridge">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-bridge</resource-datafile>
+  <resource-ident>misc/bridge_right</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1188.84</x-pos>
+    <y-pos>371.612</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="bridge">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-bridge</resource-datafile>
+  <resource-ident>misc/bridge_right</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1183.73</x-pos>
+    <y-pos>260.388</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="bridge">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-bridge</resource-datafile>
+  <resource-ident>misc/bridge_right</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1189</x-pos>
+    <y-pos>483</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="bridge">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-bridge</resource-datafile>
+  <resource-ident>misc/bridge_right</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1189.84</x-pos>
+    <y-pos>427.612</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="bridge">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-bridge</resource-datafile>
+  <resource-ident>misc/bridge_right</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1184.73</x-pos>
+    <y-pos>316.388</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="bridge">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-bridge</resource-datafile>
+  <resource-ident>misc/bridge_right</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1187</x-pos>
+    <y-pos>540</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="bridge">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-bridge</resource-datafile>
+  <resource-ident>misc/bridge_left</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1188.84</x-pos>
+    <y-pos>343.612</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="bridge">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-bridge</resource-datafile>
+  <resource-ident>misc/bridge_left</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1185.73</x-pos>
+    <y-pos>232.388</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="bridge">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-bridge</resource-datafile>
+  <resource-ident>misc/bridge_left</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1189</x-pos>
+    <y-pos>455</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="bridge">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-bridge</resource-datafile>
+  <resource-ident>misc/bridge_left</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1189.84</x-pos>
+    <y-pos>399.612</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="bridge">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-bridge</resource-datafile>
+  <resource-ident>misc/bridge_left</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1184.73</x-pos>
+    <y-pos>288.388</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="bridge">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-bridge</resource-datafile>
+  <resource-ident>misc/bridge_left</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1187</x-pos>
+    <y-pos>511</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>space/smalltower</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1254</x-pos>
+    <y-pos>229</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>space/smalltower</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1184</x-pos>
+    <y-pos>232</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>space/smalltower</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1254</x-pos>
+    <y-pos>372</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>space/smalltower</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1184</x-pos>
+    <y-pos>316</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>groundpieces-ground</resource-datafile>
+  <resource-ident>space/way</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1156</x-pos>
+    <y-pos>565</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<exit use-old-pos-handling="0">
+  <position>
+    <x-pos>1076</x-pos>
+    <y-pos>235</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <surface><resource type="datafile">
+    <resource-datafile>exits</resource-datafile>
+  <resource-ident>exits/stone</resource-ident>
+  </resource></surface>
+  <owner-id>0</owner-id></exit>
+
+<entrance>
+  <position>
+    <x-pos>232</x-pos>
+    <y-pos>123</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>right</direction>
+  <release-rate>150</release-rate>
+  <owner-id>0</owner-id>
+</entrance>
+
+<entrance>
+  <position>
+    <x-pos>1127</x-pos>
+    <y-pos>490</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>misc</direction>
+  <release-rate>50</release-rate>
+  <owner-id>0</owner-id>
+</entrance>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>entrances/wood_top</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>182</x-pos>
+    <y-pos>94</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<liquid use-old-width-handling="0">
+  <surface><resource type="datafile">
+    <resource-datafile>liquids</resource-datafile>
+  <resource-ident>Liquid/slime</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-33</x-pos>
+    <y-pos>552</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <width>23</width>
+  <speed>50</speed>
+</liquid>
+
+  <start-position>
+  <position>
+    <x-pos>31</x-pos>
+    <y-pos>42</y-pos>
+    <z-pos>1000</z-pos>
+  </position>
+  </start-position>
+
+</pingus-level>
+
