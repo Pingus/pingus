@@ -1,4 +1,4 @@
-//  $Id: sound_real.cxx,v 1.8 2002/09/14 19:06:33 torangan Exp $
+//  $Id: sound_real.cxx,v 1.9 2002/11/02 22:10:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,8 +37,15 @@
 PingusSoundReal::PingusSoundReal ()
   : sample (0), music (0)
 {
-  if (music_enabled || sound_enabled)
-    init();
+  pout(PINGUS_DEBUG_SOUND) << "Initializing ClanLib-Sound" << std::endl;
+    
+  CL_SetupSound::init();
+  
+  pout(PINGUS_DEBUG_SOUND) << "Initializing ClanLib-MikMod" << std::endl;
+  
+#ifdef HAVE_LIBCLANMIKMOD
+  CL_SetupMikMod::init();
+#endif
 }
 
 PingusSoundReal::~PingusSoundReal()
@@ -53,39 +60,15 @@ PingusSoundReal::~PingusSoundReal()
   for (unsigned int i = 0; i < sound_holder.size(); ++i)
     delete sound_holder[i];
   
-  if (is_init) {
-
 #ifdef HAVE_LIBCLANMIKMOD
     CL_SetupMikMod::deinit();
 #endif
-
     CL_SetupSound::deinit();
-  
-  }
-}
-
-
-void
-PingusSoundReal::init()
-{
-
-  is_init = true;
-
-  pout(PINGUS_DEBUG_SOUND) << "Initializing ClanLib-Sound" << std::endl;
-    
-  CL_SetupSound::init();
-  
-  pout(PINGUS_DEBUG_SOUND) << "Initializing ClanLib-MikMod" << std::endl;
-  
-#ifdef HAVE_LIBCLANMIKMOD
-  CL_SetupMikMod::init();
-#endif
 }
 
 void
 PingusSoundReal::real_play_sound(const std::string & filename, float volume, float panning)
 {
-
   pout(PINGUS_DEBUG_SOUND) << "PingusSoundReal: Playing sound: " << filename << "Buffer-Size: " << sound_holder.size() << std::endl;
 
   if (!sound_enabled)

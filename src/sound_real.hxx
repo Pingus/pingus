@@ -1,4 +1,4 @@
-//  $Id: sound_real.hxx,v 1.6 2002/09/27 11:26:44 torangan Exp $
+//  $Id: sound_real.hxx,v 1.7 2002/11/02 22:10:52 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,23 +35,16 @@ class CL_SoundBuffer_Session;
 class PingusSoundReal : public PingusSound
 {
 private:
-  ///
-  bool is_init;
-  
-  /// The current music file
+  /** The current music file */
   CL_SoundBuffer * sample;
 
-  /// Music Controller Session
+  /** Music Controller Session */
   CL_SoundBuffer_Session * music;
 
-  /// Stores all Sound Effects
+  /** Stores all Sound Effects */
   std::vector<CL_SoundBuffer_Session *> sound_holder;
 
-  /// Init ClanSound and ClanMikMod
-  void init();
-		   
 public:
-
   PingusSoundReal ();
   virtual ~PingusSoundReal ();
 

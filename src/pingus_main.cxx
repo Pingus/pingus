@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.32 2002/11/02 21:12:16 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.33 2002/11/02 22:10:52 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -78,14 +78,13 @@
 #include "editor/editor.hxx"
 #include "boost/smart_ptr.hpp"
 #include "screen_manager.hxx"
-#include "sound_dummy.hxx"
 #include "action_data.hxx"
 #include "fonts.hxx"
-#include "sound_real.hxx"
 #include "xml_helper.hxx"
 #include "input_debug_screen.hxx"
 #include "pingus_menu_manager.hxx"
 #include "pingus_resource.hxx"
+#include "sound.hxx"
 
 using EditorNS::Editor;
 
@@ -844,10 +843,6 @@ PingusMain::init_clanlib()
       glEnable (GL_BLEND);
     }
 #endif
-
-  CL_Display::clear_display ();
-  CL_Display::flip_display ();
-
 }
 
 void
@@ -867,21 +862,7 @@ PingusMain::deinit_clanlib()
 void
 PingusMain::init_pingus()
 {
-  if (verbose) 
-    {
-      std::cout << 
-        _("-----------------------------------------------------------------\n")
-		<< std::endl;
-      std::cout << 
-        _(" Verbosity set to: ") << verbose  << "\n"
-		<< std::endl;
-      std::cout << 
-        _(" If you don't like to get lots of debug messages, than set the\n"
-          " verbosity down to 0, like this:\n\n"
-          "   $ ./pingus --verbose 0\n"
-          "-----------------------------------------------------------------\n")
-		<< std::endl;
-    }
+  PingusSound::init();
 
   PingusResource::init();
   Fonts::init();
@@ -895,21 +876,6 @@ PingusMain::init_pingus()
   pout.add (console);
   perr.add (std::cout);
   perr.add (console);
-
-  if (sound_enabled || music_enabled) 
-    {
-      if (verbose)
-	std::cout << "Init Sound" << std::endl;
-
-      PingusSound::init (new PingusSoundReal ());       
-    }
-  else
-    {
-      if (verbose)
-	std::cout << "Sound disabled" << std::endl;
-      PingusSound::init (new PingusSoundDummy ());
-    }
-
 }
 
 void
@@ -918,6 +884,7 @@ PingusMain::deinit_pingus()
   XMLhelper::deinit();
   Fonts::deinit();
   PingusResource::deinit();
+  PingusSound::deinit();
 }  
 
 /* EOF */

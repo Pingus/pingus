@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.24 2002/10/26 17:31:42 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.25 2002/11/02 22:10:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -85,6 +85,11 @@ ScreenManager::display ()
 	  real_replace_screen (replace_screen_arg);
 	  cached_action = none;
 	}
+
+      // FIXME: is there a more gentel way to do that instead of spreading the checks all around here?
+      // Last screen has poped, so we are going to end here
+      if (screens.empty ())
+	continue;
       
       // skip draw if the screen changed to avoid glitches
       if (last_screen == get_current_screen())
@@ -111,6 +116,7 @@ ScreenManager::display ()
 ScreenPtr
 ScreenManager::get_current_screen()
 {
+  assert(!screens.empty());
   return screens.back ();
 }
 

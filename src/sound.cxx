@@ -1,4 +1,4 @@
-//  $Id: sound.cxx,v 1.6 2002/08/23 15:49:50 torangan Exp $
+//  $Id: sound.cxx,v 1.7 2002/11/02 22:10:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,19 +17,46 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include <assert.h>
 #include "path_manager.hxx"
 #include "sound_dummy.hxx"
+#include "sound_real.hxx"
+#include "globals.hxx"
 
 PingusSound* PingusSound::sound;
 
 void
 PingusSound::init (PingusSound* s)
 {
-  assert (sound == 0);
-  sound = s;
+  if (s == 0)
+    {
+      if (sound_enabled || music_enabled) 
+        {
+          if (verbose)
+            std::cout << "Init Sound" << std::endl;
+
+          PingusSound::init (new PingusSoundReal ());
+        }
+      else
+        {
+          if (verbose)
+            std::cout << "Sound disabled" << std::endl;
+          PingusSound::init (new PingusSoundDummy ());
+        }
+    }
+  else
+    {
+      sound = s;
+    }
 }
 
+void
+PingusSound::deinit ()
+{
+  delete sound;
+  sound = 0;
+}
 
 /** Load a sound file and play it immediately.
     
