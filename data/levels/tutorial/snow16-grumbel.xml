@@ -6,6 +6,7 @@
     <levelname lang="de">Brückenbauen wird schwieriger...</levelname>
     <levelname lang="cs">Mosty se zacinaji zeslozitovat...</levelname>
     <levelname lang="tr">Köprü yapýmý karmaþýklaþýyor...</levelname>
+    <levelname lang="fr">La construction de pont devient complexe...</levelname>
     <levelname lang="sr">Mostogradnja se komplikuje...</levelname>
 
     <description lang="en">And again you have to combine actions carefully and wisely, without
@@ -21,8 +22,12 @@
                            se tomu vyhnout.
     </description>
     <description lang="tr">Ve yine birden fazla eylemi akýllýca ve dikkatlice birleþtirmen
-                           gerekiyor. Eðer iyi oynamazsan, Pingularý çýkýþa götüremek bir 
+                           gerekiyor. Eðer iyi oynamazsan, Pingularý çýkýþa götüremek bir
                            tarafa, hepsini uçuruma yuvarlayýverebilirsin.
+    </description>
+    <description lang="fr">Encore une fois, vous avez à combiner des action avec précautions et
+                           intelligence, sans quoi vous allez terminer votre course dans le
+                           trou avant l'entrée. Alors pensez à un moyen d'éviter cela.
     </description>
     <description lang="sr">Jos jednom se akcije moraju mudro i pazljivo kombinovati, jer bi
                            bez toga zacas zavrsili u rupi pre izlaza, zato smisli kako da

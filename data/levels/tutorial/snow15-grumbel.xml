@@ -6,6 +6,7 @@
     <levelname lang="de">Kletter, Climber... Boom!</levelname> 
     <levelname lang="cs">Splhej horolezce,... Bum!</levelname>
     <levelname lang="tr">Týrman, týrman,... Bum!</levelname>
+    <levelname lang="fr">Plus haut, Plus haut, ... Boum!</levelname>
     <levelname lang="sr">Penjanje, pentranje,... Bum!</levelname>
 
     <description lang="en">As you might have already figured out from previous levels you
@@ -26,6 +27,11 @@
     <description lang="tr">Çoktan farkýna varmýþ olduðun gibi, genellikle birden fazla 
                            eylemi birleþtirmen gerekiyor. Bu seviyede Digger eylemi olmadýðý
                            için yine yolu bomba ile açman gerek. Ama bombacý patlatmasý gereken
+    </description>
+    <description lang="fr">Comme vous l'avez sûrement compris auparavant, vous avez souvent a
+                           combiner différentes actions pour accomplir le travail. Étant donné
+                           l'absence de l'action Digger dans ce niveau, le Bomber d'entrer en
+                           action, mais comment peut-il atteindre l'endroit à dynamiter?
                            yere nasýl varacak?
     </description>
     <description lang="sr">Kao sto si do sada mogao ukapirati iz prethodnih nivoa cesto

@@ -6,6 +6,7 @@
     <levelname lang="de">Springe... und grabe...</levelname>
     <levelname lang="cs">Skakani a hrabani...</levelname>
     <levelname lang="tr">Zýpla, düþ... ve Kaz...</levelname>
+    <levelname lang="fr">Saute, rebondis ... et défonce...</levelname>
     <levelname lang="sr">Skakutanje... i glodanje...</levelname>
 
     <description lang="en">It's panic time again. The Pingus will not come out very fast, but
@@ -25,11 +26,17 @@
                            dostat jen 5, tak to snad zvladnes. Kdyz ti to bude delat problemy,
                            muzes pouzivat pauzu (P).
     </description>
-    <description lang="tr">Yine panik zamaný. Pingular çok hýzlý gelmeyecekler, ancak 
+    <description lang="tr">Yine panik zamaný. Pingular çok hýzlý gelmeyecekler, ancak
                            duvarlardan geri döneceklerinden, eni sonu baþýna dert açacaklar.
                            Sadece üçünü kurtarmak gerektiði için yapabilmelisin, ama eðer çok
-                           zor gelirse bir ipucu: zaman zaman 'p' ile oyunu durdurarak daha 
+                           zor gelirse bir ipucu: zaman zaman 'p' ile oyunu durdurarak daha
                            kolay çözebilirsin.
+    </description>
+    <description lang="fr">C'est encore une fois la panique. Les Pingus ne sortirons pas très rapidement,
+                           mais puisque qu'ils vont se retourner sur les murs, vous allez rapidement
+                           être en difficulté de coordination. Mais puisque vous n'avez qu'à en sauver 3,
+                           cela devrait être réalisable, mais si vous êtes en difficulté, utilisez le
+                           mode pause ('p') pour avoir une vue d'ensemble.
     </description>
     <description lang="sr">Ponovo je vreme za paniku. Pingusi nece brzo ulaziti, ali posto
                            se kod zidova okrecu, ubrzo ce biti tesko koordinirati ih sve. Posto je

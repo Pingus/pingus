@@ -6,6 +6,7 @@
     <levelname lang="de">Zwei Gruppen gleichzeitig, koordiniere weise</levelname>
     <levelname lang="cs">Dve skupiny najednou - rozumne je ved</levelname>
     <levelname lang="tr">Ýki grup ayný anda, dikkatli yönlendir</levelname>
+    <levelname lang="fr">Deux groupes en parallèle, coordination essentielle</levelname>
     <levelname lang="sr">Dve grupe istovremeno, budi mudar</levelname>
 
     <description lang="en">You have two groups to coordinate this time, no need to panic, since
@@ -20,9 +21,13 @@
                            najednou. Nemusis se obavat, mas dostatek casu na promysleni
                            svych planu. Vic ti uz napovidat nebudu. Hodne stesti!
     </description>
-    <description lang="tr">Ayný anda gelen iki grubu kontrol etmen gerekiyor bu kez. 
+    <description lang="tr">Ayný anda gelen iki grubu kontrol etmen gerekiyor bu kez.
                            Ýyice düþünmene yetecek süren olacaðý için, paniðe gerek yok.
                            Ama bu kez ipucu da yok. Ýyi þanslar!
+    </description>
+    <description lang="fr">Vous avez deux groupes à diriger cette fois, ne paniquez pas, puisque
+                           ce niveau vous donne suffisament de temps pour réfléchir à vos actions.
+                           Pas plus de conseils cette fois, mais bonne chance!
     </description>
     <description lang="sr">Ovog puta treba koordinirati dve grupe, ali bez panike, jer ovaj
                            nivo daje dovoljno vremena da se razmisli o potrebnim akcijama. Nema

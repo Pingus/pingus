@@ -6,6 +6,7 @@
     <levelname lang="de">Kletter, Climber, kletter.. und bau eine Brücke</levelname>
     <levelname lang="cs">Splhej horolezce, splhej... a postav most</levelname>
     <levelname lang="tr">Týrman, Climber, týrman ve bir köprü yap</levelname>
+    <levelname lang="fr">Grimpe, Grimpe, Grimpe... et construit un pont</levelname>
     <levelname lang="sr">Penjanje, pentranje... i mostogradnja</levelname>
 
     <description lang="en">Once again you get access to a new action. The Climber action allows
@@ -20,9 +21,13 @@
                            horolezcem, umi vysplhat na kolme zdi a dostane se tak na mista, kam
                            by se jinak nikdo nedostal.
     </description>
-    <description lang="tr">Bir yeni eylem daha. Climber eylemi Pingu'nun düz duvarlara 
+    <description lang="tr">Bir yeni eylem daha. Climber eylemi Pingu'nun düz duvarlara
                            týrmanabilmesini saðlar. Bu eylemle, baþka yöntemlerle eriþilemeyecek
                            yüksekliklere eriþmek mümkün olabilir.
+    </description>
+    <description lang="fr">Une fois de plus, vous avez accès à une nouvelle action.
+                           L'action Climber (Grimpeur) permet à un Pingu d'escalader un mur droit
+                           et ainsi d'atteindre des endroits impossible d'accès autrement.
     </description>
     <description lang="sr">Jos jednom je dobijen pristup novoj akciji. Akcija: Penjac omogucava
                            Pingusu da se penje uz prave vertikalne zidove, i na taj nacin dodje

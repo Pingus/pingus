@@ -6,6 +6,7 @@
     <levelname lang="de">Einer muss vorbereiten, der Rest folgen</levelname>
     <levelname lang="cs">Jeden pripravi, ostatni nasleduji</levelname>
     <levelname lang="tr">Birisi yolu hazýrlamalý, diðerleri izlemeli</levelname>
+    <levelname lang="fr">Un fais le travail, les autres suivent</levelname>
     <levelname lang="sr">Jedan priprema, ostali ga prate</levelname>
 
     <description lang="en">Sometimes there are situations where you don't have a Blocker at
@@ -23,6 +24,10 @@
                            pingy udrzet pod kontrolou, nez nekdo pripravi cestu.
     </description>
     <description lang="tr">Bazý durumlarda, Blocker olmadan Pingularý kontrol altýnda tutmanýn
+    </description>
+    <description lang="fr">Parfois, vous n'avez pas de bloqueur sous la main pour coordiner vos
+                           Pingus et vous avez a trouver d'autres façons de les garder sous
+                           contrôle, pendant qu'un seul d'entre eux prépare la route pour les autres.
                            bir yolunu bulup, birinin yolu hazýrlamasýný saðlaman gerekebilir.
     </description>
     <description lang="sr">Ponekad postoje situacije kada nemas na raspolaganju blokere

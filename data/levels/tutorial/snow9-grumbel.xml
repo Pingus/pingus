@@ -6,6 +6,7 @@
     <levelname lang="de">Graben und andere Probleme</levelname>
     <levelname lang="cs">Kopani, hrabani a dalsi problemy</levelname>
     <levelname lang="tr">Kaz, oy ve diðer sorunlar</levelname>
+    <levelname lang="fr">Creuse, défonce et d'autres problèmes</levelname>
     <levelname lang="sr">Kopanje, glodanje i drugi problemi</levelname>
 
     <description lang="en">The more levels you have mastered, the more difficult they will get,
@@ -27,9 +28,15 @@
 			   situace, dvojklikni na tlacitko armagedon vpravo dole.
     </description>
     <description lang="tr">Daha çok seviye geçtikçe daha zorlarýyla karþýlaþacaksýn, ama korkma
-                           sýradaki de oldukça kolay. Daha önceki öðrendiklerile bu seviyeyi 
+                           sýradaki de oldukça kolay. Daha önceki öðrendiklerile bu seviyeyi
                            aþman da sorun olmamalý. Ancak, eðer içinden çýkamayacaðýn bir duruma
                            düþersen, sað alt köþedekil 'armageddon' butonuna çift týkla.
+    </description>
+    <description lang="fr">Le plus de niveaux vous franchirez, plus ils seront difficiles, mais,
+                           pas de panique, celui-ci est encore assez facile. Utilisez simplement
+                           ce que vous avez appris auparavant et vous ne devriez pas avoir de problèmes.
+                           Si vous croyez avoir atteint un stade où vous ne pourrez réussir le niveau,
+                           double cliquez sur le bouton Armageddon dans le coin inférieur droit.
     </description>
     <description lang="sr">Nivoi ce postajati sve tezi sto ih vise prelazis, ali nemoj vec da
                            pravis paniku jer ovaj je prilicno lak. Treba samo da koristis stvari

@@ -6,6 +6,7 @@
     <levelname lang="de">Opfere einige und rette den Rest</levelname>
     <levelname lang="cs">Par obetuj a zachran ostatni</levelname>
     <levelname lang="tr">Çoðunluk için birkaçýný feda etmek gerek</levelname>
+    <levelname lang="fr">Sacrifie quelques-uns pour sauver les autres</levelname>
     <levelname lang="sr">Zrtvuj nekoliko da spases ostale</levelname>
 
     <description lang="en">Sometimes if no other actions are available, you have to bomb your
@@ -25,6 +26,11 @@
     </description>
     <description lang="tr">Bazen, eðer baþka olasýlýk yoksa, yolu bombayla açman gerekebilir.
                            Pingular bunu, kendilerini feda ederek yapabilirler. Bu kayýp
+    </description>
+    <description lang="fr">Parfois, quand aucune autre action n'est disponible, vous ne pouvez
+                           que dynamiter votre chemin au travers du sol. Les Pingus peuvent y
+                           parvenir en s'auto-détruisant. Cela les tuera, mais c'est parfois
+                           nécessaire pour sauver le reste de la bande.
                            bazan grubun geri kalanýný kurtarmak için gerekli olabilir.
     </description>
     <description lang="sr">Ponekad, ako nema na raspolaganju drugih akcija, moguce je probiti

@@ -6,6 +6,7 @@
     <levelname lang="de">Blockiere und sprenge</levelname>
     <levelname lang="cs">Blokovani</levelname>
     <levelname lang="tr">Blokla ve patlat</levelname>
+    <levelname lang="fr">Bloque la route</levelname>
     <levelname lang="sr">Blok i stena</levelname>
 
     <description lang="en">Again is the time to combine the stuff you have learned in your
@@ -21,8 +22,12 @@
                            ostatni pingy. Pomuze ti nova akce - zablokovani cesty.
     </description>
     <description lang="tr">Bu seviyede de, daha önce öðrendiðin eylemleri birleþtirme þansýn
-                           olacak. Yoldaki bloklarý bombala ve ayný zamanda gerideki Pingularý da 
+                           olacak. Yoldaki bloklarý bombala ve ayný zamanda gerideki Pingularý da
                            kontrol altýnda tutmaya çalýþ. 'Blocker' bu konuda yardýmcý olacaktýr.
+    </description>
+    <description lang="fr">Encore une fois, vous devrez combiner ce que vous avez appris dans
+                           les niveaux précédants. Faites vous un passage et soyez sur de
+                           garder le contrôle sur les Pingus, l'action Blocker va vous aider.
     </description>
     <description lang="sr">Ponovo je vreme da se kombinuju stvari naucene iz prethodnih
                            nivoa. Razori put do slobode eksplozijama, ali takodje i drzi

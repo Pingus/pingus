@@ -6,6 +6,7 @@
     <levelname lang="de">Ist der Weg blockiert, dann grab ihn frei</levelname>
     <levelname lang="cs">Kdyz nevede cesta dal, tak ji vyhrabej</levelname>
     <levelname lang="tr">Eðer yol kapalýysa, temizlemek gerek</levelname>
+    <levelname lang="fr">Si la route est bloquée, défonce le mur!</levelname>
     <levelname lang="sr">Ako je put blokiran, prokopaj tunel</levelname>
 
     <description lang="en">Similar to the Digger action that you already know from previous
@@ -13,7 +14,7 @@
                            horizontally, as opposed to the vertical dig ability the Digger action
                            provides. This new action is called Basher.
     </description>
-    <description lang="de">Vergleichbar zum Digger der bereits aus den vorhergehenden Levels 
+    <description lang="de">Vergleichbar zum Digger der bereits aus den vorhergehenden Levels
                            bekannt ist, gibt es auch eine Fähigkeit die es einem Pingu erlaubt
                            horizontal zu graben, im Gegensatz zur Fähigkeit zum vertikalen
                            Graben eines Digger. Diese neue Fähigkeit heisst Basher.
@@ -22,9 +23,14 @@
                            take moznost vodorovneho hrabani. Pingove pak nekopou jamu pod
                            sebou, ale prohrabavaji se rovne ve smeru chuze.
     </description>
-    <description lang="tr">Daha önce öðrenmiþ olduðumuz 'Digger'e benzeyen bir eylemimiz 
+    <description lang="tr">Daha önce öðrenmiþ olduðumuz 'Digger'e benzeyen bir eylemimiz
                            daha var. Basher diye adlandýrdýðýmýz bu eylem, Pingunun önündekileri
                            yatay olarak oyarak bir tünel açmasýný saðlar.
+    </description>
+    <description lang="fr">Similaire à l'action Digger, que vous avez connu dans les niveaux
+                           précédants, il existe également une action qui permet aux Pingus de creuser
+                           horizontalement, contrairement au creusage vertical que l'action Digger
+                           procure. Cette nouvelle action est appelée 'Basher'.
     </description>
     <description lang="sr">Slicno kopanju na dole iz prethodnih nivoa postoji akcija koja
                            omogucava Pingusima da kopaju horizontalno, umesto vertikalnog

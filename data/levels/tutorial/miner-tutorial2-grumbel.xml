@@ -6,6 +6,7 @@
     <levelname lang="de">Miners Himmel</levelname>
     <levelname lang="cs">Raj horniku</levelname>
     <levelname lang="tr">Madenci cenneti</levelname>
+    <levelname lang="fr">Paradis des mineurs</levelname>
     <levelname lang="sr">Rudarski raj</levelname>
 
     <description lang="en">And another action hits the street, it is again a digging action, this
@@ -25,9 +26,14 @@
 	                       kopanju ukoso, cime omogucavamo Pingusu da dijagonalno kopa kroz
 						   zemljiste i stvara put za ostale. Ova akcija se zove Rudar.
     </description>
-    <description lang="tr">Þimdi bir baþka kazma eylemi göreceðiz. Bu eylemi kullandýðýmýzda 
+    <description lang="tr">Þimdi bir baþka kazma eylemi göreceðiz. Bu eylemi kullandýðýmýzda
                            Pingu çapraz bir oyuk açarak diðer Pingularýn da geçebileceði bir
                            tünel oluþturur. Bu eylemin adýna 'Miner' diyoruz.
+    </description>
+    <description lang="fr">Encore une nouvelle action fait son apparition. C'est encore une fois
+                           une action de creusage mais, cette fois, c'est un creusage diagonal.
+                           Elle permet à un Pingu de creuser diagonallement le sol créant ainsi
+                           une voie que pourront emprunter les autres Pingus. Cette action ce nomme 'Miner'.
     </description>
     <description lang="sr">Ucimo jos jednu akciju koja obuhvata kopanje. Ovog puta se radi o 
                            kopanju ukoso, cime omogucavamo Pingusu da dijagonalno kopa kroz

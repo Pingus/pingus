@@ -6,6 +6,7 @@
     <levelname lang="de">Schwebe oder Stirb</levelname>
     <levelname lang="cs">Let, nebo zemres</levelname>
     <levelname lang="tr">Uçamazsan ölürsün</levelname>
+    <levelname lang="fr">Flotte ou Meurt</levelname>
     <levelname lang="sr">Lebdi ili umri</levelname>
 
     <description lang="en">Well done in mission one, now lets start the next one. This
@@ -26,6 +27,11 @@
     </description>
     <description lang="tr">Birinci görevi baþarýyla tamamladýn, þimdi sýra ikincide. Bu kez
                            Pingularýn yavaþca düþmeleri için birer küçük pervane vermen gerekecek.
+    </description>
+    <description lang="fr">Bien joué dans votre première mission, maintenant passons à la suivante.
+                           Cette fois, vous allez devoir équiper vos Pingus avec un petit propulseur,
+                           afin qu'ils puissent atterrir légèrement sur le sol. Si les Pingus tombent
+                           de trop haut, ils ne pourront survivre à la chute, alors soyez vigilant!
                            Eðer Pingular çok yüksekten düþerlerse ölürler, dikkatli ol!
     </description>
     <description lang="sr">Bravo za prvi zadatak, a sada zapocinjemo sledeci. Ovog puta

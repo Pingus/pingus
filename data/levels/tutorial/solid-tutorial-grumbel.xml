@@ -6,6 +6,7 @@
     <levelname lang="de">Fester Boden kann den Weg blockieren</levelname>
     <levelname lang="cs">Pevne podlozi muze omezit cestu</levelname>
     <levelname lang="tr">Katý bloklar yolu týkayabilir</levelname>
+    <levelname lang="fr">L'acier bloque le passage</levelname>
     <levelname lang="sr">Cvrsto zemljiste moze blokirati put</levelname>
 
     <description lang="en">As you have learned in earlier levels your Pingus can dig through
@@ -26,11 +27,17 @@
                            tmave sedou barvou a nemohou byt nijak zniceny. Musis je
                            obejit.
     </description>
-    <description lang="tr">Daha önceki seviylerde, Pingularýmýz istedikleri yeri 
+    <description lang="tr">Daha önceki seviylerde, Pingularýmýz istedikleri yeri
                            delebiliyoralardý, ama çelikten yapýlmýþ bazý nesneleri delmeleri
-                           mümkün deðil. Bu tür nesneler haritmýzda koyu gri ile gösterilen 
-                           yerlerdir. Bunlarý yok edemeyeceðin için çevrelerinden dolaþmanýn 
+                           mümkün deðil. Bu tür nesneler haritmýzda koyu gri ile gösterilen
+                           yerlerdir. Bunlarý yok edemeyeceðin için çevrelerinden dolaþmanýn
                            bir yolunu bulman gerekiyor.
+    </description>
+    <description lang="fr">Comme vous l'avez appris dans les niveaux précédants, vos Pingus peuvent
+                           creuser pratiquement tous les sols, mais il y a une chose qu'ils ne
+                           peuvent percer et c'est les objets métalliques. Ces régions sont
+                           marquées de gris foncé sur la carte du niveau et ils ne peuvent être
+                           détruits, alors contourné les.
     </description>
     <description lang="sr">I ranijim nivoima smo naucili da Pingusi mogu prakticno kopati
                            kroz bilo koje zemljiste, ali postoji nesto sto ne mogu
