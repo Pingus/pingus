@@ -325,14 +325,19 @@ else
         exit;
       }
 
-      if ( !is_dir("comments/$c/$l") &&
-           (@mkdir("comments/$c", 0775) || True) &&
-           !(@mkdir("comments/$c/$l", 0775)))
+      if ( !is_dir("comments/$c/$l"))
       {
-        print ("<strong>ERROR: 'comments/$c/$l/' does not exist and ".
+        mkdir("comments/$c",0777);
+        mkdir("comments/$c/$l",0777);
+        chmod("comments/$c",0777);
+        chmod("comments/$c/$l",0777);
+        if ( !is_dir("comments/$c/$l"))
+        {
+          print ("<strong>ERROR: 'comments/$c/$l/' does not exist and ".
                "could not be created.</strong>\n");
-        exit;
-      }
+          exit;
+        }
+      }  
       sandbox_check("comments/$c/$l", "comments/" );
       $str =
         '<' . '?xml version="1.0"  encoding="ISO-8859-1"?' . ">\n" .
@@ -362,7 +367,7 @@ else
           exit;
         }
         fclose($fp);
-        chmod($filename, 0775);
+        chmod($filename, 0777);
 
         // Send email-notification
         if ( $mail_notify_enabled )
@@ -415,16 +420,21 @@ else
     if ( $_POST["adddemo"] == 1)
     {
       //create directory if necessary
-      if ( !is_dir("comments/$c/$l/demos") &&
-           (@mkdir("comments/$c", 0775) || True) &&
-           (@mkdir("comments/$c/$l", 0775) || True) &&
-           !(@mkdir("comments/$c/$l/demos", 0775)))
+      if ( !is_dir("comments/$c/$l/demos"))
       {
-        print ("<strong>ERROR: 'comments/$c/$l/demos' does not exist and ".
-               "could not be created.</strong>\n");
-        exit;
+        mkdir("comments/$c", 0777);
+        mkdir("comments/$c/$l", 0777);
+        mkdir("comments/$c/$l/demos", 0777);
+        chmod("comments/$c",0777);
+        chmod("comments/$c/$l",0777);
+        chmod("comments/$c/$l/demos",0777);
+        if ( !is_dir("comments/$c/$l/demos")) 
+        {
+          print ("<strong>ERROR: 'comments/$c/$l/demos' does not exist and ".
+                 "could not be created.</strong>\n");
+          exit;
+        }
       }
-      
       $uploaddir = sandbox_check( "comments/$c/$l/demos", "comments/" );
       
       if(!strpos( strtolower( $_FILES["demofile"]["name"] ), ".xml" ))
@@ -433,6 +443,7 @@ else
       {
         if (move_uploaded_file($_FILES['demofile']['tmp_name'], $uploaddir. '/' . $_FILES['demofile']['name']))
         {
+          chmod( "comments/$c/$l/demos/" . $_FILES['demofile']['name'], 0777 );
           print("<strong>File uploaded successfully</strong><hr/>");
           $str = '<' . '?xml version="1.0"  encoding="ISO-8859-1"?' . ">\n" .
                 "<pingus-demo-metafile>\n".
@@ -459,7 +470,7 @@ else
               exit;
             }
             fclose($fp);
-            chmod($filename, 0775);
+            chmod($filename, 0777);
      	  }
      	}  
         else
