@@ -1,4 +1,4 @@
-//  $Id: Graph.cc,v 1.3 2001/04/30 17:52:00 grumbel Exp $
+//  $Id: Graph.cc,v 1.4 2002/01/15 10:48:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,10 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <iostream>
-#include <ClanLib/core.h>
-#include <ClanLib/display.h>
-#include <ClanLib/application.h>
 #include "Graph.hh"
 
 void
@@ -36,16 +32,16 @@ print_connections (GraphNode<CL_Vector>& obj)
 void
 draw_graph (Graph<CL_Vector>& graph)
 {
-  for (std::list<GraphNode<CL_Vector> >::iterator i = graph.nodes.begin ();
+  for (std::list<GraphNode<CL_Vector>* >::iterator i = graph.nodes.begin ();
        i != graph.nodes.end(); ++i)
     {
       std::cout << "Drawing:..." << std::endl;
-      for (std::list<GraphNode<CL_Vector>* >::iterator j = (*i).next_nodes.begin ();      
-	   j != (*i).next_nodes.end(); ++j)
+      for (std::list<GraphNode<CL_Vector>* >::iterator j = (*i)->next_nodes.begin ();      
+	   j != (*i)->next_nodes.end(); ++j)
 	{
-	  std::cout << "Drawing: " << i->data << std::endl;
-	  CL_Display::draw_line (int(i->data.x), int(i->data.y),
-				 int((*j)->data.x), int((*j)->data.y),
+	  std::cout << "Drawing: " << (*i)->data << std::endl;
+	  CL_Display::draw_line (int(i.data.x), int(i.data.y),
+				 int(j.data.x), int(j.data.y),
 				 1.0, 1.0, 1.0);
 	}
     }

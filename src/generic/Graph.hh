@@ -1,4 +1,4 @@
-//  $Id: Graph.hh,v 1.5 2001/06/11 08:45:22 grumbel Exp $
+//  $Id: Graph.hh,v 1.6 2002/01/15 10:48:52 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,17 +21,27 @@
 #define GRAPH_HH
 
 #include <list>
+#include <iostream>
+#include <ClanLib/core.h>
+#include <ClanLib/display.h>
+#include <ClanLib/application.h>
+
+#include <boost/dummy_ptr.hpp>
 
 template<class T> class GraphNode;
 template<class T> class GraphIterator;
 template<class T> class Graph;
 
-class GraphNode
+using namespace boost;
+
+template<class T> class GraphNode
 {
 private:
-  std::list<boost::dummy_ptr<GraphNode> > next_nodes;
-  
+  std::list<GraphNode<T>* > next_nodes;
+     
 public:
+  std::string data; 
+  CL_Vector Data;
 
   GraphNode ()
   {}
@@ -60,6 +70,9 @@ public:
     next_node->connect (this);
     connect (next_node);
   }
+
+  friend void print_connections (GraphNode<CL_Vector>& obj);
+  friend void draw_graph(Graph<CL_Vector>& graph);
 };
 
 /** A general class for handling a bidirectional graph */
@@ -67,8 +80,8 @@ template<class T>
 class Graph
 {
 public:
-  std::list<boost::shared_ptr<GraphNode> > nodes;
-  typedef std::list<boost::shared_ptr<GraphNode> >::iterator NodeIter;
+  std::list<GraphNode<T>* > nodes;
+  typedef std::list<GraphNode<T>*>::iterator NodeIter;
   
 
   Graph ()
@@ -128,9 +141,9 @@ public:
   }
 
   /// Returns a list of nodes that are attached to this graph
-  list<GraphIterator<T> > next_nodes()
+  std::list<GraphIterator<T>*> next_nodes()
   {
-    list<GraphIterator<T> > next_nodes_list;
+    std::list<GraphIterator<T>* > next_nodes_list;
     
     // Expensive operation
     for (list<GraphNode<T>*>::iterator i = current_node->attached_nodes.begin();

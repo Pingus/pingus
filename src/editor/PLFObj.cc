@@ -1,4 +1,4 @@
-//  $Id: PLFObj.cc,v 1.55 2001/12/18 00:44:24 cagri Exp $
+//  $Id: PLFObj.cc,v 1.56 2002/01/15 10:48:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <fstream>
-#include <cstdio>
+#include <stdio.h>
 
 #include "../XMLhelper.hh"
 #include "../Display.hh"
@@ -55,7 +55,7 @@ EntranceObj::EntranceObj(const EntranceData& data)
     } 
   else 
     {
-      cout << "Entrance obj error!" << endl;
+      std::cout << "Entrance obj error!" << endl;
       throw PingusError("EntranceObj: Unknown entrance type: " + type);
     }
 }
@@ -119,11 +119,9 @@ ExitObj::duplicate()
 std::string 
 ExitObj::status_line()
 {
-  char str[256] = {};
+  char str[256];
   
-  sprintf(str, "Exit - %s - X:%4.2f Y:%4.2f Z:%4.2f OwnerId: %d",
-	  desc.res_name.c_str(),
-	  pos.x, pos.y, pos.z, owner_id);
+  sprintf(str, "Exit - %s - X:%4.2f Y:%4.2f Z:%4.2f OwnerId: %d", desc.res_name.c_str(), pos.x, pos.y, pos.z, owner_id);
 
   return str;
 }

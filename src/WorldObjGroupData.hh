@@ -1,4 +1,4 @@
-//  $Id: WorldObjGroupData.hh,v 1.1 2001/08/16 22:00:50 grumbel Exp $
+//  $Id: WorldObjGroupData.hh,v 1.2 2002/01/15 10:48:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,9 +20,11 @@
 #ifndef WORLDOBJGROUPDATA_HH
 #define WORLDOBJGROUPDATA_HH
 
-#include <list>
 #include "boost/smart_ptr.hpp"
 #include "WorldObjData.hh"
+#include <iostream>
+#include <list>
+
 
 class WorldObjGroupData : public WorldObjData
 {

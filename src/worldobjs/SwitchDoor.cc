@@ -1,4 +1,4 @@
-//  $Id: SwitchDoor.cc,v 1.23 2002/01/04 01:19:47 grumbel Exp $
+//  $Id: SwitchDoor.cc,v 1.24 2002/01/15 10:48:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -156,7 +156,7 @@ SwitchDoor::draw_colmap()
 }
 
 void
-SwitchDoor::draw_offset(int x_of, int y_of, float s = 1.0)
+SwitchDoor::draw_offset(int x_of, int y_of, float s)
 {
   door_box.put_screen (int(door_pos.x) + x_of, int(door_pos.y) + y_of);
   for (int i=0; i < current_door_height; i++)

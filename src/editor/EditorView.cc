@@ -1,4 +1,4 @@
-//  $Id: EditorView.cc,v 1.9 2001/12/18 00:44:24 cagri Exp $
+//  $Id: EditorView.cc,v 1.10 2002/01/15 10:48:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -58,10 +58,10 @@ EditorView::zoom_to (CL_Rect arg_rect)
 {
   CL_Rect rect;
 
-  rect.x1 = std::min (arg_rect.x1, arg_rect.x2);
-  rect.x2 = std::max (arg_rect.x1, arg_rect.x2);
-  rect.y1 = std::min (arg_rect.y1, arg_rect.y2);
-  rect.y2 = std::max (arg_rect.y1, arg_rect.y2);
+  rect.x1 = min (arg_rect.x1, arg_rect.x2);
+  rect.x2 = max (arg_rect.x1, arg_rect.x2);
+  rect.y1 = min (arg_rect.y1, arg_rect.y2);
+  rect.y2 = max (arg_rect.y1, arg_rect.y2);
   
   CL_Vector pos1 = screen_to_world (CL_Vector(rect.x1, rect.y1));
   CL_Vector pos2 = screen_to_world (CL_Vector(rect.x2, rect.y2));
@@ -219,7 +219,7 @@ EditorView::draw (CL_Surface& sur, int x_pos, int y_pos,
 
 void 
 EditorView::draw_line (const CL_Vector& pos1, const CL_Vector& pos2,
-		       float r, float g, float b, float a = 1.0f)
+		       float r, float g, float b, float a)
 {
   draw_line (int(pos1.x), int(pos1.y), int(pos2.x), int(pos2.y), r, g, b, a);
 }

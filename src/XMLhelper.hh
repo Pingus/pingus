@@ -1,4 +1,4 @@
-//  $Id: XMLhelper.hh,v 1.12 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: XMLhelper.hh,v 1.13 2002/01/15 10:48:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,14 +20,28 @@
 #ifndef XMLHELPER_HH
 #define XMLHELPER_HH
 
-#include <config.h>
+#ifndef LIBXML_2
+  #define LIBXML_2
+#endif
+
+
+#include <iostream>
 #include <string>
 #include <fstream>
+
+#include <config.h>
 #include <ClanLib/core.h>
 
-// FIXME: This should be <libxml/parser.h>, but that doesn't work with
-// libxml1.x :-/
-#include <parser.h>
+
+// FIX: Under windows, it's necessary to use libxml/parser.h, or MS's
+// compiler will fails.
+#ifdef WIN32
+  #define list
+  #include <libxml/parser.h>
+  #undef list
+#else
+  #include <parser.h>
+#endif
 
 #include "ResDescriptor.hh"
 #include "Position.hh"

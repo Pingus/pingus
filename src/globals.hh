@@ -1,4 +1,4 @@
-//  $Id: globals.hh,v 1.36 2002/01/14 23:37:59 grumbel Exp $
+//  $Id: globals.hh,v 1.37 2002/01/15 10:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,11 @@
 
 #ifndef GLOBALS_HH
 #define GLOBALS_HH
+
+// Workaround for a VC bug
+#ifdef WIN32
+#define for if(0);else for
+#endif /* WIN32 */
 
 #include <string>
 

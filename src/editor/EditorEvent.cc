@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.54 2001/12/18 00:44:24 cagri Exp $
+//  $Id: EditorEvent.cc,v 1.55 2002/01/15 10:48:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -360,7 +360,6 @@ EditorEvent::editor_convert_group_to_selection()
       if (group)
 	{      
 	  std::list<boost::shared_ptr<EditorObj> >* objs = group->get_objs();
-	  
 	  object_manager->editor_objs.erase(std::find(object_manager->editor_objs.begin(), 
 						      object_manager->editor_objs.end(),
 						      obj));

@@ -1,4 +1,4 @@
-//  $Id: StartPos.hh,v 1.3 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: StartPos.hh,v 1.4 2002/01/15 10:48:52 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ private:
 public:
   StartPos(int arg_x_pos, int arg_y_pos);
 
-  virtual void   write_xml(std::ofstream* xml);
+  virtual void write_xml(std::ofstream* xml);
   virtual boost::shared_ptr<EditorObj> duplicate();
 };
 

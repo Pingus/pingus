@@ -1,4 +1,4 @@
-//  $Id: HurryUp.cc,v 1.7 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: HurryUp.cc,v 1.8 2002/01/15 10:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,7 @@ HurryUp::update(float delta)
 	  // Wait some secs
 	  if ((unsigned int)wait_counter < CL_System::get_time())
 	    {
-	      speed *= 1.2;
+	      speed *= 1.2f;
 	      x_pos += speed;
 
 	      if (x_pos > CL_Display::get_width() + 200)
@@ -73,7 +73,7 @@ HurryUp::update(float delta)
       else
 	{
 	  x_pos += speed;
-	  speed *= 1.2;
+	  speed *= 1.2f;
 
 	  if ((int)x_pos > CL_Display::get_width()/2)
 	    {

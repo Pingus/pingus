@@ -1,4 +1,4 @@
-//  $Id: SurfaceBackgroundData.hh,v 1.9 2001/08/13 21:35:37 grumbel Exp $
+//  $Id: SurfaceBackgroundData.hh,v 1.10 2002/01/15 10:48:50 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,7 +60,7 @@ public:
   /// Empty destructor
   virtual ~SurfaceBackgroundData();
 
-  /** Writte the content of this object formated as xml to the given
+  /** Write the content of this object formated as xml to the given
       stream */
   void write_xml(std::ofstream* xml);
   

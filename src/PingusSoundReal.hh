@@ -1,4 +1,4 @@
-//  $Id: PingusSoundReal.hh,v 1.10 2001/12/01 17:54:53 torangan Exp $
+//  $Id: PingusSoundReal.hh,v 1.11 2002/01/15 10:48:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,7 @@
 
 #include "PingusSound.hh"
 #include <ClanLib/sound.h>
+#include <ClanLib/Core/System/error.h>
 
 /** A simple wrapper class around SDL_Mixer, it will init itself
     automatically if a sound is played. */

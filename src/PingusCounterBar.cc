@@ -1,4 +1,4 @@
-//  $Id: PingusCounterBar.cc,v 1.3 2001/04/27 20:44:37 grumbel Exp $
+//  $Id: PingusCounterBar.cc,v 1.4 2002/01/15 10:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,12 +62,12 @@ PingusCounterBar::draw ()
 
   y_pos -= (current_saved * length) / complete;
   CL_Display::fill_rect (rect.x1, tmp_y_pos, rect.x2, y_pos,
-			 0.0, 1.0, 0.0, 0.8);
+			 0.0f, 1.0f, 0.0f, 0.8f);
   tmp_y_pos = y_pos;
 
   y_pos -= ((current_out - current_saved) * length) / complete;
   CL_Display::fill_rect (rect.x1, tmp_y_pos, rect.x2, y_pos,
-			 1.0, 0.0, 0.0, 0.8);
+			 1.0f, 0.0f, 0.0f, 0.8f);
   tmp_y_pos = y_pos;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: TrapData.cc,v 1.7 2001/12/18 00:44:23 cagri Exp $
+//  $Id: TrapData.cc,v 1.8 2002/01/15 10:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ TrapData::write_xml(std::ofstream* xml)
 boost::shared_ptr<WorldObjData>
 TrapData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  boost::shared_ptr<TrapData> trap(new TrapData ());
+  TrapData* trap = new TrapData ();
   cur = cur->children;
   while (cur != NULL)
     {
@@ -71,26 +71,26 @@ TrapData::create(xmlDocPtr doc, xmlNodePtr cur)
 
       cur = cur->next;
     }
-  return trap;
+  return boost::shared_ptr<WorldObjData>(trap);
 }
 
 boost::shared_ptr<WorldObj> 
 TrapData::create_WorldObj ()
 {
   if (type == "smasher") {
-    return boost::shared_ptr<Trap>(new Smasher(*this));
+    return boost::shared_ptr<WorldObj>(new Smasher(*this));
   } else if (type == "hammer") {
-    return boost::shared_ptr<Trap>(new Hammer(*this));
+    return boost::shared_ptr<WorldObj>(new Hammer(*this));
   } else if (type == "fake_exit") {
-    return boost::shared_ptr<Trap>(new FakeExit(*this));
+    return boost::shared_ptr<WorldObj>(new FakeExit(*this));
   } else if (type == "spike") {
-    return boost::shared_ptr<Trap>(new Spike(*this));
+    return boost::shared_ptr<WorldObj>(new Spike(*this));
   } else if (type == "guillotine") {
-    return boost::shared_ptr<Trap>(new Guillotine(*this));
+    return boost::shared_ptr<WorldObj>(new Guillotine(*this));
   } else if (type == "laser_exit") {
-    return boost::shared_ptr<Trap>(new LaserExit(*this));
+    return boost::shared_ptr<WorldObj>(new LaserExit(*this));
   } else if (type == "bumper") {
-    return boost::shared_ptr<Trap>(new Bumper(*this));
+    return boost::shared_ptr<WorldObj>(new Bumper(*this));
   }
   throw PingusError("Trap: `" + type + "' is unknown");
 }

@@ -1,4 +1,4 @@
-//  $Id: EditorWorldObj.hh,v 1.6 2001/08/11 18:53:39 grumbel Exp $
+//  $Id: EditorWorldObj.hh,v 1.7 2002/01/15 10:48:52 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,9 +23,10 @@
 #include "PLFObj.hh"
 
 ///
-class EditorWorldObj : public PLFObj
+class EditorWorldObj // This doesn't work by now : public PLFObj
 {
 private:
+  CL_Surface surf;
 public:
   EditorWorldObj ();
   virtual ~EditorWorldObj () {}

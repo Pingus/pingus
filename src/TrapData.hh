@@ -1,4 +1,4 @@
-// $Id: TrapData.hh,v 1.8 2001/12/01 17:08:26 torangan Exp $
+// $Id: TrapData.hh,v 1.9 2002/01/15 10:48:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,13 @@
 #ifndef TRAP_DATA_HH
 #define TRAP_DATA_HH
 
+#ifndef LIBXML_2
+    #define LIBXML_2
+#endif
+
 #include <string>
+#include <iostream>
+
 #include "boost/smart_ptr.hpp"
 #include "WorldObjData.hh"
 
@@ -30,6 +36,8 @@ class TrapData : public WorldObjData
 public:
   std::string type;
   CL_Vector pos;
+
+  int x_target, y_target;
   
   TrapData(){}
   TrapData(const TrapData& data) 

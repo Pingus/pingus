@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.49 2002/01/13 15:24:18 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.50 2002/01/15 10:48:49 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -34,6 +34,7 @@
 #  include <config.h>
 #  include <getopt.h>
 #else /* !WIN32 */
+#  include <direct.h>
 #  include "win32/config.h"
 #  include "win32/getopt.h"
 #endif /* !WIN32 */

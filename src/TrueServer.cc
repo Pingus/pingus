@@ -1,4 +1,4 @@
-//  $Id: TrueServer.cc,v 1.27 2001/11/30 20:22:20 grumbel Exp $
+//  $Id: TrueServer.cc,v 1.28 2002/01/15 10:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,11 +17,14 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+
 #include "GameTime.hh"
 #include "Timer.hh"
 #include "globals.hh"
 #include "PLF.hh"
 #include "TrueServer.hh"
+
+using namespace std;
 
 TrueServer::TrueServer(boost::shared_ptr<PLF> arg_plf)
   : plf (arg_plf)

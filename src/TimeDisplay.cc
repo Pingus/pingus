@@ -1,4 +1,4 @@
-//  $Id: TimeDisplay.cc,v 1.7 2001/08/04 12:46:22 grumbel Exp $
+//  $Id: TimeDisplay.cc,v 1.8 2002/01/15 10:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,8 @@
 
 TimeDisplay::TimeDisplay()
 {
-  font = PingusResource::load_font("Fonts/numbers","fonts");
+  //font = PingusResource::load_font("Fonts/numbers","fonts");
+  font = PingusResource::load_font("Fonts/pingus_small","fonts");
 }
 
 void
@@ -50,7 +51,8 @@ TimeDisplay::draw()
 	  char* p;
 
 	  // FIXME: Buffer overflow...
-	  sprintf(time_string, "%2d:%2d:%2d", minutes, seconds, millisecs);
+	  //sprintf(time_string, "%2d:%2d:%2d", minutes, seconds, millisecs);
+	  sprintf(time_string, "%2d:%2d", minutes, seconds);
 
 	  p = time_string;
 

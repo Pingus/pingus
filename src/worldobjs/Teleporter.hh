@@ -1,4 +1,4 @@
-//  $Id: Teleporter.hh,v 1.21 2001/12/04 12:18:50 grumbel Exp $
+//  $Id: Teleporter.hh,v 1.22 2002/01/15 10:48:53 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef TELEPORTER_HH
 #define TELEPORTER_HH
+
+#include <fstream>
 
 #include "../boost/smart_ptr.hpp"
 #include "../Sprite.hh"

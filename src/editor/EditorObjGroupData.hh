@@ -1,4 +1,4 @@
-//  $Id: EditorObjGroupData.hh,v 1.1 2000/12/12 09:16:35 grumbel Exp $
+//  $Id: EditorObjGroupData.hh,v 1.2 2002/01/15 10:48:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,14 +27,14 @@ class EditorObjGroupData : public WorldObjData
 {
 private:
   
-  vector<WorldObjData*> objs;
+  std::vector<WorldObjData*> objs;
 public:
   /// Empty placeholder
   EditorObjGroupData() {}
   /// Empty placeholder
   virtual ~EditorObjGroupData() {}
 
-  virtual void write_xml(ofstream* xml);
+  virtual void write_xml(std::ofstream* xml);
   static WorldObjData* create(xmlDocPtr doc, xmlNodePtr cur);  
 };
 

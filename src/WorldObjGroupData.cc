@@ -1,4 +1,4 @@
-//  $Id: WorldObjGroupData.cc,v 1.1 2001/08/16 22:00:50 grumbel Exp $
+//  $Id: WorldObjGroupData.cc,v 1.2 2002/01/15 10:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,7 @@
 #include "WorldObj.hh"
 #include "generic/ListHelper.hh"
 #include "WorldObjGroupData.hh"
+
 
 using namespace ListHelper;
 
@@ -53,7 +54,7 @@ EditorObjLst
 WorldObjGroupData::create_EditorObj ()
 {
   EditorObjLst lst;
-  EditorObjGroup* group (new EditorObjGroup ());
+  EditorObjGroup* group = new EditorObjGroup();
   lst.push_back (boost::shared_ptr<EditorObj>(group));
   
   for (ObjsIter i = objs.begin (); i != objs.end (); ++i)

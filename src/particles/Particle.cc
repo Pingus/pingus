@@ -1,4 +1,4 @@
-//  $Id: Particle.cc,v 1.10 2001/12/01 17:08:27 torangan Exp $
+//  $Id: Particle.cc,v 1.11 2002/01/15 10:48:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,7 +74,7 @@ Particle::draw_offset(int ofx, int ofy, float s)
 bool
 Particle::is_alive()
 {
-  return static_cast<bool>(livetime);
+  return livetime;
 }
 
 /* EOF */

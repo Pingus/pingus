@@ -1,4 +1,4 @@
-//  $Id: EntranceData.cc,v 1.2 2001/12/04 12:18:49 grumbel Exp $
+//  $Id: EntranceData.cc,v 1.3 2002/01/15 10:48:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,7 +27,7 @@
 boost::shared_ptr<WorldObjData> 
 EntranceData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  EntranceData* entrance (new EntranceData ());
+  EntranceData* entrance = new EntranceData ();
   cur = cur->children;  
   while (cur != NULL)
     {
@@ -114,11 +114,11 @@ boost::shared_ptr<WorldObj>
 EntranceData::create_WorldObj()
 {
   if (type == "generic") {
-    return boost::shared_ptr<Entrance>(new Entrance(*this));
+    return boost::shared_ptr<WorldObj>(new Entrance(*this));
   } else if (type == "woodthing") {
-    return boost::shared_ptr<Entrance>(new WoodThing(*this));
+    return boost::shared_ptr<WorldObj>(new WoodThing(*this));
   } else if (type == "cloud") {
-    return boost::shared_ptr<Entrance>(new Cloud(*this));
+    return boost::shared_ptr<WorldObj>(new Cloud(*this));
   } else {
     throw PingusError("Entrance: Entrance type in PLF file is unknown: " + type);
   }

@@ -1,4 +1,4 @@
-//  $Id: MultiplayerClientChild.cc,v 1.7 2002/01/04 01:19:46 grumbel Exp $
+//  $Id: MultiplayerClientChild.cc,v 1.8 2002/01/15 10:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,8 +24,8 @@
 using boost::shared_ptr;
 using boost::dummy_ptr;
 
-MultiplayerClientChild::MultiplayerClientChild (shared_ptr<Controller> arg_controller,
-						dummy_ptr<Server> s, const CL_Rect& arg_rect)
+MultiplayerClientChild::MultiplayerClientChild (boost::shared_ptr<Controller> arg_controller,
+						boost::dummy_ptr<Server> s, const CL_Rect& arg_rect)
   : Controllable (arg_controller),
     server (s),
     cursor (new Cursor ("cursors/cross", "core", controller)),

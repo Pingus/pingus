@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.hh,v 1.20 2001/08/12 18:36:41 grumbel Exp $
+//  $Id: ObjectManager.hh,v 1.21 2002/01/15 10:48:52 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,9 @@
 
 #ifndef OBJECTMANAGER_HH
 #define OBJECTMANAGER_HH
+
+#include <iostream>
+#include <fstream>
 
 #include "../boost/dummy_ptr.hpp"
 #include "../ActionData.hh"

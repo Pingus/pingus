@@ -1,4 +1,4 @@
-//  $Id: MikMod_dummy.cc,v 1.1 2000/04/08 20:24:36 grumbel Exp $
+//  $Id: MikMod_dummy.cc,v 1.2 2002/01/15 10:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,8 +40,9 @@ MikMod::keep_alive()
 }
  
 MODULE* 
-MikMod::load(string filename, bool del_on_stop, int maxchan, bool curious)
+MikMod::load(std::string filename, bool del_on_stop, int maxchan, bool curious)
 {
+    return 0;
 }
 
 void 
@@ -52,6 +53,7 @@ MikMod::play(MODULE* m)
 bool
 MikMod::is_playing()
 {
+   return true;
 }
 
 void

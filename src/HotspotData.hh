@@ -1,4 +1,4 @@
-//  $Id: HotspotData.hh,v 1.4 2001/12/04 12:18:49 grumbel Exp $
+//  $Id: HotspotData.hh,v 1.5 2002/01/15 10:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef HOTSPOT_DATA_HH
 #define HOTSPOT_DATA_HH
+
+#include <fstream>
 
 #include "Position.hh"
 #include "ResDescriptor.hh"

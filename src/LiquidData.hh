@@ -1,4 +1,4 @@
-// $Id: LiquidData.hh,v 1.7 2001/12/04 12:18:49 grumbel Exp $
+// $Id: LiquidData.hh,v 1.8 2002/01/15 10:48:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #ifndef LIQUIDDATA_HH
 #define LIQUIDDATA_HH
+
+#include <fstream>
 
 #include "ResDescriptor.hh"
 #include "Position.hh"

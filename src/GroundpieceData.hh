@@ -1,4 +1,4 @@
-//  $Id: GroundpieceData.hh,v 1.10 2001/08/31 07:51:51 grumbel Exp $
+//  $Id: GroundpieceData.hh,v 1.11 2002/01/15 10:48:49 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include <ClanLib/core.h>
 #include <ClanLib/display.h>
+#include <fstream>
+
 #include "boost/smart_ptr.hpp"
 #include "ResDescriptor.hh"
 

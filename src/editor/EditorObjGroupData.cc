@@ -1,4 +1,4 @@
-//  $Id: EditorObjGroupData.cc,v 1.1 2000/12/12 09:16:35 grumbel Exp $
+//  $Id: EditorObjGroupData.cc,v 1.2 2002/01/15 10:48:51 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,13 +20,12 @@
 #include "EditorObjGroupData.hh"
 
 /// Empty placeholder
-EditorObjGroupData::EditorObjGroupData() {}
-
+EditorObjGroupData::EditorObjGroupData();
 /// Empty placeholder
-EditorObjGroupData::~EditorObjGroupData() {}
+EditorObjGroupData::~EditorObjGroupData();
 
 void 
-EditorObjGroupData::write_xml(ofstream* xml)
+EditorObjGroupData::write_xml(std::ofstream* xml)
 {
   (*xml) << "<worldobj type=\"group\">\n" 
 	 << "</worldobj type=\"group\">\n"
@@ -36,7 +35,8 @@ EditorObjGroupData::write_xml(ofstream* xml)
 WorldObjData* 
 EditorObjGroupData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  
+  /* Added this useless return to avoid MS compiler error here */
+  return 0;
 }
 
 /* EOF */

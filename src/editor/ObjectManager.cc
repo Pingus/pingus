@@ -1,4 +1,4 @@
-//  $Id: ObjectManager.cc,v 1.53 2001/12/01 17:08:26 torangan Exp $
+//  $Id: ObjectManager.cc,v 1.54 2002/01/15 10:48:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,6 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <algorithm>
+#include <iostream>
+
 #include "../globals.hh"
 #include "../algo.hh"
 #include "../System.hh"
@@ -121,13 +123,13 @@ ObjectManager::delete_all_objs()
 void
 ObjectManager::load_level (std::string filename)
 {
-  cout << "ObjectManager::Loading level: " << filename << endl;
+  std::cout << "ObjectManager::Loading level: " << filename << endl;
 
   delete_selection();
   delete_all_objs();
 
-  cout << "Editor: Clearing current level..." << endl;
-  cout << "Loading new level: " << filename << endl;
+  std::cout << "Editor: Clearing current level..." << endl;
+  std::cout << "Loading new level: " << filename << endl;
   
   //PSMParser psm;
 
@@ -344,7 +346,7 @@ ObjectManager::lower_obj(boost::shared_ptr<EditorObj> obj)
 
   if (current == editor_objs.begin()) 
     {
-      cout << "Editor: Cannot lower object" << endl;
+      std::cout << "Editor: Cannot lower object" << endl;
       return false;
     }
   
@@ -367,7 +369,7 @@ ObjectManager::raise_obj(boost::shared_ptr<EditorObj> obj)
   
   if (next == editor_objs.end())
     {
-      cout << "Cannot raise object" << endl;
+      std::cout << "Cannot raise object" << endl;
       return false;
     }
   

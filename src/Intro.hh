@@ -1,4 +1,4 @@
-//  $Id: Intro.hh,v 1.13 2001/07/22 21:17:57 grumbel Exp $
+//  $Id: Intro.hh,v 1.14 2002/01/15 10:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 
 #include <ClanLib/core.h>
 #include <ClanLib/display.h>
+
+#include <strstream>
 
 #include "PingusSubMenu.hh"
 

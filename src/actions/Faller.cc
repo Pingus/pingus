@@ -1,4 +1,4 @@
-//  $Id: Faller.cc,v 1.8 2001/12/15 00:56:47 cagri Exp $
+//  $Id: Faller.cc,v 1.9 2002/01/15 10:48:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,6 +25,11 @@
 #include "../FVec.hh"
 #include "../World.hh"
 #include "Faller.hh"
+
+/* Curious : this seems to work fine under MS, declared out of the class??? */
+#ifdef WIN32
+  static const float deadly_velocity = 20.0f;
+#endif
 
 void
 Faller::init(void)

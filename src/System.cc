@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.37 2001/12/05 09:15:51 grumbel Exp $
+//  $Id: System.cc,v 1.38 2002/01/15 10:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,6 +27,7 @@
 #  include <errno.h>
 #else /* !WIN32 */
 #  include <windows.h>
+#  include <direct.h>
 #  include <fstream>
 #endif
 

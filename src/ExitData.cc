@@ -1,4 +1,4 @@
-//  $Id: ExitData.cc,v 1.5 2001/12/04 12:18:49 grumbel Exp $
+//  $Id: ExitData.cc,v 1.6 2002/01/15 10:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -40,7 +40,7 @@ ExitData::write_xml(std::ofstream* xml)
 boost::shared_ptr<WorldObjData> 
 ExitData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  ExitData* exit (new ExitData ());
+  ExitData* exit  = new ExitData ();
 
   char* pos_handling = (char*)xmlGetProp(cur, (xmlChar*)"use-old-pos-handling");
   if (pos_handling)

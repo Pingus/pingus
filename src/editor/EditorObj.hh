@@ -1,4 +1,4 @@
-//  $Id: EditorObj.hh,v 1.36 2001/08/12 18:36:41 grumbel Exp $
+//  $Id: EditorObj.hh,v 1.37 2002/01/15 10:48:51 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,11 +20,13 @@
 #ifndef EDITOROBJ_HH
 #define EDITOROBJ_HH
 
-#include <fstream>
 #include <string>
+#include <fstream>
 
 #include "../boost/smart_ptr.hpp"
 #include "../boost/dummy_ptr.hpp"
+
+using namespace std;
 
 class CL_Rect;
 class CL_Vector;

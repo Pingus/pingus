@@ -1,4 +1,4 @@
-//  $Id: SolidColorBackground.cc,v 1.9 2001/12/04 12:18:50 grumbel Exp $
+//  $Id: SolidColorBackground.cc,v 1.10 2002/01/15 10:48:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,8 @@
 #include <ClanLib/display.h>
 #include "../editor/SpriteEditorObj.hh"
 #include "../editor/EditorObj.hh"
-#include "../XMLhelper.hh"
 #include "SolidColorBackground.hh"
+#include "../XMLhelper.hh"
 
 void
 SolidColorBackgroundData:: write_xml(std::ofstream* xml)
@@ -33,7 +33,7 @@ SolidColorBackgroundData:: write_xml(std::ofstream* xml)
 boost::shared_ptr<WorldObjData> 
 SolidColorBackgroundData::create (xmlDocPtr doc, xmlNodePtr cur)
 {
-  SolidColorBackgroundData* data (new SolidColorBackgroundData ());
+  SolidColorBackgroundData* data = new SolidColorBackgroundData ();
 
   cur = cur->children;
   while (cur != NULL)
@@ -98,7 +98,7 @@ SolidColorBackground::SolidColorBackground (const SolidColorBackgroundData& data
 }
 
 void
-SolidColorBackground::draw_offset (int x_of, int y_of, float s = 1.0)
+SolidColorBackground::draw_offset (int x_of, int y_of, float s)
 {
   // FIXME: Probally fill_rect is better here, but slower?
   CL_Display::clear_display (color.red, color.green, color.blue, color.alpha);

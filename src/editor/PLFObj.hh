@@ -1,4 +1,4 @@
-//  $Id: PLFObj.hh,v 1.26 2001/08/13 21:35:37 grumbel Exp $
+//  $Id: PLFObj.hh,v 1.27 2002/01/15 10:48:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,6 +28,9 @@
 #include "../ExitData.hh"
 #include "../TrapData.hh"
 #include "SpriteEditorObj.hh"
+
+
+using namespace std;
 
 ///
 class EntranceObj : public SpriteEditorObj,

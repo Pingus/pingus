@@ -1,4 +1,4 @@
-//  $Id: Sprite.cc,v 1.14 2001/08/16 22:00:50 grumbel Exp $
+//  $Id: Sprite.cc,v 1.15 2002/01/15 10:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -60,10 +60,10 @@ Sprite::Sprite (std::string arg_sur_name,
 }
 
 Sprite::Sprite (const CL_Surface& arg_sur,
-		float arg_frames_per_second = 10.0f,
+		float arg_frames_per_second,
 		Sprite::Direction dir,
 		LoopType arg_loop_type)
-  : frame (0.0f),
+      : frame (0.0f),
     frames_per_second (arg_frames_per_second),
     direction (dir),
     looptype (arg_loop_type),
@@ -74,9 +74,9 @@ Sprite::Sprite (const CL_Surface& arg_sur,
 }
 
 Sprite::Sprite (const ResDescriptor& desc,
-		float arg_frames_per_second = 10.0f,
-		Sprite::Direction dir = NONE,
-		LoopType arg_loop_type = ENDLESS)
+		float arg_frames_per_second,
+		Sprite::Direction dir,
+		LoopType arg_loop_type)
   : frame (0.0f),
     frames_per_second (arg_frames_per_second),
     direction (dir),

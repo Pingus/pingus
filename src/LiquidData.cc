@@ -1,4 +1,4 @@
-//  $Id: LiquidData.cc,v 1.5 2001/12/04 12:18:49 grumbel Exp $
+//  $Id: LiquidData.cc,v 1.6 2002/01/15 10:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
 void 
 LiquidData::write_xml(std::ofstream* xml)
 {
-  std::cout << "LiquidData::write_xml(ofstream* xml)" << std::endl;
+  std::cout << "LiquidData::write_xml(std::ofstream* xml)" << std::endl;
   (*xml) << "<liquid use-old-width-handling=\"" << int(old_width_handling) << "\">\n";
   XMLhelper::write_desc_xml(xml, desc);
   XMLhelper::write_position_xml(xml, pos);
@@ -39,7 +39,7 @@ boost::shared_ptr<WorldObjData>
 LiquidData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
   std::cout << "LiquidData::create(xmlDocPtr doc, xmlNodePtr cur)" << std::endl;
-  LiquidData* liquid (new LiquidData ());
+  LiquidData* liquid = new LiquidData ();
   
   char* width_handling = (char*)xmlGetProp(cur, (xmlChar*)"use-old-width-handling");
   if (width_handling)

@@ -1,4 +1,4 @@
-//  $Id: PLF.cc,v 1.27 2001/08/16 17:46:51 grumbel Exp $
+//  $Id: PLF.cc,v 1.28 2002/01/15 10:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -71,7 +71,7 @@ PLF::get_foreground()
       ret_val.res_name = "levels/" + foreground.res_name;
       break;
     case  ResDescriptor::RD_RESOURCE:
-      if (verbose > 1) cout << "Not supported" << endl;
+      if (verbose > 1) std::cout << "Not supported" << endl;
       break;
     default:
       assert(false);

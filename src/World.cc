@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.64 2001/12/16 03:23:44 cagri Exp $
+//  $Id: World.cc,v 1.65 2002/01/15 10:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,11 +46,6 @@
 
 using namespace std;
 using boost::shared_ptr;
-
-// Workaround for a VC bug
-#ifdef WIN32
-#  define for if(0);else for
-#endif /* WIN32 */
 
 // Structure for the sorting algorithm (stable_sort)
 struct WorldObj_less
@@ -103,7 +98,7 @@ World::update(float delta)
   if (!exit_world && (allowed_pingus == released_pingus || do_armageddon)
       && pingus->size() == 0) 
     {
-      if (verbose) cout << "World: world finished, going down in the next seconds..." << endl;
+      if (verbose) std::cout << "World: world finished, going down in the next seconds..." << endl;
       exit_world = true;
       shutdown_time = GameTime::get_time() + 75;
     }
@@ -349,7 +344,7 @@ World::set_action_holder(ActionHolder* a)
 }
 
 void 
-World::play_wav (std::string name, const CL_Vector& pos, float volume = 0.5f)
+World::play_wav (std::string name, const CL_Vector& pos, float volume)
 {
   if (view.get ())
     {

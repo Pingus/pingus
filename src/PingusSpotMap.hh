@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.hh,v 1.16 2001/08/15 07:35:27 grumbel Exp $
+//  $Id: PingusSpotMap.hh,v 1.17 2002/01/15 10:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,12 +24,17 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <algorithm>
+#include <cstdio>
 #include <ClanLib/core.h>
 
+#include "globals.hh"
 #include "PinguMap.hh"
 #include "ColMap.hh"
 #include "PSMParser.hh"
 #include "PLF.hh"
+
+
 
 ///
 class MapTileSurface

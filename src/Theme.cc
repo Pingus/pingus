@@ -1,4 +1,4 @@
- //  $Id: Theme.cc,v 1.32 2001/08/18 09:54:26 grumbel Exp $
+ //  $Id: Theme.cc,v 1.33 2002/01/15 10:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -16,8 +16,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
-
-#include <fstream>
 
 #include "PathManager.hh"
 #include "System.hh"

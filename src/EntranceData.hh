@@ -1,4 +1,4 @@
-//  $Id: EntranceData.hh,v 1.6 2001/12/04 12:18:49 grumbel Exp $
+//  $Id: EntranceData.hh,v 1.7 2002/01/15 10:48:48 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define ENTRANCE_DATA_HH
 
 #include <string>
+#include <fstream>
 
 #include "WorldObjData.hh"
 #include "Position.hh"

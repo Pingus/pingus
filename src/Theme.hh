@@ -1,4 +1,4 @@
-//  $Id: Theme.hh,v 1.13 2001/08/02 21:51:02 grumbel Exp $
+//  $Id: Theme.hh,v 1.14 2002/01/15 10:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,6 +23,8 @@
 
 #include <string>
 #include <vector>
+#include <fstream>
+#include <strstream>
 #include <ClanLib/core.h>
 
 #include "MultiLineText.hh"

@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.53 2001/11/30 20:22:21 grumbel Exp $
+//  $Id: ObjectSelector.cc,v 1.54 2002/01/15 10:48:52 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -16,10 +16,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
-
-#include <list>
-#include <string>
-#include <iostream>
 
 #include "../globals.hh"
 #include "../Display.hh"
@@ -274,7 +270,7 @@ ObjectSelector::get_entrance()
 	  break;
 
 	default:
-	  if (verbose) cout << "Unknown keypressed" << endl;
+	  if (verbose) std::cout << "Unknown keypressed" << endl;
 	}
     }
   
@@ -491,7 +487,7 @@ ObjectSelector::select_surface(std::string resource_file)
 	  sur_obj.sur = Blitter::scale_surface (sur_obj.sur, 50, 50);
 	  ThumbCache::cache (sur_obj.sur, sur_obj.name, resource_file);
 
-	  cout << "Loading: " << sur_obj.name  << endl;
+	  std::cout << "Loading: " << sur_obj.name  << endl;
 	}
       sur_list.push_back(sur_obj);
 
@@ -522,7 +518,7 @@ ObjectSelector::read_key()
       if (keys.peek_key().state != CL_Key::NoKey) 
 	{
 	  key = keys.get_key();
-	  cout << "key: " << key.ascii << endl;
+	  std::cout << "key: " << key.ascii << endl;
 	  return key.id;
 	}
     }

@@ -1,4 +1,4 @@
-//  $Id: ThunderstormBackground.cc,v 1.7 2001/08/12 18:36:41 grumbel Exp $
+//  $Id: ThunderstormBackground.cc,v 1.8 2002/01/15 10:48:50 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ ThunderstormBackground::update(float delta)
 }
 
 void
-ThunderstormBackground::draw_offset(int x_of, int y_of, float s = 1.0)
+ThunderstormBackground::draw_offset(int x_of, int y_of, float s)
 {
   clouds_sur.put_screen(x_pos + x_of, y_of);
 }

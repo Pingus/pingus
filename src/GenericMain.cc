@@ -1,4 +1,4 @@
-//  $Id: GenericMain.cc,v 1.14 2001/12/05 09:15:50 grumbel Exp $
+//  $Id: GenericMain.cc,v 1.15 2002/01/15 10:48:49 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,7 +33,6 @@
 #include <clocale>
 #include <config.h>
 #include "my_gettext.hh"
-
 
 GenericMain my_app; // notice this line. It creates the global instance.
 

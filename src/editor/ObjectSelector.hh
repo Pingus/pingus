@@ -1,4 +1,4 @@
-// $Id: ObjectSelector.hh,v 1.24 2001/08/31 07:51:51 grumbel Exp $
+// $Id: ObjectSelector.hh,v 1.25 2002/01/15 10:48:52 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,8 +20,13 @@
 #ifndef OBJECTSELECTOR_HH
 #define OBJECTSELECTOR_HH
 
-#include <string>
+#ifndef LIBXML_2
+  #define LIBXML_2
+#endif
+
 #include <list>
+#include <string>
+#include <iostream>
 
 #include "EditorObj.hh"
 #include "PLFObj.hh"

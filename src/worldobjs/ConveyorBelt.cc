@@ -1,4 +1,4 @@
-//  $Id: ConveyorBelt.cc,v 1.27 2002/01/04 01:19:47 grumbel Exp $
+//  $Id: ConveyorBelt.cc,v 1.28 2002/01/15 10:48:53 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -111,7 +111,7 @@ ConveyorBelt::ConveyorBelt (WorldObjData* data)
 }
 
 void
-ConveyorBelt::draw_offset (int x_of, int y_of, float s = 1.0)
+ConveyorBelt::draw_offset (int x_of, int y_of, float s)
 {
   left_sur.put_screen (int(pos.x + x_of), int(pos.y + y_of), int(counter));
   for (int i=0; i < width; i++)
