@@ -722,6 +722,7 @@ pingus/tumble.png \
 pingus/tumble1.png \
 pingus/tumble2.png \
 pingus/tumble3.png \
+pingus/waiter.png \
 pingus/walker.png \
 pingus/walker1.png \
 pingus/walker2.png \
