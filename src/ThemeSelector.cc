@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.8 2000/04/14 18:23:45 grumbel Exp $
+//  $Id: ThemeSelector.cc,v 1.9 2000/04/20 17:11:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -178,8 +178,6 @@ ThemeSelector::~ThemeSelector()
 void
 ThemeSelector::select()
 {
-  vector<Theme*>::iterator temp_theme = 0;
-
   event->enabled = true;
   
   while(CL_Mouse::left_pressed() || CL_Mouse::middle_pressed()) 
@@ -194,18 +192,17 @@ ThemeSelector::select()
     }
   current_theme = themes.begin();
 
-  draw();
   PingusSound::play("../data/music/pingus-1.it");
+
+  CL_MouseCursor::set_cursor(CL_MouseCursorProvider::load("Cursors/cursor", PingusResource::get("game.dat")));
+  CL_MouseCursor::show();
+
   while(!key_pressed(CL_KEY_ESCAPE)) 
     {
       CL_System::keep_alive();
-
-      if (temp_theme != current_theme) 
-	{
-	  (*current_theme)->draw_title();
-	  temp_theme = current_theme;
-	}
+      draw();
     }
+  CL_MouseCursor::hide();
   event->enabled = false;
 }
 
