@@ -30,6 +30,22 @@
     </pingus-level>
   </xsl:template>
 
+  <xsl:template match="/pingus-level/global/levelname">
+    <xsl:choose>
+      <xsl:when test="@lang='en'">
+        <levelname><xsl:apply-templates /></levelname>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="/pingus-level/global/description">
+    <xsl:choose>
+      <xsl:when test="@lang='en'">
+        <description><xsl:apply-templates /></description>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
+
   <xsl:template match="resource">
     <xsl:variable name="datafile">
       <xsl:value-of select="resource-datafile" />

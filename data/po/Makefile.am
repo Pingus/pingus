@@ -49,8 +49,8 @@ update-po:
 	xgettext --default-domain=pingus --directory=../.. \
    --add-comments=TRANSLATORS: --keyword=_ --keyword=N_ \
    --files-from=./POTFILES --output=pingus.pot \
-   --copyright-holder='Ingo Ruhnke'; \
-   for lang in *.po; do \
+   --copyright-holder='Ingo Ruhnke'
+	for lang in *.po; do \
      echo "Updating $$lang: "; \
      msgmerge --update $$lang pingus.pot; \
    done

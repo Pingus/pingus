@@ -112,7 +112,7 @@ WorldMap::parse_file(FileReader reader)
     {
       parse_graph(reader.read_section("graph"));
       parse_objects(reader.read_section("objects"));
-      parse_properties(reader.read_section("properties"));
+      parse_properties(reader.read_section("head"));
     }
   else
     {
