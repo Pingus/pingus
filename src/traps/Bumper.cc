@@ -1,4 +1,4 @@
-//  $Id: Bumper.cc,v 1.16 2001/08/12 18:36:42 grumbel Exp $
+//  $Id: Bumper.cc,v 1.17 2001/12/16 03:23:44 cagri Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "../algo.hh"
 #include "../GroundpieceData.hh"
 #include "../ColMap.hh"
+#include "../PinguHolder.hh"
 #include "Bumper.hh"
 
 Bumper::Bumper(const TrapData& data)
@@ -40,6 +41,12 @@ Bumper::~Bumper()
 void
 Bumper::update(float delta)
 {
+
+  PinguHolder* holder = world->get_pingu_p ();
+  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu) {
+     catch_pingu(*pingu);
+  }
+
   if (upwards) 
     {
       ++count;

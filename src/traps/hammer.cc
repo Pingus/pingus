@@ -1,4 +1,4 @@
-//  $Id: hammer.cc,v 1.15 2001/08/16 22:00:51 grumbel Exp $
+//  $Id: hammer.cc,v 1.16 2001/12/16 03:23:45 cagri Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 #include "../algo.hh"
 #include "../ActionHolder.hh"
 #include "../PinguActionFactory.hh"
+#include "../PinguHolder.hh"
 
 Hammer::Hammer(const TrapData& data)
 {
@@ -44,6 +45,11 @@ Hammer::update(float delta)
 {
   if (counter == 0) 
     particle_thrown = false;
+
+  PinguHolder* holder = world->get_pingu_p ();
+  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu){
+       catch_pingu(*pingu);
+  }
 
   if (counter == (int)(surface.get_num_frames()) - 3 && !particle_thrown) {
     particle_thrown = true;

@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.63 2001/11/22 20:08:35 grumbel Exp $
+//  $Id: World.cc,v 1.64 2001/12/16 03:23:44 cagri Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -134,11 +134,13 @@ World::update(float delta)
   // Let the exit catch the pingus
   for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
     {
+      // catch_pingu() is now done in relevant update() if WorldObj
+      // needs to catch pingus.
       (*obj)->update(delta);
     }
   
-  for(PinguIter pingu = pingus->begin(); pingu != pingus->end(); ++pingu)
-    {
+  for(PinguIter pingu = pingus->begin(); pingu != pingus->end(); ++pingu) {
+
       (*pingu)->update(delta);
       
       if ((*pingu)->need_catch()) {
@@ -146,20 +148,8 @@ World::update(float delta)
 	  (*pingu)->catch_pingu(i->get());
 	}
       }
-      
-      //for(vector<shared_ptr<Trap> >::iterator obj = traps.begin(); obj != traps.end(); obj++)
-      //(*obj)->catch_pingu(*pingu);
-      
-      //for(vector<shared_ptr<Exit> >::iterator obj = exits.begin(); obj != exits.end(); obj++) 
-      //(*obj)->catch_pingu(*pingu);
     }
 
-  /*  for(vector<TrapData>::size_type i=0; i < traps.size(); ++i)
-      traps[i]->update(delta);
-
-      for(vector<EntranceData>::size_type i2=0; i2 < entrance.size(); ++i2) 
-      entrance[i2]->update(delta);
-  */    
   particle_holder->update(delta);
 
   // Clear the explosion force list

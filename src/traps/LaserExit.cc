@@ -1,4 +1,4 @@
-//  $Id: LaserExit.cc,v 1.16 2001/08/16 22:00:51 grumbel Exp $
+//  $Id: LaserExit.cc,v 1.17 2001/12/16 03:23:44 cagri Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #include "../ActionHolder.hh"
 #include "../PingusResource.hh"
 #include "../PinguActionFactory.hh"
+#include "../PinguHolder.hh"
 #include "LaserExit.hh"
 
 LaserExit::LaserExit(const TrapData& data)
@@ -45,6 +46,12 @@ LaserExit::~LaserExit()
 void
 LaserExit::update(float delta)
 {
+
+  PinguHolder* holder = world->get_pingu_p ();
+  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu){
+       catch_pingu(*pingu);
+  }
+
   if (killing) {
     if (counter.finished()) {
       counter = 0;

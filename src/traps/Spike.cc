@@ -1,4 +1,4 @@
-//  $Id: Spike.cc,v 1.13 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: Spike.cc,v 1.14 2001/12/16 03:23:44 cagri Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include "../PinguEnums.hh"
 #include "../PingusResource.hh"
+#include "../PinguHolder.hh"
+#include "../World.hh"
 
 #include "Spike.hh"
 
@@ -56,6 +58,11 @@ Spike::update(float delta)
   if (killing)
     ++counter;
   
+  PinguHolder* holder = world->get_pingu_p ();
+  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu){
+       catch_pingu(*pingu);
+  }
+
   if (counter == (int)(surface.get_num_frames()) - 1) {
     killing = false;
     counter = 0;

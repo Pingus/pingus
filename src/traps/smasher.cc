@@ -1,4 +1,4 @@
-//  $Id: smasher.cc,v 1.29 2001/12/02 11:02:13 torangan Exp $
+//  $Id: smasher.cc,v 1.30 2001/12/16 03:23:45 cagri Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,6 +48,10 @@ Smasher::~Smasher()
 void
 Smasher::update(float delta)
 {
+
+  PinguHolder* holder = world->get_pingu_p();
+  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
+     		  catch_pingu(*pingu);
   if (smashing) 
     {
       if (downwards) 
@@ -67,7 +71,6 @@ Smasher::update(float delta)
 						     frand()-0.5, frand()-0.5));
 		}
 
-	      PinguHolder* holder = world->get_pingu_p();
 	      for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
 		{
 		  if ((*pingu)->is_inside (int(pos.x + 30), int(pos.y + 90),

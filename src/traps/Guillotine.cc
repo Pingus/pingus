@@ -1,4 +1,4 @@
-//  $Id: Guillotine.cc,v 1.14 2001/08/10 10:56:14 grumbel Exp $
+//  $Id: Guillotine.cc,v 1.15 2001/12/16 03:23:44 cagri Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,8 @@
 
 #include "../PingusResource.hh"
 #include "Guillotine.hh"
+#include "../PinguHolder.hh"
+#include "../World.hh"
 
 Guillotine::Guillotine(const TrapData& data)
 {
@@ -62,6 +64,11 @@ Guillotine::update(float delta)
   if (counter.finished()) {
     counter = 0;
     killing = false;
+  }
+
+  PinguHolder* holder = world->get_pingu_p ();
+  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu) {
+	  catch_pingu(*pingu);
   }
 
   if (killing) {
