@@ -1,4 +1,4 @@
-//  $Id: screenshot.hxx,v 1.5 2002/09/27 11:26:44 torangan Exp $
+//  $Id: screenshot.hxx,v 1.6 2003/03/28 23:54:14 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,12 +31,14 @@ class Screenshot
 private:
   static std::string get_date();
   static std::string get_filename();
-  static void save_16bit_target_to_file(CL_Target*, std::string filename);
-  static void save_generic_target_to_file(CL_Target*, std::string filename);
+  static void save_target_to_file_fast(CL_Target*,   const std::string& filename);
+  static void save_target_to_file_slow(CL_Target*, const std::string& filename);
 public:
   static std::string make_screenshot();
-  static void save_target_to_file(CL_Target*, std::string filename);
-  
+  static void save_target_to_file(CL_Target*, const std::string& filename);
+
+  /** buffer must be RGB and width*height*3 large */
+  static void save_ppm(const std::string& filename, unsigned char* buffer, int width, int height);
 private:
   Screenshot ();
   Screenshot (const Screenshot&);

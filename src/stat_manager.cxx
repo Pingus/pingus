@@ -1,4 +1,4 @@
-//  $Id: stat_manager.cxx,v 1.3 2003/03/28 16:16:00 grumbel Exp $
+//  $Id: stat_manager.cxx,v 1.4 2003/03/28 23:54:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,6 +83,7 @@ StatManager::load(const std::string& filename)
               stats[name] = value;
 
               cur = cur->next;
+              cur = XMLhelper::skip_blank(cur);
             }
         }
       else

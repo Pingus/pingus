@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.55 2003/03/28 16:16:00 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.56 2003/03/28 23:54:14 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -668,7 +668,7 @@ PingusMain::print_greeting_message()
   std::cout << "getext support: ok" << std::endl;
   std::cout << gettext("gettext language: english") << std::endl;
 #else
-  std::cout << "getext support: missing (only support for english will be available" << std::endl;
+  std::cout << "getext support: missing (only support for english will be available)" << std::endl;
 #endif
 
   if (sound_enabled)

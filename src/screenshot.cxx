@@ -1,4 +1,4 @@
-//  $Id: screenshot.cxx,v 1.10 2003/02/18 18:41:59 grumbel Exp $
+//  $Id: screenshot.cxx,v 1.11 2003/03/28 23:54:14 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <config.h>
 #include <time.h>
 #include <stdio.h>
 #include <fstream>
@@ -34,97 +35,123 @@ std::string
 Screenshot::make_screenshot()
 {
   CL_Target* target = CL_Display::get_target();
-  std::string filename = get_filename();
-  if (target) {
-    std::cout << _("Screenshot: Saving screenshot to: ") << filename << std::endl;
-    save_target_to_file(target, filename);
-    std::cout << _("Screnshot: Screenshot is done.") << std::endl;
-    return filename;
-  } else {
-    std::cout << _("Screenshot: Couldn't save screenshot") << std::endl;
-    return "";
-  }
+
+  if (target) 
+    {
+      std::string filename = get_filename();
+       
+      std::cout << _("Screenshot: Saving screenshot to: ") << filename << std::endl;
+      save_target_to_file(target, filename);
+      std::cout << _("Screnshot: Screenshot is done.") << std::endl;
+
+      return filename;
+    } 
+  else 
+    {
+      std::cout << _("Screenshot: Couldn't save screenshot") << std::endl;
+      return "";
+    }
 }
 
-// FIXME: The name sucks, too lazy to change it... this function might
-// not be endian clean. save_generic_target_to_file() should be endian clean
 void
-Screenshot::save_16bit_target_to_file(CL_Target* target, std::string filename)
+Screenshot::save_target_to_file(CL_Target* target, const std::string& filename)
 {
-  // Warring this doesn't work
-  
-  unsigned char*  buffer;
-  unsigned short* sbuffer;
-  unsigned int buffer_size;
-  unsigned int sbuffer_size;
-  FILE* out = fopen(filename.c_str(), "wb");
+  save_target_to_file_fast(target, filename);
+}
 
-  if (!out) {
-    perror(filename.c_str());
-    std::cout << _("Screenshot: Couldn't write file: ") << filename << std::endl;
-    return;
-  }
-
-  fprintf(out,
-	  "P6\n"
-	  "# CREATOR: Pingus %s\n"
-	  "%d %d\n"
-	  "255\n",
-	  VERSION,
-	  target->get_width(),
-	  target->get_height());
-
-  buffer_size = target->get_width() * target->get_height() * 3;
-  buffer = new unsigned char[buffer_size];
-
+void
+Screenshot::save_target_to_file_fast(CL_Target* target, const std::string& filename)
+{
   target->lock();
-  sbuffer = reinterpret_cast<unsigned short*>(target->get_data());
-  sbuffer_size = target->get_height() * target->get_pitch();
-  unsigned int sbytes_per_pixel = target->get_bytes_per_pixel();
+  int num_pixels = target->get_width() * target->get_height();
+  unsigned char* buffer = new unsigned char[num_pixels * 3];
+  unsigned char* target_buffer = reinterpret_cast<unsigned char*>(target->get_data());
 
-  //std::cout << "sbuffer: " << sbuffer_size << std::endl;
-  //std::cout << "buffer: " << buffer_size << std::endl;
+  unsigned int rmask = target->get_red_mask();
+  unsigned int gmask = target->get_green_mask();
+  unsigned int bmask = target->get_blue_mask();
 
-  for (unsigned int i = 0, j = 0; i < sbuffer_size;
-	i += sbytes_per_pixel, j += 3)
+  switch(target->get_bytes_per_pixel())
     {
-      buffer[j + 0] = (*(sbuffer+i) & target->get_red_mask())   * 255 / target->get_red_mask();
-      buffer[j + 1] = (*(sbuffer+i) & target->get_green_mask()) * 255 / target->get_green_mask();
-      buffer[j + 2] = (*(sbuffer+i) & target->get_blue_mask())  * 255 / target->get_blue_mask();
+    case 2: // 16bit
+      {
+        for (int i = 0; i < num_pixels; ++i)
+          {
+            unsigned int color = *((unsigned short*)(target_buffer + i*2));
+            
+            buffer[i*3 + 0] = (color & rmask) * 255 / rmask;
+            buffer[i*3 + 1] = (color & gmask) * 255 / gmask;
+            buffer[i*3 + 2] = (color & bmask) * 255 / bmask;
+          }
+        break;
+      }
+    case 3: // 24bit
+      {			
+        // that should do the trick - untested !!!
+        for (int i = 0; i < num_pixels; ++i)
+          {
+            unsigned char* d = target_buffer + i*3;
+#ifdef WORDS_BIGENDIAN
+            unsigned int color = (*d << 16) | (*(d+1) << 8) | (*(d+2));
+#else
+            unsigned int color = (*d) | (*(d+1) << 8) | (*(d+2) << 16);
+#endif
+            
+            buffer[i*3 + 0] = (color & rmask) * 255 / rmask;
+            buffer[i*3 + 1] = (color & gmask) * 255 / gmask;
+            buffer[i*3 + 2] = (color & bmask) * 255 / bmask;
+          }
+        break;
+      }
+    case 4: // 32bit
+      {	
+        for (int i = 0; i < num_pixels; ++i)
+          {
+            unsigned int color = *((unsigned int*)(target_buffer + i*4));
+            
+            buffer[i*3 + 0] = (color & rmask) * 255 / rmask;
+            buffer[i*3 + 1] = (color & gmask) * 255 / gmask;
+            buffer[i*3 + 2] = (color & bmask) * 255 / bmask;
+          }
+        break;
+      }
+   
     }
 
   target->unlock();
-  
-  fwrite(buffer, sizeof(unsigned char), buffer_size, out);
-  fclose(out);
+  save_ppm(filename, buffer, target->get_width(), target->get_height());
   delete[] buffer;
 }
 
 void
-Screenshot::save_target_to_file(CL_Target* target, std::string filename)
+Screenshot::save_ppm(const std::string& filename, unsigned char* buffer, int width, int height)
 {
-  /*
-    switch(target->get_depth()) {
-    case 16:
-  */
-    save_16bit_target_to_file(target, filename);
-    /*   
-	 break;
-	 default:
-	 save_generic_target_to_file(target, filename);
-	 break;
-    */
-    //}
+  FILE* out = fopen(filename.c_str(), "wb");
+
+  if (!out) 
+    {
+      perror(filename.c_str());
+      std::cout << _("Screenshot: Couldn't write file: ") << filename << std::endl;
+      return;
+    }
+
+  fprintf(out,
+	  "P6\n"
+	  "# CREATOR: Pingus %s\n"
+          "%d %d\n"
+	  "255\n",
+	  VERSION,
+	  width,
+	  height);
+
+  fwrite(buffer, sizeof(unsigned char), width * height * 3, out);
+  fclose(out); 
 }
 
 void
-Screenshot::save_generic_target_to_file(CL_Target* target, std::string filename)
+Screenshot::save_target_to_file_slow(CL_Target* target, const std::string& filename)
 {
   std::ofstream out(filename.c_str());
-  float red, green, blue, alpha;
-
-  std::cout << "Target: bit: " << target->get_depth() << "\n"
-	    << "        bitperpiexel: " << target->get_bytes_per_pixel()  << std::endl;
 
   out << "P3\n" 
       << "# CREATOR: Pingus... some version\n"
@@ -133,16 +160,19 @@ Screenshot::save_generic_target_to_file(CL_Target* target, std::string filename)
       << "255" << std::endl;
 
   target->lock();
+
+  float red, green, blue, alpha;
   for (unsigned int y=0; y < target->get_height(); ++y) 
     {
       for (unsigned int x=0; x < target->get_width(); ++x)
         {
           target->get_pixel(x, y, &red, &green, &blue, &alpha);
-          out << (int)(red * 255) << " " 
+          out << (int)(red   * 255) << " " 
               << (int)(green * 255) << " "
-              << (int)(blue * 255) << "\n";
+              << (int)(blue  * 255) << "\n";
         }
     }
+
   target->unlock();
 }
 
@@ -154,7 +184,7 @@ Screenshot::get_filename()
   int i = 1;
 
   do {
-    snprintf(str, 16, "%d.pnm", i);
+    snprintf(str, 16, "%d.ppm", i);
     tmp_filename = System::get_statdir() + "screenshots/" 
       + "pingus-" + get_date() + "-" + std::string(str);
     ++i;
