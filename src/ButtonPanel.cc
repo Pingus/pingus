@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.16 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: ButtonPanel.cc,v 1.17 2001/04/10 21:51:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,9 +23,10 @@
 #include "ButtonPanel.hh"
 #include "ActionData.hh"
 
+using boost::shared_ptr;
 CL_Surface ButtonPanel::button_cap;
 
-ButtonPanel::ButtonPanel(PLF* plf)
+ButtonPanel::ButtonPanel(boost::shared_ptr<PLF> plf)
 {
   last_press = 0;
 
@@ -44,24 +45,26 @@ ButtonPanel::ButtonPanel(PLF* plf)
     {
       if (horizontal_button_panel) 
 	{
-	  a_buttons.push_back(new HorizontalActionButton(38 * i,
-							 CL_Display::get_height() - 56,
-							 buttons_data[i].name));
+	  a_buttons.push_back(shared_ptr<ActionButton>(new HorizontalActionButton
+						       (38 * i,
+							CL_Display::get_height() - 56,
+							buttons_data[i].name)));
 	}
       else
 	{
-	  a_buttons.push_back(new VerticalActionButton(2,
-						       i * 38 + 30,
-						       buttons_data[i].name));
+	  a_buttons.push_back(shared_ptr<ActionButton>(new VerticalActionButton
+						       (2,
+							i * 38 + 30,
+							buttons_data[i].name)));
 	}
     }
 
-  armageddon = new ArmageddonButton(CL_Display::get_width() - 38, 
-				    CL_Display::get_height() - 56);
-  forward    = new ForwardButton(CL_Display::get_width() - 38 * 2,
-				 CL_Display::get_height() - 56);
-  pause      = new PauseButton(CL_Display::get_width() - 38 * 3,
-			       CL_Display::get_height() - 56);
+  armageddon = shared_ptr<ArmageddonButton>(new ArmageddonButton(CL_Display::get_width() - 38, 
+								 CL_Display::get_height() - 56));
+  forward    = shared_ptr<ForwardButton>(new ForwardButton(CL_Display::get_width() - 38 * 2,
+							   CL_Display::get_height() - 56));
+  pause      = shared_ptr<PauseButton>(new PauseButton(CL_Display::get_width() - 38 * 3,
+						       CL_Display::get_height() - 56));
 
   forward->pressed = false;
   pause->pressed   = false;
@@ -74,12 +77,6 @@ ButtonPanel::ButtonPanel(PLF* plf)
 
 ButtonPanel::~ButtonPanel()
 {
-  for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); ++button)
-    delete (*button);
-
-  delete armageddon;
-  delete forward;
-  delete pause;
 }
 
 void

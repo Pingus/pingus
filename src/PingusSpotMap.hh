@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.hh,v 1.13 2000/12/14 21:35:55 grumbel Exp $
+//  $Id: PingusSpotMap.hh,v 1.14 2001/04/10 21:51:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -92,7 +92,7 @@ public:
   ///
   PingusSpotMap();
   ///
-  PingusSpotMap(PLF*);
+  PingusSpotMap(boost::shared_ptr<PLF>);
   ///
   virtual ~PingusSpotMap();
 
@@ -101,7 +101,7 @@ public:
   ///
   ColMap* PingusSpotMap::get_colmap();
   ///
-  void load(PLF* plf);
+  void load(boost::shared_ptr<PLF> plf);
   ///
   void gen_tiles();
   ///

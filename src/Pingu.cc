@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.47 2001/04/10 19:42:57 grumbel Exp $
+//  $Id: Pingu.cc,v 1.48 2001/04/10 21:51:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -258,7 +258,7 @@ Pingu::dist (int x, int y)
 }
 
 void
-Pingu::do_persistent()
+Pingu::update_persistent(float delta)
 {
   if (environment == sky && action.get() == 0 && rel_getpixel(0, -1) == ColMap::NOTHING) 
     {
@@ -306,7 +306,9 @@ Pingu::update(float delta)
     {
       action.reset ();
     }
-    
+
+  /** The Pingu has hit the edge of the screen, a good time to let him
+      die. */
   if (rel_getpixel(0, -1) == ColMap::OUTOFSCREEN) 
     {
       PingusSound::play_wav("die");
@@ -314,35 +316,33 @@ Pingu::update(float delta)
       return;
     }
 
-  do_persistent();
-  
+  update_persistent(delta);
+
+  /** When we have an action evaluate it, else evaluate the normal
+      walking */
   if (action.get()) 
-    { // if we have an action, update() it
-      action->update(delta);
-    }
+    action->update(delta);
   else 
-    { // if we have no action, let the pingu walk
-      do_normal();
-    }
+    update_normal(delta);
 }
 
 // Check if the pingu is on ground and then do something.
 void 
-Pingu::do_normal()
+Pingu::update_normal(float delta)
 {
   if (rel_getpixel(0, -1) == ColMap::NOTHING)
     {
-      do_falling();
+      update_falling(delta);
     }
   else 
     {
-      do_walking();
+      update_walking(delta);
     }
 }
 
 // The Pingu is not on ground, so lets fall...
 void
-Pingu::do_falling()
+Pingu::update_falling(float delta)
 {
   // Apply all forces
   velocity = ForcesHolder::apply_forces(pos, velocity);
@@ -417,7 +417,7 @@ Pingu::do_falling()
 
 // If the Pingu is on ground he can do his walking stuff here.
 void 
-Pingu::do_walking()
+Pingu::update_walking(float delta)
 {
   environment = land;
 

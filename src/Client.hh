@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.19 2001/04/07 21:03:42 grumbel Exp $
+//  $Id: Client.hh,v 1.20 2001/04/10 21:51:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ class Client
 {
 private:
   ///
-  PLF* plf;
+  boost::shared_ptr<PLF> plf;
   ///
   Result result;
   ///

@@ -1,4 +1,4 @@
-//  $Id: World.hh,v 1.24 2001/04/04 10:21:16 grumbel Exp $
+//  $Id: World.hh,v 1.25 2001/04/10 21:51:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -112,19 +112,19 @@ private:
   ///
   ColMap* colmap;
   ///
-  PLF*    plf;
+  boost::shared_ptr<PLF>  plf;
   ///
   boost::shared_ptr<View> view;
 public:
   ///
   World();
   ///
-  World(PLF*);
+  World(boost::shared_ptr<PLF>);
   ///
   virtual ~World();
 
   ///
-  void    init (PLF*);
+  void    init (boost::shared_ptr<PLF>);
   ///
   void    init_background (void);
   ///
@@ -175,7 +175,7 @@ public:
   ActionHolder* get_action_holder();
 
   ///
-  PLF*    get_plf();
+  boost::shared_ptr<PLF> get_plf();
 
   ///
   unsigned int get_released_pingus() { return released_pingus; }

@@ -1,4 +1,4 @@
-//  $Id: WarGame.hh,v 1.1 2000/08/09 14:35:46 grumbel Exp $
+//  $Id: WarGame.hh,v 1.2 2001/04/10 21:51:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -26,7 +26,7 @@
 class WarGame
 {
 private:
-  PLF* plf;
+  boost::shared_ptr<PLF> plf;
   PinguMap* gfx_map; 
   
 public:

@@ -1,4 +1,4 @@
-//  $Id: FileSelector.hh,v 1.3 2000/06/18 17:01:49 grumbel Exp $
+//  $Id: FileSelector.hh,v 1.4 2001/04/10 21:51:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ struct FileSelectorEntry
   ///
   std::string directory;
   ///
-  PLF* plf;
+  boost::shared_ptr<PLF> plf;
   ///
   PLFPreview* preview;
 

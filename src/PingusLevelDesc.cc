@@ -1,4 +1,4 @@
-//  $Id: PingusLevelDesc.cc,v 1.18 2001/04/07 21:49:49 grumbel Exp $
+//  $Id: PingusLevelDesc.cc,v 1.19 2001/04/10 21:51:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,7 +28,7 @@
 #include "PingusLevelDesc.hh"
 #include "System.hh"
 
-PingusLevelDesc::PingusLevelDesc(PLF* arg_plf)
+PingusLevelDesc::PingusLevelDesc(boost::shared_ptr<PLF> arg_plf)
 {
   plf = arg_plf;
 

@@ -1,4 +1,4 @@
-//  $Id: XMLPLF.cc,v 1.20 2001/04/10 19:42:57 grumbel Exp $
+//  $Id: XMLPLF.cc,v 1.21 2001/04/10 21:51:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -360,6 +360,10 @@ XMLPLF::parse_entrance(xmlNodePtr cur)
 	  char* name = (char*)xmlNodeListGetString(doc, cur->children, 1); 
 	  entrance.type = name;
 	  free(name);
+	}
+      else if (strcmp((char*)cur->name, "owner-id") == 0)
+	{
+	  entrance.owner_id = XMLhelper::parse_int(doc, cur);
 	}
       else if (strcmp((char*)cur->name, "position") == 0)
 	{

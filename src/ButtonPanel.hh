@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.hh,v 1.9 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: ButtonPanel.hh,v 1.10 2001/04/10 21:51:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,6 +21,7 @@
 #define BUTTON_PANEL_HH
 
 #include <vector>
+#include "boost/smart_ptr.hpp"
 
 #include "PLF.hh"
 #include "Pingu.hh"
@@ -39,18 +40,18 @@ private:
   ///
   friend class ClientEvent;
   ///
-  std::vector<ActionButton*> a_buttons;
+  std::vector<boost::shared_ptr<ActionButton> > a_buttons;
   ///
-  typedef std::vector<ActionButton*>::iterator AButtonIter;
+  typedef std::vector<boost::shared_ptr<ActionButton> >::iterator AButtonIter;
   ///
-  ActionButton*     pressed_button;
+  boost::shared_ptr<ActionButton>     pressed_button;
 
   ///
-  ArmageddonButton* armageddon;
+  boost::shared_ptr<ArmageddonButton> armageddon;
   ///
-  ForwardButton*    forward;
+  boost::shared_ptr<ForwardButton>    forward;
   ///
-  PauseButton*      pause;
+  boost::shared_ptr<PauseButton>      pause;
 
   ///
   Server* server;
@@ -72,7 +73,7 @@ private:
   
 public:
   ///
-  ButtonPanel(PLF* plf);
+  ButtonPanel(boost::shared_ptr<PLF> plf);
   ///
   ~ButtonPanel();
 

@@ -1,4 +1,4 @@
-//  $Id: PLFPreview.hh,v 1.4 2000/12/14 21:35:54 grumbel Exp $
+//  $Id: PLFPreview.hh,v 1.5 2001/04/10 21:51:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,12 +34,12 @@ private:
   ///
   CL_Canvas* provider;
   ///
-  PLF* plf;
+  boost::shared_ptr<PLF> plf;
 public:
   ///
-  PLFPreview(PLF*);
+  PLFPreview(boost::shared_ptr<PLF>);
   ///
-  void load(PLF* p = 0);
+  void load(boost::shared_ptr<PLF>);
   ///
   CL_Surface get_surface();
 };

@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.43 2001/04/10 19:42:57 grumbel Exp $
+//  $Id: World.cc,v 1.44 2001/04/10 21:51:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,9 +23,7 @@
 #include <algorithm>
 #include <functional>
 
-//#include "PinguBmpMap.hh"
 #include "PingusSpotMap.hh"
-//#include "PinguRandomMap.hh"
 
 #include "PingusSound.hh"
 #include "View.hh"
@@ -69,7 +67,7 @@ World::World()
   WorldObj::set_world(this);
 }
 
-World::World(PLF* plf)
+World::World(boost::shared_ptr<PLF> plf)
 { 
   WorldObj::set_world(this);
   init(plf);
@@ -203,7 +201,7 @@ World::update(float delta)
 }
 
 void 
-World::init(PLF* plf_data)
+World::init(boost::shared_ptr<PLF> plf_data)
 {
   plf = plf_data;
   do_armageddon = false;
@@ -477,7 +475,7 @@ World::get_particle_holder()
   return particle_holder.get();
 }
 
-PLF*    
+boost::shared_ptr<PLF>
 World::get_plf()
 {
   return plf;

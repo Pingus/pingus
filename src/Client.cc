@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.39 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: Client.cc,v 1.40 2001/04/10 21:51:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -178,11 +178,11 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
 
   if (plf_filename.substr(plf_filename.size() - 4) == ".xml")
     {
-      plf = new XMLPLF(plf_filename);
+      plf = boost::shared_ptr<PLF>(new XMLPLF(plf_filename));
     }
   else // Assuming we are reading a .plf file
     {
-      plf = new PLFPLF(plf_filename);
+      plf = boost::shared_ptr<PLF>(new PLFPLF(plf_filename));
 
       std::cout << "done " << timer.stop() << std::endl;
 

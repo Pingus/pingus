@@ -1,4 +1,4 @@
-//  $Id: SmallMap.hh,v 1.11 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: SmallMap.hh,v 1.12 2001/04/10 21:51:22 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ class SmallMap : public GuiObj
 {
 private:
   ///
-  PLF* plf;
+  boost::shared_ptr<PLF> plf;
   ///
   ColMap* colmap;
   ///

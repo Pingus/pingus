@@ -1,4 +1,4 @@
-//  $Id: TrueServer.cc,v 1.19 2001/04/08 14:10:34 grumbel Exp $
+//  $Id: TrueServer.cc,v 1.20 2001/04/10 21:51:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,7 @@
 
 #include "TrueServer.hh"
 
-TrueServer::TrueServer(PLF* level_data)
+TrueServer::TrueServer(boost::shared_ptr<PLF> level_data)
 {
   filename = level_data->get_filename();
   local_game_speed = game_speed;
@@ -59,7 +59,7 @@ TrueServer::update(float delta)
 }
 
 void
-TrueServer::start(PLF* level_data)
+TrueServer::start(boost::shared_ptr<PLF> level_data)
 {
   Timer timer;
 

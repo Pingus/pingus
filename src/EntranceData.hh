@@ -1,4 +1,4 @@
-//  $Id: EntranceData.hh,v 1.3 2001/04/10 19:42:57 grumbel Exp $
+//  $Id: EntranceData.hh,v 1.4 2001/04/10 21:51:22 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,8 @@ public:
   ResDescriptor desc;
   CL_Vector pos;
   int  release_rate;
-
+  int owner_id;
+  
   /// The type of the entrance type (woodthing, generic, etc.)
   std::string type;
 
@@ -46,6 +47,7 @@ public:
     type = "generic";
     direction = MISC;
     release_rate = 50;
+    owner_id = 0;
   }
 };
 
