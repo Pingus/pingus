@@ -265,7 +265,7 @@ else
       "Pingus #" => $leveldata["pingusmin"] ." / " . $leveldata["pingusmax"],
       "Time" => $leveldata["time"],
       "Difficulty" => $leveldata["difficulty"],
-      "Playable" => $leveldata["playable"],
+      "Playable" => ($leveldata["playable"] == 1) ? "yes" : "no",
       );
     $i = 0;
     while( list($key,$val) = each( $tbl ))
