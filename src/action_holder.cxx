@@ -1,4 +1,4 @@
-//  $Id: action_holder.cxx,v 1.3 2002/06/28 15:12:22 torangan Exp $
+//  $Id: action_holder.cxx,v 1.4 2002/08/22 02:24:59 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "pingus.hxx"
 #include "globals.hxx"
 #include "plf.hxx"
 
