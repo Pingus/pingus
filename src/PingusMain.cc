@@ -1,4 +1,4 @@
-//   $Id: PingusMain.cc,v 1.51 2002/01/19 18:12:54 grumbel Exp $
+//   $Id: PingusMain.cc,v 1.52 2002/01/19 20:30:45 grumbel Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -566,9 +566,6 @@ For more information about these matters, see the files named COPYING.\
     {
       if (levelfile.empty()) {
 	levelfile = argv[i];
-	char cwd[1024];
-	if (getcwd (cwd, 1024))
-	  levelfile = std::string(cwd) + "/" + levelfile;
 	intro_disabled = true;
 
 	if (!System::exist(levelfile))
