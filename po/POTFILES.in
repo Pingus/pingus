@@ -293,8 +293,6 @@ src/input/controller.cxx
 src/input/controller.hxx
 src/input/event.hxx
 src/input/event_fwd.hxx
-src/input/key_helper.cxx
-src/input/key_helper.hxx
 src/input/pointer.hxx
 src/input/pointer_factory.cxx
 src/input/pointer_factory.hxx
@@ -383,8 +381,6 @@ src/pingus_menu.cxx
 src/pingus_menu.hxx
 src/pingus_menu_manager.cxx
 src/pingus_menu_manager.hxx
-src/pingus_resource.cxx
-src/pingus_resource.hxx
 src/pingus_sub_menu.cxx
 src/pingus_sub_menu.hxx
 src/playfield.cxx
