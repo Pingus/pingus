@@ -1,27 +1,28 @@
 <?xml version="1.0"?>
-<pingus-world>
-  <name>Playable Levels</name>
-  
+<!DOCTYPE pingus-world SYSTEM "pingus-world.dtd">
+  <pingus-world>
+    <name xml:lang="en">Playable Levels</name>
+    
   <description-list>
-    <description lang=en>
+    <description xml:lang="en">
       When we have enough, these levels will be
       catagorised into worlds. More levels are very welcome.
     </description>
     
-    <description lang=de_DE>
-      Wenn gen&uuml;gend spielbare Level vorhanden sind wird das hier
+    <description xml:lang="de_DE">
+      Wenn genügend spielbare Level vorhanden sind wird das hier
       etwas aufgeraeumt und die Level bekommen jeweils ihre eigene
       Welt.
     </description>
   </description-list>
-
+  
   <background>
-    <image><resource>
+    <surface><resource>
 	<resource-file>textures.dat</resource-file>
 	<resource-ident>Textures/stars</resource-ident>
-      </resource></image>
+      </resource></surface>
   </background>
-
+  
   <level-list>
     <level>longway.plf</level>
     <level>rinse.plf</level>

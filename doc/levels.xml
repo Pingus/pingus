@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
+<!DOCTYPE pingus-world SYSTEM "pingus-world.dtd">
 <pingus-level>
-  
   <global>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <levelname>Pipe Panic in Penguin World</levelname>
 
-    <description lang="de_DE">
+    <description xml:lang="de_DE">
       This level show a simple pipe system,
       which can be created with just a few 
       pipe tiles.
@@ -13,15 +13,13 @@
 
     <number-of-pingus>100</number-of-pingus>
     <number-to-save>50</number-to-save>
-  </global>
 
-  <ground>
     <maptype>SPOT</maptype>
     <data><file>level3.psm</file></data>
     <width>1100</width>
     <height>800</height>
     <colmap>auto</colmap>
-  </ground>
+  </global>
 
   <background>
     <image><resource type="datafile">
@@ -91,9 +89,7 @@
     </position>
   </trap>
   
-  <ground-objs>
-    
-    <spot type="ground">
+    <groundpiece type="ground">
 
       <image>
 	<resource><file>bla.tga</file></resource>
@@ -104,8 +100,7 @@
 	<y-pos>205</y-pos>
 	<z-pos>-10</z-pos>    
       </position>
-    </spot>
-
+  </groundpiece>
     <spot type="ground">
 
       <image>

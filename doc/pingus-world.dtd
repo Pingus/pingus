@@ -1,0 +1,19 @@
+<!ELEMENT pingus-world (name,description-list,background,level-list)>
+<!ELEMENT name (#PCDATA)>
+<!ATTLIST name          
+        xml:lang CDATA #REQUIRED>
+<!ELEMENT description-list (description*)>
+
+<!ELEMENT description (#PCDATA)>
+<!ATTLIST description          
+        xml:lang CDATA #REQUIRED>
+
+<!ELEMENT background (surface)>
+<!ELEMENT surface (resource)>
+
+<!ELEMENT resource (resource-file, resource-ident)>
+<!ELEMENT resource-file (#PCDATA)>
+<!ELEMENT resource-ident (#PCDATA)>
+
+<!ELEMENT level-list (level*)>
+<!ELEMENT level (#PCDATA)>

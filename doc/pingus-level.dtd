@@ -1,0 +1,60 @@
+<!ELEMENT pingus-level (global,background,(liquid|entrance|exit|groundpiece|trap|hotspot)*)>
+
+<!ELEMENT global (levelname+,description+,author,number-of-pingus,number-to-save,time,width,height)>
+        <!ELEMENT levelname (#PCDATA)>
+                <!ATTLIST levelname          
+                        xml:lang CDATA #REQUIRED>
+        <!ELEMENT description (#PCDATA)>
+                <!ATTLIST description          
+                        xml:lang CDATA #REQUIRED>
+        <!ELEMENT author (#PCDATA)>
+        <!ELEMENT number-of-pingus (#PCDATA)>
+        <!ELEMENT number-to-save (#PCDATA)>
+        <!ELEMENT time (#PCDATA)>
+        <!ELEMENT width (#PCDATA)>
+        <!ELEMENT height (#PCDATA)>
+
+<!ELEMENT surface (resource)>
+        <!ELEMENT resource (resource-file|(resource-datafile,resource-ident))>
+                <!ATTLIST resource          
+                        type CDATA #REQUIRED>
+        <!ELEMENT resource-file (#PCDATA)>
+        <!ELEMENT resource-datafile (#PCDATA)>
+        <!ELEMENT resource-ident (#PCDATA)>
+
+<!ELEMENT position (x-pos,y-pos,z-pos)>
+        <!ELEMENT x-pos (#PCDATA)>
+        <!ELEMENT y-pos (#PCDATA)>
+        <!ELEMENT z-pos (#PCDATA)>
+
+<!ELEMENT background (surface,alpha,red,green,blue,scroll-x,scroll-y,para-x,para-y,stretch-x,stretch-y)>
+        <!ELEMENT alpha (#PCDATA)>
+        <!ELEMENT red (#PCDATA)>
+        <!ELEMENT green (#PCDATA)>
+        <!ELEMENT blue (#PCDATA)>
+        <!ELEMENT scroll-x (#PCDATA)>
+        <!ELEMENT scroll-y (#PCDATA)>
+        <!ELEMENT para-x (#PCDATA)>
+        <!ELEMENT para-y (#PCDATA)>
+        <!ELEMENT stretch-x (#PCDATA)>
+        <!ELEMENT stretch-y (#PCDATA)>
+
+<!ELEMENT liquid (surface,position,width,speed)>
+        <!ELEMENT speed (#PCDATA)>
+
+<!ELEMENT hotspot (surface,position,speed,para)>
+        <!ELEMENT para (#PCDATA)>
+
+<!ELEMENT trap (type,position)>
+        <!ELEMENT type (#PCDATA)>
+
+<!ELEMENT exit (position,surface)>
+
+<!ELEMENT entrance (position,type,direction,release-rate)>
+        <!ELEMENT direction (#PCDATA)>
+        <!ELEMENT release-rate (#PCDATA)>
+
+<!ELEMENT groundpiece (surface, position)>
+        <!ATTLIST groundpiece          
+                type CDATA #REQUIRED>
+<!-- EOF -->
