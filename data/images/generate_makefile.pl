@@ -109,6 +109,9 @@ sub generate_makefile {
 		}
 	}
 
+	@imgfiles = sort (@imgfiles);
+	@dirlistX = sort (@dirlistX);
+
  	unless (@imgfiles || @dirlistX){
 		print "Warning: empty directory $curr_dir\n";
 		return 0;
