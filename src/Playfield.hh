@@ -1,4 +1,4 @@
-//  $Id: Playfield.hh,v 1.3 2000/02/26 03:17:06 grumbel Exp $
+//  $Id: Playfield.hh,v 1.4 2000/04/10 21:19:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -52,6 +52,7 @@ private:
   //int  x_offset, y_offset;
   Pingu* current_pingu;
   bool mouse_scrolling;
+  bool needs_clear_screen;
   int current_view;
   int scroll_speed;
   int scroll_center_x;

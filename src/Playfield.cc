@@ -1,4 +1,4 @@
-//  $Id: Playfield.cc,v 1.8 2000/04/08 20:20:25 grumbel Exp $
+//  $Id: Playfield.cc,v 1.9 2000/04/10 21:19:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -67,6 +67,13 @@ Playfield::Playfield(PLF* level_data, World* w)
     if (y2 >= CL_Display::get_height())
       y2 = CL_Display::get_height() - 1;
 
+    if (x1 > 0 || x2 < (CL_Display::get_width() - 1)
+	|| y1 > 0 || y2 < (CL_Display::get_height() - 1))
+      {
+	std::cout << "Playfiel:: Activating clear screen" << std::endl;
+	needs_clear_screen = true;
+      }
+
     if (gimmicks_enabled) 
       {
 	if (verbose)
@@ -94,6 +101,11 @@ Playfield::~Playfield()
 void
 Playfield::draw()
 { 
+  if (needs_clear_screen)
+    {
+      CL_Display::clear_display();
+    }
+      
   for(vector<View>::iterator i = view.begin(); i != view.end(); i++)
     {
       i->draw();
