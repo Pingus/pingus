@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapStat.cc,v 1.4 2002/06/04 21:23:42 grumbel Exp $
+//  $Id: PingusWorldMapStat.cc,v 1.5 2002/06/06 09:34:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include "../StringConverter.hh"
 #include "../PingusError.hh"
 #include "PingusWorldMapStat.hh"
+
+using namespace Pingus::WorldMap;
 
 PingusWorldMapNodeStat::PingusWorldMapNodeStat ()
 {
@@ -137,7 +139,7 @@ PingusWorldMapStat::accessible (int id)
 }
 
 void
-PingusWorldMapStat::save (std::list<boost::shared_ptr<PingusWorldMapNode> >& nodes)
+PingusWorldMapStat::save (std::list<boost::shared_ptr<Node> >& nodes)
 {
   std::ofstream out (filename.c_str ());
   
@@ -149,7 +151,7 @@ PingusWorldMapStat::save (std::list<boost::shared_ptr<PingusWorldMapNode> >& nod
       for (PingusWorldMapGraph::iterator i = nodes.begin ();
 	   i != nodes.end (); ++i)
 	{
-	  PingusWorldMapLevelNode* node = dynamic_cast<PingusWorldMapLevelNode*>((*i).get ());
+	  LevelNode* node = dynamic_cast<LevelNode*>((*i).get ());
 
 	  if (node)
 	    {

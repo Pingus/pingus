@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapNode.hh,v 1.1 2002/06/04 21:23:42 grumbel Exp $
+//  $Id: PingusWorldMapNode.hh,v 1.2 2002/06/06 09:34:28 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,85 +28,89 @@
 #include "PingusWorldMapNodeData.hh"
 
 //#include "../generic/Graph.hh"
-
-
-/** An object on the worldmap */
-class PingusWorldMapNode 
+namespace Pingus
 {
-public:
-  /** should links or nodes be accessible? */
-  bool accessible;
+  namespace WorldMap
+  {
+    /** An object on the worldmap */
+    class Node 
+    {
+    public:
+      /** should links or nodes be accessible? */
+      bool accessible;
   
-  PingusWorldMapNode () {}
-  virtual ~PingusWorldMapNode () {}
+      Node () {}
+      virtual ~Node () {}
 
-  virtual void on_click () =0;
-  virtual void mark (bool /*value*/) {}
-  virtual void draw (CL_Vector /*offset*/) {}
-  virtual std::string get_string () =0;
+      virtual void on_click () =0;
+      virtual void mark (bool /*value*/) {}
+      virtual void draw (CL_Vector /*offset*/) {}
+      virtual std::string get_string () =0;
 
-  virtual int  get_id () =0;
-  virtual CL_Vector get_pos () =0;
-  virtual std::list<int>& get_links () =0;
-};
+      virtual int  get_id () =0;
+      virtual CL_Vector get_pos () =0;
+      virtual std::list<int>& get_links () =0;
+    };
 
-/** A wrap object which brings you to the next worldmap */
-class PingusWorldMapTubeNode
-  : public PingusWorldMapNode,
-    public PingusWorldMapTubeNodeData
-{
-public:
-  std::string worldmap_name;
-  Sprite tube;
-  int link_node;
-public:  
-  PingusWorldMapTubeNode (const PingusWorldMapTubeNodeData&);
-  void on_click ();
-  void draw (CL_Vector offset);
-  std::string get_string ();
+    /** A wrap object which brings you to the next worldmap */
+    class TubeNode
+      : public Node,
+	public TubeNodeData
+    {
+    public:
+      std::string worldmap_name;
+      Sprite tube;
+      int link_node;
+    public:  
+      TubeNode (const TubeNodeData&);
+      void on_click ();
+      void draw (CL_Vector offset);
+      std::string get_string ();
 
-  /** FIXME: this looks unnecesarry, could probally replaced by
-      FIXME: templates or something like that */
-  int  get_id () { return PingusWorldMapNodeData::get_id (); }
-  CL_Vector get_pos () { return PingusWorldMapNodeData::get_pos (); }
-  std::list<int>& get_links () { return PingusWorldMapNodeData::get_links (); }
-};
+      /** FIXME: this looks unnecesarry, could probally replaced by
+	  FIXME: templates or something like that */
+      int  get_id () { return NodeData::get_id (); }
+      CL_Vector get_pos () { return NodeData::get_pos (); }
+      std::list<int>& get_links () { return NodeData::get_links (); }
+    };
 
-/** The entrance to a level */
-class PingusWorldMapLevelNode
-  :  public PingusWorldMapNode,
-     public PingusWorldMapLevelNodeData
-{
-private:
-  Sprite green_dot;
-  Sprite red_dot;
-  Sprite invalid_dot;
-  Sprite dot_border;
-  Sprite green_flag;
+    /** The entrance to a level */
+    class LevelNode
+      :  public Pingus::WorldMap::Node,
+	 public Pingus::WorldMap::LevelNodeData
+    {
+    private:
+      Sprite green_dot;
+      Sprite red_dot;
+      Sprite invalid_dot;
+      Sprite dot_border;
+      Sprite green_flag;
 
-  boost::shared_ptr<PLF> plf;
+      boost::shared_ptr<PLF> plf;
   
-  /** true if the level is invalid, which means that the levelfile
-      could not be loaded or had errors. false is the default */
-  bool invalid;
+      /** true if the level is invalid, which means that the levelfile
+	  could not be loaded or had errors. false is the default */
+      bool invalid;
 
-public:
-  bool finished;
-  boost::shared_ptr<PLF> get_plf ();
+    public:
+      bool finished;
+      boost::shared_ptr<PLF> get_plf ();
 
-  PingusWorldMapLevelNode (const PingusWorldMapLevelNodeData&);
-  void on_click ();
-  void mark (bool value);
-  void draw (CL_Vector offset);
-  std::string get_string ();
+      LevelNode (const LevelNodeData&);
+      void on_click ();
+      void mark (bool value);
+      void draw (CL_Vector offset);
+      std::string get_string ();
 
 
-  /** FIXME: this looks unnecesarry, could probally replaced by
-      FIXME: templates or something like that */
-  int  get_id () { return PingusWorldMapNodeData::get_id (); }
-  CL_Vector get_pos () { return PingusWorldMapNodeData::get_pos (); }
-  std::list<int>& get_links () { return PingusWorldMapNodeData::get_links (); }
-};
+      /** FIXME: this looks unnecesarry, could probally replaced by
+	  FIXME: templates or something like that */
+      int  get_id () { return NodeData::get_id (); }
+      CL_Vector get_pos () { return NodeData::get_pos (); }
+      std::list<int>& get_links () { return NodeData::get_links (); }
+    };
+  }
+}
 
 #endif
 

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapPingus.cc,v 1.14 2002/06/04 21:23:42 grumbel Exp $
+//  $Id: PingusWorldMapPingus.cc,v 1.15 2002/06/06 09:34:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,6 +22,8 @@
 #include "../PingusResource.hh"
 #include "PingusWorldMapPingus.hh"
 
+using namespace Pingus::WorldMap;
+
 PingusWorldMapPingus::PingusWorldMapPingus ()
   : sprite ("Pingus/walker0", "pingus", 20.0f, Sprite::RIGHT)
 {
@@ -34,14 +36,14 @@ PingusWorldMapPingus::~PingusWorldMapPingus ()
 }
 
 void 
-PingusWorldMapPingus::set_position (boost::shared_ptr<PingusWorldMapNode> node)
+PingusWorldMapPingus::set_position (boost::shared_ptr<Node> node)
 {
   pos = node->get_pos ();
   current_node = node.get ();
 }
 
 void 
-PingusWorldMapPingus::walk_to (PingusWorldMapNode* node)
+PingusWorldMapPingus::walk_to (Node* node)
 {
   ///pos = node.pos;
   targets.push (node);
@@ -101,7 +103,7 @@ PingusWorldMapPingus::update (float delta)
     }
 }
 
-PingusWorldMapNode*
+Node*
 PingusWorldMapPingus::get_node ()
 {
   return current_node;

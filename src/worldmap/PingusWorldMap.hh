@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.hh,v 1.20 2001/07/24 09:10:12 grumbel Exp $
+//  $Id: PingusWorldMap.hh,v 1.21 2002/06/06 09:34:28 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -49,7 +49,8 @@ private:
   bool catch_input;
 
   bool do_quit;
-  boost::shared_ptr<PingusWorldMapNode> last_node;
+  boost::shared_ptr<Pingus::WorldMap::Node> last_node;
+  typedef boost::shared_ptr<Pingus::WorldMap::Node> NodePtr;
   unsigned int last_node_time;
   
   boost::shared_ptr<PingusWorldMapStat> stat;
@@ -62,7 +63,7 @@ public:
 
   /** Launch the level at the given node
       @param node The current node from which the level should be started */
-  void start_level (PingusWorldMapNode* node);
+  void start_level (Pingus::WorldMap::Node* node);
 
   /** Start up the music and other things that need only to me run
       once on startup of a new WorldMap */
@@ -98,7 +99,7 @@ public:
   virtual void update (float delta);
 
   /** Returns a pointer to the node under the given coordinates */
-  boost::shared_ptr<PingusWorldMapNode> get_node (int x, int y);
+  NodePtr get_node (int x, int y);
   
   /** Callculate the offset which is used for drawing and collision
       detection. The offset will be used for scrolling when the

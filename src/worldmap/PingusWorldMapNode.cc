@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapNode.cc,v 1.1 2002/06/04 21:23:42 grumbel Exp $
+//  $Id: PingusWorldMapNode.cc,v 1.2 2002/06/06 09:34:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,8 +28,10 @@
 #include "../PingusError.hh"
 #include "PingusWorldMapNode.hh"
 
-PingusWorldMapTubeNode::PingusWorldMapTubeNode (const PingusWorldMapTubeNodeData& data)
-  : PingusWorldMapTubeNodeData (data),
+using namespace Pingus::WorldMap;
+
+TubeNode::TubeNode (const TubeNodeData& data)
+  : TubeNodeData (data),
     worldmap_name ("pacman.xml"),
     tube ("worldmap/tube", "core")
 {
@@ -38,26 +40,26 @@ PingusWorldMapTubeNode::PingusWorldMapTubeNode (const PingusWorldMapTubeNodeData
 
 
 void 
-PingusWorldMapTubeNode::on_click ()
+TubeNode::on_click ()
 {
   std::cout << "Not Supported" << std::endl;
   PingusWorldMapManager::get_current ()->change_map (worldmap_name, link_node);
 }
 
 void 
-PingusWorldMapTubeNode::draw (CL_Vector offset)
+TubeNode::draw (CL_Vector offset)
 {
   tube.put_screen (pos + offset);
 }
 
 std::string
-PingusWorldMapTubeNode::get_string ()
+TubeNode::get_string ()
 {
   return _("Tube");
 }
 
-PingusWorldMapLevelNode::PingusWorldMapLevelNode (const PingusWorldMapLevelNodeData& data)
-  : PingusWorldMapLevelNodeData (data),
+LevelNode::LevelNode (const LevelNodeData& data)
+  : LevelNodeData (data),
     green_dot ("worldmap/dot_green", "core"),
     red_dot ("worldmap/dot_red", "core"),
     invalid_dot ("worldmap/dot_invalid", "core"),
@@ -76,7 +78,7 @@ PingusWorldMapLevelNode::PingusWorldMapLevelNode (const PingusWorldMapLevelNodeD
 }
 
 void 
-PingusWorldMapLevelNode::on_click ()
+LevelNode::on_click ()
 {
   if (!invalid)
     {
@@ -100,18 +102,18 @@ PingusWorldMapLevelNode::on_click ()
     }
   else
     {
-      std::cout << "PingusWorldMapLevelNode::on_click (): Error: level is invalid" << std::endl;
+      std::cout << "LevelNode::on_click (): Error: level is invalid" << std::endl;
     }
 }
 
 void 
-PingusWorldMapLevelNode::mark (bool value)
+LevelNode::mark (bool value)
 {
   finished = value;
 }
 
 void 
-PingusWorldMapLevelNode::draw (CL_Vector offset)
+LevelNode::draw (CL_Vector offset)
 {
   if (!levelname.empty())
     {
@@ -137,7 +139,7 @@ PingusWorldMapLevelNode::draw (CL_Vector offset)
 }
 
 std::string
-PingusWorldMapLevelNode::get_string ()
+LevelNode::get_string ()
 {
   boost::shared_ptr<PLF> plf = get_plf ();
   
@@ -148,7 +150,7 @@ PingusWorldMapLevelNode::get_string ()
 }
 
 boost::shared_ptr<PLF>
-PingusWorldMapLevelNode::get_plf ()
+LevelNode::get_plf ()
 {
   if (plf.get () == 0)
     {

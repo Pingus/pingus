@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapStat.hh,v 1.3 2001/07/23 21:49:14 grumbel Exp $
+//  $Id: PingusWorldMapStat.hh,v 1.4 2002/06/06 09:34:28 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -61,7 +61,7 @@ public:
 
   /** Save the given nodes status to the file from which they are
       loaded */
-  void save (std::list<boost::shared_ptr<PingusWorldMapNode> >& nodes);
+  void save (std::list<boost::shared_ptr<Pingus::WorldMap::Node> >& nodes);
 
   /// @return true if the node is finished
   bool finished (int id);

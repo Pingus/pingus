@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapPingus.hh,v 1.10 2001/07/23 21:49:14 grumbel Exp $
+//  $Id: PingusWorldMapPingus.hh,v 1.11 2002/06/06 09:34:28 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,9 +31,9 @@ class PingusWorldMapPingus
 private:
   Sprite sprite;
   CL_Vector pos;
-  std::queue<PingusWorldMapNode*> targets;
+  std::queue<Pingus::WorldMap::Node*> targets;
   bool is_left;
-  PingusWorldMapNode* current_node;
+  Pingus::WorldMap::Node* current_node;
 
 public:
   PingusWorldMapPingus ();
@@ -41,11 +41,11 @@ public:
 
   void draw (const CL_Vector& offset);
   void update (float delta);
-  void walk_to (PingusWorldMapNode* node);
+  void walk_to (Pingus::WorldMap::Node* node);
   bool is_walking ();
-  void set_position (boost::shared_ptr<PingusWorldMapNode> node);
+  void set_position (boost::shared_ptr<Pingus::WorldMap::Node> node);
   CL_Vector get_pos () { return pos; }
-  PingusWorldMapNode* get_node ();
+  Pingus::WorldMap::Node* get_node ();
 };
 
 #endif

@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapNodeData.cc,v 1.1 2002/06/04 21:23:42 grumbel Exp $
+//  $Id: PingusWorldMapNodeData.cc,v 1.2 2002/06/06 09:34:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,37 +21,39 @@
 #include "PingusWorldMapNode.hh"
 #include "PingusWorldMapNodeData.hh"
 
-PingusWorldMapNode*
-PingusWorldMapNodeData::create ()
+using namespace Pingus::WorldMap;
+
+Node*
+NodeData::create ()
 {
   /* FIXME: This looks clearly like a design bug. This class should
      FIXME: probally be split of even more */
-  assert (!"PingusWorldMapNode* create (): This should never be reached!");
+  assert (!"Node* create (): This should never be reached!");
   return 0; 
 }
 
-PingusWorldMapNode*
-PingusWorldMapTubeNodeData::create ()
+Node*
+TubeNodeData::create ()
 {
-  return new PingusWorldMapTubeNode (*this);
+  return new TubeNode (*this);
 }
 
-PingusWorldMapNode*
-PingusWorldMapLevelNodeData::create ()
+Node*
+LevelNodeData::create ()
 {
-  return new PingusWorldMapLevelNode (*this);
+  return new LevelNode (*this);
 }
 
-PingusWorldMapNode*
-PingusWorldMapEmptyNodeData::create ()
+Node*
+EmptyNodeData::create ()
 {
-  return 0;//FIXME:new PingusWorldMapEmptyNode (*this);
+  return 0;//FIXME:new EmptyNode (*this);
 }
 
-PingusWorldMapNodeData*
-PingusWorldMapNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
+NodeData*
+NodeData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  PingusWorldMapNodeData* node = new PingusWorldMapNodeData ();
+  NodeData* node = new NodeData ();
   
   char* id = (char*)xmlGetProp(cur, (xmlChar*)"id");
   if (id)
@@ -98,10 +100,10 @@ PingusWorldMapNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
   return node;
 }
 
-PingusWorldMapTubeNodeData*
-PingusWorldMapTubeNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
+TubeNodeData*
+TubeNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  PingusWorldMapTubeNodeData* node = new PingusWorldMapTubeNodeData ();
+  TubeNodeData* node = new TubeNodeData ();
 
   cur = cur->children;
   
@@ -115,7 +117,7 @@ PingusWorldMapTubeNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
 
       if (strcmp((char*)cur->name, "node") == 0)
 	{
-	  PingusWorldMapNodeData* node_data = PingusWorldMapNodeData::create (doc, cur);
+	  NodeData* node_data = NodeData::create (doc, cur);
 	  node->assign(*node_data);
 	  delete node_data;
 	}
@@ -148,10 +150,10 @@ PingusWorldMapTubeNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
 }
 
 
-PingusWorldMapLevelNodeData*
-PingusWorldMapLevelNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
+LevelNodeData*
+LevelNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  PingusWorldMapLevelNodeData* node = new PingusWorldMapLevelNodeData ();
+  LevelNodeData* node = new LevelNodeData ();
 
   cur = cur->children;
   
@@ -165,7 +167,7 @@ PingusWorldMapLevelNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
 
       if (strcmp((char*)cur->name, "node") == 0)
 	{
-	  PingusWorldMapNodeData* node_data = PingusWorldMapNodeData::create (doc, cur);
+	  NodeData* node_data = NodeData::create (doc, cur);
 	  node->assign(*node_data);
 	  delete node_data;
 	}
@@ -188,10 +190,10 @@ PingusWorldMapLevelNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
   return node;  
 }
 
-PingusWorldMapNodeData* 
-PingusWorldMapEmptyNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
+NodeData* 
+EmptyNodeData::create(xmlDocPtr doc, xmlNodePtr cur)
 {
-  return new PingusWorldMapEmptyNodeData ();
+  return new EmptyNodeData ();
 }
 
 /* EOF */

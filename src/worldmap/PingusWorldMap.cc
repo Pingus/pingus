@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMap.cc,v 1.36 2002/06/04 21:23:42 grumbel Exp $
+//  $Id: PingusWorldMap.cc,v 1.37 2002/06/06 09:34:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,6 +31,8 @@
 #include "../PingusSound.hh"
 #include "../Console.hh"
 #include "PingusWorldMap.hh"
+
+using namespace Pingus::WorldMap;
 
 PingusWorldMap::PingusWorldMap (std::string filename) :
   font (PingusResource::load_font ("Fonts/pingus_small", "fonts")),
@@ -173,7 +175,7 @@ PingusWorldMap::on_button_press (CL_InputDevice *device, const CL_Key &key)
 	{
 	case CL_MOUSE_LEFTBUTTON:
 	  {
-	    boost::shared_ptr<PingusWorldMapNode> node
+	    NodePtr node
 	      = get_node ((int) (key.x - offset.x), (int) (key.y - offset.y));
 
 	    if (node.get() && !node->accessible)
@@ -182,7 +184,7 @@ PingusWorldMap::on_button_press (CL_InputDevice *device, const CL_Key &key)
 	      }
 	    else if (node.get() && node->accessible)
 	      {
-		PingusWorldMapNode* pingus_node = pingus->get_node ();
+		Pingus::WorldMap::Node* pingus_node = pingus->get_node ();
 		if (maintainer_mode)
 		  {
 		    std::cout << "Click on: " << node->get_id () << std::endl;
@@ -238,7 +240,7 @@ PingusWorldMap::on_button_press (CL_InputDevice *device, const CL_Key &key)
 	  break;
 	case CL_MOUSE_RIGHTBUTTON:
 	  {
-	    //PingusWorldMapNode* node = get_node (key.x - offset.x, key.y - offset.y);
+	    //Node* node = get_node (key.x - offset.x, key.y - offset.y);
 
 	    /*if (node) {
 	      std::cout << "Node: " << node->id << std::endl;
@@ -258,7 +260,7 @@ PingusWorldMap::on_button_release (CL_InputDevice * /*device*/, const CL_Key & /
 }
 
 void
-PingusWorldMap::start_level (PingusWorldMapNode* /*node*/)
+PingusWorldMap::start_level (Pingus::WorldMap::Node* /*node*/)
 {
 
 }
@@ -299,7 +301,7 @@ PingusWorldMap::draw ()
       (*i)->draw (get_offset ());
     }
 
-  boost::shared_ptr<PingusWorldMapNode> node
+  NodePtr node
     = get_node (CL_Mouse::get_x () - (int) offset.x,
 		CL_Mouse::get_y () - (int) offset.y);
   // The mouse is over a node
@@ -312,7 +314,7 @@ PingusWorldMap::draw ()
     {
       if (last_node_time + 300 < CL_System::get_time ())
 	{
-	  last_node = boost::shared_ptr<PingusWorldMapNode>(0);
+	  last_node = NodePtr(0);
 	}
     }
  
@@ -325,7 +327,7 @@ PingusWorldMap::update (float delta)
   pingus->update (delta);
 }
 
-boost::shared_ptr<PingusWorldMapNode> 
+boost::shared_ptr<Pingus::WorldMap::Node>
 PingusWorldMap::get_node (int x, int y)
 {
   for (GraphIter i = graph_data.nodes.begin ();
@@ -343,7 +345,7 @@ PingusWorldMap::get_node (int x, int y)
 	    return *i;
 	}
     }
-  return boost::shared_ptr<PingusWorldMapNode>(0);
+  return NodePtr(0);
 }
 
 void 

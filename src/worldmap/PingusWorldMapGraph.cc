@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.cc,v 1.30 2002/06/04 21:23:42 grumbel Exp $
+//  $Id: PingusWorldMapGraph.cc,v 1.31 2002/06/06 09:34:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,6 +34,8 @@
 #include "PingusWorldMapManager.hh"
 #include "PingusWorldMapNode.hh"
 #include "PingusWorldMapGraph.hh"
+
+using namespace Pingus::WorldMap;
 
 PingusWorldMapGraph::PingusWorldMapGraph ()
 {
@@ -106,22 +108,22 @@ PingusWorldMapGraph::parse_node_list (xmlNodePtr cur)
 
       if (strcmp((char*)cur->name, "empty") == 0)
 	{
-	  PingusWorldMapNodeData* data = PingusWorldMapEmptyNodeData::create (doc, cur);
-	  nodes.push_back (boost::shared_ptr<class PingusWorldMapNode>
+	  NodeData* data = EmptyNodeData::create (doc, cur);
+	  nodes.push_back (boost::shared_ptr<class Node>
 			   (data->create ()));
 	  delete data;
 	}
       else if (strcmp((char*)cur->name, "level") == 0)
 	{
-	  PingusWorldMapNodeData* data = PingusWorldMapLevelNodeData::create (doc, cur);
-	  nodes.push_back (boost::shared_ptr<class PingusWorldMapNode>
+	  NodeData* data = LevelNodeData::create (doc, cur);
+	  nodes.push_back (boost::shared_ptr<class Node>
 			   (data->create ()));
 	  delete data;
 	}
       else if (strcmp((char*)cur->name, "tube") == 0)
 	{
-	  PingusWorldMapNodeData* data = PingusWorldMapTubeNodeData::create (doc, cur);
-	  nodes.push_back (boost::shared_ptr<class PingusWorldMapNode>
+	  NodeData* data = TubeNodeData::create (doc, cur);
+	  nodes.push_back (boost::shared_ptr<class Node>
 			   (data->create ()));
 	  delete data;
 	}

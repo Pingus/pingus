@@ -1,4 +1,4 @@
-//  $Id: PingusWorldMapGraph.hh,v 1.19 2002/06/04 21:23:42 grumbel Exp $
+//  $Id: PingusWorldMapGraph.hh,v 1.20 2002/06/06 09:34:28 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,20 +32,20 @@
 class PingusWorldMapGraph
 {
 private:
-  //Graph<PingusWorldMapNode>* graph;
+  //Graph<Node>* graph;
   ResDescriptor bg_desc;
   std::string music;
   xmlDocPtr doc;
   
 public:
-  std::list<boost::shared_ptr<PingusWorldMapNode> >   nodes;
-  typedef std::list<boost::shared_ptr<PingusWorldMapNode> >::iterator iterator;
+  std::list<boost::shared_ptr<Pingus::WorldMap::Node> >   nodes;
+  typedef std::list<boost::shared_ptr<Pingus::WorldMap::Node> >::iterator iterator;
 
   PingusWorldMapGraph ();
   ~PingusWorldMapGraph ();
  
   ResDescriptor              get_background ();
-  //Graph<PingusWorldMapNode>* get_graph ();
+  //Graph<Node>* get_graph ();
   std::string get_music ();
   
   void draw (const CL_Vector&);
