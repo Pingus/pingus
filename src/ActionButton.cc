@@ -1,4 +1,4 @@
-//  $Id: ActionButton.cc,v 1.1 2000/02/04 23:45:18 mbn Exp $
+//  $Id: ActionButton.cc,v 1.2 2000/02/09 21:43:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,14 +83,17 @@ ActionButton::init(int x, int y, string str)
   font = CL_Font::load("Fonts/courier_small",PingusResource::get("fonts.dat"));
   font_h = CL_Font::load("Fonts/smallfont", PingusResource::get("fonts.dat"));
 
-  if (str != "empty") {
-    surface   = CL_Surface::load(("Pingus/" + str).c_str(),
-				    PingusResource::get("pingus.dat"));
-    action_c.set_size(surface->get_num_frames());
-    action_c.set_speed(50);
-  } else {
-    surface = 0;
-  }
+  if (str != "empty") 
+    {
+      surface   = CL_Surface::load(("Pingus/" + str).c_str(),
+				   PingusResource::get("pingus.dat"));
+      action_c.set_size(surface->get_num_frames());
+      action_c.set_speed(50);
+    }
+  else
+    {
+      surface = 0;
+    }
 }
 
 bool
@@ -245,15 +248,16 @@ ArmageddonButton::ArmageddonButton(int x, int y)
 {
   surface = CL_Surface::load("Buttons/armageddon_anim", PingusResource::get("global.dat"));
   counter.set_size(surface->get_num_frames());
+  counter = 0;
   x_pos = x;
   y_pos = y;
+  pressed = false;
 }
 
 void
 ArmageddonButton::draw()
 {
-  // FIXME
-  if (false)
+  if (pressed)
     {
       CL_Display::fill_rect(x_pos, y_pos, 
 			    x_pos + surface->get_width(), y_pos + surface->get_height(),
@@ -294,6 +298,7 @@ ForwardButton::draw()
 			    x_pos + surface->get_width(), y_pos + surface->get_height(),
 			    1.0, 1.0, 1.0, 1.0);
     }
+
   surface->put_screen(x_pos, y_pos);
 }
 

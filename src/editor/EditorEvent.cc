@@ -1,4 +1,4 @@
-//  $Id: EditorEvent.cc,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: EditorEvent.cc,v 1.2 2000/02/09 21:43:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,7 @@
 
 #include "../PingusGame.hh"
 #include "../globals.hh"
+#include "../System.hh"
 #include "StringReader.hh"
 #include "EditorEvent.hh"
 
@@ -36,6 +37,7 @@ void
 EditorEvent::set_editor(Editor* e)
 {
   editor = e;
+  editor->last_level = pingus_homedir + "levels/dist/";
   object_manager = &(editor->object_manager);
 }
 
@@ -187,6 +189,7 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
 	  break;
 
 	case CL_KEY_KP_PLUS:
+	case CL_KEY_D:
 	  editor_duplicate_current_selection();
 	  break;
 	  
@@ -238,21 +241,7 @@ EditorEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
 
   if (device == CL_Input::keyboards[0])
     {
-      switch (key.id)
-	{
-	case CL_KEY_LEFT:
-	  editor->move_x = 0;
-	  break;   
-	case CL_KEY_RIGHT:
-	  editor->move_x = 0;
-	  break;
-	case CL_KEY_UP:
-	  editor->move_y = 0;
-	  break;
-	case CL_KEY_DOWN:
-	  editor->move_y = 0;
-	  break;
-	}
+
     }
   else if (device == CL_Input::pointers[0])
     {
@@ -331,11 +320,28 @@ void
 EditorEvent::editor_load_level()
 {
   string str;
-  StringReader reader("Input filename to load the file (without .plf!)", "");
+  System::Directory dir;
+  list<string> strings;
+  string temp_str;
+
+  StringReader reader("Input filename to load the file (without .plf!)", editor->last_level);
   cout << "Loading level, input filename" << endl;
-  //string str = editor->read_string("Input filename to load the file (without .plf!)");
+
+  dir = System::opendir(pingus_homedir + "levels/dist/", "*.plf");
+
+  for (System::Directory::iterator i = dir.begin(); i != dir.end(); i++)
+    {
+      cout << "dirs: " << pingus_homedir + "levels/dist/" +  i->name << endl;
+      
+      temp_str = pingus_homedir + "levels/dist/" + i->name;
+
+      strings.push_back(temp_str.substr(0, temp_str.size() - 4));
+    }
+
+  reader.set_strings(&strings);
+
   enabled = false;
-  str = reader.read_string();  
+  str = reader.read_string();
   enabled = true;
 
   if (!str.empty()) 
@@ -348,7 +354,27 @@ void
 EditorEvent::editor_save_level_as()
 {
   cout << "Saving level, input filename" << endl;
-  string str = editor->read_string("Input filename to save the file (without .plf!)");
+
+  string str;
+  System::Directory dir;
+  list<string> strings;
+
+  StringReader reader("Input filename to save the file (without .plf!)", editor->last_level);
+
+  dir = System::opendir(pingus_homedir + "levels/dist/", "*.plf");
+
+  for (System::Directory::iterator i = dir.begin(); i != dir.end(); i++)
+    {
+      cout << "dirs: " << pingus_homedir + "levels/dist/" +  i->name << endl;
+      strings.push_back((pingus_homedir + "levels/dist/" + i->name).substr(0, str.size() - 4));
+    }
+
+  reader.set_strings(&strings);
+
+  enabled = false;
+  str = reader.read_string();
+  enabled = true;
+
   if (!str.empty()) 
     {
       object_manager->save_level(str);

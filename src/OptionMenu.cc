@@ -1,4 +1,4 @@
-//  $Id: OptionMenu.cc,v 1.1 2000/02/04 23:45:18 mbn Exp $
+//  $Id: OptionMenu.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -129,21 +129,41 @@ OptionEntry::mouse_over()
 bool
 OptionMenu::Event::on_button_press(CL_InputDevice *device, const CL_Key &key)
 {
+  cout << "Got putten press" << endl;
   return true;
 }
 
 bool
 OptionMenu::Event::on_button_release(CL_InputDevice *device, const CL_Key &key)
 {
-  switch(key.id)
+  if (device == CL_Input::keyboards[0])
     {
-    case CL_KEY_ESCAPE:
-      option_menu->quit = true;
-      break;
-    default:
-      cout << "OptionMenu::Event: Unknown key released" << endl;
-      break;
-    } 
+      switch(key.id)
+	{
+	case CL_KEY_ESCAPE:
+	  option_menu->quit = true;
+	  break;
+	default:
+	  cout << "OptionMenu::Event: Unknown key released: id=" << key.id << endl;
+	  break;
+	} 
+    }
+  else if (device == CL_Input::pointers[0])
+    {
+      switch(key.id)
+	{
+	case 1:
+	  break;
+	case 2:
+	case 3:
+	  option_menu->quit = true;
+	  break;
+	default:
+	  cout << "OptionMenu::Event: Unknown mouse key released: id=" << key.id << endl;
+	  break;  
+	}
+    }
+
   return true;
 }
 
@@ -167,8 +187,8 @@ void
 OptionMenu::init() 
 {
   font = CL_Font::load("Fonts/smallfont_h",  PingusResource::get("fonts.dat"));
-  title_font = CL_Font::load("Fonts/clanfont", PingusResource::get("fonts.dat"));
-  background =  CL_Surface::load("Textures/rocktile", PingusResource::get("global.dat"));
+  title_font = CL_Font::load("Fonts/pingus", PingusResource::get("fonts.dat"));
+  background =  CL_Surface::load("Textures/rocktile", PingusResource::get("textures.dat"));
   cursor_sur = CL_Surface::load("Cursors/cursor", PingusResource::get("game.dat"));
   entry_x = 20;
   entry_y = 60;
@@ -252,9 +272,6 @@ OptionMenu::check_click()
 void
 OptionMenu::display()
 {
-  CL_Input::chain_button_press.push_back(event);
-  CL_Input::chain_button_release.push_back(event);
-
   if (!is_init)
     init();
 
@@ -270,40 +287,44 @@ OptionMenu::display()
 
   quit = false;
 
-  while(!CL_Mouse::middle_pressed() || !quit)
+  CL_Input::chain_button_press.push_back(event);
+  CL_Input::chain_button_release.push_back(event);
+
+  while(!quit)
     {
       item = current_item();
       if (temp_item != item || (cursor_enabled 
 				&& mouse_x != CL_Mouse::get_x()
-			      && mouse_y != CL_Mouse::get_y()))
-      {
-	mouse_x = CL_Mouse::get_x();
-	mouse_y = CL_Mouse::get_y();
-	draw();
-	temp_item = item;
-      }
-    if (CL_Mouse::left_pressed()) {
-      if (item != 0) 
-	item->toggle();
-      draw();
-      while(CL_Mouse::left_pressed())
-	CL_System::keep_alive();
-    }
-    if (CL_Mouse::right_pressed()) {
-      if (item != 0) 
-	item->rtoggle();
-      draw();
-      while(CL_Mouse::right_pressed())
-	CL_System::keep_alive();
-    }
-    CL_System::keep_alive();
-  }
-  while(CL_Mouse::middle_pressed()) {
-    CL_System::keep_alive();
-  }
+				&& mouse_y != CL_Mouse::get_y()))
+	{
+	  mouse_x = CL_Mouse::get_x();
+	  mouse_y = CL_Mouse::get_y();
+	  draw();
+	  temp_item = item;
+	}
 
-  CL_Input::chain_button_press.remove(event);
+      if (CL_Mouse::left_pressed()) 
+	{
+	  if (item != 0) 
+	    item->toggle();
+	  draw();
+	  while(CL_Mouse::left_pressed())
+	    CL_System::keep_alive();
+	}
+
+      if (CL_Mouse::right_pressed()) 
+	{
+	  if (item != 0) 
+	    item->rtoggle();
+	  draw();
+	  while(CL_Mouse::right_pressed())
+	    CL_System::keep_alive();
+	}
+      CL_System::keep_alive();
+    }
+
   CL_Input::chain_button_release.remove(event);
+  CL_Input::chain_button_press.remove(event);
 }
 
 vector<OptionEntry>::iterator

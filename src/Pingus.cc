@@ -1,4 +1,4 @@
-//   $Id: Pingus.cc,v 1.1 2000/02/04 23:45:18 mbn Exp $
+//   $Id: Pingus.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
 //    ___
 //   |  _\ A free Lemmings clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -38,6 +38,7 @@
 #endif /* !WIN32 */
 
 #include <ClanLib/core.h>
+#include <ClanLib/magick.h>
 
 #include "Client.hh"
 #include "Server.hh"
@@ -87,7 +88,8 @@ PingusMain::init_modules()
 {
   CL_SetupCore::init();
   // CL_SetupCore::init_sound();  
-  // CL_SetupCore::init_display();
+  CL_SetupMagick::init();
+  //CL_SetupCore::init_display();
 }
 
 void PingusMain::deinit_modules()
@@ -648,7 +650,7 @@ PingusMain::main(int argc, char** argv)
       init_clanlib();
       init_pingus();	
       
-      if (!intro_disabled) 
+      if (!intro_disabled && levelfile.empty()) 
 	{
 	  intro.draw();
 	}
@@ -679,7 +681,7 @@ PingusMain::main(int argc, char** argv)
   }
 
   catch (exception a) {
-    cout << "Pingus: Standard exception caught!" << endl;
+    cout << "Pingus: Standard exception caught!:\n" << a.what() << endl;
   }
 
   catch (...) {
@@ -703,7 +705,7 @@ PingusMain::remove_comments(char* line)
 bool 
 PingusMain::line_empty(char* line)
 {
-  for (int i=0; line[i] != '\0'; ++i) {
+  for (int i=0; line[i] != '\0'; i++) {
     if (!isspace(line[i]))
       return false;
   }

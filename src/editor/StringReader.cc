@@ -1,4 +1,4 @@
-//  $Id: StringReader.cc,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: StringReader.cc,v 1.2 2000/02/09 21:43:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,7 +31,7 @@ StringReader::StringReader(string d, string def)
 {
   strings = 0;
   description = d;
-  current_string = def;
+  default_string = def;  
   font = CL_Font::load("Fonts/courier_small",PingusResource::get("fonts.dat"));
 }
 
@@ -54,8 +54,7 @@ StringReader::read_string()
 
   CL_System::keep_alive();
 
-  current_string = "";
-
+  current_string = default_string;
 
   keys.clear();
 

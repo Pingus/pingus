@@ -1,4 +1,4 @@
-//  $Id: Client.hh,v 1.1 2000/02/04 23:45:18 mbn Exp $
+//  $Id: Client.hh,v 1.2 2000/02/09 21:43:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,6 +48,7 @@ private:
   PingusMusic*     music;
   PingusGameMode       mode;
   bool fast_forward;
+  bool pause;
   int  skip_frame;
   bool do_replay;
   bool is_finished;
@@ -66,6 +67,9 @@ public:
 
   void set_fast_forward(bool value);
   bool get_fast_forward();
+
+  bool get_pause();
+  void set_pause(bool value);
 
   bool replay();
   void do_restart();

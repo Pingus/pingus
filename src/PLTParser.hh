@@ -1,4 +1,4 @@
-//  $Id: PLTParser.hh,v 1.1 2000/02/04 23:45:18 mbn Exp $
+//  $Id: PLTParser.hh,v 1.2 2000/02/09 21:43:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,8 @@
 #include <string>
 #include <vector>
 
+#include "ResDescriptor.hh"
+
 struct PLTEOF {};
 
 class PLTParser
@@ -47,7 +49,7 @@ public:
   string get_name();
   string get_description();
   string get_surface();
-  string get_background();
+  ResDescriptor get_background();
 
 private:
   char   get_char();

@@ -1,4 +1,4 @@
-//  $Id: View.hh,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: View.hh,v 1.2 2000/02/09 21:43:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -53,6 +53,8 @@ public:
   int  get_y_pos() const; 
   void set_x_offset(int);
   void set_y_offset(int);
+  void shift_x_offset(int);
+  void shift_y_offset(int);
   void set_zoom(double);
   double get_zoom();
   void set_pingu(Pingu* p);

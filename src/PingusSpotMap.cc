@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.cc,v 1.1 2000/02/04 23:45:18 mbn Exp $
+//  $Id: PingusSpotMap.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -172,10 +172,14 @@ PingusSpotMap::load(string filename)
   provider = new CL_Canvas(width, height, 1);
 
   // Drawing all surfaces to the provider
-  for(vector<surface_data>::size_type i=0; i < surfaces.size(); ++i) {
-    put_surface(provider, surfaces[i].surface->get_provider(),
-		surfaces[i].x_pos, surfaces[i].y_pos);
-  }
+  for(vector<surface_data>::size_type i=0; i < surfaces.size(); ++i) 
+    {
+      // test cause png
+       put_surface(provider, surfaces[i].surface->get_provider(),
+      surfaces[i].x_pos, surfaces[i].y_pos);
+      //CL_Target* target = provider;
+       //surfaces[i].surface->put_target(surfaces[i].x_pos, surfaces[i].y_pos, 0, provider);
+    }
 
   // Generate the map surface
   map_surface = CL_Surface::create(provider, true);
@@ -272,9 +276,14 @@ PingusSpotMap::put(CL_SurfaceProvider* sprovider, int x, int y)
     {
       for(int iy = start_y; iy <= end_y; ++iy) 
 	{
+	  // PNG change
 	  put_surface(static_cast<CL_Canvas*>(tile[ix][iy].surface->get_provider()),
 		      sprovider,
 		      x - (ix * tile_size), y - (iy * tile_size));
+	  /*
+	  CL_Surface* s = CL_Surface::create(sprovider);
+	  s->put_target(x - (ix * tile_size), y - (iy * tile_size), 0, 
+			tile[ix][iy].surface->get_provider());*/
 	  tile[ix][iy].reload();
 	  tile[ix][iy].mark_dirty();
 	}

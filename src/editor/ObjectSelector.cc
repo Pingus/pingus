@@ -1,4 +1,4 @@
-//  $Id: ObjectSelector.cc,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: ObjectSelector.cc,v 1.2 2000/02/09 21:43:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -223,7 +223,7 @@ ObjectSelector::get_exit()
   data.y_pos = CL_Mouse::get_y() - y_offset;
   data.z_pos = 0;
   
-  str = read_string("Input Hotspot gfx:", last_object);
+  str = read_string("Input Exit gfx:", last_object);
   
   last_object = str;
 
@@ -306,8 +306,8 @@ ObjectSelector::read_string(string description, string def_str)
 /*
 
 $Log: ObjectSelector.cc,v $
-Revision 1.1  2000/02/04 23:45:19  mbn
-Initial revision
+Revision 1.2  2000/02/09 21:43:43  grumbel
+CVS should be up to date again...
 
 Revision 1.14  2000/02/03 22:35:02  grumbel
 Misc changes

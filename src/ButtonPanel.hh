@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.hh,v 1.1 2000/02/04 23:45:18 mbn Exp $
+//  $Id: ButtonPanel.hh,v 1.2 2000/02/09 21:43:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,9 +47,10 @@ private:
   Server* server;
   Client* client;
   int  armageddon_pressed;
+  AnimCounter arma_counter;
+
   bool left_pressed;
   unsigned int  last_press;
-  AnimCounter arma_counter;
   //  static CL_ResourceManager* resource;
   static CL_Surface* button_cap;
   static CL_Surface* button_cap_pers;
@@ -59,6 +60,9 @@ private:
 public:
   ButtonPanel(PLF* plf);
   ~ButtonPanel();
+
+  bool on_button_press(const CL_Key& key);
+  bool on_button_release(const CL_Key& key);
 
   string get_action_name();
   void   let_move();

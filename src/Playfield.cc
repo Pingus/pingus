@@ -1,4 +1,4 @@
-//  $Id: Playfield.cc,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: Playfield.cc,v 1.2 2000/02/09 21:43:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,11 +34,12 @@
 Playfield::Playfield()
 {
   current_pingu = 0;
-  x_offset = 0;
-  y_offset = 0;
+  //  x_offset = 0;
+  //y_offset = 0;
   server = 0;
   client = 0;
   //  pause = false;
+  mouse_scrolling = false;
 }
 
 Playfield::Playfield(PLF* level_data, World* w)
@@ -48,11 +49,11 @@ Playfield::Playfield(PLF* level_data, World* w)
   current_view = 0;
   pingus = world->get_pingu_p();
 
-  x_offset = 0; 
-  y_offset = 0; 
+  //x_offset = 0; 
+  //y_offset = 0; 
 
-  x_offset2 = x_offset;
-  y_offset2 = y_offset;
+  //  x_offset2 = x_offset;
+  // y_offset2 = y_offset;
 
   View::set_world(world);
 
@@ -217,14 +218,14 @@ Playfield::process_input_interactive()
 	  view[current_view].set_y_offset(view[current_view].get_y_offset() - scroll_speed);
 	}
     }
-      
+  /*
   if (CL_Mouse::middle_pressed()) 
     {
       cout << "Mouse Coordinates ="
 	   << " X: " << CL_Mouse::get_x() + x_offset
 	   << " Y: " << CL_Mouse::get_y() + y_offset << endl;
       world->print_status();
-    }
+    }*/
 }
 
 void
@@ -279,13 +280,14 @@ Playfield::set_client(Client* c)
 void
 Playfield::enable_scroll_mode()
 {
+  cout << "Started scrolling..." << flush;
   mouse_scrolling = true;
 
   scroll_center_x = CL_Mouse::get_x();
   scroll_center_y = CL_Mouse::get_y();
   
-  x_offset = view[current_view].get_x_offset();
-  y_offset = view[current_view].get_y_offset(); 
+  //x_offset = view[current_view].get_x_offset();
+  //  y_offset = view[current_view].get_y_offset(); 
 }  
 
 void
@@ -293,17 +295,15 @@ Playfield::do_scrolling()
 {
   if (mouse_scrolling)
     {
-      x_offset += (scroll_center_x - CL_Mouse::get_x()) / 5;
-      y_offset += (scroll_center_y - CL_Mouse::get_y()) / 5;
-  
-      view[current_view].set_x_offset(x_offset);
-      view[current_view].set_y_offset(y_offset);
-    } 
+      view[current_view].shift_x_offset((scroll_center_x - CL_Mouse::get_x()) / 5);
+      view[current_view].shift_y_offset((scroll_center_y - CL_Mouse::get_y()) / 5);
+    }
 }
 
 void
 Playfield::disable_scroll_mode()
 {
+  cout << "done" << endl;
   mouse_scrolling = false;
 }
 

@@ -1,4 +1,4 @@
-//  $Id: algo.hh,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: algo.hh,v 1.2 2000/02/09 21:43:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -45,7 +45,7 @@ bool   exist(string filename);
 bool   exist(const char* filename);
 char*  tolowerstr(char*);
 string find_file(string paths, string filename);
-string basename(string filename);
+//string basename(string filename);
 /*template<class T> inline string to_string(const T& n)
 {
  ostringstream tmp;

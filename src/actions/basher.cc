@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: basher.cc,v 1.2 2000/02/09 21:43:42 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //

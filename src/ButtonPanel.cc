@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.1 2000/02/04 23:45:18 mbn Exp $
+//  $Id: ButtonPanel.cc,v 1.2 2000/02/09 21:43:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,10 +51,10 @@ ButtonPanel::ButtonPanel(PLF* plf)
   forward    = new ForwardButton(CL_Display::get_width() - 38 * 2, CL_Display::get_height() - 56);
   pause      = new PauseButton(CL_Display::get_width() - 38 * 3, CL_Display::get_height() - 56);
 
-  /*  forward->pressed = false;
+  forward->pressed = false;
   pause->pressed   = false;
   armageddon_pressed = false;
-  */
+  
   left_pressed = 0;
   
   pressed_button = *a_buttons.begin();
@@ -71,75 +71,11 @@ void
 ButtonPanel::let_move()
 {
   pressed_button->let_move();
-  /*  
-  if (CL_Keyboard::get_keycode(CL_KEY_SPACE))
-    {
-      forward->pressed = !forward->pressed;
-      client->set_fast_forward(forward->pressed);
-      while(CL_Keyboard::get_keycode(CL_KEY_SPACE))
-	CL_System::keep_alive();
-    }
-*/
-  if (CL_Mouse::left_pressed()) 
-    {
-      last_press = CL_System::get_time();
-    
-      for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); button++)
-	{
-	  if ((*button)->mouse_over()) {
-	    pressed_button = *button;
-	  }
-	}
 
-      if (armageddon->mouse_over()) 
-	{
-	  if (armageddon_pressed == 0) 
-	    {
-	      //armageddon_pressed = 1;
-	      //armageddon->pressed = true;
-	    } 
-	  else if (armageddon_pressed == 2) 
-	    {
-	      armageddon_pressed = 3;
-	    }
-
-	  if (armageddon_pressed == 3)
-	    {
-	      arma_counter = 0;
-	      armageddon_pressed = 4;
-	      world->armageddon();
-	    }
-	}
-    
-      if (pause->mouse_over() && !left_pressed) 
-	{
-	  //pause->pressed = !pause->pressed;
-	  //server->set_pause(pause->pressed);
-	}
-    
-      if (forward->mouse_over() && !left_pressed)
-	{
-	  client->set_fast_forward(!client->get_fast_forward());
-	}
-    
-      left_pressed = true;
-    }
-  else 
+  if (last_press + 350 < CL_System::get_time()) 
     {
-      left_pressed = false;
-    }
-
-  if (armageddon_pressed <= 2) 
-    {
-      if (last_press + 350 < CL_System::get_time()) 
-	{
-	  armageddon_pressed = 0;
-	} 
-      else if (armageddon_pressed == 1) 
-	{
-	  armageddon_pressed = 2;
-	}
-    }
+      armageddon_pressed = 0;
+    } 
 }
 
 string
@@ -216,6 +152,63 @@ ButtonPanel::set_button(int i)
     {
       pressed_button = a_buttons[i];
     }
+}
+
+bool
+ButtonPanel::on_button_press(const CL_Key &key)
+{
+  for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); button++)
+    {
+      if ((*button)->mouse_over()) {
+	pressed_button = *button;
+      }
+    }
+  
+  if (armageddon->mouse_over()) 
+    {
+      last_press = CL_System::get_time();
+      
+      cout << "Armageddon: " << armageddon_pressed << endl;
+      armageddon_pressed++;
+           
+      if (armageddon_pressed == 2)
+	{
+	  arma_counter = 0;
+	  armageddon_pressed = 4;
+	  armageddon->pressed = true;
+	  world->armageddon();
+	}
+    }
+    
+  if (pause->mouse_over())
+    {
+      client->set_pause(!client->get_pause());
+    }
+  else if (forward->mouse_over())
+    {
+      client->set_fast_forward(!client->get_fast_forward());
+    }
+
+  /*  if (pause->mouse_over())
+    {
+      pause->pressed = true;
+    }
+    
+  if (forward->mouse_over() && !left_pressed)
+    {
+      forward->pressed = true;
+      }*/
+  return true;
+}
+
+bool
+ButtonPanel::on_button_release(const CL_Key &key)
+{
+
+  //forward->pressed = false;
+  //pause->pressed = false;
+  
+  return true;
 }
 
 /* EOF */

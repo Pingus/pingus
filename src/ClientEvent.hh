@@ -1,4 +1,4 @@
-//  $Id: ClientEvent.hh,v 1.1 2000/02/04 23:45:18 mbn Exp $
+//  $Id: ClientEvent.hh,v 1.2 2000/02/09 21:43:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,8 +41,8 @@ public:
   virtual bool on_button_press(CL_InputDevice *device, const CL_Key &key);
   virtual bool on_button_release(CL_InputDevice *device, const CL_Key &key);
 
-  bool on_mouse_button_press(int id);
-  bool on_mouse_button_release(int id);
+  bool on_mouse_button_press(const CL_Key &key);
+  bool on_mouse_button_release(const CL_Key &key);
   
   bool on_keyboard_button_press(const CL_Key &key);
   bool on_keyboard_button_release(const CL_Key &key);

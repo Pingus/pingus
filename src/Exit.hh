@@ -1,4 +1,4 @@
-//  $Id: Exit.hh,v 1.1 2000/02/04 23:45:18 mbn Exp $
+//  $Id: Exit.hh,v 1.2 2000/02/09 21:43:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,6 +24,7 @@
 
 #include "exit_data.hh"
 #include "Pingu.hh"
+#include "AnimCounter.hh"
 #include "WorldObj.hh"
 
 class Exit : public WorldObj
@@ -32,6 +33,7 @@ private:
   static CL_Surface* surface;
   int x_pos;
   int y_pos;
+  AnimCounter counter;
 public:
   Exit(int x, int y);
   Exit(exit_data data);

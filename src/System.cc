@@ -1,4 +1,4 @@
-//  $Id: System.cc,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: System.cc,v 1.2 2000/02/09 21:43:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,11 @@ System::opendir(const string& pathname, const string& pattern)
   
   dp = ::opendir(pathname.c_str());
 
-  if (dp != 0)
+  if (dp == 0)
+    {
+      cout << "Couldn't open: " << pathname << endl;
+    }
+  else
     {
       while ((de = ::readdir(dp)) != 0) 
 	{
@@ -97,7 +101,7 @@ System::basename(string filename)
   
   const char* str = filename.c_str();
   int i;
-  cout << "Getting basename of: " << str << endl;
+  //cout << "Getting basename of: " << str << endl;
 
   for(i = filename.size() - 1; i >= 0; --i) 
     {
@@ -106,7 +110,7 @@ System::basename(string filename)
       }
     }
   
-  cout << "Basename: " << (str+i + 1) << endl;
+  //cout << "Basename: " << (str+i + 1) << endl;
   return (str+i + 1);
 }
 

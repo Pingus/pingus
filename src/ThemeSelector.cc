@@ -1,4 +1,4 @@
-//  $Id: ThemeSelector.cc,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: ThemeSelector.cc,v 1.2 2000/02/09 21:43:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -65,7 +65,7 @@ ListItem::draw_offset(int x, int y)
 ThemeSelector::ThemeSelector()
 {
   dir_read = false;
-  title_font = CL_Font::load("Fonts/clanfont", PingusResource::get("fonts.dat"));
+  title_font = CL_Font::load("Fonts/pingus", PingusResource::get("fonts.dat"));
   theme_font = CL_Font::load("Fonts/smallfont_h", PingusResource::get("fonts.dat"));
 }
 
@@ -143,6 +143,8 @@ ThemeSelector::draw()
 
   (*current_theme)->draw_title();
   
+  theme_font->print_left(0, CL_Display::get_height() / 2, "Previous");
+  theme_font->print_right(CL_Display::get_width(), CL_Display::get_height() / 2, "Next");
   //CL_Display::flip_display();
 }
 

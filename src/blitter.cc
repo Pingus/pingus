@@ -1,4 +1,4 @@
-//  $Id: blitter.cc,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: blitter.cc,v 1.2 2000/02/09 21:43:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <cstdio>
+#include "PingusError.hh"
 #include "blitter.hh"
 
 
@@ -34,7 +36,12 @@ put_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
   CL_Palette* palette;
   int x_offset, y_offset;
 
-  assert(sprovider->get_depth() == 8);
+  if (sprovider->get_depth() != 8)
+    {
+      char str[1024];
+      sprintf(str, "Image has wrong color depth: %d", sprovider->get_depth());
+      throw PingusError(str);
+    }
   //  assert(provider->get_pixel_format() == RGBA8888);
 
   provider->lock();
@@ -44,7 +51,13 @@ put_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
   sbuffer = static_cast<unsigned char*>(sprovider->get_data());
   
   palette = sprovider->get_palette();
-  assert(palette);
+
+  if (!palette)
+    {
+      char str[1024];
+      sprintf(str, "Couldn't find palette: %d", sprovider->get_depth());
+      throw PingusError(str);
+    }
 
   twidth = provider->get_width();
   theight = provider->get_height();
@@ -100,7 +113,13 @@ put_alpha_surface(CL_Canvas* provider, CL_SurfaceProvider* sprovider,
   CL_Palette* palette;
   int x_offset, y_offset;
 
-  assert(sprovider->get_depth() == 8);
+  //  assert(sprovider->get_depth() == 8);
+  if (sprovider->get_depth() != 8)
+    {
+      char str[1024];
+      sprintf(str, "Image has wrong color depth: %d", sprovider->get_depth());
+      throw PingusError(str);
+    }
   //  assert(provider->get_pixel_format() == RGBA8888);
 
   provider->lock();

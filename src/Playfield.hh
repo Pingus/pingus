@@ -1,4 +1,4 @@
-//  $Id: Playfield.hh,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: Playfield.hh,v 1.2 2000/02/09 21:43:40 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,14 +42,14 @@ private:
   CL_Surface* buffer;
   Server* server;
   Client* client;
-  Range x_offset2, y_offset2;
+  //Range x_offset2, y_offset2;
   ButtonPanel* buttons;
   PinguHolder* pingus;
   PinguInfo* pingu_info;
   World* world;
   vector<View> view;
   
-  int  x_offset, y_offset;
+  //int  x_offset, y_offset;
   Pingu* current_pingu;
   bool mouse_scrolling;
   int current_view;

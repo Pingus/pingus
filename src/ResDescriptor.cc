@@ -1,4 +1,4 @@
-//  $Id: ResDescriptor.cc,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: ResDescriptor.cc,v 1.2 2000/02/09 21:43:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,7 +24,36 @@ ResDescriptor::ResDescriptor()
 {
   type = RESOURCE;
   res_name = "";
-  filename = "";
+  filename = "global.dat";
+}
+
+ResDescriptor::ResDescriptor(string str) 
+{
+  string::size_type pos1;
+  string::size_type pos2;
+
+  //cout << "Resdes: " << str << endl;
+
+  type = RESOURCE;
+
+
+  pos1 = str.find_first_of(':');
+  pos2 = str.find_first_of(')');
+  
+  if (pos1 != string::npos && pos2 != string::npos)
+    {
+      filename = str.substr(pos1 + 1, (pos2 - pos1 - 1));
+      res_name = str.substr(pos2 + 1);
+      /*
+      cout << "res: " <<  filename << endl;
+      cout << "data: " << res_name  << endl;
+      */
+    }
+  else
+    {
+      res_name = str;
+      filename = "global.dat";
+    }
 }
 
 ResDescriptor::ResDescriptor(string c_cast, string value) 

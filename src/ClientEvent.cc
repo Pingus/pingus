@@ -1,4 +1,4 @@
-//  $Id: ClientEvent.cc,v 1.1 2000/02/04 23:45:18 mbn Exp $
+//  $Id: ClientEvent.cc,v 1.2 2000/02/09 21:43:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -74,7 +74,7 @@ ClientEvent::on_button_press(CL_InputDevice *device, const CL_Key &key)
     }
   else if (device == CL_Input::pointers[0])
     {
-      return on_mouse_button_press(key.id);
+      return on_mouse_button_press(key);
     }
   else
     {
@@ -95,7 +95,7 @@ ClientEvent::on_button_release(CL_InputDevice *device, const CL_Key &key)
     }
   else if (device == CL_Input::pointers[0])
     {
-      return on_mouse_button_release(key.id);
+      return on_mouse_button_release(key);
     }
   else
     {
@@ -126,9 +126,9 @@ ClientEvent::on_keyboard_button_release(const CL_Key& key)
   switch (key.id)
     {
     case CL_KEY_O:
-      unregister_event_handler();
+      enabled = false;
       option_menu.display();
-      register_event_handler();
+      enabled = true;
       break;
 
       // Playfield scrolling	
@@ -163,7 +163,8 @@ ClientEvent::on_keyboard_button_release(const CL_Key& key)
 
       // Misc
     case CL_KEY_P:
-      //      client->server->set_pause(client->button_panel->pause->pressed);
+      client->pause = !client->pause;
+      client->server->set_pause(client->pause);
       break;
 
     case CL_KEY_A:
@@ -213,9 +214,11 @@ ClientEvent::on_keyboard_button_release(const CL_Key& key)
 }
 
 bool
-ClientEvent::on_mouse_button_press(int id)
+ClientEvent::on_mouse_button_press(const CL_Key& key)
 {
-  switch(id)
+  client->button_panel->on_button_press(key);
+
+  switch(key.id)
     {
     case 0:
       break;
@@ -225,15 +228,17 @@ ClientEvent::on_mouse_button_press(int id)
       playfield->enable_scroll_mode();
       break;
     default:
-      cout << "ClientEvent: Unknown mouse button released: " << id << endl;
+      cout << "ClientEvent: Unknown mouse button released: " << key.id << endl;
     }
   return false;
 }
 
 bool
-ClientEvent::on_mouse_button_release(int id)
+ClientEvent::on_mouse_button_release(const CL_Key& key)
 {
-  switch(id)
+  client->button_panel->on_button_release(key);
+
+  switch(key.id)
     {
     case 0:
       break;
@@ -243,7 +248,7 @@ ClientEvent::on_mouse_button_release(int id)
       playfield->disable_scroll_mode();
       break;
     default:
-      cout << "ClientEvent: Unknown mouse button released: " << id << endl;
+      cout << "ClientEvent: Unknown mouse button released: " << key.id << endl;
     }
   return false;
 }

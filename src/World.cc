@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: World.cc,v 1.2 2000/02/09 21:43:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -341,13 +341,13 @@ World::get_height(void)
 int
 World::get_time(void)
 {
-  if (exit_time == 0) 
-    {
-      return GameTime::get_time();
-    }
-  else
+  if (exit_time) // There is a time limit
     {
       return exit_time - GameTime::get_time();
+    }
+  else // No timelimit given, lets run forever
+    {
+      return GameTime::get_time();
     }
 }
 

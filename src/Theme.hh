@@ -1,4 +1,4 @@
-//  $Id: Theme.hh,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: Theme.hh,v 1.2 2000/02/09 21:43:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -39,6 +39,7 @@ private:
   int      accessible_levels;
   int      current_level;
   vector<string> levels;
+  vector<string> levelnames;
   string   status_file;
 public:
   Theme();
@@ -49,6 +50,7 @@ public:
   void previous_level();
   void load(string);
   void load_status(string);
+  void load_levels();
   void draw_title();
   void play();
 };

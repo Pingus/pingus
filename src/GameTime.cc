@@ -1,4 +1,4 @@
-//  $Id: GameTime.cc,v 1.1 2000/02/04 23:45:18 mbn Exp $
+//  $Id: GameTime.cc,v 1.2 2000/02/09 21:43:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "GameTime.hh"
 
 int GameTime::count;

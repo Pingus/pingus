@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.1 2000/02/04 23:45:18 mbn Exp $
+//  $Id: Client.cc,v 1.2 2000/02/09 21:43:39 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -29,6 +29,7 @@ Client::Client(Server* s)
 {
   server = s;
   fast_forward = false;
+  pause = false;
   skip_frame = 0;
   do_replay = false;
   is_finished = false;
@@ -41,15 +42,14 @@ void
 Client::start(string filename, PingusGameMode m)
 {
   fast_forward = false;
+  pause = false;
   do_replay = false;
   is_finished = false;
   skip_frame = 0;
 
   mode = m;
 
-  event->disable_event_handler();
   play_level(filename);
-  event->enable_event_handler();
 
   FadeOut::random();
 
@@ -74,10 +74,11 @@ Client::play_level(string plf_filename, string psm_filename)
 {
   vector<GuiObj* > obj;
  
-  if (verbose) {
-    cout << "Constructing Window Objs: " << plf_filename << endl;
-    cout << "Starting Level: '" << plf_filename << "'" << endl;
-  }
+  if (verbose) 
+    {
+      cout << "Constructing Window Objs: " << plf_filename << endl;
+      cout << "Starting Level: '" << plf_filename << "'" << endl;
+    }
 
   PLF*         plf          = new PLF(plf_filename);
 
@@ -86,6 +87,7 @@ Client::play_level(string plf_filename, string psm_filename)
   }
 
   server->start(plf);
+  event->register_event_handler();
 
   playfield    = new Playfield(plf, server->get_world());
   button_panel = new ButtonPanel(plf);
@@ -198,6 +200,8 @@ Client::play_level(string plf_filename, string psm_filename)
   delete button_panel;
   delete playfield;
   delete plf;
+
+  event->unregister_event_handler();
 }
 
 void
@@ -212,6 +216,19 @@ bool
 Client::get_fast_forward()
 {
   return fast_forward;
+}
+
+void
+Client::set_pause(bool value)
+{
+  pause = value;
+  server->set_pause(value);
+}
+
+bool
+Client::get_pause()
+{
+  return pause;
 }
 
 Result

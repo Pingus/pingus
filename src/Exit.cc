@@ -1,4 +1,4 @@
-//  $Id: Exit.cc,v 1.1 2000/02/04 23:45:18 mbn Exp $
+//  $Id: Exit.cc,v 1.2 2000/02/09 21:43:39 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,6 +44,9 @@ Exit::Exit(exit_data data)
 
   surface = CL_Surface::load(data.desc.res_name.c_str(),
 				 PingusResource::get(data.desc.filename));
+
+  counter.set_size(surface->get_num_frames() - 1);
+  counter.set_speed(10);
 }
 
 bool
@@ -69,7 +72,7 @@ void
 Exit::draw_offset(int x_of, int y_of, float s)
 {
   if (s == 1.0) {
-    surface->put_screen(x_pos + x_of, y_pos + y_of);
+    surface->put_screen(x_pos + x_of, y_pos + y_of, ++counter);
   } else {
     surface->put_screen((int)((x_pos + x_of) * s), (int)((y_pos + y_of) * s),
 			s, s);

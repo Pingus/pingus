@@ -1,4 +1,4 @@
-//  $Id: Editor.cc,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: Editor.cc,v 1.2 2000/02/09 21:43:43 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -293,8 +293,27 @@ Editor::mouse_moved()
 void
 Editor::move_objects()
 {
-  if (move_x != 0 || move_y != 0)
-    object_manager.move_current_objs(move_x, move_y);
+  int move_speed = 1;
+  move_x = 0;
+  move_y = 0;
+
+  if (CL_Keyboard::get_keycode(CL_KEY_RSHIFT)
+      && CL_Keyboard::get_keycode(CL_KEY_RSHIFT))
+    {
+      move_speed = 10;
+    }
+
+  if (CL_Keyboard::get_keycode(CL_KEY_LEFT))
+    move_x = -move_speed;
+  else if (CL_Keyboard::get_keycode(CL_KEY_RIGHT))
+    move_x = move_speed;
+
+  if (CL_Keyboard::get_keycode(CL_KEY_UP))
+    move_y = -move_speed;
+  else if (CL_Keyboard::get_keycode(CL_KEY_DOWN))
+    move_y = move_speed;
+        
+  object_manager.move_current_objs(move_x, move_y);
 }
 
 void
@@ -361,8 +380,8 @@ Editor::interactive_load()
 
 /***********************************************
 $Log: Editor.cc,v $
-Revision 1.1  2000/02/04 23:45:19  mbn
-Initial revision
+Revision 1.2  2000/02/09 21:43:43  grumbel
+CVS should be up to date again...
 
 Revision 1.42  2000/02/03 09:36:59  grumbel
 Misc fixes

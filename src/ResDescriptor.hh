@@ -1,4 +1,4 @@
-//  $Id: ResDescriptor.hh,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: ResDescriptor.hh,v 1.2 2000/02/09 21:43:41 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -31,11 +31,12 @@ class ResDescriptor
 {
 public:
   enum ResourceType { RESOURCE, FILE, AUTO } type; // Where to get the data from?
-  string filename; // If ResType is RESOURCE, the name of the ResFile.
+  string filename; // The name of the resource file
   string res_name; // The name of the data, filename or resourcename.
 
   ResDescriptor();
   ResDescriptor(string cast, string value);
+  ResDescriptor(string str);
 };
 
 #endif

@@ -1,4 +1,4 @@
-// $Id: EditorObj.cc,v 1.1 2000/02/04 23:45:19 mbn Exp $
+// $Id: EditorObj.cc,v 1.2 2000/02/09 21:43:43 grumbel Exp $
 //
 // Pingus - A free Lemmings clone
 // Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -160,8 +160,8 @@ EditorObj::obj_type()
   
 /*
 $Log: EditorObj.cc,v $
-Revision 1.1  2000/02/04 23:45:19  mbn
-Initial revision
+Revision 1.2  2000/02/09 21:43:43  grumbel
+CVS should be up to date again...
 
 Revision 1.10  2000/01/04 00:00:08  grumbel
 Misc changes and fixes

@@ -1,4 +1,4 @@
-//  $Id: StringReader.hh,v 1.1 2000/02/04 23:45:19 mbn Exp $
+//  $Id: StringReader.hh,v 1.2 2000/02/09 21:43:43 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,6 +30,7 @@ private:
   list<string>* strings;
   list<string*> completions;
   string current_string;
+  string default_string;
   bool finished;
   string description;
   CL_Font* font;
