@@ -35,19 +35,15 @@ PingusMapManager::get_surface (const std::string& level_filename)
 void
 PingusMapManager::set_surface (const std::string& level_filename, const CL_Surface& surf)
 {
-#ifdef CLANLIB_0_6
-  CL_PixelBuffer* provider = surf.get_provider ();
+  CL_PixelBuffer provider = surf.get_pixeldata();
 
-  assert (provider);
-
-  provider->lock ();
+  provider.lock ();
 
   //provider->get_data ();
 
-  provider->unlock ();
+  provider.unlock ();
 
   UNUSED_ARG(level_filename);
-#endif
 }
 
 } // namespace Pingus

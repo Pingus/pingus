@@ -64,10 +64,11 @@ TimeDisplay::draw (GraphicContext& gc)
 	  time_value = server->get_world()->get_time_passed();
 	  time_string = to_string(time_value);
 	}
-
-#ifdef CLANLIB_0_6
-      font.print_right(CL_Display::get_width() - 5, 3, time_string);
-#endif
+      {
+        CL_Font myfont = font;
+        myfont.set_alignment(origin_top_center);
+        myfont.draw(CL_Display::get_width() - 5, 3, time_string);
+      }
     }
 
   UNUSED_ARG(gc);

@@ -66,12 +66,12 @@ Blitter::put_surface(CL_PixelBuffer& canvas, const CL_PixelBuffer& provider,
 }
 
 void
-Blitter::put_surface_8bit(CL_PixelBuffer& provider, const CL_PixelBuffer& sprovider,
+Blitter::put_surface_8bit(CL_PixelBuffer& provider, const CL_PixelBuffer& sprovider_,
 			  int x, int y)
 {
-#ifdef CLANLIB_0_6
-  assert (provider);
-  assert (sprovider);
+#if CLANLIB_0_6
+  CL_PixelBuffer sprovider = sprovider_;
+
   int start_i;
   unsigned char* tbuffer; // Target buffer
   int twidth, theight, tpitch;
@@ -81,30 +81,30 @@ Blitter::put_surface_8bit(CL_PixelBuffer& provider, const CL_PixelBuffer& sprovi
 
   int x_offset, y_offset;
 
-  provider->lock();
-  sprovider->lock();
+  provider.lock();
+  sprovider.lock();
 
-  tbuffer = static_cast<unsigned char*>(provider->get_data());
-  sbuffer = static_cast<unsigned char*>(sprovider->get_data());
+  tbuffer = static_cast<unsigned char*>(provider.get_data());
+  sbuffer = static_cast<unsigned char*>(sprovider.get_data());
 
-  //std::cout << "Colorkey: " << sprovider->get_src_colorkey() << std::endl;
+  //std::cout << "Colorkey: " << sprovider.get_src_colorkey() << std::endl;
 
-  CL_Palette* cl_palette = sprovider->get_palette();
+  CL_Palette cl_palette = sprovider.get_palette();
 
   if (!cl_palette)
     {
       char str[128];
-      snprintf(str, 128, "Couldn't find palette: %d", sprovider->get_format().get_depth());
+      snprintf(str, 128, "Couldn't find palette: %d", sprovider.get_format().get_depth());
       PingusError::raise(str);
     }
 
-  twidth = provider->get_width();
-  theight = provider->get_height();
-  tpitch = provider->get_pitch();
+  twidth = provider.get_width();
+  theight = provider.get_height();
+  tpitch = provider.get_pitch();
 
-  swidth = sprovider->get_width();
-  sheight = sprovider->get_height();
-  spitch = sprovider->get_pitch();
+  swidth  = sprovider.get_width();
+  sheight = sprovider.get_height();
+  spitch  = sprovider.get_pitch();
 
   if (y < 0)
     y_offset = 0-y;
@@ -116,11 +116,9 @@ Blitter::put_surface_8bit(CL_PixelBuffer& provider, const CL_PixelBuffer& sprovi
   else
     x_offset = 0;
 
-  unsigned char* palette = cl_palette->palette;
-
-  if (sprovider->uses_src_colorkey ())
+  if (sprovider.uses_src_colorkey ())
     {
-      unsigned int colorkey = sprovider->get_src_colorkey();
+      unsigned int colorkey = sprovider.get_src_colorkey();
 
       for(int line=y_offset;
 	  line < sheight && (line + y) < theight;
@@ -136,9 +134,9 @@ Blitter::put_surface_8bit(CL_PixelBuffer& provider, const CL_PixelBuffer& sprovi
 	      if (sbuffer[j] != colorkey)
 		{
 		  tbuffer[i + 0] = 255;                                  // alpha
-		  tbuffer[i + 1] = palette[sbuffer[j] * 3 + 2]; // blue
-		  tbuffer[i + 2] = palette[sbuffer[j] * 3 + 1]; // green
-		  tbuffer[i + 3] = palette[sbuffer[j] * 3 + 0]; // red
+		  tbuffer[i + 1] = palette.colors[sbuffer[j] * 3].get_blue(); // blue
+		  tbuffer[i + 2] = palette.colors[sbuffer[j] * 3].get_green(); // green
+		  tbuffer[i + 3] = palette.colors[sbuffer[j] * 3].get_red(); // red
 		}
 	    }
 	}
@@ -164,54 +162,54 @@ Blitter::put_surface_8bit(CL_PixelBuffer& provider, const CL_PixelBuffer& sprovi
 	}
     }
 
-#if COMPILE_WITH_MEMORY_HOLE
-#warning "FIXME: Blitter::put_surface_8bit(CL_PixelBuffer& provider, CL_PixelBuffer& sprovider, int x, int y) contains memory hole"
-#else
-  sprovider->unlock();
-  provider->unlock();
-#endif
+  sprovider.unlock();
+  provider.unlock();
 #endif
 }
 
 void
-Blitter::put_surface_32bit(CL_PixelBuffer& canvas, const CL_PixelBuffer& provider,
+Blitter::put_surface_32bit(CL_PixelBuffer& canvas, const CL_PixelBuffer& provider_,
 			   const int x_pos, const int y_pos)
 {
-#ifdef CLANLIB_0_6
-  pout(PINGUS_DEBUG_BLITTER) << "Blitting: SurfaceProvider:" << provider->get_width ()
-                             << "x" << provider->get_height () << ":" << provider
-                	     << " Canvas:" << canvas->get_width () << "x"
-                             << canvas->get_height () << ":" << canvas << std::endl;
+  CL_PixelBuffer provider = provider_;
 
-  float red, green, blue, alpha;
-  float tred, tgreen, tblue, talpha;
+  pout(PINGUS_DEBUG_BLITTER) << "Blitting: SurfaceProvider:" << provider.get_width ()
+                             << "x" << provider.get_height () << ":" 
+                	     << " Canvas:" << canvas.get_width () << "x"
+                             << canvas.get_height () << ":" <<  std::endl;
 
-  int swidth = provider->get_width();
-  int sheight = provider->get_height();
+  int swidth = provider.get_width();
+  int sheight = provider.get_height();
 
-  int twidth = canvas->get_width();
-  int theight = canvas->get_height();
+  int twidth = canvas.get_width();
+  int theight = canvas.get_height();
 
   // Surface is out of the screen
   if (x_pos > twidth-1 || y_pos > theight-1)
     return;
 
-  canvas->lock();
-  provider->lock();
+  canvas.lock();
+  provider.lock();
+
   if (1) // slow
     {
       for(int y = Math::max(0, -y_pos); y < sheight && (y + y_pos) < theight; ++y)
 	for(int x = Math::max(0,-x_pos); x < swidth && (x + x_pos) < twidth; ++x)
 	  {
-	    provider->get_pixel(x, y, &red, &green, &blue, &alpha);
-	    canvas->get_pixel(x + x_pos, y + y_pos, &tred, &tgreen, &tblue, &talpha);
+#if CLANLIB_0_6
+            float red, green, blue, alpha;
+            float tred, tgreen, tblue, talpha;
+
+	    provider.get_pixel(x, y, &red, &green, &blue, &alpha);
+	    canvas.get_pixel(x + x_pos, y + y_pos, &tred, &tgreen, &tblue, &talpha);
 
 	    // FIXME: This doesn't give correct alpha values
-	    canvas->draw_pixel(x + x_pos, y + y_pos,
-			       Math::mid(0.0f, 1.0f, (red   * alpha) + (tred   * (1.0f - alpha))),
-			       Math::mid(0.0f, 1.0f, (green * alpha) + (tgreen * (1.0f - alpha))),
-			       Math::mid(0.0f, 1.0f, (blue  * alpha) + (tblue  * (1.0f - alpha))),
-			       Math::mid(0.0f, 1.0f,  alpha * alpha  + (talpha * (1.0f - alpha))));
+	    canvas.draw_pixel(x + x_pos, y + y_pos,
+                              Math::mid(0.0f, 1.0f, (red   * alpha) + (tred   * (1.0f - alpha))),
+                              Math::mid(0.0f, 1.0f, (green * alpha) + (tgreen * (1.0f - alpha))),
+                              Math::mid(0.0f, 1.0f, (blue  * alpha) + (tblue  * (1.0f - alpha))),
+                              Math::mid(0.0f, 1.0f,  alpha * alpha  + (talpha * (1.0f - alpha))));
+#endif
 	  }
     }
   else // fast?!
@@ -219,13 +217,8 @@ Blitter::put_surface_32bit(CL_PixelBuffer& canvas, const CL_PixelBuffer& provide
 
     }
 
-#if COMPILE_WITH_MEMORY_HOLE
-#warning "FIXME: Blitter::put_surface_32bit(CL_PixelBuffer& canvas, CL_PixelBuffer& provider, const int x_pos, const int y_pos) contains memory hole"
-#else
-  provider->unlock();
-  canvas->unlock();
-#endif
-#endif
+  provider.unlock();
+  canvas.unlock();
 }
 
 void
@@ -243,36 +236,36 @@ Blitter::put_alpha_surface(CL_PixelBuffer& provider, const CL_PixelBuffer& sprov
   CL_Palette* palette;
   int x_offset, y_offset;
 
-  provider->lock();
-  sprovider->lock();
+  provider.lock();
+  sprovider.lock();
 
-  //  assert(sprovider->get_format().get_depth() == 8);
-  if (sprovider->get_format().get_depth() != 8)
+  //  assert(sprovider.get_format().get_depth() == 8);
+  if (sprovider.get_format().get_depth() != 8)
     {
       // FIXME: memory hole
 #if COMPILE_WITH_MEMORY_HOLE
 #warning "FIXME: Blitter::put_alpha_surface(CL_PixelBuffer& provider, CL_PixelBuffer& sprovider, int x, int y) contains memory hole"
 #else
-      sprovider->unlock ();
-      provider->unlock ();
+      sprovider.unlock ();
+      provider.unlock ();
 #endif
-      PingusError::raise("Image has wrong color depth: " + to_string(sprovider->get_format().get_depth()));
+      PingusError::raise("Image has wrong color depth: " + to_string(sprovider.get_format().get_depth()));
     }
-  //  assert(provider->get_pixel_format() == RGBA8888);
+  //  assert(provider.get_pixel_format() == RGBA8888);
 
-  tbuffer = static_cast<unsigned char*>(provider->get_data());
-  sbuffer = static_cast<unsigned char*>(sprovider->get_data());
+  tbuffer = static_cast<unsigned char*>(provider.get_data());
+  sbuffer = static_cast<unsigned char*>(sprovider.get_data());
 
-  palette = sprovider->get_palette();
+  palette = sprovider.get_palette();
   assert(palette);
 
-  twidth = provider->get_width();
-  theight = provider->get_height();
-  tpitch = provider->get_pitch();
+  twidth = provider.get_width();
+  theight = provider.get_height();
+  tpitch = provider.get_pitch();
 
-  swidth = sprovider->get_width();
-  sheight = sprovider->get_height();
-  spitch = sprovider->get_pitch();
+  swidth = sprovider.get_width();
+  sheight = sprovider.get_height();
+  spitch = sprovider.get_pitch();
 
   if (y < 0)
     y_offset = 0-y;
@@ -298,8 +291,8 @@ Blitter::put_alpha_surface(CL_PixelBuffer& provider, const CL_PixelBuffer& sprov
 #if COMPILE_WITH_MEMORY_HOLE
 #warning "FIXME: Blitter::put_alpha_surface(CL_PixelBuffer& provider, CL_PixelBuffer& sprovider, int x, int y) contains memory hole"
 #else
-  sprovider->unlock();
-  provider->unlock();
+  sprovider.unlock();
+  provider.unlock();
 #endif
 
 #endif
@@ -329,19 +322,19 @@ Blitter::create_canvas(const CL_PixelBuffer& prov)
 {
 #ifdef CLANLIB_0_6
   assert (prov);
-  CL_PixelBuffer& canvas = new CL_PixelBuffer(prov->get_width(), prov->get_height());
+  CL_PixelBuffer& canvas = new CL_PixelBuffer(prov.get_width(), prov.get_height());
 
-  switch (prov->get_bytes_per_pixel())
+  switch (prov.get_bytes_per_pixel())
     {
       // RGB888
     case 3:
       {
-	canvas->lock();
-	prov->lock();
+	canvas.lock();
+	prov.lock();
 
-	int buffer_size = prov->get_pitch () * prov->get_height ();
-	unsigned char* sbuffer = static_cast<unsigned char*>(prov->get_data ());
-	unsigned char* tbuffer = static_cast<unsigned char*>(canvas->get_data ());
+	int buffer_size = prov.get_pitch () * prov.get_height ();
+	unsigned char* sbuffer = static_cast<unsigned char*>(prov.get_data ());
+	unsigned char* tbuffer = static_cast<unsigned char*>(canvas.get_data ());
 
 	for (int si = 0, ti = 0; si < buffer_size; si += 3, ti += 4)
 	  {
@@ -352,19 +345,19 @@ Blitter::create_canvas(const CL_PixelBuffer& prov)
 	  }
 
 	// -FIXME: memory hole
-	prov->unlock();
-	canvas->unlock();
+	prov.unlock();
+	canvas.unlock();
       }
       break;
 
       // RGBA8888
     case 4:
-      canvas->lock();
-      prov->lock();
-      memcpy(canvas->get_data(), prov->get_data(),
- 	     sizeof(unsigned char) * prov->get_height() * prov->get_pitch());
-      prov->unlock();
-      canvas->unlock();
+      canvas.lock();
+      prov.lock();
+      memcpy(canvas.get_data(), prov.get_data(),
+ 	     sizeof(unsigned char) * prov.get_height() * prov.get_pitch());
+      prov.unlock();
+      canvas.unlock();
       break;
 
     default:
@@ -516,50 +509,50 @@ Blitter::convert_to_emptyprovider(CL_PixelBuffer& sprov)
   unsigned char* tbuffer;
   int i;
 
-  sprov->lock();
-  switch(sprov->get_format().get_depth())
+  sprov.lock();
+  switch(sprov.get_format().get_depth())
     {
     case 32:
-      tprov = new CL_PixelBuffer(sprov->get_width(),
-			    sprov->get_height());
-      tprov->lock();
+      tprov = new CL_PixelBuffer(sprov.get_width(),
+			    sprov.get_height());
+      tprov.lock();
 
-      sbuffer = static_cast<unsigned char*>(sprov->get_data());
-      tbuffer = static_cast<unsigned char*>(tprov->get_data());
+      sbuffer = static_cast<unsigned char*>(sprov.get_data());
+      tbuffer = static_cast<unsigned char*>(tprov.get_data());
 
-      for(i=0; i < (tprov->get_height() * tprov->get_pitch()); ++i)
+      for(i=0; i < (tprov.get_height() * tprov.get_pitch()); ++i)
 	{
 	  tbuffer[i] = sbuffer[i];
 	}
 
-      tprov->unlock();
+      tprov.unlock();
       break;
     case 8:
-      tprov = new CL_PixelBuffer(sprov->get_width(),
-			    sprov->get_height());
-      palette = sprov->get_palette();
-      tprov->lock();
+      tprov = new CL_PixelBuffer(sprov.get_width(),
+			    sprov.get_height());
+      palette = sprov.get_palette();
+      tprov.lock();
 
-      sbuffer = static_cast<unsigned char*>(sprov->get_data());
-      tbuffer = static_cast<unsigned char*>(tprov->get_data());
+      sbuffer = static_cast<unsigned char*>(sprov.get_data());
+      tbuffer = static_cast<unsigned char*>(tprov.get_data());
 
-      for(i=0; i < (sprov->get_height() * sprov->get_pitch()); ++i)
+      for(i=0; i < (sprov.get_height() * sprov.get_pitch()); ++i)
 	{
 	  tbuffer[i * 4 + 0] = 255;
-	  tbuffer[i * 4 + 1] = palette->palette[sbuffer[i] * 3 + 2];
-	  tbuffer[i * 4 + 2] = palette->palette[sbuffer[i] * 3 + 1];
-	  tbuffer[i * 4 + 3] = palette->palette[sbuffer[i] * 3 + 0];
+	  tbuffer[i * 4 + 1] = palette.palette[sbuffer[i] * 3 + 2];
+	  tbuffer[i * 4 + 2] = palette.palette[sbuffer[i] * 3 + 1];
+	  tbuffer[i * 4 + 3] = palette.palette[sbuffer[i] * 3 + 0];
 	}
 
-      tprov->unlock();
+      tprov.unlock();
       break;
     default:
       std::cout << "convert_to_emptyprovider(): Wrong source format: "
-		<< static_cast<int>(sprov->get_format().get_depth()) << std::endl;
+		<< static_cast<int>(sprov.get_format().get_depth()) << std::endl;
       assert(false);
       break;
     }
-  sprov->unlock();
+  sprov.unlock();
 
   return tprov;
 }
@@ -584,7 +577,7 @@ CL_Surface
 Blitter::rotate_90 (const CL_Surface& sur)
 {
 #ifdef CLANLIB_0_6
-  CL_PixelBuffer* prov = sur.get_provider ();
+  CL_PixelBuffer prov = sur.get_pixeldata();
 
   if (prov.get_type() ==  pixelformat_index)
     {
