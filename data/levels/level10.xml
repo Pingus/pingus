@@ -281,7 +281,8 @@
   </position>
 </groundpiece>
 
-<liquid>  <surface><resource type="datafile">
+<liquid>
+<surface><resource type="datafile">
     <resource-datafile>global</resource-datafile>  <resource-ident>Liquid/water2</resource-ident>
   </resource></surface>
   <position>

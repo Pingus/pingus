@@ -1,3 +1,9 @@
+cat-id-tbl.c
+de.gmo
+stamp-cat-id
+Makefile
+Makefile.in
+POTFILES
 all
 all-yes
 pingus.pot

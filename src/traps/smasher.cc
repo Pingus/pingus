@@ -1,4 +1,4 @@
-//  $Id: smasher.cc,v 1.17 2001/04/01 18:00:43 grumbel Exp $
+//  $Id: smasher.cc,v 1.18 2001/04/01 18:22:17 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -64,7 +64,7 @@ Smasher::update(float delta)
 	      for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
 		{
 		  if ((*pingu)->is_inside (pos.x_pos + 30, pos.y_pos + 90,
-					pos.x_pos + 250, pos.y_pos + 190))
+					   pos.x_pos + 250, pos.y_pos + 190))
 		    {
 		      (*pingu)->set_status (dead);
 		    }
