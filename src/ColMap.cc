@@ -1,4 +1,4 @@
-//  $Id: ColMap.cc,v 1.21 2000/12/14 21:35:54 grumbel Exp $
+//  $Id: ColMap.cc,v 1.22 2001/04/13 17:34:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -75,7 +75,8 @@ ColMap::load(ResDescriptor desc)
       colmap = new unsigned char[provider->get_pitch() * provider->get_height()];
       memcpy(colmap, provider->get_data(), provider->get_pitch() *  provider->get_height());
       
-      provider->unlock();
+      // FIXME: Memory hole
+      //provider->unlock();
       
       init = true;
 
@@ -153,7 +154,8 @@ ColMap::remove(CL_SurfaceProvider* provider, int x, int y)
 		}
 	    }
 	}
-      provider->unlock();
+      // FIXME: Memory hole      
+      //provider->unlock();
     }
   else if (provider->get_depth() == 8)
     {
@@ -179,7 +181,8 @@ ColMap::remove(CL_SurfaceProvider* provider, int x, int y)
 		}
 	    }
 	}
-      provider->unlock();
+      // FIXME: Memory hole      
+      //provider->unlock();
     }
   else
     {
@@ -229,6 +232,23 @@ ColMap::put(const CL_Surface& sur, int sur_x, int sur_y, GroundpieceData::Type t
 void
 ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, GroundpieceData::Type type)
 {
+  if (type == GroundpieceData::TRANSPARENT)
+    return;
+
+  unsigned int pixel;
+  switch (type) 
+    {
+    case GroundpieceData::GROUND:  pixel = WALL; break;
+    case GroundpieceData::SOLID:   pixel = SOLID | WALL; break;
+    case GroundpieceData::BRIDGE:  pixel = BRIDGE | WALL; break;
+    case GroundpieceData::WATER:   pixel = SOLID | WATER; break;
+    case GroundpieceData::LAVA:    pixel = SOLID | LAVA; break;
+    case GroundpieceData::NOTHING: pixel = 0; break;
+    default:
+      std::cout << "Colmap::put() Undefinit type" << std::endl;
+      break;
+    }
+  
   if ((sur_x > width) || (sur_y > height)) {
     if (verbose > 3) {
       std::cout << "Warning: ColMap: Spot out of screen" << std::endl;
@@ -244,37 +264,14 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, GroundpieceData:
       float r, g, b, a;
       // Rewritting blitter for 32bit depth (using get_pixel())
       for (unsigned int y=0; y < provider->get_height(); y++)
-	for (unsigned int x=0; x < provider->get_width(); x++) {
-	  provider->get_pixel(x, y, &r, &g, &b, &a);
-	  
-	  if (a > 0.1)
-	    {
-	      switch (type)
-		{
-		case GroundpieceData::GROUND:
-		  put(x + sur_x, y + sur_y,  (PixelStatus)WALL);
-		  break;
-		case GroundpieceData::TRANSPARENT:
-		  // doing nothing
-		  break;
-		case GroundpieceData::SOLID:
-		  put(x + sur_x, y + sur_y, (PixelStatus)(SOLID | WALL));
-		  break;
-		case GroundpieceData::BRIDGE:
-		  put(x + sur_x, y + sur_y,  (PixelStatus)BRIDGE);
-		  break;
-		case GroundpieceData::WATER:
-		  put(x + sur_x, y + sur_y,  (PixelStatus)(SOLID | WATER));
-		  break;
-		case GroundpieceData::LAVA:
-		  put(x + sur_x, y + sur_y,  (PixelStatus)(SOLID | LAVA));
-		  break;
-		case GroundpieceData::NOTHING:
-		  put(x + sur_x, y + sur_y,  (PixelStatus)0);
-		  break;
-		}
-	    }
-	}
+	for (unsigned int x=0; x < provider->get_width(); x++) 
+	  {
+	    provider->get_pixel(x, y, &r, &g, &b, &a);
+	    if (a > 0.1)
+	      {
+		put(x + sur_x, y + sur_y, (PixelStatus) pixel);
+	      }
+	  }
     }
   else if (provider->get_depth() == 8)
     {
@@ -289,106 +286,31 @@ ColMap::put(CL_SurfaceProvider* provider, int sur_x, int sur_y, GroundpieceData:
       //provider->lock();
       buffer = static_cast<unsigned char*>(provider->get_data());
 
-      for(int line = y_offset; line < sheight && (line + sur_y) < height; ++line) 
+      if (provider->uses_src_colorkey())
 	{
-	  for (int i = x_offset; i < swidth && (i+sur_x) < width; ++i) 
-	    {
-	      if (!provider->uses_src_colorkey()
-		  || buffer[i + (swidth*line)] != provider->get_src_colorkey())
-		{
-		  /*
-		    if (buffer[i + (swidth*line)]) 
-		    {
-		    if (!(colmap[i + (width*(line+y) + x)] & SOLID))
-		    colmap[i + (width*(line+y) + x)] = NOTHING;
-		  */
-	       
-		    
-		  switch (type) 
-		    {
-		    case GroundpieceData::GROUND:
-		      colmap[i + (width*(line+sur_y) + sur_x)] = WALL;
-		      break;
-		    case GroundpieceData::TRANSPARENT:
-		      // doing nothing
-		      break;
-		    case GroundpieceData::SOLID:
-		      colmap[i + (width*(line+sur_y) + sur_x)] = SOLID | WALL;
-		      break;
-		    case GroundpieceData::BRIDGE:
-		      colmap[i + (width*(line+sur_y) + sur_x)] = BRIDGE | WALL;
-		      break;
-		    case GroundpieceData::WATER:
-		      colmap[i + (width*(line+sur_y) + sur_x)] = SOLID | WATER;
-		      break;
-		    case GroundpieceData::LAVA:
-		      colmap[i + (width*(line+sur_y) + sur_x)] = SOLID | LAVA;
-		      break;
-		    case GroundpieceData::NOTHING:
-		      colmap[i + (width*(line+sur_y) + sur_x)] = 0;
-		      break;
-		    default:
-		      std::cout << "Colmap::put() Undefinit type" << std::endl;
-		      break;
-		    }
-		}
-	    }
-	  //provider->unlock();
-	  /* The above blitter is the same as the one in remove()
-	     this is buggy (left-border)
-	     unsigned char* buffer;
-	     int w = provider->get_width();
-	     int h = provider->get_height();
-
-	     buffer = static_cast<unsigned char*>(provider->get_data());
-    
-	     for(int line = 0; line < h; ++line) {
-	     for (int i = (width * (sur_y + line)) + sur_x, j=w * line;
-	     (i < (width * height)) && ((j - w * line) < w)  && (i < (width * (sur_y + line + 1)));
-	     ++i, ++j)
-	     {
-	     if (j < 0 || j > (w * h))
-	     continue;
-	  
-	     if (i < 0 || i > (width * height))
-	     continue;
-	  
-	     if (!provider->uses_src_colorkey() || buffer[j] != provider->get_src_colorkey())
-	     {
-	     switch (type) 
-	     {
-	     case GroundpieceData::GROUND:
-	     colmap[i] = WALL;
-	     break;
-	     case GroundpieceData::TRANSPARENT:
-	     // doing nothing
-	     break;
-	     case GroundpieceData::SOLID:
-	     colmap[i] = SOLID | WALL;
-	     break;
-	     case GroundpieceData::BRIDGE:
-	     colmap[i] = BRIDGE | WALL;
-	     break;
-	     case GroundpieceData::WATER:
-	     colmap[i] = SOLID | WATER;
-	     break;
-	     case GroundpieceData::LAVA:
-	     colmap[i] = SOLID | LAVA;
-	     break;
-	     default:
-	     std::cout << "Colmap::put() Undefinit type" << std::endl;
-	     break;
-	     }
-	     }
-	     }
-	  */
+	  unsigned int colorkey = provider->get_src_colorkey();
+	  for(int line = y_offset; line < sheight && (line + sur_y) < height; ++line) 
+	    for (int i = x_offset; i < swidth && (i+sur_x) < width; ++i) 
+	      {
+		if (buffer[i + (swidth*line)] != colorkey)
+		  colmap[i + (width*(line+sur_y) + sur_x)] = pixel;		    
+	      }
+	}
+      else
+	{
+	  for(int line = y_offset; line < sheight && (line + sur_y) < height; ++line) 
+	    for (int i = x_offset; i < swidth && (i+sur_x) < width; ++i) 
+	      {
+		colmap[i + (width*(line+sur_y) + sur_x)] = pixel;
+	      }
 	}
     }
   else
     {
       std::cout << "ColMap: Unsupported color depth, ignoring" << std::endl;
     }
-  provider->unlock();
+  // FIXME: Memory hole
+  // provider->unlock();
 }
 
 void
@@ -401,7 +323,7 @@ ColMap::draw(int x_of, int y_of, float s)
   canvas->lock();
   buffer = static_cast<unsigned char*>(canvas->get_data());
   
-  for(int i = 0; i < (width * height); i++)
+  for(int i = 0; i < (width * height); ++i)
     {
       switch(colmap[i])
 	{
@@ -426,7 +348,8 @@ ColMap::draw(int x_of, int y_of, float s)
 	}
     }
 
-  canvas->unlock();
+  // FIXME: Memory hole
+  //canvas->unlock();
 
   sur = CL_Surface(canvas, true);
 

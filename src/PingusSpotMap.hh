@@ -1,4 +1,4 @@
-//  $Id: PingusSpotMap.hh,v 1.14 2001/04/10 21:51:22 grumbel Exp $
+//  $Id: PingusSpotMap.hh,v 1.15 2001/04/13 17:34:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ public:
   ///
   void reload(void);
   ///
-  bool is_empty(void);
+  inline bool is_empty(void) { return empty; }
   ///
   void mark_dirty(void);
   ///

@@ -1,4 +1,4 @@
-//  $Id: Cursor.cc,v 1.1 2001/04/12 19:51:41 grumbel Exp $
+//  $Id: Cursor.cc,v 1.2 2001/04/13 17:34:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,8 +19,9 @@
 
 #include "Cursor.hh"
 
-Cursor::Cursor (boost::shared_ptr<Controller> arg_controller)
-  : sprite ("cursors/cross", "core"),
+Cursor::Cursor (std::string ident, std::string datafile,
+		boost::shared_ptr<Controller> arg_controller)
+  : sprite (ident, datafile),
     controller (arg_controller)
 {
   sprite.set_align_center();

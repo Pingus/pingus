@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.49 2001/04/13 14:50:59 grumbel Exp $
+//  $Id: Client.cc,v 1.50 2001/04/13 17:34:56 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -62,7 +62,8 @@ Client::Client(boost::shared_ptr<Controller> arg_controller,
   do_replay = false;
   is_finished = false;
 
-  Display::add_flip_screen_hook(new Cursor (controller));
+  Display::add_flip_screen_hook(new Cursor ("cursors/cross", "core", controller));
+  Display::add_flip_screen_hook(new Cursor ("cursors/cursor", "core", boost::shared_ptr<Controller>(new MouseController ())));
 }
 
 Client::~Client()

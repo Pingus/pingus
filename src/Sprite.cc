@@ -1,4 +1,4 @@
-//  $Id: Sprite.cc,v 1.9 2001/04/10 19:42:57 grumbel Exp $
+//  $Id: Sprite.cc,v 1.10 2001/04/13 17:34:56 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,6 +19,14 @@
 
 #include "PingusResource.hh"
 #include "Sprite.hh"
+
+int round(float f) 
+{
+  if (f >= 0.0f)
+    return int(f + 0.5f);
+  else
+    return int(f - 0.5f);
+}
 
 Sprite::Sprite (const Sprite& sprite) :
   frame (sprite.frame),
@@ -78,16 +86,20 @@ Sprite::Sprite (const ResDescriptor& desc,
 void 
 Sprite::put_screen (int x, int y)
 {
+  // FIXME: HACK
+  update (0.0f);
+  std::cout << "Frame: " << round(frame) << " " << frame << " " << max_frames () << std::endl;
+
   switch (direction)
     {
     case Sprite::NONE:
-      sur.put_screen (x + x_align, y + y_align, int(frame));
+      sur.put_screen (x + x_align, y + y_align, round(frame));
       break;
     case Sprite::LEFT:
-      sur.put_screen (x + x_align, y + y_align, int(frame));
+      sur.put_screen (x + x_align, y + y_align, round(frame));
       break;
     case Sprite::RIGHT:
-      sur.put_screen (x + x_align, y + y_align, int(frame) + max_frames ());
+      sur.put_screen (x + x_align, y + y_align, round(frame) + max_frames ());
       break;
     default:
       std::cout << "Direction: " << direction << std::endl;
@@ -127,7 +139,7 @@ Sprite::next_frame ()
 {
   ++frame;
 
-  if (frame >= int(sur.get_num_frames ()))
+  if (round(frame) >= int(sur.get_num_frames ()))
     frame = 0;
 }
 
@@ -136,7 +148,7 @@ Sprite::previous_frame ()
 {
   --frame;
 
-  if (frame < 0)
+  if (round(frame) < 0)
     frame = sur.get_num_frames () - 1;  
 }
 
@@ -179,20 +191,19 @@ Sprite::update (float delta)
     case ENDLESS:
       frame += frames_per_second * delta;
 
-      if (frame < 0) {
+      if (round(frame) < 0) {
 	std::cout << "frame below zero: " << frame << std::endl;
-	frame  = 0;
+	frame  = (max_frames ()-1.0f);
       }
 
-      while (frame >= max_frames ())
-	{
-	  frame -= (max_frames ()-1);
-	}   
-      
+      if (round(frame) >= max_frames ()) {
+	frame = 0;
+      }
       break;
+      
     case ONCE:
       frame += frames_per_second * delta;
-      if (frame >= max_frames ()) 
+      if (round(frame) >= max_frames ()) 
 	{
 	  is_finished = true;
 	  frame = max_frames () - 1;

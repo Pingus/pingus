@@ -1,4 +1,4 @@
-//  $Id: Cursor.hh,v 1.1 2001/04/12 19:51:41 grumbel Exp $
+//  $Id: Cursor.hh,v 1.2 2001/04/13 17:34:56 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,7 +32,7 @@ private:
   boost::shared_ptr<Controller> controller;
   
 public:
-  Cursor (boost::shared_ptr<Controller>);
+  Cursor (std::string ident, std::string datafile, boost::shared_ptr<Controller>);
   virtual ~Cursor ();
   
   virtual void on_event();
