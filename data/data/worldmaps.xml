@@ -1,0 +1,12 @@
+<resources>
+  <section name="tutorial">
+    <surface file="../images/worldmaps/tutorial_layer0.jpg" name="layer0" />
+    <surface file="../images/worldmaps/tutorial_layer1.png" name="layer1" />
+    <surface file="../images/worldmaps/tutorial_layer2.png" name="layer2" />
+    <surface file="../images/worldmaps/tutorial_layer3.png" name="layer3" />
+  </section>
+  <section name="misc">
+    <surface file="../images/worldmaps/volcano.jpg" height="600" name="volcano" width="800" x="0" y="0" />
+    <surface file="../images/worldmaps/pacman.jpg" height="480" name="pacman" width="640" x="0" y="0" />
+  </section>
+</resources>

@@ -1,0 +1,19 @@
+<resources>
+  <section name="Entrances">
+    <surface file="../images/entrances/entrance.png" height="32" name="entrance" tcol="0" width="64" x="0" y="0" />
+    <surface file="../images/entrances/generic.png" height="64" name="generic" tcol="0" width="64" x="0" y="0" />
+    <surface file="../images/entrances/woodthing_nmov.png" height="157" name="woodthing_nmov" width="151" x="0" y="0" />
+    <surface array="17x1" file="../images/entrances/woodthing_mov.png" height="17" name="woodthing_mov" tcol="0" width="105" x="0" y="0" />
+    <surface file="../images/entrances/cloudent.png" height="90" name="cloud" tcol="0" width="188" x="0" y="0" />
+    <surface array="5x1" file="../images/entrances/space.png" height="64" name="space" width="62" x="0" y="0" />
+    <surface file="../images/entrances/wood_bottom.png" height="57" name="wood_bottom" tcol="0" width="100" x="0" y="0" />
+    <surface file="../images/entrances/wood_top.png" height="44" name="wood_top" tcol="0" width="100" x="0" y="0" />
+    <surface file="../images/entrances/eyes_entrance.png" height="221" name="entrance_eyes" width="273" x="0" y="0" />
+    <surface array="7x1" file="../images/entrances/eyes_entrance_anim.png" height="72" name="entrance_eyes_anim" width="166" x="0" y="0" />
+    <surface file="../images/entrances/eyes_underlay.png" height="72" name="underlay_eyes" width="166" x="0" y="0" />
+    <surface file="../images/entrances/industrial.png" height="158" name="industrial" tcol="0" width="105" x="0" y="0" />
+    <surface file="../images/entrances/industrial_top.png" height="53" name="industrial_top" tcol="0" width="43" x="0" y="0" />
+    <surface file="../images/entrances/snow_front.png" name="snow_front" />
+    <surface file="../images/entrances/snow_back.png" name="snow_back" />
+  </section>
+</resources>

@@ -1,0 +1,16 @@
+<resources>
+  <section name="Story">
+    <surface file="../images/story/story0.png" name="story0" />
+    <surface file="../images/story/story1.png" name="story1" />
+    <surface file="../images/story/story2.png" name="story2" />
+    <surface file="../images/story/story3.png" name="story3" />
+    <surface file="../images/story/story4.png" name="story4" />
+    <surface file="../images/story/story5.png" name="story5" />
+    <surface file="../images/story/story6.png" name="story6" />
+    <surface file="../images/story/credits1.png" name="credits1" />
+    <surface file="../images/story/credits2.png" name="credits2" />
+    <surface file="../images/story/credits3.png" name="credits3" />
+    <surface file="../images/story/credits4.png" name="credits4" />
+    <surface file="../images/core/menu/worldscreenbg.jpg" name="background" />
+  </section>
+</resources>

@@ -1,0 +1,17 @@
+<resources>
+  <section name="Exits">
+    <surface file="../images/exits/desert_tut.png" height="115" name="desert_tut" tcol="0" width="122" x="0" y="0" />
+    <surface file="../images/exits/ice.png" height="64" name="ice" tcol="0" width="64" x="0" y="0" />
+    <surface file="../images/exits/ice2.png" name="ice2" x="0" y="0" />
+    <surface file="../images/exits/stone.png" height="60" name="stone" tcol="0" width="75" x="0" y="0" />
+    <surface file="../images/exits/desertexit.png" height="100" name="desert" tcol="0" width="150" x="0" y="0" />
+    <surface array="4x1" file="../images/exits/space.png" height="118" name="space" width="154" x="0" y="0" />
+    <surface file="../images/exits/sweetexit.png" height="121" name="sweetexit" tcol="0" width="180" x="0" y="0" />
+    <surface file="../images/exits/sortie.png" height="78" name="sortie" tcol="0" width="78" x="0" y="0" />
+    <surface array="11x1" file="../images/exits/sortie_anim.png" height="90" name="sortie_anim" width="78" x="0" y="0" />
+    <surface file="../images/exits/industrial.png" height="118" name="industrial" tcol="0" width="145" x="0" y="0" />
+    <surface file="../images/exits/crystal.png" height="105" name="crystal" tcol="0" width="154" x="0" y="0" />
+    <surface file="../images/exits/ordina.png" name="ordina" />
+    <surface file="../images/exits/mud.png" name="mud" />
+  </section>
+</resources>

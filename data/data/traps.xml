@@ -1,0 +1,15 @@
+<resources>
+  <section name="Traps">
+    <surface file="../images/traps/tut.png" height="115" name="tut" tcol="0" width="732" x="0" y="0" />
+    <surface array="6x1" file="../images/traps/smasher.png" height="189" name="smasher" width="282" x="0" y="0" />
+    <surface file="../images/traps/smasher_cmap.png" height="189" name="smasher_cmap" tcol="0" width="281" x="0" y="0" />
+    <surface array="13x1" file="../images/traps/hammer.png" height="181" name="hammer" width="151" x="0" y="0" />
+    <surface array="9x1" file="../images/traps/fake_exit.png" height="112" name="fake_exit" tcol="0" width="75" x="0" y="0" />
+    <surface array="14x1" file="../images/traps/spike.png" height="32" name="spike" tcol="0" width="32" x="0" y="0" />
+    <surface array="12x2" file="../images/traps/guillotinekill.png" height="96" name="guillotinekill" tcol="0" width="80" x="0" y="0" />
+    <surface array="7x1" file="../images/traps/guillotineidle.png" height="96" name="guillotineidle" tcol="0" width="80" x="0" y="0" />
+    <surface array="6x1" file="../images/traps/laser_exit.png" height="60" name="laser_exit" tcol="0" width="75" x="0" y="0" />
+    <surface array="6x1" file="../images/traps/bumper.png" height="102" name="bumper" tcol="0" width="60" x="0" y="0" />
+    <surface file="../images/traps/bumper_cmap.png" height="102" name="bumper_cmap" tcol="0" width="60" x="0" y="0" />
+  </section>
+</resources>

@@ -1,0 +1,40 @@
+<resources>
+  <section name="Textures">
+    <surface file="../images/textures/fruitcaketile.jpg" height="256" name="fruitcaketile" width="256" x="0" y="0" />
+    <surface file="../images/textures/default.png" height="64" name="default" width="64" x="0" y="0" />
+    <surface file="../images/textures/industrial.jpg" height="600" name="industrial" width="400" x="0" y="0" />
+    <surface file="../images/textures/clouds2.jpg" name="clouds2" />
+    <surface file="../images/textures/clouds3.png" name="clouds3" />
+    <surface file="../images/textures/clouds.jpg" height="480" name="clouds" width="256" x="0" y="0" />
+    <surface file="../images/textures/crystal.jpg" height="286" name="crystal" width="169" x="0" y="0" />
+    <surface file="../images/textures/stones.png" height="256" name="stone" width="256" x="0" y="0" />
+    <surface file="../images/textures/rocktile.jpg" height="256" name="rocktile" width="256" x="0" y="0" />
+    <surface file="../images/textures/rooftile.jpg" height="256" name="rooftile" width="256" x="0" y="0" />
+    <surface file="../images/textures/rooftile2.jpg" height="256" name="rooftile2" width="256" x="0" y="0" />
+    <surface file="../images/textures/greentex.jpg" name="greentex" />
+    <surface file="../images/textures/rock6.jpg" name="rock6" />
+    <surface file="../images/textures/rockagglo.jpg" height="256" name="rockagglo" width="256" x="0" y="0" />
+    <surface file="../images/textures/icetile.jpg" height="400" name="icetile" width="150" x="0" y="0" />
+    <surface file="../images/textures/lunartile.jpg" height="400" name="lunartile" width="150" x="0" y="0" />
+    <surface file="../images/textures/blueflame.jpg" height="400" name="blueflame" width="150" x="0" y="0" />
+    <surface file="../images/textures/stone.jpg" height="398" name="stones" width="148" x="0" y="0" />
+    <surface file="../images/textures/flamebg.jpg" height="480" name="flame" width="256" x="0" y="0" />
+    <surface array="15x1" file="../images/textures/anim_fire.jpg" height="590" name="anim_fire" width="64" x="0" y="0" />
+    <surface file="../images/textures/stars.jpg" height="480" name="stars" width="256" x="0" y="0" />
+    <surface file="../images/textures/enchantedjungle.jpg" height="500" name="enchantedjungle" width="300" x="0" y="0" />
+    <surface file="../images/textures/darkjungle.jpg" height="500" name="darkjungle" width="300" x="0" y="0" />
+    <surface file="../images/textures/latejungle.jpg" height="500" name="latejungle" width="300" x="0" y="0" />
+    <surface file="../images/textures/nightjungle.jpg" height="500" name="nightjungle" width="300" x="0" y="0" />
+    <surface file="../images/textures/happyclouds.jpg" height="600" name="happyclouds" width="384" x="0" y="0" />
+    <surface file="../images/textures/desert.jpg" height="600" name="desert" width="256" x="0" y="0" />
+    <surface file="../images/textures/desert_room.jpg" height="378" name="desert_room" width="378" x="0" y="0" />
+    <surface file="../images/textures/sortie.jpg" height="256" name="sortie" width="256" x="0" y="0" />
+    <surface file="../images/textures/cyanspace.jpg" height="600" name="cyanspace" width="400" x="0" y="0" />
+    <surface file="../images/textures/bwsortiebg.jpg" height="600" name="bwsortiebg" width="400" x="0" y="0" />
+    <surface file="../images/textures/green_tendrils.png" height="256" name="green_tendrils" width="256" x="0" y="0" />
+    <surface file="../images/textures/mountain.png" height="600" name="mountain" width="400" x="0" y="0" />
+    <surface file="../images/textures/thunderstorm.png" height="800" name="thunderstorm" width="256" x="0" y="0" />
+    <surface file="../images/textures/ordina.jpg" name="ordina" />
+    <surface file="../images/textures/ordina.jpg" name="fond1" />
+  </section>
+</resources>

@@ -1,0 +1,135 @@
+<resources>
+  <section name="cursors">
+    <surface file="../images/core/cursors/editor.png" height="38" name="editor" tcol="0" translate-x="19" translate-y="19" width="38" x="0" y="0" />
+    <surface file="../images/core/cursors/cursor.png" height="16" name="cursor" tcol="0" width="16" x="0" y="0" />
+    <surface file="../images/core/cursors/scroll.png" height="32" name="scroll_cur" tcol="0" width="32" x="0" y="0" />
+    <surface file="../images/core/cursors/cap.png" height="40" name="capgood" width="40" x="0" y="0" />
+    <surface file="../images/core/cursors/capwrong.png" height="40" name="capbad" width="40" x="0" y="0" />
+    <surface file="../images/core/cursors/cross.png" height="36" name="cross" width="36" x="0" y="0" />
+    <surface array="10x1" file="../images/core/cursors/animcross.png" height="36" name="animcross" width="36" x="0" y="0" />
+    <surface file="../images/core/cursors/arrow_right.png" height="9" name="arrow_right" tcol="0" width="23" x="0" y="0" />
+    <surface file="../images/core/cursors/arrow_left.png" height="9" name="arrow_left" tcol="0" width="23" x="0" y="0" />
+  </section>
+  <section name="editor">
+    <surface file="../images/core/editor/start_pos.png" height="59" name="start_pos" tcol="0" width="53" x="0" y="0" />
+    <surface file="../images/core/editor/weather_rain.png" height="101" name="weather_rain" width="120" x="0" y="0" />
+    <surface file="../images/core/editor/weather_snow.png" height="64" name="weather_snow" width="71" x="0" y="0" />
+    <surface file="../images/core/editor/tb_copy.png" height="24" name="copy" tcol="0" width="24" x="0" y="0" />
+    <surface file="../images/core/editor/tb_new.png" height="24" name="new" tcol="0" width="24" x="0" y="0" />
+    <surface file="../images/core/editor/tb_open.png" height="24" name="open" tcol="0" width="24" x="0" y="0" />
+    <surface file="../images/core/editor/tb_save.png" height="24" name="save" tcol="0" width="24" x="0" y="0" />
+    <surface file="../images/core/editor/tb_exit.png" height="24" name="exit" tcol="0" width="24" x="0" y="0" />
+    <surface file="../images/core/editor/tb_clock_run.png" height="24" name="clock_run" tcol="0" width="24" x="0" y="0" />
+    <surface file="../images/core/editor/tb_edit.png" height="24" name="edit" tcol="0" width="24" x="0" y="0" />
+    <surface file="../images/core/editor/tb_preferences.png" height="24" name="preferences" tcol="0" width="24" x="0" y="0" />
+    <surface file="../images/core/editor/tb_help.png" height="24" name="help" tcol="0" width="24" x="0" y="0" />
+    <surface file="../images/core/editor/tb_trash.png" height="24" name="delete" tcol="0" width="24" x="0" y="0" />
+    <surface file="../images/core/editor/tb_index.png" height="24" name="index" tcol="0" width="24" x="0" y="0" />
+    <surface file="../images/core/editor/region-zoom.png" height="24" name="region-zoom" width="24" x="0" y="0" />
+    <surface file="../images/core/editor/zoom-in.png" height="24" name="zoom-in" width="24" x="0" y="0" />
+    <surface file="../images/core/editor/zoom-out.png" height="24" name="zoom-out" width="24" x="0" y="0" />
+    <surface file="../images/core/editor/button.png" height="24" name="button" width="24" x="0" y="0" />
+    <surface file="../images/core/editor/button_pressed.png" height="24" name="button_pressed" width="24" x="0" y="0" />
+    <surface file="../images/core/editor/actions.png" name="actions" />
+    <surface file="../images/core/editor/logo.png" name="logo" />
+  </section>
+  <section name="buttons">
+    <surface file="../images/core/buttons/info.png" name="info" />
+    <surface file="../images/core/buttons/hbuttonbg.png" name="hbuttonbg" />
+    <surface file="../images/core/buttons/hbuttonbgb.png" name="hbuttonbgb" />
+    <surface file="../images/core/buttons/buttonbackground.png" name="buttonbackground" />
+    <surface file="../images/core/buttons/buttonbackgroundhl.png" name="buttonbackgroundhl" />
+    <surface file="../images/core/buttons/back.png" height="34" name="back" tcol="0" width="64" x="0" y="0" />
+    <surface file="../images/core/buttons/pause.png" height="56" name="pause" width="38" x="0" y="0" />
+    <surface file="../images/core/buttons/fast_forward.png" height="56" name="fast_forward" width="38" x="0" y="0" />
+    <surface array="14x1" file="../images/core/buttons/armageddon_anim.png" height="57" name="armageddon_anim" width="36" x="0" y="0" />
+  </section>
+  <section name="menu">
+    <surface file="../images/core/menu/background.jpg" height="600" name="background" width="800" x="0" y="0" />
+    <surface file="../images/core/menu/startscreenbg.jpg" name="startscreenbg" />
+    <surface file="../images/core/menu/create_on.png" name="create_on" />
+    <surface file="../images/core/menu/credits_on.png" name="credits_on" />
+    <surface file="../images/core/menu/exit_on.png" name="exit_on" />
+    <surface file="../images/core/menu/ice_off.png" name="ice_off" />
+    <surface file="../images/core/menu/options_on.png" name="options_on" />
+    <surface file="../images/core/menu/play_on.png" name="play_on" />
+    <surface file="../images/core/menu/multi_on.png" name="multi_on" />
+    <surface file="../images/core/menu/layer1.jpg" name="layer1" />
+    <surface file="../images/core/menu/layer2.png" name="layer2" />
+    <surface file="../images/core/menu/layer3.png" name="layer3" />
+    <surface file="../images/core/menu/layer4.png" name="layer4" />
+    <surface file="../images/core/menu/layer5.png" name="layer5" />
+    <surface file="../images/core/menu/enterlevel.png" name="enterlevel" />
+    <surface file="../images/core/menu/enterlevel.png" name="enterlevel" />
+    <surface file="../images/core/menu/enterlevel.png" name="enterlevel" />
+    <surface file="../images/core/menu/close_highlight.png" name="close_highlight" />
+    <surface file="../images/core/menu/close_normal.png" name="close_normal" />
+    <surface file="../images/core/menu/close_pressed.png" name="close_pressed" />
+    <surface file="../images/core/menu/exit_button_normal.png" name="exit_button_normal" />
+    <surface file="../images/core/menu/exit_button_hover.png" name="exit_button_hover" />
+    <surface file="../images/core/menu/exit_button_pressed.png" name="exit_button_pressed" />
+    <surface file="../images/core/menu/exit_menu.png" name="exit_menu" />
+  </section>
+  <section name="result">
+    <surface file="../images/core/menu/result_retry.png" name="retry" />
+    <surface file="../images/core/menu/result_ok.png" name="ok" />
+  </section>
+  <section name="start">
+    <surface file="../images/core/misc/start_ok.png" name="ok" />
+    <surface file="../images/core/misc/start_ok_hover.png" name="ok_hover" />
+    <surface file="../images/core/misc/start_ok_clicked.png" name="ok_clicked" />
+    <surface file="../images/core/misc/start_back.png" name="back" />
+    <surface file="../images/core/misc/start_back_hover.png" name="back_hover" />
+    <surface file="../images/core/misc/start_back_clicked.png" name="back_clicked" />
+  </section>
+  <section name="misc">
+    <surface file="../images/core/misc/next.png" name="next" />
+    <surface file="../images/core/misc/next_hover.png" name="next_hover" />
+    <surface file="../images/core/misc/chalk_pingu1.png" name="chalk_pingu1" />
+    <surface file="../images/core/misc/chalk_pingu2.png" name="chalk_pingu2" />
+    <surface file="../images/core/misc/chalk_pingu3.png" name="chalk_pingu3" />
+    <surface file="../images/core/misc/chalk_pingu4.png" name="chalk_pingu4" />
+    <surface file="../images/core/misc/flag0.png" height="38" name="flag0" width="27" x="0" y="0" />
+    <surface file="../images/core/misc/404.png" height="64" name="404" width="64" x="0" y="0" />
+    <surface file="../images/core/menu/exitmenu.png" height="296" name="exitmenu" width="400" x="0" y="0" />
+    <surface file="../images/core/misc/logo.png" name="logo" />
+    <surface file="../images/core/misc/loading.png" height="66" name="loading" tcol="0" width="175" x="0" y="0" />
+    <surface file="../images/core/misc/pingubw.png" height="400" name="pingubw" width="307" x="0" y="0" />
+    <surface file="../images/core/misc/creditpingu.png" name="creditpingu" />
+    <surface file="../images/core/misc/smallmap_entrance.png" height="6" name="smallmap_entrance" tcol="0" width="6" x="0" y="0" />
+    <surface file="../images/core/misc/smallmap_exit.png" height="6" name="smallmap_exit" tcol="0" width="6" x="0" y="0" />
+    <surface file="../images/core/misc/flag0.png" height="38" name="flag0" width="27" x="0" y="0" />
+    <surface file="../images/core/misc/flag1.png" height="38" name="flag1" width="27" x="0" y="0" />
+    <surface file="../images/core/misc/flag2.png" height="38" name="flag2" width="27" x="0" y="0" />
+    <surface file="../images/core/misc/flag3.png" height="38" name="flag3" width="27" x="0" y="0" />
+    <surface file="../images/core/misc/unplayable.png" name="unplayable" />
+    <surface file="../images/core/misc/unplayable2.png" name="unplayable2" />
+    <surface file="../images/core/misc/infinity.png" name="infinity" />
+  </section>
+  <section name="worldmap">
+    <surface file="../images/core/worldmap/tube.png" height="37" name="tube" width="32" x="0" y="0" />
+    <surface file="../images/core/worldmap/dot_invalid.png" name="dot_invalid" />
+    <surface file="../images/core/worldmap/dot_green.png" name="dot_green" />
+    <surface file="../images/core/worldmap/dot_red.png" name="dot_red" />
+    <surface file="../images/core/worldmap/dot_green_hl.png" name="dot_green_hl" />
+    <surface file="../images/core/worldmap/dot_red_hl.png" name="dot_red_hl" />
+    <surface file="../images/core/worldmap/dot_border.png" name="dot_border" />
+    <surface file="../images/core/worldmap/flaggreen.png" name="flaggreen" />
+    <surface file="../images/core/worldmap/arrow.png" name="arrow" />
+    <surface array="8x2" file="../images/core/worldmap/pingus.png" height="24" name="pingus" width="24" x="0" y="0" />
+    <surface file="../images/core/worldmap/pingus_standing.png" name="pingus_standing" />
+    <surface file="../images/core/worldmap/levelname_bg.png" name="levelname_bg" />
+    <surface file="../images/core/worldmap/enter_button_normal.png" name="enter_button_normal" />
+    <surface file="../images/core/worldmap/enter_button_hover.png" name="enter_button_hover" />
+    <surface file="../images/core/worldmap/enter_button_pressed.png" name="enter_button_pressed" />
+    <surface file="../images/core/worldmap/leave_button_normal.png" name="leave_button_normal" />
+    <surface file="../images/core/worldmap/leave_button_hover.png" name="leave_button_hover" />
+    <surface file="../images/core/worldmap/leave_button_pressed.png" name="leave_button_pressed" />
+    <surface file="../images/core/worldmap/story_button_normal.png" name="story_button_normal" />
+    <surface file="../images/core/worldmap/story_button_hover.png" name="story_button_hover" />
+    <surface file="../images/core/worldmap/story_button_pressed.png" name="story_button_pressed" />
+    <surface file="../images/core/worldmap/credits_button_normal.png" name="credits_button_normal" />
+    <surface file="../images/core/worldmap/credits_button_hover.png" name="credits_button_hover" />
+    <surface file="../images/core/worldmap/credits_button_pressed.png" name="credits_button_pressed" />
+  </section>
+</resources>

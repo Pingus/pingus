@@ -1,0 +1,13 @@
+<resources>
+  <section name="Liquid">
+    <surface file="../images/liquids/water_cmap.png" height="64" name="water_cmap" width="1" x="0" y="0" />
+    <surface array="16x1" file="../images/liquids/water.png" height="32" name="water" width="32" x="0" y="0" />
+    <surface array="12x1" file="../images/liquids/water2.png" height="64" name="water2" width="64" x="0" y="0" />
+    <surface array="8x1" file="../images/liquids/water3.png" height="64" name="water3" width="64" x="0" y="0" />
+    <surface array="8x1" file="../images/liquids/water4.png" height="64" name="water4" width="64" x="0" y="0" />
+    <surface array="4x1" file="../images/liquids/water5.png" height="64" name="water5" width="64" x="0" y="0" />
+    <surface array="4x1" file="../images/liquids/swater.png" height="64" name="swater" width="64" x="0" y="0" />
+    <surface array="12x1" file="../images/liquids/lava.png" height="64" name="lava" width="64" x="0" y="0" />
+    <surface array="12x1" file="../images/liquids/slime.png" height="64" name="slime" width="64" x="0" y="0" />
+  </section>
+</resources>

@@ -18,26 +18,26 @@
 pkgdatadir = $(datadir)/games/@PACKAGE@/data
 
 EXTRA_DIST  = \
-pingus.scr    \
-global.scr    \
-fonts.scr     \
-entrances.scr \
-traps.scr     \
-game.scr      \
-exits.scr     \
-liquids.scr   \
-hotspots.scr  \
-textures.scr  \
-story.scr     \
-core.scr      \
-worldobjs.scr \
-worldmaps.scr \
-groundpieces-ground.scr      \
-groundpieces-transparent.scr \
-groundpieces-solid.scr       \
-groundpieces-bridge.scr      \
-groundpieces-remove.scr      \
-gui.scr
+pingus.xml    \
+global.xml    \
+fonts.xml     \
+entrances.xml \
+traps.xml     \
+game.xml      \
+exits.xml     \
+liquids.xml   \
+hotspots.xml  \
+textures.xml  \
+story.xml     \
+core.xml      \
+worldobjs.xml \
+worldmaps.xml \
+groundpieces-ground.xml      \
+groundpieces-transparent.xml \
+groundpieces-solid.xml       \
+groundpieces-bridge.xml      \
+groundpieces-remove.xml      \
+gui.xml
 
 pkgdata_DATA = $(EXTRA_DIST)
 

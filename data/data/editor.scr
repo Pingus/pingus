@@ -25,5 +25,3 @@ section Icons
 	zoom-out = ../images/core/editor/zoom-out.png (type=surface, x=0, y=0, width=24, height=24);
 
 }
-
-// EOF 
