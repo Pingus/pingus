@@ -1,4 +1,4 @@
-//  $Id: demo_recorder.cxx,v 1.10 2002/10/07 13:12:47 grumbel Exp $
+//  $Id: demo_recorder.cxx,v 1.11 2002/12/29 23:29:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,10 +19,7 @@
 
 #include <time.h>
 #include "system.hxx"
-#include "console.hxx"
-#include "pingus_error.hxx"
 #include "demo_recorder.hxx"
-#include "server_event.hxx"
 #include "server.hxx"
 #include "plf.hxx"
 
@@ -31,9 +28,7 @@
 #include <config.h>
 #include "my_gettext.hxx"
 
-using namespace std;
-
-DemoRecorder::DemoRecorder(Server* server)
+DemoRecorder::DemoRecorder (Server* server)
   : record_demo (true)
 {
   std::string levelname = server->get_plf()->get_filename();
@@ -71,7 +66,7 @@ DemoRecorder::DemoRecorder(Server* server)
     }
 }
 
-DemoRecorder::~DemoRecorder()
+DemoRecorder::~DemoRecorder ()
 {
   if (record_demo)
     {
@@ -92,8 +87,8 @@ DemoRecorder::record_event (const ServerEvent& event)
     }
 }
 
-string 
-DemoRecorder::get_date()
+std::string 
+DemoRecorder::get_date ()
 {
   char buffer[32];
   time_t curtime;
@@ -102,7 +97,7 @@ DemoRecorder::get_date()
   loctime = localtime(&curtime);
   strftime(buffer, 32, "%Y%m%d-%H%M%S", loctime);
 
-  return string(buffer);
+  return std::string(buffer);
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: server.cxx,v 1.24 2002/10/12 00:24:26 grumbel Exp $
+//  $Id: server.cxx,v 1.25 2002/12/29 23:29:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,22 +17,13 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <algorithm>
-#include <iostream>
-#include <fstream>
-#include <stdio.h>
-#include "system.hxx"
 #include "pingu.hxx"
 #include "server.hxx"
-#include "pingu_holder.hxx"
-#include "pingus_error.hxx"
-#include "string_converter.hxx"
 #include "game_time.hxx"
 #include "world.hxx"
 #include "demo_recorder.hxx"
 #include "goal_manager.hxx"
 
-using namespace std;
 using Actions::action_from_string;
 
 Server::Server (PLF* arg_plf)

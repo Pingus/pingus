@@ -1,4 +1,4 @@
-//  $Id: input_debug_screen.cxx,v 1.7 2002/12/20 01:22:32 grumbel Exp $
+//  $Id: input_debug_screen.cxx,v 1.8 2002/12/29 23:29:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include <assert.h>
 #include <iostream>
-#include <ClanLib/Core/System/system.h>
 #include "input/event.hxx"
 //#include "input/scroll_event.hxx"
 #include "input_debug_screen.hxx"

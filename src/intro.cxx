@@ -1,4 +1,4 @@
-//  $Id: intro.cxx,v 1.5 2002/09/28 11:52:21 torangan Exp $
+//  $Id: intro.cxx,v 1.6 2002/12/29 23:29:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Core/System/system.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
 #include "pingus_menu_manager.hxx"

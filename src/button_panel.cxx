@@ -1,4 +1,4 @@
-//  $Id: button_panel.cxx,v 1.22 2002/11/08 01:38:27 grumbel Exp $
+//  $Id: button_panel.cxx,v 1.23 2002/12/29 23:29:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,13 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <iostream>
 #include <algorithm>
-#include <ClanLib/Core/System/system.h>
 #include "globals.hxx"
 #include "button_panel.hxx"
 #include "true_server.hxx"
-#include "plf.hxx"
 #include "client.hxx"
 
 using namespace Actions;

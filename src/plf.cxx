@@ -1,4 +1,4 @@
-//  $Id: plf.cxx,v 1.12 2002/11/08 01:38:27 grumbel Exp $
+//  $Id: plf.cxx,v 1.13 2002/12/29 23:29:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include <iostream>
 #include "xml_plf.hxx"
-#include "globals.hxx"
 #include "system.hxx"
 #include "pingus_error.hxx"
 #include "cheat.hxx"

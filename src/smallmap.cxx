@@ -1,4 +1,4 @@
-//  $Id: smallmap.cxx,v 1.28 2002/12/20 01:22:32 grumbel Exp $
+//  $Id: smallmap.cxx,v 1.29 2002/12/29 23:29:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -28,11 +28,8 @@
 #include "col_map.hxx"
 #include "true_server.hxx"
 #include "pingu.hxx"
-#include "timer.hxx"
 #include "math.hxx"
 #include "globals.hxx"
-
-using namespace std;
 
 SmallMap::SmallMap()
   : canvas(0),
@@ -334,4 +331,3 @@ SmallMap::on_pointer_leave ()
 }
 
 /* EOF */
-

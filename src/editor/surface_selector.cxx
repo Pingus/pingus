@@ -1,4 +1,4 @@
-//  $Id: surface_selector.cxx,v 1.5 2002/09/27 11:26:45 torangan Exp $
+//  $Id: surface_selector.cxx,v 1.6 2002/12/29 23:29:01 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,32 +25,28 @@
 #include "../pingus_resource.hxx"
 #include "surface_selector.hxx"
 
-using namespace std;
-
-SurfaceSelector::SurfaceSelector(vector<surface_obj>* s)
+SurfaceSelector::SurfaceSelector (std::vector<surface_obj>* s)
+  : font(PingusResource::load_font("Fonts/courier_small", "fonts")),
+    sur_list(s),
+    y_of(0),
+    width(CL_Display::get_width() - (CL_Display::get_width() % 50)),
+    height((sur_list->size() / (CL_Display::get_width() / 50)) * 50),
+    c_obj(std::vector<surface_obj>::iterator())
 {
-  y_of = 0;
-  sur_list = s;
-  font = PingusResource::load_font("Fonts/courier_small", "fonts");
-
-  c_obj = vector<surface_obj>::iterator ();
-
-  width = CL_Display::get_width() - (CL_Display::get_width() % 50);
-  height = (sur_list->size() / (CL_Display::get_width() / 50)) * 50;
 }
 
-SurfaceSelector::~SurfaceSelector()
+SurfaceSelector::~SurfaceSelector ()
 {
   
 }
 
-vector<surface_obj>::iterator
-SurfaceSelector::get_current_obj()
+std::vector<surface_obj>::iterator
+SurfaceSelector::get_current_obj ()
 {
   int x = 0;
   int y = -y_of;
   
-  for(vector<surface_obj>::iterator i = sur_list->begin(); 
+  for(std::vector<surface_obj>::iterator i = sur_list->begin(); 
       i != sur_list->end(); 
       ++i)
     {
@@ -68,21 +64,21 @@ SurfaceSelector::get_current_obj()
 	}
     }
 
-  return vector<surface_obj>::iterator();
+  return std::vector<surface_obj>::iterator();
 }
 
 void
-SurfaceSelector::draw()
+SurfaceSelector::draw ()
 {
   // FIXME: This could heavily optimized if ClanLib would have a put_target(x,y,w,h)
-  vector<surface_obj>::iterator tmp_obj = get_current_obj ();
+  std::vector<surface_obj>::iterator tmp_obj = get_current_obj();
   
   if (c_obj != tmp_obj)
     {
-      if (tmp_obj != vector<surface_obj>::iterator ())
-	tmp_obj->display_time = CL_System::get_time ();
+      if (tmp_obj != std::vector<surface_obj>::iterator())
+	tmp_obj->display_time = CL_System::get_time();
       
-      if (c_obj != vector<surface_obj>::iterator ())
+      if (c_obj != std::vector<surface_obj>::iterator())
 	c_obj->display_time = 0;
     }
   
@@ -96,12 +92,12 @@ SurfaceSelector::draw()
   CL_Display::clear_display();
 
   // Draw all surfaces
-  for(vector<surface_obj>::iterator i = sur_list->begin(); i != sur_list->end(); ++i)
+  for(std::vector<surface_obj>::iterator i = sur_list->begin(); i != sur_list->end(); ++i)
     {
       if (i->thumbnail.get_width() <= 50 && i->thumbnail.get_height() <= 50)
 	{
-	  i->thumbnail.put_screen(x + 25 - (i->thumbnail.get_width() / 2), 
-			     y + 25 - (i->thumbnail.get_height() / 2));
+	  i->thumbnail.put_screen(x + 25 - (i->thumbnail.get_width()  / 2), 
+			          y + 25 - (i->thumbnail.get_height() / 2));
 	}
       else
 	{
@@ -110,8 +106,7 @@ SurfaceSelector::draw()
 
       if (i == c_obj)
 	{
-	  Display::draw_rect(x, y, x + 50, y + 50,
-			     1.0, 1.0, 1.0, 1.0);
+	  Display::draw_rect(x, y, x + 50, y + 50, 1.0, 1.0, 1.0, 1.0);
 	}
 
       x += 50;
@@ -128,7 +123,7 @@ SurfaceSelector::draw()
 
   // Draw the current object in the bottom/left corner when the
   // surface is selected for more then 1sec
-  if (c_obj != vector<surface_obj>::iterator()
+  if (c_obj != std::vector<surface_obj>::iterator()
       && (c_obj->display_time + 350 < CL_System::get_time ()
 	  || c_obj->large_sur))
     {
@@ -147,7 +142,7 @@ SurfaceSelector::draw()
 }
 
 void
-SurfaceSelector::scroll()
+SurfaceSelector::scroll ()
 {
   const int range = 100;
 
@@ -165,11 +160,11 @@ SurfaceSelector::scroll()
   if (y_of > height) y_of = height;
 }
 
-string
-SurfaceSelector::select()
+std::string
+SurfaceSelector::select ()
 {
-  string str;
-  vector<surface_obj>::iterator iter;
+  std::string str;
+  std::vector<surface_obj>::iterator iter;
 
   while (!CL_Mouse::left_pressed())
     {
@@ -182,12 +177,10 @@ SurfaceSelector::select()
 
   iter = get_current_obj();
   
-  if (iter != vector<surface_obj>::iterator())
+  if (iter != std::vector<surface_obj>::iterator())
     str = iter->name;
-  else 
-    str = "";
 
-  cout << "str: " << str << endl;
+  std::cout << "str: " << str << std::endl;
 
   return str;
 }
@@ -206,15 +199,15 @@ surface_obj::surface_obj (const surface_obj& old) : thumbnail(old.thumbnail),
 
 surface_obj& surface_obj::operator= (const surface_obj& old)
 {
-  if (this == &old)
-    return *this;
+  if (this != &old)
+    {
+      thumbnail    = old.thumbnail;
+      large_sur    = old.large_sur;
+      name         = old.name;
+      datafile     = old.datafile;
+      display_time = old.display_time;
+    }
 
-  thumbnail    = old.thumbnail;
-  large_sur    = old.large_sur;
-  name         = old.name;
-  datafile     = old.datafile;
-  display_time = old.display_time;
-  
   return *this;
 }
 

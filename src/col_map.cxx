@@ -1,4 +1,4 @@
-//  $Id: col_map.cxx,v 1.13 2002/10/07 23:09:14 grumbel Exp $
+//  $Id: col_map.cxx,v 1.14 2002/12/29 23:29:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -21,8 +21,6 @@
 #include <ClanLib/Display/SurfaceProviders/canvas.h>
 #include "graphic_context.hxx"
 #include "globals.hxx"
-#include "pingus_resource.hxx"
-#include "pingus_error.hxx"
 #include "col_map.hxx"
 
 /* Headers needed for i18n / gettext */

@@ -1,4 +1,4 @@
-//  $Id: fade_out.cxx,v 1.5 2002/10/12 00:49:10 torangan Exp $
+//  $Id: fade_out.cxx,v 1.6 2002/12/29 23:29:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,8 +24,6 @@
 #include "fade_out.hxx"
 #include "globals.hxx"
 #include "math.hxx"
-
-using namespace std;
 
 FadeOut::FadeOut (float seconds, Color color_)
   : complete_time(seconds), passed_time(0),
@@ -71,23 +69,23 @@ FadeOut::get_progress ()
 }
 
 void
-FadeOut::random(void)
+FadeOut::random (void)
 {
   if (maintainer_mode) {
     CL_Display::clear_display();    
   } else {
     switch(rand() % 2) {
     case 0:
-      if (verbose) cout << "FadeOut::black_rect" << endl;
+      if (verbose) std::cout << "FadeOut::black_rect" << std::endl;
       black_rect();
       break;
     case 1:
-      if (verbose) cout << "FadeOut::fade_to_black" << endl;
+      if (verbose) std::cout << "FadeOut::fade_to_black" << std::endl;
       fade_to_black();
       break;
     case 2:
       CL_Display::clear_display();
-      if (verbose) cout << "FadeOut::clear_display()" << endl;    
+      if (verbose) std::cout << "FadeOut::clear_display()" << std::endl;    
       break;
     default:
       black_rect();
@@ -97,7 +95,7 @@ FadeOut::random(void)
 }
 
 void
-FadeOut::black_rect(int steps)
+FadeOut::black_rect (int steps)
 {
   int x1, x2, y1, y2;
   double step_w = (CL_Display::get_width()  / 2.0) / steps;
@@ -107,10 +105,10 @@ FadeOut::black_rect(int steps)
 
   for(int i=0; i <= steps; ++i) 
     {
-      x1 = (int)((CL_Display::get_width()  / 2) - (step_w * i));
-      y1 = (int)((CL_Display::get_height() / 2) - (step_h * i));
-      x2 = (int)((CL_Display::get_width()  / 2) + (step_w * i));
-      y2 = (int)((CL_Display::get_height() / 2) + (step_h * i));
+      x1 = static_cast<int>((CL_Display::get_width()  / 2) - (step_w * i));
+      y1 = static_cast<int>((CL_Display::get_height() / 2) - (step_h * i));
+      x2 = static_cast<int>((CL_Display::get_width()  / 2) + (step_w * i));
+      y2 = static_cast<int>((CL_Display::get_height() / 2) + (step_h * i));
       
       CL_Display::fill_rect(x1, y1, x2, y2, 0.0, 0.0, 0.0, 1.0);
       CL_System::sleep(0);
@@ -120,24 +118,24 @@ FadeOut::black_rect(int steps)
 }
 
 void
-FadeOut::fade_to_black(int steps)
+FadeOut::fade_to_black (int steps)
 {
   CL_Display::sync_buffers();
 
   for(int i = 0; i < steps; ++i)
     {
-      CL_Display::fill_rect(0,0,
+      CL_Display::fill_rect(0, 0,
 			    CL_Display::get_width(),
 			    CL_Display::get_height(),
-			    0.0, 0.0, 0.0,
-			    ((double)i)/steps);
+			    0.0f, 0.0f, 0.0f,
+			    static_cast<float>(i)/steps);
 
       Display::flip_display(true);
     }
 }
 
 void
-FadeOut::clear(void)
+FadeOut::clear (void)
 {
   CL_Display::clear_display();
   Display::flip_display();
@@ -147,7 +145,7 @@ FadeOut::clear(void)
 void 
 EnlargingRectFadeOut::draw ()
 {
-  //cout << "EnlargingRectFadeOut:: draw" << endl;
+  //std::cout << "EnlargingRectFadeOut:: draw" << std::endl;
   int width = int(CL_Display::get_width () * get_progress ());
   CL_Display::fill_rect (0, 0, width, CL_Display::get_height (),
 			 color.red,  color.green, color.blue);

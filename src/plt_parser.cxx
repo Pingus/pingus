@@ -1,4 +1,4 @@
-//  $Id: plt_parser.cxx,v 1.6 2002/10/14 11:15:15 torangan Exp $
+//  $Id: plt_parser.cxx,v 1.7 2002/12/29 23:29:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -22,8 +22,6 @@
 #include "plt_parser.hxx"
 #include "my_gettext.hxx"
 
-using namespace std;
-
 PLTParser::PLTParser()
 {
   lineno = 0;
@@ -37,10 +35,10 @@ PLTParser::~PLTParser()
 }
 
 void
-PLTParser::parse(string filename)
+PLTParser::parse(std::string filename)
 {
-  string keyword;
-  string value;
+  std::string keyword;
+  std::string value;
 
   in.open(filename.c_str());
 
@@ -64,7 +62,7 @@ PLTParser::parse(string filename)
       
       while (true) 
 	{
-	  string str = get_line();
+	  std::string str = get_line();
 	  levels.push_back(str);
 	}
     }
@@ -76,7 +74,7 @@ PLTParser::parse(string filename)
 }
 
 void
-PLTParser::add_pair(string keyword, string value)
+PLTParser::add_pair(std::string keyword, std::string value)
 {
   if (keyword == "Name") {
     theme_name = value;
@@ -135,11 +133,11 @@ PLTParser::expect(char ch)
   jump_spaces();
 }
 
-string
+std::string
 PLTParser::get_string()
 {
   char c;
-  string str;
+  std::string str;
   
   while (isalnum(c = get_char())) {
     str += c;
@@ -149,11 +147,11 @@ PLTParser::get_string()
   return str;
 }
 
-string
+std::string
 PLTParser::get_line()
 {
   char c;
-  string str;
+  std::string str;
 
   while ((c = get_char()) != '\n') {
     str += c;
@@ -162,25 +160,25 @@ PLTParser::get_line()
   return str;
 }
 
-vector<string>
+std::vector<std::string>
 PLTParser::get_levels()
 {
   return levels;
 }
 
-string 
+std::string 
 PLTParser::get_name()
 {
   return theme_name;
 }
 
-string
+std::string
 PLTParser::get_description()
 {
   return theme_description;
 }
 
-string 
+std::string 
 PLTParser::get_surface()
 {
   return theme_image;

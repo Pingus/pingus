@@ -1,4 +1,4 @@
-//  $Id: object_selector.cxx,v 1.29 2002/09/28 11:52:23 torangan Exp $
+//  $Id: object_selector.cxx,v 1.30 2002/12/29 23:29:01 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,6 @@
 #include "../editorobjs/switch_door_obj.hxx"
 #include "../editorobjs/teleporter_obj.hxx"
 
-using namespace std;
 using namespace EditorObjs;
 using namespace WorldObjsData;
 
@@ -284,7 +283,7 @@ ObjectSelector::get_entrance ()
 	  return get_hotspot("entrances");
 
 	default:
-	  if (verbose) std::cout << "Unknown keypressed" << endl;
+	  if (verbose) std::cout << "Unknown keypressed" << std::endl;
 	}
     }
   
@@ -294,7 +293,7 @@ ObjectSelector::get_entrance ()
 EditorObjLst
 ObjectSelector::get_exit ()
 {
-  string str;
+  std::string str;
   ExitData data;
   data.pos = pos;
   
@@ -555,7 +554,7 @@ ObjectSelector::get_background ()
 }
 
 std::string
-ObjectSelector::select_surface (vector<surface_obj>& sur_list)
+ObjectSelector::select_surface (std::vector<surface_obj>& sur_list)
 {
   std::cout << "ObjectSelector: Selecting surface out of: " << sur_list.size () << std::endl;
   SurfaceSelector sur_selector(&sur_list);
@@ -575,12 +574,12 @@ ObjectSelector::select_surface (const std::string & resource_file)
   
   data.pos = pos;
   
-  std::list<string>* liste = res->get_resources_of_type("surface");
+  std::list<std::string>* liste = res->get_resources_of_type("surface");
   surface_obj sur_obj;
   std::vector<surface_obj> sur_list;
   int j = 0;
 
-  for(std::list<string>::iterator i = liste->begin(); i != liste->end(); ++i)
+  for(std::list<std::string>::iterator i = liste->begin(); i != liste->end(); ++i)
     {
       // FIXME: This should be moved to ThumbCache
       ++j;
@@ -617,14 +616,14 @@ ObjectSelector::read_key ()
       if (keys.peek_key().state != CL_Key::NoKey) 
 	{
 	  key = keys.get_key();
-	  std::cout << "key: " << key.ascii << endl;
+	  std::cout << "key: " << key.ascii << std::endl;
 	  return key.id;
 	}
     }
 }
 
-string
-ObjectSelector::read_string (const string & description, const string & def_str)
+std::string
+ObjectSelector::read_string (const std::string & description, const std::string & def_str)
 {
   StringReader reader(description, def_str);
   reader.set_strings(PingusResource::get("global")->get_resources_of_type("surface"));

@@ -1,4 +1,4 @@
-//  $Id: wav_provider.cxx,v 1.4 2002/10/14 11:15:15 torangan Exp $
+//  $Id: wav_provider.cxx,v 1.5 2002/12/29 23:29:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <config.h>
-#include <iostream>
 #include "globals.hxx"
 #include "pingus_error.hxx"
 #include "wav_provider.hxx"

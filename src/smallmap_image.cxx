@@ -1,4 +1,4 @@
-//  $Id: smallmap_image.cxx,v 1.8 2002/09/28 11:52:22 torangan Exp $
+//  $Id: smallmap_image.cxx,v 1.9 2002/12/29 23:29:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Display/SurfaceProviders/canvas.h>
-#include "pingus_resource.hxx"
 #include "world.hxx"
 #include "smallmap_image.hxx"
 #include "col_map.hxx"

@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.22 2002/12/20 23:06:55 grumbel Exp $
+//  $Id: spot_map.cxx,v 1.23 2002/12/29 23:29:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,20 +19,16 @@
 
 #include <stdio.h>
 #include <ClanLib/Display/SurfaceProviders/canvas.h>
-#include <ClanLib/Display/Display/display.h>
 #include "graphic_context.hxx"
-#include "pingus_resource.hxx"
 #include "plf.hxx"
 #include "pingus_error.hxx"
 #include "blitter.hxx"
-#include "timer.hxx"
 #include "spot_map.hxx"
 #include "my_gettext.hxx"
 #include "col_map.hxx"
 #include "math.hxx"
 
 using namespace WorldObjsData;
-using namespace std;
 
 MapTileSurface::MapTileSurface () : empty(true)
 {

@@ -1,4 +1,4 @@
-//  $Id: screen_manager.cxx,v 1.27 2002/11/27 20:05:42 grumbel Exp $
+//  $Id: screen_manager.cxx,v 1.28 2002/12/29 23:29:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,9 +19,7 @@
 
 #include <iostream>
 #include <ClanLib/Display/Display/display.h>
-#include "globals.hxx"
 #include "input/controller.hxx"
-#include "delta_manager.hxx"
 #include "display.hxx"
 #include "screen_manager.hxx"
 #include "path_manager.hxx"

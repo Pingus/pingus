@@ -1,4 +1,4 @@
-//  $Id: server_event.cxx,v 1.3 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: server_event.cxx,v 1.4 2002/12/29 23:29:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include "server.hxx"
 #include "world.hxx"
 #include "pingu_holder.hxx"
-#include "server_event.hxx"
 
 ServerEvent::ServerEvent()
 {

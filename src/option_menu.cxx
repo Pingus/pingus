@@ -1,4 +1,4 @@
-//  $Id: option_menu.cxx,v 1.10 2002/11/08 01:38:27 grumbel Exp $
+//  $Id: option_menu.cxx,v 1.11 2002/12/29 23:29:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Core/System/system.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Font/font.h>
 #include <ClanLib/Display/Input/mouse.h>

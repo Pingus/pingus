@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.38 2002/12/01 17:08:47 grumbel Exp $
+//   $Id: pingus_main.cxx,v 1.39 2002/12/29 23:29:00 torangan Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -37,8 +37,6 @@
 #endif /* !WIN32 */
 
 #include <ClanLib/Core/System/console_window.h>
-#include <ClanLib/Core/System/error.h>
-#include <ClanLib/Core/System/system.h>
 #include <ClanLib/Display/setupdisplay.h>
 #include <ClanLib/Display/Display/display.h>
 #include <ClanLib/Display/Input/input.h>

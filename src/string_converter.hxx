@@ -1,4 +1,4 @@
-//  $Id: string_converter.hxx,v 1.10 2002/12/28 16:57:38 torangan Exp $
+//  $Id: string_converter.hxx,v 1.11 2002/12/29 23:29:00 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -32,8 +32,6 @@
 #else
 #include <strstream>
 #endif
-
-class Vector;
 
 template <class T>
 std::string to_string (const T& any)
@@ -80,30 +78,6 @@ bool from_string(const std::string& rep, T& x)
 
 std::string string_upcase (const std::string&);
 std::string string_downcase (const std::string&);
-
-class StringConverter
-{
-private:
-  struct Error {
-    std::string message;
-    
-    Error (const std::string& str)
-      : message (str) {}
-  };
-
-public:
-  static int   to_int(const std::string&);
-  static float to_float(const std::string&);
-
-  static std::string to_string (int i);
-  static std::string to_string (long int i);
-  static std::string to_string (float i);
-  
-private:
-  StringConverter ();
-  StringConverter (const StringConverter&);
-  StringConverter& operator= (const StringConverter&);
-};
 
 #endif
 

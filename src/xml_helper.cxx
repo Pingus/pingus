@@ -1,4 +1,4 @@
-//  $Id: xml_helper.cxx,v 1.25 2002/11/02 21:12:16 grumbel Exp $
+//  $Id: xml_helper.cxx,v 1.26 2002/12/29 23:29:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include <iostream>
 #include "vector.hxx"
-#include "string_converter.hxx"
 #include "color.hxx"
 #include "res_descriptor.hxx"
 #include "xml_helper.hxx"

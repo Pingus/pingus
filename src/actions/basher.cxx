@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.24 2002/11/02 17:43:10 grumbel Exp $
+//  $Id: basher.cxx,v 1.25 2002/12/29 23:29:01 torangan Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -25,8 +25,6 @@
 #include "../pingu.hxx"
 #include "../world.hxx"
 #include "basher.hxx"
-
-using namespace std;
 
 namespace Actions {
 
@@ -166,7 +164,7 @@ Basher::have_something_to_dig()
 	}
     }
 
-  cout << "nothing to dig found" << endl;
+  std::cout << "nothing to dig found" << std::endl;
   return false;
 }
 

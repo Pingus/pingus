@@ -1,4 +1,4 @@
-//  $Id: blitter.cxx,v 1.21 2002/10/19 23:23:44 grumbel Exp $
+//  $Id: blitter.cxx,v 1.22 2002/12/29 23:29:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,8 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdio.h>
-#include <ClanLib/Display/SurfaceProviders/canvas.h>
-#include <ClanLib/Display/Display/palette.h>
 #include "pingus_error.hxx"
 #include "color.hxx"
 #include "string_converter.hxx"
@@ -27,7 +25,6 @@
 #include "math.hxx"
 #include "blitter.hxx"
 #include "debug.hxx"
-#include "indexed_canvas.hxx"
 #include "blitter_impl.hxx"
 
 /* Headers needed for i18n / gettext */

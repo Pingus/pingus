@@ -1,4 +1,4 @@
-//  $Id: bridger.cxx,v 1.25 2002/10/21 23:58:27 grumbel Exp $
+//  $Id: bridger.cxx,v 1.26 2002/12/29 23:29:01 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,8 +27,6 @@
 #include "../string_converter.hxx"
 #include "../world.hxx"
 #include "bridger.hxx"
-
-using namespace std;
 
 namespace Actions {
 

@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.39 2002/12/03 00:51:19 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.40 2002/12/29 23:29:01 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -34,7 +34,6 @@
 #include "object_manager.hxx"
 #include "editor_view.hxx"
 
-using namespace std;
 using namespace Actions;
 using namespace WorldObjsData;
 
@@ -111,30 +110,30 @@ ObjectManager::load_level (const std::string& filename)
   difficulty = 40;
   playable = 0;
 
-  std::cout << "Editor: Clearing current level..." << endl;
-  std::cout << "Loading new level: " << filename << endl;
+  std::cout << "Editor: Clearing current level..." << std::endl;
+  std::cout << "Loading new level: " << filename << std::endl;
   
   PLF* plf = PLF::create(filename);
 
   editor_objs.push_back(new StartPos(plf->get_startx(), 
 				     plf->get_starty()));
 
-  vector<GroundpieceData>  temp_surfaces = plf->get_groundpieces();
-  for (vector<GroundpieceData>::iterator i = temp_surfaces.begin();
+  std::vector<GroundpieceData>  temp_surfaces = plf->get_groundpieces();
+  for (std::vector<GroundpieceData>::iterator i = temp_surfaces.begin();
        i != temp_surfaces.end();
        i++)
     {
       i->surface = PingusResource::load_surface(i->desc);
     }
 
-  vector<WorldObjData*> temp_worldobj = plf->get_worldobjs_data();
+  std::vector<WorldObjData*> temp_worldobj = plf->get_worldobjs_data();
 
-  for (vector<GroundpieceData>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i) {
+  for (std::vector<GroundpieceData>::iterator i = temp_surfaces.begin(); i != temp_surfaces.end(); ++i) {
     const EditorObjLst& temp = i->create_EditorObj();
     editor_objs.insert(editor_objs.end(), temp.begin(), temp.end() );
   }
 
-  for (vector<WorldObjData*>::iterator i = temp_worldobj.begin();
+  for (std::vector<WorldObjData*>::iterator i = temp_worldobj.begin();
        i != temp_worldobj.end();
        ++i) {
     const EditorObjLst& temp = (*i)->create_EditorObj();
@@ -205,7 +204,7 @@ ObjectManager::save_level_xml (const std::string & filename)
       << "<pingus-level>\n"
       << "  <global>\n";
     
-  for(map<std::string, std::string>::const_iterator i = levelname.begin();
+  for(std::map<std::string, std::string>::const_iterator i = levelname.begin();
       i != levelname.end();
       i++)
     {
@@ -213,7 +212,7 @@ ObjectManager::save_level_xml (const std::string & filename)
 	  << i->second << "</levelname>" << std::endl;
     }
 
-  for(map<std::string, std::string>::const_iterator i = description.begin();
+  for(std::map<std::string, std::string>::const_iterator i = description.begin();
       i != description.end();
       i++)
     {
@@ -236,8 +235,8 @@ ObjectManager::save_level_xml (const std::string & filename)
   
   // Printing actions to file
   xml << "  <action-list>\n";
-  for (vector<ActionData>::iterator i = actions.begin(); i != actions.end(); ++i) {
-    xml << "    <" << action_to_string((*i).name) << " count=\"" << (*i).number_of << "\"/>" << endl;
+  for (std::vector<ActionData>::iterator i = actions.begin(); i != actions.end(); ++i) {
+    xml << "    <" << action_to_string((*i).name) << " count=\"" << (*i).number_of << "\"/>" << std::endl;
   }
   xml << "  </action-list>\n" << std::endl;
 
@@ -258,14 +257,14 @@ ObjectManager::lower_obj(EditorObj* obj)
 
   if (current == editor_objs.begin()) 
     {
-      std::cout << "Editor: Cannot lower object" << endl;
+      std::cout << "Editor: Cannot lower object" << std::endl;
       return false;
     }
   
   prev = current;
   prev--;
 
-  swap(*prev, *current);
+  std::swap(*prev, *current);
   return true;
 }
 
@@ -281,18 +280,18 @@ ObjectManager::raise_obj(EditorObj* obj)
   
   if (next == editor_objs.end())
     {
-      std::cout << "Cannot raise object" << endl;
+      std::cout << "Cannot raise object" << std::endl;
       return false;
     }
   
-  swap(*next, *current);
+  std::swap(*next, *current);
   return true;
 }
 
-vector<EditorObj*>
+std::vector<EditorObj*>
 ObjectManager::rect_get_objs(int x1, int y1, int x2, int y2)
 {
-  vector<EditorObj*> retval;
+  std::vector<EditorObj*> retval;
 
   for (EditorObjIter it = editor_objs.begin(); it != editor_objs.end(); ++it)
     if ((*it)->is_in_rect(CL_Rect(x1, y1, x2, y2)))

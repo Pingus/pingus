@@ -1,4 +1,4 @@
-//  $Id: server.hxx,v 1.12 2002/10/04 16:54:04 grumbel Exp $
+//  $Id: server.hxx,v 1.13 2002/12/29 23:29:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_SERVER_HXX
 #define HEADER_PINGUS_SERVER_HXX
 
-#include <vector>
 #include "server_event.hxx"
 #include "action_holder.hxx"
 

@@ -1,4 +1,4 @@
-//  $Id: xml_plf.cxx,v 1.31 2002/10/14 11:15:15 torangan Exp $
+//  $Id: xml_plf.cxx,v 1.32 2002/12/29 23:29:00 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,13 +23,11 @@
 #include "globals.hxx"
 #include "system.hxx"
 #include "pingus_error.hxx"
-#include "string_converter.hxx"
 #include "worldobj_data_factory.hxx"
 #include "worldobjsdata/entrance_data.hxx"
 #include "worldobjsdata/exit_data.hxx"
 #include "worldobjsdata/hotspot_data.hxx"
 #include "worldobjsdata/liquid_data.hxx"
-#include "worldobjsdata/worldobj_group_data.hxx"
 
 using Actions::action_from_string;
 

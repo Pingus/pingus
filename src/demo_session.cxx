@@ -1,4 +1,4 @@
-//  $Id: demo_session.cxx,v 1.3 2002/10/04 13:46:56 grumbel Exp $
+//  $Id: demo_session.cxx,v 1.4 2002/12/29 23:29:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Core/System/system.h>
 #include <ClanLib/Display/Input/input.h>
 #include <ClanLib/Display/Input/keyboard.h>
 #include "xml_pdf.hxx"
@@ -26,7 +25,6 @@
 #include "demo_player.hxx"
 #include "pingus_counter.hxx"
 #include "gui/gui_manager.hxx"
-#include "vector.hxx"
 #include "graphic_context.hxx"
 #include "demo_session.hxx"
 

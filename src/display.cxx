@@ -1,4 +1,4 @@
-//  $Id: display.cxx,v 1.5 2002/06/20 12:22:51 grumbel Exp $
+//  $Id: display.cxx,v 1.6 2002/12/29 23:29:00 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -25,9 +25,7 @@
 #include "globals.hxx"
 #include "display.hxx"
 
-using namespace std;
-
-list<DisplayHook*> Display::display_hooks;
+std::list<DisplayHook*> Display::display_hooks;
 bool Display::displaying_cursor = false;
 
 DisplayHook::DisplayHook() : is_visible(false)
@@ -84,7 +82,7 @@ Display::cursor_shown()
 void
 Display::flip_display(bool sync)
 {
-  for(list<DisplayHook*>::iterator i = display_hooks.begin();
+  for(std::list<DisplayHook*>::iterator i = display_hooks.begin();
       i != display_hooks.end();
       i++)
     {
@@ -96,9 +94,9 @@ Display::flip_display(bool sync)
 }
 
 void
-Display:: add_flip_screen_hook(DisplayHook* hook)
+Display::add_flip_screen_hook(DisplayHook* hook)
 {
-  if (find(display_hooks.begin(), display_hooks.end(), hook) == display_hooks.end())
+  if (std::find(display_hooks.begin(), display_hooks.end(), hook) == display_hooks.end())
     display_hooks.push_back(hook);
   else
     std::cout << "Display: Trying to insert a display hook multiple times..." << std::endl;
@@ -111,7 +109,3 @@ Display::remove_flip_screen_hook(DisplayHook* hook)
 }
 
 /* EOF */
-
-
-
-

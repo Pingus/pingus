@@ -1,4 +1,4 @@
-//  $Id: selection.cxx,v 1.16 2002/10/09 14:49:45 grumbel Exp $
+//  $Id: selection.cxx,v 1.17 2002/12/29 23:29:01 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,35 +24,33 @@
 #include "selection.hxx"
 #include "../math.hxx"
 
-using namespace std;
-
 namespace EditorNS {
 
 void
 Selection::move(float x, float y) 
 {
-  for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
+  for (std::vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->set_position_offset(Vector(x, y));
 }
 
 void
 Selection::move(const Vector& pos) 
 {
-  for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
+  for (std::vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->set_position_offset(pos);
 }
 
 void
 Selection::drag() 
 {
-  for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
+  for (std::vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->drag();
 }
 
 void
 Selection::drop() 
 {
-  for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
+  for (std::vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->drop();
 }
 
@@ -64,16 +62,16 @@ Selection::add(EditorObj* obj)
 }
 
 void
-Selection::add(vector<EditorObj*> objs)
+Selection::add(std::vector<EditorObj*> objs)
 {
-  for (vector<EditorObj*>::iterator it = objs.begin(); it != objs.end(); ++it)
+  for (std::vector<EditorObj*>::iterator it = objs.begin(); it != objs.end(); ++it)
     add(*it);
 }
 
 bool
 Selection::has_object(EditorObj* obj)
 {
-  for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); ++it)
+  for (std::vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); ++it)
     {
       if (*it == obj)
         return true;
@@ -90,14 +88,14 @@ Selection::remove(EditorObj* obj)
 void
 Selection::raise() 
 {
-  for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
+  for (std::vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     object_manager->raise_obj(*it);
 }
 
 void
 Selection::lower() 
 {
-  for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
+  for (std::vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     object_manager->lower_obj(*it);
 }
 
@@ -138,28 +136,28 @@ Selection::get_current_obj()
 void
 Selection::horizontal_flip() 
 {
-  for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
+  for (std::vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->horizontal_flip();
 }
 
 void
 Selection::vertical_flip() 
 {
-  for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
+  for (std::vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->vertical_flip();
 }
 
 void
 Selection::rotate_90() 
 {
-  for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
+  for (std::vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->rotate_90();
 }
 
 void
 Selection::rotate_270()
 {
-  for (vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
+  for (std::vector<EditorObj*>::iterator it = obj_list.begin(); it != obj_list.end(); it++)
     (*it)->rotate_270();
 }
 
@@ -167,7 +165,7 @@ void
 Selection::draw(EditorView * view)
 {
   
-  for (vector<EditorObj*>::iterator i = obj_list.begin(); i != obj_list.end(); ++i) 
+  for (std::vector<EditorObj*>::iterator i = obj_list.begin(); i != obj_list.end(); ++i) 
     {
       (*i)->draw_mark(view);
     }
