@@ -59,7 +59,7 @@ public:
   virtual void on_pointer_enter ();
   virtual void on_pointer_leave ();
 
-  virtual void on_click() =0;
+  virtual void on_click() {}
 private:
   SurfaceButton (const SurfaceButton&);
   SurfaceButton& operator= (const SurfaceButton&);

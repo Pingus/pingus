@@ -41,13 +41,16 @@ protected:
   int y_pos;
 
   std::string desc;
-  std::string line1;
-  std::string line2;
+  std::string text;
 
   bool mouse_over;
   bool pressed;
 
+  CL_Signal_v0 click;
+
 public:
+  SurfaceButton(const CL_Point& pos, const CL_Sprite& sprite, 
+                const std::string& text, const std::string& desc);
   SurfaceButton();
   virtual ~SurfaceButton();
 
@@ -63,127 +66,12 @@ public:
 
   void on_primary_button_click (int x, int y) { on_click (); UNUSED_ARG(x); UNUSED_ARG(y); }
 
-  virtual void on_click () =0;
-
+  virtual void on_click ();
+  CL_Signal_v0& sig_click() { return click; }
 private:
   SurfaceButton (const SurfaceButton&);
   SurfaceButton& operator= (const SurfaceButton&);
 };
-
-class CreditButton : public SurfaceButton
-{
-private:
-  PingusMenu* menu;
-public:
-  CreditButton(PingusMenu* menu);
-  virtual ~CreditButton();
-  void on_click();
-
-private:
-  CreditButton (const CreditButton&);
-  CreditButton& operator= (const CreditButton&);
-};
-
-class OptionsButton : public SurfaceButton
-{
-private:
-  PingusMenu* menu;
-public:
-  OptionsButton(PingusMenu* menu);
-  virtual ~OptionsButton();
-  void on_click();
-
-private:
-  OptionsButton (const OptionsButton&);
-  OptionsButton& operator= (const OptionsButton&);
-};
-
-class QuitButton : public SurfaceButton
-{
-private:
-  PingusMenu* menu;
-public:
-  QuitButton(PingusMenu*);
-  virtual ~QuitButton();
-  void on_click();
-
-private:
-  QuitButton (const QuitButton&);
-  QuitButton& operator= (const QuitButton&);
-};
-
-class LoadButton : public SurfaceButton
-{
-public:
-  LoadButton();
-  virtual ~LoadButton();
-  void on_click();
-
-private:
-  LoadButton (const LoadButton&);
-  LoadButton& operator= (const LoadButton&);
-};
-
-class EditorButton : public SurfaceButton
-{
-private:
-  PingusMenu* menu;
-
-public:
-  EditorButton(  PingusMenu* menu);
-  virtual ~EditorButton();
-
-  void on_click();
-  void load_level(const std::string& str);
-
-private:
-  EditorButton (const EditorButton&);
-  EditorButton& operator= (const EditorButton&);
-};
-
-class StoryButton : public SurfaceButton
-{
-private:
-  PingusMenu* menu;
-public:
-  StoryButton(PingusMenu* menu);
-  ~StoryButton();
-  void on_click();
-
-private:
-  StoryButton (const StoryButton&);
-  StoryButton& operator= (const StoryButton&);
-};
-
-class ThemeButton : public SurfaceButton
-{
-private:
-  PingusMenu* menu;
-public:
-  ThemeButton(PingusMenu* menu);
-  void on_click();
-
-private:
-  ThemeButton (const ThemeButton&);
-  ThemeButton& operator= (const ThemeButton&);
-};
-
-#if 0
-class MultiplayerButton : public SurfaceButton
-{
-private:
-  MultiplayerConfig multiplayer_config;
-  PingusMenu* menu;
-public:
-  MultiplayerButton(PingusMenu* menu);
-  virtual ~MultiplayerButton();
-  void on_click();
-
-private:
-  MultiplayerButton (const MultiplayerButton&);
-  MultiplayerButton& operator= (const MultiplayerButton&);
-};
-#endif
 
 } // namespace Pingus
 

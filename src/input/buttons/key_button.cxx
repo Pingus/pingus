@@ -50,14 +50,20 @@ void
 KeyButton::key_press_handler (const CL_InputEvent& event)
 {
   if (event.id == button)
-    pressed = true;
+    {
+      pressed = true;
+      button_down();
+    }
 }
 
 void
 KeyButton::key_release_handler (const CL_InputEvent& event)
 {
   if (event.id == button)
-    pressed = false;
+    {
+      pressed = false;
+      button_up();
+    }
 }
 
 } // namespace Buttons

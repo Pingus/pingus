@@ -45,15 +45,18 @@ class PingusMenu : public PingusSubMenu
 public:
   bool is_init;
 private:
+  std::vector<CL_Slot> slots;
   Input::Controller* controller;
 
-  SurfaceButton * temp_button;
-  SurfaceButton * current_button;
   CL_Sprite background;
   LayerManager layer_manager;
   CL_Surface cursor_sur;
 
   void on_resize (int w, int h);
+
+  void do_quit();
+  void do_start();
+  void do_editor();
 public:
   PingusMenu (PingusMenuManager* m);
   ~PingusMenu();

@@ -38,9 +38,9 @@ class MultipleButton : public Button {
 
 private:
   std::vector<Button*> buttons;
-
+  std::vector<CL_Slot> slots;
+  int down_count;
 public:
-
   MultipleButton (const std::vector<Button*>& buttons_);
   ~MultipleButton ();
 
@@ -48,6 +48,9 @@ public:
   virtual void update (float delta);
 
 private:
+  void on_button_up();
+  void on_button_down();
+
   MultipleButton (const MultipleButton&);
   MultipleButton& operator= (const MultipleButton&);
 };

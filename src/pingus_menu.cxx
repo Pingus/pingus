@@ -19,13 +19,23 @@
 
 #include <ClanLib/Display/display.h>
 #include <config.h>
+#include "gettext.h"
 #include "menu_button.hxx"
 #include "resource.hxx"
 #include "debug.hxx"
+#include "sound/sound.hxx"
+#include "stat_manager.hxx"
+#include "story_screen.hxx"
+#include "story.hxx"
+#include "editor/editor.hxx"
+#include "worldmap/manager.hxx"
+#include "gui/screen_manager.hxx"
 #include "pingus_menu_manager.hxx"
 #include "gui/gui_manager.hxx"
 
 namespace Pingus {
+
+using EditorNS::Editor;
 
 PingusMenu::PingusMenu (PingusMenuManager* m)
   : PingusSubMenu (m)
@@ -38,26 +48,70 @@ PingusMenu::preload ()
 {
   if (!is_init)
     {
-      //pout << "PingusMenu::init ()" << std::endl;
-      //event_enabled = true;
       is_init = true;
 
       background = Resource::load_sprite("misc/logo", "core");
 
-      //gui_manager->add(new OptionsButton(this));
-      /*if (game_finished)
-        gui_manager->add(new CreditButton(this));*/
-      //gui_manager->add(new MultiplayerButton(this));
-      //gui_manager->add(new ThemeButton(this));
+      SurfaceButton* editor_button = new SurfaceButton(CL_Point(CL_Display::get_width() * 150 / 800,
+                                                                CL_Display::get_height() * 370 / 600),
+                                                       Resource::load_sprite("menu/create_on", "core"),
+                                                       _("Create a\nLevel"),
+                                                       _("..:: Launch the level editor ::.."));
 
-      gui_manager->add(new QuitButton(this));
-      gui_manager->add(new StoryButton(this));
-      gui_manager->add(new EditorButton (this));
+      SurfaceButton* start_button = new SurfaceButton(CL_Point(CL_Display::get_width() * 400 / 800,
+                                                              CL_Display::get_height() * 370 / 600),
+                                                      Resource::load_sprite("menu/play_on", "core"),
+                                                      _("Start"),
+                                                      _("..:: Start the game ::.."));
+
+      SurfaceButton* quit_button = new SurfaceButton(CL_Point(CL_Display::get_width() * 650 / 800,
+                                                              CL_Display::get_height() * 370 / 600),
+                                                     Resource::load_sprite("menu/exit_on", "core"),
+                                                     _("Exit"),
+                                                     _("..:: Bye, bye ::.."));
+
+      slots.push_back(editor_button->sig_click().connect(this, &PingusMenu::do_editor));
+      slots.push_back(start_button->sig_click().connect(this, &PingusMenu::do_start));
+      slots.push_back(quit_button->sig_click().connect(this, &PingusMenu::do_quit));
+      
+      gui_manager->add(quit_button);
+      gui_manager->add(start_button);
+      gui_manager->add(editor_button);
     }
 }
 
 PingusMenu::~PingusMenu()
 {
+}
+
+void
+PingusMenu::do_quit()
+{
+  get_manager ()->show_exit_menu ();
+}
+
+void
+PingusMenu::do_start()
+{ // Start the story mode
+  Sound::PingusSound::play_sound ("letsgo");
+
+  bool story_seen = false;
+  StatManager::instance()->get_bool("story-seen", story_seen);
+
+  if (!story_seen)
+    {
+      ScreenManager::instance()->push_screen(new StoryScreen(Story::intro), true);
+    }
+  else
+    {
+      ScreenManager::instance()->push_screen(WorldMapNS::WorldMapManager::instance ());
+    }
+}
+
+void
+PingusMenu::do_editor()
+{
+  ScreenManager::instance()->push_screen (Editor::instance(), false);
 }
 
 void

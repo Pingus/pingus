@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <iostream>
 #include "multiple_button.hxx"
 
 namespace Pingus {
@@ -25,6 +26,13 @@ namespace Buttons {
 
 MultipleButton::MultipleButton (const std::vector<Button*>& buttons_) : buttons(buttons_)
 {
+  down_count = 0;
+
+  for (std::vector<Button*>::iterator it = buttons.begin(); it != buttons.end(); it++)
+    {
+      slots.push_back((*it)->sig_button_up()  .connect(this, &MultipleButton::on_button_up));
+      slots.push_back((*it)->sig_button_down().connect(this, &MultipleButton::on_button_down));
+    }
 }
 
 MultipleButton::~MultipleButton ()
@@ -48,6 +56,26 @@ MultipleButton::is_pressed () const
       return true;
 
   return false;
+}
+
+void
+MultipleButton::on_button_up()
+{
+  down_count -= 1;
+  if (down_count < 0)
+    down_count = 0;
+
+  if (down_count == 0)
+    button_up();
+}
+
+void
+MultipleButton::on_button_down()
+{
+  if (down_count == 0)
+    button_down();
+
+  down_count += 1; 
 }
 
 } // namespace Buttons
