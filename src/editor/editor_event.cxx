@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.44 2002/12/03 00:51:19 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.45 2003/01/25 18:34:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,6 +47,7 @@
 #include "level_resizer.hxx"
 #include "object_selector_window.hxx"
 #include "../screen_manager.hxx"
+#include "editor_view.hxx"
 
 namespace EditorNS {
 

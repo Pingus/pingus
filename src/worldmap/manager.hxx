@@ -1,4 +1,4 @@
-//  $Id: manager.hxx,v 1.15 2002/11/27 20:05:42 grumbel Exp $
+//  $Id: manager.hxx,v 1.16 2003/01/25 18:34:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -23,7 +23,6 @@
 #include <string>
 #include <ClanLib/Signals/slot.h>
 #include "../gui/gui_manager.hxx"
-#include "../boost/smart_ptr.hpp"
 #include "../gui_screen.hxx"
 
 class CL_InputDevice;
@@ -33,6 +32,7 @@ class GameDelta;
 namespace WorldMapNS {
 
 typedef int NodeId;
+
 class WorldMap;
 
 /** The WorldMapManager manages the worldmaps and the translation
@@ -69,8 +69,8 @@ private:
 
   bool is_init;
   bool exit_worldmap;
-  boost::shared_ptr<WorldMap> worldmap;
-  boost::shared_ptr<WorldMap> new_worldmap;
+  WorldMap* worldmap;
+  WorldMap* new_worldmap;
 
   WorldMapManager ();
 public:
@@ -114,6 +114,3 @@ private:
 #endif
 
 /* EOF */
-
-
-

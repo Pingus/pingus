@@ -1,4 +1,4 @@
-//  $Id: world.hxx,v 1.22 2003/01/25 11:03:58 torangan Exp $
+//  $Id: world.hxx,v 1.23 2003/01/25 18:34:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -159,8 +159,7 @@ public:
 
   PinguHolder* get_pingus(void);
 
-  /** @return the pingu at the given word coordinates, an empty
-      shared_ptr is returned if none is there */
+  /** @return the pingu at the given word coordinates, 0 if none is there */
   Pingu* get_pingu (const Vector& pos);
   
   /** Return a pointer to the GameTime object of this World */

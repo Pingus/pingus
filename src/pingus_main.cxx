@@ -1,4 +1,4 @@
-//   $Id: pingus_main.cxx,v 1.39 2002/12/29 23:29:00 torangan Exp $
+//   $Id: pingus_main.cxx,v 1.40 2003/01/25 18:34:36 torangan Exp $
 //    ___
 //   |  _\ A Free Lemmings[tm] Clone
 //   |   /_  _ _  ___  _   _  ___ 
@@ -72,7 +72,6 @@
 #include "demo_session.hxx"
 #include "debug.hxx"
 #include "editor/editor.hxx"
-#include "boost/smart_ptr.hpp"
 #include "screen_manager.hxx"
 #include "action_data.hxx"
 #include "fonts.hxx"
@@ -150,15 +149,15 @@ PingusMain::read_rc_file (void)
 {
   if (!no_config_file)
     {
-      std::string   rcfile;
+      std::string rcfile;
 
       if (config_file.empty())
 	rcfile = System::get_statdir() + "config";
       else
 	rcfile = config_file;
 
-      // FIXME: kind of weird...
-      boost::shared_ptr<Config> config(new Config(rcfile));
+      //constructor of config must be run
+      Config config(rcfile);
       //ConfigXML("/home/ingo/projects/pingus/cvs/data/levels/stone3-grumbel.xml");
     }
 }

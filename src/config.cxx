@@ -1,4 +1,4 @@
-//  $Id: config.cxx,v 1.9 2002/12/01 17:08:47 grumbel Exp $
+//  $Id: config.cxx,v 1.10 2003/01/25 18:34:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -300,8 +300,7 @@ Config::Config(std::string f)
 }
 
 void
-Config::set_value(std::string valueid,
-		  std::string value)
+Config::set_value(const std::string& valueid, const std::string& value)
 {
   if (valueid == "fullscreen")
     {

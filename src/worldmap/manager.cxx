@@ -1,4 +1,4 @@
-//  $Id: manager.cxx,v 1.21 2002/11/27 20:05:42 grumbel Exp $
+//  $Id: manager.cxx,v 1.22 2003/01/25 18:34:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -33,8 +33,7 @@ WorldMapManager::WorldMapManager ()
   exit_worldmap = false;
 
   // FIXME: The default startup map should be configurable by some file
-  worldmap = boost::shared_ptr<WorldMap>
-    (new WorldMap (path_manager.complete("worldmaps/tutorial.xml")));
+  worldmap = new WorldMap (path_manager.complete("worldmaps/tutorial.xml"));
 
   //worldmap->on_startup ();
 
@@ -52,6 +51,8 @@ WorldMapManager::on_startup ()
 
 WorldMapManager::~WorldMapManager ()
 {
+  delete worldmap;
+  delete new_worldmap;
 }
 
 void
@@ -69,17 +70,17 @@ WorldMapManager::update (float)
     ScreenManager::instance ()->pop_screen ();
 
   // Check if new worldmap is set and if so, change it
-  if (new_worldmap.get ())
+  if (new_worldmap)
     {
-      worldmap = new_worldmap;
-      new_worldmap = boost::shared_ptr<WorldMap>();
+      worldmap     = new_worldmap;
+      new_worldmap = 0;
     }
 }
 
 void
 WorldMapManager::WorldMapComponent::draw (GraphicContext& gc)
 {
-  WorldMapManager::instance ()->worldmap->draw (gc);
+  WorldMapManager::instance()->worldmap->draw(gc);
 }
 
 void
@@ -116,8 +117,7 @@ void
 WorldMapManager::change_map (const std::string& filename, NodeId node)
 {
   // Create the new worldmap and make it the current one
-  new_worldmap = boost::shared_ptr<WorldMap>
-    (new WorldMap (path_manager.complete("worldmaps/" + filename)));
+  new_worldmap = new WorldMap (path_manager.complete("worldmaps/" + filename));
   new_worldmap->set_pingus (node);
 }
 

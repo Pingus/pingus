@@ -1,4 +1,4 @@
-//  $Id: pingus.cxx,v 1.24 2002/11/26 21:30:37 grumbel Exp $
+//  $Id: pingus.cxx,v 1.25 2003/01/25 18:34:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -19,7 +19,6 @@
 
 #include <iostream>
 #include <math.h>
-#include "../boost/smart_ptr.hpp"
 #include "../graphic_context.hxx"
 #include "dot.hxx"
 #include "../math.hxx"

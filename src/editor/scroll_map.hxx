@@ -1,4 +1,4 @@
-//  $Id: scroll_map.hxx,v 1.5 2002/09/27 11:26:45 torangan Exp $
+//  $Id: scroll_map.hxx,v 1.6 2003/01/25 18:34:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -20,11 +20,9 @@
 #ifndef HEADER_PINGUS_EDITOR_SCROLL_MAP_HXX
 #define HEADER_PINGUS_EDITOR_SCROLL_MAP_HXX
 
-#include "../boost/smart_ptr.hpp"
-#include "editor_view.hxx"
-
 class CL_Key;
 class CL_InputDevice;
+class EditorView;
 
 namespace EditorNS {
 
@@ -35,7 +33,7 @@ class ScrollMap
 private:
   int width, height;
   int x_pos, y_pos;
-  boost::shared_ptr<EditorView> view;
+  EditorView* view;
 
 public:
   static EditorEvent* editor_event;

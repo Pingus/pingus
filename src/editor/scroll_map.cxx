@@ -1,4 +1,4 @@
-//  $Id: scroll_map.cxx,v 1.5 2002/09/28 11:52:23 torangan Exp $
+//  $Id: scroll_map.cxx,v 1.6 2003/01/25 18:34:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -18,9 +18,10 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Display/Display/display.h>
-#include "scroll_map.hxx"
 #include "editor.hxx"
+#include "editor_view.hxx"
 #include "object_manager.hxx"
+#include "scroll_map.hxx"
 
 namespace EditorNS {
 
@@ -38,6 +39,7 @@ ScrollMap::ScrollMap()
 
 ScrollMap::~ScrollMap()
 {
+  delete view;
 }
 
 ///
@@ -76,7 +78,7 @@ ScrollMap::draw()
 {
   CL_Display::fill_rect (x_pos, y_pos, x_pos + width, y_pos + height,
 			 0.4f, 0.4f, 0.0f);
-  Editor::instance ()->get_object_manager ()->draw (view.get ());
+  Editor::instance()->get_object_manager()->draw(view);
   /*
   int viewarea_width = (CL_Display::get_width() * width
 			/ editor_event->object_manager->get_width());

@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.21 2002/12/20 20:45:50 torangan Exp $
+//  $Id: pingus.hxx,v 1.22 2003/01/25 18:34:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -24,10 +24,6 @@
 #include "../sprite.hxx"
 #include "drawable.hxx"
 #include "path_graph.hxx"
-
-namespace boost {
-  template <class T> class shared_ptr;
-}
 
 namespace WorldMapNS {
 

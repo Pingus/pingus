@@ -1,4 +1,4 @@
-//  $Id: config.hxx,v 1.7 2002/11/08 01:38:27 grumbel Exp $
+//  $Id: config.hxx,v 1.8 2003/01/25 18:34:36 torangan Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -30,7 +30,7 @@ class ConfigParser
 private:
   
   ///
-  std::ifstream in;                 /// The file to parse
+  std::ifstream in;            /// The file to parse
 
   char   last_atom;            /// The last returned atom
   int    lineno;               /// Current line number
@@ -51,8 +51,7 @@ private:
 
   // Some virtual functions
   /// Put the retrieved value in the correct struct
-  virtual void set_value(std::string valueid,
-			 std::string value) = 0; 
+  virtual void set_value(const std::string& valueid, const std::string& value) = 0; 
 
 public:
   ///
@@ -80,8 +79,7 @@ public:
   Config ();
   Config (std::string);
 
-  void set_value(std::string valueid,
-		 std::string value);
+  void set_value(const std::string& valueid, const std::string& value);
 		 
 private:
   Config (const Config&);

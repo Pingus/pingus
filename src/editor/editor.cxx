@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.42 2002/12/01 17:08:47 grumbel Exp $
+//  $Id: editor.cxx,v 1.43 2003/01/25 18:34:36 torangan Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,6 +42,7 @@
 #include "level_property_window.hxx"
 #include "editor.hxx"
 #include "../path_manager.hxx"
+#include "editor_view.hxx"
 
 #include <cstdio>
 
