@@ -1,4 +1,4 @@
-//  $Id: editorobj.hxx,v 1.5 2002/06/29 11:54:22 grumbel Exp $
+//  $Id: editorobj.hxx,v 1.6 2002/06/30 22:03:13 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -109,7 +109,11 @@ public:
       object */
   virtual boost::shared_ptr<EditorObj> duplicate() =0;
 
-  /** */
+  /** Return a pointer to a CL_Component which can be used to
+      manipulate the properties of this gameobject. The caller is
+      responsible for deleting the object after usage. The
+      CL_Component* should/must be a CL_Frame so that it can get
+      embedded in the properties window */
   virtual CL_Component* get_gui_dialog (CL_Component* parent);
 };
 

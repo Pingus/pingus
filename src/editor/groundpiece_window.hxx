@@ -1,4 +1,4 @@
-//  $Id: groundpiece_window.hxx,v 1.2 2002/06/29 11:54:22 grumbel Exp $
+//  $Id: groundpiece_window.hxx,v 1.3 2002/06/30 22:03:13 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -27,23 +27,38 @@ namespace Pingus
 {
   namespace Editor
   {
-    class GroundpieceWindow : public CL_Window
+    class GroundpieceWindow : public CL_Frame
     {
     private:
-      GroundpieceData* data;
+      EditorGroundpieceObj* data;
 
       CL_Button convert_to_hotspot_button;
 
       CL_Label  groundtype_label;
-      CL_ListBox groundtype_listbox;
+      //CL_ListBox groundtype_listbox;
+
+      CL_RadioGroup groundtype_group;
+      CL_RadioButton ground_radiobutton;
+      CL_RadioButton transparent_radiobutton;
+      CL_RadioButton solid_radiobutton;
+      CL_RadioButton bridge_radiobutton;
 
       CL_Button ok_button;
       CL_Button cancel_button;
       
       CL_Slot ok_button_slot;
       CL_Slot cancel_button_slot;
+      CL_Slot convert_to_hotspot_button_slot;
+
     public:
       GroundpieceWindow (CL_Component* parent,  EditorGroundpieceObj* data);
+
+      void ok_clicked ();
+      void cancel_clicked ();
+      void convert_to_hotspot ();
+
+      void read_data ();
+      void write_data ();
     };
   }
 }

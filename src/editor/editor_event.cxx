@@ -1,4 +1,4 @@
-//  $Id: editor_event.cxx,v 1.14 2002/06/29 16:04:22 grumbel Exp $
+//  $Id: editor_event.cxx,v 1.15 2002/06/30 22:03:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,10 +44,21 @@
 #include "object_selector.hxx"
 #include "editor.hxx"
 #include "action_window.hxx"
+#include "property_window.hxx"
 
 EditorEvent::EditorEvent()
   : is_enabled (1)
 {
+  for (float i = 0; i < 1.0f; i += 0.1f)
+    background_colors.push_back (Color (i, i, i));
+
+  background_colors.push_back (Color (1.0, 1.0, 0.0));
+  background_colors.push_back (Color (0.0, 1.0, 1.0));
+  background_colors.push_back (Color (1.0, 0.0, 1.0));
+
+  background_colors.push_back (Color (0.0, 1.0, 0.0));
+  background_colors.push_back (Color (1.0, 0.0, 0.0));
+  background_colors.push_back (Color (0.0, 0.0, 1.0));
 }
 
 EditorEvent::~EditorEvent()
@@ -179,19 +190,6 @@ EditorEvent::on_button_press(CL_InputDevice *device, const CL_Key& key)
 	  editor_mark_all_objects();
 	  break;
     
-	  // Select another background.
-	case CL_KEY_F10:
-	  {
-	    // FIXME
-	    std::cout << "EditorEvent: Background setting is currently not supported" << std::endl;
-	    /*
-	    SurfaceBackgroundData* sur_bg;
-	    if ((sur_bg = dynamic_cast<SurfaceBackgroundData*>(*(object_manager->backgrounds.begin()))) != 0)
-	      sur_bg->desc.res_name = editor->object_selector->get_background();
-	    */
-	  }
-	  break;
-
 	  /*	case CL_KEY_F11:
 	  CL_Display::set_videomode(screen_width, screen_height, 16, 
 				    fullscreen_enabled, 
@@ -493,15 +491,19 @@ EditorEvent::editor_mark_all_objects()
 void
 EditorEvent::editor_toggle_background_color()
 {
-  object_manager->bg.red   += 0.1f;
-  object_manager->bg.green += 0.1f;
-  object_manager->bg.blue  += 0.1f;
-      
-  if (object_manager->bg.red > 1.0f) 
+  std::vector<Color>::iterator i = 
+    std::find(background_colors.begin (), background_colors.end (), object_manager->bg);
+
+  if (i == background_colors.end ())
+    object_manager->bg = *background_colors.begin ();
+  else
     {
-      object_manager->bg.red   = 0.0f;
-      object_manager->bg.green = 0.0f;
-      object_manager->bg.blue  = 0.0f;
+      ++i;
+
+      if (i == background_colors.end ())
+	object_manager->bg = *background_colors.begin ();
+      else
+	object_manager->bg = *i;
     }
 }
 
@@ -838,23 +840,10 @@ EditorEvent::editor_show_actions_window ()
 void
 EditorEvent::editor_show_object_properties ()
 {
-  if (object_manager->current_objs.size() == 1)
-    {
-      boost::shared_ptr<EditorObj>  obj = *object_manager->current_objs.begin ();
-      CL_Component* comp = obj->get_gui_dialog (editor->get_gui_manager ());
-      if (comp)
-	{
-	  std::cout << "Got gui" << std::endl;
-	}
-      else
-	{
-	  std::cout << "GUI for object not available: " << comp << std::endl;
-	}
-    }
+  if (editor->property_window->is_visible ())
+    editor->property_window->show (false);
   else
-    {
-      std::cout << "EditorEvent::editor_show_object_properties (): error: multiple objects selected" << std::endl;
-    }
+    editor->property_window->show (true);
 }
 
 bool

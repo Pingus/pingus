@@ -1,4 +1,4 @@
-//  $Id: editor.cxx,v 1.11 2002/06/30 09:01:02 grumbel Exp $
+//  $Id: editor.cxx,v 1.12 2002/06/30 22:03:13 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -46,6 +46,9 @@
 #include "object_selector.hxx"
 #include "object_manager.hxx"
 #include "action_window.hxx"
+#include "property_window.hxx"
+
+using namespace Pingus::Editor;
 
 Editor* Editor::instance_ = 0;
 
@@ -77,6 +80,7 @@ Editor::Editor () : event_handler_ref_counter(0),
   gui   = new CL_GUIManager (style_manager);
 
   action_window = new ActionWindow (gui, object_manager->get_actions ());
+  property_window = new Pingus::Editor::PropertyWindow (gui);
 
   view = new EditorView (0, 0, CL_Display::get_width (), CL_Display::get_height (), 0, 0);
 
@@ -152,6 +156,8 @@ Editor::edit ()
 
   register_event_handler();
 
+  std::list<boost::shared_ptr<EditorObj> > tmp_selection;
+
   while (!quit) 
     {
       // FIXME: This busy loop should be replaced by redraw events
@@ -159,12 +165,32 @@ Editor::edit ()
       CL_System::keep_alive();
       move_objects();
       draw();
-      gui->show ();
-      //std::cout << "GUI has Focus: " << (gui->get_focus () !=  gui) << std::endl;
       if (get_gui_manager ()->get_focus () == get_gui_manager ())
 	CL_Display::draw_rect (25, 0, CL_Display::get_width (), CL_Display::get_height (),
 			       1.0f, 1.0f, 1.0f);
+      gui->show ();
+      //std::cout << "GUI has Focus: " << (gui->get_focus () !=  gui) << std::endl;
       Display::flip_display(true);
+
+      // FIXME: This should be moved to the object manager
+      if (tmp_selection != object_manager->current_objs)
+	{
+	  std::cout << "Selection changed" << std::endl;
+	  tmp_selection = object_manager->current_objs;
+
+	  // FIXME: dirty hack
+	  if (object_manager->current_objs.size() == 1)
+	    {
+	      boost::shared_ptr<EditorObj>  obj = *object_manager->current_objs.begin ();
+	      property_window->update_frame (obj);
+	      //CL_Component* comp = obj->get_gui_dialog (editor->property_window);
+	    }
+	  else
+	    {
+	      property_window->update_frame (boost::shared_ptr<EditorObj>());
+	      std::cout << "EditorEvent::editor_show_object_properties (): error: multiple objects selected" << std::endl;
+	    }
+	}
     }
 
   unregister_event_handler();
@@ -177,31 +203,35 @@ void
 Editor::draw ()
 {
   CL_Display::clear_display();
+
   object_manager->draw(view);
   panel->draw();
 
   /*  {
-    int x1_pos = CL_Display::get_width() - 200;
-    int y1_pos = CL_Display::get_height() - 150;
-    int x2_pos = CL_Display::get_width() - 1;
-    int y2_pos = CL_Display::get_height() - 1;
-    int width  = (CL_Display::get_width() - 25) * 200 / object_manager.width;
-    int height = CL_Display::get_height() * 150 / object_manager.height;;
+      int x1_pos = CL_Display::get_width() - 200;
+      int y1_pos = CL_Display::get_height() - 150;
+      int x2_pos = CL_Display::get_width() - 1;
+      int y2_pos = CL_Display::get_height() - 1;
+      int width  = (CL_Display::get_width() - 25) * 200 / object_manager.width;
+      int height = CL_Display::get_height() * 150 / object_manager.height;;
 
-    Display::draw_rect(x1_pos, y1_pos , x2_pos, y2_pos,
-		       1.0, 1.0, 1.0, 1.0);
+      Display::draw_rect(x1_pos, y1_pos , x2_pos, y2_pos,
+      1.0, 1.0, 1.0, 1.0);
 
-    Display::draw_rect(x1_pos - (object_manager.x_offset * 200 / object_manager.width),
-		       y1_pos - (object_manager.y_offset * 150 / object_manager.height),
-		       x1_pos - (object_manager.x_offset * 200 / object_manager.width) + width,  
-		       y1_pos - (object_manager.y_offset * 150 / object_manager.height) + height,
-		       1.0, 1.0, 1.0, 1.0);
-		       }*/
+      Display::draw_rect(x1_pos - (object_manager.x_offset * 200 / object_manager.width),
+      y1_pos - (object_manager.y_offset * 150 / object_manager.height),
+      x1_pos - (object_manager.x_offset * 200 / object_manager.width) + width,  
+      y1_pos - (object_manager.y_offset * 150 / object_manager.height) + height,
+      1.0, 1.0, 1.0, 1.0);
+      }*/
 
   status_line->draw(view);
   scroll_map->draw();
+    
   if (show_help_screen)
-    help_screen.draw ();
+    {
+      help_screen.draw ();
+    }
 }
 
 

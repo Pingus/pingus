@@ -1,4 +1,4 @@
-//  $Id: entrance_window.hxx,v 1.2 2002/06/30 22:03:13 grumbel Exp $
+//  $Id: property_window.hxx,v 1.1 2002/06/30 22:03:13 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,18 +17,28 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_EDITOR_ENTRANCE_WINDOW_HXX
-#define HEADER_PINGUS_EDITOR_ENTRANCE_WINDOW_HXX
+#ifndef PINGUS_EDITOR_PROPERTY_WINDOW_HXX
+#define PINGUS_EDITOR_PROPERTY_WINDOW_HXX
 
-namespace Editor
+#include <ClanLib/gui.h>
+
+class EditorObj;
+
+namespace Pingus
 {
-  class EntranceWindow : public CL_Window
+  namespace Editor
   {
-  private:
-    
-  public:
-    EntranceWindow ();
-  };
+    class PropertyWindow : public CL_Window
+    {
+    private:
+      CL_Component* current_frame;
+
+    public:
+      PropertyWindow (CL_Component* parent);
+
+      void update_frame (boost::shared_ptr<EditorObj>);
+    };
+  }
 }
 
 #endif

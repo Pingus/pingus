@@ -37,6 +37,7 @@ editor_view.cxx		    plfobj.cxx		  thumb_cache.cxx \
 editorobj.cxx		    rect_editorobj.cxx	  weather_obj.cxx \
     scroll_map.cxx \
   sprite_editorobj.cxx editorobj_group.hxx editorobj_group.cxx \
-groundpiece_window.hxx groundpiece_window.cxx 
+groundpiece_window.hxx groundpiece_window.cxx \
+property_window.hxx property_window.cxx
 
 # EOF #
