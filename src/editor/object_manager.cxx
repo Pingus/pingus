@@ -1,4 +1,4 @@
-//  $Id: object_manager.cxx,v 1.14 2002/07/01 16:31:40 grumbel Exp $
+//  $Id: object_manager.cxx,v 1.15 2002/07/01 16:40:30 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -37,6 +37,7 @@
 #  define for if(0);else for
 #endif
 
+using namespace std;
 using namespace Pingus;
 using namespace Actions;
 
@@ -119,9 +120,9 @@ ObjectManager::delete_all_objs()
 }
 
 void
-ObjectManager::load_level (const std::string & filename)
+ObjectManager::load_level (const std::string& filename)
 {
-  std::cout << "ObjectManager::Loading level: " << filename << endl;
+  std::cout << "ObjectManager::Loading level: " << filename << std::endl;
 
   delete_all_objs();
 

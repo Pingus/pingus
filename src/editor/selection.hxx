@@ -1,4 +1,4 @@
-//  $Id: selection.hxx,v 1.2 2002/07/01 16:31:40 grumbel Exp $
+//  $Id: selection.hxx,v 1.3 2002/07/01 16:40:30 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ public:
   void drop();
     
   void add(EditorObj* obj);
-  void add(list<EditorObj*> objs);
+  void add(std::list<EditorObj*> objs);
     
   void remove(EditorObj* obj);
     
@@ -59,7 +59,7 @@ public:
   bool object_selected(EditorObj* obj);
     
   EditorObj* get_current_obj();
-  const list<EditorObj*> & get_objects() { return obj_list; }
+  const std::list<EditorObj*> & get_objects() { return obj_list; }
 
   int size () { return obj_list.size (); }
     
