@@ -1,4 +1,4 @@
-//  $Id: Entrance.cc,v 1.18 2001/03/31 11:21:50 grumbel Exp $
+//  $Id: Entrance.cc,v 1.19 2001/04/08 14:10:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -98,7 +98,7 @@ Entrance::get_pingu()
 }
 
 void
-Entrance::update(void)
+Entrance::update(float delta)
 {
 }
 

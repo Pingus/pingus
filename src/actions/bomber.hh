@@ -1,4 +1,4 @@
-//  $Id: bomber.hh,v 1.9 2001/04/06 12:49:20 grumbel Exp $
+//  $Id: bomber.hh,v 1.10 2001/04/08 14:10:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,7 +47,7 @@ public:
   ///
   void   draw_offset(int x, int y, float s);
   ///
-  void   update();
+  void   update(float delta);
   ///
   bool   can_reset() { return false; }
   ///

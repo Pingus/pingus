@@ -1,4 +1,4 @@
-//  $Id: Sprite.cc,v 1.6 2001/04/06 18:07:58 grumbel Exp $
+//  $Id: Sprite.cc,v 1.7 2001/04/08 14:10:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -47,6 +47,20 @@ Sprite::Sprite (const CL_Surface& arg_sur,
     x_align (0), y_align (0)
 {
   sur = arg_sur;
+}
+
+Sprite::Sprite (const ResDescriptor& desc,
+		float arg_frames_per_second = 10.0f,
+		Sprite::Direction dir = NONE,
+		LoopType arg_loop_type = ENDLESS)
+  : frame (0.0f),
+    frames_per_second (arg_frames_per_second),
+    direction (dir),
+    looptype (arg_loop_type),
+    is_finished (false),
+    x_align (0), y_align (0)
+{
+  sur = PingusResource::load_surface (desc);
 }
 
 void 
@@ -125,6 +139,10 @@ Sprite::max_frames ()
 void
 Sprite::update (float delta)
 {
+  // The sprite contains no frames, so we have nothing to update
+  if (max_frames () <= 1)
+    return;
+
   switch (looptype)
     {
     case ENDLESS:
@@ -168,6 +186,12 @@ Sprite::finished ()
       assert (!"Wrong looptype!");
       return false;
     }
+}
+
+CL_Surface
+Sprite::get_surface ()
+{
+  return sur;
 }
 
 /* EOF */

@@ -1,4 +1,4 @@
-//  $Id: Client.cc,v 1.38 2001/04/07 21:03:42 grumbel Exp $
+//  $Id: Client.cc,v 1.39 2001/04/08 14:10:34 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,6 +35,7 @@
 #include "OptionMenu.hh"
 #include "PLFPLF.hh"
 #include "XMLPLF.hh"
+#include "DeltaManager.hh"
 
 bool Client::gui_is_init;
 boost::shared_ptr<ButtonPanel>   Client::button_panel;
@@ -217,13 +218,17 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
 #endif
 
   unsigned int last_update = CL_System::get_time();
+
+  DeltaManager delta_manager;
+  float delta;
   // Main Game Loop
   while (!server->is_finished()) 
-    {
+    {     
+      delta = delta_manager.getset ();
       CL_System::keep_alive(); 
     
       // Let the server process a game loop
-      server->update();
+      server->update(delta);
 
       send_next_event();
       
@@ -246,7 +251,7 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
 	  last_update = CL_System::get_time();
 
 	  for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
-	    obj[i]->update();
+	    obj[i]->update(delta);
 	}
   
       if (!fast_forward || skip_frame >= 10) 
@@ -261,13 +266,14 @@ Client::play_level(std::string plf_filename, std::string psm_filename)
 		  last_update = CL_System::get_time();
 
 		  for(std::vector<GuiObj*>::size_type i=0; i < obj.size(); ++i) 
-		    obj[i]->update();
+		    obj[i]->update(delta);
 		}
 	      
 	      obj[i]->draw_clipped();
 	    }
       
-	  Display::flip_display();     
+	  //std::cout << "Flipping display" << std::endl;
+	  Display::flip_display();
 	}
       else 
 	{

@@ -37,7 +37,7 @@ public:
   ///
   void   init(void);
   ///
-  void   update(void);
+  void   update(float delta);
 
   ///
   int x_target, y_target;

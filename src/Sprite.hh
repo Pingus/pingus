@@ -1,4 +1,4 @@
-//  $Id: Sprite.hh,v 1.4 2001/04/06 15:04:45 grumbel Exp $
+//  $Id: Sprite.hh,v 1.5 2001/04/08 14:10:34 grumbel Exp $
 // 
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -54,6 +54,11 @@ public:
 	  Sprite::Direction dir = NONE,
 	  LoopType arg_loop_type = ENDLESS);
 
+  Sprite (const ResDescriptor&,
+	  float frames_per_second = 10.0f,
+	  Sprite::Direction dir = NONE,
+	  LoopType arg_loop_type = ENDLESS);
+
   /** */
   void put_screen (int x, int y);
 
@@ -84,6 +89,8 @@ public:
   int get_height () { return sur.get_height (); }
 
   bool finished ();
+
+  CL_Surface get_surface ();
 };
 
 #endif

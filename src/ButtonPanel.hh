@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.hh,v 1.8 2001/03/31 11:21:50 grumbel Exp $
+//  $Id: ButtonPanel.hh,v 1.9 2001/04/08 14:10:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -84,7 +84,7 @@ public:
   ///
   std::string get_action_name();
   ///
-  void   update();
+  void   update(float delta);
   ///
   void   draw();
   ///

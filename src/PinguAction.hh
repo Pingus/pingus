@@ -1,4 +1,4 @@
-//  $Id: PinguAction.hh,v 1.13 2001/03/31 11:21:50 grumbel Exp $
+//  $Id: PinguAction.hh,v 1.14 2001/04/08 14:10:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -102,7 +102,7 @@ public:
   virtual void  init(void) {};
 
   /// The "AI" of the pingu. The walker and faller is in class Pingu
-  virtual void  update(void) = 0;
+  virtual void  update(float delta) = 0;
 
   /** Draws the surfaced defined by the action, can be overwritten if
       the action needs a more complicated way of drawing. */

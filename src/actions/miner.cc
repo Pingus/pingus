@@ -1,4 +1,4 @@
-// $Id: miner.cc,v 1.16 2001/03/31 11:21:51 grumbel Exp $
+// $Id: miner.cc,v 1.17 2001/04/08 14:10:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -43,7 +43,7 @@ Miner::init(void)
 }
 
 void
-Miner::update()
+Miner::update(float delta)
 {
   ++slow_count;
   if (slow_count % 4  == 0) 

@@ -1,4 +1,4 @@
-//  $Id: World.cc,v 1.41 2001/04/04 10:21:16 grumbel Exp $
+//  $Id: World.cc,v 1.42 2001/04/08 14:10:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -123,6 +123,8 @@ World::draw(int x1, int y1, int w, int h,
 void 
 World::update(float delta)
 {
+  //std::cout << "World::update (" << delta << ")" << std::endl;
+
   if (!exit_world && (allowed_pingus == released_pingus || do_armageddon)
       && pingus->size() == 0) 
     {
@@ -158,27 +160,19 @@ World::update(float delta)
       obj != world_obj_bg.end(); 
       obj++)
     {
-      (*obj)->update();
+      (*obj)->update(delta);
     }
 
   for(vector<shared_ptr<WorldObj> >::iterator obj = world_obj_fg.begin(); 
       obj != world_obj_fg.end(); 
       obj++)
     {
-      (*obj)->update();
+      (*obj)->update(delta);
     }
-  /* FIXME: looks like a cut&paste error
-  for(vector<shared_ptr<WorldObj> >::iterator obj = world_obj_fg.begin(); 
-      obj != world_obj_fg.end(); 
-      obj++)
-    {
-      (*obj)->update();
-    }
-  */
   
   for(PinguIter pingu = pingus->begin(); pingu != pingus->end(); ++pingu)
     {
-      (*pingu)->update();
+      (*pingu)->update(delta);
 
       if ((*pingu)->need_catch()) {
 	for(PinguIter i = pingus->begin(); i != pingus->end(); i++) {
@@ -194,10 +188,10 @@ World::update(float delta)
     }
 
   /*  for(vector<TrapData>::size_type i=0; i < traps.size(); ++i)
-    traps[i]->update();
+    traps[i]->update(delta);
 
   for(vector<EntranceData>::size_type i2=0; i2 < entrance.size(); ++i2) 
-    entrance[i2]->update();
+    entrance[i2]->update(delta);
   */    
   particle_holder->update(delta);
 

@@ -1,4 +1,4 @@
-//  $Id: HurryUp.hh,v 1.4 2001/03/31 11:21:50 grumbel Exp $
+//  $Id: HurryUp.hh,v 1.5 2001/04/08 14:10:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ public:
   virtual ~HurryUp();
 
   virtual void draw();
-  virtual void update();
+  virtual void update(float delta);
   void set_client(Client*);
 };
 

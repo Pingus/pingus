@@ -1,4 +1,4 @@
-//  $Id: Drown.cc,v 1.4 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: Drown.cc,v 1.5 2001/04/08 14:10:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -55,7 +55,7 @@ Drown::init()
 
 ///
 void 
-Drown::update()
+Drown::update(float delta)
 {
   if (counter >= (int)(surface.get_num_frames()/2) - 1)
     {

@@ -1,4 +1,4 @@
-//  $Id: Playfield.hh,v 1.15 2001/04/07 21:03:42 grumbel Exp $
+//  $Id: Playfield.hh,v 1.16 2001/04/08 14:10:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -111,7 +111,7 @@ public:
   ///
   void draw();
   ///
-  void update();
+  void update(float delta);
   ///
   void updateX();
   ///

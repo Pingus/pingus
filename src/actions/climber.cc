@@ -1,4 +1,4 @@
-//  $Id: climber.cc,v 1.11 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: climber.cc,v 1.12 2001/04/08 14:10:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -63,7 +63,7 @@ Climber::y_offset(void)
 }
 
 void
-Climber::update(void)
+Climber::update(float delta)
 {
   /*
     std::cout << "Climer update()" << std::endl;

@@ -1,4 +1,4 @@
-//  $Id: PingusWavProvider.cc,v 1.5 2001/04/03 10:45:49 grumbel Exp $
+//  $Id: PingusWavProvider.cc,v 1.6 2001/04/08 14:10:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -42,16 +42,24 @@ PingusWavProvider::load(std::string str)
     {
       wav_data = Mix_LoadWAV(str.c_str()); 
       
-      wav_data->volume = 80;
-
-      if (!wav_data) 
+      if (!wav_data)
 	{
-	  throw PingusError("PingusWavProvider: Couldn't load " + str + ": " + SDL_GetError());
-	} 
+	  throw PingusError ("PingusWaveProvider: Couldn't open '" + str + "'");
+	}
       else
 	{
-	  wave[str] = wav_data;
-	  return wav_data;
+
+	  wav_data->volume = 80;
+
+	  if (!wav_data) 
+	    {
+	      throw PingusError("PingusWavProvider: Couldn't load " + str + ": " + SDL_GetError());
+	    } 
+	  else
+	    {
+	      wave[str] = wav_data;
+	      return wav_data;
+	    }
 	}
     }
 #endif /* HAVE_LIBSDL_MIXER */

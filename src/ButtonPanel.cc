@@ -1,4 +1,4 @@
-//  $Id: ButtonPanel.cc,v 1.15 2001/03/31 11:21:50 grumbel Exp $
+//  $Id: ButtonPanel.cc,v 1.16 2001/04/08 14:10:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -83,9 +83,9 @@ ButtonPanel::~ButtonPanel()
 }
 
 void
-ButtonPanel::update()
+ButtonPanel::update(float delta)
 {
-  pressed_button->update();
+  pressed_button->update(delta);
 
   if (last_press + 350 < CL_System::get_time()) 
     {

@@ -1,4 +1,4 @@
-//  $Id: basher.cc,v 1.19 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: basher.cc,v 1.20 2001/04/08 14:10:34 grumbel Exp $
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //
@@ -71,7 +71,7 @@ Basher::draw_offset(int x, int y, float s)
 }
 
 void
-Basher::update()
+Basher::update(float delta)
 {
   ++counter;
   ++basher_c;

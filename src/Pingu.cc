@@ -1,4 +1,4 @@
-//  $Id: Pingu.cc,v 1.45 2001/04/07 16:48:29 grumbel Exp $
+//  $Id: Pingu.cc,v 1.46 2001/04/08 14:10:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -303,7 +303,7 @@ Pingu::do_persistent()
 // FIXME: This function is *much* to large, it needs a real cut down
 // into smaller pieces.  
 void
-Pingu::update(void)
+Pingu::update(float delta)
 {
   if (status == dead) 
     return;
@@ -328,7 +328,7 @@ Pingu::update(void)
     
   if (rel_getpixel(0, -1) == ColMap::OUTOFSCREEN) 
     {
-      PingusSound::play_wav("DIE");
+      PingusSound::play_wav("die");
       status = dead;
       return;
     }
@@ -337,7 +337,7 @@ Pingu::update(void)
   
   if (action.get()) 
     { // if we have an action, update() it
-      action->update();
+      action->update(delta);
     }
   else 
     { // if we have no action, let the pingu walk

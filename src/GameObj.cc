@@ -1,4 +1,4 @@
-//  $Id: GameObj.cc,v 1.3 2001/03/31 11:21:50 grumbel Exp $
+//  $Id: GameObj.cc,v 1.4 2001/04/08 14:10:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -44,7 +44,7 @@ GameObj::SetResourceManager(CL_ResourceManager* res)
 }
 */
 void 
-GameObj::update()
+GameObj::update(float delta)
 {
   //  std::cout << "GameObj::update: doing nothing" << std::endl;
 }

@@ -1,4 +1,4 @@
-//  $Id: WorldObj.hh,v 1.14 2001/04/01 18:00:37 grumbel Exp $
+//  $Id: WorldObj.hh,v 1.15 2001/04/08 14:10:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -70,7 +70,7 @@ public:
   /** The update function is called once a game loop, the delta
    * specifies how much time is passed since the last update
    * delta = 1.0 means that one second of realtime has passed. */
-  virtual void update(float delta = 0.0);
+  virtual void update(float delta);
 
   /** Create an WorldObj out of some WorldObj data
    *  @return a new suitable WorldObj for the specified data, or null if no 

@@ -1,4 +1,4 @@
-//  $Id: climber.hh,v 1.6 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: climber.hh,v 1.7 2001/04/08 14:10:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -35,15 +35,15 @@ public:
   Climber();
 
   ///
-  void   init(void);
+  void   init();
   ///
-  void   update(void);
+  void   update(float delta);
   ///
-  int    x_offset(void);
+  int    x_offset();
   ///
-  int    y_offset(void);
+  int    y_offset();
   ///
-  PinguAction* allocate(void);
+  PinguAction* allocate();
   ///
   ActionType get_type(void) { return (ActionType)WALL; }
 }///

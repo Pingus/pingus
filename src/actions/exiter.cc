@@ -1,4 +1,4 @@
-//  $Id: exiter.cc,v 1.10 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: exiter.cc,v 1.11 2001/04/08 14:10:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -48,7 +48,7 @@ Exiter::init(void)
 }
 
 void
-Exiter::update()
+Exiter::update(float delta)
 {
   if (pingu->get_status() != exited 
       && (counter >= (int)(surface.get_num_frames()/2) - 1)) 

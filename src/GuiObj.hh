@@ -1,4 +1,4 @@
-//  $Id: GuiObj.hh,v 1.7 2001/03/31 11:21:50 grumbel Exp $
+//  $Id: GuiObj.hh,v 1.8 2001/04/08 14:10:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -51,7 +51,7 @@ public:
   virtual void draw() = 0;
 
   /// Move the world one step further
-  virtual void update();
+  virtual void update(float delta);
 
   /** Update all elements, which are indepented of the world speed
       (for example scrolling). */

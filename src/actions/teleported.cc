@@ -1,4 +1,4 @@
-//  $Id: teleported.cc,v 1.7 2001/03/31 11:21:51 grumbel Exp $
+//  $Id: teleported.cc,v 1.8 2001/04/08 14:10:34 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -41,7 +41,7 @@ Teleported::init(void)
 }
 
 void
-Teleported::update(void)
+Teleported::update(float delta)
 {
   if (pingu->get_status() == dead)
     return;
