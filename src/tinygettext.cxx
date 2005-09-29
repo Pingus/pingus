@@ -25,12 +25,12 @@
 #include <ctype.h>
 #include <errno.h>
 #include "tinygettext.hxx"
+#include "pingus_error.hxx"
+
 
 //#define TRANSLATION_DEBUG
 
 namespace TinyGetText {
-
-/* Probally better from dolphin:
 
 class charconv
 {
@@ -38,7 +38,7 @@ public:
 	charconv() : m_conv(0)
 	{}
  
-	charconv(const string& incharset, const string& outcharset)
+	charconv(const std::string& incharset, const std::string& outcharset)
 	: m_conv(0)
 	{
 		create(incharset, outcharset);
@@ -49,12 +49,12 @@ public:
 		close();
 	}
  
-	void create(const string& incharset, const string& outcharset)
+	void create(const std::string& incharset, const std::string& outcharset)
 	{
 		// Create the converter.
 		if(!(m_conv = iconv_open(incharset.c_str(), outcharset.c_str())))
 		{
-			if(errno == EINVAL)
+			/*if(errno == EINVAL)
 			{
 				ostringstream sstr;
 				sstr << "Unsupported conversion: " << incharset
@@ -63,6 +63,8 @@ public:
 			}
 			else
 				throw runtime_error(strerror(errno));
+			*/
+			exit(1);
 		}
 	}
  
@@ -84,12 +86,13 @@ public:
 		size_t in_size = text.size();
 		size_t out_size = 4*in_size; // Worst case scenario: ASCII -> UTF-32?
 		std::string result(out_size, ' ');
-		char* in_str = &text[0];
+		const char* in_str = &text[0];
 		char* out_str = &result[0];
  
 		// Try to convert the text.
 		if(iconv(m_conv, &in_str, &in_size, &out_str, &out_size) != 0)
-			throw runtime_error(std::string("Error while converting: ") + strerror(errno));
+			//PingusError::raise("Error while converting: " + strerror(errno));
+			exit(1);
 		// Eat off the spare space.
 		result.resize(out_str - &result[0]);
 		return result;
@@ -98,7 +101,6 @@ protected:
 	iconv_t m_conv;
 };
 
-*/
 
 /** Convert \a which is in \a from_charset to \a to_charset and return it */
 std::string convert(const std::string& text,
@@ -108,6 +110,12 @@ std::string convert(const std::string& text,
   if (from_charset == to_charset)
     return text;
 
+  charconv *cc = new charconv(from_charset, to_charset);
+  std::string ret = cc->convert(text);
+  cc->close();
+  return ret;
+}
+/*
   iconv_t cd = iconv_open(to_charset.c_str(), from_charset.c_str());
   
   size_t in_len  = text.length();
@@ -118,7 +126,7 @@ std::string convert(const std::string& text,
   strcpy(in_orig, text.c_str());
 
   char* out = out_orig;
-  char* in  = in_orig;
+  const char* in  = in_orig;
 
   //std::cout << "IN: " << (int)in << " " << in_len << " " << (int)out << " " << out_len << std::endl;
   int retval = iconv(cd, &in, &in_len, &out, &out_len);
@@ -137,12 +145,13 @@ std::string convert(const std::string& text,
 <dolphin> there will be extra spaces at the end of the string
 <dolphin> the lenght of the final string should be: out_str - out_orig
 <dolphin> or: out_size_before_iconv_call - out_size_after_iconv_call
-   */
+   
   std::string ret(out_orig, out_len);
   delete[] out_orig;
   delete[] in_orig;
   return ret;
 }
+*/
 
 bool has_suffix(const std::string& lhs, const std::string rhs)
 {

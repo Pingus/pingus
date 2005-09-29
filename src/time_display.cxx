@@ -66,7 +66,7 @@ TimeDisplay::draw (DrawingContext& gc)
       {
         CL_Font myfont = font;
         myfont.set_alignment(origin_top_center);
-        myfont.draw(CL_Display::get_width() - 5, 3, time_string);
+        myfont.draw(CL_Display::get_width() - 30, 3, time_string);
       }
     }
 
