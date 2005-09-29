@@ -195,12 +195,12 @@ SurfaceBackground::draw (SceneContext& gc)
           start_x = static_cast<int>((x_of * para_x) + scroll_ox);
           start_y = static_cast<int>((y_of * para_y) + scroll_oy);
 
-          if (start_x >= 0)
+          while (start_x >= 0)
             start_x = start_x - bg_surface.get_width();
 
-          if (start_y >= 0)
+          while (start_y >= 0)
             start_y -= bg_surface.get_height();
-          else if (start_y < 0 - static_cast<int>(bg_surface.get_height()))
+          while (start_y < 0 - static_cast<int>(bg_surface.get_height()))
             start_y += bg_surface.get_height();
 
           for(int y = start_y;

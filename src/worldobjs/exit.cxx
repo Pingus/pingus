@@ -93,7 +93,7 @@ Exit::update ()
   for (PinguIter pingu = holder->begin(); pingu != holder->end(); ++pingu)
     {
       if (   (*pingu)->get_x() > pos.x - 1 && (*pingu)->get_x() < pos.x + 1
-	  && (*pingu)->get_y() > pos.y - 5 && (*pingu)->get_y() < pos.y + 1)
+	  && (*pingu)->get_y() > pos.y - 5 && (*pingu)->get_y() < pos.y + 2)
 	{
 	  if (   (*pingu)->get_status() != PS_EXITED
 	      && (*pingu)->get_status() != PS_DEAD
