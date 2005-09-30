@@ -325,7 +325,7 @@ Theme::load_levels()
 
       try
 	      {
-                XMLPingusLevel plf(filename);
+                XMLPingusLevel plf(filename, filename);
 	        levelnames.push_back(System::translate(plf.get_levelname()));
 	      }
 	    catch (PingusError& err)

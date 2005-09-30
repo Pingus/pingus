@@ -34,9 +34,10 @@
 
 namespace Pingus {
 
-XMLPingusLevel::XMLPingusLevel(const std::string& filename)
+XMLPingusLevel::XMLPingusLevel(const std::string& res_name,
+                               const std::string& filename)
 {
-  impl->resname = CL_String::get_filename(filename);
+  impl->resname = res_name;
 
   CL_InputSourceProvider_File provider(".");
   CL_DomDocument doc(provider.open_source(filename), true);

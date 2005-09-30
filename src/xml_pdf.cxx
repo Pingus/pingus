@@ -61,7 +61,8 @@ XMLPDF::XMLPDF(const std::string& filename)
   if (levelname.empty())
     PingusError::raise("XMLPDF: No level given");
 
-  plf = XMLPingusLevel(path_manager.complete("levels/" + levelname + ".pingus"));
+  plf = XMLPingusLevel(path_manager.complete("levels/" + levelname + ".pingus"),
+                       path_manager.complete("levels/" + levelname + ".pingus"));
 
   std::cout << "XXXXXXXXX Read Demo file: " << std::endl;
   write_xml(std::cout);

@@ -30,7 +30,7 @@ int main(int argc, char** argv)
   try
     {
       CL_SetupCore setup_core;
-      PingusLevel level = XMLPingusLevel("levelout.xml");
+      PingusLevel level = XMLPingusLevel("levelout.xml", "levelout.xml");
 
       std::cout << "Levelname:        " << level.get_levelname() << std::endl;
       std::cout << "Description:      " << level.get_description() << std::endl;

@@ -29,7 +29,8 @@ class XMLPingusLevel : public PingusLevel
 {
 private:
 public:
-  XMLPingusLevel(const std::string& filename);
+  XMLPingusLevel(const std::string& res_name,
+                 const std::string& filename);
 };
 
 } // namespace Pingus
