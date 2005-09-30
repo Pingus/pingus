@@ -282,7 +282,7 @@ std::string
 System::get_vardir()
 {
 #ifdef WIN32
-  return "var\\";
+  return "var/";
 #else
   return "/var/games/pingus/";
 #endif
@@ -292,8 +292,10 @@ std::string
 System::get_tmpdir()
 {
 #ifdef WIN32
-  // FIXME: Warning: these hardcoded values are most probably wrong!
-  return "c:\\windows\\temp\\";
+  char* tmpdir = getenv("TEMP");
+  if (!tmpdir) tmpdir = getenv("TMP");
+  if (!tmpdir) return get_statdir() + "tmp/";
+  else return std::string(tmpdir);
 #else
   return "/tmp/";
 #endif

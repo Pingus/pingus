@@ -65,6 +65,12 @@ StatManager::~StatManager()
 void
 StatManager::load(const std::string& filename)
 {
+  if (!System::exist(filename))
+  {
+     // Create empty file
+     save(filename);
+  }
+  
   CL_InputSourceProvider_File provider(".");
   CL_DomDocument doc(provider.open_source(filename), true);
       
