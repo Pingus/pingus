@@ -15,30 +15,30 @@
 
   <pause-button>
     <key-button>
-      <key>P</key>
+      <key>p</key>
     </key-button>
   </pause-button>
 
   <fast-forward-button>
     <multiple-button>
       <key-button>
-        <key>F</key>
+        <key>f</key>
       </key-button>
       <key-button>
-        <key>SPACE</key>
+        <key>space</key>
       </key-button>
     </multiple-button>
   </fast-forward-button>
 
   <armageddon-button>
     <key-button>
-      <key>A</key>
+      <key>a</key>
     </key-button>
   </armageddon-button>
 
   <escape-button>
     <key-button>
-      <key>ESCAPE</key>
+      <key>escape</key>
     </key-button>
   </escape-button>
 
@@ -46,21 +46,21 @@
     <axis-scroller>
       <speed>1000</speed>
       <button-axis>
-        <angle>-90</angle>
+        <angle>90</angle>
         <key-button>
-          <key>DOWN</key>
+          <key>down</key>
         </key-button>
         <key-button>
-          <key>UP</key>
+          <key>up</key>
         </key-button>
       </button-axis>      
       <button-axis>
         <angle>0</angle>
         <key-button>
-          <key>RIGHT</key>
+          <key>right</key>
         </key-button>
         <key-button>
-          <key>LEFT</key>
+          <key>left</key>
         </key-button>
       </button-axis>
     </axis-scroller>
@@ -82,7 +82,7 @@
   <action-up>
     <multiple-button>
       <key-button>
-        <key>PAGEUP</key>
+        <key>prior</key>
       </key-button>
       <mouse-button>
         <button>5</button>
@@ -93,7 +93,7 @@
   <action-down>
     <multiple-button>
       <key-button>
-        <key>PAGEDOWN</key>
+        <key>next</key>
       </key-button>
       <mouse-button>
         <button>4</button>

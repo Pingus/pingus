@@ -50,6 +50,7 @@ ActionButton::init(int x, int y, ActionName name_, int owner_id)
   font_b = Fonts::pingus_large;
 
   sprite = Resource::load_sprite("pingus/" + action_to_string(name) + "/right");
+  sprite.set_play_loop(true);
 }
 
 bool

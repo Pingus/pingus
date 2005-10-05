@@ -191,23 +191,24 @@ Playfield::update(float delta)
 
   if (auto_scrolling)
     {
-      // FIXME: This should be delta dependant
-      scroll_speed = 15;
-
-      if (mouse_pos.x < 2)
+      // FIXME: May need to modify this function if it's not gradient enough.
+      scroll_speed = static_cast<int>(800 * delta);
+      //std::cout << "scroll_speed: " << scroll_speed << std::endl;
+    
+      if (mouse_pos.x < 10)
 	{
 	  state.set_pos(state.get_pos() - CL_Point(scroll_speed, 0));
 	}
-      else if (mouse_pos.x > CL_Display::get_width() - 3)
+      else if (mouse_pos.x > CL_Display::get_width() - 10)
 	{
 	  state.set_pos(state.get_pos() + CL_Point(scroll_speed, 0));
 	}
 
-      if (mouse_pos.y < 2)
+      if (mouse_pos.y < 10)
 	{
 	  state.set_pos(state.get_pos() - CL_Point(0, scroll_speed));
 	}
-      else if (mouse_pos.y > CL_Display::get_height() - 3)
+      else if (mouse_pos.y > CL_Display::get_height() - 10)
 	{
 	  state.set_pos(state.get_pos() + CL_Point(0, scroll_speed));	 
 	}

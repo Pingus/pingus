@@ -60,11 +60,11 @@
       <image file="../images/entrances/industrial_top.png"/>
     </sprite>
     <sprite name="snow_front">
-      <translation origin="bottom_center"/>
+      <!--<translation origin="bottom_center"/>-->
       <image file="../images/entrances/snow_front.png"/>
     </sprite>
     <sprite name="snow_back">
-      <translation origin="bottom_center"/>
+      <!--<translation origin="bottom_center"/>-->
       <image file="../images/entrances/snow_back.png"/>
     </sprite>
   </section>
