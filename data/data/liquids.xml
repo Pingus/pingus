@@ -13,7 +13,7 @@
       <animation speed="130" />
       <image file="../images/liquids/water2.png">
         <grid pos="0,0" size="64,64" array="8,1"/>
-      </image>-->
+      </image>
     </sprite>
     <sprite name="water3">
       <image file="../images/liquids/water3.png">

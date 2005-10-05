@@ -123,8 +123,9 @@
       </sprite>
 
       <sprite name="armageddon_anim">
-        <image file="../images/core/buttons/armageddon_anim.png"/>
-        <grid array="14,1" size="36,57" pos="0,0"/>
+        <image file="../images/core/buttons/armageddon_anim.png">
+          <grid array="14,1" size="36,57" pos="0,0"/>
+       </image>
       </sprite>
     </section>
     <section name="menu">
