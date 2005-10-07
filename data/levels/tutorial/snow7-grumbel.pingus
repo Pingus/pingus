@@ -792,7 +792,7 @@
         <y>525</y>
         <z>-50</z>
       </position>
-      <width>30</width>
+      <width>1920</width>
       <speed>55</speed>
     </liquid>
     <liquid>
@@ -805,7 +805,7 @@
         <y>538</y>
         <z>100</z>
       </position>
-      <width>30</width>
+      <width>1920</width>
       <speed>60</speed>
     </liquid>
   </objects>

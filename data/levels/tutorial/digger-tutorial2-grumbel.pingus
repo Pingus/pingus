@@ -55,7 +55,7 @@
         <y>629</y>
         <z>-50</z>
       </position>
-      <width>23</width>
+      <width>1472</width>
       <speed>55</speed>
     </liquid>
     <hotspot>
@@ -766,7 +766,7 @@
         <y>643</y>
         <z>50</z>
       </position>
-      <width>23</width>
+      <width>1472</width>
       <speed>60</speed>
     </liquid>
     <hotspot>

@@ -69,7 +69,7 @@
         <y>935</y>
         <z>-50</z>
       </position>
-      <width>20</width>
+      <width>1280</width>
       <speed>55</speed>
     </liquid>
     <groundpiece>
@@ -1270,7 +1270,7 @@
         <y>944</y>
         <z>100</z>
       </position>
-      <width>20</width>
+      <width>1280</width>
       <speed>60</speed>
     </liquid>
   </objects>
