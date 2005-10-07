@@ -68,9 +68,6 @@ XMLPingusLevel::XMLPingusLevel(const std::string& res_name,
             }
           else if (node.get_tag_name() == "head")
             {
-              // FIXME: Move default stuff to pingus_level_impl
-              impl->ambient_light = CL_Colorf(1.0f, 1.0f, 1.0f, 1.0f);
-
               XMLFileReader reader(node);
               reader.read_string("levelname",        impl->levelname);
               reader.read_string("description",      impl->description);

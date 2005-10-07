@@ -10,52 +10,60 @@
 
     <sprite name="smasher">
       <image file="../images/traps/smasher.png">
-        <grid array="6,1"  height="189" width="282" x="0" y="0" />
+        <grid pos="0,0" size="282,189" array="6,1" />
       </image>
     </sprite>
 
     <sprite name="hammer">
-      <animation loop="no"/>
+      <animation speed="60" loop="no" />
       <image file="../images/traps/hammer.png">
-        <grid array="13,1"  height="181" width="151" x="0" y="0" />
+        <grid pos="0,0" size="151,181" array="13,1" />
       </image>
     </sprite>
 
     <sprite name="fake_exit">
       <translation origin="bottom_center"/>
       <image file="../images/traps/fake_exit.png">
-        <grid array="9,1" height="112" tcol="0" width="75" x="0" y="0" />
+        <grid pos="0,0" size="75,112" array="9,1" />
       </image>
     </sprite>
 
     <sprite name="spike">
       <image file="../images/traps/spike.png">
-        <grid array="14,1" height="32" tcol="0" width="32" x="0" y="0" />
+        <grid pos="0,0" size="32,32" array="14,1" />
       </image>
     </sprite>
 
-    <sprite name="guillotinekill">
-      <image file="../images/traps/guillotinekill.png">
-        <grip array="12,2"  height="96" tcol="0" width="80" x="0" y="0" />
-      </image>
-    </sprite>
-    
+    <section name="guillotinekill">
+      <sprite name="left">
+        <image file="../images/traps/guillotinekill.png">
+          <grid pos="0,0" size="80,96" array="12,1" />
+        </image>
+      </sprite>
+        
+      <sprite name="right">
+        <image file="../images/traps/guillotinekill.png">
+          <grid pos="0,96" size="80,96" array="12,1" />
+        </image>
+      </sprite>
+    </section>
+
     <sprite name="guillotineidle">
       <image file="../images/traps/guillotineidle.png">
-        <grip array="7,1"  height="96"  tcol="0" width="80" x="0" y="0" />
+        <grid pos="0,0" size="80,96" array="7,1" />
       </image>
     </sprite>
-
+        
     <sprite name="laser_exit">
       <image file="../images/traps/laser_exit.png">
-        <grid array="6,1" height="60" tcol="0" width="75" x="0" y="0" />
+        <grid pos="0,0" size="75,60" array="6,1" />
       </image>
     </sprite>
 
     <sprite name="bumper">
       <translation origin="bottom_center"/>
       <image file="../images/traps/bumper.png">
-        <grid array="6,1" height="102" tcol="0" width="60" x="0" y="0" />
+        <grid pos="0,0" size="60,102" array="6,1" />
       </image>
     </sprite>
 

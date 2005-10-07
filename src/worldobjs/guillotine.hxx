@@ -37,12 +37,11 @@ namespace WorldObjs {
 class Guillotine : public WorldObj
 {
 private:
-  CL_Sprite   surface;
-  CL_Sprite   idle_surf;
+  CL_Sprite   sprite_kill_right;
+  CL_Sprite   sprite_kill_left;  
+  CL_Sprite   sprite_idle;
   Vector      pos;
   Direction   direction;
-  GameCounter counter;
-  GameCounter idle_counter;
 
   bool killing;
 

@@ -28,21 +28,16 @@ namespace Pingus {
 namespace WorldObjs {
 
 Guillotine::Guillotine(const FileReader& reader)
-  : surface  (Resource::load_sprite("traps/guillotinekill")),
-    idle_surf(Resource::load_sprite("traps/guillotineidle")),
+  : sprite_kill_right (Resource::load_sprite("traps/guillotinekill/right")),
+    sprite_kill_left (Resource::load_sprite("traps/guillotinekill/left")),
+    sprite_idle (Resource::load_sprite("traps/guillotineidle")),
     killing(false)
 {
   reader.read_vector("position", pos);
-
-  counter.set_size(surface.get_frame_count()/2);
-  counter.set_type(GameCounter::once);
-  counter.set_speed(0.7);
-  counter = 0;
-
-  idle_counter.set_size(idle_surf.get_frame_count());
-  idle_counter.set_type(GameCounter::loop);
-  idle_counter.set_speed(0.3);
-  idle_counter = 0;
+  
+  sprite_kill_right.set_play_loop(false);
+  sprite_kill_left.set_play_loop(false);
+  sprite_idle.set_play_loop(true);
 }
 
 void
@@ -50,11 +45,11 @@ Guillotine::draw (SceneContext& gc)
 {
   if (killing) {
     if (direction.is_left())
-      gc.color().draw(surface, pos, counter);
+      gc.color().draw (sprite_kill_left, pos);
     else
-      gc.color().draw (surface, pos, counter + 12);
+      gc.color().draw (sprite_kill_right, pos);
   } else {
-    gc.color().draw (idle_surf, pos, idle_counter);
+    gc.color().draw (sprite_idle, pos);
   }
 }
 
@@ -68,19 +63,23 @@ Guillotine::get_z_pos () const
 void
 Guillotine::update ()
 {
-  if (counter.finished()) {
-    counter = 0;
+  // Only have to check one sprite because they update simultaneously
+  if (sprite_kill_left.is_finished())
     killing = false;
-  }
 
   PinguHolder* holder = world->get_pingus();
   for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
     catch_pingu(*pingu);
 
   if (killing) {
-    ++counter;
+    // Update both sprites so they finish at the same time.
+    sprite_kill_left.update();
+    sprite_kill_right.update();
+    // FIXME: Should be a different sound
+    if (sprite_kill_left.get_current_frame() == 7)
+       WorldObj::get_world()->play_sound("splash", pos);
   } else {
-    ++idle_counter;
+    sprite_idle.update();
   }
 }
 
@@ -95,6 +94,8 @@ Guillotine::catch_pingu (Pingu* pingu)
 	  killing = true;
 	  pingu->set_status(PS_DEAD);
 	  direction = pingu->direction;
+    sprite_kill_left.restart();
+    sprite_kill_right.restart();
 	}
     }
 }

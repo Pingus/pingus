@@ -47,7 +47,8 @@ private:
 
   std::string worldmapfile;
   std::string resolution;
-
+  int refresh_rate;
+  
   CL_Slot on_button_press_slot;
   CL_Slot on_button_release_slot;
 

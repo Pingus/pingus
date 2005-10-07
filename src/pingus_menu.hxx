@@ -58,11 +58,14 @@ private:
   
   void on_resize (int w, int h);
 
+  // These functions setup the different menus
   void setup_main_menu();
   void setup_game_menu();
-
+  void setup_contrib_menu();
+  
   void do_quit();
   void do_start();
+  void do_contrib(const std::string&);
 
 public:
   PingusMenu (PingusMenuManager* m);

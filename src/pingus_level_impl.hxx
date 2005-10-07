@@ -33,6 +33,15 @@ namespace Pingus {
 class PingusLevelImpl
 {
 public:
+       
+  // Set defaults in constructor
+  PingusLevelImpl()
+  : ambient_light(CL_Colorf(1.0f, 1.0f, 1.0f, 1.0f)),
+    music("none")
+  {
+    // Do nothing
+  }
+                    
   std::string resname;
 
   std::string levelname;

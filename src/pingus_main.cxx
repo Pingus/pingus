@@ -121,6 +121,7 @@ PingusMain::PingusMain()
 {
   show_credits = false;
   blitter_test = false;
+  refresh_rate = 60;
 }
 
 PingusMain::~PingusMain()
@@ -197,6 +198,8 @@ PingusMain::check_args(int argc, char** argv)
                   _("Start in Window Mode"));
   argp.add_option('f', "fullscreen", "",
                   _("Start in Fullscreen"));
+  argp.add_option('R', "refresh-rate", "",
+                  _("Set the refresh rate in fullscreen (default: 60)"));                  
   argp.add_option('d', "datadir", _("PATH"),
                   _("Set the path to load the data files to 'path'"));
   argp.add_option('l', "level",  _("FILE"), 
@@ -278,6 +281,7 @@ PingusMain::check_args(int argc, char** argv)
       {"geometry",          required_argument, 0, 'g'},
       {"quick-play",        no_argument,       0, 'q'},
       {"fullscreen",        no_argument,       0, 'f'},
+      ("refresh-rate",      required_argument, 0, 'R'),
       {"window",            no_argument,       0, 'w'},
       {"disable-swcursor",  no_argument,       0, 345},
       {"enable-swcursor",   no_argument,       0, 346},
@@ -414,6 +418,11 @@ PingusMain::check_args(int argc, char** argv)
           fullscreen_enabled = true;
           break;
 
+        case 'R': // --refresh-rate
+          sscanf(argp.get_argument().c_str(), "%d", &refresh_rate);
+          std::cout << "Pingus: Refresh rate is " << refresh_rate << std::endl;
+          break;
+          
         case 'w': // --window
           fullscreen_enabled = false;
           break;
@@ -659,7 +668,8 @@ PingusMain::print_greeting_message()
   std::cout << _("fullscreen:              ")
             << (fullscreen_enabled ? _(" enabled") : _("disabled"))
             << std::endl;
-
+  std::cout << _("refresh rate:            ") << refresh_rate << std::endl;
+  
   std::cout << std::endl;
 }
 
@@ -863,8 +873,15 @@ PingusMain::init_clanlib()
                   << screen_width << "x" << screen_height << std::endl;
       }
 
-      window = new CL_DisplayWindow(PACKAGE_STRING,
-                                    screen_width, screen_height, fullscreen_enabled, false);
+      CL_DisplayWindowDescription window_desc;
+      window_desc.set_size(CL_Size(screen_width, screen_height));
+      window_desc.set_title(PACKAGE_STRING);
+      window_desc.set_fullscreen(fullscreen_enabled);
+      window_desc.set_allow_resize(false);
+      window_desc.set_refresh_rate(refresh_rate);
+      
+      window = new CL_DisplayWindow(window_desc);
+      
       sound  = new CL_SoundOutput(44100);
 
       CL_Display::clear();

@@ -18,19 +18,26 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Display/display.h>
+#include <ClanLib/core.h>
+#include <ClanLib/gui.h>
+#include <ClanLib/guistylesilver.h>
 #include <config.h>
 #include "gettext.h"
 #include "menu_button.hxx"
 #include "resource.hxx"
 #include "debug.hxx"
+#include "globals.hxx"
 #include "sound/sound.hxx"
 #include "stat_manager.hxx"
+#include "start_screen.hxx"
 #include "story_screen.hxx"
 #include "story.hxx"
 #include "worldmap/manager.hxx"
 #include "gui/screen_manager.hxx"
 #include "pingus_menu_manager.hxx"
 #include "gui/gui_manager.hxx"
+#include "plf_res_mgr.hxx"
+#include "path_manager.hxx"
 
 namespace Pingus {
 
@@ -74,6 +81,8 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
 
   slots.push_back(story_button->sig_click().connect(this, &PingusMenu::do_start));
   slots.push_back(multiplayer_button->sig_click().connect(this, &PingusMenu::setup_main_menu));
+  
+  slots.push_back(contrib_button->sig_click().connect(this, &PingusMenu::setup_contrib_menu));
 }
 
 void
@@ -93,6 +102,45 @@ PingusMenu::setup_game_menu()
   gui_manager->remove(quit_button);
   gui_manager->remove(start_button);
 
+  gui_manager->add(contrib_button);
+  gui_manager->add(story_button);
+  gui_manager->add(multiplayer_button);
+}
+
+void
+PingusMenu::setup_contrib_menu()
+{ // Remove buttons and select a level to play
+  gui_manager->remove(contrib_button);
+  gui_manager->remove(story_button);
+  gui_manager->remove(multiplayer_button);
+  
+ 	// Create a Clanlib GUIManager using the silver style
+  CL_ResourceManager *resources = new 
+      CL_ResourceManager(path_manager.complete("GUIStyleSilver/gui.xml"));
+	CL_StyleManager_Silver *style = new CL_StyleManager_Silver(resources);
+	CL_GUIManager *gui = new CL_GUIManager(style);
+	CL_FileDialog *filedialog = new CL_FileDialog("Levels", "", "*.pingus", gui, style);
+
+	// This next line is a workaround until ClanLib applies my patch to their SVN
+	// set_dir should do this automatically.
+  CL_Directory::change_to(path_manager.complete("levels"));
+
+	filedialog->set_dir(path_manager.complete("levels"));
+  filedialog->run();
+	const std::string filename = filedialog->get_file();
+  pout(PINGUS_DEBUG_LOADING) << "PingusMenu: Chose filename: " << filename << std::endl;
+    
+  // Clean up ClanLib stuff
+  delete filedialog;
+  delete gui;
+  delete style;
+  delete resources;
+  
+  // Launch level
+  if (filename != "")
+     do_contrib(filename);
+
+  // Reset menu
   gui_manager->add(contrib_button);
   gui_manager->add(story_button);
   gui_manager->add(multiplayer_button);
@@ -136,6 +184,14 @@ PingusMenu::do_start()
     {
       ScreenManager::instance()->push_screen(WorldMapNS::WorldMapManager::instance ());
     }
+}
+
+void PingusMenu::do_contrib(const std::string &levelfile)
+{ // Launch the specified level - don't bother checking for it, it has to exist
+  Sound::PingusSound::play_sound ("letsgo");
+  ScreenManager::instance()->push_screen
+     (new StartScreen(PLFResMgr::load_plf_from_filename(levelfile)),
+      true);
 }
 
 void
