@@ -19,13 +19,16 @@
       <version>2</version>
       <head>
         <xsl:apply-templates select="global/*|action-list"/>
+        <xsl:if test="count(global/music) = 0">
+          <music>none</music>
+        </xsl:if>
         <levelsize>
           <width><xsl:value-of  select="/pingus-level/global/width" /></width>
           <height><xsl:value-of select="/pingus-level/global/height" /></height>
         </levelsize>
       </head>
       <objects>
-        <xsl:apply-templates select="background|exit|entrance|hotspot|worldobj|liquid|group"/>
+        <xsl:apply-templates select="background|exit|entrance|hotspot|worldobj|liquid|group|groundpiece|trap"/>
       </objects>
     </pingus-level>
   </xsl:template>
@@ -33,7 +36,7 @@
   <xsl:template match="/pingus-level/global/levelname">
     <xsl:choose>
       <xsl:when test="@lang='en'">
-        <levelname><xsl:apply-templates /></levelname>
+        <levelname><xsl:apply-templates select="*"/></levelname>
       </xsl:when>
     </xsl:choose>
   </xsl:template>
@@ -41,7 +44,7 @@
   <xsl:template match="/pingus-level/global/description">
     <xsl:choose>
       <xsl:when test="@lang='en'">
-        <description><xsl:apply-templates /></description>
+        <description><xsl:apply-templates select="*"/></description>
       </xsl:when>
     </xsl:choose>
   </xsl:template>
@@ -58,7 +61,16 @@
         <xsl:with-param name="text" select="concat(translate($datafile, '-', '/'), '/', $ident)" />
       </xsl:call-template>
     </image>
-    <modifier><xsl:value-of select="modifier" /></modifier>
+    <modifier>
+      <xsl:choose>
+        <xsl:when test="string(modifier) != ''">
+          <xsl:value-of select="modifier" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text>ROT0</xsl:text>
+        </xsl:otherwise>
+      </xsl:choose>
+    </modifier>
   </xsl:template>
 
   <xsl:template name="replace-alias">
@@ -75,12 +87,12 @@
 
   <xsl:template match="worldobj">
     <xsl:element name="{@type}">
-      <xsl:apply-templates />
+      <xsl:apply-templates select="*"/>
     </xsl:element>
   </xsl:template>
 
   <xsl:template match="liquid">
-    <liquid><xsl:apply-templates /></liquid>
+    <liquid><xsl:apply-templates select="*"/></liquid>
   </xsl:template>
 
   <xsl:template match="exit">
@@ -89,7 +101,7 @@
         old-pos-handling is not supported
       </xsl:message>
     </xsl:if>
-    <exit><xsl:apply-templates /></exit>
+    <exit><xsl:apply-templates select="*"/></exit>
   </xsl:template>
 
   <xsl:template match="action-list/*">
@@ -99,30 +111,74 @@
   </xsl:template>
 
   <xsl:template match="background">
-    <xsl:element name="{concat(@type, '-background')}">
-      <xsl:apply-templates />
-    </xsl:element>
+    <xsl:choose>
+      <xsl:when test="string(@type) != ''">
+        <xsl:element name="{concat(@type, '-background')}">
+        <xsl:apply-templates select="*"/>
+        </xsl:element>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:element name="surface-background">
+        <xsl:apply-templates select="*"/>
+         </xsl:element>
+     </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="action-list">
     <actions>
-      <xsl:apply-templates />
+      <xsl:apply-templates select="*"/>
     </actions>
   </xsl:template>
 
   <xsl:template match="group">
-    <xsl:apply-templates />
+    <xsl:apply-templates select="*"/>
   </xsl:template>
 
   <xsl:template match="x-pos">
-    <x><xsl:apply-templates /></x>
+    <x><xsl:apply-templates/></x>
   </xsl:template>
 
   <xsl:template match="y-pos">
-    <y><xsl:apply-templates /></y>
+    <y><xsl:apply-templates/></y>
   </xsl:template>
 
   <xsl:template match="z-pos">
-    <z><xsl:apply-templates /></z>
+    <z><xsl:apply-templates/></z>
   </xsl:template>
+
+  <xsl:template match="groundpiece">
+    <groundpiece>
+      <type><xsl:value-of select="@type"/></type>
+      <xsl:apply-templates select="*"/>
+    </groundpiece>
+	</xsl:template>
+
+	<xsl:template match="trap">
+		<xsl:element name="{type}">
+			<xsl:apply-templates select="*"/>
+		</xsl:element>
+	</xsl:template>
+	<xsl:template match="trap/type"/>
+
+  <xsl:template match="surface|position">
+    <xsl:copy>
+      <xsl:apply-templates select="*"/>
+    </xsl:copy>
+	</xsl:template>
+
+  <xsl:template match="exit">
+    <xsl:element name="exit">
+    <xsl:choose>
+      <xsl:when test="string(@owner-id) != ''">
+        <xsl:apply-templates select="*"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <owner-id>0</owner-id>
+        <xsl:apply-templates select="*"/>
+      </xsl:otherwise>
+    </xsl:choose>
+    </xsl:element>
+  </xsl:template>
+  
 </xsl:stylesheet>
