@@ -1,397 +1,390 @@
-<?xml version="1.0"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <pingus-level>
-  <global>
-    <levelname lang="en">Pingu Acceleration Labs</levelname>
-    <description lang="en"></description>
-    <author>Craig Timpany &lt;timpany@pingus.cx&gt;</author>
-    <number-of-pingus>100</number-of-pingus>
-    <number-to-save>70</number-to-save>
-    <time>9000</time>
-    <width>800</width>
-    <height>928</height>
-  </global>
-
-<background type="surface">
-  <surface><resource type="datafile">
-    <resource-datafile>textures</resource-datafile>
-  <resource-ident>Textures/rooftile</resource-ident>
-  </resource></surface>
-  <color>
+<version>2</version>
+<head>
+<levelname></levelname>
+<description></description>
+<author>Craig Timpany &lt;timpany@pingus.cx&gt;</author>
+<number-of-pingus>100</number-of-pingus>
+<number-to-save>70</number-to-save>
+<time>9000</time>
+<actions>
+<digger>10</digger>
+<basher>10</basher>
+<blocker>3</blocker>
+<bridger>1</bridger>
+<floater>1</floater>
+</actions>
+<music>none</music>
+<levelsize>
+<width>800</width>
+<height>928</height>
+</levelsize>
+</head>
+<objects>
+<surface-background>
+<surface>
+<image>textures/rooftile</image>
+<modifier>ROT0</modifier>
+</surface>
+<color>
     <red>0</red>
     <green>0</green>
     <blue>0</blue>
     <alpha>1</alpha>
   </color>
-  <scroll-x>0</scroll-x>
-  <scroll-y>0</scroll-y>
-  <para-x>0.5</para-x>
-  <para-y>0.5</para-y>
-  <stretch-x>0</stretch-x>
-  <stretch-y>0</stretch-y>
-</background>
-  <action-list>
-    <digger count="10"/>
-    <basher count="10"/>
-    <blocker count="3"/>
-    <bridger count="1"/>
-    <floater count="1"/>
-  </action-list>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>27</x-pos>
-    <y-pos>822</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<scroll-x>0</scroll-x>
+<scroll-y>0</scroll-y>
+<para-x>0.5</para-x>
+<para-y>0.5</para-y>
+<stretch-x>0</stretch-x>
+<stretch-y>0</stretch-y>
+</surface-background>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/ground/desert/middleprickpiece</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>27</x>
+<y>822</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>627</x-pos>
-    <y-pos>822</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/ground/desert/middleprickpiece</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>627</x>
+<y>822</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>477</x-pos>
-    <y-pos>822</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/ground/desert/middleprickpiece</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>477</x>
+<y>822</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>177</x-pos>
-    <y-pos>822</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/ground/desert/middleprickpiece</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>177</x>
+<y>822</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>327</x-pos>
-    <y-pos>822</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/ground/desert/middleprickpiece</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>327</x>
+<y>822</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>358</x-pos>
-    <y-pos>668</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>358</x>
+<y>668</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>358</x-pos>
-    <y-pos>604</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>358</x>
+<y>604</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>359</x-pos>
-    <y-pos>334</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>359</x>
+<y>334</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>358</x-pos>
-    <y-pos>540</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>358</x>
+<y>540</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>359</x-pos>
-    <y-pos>270</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>359</x>
+<y>270</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>359</x-pos>
-    <y-pos>398</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>359</x>
+<y>398</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>359</x-pos>
-    <y-pos>142</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>359</x>
+<y>142</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/stoneblock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>359</x-pos>
-    <y-pos>206</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>359</x>
+<y>206</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/pillar2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>178</x-pos>
-    <y-pos>692</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/desert/pillar2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>178</x>
+<y>692</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/pillar2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>568</x-pos>
-    <y-pos>692</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/desert/pillar2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>568</x>
+<y>692</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>526</x-pos>
-    <y-pos>616</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/desert/smallbrickpiece</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>526</x>
+<y>616</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>178</x-pos>
-    <y-pos>617</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/desert/smallbrickpiece</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>178</x>
+<y>617</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>553</x-pos>
-    <y-pos>654</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/desert/smallbrickpiece</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>553</x>
+<y>654</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>157</x-pos>
-    <y-pos>655</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/desert/smallbrickpiece</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>157</x>
+<y>655</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/pillar1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>168</x-pos>
-    <y-pos>381</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/desert/pillar1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>168</x>
+<y>381</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/pillar1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>576</x-pos>
-    <y-pos>380</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/desert/pillar1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>576</x>
+<y>380</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>302</x-pos>
-    <y-pos>125</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/desert/platform_left</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>302</x>
+<y>125</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_left</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>286</x-pos>
-    <y-pos>390</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/desert/platform_left</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>286</x>
+<y>390</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>383</x-pos>
-    <y-pos>126</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/desert/platform_right</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>383</x>
+<y>126</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/way_right</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>367</x-pos>
-    <y-pos>391</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/desert/platform_right</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>367</x>
+<y>391</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>479</x-pos>
-    <y-pos>541</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/desert/middleprickpiece</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>479</x>
+<y>541</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Misc/middleprickpiece</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>156</x-pos>
-    <y-pos>542</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/desert/middleprickpiece</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>156</x>
+<y>542</y>
+<z>0</z>
+</position>
 </groundpiece>
-
 <entrance>
   <position>
-    <x-pos>369</x-pos>
-    <y-pos>48</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<x>369</x>
+<y>48</y>
+<z>0</z>
+</position>
   <type>generic</type>
   <direction>left</direction>
   <release-rate>15</release-rate>
 </entrance>
-
 <exit>
-  <position>
-    <x-pos>316</x-pos>
-    <y-pos>723</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <surface><resource type="datafile">
-    <resource-datafile>exits</resource-datafile>
-  <resource-ident>Exits/desert</resource-ident>
-  </resource></surface>
+<owner-id>0</owner-id>
+<position>
+<x>316</x>
+<y>723</y>
+<z>0</z>
+</position>
+<surface>
+<image>exits/desert</image>
+<modifier>ROT0</modifier>
+</surface>
 </exit>
-
-  <start-position>
-  <position>
-    <x-pos>372</x-pos>
-    <y-pos>54</y-pos>
-    <z-pos>1000</z-pos>
-  </position>
-  </start-position>
-
+</objects>
 </pingus-level>
-

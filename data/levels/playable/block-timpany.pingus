@@ -1,1339 +1,1331 @@
-<?xml version="1.0"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <pingus-level>
-  <global>
-    <levelname lang="en">Armour-plated chocolate bar</levelname>
-    <description lang="en"></description>
-    <playable>1</playable>
-    <author>Craig Timpany &lt;timpany@pingus.cx&gt;</author>
-    <number-of-pingus>40</number-of-pingus>
-    <number-to-save>30</number-to-save>
-    <time>9000</time>
-    <width>1216</width>
-    <height>1024</height>
-  </global>
-
-<background type="surface">
-  <surface><resource type="datafile">
-    <resource-datafile>textures</resource-datafile>
-  <resource-ident>Textures/happyclouds</resource-ident>
-  </resource></surface>
-  <color>
+<version>2</version>
+<head>
+<levelname></levelname>
+<description></description>
+<playable>1</playable>
+<author>Craig Timpany &lt;timpany@pingus.cx&gt;</author>
+<number-of-pingus>40</number-of-pingus>
+<number-to-save>30</number-to-save>
+<time>9000</time>
+<actions>
+<basher>3</basher>
+<blocker>1</blocker>
+<bomber>1</bomber>
+<bridger>1</bridger>
+<climber>1</climber>
+<digger>1</digger>
+<floater>1</floater>
+<jumper>1</jumper>
+<miner>3</miner>
+</actions>
+<music>none</music>
+<levelsize>
+<width>1216</width>
+<height>1024</height>
+</levelsize>
+</head>
+<objects>
+<surface-background>
+<surface>
+<image>textures/happyclouds</image>
+<modifier>ROT0</modifier>
+</surface>
+<color>
     <red>0</red>
     <green>0</green>
     <blue>0</blue>
     <alpha>1</alpha>
   </color>
-  <scroll-x>0</scroll-x>
-  <scroll-y>0</scroll-y>
-  <para-x>0.5</para-x>
-  <para-y>0.5</para-y>
-  <stretch-x>0</stretch-x>
-  <stretch-y>0</stretch-y>
-</background>
-
-  <action-list>
-    <basher count="3"/>
-    <blocker count="1"/>
-    <bomber count="1"/>
-    <bridger count="1"/>
-    <climber count="1"/>
-    <digger count="1"/>
-    <floater count="1"/>
-    <jumper count="1"/>
-    <miner count="3"/>
-  </action-list>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>238</x-pos>
-    <y-pos>543</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>491</x-pos>
-    <y-pos>226</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>491</x-pos>
-    <y-pos>481</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>491</x-pos>
-    <y-pos>289</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>174</x-pos>
-    <y-pos>543</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>491</x-pos>
-    <y-pos>417</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>703</x-pos>
-    <y-pos>418</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1121</x-pos>
-    <y-pos>855</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>865</x-pos>
-    <y-pos>792</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>831</x-pos>
-    <y-pos>451</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1122</x-pos>
-    <y-pos>982</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>737</x-pos>
-    <y-pos>919</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1121</x-pos>
-    <y-pos>791</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>865</x-pos>
-    <y-pos>728</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>392</x-pos>
-    <y-pos>928</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>173</x-pos>
-    <y-pos>289</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>392</x-pos>
-    <y-pos>673</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>392</x-pos>
-    <y-pos>801</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>392</x-pos>
-    <y-pos>864</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>798</x-pos>
-    <y-pos>323</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>734</x-pos>
-    <y-pos>259</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>798</x-pos>
-    <y-pos>259</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>606</x-pos>
-    <y-pos>290</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>606</x-pos>
-    <y-pos>226</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>670</x-pos>
-    <y-pos>226</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>173</x-pos>
-    <y-pos>353</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>392</x-pos>
-    <y-pos>737</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>299</x-pos>
-    <y-pos>417</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>427</x-pos>
-    <y-pos>226</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>456</x-pos>
-    <y-pos>609</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>491</x-pos>
-    <y-pos>545</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1122</x-pos>
-    <y-pos>918</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>737</x-pos>
-    <y-pos>855</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>993</x-pos>
-    <y-pos>791</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>801</x-pos>
-    <y-pos>983</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>737</x-pos>
-    <y-pos>728</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>456</x-pos>
-    <y-pos>928</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>237</x-pos>
-    <y-pos>289</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>456</x-pos>
-    <y-pos>673</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>363</x-pos>
-    <y-pos>289</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>456</x-pos>
-    <y-pos>801</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>555</x-pos>
-    <y-pos>417</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>456</x-pos>
-    <y-pos>864</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>363</x-pos>
-    <y-pos>481</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>427</x-pos>
-    <y-pos>289</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>174</x-pos>
-    <y-pos>479</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>456</x-pos>
-    <y-pos>737</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>363</x-pos>
-    <y-pos>417</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>363</x-pos>
-    <y-pos>226</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>639</x-pos>
-    <y-pos>354</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>831</x-pos>
-    <y-pos>387</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1057</x-pos>
-    <y-pos>855</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>801</x-pos>
-    <y-pos>792</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1058</x-pos>
-    <y-pos>982</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>673</x-pos>
-    <y-pos>919</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>993</x-pos>
-    <y-pos>855</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>737</x-pos>
-    <y-pos>792</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1057</x-pos>
-    <y-pos>791</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>801</x-pos>
-    <y-pos>728</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>639</x-pos>
-    <y-pos>418</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1224</x-pos>
-    <y-pos>739</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>767</x-pos>
-    <y-pos>451</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1224</x-pos>
-    <y-pos>802</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1224</x-pos>
-    <y-pos>675</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>392</x-pos>
-    <y-pos>609</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>929</x-pos>
-    <y-pos>855</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>673</x-pos>
-    <y-pos>792</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>363</x-pos>
-    <y-pos>545</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1058</x-pos>
-    <y-pos>918</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>673</x-pos>
-    <y-pos>855</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>929</x-pos>
-    <y-pos>791</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>737</x-pos>
-    <y-pos>983</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>673</x-pos>
-    <y-pos>728</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/jube1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>695</x-pos>
-    <y-pos>378</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/jube1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>788</x-pos>
-    <y-pos>389</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/jube2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>767</x-pos>
-    <y-pos>342</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/jellybaby2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>757</x-pos>
-    <y-pos>411</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/jellybaby</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>734</x-pos>
-    <y-pos>338</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/mmbrown</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>716</x-pos>
-    <y-pos>364</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/mmyellow</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>763</x-pos>
-    <y-pos>380</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1233</x-pos>
-    <y-pos>471</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1088</x-pos>
-    <y-pos>108</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1088</x-pos>
-    <y-pos>169</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1088</x-pos>
-    <y-pos>230</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canetop</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>988</x-pos>
-    <y-pos>36</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbar</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>61</x-pos>
-    <y-pos>862</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbar</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>871</x-pos>
-    <y-pos>286</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>301</x-pos>
-    <y-pos>866</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>55</x-pos>
-    <y-pos>868</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1126</x-pos>
-    <y-pos>292</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/plate2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>862</x-pos>
-    <y-pos>293</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/lollipop</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>65</x-pos>
-    <y-pos>627</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Entrances/entrance</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1012</x-pos>
-    <y-pos>159</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/mmblue</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>446</x-pos>
-    <y-pos>549</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/allsort1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>418</x-pos>
-    <y-pos>556</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/jube2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>460</x-pos>
-    <y-pos>565</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/allsort2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>458</x-pos>
-    <y-pos>181</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/jube1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>433</x-pos>
-    <y-pos>154</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/mmred</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>434</x-pos>
-    <y-pos>200</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Mushroom/toadstool2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>402</x-pos>
-    <y-pos>172</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/purplechoc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>950</x-pos>
-    <y-pos>745</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/mmyellow</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>926</x-pos>
-    <y-pos>749</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/jube1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>964</x-pos>
-    <y-pos>721</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/jellybaby</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1022</x-pos>
-    <y-pos>715</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/allsort2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1077</x-pos>
-    <y-pos>750</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
+<scroll-x>0</scroll-x>
+<scroll-y>0</scroll-y>
+<para-x>0.5</para-x>
+<para-y>0.5</para-y>
+<stretch-x>0</stretch-x>
+<stretch-y>0</stretch-y>
+</surface-background>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>238</x>
+<y>543</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>491</x>
+<y>226</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>491</x>
+<y>481</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>491</x>
+<y>289</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>174</x>
+<y>543</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>491</x>
+<y>417</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>703</x>
+<y>418</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1121</x>
+<y>855</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>865</x>
+<y>792</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>831</x>
+<y>451</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1122</x>
+<y>982</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>737</x>
+<y>919</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1121</x>
+<y>791</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>865</x>
+<y>728</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>392</x>
+<y>928</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>173</x>
+<y>289</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>392</x>
+<y>673</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>392</x>
+<y>801</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>392</x>
+<y>864</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>798</x>
+<y>323</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>734</x>
+<y>259</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>798</x>
+<y>259</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>606</x>
+<y>290</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>606</x>
+<y>226</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>670</x>
+<y>226</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>173</x>
+<y>353</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>392</x>
+<y>737</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>299</x>
+<y>417</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>427</x>
+<y>226</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>456</x>
+<y>609</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>491</x>
+<y>545</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1122</x>
+<y>918</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>737</x>
+<y>855</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>993</x>
+<y>791</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>801</x>
+<y>983</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>737</x>
+<y>728</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>456</x>
+<y>928</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>237</x>
+<y>289</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>456</x>
+<y>673</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>363</x>
+<y>289</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>456</x>
+<y>801</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>555</x>
+<y>417</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>456</x>
+<y>864</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>363</x>
+<y>481</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>427</x>
+<y>289</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>174</x>
+<y>479</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>456</x>
+<y>737</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>363</x>
+<y>417</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>363</x>
+<y>226</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>639</x>
+<y>354</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>831</x>
+<y>387</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1057</x>
+<y>855</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>801</x>
+<y>792</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1058</x>
+<y>982</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>673</x>
+<y>919</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>993</x>
+<y>855</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>737</x>
+<y>792</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1057</x>
+<y>791</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>801</x>
+<y>728</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>639</x>
+<y>418</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1224</x>
+<y>739</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>767</x>
+<y>451</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1224</x>
+<y>802</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1224</x>
+<y>675</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>392</x>
+<y>609</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>929</x>
+<y>855</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>673</x>
+<y>792</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>363</x>
+<y>545</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1058</x>
+<y>918</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>673</x>
+<y>855</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>929</x>
+<y>791</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>737</x>
+<y>983</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>673</x>
+<y>728</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/jube1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>695</x>
+<y>378</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/jube1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>788</x>
+<y>389</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/jube2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>767</x>
+<y>342</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/redjellybaby</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>757</x>
+<y>411</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/greenjellybaby</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>734</x>
+<y>338</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/mmbrown</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>716</x>
+<y>364</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/mmyellow</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>763</x>
+<y>380</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/misc/metalplate_large</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1233</x>
+<y>471</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1088</x>
+<y>108</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1088</x>
+<y>169</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1088</x>
+<y>230</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canetop</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>988</x>
+<y>36</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbar</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>61</x>
+<y>862</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbar</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>871</x>
+<y>286</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/misc/metalplate_large</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>301</x>
+<y>866</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/misc/metalplate_large</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>55</x>
+<y>868</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/misc/metalplate_large</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1126</x>
+<y>292</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/misc/metalplate_large</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>862</x>
+<y>293</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/lollipop</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>65</x>
+<y>627</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>entrances/entrance</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1012</x>
+<y>159</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/mmblue</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>446</x>
+<y>549</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/allsort1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>418</x>
+<y>556</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/jube2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>460</x>
+<y>565</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/allsort2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>458</x>
+<y>181</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/jube1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>433</x>
+<y>154</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/mmred</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>434</x>
+<y>200</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/mushroom/toadstool2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>402</x>
+<y>172</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/purplechoc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>950</x>
+<y>745</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/mmyellow</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>926</x>
+<y>749</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/jube1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>964</x>
+<y>721</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/greenjellybaby</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1022</x>
+<y>715</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/allsort2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1077</x>
+<y>750</y>
+<z>0</z>
+</position>
+</groundpiece>
 <entrance>
   <position>
-    <x-pos>1043</x-pos>
-    <y-pos>178</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<x>1043</x>
+<y>178</y>
+<z>0</z>
+</position>
   <type>generic</type>
   <direction>left</direction>
   <release-rate>25</release-rate>
 </entrance>
-
 <exit>
-  <position>
-    <x-pos>128</x-pos>
-    <y-pos>744</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <surface><resource type="datafile">
-    <resource-datafile>exits</resource-datafile>
-  <resource-ident>Exits/sweetexit</resource-ident>
-  </resource></surface>
+<owner-id>0</owner-id>
+<position>
+<x>128</x>
+<y>744</y>
+<z>0</z>
+</position>
+<surface>
+<image>exits/sweetexit</image>
+<modifier>ROT0</modifier>
+</surface>
 </exit>
-
-  <start-position>
-  <position>
-    <x-pos>1048</x-pos>
-    <y-pos>211</y-pos>
-    <z-pos>1000</z-pos>
-  </position>
-  </start-position>
-
+</objects>
 </pingus-level>
-

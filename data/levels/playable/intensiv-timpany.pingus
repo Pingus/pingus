@@ -1,1109 +1,1093 @@
-<?xml version="1.0"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <pingus-level>
-  <global>
-    <levelname lang="en">Pingu-intensive</levelname>
-    <description lang="en">You only need to save 5, but keep an eye on the clock.
-
-</description>
-    <author>Craig Timpany &lt;timpany@pingus.cx&gt;</author>
-    <number-of-pingus>100</number-of-pingus>
-    <number-to-save>5</number-to-save>
-    <time>8000</time>
-    <width>800</width>
-    <height>1600</height>
-  </global>
-
-<background type="surface">
-  <surface><resource type="datafile">
-    <resource-datafile>textures</resource-datafile>
-  <resource-ident>Textures/happyclouds</resource-ident>
-  </resource></surface>
-  <color>
+<version>2</version>
+<head>
+<levelname></levelname>
+<description></description>
+<author>Craig Timpany &lt;timpany@pingus.cx&gt;</author>
+<number-of-pingus>100</number-of-pingus>
+<number-to-save>5</number-to-save>
+<time>8000</time>
+<actions>
+<bomber>20</bomber>
+<climber>20</climber>
+<floater>20</floater>
+</actions>
+<music>none</music>
+<levelsize>
+<width>800</width>
+<height>1600</height>
+</levelsize>
+</head>
+<objects>
+<surface-background>
+<surface>
+<image>textures/happyclouds</image>
+<modifier>ROT0</modifier>
+</surface>
+<color>
     <red>0</red>
     <green>0</green>
     <blue>0</blue>
     <alpha>1</alpha>
   </color>
-  <scroll-x>0</scroll-x>
-  <scroll-y>0</scroll-y>
-  <para-x>0.5</para-x>
-  <para-y>0.5</para-y>
-  <stretch-x>0</stretch-x>
-  <stretch-y>0</stretch-y>
-</background>
-
-  <action-list>
-    <bomber count="20"/>
-    <climber count="20"/>
-    <floater count="20"/>
-  </action-list>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>376</x-pos>
-    <y-pos>1196</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>336</x-pos>
-    <y-pos>239</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>336</x-pos>
-    <y-pos>300</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>418</x-pos>
-    <y-pos>491</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>269</x-pos>
-    <y-pos>296</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>269</x-pos>
-    <y-pos>540</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>336</x-pos>
-    <y-pos>544</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>598</x-pos>
-    <y-pos>941</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>466</x-pos>
-    <y-pos>1001</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>415</x-pos>
-    <y-pos>1067</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>598</x-pos>
-    <y-pos>1123</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>466</x-pos>
-    <y-pos>1183</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>598</x-pos>
-    <y-pos>1063</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>466</x-pos>
-    <y-pos>1123</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>598</x-pos>
-    <y-pos>1002</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>466</x-pos>
-    <y-pos>1062</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>415</x-pos>
-    <y-pos>1128</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>415</x-pos>
-    <y-pos>945</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>418</x-pos>
-    <y-pos>369</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>336</x-pos>
-    <y-pos>178</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>336</x-pos>
-    <y-pos>422</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>269</x-pos>
-    <y-pos>418</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>336</x-pos>
-    <y-pos>117</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>336</x-pos>
-    <y-pos>361</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>418</x-pos>
-    <y-pos>552</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>269</x-pos>
-    <y-pos>357</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>415</x-pos>
-    <y-pos>1189</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>466</x-pos>
-    <y-pos>940</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>415</x-pos>
-    <y-pos>1006</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>418</x-pos>
-    <y-pos>430</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>336</x-pos>
-    <y-pos>483</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>269</x-pos>
-    <y-pos>479</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canetop</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>236</x-pos>
-    <y-pos>45</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canetop</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>169</x-pos>
-    <y-pos>224</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canetop</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>318</x-pos>
-    <y-pos>297</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestub</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>268</x-pos>
-    <y-pos>1025</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestub</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>336</x-pos>
-    <y-pos>1027</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestub</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>418</x-pos>
-    <y-pos>613</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>entrances</resource-datafile>
-  <resource-ident>Entrances/entrance</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>275</x-pos>
-    <y-pos>183</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>336</x-pos>
-    <y-pos>700</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>269</x-pos>
-    <y-pos>701</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>336</x-pos>
-    <y-pos>966</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>336</x-pos>
-    <y-pos>862</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>336</x-pos>
-    <y-pos>640</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>268</x-pos>
-    <y-pos>801</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>269</x-pos>
-    <y-pos>641</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>268</x-pos>
-    <y-pos>965</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>268</x-pos>
-    <y-pos>862</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>241</x-pos>
-    <y-pos>615</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>241</x-pos>
-    <y-pos>676</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>323</x-pos>
-    <y-pos>757</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>525</x-pos>
-    <y-pos>938</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>315</x-pos>
-    <y-pos>1196</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>455</x-pos>
-    <y-pos>938</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>300</x-pos>
-    <y-pos>923</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>324</x-pos>
-    <y-pos>599</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>293</x-pos>
-    <y-pos>795</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>289</x-pos>
-    <y-pos>961</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>290</x-pos>
-    <y-pos>637</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/icecream</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>392</x-pos>
-    <y-pos>1210</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>195</x-pos>
-    <y-pos>757</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>219</x-pos>
-    <y-pos>923</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>195</x-pos>
-    <y-pos>599</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/icecream</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>565</x-pos>
-    <y-pos>1161</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>241</x-pos>
-    <y-pos>737</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>229</x-pos>
-    <y-pos>961</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>230</x-pos>
-    <y-pos>637</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/signposts/e</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>239</x-pos>
-    <y-pos>752</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canetop</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>141</x-pos>
-    <y-pos>543</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestub</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>241</x-pos>
-    <y-pos>798</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc-lowleft</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>438</x-pos>
-    <y-pos>1360</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>566</x-pos>
-    <y-pos>1360</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>233</x-pos>
-    <y-pos>795</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/chocbloc</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>502</x-pos>
-    <y-pos>1360</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>415</x-pos>
-    <y-pos>884</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>308</x-pos>
-    <y-pos>1160</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>308</x-pos>
-    <y-pos>1221</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>308</x-pos>
-    <y-pos>1282</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canetop</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>208</x-pos>
-    <y-pos>1088</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestub</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>308</x-pos>
-    <y-pos>1343</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/signposts/e</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>243</x-pos>
-    <y-pos>592</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canetop</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>315</x-pos>
-    <y-pos>812</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Sweets/canestalk</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>336</x-pos>
-    <y-pos>801</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Hotspots/signposts/w</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>340</x-pos>
-    <y-pos>916</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
+<scroll-x>0</scroll-x>
+<scroll-y>0</scroll-y>
+<para-x>0.5</para-x>
+<para-y>0.5</para-y>
+<stretch-x>0</stretch-x>
+<stretch-y>0</stretch-y>
+</surface-background>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>376</x>
+<y>1196</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>336</x>
+<y>239</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>336</x>
+<y>300</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>418</x>
+<y>491</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>269</x>
+<y>296</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>269</x>
+<y>540</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>336</x>
+<y>544</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>598</x>
+<y>941</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>466</x>
+<y>1001</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>415</x>
+<y>1067</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>598</x>
+<y>1123</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>466</x>
+<y>1183</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>598</x>
+<y>1063</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>466</x>
+<y>1123</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>598</x>
+<y>1002</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>466</x>
+<y>1062</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>415</x>
+<y>1128</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>415</x>
+<y>945</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>418</x>
+<y>369</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>336</x>
+<y>178</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>336</x>
+<y>422</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>269</x>
+<y>418</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>336</x>
+<y>117</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>336</x>
+<y>361</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>418</x>
+<y>552</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>269</x>
+<y>357</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>415</x>
+<y>1189</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>466</x>
+<y>940</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>415</x>
+<y>1006</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>418</x>
+<y>430</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>336</x>
+<y>483</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>269</x>
+<y>479</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canetop</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>236</x>
+<y>45</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canetop</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>169</x>
+<y>224</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canetop</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>318</x>
+<y>297</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestub</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>268</x>
+<y>1025</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestub</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>336</x>
+<y>1027</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestub</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>418</x>
+<y>613</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>entrances/entrance</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>275</x>
+<y>183</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>336</x>
+<y>700</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>269</x>
+<y>701</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>336</x>
+<y>966</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>336</x>
+<y>862</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>336</x>
+<y>640</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>268</x>
+<y>801</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>269</x>
+<y>641</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>268</x>
+<y>965</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>268</x>
+<y>862</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>241</x>
+<y>615</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>241</x>
+<y>676</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>323</x>
+<y>757</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>525</x>
+<y>938</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>315</x>
+<y>1196</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>455</x>
+<y>938</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>300</x>
+<y>923</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>324</x>
+<y>599</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>293</x>
+<y>795</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>289</x>
+<y>961</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>290</x>
+<y>637</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/icecream</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>392</x>
+<y>1210</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>195</x>
+<y>757</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>219</x>
+<y>923</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>195</x>
+<y>599</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/icecream</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>565</x>
+<y>1161</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>241</x>
+<y>737</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>229</x>
+<y>961</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>230</x>
+<y>637</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>global/Hotspots/signposts/e</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>239</x>
+<y>752</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canetop</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>141</x>
+<y>543</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestub</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>241</x>
+<y>798</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc-lowleft</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>438</x>
+<y>1360</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>566</x>
+<y>1360</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>233</x>
+<y>795</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/chocbloc</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>502</x>
+<y>1360</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>415</x>
+<y>884</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>308</x>
+<y>1160</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>308</x>
+<y>1221</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>308</x>
+<y>1282</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canetop</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>208</x>
+<y>1088</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestub</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>308</x>
+<y>1343</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>global/Hotspots/signposts/e</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>243</x>
+<y>592</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canetop</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>315</x>
+<y>812</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/sweets/canestalk</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>336</x>
+<y>801</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>global/Hotspots/signposts/w</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>340</x>
+<y>916</y>
+<z>0</z>
+</position>
+</groundpiece>
 <entrance>
   <position>
-    <x-pos>306</x-pos>
-    <y-pos>204</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<x>306</x>
+<y>204</y>
+<z>0</z>
+</position>
   <type>generic</type>
   <direction>left</direction>
   <release-rate>25</release-rate>
 </entrance>
-
 <exit>
-  <position>
-    <x-pos>443</x-pos>
-    <y-pos>1239</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <surface><resource type="datafile">
-    <resource-datafile>exits</resource-datafile>
-  <resource-ident>Exits/sweetexit</resource-ident>
-  </resource></surface>
+<owner-id>0</owner-id>
+<position>
+<x>443</x>
+<y>1239</y>
+<z>0</z>
+</position>
+<surface>
+<image>exits/sweetexit</image>
+<modifier>ROT0</modifier>
+</surface>
 </exit>
-
-<trap>
-  <type>spike</type>
-  <position>
-    <x-pos>256</x-pos>
-    <y-pos>763</y-pos>
-    <z-pos>100</z-pos>
-  </position>
-</trap>
-
-<trap>
-  <type>spike</type>
-  <position>
-    <x-pos>323</x-pos>
-    <y-pos>929</y-pos>
-    <z-pos>100</z-pos>
-  </position>
-</trap>
-
-<trap>
-  <type>spike</type>
-  <position>
-    <x-pos>259</x-pos>
-    <y-pos>605</y-pos>
-    <z-pos>100</z-pos>
-  </position>
-</trap>
-
-  <start-position>
-  <position>
-    <x-pos>306</x-pos>
-    <y-pos>207</y-pos>
-    <z-pos>1000</z-pos>
-  </position>
-  </start-position>
-
+<spike>
+<position>
+<x>256</x>
+<y>763</y>
+<z>100</z>
+</position>
+</spike>
+<spike>
+<position>
+<x>323</x>
+<y>929</y>
+<z>100</z>
+</position>
+</spike>
+<spike>
+<position>
+<x>259</x>
+<y>605</y>
+<z>100</z>
+</position>
+</spike>
+</objects>
 </pingus-level>
-

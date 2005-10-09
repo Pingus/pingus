@@ -1,2851 +1,2836 @@
-<?xml version="1.0"  encoding="ISO-8859-1"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <pingus-level>
-  <global>
-    <levelname lang="en">EditorDefaultValue: Please give me a name...</levelname>
-    <description lang="en">EditorDefaultValue: ...and a short description</description>
-    <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
-    <number-of-pingus>50</number-of-pingus>
-    <number-to-save>25</number-to-save>
-    <time>9000</time>
-    <width>1600</width>
-    <height>1216</height>
-  </global>
-
-<background type="surface">
-  <surface><resource type="datafile">
-    <resource-datafile>textures</resource-datafile>
-  <resource-ident>Textures/cyanspace</resource-ident>
-  </resource></surface>
-  <color>
+<version>2</version>
+<head>
+<levelname></levelname>
+<description></description>
+<author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
+<number-of-pingus>50</number-of-pingus>
+<number-to-save>25</number-to-save>
+<time>9000</time>
+<actions>
+<basher>20</basher>
+<blocker>20</blocker>
+<bomber>20</bomber>
+<bridger>20</bridger>
+<climber>20</climber>
+<digger>20</digger>
+<floater>20</floater>
+<jumper>20</jumper>
+<miner>20</miner>
+</actions>
+<music>none</music>
+<levelsize>
+<width>1600</width>
+<height>1216</height>
+</levelsize>
+</head>
+<objects>
+<surface-background>
+<surface>
+<image>textures/cyanspace</image>
+<modifier>ROT0</modifier>
+</surface>
+<color>
     <red>0</red>
     <green>0</green>
     <blue>0</blue>
     <alpha>0.1</alpha>
   </color>
-  <scroll-x>0</scroll-x>
-  <scroll-y>0</scroll-y>
-  <para-x>0.1</para-x>
-  <para-y>0.1</para-y>
-  <stretch-x>0</stretch-x>
-  <stretch-y>0</stretch-y>
-</background>
-
-  <action-list>
-    <basher count="20"/>
-    <blocker count="20"/>
-    <bomber count="20"/>
-    <bridger count="20"/>
-    <climber count="20"/>
-    <digger count="20"/>
-    <floater count="20"/>
-    <jumper count="20"/>
-    <miner count="20"/>
-  </action-list>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1544.96</x-pos>
-    <y-pos>115.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>909.024</x-pos>
-    <y-pos>568.072</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1083.3</x-pos>
-    <y-pos>173.832</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1591.3</x-pos>
-    <y-pos>173.832</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1337.3</x-pos>
-    <y-pos>173.832</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>894.024</x-pos>
-    <y-pos>497.072</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>639.024</x-pos>
-    <y-pos>497.072</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>real/real13</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1369</x-pos>
-    <y-pos>175</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>641.024</x-pos>
-    <y-pos>662.072</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1036.68</x-pos>
-    <y-pos>568.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>955.96</x-pos>
-    <y-pos>173.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1464.96</x-pos>
-    <y-pos>173.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1209.96</x-pos>
-    <y-pos>173.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>766.68</x-pos>
-    <y-pos>497.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>781.68</x-pos>
-    <y-pos>568.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>845.024</x-pos>
-    <y-pos>568.072</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1019.3</x-pos>
-    <y-pos>173.832</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1527.3</x-pos>
-    <y-pos>173.832</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1273.3</x-pos>
-    <y-pos>173.832</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>830.024</x-pos>
-    <y-pos>497.072</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>575.024</x-pos>
-    <y-pos>497.072</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>577.024</x-pos>
-    <y-pos>662.072</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>972.68</x-pos>
-    <y-pos>568.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1146.96</x-pos>
-    <y-pos>173.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1654.96</x-pos>
-    <y-pos>173.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>892.96</x-pos>
-    <y-pos>173.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1400.96</x-pos>
-    <y-pos>173.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>702.68</x-pos>
-    <y-pos>497.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>717.68</x-pos>
-    <y-pos>568.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>941.024</x-pos>
-    <y-pos>568.072</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1115.3</x-pos>
-    <y-pos>173.832</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1623.3</x-pos>
-    <y-pos>173.832</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>861.304</x-pos>
-    <y-pos>173.832</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1369.3</x-pos>
-    <y-pos>173.832</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>926.024</x-pos>
-    <y-pos>497.072</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>671.024</x-pos>
-    <y-pos>497.072</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1068.68</x-pos>
-    <y-pos>568.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1068.68</x-pos>
-    <y-pos>497.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>987.96</x-pos>
-    <y-pos>173.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1496.96</x-pos>
-    <y-pos>173.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1241.96</x-pos>
-    <y-pos>173.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>798.68</x-pos>
-    <y-pos>497.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>813.68</x-pos>
-    <y-pos>568.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>877.024</x-pos>
-    <y-pos>568.072</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1051.3</x-pos>
-    <y-pos>173.832</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1559.3</x-pos>
-    <y-pos>173.832</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1305.3</x-pos>
-    <y-pos>173.832</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>862.024</x-pos>
-    <y-pos>497.072</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>543.024</x-pos>
-    <y-pos>497.072</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1543.96</x-pos>
-    <y-pos>-12.48</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>607.024</x-pos>
-    <y-pos>497.072</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>545.024</x-pos>
-    <y-pos>662.072</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>665.024</x-pos>
-    <y-pos>662.072</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>609.024</x-pos>
-    <y-pos>662.072</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1004.68</x-pos>
-    <y-pos>568.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>924.96</x-pos>
-    <y-pos>173.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1432.96</x-pos>
-    <y-pos>173.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1177.96</x-pos>
-    <y-pos>173.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>734.68</x-pos>
-    <y-pos>497.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>749.68</x-pos>
-    <y-pos>568.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe6</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>512.68</x-pos>
-    <y-pos>496.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe_bl</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>829.96</x-pos>
-    <y-pos>164.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe_bl</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1037.68</x-pos>
-    <y-pos>488.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe_bl</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>512.68</x-pos>
-    <y-pos>652.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe5</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>830.96</x-pos>
-    <y-pos>102.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe5</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>830.96</x-pos>
-    <y-pos>39.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>585.52</x-pos>
-    <y-pos>1100.24</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>329.52</x-pos>
-    <y-pos>1100.24</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe5</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>513.68</x-pos>
-    <y-pos>620.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe5</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>830.96</x-pos>
-    <y-pos>-53.48</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>649.52</x-pos>
-    <y-pos>1164.24</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>393.52</x-pos>
-    <y-pos>1164.24</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe5</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>513.68</x-pos>
-    <y-pos>527.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1284.68</x-pos>
-    <y-pos>956.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>70.7599</x-pos>
-    <y-pos>929.72</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>585.52</x-pos>
-    <y-pos>1164.24</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>329.52</x-pos>
-    <y-pos>1164.24</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>-79.2401</x-pos>
-    <y-pos>59.72</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>-25.2401</x-pos>
-    <y-pos>833.72</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>-69.2401</x-pos>
-    <y-pos>469.72</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>-115.24</x-pos>
-    <y-pos>352.72</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>-64.2401</x-pos>
-    <y-pos>264.72</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1108.68</x-pos>
-    <y-pos>528.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>691.68</x-pos>
-    <y-pos>621.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>830.96</x-pos>
-    <y-pos>134.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>830.96</x-pos>
-    <y-pos>71.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1523.16</x-pos>
-    <y-pos>195.56</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>830.96</x-pos>
-    <y-pos>8.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>513.68</x-pos>
-    <y-pos>589.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>691.68</x-pos>
-    <y-pos>591.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>jungle/stick5</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>32</x-pos>
-    <y-pos>736</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>830.96</x-pos>
-    <y-pos>-21.48</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>649.52</x-pos>
-    <y-pos>1100.24</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>393.52</x-pos>
-    <y-pos>1100.24</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>713.52</x-pos>
-    <y-pos>1100.24</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>457.52</x-pos>
-    <y-pos>1100.24</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>513.68</x-pos>
-    <y-pos>559.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>777.52</x-pos>
-    <y-pos>1164.24</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>521.52</x-pos>
-    <y-pos>1164.24</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe_br</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1100.68</x-pos>
-    <y-pos>559.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>713.52</x-pos>
-    <y-pos>1164.24</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>457.52</x-pos>
-    <y-pos>1164.24</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe_br</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>956.68</x-pos>
-    <y-pos>487.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe_br</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>683.68</x-pos>
-    <y-pos>652.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1358.68</x-pos>
-    <y-pos>958.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>144.76</x-pos>
-    <y-pos>931.72</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1305.68</x-pos>
-    <y-pos>956.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>-29.2401</x-pos>
-    <y-pos>743.72</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>-41.2401</x-pos>
-    <y-pos>603.72</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>90.7599</x-pos>
-    <y-pos>929.72</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe_ul</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>690.68</x-pos>
-    <y-pos>567.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1224.68</x-pos>
-    <y-pos>978.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>-37.2401</x-pos>
-    <y-pos>929.72</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>181.76</x-pos>
-    <y-pos>993.72</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>211.76</x-pos>
-    <y-pos>1078.72</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1519.16</x-pos>
-    <y-pos>280.56</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1285.68</x-pos>
-    <y-pos>1018.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>71.7599</x-pos>
-    <y-pos>991.72</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1165</x-pos>
-    <y-pos>1014.24</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>901.24</x-pos>
-    <y-pos>1086.68</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1478.68</x-pos>
-    <y-pos>818.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1421.68</x-pos>
-    <y-pos>582.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1474.68</x-pos>
-    <y-pos>361.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>57.7599</x-pos>
-    <y-pos>1055.72</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>777.52</x-pos>
-    <y-pos>1100.24</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>521.52</x-pos>
-    <y-pos>1100.24</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1544.96</x-pos>
-    <y-pos>51.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1233.16</x-pos>
-    <y-pos>1105.56</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1457.16</x-pos>
-    <y-pos>458.56</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1451.68</x-pos>
-    <y-pos>997.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>-70.2401</x-pos>
-    <y-pos>1052.72</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1121.88</x-pos>
-    <y-pos>1059.48</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>146.76</x-pos>
-    <y-pos>1087.72</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1435.68</x-pos>
-    <y-pos>857.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1369.68</x-pos>
-    <y-pos>1079.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1382.68</x-pos>
-    <y-pos>693.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1493.68</x-pos>
-    <y-pos>690.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1494.68</x-pos>
-    <y-pos>1076.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>-11.2401</x-pos>
-    <y-pos>1052.72</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>industrial/pipe_ur</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1099.68</x-pos>
-    <y-pos>497.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>652.96</x-pos>
-    <y-pos>186.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1036.96</x-pos>
-    <y-pos>-12.48</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1289.96</x-pos>
-    <y-pos>-12.48</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1416.96</x-pos>
-    <y-pos>-12.48</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>972.96</x-pos>
-    <y-pos>51.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1480.96</x-pos>
-    <y-pos>51.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1162.96</x-pos>
-    <y-pos>-12.48</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1416.96</x-pos>
-    <y-pos>32.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1352.96</x-pos>
-    <y-pos>29.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1390.96</x-pos>
-    <y-pos>79.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1280.96</x-pos>
-    <y-pos>79.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1225.96</x-pos>
-    <y-pos>51.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1161.96</x-pos>
-    <y-pos>51.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>715.96</x-pos>
-    <y-pos>186.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1099.96</x-pos>
-    <y-pos>-12.48</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1606.96</x-pos>
-    <y-pos>-12.48</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1288.96</x-pos>
-    <y-pos>30.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1339.96</x-pos>
-    <y-pos>64.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1352.96</x-pos>
-    <y-pos>-12.48</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>524.96</x-pos>
-    <y-pos>186.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>588.96</x-pos>
-    <y-pos>186.52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>972.96</x-pos>
-    <y-pos>-12.48</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1479.96</x-pos>
-    <y-pos>-12.48</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>misc/stoneblock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1225.96</x-pos>
-    <y-pos>-12.48</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>industrial/greybri1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1285.68</x-pos>
-    <y-pos>980.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>industrial/greybri1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1483.68</x-pos>
-    <y-pos>980.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>industrial/greybri1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1472.68</x-pos>
-    <y-pos>804.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>industrial/greybri1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1275.68</x-pos>
-    <y-pos>804.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_large</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1556.68</x-pos>
-    <y-pos>853.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_large</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1542.68</x-pos>
-    <y-pos>888.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_large</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1553.68</x-pos>
-    <y-pos>926.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_large</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1516.68</x-pos>
-    <y-pos>937.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>misc/metalplate_large</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1265.68</x-pos>
-    <y-pos>856.76</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>971</x-pos>
-    <y-pos>487</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>671</x-pos>
-    <y-pos>191</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1053</x-pos>
-    <y-pos>174</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>839</x-pos>
-    <y-pos>569</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>582</x-pos>
-    <y-pos>498</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>778</x-pos>
-    <y-pos>508</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>696</x-pos>
-    <y-pos>616</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>645</x-pos>
-    <y-pos>502</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>830</x-pos>
-    <y-pos>38</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>977</x-pos>
-    <y-pos>44</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1171</x-pos>
-    <y-pos>34</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1163</x-pos>
-    <y-pos>26</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>744</x-pos>
-    <y-pos>200</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>601</x-pos>
-    <y-pos>190</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>842</x-pos>
-    <y-pos>174</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1331</x-pos>
-    <y-pos>174</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1112</x-pos>
-    <y-pos>504</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1035</x-pos>
-    <y-pos>488</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>519</x-pos>
-    <y-pos>617</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="transparent">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-transparent</resource-datafile>
-  <resource-ident>misc/weed1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>525</x-pos>
-    <y-pos>500</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>industrial/greybri3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>49</x-pos>
-    <y-pos>36</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>industrial/greybri3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>59</x-pos>
-    <y-pos>220</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>industrial/greybri5</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>247</x-pos>
-    <y-pos>36</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>industrial/greybri5</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>346</x-pos>
-    <y-pos>36</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>industrial/greybri5</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>22</x-pos>
-    <y-pos>159</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>industrial/greybri5</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>10</x-pos>
-    <y-pos>98</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>industrial/greybri5</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>323</x-pos>
-    <y-pos>98</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>industrial/greybri5</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>355</x-pos>
-    <y-pos>220</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-solid</resource-datafile>
-  <resource-ident>industrial/greybri5</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>256</x-pos>
-    <y-pos>220</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
+<scroll-x>0</scroll-x>
+<scroll-y>0</scroll-y>
+<para-x>0.1</para-x>
+<para-y>0.1</para-y>
+<stretch-x>0</stretch-x>
+<stretch-y>0</stretch-y>
+</surface-background>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1544.96</x>
+<y>115.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>909.024</x>
+<y>568.072</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1083.3</x>
+<y>173.832</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1591.3</x>
+<y>173.832</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1337.3</x>
+<y>173.832</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>894.024</x>
+<y>497.072</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>639.024</x>
+<y>497.072</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/real/real13</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1369</x>
+<y>175</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>641.024</x>
+<y>662.072</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1036.68</x>
+<y>568.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>955.96</x>
+<y>173.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1464.96</x>
+<y>173.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1209.96</x>
+<y>173.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>766.68</x>
+<y>497.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>781.68</x>
+<y>568.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>845.024</x>
+<y>568.072</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1019.3</x>
+<y>173.832</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1527.3</x>
+<y>173.832</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1273.3</x>
+<y>173.832</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>830.024</x>
+<y>497.072</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>575.024</x>
+<y>497.072</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>577.024</x>
+<y>662.072</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>972.68</x>
+<y>568.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1146.96</x>
+<y>173.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1654.96</x>
+<y>173.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>892.96</x>
+<y>173.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1400.96</x>
+<y>173.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>702.68</x>
+<y>497.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>717.68</x>
+<y>568.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>941.024</x>
+<y>568.072</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1115.3</x>
+<y>173.832</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1623.3</x>
+<y>173.832</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>861.304</x>
+<y>173.832</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1369.3</x>
+<y>173.832</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>926.024</x>
+<y>497.072</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>671.024</x>
+<y>497.072</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1068.68</x>
+<y>568.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1068.68</x>
+<y>497.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>987.96</x>
+<y>173.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1496.96</x>
+<y>173.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1241.96</x>
+<y>173.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>798.68</x>
+<y>497.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>813.68</x>
+<y>568.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>877.024</x>
+<y>568.072</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1051.3</x>
+<y>173.832</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1559.3</x>
+<y>173.832</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1305.3</x>
+<y>173.832</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>862.024</x>
+<y>497.072</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>543.024</x>
+<y>497.072</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1543.96</x>
+<y>-12.48</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>607.024</x>
+<y>497.072</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>545.024</x>
+<y>662.072</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>665.024</x>
+<y>662.072</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>609.024</x>
+<y>662.072</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1004.68</x>
+<y>568.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>924.96</x>
+<y>173.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1432.96</x>
+<y>173.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1177.96</x>
+<y>173.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>734.68</x>
+<y>497.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>749.68</x>
+<y>568.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe6</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>512.68</x>
+<y>496.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe_bl</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>829.96</x>
+<y>164.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe_bl</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1037.68</x>
+<y>488.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe_bl</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>512.68</x>
+<y>652.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe5</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>830.96</x>
+<y>102.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe5</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>830.96</x>
+<y>39.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>585.52</x>
+<y>1100.24</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>329.52</x>
+<y>1100.24</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe5</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>513.68</x>
+<y>620.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe5</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>830.96</x>
+<y>-53.48</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>649.52</x>
+<y>1164.24</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>393.52</x>
+<y>1164.24</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe5</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>513.68</x>
+<y>527.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1284.68</x>
+<y>956.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>70.7599</x>
+<y>929.72</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>585.52</x>
+<y>1164.24</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>329.52</x>
+<y>1164.24</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>-79.2401</x>
+<y>59.72</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>-25.2401</x>
+<y>833.72</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>-69.2401</x>
+<y>469.72</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>-115.24</x>
+<y>352.72</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>-64.2401</x>
+<y>264.72</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1108.68</x>
+<y>528.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>691.68</x>
+<y>621.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>830.96</x>
+<y>134.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>830.96</x>
+<y>71.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1523.16</x>
+<y>195.56</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>830.96</x>
+<y>8.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>513.68</x>
+<y>589.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>691.68</x>
+<y>591.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/jungle/stick5</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>32</x>
+<y>736</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>830.96</x>
+<y>-21.48</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>649.52</x>
+<y>1100.24</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>393.52</x>
+<y>1100.24</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>713.52</x>
+<y>1100.24</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>457.52</x>
+<y>1100.24</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>513.68</x>
+<y>559.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>777.52</x>
+<y>1164.24</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>521.52</x>
+<y>1164.24</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe_br</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1100.68</x>
+<y>559.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>713.52</x>
+<y>1164.24</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>457.52</x>
+<y>1164.24</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe_br</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>956.68</x>
+<y>487.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe_br</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>683.68</x>
+<y>652.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1358.68</x>
+<y>958.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>144.76</x>
+<y>931.72</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1305.68</x>
+<y>956.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>-29.2401</x>
+<y>743.72</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>-41.2401</x>
+<y>603.72</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>90.7599</x>
+<y>929.72</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe_ul</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>690.68</x>
+<y>567.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1224.68</x>
+<y>978.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>-37.2401</x>
+<y>929.72</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>181.76</x>
+<y>993.72</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>211.76</x>
+<y>1078.72</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1519.16</x>
+<y>280.56</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1285.68</x>
+<y>1018.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>71.7599</x>
+<y>991.72</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1165</x>
+<y>1014.24</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>901.24</x>
+<y>1086.68</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1478.68</x>
+<y>818.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1421.68</x>
+<y>582.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1474.68</x>
+<y>361.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>57.7599</x>
+<y>1055.72</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>777.52</x>
+<y>1100.24</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>521.52</x>
+<y>1100.24</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1544.96</x>
+<y>51.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1233.16</x>
+<y>1105.56</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1457.16</x>
+<y>458.56</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1451.68</x>
+<y>997.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>-70.2401</x>
+<y>1052.72</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1121.88</x>
+<y>1059.48</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>146.76</x>
+<y>1087.72</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1435.68</x>
+<y>857.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1369.68</x>
+<y>1079.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1382.68</x>
+<y>693.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1493.68</x>
+<y>690.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1494.68</x>
+<y>1076.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>-11.2401</x>
+<y>1052.72</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/industrial/pipe_ur</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1099.68</x>
+<y>497.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>652.96</x>
+<y>186.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1036.96</x>
+<y>-12.48</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1289.96</x>
+<y>-12.48</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1416.96</x>
+<y>-12.48</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>972.96</x>
+<y>51.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1480.96</x>
+<y>51.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1162.96</x>
+<y>-12.48</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1416.96</x>
+<y>32.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1352.96</x>
+<y>29.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1390.96</x>
+<y>79.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1280.96</x>
+<y>79.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1225.96</x>
+<y>51.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1161.96</x>
+<y>51.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>715.96</x>
+<y>186.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1099.96</x>
+<y>-12.48</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1606.96</x>
+<y>-12.48</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1288.96</x>
+<y>30.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1339.96</x>
+<y>64.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1352.96</x>
+<y>-12.48</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>524.96</x>
+<y>186.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>588.96</x>
+<y>186.52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>972.96</x>
+<y>-12.48</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1479.96</x>
+<y>-12.48</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/misc/stoneblock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1225.96</x>
+<y>-12.48</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/industrial/greybri1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1285.68</x>
+<y>980.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/industrial/greybri1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1483.68</x>
+<y>980.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/industrial/greybri1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1472.68</x>
+<y>804.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/industrial/greybri1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1275.68</x>
+<y>804.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/misc/metalplate_large</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1556.68</x>
+<y>853.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/misc/metalplate_large</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1542.68</x>
+<y>888.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/misc/metalplate_large</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1553.68</x>
+<y>926.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/misc/metalplate_large</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1516.68</x>
+<y>937.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/misc/metalplate_large</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1265.68</x>
+<y>856.76</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>groundpieces/transparent/misc/weed2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>971</x>
+<y>487</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>groundpieces/transparent/misc/weed2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>671</x>
+<y>191</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>groundpieces/transparent/misc/weed2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1053</x>
+<y>174</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>groundpieces/transparent/misc/weed2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>839</x>
+<y>569</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>groundpieces/transparent/misc/weed2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>582</x>
+<y>498</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>groundpieces/transparent/misc/weed1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>778</x>
+<y>508</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>groundpieces/transparent/misc/weed1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>696</x>
+<y>616</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>groundpieces/transparent/misc/weed1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>645</x>
+<y>502</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>groundpieces/transparent/misc/weed1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>830</x>
+<y>38</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>groundpieces/transparent/misc/weed1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>977</x>
+<y>44</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>groundpieces/transparent/misc/weed1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1171</x>
+<y>34</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>groundpieces/transparent/misc/weed1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1163</x>
+<y>26</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>groundpieces/transparent/misc/weed1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>744</x>
+<y>200</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>groundpieces/transparent/misc/weed1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>601</x>
+<y>190</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>groundpieces/transparent/misc/weed1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>842</x>
+<y>174</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>groundpieces/transparent/misc/weed1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1331</x>
+<y>174</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>groundpieces/transparent/misc/weed1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1112</x>
+<y>504</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>groundpieces/transparent/misc/weed1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1035</x>
+<y>488</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>groundpieces/transparent/misc/weed1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>519</x>
+<y>617</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>transparent</type>
+<surface>
+<image>groundpieces/transparent/misc/weed1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>525</x>
+<y>500</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/industrial/greybri3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>49</x>
+<y>36</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/industrial/greybri3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>59</x>
+<y>220</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/industrial/greybri5</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>247</x>
+<y>36</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/industrial/greybri5</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>346</x>
+<y>36</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/industrial/greybri5</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>22</x>
+<y>159</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/industrial/greybri5</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>10</x>
+<y>98</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/industrial/greybri5</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>323</x>
+<y>98</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/industrial/greybri5</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>355</x>
+<y>220</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>groundpieces/solid/industrial/greybri5</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>256</x>
+<y>220</y>
+<z>0</z>
+</position>
+</groundpiece>
 <entrance>
   <position>
-    <x-pos>1011</x-pos>
-    <y-pos>484</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<x>1011</x>
+<y>484</y>
+<z>0</z>
+</position>
   <type>generic</type>
   <direction>misc</direction>
   <release-rate>50</release-rate>
   <owner-id>0</owner-id>
 </entrance>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>222.76</x-pos>
-    <y-pos>-95.28</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>222.76</x>
+<y>-95.28</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>336.76</x-pos>
-    <y-pos>-103.28</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>336.76</x>
+<y>-103.28</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>437.76</x-pos>
-    <y-pos>-93.28</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>437.76</x>
+<y>-93.28</y>
+<z>0</z>
+</position>
 </groundpiece>
-
 <entrance>
   <position>
-    <x-pos>1099</x-pos>
-    <y-pos>111</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<x>1099</x>
+<y>111</y>
+<z>0</z>
+</position>
   <type>generic</type>
   <direction>misc</direction>
   <release-rate>50</release-rate>
   <owner-id>0</owner-id>
 </entrance>
-
 <entrance>
   <position>
-    <x-pos>1388</x-pos>
-    <y-pos>900</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<x>1388</x>
+<y>900</y>
+<z>0</z>
+</position>
   <type>generic</type>
   <direction>misc</direction>
   <release-rate>50</release-rate>
   <owner-id>0</owner-id>
 </entrance>
-
-<exit use-old-pos-handling="0">
-  <position>
-    <x-pos>615</x-pos>
-    <y-pos>663</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <surface><resource type="datafile">
-    <resource-datafile>exits</resource-datafile>
-  <resource-ident>Exits/industrial</resource-ident>
-  </resource></surface>
-  <owner-id>0</owner-id></exit>
-
-<exit use-old-pos-handling="0">
-  <position>
-    <x-pos>581</x-pos>
-    <y-pos>1100</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <surface><resource type="datafile">
-    <resource-datafile>exits</resource-datafile>
-  <resource-ident>Exits/industrial</resource-ident>
-  </resource></surface>
-  <owner-id>0</owner-id></exit>
-
-<exit use-old-pos-handling="0">
-  <position>
-    <x-pos>209</x-pos>
-    <y-pos>222</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <surface><resource type="datafile">
-    <resource-datafile>exits</resource-datafile>
-  <resource-ident>Exits/industrial</resource-ident>
-  </resource></surface>
-  <owner-id>0</owner-id></exit>
-
-<exit use-old-pos-handling="0">
-  <position>
-    <x-pos>1500</x-pos>
-    <y-pos>175</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <surface><resource type="datafile">
-    <resource-datafile>exits</resource-datafile>
-  <resource-ident>Exits/stone</resource-ident>
-  </resource></surface>
-  <owner-id>0</owner-id></exit>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>-43.2401</x-pos>
-    <y-pos>-4.28003</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<exit>
+<owner-id>0</owner-id>
+<position>
+<x>615</x>
+<y>663</y>
+<z>0</z>
+</position>
+<surface>
+<image>exits/industrial</image>
+<modifier>ROT0</modifier>
+</surface>
+<owner-id>0</owner-id>
+</exit>
+<exit>
+<owner-id>0</owner-id>
+<position>
+<x>581</x>
+<y>1100</y>
+<z>0</z>
+</position>
+<surface>
+<image>exits/industrial</image>
+<modifier>ROT0</modifier>
+</surface>
+<owner-id>0</owner-id>
+</exit>
+<exit>
+<owner-id>0</owner-id>
+<position>
+<x>209</x>
+<y>222</y>
+<z>0</z>
+</position>
+<surface>
+<image>exits/industrial</image>
+<modifier>ROT0</modifier>
+</surface>
+<owner-id>0</owner-id>
+</exit>
+<exit>
+<owner-id>0</owner-id>
+<position>
+<x>1500</x>
+<y>175</y>
+<z>0</z>
+</position>
+<surface>
+<image>exits/stone</image>
+<modifier>ROT0</modifier>
+</surface>
+<owner-id>0</owner-id>
+</exit>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>-43.2401</x>
+<y>-4.28003</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>145.76</x-pos>
-    <y-pos>-99.28</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>145.76</x>
+<y>-99.28</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>666.76</x-pos>
-    <y-pos>-126.28</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>666.76</x>
+<y>-126.28</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>769.76</x-pos>
-    <y-pos>-126.28</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>769.76</x>
+<y>-126.28</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1506.76</x-pos>
-    <y-pos>252.72</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1506.76</x>
+<y>252.72</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>580.76</x-pos>
-    <y-pos>-90.28</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>580.76</x>
+<y>-90.28</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1470</x-pos>
-    <y-pos>522</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1470</x>
+<y>522</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-  <worldobj type="switchdoor">
-    <switch>
+<switchdoor>
+<switch>
   <position>
-    <x-pos>639</x-pos>
-    <y-pos>146</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<x>639</x>
+<y>146</y>
+<z>0</z>
+</position>
     </switch>
-    <door>
+<door>
     <height>
 15</height>
   <position>
-    <x-pos>1285</x-pos>
-    <y-pos>919</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<x>1285</x>
+<y>919</y>
+<z>0</z>
+</position>
     </door>
-  </worldobj>
-
-  <worldobj type="switchdoor">
-    <switch>
+</switchdoor>
+<switchdoor>
+<switch>
   <position>
-    <x-pos>172</x-pos>
-    <y-pos>889</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<x>172</x>
+<y>889</y>
+<z>0</z>
+</position>
     </switch>
-    <door>
+<door>
     <height>
 15</height>
   <position>
-    <x-pos>806</x-pos>
-    <y-pos>510</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<x>806</x>
+<y>510</y>
+<z>0</z>
+</position>
     </door>
-  </worldobj>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>-23.2401</x-pos>
-    <y-pos>402.72</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+</switchdoor>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>-23.2401</x>
+<y>402.72</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>-51.2401</x-pos>
-    <y-pos>168.72</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>-51.2401</x>
+<y>168.72</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-  <worldobj type="switchdoor">
-    <switch>
+<switchdoor>
+<switch>
   <position>
-    <x-pos>743</x-pos>
-    <y-pos>530</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<x>743</x>
+<y>530</y>
+<z>0</z>
+</position>
     </switch>
-    <door>
+<door>
     <height>
 15</height>
   <position>
-    <x-pos>359</x-pos>
-    <y-pos>160</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<x>359</x>
+<y>160</y>
+<z>0</z>
+</position>
     </door>
-  </worldobj>
-
-<trap>
-  <type>spike</type>
-  <position>
-    <x-pos>1305</x-pos>
-    <y-pos>143</y-pos>
-    <z-pos>100</z-pos>
-  </position>
-</trap>
-
-<trap>
-  <type>spike</type>
-  <position>
-    <x-pos>1419</x-pos>
-    <y-pos>143</y-pos>
-    <z-pos>100</z-pos>
-  </position>
-</trap>
-
-<trap>
-  <type>spike</type>
-  <position>
-    <x-pos>1484</x-pos>
-    <y-pos>143</y-pos>
-    <z-pos>100</z-pos>
-  </position>
-</trap>
-
-  <start-position>
-  <position>
-    <x-pos>873</x-pos>
-    <y-pos>666</y-pos>
-    <z-pos>1000</z-pos>
-  </position>
-  </start-position>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>24</x-pos>
-    <y-pos>-108</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+</switchdoor>
+<spike>
+<position>
+<x>1305</x>
+<y>143</y>
+<z>100</z>
+</position>
+</spike>
+<spike>
+<position>
+<x>1419</x>
+<y>143</y>
+<z>100</z>
+</position>
+</spike>
+<spike>
+<position>
+<x>1484</x>
+<y>143</y>
+<z>100</z>
+</position>
+</spike>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>24</x>
+<y>-108</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>885</x-pos>
-    <y-pos>-78</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>885</x>
+<y>-78</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>805</x-pos>
-    <y-pos>-94</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>805</x>
+<y>-94</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1521</x-pos>
-    <y-pos>609</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1521</x>
+<y>609</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>rock/blackrock4</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1478</x-pos>
-    <y-pos>147</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/rock/blackrock4</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1478</x>
+<y>147</y>
+<z>0</z>
+</position>
 </groundpiece>
-
+</objects>
 </pingus-level>
-

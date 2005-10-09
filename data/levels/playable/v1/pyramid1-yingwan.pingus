@@ -1,0 +1,764 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?>
+
+<pingus-level>
+  <global>
+    <levelname lang="en">The Great Pyramid</levelname>
+    <description lang="en">The exit is buried deeply inside the pyramid. Beware of traps, illusions and maybe even ancient curses too...</description>
+    <author>Ying-Wan Lam &lt;yingwan.lam@yale.edu&gt;</author>
+    <number-of-pingus>40</number-of-pingus>
+    <number-to-save>30</number-to-save>
+    <time>9000</time>
+    <width>1504</width>
+    <height>600</height>
+  </global>
+
+<background type="surface">
+  <surface><resource type="datafile">
+    <resource-datafile>textures</resource-datafile>
+  <resource-ident>Textures/desert</resource-ident>
+  </resource></surface>
+  <color>
+    <red>0</red>
+    <green>0</green>
+    <blue>0</blue>
+    <alpha>0</alpha>
+  </color>
+  <scroll-x>0</scroll-x>
+  <scroll-y>0</scroll-y>
+  <para-x>0.5</para-x>
+  <para-y>0.5</para-y>
+  <stretch-x>0</stretch-x>
+  <stretch-y>0</stretch-y>
+</background>
+
+  <action-list>
+    <basher count="10"/>
+    <blocker count="10"/>
+    <bomber count="5"/>
+    <bridger count="20"/>
+    <climber count="5"/>
+    <digger count="5"/>
+    <floater count="10"/>
+    <jumper count="5"/>
+    <miner count="5"/>
+  </action-list>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/bigdimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>520</x-pos>
+    <y-pos>324</y-pos>
+    <z-pos>-15</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/bigdimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>820</x-pos>
+    <y-pos>322</y-pos>
+    <z-pos>-15</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/bigdimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>671</x-pos>
+    <y-pos>174</y-pos>
+    <z-pos>-15</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/bigdimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>856</x-pos>
+    <y-pos>174</y-pos>
+    <z-pos>-15</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/mediumdimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>404</x-pos>
+    <y-pos>397</y-pos>
+    <z-pos>-15</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/mediumdimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>561</x-pos>
+    <y-pos>250</y-pos>
+    <z-pos>-15</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/mediumdimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>786</x-pos>
+    <y-pos>99</y-pos>
+    <z-pos>-15</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/mediumdimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>894</x-pos>
+    <y-pos>99</y-pos>
+    <z-pos>-15</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/smalldimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>445</x-pos>
+    <y-pos>362</y-pos>
+    <z-pos>-15</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/smalldimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>891</x-pos>
+    <y-pos>63</y-pos>
+    <z-pos>-15</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/bigdimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1045</x-pos>
+    <y-pos>322</y-pos>
+    <z-pos>-15</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>940</x-pos>
+    <y-pos>285</y-pos>
+    <z-pos>-5</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>535</x-pos>
+    <y-pos>361</y-pos>
+    <z-pos>-5</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>470</x-pos>
+    <y-pos>361</y-pos>
+    <z-pos>-5</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/smallegpytpict</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1003</x-pos>
+    <y-pos>316</y-pos>
+    <z-pos>-5</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/pillar3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>895</x-pos>
+    <y-pos>83</y-pos>
+    <z-pos>-5</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<entrance>
+  <position>
+    <x-pos>135</x-pos>
+    <y-pos>368</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>right</direction>
+  <release-rate>25</release-rate>
+  <owner-id>0</owner-id>
+</entrance>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Entrances/entrance</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>103</x-pos>
+    <y-pos>332</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<exit use-old-pos-handling="0">
+  <position>
+    <x-pos>887</x-pos>
+    <y-pos>355</y-pos>
+    <z-pos>5</z-pos>
+  </position>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Exits/desert</resource-ident>
+  </resource></surface>
+  <owner-id>0</owner-id></exit>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/mediummummy</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1185</x-pos>
+    <y-pos>393</y-pos>
+    <z-pos>5</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>509</x-pos>
+    <y-pos>399</y-pos>
+    <z-pos>80</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>806</x-pos>
+    <y-pos>399</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>881</x-pos>
+    <y-pos>399</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<trap>
+  <type>spike</type>
+  <position>
+    <x-pos>735</x-pos>
+    <y-pos>406</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+</trap>
+
+  <start-position>
+  <position>
+    <x-pos>0</x-pos>
+    <y-pos>0</y-pos>
+    <z-pos>1000</z-pos>
+  </position>
+  </start-position>
+
+</pingus-level>
+
+<?xml version="1.0"  encoding="ISO-8859-1"?>
+
+<pingus-level>
+  <global>
+    <levelname lang="en">The Great Pyramid</levelname>
+    <description lang="en">The exit is buried deeply inside the pyramid. Beware of traps, illusions and maybe even ancient curses too...</description>
+    <author>Ying-Wan Lam &lt;yingwan.lam@yale.edu&gt;</author>
+    <number-of-pingus>40</number-of-pingus>
+    <number-to-save>30</number-to-save>
+    <time>9000</time>
+    <width>1504</width>
+    <height>600</height>
+  </global>
+
+<background type="surface">
+  <surface><resource type="datafile">
+    <resource-datafile>textures</resource-datafile>
+  <resource-ident>Textures/desert</resource-ident>
+  </resource></surface>
+  <color>
+    <red>0</red>
+    <green>0</green>
+    <blue>0</blue>
+    <alpha>0</alpha>
+  </color>
+  <scroll-x>0</scroll-x>
+  <scroll-y>0</scroll-y>
+  <para-x>0.5</para-x>
+  <para-y>0.5</para-y>
+  <stretch-x>0</stretch-x>
+  <stretch-y>0</stretch-y>
+</background>
+
+  <action-list>
+    <basher count="10"/>
+    <blocker count="10"/>
+    <bomber count="5"/>
+    <bridger count="20"/>
+    <climber count="5"/>
+    <digger count="5"/>
+    <floater count="10"/>
+    <jumper count="5"/>
+    <miner count="5"/>
+  </action-list>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/bigdimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>520</x-pos>
+    <y-pos>324</y-pos>
+    <z-pos>-15</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/bigdimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>820</x-pos>
+    <y-pos>322</y-pos>
+    <z-pos>-15</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/bigdimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>671</x-pos>
+    <y-pos>174</y-pos>
+    <z-pos>-15</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/bigdimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>856</x-pos>
+    <y-pos>174</y-pos>
+    <z-pos>-15</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/mediumdimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>404</x-pos>
+    <y-pos>397</y-pos>
+    <z-pos>-15</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/mediumdimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>561</x-pos>
+    <y-pos>250</y-pos>
+    <z-pos>-15</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/mediumdimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>786</x-pos>
+    <y-pos>99</y-pos>
+    <z-pos>-15</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/mediumdimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>894</x-pos>
+    <y-pos>99</y-pos>
+    <z-pos>-15</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/smalldimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>445</x-pos>
+    <y-pos>362</y-pos>
+    <z-pos>-15</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/smalldimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>891</x-pos>
+    <y-pos>63</y-pos>
+    <z-pos>-15</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/bigdimwall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1045</x-pos>
+    <y-pos>322</y-pos>
+    <z-pos>-15</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>940</x-pos>
+    <y-pos>285</y-pos>
+    <z-pos>-5</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>535</x-pos>
+    <y-pos>361</y-pos>
+    <z-pos>-5</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>470</x-pos>
+    <y-pos>361</y-pos>
+    <z-pos>-5</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/smallegpytpict</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1003</x-pos>
+    <y-pos>316</y-pos>
+    <z-pos>-5</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Desert/pillar3</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>895</x-pos>
+    <y-pos>83</y-pos>
+    <z-pos>-5</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<entrance>
+  <position>
+    <x-pos>135</x-pos>
+    <y-pos>368</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>generic</type>
+  <direction>right</direction>
+  <release-rate>25</release-rate>
+  <owner-id>0</owner-id>
+</entrance>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Entrances/entrance</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>103</x-pos>
+    <y-pos>332</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<exit use-old-pos-handling="0">
+  <position>
+    <x-pos>887</x-pos>
+    <y-pos>355</y-pos>
+    <z-pos>5</z-pos>
+  </position>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Exits/desert</resource-ident>
+  </resource></surface>
+  <owner-id>0</owner-id></exit>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Ywlam/mediummummy</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1185</x-pos>
+    <y-pos>393</y-pos>
+    <z-pos>5</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>509</x-pos>
+    <y-pos>399</y-pos>
+    <z-pos>80</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>806</x-pos>
+    <y-pos>399</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Misc/smallbrickpiece</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>881</x-pos>
+    <y-pos>399</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+<trap>
+  <type>spike</type>
+  <position>
+    <x-pos>735</x-pos>
+    <y-pos>406</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+</trap>
+
+  <start-position>
+  <position>
+    <x-pos>0</x-pos>
+    <y-pos>0</y-pos>
+    <z-pos>1000</z-pos>
+  </position>
+  </start-position>
+
+</pingus-level>
+

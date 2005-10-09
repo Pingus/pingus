@@ -1,0 +1,912 @@
+<?xml version="1.0"?>
+
+<pingus-level>
+  <global>
+    <levelname lang="en">The jungle / have fun part one</levelname>
+    <description lang="en">Once you've passed the aggressive vegetation and the insects, and mastered the altitude, you are able to rest as your penguins die of malaria</description>
+    <author>Michael Mestre &lt;mmestre@teaser.fr&gt;</author>
+    <number-of-pingus>50</number-of-pingus>
+    <number-to-save>30</number-to-save>
+    <time>5000</time>
+    <width>1728</width>
+    <height>864</height>
+  </global>
+
+<background type="surface">
+  <surface><resource type="datafile">
+    <resource-datafile>textures</resource-datafile>
+  <resource-ident>Textures/enchantedjungle</resource-ident>
+  </resource></surface>
+  <color>
+    <red>1</red>
+    <green>1</green>
+    <blue>1</blue>
+    <alpha>0.2</alpha>
+  </color>
+  <scroll-x>0</scroll-x>
+  <scroll-y>0</scroll-y>
+  <para-x>0.5</para-x>
+  <para-y>0.5</para-y>
+  <stretch-x>0</stretch-x>
+  <stretch-y>0</stretch-y>
+</background>
+
+
+  <action-list>
+    <basher count="1"/>
+    <blocker count="4"/>
+    <bomber count="2"/>
+    <digger count="1"/>
+  </action-list>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/carabatreesmall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>436</x-pos>
+    <y-pos>523</y-pos>
+    <z-pos>-1200</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>0.8</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/carabatree</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>602</x-pos>
+    <y-pos>190</y-pos>
+    <z-pos>-1000</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>0.8</parallax>
+</hotspot>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/twist</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1071</x-pos>
+    <y-pos>579</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/twist</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>261</x-pos>
+    <y-pos>578</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/twist</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>666</x-pos>
+    <y-pos>579</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/twist</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1476</x-pos>
+    <y-pos>578</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>771</x-pos>
+    <y-pos>777</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1075</x-pos>
+    <y-pos>702</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1405</x-pos>
+    <y-pos>836</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>427</x-pos>
+    <y-pos>836</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-42</x-pos>
+    <y-pos>798</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>642</x-pos>
+    <y-pos>581</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1022</x-pos>
+    <y-pos>581</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1085</x-pos>
+    <y-pos>581</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1148</x-pos>
+    <y-pos>581</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>768</x-pos>
+    <y-pos>581</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>958</x-pos>
+    <y-pos>581</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>895</x-pos>
+    <y-pos>581</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>831</x-pos>
+    <y-pos>581</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>705</x-pos>
+    <y-pos>581</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/carabatreemedium</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1261</x-pos>
+    <y-pos>289</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<entrance>
+  <position>
+    <x-pos>403</x-pos>
+    <y-pos>441</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>woodthing</type>
+  <direction>left</direction>
+  <release-rate>40</release-rate>
+</entrance>
+
+<exit>
+  <position>
+    <x-pos>864</x-pos>
+    <y-pos>726</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <surface><resource type="datafile">
+    <resource-datafile>exits</resource-datafile>
+  <resource-ident>Exits/stone</resource-ident>
+  </resource></surface>
+</exit>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>66</x-pos>
+    <y-pos>-103</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1.3</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>242</x-pos>
+    <y-pos>-184</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1.3</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>553</x-pos>
+    <y-pos>-169</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1.3</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>803</x-pos>
+    <y-pos>-36</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1.3</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1092</x-pos>
+    <y-pos>-141</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1.3</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>Entrances/woodthing_nmov</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>327</x-pos>
+    <y-pos>306</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+  <start-position>
+  <position>
+    <x-pos>500</x-pos>
+    <y-pos>500</y-pos>
+    <z-pos>1000</z-pos>
+  </position>
+  </start-position>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>646</x-pos>
+    <y-pos>-122</y-pos>
+    <z-pos>1200</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1.3</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>499</x-pos>
+    <y-pos>170</y-pos>
+    <z-pos>1200</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1.3</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>498</x-pos>
+    <y-pos>427</y-pos>
+    <z-pos>1200</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1.3</parallax>
+</hotspot>
+
+</pingus-level>
+
+<?xml version="1.0"?>
+
+<pingus-level>
+  <global>
+    <levelname lang="en">The jungle / have fun part one</levelname>
+    <description lang="en">Once you've passed the aggressive vegetation and the insects, and mastered the altitude, you are able to rest as your penguins die of malaria</description>
+    <author>Michael Mestre &lt;mmestre@teaser.fr&gt;</author>
+    <number-of-pingus>50</number-of-pingus>
+    <number-to-save>30</number-to-save>
+    <time>5000</time>
+    <width>1728</width>
+    <height>864</height>
+  </global>
+
+<background type="surface">
+  <surface><resource type="datafile">
+    <resource-datafile>textures</resource-datafile>
+  <resource-ident>Textures/enchantedjungle</resource-ident>
+  </resource></surface>
+  <color>
+    <red>1</red>
+    <green>1</green>
+    <blue>1</blue>
+    <alpha>0.2</alpha>
+  </color>
+  <scroll-x>0</scroll-x>
+  <scroll-y>0</scroll-y>
+  <para-x>0.5</para-x>
+  <para-y>0.5</para-y>
+  <stretch-x>0</stretch-x>
+  <stretch-y>0</stretch-y>
+</background>
+
+
+  <action-list>
+    <basher count="1"/>
+    <blocker count="4"/>
+    <bomber count="2"/>
+    <digger count="1"/>
+  </action-list>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/carabatreesmall</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>436</x-pos>
+    <y-pos>523</y-pos>
+    <z-pos>-1200</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>0.8</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/carabatree</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>602</x-pos>
+    <y-pos>190</y-pos>
+    <z-pos>-1000</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>0.8</parallax>
+</hotspot>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/twist</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1071</x-pos>
+    <y-pos>579</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/twist</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>261</x-pos>
+    <y-pos>578</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/twist</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>666</x-pos>
+    <y-pos>579</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/twist</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1476</x-pos>
+    <y-pos>578</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>771</x-pos>
+    <y-pos>777</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1075</x-pos>
+    <y-pos>702</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1405</x-pos>
+    <y-pos>836</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>427</x-pos>
+    <y-pos>836</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch1</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>-42</x-pos>
+    <y-pos>798</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>642</x-pos>
+    <y-pos>581</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1022</x-pos>
+    <y-pos>581</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1085</x-pos>
+    <y-pos>581</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1148</x-pos>
+    <y-pos>581</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>768</x-pos>
+    <y-pos>581</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>958</x-pos>
+    <y-pos>581</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>895</x-pos>
+    <y-pos>581</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>831</x-pos>
+    <y-pos>581</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="solid">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>Hotspots/plate</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>705</x-pos>
+    <y-pos>581</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<groundpiece type="ground">
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/carabatreemedium</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1261</x-pos>
+    <y-pos>289</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+</groundpiece>
+
+<entrance>
+  <position>
+    <x-pos>403</x-pos>
+    <y-pos>441</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <type>woodthing</type>
+  <direction>left</direction>
+  <release-rate>40</release-rate>
+</entrance>
+
+<exit>
+  <position>
+    <x-pos>864</x-pos>
+    <y-pos>726</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <surface><resource type="datafile">
+    <resource-datafile>exits</resource-datafile>
+  <resource-ident>Exits/stone</resource-ident>
+  </resource></surface>
+</exit>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>66</x-pos>
+    <y-pos>-103</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1.3</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>242</x-pos>
+    <y-pos>-184</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1.3</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>553</x-pos>
+    <y-pos>-169</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1.3</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>803</x-pos>
+    <y-pos>-36</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1.3</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>1092</x-pos>
+    <y-pos>-141</y-pos>
+    <z-pos>0</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1.3</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>entrances</resource-datafile>
+  <resource-ident>Entrances/woodthing_nmov</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>327</x-pos>
+    <y-pos>306</y-pos>
+    <z-pos>100</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1</parallax>
+</hotspot>
+
+  <start-position>
+  <position>
+    <x-pos>500</x-pos>
+    <y-pos>500</y-pos>
+    <z-pos>1000</z-pos>
+  </position>
+  </start-position>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>646</x-pos>
+    <y-pos>-122</y-pos>
+    <z-pos>1200</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1.3</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>499</x-pos>
+    <y-pos>170</y-pos>
+    <z-pos>1200</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1.3</parallax>
+</hotspot>
+
+<hotspot>
+  <surface><resource type="datafile">
+    <resource-datafile>global</resource-datafile>
+  <resource-ident>GroundPieces/Jungle/branch6</resource-ident>
+  </resource></surface>
+  <position>
+    <x-pos>498</x-pos>
+    <y-pos>427</y-pos>
+    <z-pos>1200</z-pos>
+  </position>
+  <speed>-1</speed>
+  <parallax>1.3</parallax>
+</hotspot>
+
+</pingus-level>
+

@@ -1,209 +1,189 @@
-<?xml version="1.0"  encoding="ISO-8859-1"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <pingus-level>
-  <global>
-    <levelname lang="en">Pacman 3</levelname>
-    <description lang="en">One more Pacman level. Yes. It can be solved :).</description>
-    <author>Ying-Wan Lam &lt;yingwan.lam@yale.edu&gt;</author>
-    <number-of-pingus>20</number-of-pingus>
-    <number-to-save>12</number-to-save>
-    <time>9000</time>
-    <width>800</width>
-    <height>600</height>
-  </global>
-
-<background type="surface">
-  <surface><resource type="datafile">
-    <resource-datafile>textures</resource-datafile>
-  <resource-ident>Textures/stars</resource-ident>
-  </resource></surface>
-  <color>
+<version>2</version>
+<head>
+<levelname></levelname>
+<description></description>
+<author>Ying-Wan Lam &lt;yingwan.lam@yale.edu&gt;</author>
+<number-of-pingus>20</number-of-pingus>
+<number-to-save>12</number-to-save>
+<time>9000</time>
+<actions>
+<basher>20</basher>
+<blocker>20</blocker>
+<bomber>20</bomber>
+<bridger>20</bridger>
+<climber>20</climber>
+<digger>20</digger>
+<floater>20</floater>
+<jumper>20</jumper>
+<miner>20</miner>
+</actions>
+<music>none</music>
+<levelsize>
+<width>800</width>
+<height>600</height>
+</levelsize>
+</head>
+<objects>
+<surface-background>
+<surface>
+<image>textures/stars</image>
+<modifier>ROT0</modifier>
+</surface>
+<color>
     <red>0</red>
     <green>0</green>
     <blue>0</blue>
     <alpha>0</alpha>
   </color>
-  <scroll-x>0</scroll-x>
-  <scroll-y>0</scroll-y>
-  <para-x>0.5</para-x>
-  <para-y>0.5</para-y>
-  <stretch-x>0</stretch-x>
-  <stretch-y>0</stretch-y>
-</background>
-
-  <action-list>
-    <basher count="20"/>
-    <blocker count="20"/>
-    <bomber count="20"/>
-    <bridger count="20"/>
-    <climber count="20"/>
-    <digger count="20"/>
-    <floater count="20"/>
-    <jumper count="20"/>
-    <miner count="20"/>
-  </action-list>
-
+<scroll-x>0</scroll-x>
+<scroll-y>0</scroll-y>
+<para-x>0.5</para-x>
+<para-y>0.5</para-y>
+<stretch-x>0</stretch-x>
+<stretch-y>0</stretch-y>
+</surface-background>
 <hotspot>
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Ywlam/pacbkg</resource-ident>
-  </resource></surface>
+  <surface>
+<image>global/Ywlam/pacbkg</image>
+<modifier>ROT0</modifier>
+</surface>
   <position>
-    <x-pos>174</x-pos>
-    <y-pos>16</y-pos>
-    <z-pos>-5</z-pos>
-  </position>
+<x>174</x>
+<y>16</y>
+<z>-5</z>
+</position>
   <speed>-1</speed>
   <parallax>1</parallax>
 </hotspot>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Ywlam/pacmaze</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>174</x-pos>
-    <y-pos>16</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>global/Ywlam/pacmaze</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>174</x>
+<y>16</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="solid">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Ywlam/pacframe</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>174</x-pos>
-    <y-pos>16</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>solid</type>
+<surface>
+<image>global/Ywlam/pacframe</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>174</x>
+<y>16</y>
+<z>0</z>
+</position>
 </groundpiece>
-
 <entrance>
   <position>
-    <x-pos>578</x-pos>
-    <y-pos>291</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<x>578</x>
+<y>291</y>
+<z>0</z>
+</position>
   <type>generic</type>
   <direction>left</direction>
   <release-rate>150</release-rate>
   <owner-id>0</owner-id>
 </entrance>
-
-<exit use-old-pos-handling="0">
-  <position>
-    <x-pos>192</x-pos>
-    <y-pos>315</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Ywlam/pacman</resource-ident>
-  </resource></surface>
-  <owner-id>0</owner-id></exit>
-
+<exit>
+<owner-id>0</owner-id>
+<position>
+<x>192</x>
+<y>315</y>
+<z>0</z>
+</position>
+<surface>
+<image>global/Ywlam/pacman</image>
+<modifier>ROT0</modifier>
+</surface>
+<owner-id>0</owner-id>
+</exit>
 <hotspot>
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Ywlam/blinky</resource-ident>
-  </resource></surface>
+  <surface>
+<image>global/Ywlam/blinky</image>
+<modifier>ROT0</modifier>
+</surface>
   <position>
-    <x-pos>417</x-pos>
-    <y-pos>274</y-pos>
-    <z-pos>80</z-pos>
-  </position>
+<x>417</x>
+<y>274</y>
+<z>80</z>
+</position>
   <speed>-1</speed>
   <parallax>1</parallax>
 </hotspot>
-
 <hotspot>
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Ywlam/inky</resource-ident>
-  </resource></surface>
+  <surface>
+<image>global/Ywlam/inky</image>
+<modifier>ROT0</modifier>
+</surface>
   <position>
-    <x-pos>362</x-pos>
-    <y-pos>106</y-pos>
-    <z-pos>80</z-pos>
-  </position>
+<x>362</x>
+<y>106</y>
+<z>80</z>
+</position>
   <speed>-1</speed>
   <parallax>1</parallax>
 </hotspot>
-
 <hotspot>
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Ywlam/pinky</resource-ident>
-  </resource></surface>
+  <surface>
+<image>global/Ywlam/pinky</image>
+<modifier>ROT0</modifier>
+</surface>
   <position>
-    <x-pos>382</x-pos>
-    <y-pos>522</y-pos>
-    <z-pos>80</z-pos>
-  </position>
+<x>382</x>
+<y>522</y>
+<z>80</z>
+</position>
   <speed>-1</speed>
   <parallax>1</parallax>
 </hotspot>
-
 <hotspot>
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Ywlam/clyde</resource-ident>
-  </resource></surface>
+  <surface>
+<image>global/Ywlam/clyde</image>
+<modifier>ROT0</modifier>
+</surface>
   <position>
-    <x-pos>384</x-pos>
-    <y-pos>291</y-pos>
-    <z-pos>80</z-pos>
-  </position>
+<x>384</x>
+<y>291</y>
+<z>80</z>
+</position>
   <speed>-1</speed>
   <parallax>1</parallax>
 </hotspot>
-
-<trap>
-  <type>spike</type>
-  <position>
-    <x-pos>386</x-pos>
-    <y-pos>290</y-pos>
-    <z-pos>100</z-pos>
-  </position>
-</trap>
-
-<trap>
-  <type>spike</type>
-  <position>
-    <x-pos>363</x-pos>
-    <y-pos>106</y-pos>
-    <z-pos>100</z-pos>
-  </position>
-</trap>
-
-<trap>
-  <type>spike</type>
-  <position>
-    <x-pos>418</x-pos>
-    <y-pos>275</y-pos>
-    <z-pos>100</z-pos>
-  </position>
-</trap>
-
-<trap>
-  <type>spike</type>
-  <position>
-    <x-pos>386</x-pos>
-    <y-pos>522</y-pos>
-    <z-pos>100</z-pos>
-  </position>
-</trap>
-
-  <start-position>
-  <position>
-    <x-pos>0</x-pos>
-    <y-pos>0</y-pos>
-    <z-pos>1000</z-pos>
-  </position>
-  </start-position>
-
+<spike>
+<position>
+<x>386</x>
+<y>290</y>
+<z>100</z>
+</position>
+</spike>
+<spike>
+<position>
+<x>363</x>
+<y>106</y>
+<z>100</z>
+</position>
+</spike>
+<spike>
+<position>
+<x>418</x>
+<y>275</y>
+<z>100</z>
+</position>
+</spike>
+<spike>
+<position>
+<x>386</x>
+<y>522</y>
+<z>100</z>
+</position>
+</spike>
+</objects>
 </pingus-level>
-

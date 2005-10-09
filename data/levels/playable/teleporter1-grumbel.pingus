@@ -1,721 +1,714 @@
-<?xml version="1.0"  encoding="ISO-8859-1"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <pingus-level>
-  <global>
-    <levelname lang="en">EditorDefaultValue: Please give me a name...</levelname>
-    <description lang="en">EditorDefaultValue: ...and a short description</description>
-    <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
-    <number-of-pingus>50</number-of-pingus>
-    <number-to-save>25</number-to-save>
-    <time>-1</time>
-    <width>1216</width>
-    <height>800</height>
-    <difficulty>50</difficulty>
-    <playable>1</playable>
-    <comment></comment>
-  </global>
-
-  <action-list>
-    <blocker count="5"/>
-    <bomber count="2"/>
-    <bridger count="20"/>
-    <digger count="5"/>
-  </action-list>
-
-<background type="surface">
-  <surface><resource type="datafile">
-    <resource-datafile>textures</resource-datafile>
-  <resource-ident>Textures/cyanspace</resource-ident>
-  </resource></surface>
-  <color>
+<version>2</version>
+<head>
+<levelname></levelname>
+<description></description>
+<author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
+<number-of-pingus>50</number-of-pingus>
+<number-to-save>25</number-to-save>
+<time>-1</time>
+<difficulty>50</difficulty>
+<playable>1</playable>
+<comment></comment>
+<actions>
+<blocker>5</blocker>
+<bomber>2</bomber>
+<bridger>20</bridger>
+<digger>5</digger>
+</actions>
+<music>none</music>
+<levelsize>
+<width>1216</width>
+<height>800</height>
+</levelsize>
+</head>
+<objects>
+<surface-background>
+<surface>
+<image>textures/cyanspace</image>
+<modifier>ROT0</modifier>
+</surface>
+<color>
     <red>0</red>
     <green>0</green>
     <blue>0</blue>
     <alpha>0.1</alpha>
   </color>
-  <scroll-x>.2</scroll-x>
-  <scroll-y>.7</scroll-y>
-  <para-x>0.1</para-x>
-  <para-y>0.1</para-y>
-  <stretch-x>0</stretch-x>
-  <stretch-y>0</stretch-y>
-  <position>
-    <x-pos>0</x-pos>
-    <y-pos>0</y-pos>
-    <z-pos>-100</z-pos>
-  </position>
-</background>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>528</x-pos>
-    <y-pos>373</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<scroll-x>.2</scroll-x>
+<scroll-y>.7</scroll-y>
+<para-x>0.1</para-x>
+<para-y>0.1</para-y>
+<stretch-x>0</stretch-x>
+<stretch-y>0</stretch-y>
+<position>
+<x>0</x>
+<y>0</y>
+<z>-100</z>
+</position>
+</surface-background>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>528</x>
+<y>373</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>460</x-pos>
-    <y-pos>780</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>460</x>
+<y>780</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>627</x-pos>
-    <y-pos>776</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>627</x>
+<y>776</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>261</x-pos>
-    <y-pos>783</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>261</x>
+<y>783</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>529</x-pos>
-    <y-pos>408</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>529</x>
+<y>408</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>528</x-pos>
-    <y-pos>300</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>528</x>
+<y>300</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>460</x-pos>
-    <y-pos>707</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>460</x>
+<y>707</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>627</x-pos>
-    <y-pos>703</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>627</x>
+<y>703</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>261</x-pos>
-    <y-pos>710</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>261</x>
+<y>710</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>529</x-pos>
-    <y-pos>445</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>529</x>
+<y>445</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>528</x-pos>
-    <y-pos>337</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>528</x>
+<y>337</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>460</x-pos>
-    <y-pos>744</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>460</x>
+<y>744</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>627</x-pos>
-    <y-pos>740</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>627</x>
+<y>740</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>261</x-pos>
-    <y-pos>747</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>261</x>
+<y>747</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>528</x-pos>
-    <y-pos>264</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>528</x>
+<y>264</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>460</x-pos>
-    <y-pos>671</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>460</x>
+<y>671</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/smalltower</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>527</x-pos>
-    <y-pos>240</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/smalltower</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>527</x>
+<y>240</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/smalltower</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>564</x-pos>
-    <y-pos>281</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/smalltower</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>564</x>
+<y>281</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>627</x-pos>
-    <y-pos>667</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>627</x>
+<y>667</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>261</x-pos>
-    <y-pos>674</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>261</x>
+<y>674</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/block1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>381</x-pos>
-    <y-pos>621</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/block1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>381</x>
+<y>621</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/block1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>180</x-pos>
-    <y-pos>621</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/block1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>180</x>
+<y>621</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/block1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>582</x-pos>
-    <y-pos>621</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/block1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>582</x>
+<y>621</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/tower1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>180</x-pos>
-    <y-pos>455</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/tower1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>180</x>
+<y>455</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/tower1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>720</x-pos>
-    <y-pos>455</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/tower1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>720</x>
+<y>455</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/diagonalr</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>451</x-pos>
-    <y-pos>183</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/diagonalr</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>451</x>
+<y>183</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/diagonalr</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>587</x-pos>
-    <y-pos>319</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/diagonalr</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>587</x>
+<y>319</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/diagonalr</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>655</x-pos>
-    <y-pos>387</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/diagonalr</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>655</x>
+<y>387</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/diagonal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>388.83</x-pos>
-    <y-pos>183.362</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/diagonal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>388.83</x>
+<y>183.362</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/diagonal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>252</x-pos>
-    <y-pos>319</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/diagonal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>252</x>
+<y>319</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/diagonal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>320.83</x-pos>
-    <y-pos>251.362</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/diagonal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>320.83</x>
+<y>251.362</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/diagonal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>184</x-pos>
-    <y-pos>387</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/diagonal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>184</x>
+<y>387</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/block1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>381</x-pos>
-    <y-pos>183</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/block1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>381</x>
+<y>183</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="remove">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-remove</resource-datafile>
-  <resource-ident>misc/rect1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>500</x-pos>
-    <y-pos>286</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>remove</type>
+<surface>
+<image>groundpieces/remove/misc/rect1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>500</x>
+<y>286</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>435</x-pos>
-    <y-pos>340</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>435</x>
+<y>340</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>401</x-pos>
-    <y-pos>480</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>401</x>
+<y>480</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>470</x-pos>
-    <y-pos>480</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>470</x>
+<y>480</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>433</x-pos>
-    <y-pos>434</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>433</x>
+<y>434</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>288</x-pos>
-    <y-pos>529</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>288</x>
+<y>529</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>332</x-pos>
-    <y-pos>529</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>332</x>
+<y>529</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>504</x-pos>
-    <y-pos>564</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>504</x>
+<y>564</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/way</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>355</x-pos>
-    <y-pos>582</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/way</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>355</x>
+<y>582</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="remove">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-remove</resource-datafile>
-  <resource-ident>misc/rect1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>500</x-pos>
-    <y-pos>308</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>remove</type>
+<surface>
+<image>groundpieces/remove/misc/rect1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>500</x>
+<y>308</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/diagonalr</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>520</x-pos>
-    <y-pos>251</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/diagonalr</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>520</x>
+<y>251</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1045</x-pos>
-    <y-pos>757</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1045</x>
+<y>757</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>902</x-pos>
-    <y-pos>766</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>902</x>
+<y>766</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1045</x-pos>
-    <y-pos>794</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1045</x>
+<y>794</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>902</x-pos>
-    <y-pos>803</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>902</x>
+<y>803</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>1045</x-pos>
-    <y-pos>721</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>1045</x>
+<y>721</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="bridge">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-bridge</resource-datafile>
-  <resource-ident>space/grid3</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>902</x-pos>
-    <y-pos>730</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>bridge</type>
+<surface>
+<image>groundpieces/bridge/space/grid3</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>902</x>
+<y>730</y>
+<z>0</z>
+</position>
 </groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>space/block1</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>891</x-pos>
-    <y-pos>679</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/space/block1</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>891</x>
+<y>679</y>
+<z>0</z>
+</position>
 </groundpiece>
-
 <entrance>
   <position>
-    <x-pos>648</x-pos>
-    <y-pos>508</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<x>648</x>
+<y>508</y>
+<z>0</z>
+</position>
   <type>generic</type>
   <direction>misc</direction>
   <release-rate>50</release-rate>
   <owner-id>0</owner-id>
 </entrance>
-
-<exit use-old-pos-handling="0">
+<exit>
+<owner-id>0</owner-id>
+<position>
+<x>1005</x>
+<y>679</y>
+<z>0</z>
+</position>
+<surface>
+<image>exits/space</image>
+<modifier>ROT0</modifier>
+</surface>
+<owner-id>0</owner-id>
+</exit>
+<teleporter>
+<position>
+<x>457</x>
+<y>344</y>
+<z>0</z>
+</position>
+<target>
   <position>
-    <x-pos>1005</x-pos>
-    <y-pos>679</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <surface><resource type="datafile">
-    <resource-datafile>exits</resource-datafile>
-  <resource-ident>Exits/space</resource-ident>
-  </resource></surface>
-  <owner-id>0</owner-id></exit>
-
-  <worldobj type="teleporter">  <position>
-    <x-pos>457</x-pos>
-    <y-pos>344</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-    <target>
-  <position>
-    <x-pos>483</x-pos>
-    <y-pos>150</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<x>483</x>
+<y>150</y>
+<z>0</z>
+</position>
     </target>
-  </worldobj>
+</teleporter>
 <hotspot>
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>Entrances/space</resource-ident>
-  </resource></surface>
+  <surface>
+<image>entrances/space</image>
+<modifier>ROT0</modifier>
+</surface>
   <position>
-    <x-pos>620</x-pos>
-    <y-pos>467</y-pos>
-    <z-pos>100</z-pos>
-  </position>
+<x>620</x>
+<y>467</y>
+<z>100</z>
+</position>
   <speed>10</speed>
   <parallax>1</parallax>
 </hotspot>
-
-  <start-position>
-  <position>
-    <x-pos>479</x-pos>
-    <y-pos>510</y-pos>
-    <z-pos>1000</z-pos>
-  </position>
-  </start-position>
-
+</objects>
 </pingus-level>
-

@@ -1,1734 +1,1720 @@
-<?xml version="1.0"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <pingus-level>
-  <global>
-    <levelname lang="en">Long Way Down</levelname>
-    <description lang="en">
-</description>
-    <author>Craig Timpany &lt;timpany@pingus.cx&gt;</author>
-    <number-of-pingus>20</number-of-pingus>
-    <number-to-save>10</number-to-save>
-    <time>9000</time>
-    <width>800</width>
-    <height>1024</height>
-  </global>
-
-<background type="surface">
-  <surface><resource type="datafile">
-    <resource-datafile>textures</resource-datafile>
-  <resource-ident>Textures/crystal</resource-ident>
-  </resource></surface>
-  <color>
+<version>2</version>
+<head>
+<levelname></levelname>
+<description></description>
+<author>Craig Timpany &lt;timpany@pingus.cx&gt;</author>
+<number-of-pingus>20</number-of-pingus>
+<number-to-save>10</number-to-save>
+<time>9000</time>
+<actions>
+<basher>2</basher>
+<blocker>3</blocker>
+<miner>10</miner>
+</actions>
+<music>none</music>
+<levelsize>
+<width>800</width>
+<height>1024</height>
+</levelsize>
+</head>
+<objects>
+<surface-background>
+<surface>
+<image>textures/crystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<color>
     <red>0</red>
     <green>0</green>
     <blue>0</blue>
     <alpha>1</alpha>
   </color>
-  <scroll-x>0</scroll-x>
-  <scroll-y>0</scroll-y>
-  <para-x>0.5</para-x>
-  <para-y>0.5</para-y>
-  <stretch-x>0</stretch-x>
-  <stretch-y>0</stretch-y>
-</background>
-
-
-
-
-
-
-  <action-list>
-    <basher count="2"/>
-    <blocker count="3"/>
-    <miner count="10"/>
-  </action-list>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>515</x-pos>
-    <y-pos>800</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>414</x-pos>
-    <y-pos>731</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>312</x-pos>
-    <y-pos>663</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>415</x-pos>
-    <y-pos>835</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>210</x-pos>
-    <y-pos>695</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>314</x-pos>
-    <y-pos>866</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>564</x-pos>
-    <y-pos>314</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>667</x-pos>
-    <y-pos>-84</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>688</x-pos>
-    <y-pos>243</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>688</x-pos>
-    <y-pos>347</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>107</x-pos>
-    <y-pos>732</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/hexcrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>210</x-pos>
-    <y-pos>798</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>196</x-pos>
-    <y-pos>203</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>701</x-pos>
-    <y-pos>458</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>635</x-pos>
-    <y-pos>409</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>154</x-pos>
-    <y-pos>117</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>190</x-pos>
-    <y-pos>7</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/diagcrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>228</x-pos>
-    <y-pos>91</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>-32</x-pos>
-    <y-pos>600</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>69</x-pos>
-    <y-pos>600</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>498</x-pos>
-    <y-pos>202</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>397</x-pos>
-    <y-pos>202</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>297</x-pos>
-    <y-pos>202</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/column</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>353</x-pos>
-    <y-pos>211</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/column</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>122</x-pos>
-    <y-pos>740</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/column</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>670</x-pos>
-    <y-pos>729</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/column</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>767</x-pos>
-    <y-pos>729</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/column</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>718</x-pos>
-    <y-pos>729</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/column</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>11</x-pos>
-    <y-pos>630</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/column</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>121</x-pos>
-    <y-pos>629</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/column</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>448</x-pos>
-    <y-pos>212</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/column</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>353</x-pos>
-    <y-pos>117</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/column</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>448</x-pos>
-    <y-pos>118</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>287</x-pos>
-    <y-pos>86</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>319</x-pos>
-    <y-pos>86</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>351</x-pos>
-    <y-pos>86</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>383</x-pos>
-    <y-pos>86</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>415</x-pos>
-    <y-pos>86</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>717</x-pos>
-    <y-pos>816</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>717</x-pos>
-    <y-pos>912</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>717</x-pos>
-    <y-pos>705</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>447</x-pos>
-    <y-pos>86</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>749</x-pos>
-    <y-pos>816</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>749</x-pos>
-    <y-pos>912</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>749</x-pos>
-    <y-pos>705</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>479</x-pos>
-    <y-pos>86</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>417</x-pos>
-    <y-pos>337</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>353</x-pos>
-    <y-pos>337</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>416</x-pos>
-    <y-pos>306</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>353</x-pos>
-    <y-pos>306</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>781</x-pos>
-    <y-pos>816</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>781</x-pos>
-    <y-pos>912</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>781</x-pos>
-    <y-pos>705</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>11</x-pos>
-    <y-pos>717</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>121</x-pos>
-    <y-pos>716</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>511</x-pos>
-    <y-pos>86</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>448</x-pos>
-    <y-pos>337</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>385</x-pos>
-    <y-pos>337</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>653</x-pos>
-    <y-pos>912</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>653</x-pos>
-    <y-pos>705</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>685</x-pos>
-    <y-pos>912</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>685</x-pos>
-    <y-pos>705</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>653</x-pos>
-    <y-pos>880</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>653</x-pos>
-    <y-pos>673</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>653</x-pos>
-    <y-pos>848</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>653</x-pos>
-    <y-pos>641</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>653</x-pos>
-    <y-pos>816</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>653</x-pos>
-    <y-pos>578</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>653</x-pos>
-    <y-pos>609</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>684</x-pos>
-    <y-pos>816</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>448</x-pos>
-    <y-pos>306</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/block</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>385</x-pos>
-    <y-pos>306</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/platform</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>-87</x-pos>
-    <y-pos>892</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/platform</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>-24</x-pos>
-    <y-pos>831</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/platform2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>41</x-pos>
-    <y-pos>175</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/platform2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>127</x-pos>
-    <y-pos>336</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/platform2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>65</x-pos>
-    <y-pos>316</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/platform2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>84</x-pos>
-    <y-pos>255</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/platform2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>63</x-pos>
-    <y-pos>538</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/platform2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>84</x-pos>
-    <y-pos>471</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/platform2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>105</x-pos>
-    <y-pos>404</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/platform2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>-21</x-pos>
-    <y-pos>154</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/platform2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>22</x-pos>
-    <y-pos>235</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>161</x-pos>
-    <y-pos>596</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>589</x-pos>
-    <y-pos>194</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>266</x-pos>
-    <y-pos>197</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>500</x-pos>
-    <y-pos>-148</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>606</x-pos>
-    <y-pos>-54</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>715</x-pos>
-    <y-pos>26</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>119</x-pos>
-    <y-pos>-94</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>6</x-pos>
-    <y-pos>-26</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>360</x-pos>
-    <y-pos>567</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>407</x-pos>
-    <y-pos>570</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>406</x-pos>
-    <y-pos>306</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>359</x-pos>
-    <y-pos>307</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>472</x-pos>
-    <y-pos>-156</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>578</x-pos>
-    <y-pos>-62</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>687</x-pos>
-    <y-pos>18</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>91</x-pos>
-    <y-pos>-102</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>-22</x-pos>
-    <y-pos>-34</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>537</x-pos>
-    <y-pos>-163</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>643</x-pos>
-    <y-pos>-69</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>752</x-pos>
-    <y-pos>11</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>156</x-pos>
-    <y-pos>-109</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>43</x-pos>
-    <y-pos>-41</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>733</x-pos>
-    <y-pos>0</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>137</x-pos>
-    <y-pos>-120</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/skinnycrystal</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>24</x-pos>
-    <y-pos>-52</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/horiz2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>704</x-pos>
-    <y-pos>829</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/horiz2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>767</x-pos>
-    <y-pos>683</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/horiz2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>19</x-pos>
-    <y-pos>739</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/horiz2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>81</x-pos>
-    <y-pos>799</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/horiz2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>639</x-pos>
-    <y-pos>889</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/horiz2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>934</x-pos>
-    <y-pos>500</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/horiz2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>19</x-pos>
-    <y-pos>799</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/horiz2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>704</x-pos>
-    <y-pos>890</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/horiz2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>704</x-pos>
-    <y-pos>683</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/horiz2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>-45</x-pos>
-    <y-pos>799</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/horiz2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>640</x-pos>
-    <y-pos>827</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/horiz2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>876</x-pos>
-    <y-pos>544</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/horiz2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>-44</x-pos>
-    <y-pos>737</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/horiz2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>82</x-pos>
-    <y-pos>738</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>636</x-pos>
-    <y-pos>547</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>735</x-pos>
-    <y-pos>547</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipe</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>214</x-pos>
-    <y-pos>360</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>194</x-pos>
-    <y-pos>355</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>615</x-pos>
-    <y-pos>541</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/pipeend</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>287</x-pos>
-    <y-pos>354</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/tesselate</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>685</x-pos>
-    <y-pos>848</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/tesselate</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>749</x-pos>
-    <y-pos>577</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/tesselate</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>685</x-pos>
-    <y-pos>577</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/tesselate</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>685</x-pos>
-    <y-pos>641</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/tesselate</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>749</x-pos>
-    <y-pos>848</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/tesselate</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>749</x-pos>
-    <y-pos>641</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/tesselate</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>0</x-pos>
-    <y-pos>757</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/tesselate</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>63</x-pos>
-    <y-pos>757</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/horiz2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>704</x-pos>
-    <y-pos>556</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
-<groundpiece type="ground">
-  <surface><resource type="datafile">
-    <resource-datafile>global</resource-datafile>
-  <resource-ident>GroundPieces/Crystal/horiz2</resource-ident>
-  </resource></surface>
-  <position>
-    <x-pos>641</x-pos>
-    <y-pos>556</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-</groundpiece>
-
+<scroll-x>0</scroll-x>
+<scroll-y>0</scroll-y>
+<para-x>0.5</para-x>
+<para-y>0.5</para-y>
+<stretch-x>0</stretch-x>
+<stretch-y>0</stretch-y>
+</surface-background>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/hexcrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>515</x>
+<y>800</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/hexcrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>414</x>
+<y>731</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/hexcrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>312</x>
+<y>663</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/hexcrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>415</x>
+<y>835</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/hexcrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>210</x>
+<y>695</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/hexcrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>314</x>
+<y>866</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/hexcrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>564</x>
+<y>314</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/hexcrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>667</x>
+<y>-84</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/hexcrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>688</x>
+<y>243</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/hexcrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>688</x>
+<y>347</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/hexcrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>107</x>
+<y>732</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/hexcrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>210</x>
+<y>798</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/diagcrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>196</x>
+<y>203</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/diagcrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>701</x>
+<y>458</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/diagcrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>635</x>
+<y>409</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/diagcrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>154</x>
+<y>117</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/diagcrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>190</x>
+<y>7</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/diagcrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>228</x>
+<y>91</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/pipe</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>-32</x>
+<y>600</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/pipe</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>69</x>
+<y>600</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/pipe</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>498</x>
+<y>202</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/pipe</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>397</x>
+<y>202</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/pipe</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>297</x>
+<y>202</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/column</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>353</x>
+<y>211</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/column</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>122</x>
+<y>740</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/column</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>670</x>
+<y>729</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/column</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>767</x>
+<y>729</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/column</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>718</x>
+<y>729</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/column</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>11</x>
+<y>630</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/column</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>121</x>
+<y>629</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/column</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>448</x>
+<y>212</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/column</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>353</x>
+<y>117</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/column</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>448</x>
+<y>118</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>287</x>
+<y>86</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>319</x>
+<y>86</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>351</x>
+<y>86</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>383</x>
+<y>86</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>415</x>
+<y>86</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>717</x>
+<y>816</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>717</x>
+<y>912</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>717</x>
+<y>705</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>447</x>
+<y>86</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>749</x>
+<y>816</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>749</x>
+<y>912</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>749</x>
+<y>705</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>479</x>
+<y>86</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>417</x>
+<y>337</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>353</x>
+<y>337</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>416</x>
+<y>306</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>353</x>
+<y>306</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>781</x>
+<y>816</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>781</x>
+<y>912</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>781</x>
+<y>705</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>11</x>
+<y>717</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>121</x>
+<y>716</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>511</x>
+<y>86</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>448</x>
+<y>337</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>385</x>
+<y>337</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>653</x>
+<y>912</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>653</x>
+<y>705</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>685</x>
+<y>912</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>685</x>
+<y>705</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>653</x>
+<y>880</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>653</x>
+<y>673</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>653</x>
+<y>848</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>653</x>
+<y>641</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>653</x>
+<y>816</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>653</x>
+<y>578</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>653</x>
+<y>609</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>684</x>
+<y>816</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>448</x>
+<y>306</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/block</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>385</x>
+<y>306</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/platform</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>-87</x>
+<y>892</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/platform</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>-24</x>
+<y>831</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/platform2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>41</x>
+<y>175</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/platform2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>127</x>
+<y>336</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/platform2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>65</x>
+<y>316</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/platform2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>84</x>
+<y>255</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/platform2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>63</x>
+<y>538</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/platform2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>84</x>
+<y>471</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/platform2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>105</x>
+<y>404</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/platform2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>-21</x>
+<y>154</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/platform2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>22</x>
+<y>235</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/pipeend</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>161</x>
+<y>596</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/pipeend</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>589</x>
+<y>194</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/pipeend</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>266</x>
+<y>197</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/skinnycrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>500</x>
+<y>-148</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/skinnycrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>606</x>
+<y>-54</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/skinnycrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>715</x>
+<y>26</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/skinnycrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>119</x>
+<y>-94</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/skinnycrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>6</x>
+<y>-26</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/skinnycrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>360</x>
+<y>567</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/skinnycrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>407</x>
+<y>570</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/skinnycrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>406</x>
+<y>306</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/skinnycrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>359</x>
+<y>307</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/skinnycrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>472</x>
+<y>-156</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/skinnycrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>578</x>
+<y>-62</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/skinnycrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>687</x>
+<y>18</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/skinnycrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>91</x>
+<y>-102</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/skinnycrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>-22</x>
+<y>-34</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/skinnycrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>537</x>
+<y>-163</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/skinnycrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>643</x>
+<y>-69</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/skinnycrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>752</x>
+<y>11</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/skinnycrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>156</x>
+<y>-109</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/skinnycrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>43</x>
+<y>-41</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/skinnycrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>733</x>
+<y>0</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/skinnycrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>137</x>
+<y>-120</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/skinnycrystal</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>24</x>
+<y>-52</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/horiz2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>704</x>
+<y>829</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/horiz2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>767</x>
+<y>683</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/horiz2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>19</x>
+<y>739</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/horiz2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>81</x>
+<y>799</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/horiz2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>639</x>
+<y>889</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/horiz2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>934</x>
+<y>500</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/horiz2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>19</x>
+<y>799</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/horiz2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>704</x>
+<y>890</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/horiz2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>704</x>
+<y>683</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/horiz2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>-45</x>
+<y>799</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/horiz2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>640</x>
+<y>827</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/horiz2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>876</x>
+<y>544</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/horiz2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>-44</x>
+<y>737</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/horiz2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>82</x>
+<y>738</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/pipe</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>636</x>
+<y>547</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/pipe</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>735</x>
+<y>547</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/pipe</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>214</x>
+<y>360</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/pipeend</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>194</x>
+<y>355</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/pipeend</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>615</x>
+<y>541</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/pipeend</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>287</x>
+<y>354</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/tesselate</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>685</x>
+<y>848</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/tesselate</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>749</x>
+<y>577</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/tesselate</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>685</x>
+<y>577</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/tesselate</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>685</x>
+<y>641</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/tesselate</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>749</x>
+<y>848</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/tesselate</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>749</x>
+<y>641</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/tesselate</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>0</x>
+<y>757</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/tesselate</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>63</x>
+<y>757</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/horiz2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>704</x>
+<y>556</y>
+<z>0</z>
+</position>
+</groundpiece>
+<groundpiece>
+<type>ground</type>
+<surface>
+<image>groundpieces/ground/crystal/horiz2</image>
+<modifier>ROT0</modifier>
+</surface>
+<position>
+<x>641</x>
+<y>556</y>
+<z>0</z>
+</position>
+</groundpiece>
 <entrance>
   <position>
-    <x-pos>416</x-pos>
-    <y-pos>25</y-pos>
-    <z-pos>0</z-pos>
-  </position>
+<x>416</x>
+<y>25</y>
+<z>0</z>
+</position>
   <type>generic</type>
   <direction>left</direction>
   <release-rate>30</release-rate>
 </entrance>
-
 <exit>
-  <position>
-    <x-pos>379</x-pos>
-    <y-pos>807</y-pos>
-    <z-pos>0</z-pos>
-  </position>
-  <surface><resource type="datafile">
-    <resource-datafile>exits</resource-datafile>
-  <resource-ident>Exits/stone</resource-ident>
-  </resource></surface>
+<owner-id>0</owner-id>
+<position>
+<x>379</x>
+<y>807</y>
+<z>0</z>
+</position>
+<surface>
+<image>exits/stone</image>
+<modifier>ROT0</modifier>
+</surface>
 </exit>
-
-  <start-position>
-  <position>
-    <x-pos>415</x-pos>
-    <y-pos>37</y-pos>
-    <z-pos>1000</z-pos>
-  </position>
-  </start-position>
-
+</objects>
 </pingus-level>
-
