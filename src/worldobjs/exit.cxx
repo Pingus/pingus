@@ -91,18 +91,25 @@ Exit::update ()
   PinguHolder* holder = world->get_pingus();
 
   for (PinguIter pingu = holder->begin(); pingu != holder->end(); ++pingu)
+  {
+    // Make sure this particular exit is allowed for this pingu
+    if ((*pingu)->get_owner()  == owner_id)
     {
+      // Now, make sure the pingu is within range
       if (   (*pingu)->get_x() > pos.x - 1 && (*pingu)->get_x() < pos.x + 1
-	  && (*pingu)->get_y() > pos.y - 5 && (*pingu)->get_y() < pos.y + 2)
-	{
-	  if (   (*pingu)->get_status() != PS_EXITED
-	      && (*pingu)->get_status() != PS_DEAD
-	      && (*pingu)->get_action() != Actions::Exiter)
-	    {
-	      (*pingu)->set_action(Actions::Exiter);
-	    }
-	}
+       	  && (*pingu)->get_y() > pos.y - 5 && (*pingu)->get_y() < pos.y + 2)
+      {
+        // Now, make sure the pingu isn't already exiting, gone, or dead
+    	  if (   (*pingu)->get_status() != PS_EXITED
+    	      && (*pingu)->get_status() != PS_DEAD
+    	      && (*pingu)->get_action() != Actions::Exiter)
+        {
+          // Pingu actually exits
+          (*pingu)->set_action(Actions::Exiter);
+        }
+      }
     }
+  }
 }
 
 float
