@@ -1,5 +1,5 @@
 
-AC_DEFUN(AC_LIB_CLANLIB, [
+AC_DEFUN([AC_LIB_CLANLIB], [
 	echo "checking for ClanLib... assuming yes, but haven't tested";
 	LIBS="-lclan -lclanlayer2 $LIBS"]
 	)
@@ -11,7 +11,7 @@ dnl example: PINGUS_EXPAND_DIR(LOCALEDIR, "$datadir/locale")
 dnl eg, then: AC_DEFINE_UNQUOTED(LOCALEDIR, "$LOCALEDIR")
 dnl by Alexandre Oliva 
 dnl from http://www.cygnus.com/ml/automake/1998-Aug/0040.html
-AC_DEFUN(PINGUS_EXPAND_DIR, [
+AC_DEFUN([PINGUS_EXPAND_DIR], [
         $1=$2
         $1=`(
             test "x$prefix" = xNONE && prefix="$ac_default_prefix"
@@ -20,7 +20,7 @@ AC_DEFUN(PINGUS_EXPAND_DIR, [
         )`
 ])
 
-AC_DEFUN(PINGUS_EXTRA_PATHS,
+AC_DEFUN([PINGUS_EXTRA_PATHS],
 [
 
 AC_ARG_WITH(extra-includes,
