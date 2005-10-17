@@ -32,6 +32,7 @@ protected:
   CL_Vector pos;
 public:
   DrawingRequest(const CL_Vector& pos_) : pos(pos_) {}
+  virtual ~DrawingRequest() {};
   
   virtual void draw(CL_GraphicContext* gc) = 0;
   
