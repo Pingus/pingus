@@ -95,15 +95,6 @@
     <liquid><xsl:apply-templates select="*"/></liquid>
   </xsl:template>
 
-  <xsl:template match="exit">
-    <xsl:if test="@use-old-pos-handling != '0'">
-      <xsl:message terminate="yes">
-        old-pos-handling is not supported
-      </xsl:message>
-    </xsl:if>
-    <exit><xsl:apply-templates select="*"/></exit>
-  </xsl:template>
-
   <xsl:template match="action-list/*">
     <xsl:element name="{name()}">
       <xsl:value-of select="@count"/>
@@ -169,6 +160,11 @@
 
   <xsl:template match="exit">
     <xsl:element name="exit">
+    <xsl:if test="@use-old-pos-handling != '0'">
+      <xsl:message terminate="yes">
+        old-pos-handling is not supported
+      </xsl:message>
+    </xsl:if>
     <xsl:choose>
       <xsl:when test="string(@owner-id) != ''">
         <xsl:apply-templates select="*"/>
