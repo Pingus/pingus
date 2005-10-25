@@ -1,0 +1,726 @@
+<resources>
+  <section name="pingus">
+    <section name="player1">
+      <section name="rocketlauncher">
+        <sprite name="left">
+          <animation speed="50" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/rocketlauncher.png">
+            <grid pos="0,0" size="32,32" array="7,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <animation speed="50" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/rocketlauncher.png">
+            <grid pos="0,32" size="32,32" array="7,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="boarder">
+        <sprite name="left">
+          <image file="../images/pingus/player1/boarder.png">
+            <grid pos="0,0" size="30,30" array="1,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <image file="../images/pingus/player1/boarder.png">
+            <grid pos="0,30" size="30,30" array="1,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <sprite name="angel">
+        <image file="../images/pingus/player1/angel.png">
+          <grid pos="0,0" size="46,30" array="4,1"/>
+        </image>
+      </sprite>
+  
+      <sprite name="superman">
+        <image file="../images/pingus/player1/superman.png">
+          <grid pos="0,0" size="30,30" array="8,1"/>
+        </image>
+      </sprite>
+  
+      <section name="bomber">
+        <sprite name="left">
+          <animation speed="60" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/bomber.png">
+            <grid pos="0,0" size="32,32" array="16,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <animation speed="60" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/bomber.png">
+            <grid pos="0,0" size="32,32" array="16,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="basher">
+        <sprite name="left">
+          <translation origin="bottom_center" x="0" y="1"/>
+          <image file="../images/pingus/player1/basher.png">
+            <grid pos="0,0" size="32,32" array="12,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <translation origin="bottom_center" x="0" y="1"/>
+          <image file="../images/pingus/player1/basher.png">
+            <grid pos="0,32" size="32,32" array="12,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="climber">
+        <sprite name="left">
+          <translation origin="bottom_center" x="16" y="2"/>
+          <image file="../images/pingus/player1/climber.png">
+            <grid pos="0,0" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <translation origin="bottom_center" x="-14" y="2"/>
+          <image file="../images/pingus/player1/climber.png">
+            <grid pos="0,32" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="faller">
+        <sprite name="left">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/faller.png">
+            <grid pos="0,0" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/faller.png">
+            <grid pos="0,0" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="jumper">
+        <sprite name="left">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/faller.png">
+            <grid pos="0,0" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/faller.png">
+            <grid pos="0,0" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="tumbler">
+        <sprite name="left">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/tumble.png">
+            <grid pos="0,0" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/tumble.png">
+            <grid pos="0,0" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="bridger">
+        <sprite name="left">
+          <animation speed="66" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/bridger.png">
+            <grid pos="0,0" size="32,32" array="15,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <animation speed="66" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/bridger.png">
+            <grid pos="0,32" size="32,32" array="15,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="bridger_walk">
+        <sprite name="left">
+          <animation speed="66" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/bridger_walk.png">
+            <grid pos="0,0" size="32,32" array="4,1"/>
+          </image>
+        </sprite>
+        
+        <sprite name="right">
+          <animation speed="66" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/bridger_walk.png">
+            <grid pos="0,32" size="32,32" array="4,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="walker">
+        <sprite name="left">
+          <animation speed="60" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/walker.png">
+            <grid pos="0,0" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <animation speed="60" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/walker.png">
+            <grid pos="0,32" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="blocker">
+        <sprite name="left">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/blocker.png">
+            <grid pos="0,0" size="32,32" array="6,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/blocker.png">
+            <grid pos="0,0" size="32,32" array="6,1"/>
+          </image>
+        </sprite>
+      </section>
+      
+      <section name="floater">
+        <sprite name="left">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/floater.png">
+            <grid pos="0,0" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+        
+        <sprite name="right">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/floater.png">
+            <grid pos="0,0" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="digger">
+        <sprite name="left">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/digger.png">
+            <grid pos="0,0" size="32,32" array="14,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/digger.png">
+            <grid pos="0,0" size="32,32" array="14,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="miner">
+        <sprite name="left">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/miner.png">
+            <grid pos="0,0" size="32,32" array="12,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/miner.png">
+            <grid pos="0,32" size="32,32" array="12,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <sprite name="splat">
+        <translation origin="bottom_center" x="0" y="2"/>
+        <animation speed="33" loop="no" />
+        <image file="../images/pingus/player1/splat.png">
+          <grid pos="0,0" size="32,32" array="16,1"/>
+        </image>
+      </sprite>
+  
+      <section name="exit">
+        <sprite name="left">
+          <animation speed="60" loop="no" />
+          <translation origin="bottom_center" x="-2" y="2"/>
+          <image file="../images/pingus/player1/exit.png">
+            <grid pos="0,0" size="32,32" array="9,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <animation speed="60" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/exit.png">
+            <grid pos="0,32" size="32,32" array="9,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="drownfall">
+        <sprite name="left">
+          <animation speed="60" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/drownfall.png">
+            <grid pos="0,0" size="32,32" array="15,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <animation speed="60" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/drownfall.png">
+            <grid pos="0,32" size="32,32" array="15,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="drownwalk">
+        <sprite name="left">
+          <animation speed="60" loop="no" />
+          <image file="../images/pingus/player1/drownwalk.png">
+            <grid pos="0,0" size="32,32" array="15,1"/>
+          </image>
+        </sprite>
+        <sprite name="right">
+          <animation speed="60" loop="no" />
+          <image file="../images/pingus/player1/drownwalk.png">
+            <grid pos="0,32" size="32,32" array="15,1"/>
+          </image>
+        </sprite>
+      </section>
+      
+      <section name="waiter">
+        <sprite name="left">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/waiter.png">
+            <grid pos="0,0" size="32,32" array="6,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/waiter.png">
+            <grid pos="0,0" size="32,32" array="6,1"/>
+          </image>
+        </sprite>
+      </section>
+      
+      <section name="slider">
+        <sprite name="left">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/slider.png">
+            <grid pos="0,0" size="32,15" array="1,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/slider.png">
+            <grid pos="0,15" size="32,15" array="1,1"/>
+          </image>
+        </sprite>      
+      </section>
+      
+              
+      <sprite name="explo">
+        <image file="../images/pingus/player1/explo.png">
+        </image>
+      </sprite>
+        
+    </section>
+  </section>
+ </resources> 
+<resources>
+  <section name="pingus">
+    <section name="player1">
+      <section name="rocketlauncher">
+        <sprite name="left">
+          <animation speed="50" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/rocketlauncher.png">
+            <grid pos="0,0" size="32,32" array="7,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <animation speed="50" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/rocketlauncher.png">
+            <grid pos="0,32" size="32,32" array="7,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="boarder">
+        <sprite name="left">
+          <image file="../images/pingus/player1/boarder.png">
+            <grid pos="0,0" size="30,30" array="1,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <image file="../images/pingus/player1/boarder.png">
+            <grid pos="0,30" size="30,30" array="1,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <sprite name="angel">
+        <image file="../images/pingus/player1/angel.png">
+          <grid pos="0,0" size="46,30" array="4,1"/>
+        </image>
+      </sprite>
+  
+      <sprite name="superman">
+        <image file="../images/pingus/player1/superman.png">
+          <grid pos="0,0" size="30,30" array="8,1"/>
+        </image>
+      </sprite>
+  
+      <section name="bomber">
+        <sprite name="left">
+          <animation speed="60" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/bomber.png">
+            <grid pos="0,0" size="32,32" array="16,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <animation speed="60" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/bomber.png">
+            <grid pos="0,0" size="32,32" array="16,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="basher">
+        <sprite name="left">
+          <translation origin="bottom_center" x="0" y="1"/>
+          <image file="../images/pingus/player1/basher.png">
+            <grid pos="0,0" size="32,32" array="12,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <translation origin="bottom_center" x="0" y="1"/>
+          <image file="../images/pingus/player1/basher.png">
+            <grid pos="0,32" size="32,32" array="12,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="climber">
+        <sprite name="left">
+          <translation origin="bottom_center" x="16" y="2"/>
+          <image file="../images/pingus/player1/climber.png">
+            <grid pos="0,0" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <translation origin="bottom_center" x="-14" y="2"/>
+          <image file="../images/pingus/player1/climber.png">
+            <grid pos="0,32" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="faller">
+        <sprite name="left">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/faller.png">
+            <grid pos="0,0" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/faller.png">
+            <grid pos="0,0" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="jumper">
+        <sprite name="left">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/faller.png">
+            <grid pos="0,0" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/faller.png">
+            <grid pos="0,0" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="tumbler">
+        <sprite name="left">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/tumble.png">
+            <grid pos="0,0" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/tumble.png">
+            <grid pos="0,0" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="bridger">
+        <sprite name="left">
+          <animation speed="66" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/bridger.png">
+            <grid pos="0,0" size="32,32" array="15,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <animation speed="66" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/bridger.png">
+            <grid pos="0,32" size="32,32" array="15,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="bridger_walk">
+        <sprite name="left">
+          <animation speed="66" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/bridger_walk.png">
+            <grid pos="0,0" size="32,32" array="4,1"/>
+          </image>
+        </sprite>
+        
+        <sprite name="right">
+          <animation speed="66" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/bridger_walk.png">
+            <grid pos="0,32" size="32,32" array="4,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="walker">
+        <sprite name="left">
+          <animation speed="60" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/walker.png">
+            <grid pos="0,0" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <animation speed="60" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/walker.png">
+            <grid pos="0,32" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="blocker">
+        <sprite name="left">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/blocker.png">
+            <grid pos="0,0" size="32,32" array="6,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/blocker.png">
+            <grid pos="0,0" size="32,32" array="6,1"/>
+          </image>
+        </sprite>
+      </section>
+      
+      <section name="floater">
+        <sprite name="left">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/floater.png">
+            <grid pos="0,0" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+        
+        <sprite name="right">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/floater.png">
+            <grid pos="0,0" size="32,32" array="8,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="digger">
+        <sprite name="left">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/digger.png">
+            <grid pos="0,0" size="32,32" array="14,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/digger.png">
+            <grid pos="0,0" size="32,32" array="14,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="miner">
+        <sprite name="left">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/miner.png">
+            <grid pos="0,0" size="32,32" array="12,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/miner.png">
+            <grid pos="0,32" size="32,32" array="12,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <sprite name="splat">
+        <translation origin="bottom_center" x="0" y="2"/>
+        <animation speed="33" loop="no" />
+        <image file="../images/pingus/player1/splat.png">
+          <grid pos="0,0" size="32,32" array="16,1"/>
+        </image>
+      </sprite>
+  
+      <section name="exit">
+        <sprite name="left">
+          <animation speed="60" loop="no" />
+          <translation origin="bottom_center" x="-2" y="2"/>
+          <image file="../images/pingus/player1/exit.png">
+            <grid pos="0,0" size="32,32" array="9,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <animation speed="60" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/exit.png">
+            <grid pos="0,32" size="32,32" array="9,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="drownfall">
+        <sprite name="left">
+          <animation speed="60" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/drownfall.png">
+            <grid pos="0,0" size="32,32" array="15,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <animation speed="60" loop="no" />
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/drownfall.png">
+            <grid pos="0,32" size="32,32" array="15,1"/>
+          </image>
+        </sprite>
+      </section>
+  
+      <section name="drownwalk">
+        <sprite name="left">
+          <animation speed="60" loop="no" />
+          <image file="../images/pingus/player1/drownwalk.png">
+            <grid pos="0,0" size="32,32" array="15,1"/>
+          </image>
+        </sprite>
+        <sprite name="right">
+          <animation speed="60" loop="no" />
+          <image file="../images/pingus/player1/drownwalk.png">
+            <grid pos="0,32" size="32,32" array="15,1"/>
+          </image>
+        </sprite>
+      </section>
+      
+      <section name="waiter">
+        <sprite name="left">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/waiter.png">
+            <grid pos="0,0" size="32,32" array="6,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/waiter.png">
+            <grid pos="0,0" size="32,32" array="6,1"/>
+          </image>
+        </sprite>
+      </section>
+      
+      <section name="slider">
+        <sprite name="left">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/slider.png">
+            <grid pos="0,0" size="32,15" array="1,1"/>
+          </image>
+        </sprite>
+  
+        <sprite name="right">
+          <translation origin="bottom_center" x="0" y="2"/>
+          <image file="../images/pingus/player1/slider.png">
+            <grid pos="0,15" size="32,15" array="1,1"/>
+          </image>
+        </sprite>      
+      </section>
+      
+              
+      <sprite name="explo">
+        <image file="../images/pingus/player1/explo.png">
+        </image>
+      </sprite>
+        
+    </section>
+  </section>
+ </resources> 
