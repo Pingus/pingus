@@ -25,7 +25,7 @@ namespace Pingus {
 std::string
 StringFormat::break_line (std::string text, int length, const CL_Font& font)
 {
-  unsigned int pos = 0;
+  std::string::size_type pos = 0;
   while ((pos = text.find('\t', pos)) != std::string::npos)
     text.replace(pos, 1, 1, ' ');
 
