@@ -32,8 +32,8 @@ namespace Actions {
 Blocker::Blocker(Pingu* p)
   : PinguAction(p)
 {
-  sprite.load(Direction::LEFT,  "pingus/blocker/left");
-  sprite.load(Direction::RIGHT, "pingus/blocker/right");
+  sprite.load(Direction::LEFT,  "pingus/player" + pingu->get_owner_str() + "/blocker/left");
+  sprite.load(Direction::RIGHT, "pingus/player" + pingu->get_owner_str() + "/blocker/right");
 
   if (   rel_getpixel(0,-1)  ==  Groundtype::GP_NOTHING
       && rel_getpixel(0, -2) ==  Groundtype::GP_GROUND)

@@ -18,8 +18,13 @@
 pkgdatadir = $(datadir)/games/@PACKAGE@/data
 
 EXTRA_DIST  = \
-pingus.xml    \
-alias.xml    \
+pingus-player0.xml    \
+pingus-player1.xml    \
+pingus-player2.xml    \
+pingus-player3.xml    \
+pingus-common.xml     \
+particles.xml \
+alias.xml     \
 fonts.xml     \
 entrances.xml \
 traps.xml     \

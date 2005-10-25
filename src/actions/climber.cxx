@@ -29,8 +29,10 @@ namespace Actions {
 Climber::Climber (Pingu* p)
   : PinguAction(p)
 {
-  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/climber/left"));
-  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/climber/right"));
+  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/player" + 
+    pingu->get_owner_str() + "/climber/left"));
+  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
+    pingu->get_owner_str() + "/climber/right"));
 }
 
 void

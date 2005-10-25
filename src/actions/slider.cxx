@@ -30,8 +30,10 @@ Slider::Slider (Pingu* p)
   : PinguAction(p),
     speed(10)
 {
-  sprite.load(Direction::LEFT,  "pingus/slider/left");
-  sprite.load(Direction::RIGHT, "pingus/slider/right");
+  sprite.load(Direction::LEFT,  "pingus/player" + pingu->get_owner_str() + 
+    "/slider/left");
+  sprite.load(Direction::RIGHT, "pingus/player" + pingu->get_owner_str() + 
+    "/slider/right");
 }
 
 void

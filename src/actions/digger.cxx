@@ -42,7 +42,7 @@ Digger::Digger (Pingu* p)
   digger_radius_gfx_width  = digger_radius_gfx.get_width();
   digger_radius_gfx_height = digger_radius_gfx.get_height();
 
-  sprite = Resource::load_sprite("pingus/digger/left");
+  sprite = Resource::load_sprite("pingus/player" + pingu->get_owner_str() + "/digger/left");
 }
 
 void

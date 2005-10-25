@@ -39,11 +39,15 @@ Bridger::Bridger (Pingu* p)
     block_build(false),
     name(_("Bridger") + std::string(" (") + CL_String::to(bricks) + ")")
 {
-  walk_sprite.load (Direction::LEFT,  Resource::load_sprite("pingus/bridger_walk/left"));
-  walk_sprite.load (Direction::RIGHT, Resource::load_sprite("pingus/bridger_walk/right"));
+  walk_sprite.load (Direction::LEFT,  Resource::load_sprite("pingus/player" + 
+    pingu->get_owner_str() + "/bridger_walk/left"));
+  walk_sprite.load (Direction::RIGHT, Resource::load_sprite("pingus/player" + 
+    pingu->get_owner_str() + "/bridger_walk/right"));
 
-  build_sprite.load (Direction::LEFT,  Resource::load_sprite("pingus/bridger/left"));
-  build_sprite.load (Direction::RIGHT, Resource::load_sprite("pingus/bridger/right"));
+  build_sprite.load (Direction::LEFT,  Resource::load_sprite("pingus/player" + 
+    pingu->get_owner_str() + "/bridger/left"));
+  build_sprite.load (Direction::RIGHT, Resource::load_sprite("pingus/player" + 
+    pingu->get_owner_str() + "/bridger/right"));
 
   brick_l = Resource::load_pixelbuffer("other/brick_left");
   brick_r = Resource::load_pixelbuffer("other/brick_right");

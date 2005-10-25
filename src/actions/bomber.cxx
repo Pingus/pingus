@@ -45,10 +45,10 @@ Bomber::Bomber (Pingu* p)
     sound_played(false),
     gfx_exploded(false),
     colmap_exploded(false),
-    explo_surf(Resource::load_sprite("other/explo"))
+    explo_surf(Resource::load_sprite("pingus/player" + pingu->get_owner_str() + "/explo"))
 {
-  sprite.load(Direction::LEFT,  "pingus/bomber/left");
-  sprite.load(Direction::RIGHT, "pingus/bomber/right");
+  sprite.load(Direction::LEFT,  "pingus/player" + pingu->get_owner_str() + "/bomber/left");
+  sprite.load(Direction::RIGHT, "pingus/player" + pingu->get_owner_str() + "/bomber/right");
 
   // Only load the surface again if no static_surface is available
   if (!static_surface_loaded)

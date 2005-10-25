@@ -190,8 +190,12 @@ public:
   float get_z_pos () const { return 0; }
 
   /** @return The owner_id of the owner, only used in multiplayer
-      configurations, ought to bed single player */
+      configurations, ought to be 0 in single player */
   int get_owner ();
+  
+  /** @return The owner_id as a string. Only used in multiplayer
+      configurations, ought to be "0" in single player */
+  std::string get_owner_str ();
 
   bool   is_over (int x, int y);
 

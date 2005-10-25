@@ -31,7 +31,7 @@ Floater::Floater(Pingu* p)
     falling_depth(0),
     step(0)
 {
-  sprite = Resource::load_sprite("pingus/floater/left");
+  sprite = Resource::load_sprite("pingus/player" + pingu->get_owner_str() + "/floater/left");
 }
 
 void

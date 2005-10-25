@@ -33,8 +33,10 @@ RocketLauncher::RocketLauncher (Pingu* p)
   : PinguAction(p),
     launched(false)
 {
-  sprite.load(Direction::LEFT,  "pingus/rocketlauncher/left");
-  sprite.load(Direction::RIGHT, "pingus/rocketlauncher/right");
+  sprite.load(Direction::LEFT,  "pingus/player" + pingu->get_owner_str() + 
+    "/rocketlauncher/left");
+  sprite.load(Direction::RIGHT, "pingus/player" + pingu->get_owner_str() + 
+    "/rocketlauncher/right");
 
 /* Explosive Particles not supported right now
   WorldObj::get_world()->get_particle_holder()->add_particle

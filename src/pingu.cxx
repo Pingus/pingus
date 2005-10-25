@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <sstream>
 #include <assert.h>
 #include <math.h>
 #include <stdio.h>
@@ -39,7 +40,7 @@ using namespace Actions;
 
 // Init a pingu at the given position while falling
 Pingu::Pingu (int arg_id, const Vector& arg_pos, int owner)
-  : light(Resource::load_sprite("pingus/light")),
+  : light(Resource::load_sprite("other/light")),
     action(0),
     countdown_action (0),
     wall_action(0),
@@ -434,6 +435,14 @@ int
 Pingu::get_owner ()
 {
   return owner_id;
+}
+
+std::string
+Pingu::get_owner_str ()
+{
+  std::ostringstream ostr;
+  ostr << owner_id;
+  return ostr.str();
 }
 
 bool

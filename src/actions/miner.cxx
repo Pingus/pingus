@@ -35,8 +35,10 @@ Miner::Miner (Pingu* p)
     miner_radius_gfx(Resource::load_pixelbuffer("other/bash_radius_gfx")),
     slow_count(0)
 {
-  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/miner/left"));
-  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/miner/right"));
+  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/player" + 
+    pingu->get_owner_str() + "/miner/left"));
+  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
+    pingu->get_owner_str() + "/miner/right"));
 
   miner_radius_width = miner_radius.get_width();
   miner_radius_gfx_width = miner_radius_gfx.get_width();

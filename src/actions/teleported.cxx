@@ -29,7 +29,7 @@ Teleported::Teleported(Pingu* p)
   : PinguAction(p),
     sound_played(false)
 {
-  sprite = Resource::load_sprite("pingus/bomber");
+  sprite = Resource::load_sprite("pingus/player" + pingu->get_owner_str() + "/bomber");
 }
 
 

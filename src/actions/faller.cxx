@@ -36,11 +36,15 @@ namespace Actions {
 Faller::Faller (Pingu* p)
   : PinguAction(p)
 {
-  faller.load(Direction::LEFT,  Resource::load_sprite("pingus/faller/left"));
-  faller.load(Direction::RIGHT, Resource::load_sprite("pingus/faller/right"));
+  faller.load(Direction::LEFT,  Resource::load_sprite("pingus/player" + 
+    pingu->get_owner_str() + "/faller/left"));
+  faller.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
+    pingu->get_owner_str() + "/faller/right"));
 
-  tumbler.load(Direction::LEFT,  Resource::load_sprite("pingus/tumbler/left"));
-  tumbler.load(Direction::RIGHT, Resource::load_sprite("pingus/tumbler/right"));
+  tumbler.load(Direction::LEFT,  Resource::load_sprite("pingus/player" +
+    pingu->get_owner_str() + "/tumbler/left"));
+  tumbler.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
+    pingu->get_owner_str() + "/tumbler/right"));
 }
 
 Faller::~Faller () { }

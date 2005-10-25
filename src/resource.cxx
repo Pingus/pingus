@@ -55,7 +55,12 @@ Resource::init()
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/groundpieces-transparent.xml")));
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/hotspots.xml")));
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/liquids.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/pingus.xml")));
+  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/pingus-player0.xml")));
+  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/pingus-player1.xml")));
+  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/pingus-player2.xml")));
+  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/pingus-player3.xml")));
+  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/pingus-common.xml")));
+  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/particles.xml")));
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/story.xml")));
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/textures.xml")));
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/traps.xml")));

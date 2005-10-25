@@ -33,7 +33,7 @@ Splashed::Splashed (Pingu* p)
     particle_thrown(false),
     sound_played(false)
 {
-  sprite = Resource::load_sprite("pingus/splat");
+  sprite = Resource::load_sprite("pingus/player" + pingu->get_owner_str() + "/splat");
 }
 
 void

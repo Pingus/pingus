@@ -30,11 +30,11 @@ namespace Actions {
 Walker::Walker (Pingu* p)
   : PinguAction(p)
 {
-  walker.load(Direction::LEFT,  "pingus/walker/left");
-  walker.load(Direction::RIGHT, "pingus/walker/right");
+  walker.load(Direction::LEFT, "pingus/player" + pingu->get_owner_str() + "/walker/left");
+  walker.load(Direction::RIGHT, "pingus/player" + pingu->get_owner_str() + "/walker/right");
 
-  floaterlayer.load(Direction::LEFT,  "pingus/floaterlayer/left");
-  floaterlayer.load(Direction::RIGHT, "pingus/floaterlayer/right");
+  floaterlayer.load(Direction::LEFT,  "other/floaterlayer/left");
+  floaterlayer.load(Direction::RIGHT, "other/floaterlayer/right");
 
   // Reset the velocity
   pingu->set_velocity(Vector());

@@ -29,8 +29,10 @@ namespace Actions {
 Jumper::Jumper (Pingu* p)
   : PinguAction(p)
 {
-  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/jumper/left"));
-  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/jumper/right"));
+  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/player" + 
+    pingu->get_owner_str() + "/jumper/left"));
+  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
+    pingu->get_owner_str() + "/jumper/right"));
 }
 
 void

@@ -31,7 +31,7 @@ Angel::Angel (Pingu* p)
   : PinguAction(p),
     counter(0.0),
     x_pos(pingu->get_x()),
-    sprite(Resource::load_sprite("pingus/angel"))
+    sprite(Resource::load_sprite("pingus/player" + pingu->get_owner_str() + "/angel"))
 {
 }
 

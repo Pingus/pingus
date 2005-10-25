@@ -37,8 +37,10 @@ Basher::Basher (Pingu* p)
     basher_c(0),
     first_bash(true)
 {
-  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/basher/left"));
-  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/basher/right"));
+  sprite.load(Direction::LEFT,  Resource::load_sprite("pingus/player" + 
+    pingu->get_owner_str() + "/basher/left"));
+  sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
+    pingu->get_owner_str() + "/basher/right"));
 
   bash_radius_width     = bash_radius.get_width();
   bash_radius_gfx_width = bash_radius_gfx.get_width();
