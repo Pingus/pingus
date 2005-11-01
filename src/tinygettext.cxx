@@ -17,9 +17,14 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#ifdef HAVE_DIRENT_H
+#include <dirent.h>
+#else
+#include "win32/uce_dirent.h"
+#endif
+
 #include <sys/types.h>
 #include <iconv.h>
-#include <dirent.h>
 #include <fstream>
 #include <iostream>
 #include <ctype.h>
@@ -87,7 +92,7 @@ public:
 		size_t in_size = text.size();
 		size_t out_size = 4*in_size; // Worst case scenario: ASCII -> UTF-32?
 		std::string result(out_size, ' ');
-		ICONV_CONST char* in_str = &text[0];
+    ICONV_CONST char* in_str = &text[0];
 		char* out_str = &result[0];
  
 		// Try to convert the text.

@@ -3,9 +3,8 @@ Roadmap for Pingus 0.7.0
 
 * split screen multiplayer
 * two new worlds 
-* 
 
-Resource String Cleanup:
+Resource String Cleanup (DONE):
 ========================
 Old:
   <surface><resource type="datafile">

@@ -9,7 +9,7 @@ Introduction
    The following instructions are only tested with Microsoft Visual Studio 6
    and Visual Studio .NET 2003.
    
-   To be able to compile pingus you need a working version of ClanLib 0.7.8 
+   To be able to compile pingus you need a working version of ClanLib 0.8.0 
    or later which is correct installed. You should have both debug and release
    builds of the libraries.
    
@@ -25,15 +25,14 @@ Introduction
 	-> ClanLib 
 	(Download at http://www.clanlib.org/download/)
 	
-	-> libxml2
 	-> iconv
-	(Download at http://www.fh-frankfurt.de/~igor/projects/libxml/index.html)
+	(Download at http://gettext.sourceforge.net/)
     
-   To compile ClanLib by yourself you will need several other libraries:
+   To compile ClanLib by yourself you will need several other libraries
+   (all of which are provided at the ClanLib website):
 
 	-> DirectX 8/8.1 SDK
 	(Download at http://msdn.microsoft.com/library/default.asp?url=/downloads/list/directx.asp)
-	
 	-> ZLib 
 	-> LibJPEG
 	-> LibPNG
@@ -43,15 +42,9 @@ Introduction
 	-> ClanLib itself
 	(Download at http://www.clanlib.org/)
 
-    To make it easy, ClanLib provides all these external libs (dx8, xml, iconv,
-    zlib, jpeg, png, mikmod, vorbis) available in their External Libs package.
-    (Download at http://www.clanlib.org/~sphair/download/external/ExternalLibs.zip)
-    
-    If you download this package, you only need to download ClanLib and nothing more
-    to compile both ClanLib and Pingus.
-    
-	The sources of ClanLib can also be found in the CVS tree 
-	(see Pingus website for more information).	
+    To make it easy, ClanLib provides all these external libs available in 
+    their External Libs packages.
+    (Download at http://www.clanlib.org/download.html)
 
      _________________________________________________________________
 
@@ -116,7 +109,7 @@ Introduction
 
 4. Run Pingus
 
-   Pingus needs some DLLs, namely iconv.dll, intl.dll and libxml2.dll. Copy
+   Pingus needs some DLLs, namely iconv.dll and SDL.dll. Copy
    these into the Pingus main dir. They are included in the External Libs
    package from clanlib.org.
    

@@ -63,13 +63,13 @@ SavegameManager::SavegameManager(const std::string& arg_filename)
               i != sections.end(); ++i)
             {
               Savegame* savegame = new Savegame(*i);
-              SavegameTable::iterator i = savegames.find(savegame->levelname);
+              SavegameTable::iterator j = savegames.find(savegame->levelname);
 
-              if (i != savegames.end())
+              if (j != savegames.end())
                 {
                   std::cout << "SavegameManager: name collision: " << savegame->levelname << std::endl;
-                  delete i->second;
-                  i->second = savegame;
+                  delete j->second;
+                  j->second = savegame;
                 }
               else
                 {

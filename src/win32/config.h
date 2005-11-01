@@ -11,7 +11,6 @@
 #define PATCH_VERSION 0
 #define VERSION_STRING "0.7.0"
 #define PINGUS_DATADIR "data"
-#define LIBXML_2 1
 #define ENABLE_NLS 1
 
 /* 'real' config values */
@@ -23,6 +22,9 @@
 #define HAVE_SETLOCALE 1
 #define HAVE_STRDUP 1
 #define HAVE_GETTEXT 1
+#define HAVE_LIBCLANVORBIS 1
+#define HAVE_LIBCLANMIKMOD 1
+#define ICONV_CONST const
 
 /* MSVC specifics */
 #if defined(_MSC_VER) && !defined(__cplusplus)

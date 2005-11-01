@@ -79,64 +79,38 @@ ColMap::get_width()
 void
 ColMap::remove(CL_PixelBuffer provider, int x, int y)
 {
-  ++serial;
+	++serial;
 
-  if (provider.get_format().get_depth() == 32)
-    {
-      unsigned char* buffer;
-      int swidth  = provider.get_width();
-      int sheight = provider.get_height();
-      int y_offset = -y;
-      int x_offset = -x;
-      if (y_offset < 0) y_offset = 0;
-      if (x_offset < 0) x_offset = 0;
+  int swidth  = provider.get_width();
+  int sheight = provider.get_height();
+  int y_offset = -y;
+  int x_offset = -x;
+  if (y_offset < 0) y_offset = 0;
+  if (x_offset < 0) x_offset = 0;
+	
+	// The CL_PixelBuffer may have been converted from a CL_Sprite, so it
+	// will have extra space around it, and the width & height are probably
+	// not the correct size of the image.  Blank pixels have the value of 
+	// 205 for every attribute, so check for that.  This seems to only be
+	// a problem with MSVC.  GCC works without this check.
+	CL_Color blank_pixel(205, 205, 205, 205);
 
-      provider.lock();
-      buffer = static_cast<unsigned char*>(provider.get_data());
+  provider.lock();
 
-      for(int line = y_offset; line < sheight && (line + y) < height; ++line)
+	for(int line = y_offset; line < sheight && (line + y) < height; ++line)
 	{
-	  for (int i = x_offset; i < swidth && (i+x) < width; ++i)
-	    {
-	      if (buffer[(i + (swidth*line)) * 4] != 0)
+		for (int i = x_offset; i < swidth && (i+x) < width; ++i)
 		{
-		  if (colmap[i + (width*(line+y) + x)] != Groundtype::GP_SOLID)
-		    colmap[i + (width*(line+y) + x)] = Groundtype::GP_NOTHING;
+			if (provider.get_pixel(i, line) != blank_pixel
+				&& provider.get_pixel(i, line).get_alpha() != 0)
+			{
+				if (colmap[i + (width*(line+y) + x)] != Groundtype::GP_SOLID)
+					colmap[i + (width*(line+y) + x)] = Groundtype::GP_NOTHING;
+			}
 		}
-	    }
 	}
-      provider.unlock();
-    }
-  else if (provider.get_format().get_depth() == 8)
-    {
-      unsigned char* buffer;
-      int swidth = provider.get_width();
-      int sheight = provider.get_height();
-      int y_offset = -y;
-      int x_offset = -x;
-      if (y_offset < 0) y_offset = 0;
-      if (x_offset < 0) x_offset = 0;
 
-      provider.lock();
-      buffer = static_cast<unsigned char*>(provider.get_data());
-
-      for(int line = y_offset; line < sheight && (line + y) < height; ++line)
-	{
-	  for (int i = x_offset; i < swidth && (i+x) < width; ++i)
-	    {
-	      if (buffer[i + (swidth*line)])
-		{
-		  if (colmap[i + (width*(line+y) + x)] != Groundtype::GP_SOLID)
-		    colmap[i + (width*(line+y) + x)] = Groundtype::GP_NOTHING;
-		}
-	    }
-	}
-      provider.unlock();
-    }
-  else
-    {
-      assert(!"ColMap::remove: Color depth not supported");
-    }
+	provider.unlock();
 }
 
 void

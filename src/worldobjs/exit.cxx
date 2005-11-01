@@ -47,14 +47,6 @@ Exit::Exit(const FileReader& reader)
 
   if (verbose > 2)
     std::cout << "Creating Exit" << std::endl;
-
-#if 0
-  if (use_old_pos_handling) {
-    pos.x += sprite.get_width() / 2;
-    pos.y += sprite.get_height();
-    use_old_pos_handling = false;
-  }
-#endif
 }
 
 Exit::~Exit ()
