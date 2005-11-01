@@ -52,9 +52,6 @@ xmleval_SOURCES  = xml_eval.cxx xml_eval.hxx
 pingus_CPPFLAGS = @PINGUS_CFLAGS@
 
 pingus_LDADD = \
-        @PINGUS_LIBS@ \
-        @LIBS@     \
-        \
         caimagemanipulation/libcaimagemanipulation.a \
         worldobjs/libpingus_worldobjs.a \
         actions/libpingus_actions.a      \
@@ -68,7 +65,10 @@ pingus_LDADD = \
         input/axes/libpingus_input_axes.a \
         input/buttons/libpingus_input_buttons.a \
 	input/pointers/libpingus_input_pointers.a \
-	input/scrollers/libpingus_input_scrollers.a
+	input/scrollers/libpingus_input_scrollers.a \
+        @PINGUS_LIBS@ \
+        @ICONV_LIBS@ \
+        @LIBS@
 
 pingus_level_test_CPPFLAGS = @PINGUS_CFLAGS@
 pingus_level_test_LDADD    = @PINGUS_LIBS@
@@ -287,7 +287,7 @@ display/drawing_context.hxx \
 display/scene_context.cxx \
 display/scene_context.hxx
 
-STATICBIN_LIBS = -lclanGUI -lclanCore -lclanDisplay -lclanApp -lclanPNG -lclanJPEG -lHermes \
+STATICBIN_LIBS = -lclanGUI -lclanCore -lclanDisplay -lclanApp -lclanPNG -lclanJPEG \
 -lclanDisplay -lclanMikMod -lclanVorbis -logg -lvorbis -logg -lmikmod -lclanSound -lclanCore  \
 -L/usr/X11R6/lib/ \
 -lstdc++ \
@@ -307,7 +307,7 @@ libpng.a \
 -lICE \
 -lXxf86vm \
 -lstdc++ \
--ldl
+-ldl 
 
 pingus.static: $(pingus_OBJECTS) $(pingus_DEPENDENCIES)
 	$(CXX) $(CXXFLAGS) -s -static -o $@ $(pingus_OBJECTS) $(pingus_DEPENDENCIES) $(STATICBIN_LIBS) 

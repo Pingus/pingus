@@ -39,28 +39,42 @@ AC_ARG_ENABLE(debug, AC_HELP_STRING([--enable-debug], [enable debug support]),,
               [enable_debug="no"])
 AC_MSG_RESULT($enable_debug)
 if test "x$enable_debug" != "xno"; then
-   CXXFLAGS="-g -ggdb -O0 -Wall -Werror"
+   CXXFLAGS="-g -ggdb -O0 -Wall"
 fi
 
 dnl -- Static Libaries --
 AC_PROG_RANLIB
 
-REQUIRED_CLANLIB_VERSION="0.7.9"
+REQUIRED_CLANLIB_VERSION="0.8.0"
 
 PKG_CHECK_MODULES(PINGUS,
  [
-  clanCore-0.7           >= $REQUIRED_CLANLIB_VERSION
-  clanApp-0.7            >= $REQUIRED_CLANLIB_VERSION
-  clanDisplay-0.7        >= $REQUIRED_CLANLIB_VERSION
-  clanGL-0.7             >= $REQUIRED_CLANLIB_VERSION
-  clanSDL-0.7            >= $REQUIRED_CLANLIB_VERSION
-  clanGUI-0.7            >= $REQUIRED_CLANLIB_VERSION
-  clanGUIStyleSilver-0.7 >= $REQUIRED_CLANLIB_VERSION
-  clanSound-0.7          >= $REQUIRED_CLANLIB_VERSION
-  clanVorbis-0.7         >= $REQUIRED_CLANLIB_VERSION
-  clanMikMod-0.7         >= $REQUIRED_CLANLIB_VERSION
+  clanCore-0.8           >= $REQUIRED_CLANLIB_VERSION
+  clanApp-0.8            >= $REQUIRED_CLANLIB_VERSION
+  clanDisplay-0.8        >= $REQUIRED_CLANLIB_VERSION
+  clanGL-0.8             >= $REQUIRED_CLANLIB_VERSION
+  clanSDL-0.8            >= $REQUIRED_CLANLIB_VERSION
+  clanGUI-0.8            >= $REQUIRED_CLANLIB_VERSION
+  clanGUIStyleSilver-0.8 >= $REQUIRED_CLANLIB_VERSION
+  clanSound-0.8          >= $REQUIRED_CLANLIB_VERSION
+  clanVorbis-0.8         >= $REQUIRED_CLANLIB_VERSION
+  clanMikMod-0.8         >= $REQUIRED_CLANLIB_VERSION
   ],
  [])
+
+AC_DEFINE([HAVE_LIBCLANMIKMOD],1,[Has the clanMikMod library])
+AC_DEFINE([HAVE_LIBCLANVORBIS],1,[Has the clanVorbis library])
+
+dnl iconv() is defined differently on some platforms
+AM_ICONV
+if test "$am_cv_func_iconv" = yes; then
+  proto_iconv="$am_cv_proto_iconv_arg1"
+else
+  proto_iconv=""
+fi
+AC_SUBST([ICONV_LIBS], [$LIBICONV])
+AC_DEFINE([ICONV_CONST], $proto_iconv,
+  [Define as const if the declaration of iconv() needs const.])
 
 AC_SUBST(PINGUS_CFLAGS)
 AC_SUBST(PINGUS_LIBS)

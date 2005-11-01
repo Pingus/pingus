@@ -24,6 +24,7 @@
 #include <iostream>
 #include <ctype.h>
 #include <errno.h>
+#include <config.h>
 #include "tinygettext.hxx"
 #include "pingus_error.hxx"
 
@@ -86,7 +87,7 @@ public:
 		size_t in_size = text.size();
 		size_t out_size = 4*in_size; // Worst case scenario: ASCII -> UTF-32?
 		std::string result(out_size, ' ');
-		char* in_str = &text[0];
+		ICONV_CONST char* in_str = &text[0];
 		char* out_str = &result[0];
  
 		// Try to convert the text.
