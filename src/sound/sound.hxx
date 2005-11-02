@@ -33,6 +33,7 @@ protected:
 
 protected:
   PingusSound () { }
+	virtual ~PingusSound () { }
 
   virtual void real_play_sound(const std::string & name, float volume, float panning) =0;
   virtual void real_play_music(const std::string & name, float volume) =0;

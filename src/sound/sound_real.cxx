@@ -66,7 +66,7 @@ PingusSoundReal::~PingusSoundReal()
 #endif
 
 #ifdef HAVE_LIBCLANVORBIS
-  CL_SetupVorbis::init();
+  CL_SetupVorbis::deinit();
 #endif
 
   CL_SetupSound::deinit();
