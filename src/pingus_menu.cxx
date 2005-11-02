@@ -121,10 +121,6 @@ PingusMenu::setup_contrib_menu()
 	CL_GUIManager *gui = new CL_GUIManager(style);
 	CL_FileDialog *filedialog = new CL_FileDialog("Levels", "", "*.pingus", gui, style);
 
-	// This next line is a workaround until ClanLib applies my patch to their SVN
-	// set_dir should do this automatically.
-  CL_Directory::change_to(path_manager.complete("levels"));
-
 	filedialog->set_dir(path_manager.complete("levels"));
   filedialog->run();
 	const std::string filename = filedialog->get_file();
