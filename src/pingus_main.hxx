@@ -33,7 +33,6 @@ class PingusMain : public CL_ClanApplication
 {
 private:
   CL_DisplayWindow* window; 
-  CL_SoundOutput*   sound;
 
   bool    blitter_test;
   bool    no_config_file;

@@ -258,61 +258,6 @@ PingusMain::check_args(int argc, char** argv)
   argp.add_option('m', "disable-music", "", 
                   _("Disable music"));
 
-#if 0 
-  // FIXME: We need some clean up here
-  struct option long_options[] =
-    {
-      {"disable-music",      no_argument,       0, 'm'},
-      {"disable-sound",      no_argument,       0, 's'},
-      {"enable-cursor",     no_argument,       0, 'c'},
-      {"disable-intro",     no_argument,       0, 'n'},
-      {"play-demo",         required_argument, 0, 'p'},
-      {"disable-demo-recording", required_argument, 0, 'r'},
-      {"speed",             required_argument, 0, 't'},
-      {"datadir",           required_argument, 0, 'd'},
-      {"level",             required_argument, 0, 'l'},
-      {"worldmap",          required_argument, 0, 358},
-      {"credits",           no_argument,       0, 359},
-      {"help",              no_argument,       0, 'h'}, // add -? support
-      {"version",           no_argument,       0, 'V'},
-      {"verbose",           required_argument, 0, 'v'},
-      {"print-fps",         no_argument,       0, 'b'},
-      {"sound-specs",       required_argument, 0, 'S'},
-      {"geometry",          required_argument, 0, 'g'},
-      {"quick-play",        no_argument,       0, 'q'},
-      {"fullscreen",        no_argument,       0, 'f'},
-      ("refresh-rate",      required_argument, 0, 'R'),
-      {"window",            no_argument,       0, 'w'},
-      {"disable-swcursor",  no_argument,       0, 345},
-      {"enable-swcursor",   no_argument,       0, 346},
-      {"disable-action-help",no_argument,      0, 356},
-      {"enable-action-help", no_argument,      0, 357},
-      {"enable-bg-manipulation", no_argument,  0, 348},
-      {"min-cpu-usage",     no_argument,       0, 353},
-      {"min-frame-skip",    required_argument, 0, 354},
-      {"max-frame-skip",    required_argument, 0, 355},
-      {"frame-skip",        required_argument, 0, 357},
-      {"cheat",             required_argument, 0, 356},
-      {"controller",        required_argument, 0, 360},
-      {"render-preview",    required_argument, 0, 361},
-      {"blitter-test",      no_argument,       0, 362},
-      {"use-opengl",        no_argument,       0, 'G'},
-
-      // FIXME: is the number stuff correct?
-      {"fast",            no_argument,       0, 332},
-      {"fast-mode",       no_argument,       0, 332},
-      {"disable-previews",no_argument,       0, 333},
-      {"maintainer-mode", no_argument,       0, 334},
-      {"disable-auto-scrolling",   no_argument,       0, 337},
-
-      //
-      {"no-cfg-file",    no_argument,       0, 342},
-      {"tile-size",      required_argument, 0, 344},
-      {"config-file",    required_argument, 0, 347},
-      {"debug",          required_argument, 0, 352},
-      {0, 0, 0, 0}
-    };
-#endif
   argp.parse_args(argc, argv);
   argp.set_help_indent(20);
   
@@ -882,8 +827,6 @@ PingusMain::init_clanlib()
       
       window = new CL_DisplayWindow(window_desc);
       
-      sound  = new CL_SoundOutput(44100);
-
       CL_Display::clear();
       CL_Display::flip();
     }
@@ -902,15 +845,14 @@ PingusMain::on_exit_press()
 void
 PingusMain::deinit_clanlib()
 {
+  CL_SetupCore::deinit();
   CL_SetupGUI::deinit ();
+  CL_SetupDisplay::deinit ();
 
   if (use_opengl)
     CL_SetupGL::deinit();
   else
     CL_SetupSDL::deinit();
-
-  CL_SetupDisplay::deinit ();
-  CL_SetupCore::deinit();
 }
 
 void

@@ -20,27 +20,26 @@
 #ifndef HEADER_PINGUS_SOUND_HXX
 #define HEADER_PINGUS_SOUND_HXX
 
+#include <Clanlib/sound.h>
 #include <string>
 #include "sounds.hxx"
+#include "sound_impl.hxx"
 
 namespace Pingus {
 namespace Sound {
+
+class PingusSoundImpl;
+
 class PingusSound
 {
-protected:
-  /** FIXME: this should be SoundImpl, not PingusSound */
-  static PingusSound* sound;
-
-protected:
-  PingusSound () { }
-	virtual ~PingusSound () { }
-
-  virtual void real_play_sound(const std::string & name, float volume, float panning) =0;
-  virtual void real_play_music(const std::string & name, float volume) =0;
-  virtual void real_stop_music() =0;
+private:
+  static PingusSoundImpl* sound;
 
 public:
-  static void init (PingusSound* s = 0);
+	PingusSound  () { }
+	~PingusSound () { }
+
+	static void init (PingusSoundImpl* s = 0);
   static void deinit ();
 
   /** Load a sound file and play it immediately.

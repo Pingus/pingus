@@ -22,6 +22,7 @@
 
 #include <config.h>
 #include <vector>
+#include "sound_impl.hxx"
 #include "sound.hxx"
 #include <ClanLib/Sound/soundbuffer_session.h>
 
@@ -33,7 +34,7 @@ namespace Sound {
 
 /** A simple wrapper class around SDL_Mixer, it will init itself
     automatically if a sound is played. */
-class PingusSoundReal : public PingusSound
+class PingusSoundReal : public PingusSoundImpl
 {
 private:
   /** The current music file */
@@ -42,12 +43,14 @@ private:
   /** Music Controller Session */
   CL_SoundBuffer_Session* music_session;
 
+	/** Sound Output object */
+	CL_SoundOutput* sound_output;
+
 public:
   PingusSoundReal ();
   virtual ~PingusSoundReal ();
 
   /** Load a music file and play it immediately.
-
       @param filename The complete filename
       @param volume   The volume to play the music with  */
   virtual void real_play_music(const std::string & filename, float volume);
@@ -55,11 +58,9 @@ public:
   virtual void real_stop_music();
 
   /** Load a sound file and play it immediately
-
       @param filename The complete filename
       @param volume   The volume to play the sound at
       @param panning  The panning to play the sound with */
-
   virtual void real_play_sound(const std::string & filename, float volume, float panning);
 
 private:

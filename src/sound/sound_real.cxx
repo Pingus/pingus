@@ -43,6 +43,7 @@ PingusSoundReal::PingusSoundReal ()
 {
   pout(PINGUS_DEBUG_SOUND) << "Initializing ClanLib-Sound" << std::endl;
 
+  sound_output  = new CL_SoundOutput(44100);
   CL_SetupSound::init();
 
   pout(PINGUS_DEBUG_SOUND) << "Initializing ClanLib-MikMod" << std::endl;
@@ -70,6 +71,8 @@ PingusSoundReal::~PingusSoundReal()
 #endif
 
   CL_SetupSound::deinit();
+	sound_output->stop_all();
+	delete sound_output;
 }
 
 struct sound_is_finished
@@ -107,17 +110,17 @@ void
 PingusSoundReal::real_stop_music ()
 {
   if (music_session)
-    {
-      music_session->stop();
-      delete music_session;
-      music_session = 0;
+  {
+    music_session->stop();
+    delete music_session;
+    music_session = 0;
 
-      if (music_sample)
-        {
-          delete music_sample;
-          music_sample = NULL;
-        }
+    if (music_sample)
+    {
+      delete music_sample;
+      music_sample = NULL;
     }
+  }
 }
 
 void

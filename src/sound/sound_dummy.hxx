@@ -20,15 +20,17 @@
 #ifndef HEADER_PINGUS_SOUND_DUMMY_HXX
 #define HEADER_PINGUS_SOUND_DUMMY_HXX
 
+#include "sound_impl.hxx"
 #include "sound.hxx"
 
 namespace Pingus {
 namespace Sound {
 
-class PingusSoundDummy : public PingusSound
+class PingusSoundDummy : public PingusSoundImpl
 {
 public:
   PingusSoundDummy () { }
+	virtual ~PingusSoundDummy () { }
 
   virtual void real_play_sound (const std::string & filename, float volume, float panning);
   virtual void real_play_music (const std::string & filename, float volume);

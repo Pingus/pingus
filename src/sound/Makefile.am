@@ -1,4 +1,4 @@
-# Pingus - A free Lemmings clone
+﻿# Pingus - A free Lemmings clone
 # Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 #
 # This program is free software; you can redistribute it and/or
@@ -22,6 +22,7 @@ libpingus_sound_a_CPPFLAGS = @PINGUS_CFLAGS@
 libpingus_sound_a_SOURCES = \
 	sound.cxx  sound_dummy.cxx  sound_real.cxx \
 	sound.hxx  sound_dummy.hxx  sound_real.hxx \
-        sounds.hxx sound_res_mgr.hxx sound_res_mgr.cxx
+        sounds.hxx sound_res_mgr.hxx sound_res_mgr.cxx \
+		sound_impl.hxx
 
 # EOF #

@@ -156,6 +156,11 @@ PingusMenu::preload ()
 
 PingusMenu::~PingusMenu()
 {
+	delete start_button;
+	delete quit_button;
+	delete contrib_button;
+	delete story_button;
+	delete multiplayer_button;
 }
 
 void
