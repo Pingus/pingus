@@ -561,7 +561,30 @@ PingusMain::init_path_finder()
   dictionary_manager.add_directory(path_manager.complete("po/"));
   // Language is automatically picked from env variable
   // dictionary_manager.set_language("de"); 
-  dictionary_manager.set_charset("ISO-8859-1");
+
+  const char* lang = getenv("LC_ALL");
+  if(!lang) lang = getenv("LC_MESSAGES");
+  if(!lang) lang = getenv("LANG");
+  if(lang)
+  {
+    std::string language(lang);
+    language.resize(2);
+    if(language == "cs" || language == "sr")
+    {
+      dictionary_manager.set_charset("ISO-8859-2");
+      Pingus::Fonts::encoding = "ISO-8859-2";
+    }
+    else if(language == "tr")
+    {
+      dictionary_manager.set_charset("ISO-8859-9");
+      Pingus::Fonts::encoding = "ISO-8859-9";
+    }
+    else
+    {
+      dictionary_manager.set_charset("ISO-8859-1");
+      Pingus::Fonts::encoding = "ISO-8859-1";
+    }
+  }
 
   if (maintainer_mode)
     std::cout << "BasePath: " << path_manager.get_base_path () << std::endl;

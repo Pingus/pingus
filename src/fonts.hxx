@@ -26,6 +26,8 @@
 namespace Pingus {
 namespace Fonts {
 
+extern std::string encoding;
+
 extern CL_Font chalk_large;
 extern CL_Font chalk_normal;
 extern CL_Font chalk_small;

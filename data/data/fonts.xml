@@ -23,18 +23,70 @@
           <image file="../images/fonts/pingus_small-iso-8859-1.png"><alpha trans_limit="0.0" /></image>
         </sprite>
       </section>
+      <section name="iso-8859-2">
+
+        <sprite name="chalk_small">
+          <image file="../images/fonts/chalk_small-iso-8859-2.png"><alpha trans_limit="0.0" /></image>
+        </sprite>
+
+        <sprite name="chalk_normal">
+          <image file="../images/fonts/chalk_normal-iso-8859-2.png"><alpha trans_limit="0.0" /></image>
+        </sprite>
+
+        <sprite name="chalk_large">
+          <image file="../images/fonts/chalk_large-iso-8859-2.png"><alpha trans_limit="0.0" /></image>
+        </sprite>
+
+        <sprite name="verdana11">
+          <image file="../images/fonts/verdana11_latin2.png"><alpha trans_limit="0.0" /></image>
+        </sprite>
+
+      </section>
+      <section name="iso-8859-9">
+
+        <sprite name="chalk_small">
+          <image file="../images/fonts/chalk_small-iso-8859-9.png"><alpha trans_limit="0.0" /></image>
+        </sprite>
+
+        <sprite name="chalk_normal">
+          <image file="../images/fonts/chalk_normal-iso-8859-9.png"><alpha trans_limit="0.0" /></image>
+        </sprite>
+
+        <sprite name="chalk_large">
+          <image file="../images/fonts/chalk_large-iso-8859-9.png"><alpha trans_limit="0.0" /></image>
+        </sprite>
+
+        <sprite name="verdana11">
+          <image file="../images/fonts/verdana11_latin1.png"><alpha trans_limit="0.0" /></image>
+        </sprite>
+
+      </section>
     </section>
 
     <sprite name="courier_small_glyphs">
       <image file="../images/fonts/verdana11_bold_latin1.png"><alpha trans_limit="0.25" /></image>
     </sprite>
 
-    <font name="courier_small">
+    <font name="courier_small.ISO-8859-1">
       <bitmap
         glyphs="fonts/courier_small_glyphs"
         letters="!&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüý"
         spacelen="8"
         subtract_width="0" />
+    </font>
+
+    <font name="courier_small.ISO-8859-2">
+      <bitmap 
+        glyphs="fonts/glyphs/iso-8859-2/verdana11"
+        letters="!&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ"
+        spacelen="8" subtract_width="0" />
+    </font>
+
+    <font name="courier_small.ISO-8859-9">
+      <bitmap 
+        glyphs="fonts/glyphs/iso-8859-9/verdana11"
+        letters="!&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ"
+        spacelen="8" subtract_width="0" />
     </font>
 
     <!--
@@ -74,46 +126,130 @@
     </sprite>
 
 
-    <font name="pingus_small">
+    <font name="pingus_small.ISO-8859-1">
       <bitmap 
         glyphs="fonts/glyphs/iso-8859-1/pingus_small"
         letters="!&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüý"
         spacelen="8" subtract_width="0" />
     </font>
 
-    <font name="chalk_normal">
+    <font name="pingus_small.ISO-8859-2">
+      <bitmap 
+        glyphs="fonts/glyphs/iso-8859-2/verdana11"
+        letters="!&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ"
+        spacelen="8" subtract_width="0" />
+    </font>
+
+    <font name="pingus_small.ISO-8859-9">
+      <bitmap 
+        glyphs="fonts/glyphs/iso-8859-9/verdana11"
+        letters="!&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ"
+        spacelen="8" subtract_width="0" />
+    </font>
+
+    <font name="chalk_normal.ISO-8859-1">
       <bitmap 
         glyphs="fonts/glyphs/iso-8859-1/chalk_normal"
         letters="!&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüý"
         spacelen="8" subtract_width="0" />
     </font>
 
-    <font name="chalk_large">
+    <font name="chalk_normal.ISO-8859-2">
+      <bitmap 
+        glyphs="fonts/glyphs/iso-8859-2/chalk_normal"
+        letters="!&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ"
+        spacelen="8" subtract_width="0" />
+    </font>
+
+    <font name="chalk_normal.ISO-8859-9">
+      <bitmap 
+        glyphs="fonts/glyphs/iso-8859-9/chalk_normal"
+        letters="!&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ"
+        spacelen="8" subtract_width="0" />
+    </font>
+
+    <font name="chalk_large.ISO-8859-1">
       <bitmap 
         glyphs="fonts/glyphs/iso-8859-1/chalk_large"
         letters="!&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüý"
         spacelen="8" subtract_width="1" />
     </font>
 
-    <font name="chalk_small">
+    <font name="chalk_large.ISO-8859-2">
+      <bitmap 
+        glyphs="fonts/glyphs/iso-8859-2/chalk_large"
+        letters="!&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ"
+        spacelen="8" subtract_width="0" />
+    </font>
+
+    <font name="chalk_large.ISO-8859-9">
+      <bitmap 
+        glyphs="fonts/glyphs/iso-8859-9/chalk_large"
+        letters="!&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ"
+        spacelen="8" subtract_width="0" />
+    </font>
+
+    <font name="chalk_small.ISO-8859-1">
       <bitmap
         glyphs="fonts/glyphs/iso-8859-1/chalk_small"
         letters="!&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüý"
         spacelen="8" subtract_width="0 " />
     </font>
 
-    <font name="pingus">
+    <font name="chalk_small.ISO-8859-2">
+      <bitmap 
+        glyphs="fonts/glyphs/iso-8859-2/chalk_small"
+        letters="!&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ"
+        spacelen="8" subtract_width="0" />
+    </font>
+
+    <font name="chalk_small.ISO-8859-9">
+      <bitmap 
+        glyphs="fonts/glyphs/iso-8859-9/chalk_small"
+        letters="!&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ"
+        spacelen="8" subtract_width="0" />
+    </font>
+
+    <font name="pingus.ISO-8859-1">
       <bitmap
         glyphs="fonts/glyphs/iso-8859-1/pingus" 
         letters="!&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüý"
         spacelen="8" />
     </font>
 
-    <font name="pingus_small_fix_num">
+    <font name="pingus.ISO-8859-2">
+      <bitmap 
+        glyphs="fonts/glyphs/iso-8859-2/verdana11"
+        letters="!&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ"
+        spacelen="8" subtract_width="0" />
+    </font>
+
+    <font name="pingus.ISO-8859-9">
+      <bitmap 
+        glyphs="fonts/glyphs/iso-8859-9/verdana11"
+        letters="!&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ"
+        spacelen="8" subtract_width="0" />
+    </font>
+
+    <font name="pingus_small_fix_num.ISO-8859-1">
       <bitmap 
         glyphs="fonts/pingus_small_fix_num_glyphs" 
         letters="!&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ÄÖÜäöüÇçÐðÝýÞþ"
         spacelen="13" subtract_width="0"  />
+    </font>
+
+    <font name="pingus_small_fix_num.ISO-8859-2">
+      <bitmap 
+        glyphs="fonts/glyphs/iso-8859-2/verdana11"
+        letters="!&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ"
+        spacelen="8" subtract_width="0" />
+    </font>
+
+    <font name="pingus_small_fix_num.ISO-8859-9">
+      <bitmap 
+        glyphs="fonts/glyphs/iso-8859-9/verdana11"
+        letters="!&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ"
+        spacelen="8" subtract_width="0" />
     </font>
   </section>
 </resources>
