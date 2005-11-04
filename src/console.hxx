@@ -77,7 +77,12 @@ public:
   Console ();
   virtual ~Console();
 
+	/** Load any gfx or objects that we might need */
   void init();
+
+	/** Unload all gfx and objects */
+	void deinit();
+
   virtual void on_event();
 
   /** Sets the number of lines, which are displayed

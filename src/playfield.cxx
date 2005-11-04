@@ -87,6 +87,7 @@ Playfield::Playfield (Client* client_, const CL_Rect& rect_)
 
 Playfield::~Playfield()
 {
+	delete scene_context;
 }
 
 void

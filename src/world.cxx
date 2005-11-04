@@ -107,14 +107,6 @@ World::~World()
   for (WorldObjIter it = world_obj.begin(); it != world_obj.end(); ++it) {
     delete *it;
   }
-	delete pingu_particle_holder;
-	delete rain_particle_holder;
-	delete smoke_particle_holder;
-	delete snow_particle_holder;
-	delete pingus;
-	delete action_holder;
-	delete colmap;
-	delete gfx_map;
   delete game_time;
 }
 

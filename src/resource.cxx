@@ -72,6 +72,7 @@ Resource::init()
 void
 Resource::deinit()
 {
+	cleanup();
   surface_map.clear();
 }
 
@@ -287,37 +288,20 @@ Resource::load_font(const std::string& res_name)
 void
 Resource::cleanup ()
 {
-#ifdef CLANLIB_0_6
-  pout(PINGUS_DEBUG_RESOURCES) << "Resource::cleanup ()" << std::endl;
-
-  for (std::map<ResDescriptor, CL_Surface>::iterator i = surface_map.begin ();
-       i != surface_map.end (); ++i)
-    {
-      pout(PINGUS_DEBUG_RESOURCES) << "XXXX Lookat Resource : " << i->first
-                                   << " => " << i->second.get_reference_count () << std::endl;
-      if (i->first.type == ResDescriptor::RD_FILE
-	  && i->second.get_reference_count () == 1)
+	CL_Resource res;
+	std::vector<std::string> resources = resmgr.get_all_resources();
+	for (std::vector<std::string>::iterator i = resources.begin(); i != resources.end(); i++)
 	{
-          // FIXME:
-	  //pout(PINGUS_DEBUG_RESOURCES) << "XXX Releasing File: " << i->first
-          //                             << " => " << i->second.get_reference_count () << std::endl;
-	  //surface_map.erase(i);
+		res = resmgr.get_resource(*i);
+		while (res.get_reference_count() > 0)
+			res.unload();
 	}
-      else if (i->first.type == ResDescriptor::RD_RESOURCE
-	       && i->second.get_reference_count () == 2)
-	{
-	  pout(PINGUS_DEBUG_RESOURCES) << "XXX Releasing Resource : " << i->first
-	                               << " => " << i->second.get_reference_count () << std::endl;
-	  surface_map.erase(i);
-	}
-    }
-#endif
 }
 
 unsigned int
 Resource::get_mtime (const std::string& res_name)
 {
-#ifdef CLANLIB_0_6
+	/*
   try
     {
       CL_ResourceManager res_man = Resource::get(datafile);
@@ -335,7 +319,6 @@ Resource::get_mtime (const std::string& res_name)
 #else
       // FIXME: Win32 mtime getter not implemented
       return 0;
-#endif
     }
   catch (CL_Error& err)
     {
@@ -343,6 +326,7 @@ Resource::get_mtime (const std::string& res_name)
       return 0;
     }
 #endif
+		*/
   return 0;
 }
 

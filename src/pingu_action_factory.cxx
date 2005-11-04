@@ -91,6 +91,7 @@ void
 PinguActionFactory::deinit()
 {
   delete instance_;
+	instance_ = 0;
 }
 
 void

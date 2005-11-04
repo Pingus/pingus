@@ -34,10 +34,6 @@ MouseButton::MouseButton (int button_)
     button_release_slot(CL_Mouse::sig_key_up().connect(this, &Input::Buttons::MouseButton::release_handler)),
     pressed(false)
 {
-  if (CL_Mouse::get_device().get_button_count() != -1 
-      && button > CL_Mouse::get_device().get_button_count())
-    PingusError::raise("MouseButton: Invalid button: " + CL_String::to(button) 
-                       + ", must be smaller than " + CL_String::to(CL_Mouse::get_device().get_button_count()));
 }
 
 void

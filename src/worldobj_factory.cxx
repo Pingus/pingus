@@ -110,6 +110,7 @@ void WorldObjFactory::deinit()
 	{
 		instance_->free_factories();
 		delete instance_;
+		instance_ = 0;
 	}
 }
 

@@ -35,6 +35,7 @@ FPSCounter::FPSCounter()
 
 FPSCounter::~FPSCounter()
 {
+	font = CL_Font();
 }
 
 // We are not initialising the fpscounter in the constructor, 'cause
@@ -47,6 +48,13 @@ FPSCounter::init()
   start_time = CL_System::get_time();
   strcat(fps_string, _("unknown"));
   fps_count = 0;
+}
+
+// Get rid of any ClanLib objects that might want to linger after
+// we unload all of our resources.
+void FPSCounter::deinit()
+{
+	font = CL_Font();
 }
 
 void

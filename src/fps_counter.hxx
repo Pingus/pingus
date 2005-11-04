@@ -62,6 +62,9 @@ public:
   /** Load all the gfx and fonts... */
   void init();
 
+	/** Unload gfx and fonts... */
+	void deinit();
+
 private:
   FPSCounter (const FPSCounter&);
   FPSCounter& operator= (const FPSCounter&);

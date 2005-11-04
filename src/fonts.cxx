@@ -59,7 +59,20 @@ init ()
   lcd          = Resource::load_font("fonts/courier_small" + std::string(".") + encoding); // PingusResource::load_font("Fonts/numbers", "fonts");
 }
 
-void deinit () {}
+void deinit () 
+{
+	chalk_large  = CL_Font();
+  chalk_normal = CL_Font();
+  chalk_small  = CL_Font();
+  pingus_small = CL_Font();
+  pingus_small_fix_num = CL_Font();
+  pingus_large = CL_Font();
+  courier_small = CL_Font();
+  xterm = CL_Font();
+  smallfont = CL_Font();
+  smallfont_h = CL_Font();
+  lcd = CL_Font();
+}
 
 } // namespace Fonts
 } // namespace Pingus

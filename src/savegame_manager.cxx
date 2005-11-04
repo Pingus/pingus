@@ -42,6 +42,7 @@ SavegameManager::instance()
 void SavegameManager::deinit()
 {
 	delete instance_;
+	instance_ = 0;
 }
 
 SavegameManager::SavegameManager(const std::string& arg_filename)

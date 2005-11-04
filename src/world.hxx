@@ -29,7 +29,7 @@ namespace Pingus {
 
 // Forward declarations
 class Vector;
-class ActionHolder;
+//class ActionHolder;
 class Entrance;
 class Exit;
 class Hotspot;
@@ -87,7 +87,7 @@ private:
   PinguHolder*                    pingus;
 
   // Pointers which are references to objects from other classes
-  ActionHolder*   action_holder;
+  //ActionHolder*   action_holder;
   ColMap*         colmap;
 
   void    init_worldobjs (const PingusLevel& plf);

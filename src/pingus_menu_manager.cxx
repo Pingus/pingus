@@ -43,8 +43,9 @@ PingusMenuManager::draw (DrawingContext& gc)
 {
   background.draw (gc);
 
-  gc.draw_fillrect(0, CL_Display::get_height () - 22,
-                   CL_Display::get_width (), CL_Display::get_height (),
+  gc.draw_fillrect(0.0, static_cast<float>(CL_Display::get_height () - 22),
+                   static_cast<float>(CL_Display::get_width ()),
+									 static_cast<float>(CL_Display::get_height ()),
                    CL_Color(0, 0, 0, 255));
 
   for (MenuStackIter i = menu_stack.begin (); i != menu_stack.end (); ++i)
@@ -57,11 +58,6 @@ void
 PingusMenuManager::update (const GameDelta& delta)
 {
   background.update (delta.get_time ());
-  // We copy the menu_stack so that we don't invalidate our
-  // iterators when menu's are removed/added in update()
-  //std::vector<PingusSubMenu *> tmp_menu_stack = menu_stack;
-  /*for (MenuStackIter i = tmp_menu_stack.begin (); i != tmp_menu_stack.end (); ++i)
-    (*i)->update (delta);*/
   menu_stack.back()->update (delta);
 }
 

@@ -150,6 +150,14 @@ Console::init()
   is_init = true;
 }
 
+// Unload any ClanLib objects that might linger around after we
+// destroy the graphics context
+void
+Console::deinit()
+{
+	font = CL_Font();
+}
+
 void
 Console::draw()
 {

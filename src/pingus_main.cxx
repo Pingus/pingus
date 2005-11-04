@@ -870,12 +870,13 @@ PingusMain::deinit_clanlib()
 {
   CL_SetupCore::deinit();
   CL_SetupGUI::deinit ();
-  CL_SetupDisplay::deinit ();
 
   if (use_opengl)
     CL_SetupGL::deinit();
   else
     CL_SetupSDL::deinit();
+
+  CL_SetupDisplay::deinit ();
 }
 
 void
@@ -900,6 +901,10 @@ PingusMain::init_pingus()
 void
 PingusMain::deinit_pingus()
 {
+	fps_counter.deinit();
+	console.deinit();
+
+	Fonts::deinit();
   Credits::deinit();
   PinguActionFactory::deinit();
   Sound::PingusSound::deinit();
@@ -907,10 +912,9 @@ PingusMain::deinit_pingus()
   WorldObjFactory::deinit();
   WorldMapNS::WorldMapManager::deinit();
   ScreenManager::deinit();
-  Fonts::deinit();
-  Resource::deinit();
   StatManager::deinit();
   SavegameManager::deinit();
+  Resource::deinit();
 }
 
 } // namespace Pingus

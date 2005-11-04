@@ -344,6 +344,7 @@ WorldMapManager::instance ()
 void WorldMapManager::deinit()
 {
 	delete instance_;
+	instance_ = 0;
 }
 
 } // namespace WorldMapNS

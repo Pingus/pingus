@@ -49,6 +49,7 @@ ScreenManager::ScreenManager ()
 
 ScreenManager::~ScreenManager ()
 {
+	delete display_gc;
 }
 
 void
@@ -286,6 +287,7 @@ void
 ScreenManager::deinit()
 {
   delete instance_;
+	instance_ = 0;
 }
 
 } // namespace Pingus
