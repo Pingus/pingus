@@ -548,11 +548,11 @@ PingusMain::init_path_finder()
   path_manager.add_path(CL_String::get_path(CL_System::get_exe_path() + "/../share/games/pingus/"));
 
   std::list<std::string> file_list;
-  file_list.push_back ("data/core.scr");
+  file_list.push_back ("data/core.xml");
 
   if (!path_manager.find_path (file_list))
     {
-      std::cout << "Error: Couldn't find 'data/core.scr', please set the enviroment variable\n"
+      std::cout << "Error: Couldn't find 'data/core.xml', please set the enviroment variable\n"
                 << "PINGUS_DATADIR to the path of the file `data/core.scr' or use the\n"
                 << "-d option." << std::endl;
       exit(EXIT_FAILURE);
