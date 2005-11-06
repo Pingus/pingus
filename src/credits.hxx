@@ -29,8 +29,6 @@ class CL_Font;
 
 namespace Pingus {
 
-class GameDelta;
-
 class Credits : public GUIScreen
 {
 private:
@@ -45,8 +43,8 @@ private:
 
   bool is_init;
 
-  float end_offset;
-  float offset;
+  int end_offset;
+  int offset;
 
   /** The string's which are shown in the scrolling text, the first
       character of the string can be used to apply a special format.

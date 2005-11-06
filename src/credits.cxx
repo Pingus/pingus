@@ -21,13 +21,44 @@
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Display/font.h>
 #include "gui/screen_manager.hxx"
+#include "gui/surface_button.hxx"
+#include "gui/gui_manager.hxx"
 #include "sound/sound.hxx"
 #include "resource.hxx"
+#include "res_descriptor.hxx"
 #include "credits.hxx"
 #include "fonts.hxx"
 #include "gettext.h"
 
 namespace Pingus {
+
+class CreditsOkButton
+  : public GUI::SurfaceButton
+{
+private:
+  Credits* parent;
+public:
+  CreditsOkButton(Credits* p)
+    : GUI::SurfaceButton(CL_Display::get_width()/2 + 225,
+                         CL_Display::get_height()/2 + 125,
+                         ResDescriptor("core/start/ok"),
+                         ResDescriptor("core/start/ok_clicked"),
+                         ResDescriptor("core/start/ok_hover")),
+      parent(p)
+  {
+  }
+
+  void on_pointer_enter ()
+  {
+    SurfaceButton::on_pointer_enter();
+    Sound::PingusSound::play_sound("tick");
+  }
+
+  void on_click() {
+    parent->on_escape_press();
+    Sound::PingusSound::play_sound("yipee");
+  }
+};
 
 Credits* Credits::instance_ = 0;
 
@@ -36,6 +67,8 @@ Credits::Credits()
   fast_scrolling = false;
   background = Resource::load_sprite("core/menu/startscreenbg");
   pingu = Resource::load_sprite("core/misc/creditpingu");
+
+  gui_manager->add(new CreditsOkButton(this));
 
   background.set_alignment(origin_center);
   pingu.set_alignment(origin_center);
@@ -68,6 +101,7 @@ Credits::Credits()
   credits.push_back("_Kenneth Gangstø");
   credits.push_back("_Michael Käser");
   credits.push_back("_Neil Mitchell");
+	credits.push_back("_Jason Green");
   credits.push_back("n");
 
   credits.push_back(_("-Gfx"));
@@ -207,9 +241,9 @@ Credits::update (float delta)
   else
     {
       if (fast_scrolling)
-        offset -= 450.0f * delta;
+        offset -= static_cast<int>(450.0f * delta);
       else
-        offset -= 35.0f * delta;
+        offset -= static_cast<int>(35.0f * delta);
     }
 }
 
@@ -225,6 +259,11 @@ Credits::draw_background (DrawingContext& gc)
 
   gc.draw(background, Vector(gc.get_width()/2, gc.get_height()/2));
   gc.draw(pingu, Vector(gc.get_width()/2, gc.get_height()/2 - 20));
+  
+  gc.print_right(Fonts::chalk_normal,
+                static_cast<float>(CL_Display::get_width()/2 + 275),
+                static_cast<float>(CL_Display::get_height()/2 + 110),
+								_("Skip"));
 
   CL_Display::push_cliprect(CL_Rect(0, static_cast<int>(gc.get_height()/2-225),
                                     600, static_cast<int>(gc.get_height()/2+200)));
@@ -235,11 +274,13 @@ Credits::draw_background (DrawingContext& gc)
       switch ((*i)[0])
 	{
 	case '-':
-	  gc.print_center(font, x, y + yof, i->substr(1));
+	  gc.print_center(font, static_cast<float>(x), 
+										static_cast<float>(y + yof), i->substr(1));
 	  yof += font.get_height() + 5;
 	  break;
 	case '_':
-	  gc.print_center(font_small, x, y + yof, i->substr(1));
+	  gc.print_center(font_small, static_cast<float>(x),
+										static_cast<float>(y + yof), i->substr(1));
 	  yof += font_small.get_height() + 5;
 	  break;
 	case 'n':

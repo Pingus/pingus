@@ -81,7 +81,7 @@ public:
   void on_pointer_enter()
   {
     SurfaceButton::on_pointer_enter();
-    Sound::PingusSound::play_sound ("tick", .3);
+    Sound::PingusSound::play_sound ("tick", 0.3f);
   }
 
   void on_click()
@@ -124,13 +124,14 @@ StoryScreenComponent::draw (DrawingContext& gc)
 {
   gc.draw(background, Vector(gc.get_width()/2, gc.get_height()/2));
 
-  gc.print_center(Fonts::chalk_large, CL_Display::get_width()/2,
-                  CL_Display::get_height()/2 - 200, story.title);
+  gc.print_center(Fonts::chalk_large, static_cast<float>(CL_Display::get_width()/2),
+                  static_cast<float>(CL_Display::get_height()/2 - 200), story.title);
   gc.draw(page_surface, Vector(gc.get_width()/2, gc.get_height()/2 - 65));
   
   gc.print_left(Fonts::chalk_normal,
-                CL_Display::get_width()/2  - 280,
-                CL_Display::get_height()/2 + 35, display_text);
+                static_cast<float>(CL_Display::get_width()/2  - 280),
+                static_cast<float>(CL_Display::get_height()/2 + 35),
+								display_text);
 }
 
 void

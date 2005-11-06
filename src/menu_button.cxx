@@ -24,7 +24,6 @@
 #include "sound/sound.hxx"
 #include "resource.hxx"
 #include "pingus_menu_manager.hxx"
-#include "credits.hxx"
 #include "theme_selector.hxx"
 #include "menu_button.hxx"
 #include "gui/screen_manager.hxx"
