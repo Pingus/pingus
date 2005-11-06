@@ -47,30 +47,23 @@ TimeDisplay::draw (DrawingContext& gc)
   std::string time_string;
 
   if (server->get_plf().get_time() == -1 && !(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
-    {
-      infinity_symbol.draw(CL_Display::get_width()
-				  - infinity_symbol.get_width() - 6,
-				  2);
-    }
+  {
+		gc.draw(infinity_symbol, static_cast<float>(CL_Display::get_width()
+				- infinity_symbol.get_width() - 6), 2.0f, 150.0f);
+  }
   else
-    {
-      if (!(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
 	{
-          time_string = GameTime::ticks_to_realtime_string(time_value);
-	}
-      else
-	{
-	  time_value = server->get_world()->get_time_passed();
-	  time_string = CL_String::to(time_value);
-	}
-      {
-        CL_Font myfont = font;
-        myfont.set_alignment(origin_top_center);
-        myfont.draw(CL_Display::get_width() - 30, 3, time_string);
-      }
-    }
+		if (!(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
+			time_string = GameTime::ticks_to_realtime_string(time_value);
+		else
+		{
+			time_value = server->get_world()->get_time_passed();
+			time_string = CL_String::to(time_value);
+		}
 
-  UNUSED_ARG(gc);
+		gc.print_right(font, static_cast<float>(CL_Display::get_width() - 30),
+										3.0f, time_string, 150.0f);
+	}
 }
 
 } // namespace Pingus
