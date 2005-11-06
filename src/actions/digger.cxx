@@ -93,12 +93,12 @@ void
 Digger::dig ()
 {
   WorldObj::get_world()->get_colmap()->remove(digger_radius,
-					      static_cast<int>(pingu->get_x() - (digger_radius_width / 2)),
-					      static_cast<int>(pingu->get_y() - digger_radius_height + 2));
+					      static_cast<int>(pingu->get_pos().x - (digger_radius_width / 2)),
+					      static_cast<int>(pingu->get_pos().y - digger_radius_height + 2));
   WorldObj::get_world()->get_gfx_map()->remove(digger_radius_gfx,
-					       static_cast<int>(pingu->get_x () - (digger_radius_gfx_width / 2)),
-					       static_cast<int>(pingu->get_y() - digger_radius_gfx_height + 2));
-  pingu->set_y(pingu->get_y() + 1);
+					       static_cast<int>(pingu->get_pos().x - (digger_radius_gfx_width / 2)),
+					       static_cast<int>(pingu->get_pos().y - digger_radius_gfx_height + 2));
+  pingu->set_pos(pingu->get_pos().x, pingu->get_pos().y + 1.0f);
 }
 
 void

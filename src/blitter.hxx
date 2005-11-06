@@ -57,11 +57,6 @@ public:
   static void put_surface(CL_PixelBuffer target, CL_PixelBuffer source,
 			  int x, int y);
 
-  /** Makes all pixels in canvas tranparent, when their indexed value
-      in provider is larger than zero.*/
-  static void put_alpha_surface(CL_PixelBuffer target, CL_PixelBuffer source,
-				int x, int y);
-
   /** Returns a newly allocated canvas. The canvas contains the same
       image as the given surface. */
   static CL_PixelBuffer create_canvas(const CL_Surface&);

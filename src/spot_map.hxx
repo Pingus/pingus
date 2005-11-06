@@ -33,6 +33,7 @@ namespace Pingus {
 
 class PingusLevel;
 class ColMap;
+class PingusSpotMap;
 
 class MapTile
 {
@@ -45,7 +46,7 @@ public:
   MapTile();
   ~MapTile();
 
-  void remove(CL_PixelBuffer, int x, int y);  
+	void remove(CL_PixelBuffer, int x, int y, int real_x, int real_y, PingusSpotMap*);  
   void put(CL_PixelBuffer, int x, int y);  
 
   CL_Surface get_surface() const { return surface; }
@@ -85,17 +86,18 @@ public:
   void put(CL_PixelBuffer, int x, int y);
 
   /** Remove the gives surface provider onto the given coordinates
-      (everything non-transparent is removed from the map) */
+      (everything non-transparent that isn't Groundtype::GP_Solid 
+			is removed from the map) */
   void remove(CL_PixelBuffer, int x, int y);
 
   float get_z_pos () const { return 0; }
 
-private:
-  /** Low level version of the remove() call, acts on a single canvas
-      instead on the complete map-tiles */
+	/** Low level version of the remove() call, acts on a single tile
+      instead of the complete map-tiles */
   void put_alpha_surface(CL_PixelBuffer provider, CL_PixelBuffer sprovider,
 			 int x, int y, int real_x, int real_y);
 
+private:
   /** Draw the collision map onto the screen */
   void draw_colmap(SceneContext& gc);
 

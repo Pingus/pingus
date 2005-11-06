@@ -30,6 +30,8 @@
 #include "gettext.h"
 #include "col_map.hxx"
 #include "math.hxx"
+#include <ClanLib/Core/IOData/datatypes.h>
+#include <ClanLib/Display/palette.h>
 
 namespace Pingus {
 
@@ -52,11 +54,12 @@ MapTile::prepare()
 }
 
 void
-MapTile::remove(CL_PixelBuffer obj, int x, int y)
+MapTile::remove(CL_PixelBuffer obj, int x, int y, 
+								int real_x, int real_y, PingusSpotMap* parent)
 {
   if (surface)
     {
-      Blitter::put_alpha_surface(pixelbuffer, obj, x, y);
+      parent->put_alpha_surface(pixelbuffer, obj, x, y, real_x, real_y);
       surface = CL_Surface(pixelbuffer);
     }
 }
@@ -139,13 +142,16 @@ PingusSpotMap::draw(SceneContext& gc)
             if (tile[x][y].get_surface())
               {
                 gc.color().draw(tile[x][y].get_surface(),
-                                Vector(x * tile_size, y * tile_size));
+                                Vector(static_cast<float>(x * tile_size),
+																static_cast<float>(y * tile_size)));
               }
             else
               {
                 if (pingus_debug_flags & PINGUS_DEBUG_TILES)
-                  gc.color().draw_fillrect(x * tile_size, y * tile_size,
-                                           x * tile_size + tile_size, y * tile_size + tile_size,
+                  gc.color().draw_fillrect(static_cast<float>(x * tile_size),
+																					 static_cast<float>(y * tile_size),
+                                           static_cast<float>(x * tile_size + tile_size),
+																					 static_cast<float>(y * tile_size + tile_size),
                                            CL_Color(255, 0, 0, 75));
               }
           }
@@ -181,104 +187,80 @@ PingusSpotMap::remove(CL_PixelBuffer sprovider, int x, int y)
     for(int iy = start_y; iy <= end_y; ++iy)
       {
         tile[ix][iy].remove(sprovider, x - (ix * tile_size),
-                            y - (iy * tile_size));
+                            y - (iy * tile_size), x, y, this);
       }
 }
 
 void
 PingusSpotMap::put_alpha_surface(CL_PixelBuffer provider, CL_PixelBuffer sprovider,
-				 int x, int y, int real_x_arg, int real_y_arg)
+				 int x_pos, int y_pos, int real_x_arg, int real_y_arg)
 {
-  int start_i;
-  unsigned char* tbuffer; // Target buffer
-  int twidth, theight, tpitch;
-
-  unsigned char* sbuffer; // Source buffer
-  int swidth, sheight, spitch;
-
-  int x_offset, y_offset;
-
-  int real_x;
-  int real_y;
-
-  //  assert(sprovider->get_depth() == 8);
   if (sprovider.get_format().get_depth() != 8)
     {
-      char str[128];
-      snprintf(str, 128, _("Image has wrong color depth: %d"), sprovider.get_format().get_depth());
-      PingusError::raise(str);
+			PingusError::raise(std::string("SpotMap::put_alpha_surface: Image has wrong color depth: " 
+				+ sprovider.get_format().get_depth()));
     }
-  //  assert(provider->get_pixel_format() == RGBA8888);
 
   provider.lock();
   sprovider.lock();
 
-  tbuffer = static_cast<unsigned char*>(provider.get_data());
-  sbuffer = static_cast<unsigned char*>(sprovider.get_data());
+  int swidth  = sprovider.get_width();
+  int twidth  = provider.get_width();
 
-  twidth = provider.get_width();
-  theight = provider.get_height();
-  tpitch = provider.get_pitch();
+  int start_x = std::max(0, -x_pos);
+  int start_y = std::max(0, -y_pos);
 
-  swidth = sprovider.get_width();
-  sheight = sprovider.get_height();
-  spitch = sprovider.get_pitch();
+  int end_x = std::min(swidth,  twidth  - x_pos);
+  int end_y = std::min(sprovider.get_height(), provider.get_height() - y_pos);
 
-  if (y < 0) {
-    y_offset = 0-y;
-  } else {
-    y_offset = 0;
-  }
+  if (end_x - start_x <= 0 || end_y - start_y <= 0)
+    return;
 
-  if (x < 0) {
-    x_offset = -x;
-  } else {
-    x_offset = 0;
-  }
+  cl_uint8* target_buf = static_cast<cl_uint8*>(provider.get_data());
+  cl_uint8* source_buf = static_cast<cl_uint8*>(sprovider.get_data());
 
-  real_y = real_y_arg;
-  real_x = real_x_arg;
+  CL_Palette palette = sprovider.get_palette();
 
-  for(int line=y_offset; line < sheight && (line + y) < theight; ++line)
+  if (sprovider.get_format().has_colorkey())
     {
-      start_i = ((line + y) * tpitch) + (x*4);
+      unsigned int colorkey = sprovider.get_format().get_colorkey();
 
-      real_x = real_x_arg;
-      for(int i=start_i+(4*x_offset),j=line*spitch+x_offset;
-	  i < start_i + (4*swidth) && (i-start_i+(x*4)) < (4*twidth); i+=4,++j)
-	{
-	  if (sbuffer[j])
-	    {
-	      if (pingus_debug_flags & PINGUS_DEBUG_ACTIONS)
-		{
-		  if (!(colmap->getpixel(real_x, real_y) == Groundtype::GP_SOLID))
-		    {
-		      tbuffer[i + 0] = 255;
-		      tbuffer[i + 1] = 255;
-		      tbuffer[i + 2] = 255;
-		      tbuffer[i + 3] = 255;
-		    }
-		  else
-		    {
-		      tbuffer[i + 0] = 255;
-		      tbuffer[i + 1] = 255;
-		      tbuffer[i + 2] = 0;
-		      tbuffer[i + 3] = 0;
-		    }
-		}
-	      else
-		{
-		  if (!(colmap->getpixel(real_x, real_y) == Groundtype::GP_SOLID))
-		    {
-		      tbuffer[i + 0] = 0;
-		    }
-		}
-	    }
-	  ++real_x;
-	}
-      ++real_y;
+      for (int y = start_y; y < end_y; ++y)
+        {
+          cl_uint8* tptr = target_buf + 4*((twidth*(y+y_pos)) + x_pos + start_x);
+          cl_uint8* sptr = source_buf + swidth*y + start_x;
+
+          for (int x = start_x; x < end_x; ++x)
+            { 
+							if (*sptr != colorkey && 
+									colmap->getpixel(real_x_arg+x, real_y_arg+y) 
+									!= Groundtype::GP_SOLID)
+                *tptr = 0;
+
+              tptr += 4;
+              sptr += 1;
+            }
+        }
     }
+  else
+    {
+      for (int y = start_y; y < end_y; ++y)
+        {
+          cl_uint8* tptr = target_buf + 4*((twidth*(y+y_pos)) + x_pos + start_x);
+          cl_uint8* sptr = source_buf + swidth*y + start_x;
 
+          for (int x = start_x; x < end_x; ++x)
+            { 
+              if (colmap->getpixel(real_x_arg+x, real_y_arg+y) 
+									!= Groundtype::GP_SOLID)
+								*tptr = 0;
+              
+              tptr += 4;
+              sptr += 1;
+            }
+        }
+    }
+  
   sprovider.unlock();
   provider.unlock();
 }
