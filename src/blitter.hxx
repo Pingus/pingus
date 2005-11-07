@@ -35,8 +35,6 @@ class Blitter
 {
 private:
   ///
-  static void put_surface_8bit_old(CL_PixelBuffer target, CL_PixelBuffer source,
-                                   int x, int y);
   static void put_surface_8bit(CL_PixelBuffer target, CL_PixelBuffer source,
                                    int x, int y);
   ///
