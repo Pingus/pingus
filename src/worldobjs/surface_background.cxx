@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <ClanLib/Core/System/error.h>
 #include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/display.h>
 #include "../display/scene_context.hxx"
@@ -141,85 +142,77 @@ SurfaceBackground::get_z_pos () const
 void
 SurfaceBackground::update()
 {
-  counter++;
+  if (scroll_x) 
+	{
+		scroll_ox += scroll_x;
 
-  scroll_ox += scroll_x;
-  scroll_oy += scroll_y;
+		if (scroll_ox > bg_surface.get_width())
+			scroll_ox -= bg_surface.get_width();
+		else if (-scroll_ox > bg_surface.get_width())
+			scroll_ox += bg_surface.get_width();
+	}
 
-  if (scroll_ox > bg_surface.get_width())
-    {
-      scroll_ox -= bg_surface.get_width();
-    }
-  else if (-scroll_ox > bg_surface.get_width())
-    {
-      scroll_ox += bg_surface.get_width();
-    }
+	if (scroll_y) 
+	{
+		scroll_oy += scroll_y;
 
-  if (scroll_oy > bg_surface.get_height())
-    {
-      scroll_oy -= bg_surface.get_height();
-    }
-  else if (-scroll_oy > bg_surface.get_height())
-    {
-      scroll_oy += bg_surface.get_height();
-    }
+		if (scroll_oy > bg_surface.get_height())
+			scroll_oy -= bg_surface.get_height();
+		else if (-scroll_oy > bg_surface.get_height())
+			scroll_oy += bg_surface.get_height();
+	}
 }
 
 void
 SurfaceBackground::draw (SceneContext& gc)
 {
-  if (fast_mode)
-    {
-      CL_Display::clear();
-    }
-  else
-    {
-      if (render_preview)
-        {
+	if (fast_mode)
+	{
+		CL_Display::clear();
+	}
+	else
+	{
+		if (render_preview)
+		{
 #if 0 // FIXME:
-          for(int y = 0; y < gc.get_height();  y += bg_surface.get_height())
-            for(int x = 0; x < gc.get_width(); x += bg_surface.get_width())
-              gc.color().draw(bg_surface, Vector(x, y));
+			for(int y = 0; y < gc.get_height();  y += bg_surface.get_height())
+				for(int x = 0; x < gc.get_width(); x += bg_surface.get_width())
+					gc.color().draw(bg_surface, Vector(x, y));
 #endif
-        }
-      else
-        {
-          int x_offset = 0; // FIXME: gc.get_x_offset()
-          int y_offset = 0; // FIXME: gc.get_y_offset()
-          int x_of = static_cast<int>(x_offset + (gc.color().get_width ()/2));
-          int y_of = static_cast<int>(y_offset + (gc.color().get_height ()/2));
+		}
+		else
+		{
+			int x_of = gc.color().get_clip_rect().left;
+			int y_of = gc.color().get_clip_rect().top;
 
-          int start_x;
-          int start_y;
+			int start_x;
+			int start_y;
 
-          start_x = static_cast<int>((x_of * para_x) + scroll_ox);
-          start_y = static_cast<int>((y_of * para_y) + scroll_oy);
+			start_x = static_cast<int>((x_of * para_x) + scroll_ox);
+			start_y = static_cast<int>((y_of * para_y) + scroll_oy);
 
-          while (start_x >= 0)
-            start_x = start_x - bg_surface.get_width();
+			while (start_x >= 0)
+				start_x = start_x - bg_surface.get_width();
 
-          while (start_y >= 0)
-            start_y -= bg_surface.get_height();
-          while (start_y < 0 - static_cast<int>(bg_surface.get_height()))
-            start_y += bg_surface.get_height();
+			while (start_y >= 0)
+				start_y -= bg_surface.get_height();
+			while (start_y < 0 - static_cast<int>(bg_surface.get_height()))
+				start_y += bg_surface.get_height();
 
-          for(int y = start_y;
-              y < CL_Display::get_height();
-              y += bg_surface.get_height())
-            {
-              for(int x = start_x;
-                  x < CL_Display::get_width();
-                  x += bg_surface.get_width())
-                {
-#ifdef CLANLIB_0_6
-                  bg_surface.put_screen(x, y, counter); // FIXME: should use gc
-#else
-                  bg_surface.draw(x, y); // FIXME: should use gc
-#endif
-                }
-            }
-        }
-    }
+			for(int y = start_y;
+				y < world->get_height();
+				y += bg_surface.get_height())
+			{
+				for(int x = start_x;
+					x < world->get_width();
+					x += bg_surface.get_width())
+				{
+					gc.color().draw(bg_surface, Vector(static_cast<float>(x),
+																						 static_cast<float>(y)));
+				}
+			}
+		}
+	}
 }
 
 } // namespace WorldObjs
