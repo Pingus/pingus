@@ -55,6 +55,7 @@ private:
   MenuButton* contrib_button;
   MenuButton* story_button;
   MenuButton* multiplayer_button;
+	MenuButton* editor_button;
   
   void on_resize (int w, int h);
 
@@ -66,6 +67,7 @@ private:
   void do_quit();
   void do_start();
   void do_contrib(const std::string&);
+	void do_edit();
 
 public:
   PingusMenu (PingusMenuManager* m);

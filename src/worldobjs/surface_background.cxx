@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Core/System/error.h>
 #include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/display.h>
 #include "../display/scene_context.hxx"
@@ -118,14 +117,6 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
       // wrong background color
       Blitter::fill_rect(canvas, CL_Rect(0, 0, canvas.get_width(), canvas.get_height()),
                          CL_Color(color));
-    }
-
-  //bg_surface = CAImageManipulation::changeHSV(bg_surface, 150, 100, 0);
-
-  if (0) // CLANLIB_0_6
-    {
-      //counter.set_size(bg_surface.get_frame_count());
-      //counter.set_speed(1.0);
     }
 
   bg_surface = CL_Surface(canvas);

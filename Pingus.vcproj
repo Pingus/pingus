@@ -33,7 +33,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="iconv.lib intl.lib libxml2.lib"
+				AdditionalDependencies="iconv.lib"
 				OutputFile="$(OutDir)/Pingus.exe"
 				LinkIncremental="2"
 				IgnoreDefaultLibraryNames="LIBCMT"
@@ -65,7 +65,7 @@
 		<Configuration
 			Name="Release|Win32"
 			OutputDirectory="Release"
-			IntermediateDirectory="Release"
+			IntermediateDirectory="Release_intermediate"
 			ConfigurationType="1"
 			CharacterSet="2">
 			<Tool
@@ -82,7 +82,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="iconv.lib intl.lib libxml2.lib"
+				AdditionalDependencies="iconv.lib"
 				OutputFile="$(OutDir)/Pingus.exe"
 				LinkIncremental="1"
 				GenerateDebugInformation="TRUE"
@@ -271,331 +271,8 @@
 				</File>
 			</Filter>
 			<Filter
-				Name="editor"
-				Filter="">
-				<File
-					RelativePath=".\src\editor\action_window.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\action_window.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\editor.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\editor.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\editor_event.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\editor_event.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\editor_help_screen.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\editor_help_screen.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\editor_view.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\editor_view.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\editorobj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\editorobj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\editorobj_group.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\editorobj_group.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\editorobj_mgr.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\generic_property_frame.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\generic_property_frame.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\level_property_window.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\level_property_window.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\level_resizer.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\level_resizer.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\object_manager.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\object_manager.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\object_selector.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\object_selector.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\object_selector_window.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\object_selector_window.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\panel.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\panel.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\panel_icons.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\panel_icons.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\property_frame.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\property_frame.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\property_window.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\property_window.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\rect_editorobj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\rect_editorobj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\scroll_map.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\scroll_map.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\selection.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\selection.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\sprite_editorobj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\sprite_editorobj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\start_pos.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\start_pos.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\status_line.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\status_line.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\string_reader.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\string_reader.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\surface_selector.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\surface_selector.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\thumb_cache.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\thumb_cache.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\weather_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editor\weather_obj.hxx">
-				</File>
-			</Filter>
-			<Filter
-				Name="editorobjs"
-				Filter="">
-				<File
-					RelativePath=".\src\editorobjs\bumper_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\bumper_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\conveyor_belt_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\conveyor_belt_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\entrance_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\entrance_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\exit_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\exit_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\fake_exit_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\fake_exit_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\groundpiece_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\groundpiece_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\guillotine_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\guillotine_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\hammer_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\hammer_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\hotspot_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\hotspot_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\ice_block_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\ice_block_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\info_box_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\info_box_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\laser_exit_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\laser_exit_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\liquid_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\liquid_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\prefab_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\prefab_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\smasher_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\smasher_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\solid_color_background_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\solid_color_background_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\spike_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\spike_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\starfield_background_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\starfield_background_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\surface_background_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\surface_background_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\switch_door_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\switch_door_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\switch_door_switch_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\switch_door_switch_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\teleporter_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\teleporter_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\teleporter_target_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\teleporter_target_obj.hxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\thunderstorm_background_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\editorobjs\thunderstorm_background_obj.hxx">
-				</File>
-			</Filter>
-			<Filter
 				Name="gui"
 				Filter="">
-				<File
-					RelativePath=".\src\gui\buffer_graphic_context.cxx">
-				</File>
-				<File
-					RelativePath=".\src\gui\buffer_graphic_context.hxx">
-				</File>
 				<File
 					RelativePath=".\src\gui\button.hxx">
 				</File>
@@ -615,22 +292,10 @@
 					RelativePath=".\src\gui\display.hxx">
 				</File>
 				<File
-					RelativePath=".\src\gui\display_graphic_context.cxx">
-				</File>
-				<File
-					RelativePath=".\src\gui\display_graphic_context.hxx">
-				</File>
-				<File
 					RelativePath=".\src\gui\game_delta.hxx">
 				</File>
 				<File
 					RelativePath=".\src\gui\game_delta_recorder.hxx">
-				</File>
-				<File
-					RelativePath=".\src\gui\graphic_context.cxx">
-				</File>
-				<File
-					RelativePath=".\src\gui\graphic_context.hxx">
 				</File>
 				<File
 					RelativePath=".\src\gui\gui_manager.cxx">
@@ -716,12 +381,6 @@
 				</File>
 				<File
 					RelativePath=".\src\input\event_fwd.hxx">
-				</File>
-				<File
-					RelativePath=".\src\input\key_helper.cxx">
-				</File>
-				<File
-					RelativePath=".\src\input\key_helper.hxx">
 				</File>
 				<File
 					RelativePath=".\src\input\pointer.hxx">
@@ -1032,48 +691,13 @@
 					RelativePath=".\src\win32\config.h">
 				</File>
 				<File
-					RelativePath=".\src\win32\Getopt.c">
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							CompileAs="2"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							CompileAs="2"/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\src\win32\Getopt.h">
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCustomBuildTool"/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\src\win32\Getopt1.c">
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							CompileAs="2"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							CompileAs="2"/>
-					</FileConfiguration>
-				</File>
-				<File
 					RelativePath=".\src\win32\pingus.rc">
 				</File>
 				<File
 					RelativePath=".\src\win32\resource.h">
+				</File>
+				<File
+					RelativePath=".\src\win32\uce_dirent.h">
 				</File>
 			</Filter>
 			<Filter
@@ -1170,12 +794,6 @@
 			<Filter
 				Name="worldobjs"
 				Filter="">
-				<File
-					RelativePath=".\src\worldobjs\bumper.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjs\bumper.hxx">
-				</File>
 				<File
 					RelativePath=".\src\worldobjs\conveyor_belt.cxx">
 				</File>
@@ -1314,175 +932,11 @@
 				<File
 					RelativePath=".\src\worldobjs\thunderstorm_background.hxx">
 				</File>
-				<Filter
-					Name="entrances"
-					Filter="">
-					<File
-						RelativePath=".\src\worldobjs\entrances\cloud.cxx">
-					</File>
-					<File
-						RelativePath=".\src\worldobjs\entrances\cloud.hxx">
-					</File>
-					<File
-						RelativePath=".\src\worldobjs\entrances\woodthing.cxx">
-					</File>
-					<File
-						RelativePath=".\src\worldobjs\entrances\woodthing.hxx">
-					</File>
-				</Filter>
-			</Filter>
-			<Filter
-				Name="worldobjsdata"
-				Filter="">
 				<File
-					RelativePath=".\src\worldobjsdata\bumper_data.cxx">
+					RelativePath=".\src\worldobjs\woodthing.cxx">
 				</File>
 				<File
-					RelativePath=".\src\worldobjsdata\bumper_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\conveyor_belt_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\conveyor_belt_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\entrance_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\entrance_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\exit_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\exit_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\fake_exit_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\fake_exit_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\groundpiece_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\groundpiece_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\guillotine_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\guillotine_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\hammer_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\hammer_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\hotspot_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\hotspot_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\ice_block_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\ice_block_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\info_box_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\info_box_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\laser_exit_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\laser_exit_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\liquid_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\liquid_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\prefab_obj_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\prefab_obj_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\rain_generator_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\rain_generator_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\smasher_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\smasher_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\snow_generator_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\snow_generator_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\solid_color_background_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\solid_color_background_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\spike_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\spike_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\starfield_background_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\starfield_background_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\surface_background_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\surface_background_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\switch_door_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\switch_door_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\teleporter_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\teleporter_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\thunderstorm_background_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\thunderstorm_background_data.hxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\worldobj_group_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\worldobjsdata\worldobj_group_data.hxx">
+					RelativePath=".\src\worldobjs\woodthing.hxx">
 				</File>
 			</Filter>
 			<Filter
@@ -1495,22 +949,10 @@
 					RelativePath=".\src\action_button.hxx">
 				</File>
 				<File
-					RelativePath=".\src\action_data.cxx">
-				</File>
-				<File
-					RelativePath=".\src\action_data.hxx">
-				</File>
-				<File
 					RelativePath=".\src\action_holder.cxx">
 				</File>
 				<File
 					RelativePath=".\src\action_holder.hxx">
-				</File>
-				<File
-					RelativePath=".\src\alpha_button.cxx">
-				</File>
-				<File
-					RelativePath=".\src\alpha_button.hxx">
 				</File>
 				<File
 					RelativePath=".\src\blitter.cxx">
@@ -1564,34 +1006,16 @@
 					RelativePath=".\src\collider.hxx">
 				</File>
 				<File
-					RelativePath=".\src\color.cxx">
-				</File>
-				<File
-					RelativePath=".\src\color.hxx">
-				</File>
-				<File
 					RelativePath=".\src\config.cxx">
 				</File>
 				<File
 					RelativePath=".\src\config.hxx">
 				</File>
 				<File
-					RelativePath=".\src\config_xml.cxx">
-				</File>
-				<File
-					RelativePath=".\src\config_xml.hxx">
-				</File>
-				<File
 					RelativePath=".\src\console.cxx">
 				</File>
 				<File
 					RelativePath=".\src\console.hxx">
-				</File>
-				<File
-					RelativePath=".\src\counter.cxx">
-				</File>
-				<File
-					RelativePath=".\src\counter.hxx">
 				</File>
 				<File
 					RelativePath=".\src\credits.cxx">
@@ -1645,13 +1069,13 @@
 					RelativePath=".\src\exit_menu.hxx">
 				</File>
 				<File
-					RelativePath=".\src\fade_out.cxx">
-				</File>
-				<File
-					RelativePath=".\src\fade_out.hxx">
+					RelativePath=".\src\file_reader.cxx">
 				</File>
 				<File
 					RelativePath=".\src\file_reader.hxx">
+				</File>
+				<File
+					RelativePath=".\src\file_reader_impl.hxx">
 				</File>
 				<File
 					RelativePath=".\src\file_writer.hxx">
@@ -1696,6 +1120,9 @@
 					RelativePath=".\src\game_time.hxx">
 				</File>
 				<File
+					RelativePath=".\src\gettext.cxx">
+				</File>
+				<File
 					RelativePath=".\src\gettext.h">
 				</File>
 				<File
@@ -1715,6 +1142,12 @@
 				</File>
 				<File
 					RelativePath=".\src\goal_manager.hxx">
+				</File>
+				<File
+					RelativePath=".\src\graphic_context_state.cxx">
+				</File>
+				<File
+					RelativePath=".\src\graphic_context_state.hxx">
 				</File>
 				<File
 					RelativePath=".\src\groundtype.cxx">
@@ -1957,6 +1390,15 @@
 					RelativePath=".\src\pingus_error.hxx">
 				</File>
 				<File
+					RelativePath=".\src\pingus_level.cxx">
+				</File>
+				<File
+					RelativePath=".\src\pingus_level.hxx">
+				</File>
+				<File
+					RelativePath=".\src\pingus_level_impl.hxx">
+				</File>
+				<File
 					RelativePath=".\src\pingus_main.cxx">
 				</File>
 				<File
@@ -1981,12 +1423,6 @@
 					RelativePath=".\src\pingus_menu_manager.hxx">
 				</File>
 				<File
-					RelativePath=".\src\pingus_resource.cxx">
-				</File>
-				<File
-					RelativePath=".\src\pingus_resource.hxx">
-				</File>
-				<File
 					RelativePath=".\src\pingus_sub_menu.cxx">
 				</File>
 				<File
@@ -1997,18 +1433,6 @@
 				</File>
 				<File
 					RelativePath=".\src\playfield.hxx">
-				</File>
-				<File
-					RelativePath=".\src\playfield_view.cxx">
-				</File>
-				<File
-					RelativePath=".\src\playfield_view.hxx">
-				</File>
-				<File
-					RelativePath=".\src\plf.cxx">
-				</File>
-				<File
-					RelativePath=".\src\plf.hxx">
 				</File>
 				<File
 					RelativePath=".\src\plf_handle.hxx">
@@ -2024,12 +1448,6 @@
 				</File>
 				<File
 					RelativePath=".\src\plt_xml.hxx">
-				</File>
-				<File
-					RelativePath=".\src\prefab.cxx">
-				</File>
-				<File
-					RelativePath=".\src\prefab.hxx">
 				</File>
 				<File
 					RelativePath=".\src\preview_renderer.cxx">
@@ -2048,6 +1466,12 @@
 				</File>
 				<File
 					RelativePath=".\src\res_descriptor.hxx">
+				</File>
+				<File
+					RelativePath=".\src\resource.cxx">
+				</File>
+				<File
+					RelativePath=".\src\resource.hxx">
 				</File>
 				<File
 					RelativePath=".\src\resource_modifier.cxx">
@@ -2116,12 +1540,6 @@
 					RelativePath=".\src\spot_map.hxx">
 				</File>
 				<File
-					RelativePath=".\src\sprite.cxx">
-				</File>
-				<File
-					RelativePath=".\src\sprite.hxx">
-				</File>
-				<File
 					RelativePath=".\src\start_screen.cxx">
 				</File>
 				<File
@@ -2132,6 +1550,12 @@
 				</File>
 				<File
 					RelativePath=".\src\stat_manager.hxx">
+				</File>
+				<File
+					RelativePath=".\src\state_sprite.cxx">
+				</File>
+				<File
+					RelativePath=".\src\state_sprite.hxx">
 				</File>
 				<File
 					RelativePath=".\src\story.cxx">
@@ -2146,22 +1570,10 @@
 					RelativePath=".\src\story_screen.hxx">
 				</File>
 				<File
-					RelativePath=".\src\string_converter.cxx">
-				</File>
-				<File
-					RelativePath=".\src\string_converter.hxx">
-				</File>
-				<File
 					RelativePath=".\src\string_format.cxx">
 				</File>
 				<File
 					RelativePath=".\src\string_format.hxx">
-				</File>
-				<File
-					RelativePath=".\src\string_tokenizer.cxx">
-				</File>
-				<File
-					RelativePath=".\src\string_tokenizer.hxx">
 				</File>
 				<File
 					RelativePath=".\src\system.cxx">
@@ -2248,34 +1660,22 @@
 					RelativePath=".\src\timer.hxx">
 				</File>
 				<File
+					RelativePath=".\src\tinygettext.cxx">
+				</File>
+				<File
+					RelativePath=".\src\tinygettext.hxx">
+				</File>
+				<File
 					RelativePath=".\src\true_server.cxx">
 				</File>
 				<File
 					RelativePath=".\src\true_server.hxx">
 				</File>
 				<File
-					RelativePath=".\src\usb_mouse_controller.cxx">
-				</File>
-				<File
-					RelativePath=".\src\usb_mouse_controller.hxx">
-				</File>
-				<File
 					RelativePath=".\src\vector.cxx">
 				</File>
 				<File
 					RelativePath=".\src\vector.hxx">
-				</File>
-				<File
-					RelativePath=".\src\view.cxx">
-				</File>
-				<File
-					RelativePath=".\src\view.hxx">
-				</File>
-				<File
-					RelativePath=".\src\wav_provider.cxx">
-				</File>
-				<File
-					RelativePath=".\src\wav_provider.hxx">
 				</File>
 				<File
 					RelativePath=".\src\world.cxx">
@@ -2293,16 +1693,10 @@
 					RelativePath=".\src\worldobj_data.hxx">
 				</File>
 				<File
-					RelativePath=".\src\worldobj_data_factory.cxx">
+					RelativePath=".\src\worldobj_factory.cxx">
 				</File>
 				<File
-					RelativePath=".\src\worldobj_data_factory.hxx">
-				</File>
-				<File
-					RelativePath=".\src\xml_eval.cxx">
-				</File>
-				<File
-					RelativePath=".\src\xml_eval.hxx">
+					RelativePath=".\src\worldobj_factory.hxx">
 				</File>
 				<File
 					RelativePath=".\src\xml_file_reader.cxx">
@@ -2317,33 +1711,75 @@
 					RelativePath=".\src\xml_file_writer.hxx">
 				</File>
 				<File
-					RelativePath=".\src\xml_helper.cxx">
-				</File>
-				<File
-					RelativePath=".\src\xml_helper.hxx">
-				</File>
-				<File
 					RelativePath=".\src\xml_pdf.cxx">
 				</File>
 				<File
 					RelativePath=".\src\xml_pdf.hxx">
 				</File>
 				<File
-					RelativePath=".\src\xml_plf.cxx">
+					RelativePath=".\src\xml_pingus_level.cxx">
 				</File>
 				<File
-					RelativePath=".\src\xml_plf.hxx">
+					RelativePath=".\src\xml_pingus_level.hxx">
+				</File>
+			</Filter>
+			<Filter
+				Name="display"
+				Filter="">
+				<File
+					RelativePath=".\src\display\drawing_context.cxx">
 				</File>
 				<File
-					RelativePath=".\src\xmlgz_reader.cxx">
+					RelativePath=".\src\display\drawing_context.hxx">
 				</File>
 				<File
-					RelativePath=".\src\xmlgz_reader.hxx">
+					RelativePath=".\src\display\drawing_request.hxx">
+				</File>
+				<File
+					RelativePath=".\src\display\scene_context.cxx">
+				</File>
+				<File
+					RelativePath=".\src\display\scene_context.hxx">
+				</File>
+			</Filter>
+			<Filter
+				Name="caimagemanipulation"
+				Filter="">
+				<File
+					RelativePath=".\src\caimagemanipulation\caimagemanipulation.cpp">
+				</File>
+				<File
+					RelativePath=".\src\caimagemanipulation\caimagemanipulation.h">
+				</File>
+			</Filter>
+			<Filter
+				Name="editor"
+				Filter="">
+				<File
+					RelativePath=".\src\editor\editor_panel.cxx">
+				</File>
+				<File
+					RelativePath=".\src\editor\editor_panel.hxx">
+				</File>
+				<File
+					RelativePath=".\src\editor\editor_screen.cxx">
+				</File>
+				<File
+					RelativePath=".\src\editor\editor_screen.hxx">
+				</File>
+				<File
+					RelativePath=".\src\editor\panel_buttons.cxx">
+				</File>
+				<File
+					RelativePath=".\src\editor\panel_buttons.hxx">
 				</File>
 			</Filter>
 		</Filter>
 		<File
 			RelativePath=".\ChangeLog">
+		</File>
+		<File
+			RelativePath=".\src\win32\icon1.ico">
 		</File>
 		<File
 			RelativePath=".\INSTALL.Win32">
@@ -2359,9 +1795,6 @@
 		</File>
 		<File
 			RelativePath=".\README.languages">
-		</File>
-		<File
-			RelativePath=".\README.Win32">
 		</File>
 		<File
 			RelativePath=".\Todo">

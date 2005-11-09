@@ -38,6 +38,7 @@
 #include "gui/gui_manager.hxx"
 #include "plf_res_mgr.hxx"
 #include "path_manager.hxx"
+#include "editor/editor_screen.hxx"
 
 namespace Pingus {
 
@@ -47,34 +48,40 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
   is_init = false;
     
   start_button = new MenuButton(CL_Point(CL_Display::get_width() * 400 / 800,
-                                         CL_Display::get_height() * 370 / 600),
+                                         CL_Display::get_height() * 450 / 600),
                                 Resource::load_sprite("core/menu/play_on"),
                                 _("Start"),
                                 _("..:: Start the game ::.."));
   
   quit_button = new MenuButton(CL_Point(CL_Display::get_width() * 650 / 800,
-                                        CL_Display::get_height() * 370 / 600),
+                                        CL_Display::get_height() * 450 / 600),
                                Resource::load_sprite("core/menu/exit_on"),
                                _("Exit"),
                                _("..:: Bye, bye ::.."));
 
   contrib_button = new MenuButton(CL_Point(CL_Display::get_width() * 150 / 800,
-                                          CL_Display::get_height() * 370 / 600),
+                                          CL_Display::get_height() * 450 / 600),
                                   Resource::load_sprite("core/menu/options_on"),
                                   _("Contrib\nLevels"),
                                   _("..:: Play User Build levels ::.."));
 
   story_button  = new MenuButton(CL_Point(CL_Display::get_width() * 400 / 800,
-                                          CL_Display::get_height() * 370 / 600),
+                                          CL_Display::get_height() * 340 / 600),
                                  Resource::load_sprite("core/menu/credits_on"),
                                  _("Story"),
                                  _("..:: Start the story ::.."));
   
-  multiplayer_button = new MenuButton(CL_Point(CL_Display::get_width() * 650 / 800,
-                                               CL_Display::get_height() * 370 / 600),
+  multiplayer_button = new MenuButton(CL_Point(CL_Display::get_width() * 150 / 800,
+                                               CL_Display::get_height() * 340 / 600),
                                       Resource::load_sprite("core/menu/multi_on"),
                                       _("Multiplayer"),
                                       _("..:: Multiplayer Match ::.."));
+
+	editor_button = new MenuButton(CL_Point(CL_Display::get_width() * 400 / 800,
+                                               CL_Display::get_height() * 450 / 600),
+                                      Resource::load_sprite("core/menu/create_on"),
+                                      _("Level Editor"),
+                                      _("..:: Create your own levels ::.."));
 
   slots.push_back(start_button->sig_click().connect(this, &PingusMenu::setup_game_menu));
   slots.push_back(quit_button->sig_click().connect(this, &PingusMenu::do_quit));
@@ -83,6 +90,7 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
   slots.push_back(multiplayer_button->sig_click().connect(this, &PingusMenu::setup_main_menu));
   
   slots.push_back(contrib_button->sig_click().connect(this, &PingusMenu::setup_contrib_menu));
+	slots.push_back(editor_button->sig_click().connect(this, &PingusMenu::do_edit));
 }
 
 void
@@ -91,6 +99,7 @@ PingusMenu::setup_main_menu()
   gui_manager->remove(contrib_button);
   gui_manager->remove(story_button);
   gui_manager->remove(multiplayer_button);
+	gui_manager->remove(editor_button);
 
   gui_manager->add(quit_button);
   gui_manager->add(start_button);
@@ -99,22 +108,20 @@ PingusMenu::setup_main_menu()
 void
 PingusMenu::setup_game_menu()
 {
-  gui_manager->remove(quit_button);
   gui_manager->remove(start_button);
 
   gui_manager->add(contrib_button);
   gui_manager->add(story_button);
-  gui_manager->add(multiplayer_button);
+	gui_manager->add(editor_button);
+	// FIXME: Re-enable this next line once multiplayer functionality
+	// is actually available.
+  //gui_manager->add(multiplayer_button);
 }
 
 void
 PingusMenu::setup_contrib_menu()
-{ // Remove buttons and select a level to play
-  gui_manager->remove(contrib_button);
-  gui_manager->remove(story_button);
-  gui_manager->remove(multiplayer_button);
-  
- 	// Create a Clanlib GUIManager using the silver style
+{  
+ 	// Create a Clanlib File Dialog using the silver style
   CL_ResourceManager *resources = new 
       CL_ResourceManager(path_manager.complete("GUIStyleSilver/gui.xml"));
 	CL_StyleManager_Silver *style = new CL_StyleManager_Silver(resources);
@@ -128,18 +135,13 @@ PingusMenu::setup_contrib_menu()
     
   // Clean up ClanLib stuff
   delete filedialog;
-  delete gui;
+	delete gui;
   delete style;
-  delete resources;
+	delete resources;
   
   // Launch level
   if (filename != "")
      do_contrib(filename);
-
-  // Reset menu
-  gui_manager->add(contrib_button);
-  gui_manager->add(story_button);
-  gui_manager->add(multiplayer_button);
 }
 
 void
@@ -161,6 +163,7 @@ PingusMenu::~PingusMenu()
 	delete contrib_button;
 	delete story_button;
 	delete multiplayer_button;
+	delete editor_button;
 }
 
 void
@@ -195,6 +198,11 @@ void PingusMenu::do_contrib(const std::string &levelfile)
       true);
 }
 
+void PingusMenu::do_edit()
+{	// Launch the level editor
+	ScreenManager::instance()->push_screen (new Editor::EditorScreen());
+}
+
 void
 PingusMenu::on_resize(int w, int h)
 {
@@ -214,22 +222,25 @@ PingusMenu::draw_foreground(DrawingContext& gc)
     {
       gc.draw(background,
               Vector((gc.get_width()/2) - (background.get_width()/2),
-                     20));
+                     20.0f));
     }
   else
     {
       gc.draw(background, 
               Vector((gc.get_width()/2) - (background.get_width()/2),
-                     CL_Display::get_height()/10));
+							static_cast<float>(CL_Display::get_height()/10)));
     }
 #ifdef OFFICIAL_PINGUS_BUILD
-  gc.print_left(Fonts::pingus_small, 20, CL_Display::get_height()-100,
+  gc.print_left(Fonts::pingus_small, 20.0f, 
+								static_cast<float>(CL_Display::get_height()-100),
                 "Pingus version "VERSION", Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n");
 #else
-  gc.print_left(Fonts::pingus_small, 20, CL_Display::get_height()-100,
+  gc.print_left(Fonts::pingus_small, 20.0f, 
+								static_cast<float>(CL_Display::get_height()-100),
                 "Pingus version "VERSION" (unofficial build), Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n");
 #endif
-  gc.print_left(Fonts::pingus_small, 20, CL_Display::get_height()-70,
+  gc.print_left(Fonts::pingus_small, 20.0f, 
+								static_cast<float>(CL_Display::get_height()-70),
                 "Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome\n"
                 "to redistribute it under certain conditions; see the file COPYING for details.\n");
 }

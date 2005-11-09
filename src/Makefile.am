@@ -28,6 +28,7 @@ SUBDIRS = \
 	actions             \
 	caimagemanipulation \
 	colliders           \
+	editor				\
         gui                 \
         input               \
 	movers		    \
@@ -66,6 +67,7 @@ pingus_LDADD = \
         input/buttons/libpingus_input_buttons.a \
 	input/pointers/libpingus_input_pointers.a \
 	input/scrollers/libpingus_input_scrollers.a \
+	editor/libpingus_editor.a \
         @PINGUS_LIBS@ \
         @ICONV_LIBS@ \
         @LIBS@

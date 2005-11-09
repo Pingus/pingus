@@ -63,7 +63,7 @@ public:
   virtual ~SurfaceDrawingRequest() {}
 
   void draw(CL_GraphicContext* gc) {
-    sprite.draw(static_cast<int>(pos.x), static_cast<int>(pos.y), gc);
+    sprite.draw(pos.x, pos.y, gc);
   }
 };
 
@@ -150,7 +150,7 @@ public:
   virtual ~SpriteDrawingRequest() {}
 
   void draw(CL_GraphicContext* gc) {
-    sprite.draw(static_cast<int>(pos.x), static_cast<int>(pos.y), gc);
+    sprite.draw(pos.x, pos.y, gc);
   }
 };
 

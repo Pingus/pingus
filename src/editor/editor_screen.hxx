@@ -1,0 +1,89 @@
+//  $Id: editor_screen.hxx,v 1.00 2005/11/07 23:41:12 Jave27 Exp $
+//
+//  Pingus - A free Lemmings clone
+//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
+//
+//  This program is free software; you can redistribute it and/or
+//  modify it under the terms of the GNU General Public License
+//  as published by the Free Software Foundation; either version 2
+//  of the License, or (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program; if not, write to the Free Software
+//  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+#ifndef HEADER_PINGUS_EDITOR_SCREEN_HXX
+#define HEADER_PINGUS_EDITOR_SCREEN_HXX
+
+#include "../gui/gui_screen.hxx"
+
+namespace Pingus {
+
+class DrawingContext;
+class GUI::GUIManager;
+class PingusLevel;
+
+namespace Editor {
+
+class EditorPanel;
+
+/** This class is the screen that contains all of the
+	editor objects */
+class EditorScreen : public GUIScreen
+{
+private:
+	/* The level currently being edited */
+	PingusLevel* plf;
+
+	/* Panel which contains all of the buttons for each action */
+	EditorPanel* panel;
+
+public:
+	/** Default constructor */
+  EditorScreen(PingusLevel* level = 0);
+
+	/** Destructor */
+	~EditorScreen();
+
+	/** Code that runs when the screen first opens */
+  void on_startup();
+
+	/** Closes the current screen */
+  void close_screen();
+
+	/** Code that runs when the Escape button is pressed */
+  void on_escape_press();
+
+	/** Draw the items in the screen */
+	virtual bool draw (DrawingContext& gc);
+
+	/** Return the gui_manager */
+	GUI::GUIManager* get_gui_manager() { return gui_manager; }
+
+private:
+  EditorScreen (const EditorScreen&);
+  EditorScreen& operator= (const EditorScreen&);
+
+	/** Saves the currently loaded level
+		@return true if level was valid and saved, false otherwise */
+	bool save_level();
+
+	/** Load a new level by opening a dialog box
+		@return true if the user chose a valid level, 
+						false otherwise */
+	bool load_level();
+
+	/** Plays the currently loaded level */
+	void play_level();
+
+};	// EditorScreen
+}		// Editor namespace
+}		// Pingus namespace
+
+#endif
+/* EOF */

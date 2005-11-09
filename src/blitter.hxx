@@ -41,17 +41,11 @@ private:
   static void put_surface_32bit(CL_PixelBuffer target, CL_PixelBuffer source,
 			       int x, int y);
 public:
-  /*void put_surface(CL_LockableSurface* provider, CL_Surface surface,
-    int x, int y);
-    void put_surface(CL_LockableSurface* provider, CL_PixelBuffer* surface,
-    int x, int y);
-  */
-
-  /// Puts a given surface to a given canvas at position x, y.
+  /** Puts a given surface to a given canvas at position x, y. */
   static void put_surface(CL_PixelBuffer target, const CL_Surface& source,
 			  int x, int y);
 
-  /// Puts a given surface provider to a given canvas at position x, y.
+  /** Puts a given surface provider to a given canvas at position x, y. */
   static void put_surface(CL_PixelBuffer target, CL_PixelBuffer source,
 			  int x, int y);
 

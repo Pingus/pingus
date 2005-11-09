@@ -242,7 +242,7 @@ Theme::load_status(std::string name)
   if ((unsigned int)(accessible_levels) >= level_filenames.size())
     {
       if (verbose) std::cout << "Warning: Accessible_Level is to high! " << accessible_levels << std::endl;
-      accessible_levels = level_filenames.size() - 1;
+      accessible_levels = static_cast<int>(level_filenames.size()) - 1;
     }
   current_level = accessible_levels;
 }
@@ -264,7 +264,7 @@ Theme::play()
 	++accessible_levels;
 
       if ((unsigned int)(accessible_levels) >= level_filenames.size())
-	accessible_levels = level_filenames.size() - 1;
+	accessible_levels = static_cast<int>(level_filenames.size()) - 1;
 
       std::ofstream out (status_file.c_str());
       out << accessible_levels;
@@ -289,7 +289,7 @@ Theme::next_level()
   ++current_level;
 
   if ((unsigned int)(current_level) >= level_filenames.size())
-    current_level = level_filenames.size() - 1;
+    current_level = static_cast<int>(level_filenames.size()) - 1;
 
   if (current_level > accessible_levels)
     current_level  = accessible_levels;
@@ -336,7 +336,7 @@ Theme::load_levels()
   if (verbose)
     std::cout << "done." << std::endl;
 
-  std::cout << "Levelnames: " << levelnames.size () << std::endl;
+  std::cout << "Levelnames: " << static_cast<unsigned>(levelnames.size()) << std::endl;
 }
 
 void
