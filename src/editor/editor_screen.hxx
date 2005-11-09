@@ -31,6 +31,7 @@ class PingusLevel;
 namespace Editor {
 
 class EditorPanel;
+class EditorViewport;
 
 /** This class is the screen that contains all of the
 	editor objects */
@@ -42,6 +43,9 @@ private:
 
 	/* Panel which contains all of the buttons for each action */
 	EditorPanel* panel;
+
+	/* Viewport which holds all of the level images and data */
+	EditorViewport* viewport;
 
 public:
 	/** Default constructor */

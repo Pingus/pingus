@@ -50,39 +50,6 @@ Playfield::Playfield (Client* client_, const CL_Rect& rect_)
   needs_clear_screen = false;
 
   state.set_limit(CL_Rect(CL_Point(0, 0), CL_Size(world->get_width(), world->get_height())));
-
-  if (0)
-    { // FIXME: Fix this
-      // Special handling for levels smaller than the screen
-      int x1, x2, y1, y2;
-
-      x1 = (CL_Display::get_width() - world->get_width()) / 2;
-      x2 = x1 + world->get_width() - 1;
-
-      y1 = (CL_Display::get_height() - world->get_height()) / 2;
-      y2 = y1 + world->get_height() - 1;
-
-      if (x1 < 0)
-        x1 = 0;
-      if (x2 >= CL_Display::get_width())
-        x2 = CL_Display::get_width() - 1;
-      if (y1 < 0)
-        y1 = 0;
-      if (y2 >= CL_Display::get_height())
-        y2 = CL_Display::get_height() - 1;
-
-      if (x1 > 0 || x2 < (CL_Display::get_width() - 1)
-          || y1 > 0 || y2 < (CL_Display::get_height() - 1))
-        {
-          std::cout << "Playfield:: Activating clear screen" << std::endl;
-          needs_clear_screen = true;
-          generate_clipping_rects(x1, y1, x2, y2);
-        }
-      else
-        {
-          needs_clear_screen = false;
-        }
-    }
 }
 
 Playfield::~Playfield()

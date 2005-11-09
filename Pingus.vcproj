@@ -1768,6 +1768,12 @@
 					RelativePath=".\src\editor\editor_screen.hxx">
 				</File>
 				<File
+					RelativePath=".\src\editor\editor_viewport.cxx">
+				</File>
+				<File
+					RelativePath=".\src\editor\editor_viewport.hxx">
+				</File>
+				<File
 					RelativePath=".\src\editor\panel_buttons.cxx">
 				</File>
 				<File

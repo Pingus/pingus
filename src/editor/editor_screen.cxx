@@ -30,6 +30,7 @@
 #include "../xml_pingus_level.hxx"
 #include "editor_screen.hxx"
 #include "editor_panel.hxx"
+#include "editor_viewport.hxx"
 
 namespace Pingus {
 
@@ -55,11 +56,13 @@ void
 EditorScreen::on_startup()
 {
 	// Create the panel for the buttons
-	{
-		panel = new EditorPanel(this);
-		gui_manager->add(panel);
-		panel->init();
-	} // end panel setup
+	panel = new EditorPanel(this);
+	gui_manager->add(panel);
+	panel->init();
+
+	// Create the viewport for the images and data
+	viewport = new EditorViewport(this);
+	gui_manager->add(viewport);
 }
 
 // Close the current screen
@@ -108,7 +111,8 @@ bool
 EditorScreen::draw(Pingus::DrawingContext &gc)
 {
 	// Black out screen
-	gc.fill_screen(CL_Color(0, 0, 0, 255));
+	gc.draw_fillrect(0, 0, CL_Display::get_width(), CL_Display::get_height(),
+		CL_Color(0, 0, 0, 255), -10000);
 	gui_manager->draw(gc);
 	return true;
 }
