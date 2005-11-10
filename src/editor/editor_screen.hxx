@@ -64,7 +64,7 @@ public:
   void on_escape_press();
 
 	/** Draw the items in the screen */
-	virtual bool draw (DrawingContext& gc);
+	bool draw (DrawingContext& gc);
 
 	/** Return the gui_manager */
 	GUI::GUIManager* get_gui_manager() { return gui_manager; }

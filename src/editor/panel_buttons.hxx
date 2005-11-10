@@ -35,6 +35,10 @@ class EditorPanel;
 /** Generic PanelButton class - all buttons in the Editor should inherit from this */
 class PanelButton : public GUI::Component
 {
+private:
+	/** Whether or not the mouse is over the button */
+	bool hover;
+
 protected:
 	/** The actual button image */
   CL_Sprite sur;
@@ -80,6 +84,12 @@ public:
 
 	/** Return true if the button is located at this x,y coordinate */
 	bool is_at(int x, int y);
+
+	/** Action taken when the mouse enters the button area */
+	virtual void on_pointer_enter () { hover = true; }
+
+	/** Action taken when the mouse leaves the button area */
+	virtual void on_pointer_leave () { hover = false; }
 
 private:
 	PanelButton (const PanelButton&);

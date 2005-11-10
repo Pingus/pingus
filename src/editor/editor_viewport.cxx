@@ -38,6 +38,7 @@ EditorViewport::EditorViewport(EditorScreen* e) :
 								(float)(CL_Display::get_height() - 10))),
   scene_context(new SceneContext()),
 	autoscroll(true),
+	translate(0),
 	state((int)(end_pos.x - start_pos.x), (int)(end_pos.y - start_pos.y))
 {
 	state.set_limit(CL_Rect((int)start_pos.x, (int)start_pos.y, 
@@ -64,24 +65,33 @@ EditorViewport::on_secondary_button_click(int x, int y)
 void
 EditorViewport::draw(DrawingContext &gc)
 {
-	scene_context->clear();
+	// FIXME: Temporary hack to test translation
+	if (translate == 0)
+		gc.reset_modelview();
+	else if (translate == 3)
+		gc.translate(0, 5);
+	else if (translate == 4)
+		gc.translate(0, -5);
 
-	state.push(*scene_context);
+	//scene_context->clear();
+	//state.push(*scene_context);
 
 	// Now, draw all of the objects
 
 	// FIXME: Should draw the background over the whole viewport (stretched or tiled)
 	if (bg_surface)
-		scene_context->color().draw(*bg_surface, start_pos);
+		gc.draw(*bg_surface, start_pos);
 	else
-		scene_context->color().draw_fillrect(start_pos.x, start_pos.y, end_pos.x, end_pos.y, CL_Color::darkgray);
+		gc.draw_fillrect(start_pos.x, start_pos.y, 
+			end_pos.x, end_pos.y, CL_Color::darkgray, -5000);
 
+	// Added this to test translate scrolling.
+	gc.draw_fillrect(300, 250, 400, 300, CL_Color::white);
 
-	scene_context->color().draw_circle(25, 25, 10, CL_Color::white);
+	//state.pop(*scene_context);
 
-	state.pop(*scene_context);
-
-	gc.draw(new SceneContextDrawingRequest(scene_context, 0));
+	//gc.draw(new SceneContextDrawingRequest(scene_context, 0));
+	
 }
 
 // Returns true if the viewport is at the x,y coordinate
@@ -96,22 +106,35 @@ EditorViewport::is_at(int x, int y)
 void
 EditorViewport::on_pointer_move(int x, int y)
 {
-	const int autoscroll_border = 10;
-	if (is_at(x, y))
-	{
-		// Autoscroll if necessary
-		if (x - start_pos.x < autoscroll_border)
-			std::cout << "AutoScroll left" << std::endl;
-		else if (end_pos.x - x < autoscroll_border)
-			std::cout << "AutoScroll right" << std::endl;
-		else if (y - start_pos.y < autoscroll_border)
-			state.set_pos(state.get_pos() - CL_Pointf(0, 5.0f));
-		else if (end_pos.y - y < autoscroll_border)
-			state.set_pos(state.get_pos() + CL_Pointf(0, 5.0f));
-			//std::cout << "AutoScroll down" << std::endl;
-	}
+	mouse_at = Vector(float(x), float(y));
 }
 
+void
+EditorViewport::update(float delta)
+{
+	// Autoscroll if necessary
+	//if (autoscroll)
+	if (0)
+	{
+		const int autoscroll_border = 10;
+		if (autoscroll)
+		{
+			if (mouse_at.x - start_pos.x < autoscroll_border)
+				std::cout << "AutoScroll left" << std::endl;
+			else if (end_pos.x - mouse_at.x < autoscroll_border)
+				std::cout << "AutoScroll right" << std::endl;
+			else if (mouse_at.y - start_pos.y < autoscroll_border)
+				// This should be the right code, I just need to learn how it works:
+				// state.set_pos(state.get_pos() - CL_Pointf(0, 5.0f));
+				translate = 3;
+			else if (end_pos.y - mouse_at.y < autoscroll_border)
+				//state.set_pos(state.get_pos() + CL_Pointf(0, 5.0f));
+				translate = 4;
+			else 
+				translate = 0;
+		}
+	}
+}
 } // Editor namespace
 } // Pingus namespace
 

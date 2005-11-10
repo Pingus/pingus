@@ -58,6 +58,9 @@ public:
 	/** Draws all of the objects in the viewport */
 	void draw(DrawingContext &gc);
 
+	/** Update information about scrolling, etc. */
+	void update(float delta);
+
 	/** Returns whether or not the mouse is inside the viewport */
 	bool is_at(int x, int y);
 
@@ -72,6 +75,9 @@ private:
 	
 	GraphicContextState state;
 	SceneContext* scene_context;
+	
+	// FIXME: Temporary hack for translation testing:
+	int translate;
 
 	/** The EditorScreen to which this viewport belongs */
 	EditorScreen* editor;
@@ -90,6 +96,9 @@ private:
 
 	/** Whether or not Autoscrolling is turned on */
 	bool autoscroll;
+
+	/** Where the mouse is right now - used for autoscrolling */
+	Vector mouse_at;
 };
 
 } // Editor namespace

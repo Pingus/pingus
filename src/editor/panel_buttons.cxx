@@ -20,6 +20,7 @@
 #include <ClanLib/Display/sprite.h>
 #include "panel_buttons.hxx"
 #include "../display/scene_context.hxx"
+#include "../fonts.hxx"
 #include "../resource.hxx"
 #include "editor_screen.hxx"
 #include "editor_panel.hxx"
@@ -32,7 +33,8 @@ namespace Editor {
 
 // Constructor
 PanelButton::PanelButton(EditorPanel* p) :
-	panel(p)
+	panel(p),
+	hover(false)
 {
   button = Resource::load_sprite("core/editor/button");
   button_pressed = Resource::load_sprite("core/editor/button_pressed");
@@ -49,6 +51,12 @@ PanelButton::draw(Pingus::DrawingContext &gc)
 	else
 		gc.draw(button, pos);
 
+	// Print the tooltip
+	if (hover)
+		gc.print_left(Fonts::pingus_small, pos.x, pos.y + (float)get_width(), 
+			tooltip, 50);
+
+	// Draw the actual button image
 	gc.draw(sur, pos);
 }
 

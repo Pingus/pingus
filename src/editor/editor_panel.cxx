@@ -60,8 +60,8 @@ EditorPanel::init()
 void
 EditorPanel::draw (DrawingContext& gc)
 {
-	gc.draw_fillrect(0.0f, 0.0f, (float)CL_Display::get_width(), 
-		50.0f, CL_Color::lightgray);
+	gc.draw_fillrect(0, 0, (float)CL_Display::get_width(), 
+		50.0f, CL_Color::lightgray, -50);
 }
 
 // Add the button to the vector, set it's position, and add to the gui_manager
