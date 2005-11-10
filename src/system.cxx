@@ -28,7 +28,7 @@
 #  include <sys/types.h>
 #  include <unistd.h>
 #  include <errno.h>
-#else /* !WIN32 */
+#else /* WIN32 */
 #  include <windows.h>
 #  include <direct.h>
 #  include <fstream>
@@ -90,7 +90,7 @@ System::opendir(const std::string& pathname, const std::string& pattern)
 
       closedir(dp);
     }
-#else /* !WIN32 */
+#else /* WIN32 */
   WIN32_FIND_DATA coFindData;
   std::string FindFileDir = pathname + "\\" + pattern;
   std::string FileLocation;
@@ -257,7 +257,14 @@ std::string
 System::get_statdir()
 {
 #ifdef WIN32
-  return "user/";
+	std::string tmpstr;
+	char* homedir = getenv("HOMEPATH");
+	if (homedir)
+		tmpstr = std::string(homedir) + "/.pingus/";
+	else
+		tmpstr = "user/";
+	return tmpstr;
+
 #else /* !WIN32 */
   char* homedir = getenv("HOME");
 
