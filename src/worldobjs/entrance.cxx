@@ -121,7 +121,8 @@ Entrance::create_pingu ()
           break;
         }
 
-      world->play_sound("oing", pos);
+			// FIXME: Find the "oing" sound
+      //world->play_sound("oing", pos);
     }
   else
     {

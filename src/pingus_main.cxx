@@ -543,9 +543,21 @@ PingusMain::init_path_finder()
     std::cout << "Directory name of " << executable_name << " - " << System::dirname(executable_name)
               << std::endl;
 
+#ifdef __APPLE__
+  char resource_path[PATH_MAX];
+  CFURLRef ref = CFBundleCopyResourcesDirectoryURL(CFBundleGetMainBundle());
+  if (!ref || !CFURLGetFileSystemRepresentation(ref, true, (UInt8*)resource_path, PATH_MAX))
+  {
+    std::cout << "Error: Couldn't get Resources path.\n" << std::endl;
+    exit(EXIT_FAILURE);
+  }
+  CFRelease(ref);
+  path_manager.add_path(CL_String::get_path(std::string(resource_path) + "/data/"));
+#else
   path_manager.add_path(CL_String::get_path(CL_System::get_exe_path() + "/data/"));
   path_manager.add_path(CL_String::get_path(CL_System::get_exe_path() + "/../data/"));
   path_manager.add_path(CL_String::get_path(CL_System::get_exe_path() + "/../share/games/pingus/"));
+#endif
 
   std::list<std::string> file_list;
   file_list.push_back ("data/core.xml");
