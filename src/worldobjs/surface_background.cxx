@@ -182,21 +182,23 @@ SurfaceBackground::draw (SceneContext& gc)
 			start_x = static_cast<int>((x_of * para_x) + scroll_ox);
 			start_y = static_cast<int>((y_of * para_y) + scroll_oy);
 
-			while (start_x >= 0)
+			while (start_x > 0)
 				start_x = start_x - bg_surface.get_width();
 
-			while (start_y >= 0)
+			while (start_y > 0)
 				start_y -= bg_surface.get_height();
-			while (start_y < 0 - static_cast<int>(bg_surface.get_height()))
-				start_y += bg_surface.get_height();
 
+			// FIXME: The part (y += bg_surface.get_height() -1) is an ugly hack
+			// to correct some issues with the Blitter scaling that put lines down
+			// the screen between background tiles.  There should be a better way
+			// to handle this.
 			for(int y = start_y;
 				y < world->get_height();
-				y += bg_surface.get_height())
+				y += bg_surface.get_height() -1)
 			{
 				for(int x = start_x;
 					x < world->get_width();
-					x += bg_surface.get_width())
+					x += bg_surface.get_width() -1)
 				{
 					gc.color().draw(bg_surface, Vector(static_cast<float>(x),
 																						 static_cast<float>(y)));

@@ -23,6 +23,7 @@
 #include <vector>
 #include <iostream>
 #include "../gui/component.hxx"
+#include "../gui/combobox.hxx"
 
 namespace Pingus {
 
@@ -42,6 +43,8 @@ private:
 
 	/** Collection of buttons on this panel */
 	std::vector<PanelButton*> panel_buttons;
+
+	GUI::Combobox* combo_groundpieces;
 
 public:
 	/** Constructor

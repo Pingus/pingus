@@ -277,6 +277,12 @@
 					RelativePath=".\src\gui\button.hxx">
 				</File>
 				<File
+					RelativePath=".\src\gui\combobox.cxx">
+				</File>
+				<File
+					RelativePath=".\src\gui\combobox.hxx">
+				</File>
+				<File
 					RelativePath=".\src\gui\component.hxx">
 				</File>
 				<File

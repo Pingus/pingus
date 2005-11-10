@@ -55,14 +55,15 @@ EditorScreen::~EditorScreen()
 void
 EditorScreen::on_startup()
 {
+	// Create the viewport for the images and data
+	viewport = new EditorViewport(this);
+	gui_manager->add(viewport);	
+	
 	// Create the panel for the buttons
 	panel = new EditorPanel(this);
 	gui_manager->add(panel);
 	panel->init();
 
-	// Create the viewport for the images and data
-	viewport = new EditorViewport(this);
-	gui_manager->add(viewport);
 }
 
 // Close the current screen

@@ -40,6 +40,8 @@ libpingus_gui_a_SOURCES = \
 	screen_ptr.hxx \
         component.hxx \
         surface_button.cxx \
-        surface_button.hxx
+        surface_button.hxx \
+        combobox.cxx \
+        combobox.hxx
 
 # EOF #

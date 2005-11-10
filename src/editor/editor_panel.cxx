@@ -23,6 +23,8 @@
 #include "../vector.hxx"
 #include "../display/drawing_context.hxx"
 #include "../gui/gui_manager.hxx"
+#include "../gui/combobox.hxx"
+#include "../fonts.hxx"
 #include "editor_panel.hxx"
 #include "editor_screen.hxx"
 #include "panel_buttons.hxx"
@@ -43,7 +45,7 @@ EditorPanel::EditorPanel(EditorScreen* es)
 // Destructor
 EditorPanel::~EditorPanel()
 {
-
+	delete combo_groundpieces;
 }
 
 // Wait to run this until after the panel has been added to the gui_manager
@@ -54,14 +56,27 @@ EditorPanel::init()
 {
 	// Create exit button
 	add((PanelButton*)(new PanelButtonExit(this)));
+
+	// Create groundpiece Combobox (FIXME: Temporary testing)
+	combo_groundpieces = new GUI::Combobox(Vector(500, 30));
+	combo_groundpieces->add(new GUI::ComboItem(0, "Test 1"));
+	combo_groundpieces->add(new GUI::ComboItem(0, "Test 2"));
+	combo_groundpieces->add(new GUI::ComboItem(0, "Test 3"));
+	combo_groundpieces->add(new GUI::ComboItem(0, "Test 4"));
+	combo_groundpieces->add(new GUI::ComboItem(0, "Test 5"));
+	get_screen()->get_gui_manager()->add(combo_groundpieces);
 }
 
 // Draw the panel
 void
 EditorPanel::draw (DrawingContext& gc)
 {
+	// Draw the panel
 	gc.draw_fillrect(0, 0, (float)CL_Display::get_width(), 
 		50.0f, CL_Color::lightgray, -50);
+
+	// Draw any labels for comboboxes that might be needed
+	gc.print_left(Fonts::smallfont, 390, 30, "Groundpieces");
 }
 
 // Add the button to the vector, set it's position, and add to the gui_manager
