@@ -151,7 +151,7 @@ ScreenManager::display ()
 	}
 
       // Stupid hack to make this thing take less CPU
-      CL_System::sleep (0);
+      CL_System::keep_alive(5);
     }
 
   Display::remove_flip_screen_hook(cursor);
