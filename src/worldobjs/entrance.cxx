@@ -39,6 +39,9 @@ Entrance::Entrance(const FileReader& reader)
   reader.read_vector("position",     pos);
   reader.read_int   ("release-rate", release_rate);
 
+	// Set default owner ID to 0
+	if (owner_id < 0 || owner_id > 3) owner_id = 0;
+
   std::string direction_str;
   reader.read_string("direction", direction_str);
 

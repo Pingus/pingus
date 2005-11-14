@@ -41,6 +41,9 @@ Exit::Exit(const FileReader& reader)
   reader.read_desc  ("surface",  desc);
   reader.read_int   ("owner-id", owner_id);
 
+	// Set default owner ID to 0
+	if (owner_id < 0 || owner_id > 3) owner_id = 0;
+
   flag = Resource::load_sprite("core/misc/flag" + CL_String::to(owner_id));
 
   sprite = Resource::load_sprite(desc);
