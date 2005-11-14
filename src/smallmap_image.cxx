@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Core/IOData/cl_endian.h>
 #include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/pixel_format.h>
 #include "world.hxx"
@@ -107,49 +108,109 @@ SmallMapImage::update_surface()
 	  switch (current_pixel)
             {
             case Groundtype::GP_NOTHING:
-	      cbuffer[i + 0] = alpha;
-              cbuffer[i + 1] = 0;
-	      cbuffer[i + 2] = 0;
-	      cbuffer[i + 3] = 0;
+              if (!CL_Endian::is_system_big())
+              {
+                cbuffer[i + 0] = alpha;
+                cbuffer[i + 1] = 0;
+                cbuffer[i + 2] = 0;
+                cbuffer[i + 3] = 0;
+              }
+              else
+              {
+                cbuffer[i + 3] = alpha;
+                cbuffer[i + 2] = 0;
+                cbuffer[i + 1] = 0;
+                cbuffer[i + 0] = 0;
+              }
               break;
 
             case Groundtype::GP_BRIDGE:
-              cbuffer[i + 0] = 255;
-	      cbuffer[i + 1] = 100;
-	      cbuffer[i + 2] = 255;
-	      cbuffer[i + 3] =   0;
+              if (!CL_Endian::is_system_big())
+              {
+                cbuffer[i + 0] = 255;
+                cbuffer[i + 1] = 100;
+                cbuffer[i + 2] = 255;
+                cbuffer[i + 3] =   0;
+              }
+              else
+              {
+                cbuffer[i + 3] = 255;
+                cbuffer[i + 2] = 100;
+                cbuffer[i + 1] = 255;
+                cbuffer[i + 0] =   0;
+              }
               break;
 
             case Groundtype::GP_WATER:
             case Groundtype::GP_LAVA:
-              cbuffer[i + 0] = 255;
-	      cbuffer[i + 1] = 200;
-	      cbuffer[i + 2] = 0;
-	      cbuffer[i + 3] = 0;
+              if (!CL_Endian::is_system_big())
+              {
+                cbuffer[i + 0] = 255;
+                cbuffer[i + 1] = 200;
+                cbuffer[i + 2] = 0;
+                cbuffer[i + 3] = 0;
+              }
+              else
+              {
+                cbuffer[i + 3] = 255;
+                cbuffer[i + 2] = 200;
+                cbuffer[i + 1] = 0;
+                cbuffer[i + 0] = 0;
+              }
               break;
 
 #if 0
               // FIXME: temporaty disabled for 0.6.0 release, since all liquids are currently lava
             case Groundtype::GP_LAVA:
-              cbuffer[i + 0] = 255; // alpha
-	      cbuffer[i + 1] = 255; // blue
-	      cbuffer[i + 2] = 128;   // green
-	      cbuffer[i + 3] = 128;   // red
+              if (!CL_Endian::is_system_big())
+              {
+                cbuffer[i + 0] = 255; // alpha
+                cbuffer[i + 1] = 255; // blue
+                cbuffer[i + 2] = 128;   // green
+                cbuffer[i + 3] = 128;   // red
+              }
+              else
+              {
+                cbuffer[i + 3] = 255; // alpha
+                cbuffer[i + 2] = 255; // blue
+                cbuffer[i + 1] = 128;   // green
+                cbuffer[i + 0] = 128;   // red
+              }
               break;
 #endif
 
             case Groundtype::GP_SOLID:
-              cbuffer[i + 0] = 255;
-	      cbuffer[i + 1] = 100;
-	      cbuffer[i + 2] = 100;
-	      cbuffer[i + 3] = 100;
+              if (!CL_Endian::is_system_big())
+              {
+                cbuffer[i + 0] = 255;
+                cbuffer[i + 1] = 100;
+                cbuffer[i + 2] = 100;
+                cbuffer[i + 3] = 100;
+              }
+              else
+              {
+                cbuffer[i + 3] = 255;
+                cbuffer[i + 2] = 100;
+                cbuffer[i + 1] = 100;
+                cbuffer[i + 0] = 100;
+              }
               break;
 
             default:
-              cbuffer[i + 0] = 255;
-	      cbuffer[i + 1] = 200;
-	      cbuffer[i + 2] = 200;
-	      cbuffer[i + 3] = 200;
+              if (!CL_Endian::is_system_big())
+              {
+                cbuffer[i + 0] = 255;
+                cbuffer[i + 1] = 200;
+                cbuffer[i + 2] = 200;
+                cbuffer[i + 3] = 200;
+              }
+              else
+              {
+                cbuffer[i + 3] = 255;
+                cbuffer[i + 2] = 200;
+                cbuffer[i + 1] = 200;
+                cbuffer[i + 0] = 200;
+              }
               break;
             }
 	}

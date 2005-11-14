@@ -80,7 +80,7 @@ SavegameManager::SavegameManager(const std::string& arg_filename)
             }
         }
     } 
-  catch (CL_Error& err) 
+  catch (...) 
     {
       std::cout << "SavegameManager: Couldn't find savegame file '" << filename
                 << "', starting with a empty one." << std::endl;

@@ -21,6 +21,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <ClanLib/Core/System/clanstring.h>
+#include <ClanLib/Core/IOData/cl_endian.h>
 #include <ClanLib/Core/IOData/datatypes.h>
 #include <ClanLib/Display/palette.h>
 #include <ClanLib/Display/pixel_buffer.h>
@@ -104,10 +105,20 @@ Blitter::put_surface_8bit(CL_PixelBuffer target, CL_PixelBuffer source,
             { 
               if (*sptr != colorkey)
                 {
-                  tptr[0] = 255;
-                  tptr[1] = palette.colors[*sptr].get_blue();
-                  tptr[2] = palette.colors[*sptr].get_green();
-                  tptr[3] = palette.colors[*sptr].get_red();
+				  if (!CL_Endian::is_system_big())
+				  {
+                    tptr[0] = 255;
+                    tptr[1] = palette.colors[*sptr].get_blue();
+                    tptr[2] = palette.colors[*sptr].get_green();
+                    tptr[3] = palette.colors[*sptr].get_red();
+				  }
+				  else
+				  {
+                    tptr[3] = 255;
+                    tptr[2] = palette.colors[*sptr].get_blue();
+                    tptr[1] = palette.colors[*sptr].get_green();
+                    tptr[0] = palette.colors[*sptr].get_red();
+				  }
                 }
 
               tptr += 4;
@@ -123,11 +134,21 @@ Blitter::put_surface_8bit(CL_PixelBuffer target, CL_PixelBuffer source,
           cl_uint8* sptr = source_buf + swidth*y + start_x;
 
           for (int x = start_x; x < end_x; ++x)
-            { 
-              tptr[0] = 255;
-              tptr[1] = palette.colors[*sptr].get_blue();
-              tptr[2] = palette.colors[*sptr].get_green();
-              tptr[3] = palette.colors[*sptr].get_red();
+            {
+              if (!CL_Endian::is_system_big())
+              {
+                tptr[0] = 255;
+                tptr[1] = palette.colors[*sptr].get_blue();
+                tptr[2] = palette.colors[*sptr].get_green();
+                tptr[3] = palette.colors[*sptr].get_red();
+              }
+              else
+              {
+                tptr[3] = 255;
+                tptr[2] = palette.colors[*sptr].get_blue();
+                tptr[1] = palette.colors[*sptr].get_green();
+                tptr[0] = palette.colors[*sptr].get_red();
+              }
 
               tptr += 4;
               sptr += 1;
@@ -194,10 +215,20 @@ Blitter::put_surface_32bit(CL_PixelBuffer target, CL_PixelBuffer source,
 
           for (int x = start_x; x < end_x; ++x)
             {
-              tptr[0] = sptr[3];
-              tptr[1] = sptr[0];
-              tptr[2] = sptr[1];
-              tptr[3] = sptr[2];
+              if (!CL_Endian::is_system_big())
+              {
+                tptr[0] = sptr[3];
+                tptr[1] = sptr[0];
+                tptr[2] = sptr[1];
+                tptr[3] = sptr[2];
+              }
+              else
+              {
+                tptr[3] = sptr[3];
+                tptr[2] = sptr[0];
+                tptr[1] = sptr[1];
+                tptr[0] = sptr[2];
+              }
 
               tptr += 4;
               sptr += 4;
@@ -212,11 +243,21 @@ Blitter::put_surface_32bit(CL_PixelBuffer target, CL_PixelBuffer source,
           for (int x = start_x; x < end_x; ++x)
             {
               float a = sptr[3]/255.0f;
-              
-              tptr[0] = Math::mid(0, int((1.0f - a) * tptr[0] + a * sptr[3]), 255);
-              tptr[1] = Math::mid(0, int((1.0f - a) * tptr[1] + a * sptr[0]), 255);
-              tptr[2] = Math::mid(0, int((1.0f - a) * tptr[2] + a * sptr[1]), 255);
-              tptr[3] = Math::mid(0, int((1.0f - a) * tptr[3] + a * sptr[2]), 255);
+
+              if (!CL_Endian::is_system_big())
+              {
+                tptr[0] = Math::mid(0, int((1.0f - a) * tptr[0] + a * sptr[3]), 255);
+                tptr[1] = Math::mid(0, int((1.0f - a) * tptr[1] + a * sptr[0]), 255);
+                tptr[2] = Math::mid(0, int((1.0f - a) * tptr[2] + a * sptr[1]), 255);
+                tptr[3] = Math::mid(0, int((1.0f - a) * tptr[3] + a * sptr[2]), 255);
+              }
+              else
+              {
+                tptr[3] = Math::mid(0, int((1.0f - a) * tptr[3] + a * sptr[3]), 255);
+                tptr[2] = Math::mid(0, int((1.0f - a) * tptr[2] + a * sptr[0]), 255);
+                tptr[1] = Math::mid(0, int((1.0f - a) * tptr[1] + a * sptr[1]), 255);
+                tptr[0] = Math::mid(0, int((1.0f - a) * tptr[0] + a * sptr[2]), 255);
+              }
 
               tptr += 4;
               sptr += 4;
@@ -265,9 +306,18 @@ Blitter::fill_rect(CL_PixelBuffer target, const CL_Rect& rect, const CL_Color& c
 
               for (int x = start_x; x < end_x; ++x)
                 { 
-                  tptr[0] = color.get_red();
-                  tptr[1] = color.get_green();
-                  tptr[2] = color.get_blue();
+                  if (!CL_Endian::is_system_big())
+                  {
+                    tptr[0] = color.get_red();
+                    tptr[1] = color.get_green();
+                    tptr[2] = color.get_blue();
+                  }
+                  else
+                  {
+                    tptr[2] = color.get_red();
+                    tptr[1] = color.get_green();
+                    tptr[0] = color.get_blue();
+                  }
                   tptr += 3;
                 }
             }
@@ -282,9 +332,18 @@ Blitter::fill_rect(CL_PixelBuffer target, const CL_Rect& rect, const CL_Color& c
 
               for (int x = start_x; x < end_x; ++x)
                 { 
-                  tptr[0] = Math::mid(0, int(((1.0f - a) * (tptr[0])) + a * color.get_blue()) , 255); //blue
-                  tptr[1] = Math::mid(0, int(((1.0f - a) * (tptr[1])) + a * color.get_green()), 255); //green
-                  tptr[2] = Math::mid(0, int(((1.0f - a) * (tptr[2])) + a * color.get_red()), 255); //red
+                  if (!CL_Endian::is_system_big())
+                  {
+                    tptr[0] = Math::mid(0, int(((1.0f - a) * (tptr[0])) + a * color.get_blue()) , 255); //blue
+                    tptr[1] = Math::mid(0, int(((1.0f - a) * (tptr[1])) + a * color.get_green()), 255); //green
+                    tptr[2] = Math::mid(0, int(((1.0f - a) * (tptr[2])) + a * color.get_red()), 255); //red
+                  }
+                  else
+                  {
+                    tptr[2] = Math::mid(0, int(((1.0f - a) * (tptr[2])) + a * color.get_blue()) , 255); //blue
+                    tptr[1] = Math::mid(0, int(((1.0f - a) * (tptr[1])) + a * color.get_green()), 255); //green
+                    tptr[0] = Math::mid(0, int(((1.0f - a) * (tptr[0])) + a * color.get_red()), 255); //red
+                  }
 
                   tptr += 3;
                 }
@@ -301,10 +360,20 @@ Blitter::fill_rect(CL_PixelBuffer target, const CL_Rect& rect, const CL_Color& c
 
               for (int x = start_x; x < end_x; ++x)
                 { 
-                  tptr[0] = 255;
-                  tptr[1] = color.get_blue();
-                  tptr[2] = color.get_green();
-                  tptr[3] = color.get_red();
+                  if (!CL_Endian::is_system_big())
+                  {
+                    tptr[0] = 255;
+                    tptr[1] = color.get_blue();
+                    tptr[2] = color.get_green();
+                    tptr[3] = color.get_red();
+                  }
+                  else
+                  {
+                    tptr[3] = 255;
+                    tptr[2] = color.get_blue();
+                    tptr[1] = color.get_green();
+                    tptr[0] = color.get_red();
+                  }
                   tptr += 4;
                 }
             }
@@ -319,10 +388,20 @@ Blitter::fill_rect(CL_PixelBuffer target, const CL_Rect& rect, const CL_Color& c
                 { 
                   float a = color.get_alpha()/255.0f;
 
-                  tptr[0] = Math::mid(0, int(tptr[0] + a * color.get_alpha()), 255);
-                  tptr[1] = Math::mid(0, int((1.0f - a) * tptr[1] + a * color.get_blue()) , 255);
-                  tptr[2] = Math::mid(0, int((1.0f - a) * tptr[2] + a * color.get_green()), 255);
-                  tptr[3] = Math::mid(0, int((1.0f - a) * tptr[3] + a * color.get_red())  , 255);
+                  if (!CL_Endian::is_system_big())
+                  {
+                    tptr[0] = Math::mid(0, int(tptr[0] + a * color.get_alpha()), 255);
+                    tptr[1] = Math::mid(0, int((1.0f - a) * tptr[1] + a * color.get_blue()) , 255);
+                    tptr[2] = Math::mid(0, int((1.0f - a) * tptr[2] + a * color.get_green()), 255);
+                    tptr[3] = Math::mid(0, int((1.0f - a) * tptr[3] + a * color.get_red())  , 255);
+                  }
+                  else
+                  {
+                    tptr[3] = Math::mid(0, int(tptr[3] + a * color.get_alpha()), 255);
+                    tptr[2] = Math::mid(0, int((1.0f - a) * tptr[2] + a * color.get_blue()) , 255);
+                    tptr[1] = Math::mid(0, int((1.0f - a) * tptr[1] + a * color.get_green()), 255);
+                    tptr[0] = Math::mid(0, int((1.0f - a) * tptr[0] + a * color.get_red())  , 255);
+                  }
                 }
             }
         }
@@ -367,10 +446,20 @@ Blitter::create_canvas(CL_PixelBuffer prov)
 
 	for (int si = 0, ti = 0; si < buffer_size; si += 3, ti += 4)
 	  {
-	    tbuffer[ti + 0] = 255; // Alpha
-	    tbuffer[ti + 1] = sbuffer[si + 0];
-	    tbuffer[ti + 2] = sbuffer[si + 1];
-	    tbuffer[ti + 3] = sbuffer[si + 2];
+	    if (!CL_Endian::is_system_big())
+        {
+          tbuffer[ti + 0] = 255; // Alpha
+          tbuffer[ti + 1] = sbuffer[si + 0];
+          tbuffer[ti + 2] = sbuffer[si + 1];
+          tbuffer[ti + 3] = sbuffer[si + 2];
+        }
+        else
+        {
+          tbuffer[ti + 3] = 255; // Alpha
+          tbuffer[ti + 2] = sbuffer[si + 0];
+          tbuffer[ti + 1] = sbuffer[si + 1];
+          tbuffer[ti + 0] = sbuffer[si + 2];
+        }
 	  }
 
 	// -FIXME: memory hole
@@ -429,9 +518,18 @@ Blitter::scale_surface_to_canvas (CL_PixelBuffer provider, int width, int height
 	      unsigned char pixel = *(static_cast<unsigned char*>(provider.get_data ())
 				      + (y * pheight/height) * provider.get_pitch() + (x * pwidth/width));
 
-	      color.red   = provider.get_palette().colors[pixel*3 +0].color / 255.0f;
-	      color.green = provider.get_palette().colors[pixel*3 +1].color / 255.0f;
-	      color.blue  = provider.get_palette().colors[pixel*3 +2].color / 255.0f;
+          if (!CL_Endian::is_system_big())
+          {
+            color.red   = provider.get_palette().colors[pixel*3 +0].color / 255.0f;
+			color.green = provider.get_palette().colors[pixel*3 +1].color / 255.0f;
+            color.blue  = provider.get_palette().colors[pixel*3 +2].color / 255.0f;
+          }
+          else
+          {
+            color.red   = provider.get_palette().colors[pixel*3 +1].color / 255.0f;
+            color.green = provider.get_palette().colors[pixel*3 +1].color / 255.0f;
+            color.blue  = provider.get_palette().colors[pixel*3 +0].color / 255.0f;
+          }
 
 	      if (provider.get_format().has_colorkey()
                   && provider.get_format().get_colorkey() == pixel)
@@ -459,10 +557,20 @@ Blitter::scale_surface_to_canvas (CL_PixelBuffer provider, int width, int height
 		  int si = ((y * pheight / height) * pwidth
 			    + (x * pwidth / width)) * 3;
 
-		  tbuffer[ti + 0] = 255; // alpha
-		  tbuffer[ti + 1] = sbuffer[(si + 0)]; // blue
-		  tbuffer[ti + 2] = sbuffer[(si + 1)]; // green
-		  tbuffer[ti + 3] = sbuffer[(si + 2)]; // red
+          if (!CL_Endian::is_system_big())
+          {
+            tbuffer[ti + 0] = 255; // alpha
+            tbuffer[ti + 1] = sbuffer[(si + 0)]; // blue
+            tbuffer[ti + 2] = sbuffer[(si + 1)]; // green
+            tbuffer[ti + 3] = sbuffer[(si + 2)]; // red
+          }
+          else
+          {
+            tbuffer[ti + 3] = 255; // alpha
+            tbuffer[ti + 0] = sbuffer[(si + 0)]; // blue
+            tbuffer[ti + 1] = sbuffer[(si + 1)]; // green
+            tbuffer[ti + 2] = sbuffer[(si + 2)]; // red
+          }
 		}
 	  }
 	  break;
@@ -477,10 +585,20 @@ Blitter::scale_surface_to_canvas (CL_PixelBuffer provider, int width, int height
 		  int si = ((y * pheight / height) * pwidth
 			    + (x * pwidth / width)) * 4;
 
-		  tbuffer[ti + 0] = sbuffer[(si + 0)]; // alpha
-		  tbuffer[ti + 1] = sbuffer[(si + 1)]; // blue
-		  tbuffer[ti + 2] = sbuffer[(si + 2)]; // green
-		  tbuffer[ti + 3] = sbuffer[(si + 3)]; // red
+          if (!CL_Endian::is_system_big())
+          {
+            tbuffer[ti + 0] = sbuffer[(si + 0)]; // alpha
+            tbuffer[ti + 1] = sbuffer[(si + 1)]; // blue
+            tbuffer[ti + 2] = sbuffer[(si + 2)]; // green
+            tbuffer[ti + 3] = sbuffer[(si + 3)]; // red
+          }
+          else
+          {
+            tbuffer[ti + 3] = sbuffer[(si + 0)]; // alpha
+            tbuffer[ti + 2] = sbuffer[(si + 1)]; // blue
+            tbuffer[ti + 1] = sbuffer[(si + 2)]; // green
+            tbuffer[ti + 0] = sbuffer[(si + 3)]; // red
+          }
 		}
 	  }
 	  break;

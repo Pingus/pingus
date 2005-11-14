@@ -320,7 +320,7 @@ Pingu::update ()
       die. */
   if (rel_getpixel(0, -1) == Groundtype::GP_OUTOFSCREEN)
     {
-      Sound::PingusSound::play_sound("die");
+      //Sound::PingusSound::play_sound("die");
       status = PS_DEAD;
       return;
     }
@@ -356,9 +356,7 @@ Pingu::draw(SceneContext& gc)
       // FIXME: in ticks, should probally be in seconds]
       snprintf(str, 16, "%d", action_time/3);
 
-      gc.color().print_center(Fonts::lcd,
-                              static_cast<int>(pos_x), static_cast<int>(pos_y - 45) + 2,
-                              str);
+      gc.color().print_center(Fonts::lcd, pos_x, pos_y - 45 + 2, str);
     }
 
   gc.light().draw(light, get_center_pos());

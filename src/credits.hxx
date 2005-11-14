@@ -43,8 +43,8 @@ private:
 
   bool is_init;
 
-  int end_offset;
-  int offset;
+  float end_offset;
+  float offset;
 
   /** The string's which are shown in the scrolling text, the first
       character of the string can be used to apply a special format.

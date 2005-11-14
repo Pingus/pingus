@@ -194,11 +194,11 @@ SurfaceBackground::draw (SceneContext& gc)
 			// to handle this.
 			for(int y = start_y;
 				y < world->get_height();
-				y += bg_surface.get_height() -1)
+				y += bg_surface.get_height())
 			{
 				for(int x = start_x;
 					x < world->get_width();
-					x += bg_surface.get_width() -1)
+					x += bg_surface.get_width())
 				{
 					gc.color().draw(bg_surface, Vector(static_cast<float>(x),
 																						 static_cast<float>(y)));

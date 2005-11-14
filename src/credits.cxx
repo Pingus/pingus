@@ -101,7 +101,12 @@ Credits::Credits()
   credits.push_back("_Kenneth Gangstø");
   credits.push_back("_Michael Käser");
   credits.push_back("_Neil Mitchell");
-	credits.push_back("_Jason Green");
+  credits.push_back("_Jason Green");
+  credits.push_back("n");
+
+  credits.push_back(_("-Porting (MacOSX)"));
+  credits.push_back("_Jason Green");
+  credits.push_back("_Sean Heber");
   credits.push_back("n");
 
   credits.push_back(_("-Gfx"));
@@ -241,21 +246,21 @@ Credits::update (float delta)
   else
     {
       if (fast_scrolling)
-        offset -= static_cast<int>(450.0f * delta);
+        offset -= 450.0f * delta;
       else
-        offset -= static_cast<int>(35.0f * delta);
+        offset -= 35.0f * delta;
     }
 }
 
 void
 Credits::draw_background (DrawingContext& gc)
 {
-  int x;
-  int y;
-  int yof;
+  float x;
+  float y;
+  float yof;
 
   x = CL_Display::get_width()/2;
-  y = int(offset);
+  y = offset;
 
   gc.draw(background, Vector(gc.get_width()/2, gc.get_height()/2));
   gc.draw(pingu, Vector(gc.get_width()/2, gc.get_height()/2 - 20));
@@ -274,13 +279,11 @@ Credits::draw_background (DrawingContext& gc)
       switch ((*i)[0])
 	{
 	case '-':
-	  gc.print_center(font, static_cast<float>(x), 
-										static_cast<float>(y + yof), i->substr(1));
+	  gc.print_center(font, x, (y + yof), i->substr(1));
 	  yof += font.get_height() + 5;
 	  break;
 	case '_':
-	  gc.print_center(font_small, static_cast<float>(x),
-										static_cast<float>(y + yof), i->substr(1));
+	  gc.print_center(font_small, x, (y + yof), i->substr(1));
 	  yof += font_small.get_height() + 5;
 	  break;
 	case 'n':

@@ -22,6 +22,7 @@
 #include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/pixel_format.h>
 #include <ClanLib/Core/core_iostream.h>
+#include <ClanLib/Core/IOData/cl_endian.h>
 #include "display/scene_context.hxx"
 #include "pingus_error.hxx"
 #include "blitter.hxx"
@@ -232,10 +233,13 @@ PingusSpotMap::put_alpha_surface(CL_PixelBuffer provider, CL_PixelBuffer sprovid
 
           for (int x = start_x; x < end_x; ++x)
             { 
-							if (*sptr != colorkey && 
-									colmap->getpixel(real_x_arg+x, real_y_arg+y) 
-									!= Groundtype::GP_SOLID)
-                *tptr = 0;
+              if (*sptr != colorkey && colmap->getpixel(real_x_arg+x, real_y_arg+y) != Groundtype::GP_SOLID)
+                {
+                  if (!CL_Endian::is_system_big())
+                    *tptr = 0;
+                  else
+                    tptr[3] = 0;
+				}
 
               tptr += 4;
               sptr += 1;
@@ -251,9 +255,13 @@ PingusSpotMap::put_alpha_surface(CL_PixelBuffer provider, CL_PixelBuffer sprovid
 
           for (int x = start_x; x < end_x; ++x)
             { 
-              if (colmap->getpixel(real_x_arg+x, real_y_arg+y) 
-									!= Groundtype::GP_SOLID)
-								*tptr = 0;
+              if (colmap->getpixel(real_x_arg+x, real_y_arg+y) != Groundtype::GP_SOLID)
+                {
+                  if (!CL_Endian::is_system_big())
+                    *tptr = 0;
+                  else
+                    tptr[3] = 0;
+				}
               
               tptr += 4;
               sptr += 1;

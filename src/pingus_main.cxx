@@ -245,6 +245,8 @@ PingusMain::check_args(int argc, char** argv)
                   _("Disable some cpu intensive features"));
   argp.add_option(353, "min-cpu-usage", "",
                   _("Reduces the CPU usage by issuing sleep()"));
+  argp.add_option(359, "show-credits", "",
+                  _("Shows the credits"));
 
   argp.add_group(_("Demo playing and recording:"));
   argp.add_option('p', "play-demo", _("FILE"), 
