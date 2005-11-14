@@ -18,13 +18,13 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <assert.h>
 #include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/pixel_format.h>
 #include <ClanLib/Display/surface.h>
 #include "display/drawing_context.hxx"
 #include "globals.hxx"
 #include "col_map.hxx"
+#include "pingus_error.hxx"
 #include "gettext.h"
 
 #define COLMAP_WITH_MEMORY_HOLE 1
@@ -97,17 +97,41 @@ ColMap::remove(CL_PixelBuffer provider, int x, int y)
 
   provider.lock();
 
-	for(int line = y_offset; line < sheight && (line + y) < height; ++line)
+  if (provider.get_format().get_depth() == 32)
 	{
-		for (int i = x_offset; i < swidth && (i+x) < width; ++i)
+		for(int line = y_offset; line < sheight && (line + y) < height; ++line)
 		{
-			if (provider.get_pixel(i, line) != blank_pixel
-				&& provider.get_pixel(i, line).get_alpha() != 0)
+			for (int i = x_offset; i < swidth && (i+x) < width; ++i)
 			{
-				if (colmap[i + (width*(line+y) + x)] != Groundtype::GP_SOLID)
-					colmap[i + (width*(line+y) + x)] = Groundtype::GP_NOTHING;
+				if (provider.get_pixel(i, line) != blank_pixel
+					&& provider.get_pixel(i, line).get_alpha() != 0)
+				{
+					if (colmap[i + (width*(line+y) + x)] != Groundtype::GP_SOLID)
+						colmap[i + (width*(line+y) + x)] = Groundtype::GP_NOTHING;
+				}
 			}
 		}
+	}
+	else if (provider.get_format().get_depth() == 8)
+	{
+		unsigned char* buffer;
+		buffer = static_cast<unsigned char*>(provider.get_data());
+
+		for(int line = y_offset; line < sheight && (line + y) < height; ++line)
+		{
+			for (int i = x_offset; i < swidth && (i+x) < width; ++i)
+			{
+				if (buffer[i + (swidth*line)])
+				{
+					if (colmap[i + (width*(line+y) + x)] != Groundtype::GP_SOLID)
+						colmap[i + (width*(line+y) + x)] = Groundtype::GP_NOTHING;
+				}
+			}
+		}
+	}
+	else
+	{
+		PingusError::raise("ColMap::remove() - image format not supported");
 	}
 
 	provider.unlock();
