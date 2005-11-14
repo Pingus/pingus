@@ -106,20 +106,27 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
         }
     }
 
-  /* FIXME: fill_rect doesn't work with RGB images
+  /* FIXME: Not sure why the following code is here - commenting it out fixes
+		 FIXME: the issue with the line separating scrolling backgrounds.
+
+		 FIXME: fill_rect doesn't work with RGB images
      FIXME: seems to work fine with indexed images
      FIXME: not tested with RGBA images
      FIXME: the bug might be in create_canvas() and not in fill_rect()
-  */
+  
 
   if (color.alpha != 0.0 && color != CL_Colorf(0, 0, 0, 1.0f))
+	
     { // Workaround for a bug which caused all levels to have the
       // wrong background color
       Blitter::fill_rect(canvas, CL_Rect(0, 0, canvas.get_width(), canvas.get_height()),
                          CL_Color(color));
     }
+	*/
 
-  bg_surface = CL_Surface(canvas);
+	CL_SpriteDescription sprite_desc;
+	sprite_desc.add_frame(canvas);
+  bg_surface = CL_Sprite(sprite_desc);
 
   timer.stop();
 }
@@ -183,15 +190,11 @@ SurfaceBackground::draw (SceneContext& gc)
 			start_y = static_cast<int>((y_of * para_y) + scroll_oy);
 
 			while (start_x > 0)
-				start_x = start_x - bg_surface.get_width();
+				start_x -= bg_surface.get_width();
 
 			while (start_y > 0)
 				start_y -= bg_surface.get_height();
 
-			// FIXME: The part (y += bg_surface.get_height() -1) is an ugly hack
-			// to correct some issues with the Blitter scaling that put lines down
-			// the screen between background tiles.  There should be a better way
-			// to handle this.
 			for(int y = start_y;
 				y < world->get_height();
 				y += bg_surface.get_height())

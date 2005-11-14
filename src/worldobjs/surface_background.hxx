@@ -67,7 +67,7 @@ private:
 
   GameCounter counter;
 
-  CL_Surface bg_surface;
+  CL_Sprite bg_surface;
 
   /** The horizontal scrolling speed in pixels per tick */
   float scroll_ox;
