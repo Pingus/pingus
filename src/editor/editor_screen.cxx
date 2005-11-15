@@ -27,22 +27,20 @@
 #include "../res_descriptor.hxx"
 #include "../resource.hxx"
 #include "../fonts.hxx"
-#include "../xml_pingus_level.hxx"
 #include "editor_screen.hxx"
 #include "editor_panel.hxx"
 #include "editor_viewport.hxx"
+#include "xml_level.hxx"
 
 namespace Pingus {
-
-	class PingusLevel;
 
 namespace Editor {
 
 // Default constructor
-EditorScreen::EditorScreen(PingusLevel* level)
+EditorScreen::EditorScreen(XMLLevel* level)
 : plf(level)
 {
-	if (!plf) plf = new PingusLevel();
+	if (!plf) plf = new XMLLevel();
 }
 
 // Destructor

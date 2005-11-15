@@ -1,4 +1,4 @@
-# Pingus - A free Lemmings clone
+﻿# Pingus - A free Lemmings clone
 # Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 #
 # This program is free software; you can redistribute it and/or
@@ -25,6 +25,8 @@ libpingus_editor_a_SOURCES =       \
         editor_screen.cxx	editor_screen.hxx	\
 		editor_panel.cxx	editor_panel.hxx	\
 		panel_button.cxx	panel_button.hxx	\
-		editor_viewport.cxx	editor_viewport.hxx
+		editor_viewport.cxx	editor_viewport.hxx \
+		xml_level.cxx		xml_level.hxx		\
+		level_impl.hxx
 
 # EOF #

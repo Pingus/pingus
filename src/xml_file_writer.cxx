@@ -98,9 +98,9 @@ void
 XMLFileWriter::write_vector (const char* name, const Vector& value)
 {
   (*out) << "<" << name << ">\n"
-         << "  <x-pos>" << value.x << "</x-pos>\n"
-         << "  <y-pos>" << value.y << "</y-pos>\n"
-         << "  <z-pos>" << value.z << "</z-pos>\n"
+         << "  <x>" << value.x << "</x>\n"
+         << "  <y>" << value.y << "</y>\n"
+         << "  <z>" << value.z << "</z>\n"
          << "</" << name << ">\n";
 }
 

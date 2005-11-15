@@ -26,10 +26,10 @@ namespace Pingus {
 
 class DrawingContext;
 class GUI::GUIManager;
-class PingusLevel;
 
 namespace Editor {
 
+class XMLLevel;
 class EditorPanel;
 class EditorViewport;
 
@@ -39,7 +39,7 @@ class EditorScreen : public GUIScreen
 {
 private:
 	/* The level currently being edited */
-	PingusLevel* plf;
+	XMLLevel* plf;
 
 	/* Panel which contains all of the buttons for each action */
 	EditorPanel* panel;
@@ -49,7 +49,7 @@ private:
 
 public:
 	/** Default constructor */
-  EditorScreen(PingusLevel* level = 0);
+  EditorScreen(XMLLevel* level = 0);
 
 	/** Destructor */
 	~EditorScreen();
