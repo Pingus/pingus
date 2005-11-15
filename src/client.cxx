@@ -122,8 +122,7 @@ Client::process_events (const GameDelta& delta)
 	  break;
 
 	case Input::PointerEventType:
-          // Ignore, is handled in GUIScreen
-	  //process_pointer_event (dynamic_cast<class Input::PointerEvent* const>(*i));
+					// Ignore, is handled in GUIScreen
 	  break;
 
 	case Input::AxisEventType:
@@ -182,117 +181,6 @@ Client::set_finished()
   is_finished = true;
   server->set_finished();
 }
-
-#if 0
-void
-Client::on_keyboard_button_press(const CL_Key& /*key*/)
-{
-  if (CL_Keyboard::get_keycode(CL_KEY_LSHIFT)
-      || CL_Keyboard::get_keycode(CL_KEY_RSHIFT))
-    {
-      playfield->scroll_speed = 50;
-    }
-  else
-    {
-      playfield->scroll_speed = 15;
-    }
-}
-
-void
-Client::on_keyboard_button_release(const CL_Key& key)
-{
-  std::cout << "Keyboard pressed: " << key.id << std::endl;
-  switch (key.id)
-    {
-    case CL_KEY_O:
-      enabled = false;
-      Display::hide_cursor();
-      option_menu.display ();
-      Display::show_cursor();
-      enabled = true;
-      break;
-
-      // Playfield scrolling
-    case CL_KEY_LEFT:
-      playfield->view[playfield->current_view]->set_x_offset(playfield->view[playfield->current_view]->get_x_offset() + playfield->scroll_speed);
-      break;
-
-    case CL_KEY_RIGHT:
-      playfield->view[playfield->current_view]->set_x_offset(playfield->view[playfield->current_view]->get_x_offset() - playfield->scroll_speed);
-      break;
-
-    case CL_KEY_UP:
-      playfield->view[playfield->current_view]->set_y_offset(playfield->view[playfield->current_view]->get_y_offset() + playfield->scroll_speed);
-      break;
-
-    case CL_KEY_DOWN:
-      playfield->view[playfield->current_view]->set_y_offset(playfield->view[playfield->current_view]->get_y_offset() - playfield->scroll_speed);
-      break;
-
-      // Playfield zooming
-    case CL_KEY_PAGEDOWN:
-      playfield->view[playfield->current_view]->set_zoom(playfield->view[playfield->current_view]->get_zoom() / 1.05);
-      break;
-
-    case CL_KEY_PAGEUP:
-      playfield->view[playfield->current_view]->set_zoom(playfield->view[playfield->current_view]->get_zoom() / 0.95);
-      break;
-
-    case CL_KEY_END:
-      playfield->view[playfield->current_view]->set_zoom(1.0);
-      break;
-
-      // Misc
-    case CL_KEY_P:
-      pause = !pause;
-      server->set_pause(pause);
-      break;
-
-    case CL_KEY_A:
-      server->send_armageddon_event();
-      break;
-
-    case CL_KEY_R:
-      do_restart();
-      break;
-
-    case CL_KEY_SPACE:
-      set_fast_forward(!get_fast_forward());
-      break;
-
-    case CL_KEY_ESCAPE:
-      server->set_finished();
-      break;
-
-    case CL_KEY_F1:
-      button_panel->set_button(0);
-      break;
-    case CL_KEY_F2:
-      button_panel->set_button(1);
-      break;
-    case CL_KEY_F3:
-      button_panel->set_button(2);
-      break;
-    case CL_KEY_F4:
-      button_panel->set_button(3);
-      break;
-    case CL_KEY_F5:
-      button_panel->set_button(4);
-      break;
-    case CL_KEY_F6:
-      button_panel->set_button(5);
-      break;
-    case CL_KEY_F7:
-      button_panel->set_button(6);
-      break;
-    case CL_KEY_F8:
-      button_panel->set_button(7);
-      break;
-    default:
-      if (verbose > 1) std::cout << "Client: Got unknown button: ID=" << key.id << " ASCII=" << char(key.ascii) << std::endl;
-    }
-}
-#endif
 
 void
 Client:: on_escape_press ()

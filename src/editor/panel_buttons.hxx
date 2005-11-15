@@ -113,6 +113,23 @@ private:
   PanelButtonExit& operator= (const PanelButtonExit&);
 };		// PanelButtonExit class
 
+/** Standard load button */
+class PanelButtonLoad : PanelButton
+{
+public:
+	/** Constructor
+		@param p the EditorPanel to which this button belongs */
+	PanelButtonLoad (EditorPanel* p);
+
+	/** This function is called by the gui_manager when the button is clicked */
+	void on_primary_button_click (int x, int y);
+
+private:
+	PanelButtonLoad ();
+  PanelButtonLoad (const PanelButtonLoad&);
+  PanelButtonLoad& operator= (const PanelButtonLoad&);
+};		// PanelButtonLoad class
+
 }		// Editor namespace
 }		// Pingus namespace
 

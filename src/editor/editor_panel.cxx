@@ -56,6 +56,7 @@ EditorPanel::init()
 {
 	// Create exit button
 	add((PanelButton*)(new PanelButtonExit(this)));
+	add((PanelButton*)(new PanelButtonLoad(this)));
 
 	// Create groundpiece Combobox (FIXME: Temporary testing)
 	combo_groundpieces = new GUI::Combobox(Vector(500, 30));
@@ -89,8 +90,8 @@ EditorPanel::add(PanelButton* button)
 	if (panel_buttons.empty())
 		new_pos = Vector(0.0f, 0.0f, 0.0f);
 	else
-		new_pos = Vector((*panel_buttons.end())->get_pos() + 
-			Vector((float)(5 + (*panel_buttons.end())->get_width()), 0.0f));
+		new_pos = Vector(panel_buttons.back()->get_pos() + 
+			Vector((float)(5 + panel_buttons.back()->get_width()), 0.0f));
 	// Add button to collection of buttons
 	panel_buttons.push_back(button);
 	

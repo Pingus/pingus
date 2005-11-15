@@ -90,5 +90,21 @@ PanelButtonExit::on_primary_button_click(int x, int y)
 	panel->get_screen()->on_escape_press();
 }
 
+// Standard Load button
+PanelButtonLoad::PanelButtonLoad(EditorPanel *p) :
+	PanelButton(p)
+{
+	tooltip = "Load existing level";
+  sur = Resource::load_sprite("core/editor/open");
+}
+
+// When clicked, close the EditorScreen
+void
+PanelButtonLoad::on_primary_button_click(int x, int y)
+{
+	// TODO: Open a file dialog box to load a level.
+	std::cout << "Load a level" << std::endl;
+}
+
 } // Editor namespace
 } // Pingus namespace
