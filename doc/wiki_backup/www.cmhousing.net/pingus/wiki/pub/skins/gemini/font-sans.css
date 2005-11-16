@@ -1,0 +1,61 @@
+/* CSS Document */
+/*
+#=====================  FONTS  ==========================================
+# font-sans.css
+# 
+# part of the GeminiTwo & FixFlow skin for Pmwiki
+#========================================================================*/
+/*======= Master font sizes =========*/
+
+#content { font-size: 90%; }
+#rightbar { font-size: 75%; }
+#sidebar { font-size:75%; }
+#topnav { font-size:75%; }
+#footnav { font-size:75%; }
+#footer { font-size:75%; }
+
+/*=============================*/
+.pageheader { font-size: 2.5em; font-style:italic; font-weight:600;
+		font-family: "palatino linotype", palatino, "book antiqua", georgia, times, "times new roman", serif; }
+
+#pagegroup  { font-size: 1em; font-weight:600; 
+		font-family: Verdana, Geneva, Helvetica, Arial, sans-serif; }
+		
+#pagetitle h1  { font-size: 2.2em; font-weight:600; font-style:italic;
+		font-family: "palatino linotype", palatino, "book antiqua", georgia, times, "times new roman", serif; 
+ }
+		
+#content { font-family: Verdana, Geneva, Helvetica, Arial, sans-serif; }
+		
+#content h1, #content h2, #content h3, 
+#content h4, #content h5, #content h6 { 
+		font-style: italic;
+		font-weight:600; 
+		line-height:133%; 
+		font-family:"palatino linotype", palatino, "book antiqua", georgia, times, "times new roman", serif; 
+ }
+#content h1 { font-size:2.1em; }
+#content h2 { font-size:1.9em; border-bottom:1px solid }
+#content h3 { font-size:1.5em; }
+#content h4 { font-size:1.3em; }
+#content h5 { font-size:1.1em; }
+#content h6 { font-size:1.0em; font-variant:small-caps;}
+
+#sidebar h1 { font-size:1.25em; }
+#sidebar h2 { font-size:1.1em; }
+#sidebar h3 { font-size:1.0em; }
+#sidebar h4 { font-size:1.2em; }
+#sidebar h5 { font-size:1.1em; }
+#sidebar h6 { font-size:1.0em; }
+p.sidehead { font-size:1.25em; font-weight:700; }
+
+#topnav, #sidebar, #rightbar, #footnav, #footer { font-family: Verdana, Geneva, Helvetica, Arial, sans-serif; } 
+
+#sidebar h1, #sidebar h2, #sidebar h3, #sidebar h4, #sidebar h5, #sidebar h6, .sidehead { 
+	font-family: "palatino linotype", palatino, "book antiqua", georgia, times, "times new roman", serif; 
+	font-style:italic; 	font-weight:700; }
+
+#rightbar h1 { font-size:1.7em }
+#rightbar h2 { font-size:1.5em }
+#rightbar h3 { font-size:1.3em }
+#rightbar h4 { font-size:1.2em }

@@ -130,6 +130,23 @@ private:
   PanelButtonLoad& operator= (const PanelButtonLoad&);
 };		// PanelButtonLoad class
 
+/** Standard save button */
+class PanelButtonSave : PanelButton
+{
+public:
+	/** Constructor
+		@param p the EditorPanel to which this button belongs */
+	PanelButtonSave (EditorPanel* p);
+
+	/** This function is called by the gui_manager when the button is clicked */
+	void on_primary_button_click (int x, int y);
+
+private:
+	PanelButtonSave ();
+  PanelButtonSave (const PanelButtonSave&);
+  PanelButtonSave& operator= (const PanelButtonSave&);
+};		// PanelButtonSave class
+
 }		// Editor namespace
 }		// Pingus namespace
 

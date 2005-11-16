@@ -61,6 +61,7 @@ public:
   int difficulty;
   
   std::string author;
+	std::string comment;
   std::string music;
 
   std::vector<LevelObjs*> objects;

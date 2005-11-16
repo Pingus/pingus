@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <title>Pingus Wiki - PmWiki - Frequently Asked Questions (FAQ)</title>
+
+ <style type="text/css" media="all">
+ 		@import "http://www.cmhousing.net/pingus/wiki/pub/skins/gemini/layout-main.css";
+		@import "http://www.cmhousing.net/pingus/wiki/pub/skins/gemini/layout-smallheader.css";
+		@import "http://www.cmhousing.net/pingus/wiki/pub/skins/gemini/rb-narrow.css";
+ </style>
+  <link rel='stylesheet' href='../../pub/skins/gemini/font-sans.css' type='text/css' media='screen' />
+  <link rel='stylesheet' href='../../pub/skins/gemini/c-blue.css' type='text/css' media='screen' />
+  <!--HeaderText--><style type='text/css'><!--
+  ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
+  code { white-space: nowrap; }
+  .vspace { margin-top:1.33em; }
+  .indent { margin-left:40px; }
+  .outdent { margin-left:40px; text-indent:-40px; }
+  a.createlinktext { text-decoration:none; border-bottom:1px dotted gray; }
+  a.createlink { text-decoration:none; position:relative; top:-0.5em;
+    font-weight:bold; font-size:smaller; border-bottom:none; }
+  img { border:0px; }
+  .editconflict { color:green; font-style:italic; 
+  margin-top:1.33em; margin-bottom:1.33em; }
+ #rightbar { display:none } 
+
+  table.markup { border: 2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  td.markup1 { border-bottom: 1px solid #ccf; }
+  div.faq { margin-left:2em; }
+  div.faq p.question { margin: 1em 0 0.75em -2em; font-weight:bold; }
+  div.faq hr { margin-left: -2em; }
+   
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none; }
+
+--></style>  <meta name='robots' content='noindex,nofollow' />
+
+<script language="JavaScript" type="text/javascript">
+<!--
+function changeDivHeight() {
+	// scroll height:
+	var test1 = document.body.scrollHeight;
+	var test2 = document.body.offsetHeight;
+	if (test1 > test2) // all but Explorer Mac
+		{ var sy = document.body.scrollHeight }
+	else // Explorer Mac; would also work in Explorer 6 Strict, Mozilla and Safari
+		{ var sy = document.body.offsetHeight };
+	// window inner height:
+	if (self.innerHeight) // all except Explorer
+		{ var iy = self.innerHeight }
+	else if (document.body) // other Explorers
+		{ iy = document.body.clientHeight };
+	var maxy = sy;
+	//header and footer height:
+	var hdr = document.getElementById('header').offsetHeight;
+	var ftr = document.getElementById('footer').offsetHeight;
+	if (iy>sy) { maxy = iy };
+	if (hdr==maxy) { hdr = 0 };
+	var sbr = maxy - hdr - ftr - 12;
+  //testing://	window.alert ("maxy: "+maxy+"; hdr: "+hdr+"; ftr: "+ftr+"; sidebar:"+sbr);
+	if (self.innerHeight) {
+	document.getElementById('sidebar').style.height =  sbr + "px"; }
+	else document.getElementById('sidebar').style.height = sbr -7 + "px";
+}
+onresize = changeDivHeight;
+onload = changeDivHeight;
+
+-->
+</script>
+<link href="../../pub/skins/gemini/layout-print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+<body >
+<div id='wrapper'>
+<div id='header'>
+<!--PageTopMenuFmt-->
+	<div id='topnav'>
+		<ul><li><a accesskey='c'  class='wikilink' href='RecentChanges'>Recent Changes</a>
+</li><li><a accesskey='h'  class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/FAQ?action=diff'>Page History</a>
+</li><li><a accesskey='e'  class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/FAQ?action=edit'>Edit Page</a>
+</li></ul>
+
+		<div class='clearer'><!-- a clearer division --></div>
+	</div>
+<!--/PageTopMenuFmt-->
+<!--PageHeaderFmt--><!--/PageHeaderFmt-->
+</div>
+	<div class='clearer'><!-- a clearer division --></div>
+
+	  <table id='midtbl' width='100%' cellspacing='0' cellpadding='0'>
+		<tr>
+<!--PageLeftFmt-->
+		<td id='sidebarbox' valign='top'>
+			<div id='sidebar'>
+				<div id='sideheader' class='pageheader'> 
+    <a href='../index.html'><img src='http://www.cmhousing.net/pingus/pingus-logo.png' alt='Pingus Wiki' border='0' /></a> 
+    
+					
+				</div>
+				<div id='sidebarsearch'><form class='wikisearch' action='FAQ' method='get' >
+      <input type='hidden' name='n' value='PmWiki.FAQ' />
+      <input type='hidden' name='action' value='search' />
+      <input class='inputbox wikisearchbox' type='text' name='q' size='16' value=' Search Site ' 
+      onfocus="if(this.value=' Search Site ') {this.value=''}" onblur="if(this.value=='') 
+           {this.value=' Search Site '}" />
+      <input name='submit' type='submit' class='inputbutton wikisearchbutton' value=' Go '/>
+      </form></div>
+				<ul><li><a class='wikilink' href='../Main/HomePage'>HomePage</a>
+</li><li><a class='wikilink' href='../Main/CurrentRelease'>Current Release</a>
+</li><li><a class='wikilink' href='../Main/Development'>Development</a>
+<ul><li><a class='wikilink' href='../Main/Download'>Download</a>
+</li><li><a class='wikilink' href='../Main/Bugs'>Bugs/Patches</a>
+</li><li><a class='wikilink' href='../Main/DevLevels'>Levels</a>
+</li><li><a class='wikilink' href='../Main/Windows'>Windows</a>
+</li></ul></li><li><a class='wikilink' href='../Main/OldVersions'>Old Versions</a>
+</li></ul><p class='vspace'></p><p class='sidehead' > <a class='wikilink' href='PmWiki'>PmWiki</a>
+</p><ul><li><a class='wikilink' href='BasicEditing'>Basic Editing</a>
+</li><li><a class='wikilink' href='DocumentationIndex'>Documentation Index</a>
+</li><li><a class='selflink'>PmWiki FAQ</a>
+</li><li><a class='wikilink' href='../Main/WikiSandbox'>WikiSandbox</a>
+</li></ul><p class='vspace'></p><p style='text-align: right;' > <span style='font-size:83%'><a class='wikilink' href='../Site/SideBar@action=edit'>edit SideBar</a></span>
+</p>
+
+				<div id="sidebarfooter">
+					<p><a href='../PmWiki.GeminiTwo'>GeminiTwo</a> 10<br />
+				  	Powered by <a href='../PmWiki.PmWiki'>PmWiki</a></p>
+			</div>
+		</div> </td>
+<!--/PageLeftFmt-->
+
+    <td id='main' valign='top' align='left'>
+<!--PageTitleFmt-->
+		<div id='titlebarbox'>
+			<div id='titlebar'>
+				<div id='pagegroup'><a href='PmWiki'>Pm Wiki</a></div>
+				<div id='pagetitle'>
+				<h1><a class='titlelink' href='FAQ'>Frequently Asked Questions (FAQ)</a></h1>
+				</div>
+			</div>
+		 </div>
+<!--/PageTitleFmt-->
+		<div class='clearer'><!--end of page--></div>
+		<div id='content'>
+<!--PageRightFmt--><!--/PageRightFmt-->
+<!--PageText-->
+<div id='wikitext'>
+<p>
+</p><p class='vspace'></p>
+<p>This page tries to answer the more common questions you might want answered.
+Many of the answers refer you to other pages for details.
+</p><p class='vspace'></p>
+<p>For frequently requested features, see the <a class='urllink' href='http://www.pmwiki.org/PITS/PITS' rel='nofollow'>PITS</a> pages.
+</p><p class='vspace'></p>
+<p class='vspace'></p><div class='faq'  > 
+<p class='vspace'></p><p class='question'> How do I get my question answered?</p>
+<p> The quickest and best way is to join the pmwiki-users <a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/MailingLists'>Mailing List</a> and post your question there. If it really is a frequently-asked question, it will eventually be added to this page.
+</p><p class='vspace'></p>
+<p>An alternative way is to leave your question on the <a class='urllink' href='http://www.pmwiki.org/wiki/PmWiki/Questions' rel='nofollow'>Questions</a> page.
+</p><p class='vspace'></p>
+<p class='vspace'></p><p class='question'> What does warning message or error message "xxxxx" mean?</p>
+<p> Error/warning questions and answers are on the <a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/ErrorMessages'>Error Messages</a> page.
+</p><p class='vspace'></p>
+<p class='vspace'></p><p class='question'> How and why do I use the <a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/Site/EditForm'>EditForm</a> feature?</p>
+<p> This feature allows an admin to customize PmWiki's edit window. It is  active by default in PmWiki version 2 beta 44 or later. Some <a class='urllink' href='http://www.pmwiki.org/wiki/Cookbook/Skins' rel='nofollow'>Cookbook:Skins</a> customize the <a class='varlink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/EditVariables#PageEditFmt'><code class='varlink'>&#36;PageEditFmt</code></a> variable which overrides the edit form, making it inoperative.
+</p><p class='vspace'></p>
+<p class='vspace'></p><p class='question'> How do I use passwd-formatted files (like .htpasswd) for authentication?</p>
+<p> See <a class='urllink' href='http://www.pmwiki.org/wiki/Cookbook/AuthUser' rel='nofollow'>Cookbook:AuthUser</a> and <a class='urllink' href='http://www.pmwiki.org/wiki/Cookbook/UserAuth' rel='nofollow'>Cookbook:UserAuth</a>
+</p><p class='vspace'></p>
+<p class='vspace'></p><p class='question'> Where can I get help with PmWiki? (This is a pretty vague question!)</p>
+<p> See this FAQ, <a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/Troubleshooting'>Troubleshooting</a>, <a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/ErrorMessages'>Error Messages</a>, or try a <a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/Site/Search'>Search</a>.
+</p><p class='vspace'></p>
+<p class='vspace'></p><p class='question'> I'm getting a lot of spam on my wiki site.  How can I password protect the pages?</p>
+<p> See <a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/Security'>PmWiki.Security</a>
+</p><p class='vspace'></p>
+<p class='vspace'></p><p class='question'> How do I create nice tables similar to Product X?  </p>
+<p> See <a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/SimpleTables'>simple tables</a> and <a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/AdvancedTables'>advanced tables</a>. 
+</p><p class='vspace'></p>
+<p class='vspace'></p><p class='question'> Why are 'RecentChanges', 'AllRecentChanges', 'RecentUploads', 'AllRecentUploads' editable?</p>
+<p> You might want to edit these pages if a spammer creates a page with an unsavory name. To prevent others from editing these pages, insert the following lines into your <em>local/config.php</em> file. Editing then requires the admin password.
+</p><p class='vspace'></p><pre>
+## Require admin password to edit RecentChanges (etc.) pages.
+if ($action=='edit'
+  &amp;&amp; preg_match('/\\.(All)?Recent(Changes|Uploads)$/',
+  $pagename)) { $DefaultPasswords['edit'] = '*'; }
+</pre>
+<p class='vspace'></p><p class='question'> How do I include special characters on my wiki pages?</p>
+<p> Use character codes to insert special characters, such as Copyright (&#169;) and Trademark (&#174; or &#8482;) symbols, that don't appear on your keyboard.
+</p><p class='vspace'></p>
+<p class='vspace'></p><p class='question'> Is it possible to move wiki.d to /tmp/persistent/wiki.d (a new sourceforge rule)?</p>
+<p> Sourceforge suggest moving everything to /tmp/persistent/new-folder-of-your-choice and creating a soft link to the new folder on /tmp . It works. See <a class='urllink' href='http://www.pmwiki.org/wiki/Cookbook/SourceForgeServers' rel='nofollow'>Cookbook:SourceForgeServers</a>
+</p><p class='vspace'></p>
+<p class='vspace'></p><p class='question'> How do I set one Header for all pages/groups?</p>
+<p> Add the following to config.php
+</p><pre> 
+$GroupHeaderFmt .= "Wikicode or text here";
+</pre><p class='vspace'></p><p class='question'> How do I insert RSS news feeds in PmWiki?</p>
+<p> See <a class='urllink' href='http://www.pmwiki.org/wiki/Cookbook/RssFeedDisplay' rel='nofollow'>Cookbook:RssFeedDisplay</a>.
+</p><p class='vspace'></p>
+<p class='vspace'></p><p class='question'> How do I change the Wiki's default name in the upper left corner of the Main Page.</p>
+<p> Put the following config.php
+</p><p class='vspace'></p>
+<pre>    <code>$WikiTitle = 'My Wiki Site';</code>
+</pre><p class='vspace'></p><p>This appears in the sample-config.php file in the PmWiki distribution.  Copy sample-config.php as "config.php" in your local/ directory and edit it.
+</p><p class='vspace'></p>
+<p class='vspace'></p><p class='question'> How do I customize the CSS styling of my PmWiki layout?<a name='customcss' id='customcss'></a></p>
+<p> See <a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/Skins'>Skins</a> for how to change the default PmWiki skin.  See also <a class='urllink' href='http://www.pmwiki.org/wiki/Cookbook/Skins' rel='nofollow'>Cookbook:Skins</a>, where you will find pre-made templates you can use to customize the appearance of your site.  You can also create a file called local.css in the pub/css/ directory and add CSS selectors there (this file gets automatically loaded if it exists), or add them in your local <em>local/config.php</em> file by inserting something similar to:
+</p><p class='vspace'></p><pre>    $HTMLStylesFmt[] = '
+      .foo { color:blue; }';</pre>
+<p class='vspace'></p><p class='question'> How do I insert pictures on wiki pages?</p>
+<p> See <a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/Images'>Images</a>.
+</p><p class='vspace'></p>
+<p class='question'> How do I link to an uploaded file from another group?</p>
+<p> Use <code>Attach:Groupname/filename.ext</code>
+</p><p class='vspace'></p>
+<p class='question'> Is it possible to link an image on PmWiki without using a fully qualified URL?</p>
+<p> Yes. The general format is <code>Attach:Group.PageName/filename.ext</code>.
+</p><p class='vspace'></p>
+<p class='vspace'></p><p class='question'> How do I change the font or background color of the hints block on the Edit Page?</p>
+<p> Add a CSS style to pub/css/local.css: <code>.quickref {background:...; color:... }</code>. The hints are provided by the <a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/Site/EditQuickReference'>Site.EditQuickReference</a> page, which is in the PmWiki or Site wikigroup.  Edit that page, and change the "bgcolor" or specify the font "color" to get the contrast you need.
+</p><p class='vspace'></p>
+<p class='vspace'></p><p class='question'> How do I make pmwiki.php the default page for a website?  Should I rename pmwiki.php to index.php?</p>
+<p> Renaming pmwiki.php is not recommended. Instead, create an <em>index.php</em> file that contains the single line:
+</p><pre> 
+&lt;?php include_once('pmwiki.php');
+</pre><p class='vspace'></p><p>You may also want to check <a class='urllink' href='http://www.pmwiki.org/wiki/Cookbook/CleanUrls' rel='nofollow'>Cookbook:CleanUrls</a>.
+</p><p class='vspace'></p>
+<p class='vspace'></p><p class='question'> When I upload a file, how do I make the link look like "file.doc" instead of "<a class='createlinktext' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/FAQ?action=upload&amp;upname=file.doc'>Attach:file.doc</a><a class='createlink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/FAQ?action=upload&amp;upname=file.doc'>&nbsp;&Delta;</a>"?</p>
+<p> Use parentheses, as in <code>[[(Attach:)file.doc]]</code>.  You can make a configuration change that eliminates the <code>Attach:</code> -- see <a class='urllink' href='http://www.pmwiki.org/wiki/Cookbook/AttachLinks' rel='nofollow'>Cookbook:AttachLinks</a>.
+</p><p class='vspace'></p>
+<p class='vspace'></p><p class='question'> There seems to be a default password.  What is it? <a name='pwlocked' id='pwlocked'></a></p>
+<p> There isn't any valid password until you set one.  See <a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/PasswordsAdmin'>PasswordsAdmin</a> for how to set an admin password.
+</p><p class='vspace'></p>
+<p>PmWiki comes "out of the box" with
+&#36;DefaultPasswords['admin'] set to '*'.   This doesn't mean the password
+is an asterisk, it means that default admin password has to be
+something that encrypts to an asterisk.  Since it's impossible for the
+crypt() function to ever return a 1-character encrypted value, the admin
+password is effectively locked until the admin sets one in config.php.
+</p><p class='vspace'></p>
+<p class='vspace'></p><p class='question'> How can I embed PmWiki pages inside a web page?</p>
+<p> Source them through a PHP page, or place them in a frame.
+</p><p class='vspace'></p>
+<p class='vspace'></p><p class='question'> Why does pmwiki.org appear to have a directory structure rather than "?n=pagename" in URLs?</p>
+<p> Pmwiki.org uses a variant of <a class='urllink' href='http://www.pmwiki.org/wiki/Cookbook/CleanUrls' rel='nofollow'>Cookbook:CleanUrls</a>.
+</p><p class='vspace'></p>
+<p class='vspace'></p><p class='question'> Can I remove items from the wikilib.d folder on my site?</p>
+<p> Yes, the files in <em>wikilib.d/</em> can be safely removed.  They'll reappear again when you upgrade, however.  If you want to permanently configure your site so that these distribution pages don't appear, try:
+</p><p class='vspace'></p>
+<pre>    <code>$WikiLibDirs = array(&amp;$WikiDir);</code>
+</pre><p class='vspace'></p><p class='question'> How do I exclude wiki-related pages from searches?</p>
+<p>Try the following in your <em>local/config.php file</em>.  See also <a class='urllink' href='http://www.pmwiki.org/wiki/Cookbook/SearchPatterns' rel='nofollow'>Cookbook:SearchPatterns</a>.
+</p><p class='vspace'></p><pre>
+## Exclude Certain pages / groups from search results.
+$SearchPatterns['default'][] = '!\\.(All)?Recent(Changes|Uploads)$!';
+$SearchPatterns['default'][] = '!\\.Group(Print)?Header$!';
+$SearchPatterns['default'][] = '!^Site\\.!';
+$SearchPatterns['default'][] = '!^PmWiki\\.!';
+</pre>
+<p class='vspace'></p><p class='question'> How do I put a link that will open as a new window?</p>
+<p> Use the <code>%newwin%</code> wikistyle, as in:
+</p><table class='markup' align='center'><tr><td class='markup1'><pre>%newwin%http://www.example.com/</pre></td></tr><tr><td class='markup2'>
+<p><a target='_blank'  class='urllink' href='http://www.example.com/' rel='nofollow'>http://www.example.com/</a>
+</p></div></td></tr></table>
+<p class='vspace'></p><p class='question'> How do I place a mailing address in a page?</p>
+<p> Use the <code>mailto:</code> markup, as in
+</p><table class='markup' align='center'><tr><td class='markup1'><pre>[[mailto:myaddress@example.com]]</pre></td></tr><tr><td class='markup2'>
+<p><a class='urllink' href='mailto:myaddress@example.com' rel='nofollow'>mailto:myaddress@example.com</a>
+</p></td></tr></table>
+<p>or
+</p><table class='markup' align='center'><tr><td class='markup1'><pre>[[mailto:myaddress@example.com | myaddress@example.com]]</pre></td></tr><tr><td class='markup2'>
+<p><a class='urllink' href='mailto:myaddress@example.com' rel='nofollow'>myaddress@example.com</a>
+</p></td></tr></table>
+<p class='vspace'></p><p class='question'> How do I make a WikiWord link to an external page instead of a WikiPage?</p>
+<p> Use link markup.  There are two formats:
+</p><table class='markup' align='center'><tr><td class='markup1'><pre>[[http://www.example.com/ | WikiWord]]</pre></td></tr><tr><td class='markup2'>
+<p><a class='urllink' href='http://www.example.com/' rel='nofollow'>WikiWord</a>
+</p></td></tr></table>
+<p>or
+</p><table class='markup' align='center'><tr><td class='markup1'><pre>[[WikiWord -&gt; http://www.example.com/]]</pre></td></tr><tr><td class='markup2'>
+<p><a class='urllink' href='http://www.example.com/' rel='nofollow'>WikiWord</a>
+</p></td></tr></table>
+<p class='vspace'></p><p class='question'> How do I find all of the pages that link to another page (i.e., backlinks)?</p>
+<p> Use the <code>(:pagelist:)</code> command, as in
+</p><p class='vspace'></p><pre>    (:pagelist link=SomePage:)   -- show all links to SomePage
+    (:pagelist link={$FullName}:)  -- show all links to the current page</pre>
+<p class='vspace'></p><p class='question'> How do I customize my own 404 error page for non-existent pages?</p>
+<p> Set the following variable
+</p><p class='vspace'></p>
+<pre>    <code>$DefaultPageTextFmt = '(:include Site.PageNotFound:)';</code>
+</pre><p class='vspace'></p><p>and then edit the 'Site.PageNotFound' page to provide whatever
+message you want for non-existent pages.
+</p><p class='vspace'></p>
+</div>
+
+			<div class='clearer'><!-- a clearer division --></div>
+		</div>
+<!--PageFootMenuFmt-->
+		<div id='footnavbox'>
+			<div id='footnav'><ul><li><a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/FAQ?action=edit'>Edit</a>
+</li><li><a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/FAQ?action=diff'>History</a>
+</li><li><a target='_blank'  class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/FAQ?action=source'>Source</a>
+</li><li><a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/FAQ?action=upload'>Attach File</a>
+</li><li><a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/Site/Search?q=link=PmWiki.FAQ'>Backlinks</a>
+</li><li><a class='wikilink' href='../Site/Search@q=PmWiki%252F'>List&nbsp;Group</a>
+</li></ul><p><br clear='all' />
+</p><div class='indent'><em>Page last modified September 16, 2005, at 01:51 PM</em>
+</div>
+</div>
+		</div>
+<!--/PageFootMenuFmt-->
+		</td></tr>
+	</table>
+<!--PageFooterFmt-->
+	<div id='footer'><p><a class='wikilink' href='../Site/Gemini-Configuration'>skin config</a> <em>** pmwiki-2.0.6 **</em>
+</p>
+</div>
+<!--/PageFooterFmt-->
+</div>
+</body>
+</html>

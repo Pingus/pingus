@@ -69,21 +69,18 @@ public:
 	/** Return the gui_manager */
 	GUI::GUIManager* get_gui_manager() { return gui_manager; }
 
-private:
-  EditorScreen (const EditorScreen&);
-  EditorScreen& operator= (const EditorScreen&);
+	/** Saves the currently loaded level */
+	void save_level(const std::string levelfile);
 
-	/** Saves the currently loaded level
-		@return true if level was valid and saved, false otherwise */
-	bool save_level();
-
-	/** Load a new level by opening a dialog box
-		@return true if the user chose a valid level, 
-						false otherwise */
-	bool load_level();
+	/** Load a new level */
+	void load_level(const std::string levelfile);
 
 	/** Plays the currently loaded level */
 	void play_level();
+
+private:
+  EditorScreen (const EditorScreen&);
+  EditorScreen& operator= (const EditorScreen&);
 
 };	// EditorScreen
 }		// Editor namespace

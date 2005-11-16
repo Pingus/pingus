@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <title>Pingus Wiki - Main - DevMinGW</title>
+
+ <style type="text/css" media="all">
+ 		@import "http://www.cmhousing.net/pingus/wiki/pub/skins/gemini/layout-main.css";
+		@import "http://www.cmhousing.net/pingus/wiki/pub/skins/gemini/layout-smallheader.css";
+		@import "http://www.cmhousing.net/pingus/wiki/pub/skins/gemini/rb-narrow.css";
+ </style>
+  <link rel='stylesheet' href='../../pub/skins/gemini/font-sans.css' type='text/css' media='screen' />
+  <link rel='stylesheet' href='../../pub/skins/gemini/c-blue.css' type='text/css' media='screen' />
+  <!--HeaderText--><style type='text/css'><!--
+  ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
+  code { white-space: nowrap; }
+  .vspace { margin-top:1.33em; }
+  .indent { margin-left:40px; }
+  .outdent { margin-left:40px; text-indent:-40px; }
+  a.createlinktext { text-decoration:none; border-bottom:1px dotted gray; }
+  a.createlink { text-decoration:none; position:relative; top:-0.5em;
+    font-weight:bold; font-size:smaller; border-bottom:none; }
+  img { border:0px; }
+  .editconflict { color:green; font-style:italic; 
+  margin-top:1.33em; margin-bottom:1.33em; }
+ #rightbar { display:none } 
+
+  table.markup { border: 2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  td.markup1 { border-bottom: 1px solid #ccf; }
+  div.faq { margin-left:2em; }
+  div.faq p.question { margin: 1em 0 0.75em -2em; font-weight:bold; }
+  div.faq hr { margin-left: -2em; }
+   
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none; }
+
+--></style>  <meta name='robots' content='index,follow' />
+
+<script language="JavaScript" type="text/javascript">
+<!--
+function changeDivHeight() {
+	// scroll height:
+	var test1 = document.body.scrollHeight;
+	var test2 = document.body.offsetHeight;
+	if (test1 > test2) // all but Explorer Mac
+		{ var sy = document.body.scrollHeight }
+	else // Explorer Mac; would also work in Explorer 6 Strict, Mozilla and Safari
+		{ var sy = document.body.offsetHeight };
+	// window inner height:
+	if (self.innerHeight) // all except Explorer
+		{ var iy = self.innerHeight }
+	else if (document.body) // other Explorers
+		{ iy = document.body.clientHeight };
+	var maxy = sy;
+	//header and footer height:
+	var hdr = document.getElementById('header').offsetHeight;
+	var ftr = document.getElementById('footer').offsetHeight;
+	if (iy>sy) { maxy = iy };
+	if (hdr==maxy) { hdr = 0 };
+	var sbr = maxy - hdr - ftr - 12;
+  //testing://	window.alert ("maxy: "+maxy+"; hdr: "+hdr+"; ftr: "+ftr+"; sidebar:"+sbr);
+	if (self.innerHeight) {
+	document.getElementById('sidebar').style.height =  sbr + "px"; }
+	else document.getElementById('sidebar').style.height = sbr -7 + "px";
+}
+onresize = changeDivHeight;
+onload = changeDivHeight;
+
+-->
+</script>
+<link href="../../pub/skins/gemini/layout-print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+<body >
+<div id='wrapper'>
+<div id='header'>
+<!--PageTopMenuFmt-->
+	<div id='topnav'>
+		<ul><li><a accesskey='c'  class='wikilink' href='RecentChanges'>Recent Changes</a>
+</li><li><a accesskey='h'  class='wikilink' href='DevMinGW@action=diff'>Page History</a>
+</li><li><a accesskey='e'  class='wikilink' href='DevMinGW@action=edit'>Edit Page</a>
+</li></ul>
+
+		<div class='clearer'><!-- a clearer division --></div>
+	</div>
+<!--/PageTopMenuFmt-->
+<!--PageHeaderFmt--><!--/PageHeaderFmt-->
+</div>
+	<div class='clearer'><!-- a clearer division --></div>
+
+	  <table id='midtbl' width='100%' cellspacing='0' cellpadding='0'>
+		<tr>
+<!--PageLeftFmt-->
+		<td id='sidebarbox' valign='top'>
+			<div id='sidebar'>
+				<div id='sideheader' class='pageheader'> 
+    <a href='../index.html'><img src='http://www.cmhousing.net/pingus/pingus-logo.png' alt='Pingus Wiki' border='0' /></a> 
+    
+					
+				</div>
+				<div id='sidebarsearch'><form class='wikisearch' action='DevMinGW' method='get' >
+      <input type='hidden' name='n' value='Main.DevMinGW' />
+      <input type='hidden' name='action' value='search' />
+      <input class='inputbox wikisearchbox' type='text' name='q' size='16' value=' Search Site ' 
+      onfocus="if(this.value=' Search Site ') {this.value=''}" onblur="if(this.value=='') 
+           {this.value=' Search Site '}" />
+      <input name='submit' type='submit' class='inputbutton wikisearchbutton' value=' Go '/>
+      </form></div>
+				<ul><li><a class='wikilink' href='HomePage'>HomePage</a>
+</li><li><a class='wikilink' href='CurrentRelease'>Current Release</a>
+</li><li><a class='wikilink' href='Development'>Development</a>
+<ul><li><a class='wikilink' href='Download'>Download</a>
+</li><li><a class='wikilink' href='Bugs'>Bugs/Patches</a>
+</li><li><a class='wikilink' href='DevLevels'>Levels</a>
+</li><li><a class='wikilink' href='Windows'>Windows</a>
+</li></ul></li><li><a class='wikilink' href='OldVersions'>Old Versions</a>
+</li></ul><p class='vspace'></p><p class='sidehead' > <a class='wikilink' href='../PmWiki/PmWiki'>PmWiki</a>
+</p><ul><li><a class='wikilink' href='../PmWiki/BasicEditing'>Basic Editing</a>
+</li><li><a class='wikilink' href='../PmWiki/DocumentationIndex'>Documentation Index</a>
+</li><li><a class='wikilink' href='../PmWiki/FAQ'>PmWiki FAQ</a>
+</li><li><a class='wikilink' href='WikiSandbox'>WikiSandbox</a>
+</li></ul><p class='vspace'></p><p style='text-align: right;' > <span style='font-size:83%'><a class='wikilink' href='../Site/SideBar@action=edit'>edit SideBar</a></span>
+</p>
+
+				<div id="sidebarfooter">
+					<p><a href='../PmWiki.GeminiTwo'>GeminiTwo</a> 10<br />
+				  	Powered by <a href='../PmWiki.PmWiki'>PmWiki</a></p>
+			</div>
+		</div> </td>
+<!--/PageLeftFmt-->
+
+    <td id='main' valign='top' align='left'>
+<!--PageTitleFmt-->
+		<div id='titlebarbox'>
+			<div id='titlebar'>
+				<div id='pagegroup'><a href='HomePage'>Main</a></div>
+				<div id='pagetitle'>
+				<h1><a class='titlelink' href='DevMinGW'>Dev Min GW</a></h1>
+				</div>
+			</div>
+		 </div>
+<!--/PageTitleFmt-->
+		<div class='clearer'><!--end of page--></div>
+		<div id='content'>
+<!--PageRightFmt--><!--/PageRightFmt-->
+<!--PageText-->
+<div id='wikitext'>
+<h1>How to compile on Windows with MinGW</h1>
+<h2><span style='color: red;' > Note, this is a Work In Progress and may be horribly unfinished - proceed at your own risk.</span></h2>
+<p class='vspace'></p><ul><li><a class='wikilink' href='MinGW'>MinGW</a> is a way to run GNU applications on <a class='wikilink' href='Windows'>Windows</a>.  You can learn more about it at <a class='urllink' href='http://www.mingw.org/' rel='nofollow'>MinGW's Home Page</a>.
+</li></ul><p class='vspace'></p><p>This is a quasi-step-by-step tutorial for compiling Pingus on <a class='wikilink' href='MinGW'>MinGW</a>.
+</p><p class='vspace'></p>
+<h2>Download each of the following programs</h2>
+<p class='vspace'></p><ul><li>You need an <a class='wikilink' href='SVN'>SVN</a> client.  For the purposes this tutorial, I'll be using <strong>Subversion 1.2.3-r15833</strong> from <a class='urllink' href='http://subversion.tigris.org' rel='nofollow'>http://subversion.tigris.org</a>, and installing it to <code>C:\Program Files\Subversion</code> (the Default setting).
+<ul><li>Heed the notes about Windows 9x or Me.  This version requires that you add the following line to your <code>AUTOEXEC.BAT</code> file:<pre>
+SET APR_ICONV_PATH="C:\Program Files\Subversion\iconv"
+</pre>
+</li><li>To run SVN, you might also need to download the <a class='urllink' href='http://download.microsoft.com/download/vc60pro/Update/1/W9XNT4/EN-US/VC6RedistSetup_enu.exe' rel='nofollow'>MSVC6 Redistributable DLL package</a>, or possibly just <a class='urllink' href='http://www.dll-files.com/dllindex/dll-files.shtml?msvcp60' rel='nofollow'>MSVCP60.DLL</a>.
+</li></ul><p class='vspace'></p></li><li>Download and install the following from <a class='urllink' href='http://www.mingw.org' rel='nofollow'>http://www.mingw.org</a>:
+<ul><li><a class='wikilink' href='MinGW'>MinGW</a> <strong>4.1.0</strong> or higher - Minimalist GNU Tools for Windows
+<ul><li>Accept all Default settings, including installing the Full package to <code>c:\mingw</code>.
+</li></ul></li><li><strong>MSYS 1.0.1.0</strong> or higher - provides us with a command line similar to what we'd have with UNIX or GNU/Linux.
+<ul><li>Accept all of the defaults, including installing to <code>C:\msys\1.0</code>.
+</li><li>It may take a while, but answer <strong>y</strong>es when prompted about a "post-install" script.
+</li><li>Answer all of the questions, and type <code>c:/mingw</code> when asked for the path.
+</li></ul></li><li><strong>MSYS Developer Toolkit (DTK) 1.0.1 </strong> or higher.
+<ul><li>Install everything, accepting the defaults.
+</li></ul></li><li><strong>automake 1.7.9</strong> or higher.
+<ul><li>Extract into <code>c:\msys\1.0\mingw</code>.
+</li></ul></li><li><strong>autoconf 2.59</strong> or higher.
+<ul><li>Extract into <code>c:\msys\1.0\mingw</code>.
+</li></ul></li><li><strong>libtool 1.5</strong> or higher.
+<ul><li>Extract into <code>c:\msys\1.0\mingw</code>.
+</li></ul></li></ul><p class='vspace'></p></li><li>Create a file named <code>~/.profile</code> (real location is <code>c:\msys\1.0\home\username</code>) and add this line:<pre>export PATH="/usr/bin:$PATH"
+</pre>
+<p class='vspace'></p></li><li>Lastly, you'll need to download some libraries, which have been kindly provided by Lf3T-Hn4D's tutorial.  Download both of these and extract them in <strong>c:\msys\1.0\mingw</strong>.
+<ul><li><a class='urllink' href='http://lefthand.xullum.net/downloads/clanlib/pkg-config-all-in-one.zip' rel='nofollow'>pkg-config-all-in-one.zip</a>
+</li><li><a class='urllink' href='http://lefthand.xullum.net/downloads/clanlib/mingw32-libs.zip' rel='nofollow'>mingw32-libs.zip</a>
+</li></ul></li></ul><p class='vspace'></p><h2>Retrieving Source Code</h2>
+<p class='vspace'></p><ul><li>First, you'll need the source code for <a class='wikilink' href='ClanLib'>ClanLib</a> 0.8.0 or higher.  Since 0.8.0 isn't released yet, you'll need to get it from <a class='wikilink' href='SVN'>SVN</a> as follows:
+<ul><li>Open MSYS, and type the following commands:
+<pre> cd /c
+ mkdir clanlib
+ cd clanlib
+ svn checkout https://clanlib.org/svn/ClanLib/Development/ClanLib-0.8 ClanLib-0.8</pre>
+<p class='vspace'></p></li><li>This will download the latest ClanLib code in the 0.8 branch.
+</li><li>SVN may ask you if you want to accept a security certificate.  If so, answer <strong>p</strong>ermanently.
+</li></ul></li><li>Wait until it's complete, then we'll need to get the most recent Pingus code.
+<ul><li>Open a MSYS and type the following commands:
+<pre>
+ cd /c
+ mkdir pingus
+ cd pingus
+ svn checkout svn://svn.berlios.de/pingus/trunk
+</pre>
+</li></ul></li></ul><p class='vspace'></p><h2>Compiling</h2>
+<p class='vspace'></p><ul><li>''Note: For additional resources, see <a class='urllink' href='http://lefthand.xullum.net/index.php?op=tut&amp;aref=tutorial/clanlib/mingw32.htm' rel='nofollow'>this Tutorial for compiling ClanLib</a>
+</li><li><em>Another Note:  If you want ClanLib Documentation built automatically, then you'll need one of the following programs installed already: <strong>xalan, xsltproc, sabcmd or MSXSL</strong></em>.
+<p class='vspace'></p></li><li>Open MSYS and type the following:<pre>
+cd /c/clanlib/ClanLib-0.8
+./autogen.sh
+./configure --disable-shared --prefix=/mingw CPPFLAGS="-I/mingw/include/dx8 -I/mingw/include/SDL -I/mingw/include"
+make        (wait a long time)
+make install
+</pre>
+</li></ul><p class='vspace'></p><h2>Running</h2>
+<p class='vspace'></p><ul><li>
+</li></ul><p class='vspace'></p><hr />
+<p class='vspace'></p><p><span style='font-size:83%'>Back to <a class='wikilink' href='Development'>Development</a></span>
+</p>
+</div>
+
+			<div class='clearer'><!-- a clearer division --></div>
+		</div>
+<!--PageFootMenuFmt-->
+		<div id='footnavbox'>
+			<div id='footnav'><ul><li><a class='wikilink' href='DevMinGW@action=edit'>Edit</a>
+</li><li><a class='wikilink' href='DevMinGW@action=diff'>History</a>
+</li><li><a target='_blank'  class='wikilink' href='DevMinGW@action=source'>Source</a>
+</li><li><a class='wikilink' href='DevMinGW@action=upload'>Attach File</a>
+</li><li><a class='wikilink' href='../Site/Search@q=link=Main.DevMinGW'>Backlinks</a>
+</li><li><a class='wikilink' href='../Site/Search@q=Main%252F'>List&nbsp;Group</a>
+</li></ul><p><br clear='all' />
+</p><div class='indent'><em>Page last modified October 25, 2005, at 01:50 PM</em>
+</div>
+</div>
+		</div>
+<!--/PageFootMenuFmt-->
+		</td></tr>
+	</table>
+<!--PageFooterFmt-->
+	<div id='footer'><p><a class='wikilink' href='../Site/Gemini-Configuration'>skin config</a> <em>** pmwiki-2.0.6 **</em>
+</p>
+</div>
+<!--/PageFooterFmt-->
+</div>
+</body>
+</html>

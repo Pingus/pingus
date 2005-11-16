@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <title>Pingus Wiki - Main - DevUbuntu</title>
+
+ <style type="text/css" media="all">
+ 		@import "http://www.cmhousing.net/pingus/wiki/pub/skins/gemini/layout-main.css";
+		@import "http://www.cmhousing.net/pingus/wiki/pub/skins/gemini/layout-smallheader.css";
+		@import "http://www.cmhousing.net/pingus/wiki/pub/skins/gemini/rb-narrow.css";
+ </style>
+  <link rel='stylesheet' href='../../pub/skins/gemini/font-sans.css' type='text/css' media='screen' />
+  <link rel='stylesheet' href='../../pub/skins/gemini/c-blue.css' type='text/css' media='screen' />
+  <!--HeaderText--><style type='text/css'><!--
+  ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
+  code { white-space: nowrap; }
+  .vspace { margin-top:1.33em; }
+  .indent { margin-left:40px; }
+  .outdent { margin-left:40px; text-indent:-40px; }
+  a.createlinktext { text-decoration:none; border-bottom:1px dotted gray; }
+  a.createlink { text-decoration:none; position:relative; top:-0.5em;
+    font-weight:bold; font-size:smaller; border-bottom:none; }
+  img { border:0px; }
+  .editconflict { color:green; font-style:italic; 
+  margin-top:1.33em; margin-bottom:1.33em; }
+ #rightbar { display:none } 
+
+  table.markup { border: 2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  td.markup1 { border-bottom: 1px solid #ccf; }
+  div.faq { margin-left:2em; }
+  div.faq p.question { margin: 1em 0 0.75em -2em; font-weight:bold; }
+  div.faq hr { margin-left: -2em; }
+   
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none; }
+
+--></style>  <meta name='robots' content='index,follow' />
+
+<script language="JavaScript" type="text/javascript">
+<!--
+function changeDivHeight() {
+	// scroll height:
+	var test1 = document.body.scrollHeight;
+	var test2 = document.body.offsetHeight;
+	if (test1 > test2) // all but Explorer Mac
+		{ var sy = document.body.scrollHeight }
+	else // Explorer Mac; would also work in Explorer 6 Strict, Mozilla and Safari
+		{ var sy = document.body.offsetHeight };
+	// window inner height:
+	if (self.innerHeight) // all except Explorer
+		{ var iy = self.innerHeight }
+	else if (document.body) // other Explorers
+		{ iy = document.body.clientHeight };
+	var maxy = sy;
+	//header and footer height:
+	var hdr = document.getElementById('header').offsetHeight;
+	var ftr = document.getElementById('footer').offsetHeight;
+	if (iy>sy) { maxy = iy };
+	if (hdr==maxy) { hdr = 0 };
+	var sbr = maxy - hdr - ftr - 12;
+  //testing://	window.alert ("maxy: "+maxy+"; hdr: "+hdr+"; ftr: "+ftr+"; sidebar:"+sbr);
+	if (self.innerHeight) {
+	document.getElementById('sidebar').style.height =  sbr + "px"; }
+	else document.getElementById('sidebar').style.height = sbr -7 + "px";
+}
+onresize = changeDivHeight;
+onload = changeDivHeight;
+
+-->
+</script>
+<link href="../../pub/skins/gemini/layout-print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+<body >
+<div id='wrapper'>
+<div id='header'>
+<!--PageTopMenuFmt-->
+	<div id='topnav'>
+		<ul><li><a accesskey='c'  class='wikilink' href='RecentChanges'>Recent Changes</a>
+</li><li><a accesskey='h'  class='wikilink' href='DevUbuntu@action=diff'>Page History</a>
+</li><li><a accesskey='e'  class='wikilink' href='DevUbuntu@action=edit'>Edit Page</a>
+</li></ul>
+
+		<div class='clearer'><!-- a clearer division --></div>
+	</div>
+<!--/PageTopMenuFmt-->
+<!--PageHeaderFmt--><!--/PageHeaderFmt-->
+</div>
+	<div class='clearer'><!-- a clearer division --></div>
+
+	  <table id='midtbl' width='100%' cellspacing='0' cellpadding='0'>
+		<tr>
+<!--PageLeftFmt-->
+		<td id='sidebarbox' valign='top'>
+			<div id='sidebar'>
+				<div id='sideheader' class='pageheader'> 
+    <a href='../index.html'><img src='http://www.cmhousing.net/pingus/pingus-logo.png' alt='Pingus Wiki' border='0' /></a> 
+    
+					
+				</div>
+				<div id='sidebarsearch'><form class='wikisearch' action='DevUbuntu' method='get' >
+      <input type='hidden' name='n' value='Main.DevUbuntu' />
+      <input type='hidden' name='action' value='search' />
+      <input class='inputbox wikisearchbox' type='text' name='q' size='16' value=' Search Site ' 
+      onfocus="if(this.value=' Search Site ') {this.value=''}" onblur="if(this.value=='') 
+           {this.value=' Search Site '}" />
+      <input name='submit' type='submit' class='inputbutton wikisearchbutton' value=' Go '/>
+      </form></div>
+				<ul><li><a class='wikilink' href='HomePage'>HomePage</a>
+</li><li><a class='wikilink' href='CurrentRelease'>Current Release</a>
+</li><li><a class='wikilink' href='Development'>Development</a>
+<ul><li><a class='wikilink' href='Download'>Download</a>
+</li><li><a class='wikilink' href='Bugs'>Bugs/Patches</a>
+</li><li><a class='wikilink' href='DevLevels'>Levels</a>
+</li><li><a class='wikilink' href='Windows'>Windows</a>
+</li></ul></li><li><a class='wikilink' href='OldVersions'>Old Versions</a>
+</li></ul><p class='vspace'></p><p class='sidehead' > <a class='wikilink' href='../PmWiki/PmWiki'>PmWiki</a>
+</p><ul><li><a class='wikilink' href='../PmWiki/BasicEditing'>Basic Editing</a>
+</li><li><a class='wikilink' href='../PmWiki/DocumentationIndex'>Documentation Index</a>
+</li><li><a class='wikilink' href='../PmWiki/FAQ'>PmWiki FAQ</a>
+</li><li><a class='wikilink' href='WikiSandbox'>WikiSandbox</a>
+</li></ul><p class='vspace'></p><p style='text-align: right;' > <span style='font-size:83%'><a class='wikilink' href='../Site/SideBar@action=edit'>edit SideBar</a></span>
+</p>
+
+				<div id="sidebarfooter">
+					<p><a href='../PmWiki.GeminiTwo'>GeminiTwo</a> 10<br />
+				  	Powered by <a href='../PmWiki.PmWiki'>PmWiki</a></p>
+			</div>
+		</div> </td>
+<!--/PageLeftFmt-->
+
+    <td id='main' valign='top' align='left'>
+<!--PageTitleFmt-->
+		<div id='titlebarbox'>
+			<div id='titlebar'>
+				<div id='pagegroup'><a href='HomePage'>Main</a></div>
+				<div id='pagetitle'>
+				<h1><a class='titlelink' href='DevUbuntu'>Dev Ubuntu</a></h1>
+				</div>
+			</div>
+		 </div>
+<!--/PageTitleFmt-->
+		<div class='clearer'><!--end of page--></div>
+		<div id='content'>
+<!--PageRightFmt--><!--/PageRightFmt-->
+<!--PageText-->
+<div id='wikitext'>
+<ul><li>First, follow the instructions to download and compile <a class='wikilink' href='ClanLib'>ClanLib</a>
+<p class='vspace'></p></li><li>Then, download the latest copy from <a class='wikilink' href='SVN'>SVN</a>:<pre>
+cd /usr/src
+mkdir pingus
+cd pingus
+svn checkout svn://svn.berlios.de/pingus/trunk
+</pre>
+<p class='vspace'></p></li><li>Now, you can compile it.<pre>
+./autogen.sh
+./configure
+make</pre>
+<p class='vspace'></p></li><li>To run, type the following:<pre>
+cd /usr/src/pingus/trunk/src
+./pingus
+</pre>
+</li></ul><p class='vspace'></p><hr />
+<p class='vspace'></p><p><span style='font-size:83%'>Back to <a class='wikilink' href='Development'>Development</a></span>
+</p><p class='vspace'></p>
+</div>
+
+			<div class='clearer'><!-- a clearer division --></div>
+		</div>
+<!--PageFootMenuFmt-->
+		<div id='footnavbox'>
+			<div id='footnav'><ul><li><a class='wikilink' href='DevUbuntu@action=edit'>Edit</a>
+</li><li><a class='wikilink' href='DevUbuntu@action=diff'>History</a>
+</li><li><a target='_blank'  class='wikilink' href='DevUbuntu@action=source'>Source</a>
+</li><li><a class='wikilink' href='DevUbuntu@action=upload'>Attach File</a>
+</li><li><a class='wikilink' href='../Site/Search@q=link=Main.DevUbuntu'>Backlinks</a>
+</li><li><a class='wikilink' href='../Site/Search@q=Main%252F'>List&nbsp;Group</a>
+</li></ul><p><br clear='all' />
+</p><div class='indent'><em>Page last modified October 26, 2005, at 07:53 PM</em>
+</div>
+</div>
+		</div>
+<!--/PageFootMenuFmt-->
+		</td></tr>
+	</table>
+<!--PageFooterFmt-->
+	<div id='footer'><p><a class='wikilink' href='../Site/Gemini-Configuration'>skin config</a> <em>** pmwiki-2.0.6 **</em>
+</p>
+</div>
+<!--/PageFooterFmt-->
+</div>
+</body>
+</html>

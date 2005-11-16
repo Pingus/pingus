@@ -1,0 +1,455 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <title>Pingus Wiki - PmWiki - Basic Editing</title>
+
+ <style type="text/css" media="all">
+ 		@import "http://www.cmhousing.net/pingus/wiki/pub/skins/gemini/layout-main.css";
+		@import "http://www.cmhousing.net/pingus/wiki/pub/skins/gemini/layout-smallheader.css";
+		@import "http://www.cmhousing.net/pingus/wiki/pub/skins/gemini/rb-narrow.css";
+ </style>
+  <link rel='stylesheet' href='../../pub/skins/gemini/font-sans.css' type='text/css' media='screen' />
+  <link rel='stylesheet' href='../../pub/skins/gemini/c-blue.css' type='text/css' media='screen' />
+  <!--HeaderText--><style type='text/css'><!--
+  ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
+  code { white-space: nowrap; }
+  .vspace { margin-top:1.33em; }
+  .indent { margin-left:40px; }
+  .outdent { margin-left:40px; text-indent:-40px; }
+  a.createlinktext { text-decoration:none; border-bottom:1px dotted gray; }
+  a.createlink { text-decoration:none; position:relative; top:-0.5em;
+    font-weight:bold; font-size:smaller; border-bottom:none; }
+  img { border:0px; }
+  .editconflict { color:green; font-style:italic; 
+  margin-top:1.33em; margin-bottom:1.33em; }
+ #rightbar { display:none } 
+
+  table.markup { border: 2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  td.markup1 { border-bottom: 1px solid #ccf; }
+  div.faq { margin-left:2em; }
+  div.faq p.question { margin: 1em 0 0.75em -2em; font-weight:bold; }
+  div.faq hr { margin-left: -2em; }
+   
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none; }
+
+--></style>  <meta name='robots' content='noindex,nofollow' />
+
+<script language="JavaScript" type="text/javascript">
+<!--
+function changeDivHeight() {
+	// scroll height:
+	var test1 = document.body.scrollHeight;
+	var test2 = document.body.offsetHeight;
+	if (test1 > test2) // all but Explorer Mac
+		{ var sy = document.body.scrollHeight }
+	else // Explorer Mac; would also work in Explorer 6 Strict, Mozilla and Safari
+		{ var sy = document.body.offsetHeight };
+	// window inner height:
+	if (self.innerHeight) // all except Explorer
+		{ var iy = self.innerHeight }
+	else if (document.body) // other Explorers
+		{ iy = document.body.clientHeight };
+	var maxy = sy;
+	//header and footer height:
+	var hdr = document.getElementById('header').offsetHeight;
+	var ftr = document.getElementById('footer').offsetHeight;
+	if (iy>sy) { maxy = iy };
+	if (hdr==maxy) { hdr = 0 };
+	var sbr = maxy - hdr - ftr - 12;
+  //testing://	window.alert ("maxy: "+maxy+"; hdr: "+hdr+"; ftr: "+ftr+"; sidebar:"+sbr);
+	if (self.innerHeight) {
+	document.getElementById('sidebar').style.height =  sbr + "px"; }
+	else document.getElementById('sidebar').style.height = sbr -7 + "px";
+}
+onresize = changeDivHeight;
+onload = changeDivHeight;
+
+-->
+</script>
+<link href="../../pub/skins/gemini/layout-print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+<body >
+<div id='wrapper'>
+<div id='header'>
+<!--PageTopMenuFmt-->
+	<div id='topnav'>
+		<ul><li><a accesskey='c'  class='wikilink' href='RecentChanges'>Recent Changes</a>
+</li><li><a accesskey='h'  class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/BasicEditing?action=diff'>Page History</a>
+</li><li><a accesskey='e'  class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/BasicEditing?action=edit'>Edit Page</a>
+</li></ul>
+
+		<div class='clearer'><!-- a clearer division --></div>
+	</div>
+<!--/PageTopMenuFmt-->
+<!--PageHeaderFmt--><!--/PageHeaderFmt-->
+</div>
+	<div class='clearer'><!-- a clearer division --></div>
+
+	  <table id='midtbl' width='100%' cellspacing='0' cellpadding='0'>
+		<tr>
+<!--PageLeftFmt-->
+		<td id='sidebarbox' valign='top'>
+			<div id='sidebar'>
+				<div id='sideheader' class='pageheader'> 
+    <a href='../index.html'><img src='http://www.cmhousing.net/pingus/pingus-logo.png' alt='Pingus Wiki' border='0' /></a> 
+    
+					
+				</div>
+				<div id='sidebarsearch'><form class='wikisearch' action='BasicEditing' method='get' >
+      <input type='hidden' name='n' value='PmWiki.BasicEditing' />
+      <input type='hidden' name='action' value='search' />
+      <input class='inputbox wikisearchbox' type='text' name='q' size='16' value=' Search Site ' 
+      onfocus="if(this.value=' Search Site ') {this.value=''}" onblur="if(this.value=='') 
+           {this.value=' Search Site '}" />
+      <input name='submit' type='submit' class='inputbutton wikisearchbutton' value=' Go '/>
+      </form></div>
+				<ul><li><a class='wikilink' href='../Main/HomePage'>HomePage</a>
+</li><li><a class='wikilink' href='../Main/CurrentRelease'>Current Release</a>
+</li><li><a class='wikilink' href='../Main/Development'>Development</a>
+<ul><li><a class='wikilink' href='../Main/Download'>Download</a>
+</li><li><a class='wikilink' href='../Main/Bugs'>Bugs/Patches</a>
+</li><li><a class='wikilink' href='../Main/DevLevels'>Levels</a>
+</li><li><a class='wikilink' href='../Main/Windows'>Windows</a>
+</li></ul></li><li><a class='wikilink' href='../Main/OldVersions'>Old Versions</a>
+</li></ul><p class='vspace'></p><p class='sidehead' > <a class='wikilink' href='PmWiki'>PmWiki</a>
+</p><ul><li><a class='selflink'>Basic Editing</a>
+</li><li><a class='wikilink' href='DocumentationIndex'>Documentation Index</a>
+</li><li><a class='wikilink' href='FAQ'>PmWiki FAQ</a>
+</li><li><a class='wikilink' href='../Main/WikiSandbox'>WikiSandbox</a>
+</li></ul><p class='vspace'></p><p style='text-align: right;' > <span style='font-size:83%'><a class='wikilink' href='../Site/SideBar@action=edit'>edit SideBar</a></span>
+</p>
+
+				<div id="sidebarfooter">
+					<p><a href='../PmWiki.GeminiTwo'>GeminiTwo</a> 10<br />
+				  	Powered by <a href='../PmWiki.PmWiki'>PmWiki</a></p>
+			</div>
+		</div> </td>
+<!--/PageLeftFmt-->
+
+    <td id='main' valign='top' align='left'>
+<!--PageTitleFmt-->
+		<div id='titlebarbox'>
+			<div id='titlebar'>
+				<div id='pagegroup'><a href='PmWiki'>Pm Wiki</a></div>
+				<div id='pagetitle'>
+				<h1><a class='titlelink' href='BasicEditing'>Basic Editing</a></h1>
+				</div>
+			</div>
+		 </div>
+<!--/PageTitleFmt-->
+		<div class='clearer'><!--end of page--></div>
+		<div id='content'>
+<!--PageRightFmt--><!--/PageRightFmt-->
+<!--PageText-->
+<div id='wikitext'>
+<p>
+<span class='frame rfloat' style='font-size: smaller; background-color: #ffffcc;' > authors (basic)</span>
+The pages on this site are <a class='wikilink' href='WikiWikiWeb'>WikiWikiWeb</a> pages, which means that pages can be created and edited by multiple authors. To edit a page, click the <strong>Edit</strong> link that exists somewhere on the page, usually in the header or footer. Some pages may be <a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/Passwords'>password-protected</a>, depending on the system's security policies, but many systems allow open editing of pages.
+</p><p class='vspace'></p>
+<p class='vspace'></p><p>When editing a page, you see the <em>markup text</em> that describes the content of the page.  The basic rules for page markup are fairly simple:
+</p><ol><li>Put a blank line between paragraphs
+</li><li>To make a list, start each line with # for numbered (ordered) lists or * for bulleted (unordered) lists.
+</li><li>To make a heading, start a line with two or more ! marks; !! is a subheading, and !!! is a sub-subheading.
+</li><li>To emphasize text, enclose it in 2 or 3 <em>single quotes</em>; <code>''text''</code> for italics or <code>'''text'''</code> for bold.
+</li><li>To make a link to another page, enclose the page's name in double brackets; for example <code>[[basic editing]]</code> links to this page. Links to <a class='createlinktext' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/NonexistentPages?action=edit'>nonexistent pages</a><a 
+    class='createlink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/NonexistentPages?action=edit'>?</a> are displayed specially, to invite others to create the page.
+</li><li>To make a link to another site, type its address, such as <a class='urllink' href='http://www.example.com/' rel='nofollow'>http://www.example.com/</a> .
+</li></ol><p class='vspace'></p><p><strong>If you want to experiment with editing a page, try it on the <a class='wikilink' href='../Main/WikiSandbox'>WikiSandbox</a>.</strong> You can <a class='wikilink' href='../Main/WikiSandbox@action=edit'>edit the WikiSandbox</a> without affecting anything important on this site. If you do edit other pages, it's courteous to <strong>sign</strong> your contribution; using ~~~ effectively 'signs' the name that you provide in the Author field on the Page Edit form.
+</p><p class='vspace'></p>
+<h2>Examples</h2>
+<p class='vspace'></p><p>The table below demonstrates many of the common markups used to format pages.  The left column shows the effect of the markup, the right column shows what to write to achieve the effect.  More details are available from the <a class='wikilink' href='TextFormattingRules'>text formatting rules</a> and other documentation pages. An <strong>exhaustive list</strong> of default markup is available as the <a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/MarkupMasterIndex'>markup master index</a>
+</p><p class='vspace'></p>
+<h3>General Usage</h3>
+<p class='vspace'></p>
+<table  width='100%' border='1' cellspacing='0' cellpadding='2'><tr><td  width='40%' valign='top'>
+<p style='text-align: center;' > <strong>What it looks like</strong>
+</p></td><td  valign='top'>
+<p style='text-align: center;' > <strong>What to type</strong>
+</p></td></tr><tr><td  valign='top'>
+<p>A single newline
+usually doesn't affect the layout.  
+</p></td><td  valign='top'> <pre>
+A single newline
+usually doesn't affect the layout.  
+</pre>
+</td></tr><tr><td  valign='top'>
+<p>An author must
+</p><p class='vspace'></p>
+<p>place an empty line in the markup to
+start a new paragraph. For a break<br />in the paragraph, use two backslashes.
+</p></td><td  valign='top'> <pre>
+An author must
+
+place an empty line in the markup to
+start a new paragraph. For a break\\
+in the paragraph, use two backslashes.
+</pre>
+</td></tr><tr><td  valign='top'>
+<ul><li>Lists are created by using asterisks
+<ul><li>More asterisks result in deeper lists
+<ul><li>The list is terminated
+</li></ul></li></ul></li></ul><p>by the first line that is not a list
+</p><p class='vspace'></p>
+<ol><li>Numbered lists
+</li><li>are also possible
+<ul><li>and lists can nest
+</li></ul></li></ol></td><td  valign='top'> <pre>
+* Lists are created by using asterisks
+** More asterisks result in deeper lists
+*** The list is terminated
+by the first line that is not a list
+
+# Numbered lists
+# are also possible
+** and lists can nest</pre>
+</td></tr><tr><td  valign='top'>
+<ul><li>A backslash at the end of a line joins the next line to the previous one.
+</li><li>Two backslashes create <br />a line break.
+</li><li>Three backslashes generate<br /><br />two line breaks.
+</li></ul></td><td  valign='top'> <pre>
+* A backslash at the \
+end of a line joins the \
+next line to the previous one.
+* Two backslashes create \\
+a line break.
+* Three backslashes generate\\\
+two line breaks.
+</pre>
+</td></tr><tr><td  valign='top'>
+<div class='indent'>An arrow (-&gt;) indents a paragraph
+<div class='indent'>Longer arrows indent more
+</div><p class='vspace'></p><div class='outdent'>A reverse arrow creates a hanging indent, the first line is outdented and remaining lines are indented.
+</div></div></td><td  valign='top'> <pre>
+-&gt;An arrow (-&gt;) indents a paragraph
+--&gt;Longer arrows indent more
+
+--&lt;A reverse arrow creates a \
+hanging indent, the first line \
+is outdented and remaining lines \
+are indented.
+</pre>
+</td></tr><tr><td  valign='top'>
+<dl><dt> Definition list </dt><dd> list of definitions
+</dd><dt> item </dt><dd> the item's definition
+</dd><dt> another item </dt><dd> another item's definition
+</dd></dl></td><td  valign='top'> <pre>
+: Definition list : list of definitions
+: item : the item's definition
+: another item : another item's definition 
+</pre>
+</td></tr><tr><td  valign='top'>
+<pre> Lines that begin with
+ a space are formatted exactly
+ as typed, in a fixed-width font.
+</pre><p class='vspace'></p><p>Note that very long lines of preformatted text
+can cause the whole page to be wide.
+</p></td><td  valign='top'> <pre>
+ Lines that begin with
+ a space are formatted exactly
+ as typed, in a fixed-width font.</pre>
+</td></tr><tr><td  valign='top'>
+<p style='text-align: center;' > This text is centered.
+</p><p class='vspace'></p>
+<p style='text-align: right;' > This text is right justified.
+</p></td><td  valign='top'> <pre>
+%center% This text is centered.
+
+%right% This text is right justified.</pre>
+</td></tr><tr><td  valign='top'>
+<p>Four or more dashes
+at the beginning of a line
+</p><hr />
+<p>produce a horizontal line.
+</p></td><td  valign='top'> <pre>
+Four or more dashes
+at the beginning of a line
+----
+produce a horizontal line.
+</pre>
+</td></tr></table>
+<p class='vspace'></p><h3><a name='links' id='links'></a> <a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/Links'>Links</a></h3>
+<table  width='100%' border='1' cellspacing='0' cellpadding='2'><tr><td  width='40%' valign='top'>
+<p style='text-align: center;' > <strong>What it looks like</strong>
+</p></td><td  valign='top'>
+<p style='text-align: center;' > <strong>What to type</strong>
+</p></td></tr><tr><td  valign='top'>
+<p>Practice editing
+in the <a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/WikiSandbox'>wiki sandbox</a>.
+</p><p class='vspace'></p>
+<ul><li>Text in double brackets become links to other pages.
+</li><li>Words are automatically capitalized in page titles.
+</li></ul></td><td  valign='top'> <pre>
+Practice editing
+in the [[wiki sandbox]].
+</pre>
+</td></tr><tr><td  valign='top'>
+<p>Practice editing in the
+<a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/WikiSandbox'>practice area</a>.
+</p><p class='vspace'></p>
+<ul><li>Text after a pipe (|) is used as the link text
+</li></ul></td><td  valign='top'> <pre>
+Practice editing in the
+[[WikiSandbox | practice area]].
+</pre>
+</td></tr><tr><td  valign='top'>
+<p>Practice editing in the
+<a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/WikiSandbox'>wiki sandboxes</a>.
+</p><p class='vspace'></p>
+<p>Practice editing in the
+<a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/WikiSandbox'> sandbox</a>.
+</p><p class='vspace'></p>
+<ul><li>Endings become part of the link text.
+</li><li>Parentheses hide parts of the link name.
+</li></ul></td><td  valign='top'> <pre>
+Practice editing in the
+[[wiki sandbox]]es.
+
+Practice editing in the
+[[(wiki) sandbox]].
+</pre>
+</td></tr><tr><td  valign='top'>
+<p>What's an <a class='urllink' href='http://www.wikipedia.com/wiki/aardvark' rel='nofollow'>aardvark</a>, anyway?
+</p><p class='vspace'></p>
+<ul><li>Pmwiki can use <a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/InterMap'>InterMap prefixes</a> that have specific meanings.
+</li><li>Parentheses can hide those too.
+</li></ul></td><td  valign='top'> <pre>
+%newwin%What's an
+[[(Wikipedia:)aardvark]], anyway?
+</pre>
+<p class='vspace'></p></td></tr><tr><td  valign='top'>
+<p>Links to external sources can be entered
+</p><ol><li>bare url:  <a class='urllink' href='http://www.google.com' rel='nofollow'>http://www.google.com</a>
+</li><li>link text: <a class='urllink' href='http://www.google.com' rel='nofollow'>Google</a>
+</li><li>as reference: <a class='urllink' href='http://www.google.com' rel='nofollow'>[1]</a>
+</li></ol></td><td  valign='top'> <pre>
+Links to external sources can be entered
+# bare url:  http://www.google.com
+# link text: [[http://www.google.com | Google]]
+# as reference: [[http://www.google.com |#]]
+</pre>
+<p class='vspace'></p></td></tr><tr><td  valign='top'>
+<p>Links can open in another window,
+as in  <a target='_blank'  class='urllink' href='http://www.pmwiki.org' rel='nofollow'>http://www.pmwiki.org</a>.
+</p></td><td  valign='top'> <pre>
+Links can open in another window,
+as in %newwin% http://www.pmwiki.org.
+</pre>
+</td></tr></table>
+<p class='vspace'></p><h3>Character formatting</h3>
+<p class='vspace'></p>
+<table  width='100%' border='1' cellspacing='0' cellpadding='2'><tr><td  width='40%' valign='top'>
+<p><em>Emphasize</em>, <strong>strongly</strong>, 
+<strong><em>very strongly</em></strong>.
+</p><p class='vspace'></p>
+<ul><li>These are all apostrophes (single-quote marks), not double-quotes.
+</li></ul></td><td  valign='top'> <pre>
+''Emphasize'', '''strongly''', 
+'''''very strongly'''''. </pre>
+<p class='vspace'></p></td></tr><tr><td  valign='top'>
+<p><code>Monospaced text</code>
+</p><p class='vspace'></p><pre>This is a
+  preformatted
+    text block</pre>
+</td><td  valign='top'> <pre>
+@@Monospaced text@@ </pre>
+<pre> 
+[@This is a
+  preformatted
+    text block@]
+</pre></td></tr><tr><td  valign='top'>
+<ul><li>Text with <sup>superscripts</sup>
+</li><li>Text with <sub>subscripts</sub>
+</li><li>deleted <del>strikethrough</del> text
+</li><li>inserted <ins>underline</ins> text
+</li><li><span style='font-size:120%'>big</span>, <span style='font-size:144%'>bigger</span>, <span style='font-size:83%'>small</span>, <span style='font-size:69%'>smaller</span> text
+</li></ul></td><td  valign='top'> <pre>
+* Text with '^superscripts^'
+* Text with '_subscripts_'
+* deleted {-strikethrough-} text
+* inserted {+underline+} text
+* [+big+], [++bigger++], [-small-], [--smaller--] text
+</pre>
+</td></tr><tr><td  valign='top'>
+<p><a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/WikiStyles'>WikiStyles</a> allow <span style='color: red;' > text</span>
+<span style='color: blue;' > to </span><span style='color: green;' > be </span>
+<span style='color: #ff7f00;' > different </span>colors.
+</p><p class='vspace'></p>
+<ul><li>Use lowercase letters for RGB colors (#ff7f00, not #FF7F00).
+</li></ul></td><td  valign='top'> <pre>
+[[WikiStyles]] allow %red% text
+%blue% to %green% be 
+%color=#ff7f00% different %%colors.
+</pre>
+</td></tr></table>
+<p class='vspace'></p><h2>Headings and blocks</h2>
+<table  width='100%' border='1' cellspacing='0' cellpadding='2'><tr><td  width='40%' valign='top'>
+<h2>Major subheading</h2>
+<p class='vspace'></p><h3>Minor subheading</h3>
+</td><td  valign='top'> <pre>
+!! Major subheading
+
+!!! Minor subheading
+</pre>
+</td></tr><tr><td  valign='top'>
+<div class='outdent'><strong>Page titles</strong>
+</div><p><em>Not shown</em>
+</p><p class='vspace'></p>
+<ul><li>The <code>(:title:)</code> directive sets the page's title to something other than its name.
+</li></ul></td><td  valign='top'> <pre>
+(:title Basic Editing:)
+</pre>
+</td></tr><tr><td  valign='top'>
+<div class='outdent'><strong>Block styles</strong>
+</div><p style='color: purple;' >All of the text in this block
+is purple.
+</p><ul><li style='color: purple;' >Purple cow
+</li><li style='color: purple;' >Purple people eater
+</li><li style='color: red;' > Now this list is red
+</li><li>And this is normal
+</li></ul></td><td  valign='top'> <pre>
+&gt;&gt;purple&lt;&lt;
+All of the text in this block
+is purple.
+* Purple cow
+* Purple people eater
+&gt;&gt;red&lt;&lt;
+* Now this list is red
+&gt;&gt;&lt;&lt;
+* And this is normal</pre>
+</td></tr></table>
+<p class='vspace'></p><p style='background-color: #eee;' ><span class='wikitrail'>&lt;&lt; <a class='wikilink' href='DocumentationIndex#misc'>About PmWiki</a> | <a class='wikilink' href='DocumentationIndex'>DocumentationIndex</a> | <a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/CreatingNewPages'>Creating new pages</a> &gt;&gt;</span>
+</p>
+</div>
+
+			<div class='clearer'><!-- a clearer division --></div>
+		</div>
+<!--PageFootMenuFmt-->
+		<div id='footnavbox'>
+			<div id='footnav'><ul><li><a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/BasicEditing?action=edit'>Edit</a>
+</li><li><a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/BasicEditing?action=diff'>History</a>
+</li><li><a target='_blank'  class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/BasicEditing?action=source'>Source</a>
+</li><li><a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/PmWiki/BasicEditing?action=upload'>Attach File</a>
+</li><li><a class='wikilink' href='http://www.cmhousing.net/pingus/wiki/pmwiki.php/Site/Search?q=link=PmWiki.BasicEditing'>Backlinks</a>
+</li><li><a class='wikilink' href='../Site/Search@q=PmWiki%252F'>List&nbsp;Group</a>
+</li></ul><p><br clear='all' />
+</p><div class='indent'><em>Page last modified September 11, 2005, at 10:37 AM</em>
+</div>
+</div>
+		</div>
+<!--/PageFootMenuFmt-->
+		</td></tr>
+	</table>
+<!--PageFooterFmt-->
+	<div id='footer'><p><a class='wikilink' href='../Site/Gemini-Configuration'>skin config</a> <em>** pmwiki-2.0.6 **</em>
+</p>
+</div>
+<!--/PageFooterFmt-->
+</div>
+</body>
+</html>

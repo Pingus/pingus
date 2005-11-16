@@ -79,17 +79,17 @@ EditorScreen::on_escape_press()
 }
 
 // Save the current level
-bool 
-EditorScreen::save_level()
+void 
+EditorScreen::save_level(const std::string levelfile)
 {
-	return false;
+	plf->save_level(levelfile);
 }
 
-// Load a new level by opening a dialog box
-bool 
-EditorScreen::load_level()
+// Load a new level
+void 
+EditorScreen::load_level(const std::string levelfile)
 {
-	return false;
+	plf->load_level(levelfile);
 }
 
 // Play the current level (save to a temporary file 

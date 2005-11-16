@@ -20,6 +20,7 @@
 #include <ClanLib/Display/sprite.h>
 #include "panel_buttons.hxx"
 #include "../display/scene_context.hxx"
+#include "../path_manager.hxx"
 #include "../fonts.hxx"
 #include "../resource.hxx"
 #include "editor_screen.hxx"
@@ -104,6 +105,26 @@ PanelButtonLoad::on_primary_button_click(int x, int y)
 {
 	// TODO: Open a file dialog box to load a level.
 	std::cout << "Load a level" << std::endl;
+
+	panel->get_screen()->load_level(path_manager.complete("levels/tutorial/miner-tutorial2-grumbel.pingus"));
+}
+
+// Standard save button
+PanelButtonSave::PanelButtonSave(EditorPanel *p) :
+	PanelButton(p)
+{
+	tooltip = "Save current level";
+  sur = Resource::load_sprite("core/editor/save");
+}
+
+// When clicked, close the EditorScreen
+void
+PanelButtonSave::on_primary_button_click(int x, int y)
+{
+	// TODO: Open a file dialog box to load a level.
+	std::cout << "Save the level" << std::endl;
+
+	panel->get_screen()->save_level(path_manager.complete("levels/test.pingus"));
 }
 
 } // Editor namespace

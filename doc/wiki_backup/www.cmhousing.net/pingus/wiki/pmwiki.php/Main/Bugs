@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <title>Pingus Wiki - Main - Bugs</title>
+
+ <style type="text/css" media="all">
+ 		@import "http://www.cmhousing.net/pingus/wiki/pub/skins/gemini/layout-main.css";
+		@import "http://www.cmhousing.net/pingus/wiki/pub/skins/gemini/layout-smallheader.css";
+		@import "http://www.cmhousing.net/pingus/wiki/pub/skins/gemini/rb-narrow.css";
+ </style>
+  <link rel='stylesheet' href='../../pub/skins/gemini/font-sans.css' type='text/css' media='screen' />
+  <link rel='stylesheet' href='../../pub/skins/gemini/c-blue.css' type='text/css' media='screen' />
+  <!--HeaderText--><style type='text/css'><!--
+  ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
+  code { white-space: nowrap; }
+  .vspace { margin-top:1.33em; }
+  .indent { margin-left:40px; }
+  .outdent { margin-left:40px; text-indent:-40px; }
+  a.createlinktext { text-decoration:none; border-bottom:1px dotted gray; }
+  a.createlink { text-decoration:none; position:relative; top:-0.5em;
+    font-weight:bold; font-size:smaller; border-bottom:none; }
+  img { border:0px; }
+  .editconflict { color:green; font-style:italic; 
+  margin-top:1.33em; margin-bottom:1.33em; }
+ #rightbar { display:none } 
+
+  table.markup { border: 2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  td.markup1 { border-bottom: 1px solid #ccf; }
+  div.faq { margin-left:2em; }
+  div.faq p.question { margin: 1em 0 0.75em -2em; font-weight:bold; }
+  div.faq hr { margin-left: -2em; }
+   
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none; }
+
+--></style>  <meta name='robots' content='index,follow' />
+
+<script language="JavaScript" type="text/javascript">
+<!--
+function changeDivHeight() {
+	// scroll height:
+	var test1 = document.body.scrollHeight;
+	var test2 = document.body.offsetHeight;
+	if (test1 > test2) // all but Explorer Mac
+		{ var sy = document.body.scrollHeight }
+	else // Explorer Mac; would also work in Explorer 6 Strict, Mozilla and Safari
+		{ var sy = document.body.offsetHeight };
+	// window inner height:
+	if (self.innerHeight) // all except Explorer
+		{ var iy = self.innerHeight }
+	else if (document.body) // other Explorers
+		{ iy = document.body.clientHeight };
+	var maxy = sy;
+	//header and footer height:
+	var hdr = document.getElementById('header').offsetHeight;
+	var ftr = document.getElementById('footer').offsetHeight;
+	if (iy>sy) { maxy = iy };
+	if (hdr==maxy) { hdr = 0 };
+	var sbr = maxy - hdr - ftr - 12;
+  //testing://	window.alert ("maxy: "+maxy+"; hdr: "+hdr+"; ftr: "+ftr+"; sidebar:"+sbr);
+	if (self.innerHeight) {
+	document.getElementById('sidebar').style.height =  sbr + "px"; }
+	else document.getElementById('sidebar').style.height = sbr -7 + "px";
+}
+onresize = changeDivHeight;
+onload = changeDivHeight;
+
+-->
+</script>
+<link href="../../pub/skins/gemini/layout-print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+<body >
+<div id='wrapper'>
+<div id='header'>
+<!--PageTopMenuFmt-->
+	<div id='topnav'>
+		<ul><li><a accesskey='c'  class='wikilink' href='RecentChanges'>Recent Changes</a>
+</li><li><a accesskey='h'  class='wikilink' href='Bugs@action=diff'>Page History</a>
+</li><li><a accesskey='e'  class='wikilink' href='Bugs@action=edit'>Edit Page</a>
+</li></ul>
+
+		<div class='clearer'><!-- a clearer division --></div>
+	</div>
+<!--/PageTopMenuFmt-->
+<!--PageHeaderFmt--><!--/PageHeaderFmt-->
+</div>
+	<div class='clearer'><!-- a clearer division --></div>
+
+	  <table id='midtbl' width='100%' cellspacing='0' cellpadding='0'>
+		<tr>
+<!--PageLeftFmt-->
+		<td id='sidebarbox' valign='top'>
+			<div id='sidebar'>
+				<div id='sideheader' class='pageheader'> 
+    <a href='../index.html'><img src='http://www.cmhousing.net/pingus/pingus-logo.png' alt='Pingus Wiki' border='0' /></a> 
+    
+					
+				</div>
+				<div id='sidebarsearch'><form class='wikisearch' action='Bugs' method='get' >
+      <input type='hidden' name='n' value='Main.Bugs' />
+      <input type='hidden' name='action' value='search' />
+      <input class='inputbox wikisearchbox' type='text' name='q' size='16' value=' Search Site ' 
+      onfocus="if(this.value=' Search Site ') {this.value=''}" onblur="if(this.value=='') 
+           {this.value=' Search Site '}" />
+      <input name='submit' type='submit' class='inputbutton wikisearchbutton' value=' Go '/>
+      </form></div>
+				<ul><li><a class='wikilink' href='HomePage'>HomePage</a>
+</li><li><a class='wikilink' href='CurrentRelease'>Current Release</a>
+</li><li><a class='wikilink' href='Development'>Development</a>
+<ul><li><a class='wikilink' href='Download'>Download</a>
+</li><li><a class='selflink'>Bugs/Patches</a>
+</li><li><a class='wikilink' href='DevLevels'>Levels</a>
+</li><li><a class='wikilink' href='Windows'>Windows</a>
+</li></ul></li><li><a class='wikilink' href='OldVersions'>Old Versions</a>
+</li></ul><p class='vspace'></p><p class='sidehead' > <a class='wikilink' href='../PmWiki/PmWiki'>PmWiki</a>
+</p><ul><li><a class='wikilink' href='../PmWiki/BasicEditing'>Basic Editing</a>
+</li><li><a class='wikilink' href='../PmWiki/DocumentationIndex'>Documentation Index</a>
+</li><li><a class='wikilink' href='../PmWiki/FAQ'>PmWiki FAQ</a>
+</li><li><a class='wikilink' href='WikiSandbox'>WikiSandbox</a>
+</li></ul><p class='vspace'></p><p style='text-align: right;' > <span style='font-size:83%'><a class='wikilink' href='../Site/SideBar@action=edit'>edit SideBar</a></span>
+</p>
+
+				<div id="sidebarfooter">
+					<p><a href='../PmWiki.GeminiTwo'>GeminiTwo</a> 10<br />
+				  	Powered by <a href='../PmWiki.PmWiki'>PmWiki</a></p>
+			</div>
+		</div> </td>
+<!--/PageLeftFmt-->
+
+    <td id='main' valign='top' align='left'>
+<!--PageTitleFmt-->
+		<div id='titlebarbox'>
+			<div id='titlebar'>
+				<div id='pagegroup'><a href='HomePage'>Main</a></div>
+				<div id='pagetitle'>
+				<h1><a class='titlelink' href='Bugs'>Bugs</a></h1>
+				</div>
+			</div>
+		 </div>
+<!--/PageTitleFmt-->
+		<div class='clearer'><!--end of page--></div>
+		<div id='content'>
+<!--PageRightFmt--><!--/PageRightFmt-->
+<!--PageText-->
+<div id='wikitext'>
+<h1>Bugs and Patches</h1>
+<p class='vspace'></p><h2>New Pingus Bugs</h2>
+<ul><li><a class='createlinktext' href='ResolutionsOtherThanDefaultAreMessedUp@action=edit'>Resolutions other than default are messed up</a><a 
+    class='createlink' href='ResolutionsOtherThanDefaultAreMessedUp@action=edit'>?</a>
+</li><li><a class='wikilink' href='TinyBottomAndRightBorder'>Tiny bottom and right border</a>
+</li><li><a class='wikilink' href='WorldmapViewIsInefficient'>Worldmap view is Inefficient</a>
+</li><li><a class='wikilink' href='JumpersSometimesReverseDirection'>Jumpers sometimes reverse direction</a>
+</li><li><a class='wikilink' href='MulticharsetSupport'>Multicharset support</a>
+</li><li><a class='wikilink' href='BreefingTransitionFlickering'>Breefing transition flickering</a>
+</li><li><a class='wikilink' href='FastAnimations'>Fast animations</a>
+</li><li><a class='wikilink' href='MemoryLeakOnWorldmap'>Memory leak on worldmap</a>
+<p class='vspace'></p></li><li>See also <a class='wikilink' href='Windows'>Windows</a> for Windows-specific issues.
+</li><li>See also <a class='urllink' href='http://savannah.nongnu.org/bugs/?group=pingus' rel='nofollow'>Savannah Bugtracker</a> for an old list of bugs (many of which may not be bugs anymore)
+</li></ul><p class='vspace'></p><h2>New <a class='wikilink' href='ClanLib'>ClanLib</a> Bugs/Patches</h2>
+<p class='vspace'></p><h2>Patches that haven't been committed to the SVN trunk yet</h2>
+<p class='vspace'></p><p><span style='color: red;' > The following are only here for historical purposes  They have already been patched in the latest versions of the programs.</span>
+</p><p class='vspace'></p>
+<h2>Old <a class='wikilink' href='ClanLib'>ClanLib</a> patches (already in <a class='wikilink' href='SVN'>SVN</a>)</h2>
+<ul><li><a class='urllink' href='http://www.cmhousing.net/pingus/wiki/uploads/Main/clanlib_check_gl_context.diff' rel='nofollow'>Attach:clanlib_check_gl_context.diff</a>
+</li></ul><p class='vspace'></p><h3>Fixed in latest <a class='wikilink' href='SVN'>SVN</a> copy:</h3>
+<ul><li><a class='wikilink' href='BlitterScalingDoesntWorkCorrectly'>Blitter Scaling doesn't work correctly</a>
+</li><li><a class='wikilink' href='NoWayToExitCredits'>No way to exit Credits</a>
+</li><li><a class='wikilink' href='TimerDoesntDisplayBehindNon-transparentSurfaces'>Timer doesn't display behind non-transparent surfaces</a>
+</li><li><a class='wikilink' href='DiggingNearSolidSurface'>Digging near solid surface</a>
+</li><li><a class='urllink' href='http://www.cmhousing.net/pingus/wiki/uploads/Main/fix_segfault.diff' rel='nofollow'>Attach:fix_segfault.diff</a>
+<ul><li><a class='wikilink' href='ClickingExitSometimesCrashesGame'>Clicking Exit sometimes crashes game</a>
+</li></ul></li><li><a class='urllink' href='http://www.cmhousing.net/pingus/wiki/uploads/Main/msvc.diff' rel='nofollow'>Make compiling possible in MSVC</a> - Fixes some random issues for MSVC compiler.
+</li><li><a class='urllink' href='http://www.cmhousing.net/pingus/wiki/uploads/Main/configure_mingw.diff' rel='nofollow'>Make compiling under MinGW possible without modifications</a>  <span style='color: red;' >(This has some issues still)</span>
+</li><li><a class='urllink' href='http://www.cmhousing.net/pingus/wiki/uploads/Main/multiplayer_new.diff' rel='nofollow'>Makes Pingus load the correct sprites for Multiplayer (sent to David)</a>
+<ul><li><a class='urllink' href='http://www.cmhousing.net/pingus/wiki/uploads/Main/pingus_multiplayer_sprites.zip' rel='nofollow'>Zip of all of data/images/pingus for Multiplayer patch</a>
+</li></ul></li><li><a class='wikilink' href='MemoryLeaks'>Memory Leaks</a>
+</li><li><a class='urllink' href='http://www.cmhousing.net/pingus/wiki/uploads/Main/update_acinclude.diff' rel='nofollow'>Fix the acinclude warnings</a>
+</li><li><a class='wikilink' href='FullscreenDidntWork'>Fullscreen didn't work</a>
+</li><li><a class='wikilink' href='LiquidRepeat'>Liquid repeat</a>
+</li><li><a class='urllink' href='http://www.cmhousing.net/pingus/wiki/uploads/Main/pingus_menu.diff' rel='nofollow'>Add a file dialog box to load custom levels from the main menu</a>
+</li><li><a class='urllink' href='http://www.cmhousing.net/pingus/wiki/uploads/Main/fix_traps.diff' rel='nofollow'>Traps are not displaying</a>
+</li><li><a class='urllink' href='http://www.cmhousing.net/pingus/wiki/uploads/Main/fix_pingus_level.diff' rel='nofollow'>Pingus Levels bomb if no music specified in XML</a>
+</li><li><a class='wikilink' href='BetterGamescreenScrolling'>Better gamescreen scrolling</a>
+</li><li><a class='wikilink' href='EntranceDroppingPingusToTheSide'>Entrance dropping pingus to the side</a>
+</li><li><a class='wikilink' href='ArmageddonButtonWithBadPicture'>Armageddon button with bad picture</a>
+</li><li><a class='wikilink' href='BomerAndBridgerAnimationDisapears'>Bomer and bridger animation disapears</a>
+</li><li><a class='wikilink' href='KeyboardShotcutsDidntWork'>Keyboard shotcuts didn't work</a>
+</li><li><a class='wikilink' href='PanicIslandBug'>Panic Island Bug</a>
+</li><li><a class='wikilink' href='PinguWontGoInTheExit'>Pingu won't go in the exit</a>
+</li><li><a class='wikilink' href='GameBackgroundMissingOnLeft'>Game background missing on left</a>
+</li><li><a class='wikilink' href='FinishingALevelNotUnlockingTheNext'>Finishing a level not unlocking the next</a>
+</li><li><a class='urllink' href='http://www.cmhousing.net/pingus/wiki/uploads/Main/fix_paths.diff' rel='nofollow'>Fix some path issues on Windows and fix 'variables.xml not found' error</a>
+</li><li><a class='urllink' href='http://www.cmhousing.net/pingus/wiki/uploads/Main/fix_worldmap_level_loading.diff' rel='nofollow'>Worldmap won't unlock levels</a>
+</li></ul><p class='vspace'></p><hr />
+<p class='vspace'></p><p><span style='font-size:83%'>If you want to upload a patch, email the <a class='urllink' href='mailto:pingus-devel_at_lists.gnu.org' rel='nofollow'>mailto:pingus-devel_at_lists.gnu.org</a></span>
+</p>
+</div>
+
+			<div class='clearer'><!-- a clearer division --></div>
+		</div>
+<!--PageFootMenuFmt-->
+		<div id='footnavbox'>
+			<div id='footnav'><ul><li><a class='wikilink' href='Bugs@action=edit'>Edit</a>
+</li><li><a class='wikilink' href='Bugs@action=diff'>History</a>
+</li><li><a target='_blank'  class='wikilink' href='Bugs@action=source'>Source</a>
+</li><li><a class='wikilink' href='Bugs@action=upload'>Attach File</a>
+</li><li><a class='wikilink' href='../Site/Search@q=link=Main.Bugs'>Backlinks</a>
+</li><li><a class='wikilink' href='../Site/Search@q=Main%252F'>List&nbsp;Group</a>
+</li></ul><p><br clear='all' />
+</p><div class='indent'><em>Page last modified November 14, 2005, at 11:22 AM</em>
+</div>
+</div>
+		</div>
+<!--/PageFootMenuFmt-->
+		</td></tr>
+	</table>
+<!--PageFooterFmt-->
+	<div id='footer'><p><a class='wikilink' href='../Site/Gemini-Configuration'>skin config</a> <em>** pmwiki-2.0.6 **</em>
+</p>
+</div>
+<!--/PageFooterFmt-->
+</div>
+</body>
+</html>

@@ -54,9 +54,10 @@ EditorPanel::~EditorPanel()
 void
 EditorPanel::init()
 {
-	// Create exit button
+	// Create panel buttons
 	add((PanelButton*)(new PanelButtonExit(this)));
 	add((PanelButton*)(new PanelButtonLoad(this)));
+	add((PanelButton*)(new PanelButtonSave(this)));
 
 	// Create groundpiece Combobox (FIXME: Temporary testing)
 	combo_groundpieces = new GUI::Combobox(Vector(500, 30));

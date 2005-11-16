@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <map>
 #include "vector.hxx"
 #include "xml_file_writer.hxx"
 
@@ -26,7 +27,8 @@ namespace Pingus {
 XMLFileWriter::XMLFileWriter(std::ostream& out_)
   : out(&out_)
 {
-}
+	if ((*out).out)
+		(*out) << "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";}
 
 XMLFileWriter::~XMLFileWriter()
 {
@@ -90,8 +92,29 @@ XMLFileWriter::write_bool   (const char* name, bool value)
 void
 XMLFileWriter::write_string (const char* name, const std::string& value)
 {
-  // FIXME: we don't encode entities EVIL!!!!
-  (*out) << "<" << name << ">" << /*XMLhelper::encode_entities(*/value/*)*/ << "</" << name << ">\n";
+	// Perform basic XML encoding (turns apostrophes into &apos;, etc.
+	std::string new_value = value;
+	std::string::size_type pos;
+
+	std::map<std::string, std::string> replacements;
+	
+	replacements["&"] = "&amp;";
+	replacements["\""] = "&quot;";
+	replacements["\'"] = "&apos;";
+	replacements["<"] = "&lt;";
+	replacements[">"] = "&gt;";
+
+	for (std::map<std::string, std::string>::iterator i = replacements.begin();
+		i != replacements.end(); i++)
+	{
+		for (pos = new_value.find(i->first); pos != std::string::npos; pos = new_value.find(i->first))
+		{
+			// Replace character with encoding characters
+			new_value.replace(pos, 1, i->second);
+		}
+	}
+	
+	(*out) << "<" << name << ">" << new_value << "</" << name << ">\n";
 }
 
 void
