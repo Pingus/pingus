@@ -31,7 +31,7 @@ namespace Pingus {
 
 namespace Editor {
 
-	class LevelObjs;
+	class LevelObj;
 
 class LevelImpl
 {
@@ -64,7 +64,7 @@ public:
 	std::string comment;
   std::string music;
 
-  std::vector<LevelObjs*> objects;
+  std::vector<LevelObj*> objects;
 
 private:
 	LevelImpl (const LevelImpl&);
