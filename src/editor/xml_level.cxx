@@ -22,6 +22,7 @@
 #include <fstream>
 #include "xml_level.hxx"
 #include "level_impl.hxx"
+#include "level_objs.hxx"
 #include "../xml_pingus_level.hxx"
 #include "../xml_file_writer.hxx"
 
@@ -125,7 +126,12 @@ void XMLLevel::load_level(const std::string& filename)
 	impl->author = existing_level.get_author();
 	impl->music = existing_level.get_music();
 	
-	// TODO: Get the objects
+	// Get the objects
+	std::vector<FileReader> objs = existing_level.get_objects();
+	for (std::vector<FileReader>::const_iterator i = objs.begin(); i != objs.end(); i++)
+	{
+		// TODO: Load information about each object
+	}
 }
 
 }	// Editor namespace

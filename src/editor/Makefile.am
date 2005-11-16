@@ -22,11 +22,12 @@ noinst_LIBRARIES = libpingus_editor.a
 
 libpingus_editor_a_CPPFLAGS = @PINGUS_CFLAGS@
 libpingus_editor_a_SOURCES =       \
-        editor_screen.cxx	editor_screen.hxx	\
-		editor_panel.cxx	editor_panel.hxx	\
-		panel_button.cxx	panel_button.hxx	\
-		editor_viewport.cxx	editor_viewport.hxx \
-		xml_level.cxx		xml_level.hxx		\
-		level_impl.hxx
+editor_screen.cxx	editor_screen.hxx	\
+editor_panel.cxx	editor_panel.hxx	\
+panel_button.cxx	panel_button.hxx	\
+editor_viewport.cxx	editor_viewport.hxx \
+xml_level.cxx		xml_level.hxx		\
+level_objs.cxx		level_objs.hxx		\
+level_impl.hxx \
 
 # EOF #

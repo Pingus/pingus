@@ -17,15 +17,16 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#ifndef HEADER_PINGUS_EDITOR_LEVEL_IMPL_HXX
+#define HEADER_PINGUS_EDITOR_LEVEL_IMPL_HXX
+
 #include <ClanLib/Core/System/sharedptr.h>
 #include <ClanLib/Core/Math/size.h>
 #include <ClanLib/Display/color.h>
 #include <string>
 #include <vector>
 #include <map>
-
-#ifndef HEADER_PINGUS_EDITOR_LEVEL_IMPL_HXX
-#define HEADER_PINGUS_EDITOR_LEVEL_IMPL_HXX
+#include "level_objs.hxx"
 
 namespace Pingus {
 
@@ -43,6 +44,14 @@ public:
   {
     // Do nothing
   }
+
+	/** Destructor */
+	~LevelImpl()
+	{
+		for (unsigned i = 0; i < objects.size(); i++)
+			delete objects[i];
+		objects.clear();
+	}
                     
   std::string resname;
 
