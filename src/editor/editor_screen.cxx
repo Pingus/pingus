@@ -31,6 +31,7 @@
 #include "editor_panel.hxx"
 #include "editor_viewport.hxx"
 #include "xml_level.hxx"
+#include "level_objs.hxx"
 
 namespace Pingus {
 
@@ -113,6 +114,7 @@ EditorScreen::draw(Pingus::DrawingContext &gc)
 	gc.draw_fillrect(0, 0, (float)CL_Display::get_width(), 
 		(float)CL_Display::get_height(), CL_Color::black, -10000);
 	gui_manager->draw(gc);
+
 	gc.print_center(Fonts::pingus_large, (float)(CL_Display::get_width() / 2), 
 		(float)(CL_Display::get_height() / 2), "Not yet functional");
 	return true;

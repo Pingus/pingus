@@ -1780,10 +1780,25 @@
 					RelativePath=".\src\editor\editor_viewport.hxx">
 				</File>
 				<File
+					RelativePath=".\src\editor\level_impl.hxx">
+				</File>
+				<File
+					RelativePath=".\src\editor\level_objs.cxx">
+				</File>
+				<File
+					RelativePath=".\src\editor\level_objs.hxx">
+				</File>
+				<File
 					RelativePath=".\src\editor\panel_buttons.cxx">
 				</File>
 				<File
 					RelativePath=".\src\editor\panel_buttons.hxx">
+				</File>
+				<File
+					RelativePath=".\src\editor\xml_level.cxx">
+				</File>
+				<File
+					RelativePath=".\src\editor\xml_level.hxx">
 				</File>
 			</Filter>
 		</Filter>

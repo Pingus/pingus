@@ -21,26 +21,55 @@
 #include <iostream>
 #include "level_objs.hxx"
 #include "../resource.hxx"
-#include "../resource_modifier.hxx"
+#include "../res_descriptor.hxx"
 #include "../display/drawing_context.hxx"
+#include "../xml_file_writer.hxx"
 
 namespace Pingus {
 
 namespace Editor {
 
 // Default constructor
-LevelObj::LevelObj(const std::string res_name) :
-	sprite(Resource::load_sprite(res_name)),
-	modifier("ROT0")
+LevelObj::LevelObj(std::string obj_name) :
+	section_name(obj_name),
+	width(0),
+	speed(0),
+	parallax(0.0),
+	owner_id(-1),
+	color(0,0,0,0),
+	scroll_x(0),
+	scroll_y(0),
+	stretch_x(false),
+	stretch_y(false),
+	keep_aspect(false),
+	para_x(0),
+	para_y(0),
+	attribs(get_attributes(obj_name))
 {
+	
+}
 
+void 
+LevelObj::set_res_desc(const ResDescriptor d)
+{
+	desc = d;
+	sprite = Resource::load_sprite(desc);
 }
 
 // Draw the sprite
 void
 LevelObj::draw(DrawingContext &gc)
 {
-	gc.draw(sprite, pos);
+	if (attribs & HAS_SURFACE)
+	{
+		if (attribs & HAS_WIDTH)
+		{
+			for(int x = static_cast<int>(pos.x); x < pos.x + width;	x += sprite.get_width())
+				gc.draw(sprite, Vector(static_cast<float>(x), pos.y));
+		}
+		else
+			gc.draw(sprite, pos);
+	}
 }
 
 // Set the modifier and actually modify the sprite loaded in memory
@@ -48,14 +77,72 @@ void
 LevelObj::set_modifier(const std::string m)
 {
 	// Set modifier
-	modifier = m;
+	desc.modifier = ResourceModifierNS::rs_from_string(m);
 
 	// Apply modifier, then change the sprite loaded for this object in memory.
-	CL_Surface sur = Resource::apply_modifier(sprite.get_frame_surface(0), 
-		 ResDescriptor(res_name, ResourceModifierNS::rs_from_string(modifier)));
+	CL_Surface sur = Resource::apply_modifier(sprite.get_frame_surface(0), desc);
 	CL_SpriteDescription desc;
 	desc.add_frame(sur.get_pixeldata());
 	sprite = CL_Sprite(desc);
+}
+
+// Writes the XML attributes for the file
+void
+LevelObj::write_properties(XMLFileWriter &xml)
+{
+	xml.begin_section(section_name.c_str());
+
+	const unsigned attribs = get_attributes(section_name);
+
+	// Write information about the main sprite
+	if (attribs & HAS_SURFACE)
+	{
+		xml.begin_section("surface");
+		xml.write_string("image", desc.res_name);
+		xml.write_string("modifier", ResourceModifierNS::rs_to_string(desc.modifier));
+		xml.end_section();	// surface
+	}
+	// Write the optional information
+	if (attribs & HAS_TYPE)
+		xml.write_string("type", object_type);
+	if (attribs & HAS_SPEED)
+		xml.write_int("speed", speed);
+	if (attribs & HAS_PARALLAX)
+		xml.write_float("parallax", parallax);
+	if (attribs & HAS_WIDTH)
+		xml.write_int("width", width);
+	if (attribs & HAS_OWNER)
+		xml.write_int("owner-id", owner_id);
+	if (attribs & HAS_DIRECTION)
+		xml.write_string("direction", direction);
+	if (attribs & HAS_RELEASE_RATE)
+		xml.write_int("release-rate", release_rate);
+	if (attribs & HAS_COLOR)
+		xml.write_color("color", color);
+	if (attribs & HAS_STRETCH)
+	{
+		xml.write_bool("stretch-x", stretch_x);
+		xml.write_bool("stretch-y", stretch_y);
+		xml.write_bool("keep-aspect", keep_aspect);
+	}
+	if (attribs & HAS_SCROLL)
+	{
+		xml.write_float("scroll-x", scroll_x);
+		xml.write_float("scroll-y", scroll_y);
+	}
+	if (attribs & HAS_PARA)
+	{
+		xml.write_float("para-x", para_x);
+		xml.write_float("para-y", para_y);
+	}
+
+	// Writes any extra properties that may be necessary (virtual function)
+	write_extra_properties(xml);
+
+	// Write the Vector position - all objects have this
+	xml.write_vector("position", pos);
+
+	xml.end_section();	// object's section_name
 }
 
 }		// Editor namespace

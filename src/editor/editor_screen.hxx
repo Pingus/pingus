@@ -67,7 +67,10 @@ public:
 	bool draw (DrawingContext& gc);
 
 	/** Return the gui_manager */
-	GUI::GUIManager* get_gui_manager() { return gui_manager; }
+	GUI::GUIManager* get_gui_manager() const { return gui_manager; }
+
+	/** Return a pointer to the current level */
+	XMLLevel* get_level() const { return plf; }
 
 	/** Saves the currently loaded level */
 	void save_level(const std::string levelfile);

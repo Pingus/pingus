@@ -25,6 +25,9 @@
 #include "../display/drawing_context.hxx"
 #include "../graphic_context_state.hxx"
 #include "editor_viewport.hxx"
+#include "editor_screen.hxx"
+#include "xml_level.hxx"
+#include "level_objs.hxx"
 
 namespace Pingus {
 namespace Editor {
@@ -85,8 +88,12 @@ EditorViewport::draw(DrawingContext &gc)
 		gc.draw_fillrect(start_pos.x, start_pos.y, 
 			end_pos.x, end_pos.y, CL_Color::darkgray, -5000);
 
-	// Added this to test translate scrolling.
-	gc.draw_fillrect(300, 250, 400, 300, CL_Color::white);
+
+	// FIXME: This is obviously not correct, but it's just a proof of concept now.
+	// Draw the level objects
+	std::vector<LevelObj*> objs = editor->get_level()->get_objects();
+	for (unsigned i = 0; i < objs.size(); i++)
+		objs[i]->draw(gc);
 
 	//state.pop(*scene_context);
 

@@ -20,11 +20,14 @@
 #ifndef HEADER_PINGUS_EDITOR_XMLLEVEL_HXX
 #define HEADER_PINGUS_EDITOR_XMLLEVEL_HXX
 
+#include <vector>
+#include "level_impl.hxx"
+
 namespace Pingus {
 
 namespace Editor {
 
-	class LevelImpl;
+	class LevelObj;
 
 class XMLLevel
 {
@@ -47,6 +50,8 @@ public:
 
 	/** Load an existing level from a file */
 	void load_level(const std::string& filename);
+
+	std::vector<LevelObj*> get_objects() const { return impl->objects; }
 
 private:
 	XMLLevel (const XMLLevel&);

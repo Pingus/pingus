@@ -104,8 +104,6 @@ void
 PanelButtonLoad::on_primary_button_click(int x, int y)
 {
 	// TODO: Open a file dialog box to load a level.
-	std::cout << "Load a level" << std::endl;
-
 	panel->get_screen()->load_level(path_manager.complete("levels/tutorial/miner-tutorial2-grumbel.pingus"));
 }
 
@@ -121,9 +119,7 @@ PanelButtonSave::PanelButtonSave(EditorPanel *p) :
 void
 PanelButtonSave::on_primary_button_click(int x, int y)
 {
-	// TODO: Open a file dialog box to load a level.
-	std::cout << "Save the level" << std::endl;
-
+	// TODO: Open a file dialog box to save the level.
 	panel->get_screen()->save_level(path_manager.complete("levels/test.pingus"));
 }
 

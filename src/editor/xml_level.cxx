@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <ClanLib/Display/color.h>
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -25,6 +26,8 @@
 #include "level_objs.hxx"
 #include "../xml_pingus_level.hxx"
 #include "../xml_file_writer.hxx"
+#include "../xml_file_reader.hxx"
+#include "../res_descriptor.hxx"
 
 namespace Pingus {
 
@@ -53,8 +56,6 @@ bool XMLLevel::is_valid()
 // Save the level to a file.  Returns true if successful
 bool XMLLevel::save_level(const std::string& filename)
 {
-	std::cout << "XMLLevel::save_level() - Not fully implemented" << std::endl;
-	
 	// Make sure level is valid
 	if (!is_valid())
 		return false;
@@ -94,8 +95,10 @@ bool XMLLevel::save_level(const std::string& filename)
 	xml.end_section();	// levelsize
 	xml.end_section();	// head
 
+	// Write the objects
 	xml.begin_section("objects");
-	// TODO: Write the objects
+	for (unsigned i = 0; i < impl->objects.size(); i++)
+		impl->objects[i]->write_properties(xml);
 	xml.end_section();	// objects
 
 	xml.end_section();	// pingus-level
@@ -108,8 +111,6 @@ bool XMLLevel::save_level(const std::string& filename)
 // Load an existing level from a file
 void XMLLevel::load_level(const std::string& filename)
 {
-	std::cout << "XMLLevel::load_level() - Not yet implemented" << std::endl;
-	
 	// Load the level from the file - we don't care what it's res_name is.
 	XMLPingusLevel existing_level("", filename);
 	
@@ -126,11 +127,94 @@ void XMLLevel::load_level(const std::string& filename)
 	impl->author = existing_level.get_author();
 	impl->music = existing_level.get_music();
 	
+	// Temporary objects
+	unsigned attribs;
+	Vector p;
+	CL_Colorf tmp_color;
+	ResDescriptor desc;
+	std::string tmp_str;
+	int tmp_int;
+	float tmp_float;
+	bool tmp_bool;
+
 	// Get the objects
 	std::vector<FileReader> objs = existing_level.get_objects();
 	for (std::vector<FileReader>::const_iterator i = objs.begin(); i != objs.end(); i++)
 	{
-		// TODO: Load information about each object
+		// Create new object
+		LevelObj* obj = new LevelObj(i->get_name());
+		attribs = obj->get_attribs();
+
+		// All objects have a position - get that.
+		i->read_vector("position", p);
+
+		// Get optional attributes based on the attribs value
+		if (attribs & HAS_SURFACE)
+		{
+			i->read_desc("surface", desc);
+			obj->set_res_desc(desc);
+			obj->set_pos(p);
+		}
+		if (attribs & HAS_TYPE)
+		{	
+			i->read_string("type", tmp_str);
+			obj->set_type(tmp_str);
+		}
+		if (attribs & HAS_SPEED)
+		{
+			i->read_int("speed", tmp_int);
+			obj->set_speed(tmp_int);
+		}
+		if (attribs & HAS_WIDTH)
+		{
+			i->read_int("width", tmp_int);
+			obj->set_width(tmp_int);
+		}
+		if (attribs & HAS_PARALLAX)
+		{
+			i->read_float("parallax", tmp_float);
+			obj->set_parallax(tmp_float);
+		}
+		if (attribs & HAS_OWNER)
+		{
+			i->read_int("owner-id", tmp_int);
+			obj->set_owner(tmp_int);
+		}
+		if (attribs & HAS_DIRECTION)
+		{
+			i->read_string("direction", tmp_str);
+			obj->set_direction(tmp_str);
+		}
+		if (attribs & HAS_COLOR)
+		{
+			i->read_color("color", tmp_color);
+			obj->set_color(tmp_color);
+		}
+		if (attribs & HAS_SCROLL)
+		{
+			i->read_float("scroll-x", tmp_float);
+			obj->set_scroll_x(tmp_float);
+			i->read_float("scroll-y", tmp_float);
+			obj->set_scroll_y(tmp_float);
+		}
+		if (attribs & HAS_STRETCH)
+		{
+			i->read_bool("stretch-x", tmp_bool);
+			obj->set_stretch_x(tmp_bool);
+			i->read_bool("stretch-y", tmp_bool);
+			obj->set_stretch_y(tmp_bool);
+			i->read_bool("keep-aspect", tmp_bool);
+			obj->set_aspect(tmp_bool);
+		}
+		if (attribs & HAS_PARA)
+		{
+			i->read_float("para-x", tmp_float);
+			obj->set_para_x(tmp_float);
+			i->read_float("para-y", tmp_float);
+			obj->set_para_y(tmp_float);
+		}
+
+		impl->objects.push_back((LevelObj*)obj);
 	}
 }
 
