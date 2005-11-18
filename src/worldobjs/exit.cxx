@@ -91,8 +91,8 @@ Exit::update ()
     if ((*pingu)->get_owner()  == owner_id)
     {
       // Now, make sure the pingu is within range
-      if (   (*pingu)->get_x() > pos.x - 1 && (*pingu)->get_x() < pos.x + 1
-       	  && (*pingu)->get_y() > pos.y - 5 && (*pingu)->get_y() < pos.y + 2)
+      if (   (*pingu)->get_pos().x > pos.x - 1 && (*pingu)->get_pos().x < pos.x + 1
+       	  && (*pingu)->get_pos().y > pos.y - 5 && (*pingu)->get_pos().y < pos.y + 2)
       {
         // Now, make sure the pingu isn't already exiting, gone, or dead
     	  if (   (*pingu)->get_status() != PS_EXITED

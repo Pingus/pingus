@@ -1,4 +1,4 @@
-<pingus-worldmap>
+﻿<pingus-worldmap>
   <properties>
     <name>Volcano Island</name>
     <music>pingus-1.it</music>
@@ -15,36 +15,36 @@
         <dot>
           <name>leveldot_1</name>
           <position>
-            <x-pos>50</x-pos>
-            <y-pos>377</y-pos>
-            <z-pos>10</z-pos>
+            <x>50</x>
+            <y>377</y>
+            <z>10</z>
           </position>
         </dot>
-        <levelname>playable/hellmouth1-grumbel</levelname>
+        <levelname>volcano/hellmouth1-grumbel</levelname>
       </leveldot>
 
       <leveldot>
         <dot>
           <name>leveldot_2</name>
           <position>
-            <x-pos>180</x-pos>
-            <y-pos>345</y-pos>
-            <z-pos>10</z-pos>
+            <x>180</x>
+            <y>345</y>
+            <z>10</z>
           </position>
         </dot>
-        <levelname>playable/hellmouth2-grumbel</levelname>
+        <levelname>volcano/hellmouth2-grumbel</levelname>
       </leveldot>
 
       <leveldot>
         <dot>
           <name>leveldot_3</name>
           <position>
-            <x-pos>241</x-pos>
-            <y-pos>358</y-pos>
-            <z-pos>10</z-pos>
+            <x>241</x>
+            <y>358</y>
+            <z>10</z>
           </position>
         </dot>
-        <levelname>playable/hellmouth3-grumbel</levelname>
+        <levelname>volcano/hellmouth3-grumbel</levelname>
       </leveldot>
 
 
@@ -52,12 +52,12 @@
         <dot>
           <name>leveldot_4</name>
           <position>
-            <x-pos>336</x-pos>
-            <y-pos>325</y-pos>
-            <z-pos>10</z-pos>
+            <x>336</x>
+            <y>325</y>
+            <z>10</z>
           </position>
         </dot>
-        <levelname>playable/hellmouth4-grumbel</levelname>
+        <levelname>volcano/hellmouth4-grumbel</levelname>
       </leveldot>
 
 
@@ -65,24 +65,24 @@
         <dot>
           <name>leveldot_5</name>
           <position>
-            <x-pos>418</x-pos>
-            <y-pos>310</y-pos>
-            <z-pos>10</z-pos>
+            <x>418</x>
+            <y>310</y>
+            <z>10</z>
           </position>
         </dot>
-        <levelname>playable/hellmouth5-grumbel</levelname>
+        <levelname>volcano/hellmouth5-grumbel</levelname>
       </leveldot>
 
       <leveldot>
         <dot>
           <name>leveldot_6</name>
           <position>
-            <x-pos>381</x-pos>
-            <y-pos>277</y-pos>
-            <z-pos>10</z-pos>
+            <x>381</x>
+            <y>277</y>
+            <z>10</z>
           </position>
         </dot>
-        <levelname>playable/hellmouth6-grumbel</levelname>
+        <levelname>volcano/hellmouth6-grumbel</levelname>
       </leveldot>
 
 
@@ -90,12 +90,12 @@
         <dot>
           <name>leveldot_7</name>
           <position>
-            <x-pos>370</x-pos>
-            <y-pos>247</y-pos>
-            <z-pos>10</z-pos>
+            <x>370</x>
+            <y>247</y>
+            <z>10</z>
           </position>
         </dot>
-        <levelname>playable/hellmouth7-grumbel</levelname>
+        <levelname>volcano/hellmouth7-grumbel</levelname>
       </leveldot>
 
 
@@ -103,12 +103,12 @@
         <dot>
           <name>leveldot_8</name>
           <position>
-            <x-pos>422</x-pos>
-            <y-pos>230</y-pos>
-            <z-pos>10</z-pos>
+            <x>422</x>
+            <y>230</y>
+            <z>10</z>
           </position>
         </dot>
-        <levelname>playable/hellmouth8-grumbel</levelname>
+        <levelname>volcano/hellmouth8-grumbel</levelname>
       </leveldot>
 
 
@@ -116,96 +116,96 @@
         <dot>
           <name>leveldot_9</name>
           <position>
-            <x-pos>469</x-pos>
-            <y-pos>177</y-pos>
-            <z-pos>10</z-pos>
+            <x>469</x>
+            <y>177</y>
+            <z>10</z>
           </position>
         </dot>
-        <levelname>playable/hellmouth9-grumbel</levelname>
+        <levelname>volcano/hellmouth9-grumbel</levelname>
       </leveldot>
 
       <leveldot>
         <dot>
           <name>leveldot_10</name>
           <position>
-            <x-pos>353</x-pos>
-            <y-pos>388</y-pos>
-            <z-pos>10</z-pos>
+            <x>353</x>
+            <y>388</y>
+            <z>10</z>
           </position>
         </dot>
-        <levelname>playable/hellmouth10-grumbel</levelname>
+        <levelname>volcano/hellmouth10-grumbel</levelname>
       </leveldot>
 
       <leveldot>
         <dot>
           <name>leveldot_11</name>
           <position>
-            <x-pos>498</x-pos>
-            <y-pos>386</y-pos>
-            <z-pos>10</z-pos>
+            <x>498</x>
+            <y>386</y>
+            <z>10</z>
           </position>
         </dot>
-        <levelname>playable/hellmouth12-grumbel</levelname>
+        <levelname>volcano/hellmouth12-grumbel</levelname>
       </leveldot>
 
       <leveldot>
         <dot>
           <name>leveldot_12</name>
           <position>
-            <x-pos>581</x-pos>
-            <y-pos>406</y-pos>
-            <z-pos>10</z-pos>
+            <x>581</x>
+            <y>406</y>
+            <z>10</z>
           </position>
         </dot>
-        <levelname>playable/hellmouth12-grumbel</levelname>
+        <levelname>volcano/hellmouth12-grumbel</levelname>
       </leveldot>
 
       <leveldot>
         <dot>
           <name>leveldot_13</name>
           <position>
-            <x-pos>691</x-pos>
-            <y-pos>392</y-pos>
-            <z-pos>10</z-pos>
+            <x>691</x>
+            <y>392</y>
+            <z>10</z>
           </position>
         </dot>
-        <levelname>playable/hellmouth13-grumbel</levelname>
+        <levelname>volcano/hellmouth13-grumbel</levelname>
       </leveldot>
 
       <leveldot>
         <dot>
           <name>leveldot_14</name>
           <position>
-            <x-pos>744</x-pos>
-            <y-pos>377</y-pos>
-            <z-pos>10</z-pos>
+            <x>744</x>
+            <y>377</y>
+            <z>10</z>
           </position>
         </dot>
-        <levelname>playable/hellmouth14-grumbel</levelname>
+        <levelname>volcano/hellmouth14-grumbel</levelname>
       </leveldot>
 
       <leveldot>
         <dot>
           <name>leveldot_15</name>
           <position>
-            <x-pos>535</x-pos>
-            <y-pos>451</y-pos>
-            <z-pos>10</z-pos>
+            <x>535</x>
+            <y>451</y>
+            <z>10</z>
           </position>
         </dot>
-        <levelname>playable/hellmouth15-grumbel</levelname>
+        <levelname>volcano/hellmouth15-grumbel</levelname>
       </leveldot>
 
       <leveldot>
         <dot>
           <name>leveldot_16</name>
           <position>
-            <x-pos>639</x-pos>
-            <y-pos>447</y-pos>
-            <z-pos>10</z-pos>
+            <x>639</x>
+            <y>447</y>
+            <z>10</z>
           </position>
         </dot>
-        <levelname>playable/hellmouth17-grumbel</levelname>
+        <levelname>volcano/hellmouth17-grumbel</levelname>
       </leveldot>
 
 
@@ -213,185 +213,268 @@
         <dot>
           <name>leveldot_17</name>
           <position>
-            <x-pos>497</x-pos>
-            <y-pos>280</y-pos>
-            <z-pos>10</z-pos>
+            <x>497</x>
+            <y>280</y>
+            <z>10</z>
           </position>
         </dot>
-        <levelname>playable/hellmouth17-grumbel</levelname>
+        <levelname>volcano/hellmouth17-grumbel</levelname>
       </leveldot>
 
       <leveldot>
         <dot>
-          <name>leveldot_18</name>
+          <name>leveldot_19</name>
           <position>
-            <x-pos>593</x-pos>
-            <y-pos>259</y-pos>
-            <z-pos>10</z-pos>
+            <x>593</x>
+            <y>259</y>
+            <z>10</z>
           </position>
         </dot>
 
-        <levelname>playable/hellmouth18-grumbel</levelname>
+        <levelname>volcano/hellmouth18-grumbel</levelname>
       </leveldot>
 
     </nodes>
     
     <edges>
-      <edge name="egde_1" source="leveldot_1" destination="leveldot_2"> 
-        <position>
-          <x-pos>84</x-pos>
-          <y-pos>360</y-pos>
-          <z-pos>0</z-pos>
-        </position>
+		<edge>
+			<name>egde_1</name>
+			<source>leveldot_1</source>
+			<destination>leveldot_2</destination>
+			<positions>
+				<position>
+					<x>84</x>
+					<y>360</y>
+					<z>0</z>
+				</position>
+
+				<position>
+					<x>108</x>
+					<y>353</y>
+					<z>0</z>
+				</position>
+
+				<position>
+					<x>132</x>
+					<y>350</y>
+					<z>0</z>
+				</position>
+
+				<position>
+					<x>154</x>
+					<y>352</y>
+					<z>0</z>
+				</position>
+			</positions>
+		</edge>
+
+		<edge>
+			<name>egde_2</name>
+			<source>leveldot_2</source>
+			<destination>leveldot_3</destination>
+			<positions />
+		</edge>
+
+		<edge>
+			<name>egde_3</name>
+			<source>leveldot_3</source>
+			<destination>leveldot_4</destination>
+			<positions>
+				<position>
+					<x>284</x>
+					<y>347</y>
+					<z>0</z>
+				</position>
+
+				<position>
+					<x>309</x>
+					<y>335</y>
+					<z>0</z>
+				</position>
+			</positions>
+		</edge>
+
+		<edge>
+			<name>egde_4</name>
+			<source>leveldot_4</source>
+			<destination>leveldot_5</destination>
+			<positions />
+		</edge>
+
+		<edge>
+			<name>egde_5</name>
+			<source>leveldot_5</source>
+			<destination>leveldot_6</destination>
+			<positions />
+		</edge>
+
+		<edge>
+			<name>egde_6</name>
+			<source>leveldot_6</source>
+			<destination>leveldot_7</destination>
+			<positions />
+		</edge>
+
+		<edge>
+			<name>egde_7</name>
+			<source>leveldot_7</source>
+			<destination>leveldot_8</destination>
+			<positions />
+		</edge>
+		
+		<edge>
+			<name>egde_8</name>
+			<source>leveldot_8</source>
+			<destination>leveldot_9</destination>
+			<positions />
+		</edge>
+
+		<edge>
+			<name>egde_9</name>
+			<source>leveldot_3</source>
+			<destination>leveldot_10</destination>
+			<positions />
+		</edge>
+
+		<edge>
+			<name>egde_10</name>
+			<source>leveldot_10</source>
+			<destination>leveldot_15</destination>
+			<positions>
+				<position>
+					<x>377</x>
+					<y>406</y>
+					<z>0</z>
+				</position>
 
 
-        <position>
-          <x-pos>108</x-pos>
-          <y-pos>353</y-pos>
-          <z-pos>0</z-pos>
-        </position>
+				<position>
+					<x>401</x>
+					<y>428</y>
+					<z>0</z>
+				</position>
 
 
-        <position>
-          <x-pos>132</x-pos>
-          <y-pos>350</y-pos>
-          <z-pos>0</z-pos>
-        </position>
+				<position>
+					<x>423</x>
+					<y>449</y>
+					<z>0</z>
+				</position>
 
 
-        <position>
-          <x-pos>154</x-pos>
-          <y-pos>352</y-pos>
-          <z-pos>0</z-pos>
-        </position>
-      </edge>
-
-      <edge name="egde_2" source="leveldot_2" destination="leveldot_3"> 
-      </edge>
-
-      <edge name="egde_3" source="leveldot_3" destination="leveldot_4"> 
-        <position>
-          <x-pos>284</x-pos>
-          <y-pos>347</y-pos>
-          <z-pos>0</z-pos>
-        </position>
-
-        <position>
-          <x-pos>309</x-pos>
-          <y-pos>335</y-pos>
-          <z-pos>0</z-pos>
-        </position>
-      </edge>
-
-      <edge name="egde_4" source="leveldot_4" destination="leveldot_5"></edge>
-      <edge name="egde_5" source="leveldot_5" destination="leveldot_6"></edge>
-      <edge name="egde_6" source="leveldot_6" destination="leveldot_7"></edge>
-      <edge name="egde_7" source="leveldot_7" destination="leveldot_8"></edge>
-      <edge name="egde_8" source="leveldot_8" destination="leveldot_9"></edge>
-
-      <edge name="egde_9" source="leveldot_3" destination="leveldot_10"></edge>
-
-      <edge name="egde_10" source="leveldot_10" destination="leveldot_15">
-        <position>
-          <x-pos>377</x-pos>
-          <y-pos>406</y-pos>
-          <z-pos>0</z-pos>
-        </position>
+				<position>
+					<x>468</x>
+					<y>451</y>
+					<z>0</z>
+				</position>
 
 
-        <position>
-          <x-pos>401</x-pos>
-          <y-pos>428</y-pos>
-          <z-pos>0</z-pos>
-        </position>
+				<position>
+					<x>494</x>
+					<y>449</y>
+					<z>0</z>
+				</position>
+			</positions>
+		</edge>
+
+		<edge>
+			<name>egde_9</name>
+			<source>leveldot_3</source>
+			<destination>leveldot_10</destination>
+			<positions />
+		</edge>
+
+		<edge>
+			<name>egde_9</name>
+			<source>leveldot_10</source>
+			<destination>leveldot_11</destination>
+			<positions>
+				<position>
+					<x>394</x>
+					<y>377</y>
+					<z>0</z>
+				</position>
 
 
-        <position>
-          <x-pos>423</x-pos>
-          <y-pos>449</y-pos>
-          <z-pos>0</z-pos>
-        </position>
+				<position>
+					<x>433</x>
+					<y>375</y>
+					<z>0</z>
+				</position>
 
 
-        <position>
-          <x-pos>468</x-pos>
-          <y-pos>451</y-pos>
-          <z-pos>0</z-pos>
-        </position>
+				<position>
+					<x>465</x>
+					<y>377</y>
+					<z>0</z>
+				</position>
+			</positions>
+		</edge>
 
+		<edge>
+			<name>egde_10</name>
+			<source>leveldot_11</source>
+			<destination>leveldot_12</destination>
+			<positions>
+				<position>
+					<x>538</x>
+					<y>405</y>
+					<z>0</z>
+				</position>
+			</positions>
+		</edge>
 
-        <position>
-          <x-pos>494</x-pos>
-          <y-pos>449</y-pos>
-          <z-pos>0</z-pos>
-        </position>
-      </edge>
+		<edge>
+			<name>egde_11</name>
+			<source>leveldot_12</source>
+			<destination>leveldot_13</destination>
+			<positions>
+				<position>
+					<x>621</x>
+					<y>398</y>
+					<z>0</z>
+				</position>
 
-      <edge name="egde_9" source="leveldot_3" destination="leveldot_10"></edge>
+				<position>
+					<x>653</x>
+					<y>392</y>
+					<z>0</z>
+				</position>
+			</positions>
+		</edge>
 
-      <edge name="egde_9" source="leveldot_10" destination="leveldot_11">
-        <position>
-          <x-pos>394</x-pos>
-          <y-pos>377</y-pos>
-          <z-pos>0</z-pos>
-        </position>
+		<edge>
+			<name>egde_12</name>
+			<source>leveldot_13</source>
+			<destination>leveldot_14</destination>
+			<positions />
+		</edge>
 
+		<edge>
+			<name>egde_12</name>
+			<source>leveldot_15</source>
+			<destination>leveldot_16</destination>
+			<positions>
+				<position>
+					<x>591</x>
+					<y>453</y>
+					<z>0</z>
+				</position>
+			</positions>
+		</edge>
 
-        <position>
-          <x-pos>433</x-pos>
-          <y-pos>375</y-pos>
-          <z-pos>0</z-pos>
-        </position>
-
-
-        <position>
-          <x-pos>465</x-pos>
-          <y-pos>377</y-pos>
-          <z-pos>0</z-pos>
-        </position>
-      </edge>
-
-      <edge name="egde_10" source="leveldot_11" destination="leveldot_12">
-        <position>
-          <x-pos>538</x-pos>
-          <y-pos>405</y-pos>
-          <z-pos>0</z-pos>
-        </position>
-      </edge>
-
-      <edge name="egde_11" source="leveldot_12" destination="leveldot_13">
-        <position>
-          <x-pos>621</x-pos>
-          <y-pos>398</y-pos>
-          <z-pos>0</z-pos>
-        </position>
-
-
-        <position>
-          <x-pos>653</x-pos>
-          <y-pos>392</y-pos>
-          <z-pos>0</z-pos>
-        </position>
-      </edge>
-
-      <edge name="egde_12" source="leveldot_13" destination="leveldot_14">
-      </edge>
-
-      <edge name="egde_12" source="leveldot_15" destination="leveldot_16">
-        <position>
-          <x-pos>591</x-pos>
-          <y-pos>453</y-pos>
-          <z-pos>0</z-pos>
-        </position>
-      </edge>
-
-      <edge name="egde_12" source="leveldot_13" destination="leveldot_16">
-        <position>
-          <x-pos>665</x-pos>
-          <y-pos>419</y-pos>
-          <z-pos>0</z-pos>
-        </position>
-      </edge>
+		<edge>
+			<name>egde_12</name>
+			<source>leveldot_13</source>
+			<destination>leveldot_16</destination>
+			<positions>
+				<position>
+					<x>665</x>
+					<y>419</y>
+					<z>0</z>
+				</position>
+			</positions>
+		</edge>
 
     </edges>
   </graph>
@@ -401,21 +484,18 @@
   <objects>
     <!-- container for a worldmapobj, so that the worldmap object can
     have an id (id's are used to hide/show worldmap objects -->
-    <surface name="background_1">
-      <surface>
-        <resource type="datafile">
-          <resource-datafile>worldmaps</resource-datafile>
-          <resource-ident>volcano</resource-ident>
-        </resource>
-      </surface>
-
-      <position>
-        <x-pos>0</x-pos>
-        <y-pos>0</y-pos>
-        <z-pos>-100</z-pos>
-      </position>
-    </surface>
-
+	  <surface>
+		  <name>background_1</name>
+		  <surface>
+			  <image>worldmaps/volcano/island</image>
+			  <modifier>ROT0</modifier>
+		  </surface>
+		  <position>
+			  <x>0</x>
+			  <y>0</y>
+			  <z>-100</z>
+		  </position>
+	  </surface>
   </objects>
 </pingus-worldmap>
 

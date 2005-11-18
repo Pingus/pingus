@@ -216,7 +216,7 @@ WorldMap::draw (DrawingContext& gc)
                           _("...walking..."));
     }
 
-  Vector mpos = display_gc->screen_to_world(Vector(mouse_x, mouse_y));
+  Vector mpos = display_gc->screen_to_world(Vector((float)mouse_x, (float)mouse_y));
   Dot* dot = path_graph->get_dot(mpos.x, mpos.y);
   if (dot)
     {

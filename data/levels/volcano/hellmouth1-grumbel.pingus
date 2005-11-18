@@ -57,7 +57,7 @@
 <y>368</y>
 <z>-60</z>
 </position>
-<width>6</width>
+<width>384</width>
 <speed>50</speed>
 </liquid>
 <liquid><surface>
@@ -69,7 +69,7 @@
 <y>854</y>
 <z>-60</z>
 </position>
-<width>14</width>
+<width>896</width>
 <speed>50</speed>
 </liquid>
 <liquid><surface>
@@ -81,7 +81,7 @@
 <y>866</y>
 <z>-60</z>
 </position>
-<width>14</width>
+<width>896</width>
 <speed>50</speed>
 </liquid>
 <groundpiece>
@@ -962,24 +962,13 @@
 </groundpiece>
 <entrance>
   <position>
-<x>0</x>
-<y>0</y>
-<z>0</z>
-</position>
-  <type>generic</type>
-  <direction>misc</direction>
-  <release-rate>50</release-rate>
-  <owner-id>0</owner-id>
-</entrance>
-<entrance>
-  <position>
 <x>925</x>
 <y>210</y>
 <z>0</z>
 </position>
   <type>generic</type>
   <direction>misc</direction>
-  <release-rate>50</release-rate>
+  <release-rate>20</release-rate>
   <owner-id>0</owner-id>
 </entrance>
 <exit>
