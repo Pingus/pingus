@@ -46,7 +46,18 @@ XMLLevel::~XMLLevel()
 	delete impl;
 }
 
-// Verify that level is valid
+/** Verify that level is valid:
+ Level should contain the following attributes in order to be "valid":
+ -----------
+ LevelObj's:
+ - At least 1 entrance
+ - At least 1 exit
+ - Exactly 1 surface-background
+ - Each object should be within valid ranges (pos Vector should be inside the world)
+ -----------
+ Head section:
+ - Everything should be filled in and within valid ranges
+ */
 bool XMLLevel::is_valid()
 {
 	std::cout << "XMLLevel::is_valid() - Not yet implemented" << std::endl;

@@ -192,9 +192,6 @@ Blitter::put_surface_32bit(CL_PixelBuffer target, CL_PixelBuffer source,
    * 17msec with uint8
    */
       
-  std::cout << "X: " << start_x << " " << end_x << std::endl;
-  std::cout << "Y: " << start_y << " " << end_y << std::endl;
-
   cl_uint8* target_buf = static_cast<cl_uint8*>(target.get_data());
   cl_uint8* source_buf = static_cast<cl_uint8*>(source.get_data());
 
@@ -203,6 +200,7 @@ Blitter::put_surface_32bit(CL_PixelBuffer target, CL_PixelBuffer source,
       int tidx = 4*(twidth * (y_pos + y) + x_pos);
       int sidx = 4*(swidth * y);
       
+			/*
       if (0)
         { // Fast but doesn't handle masks
           memcpy(target_buf + tidx + 4*start_x, source_buf + sidx + 4*start_x, 
@@ -234,7 +232,7 @@ Blitter::put_surface_32bit(CL_PixelBuffer target, CL_PixelBuffer source,
               sptr += 4;
             }
         }
-      else
+      else */
         {
           // doesn't handle masks either, but looks half correct
           cl_uint8* tptr = target_buf + tidx + 4*start_x;
@@ -242,17 +240,17 @@ Blitter::put_surface_32bit(CL_PixelBuffer target, CL_PixelBuffer source,
 
           for (int x = start_x; x < end_x; ++x)
             {
-              float a = sptr[3]/255.0f;
-
               if (!CL_Endian::is_system_big())
               {
-                tptr[0] = Math::mid(0, int((1.0f - a) * tptr[0] + a * sptr[3]), 255);
-                tptr[1] = Math::mid(0, int((1.0f - a) * tptr[1] + a * sptr[0]), 255);
-                tptr[2] = Math::mid(0, int((1.0f - a) * tptr[2] + a * sptr[1]), 255);
-                tptr[3] = Math::mid(0, int((1.0f - a) * tptr[3] + a * sptr[2]), 255);
+								float a = sptr[0]/255.0f;
+                tptr[0] = Math::mid(0, int((1.0f - a) * tptr[0] + a * sptr[0]), 255);
+                tptr[1] = Math::mid(0, int((1.0f - a) * tptr[1] + a * sptr[1]), 255);
+                tptr[2] = Math::mid(0, int((1.0f - a) * tptr[2] + a * sptr[2]), 255);
+                tptr[3] = Math::mid(0, int((1.0f - a) * tptr[3] + a * sptr[3]), 255);
               }
               else
               {
+                float a = sptr[3]/255.0f;
                 tptr[3] = Math::mid(0, int((1.0f - a) * tptr[3] + a * sptr[3]), 255);
                 tptr[2] = Math::mid(0, int((1.0f - a) * tptr[2] + a * sptr[0]), 255);
                 tptr[1] = Math::mid(0, int((1.0f - a) * tptr[1] + a * sptr[1]), 255);
@@ -267,7 +265,6 @@ Blitter::put_surface_32bit(CL_PixelBuffer target, CL_PixelBuffer source,
   
   source.unlock();
   target.unlock();
-  std::cout << "done" << std::endl;
 }
 
 void
@@ -608,7 +605,6 @@ Blitter::scale_surface_to_canvas (CL_PixelBuffer provider, int width, int height
 	  for (int y = 0; y < height; ++y)
 	    for (int x = 0; x < width; ++x)
 	      {
-		// std::cout << "X: " << x << " Y: " << y << std::endl;
 		CL_Color color = provider.get_pixel(x * provider.get_width () / width,
                                                     y * provider.get_height () / height);
 		// FIXME: ignoring the source alpha due to get_pixel
