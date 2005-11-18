@@ -24,6 +24,7 @@
 #include "system.hxx"
 #include "pingus_error.hxx"
 #include "xml_file_reader.hxx"
+#include "xml_file_writer.hxx"
 #include "savegame_manager.hxx"
 
 namespace Pingus {
@@ -141,9 +142,10 @@ SavegameManager::store(Savegame& arg_savegame)
 void
 SavegameManager::flush()
 {
-  std::ofstream xml(filename.c_str());
-  xml << "<?xml version=\"1.0\"  encoding=\"ISO-8859-1\"?>\n\n"
-      << "<pingus-savegame>\n";
+  std::ofstream out(filename.c_str());
+	XMLFileWriter xml(out);
+
+  xml.begin_section("pingus-savegame");
 
   for(SavegameTable::iterator i = savegames.begin(); i != savegames.end(); ++i)
     {
@@ -151,8 +153,7 @@ SavegameManager::flush()
       i->second->write_xml(xml);
     }
 
-  xml << "</pingus-savegame>\n"
-      << std::endl;
+  xml.end_section();	// pingus-savegame
 }
 
 } // namespace Pingus

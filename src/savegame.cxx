@@ -76,9 +76,8 @@ Savegame::Savegame(std::string arg_levelname, S_Status arg_status, int arg_time,
 }
 
 void
-Savegame::write_xml(std::ostream& xml)
+Savegame::write_xml(XMLFileWriter& writer)
 {
-  XMLFileWriter writer(xml);
   writer.begin_section("level");
   writer.write_string ("name", levelname);
   writer.write_enum   ("status", status, status_to_string);

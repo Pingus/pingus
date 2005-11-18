@@ -256,7 +256,7 @@ PathGraph::get_id(Dot* dot)
 {
   for(std::vector<Dot*>::iterator i = dots.begin(); i != dots.end(); ++i)
     if (dot == *i)
-      return i - dots.begin();
+      return (int)(i - dots.begin());
   return NoNode;
 }
 

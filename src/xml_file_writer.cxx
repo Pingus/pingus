@@ -27,8 +27,8 @@ namespace Pingus {
 XMLFileWriter::XMLFileWriter(std::ostream& out_)
   : out(&out_)
 {
-	if ((*out).out)
-		(*out) << "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";}
+	(*out) << "<?xml version=\"1.0\"  encoding=\"ISO-8859-1\"?>\n\n";
+}
 
 XMLFileWriter::~XMLFileWriter()
 {

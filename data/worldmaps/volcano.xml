@@ -1,12 +1,12 @@
 ﻿<pingus-worldmap>
-  <properties>
+  <head>
     <name>Volcano Island</name>
-    <music>pingus-1.it</music>
+    <music>gd-myla.it</music>
     <author>Ingo Ruhnke</author>
     <email>grumbel@gmx.de</email>
-    <width>1161</width>
+    <width>800</width>
     <height>600</height>
-  </properties>
+  </head>
   
   <!-- The graph specifies the path on which the pingu can walk -->
   <graph>

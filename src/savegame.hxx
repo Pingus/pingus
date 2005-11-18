@@ -25,6 +25,8 @@
 
 namespace Pingus {
 
+	class XMLFileWriter;
+
 /** The Savegame class holds savegame informations for a single
     level */
 class Savegame
@@ -52,7 +54,7 @@ public:
   Savegame(std::string arg_levelname, S_Status arg_status, int arg_time, int arg_saved_pingus);
 
   void read_xml(FileReader node);
-  void write_xml(std::ostream& xml);
+  void write_xml(XMLFileWriter& xml);
 };
 
 } // namespace Pingus

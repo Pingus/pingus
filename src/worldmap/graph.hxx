@@ -106,7 +106,7 @@ public:
   {
     Edge<EdgeType> new_edge (data, a, b, cost);
     edges.push_back (new_edge);
-    resolve_node (a).next.push_back (edges.size ()-1);
+    resolve_node(a).next.push_back ((int)edges.size()-1);
     return EdgeId (edges.size ()-1);
   }
 
@@ -175,7 +175,7 @@ public:
   }
 
   int max_node_handler_value () {
-    return nodes.size ();
+    return (int)nodes.size ();
   }
 };
 

@@ -53,7 +53,6 @@ namespace WorldMapNS {
 
 WorldMap::WorldMap(const std::string& arg_filename)
   : filename(arg_filename),
-    width(1161), height(600), // FIXME: ugly..
     mouse_x(0),
     mouse_y(0)
 {
@@ -156,7 +155,12 @@ WorldMap::parse_graph(FileReader reader)
 void
 WorldMap::parse_properties(FileReader reader)
 {
-  UNUSED_ARG(reader);
+	reader.read_string("music", music);
+	reader.read_string("author", author);
+	reader.read_string("name", name);
+	reader.read_string("email", email);
+	reader.read_int("width", width);
+	reader.read_int("height", height);
 }
 
 void
@@ -239,6 +243,7 @@ WorldMap::update (float delta)
 void
 WorldMap::on_startup()
 {
+	Sound::PingusSound::play_music(music);
   update_locked_nodes();
 }
 
@@ -279,9 +284,9 @@ WorldMap::on_primary_button_press(int x, int y)
         << "  <dot>\n"
         << "    <name>leveldot_X</name>\n"
         << "    <position>\n"
-        << "      <x-pos>" << (int)click_pos.x << "</x-pos>\n"
-        << "      <y-pos>" << (int)click_pos.y << "</y-pos>\n"
-        << "      <z-pos>0</z-pos>\n"
+        << "      <x>" << (int)click_pos.x << "</x>\n"
+        << "      <y>" << (int)click_pos.y << "</y>\n"
+        << "      <z>0</z>\n"
         << "    </position>\n"
         << "  </dot>\n"
         << "  <levelname>level10.pingus</levelname>\n"

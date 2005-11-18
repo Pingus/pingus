@@ -62,6 +62,11 @@ private:
   int width;
   int height;
 
+	std::string name;
+	std::string author;
+	std::string email;
+	std::string music;
+
   Pingus* pingus;
 
   GraphicContextState gc_state;
