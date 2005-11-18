@@ -8,6 +8,7 @@
 <number-of-pingus>60</number-of-pingus>
 <number-to-save>50</number-to-save>
 <time>9000</time>
+<difficulty>50</difficulty>
 <playable>0</playable>
 <comment>need fix due to head-bounce feature</comment>
 <actions>
@@ -120,8 +121,8 @@
 <exit>
 <owner-id>0</owner-id>
 <position>
-<x>975</x>
-<y>553</y>
+<x>1010</x>
+<y>612</y>
 <z>0</z>
 </position>
 <surface>

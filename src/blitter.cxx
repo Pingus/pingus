@@ -713,56 +713,9 @@ Blitter::flip_vertical (CL_PixelBuffer sur)
 
 /** Rotate a surface 90 degrees */
 CL_PixelBuffer
-Blitter::rotate_90 (CL_PixelBuffer prov)
+Blitter::rotate_90 (CL_PixelBuffer sur)
 {
-  if (prov.get_format().get_type() ==  pixelformat_index)
-    {
-      //std::cout << "Using indexed blitter" << std::endl;
-      int pwidth  = prov.get_width();
-      int pheight = prov.get_height();
-      
-      CL_PixelFormat format(8, 0, 0, 0, 0, 
-                            prov.get_format().has_colorkey(), prov.get_format().get_colorkey(),
-                            pixelformat_index);
-      CL_PixelBuffer canvas(pheight, pwidth, pwidth, format, prov.get_palette());
-
-      prov.lock();
-      canvas.lock();
-
-      unsigned char* source_buf = static_cast<unsigned char*>(prov.get_data());
-      unsigned char* target_buf = static_cast<unsigned char*>(canvas.get_data());
-
-      for (int y = 0; y < pheight; ++y)
-        for (int x = 0; x < pwidth; ++x)
-          {
-            target_buf[x * pheight + (pheight - y - 1)] = source_buf[y * pwidth + x];
-          }
-
-      canvas.unlock();
-      prov.unlock();
-
-      return canvas;
-    }
-  else
-    {
-      CL_PixelBuffer canvas(prov.get_height (), prov.get_width (), prov.get_height()*4, CL_PixelFormat::rgba8888);
-
-      prov.lock ();
-      canvas.lock ();
-
-      CL_Color color;
-      for (int y = 0; y < prov.get_height (); ++y)
-        for (int x = 0; x < prov.get_width (); ++x)
-          {
-            color = prov.get_pixel (x, y);
-            canvas.draw_pixel (prov.get_height () - 1 - y, x , color);
-          }
-
-      canvas.unlock ();
-      prov.unlock ();
-
-      return canvas;
-    }
+  return BlitterImpl::modify(sur, BlitterImpl::transform_rot90());
 }
 
 
