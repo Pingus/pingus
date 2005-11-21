@@ -201,7 +201,7 @@ WorldMap::draw (DrawingContext& gc)
           gc.print_center(Fonts::chalk_small,
                           display_gc->get_width ()/2,
                           display_gc->get_height() - 20,
-                          System::translate(leveldot->get_plf().get_levelname()));
+                          _(leveldot->get_plf().get_levelname()));
           
         }
       else

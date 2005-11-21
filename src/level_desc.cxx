@@ -38,8 +38,8 @@ PingusLevelDesc::PingusLevelDesc(const PingusLevel& arg_plf)
   title      = Fonts::pingus_large;
 
   description.set_font(font);
-  description.set_text(System::translate(plf->get_description()), 350);
-  levelname = System::translate(plf->get_levelname());
+  description.set_text(_(plf->get_description()), 350);
+  levelname = _(plf->get_levelname());
 }
 
 void

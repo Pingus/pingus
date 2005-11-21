@@ -129,7 +129,7 @@ LevelDot::draw_hover(DrawingContext& gc)
 
   if (accessible())
     {
-      int length = Fonts::pingus_small.bounding_rect(0, 0, System::translate(get_plf().get_levelname())).get_width() / 2;
+      int length = Fonts::pingus_small.bounding_rect(0, 0, _(get_plf().get_levelname())).get_width() / 2;
       int realpos = static_cast<int>(gc.world_to_screen(Vector(pos.x, pos.y, 0)).x);
       if (realpos - length < 0)
         pos_correction = realpos - length;
@@ -139,7 +139,7 @@ LevelDot::draw_hover(DrawingContext& gc)
       gc.print_center(Fonts::pingus_small,
                       static_cast<int>(pos.x) - pos_correction,
                       static_cast<int>(pos.y - 40),
-                      System::translate(get_plf().get_levelname()), 
+                      _(get_plf().get_levelname()), 
                       1000);
     }
   else

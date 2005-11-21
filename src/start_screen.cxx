@@ -147,7 +147,7 @@ StartScreenComponent::draw(DrawingContext& gc)
   gc.print_center(Fonts::chalk_large,
                   gc.get_width()/2,
                   CL_Display::get_height()/2 - 200,
-                  System::translate(plf.get_levelname()));
+                  _(plf.get_levelname()));
 
   gc.print_left(Fonts::chalk_normal,
                 CL_Display::get_width()/2 - 290,
@@ -185,7 +185,7 @@ StartScreenComponent::format_description(int length)
   if (description != "")
     return description;
 
-  description = System::translate(plf.get_description());
+  description = _(plf.get_description());
 
   if (description == "")
     return description;

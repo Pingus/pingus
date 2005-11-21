@@ -24,6 +24,7 @@
 #include <ClanLib/Display/font.h>
 #include <ClanLib/Display/keyboard.h>
 #include "path_manager.hxx"
+#include "gettext.h"
 #include "system.hxx"
 #include "resource.hxx"
 #include "pingus_error.hxx"
@@ -55,15 +56,15 @@ Theme::load (const std::string& filename)
   if (verbose) std::cout << "Theme: loading: " << filename << std::endl;
   plt.parse(filename);
   
-  title_name = System::translate(plt.get_name());
+  title_name = _(plt.get_name());
 
   level_filenames = plt.get_levels();
   load_levels();
 
-  if (System::translate(plt.get_description()) != "-")
+  if (_(plt.get_description()) != "-")
     {
       description.set_font(font);
-      description.set_text(System::translate(plt.get_description()), 350);
+      description.set_text(_(plt.get_description()), 350);
       has_description = true;
     }
   else
@@ -326,7 +327,7 @@ Theme::load_levels()
       try
 	      {
                 XMLPingusLevel plf(filename, filename);
-	        levelnames.push_back(System::translate(plf.get_levelname()));
+	        levelnames.push_back(_(plf.get_levelname()));
 	      }
 	    catch (PingusError& err)
 	      {
