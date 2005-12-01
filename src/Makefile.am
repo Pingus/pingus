@@ -126,6 +126,10 @@ direction.cxx \
 direction.hxx \
 exit_menu.cxx \
 exit_menu.hxx \
+file_dialog.cxx \
+file_dialog.hxx \
+file_dialog_item.cxx \
+file_dialog_item.hxx \
 file_reader_impl.hxx \
 file_reader.hxx \
 file_reader.cxx \

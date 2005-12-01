@@ -120,7 +120,11 @@ PingusMenu::setup_game_menu()
 
 void
 PingusMenu::setup_contrib_menu()
-{  
+{
+	get_manager ()->show_file_dialog (".pingus", 
+		path_manager.complete("levels/"), true);
+
+	/*
  	// Create a Clanlib File Dialog using the silver style
   CL_ResourceManager *resources = new 
       CL_ResourceManager(path_manager.complete("GUIStyleSilver/gui.xml"));
@@ -142,6 +146,7 @@ PingusMenu::setup_contrib_menu()
   // Launch level
   if (filename != "")
      do_contrib(filename);
+ */
 }
 
 void

@@ -66,7 +66,6 @@ private:
   
   void do_quit();
   void do_start();
-  void do_contrib(const std::string&);
 	void do_edit();
 
 public:
@@ -75,6 +74,7 @@ public:
 
   /// Load all images and other stuff for the menu
   void preload ();
+  void do_contrib(const std::string&);
 
   void on_escape_press ();
   void draw_foreground(DrawingContext& gc);

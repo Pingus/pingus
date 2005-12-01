@@ -29,13 +29,16 @@ PingusMenuManager* PingusMenuManager::instance_ = 0;
 
 PingusMenuManager::PingusMenuManager ()
   : mainmenu (this),
-    exitmenu (this)
+    exitmenu (this),
+		filedialog (0)
 {
   push_menu (&mainmenu);
 }
 
 PingusMenuManager::~PingusMenuManager ()
 {
+	if (filedialog)
+		delete filedialog;
 }
 
 bool
@@ -103,6 +106,18 @@ void
 PingusMenuManager::show_exit_menu ()
 {
   push_menu (&exitmenu);
+}
+
+void
+PingusMenuManager::show_file_dialog (const std::string filemask, 
+																		 const std::string searchpath, bool for_load)
+{
+	// Initialize the dialog box either for loading or saving.
+	if (filedialog)
+		delete filedialog;
+	filedialog = new FileDialog(this, filemask, searchpath, for_load);
+	filedialog->preload();
+  push_menu (filedialog);
 }
 
 void

@@ -23,6 +23,7 @@
 #include "menu_background.hxx"
 #include "exit_menu.hxx"
 #include "pingus_menu.hxx"
+#include "file_dialog.hxx"
 
 namespace Pingus {
 
@@ -48,6 +49,7 @@ public:
   PingusMenu mainmenu;
   MenuBackground background;
   ExitMenu exitmenu;
+	FileDialog* filedialog;
 
   virtual ~PingusMenuManager();
 
@@ -56,6 +58,10 @@ public:
 
   /// Exit the menu manager (which means to exit the while() loop in display ())
   void show_exit_menu ();
+	
+	/** Show the file dialog menu.  True to load, false to save */
+	void show_file_dialog(const std::string filemask, 
+		const std::string searchpath, bool for_load = true);
 
   void exit ();
 

@@ -1,4 +1,4 @@
-<resources>
+﻿<resources>
   <section name="core">
     <section name="cursors">
       <sprite name="editor">
@@ -129,6 +129,21 @@
       </sprite>
     </section>
     <section name="menu">
+		  <sprite name="filedialog">
+			  <image file="../images/core/menu/filedialog.png" />
+		  </sprite>
+      <sprite name="folder">
+        <image file="../images/core/menu/folder.png" />
+      </sprite>
+      <sprite name="default_level">
+        <image file="../images/core/menu/default_level.jpg" />
+      </sprite>
+      <sprite name="up_arrow">
+        <image file="../images/core/menu/up_arrow.png" />
+      </sprite>
+      <sprite name="down_arrow">
+        <image file="../images/core/menu/down_arrow.png" />
+      </sprite>
       <sprite name="startscreenbg">
         <translation origin="center"/>
         <image file="../images/core/menu/startscreenbg.jpg"/>
