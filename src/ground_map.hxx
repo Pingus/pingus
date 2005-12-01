@@ -73,6 +73,7 @@ private:
 
   int tile_width;
   int tile_height;
+
 public:
   GroundMap(const PingusLevel& arg_plf);
   virtual ~GroundMap();
