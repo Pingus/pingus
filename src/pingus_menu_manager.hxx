@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_PINGUS_MENU_MANAGER_HXX
 #define HEADER_PINGUS_PINGUS_MENU_MANAGER_HXX
 
-#include "menu_background.hxx"
+#include "layer_manager.hxx"
 #include "exit_menu.hxx"
 #include "pingus_menu.hxx"
 #include "file_dialog.hxx"
@@ -46,9 +46,9 @@ private:
 public:
   /* Menu's FIXME: These shouldn't get exported to the outsite,
      instead only handles (enum's) should be visible */
-  PingusMenu mainmenu;
-  MenuBackground background;
-  ExitMenu exitmenu;
+  PingusMenu     mainmenu;
+  LayerManager background;
+  ExitMenu       exitmenu;
 	FileDialog* filedialog;
 
   virtual ~PingusMenuManager();

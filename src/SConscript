@@ -164,7 +164,6 @@ env.Program('../pingus', [
 'level_interrupt.cxx', 
 'loading.cxx', 
 'main_menu.cxx', 
-'menu_background.cxx', 
 'components/menu_button.cxx', 
 'mover.cxx', 
 'movers/linear_mover.cxx', 
