@@ -21,6 +21,7 @@
 #include <ClanLib/Display/display.h>
 #include "gui/screen_manager.hxx"
 #include "sound/sound.hxx"
+#include "resource.hxx"
 #include "pingus_menu_manager.hxx"
 
 namespace Pingus {
