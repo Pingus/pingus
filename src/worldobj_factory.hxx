@@ -65,6 +65,8 @@ public:
     WorldObjFactory::instance ()->register_factory (id, this);
   }
 
+  virtual ~WorldObjAbstractFactory() {}
+
   virtual WorldObj* create(const FileReader& reader) =0;
 
 private:

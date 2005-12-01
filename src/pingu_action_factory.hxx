@@ -69,6 +69,7 @@ public:
   PinguActionAbstractFactory (Actions::ActionName id) {
     PinguActionFactory::instance ()-> register_factory (id, this);
   }
+  virtual ~PinguActionAbstractFactory() {}
 
   virtual PinguAction* create (Pingu* p) =0;
 

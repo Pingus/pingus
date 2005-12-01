@@ -82,6 +82,7 @@ public:
 
   public:
     Event () { }
+    virtual ~Event () { }
 
     virtual void on_button_press(const CL_InputEvent& event);
     virtual void on_button_release(const CL_InputEvent& event);

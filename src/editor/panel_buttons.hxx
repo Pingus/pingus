@@ -151,4 +151,5 @@ private:
 }		// Pingus namespace
 
 #endif
+
 /* EOF */

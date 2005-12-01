@@ -32,6 +32,8 @@ class FileWriter
 {
 private:
 public:
+  virtual ~FileWriter() {}
+
   virtual void begin_section (const char* name) =0;
   virtual void end_section () =0;
 

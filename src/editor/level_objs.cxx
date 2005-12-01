@@ -32,11 +32,10 @@ namespace Editor {
 // Default constructor
 LevelObj::LevelObj(std::string obj_name) :
 	section_name(obj_name),
-	width(0),
 	speed(0),
 	parallax(0.0),
+	width(0),
 	owner_id(-1),
-	color(0,0,0,0),
 	scroll_x(0),
 	scroll_y(0),
 	stretch_x(false),
@@ -44,6 +43,7 @@ LevelObj::LevelObj(std::string obj_name) :
 	keep_aspect(false),
 	para_x(0),
 	para_y(0),
+	color(0,0,0,0),
 	attribs(get_attributes(obj_name))
 {
 	

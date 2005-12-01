@@ -72,8 +72,8 @@ public:
 
 private:
 	FileDialogItem();
-  FileDialogItem (const FileDialogItem&);
-  FileDialogItem& operator= (const FileDialogItem&);
+	FileDialogItem (const FileDialogItem&);
+	FileDialogItem& operator= (const FileDialogItem&);
 };	// FileDialogItem class
 
 }		// Pingus namespace

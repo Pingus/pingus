@@ -36,6 +36,7 @@ private:
 
 public:
   Component () { }
+  virtual ~Component() {}
 
   virtual void draw (DrawingContext& gc) =0;
   virtual void update (float delta) { UNUSED_ARG(delta);}

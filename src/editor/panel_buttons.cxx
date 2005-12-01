@@ -34,8 +34,8 @@ namespace Editor {
 
 // Constructor
 PanelButton::PanelButton(EditorPanel* p) :
-	panel(p),
-	hover(false)
+  hover(false),
+  panel(p)
 {
   button = Resource::load_sprite("core/editor/button");
   button_pressed = Resource::load_sprite("core/editor/button_pressed");

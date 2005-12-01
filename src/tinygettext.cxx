@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <config.h>
 #ifdef HAVE_DIRENT_H
 #include <dirent.h>
 #else
@@ -29,7 +30,6 @@
 #include <iostream>
 #include <ctype.h>
 #include <errno.h>
-#include <config.h>
 #include "tinygettext.hxx"
 #include "pingus_error.hxx"
 
@@ -92,7 +92,7 @@ public:
 		size_t in_size = text.size();
 		size_t out_size = 4*in_size; // Worst case scenario: ASCII -> UTF-32?
 		std::string result(out_size, ' ');
-    ICONV_CONST char* in_str = &text[0];
+                char* in_str = &text[0];
 		char* out_str = &result[0];
  
 		// Try to convert the text.
@@ -146,7 +146,7 @@ std::string convert(const std::string& text,
     }
   iconv_close(cd);
 
-  /*
+  
     <dolphin> your code is also buggy
 <dolphin> there will be extra spaces at the end of the string
 <dolphin> the lenght of the final string should be: out_str - out_orig

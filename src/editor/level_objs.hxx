@@ -46,7 +46,7 @@ namespace Editor {
 	const unsigned HAS_SURFACE = 2048;
 
 	/** Returns a number representing which attributes this object possesses */
-	static unsigned get_attributes(std::string obj_type)
+	inline unsigned int get_attributes(std::string obj_type)
 	{
 		unsigned val;
 		if (obj_type == "groundpiece")

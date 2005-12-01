@@ -49,8 +49,8 @@ namespace Pingus {
 			ResDescriptor("core/menu/exit_button_pressed"),
 			ResDescriptor("core/menu/exit_button_hover")),
 			manager (m),
-			label (l), 
 			file_dialog(f),
+			label (l), 
 			is_hidden(true)
 		{
 		}
@@ -139,10 +139,10 @@ namespace Pingus {
 
 	public:
 		FileDialogScrollButton (FileDialog* f, int d, int height_offset)
-			: pos(Vector((float)CL_Display::get_width()/2 + 210,
-			(float)CL_Display::get_height()/2 + height_offset)),
-			file_dialog(f),
-			direction(d)
+			: file_dialog(f),
+                          pos(Vector((float)CL_Display::get_width()/2 + 210,
+                                     (float)CL_Display::get_height()/2 + height_offset)),
+                          direction(d)
 		{
 			std::string str_direction = d==0 ? "up" : "down";
 			sprite = Resource::load_sprite("core/menu/" + str_direction + "_arrow");
@@ -168,9 +168,9 @@ namespace Pingus {
 	FileDialog::FileDialog (PingusMenuManager* manager_, const std::string filemask_, 
 		const std::string searchpath_, bool for_load)
 		: PingusSubMenu (manager_),
-		file_mask(filemask_),
-		current_path(searchpath_),
-		for_loading(for_load)
+                  for_loading(for_load),
+                  file_mask(filemask_),
+                  current_path(searchpath_)
 	{
 		// Initialize the buttons
 		ok_button = new FileDialogOkButton(manager, this,

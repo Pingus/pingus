@@ -30,7 +30,7 @@ namespace Pingus {
 
 	// Only Constructor
 	FileDialogItem::FileDialogItem(FileDialog* f, Vector p) 
-		: file_dialog(f), mouse_over(false), is_hidden(true),
+		: mouse_over(false), is_hidden(true), file_dialog(f),
 			pos(p), sprite(Resource::load_sprite("core/misc/404sprite"))
 	{
 	}

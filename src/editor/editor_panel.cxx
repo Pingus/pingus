@@ -105,3 +105,4 @@ EditorPanel::add(PanelButton* button)
 
 } // Editor namespace
 } // Pingus namespace
+

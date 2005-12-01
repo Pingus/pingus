@@ -34,15 +34,15 @@ namespace Editor {
 
 // Constructor
 EditorViewport::EditorViewport(EditorScreen* e) :
+	state((int)(end_pos.x - start_pos.x), (int)(end_pos.y - start_pos.y)),
+	scene_context(new SceneContext()),
+	translate(0),
 	editor(e),
 	bg_surface(0),
 	start_pos(Vector(10.0f, 60.0f)),
 	end_pos(Vector((float)(CL_Display::get_width() - 10), 
-								(float)(CL_Display::get_height() - 10))),
-  scene_context(new SceneContext()),
-	autoscroll(true),
-	translate(0),
-	state((int)(end_pos.x - start_pos.x), (int)(end_pos.y - start_pos.y))
+						(float)(CL_Display::get_height() - 10))),
+	autoscroll(true)
 {
 	state.set_limit(CL_Rect((int)start_pos.x, (int)start_pos.y, 
 		(int)end_pos.x, (int)end_pos.y));
