@@ -20,8 +20,9 @@
 #include <cstdio>
 #include "../col_map.hxx"
 #include "../display/scene_context.hxx"
-#include "../pingu_map.hxx"
+#include "../ground_map.hxx"
 #include "../world.hxx"
+#include "../worldobj.hxx"
 #include "../resource.hxx"
 #include "../sound/sound.hxx"
 #include "../pingu.hxx"

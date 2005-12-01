@@ -19,7 +19,7 @@
 
 #include <iostream>
 #include "../world.hxx"
-#include "../pingu_map.hxx"
+#include "../ground_map.hxx"
 #include "../col_map.hxx"
 #include "../resource.hxx"
 #include "groundpiece.hxx"

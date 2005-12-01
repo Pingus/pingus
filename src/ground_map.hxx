@@ -18,22 +18,24 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 //  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_SPOT_MAP_HXX
-#define HEADER_PINGUS_SPOT_MAP_HXX
+#ifndef HEADER_PINGUS_GROUND_MAP_HXX
+#define HEADER_PINGUS_GROUND_MAP_HXX
 
 #include <vector>
 #include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/surface.h>
 #include "globals.hxx"
-#include "pingu_map.hxx"
+#include "worldobj.hxx"
+#include "ground_map.hxx"
 
 class CL_PixelBuffer;
 
 namespace Pingus {
 
+class SceneContext;
 class PingusLevel;
 class ColMap;
-class PingusSpotMap;
+class GroundMap;
 
 class MapTile
 {
@@ -46,7 +48,7 @@ public:
   MapTile();
   ~MapTile();
 
-	void remove(CL_PixelBuffer, int x, int y, int real_x, int real_y, PingusSpotMap*);  
+	void remove(CL_PixelBuffer, int x, int y, int real_x, int real_y, GroundMap*);  
   void put(CL_PixelBuffer, int x, int y);  
 
   CL_Surface get_surface() const { return surface; }
@@ -56,7 +58,7 @@ public:
     most levels. It allows to construct a map, from a set of simple
     small images, this allows the generation of large map without
     using to much diskspace. */
-class PingusSpotMap : public PinguMap
+class GroundMap : public WorldObj
 {
 private:
   ColMap* colmap;
@@ -72,8 +74,8 @@ private:
   int tile_width;
   int tile_height;
 public:
-  PingusSpotMap(const PingusLevel& arg_plf);
-  virtual ~PingusSpotMap();
+  GroundMap(const PingusLevel& arg_plf);
+  virtual ~GroundMap();
 
   void draw(SceneContext& gc);
 
@@ -101,8 +103,8 @@ private:
   /** Draw the collision map onto the screen */
   void draw_colmap(SceneContext& gc);
 
-  PingusSpotMap (const PingusSpotMap&);
-  PingusSpotMap& operator= (const PingusSpotMap&);
+  GroundMap (const GroundMap&);
+  GroundMap& operator= (const GroundMap&);
 };
 
 } // namespace Pingus

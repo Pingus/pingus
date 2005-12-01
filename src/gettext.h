@@ -20,7 +20,7 @@
 #ifndef HEADER_GETTEXT_HXX
 #define HEADER_GETTEXT_HXX
 
-#include "tinygettext.hxx"
+#include "tinygettext/tinygettext.hxx"
 
 namespace Pingus {
 extern TinyGetText::DictionaryManager dictionary_manager;

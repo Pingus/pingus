@@ -31,8 +31,6 @@
 #include <ctype.h>
 #include <errno.h>
 #include "tinygettext.hxx"
-#include "pingus_error.hxx"
-
 
 //#define TRANSLATION_DEBUG
 

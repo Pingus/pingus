@@ -35,7 +35,7 @@ class Exit;
 class Hotspot;
 class Liquid;
 class PinguHolder;
-class PinguMap;
+class GroundMap;
 class PingusLevel;
 class Pingu;
 class Trap;
@@ -64,7 +64,7 @@ private:
   CL_Color ambient_light;
 
   /** groundmap for the pingus */
-  PinguMap* gfx_map;
+  GroundMap* gfx_map;
 
   /** manager class for the time in the pingus world */
   GameTime* game_time;
@@ -127,7 +127,7 @@ public:
   ColMap* get_colmap();
 
   /** @return A pointer to the gfx map of this world */
-  PinguMap* get_gfx_map();
+  GroundMap* get_gfx_map();
 
   /** @return A pointer to the worlds pingu particle holder */
   Particles::PinguParticleHolder* get_pingu_particle_holder () { return pingu_particle_holder; }

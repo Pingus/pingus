@@ -26,7 +26,7 @@
 #include "display/scene_context.hxx"
 #include "pingus_error.hxx"
 #include "blitter.hxx"
-#include "spot_map.hxx"
+#include "ground_map.hxx"
 #include "pingus_level.hxx"
 #include "gettext.h"
 #include "col_map.hxx"
@@ -56,7 +56,7 @@ namespace Pingus {
 
 	void
 	MapTile::remove(CL_PixelBuffer obj, int x, int y, 
-						 int real_x, int real_y, PingusSpotMap* parent)
+						 int real_x, int real_y, GroundMap* parent)
 	{
 		if (surface)
 		{
@@ -73,7 +73,7 @@ namespace Pingus {
 		surface = CL_Surface(pixelbuffer);
 	}
 
-	PingusSpotMap::PingusSpotMap(const PingusLevel& plf)
+	GroundMap::GroundMap(const PingusLevel& plf)
 	{
 		width  = plf.get_size().width;
 		height = plf.get_size().height;
@@ -106,20 +106,20 @@ namespace Pingus {
 		height = plf.get_size().height;
 	}
 
-	PingusSpotMap::~PingusSpotMap(void)
+	GroundMap::~GroundMap(void)
 	{
 		delete colmap;
 	}
 
 	void
-	PingusSpotMap::draw_colmap(SceneContext& gc)
+	GroundMap::draw_colmap(SceneContext& gc)
 	{
 		colmap->draw(gc.color());
 	}
 
 // Draws the map with a offset, needed for scrolling
 	void
-	PingusSpotMap::draw(SceneContext& gc)
+	GroundMap::draw(SceneContext& gc)
 	{
 		const CL_Rect& display = gc.color().get_clip_rect();
 
@@ -161,20 +161,20 @@ namespace Pingus {
 
 // Returns the width of the map, it is read directly from the *.psm file
 	int
-	PingusSpotMap::get_width(void)
+	GroundMap::get_width(void)
 	{
 		return width;
 	}
 
 // Returns the height of the map, it is read directly from the *.psm file
 	int
-	PingusSpotMap::get_height(void)
+	GroundMap::get_height(void)
 	{
 		return height;
 	}
 
 	void
-	PingusSpotMap::remove(CL_PixelBuffer sprovider, int x, int y)
+	GroundMap::remove(CL_PixelBuffer sprovider, int x, int y)
 	{
 		// Get the start tile and end tile
 		int start_x = Math::max(x / tile_size, 0);
@@ -193,7 +193,7 @@ namespace Pingus {
 	}
 
 	void
-	PingusSpotMap::put_alpha_surface(CL_PixelBuffer provider, CL_PixelBuffer sprovider,
+	GroundMap::put_alpha_surface(CL_PixelBuffer provider, CL_PixelBuffer sprovider,
 												int x_pos, int y_pos, int real_x_arg, int real_y_arg)
 	{
 		if (sprovider.get_format().get_depth() != 8)
@@ -274,7 +274,7 @@ namespace Pingus {
 	}
 
 	void
-	PingusSpotMap::put(CL_PixelBuffer sprovider, int x, int y)
+	GroundMap::put(CL_PixelBuffer sprovider, int x, int y)
 	{
 		// Get the start tile and end tile
 		int start_x = std::max(0, x / tile_size);
@@ -291,7 +291,7 @@ namespace Pingus {
 	}
 
 	ColMap*
-	PingusSpotMap::get_colmap(void)
+	GroundMap::get_colmap(void)
 	{
 		return colmap;
 	}

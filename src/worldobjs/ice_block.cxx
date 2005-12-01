@@ -22,7 +22,7 @@
 #include "../display/scene_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
-#include "../pingu_map.hxx"
+#include "../ground_map.hxx"
 #include "../resource.hxx"
 #include "../world.hxx"
 #include "ice_block.hxx"

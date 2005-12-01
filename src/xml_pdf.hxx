@@ -37,6 +37,7 @@ private:
   PingusLevel plf;
   std::string levelname;
   std::vector<ServerEvent> events;
+
 public:
   XMLPDF(const std::string& filename);
   ~XMLPDF();

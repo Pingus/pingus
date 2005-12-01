@@ -23,7 +23,7 @@
 #include <typeinfo>
 #include "pingu_holder.hxx"
 #include "sound/sound.hxx"
-#include "spot_map.hxx"
+#include "ground_map.hxx"
 #include "world.hxx"
 #include "particles/pingu_particle_holder.hxx"
 #include "particles/rain_particle_holder.hxx"
@@ -47,7 +47,7 @@ bool WorldObj_less (WorldObj* a, WorldObj* b)
 
 World::World(const PingusLevel& plf)
   : ambient_light(CL_Color(plf.get_ambient_light())),
-    gfx_map(new PingusSpotMap(plf)),
+    gfx_map(new GroundMap(plf)),
     game_time(new GameTime (game_speed)),
     do_armageddon(false),
     pingus(new PinguHolder(plf)),
@@ -216,7 +216,7 @@ World::get_colmap()
   return colmap;
 }
 
-PinguMap*
+GroundMap*
 World::get_gfx_map ()
 {
   return gfx_map;

@@ -21,10 +21,11 @@
 #include "../debug.hxx"
 #include "../globals.hxx"
 #include "../display/scene_context.hxx"
-#include "../pingu_map.hxx"
+#include "../ground_map.hxx"
 #include "../resource.hxx"
 #include "../pingu.hxx"
 #include "../world.hxx"
+#include "../worldobj.hxx"
 #include "basher.hxx"
 
 namespace Pingus {

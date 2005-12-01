@@ -21,7 +21,7 @@
 #include "../math.hxx"
 #include "../col_map.hxx"
 #include "../display/scene_context.hxx"
-#include "../pingu_map.hxx"
+#include "../ground_map.hxx"
 #include "../resource.hxx"
 #include "../world.hxx"
 #include "snow_particle_holder.hxx"
