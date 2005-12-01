@@ -24,7 +24,7 @@
 #include "true_server.hxx"
 #include "world.hxx"
 #include "demo_player.hxx"
-#include "pingus_counter.hxx"
+#include "components/pingus_counter.hxx"
 #include "gui/gui_manager.hxx"
 #include "display/scene_context.hxx"
 #include "demo_session.hxx"

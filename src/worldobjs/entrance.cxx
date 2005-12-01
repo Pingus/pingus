@@ -24,8 +24,8 @@
 #include "../globals.hxx"
 #include "../pingu.hxx"
 #include "../game_time.hxx"
-#include "../smallmap.hxx"
 #include "../resource.hxx"
+#include "../components/smallmap.hxx"
 #include "entrance.hxx"
 
 namespace Pingus {

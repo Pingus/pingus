@@ -23,9 +23,9 @@
 #include <ClanLib/Display/sprite.h>
 #include <ClanLib/Display/font.h>
 #include <string>
-#include "pingu_enums.hxx"
-#include "state_sprite.hxx"
-#include "gui/component.hxx"
+#include "../pingu_enums.hxx"
+#include "../state_sprite.hxx"
+#include "../gui/component.hxx"
 
 class CL_Font;
 

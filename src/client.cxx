@@ -20,18 +20,18 @@
 #include <iostream>
 #include <ClanLib/Display/display.h>
 #include "globals.hxx"
-#include "playfield.hxx"
+#include "components/playfield.hxx"
 #include "timer.hxx"
 #include "resource.hxx"
 #include "sound/sound.hxx"
-#include "time_display.hxx"
-#include "pingus_counter.hxx"
-#include "smallmap.hxx"
-#include "hurry_up.hxx"
+#include "components/time_display.hxx"
+#include "components/pingus_counter.hxx"
+#include "components/smallmap.hxx"
+#include "components/hurry_up.hxx"
 #include "path_manager.hxx"
 #include "gui/cursor.hxx"
 #include "true_server.hxx"
-#include "button_panel.hxx"
+#include "components/button_panel.hxx"
 #include "gui/gui_manager.hxx"
 
 namespace Pingus {

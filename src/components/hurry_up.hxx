@@ -1,4 +1,4 @@
-//  $Id: time_display.hxx,v 1.14 2003/10/21 21:37:06 grumbel Exp $
+//  $Id: hurry_up.hxx,v 1.11 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,41 +17,46 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_TIME_DISPLAY_HXX
-#define HEADER_PINGUS_TIME_DISPLAY_HXX
+#ifndef HEADER_PINGUS_HURRY_UP_HXX
+#define HEADER_PINGUS_HURRY_UP_HXX
 
-#include <ClanLib/Display/sprite.h>
-#include <ClanLib/Display/font.h>
-#include "gui/component.hxx"
+#include "../gui/component.hxx"
 
 class CL_Font;
 
 namespace Pingus {
 
-class Server;
-class Client;
 class DrawingContext;
+class Client;
 
-class TimeDisplay : public GUI::Component
+/** Hurry up if the time goes over... */
+class HurryUp : public GUI::Component
 {
 private:
-  Server*   server;
-  CL_Font   font;
-  CL_Sprite infinity_symbol;
+  CL_Font font;
+  bool is_running;
+  bool is_finished;
+  bool center_reached;
+  Client* client;
+
+  int  wait_counter;
+  float x_pos;
+
+  float speed;
 
 public:
-  TimeDisplay(Client* c);
-  virtual ~TimeDisplay() {}
+  HurryUp(Client*);
+  virtual ~HurryUp();
 
   void draw(DrawingContext& gc);
+  void update(float delta);
+  void set_client(Client*);
 
 private:
-  TimeDisplay (const TimeDisplay&);
-  TimeDisplay& operator= (const TimeDisplay&);
+  HurryUp (const HurryUp&);
+  HurryUp& operator= (const HurryUp&);
 };
 
 } // namespace Pingus
 
 #endif
-
-/* EOF */

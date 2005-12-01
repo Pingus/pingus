@@ -21,10 +21,10 @@
 #define HEADER_PINGUS_PLAYFIELD_HXX
 
 #include <ClanLib/Core/Math/rect.h>
-#include "client.hxx"
-#include "graphic_context_state.hxx"
-#include "gui/component.hxx"
-#include "capture_rectangle.hxx"
+#include "../client.hxx"
+#include "../graphic_context_state.hxx"
+#include "../gui/component.hxx"
+#include "../capture_rectangle.hxx"
 
 namespace Pingus {
 

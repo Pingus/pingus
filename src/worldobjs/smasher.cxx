@@ -69,8 +69,8 @@ Smasher::update ()
 	            for(int i=0; i < 20; ++i)
 		            {
 		              world->get_smoke_particle_holder()->
-                                add_particle(static_cast<int>(pos.x + 20 + rand() % 260),
-                                             static_cast<int>(pos.y + 180),
+                                add_particle(pos.x + 20 + rand() % 260,
+                                             pos.y + 180,
                                              Math::frand()-0.5f, Math::frand()-0.5f);
 		            }
 

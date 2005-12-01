@@ -20,14 +20,14 @@
 #include <stdio.h>
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Display/font.h>
-#include "gettext.h"
-#include "resource.hxx"
+#include "../gettext.h"
+#include "../resource.hxx"
+#include "../world.hxx"
+#include "../pingu_holder.hxx"
+#include "../true_server.hxx"
+#include "../globals.hxx"
+#include "../fonts.hxx"
 #include "pingus_counter.hxx"
-#include "world.hxx"
-#include "pingu_holder.hxx"
-#include "true_server.hxx"
-#include "globals.hxx"
-#include "fonts.hxx"
 
 namespace Pingus {
 

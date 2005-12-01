@@ -25,7 +25,7 @@
 namespace Pingus {
 namespace Particles {
 
-SmokeParticleHolder::SmokeParticle::SmokeParticle (int x, int y, float vel_x, float vel_y)
+SmokeParticleHolder::SmokeParticle::SmokeParticle (float x, float y, float vel_x, float vel_y)
   : pos(Vector(x,y)), velocity(Vector(vel_x, vel_y))
 {
   time = livetime = 25 + (rand() % 10);
@@ -41,7 +41,7 @@ SmokeParticleHolder::SmokeParticleHolder ()
 
 
 void
-SmokeParticleHolder::add_particle (int x, int y, float vel_x, float vel_y)
+SmokeParticleHolder::add_particle (float x, float y, float vel_x, float vel_y)
 {
   // search for dead entry to replace
   for (std::vector<SmokeParticle>::iterator it=particles.begin(); it != particles.end(); ++it)

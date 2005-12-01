@@ -22,10 +22,10 @@
 #include <ClanLib/Display/keys.h>
 #include <iostream>
 #include <algorithm>
-#include "globals.hxx"
+#include "../globals.hxx"
+#include "../true_server.hxx"
+#include "../client.hxx"
 #include "button_panel.hxx"
-#include "true_server.hxx"
-#include "client.hxx"
 
 namespace Pingus {
 

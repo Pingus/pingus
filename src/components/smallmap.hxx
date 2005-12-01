@@ -22,7 +22,7 @@
 
 #include <ClanLib/Display/sprite.h>
 #include <ClanLib/Display/pixel_buffer.h>
-#include "gui/component.hxx"
+#include "../gui/component.hxx"
 
 class CL_Key;
 

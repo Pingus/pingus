@@ -57,41 +57,6 @@ private:
   WorldObjFactory& operator= (const WorldObjFactory&);
 };
 
-/** WorldObjAbstractFactory, interface for creating factories */
-class WorldObjAbstractFactory
-{
-public:
-  WorldObjAbstractFactory (const std::string& id) {
-    WorldObjFactory::instance ()->register_factory (id, this);
-  }
-
-  virtual ~WorldObjAbstractFactory() {}
-
-  virtual WorldObj* create(const FileReader& reader) =0;
-
-private:
-  WorldObjAbstractFactory (const WorldObjAbstractFactory&);
-  WorldObjAbstractFactory& operator= (const WorldObjAbstractFactory&);
-};
-
-/** Template to create factories, usage:
-    new WorldObjFactoryImpl<"liquid", Liquid>; */
-template<class T>
-class WorldObjFactoryImpl : public WorldObjAbstractFactory
-{
-public:
-  WorldObjFactoryImpl (const std::string& id)
-    : WorldObjAbstractFactory (id) {}
-
-  WorldObj* create(const FileReader& reader) {
-    return new T(reader);
-  }
-
-private:
-  WorldObjFactoryImpl (const WorldObjFactoryImpl&);
-  WorldObjFactoryImpl& operator= (const WorldObjFactoryImpl&);
-};
-
 } // namespace Pingus
 
 #endif

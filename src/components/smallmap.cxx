@@ -18,20 +18,20 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Display/display.h>
-#include "pingu_holder.hxx"
-#include "gui/display.hxx"
-#include "display/drawing_context.hxx"
+#include "../pingu_holder.hxx"
+#include "../gui/display.hxx"
+#include "../display/drawing_context.hxx"
+#include "../world.hxx"
+#include "../resource.hxx"
+#include "../col_map.hxx"
+#include "../true_server.hxx"
+#include "../smallmap_image.hxx"
+#include "../pingu.hxx"
+#include "../math.hxx"
+#include "../vector.hxx"
+#include "../globals.hxx"
 #include "playfield.hxx"
-#include "world.hxx"
-#include "resource.hxx"
 #include "smallmap.hxx"
-#include "col_map.hxx"
-#include "true_server.hxx"
-#include "smallmap_image.hxx"
-#include "pingu.hxx"
-#include "math.hxx"
-#include "vector.hxx"
-#include "globals.hxx"
 
 namespace Pingus {
 

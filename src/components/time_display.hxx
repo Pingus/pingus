@@ -1,4 +1,4 @@
-//  $Id: pingus_counter.hxx,v 1.14 2003/10/21 21:37:06 grumbel Exp $
+//  $Id: time_display.hxx,v 1.14 2003/10/21 21:37:06 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,35 +17,37 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_PINGUS_COUNTER_HXX
-#define HEADER_PINGUS_PINGUS_COUNTER_HXX
+#ifndef HEADER_PINGUS_TIME_DISPLAY_HXX
+#define HEADER_PINGUS_TIME_DISPLAY_HXX
 
 #include <ClanLib/Display/sprite.h>
 #include <ClanLib/Display/font.h>
-#include "gui/component.hxx"
+#include "../gui/component.hxx"
 
 class CL_Font;
 
 namespace Pingus {
 
-class DrawingContext;
-class World;
 class Server;
+class Client;
+class DrawingContext;
 
-class PingusCounter : public GUI::Component
+class TimeDisplay : public GUI::Component
 {
 private:
-  Server* server;
-  CL_Font font;
-  CL_Sprite background;
+  Server*   server;
+  CL_Font   font;
+  CL_Sprite infinity_symbol;
+
 public:
-  PingusCounter(Server* s);
-  virtual ~PingusCounter() {}
+  TimeDisplay(Client* c);
+  virtual ~TimeDisplay() {}
 
   void draw(DrawingContext& gc);
+
 private:
-  PingusCounter (const PingusCounter&);
-  PingusCounter& operator= (const PingusCounter&);
+  TimeDisplay (const TimeDisplay&);
+  TimeDisplay& operator= (const TimeDisplay&);
 };
 
 } // namespace Pingus

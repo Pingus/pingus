@@ -19,19 +19,21 @@
 
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Display/font.h>
-#include "globals.hxx"
-#include "debug.hxx"
-#include "sound/sound.hxx"
-#include "resource.hxx"
-#include "pingus_menu_manager.hxx"
-#include "theme_selector.hxx"
+
+#include "../globals.hxx"
+#include "../debug.hxx"
+#include "../sound/sound.hxx"
+#include "../resource.hxx"
+#include "../pingus_menu_manager.hxx"
+#include "../theme_selector.hxx"
+#include "../gui/screen_manager.hxx"
+#include "../worldmap/manager.hxx"
+#include "../story_screen.hxx"
+#include "../gettext.h"
+#include "../stat_manager.hxx"
+#include "../story.hxx"
+
 #include "menu_button.hxx"
-#include "gui/screen_manager.hxx"
-#include "worldmap/manager.hxx"
-#include "story_screen.hxx"
-#include "gettext.h"
-#include "stat_manager.hxx"
-#include "story.hxx"
 
 namespace Pingus {
 

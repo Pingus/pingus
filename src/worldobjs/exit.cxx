@@ -25,7 +25,7 @@
 #include "../globals.hxx"
 #include "../pingu_holder.hxx"
 #include "../pingu.hxx"
-#include "../smallmap.hxx"
+#include "../components/smallmap.hxx"
 #include "../resource.hxx"
 #include "exit.hxx"
 

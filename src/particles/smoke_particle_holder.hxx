@@ -40,7 +40,7 @@ class SmokeParticleHolder : public WorldObj
     Vector pos;
     Vector velocity;
 
-    SmokeParticle(int x, int y, float vel_x, float vel_y);
+    SmokeParticle(float x, float y, float vel_x, float vel_y);
   };
 
 private:
@@ -52,7 +52,7 @@ private:
 public:
   SmokeParticleHolder ();
 
-  void add_particle (int x, int y, float vel_x, float vel_y);
+  void add_particle (float x, float y, float vel_x, float vel_y);
 
   float get_z_pos () const { return 1000.0f; }
 

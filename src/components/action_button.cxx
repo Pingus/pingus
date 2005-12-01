@@ -19,15 +19,15 @@
 
 #include <ClanLib/display.h>
 #include <ClanLib/Core/System/clanstring.h>
-#include "globals.hxx"
-#include "cheat.hxx"
-#include "resource.hxx"
+#include "../globals.hxx"
+#include "../cheat.hxx"
+#include "../resource.hxx"
 #include "action_button.hxx"
-#include "true_server.hxx"
-#include "world.hxx"
-#include "display/drawing_context.hxx"
-#include "gui/display.hxx"
-#include "fonts.hxx"
+#include "../true_server.hxx"
+#include "../world.hxx"
+#include "../display/drawing_context.hxx"
+#include "../gui/display.hxx"
+#include "../fonts.hxx"
 
 namespace Pingus {
 

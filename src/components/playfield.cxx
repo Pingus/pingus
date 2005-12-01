@@ -20,17 +20,17 @@
 #include <stdio.h>
 #include <iostream>
 #include <ClanLib/Display/display.h>
-#include "globals.hxx"
-#include "playfield.hxx"
-#include "pingu_holder.hxx"
-#include "display/drawing_context.hxx"
-#include "display/scene_context.hxx"
-#include "world.hxx"
-#include "server.hxx"
-#include "true_server.hxx"
-#include "pingu.hxx"
-#include "gui/display.hxx"
+#include "../globals.hxx"
+#include "../pingu_holder.hxx"
+#include "../display/drawing_context.hxx"
+#include "../display/scene_context.hxx"
+#include "../world.hxx"
+#include "../server.hxx"
+#include "../true_server.hxx"
+#include "../pingu.hxx"
+#include "../gui/display.hxx"
 #include "button_panel.hxx"
+#include "playfield.hxx"
 
 namespace Pingus {
 

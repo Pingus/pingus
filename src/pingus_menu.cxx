@@ -23,7 +23,7 @@
 #include <ClanLib/guistylesilver.h>
 #include <config.h>
 #include "gettext.h"
-#include "menu_button.hxx"
+#include "components/menu_button.hxx"
 #include "resource.hxx"
 #include "debug.hxx"
 #include "globals.hxx"

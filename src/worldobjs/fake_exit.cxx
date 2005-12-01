@@ -21,7 +21,7 @@
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
 #include "../world.hxx"
-#include "../smallmap.hxx"
+#include "../components/smallmap.hxx"
 #include "../resource.hxx"
 #include "fake_exit.hxx"
 

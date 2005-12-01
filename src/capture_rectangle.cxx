@@ -24,7 +24,7 @@
 #include "resource.hxx"
 #include "capture_rectangle.hxx"
 #include "pingu_action.hxx"
-#include "button_panel.hxx"
+#include "components/button_panel.hxx"
 #include "globals.hxx"
 #include "display/scene_context.hxx"
 #include "fonts.hxx"

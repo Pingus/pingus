@@ -50,8 +50,8 @@ WoodThing::update ()
   if (rand() % 5 == 0)
     {
       world->get_smoke_particle_holder()->
-        add_particle(static_cast<int>(pos.x - surface.get_width () /  2 - 24),
-                     static_cast<int>(pos.y - surface.get_height() + 32 - 147),
+        add_particle(pos.x - surface.get_width () /  2 - 24,
+                     pos.y - surface.get_height() + 32 - 147,
                      (Math::frand() + 1) * -0.6f, (Math::frand() + 1) * -0.6f);
     }
 }
@@ -60,9 +60,9 @@ void
 WoodThing::draw (SceneContext& gc)
 {
   gc.color().draw(surface,
-	  Vector(static_cast<int>(pos.x - surface.get_width () /  2),
-                 static_cast<int>(pos.y - surface.get_height() + 32)),
-	  (int)counter);
+                  Vector(pos.x - surface.get_width () /  2,
+                         pos.y - surface.get_height() + 32),
+                  (int)counter);
 }
 
 } // namespace Entrances

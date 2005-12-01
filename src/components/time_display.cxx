@@ -22,14 +22,16 @@
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Display/font.h>
 #include <ClanLib/Core/System/clanstring.h>
-#include "globals.hxx"
-#include "resource.hxx"
+
+#include "../globals.hxx"
+#include "../resource.hxx"
+#include "../world.hxx"
+#include "../true_server.hxx"
+#include "../client.hxx"
+#include "../game_time.hxx"
+#include "../fonts.hxx"
+
 #include "time_display.hxx"
-#include "world.hxx"
-#include "true_server.hxx"
-#include "client.hxx"
-#include "game_time.hxx"
-#include "fonts.hxx"
 
 namespace Pingus {
 

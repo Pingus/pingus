@@ -20,9 +20,9 @@
 #include <ClanLib/Core/System/system.h>
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Display/font.h>
-#include "resource.hxx"
+#include "../resource.hxx"
+#include "../fonts.hxx"
 #include "hurry_up.hxx"
-#include "fonts.hxx"
 
 namespace Pingus {
 

@@ -23,7 +23,7 @@
 #include <string>
 #include <ClanLib/Display/sprite.h>
 #include <ClanLib/Display/font.h>
-#include "gui/component.hxx"
+#include "../gui/component.hxx"
 
 namespace Pingus {
 
