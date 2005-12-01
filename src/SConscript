@@ -77,7 +77,6 @@ env.Program('../pingus', [
 'actions/waiter.cxx', 
 'actions/walker.cxx', 
 'blitter.cxx', 
-'blitter_test.cxx', 
 'capture_rectangle.cxx', 
 'cheat.cxx', 
 'client.cxx', 

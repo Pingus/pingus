@@ -57,7 +57,6 @@
 #include "stat_manager.hxx"
 #include "demo_session.hxx"
 #include "debug.hxx"
-#include "action_data.hxx"
 #include "fonts.hxx"
 #include "pingus_menu_manager.hxx"
 #include "resource.hxx"
