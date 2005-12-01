@@ -125,7 +125,7 @@ PingusMenu::setup_contrib_menu()
 		path_manager.complete("levels/"), true);
 
 	/*
- 	// Create a Clanlib File Dialog using the silver style
+ 	// Create a ClanLib File Dialog using the silver style
   CL_ResourceManager *resources = new 
       CL_ResourceManager(path_manager.complete("GUIStyleSilver/gui.xml"));
 	CL_StyleManager_Silver *style = new CL_StyleManager_Silver(resources);

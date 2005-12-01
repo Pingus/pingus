@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_SOUND_HXX
 #define HEADER_PINGUS_SOUND_HXX
 
-#include <Clanlib/sound.h>
+#include <ClanLib/sound.h>
 #include <string>
 #include "sounds.hxx"
 #include "sound_impl.hxx"

@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_FILE_DIALOG_ITEM_HXX
 #define HEADER_PINGUS_FILE_DIALOG_ITEM_HXX
 
-#include <Clanlib/Display/sprite.h>
+#include <ClanLib/Display/sprite.h>
 #include "gui/component.hxx"
 #include "vector.hxx"
 
