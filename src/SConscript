@@ -135,7 +135,6 @@ env.Program('../pingus', [
 'gui/screen_manager.cxx', 
 'gui/screen_ptr.cxx', 
 'gui/surface_button.cxx', 
-'html_browser.cxx', 
 'input/axes/button_axis.cxx', 
 'input/axes/inverted_axis.cxx', 
 'input/axes/joystick_axis.cxx', 
