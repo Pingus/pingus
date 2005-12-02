@@ -120,6 +120,7 @@ AC_OUTPUT( Makefile  m4/Makefile
 	   src/caimagemanipulation/Makefile
            src/colliders/Makefile
            src/gui/Makefile
+           src/editor/Makefile
            src/input/Makefile
 	   src/input/axes/Makefile
 	   src/input/buttons/Makefile
@@ -128,6 +129,8 @@ AC_OUTPUT( Makefile  m4/Makefile
            src/movers/Makefile
            src/particles/Makefile
            src/sound/Makefile
+           src/components/Makefile
+           src/tinygettext/Makefile
            src/worldobjs/Makefile
 	   src/worldmap/Makefile
            data/Makefile 

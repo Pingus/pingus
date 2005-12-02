@@ -1,4 +1,4 @@
-﻿# Pingus - A free Lemmings clone
+# Pingus - A free Lemmings clone
 # Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 #
 # This program is free software; you can redistribute it and/or
@@ -28,6 +28,6 @@ panel_button.cxx	panel_button.hxx	\
 editor_viewport.cxx	editor_viewport.hxx \
 xml_level.cxx		xml_level.hxx		\
 level_objs.cxx		level_objs.hxx		\
-level_impl.hxx \
+level_impl.hxx
 
 # EOF #

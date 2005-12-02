@@ -63,39 +63,6 @@ private:
   PinguActionFactory& operator= (const PinguActionFactory&);
 };
 
-class PinguActionAbstractFactory
-{
-public:
-  PinguActionAbstractFactory (Actions::ActionName id) {
-    PinguActionFactory::instance ()-> register_factory (id, this);
-  }
-  virtual ~PinguActionAbstractFactory() {}
-
-  virtual PinguAction* create (Pingu* p) =0;
-
-private:
-  PinguActionAbstractFactory (const PinguActionAbstractFactory&);
-  PinguActionAbstractFactory& operator= (const PinguActionAbstractFactory&);
-};
-
-template<class T>
-class PinguActionFactoryImpl : public PinguActionAbstractFactory
-{
-public:
-  PinguActionFactoryImpl (Actions::ActionName id)
-    : PinguActionAbstractFactory (id)
-  {
-  }
-
-  PinguAction* create (Pingu* p) {
-    return new T (p);
-  }
-
-private:
-  PinguActionFactoryImpl (const PinguActionFactoryImpl&);
-  PinguActionFactoryImpl& operator= (const PinguActionFactoryImpl&);
-};
-
 } // namespace Pingus
 
 #endif

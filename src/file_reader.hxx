@@ -42,6 +42,8 @@ public:
   FileReader(CL_SharedPtr<FileReaderImpl> impl_);
   FileReader();
 
+  /** Name of the current section, ie. in the case of
+      <groundpiece><pos>...</groundpiece> it would be 'groundpiece' */
   std::string get_name() const;
 
   bool read_int   (const char* name, int&)           const;

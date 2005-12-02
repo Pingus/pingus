@@ -16,13 +16,9 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 # -- Static Libs --
-noinst_LIBRARIES = libpingus_sound.a
+noinst_LIBRARIES = libpingus_tinygettext.a
 
-libpingus_sound_a_CPPFLAGS = @PINGUS_CFLAGS@
-libpingus_sound_a_SOURCES = \
-	sound.cxx  sound_dummy.cxx  sound_real.cxx \
-	sound.hxx  sound_dummy.hxx  sound_real.hxx \
-        sounds.hxx sound_res_mgr.hxx sound_res_mgr.cxx \
-		sound_impl.hxx
+libpingus_tinygettext_a_CPPFLAGS = @PINGUS_CFLAGS@
+libpingus_tinygettext_a_SOURCES = tinygettext.cxx tinygettext.hxx
 
 # EOF #

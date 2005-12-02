@@ -16,13 +16,31 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 # -- Static Libs --
-noinst_LIBRARIES = libpingus_sound.a
+noinst_LIBRARIES = libpingus_components.a
 
-libpingus_sound_a_CPPFLAGS = @PINGUS_CFLAGS@
-libpingus_sound_a_SOURCES = \
-	sound.cxx  sound_dummy.cxx  sound_real.cxx \
-	sound.hxx  sound_dummy.hxx  sound_real.hxx \
-        sounds.hxx sound_res_mgr.hxx sound_res_mgr.cxx \
-		sound_impl.hxx
+libpingus_components_a_CPPFLAGS = @PINGUS_CFLAGS@
+libpingus_components_a_SOURCES = \
+hurry_up.cxx \
+hurry_up.hxx \
+menu_button.cxx \
+menu_button.hxx \
+action_button.cxx \
+action_button.hxx \
+button_panel.cxx \
+button_panel.hxx \
+hurry_up.cxx \
+hurry_up.hxx \
+menu_button.cxx \
+menu_button.hxx \
+pingus_counter.cxx \
+pingus_counter.hxx \
+pingus_counter_bar.cxx \
+pingus_counter_bar.hxx \
+playfield.cxx \
+playfield.hxx \
+smallmap.cxx \
+smallmap.hxx \
+time_display.cxx \
+time_display.hxx
 
 # EOF #
