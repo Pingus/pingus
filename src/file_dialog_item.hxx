@@ -23,10 +23,9 @@
 #include <ClanLib/Display/sprite.h>
 #include "gui/component.hxx"
 #include "vector.hxx"
+#include "file_dialog.hxx"
 
 namespace Pingus {
-
-	class FileDialog;
 
 /** Class representing a clickable object in a File Dialog (a Directory, Level,
 	or Worldmap */
@@ -34,14 +33,13 @@ class FileDialogItem : GUI::Component
 {
 private:
 	bool mouse_over;
-	bool is_directory;
 	bool is_hidden;
 
 	FileDialog* file_dialog;
 	Vector pos;
 
 	/** This file_item name will change based on the current file list */
-	std::string file_item;
+	FileItem file_item;
 	
 	/** This sprite will change based on the currently displayed file */
 	CL_Sprite sprite;
@@ -51,7 +49,7 @@ public:
 	FileDialogItem(FileDialog* f, Vector p) ;
 
 	/** Set the current file assigned to this button */
-	void set_file(const std::string f, bool is_dir);
+	void set_file(FileItem f);
 
 	/** Get the cleaned up file name (no extension) */
 	std::string get_filename() const;

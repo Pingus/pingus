@@ -193,8 +193,10 @@ namespace Pingus {
 		
 		void on_primary_button_click(int x, int y)
 		{
-			file_dialog->set_selected_file("..");
-			file_dialog->ok_pressed();
+			FileItem f;
+			f.name = "..";
+			f.is_directory = true;
+			file_dialog->set_selected_file(f);
 		}
 
 		bool is_at(int x, int y)
@@ -209,8 +211,7 @@ namespace Pingus {
 		: PingusSubMenu (manager_),
                   for_loading(for_load),
                   file_mask(filemask_),
-                  current_path(searchpath_),
-									current_file("Pingus")
+                  current_path(searchpath_)
 	{
 		// Initialize the buttons
 		ok_button = new FileDialogOkButton(manager, this,
@@ -263,7 +264,7 @@ namespace Pingus {
 		gc.draw_rect(gc.get_width() / 2 - 285, gc.get_height() / 2 - 160,
 			gc.get_width() / 2 + 285, gc.get_height() / 2 + 160, CL_Color::black);
 		gc.print_center(Fonts::chalk_large, gc.get_width()/2, gc.get_height()/2 - 220, 
-			current_file);
+			current_file.name);
 
 		PingusSubMenu::draw(gc);
 		return true;
@@ -282,6 +283,8 @@ namespace Pingus {
 		file_list.clear();
 		current_offset=0;
 
+		FileItem f;
+
 		// Get the list of files and folders in the current folder
 		CL_DirectoryScanner scanner;
 		scanner.scan(current_path, "*");
@@ -289,14 +292,23 @@ namespace Pingus {
 		{
 			if (scanner.get_name() != "." && scanner.get_name() != ".." 
 				&& scanner.get_name() != ".svn" && scanner.is_directory())
-				file_list[scanner.get_name()] = true;
+			{
+				f.name = scanner.get_name();
+				f.is_directory = true;
+				file_list.push_back(f);
+			}
 		}
 
 		scanner.scan(current_path, "*" + file_mask);
 		while (scanner.next())
-			file_list[scanner.get_name()] = false;
+		{
+			f.name = scanner.get_name();
+			f.is_directory = false;
+			file_list.push_back(f);
+		}
 
 		// FIXME: Should sort the file_list here
+		std::sort(file_list.begin(), file_list.end(), &FileItemCompare);
 
 		current_offset = 0;
 		offset_changed();
@@ -306,20 +318,13 @@ namespace Pingus {
 	void
 	FileDialog::offset_changed()
 	{
-		std::map<std::string, bool>::const_iterator it = file_list.begin();
-		
-		//FIXME: Is there a better way to do this?  It just looks ugly.
-		for (unsigned j = 0; j < current_offset && it != file_list.end(); j++)
-			it++;
+		unsigned j = current_offset;
 
 		for (std::vector<FileDialogItem*>::const_iterator i = file_dialog_items.begin();
-			i != file_dialog_items.end(); i++)
+			i != file_dialog_items.end(); i++, j++)
 		{
-			 if (it != file_list.end())
-			 {
-				 (*i)->set_file(it->first, it->second);
-				 it++;
-			 }
+			 if (j < (unsigned)file_list.size())
+				 (*i)->set_file(file_list[j]);
 			 else
 				 (*i)->hide();
 		}
@@ -344,22 +349,25 @@ namespace Pingus {
 
 	// Set the file and show or hide the OK button.
 	void
-	FileDialog::set_selected_file(std::string f)
+	FileDialog::set_selected_file(FileItem f)
 	{ 
-	 current_file = f; 
-	 if (current_file != "")
+	 current_file = f;
+	 if (current_file.name != "")
 		 ok_button->show();
 	 else
 		 ok_button->hide();
+
+	 if (current_file.is_directory)
+		 ok_pressed();
 	}
 
 	void
 	FileDialog::ok_pressed()
 	{
 		// If it's a directory, change to it.
-		if (current_file == ".." || file_list[current_file] == true)
+		if (current_file.is_directory)
 		{
-			current_path += current_file + "/";
+			current_path += current_file.name + "/";
 			refresh();
 			ok_button->hide();
 		}
@@ -367,7 +375,7 @@ namespace Pingus {
 		{
 			// FIXME: Temporary since we only use this dialog on the main menu.
 			if (for_loading)
-				manager->mainmenu.do_contrib(current_path + current_file);
+				manager->mainmenu.do_contrib(current_path + current_file.name);
 			manager->pop_menu();
 		}
 	}

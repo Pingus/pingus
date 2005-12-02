@@ -37,13 +37,12 @@ namespace Pingus {
 
 	/** Set the current file assigned to this button */
 	void 
-	FileDialogItem::set_file(const std::string f, bool is_dir) 
+	FileDialogItem::set_file(FileItem f) 
 	{ 
 		file_item = f;
-		is_directory = is_dir;
 		is_hidden = false;
 		// Load sprite based on file  (folder icon, level screenshot, or generic)
-		if (is_directory)
+		if (file_item.is_directory)
 			sprite = Resource::load_sprite("core/menu/folder");
 		else
 			sprite = Resource::load_sprite("core/menu/default_level");
@@ -81,25 +80,22 @@ namespace Pingus {
 	FileDialogItem::on_primary_button_click (int x, int y)
 	{
 		file_dialog->set_selected_file(file_item);
-		// Change immediately to the folder if clicked on one
-		if (is_directory)
-			file_dialog->ok_pressed();
 	}
 
 	void
 	FileDialogItem::hide()
 	{
-		file_item = "";
+		file_item.name = "";
 		is_hidden = true;
 	}
 
 	std::string 
 	FileDialogItem::get_filename() const 
 	{
-		if (is_directory)
-			return file_item;
+		if (file_item.is_directory)
+			return file_item.name;
 		else
-			return file_item.substr(0, file_item.size() - file_dialog->get_file_mask().size());
+			return file_item.name.substr(0, file_item.name.size() - file_dialog->get_file_mask().size());
 	}
 }
 

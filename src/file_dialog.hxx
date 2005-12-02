@@ -22,7 +22,6 @@
 
 #include <ClanLib/Display/sprite.h>
 #include <vector>
-#include <map>
 #include <string>
 #include "pingus_sub_menu.hxx"
 
@@ -32,6 +31,20 @@ namespace Pingus {
 	class FileDialogItem;
 	class FileDialogOkButton;
 	class PingusMenuManager;
+
+	struct FileItem {
+		std::string name;
+		bool is_directory;
+	};
+
+	/** Sorting function for FileItem's */
+	inline bool FileItemCompare (const FileItem& a, const FileItem& b)
+	{
+		if (a.is_directory == b.is_directory)
+			return (a.name < b.name);
+		else
+			return (a.is_directory);
+	}
 
 class FileDialog : public PingusSubMenu
 {
@@ -50,14 +63,14 @@ private:
 	/** Current path that is being displayed */
 	std::string current_path;
 
-	/** Current file that is selected */
-	std::string current_file;
-
 	/** Offset in the file_list that is the index of the first file/folder shown */
 	unsigned current_offset;
 
+	/** Current file that is selected */
+	FileItem current_file;
+
 	/** List of directories & files in the current folder */
-	std::map<std::string, bool> file_list;
+	std::vector<FileItem> file_list;
 
 	/** List of files in the directory */
 	std::vector<FileDialogItem*> file_dialog_items;
@@ -84,7 +97,7 @@ public:
 	std::string get_file_mask() const { return file_mask; }
 
 	/** Sets the currently selected file name */
-	void set_selected_file(std::string f);
+	void set_selected_file(FileItem f);
 
 	/** The Ok button has been pressed - either Save or Load this file */
 	void ok_pressed();
