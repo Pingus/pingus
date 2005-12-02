@@ -34,8 +34,6 @@ menu_button.cxx \
 menu_button.hxx \
 pingus_counter.cxx \
 pingus_counter.hxx \
-pingus_counter_bar.cxx \
-pingus_counter_bar.hxx \
 playfield.cxx \
 playfield.hxx \
 smallmap.cxx \

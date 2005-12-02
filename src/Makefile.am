@@ -28,12 +28,14 @@ SUBDIRS = \
 	actions             \
 	caimagemanipulation \
 	colliders           \
+	components          \
 	editor              \
         gui                 \
         input               \
 	movers		    \
 	particles           \
 	sound               \
+	tinygettext         \
         worldobjs           \
 	worldmap
 
@@ -61,13 +63,13 @@ pingus_LDADD = \
         particles/libpingus_particle.a  \
         sound/libpingus_sound.a  \
         worldmap/libpingus_worldmap.a \
-	gui/libpingus_gui.a \
         input/libpingus_input.a \
         input/axes/libpingus_input_axes.a \
         input/buttons/libpingus_input_buttons.a \
 	input/pointers/libpingus_input_pointers.a \
 	input/scrollers/libpingus_input_scrollers.a \
 	editor/libpingus_editor.a \
+	gui/libpingus_gui.a \
 	components/libpingus_components.a \
 	tinygettext/libpingus_tinygettext.a \
         @PINGUS_LIBS@ \
@@ -244,8 +246,6 @@ theme.cxx \
 theme.hxx \
 timer.cxx \
 timer.hxx \
-tinygettext/tinygettext.cxx \
-tinygettext/tinygettext.hxx \
 true_server.cxx \
 true_server.hxx \
 vector.cxx \

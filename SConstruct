@@ -18,6 +18,31 @@
 ##  along with this program; if not, write to the Free Software
 ##  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-SConscript('src/SConscript')
+import sys, os
+
+opts = Options(['options.cache', 'custom.py'])
+opts.Add('CXX', 'The C++ compiler')
+opts.Add('PKG_CONFIG_PATH', 'Path for pkg-config files')
+
+env = Environment(options=opts)
+
+def CheckPKG_CONFIG_DIR(context):
+    context.Message( 'Checking for PKG_CONFIG_PATH environment variable... ')
+    if os.environ.has_key('PKG_CONFIG_PATH'):
+        context.Result(os.environ['PKG_CONFIG_PATH'])
+        return 1
+    else:
+        context.Result('not set')
+        return 0
+
+if 'configure' in COMMAND_LINE_TARGETS:
+    conf = Configure( env, custom_tests = { 'CheckPKG_CONFIG_DIR' : CheckPKG_CONFIG_DIR })
+    if conf.CheckPKG_CONFIG_DIR():
+        os.environ['PKG_CONFIG_PATH']
+    
+    env = conf.Finish() 
+else:
+    Export('env')
+    SConscript('src/SConscript')
 
 ## EOF ##
