@@ -135,6 +135,9 @@
       <sprite name="folder">
         <image file="../images/core/menu/folder.png" />
       </sprite>
+      <sprite name="parent_folder">
+        <image file="../images/core/menu/parent_folder.png" />
+      </sprite>
       <sprite name="default_level">
         <image file="../images/core/menu/default_level.jpg" />
       </sprite>

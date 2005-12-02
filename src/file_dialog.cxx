@@ -165,12 +165,52 @@ namespace Pingus {
 		}
 	};
 
+	class FileDialogParentFolderButton : public GUI::Component
+	{
+	private:
+		/** FileDialog box to this which button is assigned */
+		FileDialog* file_dialog;
+
+		/** Where the image is located */
+		Vector pos;
+
+		/** Image used for the parent folder button */
+		CL_Sprite sprite;
+
+	public:
+		FileDialogParentFolderButton (FileDialog* f)
+			: file_dialog(f),
+        pos(Vector((float)CL_Display::get_width()/2 + 230,
+                   (float)CL_Display::get_height()/2 - 210)),
+			  sprite(Resource::load_sprite("core/menu/parent_folder"))
+		{
+		}
+
+		void draw (DrawingContext& gc) {
+			//FIXME: Should also draw a hover box around it when the mouse is over it.
+			gc.draw(sprite, pos);
+		}
+		
+		void on_primary_button_click(int x, int y)
+		{
+			file_dialog->set_selected_file("..");
+			file_dialog->ok_pressed();
+		}
+
+		bool is_at(int x, int y)
+		{
+			return (x > (int)pos.x && x < (int)pos.x + sprite.get_width()
+				&& y > (int)pos.y && y < (int)pos.y + sprite.get_height());
+		}
+	};
+
 	FileDialog::FileDialog (PingusMenuManager* manager_, const std::string filemask_, 
 		const std::string searchpath_, bool for_load)
 		: PingusSubMenu (manager_),
                   for_loading(for_load),
                   file_mask(filemask_),
-                  current_path(searchpath_)
+                  current_path(searchpath_),
+									current_file("Pingus")
 	{
 		// Initialize the buttons
 		ok_button = new FileDialogOkButton(manager, this,
@@ -180,9 +220,7 @@ namespace Pingus {
 		gui_manager->add(new FileDialogCancelButton(manager), true);
 		gui_manager->add(new FileDialogScrollButton(this, DIR_DOWN, 100), true);
 		gui_manager->add(new FileDialogScrollButton(this, DIR_UP, -150), true);
-		
-		// FIXME: Add a button to go to the parent folder
-
+		gui_manager->add(new FileDialogParentFolderButton(this));		
 
 		// FIXME: Ugly - hardcoded values for items in file dialog.  Should be dynamic.
 		// Create 8 FileDialogItems and add them to the gui_manager.
@@ -319,7 +357,7 @@ namespace Pingus {
 	FileDialog::ok_pressed()
 	{
 		// If it's a directory, change to it.
-		if (file_list[current_file] == true)
+		if (current_file == ".." || file_list[current_file] == true)
 		{
 			current_path += current_file + "/";
 			refresh();
