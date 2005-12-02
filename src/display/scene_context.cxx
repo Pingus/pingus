@@ -33,16 +33,16 @@ public:
   DrawingContext highlight; 
 
   CL_OpenGLSurface lightmap;
-  CL_Canvas        canvas;
+  //CL_Canvas        canvas;
 
   SceneContextImpl() 
     : lightmap(CL_PixelBuffer(static_cast<int>(800/SCALE_FACTOR), 
                               static_cast<int>(600/SCALE_FACTOR),
                               static_cast<int>(800/SCALE_FACTOR*4),
-                              CL_PixelFormat::rgba8888)),
-      canvas(lightmap)
+                              CL_PixelFormat::rgba8888))
+                  //canvas(lightmap)
   {
-    canvas.get_gc()->set_scale(1/SCALE_FACTOR, 1/SCALE_FACTOR);
+    //canvas.get_gc()->set_scale(1/SCALE_FACTOR, 1/SCALE_FACTOR);
   }
 };
 
@@ -133,15 +133,19 @@ SceneContext::render(CL_GraphicContext* gc)
   // FIXME: Render all to pbuffer for later combining of them
   impl->color.render(gc);
   
-  impl->light.render(impl->canvas.get_gc());
-  impl->canvas.sync_surface();
+#if 0
+    { // lightmap support
+      impl->light.render(impl->canvas.get_gc());
+      impl->canvas.sync_surface();
 
-  //impl->lightmap.set_blend_func(blend_src_alpha, blend_one);
-  impl->lightmap.set_blend_func(blend_dest_color, blend_zero);
-  //GL_DST_COLOR, GL_ZERO
-  impl->lightmap.set_scale(SCALE_FACTOR, SCALE_FACTOR);
-  impl->lightmap.draw();
-  impl->canvas.get_gc()->clear();
+      //impl->lightmap.set_blend_func(blend_src_alpha, blend_one);
+      impl->lightmap.set_blend_func(blend_dest_color, blend_zero);
+      //GL_DST_COLOR, GL_ZERO
+      impl->lightmap.set_scale(SCALE_FACTOR, SCALE_FACTOR);
+      impl->lightmap.draw();
+      impl->canvas.get_gc()->clear();
+    }
+#endif
 
   impl->highlight.render(gc);
 }
