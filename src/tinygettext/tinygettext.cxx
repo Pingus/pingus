@@ -21,7 +21,7 @@
 #ifdef HAVE_DIRENT_H
 #include <dirent.h>
 #else
-#include "win32/uce_dirent.h"
+#include "../win32/uce_dirent.h"
 #endif
 
 #include <sys/types.h>
