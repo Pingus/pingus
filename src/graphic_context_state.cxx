@@ -20,8 +20,6 @@
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Display/display_window.h>
 #include <ClanLib/Display/graphic_context.h>
-#include <ClanLib/GUI/component.h>
-#include <math.h>
 #include "graphic_context_state.hxx"
 
 class GraphicContextStateImpl

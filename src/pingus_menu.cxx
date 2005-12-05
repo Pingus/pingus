@@ -19,8 +19,6 @@
 
 #include <ClanLib/Display/display.h>
 #include <ClanLib/core.h>
-#include <ClanLib/gui.h>
-#include <ClanLib/guistylesilver.h>
 #include <config.h>
 #include "gettext.h"
 #include "components/menu_button.hxx"
@@ -123,30 +121,6 @@ PingusMenu::setup_contrib_menu()
 {
 	get_manager ()->show_file_dialog (".pingus", 
 		path_manager.complete("levels/"), true);
-
-	/*
- 	// Create a ClanLib File Dialog using the silver style
-  CL_ResourceManager *resources = new 
-      CL_ResourceManager(path_manager.complete("GUIStyleSilver/gui.xml"));
-	CL_StyleManager_Silver *style = new CL_StyleManager_Silver(resources);
-	CL_GUIManager *gui = new CL_GUIManager(style);
-	CL_FileDialog *filedialog = new CL_FileDialog("Levels", "", "*.pingus", gui, style);
-
-	filedialog->set_dir(path_manager.complete("levels"));
-  filedialog->run();
-	const std::string filename = filedialog->get_file();
-  pout(PINGUS_DEBUG_LOADING) << "PingusMenu: Chose filename: " << filename << std::endl;
-    
-  // Clean up ClanLib stuff
-  delete filedialog;
-	delete gui;
-  delete style;
-	delete resources;
-  
-  // Launch level
-  if (filename != "")
-     do_contrib(filename);
- */
 }
 
 void

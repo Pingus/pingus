@@ -949,12 +949,6 @@
 				Name="src"
 				Filter="">
 				<File
-					RelativePath=".\src\action_button.cxx">
-				</File>
-				<File
-					RelativePath=".\src\action_button.hxx">
-				</File>
-				<File
 					RelativePath=".\src\action_holder.cxx">
 				</File>
 				<File
@@ -974,12 +968,6 @@
 				</File>
 				<File
 					RelativePath=".\src\blitter_test.hxx">
-				</File>
-				<File
-					RelativePath=".\src\button_panel.cxx">
-				</File>
-				<File
-					RelativePath=".\src\button_panel.hxx">
 				</File>
 				<File
 					RelativePath=".\src\capture_rectangle.cxx">
@@ -1075,6 +1063,18 @@
 					RelativePath=".\src\exit_menu.hxx">
 				</File>
 				<File
+					RelativePath=".\src\file_dialog.cxx">
+				</File>
+				<File
+					RelativePath=".\src\file_dialog.hxx">
+				</File>
+				<File
+					RelativePath=".\src\file_dialog_item.cxx">
+				</File>
+				<File
+					RelativePath=".\src\file_dialog_item.hxx">
+				</File>
+				<File
 					RelativePath=".\src\file_reader.cxx">
 				</File>
 				<File
@@ -1156,31 +1156,19 @@
 					RelativePath=".\src\graphic_context_state.hxx">
 				</File>
 				<File
+					RelativePath=".\src\ground_map.cxx">
+				</File>
+				<File
+					RelativePath=".\src\ground_map.hxx">
+				</File>
+				<File
 					RelativePath=".\src\groundtype.cxx">
 				</File>
 				<File
 					RelativePath=".\src\groundtype.hxx">
 				</File>
 				<File
-					RelativePath=".\src\gui_obj.cxx">
-				</File>
-				<File
-					RelativePath=".\src\gui_obj.hxx">
-				</File>
-				<File
 					RelativePath=".\src\hierHeader.inc">
-				</File>
-				<File
-					RelativePath=".\src\html_browser.cxx">
-				</File>
-				<File
-					RelativePath=".\src\html_browser.hxx">
-				</File>
-				<File
-					RelativePath=".\src\hurry_up.cxx">
-				</File>
-				<File
-					RelativePath=".\src\hurry_up.hxx">
 				</File>
 				<File
 					RelativePath=".\src\indexed_canvas.cxx">
@@ -1300,25 +1288,7 @@
 					RelativePath=".\src\loading.hxx">
 				</File>
 				<File
-					RelativePath=".\src\main_menu.cxx">
-				</File>
-				<File
-					RelativePath=".\src\main_menu.hxx">
-				</File>
-				<File
 					RelativePath=".\src\math.hxx">
-				</File>
-				<File
-					RelativePath=".\src\menu_background.cxx">
-				</File>
-				<File
-					RelativePath=".\src\menu_background.hxx">
-				</File>
-				<File
-					RelativePath=".\src\menu_button.cxx">
-				</File>
-				<File
-					RelativePath=".\src\menu_button.hxx">
 				</File>
 				<File
 					RelativePath=".\src\mover.cxx">
@@ -1369,25 +1339,7 @@
 					RelativePath=".\src\pingu_holder.hxx">
 				</File>
 				<File
-					RelativePath=".\src\pingu_map.cxx">
-				</File>
-				<File
-					RelativePath=".\src\pingu_map.hxx">
-				</File>
-				<File
 					RelativePath=".\src\pingus.hxx">
-				</File>
-				<File
-					RelativePath=".\src\pingus_counter.cxx">
-				</File>
-				<File
-					RelativePath=".\src\pingus_counter.hxx">
-				</File>
-				<File
-					RelativePath=".\src\pingus_counter_bar.cxx">
-				</File>
-				<File
-					RelativePath=".\src\pingus_counter_bar.hxx">
 				</File>
 				<File
 					RelativePath=".\src\pingus_error.cxx">
@@ -1433,12 +1385,6 @@
 				</File>
 				<File
 					RelativePath=".\src\pingus_sub_menu.hxx">
-				</File>
-				<File
-					RelativePath=".\src\playfield.cxx">
-				</File>
-				<File
-					RelativePath=".\src\playfield.hxx">
 				</File>
 				<File
 					RelativePath=".\src\plf_handle.hxx">
@@ -1528,22 +1474,10 @@
 					RelativePath=".\src\server_event.hxx">
 				</File>
 				<File
-					RelativePath=".\src\smallmap.cxx">
-				</File>
-				<File
-					RelativePath=".\src\smallmap.hxx">
-				</File>
-				<File
 					RelativePath=".\src\smallmap_image.cxx">
 				</File>
 				<File
 					RelativePath=".\src\smallmap_image.hxx">
-				</File>
-				<File
-					RelativePath=".\src\spot_map.cxx">
-				</File>
-				<File
-					RelativePath=".\src\spot_map.hxx">
 				</File>
 				<File
 					RelativePath=".\src\start_screen.cxx">
@@ -1654,22 +1588,10 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\src\time_display.cxx">
-				</File>
-				<File
-					RelativePath=".\src\time_display.hxx">
-				</File>
-				<File
 					RelativePath=".\src\timer.cxx">
 				</File>
 				<File
 					RelativePath=".\src\timer.hxx">
-				</File>
-				<File
-					RelativePath=".\src\tinygettext.cxx">
-				</File>
-				<File
-					RelativePath=".\src\tinygettext.hxx">
 				</File>
 				<File
 					RelativePath=".\src\true_server.cxx">
@@ -1799,6 +1721,71 @@
 				</File>
 				<File
 					RelativePath=".\src\editor\xml_level.hxx">
+				</File>
+			</Filter>
+			<Filter
+				Name="components"
+				Filter="">
+				<File
+					RelativePath=".\src\components\action_button.cxx">
+				</File>
+				<File
+					RelativePath=".\src\components\action_button.hxx">
+				</File>
+				<File
+					RelativePath=".\src\components\button_panel.cxx">
+				</File>
+				<File
+					RelativePath=".\src\components\button_panel.hxx">
+				</File>
+				<File
+					RelativePath=".\src\components\hurry_up.cxx">
+				</File>
+				<File
+					RelativePath=".\src\components\hurry_up.hxx">
+				</File>
+				<File
+					RelativePath=".\src\components\Makefile.am">
+				</File>
+				<File
+					RelativePath=".\src\components\menu_button.cxx">
+				</File>
+				<File
+					RelativePath=".\src\components\menu_button.hxx">
+				</File>
+				<File
+					RelativePath=".\src\components\pingus_counter.cxx">
+				</File>
+				<File
+					RelativePath=".\src\components\pingus_counter.hxx">
+				</File>
+				<File
+					RelativePath=".\src\components\playfield.cxx">
+				</File>
+				<File
+					RelativePath=".\src\components\playfield.hxx">
+				</File>
+				<File
+					RelativePath=".\src\components\smallmap.cxx">
+				</File>
+				<File
+					RelativePath=".\src\components\smallmap.hxx">
+				</File>
+				<File
+					RelativePath=".\src\components\time_display.cxx">
+				</File>
+				<File
+					RelativePath=".\src\components\time_display.hxx">
+				</File>
+			</Filter>
+			<Filter
+				Name="tinygettext"
+				Filter="">
+				<File
+					RelativePath=".\src\tinygettext\tinygettext.cxx">
+				</File>
+				<File
+					RelativePath=".\src\tinygettext\tinygettext.hxx">
 				</File>
 			</Filter>
 		</Filter>
