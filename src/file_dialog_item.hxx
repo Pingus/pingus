@@ -35,6 +35,9 @@ private:
 	bool mouse_over;
 	bool is_hidden;
 
+	std::string friendly_name;
+	std::string file_info;
+
 	FileDialog* file_dialog;
 	Vector pos;
 

@@ -19,11 +19,14 @@
 
 #include <ClanLib/Display/sprite.h>
 #include <ClanLib/Core/IOData/directory_scanner.h>
+#include <ClanLib/Core/System/clanstring.h>
 #include "file_dialog_item.hxx"
 #include "file_dialog.hxx"
 #include "vector.hxx"
 #include "fonts.hxx"
 #include "resource.hxx"
+#include "xml_pingus_level.hxx"
+#include "gettext.h"
 
 namespace Pingus {
 
@@ -45,7 +48,21 @@ namespace Pingus {
 		if (file_item.is_directory)
 			sprite = Resource::load_sprite("core/menu/folder");
 		else
+		{
+			// FIXME: Load thumbnail specific to this level
 			sprite = Resource::load_sprite("core/menu/default_level");
+
+			// Load information about this file if possible.
+			if (file_dialog->get_file_mask() == ".pingus")
+			{
+				// Get level information
+				XMLPingusLevel level("", file_dialog->get_path() + file_item.name);
+				friendly_name = _(level.get_levelname());
+				// Have to limit the size of the printed name
+				friendly_name = friendly_name.substr(0, 23);
+				file_info = _("Difficulty: ") + CL_String::to(level.get_difficulty());
+			}
+		}
 	}
 
 	bool 
@@ -69,9 +86,12 @@ namespace Pingus {
 			gc.print_left(Fonts::pingus_small, pos.x + (float)sprite.get_width(), 
 				pos.y, get_filename());
 
-			// FIXME: If mouse over, draw a quick info box about the level
-			if (mouse_over)
+			// FIXME: If mouse over, draw a quick info box about the file item
+			if (mouse_over && !file_item.is_directory)
 			{
+				gc.draw_fillrect(pos.x+50, pos.y, pos.x+300, pos.y+50, CL_Color::azure);
+				gc.print_left(Fonts::pingus_small, pos.x+50, pos.y, friendly_name);
+				gc.print_left(Fonts::pingus_small, pos.x+50, pos.y+25, file_info);
 			}
 		}
 	}
