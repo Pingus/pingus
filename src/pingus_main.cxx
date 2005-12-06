@@ -71,6 +71,11 @@
 #include "worldmap/manager.hxx"
 #include "worldobj_factory.hxx"
 
+#if _MSC_VER >= 1400
+// Disable stupid deprecation warnings
+#pragma warning( disable : 4996 ) 
+#endif
+
 namespace Pingus {
 
 void
