@@ -75,9 +75,6 @@ private:
 	
 	GraphicContextState state;
 	SceneContext* scene_context;
-	
-	// FIXME: Temporary hack for translation testing:
-	int translate;
 
 	/** The EditorScreen to which this viewport belongs */
 	EditorScreen* editor;

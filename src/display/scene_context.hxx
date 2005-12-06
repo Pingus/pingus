@@ -89,7 +89,7 @@ private:
   CL_Color color;
   SceneContext* sc;
 public:
-  SceneContextDrawingRequest(SceneContext* sc, float z = 0);
+  SceneContextDrawingRequest(SceneContext* sc, const CL_Vector& pos_ = CL_Vector(0,0,0,0));
   virtual ~SceneContextDrawingRequest();
   void draw(CL_GraphicContext* gc);
 };

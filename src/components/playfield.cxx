@@ -107,7 +107,7 @@ Playfield::draw (DrawingContext& gc)
     }
 
   state.pop(*scene_context);
-  gc.draw(new SceneContextDrawingRequest(scene_context, -10000));
+  gc.draw(new SceneContextDrawingRequest(scene_context, CL_Vector(0,0,-10000)));
 }
 
 Pingu*

@@ -158,8 +158,8 @@ SceneContext::clear()
   impl->highlight.clear();
 }
 
-SceneContextDrawingRequest::SceneContextDrawingRequest(SceneContext* sc_, float z) 
-  : DrawingRequest(CL_Vector(0, 0, z)),
+SceneContextDrawingRequest::SceneContextDrawingRequest(SceneContext* sc_, const CL_Vector& pos_) 
+  : DrawingRequest(pos_),
     sc(sc_)
 {
 }
