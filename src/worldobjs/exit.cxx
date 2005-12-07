@@ -59,8 +59,7 @@ Exit::~Exit ()
 void
 Exit::on_startup ()
 {
-  CL_PixelBuffer pixelbuffer = sprite.get_frame_surface(0).get_pixeldata();
-  world->get_colmap()->remove(pixelbuffer,
+  world->get_colmap()->remove(sprite.get_frame_pixeldata(0),
 			      static_cast<int>(pos.x) - sprite.get_width()/2,
 			      static_cast<int>(pos.y) - sprite.get_height());
 }

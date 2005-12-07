@@ -50,7 +50,7 @@ SwitchDoor::SwitchDoor(const FileReader& reader)
 void
 SwitchDoor::on_startup ()
 {
-  world->get_colmap()->put(door_box.get_frame_surface(0).get_pixeldata(),
+  world->get_colmap()->put(door_box.get_frame_pixeldata(0),
                            static_cast<int>(door_pos.x),
 			   static_cast<int>(door_pos.y),
 			   Groundtype::GP_SOLID);
@@ -105,7 +105,7 @@ SwitchDoor::update ()
 			// it, we remove the door from the colmap
 			if (current_door_height + 10 < door_height)
 			{
-				world->get_colmap()->put(door_box.get_frame_surface(0).get_pixeldata(),
+				world->get_colmap()->put(door_box.get_frame_pixeldata(0),
 					static_cast<int>(door_pos.x),
 					static_cast<int>(door_pos.y),
 					Groundtype::GP_NOTHING);
