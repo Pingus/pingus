@@ -85,11 +85,13 @@ private:
 	/** Background image - if null, will display dark gray background */
 	CL_Surface* bg_surface;
 
-	/** Vector where this Viewport starts */
+	/** Vector where this Viewport starts 
 	Vector start_pos;
 
-	/** Vector where this Viewport ends */
+	/** Vector where this Viewport ends 
 	Vector end_pos;
+
+	*/
 
 	/** Whether or not Autoscrolling is turned on */
 	bool autoscroll;

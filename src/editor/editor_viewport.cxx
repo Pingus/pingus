@@ -34,19 +34,15 @@ namespace Editor {
 
 // Constructor
 EditorViewport::EditorViewport(EditorScreen* e) :
-	state((int)(end_pos.x - start_pos.x), (int)(end_pos.y - start_pos.y)),
 	scene_context(new SceneContext()),
 	editor(e),
 	bg_surface(0),
-	start_pos(Vector(10.0f, 60.0f)),
-	end_pos(Vector((float)(CL_Display::get_width() - 10), 
-						(float)(CL_Display::get_height() - 10))),
+	state(CL_Display::get_width(), CL_Display::get_height()),
 	autoscroll(true)
 {
-	state.set_limit(CL_Rect((int)start_pos.x, (int)start_pos.y, 
-		(int)end_pos.x, (int)end_pos.y));
-	state.set_pos(CL_Pointf((float)(state.get_width() / 2), 
-		(float)(state.get_height() / 2)));
+	// FIXME: Hardcoded values should be determined by level size
+	state.set_limit(CL_Rect(-30, -50, 1600, 1300));
+	state.set_pos(CL_Pointf(0, 0));
 }
 
 // Destructor
@@ -59,8 +55,9 @@ EditorViewport::~EditorViewport ()
 void
 EditorViewport::on_secondary_button_click(int x, int y)
 {
-	std::cout << "Right-click at " << x - start_pos.x << ", " 
-		<< y - start_pos.y << std::endl;
+	// FIXME: Hardcoded 15 & 25 should probably be dynamic
+	std::cout << "Right-click at " << x - 15 - (state.get_width()/2 - state.get_pos().x) << ", " 
+		<< y - 25 - (state.get_height()/2 - state.get_pos().y) << std::endl;
 }
 
 // Draws all of the objects in the viewport and the background (if any)
@@ -72,13 +69,9 @@ EditorViewport::draw(DrawingContext &gc)
 	
 	// Now, draw all of the objects
 
-	// FIXME: Should draw the background over the whole viewport (stretched or tiled)
+	// FIXME: Should draw the background(s) over the whole viewport (stretched or tiled)
 	if (bg_surface)
-		scene_context->color().draw(*bg_surface, start_pos);
-	else
-		scene_context->color().draw_fillrect(start_pos.x, start_pos.y, 
-			end_pos.x, end_pos.y, CL_Color::darkgray, -5000);
-
+		scene_context->color().draw(*bg_surface, Vector());
 
 	// FIXME: This is obviously not correct, but it's just a proof of concept now.
 	// Draw the level objects
@@ -87,16 +80,15 @@ EditorViewport::draw(DrawingContext &gc)
 		objs[i]->draw(scene_context->color());
 
 	state.pop(*scene_context);
-	gc.draw(new SceneContextDrawingRequest(scene_context, CL_Vector(state.get_pos().x,
-		state.get_pos().y)));
+	gc.draw(new SceneContextDrawingRequest(scene_context, CL_Vector(0, 0, -5000)));
 }
 
 // Returns true if the viewport is at the x,y coordinate
 bool
 EditorViewport::is_at(int x, int y)
 {
-  return (x > start_pos.x && x < end_pos.x
-	  && y > start_pos.y && y < end_pos.y);
+	// FIXME: Should return true everywhere except for on the panel
+	return true;
 }
 
 // 
@@ -115,13 +107,13 @@ EditorViewport::update(float delta)
 		const int autoscroll_border = 10;
 		if (autoscroll)
 		{
-			if (mouse_at.x - start_pos.x < autoscroll_border)
+			if (mouse_at.x < autoscroll_border)
 				state.set_pos(state.get_pos() - CL_Pointf(5, 0));
-			else if (end_pos.x - mouse_at.x < autoscroll_border)
+			else if ((float)CL_Display::get_width() - mouse_at.x < autoscroll_border)
 				state.set_pos(state.get_pos() + CL_Pointf(5, 0));
-			else if (mouse_at.y - start_pos.y < autoscroll_border)
+			else if (mouse_at.y < autoscroll_border)
 				state.set_pos(state.get_pos() - CL_Pointf(0, 5));
-			else if (end_pos.y - mouse_at.y < autoscroll_border)
+			else if ((float)CL_Display::get_height() - mouse_at.y < autoscroll_border)
 				state.set_pos(state.get_pos() + CL_Pointf(0, 5));
 		}
 	}

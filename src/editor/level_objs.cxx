@@ -20,6 +20,7 @@
 #include <string>
 #include <iostream>
 #include "level_objs.hxx"
+#include "../blitter.hxx"
 #include "../resource.hxx"
 #include "../res_descriptor.hxx"
 #include "../display/drawing_context.hxx"
@@ -67,8 +68,60 @@ LevelObj::draw(DrawingContext &gc)
 			for(int x = static_cast<int>(pos.x); x < pos.x + width;	x += sprite.get_width())
 				gc.draw(sprite, Vector(static_cast<float>(x), pos.y));
 		}
+		else if(attribs & HAS_STRETCH)
+		{
+			// Surface Background - tile it
+			gc.draw(sprite, pos);
+		}
 		else
 			gc.draw(sprite, pos);
+	}
+}
+
+void
+LevelObj::set_stretch_x(const bool s)
+{ 
+	stretch_x = s;
+	refresh_sprite();
+}
+
+void
+LevelObj::set_stretch_y(const bool s)
+{ 
+	stretch_y = s;
+	refresh_sprite();
+}
+
+void
+LevelObj::set_aspect(const bool a)
+{ 
+	keep_aspect = a;
+	refresh_sprite();
+}
+
+void
+LevelObj::refresh_sprite()
+{
+	// Apply modifier, then change the sprite loaded for this object in memory.
+	CL_SpriteDescription sprite_desc;
+	sprite_desc = Resource::load_sprite_desc(desc.res_name);
+	CL_Sprite spr = CL_Sprite(sprite_desc);
+	sprite_desc = CL_SpriteDescription();
+	CL_Surface sur = Resource::apply_modifier(spr.get_frame_surface(0), desc);
+	sprite_desc.add_frame(sur.get_pixeldata());
+	sprite = CL_Sprite(sprite_desc);
+
+	if (stretch_x || stretch_y)
+	{
+		float w, h;
+		// FIXME: Temporary hack
+		w = 800;
+		h = 600;
+
+		sur = Blitter::scale_surface_to_canvas(sprite.get_frame_surface(0), w, h);
+		sprite_desc = CL_SpriteDescription();
+		sprite_desc.add_frame(sur.get_pixeldata());
+		sprite = CL_Sprite(sprite_desc);
 	}
 }
 
@@ -78,12 +131,7 @@ LevelObj::set_modifier(const std::string m)
 {
 	// Set modifier
 	desc.modifier = ResourceModifierNS::rs_from_string(m);
-
-	// Apply modifier, then change the sprite loaded for this object in memory.
-	CL_Surface sur = Resource::apply_modifier(sprite.get_frame_surface(0), desc);
-	CL_SpriteDescription desc;
-	desc.add_frame(sur.get_pixeldata());
-	sprite = CL_Sprite(desc);
+	refresh_sprite();
 }
 
 // Writes the XML attributes for the file

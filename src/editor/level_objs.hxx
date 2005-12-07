@@ -135,6 +135,9 @@ protected:
 	/** Write any additional properties to the XML file for this type */
 	virtual void write_extra_properties(XMLFileWriter& xml) { }
 
+	/** Call when the sprite needs to be reloaded */
+	void refresh_sprite();
+
 
 
 /////////////////////////////////////////////////////////
@@ -232,13 +235,13 @@ public:
 	void set_scroll_y(const float s) { scroll_y = s; }
 
 	/** Set the objects stretch in the x direction value */
-	void set_stretch_x(const bool s) { stretch_x = s; }
+	void set_stretch_x(const bool s);
 
 	/** Set the objects stretch in the y direction value */
-	void set_stretch_y(bool s) { stretch_y = s; }
+	void set_stretch_y(bool s);
 
 	/** Set whether or not the object should maintain it's aspect ratio when stretched */
-	void set_aspect(const bool a) { keep_aspect = a; }
+	void set_aspect(const bool a);
 
 	/** Set the objects color if applicable */
 	void set_color(const CL_Colorf c) 

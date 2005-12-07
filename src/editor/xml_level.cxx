@@ -52,7 +52,7 @@ XMLLevel::~XMLLevel()
  LevelObj's:
  - At least 1 entrance
  - At least 1 exit
- - Exactly 1 surface-background
+ - At least 1 surface-background
  - Each object should be within valid ranges (pos Vector should be inside the world)
  -----------
  Head section:
