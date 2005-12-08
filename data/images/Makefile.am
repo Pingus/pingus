@@ -68,7 +68,6 @@ core/menu/exit_button_normal.png \
 core/menu/exit_button_pressed.png \
 core/menu/exit_menu.png \
 core/menu/exit_on.png \
-core/menu/layer1.jpg \
 core/menu/layer1.png \
 core/menu/layer2.png \
 core/menu/layer3.png \
