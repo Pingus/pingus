@@ -27,6 +27,7 @@
 #include "sound/sound.hxx"
 #include "file_dialog.hxx"
 #include "file_dialog_item.hxx"
+#include "file_dialog_listener.hxx"
 
 namespace Pingus {
 
@@ -137,12 +138,16 @@ namespace Pingus {
 		/** 0 for Up, 1 for Down */
 		int direction;
 
+		/** Show it or not */
+		bool is_hidden;
+
 	public:
 		FileDialogScrollButton (FileDialog* f, int d, int height_offset)
 			: file_dialog(f),
                           pos(Vector((float)CL_Display::get_width()/2 + 210,
                                      (float)CL_Display::get_height()/2 + height_offset)),
-                          direction(d)
+                          direction(d),
+													is_hidden(false)
 		{
 			std::string str_direction = d==0 ? "up" : "down";
 			sprite = Resource::load_sprite("core/menu/" + str_direction + "_arrow");
@@ -150,7 +155,8 @@ namespace Pingus {
 
 		void draw (DrawingContext& gc) {
 			//FIXME: Should also draw a hover box around it when the mouse is over it.
-			gc.draw(sprite, pos);
+			if (!is_hidden)
+				gc.draw(sprite, pos);
 		}
 		
 		void on_primary_button_click(int x, int y)
@@ -160,9 +166,14 @@ namespace Pingus {
 
 		bool is_at(int x, int y)
 		{
+			if (is_hidden)
+				return false;
 			return (x > (int)pos.x && x < (int)pos.x + sprite.get_width()
 				&& y > (int)pos.y && y < (int)pos.y + sprite.get_height());
 		}
+
+		void show() { is_hidden = false; }
+		void hide() { is_hidden = true; }
 	};
 
 	class FileDialogParentFolderButton : public GUI::Component
@@ -206,9 +217,13 @@ namespace Pingus {
 		}
 	};
 
-	FileDialog::FileDialog (PingusMenuManager* manager_, const std::string filemask_, 
-		const std::string searchpath_, bool for_load)
+	FileDialog::FileDialog (FileDialogListener* listener_, 
+		PingusMenuManager* manager_, 
+		const std::string filemask_, 
+		const std::string searchpath_, 
+		bool for_load)
 		: PingusSubMenu (manager_),
+									listener(listener_),
                   for_loading(for_load),
                   file_mask(filemask_),
                   current_path(searchpath_)
@@ -217,10 +232,13 @@ namespace Pingus {
 		ok_button = new FileDialogOkButton(manager, this,
 			for_loading ? _("Load") : _("Save"));
 
+		up_button = new FileDialogScrollButton(this, DIR_UP, -150);
+		down_button = new FileDialogScrollButton(this, DIR_DOWN, 100);
+
 		gui_manager->add(ok_button, true);
+		gui_manager->add(up_button, true);
+		gui_manager->add(down_button, true);
 		gui_manager->add(new FileDialogCancelButton(manager), true);
-		gui_manager->add(new FileDialogScrollButton(this, DIR_DOWN, 100), true);
-		gui_manager->add(new FileDialogScrollButton(this, DIR_UP, -150), true);
 		gui_manager->add(new FileDialogParentFolderButton(this));		
 
 		// FIXME: Ugly - hardcoded values for items in file dialog.  Should be dynamic.
@@ -264,7 +282,7 @@ namespace Pingus {
 		gc.draw_rect(gc.get_width() / 2 - 285, gc.get_height() / 2 - 160,
 			gc.get_width() / 2 + 285, gc.get_height() / 2 + 160, CL_Color::black);
 		gc.print_center(Fonts::chalk_large, gc.get_width()/2, gc.get_height()/2 - 220, 
-			current_file.name);
+			current_file.friendly_name);
 
 		PingusSubMenu::draw(gc);
 		return true;
@@ -307,7 +325,6 @@ namespace Pingus {
 			file_list.push_back(f);
 		}
 
-		// FIXME: Should sort the file_list here
 		std::sort(file_list.begin(), file_list.end(), &FileItemCompare);
 
 		current_offset = 0;
@@ -328,6 +345,17 @@ namespace Pingus {
 			 else
 				 (*i)->hide();
 		}
+
+		// Show or hide scroll buttons
+		if (current_offset == 0)
+			up_button->hide();
+		else
+			up_button->show();
+
+		if (current_offset + (unsigned)file_dialog_items.size() < (unsigned)file_list.size())
+			down_button->show();
+		else
+			down_button->hide();
 	}
 
 	// Scroll the list up or down.
@@ -373,9 +401,11 @@ namespace Pingus {
 		}
 		else
 		{
-			// FIXME: Temporary since we only use this dialog on the main menu.
+			// Load or save the selected file
 			if (for_loading)
-				manager->mainmenu.do_contrib(current_path + current_file.name);
+				listener->load(current_path + current_file.name, file_mask);
+			else
+				listener->save(current_path + current_file.name, file_mask);
 			manager->pop_menu();
 		}
 	}

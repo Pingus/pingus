@@ -44,8 +44,8 @@ public:
 
   void draw (DrawingContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_right(Fonts::chalk_large, CL_Display::get_width()/2 - 80,
-                   CL_Display::get_height()/2 + 25, _("Yes"));
+    gc.print_right(Fonts::chalk_large, (float)CL_Display::get_width()/2 - 80,
+                   (float)CL_Display::get_height()/2 + 25, _("Yes"));
   }
 
   void on_click()
@@ -77,8 +77,8 @@ public:
 
   void draw (DrawingContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_right(Fonts::chalk_large, CL_Display::get_width()/2 + 80,
-                   CL_Display::get_height()/2 + 25, _("No"));
+    gc.print_right(Fonts::chalk_large, (float)CL_Display::get_width()/2 + 80,
+                   (float)CL_Display::get_height()/2 + 25, _("No"));
   }
 
   void on_click() {

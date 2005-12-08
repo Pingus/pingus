@@ -19,13 +19,19 @@
 
 #include <ClanLib/Display/sprite.h>
 #include <ClanLib/Core/IOData/directory_scanner.h>
+#include <ClanLib/Core/IOData/inputsource_provider_file.h>
 #include <ClanLib/Core/System/clanstring.h>
+#include <ClanLib/Core/XML/dom_node.h>
+#include <ClanLib/Core/XML/dom_node_list.h>
+#include <ClanLib/Core/XML/dom_document.h>
+#include <ClanLib/Core/XML/dom_element.h>
+#include "pingus_error.hxx"
+#include "xml_file_reader.hxx"
 #include "file_dialog_item.hxx"
 #include "file_dialog.hxx"
 #include "vector.hxx"
 #include "fonts.hxx"
 #include "resource.hxx"
-#include "xml_pingus_level.hxx"
 #include "gettext.h"
 
 namespace Pingus {
@@ -53,17 +59,46 @@ namespace Pingus {
 			sprite = Resource::load_sprite("core/menu/default_level");
 
 			// Load information about this file if possible.
-			if (file_dialog->get_file_mask() == ".pingus")
+			CL_InputSourceProvider_File provider(".");
+			CL_DomDocument doc(provider.open_source(file_dialog->get_path() 
+				+ file_item.name), true);
+
+			CL_DomElement root = doc.get_document_element();
+
+			if (root.get_tag_name() == "pingus-level" || root.get_tag_name() == "pingus-worldmap")
 			{
-				// Get level information
-				XMLPingusLevel level("", file_dialog->get_path() + file_item.name);
-				friendly_name = _(level.get_levelname());
-				// Have to limit the size of the printed name
-				friendly_name = friendly_name.substr(0, 23);
-				file_info = _("Difficulty: ") + CL_String::to(level.get_difficulty());
-			}
-		}
-	}
+				CL_DomNodeList lst = root.get_child_nodes();
+
+				for(int i = 0; i < lst.get_length(); ++i)
+				{
+					CL_DomElement node = lst.item(i).to_element();
+
+					// Get information about this file
+					if (node.get_tag_name() == "head")
+					{
+						XMLFileReader reader(node);
+						if (root.get_tag_name() == "pingus-level")
+						{
+							// It's a level file
+							reader.read_string("levelname",   file_item.friendly_name);
+							reader.read_string("difficulty",  file_info);
+							file_info = "Difficulty: " + file_info;
+						}
+						else
+						{
+							// It's a Worldmap
+							// FIXME: Add more types eventually
+							reader.read_string("name",        file_item.friendly_name);
+							reader.read_string("description", file_info);
+						}
+						// Have to limit the size of the printed name
+						file_item.friendly_name = file_item.friendly_name.substr(0, 23);
+						break;
+					}	// if XML Node == "head"
+				}	// for loop
+			}	// if XML tag_name was recognized
+		}	// else it's a file, not a directory
+	}	//set_file()
 
 	bool 
 	FileDialogItem::is_at(int x, int y)
@@ -90,7 +125,7 @@ namespace Pingus {
 			if (mouse_over && !file_item.is_directory)
 			{
 				gc.draw_fillrect(pos.x+50, pos.y, pos.x+300, pos.y+50, CL_Color::azure);
-				gc.print_left(Fonts::pingus_small, pos.x+50, pos.y, friendly_name);
+				gc.print_left(Fonts::pingus_small, pos.x+50, pos.y, file_item.friendly_name);
 				gc.print_left(Fonts::pingus_small, pos.x+50, pos.y+25, file_info);
 			}
 		}

@@ -31,6 +31,7 @@
 #include "fonts.hxx"
 #include "story_screen.hxx"
 #include "res_descriptor.hxx"
+#include "worldmap/worldmap.hxx"
 #include "worldmap/manager.hxx"
 #include "worldmap/worldmap_story.hxx"
 #include "stat_manager.hxx"
@@ -196,7 +197,9 @@ StoryScreenComponent::next_text()
       else
         {
           //Out of story pages
-          StatManager::instance()->set_bool("story-seen", true);
+					StatManager::instance()->set_bool(
+						StatManager::get_resname(WorldMapNS::WorldMapManager::instance()->get_worldmap()->get_filename()) 
+							+ "-story-seen", true);
           
           if (show_credits)
             ScreenManager::instance()->replace_screen(Credits::instance(), false);

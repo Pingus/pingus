@@ -122,7 +122,7 @@ PingusMenuManager::show_file_dialog (const std::string filemask,
 	// Initialize the dialog box either for loading or saving.
 	if (filedialog)
 		delete filedialog;
-	filedialog = new FileDialog(this, filemask, searchpath, for_load);
+	filedialog = new FileDialog(current_menu(), this, filemask, searchpath, for_load);
 	filedialog->preload();
   push_menu (filedialog);
 }

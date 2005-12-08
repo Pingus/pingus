@@ -1,6 +1,7 @@
 ﻿<pingus-worldmap>
   <head>
     <name>Volcano Island</name>
+    <description>Be careful, it's hot!</description>
     <music>gd-myla.it</music>
     <author>Ingo Ruhnke</author>
     <email>grumbel@gmx.de</email>

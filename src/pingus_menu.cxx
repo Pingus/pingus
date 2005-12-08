@@ -84,7 +84,7 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
   slots.push_back(start_button->sig_click().connect(this, &PingusMenu::setup_game_menu));
   slots.push_back(quit_button->sig_click().connect(this, &PingusMenu::do_quit));
 
-  slots.push_back(story_button->sig_click().connect(this, &PingusMenu::do_start));
+  slots.push_back(story_button->sig_click().connect(this, &PingusMenu::setup_worldmap_menu));
   slots.push_back(multiplayer_button->sig_click().connect(this, &PingusMenu::setup_main_menu));
   
   slots.push_back(contrib_button->sig_click().connect(this, &PingusMenu::setup_contrib_menu));
@@ -124,6 +124,13 @@ PingusMenu::setup_contrib_menu()
 }
 
 void
+PingusMenu::setup_worldmap_menu()
+{
+	get_manager ()->show_file_dialog (".xml",
+		path_manager.complete("worldmaps/"), true);
+}
+
+void
 PingusMenu::preload ()
 {
   if (!is_init)
@@ -152,23 +159,21 @@ PingusMenu::do_quit()
 }
 
 void
-PingusMenu::do_start()
-{ // Start the story mode
+PingusMenu::do_start(std::string filename)
+{ // Start the story or worldmap mode
   Sound::PingusSound::play_sound ("letsgo");
 
   bool story_seen = false;
-  StatManager::instance()->get_bool("story-seen", story_seen);
+	StatManager::instance()->get_bool(StatManager::get_resname(filename) + "-story-seen", story_seen);
 
-  if (!story_seen)
-    {
-			WorldMapNS::WorldMapManager::instance()->load(path_manager.complete("worldmaps/tutorial.xml"));
-      ScreenManager::instance()->push_screen(
-				new StoryScreen(WorldMapNS::WorldMapManager::instance()->get_worldmap()->get_intro_story()), true);
-    }
+	WorldMapNS::WorldMapManager::instance()->load(filename);
+  
+	if (!story_seen)
+		ScreenManager::instance()->push_screen(new StoryScreen(
+			WorldMapNS::WorldMapManager::instance()->get_worldmap()->get_intro_story()), true);
   else
-    {
-      ScreenManager::instance()->push_screen(WorldMapNS::WorldMapManager::instance ());
-    }
+	  ScreenManager::instance()->push_screen(WorldMapNS::WorldMapManager::instance());
+    //}
 }
 
 void PingusMenu::do_contrib(const std::string &levelfile)
@@ -226,6 +231,18 @@ PingusMenu::draw_foreground(DrawingContext& gc)
                 "Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome\n"
                 "to redistribute it under certain conditions; see the file COPYING for details.\n");
 }
+
+void
+PingusMenu::load(std::string file, std::string filemask)
+{
+	// Level
+	if (filemask == ".pingus")
+		do_contrib(file);
+	// Worldmap
+	else if (filemask == ".xml")
+		do_start(file);
+}
+		
 
 } // namespace Pingus
 

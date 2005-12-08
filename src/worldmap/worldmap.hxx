@@ -100,6 +100,8 @@ public:
 
   void on_startup();
 
+	std::string get_filename() const { return filename; }
+
   void draw (DrawingContext& gc);
   void update (float delta);
 

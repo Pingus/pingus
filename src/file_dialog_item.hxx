@@ -35,7 +35,7 @@ private:
 	bool mouse_over;
 	bool is_hidden;
 
-	std::string friendly_name;
+	/** Extra info about this file - differs based on file type (difficulty, etc.) */
 	std::string file_info;
 
 	FileDialog* file_dialog;

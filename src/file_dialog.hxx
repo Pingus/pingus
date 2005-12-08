@@ -30,10 +30,12 @@ namespace Pingus {
 	class Vector;
 	class FileDialogItem;
 	class FileDialogOkButton;
-	class PingusMenuManager;
+	class FileDialogScrollButton;
+	class FileDialogListener;
 
 	struct FileItem {
 		std::string name;
+		std::string friendly_name;
 		bool is_directory;
 	};
 
@@ -53,6 +55,13 @@ private:
 
 	/** The OK button - need to be able to hide and show it */
 	FileDialogOkButton* ok_button;
+
+	/** Scroll buttons */
+	FileDialogScrollButton* up_button;
+	FileDialogScrollButton* down_button;
+
+	/** The owner of this file dialog */
+	FileDialogListener* listener;
 
 	/** Should this dialog box be used for loading?  True for load, false for saving */
 	bool for_loading;
@@ -79,8 +88,12 @@ private:
 	void offset_changed();
 
 public:
-	FileDialog (PingusMenuManager* manager, const std::string filemask_, 
-		const std::string searchpath_, const bool for_load = true);
+	FileDialog (FileDialogListener* listener_, 
+		PingusMenuManager *manager_,
+		const std::string filemask_, 
+		const std::string searchpath_,
+		const bool for_load = true);
+
   ~FileDialog ();
 
   bool draw (DrawingContext& gc);

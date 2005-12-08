@@ -62,11 +62,20 @@ private:
   // These functions setup the different menus
   void setup_main_menu();
   void setup_game_menu();
+	/** Show the levels folder */
   void setup_contrib_menu();
-  
+	/** Show the worldmap folder */
+	void setup_worldmap_menu();
+
+	/** Quit the game */
   void do_quit();
-  void do_start();
+	/** Start the story/worldmap mode */
+	void do_start(std::string filename);
+	/** Start the level editor */
 	void do_edit();
+
+	/** Use this to load the level or worldmap */
+	virtual void load(std::string file, std::string filemask);
 
 public:
   PingusMenu (PingusMenuManager* m);

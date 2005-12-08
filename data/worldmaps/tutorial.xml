@@ -2,6 +2,7 @@
 <pingus-worldmap>
   <head>
     <name>Tutorial Island</name>
+    <description>Learn the basics</description>
     <music>pingus-1.it</music>
     <author>Ingo Ruhnke</author>
     <email>grumbel@gmx.de</email>

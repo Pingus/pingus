@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <algorithm>
 #include <fstream>
 #include <ClanLib/core.h>
 #include "system.hxx"
@@ -50,6 +51,20 @@ StatManager::deinit()
   instance()->flush();
   delete instance_;
   instance_ = 0;
+}
+
+std::string
+StatManager::get_resname(const std::string& filename)
+{
+	std::string::size_type pos;
+	std::string str;
+	pos = filename.rfind("/");
+	pos++;
+	str = filename.substr(pos);
+  pos = 0;
+  while ((pos = str.find('.', pos)) != std::string::npos)
+    str.replace(pos, 1, 1, '-');
+	return str;
 }
 
 StatManager::StatManager(const std::string& arg_filename)

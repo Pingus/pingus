@@ -132,6 +132,7 @@ file_dialog.cxx \
 file_dialog.hxx \
 file_dialog_item.cxx \
 file_dialog_item.hxx \
+file_dialog_listener.hxx \
 file_reader.cxx \
 file_reader.hxx \
 file_reader_impl.hxx \
