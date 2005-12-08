@@ -33,7 +33,6 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="iconv.lib"
 				OutputFile="$(OutDir)/Pingus.exe"
 				LinkIncremental="2"
 				IgnoreDefaultLibraryNames="LIBCMT"
@@ -82,7 +81,6 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="iconv.lib"
 				OutputFile="$(OutDir)/Pingus.exe"
 				LinkIncremental="1"
 				GenerateDebugInformation="TRUE"
@@ -796,6 +794,12 @@
 				<File
 					RelativePath=".\src\worldmap\worldmap.hxx">
 				</File>
+				<File
+					RelativePath=".\src\worldmap\worldmap_story.cxx">
+				</File>
+				<File
+					RelativePath=".\src\worldmap\worldmap_story.hxx">
+				</File>
 			</Filter>
 			<Filter
 				Name="worldobjs"
@@ -1496,12 +1500,6 @@
 				</File>
 				<File
 					RelativePath=".\src\state_sprite.hxx">
-				</File>
-				<File
-					RelativePath=".\src\story.cxx">
-				</File>
-				<File
-					RelativePath=".\src\story.hxx">
 				</File>
 				<File
 					RelativePath=".\src\story_screen.cxx">

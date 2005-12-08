@@ -161,6 +161,7 @@ PingusMenu::do_start()
 
   if (!story_seen)
     {
+			WorldMapNS::WorldMapManager::instance()->load(path_manager.complete("worldmaps/tutorial.xml"));
       ScreenManager::instance()->push_screen(
 				new StoryScreen(WorldMapNS::WorldMapManager::instance()->get_worldmap()->get_intro_story()), true);
     }

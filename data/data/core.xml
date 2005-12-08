@@ -170,7 +170,7 @@
         <image file="../images/core/menu/multi_on.png"/>
       </sprite>
       <sprite name="layer1">
-        <image file="../images/core/menu/layer1.jpg"/>
+        <image file="../images/core/menu/layer1.png"/>
       </sprite>
       <sprite name="layer2">
         <image file="../images/core/menu/layer2.png"/>
