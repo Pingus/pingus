@@ -82,7 +82,8 @@ namespace Pingus {
 							// It's a level file
 							reader.read_string("levelname",   file_item.friendly_name);
 							reader.read_string("difficulty",  file_info);
-							file_info = "Difficulty: " + file_info;
+							file_item.friendly_name = _(file_item.friendly_name);
+							file_info = _("Difficulty: ") + file_info;
 						}
 						else
 						{
@@ -90,6 +91,9 @@ namespace Pingus {
 							// FIXME: Add more types eventually
 							reader.read_string("name",        file_item.friendly_name);
 							reader.read_string("description", file_info);
+							file_item.friendly_name = _(file_item.friendly_name);
+							file_info = _(file_info);
+
 						}
 						// Have to limit the size of the printed name
 						file_item.friendly_name = file_item.friendly_name.substr(0, 23);

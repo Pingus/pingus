@@ -34,10 +34,10 @@ namespace Editor {
 
 // Constructor
 EditorViewport::EditorViewport(EditorScreen* e) :
+	state(CL_Display::get_width(), CL_Display::get_height()),
 	scene_context(new SceneContext()),
 	editor(e),
 	bg_surface(0),
-	state(CL_Display::get_width(), CL_Display::get_height()),
 	autoscroll(true)
 {
 	// FIXME: Hardcoded values should be determined by level size

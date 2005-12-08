@@ -40,6 +40,7 @@ namespace WorldMapNS {
 	WorldMapStory::WorldMapStory(const FileReader &reader)
 	{
 		reader.read_string("title", title);
+		title = _(title);
 		reader.read_string("music", music);
 		FileReader all_pages = reader.read_section("pages");
 
