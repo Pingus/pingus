@@ -159,7 +159,7 @@ PingusMenu::do_quit()
 }
 
 void
-PingusMenu::do_start(std::string filename)
+PingusMenu::do_start(const std::string &filename)
 { // Start the story or worldmap mode
   Sound::PingusSound::play_sound ("letsgo");
 
@@ -233,7 +233,7 @@ PingusMenu::draw_foreground(DrawingContext& gc)
 }
 
 void
-PingusMenu::load(std::string file, std::string filemask)
+PingusMenu::load(const std::string &file, const std::string &filemask)
 {
 	// Level
 	if (filemask == ".pingus")

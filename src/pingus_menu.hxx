@@ -70,12 +70,12 @@ private:
 	/** Quit the game */
   void do_quit();
 	/** Start the story/worldmap mode */
-	void do_start(std::string filename);
+	void do_start(const std::string &filename);
 	/** Start the level editor */
 	void do_edit();
 
 	/** Use this to load the level or worldmap */
-	virtual void load(std::string file, std::string filemask);
+	virtual void load(const std::string &file, const std::string &filemask);
 
 public:
   PingusMenu (PingusMenuManager* m);
