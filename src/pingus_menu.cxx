@@ -29,7 +29,7 @@
 #include "stat_manager.hxx"
 #include "start_screen.hxx"
 #include "story_screen.hxx"
-#include "story.hxx"
+#include "worldmap/worldmap.hxx"
 #include "worldmap/manager.hxx"
 #include "gui/screen_manager.hxx"
 #include "pingus_menu_manager.hxx"
@@ -161,7 +161,8 @@ PingusMenu::do_start()
 
   if (!story_seen)
     {
-      ScreenManager::instance()->push_screen(new StoryScreen(Story::intro), true);
+      ScreenManager::instance()->push_screen(
+				new StoryScreen(WorldMapNS::WorldMapManager::instance()->get_worldmap()->get_intro_story()), true);
     }
   else
     {

@@ -23,25 +23,13 @@
 #include <string>
 #include "res_descriptor.hxx"
 #include "gui/gui_screen.hxx"
+#include "worldmap/worldmap_story.hxx"
 
 namespace Pingus {
 
-class Story;
 class StoryScreenComponent;
 
-class StoryPage
-{
-public:
-  StoryPage() {}
-
-  StoryPage(ResDescriptor arg_image, std::string arg_text)
-    : image(arg_image), text(arg_text)
-
-  {}
-
-  ResDescriptor image;
-  std::string   text;
-};
+using namespace Pingus::WorldMapNS;
 
 /** */
 class StoryScreen : public GUIScreen
@@ -49,7 +37,7 @@ class StoryScreen : public GUIScreen
 private:
   StoryScreenComponent* story_comp;
 public:
-  StoryScreen(const Story& pages);
+	StoryScreen(WorldMapStory *pages);
   ~StoryScreen();
 
   void on_startup();

@@ -32,8 +32,8 @@
 #include "story_screen.hxx"
 #include "res_descriptor.hxx"
 #include "worldmap/manager.hxx"
+#include "worldmap/worldmap_story.hxx"
 #include "stat_manager.hxx"
-#include "story.hxx"
 #include "credits.hxx"
 #include "sound/sound.hxx"
 
@@ -50,11 +50,12 @@ private:
 
   bool page_displayed_completly;
 
-  Story story;
+	WorldMapNS::WorldMapStory *story;
+	std::vector<StoryPage> pages;
   CL_Sprite page_surface;
   StoryPage  current_page;
 public:
-  StoryScreenComponent (const Story&);
+	StoryScreenComponent (WorldMapNS::WorldMapStory *arg_pages);
   virtual ~StoryScreenComponent () {}
 
   void draw (DrawingContext& gc);
@@ -62,6 +63,7 @@ public:
 
   /** starts to display the next text page */
   void next_text();
+	WorldMapNS::WorldMapStory* get_story() const { return story; }
 };
 
 class StoryScreenContinueButton : public GUI::SurfaceButton
@@ -92,7 +94,7 @@ public:
 };
 
 
-StoryScreen::StoryScreen(const Story& arg_pages)
+StoryScreen::StoryScreen(WorldMapNS::WorldMapStory *arg_pages)
 {
   story_comp = new StoryScreenComponent(arg_pages);
   gui_manager->add (story_comp);
@@ -103,18 +105,20 @@ StoryScreen::~StoryScreen()
 {
 }
 
-StoryScreenComponent::StoryScreenComponent (const Story& arg_story)
+StoryScreenComponent::StoryScreenComponent (WorldMapNS::WorldMapStory *arg_story)
   : story(arg_story)
 {
-  if (&arg_story == &Story::credits)
+	// FIXME: Need to Re-enable credits
+  /*if (&arg_story == &Story::credits)
     show_credits = true;
-  else
+  else */
     show_credits = false;
 
   page_displayed_completly = false;
   time_passed  = 0;
+	pages = story->get_pages();
 
-  current_page = story.pages.back();
+  current_page = pages.back();
   page_surface = Resource::load_sprite(current_page.image);
   background   = Resource::load_sprite("core/menu/startscreenbg");
 }
@@ -125,7 +129,7 @@ StoryScreenComponent::draw (DrawingContext& gc)
   gc.draw(background, Vector(gc.get_width()/2, gc.get_height()/2));
 
   gc.print_center(Fonts::chalk_large, static_cast<float>(CL_Display::get_width()/2),
-                  static_cast<float>(CL_Display::get_height()/2 - 200), story.title);
+                  static_cast<float>(CL_Display::get_height()/2 - 200), story->get_title());
   gc.draw(page_surface, Vector(gc.get_width()/2, gc.get_height()/2 - 65));
   
   gc.print_left(Fonts::chalk_normal,
@@ -166,8 +170,8 @@ StoryScreen::on_escape_press ()
 void
 StoryScreen::on_startup()
 {
-  //PingusSound::play_sound ("letsgo");
-  Sound::PingusSound::play_music("pingus-4.it", .7f);
+	// FIXME: Load the song from the WorldMapStory
+  Sound::PingusSound::play_music(story_comp->get_story()->get_music(), .7f);
 }
 
 void
@@ -180,10 +184,10 @@ StoryScreenComponent::next_text()
     }
   else
     {
-      story.pages.pop_back();
-      if (!story.pages.empty())
+      pages.pop_back();
+      if (!pages.empty())
         {
-          current_page = story.pages.back();
+          current_page = pages.back();
           page_surface = Resource::load_sprite(current_page.image);
           display_text = "";
           time_passed = 0;
@@ -191,9 +195,9 @@ StoryScreenComponent::next_text()
         }
       else
         {
-          //std::cout << "StoryScreenComponent: Out of story pages" << std::endl;
+          //Out of story pages
           StatManager::instance()->set_bool("story-seen", true);
-          //ScreenManager::instance()->replace_screen (PingusMenuManager::instance (), false);
+          
           if (show_credits)
             ScreenManager::instance()->replace_screen(Credits::instance(), false);
           else

@@ -31,11 +31,13 @@
 #include "../sound/sound.hxx"
 #include "../pingus_error.hxx"
 #include "../gettext.h"
-#include "pingus.hxx"
 #include "../globals.hxx"
 #include "../xml_file_reader.hxx"
 #include "../debug.hxx"
 #include "worldmap.hxx"
+#include "worldmap_story.hxx"
+#include "manager.hxx"
+#include "pingus.hxx"
 #include "drawable_factory.hxx"
 #include "drawable.hxx"
 #include "dot.hxx"
@@ -44,7 +46,6 @@
 #include "../math.hxx"
 #include "../stat_manager.hxx"
 
-#include "../story.hxx"
 #include "../story_screen.hxx"
 #include "../gui/screen_manager.hxx"
 
@@ -95,12 +96,8 @@ WorldMap::~WorldMap()
     {
       delete (*i);
     }
-//  for (ObjectLst::iterator j = objects.begin (); j != objects.end (); ++j)
-//    {
-//      delete (*j);
-//    }
-
-//  delete pingus;
+	delete intro_story;
+	delete end_story;
   delete path_graph;
 }
 
@@ -112,6 +109,8 @@ WorldMap::parse_file(FileReader reader)
       parse_graph(reader.read_section("graph"));
       parse_objects(reader.read_section("objects"));
       parse_properties(reader.read_section("head"));
+			intro_story = new WorldMapStory(reader.read_section("intro_story"));
+			end_story = new WorldMapStory(reader.read_section("end_story"));
     }
   else
     {
@@ -403,7 +402,8 @@ WorldMap::update_locked_nodes()
         {
           if (dot->finished())
             {
-              ScreenManager::instance()->replace_screen(new StoryScreen(Story::credits), true);
+              ScreenManager::instance()->replace_screen(
+								new StoryScreen(get_end_story()), true);
               StatManager::instance()->set_bool("credits-unlocked", true);
             }
         }

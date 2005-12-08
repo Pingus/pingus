@@ -8,6 +8,41 @@
     <height>600</height>
   </head>
   
+  <intro_story>
+    <title>Volcano Island</title>
+    <music>pingus-6.it</music>
+    <pages>
+      <page01>
+        <surface>
+          <image>core/menu/folder</image>
+          <modifier>ROT0</modifier>
+        </surface>
+        <text>This is sample Volcano text.</text>
+      </page01>
+      <page02>
+        <surface>
+          <image>core/menu/folder</image>
+          <modifier>ROT0</modifier>
+        </surface>
+        <text>This is page 2 of the volcano story.</text>
+      </page02>
+    </pages>
+  </intro_story>
+  
+  <end_story>
+    <title>Volcano Island</title>
+    <music>pingus-6.it</music>
+    <pages>
+      <page01>
+        <surface>
+          <image>core/menu/folder</image>
+          <modifier>ROT0</modifier>
+        </surface>
+        <text>Hi</text>
+      </page01>
+    </pages>
+  </end_story>
+  
   <!-- The graph specifies the path on which the pingu can walk -->
   <graph>
     <nodes>

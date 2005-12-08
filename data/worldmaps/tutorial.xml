@@ -8,6 +8,105 @@
     <width>1161</width>
     <height>600</height>
   </head>
+  
+  <intro_story>
+    <title>The Journey Begins</title>
+    <music>pingus-4.it</music>
+    <pages>
+      <page00>
+        <surface>
+          <image>story/story0</image>
+          <modifier>ROT0</modifier>
+        </surface>
+        <text>For a long time, the Pingus have lived happily in peace on the South Pole along with all the other animals. Everything was in balance and it seemed like nothing could disrupt their peace.  The Pingus were happy and it seemed like this could never end.</text>
+      </page00>
+      <page01>
+        <surface>
+          <image>story/story1</image>
+          <modifier>ROT0</modifier>
+        </surface>
+        <text>But then one day, things began to change slowly: the sky got darker and the earth got warmer. Firstly, they thought this was just a normal fluctuation in the world's climate, but things seemed to get worse and worse with every year.</text>
+      </page01>
+      <page02>
+        <surface>
+          <image>story/story2</image>
+          <modifier>ROT0</modifier>
+        </surface>
+        <text>The snow began to melt away in a few areas and food became an issue. Other animals tried to leave the region to search for colder areas, but the Pingus knew that this wouldn't help: they knew that they had to do something about it.</text>
+      </page02>
+      <page03>
+        <surface>
+          <image>story/story3</image>
+          <modifier>ROT0</modifier>
+        </surface>
+        <text>So the circle of the eldest came together to decide what to do about it. They decided to send out an expedition around the world to find the cause of this warming. The expedition consisted of hundreds of the bravest Pingus on the South Pole.</text>
+      </page03>
+      <page04>
+        <surface>
+          <image>story/story4</image>
+          <modifier>ROT0</modifier>
+        </surface>
+        <text>And they picked you to lead them on their journey around the world. Since the journey will be dangerous and difficult, your first goal is the Island of Mogorok, also known as the Tutorial Island. According to the eldest, this island has always been the first stop of Pingus that were sent out into the world.</text>
+      </page04>
+      <page05>
+        <surface>
+          <image>story/story5</image>
+          <modifier>ROT0</modifier>
+        </surface>
+        <text>The island consists of many areas that are ideal to teach the Pingus their abilities. The Pingus can learn to build bridges, climb, bash and use many other talents which they will need on their long and dangerous journey.</text>
+      </page05>
+      <page06>
+        <surface>
+          <image>story/story6</image>
+          <modifier>ROT0</modifier>
+        </surface>
+        <text>While there, you can practice your abilities in commanding and guiding the Pingus. You can also get familiar with all the abilities the Pingus provide and learn to master them, since you will need all of them on your journey around the world.</text>
+      </page06>
+      <page07>
+        <surface>
+          <image>story/story6</image>
+          <modifier>ROT0</modifier>
+        </surface>
+        <text>Now that you and the Pingus have arrived at Tutorial Island it is time to take command and begin your mission. Good Luck!</text>
+      </page07>
+    </pages>
+  </intro_story>
+  
+  <end_story>
+    <title>The Journey Continues</title>
+    <music>pingus-4.it</music>
+    <pages>
+      <page01>
+        <surface>
+          <image>story/credits1</image>
+          <modifier>ROT0</modifier>
+        </surface>
+        <text>Now after you and the Pingus have learned the basics and practiced a bit it is time to move on and begin the journey into the world. Since the ice floe with which the Pingus traveled to the Tutorial Island isn't going to hold on the whole way into the warmer climates the Pingus have to find something else to guide them on their journey.</text>
+      </page01>
+      <page02>
+        <surface>
+          <image>story/credits2</image>
+          <modifier>ROT0</modifier>
+        </surface>
+        <text>But as the eldest have said, the Tutorial Island provides not only a good way to practice, but it is also the starting point into the world. After some searching the Pingus discovered the meaning of this, and they found the large tree at the end of the island which gave them wood to construct a float.</text>
+      </page02>
+      <page03>
+        <surface>
+          <image>story/credits3</image>
+          <modifier>ROT0</modifier>
+        </surface>
+        <text>So the Pingus set out and constructed some large rafts, enough to carry them all. After also packing a bunch of provisions they were prepared to start their journey and leave their familiar ground and enter the unknown parts of the world.</text>
+      </page03>
+      <page04>
+        <surface>
+          <image>story/credits4</image>
+          <modifier>ROT0</modifier>
+        </surface>
+        <text>So the Pingus sit on their raft, worrying about what's to come and where to go, while floating into the sunset.  To be continued...</text>
+      </page04>
+    </pages>
+  </end_story>
+  
   <graph>
     <nodes>
       <leveldot>

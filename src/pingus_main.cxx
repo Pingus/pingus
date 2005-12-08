@@ -64,7 +64,6 @@
 #include "credits.hxx"
 #include "sound/sound.hxx"
 #include "worldmap/manager.hxx"
-#include "story.hxx"
 #include "cheat.hxx"
 #include "blitter_test.hxx"
 #include "preview_renderer.hxx"
@@ -905,7 +904,6 @@ PingusMain::init_pingus()
 
   Resource::init();
   Fonts::init();
-  Story::init();
   ScreenManager::init();
   PingusMenuManager::init();
   Sound::PingusSound::init();

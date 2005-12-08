@@ -27,9 +27,9 @@
 #include "../sound/sound.hxx"
 #include "../stat_manager.hxx"
 #include "worldmap.hxx"
+#include "worldmap_story.hxx"
 #include "pingus.hxx"
 #include "manager.hxx"
-#include "../story.hxx"
 #include "../story_screen.hxx"
 
 namespace Pingus {
@@ -106,7 +106,8 @@ WorldMapManagerCreditsButton::draw (DrawingContext& gc)
 void
 WorldMapManagerCreditsButton::on_click()
 {
-  ScreenManager::instance()->replace_screen(new StoryScreen(Story::credits), true);
+	ScreenManager::instance()->replace_screen(
+		new StoryScreen(WorldMapManager::instance()->get_worldmap()->get_end_story()), true);
 }
 
 WorldMapManagerStoryButton::WorldMapManagerStoryButton()
@@ -136,7 +137,8 @@ WorldMapManagerStoryButton::draw (DrawingContext& gc)
 void
 WorldMapManagerStoryButton::on_click()
 {
-  ScreenManager::instance()->replace_screen(new StoryScreen(Story::intro), true);
+  ScreenManager::instance()->replace_screen(
+		new StoryScreen(WorldMapNS::WorldMapManager::instance()->get_worldmap()->get_intro_story()), true);
 }
 
 WorldMapManagerCloseButton::WorldMapManagerCloseButton()

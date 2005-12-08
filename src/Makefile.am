@@ -234,8 +234,6 @@ stat_manager.cxx \
 stat_manager.hxx \
 state_sprite.cxx \
 state_sprite.hxx \
-story.cxx \
-story.hxx \
 story_screen.cxx \
 story_screen.hxx \
 string_format.cxx \

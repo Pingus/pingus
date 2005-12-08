@@ -48,7 +48,9 @@ sprite_drawable.hxx \
 surface_drawable.cxx \
 surface_drawable.hxx \
 worldmap.cxx \
-worldmap.hxx
+worldmap.hxx \
+worldmap_story.cxx \
+worlmap_story.hxx
 
 #node.cxx
 #node.hxx

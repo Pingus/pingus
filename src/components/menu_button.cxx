@@ -31,9 +31,12 @@
 #include "../story_screen.hxx"
 #include "../gettext.h"
 #include "../stat_manager.hxx"
-#include "../story.hxx"
 
 #include "menu_button.hxx"
+
+#if _MSC_VER > 1000
+#pragma warning( once : 4244 )
+#endif
 
 namespace Pingus {
 

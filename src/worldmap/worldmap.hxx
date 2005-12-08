@@ -39,6 +39,7 @@ namespace WorldMapNS {
 typedef int EdgeId;
 typedef int NodeId;
 
+class WorldMapStory;
 class PathGraph;
 class Drawable;
 class Pingus;
@@ -55,6 +56,9 @@ private:
 
   /** name of the file to parse */
   std::string filename;
+
+	WorldMapStory *intro_story;
+	WorldMapStory *end_story;
 
   typedef std::vector<Drawable*>   ObjectLst;
   typedef std::vector<Drawable*> DrawableLst;
@@ -91,6 +95,8 @@ public:
   ~WorldMap();
 
   Pingus* get_pingus() { return pingus; }
+	WorldMapStory* get_intro_story() const { return intro_story; }
+	WorldMapStory* get_end_story() const { return end_story; }
 
   void on_startup();
 
@@ -114,13 +120,8 @@ public:
   void on_primary_button_press(int x, int y);
   void on_secondary_button_press(int x, int y);
   void on_pointer_move(int x, int y);
-private:
-#if 0
-  /** @return the node at the given position. x and y are in
-      world-COs, not screen. */
-  NodeId get_node (int x, int y);
-#endif
 
+private:
   /** Parses a WorldMap XML file */
   void parse_file(FileReader reader);
 
