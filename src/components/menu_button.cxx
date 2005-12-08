@@ -34,10 +34,6 @@
 
 #include "menu_button.hxx"
 
-#if _MSC_VER > 1000
-#pragma warning( once : 4244 )
-#endif
-
 namespace Pingus {
 
 MenuButton::MenuButton(const CL_Point& pos_, const CL_Sprite& sprite_, 
@@ -88,39 +84,39 @@ MenuButton::draw (DrawingContext& gc)
 {
   if (mouse_over && !pressed)
     {
-      gc.print_center(font, CL_Display::get_width() / 2,
-                      CL_Display::get_height() - font.get_height(),
+      gc.print_center(font, (float)CL_Display::get_width() / 2,
+                      (float)(CL_Display::get_height() - font.get_height()),
                       desc.c_str());
 
-      gc.draw(surface_p, Vector(x_pos - surface_p.get_width()/2,
-                                y_pos - surface_p.get_height()/2));
+      gc.draw(surface_p, Vector((float)(x_pos - surface_p.get_width()/2),
+                                (float)(y_pos - surface_p.get_height()/2)));
 
-      gc.print_center(font_large, x_pos + 32,
-                      y_pos - 32 - font_large.get_height()/2,
+      gc.print_center(font_large, (float)x_pos + 32,
+                      (float)(y_pos - 32 - font_large.get_height()/2),
                       text);
     }
   else if (mouse_over && pressed)
     {
       float shrink = 0.9f;
 
-      gc.print_center(font, CL_Display::get_width() / 2,
-                      CL_Display::get_height() - 20,
+      gc.print_center(font, (float)CL_Display::get_width() / 2,
+                      (float)CL_Display::get_height() - 20,
                       desc.c_str());
 
       gc.draw(surface_p,
-              Vector(x_pos - surface_p.get_width()/2 * shrink,
-                     y_pos - surface_p.get_height()/2 * shrink));
+              Vector((float)(x_pos - surface_p.get_width()/2 * shrink),
+                     (float)(y_pos - surface_p.get_height()/2 * shrink)));
 
       gc.print_center(font_large,
-                      x_pos + 32,
-                      y_pos - 32 - font_large.get_height()/2,
+                      (float)x_pos + 32,
+                      (float)(y_pos - 32 - font_large.get_height()/2),
                       text);
     }
   else
     {
       gc.draw(surface_p,
-              Vector(x_pos - surface_p.get_width()/2,
-                     y_pos - surface_p.get_height()/2));
+              Vector((float)(x_pos - surface_p.get_width()/2),
+                     (float)(y_pos - surface_p.get_height()/2)));
     }
   UNUSED_ARG(gc);
 }

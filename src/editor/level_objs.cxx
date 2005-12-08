@@ -118,7 +118,7 @@ LevelObj::refresh_sprite()
 		w = 800;
 		h = 600;
 
-		sur = Blitter::scale_surface_to_canvas(sprite.get_frame_surface(0), w, h);
+		sur = Blitter::scale_surface_to_canvas(sprite.get_frame_surface(0), (int)w, (int)h);
 		sprite_desc = CL_SpriteDescription();
 		sprite_desc.add_frame(sur.get_pixeldata());
 		sprite = CL_Sprite(sprite_desc);
