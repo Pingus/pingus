@@ -34,6 +34,7 @@ namespace Pingus {
 
 namespace Editor {
 
+	class LevelObj;
 	class EditorScreen;
 
 /** This class is where the actual level graphics will display in the
@@ -90,6 +91,9 @@ private:
 
 	/** Where the mouse is right now - used for autoscrolling */
 	Vector mouse_at;
+
+	/** Returns the topmost object at this x, y location */
+	LevelObj* object_at(int x, int y);
 };
 
 } // Editor namespace

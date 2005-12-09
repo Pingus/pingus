@@ -78,6 +78,26 @@ LevelObj::draw(DrawingContext &gc)
 	}
 }
 
+bool
+LevelObj::is_at(int x, int y)
+{
+	if (attribs & HAS_SURFACE)
+		return (x > pos.x && x < pos.x + sprite.get_width()
+			&& y > pos.y && y < pos.y + sprite.get_height());
+	else
+		return false;
+}
+
+void 
+LevelObj::on_primary_button_click (int x, int y)
+{
+	UNUSED_ARG(x);
+	UNUSED_ARG(y);
+	pos.x += 10;
+	// FIXME: Remove debugging stuff.
+	std::cout << "New pos.x: " << pos.x << ", y: " << pos.y << std::endl;
+}
+
 void
 LevelObj::set_stretch_x(const bool s)
 { 

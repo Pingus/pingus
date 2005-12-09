@@ -58,6 +58,11 @@ EditorViewport::on_secondary_button_click(int x, int y)
 	// FIXME: Hardcoded 15 & 25 should probably be dynamic
 	std::cout << "Right-click at " << x - 15 - (state.get_width()/2 - state.get_pos().x) << ", " 
 		<< y - 25 - (state.get_height()/2 - state.get_pos().y) << std::endl;
+	
+	LevelObj* obj = object_at(x - 15 - (state.get_width()/2 - (int)state.get_pos().x),
+		y - 25 - (state.get_height()/2 - (int)state.get_pos().y));
+	if (obj)
+		obj->on_primary_button_click(x, y);
 }
 
 // Draws all of the objects in the viewport and the background (if any)
@@ -118,6 +123,22 @@ EditorViewport::update(float delta)
 		}
 	}
 }
+
+LevelObj*
+EditorViewport::object_at (int x, int y)
+{
+	// we travel reversly through the object list, so that we get the
+	// top-most object
+	std::vector<LevelObj*> levelobjs = editor->get_level()->get_objects();
+	for (std::vector<LevelObj*>::reverse_iterator i = levelobjs.rbegin ();
+		i != levelobjs.rend (); ++i)
+	{
+		if ((*i)->is_at (x, y))
+			return *i;
+	}
+	return 0;
+}
+
 } // Editor namespace
 } // Pingus namespace
 

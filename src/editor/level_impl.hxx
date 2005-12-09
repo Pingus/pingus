@@ -23,16 +23,20 @@
 #include <ClanLib/Core/System/sharedptr.h>
 #include <ClanLib/Core/Math/size.h>
 #include <ClanLib/Display/color.h>
+#include <map>
 #include <string>
 #include <vector>
-#include <map>
+#include <algorithm>
 #include "level_objs.hxx"
 
 namespace Pingus {
 
 namespace Editor {
 
-	class LevelObj;
+	static bool LevelObjSort(LevelObj *a, LevelObj *b)
+	{
+		return (a->get_pos().z < b->get_pos().z);
+	}
 
 class LevelImpl
 {
@@ -74,6 +78,12 @@ public:
   std::string music;
 
   std::vector<LevelObj*> objects;
+
+	/** Sort the objects by their z position */
+	void sort_objs()
+	{
+		std::stable_sort(objects.begin(), objects.end(), LevelObjSort);
+	}
 
 private:
 	LevelImpl (const LevelImpl&);

@@ -69,7 +69,7 @@ namespace Editor {
 
 /** Generic Level Object (groundpiece, sign, etc.)  Only special objects will have
 		to inherit from this class - most objects will be able to use this class alone */
-class LevelObj
+	class LevelObj
 {
 protected:
 	/** Sprite used to draw this object */
@@ -161,6 +161,9 @@ public:
 	/** Retrieve the object's speed */
 	int get_speed() const { return speed; }
 
+	/** Retrieve the object's release rate (entrances) */
+	int get_release_rate() const { return release_rate; }
+
 	/** Retrive the object's parallax (is this even used???) */
 	float get_parallax() const { return parallax; }
 
@@ -219,6 +222,9 @@ public:
 	/** Set the object's speed */
 	void set_speed(const int s) { speed = s; }
 
+	/** Set the objects release rate */
+	void set_release_rate(const int r) { release_rate = r; }
+
 	/** Set the object's parallax */
 	void set_parallax(const float para) { parallax = para; }
 
@@ -262,6 +268,13 @@ public:
 
 	/** Draws the sprite with the modifier applied */
 	virtual void draw(DrawingContext &gc);
+
+	/** Returns true if the mouse is hovering over this object */
+  virtual bool is_at (int x, int y);
+
+	/** Action taken when the primary mouse button is clicked */
+	virtual void on_primary_button_click (int x, int y);
+
 
 	/** Default Constructor */
 	LevelObj(const std::string obj_name);

@@ -43,7 +43,8 @@ XMLLevel::XMLLevel() :
 // Default Destructor
 XMLLevel::~XMLLevel()
 {
-	delete impl;
+	if (impl)
+		delete impl;
 }
 
 /** Verify that level is valid:
@@ -61,7 +62,10 @@ XMLLevel::~XMLLevel()
 bool XMLLevel::is_valid()
 {
 	std::cout << "XMLLevel::is_valid() - Not yet implemented" << std::endl;
-	return true;
+	if (impl)
+		return true;
+	else
+		return false;
 }
 
 // Save the level to a file.  Returns true if successful
@@ -122,6 +126,10 @@ bool XMLLevel::save_level(const std::string& filename)
 // Load an existing level from a file
 void XMLLevel::load_level(const std::string& filename)
 {
+	if (impl)
+		delete impl;
+	impl = new LevelImpl();
+
 	// Load the level from the file - we don't care what it's res_name is.
 	XMLPingusLevel existing_level("", filename);
 	
@@ -158,13 +166,13 @@ void XMLLevel::load_level(const std::string& filename)
 
 		// All objects have a position - get that.
 		i->read_vector("position", p);
+		obj->set_pos(p);
 
 		// Get optional attributes based on the attribs value
 		if (attribs & HAS_SURFACE)
 		{
 			i->read_desc("surface", desc);
 			obj->set_res_desc(desc);
-			obj->set_pos(p);
 		}
 		if (attribs & HAS_TYPE)
 		{	
@@ -224,9 +232,17 @@ void XMLLevel::load_level(const std::string& filename)
 			i->read_float("para-y", tmp_float);
 			obj->set_para_y(tmp_float);
 		}
+		if (attribs & HAS_RELEASE_RATE)
+		{
+			i->read_int("release-rate", tmp_int);
+			obj->set_release_rate(tmp_int);
+		}
 
 		impl->objects.push_back((LevelObj*)obj);
 	}
+
+	// Sort by Z coordinate
+	impl->sort_objs();
 }
 
 }	// Editor namespace
