@@ -17,7 +17,8 @@
 
 pkgdatadir = $(datadir)/games/@PACKAGE@/sounds
 EXTRA_DIST = chink.wav   goodidea.wav  plop.wav   splash.wav  ting.wav \
-             digger.wav  ohno.wav	  plop2.wav  tick.wav	 yipee.wav
+             digger.wav  ohno.wav	  plop2.wav  tick.wav	 yipee.wav \
+             letsgo.wav
 pkgdata_DATA = $(EXTRA_DIST)
 
 # EOF #

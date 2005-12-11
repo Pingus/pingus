@@ -20,7 +20,16 @@ EXTRA_DIST = gd-giirm.s3m   pingus-5.it  rough_journey.it \
 gd-ite.it	    pingus-1.it  pingus-6.it  success_1.it \
 README	     gd-matth.it    pingus-2.it  pingus-7.it  success_2.it \
 gd-myla.it     pingus-3.it  pingus-8.it  the_big_march_in_space.it \
-gd-cancn.it  goin_march.it  pingus-4.it  pingus-9.it
+gd-cancn.it  goin_march.it  pingus-4.it  pingus-9.it \
+404light.ogg \
+orchfunk.ogg \
+hotloop.ogg \
+walkhappy.ogg \
+slowmood.ogg \
+loosetech.ogg \
+happydance.ogg \
+happyfree.ogg
+
 pkgdata_DATA = $(EXTRA_DIST)
 
 # EOF #

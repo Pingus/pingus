@@ -23,6 +23,8 @@ pkgdatadir = $(datadir)/games/@PACKAGE@/levels
 nobase_pkgdata_DATA = \
 	$(wildcard tutorial/*.pingus) \
         $(wildcard playable/*.pingus) \
+        $(wildcard volcano/*.pingus) \
+        $(wildcard multiplayer/*.pingus) \
         $(wildcard wip/*.pingus)      \
         $(wildcard test/*.pingus)
 

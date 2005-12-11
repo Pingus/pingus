@@ -17,6 +17,7 @@
 
 pkgdatadir = $(datadir)/games/@PACKAGE@/demos
 
-pkgdata_DATA = level1.pde
+pkgdata_DATA = level1.pde \
+Dentist-20021013-172617.xml
 
 EXTRA_DIST = $(pkgdata_DATA)

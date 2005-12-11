@@ -26,6 +26,7 @@ pingus-common.xml     \
 particles.xml \
 alias.xml     \
 fonts.xml     \
+editor.xml    \
 entrances.xml \
 traps.xml     \
 game.xml      \

@@ -63,12 +63,14 @@ core/editor/zoom-in.png \
 core/editor/zoom-out.png \
 core/menu/create_on.png \
 core/menu/credits_on.png \
+core/menu/default_level.jpg \
 core/menu/down_arrow.png \
 core/menu/exit_button_hover.png \
 core/menu/exit_button_normal.png \
 core/menu/exit_button_pressed.png \
 core/menu/exit_menu.png \
 core/menu/exit_on.png \
+core/menu/filedialog.png \
 core/menu/folder.png \
 core/menu/layer1.png \
 core/menu/layer2.png \
@@ -161,10 +163,16 @@ exits/stone.png \
 exits/sweetexit.png \
 fonts/chalk_large.png \
 fonts/chalk_large-iso-8859-1.png \
+fonts/chalk_large-iso-8859-2.png \
+fonts/chalk_large-iso-8859-9.png \
 fonts/chalk_normal.png \
 fonts/chalk_normal-iso-8859-1.png \
+fonts/chalk_normal-iso-8859-2.png \
+fonts/chalk_normal-iso-8859-9.png \
 fonts/chalk_small.png \
 fonts/chalk_small-iso-8859-1.png \
+fonts/chalk_small-iso-8859-2.png \
+fonts/chalk_small-iso-8859-9.png \
 fonts/courier_small2.png \
 fonts/number_fnt.png \
 fonts/pingus2.png \
@@ -595,11 +603,24 @@ gui/checkbox_checked_disabled.png \
 gui/checkbox_unchecked.png \
 gui/checkbox_unchecked_disabled.png \
 gui/font_black.png \
+gui/font_black.tga \
 gui/font_gray.png \
+gui/font_gray.tga \
+gui/font_white.tga \
 gui/radiobutton_checked.png \
 gui/radiobutton_checked_disabled.png \
 gui/radiobutton_unchecked.png \
 gui/radiobutton_unchecked_disabled.png \
+gui/radiobutton/checked_disabled.tga \
+gui/radiobutton/checked.tga \
+gui/radiobutton/unchecked_disabled.tga \
+gui/radiobutton/unchecked.tga \
+gui/checkbox/checked_disabled.tga \
+gui/checkbox/checked.tga \
+gui/checkbox/unchecked_disabled.tga \
+gui/checkbox/unchecked.tga \
+gui/fonts/font_black.tga \
+gui/fonts/font_gray.tga \
 hotspots/desert/bigdimwall.png \
 hotspots/desert/mediumdimwall.png \
 hotspots/desert/mediumegyptpic.png \
@@ -857,8 +878,7 @@ worldobjs/switchdoor_tile.png \
 worldobjs/switchdoor_tile_cmap.png \
 worldobjs/teleporter.png \
 worldobjs/teleporter2.png \
-worldobjs/teleportertarget.png \
-gui/font_black.tga gui/font_white.tga gui/font_gray.tga
+worldobjs/teleportertarget.png
 
 EXTRA_DIST = $(nobase_pkgdata_DATA)
 
