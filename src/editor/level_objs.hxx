@@ -67,6 +67,8 @@ namespace Editor {
 		return val;
 	}
 
+	class LevelImpl;
+
 /** Generic Level Object (groundpiece, sign, etc.)  Only special objects will have
 		to inherit from this class - most objects will be able to use this class alone */
 	class LevelObj
@@ -74,6 +76,9 @@ namespace Editor {
 protected:
 	/** Sprite used to draw this object */
 	CL_Sprite sprite;
+
+	/** Level to which this object belongs */
+	LevelImpl* level;
 
 	/** Resource Desciptor of this object */
   ResDescriptor desc;
@@ -277,7 +282,7 @@ public:
 
 
 	/** Default Constructor */
-	LevelObj(const std::string obj_name);
+	LevelObj(const std::string obj_name, LevelImpl* level_);
 
 	/** Destructor */
 	virtual ~LevelObj() { }

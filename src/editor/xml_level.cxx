@@ -161,7 +161,7 @@ void XMLLevel::load_level(const std::string& filename)
 	for (std::vector<FileReader>::const_iterator i = objs.begin(); i != objs.end(); i++)
 	{
 		// Create new object
-		LevelObj* obj = new LevelObj(i->get_name());
+		LevelObj* obj = new LevelObj(i->get_name(), impl);
 		attribs = obj->get_attribs();
 
 		// All objects have a position - get that.

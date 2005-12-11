@@ -20,6 +20,7 @@
 #include <string>
 #include <iostream>
 #include "level_objs.hxx"
+#include "level_impl.hxx"
 #include "../blitter.hxx"
 #include "../resource.hxx"
 #include "../res_descriptor.hxx"
@@ -31,7 +32,8 @@ namespace Pingus {
 namespace Editor {
 
 // Default constructor
-LevelObj::LevelObj(std::string obj_name) :
+LevelObj::LevelObj(std::string obj_name, LevelImpl* level_) :
+	level(level_),	
 	section_name(obj_name),
 	speed(0),
 	parallax(0.0),
@@ -70,8 +72,11 @@ LevelObj::draw(DrawingContext &gc)
 		}
 		else if(attribs & HAS_STRETCH)
 		{
-			// Surface Background - tile it
-			gc.draw(sprite, pos);
+			// Surface Background - tile it or stretch
+			// FIXME: Make stretch code happen.
+			for (int x = 0; x < level->size.width; x += sprite.get_width())
+				for (int y = 0; y < level->size.height; y += sprite.get_height())
+					gc.draw(sprite, Vector((float)x, (float)y));
 		}
 		else
 			gc.draw(sprite, pos);
