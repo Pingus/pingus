@@ -128,23 +128,18 @@ void
 LevelObj::refresh_sprite()
 {
 	// Apply modifier, then change the sprite loaded for this object in memory.
-	CL_SpriteDescription sprite_desc;
-	sprite_desc = Resource::load_sprite_desc(desc.res_name);
-	CL_Sprite spr = CL_Sprite(sprite_desc);
-	sprite_desc = CL_SpriteDescription();
-	CL_Surface sur = Resource::apply_modifier(spr.get_frame_surface(0), desc);
-	sprite_desc.add_frame(sur.get_pixeldata());
-	sprite = CL_Sprite(sprite_desc);
+	sprite = Resource::load_sprite(desc);
 
-	if (stretch_x || stretch_y)
+	if (0)
+	//if (stretch_x || stretch_y)
 	{
 		float w, h;
 		// FIXME: Temporary hack
 		w = 800;
 		h = 600;
 
-		sur = Blitter::scale_surface_to_canvas(sprite.get_frame_surface(0), (int)w, (int)h);
-		sprite_desc = CL_SpriteDescription();
+		CL_Surface sur = Blitter::scale_surface_to_canvas(sprite.get_frame_surface(0), (int)w, (int)h);
+		CL_SpriteDescription sprite_desc;
 		sprite_desc.add_frame(sur.get_pixeldata());
 		sprite = CL_Sprite(sprite_desc);
 	}
