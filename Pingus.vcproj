@@ -1676,9 +1676,21 @@
 				Filter="">
 				<File
 					RelativePath=".\src\caimagemanipulation\caimagemanipulation.cpp">
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCLCompilerTool"/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\src\caimagemanipulation\caimagemanipulation.h">
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="TRUE">
+						<Tool
+							Name="VCCustomBuildTool"/>
+					</FileConfiguration>
 				</File>
 			</Filter>
 			<Filter

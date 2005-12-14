@@ -120,11 +120,18 @@ signal_handler(int signo)
   throw "crash";
 }
 
-PingusMain::PingusMain()
+PingusMain::PingusMain() :
+  show_credits(false),
+  blitter_test(false),
+  refresh_rate(60)
 {
-  show_credits = false;
-  blitter_test = false;
-  refresh_rate = 60;
+#ifdef WIN32
+	// The clanSDL target is a little buggy on Windows - Use OpenGL by default
+	use_opengl = true;
+#else
+	// Use the clanSDL target by default otherwise.
+	use_opengl = false;
+#endif
 }
 
 PingusMain::~PingusMain()
@@ -197,6 +204,8 @@ PingusMain::check_args(int argc, char** argv)
                   _("Disable intro"));
   argp.add_option('G', "use-opengl", "",
                   _("Use OpenGL"));
+	argp.add_option('S', "use-sdl", "",
+                  _("Use SDL"));
   argp.add_option('w', "window", "",
                   _("Start in Window Mode"));
   argp.add_option('f', "fullscreen", "",
@@ -300,6 +309,10 @@ PingusMain::check_args(int argc, char** argv)
           use_opengl = true;
           break;
 
+				case 'S':
+					use_opengl = false;
+					break;
+
         case 's': // -s, --disable-sound
           sound_enabled = false;
           break;
@@ -319,15 +332,11 @@ PingusMain::check_args(int argc, char** argv)
               }
           }
           break;
-        case 'S':
-          std::cout << "not impl. XALA" << std::endl;
-          //pingus_soundfile = argp.get_argument();
-          //if (verbose)
-          //std::cout << "check_args: Sound File = " << pingus_soundfile << std::endl;
-          break;
+
         case 'm': // -m, --disable-music
           music_enabled = false;
           break;
+
         case 'd': // -d, --datadir
           path_manager.add_path(argp.get_argument());
             
@@ -335,6 +344,7 @@ PingusMain::check_args(int argc, char** argv)
             std::cout << "check_args: Pingus Data Dir = "
                       << argp.get_argument() << std::endl;
           break;
+
         case 'V':
           std::cout << "Pingus Version " << VERSION
 #ifndef OFFICIAL_PINGUS_BUILD
@@ -654,7 +664,8 @@ PingusMain::print_greeting_message()
             << (fullscreen_enabled ? _(" enabled") : _("disabled"))
             << std::endl;
   std::cout << _("refresh rate:            ") << refresh_rate << std::endl;
-  
+	std::cout << _("using OpenGL:            ") << use_opengl << std::endl;
+
   std::cout << std::endl;
 }
 
@@ -847,7 +858,7 @@ PingusMain::init_clanlib()
   else
     {
       CL_SetupCore::init ();
-  
+
       if (use_opengl) CL_SetupGL::init();
       else            CL_SetupSDL::init();
 
