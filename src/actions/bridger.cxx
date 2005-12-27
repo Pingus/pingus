@@ -74,13 +74,13 @@ Bridger::draw (SceneContext& gc)
   switch (mode)
     {
     case B_BUILDING:
-      gc.color().draw(build_sprite[pingu->direction], Vector(pingu->get_x () - (x_offset * pingu->direction),
-                                                     pingu->get_y () + y_offset));
+      gc.color().draw(build_sprite[pingu->direction], Vector(pingu->get_pos().x - (x_offset * pingu->direction),
+                                                     pingu->get_pos().y + y_offset));
       break;
 
     case B_WALKING:
-      gc.color().draw(walk_sprite[pingu->direction], Vector(pingu->get_x () - (x_offset * pingu->direction),
-                                                    pingu->get_y () + y_offset));
+      gc.color().draw(walk_sprite[pingu->direction], Vector(pingu->get_pos().x - (x_offset * pingu->direction),
+                                                    pingu->get_pos().y + y_offset));
       break;
     }
 }
@@ -223,30 +223,30 @@ Bridger::place_a_brick()
   if (pingu->direction.is_right())
     {
       WorldObj::get_world()->get_colmap()->put(brick_r,
-					       static_cast<int>(pingu->get_x() + 10 - brick_r.get_width()),
-					       static_cast<int>(pingu->get_y()),
+					       static_cast<int>(pingu->get_pos().x + 10 - brick_r.get_width()),
+					       static_cast<int>(pingu->get_pos().y),
 					       Groundtype::GP_BRIDGE);
       WorldObj::get_world()->get_gfx_map()->put(brick_r,
-						static_cast<int>(pingu->get_x() + 10 - brick_r.get_width()),
-						static_cast<int>(pingu->get_y()));
+						static_cast<int>(pingu->get_pos().x + 10 - brick_r.get_width()),
+						static_cast<int>(pingu->get_pos().y));
     }
   else
     {
       WorldObj::get_world()->get_colmap()->put(brick_r,
-					       static_cast<int>(pingu->get_x() - 10),
-					       static_cast<int>(pingu->get_y()),
+					       static_cast<int>(pingu->get_pos().x - 10),
+					       static_cast<int>(pingu->get_pos().y),
 					       Groundtype::GP_BRIDGE);
       WorldObj::get_world()->get_gfx_map()->put(brick_l,
-						static_cast<int>(pingu->get_x() - 10),
-						static_cast<int>(pingu->get_y()));
+						static_cast<int>(pingu->get_pos().x - 10),
+						static_cast<int>(pingu->get_pos().y));
     }
 }
 
 void
 Bridger::walk_one_step_up()
 {
-  pingu->set_pos(pingu->get_x() + 4.0 * pingu->direction, pingu->get_y() - 2);
-  counter = 0;
+  pingu->set_pos(pingu->get_pos().x + (float)(4 * pingu->direction), 
+		pingu->get_pos().y - 2);
 }
 
 std::string

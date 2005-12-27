@@ -21,7 +21,6 @@
 #define HEADER_PINGUS_ACTIONS_BRIDGER_HXX
 
 #include "../vector.hxx"
-#include "../game_counter.hxx"
 #include "../pingu_action.hxx"
 #include "../state_sprite.hxx"
 
@@ -40,8 +39,6 @@ private:
   StateSprite build_sprite;
   CL_PixelBuffer brick_l;
   CL_PixelBuffer brick_r;
-
-  GameCounter counter;
 
   int bricks;
   //int step;
