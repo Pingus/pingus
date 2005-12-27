@@ -100,7 +100,9 @@ LevelObj::on_primary_button_click (int x, int y)
 	UNUSED_ARG(y);
 	pos.x += 10;
 	// FIXME: Remove debugging stuff.
-	std::cout << "New pos.x: " << pos.x << ", y: " << pos.y << std::endl;
+	std::cout << "New pos.x: " << pos.x << ", y: " << pos.y 
+		<< ", end spot: x: " << pos.x + sprite.get_width() << ", y: "
+		<< pos.y + sprite.get_height() << std::endl;
 }
 
 void

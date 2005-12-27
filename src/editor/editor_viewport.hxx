@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_EDITOR_VIEWPORT_HXX
 #define HEADER_PINGUS_EDITOR_VIEWPORT_HXX
 
-#include <ClanLib/Display/sprite.h>
 #include "../gui/component.hxx"
 #include "../graphic_context_state.hxx"
 #include <vector>
@@ -82,9 +81,6 @@ private:
 
 	/** Collection of objects inside the viewport (groundpieces, traps, etc.) */
 	std::vector<std::string> objs;
-
-	/** Background image - if null, will display dark gray background */
-	CL_Surface* bg_surface;
 
 	/** Whether or not Autoscrolling is turned on */
 	bool autoscroll;

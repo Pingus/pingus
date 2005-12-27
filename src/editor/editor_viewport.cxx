@@ -37,7 +37,6 @@ EditorViewport::EditorViewport(EditorScreen* e) :
 	state(CL_Display::get_width(), CL_Display::get_height()),
 	scene_context(new SceneContext()),
 	editor(e),
-	bg_surface(0),
 	autoscroll(true)
 {
 	// FIXME: Hardcoded values should be determined by level size
@@ -48,19 +47,17 @@ EditorViewport::EditorViewport(EditorScreen* e) :
 // Destructor
 EditorViewport::~EditorViewport ()
 {
-	if (bg_surface) delete bg_surface;
 }
 
 // When someone right-clicks inside the viewport
 void
 EditorViewport::on_secondary_button_click(int x, int y)
 {
-	// FIXME: Hardcoded 15 & 25 should probably be dynamic
-	std::cout << "Right-click at " << x - 15 - (state.get_width()/2 - state.get_pos().x) << ", " 
-		<< y - 25 - (state.get_height()/2 - state.get_pos().y) << std::endl;
+	std::cout << "Right-click at " << x - (state.get_width()/2 - state.get_pos().x) << ", " 
+		<< y - (state.get_height()/2 - state.get_pos().y) << std::endl;
 	
-	LevelObj* obj = object_at(x - 15 - (state.get_width()/2 - (int)state.get_pos().x),
-		y - 25 - (state.get_height()/2 - (int)state.get_pos().y));
+	LevelObj* obj = object_at(x - (state.get_width()/2 - (int)state.get_pos().x),
+		y - (state.get_height()/2 - (int)state.get_pos().y));
 	if (obj)
 		obj->on_primary_button_click(x, y);
 }
@@ -74,11 +71,6 @@ EditorViewport::draw(DrawingContext &gc)
 	
 	// Now, draw all of the objects
 
-	// FIXME: Should draw the background(s) over the whole viewport (stretched or tiled)
-	if (bg_surface)
-		scene_context->color().draw(*bg_surface, Vector());
-
-	// FIXME: This is obviously not correct, but it's just a proof of concept now.
 	// Draw the level objects
 	std::vector<LevelObj*> objs = editor->get_level()->get_objects();
 	for (unsigned i = 0; i < objs.size(); i++)
