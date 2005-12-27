@@ -52,9 +52,6 @@ public:
 	/** Returns the list of objects inside the viewport */
 	std::vector<std::string> get_objects() { return objs; }
 
-	/** When someone right-clicks inside the viewport */
-	void on_secondary_button_click(int x, int y);
-
 	/** Draws all of the objects in the viewport */
 	void draw(DrawingContext &gc);
 
@@ -88,8 +85,19 @@ private:
 	/** Where the mouse is right now - used for autoscrolling */
 	Vector mouse_at;
 
+	/** The currently selected LevelObj */
+	LevelObj* current_obj;
+
 	/** Returns the topmost object at this x, y location */
 	LevelObj* object_at(int x, int y);
+
+	/** Whether or not the "snap-to-grid" functionality is on. */
+	bool snap_to;
+
+	/// Mouse actions
+	void on_primary_button_press(int x, int y);
+	void on_primary_button_release(int x, int y);
+	void on_secondary_button_click(int x, int y);
 };
 
 } // Editor namespace

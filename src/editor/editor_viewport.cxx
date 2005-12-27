@@ -37,6 +37,8 @@ EditorViewport::EditorViewport(EditorScreen* e) :
 	state(CL_Display::get_width(), CL_Display::get_height()),
 	scene_context(new SceneContext()),
 	editor(e),
+	current_obj(0),
+	snap_to(true),
 	autoscroll(true)
 {
 	// FIXME: Hardcoded values should be determined by level size
@@ -60,6 +62,25 @@ EditorViewport::on_secondary_button_click(int x, int y)
 		y - (state.get_height()/2 - (int)state.get_pos().y));
 	if (obj)
 		obj->on_primary_button_click(x, y);
+}
+
+// Select a LevelObj
+void 
+EditorViewport::on_primary_button_press(int x, int y)
+{
+	LevelObj* obj = object_at(x - (state.get_width()/2 - (int)state.get_pos().x),
+		y - (state.get_height()/2 - (int)state.get_pos().y));
+	if (obj)
+		current_obj = obj;
+}
+
+
+// Release the LevelObj
+void 
+EditorViewport::on_primary_button_release(int x, int y)
+{
+	if (current_obj)
+		current_obj = 0;
 }
 
 // Draws all of the objects in the viewport and the background (if any)
@@ -93,6 +114,20 @@ void
 EditorViewport::on_pointer_move(int x, int y)
 {
 	mouse_at = Vector(float(x), float(y));
+	if (current_obj)
+	{
+		Vector new_pos;
+		new_pos.x = (float)(x - (state.get_width()/2 - state.get_pos().x));
+		new_pos.y = (float)(y - (state.get_height()/2 - state.get_pos().y));
+		new_pos.z = current_obj->get_pos().z;
+		if (snap_to)
+		{
+			// FIXME: May need to adjust the snap-to offset here.
+			new_pos.x = (float)((int)(new_pos.x / 10) * 10);
+			new_pos.y = (float)((int)(new_pos.y / 10) * 10);
+		}
+		current_obj->set_pos(new_pos);
+	}
 }
 
 void
