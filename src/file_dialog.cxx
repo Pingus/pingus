@@ -403,7 +403,6 @@ namespace Pingus {
 				listener->load(current_path + current_file.name, file_mask);
 			else
 				listener->save(current_path + current_file.name, file_mask);
-			manager->pop_menu();
 		}
 	}
 

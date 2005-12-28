@@ -251,6 +251,7 @@ PingusMenu::load(const std::string &file, const std::string &filemask)
 	// Worldmap
 	else if (filemask == ".xml")
 		do_start(file);
+	manager->pop_menu();
 }
 		
 void
