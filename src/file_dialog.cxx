@@ -37,19 +37,17 @@ namespace Pingus {
 	class FileDialogOkButton : public GUI::SurfaceButton
 	{
 	private:
-		PingusMenuManager* manager;
 		FileDialog* file_dialog;
 		std::string label;
 		bool is_hidden;
 
 	public:
-		FileDialogOkButton (PingusMenuManager* m, FileDialog *f, std::string l)
+		FileDialogOkButton (FileDialog *f, std::string l)
 			: GUI::SurfaceButton(CL_Display::get_width()/2 + 170,
 			CL_Display::get_height()/2 + 160,
 			ResDescriptor("core/menu/exit_button_normal"),
 			ResDescriptor("core/menu/exit_button_pressed"),
 			ResDescriptor("core/menu/exit_button_hover")),
-			manager (m),
 			file_dialog(f),
 			label (l), 
 			is_hidden(true)
@@ -91,16 +89,16 @@ namespace Pingus {
 	class FileDialogCancelButton : public GUI::SurfaceButton
 	{
 	private:
-		PingusMenuManager* manager;
+		FileDialog* file_dialog;
 
 	public:
-		FileDialogCancelButton (PingusMenuManager* m)
+		FileDialogCancelButton (FileDialog* f)
 			: GUI::SurfaceButton(CL_Display::get_width()/2 - 250,
 			CL_Display::get_height()/2 + 160,
 			ResDescriptor("core/menu/exit_button_normal"),
 			ResDescriptor("core/menu/exit_button_pressed"),
 			ResDescriptor("core/menu/exit_button_hover")),
-			manager (m)
+			file_dialog (f)
 		{
 		}
 
@@ -113,7 +111,7 @@ namespace Pingus {
 		void on_click()
 		{
 			Sound::PingusSound::play_sound ("yipee");
-			manager->pop_menu();
+			file_dialog->cancel_pressed();
 		}
 
 		void on_pointer_enter()
@@ -218,18 +216,17 @@ namespace Pingus {
 	};
 
 	FileDialog::FileDialog (FileDialogListener* listener_, 
-		PingusMenuManager* manager_, 
 		const std::string filemask_, 
 		const std::string searchpath_, 
 		bool for_load)
-		: PingusSubMenu (manager_),
+		: PingusSubMenu (PingusMenuManager::instance()),
 									listener(listener_),
                   for_loading(for_load),
                   file_mask(filemask_),
                   current_path(searchpath_)
 	{
 		// Initialize the buttons
-		ok_button = new FileDialogOkButton(manager, this,
+		ok_button = new FileDialogOkButton(this,
 			for_loading ? _("Load") : _("Save"));
 
 		up_button = new FileDialogScrollButton(this, DIR_UP, -150);
@@ -238,7 +235,7 @@ namespace Pingus {
 		gui_manager->add(ok_button, true);
 		gui_manager->add(up_button, true);
 		gui_manager->add(down_button, true);
-		gui_manager->add(new FileDialogCancelButton(manager), true);
+		gui_manager->add(new FileDialogCancelButton(this), true);
 		gui_manager->add(new FileDialogParentFolderButton(this));		
 
 		// FIXME: Ugly - hardcoded values for items in file dialog.  Should be dynamic.
@@ -408,6 +405,12 @@ namespace Pingus {
 				listener->save(current_path + current_file.name, file_mask);
 			manager->pop_menu();
 		}
+	}
+
+	void
+	FileDialog::cancel_pressed()
+	{
+		listener->cancel();
 	}
 
 } // namespace Pingus

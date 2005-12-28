@@ -49,7 +49,6 @@ public:
   PingusMenu     mainmenu;
   LayerManager background;
   ExitMenu       exitmenu;
-	FileDialog* filedialog;
 
   virtual ~PingusMenuManager();
 
@@ -59,10 +58,6 @@ public:
   /// Exit the menu manager (which means to exit the while() loop in display ())
   void show_exit_menu ();
 	
-	/** Show the file dialog menu.  True to load, false to save */
-	void show_file_dialog(const std::string filemask, 
-		const std::string searchpath, bool for_load = true);
-
   void exit ();
 
   PingusSubMenu * current_menu();

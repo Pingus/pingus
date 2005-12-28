@@ -89,7 +89,6 @@ private:
 
 public:
 	FileDialog (FileDialogListener* listener_, 
-		PingusMenuManager *manager_,
 		const std::string filemask_, 
 		const std::string searchpath_,
 		const bool for_load = true);
@@ -114,6 +113,9 @@ public:
 
 	/** The Ok button has been pressed - either Save or Load this file */
 	void ok_pressed();
+
+	/** The Cancel button has been pressed - close the box */
+	void cancel_pressed();
 
 	/** Need to scroll the list of files if possible */
 	void scroll(int direction);

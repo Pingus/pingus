@@ -104,7 +104,7 @@ void
 PanelButtonLoad::on_primary_button_click(int x, int y)
 {
 	// TODO: Open a file dialog box to load a level.
-	panel->get_screen()->load_level(path_manager.complete("levels/tutorial/miner-tutorial2-grumbel.pingus"));
+	panel->get_screen()->show_file_dialog(true);
 }
 
 // Standard save button
@@ -120,7 +120,7 @@ void
 PanelButtonSave::on_primary_button_click(int x, int y)
 {
 	// TODO: Open a file dialog box to save the level.
-	panel->get_screen()->save_level(path_manager.complete("levels/test.pingus"));
+	panel->get_screen()->save(path_manager.complete("levels/test.pingus"), ".pingus");
 }
 
 } // Editor namespace

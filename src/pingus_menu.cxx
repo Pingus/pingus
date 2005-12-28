@@ -36,12 +36,14 @@
 #include "gui/gui_manager.hxx"
 #include "plf_res_mgr.hxx"
 #include "path_manager.hxx"
+#include "file_dialog.hxx"
 #include "editor/editor_screen.hxx"
 
 namespace Pingus {
 
 PingusMenu::PingusMenu (PingusMenuManager* m)
-  : PingusSubMenu (m)
+  : PingusSubMenu (m),
+	  filedialog(0)
 {
   is_init = false;
     
@@ -119,15 +121,21 @@ PingusMenu::setup_game_menu()
 void
 PingusMenu::setup_contrib_menu()
 {
-	get_manager ()->show_file_dialog (".pingus", 
+	if (filedialog)
+		delete filedialog;
+	filedialog = new FileDialog(this, ".pingus", 
 		path_manager.complete("levels/"), true);
+  manager->push_menu (filedialog);
 }
 
 void
 PingusMenu::setup_worldmap_menu()
 {
-	get_manager ()->show_file_dialog (".xml",
+	if (filedialog)
+		delete filedialog;
+	filedialog = new FileDialog(this, ".xml", 
 		path_manager.complete("worldmaps/"), true);
+  manager->push_menu (filedialog);
 }
 
 void
@@ -150,6 +158,8 @@ PingusMenu::~PingusMenu()
 	delete story_button;
 	delete multiplayer_button;
 	delete editor_button;
+	if (filedialog)
+		delete filedialog;
 }
 
 void
@@ -243,6 +253,11 @@ PingusMenu::load(const std::string &file, const std::string &filemask)
 		do_start(file);
 }
 		
+void
+PingusMenu::cancel()
+{
+	manager->pop_menu();
+}
 
 } // namespace Pingus
 

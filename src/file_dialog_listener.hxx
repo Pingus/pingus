@@ -30,6 +30,7 @@ namespace Pingus {
 		virtual ~FileDialogListener() {}
 		virtual void save(const std::string &file, const std::string &filemask) { }
 		virtual void load(const std::string &file, const std::string &filemask) { }
+		virtual void cancel() { }
 	};	// class FileDialogListener
 
 }	// namespace Pingus

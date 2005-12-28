@@ -21,7 +21,6 @@
 #define HEADER_PINGUS_PINGUS_SUB_MENU_HXX
 
 #include "gui/gui_screen.hxx"
-#include "file_dialog_listener.hxx"
 
 class CL_Key;
 class CL_InputDevice;
@@ -30,7 +29,7 @@ namespace Pingus {
 
 class PingusMenuManager;
 
-class PingusSubMenu : public GUIScreen, public FileDialogListener
+class PingusSubMenu : public GUIScreen
 {
 protected:
   PingusMenuManager* manager;

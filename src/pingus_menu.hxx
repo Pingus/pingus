@@ -22,6 +22,7 @@
 
 #include "fonts.hxx"
 #include "pingus_sub_menu.hxx"
+#include "file_dialog_listener.hxx"
 #include "layer_manager.hxx"
 
 class CL_Key;
@@ -31,6 +32,7 @@ namespace Pingus {
 
 class SurfaceButton;
 class GameDelta;
+class FileDialog;
 
 namespace GUI {
 class GUIManager;
@@ -38,7 +40,7 @@ class GUIManager;
 
 class MenuButton;
 
-class PingusMenu : public PingusSubMenu
+class PingusMenu : public PingusSubMenu, public FileDialogListener
 {
 public:
   bool is_init;
@@ -56,6 +58,7 @@ private:
   MenuButton* story_button;
   MenuButton* multiplayer_button;
 	MenuButton* editor_button;
+	FileDialog* filedialog;
   
   void on_resize (int w, int h);
 
@@ -76,6 +79,9 @@ private:
 
 	/** Use this to load the level or worldmap */
 	virtual void load(const std::string &file, const std::string &filemask);
+
+	/** Cancels the file dialog box */
+	virtual void cancel();
 
 public:
   PingusMenu (PingusMenuManager* m);

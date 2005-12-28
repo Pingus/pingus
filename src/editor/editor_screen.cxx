@@ -27,6 +27,8 @@
 #include "../res_descriptor.hxx"
 #include "../resource.hxx"
 #include "../fonts.hxx"
+#include "../file_dialog.hxx"
+#include "../path_manager.hxx"
 #include "editor_screen.hxx"
 #include "editor_panel.hxx"
 #include "editor_viewport.hxx"
@@ -39,7 +41,9 @@ namespace Editor {
 
 // Default constructor
 EditorScreen::EditorScreen(XMLLevel* level)
-: plf(level)
+: plf(level), 
+	close_dialog(false),
+	filedialog(0)
 {
 	if (!plf) plf = new XMLLevel();
 }
@@ -48,6 +52,8 @@ EditorScreen::EditorScreen(XMLLevel* level)
 EditorScreen::~EditorScreen()
 {
 	delete plf;
+	if (filedialog)
+		delete filedialog;
 }
 
 // Startup code
@@ -79,18 +85,39 @@ EditorScreen::on_escape_press()
   close_screen();
 }
 
+// Show dialog box
+void
+EditorScreen::show_file_dialog(bool for_loading)
+{
+	if (filedialog)
+		delete filedialog;
+	close_dialog = false;
+	filedialog = new FileDialog(this, ".pingus", 
+		path_manager.complete("levels/"), for_loading);
+	filedialog->preload();	
+}
+
+// Close dialog box
+void
+EditorScreen::cancel()
+{
+	close_dialog = true;
+}
+
 // Save the current level
 void 
-EditorScreen::save_level(const std::string levelfile)
+EditorScreen::save(const std::string &file, const std::string &filemask)
 {
-	plf->save_level(levelfile);
+	close_dialog = true;
+	plf->save_level(file);
 }
 
 // Load a new level
 void 
-EditorScreen::load_level(const std::string levelfile)
+EditorScreen::load(const std::string &file, const std::string &filemask)
 {
-	plf->load_level(levelfile);
+	close_dialog = true;
+	plf->load_level(file);
 }
 
 // Play the current level (save to a temporary file 
@@ -115,9 +142,32 @@ EditorScreen::draw(Pingus::DrawingContext &gc)
 		(float)CL_Display::get_height(), CL_Color::black, -10000);
 	gui_manager->draw(gc);
 
+	// FIXME: Remove this warning
 	gc.print_center(Fonts::pingus_large, (float)(CL_Display::get_width() / 2), 
 		(float)(CL_Display::get_height() / 2), "Not yet functional");
+		
+	if (filedialog)
+		filedialog->draw(gc);
+	
 	return true;
+}
+
+void
+EditorScreen::update(const GameDelta &delta)
+{
+	if (filedialog)
+	{
+		if (close_dialog)
+		{
+			delete filedialog;
+			filedialog = 0;
+		}
+		else
+			filedialog->update(delta);
+	}
+	else
+		GUIScreen::update(delta);
+
 }
 
 } // Editor namespace

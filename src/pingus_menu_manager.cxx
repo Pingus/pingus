@@ -30,8 +30,7 @@ PingusMenuManager* PingusMenuManager::instance_ = 0;
 
 PingusMenuManager::PingusMenuManager ()
   : mainmenu (this),
-    exitmenu (this),
-		filedialog (0)
+    exitmenu (this)
 {
   background.add_layer (Resource::load_sprite("core/menu/layer1"),  0, 0, 12, 0);
   background.add_layer (Resource::load_sprite("core/menu/layer2"),  0, 150, 25, 0);
@@ -44,8 +43,6 @@ PingusMenuManager::PingusMenuManager ()
 
 PingusMenuManager::~PingusMenuManager ()
 {
-	if (filedialog)
-		delete filedialog;
 }
 
 bool
@@ -113,18 +110,6 @@ void
 PingusMenuManager::show_exit_menu ()
 {
   push_menu (&exitmenu);
-}
-
-void
-PingusMenuManager::show_file_dialog (const std::string filemask, 
-																		 const std::string searchpath, bool for_load)
-{
-	// Initialize the dialog box either for loading or saving.
-	if (filedialog)
-		delete filedialog;
-	filedialog = new FileDialog(current_menu(), this, filemask, searchpath, for_load);
-	filedialog->preload();
-  push_menu (filedialog);
 }
 
 void

@@ -21,10 +21,12 @@
 #define HEADER_PINGUS_EDITOR_SCREEN_HXX
 
 #include "../gui/gui_screen.hxx"
+#include "../file_dialog_listener.hxx"
 
 namespace Pingus {
 
 class DrawingContext;
+class FileDialog;
 class GUI::GUIManager;
 
 namespace Editor {
@@ -35,17 +37,22 @@ class EditorViewport;
 
 /** This class is the screen that contains all of the
 	editor objects */
-class EditorScreen : public GUIScreen
+class EditorScreen : public GUIScreen, public FileDialogListener
 {
 private:
-	/* The level currently being edited */
+	/** The level currently being edited */
 	XMLLevel* plf;
 
-	/* Panel which contains all of the buttons for each action */
+	/** Panel which contains all of the buttons for each action */
 	EditorPanel* panel;
 
-	/* Viewport which holds all of the level images and data */
+	/** Viewport which holds all of the level images and data */
 	EditorViewport* viewport;
+
+	/** File Dialog box */
+	FileDialog* filedialog;
+
+	bool close_dialog;
 
 public:
 	/** Default constructor */
@@ -66,17 +73,26 @@ public:
 	/** Draw the items in the screen */
 	bool draw (DrawingContext& gc);
 
+	/** Update the GUI objects */
+	void update (const GameDelta& delta);
+
 	/** Return the gui_manager */
 	GUI::GUIManager* get_gui_manager() const { return gui_manager; }
 
 	/** Return a pointer to the current level */
 	XMLLevel* get_level() const { return plf; }
 
+	/** Show a file dialog box */
+	void show_file_dialog(bool for_loading);
+
+	/** Closes the file dialog box */
+	void cancel();
+
 	/** Saves the currently loaded level */
-	void save_level(const std::string levelfile);
+	void save(const std::string &file, const std::string &filemask);
 
 	/** Load a new level */
-	void load_level(const std::string levelfile);
+	void load(const std::string &file, const std::string &filemask);
 
 	/** Plays the currently loaded level */
 	void play_level();
