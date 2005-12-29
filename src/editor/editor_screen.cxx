@@ -118,6 +118,7 @@ EditorScreen::load(const std::string &file, const std::string &filemask)
 {
 	close_dialog = true;
 	plf->load_level(file);
+	viewport->refresh();
 }
 
 // Play the current level (save to a temporary file 

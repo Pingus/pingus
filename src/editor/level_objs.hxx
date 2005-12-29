@@ -140,6 +140,9 @@ protected:
 	/** Marks if this object has been deleted or not */
 	bool removed;
 
+	/** Marks is this object is currently selected */
+	bool selected;
+
 	/** Write any additional properties to the XML file for this type */
 	virtual void write_extra_properties(XMLFileWriter& xml) { }
 
@@ -200,6 +203,8 @@ public:
 
 	/** Returns the parallax speed multiplier in the y direction */
 	float get_para_y() const { return para_y; }
+
+	bool is_selected() { return selected; }
 
 	/** Retrieve the object's direction */
 	std::string get_direction() { return direction; }
@@ -269,6 +274,13 @@ public:
 
 	/** Soft delete of the object (needed for Undo action) */
 	void remove() { removed = true; }
+
+	/** Undelete this object if it's been removed */
+	void unremove() { removed = false; }
+
+	/** Select or unselect this object */
+	void select() { selected = true; }
+	void unselect() { selected = false; }
 
 	/** Write basic properties to the XML file for this type */
 	virtual void write_properties(XMLFileWriter &xml);

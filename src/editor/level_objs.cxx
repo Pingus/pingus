@@ -48,6 +48,7 @@ LevelObj::LevelObj(std::string obj_name, LevelImpl* level_) :
 	para_y(0),
 	color(0,0,0,0),
 	removed(false),
+	selected(false),
 	attribs(get_attributes(obj_name))
 {
 	
@@ -66,6 +67,10 @@ LevelObj::draw(DrawingContext &gc)
 {
 	if (!removed && attribs & HAS_SURFACE)
 	{
+		// If selected, draw a highlighted box around it
+		if (selected)
+			gc.draw_rect(pos.x, pos.y, pos.x + sprite.get_width(), 
+				pos.y + sprite.get_height(), CL_Color(255,255,255,150));
 		if (attribs & HAS_WIDTH)
 		{
 			for(int x = static_cast<int>(pos.x); x < pos.x + width;	x += sprite.get_width())

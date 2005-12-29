@@ -50,9 +50,6 @@ public:
 	/** Destructor */
 	~EditorViewport ();
 
-	/** Returns the list of objects inside the viewport */
-	std::vector<std::string> get_objects() { return objs; }
-
 	/** Draws all of the objects in the viewport */
 	void draw(DrawingContext &gc);
 
@@ -69,6 +66,9 @@ public:
 	/** Get rid of context menu if it exists */
 	void remove_context_menu();
 
+	/** Refresh the list of objects (do when loading or creating a new level) */
+	void refresh();
+
 private:
 	EditorViewport();
 	EditorViewport (const EditorViewport&);
@@ -80,17 +80,26 @@ private:
 	/** The EditorScreen to which this viewport belongs */
 	EditorScreen* editor;
 
-	/** Collection of objects inside the viewport (groundpieces, traps, etc.) */
-	std::vector<std::string> objs;
-
 	/** Whether or not Autoscrolling is turned on */
 	bool autoscroll;
 
 	/** Where the mouse is right now - used for autoscrolling */
 	Vector mouse_at;
 
-	/** The currently selected LevelObj */
-	LevelObj* current_obj;
+	/** Where the mouse is at in relation to the world/level */
+	Vector mouse_at_world;
+
+	/** Where the mouse started dragging from */
+	Vector drag_start_pos;
+
+	/** All objects in the level */
+	std::vector<LevelObj*> objs;
+
+	/** The currently selected LevelObjs */
+	std::vector<LevelObj*> current_objs;
+
+	/** The region that is currently highlighted */
+	CL_Rect highlighted_area;
 
 	/** Returns the topmost object at this x, y location */
 	LevelObj* object_at(int x, int y);
@@ -100,6 +109,9 @@ private:
 
 	/** Whether or not the "snap-to-grid" functionality is on. */
 	bool snap_to;
+
+	/** What is the currently selected action that the mouse is doing */
+	enum ActionType { NOTHING = 0, HIGHLIGHTING = 1, DRAGGING = 2 } current_action;
 
 	/// Mouse actions
 	void on_primary_button_press(int x, int y);

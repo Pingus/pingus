@@ -125,7 +125,7 @@ namespace Pingus {
 			gc.print_left(Fonts::pingus_small, pos.x + (float)sprite.get_width(), 
 				pos.y, get_filename());
 
-			// FIXME: If mouse over, draw a quick info box about the file item
+			// If mouse over, draw a quick info box about the file item
 			if (mouse_over)
 			{
 				if (file_item.is_directory)
