@@ -139,9 +139,12 @@ namespace Pingus {
 		/** Show it or not */
 		bool is_hidden;
 
+		bool hover;
+
 	public:
 		FileDialogScrollButton (FileDialog* f, int d, int height_offset)
 			: file_dialog(f),
+				hover(false),
                           pos(Vector((float)CL_Display::get_width()/2 + 210,
                                      (float)CL_Display::get_height()/2 + height_offset)),
                           direction(d),
@@ -152,15 +155,22 @@ namespace Pingus {
 		}
 
 		void draw (DrawingContext& gc) {
-			//FIXME: Should also draw a hover box around it when the mouse is over it.
 			if (!is_hidden)
+			{
 				gc.draw(sprite, pos);
+				if (hover)
+					gc.draw_rect(pos.x, pos.y, pos.x + sprite.get_width(), 
+						pos.y + sprite.get_height(), CL_Color(255,255,255,150));
+			}
 		}
 		
 		void on_primary_button_click(int x, int y)
 		{
 			file_dialog->scroll(direction);
 		}
+
+		void on_pointer_enter() { hover = true; }
+		void on_pointer_leave() { hover = false; }
 
 		bool is_at(int x, int y)
 		{
@@ -186,9 +196,12 @@ namespace Pingus {
 		/** Image used for the parent folder button */
 		CL_Sprite sprite;
 
+		bool hover;
+
 	public:
 		FileDialogParentFolderButton (FileDialog* f)
 			: file_dialog(f),
+				hover(false),
         pos(Vector((float)CL_Display::get_width()/2 + 230,
                    (float)CL_Display::get_height()/2 - 210)),
 			  sprite(Resource::load_sprite("core/menu/parent_folder"))
@@ -196,8 +209,10 @@ namespace Pingus {
 		}
 
 		void draw (DrawingContext& gc) {
-			//FIXME: Should also draw a hover box around it when the mouse is over it.
 			gc.draw(sprite, pos);
+			if (hover)
+				gc.draw_rect(pos.x, pos.y, pos.x + sprite.get_width(), 
+					pos.y + sprite.get_height(), CL_Color(255,255,255,150));
 		}
 		
 		void on_primary_button_click(int x, int y)
@@ -207,6 +222,9 @@ namespace Pingus {
 			f.is_directory = true;
 			file_dialog->set_selected_file(f);
 		}
+
+		void on_pointer_enter() { hover = true; }
+		void on_pointer_leave() { hover = false; }
 
 		bool is_at(int x, int y)
 		{

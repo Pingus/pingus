@@ -126,11 +126,17 @@ namespace Pingus {
 				pos.y, get_filename());
 
 			// FIXME: If mouse over, draw a quick info box about the file item
-			if (mouse_over && !file_item.is_directory)
+			if (mouse_over)
 			{
-				gc.draw_fillrect(pos.x+50, pos.y, pos.x+300, pos.y+50, CL_Color::azure);
-				gc.print_left(Fonts::pingus_small, pos.x+50, pos.y, file_item.friendly_name);
-				gc.print_left(Fonts::pingus_small, pos.x+50, pos.y+25, file_info);
+				if (file_item.is_directory)
+					gc.draw_rect(pos.x, pos.y, pos.x + sprite.get_width(), 
+						pos.y + sprite.get_height(), CL_Color(255,255,255,150));
+				else		// It's a file
+				{
+					gc.draw_fillrect(pos.x+50, pos.y, pos.x+300, pos.y+50, CL_Color::azure);
+					gc.print_left(Fonts::pingus_small, pos.x+50, pos.y, file_item.friendly_name);
+					gc.print_left(Fonts::pingus_small, pos.x+50, pos.y+25, file_info);
+				}
 			}
 		}
 	}
