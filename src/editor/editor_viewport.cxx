@@ -21,11 +21,13 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#include "../vector.hxx"
+#include "../gui/gui_manager.hxx"
 #include "../display/drawing_context.hxx"
+#include "../vector.hxx"
 #include "../graphic_context_state.hxx"
 #include "editor_viewport.hxx"
 #include "editor_screen.hxx"
+#include "context_menu.hxx"
 #include "xml_level.hxx"
 #include "level_objs.hxx"
 
@@ -38,6 +40,7 @@ EditorViewport::EditorViewport(EditorScreen* e) :
 	scene_context(new SceneContext()),
 	editor(e),
 	current_obj(0),
+	context_menu(0),
 	snap_to(true),
 	autoscroll(true)
 {
@@ -55,19 +58,30 @@ EditorViewport::~EditorViewport ()
 void
 EditorViewport::on_secondary_button_click(int x, int y)
 {
-	std::cout << "Right-click at " << x - (state.get_width()/2 - state.get_pos().x) << ", " 
-		<< y - (state.get_height()/2 - state.get_pos().y) << std::endl;
+	remove_context_menu();
+
+	Vector mouse_pos(x - (state.get_width()/2 - state.get_pos().x),
+		y - (state.get_height()/2 - state.get_pos().y));
+
+	std::cout << "Right-click at " << mouse_pos.x << ", " 
+		<< mouse_pos.y << std::endl;
 	
-	LevelObj* obj = object_at(x - (state.get_width()/2 - (int)state.get_pos().x),
-		y - (state.get_height()/2 - (int)state.get_pos().y));
+	LevelObj* obj = object_at((int)mouse_pos.x, (int)mouse_pos.y);
 	if (obj)
-		obj->on_primary_button_click(x, y);
+	{
+		std::vector<LevelObj*> objs;
+		objs.push_back(obj);
+		context_menu = new ContextMenu(objs, Vector((float)x, (float)y), this);
+		editor->get_gui_manager()->add(context_menu, true);
+	}
 }
 
 // Select a LevelObj
 void 
 EditorViewport::on_primary_button_press(int x, int y)
 {
+	remove_context_menu();
+
 	LevelObj* obj = object_at(x - (state.get_width()/2 - (int)state.get_pos().x),
 		y - (state.get_height()/2 - (int)state.get_pos().y));
 	if (obj)
@@ -164,6 +178,17 @@ EditorViewport::object_at (int x, int y)
 			return *i;
 	}
 	return 0;
+}
+
+// Delete the context menu if it exists.
+void
+EditorViewport::remove_context_menu()
+{
+	if (context_menu)
+	{
+		editor->get_gui_manager()->remove(context_menu);
+		context_menu = 0;
+	}
 }
 
 } // Editor namespace

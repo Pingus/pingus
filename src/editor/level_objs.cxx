@@ -47,6 +47,7 @@ LevelObj::LevelObj(std::string obj_name, LevelImpl* level_) :
 	para_x(0),
 	para_y(0),
 	color(0,0,0,0),
+	removed(false),
 	attribs(get_attributes(obj_name))
 {
 	
@@ -63,7 +64,7 @@ LevelObj::set_res_desc(const ResDescriptor d)
 void
 LevelObj::draw(DrawingContext &gc)
 {
-	if (attribs & HAS_SURFACE)
+	if (!removed && attribs & HAS_SURFACE)
 	{
 		if (attribs & HAS_WIDTH)
 		{
@@ -86,7 +87,7 @@ LevelObj::draw(DrawingContext &gc)
 bool
 LevelObj::is_at(int x, int y)
 {
-	if (attribs & HAS_SURFACE)
+	if (!removed && attribs & HAS_SURFACE)
 		return (x > pos.x && x < pos.x + sprite.get_width()
 			&& y > pos.y && y < pos.y + sprite.get_height());
 	else
@@ -109,42 +110,60 @@ void
 LevelObj::set_stretch_x(const bool s)
 { 
 	stretch_x = s;
-	refresh_sprite();
 }
 
 void
 LevelObj::set_stretch_y(const bool s)
 { 
 	stretch_y = s;
-	refresh_sprite();
 }
 
 void
 LevelObj::set_aspect(const bool a)
 { 
 	keep_aspect = a;
-	refresh_sprite();
 }
 
 void
 LevelObj::refresh_sprite()
 {
+	CL_PixelBuffer pb;
+
 	// Apply modifier, then change the sprite loaded for this object in memory.
-	sprite = Resource::load_sprite(desc);
-
-	if (0)
-	//if (stretch_x || stretch_y)
+	if (stretch_x || stretch_y)
 	{
-		float w, h;
-		// FIXME: Temporary hack
-		w = 800;
-		h = 600;
+		sprite = Resource::load_sprite(desc);
+		float w = (float)sprite.get_width();
+		float h = (float)sprite.get_height();
+		
+		// Determine the new dimensions for the sprite
+		if (stretch_x && !stretch_y)
+		{
+			if (keep_aspect)
+				h = h * CL_Display::get_width() / w;
+			w = (float)CL_Display::get_width();
+		}
+		else if (stretch_y && !stretch_x)
+		{
+			if (keep_aspect)
+				w = w * CL_Display::get_height() / h;
+			h = (float)CL_Display::get_height();
+		}
+		else
+		{
+			w = (float)CL_Display::get_width();
+			h = (float)CL_Display::get_height();
+		}
 
-		CL_Surface sur = Blitter::scale_surface_to_canvas(sprite.get_frame_surface(0), (int)w, (int)h);
-		CL_SpriteDescription sprite_desc;
-		sprite_desc.add_frame(sur.get_pixeldata());
-		sprite = CL_Sprite(sprite_desc);
+		pb = Blitter::scale_surface_to_canvas(
+			sprite.get_frame_pixeldata(0), (int)w, (int)h);
 	}
+	else		// No stretch involved
+		pb = Resource::load_pixelbuffer(desc);
+
+	CL_SpriteDescription sprite_desc;
+	sprite_desc.add_frame(pb);
+	sprite = CL_Sprite(sprite_desc);
 }
 
 // Set the modifier and actually modify the sprite loaded in memory
@@ -160,59 +179,62 @@ LevelObj::set_modifier(const std::string m)
 void
 LevelObj::write_properties(XMLFileWriter &xml)
 {
-	xml.begin_section(section_name.c_str());
-
-	const unsigned attribs = get_attributes(section_name);
-
-	// Write information about the main sprite
-	if (attribs & HAS_SURFACE)
+	if (!removed)
 	{
-		xml.begin_section("surface");
-		xml.write_string("image", desc.res_name);
-		xml.write_string("modifier", ResourceModifierNS::rs_to_string(desc.modifier));
-		xml.end_section();	// surface
-	}
-	// Write the optional information
-	if (attribs & HAS_TYPE)
-		xml.write_string("type", object_type);
-	if (attribs & HAS_SPEED)
-		xml.write_int("speed", speed);
-	if (attribs & HAS_PARALLAX)
-		xml.write_float("parallax", parallax);
-	if (attribs & HAS_WIDTH)
-		xml.write_int("width", width);
-	if (attribs & HAS_OWNER)
-		xml.write_int("owner-id", owner_id);
-	if (attribs & HAS_DIRECTION)
-		xml.write_string("direction", direction);
-	if (attribs & HAS_RELEASE_RATE)
-		xml.write_int("release-rate", release_rate);
-	if (attribs & HAS_COLOR)
-		xml.write_color("color", color);
-	if (attribs & HAS_STRETCH)
-	{
-		xml.write_bool("stretch-x", stretch_x);
-		xml.write_bool("stretch-y", stretch_y);
-		xml.write_bool("keep-aspect", keep_aspect);
-	}
-	if (attribs & HAS_SCROLL)
-	{
-		xml.write_float("scroll-x", scroll_x);
-		xml.write_float("scroll-y", scroll_y);
-	}
-	if (attribs & HAS_PARA)
-	{
-		xml.write_float("para-x", para_x);
-		xml.write_float("para-y", para_y);
-	}
+		xml.begin_section(section_name.c_str());
 
-	// Writes any extra properties that may be necessary (virtual function)
-	write_extra_properties(xml);
+		const unsigned attribs = get_attributes(section_name);
 
-	// Write the Vector position - all objects have this
-	xml.write_vector("position", pos);
+		// Write information about the main sprite
+		if (attribs & HAS_SURFACE)
+		{
+			xml.begin_section("surface");
+			xml.write_string("image", desc.res_name);
+			xml.write_string("modifier", ResourceModifierNS::rs_to_string(desc.modifier));
+			xml.end_section();	// surface
+		}
+		// Write the optional information
+		if (attribs & HAS_TYPE)
+			xml.write_string("type", object_type);
+		if (attribs & HAS_SPEED)
+			xml.write_int("speed", speed);
+		if (attribs & HAS_PARALLAX)
+			xml.write_float("parallax", parallax);
+		if (attribs & HAS_WIDTH)
+			xml.write_int("width", width);
+		if (attribs & HAS_OWNER)
+			xml.write_int("owner-id", owner_id);
+		if (attribs & HAS_DIRECTION)
+			xml.write_string("direction", direction);
+		if (attribs & HAS_RELEASE_RATE)
+			xml.write_int("release-rate", release_rate);
+		if (attribs & HAS_COLOR)
+			xml.write_color("color", color);
+		if (attribs & HAS_STRETCH)
+		{
+			xml.write_bool("stretch-x", stretch_x);
+			xml.write_bool("stretch-y", stretch_y);
+			xml.write_bool("keep-aspect", keep_aspect);
+		}
+		if (attribs & HAS_SCROLL)
+		{
+			xml.write_float("scroll-x", scroll_x);
+			xml.write_float("scroll-y", scroll_y);
+		}
+		if (attribs & HAS_PARA)
+		{
+			xml.write_float("para-x", para_x);
+			xml.write_float("para-y", para_y);
+		}
 
-	xml.end_section();	// object's section_name
+		// Writes any extra properties that may be necessary (virtual function)
+		write_extra_properties(xml);
+
+		// Write the Vector position - all objects have this
+		xml.write_vector("position", pos);
+
+		xml.end_section();	// object's section_name
+	}
 }
 
 }		// Editor namespace

@@ -137,12 +137,11 @@ protected:
 	/** Number representing which attributes this object possesses */
 	unsigned attribs;
 
+	/** Marks if this object has been deleted or not */
+	bool removed;
+
 	/** Write any additional properties to the XML file for this type */
 	virtual void write_extra_properties(XMLFileWriter& xml) { }
-
-	/** Call when the sprite needs to be reloaded */
-	void refresh_sprite();
-
 
 
 /////////////////////////////////////////////////////////
@@ -268,8 +267,14 @@ public:
 	/** Set the object's direction if applicable */
 	void set_direction(const std::string d) { direction = d; }
 
+	/** Soft delete of the object (needed for Undo action) */
+	void remove() { removed = true; }
+
 	/** Write basic properties to the XML file for this type */
 	virtual void write_properties(XMLFileWriter &xml);
+
+	/** Call when the sprite needs to be reloaded */
+	void refresh_sprite();
 
 	/** Draws the sprite with the modifier applied */
 	virtual void draw(DrawingContext &gc);

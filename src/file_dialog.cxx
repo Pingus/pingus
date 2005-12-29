@@ -279,7 +279,7 @@ namespace Pingus {
 		gc.draw_rect(gc.get_width() / 2 - 285, gc.get_height() / 2 - 160,
 			gc.get_width() / 2 + 285, gc.get_height() / 2 + 160, CL_Color::black);
 		gc.print_center(Fonts::chalk_large, gc.get_width()/2, gc.get_height()/2 - 220, 
-			current_file.friendly_name);
+			current_file.friendly_name == "" ? current_file.name : current_file.friendly_name);
 
 		PingusSubMenu::draw(gc);
 		return true;

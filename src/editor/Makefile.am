@@ -22,6 +22,7 @@ noinst_LIBRARIES = libpingus_editor.a
 
 libpingus_editor_a_CPPFLAGS = @PINGUS_CFLAGS@
 libpingus_editor_a_SOURCES =       \
+context_menu.cxx	context_menu.hxx	\
 editor_screen.cxx	editor_screen.hxx	\
 editor_panel.cxx	editor_panel.hxx	\
 panel_buttons.cxx	panel_buttons.hxx	\

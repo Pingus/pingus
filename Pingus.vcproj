@@ -1697,6 +1697,12 @@
 				Name="editor"
 				Filter="">
 				<File
+					RelativePath=".\src\editor\context_menu.cxx">
+				</File>
+				<File
+					RelativePath=".\src\editor\context_menu.hxx">
+				</File>
+				<File
 					RelativePath=".\src\editor\editor_panel.cxx">
 				</File>
 				<File

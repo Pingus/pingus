@@ -35,6 +35,7 @@ namespace Editor {
 
 	class LevelObj;
 	class EditorScreen;
+	class ContextMenu;
 
 /** This class is where the actual level graphics will display in the
 	level editor.  Objects can be added, deleted, moved, modified, etc. 
@@ -65,6 +66,9 @@ public:
     coordinates */
   void on_pointer_move (int x, int y);
 
+	/** Get rid of context menu if it exists */
+	void remove_context_menu();
+
 private:
 	EditorViewport();
 	EditorViewport (const EditorViewport&);
@@ -90,6 +94,9 @@ private:
 
 	/** Returns the topmost object at this x, y location */
 	LevelObj* object_at(int x, int y);
+
+	/** There should only be 0 or 1 context menus on the screen */
+	ContextMenu* context_menu;
 
 	/** Whether or not the "snap-to-grid" functionality is on. */
 	bool snap_to;
