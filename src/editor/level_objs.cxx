@@ -132,43 +132,46 @@ LevelObj::set_aspect(const bool a)
 void
 LevelObj::refresh_sprite()
 {
-	CL_PixelBuffer pb;
-
-	// Apply modifier, then change the sprite loaded for this object in memory.
-	if (stretch_x || stretch_y)
+	if (attribs & HAS_SURFACE)
 	{
-		sprite = Resource::load_sprite(desc);
-		float w = (float)sprite.get_width();
-		float h = (float)sprite.get_height();
-		
-		// Determine the new dimensions for the sprite
-		if (stretch_x && !stretch_y)
-		{
-			if (keep_aspect)
-				h = h * CL_Display::get_width() / w;
-			w = (float)CL_Display::get_width();
-		}
-		else if (stretch_y && !stretch_x)
-		{
-			if (keep_aspect)
-				w = w * CL_Display::get_height() / h;
-			h = (float)CL_Display::get_height();
-		}
-		else
-		{
-			w = (float)CL_Display::get_width();
-			h = (float)CL_Display::get_height();
-		}
+		CL_PixelBuffer pb;
 
-		pb = Blitter::scale_surface_to_canvas(
-			sprite.get_frame_pixeldata(0), (int)w, (int)h);
+		// Apply modifier, then change the sprite loaded for this object in memory.
+		if (stretch_x || stretch_y)
+		{
+			sprite = Resource::load_sprite(desc);
+			float w = (float)sprite.get_width();
+			float h = (float)sprite.get_height();
+			
+			// Determine the new dimensions for the sprite
+			if (stretch_x && !stretch_y)
+			{
+				if (keep_aspect)
+					h = h * CL_Display::get_width() / w;
+				w = (float)CL_Display::get_width();
+			}
+			else if (stretch_y && !stretch_x)
+			{
+				if (keep_aspect)
+					w = w * CL_Display::get_height() / h;
+				h = (float)CL_Display::get_height();
+			}
+			else
+			{
+				w = (float)CL_Display::get_width();
+				h = (float)CL_Display::get_height();
+			}
+
+			pb = Blitter::scale_surface_to_canvas(
+				sprite.get_frame_pixeldata(0), (int)w, (int)h);
+		}
+		else		// No stretch involved
+			pb = Resource::load_pixelbuffer(desc);
+
+		CL_SpriteDescription sprite_desc;
+		sprite_desc.add_frame(pb);
+		sprite = CL_Sprite(sprite_desc);
 	}
-	else		// No stretch involved
-		pb = Resource::load_pixelbuffer(desc);
-
-	CL_SpriteDescription sprite_desc;
-	sprite_desc.add_frame(pb);
-	sprite = CL_Sprite(sprite_desc);
 }
 
 // Set the modifier and actually modify the sprite loaded in memory
