@@ -44,15 +44,16 @@ namespace Editor {
 	const unsigned HAS_DIRECTION = 512;
 	const unsigned HAS_RELEASE_RATE = 1024;
 	const unsigned HAS_SURFACE = 2048;
+	const unsigned CAN_ROTATE = 4096;
 
 	/** Returns a number representing which attributes this object possesses */
 	inline unsigned int get_attributes(std::string obj_type)
 	{
 		unsigned val;
 		if (obj_type == "groundpiece")
-			val = HAS_TYPE | HAS_SURFACE;
+			val = HAS_TYPE | HAS_SURFACE | CAN_ROTATE;
 		else if (obj_type == "hotspot")
-			val = HAS_SPEED | HAS_PARALLAX | HAS_SURFACE;
+			val = HAS_SPEED | HAS_PARALLAX | HAS_SURFACE | CAN_ROTATE;
 		else if (obj_type == "liquid")
 			val = HAS_SPEED | HAS_WIDTH | HAS_SURFACE;
 		else if (obj_type == "surface-background")
@@ -293,10 +294,6 @@ public:
 
 	/** Returns true if the mouse is hovering over this object */
   virtual bool is_at (int x, int y);
-
-	/** Action taken when the primary mouse button is clicked */
-	virtual void on_primary_button_click (int x, int y);
-
 
 	/** Default Constructor */
 	LevelObj(const std::string obj_name, LevelImpl* level_);

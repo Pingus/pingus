@@ -223,8 +223,8 @@ CL_PixelBuffer modify(CL_PixelBuffer prov, const TransF&)
       int pwidth  = prov.get_width();
       int pheight = prov.get_height();
       
-      for (int y = 0; y < prov.get_height (); ++y)
-        for (int x = 0; x < prov.get_width (); ++x)
+      for (int y = 0; y < pheight; ++y)
+        for (int x = 0; x < pwidth; ++x)
           {
             CL_Color color = prov.get_pixel(x, y);
             canvas.draw_pixel(TransF::get_x(pwidth, pheight, x, y),

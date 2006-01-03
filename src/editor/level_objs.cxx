@@ -58,7 +58,7 @@ void
 LevelObj::set_res_desc(const ResDescriptor d)
 {
 	desc = d;
-	sprite = Resource::load_sprite(desc);
+	refresh_sprite();
 }
 
 // Draw the sprite
@@ -70,7 +70,7 @@ LevelObj::draw(DrawingContext &gc)
 		// If selected, draw a highlighted box around it
 		if (selected)
 			gc.draw_rect(pos.x, pos.y, pos.x + sprite.get_width(), 
-				pos.y + sprite.get_height(), CL_Color(255,255,255,150));
+				pos.y + sprite.get_height(), CL_Color(255,255,255,150), 5000);
 		if (attribs & HAS_WIDTH)
 		{
 			for(int x = static_cast<int>(pos.x); x < pos.x + width;	x += sprite.get_width())
@@ -97,18 +97,6 @@ LevelObj::is_at(int x, int y)
 			&& y > pos.y && y < pos.y + sprite.get_height());
 	else
 		return false;
-}
-
-void 
-LevelObj::on_primary_button_click (int x, int y)
-{
-	UNUSED_ARG(x);
-	UNUSED_ARG(y);
-	pos.x += 10;
-	// FIXME: Remove debugging stuff.
-	std::cout << "New pos.x: " << pos.x << ", y: " << pos.y 
-		<< ", end spot: x: " << pos.x + sprite.get_width() << ", y: "
-		<< pos.y + sprite.get_height() << std::endl;
 }
 
 void
@@ -179,7 +167,8 @@ void
 LevelObj::set_modifier(const std::string m)
 {
 	// Set modifier
-	desc.modifier = ResourceModifierNS::rs_from_string(m);
+	if (attribs & CAN_ROTATE)
+		desc.modifier = ResourceModifierNS::rs_from_string(m);
 	refresh_sprite();
 }
 
