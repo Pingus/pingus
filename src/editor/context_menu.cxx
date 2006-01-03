@@ -21,6 +21,8 @@
 #include "context_menu.hxx"
 #include "level_objs.hxx"
 #include "editor_viewport.hxx"
+#include "editor_screen.hxx"
+#include "../gui/gui_manager.hxx"
 #include "../fonts.hxx"
 
 namespace Pingus {
@@ -28,19 +30,26 @@ namespace Pingus {
 namespace Editor {
 
 	// Determine which actions are available for these objects
-	ContextMenu::ContextMenu(std::vector<LevelObj*> o, Vector p, EditorViewport* vp)
+	ContextMenu::ContextMenu(std::vector<LevelObj*> o, Vector p, EditorViewport* vp, bool base_menu)
 		: objs(o), 
 			viewport(vp),
 			pos(p),
-			width(200),
 			item_height(Fonts::pingus_small.get_height()),
-			selected_action_offset(0)
+			selected_action_offset(0),
+			displayed_child(0)
 	{
-		actions.push_back("Remove");
-		actions.push_back("ROT0");
-		actions.push_back("ROT90");
-		actions.push_back("ROT180");
-		actions.push_back("ROT270");
+		if (base_menu)
+		{
+			// Create all available child menus
+			width = 80;
+			show = true;
+			create_child_menus();
+		}
+		else
+		{
+			width = 200;
+			show = false;
+		}
 
 		total_height  = item_height * actions.size();
 	}
@@ -48,6 +57,9 @@ namespace Editor {
 
 	ContextMenu::~ContextMenu()
 	{
+		for (unsigned i = 0; i < actions.size(); i++)
+			if (actions[i].child)
+				delete actions[i].child;
 	}
 
 
@@ -64,44 +76,60 @@ namespace Editor {
 	void
 	ContextMenu::draw(DrawingContext &gc)
 	{
-		// Draw the box
-		gc.draw_fillrect(pos.x, pos.y, pos.x + 200, pos.y + total_height, 
-			CL_Color(211,211,211,100));
-		// Draw the border
-		gc.draw_rect(pos.x, pos.y, pos.x + 200, pos.y + total_height, 
-			CL_Color::black);
-		// Draw the highlighted action if the mouse is in the box
-		if (hover)
-			gc.draw_fillrect(pos.x, pos.y + selected_action_offset * 
-				item_height, pos.x + 200, pos.y + (selected_action_offset + 1) * item_height,
-				CL_Color(128,128,128,100));
+		if (show)
+		{
+			// Draw the box
+			gc.draw_fillrect(pos.x, pos.y, pos.x + width, pos.y + total_height, 
+				CL_Color(211,211,211,100));
+			// Draw the border
+			gc.draw_rect(pos.x, pos.y, pos.x + width, pos.y + total_height, 
+				CL_Color::black);
+			// Draw the highlighted action if the mouse is in the box
+			if (hover)
+			{
+				gc.draw_fillrect(pos.x, pos.y + selected_action_offset * 
+					item_height, pos.x + width, pos.y + (selected_action_offset + 1) * item_height,
+					CL_Color(128,128,128,150));
+			}
 
-		// Draw the action names
-		for (unsigned i = 0; i < actions.size(); i++)
-			gc.print_left(Fonts::pingus_small, pos.x, pos.y + 
-				(i * item_height), actions[i]);
+			// Draw the action names
+			for (unsigned i = 0; i < actions.size(); i++)
+				gc.print_left(Fonts::pingus_small, pos.x, pos.y + 
+					(i * item_height), actions[i].friendly_name);
+		}
 	}
 
 	bool
 	ContextMenu::is_at(int x, int y)
 	{
-		return (x > pos.x && x < pos.x + 200 &&
-			y > pos.y && y < pos.y + total_height);
+		if (show)
+			return (x > pos.x && x < pos.x + width &&
+				y > pos.y && y < pos.y + total_height);
+		else
+			return false;
 	}
 
 	void 
 	ContextMenu::on_primary_button_click(int x, int y)
 	{
-		// FIXME: Call the correct object function based on the selected action.
-		// FIXME: This is a temporary hack to test the functionality.
-		for (unsigned i = 0; i < objs.size(); i++)
+		if (!actions[selected_action_offset].child)
 		{
-			if (selected_action_offset == 0)
-				objs[i]->remove();
-			else
-				objs[i]->set_modifier(actions[selected_action_offset]);
+			for (unsigned i = 0; i < objs.size(); i++)
+			{
+				switch (actions[selected_action_offset].modifier)
+				{
+				case (REMOVE) : 
+					objs[i]->remove();
+					break;
+				case (ROTATE) :
+					objs[i]->set_modifier(actions[selected_action_offset].parameter);
+					break;
+				default :
+					break;
+				}
+			}
+			viewport->remove_context_menu();
 		}
-		viewport->remove_context_menu();
 	}
 
 	void
@@ -109,6 +137,69 @@ namespace Editor {
 	{
 		// Does the same as the primary button
 		on_primary_button_click(x, y);
+	}
+
+	void
+	ContextMenu::create_child_menus()
+	{
+		// Create Remove button - available to all objects
+		actions.push_back(ContextItem("Remove", "", REMOVE, 0));
+
+		// Determine which actions are available to the selected objects
+		unsigned available_attribs = 0xffff;
+		for (unsigned i = 0; i < (unsigned)objs.size(); i++)
+			available_attribs = available_attribs & objs[i]->get_attribs();
+
+		ContextMenu* menu;
+		if (available_attribs & CAN_ROTATE)
+		{
+			menu = new ContextMenu(objs, Vector(pos.x + width, pos.y), viewport, false);
+			viewport->get_screen()->get_gui_manager()->add(menu);
+			menu->add_action(ContextItem("0 degrees", "ROT0", ROTATE, 0));
+			menu->add_action(ContextItem("90 Degrees", "ROT90", ROTATE, 0));
+			menu->add_action(ContextItem("180 Degrees", "ROT180", ROTATE, 0));
+			menu->add_action(ContextItem("270 Degrees", "ROT270", ROTATE, 0));
+			menu->add_action(ContextItem("0 Degrees + Flip", "ROT0FLIP", ROTATE, 0));
+			menu->add_action(ContextItem("90 Degrees + Flip", "ROT90FLIP", ROTATE, 0));
+			menu->add_action(ContextItem("180 Degrees + Flip", "ROT180FLIP", ROTATE, 0));
+			menu->add_action(ContextItem("270 Degrees + Flip", "ROT270FLIP", ROTATE, 0));
+			add_action(ContextItem("Rotate", "", ROTATE, menu));
+		}
+	}
+
+	void
+	ContextMenu::add_action(ContextItem item)
+	{
+		actions.push_back(item);
+		total_height += item_height;
+	}
+
+	void
+	ContextMenu::display(bool should_display)
+	{
+		show = should_display;
+		if (!show && displayed_child)
+			displayed_child->display(false);
+	}
+
+	void
+	ContextMenu::update(float delta)
+	{
+		UNUSED_ARG(delta);
+
+		if (displayed_child != actions[selected_action_offset].child)
+		{
+			if (displayed_child)
+			{
+				displayed_child->display(false);
+				displayed_child = 0;
+			}
+			if (actions[selected_action_offset].child)
+			{
+				displayed_child = actions[selected_action_offset].child;
+				displayed_child->display(true);
+			}
+		}
 	}
 
 }	// Editor namespace

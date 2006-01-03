@@ -69,6 +69,8 @@ public:
 	/** Refresh the list of objects (do when loading or creating a new level) */
 	void refresh();
 
+	EditorScreen* get_screen() { return editor; }
+
 private:
 	EditorViewport();
 	EditorViewport (const EditorViewport&);

@@ -30,9 +30,32 @@ namespace Editor {
 
 	class LevelObj;
 	class EditorViewport;
+	class ContextMenu;
+
+	typedef enum ItemModifier { REMOVE, ROTATE, STRETCH };
+
+	class ContextItem {
+	public:
+		std::string friendly_name;
+		std::string parameter;
+		ItemModifier modifier;
+		ContextMenu* child;
+
+	public:
+		ContextItem(std::string friendly_name_, std::string parameter_, ItemModifier mod, 
+			ContextMenu* child_menu)
+			: friendly_name(friendly_name_),
+				parameter(parameter_),
+				modifier(mod),
+				child(child_menu)
+		{ }
+	};
 
 	class ContextMenu : public GUI::Component {
 	private:
+		/** Creates the child menu structure and detemines which actions are available */
+		void create_child_menus();
+
 		/** Level objects to be affected by this menu */
 		std::vector<LevelObj*> objs;
 
@@ -40,7 +63,7 @@ namespace Editor {
 		EditorViewport* viewport;
 
 		/** List of actions available in this menu */
-		std::vector<std::string> actions;
+		std::vector<ContextItem> actions;
 
 		/** Where the mouse is located */
 		Vector mouse_at;
@@ -51,8 +74,14 @@ namespace Editor {
 		/** Is the mouse over the menu? */
 		bool hover;
 
+		/** Should this be showing? */
+		bool show;
+
 		/** The offset into actions vector of the currently highlighted action */
 		unsigned selected_action_offset;
+		
+		/** Currently displayed child menu (if any) */
+		ContextMenu* displayed_child;
 
 		/** Height of a single action */
 		unsigned item_height;
@@ -62,19 +91,27 @@ namespace Editor {
 
 	public:
 		// Constructor
-		ContextMenu (std::vector<LevelObj*>, Vector p, EditorViewport* v);
+		ContextMenu (std::vector<LevelObj*>, Vector p, EditorViewport* v, bool base_menu = true);
 		
 		// Desctructor
 		~ContextMenu ();
 
+		/** Add an action to the list */
+		void add_action(ContextItem item);
+
+		void display (bool should_display);
+
 		/// GUI Component Functions
 		bool is_at(int x, int y);
 		void draw (DrawingContext& gc);
+		void update (float delta);
 		void on_pointer_move (int x, int y);
 		void on_primary_button_click(int x, int y);
 		void on_secondary_button_click(int x, int y);
 		void on_pointer_enter () { hover = true; }
 		void on_pointer_leave () { hover = false; }
+
+
 
 	private:
 		ContextMenu ();

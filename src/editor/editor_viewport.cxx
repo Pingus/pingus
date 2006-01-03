@@ -257,6 +257,7 @@ EditorViewport::remove_context_menu()
 	if (context_menu)
 	{
 		editor->get_gui_manager()->remove(context_menu);
+		context_menu->display(false);
 		context_menu = 0;
 	}
 }
