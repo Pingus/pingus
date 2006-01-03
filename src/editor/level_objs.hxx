@@ -87,6 +87,9 @@ protected:
 	/** Location of this object in the World */
 	Vector pos;
 
+	/** Location of this object before moving it around */
+	Vector orig_pos;
+
 	/** Name of the section header for this object (hotspot, groundpiece, etc.) */
 	std::string section_name;
 
@@ -153,6 +156,7 @@ protected:
 public:
 	/** Retrieve the object's position */
 	Vector get_pos() const { return pos; }
+	Vector get_orig_pos() const { return orig_pos; }
 
 	/** Retrieve this object's attribute number */
 	unsigned get_attribs() const { return attribs; }
@@ -216,6 +220,7 @@ public:
 public:
 	/** Set the object's position */
 	void set_pos(const Vector p) { pos = p; }
+	void set_orig_pos(const Vector p) { orig_pos = p; }
 
 	/** Set the object's resource name */
 	void set_res_desc(const ResDescriptor d);

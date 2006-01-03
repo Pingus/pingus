@@ -166,6 +166,7 @@ void XMLLevel::load_level(const std::string& filename)
 
 		// All objects have a position - get that.
 		i->read_vector("position", p);
+		obj->set_orig_pos(p);
 		obj->set_pos(p);
 
 		// Get optional attributes based on the attribs value

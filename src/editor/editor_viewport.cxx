@@ -131,7 +131,7 @@ EditorViewport::on_primary_button_release(int x, int y)
 			CL_Point obj_pos((int)objs[i]->get_pos().x + (state.get_width()/2 - 
 				(int)state.get_pos().x), (int)objs[i]->get_pos().y + (state.get_height()/2 - 
 				(int)state.get_pos().y));
-			//CL_Point obj_pos((int)objs[i]->get_pos().x, (int)objs[i]->get_pos().y);
+			
 			if (highlighted_area.is_inside(obj_pos))
 			{
 				current_objs.push_back(objs[i]);
@@ -141,8 +141,13 @@ EditorViewport::on_primary_button_release(int x, int y)
 				objs[i]->unselect();
 		}
 	}
+	else if (current_action == DRAGGING)
+	{
+		// Set the objects' positions for good
+		for (unsigned i = 0; i < objs.size(); i++)
+			objs[i]->set_orig_pos(objs[i]->get_pos());
+	}
 	current_action = NOTHING;
-	//highlighted_area.set_size(CL_Size(0,0));
 }
 
 void
@@ -163,12 +168,10 @@ EditorViewport::on_pointer_move(int x, int y)
 
 		for (unsigned i = 0; i < current_objs.size(); i++)
 		{
-			Vector orig_pos(current_objs[i]->get_pos());
+			Vector orig_pos(current_objs[i]->get_orig_pos());
 			float x_offset = mouse_at_world.x - drag_start_pos.x;
 			float y_offset = mouse_at_world.y - drag_start_pos.y;
-			// FIXME: Snap_to not working correctly with offsets.
-			//if (snap_to)
-			if (0)
+			if (snap_to)
 			{
 				// FIXME: May need to adjust the snap-to offset here.
 				new_x = (float)((int)((x_offset + orig_pos.x) / 10) * 10);
@@ -181,9 +184,9 @@ EditorViewport::on_pointer_move(int x, int y)
 			}
 			current_objs[i]->set_pos(Vector(new_x, new_y, orig_pos.z));
 		}
-		drag_start_pos = mouse_at_world;
 	}
 }
+
 
 // Draws all of the objects in the viewport and the background (if any)
 void
@@ -218,6 +221,8 @@ EditorViewport::is_at(int x, int y)
 void
 EditorViewport::update(float delta)
 {
+	UNUSED_ARG(delta);
+
 	// Autoscroll if necessary
 	if (autoscroll)
 	{
