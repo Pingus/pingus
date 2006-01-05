@@ -125,13 +125,6 @@ PingusMain::PingusMain() :
   blitter_test(false),
   refresh_rate(60)
 {
-#ifdef WIN32
-	// The clanSDL target is a little buggy on Windows - Use OpenGL by default
-	use_opengl = true;
-#else
-	// Use the clanSDL target by default otherwise.
-	use_opengl = false;
-#endif
 }
 
 PingusMain::~PingusMain()
