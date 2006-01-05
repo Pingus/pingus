@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <ClanLib/Display/sprite.h>
+#include <ClanLib/Core/System/clanstring.h>
 #include "context_menu.hxx"
 #include "level_objs.hxx"
 #include "editor_viewport.hxx"
@@ -41,7 +42,7 @@ namespace Editor {
 		if (base_menu)
 		{
 			// Create all available child menus
-			width = 80;
+			width = 110;
 			show = true;
 			create_child_menus();
 		}
@@ -124,6 +125,9 @@ namespace Editor {
 				case (ROTATE) :
 					objs[i]->set_modifier(actions[selected_action_offset].parameter);
 					break;
+				case (SETOWNER) :
+					objs[i]->set_owner(CL_String::to_int(actions[selected_action_offset].parameter));
+					break;
 				default :
 					break;
 				}
@@ -163,8 +167,19 @@ namespace Editor {
 			menu->add_action(ContextItem("90 Degrees + Flip", "ROT90FLIP", ROTATE, 0));
 			menu->add_action(ContextItem("180 Degrees + Flip", "ROT180FLIP", ROTATE, 0));
 			menu->add_action(ContextItem("270 Degrees + Flip", "ROT270FLIP", ROTATE, 0));
-			add_action(ContextItem("Rotate", "", ROTATE, menu));
+			add_action(ContextItem("Rotate >", "", ROTATE, menu));
 		}
+		if (available_attribs & HAS_OWNER)
+		{
+			menu = new ContextMenu(objs, Vector(pos.x + width, pos.y), viewport, false);
+			viewport->get_screen()->get_gui_manager()->add(menu);
+			menu->add_action(ContextItem("0", "0", SETOWNER, 0));
+			menu->add_action(ContextItem("1", "1", SETOWNER, 0));
+			menu->add_action(ContextItem("2", "2", SETOWNER, 0));
+			menu->add_action(ContextItem("3", "3", SETOWNER, 0));
+			add_action(ContextItem("Set Owner >", "", SETOWNER, menu));
+		}
+		// TODO - Add more menu options here
 	}
 
 	void

@@ -78,8 +78,7 @@ LevelObj::draw(DrawingContext &gc)
 		}
 		else if(attribs & HAS_STRETCH)
 		{
-			// Surface Background - tile it or stretch
-			// FIXME: Make stretch code happen.
+			// Surface Background - tile it
 			for (int x = 0; x < level->size.width; x += sprite.get_width())
 				for (int y = 0; y < level->size.height; y += sprite.get_height())
 					gc.draw(sprite, Vector((float)x, (float)y));
@@ -159,6 +158,10 @@ LevelObj::refresh_sprite()
 		CL_SpriteDescription sprite_desc;
 		sprite_desc.add_frame(pb);
 		sprite = CL_Sprite(sprite_desc);
+		
+		// FIXME: The above method doesn't take translation origins into account.
+		// FIXME: This means that some objects (entrances & exits, for example)
+		// FIXME: are drawn incorrectly.
 	}
 }
 
