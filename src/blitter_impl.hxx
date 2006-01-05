@@ -215,14 +215,14 @@ CL_PixelBuffer modify(CL_PixelBuffer prov, const TransF&)
     }
   else
     {
-      CL_PixelBuffer canvas(prov.get_height(), prov.get_width(), prov.get_width()*4, CL_PixelFormat::rgba8888);
+      int pwidth  = prov.get_width();
+      int pheight = prov.get_height();
+			
+			CL_PixelBuffer canvas(prov.get_height(), pwidth, pheight*4, CL_PixelFormat::rgba8888);
 
       prov.lock();
       canvas.lock();
 
-      int pwidth  = prov.get_width();
-      int pheight = prov.get_height();
-      
       for (int y = 0; y < pheight; ++y)
         for (int x = 0; x < pwidth; ++x)
           {
