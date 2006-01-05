@@ -102,6 +102,7 @@ env.Program('../pingus', [
 'direction.cxx', 
 'display/drawing_context.cxx', 
 'display/scene_context.cxx', 
+'editor/context_menu.cxx',
 'editor/editor_panel.cxx', 
 'editor/editor_screen.cxx', 
 'editor/editor_viewport.cxx', 
