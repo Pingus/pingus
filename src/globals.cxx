@@ -35,30 +35,14 @@ std::string demo_file;
 bool        auto_scrolling                  = true;
 bool        drag_drop_scrolling             = false;
 int         tile_size                       = 32;
-#ifdef WIN32
-#ifdef _DEBUG
-bool        fullscreen_enabled              = false;
-#else
-bool        fullscreen_enabled              = false;
-#endif
-// The clanSDL target is a little buggy on Windows - Use OpenGL by default
-bool        use_opengl                      = true;
-#else
-bool        fullscreen_enabled              = false;
-// Use the clanSDL target by default for systems other than Windows.
-bool        use_opengl                      = false;
-#endif
+
 int         screen_width                    = 800;
 int         screen_height                   = 600;
 bool        draw_collision_map              = false;
 bool        swcursor_enabled                = false;
 std::string config_file;
 bool        max_cpu_usage                   = true;
-#ifdef WIN32
-#else
-#endif
-
-	bool        action_help                     = true;
+bool        action_help                     = true;
 bool        show_input_debug_screen         = false;
 bool        render_preview                  = false;
 
@@ -73,6 +57,15 @@ std::string default_language                = "en";
 
 int         pingus_debug_flags              = 0;
 
+#ifdef WIN32
+bool        fullscreen_enabled              = false;
+// The clanSDL target is a little buggy on Windows - Use OpenGL by default
+bool        use_opengl                      = true;
+#else
+bool        fullscreen_enabled              = false;
+// Use the clanSDL target by default for systems other than Windows.
+bool        use_opengl                      = false;
+#endif
 } // namespace Pingus
 
 /* EOF */
