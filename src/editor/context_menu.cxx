@@ -125,8 +125,11 @@ namespace Editor {
 				case (ROTATE) :
 					objs[i]->set_modifier(actions[selected_action_offset].parameter);
 					break;
-				case (SETOWNER) :
+				case (SET_OWNER) :
 					objs[i]->set_owner(CL_String::to_int(actions[selected_action_offset].parameter));
+					break;
+				case (SET_DIRECTION) :
+					objs[i]->set_direction(actions[selected_action_offset].parameter);
 					break;
 				default :
 					break;
@@ -173,11 +176,20 @@ namespace Editor {
 		{
 			menu = new ContextMenu(objs, Vector(pos.x + width, pos.y), viewport, false);
 			viewport->get_screen()->get_gui_manager()->add(menu);
-			menu->add_action(ContextItem("0", "0", SETOWNER, 0));
-			menu->add_action(ContextItem("1", "1", SETOWNER, 0));
-			menu->add_action(ContextItem("2", "2", SETOWNER, 0));
-			menu->add_action(ContextItem("3", "3", SETOWNER, 0));
-			add_action(ContextItem("Set Owner >", "", SETOWNER, menu));
+			menu->add_action(ContextItem("0", "0", SET_OWNER, 0));
+			menu->add_action(ContextItem("1", "1", SET_OWNER, 0));
+			menu->add_action(ContextItem("2", "2", SET_OWNER, 0));
+			menu->add_action(ContextItem("3", "3", SET_OWNER, 0));
+			add_action(ContextItem("Set Owner >", "", SET_OWNER, menu));
+		}
+		if (available_attribs & HAS_DIRECTION)
+		{
+			menu = new ContextMenu(objs, Vector(pos.x + width, pos.y), viewport, false);
+			viewport->get_screen()->get_gui_manager()->add(menu);
+			menu->add_action(ContextItem("Left", "left", SET_DIRECTION, 0));
+			menu->add_action(ContextItem("Right", "right", SET_DIRECTION, 0));
+			menu->add_action(ContextItem("Misc.", "misc", SET_DIRECTION, 0));
+			add_action(ContextItem("Direction >", "", SET_DIRECTION, menu));
 		}
 		// TODO - Add more menu options here
 	}
