@@ -97,6 +97,10 @@ LevelObj::is_at(int x, int y)
 			&& y > pos.y && y < pos.y + sprite.get_height());
 	else
 		return false;
+		
+	// FIXME: The above method doesn't take translation origins into account.
+	// FIXME: This means that some objects (entrances & exits, for example)
+	// FIXME: are drawn incorrectly.
 }
 
 void
@@ -122,12 +126,15 @@ LevelObj::refresh_sprite()
 {
 	if (attribs & HAS_SURFACE)
 	{
+		sprite = Resource::load_sprite(desc);
+		int x, y;
+		sprite.get_alignment(origin, x, y);
+				
 		CL_PixelBuffer pb;
 
 		// Apply modifier, then change the sprite loaded for this object in memory.
 		if (stretch_x || stretch_y)
 		{
-			sprite = Resource::load_sprite(desc);
 			float w = (float)sprite.get_width();
 			float h = (float)sprite.get_height();
 			
@@ -159,10 +166,8 @@ LevelObj::refresh_sprite()
 		CL_SpriteDescription sprite_desc;
 		sprite_desc.add_frame(pb);
 		sprite = CL_Sprite(sprite_desc);
-		
-		// FIXME: The above method doesn't take translation origins into account.
-		// FIXME: This means that some objects (entrances & exits, for example)
-		// FIXME: are drawn incorrectly.
+
+		sprite.set_alignment(origin, x, y);
 	}
 }
 

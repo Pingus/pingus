@@ -139,6 +139,9 @@ protected:
 
 	/** Optional color field for certain objects */
 	CL_Colorf color;
+	
+	/** Optional translation origin of the sprite */
+	CL_Origin origin;
 
 	/** Number representing which attributes this object possesses */
 	unsigned attribs;
