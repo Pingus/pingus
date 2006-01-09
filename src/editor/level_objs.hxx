@@ -44,7 +44,9 @@ namespace Editor {
 	const unsigned HAS_DIRECTION = 512;
 	const unsigned HAS_RELEASE_RATE = 1024;
 	const unsigned HAS_SURFACE = 2048;
-	const unsigned CAN_ROTATE = 4096;
+	// HAS_SURFACE_FAKE means it has a generic image in the editor, but isn't saved.
+	const unsigned HAS_SURFACE_FAKE = 4096;
+	const unsigned CAN_ROTATE = 8192;
 
 	/** Returns a number representing which attributes this object possesses */
 	inline unsigned int get_attributes(std::string obj_type)
@@ -59,7 +61,7 @@ namespace Editor {
 		else if (obj_type == "surface-background")
 			val = HAS_COLOR | HAS_STRETCH | HAS_PARA | HAS_SCROLL | HAS_SURFACE;
 		else if (obj_type == "entrance")
-			val = HAS_TYPE | HAS_DIRECTION | HAS_RELEASE_RATE | HAS_OWNER;
+			val = HAS_TYPE | HAS_DIRECTION | HAS_RELEASE_RATE | HAS_OWNER | HAS_SURFACE_FAKE;
 		else if (obj_type == "exit")
 			val = HAS_OWNER | HAS_SURFACE;
 		else
@@ -82,7 +84,7 @@ protected:
 	LevelImpl* level;
 
 	/** Resource Desciptor of this object */
-  ResDescriptor desc;
+	ResDescriptor desc;
 
 	/** Location of this object in the World */
 	Vector pos;
@@ -146,6 +148,9 @@ protected:
 
 	/** Marks is this object is currently selected */
 	bool selected;
+
+	/** Loads any generic images necessary for objects with HAS_FAKE_SURFACE */
+	void load_generic_surface();
 
 	/** Write any additional properties to the XML file for this type */
 	virtual void write_extra_properties(XMLFileWriter& xml) { }
@@ -220,6 +225,8 @@ public:
 public:
 	/** Set the object's position */
 	void set_pos(const Vector p) { pos = p; }
+	
+	/** Original position of the objects before being dragged around */
 	void set_orig_pos(const Vector p) { orig_pos = p; }
 
 	/** Set the object's resource name */
@@ -298,7 +305,7 @@ public:
 	virtual void draw(DrawingContext &gc);
 
 	/** Returns true if the mouse is hovering over this object */
-  virtual bool is_at (int x, int y);
+	virtual bool is_at (int x, int y);
 
 	/** Default Constructor */
 	LevelObj(const std::string obj_name, LevelImpl* level_);

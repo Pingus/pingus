@@ -51,7 +51,8 @@ LevelObj::LevelObj(std::string obj_name, LevelImpl* level_) :
 	selected(false),
 	attribs(get_attributes(obj_name))
 {
-	
+	if (attribs & HAS_SURFACE_FAKE)
+		load_generic_surface();
 }
 
 void 
@@ -65,7 +66,7 @@ LevelObj::set_res_desc(const ResDescriptor d)
 void
 LevelObj::draw(DrawingContext &gc)
 {
-	if (!removed && attribs & HAS_SURFACE)
+	if (!removed && attribs & (HAS_SURFACE | HAS_SURFACE_FAKE))
 	{
 		// If selected, draw a highlighted box around it
 		if (selected)
@@ -91,7 +92,7 @@ LevelObj::draw(DrawingContext &gc)
 bool
 LevelObj::is_at(int x, int y)
 {
-	if (!removed && attribs & HAS_SURFACE)
+	if (!removed && attribs & (HAS_SURFACE | HAS_SURFACE_FAKE))
 		return (x > pos.x && x < pos.x + sprite.get_width()
 			&& y > pos.y && y < pos.y + sprite.get_height());
 	else
@@ -186,7 +187,7 @@ LevelObj::write_properties(XMLFileWriter &xml)
 		const unsigned attribs = get_attributes(section_name);
 
 		// Write information about the main sprite
-		if (attribs & HAS_SURFACE)
+		if (attribs & HAS_SURFACE && !(attribs & HAS_SURFACE_FAKE))
 		{
 			xml.begin_section("surface");
 			xml.write_string("image", desc.res_name);
@@ -234,6 +235,17 @@ LevelObj::write_properties(XMLFileWriter &xml)
 		xml.write_vector("position", pos);
 
 		xml.end_section();	// object's section_name
+	}
+}
+
+void
+LevelObj::load_generic_surface()
+{
+	if (section_name == "entrance")
+	{
+		desc.res_name = "entrances/generic";
+		desc.modifier = ResourceModifierNS::ROT0;
+		sprite = Resource::load_sprite(desc);
 	}
 }
 
