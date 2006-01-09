@@ -75,14 +75,14 @@ LevelObj::draw(DrawingContext &gc)
 		if (attribs & HAS_WIDTH)
 		{
 			for(int x = static_cast<int>(pos.x); x < pos.x + width;	x += sprite.get_width())
-				gc.draw(sprite, Vector(static_cast<float>(x), pos.y));
+				gc.draw(sprite, Vector(static_cast<float>(x), pos.y, pos.z));
 		}
 		else if(attribs & HAS_STRETCH)
 		{
 			// Surface Background - tile it
 			for (int x = 0; x < level->size.width; x += sprite.get_width())
 				for (int y = 0; y < level->size.height; y += sprite.get_height())
-					gc.draw(sprite, Vector((float)x, (float)y));
+					gc.draw(sprite, Vector((float)x, (float)y, pos.z));
 		}
 		else
 			gc.draw(sprite, pos);
@@ -192,7 +192,7 @@ LevelObj::write_properties(XMLFileWriter &xml)
 		const unsigned attribs = get_attributes(section_name);
 
 		// Write information about the main sprite
-		if (attribs & HAS_SURFACE && !(attribs & HAS_SURFACE_FAKE))
+		if (attribs & HAS_SURFACE)
 		{
 			xml.begin_section("surface");
 			xml.write_string("image", desc.res_name);

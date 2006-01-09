@@ -131,6 +131,11 @@ namespace Editor {
 				case (SET_DIRECTION) :
 					objs[i]->set_direction(actions[selected_action_offset].parameter);
 					break;
+				case (SET_Z_POS) :
+					objs[i]->set_pos(Vector(objs[i]->get_pos().x, objs[i]->get_pos().y, 
+						CL_String::to_int(actions[selected_action_offset].parameter)));
+					objs[i]->set_orig_pos(objs[i]->get_pos());
+					break;
 				default :
 					break;
 				}
@@ -191,6 +196,15 @@ namespace Editor {
 			menu->add_action(ContextItem("Misc.", "misc", SET_DIRECTION, 0));
 			add_action(ContextItem("Direction >", "", SET_DIRECTION, menu));
 		}
+		menu = new ContextMenu(objs, Vector(pos.x + width, pos.y), viewport, false);
+		viewport->get_screen()->get_gui_manager()->add(menu);
+		menu->add_action(ContextItem("-50", "-50", SET_Z_POS, 0));
+		menu->add_action(ContextItem("-25", "-25", SET_Z_POS, 0));
+		menu->add_action(ContextItem("0", "0", SET_Z_POS, 0));
+		menu->add_action(ContextItem("25", "25", SET_Z_POS, 0));
+		menu->add_action(ContextItem("50", "50", SET_Z_POS, 0));
+		add_action(ContextItem("Set Z Pos. >", "", SET_Z_POS, menu));
+		
 		// TODO - Add more menu options here
 	}
 

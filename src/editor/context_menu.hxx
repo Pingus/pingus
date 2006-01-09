@@ -32,7 +32,8 @@ namespace Editor {
 	class EditorViewport;
 	class ContextMenu;
 
-	typedef enum ItemModifier { REMOVE, ROTATE, SET_OWNER, SET_DIRECTION, STRETCH };
+	typedef enum ItemModifier { REMOVE, ROTATE, SET_OWNER, SET_DIRECTION, 
+		STRETCH, SET_Z_POS };
 
 	class ContextItem {
 	public:
