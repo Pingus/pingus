@@ -22,6 +22,7 @@
 #include "gui/screen_manager.hxx"
 #include "sound/sound.hxx"
 #include "resource.hxx"
+#include "blitter.hxx"
 #include "pingus_menu_manager.hxx"
 
 namespace Pingus {
@@ -32,13 +33,20 @@ PingusMenuManager::PingusMenuManager ()
   : mainmenu (this),
     exitmenu (this)
 {
-  background.add_layer (Resource::load_sprite("core/menu/layer1"),  0, 0, 12, 0);
-  background.add_layer (Resource::load_sprite("core/menu/layer2"),  0, 150, 25, 0);
-  background.add_layer (Resource::load_sprite("core/menu/layer3"), 0, 200, 50, 0);
-  background.add_layer (Resource::load_sprite("core/menu/layer4"), 0, 600 - 171, 100, 0);
-  background.add_layer (Resource::load_sprite("core/menu/layer5"), 0, 500, 200, 0);
-
-  push_menu (&mainmenu);
+	int w = (int)CL_Display::get_width();
+	int h = (int)CL_Display::get_height();
+	background.add_layer (Blitter::scale_surface_to_canvas(
+		Resource::load_pixelbuffer("core/menu/layer1"), w, 185 * h / 600), 0, 0, 12, 0);
+	background.add_layer (Blitter::scale_surface_to_canvas(
+		Resource::load_pixelbuffer("core/menu/layer2"), w, 362 * h / 600), 0, 150 * h / 600, 25, 0);
+	background.add_layer (Blitter::scale_surface_to_canvas(
+		Resource::load_pixelbuffer("core/menu/layer3"), w, 306 * h / 600), 0, 200 * h / 600, 50, 0);
+	background.add_layer (Blitter::scale_surface_to_canvas(
+		Resource::load_pixelbuffer("core/menu/layer4"), w, 171 * h / 600), 0, 429 * h / 600, 100, 0);
+	background.add_layer (Blitter::scale_surface_to_canvas(
+		Resource::load_pixelbuffer("core/menu/layer5"), 302 * w / 800, 104 * h / 600), 0, 500 * h / 600, 200, 0);
+	
+	push_menu (&mainmenu);
 }
 
 PingusMenuManager::~PingusMenuManager ()

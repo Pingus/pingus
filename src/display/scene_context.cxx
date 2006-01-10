@@ -36,9 +36,9 @@ public:
   //CL_Canvas        canvas;
 
   SceneContextImpl() 
-    : lightmap(CL_PixelBuffer(static_cast<int>(800/SCALE_FACTOR), 
-                              static_cast<int>(600/SCALE_FACTOR),
-                              static_cast<int>(800/SCALE_FACTOR*4),
+    : lightmap(CL_PixelBuffer(static_cast<int>(CL_Display::get_width()/SCALE_FACTOR), 
+                              static_cast<int>(CL_Display::get_height()/SCALE_FACTOR),
+                              static_cast<int>(CL_Display::get_width()/SCALE_FACTOR*4),
                               CL_PixelFormat::rgba8888))
                   //canvas(lightmap)
   {

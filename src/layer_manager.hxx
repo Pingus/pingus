@@ -22,7 +22,8 @@
 
 #include "pingus.hxx"
 #include <cmath>
-#include <ClanLib/Display/sprite.h>
+#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/display.h>
 #include "display/drawing_context.hxx"
 
 namespace Pingus {
@@ -33,7 +34,7 @@ private:
   class Layer
   {
   private:
-    CL_Sprite sur;
+    CL_Surface sur;
 
     float x_pos;
     float y_pos;
@@ -51,7 +52,7 @@ private:
         x_offset(0), y_offset(0)
     {}
 
-    Layer (const CL_Sprite& arg_sur, float x_o, float y_o, float x_u, float y_u)
+    Layer (const CL_Surface& arg_sur, float x_o, float y_o, float x_u, float y_u)
       : sur(arg_sur),
         x_pos(0), y_pos(0),
         x_update(x_u), y_update(y_u),
@@ -61,13 +62,13 @@ private:
     void draw (DrawingContext& gc)
     {
       gc.draw(sur, Vector(x_pos + x_offset, y_pos + y_offset));
-      gc.draw(sur, Vector(x_pos + x_offset - 800, y_pos + y_offset));
+      gc.draw(sur, Vector(x_pos + x_offset - gc.get_width(), y_pos + y_offset));
     }
 
     void update (float delta)
     {
-      x_pos = fmod((x_pos + x_update * delta),800);
-      y_pos = fmod((y_pos + y_update * delta),600);
+      x_pos = fmod((x_pos + x_update * delta),CL_Display::get_width());
+      y_pos = fmod((y_pos + y_update * delta),CL_Display::get_height());
     }
   };
 
@@ -77,7 +78,7 @@ public:
   LayerManager ();
   ~LayerManager();
 
-  void add_layer (const CL_Sprite& sur, float x_o, float y_o, float x_u, float y_u);
+  void add_layer (const CL_PixelBuffer& sur, float x_o, float y_o, float x_u, float y_u);
   void draw (DrawingContext& gc);
   void update (float delta);
 

@@ -19,6 +19,7 @@
 
 #include <assert.h>
 #include <iostream>
+#include <ClanLib/Display/display.h>
 #include <ClanLib/Display/sprite.h>
 #include <ClanLib/Display/font.h>
 #include <ClanLib/Display/graphic_context.h>
@@ -371,19 +372,19 @@ DrawingContext::get_clip_rect()
 {
   return CL_Rect(CL_Point(static_cast<int>(-translate_stack.back().x),
                           static_cast<int>(-translate_stack.back().y)),
-                 CL_Size(800, 600));
+                 CL_Size((int)get_width(), (int)get_height()));
 }
 
 float
 DrawingContext::get_width() const
 {
-  return 800;
+  return CL_Display::get_width();
 }
 
 float
 DrawingContext::get_height() const
 {
-  return 600;  
+  return CL_Display::get_height();  
 }
 
 void

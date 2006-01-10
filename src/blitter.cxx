@@ -501,44 +501,31 @@ Blitter::scale_surface_to_canvas (CL_PixelBuffer provider, int width, int height
   unsigned char* tbuffer = static_cast<unsigned char*>(canvas.get_data ());
   int pwidth = provider.get_width ();
   int pheight = provider.get_height ();
+  int pitch = provider.get_pitch();
 
-  if (provider.get_format().get_type() ==  pixelformat_index)
-    {
-      CL_Colorf color;
-  
-      // Slow but generic, using get_data () would be better, but would
-      // require quite a bit of work
-      for (int y = 0; y < height; ++y)
+	if (provider.get_format().get_type() ==  pixelformat_index)
 	{
-	  for (int x = 0; x < width; ++x)
-	    {
-	      unsigned char pixel = *(static_cast<unsigned char*>(provider.get_data ())
-				      + (y * pheight/height) * provider.get_pitch() + (x * pwidth/width));
+		CL_Color color;
+		pout(PINGUS_DEBUG_ACTIONS) << 
+			"Blitter::scale_surface_to_canvas() - Scaling indexed image" << std::endl;
+		  
+		for (int y = 0; y < height; ++y)
+			for (int x = 0; x < width; ++x)
+			{
+				unsigned offset = (y * pheight/height) * pitch + (x * pwidth/width);
 
-          if (!CL_Endian::is_system_big())
-          {
-            color.red   = provider.get_palette().colors[pixel*3 +0].color / 255.0f;
-			color.green = provider.get_palette().colors[pixel*3 +1].color / 255.0f;
-            color.blue  = provider.get_palette().colors[pixel*3 +2].color / 255.0f;
-          }
-          else
-          {
-            color.red   = provider.get_palette().colors[pixel*3 +1].color / 255.0f;
-            color.green = provider.get_palette().colors[pixel*3 +1].color / 255.0f;
-            color.blue  = provider.get_palette().colors[pixel*3 +0].color / 255.0f;
-          }
+				color = provider.get_palette().colors[sbuffer[offset]];
 
-	      if (provider.get_format().has_colorkey()
-                  && provider.get_format().get_colorkey() == pixel)
-		color.alpha = 0.0f;
-	      else
-		color.alpha = 1.0f;
-              
-	      // FIXME: ignoring the source alpha due to get_pixel brokeness... no time to test the patch
-	      canvas.draw_pixel(x, y, CL_Color(color));
-	    }
+				// Detrmine alpha channel
+				if (provider.get_format().has_colorkey()
+					&& provider.get_format().get_colorkey() == sbuffer[offset])
+					color.set_alpha(0);
+				else
+					color.set_alpha(255);
+     
+				canvas.draw_pixel(x, y, color);
+    	}
 	}
-    }
   else
     {
       switch (provider.get_format().get_depth())
@@ -547,6 +534,8 @@ Blitter::scale_surface_to_canvas (CL_PixelBuffer provider, int width, int height
 	  {
 	    // We assume that we have the data in RGB888, which might not be
 	    // the case
+	      pout(PINGUS_DEBUG_ACTIONS) << 
+	      	"Blitter::scale_surface_to_canvas() - Scaling 24 bit image" << std::endl;
 	    for (int y = 0; y < height; ++y)
 	      for (int x = 0; x < width; ++x)
 		{
@@ -575,6 +564,9 @@ Blitter::scale_surface_to_canvas (CL_PixelBuffer provider, int width, int height
 	  {
 	    // We assume that we have the data in RGBA8888, which might not be
 	    // the case
+		pout(PINGUS_DEBUG_ACTIONS) << 
+			"Blitter::scale_surface_to_canvas() - Scaling 32 bit image" << std::endl;
+			
 	    for (int y = 0; y < height; ++y)
 	      for (int x = 0; x < width; ++x)
 		{
@@ -600,18 +592,22 @@ Blitter::scale_surface_to_canvas (CL_PixelBuffer provider, int width, int height
 	  }
 	  break;
 	default:
-	  // Slow but generic, using get_data () would be better, but would
-	  // require quite a bit of work
-	  for (int y = 0; y < height; ++y)
-	    for (int x = 0; x < width; ++x)
-	      {
-		CL_Color color = provider.get_pixel(x * provider.get_width () / width,
-                                                    y * provider.get_height () / height);
-		// FIXME: ignoring the source alpha due to get_pixel
-		// brokeness... no time to test the patch
-		canvas.draw_pixel(x, y, color);
-              }
-	  break;
+		// Slow but generic, using get_data () would be better, but would
+		// require quite a bit of work
+		pout(PINGUS_DEBUG_ACTIONS) << 
+			"Blitter::scale_surface_to_canvas() - Scaling image using default method" 
+			<< std::endl;
+
+		for (int y = 0; y < height; ++y)
+			for (int x = 0; x < width; ++x)
+			{
+				CL_Color color = provider.get_pixel(x * pwidth / width,
+					y * pheight / height);
+				// FIXME: ignoring the source alpha due to get_pixel
+				// brokeness... no time to test the patch
+				canvas.draw_pixel(x, y, color);
+			}
+		break;
 	}
     }
 
@@ -626,76 +622,6 @@ Blitter::scale_surface_to_canvas(const CL_Surface& sur, int width, int height)
 {
   return Blitter::scale_surface_to_canvas(sur.get_pixeldata(), width, height);
 }
-
-/*
-// Converts a SurfaceProvider based surface, to a Canvas
-// based one. The old one will not be deleted.
-CL_Surface
-Blitter::convert_to_emptyprovider(CL_Surface ssurf)
-{
-CL_PixelBuffer& tprov = convert_to_emptyprovider(ssurf.get_provider());
-return CL_Surface::create(tprov, true);
-}
-
-// Converts a SurfaceProvider, to an Canvas and returns
-// the newly allocated provider, you need to delete it yourself.
-CL_PixelBuffer&
-Blitter::convert_to_emptyprovider(CL_PixelBuffer& sprov)
-{
-  CL_PixelBuffer* tprov;
-  CL_Palette* palette;
-  unsigned char* sbuffer;
-  unsigned char* tbuffer;
-  int i;
-
-  sprov.lock();
-  switch(sprov.get_format().get_depth())
-    {
-    case 32:
-      tprov = new CL_PixelBuffer(sprov.get_width(),
-			    sprov.get_height());
-      tprov.lock();
-
-      sbuffer = static_cast<unsigned char*>(sprov.get_data());
-      tbuffer = static_cast<unsigned char*>(tprov.get_data());
-
-      for(i=0; i < (tprov.get_height() * tprov.get_pitch()); ++i)
-	{
-	  tbuffer[i] = sbuffer[i];
-	}
-
-      tprov.unlock();
-      break;
-    case 8:
-      tprov = new CL_PixelBuffer(sprov.get_width(),
-			    sprov.get_height());
-      palette = sprov.get_palette();
-      tprov.lock();
-
-      sbuffer = static_cast<unsigned char*>(sprov.get_data());
-      tbuffer = static_cast<unsigned char*>(tprov.get_data());
-
-      for(i=0; i < (sprov.get_height() * sprov.get_pitch()); ++i)
-	{
-	  tbuffer[i * 4 + 0] = 255;
-	  tbuffer[i * 4 + 1] = palette.palette[sbuffer[i] * 3 + 2];
-	  tbuffer[i * 4 + 2] = palette.palette[sbuffer[i] * 3 + 1];
-	  tbuffer[i * 4 + 3] = palette.palette[sbuffer[i] * 3 + 0];
-	}
-
-      tprov.unlock();
-      break;
-    default:
-      std::cout << "convert_to_emptyprovider(): Wrong source format: "
-		<< static_cast<int>(sprov.get_format().get_depth()) << std::endl;
-      assert(false);
-      break;
-    }
-  sprov.unlock();
-
-  return tprov;
-}
-*/
 
 /** Flip a surface horizontal */
 CL_PixelBuffer

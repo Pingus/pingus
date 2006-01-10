@@ -31,9 +31,9 @@ LayerManager::~LayerManager()
 }
 
 void
-LayerManager::add_layer (const CL_Sprite& sur, float x_o, float y_o, float x_u, float y_u)
+LayerManager::add_layer (const CL_PixelBuffer& sur, float x_o, float y_o, float x_u, float y_u)
 {
-  layers.push_back (Layer(sur, x_o, y_o, x_u, y_u));
+  layers.push_back (Layer(CL_Surface(sur), x_o, y_o, x_u, y_u));
 }
 
 void
