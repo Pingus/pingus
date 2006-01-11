@@ -18,6 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <ClanLib/Display/sprite.h>
+#include <ClanLib/Display/sprite_description.h>
 #include "layer_manager.hxx"
 
 namespace Pingus {
@@ -33,7 +35,9 @@ LayerManager::~LayerManager()
 void
 LayerManager::add_layer (const CL_PixelBuffer& sur, float x_o, float y_o, float x_u, float y_u)
 {
-  layers.push_back (Layer(CL_Surface(sur), x_o, y_o, x_u, y_u));
+	CL_SpriteDescription desc;
+	desc.add_frame(sur);
+  layers.push_back (Layer(CL_Sprite(desc), x_o, y_o, x_u, y_u));
 }
 
 void

@@ -22,7 +22,7 @@
 
 #include "pingus.hxx"
 #include <cmath>
-#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/sprite.h>
 #include <ClanLib/Display/display.h>
 #include "display/drawing_context.hxx"
 
@@ -34,7 +34,7 @@ private:
   class Layer
   {
   private:
-    CL_Surface sur;
+    CL_Sprite sur;
 
     float x_pos;
     float y_pos;
@@ -52,7 +52,7 @@ private:
         x_offset(0), y_offset(0)
     {}
 
-    Layer (const CL_Surface& arg_sur, float x_o, float y_o, float x_u, float y_u)
+    Layer (const CL_Sprite& arg_sur, float x_o, float y_o, float x_u, float y_u)
       : sur(arg_sur),
         x_pos(0), y_pos(0),
         x_update(x_u), y_update(y_u),
