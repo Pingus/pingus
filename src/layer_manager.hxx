@@ -67,8 +67,8 @@ private:
 
     void update (float delta)
     {
-      x_pos = fmod((x_pos + x_update * delta),CL_Display::get_width());
-      y_pos = fmod((y_pos + y_update * delta),CL_Display::get_height());
+      x_pos = fmod((x_pos + x_update * delta),(float)CL_Display::get_width());
+      y_pos = fmod((y_pos + y_update * delta),(float)CL_Display::get_height());
     }
   };
 

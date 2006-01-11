@@ -133,7 +133,7 @@ namespace Editor {
 					break;
 				case (SET_Z_POS) :
 					objs[i]->set_pos(Vector(objs[i]->get_pos().x, objs[i]->get_pos().y, 
-						CL_String::to_int(actions[selected_action_offset].parameter)));
+						(float)CL_String::to_int(actions[selected_action_offset].parameter)));
 					objs[i]->set_orig_pos(objs[i]->get_pos());
 					break;
 				default :

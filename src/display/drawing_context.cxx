@@ -378,13 +378,13 @@ DrawingContext::get_clip_rect()
 float
 DrawingContext::get_width() const
 {
-  return CL_Display::get_width();
+  return (float)CL_Display::get_width();
 }
 
 float
 DrawingContext::get_height() const
 {
-  return CL_Display::get_height();  
+  return (float)CL_Display::get_height();  
 }
 
 void
