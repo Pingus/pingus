@@ -57,13 +57,13 @@ std::string default_language                = "en";
 
 int         pingus_debug_flags              = 0;
 
-#ifdef WIN32
 bool        fullscreen_enabled              = false;
-// The clanSDL target is a little buggy on Windows - Use OpenGL by default
+
+#if defined(WIN32) || defined(__APPLE__)
+// The clanSDL target is a little buggy on Windows and OSX - Use OpenGL by default
 bool        use_opengl                      = true;
 #else
-bool        fullscreen_enabled              = false;
-// Use the clanSDL target by default for systems other than Windows.
+// Use the clanSDL target by default for systems other than Windows and OSX (aka Linux).
 bool        use_opengl                      = false;
 #endif
 } // namespace Pingus

@@ -11,6 +11,8 @@
 		144F23F30948D374006107D1 /* file_dialog_listener.hxx in CopyFiles */ = {isa = PBXBuildFile; fileRef = 144F23F20948D374006107D1 /* file_dialog_listener.hxx */; };
 		144F23FA0948D398006107D1 /* worldmap_story.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 144F23F80948D398006107D1 /* worldmap_story.cxx */; };
 		144F23FB0948D398006107D1 /* worldmap_story.hxx in CopyFiles */ = {isa = PBXBuildFile; fileRef = 144F23F90948D398006107D1 /* worldmap_story.hxx */; };
+		1492D09909770C4300BDCB27 /* context_menu.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 1492D09709770C4300BDCB27 /* context_menu.cxx */; };
+		1492D09A09770C4300BDCB27 /* context_menu.hxx in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1492D09809770C4300BDCB27 /* context_menu.hxx */; };
 		149C3FF9093F79D900FCA6C1 /* file_dialog_item.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 149C3FF5093F79D900FCA6C1 /* file_dialog_item.cxx */; };
 		149C3FFA093F79D900FCA6C1 /* file_dialog_item.hxx in CopyFiles */ = {isa = PBXBuildFile; fileRef = 149C3FF6093F79D900FCA6C1 /* file_dialog_item.hxx */; };
 		149C3FFB093F79D900FCA6C1 /* file_dialog.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 149C3FF7093F79D900FCA6C1 /* file_dialog.cxx */; };
@@ -338,6 +340,7 @@
 				149C48ED093FD58300FCA6C1 /* tinygettext.hxx in CopyFiles */,
 				144F23F30948D374006107D1 /* file_dialog_listener.hxx in CopyFiles */,
 				144F23FB0948D398006107D1 /* worldmap_story.hxx in CopyFiles */,
+				1492D09A09770C4300BDCB27 /* context_menu.hxx in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +352,8 @@
 		144F23F20948D374006107D1 /* file_dialog_listener.hxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; name = file_dialog_listener.hxx; path = src/file_dialog_listener.hxx; sourceTree = "<group>"; };
 		144F23F80948D398006107D1 /* worldmap_story.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = worldmap_story.cxx; sourceTree = "<group>"; };
 		144F23F90948D398006107D1 /* worldmap_story.hxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = worldmap_story.hxx; sourceTree = "<group>"; };
+		1492D09709770C4300BDCB27 /* context_menu.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = context_menu.cxx; sourceTree = "<group>"; };
+		1492D09809770C4300BDCB27 /* context_menu.hxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = context_menu.hxx; sourceTree = "<group>"; };
 		149C3FF5093F79D900FCA6C1 /* file_dialog_item.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = file_dialog_item.cxx; path = src/file_dialog_item.cxx; sourceTree = "<group>"; };
 		149C3FF6093F79D900FCA6C1 /* file_dialog_item.hxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; name = file_dialog_item.hxx; path = src/file_dialog_item.hxx; sourceTree = "<group>"; };
 		149C3FF7093F79D900FCA6C1 /* file_dialog.cxx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = file_dialog.cxx; path = src/file_dialog.cxx; sourceTree = "<group>"; };
@@ -887,6 +892,8 @@
 		14BB77040923CCF30055EC6A /* editor */ = {
 			isa = PBXGroup;
 			children = (
+				1492D09709770C4300BDCB27 /* context_menu.cxx */,
+				1492D09809770C4300BDCB27 /* context_menu.hxx */,
 				14BB77050923CCF30055EC6A /* editor_panel.cxx */,
 				14BB77060923CCF30055EC6A /* editor_panel.hxx */,
 				14BB77070923CCF30055EC6A /* editor_screen.cxx */,
@@ -1812,6 +1819,7 @@
 				149C48EA093FD58300FCA6C1 /* ground_map.cxx in Sources */,
 				149C48EC093FD58300FCA6C1 /* tinygettext.cxx in Sources */,
 				144F23FA0948D398006107D1 /* worldmap_story.cxx in Sources */,
+				1492D09909770C4300BDCB27 /* context_menu.cxx in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
