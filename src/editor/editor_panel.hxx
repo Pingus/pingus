@@ -44,7 +44,7 @@ private:
 	/** Collection of buttons on this panel */
 	std::vector<PanelButton*> panel_buttons;
 
-	GUI::Combobox* combo_groundpieces;
+	GUI::Combobox* combobox;
 
 public:
 	/** Constructor
@@ -67,6 +67,9 @@ public:
 
 	/** Return the editor screen */
 	EditorScreen* get_screen() { return editor; }
+	
+	/** Return the combobox object */
+	GUI::Combobox* get_combobox() { return combobox; }
 
 private:
 	EditorPanel();

@@ -19,6 +19,7 @@
 
 #include <ClanLib/Display/sprite.h>
 #include "panel_buttons.hxx"
+#include "../gui/combobox.hxx"
 #include "../display/scene_context.hxx"
 #include "../path_manager.hxx"
 #include "../fonts.hxx"
@@ -103,7 +104,6 @@ PanelButtonLoad::PanelButtonLoad(EditorPanel *p) :
 void
 PanelButtonLoad::on_primary_button_click(int x, int y)
 {
-	// TODO: Open a file dialog box to load a level.
 	panel->get_screen()->show_file_dialog(true);
 }
 
@@ -121,6 +121,29 @@ PanelButtonSave::on_primary_button_click(int x, int y)
 {
 	// TODO: Open a file dialog box to save the level.
 	panel->get_screen()->save(path_manager.complete("levels/test.pingus"), ".pingus");
+}
+
+
+// Load the groundpieces
+PanelButtonGroundpiece::PanelButtonGroundpiece(EditorPanel *p) :
+	PanelButton(p)
+{
+	sur = Resource::load_sprite("core/editor/save"); // FIXME: Update this sprite 
+	tooltip = "Load a groundpiece";
+}
+
+void
+PanelButtonGroundpiece::on_primary_button_click(int x, int y)
+{
+	UNUSED_ARG(x);
+	UNUSED_ARG(y);
+	
+	// FIXME: Add actual groundpieces
+	panel->get_combobox()->clear();
+	panel->get_combobox()->set_label("Groundpieces");
+	panel->get_combobox()->add(new GUI::ComboItem(1, "Testing 1"));
+	panel->get_combobox()->add(new GUI::ComboItem(2, "Testing 2"));
+	panel->get_combobox()->set_enabled(true);
 }
 
 } // Editor namespace

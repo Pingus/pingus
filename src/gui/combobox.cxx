@@ -27,10 +27,12 @@ namespace Pingus {
 namespace GUI {
 
 // Constructor
-Combobox::Combobox (Vector p) :
+Combobox::Combobox (Vector p, std::string l) :
 	current_item(0),
 	drop_down(false),
-	pos(p)
+	pos(p),
+	enabled(false),
+	label(l)
 {
 	// Default to 20 characters wide.
 	width = Fonts::smallfont.get_width('O') * 20.0f;
@@ -40,12 +42,7 @@ Combobox::Combobox (Vector p) :
 // Destructor
 Combobox::~Combobox ()
 {
-	for (std::vector<ComboItem*>::iterator i = item_list.begin();
-		i != item_list.end(); i++)
-	{
-		if ((*i)->delete_it())
-			delete (*i);
-	}
+	clear();
 }
 
 // Add an item to the combobox
@@ -70,13 +67,28 @@ Combobox::remove(ComboItem* item)
 		}
 	}
 }
-			
+
+// Remove all items from this combobox
+void
+Combobox::clear()
+{
+	for (std::vector<ComboItem*>::iterator i = item_list.begin();
+		i != item_list.end(); i++)
+	{
+		if ((*i)->delete_it())
+			delete (*i);
+	}
+}
+
 // Returns whether or not the combobox is at this location
 bool
 Combobox::is_at(int x, int y)
 {
-	return ((float)x > pos.x && (float)x < pos.x + get_width() &&
-		(float)y > pos.y && (float)y < pos.y + get_height());
+	if (enabled)
+		return ((float)x > pos.x && (float)x < pos.x + get_width() &&
+			(float)y > pos.y && (float)y < pos.y + get_height());
+	else
+		return false;
 }
 
 // Returns the width of the box
@@ -117,9 +129,16 @@ Combobox::on_primary_button_click(int x, int y)
 void
 Combobox::draw(DrawingContext &gc)
 {
-	// First off, Draw the rectangle
+	if (!enabled)
+		return;
+	
+	// Draw the label
+	gc.print_right(Fonts::smallfont, pos.x, pos.y, label);
+
+	// Draw the rectangle
 	gc.draw_fillrect(pos.x, pos.y, pos.x + get_width(), pos.y + get_height(),
 		CL_Color::white);
+
 	// Next, draw the rectangle border
 	gc.draw_rect(pos.x, pos.y, pos.x + get_width(), pos.y + get_height(),
 		CL_Color::black);

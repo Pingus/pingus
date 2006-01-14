@@ -41,19 +41,19 @@ private:
 
 protected:
 	/** The actual button image */
-  CL_Sprite sur;
+	CL_Sprite sur;
 
 	/** The button background image when not pressed */
-  CL_Sprite button;
+	CL_Sprite button;
 
 	/** The button background image while pressed */
-  CL_Sprite button_pressed;
+	CL_Sprite button_pressed;
 
 	/** The panel to which this button belongs */
 	EditorPanel* panel;
 
 	/** The string that appears when the mouse is hovering over this button */
-  std::string tooltip;
+	std::string tooltip;
 
 	/** The location of this button on the screen  (set by the EditorPanel) */
 	Vector pos;
@@ -96,6 +96,7 @@ private:
 	PanelButton& operator= (const PanelButton&);
 };	// PanelButton class
 
+
 /** Standard exit button */
 class PanelButtonExit : PanelButton
 {
@@ -112,6 +113,7 @@ private:
   PanelButtonExit (const PanelButtonExit&);
   PanelButtonExit& operator= (const PanelButtonExit&);
 };		// PanelButtonExit class
+
 
 /** Standard load button */
 class PanelButtonLoad : PanelButton
@@ -130,6 +132,7 @@ private:
   PanelButtonLoad& operator= (const PanelButtonLoad&);
 };		// PanelButtonLoad class
 
+
 /** Standard save button */
 class PanelButtonSave : PanelButton
 {
@@ -147,8 +150,27 @@ private:
   PanelButtonSave& operator= (const PanelButtonSave&);
 };		// PanelButtonSave class
 
+
+/** Display all of the groundpiece objects */
+class PanelButtonGroundpiece : PanelButton
+{
+public:
+	/** Constructor
+		@param p the EditorPanel to which this button belongs */
+	PanelButtonGroundpiece (EditorPanel* p);
+
+	/** This function is called by the gui_manager when the button is clicked */
+	void on_primary_button_click (int x, int y);
+
+private:
+	PanelButtonGroundpiece ();
+  PanelButtonGroundpiece (const PanelButtonGroundpiece&);
+  PanelButtonGroundpiece& operator= (const PanelButtonGroundpiece&);
+};		// PanelButtonGroundpiece class
+
 }		// Editor namespace
 }		// Pingus namespace
+
 
 #endif
 

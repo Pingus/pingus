@@ -101,9 +101,15 @@ protected:
 	/** Location of the Combobox */
 	Vector pos;
 
+	/** Whether or not this combobox is enabled */
+	bool enabled;
+	
+	/** Label that prints to the left of the drop-down */
+	std::string label;
+
 public:
 	/** Constructor */
-	Combobox (Vector p);
+	Combobox (Vector p, std::string label = "");
 	
 	/** Destructor */
 	virtual ~Combobox ();
@@ -115,6 +121,9 @@ public:
 
 	/** Remove an item from the list */
 	virtual void remove(ComboItem* item);
+
+	/** Clears all items from combobox */
+	virtual void clear();
 
 	/** Return a pointer to the selected item.  Returns 0 if nothing is selected */
 	ComboItem* get_selected_item() { return current_item; }
@@ -139,6 +148,15 @@ public:
   /** Gets emmited when a button is pressed and released over the
       same component */
   virtual void on_primary_button_click (int x, int y);
+	
+	/** Sets whether or not this combobox is clickable */
+	virtual void set_enabled(bool e) { enabled = e; }
+	
+	/** Returns whether or not the combobox is enabled */
+	virtual bool is_enabled() { return enabled; }
+	
+	/** Sets the label */
+	virtual void set_label(std::string l) { label = l; }
 
 private:
 	Combobox();
