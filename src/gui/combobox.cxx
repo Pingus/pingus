@@ -78,6 +78,8 @@ Combobox::clear()
 		if ((*i)->delete_it())
 			delete (*i);
 	}
+	item_list.clear();
+	current_item = 0;
 }
 
 // Returns whether or not the combobox is at this location

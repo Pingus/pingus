@@ -58,6 +58,9 @@ protected:
 	/** The location of this button on the screen  (set by the EditorPanel) */
 	Vector pos;
 
+	/** Is this button currently selected? */
+	bool is_selected;
+
 public:
 	/** Constructor 
 		@param p The EditorPanel to which this button belongs */
@@ -84,12 +87,18 @@ public:
 
 	/** Return true if the button is located at this x,y coordinate */
 	bool is_at(int x, int y);
+	
+	/** Action taken when the button is clicked */
+	virtual void on_primary_button_click(int x, int y);
 
 	/** Action taken when the mouse enters the button area */
 	virtual void on_pointer_enter () { hover = true; }
 
 	/** Action taken when the mouse leaves the button area */
 	virtual void on_pointer_leave () { hover = false; }
+	
+	/** Action taken when the button is selected or not */
+	virtual void select(bool s) { is_selected = s; }
 
 private:
 	PanelButton (const PanelButton&);

@@ -37,7 +37,9 @@ namespace Editor {
 
 // Constructor
 EditorPanel::EditorPanel(EditorScreen* es)
-: editor(es)
+: editor(es), 
+	pressed_button(0), 
+	combobox(0)
 {
 
 }
@@ -95,6 +97,17 @@ EditorPanel::add(PanelButton* button)
 
 	// Add the button to the GUI Manager
 	get_screen()->get_gui_manager()->add((GUI::Component*)button);
+}
+
+void 
+EditorPanel::set_selected_button(PanelButton* pb)
+{
+	if (pressed_button)
+		pressed_button->select(false);
+	
+	pressed_button = pb;
+	if (pressed_button)
+		pressed_button->select(true);
 }
 
 } // Editor namespace

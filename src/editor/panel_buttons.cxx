@@ -36,7 +36,8 @@ namespace Editor {
 // Constructor
 PanelButton::PanelButton(EditorPanel* p) :
   hover(false),
-  panel(p)
+  panel(p),
+	is_selected(false)
 {
   button = Resource::load_sprite("core/editor/button");
   button_pressed = Resource::load_sprite("core/editor/button_pressed");
@@ -46,9 +47,7 @@ PanelButton::PanelButton(EditorPanel* p) :
 void
 PanelButton::draw(Pingus::DrawingContext &gc)
 {
-	//if (is_pressed())
-	//FIXME: Component::is_pressed() not implemented
-	if (false)
+	if (is_selected)
 		gc.draw(button_pressed, pos);
 	else
 		gc.draw(button, pos);
@@ -77,6 +76,15 @@ PanelButton::is_at(int x, int y)
 	  && y > pos.y && y < pos.y + sur.get_height());
 }
 
+// Something all buttons should do.
+void
+PanelButton::on_primary_button_click(int x, int y)
+{
+	UNUSED_ARG(x);
+	UNUSED_ARG(y);
+	panel->set_selected_button(this);
+}
+
 // Standard exit button
 PanelButtonExit::PanelButtonExit(EditorPanel *p) :
 	PanelButton(p)
@@ -89,6 +97,7 @@ PanelButtonExit::PanelButtonExit(EditorPanel *p) :
 void
 PanelButtonExit::on_primary_button_click(int x, int y)
 {
+	PanelButton::on_primary_button_click(x, y);
 	panel->get_screen()->on_escape_press();
 }
 
@@ -104,6 +113,7 @@ PanelButtonLoad::PanelButtonLoad(EditorPanel *p) :
 void
 PanelButtonLoad::on_primary_button_click(int x, int y)
 {
+	PanelButton::on_primary_button_click(x, y);
 	panel->get_screen()->show_file_dialog(true);
 }
 
@@ -120,6 +130,7 @@ void
 PanelButtonSave::on_primary_button_click(int x, int y)
 {
 	// TODO: Open a file dialog box to save the level.
+	PanelButton::on_primary_button_click(x, y);
 	panel->get_screen()->save(path_manager.complete("levels/test.pingus"), ".pingus");
 }
 
@@ -135,9 +146,8 @@ PanelButtonGroundpiece::PanelButtonGroundpiece(EditorPanel *p) :
 void
 PanelButtonGroundpiece::on_primary_button_click(int x, int y)
 {
-	UNUSED_ARG(x);
-	UNUSED_ARG(y);
-	
+	PanelButton::on_primary_button_click(x, y);
+
 	// FIXME: Add actual groundpieces
 	panel->get_combobox()->clear();
 	panel->get_combobox()->set_label("Groundpieces");

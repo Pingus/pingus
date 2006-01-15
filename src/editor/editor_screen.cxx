@@ -110,6 +110,7 @@ EditorScreen::save(const std::string &file, const std::string &filemask)
 {
 	close_dialog = true;
 	plf->save_level(file);
+	panel->set_selected_button(0);
 }
 
 // Load a new level
@@ -119,6 +120,7 @@ EditorScreen::load(const std::string &file, const std::string &filemask)
 	close_dialog = true;
 	plf->load_level(file);
 	viewport->refresh();
+	panel->set_selected_button(0);
 }
 
 // Play the current level (save to a temporary file 
