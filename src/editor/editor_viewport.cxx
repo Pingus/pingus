@@ -39,10 +39,10 @@ EditorViewport::EditorViewport(EditorScreen* e) :
 	state(CL_Display::get_width(), CL_Display::get_height()),
 	scene_context(new SceneContext()),
 	editor(e),
+	autoscroll(true),
 	highlighted_area(0,0,0,0),
 	context_menu(0),
 	snap_to(true),
-	autoscroll(true),
 	current_action(NOTHING)
 {
 	// FIXME: Hardcoded values should be determined by level size

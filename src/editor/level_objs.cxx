@@ -39,6 +39,7 @@ LevelObj::LevelObj(std::string obj_name, LevelImpl* level_) :
 	parallax(0.0),
 	width(0),
 	owner_id(-1),
+	release_rate(0),
 	scroll_x(0),
 	scroll_y(0),
 	stretch_x(false),
@@ -47,9 +48,9 @@ LevelObj::LevelObj(std::string obj_name, LevelImpl* level_) :
 	para_x(0),
 	para_y(0),
 	color(0,0,0,0),
+	attribs(get_attributes(obj_name)),
 	removed(false),
-	selected(false),
-	attribs(get_attributes(obj_name))
+	selected(false)
 {
 	if (attribs & HAS_SURFACE_FAKE)
 		load_generic_surface();

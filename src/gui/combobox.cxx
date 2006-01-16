@@ -30,10 +30,10 @@ namespace GUI {
 Combobox::Combobox (Vector p, std::string l) :
 	current_item(0),
 	drop_down(false),
+	hover(false),
 	pos(p),
 	enabled(false),
-	label(l),
-	hover(false)
+	label(l)
 {
 	// Default to 20 characters wide.
 	width = Fonts::smallfont.get_width('O') * 20.0f;

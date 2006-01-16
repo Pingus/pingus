@@ -78,6 +78,9 @@ public:
 
 	/** Return the gui_manager */
 	GUI::GUIManager* get_gui_manager() const { return gui_manager; }
+	
+	/** Return the viewport */
+	EditorViewport* get_viewport() const { return viewport; }
 
 	/** Return a pointer to the current level */
 	XMLLevel* get_level() const { return plf; }

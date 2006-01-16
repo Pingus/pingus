@@ -49,7 +49,7 @@ namespace Pingus {
 			ResDescriptor("core/menu/exit_button_pressed"),
 			ResDescriptor("core/menu/exit_button_hover")),
 			file_dialog(f),
-			label (l), 
+			label (l),
 			is_hidden(true)
 		{
 		}
@@ -144,11 +144,11 @@ namespace Pingus {
 	public:
 		FileDialogScrollButton (FileDialog* f, int d, int height_offset)
 			: file_dialog(f),
-				hover(false),
-                          pos(Vector((float)CL_Display::get_width()/2 + 210,
-                                     (float)CL_Display::get_height()/2 + height_offset)),
-                          direction(d),
-													is_hidden(false)
+				pos(Vector((float)CL_Display::get_width()/2 + 210,
+					(float)CL_Display::get_height()/2 + height_offset)),
+				direction(d),
+				is_hidden(false),
+				hover(false)
 		{
 			std::string str_direction = d==0 ? "up" : "down";
 			sprite = Resource::load_sprite("core/menu/" + str_direction + "_arrow");
@@ -201,10 +201,10 @@ namespace Pingus {
 	public:
 		FileDialogParentFolderButton (FileDialog* f)
 			: file_dialog(f),
-				hover(false),
         pos(Vector((float)CL_Display::get_width()/2 + 230,
                    (float)CL_Display::get_height()/2 - 210)),
-			  sprite(Resource::load_sprite("core/menu/parent_folder"))
+			  sprite(Resource::load_sprite("core/menu/parent_folder")),
+				hover(false)
 		{
 		}
 

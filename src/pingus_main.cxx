@@ -122,8 +122,8 @@ signal_handler(int signo)
 }
 
 PingusMain::PingusMain() :
-  show_credits(false),
   blitter_test(false),
+  show_credits(false),
 	editor(false),
   refresh_rate(60)
 {

@@ -35,9 +35,9 @@ namespace Editor {
 		: objs(o), 
 			viewport(vp),
 			pos(p),
-			item_height(Fonts::pingus_small.get_height()),
 			selected_action_offset(0),
-			displayed_child(0)
+			displayed_child(0),
+			item_height(Fonts::pingus_small.get_height())
 	{
 		if (base_menu)
 		{
@@ -247,4 +247,3 @@ namespace Editor {
 } // Pingus namespace
 
 /* EOF */
-

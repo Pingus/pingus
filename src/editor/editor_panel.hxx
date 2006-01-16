@@ -23,19 +23,22 @@
 #include <vector>
 #include <iostream>
 #include "../gui/component.hxx"
+#include "../gui/checkbox_listener.hxx"
 #include "../gui/combobox.hxx"
 
 namespace Pingus {
 
-class DrawingContext;
+	class DrawingContext;
+	class GUI::Checkbox;
 
 namespace Editor {
 
-class PanelButton;
-class EditorScreen;
+	class PanelButton;
+	class EditorScreen;
 
 /** This class contains all of the buttons, comboboxes, and other components */
-class EditorPanel : public GUI::Component
+class EditorPanel : public GUI::Component, 
+	public GUI::CheckboxListener 
 {
 private:
 	/** The EditorScreen to which this panel belongs */
@@ -44,12 +47,15 @@ private:
 	/** Collection of buttons on this panel */
 	std::vector<PanelButton*> panel_buttons;
 
+	/** Currently selected object on this panel */
+	PanelButton* pressed_button;
+
 	/** Combobox which can change it's item list based on the button pressed */
 	GUI::Combobox* combobox_1;
 	GUI::Combobox* combobox_2;
 
-	/** Currently selected object on this panel */
-	PanelButton* pressed_button;
+	/** Checkbox which controls the snap-to-grid functionality */
+	GUI::Checkbox* snap_to_checkbox;
 
 public:
 	/** Constructor
@@ -78,6 +84,10 @@ public:
 	
 	/** Changes which button is currently pressed */
 	void set_selected_button(PanelButton* pb);
+	
+	/** Event that fires when a checkbox gets changed */
+	void checkbox_changed(bool new_value, GUI::Checkbox* box);
+
 
 private:
 	EditorPanel();

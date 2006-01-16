@@ -42,8 +42,10 @@ namespace Editor {
 // Default constructor
 EditorScreen::EditorScreen(XMLLevel* level)
 : plf(level), 
-	close_dialog(false),
-	filedialog(0)
+	panel(0),
+	viewport(0),
+	filedialog(0),
+	close_dialog(false)
 {
 	if (!plf) plf = new XMLLevel();
 }

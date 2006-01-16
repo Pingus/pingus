@@ -23,10 +23,12 @@
 #include "../vector.hxx"
 #include "../display/drawing_context.hxx"
 #include "../gui/gui_manager.hxx"
+#include "../gui/checkbox.hxx"
 #include "../gui/combobox.hxx"
 #include "../fonts.hxx"
 #include "editor_panel.hxx"
 #include "editor_screen.hxx"
+#include "editor_viewport.hxx"
 #include "panel_buttons.hxx"
 
 namespace Pingus {
@@ -40,7 +42,8 @@ EditorPanel::EditorPanel(EditorScreen* es)
 : editor(es), 
 	pressed_button(0), 
 	combobox_1(0),
-	combobox_2(0)
+	combobox_2(0),
+	snap_to_checkbox(0)
 {
 
 }
@@ -125,6 +128,13 @@ EditorPanel::get_combobox(int i)
 		default :
 			return 0;
 	}
+}
+
+void
+EditorPanel::checkbox_changed(bool new_value, GUI::Checkbox* box)
+{
+	if (box == snap_to_checkbox)
+		editor->get_viewport()->set_snap_to(new_value);
 }
 
 } // Editor namespace
