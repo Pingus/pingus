@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_RESOURCE_HXX
 
 #include <map>
+#include <vector>
 #include <ClanLib/display.h>
 #include "res_descriptor.hxx"
 
@@ -41,6 +42,15 @@ public:
   static CL_Surface load_from_cache (const ResDescriptor& res_desc);
   static CL_Surface apply_modifier (const CL_Surface&, const ResDescriptor& res_desc);
   static CL_PixelBuffer apply_modifier_to_pixelbuffer(CL_PixelBuffer, const ResDescriptor& res_desc);
+
+	/** Returns a list of resources for the given section.
+		Returns all if blank */
+	static std::vector<std::string> get_resources(const std::string &type,
+		const std::string &section = "");
+
+	/** Returns a list of sections under the given section.
+		Returns all sections if blank */
+	static std::vector<std::string> get_sections(const std::string &section = std::string());
 
 public:
   static void init();

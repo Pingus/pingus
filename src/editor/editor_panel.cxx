@@ -39,7 +39,8 @@ namespace Editor {
 EditorPanel::EditorPanel(EditorScreen* es)
 : editor(es), 
 	pressed_button(0), 
-	combobox(0)
+	combobox_1(0),
+	combobox_2(0)
 {
 
 }
@@ -47,7 +48,6 @@ EditorPanel::EditorPanel(EditorScreen* es)
 // Destructor
 EditorPanel::~EditorPanel()
 {
-	delete combobox;
 }
 
 // Wait to run this until after the panel has been added to the gui_manager
@@ -63,9 +63,12 @@ EditorPanel::init()
 	add((PanelButton*)(new PanelButtonGroundpiece(this)));
 
 	// Create Combobox
-	combobox = new GUI::Combobox(Vector(500, 30));
-	get_screen()->get_gui_manager()->add(combobox);
-	combobox->set_enabled(false);
+	combobox_1 = new GUI::Combobox(Vector(500,  0));
+	combobox_2 = new GUI::Combobox(Vector(500, 30));
+	get_screen()->get_gui_manager()->add(combobox_1);
+	get_screen()->get_gui_manager()->add(combobox_2);
+	combobox_1->set_enabled(false);
+	combobox_2->set_enabled(false);
 }
 
 // Draw the panel
@@ -108,6 +111,20 @@ EditorPanel::set_selected_button(PanelButton* pb)
 	pressed_button = pb;
 	if (pressed_button)
 		pressed_button->select(true);
+}
+
+GUI::Combobox*
+EditorPanel::get_combobox(int i)
+{
+	switch(i)
+	{
+		case 1 :
+			return combobox_1;
+		case 2 :
+			return combobox_2;
+		default :
+			return 0;
+	}
 }
 
 } // Editor namespace

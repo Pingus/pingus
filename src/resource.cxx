@@ -69,6 +69,32 @@ Resource::init()
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/alias.xml")));
 }
 
+
+// Returns all resources in the given section
+std::vector<std::string>
+Resource::get_resources(const std::string& type, const std::string& section)
+{
+	if (section == "")
+		return resmgr.get_resources_of_type(type);
+	else
+		return resmgr.get_resources_of_type(type, section);
+}
+
+
+// Returns a list of sections
+std::vector<std::string>
+Resource::get_sections(const std::string& section)
+{
+	if (section == std::string())
+		return resmgr.get_all_sections();
+	else
+		// FIXME: This patch hasn't been applied to ClanLib yet.
+		// return resmgr.get_sections(section);
+		// The following is wrong.
+		return resmgr.get_all_sections();
+}
+
+
 void
 Resource::deinit()
 {

@@ -37,6 +37,7 @@ private:
   bool    blitter_test;
   bool    no_config_file;
   bool    show_credits;
+	bool		editor;
 
   /// the name of the exe: argv[0]
   std::string executable_name;

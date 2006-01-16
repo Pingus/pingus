@@ -69,6 +69,7 @@
 #include "preview_renderer.hxx"
 #include "worldmap/manager.hxx"
 #include "worldobj_factory.hxx"
+#include "editor/editor_screen.hxx"
 
 #if _MSC_VER >= 1400
 // Disable stupid deprecation warnings
@@ -123,6 +124,7 @@ signal_handler(int signo)
 PingusMain::PingusMain() :
   show_credits(false),
   blitter_test(false),
+	editor(false),
   refresh_rate(60)
 {
 }
@@ -211,6 +213,8 @@ PingusMain::check_args(int argc, char** argv)
                   _("Load a custom level from FILE"));
   argp.add_option(358, "worldmap", _("FILE"),
                   _("Load a custom worldmap from FILE"));
+	argp.add_option('e', "editor", "",
+                  _("Loads the level editor"));
   argp.add_option('v', "verbose", "", 
                   _("Print some more messages to stdout, can be set multiple times to increase verbosity"));
   argp.add_option('V', "version", "", 
@@ -293,6 +297,9 @@ PingusMain::check_args(int argc, char** argv)
         case 'l': // -l, --level
           levelfile = argp.get_argument();
           break;
+				
+				case 'e': // -e, --editor
+					editor = true;
 
         case 't': // -t, --set-speed
           game_speed = atoi(argp.get_argument().c_str());
@@ -732,6 +739,10 @@ PingusMain::start_game ()
       WorldMapNS::WorldMapManager::instance()->load(worldmapfile);
       ScreenManager::instance()->push_screen(WorldMapNS::WorldMapManager::instance());
     }
+	else if (editor == true)
+	  {
+			ScreenManager::instance()->push_screen (new Editor::EditorScreen());
+		}
   else // start a normal game
     {
       ScreenManager::instance()->push_screen (PingusMenuManager::instance (), false);

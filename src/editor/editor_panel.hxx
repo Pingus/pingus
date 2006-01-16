@@ -45,7 +45,8 @@ private:
 	std::vector<PanelButton*> panel_buttons;
 
 	/** Combobox which can change it's item list based on the button pressed */
-	GUI::Combobox* combobox;
+	GUI::Combobox* combobox_1;
+	GUI::Combobox* combobox_2;
 
 	/** Currently selected object on this panel */
 	PanelButton* pressed_button;
@@ -73,7 +74,7 @@ public:
 	EditorScreen* get_screen() { return editor; }
 	
 	/** Return the combobox object */
-	GUI::Combobox* get_combobox() { return combobox; }
+	GUI::Combobox* get_combobox(int i);
 	
 	/** Changes which button is currently pressed */
 	void set_selected_button(PanelButton* pb);

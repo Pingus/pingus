@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <vector>
 #include <ClanLib/Display/sprite.h>
 #include "panel_buttons.hxx"
 #include "../gui/combobox.hxx"
@@ -149,11 +150,17 @@ PanelButtonGroundpiece::on_primary_button_click(int x, int y)
 	PanelButton::on_primary_button_click(x, y);
 
 	// FIXME: Add actual groundpieces
-	panel->get_combobox()->clear();
-	panel->get_combobox()->set_label("Groundpieces");
-	panel->get_combobox()->add(new GUI::ComboItem(1, "Testing 1"));
-	panel->get_combobox()->add(new GUI::ComboItem(2, "Testing 2"));
-	panel->get_combobox()->set_enabled(true);
+	panel->get_combobox(1)->clear();
+	panel->get_combobox(1)->set_label("Groundpieces");
+	//std::vector<std::string> groundpieces = Resource::get_resources("sprite", "groundpieces");
+	std::vector<std::string> groundpieces = Resource::get_sections("groundpieces");
+	for (unsigned i = 0; i < groundpieces.size(); i++)
+	{
+		panel->get_combobox(1)->add(new GUI::ComboItem(1, groundpieces[i]));
+		std::cout << groundpieces[i] << std::endl;
+	}
+	
+	panel->get_combobox(1)->set_enabled(true);
 }
 
 } // Editor namespace
