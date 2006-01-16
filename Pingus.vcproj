@@ -275,6 +275,15 @@
 					RelativePath=".\src\gui\button.hxx">
 				</File>
 				<File
+					RelativePath=".\src\gui\checkbox.cxx">
+				</File>
+				<File
+					RelativePath=".\src\gui\checkbox.hxx">
+				</File>
+				<File
+					RelativePath=".\src\gui\checkbox_listener.hxx">
+				</File>
+				<File
 					RelativePath=".\src\gui\combobox.cxx">
 				</File>
 				<File

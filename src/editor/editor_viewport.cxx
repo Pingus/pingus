@@ -42,7 +42,7 @@ EditorViewport::EditorViewport(EditorScreen* e) :
 	autoscroll(true),
 	highlighted_area(0,0,0,0),
 	context_menu(0),
-	snap_to(true),
+	snap_to(false),
 	current_action(NOTHING)
 {
 	// FIXME: Hardcoded values should be determined by level size
