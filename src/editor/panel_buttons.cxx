@@ -157,7 +157,6 @@ PanelButtonGroundpiece::on_primary_button_click(int x, int y)
 	for (unsigned i = 0; i < groundpieces.size(); i++)
 	{
 		panel->get_combobox(1)->add(new GUI::ComboItem(1, groundpieces[i]));
-		std::cout << groundpieces[i] << std::endl;
 	}
 	
 	panel->get_combobox(1)->set_enabled(true);

@@ -89,6 +89,12 @@ protected:
 	/** Whether or not the list is showing right now */
 	bool drop_down;
 
+	/** Is the mouse hovering over this object? */
+	bool hover;
+
+	/** Where the mouse is located */
+	Vector mouse_pos;
+
 	/** Width of the Combobox */
 	float width;
 
@@ -148,6 +154,10 @@ public:
   /** Gets emmited when a button is pressed and released over the
       same component */
   virtual void on_primary_button_click (int x, int y);
+	
+	virtual void on_pointer_enter() { hover = true; }
+	virtual void on_pointer_leave() { hover = false; }
+	virtual void on_pointer_move(int x, int y) { mouse_pos = Vector(x, y); }
 	
 	/** Sets whether or not this combobox is clickable */
 	virtual void set_enabled(bool e) { enabled = e; }

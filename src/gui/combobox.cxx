@@ -32,7 +32,8 @@ Combobox::Combobox (Vector p, std::string l) :
 	drop_down(false),
 	pos(p),
 	enabled(false),
-	label(l)
+	label(l),
+	hover(false)
 {
 	// Default to 20 characters wide.
 	width = Fonts::smallfont.get_width('O') * 20.0f;
@@ -147,8 +148,9 @@ Combobox::draw(DrawingContext &gc)
 
 	if (drop_down && item_list.size() > 0)
 	{
-		// FIXME: Implement - Draw the "highlighted" rectangle.
-		// FIXME: Need to have the mouse pointer x,y coordinates for this function.
+		// Draw the highlighted box
+		int y_offset = int(int(((mouse_pos.y - pos.y - height)/height)+1) * height);
+		gc.draw_fillrect(pos.x, y_offset, pos.x + get_width(), y_offset + height, CL_Color::gray);
 		
 		// Draw all of the items
 		for (unsigned i = 0; i < item_list.size(); i++)
