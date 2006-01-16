@@ -65,7 +65,11 @@ EditorPanel::init()
 	add((PanelButton*)(new PanelButtonSave(this)));
 	add((PanelButton*)(new PanelButtonGroundpiece(this)));
 
-	// Create Combobox
+	// Create Checkboxes
+	snap_to_checkbox = new GUI::Checkbox(Vector(400, 0), "Snap To Grid: ", this);
+	get_screen()->get_gui_manager()->add(snap_to_checkbox);
+	
+	// Create Comboboxes
 	combobox_1 = new GUI::Combobox(Vector(500,  0));
 	combobox_2 = new GUI::Combobox(Vector(500, 30));
 	get_screen()->get_gui_manager()->add(combobox_1);
