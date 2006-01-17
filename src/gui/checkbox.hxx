@@ -39,6 +39,9 @@ private:
 
 	bool	is_checked;
 	Vector pos;
+
+	float width;
+	float height;
 	
 	CheckboxListener* listener;
 	std::string label;

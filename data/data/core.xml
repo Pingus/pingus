@@ -220,6 +220,9 @@
     </section>
 
     <section name="misc">
+		<sprite name="checkbox_clicked">
+			<image file="../images/core/misc/checkbox_clicked.png"/>
+		</sprite>
       <sprite name="next">
         <image file="../images/core/misc/next.png"/>
       </sprite>

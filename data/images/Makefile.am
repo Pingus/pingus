@@ -85,6 +85,7 @@ core/menu/startscreenbg.jpg \
 core/menu/up_arrow.png \
 core/menu/worldscreenbg.jpg \
 core/misc/404.png \
+core/misc/checkbox_clicked.png \
 core/misc/chalk_pingu1.png \
 core/misc/chalk_pingu2.png \
 core/misc/chalk_pingu3.png \

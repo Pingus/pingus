@@ -30,10 +30,11 @@ namespace Pingus {
 namespace GUI {
 	
 Checkbox::Checkbox(Vector p, std::string label_, CheckboxListener* l) :
-	box(Resource::load_sprite("core/start/ok")),
-	checkmark(Resource::load_sprite("core/start/ok_clicked")),
+	checkmark(Resource::load_sprite("core/misc/checkbox_clicked")),
 	is_checked(false),
 	pos(p),
+	width(20),
+	height(20),
 	listener(l),
 	label(label_)
 {
@@ -42,18 +43,19 @@ Checkbox::Checkbox(Vector p, std::string label_, CheckboxListener* l) :
 void 
 Checkbox::draw(DrawingContext& gc)
 {
-	gc.draw(box, pos);
+	gc.draw_rect(pos.x, pos.y, pos.x + width, pos.y + height, 
+		CL_Color::black);
 	if (is_checked)
 		gc.draw(checkmark, pos);
 	
-	gc.print_right(Fonts::pingus_small, (int)pos.x, (int)pos.y, label);
+	gc.print_right(Fonts::smallfont, (int)pos.x, (int)pos.y, label);
 }
 
 bool
 Checkbox::is_at(int x, int y)
 {
-	return (x > pos.x && x < pos.x + box.get_width() &&
-		y > pos.y && y < pos.y + box.get_height());
+	return (x > pos.x && x < pos.x + width &&
+		y > pos.y && y < pos.y + height);
 }
 
 void 
