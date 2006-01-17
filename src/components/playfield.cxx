@@ -47,7 +47,6 @@ Playfield::Playfield (Client* client_, const CL_Rect& rect_)
 {
   world              = client->get_server()->get_world();
   mouse_scrolling    = false;
-  needs_clear_screen = false;
 
   state.set_limit(CL_Rect(CL_Point(0, 0), CL_Size(world->get_width(), world->get_height())));
 }
@@ -68,20 +67,12 @@ Playfield::draw (DrawingContext& gc)
   cap.set_pingu(current_pingu);
   cap.draw(*scene_context);
   
+	// Blank out the entire window in case the screen resolution is larger
+	// than the current level.
+	gc.draw_fillrect(0, 0, CL_Display::get_width(), CL_Display::get_height(),
+		CL_Color::black, -15000);
   world->draw(*scene_context);
  
-  if (needs_clear_screen)
-    {
-      for(std::vector<CL_Rect>::iterator i = clipping_rectangles.begin();
-	  i != clipping_rectangles.end();
-	  i++)
-	{
-	  CL_Display::fill_rect(CL_Rect(i->left, i->top,
-                                        i->right + 1, i->bottom + 1),
-				CL_Color(0, 0, 0));
-	}
-    }
-
   // Draw the scrolling band
   if (mouse_scrolling && !drag_drop_scrolling)
     {
@@ -258,4 +249,3 @@ Playfield::scroll (int x, int y)
 } // namespace Pingus
 
 /* EOF */
-

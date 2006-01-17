@@ -53,7 +53,6 @@ private:
 
   Pingu* current_pingu;
   bool mouse_scrolling;
-  bool needs_clear_screen;
   int scroll_speed;
 
   CL_Point scroll_center;

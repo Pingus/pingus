@@ -19,10 +19,12 @@
 
 #include <iostream>
 #include <ClanLib/Core/System/clanstring.h>
+#include <ClanLib/Display/sprite_description.h>
 #include "gettext.h"
 #include "gui/surface_button.hxx"
 #include "gui/gui_manager.hxx"
 #include "gui/screen_manager.hxx"
+#include "blitter.hxx"
 #include "res_descriptor.hxx"
 #include "resource.hxx"
 #include "fonts.hxx"
@@ -140,8 +142,18 @@ public:
 ResultScreenComponent::ResultScreenComponent(Result arg_result)
   : result(arg_result)
 {
-  background = Resource::load_sprite("core/menu/startscreenbg");
-
+	if (CL_Display::get_width() == 800 && CL_Display::get_height() == 600)
+  	background = Resource::load_sprite("core/menu/startscreenbg");
+	else
+	{
+		CL_PixelBuffer pb = Blitter::scale_surface_to_canvas(Resource::load_pixelbuffer(
+			"core/menu/startscreenbg"), CL_Display::get_width(), CL_Display::get_height());
+		CL_SpriteDescription desc;
+		desc.add_frame(pb);
+		background = CL_Sprite(desc);
+	}
+	background.set_alignment(origin_center);
+	
   chalk_pingus.push_back(Resource::load_sprite("core/misc/chalk_pingu1"));
   chalk_pingus.push_back(Resource::load_sprite("core/misc/chalk_pingu2"));
   chalk_pingus.push_back(Resource::load_sprite("core/misc/chalk_pingu3"));

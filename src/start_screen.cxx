@@ -19,10 +19,12 @@
 
 #include <iostream>
 #include <ClanLib/Core/System/clanstring.h>
+#include <ClanLib/Display/sprite_description.h>
 #include "gui/gui_manager.hxx"
 #include "gui/surface_button.hxx"
 #include "gui/component.hxx"
 #include "gui/screen_manager.hxx"
+#include "blitter.hxx"
 #include "gettext.h"
 #include "game_session.hxx"
 #include "globals.hxx"
@@ -129,7 +131,16 @@ StartScreen::~StartScreen()
 StartScreenComponent::StartScreenComponent(const PingusLevel& p)
   : plf(p)
 {
-  background = Resource::load_sprite("core/menu/startscreenbg");
+	if (CL_Display::get_width() == 800 && CL_Display::get_height() == 600)
+  	background = Resource::load_sprite("core/menu/startscreenbg");
+	else
+	{
+		CL_PixelBuffer pb = Blitter::scale_surface_to_canvas(Resource::load_pixelbuffer(
+			"core/menu/startscreenbg"), CL_Display::get_width(), CL_Display::get_height());
+		CL_SpriteDescription desc;
+		desc.add_frame(pb);
+		background = CL_Sprite(desc);
+	}
   background.set_alignment(origin_center);
   time_str = GameTime::ticks_to_realtime_string(plf.get_time());
 }
@@ -137,7 +148,6 @@ StartScreenComponent::StartScreenComponent(const PingusLevel& p)
 void
 StartScreenComponent::draw(DrawingContext& gc)
 {
-  //gc.clear(0,0,0);
   background.draw(CL_Display::get_width()/2,CL_Display::get_height()/2);
 
   int left_x  = CL_Display::get_width()/2 - 120;
