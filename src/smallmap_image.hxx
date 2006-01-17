@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_SMALLMAP_IMAGE_HXX
 
 #include "pingus.hxx"
-#include <ClanLib/Display/surface.h>
+#include <ClanLib/Display/sprite.h>
 #include "vector.hxx"
 
 namespace Pingus {
@@ -39,7 +39,7 @@ private:
   CL_PixelBuffer canvas;
 
   /** Graphic surface for the generated rectanglar background of the small map */
-  CL_Surface sur;
+  CL_Sprite sur;
 
   /** number of seconds till the smallmap will update itself */
   float update_count;
@@ -51,7 +51,7 @@ public:
   SmallMapImage (Server* s, int width, int height);
   void update (float delta);
 
-  CL_Surface get_surface();
+  CL_Sprite get_surface();
   
   /** Regenerate the smallmap surface */
   void update_surface();

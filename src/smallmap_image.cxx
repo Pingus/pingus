@@ -20,6 +20,7 @@
 #include <ClanLib/Core/IOData/cl_endian.h>
 #include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/pixel_format.h>
+#include <ClanLib/Display/sprite_description.h>
 #include "world.hxx"
 #include "smallmap_image.hxx"
 #include "col_map.hxx"
@@ -30,7 +31,6 @@ namespace Pingus {
 SmallMapImage::SmallMapImage(Server* s, int width, int height)
   : server(s),
     canvas(width, height, width*4, CL_PixelFormat::rgba8888),
-    sur(canvas),
     update_count(0),
     colmap_serial(0)
 {
@@ -56,7 +56,7 @@ SmallMapImage::update (float delta)
     }
 }
 
-CL_Surface
+CL_Sprite
 SmallMapImage::get_surface ()
 {
   if (sur)
@@ -216,8 +216,9 @@ SmallMapImage::update_surface()
 	}
     }
   canvas.unlock();
-
-  sur.set_pixeldata(CL_Point(0, 0), canvas);
+	CL_SpriteDescription desc;
+	desc.add_frame(canvas);
+  sur = CL_Sprite(desc);
 }
 
 } // namespace Pingus
