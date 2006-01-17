@@ -70,6 +70,10 @@ public:
   /** Emitted when the pointer moved, x and y are the new pointer
       coordinates */
   virtual void on_pointer_move (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
+	
+	/** Emitted whenever a keyboard character is pressed.  Only certain 
+			components should implement this */
+	void key_pressed(const char c) { UNUSED_ARG(c); }
 
   // status functions for use in the update() function
   /** return true if currently pressed */

@@ -61,6 +61,8 @@ private:
   void process_input (const GameDelta& delta);
   void process_pointer_event (const Input::PointerEvent& event);
   void process_button_event (unsigned int time_stamp, const Input::ButtonEvent& event);
+	void key_pressed(const char c);
+
 public:
   GUIManager ();
   virtual ~GUIManager () {}
