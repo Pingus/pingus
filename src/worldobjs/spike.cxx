@@ -32,10 +32,6 @@ Spike::Spike (const FileReader& reader)
     killing(false)
 {
   reader.read_vector("position", pos);
-  counter.set_size(surface.get_frame_count());
-  counter.set_type(GameCounter::once);
-  counter.set_speed(1);
-  counter = 0;
 }
 
 float
@@ -48,7 +44,7 @@ void
 Spike::draw (SceneContext& gc)
 {
   if (killing) {
-    gc.color().draw (surface, pos, counter);
+    gc.color().draw (surface, pos);
   } else {
     // do nothing
   }
@@ -57,38 +53,35 @@ Spike::draw (SceneContext& gc)
 void
 Spike::update()
 {
-  if (killing)
-    ++counter;
+	if (killing)
+		surface.update();
 
-  PinguHolder* holder = world->get_pingus();
-  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu){
-    catch_pingu(*pingu);
-  }
-
-  if (counter == static_cast<int>(surface.get_frame_count()) - 1) {
-    killing = false;
-    counter = 0;
-  }
+	PinguHolder* holder = world->get_pingus();
+	for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
+		catch_pingu(*pingu);
+	
+	if (surface.get_current_frame() == surface.get_frame_count() - 1) 
+		killing = false;
 }
 
 void
 Spike::catch_pingu (Pingu* pingu)
 {
-  if (!killing) {
-    if (   pingu->get_x () > pos.x + 16 - 5 && pingu->get_x () < pos.x + 16 + 5
-	   && pingu->get_y () > pos.y          && pingu->get_y () < pos.y + 32)
-      {
-	counter = 0;
-	killing = true;
-      }
-  } else {
-    if (   counter == 3
-	   && pingu->get_x () > pos.x +16 - 12  && pingu->get_x () < pos.x + 16 + 12
-	   && pingu->get_y () > pos.y           && pingu->get_y () < pos.y + 32)
-      {
-	pingu->set_status(PS_DEAD);
-      }
-  }
+	if (!killing) {
+		if (pingu->get_x () > pos.x + 16 - 5 && pingu->get_x () < pos.x + 16 + 5
+			&& pingu->get_y () > pos.y          && pingu->get_y () < pos.y + 32)
+		{
+			surface.restart();
+			killing = true;
+		}
+	} else {
+		if (surface.get_current_frame() == 3
+			&& pingu->get_x () > pos.x +16 - 12  && pingu->get_x () < pos.x + 16 + 12
+			&& pingu->get_y () > pos.y           && pingu->get_y () < pos.y + 32)
+		{
+			pingu->set_status(PS_DEAD);
+		}
+	}
 }
 
 } // namespace WorldObjs

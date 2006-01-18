@@ -38,7 +38,6 @@ class Spike : public WorldObj
 private:
   CL_Sprite   surface;
   Vector      pos;
-  GameCounter counter;
   bool        killing;
 
 public:
