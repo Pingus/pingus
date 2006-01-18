@@ -46,8 +46,7 @@ LaserExit::get_z_pos () const
 void
 LaserExit::draw (SceneContext& gc)
 {
-  gc.color().draw (surface, pos,
-	   counter.value());
+  gc.color().draw (surface, pos);
 }
 
 void

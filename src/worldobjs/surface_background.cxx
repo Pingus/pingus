@@ -44,9 +44,7 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
     scroll_ox(0),
     scroll_oy(0)
 {
-  pos.z = -150;
-
-  reader.read_vector("position", pos);
+	reader.read_vector("position", pos);
 
   ResDescriptor desc;
 
@@ -105,24 +103,6 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
           canvas = Blitter::scale_surface_to_canvas(canvas, canvas.get_width(), world->get_height());
         }
     }
-
-  /* FIXME: Not sure why the following code is here - commenting it out fixes
-		 FIXME: the issue with the line separating scrolling backgrounds.
-
-		 FIXME: fill_rect doesn't work with RGB images
-     FIXME: seems to work fine with indexed images
-     FIXME: not tested with RGBA images
-     FIXME: the bug might be in create_canvas() and not in fill_rect()
-  
-
-  if (color.alpha != 0.0 && color != CL_Colorf(0, 0, 0, 1.0f))
-	
-    { // Workaround for a bug which caused all levels to have the
-      // wrong background color
-      Blitter::fill_rect(canvas, CL_Rect(0, 0, canvas.get_width(), canvas.get_height()),
-                         CL_Color(color));
-    }
-	*/
 
 	CL_SpriteDescription sprite_desc;
 	sprite_desc.add_frame(canvas);

@@ -88,7 +88,7 @@ SmallMap::draw (DrawingContext& gc)
 
   Playfield* playfield = client->get_playfield();
 
-  gc.draw(image->get_surface(), Vector(x_pos, y_pos));
+  gc.draw(image->get_surface(), Vector((float)x_pos, (float)y_pos));
 
   CL_Point of = playfield->get_pos();
     
@@ -98,8 +98,8 @@ SmallMap::draw (DrawingContext& gc)
   int w = Math::min(rwidth,  int(width  - 1));
   int h = Math::min(rheight, int(height - 1));
 
-  gc.draw_rect(of.x - w/2, of.y - h/2,
-               of.x + w/2, of.y + h/2,
+  gc.draw_rect(float(of.x - w/2), float(of.y - h/2),
+               float(of.x + w/2), float(of.y + h/2),
                CL_Color(0, 255, 0));
 
   client->get_server()->get_world()->draw_smallmap(this);
@@ -112,10 +112,7 @@ SmallMap::draw (DrawingContext& gc)
       int x = static_cast<int>(x_pos + ((*i)->get_x() * width  / world->get_colmap()->get_width()));
       int y = static_cast<int>(y_pos + ((*i)->get_y() * height / world->get_colmap()->get_height()));
 
-      //FIXME: Replace this with draw_pixel (only availabe in 0.7)
-      gc.draw_line(x,   y, x,   y, CL_Color(255, 255, 0));
-      gc.draw_line(x, y-1, x, y-1, CL_Color(255, 255, 0));
-      gc.draw_line(x, y-2, x, y-2, CL_Color(255, 255, 0));
+      gc.draw_line((float)x, (float)y, (float)x, (float)y-2, CL_Color(255, 255, 0));
     }
 
   gc_ptr = 0;

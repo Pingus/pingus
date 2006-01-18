@@ -118,7 +118,7 @@ Smasher::on_startup ()
 void
 Smasher::draw (SceneContext& gc)
 {
-  gc.color().draw (surface, pos, count);
+  gc.color().draw (surface, pos);
 }
 
 void

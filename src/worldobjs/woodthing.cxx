@@ -61,8 +61,7 @@ WoodThing::draw (SceneContext& gc)
 {
   gc.color().draw(surface,
                   Vector(pos.x - surface.get_width () /  2,
-                         pos.y - surface.get_height() + 32),
-                  (int)counter);
+                         pos.y - surface.get_height() + 32));
 }
 
 } // namespace Entrances

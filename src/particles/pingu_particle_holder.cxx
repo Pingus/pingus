@@ -161,7 +161,7 @@ PinguParticleHolder::draw (SceneContext& gc)
       if (!it->livetime)
         continue;
 
-      gc.color().draw(surface, it->pos, it->use_frame2);
+      gc.color().draw(surface, it->pos);
     }
 }
 

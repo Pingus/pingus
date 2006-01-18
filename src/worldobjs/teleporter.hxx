@@ -43,11 +43,9 @@ private:
 public:
   Teleporter(const FileReader& reader);
 
-  int   get_z_pos () { return 0; }
-
   void  draw (SceneContext& gc);
   void  update ();
-  float get_z_pos () const;
+	float get_z_pos () const;
 
 private:
   Teleporter (const Teleporter&);

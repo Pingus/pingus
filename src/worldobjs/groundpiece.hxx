@@ -46,7 +46,7 @@ private:
 public:
   Groundpiece(const FileReader& reader);
 
-  float get_z_pos () const { return 0; }
+  float get_z_pos () const { return pos.z; }
 
   void draw (SceneContext&) {}
   void on_startup ();

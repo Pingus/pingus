@@ -253,9 +253,12 @@ DrawingContext::draw(const CL_Surface&  surface, const Vector& pos)
 }
 
 void
-DrawingContext::draw(const CL_Sprite& sprite, const Vector& pos, int frame)
+DrawingContext::draw(const CL_Sprite& sprite, const Vector& pos)
 {
-  draw(sprite, pos.x, pos.y, pos.z);
+  // FIXME: Z handling isn't working correctly - sprite with negative Z values
+	// FIXME: aren't being displayed.
+	//draw(sprite, pos.x, pos.y, pos.z);
+	draw(sprite, pos.x, pos.y, 0);
 }
 
 void

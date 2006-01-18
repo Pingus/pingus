@@ -48,7 +48,7 @@ private:
 public:
   IceBlock(const FileReader& reader);
 
-  float get_z_pos () const { return 100; }
+  float get_z_pos () const { return pos.z; }
   void on_startup ();
   void draw (SceneContext& gc);
   void update ();

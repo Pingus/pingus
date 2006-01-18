@@ -58,8 +58,8 @@ IceBlock::draw (SceneContext& gc)
     return;
 
   gc.color().draw(block_sur,
-          pos,
-	  static_cast<int>((1.0 - thickness) * (block_sur.get_frame_count() - 1)));
+          pos);
+					//, static_cast<int>((1.0 - thickness) * (block_sur.get_frame_count() - 1)));
 }
 
 void

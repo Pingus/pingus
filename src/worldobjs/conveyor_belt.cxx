@@ -41,17 +41,15 @@ ConveyorBelt::ConveyorBelt(const FileReader& reader)
 void
 ConveyorBelt::draw (SceneContext& gc)
 {
-  gc.color().draw(left_sur, pos, static_cast<int>(counter));
+  gc.color().draw(left_sur, pos);
   for (int i=0; i < width; ++i)
     gc.color().draw(middle_sur,
 	    Vector(static_cast<int>(pos.x + left_sur.get_width() + i * middle_sur.get_width()),
-                  static_cast<int>(pos.y)),
-	    static_cast<int>(counter));
+                  static_cast<int>(pos.y)));
 
   gc.color().draw(right_sur,
 	  Vector(static_cast<int>(pos.x + left_sur.get_width() + width * middle_sur.get_width()),
-                 static_cast<int>(pos.y)),
-	  static_cast<int>(counter));
+                 static_cast<int>(pos.y)));
 }
 
 void
@@ -69,20 +67,17 @@ ConveyorBelt::on_startup ()
 void
 ConveyorBelt::update ()
 {
-  counter += speed * 0.025f;
-
-  if (counter >= 14.0f)
-    counter = 0.0f;
-  else if (counter < 0.0f)
-    counter = middle_sur.get_frame_count() - 1;
+	left_sur.update();
+	middle_sur.update();
+	right_sur.update();
 
   PinguHolder* holder = world->get_pingus();
   for (PinguIter pingu = holder->begin(); pingu != holder->end(); ++pingu)
     {
-      if (   (*pingu)->get_x() > pos.x
-	  && (*pingu)->get_x() < pos.x + 15 * (width + 2)
-	  && (*pingu)->get_y() > pos.y - 2
-	  && (*pingu)->get_y() < pos.y + 10)
+      if (   (*pingu)->get_pos().x > pos.x
+	  && (*pingu)->get_pos().x < pos.x + 15 * (width + 2)
+	  && (*pingu)->get_pos().y > pos.y - 2
+	  && (*pingu)->get_pos().y < pos.y + 10)
 	{
 	  Vector pos = (*pingu)->get_pos();
 	  pos.x -= speed * 0.025f;
