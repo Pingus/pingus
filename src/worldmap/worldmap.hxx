@@ -67,9 +67,12 @@ private:
   int height;
 
 	std::string name;
+	std::string short_name;
 	std::string author;
 	std::string email;
 	std::string music;
+
+	NodeId default_node;
 
   Pingus* pingus;
 
@@ -141,6 +144,10 @@ private:
 
   /** Unlock nodes according to the finished ones */
   void update_locked_nodes();
+
+	/** Sets the starting level on the worldmap.  Either take it from the StatManager
+			or use the "default-node" option from the XML file */
+	void set_starting_node();
 };
 
 } // namespace WorldMapNS

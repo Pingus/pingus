@@ -25,6 +25,7 @@
 #include "../fonts.hxx"
 #include "../path_manager.hxx"
 #include "../stat_manager.hxx"
+#include "../savegame_manager.hxx"
 #include "../system.hxx"
 #include "../resource.hxx"
 #include "../globals.hxx"
@@ -66,24 +67,7 @@ WorldMap::WorldMap(const std::string& arg_filename)
 
   pingus = new Pingus(path_graph);
 
-  std::string node;
-  if (StatManager::instance()->get_string("current-tutorial-node", node))
-    {
-      NodeId id = path_graph->lookup_node(node);
-      if (id == NoNode)
-        {
-          pingus->set_position(0);
-        }
-      else
-        {
-          pingus->set_position(id);
-        }
-    }
-  else
-    {  // FIXME: This should not be hardcoded, but instead be noted in the
-      // savegame or worldmap
-      pingus->set_position(0);
-    }
+	set_starting_node();
 
   add_drawable(pingus);
 
@@ -157,9 +141,14 @@ WorldMap::parse_properties(FileReader reader)
 	reader.read_string("music", music);
 	reader.read_string("author", author);
 	reader.read_string("name", name);
+	reader.read_string("short-name", short_name);
 	reader.read_string("email", email);
 	reader.read_int("width", width);
 	reader.read_int("height", height);
+
+	std::string node_name;
+	reader.read_string("default-node", node_name);
+	default_node = path_graph->lookup_node(node_name);
 }
 
 void
@@ -321,7 +310,7 @@ WorldMap::on_primary_button_press(int x, int y)
                 }
               else
                 {
-                  StatManager::instance()->set_string("current-tutorial-node", dot->get_name());
+                  StatManager::instance()->set_string(short_name + "-current-node", dot->get_name());
                 }
             }
           else
@@ -420,6 +409,36 @@ WorldMap::update_locked_nodes()
     }
 }
 
+// Determine starting node
+void
+WorldMap::set_starting_node()
+{
+	// See if the user has played this map before.  If not, use the <default-node>
+	// tag from the XML file.
+	NodeId id;
+	std::string node_name;
+
+	if (StatManager::instance()->get_string(short_name + "-current-node", node_name))
+	{
+		// Just in case that level doesn't exist, look it up.
+		id = path_graph->lookup_node(node_name);
+		if (id == NoNode)
+			id = default_node;
+	}
+	else
+		id = default_node;
+		
+	pingus->set_position(id);
+
+	LevelDot* leveldot = dynamic_cast<LevelDot*>(path_graph->get_dot(id));
+	std::string resname = leveldot->get_plf().get_resname();
+	// Set an accessible flag for this level in the Savegame Manager.
+	if (!SavegameManager::instance()->get(resname))
+	{
+		Savegame savegame(resname, Savegame::ACCESSIBLE, 10000, 0);
+		SavegameManager::instance()->store(savegame);
+	}
+}
 } // namespace WorldMapNS
 } // namespace Pingus
 

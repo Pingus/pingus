@@ -85,11 +85,6 @@ SavegameManager::SavegameManager(const std::string& arg_filename)
     {
       std::cout << "SavegameManager: Couldn't find savegame file '" << filename
                 << "', starting with a empty one." << std::endl;
-      // FIXME: Unlock the first level
-      Savegame savegame;
-      savegame.status = Savegame::ACCESSIBLE;
-      savegame.levelname = "tutorial/digger-tutorial2-grumbel";
-      store(savegame);
     }
 }
 
