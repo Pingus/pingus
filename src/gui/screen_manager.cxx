@@ -244,23 +244,25 @@ ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
   DeltaManager delta_manager;
   float passed_time = 0;
 
-  Input::EventLst events;
+  //Input::EventLst events;
 
+	int screen_width = CL_Display::get_width ();
+	int screen_height = CL_Display::get_height ();
   float progress = 0.0f;
   while (progress <= 1.0f)
     {
       float time_delta = delta_manager.getset ();
       passed_time += time_delta;
 
-      int border_x = int((CL_Display::get_width ()/2) * (1.0f - progress));
-      int border_y = int((CL_Display::get_height ()/2) * (1.0f - progress));
+      int border_x = int((screen_width/2) * (1.0f - progress));
+      int border_y = int((screen_height/2) * (1.0f - progress));
 
       old_screen->draw(*display_gc);
       CL_Display::get_current_window()->get_gc()
         ->push_cliprect(CL_Rect(0 + border_x,
                                 0 + border_y,
-                                CL_Display::get_width () - border_x,
-                                CL_Display::get_height () - border_y));
+                                screen_width - border_x,
+                                screen_height - border_y));
       new_screen->draw(*display_gc);
 
       //GameDelta delta (time_delta, CL_System::get_time(), events);
@@ -271,7 +273,7 @@ ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
       CL_Display::get_current_window()->get_gc()->pop_cliprect ();
 
       Display::flip_display ();
-      CL_System::keep_alive ();
+      CL_System::keep_alive (5);
 
       progress = passed_time/1.0f;
     }

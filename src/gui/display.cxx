@@ -63,7 +63,6 @@ Display::flip_display(bool sync)
     }
 
   CL_Display::flip();
-  //CL_Display::put_display (CL_Rect (320, 0, 800, 600));
 }
 
 void

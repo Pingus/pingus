@@ -154,7 +154,7 @@ PanelButtonGroundpiece::on_primary_button_click(int x, int y)
 	panel->get_combobox(1)->clear();
 	panel->get_combobox(1)->set_label("Type");
 	panel->get_combobox(2)->set_label("Subtype");
-	panel->get_combobox(3)->set_label("Subtype 2");
+	panel->get_combobox(3)->set_label("Groundpiece");
 	std::vector<std::string> groundpieces = Resource::get_sections("groundpieces");
 	for (unsigned i = 0; i < groundpieces.size(); i++)
 	{
