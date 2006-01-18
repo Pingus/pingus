@@ -28,13 +28,15 @@
 namespace Pingus {
 
 namespace GUI {
+	
+	class ComboboxListener;
 
 /** A ComboItems holds a specific item in a Combobox (string, id, etc.) */
 class ComboItem
 {
 protected:
 	/* The item's hidden ID field */
-	int					id;
+	std::string id;
 
 	/** string that displays when printed on the Combobox */
 	std::string str;
@@ -45,29 +47,27 @@ protected:
 public:
 	/** Constructors */
 	ComboItem () { delete_item = true; }
-	ComboItem (int i, std::string s, bool d = true) 
-	{
-		id = i;
-		str =s;
-		delete_item = d;
+	ComboItem (std::string id_, std::string displayed_string, bool d = true) 
+		: id(id_), str(displayed_string), delete_item(d) 
+	{ 
 	}
 
 	virtual ~ComboItem () { }
 
 	/** Returns this item's ID */
-	int get_id() { return id; }
+	std::string get_id() { return id; }
 
 	/** Returns this item's string */
-	std::string get_string() { return str; }
+	std::string get_displayed_string() { return str; }
 
 	/** Returns the value of del_item */
 	bool delete_it() { return delete_item; }
 
 	/** Set this item's ID */
-	void set_id(int i) { id = i; }
+	void set_id(std::string s) { id = s; }
 
 	/** Set this item's string */
-	void set_string(std::string s) { str = s; }
+	void set_displayed_string(std::string s) { str = s; }
 
 private:
   ComboItem (const ComboItem&);
@@ -112,10 +112,13 @@ protected:
 	
 	/** Label that prints to the left of the drop-down */
 	std::string label;
+	
+	/** The "owner" of this combobox */
+	ComboboxListener* listener;
 
 public:
 	/** Constructor */
-	Combobox (Vector p, std::string label = "");
+	Combobox (Vector p, ComboboxListener* listener, std::string label = std::string());
 	
 	/** Destructor */
 	virtual ~Combobox ();
@@ -157,7 +160,7 @@ public:
 	
 	virtual void on_pointer_enter() { hover = true; }
 	virtual void on_pointer_leave() { hover = false; }
-	virtual void on_pointer_move(int x, int y) { mouse_pos = Vector(x, y); }
+	virtual void on_pointer_move(int x, int y) { mouse_pos = Vector((float)x, (float)y); }
 	
 	/** Sets whether or not this combobox is clickable */
 	virtual void set_enabled(bool e) { enabled = e; }

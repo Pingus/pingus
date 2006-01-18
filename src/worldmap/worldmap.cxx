@@ -185,7 +185,7 @@ WorldMap::draw (DrawingContext& gc)
 	// Blank out the screen in case the screen resolution is larger than
 	// the worldmap picture.
 	// FIXME:  Should probably scale everything to match the resolution instead.
-	gc.draw_fillrect(0, 0, CL_Display::get_width(), CL_Display::get_height(),
+	gc.draw_fillrect(0, 0, (float)CL_Display::get_width(), (float)CL_Display::get_height(),
 		CL_Color::black, -15000);
 		
   for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)

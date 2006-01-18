@@ -72,6 +72,10 @@ public:
 	/** Turns the "snap-to-grid" option on or off */
 	void set_snap_to(bool s) { snap_to = s; }
 
+	/** Add an object to the currently displayed vector of objects */
+	void add_object(LevelObj* obj);
+
+	/** Return a pointer to the EditorScreen object */
 	EditorScreen* get_screen() { return editor; }
 
 private:

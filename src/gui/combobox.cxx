@@ -21,19 +21,21 @@
 #include <vector>
 #include <string>
 #include "combobox.hxx"
+#include "combobox_listener.hxx"
 #include "../fonts.hxx"
 
 namespace Pingus {
 namespace GUI {
 
 // Constructor
-Combobox::Combobox (Vector p, std::string l) :
+Combobox::Combobox (Vector p, ComboboxListener* listener_, std::string l) :
 	current_item(0),
 	drop_down(false),
 	hover(false),
 	pos(p),
 	enabled(false),
-	label(l)
+	label(l),
+	listener(listener_)
 {
 	// Default to 20 characters wide.
 	width = Fonts::smallfont.get_width('O') * 20.0f;
@@ -118,9 +120,12 @@ Combobox::on_primary_button_click(int x, int y)
 	if (drop_down)
 	{
 		// Determine which item was selected, if any, and set the current item to it.
-		if (y > pos.y + height)
-			current_item = item_list[static_cast<int>((y - pos.y - height) / height)];
 		drop_down = false;
+		if (y > pos.y + height)
+		{
+			current_item = item_list[static_cast<int>((y - pos.y - height) / height)];
+			listener->combobox_changed(this);
+		}
 	}
 	else
 	{
@@ -150,20 +155,21 @@ Combobox::draw(DrawingContext &gc)
 	{
 		// Draw the highlighted box
 		int y_offset = int(int(((mouse_pos.y - pos.y - height)/height)+1) * height);
-		gc.draw_fillrect(pos.x, y_offset, pos.x + get_width(), y_offset + height, CL_Color::gray);
+		gc.draw_fillrect(pos.x, pos.y + y_offset, pos.x + get_width(), pos.y + y_offset + 
+			height, CL_Color::gray);
 		
 		// Draw all of the items
 		for (unsigned i = 0; i < item_list.size(); i++)
 		{
 			gc.print_left(Fonts::smallfont, pos.x + 5.0f, pos.y + ((i + 1) * height), 
-				item_list[i]->get_string(), 5000);
+				item_list[i]->get_displayed_string());
 		}
 	}
 
 	if (current_item)
 	{
 		// Print the currently selected item
-		gc.print_left(Fonts::smallfont, pos.x + 3.0f, pos.y, current_item->get_string());
+		gc.print_left(Fonts::smallfont, pos.x + 3.0f, pos.y, current_item->get_displayed_string());
 	}
 }
 

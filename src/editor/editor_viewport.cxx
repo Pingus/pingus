@@ -273,6 +273,12 @@ EditorViewport::refresh()
 	objs = editor->get_level()->get_objects();
 }
 
+void 
+EditorViewport::add_object(LevelObj* obj)
+{
+	objs.push_back(obj);
+}
+
 } // Editor namespace
 } // Pingus namespace
 

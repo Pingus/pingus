@@ -81,17 +81,14 @@ Resource::get_resources(const std::string& type, const std::string& section)
 }
 
 
-// Returns a list of sections
+// Returns a list of sections.  Returns all sections if left blank.
 std::vector<std::string>
 Resource::get_sections(const std::string& section)
 {
 	if (section == std::string())
 		return resmgr.get_all_sections();
 	else
-		// FIXME: This patch hasn't been applied to ClanLib yet.
-		// return resmgr.get_sections(section);
-		// The following is wrong.
-		return resmgr.get_all_sections();
+		return resmgr.get_sections(section);
 }
 
 

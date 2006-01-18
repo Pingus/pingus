@@ -172,7 +172,20 @@ EditorScreen::update(const GameDelta &delta)
 	}
 	else
 		GUIScreen::update(delta);
+}
 
+void
+EditorScreen::add_object(LevelObj* obj)
+{
+	plf->add_object(obj);
+	viewport->add_object(obj);
+}
+
+void
+EditorScreen::add_objects(std::vector<LevelObj*> objs)
+{
+	for (std::vector<LevelObj*>::const_iterator it = objs.begin(); it != objs.end(); it++)
+		add_object(*it);
 }
 
 } // Editor namespace

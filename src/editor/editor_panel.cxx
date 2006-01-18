@@ -70,12 +70,15 @@ EditorPanel::init()
 	get_screen()->get_gui_manager()->add(snap_to_checkbox);
 	
 	// Create Comboboxes
-	combobox_1 = new GUI::Combobox(Vector(500,  0));
-	combobox_2 = new GUI::Combobox(Vector(500, 30));
-	get_screen()->get_gui_manager()->add(combobox_1);
+	combobox_3 = new GUI::Combobox(Vector(500, 36), this);
+	combobox_2 = new GUI::Combobox(Vector(500, 18), this);
+	combobox_1 = new GUI::Combobox(Vector(500,  0), this);
+	get_screen()->get_gui_manager()->add(combobox_3);
 	get_screen()->get_gui_manager()->add(combobox_2);
-	combobox_1->set_enabled(false);
+	get_screen()->get_gui_manager()->add(combobox_1);
+	combobox_3->set_enabled(false);
 	combobox_2->set_enabled(false);
+	combobox_1->set_enabled(false);
 }
 
 // Draw the panel
@@ -113,7 +116,12 @@ void
 EditorPanel::set_selected_button(PanelButton* pb)
 {
 	if (pressed_button)
+	{
+		combobox_1->set_enabled(false);
+		combobox_2->set_enabled(false);
+		combobox_3->set_enabled(false);
 		pressed_button->select(false);
+	}
 	
 	pressed_button = pb;
 	if (pressed_button)
@@ -129,6 +137,8 @@ EditorPanel::get_combobox(int i)
 			return combobox_1;
 		case 2 :
 			return combobox_2;
+		case 3:
+			return combobox_3;
 		default :
 			return 0;
 	}
@@ -139,6 +149,26 @@ EditorPanel::checkbox_changed(bool new_value, GUI::Checkbox* box)
 {
 	if (box == snap_to_checkbox)
 		editor->get_viewport()->set_snap_to(new_value);
+}
+
+void
+EditorPanel::combobox_changed(GUI::Combobox* box)
+{
+	if (pressed_button)
+	{	
+		int i;
+		if (box == combobox_1)
+			i = 1;
+		else if (box == combobox_2)
+			i = 2;
+		else
+			i = 3;
+
+		// Send the ID field of the Combobox to whichever button is currently selected.
+		pressed_button->combobox_changed(i, 
+			get_combobox(i)->get_selected_item()->get_id());
+	}
+	
 }
 
 } // Editor namespace

@@ -73,7 +73,7 @@ public:
 
   void draw(DrawingContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_center(Fonts::chalk_normal, x_pos + 32, y_pos - 17, _("Ok"));
+    gc.print_center(Fonts::chalk_normal, (float)x_pos + 32, (float)y_pos - 17, _("Ok"));
   }
 
   void on_click()
@@ -109,7 +109,7 @@ public:
 
   void draw(DrawingContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_center(Fonts::chalk_normal, x_pos + 55, y_pos, _("Abort"));
+    gc.print_center(Fonts::chalk_normal, (float)x_pos + 55, (float)y_pos, _("Abort"));
   }
 
   void on_click() {
@@ -148,7 +148,7 @@ StartScreenComponent::StartScreenComponent(const PingusLevel& p)
 void
 StartScreenComponent::draw(DrawingContext& gc)
 {
-  background.draw(CL_Display::get_width()/2,CL_Display::get_height()/2);
+  background.draw((float)CL_Display::get_width()/2,(float)CL_Display::get_height()/2);
 
   int left_x  = CL_Display::get_width()/2 - 120;
   int right_x = CL_Display::get_width()/2 + 120;
@@ -156,32 +156,28 @@ StartScreenComponent::draw(DrawingContext& gc)
 
   gc.print_center(Fonts::chalk_large,
                   gc.get_width()/2,
-                  CL_Display::get_height()/2 - 200,
+                  (float)CL_Display::get_height()/2 - 200,
                   _(plf.get_levelname()));
 
   gc.print_left(Fonts::chalk_normal,
-                CL_Display::get_width()/2 - 290,
-                CL_Display::get_height()/2 - 140,
+                (float)CL_Display::get_width()/2 - 290,
+                (float)CL_Display::get_height()/2 - 140,
                 format_description(800 - 230));
 
-  gc.print_left (Fonts::chalk_normal, left_x,  y, _("Number of Pingus: "));
-  gc.print_right(Fonts::chalk_normal, right_x, y, CL_String::to(plf.get_number_of_pingus()));
+  gc.print_left (Fonts::chalk_normal, (float)left_x,  (float)y, _("Number of Pingus: "));
+  gc.print_right(Fonts::chalk_normal, (float)right_x, (float)y, CL_String::to(plf.get_number_of_pingus()));
 
-  gc.print_left (Fonts::chalk_normal, left_x,  y += 30, _("Number to Save: "));
-  gc.print_right(Fonts::chalk_normal, right_x, y, CL_String::to(plf.get_number_to_save()));
+  gc.print_left (Fonts::chalk_normal, (float)left_x,  float(y += 30), _("Number to Save: "));
+  gc.print_right(Fonts::chalk_normal, (float)right_x, (float)y, CL_String::to(plf.get_number_to_save()));
 
-  gc.print_left (Fonts::chalk_normal, left_x,  y += 30, _("Time: "));
-  gc.print_right(Fonts::chalk_normal, right_x, y, time_str);
+  gc.print_left (Fonts::chalk_normal, (float)left_x,  float(y += 30), _("Time: "));
+  gc.print_right(Fonts::chalk_normal, (float)right_x, (float)y, time_str);
 
-  gc.print_left (Fonts::chalk_normal, left_x,  y += 30, _("Difficulty:"));
-  gc.print_right(Fonts::chalk_normal, right_x, y, CL_String::to(plf.get_difficulty()) + "/100");
+  gc.print_left (Fonts::chalk_normal, (float)left_x,  float(y += 30), _("Difficulty:"));
+  gc.print_right(Fonts::chalk_normal, (float)right_x, (float)y, CL_String::to(plf.get_difficulty()) + "/100");
 
-  /*for (int i = 0; plf.get_difficulty())
-    {
-    }*/
-
-  gc.print_center(Fonts::chalk_small, CL_Display::get_width()/2,
-                  CL_Display::get_height()/2 + 270, _("Author: ") + plf.get_author());
+  gc.print_center(Fonts::chalk_small, (float)CL_Display::get_width()/2,
+                  (float)CL_Display::get_height()/2 + 270, _("Author: ") + plf.get_author());
 
   if (maintainer_mode)
     gc.print_left(Fonts::chalk_small, 110, 430, _("Filename: ") + plf.get_resname());

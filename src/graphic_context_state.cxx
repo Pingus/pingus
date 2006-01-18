@@ -83,9 +83,9 @@ GraphicContextState::push(Pingus::DrawingContext& gc)
 {
   gc.push_modelview();
 
-  gc.translate(impl->width/2, impl->height/2);
+  gc.translate((float)impl->width/2, (float)impl->height/2);
   gc.rotate(impl->rotation);
-  gc.translate(-impl->width/2, -impl->height/2);
+  gc.translate(-(float)impl->width/2, -(float)impl->height/2);
 
   gc.scale(get_zoom(), get_zoom());
   gc.translate(impl->offset.x, impl->offset.y);
@@ -96,9 +96,9 @@ GraphicContextState::push(Pingus::SceneContext& gc)
 {
   gc.push_modelview();
 
-  gc.translate(impl->width/2, impl->height/2);
+  gc.translate((float)impl->width/2, (float)impl->height/2);
   gc.rotate(impl->rotation);
-  gc.translate(-impl->width/2, -impl->height/2);
+  gc.translate(-(float)impl->width/2, -(float)impl->height/2);
 
   gc.scale(get_zoom(), get_zoom());
   gc.translate(impl->offset.x, impl->offset.y);
@@ -238,11 +238,11 @@ CL_Pointf
 GraphicContextState::screen2world(const CL_Point& pos_)
 {
   CL_Pointf pos = pos_;
-  float sa = sin(-impl->rotation/180.0f*M_PI);
-  float ca = cos(-impl->rotation/180.0f*M_PI);
+  float sa = (float)sin(-impl->rotation/180.0f*M_PI);
+  float ca = (float)cos(-impl->rotation/180.0f*M_PI);
 
-  float dx = pos.x - impl->width/2;
-  float dy = pos.y - impl->height/2;
+  float dx = pos.x - (float)impl->width/2;
+  float dy = pos.y - (float)impl->height/2;
 
   pos.x = impl->width/2  + (ca * dx - sa * dy);
   pos.y = impl->height/2 + (sa * dx + ca * dy);

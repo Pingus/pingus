@@ -43,6 +43,7 @@ libpingus_gui_a_SOURCES = \
         surface_button.hxx \
         combobox.cxx \
         combobox.hxx \
+	combobox_listener.hxx \
 				checkbox.cxx \
 				checkbox.hxx \
 				checkbox_listener.hxx

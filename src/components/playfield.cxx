@@ -69,31 +69,31 @@ Playfield::draw (DrawingContext& gc)
   
 	// Blank out the entire window in case the screen resolution is larger
 	// than the current level.
-	gc.draw_fillrect(0, 0, CL_Display::get_width(), CL_Display::get_height(),
+	gc.draw_fillrect(0, 0, (float)CL_Display::get_width(), (float)CL_Display::get_height(),
 		CL_Color::black, -15000);
   world->draw(*scene_context);
  
   // Draw the scrolling band
   if (mouse_scrolling && !drag_drop_scrolling)
     {
-      gc.draw_line(mouse_pos.x, mouse_pos.y,
-                   scroll_center.x, scroll_center.y-15,
+      gc.draw_line((float)mouse_pos.x, (float)mouse_pos.y,
+                   (float)scroll_center.x, (float)scroll_center.y-15,
                    CL_Color(0, 255, 0));
 
-      gc.draw_line(mouse_pos.x, mouse_pos.y,
-                   scroll_center.x, scroll_center.y,
+      gc.draw_line((float)mouse_pos.x, (float)mouse_pos.y,
+                   (float)scroll_center.x, (float)scroll_center.y,
                    CL_Color(255, 0, 0));
 
-      gc.draw_line(mouse_pos.x, mouse_pos.y,
-                   scroll_center.x, scroll_center.y+15,
+      gc.draw_line((float)mouse_pos.x, (float)mouse_pos.y,
+                   (float)scroll_center.x, (float)scroll_center.y+15,
                    CL_Color(0, 0, 255));
 
-      gc.draw_line(mouse_pos.x, mouse_pos.y,
-                   scroll_center.x + 15, scroll_center.y,
+      gc.draw_line((float)mouse_pos.x, (float)mouse_pos.y,
+                   (float)scroll_center.x + 15, (float)scroll_center.y,
                    CL_Color(0, 255, 255));
 
-      gc.draw_line(mouse_pos.x, mouse_pos.y,
-                   scroll_center.x - 15, scroll_center.y,
+      gc.draw_line((float)mouse_pos.x, (float)mouse_pos.y,
+                   (float)scroll_center.x - 15, (float)scroll_center.y,
                    CL_Color(255, 255, 0));
     }
 
@@ -143,8 +143,8 @@ Playfield::update(float delta)
         }
       else
         { 
-          state.set_pos(CL_Pointf(state.get_pos().x - (scroll_center.x - mouse_pos.x) * 0.2,
-                                  state.get_pos().y - (scroll_center.y - mouse_pos.y) * 0.2));
+          state.set_pos(CL_Pointf(state.get_pos().x - float(scroll_center.x - mouse_pos.x) * 0.2f,
+                                  state.get_pos().y - float(scroll_center.y - mouse_pos.y) * 0.2f));
         }
     }
 

@@ -32,6 +32,7 @@ class GUI::GUIManager;
 namespace Editor {
 
 class XMLLevel;
+class LevelObj;
 class EditorPanel;
 class EditorViewport;
 
@@ -84,6 +85,10 @@ public:
 
 	/** Return a pointer to the current level */
 	XMLLevel* get_level() const { return plf; }
+
+	/** Add an object to both the XMLLevel and the EditorViewport */
+	void add_object(LevelObj* obj);
+	void add_objects(std::vector<LevelObj*> objs);
 
 	/** Show a file dialog box */
 	void show_file_dialog(bool for_loading);

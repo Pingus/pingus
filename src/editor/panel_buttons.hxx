@@ -99,6 +99,9 @@ public:
 	
 	/** Action taken when the button is selected or not */
 	virtual void select(bool s) { is_selected = s; }
+	
+	/** Event that fires when the first combobox has been changed */
+	virtual void combobox_changed(int i, const std::string &value) { }
 
 private:
 	PanelButton (const PanelButton&);
@@ -169,7 +172,10 @@ public:
 	PanelButtonGroundpiece (EditorPanel* p);
 
 	/** This function is called by the gui_manager when the button is clicked */
-	void on_primary_button_click (int x, int y);
+	virtual void on_primary_button_click (int x, int y);
+
+	/** Want to update the other comboboxes with the new groundpieces */
+	virtual void combobox_changed(int i, const std::string &value);
 
 private:
 	PanelButtonGroundpiece ();

@@ -246,5 +246,11 @@ void XMLLevel::load_level(const std::string& filename)
 	impl->sort_objs();
 }
 
+void
+XMLLevel::add_object(LevelObj* obj)
+{
+	impl->objects.push_back(obj);
+}
+
 }	// Editor namespace
 }	// Pingus namespace

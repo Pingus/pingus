@@ -51,7 +51,15 @@ public:
 	/** Load an existing level from a file */
 	void load_level(const std::string& filename);
 
+	/** Return all objects in the level */
 	std::vector<LevelObj*> get_objects() const { return impl->objects; }
+	
+	/** Add an object to the level */
+	void add_object(LevelObj* obj);
+	
+	/** Return LevelImpl */
+	LevelImpl* get_level_impl() { return impl; }
+	
 
 private:
 	XMLLevel (const XMLLevel&);

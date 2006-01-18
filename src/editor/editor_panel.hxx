@@ -24,12 +24,14 @@
 #include <iostream>
 #include "../gui/component.hxx"
 #include "../gui/checkbox_listener.hxx"
-#include "../gui/combobox.hxx"
+#include "../gui/combobox_listener.hxx"
+//#include "../gui/combobox.hxx"
 
 namespace Pingus {
 
 	class DrawingContext;
 	class GUI::Checkbox;
+	class GUI::Combobox;
 
 namespace Editor {
 
@@ -38,7 +40,7 @@ namespace Editor {
 
 /** This class contains all of the buttons, comboboxes, and other components */
 class EditorPanel : public GUI::Component, 
-	public GUI::CheckboxListener 
+	public GUI::CheckboxListener, public GUI::ComboboxListener
 {
 private:
 	/** The EditorScreen to which this panel belongs */
@@ -53,6 +55,7 @@ private:
 	/** Combobox which can change it's item list based on the button pressed */
 	GUI::Combobox* combobox_1;
 	GUI::Combobox* combobox_2;
+	GUI::Combobox* combobox_3;
 
 	/** Checkbox which controls the snap-to-grid functionality */
 	GUI::Checkbox* snap_to_checkbox;
@@ -87,6 +90,9 @@ public:
 	
 	/** Event that fires when a checkbox gets changed */
 	void checkbox_changed(bool new_value, GUI::Checkbox* box);
+	
+	/** Event that fires when a combobox gets changed */
+	void combobox_changed(GUI::Combobox* box);
 
 
 private:
