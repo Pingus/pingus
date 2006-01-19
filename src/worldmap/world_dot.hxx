@@ -44,7 +44,7 @@ public:
 
 	virtual void on_click() { }
 
-	virtual bool finished() { return finished; }
+	virtual bool finished() { return is_finished; }
 	virtual bool accessible() { return is_accessible; }
 
   /** makes the node accessible */
