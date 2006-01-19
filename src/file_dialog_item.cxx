@@ -128,6 +128,11 @@ namespace Pingus {
 								status = _("Not Finished");
 								file_item.is_finished = false;
 							}
+							else
+							{
+								status = _("Finished!");
+								file_item.is_finished = true;
+							}
 							file_item.friendly_name = _(file_item.friendly_name);
 							file_info = _(file_info);
 
