@@ -95,7 +95,7 @@ Faller::update ()
 
 	  // If the Pingu collided into something while moving down...
 	  if (velocity.y > 0.0f
-	      && rel_getpixel(0, -1) != Groundtype::GP_NOTHING)
+	      && rel_getpixel(0, -2) != Groundtype::GP_NOTHING)
 	    {
 	      // Ping is on ground/water/something
 	      if (   rel_getpixel(0, -1) == Groundtype::GP_WATER

@@ -241,6 +241,9 @@ ScreenManager::real_clear()
 void
 ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
 {
+	// FIXME: This entire function doesn't work very well.
+	if (0)
+	{
   DeltaManager delta_manager;
   float passed_time = 0;
 
@@ -277,6 +280,7 @@ ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
 
       progress = passed_time/1.0f;
     }
+	}
 }
 
 void
