@@ -24,7 +24,8 @@
 
 namespace Pingus {
 namespace WorldObjs {
-namespace Entrances {
+// FIXME: Re-enable this namespace.
+//namespace Entrances {
 
 class WoodThing : public Entrance
 {
@@ -42,7 +43,7 @@ private:
   WoodThing& operator= (const WoodThing&);
 };
 
-} // namespace Entrances
+//} // namespace Entrances
 } // namespace WorldObjs
 } // namespace Pingus
 

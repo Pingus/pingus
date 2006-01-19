@@ -44,6 +44,7 @@
 #include "worldobjs/switch_door.hxx"
 #include "worldobjs/teleporter.hxx"
 #include "worldobjs/thunderstorm_background.hxx"
+#include "worldobjs/woodthing.hxx"
 
 namespace Pingus {
 
@@ -102,6 +103,7 @@ WorldObjFactory::instance ()
       new WorldObjFactoryImpl<Liquid>("liquid");
       new WorldObjFactoryImpl<Hotspot>("hotspot");
       new WorldObjFactoryImpl<Entrance>("entrance");
+			new WorldObjFactoryImpl<WoodThing>("woodthing");
       new WorldObjFactoryImpl<Exit>("exit");
 
       // traps

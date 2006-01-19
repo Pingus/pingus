@@ -26,7 +26,8 @@
 
 namespace Pingus {
 namespace WorldObjs {
-namespace Entrances {
+// FIXME: Re-enable this namespace.
+// namespace Entrances {
 
 WoodThing::WoodThing(const FileReader& reader)
   : Entrance(reader)
@@ -39,7 +40,10 @@ void
 WoodThing::update ()
 {
   Entrance::update ();
-
+	
+	if (last_release > 0)
+		surface.update();
+	
   if (rand() % 5 == 0)
     {
       world->get_smoke_particle_holder()->
@@ -52,18 +56,13 @@ WoodThing::update ()
 void
 WoodThing::draw (SceneContext& gc)
 {
-	// FIXME: What are these hard-codes in here for?
+	gc.color().draw(surface2, pos);
+	// Only draw the animation if a pingu is coming out.
 	if (last_release > 0)
-		gc.color().draw(surface,
-			Vector(pos.x - surface.get_width () /  2,
-			pos.y - surface.get_height() + 32, pos.z));
-	else
-		gc.color().draw(surface2,
-			Vector(pos.x - surface.get_width () /  2,
-			pos.y - surface.get_height() + 32, pos.z));
+		gc.color().draw(surface, pos);
 }
 
-} // namespace Entrances
+// } // namespace Entrances
 } // namespace WorldObjs
 } // namespace Pingus
 

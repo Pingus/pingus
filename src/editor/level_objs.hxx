@@ -60,7 +60,7 @@ namespace Editor {
 			val = HAS_SPEED | HAS_WIDTH | HAS_SURFACE;
 		else if (obj_type == "surface-background")
 			val = HAS_COLOR | HAS_STRETCH | HAS_PARA | HAS_SCROLL | HAS_SURFACE;
-		else if (obj_type == "entrance")
+		else if (obj_type == "entrance" || obj_type == "woodthing")
 			val = HAS_TYPE | HAS_DIRECTION | HAS_RELEASE_RATE | HAS_OWNER | HAS_SURFACE_FAKE;
 		else if (obj_type == "exit")
 			val = HAS_OWNER | HAS_SURFACE;
