@@ -34,7 +34,6 @@ namespace WorldObjs {
 SurfaceBackground::SurfaceBackground(const FileReader& reader)
   : para_x(0.5),
     para_y(0.5),
-    pos(Vector(0, 0, -150)),
     scroll_x(0.0),
     scroll_y(0.0),
     color(CL_Colorf(0,0,0,0)),
@@ -184,7 +183,7 @@ SurfaceBackground::draw (SceneContext& gc)
 					x += bg_surface.get_width())
 				{
 					gc.color().draw(bg_surface, Vector(static_cast<float>(x),
-																						 static_cast<float>(y)));
+																						 static_cast<float>(y), pos.z));
 				}
 			}
 		}
