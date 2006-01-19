@@ -69,14 +69,14 @@ MetaMap::parse_file(FileReader &reader)
 
 // Parse the nodes and edges
 void
-MetaMap::parse_graph(FileReader &reader)
+MetaMap::parse_graph(FileReader reader)
 {
   path_graph = new PathGraph(this, reader);
 }
 
 // Parse the properties of this file
 void
-MetaMap::parse_properties(FileReader &reader)
+MetaMap::parse_properties(FileReader reader)
 {
 	// Get beginning and ending nodes.
 	std::string node_name;

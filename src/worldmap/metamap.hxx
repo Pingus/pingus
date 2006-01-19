@@ -77,10 +77,10 @@ private:
 	void parse_file(FileReader &reader);
 
 	/** Parses the <head> section */
-	void parse_properties(FileReader &reader);
+	void parse_properties(FileReader reader);
 
 	/** Parses the <graph> section */
-	void parse_graph(FileReader &reader);
+	void parse_graph(FileReader reader);
 
 	MetaMap();
 	MetaMap (const MetaMap&);
