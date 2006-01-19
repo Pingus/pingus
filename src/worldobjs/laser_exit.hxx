@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_LASER_EXIT_HXX
 #define HEADER_PINGUS_WORLDOBJS_LASER_EXIT_HXX
 
-#include "../game_counter.hxx"
 #include "../worldobj.hxx"
 
 namespace Pingus {
@@ -38,7 +37,6 @@ class LaserExit : public WorldObj
 private:
   CL_Sprite   surface;
   Vector      pos;
-  GameCounter counter;
 
   bool killing;
 

@@ -22,7 +22,6 @@
 
 #include <ClanLib/Display/sprite.h>
 #include "../res_descriptor.hxx"
-#include "../game_counter.hxx"
 #include "../worldobj.hxx"
 
 namespace Pingus {
@@ -64,10 +63,8 @@ private:
   /** If streched in x or y direction keep the aspect ratio */
   bool keep_aspect;
 
-
-  GameCounter counter;
-
-  CL_Sprite bg_surface;
+	/** Background image */
+	CL_Sprite bg_surface;
 
   /** The horizontal scrolling speed in pixels per tick */
   float scroll_ox;

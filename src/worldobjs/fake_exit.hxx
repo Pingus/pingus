@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_TRAPS_FAKE_EXIT_HXX
 #define HEADER_PINGUS_TRAPS_FAKE_EXIT_HXX
 
-#include "../game_counter.hxx"
 #include "../worldobj.hxx"
 
 namespace Pingus {
@@ -43,9 +42,8 @@ private:
   CL_Sprite   smallmap_symbol;
 
   Vector      pos;
-  GameCounter counter;
 
-  bool smashing;
+	bool smashing;
 
 public:
   FakeExit(const FileReader& reader);

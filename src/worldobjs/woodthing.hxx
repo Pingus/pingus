@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_ENTRANCES_WOODTHING_HXX
 #define HEADER_PINGUS_WORLDOBJS_ENTRANCES_WOODTHING_HXX
 
-#include "../game_counter.hxx"
 #include "entrance.hxx"
 
 namespace Pingus {
@@ -30,7 +29,6 @@ namespace Entrances {
 class WoodThing : public Entrance
 {
 private:
-  GameCounter counter;
   CL_Sprite   surface2;
 
 public:
@@ -51,4 +49,3 @@ private:
 #endif
 
 /* EOF */
-

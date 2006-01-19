@@ -34,12 +34,6 @@ FakeExit::FakeExit(const FileReader& reader)
     smashing(false)
 {
   reader.read_vector("position", pos);
-
-  counter.set_size(surface.get_frame_count());
-  counter.set_type(GameCounter::once);
-  counter.set_speed(2.5);
-  counter = surface.get_frame_count() - 1;
-
   pos -= Vector(surface.get_width ()/2, surface.get_height ());
 }
 
@@ -59,43 +53,41 @@ FakeExit::draw (SceneContext& gc)
 void
 FakeExit::update ()
 {
-  PinguHolder* holder = world->get_pingus();
-  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu){
-    catch_pingu(*pingu);
-  }
+	PinguHolder* holder = world->get_pingus();
+	for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
+		catch_pingu(*pingu);
 
-  if (smashing)
-    ++counter;
+	if (smashing)
+		surface.update();
 }
 
 void
 FakeExit::catch_pingu (Pingu* pingu)
 {
-  if (counter.finished()) {
-    smashing = false;
-  }
+	if (surface.is_finished())
+		smashing = false;
 
-  if (   pingu->get_x() > pos.x + 31 && pingu->get_x() < pos.x + 31 + 15
-      && pingu->get_y() > pos.y + 56 && pingu->get_y() < pos.y + 56 + 56)
-    {
-      if (pingu->get_action() != Actions::Splashed)
+	if (   pingu->get_pos().x > pos.x + 31 && pingu->get_pos().x < pos.x + 31 + 15
+      && pingu->get_pos().y > pos.y + 56 && pingu->get_pos().y < pos.y + 56 + 56)
 	{
-	  if (!smashing) {
-	    counter = 0;
-	    smashing = true;
-	  }
-
-	  if (counter >= 3 && counter <= 5) {
-	    pingu->set_action(Actions::Splashed);
-	  }
+		if (pingu->get_action() != Actions::Splashed)
+		{
+			if (!smashing) 
+			{
+			surface.restart();
+			smashing = true;
+			}
+	
+			if (surface.get_current_frame() == 4)
+				pingu->set_action(Actions::Splashed);
+		}
 	}
-    }
 }
 
 void
 FakeExit::draw_smallmap(SmallMap* smallmap)
 {
-  smallmap->draw_sprite(smallmap_symbol, pos);
+	smallmap->draw_sprite(smallmap_symbol, pos);
 }
 
 } // namespace WorldObjs

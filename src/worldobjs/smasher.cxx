@@ -126,12 +126,12 @@ Smasher::catch_pingu (Pingu* pingu)
 {
   // Activate the smasher if a Pingu is under it
   if ((   pingu->direction.is_left()
-	  && pingu->get_x() > pos.x + 65
-	  && pingu->get_x() < pos.x + 85)
+	  && pingu->get_pos().x > pos.x + 65
+	  && pingu->get_pos().x < pos.x + 85)
       ||
       (   pingu->direction.is_right()
-	  && pingu->get_x() > pos.x + 190
-	  && pingu->get_x() < pos.x + 210))
+	  && pingu->get_pos().x > pos.x + 190
+	  && pingu->get_pos().x < pos.x + 210))
     {
       if (pingu->get_action() != Actions::Splashed)
 	{

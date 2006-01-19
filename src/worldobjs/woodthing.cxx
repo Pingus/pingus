@@ -33,19 +33,12 @@ WoodThing::WoodThing(const FileReader& reader)
 {
   surface  = Resource::load_sprite("entrances/woodthing_mov");
   surface2 = Resource::load_sprite("entrances/woodthing_nmov");
-
-  counter.set_size(surface.get_frame_count());
-  counter.set_type(GameCounter::once);
-  counter.set_speed(2);
-  counter = surface.get_frame_count() - 1;
 }
 
 void
 WoodThing::update ()
 {
   Entrance::update ();
-
-  --counter;
 
   if (rand() % 5 == 0)
     {
@@ -59,9 +52,15 @@ WoodThing::update ()
 void
 WoodThing::draw (SceneContext& gc)
 {
-  gc.color().draw(surface,
-                  Vector(pos.x - surface.get_width () /  2,
-                         pos.y - surface.get_height() + 32));
+	// FIXME: What are these hard-codes in here for?
+	if (last_release > 0)
+		gc.color().draw(surface,
+			Vector(pos.x - surface.get_width () /  2,
+			pos.y - surface.get_height() + 32, pos.z));
+	else
+		gc.color().draw(surface2,
+			Vector(pos.x - surface.get_width () /  2,
+			pos.y - surface.get_height() + 32, pos.z));
 }
 
 } // namespace Entrances

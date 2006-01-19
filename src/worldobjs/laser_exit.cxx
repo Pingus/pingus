@@ -30,11 +30,6 @@ LaserExit::LaserExit(const FileReader& reader)
   : killing(false)
 {
   reader.read_vector("position", pos);
-
-  counter.set_size(surface.get_frame_count());
-  counter.set_type(GameCounter::once);
-  counter.set_speed(5);
-  counter = 0;
 }
 
 float
@@ -59,11 +54,11 @@ LaserExit::update ()
   }
 
   if (killing) {
-    if (counter.finished()) {
-      counter = 0;
+    if (surface.is_finished()) {
+			surface.restart();
       killing = false;
     } else {
-      ++counter;
+      surface.update();
     }
   }
 }
