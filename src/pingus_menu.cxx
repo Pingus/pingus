@@ -172,18 +172,17 @@ void
 PingusMenu::do_start(const std::string &filename)
 { // Start the story or worldmap mode
   Sound::PingusSound::play_sound ("letsgo");
-
-  bool story_seen = false;
-	StatManager::instance()->get_bool(StatManager::get_resname(filename) + "-story-seen", story_seen);
-
 	WorldMapNS::WorldMapManager::instance()->load(filename);
   
+  bool story_seen = false;
+	StatManager::instance()->get_bool(WorldMapNS::WorldMapManager::instance()->
+		get_worldmap()->get_shortname() + "-story-seen", story_seen);
+	
 	if (!story_seen)
 		ScreenManager::instance()->push_screen(new StoryScreen(
 			WorldMapNS::WorldMapManager::instance()->get_worldmap()->get_intro_story()), true);
   else
 	  ScreenManager::instance()->push_screen(WorldMapNS::WorldMapManager::instance());
-    //}
 }
 
 void PingusMenu::do_contrib(const std::string &levelfile)

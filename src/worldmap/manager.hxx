@@ -33,7 +33,7 @@ namespace Pingus {
 namespace WorldMapNS {
 
 typedef int NodeId;
-
+class MetaMap;
 class WorldMap;
 
 /** The WorldMapManager manages the worldmaps and the translation
@@ -75,6 +75,8 @@ private:
   WorldMap* worldmap;
   WorldMap* new_worldmap;
 
+	MetaMap* metamap;
+
   WorldMapManager ();
 public:
   ~WorldMapManager ();
@@ -97,6 +99,7 @@ public:
   /** @}*/
 
   WorldMap* get_worldmap() { return worldmap; }
+	MetaMap* get_metamap() { return metamap; }
 
   /** Change the current map to the given map
 

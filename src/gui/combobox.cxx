@@ -83,6 +83,7 @@ Combobox::clear()
 	}
 	item_list.clear();
 	current_item = 0;
+	drop_down = false;
 }
 
 // Returns whether or not the combobox is at this location

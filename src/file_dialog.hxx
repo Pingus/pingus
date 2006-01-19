@@ -35,7 +35,10 @@ namespace Pingus {
 
 	struct FileItem {
 		std::string name;
+		std::string short_name;
 		std::string friendly_name;
+		bool is_accessible;
+		bool is_finished;
 		bool is_directory;
 	};
 

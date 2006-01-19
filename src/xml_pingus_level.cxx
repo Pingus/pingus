@@ -80,6 +80,9 @@ XMLPingusLevel::XMLPingusLevel(const std::string& res_name,
               reader.read_color ("ambient-light",    impl->ambient_light);
               reader.read_string("author",           impl->author);
               
+							if (impl->levelname == std::string())
+								impl->levelname = impl->resname;
+
               FileReader actions_reader;
               reader.read_section("actions", actions_reader);
               const std::vector<std::string>& actions = actions_reader.get_section_names();

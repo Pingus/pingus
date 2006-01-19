@@ -33,14 +33,22 @@
 #include "fonts.hxx"
 #include "resource.hxx"
 #include "gettext.h"
+#include "stat_manager.hxx"
+#include "savegame_manager.hxx"
+#include "savegame.hxx"
+#include "worldmap/manager.hxx"
+#include "worldmap/metamap.hxx"
 
 namespace Pingus {
 
 
 	// Only Constructor
 	FileDialogItem::FileDialogItem(FileDialog* f, Vector p) 
-		: mouse_over(false), is_hidden(true), file_dialog(f),
-			pos(p), sprite(Resource::load_sprite("core/misc/404sprite"))
+		: mouse_over(false), 
+			is_hidden(true), 
+			file_dialog(f),
+			pos(p), 
+			sprite(Resource::load_sprite("core/misc/404sprite"))
 	{
 	}
 
@@ -52,7 +60,10 @@ namespace Pingus {
 		is_hidden = false;
 		// Load sprite based on file  (folder icon, level screenshot, or generic)
 		if (file_item.is_directory)
+		{
+			file_item.is_directory = true;
 			sprite = Resource::load_sprite("core/menu/folder");
+		}
 		else
 		{
 			// FIXME: Load thumbnail specific to this level
@@ -82,15 +93,41 @@ namespace Pingus {
 							// It's a level file
 							reader.read_string("levelname",   file_item.friendly_name);
 							reader.read_string("difficulty",  file_info);
+							file_item.is_accessible = true;
 							file_item.friendly_name = _(file_item.friendly_name);
 							file_info = _("Difficulty: ") + file_info;
+							Savegame* sg = SavegameManager::instance()->get(file_item.friendly_name);
+							if (sg)
+							{
+								status = _("Finished!");
+								file_item.is_finished = (sg->status == Savegame::FINISHED);
+							}
+							else
+							{
+								status = _("Not finished");
+								file_item.is_finished = false;
+							}
 						}
 						else
 						{
 							// It's a Worldmap
-							// FIXME: Add more types eventually
 							reader.read_string("name",        file_item.friendly_name);
+							reader.read_string("short-name",  file_item.short_name);
 							reader.read_string("description", file_info);
+
+							// Get player's status for this worldmap
+							if (!StatManager::instance()->get_bool(
+								file_item.short_name + "-accessible", file_item.is_accessible))
+							{
+								status = _("Not Accessible");
+								file_item.is_accessible = false;
+							}
+							else if (!StatManager::instance()->get_bool(
+								file_item.short_name + "-finished", file_item.is_finished))
+							{
+								status = _("Not Finished");
+								file_item.is_finished = false;
+							}
 							file_item.friendly_name = _(file_item.friendly_name);
 							file_info = _(file_info);
 
@@ -133,9 +170,21 @@ namespace Pingus {
 						pos.y + sprite.get_height(), CL_Color(255,255,255,150));
 				else		// It's a file
 				{
-					gc.draw_fillrect(pos.x+50, pos.y, pos.x+300, pos.y+50, CL_Color::azure);
+					// Determine which color to draw the background rectangle.
+					CL_Color color;
+					if (file_item.is_accessible)
+						if (file_item.is_finished)
+							color = CL_Color::azure;
+						else
+							color = CL_Color::aqua;
+					else
+						color = CL_Color::red;
+					gc.draw_fillrect(pos.x+50, pos.y, pos.x+270, pos.y+75, color);
+
+					// Draw level or worldmap information.
 					gc.print_left(Fonts::pingus_small, pos.x+50, pos.y, file_item.friendly_name);
 					gc.print_left(Fonts::pingus_small, pos.x+50, pos.y+25, file_info);
+					gc.print_left(Fonts::pingus_small, pos.x+50, pos.y+50, status);
 				}
 			}
 		}
@@ -144,7 +193,8 @@ namespace Pingus {
 	void
 	FileDialogItem::on_primary_button_click (int x, int y)
 	{
-		file_dialog->set_selected_file(file_item);
+		if (file_item.is_accessible)
+			file_dialog->set_selected_file(file_item);
 	}
 
 	void

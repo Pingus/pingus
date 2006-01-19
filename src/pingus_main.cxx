@@ -924,6 +924,7 @@ PingusMain::init_pingus()
   Sound::PingusSound::init();
   PinguActionFactory::init();
   Credits::init();
+	WorldMapNS::WorldMapManager::instance();
 
   fps_counter.init();
   console.init();

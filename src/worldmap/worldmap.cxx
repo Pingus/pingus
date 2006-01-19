@@ -146,9 +146,12 @@ WorldMap::parse_properties(FileReader reader)
 	reader.read_int("width", width);
 	reader.read_int("height", height);
 
+	// Get beginning and ending nodes.
 	std::string node_name;
 	reader.read_string("default-node", node_name);
 	default_node = path_graph->lookup_node(node_name);
+	reader.read_string("final-node", node_name);
+	final_node = path_graph->lookup_node(node_name);
 }
 
 void
@@ -388,15 +391,17 @@ WorldMap::update_locked_nodes()
   path_graph->graph.for_each_node(unlock_nodes(path_graph));
 
   bool credits_unlocked = false;
-  StatManager::instance()->get_bool("credits-unlocked", credits_unlocked);
+  StatManager::instance()->get_bool(short_name + "-credits-unlocked", credits_unlocked);
 
   if (!credits_unlocked)
     {
-      Dot* dot = path_graph->get_dot(path_graph->lookup_node("leveldot_19"));
+			// See if the last level is finished
+			Dot* dot = path_graph->get_dot(final_node);
       if (dot)
         {
           if (dot->finished())
             {
+							StatManager::instance()->set_bool(short_name + "-finished", true);
               ScreenManager::instance()->replace_screen(
 								new StoryScreen(get_end_story()), true);
               StatManager::instance()->set_bool("credits-unlocked", true);
@@ -431,13 +436,17 @@ WorldMap::set_starting_node()
 	pingus->set_position(id);
 
 	LevelDot* leveldot = dynamic_cast<LevelDot*>(path_graph->get_dot(id));
-	std::string resname = leveldot->get_plf().get_resname();
+	leveldot->unlock();
+	/*
+	std::string resname = leveldot->get_plf().get_levelname();
 	// Set an accessible flag for this level in the Savegame Manager.
 	if (!SavegameManager::instance()->get(resname))
 	{
 		Savegame savegame(resname, Savegame::ACCESSIBLE, 10000, 0);
 		SavegameManager::instance()->store(savegame);
+		update_locked_nodes();
 	}
+	*/
 }
 } // namespace WorldMapNS
 } // namespace Pingus

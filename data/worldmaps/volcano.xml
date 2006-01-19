@@ -9,6 +9,7 @@
     <width>800</width>
     <height>600</height>
     <default-node>leveldot_1</default-node>
+    <final-node>leveldot_19</final-node>
   </head>
   
   <intro_story>

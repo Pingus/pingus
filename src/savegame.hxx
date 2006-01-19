@@ -50,6 +50,7 @@ public:
   int saved_pingus;
 
   Savegame();
+	~Savegame() { }
   Savegame(FileReader node);
   Savegame(std::string arg_levelname, S_Status arg_status, int arg_time, int arg_saved_pingus);
 

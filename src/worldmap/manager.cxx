@@ -29,6 +29,7 @@
 #include "worldmap.hxx"
 #include "worldmap_story.hxx"
 #include "pingus.hxx"
+#include "metamap.hxx"
 #include "manager.hxx"
 #include "../story_screen.hxx"
 
@@ -211,12 +212,12 @@ WorldMapManagerEnterButton::on_click()
 }
 
 WorldMapManager::WorldMapManager ()
-  : worldmap(0),
-    new_worldmap(0)
+  : is_init(false),
+		exit_worldmap(false),
+		worldmap(0),
+    new_worldmap(0),
+		metamap(new MetaMap(path_manager.complete("metamap/metamap.xml")))
 {
-  is_init = false;
-  exit_worldmap = false;
-
   // FIXME: a bit ugly because of the proteced member, but should work
   // FIXME: well enough. GUIScreen could also use multi-inheritage,
   // FIXME: but that could lead to member function name conflicts
@@ -226,13 +227,6 @@ WorldMapManager::WorldMapManager ()
   gui_manager->add(new WorldMapManagerEnterButton());
 
   gui_manager->add(new WorldMapManagerStoryButton());
-
-  bool credits_unlocked = false;
-  StatManager::instance()->get_bool("credits-unlocked", credits_unlocked);
-  if (credits_unlocked)
-    {
-      gui_manager->add(new WorldMapManagerCreditsButton());
-    }
 }
 
 void
@@ -242,27 +236,36 @@ WorldMapManager::load (const std::string& filename)
     delete worldmap;
 
   worldmap = new WorldMap (filename);
+	
+  bool credits_unlocked = false;
+  StatManager::instance()->get_bool(worldmap->get_shortname() + "-credits-unlocked", 
+		credits_unlocked);
+  if (credits_unlocked)
+	{
+		gui_manager->add(new WorldMapManagerCreditsButton());
+	}
 }
 
 void
 WorldMapManager::on_startup ()
 {
-  exit_worldmap = false;
-  Sound::PingusSound::stop_music();
+	exit_worldmap = false;
+	Sound::PingusSound::stop_music();
 
-  if (!worldmap)
-    {
-      load(path_manager.complete("worldmaps/tutorial.xml"));
-    }
+	if (!worldmap)
+	{
+		load(path_manager.complete("worldmaps/" + metamap->get_default_worldmap()));
+	}
 
-  if (worldmap)
-    worldmap->on_startup ();
+	if (worldmap)
+		worldmap->on_startup ();
 }
 
 WorldMapManager::~WorldMapManager ()
 {
   delete worldmap;
   delete new_worldmap;
+	delete metamap;
 }
 
 void

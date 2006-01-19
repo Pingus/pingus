@@ -47,8 +47,10 @@ LevelDot::LevelDot(FileReader reader)
     highlight_green_dot_sur(Resource::load_sprite("core/worldmap/dot_green_hl")),
     highlight_red_dot_sur(Resource::load_sprite("core/worldmap/dot_red_hl"))
 {
-  reader.read_string("levelname", levelname); 
-  plf = PLFResMgr::load_plf(levelname);
+	std::string resname;
+  reader.read_string("levelname", resname); 
+  plf = PLFResMgr::load_plf(resname);
+	levelname = plf.get_levelname();
 }
 
 void
@@ -137,8 +139,8 @@ LevelDot::draw_hover(DrawingContext& gc)
         pos_correction = realpos + length - static_cast<int>(gc.get_width());
       
       gc.print_center(Fonts::pingus_small,
-                      static_cast<int>(pos.x) - pos_correction,
-                      static_cast<int>(pos.y - 40),
+                      pos.x - (float)pos_correction,
+                      pos.y - 40,
                       _(get_plf().get_levelname()), 
                       10000);
     }
@@ -152,8 +154,8 @@ LevelDot::draw_hover(DrawingContext& gc)
         pos_correction = realpos + length - static_cast<int>(gc.get_width());
         
       gc.print_center(Fonts::pingus_small,
-                      static_cast<int>(pos.x) - pos_correction,
-                      static_cast<int>(pos.y - 30),
+                      pos.x - (float)pos_correction,
+                      pos.y - 30,
                       _("locked"), 
                       10000);
     }
@@ -161,7 +163,7 @@ LevelDot::draw_hover(DrawingContext& gc)
   if (maintainer_mode)
     {
       gc.print_center(Fonts::pingus_small,
-                      int(pos.x), int(pos.y - 56),
+                      pos.x, pos.y - 56,
                       get_plf().get_resname(), 
                       10000);
     }

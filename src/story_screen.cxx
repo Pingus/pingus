@@ -90,7 +90,6 @@ public:
   void on_click()
   {
     story_comp->next_text();
-    //ScreenManager::instance()->replace_screen (PingusMenuManager::instance (), false);
   }
 };
 
@@ -109,7 +108,6 @@ StoryScreen::~StoryScreen()
 StoryScreenComponent::StoryScreenComponent (WorldMapNS::WorldMapStory *arg_story)
   : story(arg_story)
 {
-	// FIXME: Need to Re-enable credits
   /*if (&arg_story == &Story::credits)
     show_credits = true;
   else */
@@ -197,10 +195,12 @@ StoryScreenComponent::next_text()
       else
         {
           //Out of story pages
-					StatManager::instance()->set_bool(
-						StatManager::get_resname(WorldMapNS::WorldMapManager::instance()->get_worldmap()->get_filename()) 
+					StatManager::instance()->set_bool(WorldMapNS::WorldMapManager::instance()->get_worldmap()->get_shortname()
 							+ "-story-seen", true);
-          
+
+					//See if credits have been seen
+					/*if StatManager::instance()->get_bool(WorldMapNS::WorldMapManager::instance()->get_worldmap()->get_shortname()
+						+ ") */
           if (show_credits)
             ScreenManager::instance()->replace_screen(Credits::instance(), false);
           else

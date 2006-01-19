@@ -117,7 +117,7 @@ PingusGameSession::update (const GameDelta& delta)
 
       { // Write the savegame
         Savegame savegame;
-        savegame.levelname    = result.plf.get_resname();
+        savegame.levelname    = result.plf.get_levelname();
         savegame.needed_time  = result.used_time;
         savegame.saved_pingus = result.saved;
 

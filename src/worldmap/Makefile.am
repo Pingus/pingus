@@ -34,6 +34,8 @@ level_dot.cxx   \
 level_dot.hxx   \
 manager.cxx  \
 manager.hxx  \
+metamap.cxx \
+metamap.hxx \
 path.cxx  \
 path.hxx  \
 path_drawable.cxx \
@@ -47,6 +49,8 @@ sprite_drawable.cxx \
 sprite_drawable.hxx \
 surface_drawable.cxx \
 surface_drawable.hxx \
+world_dot.cxx \
+world_dot.hxx \
 worldmap.cxx \
 worldmap.hxx \
 worldmap_story.cxx \

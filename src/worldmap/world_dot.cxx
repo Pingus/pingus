@@ -1,7 +1,7 @@
-//  $Id: dot_factory.cxx,v 1.5 2003/10/20 19:28:55 grumbel Exp $
+//  $Id: world_dot.cxx,v 1.11 2006/1/19 19:28:55 Jave27 Exp $
 //
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2006 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -17,34 +17,31 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../pingus_error.hxx"
-#include "level_dot.hxx"
 #include "world_dot.hxx"
-#include "dot_factory.hxx"
+#include "../stat_manager.hxx"
+#include "../file_reader.hxx"
 
 namespace Pingus {
 namespace WorldMapNS {
 
-Dot*
-DotFactory::create(FileReader reader)
+WorldDot::WorldDot(FileReader reader) :
+	Dot(reader.read_section("dot")),
+	is_accessible(false),
+	is_finished(false)
 {
-	if (reader.get_name() == "leveldot")
-	{
-		return new LevelDot(reader);
-	}
-	else if (reader.get_name() == "worlddot")
-	{
-		return new WorldDot(reader);
-	}
-	//else if (reader.get_name() == "tubedot")
-	else
-	{
-		PingusError::raise("DotFactory: unknown tag: ");
-	}
-	return 0;
+	// Get the status from the StatManger
+	StatManager::instance()->get_bool(name + "-accessible", is_accessible);
+	StatManager::instance()->get_bool(name + "-finished", is_finished);
 }
 
-} // namespace WorldMapNS
-} // namespace Pingus
+void
+WorldDot::unlock()
+{
+	is_accessible = true;
+	StatManager::instance()->set_bool(name + "-accessible", true);
+}
+
+}	// WorldMapNS namespace
+} // Pingus namespace
 
 /* EOF */

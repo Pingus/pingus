@@ -37,6 +37,7 @@ private:
 
 	/** Extra info about this file - differs based on file type (difficulty, etc.) */
 	std::string file_info;
+	std::string status;
 
 	FileDialog* file_dialog;
 	Vector pos;

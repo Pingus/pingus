@@ -762,6 +762,12 @@
 					RelativePath=".\src\worldmap\manager.hxx">
 				</File>
 				<File
+					RelativePath=".\src\worldmap\metamap.cxx">
+				</File>
+				<File
+					RelativePath=".\src\worldmap\metamap.hxx">
+				</File>
+				<File
 					RelativePath=".\src\worldmap\path.cxx">
 				</File>
 				<File
@@ -799,6 +805,12 @@
 				</File>
 				<File
 					RelativePath=".\src\worldmap\surface_drawable.hxx">
+				</File>
+				<File
+					RelativePath=".\src\worldmap\world_dot.cxx">
+				</File>
+				<File
+					RelativePath=".\src\worldmap\world_dot.hxx">
 				</File>
 				<File
 					RelativePath=".\src\worldmap\worldmap.cxx">

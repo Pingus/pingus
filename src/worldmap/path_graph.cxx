@@ -24,6 +24,7 @@
 #include "dot.hxx"
 #include "dot_factory.hxx"
 #include "worldmap.hxx"
+#include "metamap.hxx"
 #include "pathfinder.hxx"
 #include "path_graph.hxx"
 #include "path_drawable.hxx"
@@ -32,17 +33,24 @@
 namespace Pingus {
 namespace WorldMapNS {
 
-PathGraph::PathGraph(WorldMap* arg_worldmap, FileReader reader)
-  : worldmap(arg_worldmap)
+PathGraph::PathGraph(WorldMap* arg_worldmap, FileReader &reader)
+  : worldmap(arg_worldmap),
+	metamap(0)
 {
   parse_nodes(reader.read_section("nodes"));
   parse_edges(reader.read_section("edges"));
   
-  // Init the pathfinder cache
-  pathfinder_cache.resize(graph.max_node_handler_value());
-  for(PFinderCache::iterator i = pathfinder_cache.begin();
-      i != pathfinder_cache.end(); ++i)
-    *i = 0;
+	init_cache();
+}
+
+PathGraph::PathGraph(MetaMap* arg_metamap, FileReader &reader)
+  : metamap(arg_metamap), 
+	worldmap(0)
+{
+  parse_nodes(reader.read_section("nodes"));
+  parse_edges(reader.read_section("edges"));
+  
+	init_cache();
 }
 
 void delete_Path(Edge<Path*> x)
@@ -73,7 +81,10 @@ PathGraph::parse_nodes(FileReader reader)
           node_lookup[dot->get_name()] = id;
 
           // add the dot to the list of drawables
-          worldmap->add_drawable(dot);
+					if (worldmap)
+						worldmap->add_drawable(dot);
+					else
+						metamap->add_drawable(dot);
 
           // FIXME: should be use this for freeing the stuff?
           dots.push_back(dot);
@@ -130,7 +141,7 @@ PathGraph::parse_edges(FileReader reader)
           float cost = full_path.length();
 
           // FIXME: Memory leak
-          if (pingus_debug_flags & PINGUS_DEBUG_WORLDMAP)
+          if (worldmap && pingus_debug_flags & PINGUS_DEBUG_WORLDMAP)
             worldmap->add_drawable(new PathDrawable(full_path));
 
           // FIXME: No error checking,
@@ -258,6 +269,16 @@ PathGraph::get_id(Dot* dot)
     if (dot == *i)
       return (int)(i - dots.begin());
   return NoNode;
+}
+
+void
+PathGraph::init_cache()
+{
+	// Init the pathfinder cache
+	pathfinder_cache.resize(graph.max_node_handler_value());
+	for(PFinderCache::iterator i = pathfinder_cache.begin();
+		i != pathfinder_cache.end(); ++i)
+		*i = 0;
 }
 
 } // namespace WorldMapNS

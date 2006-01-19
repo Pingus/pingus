@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<pingus-metamap>
+	<head>
+		<!-- FIXME: The following items should be added eventually.
+		The ultimate goal of this metamap is to have a "Globe view"
+		where you can choose which Island/Worldmap you want to play,
+		and watch your pingus sail around the globe.
+		For now, this just determines the order of worldmaps.
+		----------------------------------------------------------
+		<name>The Globe</name>
+		<music>pingus-1.it</music>
+		<width>1161</width>
+		<height>600</height>
+		-->
+		<default-node>tutorial</default-node>
+		<final-node>volcano</final-node>
+	</head>
+	
+	<graph>
+		<nodes>
+			<worlddot>
+				<dot>
+					<name>tutorial</name>
+					<!-- FIXME: This currently has no meaning since it doesn't get drawn -->
+					<position>
+						<x>50</x>
+						<y>50</y>
+						<z>10</z>
+					</position>
+				</dot>
+				<levelname>tutorial.xml</levelname>
+			</worlddot>
+			
+			<worlddot>
+				<dot>
+					<name>volcano</name>
+					<position>
+						<x>180</x>
+						<y>345</y>
+						<z>10</z>
+					</position>
+				</dot>
+				<levelname>volcano.xml</levelname>
+			</worlddot>
+		</nodes>
+		
+		<edges>
+			<edge>
+				<name>edge_1</name>
+				<source>tutorial</source>
+				<destination>volcano</destination>
+				<positions>
+					<position>
+						<x>10</x>
+						<y>10</y>
+						<z>10</z>
+					</position>
+				</positions>
+			</edge>
+		</edges>
+	</graph>
+
+</pingus-metamap>

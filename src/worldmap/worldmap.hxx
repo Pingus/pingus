@@ -72,7 +72,9 @@ private:
 	std::string email;
 	std::string music;
 
+	// Beginning and ending nodes are configurable by the XML file.
 	NodeId default_node;
+	NodeId final_node;
 
   Pingus* pingus;
 
@@ -104,6 +106,7 @@ public:
   void on_startup();
 
 	std::string get_filename() const { return filename; }
+	std::string get_shortname() const { return short_name; }
 
   void draw (DrawingContext& gc);
   void update (float delta);
