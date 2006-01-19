@@ -43,8 +43,6 @@ namespace Pingus {
 class StoryScreenComponent : public GUI::Component
 {
 private:
-  bool show_credits;
-
   CL_Sprite background;
   std::string display_text;
   float time_passed;
@@ -108,11 +106,6 @@ StoryScreen::~StoryScreen()
 StoryScreenComponent::StoryScreenComponent (WorldMapNS::WorldMapStory *arg_story)
   : story(arg_story)
 {
-  /*if (&arg_story == &Story::credits)
-    show_credits = true;
-  else */
-    show_credits = false;
-
   page_displayed_completly = false;
   time_passed  = 0;
 	pages = story->get_pages();
@@ -194,14 +187,26 @@ StoryScreenComponent::next_text()
         }
       else
         {
-          //Out of story pages
-					StatManager::instance()->set_bool(WorldMapNS::WorldMapManager::instance()->get_worldmap()->get_shortname()
-							+ "-story-seen", true);
+          //Out of story pages - figure out which one this was (start or end)
+					std::string which_story;
+					if (story == WorldMapNS::WorldMapManager::instance()->get_worldmap()->get_intro_story())
+						which_story = "start";
+					else
+						which_story = "end";
 
-					//See if credits have been seen
-					/*if StatManager::instance()->get_bool(WorldMapNS::WorldMapManager::instance()->get_worldmap()->get_shortname()
-						+ ") */
-          if (show_credits)
+					// Record that player has seen this story.
+					StatManager::instance()->set_bool(WorldMapNS::WorldMapManager::instance()->get_worldmap()->get_shortname()
+							+ "-" + which_story + "story-seen", true);
+
+					bool credits_seen = false;
+					//Check if this is the last worldmap
+					if (WorldMapNS::WorldMapManager::instance()->get_worldmap()->is_final_map())
+					{
+						// Check if final credits have been seen
+						StatManager::instance()->get_bool("credits-seen", credits_seen);
+					}
+
+          if (!credits_seen)
             ScreenManager::instance()->replace_screen(Credits::instance(), false);
           else
             ScreenManager::instance()->replace_screen(WorldMapNS::WorldMapManager::instance ());

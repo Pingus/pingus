@@ -176,7 +176,7 @@ PingusMenu::do_start(const std::string &filename)
   
   bool story_seen = false;
 	StatManager::instance()->get_bool(WorldMapNS::WorldMapManager::instance()->
-		get_worldmap()->get_shortname() + "-story-seen", story_seen);
+		get_worldmap()->get_shortname() + "-startstory-seen", story_seen);
 	
 	if (!story_seen)
 		ScreenManager::instance()->push_screen(new StoryScreen(

@@ -108,6 +108,8 @@ public:
 	std::string get_filename() const { return filename; }
 	std::string get_shortname() const { return short_name; }
 
+	bool is_final_map();
+
   void draw (DrawingContext& gc);
   void update (float delta);
 

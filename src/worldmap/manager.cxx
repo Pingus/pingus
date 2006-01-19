@@ -238,7 +238,7 @@ WorldMapManager::load (const std::string& filename)
   worldmap = new WorldMap (filename);
 	
   bool credits_unlocked = false;
-  StatManager::instance()->get_bool(worldmap->get_shortname() + "-credits-unlocked", 
+  StatManager::instance()->get_bool(worldmap->get_shortname() + "-endstory-seen", 
 		credits_unlocked);
   if (credits_unlocked)
 	{

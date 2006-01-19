@@ -21,6 +21,7 @@
 #include "dot.hxx"
 #include "metamap.hxx"
 #include "path_graph.hxx"
+#include "graph.hxx"
 #include "../pingus_error.hxx"
 #include "../debug.hxx"
 #include "../globals.hxx"
@@ -104,6 +105,22 @@ std::string
 MetaMap::get_default_worldmap()
 {
 	return (path_graph->get_dot(default_node)->get_name());
+}
+
+std::string
+MetaMap::get_final_worldmap()
+{
+	return (path_graph->get_dot(final_node)->get_name());
+}
+
+void
+MetaMap::finish_node(const std::string &worldmap_shortname)
+{
+	StatManager::instance()->set_bool(worldmap_shortname + "-finished", true);
+	NodeId id = path_graph->lookup_node(worldmap_shortname);
+	// FIXME: Not entirely sure how the whole pathfinder thing works,
+	// FIXME: so I'm hardcoding this for now...  <evil!!!>
+	unlock_default("volcano");
 }
 
 MetaMap::~MetaMap()

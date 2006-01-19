@@ -37,6 +37,7 @@
 #include "../debug.hxx"
 #include "worldmap.hxx"
 #include "worldmap_story.hxx"
+#include "metamap.hxx"
 #include "manager.hxx"
 #include "pingus.hxx"
 #include "drawable_factory.hxx"
@@ -60,18 +61,15 @@ WorldMap::WorldMap(const std::string& arg_filename)
 {
   CL_InputSourceProvider_File provider(".");
   CL_DomDocument doc(provider.open_source(filename), true);
-
   CL_DomElement root = doc.get_document_element();
 
-  parse_file(XMLFileReader(root));
-
+	parse_file(XMLFileReader(root));
   pingus = new Pingus(path_graph);
-
 	set_starting_node();
-
   add_drawable(pingus);
 
   levelname_bg = Resource::load_sprite("core/worldmap/levelname_bg");
+	gc_state.set_limit(CL_Rect(CL_Point(0, 0), CL_Size(width, height)));
 }
 
 WorldMap::~WorldMap()
@@ -169,11 +167,10 @@ WorldMap::draw (DrawingContext& gc)
 
   DrawingContext* display_gc = new DrawingContext();
 
-  gc_state.set_limit(CL_Rect(CL_Point(0, 0), CL_Size(width, height)));
-  gc_state.set_pos(CL_Pointf(pingu_pos.x, pingu_pos.y));
-
+	gc_state.set_pos(CL_Pointf(pingu_pos.x, pingu_pos.y));
+	
   gc_state.push(*display_gc);
-
+  
 	// Blank out the screen in case the screen resolution is larger than
 	// the worldmap picture.
 	// FIXME:  Should probably scale everything to match the resolution instead.
@@ -391,7 +388,7 @@ WorldMap::update_locked_nodes()
   path_graph->graph.for_each_node(unlock_nodes(path_graph));
 
   bool credits_unlocked = false;
-  StatManager::instance()->get_bool(short_name + "-credits-unlocked", credits_unlocked);
+  StatManager::instance()->get_bool(short_name + "-endstory-seen", credits_unlocked);
 
   if (!credits_unlocked)
     {
@@ -401,10 +398,9 @@ WorldMap::update_locked_nodes()
         {
           if (dot->finished())
             {
-							StatManager::instance()->set_bool(short_name + "-finished", true);
+							WorldMapManager::instance()->get_metamap()->finish_node(short_name);
               ScreenManager::instance()->replace_screen(
 								new StoryScreen(get_end_story()), true);
-              StatManager::instance()->set_bool("credits-unlocked", true);
             }
         }
       else
@@ -437,17 +433,14 @@ WorldMap::set_starting_node()
 
 	LevelDot* leveldot = dynamic_cast<LevelDot*>(path_graph->get_dot(id));
 	leveldot->unlock();
-	/*
-	std::string resname = leveldot->get_plf().get_levelname();
-	// Set an accessible flag for this level in the Savegame Manager.
-	if (!SavegameManager::instance()->get(resname))
-	{
-		Savegame savegame(resname, Savegame::ACCESSIBLE, 10000, 0);
-		SavegameManager::instance()->store(savegame);
-		update_locked_nodes();
-	}
-	*/
 }
+
+bool
+WorldMap::is_final_map()
+{
+	return (WorldMapManager::instance()->get_metamap()->get_final_worldmap() == short_name);
+}
+
 } // namespace WorldMapNS
 } // namespace Pingus
 

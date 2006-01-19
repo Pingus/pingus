@@ -24,6 +24,7 @@
 #include "gui/surface_button.hxx"
 #include "gui/gui_manager.hxx"
 #include "sound/sound.hxx"
+#include "stat_manager.hxx"
 #include "resource.hxx"
 #include "res_descriptor.hxx"
 #include "credits.hxx"
@@ -93,6 +94,7 @@ Credits::Credits()
   credits.push_back("_David Philippi");
   credits.push_back("_Gervase Lam");
   credits.push_back("_Ingo Ruhnke");
+	credits.push_back("_Jason Green");
   credits.push_back("n");
 
   credits.push_back(_("-Porting (Win32)"));
@@ -210,7 +212,7 @@ Credits::Credits()
   credits.push_back(_("_Thank you for"));
   credits.push_back(_("_playing!"));
 
-  end_offset = -CL_Display::get_height()/2 - 50; // screen height + grace time
+  end_offset = -(float)CL_Display::get_height()/2 - 50; // screen height + grace time
   for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); ++i)
     {
       switch ((*i)[0])
@@ -234,6 +236,7 @@ Credits::Credits()
 
 Credits::~Credits ()
 {
+	StatManager::instance()->set_bool("credits-seen", true);
 }
 
 void
@@ -259,7 +262,7 @@ Credits::draw_background (DrawingContext& gc)
   float y;
   float yof;
 
-  x = CL_Display::get_width()/2;
+  x = (float)CL_Display::get_width()/2;
   y = offset;
 
   gc.draw(background, Vector(gc.get_width()/2, gc.get_height()/2));
@@ -300,7 +303,7 @@ Credits::draw_background (DrawingContext& gc)
 void
 Credits::on_startup ()
 {
-  offset = CL_Display::get_height() - 50;
+  offset = (float)CL_Display::get_height() - 50;
   //PingusSound::play_music("pingus-5.it");
 }
 

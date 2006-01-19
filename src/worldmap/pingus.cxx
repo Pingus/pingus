@@ -41,9 +41,6 @@ Pingus::Pingus (PathGraph* arg_path)
 
   final_target_node = NoNode;
   current_node = NoNode;
-
-  pos.x = 320;
-  pos.y = 200;
 }
 
 Pingus::~Pingus ()

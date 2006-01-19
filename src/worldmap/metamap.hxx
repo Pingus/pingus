@@ -66,6 +66,10 @@ public:
 
 	/** Return the name of the default node in this metamap (which is a worldmap) */
 	std::string get_default_worldmap();
+	std::string get_final_worldmap();
+
+	/** Finish the specified node and unlock it's neighbors */
+	void finish_node(const std::string &worldmap_shortname);
 
 private:
 	/** Unlock surrounding nodes.  This sets the "-accessible" tag in the StatManager for
