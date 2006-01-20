@@ -117,7 +117,7 @@ void
 MetaMap::finish_node(const std::string &worldmap_shortname)
 {
 	StatManager::instance()->set_bool(worldmap_shortname + "-finished", true);
-	NodeId id = path_graph->lookup_node(worldmap_shortname);
+	// NodeId id = path_graph->lookup_node(worldmap_shortname);
 	// FIXME: Not entirely sure how the whole pathfinder thing works,
 	// FIXME: so I'm hardcoding this for now...  <evil!!!>
 	unlock_default("volcano");

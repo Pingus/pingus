@@ -44,8 +44,9 @@ PathGraph::PathGraph(WorldMap* arg_worldmap, FileReader &reader)
 }
 
 PathGraph::PathGraph(MetaMap* arg_metamap, FileReader &reader)
-  : metamap(arg_metamap), 
-	worldmap(0)
+  : worldmap(0),
+	metamap(arg_metamap) 
+	
 {
   parse_nodes(reader.read_section("nodes"));
   parse_edges(reader.read_section("edges"));
