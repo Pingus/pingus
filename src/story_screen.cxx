@@ -200,16 +200,15 @@ StoryScreenComponent::next_text()
 
 					bool credits_seen = false;
 					//Check if this is the last worldmap
-					if (WorldMapNS::WorldMapManager::instance()->get_worldmap()->is_final_map())
+					if (which_story == "end" &&
+						WorldMapNS::WorldMapManager::instance()->get_worldmap()->is_final_map())
 					{
 						// Check if final credits have been seen
 						StatManager::instance()->get_bool("credits-seen", credits_seen);
+						if (!credits_seen)
+	            ScreenManager::instance()->replace_screen(Credits::instance(), false);
 					}
-
-          if (!credits_seen)
-            ScreenManager::instance()->replace_screen(Credits::instance(), false);
-          else
-            ScreenManager::instance()->replace_screen(WorldMapNS::WorldMapManager::instance ());
+				  ScreenManager::instance()->replace_screen(WorldMapNS::WorldMapManager::instance ());
         }
     }
 }
