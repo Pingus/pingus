@@ -88,7 +88,7 @@ HurryUp::update(float /*delta*/)
 
 	  if (static_cast<int>(x_pos) > CL_Display::get_width()/2)
 	    {
-	      x_pos = CL_Display::get_width()/2;
+	      x_pos = (float)CL_Display::get_width()/2;
 	      center_reached = true;
 	      wait_counter = CL_System::get_time() + 2000;
 	    }

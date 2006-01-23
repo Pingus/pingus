@@ -45,11 +45,11 @@ void
 SurfaceButton::draw (DrawingContext& gc)
 {
   if (pressed && mouse_over)
-    gc.draw(button_pressed_surface, Vector(x_pos, y_pos));
+    gc.draw(button_pressed_surface, Vector((float)x_pos, (float)y_pos));
   else if (!pressed && mouse_over)
-    gc.draw(button_mouse_over_surface, Vector(x_pos, y_pos));
+    gc.draw(button_mouse_over_surface, Vector((float)x_pos, (float)y_pos));
   else
-    gc.draw(button_surface, Vector(x_pos, y_pos));
+    gc.draw(button_surface, Vector((float)x_pos, (float)y_pos));
 }
 
 bool

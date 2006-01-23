@@ -56,13 +56,13 @@ ButtonPanel::ButtonPanel(Client* c, int arg_x_pos, int arg_y_pos)
   // panel
   std::sort(actions.begin(), actions.end(), action_sorter());
 
-  y_pos -= (actions.size() * 38)/2 + 70;
+  y_pos -= ((int)actions.size() * 38)/2 + 70;
 
   for(std::vector<ActionName>::iterator i = actions.begin();
       i != actions.end(); ++i)
     {
       a_buttons.push_back(new VerticalActionButton (aholder,
-                                                    x_pos, (i - actions.begin()) * 38 + y_pos,
+                                                    x_pos, int(i - actions.begin()) * 38 + y_pos,
 						    *i,
 						    0)); //FIXMEcontroller->get_owner ()));
     }
@@ -149,7 +149,7 @@ ButtonPanel::on_primary_button_press(int x, int y)
   for(AButtonIter button = a_buttons.begin(); button != a_buttons.end(); button++)
     {
       if ((*button)->is_at(x, y))
-	pressed_button = button - a_buttons.begin();
+	pressed_button = int(button - a_buttons.begin());
     }
 }
 
@@ -175,14 +175,14 @@ ButtonPanel::on_primary_button_release(int x, int y)
 void
 ButtonPanel::next_action ()
 {
-  pressed_button = (pressed_button + 1) % a_buttons.size();
+  pressed_button = (pressed_button + 1) % (int)a_buttons.size();
 }
 
 /// Select the previous action
 void
 ButtonPanel::previous_action ()
 {
-  pressed_button = (pressed_button - 1 + a_buttons.size()) % a_buttons.size();
+  pressed_button = (pressed_button - 1 + (int)a_buttons.size()) % (int)a_buttons.size();
 }
 
 } // namespace Pingus

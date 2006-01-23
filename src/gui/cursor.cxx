@@ -43,8 +43,8 @@ void
 Cursor::on_event()
 {
   const Input::Pointer* pointer = Input::Controller::get_current()->get_pointer();
-  sprite.draw(static_cast<int>(pointer->get_x_pos ()),
-              static_cast<int>(pointer->get_y_pos ()));
+  sprite.draw(pointer->get_x_pos (),
+              pointer->get_y_pos ());
 }
 
 } // namespace Pingus

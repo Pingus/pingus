@@ -326,6 +326,12 @@
 					RelativePath=".\src\gui\gui_screen.hxx">
 				</File>
 				<File
+					RelativePath=".\src\gui\input_box.cxx">
+				</File>
+				<File
+					RelativePath=".\src\gui\input_box.hxx">
+				</File>
+				<File
 					RelativePath=".\src\gui\input_debug_screen.cxx">
 				</File>
 				<File

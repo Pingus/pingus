@@ -29,7 +29,7 @@ InputBox::InputBox(float width_, Vector p, const std::string& default_value)
 	:	str(default_value),
 	pos(p),
 	width(width_),
-	height(Fonts::pingus_small.get_height())
+	height((float)Fonts::pingus_small.get_height())
 {
 	
 }
