@@ -50,6 +50,9 @@ private:
   Component* primary_pressed_component;
   Component* secondary_pressed_component;
 
+	/** Component which currently has the focus (last clicked) */
+	Component* focussed_component;
+
   /** The component over which the mouse was in the last update,
       used to detecte enter/leave events */
   Component* mouse_over_component;

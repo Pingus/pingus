@@ -270,6 +270,15 @@ Controller::key_pressed(const CL_InputEvent &event)
 	keys += event.str;
 }
 
+std::string
+Controller::get_keys_pressed()
+{
+	std::string ret_keys = keys;
+	keys.clear();
+	return ret_keys;
+}
+ 
+
 } // namespace Input
 } // namespace Pingus
 

@@ -79,7 +79,7 @@ private:
 	void key_pressed(const CL_InputEvent &event);
 
 /** Get keyboard keys pressed to handle general keyboard input */
-	std::string get_keys_pressed() { return keys; keys.clear(); }
+	std::string get_keys_pressed();
 
 	std::string keys;
 
