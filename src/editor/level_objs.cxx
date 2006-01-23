@@ -19,6 +19,7 @@
 
 #include <string>
 #include <iostream>
+#include <ClanLib/Display/sprite.h>
 #include "level_objs.hxx"
 #include "level_impl.hxx"
 #include "../blitter.hxx"
@@ -33,7 +34,7 @@ namespace Editor {
 
 // Default constructor
 LevelObj::LevelObj(std::string obj_name, LevelImpl* level_) :
-	level(level_),	
+	level(level_),
 	section_name(obj_name),
 	speed(0),
 	parallax(0.0),
@@ -71,8 +72,9 @@ LevelObj::draw(DrawingContext &gc)
 	{
 		// If selected, draw a highlighted box around it
 		if (selected)
-			gc.draw_rect(pos.x, pos.y, pos.x + sprite.get_width(), 
-				pos.y + sprite.get_height(), CL_Color(255,255,255,150), 5000);
+			gc.draw_rect(translated_pos.x, translated_pos.y, translated_pos.x 
+				+ sprite.get_width(), translated_pos.y + sprite.get_height(), 
+				CL_Color(255,255,255,150), 5000);
 		if (attribs & HAS_WIDTH)
 		{
 			for(int x = static_cast<int>(pos.x); x < pos.x + width;	x += sprite.get_width())
@@ -94,14 +96,12 @@ bool
 LevelObj::is_at(int x, int y)
 {
 	if (!removed && attribs & (HAS_SURFACE | HAS_SURFACE_FAKE))
-		return (x > pos.x && x < pos.x + sprite.get_width()
-			&& y > pos.y && y < pos.y + sprite.get_height());
+	{
+		return (x > translated_pos.x && x < translated_pos.x + sprite.get_width()
+			&& y > translated_pos.y && y < translated_pos.y + sprite.get_height());
+	}
 	else
 		return false;
-		
-	// FIXME: The above method doesn't take translation origins into account.
-	// FIXME: This means that some objects (entrances & exits, for example)
-	// FIXME: are drawn incorrectly.
 }
 
 void
@@ -170,6 +170,7 @@ LevelObj::refresh_sprite()
 
 		sprite.set_alignment(origin, x, y);
 	}
+	set_translated_pos();
 }
 
 // Set the modifier and actually modify the sprite loaded in memory
@@ -253,6 +254,63 @@ LevelObj::load_generic_surface()
 		desc.modifier = ResourceModifierNS::ROT0;
 		sprite = Resource::load_sprite(desc);
 	}
+}
+
+// The translated pos is where the object appears to be "at" instead
+// of using it's "translation origin" specified in the sprite resource files
+void
+LevelObj::set_translated_pos()
+{
+	if (!sprite)
+		return;
+	
+	translated_pos = pos;
+	
+	CL_Origin orig;
+	int x, y;
+	float w = (float)sprite.get_width();
+	float h = (float)sprite.get_height();
+	
+	sprite.get_alignment(orig, x, y);
+	switch (orig)
+	{
+		case origin_top_left :
+			break;
+		case origin_top_center :
+			translated_pos.x -= w / 2;
+			break;
+		case origin_top_right :
+			translated_pos.x -= w;
+			break;
+		case origin_center_left :
+			translated_pos.y -= w / 2;
+			break;
+		case origin_center :
+			translated_pos.x -= w / 2;
+			translated_pos.y -= h / 2;
+			break;
+		case origin_center_right :
+			translated_pos.x -= w;	
+			translated_pos.y -= h / 2;
+			break;
+		case origin_bottom_left :
+			translated_pos.y -= h;
+			break;
+		case origin_bottom_center :
+			translated_pos.x -= w / 2;
+			translated_pos.y -= h;
+			break;
+		case origin_bottom_right :
+			translated_pos.x -= w;
+			translated_pos.y -= h;
+	}
+}
+
+void
+LevelObj::set_pos(Vector p)
+{
+	pos = p;
+	set_translated_pos();
 }
 
 }		// Editor namespace

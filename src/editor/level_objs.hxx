@@ -89,6 +89,10 @@ protected:
 	/** Location of this object in the World */
 	Vector pos;
 
+	/** Only used for display functions - this is the pos Vector adjusted
+	by the translation origin of the sprite */
+	Vector translated_pos;
+
 	/** Location of this object before moving it around */
 	Vector orig_pos;
 
@@ -157,6 +161,10 @@ protected:
 
 	/** Write any additional properties to the XML file for this type */
 	virtual void write_extra_properties(XMLFileWriter& xml) { }
+	
+	/** Sets a position vector of where the sprite is located based 
+		on the "translation origin" specified in the sprite file. */
+	void set_translated_pos();
 
 
 /////////////////////////////////////////////////////////
@@ -227,7 +235,7 @@ public:
 /// Operations
 public:
 	/** Set the object's position */
-	void set_pos(const Vector p) { pos = p; }
+	void set_pos(const Vector p);
 	
 	/** Original position of the objects before being dragged around */
 	void set_orig_pos(const Vector p) { orig_pos = p; }
