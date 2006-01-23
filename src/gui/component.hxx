@@ -73,7 +73,7 @@ public:
 	
 	/** Emitted whenever a keyboard character is pressed.  Only certain 
 			components should implement this */
-	void key_pressed(const char c) { UNUSED_ARG(c); }
+	virtual void on_key_pressed(const char c) { UNUSED_ARG(c); }
 
   // status functions for use in the update() function
   /** return true if currently pressed */

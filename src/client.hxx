@@ -35,6 +35,7 @@ struct ButtonEvent;
 struct PointerEvent;
 struct ScrollEvent;
 struct AxisEvent;
+struct KeyboardEvent;
 } // namespace Input
 
 namespace GUI {

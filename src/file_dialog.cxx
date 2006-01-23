@@ -24,6 +24,7 @@
 #include "resource.hxx"
 #include "gui/surface_button.hxx"
 #include "gui/gui_manager.hxx"
+#include "gui/input_box.hxx"
 #include "sound/sound.hxx"
 #include "file_dialog.hxx"
 #include "file_dialog_item.hxx"
@@ -254,12 +255,15 @@ namespace Pingus {
 		gui_manager->add(up_button, true);
 		gui_manager->add(down_button, true);
 		gui_manager->add(new FileDialogCancelButton(this), true);
-		gui_manager->add(new FileDialogParentFolderButton(this));		
+		gui_manager->add(new FileDialogParentFolderButton(this));
 
 		// FIXME: Ugly - hardcoded values for items in file dialog.  Should be dynamic.
 		// Create 8 FileDialogItems and add them to the gui_manager.
 		float center_x = (float)CL_Display::get_width()/2;
 		float center_y = (float)CL_Display::get_height()/2;
+
+		inputbox = new GUI::InputBox(300, Vector(center_x - 150, center_y + 200));
+		gui_manager->add((GUI::Component*)inputbox);
 
 		file_dialog_items.push_back(new FileDialogItem(this, 
 			Vector(center_x - 280, center_y - 140)));

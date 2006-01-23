@@ -25,8 +25,8 @@
 #include <string>
 #include <vector>
 #include <ClanLib/signals.h>
+#include <ClanLib/display.h>
 #include "../file_reader.hxx"
-
 #include "event.hxx"
 
 namespace Pingus {
@@ -57,7 +57,7 @@ public:
   ~Controller ();
 
   std::vector<Event>& get_events () { return events; }
-
+	
   const Pointer * get_pointer     () const { return standard_pointer; }
   const Scroller* get_scroller    () const { return scroller;         }
 
@@ -69,13 +69,19 @@ public:
 
   static void set_current(Controller* controller) { current_controller = controller; }
   static Controller* get_current() { return current_controller; }
-
+	
 private:
   static Controller* current_controller;
 
   void on_button_down(ButtonName name);
   void on_button_up(ButtonName name);
   void create_action_buttons (FileReader reader);
+	void key_pressed(const CL_InputEvent &event);
+
+/** Get keyboard keys pressed to handle general keyboard input */
+	std::string get_keys_pressed() { return keys; keys.clear(); }
+
+	std::string keys;
 
   Controller (const Controller&);
   Controller& operator= (const Controller&);

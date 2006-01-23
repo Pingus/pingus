@@ -21,6 +21,8 @@
 #include "../pingus_error.hxx"
 
 #include <ClanLib/core.h>
+#include <ClanLib/display.h>
+#include <ClanLib/signals.h>
 #include "controller.hxx"
 #include "axes/dummy_axis.hxx"
 #include "buttons/dummy_button.hxx"
@@ -171,6 +173,10 @@ Controller::Controller (const std::string& configfile)
       slots.push_back(it->second->sig_button_down().connect(this, &Controller::on_button_down, it->first));
       slots.push_back(it->second->sig_button_up().connect(this, &Controller::on_button_up, it->first));
     }
+	
+	// Catch all keyboard input
+	CL_InputDevice keyboard = CL_Display::get_current_window()->get_ic()->get_keyboard();
+	slots.push_back(keyboard.sig_key_down().connect(this, &Controller::key_pressed));
 }
 
 Controller::~Controller ()
@@ -223,6 +229,12 @@ Controller::update (float delta)
   // FIXME: Busy checking of button status and other events is *VERY EVIL*
   if (scroller->get_x_delta() || scroller->get_y_delta())
     events.push_back(makeScrollEvent(scroller->get_x_delta(), scroller->get_y_delta()));
+	
+	std::string keys_pressed = get_keys_pressed();
+	for (unsigned i = 0; i < (unsigned)keys_pressed.length(); i++) 
+	{
+		events.push_back(makeKeyboardEvent( keys_pressed[i] ));
+	}
 }
 
 void
@@ -250,6 +262,12 @@ void
 Controller::on_button_up(ButtonName name)
 {
   events.push_back(makeButtonEvent(name, released));
+}
+
+void
+Controller::key_pressed(const CL_InputEvent &event)
+{
+	keys += event.str;
 }
 
 } // namespace Input

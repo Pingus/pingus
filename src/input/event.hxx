@@ -21,12 +21,13 @@
 #define HEADER_PINGUS_INPUT_EVENT_HXX
 
 #include <vector>
+#include <string>
 #include "../pingus.hxx"
 
 namespace Pingus {
 namespace Input {
 
-enum EventType { ButtonEventType, PointerEventType, AxisEventType, ScrollEventType };
+enum EventType { ButtonEventType, PointerEventType, AxisEventType, ScrollEventType, KeyboardEventType };
 
 enum ButtonName { primary, secondary, pause, fast_forward, armageddon, escape, action_1, action_2,
                   action_3, action_4, action_5, action_6, action_7, action_8, action_9, action_10,
@@ -63,15 +64,21 @@ struct ScrollEvent
   float y_delta;
 };
 
+struct KeyboardEvent
+{
+	char key;
+};
+
 struct Event
 {
   EventType type;
 
   union {
-    ButtonEvent  button;
-    PointerEvent pointer;
-    AxisEvent    axis;
-    ScrollEvent  scroll;
+    ButtonEvent   button;
+    PointerEvent  pointer;
+    AxisEvent     axis;
+    ScrollEvent   scroll;
+		KeyboardEvent keyboard;
   };
 };
 
@@ -120,6 +127,16 @@ inline Event makeScrollEvent (float x_delta, float y_delta)
   event.scroll.y_delta = y_delta;
 
   return event;
+}
+
+inline Event makeKeyboardEvent (char c)
+{
+	Event event;
+	
+	event.type = KeyboardEventType;
+	event.keyboard.key = c;
+	
+	return event;
 }
 
 } // namespace Input

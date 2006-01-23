@@ -84,6 +84,12 @@ GUIScreen::update (const GameDelta& delta)
 
 	  }
 	  break;
+		
+	case Input::KeyboardEventType:
+	{
+		
+	}
+	break;
 
 	default:
 	  std::cout << "GUIScreen::update (): unhandled event type: " << i->type << std::endl;

@@ -32,6 +32,10 @@ namespace Pingus {
 	class FileDialogOkButton;
 	class FileDialogScrollButton;
 	class FileDialogListener;
+	
+	namespace GUI {
+		class InputBox;
+		}
 
 	struct FileItem {
 		std::string name;
@@ -65,6 +69,9 @@ private:
 
 	/** The owner of this file dialog */
 	FileDialogListener* listener;
+
+	/** Box to take the keyboard input */
+	GUI::InputBox* inputbox;
 
 	/** Should this dialog box be used for loading?  True for load, false for saving */
 	bool for_loading;

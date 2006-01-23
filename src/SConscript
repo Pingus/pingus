@@ -131,6 +131,7 @@ env.Program('../pingus', [
 'gui/display.cxx', 
 'gui/gui_manager.cxx', 
 'gui/gui_screen.cxx', 
+'gui/input_box.cxx', 
 'gui/input_debug_screen.cxx', 
 'gui/root_gui_manager.cxx', 
 'gui/screen.cxx', 

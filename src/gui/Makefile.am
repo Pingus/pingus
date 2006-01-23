@@ -46,6 +46,8 @@ libpingus_gui_a_SOURCES = \
 	combobox_listener.hxx \
 				checkbox.cxx \
 				checkbox.hxx \
-				checkbox_listener.hxx
+				checkbox_listener.hxx \
+				input_box.cxx \
+				input_box.hxx
 
 # EOF #

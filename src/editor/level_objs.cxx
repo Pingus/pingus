@@ -35,6 +35,8 @@ namespace Editor {
 // Default constructor
 LevelObj::LevelObj(std::string obj_name, LevelImpl* level_) :
 	level(level_),
+	pos(Vector(0,0,0)),
+	translated_pos(Vector(0,0,0)),
 	section_name(obj_name),
 	speed(0),
 	parallax(0.0),

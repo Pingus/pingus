@@ -80,6 +80,10 @@ GUIManager::process_input (const GameDelta& delta)
           // AxisEvents can be ignored in the GUI, they are handled elsewhere
           pout (PINGUS_DEBUG_GUI) << "GUIManager: AxisEvent: " << i->axis.dir << std::endl;
           break;
+	
+	case Input::KeyboardEventType:
+          process_keyboard_event(i->keyboard);
+          break;
 
 	default:
 	  pwarn (PINGUS_DEBUG_GUI) << "GUIManager: unhandled event type " << i->type << std::endl;
@@ -266,6 +270,14 @@ GUIManager::process_button_event (unsigned int time_stamp, const Input::ButtonEv
     }
 
   UNUSED_ARG(time_stamp);
+}
+
+void 
+GUIManager::process_keyboard_event (const Input::KeyboardEvent &event)
+{
+	// Pass key value to last pressed component.
+	if (primary_pressed_component)
+		primary_pressed_component->on_key_pressed(event.key);
 }
 
 } // namespace Pingus
