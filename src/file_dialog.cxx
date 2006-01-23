@@ -94,7 +94,7 @@ namespace Pingus {
 
 	public:
 		FileDialogCancelButton (FileDialog* f)
-			: GUI::SurfaceButton(CL_Display::get_width()/2 - 250,
+			: GUI::SurfaceButton(CL_Display::get_width()/2 - 280,
 			CL_Display::get_height()/2 + 160,
 			ResDescriptor("core/menu/exit_button_normal"),
 			ResDescriptor("core/menu/exit_button_pressed"),
@@ -262,7 +262,7 @@ namespace Pingus {
 		float center_x = (float)CL_Display::get_width()/2;
 		float center_y = (float)CL_Display::get_height()/2;
 
-		inputbox = new GUI::InputBox(300, Vector(center_x - 150, center_y + 200));
+		inputbox = new GUI::InputBox(450, Vector(center_x - 225, center_y - 170));
 		gui_manager->add((GUI::Component*)inputbox);
 
 		file_dialog_items.push_back(new FileDialogItem(this, 
@@ -400,7 +400,13 @@ namespace Pingus {
 	{ 
 	 current_file = f;
 	 if (current_file.name != "")
-		 ok_button->show();
+	 {
+			ok_button->show();
+			if (!current_file.is_directory)
+				inputbox->set_string(current_file.name);
+			else
+				inputbox->set_string("");
+	 }
 	 else
 		 ok_button->hide();
 

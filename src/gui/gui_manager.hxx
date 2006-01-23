@@ -66,6 +66,9 @@ private:
   void process_button_event (unsigned int time_stamp, const Input::ButtonEvent& event);
 	void process_keyboard_event (const Input::KeyboardEvent& event);
 
+	/** Change which component has the focus and notify the component */
+	void change_focussed_comp(Component* c);
+	
 public:
   GUIManager ();
   virtual ~GUIManager () {}

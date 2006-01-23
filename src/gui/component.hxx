@@ -33,11 +33,16 @@ namespace GUI {
 class Component
 {
 private:
+	
+protected:
+	bool has_focus;
 
 public:
-  Component () { }
+  Component () : has_focus(false) { }
   virtual ~Component() {}
 
+	virtual void set_focus(bool val) { has_focus = val; }
+	
   virtual void draw (DrawingContext& gc) =0;
   virtual void update (float delta) { UNUSED_ARG(delta);}
 

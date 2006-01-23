@@ -38,6 +38,9 @@ protected:
 	float width;
 	float height;
 
+	/** Shrink the string to fit in the box */
+	std::string shrink_string(const std::string& s) const;
+
 public:
 	InputBox(float width_, Vector p, const std::string& 
 		default_value = std::string());

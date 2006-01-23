@@ -188,7 +188,7 @@ GUIManager::process_button_event (unsigned int time_stamp, const Input::ButtonEv
       if (event.name == primary && event.state == Input::pressed)
 	{
 	  primary_pressed_component = comp;
-		focussed_component = comp;
+		change_focussed_comp(comp);
 	  comp->on_primary_button_press (x_pos, y_pos);
 
           // FIXME: add double click detection here
@@ -228,7 +228,7 @@ GUIManager::process_button_event (unsigned int time_stamp, const Input::ButtonEv
       if (event.name == secondary && event.state == Input::pressed)
 	{
 	  secondary_pressed_component = comp;
-		focussed_component = comp;
+		change_focussed_comp(comp);
 	  comp->on_secondary_button_press (x_pos, y_pos);
 	}
       else if (event.name == secondary && event.state == Input::released)
@@ -281,6 +281,16 @@ GUIManager::process_keyboard_event (const Input::KeyboardEvent &event)
 	// Pass key value to last pressed component.
 	if (focussed_component)
 		focussed_component->on_key_pressed(event.key);
+}
+
+void
+GUIManager::change_focussed_comp(Component* c)
+{
+	if (focussed_component)
+		focussed_component->set_focus(false);
+	focussed_component = c;
+	if (focussed_component)
+		focussed_component->set_focus(true);
 }
 
 } // namespace Pingus
