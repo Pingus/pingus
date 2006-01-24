@@ -26,11 +26,13 @@
 namespace Pingus {
 namespace GUI {
 	
-InputBox::InputBox(float width_, Vector p, const std::string& default_value) 
+InputBox::InputBox(float width_, Vector p, const std::string& default_value,
+	bool locked) 
 	:	str(default_value),
 	pos(p),
 	width(width_),
-	height((float)Fonts::pingus_small.get_height())
+	height((float)Fonts::pingus_small.get_height()),
+	is_locked(locked)
 {
 	
 }
@@ -66,7 +68,7 @@ InputBox::shrink_string(const std::string& s) const
 	std::string ret_string;
 	int w = (int)width / Fonts::pingus_small.get_width('W');
 	
-	if (s.length() > w - 1)
+	if ((int)s.length() > w - 1)
 		ret_string = s.substr(std::max(0, (int)s.length()-w), w - 1);
 	else
 		ret_string = s;
@@ -74,6 +76,21 @@ InputBox::shrink_string(const std::string& s) const
 	return ret_string;
 }
 
+void
+InputBox::on_key_pressed(const char c)
+{
+	if (!is_locked)
+	{
+		// Verify input and escape out bad characters
+		if (c == 0x08) 	// backspace
+			str = str.substr(0, str.length()-1);
+		else if ((c > 0x2c && c < 0x3a)    // - . / 0-9
+			|| (c > 0x40 && c < 0x5b)        // capital letters
+			|| (c > 0x60 && c < 0x7b)        // lowercase letters
+			|| (c == 0x7e || c == 0x5f))     // ~ and _
+			str += c;
+	}
+}
 
 }	// GUI
 }	// Pingus

@@ -132,9 +132,8 @@ PanelButtonSave::PanelButtonSave(EditorPanel *p) :
 void
 PanelButtonSave::on_primary_button_click(int x, int y)
 {
-	// TODO: Open a file dialog box to save the level.
 	PanelButton::on_primary_button_click(x, y);
-	panel->get_screen()->save(path_manager.complete("levels/test.pingus"), ".pingus");
+	panel->get_screen()->show_file_dialog(false);	
 }
 
 

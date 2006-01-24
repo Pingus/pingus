@@ -37,18 +37,19 @@ protected:
 	Vector pos;
 	float width;
 	float height;
+	bool is_locked;
 
 	/** Shrink the string to fit in the box */
 	std::string shrink_string(const std::string& s) const;
 
 public:
 	InputBox(float width_, Vector p, const std::string& 
-		default_value = std::string());
+		default_value = std::string(), bool locked = false);
 
 	void set_string(const std::string& s) { str = s; }
 	std::string get_string() { return str; }
 	
-	void on_key_pressed(const char c) { str += c; }
+	void on_key_pressed(const char c);
 	
 	/// GUI Component functions:
 	///

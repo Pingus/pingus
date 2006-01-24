@@ -96,7 +96,7 @@ private:
 
 	/** Scroll the displayed file list */
 	void offset_changed();
-
+	
 public:
 	FileDialog (FileDialogListener* listener_, 
 		const std::string filemask_, 
@@ -106,6 +106,7 @@ public:
   ~FileDialog ();
 
   bool draw (DrawingContext& gc);
+	void update(const GameDelta &delta);
 
 	void preload();
 

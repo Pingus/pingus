@@ -20,6 +20,7 @@
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Core/IOData/directory_scanner.h>
 #include "gettext.h"
+#include "system.hxx"
 #include "pingus_menu_manager.hxx"
 #include "resource.hxx"
 #include "gui/surface_button.hxx"
@@ -262,7 +263,8 @@ namespace Pingus {
 		float center_x = (float)CL_Display::get_width()/2;
 		float center_y = (float)CL_Display::get_height()/2;
 
-		inputbox = new GUI::InputBox(450, Vector(center_x - 225, center_y - 170));
+		inputbox = new GUI::InputBox(450, Vector(center_x - 225, 
+			center_y - 170), "", for_loading);
 		gui_manager->add((GUI::Component*)inputbox);
 
 		file_dialog_items.push_back(new FileDialogItem(this, 
@@ -398,20 +400,17 @@ namespace Pingus {
 	void
 	FileDialog::set_selected_file(FileItem f)
 	{ 
-	 current_file = f;
-	 if (current_file.name != "")
-	 {
+		current_file = f;
+		if (current_file.name != "")
 			ok_button->show();
-			if (!current_file.is_directory)
-				inputbox->set_string(current_file.name);
-			else
-				inputbox->set_string("");
-	 }
-	 else
-		 ok_button->hide();
-
-	 if (current_file.is_directory)
-		 ok_pressed();
+		else
+			ok_button->hide();
+		
+		inputbox->set_string(current_file.name.substr(0, 
+			current_file.name.length()-file_mask.length()));
+		
+		if (current_file.is_directory)
+			ok_pressed();
 	}
 
 	void
@@ -426,7 +425,6 @@ namespace Pingus {
 		}
 		else
 		{
-			// Load or save the selected file
 			if (for_loading)
 				listener->load(current_path + current_file.name, file_mask);
 			else
@@ -438,6 +436,23 @@ namespace Pingus {
 	FileDialog::cancel_pressed()
 	{
 		listener->cancel();
+	}
+	
+	void
+	FileDialog::update(const GameDelta &delta)
+	{
+		PingusSubMenu::update(delta);
+		
+		// FIXME: Ugly busy polling
+		if (!for_loading)
+			if (inputbox->get_string() != current_file.name)
+			{
+				FileItem f;
+				f.friendly_name = inputbox->get_string();
+				f.name = f.friendly_name + file_mask;
+				f.is_directory = false;
+				set_selected_file(f);
+			}
 	}
 
 } // namespace Pingus
