@@ -19,15 +19,17 @@
 
 #include <vector>
 #include <ClanLib/Display/sprite.h>
-#include "panel_buttons.hxx"
 #include "../gui/combobox.hxx"
+#include "../gui/gui_manager.hxx"
 #include "../display/scene_context.hxx"
 #include "../path_manager.hxx"
 #include "../fonts.hxx"
 #include "../resource.hxx"
+#include "panel_buttons.hxx"
 #include "editor_screen.hxx"
 #include "editor_panel.hxx"
 #include "level_objs.hxx"
+#include "level_head.hxx"
 #include "xml_level.hxx"
 
 namespace Pingus {
@@ -213,6 +215,36 @@ PanelButtonGroundpiece::combobox_changed(int i, const std::string &value)
 	}
 }
 
+PanelButtonHead::PanelButtonHead(EditorPanel *p)
+  : PanelButton(p),
+  head(0)
+{  
+  // FIXME: Update this sprite  
+  sur = Resource::load_sprite("core/editor/save"); 
+  tooltip = "Set specific level information"; 
+}
 
+void
+PanelButtonHead::on_primary_button_click(int x, int y)
+{
+  PanelButton::on_primary_button_click(x, y); 
+  if (!head)
+  {  
+    head = new LevelHead(panel, this);
+  }
+  else
+  {  
+    remove_head(); 
+  }  
+} 
+
+void
+PanelButtonHead::remove_head()
+{
+  delete head;
+  head = 0; 
+}
+ 
+ 
 } // Editor namespace
 } // Pingus namespace

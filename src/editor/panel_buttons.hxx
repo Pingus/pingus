@@ -31,7 +31,8 @@ class DrawingContext;
 namespace Editor {
 
 class EditorPanel;
-
+class LevelHead;
+  
 /** Generic PanelButton class - all buttons in the Editor should inherit from this */
 class PanelButton : public GUI::Component
 {
@@ -110,7 +111,7 @@ private:
 
 
 /** Standard exit button */
-class PanelButtonExit : PanelButton
+class PanelButtonExit : public PanelButton
 {
 public:
 	/** Constructor
@@ -128,7 +129,7 @@ private:
 
 
 /** Standard load button */
-class PanelButtonLoad : PanelButton
+class PanelButtonLoad : public PanelButton
 {
 public:
 	/** Constructor
@@ -146,7 +147,7 @@ private:
 
 
 /** Standard save button */
-class PanelButtonSave : PanelButton
+class PanelButtonSave : public PanelButton
 {
 public:
 	/** Constructor
@@ -164,7 +165,7 @@ private:
 
 
 /** Display all of the groundpiece objects */
-class PanelButtonGroundpiece : PanelButton
+class PanelButtonGroundpiece : public PanelButton
 {
 public:
 	/** Constructor
@@ -182,6 +183,29 @@ private:
   PanelButtonGroundpiece (const PanelButtonGroundpiece&);
   PanelButtonGroundpiece& operator= (const PanelButtonGroundpiece&);
 };		// PanelButtonGroundpiece class
+
+
+/** Display all of the level description <HEAD> information */
+class PanelButtonHead : public PanelButton
+{
+  private:
+    LevelHead* head;
+       
+  public:
+  /** Constructor
+    @param p the EditorPanel to which this button belongs */
+    PanelButtonHead (EditorPanel* p);
+
+    /** This function is called by the gui_manager when the button is clicked */
+    virtual void on_primary_button_click (int x, int y);
+
+    void remove_head();
+      
+  private:
+    PanelButtonHead ();
+    PanelButtonHead (const PanelButtonHead&);
+    PanelButtonHead& operator= (const PanelButtonHead&);
+};    // PanelButtonHead class
 
 }		// Editor namespace
 }		// Pingus namespace

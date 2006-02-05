@@ -49,7 +49,7 @@ typedef enum {
 
   /** 'p' or 'Pause' got pressed */
   PAUSE_PRESSED,
-  FASTFORWARD_TRIGGERED
+  FASTFORWARD_TRIGGERED,
 
   /** Buttons for switching to the next/previous Action */
   ACTION_UP,

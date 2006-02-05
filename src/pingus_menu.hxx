@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_PINGUS_MENU_HXX
 #define HEADER_PINGUS_PINGUS_MENU_HXX
 
+#include <vector>
 #include "fonts.hxx"
 #include "pingus_sub_menu.hxx"
 #include "file_dialog_listener.hxx"
@@ -27,6 +28,7 @@
 
 class CL_Key;
 class CL_InputDevice;
+class CL_Slot;
 
 namespace Pingus {
 

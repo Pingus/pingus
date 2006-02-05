@@ -41,10 +41,14 @@ protected:
 
 	/** Shrink the string to fit in the box */
 	std::string shrink_string(const std::string& s) const;
+  
+  /** Optional label to display */
+  std::string label;  
 
 public:
 	InputBox(float width_, Vector p, const std::string& 
-		default_value = std::string(), bool locked = false);
+		default_value = std::string(), bool locked = false,
+    const std::string& label_ = std::string());
 
 	void set_string(const std::string& s) { str = s; }
 	std::string get_string() { return str; }

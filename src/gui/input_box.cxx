@@ -27,12 +27,13 @@ namespace Pingus {
 namespace GUI {
 	
 InputBox::InputBox(float width_, Vector p, const std::string& default_value,
-	bool locked) 
+                   bool locked, const std::string& label_) 
 	:	str(default_value),
 	pos(p),
 	width(width_),
 	height((float)Fonts::pingus_small.get_height()),
-	is_locked(locked)
+	is_locked(locked),
+  label(label_) 
 {
 	
 }
@@ -49,6 +50,9 @@ InputBox::draw(DrawingContext &gc)
 	if (str != std::string())
 		gc.print_left(Fonts::pingus_small, pos.x + 10, pos.y, shrink_string(str));
 	
+  if (label != std::string())
+    gc.print_right(Fonts::pingus_small, pos.x, pos.y, label);
+     
 	if (has_focus)
 		gc.draw_line(pos.x + Fonts::pingus_small.get_size(shrink_string(str)).width + 12,
 			pos.y, pos.x + Fonts::pingus_small.get_size(shrink_string(str)).width + 12, 
@@ -87,7 +91,8 @@ InputBox::on_key_pressed(const char c)
 		else if ((c > 0x2c && c < 0x3a)    // - . / 0-9
 			|| (c > 0x40 && c < 0x5b)        // capital letters
 			|| (c > 0x60 && c < 0x7b)        // lowercase letters
-			|| (c == 0x7e || c == 0x5f))     // ~ and _
+      || (c == 0x7e || c == 0x5f)      // ~ and _
+      ||  c == 0x20)                   // space
 			str += c;
 	}
 }

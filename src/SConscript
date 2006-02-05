@@ -106,6 +106,7 @@ env.Program('../pingus', [
 'editor/editor_panel.cxx', 
 'editor/editor_screen.cxx', 
 'editor/editor_viewport.cxx', 
+'editor/level_head.cxx', 
 'editor/level_objs.cxx', 
 'editor/panel_buttons.cxx', 
 'editor/xml_level.cxx', 

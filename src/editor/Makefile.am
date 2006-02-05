@@ -21,14 +21,9 @@ libdir=$(prefix)/share/games/@PACKAGE@/libs
 noinst_LIBRARIES = libpingus_editor.a
 
 libpingus_editor_a_CPPFLAGS = @PINGUS_CFLAGS@
-libpingus_editor_a_SOURCES =       \
-context_menu.cxx	context_menu.hxx	\
-editor_screen.cxx	editor_screen.hxx	\
-editor_panel.cxx	editor_panel.hxx	\
-panel_buttons.cxx	panel_buttons.hxx	\
-editor_viewport.cxx	editor_viewport.hxx \
-xml_level.cxx		xml_level.hxx		\
-level_objs.cxx		level_objs.hxx		\
-level_impl.hxx
+libpingus_editor_a_SOURCES = \
+	context_menu.cxx	context_menu.hxx	editor_screen.cxx	editor_screen.hxx	editor_panel.cxx	editor_panel.hxx	panel_buttons.cxx	panel_buttons.hxx	editor_viewport.cxx	editor_viewport.hxx \
+	xml_level.cxx		xml_level.hxx		level_objs.cxx		level_objs.hxx		level_impl.hxx level_head.cxx
 
 # EOF #
+noinst_HEADERS = level_head.hxx

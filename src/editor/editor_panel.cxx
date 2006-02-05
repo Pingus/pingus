@@ -64,7 +64,7 @@ EditorPanel::init()
 	add((PanelButton*)(new PanelButtonLoad(this)));
 	add((PanelButton*)(new PanelButtonSave(this)));
 	add((PanelButton*)(new PanelButtonGroundpiece(this)));
-
+  add((PanelButton*)(new PanelButtonHead(this)));
 	// Create Checkboxes
 	snap_to_checkbox = new GUI::Checkbox(Vector(370, 5), "Snap To Grid: ", this);
 	get_screen()->get_gui_manager()->add(snap_to_checkbox);
