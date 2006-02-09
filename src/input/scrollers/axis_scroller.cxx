@@ -72,8 +72,8 @@ AxisScroller::update (float delta)
     {
       (*it)->update(delta);
 
-      x_delta += cos((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
-      y_delta += sin((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
+      x_delta += (float)cos((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
+      y_delta += (float)sin((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
     }
 
 }

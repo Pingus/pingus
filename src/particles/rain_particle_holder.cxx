@@ -32,7 +32,7 @@ RainParticleHolder::RainParticle::RainParticle(int x, int y)
   : alive(true), splash(false), use_rain2_surf(false), splash_counter(0), splash_frame(0), pos(Vector(x, y))
 {
   use_rain2_surf = ((rand() % 3) == 0);
-  pos.z = 1.0 + Math::frand() * 3.0;
+  pos.z = 1.0 + (float)Math::frand() * 3.0;
 }
 
 

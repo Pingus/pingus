@@ -121,7 +121,7 @@ System::basename(std::string filename)
   const char* str = filename.c_str();
   int i;
 
-  for(i = filename.size() - 1; i >= 0; --i)
+  for(i = (int)filename.size() - 1; i >= 0; --i)
     {
       if (*(str + i) == '/') {
 	break;
@@ -137,7 +137,7 @@ System::dirname (std::string filename)
   const char* str = filename.c_str();
   int i;
 
-  for(i = filename.size() - 1; i >= 0; --i)
+  for(i = (int)filename.size() - 1; i >= 0; --i)
     {
       if (*(str + i) == '/') {
 	break;
@@ -152,7 +152,7 @@ System::extension (std::string filename)
 {
   const char* str = filename.c_str ();
   int i;
-  int last_char = filename.size() - 1;
+  int last_char = (int)filename.size() - 1;
 
   for(i = last_char; i >= 0; --i)
     {
@@ -258,9 +258,14 @@ System::get_statdir()
 {
 #ifdef WIN32
 	std::string tmpstr;
-	char* homedir = getenv("HOMEPATH");
+	char* homedir = getenv("HOMEDRIVE");
 	if (homedir)
-		tmpstr = std::string(homedir) + "/.pingus/";
+  {
+    tmpstr = std::string(homedir);
+    homedir = 0;
+    homedir = getenv("HOMEPATH");
+		tmpstr = tmpstr + std::string(homedir) + "/.pingus/";
+  }
 	else
 		tmpstr = "user/";
 	return tmpstr;

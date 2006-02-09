@@ -64,8 +64,8 @@ AxisPointer::update (float delta)
     {
       (*it)->update(delta);
 
-      x_pos += cos((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
-      y_pos += sin((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
+      x_pos += (float)cos((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
+      y_pos += (float)sin((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
     }
 }
 

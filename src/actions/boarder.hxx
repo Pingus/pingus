@@ -32,8 +32,8 @@ class Boarder : public PinguAction
 {
 private:
   //double counter;
-  double x_pos;
-  double speed;
+  float x_pos;
+  float speed;
   StateSprite sprite;
 public:
   Boarder (Pingu* p);

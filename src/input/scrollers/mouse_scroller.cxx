@@ -58,8 +58,8 @@ MouseScroller::update (float)
   x_delta = device.get_x() - old_x;
   y_delta = device.get_y() - old_y;
 
-  old_x = device.get_x();
-  old_y = device.get_y();
+  old_x = (float)device.get_x();
+  old_y = (float)device.get_y();
 }
 
 } // namespace Scroller

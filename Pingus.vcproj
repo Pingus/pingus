@@ -1751,6 +1751,12 @@
 					RelativePath=".\src\editor\editor_viewport.hxx">
 				</File>
 				<File
+					RelativePath=".\src\editor\level_head.cxx">
+				</File>
+				<File
+					RelativePath=".\src\editor\level_head.hxx">
+				</File>
+				<File
 					RelativePath=".\src\editor\level_impl.hxx">
 				</File>
 				<File

@@ -38,9 +38,9 @@ JoystickAxis::JoystickAxis(int id_, int axis_, float angle_)
     PingusError::raise("JoystickAxis: Invalid joystick axis id");
 
   if (angle < 0)
-    angle = (static_cast<int>(angle) % 360) + 360;
+    angle = float(static_cast<int>(angle) % 360) + 360;
   else if (angle > 360)
-    angle = static_cast<int>(angle) % 360;
+    angle = float(static_cast<int>(angle) % 360);
 }
 
 const float&

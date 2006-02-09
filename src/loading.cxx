@@ -53,8 +53,8 @@ Loading::draw()
 
   CL_Display::clear();
 
-  sur.draw((CL_Display::get_width() - sur.get_width())/2,
-		 (CL_Display::get_height() - sur.get_height())/2);
+  sur.draw(float(CL_Display::get_width() - sur.get_width())/2,
+		 float(CL_Display::get_height() - sur.get_height())/2);
 
   Display::flip_display();
 }

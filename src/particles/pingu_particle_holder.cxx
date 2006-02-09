@@ -34,7 +34,7 @@ PinguParticleHolder::PinguParticle::PinguParticle (int x, int y)
   : livetime(50 + (rand() % 75)),
     use_frame2((rand() % 5) == 0),
     pos(Vector(x, y)),
-    velocity(Vector(Math::frand() * 7 - 3.5, Math::frand() * -9))
+    velocity(Vector((float)Math::frand() * 7 - 3.5, (float)Math::frand() * -9))
 {
 }
 

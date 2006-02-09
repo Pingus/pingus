@@ -59,8 +59,8 @@ MousePointer::update (float)
 void
 MousePointer::move_signal (const CL_InputEvent& event)
 {
-  x_pos = event.mouse_pos.x;
-  y_pos = event.mouse_pos.y;
+  x_pos = (float)event.mouse_pos.x;
+  y_pos = (float)event.mouse_pos.y;
 }
 
 } // namespace Pointers

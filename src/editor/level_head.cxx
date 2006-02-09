@@ -109,11 +109,11 @@ void
 LevelHead::draw(DrawingContext& gc)
 {
   // Draw the background for window 
-	gc.draw_fillrect(pos.x, pos.y, CL_Display::get_width() - 50, 
-                   CL_Display::get_height()-50, CL_Color(100,150,50,150));
+  gc.draw_fillrect(pos.x, pos.y, (float)CL_Display::get_width() - 50, 
+                   (float)CL_Display::get_height()-50, CL_Color(100,150,50,150));
   // Draw the window border
-  gc.draw_rect(pos.x, pos.y, CL_Display::get_width() - 50,
-               CL_Display::get_height()-50, CL_Color::white);
+  gc.draw_rect(pos.x, pos.y, (float)CL_Display::get_width() - 50,
+               (float)CL_Display::get_height()-50, CL_Color::white);
 }
 
 bool

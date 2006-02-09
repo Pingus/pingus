@@ -43,38 +43,40 @@ Boarder::update ()
   sprite[pingu->direction].update();
 
   if (on_ground())
+  {
+    if (speed < 15.0)
+      speed += 15.0 * 25.0f/1000.0f;
+    else {
+      speed = 15.0;
+    }
+
+    // Incremental update so that we don't skip pixels
+    Vector new_pos = pingu->get_pos();
+    new_pos.x = new_pos.x + pingu->direction * speed;
+    while (new_pos.x != pingu->get_pos().x)
     {
-      if (speed < 15.0)
-	speed += 15.0 * 25.0f/1000.0f;
-      else {
-	speed = 15.0;
+      Vector old_pos = pingu->get_pos();
+      pingu->set_pos(Vector(old_pos.x + (old_pos.x < new_pos.x) ? 1.0f : -1.0f, 
+        old_pos.y, old_pos.z));
+
+      if (pingu->rel_getpixel (1, 0))
+      {
+        // Hit a wall
+        pingu->set_pos(old_pos); // + (pingu->direction * 10);
+        ////pingu->pos.y = 10;
+
+        pingu->apply_force (Vector(float(speed * pingu->direction * 0.5),
+          -float(speed * abs(pingu->direction) * 0.5)));
+        pingu->set_action(Actions::Walker);
+        return;
       }
-
-      // Incremental update so that we don't skip pixels
-      double new_x_pos = pingu->get_pos().x + pingu->direction * speed;
-      while (new_x_pos != pingu->get_x())
-	{
-	  double old_pos = pingu->get_pos().x;
-	  pingu->set_x(old_pos + (pingu->get_x() < new_x_pos) ? 1 : -1);
-
-	  if (pingu->rel_getpixel (1, 0))
-	    {
-	      // Hit a wall
-	      pingu->set_x(old_pos); // + (pingu->direction * 10);
-	      ////pingu->pos.y = 10;
-
-	      pingu->apply_force (Vector(speed * pingu->direction * 0.5,
-					    -speed * abs(pingu->direction) * 0.5));
-	      pingu->set_action(Actions::Walker);
-	      return;
-	    }
-	}
     }
+  }
   else
-    {
-      pingu->apply_force (Vector(speed * pingu->direction, 0));
-      pingu->set_action(Actions::Walker);
-    }
+  {
+    pingu->apply_force (Vector((float)speed * pingu->direction, 0));
+    pingu->set_action(Actions::Walker);
+  }
 }
 
 void
