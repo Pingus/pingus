@@ -45,7 +45,7 @@ namespace Editor {
 
     public:
       LevelHeadCloseButton(LevelHead* h)
-      : GUI::SurfaceButton(CL_Display::get_width() -100,
+      : GUI::SurfaceButton(CL_Display::get_width() -200,
                            CL_Display::get_height() -100,
                            ResDescriptor("core/menu/exit_button_normal"),
                            ResDescriptor("core/menu/exit_button_pressed"),
