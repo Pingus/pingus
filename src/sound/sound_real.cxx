@@ -160,7 +160,7 @@ PingusSoundReal::real_play_music (const std::string & arg_filename, float volume
     {
       music_session = new CL_SoundBuffer_Session(music_sample->prepare());
       music_session->set_volume(volume * 0.5f); // FIXME: music_volume
-      music_session->set_looping(false);
+      music_session->set_looping(true);
       music_session->play();
     }
 }
