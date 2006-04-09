@@ -153,9 +153,6 @@ GraphicContextState::get_clip_rect()
 void
 GraphicContextState::set_pos(const CL_Pointf& pos)
 {
-	float old_x = impl->offset.x;
-	float old_y = impl->offset.y;
-	
   impl->offset.x = -pos.x + (get_width()/2  / impl->zoom);
   impl->offset.y = -pos.y + (get_height()/2 / impl->zoom);
 
@@ -163,20 +160,20 @@ GraphicContextState::set_pos(const CL_Pointf& pos)
     {
       if (-impl->offset.x < impl->limit.left)
         {
-          impl->offset.x = old_x;
+	  impl->offset.x = -( impl->limit.left );
         }
       else if (-impl->offset.x + get_width() >= impl->limit.right)
         {
-          impl->offset.x = old_x;
+	  impl->offset.x = -( impl->limit.right - get_width() - 1 );
         }
 
       if (-impl->offset.y < impl->limit.top)
         {
-          impl->offset.y = old_y;
+          impl->offset.y = -( impl->limit.top );
         }
       else if (-impl->offset.y + get_height() >= impl->limit.bottom)
         {
-          impl->offset.y = old_y;
+          impl->offset.y = -( impl->limit.bottom - get_height() - 1 );
         }
     }
 }
