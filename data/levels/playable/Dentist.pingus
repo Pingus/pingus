@@ -29,6 +29,11 @@
 <image>textures/happyclouds</image>
 <modifier>ROT0</modifier>
 </surface>
+<position>
+<x>0</x>
+<y>0</y>
+<z>-150</z>
+</position>
 <color>
     <red>0</red>
     <green>0</green>
