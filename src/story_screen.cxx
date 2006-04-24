@@ -95,8 +95,8 @@ public:
 StoryScreen::StoryScreen(WorldMapNS::WorldMapStory *arg_pages)
 {
   story_comp = new StoryScreenComponent(arg_pages);
-  gui_manager->add (story_comp);
-  gui_manager->add (new StoryScreenContinueButton(story_comp));
+  gui_manager->add (story_comp, true);
+  gui_manager->add (new StoryScreenContinueButton(story_comp), true);
 }
 
 StoryScreen::~StoryScreen()

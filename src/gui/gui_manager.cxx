@@ -38,6 +38,17 @@ GUIManager::GUIManager ()
 {
 }
 
+GUIManager::~GUIManager ()
+{
+  for (std::vector<Component*>::iterator i = components_for_delete.begin ();
+       i != components_for_delete.end (); ++i)
+    {
+      delete (*i);
+    }
+
+  components_for_delete.clear();
+}
+
 void
 GUIManager::draw (DrawingContext& gc)
 {
@@ -97,7 +108,8 @@ void
 GUIManager::add(Component* c, bool delete_component)
 {
   components.push_back(c);
-  UNUSED_ARG(delete_component);
+  if( delete_component )
+    components_for_delete.push_back(c);
 }
 
 void

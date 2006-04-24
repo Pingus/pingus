@@ -166,7 +166,7 @@ namespace Editor {
 		if (available_attribs & CAN_ROTATE)
 		{
 			menu = new ContextMenu(objs, Vector(pos.x + width, pos.y), viewport, false);
-			viewport->get_screen()->get_gui_manager()->add(menu);
+			viewport->get_screen()->get_gui_manager()->add(menu, true);
 			menu->add_action(ContextItem("0 degrees", "ROT0", ROTATE, 0));
 			menu->add_action(ContextItem("90 Degrees", "ROT90", ROTATE, 0));
 			menu->add_action(ContextItem("180 Degrees", "ROT180", ROTATE, 0));
@@ -180,7 +180,7 @@ namespace Editor {
 		if (available_attribs & HAS_OWNER)
 		{
 			menu = new ContextMenu(objs, Vector(pos.x + width, pos.y), viewport, false);
-			viewport->get_screen()->get_gui_manager()->add(menu);
+			viewport->get_screen()->get_gui_manager()->add(menu, true);
 			menu->add_action(ContextItem("0", "0", SET_OWNER, 0));
 			menu->add_action(ContextItem("1", "1", SET_OWNER, 0));
 			menu->add_action(ContextItem("2", "2", SET_OWNER, 0));
@@ -190,14 +190,14 @@ namespace Editor {
 		if (available_attribs & HAS_DIRECTION)
 		{
 			menu = new ContextMenu(objs, Vector(pos.x + width, pos.y), viewport, false);
-			viewport->get_screen()->get_gui_manager()->add(menu);
+			viewport->get_screen()->get_gui_manager()->add(menu, true);
 			menu->add_action(ContextItem("Left", "left", SET_DIRECTION, 0));
 			menu->add_action(ContextItem("Right", "right", SET_DIRECTION, 0));
 			menu->add_action(ContextItem("Misc.", "misc", SET_DIRECTION, 0));
 			add_action(ContextItem("Direction >", "", SET_DIRECTION, menu));
 		}
 		menu = new ContextMenu(objs, Vector(pos.x + width, pos.y), viewport, false);
-		viewport->get_screen()->get_gui_manager()->add(menu);
+		viewport->get_screen()->get_gui_manager()->add(menu, true);
 		menu->add_action(ContextItem("-50", "-50", SET_Z_POS, 0));
 		menu->add_action(ContextItem("-25", "-25", SET_Z_POS, 0));
 		menu->add_action(ContextItem("0", "0", SET_Z_POS, 0));

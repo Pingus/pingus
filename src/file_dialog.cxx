@@ -256,7 +256,7 @@ namespace Pingus {
 		gui_manager->add(up_button, true);
 		gui_manager->add(down_button, true);
 		gui_manager->add(new FileDialogCancelButton(this), true);
-		gui_manager->add(new FileDialogParentFolderButton(this));
+		gui_manager->add(new FileDialogParentFolderButton(this), true);
 
 		// FIXME: Ugly - hardcoded values for items in file dialog.  Should be dynamic.
 		// Create 8 FileDialogItems and add them to the gui_manager.
@@ -265,7 +265,7 @@ namespace Pingus {
 
 		inputbox = new GUI::InputBox(450, Vector(center_x - 225, 
 			center_y - 170), "", for_loading);
-		gui_manager->add((GUI::Component*)inputbox);
+		gui_manager->add((GUI::Component*)inputbox, true);
 
 		file_dialog_items.push_back(new FileDialogItem(this, 
 			Vector(center_x - 280, center_y - 140)));
@@ -286,7 +286,7 @@ namespace Pingus {
 
 		for (std::vector<FileDialogItem*>::const_iterator i = file_dialog_items.begin();
 			i != file_dialog_items.end(); i++)
-			gui_manager->add((GUI::Component*)(*i));
+			gui_manager->add((GUI::Component*)(*i), true);
 
 		refresh();
 	}

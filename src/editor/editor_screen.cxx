@@ -64,11 +64,11 @@ EditorScreen::on_startup()
 {
 	// Create the viewport for the images and data
 	viewport = new EditorViewport(this);
-	gui_manager->add(viewport);	
+	gui_manager->add(viewport, true);	
 	
 	// Create the panel for the buttons
 	panel = new EditorPanel(this);
-	gui_manager->add(panel);
+	gui_manager->add(panel, true);
 	panel->init();
 
 }

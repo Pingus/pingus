@@ -72,7 +72,8 @@ public:
 	void init();
 
 	/** Add a button to the panel 
-		@param button The PanelButton that you'd like to add */
+		@param button The PanelButton that you'd like to add. The given object will be
+                       deleted automaticly at the end. */
 	void add(PanelButton* button);
 
 	/** Draws the panel */

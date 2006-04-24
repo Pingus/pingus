@@ -222,11 +222,11 @@ WorldMapManager::WorldMapManager ()
   // FIXME: well enough. GUIScreen could also use multi-inheritage,
   // FIXME: but that could lead to member function name conflicts
   worldmap_component = new WorldMapComponent();
-  gui_manager->add (worldmap_component);
-  gui_manager->add(new WorldMapManagerCloseButton());
-  gui_manager->add(new WorldMapManagerEnterButton());
+  gui_manager->add (worldmap_component, true);
+  gui_manager->add(new WorldMapManagerCloseButton(), true);
+  gui_manager->add(new WorldMapManagerEnterButton(), true);
 
-  gui_manager->add(new WorldMapManagerStoryButton());
+  gui_manager->add(new WorldMapManagerStoryButton(), true);
 }
 
 void
@@ -242,7 +242,7 @@ WorldMapManager::load (const std::string& filename)
 		credits_unlocked);
   if (credits_unlocked)
 	{
-		gui_manager->add(new WorldMapManagerCreditsButton());
+		gui_manager->add(new WorldMapManagerCreditsButton(), true);
 	}
 }
 
