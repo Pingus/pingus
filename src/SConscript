@@ -43,7 +43,7 @@ sdl_env = Environment(CC = 'gcc',
 #   clanMikMod-0.8         ">=" 0.8.0')
 
 env.ParseConfig('sdl-config  --cflags --libs')
-env['LIBS'] += ['SDL_image']
+env['LIBS'] += ['SDL_image', 'physfs']
 
 # sdl_env.ParseConfig('sdl-config  --cflags --libs')
 # sdl_env['LIBS'] += ['SDL_image']
@@ -164,6 +164,13 @@ env.Program('../pingus', [
 'gui/screen_ptr.cxx', 
 'gui/surface_button.cxx',
 
+'lisp/getters.cpp',
+'lisp/lexer.cpp',
+'lisp/lisp.cpp',
+'lisp/parser.cpp',
+'lisp/properties.cpp',
+'lisp/writer.cpp',
+
 # # 'input/axes/button_axis.cxx', 
 # # 'input/axes/inverted_axis.cxx', 
 # # 'input/axes/joystick_axis.cxx', 
@@ -246,7 +253,9 @@ env.Program('../pingus', [
 'tinygettext/tinygettext.cxx', 
 # 'true_server.cxx', 
 'math/vector2f.cpp',
-'math/vector3f.cpp', 
+'math/vector3f.cpp',
+'physfs/physfs_sdl.cpp',
+'physfs/physfs_stream.cpp',
 # 'world.cxx', 
 # 'worldmap/dot.cxx', 
 # 'worldmap/dot_factory.cxx', 

@@ -27,6 +27,8 @@
 #include <sstream>
 #include <assert.h>
 #include "SDL.h"
+#include "origin.hpp"
+#include "math/vector2i.hpp"
 #include "SDL_image.h"
 #include "sprite.hpp"
 
@@ -34,6 +36,8 @@ class SpriteImpl
 {
 public:
   SDL_Surface* surface;
+  Vector2i     offset;
+  Origin       origin;
 
   SpriteImpl(const std::string& name) 
   {
@@ -50,6 +54,26 @@ public:
       {
         std::cout << "Loaded sprite: " << name << std::endl;
       }
+
+    //offset.x = surface->w/2;
+    //offset.y = surface->h/2;
+  }
+
+  ~SpriteImpl()
+  {
+    SDL_FreeSurface(surface);
+  }
+
+  void draw(float x, float y, SDL_Surface* target)
+  {
+    SDL_Rect pos;
+    
+    pos.x = (Sint16)(x - offset.x);
+    pos.y = (Sint16)(y - offset.y);
+    pos.w = 0;
+    pos.h = 0;
+    
+    SDL_BlitSurface(surface, NULL, target, &pos);
   }
 };
 
@@ -71,12 +95,7 @@ void
 Sprite::draw(float x, float y, SDL_Surface* target)
 {
   //std::cout << "Sprite: draw; " << x << ", " << y << std::endl;
-  SDL_Rect pos;
-  pos.x = (Sint16)x;
-  pos.y = (Sint16)y;
-  pos.w = 0;
-  pos.h = 0;
-  SDL_BlitSurface(impl->surface, NULL, target, &pos);
+  impl->draw(x, y, target);
 }
 
 int

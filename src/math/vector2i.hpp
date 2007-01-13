@@ -27,9 +27,21 @@ public:
   int x;
   int y;
 
+  Vector2i()
+    : x(0), y(0) {}
+
   Vector2i(int x_, int y_) 
     : x(x_), y(y_) {}
 
+  Vector2i operator- () const;
+
+  Vector2i operator+ (const Vector2i& add) const;
+  Vector2i operator- (const Vector2i& sub) const;
+  Vector2i operator* (int  mul) const;
+
+  Vector2i& operator+= (const Vector2i& add);
+  Vector2i& operator-= (const Vector2i& sub);
+  Vector2i& operator*= (int mul);
 };
 
 #endif
