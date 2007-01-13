@@ -24,8 +24,6 @@
 #include <list>
 #include <string>
 #include <vector>
-#include <ClanLib/signals.h>
-#include <ClanLib/display.h>
 #include "../file_reader.hxx"
 #include "event.hxx"
 
@@ -50,7 +48,7 @@ private:
   float             std_pointer_x;
   float             std_pointer_y;
 
-  std::vector<CL_Slot> slots;
+  ////  std::vector<CL_Slot> slots;
 
 public:
   Controller (const std::string& configfile);
@@ -76,7 +74,7 @@ private:
   void on_button_down(ButtonName name);
   void on_button_up(ButtonName name);
   void create_action_buttons (FileReader reader);
-	void key_pressed(const CL_InputEvent &event);
+  ////void key_pressed(const CL_InputEvent &event);
 
 /** Get keyboard keys pressed to handle general keyboard input */
 	std::string get_keys_pressed();

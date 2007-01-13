@@ -31,7 +31,7 @@
 #include "pingu_holder.hxx"
 #include "fonts.hxx"
 #include "gettext.h"
-#include "input\controller.hxx"
+#include "input/controller.hxx"
 
 namespace Pingus {
 

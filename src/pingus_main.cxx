@@ -28,48 +28,54 @@
 #include <stdio.h>
 #include <signal.h>
 #include <locale.h>
+#include <iostream>
 
-#include <ClanLib/display.h>
-#include <ClanLib/sound.h>
-#include <ClanLib/core.h>
-#include <ClanLib/sdl.h>
-#include <ClanLib/gl.h>
-#include <ClanLib/gui.h>
+#include "SDL.h"
+
+//#include <ClanLib/display.h>
+//#include <ClanLib/sound.h>
+//#include <ClanLib/core.h>
+//#include <ClanLib/sdl.h>
+//#include <ClanLib/gl.h>
+//#include <ClanLib/gui.h>
 
 #include "gettext.h"
 
-#include "gui/screen_manager.hxx"
-#include "gui/input_debug_screen.hxx"
+#include "command_line.hpp"
+
+//#include "gui/screen_manager.hxx"
+// #include "gui/input_debug_screen.hxx"
 #include "path_manager.hxx"
 #include "pingus_main.hxx"
 #include "globals.hxx"
 #include "system.hxx"
 #include "pingus_error.hxx"
-#include "global_event.hxx"
+// #include "global_event.hxx"
 #include "config.hxx"
 #include "console.hxx"
-#include "fps_counter.hxx"
-#include "plf_res_mgr.hxx"
-#include "game_session.hxx"
-#include "story_screen.hxx"
-#include "start_screen.hxx"
-#include "savegame_manager.hxx"
-#include "stat_manager.hxx"
-#include "demo_session.hxx"
+// #include "fps_counter.hxx"
+// #include "plf_res_mgr.hxx"
+// #include "game_session.hxx"
+// #include "story_screen.hxx"
+// #include "start_screen.hxx"
+// #include "savegame_manager.hxx"
+// #include "stat_manager.hxx"
+// #include "demo_session.hxx"
 #include "debug.hxx"
-#include "fonts.hxx"
-#include "pingus_menu_manager.hxx"
-#include "resource.hxx"
-#include "pingu_action_factory.hxx"
-#include "credits.hxx"
-#include "sound/sound.hxx"
-#include "worldmap/manager.hxx"
+//#include "fonts.hxx"
+// #include "pingus_menu_manager.hxx"
+// #include "resource.hxx"
+// #include "pingu_action_factory.hxx"
+// #include "credits.hxx"
+// #include "sound/sound.hxx"
+// #include "worldmap/manager.hxx"
 #include "cheat.hxx"
-#include "blitter_test.hxx"
-#include "preview_renderer.hxx"
-#include "worldmap/manager.hxx"
-#include "worldobj_factory.hxx"
-#include "editor/editor_screen.hxx"
+// #include "blitter_test.hxx"
+// #include "preview_renderer.hxx"
+// #include "worldmap/manager.hxx"
+// #include "worldobj_factory.hxx"
+
+// #include "editor/editor_screen.hxx"
 
 #if _MSC_VER >= 1400
 // Disable stupid deprecation warnings
@@ -124,7 +130,7 @@ signal_handler(int signo)
 PingusMain::PingusMain() :
   blitter_test(false),
   show_credits(false),
-	editor(false),
+  editor(false),
   refresh_rate(60)
 {
 }
@@ -186,7 +192,7 @@ PingusMain::check_args(int argc, char** argv)
   cursor_enabled = true;
 #endif
 
-  CL_CommandLine argp;
+  CommandLine argp;
   argp.add_usage("pingus [OPTIONS]... [FILES]...");
   argp.add_doc("Pingus is a puzzle game where you need to guide a bunch of little penguins around the world.");
     
@@ -199,7 +205,7 @@ PingusMain::check_args(int argc, char** argv)
                   _("Disable intro"));
   argp.add_option('G', "use-opengl", "",
                   _("Use OpenGL"));
-	argp.add_option('S', "use-sdl", "",
+  argp.add_option('S', "use-sdl", "",
                   _("Use SDL"));
   argp.add_option('w', "window", "",
                   _("Start in Window Mode"));
@@ -213,7 +219,7 @@ PingusMain::check_args(int argc, char** argv)
                   _("Load a custom level from FILE"));
   argp.add_option(358, "worldmap", _("FILE"),
                   _("Load a custom worldmap from FILE"));
-	argp.add_option('e', "editor", "",
+  argp.add_option('e', "editor", "",
                   _("Loads the level editor"));
   argp.add_option('v', "verbose", "", 
                   _("Print some more messages to stdout, can be set multiple times to increase verbosity"));
@@ -297,9 +303,9 @@ PingusMain::check_args(int argc, char** argv)
         case 'l': // -l, --level
           levelfile = argp.get_argument();
           break;
-				
-				case 'e': // -e, --editor
-					editor = true;
+          
+        case 'e': // -e, --editor
+          editor = true;
 
         case 't': // -t, --set-speed
           game_speed = atoi(argp.get_argument().c_str());
@@ -309,9 +315,9 @@ PingusMain::check_args(int argc, char** argv)
           use_opengl = true;
           break;
 
-				case 'S':
-					use_opengl = false;
-					break;
+        case 'S':
+          use_opengl = false;
+          break;
 
         case 's': // -s, --disable-sound
           sound_enabled = false;
@@ -518,7 +524,7 @@ PingusMain::check_args(int argc, char** argv)
           exit(EXIT_SUCCESS);
           break;
 
-        case CL_CommandLine::REST_ARG:
+        case CommandLine::REST_ARG:
           if (levelfile.empty()) 
             {
               levelfile = argp.get_argument();
@@ -562,28 +568,28 @@ PingusMain::init_path_finder()
   char resource_path[PATH_MAX];
   CFURLRef ref = CFBundleCopyResourcesDirectoryURL(CFBundleGetMainBundle());
   if (!ref || !CFURLGetFileSystemRepresentation(ref, true, (UInt8*)resource_path, PATH_MAX))
-  {
-    std::cout << "Error: Couldn't get Resources path.\n" << std::endl;
-    exit(EXIT_FAILURE);
-  }
+    {
+      std::cout << "Error: Couldn't get Resources path.\n" << std::endl;
+      exit(EXIT_FAILURE);
+    }
   CFRelease(ref);
-  path_manager.add_path(CL_String::get_path(std::string(resource_path) + "/data/"));
+  //path_manager.add_path(CL_String::get_path(std::string(resource_path) + "/data/"));
 #else
-  path_manager.add_path(CL_String::get_path(CL_System::get_exe_path() + "/data/"));
-  path_manager.add_path(CL_String::get_path(CL_System::get_exe_path() + "/../data/"));
-  path_manager.add_path(CL_String::get_path(CL_System::get_exe_path() + "/../share/games/pingus/"));
+  //path_manager.add_path(CL_String::get_path(CL_System::get_exe_path() + "/data/"));
+  //path_manager.add_path(CL_String::get_path(CL_System::get_exe_path() + "/../data/"));
+  //path_manager.add_path(CL_String::get_path(CL_System::get_exe_path() + "/../share/games/pingus/"));
 #endif
 
   std::list<std::string> file_list;
   file_list.push_back ("data/core.xml");
 
-  if (!path_manager.find_path (file_list))
-    {
-      std::cout << "Error: Couldn't find 'data/core.xml', please set the enviroment variable\n"
-                << "PINGUS_DATADIR to the path of the file `data/core.scr' or use the\n"
-                << "-d option." << std::endl;
-      exit(EXIT_FAILURE);
-    }
+//   if (!path_manager.find_path (file_list))
+//     {
+//       std::cout << "Error: Couldn't find 'data/core.xml', please set the enviroment variable\n"
+//                 << "PINGUS_DATADIR to the path of the file `data/core.scr' or use the\n"
+//                 << "-d option." << std::endl;
+//       exit(EXIT_FAILURE);
+//     }
 
   dictionary_manager.add_directory(path_manager.complete("po/"));
   // Language is automatically picked from env variable
@@ -593,25 +599,25 @@ PingusMain::init_path_finder()
   if(!lang) lang = getenv("LC_MESSAGES");
   if(!lang) lang = getenv("LANG");
   if(lang)
-  {
-    std::string language(lang);
-    language.resize(2);
-    if(language == "cs" || language == "sr")
     {
-      dictionary_manager.set_charset("ISO-8859-2");
-      Pingus::Fonts::encoding = "ISO-8859-2";
+      std::string language(lang);
+      language.resize(2);
+      if(language == "cs" || language == "sr")
+        {
+          dictionary_manager.set_charset("ISO-8859-2");
+          //Pingus::Fonts::encoding = "ISO-8859-2";
+        }
+      else if(language == "tr")
+        {
+          dictionary_manager.set_charset("ISO-8859-9");
+          //Pingus::Fonts::encoding = "ISO-8859-9";
+        }
+      else
+        {
+          dictionary_manager.set_charset("ISO-8859-1");
+          //Pingus::Fonts::encoding = "ISO-8859-1";
+        }
     }
-    else if(language == "tr")
-    {
-      dictionary_manager.set_charset("ISO-8859-9");
-      Pingus::Fonts::encoding = "ISO-8859-9";
-    }
-    else
-    {
-      dictionary_manager.set_charset("ISO-8859-1");
-      Pingus::Fonts::encoding = "ISO-8859-1";
-    }
-  }
 
   if (maintainer_mode)
     std::cout << "BasePath: " << path_manager.get_base_path () << std::endl;
@@ -664,7 +670,7 @@ PingusMain::print_greeting_message()
             << (fullscreen_enabled ? _(" enabled") : _("disabled"))
             << std::endl;
   std::cout << _("refresh rate:            ") << refresh_rate << std::endl;
-	std::cout << _("using OpenGL:            ") << use_opengl << std::endl;
+  std::cout << _("using OpenGL:            ") << use_opengl << std::endl;
 
   std::cout << std::endl;
 }
@@ -673,23 +679,23 @@ void
 PingusMain::start_game ()
 {
   if (verbose) {
-    pout << _("PingusMain: Starting Main: ") << CL_System::get_time() << std::endl;
+    pout << _("PingusMain: Starting Main: ") << SDL_GetTicks() << std::endl;
   }
 
-  if (print_fps)
-    Display::add_flip_screen_hook(&fps_counter);
+  //if (print_fps)
+  //    Display::add_flip_screen_hook(&fps_counter);
 
   if (!render_preview)
     {
       // Register the global event catcher
-      on_button_press_slot   = window->get_ic()->get_keyboard().sig_key_down().connect (&global_event, &GlobalEvent::on_button_press);
-      on_button_release_slot = window->get_ic()->get_keyboard().sig_key_up().connect (&global_event, &GlobalEvent::on_button_release);
+      //on_button_press_slot   = window->get_ic()->get_keyboard().sig_key_down().connect (&global_event, &GlobalEvent::on_button_press);
+      //on_button_release_slot = window->get_ic()->get_keyboard().sig_key_up().connect (&global_event, &GlobalEvent::on_button_release);
     }
 
   // Set the root screen
   if (show_input_debug_screen) // show a debug screen
     {
-      ScreenManager::instance()->push_screen(new InputDebugScreen (), true);
+      //ScreenManager::instance()->push_screen(new InputDebugScreen (), true);
     }
   else if (render_preview)
     {
@@ -699,13 +705,13 @@ PingusMain::start_game ()
         }
       else
         {
-          PreviewRenderer::render(PLFResMgr::load_plf_from_filename(levelfile),
-                                  preview_file);
+          //PreviewRenderer::render(PLFResMgr::load_plf_from_filename(levelfile),
+          //                        preview_file);
         }
     }
   else if (show_credits)
     {
-      ScreenManager::instance()->push_screen(Credits::instance(), false);
+      //ScreenManager::instance()->push_screen(Credits::instance(), false);
     }
   else if (!levelfile.empty ()) 
     {
@@ -725,28 +731,28 @@ PingusMain::start_game ()
 
       if (successfull)
         {
-          ScreenManager::instance()->push_screen
-            (new StartScreen(PLFResMgr::load_plf_from_filename(levelfile)),
-             true);
+          //ScreenManager::instance()->push_screen
+            //(new StartScreen(PLFResMgr::load_plf_from_filename(levelfile)),
+             //   true);
         }
     }
   else if (!demo_file.empty()) // start a demo
     {
-      ScreenManager::instance()->push_screen(new DemoSession (demo_file));
+      //ScreenManager::instance()->push_screen(new DemoSession (demo_file));
     }
   else if (!worldmapfile.empty())
     {
-      WorldMapNS::WorldMapManager::instance()->load(worldmapfile);
-      ScreenManager::instance()->push_screen(WorldMapNS::WorldMapManager::instance());
+      //WorldMapNS::WorldMapManager::instance()->load(worldmapfile);
+      //ScreenManager::instance()->push_screen(WorldMapNS::WorldMapManager::instance());
     }
-	else if (editor == true)
-	  {
-			ScreenManager::instance()->push_screen (new Editor::EditorScreen());
-		}
+  else if (editor == true)
+    {
+      //ScreenManager::instance()->push_screen (new Editor::EditorScreen());
+    }
   else // start a normal game
     {
-      ScreenManager::instance()->push_screen (PingusMenuManager::instance (), false);
-      //ScreenManager::instance()->push_screen (new StoryScreen(), true);
+      ////ScreenManager::instance()->push_screen (PingusMenuManager::instance (), false);
+      ////ScreenManager::instance()->push_screen (new StoryScreen(), true);
     }
 
   if (!render_preview)
@@ -754,13 +760,13 @@ PingusMain::start_game ()
       // show the main menu, the rest of the game is spawn from there
       if (maintainer_mode)
         std::cout << "PingusMain::start screen manager" << std::endl;
-      ScreenManager::instance ()->display ();
+      ////ScreenManager::instance()->display();
       if (maintainer_mode)
         std::cout << "PingusMain::quit game and screen_manager" << std::endl;
 
       // unregister the global event catcher
-      window->get_ic()->get_keyboard().sig_key_down().disconnect(on_button_press_slot);
-      window->get_ic()->get_keyboard().sig_key_up().disconnect(on_button_release_slot);
+      ////window->get_ic()->get_keyboard().sig_key_down().disconnect(on_button_press_slot);
+      ////window->get_ic()->get_keyboard().sig_key_up().disconnect(on_button_release_slot);
     }
 }
 
@@ -774,12 +780,6 @@ PingusMain::main(int argc, char** argv)
   signal(SIGSEGV, signal_handler);
 #endif
   //signal(SIGINT, signal_handler);
-
-  // Redirect stdout to somewhere where it is readable
-#if defined WIN32 && defined _DEBUG
-  CL_ConsoleWindow cl_console(PACKAGE VERSION);
-  cl_console.redirect_stdio();
-#endif
 
   // Init error/warning/notice streams
   pout.add (std::cout);
@@ -805,14 +805,14 @@ PingusMain::main(int argc, char** argv)
       // Avoid uglyness on window opening
       if (!render_preview)
         {
-          CL_Display::clear();
-          CL_Display::flip();
+          ////CL_Display::clear();
+          ////CL_Display::flip();
         }
 
       if (blitter_test)
         {
-          BlitterTest test;
-          test.run();
+          ////BlitterTest test;
+          ////test.run();
         }
       else
         {
@@ -820,9 +820,9 @@ PingusMain::main(int argc, char** argv)
         }
     }
 
-  catch (const CL_Error& err) {
-    std::cout << _("Error caught from ClanLib: ") << err.message << std::endl;
-  }
+  ////catch (const CL_Error& err) {
+  ////std::cout << _("Error caught from ClanLib: ") << err.message << std::endl;
+////}
 
   catch (const PingusError& err) {
     std::cout << _("Error caught from Pingus: ") << err.get_message () << std::endl;
@@ -851,8 +851,32 @@ PingusMain::main(int argc, char** argv)
 }
 
 void
+PingusMain::init_sdl()
+{
+  if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+    std::cout << "Unable to initialize SDL: " << SDL_GetError() << std::endl;
+    exit(1);
+  }
+  atexit(SDL_Quit); 
+
+  SDL_Surface *screen;
+ 
+  screen = SDL_SetVideoMode(640, 480, 16, SDL_DOUBLEBUF | SDL_FULLSCREEN);
+  if (screen == NULL) {
+    printf("Unable to set video mode: %s\n", SDL_GetError());
+    exit(1);
+  }
+}
+
+void
+PingusMain::deinit_sdl()
+{
+}
+
+void
 PingusMain::init_clanlib()
 {
+#if 0
   if (render_preview)
     {
       CL_SetupCore::init ();
@@ -881,25 +905,27 @@ PingusMain::init_clanlib()
       window_desc.set_refresh_rate(refresh_rate);
       
       window = new CL_DisplayWindow(window_desc);
-      
-      CL_Display::clear();
-      CL_Display::flip();
+     
+  //CL_Display::clear();
+  //  CL_Display::flip();
     }
   CL_SetupGUI::init ();
   
   on_exit_press_slot = window->sig_window_close().connect(this, &PingusMain::on_exit_press);
+#endif 
 }
 
 void
 PingusMain::on_exit_press()
 {
   std::cout << "Exit pressed" << std::endl;
-  ScreenManager::instance()->clear();
+  ////ScreenManager::instance()->clear();
 }
 
 void
 PingusMain::deinit_clanlib()
 {
+#if 0
   CL_SetupCore::deinit();
   CL_SetupGUI::deinit ();
 
@@ -909,46 +935,53 @@ PingusMain::deinit_clanlib()
     CL_SetupSDL::deinit();
 
   CL_SetupDisplay::deinit ();
+#endif 
 }
 
 void
 PingusMain::init_pingus()
 {
-  SavegameManager::instance();
-  StatManager::init();
+////   SavegameManager::instance();
+////   StatManager::init();
 
-  Resource::init();
-  Fonts::init();
-  ScreenManager::init();
-  PingusMenuManager::init();
-  Sound::PingusSound::init();
-  PinguActionFactory::init();
-  Credits::init();
-	WorldMapNS::WorldMapManager::instance();
+////   Resource::init();
+////   Fonts::init();
+////   ScreenManager::init();
+////   PingusMenuManager::init();
+////   Sound::PingusSound::init();
+////   PinguActionFactory::init();
+////   Credits::init();
+////   WorldMapNS::WorldMapManager::instance();
 
-  fps_counter.init();
+////  fps_counter.init();
   console.init();
 }
 
 void
 PingusMain::deinit_pingus()
 {
-	fps_counter.deinit();
-	console.deinit();
+////  fps_counter.deinit();
+  console.deinit();
 
-	Fonts::deinit();
-  Credits::deinit();
-  PinguActionFactory::deinit();
-  Sound::PingusSound::deinit();
-  PingusMenuManager::deinit();
-  WorldObjFactory::deinit();
-  WorldMapNS::WorldMapManager::deinit();
-  ScreenManager::deinit();
-  StatManager::deinit();
-  SavegameManager::deinit();
-  Resource::deinit();
+////  Fonts::deinit();
+////  Credits::deinit();
+////  PinguActionFactory::deinit();
+////  Sound::PingusSound::deinit();
+////  PingusMenuManager::deinit();
+////  WorldObjFactory::deinit();
+////  WorldMapNS::WorldMapManager::deinit();
+////  ScreenManager::deinit();
+////  StatManager::deinit();
+////  SavegameManager::deinit();
+////  Resource::deinit();
 }
 
 } // namespace Pingus
+
+int main(int argc, char** argv)
+{
+  Pingus::PingusMain app;
+  return app.main(argc, argv);
+}
 
 /* EOF */

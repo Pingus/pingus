@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_FPS_COUNTER_HXX
 #define HEADER_PINGUS_FPS_COUNTER_HXX
 
-#include <ClanLib/Display/font.h>
 #include "gui/display.hxx"
 
 namespace Pingus {

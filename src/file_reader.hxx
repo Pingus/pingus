@@ -22,7 +22,7 @@
 
 #include <string>
 #include <vector>
-#include <ClanLib/Core/System/sharedptr.h>
+#include "shared_ptr.hxx"
 
 class CL_Size;
 class CL_Sizef;
@@ -39,7 +39,7 @@ class FileReaderImpl;
 class FileReader
 {
 public:
-  FileReader(CL_SharedPtr<FileReaderImpl> impl_);
+  FileReader(SharedPtr<FileReaderImpl> impl_);
   FileReader();
 
   /** Name of the current section, ie. in the case of
@@ -73,7 +73,7 @@ public:
   std::vector<std::string> get_section_names() const;
   std::vector<FileReader> get_sections() const;
 private:
-  CL_SharedPtr<FileReaderImpl> impl;
+  SharedPtr<FileReaderImpl> impl;
 };
 
 } // namespace Pingus

@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_FONTS_HXX
 #define HEADER_PINGUS_FONTS_HXX
 
-#include <ClanLib/Display/font.h>
 #include "display/drawing_context.hxx"
 
 namespace Pingus {
@@ -28,20 +27,20 @@ namespace Fonts {
 
 extern std::string encoding;
 
-extern CL_Font chalk_large;
-extern CL_Font chalk_normal;
-extern CL_Font chalk_small;
+// extern CL_Font chalk_large;
+// extern CL_Font chalk_normal;
+// extern CL_Font chalk_small;
 
-extern CL_Font courier_small;
+// extern CL_Font courier_small;
 
-extern CL_Font pingus_small;
-extern CL_Font pingus_small_fix_num;
-extern CL_Font pingus_large;
+// extern CL_Font pingus_small;
+// extern CL_Font pingus_small_fix_num;
+// extern CL_Font pingus_large;
 
-extern CL_Font smallfont;
-extern CL_Font smallfont_h;
-extern CL_Font xterm;
-extern CL_Font lcd;
+// extern CL_Font smallfont;
+// extern CL_Font smallfont_h;
+// extern CL_Font xterm;
+// extern CL_Font lcd;
 
 /** Load all fonts */
 void init ();

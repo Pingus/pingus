@@ -17,16 +17,16 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "vector2.hxx"
+#include "../math/point.hpp"
 #include "scene_node.hxx"
 
 class SpriteNode : public SceneNode
 {
 private:
-  Vector2 pos;
+  Point pos;
   Rect    repeat;
 
-  Vector2 old_pos;
+  Point old_pos;
   Rect    old_repeat;
 
   SDL_Surface* surface;
@@ -39,9 +39,11 @@ public:
   bool has_changed() const;
   Rect get_screen_rect() const;
   Rect get_old_screen_rect() const;
+
+  void mark(SceneGraph* graph);
     
-  void    set_pos(const Vector2& pos);
-  Vector2 get_pos() const;
+  void  set_pos(const Point& pos);
+  Point get_pos() const;
   
   void set_left_repeat(int left);
   void set_right_repeat(int right);
@@ -56,7 +58,7 @@ public:
   int get_bottom_repeat(int bottom) const;
 
   /** Draw the SDL_Surface to the screen */
-  void render(SDL_Surface* screen);
+  void render(SceneGraph* graph);
 };
 
 /* EOF */

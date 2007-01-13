@@ -21,7 +21,6 @@
 #define HEADER_PINGUS_CURSOR_HXX
 
 #include <string>
-#include <ClanLib/Display/sprite.h>
 #include "display.hxx"
 
 namespace Pingus {
@@ -32,7 +31,7 @@ namespace Pingus {
 class Cursor : public DisplayHook
 {
 private:
-  CL_Sprite sprite;
+  ///CL_Sprite sprite;
 
 public:
   Cursor (const std::string& ident);

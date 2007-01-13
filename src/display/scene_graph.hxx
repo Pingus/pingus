@@ -25,6 +25,10 @@
 
 #define MICROTILE(x0, y0, x1, y1) (((x0) << 24) | ((y0) << 16) | ((x1) << 8) | (y1))
 
+#include <vector>
+#include "../field.hpp"
+
+class Rect;
 class SceneNode;
 
 /** */
@@ -32,7 +36,7 @@ class SceneGraph
 {
 private:
   /** true if the region needs a refresh, false otherwise */
-  Field<bool> screen;
+  Field<uint32_t> screen;
 
   typedef std::vector<SceneNode*> Nodes;
   Nodes nodes;
@@ -41,7 +45,7 @@ public:
   SceneGraph();
   ~SceneGraph();
 
-  void add(SceneGroup* );
+  void add(SceneNode* );
   
   /** Draw the SceneGraph to the screen */
   void render();

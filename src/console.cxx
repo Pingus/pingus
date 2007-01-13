@@ -19,8 +19,6 @@
 
 #include <config.h>
 #include <assert.h>
-#include <ClanLib/Display/display.h>
-#include <ClanLib/Display/font.h>
 #include "fonts.hxx"
 #include "console.hxx"
 #include "math.hxx"
@@ -142,7 +140,7 @@ void
 Console::init()
 {
   // std::cout << "Console: Init..." << std::endl;
-  font = Fonts::xterm;
+  ////font = Fonts::xterm;
 
   //  (*this) << "Pingus Output Console (hide/show it with F1)\n"
   //	  << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
@@ -155,23 +153,24 @@ Console::init()
 void
 Console::deinit()
 {
-	font = CL_Font();
+  ////font = CL_Font();
 }
 
 void
 Console::draw()
 {
+#if 0
   assert(is_init);
 
   /** Callculate the position of the first line on the screen */
-  int start_y_pos =
-    CL_Display::get_height() - (font.get_height() * (number_of_lines + 3));
+  ////int start_y_pos =
+    ////  CL_Display::get_height() - (font.get_height() * (number_of_lines + 3));
 
   // The background of the console
-  CL_Display::fill_rect(CL_Rect(0, start_y_pos - 15,
-                                CL_Display::get_width(),
-                                CL_Display::get_height()),
-			CL_Color(0, 0, 0, 128));
+  ////CL_Display::fill_rect(CL_Rect(0, start_y_pos - 15,
+  ////                              CL_Display::get_width(),
+  ////CL_Display::get_height()),
+  ////CL_Color(0, 0, 0, 128));
 
   const std::list<std::string>& buffer = streambuf.get_buffer ();
 
@@ -192,6 +191,7 @@ Console::draw()
                 it->c_str()
                 );
     }
+#endif 
 }
 
 void

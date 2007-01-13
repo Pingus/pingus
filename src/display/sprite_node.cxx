@@ -18,7 +18,12 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <SDL.h>
+#include <SDL_image.h>
+#include <string>
+#include "scene_graph.hxx"
 #include "sprite_node.hxx"
+
+extern SDL_Surface* global_screen;
 
 SpriteNode::SpriteNode(const std::string resourcename)
 {
@@ -31,27 +36,27 @@ SpriteNode::~SpriteNode()
 }
 
 void
-SpriteNode::set_pos(const Vector2& pos_)
+SpriteNode::set_pos(const Point& pos_)
 {
+  if (pos != pos_) has_changed_ = true;
   pos = pos_;
 }
 
-Vector2
+Point
 SpriteNode::get_pos() const
 {
   return pos;
 }
 
 void
-SpriteNode::render(SDL_Surface* screen)
+SpriteNode::render(SceneGraph* graph)
 {
   SDL_Rect dest;
 
   dest.x = pos.x;
   dest.y = pos.y;
 
-  SDL_BlitSurface(surface, NULL
-                  screen,  dest);
+  SDL_BlitSurface(surface, NULL, global_screen, &dest);
 
   has_changed_ = false;
   old_repeat = repeat;
@@ -83,10 +88,13 @@ SpriteNode::has_changed() const
 }
 
 void
-SpriteNode::set_pos(const Vector2& pos_)
+SpriteNode::mark(SceneGraph* graph)
 {
-  if (pos != pos_) has_changed_ = true;
-  pos = pos_;
+  if (has_changed_)
+    {
+      graph->mark_screen_region(this, get_old_screen_rect());
+      graph->mark_screen_region(this, get_screen_rect());
+    }
 }
 
 void

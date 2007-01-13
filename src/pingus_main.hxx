@@ -21,18 +21,17 @@
 #define HEADER_PINGUS_PINGUS_MAIN_HXX
 
 #include <string>
-#include <ClanLib/Signals/slot.h>
-#include <ClanLib/application.h>
 #include "pingus.hxx"
+#include "SDL.h"
 
 void segfault_handler(int);
 
 namespace Pingus {
 
-class PingusMain : public CL_ClanApplication
+class PingusMain
 {
 private:
-  CL_DisplayWindow* window; 
+  SDL_Surface* screen;
 
   bool    blitter_test;
   bool    no_config_file;
@@ -50,10 +49,6 @@ private:
   std::string resolution;
   int refresh_rate;
   
-  CL_Slot on_button_press_slot;
-  CL_Slot on_button_release_slot;
-
-  CL_Slot on_exit_press_slot;
 public:
   PingusMain();
   virtual ~PingusMain();
@@ -77,6 +72,9 @@ private:
 
   void init_clanlib();
   void deinit_clanlib();
+
+  void init_sdl();
+  void deinit_sdl();
 
   void init_pingus();
   void init_path_finder();

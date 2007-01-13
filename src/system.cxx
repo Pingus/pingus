@@ -35,7 +35,7 @@
 #endif
 
 #include <iostream>
-#include <ClanLib/Core/System/clanstring.h>
+#include <sstream>
 
 #include "pingus_error.hxx"
 #include "globals.hxx"
@@ -454,8 +454,10 @@ System::checksum (std::string filename)
   while (bytes_read != 0);
 
   fclose (in);
-
-  return CL_String::to (checksum);
+  
+  std::ostringstream str;
+  str << checksum;
+  return str.str();
 }
 
 

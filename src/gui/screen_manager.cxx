@@ -18,8 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/display.h>
-
 #include "../globals.hxx"
 #include "cursor.hxx"
 #include "display.hxx"
@@ -42,28 +40,30 @@ ScreenManager::ScreenManager ()
     display_gc = new DisplayGraphicContext(0, 0, CL_Display::get_width (), CL_Display::get_height (),
                                            0, 0);
 #endif
-  display_gc = new DrawingContext();
+////  display_gc = new DrawingContext();
 
   cached_action = CA_NONE;
 }
 
 ScreenManager::~ScreenManager ()
 {
-	delete display_gc;
+////	delete display_gc;
 }
 
 void
 ScreenManager::display ()
 {
-  Input::Controller* input_controller;
-
+#if 0
+  Input::Controller* input_controller = 0;
+#if 0
   if (controller_file.empty())
     input_controller = new Input::Controller(path_manager.complete("controller/default.xml"));
   else
     input_controller = new Input::Controller(controller_file);
-
+#endif
   Input::Controller::set_current(input_controller);
 
+#if 0
   Cursor* cursor = 0;
   if (swcursor_enabled)
     {
@@ -71,6 +71,7 @@ ScreenManager::display ()
       Display::add_flip_screen_hook(cursor);
       //CL_MouseCursor::hide();
     }
+#endif 
 
   DeltaManager delta_manager;
 
@@ -88,7 +89,7 @@ ScreenManager::display ()
 	}
 
       // Let ClanLib fetch events
-      CL_System::keep_alive ();
+      ///CL_System::keep_alive ();
 
       // Get new events from ClanLib
       input_controller->update(time_delta);
@@ -104,8 +105,10 @@ ScreenManager::display ()
       // Most likly the screen will get changed in this update call
       get_current_screen()->update (delta);
 
+#if 0
       if (cursor)
         cursor->update(time_delta);
+#endif
 
       // Last screen has poped, so we are going to end here
       if (screens.empty ())
@@ -139,9 +142,9 @@ ScreenManager::display ()
       	{
 	  if (get_current_screen()->draw(*display_gc))
             {
-              display_gc->render(CL_Display::get_current_window()->get_gc());
+              ////display_gc->render(CL_Display::get_current_window()->get_gc());
               Display::flip_display ();
-              display_gc->clear();
+              ////display_gc->clear();
             }
         }
       else
@@ -151,12 +154,13 @@ ScreenManager::display ()
 	}
 
       // Stupid hack to make this thing take less CPU
-      CL_System::keep_alive(5);
+      ////CL_System::keep_alive(5);
     }
 
-  Display::remove_flip_screen_hook(cursor);
-  delete cursor;
+////  Display::remove_flip_screen_hook(cursor);
+////  delete cursor;
   delete input_controller;
+#endif 
 }
 
 ScreenPtr&
@@ -241,46 +245,48 @@ ScreenManager::real_clear()
 void
 ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
 {
-	// FIXME: This entire function doesn't work very well.
-	if (0)
-	{
-  DeltaManager delta_manager;
-  float passed_time = 0;
-
-  //Input::EventLst events;
-
-	int screen_width = CL_Display::get_width ();
-	int screen_height = CL_Display::get_height ();
-  float progress = 0.0f;
-  while (progress <= 1.0f)
+  // FIXME: This entire function doesn't work very well.
+#if 0
+  if (0)
     {
-      float time_delta = delta_manager.getset ();
-      passed_time += time_delta;
+      DeltaManager delta_manager;
+      float passed_time = 0;
 
-      int border_x = int((screen_width/2) * (1.0f - progress));
-      int border_y = int((screen_height/2) * (1.0f - progress));
+      //Input::EventLst events;
 
-      old_screen->draw(*display_gc);
-      CL_Display::get_current_window()->get_gc()
-        ->push_cliprect(CL_Rect(0 + border_x,
-                                0 + border_y,
-                                screen_width - border_x,
-                                screen_height - border_y));
-      new_screen->draw(*display_gc);
+      int screen_width = CL_Display::get_width ();
+      int screen_height = CL_Display::get_height ();
+      float progress = 0.0f;
+      while (progress <= 1.0f)
+        {
+          float time_delta = delta_manager.getset ();
+          passed_time += time_delta;
 
-      //GameDelta delta (time_delta, CL_System::get_time(), events);
-      // FIXME: Animation looks nifty but doesn't work all that good
-      //new_screen->update (delta);
-      //old_screen->update (delta);
+          int border_x = int((screen_width/2) * (1.0f - progress));
+          int border_y = int((screen_height/2) * (1.0f - progress));
 
-      CL_Display::get_current_window()->get_gc()->pop_cliprect ();
+          old_screen->draw(*display_gc);
+          CL_Display::get_current_window()->get_gc()
+            ->push_cliprect(CL_Rect(0 + border_x,
+                                    0 + border_y,
+                                    screen_width - border_x,
+                                    screen_height - border_y));
+          new_screen->draw(*display_gc);
 
-      Display::flip_display ();
-      CL_System::keep_alive (5);
+          //GameDelta delta (time_delta, CL_System::get_time(), events);
+          // FIXME: Animation looks nifty but doesn't work all that good
+          //new_screen->update (delta);
+          //old_screen->update (delta);
 
-      progress = passed_time/1.0f;
+          CL_Display::get_current_window()->get_gc()->pop_cliprect ();
+
+          Display::flip_display ();
+          CL_System::keep_alive (5);
+
+          progress = passed_time/1.0f;
+        }
     }
-	}
+#endif
 }
 
 void

@@ -21,7 +21,6 @@
 #define HEADER_PINGUS_DISPLAY_HXX
 
 #include "../pingus.hxx"
-#include <ClanLib/Display/color.h>
 #include <list>
 
 namespace Pingus {

@@ -20,7 +20,6 @@
 #include <algorithm>
 #include <stdio.h>
 #include <iostream>
-#include <ClanLib/Display/display.h>
 #include "../globals.hxx"
 #include "display.hxx"
 
@@ -46,10 +45,12 @@ DisplayHook::toggle_display()
 void
 Display::draw_rect(int x1, int y1, int x2, int y2, float r, float g, float b, float a)
 {
+#if 0
   CL_Display::draw_line(x1, y1, x2, y1, CL_Color(CL_Colorf(r, g, b, a)));
   CL_Display::draw_line(x1, y2, x2, y2, CL_Color(CL_Colorf(r, g, b, a)));
   CL_Display::draw_line(x1, y1, x1, y2, CL_Color(CL_Colorf(r, g, b, a)));
   CL_Display::draw_line(x2, y1, x2, y2, CL_Color(CL_Colorf(r, g, b, a)));
+#endif 
 }
 
 void
@@ -62,7 +63,7 @@ Display::flip_display(bool sync)
       (*i)->on_event();
     }
 
-  CL_Display::flip();
+  ////CL_Display::flip();
 }
 
 void

@@ -20,24 +20,21 @@
 #include "../debug.hxx"
 #include "../pingus_error.hxx"
 
-#include <ClanLib/core.h>
-#include <ClanLib/display.h>
-#include <ClanLib/signals.h>
 #include "controller.hxx"
 #include "axes/dummy_axis.hxx"
-#include "buttons/dummy_button.hxx"
+////#include "buttons/dummy_button.hxx"
 #include "pointers/dummy_pointer.hxx"
 #include "scrollers/dummy_scroller.hxx"
 #include "pointer_factory.hxx"
-#include "../xml_file_reader.hxx"
+////#include "../xml_file_reader.hxx"
 #include "scroller_factory.hxx"
-#include "button_factory.hxx"
+////#include "button_factory.hxx"
 
 namespace Pingus {
 namespace Input {
 
 using namespace Axes;
-using namespace Buttons;
+////using namespace Buttons;
 using namespace Pointers;
 using namespace Scrollers;
 
@@ -49,6 +46,7 @@ Controller::Controller (const std::string& configfile)
     std_pointer_x(0),
     std_pointer_y(0)
 {
+#if 0
   CL_InputSourceProvider_File provider(".");
   CL_DomDocument doc(provider.open_source(configfile), true);
 
@@ -177,20 +175,24 @@ Controller::Controller (const std::string& configfile)
 	// Catch all keyboard input
 	CL_InputDevice keyboard = CL_Display::get_current_window()->get_ic()->get_keyboard();
 	slots.push_back(keyboard.sig_key_down().connect(this, &Controller::key_pressed));
+#endif 
 }
 
 Controller::~Controller ()
 {
+#if 0
   delete scroller;
   delete standard_pointer;
 
   for (std::map<ButtonName, Button*>::iterator it = buttons.begin(); it != buttons.end(); ++it)
     delete it->second;
+#endif
 }
 
 void
 Controller::create_action_buttons (FileReader reader)
 {
+#if 0
   int count = 0;
   
   const std::vector<FileReader>& sections = reader.get_sections();
@@ -205,11 +207,13 @@ Controller::create_action_buttons (FileReader reader)
                            + i->get_name());
       count += 1;
     }
+#endif
 }
 
 void
 Controller::update (float delta)
 {
+#if 0
   scroller        ->update(delta);
   standard_pointer->update(delta);
 
@@ -235,6 +239,7 @@ Controller::update (float delta)
 	{
 		events.push_back(makeKeyboardEvent( keys_pressed[i] ));
 	}
+#endif
 }
 
 void
@@ -263,13 +268,13 @@ Controller::on_button_up(ButtonName name)
 {
   events.push_back(makeButtonEvent(name, released));
 }
-
+#if 0
 void
 Controller::key_pressed(const CL_InputEvent &event)
 {
 	keys += event.str;
 }
-
+#endif 
 std::string
 Controller::get_keys_pressed()
 {

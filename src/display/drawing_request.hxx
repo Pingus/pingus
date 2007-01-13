@@ -20,7 +20,8 @@
 #ifndef HEADER_DRAWING_REQUEST_HXX
 #define HEADER_DRAWING_REQUEST_HXX
 
-#include <ClanLib/Core/Math/cl_vector.h>
+///#include <ClanLib/Core/Math/cl_vector.h>
+#include "math/vector3.hpp"
 
 class CL_GraphicContext;
 
@@ -29,9 +30,10 @@ class CL_GraphicContext;
 class DrawingRequest
 {
 protected:
-  CL_Vector pos;
+  Vector3 pos;
+
 public:
-  DrawingRequest(const CL_Vector& pos_) : pos(pos_) {}
+  DrawingRequest(const Vector3& pos_) : pos(pos_) {}
   virtual ~DrawingRequest() {};
   
   virtual void draw(CL_GraphicContext* gc) = 0;

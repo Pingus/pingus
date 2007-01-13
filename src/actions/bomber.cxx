@@ -132,7 +132,6 @@ Bomber::update ()
                                                    static_cast<int>(pingu->get_y () - 16 - (bomber_radius.get_width()/2)));
     }
 
-
   // The pingu explode
   if (sprite[pingu->direction].is_finished ())
     {

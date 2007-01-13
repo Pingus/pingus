@@ -25,7 +25,7 @@
 namespace Pingus {
 
 Cursor::Cursor(const std::string& ident)
-  : sprite(Resource::load_sprite(ident))
+//  : sprite(Resource::load_sprite(ident))
 {
 }
 
@@ -43,8 +43,8 @@ void
 Cursor::on_event()
 {
   const Input::Pointer* pointer = Input::Controller::get_current()->get_pointer();
-  sprite.draw(pointer->get_x_pos (),
-              pointer->get_y_pos ());
+  //  sprite.draw(pointer->get_x_pos (),
+  //              pointer->get_y_pos ());
 }
 
 } // namespace Pingus

@@ -20,8 +20,8 @@
 #ifndef HEADER_DRAWING_CONTEXT_HXX
 #define HEADER_DRAWING_CONTEXT_HXX
 
-#include <ClanLib/Core/Math/rect.h>
-#include <ClanLib/Display/color.h>
+//#include <ClanLib/Core/Math/rect.h>
+//#include <ClanLib/Display/color.h>
 #include <vector>
 #include "drawing_request.hxx"
 #include "../vector.hxx"
@@ -44,7 +44,7 @@ private:
   typedef std::vector<DrawingRequest*> DrawingRequests;
   DrawingRequests drawingrequests;
 
-  std::vector<CL_Pointf> translate_stack;
+  std::vector<Vector> translate_stack;
 
 public:
   DrawingContext();
@@ -56,6 +56,7 @@ public:
   /** Empties the drawing context */
   void clear();
 
+#if 0
   /** Fills the screen with a given color, this is different from
       clear() in that it doesn't remove other DrawingRequest from the
       queue */
@@ -92,7 +93,8 @@ public:
   void draw_arc (float x_pos, float y_pos, float radius, float angle_start, float angle_end,
                  const CL_Color& color);
   /*} */
-  
+#endif  
+
   /** Translate the drawing context */
   void translate(float x, float y);
 
@@ -107,7 +109,7 @@ public:
   void reset_modelview();
 
   /** Return the area of the screen that will be visible*/
-  CL_Rect get_clip_rect();
+  ////CL_Rect get_clip_rect();
 
   float get_width() const;
   float get_height() const;

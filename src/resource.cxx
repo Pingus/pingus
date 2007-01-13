@@ -74,10 +74,10 @@ Resource::init()
 std::vector<std::string>
 Resource::get_resources(const std::string& type, const std::string& section)
 {
-	if (section == "")
-		return resmgr.get_resources_of_type(type);
-	else
-		return resmgr.get_resources_of_type(type, section);
+  if (section == "")
+    return resmgr.get_resources_of_type(type);
+  else
+    return resmgr.get_resources_of_type(type, section);
 }
 
 
@@ -85,17 +85,17 @@ Resource::get_resources(const std::string& type, const std::string& section)
 std::vector<std::string>
 Resource::get_sections(const std::string& section)
 {
-	if (section == std::string())
-		return resmgr.get_all_sections();
-	else
-		return resmgr.get_sections(section);
+  if (section == std::string())
+    return resmgr.get_all_sections();
+  else
+    return resmgr.get_sections(section);
 }
 
 
 void
 Resource::deinit()
 {
-	cleanup();
+  cleanup();
   surface_map.clear();
 }
 
@@ -311,45 +311,45 @@ Resource::load_font(const std::string& res_name)
 void
 Resource::cleanup ()
 {
-	CL_Resource res;
-	std::vector<std::string> resources = resmgr.get_all_resources();
-	for (std::vector<std::string>::iterator i = resources.begin(); i != resources.end(); i++)
-	{
-		res = resmgr.get_resource(*i);
-		while (res.get_reference_count() > 0)
-			res.unload();
-	}
+  CL_Resource res;
+  std::vector<std::string> resources = resmgr.get_all_resources();
+  for (std::vector<std::string>::iterator i = resources.begin(); i != resources.end(); i++)
+    {
+      res = resmgr.get_resource(*i);
+      while (res.get_reference_count() > 0)
+        res.unload();
+    }
 }
 
 unsigned int
 Resource::get_mtime (const std::string& res_name)
 {
-	/*
-  try
+  /*
+    try
     {
-      CL_ResourceManager res_man = Resource::get(datafile);
+    CL_ResourceManager res_man = Resource::get(datafile);
 
-      CL_Resource& res = res_man->get_resource(res_name);
+    CL_Resource& res = res_man->get_resource(res_name);
 
-      std::string filename = res.get_full_location();
+    std::string filename = res.get_full_location();
 
-#ifndef WIN32
-      struct stat stat_buf;
-      if (stat(filename.c_str(), &stat_buf) == 0)
-        return stat_buf.st_mtime;
-      else
-        return 0;
-#else
-      // FIXME: Win32 mtime getter not implemented
-      return 0;
+    #ifndef WIN32
+    struct stat stat_buf;
+    if (stat(filename.c_str(), &stat_buf) == 0)
+    return stat_buf.st_mtime;
+    else
+    return 0;
+    #else
+    // FIXME: Win32 mtime getter not implemented
+    return 0;
     }
-  catch (CL_Error& err)
+    catch (CL_Error& err)
     {
-      std::cout << "Resource::get_mtime: CL_Error: " << err.message << std::endl;
-      return 0;
+    std::cout << "Resource::get_mtime: CL_Error: " << err.message << std::endl;
+    return 0;
     }
-#endif
-		*/
+    #endif
+  */
   return 0;
 }
 

@@ -22,10 +22,7 @@
 
 #include <string>
 #include <iostream>
-#include <ClanLib/Display/font.h>
 #include "gui/display.hxx"
-
-class CL_Font;
 
 namespace Pingus {
 
@@ -66,7 +63,7 @@ private:
   ConsoleBuffer streambuf;
 
 public:
-  CL_Font font;
+  ////CL_Font font;
   bool is_init;
   unsigned int current_pos;
 

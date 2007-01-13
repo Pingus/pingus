@@ -23,11 +23,15 @@
 **  02111-1307, USA.
 */
 
-#include "scene_graph.hpp"
+#include <SDL.h>
+#include "scene_node.hxx"
+#include "scene_graph.hxx"
+
+extern SDL_Surface* global_screen;
 
 SceneGraph::SceneGraph()
 {
-  screen = Field(800/32, 600/32); // could use microtiles instead
+  screen.resize(800/32, 600/32); // could use microtiles instead
 }
 
 SceneGraph::~SceneGraph()
@@ -43,11 +47,19 @@ SceneGraph::add(SceneNode* node)
 void
 SceneGraph::render()
 {
-  screen.clear(false);
+  for(Nodes::iterator i = nodes.begin(); i != nodes.end(); ++i)
+    { // could limit this to stuff that has changed
+      (*i)->render(this);
+    }
+
+  return;
+
+
+  screen.clear();
   // Find out what regions of the screen have changed
   for(Nodes::iterator i = nodes.begin(); i != nodes.end(); ++i)
     { // could limit this to stuff that has changed
-      mark_screen_region(i, i->get_screen_rect());
+      (*i)->mark(this);
     }
   
   // Redraw said regions
@@ -71,9 +83,9 @@ SceneGraph::render()
                 clip_rect.w = 32*width;
                 clip_rect.h = 32;
 
-                SDL_SetClipRect(screen, &rect);
+                SDL_SetClipRect(global_screen, &clip_rect);
 
-                (*i)->render(screen);
+                (*i)->render(this);
               }
 
             x += width;

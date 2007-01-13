@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_INPUT_BUTTON_HXX
 #define HEADER_PINGUS_INPUT_BUTTON_HXX
 
-#include <ClanLib/signals.h>
 #include "../pingus.hxx"
 
 namespace Pingus {

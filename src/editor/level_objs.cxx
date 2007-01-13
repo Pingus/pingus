@@ -160,8 +160,11 @@ LevelObj::refresh_sprite()
 				h = (float)CL_Display::get_height();
 			}
 
-			pb = Blitter::scale_surface_to_canvas(
-				sprite.get_frame_pixeldata(0), (int)w, (int)h);
+                        //FIXME: Sat Jan 13 10:26:15 2007
+                        assert(0);
+			// pb = Blitter::scale_surface_to_canvas(
+                        // sprite.get_frame_pixeldata(0), (int)w, (int)h);
+                        
 		}
 		else		// No stretch involved
 			pb = Resource::load_pixelbuffer(desc);

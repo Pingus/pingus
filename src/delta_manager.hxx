@@ -20,9 +20,9 @@
 #ifndef HEADER_PINGUS_DELTA_MANAGER_HXX
 #define HEADER_PINGUS_DELTA_MANAGER_HXX
 
+#include "SDL.h"
 #include <assert.h>
 #include <iostream>
-#include <ClanLib/Core/System/system.h>
 #include "pingus.hxx"
 
 namespace Pingus {
@@ -35,7 +35,7 @@ private:
 public:
   DeltaManager ()
     : absolute_time(0),
-      last_time (CL_System::get_time ())
+      last_time (SDL_GetTicks())
   {}
 
   float getset ()
@@ -47,13 +47,13 @@ public:
 
   void set ()
   {
-    last_time = CL_System::get_time ();
+    last_time = SDL_GetTicks();
     absolute_time += last_time;
   }
 
   float get () const
   {
-    unsigned int t = CL_System::get_time ();
+    unsigned int t = SDL_GetTicks();
     if (t < last_time)
       { // catching time travel
         std::cout << "Time Travel: first: " << last_time << " second: " << t << std::endl;
@@ -61,7 +61,7 @@ public:
       }
     else
       {
-        return (CL_System::get_time () - last_time) / 1000.0f;
+        return (SDL_GetTicks() - last_time) / 1000.0f;
       }
   }
 

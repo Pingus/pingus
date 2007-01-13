@@ -20,19 +20,26 @@
 #ifndef HEADER_SCENE_NODE_HPP
 #define HEADER_SCENE_NODE_HPP
 
+#include "../math/rect.hpp"
+
+class SceneGraph;
+
 /** */
 class SceneNode
 {
 private:
 public:
   SceneNode();
-  ~SceneNode();
+  virtual ~SceneNode();
 
   /** Return the area that the SceneNode covers on the screen */
   virtual Rect get_screen_rect() const =0;
 
-  virtual bool has_changed() const =0;
+  /** Mark regions for update */
+  virtual void mark(SceneGraph* graph) =0;
 
+  virtual void render(SceneGraph* graph) =0;
+  
 private:
   SceneNode (const SceneNode&);
   SceneNode& operator= (const SceneNode&);
