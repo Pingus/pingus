@@ -20,13 +20,8 @@
 #ifndef HEADER_GRAPHIC_CONTEXT_STATE_HXX
 #define HEADER_GRAPHIC_CONTEXT_STATE_HXX
 
-#include <ClanLib/Core/Math/point.h>
-#include <ClanLib/Core/Math/rect.h>
-#include <ClanLib/Core/System/sharedptr.h>
 #include "display/drawing_context.hxx"
 #include "display/scene_context.hxx"
-
-class CL_GraphicContext;
 
 class GraphicContextStateImpl;
 
@@ -47,8 +42,10 @@ public:
 
   void set_size(int w, int h);
 
+#if 0
   void push(CL_GraphicContext* gc = 0);
   void pop (CL_GraphicContext* gc = 0);
+#endif 
 
   void push(Pingus::DrawingContext& gc);
   void pop (Pingus::DrawingContext& gc);
@@ -70,8 +67,8 @@ public:
   float get_rotation();
 
   /** Move the center of the visible area to pos */
-  void      set_pos(const CL_Pointf& pos);
-  CL_Pointf get_pos() const;
+  void      set_pos(const Vector& pos);
+  Vector    get_pos() const;
 
   /** Set zoom to z, while ensuring that the screen position \a pos
       (normaly the position of the mouse pointer) stays in the same
@@ -82,7 +79,7 @@ public:
 
   void zoom_to (const CL_Rectf& rect);
 
-  CL_Pointf screen2world(const CL_Point& pos);
+  Vector screen2world(const CL_Point& pos);
 
 private:
   CL_SharedPtr<GraphicContextStateImpl> impl;

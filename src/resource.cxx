@@ -25,9 +25,6 @@
 
 #include <assert.h>
 
-#include <ClanLib/core.h>
-#include <ClanLib/display.h>
-#include <ClanLib/Display/font.h>
 #include "system.hxx"
 #include "path_manager.hxx"
 #include "globals.hxx"
@@ -36,13 +33,14 @@
 #include "debug.hxx"
 
 namespace Pingus {
-
+#if 0
 CL_ResourceManager Resource::resmgr;
 std::map<ResDescriptor, CL_Surface>       Resource::surface_map;
-
+#endif
 void
 Resource::init()
 {
+#if 0
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/core.xml")));
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/entrances.xml")));
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/exits.xml")));
@@ -67,10 +65,12 @@ Resource::init()
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/worldmaps.xml")));
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/worldobjs.xml")));
   resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/alias.xml")));
+#endif
 }
 
 
 // Returns all resources in the given section
+#if 0
 std::vector<std::string>
 Resource::get_resources(const std::string& type, const std::string& section)
 {
@@ -79,7 +79,6 @@ Resource::get_resources(const std::string& type, const std::string& section)
   else
     return resmgr.get_resources_of_type(type, section);
 }
-
 
 // Returns a list of sections.  Returns all sections if left blank.
 std::vector<std::string>
@@ -90,31 +89,38 @@ Resource::get_sections(const std::string& section)
   else
     return resmgr.get_sections(section);
 }
-
+#endif
 
 void
 Resource::deinit()
 {
   cleanup();
+#if 0
   surface_map.clear();
+#endif
 }
 
+#if 0
 CL_Surface
 Resource::load_surface(const std::string& res_name,
                        ResourceModifierNS::ResourceModifier modifier)
 {
   return load_surface(ResDescriptor(res_name, modifier));
 }
+#endif
 
-CL_Sprite
+Sprite
 Resource::load_sprite(const ResDescriptor& desc)
 {
   return load_sprite(desc.res_name);
 }
 
-CL_Sprite
+Sprite
 Resource::load_sprite(const std::string& res_name)
 {
+  return Sprite();
+
+#if 0
   try {
     return CL_Sprite(res_name, &resmgr);
   } catch (CL_Error& err) {
@@ -122,8 +128,10 @@ Resource::load_sprite(const std::string& res_name)
     std::cout << "CL_Error: " << err.message << std::endl;
     return CL_Sprite("core/misc/404sprite", &resmgr);
   }
+#endif
 }
 
+#if 0
 CL_SpriteDescription
 Resource::load_sprite_desc(const std::string& res_name)
 {
@@ -302,15 +310,17 @@ Resource::load_from_source (const ResDescriptor& res_desc)
   }
 }
 
-CL_Font
+Font
 Resource::load_font(const std::string& res_name)
 {
-  return CL_Font(res_name, &resmgr);
+  return Font(res_name, &resmgr);
 }
+#endif
 
 void
 Resource::cleanup ()
 {
+#if 0
   CL_Resource res;
   std::vector<std::string> resources = resmgr.get_all_resources();
   for (std::vector<std::string>::iterator i = resources.begin(); i != resources.end(); i++)
@@ -319,6 +329,7 @@ Resource::cleanup ()
       while (res.get_reference_count() > 0)
         res.unload();
     }
+#endif
 }
 
 unsigned int

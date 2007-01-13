@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_GUI_SURFACE_BUTTON_HXX
 #define HEADER_PINGUS_GUI_SURFACE_BUTTON_HXX
 
-#include <ClanLib/display.h>
 #include "component.hxx"
 
 namespace Pingus {
@@ -36,9 +35,10 @@ class SurfaceButton : public Component
 protected:
   int x_pos;
   int y_pos;
-  CL_Sprite button_surface;
-  CL_Sprite button_pressed_surface;
-  CL_Sprite button_mouse_over_surface;
+  
+  Sprite button_surface;
+  Sprite button_pressed_surface;
+  Sprite button_mouse_over_surface;
 
   bool pressed;
   bool mouse_over;

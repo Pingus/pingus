@@ -226,9 +226,9 @@ ThemeSelector::ThemeSelector()
 
   current_theme = themes.end();
 
-  on_button_press_slot = CL_Input::sig_button_press ().connect (event, &ThemeSelector::Event::on_button_press);
-  on_button_release_slot = CL_Input::sig_button_release ().connect (event, &ThemeSelector::Event::on_button_release);
-  on_mouse_move_slot = CL_Input::sig_mouse_move ().connect (event, &ThemeSelector::Event::on_mouse_move);
+  ////on_button_press_slot = CL_Input::sig_button_press ().connect (event, &ThemeSelector::Event::on_button_press);
+  ////on_button_release_slot = CL_Input::sig_button_release ().connect (event, &ThemeSelector::Event::on_button_release);
+  ////on_mouse_move_slot = CL_Input::sig_mouse_move ().connect (event, &ThemeSelector::Event::on_mouse_move);
 }
 
 ThemeSelector::~ThemeSelector()
@@ -242,9 +242,9 @@ ThemeSelector::~ThemeSelector()
   // CL_Input::chain_button_press.remove(event);
   // CL_Input::chain_button_release.remove(event);
 
-  CL_Input::sig_button_press ().disconnect (on_button_press_slot);
-  CL_Input::sig_button_release ().disconnect (on_button_release_slot);
-  CL_Input::sig_mouse_move ().disconnect (on_mouse_move_slot);
+  ////CL_Input::sig_button_press ().disconnect (on_button_press_slot);
+  ////CL_Input::sig_button_release ().disconnect (on_button_release_slot);
+  ////CL_Input::sig_mouse_move ().disconnect (on_mouse_move_slot);
 
   delete event;
 }

@@ -17,27 +17,24 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/display.h>
-#include <ClanLib/Display/font.h>
-
 #include "../globals.hxx"
 #include "../debug.hxx"
 #include "../sound/sound.hxx"
 #include "../resource.hxx"
 #include "../pingus_menu_manager.hxx"
-#include "../theme_selector.hxx"
-#include "../gui/screen_manager.hxx"
-#include "../worldmap/manager.hxx"
-#include "../story_screen.hxx"
+////#include "../theme_selector.hxx"
+////#include "../gui/screen_manager.hxx"
+////#include "../worldmap/manager.hxx"
+////#include "../story_screen.hxx"
 #include "../gettext.h"
-#include "../stat_manager.hxx"
+////#include "../stat_manager.hxx"
 
 #include "menu_button.hxx"
 
 namespace Pingus {
 
-MenuButton::MenuButton(const CL_Point& pos_, const CL_Sprite& sprite_, 
-                             const std::string& text_, const std::string& desc_)
+MenuButton::MenuButton(const Vector2i& pos_, const Sprite& sprite_, 
+                       const std::string& text_, const std::string& desc_)
 {
   text = text_;
   desc  = desc_;
@@ -76,7 +73,7 @@ MenuButton::~MenuButton ()
 void
 MenuButton::on_click ()
 {
-  click();
+  ////click();
 }
 
 void
@@ -84,11 +81,11 @@ MenuButton::draw (DrawingContext& gc)
 {
   if (mouse_over && !pressed)
     {
-      gc.print_center(font, (float)CL_Display::get_width() / 2,
-                      (float)(CL_Display::get_height() - font.get_height()),
+      gc.print_center(font, (float)Display::get_width() / 2,
+                      (float)(Display::get_height() - font.get_height()),
                       desc.c_str());
 
-      gc.draw(surface_p, Vector((float)(x_pos - surface_p.get_width()/2),
+      gc.draw(surface_p, Vector3f((float)(x_pos - surface_p.get_width()/2),
                                 (float)(y_pos - surface_p.get_height()/2)));
 
       gc.print_center(font_large, (float)x_pos + 32,
@@ -99,12 +96,12 @@ MenuButton::draw (DrawingContext& gc)
     {
       float shrink = 0.9f;
 
-      gc.print_center(font, (float)CL_Display::get_width() / 2,
-                      (float)CL_Display::get_height() - 20,
+      gc.print_center(font, (float)Display::get_width() / 2,
+                      (float)Display::get_height() - 20,
                       desc.c_str());
 
       gc.draw(surface_p,
-              Vector((float)(x_pos - surface_p.get_width()/2 * shrink),
+              Vector3f((float)(x_pos - surface_p.get_width()/2 * shrink),
                      (float)(y_pos - surface_p.get_height()/2 * shrink)));
 
       gc.print_center(font_large,
@@ -115,7 +112,7 @@ MenuButton::draw (DrawingContext& gc)
   else
     {
       gc.draw(surface_p,
-              Vector((float)(x_pos - surface_p.get_width()/2),
+              Vector3f((float)(x_pos - surface_p.get_width()/2),
                      (float)(y_pos - surface_p.get_height()/2)));
     }
   UNUSED_ARG(gc);

@@ -21,8 +21,9 @@
 #define HEADER_PINGUS_MENU_BUTTON_HXX
 
 #include <string>
-#include <ClanLib/Display/sprite.h>
-#include <ClanLib/Display/font.h>
+#include "sprite.hpp"
+#include "font.hpp"
+#include "math/vector2i.hpp"
 #include "../gui/component.hxx"
 
 namespace Pingus {
@@ -33,9 +34,9 @@ class PingusMenu;
 class MenuButton : public GUI::Component
 {
 protected:
-  CL_Sprite surface_p;
-  CL_Font     font;
-  CL_Font     font_large;
+  Sprite surface_p;
+  Font   font;
+  Font   font_large;
 
   int x_pos;
   int y_pos;
@@ -46,10 +47,10 @@ protected:
   bool mouse_over;
   bool pressed;
 
-  CL_Signal_v0 click;
+  ////CL_Signal_v0 click;
 
 public:
-  MenuButton(const CL_Point& pos, const CL_Sprite& sprite, 
+  MenuButton(const Vector2i& pos, const Sprite& sprite, 
              const std::string& text, const std::string& desc);
   MenuButton();
   virtual ~MenuButton();
@@ -67,7 +68,7 @@ public:
   void on_primary_button_click (int x, int y) { on_click (); UNUSED_ARG(x); UNUSED_ARG(y); }
 
   virtual void on_click ();
-  CL_Signal_v0& sig_click() { return click; }
+  ////CL_Signal_v0& sig_click() { return click; }
 private:
   MenuButton (const MenuButton&);
   MenuButton& operator= (const MenuButton&);

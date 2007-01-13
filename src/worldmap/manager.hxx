@@ -21,7 +21,6 @@
 #define HEADER_PINGUS_WORLDMAP_MANAGER_HXX
 
 #include <string>
-#include <ClanLib/Signals/slot.h>
 #include "../gui/gui_manager.hxx"
 #include "../gui/gui_screen.hxx"
 

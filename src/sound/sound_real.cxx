@@ -17,23 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-
-#include <ClanLib/sound.h>
-#include <ClanLib/Core/System/error.h>
-
 #include "../globals.hxx"
 #include "../debug.hxx"
 #include "sound_res_mgr.hxx"
 #include "sound_real.hxx"
-
-#ifdef HAVE_LIBCLANVORBIS
-#  include <ClanLib/vorbis.h>
-#endif
-
-#ifdef HAVE_LIBCLANMIKMOD
-#  include <ClanLib/mikmod.h>
-#  include <ClanLib/MikMod/setupmikmod.h>
-#endif
 
 namespace Pingus {
 namespace Sound {

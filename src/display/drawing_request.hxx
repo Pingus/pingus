@@ -21,17 +21,17 @@
 #define HEADER_DRAWING_REQUEST_HXX
 
 #include "SDL.h"
-#include "math/vector3.hpp"
+#include "math/vector3f.hpp"
 
 /** 
  */
 class DrawingRequest
 {
 protected:
-  Vector3 pos;
+  Vector3f pos;
 
 public:
-  DrawingRequest(const Vector3& pos_) : pos(pos_) {}
+  DrawingRequest(const Vector3f& pos_) : pos(pos_) {}
   virtual ~DrawingRequest() {};
   
   virtual void draw(SDL_Surface* gc) = 0;

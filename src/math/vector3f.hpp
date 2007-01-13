@@ -17,15 +17,13 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_VECTOR_HXX
-#define HEADER_PINGUS_VECTOR_HXX
+#ifndef HEADER_PINGUS_MATH_VECTOR3F_HPP
+#define HEADER_PINGUS_MATH_VECTOR3F_HPP
 
 #include <iosfwd>
 #include "pingus.hxx"
 
-namespace Pingus {
-
-class Vector
+class Vector3f
 {
 public:
   float x;
@@ -33,40 +31,38 @@ public:
   float z;
 
 public:
-  explicit Vector (float x_=0, float y_=0, float z_=0);
+  explicit Vector3f (float x_=0, float y_=0, float z_=0);
 
-  Vector (const Vector& old);
-  Vector& operator= (const Vector& old);
+  Vector3f (const Vector3f& old);
+  Vector3f& operator= (const Vector3f& old);
 
-  Vector operator- () const;
+  Vector3f operator- () const;
 
-  Vector operator+ (const Vector& add) const;
-  Vector operator- (const Vector& sub) const;
-  Vector operator* (       float  mul) const;
+  Vector3f operator+ (const Vector3f& add) const;
+  Vector3f operator- (const Vector3f& sub) const;
+  Vector3f operator* (       float  mul) const;
 
-  Vector& operator+= (const Vector& add);
-  Vector& operator-= (const Vector& sub);
-  Vector& operator*= (      float   mul);
+  Vector3f& operator+= (const Vector3f& add);
+  Vector3f& operator-= (const Vector3f& sub);
+  Vector3f& operator*= (      float   mul);
 
   void normalize ();
 
   float length() const;
 
-  Vector rotate (float angle, const Vector& pos) const;
+  Vector3f rotate (float angle, const Vector3f& pos) const;
 
-  static float distance(const Vector& a, const Vector& b);
-  static float distance2d(const Vector& a, const Vector& b);
+  static float distance(const Vector3f& a, const Vector3f& b);
+  static float distance2d(const Vector3f& a, const Vector3f& b);
 
   /** Calculate a position between a and b, relative to the value of
       \a perc (perc == 0 -> a, perc == 1.0 -> b) */
-  static Vector interpolate(const Vector& a, const Vector& b, float perc);
+  static Vector3f interpolate(const Vector3f& a, const Vector3f& b, float perc);
 
-  friend std::ostream& operator<< (std::ostream& os, const Vector& v);
+  friend std::ostream& operator<< (std::ostream& os, const Vector3f& v);
 };
 
-} // namespace Pingus
-
-std::ostream& operator<< (std::ostream& os, const Pingus::Vector& v);
+std::ostream& operator<< (std::ostream& os, const Vector3f& v);
 
 #endif
 

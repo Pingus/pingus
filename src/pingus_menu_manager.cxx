@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Display/display.h>
 #include "gui/screen_manager.hxx"
 #include "sound/sound.hxx"
 #include "resource.hxx"
@@ -33,12 +32,13 @@ PingusMenuManager::PingusMenuManager ()
   : mainmenu (this),
     exitmenu (this)
 {
-	int w = (int)CL_Display::get_width();
-	int h = (int)CL_Display::get_height();
+	int w = Display::get_width();
+	int h = Display::get_height();
 	// We only need to scale the background main menu images if the screen 
 	// resolution is not default
 	if (w != 800 && h != 600)
 	{
+#if 0
 		background.add_layer (Blitter::scale_surface_to_canvas(
 			Resource::load_pixelbuffer("core/menu/layer1"), w, 185 * h / 600), 0, 0, 12, 0);
 		background.add_layer (Blitter::scale_surface_to_canvas(
@@ -49,14 +49,15 @@ PingusMenuManager::PingusMenuManager ()
 			Resource::load_pixelbuffer("core/menu/layer4"), w, 171 * h / 600), 0, 429 * (float)h / 600, 100, 0);
 		background.add_layer (Blitter::scale_surface_to_canvas(
 			Resource::load_pixelbuffer("core/menu/layer5"), 302 * w / 800, 104 * h / 600), 0, 500 * (float)h / 600, 200, 0);
+#endif 
 	}
 	else
 	{
-		background.add_layer(Resource::load_pixelbuffer("core/menu/layer1"), 0, 0, 12, 0);
-		background.add_layer(Resource::load_pixelbuffer("core/menu/layer2"), 0, 150, 25, 0);
-		background.add_layer(Resource::load_pixelbuffer("core/menu/layer3"), 0, 200, 50, 0);
-		background.add_layer(Resource::load_pixelbuffer("core/menu/layer4"), 0, 429, 100, 0);
-		background.add_layer(Resource::load_pixelbuffer("core/menu/layer5"), 0, 500, 200, 0);
+		background.add_layer(Resource::load_sprite("core/menu/layer1"), 0, 0, 12, 0);
+		background.add_layer(Resource::load_sprite("core/menu/layer2"), 0, 150, 25, 0);
+		background.add_layer(Resource::load_sprite("core/menu/layer3"), 0, 200, 50, 0);
+		background.add_layer(Resource::load_sprite("core/menu/layer4"), 0, 429, 100, 0);
+		background.add_layer(Resource::load_sprite("core/menu/layer5"), 0, 500, 200, 0);
 	}
 	push_menu (&mainmenu);
 }
@@ -68,16 +69,19 @@ PingusMenuManager::~PingusMenuManager ()
 bool
 PingusMenuManager::draw (DrawingContext& gc)
 {
+#if 0
   background.draw (gc);
 
-  gc.draw_fillrect(0.0, static_cast<float>(CL_Display::get_height () - 22),
-                   static_cast<float>(CL_Display::get_width ()),
-									 static_cast<float>(CL_Display::get_height ()),
-                   CL_Color(0, 0, 0, 255));
+  gc.draw_fillrect(0.0,
+                   static_cast<float>(Display::get_height () - 22),
+                   static_cast<float>(Display::get_width ()),
+                   static_cast<float>(Display::get_height ()),
+                   Color(0, 0, 0, 255));
 
   for (MenuStackIter i = menu_stack.begin (); i != menu_stack.end (); ++i)
     (*i)->draw (gc);
 
+#endif
   return true;
 }
 

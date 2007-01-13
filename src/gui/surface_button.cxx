@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../resource.hxx"
-#include "../vector.hxx"
+#include "../math/vector3f.hpp"
 #include "../display/drawing_context.hxx"
 #include "surface_button.hxx"
 
@@ -45,11 +45,11 @@ void
 SurfaceButton::draw (DrawingContext& gc)
 {
   if (pressed && mouse_over)
-    gc.draw(button_pressed_surface, Vector((float)x_pos, (float)y_pos));
+    gc.draw(button_pressed_surface, Vector3f((float)x_pos, (float)y_pos));
   else if (!pressed && mouse_over)
-    gc.draw(button_mouse_over_surface, Vector((float)x_pos, (float)y_pos));
+    gc.draw(button_mouse_over_surface, Vector3f((float)x_pos, (float)y_pos));
   else
-    gc.draw(button_surface, Vector((float)x_pos, (float)y_pos));
+    gc.draw(button_surface, Vector3f((float)x_pos, (float)y_pos));
 }
 
 bool

@@ -25,10 +25,11 @@
 #include "SDL.h"
 #include <vector>
 #include "drawing_request.hxx"
-#include "../vector.hxx"
+#include "../math/vector3f.hpp"
+#include "../math/color.hpp"
 
-class CL_Font;
-class CL_Sprite;
+class Font;
+class Sprite;
 class CL_Surface;
 
 namespace Pingus {
@@ -45,7 +46,7 @@ private:
   typedef std::vector<DrawingRequest*> DrawingRequests;
   DrawingRequests drawingrequests;
 
-  std::vector<Vector> translate_stack;
+  std::vector<Vector3f> translate_stack;
 
 public:
   DrawingContext();
@@ -66,6 +67,9 @@ public:
       worth a try */
   void draw(DrawingContext* dc, float z = 0);
 
+  void draw(const Sprite& sprite, const Vector3f& pos);
+  void draw(const Sprite& sprite, float x, float y, float z = 0);
+  
 #if 0
 
   /** Fills the screen with a given color, this is different from
@@ -73,29 +77,27 @@ public:
       queue */
   void fill_screen(const CL_Color& color);
 
-  void draw(const CL_Surface&  surface, const Vector& pos);
-  void draw(const CL_Sprite&   sprite,  float x, float y, float z = 0);
   void draw(const std::string& text,    float x, float y, float z = 0);
 
-  void draw(const CL_Sprite&,   const Vector& pos);
+  void draw(const CL_Surface&  surface, const Vector& pos);
 
+#endif
   void draw_line (float x1, float y1, float x2, float y2, 
-		  const CL_Color& color, float z = 0);
+		  const Color& color, float z = 0);
   void draw_fillrect (float x1, float y1, float x2, float y2, 
-		      const CL_Color& color, float z = 0);
+		      const Color& color, float z = 0);
   void draw_rect (float x1, float y1, float x2, float y2, 
-		  const CL_Color& color, float z = 0);
+		  const Color& color, float z = 0);
   void draw_pixel (float x_pos, float y_pos, 
-		   const CL_Color& color);
+		   const Color& color);
   void draw_circle (float x_pos, float y_pos, float radius,
-                    const CL_Color& color);
+                    const Color& color);
 
   /** Draws an arc, starting from angle_start to angle_end in
       counterclockwise direction. Angles are taken in radian */
   void draw_arc (float x_pos, float y_pos, float radius, float angle_start, float angle_end,
-                 const CL_Color& color);
+                 const Color& color);
   /*} */
-#endif  
 
   /** Translate the drawing context */
   void translate(float x, float y);
@@ -117,16 +119,16 @@ public:
   float get_height() const;
 
   /** Print a text left aligned */
-  void print_left (const CL_Font& font, float x_pos, float y_pos, const std::string& str, float z = 0.0f);
+  void print_left (const Font& font, float x_pos, float y_pos, const std::string& str, float z = 0.0f);
 
   /** Print a text centred to the given position */
-  void print_center (const CL_Font& font, float x_pos, float y_pos, const std::string& str, float z = 0.0f);
+  void print_center (const Font& font, float x_pos, float y_pos, const std::string& str, float z = 0.0f);
 
   /** Print a text right aligned */
-  void print_right (const CL_Font& font, float x_pos, float y_pos, const std::string& str, float z = 0.0f);
+  void print_right (const Font& font, float x_pos, float y_pos, const std::string& str, float z = 0.0f);
 
-  Vector screen_to_world (Vector pos);
-  Vector world_to_screen (Vector pos);
+  Vector3f screen_to_world (Vector3f pos);
+  Vector3f world_to_screen (Vector3f pos);
 
 private:
   DrawingContext (const DrawingContext&);

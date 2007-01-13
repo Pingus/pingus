@@ -21,13 +21,13 @@
 #define HEADER_PINGUS_BLITTER_HXX
 
 #include "pingus.hxx"
-#include <ClanLib/Display/color.h>
+////#include <ClanLib/Display/color.h>
 
 class CL_Surface;
 class CL_PixelBuffer;
 
 namespace Pingus {
-
+#if 0
 /** A bunch of blitting and creation functions to operate on
     CL_PixelBuffer.  Some of them a similar to the ones in ClanLib, but
     this are slower and work. */
@@ -106,7 +106,7 @@ private:
   Blitter (const Blitter&);
   Blitter& operator= (const Blitter&);
 };
-
+#endif
 } // namespace Pingus
 
 #endif

@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_SOUND_HXX
 #define HEADER_PINGUS_SOUND_HXX
 
-#include <ClanLib/sound.h>
 #include <string>
 #include "sounds.hxx"
 #include "sound_impl.hxx"
@@ -36,17 +35,17 @@ private:
   static PingusSoundImpl* sound;
 
 public:
-	PingusSound  () { }
-	~PingusSound () { }
+  PingusSound  () { }
+  ~PingusSound () { }
 
-	static void init (PingusSoundImpl* s = 0);
+  static void init (PingusSoundImpl* s = 0);
   static void deinit ();
 
   /** Load a sound file and play it immediately.
 
-      @param name     Name of the sound, aka 'ohno'
-      @param volume   volume
-      @param panning  panning */
+  @param name     Name of the sound, aka 'ohno'
+  @param volume   volume
+  @param panning  panning */
   static void play_sound(const std::string & name, float volume = 1.0f, float panning = 0.0f);
 
   static void play_music(const std::string & name, float volume = 1.0f);

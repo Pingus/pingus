@@ -79,22 +79,7 @@ ScreenManager::display()
 	  continue;
 	}
 
-      { // Let SDL fetch events
-        SDL_Event event;
-        while(SDL_PollEvent(&event))
-          {
-            switch(event.type)
-              {
-              case SDL_QUIT:
-                pop_screen();
-                break;
-
-              default:
-                // FIXME: feed other events to the input manager
-                break;
-              }
-          }
-      }
+      process_events();
 
       // Get new events from ClanLib
       ////input_controller->update(time_delta);
@@ -166,6 +151,26 @@ ScreenManager::display()
 ////  delete cursor;
   delete input_controller;
 #endif 
+}
+
+void
+ScreenManager::process_events()
+{
+  // Let SDL fetch events
+  SDL_Event event;
+  while(SDL_PollEvent(&event))
+    {
+      switch(event.type)
+        {
+        case SDL_QUIT:
+          pop_screen();
+          break;
+
+        default:
+          // FIXME: feed other events to the input manager
+          break;
+        }
+    }
 }
 
 ScreenPtr&

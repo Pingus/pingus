@@ -62,6 +62,9 @@ public:
   static void add_flip_screen_hook(DisplayHook*);
   static void remove_flip_screen_hook(DisplayHook*);
 
+  static int get_width();
+  static int get_height();
+
   static void set_video_mode(int width, int height);
   static SDL_Surface* get_screen() { return screen; }
 private:

@@ -1,7 +1,7 @@
-//  $Id: exit_menu.hxx,v 1.14 2003/12/14 00:30:04 grumbel Exp $
-//
-//  Pingus - A free Lemmings clone
-//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+//  $Id$
+// 
+//  Flexlay - A Generic 2D Game Editor
+//  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -12,38 +12,39 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+// 
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_EXIT_MENU_HXX
-#define HEADER_PINGUS_EXIT_MENU_HXX
+#ifndef HEADER_SHARED_PTR_HXX
+#define HEADER_SHARED_PTR_HXX
 
-#include "pingus_sub_menu.hxx"
+#include <assert.h>
 
-namespace Pingus {
-
-class PingusMenuManager;
-
-class ExitMenu : public PingusSubMenu
+/** */
+template<typename T>
+class SharedPtr
 {
 private:
-  Sprite sur;
-
+  T* ptr;
 public:
-  ExitMenu (PingusMenuManager* manager);
-  ~ExitMenu ();
+  template<typename Parent> friend class SharedPtr;
 
-  bool draw (DrawingContext& gc);
-  void preload ();
+  SharedPtr() : ptr(0) {}
+  SharedPtr(T* p) : ptr(p) {}
+  
+  template <typename Parent>
+  SharedPtr(const SharedPtr<Parent>& p) : ptr(p.ptr) {}
 
-private:
-  ExitMenu (const ExitMenu&);
-  ExitMenu& operator= (const ExitMenu&);
+  T& operator*() { assert(ptr); return *ptr; }
+  T const& operator*() const { assert(ptr); return *ptr; }
+
+  T* operator->() { assert(ptr); return ptr; }
+  T const* operator->() const { assert(ptr); return ptr; }
+
+  T* get() const { return ptr; }
 };
-
-} // namespace Pingus
 
 #endif
 

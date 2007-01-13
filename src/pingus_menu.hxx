@@ -47,11 +47,10 @@ class PingusMenu : public PingusSubMenu, public FileDialogListener
 public:
   bool is_init;
 private:
-  std::vector<CL_Slot> slots;
+  ////std::vector<CL_Slot> slots;
 
-  CL_Sprite background;
+  Sprite background;
   LayerManager layer_manager;
-  CL_Surface cursor_sur;
 
   MenuButton* start_button;
   MenuButton* quit_button;
@@ -59,31 +58,31 @@ private:
   MenuButton* contrib_button;
   MenuButton* story_button;
   MenuButton* multiplayer_button;
-	MenuButton* editor_button;
-	FileDialog* filedialog;
+  MenuButton* editor_button;
+  FileDialog* filedialog;
   
   void on_resize (int w, int h);
 
   // These functions setup the different menus
   void setup_main_menu();
   void setup_game_menu();
-	/** Show the levels folder */
+  /** Show the levels folder */
   void setup_contrib_menu();
-	/** Show the worldmap folder */
-	void setup_worldmap_menu();
+  /** Show the worldmap folder */
+  void setup_worldmap_menu();
 
-	/** Quit the game */
+  /** Quit the game */
   void do_quit();
-	/** Start the story/worldmap mode */
-	void do_start(const std::string &filename);
-	/** Start the level editor */
-	void do_edit();
+  /** Start the story/worldmap mode */
+  void do_start(const std::string &filename);
+  /** Start the level editor */
+  void do_edit();
 
-	/** Use this to load the level or worldmap */
-	virtual void load(const std::string &file, const std::string &filemask);
+  /** Use this to load the level or worldmap */
+  virtual void load(const std::string &file, const std::string &filemask);
 
-	/** Cancels the file dialog box */
-	virtual void cancel();
+  /** Cancels the file dialog box */
+  virtual void cancel();
 
 public:
   PingusMenu (PingusMenuManager* m);

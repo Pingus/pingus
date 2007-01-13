@@ -17,13 +17,11 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Core/System/error.h>
 #include <iostream>
 #include <assert.h>
 #include "../path_manager.hxx"
 #include "../globals.hxx"
 #include "sound_dummy.hxx"
-#include "sound_real.hxx"
 #include "sound.hxx"
 
 namespace Pingus {
@@ -34,6 +32,8 @@ PingusSoundImpl * PingusSound::sound;
 void
 PingusSound::init (PingusSoundImpl* s)
 {
+  PingusSound::init (new PingusSoundDummy());
+#if 0
   if (s == 0)
   {
     if (sound_enabled || music_enabled)
@@ -60,6 +60,7 @@ PingusSound::init (PingusSoundImpl* s)
   {
     sound = s;
   }
+#endif 
 }
 
 void

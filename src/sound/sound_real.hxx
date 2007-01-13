@@ -24,7 +24,6 @@
 #include <vector>
 #include "sound_impl.hxx"
 #include "sound.hxx"
-#include <ClanLib/Sound/soundbuffer_session.h>
 
 class CL_SoundBuffer;
 class CL_SoundBuffer_Session;
@@ -43,8 +42,8 @@ private:
   /** Music Controller Session */
   CL_SoundBuffer_Session* music_session;
 
-	/** Sound Output object */
-	CL_SoundOutput* sound_output;
+  /** Sound Output object */
+  CL_SoundOutput* sound_output;
 
 public:
   PingusSoundReal ();

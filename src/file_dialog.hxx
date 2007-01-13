@@ -20,116 +20,115 @@
 #ifndef HEADER_PINGUS_FILE_DIALOG_HXX
 #define HEADER_PINGUS_FILE_DIALOG_HXX
 
-#include <ClanLib/Display/sprite.h>
 #include <vector>
 #include <string>
 #include "pingus_sub_menu.hxx"
 
 namespace Pingus {
 
-	class Vector;
-	class FileDialogItem;
-	class FileDialogOkButton;
-	class FileDialogScrollButton;
-	class FileDialogListener;
+class Vector;
+class FileDialogItem;
+class FileDialogOkButton;
+class FileDialogScrollButton;
+class FileDialogListener;
 	
-	namespace GUI {
-		class InputBox;
-		}
+namespace GUI {
+class InputBox;
+}
 
-	struct FileItem {
-		std::string name;
-		std::string short_name;
-		std::string friendly_name;
-		bool is_accessible;
-		bool is_finished;
-		bool is_directory;
-	};
+struct FileItem {
+  std::string name;
+  std::string short_name;
+  std::string friendly_name;
+  bool is_accessible;
+  bool is_finished;
+  bool is_directory;
+};
 
-	/** Sorting function for FileItem's */
-	inline bool FileItemCompare (const FileItem& a, const FileItem& b)
-	{
-		if (a.is_directory == b.is_directory)
-			return (a.name < b.name);
-		else
-			return (a.is_directory);
-	}
+/** Sorting function for FileItem's */
+inline bool FileItemCompare (const FileItem& a, const FileItem& b)
+{
+  if (a.is_directory == b.is_directory)
+    return (a.name < b.name);
+  else
+    return (a.is_directory);
+}
 
 class FileDialog : public PingusSubMenu
 {
 private:
-  CL_Sprite sprite;
+  Sprite sprite;
 
-	/** The OK button - need to be able to hide and show it */
-	FileDialogOkButton* ok_button;
+  /** The OK button - need to be able to hide and show it */
+  FileDialogOkButton* ok_button;
 
-	/** Scroll buttons */
-	FileDialogScrollButton* up_button;
-	FileDialogScrollButton* down_button;
+  /** Scroll buttons */
+  FileDialogScrollButton* up_button;
+  FileDialogScrollButton* down_button;
 
-	/** The owner of this file dialog */
-	FileDialogListener* listener;
+  /** The owner of this file dialog */
+  FileDialogListener* listener;
 
-	/** Box to take the keyboard input */
-	GUI::InputBox* inputbox;
+  /** Box to take the keyboard input */
+  GUI::InputBox* inputbox;
 
-	/** Should this dialog box be used for loading?  True for load, false for saving */
-	bool for_loading;
+  /** Should this dialog box be used for loading?  True for load, false for saving */
+  bool for_loading;
 
-	/** Mask for which files to display (*.pingus, *.xml, etc.) */
-	std::string file_mask;
+  /** Mask for which files to display (*.pingus, *.xml, etc.) */
+  std::string file_mask;
 
-	/** Current path that is being displayed */
-	std::string current_path;
+  /** Current path that is being displayed */
+  std::string current_path;
 
-	/** Offset in the file_list that is the index of the first file/folder shown */
-	unsigned current_offset;
+  /** Offset in the file_list that is the index of the first file/folder shown */
+  unsigned current_offset;
 
-	/** Current file that is selected */
-	FileItem current_file;
+  /** Current file that is selected */
+  FileItem current_file;
 
-	/** List of directories & files in the current folder */
-	std::vector<FileItem> file_list;
+  /** List of directories & files in the current folder */
+  std::vector<FileItem> file_list;
 
-	/** List of files in the directory */
-	std::vector<FileDialogItem*> file_dialog_items;
+  /** List of files in the directory */
+  std::vector<FileDialogItem*> file_dialog_items;
 
-	/** Scroll the displayed file list */
-	void offset_changed();
+  /** Scroll the displayed file list */
+  void offset_changed();
 	
 public:
-	FileDialog (FileDialogListener* listener_, 
-		const std::string filemask_, 
-		const std::string searchpath_,
-		const bool for_load = true);
+  FileDialog (FileDialogListener* listener_, 
+              const std::string filemask_, 
+              const std::string searchpath_,
+              const bool for_load = true);
 
   ~FileDialog ();
 
   bool draw (DrawingContext& gc);
-	void update(const GameDelta &delta);
+  void update(const GameDelta &delta);
 
-	void preload();
+  void preload();
 
-	/** Refresh the file list */
-	void refresh();
+  /** Refresh the file list */
+  void refresh();
 
-	/** Return the current path in the dialog */
-	std::string get_path() const { return current_path; }
+  /** Return the current path in the dialog */
+  std::string get_path() const { return current_path; }
 
-	/** Return the file mask */
-	std::string get_file_mask() const { return file_mask; }
+  /** Return the file mask */
+  std::string get_file_mask() const { return file_mask; }
 
-	/** Sets the currently selected file name */
-	void set_selected_file(FileItem f);
+  /** Sets the currently selected file name */
+  void set_selected_file(FileItem f);
 
-	/** The Ok button has been pressed - either Save or Load this file */
-	void ok_pressed();
+  /** The Ok button has been pressed - either Save or Load this file */
+  void ok_pressed();
 
-	/** The Cancel button has been pressed - close the box */
-	void cancel_pressed();
+  /** The Cancel button has been pressed - close the box */
+  void cancel_pressed();
 
-	/** Need to scroll the list of files if possible */
-	void scroll(int direction);
+  /** Need to scroll the list of files if possible */
+  void scroll(int direction);
 
 private:
   FileDialog (const FileDialog&);

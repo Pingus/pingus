@@ -22,7 +22,7 @@
 
 #include <map>
 #include <vector>
-#include <ClanLib/display.h>
+#include "sprite.hpp"
 #include "res_descriptor.hxx"
 
 class CL_ResourceManager;
@@ -35,6 +35,7 @@ namespace Pingus {
 class Resource
 {
 public:
+#if 0
   static CL_ResourceManager resmgr;
   static std::map<ResDescriptor, CL_Surface> surface_map;
 
@@ -43,15 +44,15 @@ public:
   static CL_Surface apply_modifier (const CL_Surface&, const ResDescriptor& res_desc);
   static CL_PixelBuffer apply_modifier_to_pixelbuffer(CL_PixelBuffer, const ResDescriptor& res_desc);
 
-	/** Returns a list of resources for the given section.
-		Returns all if blank */
-	static std::vector<std::string> get_resources(const std::string &type,
-		const std::string &section = "");
+  /** Returns a list of resources for the given section.
+      Returns all if blank */
+  static std::vector<std::string> get_resources(const std::string &type,
+                                                const std::string &section = "");
 
-	/** Returns a list of sections under the given section.
-		Returns all sections if blank */
-	static std::vector<std::string> get_sections(const std::string &section = std::string());
-
+  /** Returns a list of sections under the given section.
+      Returns all sections if blank */
+  static std::vector<std::string> get_sections(const std::string &section = std::string());
+#endif
 public:
   static void init();
   static void deinit();
@@ -59,6 +60,7 @@ public:
   /** */
   static unsigned int get_mtime (const std::string& res_name);
 
+#if 0
   /** Load a surface with res_name from datafile */
   static CL_Surface load_surface(const std::string& res_name,
 				 ResourceModifierNS::ResourceModifier modifier
@@ -66,7 +68,10 @@ public:
 
   /** Load a surface from the ResDescriptor */
   static CL_Surface load_surface(const ResDescriptor&);
-  static CL_Sprite  load_sprite(const ResDescriptor&);
+#endif
+  static Sprite  load_sprite(const ResDescriptor&);
+  static Sprite  load_sprite(const std::string& res_name);
+#if 0
   static CL_Sprite  load_sprite(const std::string& res_name);
   static CL_SpriteDescription load_sprite_desc(const std::string& res_name);
   static CL_PixelBuffer load_pixelbuffer(const std::string& res_name);
@@ -74,7 +79,7 @@ public:
 
   /** Load a font with res_name from datafile */
   static CL_Font load_font(const std::string& res_name);
-
+#endif
   /** Cleanup all currently unused surfaces */
   static void cleanup ();
 

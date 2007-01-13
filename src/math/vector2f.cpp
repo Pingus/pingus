@@ -1,7 +1,7 @@
-//  $Id: exit_menu.hxx,v 1.14 2003/12/14 00:30:04 grumbel Exp $
+//  $Id: vector.cpp 2642 2005-06-26 13:38:53Z matzebraun $
 //
-//  Pingus - A free Lemmings clone
-//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+//  SuperTux -  A Jump'n Run
+//  Copyright (C) 2004 Matthias Braun <matze@braunis.de
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -17,34 +17,41 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_EXIT_MENU_HXX
-#define HEADER_PINGUS_EXIT_MENU_HXX
+#include <config.h>
+#include <cmath>
+#include <iostream>
+#include "math/vector2f.hpp"
 
-#include "pingus_sub_menu.hxx"
-
-namespace Pingus {
-
-class PingusMenuManager;
-
-class ExitMenu : public PingusSubMenu
+void
+Vector2f::normalize()
 {
-private:
-  Sprite sur;
+  float mag = magnitude();
+  x /= mag;
+  y /= mag;
+}
 
-public:
-  ExitMenu (PingusMenuManager* manager);
-  ~ExitMenu ();
+Vector2f Vector2f::unit() const
+{
+  return *this / magnitude();
+}
 
-  bool draw (DrawingContext& gc);
-  void preload ();
+float
+Vector2f::magnitude() const
+{
+  return sqrt(x*x + y*y);
+}
 
-private:
-  ExitMenu (const ExitMenu&);
-  ExitMenu& operator= (const ExitMenu&);
-};
+std::ostream& operator<<(std::ostream& s, const Vector2f& v)
+{
+  s << "(" << v.x << ", " << v.y << ")";
+  return s;
+}
 
-} // namespace Pingus
-
-#endif
+Vector2f
+Vector2f::rotate(float angle) const
+{
+  float len = magnitude();
+  return Vector2f(len * cos(angle), len * sin(angle));
+}
 
 /* EOF */

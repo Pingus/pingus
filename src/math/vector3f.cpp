@@ -19,20 +19,18 @@
 
 #include <math.h>
 #include <iostream>
-#include "vector.hxx"
+#include "vector3f.hpp"
 
-namespace Pingus {
-
-Vector::Vector (float x_, float y_, float z_) : x(x_), y(y_), z(z_)
+Vector3f::Vector3f (float x_, float y_, float z_) : x(x_), y(y_), z(z_)
 {
 }
 
-Vector::Vector (const Vector& old) : x(old.x), y(old.y), z(old.z)
+Vector3f::Vector3f (const Vector3f& old) : x(old.x), y(old.y), z(old.z)
 {
 }
 
-Vector&
-Vector::operator= (const Vector& old)
+Vector3f&
+Vector3f::operator= (const Vector3f& old)
 {
   if (this != &old)
     {
@@ -44,32 +42,32 @@ Vector::operator= (const Vector& old)
   return *this;
 }
 
-Vector
-Vector::operator- () const
+Vector3f
+Vector3f::operator- () const
 {
-  return Vector(-x, -y, -z);
+  return Vector3f(-x, -y, -z);
 }
 
-Vector
-Vector::operator+ (const Vector& add) const
+Vector3f
+Vector3f::operator+ (const Vector3f& add) const
 {
-  return Vector(x + add.x, y + add.y, z + add.z);
+  return Vector3f(x + add.x, y + add.y, z + add.z);
 }
 
-Vector
-Vector::operator- (const Vector& sub) const
+Vector3f
+Vector3f::operator- (const Vector3f& sub) const
 {
-  return Vector(x - sub.x, y - sub.y, z - sub.z);
+  return Vector3f(x - sub.x, y - sub.y, z - sub.z);
 }
 
-Vector
-Vector::operator* (float mul) const
+Vector3f
+Vector3f::operator* (float mul) const
 {
-  return Vector(mul * x, mul * y, mul * z);
+  return Vector3f(mul * x, mul * y, mul * z);
 }
 
-Vector&
-Vector::operator+= (const Vector& add)
+Vector3f&
+Vector3f::operator+= (const Vector3f& add)
 {
   x += add.x;
   y += add.y;
@@ -77,8 +75,8 @@ Vector::operator+= (const Vector& add)
   return *this;
 }
 
-Vector&
-Vector::operator-= (const Vector& sub)
+Vector3f&
+Vector3f::operator-= (const Vector3f& sub)
 {
   x -= sub.x;
   y -= sub.y;
@@ -86,8 +84,8 @@ Vector::operator-= (const Vector& sub)
   return *this;
 }
 
-Vector&
-Vector::operator*= (float mul)
+Vector3f&
+Vector3f::operator*= (float mul)
 {
   x *= mul;
   y *= mul;
@@ -96,7 +94,7 @@ Vector::operator*= (float mul)
 }
 
 void
-Vector::normalize ()
+Vector3f::normalize ()
 {
   float f = sqrt(x * x + y * y + z * z);
 
@@ -109,18 +107,18 @@ Vector::normalize ()
 }
 
 float
-Vector::length() const
+Vector3f::length() const
 {
   return sqrt(x * x + y * y + z * z);
 }
 
-Vector
-Vector::rotate (float angle, const Vector& pos) const
+Vector3f
+Vector3f::rotate (float angle, const Vector3f& pos) const
 {
   const float s = sin(angle);
   const float c = cos(angle);
 
-  return Vector(  x * (pos.x * pos.x * (1-c) + c)
+  return Vector3f(  x * (pos.x * pos.x * (1-c) + c)
                 + y * (pos.x * pos.y * (1-c) - pos.z *s)
 		+ z * (pos.x * pos.z * (1-c) + pos.y *s),
 
@@ -135,7 +133,7 @@ Vector::rotate (float angle, const Vector& pos) const
 }
 
 float
-Vector::distance(const Vector& a, const Vector& b)
+Vector3f::distance(const Vector3f& a, const Vector3f& b)
 {
   float x = b.x - a.x;
   float y = b.y - a.y;
@@ -145,7 +143,7 @@ Vector::distance(const Vector& a, const Vector& b)
 }
 
 float
-Vector::distance2d(const Vector& a, const Vector& b)
+Vector3f::distance2d(const Vector3f& a, const Vector3f& b)
 {
   float x = b.x - a.x;
   float y = b.y - a.y;
@@ -153,16 +151,14 @@ Vector::distance2d(const Vector& a, const Vector& b)
   return fabsf(sqrt((x * x) + (y * y)));
 }
 
-Vector
-Vector::interpolate(const Vector& a, const Vector& b, float perc)
+Vector3f
+Vector3f::interpolate(const Vector3f& a, const Vector3f& b, float perc)
 {
-  Vector c = b - a;
+  Vector3f c = b - a;
   return a + (c * perc);
 }
 
-} // namespace Pingus
-
-std::ostream& operator<< (std::ostream& os, const Pingus::Vector& v)
+std::ostream& operator<<(std::ostream& os, const Vector3f& v)
 {
   return os << v.x << " " << v.y << " " << v.z;
 }

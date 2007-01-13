@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/sound.h>
 #include "../path_manager.hxx"
 #include "../globals.hxx"
 #include "../debug.hxx"
@@ -30,6 +29,7 @@ SoundResMgr::SoundMap SoundResMgr::sound_map;
 SoundHandle
 SoundResMgr::load(const std::string& name)
 {
+#if 0
   SoundMap::iterator i = sound_map.find(name);
 
   if (i == sound_map.end())
@@ -47,14 +47,18 @@ SoundResMgr::load(const std::string& name)
       pout(PINGUS_DEBUG_LOADING) << "SoundResMgr: Loading sound from cache: " << name << std::endl;
       return i->second;
     }
+#endif 
+  return 0;
 }
 
 void SoundResMgr::free_sound_map()
 {
+#if 0
   for (SoundMap::iterator i = sound_map.begin(); i != sound_map.end(); ++i)
-  {
-	  delete i->second;
-  }
+    {
+      delete i->second;
+    }
+#endif 
 }
 
 } // namespace Pingus

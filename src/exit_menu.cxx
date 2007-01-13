@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/display.h>
 #include "gettext.h"
 #include "pingus_menu_manager.hxx"
 #include "resource.hxx"
@@ -33,8 +32,8 @@ private:
   PingusMenuManager* manager;
 public:
   ExitMenuYesButton (PingusMenuManager* m)
-    : GUI::SurfaceButton(CL_Display::get_width()/2 - 170,
-                         CL_Display::get_height()/2 + 15,
+    : GUI::SurfaceButton(Display::get_width()/2 - 170,
+                         Display::get_height()/2 + 15,
                          ResDescriptor("core/menu/exit_button_normal"),
                          ResDescriptor("core/menu/exit_button_pressed"),
                          ResDescriptor("core/menu/exit_button_hover")),
@@ -44,8 +43,8 @@ public:
 
   void draw (DrawingContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_right(Fonts::chalk_large, (float)CL_Display::get_width()/2 - 80,
-                   (float)CL_Display::get_height()/2 + 25, _("Yes"));
+    gc.print_right(Fonts::chalk_large, (float)Display::get_width()/2 - 80,
+                   (float)Display::get_height()/2 + 25, _("Yes"));
   }
 
   void on_click()
@@ -67,7 +66,7 @@ private:
   PingusMenuManager* manager;
 public:
   ExitMenuNoButton (PingusMenuManager* m)
-    : GUI::SurfaceButton(CL_Display::get_width()/2, CL_Display::get_height()/2 + 15,
+    : GUI::SurfaceButton(Display::get_width()/2, Display::get_height()/2 + 15,
                          ResDescriptor("core/menu/exit_button_normal"),
                          ResDescriptor("core/menu/exit_button_pressed"),
                          ResDescriptor("core/menu/exit_button_hover")),
@@ -77,8 +76,8 @@ public:
 
   void draw (DrawingContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_right(Fonts::chalk_large, (float)CL_Display::get_width()/2 + 80,
-                   (float)CL_Display::get_height()/2 + 25, _("No"));
+    gc.print_right(Fonts::chalk_large, (float)Display::get_width()/2 + 80,
+                   (float)Display::get_height()/2 + 25, _("No"));
   }
 
   void on_click() {
@@ -107,10 +106,10 @@ ExitMenu::~ExitMenu ()
 bool
 ExitMenu::draw (DrawingContext& gc)
 {
-  //gc.draw_fillrect (0, 0, CL_Display::get_width (), CL_Display::get_height (),
+  //gc.draw_fillrect (0, 0, Display::get_width (), Display::get_height (),
   //0, 0, 0, 0.5);
-  gc.draw(sur, Vector(gc.get_width ()/2 - sur.get_width ()/2,
-                      gc.get_height ()/2 - sur.get_height ()/2));
+  gc.draw(sur, Vector3f(gc.get_width ()/2 - sur.get_width ()/2,
+                        gc.get_height ()/2 - sur.get_height ()/2));
   gc.print_center(Fonts::chalk_large, gc.get_width()/2, gc.get_height()/2 - 70, _("Exit Pingus?"));
   PingusSubMenu::draw(gc);
   return true;

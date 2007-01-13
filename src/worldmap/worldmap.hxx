@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_WORLDMAP_WORLDMAP_HXX
 #define HEADER_PINGUS_WORLDMAP_WORLDMAP_HXX
 
-#include <ClanLib/Display/sprite.h>
 #include <vector>
 #include "../file_reader.hxx"
 #include "../display/drawing_context.hxx"

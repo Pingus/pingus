@@ -25,24 +25,25 @@ namespace Fonts {
 
 std::string encoding("ISO-8859-1");
 
-CL_Font chalk_large;
-CL_Font chalk_normal;
-CL_Font chalk_small;
+Font chalk_large;
+Font chalk_normal;
+Font chalk_small;
 
-CL_Font pingus_small;
-CL_Font pingus_small_fix_num;
-CL_Font pingus_large;
+Font pingus_small;
+Font pingus_small_fix_num;
+Font pingus_large;
 
-CL_Font smallfont;
-CL_Font smallfont_h;
+Font smallfont;
+Font smallfont_h;
 
-CL_Font courier_small;
-CL_Font xterm;
-CL_Font lcd;
+Font courier_small;
+Font xterm;
+Font lcd;
 
 void
 init ()
 {
+#if 0
   chalk_large  = Resource::load_font("fonts/chalk_large" + std::string(".") + encoding); 
   chalk_normal = Resource::load_font("fonts/chalk_normal" + std::string(".") + encoding);
   chalk_small  = Resource::load_font("fonts/chalk_small" + std::string(".") + encoding);
@@ -57,21 +58,22 @@ init ()
   smallfont_h  = Resource::load_font("fonts/courier_small" + std::string(".") + encoding); // PingusResource::load_font("Fonts/smallfont_h","fonts");
 
   lcd          = Resource::load_font("fonts/courier_small" + std::string(".") + encoding); // PingusResource::load_font("Fonts/numbers", "fonts");
+#endif 
 }
 
 void deinit () 
 {
-	chalk_large  = CL_Font();
-  chalk_normal = CL_Font();
-  chalk_small  = CL_Font();
-  pingus_small = CL_Font();
-  pingus_small_fix_num = CL_Font();
-  pingus_large = CL_Font();
-  courier_small = CL_Font();
-  xterm = CL_Font();
-  smallfont = CL_Font();
-  smallfont_h = CL_Font();
-  lcd = CL_Font();
+  chalk_large  = Font();
+  chalk_normal = Font();
+  chalk_small  = Font();
+  pingus_small = Font();
+  pingus_small_fix_num = Font();
+  pingus_large = Font();
+  courier_small = Font();
+  xterm = Font();
+  smallfont = Font();
+  smallfont_h = Font();
+  lcd = Font();
 }
 
 } // namespace Fonts

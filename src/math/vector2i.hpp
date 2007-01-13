@@ -1,7 +1,7 @@
-//  $Id: exit_menu.hxx,v 1.14 2003/12/14 00:30:04 grumbel Exp $
-//
+//  $Id$
+// 
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -12,38 +12,25 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+// 
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_EXIT_MENU_HXX
-#define HEADER_PINGUS_EXIT_MENU_HXX
+#ifndef HEADER_VECTOR2_HPP
+#define HEADER_VECTOR2_HPP
 
-#include "pingus_sub_menu.hxx"
-
-namespace Pingus {
-
-class PingusMenuManager;
-
-class ExitMenu : public PingusSubMenu
+/** */
+class Vector2i
 {
-private:
-  Sprite sur;
-
 public:
-  ExitMenu (PingusMenuManager* manager);
-  ~ExitMenu ();
+  int x;
+  int y;
 
-  bool draw (DrawingContext& gc);
-  void preload ();
+  Vector2i(int x_, int y_) 
+    : x(x_), y(y_) {}
 
-private:
-  ExitMenu (const ExitMenu&);
-  ExitMenu& operator= (const ExitMenu&);
 };
-
-} // namespace Pingus
 
 #endif
 

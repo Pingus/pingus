@@ -21,26 +21,27 @@
 #define HEADER_PINGUS_FONTS_HXX
 
 #include "display/drawing_context.hxx"
+#include "font.hpp"
 
 namespace Pingus {
 namespace Fonts {
 
 extern std::string encoding;
 
-// extern CL_Font chalk_large;
-// extern CL_Font chalk_normal;
-// extern CL_Font chalk_small;
+extern Font chalk_large;
+extern Font chalk_normal;
+extern Font chalk_small;
 
-// extern CL_Font courier_small;
+extern Font courier_small;
 
-// extern CL_Font pingus_small;
-// extern CL_Font pingus_small_fix_num;
-// extern CL_Font pingus_large;
+extern Font pingus_small;
+extern Font pingus_small_fix_num;
+extern Font pingus_large;
 
-// extern CL_Font smallfont;
-// extern CL_Font smallfont_h;
-// extern CL_Font xterm;
-// extern CL_Font lcd;
+extern Font smallfont;
+extern Font smallfont_h;
+extern Font xterm;
+extern Font lcd;
 
 /** Load all fonts */
 void init ();

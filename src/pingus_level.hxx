@@ -20,11 +20,10 @@
 #ifndef HEADER_PINGUS_LEVEL_HXX
 #define HEADER_PINGUS_LEVEL_HXX
 
-#include <ClanLib/Core/System/sharedptr.h>
-#include <ClanLib/Core/Math/size.h>
 #include <string>
 #include <vector>
 #include <map>
+#include "shared_ptr.hxx"
 #include "file_reader.hxx"
 
 namespace Pingus {
@@ -82,7 +81,7 @@ public:
   const std::string get_resname() const;
 
 protected:
-  CL_SharedPtr<PingusLevelImpl> impl;
+  SharedPtr<PingusLevelImpl> impl;
 };
 
 } // namespace Pingus

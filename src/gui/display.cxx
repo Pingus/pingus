@@ -92,6 +92,18 @@ Display::set_video_mode(int width, int height)
   }
 }
 
+int
+Display::get_width()
+{
+  return screen->w;
+}
+
+int
+Display::get_height()
+{
+  return screen->h;
+}
+
 } // namespace Pingus
 
 /* EOF */

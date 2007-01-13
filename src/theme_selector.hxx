@@ -23,11 +23,9 @@
 #include "pingus.hxx"
 #include <vector>
 #include <string>
-#include <ClanLib/Signals/slot.h>
-#include <ClanLib/Display/surface.h>
 
 class CL_Key;
-class CL_Font;
+class Font;
 class CL_InputDevice;
 
 namespace Pingus {
@@ -39,7 +37,7 @@ class ListItem
 {
 private:
   std::string label;
-  CL_Font font;
+  Font font;
 
 public:
   ListItem(std::string);
@@ -68,9 +66,9 @@ private:
 class ThemeSelector
 {
 public:
-  CL_Slot on_button_press_slot;
-  CL_Slot on_button_release_slot;
-  CL_Slot on_mouse_move_slot;
+  ////CL_Slot on_button_press_slot;
+  ////CL_Slot on_button_release_slot;
+  ////CL_Slot on_mouse_move_slot;
 
   class Event /*: public CL_Event_ButtonPress,
 		public CL_Event_ButtonRelease,
@@ -102,10 +100,10 @@ private:
   std::vector<Theme*>::iterator current_theme;
 
   /** A large font, used for the Title Name */
-  CL_Font title_font;
+  Font title_font;
 
   /** This font is used for the levelnames */
-  CL_Font theme_font;
+  Font theme_font;
 
   /// The red arrow to the right
   CL_Surface right_arrow;
