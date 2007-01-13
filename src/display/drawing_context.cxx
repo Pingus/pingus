@@ -285,17 +285,21 @@ DrawingContext::draw_line (float x1, float y1, float x2, float y2,
   draw(new LineDrawingRequest(Vector(x1, y1), Vector(x2, y2), color, z));
 }
 
+#endif
 void
 DrawingContext::draw_fillrect (float x1, float y1, float x2, float y2, 
-                               const CL_Color& color, float z)
+                               const Color& color, float z)
 {
+#if 0
   draw(new RectDrawingRequest(CL_Rectf(x1 + translate_stack.back().x, y1 + translate_stack.back().y, 
                                        x2 + translate_stack.back().x, y2 + translate_stack.back().y),
                               color,
                               true,
                               z));
+#endif
 }
 
+#if 0
 void
 DrawingContext::draw_rect (float x1, float y1, float x2, float y2, 
                            const CL_Color& color, float z)

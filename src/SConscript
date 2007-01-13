@@ -43,6 +43,7 @@ sdl_env = Environment(CC = 'gcc',
 #   clanMikMod-0.8         ">=" 0.8.0')
 
 env.ParseConfig('sdl-config  --cflags --libs')
+env['LIBS'] += ['SDL_image']
 
 # sdl_env.ParseConfig('sdl-config  --cflags --libs')
 # sdl_env['LIBS'] += ['SDL_image']

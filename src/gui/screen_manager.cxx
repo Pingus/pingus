@@ -143,7 +143,7 @@ ScreenManager::display()
 	}
 
       // Stupid hack to make this thing take less CPU
-      ////CL_System::keep_alive(5);
+      SDL_Delay(10);
     }
 
 #if 0

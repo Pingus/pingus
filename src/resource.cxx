@@ -118,7 +118,7 @@ Resource::load_sprite(const ResDescriptor& desc)
 Sprite
 Resource::load_sprite(const std::string& res_name)
 {
-  return Sprite();
+  return Sprite(res_name);
 
 #if 0
   try {

@@ -32,35 +32,35 @@ PingusSoundImpl * PingusSound::sound;
 void
 PingusSound::init (PingusSoundImpl* s)
 {
-  PingusSound::init (new PingusSoundDummy());
-#if 0
   if (s == 0)
-  {
-    if (sound_enabled || music_enabled)
     {
-      if (verbose)
-        std::cout << "Init Sound" << std::endl;
+      PingusSound::init(new PingusSoundDummy());
+#if 0
+      if (sound_enabled || music_enabled)
+        {
+          if (verbose)
+            std::cout << "Init Sound" << std::endl;
 
-      try {
-        PingusSound::init (new PingusSoundReal ());
-      } catch (CL_Error& err) {
-        std::cout << "CL_Error: " << err.message << std::endl;
-        std::cout << "Sound will be disabled" << std::endl;
-        PingusSound::init (new PingusSoundDummy ());
-      }
-    }
-		else
-		{
-			if (verbose)
-				std::cout << "Sound disabled" << std::endl;
-			PingusSound::init (new PingusSoundDummy ());
-		}
-	}
-  else
-  {
-    sound = s;
-  }
+          try {
+            PingusSound::init (new PingusSoundReal ());
+          } catch (CL_Error& err) {
+            std::cout << "CL_Error: " << err.message << std::endl;
+            std::cout << "Sound will be disabled" << std::endl;
+            PingusSound::init (new PingusSoundDummy ());
+          }
+        }
+      else
+        {
+          if (verbose)
+            std::cout << "Sound disabled" << std::endl;
+          PingusSound::init (new PingusSoundDummy ());
+        }
 #endif 
+    }
+  else
+    {
+      sound = s;
+    }
 }
 
 void
@@ -71,13 +71,13 @@ PingusSound::deinit ()
 }
 
 /** Load a sound file and play it immediately.
-	@param filename The complete filename
-	@param volume The desired volume level
-	@param panning The desired panning level (stereo only) */
+    @param filename The complete filename
+    @param volume The desired volume level
+    @param panning The desired panning level (stereo only) */
 void
 PingusSound::play_sound(const std::string& name, float volume, float panning)
 {
-  assert (sound);
+  assert(sound);
   sound->real_play_sound(name, volume, panning);
 }
 

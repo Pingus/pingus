@@ -64,11 +64,11 @@
 // #include "demo_session.hxx"
 #include "debug.hxx"
 //#include "fonts.hxx"
-// #include "pingus_menu_manager.hxx"
+#include "pingus_menu_manager.hxx"
 // #include "resource.hxx"
 // #include "pingu_action_factory.hxx"
 // #include "credits.hxx"
-// #include "sound/sound.hxx"
+#include "sound/sound.hxx"
 // #include "worldmap/manager.hxx"
 #include "cheat.hxx"
 // #include "blitter_test.hxx"
@@ -753,9 +753,9 @@ PingusMain::start_game ()
   else // start a normal game
     {
       std::cout << "starting normal game" << std::endl;
-      ///ScreenManager::instance()->push_screen(PingusMenuManager::instance (), false);
+      ScreenManager::instance()->push_screen(PingusMenuManager::instance (), false);
       ////ScreenManager::instance()->push_screen(new StoryScreen(), true);
-      ScreenManager::instance()->push_screen(new DummyScreen(), true);
+      //ScreenManager::instance()->push_screen(new DummyScreen(), true);
       std::cout << "done: starting normal game" << std::endl;
     }
 
@@ -939,10 +939,10 @@ PingusMain::init_pingus()
 ////   StatManager::init();
 
 ////   Resource::init();
-////   Fonts::init();
+  Fonts::init();
 ////   ScreenManager::init();
 ////   PingusMenuManager::init();
-////   Sound::PingusSound::init();
+  Sound::PingusSound::init();
 ////   PinguActionFactory::init();
 ////   Credits::init();
 ////   WorldMapNS::WorldMapManager::instance();
@@ -957,10 +957,10 @@ PingusMain::deinit_pingus()
 ////  fps_counter.deinit();
   console.deinit();
 
-////  Fonts::deinit();
+  Fonts::deinit();
 ////  Credits::deinit();
 ////  PinguActionFactory::deinit();
-////  Sound::PingusSound::deinit();
+  Sound::PingusSound::deinit();
 ////  PingusMenuManager::deinit();
 ////  WorldObjFactory::deinit();
 ////  WorldMapNS::WorldMapManager::deinit();

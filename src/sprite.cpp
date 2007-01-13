@@ -23,6 +23,9 @@
 **  02111-1307, USA.
 */
 
+#include <iostream>
+#include <sstream>
+#include <assert.h>
 #include "SDL.h"
 #include "SDL_image.h"
 #include "sprite.hpp"
@@ -30,9 +33,23 @@
 class SpriteImpl
 {
 public:
+  SDL_Surface* surface;
+
   SpriteImpl(const std::string& name) 
   {
-    //IMG_Load
+    std::ostringstream str;
+    str << "data/images/" << name << ".png";
+    surface = IMG_Load(str.str().c_str());
+    if (!surface)
+      {
+        std::cout << "Error: Couldn't load " << str.str() << std::endl;
+        surface = IMG_Load("data/images/core/misc/404.png");
+        assert(surface);
+      }
+    else
+      {
+        std::cout << "Loaded sprite: " << name << std::endl;
+      }
   }
 };
 
@@ -53,6 +70,13 @@ Sprite::~Sprite()
 void
 Sprite::draw(float x, float y, SDL_Surface* target)
 {
+  //std::cout << "Sprite: draw; " << x << ", " << y << std::endl;
+  SDL_Rect pos;
+  pos.x = (Sint16)x;
+  pos.y = (Sint16)y;
+  pos.w = 0;
+  pos.h = 0;
+  SDL_BlitSurface(impl->surface, NULL, target, &pos);
 }
 
 int
