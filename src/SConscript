@@ -116,7 +116,7 @@ env.Program('../pingus', [
 # 'demo_recorder.cxx', 
 # 'demo_session.cxx', 
 # 'direction.cxx', 
-# 'display/drawing_context.cxx', 
+'display/drawing_context.cxx', 
 # 'display/scene_context.cxx', 
 
 # # 'editor/context_menu.cxx',
@@ -241,7 +241,7 @@ env.Program('../pingus', [
 # 'timer.cxx', 
 'tinygettext/tinygettext.cxx', 
 # 'true_server.cxx', 
-# 'vector.cxx', 
+'vector.cxx', 
 # 'world.cxx', 
 # 'worldmap/dot.cxx', 
 # 'worldmap/dot_factory.cxx', 

@@ -26,6 +26,7 @@
 namespace Pingus {
 
 std::list<DisplayHook*> Display::display_hooks;
+SDL_Surface* Display::screen;
 
 DisplayHook::DisplayHook() : is_visible(false)
 {
@@ -79,6 +80,16 @@ void
 Display::remove_flip_screen_hook(DisplayHook* hook)
 {
   display_hooks.remove(hook);
+}
+
+void
+Display::set_video_mode(int width, int height)
+{
+  screen = SDL_SetVideoMode(width, height, 0, SDL_DOUBLEBUF); // | SDL_FULLSCREEN
+  if (screen == NULL) {
+    printf("Unable to set video mode: %s\n", SDL_GetError());
+    exit(1);
+  }
 }
 
 } // namespace Pingus

@@ -22,6 +22,7 @@
 
 //#include <ClanLib/Core/Math/rect.h>
 //#include <ClanLib/Display/color.h>
+#include "SDL.h"
 #include <vector>
 #include "drawing_request.hxx"
 #include "../vector.hxx"
@@ -48,19 +49,13 @@ private:
 
 public:
   DrawingContext();
-	virtual ~DrawingContext();
+  virtual ~DrawingContext();
 
   /** Draws everything in the drawing context to the screen */
-  void render(CL_GraphicContext* gc);
+  void render(SDL_Surface* screen);
 
   /** Empties the drawing context */
   void clear();
-
-#if 0
-  /** Fills the screen with a given color, this is different from
-      clear() in that it doesn't remove other DrawingRequest from the
-      queue */
-  void fill_screen(const CL_Color& color);
 
   /*{ */
   void draw(DrawingRequest* request);
@@ -70,6 +65,13 @@ public:
       DrawingContext FIXME: Not such a good feeling with this, but
       worth a try */
   void draw(DrawingContext* dc, float z = 0);
+
+#if 0
+
+  /** Fills the screen with a given color, this is different from
+      clear() in that it doesn't remove other DrawingRequest from the
+      queue */
+  void fill_screen(const CL_Color& color);
 
   void draw(const CL_Surface&  surface, const Vector& pos);
   void draw(const CL_Sprite&   sprite,  float x, float y, float z = 0);

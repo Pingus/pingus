@@ -35,6 +35,7 @@ class ScreenManager
 private:
   static ScreenManager* instance_;
 
+  SDL_Surface* screen;
   DrawingContext* display_gc;
 
   /** Screen stack (first is the screen, second is delete_screen,
@@ -51,7 +52,7 @@ private:
 protected:
   ScreenManager ();
 public:
-  ~ScreenManager ();
+  ~ScreenManager();
 
   /** Start the screen manager and let it take control, this will
       not return until the somebody signals a quit() */

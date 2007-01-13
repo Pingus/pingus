@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_DISPLAY_HXX
 
 #include "../pingus.hxx"
+#include "SDL.h"
 #include <list>
 
 namespace Pingus {
@@ -52,6 +53,7 @@ class Display
 {
 private:
   static std::list<DisplayHook*> display_hooks;
+  static SDL_Surface* screen;
 public:
   static void draw_rect(int x1, int y1, int x2, int y2, float r, float g, float b, float a);
 
@@ -60,6 +62,8 @@ public:
   static void add_flip_screen_hook(DisplayHook*);
   static void remove_flip_screen_hook(DisplayHook*);
 
+  static void set_video_mode(int width, int height);
+  static SDL_Surface* get_screen() { return screen; }
 private:
   Display ();
   Display (const Display&);

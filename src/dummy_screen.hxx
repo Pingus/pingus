@@ -1,7 +1,7 @@
-//  $Id$
-// 
+//  $Id: screen.hxx,v 1.4 2003/10/19 12:25:47 grumbel Exp $
+//
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -12,40 +12,42 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_DRAWING_REQUEST_HXX
-#define HEADER_DRAWING_REQUEST_HXX
+#ifndef HEADER_PINGUS_DUMMY_SCREEN_HXX
+#define HEADER_PINGUS_DUMMY_SCREEN_HXX
 
-#include "SDL.h"
-#include "math/vector3.hpp"
+#include "gui/screen.hxx"
 
-/** 
- */
-class DrawingRequest
+namespace Pingus {
+
+class DrawingContext;
+
+/** DummyScreen without any actual functionality, just for testing */
+class DummyScreen : public Screen
 {
-protected:
-  Vector3 pos;
+private:
 
 public:
-  DrawingRequest(const Vector3& pos_) : pos(pos_) {}
-  virtual ~DrawingRequest() {};
-  
-  virtual void draw(SDL_Surface* gc) = 0;
-  
-  /** Returns true if the request contains an alpha channel and needs
-      to be drawn in order */
-  virtual bool has_alpha() { return true; }
+  DummyScreen () { }
+  virtual ~DummyScreen () {}
 
-  /** Returns the position at which the request should be drawn */
-  virtual float get_z_pos() { return pos.z; }
+  /** Draw this screen @return true if draw was successfull, false if
+      frameskip has taken place ('causes a skip of flip_display) */
+  bool draw (DrawingContext& gc) { return 0; }
+
+  /** Pass a delta to the screen */
+  void update (const GameDelta& delta) {}
+
 private:
-  DrawingRequest (const DrawingRequest&);
-  DrawingRequest& operator= (const DrawingRequest&);
+  DummyScreen (const DummyScreen&);
+  DummyScreen& operator= (const DummyScreen&);
 };
+
+} // namespace Pingus
 
 #endif
 

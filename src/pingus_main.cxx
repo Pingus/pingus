@@ -43,7 +43,8 @@
 
 #include "command_line.hpp"
 
-//#include "gui/screen_manager.hxx"
+#include "gui/screen_manager.hxx"
+#include "dummy_screen.hxx"
 // #include "gui/input_debug_screen.hxx"
 #include "path_manager.hxx"
 #include "pingus_main.hxx"
@@ -751,8 +752,11 @@ PingusMain::start_game ()
     }
   else // start a normal game
     {
-      ////ScreenManager::instance()->push_screen (PingusMenuManager::instance (), false);
-      ////ScreenManager::instance()->push_screen (new StoryScreen(), true);
+      std::cout << "starting normal game" << std::endl;
+      ///ScreenManager::instance()->push_screen(PingusMenuManager::instance (), false);
+      ////ScreenManager::instance()->push_screen(new StoryScreen(), true);
+      ScreenManager::instance()->push_screen(new DummyScreen(), true);
+      std::cout << "done: starting normal game" << std::endl;
     }
 
   if (!render_preview)
@@ -760,7 +764,7 @@ PingusMain::start_game ()
       // show the main menu, the rest of the game is spawn from there
       if (maintainer_mode)
         std::cout << "PingusMain::start screen manager" << std::endl;
-      ////ScreenManager::instance()->display();
+      ScreenManager::instance()->display();
       if (maintainer_mode)
         std::cout << "PingusMain::quit game and screen_manager" << std::endl;
 
@@ -799,7 +803,7 @@ PingusMain::main(int argc, char** argv)
 
       print_greeting_message();
 
-      init_clanlib();
+      init_sdl();
       init_pingus();
 
       // Avoid uglyness on window opening
@@ -843,10 +847,6 @@ PingusMain::main(int argc, char** argv)
   deinit_pingus();
   deinit_clanlib();
 
-#if defined WIN32 && defined _DEBUG
-  cl_console.wait_for_key();
-#endif
-
   return 0;
 }
 
@@ -858,14 +858,8 @@ PingusMain::init_sdl()
     exit(1);
   }
   atexit(SDL_Quit); 
-
-  SDL_Surface *screen;
- 
-  screen = SDL_SetVideoMode(640, 480, 16, SDL_DOUBLEBUF | SDL_FULLSCREEN);
-  if (screen == NULL) {
-    printf("Unable to set video mode: %s\n", SDL_GetError());
-    exit(1);
-  }
+  Display::set_video_mode(screen_width, screen_height);
+  SDL_WM_SetCaption(PACKAGE_STRING " - SDL Edition", 0 /* icon */);
 }
 
 void
@@ -919,7 +913,7 @@ void
 PingusMain::on_exit_press()
 {
   std::cout << "Exit pressed" << std::endl;
-  ////ScreenManager::instance()->clear();
+  ScreenManager::instance()->clear();
 }
 
 void

@@ -31,8 +31,6 @@ namespace Pingus {
 class PingusMain
 {
 private:
-  SDL_Surface* screen;
-
   bool    blitter_test;
   bool    no_config_file;
   bool    show_credits;

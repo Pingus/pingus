@@ -19,10 +19,6 @@
 
 #include <assert.h>
 #include <iostream>
-#include <ClanLib/Display/display.h>
-#include <ClanLib/Display/sprite.h>
-#include <ClanLib/Display/font.h>
-#include <ClanLib/Display/graphic_context.h>
 #include <iostream>
 #include "drawing_context.hxx"
 
@@ -35,6 +31,7 @@ struct DrawingRequestsSorter
   }
 };
 
+#if 0
 class FillScreenDrawingRequest : public DrawingRequest
 {
 private:
@@ -93,13 +90,13 @@ public:
 class LineDrawingRequest : public DrawingRequest
 {
 private:
-  CL_Pointf pos1;
-  CL_Pointf pos2;
+  Vector pos1;
+  Vector pos2;
   CL_Color  color;
 
 public:
-  LineDrawingRequest(const CL_Pointf& pos1_, 
-                     const CL_Pointf& pos2_, 
+  LineDrawingRequest(const Vector& pos1_, 
+                     const Vector& pos2_, 
                      const CL_Color&  color_,
                      float z)
     : DrawingRequest(CL_Vector(0, 0, z)),
@@ -171,6 +168,7 @@ public:
   }
 };
 
+#endif 
 class DrawingContextDrawingRequest : public DrawingRequest
 {
 private:
@@ -178,7 +176,7 @@ private:
   
 public:
   DrawingContextDrawingRequest(DrawingContext* dc_, float z)
-    : DrawingRequest(CL_Vector(0,0,z)),
+    : DrawingRequest(Vector3(0,0,z)),
       dc(dc_)
   {}
   
@@ -187,14 +185,14 @@ public:
     delete dc;
   }
 
-  void draw(CL_GraphicContext* gc) {
-    dc->render(gc);
+  void draw(SDL_Surface* screen) {
+    dc->render(screen);
   }
 };
 
 DrawingContext::DrawingContext()
 {
-  translate_stack.push_back(CL_Pointf(0, 0));
+  translate_stack.push_back(Vector(0, 0));
 }
 
 DrawingContext::~DrawingContext()
@@ -204,7 +202,7 @@ DrawingContext::~DrawingContext()
 }
 
 void
-DrawingContext::render(CL_GraphicContext* gc)
+DrawingContext::render(SDL_Surface* screen)
 {
   std::stable_sort(drawingrequests.begin(), drawingrequests.end(), DrawingRequestsSorter());
   
@@ -218,7 +216,7 @@ DrawingContext::render(CL_GraphicContext* gc)
   for(DrawingRequests::iterator i = drawingrequests.begin(); i != drawingrequests.end(); ++i)
     {
       //std::cout << this << ": " << (*i)->get_z_pos() << std::endl;
-      (*i)->draw(gc);
+      (*i)->draw(screen);
     }
 }
 
@@ -244,6 +242,7 @@ DrawingContext::draw(DrawingContext* dc, float z)
   draw(new DrawingContextDrawingRequest(dc, z));
 }
 
+#if 0
 void
 DrawingContext::draw(const CL_Surface&  surface, const Vector& pos)
 {
@@ -255,7 +254,7 @@ DrawingContext::draw(const CL_Surface&  surface, const Vector& pos)
 void
 DrawingContext::draw(const CL_Sprite& sprite, const Vector& pos)
 {
-	draw(sprite, pos.x, pos.y, pos.z);
+  draw(sprite, pos.x, pos.y, pos.z);
 }
 
 void
@@ -277,7 +276,7 @@ void
 DrawingContext::draw_line (float x1, float y1, float x2, float y2, 
                            const CL_Color& color, float z)
 {
-  draw(new LineDrawingRequest(CL_Pointf(x1, y1), CL_Pointf(x2, y2), color, z));
+  draw(new LineDrawingRequest(Vector(x1, y1), Vector(x2, y2), color, z));
 }
 
 void
@@ -364,7 +363,7 @@ void
 DrawingContext::reset_modelview()
 {
   translate_stack.clear();
-  translate_stack.push_back(CL_Pointf(0, 0));
+  translate_stack.push_back(Vector(0, 0));
 }
 
 CL_Rect
@@ -390,35 +389,42 @@ DrawingContext::get_height() const
 void
 DrawingContext::print_left (const CL_Font& font_, float x_pos, float y_pos, const std::string& str, float z)
 {
+#if 0
   draw(new FontDrawingRequest(font_, 
                               origin_top_left,
                               CL_Vector(x_pos + translate_stack.back().x,
                                         y_pos + translate_stack.back().y),
                               str,
                               z));
+#endif
 }
 
 void
 DrawingContext::print_center (const CL_Font& font_, float x_pos, float y_pos, const std::string& str, float z)
 {
+#if 0
   draw(new FontDrawingRequest(font_, 
                               origin_top_center,
                               CL_Vector(x_pos + translate_stack.back().x,
                                         y_pos + translate_stack.back().y),
                               str,
                               z));
+#endif 
 }
 
 void
 DrawingContext::print_right (const CL_Font& font_, float x_pos, float y_pos, const std::string& str, float z)
 {
+#if 0
   draw(new FontDrawingRequest(font_, 
                               origin_top_right,
                               CL_Vector(x_pos + translate_stack.back().x,
                                         y_pos + translate_stack.back().y),
                               str,
                               z));
+#endif 
 }
+#endif 
 
 Vector
 DrawingContext::screen_to_world (Vector pos)

@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "SDL.h"
 #include <iostream>
 #include "../globals.hxx"
 #include "cursor.hxx"
@@ -30,40 +31,30 @@ namespace Pingus {
 
 ScreenManager* ScreenManager::instance_ = 0;
 
-ScreenManager::ScreenManager ()
+ScreenManager::ScreenManager()
 {
-#if 0 
-  // FIXME:
-  if (render_preview)
-    display_gc = new BufferGraphicContext(800, 600);
-  else
-    display_gc = new DisplayGraphicContext(0, 0, CL_Display::get_width (), CL_Display::get_height (),
-                                           0, 0);
-#endif
-////  display_gc = new DrawingContext();
+  display_gc = new DrawingContext();
 
   cached_action = CA_NONE;
 }
 
 ScreenManager::~ScreenManager ()
 {
-////	delete display_gc;
+  delete display_gc;
 }
 
 void
-ScreenManager::display ()
+ScreenManager::display()
 {
 #if 0
   Input::Controller* input_controller = 0;
-#if 0
+
   if (controller_file.empty())
     input_controller = new Input::Controller(path_manager.complete("controller/default.xml"));
   else
     input_controller = new Input::Controller(controller_file);
-#endif
   Input::Controller::set_current(input_controller);
 
-#if 0
   Cursor* cursor = 0;
   if (swcursor_enabled)
     {
@@ -71,7 +62,7 @@ ScreenManager::display ()
       Display::add_flip_screen_hook(cursor);
       //CL_MouseCursor::hide();
     }
-#endif 
+#endif
 
   DeltaManager delta_manager;
 
@@ -88,17 +79,30 @@ ScreenManager::display ()
 	  continue;
 	}
 
-      // Let ClanLib fetch events
-      ///CL_System::keep_alive ();
+      { // Let SDL fetch events
+        SDL_Event event;
+        while(SDL_PollEvent(&event))
+          {
+            switch(event.type)
+              {
+              case SDL_QUIT:
+                pop_screen();
+                break;
+
+              default:
+                // FIXME: feed other events to the input manager
+                break;
+              }
+          }
+      }
 
       // Get new events from ClanLib
-      input_controller->update(time_delta);
+      ////input_controller->update(time_delta);
 
       // Fill the delta with values
-      GameDelta delta(time_delta, delta_manager.get_absolute(),
-                      input_controller->get_events());
-
-      input_controller->clear();
+      GameDelta delta(time_delta, delta_manager.get_absolute(), Input::EventLst()); 
+      ////input_controller->get_events());
+      //// input_controller->clear();
 
       last_screen = get_current_screen();
 
@@ -111,7 +115,7 @@ ScreenManager::display ()
 #endif
 
       // Last screen has poped, so we are going to end here
-      if (screens.empty ())
+      if (screens.empty())
 	continue;
 
       while (cached_action != CA_NONE)
@@ -142,21 +146,22 @@ ScreenManager::display ()
       	{
 	  if (get_current_screen()->draw(*display_gc))
             {
-              ////display_gc->render(CL_Display::get_current_window()->get_gc());
+              display_gc->render(Display::get_screen());
               Display::flip_display ();
-              ////display_gc->clear();
+              display_gc->clear();
             }
         }
       else
 	{
 	  //std::cout << "ScreenManager: fading screens" << std::endl;
-	  fade_over (last_screen, get_current_screen());
+	  fade_over(last_screen, get_current_screen());
 	}
 
       // Stupid hack to make this thing take less CPU
       ////CL_System::keep_alive(5);
     }
 
+#if 0
 ////  Display::remove_flip_screen_hook(cursor);
 ////  delete cursor;
   delete input_controller;
