@@ -78,7 +78,7 @@ FileReader::read_string(const char* name, std::string& value) const
 }
 
 bool
-FileReader::read_vector(const char* name, Vector& value) const
+FileReader::read_vector(const char* name, Vector3f& value) const
 {
   if (impl.get())
     return impl->read_vector(name, value);

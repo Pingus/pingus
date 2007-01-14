@@ -24,14 +24,13 @@
 #include <vector>
 #include "shared_ptr.hxx"
 
-class CL_Size;
-class CL_Sizef;
+class Size;
 class Color;
+class Vector3f;
 
 namespace Pingus {
 
 class ResDescriptor;
-class Vector;
 class FileReaderImpl;
 
 /** Interface to read name/value pairs out of some kind of file or
@@ -50,7 +49,7 @@ public:
   bool read_float (const char* name, float&)         const;
   bool read_bool  (const char* name, bool&)          const;
   bool read_string(const char* name, std::string&)   const;
-  bool read_vector(const char* name, Vector&)        const;
+  bool read_vector(const char* name, Vector3f&)      const;
   bool read_color (const char* name, Color&)         const;
   ////  bool read_size  (const char* name, CL_Size&)       const;
   bool read_desc  (const char* name, ResDescriptor&) const;

@@ -46,7 +46,7 @@ public:
   const std::string& get_description() const;
 
   /** Returns the width of the level */
-  const CL_Size&     get_size() const;
+  const Size&  get_size() const;
 
   /** Returns the number of Pingus, which are going to be released in
       this level. */

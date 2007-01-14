@@ -41,7 +41,7 @@ PingusLevel::get_description() const
   return impl->description;
 }
 
-const CL_Size&
+const Size&
 PingusLevel::get_size() const
 {
   return impl->size;

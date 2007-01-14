@@ -23,14 +23,13 @@
 #include <vector>
 #include <string>
 
-class CL_Size;
-class CL_Sizef;
+class Size;
 class Color;
+class Vector3f;
 
 namespace Pingus {
 
 class FileReader;
-class Vector;
 class ResDescriptor;
 
 /** */
@@ -45,7 +44,7 @@ public:
   virtual bool read_float (const char* name, float&)       const =0;
   virtual bool read_bool  (const char* name, bool&)        const =0;
   virtual bool read_string(const char* name, std::string&) const =0;
-  virtual bool read_vector(const char* name, Vector&)      const =0;
+  virtual bool read_vector(const char* name, Vector3f&)    const =0;
   virtual bool read_color (const char* name, Color&)   const =0;
   virtual bool read_desc  (const char* name, ResDescriptor&) const =0;
   ////  virtual bool read_size  (const char* name, CL_Size&)       const =0;

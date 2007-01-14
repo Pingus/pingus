@@ -694,9 +694,11 @@ PingusMain::start_game ()
         SExprFileReader reader(sexpr);
     
         int t = 0; 
+        std::string str;
         reader.read_int("test", t);
+        reader.read_string("teststr", str);
 
-        std::cout << reader.get_name() << ": t == " << t << std::endl;
+        std::cout << reader.get_name() << ": t == " << t << " str: " << str << std::endl;
       }
     else
       {

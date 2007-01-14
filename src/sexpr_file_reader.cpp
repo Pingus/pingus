@@ -24,6 +24,9 @@
 */
 
 #include <assert.h>
+#include "math/vector3f.hpp"
+#include "math/color.hpp"
+#include "math/size.hpp"
 #include "file_reader_impl.hxx"
 #include "sexpr_file_reader.hpp"
 
@@ -58,69 +61,136 @@ public:
 
   bool read_int   (const char* name, int& v) const 
   {
-    lisp::Lisp* sub = get_subsection(name);
-    if (sub && sub->get_list_size() == 2)
+    lisp::Lisp* item = get_subsection_item(name);
+    if (item && item->get_type() == lisp::Lisp::TYPE_INT)
       {
-        if (sub->get_list_elem(1)->get_type() == lisp::Lisp::TYPE_INT)
+        v = item->get_int();
+        return true;
+      }
+    return false;
+  }
+
+  bool read_float (const char* name, float& v) const 
+  {
+    lisp::Lisp* item = get_subsection_item(name);
+    if (item && item->get_type() == lisp::Lisp::TYPE_FLOAT)
+      {
+        v = item->get_float();
+        return true;
+      }
+    return false;
+  }
+
+  bool read_bool  (const char* name, bool& v) const 
+  {
+    lisp::Lisp* item = get_subsection_item(name);
+    if (item && item->get_type() == lisp::Lisp::TYPE_BOOL)
+      {
+        v = item->get_bool();
+        return true;
+      }
+    return false;
+  }
+
+  bool read_string(const char* name, std::string& v) const 
+  {
+    lisp::Lisp* item = get_subsection_item(name);
+    if (item)
+      {
+        if (item->get_type() == lisp::Lisp::TYPE_STRING)
           {
-            v = sub->get_list_elem(1)->get_int();
+            v = item->get_string();
+            return true;
+          }
+        else if (item->get_type() == lisp::Lisp::TYPE_SYMBOL)
+          {
+            v = item->get_symbol();
             return true;
           }
       }
     return false;
   }
 
-  bool read_float (const char* name, float&) const 
+  bool read_vector(const char* name, Vector3f& v) const
+  {
+    lisp::Lisp* sub = get_subsection_item(name);
+    if (sub && sub->get_list_size() == 4)
+      {
+        v = Vector3f(sub->get_list_elem(1)->get_float(),
+                     sub->get_list_elem(2)->get_float(),
+                     sub->get_list_elem(3)->get_float());
+        return true;
+      }    
+    return false;
+  }
+
+  bool read_color (const char* name, Color& v) const
+  {
+    lisp::Lisp* sub = get_subsection_item(name);
+    if (sub && sub->get_list_size() == 5)
+      {
+        v = Color(int(sub->get_list_elem(1)->get_float() * 255),
+                  int(sub->get_list_elem(2)->get_float() * 255),
+                  int(sub->get_list_elem(3)->get_float() * 255),
+                  int(sub->get_list_elem(4)->get_float() * 255));
+        return true;
+      }
+    return false;
+  }
+
+  bool read_desc  (const char* name, ResDescriptor& v) const 
   {
     return false;
   }
 
-  bool read_bool  (const char* name, bool&) const 
+  bool read_size  (const char* name, Size& v) const 
   {
+    lisp::Lisp* sub = get_subsection_item(name);
+    if (sub && sub->get_list_size() == 3)
+      {
+        v = Size(int(sub->get_list_elem(1)->get_int()),
+                 int(sub->get_list_elem(2)->get_int()));
+        return true;
+      }
     return false;
   }
 
-  bool read_string(const char* name, std::string&) const 
+  bool read_section(const char* name, FileReader& v) const 
   {
-    return false;
-  }
-
-  bool read_vector(const char* name, Vector&) const
-  {
-    return false;
-  }
-
-  bool read_color (const char* name, Color&) const
-  {
-    return false;
-  }
-
-  bool read_desc  (const char* name, ResDescriptor&) const 
-  {
-    return false;
-  }
-
-  bool read_size  (const char* name, CL_Size&) const 
-  {
-    return false;
-  }
-
-  bool read_section(const char* name, FileReader&) const 
-  {
+    lisp::Lisp* cur = get_subsection(name);
+    if (cur)
+      {
+        v = SExprFileReader(cur);
+        return true;
+      }
     return false;
   }
 
   std::vector<FileReader> get_sections() const 
   {
-    return std::vector<FileReader>();
+    std::vector<FileReader> lst;
+    for(size_t i = 1; i < sexpr->get_list_size(); ++i)
+      { // iterate over subsections
+        lst.push_back(SExprFileReader(sexpr->get_list_elem(i)));
+      }
+    return lst;
   }
 
   std::vector<std::string> get_section_names() const 
   {
     return std::vector<std::string>();
   }
-
 private:
+  lisp::Lisp* get_subsection_item(const char* name) const
+  {
+    lisp::Lisp* sub = get_subsection(name);
+    if (sub && sub->get_list_size() == 2)
+      {
+        return sub->get_list_elem(1);
+      }
+    return 0;
+  }
+
   lisp::Lisp* get_subsection(const char* name) const
   {
     for(size_t i = 1; i < sexpr->get_list_size(); ++i)
@@ -130,8 +200,8 @@ private:
           return sub;
       }
     return 0;
-  }
-  
+  } 
+
 };
 
 SExprFileReader::SExprFileReader(lisp::Lisp* lisp)
