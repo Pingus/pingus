@@ -24,7 +24,6 @@
 #include "sound_dummy.hxx"
 #include "sound.hxx"
 
-namespace Pingus {
 namespace Sound {
 
 PingusSoundImpl * PingusSound::sound;
@@ -126,7 +125,6 @@ PingusSound::stop_music()
 }
 
 } // namespace Sound
-} // namespace Pingus
 
 /* EOF */
 

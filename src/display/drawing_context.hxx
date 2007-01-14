@@ -32,8 +32,6 @@ class Font;
 class Sprite;
 class CL_Surface;
 
-namespace Pingus {
-
 /** The DrawingContext collects all DrawingRequests and allows you to
     flush them all down to the graphics card in one run, this has the
     advantage that it is possible to z-sort, texture-id sort or
@@ -134,8 +132,6 @@ private:
   DrawingContext (const DrawingContext&);
   DrawingContext& operator= (const DrawingContext&);
 };
-
-}
 
 #endif
 

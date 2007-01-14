@@ -27,7 +27,6 @@
 
 class CL_Font;
 
-namespace Pingus {
 
 class Theme
 {
@@ -88,7 +87,6 @@ private:
   Theme& operator= (const Theme&);
 };
 
-} // namespace Pingus
 
 #endif
 

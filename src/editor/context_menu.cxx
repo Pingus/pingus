@@ -26,7 +26,6 @@
 #include "../gui/gui_manager.hxx"
 #include "../fonts.hxx"
 
-namespace Pingus {
 
 namespace Editor {
 

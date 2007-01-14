@@ -24,7 +24,6 @@
 #include "action_holder.hxx"
 #include "pingus_level.hxx"
 
-namespace Pingus {
 
 class Pingu;
 class World;
@@ -75,7 +74,6 @@ private:
   Server& operator= (const Server&);
 };
 
-} // namespace Pingus
 
 #endif
 

@@ -30,7 +30,6 @@
 
 class CL_PixelBuffer;
 
-namespace Pingus {
 
 class SceneContext;
 class PingusLevel;
@@ -108,7 +107,6 @@ private:
   GroundMap& operator= (const GroundMap&);
 };
 
-} // namespace Pingus
 
 #endif
 

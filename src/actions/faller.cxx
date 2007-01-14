@@ -30,7 +30,6 @@
 #include "../worldobj.hxx"
 #include "faller.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 Faller::Faller (Pingu* p)
@@ -172,6 +171,5 @@ Faller::change_allowed (ActionName new_action)
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

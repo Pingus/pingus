@@ -24,7 +24,6 @@
 #include <string>
 #include "file_reader.hxx"
 
-namespace Pingus {
 
 class WorldObj;
 class WorldObjAbstractFactory;
@@ -57,7 +56,6 @@ private:
   WorldObjFactory& operator= (const WorldObjFactory&);
 };
 
-} // namespace Pingus
 
 #endif
 

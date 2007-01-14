@@ -23,7 +23,6 @@
 #include <vector>
 #include "server_event.hxx"
 
-namespace Pingus {
 
 class Server;
 class XMLPDF;
@@ -45,7 +44,6 @@ private:
   DemoPlayer& operator= (const DemoPlayer&);
 };
 
-} // namespace Pingus
 
 #endif
 

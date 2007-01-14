@@ -21,7 +21,6 @@
 #include <ClanLib/Display/pixel_buffer.h>
 #include "pingus_map_manager.hxx"
 
-namespace Pingus {
 
 std::string PingusMapManager::directory;
 
@@ -46,6 +45,5 @@ PingusMapManager::set_surface (const std::string& level_filename, const CL_Surfa
   UNUSED_ARG(level_filename);
 }
 
-} // namespace Pingus
 
 /* EOF */

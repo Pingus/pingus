@@ -37,8 +37,6 @@
 /* Headers needed for i18n / gettext */
 #include "gettext.h"
 
-namespace Pingus {
-
 void
 Blitter::put_surface(CL_PixelBuffer canvas, const CL_Surface& sur,
 		     int x, int y)
@@ -674,7 +672,5 @@ Blitter::rotate_270_flip (CL_PixelBuffer sur)
 {
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot270_flip());
 }
-
-} // namespace Pingus
 
 /* EOF */

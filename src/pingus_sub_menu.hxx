@@ -25,7 +25,6 @@
 class CL_Key;
 class CL_InputDevice;
 
-namespace Pingus {
 
 class PingusMenuManager;
 
@@ -49,7 +48,6 @@ private:
   PingusSubMenu& operator= (const PingusSubMenu&);
 };
 
-} // namespace Pingus
 
 #endif
 

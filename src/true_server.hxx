@@ -23,7 +23,6 @@
 #include "pingus_level.hxx"
 #include "server.hxx"
 
-namespace Pingus {
 
 /** FIXME: This whole Server/Client concept is screwed and the
     TrueServer/Server thing even more... */
@@ -54,7 +53,6 @@ private:
   TrueServer& operator= (const TrueServer&);
 };
 
-} // namespace Pingus
 
 #endif
 

@@ -21,7 +21,6 @@
 #include "../display/drawing_context.hxx"
 #include "path_drawable.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 PathDrawable::PathDrawable (const Path& arg_path)
@@ -50,6 +49,5 @@ PathDrawable::update (float delta)
 }
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 /* EOF */

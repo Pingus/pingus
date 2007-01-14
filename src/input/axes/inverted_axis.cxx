@@ -19,7 +19,6 @@
 
 #include "inverted_axis.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Axes {
 
@@ -53,6 +52,5 @@ InvertedAxis::update (float delta)
 
 } // namespace Axes
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */

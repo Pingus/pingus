@@ -22,7 +22,6 @@
 #include <assert.h>
 #include "path.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 Path::Path()
@@ -108,6 +107,5 @@ Path::reverse()
 }
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 /* EOF */

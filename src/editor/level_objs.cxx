@@ -28,7 +28,6 @@
 #include "../display/drawing_context.hxx"
 #include "../xml_file_writer.hxx"
 
-namespace Pingus {
 
 namespace Editor {
 

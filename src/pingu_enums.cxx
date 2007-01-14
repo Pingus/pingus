@@ -25,7 +25,6 @@
 const float deadly_velocity = 10.0f;
 const int pingu_height = 26;
 
-namespace Pingus {
 namespace Actions {
 
 std::string action_to_screenname (ActionName action)
@@ -120,6 +119,5 @@ ActionName action_from_string(const std::string& action)
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

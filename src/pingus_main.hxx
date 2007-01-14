@@ -26,7 +26,6 @@
 
 void segfault_handler(int);
 
-namespace Pingus {
 
 class PingusMain
 {
@@ -83,7 +82,6 @@ private:
 
 } app; // golbal class instance
 
-} // namespace Pingus
 
 #endif
 

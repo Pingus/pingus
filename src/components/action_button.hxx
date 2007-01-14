@@ -29,7 +29,6 @@
 
 class CL_Font;
 
-namespace Pingus {
 
 class TrueServer;
 class ActionHolder;
@@ -191,7 +190,6 @@ private:
   VerticalActionButton& operator= (const VerticalActionButton&);
 };
 
-} // namespace Pingus
 
 #endif /* ACTIONBUTTON */
 

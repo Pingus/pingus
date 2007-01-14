@@ -28,7 +28,6 @@
 class CL_SoundBuffer;
 class CL_SoundBuffer_Session;
 
-namespace Pingus {
 namespace Sound {
 
 /** A simple wrapper class around SDL_Mixer, it will init itself
@@ -68,7 +67,6 @@ private:
 };
 
 } // namespace Sound
-} // namespace Pingus
 
 #endif
 

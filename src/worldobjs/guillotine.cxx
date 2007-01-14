@@ -24,7 +24,6 @@
 #include "../resource.hxx"
 #include "guillotine.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 Guillotine::Guillotine(const FileReader& reader)
@@ -101,6 +100,5 @@ Guillotine::catch_pingu (Pingu* pingu)
 }
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

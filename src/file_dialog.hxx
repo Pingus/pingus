@@ -24,7 +24,6 @@
 #include <string>
 #include "pingus_sub_menu.hxx"
 
-namespace Pingus {
 
 class Vector;
 class FileDialogItem;
@@ -135,7 +134,6 @@ private:
   FileDialog& operator= (const FileDialog&);
 };
 
-} // namespace Pingus
 
 #endif
 

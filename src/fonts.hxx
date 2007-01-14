@@ -23,7 +23,6 @@
 #include "display/drawing_context.hxx"
 #include "font.hpp"
 
-namespace Pingus {
 namespace Fonts {
 
 extern std::string encoding;
@@ -50,7 +49,6 @@ void init ();
 void deinit ();
 
 } // namespace Fonts
-} // namespace Pingus
 
 #endif
 

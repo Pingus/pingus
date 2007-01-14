@@ -27,7 +27,6 @@
 #include "system.hxx"
 #include "gettext.h"
 
-namespace Pingus {
 
 PingusLevelDesc::PingusLevelDesc(const PingusLevel& arg_plf)
 {
@@ -99,7 +98,6 @@ PingusLevelDesc::draw(PingusLevelDesc::LoadingStatus status)
   }
 }
 
-} // namespace Pingus
 
 /* EOF */
 

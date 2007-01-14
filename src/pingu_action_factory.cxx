@@ -46,7 +46,6 @@
 
 #include "pingu_action_factory.hxx"
 
-namespace Pingus {
 
 using namespace Actions;
 
@@ -194,6 +193,5 @@ PinguActionFactory::register_factory (ActionName id, PinguActionAbstractFactory*
   factories[id] = factory;
 }
 
-} // namespace Pingus
 
 /* EOF */

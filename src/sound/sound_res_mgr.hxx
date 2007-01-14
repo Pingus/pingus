@@ -26,7 +26,6 @@ class CL_SoundBuffer;
 
 typedef CL_SoundBuffer* SoundHandle;
 
-namespace Pingus {
 
 /** */
 class SoundResMgr
@@ -43,7 +42,6 @@ private:
   SoundResMgr& operator= (const SoundResMgr&);
 };
 
-} // namespace Pingus
 
 #endif
 

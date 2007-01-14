@@ -21,7 +21,6 @@
 #include "pingus_error.hxx"
 #include "state_sprite.hxx"
 
-namespace Pingus {
 
 StateSprite::StateSprite()
 {
@@ -66,6 +65,5 @@ StateSprite::operator[](int state)
     }
 }
 
-} // namespace Pingus
 
 /* EOF */

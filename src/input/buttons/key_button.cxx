@@ -23,7 +23,6 @@
 
 #include <iostream>
 
-namespace Pingus {
 namespace Input {
 namespace Buttons {
 
@@ -68,6 +67,5 @@ KeyButton::key_release_handler (const CL_InputEvent& event)
 
 } // namespace Buttons
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */

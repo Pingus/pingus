@@ -27,7 +27,6 @@
 
 class CL_Font;
 
-namespace Pingus {
 
 class Credits : public GUIScreen
 {
@@ -80,7 +79,6 @@ private:
 
 };
 
-} // namespace Pingus
 
 #endif
 

@@ -25,7 +25,6 @@
 
 class CL_Font;
 
-namespace Pingus {
 
 class World;
 class Controller;
@@ -50,7 +49,6 @@ private:
   PingusLevelResult& operator= (const PingusLevelResult&);
 };
 
-} // namespace Pingus
 
 #endif
 

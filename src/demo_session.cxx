@@ -29,7 +29,6 @@
 #include "display/scene_context.hxx"
 #include "demo_session.hxx"
 
-namespace Pingus {
 
 DemoSession::DemoSession(const std::string& filename)
 {
@@ -113,6 +112,5 @@ DemoSession::update(float delta)
     }
 }
 
-} // namespace Pingus
 
 /* EOF */

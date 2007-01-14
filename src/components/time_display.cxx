@@ -33,7 +33,6 @@
 
 #include "time_display.hxx"
 
-namespace Pingus {
 
 TimeDisplay::TimeDisplay (Client* c)
   : server(c->get_server()),
@@ -68,6 +67,5 @@ TimeDisplay::draw (DrawingContext& gc)
 	}
 }
 
-} // namespace Pingus
 
 /* EOF */

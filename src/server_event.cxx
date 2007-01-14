@@ -25,7 +25,6 @@
 #include "world.hxx"
 #include "pingu_holder.hxx"
 
-namespace Pingus {
 
 ServerEvent::ServerEvent() :
 	type(PINGU_ACTION_EVENT),
@@ -120,6 +119,5 @@ ServerEvent::send(Server* server)
     }
 }
 
-} // namespace Pingus
 
 /* EOF */

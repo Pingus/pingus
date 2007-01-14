@@ -24,7 +24,6 @@
 #include "gui/screen.hxx"
 #include "pingus_level.hxx"
 
-namespace Pingus {
 
 class Client;
 class TrueServer;
@@ -86,7 +85,6 @@ private:
   PingusGameSession& operator= (const PingusGameSession&);
 };
 
-} // namespace Pingus
 
 #endif
 

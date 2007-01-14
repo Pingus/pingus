@@ -29,7 +29,6 @@
 #include "../resource.hxx"
 #include "exit.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 Exit::Exit(const FileReader& reader)
@@ -113,6 +112,5 @@ Exit::get_z_pos () const
 }
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

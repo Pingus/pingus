@@ -23,7 +23,6 @@
 #include <map>
 #include <string>
 
-namespace Pingus {
 
 /** */
 class StatManager
@@ -66,7 +65,6 @@ private:
   StatManager& operator= (const StatManager&);
 };
 
-} // namespace Pingus
 
 #endif
 

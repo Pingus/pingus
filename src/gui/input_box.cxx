@@ -23,7 +23,6 @@
 #include "../vector.hxx"
 #include "../fonts.hxx"
 
-namespace Pingus {
 namespace GUI {
 	
 InputBox::InputBox(float width_, Vector p, const std::string& default_value,

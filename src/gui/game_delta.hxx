@@ -24,7 +24,6 @@
 #include "../delta_manager.hxx"
 #include "../input/event.hxx"
 
-namespace Pingus {
 
 /** Input for the game engine */
 class GameDelta
@@ -63,7 +62,6 @@ private:
   GameDelta& operator= (const GameDelta&);
 };
 
-} // namespace Pingus
 
 #endif
 

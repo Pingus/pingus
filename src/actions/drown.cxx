@@ -23,7 +23,6 @@
 #include "../resource.hxx"
 #include "drown.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 Drown::Drown (Pingu* p)
@@ -52,6 +51,5 @@ Drown::update ()
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

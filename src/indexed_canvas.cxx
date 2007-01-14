@@ -20,7 +20,6 @@
 #include "indexed_canvas.hxx"
 #include <assert.h>
 
-namespace Pingus {
 
 IndexedCanvas::IndexedCanvas(int w, int h)
   : width(w),
@@ -48,6 +47,5 @@ IndexedCanvas::get_palette() const
   return const_cast<CL_Palette*>(&palette);
 }
 
-} // namespace Pingus
 
 /* EOF */

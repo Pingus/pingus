@@ -24,7 +24,6 @@
 #include "../pingu_action.hxx"
 #include "../state_sprite.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 class Miner : public PinguAction
@@ -56,7 +55,6 @@ private:
 };
 
 } // namespace Actions
-} // namespace Pingus
 
 #endif
 

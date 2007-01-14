@@ -24,7 +24,6 @@
 #include "pingu_holder.hxx"
 #include "goal_manager.hxx"
 
-namespace Pingus {
 
 GoalManager::GoalManager(Server* s)
   : server(s), goal(GT_NONE), exit_time(0)
@@ -89,6 +88,5 @@ GoalManager::set_abort_goal()
     }
 }
 
-} // namespace Pingus
 
 /* EOF */

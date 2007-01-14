@@ -22,7 +22,6 @@
 
 #include "../button.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Buttons {
 
@@ -45,7 +44,6 @@ private:
 
 } // namespace Buttons
 } // namespace Input
-} // namespace Pingus
 
 #endif
 

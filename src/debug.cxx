@@ -19,7 +19,6 @@
 
 #include "debug.hxx"
 
-namespace Pingus {
 
 /* Stream for error messages */
 DebugStream perr("[Error] ");
@@ -30,6 +29,5 @@ DebugStream pwarn("[Warning] ");
 /* For everything else (temporary stuff only) */
 DebugStream pout ("[Output] ");
 
-} // namespace Pingus
 
 /* EOF */

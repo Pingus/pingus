@@ -26,7 +26,6 @@
 
 class CL_Font;
 
-namespace Pingus {
 
 class DrawingContext;
 class World;
@@ -48,7 +47,6 @@ private:
   PingusCounter& operator= (const PingusCounter&);
 };
 
-} // namespace Pingus
 
 #endif
 

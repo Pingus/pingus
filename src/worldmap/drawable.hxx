@@ -23,7 +23,6 @@
 #include "../pingus_error.hxx"
 #include "../file_reader.hxx"
 
-namespace Pingus {
 
 class DrawingContext;
 
@@ -72,7 +71,6 @@ private:
 };
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 #endif
 

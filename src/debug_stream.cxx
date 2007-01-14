@@ -22,7 +22,6 @@
 
 using std::ostream;
 
-namespace Pingus {
 
 NilStream DebugStream::nilstream;
 
@@ -159,6 +158,5 @@ NilStream::NilStream ()
 {
 }
 
-} // namespace Pingus
 
 /* EOF */

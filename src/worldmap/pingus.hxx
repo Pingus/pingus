@@ -25,7 +25,6 @@
 #include "drawable.hxx"
 #include "path_graph.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 /** This is the representation of the horde of Pingus which will walk
@@ -126,7 +125,6 @@ private:
 };
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 #endif
 

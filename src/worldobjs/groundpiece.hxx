@@ -26,7 +26,6 @@
 #include "../worldobj.hxx"
 #include "../vector.hxx"
 
-namespace Pingus {
 
 namespace WorldObjsData {
 class GroundpieceData;
@@ -57,7 +56,6 @@ private:
 };
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 #endif
 

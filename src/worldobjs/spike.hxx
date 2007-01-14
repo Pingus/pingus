@@ -23,7 +23,6 @@
 #include "../game_counter.hxx"
 #include "../worldobj.hxx"
 
-namespace Pingus {
 
 namespace WorldObjsData {
 class SpikeData;
@@ -57,7 +56,6 @@ private:
 };
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 #endif
 

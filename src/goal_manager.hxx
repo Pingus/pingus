@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_GOAL_MANAGER_HXX
 #define HEADER_PINGUS_GOAL_MANAGER_HXX
 
-namespace Pingus {
 
 class Server;
 
@@ -58,7 +57,6 @@ private:
   GoalManager& operator= (const GoalManager&);
 };
 
-} // namespace Pingus
 
 #endif
 

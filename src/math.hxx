@@ -23,7 +23,6 @@
 #include <stdlib.h>
 #include "pingus.hxx"
 
-namespace Pingus {
 
 /** A collection of small math helper functions, some of them might be
     equal in functionality to standard STL functions, but provided
@@ -89,7 +88,6 @@ int round (float f)
 }
 
 } // namespace Math
-} // namespace Pingus
 
 #endif
 

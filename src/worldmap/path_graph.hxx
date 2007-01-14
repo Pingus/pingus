@@ -27,7 +27,6 @@
 #include "pathfinder.hxx"
 #include "graph.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 class Dot;
@@ -96,7 +95,6 @@ private:
 };
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 #endif
 

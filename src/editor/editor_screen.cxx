@@ -35,7 +35,6 @@
 #include "xml_level.hxx"
 #include "level_objs.hxx"
 
-namespace Pingus {
 
 namespace Editor {
 

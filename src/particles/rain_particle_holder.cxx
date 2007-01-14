@@ -25,7 +25,6 @@
 #include "../world.hxx"
 #include "rain_particle_holder.hxx"
 
-namespace Pingus {
 namespace Particles {
 
 RainParticleHolder::RainParticle::RainParticle(int x, int y)
@@ -127,6 +126,5 @@ RainParticleHolder::draw (SceneContext& gc)
 }
 
 } // namespace Particles
-} // namespace Pingus
 
 /* EOF */

@@ -25,7 +25,6 @@
 
 using std::ostream;
 
-namespace Pingus {
 
 // Globale console
 Console console;
@@ -251,6 +250,5 @@ Console::on_event()
   draw();
 }
 
-} // namespace Pingus
 
 /* EOF */

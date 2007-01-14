@@ -29,7 +29,6 @@
 #include "../fonts.hxx"
 #include "pingus_counter.hxx"
 
-namespace Pingus {
 
 PingusCounter::PingusCounter(Server* s)
   : server(s),
@@ -58,6 +57,5 @@ PingusCounter::draw(DrawingContext& gc)
   gc.print_center(font, gc.get_width()/2, 3, str);
 }
 
-} // namespace Pingus
 
 /* EOF */

@@ -27,7 +27,6 @@
 #include "../display/drawing_context.hxx"
 #include "../input/controller.hxx"
 
-namespace Pingus {
 
 ScreenManager* ScreenManager::instance_ = 0;
 
@@ -312,6 +311,5 @@ ScreenManager::deinit()
 	instance_ = 0;
 }
 
-} // namespace Pingus
 
 /* EOF */

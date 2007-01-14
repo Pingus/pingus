@@ -22,7 +22,6 @@
 #include "pingus_level.hxx"
 #include "pingus_level_impl.hxx"
 
-namespace Pingus {
 
 PingusLevel::PingusLevel()
   : impl(new PingusLevelImpl())
@@ -107,6 +106,5 @@ PingusLevel::get_ambient_light() const
   return impl->ambient_light;
 }
 
-} // namespace Pingus
 
 /* EOF */

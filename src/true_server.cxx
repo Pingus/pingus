@@ -20,7 +20,6 @@
 #include "goal_manager.hxx"
 #include "true_server.hxx"
 
-namespace Pingus {
 
 TrueServer::TrueServer(const PingusLevel& arg_plf)
   : Server(arg_plf)
@@ -83,6 +82,5 @@ TrueServer::set_finished ()
   set_pause(false);
 }
 
-} // namespace Pingus
 
 /* EOF */

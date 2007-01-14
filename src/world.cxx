@@ -35,7 +35,6 @@
 #include "worldobj_factory.hxx"
 #include "game_time.hxx"
 
-namespace Pingus {
 
 using Actions::Bomber;
 
@@ -273,6 +272,5 @@ float World::get_gravity()
   return gravitational_acceleration;
 }
 
-} // namespace Pingus
 
 /* EOF */

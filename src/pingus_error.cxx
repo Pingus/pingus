@@ -20,7 +20,6 @@
 #include "pingus_error.hxx"
 #include "gettext.h"
 
-namespace Pingus {
 
 PingusError::PingusError (const std::string& mes) 
   : message("PingusError: " + mes)
@@ -49,6 +48,5 @@ PingusError::what() const throw()
   return message.c_str(); 
 }
 
-} // namespace Pingus
 
 /* EOF */

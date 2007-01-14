@@ -22,7 +22,6 @@
 
 #include "../scroller.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Scrollers {
 
@@ -53,7 +52,6 @@ private:
 
 } // namespace Scrollers
 } // namespace Input
-} // namespace Pingus
 
 #endif
 

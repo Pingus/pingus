@@ -24,7 +24,6 @@
 #include "game_delta.hxx"
 #include "gui_manager.hxx"
 
-namespace Pingus {
 
 using namespace GUI;
 using namespace Input;
@@ -293,6 +292,5 @@ GUIManager::change_focussed_comp(Component* c)
 		focussed_component->set_focus(true);
 }
 
-} // namespace Pingus
 
 /* EOF */

@@ -25,7 +25,6 @@
 #include "pingus_menu.hxx"
 #include "file_dialog.hxx"
 
-namespace Pingus {
 
 class PingusSubMenu;
 
@@ -87,7 +86,6 @@ private:
   PingusMenuManager& operator= (const PingusMenuManager&);
 };
 
-} // namespace Pingus
 
 #endif
 

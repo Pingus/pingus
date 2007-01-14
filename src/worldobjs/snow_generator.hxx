@@ -22,7 +22,6 @@
 
 #include "../worldobj.hxx"
 
-namespace Pingus {
 
 namespace WorldObjsData {
 class SnowGeneratorData;
@@ -49,7 +48,6 @@ private:
 };
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 #endif
 

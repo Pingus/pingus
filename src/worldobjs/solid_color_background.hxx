@@ -22,7 +22,6 @@
 
 #include "../worldobj.hxx"
 
-namespace Pingus {
 
 namespace WorldObjsData {
 class SolidColorBackgroundData;
@@ -50,7 +49,6 @@ private:
 };
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 #endif
 

@@ -22,7 +22,6 @@
 
 #include "../worldobj.hxx"
 
-namespace Pingus {
 
 class Pingu;
 
@@ -65,7 +64,6 @@ private:
 };
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 #endif
 

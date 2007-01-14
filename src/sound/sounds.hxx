@@ -22,7 +22,6 @@
 
 #include "../pingus.hxx"
 
-namespace Pingus {
 namespace Sound {
 
   enum Name {
@@ -34,7 +33,6 @@ namespace Sound {
   };
 
 } // namespace Sound
-} // namespace Pingus
 
 #endif
 

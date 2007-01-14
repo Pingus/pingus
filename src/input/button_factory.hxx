@@ -22,7 +22,6 @@
 
 #include "../file_reader.hxx"
 
-namespace Pingus {
 namespace Input {
 
 class Button;
@@ -47,7 +46,6 @@ private:
 };
 
 } // namespace Input
-} // namespace Pingus
 
 #endif
 

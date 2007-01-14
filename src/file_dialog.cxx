@@ -31,7 +31,6 @@
 #include "file_dialog_item.hxx"
 #include "file_dialog_listener.hxx"
 
-namespace Pingus {
 
 	const int DIR_UP = 0;
 	const int DIR_DOWN = 1;
@@ -455,6 +454,5 @@ namespace Pingus {
 			}
 	}
 
-} // namespace Pingus
 
 /* EOF */

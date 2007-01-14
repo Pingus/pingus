@@ -24,7 +24,6 @@
 #include "joystick_axis.hxx"
 #include "../../pingus_error.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Axes {
 
@@ -63,6 +62,5 @@ JoystickAxis::update (float)
 
 } // namespace Axes
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */

@@ -23,7 +23,6 @@
 #include "../state_sprite.hxx"
 #include "../pingu_action.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 class Slider : public PinguAction
@@ -45,7 +44,6 @@ private:
 };
 
 } // namespace Actions
-} // namespace Pingus
 
 #endif
 

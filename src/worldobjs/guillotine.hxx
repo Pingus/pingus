@@ -24,7 +24,6 @@
 #include "../direction.hxx"
 #include "../worldobj.hxx"
 
-namespace Pingus {
 
 namespace WorldObjsData {
 class GuillotineData;
@@ -61,7 +60,6 @@ private:
 };
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 #endif
 

@@ -22,7 +22,6 @@
 
 #include "pingus.hxx"
 
-namespace Pingus {
 
 /** A simple class for benchmark purpose. It lets you start and stop a
     timer and recieve the time passed.*/
@@ -45,7 +44,6 @@ private:
   Timer& operator= (const Timer&);
 };
 
-} // namespace Pingus
 
 #endif
 

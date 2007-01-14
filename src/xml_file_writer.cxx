@@ -22,7 +22,6 @@
 #include "vector.hxx"
 #include "xml_file_writer.hxx"
 
-namespace Pingus {
 
 XMLFileWriter::XMLFileWriter(std::ostream& out_)
   : out(&out_)
@@ -127,5 +126,4 @@ XMLFileWriter::write_vector (const char* name, const Vector& value)
          << "</" << name << ">\n";
 }
 
-} // namespace Pingus
 /* EOF */

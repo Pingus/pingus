@@ -23,7 +23,6 @@
 #include "../gui/gui_screen.hxx"
 #include "../file_dialog_listener.hxx"
 
-namespace Pingus {
 
 class DrawingContext;
 class FileDialog;
@@ -110,8 +109,7 @@ private:
   EditorScreen& operator= (const EditorScreen&);
 
 };	// EditorScreen
-}		// Editor namespace
-}		// Pingus namespace
+}  // Editor namespace
 
 #endif
 

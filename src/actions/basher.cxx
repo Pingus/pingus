@@ -28,7 +28,6 @@
 #include "../worldobj.hxx"
 #include "basher.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 Basher::Basher (Pingu* p)
@@ -171,6 +170,5 @@ Basher::have_something_to_dig()
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

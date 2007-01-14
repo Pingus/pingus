@@ -25,7 +25,6 @@
 
 #include "screen_ptr.hxx"
 
-namespace Pingus {
 
 class DrawingContext;
 class Screen;
@@ -95,7 +94,6 @@ private:
   ScreenManager& operator= (const ScreenManager&);
 };
 
-} // namespace Pingus
 
 #endif
 

@@ -30,7 +30,6 @@
 #include "path_drawable.hxx"
 #include "../globals.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 PathGraph::PathGraph(WorldMap* arg_worldmap, FileReader &reader)
@@ -283,6 +282,5 @@ PathGraph::init_cache()
 }
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 /* EOF */

@@ -23,8 +23,6 @@
 #include "action_holder.hxx"
 #include "cheat.hxx"
 
-namespace Pingus {
-
 using namespace Actions;
 
 ActionHolder::ActionHolder(const PingusLevel& plf)
@@ -94,7 +92,5 @@ ActionHolder::get_available (ActionName name)
 {
   return available_actions[name];
 }
-
-} // namespace Pingus
 
 /* EOF */

@@ -22,7 +22,6 @@
 
 #include "game_delta.hxx"
 
-namespace Pingus {
 
 class DrawingContext;
 
@@ -59,7 +58,6 @@ private:
   Screen& operator= (const Screen&);
 };
 
-} // namespace Pingus
 
 #endif
 

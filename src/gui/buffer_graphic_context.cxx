@@ -24,7 +24,6 @@
 #include "../screenshot.hxx"
 #include "buffer_graphic_context.hxx"
 
-namespace Pingus {
 
 BufferGraphicContext::BufferGraphicContext(int width, int height)
   : canvas(width, height, width*4, CL_PixelFormat::rgba8888)
@@ -105,6 +104,5 @@ BufferGraphicContext::write(const std::string& filename)
   canvas.unlock();
 }
 
-} // namespace Pingus
 
 /* EOF */

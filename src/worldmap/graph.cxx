@@ -19,13 +19,11 @@
 
 #include "graph.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 const NodeId NoNode = -1;
 const EdgeId NoEdge = -1;
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 /* EOF */

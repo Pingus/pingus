@@ -22,7 +22,6 @@
 #include "../pingu.hxx"
 #include "teleported.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 Teleported::Teleported(Pingu* p)
@@ -49,6 +48,5 @@ Teleported::update()
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

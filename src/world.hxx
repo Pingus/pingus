@@ -25,7 +25,6 @@
 #include <string>
 #include <ClanLib/Display/color.h>
 
-namespace Pingus {
 
 // Forward declarations
 class Vector;
@@ -170,7 +169,6 @@ private:
   World& operator= (const World&);
 };
 
-} // namespace Pingus
 
 #endif
 

@@ -26,7 +26,6 @@
 #include "pingus.hxx"
 #include <string>
 
-namespace Pingus {
 
 extern int         game_speed;                      ///< -t, --set-speed
 extern bool        print_fps;                       ///< --print-fps
@@ -86,7 +85,6 @@ enum { PINGUS_DEBUG_ACTIONS     = (1 << 0),
        PINGUS_DEBUG_ALL         = (~0)
      };
 
-} // namespace Pingus
 
 #endif
 

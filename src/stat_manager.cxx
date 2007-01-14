@@ -26,7 +26,6 @@
 #include "xml_file_reader.hxx"
 #include "stat_manager.hxx"
 
-namespace Pingus {
 
 StatManager* StatManager::instance_ = 0;
 
@@ -186,6 +185,5 @@ StatManager::set_bool(const std::string& name, bool value)
   flush();
 }
 
-} // namespace Pingus
 
 /* EOF */

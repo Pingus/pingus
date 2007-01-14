@@ -19,7 +19,6 @@
 
 #include "triple_button.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Buttons {
 
@@ -69,6 +68,5 @@ TripleButton::is_pressed() const
 
 } // namespace Buttons
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */

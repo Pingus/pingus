@@ -28,7 +28,6 @@
 
 class CL_ResourceManager;
 
-namespace Pingus {
 
 /** General Resource Managing class, it provides wrappers around
     CL_Surface::load(), CL_Font::load() and friends.  This class is
@@ -90,7 +89,6 @@ private:
   Resource& operator= (const Resource&);
 };
 
-} // namespace Pingus
 
 #endif
 

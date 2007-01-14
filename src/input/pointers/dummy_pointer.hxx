@@ -22,7 +22,6 @@
 
 #include "../pointer.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Pointers {
 
@@ -53,7 +52,6 @@ private:
 
 } // namespace Pointers
 } // namespace Input
-} // namespace Pingus
 
 #endif
 

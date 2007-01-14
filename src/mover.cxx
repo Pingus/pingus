@@ -19,7 +19,6 @@
 
 #include "mover.hxx"
 
-namespace Pingus {
 
 Mover::Mover(World* const world_arg, const Vector& pos_arg)
   : world(world_arg),
@@ -48,6 +47,5 @@ bool Mover::collided() const
   return collision;
 }
 
-} // namespace Pingus
 
 /* EOF */

@@ -24,7 +24,6 @@
 #include <string>
 #include <fstream>
 
-namespace Pingus {
 
 /** FIXME: Rewrite or replace me */
 class ConfigParser
@@ -88,7 +87,6 @@ private:
   Config& operator= (const Config&);
 };
 
-} // namespace Pingus
 
 #endif
 

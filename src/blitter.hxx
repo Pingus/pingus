@@ -26,7 +26,6 @@
 class CL_Surface;
 class CL_PixelBuffer;
 
-namespace Pingus {
 #if 0
 /** A bunch of blitting and creation functions to operate on
     CL_PixelBuffer.  Some of them a similar to the ones in ClanLib, but
@@ -107,7 +106,6 @@ private:
   Blitter& operator= (const Blitter&);
 };
 #endif
-} // namespace Pingus
 
 #endif
 

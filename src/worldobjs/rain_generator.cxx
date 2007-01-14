@@ -25,7 +25,6 @@
 #include "../display/scene_context.hxx"
 #include "rain_generator.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 RainGenerator::RainGenerator (const FileReader& reader)
@@ -75,6 +74,5 @@ RainGenerator::update()
 }
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

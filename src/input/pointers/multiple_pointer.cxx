@@ -19,7 +19,6 @@
 
 #include "multiple_pointer.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Pointers {
 
@@ -96,7 +95,6 @@ MultiplePointer::update (float delta)
 
 } // namespace Axes
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */
 

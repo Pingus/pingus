@@ -23,7 +23,6 @@
 #include "drawable.hxx"
 #include "path_graph.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 /** Drawable to show the path between two nodes, only used for
@@ -44,7 +43,6 @@ private:
 };
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 #endif
 

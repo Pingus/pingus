@@ -23,7 +23,6 @@
 #include "../sprite.hxx"
 #include "particle.hxx"
 
-namespace Pingus {
 
 class ExplosiveParticle
   : public Particle

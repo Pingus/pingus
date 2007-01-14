@@ -22,7 +22,6 @@
 
 #include "gui_manager.hxx"
 
-namespace Pingus {
 
 namespace Input {
 class Controller;
@@ -49,7 +48,6 @@ private:
 };
 }
 
-} // namespace Pingus
 
 #endif
 

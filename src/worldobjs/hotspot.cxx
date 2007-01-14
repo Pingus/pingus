@@ -23,7 +23,6 @@
 #include "../resource.hxx"
 #include "hotspot.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 Hotspot::Hotspot(const FileReader& reader)
@@ -61,6 +60,5 @@ Hotspot::get_z_pos () const
 }
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

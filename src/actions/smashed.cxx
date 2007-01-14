@@ -23,7 +23,6 @@
 #include "../pingu.hxx"
 #include "smashed.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 Smashed::Smashed (Pingu* p)
@@ -49,6 +48,5 @@ Smashed::update()
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

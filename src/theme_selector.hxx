@@ -28,7 +28,6 @@ class CL_Key;
 class Font;
 class CL_InputDevice;
 
-namespace Pingus {
 
 class Theme;
 class AlphaButton;
@@ -139,7 +138,6 @@ private:
   ThemeSelector& operator= (const ThemeSelector&);
 };
 
-} // namespace Pingus
 
 #endif
 

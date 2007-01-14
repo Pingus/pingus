@@ -24,7 +24,6 @@
 #include "../resource.hxx"
 #include "hammer.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 Hammer::Hammer(const FileReader& reader)
@@ -69,6 +68,5 @@ Hammer::update()
 }
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

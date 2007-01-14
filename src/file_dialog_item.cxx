@@ -39,7 +39,6 @@
 #include "worldmap/manager.hxx"
 #include "worldmap/metamap.hxx"
 
-namespace Pingus {
 
 
 	// Only Constructor

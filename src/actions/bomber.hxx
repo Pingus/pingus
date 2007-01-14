@@ -23,7 +23,6 @@
 #include "../state_sprite.hxx"
 #include "../pingu_action.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 /** An action with lets the Pingu explode. After the explosion the the
@@ -61,7 +60,6 @@ private:
 };
 
 } // namespace Actions
-} // namespace Pingus
 
 #endif
 

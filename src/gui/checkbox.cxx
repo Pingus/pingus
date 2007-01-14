@@ -25,7 +25,6 @@
 #include "../display/drawing_context.hxx"
 #include "../gui/checkbox_listener.hxx"
 
-namespace Pingus {
 
 namespace GUI {
 	

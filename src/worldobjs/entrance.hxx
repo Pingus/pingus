@@ -25,7 +25,6 @@
 #include "../res_descriptor.hxx"
 #include "../worldobj.hxx"
 
-namespace Pingus {
 
 namespace WorldObjsData {
 class EntranceData;
@@ -74,7 +73,6 @@ private:
 };
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 #endif
 

@@ -21,7 +21,6 @@
 #include "../debug.hxx"
 #include "sound_dummy.hxx"
 
-namespace Pingus {
 namespace Sound {
 
 void
@@ -43,7 +42,6 @@ PingusSoundDummy::real_stop_music()
 }
 
 } // namespace Sound
-} // namespace Pingus
 
 /* EOF */
 

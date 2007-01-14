@@ -23,7 +23,6 @@
 #include "../resource.hxx"
 #include "boarder.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 Boarder::Boarder (Pingu* p)
@@ -92,6 +91,5 @@ Boarder::on_ground ()
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

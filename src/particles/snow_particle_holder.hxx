@@ -25,7 +25,6 @@
 #include "../vector.hxx"
 #include "../worldobj.hxx"
 
-namespace Pingus {
 
 class SceneContext;
 
@@ -77,7 +76,6 @@ private:
 };
 
 } //namespace Particles
-} // namespace Pingus
 
 #endif
 

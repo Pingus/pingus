@@ -24,7 +24,6 @@
 #include "../vector.hxx"
 #include "drawable.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 /** A Dot is a node between all the pathes on the worldmap, there are
@@ -54,7 +53,6 @@ private:
 };
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 #endif
 

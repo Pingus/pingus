@@ -25,7 +25,6 @@
 #include <ClanLib/Display/surface.h>
 #include "pingus.hxx"
 
-namespace Pingus {
 
 /** A collection of helper functions for the blitter class */
 namespace BlitterImpl
@@ -240,7 +239,6 @@ CL_PixelBuffer modify(CL_PixelBuffer prov, const TransF&)
 }
 
 } // namespace BlitterImpl
-} // namespace Pingus
 
 #endif
 

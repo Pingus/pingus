@@ -20,7 +20,6 @@
 #include <ClanLib/Display/font.h>
 #include "string_format.hxx"
 
-namespace Pingus {
 
 std::string
 StringFormat::break_line (std::string text, int length, const CL_Font& font)
@@ -86,6 +85,5 @@ StringFormat::break_line (std::string text, int length, const CL_Font& font)
   return text;
 }
 
-} // namespace Pingus
 
 /* EOF */

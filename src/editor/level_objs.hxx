@@ -25,7 +25,6 @@
 #include "../res_descriptor.hxx"
 #include <string>
 
-namespace Pingus {
 
 	class XMLFileWriter;
 	class DrawingContext;

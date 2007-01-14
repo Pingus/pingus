@@ -26,7 +26,6 @@
 #include "gui/display.hxx"
 #include "display/drawing_context.hxx"
 
-namespace Pingus {
 
 class LayerManager
 {
@@ -87,7 +86,6 @@ private:
   LayerManager& operator= (const LayerManager&);
 };
 
-} // namespace Pingus
 
 #endif
 

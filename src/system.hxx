@@ -26,7 +26,6 @@
 #include <list>
 #include <map>
 
-namespace Pingus {
 
 /** A wrapper class around some system dependend functions (mostly
     POSIX stuff) */
@@ -132,7 +131,6 @@ private:
   System& operator= (const System&);
 };
 
-} // namespace Pingus
 
 #endif
 

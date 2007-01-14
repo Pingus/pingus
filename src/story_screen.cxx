@@ -38,7 +38,6 @@
 #include "credits.hxx"
 #include "sound/sound.hxx"
 
-namespace Pingus {
 
 class StoryScreenComponent : public GUI::Component
 {
@@ -213,7 +212,6 @@ StoryScreenComponent::next_text()
     }
 }
 
-} // namespace Pingus
 
 // Local Variables: ***
 // coding:iso-latin-1

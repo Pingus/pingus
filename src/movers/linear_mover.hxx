@@ -22,7 +22,6 @@
 
 #include "../mover.hxx"
 
-namespace Pingus {
 
 class Collider;
 
@@ -42,7 +41,6 @@ class LinearMover : public Mover
 };
 
 } // namespace Movers
-} // namespace Pingus
 
 #endif
 

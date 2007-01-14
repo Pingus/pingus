@@ -20,7 +20,6 @@
 #include "../display/drawing_context.hxx"
 #include "sprite_drawable.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 SpriteDrawable::SpriteDrawable(FileReader reader)
@@ -41,6 +40,5 @@ SpriteDrawable::draw(DrawingContext& gc)
 }
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 /* EOF */

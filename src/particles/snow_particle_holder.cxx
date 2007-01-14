@@ -26,7 +26,6 @@
 #include "../world.hxx"
 #include "snow_particle_holder.hxx"
 
-namespace Pingus {
 namespace Particles {
 
 SnowParticleHolder::SnowParticle::SnowParticle (int x, int y, bool colliding_)
@@ -152,6 +151,5 @@ SnowParticleHolder::draw (SceneContext& gc)
 }
 
 } // namespace Particles
-} // namespace Pingus
 
 /* EOF */

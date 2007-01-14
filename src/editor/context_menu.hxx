@@ -24,7 +24,6 @@
 #include "../vector.hxx"
 #include "../gui/component.hxx"
 
-namespace Pingus {
 
 namespace Editor {
 

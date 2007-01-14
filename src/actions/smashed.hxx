@@ -23,7 +23,6 @@
 #include <ClanLib/Display/sprite.h>
 #include "../pingu_action.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 /** FIXME: this action doesn't have a purpose, its pretty much equal
@@ -50,7 +49,6 @@ private:
 };
 
 } // namespace Actions
-} // namespace Pingus
 
 #endif
 

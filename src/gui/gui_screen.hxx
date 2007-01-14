@@ -22,7 +22,6 @@
 
 #include "screen.hxx"
 
-namespace Pingus {
 
 namespace GUI {
   class GUIManager;
@@ -71,7 +70,6 @@ private:
   GUIScreen& operator= (const GUIScreen&);
 };
 
-} // namespace Pingus
 
 #endif
 

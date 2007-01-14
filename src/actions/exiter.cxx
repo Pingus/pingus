@@ -24,7 +24,6 @@
 #include "../sound/sound.hxx"
 #include "exiter.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 Exiter::Exiter (Pingu* p)
@@ -64,6 +63,5 @@ Exiter::draw (SceneContext& gc)
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

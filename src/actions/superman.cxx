@@ -22,7 +22,6 @@
 #include "../resource.hxx"
 #include "superman.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 Superman::Superman (Pingu* p)
@@ -51,6 +50,5 @@ Superman::draw (SceneContext& gc)
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

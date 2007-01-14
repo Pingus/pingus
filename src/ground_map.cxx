@@ -34,7 +34,6 @@
 #include <ClanLib/Core/IOData/datatypes.h>
 #include <ClanLib/Display/palette.h>
 
-namespace Pingus {
 
 	MapTile::MapTile () 
 	{
@@ -296,6 +295,5 @@ namespace Pingus {
 		return colmap;
 	}
 
-} // namespace Pingus
 
 /* EOF */

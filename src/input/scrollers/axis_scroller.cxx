@@ -23,7 +23,6 @@
 #include "../axis.hxx"
 #include "axis_scroller.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Scrollers {
 
@@ -80,7 +79,6 @@ AxisScroller::update (float delta)
 
 } // namespace Scrollers
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */
 

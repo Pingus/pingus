@@ -26,7 +26,6 @@
 #include "math/vector2i.hpp"
 #include "../gui/component.hxx"
 
-namespace Pingus {
 
 class PingusMenu;
 
@@ -74,7 +73,6 @@ private:
   MenuButton& operator= (const MenuButton&);
 };
 
-} // namespace Pingus
 
 #endif
 

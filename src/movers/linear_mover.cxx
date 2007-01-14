@@ -20,7 +20,6 @@
 #include "linear_mover.hxx"
 #include "../collider.hxx"
 
-namespace Pingus {
 namespace Movers {
 
 LinearMover::LinearMover(World* const world_arg, const Vector& pos_arg)
@@ -61,6 +60,5 @@ void LinearMover::update(const Vector& move, const Collider& collision_check)
 }
 
 } // namespace Movers
-} // namespace Pingus
 
 /* EOF */

@@ -23,7 +23,6 @@
 #include <ClanLib/Display/input_device.h>
 #include "../scroller.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Scrollers {
 
@@ -57,7 +56,6 @@ private:
 
 } // namespace Scrollers
 } // namespace Input
-} // namespace Pingus
 
 #endif
 

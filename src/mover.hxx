@@ -22,7 +22,6 @@
 
 #include "vector.hxx"
 
-namespace Pingus {
 
 class Collider;
 class World;
@@ -62,7 +61,6 @@ class Mover
     bool collision;
 };
 
-} // namespace Pingus
 
 #endif
 

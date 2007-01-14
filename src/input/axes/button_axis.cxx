@@ -20,7 +20,6 @@
 #include "button_axis.hxx"
 #include "../button.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Axes {
 
@@ -76,6 +75,5 @@ ButtonAxis::update (float delta)
 
 } // namespace Axes
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */

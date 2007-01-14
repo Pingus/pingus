@@ -24,7 +24,6 @@
 #include <vector>
 #include "worldobj.hxx"
 
-namespace Pingus {
 
 class PingusLevel;
 class Vector;
@@ -117,7 +116,6 @@ private:
   PinguHolder& operator= (const PinguHolder&);
 };
 
-} // namespace Pingus
 
 #endif
 

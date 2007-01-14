@@ -24,7 +24,6 @@
 #include "../vector.hxx"
 #include "../worldobj.hxx"
 
-namespace Pingus {
 
 namespace WorldObjsData {
 class ConveyorBeltData;
@@ -58,7 +57,6 @@ private:
 };
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 #endif
 

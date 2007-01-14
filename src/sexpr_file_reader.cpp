@@ -30,8 +30,6 @@
 #include "file_reader_impl.hxx"
 #include "sexpr_file_reader.hpp"
 
-namespace Pingus {
-
 class SExprFileReaderImpl: public FileReaderImpl
 {
 public:
@@ -218,7 +216,5 @@ SExprFileReader::SExprFileReader(lisp::Lisp* lisp)
 {
   
 }
-
-} // namespace Pingus
 
 /* EOF */

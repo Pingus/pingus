@@ -22,7 +22,6 @@
 
 #include "../pingu_action.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 /** A Waiting action for the bridger, it gets activated when the
@@ -48,7 +47,6 @@ private:
 };
 
 } // namespace Actions
-} // namespace Pingus
 
 #endif
 

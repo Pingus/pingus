@@ -22,7 +22,6 @@
 
 #include "pingus_level.hxx"
 
-namespace Pingus {
 
 /** */
 class XMLPingusLevel : public PingusLevel
@@ -33,7 +32,6 @@ public:
                  const std::string& filename);
 };
 
-} // namespace Pingus
 
 #endif
 

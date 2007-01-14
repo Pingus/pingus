@@ -22,7 +22,6 @@
 
 #include <string>
 
-namespace Pingus {
 
 /** This class olds the definitions of the different types of ground
     available in pingus, it might also provide converter function from
@@ -46,7 +45,6 @@ public:
   static std::string type_to_string (GPType arg_type);
 };
 
-} // namespace Pingus
 
 #endif
 

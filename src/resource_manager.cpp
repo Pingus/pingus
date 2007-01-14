@@ -24,6 +24,9 @@
 */
 
 #include <iostream>
+#include "lisp/lisp.hpp"
+#include "lisp/parser.hpp"
+#include "sexpr_file_reader.hpp"
 #include "resource_manager.hpp"
 
 ResourceManager::ResourceManager()
@@ -37,7 +40,24 @@ ResourceManager::~ResourceManager()
 void
 ResourceManager::add_resources(const std::string& filename)
 {
+#if 0
   std::cout << "ResourceManager: " << filename << std::endl;
+  lisp::Lisp* sexpr = lisp::Parser::parse("test.scm");
+  if (sexpr)
+    {
+      SExprFileReader root_reader(sexpr = sexpr->get_list_elem(0));
+      SExprFileReader reader;
+
+      if (root_reader.read_section("pingus-resources", reader))
+        {
+          std::vector<FileReader> sections = reader.get_sections();
+        }
+    }
+  else
+    {
+      std::cout << "ResourceManager: File not found " << filename << std::endl;
+    }
+#endif
 }
 
 /* EOF */

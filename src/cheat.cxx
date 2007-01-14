@@ -21,8 +21,6 @@
 #include "pingus_error.hxx"
 #include "cheat.hxx"
 
-namespace Pingus {
-
 bool Cheat::unlimited_actions = false;
 bool Cheat::no_time_limit     = false;
 bool Cheat::all_actions       = false;
@@ -66,7 +64,5 @@ Cheat::print_help()
 
   exit(EXIT_SUCCESS);
 }
-
-} // namespace Pingus
 
 /* EOF */

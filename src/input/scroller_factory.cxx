@@ -33,7 +33,6 @@
 #include "scrollers/multiple_scroller.hxx"
 #include "scrollers/pointer_scroller.hxx"
 
-namespace Pingus {
 namespace Input {
 
 using namespace Scrollers;
@@ -153,6 +152,5 @@ ScrollerFactory::pointer_scroller (FileReader reader)
 }
 
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */

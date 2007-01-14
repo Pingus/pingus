@@ -22,7 +22,6 @@
 
 #include "../worldobj.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 class RainGenerator : public WorldObj
@@ -45,7 +44,6 @@ private:
 };
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 #endif
 

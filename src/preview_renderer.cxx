@@ -22,7 +22,6 @@
 //#include "gui/buffer_graphic_context.hxx"
 #include "preview_renderer.hxx"
 
-namespace Pingus {
 
 void
 PreviewRenderer::render(const PingusLevel& plf,
@@ -38,6 +37,5 @@ PreviewRenderer::render(const PingusLevel& plf,
 #endif
 }
 
-} // namespace Pingus
 
 /* EOF */

@@ -23,7 +23,6 @@
 #include "pingus.hxx"
 #include <string>
 
-namespace Pingus {
 namespace ResourceModifierNS {
 
 /** This array contains possible modifications of a surface */
@@ -49,7 +48,6 @@ std::string rs_to_string (ResourceModifier);
 ResourceModifier rs_from_string (const std::string&);
 
 } // namespace ResourceModifierNS
-} // namespace Pingus
 
 #endif
 

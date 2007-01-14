@@ -34,7 +34,6 @@
 #include "components/button_panel.hxx"
 #include "gui/gui_manager.hxx"
 
-namespace Pingus {
 
 Client::Client (TrueServer * s)
   : server       (s),
@@ -244,6 +243,5 @@ Client::on_shutdown ()
 {
 }
 
-} // namespace Pingus
 
 /* EOF */

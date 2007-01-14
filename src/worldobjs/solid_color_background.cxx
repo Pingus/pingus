@@ -22,7 +22,6 @@
 #include "../display/scene_context.hxx"
 #include "solid_color_background.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 SolidColorBackground::SolidColorBackground(const FileReader& reader)
@@ -41,6 +40,5 @@ SolidColorBackground::draw (SceneContext& gc)
 }
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

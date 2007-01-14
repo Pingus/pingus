@@ -51,7 +51,6 @@
 #include "../story_screen.hxx"
 #include "../gui/screen_manager.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 WorldMap::WorldMap(const std::string& arg_filename)
@@ -442,6 +441,5 @@ WorldMap::is_final_map()
 }
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 /* EOF */

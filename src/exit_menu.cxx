@@ -24,7 +24,6 @@
 #include "gui/gui_manager.hxx"
 #include "sound/sound.hxx"
 
-namespace Pingus {
 
 class ExitMenuYesButton : public GUI::SurfaceButton
 {
@@ -121,6 +120,5 @@ ExitMenu::preload ()
   sur = Resource::load_sprite("core/menu/exit_menu");
 }
 
-} // namespace Pingus
 
 /* EOF */

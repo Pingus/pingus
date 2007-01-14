@@ -24,7 +24,6 @@
 #include <fstream>
 #include <string>
 
-namespace Pingus {
 
 class Server;
 class ServerEvent;
@@ -54,7 +53,6 @@ private:
   DemoRecorder& operator= (const DemoRecorder&);
 };
 
-} // namespace Pingus
 
 #endif
 

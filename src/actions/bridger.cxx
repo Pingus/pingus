@@ -30,7 +30,6 @@
 #include "../gettext.h"
 #include "bridger.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 Bridger::Bridger (Pingu* p)
@@ -256,6 +255,5 @@ Bridger::get_name () const
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

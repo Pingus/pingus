@@ -22,7 +22,6 @@
 
 #include "pingus.hxx"
 
-namespace Pingus {
 
 class LevelInterrupt
 {
@@ -40,7 +39,6 @@ private:
   LevelInterrupt& operator= (const LevelInterrupt&);
 };
 
-} // namespace Pingus
 
 #endif
 

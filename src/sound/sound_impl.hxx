@@ -22,7 +22,6 @@
 
 #include "../pingus.hxx"
 
-namespace Pingus {
 namespace Sound {
 
 class PingusSoundImpl
@@ -46,7 +45,7 @@ public:
   virtual void real_play_sound(const std::string & filename, 
 															 float volume, float panning) = 0;
 }; // class PingusSoundImpl
+
 }  // namespace Sound
-}  // namespace Pingus
 
 #endif

@@ -27,7 +27,6 @@
 #include "../worldobj.hxx"
 #include "miner.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 Miner::Miner (Pingu* p)
@@ -102,6 +101,5 @@ Miner::draw (SceneContext& gc)
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

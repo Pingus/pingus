@@ -25,7 +25,6 @@
 #include "pingus.hxx"
 #include "vector.hxx"
 
-namespace Pingus {
 
 /** This will need some^H^H^H^H a lot of work */
 typedef enum {
@@ -79,7 +78,6 @@ public:
   int owner;
 };
 
-} // namespace Pingus
 
 #endif
 

@@ -22,7 +22,6 @@
 
 #include "pingus.hxx"
 
-namespace Pingus {
 
 /** A class similar to an integer, but keeps the value in a given range.
 
@@ -58,7 +57,6 @@ public:
   void set_range(int, int);
 };
 
-} // namespace Pingus
 
 #endif
 

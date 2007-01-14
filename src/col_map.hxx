@@ -25,7 +25,6 @@
 class CL_Surface;
 class CL_PixelBuffer;
 
-namespace Pingus {
 
 class DrawingContext;
 class ResDescriptor;
@@ -91,7 +90,6 @@ private:
   ColMap& operator= (const ColMap&);
 };
 
-} // namespace Pingus
 
 #endif /* COLMAP_HH */
 

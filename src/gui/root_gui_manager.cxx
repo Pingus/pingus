@@ -21,7 +21,6 @@
 #include "root_gui_manager.hxx"
 #include "../input/controller.hxx"
 
-namespace Pingus {
 
 using namespace GUI;
 using namespace Input;
@@ -46,6 +45,5 @@ RootGUIManager::update (float delta)
   UNUSED_ARG(delta);
 }
 
-} // namespace Pingus
 
 /* EOF */

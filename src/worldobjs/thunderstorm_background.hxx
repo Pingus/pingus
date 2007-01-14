@@ -23,7 +23,6 @@
 #include <ClanLib/Display/sprite.h>
 #include "../worldobj.hxx"
 
-namespace Pingus {
 
 namespace WorldObjsData {
 class ThunderstormBackgroundData;
@@ -52,7 +51,6 @@ private:
 };
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 #endif
 

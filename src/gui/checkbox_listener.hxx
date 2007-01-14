@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_GUI_CHECKBOX_LISTENER_HXX
 #define HEADER_PINGUS_GUI_CHECKBOX_LISTENER_HXX
 
-namespace Pingus {
 
 namespace GUI {
 	

@@ -22,7 +22,6 @@
 
 #include "gui/gui_screen.hxx"
 
-namespace Pingus {
 
 class Server;
 class XMLPDF;
@@ -57,7 +56,6 @@ private:
   DemoSession& operator= (const DemoSession&);
 };
 
-} // namespace Pingus
 
 #endif
 

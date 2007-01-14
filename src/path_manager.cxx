@@ -22,7 +22,6 @@
 #include "path_manager.hxx"
 #include "debug.hxx"
 
-namespace Pingus {
 
 PathManager path_manager;
 
@@ -109,6 +108,5 @@ PathManager::set_path (const std::string& path)
   base_path = path;
 }
 
-} // namespace Pingus
 
 /* EOF */

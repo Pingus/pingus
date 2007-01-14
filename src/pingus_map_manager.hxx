@@ -26,7 +26,6 @@
 
 class CL_Surface;
 
-namespace Pingus {
 
 class PingusMapManager
 {
@@ -42,7 +41,6 @@ private:
   PingusMapManager& operator= (const PingusMapManager&);
 };
 
-} // namespace Pingus
 
 #endif
 

@@ -33,7 +33,6 @@
 #include "gettext.h"
 #include "input/controller.hxx"
 
-namespace Pingus {
 
 PingusLevelResult::PingusLevelResult(World* w, Controller* c)
 {
@@ -129,6 +128,5 @@ PingusLevelResult::get_message (int saved)
   }
 }
 
-} // namespace Pingus
 
 /* EOF */

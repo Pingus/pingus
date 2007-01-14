@@ -23,7 +23,6 @@
 #include "../groundtype.hxx"
 #include "floater.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 Floater::Floater(Pingu* p)
@@ -69,6 +68,5 @@ Floater::change_allowed (ActionName)
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

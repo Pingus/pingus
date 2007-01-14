@@ -24,7 +24,6 @@
 #include "blitter.hxx"
 #include "pingus_menu_manager.hxx"
 
-namespace Pingus {
 
 PingusMenuManager* PingusMenuManager::instance_ = 0;
 
@@ -168,6 +167,5 @@ PingusMenuManager::deinit()
   delete instance_;
 }
 
-} // namespace Pingus
 
 /* EOF */

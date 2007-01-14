@@ -21,7 +21,6 @@
 #include <ClanLib/Display/input_event.h>
 #include "mouse_pointer.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Pointers {
 
@@ -65,6 +64,5 @@ MousePointer::move_signal (const CL_InputEvent& event)
 
 } // namespace Pointers
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */

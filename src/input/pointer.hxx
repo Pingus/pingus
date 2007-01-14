@@ -22,7 +22,6 @@
 
 #include "../pingus.hxx"
 
-namespace Pingus {
 namespace Input {
 
 /// abstract base class defining the pointer interface
@@ -49,7 +48,6 @@ private:
 };
 
 } // namespace Input
-} // namespace Pingus
 
 #endif
 

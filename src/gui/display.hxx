@@ -24,7 +24,6 @@
 #include "SDL.h"
 #include <list>
 
-namespace Pingus {
 
 class DisplayHook;
 
@@ -73,7 +72,6 @@ private:
   Display& operator= (const Display&);
 };
 
-} // namespace Pingus
 
 #endif
 

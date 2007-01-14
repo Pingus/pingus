@@ -30,7 +30,6 @@ class CL_Key;
 class CL_InputDevice;
 class CL_Slot;
 
-namespace Pingus {
 
 class SurfaceButton;
 class GameDelta;
@@ -99,7 +98,6 @@ private:
   PingusMenu& operator= (const PingusMenu&);
 };
 
-} // namespace Pingus
 
 #endif
 

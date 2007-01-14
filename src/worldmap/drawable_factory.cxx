@@ -22,7 +22,6 @@
 #include "sprite_drawable.hxx"
 #include "drawable_factory.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 Drawable*
@@ -40,6 +39,5 @@ DrawableFactory::create(FileReader reader)
 }
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 /* EOF */

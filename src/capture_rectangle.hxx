@@ -24,7 +24,6 @@
 
 class CL_Font;
 
-namespace Pingus {
 
 class Pingu;
 class PinguAction;
@@ -66,7 +65,6 @@ private:
   CaptureRectangle& operator= (const CaptureRectangle&);
 };
 
-} // namespace Pingus
 
 #endif
 

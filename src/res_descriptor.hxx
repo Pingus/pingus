@@ -22,8 +22,6 @@
 
 #include "resource_modifier.hxx"
 
-namespace Pingus {
-
 /// Resource descriptor, tells were to find a resource.
 class ResDescriptor
 {
@@ -40,10 +38,8 @@ public:
   bool operator< (const ResDescriptor&) const;
 };
 
-} // namespace Pingus
-
 /// Our own function to print out the ResDescriptor
-std::ostream& operator<<(std::ostream& s, const Pingus::ResDescriptor& desc);
+std::ostream& operator<<(std::ostream& s, const ResDescriptor& desc);
 
 #endif
 

@@ -22,7 +22,6 @@
 
 #include "screen.hxx"
 
-namespace Pingus {
 
 /** The ScreenPtr is a simple smart pointer to point at a Screen. It
     either deletes the pointer or not, depending on the value of
@@ -105,7 +104,6 @@ private:
   void increase_refcount();
 };
 
-} // namespace Pingus
 
 #endif
 

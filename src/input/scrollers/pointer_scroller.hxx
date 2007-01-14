@@ -22,7 +22,6 @@
 
 #include "../scroller.hxx"
 
-namespace Pingus {
 namespace Input {
 
 class Button;
@@ -68,7 +67,6 @@ private:
 
 } // namespace Pointer
 } // namespace Input
-} // namespace Pingus
 
 #endif
 

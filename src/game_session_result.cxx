@@ -19,7 +19,6 @@
 
 #include "game_session_result.hxx"
 
-namespace Pingus {
 
 PingusGameSessionResult::PingusGameSessionResult ()
 {
@@ -44,6 +43,5 @@ PingusGameSessionResult::percentage_time ()
   return 100.0;
 }
 
-} // namespace Pingus
 
 /* EOF */

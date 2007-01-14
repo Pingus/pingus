@@ -25,7 +25,6 @@
 #include "fps_counter.hxx"
 #include "gettext.h"
 
-namespace Pingus {
 
 FPSCounter fps_counter;
 
@@ -97,6 +96,5 @@ FPSCounter::update_fps_counter()
     }
 }
 
-} // namespace Pingus
 
 /* EOF */

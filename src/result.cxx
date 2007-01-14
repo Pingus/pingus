@@ -20,7 +20,6 @@
 //#include <iostream>
 //#include "result.hxx"
 
-namespace Pingus {
 
 /*Result::Result()
 {
@@ -109,6 +108,5 @@ Result::set_unknown(int a)
 }
 */
 
-} // namespace Pingus
 
 /* EOF */

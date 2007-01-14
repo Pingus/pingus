@@ -24,7 +24,6 @@
 #include "../world.hxx"
 #include "liquid.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 Liquid::Liquid(const FileReader& reader)
@@ -84,6 +83,5 @@ Liquid::update()
 }
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

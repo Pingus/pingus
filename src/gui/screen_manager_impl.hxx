@@ -22,7 +22,6 @@
 
 #include "pingus.hxx"
 
-namespace Pingus {
 
 class ScreenManagerImpl
 {
@@ -39,7 +38,6 @@ private:
   ScreenManagerImpl& operator= (const ScreenManagerImpl&);
 };
 
-} // namespace Pingus
 
 #endif
 

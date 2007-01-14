@@ -32,7 +32,6 @@
 #include "pingus_level_impl.hxx"
 #include "xml_pingus_level.hxx"
 
-namespace Pingus {
 
 XMLPingusLevel::XMLPingusLevel(const std::string& res_name,
                                const std::string& filename)
@@ -110,6 +109,5 @@ XMLPingusLevel::XMLPingusLevel(const std::string& res_name,
     }
   }
 
-} // namespace Pingus
 
 /* EOF */

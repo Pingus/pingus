@@ -23,7 +23,6 @@
 #include "pingus.hxx"
 #include "file_reader.hxx"
 
-namespace Pingus {
 
 class SceneContext;
 class SmallMap;
@@ -89,7 +88,6 @@ public:
   virtual void update ();
 };
 
-} // namespace Pingus
 
 #endif
 

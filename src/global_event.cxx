@@ -30,7 +30,6 @@
 #include "global_event.hxx"
 #include "globals.hxx"
 
-namespace Pingus {
 
 GlobalEvent global_event;
 
@@ -106,6 +105,5 @@ GlobalEvent::on_button_release(const CL_InputEvent& event)
 {
 }
 
-} // namespace Pingus
 
 /* EOF */

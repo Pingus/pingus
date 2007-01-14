@@ -24,7 +24,6 @@
 #include "../fonts.hxx"
 #include "hurry_up.hxx"
 
-namespace Pingus {
 
 HurryUp::HurryUp (Client* c)
   : font(Fonts::pingus_large),
@@ -105,6 +104,5 @@ HurryUp::update(float /*delta*/)
     }
 }
 
-} // namespace Pingus
 
 /* EOF */

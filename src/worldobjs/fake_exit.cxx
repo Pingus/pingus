@@ -25,7 +25,6 @@
 #include "../resource.hxx"
 #include "fake_exit.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 FakeExit::FakeExit(const FileReader& reader)
@@ -91,6 +90,5 @@ FakeExit::draw_smallmap(SmallMap* smallmap)
 }
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

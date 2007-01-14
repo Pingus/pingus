@@ -29,8 +29,6 @@
 #include "file_reader.hxx"
 #include "lisp/lisp.hpp"
 
-namespace Pingus {
-
 /** */
 class SExprFileReader : public FileReader
 {
@@ -38,8 +36,6 @@ private:
 public:
   SExprFileReader(lisp::Lisp* lisp);
 };
-
-} // namespace Pingus
 
 #endif
 

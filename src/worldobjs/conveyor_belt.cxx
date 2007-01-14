@@ -25,7 +25,6 @@
 #include "../world.hxx"
 #include "conveyor_belt.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 ConveyorBelt::ConveyorBelt(const FileReader& reader)
@@ -93,6 +92,5 @@ ConveyorBelt::get_z_pos () const
 }
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

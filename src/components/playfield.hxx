@@ -26,7 +26,6 @@
 #include "../gui/component.hxx"
 #include "../capture_rectangle.hxx"
 
-namespace Pingus {
 
 class Pingu;
 class World;
@@ -102,7 +101,6 @@ private:
   Playfield& operator= (const Playfield&);
 };
 
-} // namespace Pingus
 
 #endif
 

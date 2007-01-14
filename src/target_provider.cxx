@@ -20,7 +20,6 @@
 #include <ClanLib/Display/pixel_buffer.h>
 #include "target_provider.hxx"
 
-namespace Pingus {
 
 CL_Canvas*
 TargetProvider::create_canvas (CL_Target* target)
@@ -40,6 +39,5 @@ TargetProvider::create_canvas (CL_Target* target)
   return canvas;
 }
 
-} // namespace Pingus
 
 /* EOF */

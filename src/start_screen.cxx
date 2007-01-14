@@ -37,7 +37,6 @@
 #include "pingus_level.hxx"
 #include "string_format.hxx"
 
-namespace Pingus {
 
 class StartScreenComponent : public GUI::Component
 {
@@ -242,6 +241,5 @@ StartScreen::cancel_game()
   ScreenManager::instance()->pop_screen();
 }
 
-} // namespace Pingus
 
 /* EOF */

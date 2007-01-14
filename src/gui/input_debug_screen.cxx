@@ -23,7 +23,6 @@
 //#include "input/scroll_event.hxx"
 #include "input_debug_screen.hxx"
 
-namespace Pingus {
 
 using namespace Input;
 
@@ -98,6 +97,5 @@ InputDebugScreen::on_shutdown ()
   std::cout << "InputDebugScreen::on_shutdown ()" << std::endl;
 }
 
-} // namespace Pingus
 
 /* EOF */

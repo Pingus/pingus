@@ -22,7 +22,6 @@
 #include "demo_player.hxx"
 #include "xml_pdf.hxx"
 
-namespace Pingus {
 
 DemoPlayer::DemoPlayer(Server* s, XMLPDF* pdf)
   : server(s),
@@ -55,6 +54,5 @@ DemoPlayer::update()
     }
 }
 
-} // namespace Pingus
 
 /* EOF */

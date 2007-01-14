@@ -87,7 +87,6 @@
 #pragma warning( disable : 4996 ) 
 #endif
 
-namespace Pingus {
 
 void
 signal_handler(int signo)
@@ -1001,11 +1000,10 @@ PingusMain::deinit_pingus()
   Resource::deinit();
 }
 
-} // namespace Pingus
 
 int main(int argc, char** argv)
 {
-  Pingus::PingusMain app;
+  PingusMain app;
   return app.main(argc, argv);
 }
 

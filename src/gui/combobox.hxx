@@ -25,7 +25,6 @@
 #include "component.hxx"
 #include "../vector.hxx"
 
-namespace Pingus {
 
 namespace GUI {
 	

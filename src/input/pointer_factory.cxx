@@ -25,7 +25,6 @@
 #include "pointers/multiple_pointer.hxx"
 #include "pointer_factory.hxx"
 
-namespace Pingus {
 namespace Input {
 
 using namespace Pointers;
@@ -83,6 +82,5 @@ Pointer* PointerFactory::multiple_pointer (FileReader reader)
 }
 
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */

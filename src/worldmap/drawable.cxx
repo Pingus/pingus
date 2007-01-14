@@ -19,7 +19,5 @@
 
 #include "drawable.hxx"
 
-namespace Pingus {
-} // namespace Pingus
 
 /* EOF */

@@ -23,7 +23,6 @@
 #include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/palette.h>
 
-namespace Pingus {
 
 /** This class is analog to CL_Canvas, but instead of being true
     color, it is indexed */
@@ -69,7 +68,6 @@ private:
   IndexedCanvas& operator= (const IndexedCanvas&);
 };
 
-} // namespace Pingus
 
 #endif
 

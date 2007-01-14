@@ -22,7 +22,6 @@
 
 #include "pingu_enums.hxx"
 
-namespace Pingus {
 
 class ActionHolder;
 class SceneContext;
@@ -119,7 +118,6 @@ private:
   PinguAction& operator= (const PinguAction&);
 };
 
-} // namespace Pingus
 
 #endif /* PINGU_ACTION_HH */
 

@@ -25,7 +25,6 @@
 #include "server.hxx"
 #include "gettext.h"
 
-namespace Pingus {
 
 DemoRecorder::DemoRecorder (Server* server)
   : record_demo (true)
@@ -105,6 +104,5 @@ DemoRecorder::get_date ()
   return std::string(buffer);
 }
 
-} // namespace Pingus
 
 /* EOF */

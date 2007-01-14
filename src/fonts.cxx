@@ -20,7 +20,6 @@
 #include "resource.hxx"
 #include "fonts.hxx"
 
-namespace Pingus {
 namespace Fonts {
 
 std::string encoding("ISO-8859-1");
@@ -77,6 +76,5 @@ void deinit ()
 }
 
 } // namespace Fonts
-} // namespace Pingus
 
 /* EOF */

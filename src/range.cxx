@@ -20,7 +20,6 @@
 #include <algorithm>
 #include "range.hxx"
 
-namespace Pingus {
 
 #ifdef WIN32
 void swap(int& a, int& b)
@@ -130,6 +129,5 @@ Range::check_range()
     count = start;
 }
 
-} // namespace Pingus
 
 /* EOF */

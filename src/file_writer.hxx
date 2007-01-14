@@ -22,7 +22,6 @@
 
 #include <string>
 
-namespace Pingus {
 
 class Vector;
 
@@ -44,7 +43,6 @@ public:
   virtual void write_vector (const char* name, const Vector&) =0;
 };
 
-} // namespace Pingus
 
 #endif
 

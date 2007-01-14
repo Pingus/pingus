@@ -25,7 +25,6 @@
 #include <iostream>
 #include <vector>
 
-namespace Pingus {
 namespace WorldMapNS {
 
 typedef int NodeId;
@@ -180,7 +179,6 @@ public:
 };
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 #endif
 

@@ -26,7 +26,6 @@
 
 class CL_Target;
 
-namespace Pingus {
 
 /** Simple class to get a screenshot and save it as pnm */
 class Screenshot
@@ -48,7 +47,6 @@ private:
   Screenshot& operator= (const Screenshot&);
 };
 
-} // namespace Pingus
 
 #endif
 

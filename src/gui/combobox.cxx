@@ -24,7 +24,6 @@
 #include "combobox_listener.hxx"
 #include "../fonts.hxx"
 
-namespace Pingus {
 namespace GUI {
 
 // Constructor

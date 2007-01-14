@@ -36,7 +36,6 @@
 #include "../file_reader.hxx"
 #include "level_dot.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 LevelDot::LevelDot(FileReader reader)
@@ -186,6 +185,5 @@ LevelDot::unlock()
 }
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 /* EOF */

@@ -25,7 +25,6 @@
 #include "../vector.hxx"
 #include "../worldobj.hxx"
 
-namespace Pingus {
 
 class GraphicContext;
 
@@ -72,7 +71,6 @@ private:
 };
 
 } // namespace Particles
-} // namespace Pingus
 
 #endif
 

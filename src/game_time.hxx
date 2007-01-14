@@ -22,7 +22,6 @@
 
 #include "pingus.hxx"
 
-namespace Pingus {
 
 /** The GameTime represents the time which passes in the Pingus World.
     Its behaviour is analogue to CL_System::get_time (), but with the
@@ -64,7 +63,6 @@ private:
   GameTime& operator= (const GameTime&);
 };
 
-} // namespace Pingus
 
 #endif
 

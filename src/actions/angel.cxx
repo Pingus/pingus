@@ -24,7 +24,6 @@
 #include "../globals.hxx"
 #include "angel.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 Angel::Angel (Pingu* p)
@@ -55,6 +54,5 @@ Angel::draw (SceneContext& gc)
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

@@ -24,7 +24,6 @@
 #include <string>
 #include <exception>
 
-namespace Pingus {
 
 /** A PingusError is thrown in situation where an error occured due to
     invalid user input, file not found events or similar stuff. */
@@ -42,7 +41,6 @@ public:
   static void raise (const std::string& msg);
 };
 
-} // namespace Pingus
 
 #endif
 

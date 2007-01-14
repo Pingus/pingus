@@ -21,7 +21,6 @@
 
 #include "game_counter.hxx"
 
-namespace Pingus {
 
 GameCounter::GameCounter()
 {
@@ -153,6 +152,5 @@ GameCounter::operator int(void)
   return int(count);
 }
 
-} // namespace Pingus
 
 /* EOF */

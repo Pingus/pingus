@@ -32,7 +32,6 @@
     FIXME: splashed, smashed, etc.) */
 enum PinguStatus { PS_ALIVE, PS_EXITED, PS_DEAD };
 
-namespace Pingus {
 namespace Actions {
 
 /** The order of the actions here are the same as the order of actions
@@ -77,7 +76,6 @@ ActionName  action_from_string(const std::string& action);
 std::string action_to_screenname(ActionName action);
 
 } // namespace Actions
-} // namespace Pingus
 
 // Pingu "globals"
 extern const int pingu_height;

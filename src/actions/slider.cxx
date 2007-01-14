@@ -23,7 +23,6 @@
 #include "../pingu.hxx"
 #include "slider.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 Slider::Slider (Pingu* p)
@@ -78,6 +77,5 @@ Slider::draw (SceneContext& gc)
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

@@ -26,7 +26,6 @@
 
 class CL_Key;
 
-namespace Pingus {
 
 class Client;
 class Vector;
@@ -106,7 +105,6 @@ private:
   SmallMap& operator= (const SmallMap&);
 };
 
-} // namespace Pingus
 
 #endif
 

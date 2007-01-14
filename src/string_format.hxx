@@ -24,7 +24,6 @@
 
 class CL_Font;
 
-namespace Pingus {
 
 class StringFormat {
 
@@ -32,7 +31,6 @@ public:
   static std::string break_line (std::string text, int length, const CL_Font& font);
 };
 
-} // namespace Pingus
 
 #endif
 

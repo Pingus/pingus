@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_COLLIDER_HXX
 #define HEADER_PINGUS_COLLIDER_HXX
 
-namespace Pingus {
 
 class Vector;
 class World;
@@ -44,7 +43,6 @@ class Collider
     int getpixel(World* const world, const Vector& pos) const;
 };
 
-} // namespace Pingus
 
 #endif
 

@@ -23,7 +23,6 @@
 #include <vector>
 #include "../pointer.hxx"
 
-namespace Pingus {
 namespace Input {
 
 class Axis;
@@ -68,7 +67,6 @@ private:
 
 } // namespace Pointers
 } // namespace Input
-} // namespace Pingus
 
 #endif
 

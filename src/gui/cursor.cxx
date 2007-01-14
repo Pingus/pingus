@@ -22,7 +22,6 @@
 #include "../resource.hxx"
 #include "cursor.hxx"
 
-namespace Pingus {
 
 Cursor::Cursor(const std::string& ident)
 //  : sprite(Resource::load_sprite(ident))
@@ -47,6 +46,5 @@ Cursor::on_event()
   //              pointer->get_y_pos ());
 }
 
-} // namespace Pingus
 
 /* EOF */

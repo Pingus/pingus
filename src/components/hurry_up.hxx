@@ -24,7 +24,6 @@
 
 class CL_Font;
 
-namespace Pingus {
 
 class DrawingContext;
 class Client;
@@ -57,6 +56,5 @@ private:
   HurryUp& operator= (const HurryUp&);
 };
 
-} // namespace Pingus
 
 #endif

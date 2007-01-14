@@ -25,7 +25,6 @@
 #include "../resource.hxx"
 #include "teleporter.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 Teleporter::Teleporter(const FileReader& reader)
@@ -73,6 +72,5 @@ Teleporter::update ()
 }
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

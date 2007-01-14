@@ -25,7 +25,6 @@
 #include "demo_recorder.hxx"
 #include "goal_manager.hxx"
 
-namespace Pingus {
 
 using Actions::action_from_string;
 
@@ -105,6 +104,5 @@ Server::get_time ()
   return get_world()->get_game_time()->get_ticks();
 }
 
-} // namespace Pingus
 
 /* EOF */

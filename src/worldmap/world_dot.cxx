@@ -21,7 +21,6 @@
 #include "../stat_manager.hxx"
 #include "../file_reader.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 WorldDot::WorldDot(FileReader reader) :

@@ -33,7 +33,6 @@
 #include "playfield.hxx"
 #include "smallmap.hxx"
 
-namespace Pingus {
 
 SmallMap::SmallMap(Client* c)
   : client(c),
@@ -189,6 +188,5 @@ SmallMap::on_pointer_leave ()
   has_focus = false;
 }
 
-} // namespace Pingus
 
 /* EOF */

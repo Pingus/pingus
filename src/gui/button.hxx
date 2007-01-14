@@ -22,7 +22,6 @@
 
 #include "../pingus.hxx"
 
-namespace Pingus {
 namespace GUI {
 class Button
 {
@@ -39,7 +38,6 @@ public:
 };
 
 } // namespace GUI
-} // namespace Pingus
 
 #endif
 

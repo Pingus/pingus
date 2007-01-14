@@ -27,7 +27,6 @@
 #include "pingus_level.hxx"
 #include "server_event.hxx"
 
-namespace Pingus {
 
 /** XMLPDF stands for Pingus Demo File, it contains all the infos
     necesarry to play a pingus demo recording */
@@ -58,7 +57,6 @@ private:
   XMLPDF& operator= (const XMLPDF&);
 };
 
-} // namespace Pingus
 
 #endif
 

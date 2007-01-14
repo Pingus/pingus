@@ -34,7 +34,6 @@
 #include "editor_screen.hxx"
 #include "xml_level.hxx"
 
-namespace Pingus {
 namespace Editor {
   
   class LevelHeadCloseButton : public GUI::SurfaceButton

@@ -24,7 +24,6 @@
 #include "xml_pingus_level.hxx"
 #include "plf_res_mgr.hxx"
 
-namespace Pingus {
 
 PLFResMgr::PLFMap PLFResMgr::plf_map;
 
@@ -101,6 +100,5 @@ PLFResMgr::load_plf(const std::string& res_name)
   return load_plf_raw(res_name, path_manager.complete("levels/" + res_name + ".pingus"));
 }
 
-} // namespace Pingus
 
 /* EOF */

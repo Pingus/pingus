@@ -36,7 +36,6 @@
 #include "fonts.hxx"
 #include "gui/screen_manager.hxx"
 
-namespace Pingus {
 
 Theme::Theme (const std::string& filename_)
   : font(Fonts::pingus_small),
@@ -350,6 +349,5 @@ Theme::preload ()
     }
 }
 
-} // namespace Pingus
 
 /* EOF */

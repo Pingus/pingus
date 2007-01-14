@@ -23,7 +23,6 @@
 #include "../pingu_action.hxx"
 #include "../state_sprite.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 /** The Boarder action causes a pingu to use a skateboard to move
@@ -51,7 +50,6 @@ private:
 };
 
 } // namespace Actions
-} // namespace Pingus
 
 #endif
 

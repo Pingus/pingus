@@ -19,7 +19,6 @@
 
 #include "slot_manager.hxx"
 
-namespace Pingus {
 namespace Sound {
 
 SlotEntry&
@@ -50,6 +49,5 @@ SlotManager::play_sound(const std::string& name)
 }
 
 } // namespace Sound
-} // namespace Pingus
 
 /* EOF */

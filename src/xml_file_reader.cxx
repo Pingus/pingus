@@ -30,7 +30,6 @@
 #include "resource_modifier.hxx"
 #include "xml_file_reader.hxx"
 
-namespace Pingus {
 
 class XMLFileReaderImpl : public FileReaderImpl
 {
@@ -210,6 +209,5 @@ XMLFileReader::XMLFileReader(CL_DomElement element)
 {
 }
 
-} // namespace Pingus
 
 /* EOF */

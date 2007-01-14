@@ -21,7 +21,6 @@
 #include "../pointer.hxx"
 #include "pointer_scroller.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Scrollers {
 
@@ -90,6 +89,5 @@ PointerScroller::update (float delta)
 
 } // namespace Axes
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */

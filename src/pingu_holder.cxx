@@ -23,7 +23,6 @@
 #include "pingus_level.hxx"
 #include "pingu.hxx"
 
-namespace Pingus {
 
 PinguHolder::PinguHolder(const PingusLevel& plf)
   : number_of_allowed(plf.get_number_of_pingus()),
@@ -183,6 +182,5 @@ PinguHolder::get_end_id()
   return all_pingus.size();
 }
 
-} // namespace Pingus
 
 /* EOF */

@@ -25,7 +25,6 @@
 class CL_Key;
 class CL_InputDevice;
 
-namespace Pingus {
 
 class GlobalEvent
 {
@@ -43,7 +42,6 @@ private:
 
 extern GlobalEvent global_event;
 
-} // namespace Pingus
 
 #endif
 

@@ -24,7 +24,6 @@
 #include <string>
 #include <list>
 
-namespace Pingus {
 
 class PathManager
 {
@@ -65,7 +64,6 @@ private:
 
 extern PathManager path_manager;
 
-} // namespace Pingus
 
 #endif
 

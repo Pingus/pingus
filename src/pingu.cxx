@@ -34,7 +34,6 @@
 #include "resource.hxx"
 #include "fonts.hxx"
 
-namespace Pingus {
 
 using namespace Actions;
 
@@ -449,6 +448,5 @@ Pingu::catchable ()
   return action->catchable ();
 }
 
-} // namespace Pingus
 
 /* EOF */

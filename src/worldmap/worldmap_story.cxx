@@ -28,7 +28,6 @@
 #include "../fonts.hxx"
 #include "../gettext.h"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 	bool StoryPageCompare(const StoryPage& a, const StoryPage& b)

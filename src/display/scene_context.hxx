@@ -24,7 +24,6 @@
 
 class CL_GraphicContext;
 
-namespace Pingus {
 
 class SceneContextImpl;
 
@@ -94,7 +93,6 @@ public:
   void draw(CL_GraphicContext* gc);
 };
 
-} // namespace Pingus
 
 #endif
 

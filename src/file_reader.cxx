@@ -20,8 +20,6 @@
 #include "file_reader.hxx"
 #include "file_reader_impl.hxx"
 
-namespace Pingus {
-
 FileReader::FileReader(SharedPtr<FileReaderImpl> impl_)
   : impl(impl_)
 {
@@ -149,7 +147,5 @@ FileReader::read_section(const char* name)   const
   read_section(name, reader);
   return reader;
 }
-
-} // namespace Pingus
 
 /* EOF */

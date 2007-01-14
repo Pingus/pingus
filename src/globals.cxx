@@ -19,7 +19,6 @@
 
 #include "globals.hxx"
 
-namespace Pingus {
 
 int         game_speed                      = 20;
 bool        print_fps                       = false;
@@ -66,6 +65,5 @@ bool        use_opengl                      = true;
 // Use the clanSDL target by default for systems other than Windows and OSX (aka Linux).
 bool        use_opengl                      = false;
 #endif
-} // namespace Pingus
 
 /* EOF */

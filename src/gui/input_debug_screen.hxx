@@ -22,7 +22,6 @@
 
 #include "screen.hxx"
 
-namespace Pingus {
 
 class InputDebugScreen : public Screen
 {
@@ -47,7 +46,6 @@ public:
   void on_shutdown ();
 };
 
-} // namespace Pingus
 
 #endif
 

@@ -32,7 +32,6 @@
 #include "button_panel.hxx"
 #include "playfield.hxx"
 
-namespace Pingus {
 
 Playfield::Playfield (Client* client_, const CL_Rect& rect_)
   : rect(rect_),
@@ -246,6 +245,5 @@ Playfield::scroll (int x, int y)
   state.set_pos(state.get_pos() + CL_Point(x, y));
 }
 
-} // namespace Pingus
 
 /* EOF */

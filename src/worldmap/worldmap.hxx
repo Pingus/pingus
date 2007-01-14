@@ -29,7 +29,6 @@ class CL_Key;
 class CL_Font;
 class CL_InputDevice;
 
-namespace Pingus {
 
 class DrawingContext;
 
@@ -155,7 +154,6 @@ private:
 };
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 #endif
 

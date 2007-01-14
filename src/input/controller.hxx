@@ -27,7 +27,6 @@
 #include "../file_reader.hxx"
 #include "event.hxx"
 
-namespace Pingus {
 namespace Input {
 
 class Axis;
@@ -86,7 +85,6 @@ private:
 };
 
 } // namespace Input
-} // namespace Pingus
 
 #endif
 

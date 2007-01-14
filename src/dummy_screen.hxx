@@ -22,7 +22,6 @@
 
 #include "gui/screen.hxx"
 
-namespace Pingus {
 
 class DrawingContext;
 
@@ -47,7 +46,6 @@ private:
   DummyScreen& operator= (const DummyScreen&);
 };
 
-} // namespace Pingus
 
 #endif
 

@@ -22,7 +22,6 @@
 
 #include "gui/display.hxx"
 
-namespace Pingus {
 
 ///
 class FPSCounter : public DisplayHook
@@ -73,7 +72,6 @@ private:
     it over and over again */
 extern FPSCounter fps_counter;
 
-} // namespace Pingus
 
 #endif
 

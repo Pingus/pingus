@@ -31,7 +31,6 @@
 
 #include "menu_button.hxx"
 
-namespace Pingus {
 
 MenuButton::MenuButton(const Vector2i& pos_, const Sprite& sprite_, 
                        const std::string& text_, const std::string& desc_)
@@ -160,6 +159,5 @@ MenuButton::is_at(int x, int y)
 	  && y < y_pos + int(surface_p.get_height()) / 2);
 }
 
-} // namespace Pingus
 
 /* EOF */

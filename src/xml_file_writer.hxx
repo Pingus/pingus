@@ -25,7 +25,6 @@
 #include <ClanLib/Display/color.h>
 #include "file_writer.hxx"
 
-namespace Pingus {
 
 /** */
 class XMLFileWriter : public FileWriter
@@ -62,7 +61,6 @@ private:
   XMLFileWriter& operator= (const XMLFileWriter&);
 };
 
-} // namespace Pingus
 
 #endif
 

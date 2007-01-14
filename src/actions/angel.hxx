@@ -22,7 +22,6 @@
 
 #include "../pingu_action.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 class Angel : public PinguAction
@@ -46,7 +45,6 @@ private:
 };
 
 } // namespace Actions
-} // namespace Pingus
 
 #endif
 

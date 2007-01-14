@@ -24,7 +24,6 @@
 #include "../pingus_level.hxx"
 #include "dot.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 /** */
@@ -60,7 +59,6 @@ private:
 };
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 #endif
 

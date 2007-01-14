@@ -24,7 +24,6 @@
 #include "file_reader.hxx"
 #include "pingu_enums.hxx"
 
-namespace Pingus {
 
 class Server;
 
@@ -67,7 +66,6 @@ public:
   static ServerEvent make_pingu_action_event(int t, int id, Actions::ActionName action);
 };
 
-} // namespace Pingus
 
 #endif
 

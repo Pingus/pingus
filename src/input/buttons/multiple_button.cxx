@@ -20,7 +20,6 @@
 #include <iostream>
 #include "multiple_button.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Buttons {
 
@@ -80,6 +79,5 @@ MultipleButton::on_button_down()
 
 } // namespace Buttons
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */

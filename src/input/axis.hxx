@@ -22,7 +22,6 @@
 
 #include "../pingus.hxx"
 
-namespace Pingus {
 namespace Input {
 
 /// abstract base class which defines the axis interface
@@ -46,7 +45,6 @@ private:
 };
 
 } // namespace Input
-} // namespace Pingus
 
 #endif
 

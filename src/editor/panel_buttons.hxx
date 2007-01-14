@@ -24,7 +24,6 @@
 #include "../gui/component.hxx"
 #include "../vector.hxx"
 
-namespace Pingus {
 
 class DrawingContext;
 

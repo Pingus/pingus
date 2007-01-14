@@ -25,7 +25,6 @@
 #include "xml_file_reader.hxx"
 #include "plt_xml.hxx"
 
-namespace Pingus {
 
 PLTXML::PLTXML ()
 {
@@ -79,6 +78,5 @@ PLTXML::get_description ()
   return description;
 }
 
-} // namespace Pingus
 
 /* EOF */

@@ -21,7 +21,6 @@
 #include "starfield_background.hxx"
 #include "starfield_background_stars.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 StarfieldBackground::StarfieldBackground(const FileReader& reader)
@@ -72,6 +71,5 @@ StarfieldBackground::draw (SceneContext& gc)
 }
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

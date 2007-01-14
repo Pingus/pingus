@@ -23,7 +23,6 @@
 #include "worldobj.hxx"
 #include "display/scene_context.hxx"
 
-namespace Pingus {
 
 World* WorldObj::world;
 
@@ -82,6 +81,5 @@ WorldObj::draw (SceneContext& gc)
 #endif
 }
 
-} // namespace Pingus
 
 /* EOF */

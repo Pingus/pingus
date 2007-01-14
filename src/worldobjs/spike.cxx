@@ -24,7 +24,6 @@
 #include "../resource.hxx"
 #include "spike.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 Spike::Spike (const FileReader& reader)
@@ -85,6 +84,5 @@ Spike::catch_pingu (Pingu* pingu)
 }
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

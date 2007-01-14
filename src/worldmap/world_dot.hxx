@@ -22,7 +22,6 @@
 
 #include "dot.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 /** Represents a WorldMap dot on a MetaMap */

@@ -31,8 +31,6 @@
 #include "fonts.hxx"
 #include "gettext.h"
 
-namespace Pingus {
-
 class CreditsOkButton
   : public GUI::SurfaceButton
 {
@@ -345,7 +343,5 @@ Credits::on_escape_press ()
 {
   ScreenManager::instance ()->pop_screen ();
 }
-
-} // namespace Pingus
 
 /* EOF */

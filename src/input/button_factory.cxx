@@ -30,7 +30,6 @@
 #include "buttons/multiple_button.hxx"
 #include "buttons/triple_button.hxx"
 
-namespace Pingus {
 namespace Input {
 
 using namespace Buttons;
@@ -137,6 +136,5 @@ Button* ButtonFactory::triple_button (FileReader reader)
 }
 
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */

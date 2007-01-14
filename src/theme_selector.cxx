@@ -38,7 +38,6 @@
 #include "fonts.hxx"
 #include "theme.hxx"
 
-namespace Pingus {
 
 ListBox::ListBox ()
 {
@@ -371,6 +370,5 @@ ThemeSelector::mark_level_at_point(int x, int y)
     return (*current_theme)->mark_level_at_point(x, y);
 }
 
-} // namespace Pingus
 
 /* EOF */

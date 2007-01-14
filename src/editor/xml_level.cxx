@@ -29,7 +29,6 @@
 #include "../xml_file_reader.hxx"
 #include "../res_descriptor.hxx"
 
-namespace Pingus {
 
 namespace Editor {
 

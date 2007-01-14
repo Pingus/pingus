@@ -22,7 +22,6 @@
 
 #include "../axis.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Axes {
 
@@ -55,7 +54,6 @@ namespace Axes {
 
 } // namespace Axes
 } // namespace Input
-} // namespace Pingus
 
 #endif
 

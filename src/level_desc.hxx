@@ -25,7 +25,6 @@
 
 class CL_Font;
 
-namespace Pingus {
 
 ///
 class PingusLevelDesc
@@ -50,7 +49,6 @@ private:
   PingusLevelDesc& operator= (const PingusLevelDesc&);
 };
 
-} // namespace Pingus
 
 #endif
 

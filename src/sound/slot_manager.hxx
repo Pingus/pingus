@@ -26,7 +26,6 @@
 
 #include <ClanLib/sound.h>
 
-namespace Pingus {
 namespace Sound {
 
 struct SlotEntry
@@ -65,7 +64,6 @@ private:
 };
 
 } // namespace Sound
-} // namespace Pingus
 
 #endif
 

@@ -26,7 +26,6 @@
 #include "pingus.hxx"
 #include "surface_drawable.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 SurfaceDrawable::SurfaceDrawable(FileReader reader)
@@ -76,6 +75,5 @@ SurfaceDrawable::draw(DrawingContext& gc)
 }
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 /* EOF */

@@ -42,7 +42,6 @@
 #include "system.hxx"
 #include "gettext.h"
 
-namespace Pingus {
 
 int System::verbose;
 std::string System::default_email;
@@ -477,6 +476,5 @@ System::get_mtime(const std::string& filename)
 #endif
 }
 
-} // namespace Pingus
 
 /* EOF */

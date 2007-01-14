@@ -29,8 +29,6 @@
 #include "display/scene_context.hxx"
 #include "fonts.hxx"
 
-namespace Pingus {
-
 CaptureRectangle::CaptureRectangle (ButtonPanel* arg_button_panel)
   : pingu(0),
     owner_id(0),
@@ -109,7 +107,5 @@ CaptureRectangle::set_pingu (Pingu* p)
         }
     }
 }
-
-} // namespace Pingus
 
 /* EOF */

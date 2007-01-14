@@ -24,7 +24,6 @@
 #include "../res_descriptor.hxx"
 #include "../worldobj.hxx"
 
-namespace Pingus {
 
 namespace WorldObjsData {
 class ExitData;
@@ -61,7 +60,6 @@ private:
 };
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 #endif
 

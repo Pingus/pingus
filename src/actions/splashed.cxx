@@ -25,7 +25,6 @@
 #include "../worldobj.hxx"
 #include "splashed.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 Splashed::Splashed (Pingu* p)
@@ -60,6 +59,5 @@ Splashed::draw (SceneContext& gc)
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

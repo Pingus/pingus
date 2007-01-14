@@ -24,7 +24,6 @@
 #include "fonts.hxx"
 #include "loading.hxx"
 
-namespace Pingus {
 
 Loading loading_screen;
 
@@ -88,6 +87,5 @@ Loading::draw_progress(const std::string& str, float progress)
   Display::flip_display();
 }
 
-} // namespace Pingus
 
 /* EOF */

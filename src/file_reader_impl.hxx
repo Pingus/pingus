@@ -27,7 +27,6 @@ class Size;
 class Color;
 class Vector3f;
 
-namespace Pingus {
 
 class FileReader;
 class ResDescriptor;
@@ -53,7 +52,6 @@ public:
   virtual std::vector<std::string> get_section_names() const =0;
 };
 
-} // namespace Pingus
 
 #endif
 

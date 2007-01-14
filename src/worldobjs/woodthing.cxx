@@ -24,7 +24,6 @@
 #include "../world.hxx"
 #include "woodthing.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 // FIXME: Re-enable this namespace.
 // namespace Entrances {
@@ -64,6 +63,5 @@ WoodThing::draw (SceneContext& gc)
 
 // } // namespace Entrances
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

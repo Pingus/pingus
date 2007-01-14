@@ -21,7 +21,6 @@
 #include "../display/scene_context.hxx"
 #include "thunderstorm_background.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 ThunderstormBackground:: ThunderstormBackground(const FileReader& reader)
@@ -52,6 +51,5 @@ ThunderstormBackground::draw (SceneContext& gc)
 }
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

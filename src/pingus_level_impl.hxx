@@ -28,7 +28,6 @@
 #include <map>
 
 
-namespace Pingus {
 
 class PingusLevelImpl
 {
@@ -64,7 +63,6 @@ public:
   std::vector<FileReader> objects;
 }; 
 
-} // namespace Pingus
 
 #endif
 

@@ -32,7 +32,6 @@
 #include "level_head.hxx"
 #include "xml_level.hxx"
 
-namespace Pingus {
 
 class Resource;
 

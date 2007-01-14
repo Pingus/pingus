@@ -26,7 +26,6 @@
 class CL_InputEvent;
 class CL_InputDevice;
 
-namespace Pingus {
 namespace Input {
 namespace Buttons {
 
@@ -60,7 +59,6 @@ private:
 
 } // namespace Buttons
 } // namespace Input
-} // namespace Pingus
 
 #endif
 

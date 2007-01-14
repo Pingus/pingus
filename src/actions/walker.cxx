@@ -24,7 +24,6 @@
 #include "../debug.hxx"
 #include "walker.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 Walker::Walker (Pingu* p)
@@ -214,6 +213,5 @@ Walker::draw (SceneContext& gc)
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

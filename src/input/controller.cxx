@@ -30,7 +30,6 @@
 #include "scroller_factory.hxx"
 ////#include "button_factory.hxx"
 
-namespace Pingus {
 namespace Input {
 
 using namespace Axes;
@@ -285,6 +284,5 @@ Controller::get_keys_pressed()
  
 
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */

@@ -20,7 +20,6 @@
 #include <assert.h>
 #include "resource_modifier.hxx"
 
-namespace Pingus {
 namespace ResourceModifierNS {
 
 ResourceModifier horizontal_flip (ResourceModifier modifier)
@@ -179,6 +178,5 @@ ResourceModifier rs_from_string (const std::string& modifier)
 }
 
 } // namespace ResourceModifierNS
-} // namespace Pingus
 
 /* EOF */

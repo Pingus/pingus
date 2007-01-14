@@ -21,7 +21,6 @@
 #include <ClanLib/Core/System/error.h>
 #include "mouse_scroller.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Scrollers {
 
@@ -64,7 +63,6 @@ MouseScroller::update (float)
 
 } // namespace Scroller
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */
 

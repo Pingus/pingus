@@ -22,7 +22,6 @@
 #include "../resource.hxx"
 #include "starfield_background_stars.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 StarfieldBackgroundStars::StarfieldBackgroundStars (Type type)
@@ -67,6 +66,5 @@ StarfieldBackgroundStars::draw (SceneContext& gc)
 }
 
 } // namespace WorldObjs
-} // namespace Pingus {
-
+} // 
 /* EOF */

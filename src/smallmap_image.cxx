@@ -26,7 +26,6 @@
 #include "col_map.hxx"
 #include "server.hxx"
 
-namespace Pingus {
 
 SmallMapImage::SmallMapImage(Server* s, int width, int height)
   : server(s),
@@ -221,6 +220,5 @@ SmallMapImage::update_surface()
   sur = CL_Sprite(desc);
 }
 
-} // namespace Pingus
 
 /* EOF */

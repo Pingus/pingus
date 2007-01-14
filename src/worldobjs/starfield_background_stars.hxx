@@ -23,7 +23,6 @@
 #include <ClanLib/Display/sprite.h>
 #include "../worldobj.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 class StarfieldBackgroundStars
@@ -56,7 +55,6 @@ private:
 };
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 #endif
 

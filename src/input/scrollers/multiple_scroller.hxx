@@ -23,7 +23,6 @@
 #include <vector>
 #include "../scroller.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Scrollers {
 
@@ -57,7 +56,6 @@ private:
 
 } // namespace Scroller
 } // namespace Input
-} // namespace Pingus
 
 #endif
 

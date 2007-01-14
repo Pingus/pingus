@@ -22,7 +22,6 @@
 #include "../file_reader.hxx"
 #include "dot.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 Dot::Dot(FileReader reader)
@@ -35,6 +34,5 @@ Dot::Dot(FileReader reader)
 }
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 /* EOF */

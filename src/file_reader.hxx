@@ -28,8 +28,6 @@ class Size;
 class Color;
 class Vector3f;
 
-namespace Pingus {
-
 class ResDescriptor;
 class FileReaderImpl;
 
@@ -74,8 +72,6 @@ public:
 private:
   SharedPtr<FileReaderImpl> impl;
 };
-
-} // namespace Pingus
 
 #endif
 

@@ -23,7 +23,6 @@
 #include <ClanLib/Core/XML/dom_element.h>
 #include "file_reader.hxx"
 
-namespace Pingus {
 
 /** */
 class XMLFileReader : public FileReader
@@ -32,7 +31,6 @@ public:
   XMLFileReader(CL_DomElement element);
 };
 
-} // namespace Pingus
 
 #endif
 

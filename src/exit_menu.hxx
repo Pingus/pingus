@@ -22,7 +22,6 @@
 
 #include "pingus_sub_menu.hxx"
 
-namespace Pingus {
 
 class PingusMenuManager;
 
@@ -43,7 +42,6 @@ private:
   ExitMenu& operator= (const ExitMenu&);
 };
 
-} // namespace Pingus
 
 #endif
 

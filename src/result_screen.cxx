@@ -34,7 +34,6 @@
 #include "game_time.hxx"
 #include "result_screen.hxx"
 
-namespace Pingus {
 
 class ResultScreenComponent : public GUI::Component
 {
@@ -320,6 +319,5 @@ ResultScreen::on_escape_press()
   close_screen();
 }
 
-} // namespace Pingus
 
 /* EOF */

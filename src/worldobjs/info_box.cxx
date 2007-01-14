@@ -27,7 +27,6 @@
 #include "../resource.hxx"
 #include "info_box.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 InfoBox::InfoBox(const FileReader& reader)
@@ -93,6 +92,5 @@ InfoBox::get_z_pos() const
 }
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

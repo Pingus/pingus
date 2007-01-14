@@ -22,7 +22,6 @@
 
 #include "../file_reader.hxx"
 
-namespace Pingus {
 namespace Input {
 
 class Axis;
@@ -45,7 +44,6 @@ private:
 };
 
 } // namespace Input
-} // namespace Pingus
 
 #endif
 

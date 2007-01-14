@@ -33,7 +33,6 @@
 #include "manager.hxx"
 #include "../story_screen.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 WorldMapManager* WorldMapManager::instance_ = 0;
@@ -353,6 +352,5 @@ void WorldMapManager::deinit()
 }
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 /* EOF */

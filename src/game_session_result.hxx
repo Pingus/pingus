@@ -22,7 +22,6 @@
 
 #include "pingus.hxx"
 
-namespace Pingus {
 
 /** With this class you can obtain information about the success or
     failure of a level, in addition you can get details like how many
@@ -46,7 +45,6 @@ public:
   float percentage_time ();
 };
 
-} // namespace Pingus
 
 #endif
 

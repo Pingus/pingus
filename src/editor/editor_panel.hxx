@@ -26,7 +26,6 @@
 #include "../gui/checkbox_listener.hxx"
 #include "../gui/combobox_listener.hxx"
 
-namespace Pingus {
 
 	class DrawingContext;
 	class GUI::Checkbox;

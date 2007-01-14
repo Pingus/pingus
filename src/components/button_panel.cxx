@@ -27,7 +27,6 @@
 #include "../client.hxx"
 #include "button_panel.hxx"
 
-namespace Pingus {
 
 using namespace Actions;
 
@@ -185,6 +184,5 @@ ButtonPanel::previous_action ()
   pressed_button = (pressed_button - 1 + (int)a_buttons.size()) % (int)a_buttons.size();
 }
 
-} // namespace Pingus
 
 /* EOF */

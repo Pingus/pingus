@@ -32,7 +32,6 @@
 #include "blitter.hxx"
 #include "debug.hxx"
 
-namespace Pingus {
 ResourceManager Resource::resmgr;
 #if 0
 std::map<ResDescriptor, CL_Surface>       Resource::surface_map;
@@ -362,6 +361,5 @@ Resource::get_mtime (const std::string& res_name)
   return 0;
 }
 
-} // namespace Pingus
 
 /* EOF */

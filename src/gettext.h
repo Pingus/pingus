@@ -22,11 +22,9 @@
 
 #include "tinygettext/tinygettext.hxx"
 
-namespace Pingus {
 extern TinyGetText::DictionaryManager dictionary_manager;
-}
 
-#define _(String)        ::Pingus::dictionary_manager.get_dictionary().translate(String).c_str()
-#define N_(id, id2, num) ::Pingus::dictionary_manager.get_dictionary().translate(id, di2, num).c_str()
+#define _(String)        dictionary_manager.get_dictionary().translate(String).c_str()
+#define N_(id, id2, num) dictionary_manager.get_dictionary().translate(id, di2, num).c_str()
 
 #endif /* HEADER_GETTEXT_HXX */

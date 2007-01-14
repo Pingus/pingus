@@ -24,7 +24,6 @@
 #include "../particles/snow_particle_holder.hxx"
 #include "snow_generator.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 SnowGenerator::SnowGenerator(const FileReader& reader)
@@ -72,6 +71,5 @@ SnowGenerator::on_startup()
 }
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

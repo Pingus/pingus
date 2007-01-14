@@ -24,7 +24,6 @@
 #include "../input/event.hxx"
 #include "component.hxx"
 
-namespace Pingus {
 
 class DrawingContext;
 class GameDelta;
@@ -95,7 +94,6 @@ private:
 };
 
 } // namespace GUI
-} // namespace Pingus
 
 #endif
 

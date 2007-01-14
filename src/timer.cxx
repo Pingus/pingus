@@ -22,7 +22,6 @@
 #include "globals.hxx"
 #include "timer.hxx"
 
-namespace Pingus {
 
 Timer::Timer(const char* desc)
   : description(desc),
@@ -39,6 +38,5 @@ Timer::stop()
     << time << "msec" << std::endl;
 }
 
-} // namespace Pingus
 
 /* EOF */

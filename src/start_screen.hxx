@@ -23,7 +23,6 @@
 #include "pingus_level.hxx"
 #include "gui/gui_screen.hxx"
 
-namespace Pingus {
 
 /** */
 class StartScreen : public GUIScreen
@@ -48,7 +47,6 @@ private:
   StartScreen& operator= (const StartScreen&);
 };
 
-} // namespace Pingus
 
 #endif
 

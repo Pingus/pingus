@@ -22,7 +22,6 @@
 #include "world_dot.hxx"
 #include "dot_factory.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 Dot*
@@ -45,6 +44,5 @@ DotFactory::create(FileReader reader)
 }
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 /* EOF */

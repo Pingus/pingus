@@ -22,7 +22,6 @@
 
 #include "../pingus.hxx"
 
-namespace Pingus {
 
 class DrawingContext;
 
@@ -94,7 +93,6 @@ private:
 };
 
 } // namespace GUI
-} // namespace Pingus
 
 #endif
 

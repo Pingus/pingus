@@ -22,7 +22,6 @@
 #include "../vector.hxx"
 #include "pingu_collider.hxx"
 
-namespace Pingus {
 namespace Colliders {
 
 PinguCollider::PinguCollider(const int height_arg) : height(height_arg)
@@ -85,6 +84,5 @@ bool PinguCollider::operator() (World* const world, Vector current_pos,
 }
 
 } // namespace Colliders
-} // namespace Pingus
 
 /* EOF */

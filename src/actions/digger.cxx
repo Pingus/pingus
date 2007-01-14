@@ -28,7 +28,6 @@
 #include "../pingu.hxx"
 #include "digger.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 Digger::Digger (Pingu* p)
@@ -109,6 +108,5 @@ Digger::draw (SceneContext& gc)
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

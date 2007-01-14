@@ -25,7 +25,6 @@
 
 class CL_Font;
 
-namespace Pingus {
 
 class Loading
 {
@@ -49,7 +48,6 @@ private:
 
 extern Loading loading_screen;
 
-} // namespace Pingus
 
 #endif
 

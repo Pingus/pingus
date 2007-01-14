@@ -22,7 +22,6 @@
 
 #include <string>
 
-namespace Pingus {
 
 	class FileReader;
 

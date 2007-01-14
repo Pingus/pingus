@@ -23,7 +23,6 @@
 #include "../state_sprite.hxx"
 #include "../pingu_action.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 /** This action is triggered by the LaserExit trap and causes the
@@ -50,7 +49,6 @@ private:
 };
 
 } // namespace Actions
-} // namespace Pingus
 
 #endif
 

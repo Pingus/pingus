@@ -25,7 +25,6 @@
 #include "pingus.hxx"
 #include <string>
 
-namespace Pingus {
 
 /** This will need some^H^H^H^H a lot of work */
 typedef enum {
@@ -54,7 +53,6 @@ class ArmageddonGameEvent : public GameEvent
   // nothing
 };
 
-} // namespace Pingus
 
 #endif
 

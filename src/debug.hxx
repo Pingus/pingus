@@ -22,7 +22,6 @@
 
 #include "debug_stream.hxx"
 
-namespace Pingus {
 
 /* Stream for error messages */
 extern DebugStream perr;
@@ -33,7 +32,6 @@ extern DebugStream pwarn;
 /* Stream for warnings */
 extern DebugStream pout;
 
-} // namespace Pingus
 
 #endif
 

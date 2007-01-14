@@ -25,7 +25,6 @@
 #include <string>
 #include <vector>
 
-namespace Pingus {
 
 class MultiLineText
 {
@@ -49,7 +48,6 @@ private:
   MultiLineText& operator= (const MultiLineText&);
 };
 
-} // namespace Pingus
 
 #endif
 

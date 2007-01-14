@@ -22,8 +22,6 @@
 #include "vector.hxx"
 #include "world.hxx"
 
-namespace Pingus {
-
 Collider::Collider()
 {
 }
@@ -47,7 +45,5 @@ int Collider::getpixel(World* const world, const Vector& pos) const
   return world->get_colmap()->getpixel(static_cast<int>(pos.x),
 					static_cast<int>(pos.y));
 }
-
-} // namespace Pingus
 
 /* EOF */

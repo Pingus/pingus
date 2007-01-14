@@ -23,7 +23,6 @@
 #include <map>
 #include <ClanLib/Display/sprite.h>
 
-namespace Pingus {
 
 /** Simple Wrapper class around CL_Sprite that allows to have multiple
     sprites for different states (running, walking, left, right) */
@@ -44,7 +43,6 @@ public:
   CL_Sprite& operator[](int state);
 };
 
-} // namespace Pingus
 
 #endif
 

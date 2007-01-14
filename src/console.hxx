@@ -24,7 +24,6 @@
 #include <iostream>
 #include "gui/display.hxx"
 
-namespace Pingus {
 
 class ConsoleBuffer :
   public std::streambuf
@@ -115,7 +114,6 @@ private:
 /** The globale console object to which you can send messages */
 extern Console console;
 
-} // namespace Pingus
 
 #endif
 

@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_DOT_FACTORY_HXX
 #define HEADER_PINGUS_DOT_FACTORY_HXX
 
-namespace Pingus {
 namespace WorldMapNS {
 
 class Dot;
@@ -38,7 +37,6 @@ private:
 };
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 #endif
 

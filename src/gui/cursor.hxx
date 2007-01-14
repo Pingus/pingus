@@ -23,7 +23,6 @@
 #include <string>
 #include "display.hxx"
 
-namespace Pingus {
 
 /** A simple mouse cursor class and stupid. We can't use the X11/win32
     nativ mouse cursor because we want also to support non-mouse input
@@ -45,7 +44,6 @@ private:
   Cursor& operator= (const Cursor&);
 };
 
-} // namespace Pingus
 
 #endif
 

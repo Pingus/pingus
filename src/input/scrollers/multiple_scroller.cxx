@@ -17,7 +17,6 @@
 
 #include "multiple_scroller.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Scrollers {
 
@@ -70,6 +69,5 @@ MultipleScroller::update (float delta)
 
 } // namespace Scroller
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */

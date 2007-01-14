@@ -23,7 +23,6 @@
 #include "../resource.hxx"
 #include "jumper.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 Jumper::Jumper (Pingu* p)
@@ -57,6 +56,5 @@ Jumper::update ()
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

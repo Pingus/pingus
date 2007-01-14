@@ -29,7 +29,6 @@
 
 #define COLMAP_WITH_MEMORY_HOLE 1
 
-namespace Pingus {
 
 // Obtain the colmap from a memory area
 ColMap::ColMap(int w, int h)
@@ -297,6 +296,5 @@ ColMap::get_serial()
   return serial;
 }
 
-} // namespace Pingus
 
 /* EOF */

@@ -46,7 +46,6 @@
 #include "worldobjs/thunderstorm_background.hxx"
 #include "worldobjs/woodthing.hxx"
 
-namespace Pingus {
 
 using namespace WorldObjs;
 
@@ -180,6 +179,5 @@ WorldObjFactory::free_factories()
   }
 }
 
-} // namespace Pingus
 
 /* EOF */

@@ -21,7 +21,6 @@
 #include <iostream>
 #include "screen_ptr.hxx"
 
-namespace Pingus {
 
 void
 ScreenPtr::decrease_refcount()
@@ -56,6 +55,5 @@ ScreenPtr::increase_refcount()
     }
 }
 
-} // namespace Pingus
 
 /* EOF */

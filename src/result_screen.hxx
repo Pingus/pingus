@@ -23,7 +23,6 @@
 #include "result.hxx"
 #include "gui/gui_screen.hxx"
 
-namespace Pingus {
 
 /** */
 class ResultScreen : public GUIScreen
@@ -45,7 +44,6 @@ private:
   ResultScreen& operator= (const ResultScreen&);
 };
 
-} // namespace Pingus
 
 #endif
 

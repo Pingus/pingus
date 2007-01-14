@@ -26,7 +26,6 @@
 #include "shared_ptr.hxx"
 #include "file_reader.hxx"
 
-namespace Pingus {
 
 class FileReader;
 class PingusLevelImpl;
@@ -84,7 +83,6 @@ protected:
   SharedPtr<PingusLevelImpl> impl;
 };
 
-} // namespace Pingus
 
 #endif
 

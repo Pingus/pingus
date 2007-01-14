@@ -23,7 +23,6 @@
 #include <vector>
 #include "../worldobj.hxx"
 
-namespace Pingus {
 
 namespace WorldObjsData {
 class StarfieldBackgroundData;
@@ -58,8 +57,7 @@ private:
 };
 
 } // namespace WorldObjs
-} // namespace Pingus {
-
+} // 
 #endif
 
 /* EOF */

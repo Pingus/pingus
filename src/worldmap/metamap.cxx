@@ -28,7 +28,6 @@
 #include "../stat_manager.hxx"
 #include "../xml_file_reader.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 // Constructor

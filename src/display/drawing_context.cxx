@@ -26,7 +26,6 @@
 #include "../font.hpp"
 #include "../origin.hpp"
 
-namespace Pingus {
 
 struct DrawingRequestsSorter
 {
@@ -439,8 +438,6 @@ Vector3f
 DrawingContext::world_to_screen (Vector3f pos)
 {
   return pos + Vector3f(translate_stack.back().x, translate_stack.back().y);
-}
-
 }
 
 /* EOF */

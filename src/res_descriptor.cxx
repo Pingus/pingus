@@ -22,7 +22,6 @@
 #include "res_descriptor.hxx"
 #include "pingus_error.hxx"
 
-namespace Pingus {
 
 /*
    uri -> file:///home/ingo/.pingus/images/...
@@ -50,12 +49,8 @@ ResDescriptor::operator<(const ResDescriptor& res_desc) const
   return (res_name < res_desc.res_name) && (modifier < res_desc.modifier);
 }
 
-} // namespace Pingus
-
-std::ostream& operator<<(std::ostream& s, const Pingus::ResDescriptor& desc)
+std::ostream& operator<<(std::ostream& s, const ResDescriptor& desc)
 {
-  using namespace Pingus;
-
   return s << "[" << desc.res_name << ", "
            << ResourceModifierNS::rs_to_string(desc.modifier) << "]";
 }

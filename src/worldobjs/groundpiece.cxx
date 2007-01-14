@@ -24,7 +24,6 @@
 #include "../resource.hxx"
 #include "groundpiece.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 Groundpiece::Groundpiece(const FileReader& reader)
@@ -58,6 +57,5 @@ Groundpiece::on_startup ()
 }
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

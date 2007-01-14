@@ -22,7 +22,6 @@
 #include "multiline_text.hxx"
 #include "math.hxx"
 
-namespace Pingus {
 
 MultiLineText::MultiLineText()
 {
@@ -144,7 +143,6 @@ MultiLineText::get_height()
   return height;
 }
 
-} // namespace Pingus
 
 /* EOF */
 

@@ -22,7 +22,6 @@
 
 #include "pingus_level.hxx"
 
-namespace Pingus {
 
 /** */
 class PLFResMgr
@@ -53,7 +52,6 @@ public:
   static PingusLevel load_plf_from_filename(const std::string& filename);
 };
 
-} // namespace Pingus
 
 #endif
 

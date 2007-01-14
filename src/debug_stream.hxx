@@ -25,7 +25,6 @@
 #include <vector>
 #include <iostream>
 
-namespace Pingus {
 
 class NilStream;
 
@@ -119,7 +118,6 @@ class NilStream : public std::ostream
   friend class DebugStream;
 };
 
-} // namespace Pingus
 
 #endif
 

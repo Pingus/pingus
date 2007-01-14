@@ -27,7 +27,6 @@
 #include "xml_file_writer.hxx"
 #include "savegame_manager.hxx"
 
-namespace Pingus {
 
 SavegameManager* SavegameManager::instance_ = 0;
 
@@ -151,6 +150,5 @@ SavegameManager::flush()
   xml.end_section();	// pingus-savegame
 }
 
-} // namespace Pingus
 
 /* EOF */

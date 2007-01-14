@@ -23,7 +23,6 @@
 #include <vector>
 #include <string>
 
-namespace Pingus {
 
 class PLTXML
 {
@@ -49,7 +48,6 @@ private:
   PLTXML& operator= (const PLTXML&);
 };
 
-} // namespace Pingus
 
 #endif
 

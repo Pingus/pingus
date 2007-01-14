@@ -23,7 +23,6 @@
 #include "../world.hxx"
 #include "laser_exit.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 LaserExit::LaserExit(const FileReader& reader)
@@ -81,6 +80,5 @@ LaserExit::catch_pingu (Pingu* pingu)
 }
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

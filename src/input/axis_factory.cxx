@@ -27,7 +27,6 @@
 #include "axes/multiple_axis.hxx"
 #include "../debug.hxx"
 
-namespace Pingus {
 namespace Input {
 
 using namespace Axes;
@@ -107,6 +106,5 @@ Axis* AxisFactory::multiple_axis (FileReader reader)
 }
 
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */

@@ -22,7 +22,6 @@
 
 #include "../collider.hxx"
 
-namespace Pingus {
 namespace Colliders {
 
 class PinguCollider : public Collider
@@ -46,7 +45,6 @@ class PinguCollider : public Collider
 };
 
 } // namespace Colliders
-} // namespace Pingus
 
 #endif
 

@@ -23,7 +23,6 @@
 
 #define SCALE_FACTOR 8.0f
 
-namespace Pingus {
 
 class SceneContextImpl
 {
@@ -175,6 +174,5 @@ SceneContextDrawingRequest::draw(CL_GraphicContext* gc)
   sc->render(gc);
 }
 
-} // namespace Pingus
 
 /* EOF */

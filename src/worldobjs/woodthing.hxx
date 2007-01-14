@@ -22,7 +22,6 @@
 
 #include "entrance.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 // FIXME: Re-enable this namespace.
 //namespace Entrances {
@@ -45,7 +44,6 @@ private:
 
 //} // namespace Entrances
 } // namespace WorldObjs
-} // namespace Pingus
 
 #endif
 

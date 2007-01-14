@@ -28,7 +28,6 @@
 #include "../blitter.hxx"
 #include "surface_background.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 SurfaceBackground::SurfaceBackground(const FileReader& reader)
@@ -191,6 +190,5 @@ SurfaceBackground::draw (SceneContext& gc)
 }
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

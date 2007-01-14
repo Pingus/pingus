@@ -25,7 +25,6 @@
 #include <vector>
 #include <string>
 
-namespace Pingus {
 
 	class Vector;
 	class DrawingContext;

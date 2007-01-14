@@ -24,14 +24,12 @@
 
 // Forward Header for event.hxx, just here to reduce compile time
 // dependencies a bit.
-namespace Pingus {
 namespace Input {
 
 struct Event;
 typedef std::vector<Event> EventLst;
 
 } // namespace Input
-} // namespace Pingus
 
 #endif
 

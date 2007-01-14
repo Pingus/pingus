@@ -23,7 +23,6 @@
 #include <vector>
 #include "../axis.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Axes {
 
@@ -59,7 +58,6 @@ private:
 
 } // namespace Axes
 } // namespace Input
-} // namespace Pingus
 
 #endif
 

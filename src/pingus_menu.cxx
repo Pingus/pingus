@@ -37,7 +37,6 @@
 #include "file_dialog.hxx"
 #include "editor/editor_screen.hxx"
 
-namespace Pingus {
 
 PingusMenu::PingusMenu (PingusMenuManager* m)
   : PingusSubMenu (m),
@@ -267,6 +266,5 @@ PingusMenu::cancel()
   manager->pop_menu();
 }
 
-} // namespace Pingus
 
 /* EOF */

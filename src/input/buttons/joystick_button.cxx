@@ -24,7 +24,6 @@
 #include "joystick_button.hxx"
 #include "../../pingus_error.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Buttons {
 
@@ -50,6 +49,5 @@ JoystickButton::is_pressed() const
 
 } // namespace Buttons
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */

@@ -20,7 +20,6 @@
 #include <iostream>
 #include "layer_manager.hxx"
 
-namespace Pingus {
 
 LayerManager::LayerManager ()
 {
@@ -52,6 +51,5 @@ LayerManager::update (float delta)
     i->update(delta);
 }
 
-} // namespace Pingus
 
 /* EOF */

@@ -22,7 +22,6 @@
 
 #include "../axis.hxx"
 
-namespace Pingus {
 namespace Input {
 
 class Button;
@@ -60,7 +59,6 @@ private:
 
 } // namespace Axes
 } // namespace Input
-} // namespace Pingus
 
 #endif
 

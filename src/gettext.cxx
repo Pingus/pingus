@@ -19,8 +19,6 @@
 
 #include "gettext.h"
 
-namespace Pingus {
 TinyGetText::DictionaryManager dictionary_manager;
-}
 
 /* EOF */

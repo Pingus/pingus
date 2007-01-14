@@ -24,7 +24,6 @@
 #include <string>
 #include "../pingus.hxx"
 
-namespace Pingus {
 namespace Input {
 
 enum EventType { ButtonEventType, PointerEventType, AxisEventType, ScrollEventType, KeyboardEventType };
@@ -140,7 +139,6 @@ inline Event makeKeyboardEvent (char c)
 }
 
 } // namespace Input
-} // namespace Pingus
 
 #endif
 

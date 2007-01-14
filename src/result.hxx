@@ -23,7 +23,6 @@
 #include "pingus_level.hxx"
 #include "pingus.hxx"
 
-namespace Pingus {
 
 /** Result of a Pingus game */
 struct Result
@@ -54,7 +53,6 @@ struct Result
   }
 };
 
-} // namespace Pingus
 
 #endif
 

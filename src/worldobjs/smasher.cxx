@@ -29,7 +29,6 @@
 #include "../world.hxx"
 #include "smasher.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 Smasher::Smasher(const FileReader& reader)
@@ -147,6 +146,5 @@ Smasher::catch_pingu (Pingu* pingu)
 }
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

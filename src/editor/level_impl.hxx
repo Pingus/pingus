@@ -29,7 +29,6 @@
 #include <algorithm>
 #include "level_objs.hxx"
 
-namespace Pingus {
 
 namespace Editor {
 

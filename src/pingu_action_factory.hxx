@@ -24,7 +24,6 @@
 #include <vector>
 #include "pingu.hxx"
 
-namespace Pingus {
 
 class PinguAction;
 class PinguActionAbstractFactory;
@@ -63,7 +62,6 @@ private:
   PinguActionFactory& operator= (const PinguActionFactory&);
 };
 
-} // namespace Pingus
 
 #endif
 

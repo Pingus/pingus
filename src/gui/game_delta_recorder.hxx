@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_GAME_DELTA_RECORDER_HXX
 #define HEADER_PINGUS_GAME_DELTA_RECORDER_HXX
 
-namespace Pingus {
 
 class GameDeltaRecorder
 {
@@ -31,7 +30,6 @@ public:
   GameDelta* get ();
 };
 
-} // namespace Pingus
 
 #endif
 

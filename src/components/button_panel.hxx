@@ -26,7 +26,6 @@
 
 class CL_InputEvent;
 
-namespace Pingus {
 
 class Client;
 
@@ -79,7 +78,6 @@ private:
   ButtonPanel& operator= (const ButtonPanel&);
 };
 
-} // namespace Pingus
 
 #endif
 

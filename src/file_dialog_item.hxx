@@ -25,7 +25,6 @@
 #include "vector.hxx"
 #include "file_dialog.hxx"
 
-namespace Pingus {
 
 /** Class representing a clickable object in a File Dialog (a Directory, Level,
 	or Worldmap */

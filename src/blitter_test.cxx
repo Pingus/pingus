@@ -24,7 +24,6 @@
 #include "blitter.hxx"
 #include "blitter_test.hxx"
 
-namespace Pingus {
 
 class BlitterTestImpl 
 {
@@ -69,6 +68,5 @@ BlitterTest::run()
   impl->run();
 }
 
-} // namespace Pingus
 
 /* EOF */

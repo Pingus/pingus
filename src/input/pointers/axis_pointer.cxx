@@ -22,7 +22,6 @@
 #include "../axis.hxx"
 #include "axis_pointer.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Pointers {
 
@@ -71,6 +70,5 @@ AxisPointer::update (float delta)
 
 } // namespace Axes
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */

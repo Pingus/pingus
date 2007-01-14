@@ -26,7 +26,6 @@
 #include "../worldobj.hxx"
 #include "rocket_launcher.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 RocketLauncher::RocketLauncher (Pingu* p)
@@ -65,6 +64,5 @@ RocketLauncher::draw (SceneContext& gc)
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

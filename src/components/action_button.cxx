@@ -29,7 +29,6 @@
 #include "../gui/display.hxx"
 #include "../fonts.hxx"
 
-namespace Pingus {
 
 using namespace Actions;
 
@@ -328,6 +327,5 @@ PauseButton::on_primary_button_click (int x, int y)
   UNUSED_ARG(y);
 }
 
-} // namespace Pingus
 
 /* EOF */

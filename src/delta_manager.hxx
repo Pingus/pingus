@@ -25,7 +25,6 @@
 #include <iostream>
 #include "pingus.hxx"
 
-namespace Pingus {
 
 class DeltaManager
 {
@@ -76,7 +75,6 @@ private:
   DeltaManager& operator= (const DeltaManager&);
 };
 
-} // namespace Pingus
 
 #endif
 

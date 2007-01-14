@@ -32,7 +32,6 @@
 #include "../movers/linear_mover.hxx"
 #include "bomber.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 bool Bomber::static_surface_loaded = false;
@@ -140,6 +139,5 @@ Bomber::update ()
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

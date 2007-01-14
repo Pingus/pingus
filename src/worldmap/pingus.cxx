@@ -27,7 +27,6 @@
 #include "../resource.hxx"
 #include "pingus.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 Pingus::Pingus (PathGraph* arg_path)
@@ -258,6 +257,5 @@ Pingus::is_walking()
 }
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 /* EOF */

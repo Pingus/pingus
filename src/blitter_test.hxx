@@ -20,7 +20,6 @@
 #ifndef HEADER_BLITTER_TEST_HXX
 #define HEADER_BLITTER_TEST_HXX
 
-namespace Pingus {
 
 class BlitterTestImpl;
 
@@ -34,7 +33,6 @@ public:
   void run(); 
 };
 
-} // namespace Pingus
 
 #endif
 

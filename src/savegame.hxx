@@ -23,7 +23,6 @@
 #include <string>
 #include "file_reader.hxx"
 
-namespace Pingus {
 
 	class XMLFileWriter;
 
@@ -58,7 +57,6 @@ public:
   void write_xml(XMLFileWriter& xml);
 };
 
-} // namespace Pingus
 
 #endif
 

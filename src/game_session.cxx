@@ -31,7 +31,6 @@
 #include "savegame_manager.hxx"
 #include "globals.hxx"
 
-namespace Pingus {
 
 PingusGameSession::PingusGameSession (const PingusLevel& arg_plf, bool arg_show_result_screen)
   : plf(arg_plf),
@@ -192,6 +191,5 @@ PingusGameSession::on_escape_press ()
   client->on_escape_press ();
 }
 
-} // namespace Pingus
 
 /* EOF */

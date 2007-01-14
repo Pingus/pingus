@@ -22,7 +22,6 @@
 
 #include "pingus.hxx"
 
-namespace Pingus {
 
 /// Simple class for managing the direction of a pingu
 class Direction
@@ -49,7 +48,6 @@ public:
   bool is_right () const;
 };
 
-} // namespace Pingus
 
 #endif
 

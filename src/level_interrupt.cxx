@@ -19,7 +19,6 @@
 
 #include "level_interrupt.hxx"
 
-namespace Pingus {
 
 LevelInterrupt::LevelInterrupt()
 {
@@ -36,6 +35,5 @@ LevelInterrupt::get_status()
   return status;
 }
 
-} // namespace Pingus
 
 /* EOF */

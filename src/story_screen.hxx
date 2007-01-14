@@ -25,11 +25,10 @@
 #include "gui/gui_screen.hxx"
 #include "worldmap/worldmap_story.hxx"
 
-namespace Pingus {
 
 class StoryScreenComponent;
 
-using namespace Pingus::WorldMapNS;
+using namespace WorldMapNS;
 
 /** */
 class StoryScreen : public GUIScreen
@@ -48,7 +47,6 @@ private:
   StoryScreen& operator= (const StoryScreen&);
 };
 
-} // namespace Pingus
 
 #endif
 

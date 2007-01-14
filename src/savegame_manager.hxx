@@ -23,7 +23,6 @@
 #include <map>
 #include "savegame.hxx"
 
-namespace Pingus {
 
 /** */
 class SavegameManager
@@ -50,7 +49,6 @@ private:
   SavegameManager& operator= (const SavegameManager&);
 };
 
-} // namespace Pingus
 
 #endif
 

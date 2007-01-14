@@ -26,7 +26,6 @@
 #include "../world.hxx"
 #include "blocker.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 Blocker::Blocker(Pingu* p)
@@ -106,6 +105,5 @@ Blocker::y_offset(void)
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

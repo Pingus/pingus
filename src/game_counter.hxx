@@ -22,7 +22,6 @@
 
 #include "pingus.hxx"
 
-namespace Pingus {
 
 class GameCounter
 {
@@ -55,7 +54,6 @@ public:
   operator int ();
 };
 
-} // namespace Pingus
 
 #endif
 

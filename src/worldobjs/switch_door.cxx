@@ -26,7 +26,6 @@
 #include "../resource.hxx"
 #include "switch_door.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 SwitchDoor::SwitchDoor(const FileReader& reader)
@@ -121,6 +120,5 @@ SwitchDoor::update ()
 }
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

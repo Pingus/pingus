@@ -26,7 +26,6 @@
 #include "pingu_action.hxx"
 #include "worldobj.hxx"
 
-namespace Pingus {
 
 PinguAction::PinguAction (Pingu* p)
   : pingu (p)
@@ -278,6 +277,5 @@ PinguAction::move_with_forces ()
 #endif
 }
 
-} // namespace Pingus
 
 /* EOF */

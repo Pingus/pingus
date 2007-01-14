@@ -19,7 +19,6 @@
 
 #include "pingus_sub_menu.hxx"
 
-namespace Pingus {
 
 PingusSubMenu::PingusSubMenu (PingusMenuManager* m)
   : manager (m)
@@ -30,6 +29,5 @@ PingusSubMenu::~PingusSubMenu ()
 {
 }
 
-} // namespace Pingus
 
 /* EOF */

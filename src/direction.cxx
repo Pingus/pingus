@@ -19,7 +19,6 @@
 
 #include "direction.hxx"
 
-namespace Pingus {
 
 Direction::Direction() : direction(NONE)
 {
@@ -77,6 +76,5 @@ Direction::is_right() const
   return direction == RIGHT;
 }
 
-} // namespace Pingus
 
 /* EOF */

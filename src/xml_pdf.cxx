@@ -27,7 +27,6 @@
 #include "xml_file_reader.hxx"
 #include "xml_pdf.hxx"
 
-namespace Pingus {
 
 XMLPDF::XMLPDF(const std::string& filename)
 {
@@ -108,6 +107,5 @@ XMLPDF::get_events()
   return events;
 }
 
-} // namespace Pingus
 
 /* EOF */

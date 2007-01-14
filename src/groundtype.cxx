@@ -20,7 +20,6 @@
 #include <iostream>
 #include "groundtype.hxx"
 
-namespace Pingus {
 
 Groundtype::GPType
 Groundtype::string_to_type(const std::string& arg_type)
@@ -72,6 +71,5 @@ Groundtype::type_to_string(GPType arg_type)
     }
 }
 
-} // namespace Pingus
 
 /* EOF */

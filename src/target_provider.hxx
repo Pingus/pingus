@@ -27,7 +27,6 @@ class CL_Target;
 class CL_Palette;
 class CL_Canvas;
 
-namespace Pingus {
 
 class TargetProvider : public CL_PixelBuffer
 {
@@ -62,7 +61,6 @@ private:
   TargetProvider& operator= (const TargetProvider&);
 };
 
-} // namespace Pingus
 
 #endif
 

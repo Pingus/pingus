@@ -24,7 +24,6 @@
 #include <vector>
 #include "pingu_enums.hxx"
 
-namespace Pingus {
 
 class PingusLevel;
 class PinguAction;
@@ -81,7 +80,6 @@ private:
   ActionHolder& operator= (const ActionHolder&);
 };
 
-} // namespace Pingus
 
 #endif
 

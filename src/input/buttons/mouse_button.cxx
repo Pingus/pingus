@@ -24,7 +24,6 @@
 #include "mouse_button.hxx"
 #include "../../pingus_error.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Buttons {
   
@@ -105,6 +104,5 @@ MouseButton::release_handler (const CL_InputEvent& signal) // may not be a membe
     
 } // namespace Buttons
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */

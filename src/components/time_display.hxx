@@ -26,7 +26,6 @@
 
 class CL_Font;
 
-namespace Pingus {
 
 class Server;
 class Client;
@@ -50,7 +49,6 @@ private:
   TimeDisplay& operator= (const TimeDisplay&);
 };
 
-} // namespace Pingus
 
 #endif
 

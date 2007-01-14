@@ -20,7 +20,6 @@
 #include "../axes/joystick_axis.hxx"
 #include "joystick_scroller.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Scrollers {
 
@@ -71,6 +70,5 @@ JoystickScroller::update (float delta)
 
 } // namespace Scroller
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */

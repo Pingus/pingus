@@ -31,7 +31,6 @@
 #include "editor_viewport.hxx"
 #include "panel_buttons.hxx"
 
-namespace Pingus {
 
 	class GUI::Component;
 

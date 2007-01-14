@@ -27,7 +27,6 @@
 #include "cheat.hxx"
 #include "gettext.h"
 
-namespace Pingus {
 
 struct ConfigParserEOF {};
 
@@ -409,7 +408,6 @@ Config::str_to_int(const std::string& str)
   return ret_val;
 }
 
-} // namespace Pingus
 
 /* EOF */
 

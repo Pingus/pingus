@@ -23,7 +23,6 @@
 #include "../pingu.hxx"
 #include "laser_kill.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 LaserKill::LaserKill(Pingu* p)
@@ -49,6 +48,5 @@ LaserKill::update ()
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

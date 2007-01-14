@@ -24,7 +24,6 @@
 #include <string>
 #include "../res_descriptor.hxx"
 
-namespace Pingus {
 	
 	class FileReader;
 
@@ -64,7 +63,6 @@ namespace WorldMapNS {
 	};	// class WorldMapStory
 
 }	// namespace WorldmapNS
-} // namespace Pingus
 
 #endif
 

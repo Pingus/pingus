@@ -28,7 +28,6 @@
 #include "../components/smallmap.hxx"
 #include "entrance.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 Entrance::Entrance(const FileReader& reader)
@@ -163,6 +162,5 @@ Entrance::draw_smallmap(SmallMap* smallmap)
 }
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

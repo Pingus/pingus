@@ -22,7 +22,6 @@
 #include "sound_res_mgr.hxx"
 #include "sound_real.hxx"
 
-namespace Pingus {
 namespace Sound {
 
 PingusSoundReal::PingusSoundReal ()
@@ -153,7 +152,6 @@ PingusSoundReal::real_play_music (const std::string & arg_filename, float volume
 }
 
 } // namespace Sound
-} // namespace Pingus
 
 /* EOF */
 

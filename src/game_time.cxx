@@ -22,7 +22,6 @@
 #include "globals.hxx"
 #include "game_time.hxx"
 
-namespace Pingus {
 
 GameTime::GameTime (int arg_tick_time)
   : count (0), tick_time (arg_tick_time)
@@ -85,6 +84,5 @@ GameTime::ticks_to_realtime_string(int ticks)
   return time_str;
 }
 
-} // namespace Pingus
 
 /* EOF */

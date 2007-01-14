@@ -23,7 +23,6 @@
 #include <ClanLib/Display/sprite.h>
 #include "../worldobj.hxx"
 
-namespace Pingus {
 
 namespace WorldObjsData {
 class SwitchDoorData;
@@ -73,7 +72,6 @@ private:
 };
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 #endif
 

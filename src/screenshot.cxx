@@ -31,7 +31,6 @@
 #include "screenshot.hxx"
 #include "gettext.h"
 
-namespace Pingus {
 
 // Saves a screenshot to file, it return the filename the screenshot
 // was saved to.
@@ -196,6 +195,5 @@ Screenshot::get_date()
   return std::string(buffer);
 }
 
-} // namespace Pingus
 
 /* EOF */

@@ -22,7 +22,6 @@
 #include "../debug.hxx"
 #include "sound_res_mgr.hxx"
 
-namespace Pingus {
 
 SoundResMgr::SoundMap SoundResMgr::sound_map;
 
@@ -61,6 +60,5 @@ void SoundResMgr::free_sound_map()
 #endif 
 }
 
-} // namespace Pingus
 
 /* EOF */

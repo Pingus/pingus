@@ -23,7 +23,6 @@
 #include "../resource.hxx"
 #include "waiter.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 Waiter::Waiter (Pingu* p)
@@ -51,6 +50,5 @@ Waiter::draw (SceneContext& gc)
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

@@ -24,7 +24,6 @@
 #include "../vector.hxx"
 #include "drawable.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 /** */
@@ -51,7 +50,6 @@ private:
 };
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 #endif
 

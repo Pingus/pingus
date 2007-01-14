@@ -23,7 +23,6 @@
 #include "../globals.hxx"
 #include "display.hxx"
 
-namespace Pingus {
 
 std::list<DisplayHook*> Display::display_hooks;
 SDL_Surface* Display::screen;
@@ -105,6 +104,5 @@ Display::get_height()
   return screen->h;
 }
 
-} // namespace Pingus
 
 /* EOF */

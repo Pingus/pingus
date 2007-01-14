@@ -24,7 +24,6 @@
 #include "direction.hxx"
 #include "pingu_enums.hxx"
 
-namespace Pingus {
 
 // Forward declarations
 class Vector;
@@ -223,7 +222,6 @@ private:
   Pingu& operator= (const Pingu&);
 };
 
-} // namespace Pingus
 
 #endif /* PINGU_HH */
 

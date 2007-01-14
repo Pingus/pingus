@@ -22,7 +22,6 @@
 #include "../display/drawing_context.hxx"
 #include "surface_button.hxx"
 
-namespace Pingus {
 
 namespace GUI {
 
@@ -102,6 +101,5 @@ SurfaceButton::on_primary_button_click (int x, int y)
 }
 
 } // namespace GUI
-} // namespace Pingus
 
 /* EOF */

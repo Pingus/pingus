@@ -20,7 +20,6 @@
 #include "../event_fwd.hxx"
 #include "double_button.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Buttons {
 
@@ -64,6 +63,5 @@ DoubleButton::is_pressed () const
 
 } // namespace Buttons
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */

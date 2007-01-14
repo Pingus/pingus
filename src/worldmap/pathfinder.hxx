@@ -23,7 +23,6 @@
 #include <queue>
 #include "graph.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 struct PathfinderResult
@@ -180,7 +179,6 @@ private:
 };
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 #endif
 

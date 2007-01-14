@@ -22,7 +22,6 @@
 #include "xml_file_writer.hxx"
 #include "savegame.hxx"
 
-namespace Pingus {
 
 std::string
 Savegame::status_to_string(S_Status status)
@@ -95,6 +94,5 @@ Savegame::read_xml(FileReader reader)
   reader.read_int    ("saved-pingus", saved_pingus);
 }
 
-} // namespace Pingus
 
 /* EOF */

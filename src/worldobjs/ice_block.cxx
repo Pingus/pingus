@@ -27,7 +27,6 @@
 #include "../world.hxx"
 #include "ice_block.hxx"
 
-namespace Pingus {
 namespace WorldObjs {
 
 IceBlock::IceBlock(const FileReader& reader)
@@ -98,6 +97,5 @@ IceBlock::update()
 }
 
 } // namespace WorldObjs
-} // namespace Pingus
 
 /* EOF */

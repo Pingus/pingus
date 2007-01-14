@@ -22,7 +22,6 @@
 
 #include "../gui/component.hxx"
 
-namespace Pingus {
 
 	class Vector; 
   

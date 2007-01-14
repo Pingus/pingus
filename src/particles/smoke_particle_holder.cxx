@@ -22,7 +22,6 @@
 #include "../resource.hxx"
 #include "smoke_particle_holder.hxx"
 
-namespace Pingus {
 namespace Particles {
 
 SmokeParticleHolder::SmokeParticle::SmokeParticle (float x, float y, float vel_x, float vel_y)
@@ -89,6 +88,5 @@ SmokeParticleHolder::draw (SceneContext& gc)
 }
 
 } // namespace Particles
-} // namespace Pingus
 
 /* EOF */

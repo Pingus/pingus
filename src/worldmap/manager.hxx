@@ -28,7 +28,6 @@ class CL_InputDevice;
 class CL_Key;
 class GameDelta;
 
-namespace Pingus {
 namespace WorldMapNS {
 
 typedef int NodeId;
@@ -119,7 +118,6 @@ private:
 };
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 #endif
 

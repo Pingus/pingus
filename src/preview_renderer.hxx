@@ -22,7 +22,6 @@
 
 #include "plf_res_mgr.hxx"
 
-namespace Pingus {
 
 /** By given a PLF, the PreviewRenderer renders a CL_Canvas with a
     graphic of the complete level, it also allows to save it down to a
@@ -40,7 +39,6 @@ public:
   static void render(const PingusLevel& plf, const std::string& output_file); 
 };
 
-} // namespace Pingus
 
 #endif
 

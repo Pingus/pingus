@@ -22,7 +22,6 @@
 
 #include "component.hxx"
 
-namespace Pingus {
 
 class ResDescriptor;
 
@@ -66,7 +65,6 @@ private:
 };
 
 } // namespace GUI
-} // namespace Pingus
 
 #endif
 

@@ -24,7 +24,6 @@
 #include <vector>
 #include "../vector.hxx"
 
-namespace Pingus {
 namespace WorldMapNS {
 
 /** a wrapper class around std::vector<Vector>, which can calculate
@@ -87,7 +86,6 @@ public:
 };
 
 } // namespace WorldMapNS
-} // namespace Pingus
 
 #endif
 

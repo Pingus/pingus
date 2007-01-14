@@ -23,7 +23,6 @@
 #include "../pingu.hxx"
 #include "climber.hxx"
 
-namespace Pingus {
 namespace Actions {
 
 Climber::Climber (Pingu* p)
@@ -93,6 +92,5 @@ Climber::change_allowed(ActionName new_action)
 }
 
 } // namespace Actions
-} // namespace Pingus
 
 /* EOF */

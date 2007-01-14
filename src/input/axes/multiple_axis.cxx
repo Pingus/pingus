@@ -19,7 +19,6 @@
 
 #include "multiple_axis.hxx"
 
-namespace Pingus {
 namespace Input {
 namespace Axes {
 
@@ -64,6 +63,5 @@ MultipleAxis::update (float delta)
 
 } // namespace Axes
 } // namespace Input
-} // namespace Pingus
 
 /* EOF */

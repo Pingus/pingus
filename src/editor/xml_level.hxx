@@ -23,7 +23,6 @@
 #include <vector>
 #include "level_impl.hxx"
 
-namespace Pingus {
 
 namespace Editor {
 

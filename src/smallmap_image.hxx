@@ -24,7 +24,6 @@
 #include <ClanLib/Display/sprite.h>
 #include "vector.hxx"
 
-namespace Pingus {
 
 class Server;
 
@@ -60,7 +59,6 @@ private:
   SmallMapImage& operator= (const SmallMapImage&);
 };
 
-} // namespace Pingus
 
 #endif
 

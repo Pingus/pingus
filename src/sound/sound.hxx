@@ -24,7 +24,6 @@
 #include "sounds.hxx"
 #include "sound_impl.hxx"
 
-namespace Pingus {
 namespace Sound {
 
 class PingusSoundImpl;
@@ -59,7 +58,6 @@ private:
 };
 
 } // namespace Sound
-} // namespace Pingus
 
 #endif
 

@@ -27,7 +27,6 @@
 
 class CL_InputEvent;
 
-namespace Pingus {
 
 namespace Input {
 class Controller;
@@ -116,7 +115,6 @@ private:
   Client& operator= (const Client&);
 };
 
-} // namespace Pingus
 
 #endif
 

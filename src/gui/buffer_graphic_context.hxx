@@ -30,7 +30,6 @@
 class CL_Surface;
 class CL_Font;
 
-namespace Pingus {
 
 typedef CL_Font FontHandle;
 
@@ -95,7 +94,6 @@ public:
   void write(const std::string& filename);
 };
 
-} // namespace Pingus
 
 #endif
 
