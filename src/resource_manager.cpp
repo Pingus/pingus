@@ -52,6 +52,7 @@ ResourceManager::add_resources(const std::string& filename)
           for(std::vector<FileReader>::iterator i = sections.begin(); i != sections.end(); ++i)
             {
               std::cout << "Section: " << i->get_name() << std::endl;
+              parse("", *i);
             }
         }
       else
@@ -64,6 +65,49 @@ ResourceManager::add_resources(const std::string& filename)
   else
     {
       std::cout << "ResourceManager: File not found " << filename << std::endl;
+    }
+}
+
+void
+ResourceManager::parse(const std::string& section, FileReader& reader)
+{
+  if (reader.get_name() == "section")
+    {
+      parse_section(section, reader);
+    }
+  else if (reader.get_name() == "sprite")
+    {
+      std::string name;
+      reader.read_string("name", name);
+      std::cout << "sprite: " << section << "/" << name << std::endl;
+    }
+  else if (reader.get_name() == "alias")
+    {
+      
+    }
+  else if (reader.get_name() == "name")
+    {
+      // ignore (ugly)
+    }
+  else
+    {
+      std::cout << "ResourceManager: unknown token: '" << reader.get_name() << "'" << std::endl;
+    }
+}
+
+void
+ResourceManager::parse_section(const std::string& section, FileReader& reader)
+{
+  std::string name;
+  reader.read_string("name", name);
+
+  std::vector<FileReader> sections = reader.get_sections();
+  for(std::vector<FileReader>::iterator i = sections.begin(); i != sections.end(); ++i)
+    {    
+      if (section.empty())
+        parse(name, *i);
+      else
+        parse(section + "/" + name, *i);
     }
 }
 

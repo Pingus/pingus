@@ -28,6 +28,8 @@
 
 #include <string>
 
+class FileReader;
+
 /** */
 class ResourceManager
 {
@@ -39,8 +41,10 @@ public:
   ~ResourceManager();
 
   void add_resources(const std::string& filename);
-
 private:
+  void parse(const std::string& section, FileReader&);
+  void parse_section(const std::string& section, FileReader&);
+
   ResourceManager (const ResourceManager&);
   ResourceManager& operator= (const ResourceManager&);
 };
