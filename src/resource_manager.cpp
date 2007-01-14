@@ -40,24 +40,31 @@ ResourceManager::~ResourceManager()
 void
 ResourceManager::add_resources(const std::string& filename)
 {
-#if 0
   std::cout << "ResourceManager: " << filename << std::endl;
-  lisp::Lisp* sexpr = lisp::Parser::parse("test.scm");
+  lisp::Lisp* sexpr = lisp::Parser::parse(filename);
   if (sexpr)
     {
-      SExprFileReader root_reader(sexpr = sexpr->get_list_elem(0));
-      SExprFileReader reader;
+      SExprFileReader reader(sexpr = sexpr->get_list_elem(0));
 
-      if (root_reader.read_section("pingus-resources", reader))
+      if (reader.get_name() == "pingus-resources")
         {
           std::vector<FileReader> sections = reader.get_sections();
+          for(std::vector<FileReader>::iterator i = sections.begin(); i != sections.end(); ++i)
+            {
+              std::cout << "Section: " << i->get_name() << std::endl;
+            }
+        }
+      else
+        {
+          std::cout << "Couldn't find section 'pingus-resources' section in file " << filename
+                    << "\ngot " << reader.get_name()
+                    << std::endl;
         }
     }
   else
     {
       std::cout << "ResourceManager: File not found " << filename << std::endl;
     }
-#endif
 }
 
 /* EOF */

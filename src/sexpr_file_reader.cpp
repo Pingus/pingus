@@ -40,7 +40,7 @@ public:
   {
     assert(sexpr->get_type() == lisp::Lisp::TYPE_LIST &&
            sexpr->get_list_size() >= 1);
-
+    
     for(size_t i = 1; i < sexpr->get_list_size(); ++i)
       { // iterate over subsections
         sexpr->get_list_elem(i);
@@ -214,7 +214,6 @@ private:
 SExprFileReader::SExprFileReader(lisp::Lisp* lisp)
   : FileReader(SharedPtr<FileReaderImpl>(new SExprFileReaderImpl(lisp)))
 {
-  
 }
 
 /* EOF */

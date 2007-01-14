@@ -682,29 +682,6 @@ PingusMain::print_greeting_message()
 void
 PingusMain::start_game ()
 {
-  { // SExpr Parser Test code
-    std::cout << "Parser Test" << std::endl;
-    lisp::Lisp* sexpr = lisp::Parser::parse("test.scm");
-    std::cout << "Parser Test..." << std::endl;
-    std::cout << sexpr->get_type() << " " << sexpr->get_list_size() << std::endl;
-    sexpr = sexpr->get_list_elem(0);
-    if (sexpr)
-      {
-        SExprFileReader reader(sexpr);
-    
-        int t = 0; 
-        std::string str;
-        reader.read_int("test", t);
-        reader.read_string("teststr", str);
-
-        std::cout << reader.get_name() << ": t == " << t << " str: " << str << std::endl;
-      }
-    else
-      {
-        std::cout << "Not found" << std::endl;
-      }
-  }
-
   if (verbose) {
     pout << _("PingusMain: Starting Main: ") << SDL_GetTicks() << std::endl;
   }
@@ -804,7 +781,7 @@ int
 PingusMain::main(int argc, char** argv)
 {
   PHYSFS_init(argv[0]);
-  PHYSFS_addToSearchPath("data/", 0);
+  PHYSFS_addToSearchPath("data", 0);
 
   executable_name = argv[0];
 

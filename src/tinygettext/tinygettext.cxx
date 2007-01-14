@@ -334,7 +334,7 @@ DictionaryManager::get_dictionary(const std::string& spec)
           DIR* dir = opendir(p->c_str());
           if (!dir)
             {
-              std::cerr << "Error: opendir() failed on " << *p << std::endl;
+              std::cerr << "TinyGetText: Error: opendir() failed on " << *p << std::endl;
             }
           else
             {
