@@ -24,6 +24,7 @@
 #include <vector>
 #include "sprite.hpp"
 #include "res_descriptor.hxx"
+#include "resource_manager.hpp"
 
 class CL_ResourceManager;
 
@@ -35,8 +36,8 @@ namespace Pingus {
 class Resource
 {
 public:
+  static ResourceManager resmgr;
 #if 0
-  static CL_ResourceManager resmgr;
   static std::map<ResDescriptor, CL_Surface> surface_map;
 
   static CL_Surface load_from_source (const ResDescriptor& res_desc);
@@ -53,6 +54,7 @@ public:
       Returns all sections if blank */
   static std::vector<std::string> get_sections(const std::string &section = std::string());
 #endif
+
 public:
   static void init();
   static void deinit();

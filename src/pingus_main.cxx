@@ -69,7 +69,7 @@
 #include "debug.hxx"
 //#include "fonts.hxx"
 #include "pingus_menu_manager.hxx"
-// #include "resource.hxx"
+#include "resource.hxx"
 // #include "pingu_action_factory.hxx"
 // #include "credits.hxx"
 #include "sound/sound.hxx"
@@ -969,8 +969,7 @@ PingusMain::init_pingus()
 {
 ////   SavegameManager::instance();
 ////   StatManager::init();
-
-////   Resource::init();
+  Resource::init();
   Fonts::init();
 ////   ScreenManager::init();
 ////   PingusMenuManager::init();
@@ -999,7 +998,7 @@ PingusMain::deinit_pingus()
 ////  ScreenManager::deinit();
 ////  StatManager::deinit();
 ////  SavegameManager::deinit();
-////  Resource::deinit();
+  Resource::deinit();
 }
 
 } // namespace Pingus

@@ -33,41 +33,39 @@
 #include "debug.hxx"
 
 namespace Pingus {
+ResourceManager Resource::resmgr;
 #if 0
-CL_ResourceManager Resource::resmgr;
 std::map<ResDescriptor, CL_Surface>       Resource::surface_map;
 #endif
+
 void
 Resource::init()
 {
-#if 0
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/core.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/entrances.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/exits.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/fonts.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/game.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/groundpieces-bridge.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/groundpieces-ground.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/groundpieces-remove.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/groundpieces-solid.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/groundpieces-transparent.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/hotspots.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/liquids.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/pingus-player0.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/pingus-player1.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/pingus-player2.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/pingus-player3.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/pingus-common.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/particles.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/story.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/textures.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/traps.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/worldmaps.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/worldobjs.xml")));
-  resmgr.add_resources(CL_ResourceManager(path_manager.complete("data/alias.xml")));
-#endif
+  resmgr.add_resources(path_manager.complete("data/core.res"));
+  resmgr.add_resources(path_manager.complete("data/entrances.res"));
+  resmgr.add_resources(path_manager.complete("data/exits.res"));
+  resmgr.add_resources(path_manager.complete("data/fonts.res"));
+  resmgr.add_resources(path_manager.complete("data/game.res"));
+  resmgr.add_resources(path_manager.complete("data/groundpieces-bridge.res"));
+  resmgr.add_resources(path_manager.complete("data/groundpieces-ground.res"));
+  resmgr.add_resources(path_manager.complete("data/groundpieces-remove.res"));
+  resmgr.add_resources(path_manager.complete("data/groundpieces-solid.res"));
+  resmgr.add_resources(path_manager.complete("data/groundpieces-transparent.res"));
+  resmgr.add_resources(path_manager.complete("data/hotspots.res"));
+  resmgr.add_resources(path_manager.complete("data/liquids.res"));
+  resmgr.add_resources(path_manager.complete("data/pingus-player0.res"));
+  resmgr.add_resources(path_manager.complete("data/pingus-player1.res"));
+  resmgr.add_resources(path_manager.complete("data/pingus-player2.res"));
+  resmgr.add_resources(path_manager.complete("data/pingus-player3.res"));
+  resmgr.add_resources(path_manager.complete("data/pingus-common.res"));
+  resmgr.add_resources(path_manager.complete("data/particles.res"));
+  resmgr.add_resources(path_manager.complete("data/story.res"));
+  resmgr.add_resources(path_manager.complete("data/textures.res"));
+  resmgr.add_resources(path_manager.complete("data/traps.res"));
+  resmgr.add_resources(path_manager.complete("data/worldmaps.res"));
+  resmgr.add_resources(path_manager.complete("data/worldobjs.res"));
+  resmgr.add_resources(path_manager.complete("data/alias.res"));
 }
-
 
 // Returns all resources in the given section
 #if 0

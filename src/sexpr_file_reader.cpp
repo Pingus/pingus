@@ -51,7 +51,7 @@ public:
 
   ~SExprFileReaderImpl()
   {
-    
+    // FIXME: Do we have to free the lisp pointer here or outside of the code?
   }
 
   std::string get_name() const 
@@ -178,8 +178,17 @@ public:
 
   std::vector<std::string> get_section_names() const 
   {
-    return std::vector<std::string>();
+    std::vector<std::string> lst;
+
+    for(size_t i = 1; i < sexpr->get_list_size(); ++i)
+      { // iterate over subsections
+        lisp::Lisp* sub = sexpr->get_list_elem(i);
+        lst.push_back(sub->get_list_elem(0)->get_symbol());
+      }
+
+    return lst;
   }
+
 private:
   lisp::Lisp* get_subsection_item(const char* name) const
   {

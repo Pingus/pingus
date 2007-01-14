@@ -45,10 +45,13 @@ PathManager::add_path (const std::string& path)
 std::string
 PathManager::complete (const std::string& relative_path)
 {
+  return relative_path;
+#if 0
   std::string comp_path = base_path + "/" + relative_path;
   pout(PINGUS_DEBUG_PATHMGR) << "PathManager: " << relative_path << " -> " << comp_path << std::endl;
 
   return comp_path;
+#endif
 }
 
 bool
