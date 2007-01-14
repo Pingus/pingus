@@ -20,11 +20,12 @@
 #ifndef HEADER_FILE_READER_IMPL_HXX
 #define HEADER_FILE_READER_IMPL_HXX
 
+#include <vector>
 #include <string>
 
 class CL_Size;
 class CL_Sizef;
-class CL_Colorf;
+class Color;
 
 namespace Pingus {
 
@@ -45,9 +46,9 @@ public:
   virtual bool read_bool  (const char* name, bool&)        const =0;
   virtual bool read_string(const char* name, std::string&) const =0;
   virtual bool read_vector(const char* name, Vector&)      const =0;
-  virtual bool read_color (const char* name, CL_Colorf&)   const =0;
+  virtual bool read_color (const char* name, Color&)   const =0;
   virtual bool read_desc  (const char* name, ResDescriptor&) const =0;
-  virtual bool read_size  (const char* name, CL_Size&)       const =0;
+  ////  virtual bool read_size  (const char* name, CL_Size&)       const =0;
   virtual bool read_section(const char* name, FileReader&)   const =0;
   virtual std::vector<FileReader> get_sections() const =0;
   virtual std::vector<std::string> get_section_names() const =0;

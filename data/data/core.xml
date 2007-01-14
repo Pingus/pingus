@@ -1,4 +1,4 @@
-﻿<resources>
+<resources>
   <section name="core">
     <section name="cursors">
       <sprite name="editor">
@@ -125,13 +125,13 @@
       <sprite name="armageddon_anim">
         <image file="../images/core/buttons/armageddon_anim.png">
           <grid array="14,1" size="36,57" pos="0,0"/>
-       </image>
+        </image>
       </sprite>
     </section>
     <section name="menu">
-		  <sprite name="filedialog">
-			  <image file="../images/core/menu/filedialog.png" />
-		  </sprite>
+      <sprite name="filedialog">
+        <image file="../images/core/menu/filedialog.png" />
+      </sprite>
       <sprite name="folder">
         <image file="../images/core/menu/folder.png" />
       </sprite>
@@ -220,9 +220,9 @@
     </section>
 
     <section name="misc">
-		<sprite name="checkbox_clicked">
-			<image file="../images/core/misc/checkbox_clicked.png"/>
-		</sprite>
+      <sprite name="checkbox_clicked">
+        <image file="../images/core/misc/checkbox_clicked.png"/>
+      </sprite>
       <sprite name="next">
         <image file="../images/core/misc/next.png"/>
       </sprite>

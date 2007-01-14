@@ -206,7 +206,7 @@ public:
 };
 
 XMLFileReader::XMLFileReader(CL_DomElement element)
-  : FileReader(CL_SharedPtr<FileReaderImpl>(new XMLFileReaderImpl(element)))
+  : FileReader(SharedPtr<FileReaderImpl>(new XMLFileReaderImpl(element)))
 {
 }
 

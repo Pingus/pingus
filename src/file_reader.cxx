@@ -22,7 +22,7 @@
 
 namespace Pingus {
 
-FileReader::FileReader(CL_SharedPtr<FileReaderImpl> impl_)
+FileReader::FileReader(SharedPtr<FileReaderImpl> impl_)
   : impl(impl_)
 {
 }
@@ -35,7 +35,7 @@ FileReader::FileReader()
 std::string
 FileReader::get_name() const
 {
-  if (impl)
+  if (impl.get())
     return impl->get_name();
   else
     return "";
@@ -44,7 +44,7 @@ FileReader::get_name() const
 bool
 FileReader::read_int(const char* name, int& value) const
 {
-  if (impl)
+  if (impl.get())
     return impl->read_int(name, value);
   else
     return false;
@@ -53,7 +53,7 @@ FileReader::read_int(const char* name, int& value) const
 bool
 FileReader::read_float (const char* name, float& value) const
 {
-  if (impl)
+  if (impl.get())
     return impl->read_float(name, value);
   else
     return false;
@@ -62,7 +62,7 @@ FileReader::read_float (const char* name, float& value) const
 bool
 FileReader::read_bool  (const char* name, bool& value) const
 {
-  if (impl)
+  if (impl.get())
     return impl->read_bool(name, value);
   else
     return false;
@@ -71,7 +71,7 @@ FileReader::read_bool  (const char* name, bool& value) const
 bool
 FileReader::read_string(const char* name, std::string& value) const
 {
-  if (impl)
+  if (impl.get())
     return impl->read_string(name, value);
   else
     return false;
@@ -80,16 +80,16 @@ FileReader::read_string(const char* name, std::string& value) const
 bool
 FileReader::read_vector(const char* name, Vector& value) const
 {
-  if (impl)
+  if (impl.get())
     return impl->read_vector(name, value);
   else
     return false;
 }
 
 bool
-FileReader::read_color(const char* name, CL_Colorf& value) const
+FileReader::read_color(const char* name, Color& value) const
 {
-  if (impl)
+  if (impl.get())
     return impl->read_color(name, value);
   else
     return false;
@@ -98,25 +98,27 @@ FileReader::read_color(const char* name, CL_Colorf& value) const
 bool
 FileReader::read_desc(const char* name, ResDescriptor& desc) const
 {
-  if (impl)
+  if (impl.get())
     return impl->read_desc(name, desc);
   else
     return false;
 }
 
+#if 0
 bool
 FileReader::read_size  (const char* name, CL_Size& value) const
 {
-  if (impl)
+  if (impl.get())
     return impl->read_size(name, value);
   else
     return false;
 }
+#endif 
 
 bool
 FileReader::read_section(const char* name, FileReader& reader) const
 {
-  if (impl)
+  if (impl.get())
     return impl->read_section(name, reader);
   else
     return false;
@@ -125,7 +127,7 @@ FileReader::read_section(const char* name, FileReader& reader) const
 std::vector<std::string>
 FileReader::get_section_names() const
 {
-  if (impl)
+  if (impl.get())
     return impl->get_section_names();
   else
     return std::vector<std::string>();
@@ -134,7 +136,7 @@ FileReader::get_section_names() const
 std::vector<FileReader>
 FileReader::get_sections() const
 {
-  if (impl)
+  if (impl.get())
     return impl->get_sections();
   else
     return std::vector<FileReader>();

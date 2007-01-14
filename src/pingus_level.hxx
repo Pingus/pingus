@@ -72,7 +72,7 @@ public:
   const std::string& get_music() const;
 
   /** Returns the light to be used in this level */
-  const CL_Colorf& get_ambient_light() const;
+  const Color& get_ambient_light() const;
 
   /** Returns the body of this file */
   const std::vector<FileReader>& get_objects() const;

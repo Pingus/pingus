@@ -29,6 +29,10 @@
 #include <signal.h>
 #include <locale.h>
 #include <iostream>
+#include <physfs.h>
+#include "lisp/lisp.hpp"
+#include "lisp/parser.hpp"
+#include "sexpr_file_reader.hpp"
 
 #include "SDL.h"
 
@@ -584,13 +588,13 @@ PingusMain::init_path_finder()
   std::list<std::string> file_list;
   file_list.push_back ("data/core.xml");
 
-//   if (!path_manager.find_path (file_list))
-//     {
-//       std::cout << "Error: Couldn't find 'data/core.xml', please set the enviroment variable\n"
-//                 << "PINGUS_DATADIR to the path of the file `data/core.scr' or use the\n"
-//                 << "-d option." << std::endl;
-//       exit(EXIT_FAILURE);
-//     }
+  //   if (!path_manager.find_path (file_list))
+  //     {
+  //       std::cout << "Error: Couldn't find 'data/core.xml', please set the enviroment variable\n"
+  //                 << "PINGUS_DATADIR to the path of the file `data/core.scr' or use the\n"
+  //                 << "-d option." << std::endl;
+  //       exit(EXIT_FAILURE);
+  //     }
 
   dictionary_manager.add_directory(path_manager.complete("po/"));
   // Language is automatically picked from env variable
@@ -679,6 +683,27 @@ PingusMain::print_greeting_message()
 void
 PingusMain::start_game ()
 {
+  { // SExpr Parser Test code
+    std::cout << "Parser Test" << std::endl;
+    lisp::Lisp* sexpr = lisp::Parser::parse("test.scm");
+    std::cout << "Parser Test..." << std::endl;
+    std::cout << sexpr->get_type() << " " << sexpr->get_list_size() << std::endl;
+    sexpr = sexpr->get_list_elem(0);
+    if (sexpr)
+      {
+        SExprFileReader reader(sexpr);
+    
+        int t = 0; 
+        reader.read_int("test", t);
+
+        std::cout << reader.get_name() << ": t == " << t << std::endl;
+      }
+    else
+      {
+        std::cout << "Not found" << std::endl;
+      }
+  }
+
   if (verbose) {
     pout << _("PingusMain: Starting Main: ") << SDL_GetTicks() << std::endl;
   }
@@ -777,6 +802,9 @@ PingusMain::start_game ()
 int
 PingusMain::main(int argc, char** argv)
 {
+  PHYSFS_init(argv[0]);
+  PHYSFS_addToSearchPath("data/", 0);
+
   executable_name = argv[0];
 
   // Register the segfault_handler
@@ -846,6 +874,8 @@ PingusMain::main(int argc, char** argv)
 
   deinit_pingus();
   deinit_clanlib();
+
+  PHYSFS_deinit();
 
   return 0;
 }
