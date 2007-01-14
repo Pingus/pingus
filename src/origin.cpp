@@ -29,42 +29,66 @@
 
 #include "origin.hpp"
 
-#if 0
-Point calc_origin(Origin origin, const CL_Size &size)
+Origin string2origin(const std::string& str)
 {
-	switch(origin)
-	{
-	case origin_top_left:
-	default:
-		return CL_Point(0, 0);
-		break;
-	case origin_top_center:
-		return CL_Point(size.width / 2, 0);
-		break;
-	case origin_top_right:
-		return CL_Point(size.width, 0);
-		break;
-	case origin_center_left:
-		return CL_Point(0, size.height / 2);
-		break;
-	case origin_center:
-		return CL_Point(size.width / 2, size.height / 2);
-		break;
-	case origin_center_right:
-		return CL_Point(size.width, size.height / 2);
-		break;
-	case origin_bottom_left:
-		return CL_Point(0, size.height);
-		break;
-	case origin_bottom_center:
-		return CL_Point(size.width / 2, size.height);
-		break;
-	case origin_bottom_right:
-		return CL_Point(size.width, size.height);
-		break;
-	}
+  if (str == "top_left")
+    return origin_top_left;
+  else if (str == "top_center")
+    return origin_top_center;
+  else if (str == "top_right")
+    return origin_top_right;
+  else if (str == "center_left")
+    return origin_center_left;
+  else if (str == "center")
+    return origin_center;
+  else if (str == "center_right")
+    return origin_center_right;
+  else if (str == "bottom_left")
+    return origin_bottom_left;
+  else if (str == "bottom_center")
+    return origin_bottom_center;
+  else if (str == "bottom_right")
+    return origin_bottom_right;
+  else 
+    return origin_top_left;
 }
 
+Vector2i calc_origin(Origin origin, const Size &size)
+{
+  switch(origin)
+    {
+    case origin_top_left:
+    default:
+      return Vector2i(0, 0);
+      break;
+    case origin_top_center:
+      return Vector2i(size.width / 2, 0);
+      break;
+    case origin_top_right:
+      return Vector2i(size.width, 0);
+      break;
+    case origin_center_left:
+      return Vector2i(0, size.height / 2);
+      break;
+    case origin_center:
+      return Vector2i(size.width / 2, size.height / 2);
+      break;
+    case origin_center_right:
+      return Vector2i(size.width, size.height / 2);
+      break;
+    case origin_bottom_left:
+      return Vector2i(0, size.height);
+      break;
+    case origin_bottom_center:
+      return Vector2i(size.width / 2, size.height);
+      break;
+    case origin_bottom_right:
+      return Vector2i(size.width, size.height);
+      break;
+    }
+}
+
+#if 0
 CL_Pointf calc_origin(CL_Origin origin, const CL_Sizef &size)
 {
 	switch(origin)

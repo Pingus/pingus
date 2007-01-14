@@ -27,6 +27,7 @@
 class Size;
 class Color;
 class Vector3f;
+class Vector2i;
 
 class ResDescriptor;
 class FileReaderImpl;
@@ -48,6 +49,8 @@ public:
   bool read_bool  (const char* name, bool&)          const;
   bool read_string(const char* name, std::string&)   const;
   bool read_vector(const char* name, Vector3f&)      const;
+  bool read_vector2i(const char* name, Vector2i&)    const;
+  bool read_size  (const char* name, Size&)          const;
   bool read_color (const char* name, Color&)         const;
   ////  bool read_size  (const char* name, CL_Size&)       const;
   bool read_desc  (const char* name, ResDescriptor&) const;

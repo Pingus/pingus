@@ -115,7 +115,11 @@ Resource::load_sprite(const ResDescriptor& desc)
 Sprite
 Resource::load_sprite(const std::string& res_name)
 {
-  return Sprite(res_name);
+  SpriteDescription* desc = resmgr.get_sprite_description(res_name);
+  if (desc)
+    return Sprite(*desc);
+  else
+    return Sprite();
 
 #if 0
   try {

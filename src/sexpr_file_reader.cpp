@@ -27,6 +27,7 @@
 #include "math/vector3f.hpp"
 #include "math/color.hpp"
 #include "math/size.hpp"
+#include "math/vector2i.hpp"
 #include "file_reader_impl.hxx"
 #include "sexpr_file_reader.hpp"
 
@@ -122,6 +123,30 @@ public:
     return false;
   }
 
+  bool read_size(const char* name, Size& v) const
+  {
+    lisp::Lisp* sub = get_subsection_item(name);
+    if (sub && sub->get_list_size() == 3)
+      {
+        v.width  = sub->get_list_elem(1)->get_int();
+        v.height = sub->get_list_elem(2)->get_int();
+        return true;
+      }    
+    return false;
+  }
+
+  bool read_vector2i(const char* name, Vector2i& v) const
+  {
+    lisp::Lisp* sub = get_subsection_item(name);
+    if (sub && sub->get_list_size() == 3)
+      {
+        v.x = sub->get_list_elem(1)->get_int();
+        v.y = sub->get_list_elem(2)->get_int();
+        return true;
+      }    
+    return false;
+  }
+
   bool read_color (const char* name, Color& v) const
   {
     lisp::Lisp* sub = get_subsection_item(name);
@@ -138,18 +163,6 @@ public:
 
   bool read_desc  (const char* name, ResDescriptor& v) const 
   {
-    return false;
-  }
-
-  bool read_size  (const char* name, Size& v) const 
-  {
-    lisp::Lisp* sub = get_subsection_item(name);
-    if (sub && sub->get_list_size() == 3)
-      {
-        v = Size(int(sub->get_list_elem(1)->get_int()),
-                 int(sub->get_list_elem(2)->get_int()));
-        return true;
-      }
     return false;
   }
 

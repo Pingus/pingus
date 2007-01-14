@@ -31,12 +31,14 @@
 #include "shared_ptr.hxx"
 
 class SpriteImpl;
+class SpriteDescription;
 
 /** */
 class Sprite
 {
 public:
   Sprite();
+  Sprite(const SpriteDescription& desc);
   Sprite(const std::string& name);
   ~Sprite();
 

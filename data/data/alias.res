@@ -1,5 +1,6 @@
 ;; alias.xml
 (pingus-resources
+  ;;  Pre 0.6.0 Stuff 
   (alias (name "global/Buttons/pause")
          (link "core/buttons/pause"))
 
@@ -1529,7 +1530,7 @@
          (link "liquids/slime"))
 
   ;;  same as above but with section names in lowercase, not sure why
-  ;;  this is needed, but some level contain identifers in that way 
+;; this is needed, but some level contain identifers in that way 
   (alias (name "entrances/entrances/entrance")
          (link "entrances/entrance"))
 

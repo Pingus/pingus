@@ -102,16 +102,23 @@ FileReader::read_desc(const char* name, ResDescriptor& desc) const
     return false;
 }
 
-#if 0
 bool
-FileReader::read_size  (const char* name, CL_Size& value) const
+FileReader::read_size  (const char* name, Size& value) const
 {
   if (impl.get())
     return impl->read_size(name, value);
   else
     return false;
 }
-#endif 
+
+bool
+FileReader::read_vector2i(const char* name, Vector2i& value) const
+{
+  if (impl.get())
+    return impl->read_vector2i(name, value);
+  else
+    return false;
+}
 
 bool
 FileReader::read_section(const char* name, FileReader& reader) const

@@ -27,20 +27,24 @@
 #define HEADER_RESOURCE_MANAGER_HPP
 
 #include <string>
+#include <map>
 
+class SpriteDescription;
 class FileReader;
 
 /** */
 class ResourceManager
 {
 private:
+  typedef std::map<std::string, SpriteDescription*> Resources;
+  Resources resources;
   
-
 public:
   ResourceManager();
   ~ResourceManager();
 
   void add_resources(const std::string& filename);
+  SpriteDescription* get_sprite_description(const std::string& name) const;
 private:
   void parse(const std::string& section, FileReader&);
   void parse_section(const std::string& section, FileReader&);

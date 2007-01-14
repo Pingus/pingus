@@ -28,7 +28,7 @@
 Vector2i
 Vector2i::operator+ (const Vector2i& add) const
 {
-  return Vector2i(x + sub.x, y + sub.y);
+  return Vector2i(x + add.x, y + add.y);
 }
 
 Vector2i
@@ -46,8 +46,9 @@ Vector2i::operator* (int  mul) const
 Vector2i&
 Vector2i::operator+= (const Vector2i& add)
 {
-  x += sub.x;
-  y += sub.y;
+  x += add.x;
+  y += add.y;
+  return *this;
 }
 
 Vector2i&
@@ -55,6 +56,7 @@ Vector2i::operator-= (const Vector2i& sub)
 {
   x -= sub.x;
   y -= sub.y;
+  return *this;
 }
 
 Vector2i&
@@ -62,6 +64,7 @@ Vector2i::operator*= (int mul)
 {
   x *= mul;
   y *= mul;
+  return *this;
 }
 
 /* EOF */

@@ -18,22 +18,21 @@ def parse_sprite(prefix, dir, sprite)
     case el.name
     when "image"
       if not el.has_elements? then
-        print "\n#{prefix}  (image (file \"#{el.attribute("file").value}\"))"
+        print "\n#{prefix}  (image-file \"#{el.attribute("file").value}\")"
       elsif el.elements["grid"] then
-        print "\n#{prefix}  (image (file  \"#{el.attribute("file").value}\")"
+        print "\n#{prefix}  (image-file \"#{el.attribute("file").value}\")"
 
         if el.elements["grid"].attribute("array") then
-          print "\n#{prefix}         (array #{el.elements["grid"].attribute("array").value.gsub(",", " ")})" 
+          print "\n#{prefix}  (image-array #{el.elements["grid"].attribute("array").value.gsub(",", " ")})" 
         end
 
         if el.elements["grid"].attribute("size") then
-          print "\n#{prefix}         (size #{el.elements["grid"].attribute("size").value.gsub(",", " ")})"  
+          print "\n#{prefix}  (image-size #{el.elements["grid"].attribute("size").value.gsub(",", " ")})"  
         end
 
         if el.elements["grid"].attribute("pos") then
-          print "\n#{prefix}         (pos #{el.elements["grid"].attribute("pos").value.gsub(",", " ")})"
+          print "\n#{prefix}  (image-pos #{el.elements["grid"].attribute("pos").value.gsub(",", " ")})"
         end
-        print ")"
       else
         puts "unknown font element: "
       end
@@ -94,7 +93,7 @@ ARGV.each{|arg|
   dir = File.dirname(arg)
   doc = REXML::Document.new(File.new(arg))
   doc.elements.each("resources") { |el|
-    print ";; #{arg}\n(pingus-resource"
+    print ";; #{arg}\n(pingus-resources"
     parse_section("  ", "", el)
     puts " )"
   }

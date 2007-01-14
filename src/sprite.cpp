@@ -31,6 +31,7 @@
 #include "math/vector2i.hpp"
 #include "SDL_image.h"
 #include "sprite.hpp"
+#include "sprite_description.hpp"
 
 class SpriteImpl
 {
@@ -38,6 +39,27 @@ public:
   SDL_Surface* surface;
   Vector2i     offset;
   Origin       origin;
+
+  SpriteImpl(const SpriteDescription& desc)
+  {
+    surface = IMG_Load(desc.filename.c_str());
+    if (!surface)
+      {
+        std::cout << "Error: Couldn't load " << desc.filename << std::endl;
+        surface = IMG_Load("data/images/core/misc/404.png");
+        assert(surface);
+      }
+    else
+      {
+        std::cout << "Loaded sprite: " << desc.filename << std::endl;
+      }
+
+    
+    origin = desc.origin;
+    offset = calc_origin(origin, Size(surface->w, surface->h)) + desc.offset;
+
+    std::cout << "offset: " << offset.x << ", " << offset.y << std::endl;
+  }
 
   SpriteImpl(const std::string& name) 
   {
@@ -69,7 +91,7 @@ public:
     SDL_Rect pos;
     
     pos.x = (Sint16)(x - offset.x);
-    pos.y = (Sint16)(y - offset.y);
+    pos.y = (Sint16)(y + offset.y);
     pos.w = 0;
     pos.h = 0;
     
@@ -85,6 +107,11 @@ Sprite::Sprite()
 Sprite::Sprite(const std::string& name)
   : impl(new SpriteImpl(name))
 {  
+}
+
+Sprite::Sprite(const SpriteDescription& desc)
+  : impl(new SpriteImpl(desc))
+{
 }
 
 Sprite::~Sprite()

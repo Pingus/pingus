@@ -26,6 +26,7 @@
 #include <iostream>
 #include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
+#include "sprite_description.hpp"
 #include "sexpr_file_reader.hpp"
 #include "resource_manager.hpp"
 
@@ -51,7 +52,7 @@ ResourceManager::add_resources(const std::string& filename)
           std::vector<FileReader> sections = reader.get_sections();
           for(std::vector<FileReader>::iterator i = sections.begin(); i != sections.end(); ++i)
             {
-              std::cout << "Section: " << i->get_name() << std::endl;
+              //std::cout << "Section: " << i->get_name() << std::endl;
               parse("", *i);
             }
         }
@@ -79,11 +80,18 @@ ResourceManager::parse(const std::string& section, FileReader& reader)
     {
       std::string name;
       reader.read_string("name", name);
-      std::cout << "sprite: " << section << "/" << name << std::endl;
+      if (!section.empty())
+        name = section + "/" + name;
+     
+      resources[name] = new SpriteDescription(reader);
     }
   else if (reader.get_name() == "alias")
     {
-      
+      std::string name;
+      std::string link;
+      reader.read_string("name", name);
+      reader.read_string("link", link);
+      std::cout << "alias: " << name << " -> " << link << std::endl;
     }
   else if (reader.get_name() == "name")
     {
@@ -109,6 +117,20 @@ ResourceManager::parse_section(const std::string& section, FileReader& reader)
       else
         parse(section + "/" + name, *i);
     }
+}
+
+SpriteDescription* 
+ResourceManager::get_sprite_description(const std::string& name) const
+{
+  Resources::const_iterator i = resources.find(name);
+  if (i != resources.end())
+    {
+      return i->second;
+    }
+  else
+    {
+      return 0;
+    }  
 }
 
 /* EOF */
