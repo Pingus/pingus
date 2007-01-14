@@ -9,6 +9,7 @@
  * C++ object. This is typically used from the code in the Properties class. You
  * can also write custom overloads in your code.
  */
+
 #ifndef __GETTERS_HPP__
 #define __GETTERS_HPP__
 
