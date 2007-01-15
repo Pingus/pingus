@@ -34,33 +34,33 @@ namespace WorldMapNS {
 
 PathGraph::PathGraph(WorldMap* arg_worldmap, FileReader &reader)
   : worldmap(arg_worldmap)
-    ////metamap(0)
+                    ////metamap(0)
 {
   parse_nodes(reader.read_section("nodes"));
   parse_edges(reader.read_section("edges"));
   
-	init_cache();
+  init_cache();
 }
 
 PathGraph::PathGraph(MetaMap* arg_metamap, FileReader &reader)
   : worldmap(0),
-	metamap(arg_metamap) 
+    metamap(arg_metamap) 
 	
 {
   parse_nodes(reader.read_section("nodes"));
   parse_edges(reader.read_section("edges"));
   
-	init_cache();
+  init_cache();
 }
 
 void delete_Path(Edge<Path*> x)
 {
-	delete x.data;
+  delete x.data;
 }
 
 PathGraph::~PathGraph()
 {
-	graph.for_each_edge(delete_Path);
+  graph.for_each_edge(delete_Path);
 }
 
 void
@@ -81,10 +81,10 @@ PathGraph::parse_nodes(FileReader reader)
           node_lookup[dot->get_name()] = id;
 
           // add the dot to the list of drawables
-					if (worldmap)
-						worldmap->add_drawable(dot);
-					else
-						metamap->add_drawable(dot);
+          if (worldmap)
+            worldmap->add_drawable(dot);
+          else
+            metamap->add_drawable(dot);
 
           // FIXME: should be use this for freeing the stuff?
           dots.push_back(dot);
@@ -274,11 +274,11 @@ PathGraph::get_id(Dot* dot)
 void
 PathGraph::init_cache()
 {
-	// Init the pathfinder cache
-	pathfinder_cache.resize(graph.max_node_handler_value());
-	for(PFinderCache::iterator i = pathfinder_cache.begin();
-		i != pathfinder_cache.end(); ++i)
-		*i = 0;
+  // Init the pathfinder cache
+  pathfinder_cache.resize(graph.max_node_handler_value());
+  for(PFinderCache::iterator i = pathfinder_cache.begin();
+      i != pathfinder_cache.end(); ++i)
+    *i = 0;
 }
 
 } // namespace WorldMapNS

@@ -219,8 +219,8 @@ WorldMapManager::WorldMapManager ()
   : is_init(false),
 		exit_worldmap(false),
 		worldmap(0),
-    new_worldmap(0),
-    metamap(new MetaMap(path_manager.complete("metamap/metamap.xml")))
+    new_worldmap(0)
+    ////metamap(new MetaMap(path_manager.complete("metamap/metamap.xml")))
 {
   // FIXME: a bit ugly because of the proteced member, but should work
   // FIXME: well enough. GUIScreen could also use multi-inheritage,
@@ -239,7 +239,7 @@ WorldMapManager::load (const std::string& filename)
   if (worldmap)
     delete worldmap;
 
-  worldmap = new WorldMap (filename);
+  worldmap = new WorldMap(filename);
 	
   bool credits_unlocked = false;
   StatManager::instance()->get_bool(worldmap->get_shortname() + "-endstory-seen", 
@@ -253,23 +253,25 @@ WorldMapManager::load (const std::string& filename)
 void
 WorldMapManager::on_startup ()
 {
-	exit_worldmap = false;
-	Sound::PingusSound::stop_music();
+  exit_worldmap = false;
+  Sound::PingusSound::stop_music();
 
-	if (!worldmap)
-	{
-		load(path_manager.complete("worldmaps/" + metamap->get_default_worldmap()));
-	}
+#if 0
+  if (!worldmap)
+    {
+      load(path_manager.complete("worldmaps/" + metamap->get_default_worldmap()));
+    }
+#endif
 
-	if (worldmap)
-		worldmap->on_startup ();
+  if (worldmap)
+    worldmap->on_startup ();
 }
 
 WorldMapManager::~WorldMapManager ()
 {
   delete worldmap;
   delete new_worldmap;
-	delete metamap;
+  ////delete metamap;
 }
 
 void

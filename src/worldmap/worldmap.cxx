@@ -65,11 +65,7 @@ WorldMap::WorldMap(const std::string& arg_filename)
 
   parse_file(XMLFileReader(root));
 #endif
-  lisp::Lisp* sexpr = lisp::Parser::parse(filename);
-  if (sexpr)
-    {
-      parse_file(SExprFileReader(sexpr->get_list_elem(0)));
-    }
+  parse_file(FileReader::parse(filename));
 
   pingus = new Pingus(path_graph);
   set_starting_node();
@@ -405,7 +401,7 @@ WorldMap::update_locked_nodes()
         {
           if (dot->finished())
             {
-              WorldMapManager::instance()->get_metamap()->finish_node(short_name);
+              ////WorldMapManager::instance()->get_metamap()->finish_node(short_name);
               ////ScreenManager::instance()->replace_screen(new StoryScreen(get_end_story()), true);
             }
         }
@@ -444,7 +440,7 @@ WorldMap::set_starting_node()
 bool
 WorldMap::is_final_map()
 {
-  return (WorldMapManager::instance()->get_metamap()->get_final_worldmap() == short_name);
+  return false; ////(WorldMapManager::instance()->get_metamap()->get_final_worldmap() == short_name);
 }
 
 } // namespace WorldMapNS

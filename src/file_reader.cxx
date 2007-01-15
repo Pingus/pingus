@@ -17,6 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "sexpr_file_reader.hpp"
+#include "lisp/parser.hpp"
+#include "lisp/lisp.hpp"
 #include "file_reader.hxx"
 #include "file_reader_impl.hxx"
 
@@ -153,6 +156,21 @@ FileReader::read_section(const char* name)   const
   FileReader reader;
   read_section(name, reader);
   return reader;
+}
+
+FileReader
+FileReader::parse(const std::string& filename)
+{
+  // FIXME: memory leak, somebody must delete the lisp::Lisp
+  lisp::Lisp* sexpr = lisp::Parser::parse(filename);
+  if (sexpr)
+    {
+      return SExprFileReader(sexpr->get_list_elem(0));
+    }
+  else
+    {
+      return FileReader();
+    }
 }
 
 /* EOF */

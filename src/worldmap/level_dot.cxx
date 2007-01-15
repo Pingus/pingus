@@ -58,8 +58,8 @@ LevelDot::LevelDot(FileReader reader)
 void
 LevelDot::draw(DrawingContext& gc)
 {
-  Vector3f mpos = gc.screen_to_world(Vector3f(Input::Controller::get_current()->get_pointer()->get_x_pos(),
-                                          Input::Controller::get_current()->get_pointer()->get_y_pos()));
+  Vector3f mpos; //// = gc.screen_to_world(Vector3f(Input::Controller::get_current()->get_pointer()->get_x_pos(),
+    ////                    Input::Controller::get_current()->get_pointer()->get_y_pos()));
 
   float x = mpos.x - pos.x;
   float y = mpos.y - pos.y;

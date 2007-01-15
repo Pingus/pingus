@@ -73,12 +73,12 @@
 // #include "pingu_action_factory.hxx"
 // #include "credits.hxx"
 #include "sound/sound.hxx"
-// #include "worldmap/manager.hxx"
+#include "worldmap/manager.hxx"
 #include "cheat.hxx"
 // #include "blitter_test.hxx"
 // #include "preview_renderer.hxx"
-// #include "worldmap/manager.hxx"
-// #include "worldobj_factory.hxx"
+#include "worldmap/manager.hxx"
+//#include "worldobj_factory.hxx"
 
 // #include "editor/editor_screen.hxx"
 
@@ -746,8 +746,8 @@ PingusMain::start_game ()
     }
   else if (!worldmapfile.empty())
     {
-      //WorldMapNS::WorldMapManager::instance()->load(worldmapfile);
-      //ScreenManager::instance()->push_screen(WorldMapNS::WorldMapManager::instance());
+      WorldMapNS::WorldMapManager::instance()->load(worldmapfile);
+      ScreenManager::instance()->push_screen(WorldMapNS::WorldMapManager::instance());
     }
   else if (editor == true)
     {
