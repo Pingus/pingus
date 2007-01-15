@@ -76,9 +76,13 @@ LevelDot::draw(DrawingContext& gc)
     {
       if (savegame->status == Savegame::FINISHED)
         if (highlight)
-          gc.draw (highlight_green_dot_sur, pos);
+          {
+            gc.draw (highlight_green_dot_sur, pos);
+          }
         else
-          gc.draw (green_dot_sur, pos);
+          {
+            gc.draw (green_dot_sur, pos);
+          }
       else
         if (highlight)
           gc.draw (highlight_red_dot_sur, pos);

@@ -27,6 +27,8 @@
 #include "math/vector3f.hpp"
 #include "math/color.hpp"
 #include "math/size.hpp"
+#include "res_descriptor.hxx"
+#include "resource_modifier.hxx"
 #include "math/vector2i.hpp"
 #include "file_reader_impl.hxx"
 #include "sexpr_file_reader.hpp"
@@ -163,6 +165,14 @@ public:
 
   bool read_desc  (const char* name, ResDescriptor& v) const 
   {
+    lisp::Lisp* sub = get_subsection(name);
+    if (sub)
+      {
+        SExprFileReader reader(sub);
+        reader.read_string("image",  v.res_name);
+        reader.read_enum("modifier", v.modifier, ResourceModifierNS::rs_from_string);
+        return true;
+      }
     return false;
   }
 
