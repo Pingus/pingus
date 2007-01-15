@@ -330,7 +330,6 @@
 
       (sprite
         (name "logo")
-        (origin "center")
         (image-file "../images/core/misc/logo.png"))
 
       (sprite
