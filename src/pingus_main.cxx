@@ -59,10 +59,11 @@
 #include "config.hxx"
 #include "console.hxx"
 // #include "fps_counter.hxx"
-// #include "plf_res_mgr.hxx"
+#include "plf_res_mgr.hxx"
 // #include "game_session.hxx"
 // #include "story_screen.hxx"
-// #include "start_screen.hxx"
+
+#include "start_screen.hxx"
 // #include "savegame_manager.hxx"
 // #include "stat_manager.hxx"
 // #include "demo_session.hxx"
@@ -735,9 +736,9 @@ PingusMain::start_game ()
 
       if (successfull)
         {
-          //ScreenManager::instance()->push_screen
-            //(new StartScreen(PLFResMgr::load_plf_from_filename(levelfile)),
-             //   true);
+          ScreenManager::instance()->push_screen
+            (new StartScreen(PLFResMgr::load_plf_from_filename(levelfile)),
+             true);
         }
     }
   else if (!demo_file.empty()) // start a demo

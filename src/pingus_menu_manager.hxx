@@ -25,7 +25,6 @@
 #include "pingus_menu.hxx"
 #include "file_dialog.hxx"
 
-
 class PingusSubMenu;
 
 class PingusMenuManager : public Screen

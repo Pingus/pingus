@@ -103,7 +103,7 @@ ExitMenu::~ExitMenu ()
 }
 
 bool
-ExitMenu::draw (DrawingContext& gc)
+ExitMenu::draw(DrawingContext& gc)
 {
   //gc.draw_fillrect (0, 0, Display::get_width (), Display::get_height (),
   //0, 0, 0, 0.5);

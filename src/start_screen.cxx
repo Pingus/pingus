@@ -18,8 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Core/System/clanstring.h>
-#include <ClanLib/Display/sprite_description.h>
 #include "gui/gui_manager.hxx"
 #include "gui/surface_button.hxx"
 #include "gui/component.hxx"
@@ -36,13 +34,13 @@
 #include "sound/sound.hxx"
 #include "pingus_level.hxx"
 #include "string_format.hxx"
-
+#include "gui/display.hxx"
 
 class StartScreenComponent : public GUI::Component
 {
 private:
   PingusLevel plf;
-  CL_Sprite background;
+  Sprite background;
   std::string time_str;
   std::string description;
 
@@ -61,8 +59,8 @@ private:
   StartScreen* parent;
 public:
   StartScreenOkButton(StartScreen* p)
-    : GUI::SurfaceButton(CL_Display::get_width()/2 + 225,
-                         CL_Display::get_height()/2 + 125,
+    : GUI::SurfaceButton(Display::get_width()/2 + 225,
+                         Display::get_height()/2 + 125,
                          ResDescriptor("core/start/ok"),
                          ResDescriptor("core/start/ok_clicked"),
                          ResDescriptor("core/start/ok_hover")),
@@ -97,8 +95,8 @@ private:
   StartScreen* parent;
 public:
   StartScreenAbortButton(StartScreen* p)
-    : GUI::SurfaceButton(CL_Display::get_width()/2 - 278,
-                         CL_Display::get_height()/2 + 144,
+    : GUI::SurfaceButton(Display::get_width()/2 - 278,
+                         Display::get_height()/2 + 144,
                          ResDescriptor("core/start/back"),
                          ResDescriptor("core/start/back_clicked"),
                          ResDescriptor("core/start/back_hover")),
@@ -130,37 +128,42 @@ StartScreen::~StartScreen()
 StartScreenComponent::StartScreenComponent(const PingusLevel& p)
   : plf(p)
 {
-	if (CL_Display::get_width() == 800 && CL_Display::get_height() == 600)
-  	background = Resource::load_sprite("core/menu/startscreenbg");
-	else
-	{
-		CL_PixelBuffer pb = Blitter::scale_surface_to_canvas(Resource::load_pixelbuffer(
-			"core/menu/startscreenbg"), CL_Display::get_width(), CL_Display::get_height());
-		CL_SpriteDescription desc;
-		desc.add_frame(pb);
-		background = CL_Sprite(desc);
-	}
-  background.set_alignment(origin_center);
+  if (Display::get_width() == 800 && Display::get_height() == 600)
+    {
+      background = Resource::load_sprite("core/menu/startscreenbg");
+    }
+  else
+    {
+#if 0
+      CL_PixelBuffer pb = Blitter::scale_surface_to_canvas(Resource::load_pixelbuffer(
+                                                                                      "core/menu/startscreenbg"), Display::get_width(), Display::get_height());
+      CL_SpriteDescription desc;
+      desc.add_frame(pb);
+      background = CL_Sprite(desc);
+#endif
+    }
+  ////background.set_alignment(origin_center);
   time_str = GameTime::ticks_to_realtime_string(plf.get_time());
 }
 
 void
 StartScreenComponent::draw(DrawingContext& gc)
 {
-  background.draw((float)CL_Display::get_width()/2,(float)CL_Display::get_height()/2);
+  gc.draw(background, Display::get_width()/2, Display::get_height()/2);
 
-  int left_x  = CL_Display::get_width()/2 - 120;
-  int right_x = CL_Display::get_width()/2 + 120;
-  int y = CL_Display::get_height()/2 + 40;
+#if 0
+  int left_x  = Display::get_width()/2 - 120;
+  int right_x = Display::get_width()/2 + 120;
+  int y = Display::get_height()/2 + 40;
 
   gc.print_center(Fonts::chalk_large,
                   gc.get_width()/2,
-                  (float)CL_Display::get_height()/2 - 200,
+                  (float)Display::get_height()/2 - 200,
                   _(plf.get_levelname()));
 
   gc.print_left(Fonts::chalk_normal,
-                (float)CL_Display::get_width()/2 - 290,
-                (float)CL_Display::get_height()/2 - 140,
+                (float)Display::get_width()/2 - 290,
+                (float)Display::get_height()/2 - 140,
                 format_description(800 - 230));
 
   gc.print_left (Fonts::chalk_normal, (float)left_x,  (float)y, _("Number of Pingus: "));
@@ -175,13 +178,14 @@ StartScreenComponent::draw(DrawingContext& gc)
   gc.print_left (Fonts::chalk_normal, (float)left_x,  float(y += 30), _("Difficulty:"));
   gc.print_right(Fonts::chalk_normal, (float)right_x, (float)y, CL_String::to(plf.get_difficulty()) + "/100");
 
-  gc.print_center(Fonts::chalk_small, (float)CL_Display::get_width()/2,
-                  (float)CL_Display::get_height()/2 + 270, _("Author: ") + plf.get_author());
+  gc.print_center(Fonts::chalk_small, (float)Display::get_width()/2,
+                  (float)Display::get_height()/2 + 270, _("Author: ") + plf.get_author());
 
   if (maintainer_mode)
     gc.print_left(Fonts::chalk_small, 110, 430, _("Filename: ") + plf.get_resname());
 
   CL_System::sleep(30);
+#endif
 }
 
 const std::string&
@@ -231,8 +235,10 @@ StartScreen::on_escape_press()
 void
 StartScreen::start_game()
 {
+#if 0
   PingusGameSession* game_session = new PingusGameSession(plf, true);
   ScreenManager::instance()->replace_screen(game_session, true);
+#endif 
 }
 
 void

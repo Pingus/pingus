@@ -43,7 +43,7 @@ public:
   /** Draw this screen */
   virtual void draw_foreground (DrawingContext& gc) { UNUSED_ARG(gc); }
   virtual void draw_background (DrawingContext& gc) { UNUSED_ARG(gc); }
-  virtual bool draw (DrawingContext& gc);
+  virtual bool draw(DrawingContext& gc);
 
   /** Pass a game delta to the screen */
   virtual void update (const GameDelta& delta);

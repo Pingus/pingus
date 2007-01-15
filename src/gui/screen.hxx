@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_SCREEN_HXX
 #define HEADER_PINGUS_SCREEN_HXX
 
+#include "SDL.h"
 #include "game_delta.hxx"
-
 
 class DrawingContext;
 
@@ -38,7 +38,7 @@ public:
 
   /** Draw this screen @return true if draw was successfull, false if
       frameskip has taken place ('causes a skip of flip_display) */
-  virtual bool draw (DrawingContext& gc) =0;
+  virtual bool draw(DrawingContext& gc) =0;
 
   /** Pass a delta to the screen */
   virtual void update (const GameDelta& delta) =0;
