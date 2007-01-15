@@ -42,43 +42,37 @@ public:
 
   SpriteImpl(const SpriteDescription& desc)
   {
-    surface = IMG_Load(desc.filename.c_str());
-    if (!surface)
-      {
-        std::cout << "Error: Couldn't load " << desc.filename << std::endl;
-        surface = IMG_Load("data/images/core/misc/404.png");
-        assert(surface);
-      }
-    else
-      {
-        std::cout << "Loaded sprite: " << desc.filename << std::endl;
-      }
-
-    
     origin = desc.origin;
-    offset = calc_origin(origin, Size(surface->w, surface->h)) + desc.offset;
-
-    std::cout << "offset: " << offset.x << ", " << offset.y << std::endl;
+    offset = desc.offset;
+    load(desc.filename);
   }
 
   SpriteImpl(const std::string& name) 
   {
     std::ostringstream str;
     str << "data/images/" << name << ".png";
-    surface = IMG_Load(str.str().c_str());
+
+    load(str.str());
+  }
+
+  void 
+  load(const std::string& filename)
+  {
+    surface = IMG_Load(filename.c_str());
     if (!surface)
       {
-        std::cout << "Error: Couldn't load " << str.str() << std::endl;
+        std::cout << "Error: Couldn't load " << filename << std::endl;
         surface = IMG_Load("data/images/core/misc/404.png");
         assert(surface);
       }
     else
       {
-        std::cout << "Loaded sprite: " << name << std::endl;
+        std::cout << "Loaded sprite: " << filename << std::endl;
       }
+    
+    offset = calc_origin(origin, Size(surface->w, surface->h)) + offset;
 
-    //offset.x = surface->w/2;
-    //offset.y = surface->h/2;
+    std::cout << "offset: " << offset.x << ", " << offset.y << std::endl;
   }
 
   ~SpriteImpl()
@@ -91,7 +85,7 @@ public:
     SDL_Rect pos;
     
     pos.x = (Sint16)(x - offset.x);
-    pos.y = (Sint16)(y + offset.y);
+    pos.y = (Sint16)(y - offset.y);
     pos.w = 0;
     pos.h = 0;
     
