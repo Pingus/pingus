@@ -28,7 +28,8 @@
 
 #include <string>
 #include "SDL.h"
-#include "origin.hpp"
+#include "math/origin.hpp"
+#include "math/rect.hpp"
 
 /** */
 class Font
@@ -39,6 +40,7 @@ public:
   void draw(int, int, const std::string& text, SDL_Surface* target) {}
   void set_alignment(Origin origin) {}
   int get_height() { return 0; }
+  Rect bounding_rect(int , int, const std::string& str) const;
 };
 
 #endif

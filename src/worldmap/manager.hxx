@@ -24,10 +24,6 @@
 #include "../gui/gui_manager.hxx"
 #include "../gui/gui_screen.hxx"
 
-class CL_InputDevice;
-class CL_Key;
-class GameDelta;
-
 namespace WorldMapNS {
 
 typedef int NodeId;

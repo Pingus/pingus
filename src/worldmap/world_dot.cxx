@@ -41,6 +41,5 @@ WorldDot::unlock()
 }
 
 }	// WorldMapNS namespace
-} // Pingus namespace
 
 /* EOF */

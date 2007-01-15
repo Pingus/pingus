@@ -18,8 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Core/System/clanstring.h>
-#include "xml_file_writer.hxx"
+///#include "sexpr_file_writer.hxx"
 #include "savegame.hxx"
 
 
@@ -43,6 +42,7 @@ Savegame::status_to_string(S_Status status)
 Savegame::S_Status
 Savegame::string_to_status (std::string str)
 {
+#if 0
   str = CL_String::to_lower(str);
   if (str == "accessible")
     return ACCESSIBLE;
@@ -51,6 +51,7 @@ Savegame::string_to_status (std::string str)
   else if (str == "none")
     return NONE;
   else
+#endif
     return NONE;
 }
 
@@ -74,6 +75,7 @@ Savegame::Savegame(std::string arg_levelname, S_Status arg_status, int arg_time,
 {
 }
 
+#if 0
 void
 Savegame::write_xml(XMLFileWriter& writer)
 {
@@ -84,6 +86,7 @@ Savegame::write_xml(XMLFileWriter& writer)
   writer.write_int    ("saved-pingus", saved_pingus);
   writer.end_section();
 }
+#endif 
 
 void
 Savegame::read_xml(FileReader reader)

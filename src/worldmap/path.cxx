@@ -29,7 +29,7 @@ Path::Path()
 {
 }
 
-std::vector<Vector>::size_type
+std::vector<Vector3f >::size_type
 Path::size()
 {
   return vec.size();
@@ -63,14 +63,14 @@ Path::calc_length()
       Vec::iterator prev = vec.begin();
       for(Vec::iterator next = prev + 1; next != vec.end(); ++next)
         {
-          length += Vector::distance2d(*prev, *next);
+          length += Vector3f ::distance2d(*prev, *next);
           prev = next;
         }
       return length;
     }
 }
 
-Vector
+Vector3f 
 Path::at(float vec_position)
 {
   assert(!vec.empty());
@@ -81,7 +81,7 @@ Path::at(float vec_position)
   float comp_length = 0.0f;
   while (next != vec.end())
     {
-      float length = Vector::distance2d(*current, *next);
+      float length = Vector3f::distance2d(*current, *next);
 
       // The pingu is between current and next
       if (comp_length + length > vec_position)
@@ -89,7 +89,7 @@ Path::at(float vec_position)
           float perc = (vec_position - comp_length) // length to walk from current node
             / length;
 
-          return Vector::interpolate(*current, *next, perc);
+          return Vector3f::interpolate(*current, *next, perc);
         }
 
       comp_length += length;

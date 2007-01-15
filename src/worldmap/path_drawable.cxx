@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "../math/color.hpp"
 #include "../display/drawing_context.hxx"
 #include "path_drawable.hxx"
 
@@ -37,7 +38,7 @@ PathDrawable::draw (DrawingContext& gc)
     {
       gc.draw_line(prev->x, prev->y,
                    next->x, next->y,
-                   CL_Color(255, 255, 255));
+                   Color(255, 255, 255));
       prev = next;
     }
 }

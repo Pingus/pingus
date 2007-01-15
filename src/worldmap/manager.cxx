@@ -20,6 +20,7 @@
 #include <iostream>
 #include "../gettext.h"
 #include "../fonts.hxx"
+#include "../gui/display.hxx"
 #include "../gui/screen_manager.hxx"
 #include "../gui/surface_button.hxx"
 #include "../path_manager.hxx"
@@ -80,7 +81,7 @@ public:
 
 
 WorldMapManagerCreditsButton::WorldMapManagerCreditsButton()
-  : GUI::SurfaceButton(CL_Display::get_width() - 150, 0,
+  : GUI::SurfaceButton(Display::get_width() - 150, 0,
                        ResDescriptor("core/worldmap/credits_button_normal"),
                        ResDescriptor("core/worldmap/credits_button_pressed"),
                        ResDescriptor("core/worldmap/credits_button_hover"))
@@ -100,14 +101,16 @@ void
 WorldMapManagerCreditsButton::draw (DrawingContext& gc)
 {
   SurfaceButton::draw(gc);
-  gc.print_left(Fonts::chalk_small, (float)(CL_Display::get_width() - 150 + 15), 5, _("Show Ending?"));
+  gc.print_left(Fonts::chalk_small, (float)(Display::get_width() - 150 + 15), 5, _("Show Ending?"));
 }
 
 void
 WorldMapManagerCreditsButton::on_click()
 {
-	ScreenManager::instance()->replace_screen(
-		new StoryScreen(WorldMapManager::instance()->get_worldmap()->get_end_story()), true);
+#if 0
+  ScreenManager::instance()->replace_screen
+    (new StoryScreen(WorldMapManager::instance()->get_worldmap()->get_end_story()), true);
+#endif
 }
 
 WorldMapManagerStoryButton::WorldMapManagerStoryButton()
@@ -137,12 +140,14 @@ WorldMapManagerStoryButton::draw (DrawingContext& gc)
 void
 WorldMapManagerStoryButton::on_click()
 {
-  ScreenManager::instance()->replace_screen(
-		new StoryScreen(WorldMapNS::WorldMapManager::instance()->get_worldmap()->get_intro_story()), true);
+#if 0
+  ScreenManager::instance()->replace_screen
+    (new StoryScreen(WorldMapNS::WorldMapManager::instance()->get_worldmap()->get_intro_story()), true);
+#endif
 }
 
 WorldMapManagerCloseButton::WorldMapManagerCloseButton()
-  : GUI::SurfaceButton(0, CL_Display::get_height() - 37,
+  : GUI::SurfaceButton(0, Display::get_height() - 37,
                        ResDescriptor("core/worldmap/leave_button_normal"),
                        ResDescriptor("core/worldmap/leave_button_pressed"),
                        ResDescriptor("core/worldmap/leave_button_hover"))
@@ -160,7 +165,7 @@ void
 WorldMapManagerCloseButton::draw (DrawingContext& gc)
 {
   SurfaceButton::draw(gc);
-  gc.print_left(Fonts::chalk_small, 10, (float)CL_Display::get_height() - 20, _("Leave?"));
+  gc.print_left(Fonts::chalk_small, 10, (float)Display::get_height() - 20, _("Leave?"));
 }
 
 void
@@ -170,7 +175,7 @@ WorldMapManagerCloseButton::on_click()
 }
 
 WorldMapManagerEnterButton::WorldMapManagerEnterButton()
-  : GUI::SurfaceButton(CL_Display::get_width() - 119, CL_Display::get_height() - 37,
+  : GUI::SurfaceButton(Display::get_width() - 119, Display::get_height() - 37,
                        ResDescriptor("core/worldmap/enter_button_normal"),
                        ResDescriptor("core/worldmap/enter_button_pressed"),
                        ResDescriptor("core/worldmap/enter_button_hover"))
@@ -192,14 +197,14 @@ WorldMapManagerEnterButton::draw (DrawingContext& gc)
 {
   if (WorldMapManager::instance()->get_worldmap()->get_pingus()->is_walking())
     {
-      gc.draw(button_surface, Vector((float)x_pos, (float)y_pos));
+      gc.draw(button_surface, Vector3f((float)x_pos, (float)y_pos));
     }
   else
     {
       SurfaceButton::draw(gc);
       gc.print_left(Fonts::chalk_small,
-                    (float)CL_Display::get_width() - 100,
-                    (float)CL_Display::get_height() - 20,
+                    (float)Display::get_width() - 100,
+                    (float)Display::get_height() - 20,
                     _("Enter?"));
     }
 }
@@ -215,7 +220,7 @@ WorldMapManager::WorldMapManager ()
 		exit_worldmap(false),
 		worldmap(0),
     new_worldmap(0),
-		metamap(new MetaMap(path_manager.complete("metamap/metamap.xml")))
+    metamap(new MetaMap(path_manager.complete("metamap/metamap.xml")))
 {
   // FIXME: a bit ugly because of the proteced member, but should work
   // FIXME: well enough. GUIScreen could also use multi-inheritage,

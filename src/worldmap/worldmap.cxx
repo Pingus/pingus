@@ -19,9 +19,7 @@
 
 #include <assert.h>
 #include <iostream>
-#include <ClanLib/core.h>
-#include <ClanLib/Display/display.h>
-#include <ClanLib/Display/mouse.h>
+#include "../gui/display.hxx"
 #include "../fonts.hxx"
 #include "../path_manager.hxx"
 #include "../stat_manager.hxx"
@@ -33,8 +31,10 @@
 #include "../pingus_error.hxx"
 #include "../gettext.h"
 #include "../globals.hxx"
-#include "../xml_file_reader.hxx"
+#include "../sexpr_file_reader.hpp"
 #include "../debug.hxx"
+#include "../lisp/parser.hpp"
+#include "../lisp/lisp.hpp"
 #include "worldmap.hxx"
 #include "worldmap_story.hxx"
 #include "metamap.hxx"
@@ -58,17 +58,25 @@ WorldMap::WorldMap(const std::string& arg_filename)
     mouse_x(0),
     mouse_y(0)
 {
+#if 0
   CL_InputSourceProvider_File provider(".");
   CL_DomDocument doc(provider.open_source(filename), true);
   CL_DomElement root = doc.get_document_element();
 
-	parse_file(XMLFileReader(root));
+  parse_file(XMLFileReader(root));
+#endif
+  lisp::Lisp* sexpr = lisp::Parser::parse(filename);
+  if (sexpr)
+    {
+      parse_file(SExprFileReader(sexpr->get_list_elem(0)));
+    }
+
   pingus = new Pingus(path_graph);
-	set_starting_node();
+  set_starting_node();
   add_drawable(pingus);
 
   levelname_bg = Resource::load_sprite("core/worldmap/levelname_bg");
-	gc_state.set_limit(CL_Rect(CL_Point(0, 0), CL_Size(width, height)));
+  gc_state.set_limit(Rect(Vector2i(0, 0), Size(width, height)));
 }
 
 WorldMap::~WorldMap()
@@ -77,8 +85,8 @@ WorldMap::~WorldMap()
     {
       delete (*i);
     }
-	delete intro_story;
-	delete end_story;
+  delete intro_story;
+  delete end_story;
   delete path_graph;
 }
 
@@ -90,8 +98,8 @@ WorldMap::parse_file(FileReader reader)
       parse_graph(reader.read_section("graph"));
       parse_objects(reader.read_section("objects"));
       parse_properties(reader.read_section("head"));
-			intro_story = new WorldMapStory(reader.read_section("intro_story"));
-			end_story = new WorldMapStory(reader.read_section("end_story"));
+      intro_story = new WorldMapStory(reader.read_section("intro_story"));
+      end_story = new WorldMapStory(reader.read_section("end_story"));
     }
   else
     {
@@ -135,26 +143,26 @@ WorldMap::parse_graph(FileReader reader)
 void
 WorldMap::parse_properties(FileReader reader)
 {
-	reader.read_string("music", music);
-	reader.read_string("author", author);
-	reader.read_string("name", name);
-	reader.read_string("short-name", short_name);
-	reader.read_string("email", email);
-	reader.read_int("width", width);
-	reader.read_int("height", height);
+  reader.read_string("music", music);
+  reader.read_string("author", author);
+  reader.read_string("name", name);
+  reader.read_string("short-name", short_name);
+  reader.read_string("email", email);
+  reader.read_int("width", width);
+  reader.read_int("height", height);
 
-	// Get beginning and ending nodes.
-	std::string node_name;
-	reader.read_string("default-node", node_name);
-	default_node = path_graph->lookup_node(node_name);
-	reader.read_string("final-node", node_name);
-	final_node = path_graph->lookup_node(node_name);
+  // Get beginning and ending nodes.
+  std::string node_name;
+  reader.read_string("default-node", node_name);
+  default_node = path_graph->lookup_node(node_name);
+  reader.read_string("final-node", node_name);
+  final_node = path_graph->lookup_node(node_name);
 }
 
 void
 WorldMap::draw (DrawingContext& gc)
 {
-  Vector pingu_pos = pingus->get_pos();
+  Vector3f pingu_pos = pingus->get_pos();
 
   pingu_pos.x = Math::mid(float(gc.get_width()/2),
                           pingu_pos.x,
@@ -166,15 +174,15 @@ WorldMap::draw (DrawingContext& gc)
 
   DrawingContext* display_gc = new DrawingContext();
 
-	gc_state.set_pos(CL_Pointf(pingu_pos.x, pingu_pos.y));
+  gc_state.set_pos(Vector2f(pingu_pos.x, pingu_pos.y));
 	
   gc_state.push(*display_gc);
   
-	// Blank out the screen in case the screen resolution is larger than
-	// the worldmap picture.
-	// FIXME:  Should probably scale everything to match the resolution instead.
-	gc.draw_fillrect(0, 0, (float)CL_Display::get_width(), (float)CL_Display::get_height(),
-		CL_Color::black, -15000);
+  // Blank out the screen in case the screen resolution is larger than
+  // the worldmap picture.
+  // FIXME:  Should probably scale everything to match the resolution instead.
+  gc.draw_fillrect(0, 0, (float)Display::get_width(), (float)Display::get_height(),
+                   Color(0,0,0), -15000);
 		
   for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)
     {
@@ -182,7 +190,7 @@ WorldMap::draw (DrawingContext& gc)
     }
 
   gc.draw(levelname_bg,
-          Vector(gc.get_width()/2 - levelname_bg.get_width()/2,
+          Vector3f(gc.get_width()/2 - levelname_bg.get_width()/2,
                  gc.get_height() - levelname_bg.get_height()));
 
   if (pingus->get_node() != NoNode)
@@ -207,13 +215,13 @@ WorldMap::draw (DrawingContext& gc)
     }
   else
     {
-          gc.print_center(Fonts::chalk_small,
-                          display_gc->get_width ()/2,
-                          display_gc->get_height() - 20,
-                          _("...walking..."));
+      gc.print_center(Fonts::chalk_small,
+                      display_gc->get_width ()/2,
+                      display_gc->get_height() - 20,
+                      _("...walking..."));
     }
 
-  Vector mpos = display_gc->screen_to_world(Vector((float)mouse_x, (float)mouse_y));
+  Vector3f mpos = display_gc->screen_to_world(Vector3f((float)mouse_x, (float)mouse_y));
   Dot* dot = path_graph->get_dot(mpos.x, mpos.y);
   if (dot)
     {
@@ -236,7 +244,7 @@ WorldMap::update (float delta)
 void
 WorldMap::on_startup()
 {
-	Sound::PingusSound::play_music(music);
+  Sound::PingusSound::play_music(music);
   update_locked_nodes();
 }
 
@@ -268,7 +276,7 @@ WorldMap::on_pointer_move(int x, int y)
 void
 WorldMap::on_primary_button_press(int x, int y)
 {
-  CL_Pointf click_pos = gc_state.screen2world(CL_Point(x, y));
+  Vector2f click_pos = gc_state.screen2world(Vector2i(x, y));
 
   if (pingus_debug_flags & PINGUS_DEBUG_WORLDMAP)
     {
@@ -325,7 +333,7 @@ WorldMap::on_secondary_button_press(int x, int y)
 {
   if (maintainer_mode)
     {
-      CL_Pointf click_pos = gc_state.screen2world(CL_Point(x, y));
+      Vector3f click_pos = gc_state.screen2world(Vector2i(x, y));
 
       Dot* dot = path_graph->get_dot(click_pos.x, click_pos.y);
       if (dot)
@@ -391,15 +399,14 @@ WorldMap::update_locked_nodes()
 
   if (!credits_unlocked)
     {
-			// See if the last level is finished
-			Dot* dot = path_graph->get_dot(final_node);
+      // See if the last level is finished
+      Dot* dot = path_graph->get_dot(final_node);
       if (dot)
         {
           if (dot->finished())
             {
-							WorldMapManager::instance()->get_metamap()->finish_node(short_name);
-              ScreenManager::instance()->replace_screen(
-								new StoryScreen(get_end_story()), true);
+              WorldMapManager::instance()->get_metamap()->finish_node(short_name);
+              ////ScreenManager::instance()->replace_screen(new StoryScreen(get_end_story()), true);
             }
         }
       else
@@ -413,31 +420,31 @@ WorldMap::update_locked_nodes()
 void
 WorldMap::set_starting_node()
 {
-	// See if the user has played this map before.  If not, use the <default-node>
-	// tag from the XML file.
-	NodeId id;
-	std::string node_name;
+  // See if the user has played this map before.  If not, use the <default-node>
+  // tag from the XML file.
+  NodeId id;
+  std::string node_name;
 
-	if (StatManager::instance()->get_string(short_name + "-current-node", node_name))
-	{
-		// Just in case that level doesn't exist, look it up.
-		id = path_graph->lookup_node(node_name);
-		if (id == NoNode)
-			id = default_node;
-	}
-	else
-		id = default_node;
+  if (StatManager::instance()->get_string(short_name + "-current-node", node_name))
+    {
+      // Just in case that level doesn't exist, look it up.
+      id = path_graph->lookup_node(node_name);
+      if (id == NoNode)
+        id = default_node;
+    }
+  else
+    id = default_node;
 		
-	pingus->set_position(id);
+  pingus->set_position(id);
 
-	LevelDot* leveldot = dynamic_cast<LevelDot*>(path_graph->get_dot(id));
-	leveldot->unlock();
+  LevelDot* leveldot = dynamic_cast<LevelDot*>(path_graph->get_dot(id));
+  leveldot->unlock();
 }
 
 bool
 WorldMap::is_final_map()
 {
-	return (WorldMapManager::instance()->get_metamap()->get_final_worldmap() == short_name);
+  return (WorldMapManager::instance()->get_metamap()->get_final_worldmap() == short_name);
 }
 
 } // namespace WorldMapNS

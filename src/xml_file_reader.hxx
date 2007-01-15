@@ -23,7 +23,6 @@
 #include <ClanLib/Core/XML/dom_element.h>
 #include "file_reader.hxx"
 
-
 /** */
 class XMLFileReader : public FileReader
 {

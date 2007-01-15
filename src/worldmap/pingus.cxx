@@ -19,7 +19,7 @@
 
 #include <iostream>
 #include <math.h>
-#include "../vector.hxx"
+#include "../math/vector3f.hpp"
 #include "../display/drawing_context.hxx"
 #include "dot.hxx"
 #include "../math.hxx"
@@ -54,7 +54,7 @@ Pingus::draw (DrawingContext& gc)
   // standing one
   if (final_target_node != NoNode && current_node == NoNode)
     {
-      gc.draw(arrow, path->get_dot(final_target_node)->get_pos() + Vector(0, 0, 10));
+      gc.draw(arrow, path->get_dot(final_target_node)->get_pos() + Vector3f(0, 0, 10));
     }
 
   if (!is_walking())
@@ -67,9 +67,9 @@ Pingus::draw (DrawingContext& gc)
       float direction = get_direction();
       
       if (direction >= 0 && direction < 180)
-        gc.draw(sprite[Direction::RIGHT], pos + Vector(0, 0, 10));
+        gc.draw(sprite[Direction::RIGHT], pos + Vector3f(0, 0, 10));
       else
-        gc.draw(sprite[Direction::LEFT], pos + Vector(0, 0, 10));
+        gc.draw(sprite[Direction::LEFT], pos + Vector3f(0, 0, 10));
     }
 }
 
@@ -211,7 +211,7 @@ Pingus::walk_to_node (NodeId target)
     }
 }
 
-Vector
+Vector3f
 Pingus::calc_pos ()
 {
   if (current_node != NoNode) // pingu stands still

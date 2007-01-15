@@ -21,12 +21,7 @@
 #include <ClanLib/Core/IOData/directory_scanner.h>
 #include <ClanLib/Core/IOData/inputsource_provider_file.h>
 #include <ClanLib/Core/System/clanstring.h>
-#include <ClanLib/Core/XML/dom_node.h>
-#include <ClanLib/Core/XML/dom_node_list.h>
-#include <ClanLib/Core/XML/dom_document.h>
-#include <ClanLib/Core/XML/dom_element.h>
 #include "pingus_error.hxx"
-#include "xml_file_reader.hxx"
 #include "file_dialog_item.hxx"
 #include "file_dialog.hxx"
 #include "vector.hxx"
@@ -38,8 +33,6 @@
 #include "savegame.hxx"
 #include "worldmap/manager.hxx"
 #include "worldmap/metamap.hxx"
-
-
 
 	// Only Constructor
 	FileDialogItem::FileDialogItem(FileDialog* f, Vector p) 

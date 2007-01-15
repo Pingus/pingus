@@ -19,10 +19,9 @@
 
 #include <iostream>
 #include <ClanLib/core.h>
-#include "xml_file_reader.hxx"
 #include "globals.hxx"
 #include "pingus_error.hxx"
-#include "xml_file_reader.hxx"
+//#include "xml_file_reader.hxx"
 #include "plt_xml.hxx"
 
 

@@ -20,8 +20,8 @@
 #ifndef HEADER_SURFACE_DRAWABLE_HXX
 #define HEADER_SURFACE_DRAWABLE_HXX
 
-#include <ClanLib/Display/sprite.h>
-#include "../vector.hxx"
+#include "../sprite.hpp"
+#include "../math/vector3f.hpp"
 #include "drawable.hxx"
 
 namespace WorldMapNS {
@@ -30,8 +30,8 @@ namespace WorldMapNS {
 class SurfaceDrawable : public Drawable
 {
 private:
-  CL_Sprite surface;
-  Vector     pos;
+  Sprite surface;
+  Vector3f  pos;
   /** If set to true the surface will disappear if the pingu gets
       covered by it, so that the Pingu can travel into caves and other
       things, while the roof will disapear */

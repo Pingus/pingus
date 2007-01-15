@@ -21,15 +21,12 @@
 #define HEADER_PINGUS_WORLDMAP_WORLDMAP_HXX
 
 #include <vector>
+#include "../sprite.hpp"
 #include "../file_reader.hxx"
 #include "../display/drawing_context.hxx"
 #include "../graphic_context_state.hxx"
 
-class CL_Key;
-class CL_Font;
-class CL_InputDevice;
-
-
+class Font;
 class DrawingContext;
 
 namespace WorldMapNS {
@@ -50,7 +47,7 @@ class Pingus;
 class WorldMap
 {
 private:
-  CL_Sprite levelname_bg;
+  Sprite levelname_bg;
 
   /** name of the file to parse */
   std::string filename;

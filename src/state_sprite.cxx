@@ -33,7 +33,7 @@ StateSprite::load(int state, const std::string& name)
 }
 
 void
-StateSprite::load(int state, CL_Sprite sprite)
+StateSprite::load(int state, Sprite sprite)
 {
   sprites[state] = sprite;
 }
@@ -51,7 +51,7 @@ StateSprite::update(float delta)
     (*i).second.update(delta);
 }
 
-CL_Sprite&
+Sprite&
 StateSprite::operator[](int state)
 {
   Sprites::iterator i = sprites.find(state);

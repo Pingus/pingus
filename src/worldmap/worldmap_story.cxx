@@ -67,6 +67,5 @@ namespace WorldMapNS {
 	}
 
 }	// namespace WorldMapNS
-}	// namespace Pingus
 
 /* EOF */

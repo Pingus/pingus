@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_DOT_HXX
 
 #include <string>
-#include "../vector.hxx"
+#include "../math/vector3f.hpp"
 #include "drawable.hxx"
 
 namespace WorldMapNS {
@@ -31,7 +31,7 @@ namespace WorldMapNS {
 class Dot : public Drawable
 {
 protected:
-  Vector pos;
+  Vector3f pos;
 
 public:
   Dot(FileReader reader);
@@ -39,7 +39,7 @@ public:
   /** Draw stuff that should be displayed if the mouse is over the dot */
   virtual void draw_hover(DrawingContext& gc) =0;
 
-  Vector get_pos() { return pos; }
+  Vector3f get_pos() { return pos; }
 
   virtual void on_click() =0;
 

@@ -22,7 +22,7 @@
 
 #include <map>
 #include <vector>
-#include "../vector.hxx"
+#include "../math/vector3f.hpp"
 #include "path.hxx"
 #include "pathfinder.hxx"
 #include "graph.hxx"

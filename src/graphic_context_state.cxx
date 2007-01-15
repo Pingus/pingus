@@ -17,9 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/display.h>
-#include <ClanLib/Display/display_window.h>
-#include <ClanLib/Display/graphic_context.h>
+#include <math.h>
+#include "gui/display.hxx"
 #include "graphic_context_state.hxx"
 
 class GraphicContextStateImpl
@@ -28,20 +27,20 @@ public:
   int width;
   int height;
   
-  CL_Pointf offset;
+  Vector2f offset;
   float zoom;
   float rotation;
 
   bool have_limit;
-  CL_Rect limit;
+  Rect limit;
 };
 
 GraphicContextState::GraphicContextState()
   : impl(new GraphicContextStateImpl())
 {
-  impl->width      = CL_Display::get_width();
-  impl->height     = CL_Display::get_height(); 
-  impl->offset     = CL_Pointf(0,0);
+  impl->width      = Display::get_width();
+  impl->height     = Display::get_height(); 
+  impl->offset     = Vector2f(0,0);
   impl->zoom       = 1.0f;
   impl->rotation   = 0;
   impl->have_limit = false;
@@ -52,14 +51,14 @@ GraphicContextState::GraphicContextState(int w, int h)
 {  
   impl->width      = w;
   impl->height     = h;
-  impl->offset     = CL_Pointf(0,0); 
+  impl->offset     = Vector2f(0,0); 
   impl->zoom       = 1.0f;
   impl->rotation   = 0;
   impl->have_limit = false;
 }
 
 void
-GraphicContextState::set_limit(const CL_Rect& limit)
+GraphicContextState::set_limit(const Rect& limit)
 {
   impl->have_limit = true;
   impl->limit      = limit;
@@ -79,7 +78,7 @@ GraphicContextState::set_size(int w, int h)
 }
 
 void
-GraphicContextState::push(Pingus::DrawingContext& gc)
+GraphicContextState::push(DrawingContext& gc)
 {
   gc.push_modelview();
 
@@ -92,7 +91,7 @@ GraphicContextState::push(Pingus::DrawingContext& gc)
 }
 
 void
-GraphicContextState::push(Pingus::SceneContext& gc)
+GraphicContextState::push(SceneContext& gc)
 {
   gc.push_modelview();
 
@@ -105,17 +104,18 @@ GraphicContextState::push(Pingus::SceneContext& gc)
 }
 
 void
-GraphicContextState::pop (Pingus::SceneContext& gc)
+GraphicContextState::pop (SceneContext& gc)
 {
   gc.pop_modelview();
 }
 
 void
-GraphicContextState::pop (Pingus::DrawingContext& gc)
+GraphicContextState::pop (DrawingContext& gc)
 {
   gc.pop_modelview();
 }
 
+#if 0
 void
 GraphicContextState::push(CL_GraphicContext* gc)
 {
@@ -140,21 +140,22 @@ GraphicContextState::pop(CL_GraphicContext* gc)
   
   gc->pop_modelview();
 }
+#endif 
 
-CL_Rect
+Rect
 GraphicContextState::get_clip_rect()
 {
-  return CL_Rect(CL_Point(int(-impl->offset.x),
-                          int(-impl->offset.y)),
-                 CL_Size(int(get_width()  / impl->zoom),
-                         int(get_height() / impl->zoom)));
+  return Rect(Vector2i(int(-impl->offset.x),
+                       int(-impl->offset.y)),
+              Size(int(get_width()  / impl->zoom),
+                   int(get_height() / impl->zoom)));
 }
 
 void
-GraphicContextState::set_pos(const CL_Pointf& pos)
+GraphicContextState::set_pos(const Vector2f& pos)
 {
-	float old_x = impl->offset.x;
-	float old_y = impl->offset.y;
+  float old_x = impl->offset.x;
+  float old_y = impl->offset.y;
 	
   impl->offset.x = -pos.x + (get_width()/2  / impl->zoom);
   impl->offset.y = -pos.y + (get_height()/2 / impl->zoom);
@@ -181,15 +182,15 @@ GraphicContextState::set_pos(const CL_Pointf& pos)
     }
 }
 
-CL_Pointf
+Vector2f
 GraphicContextState::get_pos() const
 {
-  return CL_Pointf(-impl->offset.x + (get_width()/2  / impl->zoom),
-                   -impl->offset.y + (get_height()/2  / impl->zoom));
+  return Vector2f(-impl->offset.x + (get_width()/2  / impl->zoom),
+                  -impl->offset.y + (get_height()/2  / impl->zoom));
 }
 
 void
-GraphicContextState::set_zoom(CL_Pointf pos, float z)
+GraphicContextState::set_zoom(Vector2f pos, float z)
 {
   float old_zoom = impl->zoom;
   set_zoom(z);
@@ -210,7 +211,7 @@ GraphicContextState::get_zoom()
 }
 
 void
-GraphicContextState::zoom_to (const CL_Rectf& rect)
+GraphicContextState::zoom_to (const Rectf& rect)
 {
   float center_x = (rect.left + rect.right) / 2.0f;
   float center_y = (rect.top + rect.bottom) / 2.0f;
@@ -234,10 +235,10 @@ GraphicContextState::zoom_to (const CL_Rectf& rect)
   impl->offset.y = (get_height() / (2*impl->zoom)) - center_y;
 }
 
-CL_Pointf
-GraphicContextState::screen2world(const CL_Point& pos_)
+Vector2f
+GraphicContextState::screen2world(const Vector2i& pos_)
 {
-  CL_Pointf pos = pos_;
+  Vector2f pos(pos_.x, pos_.y);
   float sa = (float)sin(-impl->rotation/180.0f*M_PI);
   float ca = (float)cos(-impl->rotation/180.0f*M_PI);
 
@@ -247,8 +248,8 @@ GraphicContextState::screen2world(const CL_Point& pos_)
   pos.x = impl->width/2  + (ca * dx - sa * dy);
   pos.y = impl->height/2 + (sa * dx + ca * dy);
 
-  CL_Pointf p((float(pos.x) / impl->zoom) - impl->offset.x, 
-              (float(pos.y) / impl->zoom) - impl->offset.y);
+  Vector2f p((float(pos.x) / impl->zoom) - impl->offset.x, 
+             (float(pos.y) / impl->zoom) - impl->offset.y);
 
   return p;
 }

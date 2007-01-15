@@ -19,7 +19,7 @@
 
 #include <iostream>
 #include <math.h>
-#include <ClanLib/Display/font.h>
+#include "../font.hpp"
 #include "../input/controller.hxx"
 #include "../input/pointer.hxx"
 #include "../gettext.h"
@@ -46,16 +46,19 @@ LevelDot::LevelDot(FileReader reader)
     highlight_green_dot_sur(Resource::load_sprite("core/worldmap/dot_green_hl")),
     highlight_red_dot_sur(Resource::load_sprite("core/worldmap/dot_red_hl"))
 {
-	std::string resname;
+#if 0
+  std::string resname;
   reader.read_string("levelname", resname); 
+
   plf = PLFResMgr::load_plf(resname);
-	levelname = plf.get_levelname();
+  levelname = plf.get_levelname();
+#endif
 }
 
 void
 LevelDot::draw(DrawingContext& gc)
 {
-  Vector mpos = gc.screen_to_world(Vector(Input::Controller::get_current()->get_pointer()->get_x_pos(),
+  Vector3f mpos = gc.screen_to_world(Vector3f(Input::Controller::get_current()->get_pointer()->get_x_pos(),
                                           Input::Controller::get_current()->get_pointer()->get_y_pos()));
 
   float x = mpos.x - pos.x;
@@ -98,8 +101,8 @@ void
 LevelDot::on_click()
 {
   std::cout << "Starting level: " << levelname << std::endl;
-  ScreenManager::instance()->push_screen(new StartScreen(plf),
-                                         true);
+  ////ScreenManager::instance()->push_screen(new StartScreen(plf),
+  ////true);
 }
 
 bool
@@ -131,7 +134,7 @@ LevelDot::draw_hover(DrawingContext& gc)
   if (accessible())
     {
       int length = Fonts::pingus_small.bounding_rect(0, 0, _(get_plf().get_levelname())).get_width() / 2;
-      int realpos = static_cast<int>(gc.world_to_screen(Vector(pos.x, pos.y, 0)).x);
+      int realpos = static_cast<int>(gc.world_to_screen(Vector3f(pos.x, pos.y, 0)).x);
       if (realpos - length < 0)
         pos_correction = realpos - length;
       else if (realpos + length > gc.get_width())
@@ -146,7 +149,7 @@ LevelDot::draw_hover(DrawingContext& gc)
   else
     {
       int length  = Fonts::pingus_small.bounding_rect(0, 0, _("locked")).get_width() / 2;
-      int realpos = static_cast<int>(gc.world_to_screen(Vector(pos.x, pos.y, 0)).x);
+      int realpos = static_cast<int>(gc.world_to_screen(Vector3f(pos.x, pos.y, 0)).x);
       if (realpos - length < 0)
         pos_correction = realpos - length;
       else if (realpos + length > gc.get_width())

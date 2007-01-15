@@ -22,7 +22,7 @@
 
 #include <algorithm>
 #include <vector>
-#include "../vector.hxx"
+#include "../math/vector3f.hpp"
 
 namespace WorldMapNS {
 
@@ -31,7 +31,7 @@ namespace WorldMapNS {
 class Path
 {
 private:
-  typedef std::vector<Vector> Vec;
+  typedef std::vector<Vector3f> Vec;
   Vec vec;
 
   bool  path_length_valid;
@@ -53,7 +53,7 @@ public:
   /** walk a distance of vec_position on the path and return the position,
       positions between two Vectors are interpolated, if length is
       larger then path *back() will be returned */
-  Vector at(float vec_position);
+  Vector3f at(float vec_position);
 
   bool empty() { return vec.empty(); }
   void clear() { path_length_valid = false; vec.clear(); }
@@ -63,7 +63,7 @@ public:
   reverse_iterator rbegin() { return vec.rbegin(); }
   reverse_iterator rend() { return vec.rend(); }
 
-  void push_back(const Vector& v) {
+  void push_back(const Vector3f& v) {
     path_length_valid = false;
     vec.push_back(v);
   }

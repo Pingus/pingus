@@ -45,7 +45,11 @@ public:
   int get_width();
   int get_height();
 
+  void update(float delta);
+
   void draw(float x, float y, SDL_Surface* target);
+
+  operator bool();
 private:
   SharedPtr<SpriteImpl> impl;
 };

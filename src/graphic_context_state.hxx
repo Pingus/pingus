@@ -20,6 +20,11 @@
 #ifndef HEADER_GRAPHIC_CONTEXT_STATE_HXX
 #define HEADER_GRAPHIC_CONTEXT_STATE_HXX
 
+#include "math/rect.hpp"
+#include "math/vector3f.hpp"
+#include "math/vector2i.hpp"
+#include "math/vector2f.hpp"
+#include "shared_ptr.hxx"
 #include "display/drawing_context.hxx"
 #include "display/scene_context.hxx"
 
@@ -37,7 +42,7 @@ public:
   /** Limit the graphic context to the given limits rectangle, meaning
       that no point of the current visible region will be outside the
       limit */
-  void set_limit(const CL_Rect& limit);
+  void set_limit(const Rect& limit);
   void set_unlimited();
 
   void set_size(int w, int h);
@@ -47,15 +52,15 @@ public:
   void pop (CL_GraphicContext* gc = 0);
 #endif 
 
-  void push(Pingus::DrawingContext& gc);
-  void pop (Pingus::DrawingContext& gc);
+  void push(DrawingContext& gc);
+  void pop (DrawingContext& gc);
 
-  void push(Pingus::SceneContext& gc);
-  void pop (Pingus::SceneContext& gc);
+  void push(SceneContext& gc);
+  void pop (SceneContext& gc);
 
   /** Return a rectangle in world coordinates that represents the area
       visible on the screen */
-  CL_Rect get_clip_rect();
+  Rect get_clip_rect();
 
   int get_width()  const;
   int get_height() const;
@@ -67,22 +72,22 @@ public:
   float get_rotation();
 
   /** Move the center of the visible area to pos */
-  void      set_pos(const Vector& pos);
-  Vector    get_pos() const;
+  void      set_pos(const Vector2f& pos);
+  Vector2f  get_pos() const;
 
   /** Set zoom to z, while ensuring that the screen position \a pos
       (normaly the position of the mouse pointer) stays in the same
       position even after zoomed in/out */
-  void  set_zoom(CL_Pointf pos, float z);
+  void  set_zoom(Vector2f pos, float z);
   void  set_zoom(float z);
   float get_zoom(); 
 
-  void zoom_to (const CL_Rectf& rect);
+  void zoom_to (const Rectf& rect);
 
-  Vector screen2world(const CL_Point& pos);
+  Vector2f screen2world(const Vector2i& pos);
 
 private:
-  CL_SharedPtr<GraphicContextStateImpl> impl;
+  SharedPtr<GraphicContextStateImpl> impl;
 };
 
 #endif

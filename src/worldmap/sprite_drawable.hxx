@@ -20,8 +20,8 @@
 #ifndef HEADER_SPRITE_DRAWABLE_HXX
 #define HEADER_SPRITE_DRAWABLE_HXX
 
-#include <ClanLib/Display/sprite.h>
-#include "../vector.hxx"
+#include "../sprite.hpp"
+#include "../math/vector3f.hpp"
 #include "drawable.hxx"
 
 namespace WorldMapNS {
@@ -30,8 +30,8 @@ namespace WorldMapNS {
 class SpriteDrawable : public Drawable
 {
 private:
-  CL_Sprite sprite;
-  Vector pos;
+  Sprite sprite;
+  Vector3f  pos;
 
 public:
   SpriteDrawable(FileReader reader);

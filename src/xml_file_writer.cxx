@@ -20,7 +20,7 @@
 #include <iostream>
 #include <map>
 #include "vector.hxx"
-#include "xml_file_writer.hxx"
+///#include "xml_file_writer.hxx"
 
 
 XMLFileWriter::XMLFileWriter(std::ostream& out_)

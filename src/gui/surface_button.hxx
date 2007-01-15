@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_GUI_SURFACE_BUTTON_HXX
 #define HEADER_PINGUS_GUI_SURFACE_BUTTON_HXX
 
+#include "../sprite.hpp"
 #include "component.hxx"
-
 
 class ResDescriptor;
 

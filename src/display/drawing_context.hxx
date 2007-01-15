@@ -26,6 +26,7 @@
 #include <vector>
 #include "drawing_request.hxx"
 #include "../math/vector3f.hpp"
+#include "../math/rect.hpp"
 #include "../math/color.hpp"
 
 class Font;
@@ -111,7 +112,7 @@ public:
   void reset_modelview();
 
   /** Return the area of the screen that will be visible*/
-  ////CL_Rect get_clip_rect();
+  Rect get_clip_rect() const;
 
   float get_width() const;
   float get_height() const;

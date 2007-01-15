@@ -30,36 +30,43 @@
 //! clanCore="Math"
 //! header=core.h
 
-#ifndef HEADER_MATH_ORIGIN_HPP
-#define HEADER_MATH_ORIGIN_HPP
+#ifndef header_origin
+#define header_origin
 
-namespace origin {
+#if _MSC_VER > 1000
+#pragma once
+#endif
+
+#include <string>
+#include "math/vector2i.hpp"
+#include "math/size.hpp"
 
 //: Alignment origins.
 //- !group=Core/Math!
 //- !header=core.h!
 enum Origin
 {
-	top_left,
-	top_center,
-	top_right,
-	center_left,
-	center,
-	center_right,
-	bottom_left,
-	bottom_center,
-	bottom_right
+	origin_top_left,
+	origin_top_center,
+	origin_top_right,
+	origin_center_left,
+	origin_center,
+	origin_center_right,
+	origin_bottom_left,
+	origin_bottom_center,
+	origin_bottom_right
 };
 
-}
+Origin string2origin(const std::string& str);
 
-typedef origin::Origin Origin;
+Vector2i calc_origin(Origin origin, const Size& size);
 
-
+#if 0
 //: Returns the anchor point for the origin within the dimensions of the size structure.
 //- !group=Display/Display 2D!
 //- !header=display.h!
-Point  calc_origin(Origin origin, const Size &size);
-Vector calc_origin(Origin origin, const Sizef &size);
+CL_API_CORE CL_Pointf calc_origin(CL_Origin origin, const CL_Sizef &size);
+CL_API_CORE CL_Pointd calc_origin(CL_Origin origin, const CL_Sized &size);
+#endif 
 
 #endif

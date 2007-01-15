@@ -27,7 +27,7 @@
 #include <sstream>
 #include <assert.h>
 #include "SDL.h"
-#include "origin.hpp"
+#include "math/origin.hpp"
 #include "math/vector2i.hpp"
 #include "SDL_image.h"
 #include "sprite.hpp"
@@ -128,13 +128,23 @@ Sprite::draw(float x, float y, SDL_Surface* target)
 int
 Sprite::get_width()
 {
-  return 0;
+  return impl->surface->w;
 }
 
 int
 Sprite::get_height()
 {
-  return 0;
+  return impl->surface->h;
+}
+
+Sprite::operator bool()
+{
+  return impl.get();
+}
+
+void
+Sprite:: update(float delta)
+{
 }
 
 /* EOF */

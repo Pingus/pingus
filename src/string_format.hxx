@@ -22,13 +22,12 @@
 
 #include <string>
 
-class CL_Font;
-
+class Font;
 
 class StringFormat {
 
 public:
-  static std::string break_line (std::string text, int length, const CL_Font& font);
+  static std::string break_line (std::string text, int length, const Font& font);
 };
 
 

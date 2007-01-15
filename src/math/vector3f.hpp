@@ -23,6 +23,8 @@
 #include <iosfwd>
 #include "pingus.hxx"
 
+class Vector2f;
+
 class Vector3f
 {
 public:
@@ -34,6 +36,7 @@ public:
   explicit Vector3f (float x_=0, float y_=0, float z_=0);
 
   Vector3f (const Vector3f& old);
+  Vector3f (const Vector2f& old);
   Vector3f& operator= (const Vector3f& old);
 
   Vector3f operator- () const;

@@ -17,12 +17,12 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/font.h>
+#include "font.hpp"
 #include "string_format.hxx"
 
 
 std::string
-StringFormat::break_line (std::string text, int length, const CL_Font& font)
+StringFormat::break_line (std::string text, int length, const Font& font)
 {
   std::string::size_type pos = 0;
   while ((pos = text.find('\t', pos)) != std::string::npos)

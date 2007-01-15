@@ -34,8 +34,8 @@ class Pingus : public Drawable
 private:
   PathGraph* path;
   StateSprite sprite;
-  CL_Sprite sprite_standing;
-  CL_Sprite arrow;
+  Sprite sprite_standing;
+  Sprite arrow;
 
   /** The node on which the pingu currently stands, NoNode if the pingu is
       currently on the move to another node */
@@ -72,11 +72,11 @@ private:
   float edge_path_position;
 
   /** Current position of the pingu, only for caching purpose */
-  Vector pos;
+  Vector3f pos;
 
   /** The position the pingu had before his current position, used to
       calculate its current direction */
-  Vector last_pos;
+  Vector3f last_pos;
 
 public:
   /** */
@@ -101,7 +101,7 @@ public:
   void set_position (NodeId node);
 
   /** return the current position in world coordinates */
-  Vector get_pos() const { return pos; }
+  Vector3f get_pos() const { return pos; }
 
 private:
   /** Calculate the direction in which the pingu is heading, return
@@ -109,7 +109,7 @@ private:
   float get_direction() const;
 
   /** calculate the position of the pingu */
-  Vector calc_pos ();
+  Vector3f calc_pos ();
 
   void  update_walk (float delta);
 
@@ -118,7 +118,7 @@ private:
   float calc_edge_path_length();
 
   /** */
-  Vector interpolate(const Vector& a, const Vector& b, float perc);
+  Vector3f interpolate(const Vector3f& a, const Vector3f& b, float perc);
 
   Pingus (const Pingus&);
   Pingus& operator= (const Pingus&);

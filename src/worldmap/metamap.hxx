@@ -91,7 +91,6 @@ private:
 };	// MetaMap class.
 
 } // WorldMap namespace;
-} // Pingus namespace;
 
 #endif
 

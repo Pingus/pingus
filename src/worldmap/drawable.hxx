@@ -23,7 +23,6 @@
 #include "../pingus_error.hxx"
 #include "../file_reader.hxx"
 
-
 class DrawingContext;
 
 namespace WorldMapNS {

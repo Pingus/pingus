@@ -54,7 +54,7 @@ SurfaceDrawable::draw(DrawingContext& gc)
     {
       if (auto_uncover)
         {
-          Vector pingus_pos = WorldMapManager::instance()->get_worldmap()->get_pingus()->get_pos();
+          Vector3f pingus_pos = WorldMapManager::instance()->get_worldmap()->get_pingus()->get_pos();
           // Pingu is not over the surface
           if (!(pingus_pos.x > pos.x && pingus_pos.x < pos.x + surface.get_width()
                 &&

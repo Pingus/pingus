@@ -24,7 +24,7 @@
 #include "gui/display.hxx"
 #include "../sprite.hpp"
 #include "../font.hpp"
-#include "../origin.hpp"
+#include "../math/origin.hpp"
 
 
 struct DrawingRequestsSorter
@@ -276,15 +276,15 @@ DrawingContext::draw(const std::string& text, float x, float y, float z)
 { 
   draw(new TextDrawingRequest(text, Vector3f(x, y, z)));
 }
+#endif
 
 void
 DrawingContext::draw_line (float x1, float y1, float x2, float y2, 
-                           const CL_Color& color, float z)
+                           const Color& color, float z)
 {
-  draw(new LineDrawingRequest(Vector(x1, y1), Vector(x2, y2), color, z));
+  ////  draw(new LineDrawingRequest(Vector(x1, y1), Vector(x2, y2), color, z));
 }
 
-#endif
 void
 DrawingContext::draw_fillrect (float x1, float y1, float x2, float y2, 
                                const Color& color, float z)
@@ -335,6 +335,7 @@ DrawingContext::fill_screen(const CL_Color& color)
 {
   draw(new FillScreenDrawingRequest(color));
 }
+#endif
 
 void
 DrawingContext::rotate(float angel)
@@ -372,17 +373,16 @@ void
 DrawingContext::reset_modelview()
 {
   translate_stack.clear();
-  translate_stack.push_back(Vector(0, 0));
+  translate_stack.push_back(Vector3f(0, 0));
 }
 
-CL_Rect
-DrawingContext::get_clip_rect()
+Rect
+DrawingContext::get_clip_rect() const
 {
-  return CL_Rect(CL_Point(static_cast<int>(-translate_stack.back().x),
+  return Rect(Vector2i(static_cast<int>(-translate_stack.back().x),
                           static_cast<int>(-translate_stack.back().y)),
-                 CL_Size((int)get_width(), (int)get_height()));
+                 Size((int)get_width(), (int)get_height()));
 }
-#endif
 float
 DrawingContext::get_width() const
 {

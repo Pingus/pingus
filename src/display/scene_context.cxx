@@ -17,8 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/display.h>
-#include <ClanLib/gl.h>
+#include "gui/display.hxx"
 #include "scene_context.hxx"
 
 #define SCALE_FACTOR 8.0f
@@ -31,17 +30,8 @@ public:
   DrawingContext light;
   DrawingContext highlight; 
 
-  CL_OpenGLSurface lightmap;
-  //CL_Canvas        canvas;
-
   SceneContextImpl() 
-    : lightmap(CL_PixelBuffer(static_cast<int>(CL_Display::get_width()/SCALE_FACTOR), 
-                              static_cast<int>(CL_Display::get_height()/SCALE_FACTOR),
-                              static_cast<int>(CL_Display::get_width()/SCALE_FACTOR*4),
-                              CL_PixelFormat::rgba8888))
-                  //canvas(lightmap)
   {
-    //canvas.get_gc()->set_scale(1/SCALE_FACTOR, 1/SCALE_FACTOR);
   }
 };
 
@@ -126,11 +116,11 @@ SceneContext::reset_modelview()
 }
 
 void
-SceneContext::render(CL_GraphicContext* gc)
+SceneContext::render(SDL_Surface* target)
 {
   // Render all buffers
   // FIXME: Render all to pbuffer for later combining of them
-  impl->color.render(gc);
+  impl->color.render(target);
   
 #if 0
     { // lightmap support
@@ -146,7 +136,7 @@ SceneContext::render(CL_GraphicContext* gc)
     }
 #endif
 
-  impl->highlight.render(gc);
+  impl->highlight.render(target);
 }
 
 void
@@ -157,7 +147,7 @@ SceneContext::clear()
   impl->highlight.clear();
 }
 
-SceneContextDrawingRequest::SceneContextDrawingRequest(SceneContext* sc_, const CL_Vector& pos_) 
+SceneContextDrawingRequest::SceneContextDrawingRequest(SceneContext* sc_, const Vector3f& pos_) 
   : DrawingRequest(pos_),
     sc(sc_)
 {
@@ -169,7 +159,7 @@ SceneContextDrawingRequest::~SceneContextDrawingRequest()
 }
 
 void
-SceneContextDrawingRequest::draw(CL_GraphicContext* gc) 
+SceneContextDrawingRequest::draw(SDL_Surface* gc) 
 {
   sc->render(gc);
 }

@@ -24,7 +24,7 @@
 #include "pingus_error.hxx"
 #include "path_manager.hxx"
 #include "xml_pingus_level.hxx"
-#include "xml_file_reader.hxx"
+////#include "xml_file_reader.hxx"
 #include "xml_pdf.hxx"
 
 

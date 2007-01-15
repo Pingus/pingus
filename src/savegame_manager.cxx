@@ -20,11 +20,10 @@
 #include <iostream>
 #include <fstream>
 #include <assert.h>
-#include <ClanLib/core.h>
 #include "system.hxx"
 #include "pingus_error.hxx"
-#include "xml_file_reader.hxx"
-#include "xml_file_writer.hxx"
+////#include "xml_file_reader.hxx"
+///#include "xml_file_writer.hxx"
 #include "savegame_manager.hxx"
 
 
@@ -48,6 +47,7 @@ void SavegameManager::deinit()
 SavegameManager::SavegameManager(const std::string& arg_filename)
   : filename(arg_filename)
 {
+#if 0
   try 
     {
       CL_DomDocument doc(new CL_InputSource_File(filename), true);
@@ -85,6 +85,7 @@ SavegameManager::SavegameManager(const std::string& arg_filename)
       std::cout << "SavegameManager: Couldn't find savegame file '" << filename
                 << "', starting with a empty one." << std::endl;
     }
+#endif
 }
 
 SavegameManager::~SavegameManager()
@@ -136,8 +137,9 @@ SavegameManager::store(Savegame& arg_savegame)
 void
 SavegameManager::flush()
 {
+#if 0
   std::ofstream out(filename.c_str());
-	XMLFileWriter xml(out);
+  XMLFileWriter xml(out);
 
   xml.begin_section("pingus-savegame");
 
@@ -148,6 +150,7 @@ SavegameManager::flush()
     }
 
   xml.end_section();	// pingus-savegame
+#endif 
 }
 
 

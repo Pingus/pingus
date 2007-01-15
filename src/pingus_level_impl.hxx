@@ -20,14 +20,11 @@
 #ifndef HEADER_PINGUS_LEVEL_IMPL_HXX
 #define HEADER_PINGUS_LEVEL_IMPL_HXX
 
-#include <ClanLib/Core/System/sharedptr.h>
-#include <ClanLib/Core/Math/size.h>
-#include <ClanLib/Display/color.h>
+#include "math/size.hpp"
+#include "math/color.hpp"
 #include <string>
 #include <vector>
 #include <map>
-
-
 
 class PingusLevelImpl
 {
@@ -35,8 +32,8 @@ public:
        
   // Set defaults in constructor
   PingusLevelImpl()
-  : ambient_light(CL_Colorf(1.0f, 1.0f, 1.0f, 1.0f)),
-    music("none")
+    : ambient_light(255, 255, 255, 255),
+      music("none")
   {
     // Do nothing
   }
@@ -46,8 +43,8 @@ public:
   std::string levelname;
   std::string description;
 
-  CL_Colorf   ambient_light;
-  CL_Size     size;
+  Color  ambient_light;
+  Size   size;
 
   int number_of_pingus;
   int number_to_save;

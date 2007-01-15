@@ -20,10 +20,8 @@
 #ifndef HEADER_SCENE_CONTEXT_HXX
 #define HEADER_SCENE_CONTEXT_HXX
 
+#include "SDL.h"
 #include "drawing_context.hxx"
-
-class CL_GraphicContext;
-
 
 class SceneContextImpl;
 
@@ -72,7 +70,7 @@ public:
 
   /** Takes all the buffers and combines them to form the final image
       that will be shown on the screen */
-  void render(CL_GraphicContext* gc);
+  void render(SDL_Surface* gc);
 
   void clear();
 private:
@@ -85,12 +83,12 @@ private:
 class SceneContextDrawingRequest : public DrawingRequest
 {
 private:
-  CL_Color color;
   SceneContext* sc;
+
 public:
-  SceneContextDrawingRequest(SceneContext* sc, const CL_Vector& pos_ = CL_Vector(0,0,0,0));
+  SceneContextDrawingRequest(SceneContext* sc, const Vector3f& pos_ = Vector3f(0,0,0));
   virtual ~SceneContextDrawingRequest();
-  void draw(CL_GraphicContext* gc);
+  void draw(SDL_Surface* gc);
 };
 
 

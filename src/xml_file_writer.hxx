@@ -22,7 +22,7 @@
 
 #include <stack>
 #include <iosfwd>
-#include <ClanLib/Display/color.h>
+#include "math/color.hpp"
 #include "file_writer.hxx"
 
 

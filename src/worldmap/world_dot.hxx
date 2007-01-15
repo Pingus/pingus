@@ -39,7 +39,7 @@ public:
 	virtual void draw(DrawingContext& gc) { UNUSED_ARG(gc); }
 	virtual void update(float delta) { UNUSED_ARG(delta); }
 
-  Vector get_pos() { return pos; }
+  Vector3f get_pos() { return pos; }
 
 	virtual void on_click() { }
 
@@ -55,7 +55,6 @@ private:
 }; // WorldDot class
 
 }	// WorldMapNS namespace
-} // Pingus namespace
 
 #endif
 

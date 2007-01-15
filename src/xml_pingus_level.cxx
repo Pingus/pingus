@@ -28,7 +28,7 @@
 #include <ClanLib/Core/XML/dom_named_node_map.h>
 #include <ClanLib/Core/XML/dom_element.h>
 #include "pingus_error.hxx"
-#include "xml_file_reader.hxx"
+////#include "xml_file_reader.hxx"
 #include "pingus_level_impl.hxx"
 #include "xml_pingus_level.hxx"
 

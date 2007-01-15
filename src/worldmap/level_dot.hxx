@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDMAP_LEVEL_DOT_HXX
 #define HEADER_PINGUS_WORLDMAP_LEVEL_DOT_HXX
 
-#include <ClanLib/Display/sprite.h>
+#include "../sprite.hpp"
 #include "../pingus_level.hxx"
 #include "dot.hxx"
 
@@ -30,11 +30,11 @@ namespace WorldMapNS {
 class LevelDot : public Dot
 {
 private:
-  CL_Sprite green_dot_sur;
-  CL_Sprite red_dot_sur;
-  CL_Sprite unaccessible_dot_sur;
-  CL_Sprite highlight_green_dot_sur;
-  CL_Sprite highlight_red_dot_sur;
+  Sprite green_dot_sur;
+  Sprite red_dot_sur;
+  Sprite unaccessible_dot_sur;
+  Sprite highlight_green_dot_sur;
+  Sprite highlight_red_dot_sur;
 
   std::string levelname;
   PingusLevel plf;

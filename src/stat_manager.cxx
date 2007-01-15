@@ -20,10 +20,9 @@
 #include <iostream>
 #include <algorithm>
 #include <fstream>
-#include <ClanLib/core.h>
 #include "system.hxx"
 #include "pingus_error.hxx"
-#include "xml_file_reader.hxx"
+////#include "xml_file_reader.hxx"
 #include "stat_manager.hxx"
 
 
@@ -85,6 +84,7 @@ StatManager::load(const std::string& filename)
      save(filename);
   }
   
+#if 0
   CL_InputSourceProvider_File provider(".");
   CL_DomDocument doc(provider.open_source(filename), true);
       
@@ -104,6 +104,7 @@ StatManager::load(const std::string& filename)
           reader.read_string(i->c_str(), stats[*i]);
         }
     }
+#endif
 }
 
 void
@@ -132,20 +133,24 @@ StatManager::save(const std::string& filename)
 bool
 StatManager::get_int(const std::string& name, int& value)
 {
+#if 0
   std::string str;
   if (get_string(name, str))
     return CL_String::from(str, value);
   else
+#endif
     return false;
 }
 
 bool
 StatManager::get_bool(const std::string& name, bool& value)
 {
+#if 0
   std::string str;
   if (get_string(name, str))
     return CL_String::from(str, value);
   else
+#endif
     return false;
 }
 
@@ -174,14 +179,18 @@ StatManager::set_string(const std::string& name, const std::string& value)
 void
 StatManager::set_int(const std::string& name, int value)
 {
+#if 0
   stats[name] = CL_String::to(value);
+#endif
   flush();
 }
 
 void
 StatManager::set_bool(const std::string& name, bool value)
 {
+#if 0
   stats[name] = CL_String::to(value);
+#endif
   flush();
 }
 

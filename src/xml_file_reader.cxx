@@ -28,7 +28,7 @@
 #include "vector.hxx"
 #include "res_descriptor.hxx"
 #include "resource_modifier.hxx"
-#include "xml_file_reader.hxx"
+////#include "xml_file_reader.hxx"
 
 
 class XMLFileReaderImpl : public FileReaderImpl

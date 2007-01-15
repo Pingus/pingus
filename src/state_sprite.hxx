@@ -21,15 +21,14 @@
 #define HEADER_STATE_SPRITE_HXX
 
 #include <map>
-#include <ClanLib/Display/sprite.h>
+#include "sprite.hpp"
 
-
-/** Simple Wrapper class around CL_Sprite that allows to have multiple
+/** Simple Wrapper class around Sprite that allows to have multiple
     sprites for different states (running, walking, left, right) */
 class StateSprite
 {
 private:
-  typedef std::map<int, CL_Sprite> Sprites;
+  typedef std::map<int, Sprite> Sprites;
   Sprites sprites;
 
 public:
@@ -39,8 +38,8 @@ public:
   void update();
 
   void load(int state, const std::string& name);
-  void load(int state, CL_Sprite);
-  CL_Sprite& operator[](int state);
+  void load(int state, Sprite);
+  Sprite& operator[](int state);
 };
 
 

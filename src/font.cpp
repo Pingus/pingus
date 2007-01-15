@@ -25,6 +25,10 @@
 
 #include "font.hpp"
 
-
+Rect
+Font::bounding_rect(int, int, const std::string& str) const
+{
+  return Rect();
+}
 
 /* EOF */

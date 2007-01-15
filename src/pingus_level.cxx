@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Core/XML/dom_node.h>
 #include "file_reader.hxx"
 #include "pingus_level.hxx"
 #include "pingus_level_impl.hxx"
@@ -100,7 +99,7 @@ PingusLevel::get_resname() const
   return impl->resname;
 }
 
-const CL_Colorf&
+const Color&
 PingusLevel::get_ambient_light() const
 {
   return impl->ambient_light;

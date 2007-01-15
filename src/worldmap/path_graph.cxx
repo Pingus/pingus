@@ -33,8 +33,8 @@
 namespace WorldMapNS {
 
 PathGraph::PathGraph(WorldMap* arg_worldmap, FileReader &reader)
-  : worldmap(arg_worldmap),
-	metamap(0)
+  : worldmap(arg_worldmap)
+    ////metamap(0)
 {
   parse_nodes(reader.read_section("nodes"));
   parse_edges(reader.read_section("edges"));
@@ -124,7 +124,7 @@ PathGraph::parse_edges(FileReader reader)
             {
               if (j->get_name() == "position")
                 {
-                  Vector pos;
+                  Vector3f pos;
                   j->read_float("x", pos.x);
                   j->read_float("y", pos.y);
                   j->read_float("z", pos.z);
