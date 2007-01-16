@@ -20,7 +20,7 @@
 #include <iostream>
 #include "pingus_error.hxx"
 #include "worldobj_factory.hxx"
-#if 0
+
 #include "worldobjs/conveyor_belt.hxx"
 #include "worldobjs/entrance.hxx"
 #include "worldobjs/exit.hxx"
@@ -46,7 +46,6 @@
 #include "worldobjs/woodthing.hxx"
 
 using namespace WorldObjs;
-#endif
 
 WorldObjFactory* WorldObjFactory::instance_ = 0;
 
@@ -97,7 +96,6 @@ WorldObjFactory::instance ()
     {
       instance_ = new WorldObjFactory ();
 
-#if 0
       // Registring Factories
       new WorldObjFactoryImpl<Liquid>("liquid");
       new WorldObjFactoryImpl<Hotspot>("hotspot");
@@ -135,7 +133,6 @@ WorldObjFactory::instance ()
 
       // Groundpieces
       new WorldObjFactoryImpl<Groundpiece>("groundpiece");
-#endif
     }
 
   return instance_;

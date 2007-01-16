@@ -61,6 +61,11 @@ ButtonPanel::ButtonPanel(Client* c, int arg_x_pos, int arg_y_pos)
 						    0)); //FIXMEcontroller->get_owner ()));
     }
 
+  if (a_buttons.empty())
+    {
+      std::cout << "Error: ButtonPanel: No a_buttons! " << std::endl;
+    }
+
   pressed_button = 0;
   ////wheel_slot = CL_Mouse::sig_key_down().connect(this, &ButtonPanel::on_wheel_move);
 }

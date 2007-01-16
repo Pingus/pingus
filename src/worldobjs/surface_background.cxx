@@ -123,6 +123,9 @@ SurfaceBackground::get_z_pos () const
 void
 SurfaceBackground::update()
 {
+  if (!bg_surface)
+    return;
+
   if (scroll_x) 
     {
       scroll_ox += scroll_x;
@@ -147,6 +150,9 @@ SurfaceBackground::update()
 void
 SurfaceBackground::draw (SceneContext& gc)
 {
+  if (!bg_surface)
+    return;
+
   if (fast_mode)
     {
       ////Display::clear();

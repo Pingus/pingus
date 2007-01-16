@@ -71,8 +71,6 @@ public:
       }
     
     offset = calc_origin(origin, Size(surface->w, surface->h)) + offset;
-
-    std::cout << "offset: " << offset.x << ", " << offset.y << std::endl;
   }
 
   ~SpriteImpl()
@@ -116,19 +114,26 @@ void
 Sprite::draw(float x, float y, SDL_Surface* target)
 {
   //std::cout << "Sprite: draw; " << x << ", " << y << std::endl;
-  impl->draw(x, y, target);
+  if (impl.get())
+    impl->draw(x, y, target);
 }
 
 int
 Sprite::get_width()
 {
-  return impl->surface->w;
+  if (impl.get() && impl->surface)
+    return impl->surface->w;
+  else
+    return 0;
 }
 
 int
 Sprite::get_height()
 {
-  return impl->surface->h;
+  if (impl.get() && impl->surface)
+    return impl->surface->h;
+  else
+    return 0;
 }
 
 Sprite::operator bool()

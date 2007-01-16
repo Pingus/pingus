@@ -786,6 +786,7 @@ PingusMain::main(int argc, char** argv)
 {
   PHYSFS_init(argv[0]);
   PHYSFS_addToSearchPath("data", 0);
+  PHYSFS_addToSearchPath(".", 0);
 
   executable_name = argv[0];
 

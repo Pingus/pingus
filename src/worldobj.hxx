@@ -22,7 +22,7 @@
 
 #include "pingus.hxx"
 #include "file_reader.hxx"
-
+#include "sprite.hpp"
 
 class SceneContext;
 class SmallMap;

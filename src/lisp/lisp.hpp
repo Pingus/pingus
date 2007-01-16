@@ -86,8 +86,16 @@ public:
   float get_float() const
   {
     if(type != TYPE_FLOAT)
-      throw std::runtime_error("Lisp is not a float");
-    return v.float_;
+      {
+        if(type != TYPE_INT)
+          throw std::runtime_error("Lisp is not a float");
+        else
+          return v.int_;
+      }
+    else
+      {    
+        return v.float_;
+      }
   }
 
   bool get_bool() const

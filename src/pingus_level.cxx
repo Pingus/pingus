@@ -49,8 +49,13 @@ PingusLevel::PingusLevel(const std::string& resname,
         std::cout << "Unknown Levelfile Version: " << version << std::endl;
 
       FileReader head;
-      if (reader.read_section("head", head))
+      if (!reader.read_section("head", head))
         {
+          PingusError::raise("Error: (head) section not found in '" + filename + "'");
+        }
+      else
+        {
+          std::cout << "Reading head" << std::endl;
           head.read_string("levelname",        impl->levelname);
           head.read_string("description",      impl->description);
           head.read_size  ("levelsize",        impl->size);
@@ -61,24 +66,31 @@ PingusLevel::PingusLevel(const std::string& resname,
           head.read_int   ("number-to-save",   impl->number_to_save);
           head.read_color ("ambient-light",    impl->ambient_light);
           head.read_string("author",           impl->author);
+
+          std::cout << "Size: " << impl->size.width << " " << impl->size.height << std::endl;
           
           FileReader actions;
-          if (reader.read_section("actions", actions))
+          if (head.read_section("actions", actions))
             {
-              std::vector<std::string> lst = reader.get_section_names();
+              std::vector<std::string> lst = actions.get_section_names();
               for(std::vector<std::string>::iterator i = lst.begin(); i != lst.end(); ++i)
                 {
                   int count = 0;
+                  std::cout << "Actions: " << i->c_str() << std::endl;
                   if (actions.read_int(i->c_str(), count))
                     impl->actions[*i] = count;
                 }
+            }
+          else
+            {
+              PingusError::raise("Error: (pingus-level head actions) not found in '" + filename + "'"); 
             }
         }
       
       FileReader objects;
       if (reader.read_section("objects", objects))
         {
-          std::vector<FileReader> object_lst = reader.get_sections();
+          std::vector<FileReader> object_lst = objects.get_sections();
           for(std::vector<FileReader>::iterator i = object_lst.begin(); i != object_lst.end(); ++i)
             {
               impl->objects.push_back(*i);

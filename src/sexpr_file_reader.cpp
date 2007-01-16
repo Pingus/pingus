@@ -74,10 +74,22 @@ public:
   bool read_float (const char* name, float& v) const 
   {
     lisp::Lisp* item = get_subsection_item(name);
-    if (item && item->get_type() == lisp::Lisp::TYPE_FLOAT)
+    if (item)
       {
-        v = item->get_float();
-        return true;
+        if (item->get_type() == lisp::Lisp::TYPE_FLOAT)
+          {
+            v = item->get_float();
+            return true;
+          }
+        else if (item->get_type() == lisp::Lisp::TYPE_INT)
+          {
+            v = item->get_int();
+            return true;
+          }
+        else
+          {
+            return false;
+          }
       }
     return false;
   }
@@ -95,6 +107,7 @@ public:
 
   bool read_string(const char* name, std::string& v) const 
   {
+    // FIXME: add multiline reading here
     lisp::Lisp* item = get_subsection_item(name);
     if (item)
       {
@@ -114,7 +127,7 @@ public:
 
   bool read_vector(const char* name, Vector3f& v) const
   {
-    lisp::Lisp* sub = get_subsection_item(name);
+    lisp::Lisp* sub = get_subsection(name);
     if (sub && sub->get_list_size() == 4)
       {
         v = Vector3f(sub->get_list_elem(1)->get_float(),
@@ -127,19 +140,21 @@ public:
 
   bool read_size(const char* name, Size& v) const
   {
-    lisp::Lisp* sub = get_subsection_item(name);
+    lisp::Lisp* sub = get_subsection(name);
     if (sub && sub->get_list_size() == 3)
       {
         v.width  = sub->get_list_elem(1)->get_int();
         v.height = sub->get_list_elem(2)->get_int();
         return true;
       }    
+    std::cout << "Reading size: " << v.width << " " << v.height << std::endl;
+
     return false;
   }
 
   bool read_vector2i(const char* name, Vector2i& v) const
   {
-    lisp::Lisp* sub = get_subsection_item(name);
+    lisp::Lisp* sub = get_subsection(name);
     if (sub && sub->get_list_size() == 3)
       {
         v.x = sub->get_list_elem(1)->get_int();
@@ -151,7 +166,7 @@ public:
 
   bool read_color (const char* name, Color& v) const
   {
-    lisp::Lisp* sub = get_subsection_item(name);
+    lisp::Lisp* sub = get_subsection(name);
     if (sub && sub->get_list_size() == 5)
       {
         v = Color(int(sub->get_list_elem(1)->get_float() * 255),
@@ -205,6 +220,7 @@ public:
       { // iterate over subsections
         lisp::Lisp* sub = sexpr->get_list_elem(i);
         lst.push_back(sub->get_list_elem(0)->get_symbol());
+        std::cout << sub->get_list_elem(0)->get_symbol() << std::endl;
       }
 
     return lst;
