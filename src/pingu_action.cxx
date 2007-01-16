@@ -19,7 +19,7 @@
 
 #include <assert.h>
 #include <math.h>
-#include "vector.hxx"
+#include "math/vector3f.hpp"
 #include "col_map.hxx"
 #include "world.hxx"
 #include "pingu.hxx"
@@ -108,13 +108,13 @@ void
 PinguAction::move_with_forces ()
 {
   // Apply gravity
-  pingu->set_velocity(pingu->get_velocity() + Vector(0.0f, 1.0f));
+  pingu->set_velocity(pingu->get_velocity() + Vector3f(0.0f, 1.0f));
 
 #if 0 // New Code
-  Vector pos        = pingu->get_pos();
-  Vector target_pos = pos + pingu->get_velocity();
-  Vector dir        = target_pos - pingu->get_pos();
-  Vector velocity   = pingu->get_velocity();
+  Vector3f pos        = pingu->get_pos();
+  Vector3f target_pos = pos + pingu->get_velocity();
+  Vector3f dir        = target_pos - pingu->get_pos();
+  Vector3f velocity   = pingu->get_velocity();
 
   float length = dir.length();
   dir.normalize();
@@ -137,7 +137,7 @@ PinguAction::move_with_forces ()
           else
             {
               // Make it so that the Pingu won't go down any further.
-              pingu->set_velocity(Vector(0, 0));
+              pingu->set_velocity(Vector3f(0, 0));
               return;
             }
         }
@@ -157,7 +157,7 @@ PinguAction::move_with_forces ()
 #else // Old Code
 
   // FIXME: What does this variable do?
-  Vector resultant_force = pingu->get_velocity();
+  Vector3f resultant_force = pingu->get_velocity();
 
   // FIXME: and what is this all about?! Can't we just use floats?
   // Strictly speaking x_numerator should be initialised with
@@ -187,7 +187,7 @@ PinguAction::move_with_forces ()
       y_inc = denominator;
     }
 
-  Vector force_counter = resultant_force;
+  Vector3f force_counter = resultant_force;
 
   // Keep moving the Pingu until there is only a fraction left
   while (   force_counter.x <= -1
@@ -244,7 +244,7 @@ PinguAction::move_with_forces ()
                       return;
                     }
 		  // Make it so that the Pingu won't go down any further.
-                  pingu->set_velocity(Vector(0, 0));
+                  pingu->set_velocity(Vector3f(0, 0));
                   return;
 		}
 	      else

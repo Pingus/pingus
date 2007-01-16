@@ -36,8 +36,8 @@ private:
   bool colmap_exploded;
 
   static bool static_surface_loaded;
-  static CL_PixelBuffer bomber_radius;
-  static CL_PixelBuffer bomber_radius_gfx;
+  static PixelBuffer bomber_radius;
+  static PixelBuffer bomber_radius_gfx;
 
   StateSprite sprite;
 

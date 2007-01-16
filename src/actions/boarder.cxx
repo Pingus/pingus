@@ -50,12 +50,12 @@ Boarder::update ()
     }
 
     // Incremental update so that we don't skip pixels
-    Vector new_pos = pingu->get_pos();
+    Vector3f new_pos = pingu->get_pos();
     new_pos.x = new_pos.x + pingu->direction * speed;
     while (new_pos.x != pingu->get_pos().x)
     {
-      Vector old_pos = pingu->get_pos();
-      pingu->set_pos(Vector(old_pos.x + (old_pos.x < new_pos.x) ? 1.0f : -1.0f, 
+      Vector3f old_pos = pingu->get_pos();
+      pingu->set_pos(Vector3f(old_pos.x + (old_pos.x < new_pos.x) ? 1.0f : -1.0f, 
         old_pos.y, old_pos.z));
 
       if (pingu->rel_getpixel (1, 0))
@@ -64,7 +64,7 @@ Boarder::update ()
         pingu->set_pos(old_pos); // + (pingu->direction * 10);
         ////pingu->pos.y = 10;
 
-        pingu->apply_force (Vector(float(speed * pingu->direction * 0.5),
+        pingu->apply_force (Vector3f(float(speed * pingu->direction * 0.5),
           -float(speed * abs(pingu->direction) * 0.5)));
         pingu->set_action(Actions::Walker);
         return;
@@ -73,7 +73,7 @@ Boarder::update ()
   }
   else
   {
-    pingu->apply_force (Vector((float)speed * pingu->direction, 0));
+    pingu->apply_force (Vector3f((float)speed * pingu->direction, 0));
     pingu->set_action(Actions::Walker);
   }
 }

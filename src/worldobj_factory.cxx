@@ -18,10 +18,9 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Core/System/clanstring.h>
 #include "pingus_error.hxx"
 #include "worldobj_factory.hxx"
-
+#if 0
 #include "worldobjs/conveyor_belt.hxx"
 #include "worldobjs/entrance.hxx"
 #include "worldobjs/exit.hxx"
@@ -46,8 +45,8 @@
 #include "worldobjs/thunderstorm_background.hxx"
 #include "worldobjs/woodthing.hxx"
 
-
 using namespace WorldObjs;
+#endif
 
 WorldObjFactory* WorldObjFactory::instance_ = 0;
 
@@ -98,6 +97,7 @@ WorldObjFactory::instance ()
     {
       instance_ = new WorldObjFactory ();
 
+#if 0
       // Registring Factories
       new WorldObjFactoryImpl<Liquid>("liquid");
       new WorldObjFactoryImpl<Hotspot>("hotspot");
@@ -135,6 +135,7 @@ WorldObjFactory::instance ()
 
       // Groundpieces
       new WorldObjFactoryImpl<Groundpiece>("groundpiece");
+#endif
     }
 
   return instance_;

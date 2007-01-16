@@ -18,9 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Core/System/clanstring.h>
-#include <ClanLib/Display/sprite_description.h>
 #include "gettext.h"
+#include "gui/display.hxx"
 #include "gui/surface_button.hxx"
 #include "gui/gui_manager.hxx"
 #include "gui/screen_manager.hxx"
@@ -39,10 +38,10 @@ class ResultScreenComponent : public GUI::Component
 {
 public:
   Result result;
-  CL_Sprite background;
+  Sprite background;
   std::string time_str;
 
-  std::vector<CL_Sprite> chalk_pingus;
+  std::vector<Sprite> chalk_pingus;
 
   ResultScreenComponent(Result arg_result);
   virtual ~ResultScreenComponent() {}
@@ -56,8 +55,8 @@ private:
   ResultScreen* parent;
 public:
   ResultScreenOkButton(ResultScreen* p)
-    : GUI::SurfaceButton(CL_Display::get_width()/2 + 225,
-                         CL_Display::get_height()/2 + 125,
+    : GUI::SurfaceButton(Display::get_width()/2 + 225,
+                         Display::get_height()/2 + 125,
                          ResDescriptor("core/start/ok"),
                          ResDescriptor("core/start/ok_clicked"),
                          ResDescriptor("core/start/ok_hover")),
@@ -84,8 +83,8 @@ private:
   ResultScreen* parent;
 public:
   ResultScreenAbortButton(ResultScreen* p)
-    : GUI::SurfaceButton(CL_Display::get_width()/2 - 278,
-                         CL_Display::get_height()/2 + 144,
+    : GUI::SurfaceButton(Display::get_width()/2 - 278,
+                         Display::get_height()/2 + 144,
                          ResDescriptor("core/start/back"),
                          ResDescriptor("core/start/back_clicked"),
                          ResDescriptor("core/start/back_hover")),
@@ -117,8 +116,8 @@ private:
   ResultScreen* parent;
 public:
   ResultScreenRetryButton(ResultScreen* p)
-    : GUI::SurfaceButton(CL_Display::get_width()/2 + 225,
-                         CL_Display::get_height()/2 + 125,
+    : GUI::SurfaceButton(Display::get_width()/2 + 225,
+                         Display::get_height()/2 + 125,
                          ResDescriptor("core/start/ok"),
                          ResDescriptor("core/start/ok_clicked"),
                          ResDescriptor("core/start/ok_hover")),
@@ -141,17 +140,21 @@ public:
 ResultScreenComponent::ResultScreenComponent(Result arg_result)
   : result(arg_result)
 {
-	if (CL_Display::get_width() == 800 && CL_Display::get_height() == 600)
-  	background = Resource::load_sprite("core/menu/startscreenbg");
-	else
-	{
-		PixelBuffer pb = Blitter::scale_surface_to_canvas(Resource::load_pixelbuffer(
-			"core/menu/startscreenbg"), CL_Display::get_width(), CL_Display::get_height());
-		CL_SpriteDescription desc;
-		desc.add_frame(pb);
-		background = CL_Sprite(desc);
-	}
-	background.set_alignment(origin_center);
+  if (Display::get_width() == 800 && Display::get_height() == 600)
+    {
+      background = Resource::load_sprite("core/menu/startscreenbg");
+    }
+#if 0
+  else
+    {
+      PixelBuffer pb = Blitter::scale_surface_to_canvas(Resource::load_pixelbuffer(
+                                                                                   "core/menu/startscreenbg"), Display::get_width(), Display::get_height());
+      CL_SpriteDescription desc;
+      desc.add_frame(pb);
+      background = CL_Sprite(desc);
+    }
+  background.set_alignment(origin_center);
+#endif
 	
   chalk_pingus.push_back(Resource::load_sprite("core/misc/chalk_pingu1"));
   chalk_pingus.push_back(Resource::load_sprite("core/misc/chalk_pingu2"));
@@ -167,30 +170,30 @@ ResultScreenComponent::ResultScreenComponent(Result arg_result)
 void
 ResultScreenComponent::draw(DrawingContext& gc)
 {
-  gc.draw(background, Vector(gc.get_width()/2, gc.get_height()/2));
+  gc.draw(background, Vector3f(gc.get_width()/2, gc.get_height()/2));
 
   if (!result.success())
     gc.print_right(Fonts::chalk_normal,
-                   (float)CL_Display::get_width()/2 + 275,
-                   (float)CL_Display::get_height()/2 + 110, _("Retry"));
+                   (float)Display::get_width()/2 + 275,
+                   (float)Display::get_height()/2 + 110, _("Retry"));
 
   gc.print_center(Fonts::chalk_large, gc.get_width()/2, 
-									(float)CL_Display::get_height()/2 - 200,
+                  (float)Display::get_height()/2 - 200,
                   _(result.plf.get_levelname()));
 
   if (result.success())
     {
       gc.print_center(Fonts::chalk_large, gc.get_width()/2,
-                      (float)CL_Display::get_height()/2 - 140, _("Success!"));
+                      (float)Display::get_height()/2 - 140, _("Success!"));
       /*gc.print_center(Fonts::pingus_small, gc.get_width()/2, gc.get_height()-30,
         "..:: Press Space to continue ::..");*/
     }
   else
     {
-      gc.print_center(Fonts::chalk_large, gc.get_width()/2, (float)CL_Display::get_height()/2 - 140,
+      gc.print_center(Fonts::chalk_large, gc.get_width()/2, (float)Display::get_height()/2 - 140,
                       _("Failure!"));
       /*gc.print_center(Fonts::pingus_normal, gc.get_width()/2, gc.get_height()-30,
-                      "..:: Press Space to retry the level ::..");*/
+        "..:: Press Space to retry the level ::..");*/
     }
 
   std::string message;
@@ -225,7 +228,7 @@ ResultScreenComponent::draw(DrawingContext& gc)
         message = _("Better luck next time!");
     }
   gc.print_center(Fonts::chalk_normal, gc.get_width()/2,
-                  (float)CL_Display::get_height()/2 - 70, message);
+                  (float)Display::get_height()/2 - 70, message);
 
 
 #if 0
@@ -234,9 +237,11 @@ ResultScreenComponent::draw(DrawingContext& gc)
       gc.draw(chalk_pingus[rand() % chalk_pingus.size()], 230 + i * 15, 210);
     }
 #endif
-  int left_x  = CL_Display::get_width()/2 - 100;
-  int right_x = CL_Display::get_width()/2 + 100;
-  int y = CL_Display::get_height()/2 + 10;
+
+#if 0
+  int left_x  = Display::get_width()/2 - 100;
+  int right_x = Display::get_width()/2 + 100;
+  int y = Display::get_height()/2 + 10;
 
   gc.print_left(Fonts::chalk_normal,  (float)left_x,  (float)y, _("Saved: "));
   gc.print_right(Fonts::chalk_normal, (float)right_x, (float)y, CL_String::to(result.saved)
@@ -248,6 +253,7 @@ ResultScreenComponent::draw(DrawingContext& gc)
 
   gc.print_left(Fonts::chalk_normal,   (float)left_x, (float)(y+=30), _("Time left: "));
   gc.print_right(Fonts::chalk_normal, (float)right_x, (float)y, time_str);
+#endif
 }
 
 ResultScreen::ResultScreen(Result arg_result)

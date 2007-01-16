@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <cassert>
-#include <ClanLib/Core/System/clanstring.h>
 #include "../col_map.hxx"
 #include "../display/scene_context.hxx"
 #include "../pingu.hxx"
@@ -37,17 +36,17 @@ Bridger::Bridger (Pingu* p)
     mode(B_BUILDING),
     bricks(MAX_BRICKS),
     block_build(false),
-    name(_("Bridger") + std::string(" (") + CL_String::to(bricks) + ")")
+    name(_("Bridger") + std::string(" (")) ////+ CL_String::to(bricks) + ")")
 {
   walk_sprite.load (Direction::LEFT,  Resource::load_sprite("pingus/player" + 
-    pingu->get_owner_str() + "/bridger_walk/left"));
+                                                            pingu->get_owner_str() + "/bridger_walk/left"));
   walk_sprite.load (Direction::RIGHT, Resource::load_sprite("pingus/player" + 
-    pingu->get_owner_str() + "/bridger_walk/right"));
+                                                            pingu->get_owner_str() + "/bridger_walk/right"));
 
   build_sprite.load (Direction::LEFT,  Resource::load_sprite("pingus/player" + 
-    pingu->get_owner_str() + "/bridger/left"));
+                                                             pingu->get_owner_str() + "/bridger/left"));
   build_sprite.load (Direction::RIGHT, Resource::load_sprite("pingus/player" + 
-    pingu->get_owner_str() + "/bridger/right"));
+                                                             pingu->get_owner_str() + "/bridger/right"));
 
   brick_l = Resource::load_pixelbuffer("other/brick_left");
   brick_r = Resource::load_pixelbuffer("other/brick_right");
@@ -73,13 +72,13 @@ Bridger::draw (SceneContext& gc)
   switch (mode)
     {
     case B_BUILDING:
-      gc.color().draw(build_sprite[pingu->direction], Vector(pingu->get_pos().x - (x_offset * pingu->direction),
-                                                     pingu->get_pos().y + y_offset));
+      gc.color().draw(build_sprite[pingu->direction], Vector3f(pingu->get_pos().x - (x_offset * pingu->direction),
+                                                             pingu->get_pos().y + y_offset));
       break;
 
     case B_WALKING:
-      gc.color().draw(walk_sprite[pingu->direction], Vector(pingu->get_pos().x - (x_offset * pingu->direction),
-                                                    pingu->get_pos().y + y_offset));
+      gc.color().draw(walk_sprite[pingu->direction], Vector3f(pingu->get_pos().x - (x_offset * pingu->direction),
+                                                            pingu->get_pos().y + y_offset));
       break;
     }
 }
@@ -214,7 +213,7 @@ void
 Bridger::place_a_brick()
 {
   bricks--;
-  name = _("Bridger") + std::string(" (") + CL_String::to(bricks) + ")";
+  name = _("Bridger") + std::string(" (");//// + CL_String::to(bricks) + ")";
 
   if (bricks < 4)
     Sound::PingusSound::play_sound("ting");
@@ -245,7 +244,7 @@ void
 Bridger::walk_one_step_up()
 {
   pingu->set_pos(pingu->get_pos().x + (float)(4 * pingu->direction), 
-		pingu->get_pos().y - 2);
+                 pingu->get_pos().y - 2);
 }
 
 std::string

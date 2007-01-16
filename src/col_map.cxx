@@ -18,12 +18,10 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Display/pixel_buffer.h>
-#include <ClanLib/Display/pixel_format.h>
-#include <ClanLib/Display/surface.h>
 #include "display/drawing_context.hxx"
 #include "globals.hxx"
 #include "col_map.hxx"
+#include "pixel_buffer.hpp"
 #include "pingus_error.hxx"
 #include "gettext.h"
 
@@ -78,6 +76,7 @@ ColMap::get_width()
 void
 ColMap::remove(PixelBuffer provider, int x, int y)
 {
+#if 0
 	++serial;
 
   int swidth  = provider.get_width();
@@ -126,6 +125,7 @@ ColMap::remove(PixelBuffer provider, int x, int y)
 	}
 
 	provider.unlock();
+#endif
 }
 
 void
@@ -164,6 +164,7 @@ ColMap::blit_allowed (int x, int y,  Groundtype::GPType gtype)
 void
 ColMap::put(PixelBuffer provider, int sur_x, int sur_y, Groundtype::GPType pixel)
 {
+#if 0
   // transparent groundpieces are only drawn on the gfx map, not on the colmap
   if (pixel == Groundtype::GP_TRANSPARENT)
     return;
@@ -237,11 +238,13 @@ ColMap::put(PixelBuffer provider, int sur_x, int sur_y, Groundtype::GPType pixel
 
   // FIXME: Memory hole
   // provider.unlock();
+#endif
 }
 
 void
 ColMap::draw(DrawingContext& gc)
 {
+#if 0
   PixelBuffer canvas(width, height, width*4, CL_PixelFormat::rgba8888);
   CL_Surface sur;
   unsigned char* buffer;
@@ -288,6 +291,7 @@ ColMap::draw(DrawingContext& gc)
   sur = CL_Surface(canvas);
 
   //FIXME:gc.draw(sur, 0, 0);
+#endif
 }
 
 unsigned

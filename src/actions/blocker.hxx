@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_ACTIONS_BLOCKER_HXX
 #define HEADER_PINGUS_ACTIONS_BLOCKER_HXX
 
-#include <ClanLib/Display/sprite.h>
 #include "../state_sprite.hxx"
 #include "../pingu_action.hxx"
 

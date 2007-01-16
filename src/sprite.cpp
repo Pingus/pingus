@@ -159,4 +159,16 @@ Sprite::is_finished() const
   return true;
 }
 
+int
+Sprite::get_current_frame() const
+{
+  return 0;
+}
+
+void
+Sprite::restart()
+{
+  
+}
+
 /* EOF */

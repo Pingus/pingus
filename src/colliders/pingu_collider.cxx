@@ -19,7 +19,7 @@
 
 #include "../pingu_action.hxx"
 #include "../groundtype.hxx"
-#include "../vector.hxx"
+#include "../math/vector3f.hpp"
 #include "pingu_collider.hxx"
 
 namespace Colliders {

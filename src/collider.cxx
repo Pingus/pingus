@@ -19,7 +19,7 @@
 
 #include "collider.hxx"
 #include "col_map.hxx"
-#include "math/vector3f.hxx"
+#include "math/vector3f.hpp"
 #include "world.hxx"
 
 Collider::Collider()

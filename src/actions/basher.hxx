@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_ACTIONS_BASHER_HXX
 #define HEADER_PINGUS_ACTIONS_BASHER_HXX
 
-#include <ClanLib/Display/pixel_buffer.h>
 #include "../state_sprite.hxx"
 #include "../pingu_action.hxx"
 
@@ -30,8 +29,8 @@ class Basher : public PinguAction
 {
 private:
   StateSprite sprite;
-  CL_PixelBuffer bash_radius;
-  CL_PixelBuffer bash_radius_gfx;
+  PixelBuffer bash_radius;
+  PixelBuffer bash_radius_gfx;
   int basher_c;
   bool first_bash;
 

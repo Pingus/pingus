@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_SMALLMAP_IMAGE_HXX
 
 #include "pingus.hxx"
+#include "sprite.hpp"
 
 class Server;
 

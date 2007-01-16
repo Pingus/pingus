@@ -50,7 +50,9 @@ public:
   void draw(float x, float y, SDL_Surface* target);
   void set_frame(int i);
   int  get_frame_count() const;
+  int  get_current_frame() const;
   bool is_finished() const;
+  void  restart();
   operator bool();
 private:
   SharedPtr<SpriteImpl> impl;
