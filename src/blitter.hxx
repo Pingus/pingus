@@ -24,42 +24,42 @@
 ////#include <ClanLib/Display/color.h>
 
 class CL_Surface;
-class CL_PixelBuffer;
+class PixelBuffer;
 
 #if 0
 /** A bunch of blitting and creation functions to operate on
-    CL_PixelBuffer.  Some of them a similar to the ones in ClanLib, but
+    PixelBuffer.  Some of them a similar to the ones in ClanLib, but
     this are slower and work. */
 class Blitter
 {
 private:
   ///
-  static void put_surface_8bit(CL_PixelBuffer target, CL_PixelBuffer source,
+  static void put_surface_8bit(PixelBuffer target, PixelBuffer source,
                                    int x, int y);
   ///
-  static void put_surface_32bit(CL_PixelBuffer target, CL_PixelBuffer source,
+  static void put_surface_32bit(PixelBuffer target, PixelBuffer source,
 			       int x, int y);
 public:
   /** Puts a given surface to a given canvas at position x, y. */
-  static void put_surface(CL_PixelBuffer target, const CL_Surface& source,
+  static void put_surface(PixelBuffer target, const CL_Surface& source,
 			  int x, int y);
 
   /** Puts a given surface provider to a given canvas at position x, y. */
-  static void put_surface(CL_PixelBuffer target, CL_PixelBuffer source,
+  static void put_surface(PixelBuffer target, PixelBuffer source,
 			  int x, int y);
 
   /** Returns a newly allocated canvas. The canvas contains the same
       image as the given surface. */
-  static CL_PixelBuffer create_canvas(const CL_Surface&);
+  static PixelBuffer create_canvas(const CL_Surface&);
 
   /** Returns a newly allocated canvas. The canvas contains the same
       image as the given surface provider */
-  static CL_PixelBuffer create_canvas(CL_PixelBuffer );
+  static PixelBuffer create_canvas(PixelBuffer );
 
   /** Sets all pixels of a canvas to zero */
-  static void clear_canvas(CL_PixelBuffer, CL_Color color = CL_Color(0, 0, 0, 0));
+  static void clear_canvas(PixelBuffer, Color color = Color(0, 0, 0, 0));
 
-  static void fill_rect(CL_PixelBuffer target, const CL_Rect& rect, const CL_Color& color);
+  static void fill_rect(PixelBuffer target, const CL_Rect& rect, const Color& color);
 
   /** Creates a new surface (based on a canvas) with the given width
       and height and stretches the source surface onto it
@@ -71,35 +71,35 @@ public:
   static CL_Surface scale_surface (const CL_Surface& sur, int width, int height);
 
   /** Flip a surface horizontal */
-  static CL_PixelBuffer flip_horizontal (CL_PixelBuffer sur);
+  static PixelBuffer flip_horizontal (PixelBuffer sur);
 
   /** Flip a surface vertical */
-  static CL_PixelBuffer flip_vertical (CL_PixelBuffer sur);
+  static PixelBuffer flip_vertical (PixelBuffer sur);
 
   /** Rotate a surface 90 degrees */
-  static CL_PixelBuffer rotate_90 (CL_PixelBuffer sur);
+  static PixelBuffer rotate_90 (PixelBuffer sur);
 
-  static CL_PixelBuffer rotate_180 (CL_PixelBuffer sur);
+  static PixelBuffer rotate_180 (PixelBuffer sur);
 
-  static CL_PixelBuffer rotate_270 (CL_PixelBuffer sur);
+  static PixelBuffer rotate_270 (PixelBuffer sur);
 
-  static CL_PixelBuffer rotate_90_flip (CL_PixelBuffer sur);
+  static PixelBuffer rotate_90_flip (PixelBuffer sur);
 
-  static CL_PixelBuffer rotate_180_flip (CL_PixelBuffer sur);
+  static PixelBuffer rotate_180_flip (PixelBuffer sur);
 
-  static CL_PixelBuffer rotate_270_flip (CL_PixelBuffer sur);
+  static PixelBuffer rotate_270_flip (PixelBuffer sur);
 
   /** Creates a new canvas with the given width and height and
       stretches the source surface onto it, the caller is responsible
-      to delete the returned CL_PixelBuffer.
+      to delete the returned PixelBuffer.
 
       @param sur The source surface
       @param width The new width of the surface.
       @param height The new height of the surface.
       @return A newly created surface, the caller is responsible to delete it. */
-  static CL_PixelBuffer scale_surface_to_canvas (const CL_Surface& sur, int width, int height);
+  static PixelBuffer scale_surface_to_canvas (const CL_Surface& sur, int width, int height);
 
-  static CL_PixelBuffer scale_surface_to_canvas (CL_PixelBuffer sur, int width, int height);
+  static PixelBuffer scale_surface_to_canvas (PixelBuffer sur, int width, int height);
 
 private:
   Blitter (const Blitter&);

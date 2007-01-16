@@ -46,13 +46,13 @@ Screenshot::make_screenshot()
 }
 
 void
-Screenshot::save_target_to_file(CL_PixelBuffer target, const std::string& filename)
+Screenshot::save_target_to_file(PixelBuffer target, const std::string& filename)
 {
   save_target_to_file_fast(target, filename);
 }
 
 void
-Screenshot::save_target_to_file_fast(CL_PixelBuffer target, const std::string& filename)
+Screenshot::save_target_to_file_fast(PixelBuffer target, const std::string& filename)
 {
   target.lock();
   int num_pixels = target.get_width() * target.get_height();
@@ -139,7 +139,7 @@ Screenshot::save_ppm(const std::string& filename, unsigned char* buffer, int wid
 }
 
 void
-Screenshot::save_target_to_file_slow(CL_PixelBuffer target, const std::string& filename)
+Screenshot::save_target_to_file_slow(PixelBuffer target, const std::string& filename)
 {
   std::ofstream out(filename.c_str());
 
@@ -155,7 +155,7 @@ Screenshot::save_target_to_file_slow(CL_PixelBuffer target, const std::string& f
     {
       for (int x=0; x < target.get_width(); ++x)
         {
-          CL_Color color = target.get_pixel(x, y);
+          Color color = target.get_pixel(x, y);
           out << (int)(color.get_red())   << " "
               << (int)(color.get_green()) << " "
               << (int)(color.get_blue())  << "\n";

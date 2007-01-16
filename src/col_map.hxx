@@ -23,8 +23,7 @@
 #include "groundtype.hxx"
 
 class CL_Surface;
-class CL_PixelBuffer;
-
+class PixelBuffer;
 
 class DrawingContext;
 class ResDescriptor;
@@ -78,10 +77,10 @@ public:
   bool blit_allowed (int x, int y,  Groundtype::GPType);
 
   void put(int x, int y, Groundtype::GPType p = Groundtype::GP_GROUND);
-  void put(CL_PixelBuffer, int x, int y, Groundtype::GPType);
+  void put(PixelBuffer, int x, int y, Groundtype::GPType);
 
-  /// void remove(int x, int y);
-  void remove(CL_PixelBuffer, int x, int y);
+  void remove(int x, int y);
+  void remove(PixelBuffer, int x, int y);
 
   void draw(DrawingContext& gc);
 

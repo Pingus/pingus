@@ -22,14 +22,10 @@
 #define HEADER_PINGUS_GROUND_MAP_HXX
 
 #include <vector>
-#include <ClanLib/Display/pixel_buffer.h>
-#include <ClanLib/Display/surface.h>
 #include "globals.hxx"
 #include "worldobj.hxx"
 #include "ground_map.hxx"
-
-class CL_PixelBuffer;
-
+#include "pixel_buffer.hpp"
 
 class SceneContext;
 class PingusLevel;
@@ -39,18 +35,18 @@ class GroundMap;
 class MapTile
 {
 private:
-  CL_Surface     surface;
-  CL_PixelBuffer pixelbuffer;
+  ////CL_Surface     surface;
+  PixelBuffer pixelbuffer;
 
   void prepare();
 public:
   MapTile();
   ~MapTile();
 
-	void remove(CL_PixelBuffer, int x, int y, int real_x, int real_y, GroundMap*);  
-  void put(CL_PixelBuffer, int x, int y);  
+  void remove(PixelBuffer, int x, int y, int real_x, int real_y, GroundMap*);  
+  void put(PixelBuffer, int x, int y);  
 
-  CL_Surface get_surface() const { return surface; }
+  ////CL_Surface get_surface() const { return surface; }
 };
 
 /** This map type is the defaulh maptype, it is should be used for the
@@ -85,18 +81,18 @@ public:
   int  get_width();
 
   /** Put the gives surface provider onto the given coordinates */
-  void put(CL_PixelBuffer, int x, int y);
+  void put(PixelBuffer, int x, int y);
 
   /** Remove the gives surface provider onto the given coordinates
       (everything non-transparent that isn't Groundtype::GP_Solid 
 			is removed from the map) */
-  void remove(CL_PixelBuffer, int x, int y);
+  void remove(PixelBuffer, int x, int y);
 
   float get_z_pos () const { return 0; }
 
 	/** Low level version of the remove() call, acts on a single tile
       instead of the complete map-tiles */
-  void put_alpha_surface(CL_PixelBuffer provider, CL_PixelBuffer sprovider,
+  void put_alpha_surface(PixelBuffer provider, PixelBuffer sprovider,
 			 int x, int y, int real_x, int real_y);
 
 private:

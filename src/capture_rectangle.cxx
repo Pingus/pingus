@@ -17,9 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/font.h>
-#include <ClanLib/Core/System/clanstring.h>
-#include "vector.hxx"
+#include "math/vector3f.hpp"
 #include "pingu.hxx"
 #include "resource.hxx"
 #include "capture_rectangle.hxx"
@@ -53,21 +51,21 @@ CaptureRectangle::draw(SceneContext& sc)
       // Draw the capture rectangle
       if (pingu->change_allowed(button_panel->get_action_name()))
         {
-          sc.color().draw(good, pingu->get_center_pos() + Vector(0, 0, 1000));
+          sc.color().draw(good, pingu->get_center_pos() + Vector3f(0, 0, 1000));
         }
       else
         {
-          sc.color().draw(bad, pingu->get_center_pos() + Vector(0, 0, 1000));
+          sc.color().draw(bad, pingu->get_center_pos() + Vector3f(0, 0, 1000));
         }
       
       // Paint the direction arrow
       if (pingu->direction.is_left())
         {
-          sc.color().draw(arrow_left, pingu->get_center_pos() + Vector(0, 0, 1000));
+          sc.color().draw(arrow_left, pingu->get_center_pos() + Vector3f(0, 0, 1000));
         }
       else
         {
-          sc.color().draw(arrow_right, pingu->get_center_pos() + Vector(0, 0, 1000));
+          sc.color().draw(arrow_right, pingu->get_center_pos() + Vector3f(0, 0, 1000));
         }
 
       sc.color().print_center(font, 
@@ -103,7 +101,7 @@ CaptureRectangle::set_pingu (Pingu* p)
       if (maintainer_mode)
         {
           action_str += " Id: ";
-          action_str += CL_String::to(pingu->get_id());
+          ////action_str += CL_String::to(pingu->get_id());
         }
     }
 }

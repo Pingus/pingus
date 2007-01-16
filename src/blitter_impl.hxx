@@ -179,7 +179,7 @@ struct transform_rot270_flip
 
 template<class TransF>
 inline
-CL_PixelBuffer modify(CL_PixelBuffer prov, const TransF&)
+PixelBuffer modify(PixelBuffer prov, const TransF&)
 {
   if (prov.get_format().get_type() ==  pixelformat_index)
     {
@@ -187,7 +187,7 @@ CL_PixelBuffer modify(CL_PixelBuffer prov, const TransF&)
                             prov.get_format().has_colorkey(), prov.get_format().get_colorkey(),
                             pixelformat_index);
       
-      CL_PixelBuffer canvas(TransF::get_width (prov.get_width(), prov.get_height()), 
+      PixelBuffer canvas(TransF::get_width (prov.get_width(), prov.get_height()), 
                             TransF::get_height(prov.get_width(), prov.get_height()),
                             TransF::get_width (prov.get_width(), prov.get_height()),
                             format, prov.get_palette());
@@ -217,7 +217,7 @@ CL_PixelBuffer modify(CL_PixelBuffer prov, const TransF&)
       int pwidth  = prov.get_width();
       int pheight = prov.get_height();
 			
-			CL_PixelBuffer canvas(prov.get_height(), pwidth, pheight*4, CL_PixelFormat::rgba8888);
+			PixelBuffer canvas(prov.get_height(), pwidth, pheight*4, CL_PixelFormat::rgba8888);
 
       prov.lock();
       canvas.lock();
@@ -225,7 +225,7 @@ CL_PixelBuffer modify(CL_PixelBuffer prov, const TransF&)
       for (int y = 0; y < pheight; ++y)
         for (int x = 0; x < pwidth; ++x)
           {
-            CL_Color color = prov.get_pixel(x, y);
+            Color color = prov.get_pixel(x, y);
             canvas.draw_pixel(TransF::get_x(pwidth, pheight, x, y),
                               TransF::get_y(pwidth, pheight, x, y),
                               color);

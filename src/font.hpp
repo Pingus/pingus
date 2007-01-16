@@ -37,7 +37,7 @@ class Font
 private:
 public:
   Font() {}
-  void draw(int, int, const std::string& text, SDL_Surface* target) {}
+  void draw(int, int, const std::string& text, SDL_Surface* target = 0) {}
   void set_alignment(Origin origin) {}
   int get_height() { return 0; }
   Rect bounding_rect(int , int, const std::string& str) const;

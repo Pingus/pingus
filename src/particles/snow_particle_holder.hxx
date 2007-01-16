@@ -21,8 +21,8 @@
 #define HEADER_PINGUS_PARTICLES_SNOW_PARTICLE_HOLDER_HXX
 
 #include <vector>
-#include <ClanLib/Display/sprite.h>
-#include "../vector.hxx"
+#include "../sprite.hpp"
+#include "../math/vector3f.hpp"
 #include "../worldobj.hxx"
 
 
@@ -39,8 +39,8 @@ private:
     bool         alive;
     bool         colliding;
     ParticleType type;
-    Vector       pos;
-    Vector       velocity;
+    Vector3f       pos;
+    Vector3f       velocity;
 
     SnowParticle(int x, int y, bool colliding_);
   };
@@ -48,12 +48,12 @@ private:
 friend struct SnowParticle;
 
 private:
-  CL_Sprite snow1;
-  CL_Sprite snow2;
-  CL_Sprite snow3;
-  CL_Sprite snow4;
-  CL_Sprite snow5;
-  CL_Sprite ground;
+  Sprite snow1;
+  Sprite snow2;
+  Sprite snow3;
+  Sprite snow4;
+  Sprite snow5;
+  Sprite ground;
 
   std::vector<SnowParticle> particles;
 

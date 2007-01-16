@@ -31,13 +31,13 @@ class LinearMover : public Mover
 {
   public:
     /** Constructor */
-    LinearMover(World* const world_arg, const Vector& pos_arg);
+    LinearMover(World* const world_arg, const Vector3f& pos_arg);
 
     /** Destructor */
     ~LinearMover();
 
     /** Updates the position of the object taking into account collisions */
-    void update(const Vector& move, const Collider& collision_at);
+    void update(const Vector3f& move, const Collider& collision_at);
 };
 
 } // namespace Movers

@@ -22,7 +22,7 @@
 
 namespace Movers {
 
-LinearMover::LinearMover(World* const world_arg, const Vector& pos_arg)
+LinearMover::LinearMover(World* const world_arg, const Vector3f& pos_arg)
   : Mover(world_arg, pos_arg)
 {
 }
@@ -31,10 +31,10 @@ LinearMover::~LinearMover()
 {
 }
 
-void LinearMover::update(const Vector& move, const Collider& collision_check)
+void LinearMover::update(const Vector3f& move, const Collider& collision_check)
 {
-  Vector target_pos = pos + move;
-  Vector step_vector = move;
+  Vector3f target_pos = pos + move;
+  Vector3f step_vector = move;
 
   // Static cast to stop warning
   int move_length = static_cast<int>(move.length());

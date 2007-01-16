@@ -21,8 +21,8 @@
 #define HEADER_PINGUS_PARTICLES_PINGU_PARTICLE_HOLDER_HXX
 
 #include <vector>
-#include <ClanLib/Display/sprite.h>
-#include "../vector.hxx"
+#include "../sprite.hpp"
+#include "../math/vector3f.hpp"
 #include "../worldobj.hxx"
 
 
@@ -36,16 +36,16 @@ class PinguParticleHolder : public WorldObj
     int  livetime;
     bool use_frame2;
     /// The current position of the particle
-    Vector pos;
+    Vector3f pos;
 
     /// The velocity of the particle
-    Vector velocity;
+    Vector3f velocity;
 
     PinguParticle (int x, int y);
   };
 
 private:
-  CL_Sprite surface;
+  Sprite surface;
   std::vector<PinguParticle> particles;
 
 public:

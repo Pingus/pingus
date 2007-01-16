@@ -20,8 +20,7 @@
 #ifndef HEADER_PINGUS_MOVER_HXX
 #define HEADER_PINGUS_MOVER_HXX
 
-#include "vector.hxx"
-
+#include "math/vector3f.hpp"
 
 class Collider;
 class World;
@@ -30,19 +29,19 @@ class Mover
 {
   public:
     /** Constructor of abstract class */
-    Mover(World* const world_arg, const Vector& pos_arg);
+    Mover(World* const world_arg, const Vector3f& pos_arg);
 
     /** Destructor of abstract class */
     virtual ~Mover() = 0;
 
     /** Updates the position of the object taking into account collisions */
-    virtual void update(const Vector& move, const Collider& collider) = 0;
+    virtual void update(const Vector3f& move, const Collider& collider) = 0;
 
     /** Get the resulting position vector */
-    Vector get_pos() const;
+    Vector3f get_pos() const;
 
     /** Get the move vector remaining after a collision */
-    Vector remaining() const;
+    Vector3f remaining() const;
 
     /** Get whether object stopped moving because it collided with something */
     bool collided() const;
@@ -52,10 +51,10 @@ class Mover
     World* const world;
 
     /** Position of the object to move */
-    Vector pos;
+    Vector3f pos;
 
     /** Move vector remaining after a collision */
-    Vector remaining_move;
+    Vector3f remaining_move;
 
     /** Flag to denote whether object has had a collision */
     bool collision;

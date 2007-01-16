@@ -164,18 +164,18 @@
 			{
 				if (file_item.is_directory)
 					gc.draw_rect(pos.x, pos.y, pos.x + sprite.get_width(), 
-						pos.y + sprite.get_height(), CL_Color(255,255,255,150));
+						pos.y + sprite.get_height(), Color(255,255,255,150));
 				else		// It's a file
 				{
 					// Determine which color to draw the background rectangle.
-					CL_Color color;
+					Color color;
 					if (file_item.is_accessible)
 						if (file_item.is_finished)
-							color = CL_Color::azure;
+							color = Color::azure;
 						else
-							color = CL_Color::aqua;
+							color = Color::aqua;
 					else
-						color = CL_Color::red;
+						color = Color::red;
 					gc.draw_fillrect(pos.x+50, pos.y, pos.x+270, pos.y+75, color);
 
 					// Draw level or worldmap information.

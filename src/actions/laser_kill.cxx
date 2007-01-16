@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../vector.hxx"
+#include "../math/vector3f.hpp"
 #include "../resource.hxx"
 #include "../display/scene_context.hxx"
 #include "../pingu.hxx"
@@ -35,7 +35,7 @@ LaserKill::LaserKill(Pingu* p)
 void
 LaserKill::draw (SceneContext& gc)
 {
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos () + Vector (0, 2));
+  gc.color().draw(sprite[pingu->direction], pingu->get_pos () + Vector3f (0, 2));
 }
 
 void

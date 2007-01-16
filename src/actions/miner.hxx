@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_ACTIONS_MINER_HXX
 #define HEADER_PINGUS_ACTIONS_MINER_HXX
 
-#include <ClanLib/display.h>
 #include "../pingu_action.hxx"
 #include "../state_sprite.hxx"
 
@@ -29,8 +28,8 @@ namespace Actions {
 class Miner : public PinguAction
 {
 private:
-  CL_PixelBuffer miner_radius;
-  CL_PixelBuffer miner_radius_gfx;
+  PixelBuffer miner_radius;
+  PixelBuffer miner_radius_gfx;
   StateSprite sprite;
   int slow_count;
 

@@ -147,4 +147,16 @@ Sprite::set_frame(int i)
   
 }
 
+int
+Sprite::get_frame_count() const
+{
+  return 1;
+}
+
+bool
+Sprite::is_finished() const
+{
+  return true;
+}
+
 /* EOF */

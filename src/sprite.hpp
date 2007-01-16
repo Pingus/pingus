@@ -45,10 +45,12 @@ public:
   int get_width();
   int get_height();
 
-  void update(float delta);
+  void update(float delta = 0.033f);
 
   void draw(float x, float y, SDL_Surface* target);
   void set_frame(int i);
+  int  get_frame_count() const;
+  bool is_finished() const;
   operator bool();
 private:
   SharedPtr<SpriteImpl> impl;

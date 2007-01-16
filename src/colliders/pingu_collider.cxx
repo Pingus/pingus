@@ -32,10 +32,10 @@ PinguCollider::~PinguCollider()
 {
 }
 
-bool PinguCollider::operator() (World* const world, Vector current_pos,
-				  const Vector& step_vector) const
+bool PinguCollider::operator() (World* const world, Vector3f current_pos,
+				  const Vector3f& step_vector) const
 {
-  Vector new_pos = current_pos + step_vector;
+  Vector3f new_pos = current_pos + step_vector;
   int pixel;
   bool falling = false;
   bool collided = false;
@@ -66,7 +66,7 @@ bool PinguCollider::operator() (World* const world, Vector current_pos,
   // If the Pingu is not falling...
   else if (!falling)
     {
-      pixel = getpixel(world, Vector(new_pos.x, new_pos.y - height));
+      pixel = getpixel(world, Vector3f(new_pos.x, new_pos.y - height));
 
       // If the top of the Pingu has hit something except a bridge...
       if (pixel != Groundtype::GP_NOTHING && pixel != Groundtype::GP_BRIDGE)

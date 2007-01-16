@@ -69,12 +69,12 @@ Faller::update ()
 
   // Apply gravity
   pingu->set_velocity(pingu->get_velocity()
-		      + Vector(0.0f, WorldObj::get_world()->get_gravity()) );
+		      + Vector3f(0.0f, WorldObj::get_world()->get_gravity()) );
 
   bool collided;
 
-  Vector velocity = pingu->get_velocity();
-  Vector move = velocity;
+  Vector3f velocity = pingu->get_velocity();
+  Vector3f move = velocity;
 
   Movers::LinearMover mover(WorldObj::get_world(), pingu->get_pos());
 

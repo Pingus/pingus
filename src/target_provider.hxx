@@ -28,7 +28,7 @@ class CL_Palette;
 class CL_Canvas;
 
 
-class TargetProvider : public CL_PixelBuffer
+class TargetProvider : public PixelBuffer
 {
 private:
   CL_Target* target;

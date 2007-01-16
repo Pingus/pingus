@@ -23,6 +23,7 @@
 #include <map>
 #include <vector>
 #include "sprite.hpp"
+#include "pixel_buffer.hpp"
 #include "res_descriptor.hxx"
 #include "resource_manager.hpp"
 
@@ -42,7 +43,7 @@ public:
   static CL_Surface load_from_source (const ResDescriptor& res_desc);
   static CL_Surface load_from_cache (const ResDescriptor& res_desc);
   static CL_Surface apply_modifier (const CL_Surface&, const ResDescriptor& res_desc);
-  static CL_PixelBuffer apply_modifier_to_pixelbuffer(CL_PixelBuffer, const ResDescriptor& res_desc);
+  static PixelBuffer apply_modifier_to_pixelbuffer(PixelBuffer, const ResDescriptor& res_desc);
 
   /** Returns a list of resources for the given section.
       Returns all if blank */
@@ -72,11 +73,12 @@ public:
 #endif
   static Sprite  load_sprite(const ResDescriptor&);
   static Sprite  load_sprite(const std::string& res_name);
+  static PixelBuffer load_pixelbuffer(const std::string& res_name);
+  static PixelBuffer load_pixelbuffer(const ResDescriptor&);
+
 #if 0
   static CL_Sprite  load_sprite(const std::string& res_name);
   static CL_SpriteDescription load_sprite_desc(const std::string& res_name);
-  static CL_PixelBuffer load_pixelbuffer(const std::string& res_name);
-  static CL_PixelBuffer load_pixelbuffer(const ResDescriptor&);
 
   /** Load a font with res_name from datafile */
   static CL_Font load_font(const std::string& res_name);

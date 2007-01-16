@@ -26,7 +26,7 @@
 
 /** This class is analog to CL_Canvas, but instead of being true
     color, it is indexed */
-class IndexedCanvas : public CL_PixelBuffer
+class IndexedCanvas : public PixelBuffer
 {
 private:
   unsigned int width;

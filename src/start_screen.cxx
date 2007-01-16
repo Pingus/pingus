@@ -135,7 +135,7 @@ StartScreenComponent::StartScreenComponent(const PingusLevel& p)
   else
     {
 #if 0
-      CL_PixelBuffer pb = Blitter::scale_surface_to_canvas(Resource::load_pixelbuffer(
+      PixelBuffer pb = Blitter::scale_surface_to_canvas(Resource::load_pixelbuffer(
                                                                                       "core/menu/startscreenbg"), Display::get_width(), Display::get_height());
       CL_SpriteDescription desc;
       desc.add_frame(pb);

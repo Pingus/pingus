@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_ACTIONS_SMASHED_HXX
 #define HEADER_PINGUS_ACTIONS_SMASHED_HXX
 
-#include <ClanLib/Display/sprite.h>
 #include "../pingu_action.hxx"
 
 namespace Actions {
@@ -31,7 +30,7 @@ class Smashed : public PinguAction
 {
 private:
   bool sound_played;
-  CL_Sprite sprite;
+  Sprite sprite;
   
 public:
   Smashed (Pingu*);

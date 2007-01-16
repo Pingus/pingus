@@ -76,7 +76,7 @@ ColMap::get_width()
 }
 
 void
-ColMap::remove(CL_PixelBuffer provider, int x, int y)
+ColMap::remove(PixelBuffer provider, int x, int y)
 {
 	++serial;
 
@@ -162,7 +162,7 @@ ColMap::blit_allowed (int x, int y,  Groundtype::GPType gtype)
 
 // Puts a surface on the colmap
 void
-ColMap::put(CL_PixelBuffer provider, int sur_x, int sur_y, Groundtype::GPType pixel)
+ColMap::put(PixelBuffer provider, int sur_x, int sur_y, Groundtype::GPType pixel)
 {
   // transparent groundpieces are only drawn on the gfx map, not on the colmap
   if (pixel == Groundtype::GP_TRANSPARENT)
@@ -186,7 +186,7 @@ ColMap::put(CL_PixelBuffer provider, int sur_x, int sur_y, Groundtype::GPType pi
       for (int y=0; y < provider.get_height(); ++y)
 	for (int x=0; x < provider.get_width(); ++x)
 	  {
-	    CL_Color color = provider.get_pixel(x, y);
+	    Color color = provider.get_pixel(x, y);
 	    if (color.get_alpha() > 0.1) // Alpha threshold
 	      {
 		if (blit_allowed (x + sur_x, y + sur_y, pixel))
@@ -242,7 +242,7 @@ ColMap::put(CL_PixelBuffer provider, int sur_x, int sur_y, Groundtype::GPType pi
 void
 ColMap::draw(DrawingContext& gc)
 {
-  CL_PixelBuffer canvas(width, height, width*4, CL_PixelFormat::rgba8888);
+  PixelBuffer canvas(width, height, width*4, CL_PixelFormat::rgba8888);
   CL_Surface sur;
   unsigned char* buffer;
 

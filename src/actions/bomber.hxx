@@ -40,7 +40,8 @@ private:
   static CL_PixelBuffer bomber_radius_gfx;
 
   StateSprite sprite;
-  CL_Sprite   explo_surf;
+
+  Sprite   explo_surf;
 
 public:
   Bomber (Pingu* p);

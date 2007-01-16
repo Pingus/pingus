@@ -21,8 +21,8 @@
 #define HEADER_PINGUS_PARTICLES_SMOKE_PARTICLE_HOLDER_HXX
 
 #include <vector>
-#include <ClanLib/Display/sprite.h>
-#include "../vector.hxx"
+#include "../sprite.hpp"
+#include "../math/vector3f.hpp"
 #include "../worldobj.hxx"
 
 
@@ -36,15 +36,15 @@ class SmokeParticleHolder : public WorldObj
     int    time;
     int    livetime;
     bool   use_surf2;
-    Vector pos;
-    Vector velocity;
+    Vector3f pos;
+    Vector3f velocity;
 
     SmokeParticle(float x, float y, float vel_x, float vel_y);
   };
 
 private:
-  CL_Sprite surf1;
-  CL_Sprite surf2;
+  Sprite surf1;
+  Sprite surf2;
 
   std::vector<SmokeParticle> particles;
 

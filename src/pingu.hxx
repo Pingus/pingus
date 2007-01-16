@@ -24,7 +24,7 @@
 #include "pingu_enums.hxx"
 
 // Forward declarations
-class Vector;
+class Vector3f;
 class ActionHolder;
 class PinguAction;
 class SceneContext;
@@ -66,7 +66,7 @@ private:
   float pos_x;
   float pos_y;
 
-  Vector* const velocity;
+  Vector3f* const velocity;
 
   bool request_set_action (PinguAction*);
   void set_action (PinguAction*);
@@ -80,7 +80,7 @@ public:
       @param arg_id The uniq id of the pingu
       @param pos The start position of the pingu
       @param owner The owner id of the pingu (used for multiplayer) */
-  Pingu (int arg_id, const Vector& pos, int owner);
+  Pingu (int arg_id, const Vector3f& pos, int owner);
 
   /** Destruct the pingu... */
   ~Pingu ();
@@ -88,11 +88,11 @@ public:
   /** Return the logical pingus position, this is the position which
       is used for collision detection to the ground (the pingus
       feet) */
-  Vector get_pos () const;
+  Vector3f get_pos () const;
 
   /** Returns the visible position of the pingu, the graphical center
       of the pingu. */
-  Vector get_center_pos () const;
+  Vector3f get_center_pos () const;
 
   /** Returns the x position of the pingu
    * For backward comp. only
@@ -130,11 +130,11 @@ public:
   void set_y (float y);
 
   /// Set the pingu to the given coordinates
-  void set_pos (const Vector& arg_pos);
+  void set_pos (const Vector3f& arg_pos);
 
-  const Vector& get_velocity () const { return *velocity; }
+  const Vector3f& get_velocity () const { return *velocity; }
 
-  void set_velocity (const Vector& velocity_);
+  void set_velocity (const Vector3f& velocity_);
 
   // Set the pingu in the gives direction
   void set_direction (Direction d);
@@ -175,7 +175,7 @@ public:
   bool need_catch ();
 
   void draw (SceneContext& gc);
-  void apply_force (Vector);
+  void apply_force (Vector3f);
 
   void update();
 

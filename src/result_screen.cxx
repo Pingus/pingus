@@ -145,7 +145,7 @@ ResultScreenComponent::ResultScreenComponent(Result arg_result)
   	background = Resource::load_sprite("core/menu/startscreenbg");
 	else
 	{
-		CL_PixelBuffer pb = Blitter::scale_surface_to_canvas(Resource::load_pixelbuffer(
+		PixelBuffer pb = Blitter::scale_surface_to_canvas(Resource::load_pixelbuffer(
 			"core/menu/startscreenbg"), CL_Display::get_width(), CL_Display::get_height());
 		CL_SpriteDescription desc;
 		desc.add_frame(pb);

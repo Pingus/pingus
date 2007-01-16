@@ -144,10 +144,13 @@ Resource::load_sprite_desc(const std::string& res_name)
     return CL_SpriteDescription("core/misc/404sprite", &resmgr);
   }
 }
+#endif
 
-CL_PixelBuffer
+PixelBuffer
 Resource::load_pixelbuffer(const ResDescriptor& desc_)
 {
+  return PixelBuffer();
+#if 0
   CL_SpriteDescription desc = load_sprite_desc(desc_.res_name);
 
   if (desc.get_frames().size() == 0)
@@ -157,14 +160,16 @@ Resource::load_pixelbuffer(const ResDescriptor& desc_)
     }
 
   return apply_modifier_to_pixelbuffer(desc.get_frames().begin()->first, desc_);
+#endif
 }
 
-CL_PixelBuffer
+PixelBuffer
 Resource::load_pixelbuffer(const std::string& res_name)
 {
-  return load_pixelbuffer(ResDescriptor(res_name));
+  return PixelBuffer();  ////load_pixelbuffer(ResDescriptor(res_name));
 }
 
+#if 0
 CL_Surface
 Resource::load_surface(const ResDescriptor& res_desc)
 {
@@ -221,8 +226,8 @@ Resource::load_from_cache (const ResDescriptor& res_desc)
     }
 }
 
-CL_PixelBuffer
-Resource::apply_modifier_to_pixelbuffer(CL_PixelBuffer prov, const ResDescriptor& res_desc)
+PixelBuffer
+Resource::apply_modifier_to_pixelbuffer(PixelBuffer prov, const ResDescriptor& res_desc)
 {
   switch (res_desc.modifier)
     {
@@ -259,7 +264,7 @@ Resource::apply_modifier_to_pixelbuffer(CL_PixelBuffer prov, const ResDescriptor
 CL_Surface
 Resource::apply_modifier (const CL_Surface& surf, const ResDescriptor& res_desc)
 {
-  CL_PixelBuffer prov = surf.get_pixeldata();
+  PixelBuffer prov = surf.get_pixeldata();
 
   switch (res_desc.modifier)
     {

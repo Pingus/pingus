@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_MULTILINE_TEXT_HXX
 
 #include "pingus.hxx"
-#include <ClanLib/Display/font.h>
+#include "font.hpp"
 #include <string>
 #include <vector>
 
@@ -29,13 +29,14 @@
 class MultiLineText
 {
 private:
-  CL_Font font;
+  Font font;
   std::vector<std::string> text;
   int width, height;
+
 public:
   MultiLineText();
 
-  void set_font(CL_Font font);
+  void set_font(Font font);
   void set_text(const std::string&, int width);
   void print_left(int, int);
   void print_right(int, int);

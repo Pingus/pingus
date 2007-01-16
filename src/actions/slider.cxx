@@ -50,11 +50,11 @@ Slider::update ()
 
           if (pingu->direction.is_right())
 					  {
-              pingu->set_velocity(pingu->get_velocity() + Vector(speed, 0.0));
+              pingu->set_velocity(pingu->get_velocity() + Vector3f(speed, 0.0));
             } 
           else
 					  {
-              pingu->set_velocity(pingu->get_velocity() + Vector(-speed, 0.0));
+              pingu->set_velocity(pingu->get_velocity() + Vector3f(-speed, 0.0));
             }
 
           pingu->set_action(Actions::Walker);
@@ -73,7 +73,7 @@ Slider::update ()
 void
 Slider::draw (SceneContext& gc)
 {
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos() + Vector(0, -2));
+  gc.color().draw(sprite[pingu->direction], pingu->get_pos() + Vector3f(0, -2));
 }
 
 } // namespace Actions

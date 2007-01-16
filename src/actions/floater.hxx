@@ -29,7 +29,8 @@ class Floater : public PinguAction
 private:
   int falling_depth;
   int step;
-  CL_Sprite sprite;
+  Sprite sprite;
+
 public:
   Floater(Pingu* p);
 

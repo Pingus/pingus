@@ -71,7 +71,7 @@ XMLFileWriter::write_float  (const char* name, float value)
 }
 
 void
-XMLFileWriter::write_color  (const char* name, const CL_Colorf& color)
+XMLFileWriter::write_color  (const char* name, const Colorf& color)
 {
   (*out) << "<" << name << ">\n"
          << "  <red>"   << color.red   << "</red>\n"

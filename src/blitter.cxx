@@ -38,14 +38,14 @@
 #include "gettext.h"
 
 void
-Blitter::put_surface(CL_PixelBuffer canvas, const CL_Surface& sur,
+Blitter::put_surface(PixelBuffer canvas, const CL_Surface& sur,
 		     int x, int y)
 {
   Blitter::put_surface(canvas, sur.get_pixeldata(), x, y);
 }
 
 void
-Blitter::put_surface(CL_PixelBuffer canvas, CL_PixelBuffer provider,
+Blitter::put_surface(PixelBuffer canvas, PixelBuffer provider,
 		     int x, int y)
 {
   switch(provider.get_format().get_depth())
@@ -63,7 +63,7 @@ Blitter::put_surface(CL_PixelBuffer canvas, CL_PixelBuffer provider,
 }
 
 void
-Blitter::put_surface_8bit(CL_PixelBuffer target, CL_PixelBuffer source,
+Blitter::put_surface_8bit(PixelBuffer target, PixelBuffer source,
                           int x_pos, int y_pos)
 {
   //std::cout << "8bit blit" << std::endl;
@@ -159,7 +159,7 @@ Blitter::put_surface_8bit(CL_PixelBuffer target, CL_PixelBuffer source,
 }
 
 void
-Blitter::put_surface_32bit(CL_PixelBuffer target, CL_PixelBuffer source,
+Blitter::put_surface_32bit(PixelBuffer target, PixelBuffer source,
 			   const int x_pos, const int y_pos)
 {
   //std::cout << "32bit blit" << std::endl;
@@ -266,7 +266,7 @@ Blitter::put_surface_32bit(CL_PixelBuffer target, CL_PixelBuffer source,
 }
 
 void
-Blitter::fill_rect(CL_PixelBuffer target, const CL_Rect& rect, const CL_Color& color)
+Blitter::fill_rect(PixelBuffer target, const CL_Rect& rect, const Color& color)
 {
   if (target.get_format().get_depth() != 32
       && target.get_format().get_depth() != 24)
@@ -406,7 +406,7 @@ Blitter::fill_rect(CL_PixelBuffer target, const CL_Rect& rect, const CL_Color& c
 }
 
 void
-Blitter::clear_canvas(CL_PixelBuffer canvas, CL_Color color)
+Blitter::clear_canvas(PixelBuffer canvas, Color color)
 {
   unsigned char* buffer;
 
@@ -416,16 +416,16 @@ Blitter::clear_canvas(CL_PixelBuffer canvas, CL_Color color)
   canvas.unlock();
 }
 
-CL_PixelBuffer
+PixelBuffer
 Blitter::create_canvas(const CL_Surface& sur)
 {
   return create_canvas(sur.get_pixeldata());
 }
 
-CL_PixelBuffer
-Blitter::create_canvas(CL_PixelBuffer prov)
+PixelBuffer
+Blitter::create_canvas(PixelBuffer prov)
 {
-  CL_PixelBuffer canvas(prov.get_width(), prov.get_height(), prov.get_width()*4, CL_PixelFormat::rgba8888);
+  PixelBuffer canvas(prov.get_width(), prov.get_height(), prov.get_width()*4, CL_PixelFormat::rgba8888);
 
   switch (prov.get_format().get_depth())
     {
@@ -483,14 +483,14 @@ Blitter::create_canvas(CL_PixelBuffer prov)
 CL_Surface
 Blitter::scale_surface (const CL_Surface& sur, int width, int height)
 {
-  CL_PixelBuffer buf = Blitter::scale_surface_to_canvas(sur, width, height);
-  return CL_Surface(CL_PixelBuffer(buf));
+  PixelBuffer buf = Blitter::scale_surface_to_canvas(sur, width, height);
+  return CL_Surface(PixelBuffer(buf));
 }
 
-CL_PixelBuffer
-Blitter::scale_surface_to_canvas (CL_PixelBuffer provider, int width, int height)
+PixelBuffer
+Blitter::scale_surface_to_canvas (PixelBuffer provider, int width, int height)
 {
-  CL_PixelBuffer canvas(width, height, width*4, CL_PixelFormat::rgba8888);
+  PixelBuffer canvas(width, height, width*4, CL_PixelFormat::rgba8888);
 
   provider.lock ();
   canvas.lock ();
@@ -503,7 +503,7 @@ Blitter::scale_surface_to_canvas (CL_PixelBuffer provider, int width, int height
 
 	if (provider.get_format().get_type() ==  pixelformat_index)
 	{
-		CL_Color color;
+		Color color;
 		pout(PINGUS_DEBUG_ACTIONS) << 
 			"Blitter::scale_surface_to_canvas() - Scaling indexed image" << std::endl;
 		  
@@ -599,7 +599,7 @@ Blitter::scale_surface_to_canvas (CL_PixelBuffer provider, int width, int height
 		for (int y = 0; y < height; ++y)
 			for (int x = 0; x < width; ++x)
 			{
-				CL_Color color = provider.get_pixel(x * pwidth / width,
+				Color color = provider.get_pixel(x * pwidth / width,
 					y * pheight / height);
 				// FIXME: ignoring the source alpha due to get_pixel
 				// brokeness... no time to test the patch
@@ -615,60 +615,60 @@ Blitter::scale_surface_to_canvas (CL_PixelBuffer provider, int width, int height
   return canvas; 
 }
 
-CL_PixelBuffer
+PixelBuffer
 Blitter::scale_surface_to_canvas(const CL_Surface& sur, int width, int height)
 {
   return Blitter::scale_surface_to_canvas(sur.get_pixeldata(), width, height);
 }
 
 /** Flip a surface horizontal */
-CL_PixelBuffer
-Blitter::flip_horizontal (CL_PixelBuffer prov)
+PixelBuffer
+Blitter::flip_horizontal (PixelBuffer prov)
 {
   return BlitterImpl::modify(prov, BlitterImpl::transform_flip());
 }
 
 /** Flip a surface vertical */
-CL_PixelBuffer
-Blitter::flip_vertical (CL_PixelBuffer sur)
+PixelBuffer
+Blitter::flip_vertical (PixelBuffer sur)
 {
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot180_flip());
 }
 
 /** Rotate a surface 90 degrees */
-CL_PixelBuffer
-Blitter::rotate_90 (CL_PixelBuffer sur)
+PixelBuffer
+Blitter::rotate_90 (PixelBuffer sur)
 {
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot90());
 }
 
 
-CL_PixelBuffer
-Blitter::rotate_180 (CL_PixelBuffer sur)
+PixelBuffer
+Blitter::rotate_180 (PixelBuffer sur)
 {
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot180());
 }
 
-CL_PixelBuffer
-Blitter::rotate_270 (CL_PixelBuffer sur)
+PixelBuffer
+Blitter::rotate_270 (PixelBuffer sur)
 {
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot270());
 }
 
-CL_PixelBuffer
-Blitter::rotate_90_flip (CL_PixelBuffer sur)
+PixelBuffer
+Blitter::rotate_90_flip (PixelBuffer sur)
 {
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot90_flip());
 }
 
-CL_PixelBuffer
-Blitter::rotate_180_flip (CL_PixelBuffer sur)
+PixelBuffer
+Blitter::rotate_180_flip (PixelBuffer sur)
 {
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot180_flip());
 }
 
-CL_PixelBuffer
-Blitter::rotate_270_flip (CL_PixelBuffer sur)
+PixelBuffer
+Blitter::rotate_270_flip (PixelBuffer sur)
 {
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot270_flip());
 }

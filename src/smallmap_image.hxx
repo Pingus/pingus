@@ -32,7 +32,7 @@ private:
   Server* server;
 
   /** The canvas that represents the small-colmap */
-  ////CL_PixelBuffer canvas;
+  ////PixelBuffer canvas;
 
   /** Graphic surface for the generated rectanglar background of the small map */
   Sprite sur;

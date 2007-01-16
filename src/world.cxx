@@ -45,7 +45,7 @@ bool WorldObj_less (WorldObj* a, WorldObj* b)
 }
 
 World::World(const PingusLevel& plf)
-  : ambient_light(CL_Color(plf.get_ambient_light())),
+  : ambient_light(Color(plf.get_ambient_light())),
     gfx_map(new GroundMap(plf)),
     game_time(new GameTime (game_speed)),
     do_armageddon(false),
@@ -114,7 +114,7 @@ World::draw (SceneContext& gc)
 {
   WorldObj::set_world(this);
 
-  gc.light().fill_screen(CL_Color(ambient_light));
+  gc.light().fill_screen(Color(ambient_light));
 
   for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
     {

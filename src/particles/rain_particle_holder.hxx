@@ -21,8 +21,8 @@
 #define HEADER_PINGUS_PARTICLES_RAIN_PARTICLE_HOLDER_HXX
 
 #include <vector>
-#include <ClanLib/Display/sprite.h>
-#include "../vector.hxx"
+#include "../sprite.hpp"
+#include "../math/vector3f.hpp"
 #include "../worldobj.hxx"
 
 
@@ -40,15 +40,15 @@ class RainParticleHolder : public WorldObj
     float splash_frame;
 
     // pos.z contains a modificator for x and y pos
-    Vector pos;
+    Vector3f pos;
 
     RainParticle(int x, int y);
   };
 
 private:
-  CL_Sprite rain1_surf;
-  CL_Sprite rain2_surf;
-  CL_Sprite rain_splash;
+  Sprite rain1_surf;
+  Sprite rain2_surf;
+  Sprite rain_splash;
 
   std::vector<RainParticle> particles;
 

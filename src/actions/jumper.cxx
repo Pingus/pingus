@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../vector.hxx"
+#include "../math/vector3f.hpp"
 #include "../display/scene_context.hxx"
 #include "../pingu.hxx"
 #include "../resource.hxx"
@@ -44,9 +44,9 @@ void
 Jumper::update ()
 {
   if (pingu->direction.is_right()) {
-    pingu->set_velocity(pingu->get_velocity() + Vector(5.0, -5.0));
+    pingu->set_velocity(pingu->get_velocity() + Vector3f(5.0, -5.0));
   } else {
-    pingu->set_velocity(pingu->get_velocity() + Vector(-5.0, -5.0));
+    pingu->set_velocity(pingu->get_velocity() + Vector3f(-5.0, -5.0));
   }
 
   // Move the pingu in the air, so that it can start 'falling'

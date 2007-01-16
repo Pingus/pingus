@@ -31,7 +31,7 @@ class Waiter : public PinguAction
 {
 private:
   float countdown;
-  CL_Sprite sprite;
+  Sprite sprite;
 
 public:
   Waiter (Pingu*);

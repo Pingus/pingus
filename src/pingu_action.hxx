@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_PINGU_ACTION_HXX
 
 #include "pingu_enums.hxx"
-
+#include "pixel_buffer.hpp"
 
 class ActionHolder;
 class SceneContext;

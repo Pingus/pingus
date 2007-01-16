@@ -29,7 +29,7 @@ class Superman : public PinguAction
 private:
   double counter;
   double x_pos;
-  CL_Sprite sprite;
+  Sprite sprite;
 
 public:
   Superman (Pingu*);

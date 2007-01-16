@@ -25,7 +25,7 @@
 namespace Particles {
 
 SmokeParticleHolder::SmokeParticle::SmokeParticle (float x, float y, float vel_x, float vel_y)
-  : pos(Vector(x,y)), velocity(Vector(vel_x, vel_y))
+  : pos(Vector3f(x,y)), velocity(Vector3f(vel_x, vel_y))
 {
   time = livetime = 25 + (rand() % 10);
   use_surf2 = rand() % 2;

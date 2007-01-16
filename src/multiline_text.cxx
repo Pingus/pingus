@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <assert.h>
-#include <ClanLib/Display/font.h>
+#include "font.hpp"
 #include "multiline_text.hxx"
 #include "math.hxx"
 
@@ -30,7 +30,7 @@ MultiLineText::MultiLineText()
 }
 
 void
-MultiLineText::set_font(CL_Font f)
+MultiLineText::set_font(Font f)
 {
   font = f;
 }
@@ -119,7 +119,7 @@ MultiLineText::print_center(int x_pos, int y_pos)
 {
   int y_inc = 0;
 
-  CL_Font myfont = font;
+  Font myfont = font;
   myfont.set_alignment(origin_top_center);
 
   for(std::vector<std::string>::iterator i = text.begin();

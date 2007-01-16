@@ -36,7 +36,7 @@ Walker::Walker (Pingu* p)
   floaterlayer.load(Direction::RIGHT, "other/floaterlayer/right");
 
   // Reset the velocity
-  pingu->set_velocity(Vector());
+  pingu->set_velocity(Vector3f());
 }
 
 void
@@ -46,7 +46,7 @@ Walker::update ()
   walker[pingu->direction].update(0.033);
   floaterlayer[pingu->direction].update(0.033);
 
-  Vector last_pos = pingu->get_pos();
+  Vector3f last_pos = pingu->get_pos();
 
   /* How should this code work?
 

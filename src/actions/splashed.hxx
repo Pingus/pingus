@@ -29,7 +29,7 @@ class Splashed : public PinguAction
 private:
   bool particle_thrown;
   bool sound_played;
-  CL_Sprite sprite;
+  Sprite sprite;
 public:
   Splashed (Pingu*);
 

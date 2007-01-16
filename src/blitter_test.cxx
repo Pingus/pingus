@@ -34,19 +34,19 @@ public:
     //CL_Surface surf = Resource::load_surface("textures/stone", "textures");
     CL_Surface surf = Resource::load_surface("textures/greentex");
 
-    CL_PixelBuffer buf(256, 256, 256*4, CL_PixelFormat::rgba8888);
-    CL_PixelBuffer data = surf.get_pixeldata();
+    PixelBuffer buf(256, 256, 256*4, CL_PixelFormat::rgba8888);
+    PixelBuffer data = surf.get_pixeldata();
     Timer bench("Blit");
     Blitter::put_surface(buf, data, 0, 0);
-    Blitter::fill_rect(buf, CL_Rect(-50, -50, 250, 250), CL_Color(255, 150, 50, 128));
-    Blitter::fill_rect(buf, CL_Rect(50, 50, 150, 150), CL_Color(255, 150, 50, 155));
+    Blitter::fill_rect(buf, CL_Rect(-50, -50, 250, 250), Color(255, 150, 50, 128));
+    Blitter::fill_rect(buf, CL_Rect(50, 50, 150, 150), Color(255, 150, 50, 155));
     bench.stop();
 
     CL_Surface surf2(buf);
 
     while(!CL_Keyboard::get_keycode(CL_KEY_ESCAPE))
       {
-        CL_Display::clear(CL_Color(155, 0, 0));
+        CL_Display::clear(Color(155, 0, 0));
         surf.draw(0, 0);
         surf2.draw(400, 0);
 

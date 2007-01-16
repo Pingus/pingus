@@ -31,8 +31,8 @@ namespace Particles {
 SnowParticleHolder::SnowParticle::SnowParticle (int x, int y, bool colliding_)
   : alive(true),
     colliding(colliding_),
-    pos(Vector(x,y)),
-    velocity(Vector(0.0f, 1 + ((float)Math::frand() * 3.5f)))
+    pos(Vector3f(x,y)),
+    velocity(Vector3f(0.0f, 1 + ((float)Math::frand() * 3.5f)))
 {
   switch (rand() % 10)
     {

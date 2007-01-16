@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_ACTIONS_BRIDGER_HXX
 #define HEADER_PINGUS_ACTIONS_BRIDGER_HXX
 
-#include "../vector.hxx"
+#include "../math/vector3f.hpp"
 #include "../pingu_action.hxx"
 #include "../state_sprite.hxx"
 

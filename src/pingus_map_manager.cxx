@@ -34,7 +34,7 @@ PingusMapManager::get_surface (const std::string& level_filename)
 void
 PingusMapManager::set_surface (const std::string& level_filename, const CL_Surface& surf)
 {
-  CL_PixelBuffer provider = surf.get_pixeldata();
+  PixelBuffer provider = surf.get_pixeldata();
 
   provider.lock ();
 

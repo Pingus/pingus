@@ -48,13 +48,13 @@
 	{
 		if (!pixelbuffer)
 		{
-			pixelbuffer = CL_PixelBuffer(tile_size, tile_size, tile_size*4, CL_PixelFormat::rgba8888);
+			pixelbuffer = PixelBuffer(tile_size, tile_size, tile_size*4, CL_PixelFormat::rgba8888);
 			Blitter::clear_canvas(pixelbuffer);
 		}
 	}
 
 	void
-	MapTile::remove(CL_PixelBuffer obj, int x, int y, 
+	MapTile::remove(PixelBuffer obj, int x, int y, 
 						 int real_x, int real_y, GroundMap* parent)
 	{
 		if (surface)
@@ -65,7 +65,7 @@
 	}
 
 	void
-	MapTile::put(CL_PixelBuffer obj, int x, int y)
+	MapTile::put(PixelBuffer obj, int x, int y)
 	{
 		prepare();
 		Blitter::put_surface(pixelbuffer, obj, x, y);
@@ -152,7 +152,7 @@
 															 static_cast<float>(y * tile_size),
 															 static_cast<float>(x * tile_size + tile_size),
 															 static_cast<float>(y * tile_size + tile_size),
-															 CL_Color(255, 0, 0, 75));
+															 Color(255, 0, 0, 75));
 					}
 				}
 		}
@@ -173,7 +173,7 @@
 	}
 
 	void
-	GroundMap::remove(CL_PixelBuffer sprovider, int x, int y)
+	GroundMap::remove(PixelBuffer sprovider, int x, int y)
 	{
 		// Get the start tile and end tile
 		int start_x = Math::max(x / tile_size, 0);
@@ -192,7 +192,7 @@
 	}
 
 	void
-	GroundMap::put_alpha_surface(CL_PixelBuffer provider, CL_PixelBuffer sprovider,
+	GroundMap::put_alpha_surface(PixelBuffer provider, PixelBuffer sprovider,
 												int x_pos, int y_pos, int real_x_arg, int real_y_arg)
 	{
 		if (sprovider.get_format().get_depth() != 8)
@@ -273,7 +273,7 @@
 	}
 
 	void
-	GroundMap::put(CL_PixelBuffer sprovider, int x, int y)
+	GroundMap::put(PixelBuffer sprovider, int x, int y)
 	{
 		// Get the start tile and end tile
 		int start_x = std::max(0, x / tile_size);

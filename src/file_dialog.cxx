@@ -161,7 +161,7 @@
 				gc.draw(sprite, pos);
 				if (hover)
 					gc.draw_rect(pos.x, pos.y, pos.x + sprite.get_width(), 
-						pos.y + sprite.get_height(), CL_Color(255,255,255,150));
+						pos.y + sprite.get_height(), Color(255,255,255,150));
 			}
 		}
 		
@@ -213,7 +213,7 @@
 			gc.draw(sprite, pos);
 			if (hover)
 				gc.draw_rect(pos.x, pos.y, pos.x + sprite.get_width(), 
-					pos.y + sprite.get_height(), CL_Color(255,255,255,150));
+					pos.y + sprite.get_height(), Color(255,255,255,150));
 		}
 		
 		void on_primary_button_click(int x, int y)
@@ -300,7 +300,7 @@
 		gc.draw(sprite, Vector(gc.get_width ()/2 - sprite.get_width ()/2,
 			gc.get_height ()/2 - sprite.get_height ()/2));
 		gc.draw_rect(gc.get_width() / 2 - 285, gc.get_height() / 2 - 160,
-			gc.get_width() / 2 + 285, gc.get_height() / 2 + 160, CL_Color::black);
+			gc.get_width() / 2 + 285, gc.get_height() / 2 + 160, Color::black);
 		gc.print_center(Fonts::chalk_large, gc.get_width()/2, gc.get_height()/2 - 220, 
 			current_file.friendly_name == "" ? current_file.name : current_file.friendly_name);
 

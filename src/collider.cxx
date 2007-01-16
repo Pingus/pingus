@@ -19,7 +19,7 @@
 
 #include "collider.hxx"
 #include "col_map.hxx"
-#include "vector.hxx"
+#include "math/vector3f.hxx"
 #include "world.hxx"
 
 Collider::Collider()
@@ -30,8 +30,8 @@ Collider::~Collider()
 {
 }
 
-bool Collider::operator() (World* const world, Vector current_pos,
-			    const Vector& step_vector) const
+bool Collider::operator() (World* const world, Vector3f current_pos,
+			    const Vector3f& step_vector) const
 {
   UNUSED_ARG(world);
   UNUSED_ARG(current_pos);
@@ -40,7 +40,7 @@ bool Collider::operator() (World* const world, Vector current_pos,
   return false;
 }
 
-int Collider::getpixel(World* const world, const Vector& pos) const
+int Collider::getpixel(World* const world, const Vector3f& pos) const
 {
   return world->get_colmap()->getpixel(static_cast<int>(pos.x),
 					static_cast<int>(pos.y));

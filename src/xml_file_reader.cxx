@@ -113,7 +113,7 @@ public:
       }
   }
 
-  bool read_color(const char* name, CL_Colorf& value) const
+  bool read_color(const char* name, Colorf& value) const
   {
     CL_DomElement node = get_node_by_name(name);
     if (node.is_element())
