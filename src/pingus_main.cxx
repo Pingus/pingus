@@ -81,7 +81,7 @@
 #include "worldmap/manager.hxx"
 //#include "worldobj_factory.hxx"
 
-// #include "editor/editor_screen.hxx"
+#include "editor/editor_screen.hxx"
 
 #if _MSC_VER >= 1400
 // Disable stupid deprecation warnings
@@ -755,7 +755,7 @@ PingusMain::start_game ()
     }
   else if (editor == true)
     {
-      //ScreenManager::instance()->push_screen (new Editor::EditorScreen());
+      ScreenManager::instance()->push_screen (new Editor::EditorScreen());
     }
   else // start a normal game
     {
