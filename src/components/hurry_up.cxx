@@ -17,13 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Core/System/system.h>
-#include <ClanLib/Display/display.h>
-#include <ClanLib/Display/font.h>
 #include "../resource.hxx"
 #include "../fonts.hxx"
+#include "gui/display.hxx"
 #include "hurry_up.hxx"
-
 
 HurryUp::HurryUp (Client* c)
   : font(Fonts::pingus_large),
@@ -71,12 +68,12 @@ HurryUp::update(float /*delta*/)
       if (center_reached)
 	{
 	  // Wait some secs
-	  if (static_cast<unsigned int>(wait_counter) < CL_System::get_time())
+	  if (static_cast<unsigned int>(wait_counter) < SDL_GetTicks())
 	    {
 	      speed *= 1.2f;
 	      x_pos += speed;
 
-	      if (x_pos > CL_Display::get_width() + 200)
+	      if (x_pos > Display::get_width() + 200)
 		is_finished = true;
 	    }
 	}
@@ -85,11 +82,11 @@ HurryUp::update(float /*delta*/)
 	  x_pos += speed;
 	  speed *= 1.2f;
 
-	  if (static_cast<int>(x_pos) > CL_Display::get_width()/2)
+	  if (static_cast<int>(x_pos) > Display::get_width()/2)
 	    {
-	      x_pos = (float)CL_Display::get_width()/2;
+	      x_pos = (float)Display::get_width()/2;
 	      center_reached = true;
-	      wait_counter = CL_System::get_time() + 2000;
+	      wait_counter = SDL_GetTicks() + 2000;
 	    }
 	}
     }

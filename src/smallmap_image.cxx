@@ -29,7 +29,7 @@
 
 SmallMapImage::SmallMapImage(Server* s, int width, int height)
   : server(s),
-    canvas(width, height, width*4, CL_PixelFormat::rgba8888),
+    ////canvas(width, height, width*4, CL_PixelFormat::rgba8888),
     update_count(0),
     colmap_serial(0)
 {
@@ -55,7 +55,7 @@ SmallMapImage::update (float delta)
     }
 }
 
-CL_Sprite
+Sprite
 SmallMapImage::get_surface ()
 {
   if (sur)
@@ -72,6 +72,7 @@ SmallMapImage::get_surface ()
 void
 SmallMapImage::update_surface()
 {
+#if 0
   unsigned char* buffer;
   unsigned char* cbuffer;
   unsigned char  current_pixel;
@@ -218,6 +219,7 @@ SmallMapImage::update_surface()
 	CL_SpriteDescription desc;
 	desc.add_frame(canvas);
   sur = CL_Sprite(desc);
+#endif
 }
 
 

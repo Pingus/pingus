@@ -17,9 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/mouse.h>
-#include <ClanLib/Display/input_event.h>
-#include <ClanLib/Display/keys.h>
 #include <iostream>
 #include <algorithm>
 #include "../globals.hxx"
@@ -29,8 +26,6 @@
 
 
 using namespace Actions;
-
-CL_Surface ButtonPanel::button_cap;
 
 struct action_sorter {
   bool operator() (const ActionName& a, const ActionName& b) {
@@ -67,9 +62,10 @@ ButtonPanel::ButtonPanel(Client* c, int arg_x_pos, int arg_y_pos)
     }
 
   pressed_button = 0;
-  wheel_slot = CL_Mouse::sig_key_down().connect(this, &ButtonPanel::on_wheel_move);
+  ////wheel_slot = CL_Mouse::sig_key_down().connect(this, &ButtonPanel::on_wheel_move);
 }
 
+#if 0
 void
 ButtonPanel::on_wheel_move(const CL_InputEvent& key)
 {
@@ -82,6 +78,7 @@ ButtonPanel::on_wheel_move(const CL_InputEvent& key)
       previous_action();
     }
 }
+#endif
 
 ButtonPanel::~ButtonPanel()
 {
@@ -96,7 +93,7 @@ ButtonPanel::update(float delta)
 {
   a_buttons[pressed_button]->update(delta);
 
-  if (last_press + 350 < CL_System::get_time())
+  if (last_press + 350 < SDL_GetTicks())
     {
       armageddon_pressed = 0;
     }

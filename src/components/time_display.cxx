@@ -19,10 +19,8 @@
 
 #include <assert.h>
 #include <stdio.h>
-#include <ClanLib/Display/display.h>
-#include <ClanLib/Display/font.h>
-#include <ClanLib/Core/System/clanstring.h>
 
+#include "../gui/display.hxx"
 #include "../globals.hxx"
 #include "../resource.hxx"
 #include "../world.hxx"
@@ -48,23 +46,23 @@ TimeDisplay::draw (DrawingContext& gc)
   std::string time_string;
 
   if (server->get_plf().get_time() == -1 && !(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
-  {
-		gc.draw(infinity_symbol, static_cast<float>(CL_Display::get_width()
-				- infinity_symbol.get_width() - 6), 2.0f, 150.0f);
-  }
+    {
+      gc.draw(infinity_symbol, static_cast<float>(Display::get_width()
+                                                  - infinity_symbol.get_width() - 6), 2.0f, 150.0f);
+    }
   else
-	{
-		if (!(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
-			time_string = GameTime::ticks_to_realtime_string(time_value);
-		else
-		{
-			time_value = server->get_world()->get_time_passed();
-			time_string = CL_String::to(time_value);
-		}
+    {
+      if (!(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
+        time_string = GameTime::ticks_to_realtime_string(time_value);
+      else
+        {
+          //// time_value = server->get_world()->get_time_passed();
+          //// time_string = CL_String::to(time_value);
+        }
 
-		gc.print_right(font, static_cast<float>(CL_Display::get_width() - 30),
-										3.0f, time_string, 150.0f);
-	}
+      gc.print_right(font, static_cast<float>(Display::get_width() - 30),
+                     3.0f, time_string, 150.0f);
+    }
 }
 
 

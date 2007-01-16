@@ -23,11 +23,10 @@
 #include "pingus.hxx"
 #include <vector>
 #include <string>
-#include <ClanLib/Display/color.h>
-
+#include "math/color.hpp"
 
 // Forward declarations
-class Vector;
+class Vector3f;
 //class ActionHolder;
 class Entrance;
 class Exit;
@@ -60,7 +59,7 @@ namespace Particles {
 class World
 {
 private:
-  CL_Color ambient_light;
+  Color ambient_light;
 
   /** groundmap for the pingus */
   GroundMap* gfx_map;
@@ -151,12 +150,12 @@ public:
       going to be ignored) void play_sound (std::string name, const
       @param volume The volume of the sound
   */
-  void play_sound (std::string name, const Vector& pos, float volume = 0.5f);
+  void play_sound (std::string name, const Vector3f& pos, float volume = 0.5f);
 
   PinguHolder* get_pingus(void);
 
   /** @return the pingu at the given word coordinates, 0 if none is there */
-  Pingu* get_pingu (const Vector& pos);
+  Pingu* get_pingu (const Vector3f& pos);
 
   /** Return a pointer to the GameTime object of this World */
   GameTime* get_game_time ();

@@ -18,8 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdio.h>
-#include <ClanLib/Display/display.h>
-#include <ClanLib/Display/font.h>
+#include "../gui/display.hxx"
 #include "../gettext.h"
 #include "../resource.hxx"
 #include "../world.hxx"
@@ -43,7 +42,7 @@ PingusCounter::draw(DrawingContext& gc)
   char str[128];
 
   if (!fast_mode)
-    gc.draw(background, Vector(gc.get_width()/2, 0));
+    gc.draw(background, Vector3f(gc.get_width()/2, 0));
 
   World* world = server->get_world();
 

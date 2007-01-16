@@ -21,9 +21,6 @@
 #define HEADER_PINGUS_SMALLMAP_IMAGE_HXX
 
 #include "pingus.hxx"
-#include <ClanLib/Display/sprite.h>
-#include "vector.hxx"
-
 
 class Server;
 
@@ -35,10 +32,10 @@ private:
   Server* server;
 
   /** The canvas that represents the small-colmap */
-  CL_PixelBuffer canvas;
+  ////CL_PixelBuffer canvas;
 
   /** Graphic surface for the generated rectanglar background of the small map */
-  CL_Sprite sur;
+  Sprite sur;
 
   /** number of seconds till the smallmap will update itself */
   float update_count;
@@ -50,7 +47,7 @@ public:
   SmallMapImage (Server* s, int width, int height);
   void update (float delta);
 
-  CL_Sprite get_surface();
+  Sprite get_surface();
   
   /** Regenerate the smallmap surface */
   void update_surface();

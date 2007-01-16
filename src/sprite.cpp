@@ -141,4 +141,10 @@ Sprite:: update(float delta)
 {
 }
 
+void
+Sprite::set_frame(int i)
+{
+  
+}
+
 /* EOF */

@@ -20,13 +20,7 @@
 #ifndef HEADER_PINGUS_CLIENT_HXX
 #define HEADER_PINGUS_CLIENT_HXX
 
-#include <ClanLib/Signals/slot.h>
-#include <ClanLib/Display/sprite.h>
-#include <ClanLib/Display/input_device.h>
 #include "gui/gui_screen.hxx"
-
-class CL_InputEvent;
-
 
 namespace Input {
 class Controller;
@@ -92,9 +86,6 @@ public:
 
   void on_primary_button_press(int x, int y);
   void on_primary_button_release(int x, int y);
-
-  void on_butmouse_button_press(const CL_InputEvent &key);
-  void on_mouse_button_release(const CL_InputEvent &key);
 
   // Overloaded GUIScreen stuff
   void on_startup ();

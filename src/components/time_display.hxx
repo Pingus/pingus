@@ -20,13 +20,9 @@
 #ifndef HEADER_PINGUS_TIME_DISPLAY_HXX
 #define HEADER_PINGUS_TIME_DISPLAY_HXX
 
-#include <ClanLib/Display/sprite.h>
-#include <ClanLib/Display/font.h>
 #include "../gui/component.hxx"
 
-class CL_Font;
-
-
+class Font;
 class Server;
 class Client;
 class DrawingContext;
@@ -35,8 +31,8 @@ class TimeDisplay : public GUI::Component
 {
 private:
   Server*   server;
-  CL_Font   font;
-  CL_Sprite infinity_symbol;
+  Font   font;
+  Sprite infinity_symbol;
 
 public:
   TimeDisplay(Client* c);

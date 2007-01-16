@@ -235,10 +235,8 @@ StartScreen::on_escape_press()
 void
 StartScreen::start_game()
 {
-#if 0
   PingusGameSession* game_session = new PingusGameSession(plf, true);
   ScreenManager::instance()->replace_screen(game_session, true);
-#endif 
 }
 
 void

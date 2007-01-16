@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Core/System/system.h>
+#include "SDL.h"
 #include "debug.hxx"
 #include "globals.hxx"
 #include "timer.hxx"
@@ -25,14 +25,14 @@
 
 Timer::Timer(const char* desc)
   : description(desc),
-    start_time (CL_System::get_time())
+    start_time(SDL_GetTicks())
 {
 }
 
 void
 Timer::stop()
 {
-  unsigned int time = CL_System::get_time() - start_time;
+  unsigned int time = SDL_GetTicks() - start_time;
   pout(PINGUS_DEBUG_LOADING)
     << "Timer: '" << description << "' took "
     << time << "msec" << std::endl;

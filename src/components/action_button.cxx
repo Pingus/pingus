@@ -17,8 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/display.h>
-#include <ClanLib/Core/System/clanstring.h>
 #include "../globals.hxx"
 #include "../cheat.hxx"
 #include "../resource.hxx"
@@ -28,6 +26,7 @@
 #include "../display/drawing_context.hxx"
 #include "../gui/display.hxx"
 #include "../fonts.hxx"
+#include "../math/vector3f.hpp"
 
 
 using namespace Actions;
@@ -49,7 +48,7 @@ ActionButton::init(int x, int y, ActionName name_, int owner_id)
   font_b = Fonts::pingus_large;
 
   sprite = Resource::load_sprite("pingus/player0/" + action_to_string(name) + "/right");
-  sprite.set_play_loop(true);
+  ////sprite.set_play_loop(true);
 }
 
 bool
@@ -103,7 +102,7 @@ VerticalActionButton::draw (DrawingContext& gc)
       if (fast_mode) 
         {
           gc.draw_fillrect((float)x_pos, (float)y_pos, (float)x_pos + 60, (float)y_pos + 35,
-                           CL_Color(255, 255, 255));
+                           Color(255, 255, 255));
         } 
       else 
         {
@@ -123,21 +122,22 @@ VerticalActionButton::draw (DrawingContext& gc)
       }
     }
 
-  gc.draw(sprite, Vector((float)x_pos + 20, (float)y_pos + 32));
+  gc.draw(sprite, Vector3f((float)x_pos + 20, (float)y_pos + 32));
 
-  CL_Font myfont  = font;
-  CL_Font myfontb = font_b;
+  Font myfont  = font;
+  Font myfontb = font_b;
 
   // print the action name next to the button, when mouse pointer is on
   // the button.
   // FIXME: this should use the GUI events, not CL_Mouse
+#if 0
   if (action_help
       && CL_Mouse::get_x() > x_pos      && CL_Mouse::get_x() < x_pos + 60
       && CL_Mouse::get_y() < y_pos + 35 && CL_Mouse::get_y() > y_pos)
     {
       gc.print_left(myfontb, (float)x_pos + 65, (float)y_pos, action_to_screenname(name));
     }
-
+#endif
 
   if (Cheat::unlimited_actions)
     {
@@ -146,8 +146,10 @@ VerticalActionButton::draw (DrawingContext& gc)
     }
   else
     {
+#if 0
       std::string str = CL_String::to(action_holder->get_available(name));
       gc.print_center(myfont, (float)x_pos + 46, (float)y_pos + 5, str);
+#endif
     }
 }
 
@@ -169,16 +171,16 @@ ArmageddonButton::draw (DrawingContext& gc)
 {
   if (server->get_world()->check_armageddon ())
     {
-      gc.draw(backgroundhl, Vector((float)x_pos, (float)y_pos));
-      gc.draw(sprite, Vector((float)x_pos, (float)y_pos));
+      gc.draw(backgroundhl, Vector3f((float)x_pos, (float)y_pos));
+      gc.draw(sprite, Vector3f((float)x_pos, (float)y_pos));
     }
   else
     {
       if (!fast_mode)
-        gc.draw(background, Vector((float)x_pos, (float)y_pos));
+        gc.draw(background, Vector3f((float)x_pos, (float)y_pos));
 
       sprite.set_frame(7);
-      gc.draw(sprite, Vector((float)x_pos, (float)y_pos));
+      gc.draw(sprite, Vector3f((float)x_pos, (float)y_pos));
     }
 }
 
@@ -247,15 +249,15 @@ ForwardButton::draw (DrawingContext& gc)
 {
   if (server->get_fast_forward())
     {
-      gc.draw(backgroundhl, Vector((float)x_pos, (float)y_pos));
+      gc.draw(backgroundhl, Vector3f((float)x_pos, (float)y_pos));
     }
   else
     {
       if (!fast_mode)
-        gc.draw(background, Vector((float)x_pos, (float)y_pos));
+        gc.draw(background, Vector3f((float)x_pos, (float)y_pos));
     }
 
-  gc.draw(surface, Vector((float)x_pos, (float)y_pos));
+  gc.draw(surface, Vector3f((float)x_pos, (float)y_pos));
 }
 
 bool
@@ -295,15 +297,15 @@ PauseButton::draw (DrawingContext& gc)
 {
   if (server->get_pause())
     {
-      gc.draw(backgroundhl, Vector((float)x_pos, (float)y_pos));
+      gc.draw(backgroundhl, Vector3f((float)x_pos, (float)y_pos));
     }
   else
     {
     if (!fast_mode)
-      gc.draw(background, Vector((float)x_pos, (float)y_pos));
+      gc.draw(background, Vector3f((float)x_pos, (float)y_pos));
     }
 
-  gc.draw(surface, Vector((float)x_pos, (float)y_pos));
+  gc.draw(surface, Vector3f((float)x_pos, (float)y_pos));
 }
 
 bool

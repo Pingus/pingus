@@ -39,8 +39,7 @@ using namespace Actions;
 
 // Init a pingu at the given position while falling
 Pingu::Pingu (int arg_id, const Vector& arg_pos, int owner)
-  : light(Resource::load_sprite("other/light")),
-    action(0),
+  : action(0),
     countdown_action (0),
     wall_action(0),
     fall_action(0),
@@ -53,7 +52,6 @@ Pingu::Pingu (int arg_id, const Vector& arg_pos, int owner)
     pos_y(arg_pos.y),
     velocity(new Vector(0, 0, 0))
 {
-  light.set_blend_func(blend_src_alpha, blend_one);
   direction.left ();
 
   // Initialisize the action, after this step the action ptr will
@@ -357,8 +355,6 @@ Pingu::draw(SceneContext& gc)
 
       gc.color().print_center(Fonts::lcd, pos_x, pos_y - 45 + 2, str);
     }
-
-  gc.light().draw(light, get_center_pos());
 }
 
 int

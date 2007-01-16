@@ -26,7 +26,7 @@
 
 
 class PingusLevel;
-class Vector;
+class Vector3f;
 class Pingu;
 
 typedef std::list<Pingu*>::iterator PinguIter;
@@ -94,7 +94,7 @@ public:
       will take care of the deletion. The caller *must* not delete the
       Pingu. Might return 0 if all available pingus are already
       released */
-  Pingu* create_pingu(const Vector& pos, int owner_id);
+  Pingu* create_pingu(const Vector3f& pos, int owner_id);
 
   /** Get a pingu by id, references to dead or exited Pingus are not
       returned, but 0 instead

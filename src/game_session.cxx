@@ -160,7 +160,7 @@ PingusGameSession::update (const GameDelta& delta)
   if (left_over_time < 0)
     {
       // FIXME: This doesn't really belong here
-      CL_System::sleep(-left_over_time);
+      SDL_Delay(-left_over_time);
     }
 
   // Client is independend of the update limit, well, not completly...

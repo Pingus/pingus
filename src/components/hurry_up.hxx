@@ -22,8 +22,7 @@
 
 #include "../gui/component.hxx"
 
-class CL_Font;
-
+#include "../font.hpp"
 
 class DrawingContext;
 class Client;
@@ -32,7 +31,7 @@ class Client;
 class HurryUp : public GUI::Component
 {
 private:
-  CL_Font font;
+  Font font;
   bool is_running;
   bool is_finished;
   bool center_reached;

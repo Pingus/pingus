@@ -20,9 +20,8 @@
 #ifndef HEADER_PINGUS_ACTION_BUTTON_HXX
 #define HEADER_PINGUS_ACTION_BUTTON_HXX
 
-#include <ClanLib/Display/sprite.h>
-#include <ClanLib/Display/font.h>
 #include <string>
+#include "../font.hpp"
 #include "../pingu_enums.hxx"
 #include "../state_sprite.hxx"
 #include "../gui/component.hxx"
@@ -46,9 +45,9 @@ private:
   int   y_pos;
   bool  pressed;
   float press_time;
-  CL_Sprite sprite;
-  CL_Sprite background;
-  CL_Sprite backgroundhl;
+  Sprite sprite;
+  Sprite background;
+  Sprite backgroundhl;
 
   friend class ButtonPanel;
 public:
@@ -77,9 +76,9 @@ private:
   TrueServer* server;
   int x_pos;
   int y_pos;
-  CL_Sprite surface;
-  CL_Sprite background;
-  CL_Sprite backgroundhl;
+  Sprite surface;
+  Sprite background;
+  Sprite backgroundhl;
   friend class ButtonPanel;
 public:
   ForwardButton(TrueServer*, int x, int y);
@@ -106,9 +105,9 @@ private:
   TrueServer* server;
   int x_pos;
   int y_pos;
-  CL_Sprite surface;
-  CL_Sprite background;
-  CL_Sprite backgroundhl;
+  Sprite surface;
+  Sprite background;
+  Sprite backgroundhl;
   friend class ButtonPanel;
 public:
   PauseButton(TrueServer*, int x, int y);
@@ -130,12 +129,12 @@ private:
 class ActionButton : public GUI::Component
 {
 protected:
-  CL_Sprite sprite;
+  Sprite sprite;
   int x_pos;
   int y_pos;
-  CL_Font    font;
+  Font    font;
   // Added for printing action names next to the button.
-  CL_Font    font_b;
+  Font    font_b;
 
   Actions::ActionName name;
   bool is_multi_direct;
@@ -175,8 +174,8 @@ private:
 class VerticalActionButton : public ActionButton
 {
 private:
-  CL_Sprite background;
-  CL_Sprite backgroundhl;
+  Sprite background;
+  Sprite backgroundhl;
 
 public:
   VerticalActionButton(ActionHolder* h, int x, int y, Actions::ActionName name, int owner_id);

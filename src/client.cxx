@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Display/display.h>
 #include "globals.hxx"
 #include "components/playfield.hxx"
 #include "timer.hxx"
@@ -50,9 +49,9 @@ Client::Client (TrueServer * s)
   Timer timer("Client UI generation");
 
   // These object will get deleted by the gui_manager
-  button_panel = new ButtonPanel(this, 2, CL_Display::get_height()/2);
-  playfield    = new Playfield(this, CL_Rect(CL_Point(0, 0), CL_Size(CL_Display::get_width(), 
-                                                                     CL_Display::get_height())));
+  button_panel = new ButtonPanel(this, 2, Display::get_height()/2);
+  playfield    = new Playfield(this, Rect(Vector2i(0, 0), Size(Display::get_width(), 
+                                                               Display::get_height())));
   hurry_up     = new HurryUp(this);
   pcounter     = new PingusCounter(get_server());
   small_map    = new SmallMap(this);
@@ -65,9 +64,9 @@ Client::Client (TrueServer * s)
   gui_manager->add(small_map,    true);
   gui_manager->add(time_display, true);
 
-  gui_manager->add(new ArmageddonButton(server, CL_Display::get_width() - 40,     CL_Display::get_height() - 62), true);
-  gui_manager->add(new ForwardButton   (server, CL_Display::get_width() - 40 * 2, CL_Display::get_height() - 62), true);
-  gui_manager->add(new PauseButton     (server, CL_Display::get_width() - 40 * 3, CL_Display::get_height() - 62), true);
+  gui_manager->add(new ArmageddonButton(server, Display::get_width() - 40,     Display::get_height() - 62), true);
+  gui_manager->add(new ForwardButton   (server, Display::get_width() - 40 * 2, Display::get_height() - 62), true);
+  gui_manager->add(new PauseButton     (server, Display::get_width() - 40 * 3, Display::get_height() - 62), true);
   // Connect the button_panel with the playfield
   playfield->set_server(server);
 
@@ -235,7 +234,7 @@ Client::on_startup ()
 
   if (verbose)
     std::cout << "Client: Entering main_loop. Startup time: "
-	      << CL_System::get_time() << " msec." << std::endl;
+	      << SDL_GetTicks() << " msec." << std::endl;
 }
 
 void

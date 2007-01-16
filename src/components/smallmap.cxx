@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/display.h>
 #include "../pingu_holder.hxx"
 #include "../gui/display.hxx"
 #include "../display/drawing_context.hxx"
@@ -28,7 +27,7 @@
 #include "../smallmap_image.hxx"
 #include "../pingu.hxx"
 #include "../math.hxx"
-#include "../vector.hxx"
+#include "../math/vector3f.hpp"
 #include "../globals.hxx"
 #include "playfield.hxx"
 #include "smallmap.hxx"
@@ -64,9 +63,9 @@ SmallMap::SmallMap(Client* c)
     }
   
   x_pos   = 5;
-  y_pos   = CL_Display::get_height() - height - 5;
-  rwidth  = CL_Display::get_width() * width / client->get_server()->get_world()->get_colmap()->get_width();
-  rheight = CL_Display::get_height() * height / client->get_server()->get_world()->get_colmap()->get_height();
+  y_pos   = Display::get_height() - height - 5;
+  rwidth  = Display::get_width() * width / client->get_server()->get_world()->get_colmap()->get_width();
+  rheight = Display::get_height() * height / client->get_server()->get_world()->get_colmap()->get_height();
 
   image = new SmallMapImage(c->get_server(), width, height);
 
@@ -87,9 +86,9 @@ SmallMap::draw (DrawingContext& gc)
 
   Playfield* playfield = client->get_playfield();
 
-  gc.draw(image->get_surface(), Vector((float)x_pos, (float)y_pos));
-
-  CL_Point of = playfield->get_pos();
+  gc.draw(image->get_surface(), Vector3f((float)x_pos, (float)y_pos));
+  
+  Vector2i of = playfield->get_pos();
     
   of.x = x_pos + of.x * width  / client->get_server()->get_world()->get_colmap()->get_width();
   of.y = y_pos + of.y * height / client->get_server()->get_world()->get_colmap()->get_height();
@@ -99,7 +98,7 @@ SmallMap::draw (DrawingContext& gc)
 
   gc.draw_rect(float(of.x - w/2), float(of.y - h/2),
                float(of.x + w/2), float(of.y + h/2),
-               CL_Color(0, 255, 0));
+               Color(0, 255, 0));
 
   client->get_server()->get_world()->draw_smallmap(this);
 
@@ -111,7 +110,7 @@ SmallMap::draw (DrawingContext& gc)
       int x = static_cast<int>(x_pos + ((*i)->get_x() * width  / world->get_colmap()->get_width()));
       int y = static_cast<int>(y_pos + ((*i)->get_y() * height / world->get_colmap()->get_height()));
 
-      gc.draw_line((float)x, (float)y, (float)x, (float)y-2, CL_Color(255, 255, 0));
+      gc.draw_line((float)x, (float)y, (float)x, (float)y-2, Color(255, 255, 0));
     }
 
   gc_ptr = 0;
@@ -124,13 +123,13 @@ SmallMap::update (float delta)
 }
 
 void
-SmallMap::draw_sprite(CL_Sprite sprite, Vector pos)
+SmallMap::draw_sprite(Sprite sprite, Vector3f pos)
 {
   World* world = client->get_server()->get_world();
   float x = x_pos + (pos.x * width  / world->get_colmap()->get_width());
   float y = y_pos + (pos.y * height / world->get_colmap()->get_height());
 
-  gc_ptr->draw(sprite, Vector(x, y));
+  gc_ptr->draw(sprite, Vector3f(x, y));
 }
 
 bool

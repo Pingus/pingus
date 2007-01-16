@@ -20,16 +20,15 @@
 #ifndef HEADER_PINGUS_CAPTURE_RECTANGLE_HXX
 #define HEADER_PINGUS_CAPTURE_RECTANGLE_HXX
 
-#include <ClanLib/Display/font.h>
-
-class CL_Font;
-
-
+class Font;
 class Pingu;
 class PinguAction;
 class Pingu;
 class ButtonPanel;
 class DrawingContext;
+
+#include "font.hpp"
+#include "sprite.hpp"
 
 /** The rectangle that is shown when the mouse cursor is above a
     pingu. The rectangle shows the current pingu direction along with
@@ -44,13 +43,13 @@ private:
   /// The id of the owner of this capture rectangle
   int owner_id;
 
-  CL_Sprite good;
-  CL_Sprite bad;
-  CL_Sprite arrow_left;
-  CL_Sprite arrow_right;
+  Sprite good;
+  Sprite bad;
+  Sprite arrow_left;
+  Sprite arrow_right;
 
   ButtonPanel* button_panel;
-  CL_Font font;
+  Font font;
 
 public:
   CaptureRectangle(ButtonPanel*);

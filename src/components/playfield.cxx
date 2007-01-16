@@ -19,7 +19,6 @@
 
 #include <stdio.h>
 #include <iostream>
-#include <ClanLib/Display/display.h>
 #include "../globals.hxx"
 #include "../pingu_holder.hxx"
 #include "../display/drawing_context.hxx"
@@ -33,7 +32,7 @@
 #include "playfield.hxx"
 
 
-Playfield::Playfield (Client* client_, const CL_Rect& rect_)
+Playfield::Playfield (Client* client_, const Rect& rect_)
   : rect(rect_),
     client(client_),
     buttons(client->get_button_panel()),
@@ -47,29 +46,29 @@ Playfield::Playfield (Client* client_, const CL_Rect& rect_)
   world              = client->get_server()->get_world();
   mouse_scrolling    = false;
 
-  state.set_limit(CL_Rect(CL_Point(0, 0), CL_Size(world->get_width(), world->get_height())));
+  state.set_limit(Rect(Vector2i(0, 0), Size(world->get_width(), world->get_height())));
 }
 
 Playfield::~Playfield()
 {
-	delete scene_context;
+  delete scene_context;
 }
 
 void
 Playfield::draw (DrawingContext& gc)
 {
   scene_context->clear();
-  scene_context->light().fill_screen(CL_Color(50, 50, 50));
+  scene_context->light().fill_screen(Color(50, 50, 50));
  
   state.push(*scene_context);
 
   cap.set_pingu(current_pingu);
   cap.draw(*scene_context);
   
-	// Blank out the entire window in case the screen resolution is larger
-	// than the current level.
-	gc.draw_fillrect(0, 0, (float)CL_Display::get_width(), (float)CL_Display::get_height(),
-		CL_Color::black, -15000);
+  // Blank out the entire window in case the screen resolution is larger
+  // than the current level.
+  gc.draw_fillrect(0, 0, (float)Display::get_width(), (float)Display::get_height(),
+                   Color(0,0,0), -15000);
   world->draw(*scene_context);
  
   // Draw the scrolling band
@@ -77,31 +76,31 @@ Playfield::draw (DrawingContext& gc)
     {
       gc.draw_line((float)mouse_pos.x, (float)mouse_pos.y,
                    (float)scroll_center.x, (float)scroll_center.y-15,
-                   CL_Color(0, 255, 0));
+                   Color(0, 255, 0));
 
       gc.draw_line((float)mouse_pos.x, (float)mouse_pos.y,
                    (float)scroll_center.x, (float)scroll_center.y,
-                   CL_Color(255, 0, 0));
+                   Color(255, 0, 0));
 
       gc.draw_line((float)mouse_pos.x, (float)mouse_pos.y,
                    (float)scroll_center.x, (float)scroll_center.y+15,
-                   CL_Color(0, 0, 255));
+                   Color(0, 0, 255));
 
       gc.draw_line((float)mouse_pos.x, (float)mouse_pos.y,
                    (float)scroll_center.x + 15, (float)scroll_center.y,
-                   CL_Color(0, 255, 255));
+                   Color(0, 255, 255));
 
       gc.draw_line((float)mouse_pos.x, (float)mouse_pos.y,
                    (float)scroll_center.x - 15, (float)scroll_center.y,
-                   CL_Color(255, 255, 0));
+                   Color(255, 255, 0));
     }
 
   state.pop(*scene_context);
-  gc.draw(new SceneContextDrawingRequest(scene_context, CL_Vector(0,0,-10000)));
+  gc.draw(new SceneContextDrawingRequest(scene_context, Vector3f(0,0,-10000)));
 }
 
 Pingu*
-Playfield::current_pingu_find (const CL_Pointf& pos)
+Playfield::current_pingu_find (const Vector2f& pos)
 {
   double min_dist = 500.0;
   double dist;
@@ -128,6 +127,7 @@ Playfield::current_pingu_find (const CL_Pointf& pos)
 void
 Playfield::update(float delta)
 {
+#if 0
   // FIXME: This should be delta dependant
   if (!mouse_scrolling)
     {
@@ -142,8 +142,8 @@ Playfield::update(float delta)
         }
       else
         { 
-          state.set_pos(CL_Pointf(state.get_pos().x - float(scroll_center.x - mouse_pos.x) * 0.2f,
-                                  state.get_pos().y - float(scroll_center.y - mouse_pos.y) * 0.2f));
+          state.set_pos(Vector2f(state.get_pos().x - float(scroll_center.x - mouse_pos.x) * 0.2f,
+                                 state.get_pos().y - float(scroll_center.y - mouse_pos.y) * 0.2f));
         }
     }
 
@@ -155,22 +155,23 @@ Playfield::update(float delta)
     
       if (mouse_pos.x < 10)
 	{
-	  state.set_pos(state.get_pos() - CL_Point(scroll_speed, 0));
+	  state.set_pos(state.get_pos() - Vector2i(scroll_speed, 0));
 	}
-      else if (mouse_pos.x > CL_Display::get_width() - 10)
+      else if (mouse_pos.x > Display::get_width() - 10)
 	{
-	  state.set_pos(state.get_pos() + CL_Point(scroll_speed, 0));
+	  state.set_pos(state.get_pos() + Vector2i(scroll_speed, 0));
 	}
 
       if (mouse_pos.y < 10)
 	{
-	  state.set_pos(state.get_pos() - CL_Point(0, scroll_speed));
+	  state.set_pos(state.get_pos() - Vector2i(0, scroll_speed));
 	}
-      else if (mouse_pos.y > CL_Display::get_height() - 10)
+      else if (mouse_pos.y > Display::get_height() - 10)
 	{
-	  state.set_pos(state.get_pos() + CL_Point(0, scroll_speed));	 
+	  state.set_pos(state.get_pos() + Vector2i(0, scroll_speed));	 
 	}
     }
+#endif
 }
 
 void
@@ -218,31 +219,32 @@ Playfield::set_server(Server* s)
   server = s;
 }
 
-CL_Point
+Vector2i
 Playfield::get_pos() const
 {
-  return CL_Point(state.get_pos());
+  return Vector2i(static_cast<int>(state.get_pos().x), 
+                  static_cast<int>(state.get_pos().y));
 }
 
 void
 Playfield::set_viewpoint(int x, int y)
 {
-  state.set_pos(CL_Point(x, y));
+  state.set_pos(Vector2f(x, y));
 }
 
 void
 Playfield::generate_clipping_rects(int x1, int y1, int x2, int y2)
 {
-  clipping_rectangles.push_back(CL_Rect(0, 0, CL_Display::get_width() - 1, y1));
-  clipping_rectangles.push_back(CL_Rect(0, y1, x1, y2+1));
-  clipping_rectangles.push_back(CL_Rect(x2+1, y1, CL_Display::get_width() - 1, y2+1));
-  clipping_rectangles.push_back(CL_Rect(0, y2+1, CL_Display::get_width() - 1, CL_Display::get_height() - 1));
+  clipping_rectangles.push_back(Rect(0, 0, Display::get_width() - 1, y1));
+  clipping_rectangles.push_back(Rect(0, y1, x1, y2+1));
+  clipping_rectangles.push_back(Rect(x2+1, y1, Display::get_width() - 1, y2+1));
+  clipping_rectangles.push_back(Rect(0, y2+1, Display::get_width() - 1, Display::get_height() - 1));
 }
 
 void
 Playfield::scroll (int x, int y)
 {
-  state.set_pos(state.get_pos() + CL_Point(x, y));
+  state.set_pos(state.get_pos() + Vector2f(x, y));
 }
 
 

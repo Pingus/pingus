@@ -20,15 +20,12 @@
 #ifndef HEADER_PINGUS_SMALLMAP_HXX
 #define HEADER_PINGUS_SMALLMAP_HXX
 
-#include <ClanLib/Display/sprite.h>
-#include <ClanLib/Display/pixel_buffer.h>
 #include "../gui/component.hxx"
 
 class CL_Key;
 
-
 class Client;
-class Vector;
+class Vector3f;
 class SmallMapImage;
 
 /** This is the map that appears in the corner of the screen */
@@ -38,10 +35,10 @@ private:
   Client* client;
 
   /** Graphic surface of the exit */
-  CL_Sprite exit_sur;
+  Sprite exit_sur;
 
   /** Graphic surface of the entrance */
-  CL_Sprite entrance_sur;
+  Sprite entrance_sur;
 
   SmallMapImage* image;
 
@@ -98,7 +95,7 @@ public:
       @param sprite the Sprite to draw, it will keep its original size
       @param pos the position to draw it in World COs, it will get
       recalculated to screen CO */
-  void draw_sprite(CL_Sprite sprite, Vector pos);
+  void draw_sprite(Sprite sprite, Vector3f pos);
 
 private:
   SmallMap (const SmallMap&);

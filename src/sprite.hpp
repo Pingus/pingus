@@ -48,7 +48,7 @@ public:
   void update(float delta);
 
   void draw(float x, float y, SDL_Surface* target);
-
+  void set_frame(int i);
   operator bool();
 private:
   SharedPtr<SpriteImpl> impl;

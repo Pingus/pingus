@@ -20,12 +20,10 @@
 #ifndef HEADER_PINGUS_PLAYFIELD_HXX
 #define HEADER_PINGUS_PLAYFIELD_HXX
 
-#include <ClanLib/Core/Math/rect.h>
 #include "../client.hxx"
 #include "../graphic_context_state.hxx"
 #include "../gui/component.hxx"
 #include "../capture_rectangle.hxx"
-
 
 class Pingu;
 class World;
@@ -40,9 +38,9 @@ class Playfield : public GUI::Component
 private:
   friend class Client;
 
-  CL_Rect rect;
+  Rect rect;
 
-  CL_Surface buffer;
+  ////CL_Surface buffer;
   Server* server;
   Client* client;
 
@@ -54,23 +52,23 @@ private:
   bool mouse_scrolling;
   int scroll_speed;
 
-  CL_Point scroll_center;
+  Vector2i scroll_center;
 
   SceneContext* scene_context;
   GraphicContextState state;
   CaptureRectangle cap;
 
-  std::vector<CL_Rect> clipping_rectangles;
+  std::vector<Rect> clipping_rectangles;
   
-  CL_Point  mouse_pos;
-  CL_Pointf old_state_pos;
+  Vector2i mouse_pos;
+  Vector2f old_state_pos;
 public:
-  Playfield (Client*, const CL_Rect& rect);
+  Playfield (Client*, const Rect& rect);
   virtual ~Playfield();
 
   /** Returns the point onto which the Playfield is currently focused
       (ie. center of the Playfield) in WorldCO */
-  CL_Point get_pos() const;
+  Vector2i get_pos() const;
 
   void scroll (int x, int y);
 
@@ -78,7 +76,7 @@ public:
 
   void draw(DrawingContext& gc);
   void update(float delta);
-  Pingu* current_pingu_find(const CL_Pointf& pos);
+  Pingu* current_pingu_find(const Vector2f& pos);
 
   void on_primary_button_press (int x, int y);
   void on_secondary_button_press (int x, int y);

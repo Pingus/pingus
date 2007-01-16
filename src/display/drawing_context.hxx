@@ -69,18 +69,15 @@ public:
   void draw(const Sprite& sprite, const Vector3f& pos);
   void draw(const Sprite& sprite, float x, float y, float z = 0);
   
-#if 0
-
   /** Fills the screen with a given color, this is different from
       clear() in that it doesn't remove other DrawingRequest from the
       queue */
-  void fill_screen(const CL_Color& color);
+  void fill_screen(const Color& color);
 
   void draw(const std::string& text,    float x, float y, float z = 0);
 
-  void draw(const CL_Surface&  surface, const Vector& pos);
+  ////void draw(const CL_Surface&  surface, const Vector& pos);
 
-#endif
   void draw_line (float x1, float y1, float x2, float y2, 
 		  const Color& color, float z = 0);
   void draw_fillrect (float x1, float y1, float x2, float y2, 

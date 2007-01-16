@@ -255,6 +255,7 @@ DrawingContext::draw(const CL_Surface&  surface, const Vector& pos)
                                                     pos.z))); 
 }
 #endif 
+
 void
 DrawingContext::draw(const Sprite& sprite, const Vector3f& pos)
 {
@@ -298,27 +299,28 @@ DrawingContext::draw_fillrect (float x1, float y1, float x2, float y2,
 #endif
 }
 
-#if 0
 void
 DrawingContext::draw_rect (float x1, float y1, float x2, float y2, 
-                           const CL_Color& color, float z)
+                           const Color& color, float z)
 {
+#if 0
   draw(new RectDrawingRequest(CL_Rectf(x1 + translate_stack.back().x, y1 + translate_stack.back().y, 
                                        x2 + translate_stack.back().x, y2 + translate_stack.back().y),
                               color,
                               false,
                               z));
+#endif
 }
 
 void
 DrawingContext::draw_pixel (float x_pos, float y_pos, 
-                            const CL_Color& color)
+                            const Color& color)
 {
 }
 
 void
 DrawingContext::draw_circle (float x_pos, float y_pos, float radius,
-                             const CL_Color& color)
+                             const Color& color)
 {
 }
 
@@ -326,16 +328,15 @@ DrawingContext::draw_circle (float x_pos, float y_pos, float radius,
       counterclockwise direction. Angles are taken in radian */
 void
 DrawingContext::draw_arc (float x_pos, float y_pos, float radius, float angle_start, float angle_end,
-                          const CL_Color& color)
+                          const Color& color)
 {
 }
 
 void
-DrawingContext::fill_screen(const CL_Color& color)
+DrawingContext::fill_screen(const Color& color)
 {
-  draw(new FillScreenDrawingRequest(color));
+  ////  draw(new FillScreenDrawingRequest(color));
 }
-#endif
 
 void
 DrawingContext::rotate(float angel)

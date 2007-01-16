@@ -20,10 +20,8 @@
 #ifndef HEADER_PINGUS_PINGU_HXX
 #define HEADER_PINGUS_PINGU_HXX
 
-#include <ClanLib/Display/sprite.h>
 #include "direction.hxx"
 #include "pingu_enums.hxx"
-
 
 // Forward declarations
 class Vector;
@@ -37,8 +35,6 @@ class SceneContext;
 class Pingu
 {
 private:
-  CL_Sprite light;
-
   /** The primary action with is currently in use */
   PinguAction* action;
 

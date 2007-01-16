@@ -19,7 +19,6 @@
 
 #include <assert.h>
 #include <iostream>
-#include <ClanLib/Core/System/clanstring.h>
 #include "pingus_error.hxx"
 #include "server.hxx"
 #include "world.hxx"
@@ -58,6 +57,7 @@ ServerEvent::ServerEvent(FileReader reader)
 void
 ServerEvent::write_xml(std::ostream& xml) const
 {
+#if 0
   switch(type)
     {
     case ARMAGEDDON_EVENT:
@@ -70,6 +70,7 @@ ServerEvent::write_xml(std::ostream& xml) const
     default:
       assert(!"Unknown type");
     }
+#endif
 }
 
 ServerEvent
