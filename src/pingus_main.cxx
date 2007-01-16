@@ -64,14 +64,14 @@
 #include "story_screen.hxx"
 
 #include "start_screen.hxx"
-// #include "savegame_manager.hxx"
-// #include "stat_manager.hxx"
+#include "savegame_manager.hxx"
+#include "stat_manager.hxx"
 // #include "demo_session.hxx"
 #include "debug.hxx"
 //#include "fonts.hxx"
 #include "pingus_menu_manager.hxx"
 #include "resource.hxx"
-// #include "pingu_action_factory.hxx"
+#include "pingu_action_factory.hxx"
 #include "credits.hxx"
 #include "sound/sound.hxx"
 #include "worldmap/manager.hxx"
@@ -79,7 +79,7 @@
 // #include "blitter_test.hxx"
 // #include "preview_renderer.hxx"
 #include "worldmap/manager.hxx"
-//#include "worldobj_factory.hxx"
+#include "worldobj_factory.hxx"
 
 #include "editor/editor_screen.hxx"
 
@@ -948,16 +948,16 @@ PingusMain::deinit_clanlib()
 void
 PingusMain::init_pingus()
 {
-////   SavegameManager::instance();
-////   StatManager::init();
+  SavegameManager::instance();
+  StatManager::init();
   Resource::init();
   Fonts::init();
-////   ScreenManager::init();
-////   PingusMenuManager::init();
+  ScreenManager::init();
+  PingusMenuManager::init();
   Sound::PingusSound::init();
-////   PinguActionFactory::init();
-////   Credits::init();
-////   WorldMapNS::WorldMapManager::instance();
+  PinguActionFactory::init();
+  Credits::init();
+  WorldMapNS::WorldMapManager::instance();
 
 ////  fps_counter.init();
   console.init();
@@ -970,15 +970,15 @@ PingusMain::deinit_pingus()
   console.deinit();
 
   Fonts::deinit();
-////  Credits::deinit();
-////  PinguActionFactory::deinit();
+  Credits::deinit();
+  PinguActionFactory::deinit();
   Sound::PingusSound::deinit();
-////  PingusMenuManager::deinit();
-////  WorldObjFactory::deinit();
-////  WorldMapNS::WorldMapManager::deinit();
-////  ScreenManager::deinit();
-////  StatManager::deinit();
-////  SavegameManager::deinit();
+  PingusMenuManager::deinit();
+  WorldObjFactory::deinit();
+  WorldMapNS::WorldMapManager::deinit();
+  ScreenManager::deinit();
+  StatManager::deinit();
+  SavegameManager::deinit();
   Resource::deinit();
 }
 
