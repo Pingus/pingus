@@ -55,6 +55,8 @@ World::World(const PingusLevel& plf)
 {
   WorldObj::set_world(this);
 
+  std::cout << "create particle holder" << std::endl;
+
   // These get deleted via the world_obj vector in the destructor
   pingu_particle_holder = new Particles::PinguParticleHolder();
   rain_particle_holder  = new Particles::RainParticleHolder();

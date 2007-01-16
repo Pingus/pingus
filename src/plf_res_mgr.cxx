@@ -31,16 +31,15 @@ PingusLevel
 PLFResMgr::load_plf_raw(const std::string& res_name,
                         const std::string& filename)
 {
-  //std::cout << "PLFResMgr: " << res_name << "\n   " << filename << std::endl;
+  std::cout << "PLFResMgr: '" << res_name << "'  -> '" << filename << "'" << std::endl;
 
   PLFMap::iterator i = plf_map.find(res_name);
 
   if (i == plf_map.end())
     { // Entry not cached, so load it and add it to cache
       pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: Loading level from DISK: '" << res_name << "' -> '" << filename << "'" << std::endl;
-#if 0
-      PingusLevel plf = XMLPingusLevel(res_name, filename);
-#endif
+
+      //PingusLevel plf = XMLPingusLevel(res_name, filename);
 
       PLFEntry entry;
       ////entry.plf   = plf;
@@ -60,13 +59,11 @@ PLFResMgr::load_plf_raw(const std::string& res_name,
         {
           pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: level changed on DISK, reloading: '" << res_name << "' -> '" << filename << "'" << std::endl;
 
-#if 0
           // Reload the file since it has changed on disk
-          PingusLevel plf = XMLPingusLevel(res_name, filename);
-#endif
+          PingusLevel plf(res_name, filename);
           PLFEntry entry;
 
-          ////entry.plf   = plf;
+          entry.plf   = plf;
           entry.mtime = System::get_mtime(filename);
 
           plf_map[res_name]  = entry;

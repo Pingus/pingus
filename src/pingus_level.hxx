@@ -37,6 +37,9 @@ class PingusLevel
 public:
   PingusLevel();
 
+  PingusLevel(const std::string& resname,
+              const std::string& filename);
+
   /** Returns the name of the current level, {\em not} the level file name. */
   const std::string& get_levelname() const;
 

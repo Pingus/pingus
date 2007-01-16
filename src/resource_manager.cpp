@@ -91,7 +91,7 @@ ResourceManager::parse(const std::string& section, FileReader& reader)
       std::string link;
       reader.read_string("name", name);
       reader.read_string("link", link);
-      std::cout << "alias: " << name << " -> " << link << std::endl;
+      //std::cout << "alias: " << name << " -> " << link << std::endl;
     }
   else if (reader.get_name() == "name")
     {
