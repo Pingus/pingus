@@ -66,7 +66,6 @@ private:
 };	// XMLLevel class
 
 }		// Editor namespace
-}		// Pingus namespace
 
 #endif
 

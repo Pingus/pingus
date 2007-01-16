@@ -17,18 +17,18 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/display.h>
 #include "../display/drawing_context.hxx"
 #include "../gui/gui_manager.hxx"
 #include "../gui/surface_button.hxx"
 #include "../gui/input_box.hxx"
 #include "../sound/sound.hxx"
 #include "../resource.hxx"
-#include "../vector.hxx"
+#include "../math/vector3f.hpp"
 #include "../fonts.hxx"
 #include "../gettext.h"
 #include "level_head.hxx"
 #include "level_impl.hxx"
+#include "../gui/display.hxx"
 #include "panel_buttons.hxx"
 #include "editor_panel.hxx"
 #include "editor_screen.hxx"
@@ -44,8 +44,8 @@ namespace Editor {
 
     public:
       LevelHeadCloseButton(LevelHead* h)
-      : GUI::SurfaceButton(CL_Display::get_width() -100,
-                           CL_Display::get_height() -100,
+      : GUI::SurfaceButton(Display::get_width() -100,
+                           Display::get_height() -100,
                            ResDescriptor("core/menu/exit_button_normal"),
                            ResDescriptor("core/menu/exit_button_pressed"),
                            ResDescriptor("core/menu/exit_button_hover")),
@@ -56,8 +56,8 @@ namespace Editor {
 
       void draw (DrawingContext& gc) {
         SurfaceButton::draw(gc);
-        gc.print_right(Fonts::chalk_large, (float)CL_Display::get_width() - 150,
-                       (float)CL_Display::get_height() - 100, label);
+        gc.print_right(Fonts::chalk_large, (float)Display::get_width() - 150,
+                       (float)Display::get_height() - 100, label);
       }
 
       void on_click()
@@ -76,14 +76,14 @@ LevelHead::LevelHead(EditorPanel* p, PanelButtonHead* pbh) :
   head_button(pbh),  
 	impl(p->get_screen()->get_level()->get_level_impl()),
   gui_manager(p->get_screen()->get_gui_manager()), 
-	pos(Vector(50, 75))
+	pos(Vector3f(50, 75))
 {
   gui_manager->add((GUI::Component*)this); 
    
   // Create GUI items
-  name = new GUI::InputBox(400, Vector(pos.x + 175, pos.y + 10),
+  name = new GUI::InputBox(400, Vector3f(pos.x + 175, pos.y + 10),
                            impl->levelname, false, "Level Name");
-  desc = new GUI::InputBox(500, Vector(pos.x + 175, pos.y + 60),
+  desc = new GUI::InputBox(500, Vector3f(pos.x + 175, pos.y + 60),
                            impl->description, false, "Level Description");             
   
   // Add GUI Items to the GUIManager 
@@ -108,18 +108,18 @@ void
 LevelHead::draw(DrawingContext& gc)
 {
   // Draw the background for window 
-  gc.draw_fillrect(pos.x, pos.y, (float)CL_Display::get_width() - 50, 
-                   (float)CL_Display::get_height()-50, CL_Color(100,150,50,150));
+  gc.draw_fillrect(pos.x, pos.y, (float)Display::get_width() - 50, 
+                   (float)Display::get_height()-50, Color(100,150,50,150));
   // Draw the window border
-  gc.draw_rect(pos.x, pos.y, (float)CL_Display::get_width() - 50,
-               (float)CL_Display::get_height()-50, CL_Color::white);
+  gc.draw_rect(pos.x, pos.y, (float)Display::get_width() - 50,
+               (float)Display::get_height()-50, Color(255,255,255));
 }
 
 bool
 LevelHead::is_at(int x, int y)
 {
-  return (x > pos.x && y > pos.y && x < CL_Display::get_width()-50 && 
-      y < CL_Display::get_height()-50);
+  return (x > pos.x && y > pos.y && x < Display::get_width()-50 && 
+      y < Display::get_height()-50);
 }
 
 void
@@ -133,6 +133,5 @@ LevelHead::update(float delta)
   
           
 }	// Editor
-}	// Pingus
 
 /* EOF */

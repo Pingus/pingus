@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_TRAPS_SPIKE_HXX
 #define HEADER_PINGUS_TRAPS_SPIKE_HXX
 
-#include "../game_counter.hxx"
 #include "../worldobj.hxx"
 
 

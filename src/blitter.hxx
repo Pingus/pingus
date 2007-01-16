@@ -21,12 +21,13 @@
 #define HEADER_PINGUS_BLITTER_HXX
 
 #include "pingus.hxx"
+#include "math/color.hpp"
+#include "math/rect.hpp"
 ////#include <ClanLib/Display/color.h>
 
-class CL_Surface;
+////class CL_Surface;
 class PixelBuffer;
 
-#if 0
 /** A bunch of blitting and creation functions to operate on
     PixelBuffer.  Some of them a similar to the ones in ClanLib, but
     this are slower and work. */
@@ -41,8 +42,8 @@ private:
 			       int x, int y);
 public:
   /** Puts a given surface to a given canvas at position x, y. */
-  static void put_surface(PixelBuffer target, const CL_Surface& source,
-			  int x, int y);
+  ////static void put_surface(PixelBuffer target, const CL_Surface& source,
+  ////			  int x, int y);
 
   /** Puts a given surface provider to a given canvas at position x, y. */
   static void put_surface(PixelBuffer target, PixelBuffer source,
@@ -50,7 +51,7 @@ public:
 
   /** Returns a newly allocated canvas. The canvas contains the same
       image as the given surface. */
-  static PixelBuffer create_canvas(const CL_Surface&);
+  ////static PixelBuffer create_canvas(const CL_Surface&);
 
   /** Returns a newly allocated canvas. The canvas contains the same
       image as the given surface provider */
@@ -59,7 +60,7 @@ public:
   /** Sets all pixels of a canvas to zero */
   static void clear_canvas(PixelBuffer, Color color = Color(0, 0, 0, 0));
 
-  static void fill_rect(PixelBuffer target, const CL_Rect& rect, const Color& color);
+  static void fill_rect(PixelBuffer target, const Rect& rect, const Color& color);
 
   /** Creates a new surface (based on a canvas) with the given width
       and height and stretches the source surface onto it
@@ -68,7 +69,7 @@ public:
       @param width The new width of the surface.
       @param height The new height of the surface.
       @return A newly created surface, the caller is responsible to delete it. */
-  static CL_Surface scale_surface (const CL_Surface& sur, int width, int height);
+  ////static CL_Surface scale_surface (const CL_Surface& sur, int width, int height);
 
   /** Flip a surface horizontal */
   static PixelBuffer flip_horizontal (PixelBuffer sur);
@@ -97,7 +98,7 @@ public:
       @param width The new width of the surface.
       @param height The new height of the surface.
       @return A newly created surface, the caller is responsible to delete it. */
-  static PixelBuffer scale_surface_to_canvas (const CL_Surface& sur, int width, int height);
+  ////static PixelBuffer scale_surface_to_canvas (const CL_Surface& sur, int width, int height);
 
   static PixelBuffer scale_surface_to_canvas (PixelBuffer sur, int width, int height);
 
@@ -105,7 +106,6 @@ private:
   Blitter (const Blitter&);
   Blitter& operator= (const Blitter&);
 };
-#endif
 
 #endif
 

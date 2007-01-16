@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/font.h>
 #include <vector>
 #include <string>
 #include "combobox.hxx"
@@ -27,7 +26,7 @@
 namespace GUI {
 
 // Constructor
-Combobox::Combobox (Vector p, ComboboxListener* listener_, std::string l) :
+Combobox::Combobox (Vector3f p, ComboboxListener* listener_, std::string l) :
 	current_item(0),
 	drop_down(false),
 	hover(false),
@@ -145,18 +144,18 @@ Combobox::draw(DrawingContext &gc)
 
 	// Draw the rectangle
 	gc.draw_fillrect(pos.x, pos.y, pos.x + get_width(), pos.y + get_height(),
-		CL_Color::white);
+                         Color(255,255,255));
 
 	// Next, draw the rectangle border
 	gc.draw_rect(pos.x, pos.y, pos.x + get_width(), pos.y + get_height(),
-		CL_Color::black);
+                     Color(0,0,0));
 
 	if (drop_down && item_list.size() > 0)
 	{
 		// Draw the highlighted box
 		int y_offset = int(int(((mouse_pos.y - pos.y - height)/height)+1) * height);
 		gc.draw_fillrect(pos.x, pos.y + y_offset, pos.x + get_width(), pos.y + y_offset + 
-			height, CL_Color::gray);
+                                 height, Color(128,128,128));
 		
 		// Draw all of the items
 		for (unsigned i = 0; i < item_list.size(); i++)
@@ -174,6 +173,5 @@ Combobox::draw(DrawingContext &gc)
 }
 
 }	// GUI namespace
-} // Pingus namespace
 
 /* EOF */

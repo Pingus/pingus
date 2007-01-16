@@ -20,8 +20,10 @@
 #ifndef HEADER_PINGUS_EDITOR_LEVEL_OBJS_HXX
 #define HEADER_PINGUS_EDITOR_LEVEL_OBJS_HXX
 
-#include <ClanLib/Display/sprite.h>
-#include "../vector.hxx"
+#include "../sprite.hpp"
+#include "../math/color.hpp"
+#include "../math/origin.hpp"
+#include "../math/vector3f.hpp"
 #include "../res_descriptor.hxx"
 #include <string>
 
@@ -77,8 +79,8 @@ namespace Editor {
 {
 protected:
 	/** Sprite used to draw this object */
-	CL_Sprite sprite;
-
+	Sprite sprite;
+  
 	/** Level to which this object belongs */
 	LevelImpl* level;
 
@@ -86,14 +88,14 @@ protected:
 	ResDescriptor desc;
 
 	/** Location of this object in the World */
-	Vector pos;
+	Vector3f pos;
 
-	/** Only used for display functions - this is the pos Vector adjusted
+	/** Only used for display functions - this is the pos Vector3f adjusted
 	by the translation origin of the sprite */
-	Vector translated_pos;
+	Vector3f translated_pos;
 
 	/** Location of this object before moving it around */
-	Vector orig_pos;
+	Vector3f orig_pos;
 
 	/** Name of the section header for this object (hotspot, groundpiece, etc.) */
 	std::string section_name;
@@ -141,10 +143,10 @@ protected:
 	float para_y;
 
 	/** Optional color field for certain objects */
-	CL_Colorf color;
+	Color color;
 	
 	/** Optional translation origin of the sprite */
-	CL_Origin origin;
+	Origin origin;
 
 	/** Number representing which attributes this object possesses */
 	unsigned attribs;
@@ -170,8 +172,8 @@ protected:
 /// Retrieve info
 public:
 	/** Retrieve the object's position */
-	Vector get_pos() const { return pos; }
-	Vector get_orig_pos() const { return orig_pos; }
+	Vector3f get_pos() const { return pos; }
+	Vector3f get_orig_pos() const { return orig_pos; }
 
 	/** Retrieve this object's attribute number */
 	unsigned get_attribs() const { return attribs; }
@@ -201,7 +203,7 @@ public:
 	int get_width() const { return width; }
 
 	/** Retrieve the object's color */
-	CL_Colorf get_color() const { return color; }
+	Color get_color() const { return color; }
 
 	/** Returns true if the object is stretched in the x direction */
 	bool get_stretch_x() const { return stretch_x; }
@@ -234,10 +236,10 @@ public:
 /// Operations
 public:
 	/** Set the object's position */
-	void set_pos(const Vector p);
+	void set_pos(const Vector3f p);
 	
 	/** Original position of the objects before being dragged around */
-	void set_orig_pos(const Vector p) { orig_pos = p; }
+	void set_orig_pos(const Vector3f p) { orig_pos = p; }
 
 	/** Set the object's resource name */
 	void set_res_desc(const ResDescriptor d);
@@ -282,9 +284,8 @@ public:
 	void set_aspect(const bool a);
 
 	/** Set the objects color if applicable */
-	void set_color(const CL_Colorf c) 
-	{ color.alpha = c.alpha; color.blue = c.blue;  
-		color.green = c.green; color.red = c.red; }
+	void set_color(const Color& c)
+ 	{ color = c; }
 
 	/** Set the object's parallax scroll multiplier in the x direction */
 	void set_para_x(const float p) { para_x = p; }
@@ -330,7 +331,6 @@ private:
 };	// LevelObj class
 
 }		// Editor namespace
-}		// Pingus namespace
 
 #endif
 

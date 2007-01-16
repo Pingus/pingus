@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <vector>
-#include <ClanLib/Display/sprite.h>
 #include "../gui/combobox.hxx"
 #include "../gui/gui_manager.hxx"
 #include "../display/scene_context.hxx"
@@ -49,7 +48,7 @@ PanelButton::PanelButton(EditorPanel* p) :
 
 // Draw the button
 void
-PanelButton::draw(Pingus::DrawingContext &gc)
+PanelButton::draw(DrawingContext &gc)
 {
 	if (is_selected)
 		gc.draw(button_pressed, pos);
@@ -67,7 +66,7 @@ PanelButton::draw(Pingus::DrawingContext &gc)
 
 // Set the position of this panelbutton
 void
-PanelButton::set_pos(Vector p)
+PanelButton::set_pos(Vector3f p)
 {
 	pos = p;
 }
@@ -149,6 +148,7 @@ PanelButtonGroundpiece::PanelButtonGroundpiece(EditorPanel *p) :
 void
 PanelButtonGroundpiece::on_primary_button_click(int x, int y)
 {
+#if 0
 	PanelButton::on_primary_button_click(x, y);
 
 	panel->get_combobox(1)->clear();
@@ -165,12 +165,14 @@ PanelButtonGroundpiece::on_primary_button_click(int x, int y)
 			groundpieces[i]));
 	}
 	panel->get_combobox(1)->set_enabled(true);
+#endif
 }
 
 // Populate the other comboboxes with the available resources.
 void
 PanelButtonGroundpiece::combobox_changed(int i, const std::string &value)
 {
+#if 0
 	std::string section;
 	if (i == 1)
 	{
@@ -207,11 +209,12 @@ PanelButtonGroundpiece::combobox_changed(int i, const std::string &value)
 		// 3rd box was selected - add the resource to the current level.
 		LevelObj* obj = new LevelObj("groundpiece", panel->get_screen()->get_level()->get_level_impl());
 		obj->set_res_desc(ResDescriptor(value));
-		obj->set_pos(Vector(0, 0, 0));
+		obj->set_pos(Vector3f(0, 0, 0));
 		// 1st combobox displayed the "type" of resource (solid, transparent, etc.)
 		obj->set_type(panel->get_combobox(1)->get_selected_item()->get_displayed_string());
 		panel->get_screen()->add_object(obj);
 	}
+#endif
 }
 
 PanelButtonHead::PanelButtonHead(EditorPanel *p)
@@ -246,4 +249,3 @@ PanelButtonHead::remove_head()
  
  
 } // Editor namespace
-} // Pingus namespace

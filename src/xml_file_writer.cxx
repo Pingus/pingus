@@ -71,13 +71,13 @@ XMLFileWriter::write_float  (const char* name, float value)
 }
 
 void
-XMLFileWriter::write_color  (const char* name, const Colorf& color)
+XMLFileWriter::write_color  (const char* name, const Color& color)
 {
   (*out) << "<" << name << ">\n"
-         << "  <red>"   << color.red   << "</red>\n"
-         << "  <green>" << color.green << "</green>\n"
-         << "  <blue>"  << color.blue  << "</blue>\n"
-         << "  <alpha>" << color.alpha << "</alpha>\n"
+         << "  <red>"   << int(color.r * 255)   << "</red>\n"
+         << "  <green>" << int(color.g * 255) << "</green>\n"
+         << "  <blue>"  << int(color.b * 255) << "</blue>\n"
+         << "  <alpha>" << int(color.a * 255) << "</alpha>\n"
          << "</" << name << ">"
          << std::endl;
 }
@@ -117,7 +117,7 @@ XMLFileWriter::write_string (const char* name, const std::string& value)
 }
 
 void
-XMLFileWriter::write_vector (const char* name, const Vector& value)
+XMLFileWriter::write_vector (const char* name, const Vector3f& value)
 {
   (*out) << "<" << name << ">\n"
          << "  <x>" << value.x << "</x>\n"

@@ -32,7 +32,6 @@ public:
 };	// CheckboxListener class
 
 }	// GUI namespace
-}	// Pingus namespace
 
 #endif
 

@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/display.h>
 #include "../pingus_error.hxx"
 #include "../blitter.hxx"
 #include "../screenshot.hxx"
@@ -50,12 +49,12 @@ BufferGraphicContext::clear (float r, float g, float b)
 }
 
 void 
-BufferGraphicContext::draw(CL_Sprite, const Pingus::Vector&)
+BufferGraphicContext::draw(CL_Sprite, const Vector3f&)
 {
 }
 
 void
-BufferGraphicContext::draw(CL_Sprite, const Pingus::Vector&, int)
+BufferGraphicContext::draw(CL_Sprite, const Vector3f&, int)
 {
 }
 

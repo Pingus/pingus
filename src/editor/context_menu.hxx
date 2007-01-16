@@ -21,9 +21,9 @@
 #define HEADER_PINGUS_EDITOR_CONTEXT_MENU_HXX
 
 #include <vector>
-#include "../vector.hxx"
+#include <string>
+#include "../math/vector3f.hpp"
 #include "../gui/component.hxx"
-
 
 namespace Editor {
 
@@ -66,10 +66,10 @@ namespace Editor {
 		std::vector<ContextItem> actions;
 
 		/** Where the mouse is located */
-		Vector mouse_at;
+		Vector3f mouse_at;
 
 		/** Location of context menu */
-		Vector pos;
+		Vector3f pos;
 
 		/** Is the mouse over the menu? */
 		bool hover;
@@ -91,7 +91,7 @@ namespace Editor {
 
 	public:
 		// Constructor
-		ContextMenu (std::vector<LevelObj*>, Vector p, EditorViewport* v, bool base_menu = true);
+		ContextMenu (std::vector<LevelObj*>, Vector3f p, EditorViewport* v, bool base_menu = true);
 		
 		// Desctructor
 		~ContextMenu ();
@@ -121,7 +121,6 @@ namespace Editor {
 	};	// ContextMenu class
 
 }	// Editor namespace
-} // Pingus namespace
 
 #endif
 

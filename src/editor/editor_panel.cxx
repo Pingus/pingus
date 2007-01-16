@@ -17,10 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/color.h>
 #include <vector>
 #include "../resource.hxx"
-#include "../vector.hxx"
+#include "../gui/display.hxx"
+#include "../math/vector3f.hpp"
 #include "../display/drawing_context.hxx"
 #include "../gui/gui_manager.hxx"
 #include "../gui/checkbox.hxx"
@@ -65,13 +65,13 @@ EditorPanel::init()
 	add((PanelButton*)(new PanelButtonGroundpiece(this)));
   add((PanelButton*)(new PanelButtonHead(this)));
 	// Create Checkboxes
-	snap_to_checkbox = new GUI::Checkbox(Vector(370, 5), "Snap To Grid: ", this);
+	snap_to_checkbox = new GUI::Checkbox(Vector3f(370, 5), "Snap To Grid: ", this);
 	get_screen()->get_gui_manager()->add(snap_to_checkbox);
 	
 	// Create Comboboxes
-	combobox_3 = new GUI::Combobox(Vector(500, 36), this);
-	combobox_2 = new GUI::Combobox(Vector(500, 18), this);
-	combobox_1 = new GUI::Combobox(Vector(500,  0), this);
+	combobox_3 = new GUI::Combobox(Vector3f(500, 36), this);
+	combobox_2 = new GUI::Combobox(Vector3f(500, 18), this);
+	combobox_1 = new GUI::Combobox(Vector3f(500,  0), this);
 	get_screen()->get_gui_manager()->add(combobox_3);
 	get_screen()->get_gui_manager()->add(combobox_2);
 	get_screen()->get_gui_manager()->add(combobox_1);
@@ -85,8 +85,8 @@ void
 EditorPanel::draw (DrawingContext& gc)
 {
 	// Draw the panel
-	gc.draw_fillrect(0, 0, (float)CL_Display::get_width(), 
-		50.0f, CL_Color::lightgray, -50);
+	gc.draw_fillrect(0, 0, (float)Display::get_width(), 
+                         50.0f, Color(80,80,80), -50);
 }
 
 // Add the button to the vector, set it's position, and add to the gui_manager
@@ -94,13 +94,13 @@ void
 EditorPanel::add(PanelButton* button)
 {
 	// Determind where to place this buttons
-	Vector new_pos;
+	Vector3f new_pos;
 
 	if (panel_buttons.empty())
-		new_pos = Vector(0.0f, 0.0f, 0.0f);
+		new_pos = Vector3f(0.0f, 0.0f, 0.0f);
 	else
-		new_pos = Vector(panel_buttons.back()->get_pos() + 
-			Vector((float)(5 + panel_buttons.back()->get_width()), 0.0f));
+		new_pos = Vector3f(panel_buttons.back()->get_pos() + 
+			Vector3f((float)(5 + panel_buttons.back()->get_width()), 0.0f));
 	// Add button to collection of buttons
 	panel_buttons.push_back(button);
 	
@@ -171,4 +171,3 @@ EditorPanel::combobox_changed(GUI::Combobox* box)
 }
 
 } // Editor namespace
-} // Pingus namespace

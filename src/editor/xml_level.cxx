@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/color.h>
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -53,7 +52,7 @@ XMLLevel::~XMLLevel()
  - At least 1 entrance
  - At least 1 exit
  - At least 1 surface-background
- - Each object should be within valid ranges (pos Vector should be inside the world)
+ - Each object should be within valid ranges (pos Vector3f should be inside the world)
  -----------
  Head section:
  - Everything should be filled in and within valid ranges
@@ -70,6 +69,7 @@ bool XMLLevel::is_valid()
 // Save the level to a file.  Returns true if successful
 bool XMLLevel::save_level(const std::string& filename)
 {
+#if 0
 	// Make sure level is valid
 	if (!is_valid())
 		return false;
@@ -119,12 +119,14 @@ bool XMLLevel::save_level(const std::string& filename)
 	
 	// Clean up
 	out_file.close();
+#endif
 	return true;
 }
 
 // Load an existing level from a file
 void XMLLevel::load_level(const std::string& filename)
 {
+#if 0
 	if (impl)
 		delete impl;
 	impl = new LevelImpl();
@@ -147,8 +149,8 @@ void XMLLevel::load_level(const std::string& filename)
 	
 	// Temporary objects
 	unsigned attribs;
-	Vector p;
-	CL_Colorf tmp_color;
+	Vector3f p;
+	Colorf tmp_color;
 	ResDescriptor desc;
 	std::string tmp_str;
 	int tmp_int;
@@ -243,6 +245,7 @@ void XMLLevel::load_level(const std::string& filename)
 
 	// Sort by Z coordinate
 	impl->sort_objs();
+#endif
 }
 
 void
@@ -252,4 +255,3 @@ XMLLevel::add_object(LevelObj* obj)
 }
 
 }	// Editor namespace
-}	// Pingus namespace

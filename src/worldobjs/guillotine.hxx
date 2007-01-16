@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_GUILLOTINE_HXX
 #define HEADER_PINGUS_WORLDOBJS_GUILLOTINE_HXX
 
-#include "../game_counter.hxx"
 #include "../direction.hxx"
 #include "../worldobj.hxx"
 

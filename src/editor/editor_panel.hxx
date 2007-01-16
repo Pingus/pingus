@@ -100,7 +100,6 @@ private:
 
 };	// EditorPanel
 }		// Editor namespace
-}		// Pingus namespace
 
 #endif
 

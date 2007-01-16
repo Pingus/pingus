@@ -46,9 +46,9 @@ public:
   void write_int    (const char* name, int);
   void write_float  (const char* name, float);
   void write_bool   (const char* name, bool);
-  void write_color  (const char* name, const Colorf&);
+  void write_color  (const char* name, const Color&);
   void write_string (const char* name, const std::string&);
-  void write_vector (const char* name, const Vector&);
+  void write_vector (const char* name, const Vector3f&);
 
   template<class E, class F>
   void write_enum (const char* name, E value, F enum2string)

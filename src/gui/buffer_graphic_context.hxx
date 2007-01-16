@@ -22,9 +22,6 @@
 
 #include <string>
 #include "../vector.hxx"
-#include <ClanLib/Core/Math/rect.h>
-#include <ClanLib/Display/pixel_buffer.h>
-#include <ClanLib/Display/font.h>
 #include "graphic_context.hxx"
 
 class CL_Surface;
@@ -65,8 +62,8 @@ public:
 
   void clear (float r, float g, float b);
 
-  void draw(CL_Sprite, const Pingus::Vector&);
-  void draw(CL_Sprite, const Pingus::Vector&, int);
+  void draw(CL_Sprite, const Vector3f&);
+  void draw(CL_Sprite, const Vector3f&, int);
 
   void draw (CL_Surface sur, int x_pos, int y_pos);
   void draw (CL_Surface sur, int x_pos, int y_pos, int frame);

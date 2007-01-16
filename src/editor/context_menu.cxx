@@ -17,8 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/sprite.h>
-#include <ClanLib/Core/System/clanstring.h>
 #include "context_menu.hxx"
 #include "level_objs.hxx"
 #include "editor_viewport.hxx"
@@ -26,11 +24,10 @@
 #include "../gui/gui_manager.hxx"
 #include "../fonts.hxx"
 
-
 namespace Editor {
 
 	// Determine which actions are available for these objects
-	ContextMenu::ContextMenu(std::vector<LevelObj*> o, Vector p, EditorViewport* vp, bool base_menu)
+	ContextMenu::ContextMenu(std::vector<LevelObj*> o, Vector3f p, EditorViewport* vp, bool base_menu)
 		: objs(o), 
 			viewport(vp),
 			pos(p),
@@ -80,16 +77,16 @@ namespace Editor {
 		{
 			// Draw the box
 			gc.draw_fillrect(pos.x, pos.y, pos.x + width, pos.y + total_height, 
-				CL_Color(211,211,211,100));
+				Color(211,211,211,100));
 			// Draw the border
 			gc.draw_rect(pos.x, pos.y, pos.x + width, pos.y + total_height, 
-				CL_Color::black);
+                                     Color(0,0,0));
 			// Draw the highlighted action if the mouse is in the box
 			if (hover)
 			{
 				gc.draw_fillrect(pos.x, pos.y + selected_action_offset * 
 					item_height, pos.x + width, pos.y + (selected_action_offset + 1) * item_height,
-					CL_Color(128,128,128,150));
+					Color(128,128,128,150));
 			}
 
 			// Draw the action names
@@ -125,14 +122,14 @@ namespace Editor {
 					objs[i]->set_modifier(actions[selected_action_offset].parameter);
 					break;
 				case (SET_OWNER) :
-					objs[i]->set_owner(CL_String::to_int(actions[selected_action_offset].parameter));
+                                  ////objs[i]->set_owner(CL_String::to_int(actions[selected_action_offset].parameter));
 					break;
 				case (SET_DIRECTION) :
 					objs[i]->set_direction(actions[selected_action_offset].parameter);
 					break;
 				case (SET_Z_POS) :
-					objs[i]->set_pos(Vector(objs[i]->get_pos().x, objs[i]->get_pos().y, 
-						(float)CL_String::to_int(actions[selected_action_offset].parameter)));
+                                  ////objs[i]->set_pos(Vector3f(objs[i]->get_pos().x, objs[i]->get_pos().y, 
+					////	(float)CL_String::to_int(actions[selected_action_offset].parameter)));
 					objs[i]->set_orig_pos(objs[i]->get_pos());
 					break;
 				default :
@@ -164,7 +161,7 @@ namespace Editor {
 		ContextMenu* menu;
 		if (available_attribs & CAN_ROTATE)
 		{
-			menu = new ContextMenu(objs, Vector(pos.x + width, pos.y), viewport, false);
+			menu = new ContextMenu(objs, Vector3f(pos.x + width, pos.y), viewport, false);
 			viewport->get_screen()->get_gui_manager()->add(menu);
 			menu->add_action(ContextItem("0 degrees", "ROT0", ROTATE, 0));
 			menu->add_action(ContextItem("90 Degrees", "ROT90", ROTATE, 0));
@@ -178,7 +175,7 @@ namespace Editor {
 		}
 		if (available_attribs & HAS_OWNER)
 		{
-			menu = new ContextMenu(objs, Vector(pos.x + width, pos.y), viewport, false);
+			menu = new ContextMenu(objs, Vector3f(pos.x + width, pos.y), viewport, false);
 			viewport->get_screen()->get_gui_manager()->add(menu);
 			menu->add_action(ContextItem("0", "0", SET_OWNER, 0));
 			menu->add_action(ContextItem("1", "1", SET_OWNER, 0));
@@ -188,14 +185,14 @@ namespace Editor {
 		}
 		if (available_attribs & HAS_DIRECTION)
 		{
-			menu = new ContextMenu(objs, Vector(pos.x + width, pos.y), viewport, false);
+			menu = new ContextMenu(objs, Vector3f(pos.x + width, pos.y), viewport, false);
 			viewport->get_screen()->get_gui_manager()->add(menu);
 			menu->add_action(ContextItem("Left", "left", SET_DIRECTION, 0));
 			menu->add_action(ContextItem("Right", "right", SET_DIRECTION, 0));
 			menu->add_action(ContextItem("Misc.", "misc", SET_DIRECTION, 0));
 			add_action(ContextItem("Direction >", "", SET_DIRECTION, menu));
 		}
-		menu = new ContextMenu(objs, Vector(pos.x + width, pos.y), viewport, false);
+		menu = new ContextMenu(objs, Vector3f(pos.x + width, pos.y), viewport, false);
 		viewport->get_screen()->get_gui_manager()->add(menu);
 		menu->add_action(ContextItem("-50", "-50", SET_Z_POS, 0));
 		menu->add_action(ContextItem("-25", "-25", SET_Z_POS, 0));
@@ -243,6 +240,5 @@ namespace Editor {
 	}
 
 }	// Editor namespace
-} // Pingus namespace
 
 /* EOF */

@@ -17,10 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/sprite.h>
 #include "checkbox.hxx"
 #include "../fonts.hxx"
-#include "../vector.hxx"
+#include "../math/vector3f.hpp"
 #include "../resource.hxx"
 #include "../display/drawing_context.hxx"
 #include "../gui/checkbox_listener.hxx"
@@ -28,7 +27,7 @@
 
 namespace GUI {
 	
-Checkbox::Checkbox(Vector p, std::string label_, CheckboxListener* l) :
+Checkbox::Checkbox(Vector3f p, std::string label_, CheckboxListener* l) :
 	checkmark(Resource::load_sprite("core/misc/checkbox_clicked")),
 	is_checked(false),
 	pos(p),
@@ -43,7 +42,7 @@ void
 Checkbox::draw(DrawingContext& gc)
 {
 	gc.draw_rect(pos.x, pos.y, pos.x + width, pos.y + height, 
-		CL_Color::black);
+                     Color(0,0,0));
 	if (is_checked)
 		gc.draw(checkmark, pos);
 	
@@ -65,6 +64,5 @@ Checkbox::on_primary_button_click(int x, int y)
 }
 
 }	// GUI namespace
-}	// Pingus namespace
 
 /* EOF */

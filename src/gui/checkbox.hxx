@@ -21,8 +21,8 @@
 #define HEADER_PINGUS_GUI_CHECKBOX_HXX
 
 #include "../gui/component.hxx"
-#include "../vector.hxx"
-
+#include "../math/vector3f.hpp"
+#include "../sprite.hpp"
 
 	class DrawingContext;
 		
@@ -33,11 +33,11 @@ namespace GUI {
 class Checkbox : public GUI::Component
 {
 private:
-	CL_Sprite box;
-	CL_Sprite checkmark;
+	Sprite box;
+	Sprite checkmark;
 
 	bool	is_checked;
-	Vector pos;
+	Vector3f pos;
 
 	float width;
 	float height;
@@ -46,7 +46,7 @@ private:
 	std::string label;
 
 public:
-	Checkbox(Vector p, std::string label_, CheckboxListener* l);
+	Checkbox(Vector3f p, std::string label_, CheckboxListener* l);
 
 	void draw(DrawingContext& gc);
 	bool is_at(int x, int y);
@@ -58,7 +58,6 @@ private:
 };	// Checkbox class
 
 }	// GUI namespace
-}	// Pingus namespace
 
 #endif
 

@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_GUI_INPUTBOX_HXX
 
 #include "component.hxx"
-#include "../vector.hxx"
+#include "../math/vector3f.hpp"
 #include <string>
 
 
@@ -33,7 +33,7 @@ namespace GUI {
 class InputBox : public GUI::Component {
 protected:
 	std::string str;
-	Vector pos;
+	Vector3f pos;
 	float width;
 	float height;
 	bool is_locked;
@@ -45,7 +45,7 @@ protected:
   std::string label;  
 
 public:
-	InputBox(float width_, Vector p, const std::string& 
+  InputBox(float width_, Vector3f p, const std::string& 
 		default_value = std::string(), bool locked = false,
     const std::string& label_ = std::string());
 
@@ -64,7 +64,6 @@ public:
 };	// InputBox class
 
 }	// GUI namespace
-}	// Pingus namespace
 
 #endif
 

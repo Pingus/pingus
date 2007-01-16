@@ -23,7 +23,7 @@
 #include <vector>
 #include <string>
 #include "component.hxx"
-#include "../vector.hxx"
+#include "../math/vector3f.hpp"
 
 
 namespace GUI {
@@ -92,7 +92,7 @@ protected:
 	bool hover;
 
 	/** Where the mouse is located */
-	Vector mouse_pos;
+	Vector3f mouse_pos;
 
 	/** Width of the Combobox */
 	float width;
@@ -104,7 +104,7 @@ protected:
 	float height;
 
 	/** Location of the Combobox */
-	Vector pos;
+	Vector3f pos;
 
 	/** Whether or not this combobox is enabled */
 	bool enabled;
@@ -117,7 +117,7 @@ protected:
 
 public:
 	/** Constructor */
-	Combobox (Vector p, ComboboxListener* listener, std::string label = std::string());
+	Combobox (Vector3f p, ComboboxListener* listener, std::string label = std::string());
 	
 	/** Destructor */
 	virtual ~Combobox ();
@@ -159,7 +159,7 @@ public:
 	
 	virtual void on_pointer_enter() { hover = true; }
 	virtual void on_pointer_leave() { hover = false; }
-	virtual void on_pointer_move(int x, int y) { mouse_pos = Vector((float)x, (float)y); }
+	virtual void on_pointer_move(int x, int y) { mouse_pos = Vector3f((float)x, (float)y); }
 	
 	/** Sets whether or not this combobox is clickable */
 	virtual void set_enabled(bool e) { enabled = e; }
@@ -178,7 +178,6 @@ private:
 };	// Combobox class
 
 }		// GUI namespace
-}		// Pingus namespace
 
 #endif
 

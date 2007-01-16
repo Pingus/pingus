@@ -20,12 +20,12 @@
 #include <algorithm>
 #include "input_box.hxx"
 #include "../display/drawing_context.hxx"
-#include "../vector.hxx"
+#include "../math/vector3f.hpp"
 #include "../fonts.hxx"
 
 namespace GUI {
 	
-InputBox::InputBox(float width_, Vector p, const std::string& default_value,
+InputBox::InputBox(float width_, Vector3f p, const std::string& default_value,
                    bool locked, const std::string& label_) 
 	:	str(default_value),
 	pos(p),
@@ -42,8 +42,8 @@ InputBox::draw(DrawingContext &gc)
 {
 	// Draw the rectangle and border
 	gc.draw_fillrect(pos.x, pos.y, pos.x + width, pos.y + height, 
-		CL_Color::black);
-	gc.draw_rect(pos.x, pos.y, pos.x + width, pos.y + height, CL_Color::white);	
+                         Color(0,0,0));
+	gc.draw_rect(pos.x, pos.y, pos.x + width, pos.y + height, Color(255,255,255));	
 
 	// If there is text, draw it:
 	if (str != std::string())
@@ -55,7 +55,7 @@ InputBox::draw(DrawingContext &gc)
 	if (has_focus)
 		gc.draw_line(pos.x + Fonts::pingus_small.get_size(shrink_string(str)).width + 12,
 			pos.y, pos.x + Fonts::pingus_small.get_size(shrink_string(str)).width + 12, 
-			pos.y + height,	CL_Color::yellow);
+                             pos.y + height,	Color(0,255,255));
 }
 
 bool
@@ -97,6 +97,5 @@ InputBox::on_key_pressed(const char c)
 }
 
 }	// GUI
-}	// Pingus
 
 /* EOF */

@@ -23,7 +23,7 @@
 #include "../gui/component.hxx"
 
 
-	class Vector; 
+	class Vector3f; 
   
 namespace GUI {  
   class GUIManager;
@@ -51,7 +51,7 @@ private:
   GUI::GUIManager* gui_manager; 
   
   /** Where this box is drawn*/ 
-	Vector pos;
+	Vector3f pos;
   
   // Input boxes for each item of the level impl 
   GUI::InputBox* name;
@@ -72,7 +72,6 @@ public:
 };
 
 }	// Editor namespace
-}	// Pingus namespace
 
 #endif
 

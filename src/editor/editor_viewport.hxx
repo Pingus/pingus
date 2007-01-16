@@ -26,7 +26,7 @@
 #include <string>
 
 
-	class Vector;
+	class Vector3f;
 	class DrawingContext;
 	class SceneContext;
 
@@ -92,13 +92,13 @@ private:
 	bool autoscroll;
 
 	/** Where the mouse is right now - used for autoscrolling */
-	Vector mouse_at;
+	Vector3f mouse_at;
 
 	/** Where the mouse is at in relation to the world/level */
-	Vector mouse_at_world;
+	Vector3f mouse_at_world;
 
 	/** Where the mouse started dragging from */
-	Vector drag_start_pos;
+	Vector3f drag_start_pos;
 
 	/** All objects in the level */
 	std::vector<LevelObj*> objs;
@@ -107,7 +107,7 @@ private:
 	std::vector<LevelObj*> current_objs;
 
 	/** The region that is currently highlighted */
-	CL_Rect highlighted_area;
+	Rect highlighted_area;
 
 	/** Returns the topmost object at this x, y location */
 	LevelObj* object_at(int x, int y);
@@ -128,7 +128,6 @@ private:
 };
 
 } // Editor namespace
-} // Pingus namespace
 
 #endif
 

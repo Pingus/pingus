@@ -22,7 +22,7 @@
 
 #include <string>
 #include "display.hxx"
-
+#include "../sprite.hpp"
 
 /** A simple mouse cursor class and stupid. We can't use the X11/win32
     nativ mouse cursor because we want also to support non-mouse input
@@ -30,7 +30,7 @@
 class Cursor : public DisplayHook
 {
 private:
-  ///CL_Sprite sprite;
+  Sprite sprite;
 
 public:
   Cursor (const std::string& ident);

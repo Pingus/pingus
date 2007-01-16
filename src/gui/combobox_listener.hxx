@@ -32,7 +32,6 @@ public:
 };	// ComboboxListener class
 
 }	// GUI namespace
-}	// Pingus namespace
 
 #endif
 

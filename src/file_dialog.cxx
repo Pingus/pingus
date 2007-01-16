@@ -17,8 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/display.h>
-#include <ClanLib/Core/IOData/directory_scanner.h>
 #include "gettext.h"
 #include "system.hxx"
 #include "pingus_menu_manager.hxx"
@@ -44,8 +42,8 @@
 
 	public:
 		FileDialogOkButton (FileDialog *f, std::string l)
-			: GUI::SurfaceButton(CL_Display::get_width()/2 + 170,
-			CL_Display::get_height()/2 + 160,
+			: GUI::SurfaceButton(Display::get_width()/2 + 170,
+			Display::get_height()/2 + 160,
 			ResDescriptor("core/menu/exit_button_normal"),
 			ResDescriptor("core/menu/exit_button_pressed"),
 			ResDescriptor("core/menu/exit_button_hover")),
@@ -59,8 +57,8 @@
 			if (!is_hidden)
 			{
 				SurfaceButton::draw(gc);
-				gc.print_right(Fonts::chalk_large, (float)CL_Display::get_width()/2 + 200,
-					(float)CL_Display::get_height()/2 + 160, label);
+				gc.print_right(Fonts::chalk_large, (float)Display::get_width()/2 + 200,
+					(float)Display::get_height()/2 + 160, label);
 			}
 		}
 
@@ -94,8 +92,8 @@
 
 	public:
 		FileDialogCancelButton (FileDialog* f)
-			: GUI::SurfaceButton(CL_Display::get_width()/2 - 280,
-			CL_Display::get_height()/2 + 160,
+			: GUI::SurfaceButton(Display::get_width()/2 - 280,
+			Display::get_height()/2 + 160,
 			ResDescriptor("core/menu/exit_button_normal"),
 			ResDescriptor("core/menu/exit_button_pressed"),
 			ResDescriptor("core/menu/exit_button_hover")),
@@ -105,8 +103,8 @@
 
 		void draw (DrawingContext& gc) {
 			SurfaceButton::draw(gc);
-			gc.print_right(Fonts::chalk_large, (float)CL_Display::get_width()/2 - 200,
-				(float)CL_Display::get_height()/2 + 160, _("Cancel"));
+			gc.print_right(Fonts::chalk_large, (float)Display::get_width()/2 - 200,
+				(float)Display::get_height()/2 + 160, _("Cancel"));
 		}
 
 		void on_click()
@@ -129,10 +127,10 @@
 		FileDialog* file_dialog;
 
 		/** Where the image is located */
-		Vector pos;
+		Vector3f pos;
 
 		/** Image used for the scroll button */
-		CL_Sprite sprite;
+		Sprite sprite;
 
 		/** 0 for Up, 1 for Down */
 		int direction;
@@ -145,8 +143,8 @@
 	public:
 		FileDialogScrollButton (FileDialog* f, int d, int height_offset)
 			: file_dialog(f),
-				pos(Vector((float)CL_Display::get_width()/2 + 210,
-					(float)CL_Display::get_height()/2 + height_offset)),
+				pos(Vector3f((float)Display::get_width()/2 + 210,
+					(float)Display::get_height()/2 + height_offset)),
 				direction(d),
 				is_hidden(false),
 				hover(false)
@@ -192,18 +190,18 @@
 		FileDialog* file_dialog;
 
 		/** Where the image is located */
-		Vector pos;
+		Vector3f pos;
 
 		/** Image used for the parent folder button */
-		CL_Sprite sprite;
+		Sprite sprite;
 
 		bool hover;
 
 	public:
 		FileDialogParentFolderButton (FileDialog* f)
 			: file_dialog(f),
-        pos(Vector((float)CL_Display::get_width()/2 + 230,
-                   (float)CL_Display::get_height()/2 - 210)),
+        pos(Vector3f((float)Display::get_width()/2 + 230,
+                   (float)Display::get_height()/2 - 210)),
 			  sprite(Resource::load_sprite("core/menu/parent_folder")),
 				hover(false)
 		{
@@ -259,29 +257,29 @@
 
 		// FIXME: Ugly - hardcoded values for items in file dialog.  Should be dynamic.
 		// Create 8 FileDialogItems and add them to the gui_manager.
-		float center_x = (float)CL_Display::get_width()/2;
-		float center_y = (float)CL_Display::get_height()/2;
+		float center_x = (float)Display::get_width()/2;
+		float center_y = (float)Display::get_height()/2;
 
-		inputbox = new GUI::InputBox(450, Vector(center_x - 225, 
+		inputbox = new GUI::InputBox(450, Vector3f(center_x - 225, 
 			center_y - 170), "", for_loading);
 		gui_manager->add((GUI::Component*)inputbox);
 
 		file_dialog_items.push_back(new FileDialogItem(this, 
-			Vector(center_x - 280, center_y - 140)));
+			Vector3f(center_x - 280, center_y - 140)));
 		file_dialog_items.push_back(new FileDialogItem(this, 
-			Vector(center_x - 280, center_y - 70)));
+			Vector3f(center_x - 280, center_y - 70)));
 		file_dialog_items.push_back(new FileDialogItem(this, 
-			Vector(center_x - 280, center_y + 10)));
+			Vector3f(center_x - 280, center_y + 10)));
 		file_dialog_items.push_back(new FileDialogItem(this, 
-			Vector(center_x - 280, center_y + 80)));
+			Vector3f(center_x - 280, center_y + 80)));
 		file_dialog_items.push_back(new FileDialogItem(this, 
-			Vector(center_x - 10, center_y - 140)));
+			Vector3f(center_x - 10, center_y - 140)));
 		file_dialog_items.push_back(new FileDialogItem(this, 
-			Vector(center_x - 10, center_y - 70)));
+			Vector3f(center_x - 10, center_y - 70)));
 		file_dialog_items.push_back(new FileDialogItem(this, 
-			Vector(center_x - 10, center_y + 10)));
+			Vector3f(center_x - 10, center_y + 10)));
 		file_dialog_items.push_back(new FileDialogItem(this, 
-			Vector(center_x - 10, center_y + 80)));
+			Vector3f(center_x - 10, center_y + 80)));
 
 		for (std::vector<FileDialogItem*>::const_iterator i = file_dialog_items.begin();
 			i != file_dialog_items.end(); i++)
@@ -297,10 +295,10 @@
 	bool
 		FileDialog::draw (DrawingContext& gc)
 	{
-		gc.draw(sprite, Vector(gc.get_width ()/2 - sprite.get_width ()/2,
+		gc.draw(sprite, Vector3f(gc.get_width ()/2 - sprite.get_width ()/2,
 			gc.get_height ()/2 - sprite.get_height ()/2));
 		gc.draw_rect(gc.get_width() / 2 - 285, gc.get_height() / 2 - 160,
-			gc.get_width() / 2 + 285, gc.get_height() / 2 + 160, Color::black);
+                             gc.get_width() / 2 + 285, gc.get_height() / 2 + 160, Color(0,0,0));
 		gc.print_center(Fonts::chalk_large, gc.get_width()/2, gc.get_height()/2 - 220, 
 			current_file.friendly_name == "" ? current_file.name : current_file.friendly_name);
 
@@ -324,6 +322,7 @@
 		FileItem f;
 
 		// Get the list of files and folders in the current folder
+#if 0
 		CL_DirectoryScanner scanner;
 		scanner.scan(current_path, "*");
 		while (scanner.next())
@@ -346,7 +345,7 @@
 		}
 
 		std::sort(file_list.begin(), file_list.end(), &FileItemCompare);
-
+#endif
 		current_offset = 0;
 		offset_changed();
 	}

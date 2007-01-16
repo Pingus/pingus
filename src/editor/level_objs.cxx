@@ -19,12 +19,12 @@
 
 #include <string>
 #include <iostream>
-#include <ClanLib/Display/sprite.h>
 #include "level_objs.hxx"
 #include "level_impl.hxx"
 #include "../blitter.hxx"
 #include "../resource.hxx"
 #include "../res_descriptor.hxx"
+#include "../gui/display.hxx"
 #include "../display/drawing_context.hxx"
 #include "../xml_file_writer.hxx"
 
@@ -34,8 +34,8 @@ namespace Editor {
 // Default constructor
 LevelObj::LevelObj(std::string obj_name, LevelImpl* level_) :
 	level(level_),
-	pos(Vector(0,0,0)),
-	translated_pos(Vector(0,0,0)),
+	pos(Vector3f(0,0,0)),
+	translated_pos(Vector3f(0,0,0)),
 	section_name(obj_name),
 	speed(0),
 	parallax(0.0),
@@ -75,18 +75,18 @@ LevelObj::draw(DrawingContext &gc)
 		if (selected)
 			gc.draw_rect(translated_pos.x, translated_pos.y, translated_pos.x 
 				+ sprite.get_width(), translated_pos.y + sprite.get_height(), 
-				CL_Color(255,255,255,150), 5000);
+				Color(255,255,255,150), 5000);
 		if (attribs & HAS_WIDTH)
 		{
 			for(int x = static_cast<int>(pos.x); x < pos.x + width;	x += sprite.get_width())
-				gc.draw(sprite, Vector(static_cast<float>(x), pos.y, pos.z));
+				gc.draw(sprite, Vector3f(static_cast<float>(x), pos.y, pos.z));
 		}
 		else if(attribs & HAS_STRETCH)
 		{
 			// Surface Background - tile it
 			for (int x = 0; x < level->size.width; x += sprite.get_width())
 				for (int y = 0; y < level->size.height; y += sprite.get_height())
-					gc.draw(sprite, Vector((float)x, (float)y, pos.z));
+					gc.draw(sprite, Vector3f((float)x, (float)y, pos.z));
 		}
 		else
 			gc.draw(sprite, pos);
@@ -129,10 +129,10 @@ LevelObj::refresh_sprite()
 	if (attribs & HAS_SURFACE)
 	{
 		sprite = Resource::load_sprite(desc);
-		int x, y;
-		sprite.get_alignment(origin, x, y);
+		////int x, y;
+		////sprite.get_alignment(origin, x, y);
 				
-		CL_PixelBuffer pb;
+		PixelBuffer pb;
 
 		// Apply modifier, then change the sprite loaded for this object in memory.
 		if (stretch_x || stretch_y)
@@ -144,19 +144,19 @@ LevelObj::refresh_sprite()
 			if (stretch_x && !stretch_y)
 			{
 				if (keep_aspect)
-					h = h * CL_Display::get_width() / w;
-				w = (float)CL_Display::get_width();
+					h = h * Display::get_width() / w;
+				w = (float)Display::get_width();
 			}
 			else if (stretch_y && !stretch_x)
 			{
 				if (keep_aspect)
-					w = w * CL_Display::get_height() / h;
-				h = (float)CL_Display::get_height();
+					w = w * Display::get_height() / h;
+				h = (float)Display::get_height();
 			}
 			else
 			{
-				w = (float)CL_Display::get_width();
-				h = (float)CL_Display::get_height();
+				w = (float)Display::get_width();
+				h = (float)Display::get_height();
 			}
 
                         //FIXME: Sat Jan 13 10:26:15 2007
@@ -167,12 +167,13 @@ LevelObj::refresh_sprite()
 		}
 		else		// No stretch involved
 			pb = Resource::load_pixelbuffer(desc);
-
-		CL_SpriteDescription sprite_desc;
+#if 0                
+		SpriteDescription sprite_desc;
 		sprite_desc.add_frame(pb);
-		sprite = CL_Sprite(sprite_desc);
+		sprite = Sprite(sprite_desc);
 
 		sprite.set_alignment(origin, x, y);
+#endif 
 	}
 	set_translated_pos();
 }
@@ -221,7 +222,7 @@ LevelObj::write_properties(XMLFileWriter &xml)
 		if (attribs & HAS_RELEASE_RATE)
 			xml.write_int("release-rate", release_rate);
 		if (attribs & HAS_COLOR)
-			xml.write_color("color", color);
+                  ////xml.write_color("color", color);
 		if (attribs & HAS_STRETCH)
 		{
 			xml.write_bool("stretch-x", stretch_x);
@@ -242,8 +243,8 @@ LevelObj::write_properties(XMLFileWriter &xml)
 		// Writes any extra properties that may be necessary (virtual function)
 		write_extra_properties(xml);
 
-		// Write the Vector position - all objects have this
-		xml.write_vector("position", pos);
+		// Write the Vector3f position - all objects have this
+		////xml.write_vector("position", pos);
 
 		xml.end_section();	// object's section_name
 	}
@@ -270,12 +271,12 @@ LevelObj::set_translated_pos()
 	
 	translated_pos = pos;
 	
-	CL_Origin orig;
-	int x, y;
+	Origin orig = origin_top_left;
+	////int x, y;
 	float w = (float)sprite.get_width();
 	float h = (float)sprite.get_height();
 	
-	sprite.get_alignment(orig, x, y);
+	////sprite.get_alignment(orig, x, y);
 	switch (orig)
 	{
 		case origin_top_left :
@@ -311,13 +312,12 @@ LevelObj::set_translated_pos()
 }
 
 void
-LevelObj::set_pos(Vector p)
+LevelObj::set_pos(Vector3f p)
 {
 	pos = p;
 	set_translated_pos();
 }
 
 }		// Editor namespace
-}		// Pingus namespace
 
 /* EOF */

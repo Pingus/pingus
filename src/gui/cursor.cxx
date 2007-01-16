@@ -41,7 +41,7 @@ Cursor::update (float delta)
 void
 Cursor::on_event()
 {
-  const Input::Pointer* pointer = Input::Controller::get_current()->get_pointer();
+  ////const Input::Pointer* pointer = Input::Controller::get_current()->get_pointer();
   //  sprite.draw(pointer->get_x_pos (),
   //              pointer->get_y_pos ());
 }

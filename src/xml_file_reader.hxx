@@ -20,6 +20,7 @@
 #ifndef HEADER_XML_FILE_READER_HXX
 #define HEADER_XML_FILE_READER_HXX
 
+#if 0
 #include <ClanLib/Core/XML/dom_element.h>
 #include "file_reader.hxx"
 
@@ -29,8 +30,9 @@ class XMLFileReader : public FileReader
 public:
   XMLFileReader(CL_DomElement element);
 };
-
+#endif
 
 #endif
+
 
 /* EOF */

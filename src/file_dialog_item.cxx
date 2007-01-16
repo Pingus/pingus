@@ -17,14 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/sprite.h>
-#include <ClanLib/Core/IOData/directory_scanner.h>
-#include <ClanLib/Core/IOData/inputsource_provider_file.h>
-#include <ClanLib/Core/System/clanstring.h>
 #include "pingus_error.hxx"
 #include "file_dialog_item.hxx"
 #include "file_dialog.hxx"
-#include "vector.hxx"
+#include "math/vector3f.hpp"
 #include "fonts.hxx"
 #include "resource.hxx"
 #include "gettext.h"
@@ -35,7 +31,7 @@
 #include "worldmap/metamap.hxx"
 
 	// Only Constructor
-	FileDialogItem::FileDialogItem(FileDialog* f, Vector p) 
+	FileDialogItem::FileDialogItem(FileDialog* f, Vector3f p) 
 		: mouse_over(false), 
 			is_hidden(true), 
 			file_dialog(f),
@@ -58,6 +54,7 @@
 		}
 		else
 		{
+#if 0
 			// FIXME: Load thumbnail specific to this level
 			sprite = Resource::load_sprite("core/menu/default_level");
 
@@ -135,6 +132,7 @@
 					}	// if XML Node == "head"
 				}	// for loop
 			}	// if XML tag_name was recognized
+#endif
 		}	// else it's a file, not a directory
 	}	//set_file()
 
@@ -171,11 +169,11 @@
 					Color color;
 					if (file_item.is_accessible)
 						if (file_item.is_finished)
-							color = Color::azure;
+                                                  color = Color(123,123,0);////Color::azure;
 						else
-							color = Color::aqua;
+                                                  color = Color(123,0,222); ////Color::aqua;
 					else
-						color = Color::red;
+                                          color = Color(255,0,0);
 					gc.draw_fillrect(pos.x+50, pos.y, pos.x+270, pos.y+75, color);
 
 					// Draw level or worldmap information.
@@ -209,6 +207,5 @@
 		else
 			return file_item.name.substr(0, file_item.name.size() - file_dialog->get_file_mask().size());
 	}
-}
 
 /* EOF */

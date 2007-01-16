@@ -17,13 +17,13 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/display.h>
 #include <vector>
 #include <string>
 #include <iostream>
 #include "../gui/gui_manager.hxx"
+#include "../gui/display.hxx"
 #include "../display/drawing_context.hxx"
-#include "../vector.hxx"
+#include "../math/vector3f.hpp"
 #include "../graphic_context_state.hxx"
 #include "editor_viewport.hxx"
 #include "editor_screen.hxx"
@@ -35,7 +35,7 @@ namespace Editor {
 
 // Constructor
 EditorViewport::EditorViewport(EditorScreen* e) :
-	state(CL_Display::get_width(), CL_Display::get_height()),
+	state(Display::get_width(), Display::get_height()),
 	scene_context(new SceneContext()),
 	editor(e),
 	autoscroll(true),
@@ -45,8 +45,8 @@ EditorViewport::EditorViewport(EditorScreen* e) :
 	current_action(NOTHING)
 {
 	// FIXME: Hardcoded values should be determined by level size
-	state.set_limit(CL_Rect(-30, -50, 1600, 1300));
-	state.set_pos(CL_Pointf(0, 0));
+	state.set_limit(Rect(-30, -50, 1600, 1300));
+	state.set_pos(Vector2f(0, 0));
 }
 
 // Destructor
@@ -60,7 +60,7 @@ EditorViewport::on_secondary_button_click(int x, int y)
 {
 	remove_context_menu();
 
-	Vector mouse_pos(x - (state.get_width()/2 - state.get_pos().x),
+	Vector3f mouse_pos(x - (state.get_width()/2 - state.get_pos().x),
 		y - (state.get_height()/2 - state.get_pos().y));
 
 	std::cout << "Right-click at " << mouse_pos.x << ", " 
@@ -71,7 +71,7 @@ EditorViewport::on_secondary_button_click(int x, int y)
 	{
 	//	std::vector<LevelObj*> objs;
 	//	objs.push_back(obj);
-		context_menu = new ContextMenu(current_objs, Vector((float)x, (float)y), this);
+		context_menu = new ContextMenu(current_objs, Vector3f((float)x, (float)y), this);
 		editor->get_gui_manager()->add(context_menu, true);
 	}
 }
@@ -127,7 +127,7 @@ EditorViewport::on_primary_button_release(int x, int y)
 		for (unsigned i = 0; i < objs.size(); i++)
 		{
 			// Calculate the object's position
-			CL_Point obj_pos((int)objs[i]->get_pos().x + (state.get_width()/2 - 
+			Vector2i obj_pos((int)objs[i]->get_pos().x + (state.get_width()/2 - 
 				(int)state.get_pos().x), (int)objs[i]->get_pos().y + (state.get_height()/2 - 
 				(int)state.get_pos().y));
 			
@@ -152,8 +152,8 @@ EditorViewport::on_primary_button_release(int x, int y)
 void
 EditorViewport::on_pointer_move(int x, int y)
 {
-	mouse_at = Vector(float(x), float(y));
-	mouse_at_world = Vector(x - (state.get_width()/2 - state.get_pos().x),
+	mouse_at = Vector3f(float(x), float(y));
+	mouse_at_world = Vector3f(x - (state.get_width()/2 - state.get_pos().x),
 		y - (state.get_height()/2 - state.get_pos().y));
 
 	if (current_action == HIGHLIGHTING)
@@ -167,7 +167,7 @@ EditorViewport::on_pointer_move(int x, int y)
 
 		for (unsigned i = 0; i < current_objs.size(); i++)
 		{
-			Vector orig_pos(current_objs[i]->get_orig_pos());
+			Vector3f orig_pos(current_objs[i]->get_orig_pos());
 			float x_offset = mouse_at_world.x - drag_start_pos.x;
 			float y_offset = mouse_at_world.y - drag_start_pos.y;
 			if (snap_to)
@@ -181,7 +181,7 @@ EditorViewport::on_pointer_move(int x, int y)
 				new_x = x_offset + orig_pos.x;
 				new_y = y_offset + orig_pos.y;
 			}
-			current_objs[i]->set_pos(Vector(new_x, new_y, orig_pos.z));
+			current_objs[i]->set_pos(Vector3f(new_x, new_y, orig_pos.z));
 		}
 	}
 }
@@ -203,10 +203,10 @@ EditorViewport::draw(DrawingContext &gc)
 	if (current_action == HIGHLIGHTING)
 		gc.draw_rect((float)highlighted_area.left, (float)highlighted_area.top, 
 			(float)highlighted_area.right, (float)highlighted_area.bottom, 
-			CL_Color(255,255,255,150));
+			Color(255,255,255,150));
 
 	state.pop(*scene_context);
-	gc.draw(new SceneContextDrawingRequest(scene_context, CL_Vector(0, 0, -5000)));
+	gc.draw(new SceneContextDrawingRequest(scene_context, Vector3f(0, 0, -5000)));
 }
 
 // Returns true if the viewport is at the x,y coordinate
@@ -229,13 +229,13 @@ EditorViewport::update(float delta)
 		if (autoscroll)
 		{
 			if (mouse_at.x < autoscroll_border)
-				state.set_pos(state.get_pos() - CL_Pointf(5, 0));
-			else if ((float)CL_Display::get_width() - mouse_at.x < autoscroll_border)
-				state.set_pos(state.get_pos() + CL_Pointf(5, 0));
+				state.set_pos(state.get_pos() - Vector2f(5, 0));
+			else if ((float)Display::get_width() - mouse_at.x < autoscroll_border)
+				state.set_pos(state.get_pos() + Vector2f(5, 0));
 			else if (mouse_at.y < autoscroll_border)
-				state.set_pos(state.get_pos() - CL_Pointf(0, 5));
-			else if ((float)CL_Display::get_height() - mouse_at.y < autoscroll_border)
-				state.set_pos(state.get_pos() + CL_Pointf(0, 5));
+				state.set_pos(state.get_pos() - Vector2f(0, 5));
+			else if ((float)Display::get_height() - mouse_at.y < autoscroll_border)
+				state.set_pos(state.get_pos() + Vector2f(0, 5));
 		}
 	}
 }
@@ -279,6 +279,5 @@ EditorViewport::add_object(LevelObj* obj)
 }
 
 } // Editor namespace
-} // Pingus namespace
 
 /* EOF */

@@ -20,10 +20,8 @@
 #ifndef HEADER_PINGUS_PANEL_BUTTONS_HXX
 #define HEADER_PINGUS_PANEL_BUTTONS_HXX
 
-#include <ClanLib/Display/sprite.h>
 #include "../gui/component.hxx"
-#include "../vector.hxx"
-
+#include "../math/vector3f.hpp"
 
 class DrawingContext;
 
@@ -41,13 +39,13 @@ private:
 
 protected:
 	/** The actual button image */
-	CL_Sprite sur;
+	Sprite sur;
 
 	/** The button background image when not pressed */
-	CL_Sprite button;
+	Sprite button;
 
 	/** The button background image while pressed */
-	CL_Sprite button_pressed;
+	Sprite button_pressed;
 
 	/** The panel to which this button belongs */
 	EditorPanel* panel;
@@ -56,7 +54,7 @@ protected:
 	std::string tooltip;
 
 	/** The location of this button on the screen  (set by the EditorPanel) */
-	Vector pos;
+	Vector3f pos;
 
 	/** Is this button currently selected? */
 	bool is_selected;
@@ -70,11 +68,11 @@ public:
 	virtual ~PanelButton() { }
 
 	/** Set the position of this button on the screen - used by the EditorPanel
-		@param p the x,y,z Vector where this button belongs */
-	void set_pos (Vector p);
+		@param p the x,y,z Vector3f where this button belongs */
+	void set_pos (Vector3f p);
 
-	/** Returns the Vector of this button's location */
-	Vector get_pos () { return pos; }
+	/** Returns the Vector3f of this button's location */
+	Vector3f get_pos () { return pos; }
 
 	/** Returns the width of the sur sprite */
 	int get_width() { return sur.get_width(); }
@@ -207,7 +205,6 @@ class PanelButtonHead : public PanelButton
 };    // PanelButtonHead class
 
 }		// Editor namespace
-}		// Pingus namespace
 
 
 #endif

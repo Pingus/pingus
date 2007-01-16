@@ -20,9 +20,9 @@
 #ifndef HEADER_PINGUS_FILE_DIALOG_ITEM_HXX
 #define HEADER_PINGUS_FILE_DIALOG_ITEM_HXX
 
-#include <ClanLib/Display/sprite.h>
 #include "gui/component.hxx"
-#include "vector.hxx"
+#include "math/vector3f.hpp"
+#include "sprite.hpp"
 #include "file_dialog.hxx"
 
 
@@ -39,17 +39,17 @@ private:
 	std::string status;
 
 	FileDialog* file_dialog;
-	Vector pos;
+	Vector3f pos;
 
 	/** This file_item name will change based on the current file list */
 	FileItem file_item;
 	
 	/** This sprite will change based on the currently displayed file */
-	CL_Sprite sprite;
+	Sprite sprite;
 
 public:
 	// Only Constructor
-	FileDialogItem(FileDialog* f, Vector p) ;
+	FileDialogItem(FileDialog* f, Vector3f p) ;
 
 	/** Set the current file assigned to this button */
 	void set_file(FileItem f);
@@ -76,8 +76,6 @@ private:
 	FileDialogItem (const FileDialogItem&);
 	FileDialogItem& operator= (const FileDialogItem&);
 };	// FileDialogItem class
-
-}		// Pingus namespace
 
 #endif
 

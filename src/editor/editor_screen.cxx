@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Core/System/clanstring.h>
+#include "../gui/display.hxx"
 #include "../system.hxx"
 #include "../sound/sound.hxx"
 #include "../gui/gui_manager.hxx"
@@ -139,16 +139,16 @@ EditorScreen::play_level()
 
 // Draw the background and components
 bool
-EditorScreen::draw(Pingus::DrawingContext &gc)
+EditorScreen::draw(DrawingContext &gc)
 {
 	// Black out screen
-	gc.draw_fillrect(0, 0, (float)CL_Display::get_width(), 
-		(float)CL_Display::get_height(), CL_Color::black, -10000);
+	gc.draw_fillrect(0, 0, (float)Display::get_width(), 
+                         (float)Display::get_height(), Color(0,0,0), -10000);
 	gui_manager->draw(gc);
 
 	// FIXME: Remove this warning
-	gc.print_center(Fonts::pingus_large, (float)(CL_Display::get_width() / 2), 
-		(float)(CL_Display::get_height() / 2), "Not yet functional");
+	gc.print_center(Fonts::pingus_large, (float)(Display::get_width() / 2), 
+		(float)(Display::get_height() / 2), "Not yet functional");
 		
 	if (filedialog)
 		filedialog->draw(gc);
@@ -188,4 +188,4 @@ EditorScreen::add_objects(std::vector<LevelObj*> objs)
 }
 
 } // Editor namespace
-} // Pingus namespace
+
