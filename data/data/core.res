@@ -342,6 +342,7 @@
 
       (sprite
         (name "creditpingu")
+        (origin "center")
         (image-file "../images/core/misc/creditpingu.png"))
 
       (sprite

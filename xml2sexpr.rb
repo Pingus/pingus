@@ -110,7 +110,7 @@ $typespec_generic =
    [/surface\/auto-uncover$/, :integer],
   ]
 
-$typespec = $typespec_worldmap + $typespec_generic
+$typespec = $typespec_level + $typespec_generic
 
 def get_type(section)
   $typespec.each{|pair|

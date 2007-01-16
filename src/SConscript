@@ -108,7 +108,7 @@ env.Program('../pingus', [
 'components/time_display.cxx', 
 'config.cxx', 
 'console.cxx', 
-# 'credits.cxx', 
+'credits.cxx', 
 'debug.cxx', 
 'debug_stream.cxx', 
 # 'demo_player.cxx', 

@@ -72,7 +72,7 @@
 #include "pingus_menu_manager.hxx"
 #include "resource.hxx"
 // #include "pingu_action_factory.hxx"
-// #include "credits.hxx"
+#include "credits.hxx"
 #include "sound/sound.hxx"
 #include "worldmap/manager.hxx"
 #include "cheat.hxx"
@@ -265,7 +265,7 @@ PingusMain::check_args(int argc, char** argv)
                   _("Disable some cpu intensive features"));
   argp.add_option(353, "min-cpu-usage", "",
                   _("Reduces the CPU usage by issuing sleep()"));
-  argp.add_option(359, "show-credits", "",
+  argp.add_option(359, "credits", "",
                   _("Shows the credits"));
 
   argp.add_group(_("Demo playing and recording:"));
@@ -301,7 +301,7 @@ PingusMain::check_args(int argc, char** argv)
           worldmapfile = argp.get_argument();
           break;
 
-        case 359: // --worldmap
+        case 359: // --credits
           show_credits = true;
           break;
             
@@ -716,7 +716,7 @@ PingusMain::start_game ()
     }
   else if (show_credits)
     {
-      //ScreenManager::instance()->push_screen(Credits::instance(), false);
+      ScreenManager::instance()->push_screen(Credits::instance(), false);
     }
   else if (!levelfile.empty ()) 
     {

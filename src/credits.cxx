@@ -18,8 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Display/display.h>
-#include <ClanLib/Display/font.h>
 #include "gui/screen_manager.hxx"
 #include "gui/surface_button.hxx"
 #include "gui/gui_manager.hxx"
@@ -30,6 +28,7 @@
 #include "credits.hxx"
 #include "fonts.hxx"
 #include "gettext.h"
+#include "gui/display.hxx"
 
 class CreditsOkButton
   : public GUI::SurfaceButton
@@ -38,8 +37,8 @@ private:
   Credits* parent;
 public:
   CreditsOkButton(Credits* p)
-    : GUI::SurfaceButton(CL_Display::get_width()/2 + 225,
-                         CL_Display::get_height()/2 + 125,
+    : GUI::SurfaceButton(Display::get_width()/2 + 225,
+                         Display::get_height()/2 + 125,
                          ResDescriptor("core/start/ok"),
                          ResDescriptor("core/start/ok_clicked"),
                          ResDescriptor("core/start/ok_hover")),
@@ -69,8 +68,8 @@ Credits::Credits()
 
   gui_manager->add(new CreditsOkButton(this));
 
-  background.set_alignment(origin_center);
-  pingu.set_alignment(origin_center);
+  ////background.set_alignment(origin_center);
+  ////pingu.set_alignment(origin_center);
 
   font       = Fonts::chalk_normal;
   font_small = Fonts::chalk_large;
@@ -210,7 +209,7 @@ Credits::Credits()
   credits.push_back(_("_Thank you for"));
   credits.push_back(_("_playing!"));
 
-  end_offset = -(float)CL_Display::get_height()/2 - 50; // screen height + grace time
+  end_offset = -(float)Display::get_height()/2 - 50; // screen height + grace time
   for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); ++i)
     {
       switch ((*i)[0])
@@ -260,19 +259,19 @@ Credits::draw_background (DrawingContext& gc)
   float y;
   float yof;
 
-  x = (float)CL_Display::get_width()/2;
+  x = (float)Display::get_width()/2;
   y = offset;
 
-  gc.draw(background, Vector(gc.get_width()/2, gc.get_height()/2));
-  gc.draw(pingu, Vector(gc.get_width()/2, gc.get_height()/2 - 20));
+  gc.draw(background, Vector3f(gc.get_width()/2, gc.get_height()/2));
+  gc.draw(pingu, Vector3f(gc.get_width()/2, gc.get_height()/2 - 20));
   
   gc.print_right(Fonts::chalk_normal,
-                static_cast<float>(CL_Display::get_width()/2 + 275),
-                static_cast<float>(CL_Display::get_height()/2 + 110),
+                static_cast<float>(Display::get_width()/2 + 275),
+                static_cast<float>(Display::get_height()/2 + 110),
 								_("Skip"));
 
-  CL_Display::push_cliprect(CL_Rect(0, static_cast<int>(gc.get_height()/2-225),
-                                    600, static_cast<int>(gc.get_height()/2+200)));
+  ////Display::push_cliprect(Rect(0, static_cast<int>(gc.get_height()/2-225),
+  ////                        600, static_cast<int>(gc.get_height()/2+200)));
   yof = 0;
 
   for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); ++i)
@@ -295,13 +294,13 @@ Credits::draw_background (DrawingContext& gc)
 	  break;
 	}
     }
-  CL_Display::pop_cliprect();
+  ////Display::pop_cliprect();
 }
 
 void
 Credits::on_startup ()
 {
-  offset = (float)CL_Display::get_height() - 50;
+  offset = (float)Display::get_height() - 50;
   //PingusSound::play_music("pingus-5.it");
 }
 

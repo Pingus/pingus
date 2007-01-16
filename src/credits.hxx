@@ -22,11 +22,9 @@
 
 #include <string>
 #include <vector>
-#include <ClanLib/Display/surface.h>
 #include "gui/gui_screen.hxx"
-
-class CL_Font;
-
+#include "font.hpp"
+#include "sprite.hpp"
 
 class Credits : public GUIScreen
 {
@@ -34,11 +32,11 @@ private:
   static Credits* instance_;
 
   bool fast_scrolling;
-  CL_Sprite background;
-  CL_Sprite pingu;
+  Sprite background;
+  Sprite pingu;
 
-  CL_Font    font;
-  CL_Font    font_small;
+  Font    font;
+  Font    font_small;
 
   bool is_init;
 
