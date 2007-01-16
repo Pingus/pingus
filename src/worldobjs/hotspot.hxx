@@ -20,9 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_HOTSPOT_HXX
 #define HEADER_PINGUS_WORLDOBJS_HOTSPOT_HXX
 
-#include <ClanLib/Display/sprite.h>
 #include "../worldobj.hxx"
-
 
 namespace WorldObjsData {
 class HotspotData;
@@ -33,9 +31,9 @@ namespace WorldObjs {
 class Hotspot : public WorldObj
 {
 private:
-  CL_Sprite     sprite;
+  Sprite     sprite;
   float         para;
-  Vector        pos;
+  Vector3f        pos;
 
 public:
   Hotspot(const FileReader& reader);

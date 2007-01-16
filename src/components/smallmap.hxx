@@ -20,9 +20,8 @@
 #ifndef HEADER_PINGUS_SMALLMAP_HXX
 #define HEADER_PINGUS_SMALLMAP_HXX
 
+#include "../sprite.hpp"
 #include "../gui/component.hxx"
-
-class CL_Key;
 
 class Client;
 class Vector3f;

@@ -35,8 +35,8 @@ namespace WorldObjs {
 class Spike : public WorldObj
 {
 private:
-  CL_Sprite   surface;
-  Vector      pos;
+  Sprite   surface;
+  Vector3f      pos;
   bool        killing;
 
 public:

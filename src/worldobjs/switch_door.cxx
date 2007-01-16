@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/pixel_buffer.h>
 #include "../col_map.hxx"
 #include "../display/scene_context.hxx"
 #include "../pingu.hxx"
@@ -49,6 +48,7 @@ SwitchDoor::SwitchDoor(const FileReader& reader)
 void
 SwitchDoor::on_startup ()
 {
+#if 0
   world->get_colmap()->put(door_box.get_frame_pixeldata(0),
                            static_cast<int>(door_pos.x),
 			   static_cast<int>(door_pos.y),
@@ -61,6 +61,7 @@ SwitchDoor::on_startup ()
 			     + i * door_tile.get_height()
 			     + door_box.get_height(),
 			     Groundtype::GP_SOLID);
+#endif
 }
 
 void
@@ -68,7 +69,7 @@ SwitchDoor::draw (SceneContext& gc)
 {
   gc.color().draw (door_box, door_pos);
   for (int i=0; i < current_door_height; ++i)
-    gc.color().draw(door_tile, Vector(door_pos.x, 
+    gc.color().draw(door_tile, Vector3f(door_pos.x, 
 				door_pos.y + i * door_tile.get_height() + door_box.get_height()));
 
   gc.color().draw(switch_sur, switch_pos);
@@ -104,6 +105,7 @@ SwitchDoor::update ()
 			// it, we remove the door from the colmap
 			if (current_door_height + 10 < door_height)
 			{
+#if 0
 				world->get_colmap()->put(door_box.get_frame_pixeldata(0),
 					static_cast<int>(door_pos.x),
 					static_cast<int>(door_pos.y),
@@ -114,6 +116,7 @@ SwitchDoor::update ()
 					static_cast<int>(door_pos.y) + i * door_tile.get_height()
 					+ door_box.get_height(),
 					Groundtype::GP_NOTHING);
+#endif
 			}
 		}
 	}

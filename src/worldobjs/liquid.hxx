@@ -20,10 +20,8 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_LIQUID_HXX
 #define HEADER_PINGUS_WORLDOBJS_LIQUID_HXX
 
-#include <ClanLib/Display/sprite.h>
 #include "../res_descriptor.hxx"
 #include "../worldobj.hxx"
-
 
 namespace WorldObjsData {
 class LiquidData;
@@ -34,9 +32,9 @@ namespace WorldObjs {
 class Liquid : public WorldObj
 {
 private:
-  CL_Sprite sur;
+  Sprite sur;
 
-  Vector pos;
+  Vector3f pos;
 
   /** Cause to interpret the width in pixels instead of tiles */
   bool old_width_handling;

@@ -22,7 +22,6 @@
 
 #include "../worldobj.hxx"
 
-
 namespace WorldObjsData {
 class SolidColorBackgroundData;
 }
@@ -32,7 +31,7 @@ namespace WorldObjs {
 class SolidColorBackground : public WorldObj
 {
 private:
-  CL_Colorf color;
+  Color color;
 
 public:
   SolidColorBackground(const FileReader& reader);

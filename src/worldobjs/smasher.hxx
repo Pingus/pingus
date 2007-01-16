@@ -34,8 +34,8 @@ namespace WorldObjs {
 class Smasher : public WorldObj
 {
 private:
-  CL_Sprite  surface;
-  Vector pos;
+  Sprite  surface;
+  Vector3f pos;
 
   bool smashing;
   bool downwards;

@@ -152,7 +152,7 @@ Entrance::draw (SceneContext& gc)
     }
 
   // FIXME: Why do we still have these hardcoded offsets?!
-  gc.color().draw(surface, Vector(pos.x - 32, pos.y - 16));
+  gc.color().draw(surface, Vector3f(pos.x - 32, pos.y - 16));
 }
 
 void

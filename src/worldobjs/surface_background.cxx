@@ -18,14 +18,13 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Display/pixel_buffer.h>
-#include <ClanLib/Display/display.h>
 #include "../display/scene_context.hxx"
 #include "../world.hxx"
 #include "../timer.hxx"
 #include "../resource.hxx"
 #include "../globals.hxx"
 #include "../blitter.hxx"
+#include "../gui/display.hxx"
 #include "surface_background.hxx"
 
 namespace WorldObjs {
@@ -35,14 +34,14 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
     para_y(0.5),
     scroll_x(0.0),
     scroll_y(0.0),
-    color(CL_Colorf(0,0,0,0)),
+    color(0,0,0,0),
     stretch_x(false),
     stretch_y(false),
     keep_aspect(false),
     scroll_ox(0),
     scroll_oy(0)
 {
-	reader.read_vector("position", pos);
+  reader.read_vector("position", pos);
 
   ResDescriptor desc;
 
@@ -63,32 +62,35 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
 
   Timer timer("Background creation");
 
-  if (color.alpha > 1.0)
+  if (color.a > 1.0)
     std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
 
-  CL_PixelBuffer canvas = Resource::load_pixelbuffer(desc);
+  PixelBuffer canvas = Resource::load_pixelbuffer(desc);
 
   // Scaling Code
   if (stretch_x && stretch_y)
     {
-      canvas = Blitter::scale_surface_to_canvas(canvas, world->get_width(), world->get_height());
+      ////canvas = Blitter::scale_surface_to_canvas(canvas, world->get_width(), world->get_height());
     }
   else if (stretch_x && !stretch_y)
     {
       if (keep_aspect)
         {
+#if 0
           float aspect = canvas.get_height()/float(canvas.get_width());
           canvas = Blitter::scale_surface_to_canvas(canvas,
                                                     world->get_width(),
                                                     int(world->get_width()*aspect));
+#endif
         }
       else
         {
-          canvas = Blitter::scale_surface_to_canvas(canvas, canvas.get_width(), world->get_height());
+          ////canvas = Blitter::scale_surface_to_canvas(canvas, canvas.get_width(), world->get_height());
         }
     }
   else if (!stretch_x && stretch_y)
     {
+#if 0
       if (keep_aspect)
         {
           float aspect = float(canvas.get_width())/canvas.get_height();
@@ -100,11 +102,14 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
         {
           canvas = Blitter::scale_surface_to_canvas(canvas, canvas.get_width(), world->get_height());
         }
+#endif
     }
 
-	CL_SpriteDescription sprite_desc;
-	sprite_desc.add_frame(canvas);
-  bg_surface = CL_Sprite(sprite_desc);
+#if 0
+  SpriteDescription sprite_desc;
+  sprite_desc.add_frame(canvas);
+  bg_surface = Sprite(sprite_desc);
+#endif
 
   timer.stop();
 }
@@ -119,74 +124,74 @@ void
 SurfaceBackground::update()
 {
   if (scroll_x) 
-	{
-		scroll_ox += scroll_x;
+    {
+      scroll_ox += scroll_x;
 
-		if (scroll_ox > bg_surface.get_width())
-			scroll_ox -= bg_surface.get_width();
-		else if (-scroll_ox > bg_surface.get_width())
-			scroll_ox += bg_surface.get_width();
-	}
+      if (scroll_ox > bg_surface.get_width())
+        scroll_ox -= bg_surface.get_width();
+      else if (-scroll_ox > bg_surface.get_width())
+        scroll_ox += bg_surface.get_width();
+    }
 
-	if (scroll_y) 
-	{
-		scroll_oy += scroll_y;
+  if (scroll_y) 
+    {
+      scroll_oy += scroll_y;
 
-		if (scroll_oy > bg_surface.get_height())
-			scroll_oy -= bg_surface.get_height();
-		else if (-scroll_oy > bg_surface.get_height())
-			scroll_oy += bg_surface.get_height();
-	}
+      if (scroll_oy > bg_surface.get_height())
+        scroll_oy -= bg_surface.get_height();
+      else if (-scroll_oy > bg_surface.get_height())
+        scroll_oy += bg_surface.get_height();
+    }
 }
 
 void
 SurfaceBackground::draw (SceneContext& gc)
 {
-	if (fast_mode)
-	{
-		CL_Display::clear();
-	}
-	else
-	{
-		if (render_preview)
-		{
+  if (fast_mode)
+    {
+      ////Display::clear();
+    }
+  else
+    {
+      if (render_preview)
+        {
 #if 0 // FIXME:
-			for(int y = 0; y < gc.get_height();  y += bg_surface.get_height())
-				for(int x = 0; x < gc.get_width(); x += bg_surface.get_width())
-					gc.color().draw(bg_surface, Vector(x, y));
+          for(int y = 0; y < gc.get_height();  y += bg_surface.get_height())
+            for(int x = 0; x < gc.get_width(); x += bg_surface.get_width())
+              gc.color().draw(bg_surface, Vector3f(x, y));
 #endif
-		}
-		else
-		{
-			int x_of = gc.color().get_clip_rect().left;
-			int y_of = gc.color().get_clip_rect().top;
+        }
+      else
+        {
+          int x_of = gc.color().get_clip_rect().left;
+          int y_of = gc.color().get_clip_rect().top;
 
-			int start_x;
-			int start_y;
+          int start_x;
+          int start_y;
 
-			start_x = static_cast<int>((x_of * para_x) + scroll_ox);
-			start_y = static_cast<int>((y_of * para_y) + scroll_oy);
+          start_x = static_cast<int>((x_of * para_x) + scroll_ox);
+          start_y = static_cast<int>((y_of * para_y) + scroll_oy);
 
-			while (start_x > 0)
-				start_x -= bg_surface.get_width();
+          while (start_x > 0)
+            start_x -= bg_surface.get_width();
 
-			while (start_y > 0)
-				start_y -= bg_surface.get_height();
+          while (start_y > 0)
+            start_y -= bg_surface.get_height();
 
-			for(int y = start_y;
-				y < world->get_height();
-				y += bg_surface.get_height())
-			{
-				for(int x = start_x;
-					x < world->get_width();
-					x += bg_surface.get_width())
-				{
-					gc.color().draw(bg_surface, Vector(static_cast<float>(x),
-																						 static_cast<float>(y), pos.z));
-				}
-			}
-		}
-	}
+          for(int y = start_y;
+              y < world->get_height();
+              y += bg_surface.get_height())
+            {
+              for(int x = start_x;
+                  x < world->get_width();
+                  x += bg_surface.get_width())
+                {
+                  gc.color().draw(bg_surface, Vector3f(static_cast<float>(x),
+                                                       static_cast<float>(y), pos.z));
+                }
+            }
+        }
+    }
 }
 
 } // namespace WorldObjs

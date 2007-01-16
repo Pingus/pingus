@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Display/display.h>
 #include "../particles/rain_particle_holder.hxx"
 #include "../sound/sound.hxx"
 #include "../world.hxx"
@@ -48,7 +47,7 @@ RainGenerator::draw (SceneContext& gc)
       	waiter_count = 1.0f;
       }
 
-      gc.color().fill_screen(CL_Color(255, 255, 255, static_cast<int>(thunder_count*255)));
+      gc.color().fill_screen(Color(255, 255, 255, static_cast<int>(thunder_count*255)));
     }
 }
 

@@ -37,10 +37,10 @@ namespace WorldObjs {
 class FakeExit : public WorldObj
 {
 private:
-  CL_Sprite   surface;
-  CL_Sprite   smallmap_symbol;
+  Sprite   surface;
+  Sprite   smallmap_symbol;
 
-  Vector      pos;
+  Vector3f      pos;
 
 	bool smashing;
 

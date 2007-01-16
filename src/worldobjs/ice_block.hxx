@@ -20,9 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_ICE_BLOCK_HXX
 #define HEADER_PINGUS_WORLDOBJS_ICE_BLOCK_HXX
 
-#include <ClanLib/Display/sprite.h>
 #include "../worldobj.hxx"
-
 
 namespace WorldObjsData {
 class IceBlockData;
@@ -34,7 +32,7 @@ class IceBlock : public WorldObj
 {
 private:
   /// The upper/left position  of the iceblock's
-  Vector pos;
+  Vector3f pos;
 
   /** The number of iceblocks, only complete blocks are supported */
   int width;
@@ -42,7 +40,7 @@ private:
   float thickness;
   bool  is_finished;
   int   last_contact;
-  CL_Sprite block_sur;
+  Sprite block_sur;
 
 public:
   IceBlock(const FileReader& reader);

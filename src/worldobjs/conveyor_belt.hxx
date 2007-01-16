@@ -20,10 +20,8 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_CONVEYOR_BELT_HXX
 #define HEADER_PINGUS_WORLDOBJS_CONVEYOR_BELT_HXX
 
-#include <ClanLib/Display/sprite.h>
-#include "../vector.hxx"
+#include "../math/vector3f.hpp"
 #include "../worldobj.hxx"
-
 
 namespace WorldObjsData {
 class ConveyorBeltData;
@@ -34,11 +32,11 @@ namespace WorldObjs {
 class ConveyorBelt : public  WorldObj
 {
 private:
-  CL_Sprite left_sur;
-  CL_Sprite right_sur;
-  CL_Sprite middle_sur;
+  Sprite left_sur;
+  Sprite right_sur;
+  Sprite middle_sur;
 
-  Vector pos;
+  Vector3f pos;
   int    width;
   float  speed;
   float  counter;

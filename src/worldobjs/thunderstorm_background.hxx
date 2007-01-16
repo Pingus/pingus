@@ -20,9 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_THUNDERSTORM_BACKGROUND_HXX
 #define HEADER_PINGUS_WORLDOBJS_THUNDERSTORM_BACKGROUND_HXX
 
-#include <ClanLib/Display/sprite.h>
 #include "../worldobj.hxx"
-
 
 namespace WorldObjsData {
 class ThunderstormBackgroundData;
@@ -33,8 +31,8 @@ namespace WorldObjs {
 class ThunderstormBackground : public WorldObj
 {
 private:
-  Vector    pos;
-  CL_Sprite clouds_sur;
+  Vector3f    pos;
+  Sprite clouds_sur;
   int x_pos;
 
 public:

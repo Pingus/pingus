@@ -36,10 +36,10 @@ namespace WorldObjs {
 class Guillotine : public WorldObj
 {
 private:
-  CL_Sprite   sprite_kill_right;
-  CL_Sprite   sprite_kill_left;  
-  CL_Sprite   sprite_idle;
-  Vector      pos;
+  Sprite   sprite_kill_right;
+  Sprite   sprite_kill_left;  
+  Sprite   sprite_idle;
+  Vector3f      pos;
   Direction   direction;
 
   bool killing;

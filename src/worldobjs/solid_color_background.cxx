@@ -17,7 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/display.h>
 #include "../gui/display.hxx"
 #include "../display/scene_context.hxx"
 #include "solid_color_background.hxx"
@@ -33,10 +32,7 @@ void
 SolidColorBackground::draw (SceneContext& gc)
 {
   // FIXME: should use SceneContext, not CL_Display
-  gc.color().fill_screen(CL_Color(CL_Colorf(color.red,
-                                            color.green, 
-                                            color.blue, 
-                                            color.alpha)));
+  gc.color().fill_screen(color);
 }
 
 } // namespace WorldObjs

@@ -41,7 +41,7 @@ Groundpiece::Groundpiece(const FileReader& reader)
 void
 Groundpiece::on_startup ()
 {
-  CL_PixelBuffer surface = Resource::load_pixelbuffer(desc);
+  PixelBuffer surface = Resource::load_pixelbuffer(desc);
 
   // FIXME: overdrawing of bridges and similar things aren't handled
   // FIXME: here

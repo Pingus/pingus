@@ -20,9 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_TELEPORTER_HXX
 #define HEADER_PINGUS_WORLDOBJS_TELEPORTER_HXX
 
-#include <ClanLib/Display/sprite.h>
 #include "../worldobj.hxx"
-
 
 namespace WorldObjsData {
 class TeleporterData;
@@ -33,11 +31,11 @@ namespace WorldObjs {
 class Teleporter : public WorldObj
 {
 private:
-  Vector pos;
-  Vector target_pos;
+  Vector3f pos;
+  Vector3f target_pos;
 
-  CL_Sprite sprite;
-  CL_Sprite target_sprite;
+  Sprite sprite;
+  Sprite target_sprite;
 
 public:
   Teleporter(const FileReader& reader);

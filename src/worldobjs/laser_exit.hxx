@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_WORLDOBJS_LASER_EXIT_HXX
 
 #include "../worldobj.hxx"
-
+#include "../sprite.hpp"
 
 namespace WorldObjsData {
 class LaserExitData;
@@ -34,8 +34,8 @@ namespace WorldObjs {
 class LaserExit : public WorldObj
 {
 private:
-  CL_Sprite   surface;
-  Vector      pos;
+  Sprite   surface;
+  Vector3f pos;
 
   bool killing;
 

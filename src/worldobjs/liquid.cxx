@@ -58,7 +58,7 @@ Liquid::get_z_pos () const
 void
 Liquid::on_startup ()
 {
-  CL_PixelBuffer colmap_sur = Resource::load_pixelbuffer("liquids/water_cmap");
+  PixelBuffer colmap_sur = Resource::load_pixelbuffer("liquids/water_cmap");
 
   for(int i=0; i < width; ++i)
     world->get_colmap()->put(colmap_sur,
@@ -73,7 +73,7 @@ Liquid::draw (SceneContext& gc)
   for(int x = static_cast<int>(pos.x);
       x < pos.x + width;
       x += sur.get_width())
-    gc.color().draw(sur, Vector(x, pos.y));
+    gc.color().draw(sur, Vector3f(x, pos.y));
 }
 
 void

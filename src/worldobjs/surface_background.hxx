@@ -20,10 +20,8 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_SURFACE_BACKGROUND_HXX
 #define HEADER_PINGUS_WORLDOBJS_SURFACE_BACKGROUND_HXX
 
-#include <ClanLib/Display/sprite.h>
 #include "../res_descriptor.hxx"
 #include "../worldobj.hxx"
-
 
 namespace WorldObjsData {
 class SurfaceBackgroundData;
@@ -38,7 +36,7 @@ private:
   float para_y;
 
   /** Position of the background, only the z_pos is really used. */
-  Vector pos;
+  Vector3f pos;
 
   /** The amount of pixel the background is scrolled each frame in x
       direction. */
@@ -51,7 +49,7 @@ private:
   /** fill_rect() components
       An fill_rect() can be drawn over the background, the following
       for components are passed to the fill_rect() call. */
-  CL_Colorf color;
+  Color color;
 
   /** Stretch the background to the full screen size in x direction */
   bool stretch_x;
@@ -63,7 +61,7 @@ private:
   bool keep_aspect;
 
 	/** Background image */
-	CL_Sprite bg_surface;
+	Sprite bg_surface;
 
   /** The horizontal scrolling speed in pixels per tick */
   float scroll_ox;

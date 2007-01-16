@@ -43,18 +43,18 @@ ConveyorBelt::draw (SceneContext& gc)
   gc.color().draw(left_sur, pos);
   for (int i=0; i < width; ++i)
     gc.color().draw(middle_sur,
-	    Vector(static_cast<int>(pos.x + left_sur.get_width() + i * middle_sur.get_width()),
+	    Vector3f(static_cast<int>(pos.x + left_sur.get_width() + i * middle_sur.get_width()),
                   static_cast<int>(pos.y)));
 
   gc.color().draw(right_sur,
-	  Vector(static_cast<int>(pos.x + left_sur.get_width() + width * middle_sur.get_width()),
+	  Vector3f(static_cast<int>(pos.x + left_sur.get_width() + width * middle_sur.get_width()),
                  static_cast<int>(pos.y)));
 }
 
 void
 ConveyorBelt::on_startup ()
 {
-  CL_PixelBuffer sur(Resource::load_pixelbuffer("worldobjs/conveyorbelt_cmap"));
+  PixelBuffer sur(Resource::load_pixelbuffer("worldobjs/conveyorbelt_cmap"));
 
   for (int i=0; i < (width + 2); ++i)
     world->get_colmap()->put(sur,
@@ -78,7 +78,7 @@ ConveyorBelt::update ()
 	  && (*pingu)->get_pos().y > pos.y - 2
 	  && (*pingu)->get_pos().y < pos.y + 10)
 	{
-	  Vector pos = (*pingu)->get_pos();
+	  Vector3f pos = (*pingu)->get_pos();
 	  pos.x -= speed * 0.025f;
 	  (*pingu)->set_pos(pos);
 	}

@@ -33,7 +33,7 @@ FakeExit::FakeExit(const FileReader& reader)
     smashing(false)
 {
   reader.read_vector("position", pos);
-  pos -= Vector((float)surface.get_width ()/2, (float)surface.get_height ());
+  pos -= Vector3f((float)surface.get_width ()/2, (float)surface.get_height ());
 }
 
 float

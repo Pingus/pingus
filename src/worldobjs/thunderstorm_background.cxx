@@ -47,7 +47,7 @@ ThunderstormBackground::update ()
 void
 ThunderstormBackground::draw (SceneContext& gc)
 {
-  gc.color().draw(clouds_sur, Vector(x_pos, 0));
+  gc.color().draw(clouds_sur, Vector3f(x_pos, 0));
 }
 
 } // namespace WorldObjs

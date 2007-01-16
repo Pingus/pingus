@@ -20,10 +20,8 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_EXIT_HXX
 #define HEADER_PINGUS_WORLDOBJS_EXIT_HXX
 
-#include <ClanLib/Display/sprite.h>
 #include "../res_descriptor.hxx"
 #include "../worldobj.hxx"
-
 
 namespace WorldObjsData {
 class ExitData;
@@ -34,12 +32,12 @@ namespace WorldObjs {
 class Exit : public WorldObj
 {
 private:
-  Vector pos;
+  Vector3f pos;
   int owner_id;
 
-  CL_Sprite sprite;
-  CL_Sprite flag;
-  CL_Sprite smallmap_symbol;
+  Sprite sprite;
+  Sprite flag;
+  Sprite smallmap_symbol;
 
 public:
   Exit(const FileReader& reader);

@@ -18,7 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Core/System/clanstring.h>
 #include "../display/scene_context.hxx"
 #include "../col_map.hxx"
 #include "../world.hxx"
@@ -40,10 +39,10 @@ Exit::Exit(const FileReader& reader)
   reader.read_desc  ("surface",  desc);
   reader.read_int   ("owner-id", owner_id);
 
-	// Set default owner ID to 0
-	if (owner_id < 0 || owner_id > 3) owner_id = 0;
+  // Set default owner ID to 0
+  if (owner_id < 0 || owner_id > 3) owner_id = 0;
 
-  flag = Resource::load_sprite("core/misc/flag" + CL_String::to(owner_id));
+  flag = Resource::load_sprite("core/misc/flag"); ////+ CL_String::to(owner_id));
 
   sprite = Resource::load_sprite(desc);
 
@@ -58,16 +57,18 @@ Exit::~Exit ()
 void
 Exit::on_startup ()
 {
+#if 0
   world->get_colmap()->remove(sprite.get_frame_pixeldata(0),
 			      static_cast<int>(pos.x) - sprite.get_width()/2,
 			      static_cast<int>(pos.y) - sprite.get_height());
+#endif
 }
 
 void
 Exit::draw (SceneContext& gc)
 {
   gc.color().draw(sprite, pos);
-  gc.color().draw(flag, pos + Vector(40, 0));
+  gc.color().draw(flag, pos + Vector3f(40, 0));
 }
 
 void
@@ -84,25 +85,25 @@ Exit::update ()
   PinguHolder* holder = world->get_pingus();
 
   for (PinguIter pingu = holder->begin(); pingu != holder->end(); ++pingu)
-  {
-    // Make sure this particular exit is allowed for this pingu
-    if ((*pingu)->get_owner()  == owner_id)
     {
-      // Now, make sure the pingu is within range
-      if (   (*pingu)->get_pos().x > pos.x - 1 && (*pingu)->get_pos().x < pos.x + 1
-       	  && (*pingu)->get_pos().y > pos.y - 5 && (*pingu)->get_pos().y < pos.y + 2)
-      {
-        // Now, make sure the pingu isn't already exiting, gone, or dead
-    	  if (   (*pingu)->get_status() != PS_EXITED
-    	      && (*pingu)->get_status() != PS_DEAD
-    	      && (*pingu)->get_action() != Actions::Exiter)
+      // Make sure this particular exit is allowed for this pingu
+      if ((*pingu)->get_owner()  == owner_id)
         {
-          // Pingu actually exits
-          (*pingu)->set_action(Actions::Exiter);
+          // Now, make sure the pingu is within range
+          if (   (*pingu)->get_pos().x > pos.x - 1 && (*pingu)->get_pos().x < pos.x + 1
+                 && (*pingu)->get_pos().y > pos.y - 5 && (*pingu)->get_pos().y < pos.y + 2)
+            {
+              // Now, make sure the pingu isn't already exiting, gone, or dead
+              if (   (*pingu)->get_status() != PS_EXITED
+                     && (*pingu)->get_status() != PS_DEAD
+                     && (*pingu)->get_action() != Actions::Exiter)
+                {
+                  // Pingu actually exits
+                  (*pingu)->set_action(Actions::Exiter);
+                }
+            }
         }
-      }
     }
-  }
 }
 
 float

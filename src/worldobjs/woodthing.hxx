@@ -29,7 +29,7 @@ namespace WorldObjs {
 class WoodThing : public Entrance
 {
 private:
-  CL_Sprite   surface2;
+  Sprite   surface2;
 
 public:
   WoodThing(const FileReader& reader);

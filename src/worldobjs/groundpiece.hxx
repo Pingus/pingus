@@ -20,11 +20,10 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_GROUNDPIECE_HXX
 #define HEADER_PINGUS_WORLDOBJS_GROUNDPIECE_HXX
 
-#include <ClanLib/Display/sprite.h>
 #include "../res_descriptor.hxx"
 #include "../groundtype.hxx"
 #include "../worldobj.hxx"
-#include "../vector.hxx"
+#include "../math/vector3f.hpp"
 
 
 namespace WorldObjsData {
@@ -38,7 +37,7 @@ namespace WorldObjs {
 class Groundpiece : public WorldObj
 {
 private:
-  Vector        pos;
+  Vector3f        pos;
   ResDescriptor desc;
   Groundtype::GPType gptype;
 

@@ -34,8 +34,8 @@ namespace WorldObjs {
 class Hammer : public WorldObj
 {
 private:
-  CL_Sprite sprite;
-  Vector    pos;
+  Sprite sprite;
+  Vector3f    pos;
 
 public:
   Hammer(const FileReader& reader);

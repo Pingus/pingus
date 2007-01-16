@@ -20,8 +20,7 @@
 #ifndef HEADER_PINGUS_ENTRANCE_HXX
 #define HEADER_PINGUS_ENTRANCE_HXX
 
-#include <ClanLib/Display/sprite.h>
-#include "../vector.hxx"
+#include "../math/vector3f.hpp"
 #include "../res_descriptor.hxx"
 #include "../worldobj.hxx"
 
@@ -41,15 +40,15 @@ class Entrance : public WorldObj
 protected:
   enum EntranceDirection { LEFT, RIGHT, MISC };
   EntranceDirection direction;
-  Vector            pos;
+  Vector3f            pos;
   int               release_rate;
   int               owner_id;
 
   /// The type of the entrance type (woodthing, generic, etc.)
   std::string type;
 
-  CL_Sprite smallmap_symbol;
-  CL_Sprite surface;
+  Sprite smallmap_symbol;
+  Sprite surface;
   int        last_release;
 
 public:

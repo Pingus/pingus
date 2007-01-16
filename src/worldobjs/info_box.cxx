@@ -17,8 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/font.h>
-#include <ClanLib/Display/display.h>
 #include "../display/scene_context.hxx"
 #include "../pingu.hxx"
 #include "../pingu_holder.hxx"
@@ -51,13 +49,13 @@ InfoBox::draw (SceneContext& gc)
     {
       int width = Fonts::pingus_small.bounding_rect(0, 0, info_text).get_width();
       int border = 6;
-      gc.color().draw_line(pos, pos + Vector(0, 0 - 100), 0.0f, 1.0f, 0.0f, 1.0f);
+      gc.color().draw_line(pos, pos + Vector3f(0, 0 - 100), 0.0f, 1.0f, 0.0f, 1.0f);
       gc.color().draw(sprite, pos);
       CL_Display::fill_rect(CL_Rect(x_pos - width/2 - border,
                                     y_pos - border,
                                     x_pos + width/2 + border,
                                     y_pos + Fonts::pingus_small.get_height() + border),
-			    CL_Color(0, 0, 0, 255));
+			    Color(0, 0, 0, 255));
       gc.print_center(Fonts::pingus_small, x_pos, y_pos, info_text);
     }
   else

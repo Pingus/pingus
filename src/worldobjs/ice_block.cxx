@@ -42,7 +42,7 @@ IceBlock::IceBlock(const FileReader& reader)
 void
 IceBlock::on_startup ()
 {
-  CL_PixelBuffer surf(Resource::load_pixelbuffer("worldobjs/iceblock_cmap"));
+  PixelBuffer surf(Resource::load_pixelbuffer("worldobjs/iceblock_cmap"));
 
   world->get_colmap()->put(surf,
                            static_cast<int>(pos.x),
@@ -88,7 +88,7 @@ IceBlock::update()
 	  is_finished = true;
 	  thickness = 0;
 
-	  CL_PixelBuffer surf(Resource::load_pixelbuffer("worldobjs/iceblock_cmap"));
+	  PixelBuffer surf(Resource::load_pixelbuffer("worldobjs/iceblock_cmap"));
 	  world->get_colmap ()->remove(surf, static_cast<int>(pos.x), static_cast<int>(pos.y));
 	  world->get_gfx_map()->remove(surf, static_cast<int>(pos.x), static_cast<int>(pos.y));
 	  return;

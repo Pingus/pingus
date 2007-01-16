@@ -57,7 +57,7 @@ private:
 };
 
 } // namespace WorldObjs
-} // 
+
 #endif
 
 /* EOF */

@@ -20,9 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_SWITCH_DOOR_HXX
 #define HEADER_PINGUS_WORLDOBJS_SWITCH_DOOR_HXX
 
-#include <ClanLib/Display/sprite.h>
 #include "../worldobj.hxx"
-
 
 namespace WorldObjsData {
 class SwitchDoorData;
@@ -36,18 +34,18 @@ class SwitchDoor : public WorldObj
 {
 private:
   /// The upper/middle pos of the door
-  Vector door_pos;
+  Vector3f door_pos;
 
   /// The bottom/middle pos of the switch
-  Vector switch_pos;
+  Vector3f switch_pos;
 
   // The height of the door in graphic tiles
   int door_height;
 
-  CL_Sprite door_box;
-  CL_Sprite door_tile;
-  CL_PixelBuffer door_tile_cmap;
-  CL_Sprite switch_sur;
+  Sprite door_box;
+  Sprite door_tile;
+  PixelBuffer door_tile_cmap;
+  Sprite switch_sur;
 
   /** True if the door is opening */
   bool is_opening;

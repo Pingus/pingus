@@ -20,9 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_INFO_BOX_HXX
 #define HEADER_PINGUS_WORLDOBJS_INFO_BOX_HXX
 
-#include <ClanLib/Display/sprite.h>
 #include "../worldobj.hxx"
-
 
 namespace WorldObjsData {
 class InfoBoxData;
@@ -34,10 +32,10 @@ class InfoBox : public WorldObj
 {
 private:
   std::string info_text;
-  Vector pos;
-  Vector text_pos;
+  Vector3f pos;
+  Vector3f text_pos;
 
-  CL_Sprite sprite;
+  Sprite sprite;
   bool is_open;
 
 public:

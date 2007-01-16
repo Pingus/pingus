@@ -20,15 +20,15 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_STARFIELD_BACKGROUND_STARS_HXX
 #define HEADER_PINGUS_WORLDOBJS_STARFIELD_BACKGROUND_STARS_HXX
 
-#include <ClanLib/Display/sprite.h>
 #include "../worldobj.hxx"
+#include "../sprite.hpp"
 
 namespace WorldObjs {
 
 class StarfieldBackgroundStars
 {
 private:
-  CL_Sprite sur;
+  Sprite sur;
 
   float x_pos;
   float y_pos;
