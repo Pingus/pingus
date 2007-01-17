@@ -23,27 +23,22 @@
 **  02111-1307, USA.
 */
 
-#ifndef HEADER_PIXEL_BUFFER_HPP
-#define HEADER_PIXEL_BUFFER_HPP
+#include "pixel_buffer.hpp"
 
-/** */
-class PixelBuffer
+PixelBuffer::PixelBuffer()
 {
-private:
-  int width;
-  int height;
-  unsigned char* data;
+}
 
-public:
-  PixelBuffer();
-  PixelBuffer(int width, int height);
-  ~PixelBuffer();
+PixelBuffer::PixelBuffer(int width_, int height_)
+  : width(width_),
+    height(height_)
+{
+  data = new unsigned char[4 * width * height];
+}
 
-  unsigned char* get_data() { return data; }
-  int get_width()  const { return width; }
-  int get_height() const { return height; }
-};
-
-#endif
+PixelBuffer::~PixelBuffer()
+{
+  delete[] data;
+}
 
 /* EOF */

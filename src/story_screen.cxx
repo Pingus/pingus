@@ -19,7 +19,6 @@
 
 #include <algorithm>
 #include <vector>
-#include <ClanLib/Display/surface.h>
 #include "gettext.h"
 #include "resource.hxx"
 #include "gui/gui_manager.hxx"
@@ -42,7 +41,7 @@
 class StoryScreenComponent : public GUI::Component
 {
 private:
-  CL_Sprite background;
+  Sprite background;
   std::string display_text;
   float time_passed;
 
@@ -50,7 +49,7 @@ private:
 
   WorldMapNS::WorldMapStory *story;
   std::vector<StoryPage> pages;
-  CL_Sprite page_surface;
+  Sprite page_surface;
   StoryPage  current_page;
 public:
   StoryScreenComponent (WorldMapNS::WorldMapStory *arg_pages);
@@ -70,7 +69,7 @@ private:
   StoryScreenComponent* story_comp;
 public:
   StoryScreenContinueButton(StoryScreenComponent* arg_story_comp)
-    : GUI::SurfaceButton(CL_Display::get_width()/2 + 220, CL_Display::get_height()/2 + 160,
+    : GUI::SurfaceButton(Display::get_width()/2 + 220, Display::get_height()/2 + 160,
                          ResDescriptor("core/misc/next"),
                          ResDescriptor("core/misc/next"),
                          ResDescriptor("core/misc/next_hover")),
@@ -117,15 +116,15 @@ StoryScreenComponent::StoryScreenComponent (WorldMapNS::WorldMapStory *arg_story
 void
 StoryScreenComponent::draw (DrawingContext& gc)
 {
-  gc.draw(background, Vector(gc.get_width()/2, gc.get_height()/2));
+  gc.draw(background, Vector3f(gc.get_width()/2, gc.get_height()/2));
 
-  gc.print_center(Fonts::chalk_large, static_cast<float>(CL_Display::get_width()/2),
-                  static_cast<float>(CL_Display::get_height()/2 - 200), story->get_title());
-  gc.draw(page_surface, Vector(gc.get_width()/2, gc.get_height()/2 - 65));
+  gc.print_center(Fonts::chalk_large, static_cast<float>(Display::get_width()/2),
+                  static_cast<float>(Display::get_height()/2 - 200), story->get_title());
+  gc.draw(page_surface, Vector3f(gc.get_width()/2, gc.get_height()/2 - 65));
   
   gc.print_left(Fonts::chalk_normal,
-                static_cast<float>(CL_Display::get_width()/2  - 280),
-                static_cast<float>(CL_Display::get_height()/2 + 35),
+                static_cast<float>(Display::get_width()/2  - 280),
+                static_cast<float>(Display::get_height()/2 + 35),
                 display_text);
 }
 

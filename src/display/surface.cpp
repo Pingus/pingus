@@ -23,27 +23,40 @@
 **  02111-1307, USA.
 */
 
-#ifndef HEADER_PIXEL_BUFFER_HPP
-#define HEADER_PIXEL_BUFFER_HPP
+#include "surface.hpp"
 
-/** */
-class PixelBuffer
+class SurfaceImpl
 {
-private:
-  int width;
-  int height;
-  unsigned char* data;
-
 public:
-  PixelBuffer();
-  PixelBuffer(int width, int height);
-  ~PixelBuffer();
-
-  unsigned char* get_data() { return data; }
-  int get_width()  const { return width; }
-  int get_height() const { return height; }
+  SDL_Surface* surface;
 };
 
-#endif
+Surface::Surface(SDL_Surface* surface, bool delete_it = false)
+  : surface(surface_)
+{
+  
+}
+
+Surface::Surface(const std::string& filename)
+  : impl(new SurfaceImpl(filename))
+{
+  surface = IMG_Load(filename.c_str());
+  if (!surface)
+    {
+      std::cout << "Error: Couldn't load " << filename << std::endl;
+      surface = IMG_Load("data/images/core/misc/404.png");
+      assert(surface);
+    }
+}
+
+Surface::~Surface()
+{
+  
+}
+  
+Surface::operate bool() const
+{
+  return impl.get();
+}
 
 /* EOF */

@@ -23,25 +23,24 @@
 **  02111-1307, USA.
 */
 
-#ifndef HEADER_PIXEL_BUFFER_HPP
-#define HEADER_PIXEL_BUFFER_HPP
+#ifndef HEADER_SURFACE_HPP
+#define HEADER_SURFACE_HPP
+
+class SurfaceImpl;
 
 /** */
-class PixelBuffer
+class Surface
 {
 private:
-  int width;
-  int height;
-  unsigned char* data;
-
 public:
-  PixelBuffer();
-  PixelBuffer(int width, int height);
-  ~PixelBuffer();
-
-  unsigned char* get_data() { return data; }
-  int get_width()  const { return width; }
-  int get_height() const { return height; }
+  Surface();
+  Surface(SDL_Surface*, bool delete_it = false);
+  Surface(const std::string& filename);
+  ~Surface();
+  
+  operate bool() const;
+private:
+  SharedPtr<SurfaceImpl> impl;
 };
 
 #endif

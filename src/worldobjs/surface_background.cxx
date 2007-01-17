@@ -65,32 +65,30 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
   if (color.a > 1.0)
     std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
 
+#if 0
   PixelBuffer canvas = Resource::load_pixelbuffer(desc);
 
   // Scaling Code
   if (stretch_x && stretch_y)
     {
-      ////canvas = Blitter::scale_surface_to_canvas(canvas, world->get_width(), world->get_height());
+      canvas = Blitter::scale_surface_to_canvas(canvas, world->get_width(), world->get_height());
     }
   else if (stretch_x && !stretch_y)
     {
       if (keep_aspect)
         {
-#if 0
           float aspect = canvas.get_height()/float(canvas.get_width());
           canvas = Blitter::scale_surface_to_canvas(canvas,
                                                     world->get_width(),
                                                     int(world->get_width()*aspect));
-#endif
         }
       else
         {
-          ////canvas = Blitter::scale_surface_to_canvas(canvas, canvas.get_width(), world->get_height());
+          canvas = Blitter::scale_surface_to_canvas(canvas, canvas.get_width(), world->get_height());
         }
     }
   else if (!stretch_x && stretch_y)
     {
-#if 0
       if (keep_aspect)
         {
           float aspect = float(canvas.get_width())/canvas.get_height();
@@ -102,13 +100,13 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
         {
           canvas = Blitter::scale_surface_to_canvas(canvas, canvas.get_width(), world->get_height());
         }
-#endif
     }
 
-#if 0
   SpriteDescription sprite_desc;
   sprite_desc.add_frame(canvas);
   bg_surface = Sprite(sprite_desc);
+#else
+  bg_surface = Resource::load_sprite(desc);
 #endif
 
   timer.stop();
@@ -155,7 +153,7 @@ SurfaceBackground::draw (SceneContext& gc)
 
   if (fast_mode)
     {
-      ////Display::clear();
+      Display::clear();
     }
   else
     {

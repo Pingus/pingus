@@ -982,7 +982,6 @@ PingusMain::deinit_pingus()
   Resource::deinit();
 }
 
-
 int main(int argc, char** argv)
 {
   PingusMain app;

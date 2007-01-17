@@ -104,5 +104,10 @@ Display::get_height()
   return screen->h;
 }
 
+void
+Display::clear()
+{
+  SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
+}
 
 /* EOF */

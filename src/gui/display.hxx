@@ -65,6 +65,9 @@ public:
   static int get_height();
 
   static void set_video_mode(int width, int height);
+  
+  static void clear();
+
   static SDL_Surface* get_screen() { return screen; }
 private:
   Display ();

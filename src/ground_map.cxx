@@ -119,7 +119,6 @@ GroundMap::draw_colmap(SceneContext& gc)
 void
 GroundMap::draw(SceneContext& gc)
 {
-#if 0
   const Rect& display = gc.color().get_clip_rect();
 
   // FIXME: delete the next four lines and replace them with gc.get_clip_rect()
@@ -141,22 +140,20 @@ GroundMap::draw(SceneContext& gc)
           {
             if (tile[x][y].get_surface())
               {
-                gc.color().draw(tile[x][y].get_surface(),
-                                Vector(static_cast<float>(x * tile_size),
-                                       static_cast<float>(y * tile_size)));
+                ////gc.color().draw(tile[x][y].get_surface(),
+                ////Vector3f((x * tile_size, y * tile_size)));
               }
             else
               {
                 if (pingus_debug_flags & PINGUS_DEBUG_TILES)
-                  gc.color().draw_fillrect(static_cast<float>(x * tile_size),
-                                           static_cast<float>(y * tile_size),
-                                           static_cast<float>(x * tile_size + tile_size),
-                                           static_cast<float>(y * tile_size + tile_size),
+                  gc.color().draw_fillrect(x * tile_size,
+                                           y * tile_size,
+                                           x * tile_size + tile_size,
+                                           y * tile_size + tile_size,
                                            Color(255, 0, 0, 75));
               }
           }
     }
-#endif
 }
 
 // Returns the width of the map, it is read directly from the *.psm file

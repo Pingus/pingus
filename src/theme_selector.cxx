@@ -31,7 +31,6 @@
 #include "theme_selector.hxx"
 #include "pingus_error.hxx"
 #include "resource.hxx"
-#include "loading.hxx"
 #include "sound/sound.hxx"
 #include "path_manager.hxx"
 #include "system.hxx"

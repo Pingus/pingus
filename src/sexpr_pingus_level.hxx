@@ -1,7 +1,7 @@
-//  $Id: pingus_map_manager.hxx,v 1.7 2003/10/18 23:17:27 grumbel Exp $
-//
+//  $Id$
+// 
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -12,33 +12,23 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-//
+// 
 //  You should have received a copy of the GNU General Public License
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_PINGUS_MAP_MANAGER_HXX
-#define HEADER_PINGUS_PINGUS_MAP_MANAGER_HXX
+#ifndef HEADER_SEXPR_PINGUS_LEVEL_HXX
+#define HEADER_SEXPR_PINGUS_LEVEL_HXX
 
-#include "pingus.hxx"
-#include <string>
-#include <assert.h>
+#include "pingus_level.hxx"
 
-class CL_Surface;
-
-
-class PingusMapManager
+/** */
+class SExprPingusLevel : public PingusLevel
 {
 private:
-  static std::string directory;
-
 public:
-  static CL_Surface get_surface (const std::string& level_filename);
-  static void set_surface (const std::string& level_filename, const CL_Surface&);
-
-private:
-  PingusMapManager (const PingusMapManager&);
-  PingusMapManager& operator= (const PingusMapManager&);
+  SExrPingusLevel(const std::string& res_name,
+                  const std::string& filename);
 };
 
 

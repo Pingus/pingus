@@ -23,27 +23,14 @@
 **  02111-1307, USA.
 */
 
-#ifndef HEADER_PIXEL_BUFFER_HPP
-#define HEADER_PIXEL_BUFFER_HPP
+#include "sexpr_pingus_level.hpp"
 
-/** */
-class PixelBuffer
+SExrPingusLevel::SExrPingusLevel(const std::string& res_name,
+                                 const std::string& filename)
 {
-private:
-  int width;
-  int height;
-  unsigned char* data;
+   impl->resname = res_name;
 
-public:
-  PixelBuffer();
-  PixelBuffer(int width, int height);
-  ~PixelBuffer();
-
-  unsigned char* get_data() { return data; }
-  int get_width()  const { return width; }
-  int get_height() const { return height; }
-};
-
-#endif
+   
+}
 
 /* EOF */
