@@ -129,4 +129,32 @@ PixelBuffer::operator bool() const
   return surface;
 }
 
+Color
+PixelBuffer::get_pixel(int x, int y) const
+{
+  Uint8 *p = (Uint8 *)surface->pixels + y * surface->pitch + x * surface->format->BytesPerPixel;
+  Uint32 pixel;
+
+  switch(surface->format->BytesPerPixel)
+    {
+    case 1:
+      pixel = *p;
+    case 2: /* This will cause some problems ... */
+      pixel = *(Uint16 *)p;
+    case 3:
+      if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
+	pixel = p[0] << 16 | p[1] << 8 | p[2];
+      else
+	pixel = p[0] | p[1] << 8 | p[2] << 16;
+    case 4:
+      pixel = *(Uint32 *)p;
+    default:
+      pixel = 0;       /* shouldn't happen, but avoids warnings */
+    } 
+
+  Color color;
+  SDL_GetRGBA(pixel, surface->format, &color.r, &color.g, &color.b, &color.a);
+  return color;
+}
+
 /* EOF */

@@ -33,6 +33,7 @@
 #include "display/scene_context.hxx"
 #include "pingus_level.hxx"
 #include "worldobj_factory.hxx"
+#include "col_map.hxx"
 #include "game_time.hxx"
 
 
@@ -277,6 +278,7 @@ void
 World::put(const CollisionMask& mask, int x, int y, Groundtype::GPType type)
 {
   gfx_map->put(mask.get_pixelbuffer(), x, y);
+  colmap->put(mask.get_pixelbuffer(), x, y, type);
 }
 
 void

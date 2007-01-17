@@ -28,6 +28,7 @@
 
 #include "SDL.h"
 #include <string>
+#include "math/color.hpp"
 
 /** */
 class PixelBuffer
@@ -49,6 +50,8 @@ public:
   int get_height() const;
 
   void blit(const PixelBuffer& source, int x, int y);
+
+  Color get_pixel(int x, int y) const;
 
   SDL_Surface* get_surface() const;
 

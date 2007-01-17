@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include "SDL.h"
 #include "display/drawing_context.hxx"
 #include "globals.hxx"
 #include "col_map.hxx"
@@ -164,7 +165,6 @@ ColMap::blit_allowed (int x, int y,  Groundtype::GPType gtype)
 void
 ColMap::put(PixelBuffer provider, int sur_x, int sur_y, Groundtype::GPType pixel)
 {
-#if 0
   // transparent groundpieces are only drawn on the gfx map, not on the colmap
   if (pixel == Groundtype::GP_TRANSPARENT)
     return;
@@ -179,22 +179,22 @@ ColMap::put(PixelBuffer provider, int sur_x, int sur_y, Groundtype::GPType pixel
       return;
     }
 
+  // FIXME: Little slow
   provider.lock();
+  // Rewritting blitter for 32bit depth (using get_pixel())
+  for (int y=0; y < provider.get_height(); ++y)
+    for (int x=0; x < provider.get_width(); ++x)
+      {
+        Color color = provider.get_pixel(x, y);
+        if (color.a > 32) // Alpha threshold
+          {
+            if (blit_allowed (x + sur_x, y + sur_y, pixel))
+              put(x + sur_x, y + sur_y, pixel);
+          }
+      }
+  provider.unlock();
 
-  if (provider.get_format().get_depth() == 32)
-    {
-      // Rewritting blitter for 32bit depth (using get_pixel())
-      for (int y=0; y < provider.get_height(); ++y)
-	for (int x=0; x < provider.get_width(); ++x)
-	  {
-	    Color color = provider.get_pixel(x, y);
-	    if (color.get_alpha() > 0.1) // Alpha threshold
-	      {
-		if (blit_allowed (x + sur_x, y + sur_y, pixel))
-		  put(x + sur_x, y + sur_y, pixel);
-	      }
-	  }
-    }
+#if 0
   else if (provider.get_format().get_depth() == 8)
     {
       unsigned char* buffer;
