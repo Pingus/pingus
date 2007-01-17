@@ -48,8 +48,8 @@ Bridger::Bridger (Pingu* p)
   build_sprite.load (Direction::RIGHT, Resource::load_sprite("pingus/player" + 
                                                              pingu->get_owner_str() + "/bridger/right"));
 
-  brick_l = Resource::load_pixelbuffer("other/brick_left");
-  brick_r = Resource::load_pixelbuffer("other/brick_right");
+  brick_l = Resource::load_collision_mask("other/brick_left");
+  brick_r = Resource::load_collision_mask("other/brick_right");
 }
 
 void
@@ -220,23 +220,17 @@ Bridger::place_a_brick()
 
   if (pingu->direction.is_right())
     {
-      WorldObj::get_world()->get_colmap()->put(brick_r,
-					       static_cast<int>(pingu->get_pos().x + 10 - brick_r.get_width()),
-					       static_cast<int>(pingu->get_pos().y),
-					       Groundtype::GP_BRIDGE);
-      WorldObj::get_world()->get_gfx_map()->put(brick_r,
-						static_cast<int>(pingu->get_pos().x + 10 - brick_r.get_width()),
-						static_cast<int>(pingu->get_pos().y));
+      WorldObj::get_world()->put(brick_r,
+                                 static_cast<int>(pingu->get_pos().x + 10 - brick_r.get_width()),
+                                 static_cast<int>(pingu->get_pos().y),
+                                 Groundtype::GP_BRIDGE);
     }
   else
     {
-      WorldObj::get_world()->get_colmap()->put(brick_r,
+      WorldObj::get_world()->put(brick_r,
 					       static_cast<int>(pingu->get_pos().x - 10),
 					       static_cast<int>(pingu->get_pos().y),
 					       Groundtype::GP_BRIDGE);
-      WorldObj::get_world()->get_gfx_map()->put(brick_l,
-						static_cast<int>(pingu->get_pos().x - 10),
-						static_cast<int>(pingu->get_pos().y));
     }
 }
 

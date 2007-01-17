@@ -27,8 +27,8 @@ namespace Actions {
 class Digger : public PinguAction
 {
 private:
-  PixelBuffer digger_radius;
-  PixelBuffer digger_radius_gfx;
+  CollisionMask digger_radius;
+  CollisionMask digger_radius_gfx;
   Sprite sprite;
   int digger_c;
 

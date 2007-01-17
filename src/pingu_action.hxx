@@ -22,6 +22,7 @@
 
 #include "pingu_enums.hxx"
 #include "pixel_buffer.hpp"
+#include "collision_mask.hpp"
 
 class ActionHolder;
 class SceneContext;

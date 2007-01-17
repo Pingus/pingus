@@ -274,5 +274,24 @@ float World::get_gravity()
   return gravitational_acceleration;
 }
 
+void
+World::put(int x, int y, Groundtype::GPType p)
+{
+}
+
+void
+World::put(const CollisionMask&, int x, int y, Groundtype::GPType)
+{
+}
+
+void
+World::remove(int x, int y)
+{
+}
+
+void
+World::remove(const CollisionMask&, int x, int y)
+{
+}
 
 /* EOF */

@@ -28,17 +28,13 @@ namespace Actions {
 class Basher : public PinguAction
 {
 private:
-  StateSprite sprite;
-  PixelBuffer bash_radius;
-  PixelBuffer bash_radius_gfx;
-  int basher_c;
+  StateSprite   sprite;
+  CollisionMask bash_radius;
+  int  basher_c;
   bool first_bash;
 
   /** Width of the bash_radius surface */
   unsigned int bash_radius_width;
-
-  /** Width of the bash_radius_gfx surface */
-  unsigned int bash_radius_gfx_width;
 
   /** The no. of pixels ahead that a Basher checks for something bashable.
       This is initialised using the size of the bash_radius surface. */

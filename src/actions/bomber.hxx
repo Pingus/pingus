@@ -35,10 +35,7 @@ private:
   bool gfx_exploded;
   bool colmap_exploded;
 
-  static bool static_surface_loaded;
-  static PixelBuffer bomber_radius;
-  static PixelBuffer bomber_radius_gfx;
-
+  CollisionMask bomber_radius;
   StateSprite sprite;
 
   Sprite   explo_surf;

@@ -26,9 +26,9 @@
 #include "pixel_buffer.hpp"
 #include "res_descriptor.hxx"
 #include "resource_manager.hpp"
+#include "collision_mask.hpp"
 
 class CL_ResourceManager;
-
 
 /** General Resource Managing class, it provides wrappers around
     CL_Surface::load(), CL_Font::load() and friends.  This class is
@@ -71,10 +71,11 @@ public:
   /** Load a surface from the ResDescriptor */
   static CL_Surface load_surface(const ResDescriptor&);
 #endif
-  static Sprite  load_sprite(const ResDescriptor&);
-  static Sprite  load_sprite(const std::string& res_name);
-  static PixelBuffer load_pixelbuffer(const std::string& res_name);
-  static PixelBuffer load_pixelbuffer(const ResDescriptor&);
+  static Sprite        load_sprite(const ResDescriptor&);
+  static Sprite        load_sprite(const std::string& res_name);
+  static CollisionMask load_collision_mask(const std::string& res_name);
+  static PixelBuffer   load_pixelbuffer(const std::string& res_name);
+  static PixelBuffer   load_pixelbuffer(const ResDescriptor&);
 
 #if 0
   static CL_Sprite  load_sprite(const std::string& res_name);

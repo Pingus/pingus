@@ -146,6 +146,12 @@ Resource::load_sprite_desc(const std::string& res_name)
 }
 #endif
 
+CollisionMask
+Resource::load_collision_mask(const std::string& name_)
+{
+  return CollisionMask();
+}
+
 PixelBuffer
 Resource::load_pixelbuffer(const ResDescriptor& desc_)
 {

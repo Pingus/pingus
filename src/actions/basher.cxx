@@ -32,8 +32,7 @@ namespace Actions {
 
 Basher::Basher (Pingu* p)
   : PinguAction(p),
-    bash_radius(Resource::load_pixelbuffer("other/bash_radius")),
-    bash_radius_gfx(Resource::load_pixelbuffer("other/bash_radius_gfx")),
+    bash_radius(Resource::load_collision_mask("other/bash_radius")),
     basher_c(0),
     first_bash(true)
 {
@@ -42,9 +41,8 @@ Basher::Basher (Pingu* p)
   sprite.load(Direction::RIGHT, Resource::load_sprite("pingus/player" + 
     pingu->get_owner_str() + "/basher/right"));
 
-  bash_radius_width     = bash_radius.get_width();
-  bash_radius_gfx_width = bash_radius_gfx.get_width();
-
+  bash_radius_width = bash_radius.get_width();
+  
   // The +1 is just in case bash_radius is an odd no.  In which case, want to
   // round up the result.
   bash_reach = static_cast<int>(bash_radius_width + 1) / 2;
@@ -108,12 +106,9 @@ Basher::update ()
 void
 Basher::bash()
 {
-  WorldObj::get_world()->get_colmap()->remove(bash_radius,
-					      static_cast<int>(pingu->get_x () - (bash_radius_width / 2)),
-					      static_cast<int>(pingu->get_y () - bash_radius_width + 1));
-  WorldObj::get_world()->get_gfx_map()->remove(bash_radius_gfx,
-					       static_cast<int>(pingu->get_x () - (bash_radius_gfx_width / 2)),
-					       static_cast<int>(pingu->get_y () - bash_radius_gfx_width + 1));
+  WorldObj::get_world()->remove(bash_radius,
+                                static_cast<int>(pingu->get_x () - (bash_radius_width / 2)),
+                                static_cast<int>(pingu->get_y () - bash_radius_width + 1));
 }
 
 void

@@ -24,6 +24,8 @@
 #include <vector>
 #include <string>
 #include "math/color.hpp"
+#include "groundtype.hxx"
+#include "collision_mask.hpp"
 
 // Forward declarations
 class Vector3f;
@@ -126,6 +128,12 @@ public:
 
   /** @return A pointer to the gfx map of this world */
   GroundMap* get_gfx_map();
+
+  void put(int x, int y, Groundtype::GPType p = Groundtype::GP_GROUND);
+  void put(const CollisionMask&, int x, int y, Groundtype::GPType);
+
+  void remove(int x, int y);
+  void remove(const CollisionMask&, int x, int y);
 
   /** @return A pointer to the worlds pingu particle holder */
   Particles::PinguParticleHolder* get_pingu_particle_holder () { return pingu_particle_holder; }

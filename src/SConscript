@@ -131,6 +131,7 @@ env.Program('../pingus', [
 'command_line_generic.cpp',
 
 'pixel_buffer.cpp',
+'collision_mask.cpp',
 
 'exit_menu.cxx', 
 'file_dialog.cxx', 

@@ -34,10 +34,6 @@
 
 namespace Actions {
 
-bool Bomber::static_surface_loaded = false;
-PixelBuffer Bomber::bomber_radius;
-PixelBuffer Bomber::bomber_radius_gfx;
-
 Bomber::Bomber (Pingu* p)
   : PinguAction(p),
     particle_thrown(false),
@@ -49,13 +45,7 @@ Bomber::Bomber (Pingu* p)
   sprite.load(Direction::LEFT,  "pingus/player" + pingu->get_owner_str() + "/bomber/left");
   sprite.load(Direction::RIGHT, "pingus/player" + pingu->get_owner_str() + "/bomber/right");
 
-  // Only load the surface again if no static_surface is available
-  if (!static_surface_loaded)
-    {
-      static_surface_loaded = true;
-      bomber_radius     = Resource::load_pixelbuffer("other/bomber_radius");
-      bomber_radius_gfx = Resource::load_pixelbuffer("other/bomber_radius_gfx");
-    }
+  bomber_radius = Resource::load_collision_mask("other/bomber_radius");
 }
 
 void
@@ -123,12 +113,9 @@ Bomber::update ()
   if (sprite[pingu->direction].get_current_frame () >= 13 && !colmap_exploded)
     {
       colmap_exploded = true;
-      WorldObj::get_world()->get_colmap()->remove(bomber_radius,
+      WorldObj::get_world()->remove(bomber_radius,
                                                   static_cast<int>(pingu->get_x () - (bomber_radius.get_width()/2)),
                                                   static_cast<int>(pingu->get_y () - 16 - (bomber_radius.get_width()/2)));
-      WorldObj::get_world()->get_gfx_map()->remove(bomber_radius_gfx,
-                                                   static_cast<int>(pingu->get_x () - (bomber_radius.get_width()/2)),
-                                                   static_cast<int>(pingu->get_y () - 16 - (bomber_radius.get_width()/2)));
     }
 
   // The pingu explode

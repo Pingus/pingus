@@ -32,8 +32,8 @@ namespace Actions {
 
 Digger::Digger (Pingu* p)
   : PinguAction(p),
-    digger_radius(Resource::load_pixelbuffer("other/digger_radius")),
-    digger_radius_gfx(Resource::load_pixelbuffer("other/digger_radius")),
+    digger_radius(Resource::load_collision_mask("other/digger_radius")),
+    digger_radius_gfx(Resource::load_collision_mask("other/digger_radius")),
     digger_c(0)
 {
   digger_radius_width  = digger_radius.get_width();
@@ -92,12 +92,9 @@ Digger::have_something_to_dig ()
 void
 Digger::dig ()
 {
-  WorldObj::get_world()->get_colmap()->remove(digger_radius,
-					      static_cast<int>(pingu->get_pos().x - (digger_radius_width / 2)),
-					      static_cast<int>(pingu->get_pos().y - digger_radius_height + 2));
-  WorldObj::get_world()->get_gfx_map()->remove(digger_radius_gfx,
-					       static_cast<int>(pingu->get_pos().x - (digger_radius_gfx_width / 2)),
-					       static_cast<int>(pingu->get_pos().y - digger_radius_gfx_height + 2));
+  WorldObj::get_world()->remove(digger_radius,
+                                static_cast<int>(pingu->get_pos().x - (digger_radius_width / 2)),
+                                static_cast<int>(pingu->get_pos().y - digger_radius_height + 2));
   pingu->set_pos(pingu->get_pos().x, pingu->get_pos().y + 1.0f);
 }
 

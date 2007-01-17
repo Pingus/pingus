@@ -36,8 +36,8 @@ private:
 private:
   StateSprite walk_sprite;
   StateSprite build_sprite;
-  PixelBuffer brick_l;
-  PixelBuffer brick_r;
+  CollisionMask brick_l;
+  CollisionMask brick_r;
 
   int bricks;
   //int step;
