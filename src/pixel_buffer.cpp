@@ -23,22 +23,110 @@
 **  02111-1307, USA.
 */
 
+#include "SDL_image.h"
+#include <sstream>
+#include <iostream>
 #include "pixel_buffer.hpp"
 
 PixelBuffer::PixelBuffer()
+  : surface(0)
 {
 }
 
-PixelBuffer::PixelBuffer(int width_, int height_)
-  : width(width_),
-    height(height_)
+PixelBuffer::PixelBuffer(const std::string& name_)
 {
-  data = new unsigned char[4 * width * height];
+  std::ostringstream str;
+  str << "data/images/" << name_ << ".png";
+  std::string name = str.str();
+  surface = IMG_Load(name.c_str());
+  if (surface)
+    std::cout << "Loaded pixelbuffer: " << name << ": " << surface->w << "x" << surface->h << std::endl;
+  else
+    std::cout << "XXXXXX Failed to load: " << name << std::endl;
+}
+
+PixelBuffer::PixelBuffer(int width, int height)
+{
+  surface = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 32,
+                                 0x000000ff,
+                                 0x0000ff00,
+                                 0x00ff0000,
+                                 0xff000000);
+  SDL_FillRect(surface, NULL, SDL_MapRGBA(surface->format, 255, 0, 0, 255));
 }
 
 PixelBuffer::~PixelBuffer()
 {
-  delete[] data;
+  ////delete[] data;
+}
+
+void
+PixelBuffer::blit(const PixelBuffer& src, int x, int y)
+{
+  if (!surface)
+    {
+      std::cout << "PixelBuffer: Trying to blit to empty surface" << std::endl;
+    }
+  else if (!src.surface)
+    {
+      std::cout << "PixelBuffer: Trying to blit with an empty surface" << std::endl;
+    }
+  else
+    {
+      SDL_Rect dstrect;
+
+      dstrect.x = x;
+      dstrect.y = y;
+
+      SDL_BlitSurface(src.surface, NULL, surface, &dstrect);
+    }
+}
+
+void
+PixelBuffer::lock()
+{
+  SDL_LockSurface(surface);
+}
+
+void
+PixelBuffer::unlock()
+{
+  SDL_UnlockSurface(surface);
+}
+
+uint8_t*
+PixelBuffer::get_data() const
+{
+  return static_cast<uint8_t*>(surface->pixels);
+}
+
+int
+PixelBuffer::get_width()  const
+{
+  if (surface)
+    return surface->w;
+  else
+    return 0;
+}
+
+int
+PixelBuffer::get_height() const
+{
+  if (surface)
+    return surface->h;
+  else
+    return 0;
+}
+
+SDL_Surface* 
+PixelBuffer::get_surface() const
+{
+  return surface;
+}
+
+PixelBuffer::operator bool() const
+{
+  return surface;
 }
 
 /* EOF */

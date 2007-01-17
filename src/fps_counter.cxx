@@ -18,9 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdio.h>
-#include <ClanLib/Core/System/system.h>
-#include <ClanLib/Display/display.h>
-#include <ClanLib/Display/font.h>
 #include "fonts.hxx"
 #include "fps_counter.hxx"
 #include "gettext.h"
@@ -34,7 +31,7 @@ FPSCounter::FPSCounter()
 
 FPSCounter::~FPSCounter()
 {
-	font = CL_Font();
+	font = Font();
 }
 
 // We are not initialising the fpscounter in the constructor, 'cause
@@ -44,7 +41,7 @@ FPSCounter::init()
 {
   font = Fonts::pingus_small;
   font.set_alignment(origin_top_right);
-  start_time = CL_System::get_time();
+  start_time = SDL_GetTicks();
   strcat(fps_string, _("unknown"));
   fps_count = 0;
 }
@@ -53,7 +50,7 @@ FPSCounter::init()
 // we unload all of our resources.
 void FPSCounter::deinit()
 {
-	font = CL_Font();
+  font = Font();
 }
 
 void
@@ -63,8 +60,8 @@ FPSCounter::on_event()
 
   if (odd_frame)
     {
-      font.draw(CL_Display::get_width(),
-                CL_Display::get_height() - (2 * font.get_height()),
+      font.draw(Display::get_width(),
+                Display::get_height() - (2 * font.get_height()),
                 "o");
 
       odd_frame = false;
@@ -74,15 +71,15 @@ FPSCounter::on_event()
       odd_frame = true;
     }
 
-  font.draw(CL_Display::get_width(),
-            CL_Display::get_height() - font.get_height(),
+  font.draw(Display::get_width(),
+            Display::get_height() - font.get_height(),
             fps_string);
 }
 
 void
 FPSCounter::update_fps_counter()
 {
-  unsigned int current_time = CL_System::get_time();
+  unsigned int current_time = SDL_GetTicks();
   int current_fps;
 
   fps_count++;
@@ -92,7 +89,7 @@ FPSCounter::update_fps_counter()
       current_fps = fps_count * 1000 / (current_time - start_time);
       snprintf(fps_string, 16, "%d fps", current_fps);
       fps_count = 0;
-      start_time = CL_System::get_time();
+      start_time = SDL_GetTicks();
     }
 }
 

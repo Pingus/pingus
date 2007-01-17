@@ -126,9 +126,6 @@ public:
   /** @return A pointer to the collision map used in this world */
   ColMap* get_colmap();
 
-  /** @return A pointer to the gfx map of this world */
-  GroundMap* get_gfx_map();
-
   void put(int x, int y, Groundtype::GPType p = Groundtype::GP_GROUND);
   void put(const CollisionMask&, int x, int y, Groundtype::GPType);
 

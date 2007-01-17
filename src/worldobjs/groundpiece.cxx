@@ -34,6 +34,8 @@ Groundpiece::Groundpiece(const FileReader& reader)
   gptype = Groundtype::GP_GROUND;
   reader.read_enum("type", gptype, &Groundtype::string_to_type);
 
+  std::cout << "Groundpiece: " << desc.res_name << std::endl;
+
   // FIXME: we don't need to load surfaces here, providers would be
   // FIXME: enough and should be faster
 }
@@ -42,14 +44,15 @@ void
 Groundpiece::on_startup ()
 {
   //// FIXME: We discard rotation here!
-  CollisionMask surface = Resource::load_collision_mask(desc.res_name);
+  std::cout << "Groundpiece::on_startup" << std::endl;
+  CollisionMask mask = Resource::load_collision_mask(desc.res_name);
 
   // FIXME: overdrawing of bridges and similar things aren't handled
   // FIXME: here
   if (gptype == Groundtype::GP_REMOVE)
-    get_world()->remove(surface, static_cast<int>(pos.x), static_cast<int>(pos.y));
+    get_world()->remove(mask, static_cast<int>(pos.x), static_cast<int>(pos.y));
   else
-    get_world()->put(surface, static_cast<int>(pos.x), static_cast<int>(pos.y), gptype);
+    get_world()->put(mask, static_cast<int>(pos.x), static_cast<int>(pos.y), gptype);
 }
 
 } // namespace WorldObjs

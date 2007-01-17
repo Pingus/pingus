@@ -141,7 +141,7 @@ env.Program('../pingus', [
 'fonts.cxx',
 'font.cpp',
 'sprite.cpp',
-#'fps_counter.cxx', 
+'fps_counter.cxx', 
 'game_session.cxx', 
 'game_session_result.cxx', 
 'game_time.cxx', 

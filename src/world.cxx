@@ -217,12 +217,6 @@ World::get_colmap()
   return colmap;
 }
 
-GroundMap*
-World::get_gfx_map ()
-{
-  return gfx_map;
-}
-
 void
 World::play_sound(std::string name, const Vector3f& pos, float volume)
 {
@@ -280,8 +274,9 @@ World::put(int x, int y, Groundtype::GPType p)
 }
 
 void
-World::put(const CollisionMask&, int x, int y, Groundtype::GPType)
+World::put(const CollisionMask& mask, int x, int y, Groundtype::GPType type)
 {
+  gfx_map->put(mask.get_pixelbuffer(), x, y);
 }
 
 void

@@ -109,7 +109,7 @@ SnowParticleHolder::update ()
             && pixel != Groundtype::GP_WATER
 	    && pixel != Groundtype::GP_OUTOFSCREEN)
 	    {
-	      world->get_gfx_map()->put(ground, static_cast<int>(it->pos.x - 1), static_cast<int>(it->pos.y - 1));
+	      world->put(ground, static_cast<int>(it->pos.x - 1), static_cast<int>(it->pos.y - 1));
 	      it->alive = false;
 	    }
 	}

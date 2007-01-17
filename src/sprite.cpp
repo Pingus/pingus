@@ -31,6 +31,7 @@
 #include "math/vector2i.hpp"
 #include "SDL_image.h"
 #include "sprite.hpp"
+#include "pixel_buffer.hpp"
 #include "sprite_description.hpp"
 
 class SpriteImpl
@@ -55,6 +56,22 @@ public:
     load(str.str());
   }
 
+  SpriteImpl(const PixelBuffer& pixelbuffer)
+  {
+    if (pixelbuffer.get_surface())
+      {
+        surface = SDL_DisplayFormat(pixelbuffer.get_surface());
+      }
+    else
+      {
+        surface = 0;
+        std::cout << "XXX Surface empty"  << std::endl;
+      }
+
+    offset = Vector2i(0,0);
+    origin = origin_top_left;
+  }
+
   void 
   load(const std::string& filename)
   {
@@ -67,9 +84,10 @@ public:
       }
     else
       {
-        std::cout << "Loaded sprite: " << filename << std::endl;
+        //std::cout << "Loaded sprite: " << filename << std::endl;
       }
     
+    origin = origin_top_left;
     offset = calc_origin(origin, Size(surface->w, surface->h)) + offset;
   }
 
@@ -99,6 +117,12 @@ Sprite::Sprite()
 Sprite::Sprite(const std::string& name)
   : impl(new SpriteImpl(name))
 {  
+}
+
+Sprite::Sprite(const PixelBuffer& pixelbuffer)
+  : impl(new SpriteImpl(pixelbuffer))
+{
+  
 }
 
 Sprite::Sprite(const SpriteDescription& desc)

@@ -46,6 +46,10 @@ MapTile::prepare()
       Blitter::clear_canvas(pixelbuffer);
     }
 #endif
+  if (!pixelbuffer)
+    {
+      pixelbuffer = PixelBuffer(tile_size, tile_size);
+    }
 }
 
 void
@@ -69,6 +73,9 @@ MapTile::put(PixelBuffer obj, int x, int y)
   Blitter::put_surface(pixelbuffer, obj, x, y);
   surface = CL_Surface(pixelbuffer);
 #endif
+  prepare();
+  pixelbuffer.blit(obj, x, y);
+  sprite = Sprite(pixelbuffer);
 }
 
 GroundMap::GroundMap(const PingusLevel& plf)
@@ -138,10 +145,11 @@ GroundMap::draw(SceneContext& gc)
       for (int x = start_x; x <= (start_x + tilemap_width) && x < int(tile.size()); ++x)
         for (int y = start_y; y <= start_y + tilemap_height && y < int(tile[x].size()); ++y)
           {
-            if (tile[x][y].get_surface())
+            if (tile[x][y].get_sprite())
               {
-                ////gc.color().draw(tile[x][y].get_surface(),
-                ////Vector3f((x * tile_size, y * tile_size)));
+                //std::cout << "Drawing GroundMap Tile " << std::endl;
+                gc.color().draw(tile[x][y].get_sprite(),
+                                Vector3f(x * tile_size, y * tile_size));
               }
             else
               {
@@ -273,18 +281,20 @@ GroundMap::put_alpha_surface(PixelBuffer provider, PixelBuffer sprovider,
 }
 
 void
-GroundMap::put(PixelBuffer sprovider, int x, int y)
+GroundMap::put(PixelBuffer source, int x, int y)
 {
   // Get the start tile and end tile
   int start_x = std::max(0, x / tile_size);
   int start_y = std::max(0, y / tile_size);
-  int end_x   = std::min(tile_width,  (x + sprovider.get_width())  / tile_size + 1);
-  int end_y   = std::min(tile_height, (y + sprovider.get_height()) / tile_size + 1);
+  int end_x   = std::min(tile_width,  (x + source.get_width())  / tile_size + 1);
+  int end_y   = std::min(tile_height, (y + source.get_height()) / tile_size + 1);
+
+  //std::cout << "GroundMap:put: " << source.get_width() << "x" << source.get_height() << std::endl;
 
   for(int ix = start_x; ix < end_x; ++ix)
     for(int iy = start_y; iy < end_y; ++iy)
       {
-        tile[ix][iy].put(sprovider,
+        tile[ix][iy].put(source,
                          x - (ix * tile_size), y - (iy * tile_size));
       }
 }

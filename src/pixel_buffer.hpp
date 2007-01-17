@@ -26,22 +26,33 @@
 #ifndef HEADER_PIXEL_BUFFER_HPP
 #define HEADER_PIXEL_BUFFER_HPP
 
+#include "SDL.h"
+#include <string>
+
 /** */
 class PixelBuffer
 {
 private:
-  int width;
-  int height;
-  unsigned char* data;
+  SDL_Surface* surface;
 
 public:
   PixelBuffer();
+  PixelBuffer(const std::string& name);
   PixelBuffer(int width, int height);
   ~PixelBuffer();
 
-  unsigned char* get_data() { return data; }
-  int get_width()  const { return width; }
-  int get_height() const { return height; }
+  uint8_t* get_data() const;
+  void lock();
+  void unlock();
+
+  int get_width()  const;
+  int get_height() const;
+
+  void blit(const PixelBuffer& source, int x, int y);
+
+  SDL_Surface* get_surface() const;
+
+  operator bool() const;
 };
 
 #endif

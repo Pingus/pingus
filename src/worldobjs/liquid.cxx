@@ -58,13 +58,13 @@ Liquid::get_z_pos () const
 void
 Liquid::on_startup ()
 {
-  PixelBuffer colmap_sur = Resource::load_pixelbuffer("liquids/water_cmap");
+  CollisionMask mask = Resource::load_collision_mask("liquids/water_cmap");
 
   for(int i=0; i < width; ++i)
-    world->get_colmap()->put(colmap_sur,
-                             static_cast<int>(pos.x + i),
-			     static_cast<int>(pos.y),
-			     Groundtype::GP_WATER);
+    world->put(mask,
+               static_cast<int>(pos.x + i),
+               static_cast<int>(pos.y),
+               Groundtype::GP_WATER);
 }
 
 void

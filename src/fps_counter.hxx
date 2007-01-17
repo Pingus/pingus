@@ -28,7 +28,7 @@ class FPSCounter : public DisplayHook
 {
 private:
   /** The font... */
-  CL_Font font;
+  Font font;
 
   /** Used to know when the frame has changed */
   bool odd_frame;

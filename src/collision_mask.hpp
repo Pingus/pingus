@@ -26,16 +26,24 @@
 #ifndef HEADER_COLLISION_MASK_HPP
 #define HEADER_COLLISION_MASK_HPP
 
+#include <string>
+#include "pixel_buffer.hpp"
+
 /** */
 class CollisionMask
 {
-private:
+public:
+  PixelBuffer pixelbuffer;
+
 public:
   CollisionMask();
+  CollisionMask(const std::string& name);
   ~CollisionMask();
   
   int get_width() const;
   int get_height() const;
+  
+  PixelBuffer get_pixelbuffer() const;
 };
 
 #endif

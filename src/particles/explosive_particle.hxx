@@ -23,7 +23,6 @@
 #include "../sprite.hxx"
 #include "particle.hxx"
 
-
 class ExplosiveParticle
   : public Particle
 {

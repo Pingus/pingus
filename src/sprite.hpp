@@ -30,6 +30,7 @@
 #include "SDL.h"
 #include "shared_ptr.hxx"
 
+class PixelBuffer;
 class SpriteImpl;
 class SpriteDescription;
 
@@ -40,6 +41,7 @@ public:
   Sprite();
   Sprite(const SpriteDescription& desc);
   Sprite(const std::string& name);
+  Sprite(const PixelBuffer& pixelbuffer);
   ~Sprite();
 
   int get_width();

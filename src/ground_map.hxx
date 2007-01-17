@@ -35,7 +35,7 @@ class GroundMap;
 class MapTile
 {
 private:
-  SDL_Surface* surface;
+  Sprite       sprite;
   PixelBuffer  pixelbuffer;
 
   void prepare();
@@ -46,7 +46,7 @@ public:
   void remove(PixelBuffer, int x, int y, int real_x, int real_y, GroundMap*);  
   void put(PixelBuffer, int x, int y);  
 
-  SDL_Surface* get_surface() const { return surface; }
+  Sprite get_sprite() const { return sprite; }
 };
 
 /** This map type is the defaulh maptype, it is should be used for the

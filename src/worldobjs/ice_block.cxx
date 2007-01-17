@@ -88,9 +88,8 @@ IceBlock::update()
 	  is_finished = true;
 	  thickness = 0;
 
-	  PixelBuffer surf(Resource::load_pixelbuffer("worldobjs/iceblock_cmap"));
-	  world->get_colmap ()->remove(surf, static_cast<int>(pos.x), static_cast<int>(pos.y));
-	  world->get_gfx_map()->remove(surf, static_cast<int>(pos.x), static_cast<int>(pos.y));
+	  CollisionMask mask = Resource::load_collision_mask("worldobjs/iceblock_cmap");
+	  world->remove(mask, static_cast<int>(pos.x), static_cast<int>(pos.y));
 	  return;
 	}
     }
