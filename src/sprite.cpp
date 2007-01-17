@@ -38,17 +38,18 @@ class SpriteImpl
 {
 public:
   SDL_Surface* surface;
-  Vector2i     offset;
-  Origin       origin;
+  SpriteDescription desc;
+  int frame; 
 
-  SpriteImpl(const SpriteDescription& desc)
+  SpriteImpl(const SpriteDescription& desc_)
+    : desc(desc_),
+      frame(0)
   {
-    origin = desc.origin;
-    offset = desc.offset;
     load(desc.filename);
   }
 
   SpriteImpl(const std::string& name) 
+    : frame(0)
   {
     std::ostringstream str;
     str << "data/images/" << name << ".png";
@@ -57,6 +58,7 @@ public:
   }
 
   SpriteImpl(const PixelBuffer& pixelbuffer)
+    : frame(0)
   {
     if (pixelbuffer.get_surface())
       {
@@ -67,9 +69,6 @@ public:
         surface = 0;
         std::cout << "XXX Surface empty"  << std::endl;
       }
-
-    offset = Vector2i(0,0);
-    origin = origin_top_left;
   }
 
   void 
@@ -87,8 +86,8 @@ public:
         //std::cout << "Loaded sprite: " << filename << std::endl;
       }
     
-    origin = origin_top_left;
-    offset = calc_origin(origin, Size(surface->w, surface->h)) + offset;
+    desc.origin = origin_top_left;
+    desc.offset = calc_origin(desc.origin, Size(surface->w, surface->h)) + desc.offset;
   }
 
   ~SpriteImpl()
@@ -100,12 +99,20 @@ public:
   {
     SDL_Rect pos;
     
-    pos.x = (Sint16)(x - offset.x);
-    pos.y = (Sint16)(y - offset.y);
+    pos.x = (Sint16)(x - desc.offset.x);
+    pos.y = (Sint16)(y - desc.offset.y);
     pos.w = 0;
-    pos.h = 0;
-    
-    SDL_BlitSurface(surface, NULL, target, &pos);
+    pos.h = 0;  
+
+    SDL_Rect srcrect;
+        
+    srcrect.w = surface->w / desc.array.width;
+    srcrect.h = surface->h / desc.array.height;
+
+    srcrect.x = desc.frame_pos.x + (srcrect.w * (frame%desc.array.width));
+    srcrect.y = desc.frame_pos.y + (srcrect.h * (frame/desc.array.width));
+
+    SDL_BlitSurface(surface, &srcrect, target, &pos);
   }
 };
 
@@ -168,6 +175,10 @@ Sprite::operator bool()
 void
 Sprite:: update(float delta)
 {
+  // FIXME
+  impl->frame += 1;
+  if (impl->frame > (impl->desc.array.width * impl->desc.array.height))
+    impl->frame = 0;
 }
 
 void

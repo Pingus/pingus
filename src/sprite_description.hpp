@@ -76,10 +76,6 @@ public:
   ~SpriteDescription()
   {  
   }
-  
-private:
-  SpriteDescription (const SpriteDescription&);
-  SpriteDescription& operator= (const SpriteDescription&);
 };
 
 #endif
