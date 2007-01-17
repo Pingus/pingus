@@ -38,27 +38,56 @@ class SpriteImpl
 {
 public:
   SDL_Surface* surface;
-  SpriteDescription desc;
+
+  Vector2i offset;
+
+  Vector2i frame_pos;
+  Size     frame_size;
+  int      frame_delay;
+
+  Size     array;
+
+  /** Current frame */
   int frame; 
+  int tick_count;
 
-  SpriteImpl(const SpriteDescription& desc_)
-    : desc(desc_),
-      frame(0)
+  SpriteImpl(const SpriteDescription& desc)
+    : surface(0),
+      frame(0),
+      tick_count(0)
   {
-    load(desc.filename);
-  }
+    surface = IMG_Load(desc.filename.c_str());
+    if (surface)
+      {
+        //SDL_SetAlpha(surface, SDL_SRCALPHA, 128);
+      }
+    else
+      {
+        std::cout << "Error: Couldn't load " << desc.filename << std::endl;
+        surface = IMG_Load("data/images/core/misc/404.png");
+        assert(surface);
+      }
+    
+    frame_pos    = desc.frame_pos;
 
-  SpriteImpl(const std::string& name) 
-    : frame(0)
-  {
-    std::ostringstream str;
-    str << "data/images/" << name << ".png";
+    frame_size.width  = (desc.frame_size.width  == -1) ? surface->w : desc.frame_size.width;
+    frame_size.height = (desc.frame_size.height == -1) ? surface->h : desc.frame_size.height;
 
-    load(str.str());
+    frame_delay  = desc.speed;
+
+    array = desc.array;
+
+    offset = calc_origin(desc.origin, frame_size) - desc.offset;
   }
 
   SpriteImpl(const PixelBuffer& pixelbuffer)
-    : frame(0)
+    : offset(0,0),
+      frame_pos(0,0),
+      frame_size(pixelbuffer.get_width(), pixelbuffer.get_height()),
+      frame_delay(0),
+      array(1,1),
+      frame(0),
+      tick_count(0)
   {
     if (pixelbuffer.get_surface())
       {
@@ -67,27 +96,8 @@ public:
     else
       {
         surface = 0;
-        std::cout << "XXX Surface empty"  << std::endl;
+        std::cout << "Sprite: Error trying to create a Sprite out of an empty PixelBuffer"  << std::endl;
       }
-  }
-
-  void 
-  load(const std::string& filename)
-  {
-    surface = IMG_Load(filename.c_str());
-    if (!surface)
-      {
-        std::cout << "Error: Couldn't load " << filename << std::endl;
-        surface = IMG_Load("data/images/core/misc/404.png");
-        assert(surface);
-      }
-    else
-      {
-        //std::cout << "Loaded sprite: " << filename << std::endl;
-      }
-    
-    desc.origin = origin_top_left;
-    desc.offset = calc_origin(desc.origin, Size(surface->w, surface->h)) + desc.offset;
   }
 
   ~SpriteImpl()
@@ -95,35 +105,36 @@ public:
     SDL_FreeSurface(surface);
   }
 
-  void draw(float x, float y, SDL_Surface* target)
+  void update(float delta)
   {
-    SDL_Rect pos;
-    
-    pos.x = (Sint16)(x - desc.offset.x);
-    pos.y = (Sint16)(y - desc.offset.y);
-    pos.w = 0;
-    pos.h = 0;  
+      tick_count += int(delta * 1000.0f);
+      tick_count = tick_count % (frame_delay * (array.width * array.height));
+        
+      frame = tick_count / frame_delay;
+  }
+
+  void draw(float x, float y, SDL_Surface* dst)
+  {
+    SDL_Rect dstrect;
+    dstrect.x = (Sint16)(x - offset.x);
+    dstrect.y = (Sint16)(y - offset.y);
+    dstrect.w = 0;
+    dstrect.h = 0;  
 
     SDL_Rect srcrect;
-        
-    srcrect.w = surface->w / desc.array.width;
-    srcrect.h = surface->h / desc.array.height;
+    srcrect.w = frame_size.width;
+    srcrect.h = frame_size.height;
 
-    srcrect.x = desc.frame_pos.x + (srcrect.w * (frame%desc.array.width));
-    srcrect.y = desc.frame_pos.y + (srcrect.h * (frame/desc.array.width));
+    srcrect.x = frame_pos.x + (srcrect.w * (frame%array.width));
+    srcrect.y = frame_pos.y + (srcrect.h * (frame/array.width));
 
-    SDL_BlitSurface(surface, &srcrect, target, &pos);
+    SDL_BlitSurface(surface, &srcrect, dst, &dstrect);
   }
 };
 
 Sprite::Sprite()
   : impl(0)
 {
-}
-
-Sprite::Sprite(const std::string& name)
-  : impl(new SpriteImpl(name))
-{  
 }
 
 Sprite::Sprite(const PixelBuffer& pixelbuffer)
@@ -152,8 +163,8 @@ Sprite::draw(float x, float y, SDL_Surface* target)
 int
 Sprite::get_width()
 {
-  if (impl.get() && impl->surface)
-    return impl->surface->w;
+  if (impl.get()) 
+    return impl->frame_size.width;
   else
     return 0;
 }
@@ -161,8 +172,8 @@ Sprite::get_width()
 int
 Sprite::get_height()
 {
-  if (impl.get() && impl->surface)
-    return impl->surface->h;
+  if (impl.get()) 
+    return impl->frame_size.height;
   else
     return 0;
 }
@@ -175,22 +186,21 @@ Sprite::operator bool()
 void
 Sprite:: update(float delta)
 {
-  // FIXME
-  impl->frame += 1;
-  if (impl->frame > (impl->desc.array.width * impl->desc.array.height))
-    impl->frame = 0;
+  if (impl.get())
+    impl->update(delta);
 }
 
 void
 Sprite::set_frame(int i)
 {
-  
+  if (impl.get())
+    impl->frame = i;
 }
 
 int
 Sprite::get_frame_count() const
 {
-  return 1;
+  return (impl->array.width * impl->array.height);
 }
 
 bool
@@ -202,7 +212,10 @@ Sprite::is_finished() const
 int
 Sprite::get_current_frame() const
 {
-  return 0;
+  if (impl.get())
+    return impl->frame;
+  else
+    return 0;
 }
 
 void

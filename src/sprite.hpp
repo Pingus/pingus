@@ -40,7 +40,6 @@ class Sprite
 public:
   Sprite();
   Sprite(const SpriteDescription& desc);
-  Sprite(const std::string& name);
   Sprite(const PixelBuffer& pixelbuffer);
   ~Sprite();
 
@@ -56,6 +55,7 @@ public:
   bool is_finished() const;
   void  restart();
   operator bool();
+
 private:
   SharedPtr<SpriteImpl> impl;
 };
