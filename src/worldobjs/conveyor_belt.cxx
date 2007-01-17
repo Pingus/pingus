@@ -54,13 +54,13 @@ ConveyorBelt::draw (SceneContext& gc)
 void
 ConveyorBelt::on_startup ()
 {
-  PixelBuffer sur(Resource::load_pixelbuffer("worldobjs/conveyorbelt_cmap"));
+  CollisionMask mask = Resource::load_collision_mask("worldobjs/conveyorbelt_cmap");
 
   for (int i=0; i < (width + 2); ++i)
-    world->get_colmap()->put(sur,
-                             static_cast<int>(pos.x) + (15 * i),
-			     static_cast<int>(pos.y),
-			     Groundtype::GP_SOLID);
+    world->put(mask,
+               static_cast<int>(pos.x) + (15 * i),
+               static_cast<int>(pos.y),
+               Groundtype::GP_SOLID);
 }
 
 void

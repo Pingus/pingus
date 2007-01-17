@@ -42,7 +42,6 @@ Font lcd;
 void
 init ()
 {
-#if 0
   chalk_large  = Resource::load_font("fonts/chalk_large" + std::string(".") + encoding); 
   chalk_normal = Resource::load_font("fonts/chalk_normal" + std::string(".") + encoding);
   chalk_small  = Resource::load_font("fonts/chalk_small" + std::string(".") + encoding);
@@ -57,7 +56,6 @@ init ()
   smallfont_h  = Resource::load_font("fonts/courier_small" + std::string(".") + encoding); // PingusResource::load_font("Fonts/smallfont_h","fonts");
 
   lcd          = Resource::load_font("fonts/courier_small" + std::string(".") + encoding); // PingusResource::load_font("Fonts/numbers", "fonts");
-#endif 
 }
 
 void deinit () 

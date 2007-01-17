@@ -132,20 +132,6 @@ Resource::load_sprite(const std::string& res_name)
 #endif
 }
 
-#if 0
-CL_SpriteDescription
-Resource::load_sprite_desc(const std::string& res_name)
-{
-  try {
-    return CL_SpriteDescription(res_name, &resmgr);
-  } catch(CL_Error& err) {
-    std::cout << "Resource::load_sprite_desc: CL_Error: '" << res_name << "'" << std::endl;
-    std::cout << "CL_Error: " << err.message << std::endl;
-    return CL_SpriteDescription("core/misc/404sprite", &resmgr);
-  }
-}
-#endif
-
 CollisionMask
 Resource::load_collision_mask(const std::string& name_)
 {
@@ -321,13 +307,14 @@ Resource::load_from_source (const ResDescriptor& res_desc)
     }
   }
 }
+#endif 
 
 Font
 Resource::load_font(const std::string& res_name)
 {
-  return Font(res_name, &resmgr);
+  ////return Font(res_name, &resmgr);
+  return Font();
 }
-#endif
 
 void
 Resource::cleanup ()

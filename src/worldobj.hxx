@@ -23,6 +23,7 @@
 #include "pingus.hxx"
 #include "file_reader.hxx"
 #include "sprite.hpp"
+#include "collision_mask.hpp"
 
 class SceneContext;
 class SmallMap;

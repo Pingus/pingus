@@ -41,19 +41,15 @@ Groundpiece::Groundpiece(const FileReader& reader)
 void
 Groundpiece::on_startup ()
 {
-  PixelBuffer surface = Resource::load_pixelbuffer(desc);
+  //// FIXME: We discard rotation here!
+  CollisionMask surface = Resource::load_collision_mask(desc.res_name);
 
   // FIXME: overdrawing of bridges and similar things aren't handled
   // FIXME: here
   if (gptype == Groundtype::GP_REMOVE)
-    get_world()->get_gfx_map()->remove(surface, static_cast<int>(pos.x), static_cast<int>(pos.y));
+    get_world()->remove(surface, static_cast<int>(pos.x), static_cast<int>(pos.y));
   else
-    get_world()->get_gfx_map()->put(surface, static_cast<int>(pos.x), static_cast<int>(pos.y));
-
-  if (gptype == Groundtype::GP_REMOVE)
-    get_world()->get_colmap()->remove(surface, static_cast<int>(pos.x), static_cast<int>(pos.y));
-  else
-    get_world()->get_colmap()->put(surface, static_cast<int>(pos.x), static_cast<int>(pos.y), gptype);
+    get_world()->put(surface, static_cast<int>(pos.x), static_cast<int>(pos.y), gptype);
 }
 
 } // namespace WorldObjs

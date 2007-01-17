@@ -44,7 +44,7 @@ private:
 
   Sprite door_box;
   Sprite door_tile;
-  PixelBuffer door_tile_cmap;
+  CollisionMask door_tile_cmap;
   Sprite switch_sur;
 
   /** True if the door is opening */

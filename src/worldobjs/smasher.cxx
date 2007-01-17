@@ -108,11 +108,11 @@ void
 Smasher::on_startup ()
 {
   std::cout << "Drawing colmap entry" << std::endl;
-  PixelBuffer buf = Resource::load_pixelbuffer("traps/smasher_cmap");
-  world->get_colmap()->put(buf, 
-			   static_cast<int>(pos.x),
-			   static_cast<int>(pos.y),
-			   Groundtype::GP_SOLID);
+  CollisionMask buf = Resource::load_collision_mask("traps/smasher_cmap");
+  world->put(buf, 
+             static_cast<int>(pos.x),
+             static_cast<int>(pos.y),
+             Groundtype::GP_SOLID);
 }
 
 void

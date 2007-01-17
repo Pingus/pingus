@@ -30,7 +30,7 @@ namespace WorldObjs {
 SwitchDoor::SwitchDoor(const FileReader& reader)
   : door_box      (Resource::load_sprite("worldobjs/switchdoor_box")),
     door_tile     (Resource::load_sprite("worldobjs/switchdoor_tile")),
-    door_tile_cmap(Resource::load_pixelbuffer("worldobjs/switchdoor_tile_cmap")),
+    door_tile_cmap(Resource::load_collision_mask("worldobjs/switchdoor_tile_cmap")),
     switch_sur    (Resource::load_sprite("worldobjs/switchdoor_switch")),
     is_opening(false)
 {

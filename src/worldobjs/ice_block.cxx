@@ -42,12 +42,12 @@ IceBlock::IceBlock(const FileReader& reader)
 void
 IceBlock::on_startup ()
 {
-  PixelBuffer surf(Resource::load_pixelbuffer("worldobjs/iceblock_cmap"));
+  CollisionMask surf = Resource::load_collision_mask("worldobjs/iceblock_cmap");
 
-  world->get_colmap()->put(surf,
-                           static_cast<int>(pos.x),
-                           static_cast<int>(pos.y),
-			   Groundtype::GP_GROUND);
+  world->put(surf,
+             static_cast<int>(pos.x),
+             static_cast<int>(pos.y),
+             Groundtype::GP_GROUND);
 }
 
 void

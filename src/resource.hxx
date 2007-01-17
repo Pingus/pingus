@@ -27,6 +27,7 @@
 #include "res_descriptor.hxx"
 #include "resource_manager.hpp"
 #include "collision_mask.hpp"
+#include "font.hpp"
 
 class CL_ResourceManager;
 
@@ -77,13 +78,9 @@ public:
   static PixelBuffer   load_pixelbuffer(const std::string& res_name);
   static PixelBuffer   load_pixelbuffer(const ResDescriptor&);
 
-#if 0
-  static CL_Sprite  load_sprite(const std::string& res_name);
-  static CL_SpriteDescription load_sprite_desc(const std::string& res_name);
-
   /** Load a font with res_name from datafile */
-  static CL_Font load_font(const std::string& res_name);
-#endif
+  static Font load_font(const std::string& res_name);
+
   /** Cleanup all currently unused surfaces */
   static void cleanup ();
 
