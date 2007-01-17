@@ -52,7 +52,7 @@ PixelBuffer::PixelBuffer(int width, int height)
                                  0x0000ff00,
                                  0x00ff0000,
                                  0xff000000);
-  SDL_FillRect(surface, NULL, SDL_MapRGBA(surface->format, 255, 255, 0, 255));
+  //SDL_FillRect(surface, NULL, SDL_MapRGBA(surface->format, 0, 0, 0, 0));
 }
 
 PixelBuffer::~PixelBuffer()

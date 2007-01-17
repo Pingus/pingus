@@ -91,7 +91,8 @@ public:
   {
     if (pixelbuffer.get_surface())
       {
-        surface = SDL_DisplayFormat(pixelbuffer.get_surface());
+        surface = SDL_DisplayFormatAlpha(pixelbuffer.get_surface());
+        //SDL_SetAlpha(surface, SDL_SRCALPHA, 128);
       }
     else
       {

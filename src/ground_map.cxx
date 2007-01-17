@@ -68,11 +68,6 @@ MapTile::remove(PixelBuffer obj, int x, int y,
 void
 MapTile::put(PixelBuffer obj, int x, int y)
 {
-#if 0
-  prepare();
-  Blitter::put_surface(pixelbuffer, obj, x, y);
-  surface = CL_Surface(pixelbuffer);
-#endif
   prepare();
   pixelbuffer.blit(obj, x, y);
   sprite = Sprite(pixelbuffer);
