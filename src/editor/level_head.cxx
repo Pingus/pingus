@@ -44,7 +44,7 @@ namespace Editor {
 
     public:
       LevelHeadCloseButton(LevelHead* h)
-      : GUI::SurfaceButton(Display::get_width() -100,
+      : GUI::SurfaceButton(Display::get_width() -200,
                            Display::get_height() -100,
                            ResDescriptor("core/menu/exit_button_normal"),
                            ResDescriptor("core/menu/exit_button_pressed"),
@@ -78,7 +78,7 @@ LevelHead::LevelHead(EditorPanel* p, PanelButtonHead* pbh) :
   gui_manager(p->get_screen()->get_gui_manager()), 
 	pos(Vector3f(50, 75))
 {
-  gui_manager->add((GUI::Component*)this); 
+  gui_manager->add((GUI::Component*)this, false); 
    
   // Create GUI items
   name = new GUI::InputBox(400, Vector3f(pos.x + 175, pos.y + 10),
@@ -87,12 +87,12 @@ LevelHead::LevelHead(EditorPanel* p, PanelButtonHead* pbh) :
                            impl->description, false, "Level Description");             
   
   // Add GUI Items to the GUIManager 
-  gui_manager->add((GUI::Component*)name);
-  gui_manager->add((GUI::Component*)desc); 
+  gui_manager->add((GUI::Component*)name, true);
+  gui_manager->add((GUI::Component*)desc, true); 
   
   // Add close button
   close_button = new LevelHeadCloseButton(this); 
-  gui_manager->add((GUI::Component*)close_button);
+  gui_manager->add((GUI::Component*)close_button, true);
 }
 
 LevelHead::~LevelHead()

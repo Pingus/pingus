@@ -66,7 +66,7 @@ Credits::Credits()
   background = Resource::load_sprite("core/menu/startscreenbg");
   pingu = Resource::load_sprite("core/misc/creditpingu");
 
-  gui_manager->add(new CreditsOkButton(this));
+  gui_manager->add(new CreditsOkButton(this), true);
 
   ////background.set_alignment(origin_center);
   ////pingu.set_alignment(origin_center);

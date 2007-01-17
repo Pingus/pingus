@@ -100,8 +100,8 @@ PingusMenu::setup_main_menu()
   gui_manager->remove(multiplayer_button);
   gui_manager->remove(editor_button);
 
-  gui_manager->add(quit_button);
-  gui_manager->add(start_button);
+  gui_manager->add(quit_button, false);
+  gui_manager->add(start_button, false);
 }
 
 void
@@ -109,12 +109,13 @@ PingusMenu::setup_game_menu()
 {
   gui_manager->remove(start_button);
 
-  gui_manager->add(contrib_button);
-  gui_manager->add(story_button);
-  gui_manager->add(editor_button);
+  gui_manager->add(contrib_button, false);
+  gui_manager->add(story_button, false);
+  gui_manager->add(editor_button, false);
   // FIXME: Re-enable this next line once multiplayer functionality
   // is actually available.
-  //gui_manager->add(multiplayer_button);
+
+  //gui_manager->add(multiplayer_button, false);
 }
 
 void

@@ -44,6 +44,7 @@ class GUIManager : public Component
 private:
   typedef std::vector<Component*> Components;
   Components components;
+  Components components_for_delete;
 
   /** The component which recieved the last pressed event */
   Component* primary_pressed_component;
@@ -70,7 +71,7 @@ private:
 	
 public:
   GUIManager ();
-  virtual ~GUIManager () {}
+  virtual ~GUIManager ();
 
   virtual void draw (DrawingContext& gc);
   virtual void update (const GameDelta& delta);
@@ -80,7 +81,7 @@ public:
       the component will get deleted on destruction of the manager,
       if false is supplied the user has to handle the component
       itself */
-  void add (Component*, bool delete_component = true);
+  void add (Component*, bool delete_component);
 
   /** */
   void remove (Component*);

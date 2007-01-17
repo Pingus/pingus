@@ -1,3 +1,9 @@
+2006-04-07 10:15  jave27
+
+	* The Changelog is now maintained via the SVN commit comments.
+	You can see a public archive of those at:
+	http://lists.gnu.org/archive/html/pingus-cvs/
+
 2003-04-16 03:15  grumbel
 
 	* NEWS, src/config.cxx: - added check if config file is present -

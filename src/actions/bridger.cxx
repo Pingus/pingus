@@ -126,7 +126,7 @@ Bridger::update_walk ()
 void
 Bridger::update_build ()
 {
-  build_sprite[pingu->direction].update ();
+  build_sprite[pingu->direction].update (0.033);
 
   if (build_sprite[pingu->direction].get_current_frame () >= 7 && !block_build)
     {
