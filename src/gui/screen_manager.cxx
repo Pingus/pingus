@@ -45,7 +45,6 @@ ScreenManager::~ScreenManager ()
 void
 ScreenManager::display()
 {
-#if 0
   Input::Controller* input_controller = 0;
 
   if (controller_file.empty())
@@ -61,7 +60,6 @@ ScreenManager::display()
       Display::add_flip_screen_hook(cursor);
       //CL_MouseCursor::hide();
     }
-#endif
 
   DeltaManager delta_manager;
 
@@ -78,25 +76,21 @@ ScreenManager::display()
 	  continue;
 	}
 
-      process_events();
-
       // Get new events from ClanLib
-      ////input_controller->update(time_delta);
+      input_controller->update(time_delta);
 
       // Fill the delta with values
-      GameDelta delta(time_delta, delta_manager.get_absolute(), Input::EventLst()); 
-      ////input_controller->get_events());
-      //// input_controller->clear();
+      GameDelta delta(time_delta, delta_manager.get_absolute(),  
+                      input_controller->get_events());
+      input_controller->clear();
 
       last_screen = get_current_screen();
 
       // Most likly the screen will get changed in this update call
       get_current_screen()->update (delta);
 
-#if 0
       if (cursor)
         cursor->update(time_delta);
-#endif
 
       // Last screen has poped, so we are going to end here
       if (screens.empty())
@@ -145,31 +139,9 @@ ScreenManager::display()
       SDL_Delay(10);
     }
 
-#if 0
-////  Display::remove_flip_screen_hook(cursor);
-////  delete cursor;
+  Display::remove_flip_screen_hook(cursor);
+  delete cursor;
   delete input_controller;
-#endif 
-}
-
-void
-ScreenManager::process_events()
-{
-  // Let SDL fetch events
-  SDL_Event event;
-  while(SDL_PollEvent(&event))
-    {
-      switch(event.type)
-        {
-        case SDL_QUIT:
-          pop_screen();
-          break;
-
-        default:
-          // FIXME: feed other events to the input manager
-          break;
-        }
-    }
 }
 
 ScreenPtr&

@@ -80,8 +80,6 @@ private:
   /** FadeOver test*/
   void fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen);
 
-  void process_events();
-
   /** @return a pointer to the current Screen */
   ScreenPtr& get_current_screen();
 

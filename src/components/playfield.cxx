@@ -127,7 +127,6 @@ Playfield::current_pingu_find (const Vector2f& pos)
 void
 Playfield::update(float delta)
 {
-#if 0
   // FIXME: This should be delta dependant
   if (!mouse_scrolling)
     {
@@ -171,7 +170,6 @@ Playfield::update(float delta)
 	  state.set_pos(state.get_pos() + Vector2i(0, scroll_speed));	 
 	}
     }
-#endif
 }
 
 void
@@ -189,6 +187,7 @@ Playfield::on_primary_button_press(int x, int y)
 void
 Playfield::on_secondary_button_press (int x, int y)
 {
+  std::cout << "on_secondary_button_press" << std::endl;
   mouse_scrolling = true;
   scroll_center.x = x;
   scroll_center.y = y;
@@ -199,6 +198,8 @@ Playfield::on_secondary_button_press (int x, int y)
 void
 Playfield::on_secondary_button_release (int x, int y)
 {
+  std::cout << "on_secondary_button_release" << std::endl;
+
   UNUSED_ARG(x);
   UNUSED_ARG(y);
 

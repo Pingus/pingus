@@ -17,6 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "SDL.h"
+#include "../gui/screen_manager.hxx"
+
 #include "../debug.hxx"
 #include "../pingus_error.hxx"
 
@@ -212,6 +215,50 @@ Controller::create_action_buttons (FileReader reader)
 void
 Controller::update (float delta)
 {
+  // Let SDL fetch events
+  SDL_Event event;
+  while(SDL_PollEvent(&event))
+    {
+      switch(event.type)
+        {
+        case SDL_QUIT:
+          ScreenManager::instance()->pop_screen();
+          break;
+
+        case SDL_MOUSEMOTION:
+          events.push_back(makePointerEvent(Input::standard, event.motion.x, event.motion.y));
+          break;
+
+        case SDL_MOUSEBUTTONDOWN:
+          if (event.button.button == SDL_BUTTON_LEFT)
+            events.push_back(makeButtonEvent(Input::primary, Input::pressed));
+          else if (event.button.button == SDL_BUTTON_MIDDLE)
+            events.push_back(makeButtonEvent(Input::pause, Input::pressed));
+          else if (event.button.button == SDL_BUTTON_RIGHT)
+            events.push_back(makeButtonEvent(Input::secondary, Input::pressed));
+          break;
+
+        case SDL_MOUSEBUTTONUP:
+          if (event.button.button == SDL_BUTTON_LEFT)
+            events.push_back(makeButtonEvent(Input::primary, Input::released));
+          else if (event.button.button == SDL_BUTTON_MIDDLE)
+            events.push_back(makeButtonEvent(Input::pause, Input::released));
+          else if (event.button.button == SDL_BUTTON_RIGHT)
+            events.push_back(makeButtonEvent(Input::secondary, Input::released));
+          break;
+          
+        case SDL_KEYDOWN:
+          break;
+
+        case SDL_KEYUP:
+          break;          
+
+        default:
+          // FIXME: feed other events to the input manager
+          break;
+        }
+    }
+
 #if 0
   scroller        ->update(delta);
   standard_pointer->update(delta);

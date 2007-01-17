@@ -21,6 +21,7 @@
 #define SUPERTUX_VECTOR_H
 
 #include <iosfwd>
+#include "vector2i.hpp"
 
 /** Simple two dimensional vector. */
 class Vector2f
@@ -32,6 +33,9 @@ public:
   Vector2f(const Vector2f& other)
       : x(other.x), y(other.y)
   { }
+  Vector2f(const Vector2i& other)
+    : x(other.x), y(other.y)
+  {}
   Vector2f()
       : x(0), y(0)
   { }
