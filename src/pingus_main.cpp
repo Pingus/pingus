@@ -829,10 +829,6 @@ PingusMain::main(int argc, char** argv)
         }
     }
 
-  ////catch (const CL_Error& err) {
-  ////std::cout << _("Error caught from ClanLib: ") << err.message << std::endl;
-////}
-
   catch (const PingusError& err) {
     std::cout << _("Error caught from Pingus: ") << err.get_message () << std::endl;
   }

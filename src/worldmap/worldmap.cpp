@@ -402,7 +402,7 @@ WorldMap::update_locked_nodes()
           if (dot->finished())
             {
               ////WorldMapManager::instance()->get_metamap()->finish_node(short_name);
-              ////ScreenManager::instance()->replace_screen(new StoryScreen(get_end_story()), true);
+              ScreenManager::instance()->replace_screen(new StoryScreen(get_end_story()), true);
             }
         }
       else

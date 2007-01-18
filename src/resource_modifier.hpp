@@ -42,8 +42,6 @@ ResourceModifier vertical_flip (ResourceModifier);
 ResourceModifier rotate_90 (ResourceModifier);
 ResourceModifier rotate_270 (ResourceModifier);
 
-// we don't specialize the CL_String::to templates here, since the enum
-// might get confused with 'int'
 std::string rs_to_string (ResourceModifier);
 ResourceModifier rs_from_string (const std::string&);
 
