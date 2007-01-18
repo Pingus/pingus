@@ -22,18 +22,15 @@
 #include "../sound/sound.hxx"
 #include "../resource.hxx"
 #include "../pingus_menu_manager.hxx"
-////#include "../theme_selector.hxx"
-////#include "../gui/screen_manager.hxx"
-////#include "../worldmap/manager.hxx"
-////#include "../story_screen.hxx"
 #include "../gettext.h"
-////#include "../stat_manager.hxx"
 
 #include "menu_button.hxx"
 
 
-MenuButton::MenuButton(const Vector2i& pos_, const Sprite& sprite_, 
+MenuButton::MenuButton(PingusMenu* menu_,
+                       const Vector2i& pos_, const Sprite& sprite_, 
                        const std::string& text_, const std::string& desc_)
+  : menu(menu_)
 {
   text = text_;
   desc  = desc_;
@@ -47,7 +44,7 @@ MenuButton::MenuButton(const Vector2i& pos_, const Sprite& sprite_,
   font_large = Fonts::pingus_large;
 
   mouse_over = false;
-  pressed = false;
+  pressed    = false;
 }
 
 MenuButton::MenuButton ()
@@ -72,7 +69,8 @@ MenuButton::~MenuButton ()
 void
 MenuButton::on_click ()
 {
-  ////click();
+  std::cout << "MenuButton: Click" << std::endl;
+  menu->on_click(this);
 }
 
 void

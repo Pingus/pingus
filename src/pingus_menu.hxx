@@ -26,11 +26,6 @@
 #include "file_dialog_listener.hxx"
 #include "layer_manager.hxx"
 
-class CL_Key;
-class CL_InputDevice;
-class CL_Slot;
-
-
 class SurfaceButton;
 class GameDelta;
 class FileDialog;
@@ -46,8 +41,6 @@ class PingusMenu : public PingusSubMenu, public FileDialogListener
 public:
   bool is_init;
 private:
-  ////std::vector<CL_Slot> slots;
-
   Sprite background;
   LayerManager layer_manager;
 
@@ -86,6 +79,8 @@ private:
 public:
   PingusMenu (PingusMenuManager* m);
   ~PingusMenu();
+
+  void on_click(MenuButton* button);
 
   /// Load all images and other stuff for the menu
   void preload ();

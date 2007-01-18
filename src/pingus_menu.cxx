@@ -27,8 +27,8 @@
 #include "stat_manager.hxx"
 #include "start_screen.hxx"
 #include "story_screen.hxx"
-////#include "worldmap/worldmap.hxx"
-////#include "worldmap/manager.hxx"
+#include "worldmap/worldmap.hxx"
+#include "worldmap/manager.hxx"
 #include "gui/screen_manager.hxx"
 #include "pingus_menu_manager.hxx"
 #include "gui/gui_manager.hxx"
@@ -44,52 +44,41 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
 {
   is_init = false;
     
-  start_button = new MenuButton(Vector2i(Display::get_width() * 400 / 800,
+  start_button = new MenuButton(this, Vector2i(Display::get_width() * 400 / 800,
                                         Display::get_height() * 450 / 600),
                                 Resource::load_sprite("core/menu/play_on"),
                                 _("Start"),
                                 _("..:: Start the game ::.."));
   
-  quit_button = new MenuButton(Vector2i(Display::get_width() * 650 / 800,
+  quit_button = new MenuButton(this, Vector2i(Display::get_width() * 650 / 800,
                                        Display::get_height() * 450 / 600),
                                Resource::load_sprite("core/menu/exit_on"),
                                _("Exit"),
                                _("..:: Bye, bye ::.."));
 
-  contrib_button = new MenuButton(Vector2i(Display::get_width() * 150 / 800,
+  contrib_button = new MenuButton(this, Vector2i(Display::get_width() * 150 / 800,
                                           Display::get_height() * 450 / 600),
                                   Resource::load_sprite("core/menu/options_on"),
                                   _("Contrib\nLevels"),
                                   _("..:: Play User Build levels ::.."));
 
-  story_button  = new MenuButton(Vector2i(Display::get_width() * 400 / 800,
+  story_button  = new MenuButton(this, Vector2i(Display::get_width() * 400 / 800,
                                          Display::get_height() * 340 / 600),
                                  Resource::load_sprite("core/menu/credits_on"),
                                  _("Story"),
                                  _("..:: Start the story ::.."));
   
-  multiplayer_button = new MenuButton(Vector2i(Display::get_width() * 150 / 800,
+  multiplayer_button = new MenuButton(this, Vector2i(Display::get_width() * 150 / 800,
                                               Display::get_height() * 340 / 600),
                                       Resource::load_sprite("core/menu/multi_on"),
                                       _("Multiplayer"),
                                       _("..:: Multiplayer Match ::.."));
 
-  editor_button = new MenuButton(Vector2i(Display::get_width() * 400 / 800,
+  editor_button = new MenuButton(this, Vector2i(Display::get_width() * 400 / 800,
                                          Display::get_height() * 450 / 600),
                                  Resource::load_sprite("core/menu/create_on"),
                                  _("Level Editor"),
                                  _("..:: Create your own levels ::.."));
-
-#if 0
-  slots.push_back(start_button->sig_click().connect(this, &PingusMenu::setup_game_menu));
-  slots.push_back(quit_button->sig_click().connect(this, &PingusMenu::do_quit));
-
-  slots.push_back(story_button->sig_click().connect(this, &PingusMenu::setup_worldmap_menu));
-  slots.push_back(multiplayer_button->sig_click().connect(this, &PingusMenu::setup_main_menu));
-  
-  slots.push_back(contrib_button->sig_click().connect(this, &PingusMenu::setup_contrib_menu));
-  slots.push_back(editor_button->sig_click().connect(this, &PingusMenu::do_edit));
-#endif
 }
 
 void
@@ -121,25 +110,21 @@ PingusMenu::setup_game_menu()
 void
 PingusMenu::setup_contrib_menu()
 {
-#if 0
   if (filedialog)
     delete filedialog;
   filedialog = new FileDialog(this, ".pingus", 
                               path_manager.complete("levels/"), true);
   manager->push_menu (filedialog);
-#endif
 }
 
 void
 PingusMenu::setup_worldmap_menu()
 {
-#if 0
   if (filedialog)
     delete filedialog;
   filedialog = new FileDialog(this, ".xml", 
                               path_manager.complete("worldmaps/"), true);
   manager->push_menu (filedialog);
-#endif
 }
 
 void
@@ -175,7 +160,6 @@ PingusMenu::do_quit()
 void
 PingusMenu::do_start(const std::string &filename)
 { // Start the story or worldmap mode
-#if 0
   Sound::PingusSound::play_sound ("letsgo");
   WorldMapNS::WorldMapManager::instance()->load(filename);
   
@@ -188,23 +172,20 @@ PingusMenu::do_start(const std::string &filename)
       (new StoryScreen(WorldMapNS::WorldMapManager::instance()->get_worldmap()->get_intro_story()), true);
   else
     ScreenManager::instance()->push_screen(WorldMapNS::WorldMapManager::instance());
-#endif
 }
 
 void PingusMenu::do_contrib(const std::string &levelfile)
 { // Launch the specified level - don't bother checking for it, it has to exist
-#if 0
   Sound::PingusSound::play_sound ("letsgo");
   ScreenManager::instance()->push_screen
     (new StartScreen(PLFResMgr::load_plf_from_filename(levelfile)),
      true);
-#endif 
 }
 
 void PingusMenu::do_edit()
 {	// Launch the level editor
   Sound::PingusSound::stop_music();
-  ////  ScreenManager::instance()->push_screen (new Editor::EditorScreen());
+  ScreenManager::instance()->push_screen (new Editor::EditorScreen());
 }
 
 void
@@ -267,5 +248,33 @@ PingusMenu::cancel()
   manager->pop_menu();
 }
 
+void
+PingusMenu::on_click(MenuButton* button)
+{
+  if (button == start_button)
+    {
+      setup_game_menu();
+    }
+  else if (button == quit_button)
+    {
+      do_quit();
+    }
+  else if (button == contrib_button)
+    {
+      setup_contrib_menu();
+    }
+  else if (button == story_button)
+    {
+      setup_worldmap_menu();
+    }
+  else if (button == multiplayer_button)
+    {
+      setup_main_menu();
+    }
+  else if (button == editor_button)
+    {
+      do_edit();
+    }
+}
 
 /* EOF */

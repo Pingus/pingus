@@ -33,6 +33,7 @@ class PingusMenu;
 class MenuButton : public GUI::Component
 {
 protected:
+  PingusMenu* menu;
   Sprite surface_p;
   Font   font;
   Font   font_large;
@@ -49,7 +50,7 @@ protected:
   ////CL_Signal_v0 click;
 
 public:
-  MenuButton(const Vector2i& pos, const Sprite& sprite, 
+  MenuButton(PingusMenu* menu, const Vector2i& pos, const Sprite& sprite, 
              const std::string& text, const std::string& desc);
   MenuButton();
   virtual ~MenuButton();
