@@ -76,8 +76,6 @@ public:
 
   void draw(const std::string& text,    float x, float y, float z = 0);
 
-  ////void draw(const CL_Surface&  surface, const Vector& pos);
-
   void draw_line (float x1, float y1, float x2, float y2, 
 		  const Color& color, float z = 0);
   void draw_fillrect (float x1, float y1, float x2, float y2, 

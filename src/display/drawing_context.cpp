@@ -74,51 +74,33 @@ public:
   }
 };
 
-#if 0
 class FillScreenDrawingRequest : public DrawingRequest
 {
 private:
-  CL_Color color;
+  Color color;
 public:
-  FillScreenDrawingRequest(const CL_Color& color_) 
+  FillScreenDrawingRequest(const Color& color_) 
     : DrawingRequest(Vector3f(0, 0, -1000.0f)), color(color_)
   {
   }
   virtual ~FillScreenDrawingRequest() {}
 
-  void draw(CL_GraphicContext* gc) {
-    gc->clear(color);
-  }
-};
-
-class SurfaceDrawingRequest : public DrawingRequest
-{
-private:
-  CL_Surface sprite;
-
-public:
-  SurfaceDrawingRequest(const CL_Surface& sprite_, const Vector3f& pos_)
-    : DrawingRequest(pos_),
-      sprite(sprite_)
-  {}
-  virtual ~SurfaceDrawingRequest() {}
-
-  void draw(CL_GraphicContext* gc) {
-    sprite.draw(pos.x, pos.y, gc);
+  void draw(SDL_Surface* target) {
+    SDL_FillRect(target, NULL, SDL_MapRGB(target->format, color.r, color.g, color.b));
   }
 };
 
 class LineDrawingRequest : public DrawingRequest
 {
 private:
-  Vector pos1;
-  Vector pos2;
-  CL_Color  color;
+  Vector2i pos1;
+  Vector2i pos2;
+  Color  color;
 
 public:
-  LineDrawingRequest(const Vector& pos1_, 
-                     const Vector& pos2_, 
-                     const CL_Color&  color_,
+  LineDrawingRequest(const Vector2i& pos1_, 
+                     const Vector2i& pos2_, 
+                     const Color&  color_,
                      float z)
     : DrawingRequest(Vector3f(0, 0, z)),
       pos1(pos1_),
@@ -127,32 +109,36 @@ public:
   {
   }
 
-  void draw(CL_GraphicContext* gc) 
+  void draw(SDL_Surface* target)
   {
-    gc->draw_line(pos1.x, pos1.y, pos2.x, pos2.y,
-                  color);
+    ////gc->draw_line(pos1.x, pos1.y, pos2.x, pos2.y,
+    ////color);
   }
 };
 
 class RectDrawingRequest : public DrawingRequest
 {
 private:
-  CL_Rectf  rect;
-  CL_Color color;
-  bool     filled;
+  Rect  rect;
+  Color color;
+  bool  filled;
   
 public:
-  RectDrawingRequest(const CL_Rectf& rect_, const CL_Color& color_, bool filled_, float z)
+  RectDrawingRequest(const Rect& rect_, const Color& color_, bool filled_, float z)
     : DrawingRequest(Vector3f(rect.left, rect.top, z)),
       rect(rect_), color(color_), filled(filled_)
   {}
   
-  void draw(CL_GraphicContext* gc) 
+  void draw(SDL_Surface* target)
   {
     if (filled)
-      gc->fill_rect(rect, color);
+      {
+      Display::fill_rect(rect, color);
+      }
     else
-      gc->draw_rect(rect, color);
+      {
+        Display::draw_rect(rect, color);
+      }
   }
 };
 
@@ -167,12 +153,11 @@ public:
   {}
   virtual ~TextDrawingRequest() {}
 
-  void draw(CL_GraphicContext* gc) {
+  void draw(SDL_Surface* target) {
     // FIXME: not implemented
   }
 };
 
-#endif 
 class DrawingContextDrawingRequest : public DrawingRequest
 {
 private:
@@ -246,16 +231,6 @@ DrawingContext::draw(DrawingContext* dc, float z)
   draw(new DrawingContextDrawingRequest(dc, z));
 }
 
-#if 0
-void
-DrawingContext::draw(const CL_Surface&  surface, const Vector& pos)
-{
-  draw(new SurfaceDrawingRequest(surface, Vector3f(translate_stack.back().x + pos.x,
-                                                    translate_stack.back().y + pos.y,
-                                                    pos.z))); 
-}
-#endif 
-
 void
 DrawingContext::draw(const Sprite& sprite, const Vector3f& pos)
 {
@@ -271,45 +246,39 @@ DrawingContext::draw(const Sprite&   sprite,  float x, float y, float z)
                                                   z)));
 }
 
-#if 0
 void
 DrawingContext::draw(const std::string& text, float x, float y, float z)
 { 
   draw(new TextDrawingRequest(text, Vector3f(x, y, z)));
 }
-#endif
 
 void
 DrawingContext::draw_line (float x1, float y1, float x2, float y2, 
                            const Color& color, float z)
 {
-  ////  draw(new LineDrawingRequest(Vector(x1, y1), Vector(x2, y2), color, z));
+  draw(new LineDrawingRequest(Vector2i(int(x1), int(y1)), Vector2i(int(x2), int(y2)), color, z));
 }
 
 void
 DrawingContext::draw_fillrect (float x1, float y1, float x2, float y2, 
                                const Color& color, float z)
 {
-#if 0
-  draw(new RectDrawingRequest(CL_Rectf(x1 + translate_stack.back().x, y1 + translate_stack.back().y, 
-                                       x2 + translate_stack.back().x, y2 + translate_stack.back().y),
+  draw(new RectDrawingRequest(Rect(int(x1 + translate_stack.back().x), int(y1 + translate_stack.back().y), 
+                                   int(x2 + translate_stack.back().x), int(y2 + translate_stack.back().y)),
                               color,
                               true,
                               z));
-#endif
 }
 
 void
 DrawingContext::draw_rect (float x1, float y1, float x2, float y2, 
                            const Color& color, float z)
 {
-#if 0
-  draw(new RectDrawingRequest(CL_Rectf(x1 + translate_stack.back().x, y1 + translate_stack.back().y, 
-                                       x2 + translate_stack.back().x, y2 + translate_stack.back().y),
+  draw(new RectDrawingRequest(Rect(int(x1 + translate_stack.back().x), int(y1 + translate_stack.back().y), 
+                                   int(x2 + translate_stack.back().x), int(y2 + translate_stack.back().y)),
                               color,
                               false,
                               z));
-#endif
 }
 
 void
@@ -335,7 +304,7 @@ DrawingContext::draw_arc (float x_pos, float y_pos, float radius, float angle_st
 void
 DrawingContext::fill_screen(const Color& color)
 {
-  ////  draw(new FillScreenDrawingRequest(color));
+  draw(new FillScreenDrawingRequest(color));
 }
 
 void
