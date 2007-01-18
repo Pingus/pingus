@@ -17,13 +17,13 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../col_map.hxx"
-#include "../display/scene_context.hxx"
-#include "../pingu.hxx"
-#include "../pingu_holder.hxx"
-#include "../resource.hxx"
-#include "../world.hxx"
-#include "conveyor_belt.hxx"
+#include "../col_map.hpp"
+#include "../display/scene_context.hpp"
+#include "../pingu.hpp"
+#include "../pingu_holder.hpp"
+#include "../resource.hpp"
+#include "../world.hpp"
+#include "conveyor_belt.hpp"
 
 namespace WorldObjs {
 

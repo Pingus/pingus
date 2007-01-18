@@ -21,8 +21,8 @@
 #define HEADER_PINGUS_ENTRANCE_HXX
 
 #include "../math/vector3f.hpp"
-#include "../res_descriptor.hxx"
-#include "../worldobj.hxx"
+#include "../res_descriptor.hpp"
+#include "../worldobj.hpp"
 
 
 namespace WorldObjsData {

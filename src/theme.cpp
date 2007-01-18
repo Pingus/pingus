@@ -23,18 +23,18 @@
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Display/font.h>
 #include <ClanLib/Display/keyboard.h>
-#include "path_manager.hxx"
+#include "path_manager.hpp"
 #include "gettext.h"
-#include "system.hxx"
-#include "resource.hxx"
-#include "pingus_error.hxx"
-#include "plf_res_mgr.hxx"
-#include "game_session.hxx"
-#include "globals.hxx"
-#include "theme.hxx"
-#include "xml_pingus_level.hxx"
-#include "fonts.hxx"
-#include "gui/screen_manager.hxx"
+#include "system.hpp"
+#include "resource.hpp"
+#include "pingus_error.hpp"
+#include "plf_res_mgr.hpp"
+#include "game_session.hpp"
+#include "globals.hpp"
+#include "theme.hpp"
+#include "xml_pingus_level.hpp"
+#include "fonts.hpp"
+#include "gui/screen_manager.hpp"
 
 
 Theme::Theme (const std::string& filename_)

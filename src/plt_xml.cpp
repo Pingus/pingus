@@ -19,10 +19,10 @@
 
 #include <iostream>
 #include <ClanLib/core.h>
-#include "globals.hxx"
-#include "pingus_error.hxx"
-//#include "xml_file_reader.hxx"
-#include "plt_xml.hxx"
+#include "globals.hpp"
+#include "pingus_error.hpp"
+//#include "xml_file_reader.hpp"
+#include "plt_xml.hpp"
 
 
 PLTXML::PLTXML ()

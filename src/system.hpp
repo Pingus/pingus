@@ -21,7 +21,7 @@
 #ifndef HEADER_PINGUS_SYSTEM_HXX
 #define HEADER_PINGUS_SYSTEM_HXX
 
-#include "pingus.hxx"
+#include "pingus.hpp"
 #include <string>
 #include <list>
 #include <map>

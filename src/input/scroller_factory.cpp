@@ -18,20 +18,20 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdlib.h>
-#include "../pingus_error.hxx"
-#include "axis.hxx"
-#include "axis_factory.hxx"
-#include "button.hxx"
-#include "button_factory.hxx"
-#include "pointer.hxx"
-#include "pointer_factory.hxx"
-#include "scroller_factory.hxx"
-#include "scrollers/axis_scroller.hxx"
-#include "scrollers/inverted_scroller.hxx"
-#include "scrollers/joystick_scroller.hxx"
-#include "scrollers/mouse_scroller.hxx"
-#include "scrollers/multiple_scroller.hxx"
-#include "scrollers/pointer_scroller.hxx"
+#include "../pingus_error.hpp"
+#include "axis.hpp"
+#include "axis_factory.hpp"
+#include "button.hpp"
+#include "button_factory.hpp"
+#include "pointer.hpp"
+#include "pointer_factory.hpp"
+#include "scroller_factory.hpp"
+#include "scrollers/axis_scroller.hpp"
+#include "scrollers/inverted_scroller.hpp"
+#include "scrollers/joystick_scroller.hpp"
+#include "scrollers/mouse_scroller.hpp"
+#include "scrollers/multiple_scroller.hpp"
+#include "scrollers/pointer_scroller.hpp"
 
 namespace Input {
 

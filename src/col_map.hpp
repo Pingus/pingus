@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_COL_MAP_HXX
 #define HEADER_PINGUS_COL_MAP_HXX
 
-#include "groundtype.hxx"
+#include "groundtype.hpp"
 
 class CL_Surface;
 class PixelBuffer;

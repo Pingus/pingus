@@ -19,9 +19,9 @@
 
 #include <assert.h>
 #include <iostream>
-#include "../input/event.hxx"
-//#include "input/scroll_event.hxx"
-#include "input_debug_screen.hxx"
+#include "../input/event.hpp"
+//#include "input/scroll_event.hpp"
+#include "input_debug_screen.hpp"
 
 
 using namespace Input;

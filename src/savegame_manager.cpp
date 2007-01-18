@@ -20,11 +20,11 @@
 #include <iostream>
 #include <fstream>
 #include <assert.h>
-#include "system.hxx"
-#include "pingus_error.hxx"
-////#include "xml_file_reader.hxx"
-///#include "xml_file_writer.hxx"
-#include "savegame_manager.hxx"
+#include "system.hpp"
+#include "pingus_error.hpp"
+////#include "xml_file_reader.hpp"
+///#include "xml_file_writer.hpp"
+#include "savegame_manager.hpp"
 
 
 SavegameManager* SavegameManager::instance_ = 0;

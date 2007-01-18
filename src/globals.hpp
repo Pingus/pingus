@@ -23,7 +23,7 @@
 #ifndef HEADER_PINGUS_GLOBALS_HXX
 #define HEADER_PINGUS_GLOBALS_HXX
 
-#include "pingus.hxx"
+#include "pingus.hpp"
 #include <string>
 
 

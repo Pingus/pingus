@@ -20,10 +20,10 @@
 #include <iostream>
 #include <algorithm>
 #include <fstream>
-#include "system.hxx"
-#include "pingus_error.hxx"
-////#include "xml_file_reader.hxx"
-#include "stat_manager.hxx"
+#include "system.hpp"
+#include "pingus_error.hpp"
+////#include "xml_file_reader.hpp"
+#include "stat_manager.hpp"
 
 
 StatManager* StatManager::instance_ = 0;

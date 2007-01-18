@@ -18,9 +18,9 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "SDL.h"
-#include "debug.hxx"
-#include "globals.hxx"
-#include "timer.hxx"
+#include "debug.hpp"
+#include "globals.hpp"
+#include "timer.hpp"
 
 
 Timer::Timer(const char* desc)

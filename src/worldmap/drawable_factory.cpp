@@ -18,9 +18,9 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "surface_drawable.hxx"
-#include "sprite_drawable.hxx"
-#include "drawable_factory.hxx"
+#include "surface_drawable.hpp"
+#include "sprite_drawable.hpp"
+#include "drawable_factory.hpp"
 
 namespace WorldMapNS {
 

@@ -22,7 +22,7 @@
 
 #include <map>
 #include <vector>
-#include "pingu_enums.hxx"
+#include "pingu_enums.hpp"
 
 
 class PingusLevel;

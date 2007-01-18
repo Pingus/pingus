@@ -21,8 +21,8 @@
 #define HEADER_PINGUS_BUFFER_GRAPHIC_CONTEXT_HXX
 
 #include <string>
-#include "../vector.hxx"
-#include "graphic_context.hxx"
+#include "../vector.hpp"
+#include "graphic_context.hpp"
 
 class CL_Surface;
 class CL_Font;

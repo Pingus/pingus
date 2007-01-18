@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_INPUT_INVERTED_SCROLLER_HXX
 #define HEADER_PINGUS_INPUT_INVERTED_SCROLLER_HXX
 
-#include "../scroller.hxx"
+#include "../scroller.hpp"
 
 namespace Input {
 namespace Scrollers {

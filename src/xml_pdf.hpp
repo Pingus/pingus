@@ -24,8 +24,8 @@
 #include <vector>
 #include <iosfwd>
 
-#include "pingus_level.hxx"
-#include "server_event.hxx"
+#include "pingus_level.hpp"
+#include "server_event.hpp"
 
 
 /** XMLPDF stands for Pingus Demo File, it contains all the infos

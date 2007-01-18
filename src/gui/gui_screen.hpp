@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_GUISCREEN_HXX
 #define HEADER_PINGUS_GUISCREEN_HXX
 
-#include "screen.hxx"
+#include "screen.hpp"
 
 
 namespace GUI {

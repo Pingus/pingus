@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_SMALLMAP_IMAGE_HXX
 #define HEADER_PINGUS_SMALLMAP_IMAGE_HXX
 
-#include "pingus.hxx"
+#include "pingus.hpp"
 #include "sprite.hpp"
 
 class Server;

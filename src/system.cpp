@@ -37,9 +37,9 @@
 #include <iostream>
 #include <sstream>
 
-#include "pingus_error.hxx"
-#include "globals.hxx"
-#include "system.hxx"
+#include "pingus_error.hpp"
+#include "globals.hpp"
+#include "system.hpp"
 #include "gettext.h"
 
 

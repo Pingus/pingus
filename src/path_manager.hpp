@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_PATH_MANAGER_HXX
 #define HEADER_PINGUS_PATH_MANAGER_HXX
 
-#include "pingus.hxx"
+#include "pingus.hpp"
 #include <string>
 #include <list>
 

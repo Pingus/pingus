@@ -18,10 +18,10 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../math/vector3f.hpp"
-#include "../resource.hxx"
-#include "../display/scene_context.hxx"
-#include "../pingu.hxx"
-#include "laser_kill.hxx"
+#include "../resource.hpp"
+#include "../display/scene_context.hpp"
+#include "../pingu.hpp"
+#include "laser_kill.hpp"
 
 namespace Actions {
 

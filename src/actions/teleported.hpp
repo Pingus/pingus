@@ -18,7 +18,7 @@
 #ifndef HEADER_PINGUS_ACTIONS_TELEPORTED_HXX
 #define HEADER_PINGUS_ACTIONS_TELEPORTED_HXX
 
-#include "../pingu_action.hxx"
+#include "../pingu_action.hpp"
 
 namespace Actions {
 

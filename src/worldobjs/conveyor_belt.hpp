@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_WORLDOBJS_CONVEYOR_BELT_HXX
 
 #include "../math/vector3f.hpp"
-#include "../worldobj.hxx"
+#include "../worldobj.hpp"
 
 namespace WorldObjsData {
 class ConveyorBeltData;

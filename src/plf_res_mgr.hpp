@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_PLF_RES_MGR_HXX
 #define HEADER_PINGUS_PLF_RES_MGR_HXX
 
-#include "pingus_level.hxx"
+#include "pingus_level.hpp"
 
 
 /** */

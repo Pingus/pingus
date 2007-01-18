@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_GUI_CHECKBOX_HXX
 #define HEADER_PINGUS_GUI_CHECKBOX_HXX
 
-#include "../gui/component.hxx"
+#include "../gui/component.hpp"
 #include "../math/vector3f.hpp"
 #include "../sprite.hpp"
 

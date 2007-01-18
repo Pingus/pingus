@@ -20,9 +20,9 @@
 #ifndef HEADER_PINGUS_SERVER_HXX
 #define HEADER_PINGUS_SERVER_HXX
 
-#include "server_event.hxx"
-#include "action_holder.hxx"
-#include "pingus_level.hxx"
+#include "server_event.hpp"
+#include "action_holder.hpp"
+#include "pingus_level.hpp"
 
 
 class Pingu;

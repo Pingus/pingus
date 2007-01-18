@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_PINGU_HXX
 #define HEADER_PINGUS_PINGU_HXX
 
-#include "direction.hxx"
-#include "pingu_enums.hxx"
+#include "direction.hpp"
+#include "pingu_enums.hpp"
 
 // Forward declarations
 class Vector3f;

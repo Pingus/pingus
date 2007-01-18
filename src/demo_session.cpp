@@ -19,15 +19,15 @@
 
 #include <ClanLib/Display/keyboard.h>
 #include <ClanLib/Display/keys.h>
-#include "math.hxx"
-#include "xml_pdf.hxx"
-#include "true_server.hxx"
-#include "world.hxx"
-#include "demo_player.hxx"
-#include "components/pingus_counter.hxx"
-#include "gui/gui_manager.hxx"
-#include "display/scene_context.hxx"
-#include "demo_session.hxx"
+#include "math.hpp"
+#include "xml_pdf.hpp"
+#include "true_server.hpp"
+#include "world.hpp"
+#include "demo_player.hpp"
+#include "components/pingus_counter.hpp"
+#include "gui/gui_manager.hpp"
+#include "display/scene_context.hpp"
+#include "demo_session.hpp"
 
 
 DemoSession::DemoSession(const std::string& filename)

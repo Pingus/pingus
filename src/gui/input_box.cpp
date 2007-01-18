@@ -18,10 +18,10 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <algorithm>
-#include "input_box.hxx"
-#include "../display/drawing_context.hxx"
+#include "input_box.hpp"
+#include "../display/drawing_context.hpp"
 #include "../math/vector3f.hpp"
-#include "../fonts.hxx"
+#include "../fonts.hpp"
 
 namespace GUI {
 	

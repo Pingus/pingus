@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_CLIENT_HXX
 #define HEADER_PINGUS_CLIENT_HXX
 
-#include "gui/gui_screen.hxx"
+#include "gui/gui_screen.hpp"
 
 namespace Input {
 class Controller;

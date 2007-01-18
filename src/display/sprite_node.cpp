@@ -20,8 +20,8 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <string>
-#include "scene_graph.hxx"
-#include "sprite_node.hxx"
+#include "scene_graph.hpp"
+#include "sprite_node.hpp"
 
 extern SDL_Surface* global_screen;
 

@@ -22,8 +22,8 @@
 #define HEADER_PINGUS_THEME_HXX
 
 #include <ClanLib/Display/surface.h>
-#include "multiline_text.hxx"
-#include "plt_xml.hxx"
+#include "multiline_text.hpp"
+#include "plt_xml.hpp"
 
 class CL_Font;
 

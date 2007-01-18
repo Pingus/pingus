@@ -20,10 +20,10 @@
 #ifndef HEADER_PINGUS_FILE_DIALOG_ITEM_HXX
 #define HEADER_PINGUS_FILE_DIALOG_ITEM_HXX
 
-#include "gui/component.hxx"
+#include "gui/component.hpp"
 #include "math/vector3f.hpp"
 #include "sprite.hpp"
-#include "file_dialog.hxx"
+#include "file_dialog.hpp"
 
 
 /** Class representing a clickable object in a File Dialog (a Directory, Level,

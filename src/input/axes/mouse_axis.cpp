@@ -20,7 +20,7 @@
 #include <ClanLib/Display/Input/input.h>
 #include <ClanLib/Display/Input/inputdevice.h>
 #include <ClanLib/Display/Input/inputcursor.h>
-#include "mouse_axis.hxx"
+#include "mouse_axis.hpp"
 
 namespace Input {
 

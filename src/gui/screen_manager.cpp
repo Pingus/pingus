@@ -19,13 +19,13 @@
 
 #include "SDL.h"
 #include <iostream>
-#include "../globals.hxx"
-#include "cursor.hxx"
-#include "display.hxx"
-#include "screen_manager.hxx"
-#include "../path_manager.hxx"
-#include "../display/drawing_context.hxx"
-#include "../input/controller.hxx"
+#include "../globals.hpp"
+#include "cursor.hpp"
+#include "display.hpp"
+#include "screen_manager.hpp"
+#include "../path_manager.hpp"
+#include "../display/drawing_context.hpp"
+#include "../input/controller.hpp"
 
 
 ScreenManager* ScreenManager::instance_ = 0;

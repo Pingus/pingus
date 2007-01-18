@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_BLITTER_HXX
 #define HEADER_PINGUS_BLITTER_HXX
 
-#include "pingus.hxx"
+#include "pingus.hpp"
 #include "math/color.hpp"
 #include "math/rect.hpp"
 ////#include <ClanLib/Display/color.h>

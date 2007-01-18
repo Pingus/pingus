@@ -17,15 +17,15 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../globals.hxx"
-#include "../cheat.hxx"
-#include "../resource.hxx"
-#include "action_button.hxx"
-#include "../true_server.hxx"
-#include "../world.hxx"
-#include "../display/drawing_context.hxx"
-#include "../gui/display.hxx"
-#include "../fonts.hxx"
+#include "../globals.hpp"
+#include "../cheat.hpp"
+#include "../resource.hpp"
+#include "action_button.hpp"
+#include "../true_server.hpp"
+#include "../world.hpp"
+#include "../display/drawing_context.hpp"
+#include "../gui/display.hpp"
+#include "../fonts.hpp"
 #include "../math/vector3f.hpp"
 
 

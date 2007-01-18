@@ -18,14 +18,14 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../display/scene_context.hxx"
-#include "../world.hxx"
-#include "../timer.hxx"
-#include "../resource.hxx"
-#include "../globals.hxx"
-#include "../blitter.hxx"
-#include "../gui/display.hxx"
-#include "surface_background.hxx"
+#include "../display/scene_context.hpp"
+#include "../world.hpp"
+#include "../timer.hpp"
+#include "../resource.hpp"
+#include "../globals.hpp"
+#include "../blitter.hpp"
+#include "../gui/display.hpp"
+#include "surface_background.hpp"
 
 namespace WorldObjs {
 

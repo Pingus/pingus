@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_RESULT_SCREEN_HXX
 #define HEADER_PINGUS_RESULT_SCREEN_HXX
 
-#include "result.hxx"
-#include "gui/gui_screen.hxx"
+#include "result.hpp"
+#include "gui/gui_screen.hpp"
 
 
 /** */

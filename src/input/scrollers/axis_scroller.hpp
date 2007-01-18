@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_INPUT_AXIS_SCROLLER_HXX
 
 #include <vector>
-#include "../scroller.hxx"
+#include "../scroller.hpp"
 
 namespace Input {
 

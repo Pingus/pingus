@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_PINGU_ENUMS_HXX
 #define HEADER_PINGUS_PINGU_ENUMS_HXX
 
-#include "pingus.hxx"
+#include "pingus.hpp"
 #include <string>
 
 /** The Pingus Status shows the current status of a Pingu, as

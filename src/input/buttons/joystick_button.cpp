@@ -21,8 +21,8 @@
 #include <ClanLib/Display/joystick.h>
 #include <ClanLib/Display/input_device.h>
 //#include <ClanLib/Display/input_button.h>
-#include "joystick_button.hxx"
-#include "../../pingus_error.hxx"
+#include "joystick_button.hpp"
+#include "../../pingus_error.hpp"
 
 namespace Input {
 namespace Buttons {

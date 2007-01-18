@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_RESOURCE_MODIFIER_HXX
 #define HEADER_PINGUS_RESOURCE_MODIFIER_HXX
 
-#include "pingus.hxx"
+#include "pingus.hpp"
 #include <string>
 
 namespace ResourceModifierNS {

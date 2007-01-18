@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_SCREENSHOT_HXX
 #define HEADER_PINGUS_SCREENSHOT_HXX
 
-#include "pingus.hxx"
+#include "pingus.hpp"
 #include <ClanLib/Display/pixel_buffer.h>
 #include <string>
 

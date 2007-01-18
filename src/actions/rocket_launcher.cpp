@@ -17,14 +17,14 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../display/scene_context.hxx"
-//#include "../particles/particle_holder.hxx"
-//#include "../particles/explosive_particle.hxx"
-#include "../world.hxx"
-#include "../resource.hxx"
-#include "../pingu.hxx"
-#include "../worldobj.hxx"
-#include "rocket_launcher.hxx"
+#include "../display/scene_context.hpp"
+//#include "../particles/particle_holder.hpp"
+//#include "../particles/explosive_particle.hpp"
+#include "../world.hpp"
+#include "../resource.hpp"
+#include "../pingu.hpp"
+#include "../worldobj.hpp"
+#include "rocket_launcher.hpp"
 
 namespace Actions {
 

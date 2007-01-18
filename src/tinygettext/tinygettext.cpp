@@ -30,7 +30,7 @@
 #include <iostream>
 #include <ctype.h>
 #include <errno.h>
-#include "tinygettext.hxx"
+#include "tinygettext.hpp"
 
 //#define TRANSLATION_DEBUG
 

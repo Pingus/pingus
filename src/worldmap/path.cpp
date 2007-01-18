@@ -20,7 +20,7 @@
 #include <iostream>
 #include <algorithm>
 #include <assert.h>
-#include "path.hxx"
+#include "path.hpp"
 
 namespace WorldMapNS {
 

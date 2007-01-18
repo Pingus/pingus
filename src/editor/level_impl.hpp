@@ -24,7 +24,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-#include "level_objs.hxx"
+#include "level_objs.hpp"
 
 
 namespace Editor {

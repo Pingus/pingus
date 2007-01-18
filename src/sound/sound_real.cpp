@@ -17,10 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../globals.hxx"
-#include "../debug.hxx"
-#include "sound_res_mgr.hxx"
-#include "sound_real.hxx"
+#include "../globals.hpp"
+#include "../debug.hpp"
+#include "sound_res_mgr.hpp"
+#include "sound_real.hpp"
 
 namespace Sound {
 

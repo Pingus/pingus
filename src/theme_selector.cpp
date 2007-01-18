@@ -26,16 +26,16 @@
 #include <ClanLib/Display/mouse.h>
 #include <ClanLib/Core/System/system.h>
 
-#include "gui/display.hxx"
-#include "globals.hxx"
-#include "theme_selector.hxx"
-#include "pingus_error.hxx"
-#include "resource.hxx"
-#include "sound/sound.hxx"
-#include "path_manager.hxx"
-#include "system.hxx"
-#include "fonts.hxx"
-#include "theme.hxx"
+#include "gui/display.hpp"
+#include "globals.hpp"
+#include "theme_selector.hpp"
+#include "pingus_error.hpp"
+#include "resource.hpp"
+#include "sound/sound.hpp"
+#include "path_manager.hpp"
+#include "system.hpp"
+#include "fonts.hpp"
+#include "theme.hpp"
 
 
 ListBox::ListBox ()

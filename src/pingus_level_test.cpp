@@ -19,9 +19,9 @@
 
 #include <iostream>
 #include <ClanLib/core.h>
-#include "xml_pingus_level.hxx"
-#include "pingus_level.hxx"
-#include "pingus_error.hxx"
+#include "xml_pingus_level.hpp"
+#include "pingus_level.hpp"
+#include "pingus_error.hpp"
 
 using namespace Pingus;
 

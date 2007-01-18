@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_RES_DESCRIPTOR_HXX
 #define HEADER_PINGUS_RES_DESCRIPTOR_HXX
 
-#include "resource_modifier.hxx"
+#include "resource_modifier.hpp"
 
 /// Resource descriptor, tells were to find a resource.
 class ResDescriptor

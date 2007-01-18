@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_INPUT_AXIS_HXX
 #define HEADER_PINGUS_INPUT_AXIS_HXX
 
-#include "../pingus.hxx"
+#include "../pingus.hpp"
 
 namespace Input {
 

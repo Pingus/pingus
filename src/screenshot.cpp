@@ -27,8 +27,8 @@
 #include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Display/Providers/provider_factory.h>
-#include "system.hxx"
-#include "screenshot.hxx"
+#include "system.hpp"
+#include "screenshot.hpp"
 #include "gettext.h"
 
 

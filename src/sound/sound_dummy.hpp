@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_SOUND_DUMMY_HXX
 #define HEADER_PINGUS_SOUND_DUMMY_HXX
 
-#include "sound_impl.hxx"
-#include "sound.hxx"
+#include "sound_impl.hpp"
+#include "sound.hpp"
 
 namespace Sound {
 

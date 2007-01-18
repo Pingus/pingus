@@ -24,7 +24,7 @@
 #include <vector>
 #include "sprite.hpp"
 #include "pixel_buffer.hpp"
-#include "res_descriptor.hxx"
+#include "res_descriptor.hpp"
 #include "resource_manager.hpp"
 #include "collision_mask.hpp"
 #include "font.hpp"

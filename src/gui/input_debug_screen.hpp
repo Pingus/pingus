@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_INPUT_DEBUG_SCREEN_HXX
 #define HEADER_PINGUS_INPUT_DEBUG_SCREEN_HXX
 
-#include "screen.hxx"
+#include "screen.hpp"
 
 
 class InputDebugScreen : public Screen

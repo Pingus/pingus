@@ -18,15 +18,15 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <cstdio>
-#include "../col_map.hxx"
-#include "../display/scene_context.hxx"
-#include "../ground_map.hxx"
-#include "../world.hxx"
-#include "../worldobj.hxx"
-#include "../resource.hxx"
-#include "../sound/sound.hxx"
-#include "../pingu.hxx"
-#include "digger.hxx"
+#include "../col_map.hpp"
+#include "../display/scene_context.hpp"
+#include "../ground_map.hpp"
+#include "../world.hpp"
+#include "../worldobj.hpp"
+#include "../resource.hpp"
+#include "../sound/sound.hpp"
+#include "../pingu.hpp"
+#include "digger.hpp"
 
 namespace Actions {
 

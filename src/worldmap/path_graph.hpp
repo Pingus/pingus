@@ -23,9 +23,9 @@
 #include <map>
 #include <vector>
 #include "../math/vector3f.hpp"
-#include "path.hxx"
-#include "pathfinder.hxx"
-#include "graph.hxx"
+#include "path.hpp"
+#include "pathfinder.hpp"
+#include "graph.hpp"
 
 namespace WorldMapNS {
 

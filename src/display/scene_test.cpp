@@ -2,8 +2,8 @@
 #include <SDL_image.h>
 #include <stdlib.h>
 #include <iostream>
-#include "scene_graph.hxx"
-#include "sprite_node.hxx"
+#include "scene_graph.hpp"
+#include "sprite_node.hpp"
 
 SDL_Surface* global_screen;
 

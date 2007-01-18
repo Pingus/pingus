@@ -18,11 +18,11 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../world.hxx"
-#include "../ground_map.hxx"
-#include "../col_map.hxx"
-#include "../resource.hxx"
-#include "groundpiece.hxx"
+#include "../world.hpp"
+#include "../ground_map.hpp"
+#include "../col_map.hpp"
+#include "../resource.hpp"
+#include "groundpiece.hpp"
 
 namespace WorldObjs {
 

@@ -21,8 +21,8 @@
 #define HEADER_PINGUS_GAME_DELTA_HXX
 
 #include <list>
-#include "../delta_manager.hxx"
-#include "../input/event.hxx"
+#include "../delta_manager.hpp"
+#include "../input/event.hpp"
 
 
 /** Input for the game engine */

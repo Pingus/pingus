@@ -18,11 +18,11 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../col_map.hxx"
-#include "../display/scene_context.hxx"
-#include "../resource.hxx"
-#include "../world.hxx"
-#include "liquid.hxx"
+#include "../col_map.hpp"
+#include "../display/scene_context.hpp"
+#include "../resource.hpp"
+#include "../world.hpp"
+#include "liquid.hpp"
 
 namespace WorldObjs {
 

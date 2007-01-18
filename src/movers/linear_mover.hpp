@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_LINEAR_MOVER_HXX
 #define HEADER_PINGUS_LINEAR_MOVER_HXX
 
-#include "../mover.hxx"
+#include "../mover.hpp"
 
 
 class Collider;

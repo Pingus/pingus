@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_DRAWABLE_HXX
 #define HEADER_PINGUS_DRAWABLE_HXX
 
-#include "../pingus_error.hxx"
-#include "../file_reader.hxx"
+#include "../pingus_error.hpp"
+#include "../file_reader.hpp"
 
 class DrawingContext;
 

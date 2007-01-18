@@ -17,12 +17,12 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #if 0
-#include "../col_map.hxx"
-#include "../pingu_map.hxx"
-#include "../world.hxx"
-#include "../particles/particle_holder.hxx"
-#include "../resource.hxx"
-#include "explosive_particle.hxx"
+#include "../col_map.hpp"
+#include "../pingu_map.hpp"
+#include "../world.hpp"
+#include "../particles/particle_holder.hpp"
+#include "../resource.hpp"
+#include "explosive_particle.hpp"
 
 ExplosiveParticle::ExplosiveParticle (int x, int y, float x_a, float y_a)
                                     : Particle (x, y, x_a, y_a),

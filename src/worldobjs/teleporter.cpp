@@ -18,12 +18,12 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../display/scene_context.hxx"
-#include "../pingu.hxx"
-#include "../pingu_holder.hxx"
-#include "../world.hxx"
-#include "../resource.hxx"
-#include "teleporter.hxx"
+#include "../display/scene_context.hpp"
+#include "../pingu.hpp"
+#include "../pingu_holder.hpp"
+#include "../world.hpp"
+#include "../resource.hpp"
+#include "teleporter.hpp"
 
 namespace WorldObjs {
 

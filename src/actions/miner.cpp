@@ -17,15 +17,15 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../ground_map.hxx"
-#include "../col_map.hxx"
-#include "../display/scene_context.hxx"
-#include "../world.hxx"
-#include "../resource.hxx"
-#include "../sound/sound.hxx"
-#include "../pingu.hxx"
-#include "../worldobj.hxx"
-#include "miner.hxx"
+#include "../ground_map.hpp"
+#include "../col_map.hpp"
+#include "../display/scene_context.hpp"
+#include "../world.hpp"
+#include "../resource.hpp"
+#include "../sound/sound.hpp"
+#include "../pingu.hpp"
+#include "../worldobj.hpp"
+#include "miner.hpp"
 
 namespace Actions {
 

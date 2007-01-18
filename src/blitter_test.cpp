@@ -19,10 +19,10 @@
 
 #include <ClanLib/Core/System/system.h>
 #include <ClanLib/Display/surface.h>
-#include "resource.hxx"
-#include "timer.hxx"
-#include "blitter.hxx"
-#include "blitter_test.hxx"
+#include "resource.hpp"
+#include "timer.hpp"
+#include "blitter.hpp"
+#include "blitter_test.hpp"
 
 
 class BlitterTestImpl 

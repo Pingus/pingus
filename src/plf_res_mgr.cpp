@@ -17,12 +17,12 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "globals.hxx"
-#include "debug.hxx"
-#include "system.hxx"
-#include "path_manager.hxx"
-#include "xml_pingus_level.hxx"
-#include "plf_res_mgr.hxx"
+#include "globals.hpp"
+#include "debug.hpp"
+#include "system.hpp"
+#include "path_manager.hpp"
+#include "xml_pingus_level.hpp"
+#include "plf_res_mgr.hpp"
 
 
 PLFResMgr::PLFMap PLFResMgr::plf_map;

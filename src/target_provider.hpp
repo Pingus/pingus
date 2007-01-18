@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_TARGET_PROVIDER_HXX
 #define HEADER_PINGUS_TARGET_PROVIDER_HXX
 
-#include "pingus.hxx"
+#include "pingus.hpp"
 #include <ClanLib/Display/pixel_buffer.h>
 
 class CL_Target;

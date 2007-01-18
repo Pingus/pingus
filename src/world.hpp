@@ -20,11 +20,11 @@
 #ifndef HEADER_PINGUS_WORLD_HXX
 #define HEADER_PINGUS_WORLD_HXX
 
-#include "pingus.hxx"
+#include "pingus.hpp"
 #include <vector>
 #include <string>
 #include "math/color.hpp"
-#include "groundtype.hxx"
+#include "groundtype.hpp"
 #include "collision_mask.hpp"
 
 // Forward declarations

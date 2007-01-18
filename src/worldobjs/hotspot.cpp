@@ -18,10 +18,10 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../globals.hxx"
-#include "../display/scene_context.hxx"
-#include "../resource.hxx"
-#include "hotspot.hxx"
+#include "../globals.hpp"
+#include "../display/scene_context.hpp"
+#include "../resource.hpp"
+#include "hotspot.hpp"
 
 namespace WorldObjs {
 

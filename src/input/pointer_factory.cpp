@@ -18,12 +18,12 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../pingus_error.hxx"
-#include "axis_factory.hxx"
-#include "pointers/axis_pointer.hxx"
-#include "pointers/mouse_pointer.hxx"
-#include "pointers/multiple_pointer.hxx"
-#include "pointer_factory.hxx"
+#include "../pingus_error.hpp"
+#include "axis_factory.hpp"
+#include "pointers/axis_pointer.hpp"
+#include "pointers/mouse_pointer.hpp"
+#include "pointers/multiple_pointer.hpp"
+#include "pointer_factory.hpp"
 
 namespace Input {
 

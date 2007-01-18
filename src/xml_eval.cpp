@@ -19,7 +19,7 @@
 
 #include <iostream>
 #include <ClanLib/core.h>
-#include "xml_eval.hxx"
+#include "xml_eval.hpp"
 
 namespace XMLEval {
 

@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_INPUT_SCROLLER_FACTORY_HXX
 #define HEADER_PINGUS_INPUT_SCROLLER_FACTORY_HXX
 
-#include "../file_reader.hxx"
+#include "../file_reader.hpp"
 
 namespace Input {
 

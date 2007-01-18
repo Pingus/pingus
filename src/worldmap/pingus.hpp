@@ -21,9 +21,9 @@
 #define HEADER_PINGUS_WORLDMAP_PINGUS_HXX
 
 #include <math.h>
-#include "../state_sprite.hxx"
-#include "drawable.hxx"
-#include "path_graph.hxx"
+#include "../state_sprite.hpp"
+#include "drawable.hpp"
+#include "path_graph.hpp"
 
 namespace WorldMapNS {
 

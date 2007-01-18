@@ -18,17 +18,17 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <math.h>
-#include "../col_map.hxx"
-#include "../colliders/pingu_collider.hxx"
-#include "../debug.hxx"
-#include "../globals.hxx"
-#include "../display/scene_context.hxx"
-#include "../movers/linear_mover.hxx"
-#include "../pingu.hxx"
-#include "../resource.hxx"
-#include "../world.hxx"
-#include "../worldobj.hxx"
-#include "faller.hxx"
+#include "../col_map.hpp"
+#include "../colliders/pingu_collider.hpp"
+#include "../debug.hpp"
+#include "../globals.hpp"
+#include "../display/scene_context.hpp"
+#include "../movers/linear_mover.hpp"
+#include "../pingu.hpp"
+#include "../resource.hpp"
+#include "../world.hpp"
+#include "../worldobj.hpp"
+#include "faller.hpp"
 
   namespace Actions {
 

@@ -19,7 +19,7 @@
 
 #include <ClanLib/Display/keyboard.h>
 #include <ClanLib/Display/input_event.h>
-#include "key_button.hxx"
+#include "key_button.hpp"
 
 #include <iostream>
 

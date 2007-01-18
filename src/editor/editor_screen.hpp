@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_EDITOR_SCREEN_HXX
 #define HEADER_PINGUS_EDITOR_SCREEN_HXX
 
-#include "../gui/gui_screen.hxx"
-#include "../file_dialog_listener.hxx"
+#include "../gui/gui_screen.hpp"
+#include "../file_dialog_listener.hpp"
 
 
 class DrawingContext;

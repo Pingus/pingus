@@ -20,7 +20,7 @@
 #ifndef HEADER_DRAWABLE_FACTORY_HXX
 #define HEADER_DRAWABLE_FACTORY_HXX
 
-#include "drawable.hxx"
+#include "drawable.hpp"
 
 namespace WorldMapNS {
 

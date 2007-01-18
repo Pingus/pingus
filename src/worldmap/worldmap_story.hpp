@@ -22,7 +22,7 @@
 
 #include <vector>
 #include <string>
-#include "../res_descriptor.hxx"
+#include "../res_descriptor.hpp"
 
 	
 	class FileReader;

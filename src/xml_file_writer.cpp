@@ -19,8 +19,8 @@
 
 #include <iostream>
 #include <map>
-#include "vector.hxx"
-///#include "xml_file_writer.hxx"
+#include "vector.hpp"
+///#include "xml_file_writer.hpp"
 
 
 XMLFileWriter::XMLFileWriter(std::ostream& out_)

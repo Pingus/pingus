@@ -22,8 +22,8 @@
 
 #include <config.h>
 #include <vector>
-#include "sound_impl.hxx"
-#include "sound.hxx"
+#include "sound_impl.hpp"
+#include "sound.hpp"
 
 class CL_SoundBuffer;
 class CL_SoundBuffer_Session;

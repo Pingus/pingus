@@ -17,10 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "globals.hxx"
-#include "system.hxx"
-#include "path_manager.hxx"
-#include "debug.hxx"
+#include "globals.hpp"
+#include "system.hpp"
+#include "path_manager.hpp"
+#include "debug.hpp"
 
 
 PathManager path_manager;

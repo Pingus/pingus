@@ -20,13 +20,13 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "xml_level.hxx"
-#include "level_impl.hxx"
-#include "level_objs.hxx"
-#include "../xml_pingus_level.hxx"
-#include "../xml_file_writer.hxx"
-#include "../xml_file_reader.hxx"
-#include "../res_descriptor.hxx"
+#include "xml_level.hpp"
+#include "level_impl.hpp"
+#include "level_objs.hpp"
+#include "../xml_pingus_level.hpp"
+#include "../xml_file_writer.hpp"
+#include "../xml_file_reader.hpp"
+#include "../res_descriptor.hpp"
 
 
 namespace Editor {

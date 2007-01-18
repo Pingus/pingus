@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_INPUT_MOUSE_BUTTON_HXX
 
 #include <ClanLib/Signals/slot.h>
-#include "../button.hxx"
+#include "../button.hpp"
 
 class CL_InputEvent;
 

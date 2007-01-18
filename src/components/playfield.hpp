@@ -20,10 +20,10 @@
 #ifndef HEADER_PINGUS_PLAYFIELD_HXX
 #define HEADER_PINGUS_PLAYFIELD_HXX
 
-#include "../client.hxx"
-#include "../graphic_context_state.hxx"
-#include "../gui/component.hxx"
-#include "../capture_rectangle.hxx"
+#include "../client.hpp"
+#include "../graphic_context_state.hpp"
+#include "../gui/component.hpp"
+#include "../capture_rectangle.hpp"
 
 class Pingu;
 class World;

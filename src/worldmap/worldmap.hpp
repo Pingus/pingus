@@ -22,9 +22,9 @@
 
 #include <vector>
 #include "../sprite.hpp"
-#include "../file_reader.hxx"
-#include "../display/drawing_context.hxx"
-#include "../graphic_context_state.hxx"
+#include "../file_reader.hpp"
+#include "../display/drawing_context.hpp"
+#include "../graphic_context_state.hpp"
 
 class Font;
 class DrawingContext;

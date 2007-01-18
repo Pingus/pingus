@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_PINGU_ACTION_HXX
 #define HEADER_PINGUS_PINGU_ACTION_HXX
 
-#include "pingu_enums.hxx"
+#include "pingu_enums.hpp"
 #include "pixel_buffer.hpp"
 #include "collision_mask.hpp"
 

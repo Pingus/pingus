@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_FILE_DIALOG_LISTENER_HXX
 
 #include <string>
-#include "pingus.hxx"
+#include "pingus.hpp"
 
 class FileDialogListener {
 public:

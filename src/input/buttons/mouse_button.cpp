@@ -21,8 +21,8 @@
 #include <ClanLib/Display/input_event.h>
 #include <ClanLib/Display/keys.h>
 #include <ClanLib/Display/mouse.h>
-#include "mouse_button.hxx"
-#include "../../pingus_error.hxx"
+#include "mouse_button.hpp"
+#include "../../pingus_error.hpp"
 
 namespace Input {
 namespace Buttons {

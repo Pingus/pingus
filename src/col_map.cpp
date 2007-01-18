@@ -19,11 +19,11 @@
 
 #include <iostream>
 #include "SDL.h"
-#include "display/drawing_context.hxx"
-#include "globals.hxx"
-#include "col_map.hxx"
+#include "display/drawing_context.hpp"
+#include "globals.hpp"
+#include "col_map.hpp"
 #include "pixel_buffer.hpp"
-#include "pingus_error.hxx"
+#include "pingus_error.hpp"
 #include "gettext.h"
 
 #define COLMAP_WITH_MEMORY_HOLE 1

@@ -28,7 +28,7 @@
 
 #include <string>
 #include "SDL.h"
-#include "shared_ptr.hxx"
+#include "shared_ptr.hpp"
 
 class PixelBuffer;
 class SpriteImpl;

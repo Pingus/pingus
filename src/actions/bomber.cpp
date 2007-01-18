@@ -18,19 +18,19 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <math.h>
-#include "../debug.hxx"
-#include "../globals.hxx"
-#include "../col_map.hxx"
-#include "../display/scene_context.hxx"
-#include "../pingu.hxx"
-#include "../pingu_enums.hxx"
-#include "../ground_map.hxx"
-#include "../world.hxx"
-#include "../resource.hxx"
-#include "../particles/pingu_particle_holder.hxx"
-#include "../colliders/pingu_collider.hxx"
-#include "../movers/linear_mover.hxx"
-#include "bomber.hxx"
+#include "../debug.hpp"
+#include "../globals.hpp"
+#include "../col_map.hpp"
+#include "../display/scene_context.hpp"
+#include "../pingu.hpp"
+#include "../pingu_enums.hpp"
+#include "../ground_map.hpp"
+#include "../world.hpp"
+#include "../resource.hpp"
+#include "../particles/pingu_particle_holder.hpp"
+#include "../colliders/pingu_collider.hpp"
+#include "../movers/linear_mover.hpp"
+#include "bomber.hpp"
 
 namespace Actions {
 

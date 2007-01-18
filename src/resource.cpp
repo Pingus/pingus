@@ -25,12 +25,12 @@
 
 #include <assert.h>
 
-#include "system.hxx"
-#include "path_manager.hxx"
-#include "globals.hxx"
-#include "resource.hxx"
-#include "blitter.hxx"
-#include "debug.hxx"
+#include "system.hpp"
+#include "path_manager.hpp"
+#include "globals.hpp"
+#include "resource.hpp"
+#include "blitter.hpp"
+#include "debug.hpp"
 
 ResourceManager Resource::resmgr;
 #if 0

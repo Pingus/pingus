@@ -22,7 +22,7 @@
 
 #include <list>
 #include <vector>
-#include "worldobj.hxx"
+#include "worldobj.hpp"
 
 
 class PingusLevel;

@@ -22,7 +22,7 @@
 
 #error "Don't used this the moment, its underdevelopment and not compilable"
 
-#include "pingus.hxx"
+#include "pingus.hpp"
 #include <string>
 
 

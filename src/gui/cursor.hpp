@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_CURSOR_HXX
 
 #include <string>
-#include "display.hxx"
+#include "display.hpp"
 #include "../sprite.hpp"
 
 /** A simple mouse cursor class and stupid. We can't use the X11/win32

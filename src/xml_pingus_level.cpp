@@ -27,10 +27,10 @@
 #include <ClanLib/Core/XML/dom_document.h>
 #include <ClanLib/Core/XML/dom_named_node_map.h>
 #include <ClanLib/Core/XML/dom_element.h>
-#include "pingus_error.hxx"
-////#include "xml_file_reader.hxx"
-#include "pingus_level_impl.hxx"
-#include "xml_pingus_level.hxx"
+#include "pingus_error.hpp"
+////#include "xml_file_reader.hpp"
+#include "pingus_level_impl.hpp"
+#include "xml_pingus_level.hpp"
 
 
 XMLPingusLevel::XMLPingusLevel(const std::string& res_name,

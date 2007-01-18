@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_WORLDOBJ_HXX
 #define HEADER_PINGUS_WORLDOBJ_HXX
 
-#include "pingus.hxx"
-#include "file_reader.hxx"
+#include "pingus.hpp"
+#include "file_reader.hpp"
 #include "sprite.hpp"
 #include "collision_mask.hpp"
 

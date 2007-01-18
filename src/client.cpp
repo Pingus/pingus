@@ -18,20 +18,20 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "globals.hxx"
-#include "components/playfield.hxx"
-#include "timer.hxx"
-#include "resource.hxx"
-#include "sound/sound.hxx"
-#include "components/time_display.hxx"
-#include "components/pingus_counter.hxx"
-#include "components/smallmap.hxx"
-#include "components/hurry_up.hxx"
-#include "path_manager.hxx"
-#include "gui/cursor.hxx"
-#include "true_server.hxx"
-#include "components/button_panel.hxx"
-#include "gui/gui_manager.hxx"
+#include "globals.hpp"
+#include "components/playfield.hpp"
+#include "timer.hpp"
+#include "resource.hpp"
+#include "sound/sound.hpp"
+#include "components/time_display.hpp"
+#include "components/pingus_counter.hpp"
+#include "components/smallmap.hpp"
+#include "components/hurry_up.hpp"
+#include "path_manager.hpp"
+#include "gui/cursor.hpp"
+#include "true_server.hpp"
+#include "components/button_panel.hpp"
+#include "gui/gui_manager.hpp"
 
 
 Client::Client (TrueServer * s)

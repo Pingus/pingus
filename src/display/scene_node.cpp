@@ -23,7 +23,7 @@
 **  02111-1307, USA.
 */
 
-#include "scene_node.hxx"
+#include "scene_node.hpp"
 
 SceneNode::SceneNode()
 {

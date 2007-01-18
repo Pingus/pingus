@@ -21,7 +21,7 @@
 #define HEADER_PATHFINDER_HXX
 
 #include <queue>
-#include "graph.hxx"
+#include "graph.hpp"
 
 namespace WorldMapNS {
 

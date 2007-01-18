@@ -19,16 +19,16 @@
 
 #include <iostream>
 #include <math.h>
-#include "../file_reader.hxx"
-#include "../pingus_error.hxx"
-#include "dot.hxx"
-#include "dot_factory.hxx"
-#include "worldmap.hxx"
-#include "metamap.hxx"
-#include "pathfinder.hxx"
-#include "path_graph.hxx"
-#include "path_drawable.hxx"
-#include "../globals.hxx"
+#include "../file_reader.hpp"
+#include "../pingus_error.hpp"
+#include "dot.hpp"
+#include "dot_factory.hpp"
+#include "worldmap.hpp"
+#include "metamap.hpp"
+#include "pathfinder.hpp"
+#include "path_graph.hpp"
+#include "path_drawable.hpp"
+#include "../globals.hpp"
 
 namespace WorldMapNS {
 

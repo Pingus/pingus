@@ -18,11 +18,11 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "gui/screen_manager.hxx"
-#include "sound/sound.hxx"
-#include "resource.hxx"
-#include "blitter.hxx"
-#include "pingus_menu_manager.hxx"
+#include "gui/screen_manager.hpp"
+#include "sound/sound.hpp"
+#include "resource.hpp"
+#include "blitter.hpp"
+#include "pingus_menu_manager.hpp"
 
 
 PingusMenuManager* PingusMenuManager::instance_ = 0;

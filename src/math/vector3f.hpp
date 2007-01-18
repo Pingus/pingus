@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_MATH_VECTOR3F_HPP
 
 #include <iosfwd>
-#include "pingus.hxx"
+#include "pingus.hpp"
 
 class Vector2f;
 

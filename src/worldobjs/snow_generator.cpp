@@ -19,10 +19,10 @@
 
 #include <math.h>
 #include <iostream>
-#include "../math.hxx"
-#include "../world.hxx"
-#include "../particles/snow_particle_holder.hxx"
-#include "snow_generator.hxx"
+#include "../math.hpp"
+#include "../world.hpp"
+#include "../particles/snow_particle_holder.hpp"
+#include "snow_generator.hpp"
 
 namespace WorldObjs {
 

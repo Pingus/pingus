@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_INPUT_MULTIPLE_AXIS_HXX
 
 #include <vector>
-#include "../axis.hxx"
+#include "../axis.hpp"
 
 namespace Input {
 namespace Axes {

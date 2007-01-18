@@ -19,8 +19,8 @@
 
 #include <math.h>
 #include <assert.h>
-#include "../axis.hxx"
-#include "axis_pointer.hxx"
+#include "../axis.hpp"
+#include "axis_pointer.hpp"
 
 namespace Input {
 namespace Pointers {

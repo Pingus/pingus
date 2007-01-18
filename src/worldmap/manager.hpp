@@ -21,8 +21,8 @@
 #define HEADER_PINGUS_WORLDMAP_MANAGER_HXX
 
 #include <string>
-#include "../gui/gui_manager.hxx"
-#include "../gui/gui_screen.hxx"
+#include "../gui/gui_manager.hpp"
+#include "../gui/gui_screen.hpp"
 
 namespace WorldMapNS {
 

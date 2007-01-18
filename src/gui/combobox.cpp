@@ -19,9 +19,9 @@
 
 #include <vector>
 #include <string>
-#include "combobox.hxx"
-#include "combobox_listener.hxx"
-#include "../fonts.hxx"
+#include "combobox.hpp"
+#include "combobox_listener.hpp"
+#include "../fonts.hpp"
 
 namespace GUI {
 

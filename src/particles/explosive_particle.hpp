@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_PARTICLES_EXPLOSIVE_PARTICLE_HXX
 #define HEADER_PINGUS_PARTICLES_EXPLOSIVE_PARTICLE_HXX
 
-#include "../sprite.hxx"
-#include "particle.hxx"
+#include "../sprite.hpp"
+#include "particle.hpp"
 
 class ExplosiveParticle
   : public Particle

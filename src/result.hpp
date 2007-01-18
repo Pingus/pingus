@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_RESULT_HXX
 #define HEADER_PINGUS_RESULT_HXX
 
-#include "pingus_level.hxx"
-#include "pingus.hxx"
+#include "pingus_level.hpp"
+#include "pingus.hpp"
 
 
 /** Result of a Pingus game */

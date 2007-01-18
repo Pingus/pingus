@@ -20,16 +20,16 @@
 #include <assert.h>
 #include <stdio.h>
 
-#include "../gui/display.hxx"
-#include "../globals.hxx"
-#include "../resource.hxx"
-#include "../world.hxx"
-#include "../true_server.hxx"
-#include "../client.hxx"
-#include "../game_time.hxx"
-#include "../fonts.hxx"
+#include "../gui/display.hpp"
+#include "../globals.hpp"
+#include "../resource.hpp"
+#include "../world.hpp"
+#include "../true_server.hpp"
+#include "../client.hpp"
+#include "../game_time.hpp"
+#include "../fonts.hpp"
 
-#include "time_display.hxx"
+#include "time_display.hpp"
 
 
 TimeDisplay::TimeDisplay (Client* c)

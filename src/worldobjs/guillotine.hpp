@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_GUILLOTINE_HXX
 #define HEADER_PINGUS_WORLDOBJS_GUILLOTINE_HXX
 
-#include "../direction.hxx"
-#include "../worldobj.hxx"
+#include "../direction.hpp"
+#include "../worldobj.hpp"
 
 
 namespace WorldObjsData {

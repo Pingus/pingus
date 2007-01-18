@@ -18,8 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "pingus_error.hxx"
-#include "cheat.hxx"
+#include "pingus_error.hpp"
+#include "cheat.hpp"
 
 bool Cheat::unlimited_actions = false;
 bool Cheat::no_time_limit     = false;

@@ -19,14 +19,14 @@
 
 #include <stdio.h>
 #include <iostream>
-#include "display/scene_context.hxx"
-#include "pingus_error.hxx"
-#include "blitter.hxx"
-#include "ground_map.hxx"
-#include "pingus_level.hxx"
+#include "display/scene_context.hpp"
+#include "pingus_error.hpp"
+#include "blitter.hpp"
+#include "ground_map.hpp"
+#include "pingus_level.hpp"
 #include "gettext.h"
-#include "col_map.hxx"
-#include "math.hxx"
+#include "col_map.hpp"
+#include "math.hpp"
 
 MapTile::MapTile () 
 {

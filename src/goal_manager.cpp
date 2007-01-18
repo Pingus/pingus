@@ -18,11 +18,11 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "server.hxx"
-#include "world.hxx"
-#include "globals.hxx"
-#include "pingu_holder.hxx"
-#include "goal_manager.hxx"
+#include "server.hpp"
+#include "world.hpp"
+#include "globals.hpp"
+#include "pingu_holder.hpp"
+#include "goal_manager.hpp"
 
 
 GoalManager::GoalManager(Server* s)

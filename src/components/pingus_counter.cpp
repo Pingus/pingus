@@ -18,15 +18,15 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdio.h>
-#include "../gui/display.hxx"
+#include "../gui/display.hpp"
 #include "../gettext.h"
-#include "../resource.hxx"
-#include "../world.hxx"
-#include "../pingu_holder.hxx"
-#include "../true_server.hxx"
-#include "../globals.hxx"
-#include "../fonts.hxx"
-#include "pingus_counter.hxx"
+#include "../resource.hpp"
+#include "../world.hpp"
+#include "../pingu_holder.hpp"
+#include "../true_server.hpp"
+#include "../globals.hpp"
+#include "../fonts.hpp"
+#include "pingus_counter.hpp"
 
 
 PingusCounter::PingusCounter(Server* s)

@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_SCREEN_PTR_HXX
 #define HEADER_PINGUS_SCREEN_PTR_HXX
 
-#include "screen.hxx"
+#include "screen.hpp"
 
 
 /** The ScreenPtr is a simple smart pointer to point at a Screen. It

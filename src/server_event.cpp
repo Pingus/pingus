@@ -19,10 +19,10 @@
 
 #include <assert.h>
 #include <iostream>
-#include "pingus_error.hxx"
-#include "server.hxx"
-#include "world.hxx"
-#include "pingu_holder.hxx"
+#include "pingus_error.hpp"
+#include "server.hpp"
+#include "world.hpp"
+#include "pingu_holder.hpp"
 
 
 ServerEvent::ServerEvent() :

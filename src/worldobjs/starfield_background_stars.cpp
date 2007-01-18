@@ -17,10 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../display/scene_context.hxx"
-#include "../world.hxx"
-#include "../resource.hxx"
-#include "starfield_background_stars.hxx"
+#include "../display/scene_context.hpp"
+#include "../world.hpp"
+#include "../resource.hpp"
+#include "starfield_background_stars.hpp"
 
 namespace WorldObjs {
 

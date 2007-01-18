@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_INPUT_MOUSE_POINTER_HXX
 
 #include <ClanLib/Signals/slot.h>
-#include "../pointer.hxx"
+#include "../pointer.hpp"
 
 class CL_InputEvent;
 

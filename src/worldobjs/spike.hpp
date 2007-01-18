@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_TRAPS_SPIKE_HXX
 #define HEADER_PINGUS_TRAPS_SPIKE_HXX
 
-#include "../worldobj.hxx"
+#include "../worldobj.hpp"
 
 
 namespace WorldObjsData {

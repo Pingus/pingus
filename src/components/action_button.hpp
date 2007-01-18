@@ -22,9 +22,9 @@
 
 #include <string>
 #include "../font.hpp"
-#include "../pingu_enums.hxx"
-#include "../state_sprite.hxx"
-#include "../gui/component.hxx"
+#include "../pingu_enums.hpp"
+#include "../state_sprite.hpp"
+#include "../gui/component.hpp"
 
 class CL_Font;
 

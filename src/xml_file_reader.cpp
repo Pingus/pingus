@@ -24,11 +24,11 @@
 #include <ClanLib/Core/XML/dom_node_list.h>
 #include <ClanLib/Core/XML/dom_named_node_map.h>
 #include <ClanLib/Core/System/clanstring.h>
-#include "file_reader_impl.hxx"
-#include "vector.hxx"
-#include "res_descriptor.hxx"
-#include "resource_modifier.hxx"
-////#include "xml_file_reader.hxx"
+#include "file_reader_impl.hpp"
+#include "vector.hpp"
+#include "res_descriptor.hpp"
+#include "resource_modifier.hpp"
+////#include "xml_file_reader.hpp"
 
 
 class XMLFileReaderImpl : public FileReaderImpl

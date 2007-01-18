@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_DIRECTION_HXX
 #define HEADER_PINGUS_DIRECTION_HXX
 
-#include "pingus.hxx"
+#include "pingus.hpp"
 
 
 /// Simple class for managing the direction of a pingu

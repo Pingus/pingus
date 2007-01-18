@@ -22,7 +22,7 @@
 
 #include <vector>
 
-#include "action_button.hxx"
+#include "action_button.hpp"
 
 class CL_InputEvent;
 

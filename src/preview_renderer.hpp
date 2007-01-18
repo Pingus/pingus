@@ -20,7 +20,7 @@
 #ifndef HEADER_PREVIEW_RENDERER_HXX
 #define HEADER_PREVIEW_RENDERER_HXX
 
-#include "plf_res_mgr.hxx"
+#include "plf_res_mgr.hpp"
 
 
 /** By given a PLF, the PreviewRenderer renders a CL_Canvas with a

@@ -18,8 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <assert.h>
-#include "root_gui_manager.hxx"
-#include "../input/controller.hxx"
+#include "root_gui_manager.hpp"
+#include "../input/controller.hpp"
 
 
 using namespace GUI;

@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_PINGUS_COUNTER_HXX
 #define HEADER_PINGUS_PINGUS_COUNTER_HXX
 
-#include "../gui/component.hxx"
+#include "../gui/component.hpp"
 #include "../font.hpp"
 #include "../sprite.hpp"
 

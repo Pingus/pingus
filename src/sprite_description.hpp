@@ -29,7 +29,7 @@
 #include "math/vector2i.hpp"
 #include "math/size.hpp"
 #include "math/origin.hpp"
-#include "file_reader.hxx"
+#include "file_reader.hpp"
 
 /** */
 class SpriteDescription

@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_PARTICLES_RAIN_GENERATOR_HXX
 #define HEADER_PINGUS_PARTICLES_RAIN_GENERATOR_HXX
 
-#include "../worldobj.hxx"
+#include "../worldobj.hpp"
 
 namespace WorldObjs {
 

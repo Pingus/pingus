@@ -20,9 +20,9 @@
 #include <time.h>
 #include <assert.h>
 #include <iostream>
-#include "system.hxx"
-#include "demo_recorder.hxx"
-#include "server.hxx"
+#include "system.hpp"
+#include "demo_recorder.hpp"
+#include "server.hpp"
 #include "gettext.h"
 
 

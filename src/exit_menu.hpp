@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_EXIT_MENU_HXX
 #define HEADER_PINGUS_EXIT_MENU_HXX
 
-#include "pingus_sub_menu.hxx"
+#include "pingus_sub_menu.hpp"
 
 
 class PingusMenuManager;

@@ -18,16 +18,16 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../math.hxx"
-#include "../col_map.hxx"
-#include "../display/scene_context.hxx"
-#include "../particles/smoke_particle_holder.hxx"
-#include "../pingu.hxx"
-#include "../pingu_holder.hxx"
-#include "../resource.hxx"
-#include "../sound/sound.hxx"
-#include "../world.hxx"
-#include "smasher.hxx"
+#include "../math.hpp"
+#include "../col_map.hpp"
+#include "../display/scene_context.hpp"
+#include "../particles/smoke_particle_holder.hpp"
+#include "../pingu.hpp"
+#include "../pingu_holder.hpp"
+#include "../resource.hpp"
+#include "../sound/sound.hpp"
+#include "../world.hpp"
+#include "smasher.hpp"
 
 namespace WorldObjs {
 

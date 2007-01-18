@@ -17,12 +17,12 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "context_menu.hxx"
-#include "level_objs.hxx"
-#include "editor_viewport.hxx"
-#include "editor_screen.hxx"
-#include "../gui/gui_manager.hxx"
-#include "../fonts.hxx"
+#include "context_menu.hpp"
+#include "level_objs.hpp"
+#include "editor_viewport.hpp"
+#include "editor_screen.hpp"
+#include "../gui/gui_manager.hpp"
+#include "../fonts.hpp"
 
 namespace Editor {
 

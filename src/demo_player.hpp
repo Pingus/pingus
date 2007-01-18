@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_DEMO_PLAYER_HXX
 
 #include <vector>
-#include "server_event.hxx"
+#include "server_event.hpp"
 
 
 class Server;

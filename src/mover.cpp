@@ -17,7 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "mover.hxx"
+#include "mover.hpp"
 
 
 Mover::Mover(World* const world_arg, const Vector3f& pos_arg)

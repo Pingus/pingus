@@ -21,11 +21,11 @@
 #include <iostream>
 #include <vector>
 #include <ClanLib/core.h>
-#include "pingus_error.hxx"
-#include "path_manager.hxx"
-#include "xml_pingus_level.hxx"
-////#include "xml_file_reader.hxx"
-#include "xml_pdf.hxx"
+#include "pingus_error.hpp"
+#include "path_manager.hpp"
+#include "xml_pingus_level.hpp"
+////#include "xml_file_reader.hpp"
+#include "xml_pdf.hpp"
 
 
 XMLPDF::XMLPDF(const std::string& filename)

@@ -19,8 +19,8 @@
 
 #include <stdio.h>
 #include "gettext.h"
-#include "globals.hxx"
-#include "game_time.hxx"
+#include "globals.hpp"
+#include "game_time.hpp"
 
 
 GameTime::GameTime (int arg_tick_time)

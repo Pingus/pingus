@@ -18,16 +18,16 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "gettext.h"
-#include "system.hxx"
-#include "pingus_menu_manager.hxx"
-#include "resource.hxx"
-#include "gui/surface_button.hxx"
-#include "gui/gui_manager.hxx"
-#include "gui/input_box.hxx"
-#include "sound/sound.hxx"
-#include "file_dialog.hxx"
-#include "file_dialog_item.hxx"
-#include "file_dialog_listener.hxx"
+#include "system.hpp"
+#include "pingus_menu_manager.hpp"
+#include "resource.hpp"
+#include "gui/surface_button.hpp"
+#include "gui/gui_manager.hpp"
+#include "gui/input_box.hpp"
+#include "sound/sound.hpp"
+#include "file_dialog.hpp"
+#include "file_dialog_item.hpp"
+#include "file_dialog_listener.hpp"
 
 
 	const int DIR_UP = 0;

@@ -22,9 +22,9 @@
 
 #include <vector>
 #include <iostream>
-#include "../gui/component.hxx"
-#include "../gui/checkbox_listener.hxx"
-#include "../gui/combobox_listener.hxx"
+#include "../gui/component.hpp"
+#include "../gui/checkbox_listener.hpp"
+#include "../gui/combobox_listener.hpp"
 
 
 	class DrawingContext;

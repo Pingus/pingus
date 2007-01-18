@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_EDITOR_VIEWPORT_HXX
 #define HEADER_PINGUS_EDITOR_VIEWPORT_HXX
 
-#include "../gui/component.hxx"
-#include "../graphic_context_state.hxx"
+#include "../gui/component.hpp"
+#include "../graphic_context_state.hpp"
 #include <vector>
 #include <string>
 

@@ -17,11 +17,11 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../col_map.hxx"
-#include "../display/scene_context.hxx"
-#include "../resource.hxx"
-#include "../pingu.hxx"
-#include "climber.hxx"
+#include "../col_map.hpp"
+#include "../display/scene_context.hpp"
+#include "../resource.hpp"
+#include "../pingu.hpp"
+#include "climber.hpp"
 
 namespace Actions {
 

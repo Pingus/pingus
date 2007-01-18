@@ -22,7 +22,7 @@
 
 #include <map>
 #include <vector>
-#include "pingu.hxx"
+#include "pingu.hpp"
 
 
 class PinguAction;

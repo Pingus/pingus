@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_INPUT_MULTIPLE_SCROLLER_HXX
 
 #include <vector>
-#include "../scroller.hxx"
+#include "../scroller.hpp"
 
 namespace Input {
 namespace Scrollers {

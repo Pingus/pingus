@@ -18,18 +18,18 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <vector>
-#include "../gui/combobox.hxx"
-#include "../gui/gui_manager.hxx"
-#include "../display/scene_context.hxx"
-#include "../path_manager.hxx"
-#include "../fonts.hxx"
-#include "../resource.hxx"
-#include "panel_buttons.hxx"
-#include "editor_screen.hxx"
-#include "editor_panel.hxx"
-#include "level_objs.hxx"
-#include "level_head.hxx"
-#include "xml_level.hxx"
+#include "../gui/combobox.hpp"
+#include "../gui/gui_manager.hpp"
+#include "../display/scene_context.hpp"
+#include "../path_manager.hpp"
+#include "../fonts.hpp"
+#include "../resource.hpp"
+#include "panel_buttons.hpp"
+#include "editor_screen.hpp"
+#include "editor_panel.hpp"
+#include "level_objs.hpp"
+#include "level_head.hpp"
+#include "xml_level.hpp"
 
 
 class Resource;

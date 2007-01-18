@@ -20,15 +20,15 @@
 #include <iostream>
 #include <ClanLib/Display/keyboard.h>
 #include <ClanLib/Display/input_device.h>
-#include "../file_reader.hxx"
-#include "../pingus_error.hxx"
-#include "button_factory.hxx"
-#include "buttons/double_button.hxx"
-#include "buttons/joystick_button.hxx"
-#include "buttons/key_button.hxx"
-#include "buttons/mouse_button.hxx"
-#include "buttons/multiple_button.hxx"
-#include "buttons/triple_button.hxx"
+#include "../file_reader.hpp"
+#include "../pingus_error.hpp"
+#include "button_factory.hpp"
+#include "buttons/double_button.hpp"
+#include "buttons/joystick_button.hpp"
+#include "buttons/key_button.hpp"
+#include "buttons/mouse_button.hpp"
+#include "buttons/multiple_button.hpp"
+#include "buttons/triple_button.hpp"
 
 namespace Input {
 

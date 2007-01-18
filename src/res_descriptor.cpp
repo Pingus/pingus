@@ -19,8 +19,8 @@
 
 #include <assert.h>
 #include <iostream>
-#include "res_descriptor.hxx"
-#include "pingus_error.hxx"
+#include "res_descriptor.hpp"
+#include "pingus_error.hpp"
 
 
 /*

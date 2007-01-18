@@ -20,8 +20,8 @@
 
 #include <typeinfo>
 #include <iostream>
-#include "worldobj.hxx"
-#include "display/scene_context.hxx"
+#include "worldobj.hpp"
+#include "display/scene_context.hpp"
 
 
 World* WorldObj::world;

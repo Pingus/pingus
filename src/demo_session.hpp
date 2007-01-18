@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_DEMO_SESSION_HXX
 #define HEADER_PINGUS_DEMO_SESSION_HXX
 
-#include "gui/gui_screen.hxx"
+#include "gui/gui_screen.hpp"
 
 
 class Server;

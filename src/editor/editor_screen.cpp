@@ -18,22 +18,22 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../gui/display.hxx"
-#include "../system.hxx"
-#include "../sound/sound.hxx"
-#include "../gui/gui_manager.hxx"
-#include "../gui/screen_manager.hxx"
-#include "../display/drawing_context.hxx"
-#include "../res_descriptor.hxx"
-#include "../resource.hxx"
-#include "../fonts.hxx"
-#include "../file_dialog.hxx"
-#include "../path_manager.hxx"
-#include "editor_screen.hxx"
-#include "editor_panel.hxx"
-#include "editor_viewport.hxx"
-#include "xml_level.hxx"
-#include "level_objs.hxx"
+#include "../gui/display.hpp"
+#include "../system.hpp"
+#include "../sound/sound.hpp"
+#include "../gui/gui_manager.hpp"
+#include "../gui/screen_manager.hpp"
+#include "../display/drawing_context.hpp"
+#include "../res_descriptor.hpp"
+#include "../resource.hpp"
+#include "../fonts.hpp"
+#include "../file_dialog.hpp"
+#include "../path_manager.hpp"
+#include "editor_screen.hpp"
+#include "editor_panel.hpp"
+#include "editor_viewport.hpp"
+#include "xml_level.hpp"
+#include "level_objs.hpp"
 
 
 namespace Editor {

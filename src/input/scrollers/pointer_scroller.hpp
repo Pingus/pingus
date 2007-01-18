@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_INPUT_POINTER_SCROLLER_HXX
 #define HEADER_PINGUS_INPUT_POINTER_SCROLLER_HXX
 
-#include "../scroller.hxx"
+#include "../scroller.hpp"
 
 namespace Input {
 

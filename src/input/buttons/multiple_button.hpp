@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_INPUT_MULTIPLE_BUTTON_HXX
 
 #include <vector>
-#include "../button.hxx"
+#include "../button.hpp"
 
 namespace Input {
 namespace Buttons {

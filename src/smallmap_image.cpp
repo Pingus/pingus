@@ -17,10 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "world.hxx"
-#include "smallmap_image.hxx"
-#include "col_map.hxx"
-#include "server.hxx"
+#include "world.hpp"
+#include "smallmap_image.hpp"
+#include "col_map.hpp"
+#include "server.hpp"
 
 
 SmallMapImage::SmallMapImage(Server* s, int width, int height)

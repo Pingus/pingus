@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_GLOBAL_EVENT_HXX
 #define HEADER_PINGUS_GLOBAL_EVENT_HXX
 
-#include "pingus.hxx"
+#include "pingus.hpp"
 
 class CL_Key;
 class CL_InputDevice;

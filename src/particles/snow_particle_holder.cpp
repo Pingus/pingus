@@ -18,13 +18,13 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <assert.h>
-#include "../math.hxx"
-#include "../col_map.hxx"
-#include "../display/scene_context.hxx"
-#include "../ground_map.hxx"
-#include "../resource.hxx"
-#include "../world.hxx"
-#include "snow_particle_holder.hxx"
+#include "../math.hpp"
+#include "../col_map.hpp"
+#include "../display/scene_context.hpp"
+#include "../ground_map.hpp"
+#include "../resource.hpp"
+#include "../world.hpp"
+#include "snow_particle_holder.hpp"
 
 namespace Particles {
 

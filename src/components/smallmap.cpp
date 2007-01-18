@@ -17,20 +17,20 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../pingu_holder.hxx"
-#include "../gui/display.hxx"
-#include "../display/drawing_context.hxx"
-#include "../world.hxx"
-#include "../resource.hxx"
-#include "../col_map.hxx"
-#include "../true_server.hxx"
-#include "../smallmap_image.hxx"
-#include "../pingu.hxx"
-#include "../math.hxx"
+#include "../pingu_holder.hpp"
+#include "../gui/display.hpp"
+#include "../display/drawing_context.hpp"
+#include "../world.hpp"
+#include "../resource.hpp"
+#include "../col_map.hpp"
+#include "../true_server.hpp"
+#include "../smallmap_image.hpp"
+#include "../pingu.hpp"
+#include "../math.hpp"
 #include "../math/vector3f.hpp"
-#include "../globals.hxx"
-#include "playfield.hxx"
-#include "smallmap.hxx"
+#include "../globals.hpp"
+#include "playfield.hpp"
+#include "smallmap.hpp"
 
 
 SmallMap::SmallMap(Client* c)

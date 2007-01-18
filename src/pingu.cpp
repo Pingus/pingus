@@ -21,18 +21,18 @@
 #include <assert.h>
 #include <math.h>
 #include <stdio.h>
-#include "globals.hxx"
-#include "world.hxx"
-#include "sound/sound.hxx"
-#include "col_map.hxx"
-#include "pingu_action.hxx"
-#include "pingu_action_factory.hxx"
+#include "globals.hpp"
+#include "world.hpp"
+#include "sound/sound.hpp"
+#include "col_map.hpp"
+#include "pingu_action.hpp"
+#include "pingu_action_factory.hpp"
 #include "gettext.h"
-#include "debug.hxx"
-#include "display/scene_context.hxx"
-#include "worldobj.hxx"
-#include "resource.hxx"
-#include "fonts.hxx"
+#include "debug.hpp"
+#include "display/scene_context.hpp"
+#include "worldobj.hpp"
+#include "resource.hpp"
+#include "fonts.hpp"
 
 
 using namespace Actions;

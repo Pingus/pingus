@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_ACTIONS_SPLASHED_HXX
 #define HEADER_PINGUS_ACTIONS_SPLASHED_HXX
 
-#include "../pingu_action.hxx"
+#include "../pingu_action.hpp"
 
 namespace Actions {
 

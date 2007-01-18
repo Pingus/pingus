@@ -17,13 +17,13 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../display/scene_context.hxx"
-#include "../math.hxx"
-#include "../col_map.hxx"
-#include "../globals.hxx"
-#include "../resource.hxx"
-#include "../world.hxx"
-#include "rain_particle_holder.hxx"
+#include "../display/scene_context.hpp"
+#include "../math.hpp"
+#include "../col_map.hpp"
+#include "../globals.hpp"
+#include "../resource.hpp"
+#include "../world.hpp"
+#include "rain_particle_holder.hpp"
 
 namespace Particles {
 

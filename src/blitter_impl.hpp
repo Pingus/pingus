@@ -23,7 +23,7 @@
 #include <iostream>
 #include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/surface.h>
-#include "pingus.hxx"
+#include "pingus.hpp"
 
 
 /** A collection of helper functions for the blitter class */

@@ -19,14 +19,14 @@
 
 #include <string>
 #include <iostream>
-#include "level_objs.hxx"
-#include "level_impl.hxx"
-#include "../blitter.hxx"
-#include "../resource.hxx"
-#include "../res_descriptor.hxx"
-#include "../gui/display.hxx"
-#include "../display/drawing_context.hxx"
-#include "../xml_file_writer.hxx"
+#include "level_objs.hpp"
+#include "level_impl.hpp"
+#include "../blitter.hpp"
+#include "../resource.hpp"
+#include "../res_descriptor.hpp"
+#include "../gui/display.hpp"
+#include "../display/drawing_context.hpp"
+#include "../xml_file_writer.hpp"
 
 
 namespace Editor {

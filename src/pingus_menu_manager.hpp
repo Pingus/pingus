@@ -20,10 +20,10 @@
 #ifndef HEADER_PINGUS_PINGUS_MENU_MANAGER_HXX
 #define HEADER_PINGUS_PINGUS_MENU_MANAGER_HXX
 
-#include "layer_manager.hxx"
-#include "exit_menu.hxx"
-#include "pingus_menu.hxx"
-#include "file_dialog.hxx"
+#include "layer_manager.hpp"
+#include "exit_menu.hpp"
+#include "pingus_menu.hpp"
+#include "file_dialog.hpp"
 
 class PingusSubMenu;
 

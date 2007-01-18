@@ -17,14 +17,14 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../globals.hxx"
-#include "../debug.hxx"
-#include "../sound/sound.hxx"
-#include "../resource.hxx"
-#include "../pingus_menu_manager.hxx"
+#include "../globals.hpp"
+#include "../debug.hpp"
+#include "../sound/sound.hpp"
+#include "../resource.hpp"
+#include "../pingus_menu_manager.hpp"
 #include "../gettext.h"
 
-#include "menu_button.hxx"
+#include "menu_button.hpp"
 
 
 MenuButton::MenuButton(PingusMenu* menu_,

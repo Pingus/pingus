@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_INPUT_AXIS_POINTER_HXX
 
 #include <vector>
-#include "../pointer.hxx"
+#include "../pointer.hpp"
 
 namespace Input {
 

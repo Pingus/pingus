@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_GUI_ROOT_GUI_MANAGER_HXX
 #define HEADER_PINGUS_GUI_ROOT_GUI_MANAGER_HXX
 
-#include "gui_manager.hxx"
+#include "gui_manager.hpp"
 
 
 namespace Input {

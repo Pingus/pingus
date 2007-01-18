@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_HAMMER_HXX
 #define HEADER_PINGUS_WORLDOBJS_HAMMER_HXX
 
-#include "../worldobj.hxx"
+#include "../worldobj.hpp"
 
 
 namespace WorldObjsData {

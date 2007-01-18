@@ -21,8 +21,8 @@
 #define HEADER_PINGUS_SERVER_EVENT_HXX
 
 #include <iosfwd>
-#include "file_reader.hxx"
-#include "pingu_enums.hxx"
+#include "file_reader.hpp"
+#include "pingu_enums.hpp"
 
 
 class Server;

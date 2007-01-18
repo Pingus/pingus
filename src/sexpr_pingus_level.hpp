@@ -20,7 +20,7 @@
 #ifndef HEADER_SEXPR_PINGUS_LEVEL_HXX
 #define HEADER_SEXPR_PINGUS_LEVEL_HXX
 
-#include "pingus_level.hxx"
+#include "pingus_level.hpp"
 
 /** */
 class SExprPingusLevel : public PingusLevel

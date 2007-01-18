@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_START_SCREEN_HXX
 #define HEADER_PINGUS_START_SCREEN_HXX
 
-#include "pingus_level.hxx"
-#include "gui/gui_screen.hxx"
+#include "pingus_level.hpp"
+#include "gui/gui_screen.hpp"
 
 
 /** */

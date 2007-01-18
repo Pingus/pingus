@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_HURRY_UP_HXX
 #define HEADER_PINGUS_HURRY_UP_HXX
 
-#include "../gui/component.hxx"
+#include "../gui/component.hpp"
 
 #include "../font.hpp"
 

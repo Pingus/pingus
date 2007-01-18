@@ -22,7 +22,7 @@
 
 #include "../math/color.hpp"
 #include "../pixel_buffer.hpp"
-#include "../worldobj.hxx"
+#include "../worldobj.hpp"
 
 namespace WorldObjsData {
 class SolidColorBackgroundData;

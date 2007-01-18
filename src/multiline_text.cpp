@@ -19,8 +19,8 @@
 
 #include <assert.h>
 #include "font.hpp"
-#include "multiline_text.hxx"
-#include "math.hxx"
+#include "multiline_text.hpp"
+#include "math.hpp"
 
 
 MultiLineText::MultiLineText()

@@ -19,8 +19,8 @@
 
 #include <iostream>
 #include "../math/color.hpp"
-#include "../display/drawing_context.hxx"
-#include "path_drawable.hxx"
+#include "../display/drawing_context.hpp"
+#include "path_drawable.hpp"
 
 namespace WorldMapNS {
 

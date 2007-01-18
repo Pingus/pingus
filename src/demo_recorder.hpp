@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_DEMO_RECORDER_HXX
 #define HEADER_PINGUS_DEMO_RECORDER_HXX
 
-#include "pingus.hxx"
+#include "pingus.hpp"
 #include <fstream>
 #include <string>
 

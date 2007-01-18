@@ -24,8 +24,8 @@
 */
 
 #include <SDL.h>
-#include "scene_node.hxx"
-#include "scene_graph.hxx"
+#include "scene_node.hpp"
+#include "scene_graph.hpp"
 
 extern SDL_Surface* global_screen;
 

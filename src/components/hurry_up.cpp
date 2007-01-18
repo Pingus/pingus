@@ -17,10 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../resource.hxx"
-#include "../fonts.hxx"
-#include "gui/display.hxx"
-#include "hurry_up.hxx"
+#include "../resource.hpp"
+#include "../fonts.hpp"
+#include "gui/display.hpp"
+#include "hurry_up.hpp"
 
 HurryUp::HurryUp (Client* c)
   : font(Fonts::pingus_large),

@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_INPUT_MOUSE_SCROLLER_HXX
 
 #include <ClanLib/Display/input_device.h>
-#include "../scroller.hxx"
+#include "../scroller.hpp"
 
 namespace Input {
 namespace Scrollers {

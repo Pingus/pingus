@@ -22,7 +22,7 @@
 
 #include <string>
 #include <vector>
-#include "shared_ptr.hxx"
+#include "shared_ptr.hpp"
 
 class Size;
 class Color;

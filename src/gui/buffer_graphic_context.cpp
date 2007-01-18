@@ -18,10 +18,10 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../pingus_error.hxx"
-#include "../blitter.hxx"
-#include "../screenshot.hxx"
-#include "buffer_graphic_context.hxx"
+#include "../pingus_error.hpp"
+#include "../blitter.hpp"
+#include "../screenshot.hpp"
+#include "buffer_graphic_context.hpp"
 
 
 BufferGraphicContext::BufferGraphicContext(int width, int height)

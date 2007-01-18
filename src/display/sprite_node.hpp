@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "../math/point.hpp"
-#include "scene_node.hxx"
+#include "scene_node.hpp"
 
 class SpriteNode : public SceneNode
 {

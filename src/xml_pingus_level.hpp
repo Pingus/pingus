@@ -20,7 +20,7 @@
 #ifndef HEADER_XML_PINGUS_LEVEL_HXX
 #define HEADER_XML_PINGUS_LEVEL_HXX
 
-#include "pingus_level.hxx"
+#include "pingus_level.hpp"
 
 
 /** */

@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_GAME_SESSION_RESULT_HXX
 #define HEADER_PINGUS_GAME_SESSION_RESULT_HXX
 
-#include "pingus.hxx"
+#include "pingus.hpp"
 
 
 /** With this class you can obtain information about the success or

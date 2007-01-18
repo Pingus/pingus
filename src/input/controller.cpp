@@ -18,20 +18,20 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "SDL.h"
-#include "../gui/screen_manager.hxx"
+#include "../gui/screen_manager.hpp"
 
-#include "../debug.hxx"
-#include "../pingus_error.hxx"
+#include "../debug.hpp"
+#include "../pingus_error.hpp"
 
-#include "controller.hxx"
-#include "axes/dummy_axis.hxx"
-////#include "buttons/dummy_button.hxx"
-#include "pointers/dummy_pointer.hxx"
-#include "scrollers/dummy_scroller.hxx"
-#include "pointer_factory.hxx"
-////#include "../xml_file_reader.hxx"
-#include "scroller_factory.hxx"
-////#include "button_factory.hxx"
+#include "controller.hpp"
+#include "axes/dummy_axis.hpp"
+////#include "buttons/dummy_button.hpp"
+#include "pointers/dummy_pointer.hpp"
+#include "scrollers/dummy_scroller.hpp"
+#include "pointer_factory.hpp"
+////#include "../xml_file_reader.hpp"
+#include "scroller_factory.hpp"
+////#include "button_factory.hpp"
 
 namespace Input {
 

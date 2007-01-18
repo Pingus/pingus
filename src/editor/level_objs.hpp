@@ -24,7 +24,7 @@
 #include "../math/color.hpp"
 #include "../math/origin.hpp"
 #include "../math/vector3f.hpp"
-#include "../res_descriptor.hxx"
+#include "../res_descriptor.hpp"
 #include <string>
 
 

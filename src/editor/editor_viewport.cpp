@@ -20,16 +20,16 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#include "../gui/gui_manager.hxx"
-#include "../gui/display.hxx"
-#include "../display/drawing_context.hxx"
+#include "../gui/gui_manager.hpp"
+#include "../gui/display.hpp"
+#include "../display/drawing_context.hpp"
 #include "../math/vector3f.hpp"
-#include "../graphic_context_state.hxx"
-#include "editor_viewport.hxx"
-#include "editor_screen.hxx"
-#include "context_menu.hxx"
-#include "xml_level.hxx"
-#include "level_objs.hxx"
+#include "../graphic_context_state.hpp"
+#include "editor_viewport.hpp"
+#include "editor_screen.hpp"
+#include "context_menu.hpp"
+#include "xml_level.hpp"
+#include "level_objs.hpp"
 
 namespace Editor {
 

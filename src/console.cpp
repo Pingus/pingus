@@ -19,9 +19,9 @@
 
 #include <config.h>
 #include <assert.h>
-#include "fonts.hxx"
-#include "console.hxx"
-#include "math.hxx"
+#include "fonts.hpp"
+#include "console.hpp"
+#include "math.hpp"
 
 using std::ostream;
 

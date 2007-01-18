@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_MATH_HXX
 
 #include <stdlib.h>
-#include "pingus.hxx"
+#include "pingus.hpp"
 
 
 /** A collection of small math helper functions, some of them might be

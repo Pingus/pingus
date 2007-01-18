@@ -19,13 +19,13 @@
 
 #include <algorithm>
 #include <vector>
-#include "worldmap_story.hxx"
-#include "../story_screen.hxx"
-#include "../file_reader.hxx"
-#include "../res_descriptor.hxx"
-#include "../pingus_error.hxx"
-#include "../string_format.hxx"
-#include "../fonts.hxx"
+#include "worldmap_story.hpp"
+#include "../story_screen.hpp"
+#include "../file_reader.hpp"
+#include "../res_descriptor.hpp"
+#include "../pingus_error.hpp"
+#include "../string_format.hpp"
+#include "../fonts.hpp"
 #include "../gettext.h"
 
 namespace WorldMapNS {

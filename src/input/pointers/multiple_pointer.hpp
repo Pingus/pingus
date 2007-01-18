@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_INPUT_MULTIPLE_POINTER_HXX
 
 #include <vector>
-#include "../pointer.hxx"
+#include "../pointer.hpp"
 
 namespace Input {
 namespace Pointers {

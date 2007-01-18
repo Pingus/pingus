@@ -19,7 +19,7 @@
 
 #include <typeinfo>
 #include <iostream>
-#include "screen_ptr.hxx"
+#include "screen_ptr.hpp"
 
 
 void

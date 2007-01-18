@@ -20,8 +20,8 @@
 #include "sexpr_file_reader.hpp"
 #include "lisp/parser.hpp"
 #include "lisp/lisp.hpp"
-#include "file_reader.hxx"
-#include "file_reader_impl.hxx"
+#include "file_reader.hpp"
+#include "file_reader_impl.hpp"
 
 FileReader::FileReader(SharedPtr<FileReaderImpl> impl_)
   : impl(impl_)

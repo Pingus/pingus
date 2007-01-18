@@ -19,10 +19,10 @@
 
 #include <iostream>
 #include <algorithm>
-#include "../globals.hxx"
-#include "../true_server.hxx"
-#include "../client.hxx"
-#include "button_panel.hxx"
+#include "../globals.hpp"
+#include "../true_server.hpp"
+#include "../client.hpp"
+#include "button_panel.hpp"
 
 
 using namespace Actions;

@@ -18,8 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdio.h>
-#include "fonts.hxx"
-#include "fps_counter.hxx"
+#include "fonts.hpp"
+#include "fps_counter.hpp"
 #include "gettext.h"
 
 

@@ -17,9 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "world_dot.hxx"
-#include "../stat_manager.hxx"
-#include "../file_reader.hxx"
+#include "world_dot.hpp"
+#include "../stat_manager.hpp"
+#include "../file_reader.hpp"
 
 namespace WorldMapNS {
 

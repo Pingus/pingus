@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_ICE_BLOCK_HXX
 #define HEADER_PINGUS_WORLDOBJS_ICE_BLOCK_HXX
 
-#include "../worldobj.hxx"
+#include "../worldobj.hpp"
 
 namespace WorldObjsData {
 class IceBlockData;

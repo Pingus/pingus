@@ -17,11 +17,11 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../resource.hxx"
+#include "../resource.hpp"
 #include "../math/vector3f.hpp"
-#include "../display/scene_context.hxx"
-#include "../pingu.hxx"
-#include "smashed.hxx"
+#include "../display/scene_context.hpp"
+#include "../pingu.hpp"
+#include "smashed.hpp"
 
 namespace Actions {
 

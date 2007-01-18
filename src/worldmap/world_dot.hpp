@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDMAP_WORLD_DOT_HXX
 #define HEADER_PINGUS_WORLDMAP_WORLD_DOT_HXX
 
-#include "dot.hxx"
+#include "dot.hpp"
 
 namespace WorldMapNS {
 

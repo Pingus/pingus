@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_INPUT_DUMMY_POINTER_HXX
 #define HEADER_PINGUS_INPUT_DUMMY_POINTER_HXX
 
-#include "../pointer.hxx"
+#include "../pointer.hpp"
 
 namespace Input {
 namespace Pointers {

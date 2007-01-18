@@ -18,8 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-///#include "sexpr_file_writer.hxx"
-#include "savegame.hxx"
+///#include "sexpr_file_writer.hpp"
+#include "savegame.hpp"
 
 
 std::string

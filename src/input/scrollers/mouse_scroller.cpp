@@ -19,7 +19,7 @@
 
 #include <ClanLib/Display/mouse.h>
 #include <ClanLib/Core/System/error.h>
-#include "mouse_scroller.hxx"
+#include "mouse_scroller.hpp"
 
 namespace Input {
 namespace Scrollers {

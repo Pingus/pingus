@@ -24,7 +24,7 @@
 */
 
 #include <iostream>
-#include "resource.hxx"
+#include "resource.hpp"
 #include "collision_mask.hpp"
 
 CollisionMask::CollisionMask()

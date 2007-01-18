@@ -18,18 +18,18 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "gui/screen_manager.hxx"
-#include "client.hxx"
-#include "true_server.hxx"
-#include "game_session.hxx"
-#include "game_session_result.hxx"
-#include "timer.hxx"
-#include "resource.hxx"
-#include "pingu_holder.hxx"
-#include "world.hxx"
-#include "result_screen.hxx"
-#include "savegame_manager.hxx"
-#include "globals.hxx"
+#include "gui/screen_manager.hpp"
+#include "client.hpp"
+#include "true_server.hpp"
+#include "game_session.hpp"
+#include "game_session_result.hpp"
+#include "timer.hpp"
+#include "resource.hpp"
+#include "pingu_holder.hpp"
+#include "world.hpp"
+#include "result_screen.hpp"
+#include "savegame_manager.hpp"
+#include "globals.hpp"
 
 PingusGameSession::PingusGameSession (const PingusLevel& arg_plf, bool arg_show_result_screen)
   : plf(arg_plf),

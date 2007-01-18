@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_TIME_DISPLAY_HXX
 #define HEADER_PINGUS_TIME_DISPLAY_HXX
 
-#include "../gui/component.hxx"
+#include "../gui/component.hpp"
 
 class Font;
 class Server;

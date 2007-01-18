@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_DEBUG_HXX
 #define HEADER_PINGUS_DEBUG_HXX
 
-#include "debug_stream.hxx"
+#include "debug_stream.hpp"
 
 
 /* Stream for error messages */

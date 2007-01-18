@@ -17,22 +17,22 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../display/drawing_context.hxx"
-#include "../gui/gui_manager.hxx"
-#include "../gui/surface_button.hxx"
-#include "../gui/input_box.hxx"
-#include "../sound/sound.hxx"
-#include "../resource.hxx"
+#include "../display/drawing_context.hpp"
+#include "../gui/gui_manager.hpp"
+#include "../gui/surface_button.hpp"
+#include "../gui/input_box.hpp"
+#include "../sound/sound.hpp"
+#include "../resource.hpp"
 #include "../math/vector3f.hpp"
-#include "../fonts.hxx"
+#include "../fonts.hpp"
 #include "../gettext.h"
-#include "level_head.hxx"
-#include "level_impl.hxx"
-#include "../gui/display.hxx"
-#include "panel_buttons.hxx"
-#include "editor_panel.hxx"
-#include "editor_screen.hxx"
-#include "xml_level.hxx"
+#include "level_head.hpp"
+#include "level_impl.hpp"
+#include "../gui/display.hpp"
+#include "panel_buttons.hpp"
+#include "editor_panel.hpp"
+#include "editor_screen.hpp"
+#include "xml_level.hpp"
 
 namespace Editor {
   

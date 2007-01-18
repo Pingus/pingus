@@ -19,7 +19,7 @@
 
 #include <ClanLib/Display/mouse.h>
 #include <ClanLib/Display/input_event.h>
-#include "mouse_pointer.hxx"
+#include "mouse_pointer.hpp"
 
 namespace Input {
 namespace Pointers {

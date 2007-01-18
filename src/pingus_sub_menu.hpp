@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_PINGUS_SUB_MENU_HXX
 #define HEADER_PINGUS_PINGUS_SUB_MENU_HXX
 
-#include "gui/gui_screen.hxx"
+#include "gui/gui_screen.hpp"
 
 class CL_Key;
 class CL_InputDevice;

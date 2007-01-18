@@ -21,8 +21,8 @@
 #define HEADER_PINGUS_GAME_SESSION_HXX
 
 #include <string>
-#include "gui/screen.hxx"
-#include "pingus_level.hxx"
+#include "gui/screen.hpp"
+#include "pingus_level.hpp"
 
 
 class Client;

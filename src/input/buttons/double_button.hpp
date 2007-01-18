@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_INPUT_DOUBLE_BUTTON_HXX
 #define HEADER_PINGUS_INPUT_DOUBLE_BUTTON_HXX
 
-#include "../button.hxx"
+#include "../button.hpp"
 
 namespace Input {
 namespace Buttons {

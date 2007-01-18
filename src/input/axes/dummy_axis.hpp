@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_INPUT_DUMMY_AXIS_HXX
 #define HEADER_PINGUS_INPUT_DUMMY_AXIS_HXX
 
-#include "../axis.hxx"
+#include "../axis.hpp"
 
 namespace Input {
 namespace Axes {

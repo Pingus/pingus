@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_DEBUG_STREAM_HXX
 #define HEADER_PINGUS_DEBUG_STREAM_HXX
 
-#include "pingus.hxx"
+#include "pingus.hpp"
 #include <string>
 #include <vector>
 #include <iostream>

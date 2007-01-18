@@ -20,9 +20,9 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_GROUNDPIECE_HXX
 #define HEADER_PINGUS_WORLDOBJS_GROUNDPIECE_HXX
 
-#include "../res_descriptor.hxx"
-#include "../groundtype.hxx"
-#include "../worldobj.hxx"
+#include "../res_descriptor.hpp"
+#include "../groundtype.hpp"
+#include "../worldobj.hpp"
 #include "../math/vector3f.hpp"
 
 

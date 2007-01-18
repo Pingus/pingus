@@ -18,11 +18,11 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "gettext.h"
-#include "pingus_menu_manager.hxx"
-#include "resource.hxx"
-#include "gui/surface_button.hxx"
-#include "gui/gui_manager.hxx"
-#include "sound/sound.hxx"
+#include "pingus_menu_manager.hpp"
+#include "resource.hpp"
+#include "gui/surface_button.hpp"
+#include "gui/gui_manager.hpp"
+#include "sound/sound.hpp"
 
 
 class ExitMenuYesButton : public GUI::SurfaceButton

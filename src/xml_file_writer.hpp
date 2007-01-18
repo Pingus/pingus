@@ -23,7 +23,7 @@
 #include <stack>
 #include <iosfwd>
 #include "math/color.hpp"
-#include "file_writer.hxx"
+#include "file_writer.hpp"
 
 
 /** */

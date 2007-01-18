@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_SMALLMAP_HXX
 
 #include "../sprite.hpp"
-#include "../gui/component.hxx"
+#include "../gui/component.hpp"
 
 class Client;
 class Vector3f;

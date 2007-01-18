@@ -21,10 +21,10 @@
 #define HEADER_PINGUS_PINGUS_MENU_HXX
 
 #include <vector>
-#include "fonts.hxx"
-#include "pingus_sub_menu.hxx"
-#include "file_dialog_listener.hxx"
-#include "layer_manager.hxx"
+#include "fonts.hpp"
+#include "pingus_sub_menu.hpp"
+#include "file_dialog_listener.hpp"
+#include "layer_manager.hpp"
 
 class SurfaceButton;
 class GameDelta;

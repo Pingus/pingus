@@ -23,7 +23,7 @@
 #include "SDL.h"
 #include <assert.h>
 #include <iostream>
-#include "pingus.hxx"
+#include "pingus.hpp"
 
 
 class DeltaManager

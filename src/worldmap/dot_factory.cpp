@@ -17,10 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../pingus_error.hxx"
-#include "level_dot.hxx"
-#include "world_dot.hxx"
-#include "dot_factory.hxx"
+#include "../pingus_error.hpp"
+#include "level_dot.hpp"
+#include "world_dot.hpp"
+#include "dot_factory.hpp"
 
 namespace WorldMapNS {
 

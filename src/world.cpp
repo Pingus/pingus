@@ -21,20 +21,20 @@
 #include <assert.h>
 #include <iostream>
 #include <typeinfo>
-#include "pingu_holder.hxx"
-#include "sound/sound.hxx"
-#include "ground_map.hxx"
-#include "world.hxx"
-#include "particles/pingu_particle_holder.hxx"
-#include "particles/rain_particle_holder.hxx"
-#include "particles/smoke_particle_holder.hxx"
-#include "particles/snow_particle_holder.hxx"
-#include "pingu.hxx"
-#include "display/scene_context.hxx"
-#include "pingus_level.hxx"
-#include "worldobj_factory.hxx"
-#include "col_map.hxx"
-#include "game_time.hxx"
+#include "pingu_holder.hpp"
+#include "sound/sound.hpp"
+#include "ground_map.hpp"
+#include "world.hpp"
+#include "particles/pingu_particle_holder.hpp"
+#include "particles/rain_particle_holder.hpp"
+#include "particles/smoke_particle_holder.hpp"
+#include "particles/snow_particle_holder.hpp"
+#include "pingu.hpp"
+#include "display/scene_context.hpp"
+#include "pingus_level.hpp"
+#include "worldobj_factory.hpp"
+#include "col_map.hpp"
+#include "game_time.hpp"
 
 
 using Actions::Bomber;

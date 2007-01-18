@@ -19,17 +19,17 @@
 
 #include <stdio.h>
 #include <iostream>
-#include "../globals.hxx"
-#include "../pingu_holder.hxx"
-#include "../display/drawing_context.hxx"
-#include "../display/scene_context.hxx"
-#include "../world.hxx"
-#include "../server.hxx"
-#include "../true_server.hxx"
-#include "../pingu.hxx"
-#include "../gui/display.hxx"
-#include "button_panel.hxx"
-#include "playfield.hxx"
+#include "../globals.hpp"
+#include "../pingu_holder.hpp"
+#include "../display/drawing_context.hpp"
+#include "../display/scene_context.hpp"
+#include "../world.hpp"
+#include "../server.hpp"
+#include "../true_server.hpp"
+#include "../pingu.hpp"
+#include "../gui/display.hpp"
+#include "button_panel.hpp"
+#include "playfield.hpp"
 
 
 Playfield::Playfield (Client* client_, const Rect& rect_)

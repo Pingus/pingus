@@ -18,8 +18,8 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <math.h>
-#include "gui/display.hxx"
-#include "graphic_context_state.hxx"
+#include "gui/display.hpp"
+#include "graphic_context_state.hpp"
 
 class GraphicContextStateImpl
 {

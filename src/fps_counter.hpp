@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_FPS_COUNTER_HXX
 #define HEADER_PINGUS_FPS_COUNTER_HXX
 
-#include "gui/display.hxx"
+#include "gui/display.hpp"
 
 
 ///

@@ -22,9 +22,9 @@
 #define HEADER_PINGUS_GROUND_MAP_HXX
 
 #include <vector>
-#include "globals.hxx"
-#include "worldobj.hxx"
-#include "ground_map.hxx"
+#include "globals.hpp"
+#include "worldobj.hpp"
+#include "ground_map.hpp"
 #include "pixel_buffer.hpp"
 
 class SceneContext;

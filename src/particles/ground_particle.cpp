@@ -17,9 +17,9 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #if 0
-#include "../globals.hxx"
-#include "../resource.hxx"
-#include "ground_particle.hxx"
+#include "../globals.hpp"
+#include "../resource.hpp"
+#include "ground_particle.hpp"
 
 GroundParticle::GroundParticle (int x, int y, float x_a, float y_a)
   : Particle (x,y, x_a, y_a)

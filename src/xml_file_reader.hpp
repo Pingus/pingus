@@ -22,7 +22,7 @@
 
 #if 0
 #include <ClanLib/Core/XML/dom_element.h>
-#include "file_reader.hxx"
+#include "file_reader.hpp"
 
 /** */
 class XMLFileReader : public FileReader

@@ -18,14 +18,14 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "math/vector3f.hpp"
-#include "pingu.hxx"
-#include "resource.hxx"
-#include "capture_rectangle.hxx"
-#include "pingu_action.hxx"
-#include "components/button_panel.hxx"
-#include "globals.hxx"
-#include "display/scene_context.hxx"
-#include "fonts.hxx"
+#include "pingu.hpp"
+#include "resource.hpp"
+#include "capture_rectangle.hpp"
+#include "pingu_action.hpp"
+#include "components/button_panel.hpp"
+#include "globals.hpp"
+#include "display/scene_context.hpp"
+#include "fonts.hpp"
 
 CaptureRectangle::CaptureRectangle (ButtonPanel* arg_button_panel)
   : pingu(0),

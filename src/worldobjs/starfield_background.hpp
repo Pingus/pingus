@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_WORLDOBJS_STARFIELD_BACKGROUND_HXX
 
 #include <vector>
-#include "../worldobj.hxx"
+#include "../worldobj.hpp"
 
 
 namespace WorldObjsData {

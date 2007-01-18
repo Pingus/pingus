@@ -22,7 +22,7 @@
 
 #include <vector>
 #include <string>
-#include "../pingus.hxx"
+#include "../pingus.hpp"
 
 namespace Input {
 

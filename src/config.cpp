@@ -20,11 +20,11 @@
 #include <stdio.h>
 #include <iostream>
 
-#include "globals.hxx"
-#include "pingus_error.hxx"
-#include "config.hxx"
-#include "system.hxx"
-#include "cheat.hxx"
+#include "globals.hpp"
+#include "pingus_error.hpp"
+#include "config.hpp"
+#include "system.hpp"
+#include "cheat.hpp"
 #include "gettext.h"
 
 

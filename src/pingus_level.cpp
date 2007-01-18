@@ -18,10 +18,10 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "file_reader.hxx"
-#include "pingus_level.hxx"
-#include "pingus_error.hxx"
-#include "pingus_level_impl.hxx"
+#include "file_reader.hpp"
+#include "pingus_level.hpp"
+#include "pingus_error.hpp"
+#include "pingus_level_impl.hpp"
 
 PingusLevel::PingusLevel()
   : impl(new PingusLevelImpl())  

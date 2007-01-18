@@ -24,8 +24,8 @@
 #include <list>
 #include <string>
 #include <vector>
-#include "../file_reader.hxx"
-#include "event.hxx"
+#include "../file_reader.hpp"
+#include "event.hpp"
 
 namespace Input {
 

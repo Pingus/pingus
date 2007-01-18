@@ -18,11 +18,11 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../particles/rain_particle_holder.hxx"
-#include "../sound/sound.hxx"
-#include "../world.hxx"
-#include "../display/scene_context.hxx"
-#include "rain_generator.hxx"
+#include "../particles/rain_particle_holder.hpp"
+#include "../sound/sound.hpp"
+#include "../world.hpp"
+#include "../display/scene_context.hpp"
+#include "rain_generator.hpp"
 
 namespace WorldObjs {
 

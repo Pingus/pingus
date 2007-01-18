@@ -17,10 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../path_manager.hxx"
-#include "../globals.hxx"
-#include "../debug.hxx"
-#include "sound_res_mgr.hxx"
+#include "../path_manager.hpp"
+#include "../globals.hpp"
+#include "../debug.hpp"
+#include "sound_res_mgr.hpp"
 
 
 SoundResMgr::SoundMap SoundResMgr::sound_map;

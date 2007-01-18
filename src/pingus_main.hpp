@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_PINGUS_MAIN_HXX
 
 #include <string>
-#include "pingus.hxx"
+#include "pingus.hpp"
 #include "SDL.h"
 
 void segfault_handler(int);

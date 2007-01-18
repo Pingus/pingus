@@ -18,10 +18,10 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "pingus_level.hxx"
-#include "pingu_action_factory.hxx"
-#include "action_holder.hxx"
-#include "cheat.hxx"
+#include "pingus_level.hpp"
+#include "pingu_action_factory.hpp"
+#include "action_holder.hpp"
+#include "cheat.hpp"
 
 using namespace Actions;
 

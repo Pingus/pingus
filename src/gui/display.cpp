@@ -20,8 +20,8 @@
 #include <algorithm>
 #include <stdio.h>
 #include <iostream>
-#include "../globals.hxx"
-#include "display.hxx"
+#include "../globals.hpp"
+#include "display.hpp"
 
 
 std::list<DisplayHook*> Display::display_hooks;

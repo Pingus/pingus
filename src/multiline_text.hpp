@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_MULTILINE_TEXT_HXX
 #define HEADER_PINGUS_MULTILINE_TEXT_HXX
 
-#include "pingus.hxx"
+#include "pingus.hpp"
 #include "font.hpp"
 #include <string>
 #include <vector>

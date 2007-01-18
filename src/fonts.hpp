@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_FONTS_HXX
 #define HEADER_PINGUS_FONTS_HXX
 
-#include "display/drawing_context.hxx"
+#include "display/drawing_context.hpp"
 #include "font.hpp"
 
 namespace Fonts {

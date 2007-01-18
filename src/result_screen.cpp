@@ -19,19 +19,19 @@
 
 #include <iostream>
 #include "gettext.h"
-#include "gui/display.hxx"
-#include "gui/surface_button.hxx"
-#include "gui/gui_manager.hxx"
-#include "gui/screen_manager.hxx"
-#include "blitter.hxx"
-#include "res_descriptor.hxx"
-#include "resource.hxx"
-#include "fonts.hxx"
-#include "game_session.hxx"
-#include "system.hxx"
-#include "sound/sound.hxx"
-#include "game_time.hxx"
-#include "result_screen.hxx"
+#include "gui/display.hpp"
+#include "gui/surface_button.hpp"
+#include "gui/gui_manager.hpp"
+#include "gui/screen_manager.hpp"
+#include "blitter.hpp"
+#include "res_descriptor.hpp"
+#include "resource.hpp"
+#include "fonts.hpp"
+#include "game_session.hpp"
+#include "system.hpp"
+#include "sound/sound.hpp"
+#include "game_time.hpp"
+#include "result_screen.hpp"
 
 
 class ResultScreenComponent : public GUI::Component

@@ -20,8 +20,8 @@
 #ifndef HEADER_PATH_DRAWABLE_HXX
 #define HEADER_PATH_DRAWABLE_HXX
 
-#include "drawable.hxx"
-#include "path_graph.hxx"
+#include "drawable.hpp"
+#include "path_graph.hpp"
 
 namespace WorldMapNS {
 

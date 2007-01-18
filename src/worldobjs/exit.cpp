@@ -18,15 +18,15 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "../display/scene_context.hxx"
-#include "../col_map.hxx"
-#include "../world.hxx"
-#include "../globals.hxx"
-#include "../pingu_holder.hxx"
-#include "../pingu.hxx"
-#include "../components/smallmap.hxx"
-#include "../resource.hxx"
-#include "exit.hxx"
+#include "../display/scene_context.hpp"
+#include "../col_map.hpp"
+#include "../world.hpp"
+#include "../globals.hpp"
+#include "../pingu_holder.hpp"
+#include "../pingu.hpp"
+#include "../components/smallmap.hpp"
+#include "../resource.hpp"
+#include "exit.hpp"
 
 namespace WorldObjs {
 

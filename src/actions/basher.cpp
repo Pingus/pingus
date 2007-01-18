@@ -16,17 +16,17 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../sound/sound.hxx"
-#include "../col_map.hxx"
-#include "../debug.hxx"
-#include "../globals.hxx"
-#include "../display/scene_context.hxx"
-#include "../ground_map.hxx"
-#include "../resource.hxx"
-#include "../pingu.hxx"
-#include "../world.hxx"
-#include "../worldobj.hxx"
-#include "basher.hxx"
+#include "../sound/sound.hpp"
+#include "../col_map.hpp"
+#include "../debug.hpp"
+#include "../globals.hpp"
+#include "../display/scene_context.hpp"
+#include "../ground_map.hpp"
+#include "../resource.hpp"
+#include "../pingu.hpp"
+#include "../world.hpp"
+#include "../worldobj.hpp"
+#include "basher.hpp"
 
 namespace Actions {
 

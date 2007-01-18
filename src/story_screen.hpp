@@ -21,9 +21,9 @@
 #define HEADER_PINGUS_STORY_SCREEN_HXX
 
 #include <string>
-#include "res_descriptor.hxx"
-#include "gui/gui_screen.hxx"
-#include "worldmap/worldmap_story.hxx"
+#include "res_descriptor.hpp"
+#include "gui/gui_screen.hpp"
+#include "worldmap/worldmap_story.hpp"
 
 
 class StoryScreenComponent;

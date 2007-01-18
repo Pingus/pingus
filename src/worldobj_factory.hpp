@@ -22,7 +22,7 @@
 
 #include <map>
 #include <string>
-#include "file_reader.hxx"
+#include "file_reader.hpp"
 
 
 class WorldObj;

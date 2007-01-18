@@ -24,11 +24,11 @@
 #include <ClanLib/Display/display.h>
 #include <ClanLib/Display/input_event.h>
 #include <ClanLib/Display/keys.h>
-#include "screenshot.hxx"
-#include "console.hxx"
-#include "fps_counter.hxx"
-#include "global_event.hxx"
-#include "globals.hxx"
+#include "screenshot.hpp"
+#include "console.hpp"
+#include "fps_counter.hpp"
+#include "global_event.hpp"
+#include "globals.hpp"
 
 
 GlobalEvent global_event;

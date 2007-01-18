@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_PARTICLES_GROUND_PARTICLE_HXX
 #define HEADER_PINGUS_PARTICLES_GROUND_PARTICLE_HXX
 
-#include "particle.hxx"
+#include "particle.hpp"
 
 ///
 class GroundParticle : public Particle

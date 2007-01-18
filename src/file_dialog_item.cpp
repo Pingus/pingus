@@ -17,18 +17,18 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "pingus_error.hxx"
-#include "file_dialog_item.hxx"
-#include "file_dialog.hxx"
+#include "pingus_error.hpp"
+#include "file_dialog_item.hpp"
+#include "file_dialog.hpp"
 #include "math/vector3f.hpp"
-#include "fonts.hxx"
-#include "resource.hxx"
+#include "fonts.hpp"
+#include "resource.hpp"
 #include "gettext.h"
-#include "stat_manager.hxx"
-#include "savegame_manager.hxx"
-#include "savegame.hxx"
-#include "worldmap/manager.hxx"
-#include "worldmap/metamap.hxx"
+#include "stat_manager.hpp"
+#include "savegame_manager.hpp"
+#include "savegame.hpp"
+#include "worldmap/manager.hpp"
+#include "worldmap/metamap.hpp"
 
 	// Only Constructor
 	FileDialogItem::FileDialogItem(FileDialog* f, Vector3f p) 

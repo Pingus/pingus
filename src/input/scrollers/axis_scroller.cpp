@@ -19,9 +19,9 @@
 
 #include <math.h>
 #include <assert.h>
-#include "../../debug.hxx"
-#include "../axis.hxx"
-#include "axis_scroller.hxx"
+#include "../../debug.hpp"
+#include "../axis.hpp"
+#include "axis_scroller.hpp"
 
 namespace Input {
 namespace Scrollers {

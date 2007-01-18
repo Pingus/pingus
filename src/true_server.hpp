@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_TRUE_SERVER_HXX
 #define HEADER_PINGUS_TRUE_SERVER_HXX
 
-#include "pingus_level.hxx"
-#include "server.hxx"
+#include "pingus_level.hpp"
+#include "server.hpp"
 
 
 /** FIXME: This whole Server/Client concept is screwed and the

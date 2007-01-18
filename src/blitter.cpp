@@ -27,12 +27,12 @@
 #include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/pixel_format.h>
 
-#include "pingus_error.hxx"
-#include "globals.hxx"
-#include "math.hxx"
-#include "blitter.hxx"
-#include "debug.hxx"
-#include "blitter_impl.hxx"
+#include "pingus_error.hpp"
+#include "globals.hpp"
+#include "math.hpp"
+#include "blitter.hpp"
+#include "debug.hpp"
+#include "blitter_impl.hpp"
 
 /* Headers needed for i18n / gettext */
 #include "gettext.h"

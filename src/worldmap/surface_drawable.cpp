@@ -19,12 +19,12 @@
 
 #include <iostream>
 
-#include "../resource.hxx"
-#include "../display/drawing_context.hxx"
-#include "manager.hxx"
-#include "worldmap.hxx"
-#include "pingus.hxx"
-#include "surface_drawable.hxx"
+#include "../resource.hpp"
+#include "../display/drawing_context.hpp"
+#include "manager.hpp"
+#include "worldmap.hpp"
+#include "pingus.hpp"
+#include "surface_drawable.hpp"
 
 namespace WorldMapNS {
 

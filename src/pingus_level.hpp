@@ -23,8 +23,8 @@
 #include <string>
 #include <vector>
 #include <map>
-#include "shared_ptr.hxx"
-#include "file_reader.hxx"
+#include "shared_ptr.hpp"
+#include "file_reader.hpp"
 
 
 class FileReader;

@@ -23,7 +23,7 @@
 #include <vector>
 #include <string>
 #include "../math/vector3f.hpp"
-#include "../gui/component.hxx"
+#include "../gui/component.hpp"
 
 namespace Editor {
 

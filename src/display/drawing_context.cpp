@@ -20,8 +20,8 @@
 #include <assert.h>
 #include <iostream>
 #include <iostream>
-#include "drawing_context.hxx"
-#include "gui/display.hxx"
+#include "drawing_context.hpp"
+#include "gui/display.hpp"
 #include "../sprite.hpp"
 #include "../font.hpp"
 #include "../math/origin.hpp"

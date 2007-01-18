@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_PINGUS_ERROR_HXX
 #define HEADER_PINGUS_PINGUS_ERROR_HXX
 
-#include "pingus.hxx"
+#include "pingus.hpp"
 #include <string>
 #include <exception>
 

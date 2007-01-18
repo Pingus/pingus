@@ -18,9 +18,9 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "world.hxx"
-//#include "gui/buffer_graphic_context.hxx"
-#include "preview_renderer.hxx"
+#include "world.hpp"
+//#include "gui/buffer_graphic_context.hpp"
+#include "preview_renderer.hpp"
 
 
 void

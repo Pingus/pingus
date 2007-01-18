@@ -22,7 +22,7 @@
 
 #include <vector>
 #include <string>
-#include "pingus_sub_menu.hxx"
+#include "pingus_sub_menu.hpp"
 
 
 class Vector;

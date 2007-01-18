@@ -18,16 +18,16 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <cassert>
-#include "../col_map.hxx"
-#include "../display/scene_context.hxx"
-#include "../pingu.hxx"
-#include "../ground_map.hxx"
-#include "../resource.hxx"
-#include "../sound/sound.hxx"
-#include "../world.hxx"
-#include "../worldobj.hxx"
+#include "../col_map.hpp"
+#include "../display/scene_context.hpp"
+#include "../pingu.hpp"
+#include "../ground_map.hpp"
+#include "../resource.hpp"
+#include "../sound/sound.hpp"
+#include "../world.hpp"
+#include "../worldobj.hpp"
 #include "../gettext.h"
-#include "bridger.hxx"
+#include "bridger.hpp"
 
 namespace Actions {
 

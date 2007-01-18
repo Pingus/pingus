@@ -20,11 +20,11 @@
 #ifndef HEADER_PINGUS_LAYER_MANAGER_HXX
 #define HEADER_PINGUS_LAYER_MANAGER_HXX
 
-#include "pingus.hxx"
+#include "pingus.hpp"
 #include <cmath>
 #include "sprite.hpp"
-#include "gui/display.hxx"
-#include "display/drawing_context.hxx"
+#include "gui/display.hpp"
+#include "display/drawing_context.hpp"
 
 
 class LayerManager

@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_EDITOR_LEVEL_HEAD_HXX
 #define HEADER_PINGUS_EDITOR_LEVEL_HEAD_HXX
 
-#include "../gui/component.hxx"
+#include "../gui/component.hpp"
 
 
 	class Vector3f; 

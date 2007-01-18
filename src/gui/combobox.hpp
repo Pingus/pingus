@@ -22,7 +22,7 @@
 
 #include <vector>
 #include <string>
-#include "component.hxx"
+#include "component.hpp"
 #include "../math/vector3f.hpp"
 
 

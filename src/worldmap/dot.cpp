@@ -19,8 +19,8 @@
 
 #include <iostream>
 #include <assert.h>
-#include "../file_reader.hxx"
-#include "dot.hxx"
+#include "../file_reader.hpp"
+#include "dot.hpp"
 
 namespace WorldMapNS {
 

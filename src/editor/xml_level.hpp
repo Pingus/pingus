@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_EDITOR_XMLLEVEL_HXX
 
 #include <vector>
-#include "level_impl.hxx"
+#include "level_impl.hpp"
 
 
 namespace Editor {

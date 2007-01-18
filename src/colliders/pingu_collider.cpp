@@ -17,10 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../pingu_action.hxx"
-#include "../groundtype.hxx"
+#include "../pingu_action.hpp"
+#include "../groundtype.hpp"
 #include "../math/vector3f.hpp"
-#include "pingu_collider.hxx"
+#include "pingu_collider.hpp"
 
 namespace Colliders {
 

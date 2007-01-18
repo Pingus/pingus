@@ -18,17 +18,17 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include "gui/screen_manager.hxx"
-#include "gui/surface_button.hxx"
-#include "gui/gui_manager.hxx"
-#include "sound/sound.hxx"
-#include "stat_manager.hxx"
-#include "resource.hxx"
-#include "res_descriptor.hxx"
-#include "credits.hxx"
-#include "fonts.hxx"
+#include "gui/screen_manager.hpp"
+#include "gui/surface_button.hpp"
+#include "gui/gui_manager.hpp"
+#include "sound/sound.hpp"
+#include "stat_manager.hpp"
+#include "resource.hpp"
+#include "res_descriptor.hpp"
+#include "credits.hpp"
+#include "fonts.hpp"
 #include "gettext.h"
-#include "gui/display.hxx"
+#include "gui/display.hpp"
 
 class CreditsOkButton
   : public GUI::SurfaceButton

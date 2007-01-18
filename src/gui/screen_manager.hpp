@@ -20,10 +20,10 @@
 #ifndef HEADER_PINGUS_SCREEN_MANAGER_HXX
 #define HEADER_PINGUS_SCREEN_MANAGER_HXX
 
-#include "../pingus.hxx"
+#include "../pingus.hpp"
 #include <vector>
 
-#include "screen_ptr.hxx"
+#include "screen_ptr.hpp"
 
 
 class DrawingContext;

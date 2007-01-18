@@ -24,7 +24,7 @@
 //#include <ClanLib/Display/color.h>
 #include "SDL.h"
 #include <vector>
-#include "drawing_request.hxx"
+#include "drawing_request.hpp"
 #include "../math/vector3f.hpp"
 #include "../math/rect.hpp"
 #include "../math/color.hpp"

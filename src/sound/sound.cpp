@@ -19,10 +19,10 @@
 
 #include <iostream>
 #include <assert.h>
-#include "../path_manager.hxx"
-#include "../globals.hxx"
-#include "sound_dummy.hxx"
-#include "sound.hxx"
+#include "../path_manager.hpp"
+#include "../globals.hpp"
+#include "sound_dummy.hpp"
+#include "sound.hpp"
 
 namespace Sound {
 

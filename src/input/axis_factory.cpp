@@ -17,15 +17,15 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../pingus_error.hxx"
-#include "axis_factory.hxx"
-#include "button.hxx"
-#include "button_factory.hxx"
-#include "axes/button_axis.hxx"
-#include "axes/inverted_axis.hxx"
-#include "axes/joystick_axis.hxx"
-#include "axes/multiple_axis.hxx"
-#include "../debug.hxx"
+#include "../pingus_error.hpp"
+#include "axis_factory.hpp"
+#include "button.hpp"
+#include "button_factory.hpp"
+#include "axes/button_axis.hpp"
+#include "axes/inverted_axis.hpp"
+#include "axes/joystick_axis.hpp"
+#include "axes/multiple_axis.hpp"
+#include "../debug.hpp"
 
 namespace Input {
 

@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_SCREEN_MANAGER_IMPL_HXX
 #define HEADER_PINGUS_SCREEN_MANAGER_IMPL_HXX
 
-#include "pingus.hxx"
+#include "pingus.hpp"
 
 
 class ScreenManagerImpl

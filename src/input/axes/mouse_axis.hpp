@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_INPUT_MOUSE_AXIS_HXX
 #define HEADER_PINGUS_INPUT_MOUSE_AXIS_HXX
 
-#include "../axis.hxx"
+#include "../axis.hpp"
 
 namespace Input {
 

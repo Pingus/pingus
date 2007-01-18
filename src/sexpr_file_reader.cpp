@@ -27,10 +27,10 @@
 #include "math/vector3f.hpp"
 #include "math/color.hpp"
 #include "math/size.hpp"
-#include "res_descriptor.hxx"
-#include "resource_modifier.hxx"
+#include "res_descriptor.hpp"
+#include "resource_modifier.hpp"
 #include "math/vector2i.hpp"
-#include "file_reader_impl.hxx"
+#include "file_reader_impl.hpp"
 #include "sexpr_file_reader.hpp"
 
 class SExprFileReaderImpl: public FileReaderImpl

@@ -18,18 +18,18 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <vector>
-#include "../resource.hxx"
-#include "../gui/display.hxx"
+#include "../resource.hpp"
+#include "../gui/display.hpp"
 #include "../math/vector3f.hpp"
-#include "../display/drawing_context.hxx"
-#include "../gui/gui_manager.hxx"
-#include "../gui/checkbox.hxx"
-#include "../gui/combobox.hxx"
-#include "../fonts.hxx"
-#include "editor_panel.hxx"
-#include "editor_screen.hxx"
-#include "editor_viewport.hxx"
-#include "panel_buttons.hxx"
+#include "../display/drawing_context.hpp"
+#include "../gui/gui_manager.hpp"
+#include "../gui/checkbox.hpp"
+#include "../gui/combobox.hpp"
+#include "../fonts.hpp"
+#include "editor_panel.hpp"
+#include "editor_screen.hpp"
+#include "editor_viewport.hpp"
+#include "panel_buttons.hpp"
 
 
 	class GUI::Component;

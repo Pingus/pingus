@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_SURFACE_BACKGROUND_HXX
 #define HEADER_PINGUS_WORLDOBJS_SURFACE_BACKGROUND_HXX
 
-#include "../res_descriptor.hxx"
-#include "../worldobj.hxx"
+#include "../res_descriptor.hpp"
+#include "../worldobj.hpp"
 
 namespace WorldObjsData {
 class SurfaceBackgroundData;

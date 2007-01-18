@@ -20,12 +20,12 @@
 #include <iostream>
 #include <math.h>
 #include "../math/vector3f.hpp"
-#include "../display/drawing_context.hxx"
-#include "dot.hxx"
-#include "../math.hxx"
-#include "../direction.hxx"
-#include "../resource.hxx"
-#include "pingus.hxx"
+#include "../display/drawing_context.hpp"
+#include "dot.hpp"
+#include "../math.hpp"
+#include "../direction.hpp"
+#include "../resource.hpp"
+#include "pingus.hpp"
 
 namespace WorldMapNS {
 

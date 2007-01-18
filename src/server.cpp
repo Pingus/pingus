@@ -17,13 +17,13 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "pingu.hxx"
-#include "globals.hxx"
-#include "server.hxx"
-#include "game_time.hxx"
-#include "world.hxx"
-#include "demo_recorder.hxx"
-#include "goal_manager.hxx"
+#include "pingu.hpp"
+#include "globals.hpp"
+#include "server.hpp"
+#include "game_time.hpp"
+#include "world.hpp"
+#include "demo_recorder.hpp"
+#include "goal_manager.hpp"
 
 
 using Actions::action_from_string;

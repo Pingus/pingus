@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_DISPLAY_HXX
 #define HEADER_PINGUS_DISPLAY_HXX
 
-#include "../pingus.hxx"
+#include "../pingus.hpp"
 #include "SDL.h"
 #include <list>
 

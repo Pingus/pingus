@@ -23,7 +23,7 @@
 #include <vector>
 #include "../sprite.hpp"
 #include "../math/vector3f.hpp"
-#include "../worldobj.hxx"
+#include "../worldobj.hpp"
 
 
 class GraphicContext;

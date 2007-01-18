@@ -21,7 +21,7 @@
 #define HEADER_SAVEGAME_MANAGER_HXX
 
 #include <map>
-#include "savegame.hxx"
+#include "savegame.hpp"
 
 
 /** */

@@ -21,7 +21,7 @@
 #define HEADER_PINGUS_SCREEN_HXX
 
 #include "SDL.h"
-#include "game_delta.hxx"
+#include "game_delta.hpp"
 
 class DrawingContext;
 

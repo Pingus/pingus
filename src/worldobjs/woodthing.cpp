@@ -17,12 +17,12 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../math.hxx"
-#include "../display/scene_context.hxx"
-#include "../particles/smoke_particle_holder.hxx"
-#include "../resource.hxx"
-#include "../world.hxx"
-#include "woodthing.hxx"
+#include "../math.hpp"
+#include "../display/scene_context.hpp"
+#include "../particles/smoke_particle_holder.hpp"
+#include "../resource.hpp"
+#include "../world.hpp"
+#include "woodthing.hpp"
 
 namespace WorldObjs {
 // FIXME: Re-enable this namespace.

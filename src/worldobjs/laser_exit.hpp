@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_WORLDOBJS_LASER_EXIT_HXX
 #define HEADER_PINGUS_WORLDOBJS_LASER_EXIT_HXX
 
-#include "../worldobj.hxx"
+#include "../worldobj.hpp"
 #include "../sprite.hpp"
 
 namespace WorldObjsData {

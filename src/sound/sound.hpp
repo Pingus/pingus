@@ -21,8 +21,8 @@
 #define HEADER_PINGUS_SOUND_HXX
 
 #include <string>
-#include "sounds.hxx"
-#include "sound_impl.hxx"
+#include "sounds.hpp"
+#include "sound_impl.hpp"
 
 namespace Sound {
 

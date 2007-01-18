@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_TIMER_HXX
 #define HEADER_PINGUS_TIMER_HXX
 
-#include "pingus.hxx"
+#include "pingus.hpp"
 
 
 /** A simple class for benchmark purpose. It lets you start and stop a

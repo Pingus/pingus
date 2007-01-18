@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "gettext.h"
-#include "pingu_enums.hxx"
+#include "pingu_enums.hpp"
 
 // Pingu "globals".  Make [deadly_velocity = 20 * sqrt("normal gravity")] so
 // that the "deadly distance" is the same and therefore doesn't break levels.

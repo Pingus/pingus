@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_GUI_INPUTBOX_HXX
 #define HEADER_PINGUS_GUI_INPUTBOX_HXX
 
-#include "component.hxx"
+#include "component.hpp"
 #include "../math/vector3f.hpp"
 #include <string>
 

@@ -17,14 +17,14 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "dot.hxx"
-#include "metamap.hxx"
-#include "path_graph.hxx"
-#include "graph.hxx"
-#include "../pingus_error.hxx"
-#include "../debug.hxx"
-#include "../globals.hxx"
-#include "../stat_manager.hxx"
+#include "dot.hpp"
+#include "metamap.hpp"
+#include "path_graph.hpp"
+#include "graph.hpp"
+#include "../pingus_error.hpp"
+#include "../debug.hpp"
+#include "../globals.hpp"
+#include "../stat_manager.hpp"
 #include "../sexpr_file_reader.hpp"
 
 namespace WorldMapNS {

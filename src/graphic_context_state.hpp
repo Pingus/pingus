@@ -24,9 +24,9 @@
 #include "math/vector3f.hpp"
 #include "math/vector2i.hpp"
 #include "math/vector2f.hpp"
-#include "shared_ptr.hxx"
-#include "display/drawing_context.hxx"
-#include "display/scene_context.hxx"
+#include "shared_ptr.hpp"
+#include "display/drawing_context.hpp"
+#include "display/scene_context.hpp"
 
 class GraphicContextStateImpl;
 

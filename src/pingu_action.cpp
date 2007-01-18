@@ -20,11 +20,11 @@
 #include <assert.h>
 #include <math.h>
 #include "math/vector3f.hpp"
-#include "col_map.hxx"
-#include "world.hxx"
-#include "pingu.hxx"
-#include "pingu_action.hxx"
-#include "worldobj.hxx"
+#include "col_map.hpp"
+#include "world.hpp"
+#include "pingu.hpp"
+#include "pingu_action.hpp"
+#include "worldobj.hpp"
 
 
 PinguAction::PinguAction (Pingu* p)

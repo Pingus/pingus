@@ -17,15 +17,15 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../col_map.hxx"
-#include "../game_time.hxx"
-#include "../display/scene_context.hxx"
-#include "../pingu.hxx"
-#include "../pingu_holder.hxx"
-#include "../ground_map.hxx"
-#include "../resource.hxx"
-#include "../world.hxx"
-#include "ice_block.hxx"
+#include "../col_map.hpp"
+#include "../game_time.hpp"
+#include "../display/scene_context.hpp"
+#include "../pingu.hpp"
+#include "../pingu_holder.hpp"
+#include "../ground_map.hpp"
+#include "../resource.hpp"
+#include "../world.hpp"
+#include "ice_block.hpp"
 
 namespace WorldObjs {
 

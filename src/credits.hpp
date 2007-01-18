@@ -22,7 +22,7 @@
 
 #include <string>
 #include <vector>
-#include "gui/gui_screen.hxx"
+#include "gui/gui_screen.hpp"
 #include "font.hpp"
 #include "sprite.hpp"
 

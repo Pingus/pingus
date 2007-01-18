@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_THEME_SELECTOR_HXX
 #define HEADER_PINGUS_THEME_SELECTOR_HXX
 
-#include "pingus.hxx"
+#include "pingus.hpp"
 #include <vector>
 #include <string>
 

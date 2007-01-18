@@ -17,13 +17,13 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include "../display/scene_context.hxx"
-#include "../pingu.hxx"
-#include "../pingu_holder.hxx"
-#include "../fonts.hxx"
-#include "../world.hxx"
-#include "../resource.hxx"
-#include "info_box.hxx"
+#include "../display/scene_context.hpp"
+#include "../pingu.hpp"
+#include "../pingu_holder.hpp"
+#include "../fonts.hpp"
+#include "../world.hpp"
+#include "../resource.hpp"
+#include "info_box.hpp"
 
 namespace WorldObjs {
 
