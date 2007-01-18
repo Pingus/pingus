@@ -23,7 +23,7 @@
 #include "server.hpp"
 #include "world.hpp"
 #include "pingu_holder.hpp"
-
+#include "string_util.hpp"
 
 ServerEvent::ServerEvent() :
 	type(PINGU_ACTION_EVENT),
@@ -57,20 +57,18 @@ ServerEvent::ServerEvent(FileReader reader)
 void
 ServerEvent::write_xml(std::ostream& xml) const
 {
-#if 0
   switch(type)
     {
     case ARMAGEDDON_EVENT:
-      xml << "  <armageddon time=\"" << CL_String::to(time_stamp) << "\"/>" << std::endl;
+      xml << "  <armageddon time=\"" << StringUtil::to_string(time_stamp) << "\"/>" << std::endl;
       break;
     case PINGU_ACTION_EVENT:
-      xml << "  <pingu-action time=\"" << CL_String::to(time_stamp) << "\" id=\"" << pingu_id
+      xml << "  <pingu-action time=\"" << StringUtil::to_string(time_stamp) << "\" id=\"" << pingu_id
 	  << "\" action=\"" << Actions::action_to_string(pingu_action) << "\"/>" << std::endl;
       break;
     default:
       assert(!"Unknown type");
     }
-#endif
 }
 
 ServerEvent

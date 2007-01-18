@@ -20,7 +20,7 @@
 #include <iostream>
 ///#include "sexpr_file_writer.hpp"
 #include "savegame.hpp"
-
+#include "string_util.hpp"
 
 std::string
 Savegame::status_to_string(S_Status status)
@@ -42,8 +42,7 @@ Savegame::status_to_string(S_Status status)
 Savegame::S_Status
 Savegame::string_to_status (std::string str)
 {
-#if 0
-  str = CL_String::to_lower(str);
+  str = StringUtil::to_lower(str);
   if (str == "accessible")
     return ACCESSIBLE;
   else if (str == "finished")
@@ -51,7 +50,6 @@ Savegame::string_to_status (std::string str)
   else if (str == "none")
     return NONE;
   else
-#endif
     return NONE;
 }
 

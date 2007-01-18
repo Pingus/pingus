@@ -35,6 +35,7 @@
 #include "pingus_level.hpp"
 #include "string_format.hpp"
 #include "gui/display.hpp"
+#include "string_util.hpp"
 
 class StartScreenComponent : public GUI::Component
 {
@@ -151,7 +152,6 @@ StartScreenComponent::draw(DrawingContext& gc)
 {
   gc.draw(background, Display::get_width()/2, Display::get_height()/2);
 
-#if 0
   int left_x  = Display::get_width()/2 - 120;
   int right_x = Display::get_width()/2 + 120;
   int y = Display::get_height()/2 + 40;
@@ -167,16 +167,16 @@ StartScreenComponent::draw(DrawingContext& gc)
                 format_description(800 - 230));
 
   gc.print_left (Fonts::chalk_normal, (float)left_x,  (float)y, _("Number of Pingus: "));
-  gc.print_right(Fonts::chalk_normal, (float)right_x, (float)y, CL_String::to(plf.get_number_of_pingus()));
+  gc.print_right(Fonts::chalk_normal, (float)right_x, (float)y, StringUtil::to_string(plf.get_number_of_pingus()));
 
   gc.print_left (Fonts::chalk_normal, (float)left_x,  float(y += 30), _("Number to Save: "));
-  gc.print_right(Fonts::chalk_normal, (float)right_x, (float)y, CL_String::to(plf.get_number_to_save()));
+  gc.print_right(Fonts::chalk_normal, (float)right_x, (float)y, StringUtil::to_string(plf.get_number_to_save()));
 
   gc.print_left (Fonts::chalk_normal, (float)left_x,  float(y += 30), _("Time: "));
   gc.print_right(Fonts::chalk_normal, (float)right_x, (float)y, time_str);
 
   gc.print_left (Fonts::chalk_normal, (float)left_x,  float(y += 30), _("Difficulty:"));
-  gc.print_right(Fonts::chalk_normal, (float)right_x, (float)y, CL_String::to(plf.get_difficulty()) + "/100");
+  gc.print_right(Fonts::chalk_normal, (float)right_x, (float)y, StringUtil::to_string(plf.get_difficulty()) + "/100");
 
   gc.print_center(Fonts::chalk_small, (float)Display::get_width()/2,
                   (float)Display::get_height()/2 + 270, _("Author: ") + plf.get_author());
@@ -184,8 +184,7 @@ StartScreenComponent::draw(DrawingContext& gc)
   if (maintainer_mode)
     gc.print_left(Fonts::chalk_small, 110, 430, _("Filename: ") + plf.get_resname());
 
-  CL_System::sleep(30);
-#endif
+  SDL_Delay(30);
 }
 
 const std::string&

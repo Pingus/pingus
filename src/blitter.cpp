@@ -27,6 +27,7 @@
 #include <ClanLib/Display/pixel_buffer.h>
 #include <ClanLib/Display/pixel_format.h>
 
+#include "string_util.hpp"
 #include "pingus_error.hpp"
 #include "globals.hpp"
 #include "math.hpp"
@@ -57,7 +58,7 @@ Blitter::put_surface(PixelBuffer canvas, PixelBuffer provider,
       put_surface_32bit(canvas, provider, x, y);
       break;
     default:
-      PingusError::raise("Blitter:put_surface:Unknown color depth: " + CL_String::to(provider.get_format().get_depth()));
+      PingusError::raise("Blitter:put_surface:Unknown color depth: " + StringUtil::to_string(provider.get_format().get_depth()));
       break;
     }
 }

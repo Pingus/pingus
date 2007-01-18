@@ -64,7 +64,6 @@ Display::flip_display(bool sync)
       (*i)->on_event();
     }
 
-  ////CL_Display::flip();
   SDL_Flip(screen);
 }
 

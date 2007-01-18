@@ -27,6 +27,7 @@
 #include "../world.hpp"
 #include "../worldobj.hpp"
 #include "../gettext.h"
+#include "../string_util.hpp"
 #include "bridger.hpp"
 
 namespace Actions {
@@ -36,7 +37,7 @@ Bridger::Bridger (Pingu* p)
     mode(B_BUILDING),
     bricks(MAX_BRICKS),
     block_build(false),
-    name(_("Bridger") + std::string(" (")) ////+ CL_String::to(bricks) + ")")
+    name(_("Bridger") + std::string(" (" + StringUtil::to_string(bricks) + ")"))
 {
   walk_sprite.load (Direction::LEFT,  Resource::load_sprite("pingus/player" + 
                                                             pingu->get_owner_str() + "/bridger_walk/left"));
@@ -213,7 +214,7 @@ void
 Bridger::place_a_brick()
 {
   bricks--;
-  name = _("Bridger") + std::string(" (");//// + CL_String::to(bricks) + ")";
+  name = _("Bridger") + std::string(" (") + StringUtil::to_string(bricks) + ")";
 
   if (bricks < 4)
     Sound::PingusSound::play_sound("ting");

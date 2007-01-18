@@ -27,6 +27,7 @@
 #include "../true_server.hpp"
 #include "../client.hpp"
 #include "../game_time.hpp"
+#include "../string_util.hpp"
 #include "../fonts.hpp"
 
 #include "time_display.hpp"
@@ -56,8 +57,8 @@ TimeDisplay::draw (DrawingContext& gc)
         time_string = GameTime::ticks_to_realtime_string(time_value);
       else
         {
-          //// time_value = server->get_world()->get_time_passed();
-          //// time_string = CL_String::to(time_value);
+          time_value = server->get_world()->get_time_passed();
+          time_string = StringUtil::to_string(time_value);
         }
 
       gc.print_right(font, static_cast<float>(Display::get_width() - 30),

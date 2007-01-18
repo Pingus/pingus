@@ -244,6 +244,7 @@ env.Program('../pingus', [
 'state_sprite.cpp', 
 'story_screen.cpp', 
 'string_format.cpp',
+'string_util.cpp',
 'math/origin.cpp',
 'math/rect.cpp',
 'system.cpp', 

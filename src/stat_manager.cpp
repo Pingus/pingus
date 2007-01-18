@@ -22,7 +22,7 @@
 #include <fstream>
 #include "system.hpp"
 #include "pingus_error.hpp"
-////#include "xml_file_reader.hpp"
+#include "string_util.hpp"
 #include "stat_manager.hpp"
 
 
@@ -133,24 +133,20 @@ StatManager::save(const std::string& filename)
 bool
 StatManager::get_int(const std::string& name, int& value)
 {
-#if 0
   std::string str;
   if (get_string(name, str))
-    return CL_String::from(str, value);
+    return StringUtil::from_string(str, value);
   else
-#endif
     return false;
 }
 
 bool
 StatManager::get_bool(const std::string& name, bool& value)
 {
-#if 0
   std::string str;
   if (get_string(name, str))
-    return CL_String::from(str, value);
+    return StringUtil::from_string(str, value);
   else
-#endif
     return false;
 }
 
@@ -179,18 +175,14 @@ StatManager::set_string(const std::string& name, const std::string& value)
 void
 StatManager::set_int(const std::string& name, int value)
 {
-#if 0
-  stats[name] = CL_String::to(value);
-#endif
+  stats[name] = StringUtil::to_string(value);
   flush();
 }
 
 void
 StatManager::set_bool(const std::string& name, bool value)
 {
-#if 0
-  stats[name] = CL_String::to(value);
-#endif
+  stats[name] = StringUtil::to_string(value);
   flush();
 }
 

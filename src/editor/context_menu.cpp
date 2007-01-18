@@ -22,6 +22,7 @@
 #include "editor_viewport.hpp"
 #include "editor_screen.hpp"
 #include "../gui/gui_manager.hpp"
+#include "../string_util.hpp"
 #include "../fonts.hpp"
 
 namespace Editor {
@@ -122,14 +123,14 @@ namespace Editor {
 					objs[i]->set_modifier(actions[selected_action_offset].parameter);
 					break;
 				case (SET_OWNER) :
-                                  ////objs[i]->set_owner(CL_String::to_int(actions[selected_action_offset].parameter));
+                                  objs[i]->set_owner(StringUtil::to<int>(actions[selected_action_offset].parameter));
 					break;
 				case (SET_DIRECTION) :
 					objs[i]->set_direction(actions[selected_action_offset].parameter);
 					break;
 				case (SET_Z_POS) :
-                                  ////objs[i]->set_pos(Vector3f(objs[i]->get_pos().x, objs[i]->get_pos().y, 
-					////	(float)CL_String::to_int(actions[selected_action_offset].parameter)));
+                                  objs[i]->set_pos(Vector3f(objs[i]->get_pos().x, objs[i]->get_pos().y, 
+                                                            (float)StringUtil::to<int>(actions[selected_action_offset].parameter)));
 					objs[i]->set_orig_pos(objs[i]->get_pos());
 					break;
 				default :

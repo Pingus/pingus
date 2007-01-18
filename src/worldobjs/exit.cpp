@@ -26,6 +26,7 @@
 #include "../pingu.hpp"
 #include "../components/smallmap.hpp"
 #include "../resource.hpp"
+#include "../string_util.hpp"
 #include "exit.hpp"
 
 namespace WorldObjs {
@@ -42,7 +43,7 @@ Exit::Exit(const FileReader& reader)
   // Set default owner ID to 0
   if (owner_id < 0 || owner_id > 3) owner_id = 0;
 
-  flag = Resource::load_sprite("core/misc/flag"); ////+ CL_String::to(owner_id));
+  flag = Resource::load_sprite("core/misc/flag" + StringUtil::to_string(owner_id));
 
   sprite = Resource::load_sprite(desc);
 

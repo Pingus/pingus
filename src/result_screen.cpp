@@ -29,6 +29,7 @@
 #include "fonts.hpp"
 #include "game_session.hpp"
 #include "system.hpp"
+#include "string_util.hpp"
 #include "sound/sound.hpp"
 #include "game_time.hpp"
 #include "result_screen.hpp"
@@ -238,22 +239,20 @@ ResultScreenComponent::draw(DrawingContext& gc)
     }
 #endif
 
-#if 0
   int left_x  = Display::get_width()/2 - 100;
   int right_x = Display::get_width()/2 + 100;
   int y = Display::get_height()/2 + 10;
 
   gc.print_left(Fonts::chalk_normal,  (float)left_x,  (float)y, _("Saved: "));
-  gc.print_right(Fonts::chalk_normal, (float)right_x, (float)y, CL_String::to(result.saved)
-                 + "/" + CL_String::to(result.needed));;
+  gc.print_right(Fonts::chalk_normal, (float)right_x, (float)y, StringUtil::to_string(result.saved)
+                 + "/" + StringUtil::to_string(result.needed));;
 
   gc.print_left(Fonts::chalk_normal,  (float)left_x,  (float)(y+=30), _("Died: "));
-  gc.print_right(Fonts::chalk_normal, (float)right_x, (float)y, CL_String::to(result.killed));
+  gc.print_right(Fonts::chalk_normal, (float)right_x, (float)y, StringUtil::to_string(result.killed));
 
 
   gc.print_left(Fonts::chalk_normal,   (float)left_x, (float)(y+=30), _("Time left: "));
   gc.print_right(Fonts::chalk_normal, (float)right_x, (float)y, time_str);
-#endif
 }
 
 ResultScreen::ResultScreen(Result arg_result)

@@ -26,6 +26,7 @@
 #include "../display/drawing_context.hpp"
 #include "../gui/display.hpp"
 #include "../fonts.hpp"
+#include "../string_util.hpp"
 #include "../math/vector3f.hpp"
 
 
@@ -145,10 +146,8 @@ VerticalActionButton::draw (DrawingContext& gc)
     }
   else
     {
-#if 0
-      std::string str = CL_String::to(action_holder->get_available(name));
+      std::string str = StringUtil::to_string(action_holder->get_available(name));
       gc.print_center(myfont, (float)x_pos + 46, (float)y_pos + 5, str);
-#endif
     }
 }
 

@@ -24,7 +24,7 @@
 
 
 Cursor::Cursor(const std::string& ident)
-//  : sprite(Resource::load_sprite(ident))
+  : sprite(Resource::load_sprite(ident))
 {
 }
 
@@ -41,9 +41,9 @@ Cursor::update (float delta)
 void
 Cursor::on_event()
 {
-  ////const Input::Pointer* pointer = Input::Controller::get_current()->get_pointer();
-  //  sprite.draw(pointer->get_x_pos (),
-  //              pointer->get_y_pos ());
+  int x,y;
+  SDL_GetMouseState(&x, &y);
+  sprite.draw(x, y, Display::get_screen());
 }
 
 

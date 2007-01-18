@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "math/vector3f.hpp"
+#include "string_util.hpp"
 #include "pingu.hpp"
 #include "resource.hpp"
 #include "capture_rectangle.hpp"
@@ -101,7 +102,7 @@ CaptureRectangle::set_pingu (Pingu* p)
       if (maintainer_mode)
         {
           action_str += " Id: ";
-          ////action_str += CL_String::to(pingu->get_id());
+          action_str += StringUtil::to_string(pingu->get_id());
         }
     }
 }
