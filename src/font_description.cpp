@@ -23,37 +23,25 @@
 **  02111-1307, USA.
 */
 
-#ifndef HEADER_FONT_HPP
-#define HEADER_FONT_HPP
+#include "pingus_error.hpp"
+#include "file_reader.hpp"
+#include "font_description.hpp"
 
-#include <string>
-#include "SDL.h"
-#include "math/origin.hpp"
-#include "math/rect.hpp"
-#include "math/size.hpp"
-#include "shared_ptr.hpp"
-
-class FontImpl;
-class FontDescription;
-
-/** */
-class Font
+FontDescription::FontDescription(const std::string& filename)
 {
-public:
-  Font();
-  Font(const FontDescription& desc);
+  FileReader reader = FileReader::parse(filename);
 
-  void draw(int, int, const std::string& text, SDL_Surface* target = 0);
-  void set_alignment(Origin origin);
-  int get_height();
-  int get_width(char);
-  Size get_size(const std::string& str);
-  Rect bounding_rect(int , int, const std::string& str) const;
-
-private:
-  SharedPtr<FontImpl> impl;
-};
-
-#endif
+  if (reader.get_name() != "pingus-font")
+    {
+      PingusError::raise("FontDescription: not a pingus-font file");
+    }
+  else
+    {
+      reader.read_string("image",        image);
+      reader.read_string("characters",   characters);
+      reader.read_int("space-length",    space_length);
+      reader.read_int("alpha-threshold", alpha_threshold);
+    }
+}
 
 /* EOF */

@@ -140,6 +140,7 @@ env.Program('../pingus', [
 'sexpr_file_reader.cpp', 
 'fonts.cpp',
 'font.cpp',
+'font_description.cpp',
 'sprite.cpp',
 'fps_counter.cpp', 
 'game_session.cpp', 

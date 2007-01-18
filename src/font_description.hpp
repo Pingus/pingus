@@ -23,35 +23,23 @@
 **  02111-1307, USA.
 */
 
-#ifndef HEADER_FONT_HPP
-#define HEADER_FONT_HPP
-
-#include <string>
-#include "SDL.h"
-#include "math/origin.hpp"
-#include "math/rect.hpp"
-#include "math/size.hpp"
-#include "shared_ptr.hpp"
-
-class FontImpl;
-class FontDescription;
+#ifndef HEADER_FONT_DESCRIPTION_HPP
+#define HEADER_FONT_DESCRIPTION_HPP
 
 /** */
-class Font
+class FontDescription
 {
 public:
-  Font();
-  Font(const FontDescription& desc);
+  /** Image file from which the basic surface is loaded */
+  std::string image;
 
-  void draw(int, int, const std::string& text, SDL_Surface* target = 0);
-  void set_alignment(Origin origin);
-  int get_height();
-  int get_width(char);
-  Size get_size(const std::string& str);
-  Rect bounding_rect(int , int, const std::string& str) const;
+  int space_length; 
+  int alpha_threshold;
 
-private:
-  SharedPtr<FontImpl> impl;
+  /** Characters in the font image */
+  std::string characters;
+
+  FontDescription(const std::string& filename);
 };
 
 #endif

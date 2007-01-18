@@ -107,20 +107,29 @@ public:
 
   bool read_string(const char* name, std::string& v) const 
   {
+    lisp::Lisp* sub = get_subsection(name);
+    if (sub)
+      {
+        v = "";
+        for(size_t i = 1; i < sub->get_list_size(); ++i)
+          {
+            lisp::Lisp* item = sub->get_list_elem(i);
+            if (item->get_type() == lisp::Lisp::TYPE_STRING)
+              {
+                v += item->get_string();
+              }
+            else if (item->get_type() == lisp::Lisp::TYPE_SYMBOL)
+              {
+                v += item->get_symbol();
+              }
+          }
+      }
+
     // FIXME: add multiline reading here
     lisp::Lisp* item = get_subsection_item(name);
     if (item)
       {
-        if (item->get_type() == lisp::Lisp::TYPE_STRING)
-          {
-            v = item->get_string();
-            return true;
-          }
-        else if (item->get_type() == lisp::Lisp::TYPE_SYMBOL)
-          {
-            v = item->get_symbol();
-            return true;
-          }
+
       }
     return false;
   }
@@ -147,8 +156,6 @@ public:
         v.height = sub->get_list_elem(2)->get_int();
         return true;
       }    
-    std::cout << "Reading size: " << v.width << " " << v.height << std::endl;
-
     return false;
   }
 

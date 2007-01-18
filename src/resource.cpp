@@ -28,6 +28,7 @@
 #include "system.hpp"
 #include "path_manager.hpp"
 #include "globals.hpp"
+#include "font_description.hpp"
 #include "resource.hpp"
 #include "blitter.hpp"
 #include "debug.hpp"
@@ -312,8 +313,9 @@ Resource::load_from_source (const ResDescriptor& res_desc)
 Font
 Resource::load_font(const std::string& res_name)
 {
-  ////return Font(res_name, &resmgr);
-  return Font("data/images/" + res_name + ".png");
+  FontDescription desc("data/images/" + res_name + ".font");
+  //("data/images/fonts/chalk_large-iso-8859-1.font");
+  return Font(desc);
 }
 
 void

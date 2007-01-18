@@ -28,6 +28,7 @@
 #include "SDL.h"
 #include "SDL_image.h"
 #include "font.hpp"
+#include "font_description.hpp"
 
 static bool vline_empty(SDL_Surface* surface, int x, Uint8 threshold)
 {
@@ -49,45 +50,48 @@ class FontImpl
 public:
   SDL_Surface* surface;
   SDL_Rect chrs[256];
-  int spacing;
+  int space_length;
   
-  FontImpl(const std::string& name)
+  FontImpl(const FontDescription& desc)
     : surface(0),
-      spacing(20)
+      space_length(desc.space_length)
   {
+    std::cout << "desc.image: " << desc.image << std::endl;
+    std::cout << "desc.space: " << desc.space_length << std::endl;
+    std::cout << "Characters: " << desc.characters << std::endl;
+
     for(int i = 0; i < 256; ++i)
       chrs[i].x = chrs[i].y = chrs[i].w = chrs[i].h = 0;
 
-    std::cout << "Font: Trying to load: " << name << std::endl;
-    surface = IMG_Load("data/images/fonts/chalk_large-iso-8859-1.png"); //name.c_str());
+    std::cout << "Font: Trying to load: " << desc.image << std::endl;
+    surface = IMG_Load(desc.image.c_str());
     assert(surface);
 
     SDL_LockSurface(surface);
     
-    std::string characters = "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßàáâãäåæçèéêëìíîïğñòóôõö÷øùúûüışÿ";
     std::cout << "Surface: " << surface->w << std::endl;
     int first = -1; // -1 signals no character start found yet
     int chr = 0;
     for(int x = 0; x < surface->w; ++x)
       {
         ///std::cout << x << " " << surface->w << std::endl;
-        if (vline_empty(surface, x, 0))
+        if (vline_empty(surface, x, desc.alpha_threshold))
           {
             if (first != -1) // skipping empty space
               {
-                if (chr < int(characters.size()))
+                if (chr < int(desc.characters.size()))
                   {
-                    std::cout << chr << " " << characters[chr]
+                    std::cout << chr << " " << desc.characters[chr]
                               << " Empty: " << first << " - " << x << std::endl;
 
-                    SDL_Rect& rect = chrs[static_cast<unsigned char>(characters[chr])];
+                    SDL_Rect& rect = chrs[static_cast<unsigned char>(desc.characters[chr])];
                     rect.x = first;
                     rect.y = 0;
                     rect.w = x - first;
                     rect.h = surface->h;
                   }
                 else
-                  std::cout << "Error: Found more characters then are mapped" << std::endl;
+                  std::cout << "Error: Found more desc.characters then are mapped" << std::endl;
 
                 chr += 1;
                 
@@ -100,7 +104,7 @@ public:
               first = x;
           }
       }
-    std::cout << "Font: Found " << chr << " expected "  << characters.size() << std::endl;
+    std::cout << "Font: Found " << chr << " expected "  << desc.characters.size() << std::endl;
 
     SDL_UnlockSurface(surface);
     std::cout << "Font created successfully" << std::endl;
@@ -120,7 +124,7 @@ public:
       {
         if (text[i] == ' ')
           {
-            dstrect.x += spacing;
+            dstrect.x += space_length;
           }
         else
           {
@@ -132,7 +136,7 @@ public:
               }
             else
               {
-                std::cout << "Font: character " << static_cast<unsigned char>(text[i]) << " missing in font" << std::endl;
+                //std::cout << "Font: character " << static_cast<unsigned char>(text[i]) << " missing in font" << std::endl;
               }
           }
       }
@@ -169,8 +173,8 @@ Font::Font()
 {
 }
 
-Font::Font(const std::string& name)
-  : impl(new FontImpl(name))
+Font::Font(const FontDescription& desc)
+  : impl(new FontImpl(desc))
 {
 }
 
