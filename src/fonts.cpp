@@ -22,7 +22,8 @@
 
 namespace Fonts {
 
-std::string encoding("ISO-8859-1");
+////std::string encoding("ISO-8859-1");
+std::string encoding("iso-8859-1");
 
 Font chalk_large;
 Font chalk_normal;
@@ -42,20 +43,20 @@ Font lcd;
 void
 init ()
 {
-  chalk_large  = Resource::load_font("fonts/chalk_large" + std::string(".") + encoding); 
-  chalk_normal = Resource::load_font("fonts/chalk_normal" + std::string(".") + encoding);
-  chalk_small  = Resource::load_font("fonts/chalk_small" + std::string(".") + encoding);
+  chalk_large  = Resource::load_font("fonts/chalk_large" + std::string("-") + encoding); 
+  chalk_normal = Resource::load_font("fonts/chalk_normal" + std::string("-") + encoding);
+  chalk_small  = Resource::load_font("fonts/chalk_small" + std::string("-") + encoding);
 
-  pingus_small = Resource::load_font("fonts/pingus_small" + std::string(".") + encoding);
-  pingus_small_fix_num = Resource::load_font("fonts/pingus_small_fix_num" + std::string(".") + encoding);
-  pingus_large = Resource::load_font("fonts/pingus" + std::string(".") + encoding);
+  pingus_small = Resource::load_font("fonts/pingus_small" + std::string("-") + encoding);
+  pingus_small_fix_num = Resource::load_font("fonts/pingus_small_fix_num" + std::string("-") + encoding);
+  pingus_large = Resource::load_font("fonts/pingus" + std::string("-") + encoding);
 
-  courier_small = Resource::load_font("fonts/courier_small" + std::string(".") + encoding);
-  xterm        = Resource::load_font("fonts/courier_small" + std::string(".") + encoding);
-  smallfont    = Resource::load_font("fonts/courier_small" + std::string(".") + encoding); //PingusResource::load_font("Fonts/smallfont","fonts");
-  smallfont_h  = Resource::load_font("fonts/courier_small" + std::string(".") + encoding); // PingusResource::load_font("Fonts/smallfont_h","fonts");
+  courier_small = Resource::load_font("fonts/courier_small" + std::string("-") + encoding);
+  xterm        = Resource::load_font("fonts/courier_small" + std::string("-") + encoding);
+  smallfont    = Resource::load_font("fonts/courier_small" + std::string("-") + encoding); //PingusResource::load_font("Fonts/smallfont","fonts");
+  smallfont_h  = Resource::load_font("fonts/courier_small" + std::string("-") + encoding); // PingusResource::load_font("Fonts/smallfont_h","fonts");
 
-  lcd          = Resource::load_font("fonts/courier_small" + std::string(".") + encoding); // PingusResource::load_font("Fonts/numbers", "fonts");
+  lcd          = Resource::load_font("fonts/courier_small" + std::string("-") + encoding); // PingusResource::load_font("Fonts/numbers", "fonts");
 }
 
 void deinit () 

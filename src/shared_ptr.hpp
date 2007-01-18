@@ -44,6 +44,8 @@ public:
   T const* operator->() const { assert(ptr); return ptr; }
 
   T* get() const { return ptr; }
+
+  operator bool() const { return ptr; }
 };
 
 #endif

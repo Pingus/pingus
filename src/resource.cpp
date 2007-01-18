@@ -313,7 +313,7 @@ Font
 Resource::load_font(const std::string& res_name)
 {
   ////return Font(res_name, &resmgr);
-  return Font();
+  return Font("data/images/" + res_name + ".png");
 }
 
 void
