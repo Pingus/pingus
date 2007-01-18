@@ -21,8 +21,9 @@
 #include <stdio.h>
 #include <iostream>
 #include "../globals.hpp"
+#include "../math/rect.hpp"
+#include "../math/color.hpp"
 #include "display.hpp"
-
 
 std::list<DisplayHook*> Display::display_hooks;
 SDL_Surface* Display::screen;
@@ -108,6 +109,35 @@ void
 Display::clear()
 {
   SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
+}
+
+void
+Display::draw_rect(const Rect&, const Color&)
+{
+  
+}
+
+void
+Display::fill_rect(const Rect& rect, const Color& color)
+{
+  SDL_Rect srcrect;
+
+  srcrect.x = rect.left;
+  srcrect.y = rect.right;
+  srcrect.w = rect.get_width();
+  srcrect.h = rect.get_height();
+
+  SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, color.r, color.g, color.b));
+}
+
+void
+Display::push_cliprect(const Rect&)
+{
+}
+
+void
+Display::pop_cliprect()
+{
 }
 
 /* EOF */

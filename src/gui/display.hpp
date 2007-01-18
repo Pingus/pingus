@@ -24,7 +24,8 @@
 #include "SDL.h"
 #include <list>
 
-
+class Rect;
+class Color;
 class DisplayHook;
 
 /** A flip display hook can be used to attach an event to a
@@ -55,6 +56,8 @@ private:
   static SDL_Surface* screen;
 public:
   static void draw_rect(int x1, int y1, int x2, int y2, float r, float g, float b, float a);
+  static void draw_rect(const Rect&, const Color&);
+  static void fill_rect(const Rect&, const Color&);
 
   static void flip_display(bool sync=false);
 
@@ -69,6 +72,9 @@ public:
   static void clear();
 
   static SDL_Surface* get_screen() { return screen; }
+
+  static void push_cliprect(const Rect&);
+  static void pop_cliprect();
 private:
   Display ();
   Display (const Display&);

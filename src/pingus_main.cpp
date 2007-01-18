@@ -736,12 +736,13 @@ PingusMain::start_game ()
 
       if (successfull)
         {
-          ////ScreenManager::instance()->push_screen
-          ////(new StartScreen(PLFResMgr::load_plf_from_filename(levelfile)),
-          ////true);
           ScreenManager::instance()->push_screen
-            (new PingusGameSession(PLFResMgr::load_plf_from_filename(levelfile), false),
-           true);
+          (new StartScreen(PLFResMgr::load_plf_from_filename(levelfile)),
+          true);
+          if (0)
+            ScreenManager::instance()->push_screen
+              (new PingusGameSession(PLFResMgr::load_plf_from_filename(levelfile), false),
+               true);
         }
     }
   else if (!demo_file.empty()) // start a demo
@@ -816,13 +817,6 @@ PingusMain::main(int argc, char** argv)
 
       init_sdl();
       init_pingus();
-
-      // Avoid uglyness on window opening
-      if (!render_preview)
-        {
-          ////CL_Display::clear();
-          ////CL_Display::flip();
-        }
 
       if (blitter_test)
         {

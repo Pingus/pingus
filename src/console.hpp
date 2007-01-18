@@ -23,7 +23,7 @@
 #include <string>
 #include <iostream>
 #include "gui/display.hpp"
-
+#include "font.hpp"
 
 class ConsoleBuffer :
   public std::streambuf
@@ -62,7 +62,7 @@ private:
   ConsoleBuffer streambuf;
 
 public:
-  ////CL_Font font;
+  Font font;
   bool is_init;
   unsigned int current_pos;
 

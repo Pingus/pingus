@@ -80,7 +80,6 @@ SmallMap::~SmallMap()
 void
 SmallMap::draw (DrawingContext& gc)
 {
-#if 0
   // FIXME: This is potentially dangerous, since we don't know how
   // long 'gc' will be alive. Should use a DrawingContext for caching.
   gc_ptr = &gc;
@@ -115,7 +114,6 @@ SmallMap::draw (DrawingContext& gc)
     }
 
   gc_ptr = 0;
-#endif
 }
 
 void

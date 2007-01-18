@@ -25,7 +25,7 @@
 
 SmallMapImage::SmallMapImage(Server* s, int width, int height)
   : server(s),
-    ////canvas(width, height, width*4, CL_PixelFormat::rgba8888),
+    canvas(width, height),
     update_count(0),
     colmap_serial(0)
 {
@@ -68,7 +68,6 @@ SmallMapImage::get_surface ()
 void
 SmallMapImage::update_surface()
 {
-#if 0
   unsigned char* buffer;
   unsigned char* cbuffer;
   unsigned char  current_pixel;
@@ -104,7 +103,7 @@ SmallMapImage::update_surface()
 	  switch (current_pixel)
             {
             case Groundtype::GP_NOTHING:
-              if (!CL_Endian::is_system_big())
+              if (0) //!CL_Endian::is_system_big())
               {
                 cbuffer[i + 0] = alpha;
                 cbuffer[i + 1] = 0;
@@ -121,7 +120,7 @@ SmallMapImage::update_surface()
               break;
 
             case Groundtype::GP_BRIDGE:
-              if (!CL_Endian::is_system_big())
+              if (0) //!CL_Endian::is_system_big())
               {
                 cbuffer[i + 0] = 255;
                 cbuffer[i + 1] = 100;
@@ -139,7 +138,7 @@ SmallMapImage::update_surface()
 
             case Groundtype::GP_WATER:
             case Groundtype::GP_LAVA:
-              if (!CL_Endian::is_system_big())
+              if (0) //!CL_Endian::is_system_big())
               {
                 cbuffer[i + 0] = 255;
                 cbuffer[i + 1] = 200;
@@ -176,7 +175,7 @@ SmallMapImage::update_surface()
 #endif
 
             case Groundtype::GP_SOLID:
-              if (!CL_Endian::is_system_big())
+              if (0)//!CL_Endian::is_system_big())
               {
                 cbuffer[i + 0] = 255;
                 cbuffer[i + 1] = 100;
@@ -193,7 +192,7 @@ SmallMapImage::update_surface()
               break;
 
             default:
-              if (!CL_Endian::is_system_big())
+              if (0)///!CL_Endian::is_system_big())
               {
                 cbuffer[i + 0] = 255;
                 cbuffer[i + 1] = 200;
@@ -212,10 +211,7 @@ SmallMapImage::update_surface()
 	}
     }
   canvas.unlock();
-	CL_SpriteDescription desc;
-	desc.add_frame(canvas);
-  sur = CL_Sprite(desc);
-#endif
+  sur = Sprite(canvas);
 }
 
 

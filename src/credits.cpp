@@ -68,9 +68,6 @@ Credits::Credits()
 
   gui_manager->add(new CreditsOkButton(this), true);
 
-  ////background.set_alignment(origin_center);
-  ////pingu.set_alignment(origin_center);
-
   font       = Fonts::chalk_normal;
   font_small = Fonts::chalk_large;
 
@@ -270,8 +267,8 @@ Credits::draw_background (DrawingContext& gc)
                 static_cast<float>(Display::get_height()/2 + 110),
 								_("Skip"));
 
-  ////Display::push_cliprect(Rect(0, static_cast<int>(gc.get_height()/2-225),
-  ////                        600, static_cast<int>(gc.get_height()/2+200)));
+  Display::push_cliprect(Rect(0, static_cast<int>(gc.get_height()/2-225),
+                              600, static_cast<int>(gc.get_height()/2+200)));
   yof = 0;
 
   for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); ++i)
@@ -294,7 +291,7 @@ Credits::draw_background (DrawingContext& gc)
 	  break;
 	}
     }
-  ////Display::pop_cliprect();
+  Display::pop_cliprect();
 }
 
 void
