@@ -20,12 +20,6 @@
 #include <config.h>
 #include <stdio.h>
 #include <assert.h>
-#include <ClanLib/Core/System/clanstring.h>
-#include <ClanLib/Core/IOData/cl_endian.h>
-#include <ClanLib/Core/IOData/datatypes.h>
-#include <ClanLib/Display/palette.h>
-#include <ClanLib/Display/pixel_buffer.h>
-#include <ClanLib/Display/pixel_format.h>
 
 #include "string_util.hpp"
 #include "pingus_error.hpp"
@@ -38,13 +32,7 @@
 /* Headers needed for i18n / gettext */
 #include "gettext.h"
 
-void
-Blitter::put_surface(PixelBuffer canvas, const CL_Surface& sur,
-		     int x, int y)
-{
-  Blitter::put_surface(canvas, sur.get_pixeldata(), x, y);
-}
-
+#if 0
 void
 Blitter::put_surface(PixelBuffer canvas, PixelBuffer provider,
 		     int x, int y)
@@ -418,12 +406,6 @@ Blitter::clear_canvas(PixelBuffer canvas, Color color)
 }
 
 PixelBuffer
-Blitter::create_canvas(const CL_Surface& sur)
-{
-  return create_canvas(sur.get_pixeldata());
-}
-
-PixelBuffer
 Blitter::create_canvas(PixelBuffer prov)
 {
   PixelBuffer canvas(prov.get_width(), prov.get_height(), prov.get_width()*4, CL_PixelFormat::rgba8888);
@@ -621,6 +603,7 @@ Blitter::scale_surface_to_canvas(const CL_Surface& sur, int width, int height)
 {
   return Blitter::scale_surface_to_canvas(sur.get_pixeldata(), width, height);
 }
+#endif
 
 /** Flip a surface horizontal */
 PixelBuffer

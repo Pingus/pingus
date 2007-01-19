@@ -91,7 +91,7 @@ env.Program('../pingus', [
 'actions/teleported.cpp', 
 'actions/waiter.cpp', 
 'actions/walker.cpp', 
-# 'blitter.cpp',
+'blitter.cpp',
 # 'blitter_test.cpp', 
 'capture_rectangle.cpp', 
 'cheat.cpp', 

@@ -33,11 +33,6 @@ Groundpiece::Groundpiece(const FileReader& reader)
   
   gptype = Groundtype::GP_GROUND;
   reader.read_enum("type", gptype, &Groundtype::string_to_type);
-
-  std::cout << "Groundpiece: " << desc.res_name << std::endl;
-
-  // FIXME: we don't need to load surfaces here, providers would be
-  // FIXME: enough and should be faster
 }
 
 void

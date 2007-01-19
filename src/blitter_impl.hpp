@@ -21,10 +21,8 @@
 #define HEADER_PINGUS_BLITTER_IMPL_HXX
 
 #include <iostream>
-#include <ClanLib/Display/pixel_buffer.h>
-#include <ClanLib/Display/surface.h>
+#include "pixel_buffer.hpp"
 #include "pingus.hpp"
-
 
 /** A collection of helper functions for the blitter class */
 namespace BlitterImpl
@@ -181,6 +179,9 @@ template<class TransF>
 inline
 PixelBuffer modify(PixelBuffer prov, const TransF&)
 {
+  std::cout << "Blitter::modify: " << prov.get_surface()->format->BytesPerPixel << std::endl;
+  return prov;
+#if 0
   if (prov.get_format().get_type() ==  pixelformat_index)
     {
       CL_PixelFormat format(8, 0, 0, 0, 0, 
@@ -188,9 +189,9 @@ PixelBuffer modify(PixelBuffer prov, const TransF&)
                             pixelformat_index);
       
       PixelBuffer canvas(TransF::get_width (prov.get_width(), prov.get_height()), 
-                            TransF::get_height(prov.get_width(), prov.get_height()),
-                            TransF::get_width (prov.get_width(), prov.get_height()),
-                            format, prov.get_palette());
+                         TransF::get_height(prov.get_width(), prov.get_height()),
+                         TransF::get_width (prov.get_width(), prov.get_height()),
+                         format, prov.get_palette());
 
       prov.lock ();
       canvas.lock ();
@@ -217,7 +218,7 @@ PixelBuffer modify(PixelBuffer prov, const TransF&)
       int pwidth  = prov.get_width();
       int pheight = prov.get_height();
 			
-			PixelBuffer canvas(prov.get_height(), pwidth, pheight*4, CL_PixelFormat::rgba8888);
+      PixelBuffer canvas(prov.get_height(), pwidth, pheight*4, CL_PixelFormat::rgba8888);
 
       prov.lock();
       canvas.lock();
@@ -236,6 +237,7 @@ PixelBuffer modify(PixelBuffer prov, const TransF&)
 
       return canvas;
     }
+#endif
 }
 
 } // namespace BlitterImpl

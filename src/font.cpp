@@ -93,7 +93,6 @@ public:
                   std::cout << "Error: Found more desc.characters then are mapped" << std::endl;
 
                 idx += 1;
-                
                 first = -1;
               }
           }
@@ -104,10 +103,10 @@ public:
           }
       }
     
-    if (idx != int(desc.characters.size()))
+    if (idx-1 != int(desc.characters.size())) // FIXME: is that -1 correct?!
       {
         std::cout << "Font: " << desc.image << "\n"
-                  << "  Error:  " << idx << " expected "  << desc.characters.size() << "\n"
+                  << "  Error: " << idx-1 << " expected "  << desc.characters.size() << "\n"
                   << "  Format: bpp: " << int(surface->format->BitsPerPixel) << "\n"
                   << "  Size: " << surface->w << "x" << surface->h
           //      << "  RMask: " << hex << surface->format->Rmask << "\n"
@@ -152,7 +151,7 @@ public:
             if (srcrect.w != 0 && srcrect.h != 0)
               {
                 SDL_BlitSurface(surface, &srcrect, target, &dstrect);
-                dstrect.x += srcrect.w + 1;
+                dstrect.x += srcrect.w+1;
               }
             else
               {
@@ -174,16 +173,25 @@ public:
 
   int  get_width(const std::string& text) const
   {
-    // FIXME: Line breaks aren't handled
     int width = 0;
+    int last_width = 0;
     for(std::string::size_type i = 0; i < text.size(); ++i)
       {
         if (text[i] == ' ')
-          width += space_length;
+          {
+            width += space_length;
+          }
+        else if (text[i] == '\n')
+          {
+            last_width = std::max(last_width, width);
+            width = 0;
+          }
         else
-          width += chrs[static_cast<unsigned char>(text[i])].w;
+          {
+            width += chrs[static_cast<unsigned char>(text[i])].w+1;
+          }
       }
-    return width;
+    return std::max(width, last_width);
   }
 
   Size get_size(const std::string& text) const

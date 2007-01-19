@@ -44,7 +44,6 @@ public:
   static CL_Surface load_from_source (const ResDescriptor& res_desc);
   static CL_Surface load_from_cache (const ResDescriptor& res_desc);
   static CL_Surface apply_modifier (const CL_Surface&, const ResDescriptor& res_desc);
-  static PixelBuffer apply_modifier_to_pixelbuffer(PixelBuffer, const ResDescriptor& res_desc);
 
   /** Returns a list of resources for the given section.
       Returns all if blank */
@@ -55,6 +54,7 @@ public:
       Returns all sections if blank */
   static std::vector<std::string> get_sections(const std::string &section = std::string());
 #endif
+  static PixelBuffer apply_modifier_to_pixelbuffer(PixelBuffer, const ResDescriptor& res_desc);
 
 public:
   static void init();

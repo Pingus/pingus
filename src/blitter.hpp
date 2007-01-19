@@ -23,9 +23,7 @@
 #include "pingus.hpp"
 #include "math/color.hpp"
 #include "math/rect.hpp"
-////#include <ClanLib/Display/color.h>
 
-////class CL_Surface;
 class PixelBuffer;
 
 /** A bunch of blitting and creation functions to operate on
@@ -48,10 +46,6 @@ public:
   /** Puts a given surface provider to a given canvas at position x, y. */
   static void put_surface(PixelBuffer target, PixelBuffer source,
 			  int x, int y);
-
-  /** Returns a newly allocated canvas. The canvas contains the same
-      image as the given surface. */
-  ////static PixelBuffer create_canvas(const CL_Surface&);
 
   /** Returns a newly allocated canvas. The canvas contains the same
       image as the given surface provider */

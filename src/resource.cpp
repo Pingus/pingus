@@ -30,6 +30,7 @@
 #include "globals.hpp"
 #include "font_description.hpp"
 #include "resource.hpp"
+#include "res_descriptor.hpp"
 #include "blitter.hpp"
 #include "debug.hpp"
 
@@ -113,6 +114,41 @@ Resource::load_sprite(const ResDescriptor& desc)
   return load_sprite(desc.res_name);
 }
 
+PixelBuffer
+Resource::apply_modifier_to_pixelbuffer(PixelBuffer prov, const ResDescriptor& desc)
+{
+  switch (desc.modifier)
+    {
+    case ResourceModifierNS::ROT0:
+      return prov;
+
+    case ResourceModifierNS::ROT90:
+      return Blitter::rotate_90(prov);
+
+    case ResourceModifierNS::ROT180:
+      return Blitter::rotate_180(prov);
+
+    case ResourceModifierNS::ROT270:
+      return Blitter::rotate_270(prov);
+
+    case ResourceModifierNS::ROT0FLIP:
+      return Blitter::flip_horizontal(prov);
+
+    case ResourceModifierNS::ROT90FLIP:
+      return Blitter::rotate_90_flip(prov);
+
+    case ResourceModifierNS::ROT180FLIP:
+      return Blitter::rotate_180_flip(prov);
+
+    case ResourceModifierNS::ROT270FLIP:
+      return Blitter::rotate_270_flip(prov);
+
+    default:
+      perr << "Resource: Unhandled modifier: " << desc.modifier << std::endl;
+      return prov;
+    }
+}
+
 Sprite
 Resource::load_sprite(const std::string& res_name)
 {
@@ -142,18 +178,7 @@ Resource::load_collision_mask(const std::string& name)
 PixelBuffer
 Resource::load_pixelbuffer(const ResDescriptor& desc_)
 {
-  return PixelBuffer(desc_.res_name);
-#if 0
-  CL_SpriteDescription desc = load_sprite_desc(desc_.res_name);
-
-  if (desc.get_frames().size() == 0)
-    {
-      std::cout << "Error: load_pixelbuffer: " << desc_.res_name << std::endl;
-      assert(0);
-    }
-
-  return apply_modifier_to_pixelbuffer(desc.get_frames().begin()->first, desc_);
-#endif
+  return apply_modifier_to_pixelbuffer(PixelBuffer(desc_.res_name), desc_);
 }
 
 PixelBuffer
@@ -218,42 +243,9 @@ Resource::load_from_cache (const ResDescriptor& res_desc)
       return i->second;
     }
 }
+#endif 
 
-PixelBuffer
-Resource::apply_modifier_to_pixelbuffer(PixelBuffer prov, const ResDescriptor& res_desc)
-{
-  switch (res_desc.modifier)
-    {
-    case ResourceModifierNS::ROT0:
-      return prov;
-
-    case ResourceModifierNS::ROT90:
-      return Blitter::rotate_90(prov);
-
-    case ResourceModifierNS::ROT180:
-      return Blitter::rotate_180(prov);
-
-    case ResourceModifierNS::ROT270:
-      return Blitter::rotate_270(prov);
-
-    case ResourceModifierNS::ROT0FLIP:
-      return Blitter::flip_horizontal(prov);
-
-    case ResourceModifierNS::ROT90FLIP:
-      return Blitter::rotate_90_flip(prov);
-
-    case ResourceModifierNS::ROT180FLIP:
-      return Blitter::rotate_180_flip(prov);
-
-    case ResourceModifierNS::ROT270FLIP:
-      return Blitter::rotate_270_flip(prov);
-
-    default:
-      perr << "Resource: Unhandled modifier: " << res_desc.modifier << std::endl;
-      return prov;
-    }
-}
-
+#if 0 
 CL_Surface
 Resource::apply_modifier (const CL_Surface& surf, const ResDescriptor& res_desc)
 {
