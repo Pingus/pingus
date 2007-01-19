@@ -167,13 +167,12 @@ LevelObj::refresh_sprite()
 		}
 		else		// No stretch involved
 			pb = Resource::load_pixelbuffer(desc);
-#if 0                
-		SpriteDescription sprite_desc;
-		sprite_desc.add_frame(pb);
-		sprite = Sprite(sprite_desc);
 
-		sprite.set_alignment(origin, x, y);
-#endif 
+		////SpriteDescription sprite_desc;
+		////sprite_desc.add_frame(pb);
+		////sprite = Sprite(sprite_desc);
+                sprite = Sprite(pb);
+		////sprite.set_alignment(origin, x, y);
 	}
 	set_translated_pos();
 }

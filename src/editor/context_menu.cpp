@@ -78,7 +78,7 @@ namespace Editor {
 		{
 			// Draw the box
 			gc.draw_fillrect(pos.x, pos.y, pos.x + width, pos.y + total_height, 
-				Color(211,211,211,100));
+                                         Color(211,211,211,100));
 			// Draw the border
 			gc.draw_rect(pos.x, pos.y, pos.x + width, pos.y + total_height, 
                                      Color(0,0,0));

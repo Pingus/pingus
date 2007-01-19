@@ -148,14 +148,13 @@ PanelButtonGroundpiece::PanelButtonGroundpiece(EditorPanel *p) :
 void
 PanelButtonGroundpiece::on_primary_button_click(int x, int y)
 {
-#if 0
 	PanelButton::on_primary_button_click(x, y);
 
 	panel->get_combobox(1)->clear();
 	panel->get_combobox(1)->set_label("Type");
 	panel->get_combobox(2)->set_label("Subtype");
 	panel->get_combobox(3)->set_label("Groundpiece");
-	std::vector<std::string> groundpieces = Resource::get_sections("groundpieces");
+	std::vector<std::string> groundpieces; //// = Resource::get_sections("groundpieces");
 	for (unsigned i = 0; i < groundpieces.size(); i++)
 	{
 		// We add each ComboItem to the first box:
@@ -165,14 +164,12 @@ PanelButtonGroundpiece::on_primary_button_click(int x, int y)
 			groundpieces[i]));
 	}
 	panel->get_combobox(1)->set_enabled(true);
-#endif
 }
 
 // Populate the other comboboxes with the available resources.
 void
 PanelButtonGroundpiece::combobox_changed(int i, const std::string &value)
 {
-#if 0
 	std::string section;
 	if (i == 1)
 	{
@@ -181,8 +178,8 @@ PanelButtonGroundpiece::combobox_changed(int i, const std::string &value)
 		panel->get_combobox(2)->set_enabled(true);
 		panel->get_combobox(3)->set_enabled(false);
 
-		std::vector<std::string> groundpieces = Resource::get_sections(
-			panel->get_combobox(1)->get_selected_item()->get_displayed_string());
+		std::vector<std::string> groundpieces;//// = Resource::get_sections(
+                ////panel->get_combobox(1)->get_selected_item()->get_displayed_string());
 		for (std::vector<std::string>::const_iterator it = groundpieces.begin();
 			it != groundpieces.end(); it++)
 			panel->get_combobox(2)->add(new GUI::ComboItem(value + "/" + (*it), (*it)));		
@@ -193,8 +190,8 @@ PanelButtonGroundpiece::combobox_changed(int i, const std::string &value)
 		panel->get_combobox(3)->clear();
 		panel->get_combobox(3)->set_enabled(true);
 
-		std::vector<std::string> groundpieces = Resource::get_resources(
-			"sprite", value);
+		std::vector<std::string> groundpieces;//// = Resource::get_resources(
+		////	"sprite", value);
 		for (std::vector<std::string>::const_iterator it = groundpieces.begin();
 			it != groundpieces.end(); it++)
 		{
@@ -214,7 +211,6 @@ PanelButtonGroundpiece::combobox_changed(int i, const std::string &value)
 		obj->set_type(panel->get_combobox(1)->get_selected_item()->get_displayed_string());
 		panel->get_screen()->add_object(obj);
 	}
-#endif
 }
 
 PanelButtonHead::PanelButtonHead(EditorPanel *p)

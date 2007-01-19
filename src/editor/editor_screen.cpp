@@ -142,8 +142,7 @@ bool
 EditorScreen::draw(DrawingContext &gc)
 {
 	// Black out screen
-	gc.draw_fillrect(0, 0, (float)Display::get_width(), 
-                         (float)Display::get_height(), Color(0,0,0), -10000);
+	gc.fill_screen(Color(0,0,0));
 	gui_manager->draw(gc);
 
 	// FIXME: Remove this warning

@@ -126,13 +126,12 @@ bool XMLLevel::save_level(const std::string& filename)
 // Load an existing level from a file
 void XMLLevel::load_level(const std::string& filename)
 {
-#if 0
 	if (impl)
 		delete impl;
 	impl = new LevelImpl();
 
 	// Load the level from the file - we don't care what it's res_name is.
-	XMLPingusLevel existing_level("", filename);
+	PingusLevel existing_level("", filename);
 	
 	// Assign all of the level information to our LevelImpl
 	impl->levelname = existing_level.get_levelname();
@@ -150,7 +149,7 @@ void XMLLevel::load_level(const std::string& filename)
 	// Temporary objects
 	unsigned attribs;
 	Vector3f p;
-	Colorf tmp_color;
+	Color tmp_color;
 	ResDescriptor desc;
 	std::string tmp_str;
 	int tmp_int;
@@ -245,7 +244,6 @@ void XMLLevel::load_level(const std::string& filename)
 
 	// Sort by Z coordinate
 	impl->sort_objs();
-#endif
 }
 
 void
