@@ -38,17 +38,14 @@ MultiLineText::set_font(Font f)
 void
 MultiLineText::set_text(const std::string& str, int text_width)
 {
-#ifdef CLANLIB_0_6
   int last_pos;
-
-  assert(font);
 
   for(unsigned int j=0; j < str.length(); )
     {
       last_pos = str.length();
 
       for(unsigned int i=j; /* i < (text_width + j) */
-	  font->get_text_width(str.substr(j, i-j).c_str()) < text_width;
+	  font.get_size(str.substr(j, i-j).c_str()).width < text_width;
 	  ++i)
 	{
 	  if (i >= str.length())
@@ -78,10 +75,9 @@ MultiLineText::set_text(const std::string& str, int text_width)
   */
   width = 0;
   for(std::vector<std::string>::iterator i = text.begin(); i != text.end(); ++i)
-	  width = Math::max(width, font->get_text_width(i->c_str()));
+	  width = Math::max(width, font.get_size(i->c_str()).width);
 
-  height = text.size() * font->get_height();
-#endif
+  height = text.size() * font.get_height();
 }
 
 void
@@ -120,7 +116,6 @@ MultiLineText::print_center(int x_pos, int y_pos)
   int y_inc = 0;
 
   Font myfont = font;
-  myfont.set_alignment(origin_top_center);
 
   for(std::vector<std::string>::iterator i = text.begin();
       i != text.end();

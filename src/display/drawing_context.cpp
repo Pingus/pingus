@@ -38,22 +38,23 @@ class FontDrawingRequest : public DrawingRequest
 {
 private:
   Font font;
+  Origin origin;
   std::string text;
   float x;
   float y;
 public:
-  FontDrawingRequest(Font font_, Origin origin, const Vector3f& pos, const std::string& text_, float z)
+  FontDrawingRequest(Font font_, Origin origin_, const Vector3f& pos, const std::string& text_, float z)
     : DrawingRequest(Vector3f(pos.x, pos.y, z)),
       font(font_), 
+      origin(origin_),
       text(text_)
   {
-    font.set_alignment(origin);
   }
 
   virtual ~FontDrawingRequest() {}
 
   void draw(SDL_Surface* target) {
-    font.draw(static_cast<int>(pos.x), static_cast<int>(pos.y), text, target);
+    font.draw(origin, static_cast<int>(pos.x), static_cast<int>(pos.y), text, target);
   }
 };
 
@@ -133,7 +134,7 @@ public:
   {
     if (filled)
       {
-      Display::fill_rect(rect, color);
+        Display::fill_rect(rect, color);
       }
     else
       {

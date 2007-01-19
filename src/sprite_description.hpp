@@ -65,7 +65,7 @@ public:
     reader.read_vector2i("offset", offset);
 
     reader.read_enum("origin", origin, string2origin);
-
+    
     reader.read_string("image-file",  filename);
     filename = "data/data/" + filename;// FIXME: Hack
     reader.read_size("image-array", array);

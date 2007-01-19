@@ -43,11 +43,13 @@ public:
   Font();
   Font(const FontDescription& desc);
 
-  void draw(int, int, const std::string& text, SDL_Surface* target = 0);
-  void set_alignment(Origin origin);
-  int get_height();
-  int get_width(char);
-  Size get_size(const std::string& str);
+  void draw(int x, int y, const std::string& text, SDL_Surface* target = 0);
+  void draw(Origin origin, int x, int y, const std::string& text, SDL_Surface* target = 0);
+
+  int  get_height() const;
+  int  get_width(char) const;
+  int  get_width(const std::string& ) const;
+  Size get_size(const std::string& str) const;
   Rect bounding_rect(int , int, const std::string& str) const;
 
 private:

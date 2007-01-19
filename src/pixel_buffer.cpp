@@ -39,10 +39,11 @@ PixelBuffer::PixelBuffer(const std::string& name_)
   str << "data/images/" << name_ << ".png";
   std::string name = str.str();
   surface = IMG_Load(name.c_str());
-  if (surface)
-    std::cout << "Loaded pixelbuffer: " << name << ": " << surface->w << "x" << surface->h << std::endl;
-  else
+  if (!surface)
     std::cout << "XXXXXX Failed to load: " << name << std::endl;
+  ///else
+  //std::cout << "Loaded pixelbuffer: " << name << ": " << surface->w << "x" << surface->h << std::endl;
+
 }
 
 PixelBuffer::PixelBuffer(int width, int height)

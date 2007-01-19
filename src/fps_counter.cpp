@@ -40,7 +40,6 @@ void
 FPSCounter::init()
 {
   font = Fonts::pingus_small;
-  font.set_alignment(origin_top_right);
   start_time = SDL_GetTicks();
   strcat(fps_string, _("unknown"));
   fps_count = 0;

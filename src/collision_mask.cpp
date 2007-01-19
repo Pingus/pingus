@@ -34,7 +34,7 @@ CollisionMask::CollisionMask()
 
 CollisionMask::CollisionMask(const std::string& name)
 {
-  std::cout << "CollisionMask: " << name << std::endl;
+  //std::cout << "CollisionMask: " << name << std::endl;
   pixelbuffer = Resource::load_pixelbuffer(name);
 }
 

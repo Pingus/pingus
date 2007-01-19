@@ -29,6 +29,9 @@
 
 FontDescription::FontDescription(const std::string& filename)
 {
+  space_length    = 20;
+  alpha_threshold = 0;
+
   FileReader reader = FileReader::parse(filename);
 
   if (reader.get_name() != "pingus-font")

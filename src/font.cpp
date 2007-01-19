@@ -36,7 +36,7 @@ static bool vline_empty(SDL_Surface* surface, int x, Uint8 threshold)
 
   for(int y = 0; y < surface->h; ++y)
     {
-      const Uint8& p = pixels[surface->pitch*y + x*surface->format->BytesPerPixel];
+      const Uint8& p = pixels[surface->pitch*y + x*surface->format->BytesPerPixel + 3];
       if (p > threshold)
         {
           return false;
@@ -56,22 +56,21 @@ public:
     : surface(0),
       space_length(desc.space_length)
   {
-    std::cout << "desc.image: " << desc.image << std::endl;
-    std::cout << "desc.space: " << desc.space_length << std::endl;
-    std::cout << "Characters: " << desc.characters << std::endl;
+    //std::cout << "desc.image: " << desc.image << std::endl;
+    //std::cout << "desc.space: " << desc.space_length << std::endl;
+    //std::cout << "Characters: " << desc.characters << std::endl;
 
     for(int i = 0; i < 256; ++i)
       chrs[i].x = chrs[i].y = chrs[i].w = chrs[i].h = 0;
 
-    std::cout << "Font: Trying to load: " << desc.image << std::endl;
     surface = IMG_Load(desc.image.c_str());
     assert(surface);
 
     SDL_LockSurface(surface);
     
-    std::cout << "Surface: " << surface->w << std::endl;
+    //std::cout << "Surface: " << surface->w << std::endl;
     int first = -1; // -1 signals no character start found yet
-    int chr = 0;
+    int idx = 0;
     for(int x = 0; x < surface->w; ++x)
       {
         ///std::cout << x << " " << surface->w << std::endl;
@@ -79,12 +78,12 @@ public:
           {
             if (first != -1) // skipping empty space
               {
-                if (chr < int(desc.characters.size()))
+                if (idx < int(desc.characters.size()))
                   {
-                    std::cout << chr << " " << desc.characters[chr]
-                              << " Empty: " << first << " - " << x << std::endl;
+                    //std::cout << idx << " " << desc.characters[idx]
+                    //<< " Empty: " << first << " - " << x << std::endl;
 
-                    SDL_Rect& rect = chrs[static_cast<unsigned char>(desc.characters[chr])];
+                    SDL_Rect& rect = chrs[static_cast<unsigned char>(desc.characters[idx])];
                     rect.x = first;
                     rect.y = 0;
                     rect.w = x - first;
@@ -93,7 +92,7 @@ public:
                 else
                   std::cout << "Error: Found more desc.characters then are mapped" << std::endl;
 
-                chr += 1;
+                idx += 1;
                 
                 first = -1;
               }
@@ -104,10 +103,22 @@ public:
               first = x;
           }
       }
-    std::cout << "Font: Found " << chr << " expected "  << desc.characters.size() << std::endl;
+    
+    if (idx != int(desc.characters.size()))
+      {
+        std::cout << "Font: " << desc.image << "\n"
+                  << "  Error:  " << idx << " expected "  << desc.characters.size() << "\n"
+                  << "  Format: bpp: " << int(surface->format->BitsPerPixel) << "\n"
+                  << "  Size: " << surface->w << "x" << surface->h
+          //      << "  RMask: " << hex << surface->format->Rmask << "\n"
+          //      << "  GMask: " << hex << surface->format->Gmask << "\n"
+          //      << "  BMask: " << hex << surface->format->Bmask << "\n"
+          //      << "  AMask: " << hex << surface->format->Amask << "\n"
+                  << std::endl;
+      }
 
     SDL_UnlockSurface(surface);
-    std::cout << "Font created successfully" << std::endl;
+    //std::cout << "Font created successfully" << std::endl;
   }
 
   ~FontImpl()
@@ -115,16 +126,25 @@ public:
     SDL_FreeSurface(surface);
   }
 
-  void draw(int x, int y, const std::string& text, SDL_Surface* target)
+  void draw(Origin origin, int x, int y, const std::string& text, SDL_Surface* target)
   {
+    Vector2i offset = calc_origin(origin, get_size(text));
+
     SDL_Rect dstrect;
-    dstrect.x = x;
-    dstrect.y = y;
+    dstrect.x = x - offset.x;
+    dstrect.y = y - offset.y;
+
+
     for(std::string::size_type i = 0; i < text.size(); ++i)
       {
         if (text[i] == ' ')
           {
             dstrect.x += space_length;
+          }
+        else if (text[i] == '\n')
+          {
+            dstrect.x = x;
+            dstrect.y += surface->h;
           }
         else
           {
@@ -142,29 +162,38 @@ public:
       }
   }
 
-  void set_alignment(Origin origin)
+  int get_height() const
   {
-    
+    return surface->h;
   }
 
-  int get_height()
+  int get_width(char idx) const
   {
-    return 0;
+    return chrs[static_cast<unsigned char>(idx)].w;
   }
 
-  int get_width(char)
+  int  get_width(const std::string& text) const
   {
-    return 0;
+    // FIXME: Line breaks aren't handled
+    int width = 0;
+    for(std::string::size_type i = 0; i < text.size(); ++i)
+      {
+        if (text[i] == ' ')
+          width += space_length;
+        else
+          width += chrs[static_cast<unsigned char>(text[i])].w;
+      }
+    return width;
   }
 
-  Size get_size(const std::string& str)
+  Size get_size(const std::string& text) const
   {
-    return Size();
+    return Size(get_width(text), surface->h);
   }
 
-  Rect bounding_rect(int , int, const std::string& str) const
+  Rect bounding_rect(int x, int y, const std::string& str) const
   {
-    return Rect();
+    return Rect(Vector2i(x, y), get_size(str));
   }
 };
 
@@ -182,18 +211,18 @@ void
 Font::draw(int x, int y, const std::string& text, SDL_Surface* target)
 {
   if (impl)
-    impl->draw(x,y,text, target);
+    impl->draw(origin_top_left, x,y,text, target);
 }
 
 void
-Font::set_alignment(Origin origin)
+Font::draw(Origin origin, int x, int y, const std::string& text, SDL_Surface* target)
 {
   if (impl)
-    impl->set_alignment(origin);
+    impl->draw(origin, x,y,text, target); 
 }
 
 int
-Font::get_height()
+Font::get_height() const
 {
   if (impl)
     return impl->get_height();
@@ -202,7 +231,7 @@ Font::get_height()
 }
 
 int
-Font::get_width(char c)
+Font::get_width(char c) const
 {
   if (impl)
     return impl->get_width(c);
@@ -210,8 +239,17 @@ Font::get_width(char c)
     return 0; 
 }
 
+int
+Font::get_width(const std::string& text) const
+{
+  if (impl)
+    return impl->get_width(text);
+  else
+    return 0;  
+}
+
 Size
-Font::get_size(const std::string& str)
+Font::get_size(const std::string& str) const
 {
   if (impl)
     return impl->get_size(str);

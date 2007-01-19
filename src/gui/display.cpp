@@ -126,7 +126,7 @@ Display::fill_rect(const Rect& rect, const Color& color)
   srcrect.w = rect.get_width();
   srcrect.h = rect.get_height();
 
-  SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, color.r, color.g, color.b));
+  SDL_FillRect(screen, &srcrect, SDL_MapRGB(screen->format, color.r, color.g, color.b));
 }
 
 void

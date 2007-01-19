@@ -44,7 +44,6 @@ void
 Groundpiece::on_startup ()
 {
   //// FIXME: We discard rotation here!
-  std::cout << "Groundpiece::on_startup" << std::endl;
   CollisionMask mask = Resource::load_collision_mask(desc.res_name);
 
   // FIXME: overdrawing of bridges and similar things aren't handled

@@ -1,8 +1,8 @@
 ;; -*- scheme -*-
 (pingus-font
  (name "Chalk Normal")
- (space-length    20)
- (alpha-threshold  0)
+ (space-length    8)
+ (alpha-threshold  64)
  (characters "!\"#$%&'()*+,-./0123456789:;<=>?@"
              "ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
              "¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßàáâãäåæçèéêëìíîïğñòóôõö÷øùúûüı")

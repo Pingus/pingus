@@ -123,13 +123,7 @@ public:
                 v += item->get_symbol();
               }
           }
-      }
-
-    // FIXME: add multiline reading here
-    lisp::Lisp* item = get_subsection_item(name);
-    if (item)
-      {
-
+        return true;
       }
     return false;
   }
