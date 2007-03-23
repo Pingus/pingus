@@ -22,8 +22,7 @@
 
 #include "groundtype.hpp"
 
-class CL_Surface;
-class PixelBuffer;
+class CollisionMask;
 
 class DrawingContext;
 class ResDescriptor;
@@ -77,10 +76,10 @@ public:
   bool blit_allowed (int x, int y,  Groundtype::GPType);
 
   void put(int x, int y, Groundtype::GPType p = Groundtype::GP_GROUND);
-  void put(PixelBuffer, int x, int y, Groundtype::GPType);
+  void put(const CollisionMask& mask, int x, int y, Groundtype::GPType);
 
   void remove(int x, int y);
-  void remove(PixelBuffer, int x, int y);
+  void remove(const CollisionMask& mask, int x, int y);
 
   void draw(DrawingContext& gc);
 

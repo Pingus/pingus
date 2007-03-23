@@ -34,6 +34,9 @@ class CollisionMask
 {
 public:
   PixelBuffer pixelbuffer;
+  uint8_t*    buffer;
+  int         width;
+  int         height;
 
 public:
   CollisionMask();
@@ -44,6 +47,7 @@ public:
   int get_height() const;
   
   PixelBuffer get_pixelbuffer() const;
+  uint8_t* get_data() const;
 };
 
 #endif

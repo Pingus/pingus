@@ -22,6 +22,7 @@
 #include "display/drawing_context.hpp"
 #include "globals.hpp"
 #include "col_map.hpp"
+#include "collision_mask.hpp"
 #include "pixel_buffer.hpp"
 #include "pingus_error.hpp"
 #include "gettext.h"
@@ -75,7 +76,7 @@ ColMap::get_width()
 }
 
 void
-ColMap::remove(PixelBuffer provider, int x, int y)
+ColMap::remove(const CollisionMask& mask, int x, int y)
 {
 #if 0
 	++serial;
@@ -163,7 +164,7 @@ ColMap::blit_allowed (int x, int y,  Groundtype::GPType gtype)
 
 // Puts a surface on the colmap
 void
-ColMap::put(PixelBuffer provider, int sur_x, int sur_y, Groundtype::GPType pixel)
+ColMap::put(const CollisionMask& mask, int sur_x, int sur_y, Groundtype::GPType pixel)
 {
   // transparent groundpieces are only drawn on the gfx map, not on the colmap
   if (pixel == Groundtype::GP_TRANSPARENT)
@@ -178,6 +179,17 @@ ColMap::put(PixelBuffer provider, int sur_x, int sur_y, Groundtype::GPType pixel
 	}
       return;
     }
+
+  uint8_t* source = mask.get_data();
+  for (int y=0; y < mask.get_height(); ++y)
+    for (int x=0; x < mask.get_width(); ++x)
+      {
+        if (source[y * mask.get_width() + x])
+          if (blit_allowed(x + sur_x, y + sur_y, pixel))
+            put(x + sur_x, y + sur_y, pixel);
+      }
+
+#if 0 
 
   // FIXME: Little slow
   provider.lock();
@@ -194,7 +206,6 @@ ColMap::put(PixelBuffer provider, int sur_x, int sur_y, Groundtype::GPType pixel
       }
   provider.unlock();
 
-#if 0
   else if (provider.get_format().get_depth() == 8)
     {
       unsigned char* buffer;
@@ -245,8 +256,7 @@ void
 ColMap::draw(DrawingContext& gc)
 {
 #if 0
-  PixelBuffer canvas(width, height, width*4, CL_PixelFormat::rgba8888);
-  CL_Surface sur;
+  PixelBuffer canvas(width, height);
   unsigned char* buffer;
 
   canvas.lock();
@@ -288,9 +298,9 @@ ColMap::draw(DrawingContext& gc)
 
   canvas.unlock();
 
-  sur = CL_Surface(canvas);
+  Sprite sprite(canvas);
 
-  //FIXME:gc.draw(sur, 0, 0);
+  //FIXME:gc.draw(sprite, 0, 0);
 #endif
 }
 

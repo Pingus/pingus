@@ -82,6 +82,7 @@ public:
       System::extension ("/bla/blabl") => ""
   */
   static std::string extension (std::string filename);
+  static std::string cut_ext (std::string filename);
 
   /** Returns the directory where Pingus can store its user specific
       state and config data (savegames, config files, demos, etc.) */

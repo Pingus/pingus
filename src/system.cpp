@@ -147,6 +147,21 @@ System::dirname (std::string filename)
 }
 
 std::string
+System::cut_ext (std::string filename)
+{
+  std::string::size_type idx = filename.find_last_of('.');
+  if (idx != std::string::npos)
+    {
+      std::cout << "CutExt: " << filename << " -> " << filename.substr(0, idx)  << std::endl;
+      return filename.substr(0, idx);
+    }
+  else
+    {
+      return filename;
+    }
+}
+
+std::string
 System::extension (std::string filename)
 {
   const char* str = filename.c_str ();
