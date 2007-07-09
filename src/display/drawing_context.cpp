@@ -19,7 +19,7 @@
 
 #include <assert.h>
 #include <iostream>
-#include <iostream>
+#include <algorithm>
 #include "drawing_context.hpp"
 #include "gui/display.hpp"
 #include "../sprite.hpp"

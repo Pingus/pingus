@@ -22,8 +22,6 @@
 #define HAVE_SETLOCALE 1
 #define HAVE_STRDUP 1
 #define HAVE_GETTEXT 1
-#define HAVE_LIBCLANVORBIS 1
-#define HAVE_LIBCLANMIKMOD 1
 #define ICONV_CONST const
 
 /* MSVC specifics */
@@ -37,5 +35,9 @@
 #define LOCALE_ALIAS_PATH "."
 
 typedef unsigned __int64 uintmax_t;
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
 #endif
