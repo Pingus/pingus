@@ -20,13 +20,11 @@
 #ifndef HEADER_PINGUS_SOUND_REAL_HXX
 #define HEADER_PINGUS_SOUND_REAL_HXX
 
+#include "SDL_mixer.h"
 #include <config.h>
 #include <vector>
 #include "sound_impl.hpp"
 #include "sound.hpp"
-
-class CL_SoundBuffer;
-class CL_SoundBuffer_Session;
 
 namespace Sound {
 
@@ -36,13 +34,7 @@ class PingusSoundReal : public PingusSoundImpl
 {
 private:
   /** The current music file */
-  CL_SoundBuffer * music_sample;
-
-  /** Music Controller Session */
-  CL_SoundBuffer_Session* music_session;
-
-  /** Sound Output object */
-  CL_SoundOutput* sound_output;
+  Mix_Music* music_sample;
 
 public:
   PingusSoundReal ();

@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "SDL.h"
+#include "SDL_mixer.h"
 #include "../globals.hpp"
 #include "../debug.hpp"
 #include "sound_res_mgr.hpp"
@@ -25,22 +27,23 @@
 namespace Sound {
 
 PingusSoundReal::PingusSoundReal ()
-  : music_sample (0), music_session(0)
+  : music_sample(0)
 {
-  pout(PINGUS_DEBUG_SOUND) << "Initializing ClanLib-Sound" << std::endl;
+  pout(PINGUS_DEBUG_SOUND) << "Initializing SDL audio" << std::endl;
 
-  sound_output  = new CL_SoundOutput(44100);
-  CL_SetupSound::init();
+  if (SDL_Init(SDL_INIT_AUDIO) == -1)
+    {
+      std::cout << "Unable to initialize SDL: " << SDL_GetError() << std::endl;
+      throw SDL_GetError();
+    }
 
-  pout(PINGUS_DEBUG_SOUND) << "Initializing ClanLib-MikMod" << std::endl;
+  pout(PINGUS_DEBUG_SOUND) << "Initializing SDL_Mixer" << std::endl;
 
-#ifdef HAVE_LIBCLANVORBIS
-  CL_SetupVorbis::init();
-#endif
-
-#ifdef HAVE_LIBCLANMIKMOD
-  CL_SetupMikMod::init();
-#endif
+  if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
+    {
+      std::cout << "Unable to initialize SDL_Mixer: " << Mix_GetError() << std::endl;
+      throw Mix_GetError();
+    }
 }
 
 PingusSoundReal::~PingusSoundReal()
@@ -48,25 +51,8 @@ PingusSoundReal::~PingusSoundReal()
   real_stop_music();
   SoundResMgr::free_sound_map();
 
-#ifdef HAVE_LIBCLANMIKMOD
-  CL_SetupMikMod::deinit();
-#endif
-
-#ifdef HAVE_LIBCLANVORBIS
-  CL_SetupVorbis::deinit();
-#endif
-
-  CL_SetupSound::deinit();
-	sound_output->stop_all();
-	delete sound_output;
+  Mix_CloseAudio();
 }
-
-struct sound_is_finished
-{
-  bool operator()(CL_SoundBuffer_Session& sess) {
-    return !sess.is_playing();
-  }
-};
 
 void
 PingusSoundReal::real_play_sound(const std::string& name, float volume, float panning)
@@ -74,39 +60,38 @@ PingusSoundReal::real_play_sound(const std::string& name, float volume, float pa
   if (!sound_enabled)
     return;
 
-  SoundHandle buffer;
-  CL_SoundBuffer_Session sess;
+  SoundHandle chunk;
 
-  try {
-    buffer = SoundResMgr::load(name);
-    sess   = buffer->prepare();
-  } catch (const CL_Error & e) {
-    perr(PINGUS_DEBUG_SOUND) << "Can't open sound '" << name << "' -- skipping\n"
-			     << "  CL_Error: " << e.message << std::endl;
-    return;
-  }
+  chunk = SoundResMgr::load(name);
+  if (!chunk)
+    {
+      perr(PINGUS_DEBUG_SOUND) << "Can't open sound '" << name << "' -- skipping\n"
+                               << "  Mix_Error: " << Mix_GetError() << std::endl;
+      return;
+    }
 
-  sess.set_volume(volume);
-  sess.set_pan(panning);
-  sess.set_looping(false);
-  sess.play();
+  int channel = Mix_PlayChannel(-1, chunk, 0);
+  if (channel != -1)
+    {
+      Mix_Volume(channel, (int)(volume * MIX_MAX_VOLUME));
+      if (panning != 0.0f)
+        {
+          Uint8 left = (panning < 0.0f) ? 255 : (Uint8)((panning - 1.0f) * -255);
+          Uint8 right = (panning > 0.0f) ? 255 : (Uint8)((panning + 1.0f) * 255);
+          Mix_SetPanning(channel, left, right);
+        }
+    }
 }
 
 void
 PingusSoundReal::real_stop_music ()
 {
-  if (music_session)
-  {
-    music_session->stop();
-    delete music_session;
-    music_session = 0;
-
-    if (music_sample)
+  if (music_sample)
     {
-      delete music_sample;
-      music_sample = NULL;
+      Mix_HaltMusic();
+      Mix_FreeMusic(music_sample);
+      music_sample = 0;
     }
-  }
 }
 
 void
@@ -123,32 +108,16 @@ PingusSoundReal::real_play_music (const std::string & arg_filename, float volume
 
   real_stop_music();
 
-  music_sample = 0;
-
-  if (filename.substr(filename.size()-4, 4) == ".ogg")
+  music_sample = Mix_LoadMUS(filename.c_str());
+  if (!music_sample)
     {
-      #ifdef HAVE_LIBCLANVORBIS
-      music_sample = new CL_SoundBuffer (filename.c_str());
-      #endif
-    }
-  else if (filename.substr(filename.size()-4, 4) == ".wav")
-    {
-      music_sample = new CL_SoundBuffer (filename.c_str());
-    }
-  else
-    {  // MikMod should support the rest...
-      #ifdef HAVE_LIBCLANMIKMOD
-      music_sample = new CL_SoundBuffer (filename.c_str());
-      #endif
+      perr(PINGUS_DEBUG_SOUND) << "Can't load music: " << filename << "' -- skipping\n"
+                               << "  Mix_Error: " << Mix_GetError() << std::endl;
+      return;
     }
 
-  if (music_sample)
-    {
-      music_session = new CL_SoundBuffer_Session(music_sample->prepare());
-      music_session->set_volume(volume * 0.5f); // FIXME: music_volume
-      music_session->set_looping(true);
-      music_session->play();
-    }
+  Mix_VolumeMusic((int)(volume * 0.5f * MIX_MAX_VOLUME)); // FIXME: music_volume
+  Mix_PlayMusic(music_sample, -1);
 }
 
 } // namespace Sound

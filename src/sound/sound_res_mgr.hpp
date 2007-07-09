@@ -21,17 +21,16 @@
 #define HEADER_PINGUS_SOUND_RES_MGR_HXX
 
 #include <map>
+#include "SDL_mixer.h"
 
-class CL_SoundBuffer;
-
-typedef CL_SoundBuffer* SoundHandle;
+typedef Mix_Chunk* SoundHandle;
 
 
 /** */
 class SoundResMgr
 {
 private:
-  typedef std::map<std::string, CL_SoundBuffer*> SoundMap;
+  typedef std::map<std::string, Mix_Chunk*> SoundMap;
   static SoundMap sound_map;
 
 public:

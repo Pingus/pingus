@@ -43,7 +43,7 @@ sdl_env = Environment(CC = 'gcc',
 #   clanMikMod-0.8         ">=" 0.8.0')
 
 env.ParseConfig('sdl-config  --cflags --libs')
-env['LIBS'] += ['SDL_image', 'physfs']
+env['LIBS'] += ['SDL_image', 'SDL_mixer', 'physfs']
 
 # sdl_env.ParseConfig('sdl-config  --cflags --libs')
 # sdl_env['LIBS'] += ['SDL_image']
@@ -237,7 +237,7 @@ env.Program('../pingus', [
 'smallmap_image.cpp', 
 'sound/sound.cpp', 
 'sound/sound_dummy.cpp', 
-# 'sound/sound_real.cpp', 
+'sound/sound_real.cpp', 
 'sound/sound_res_mgr.cpp', 
 'ground_map.cpp', 
 'start_screen.cpp', 

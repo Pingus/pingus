@@ -22,6 +22,7 @@
 #include "../path_manager.hpp"
 #include "../globals.hpp"
 #include "sound_dummy.hpp"
+#include "sound_real.hpp"
 #include "sound.hpp"
 
 namespace Sound {
@@ -33,8 +34,6 @@ PingusSound::init (PingusSoundImpl* s)
 {
   if (s == 0)
     {
-      PingusSound::init(new PingusSoundDummy());
-#if 0
       if (sound_enabled || music_enabled)
         {
           if (verbose)
@@ -42,8 +41,8 @@ PingusSound::init (PingusSoundImpl* s)
 
           try {
             PingusSound::init (new PingusSoundReal ());
-          } catch (CL_Error& err) {
-            std::cout << "CL_Error: " << err.message << std::endl;
+          } catch (const std::string& err) {
+            std::cout << "Sound Error: " << err << std::endl;
             std::cout << "Sound will be disabled" << std::endl;
             PingusSound::init (new PingusSoundDummy ());
           }
@@ -54,7 +53,6 @@ PingusSound::init (PingusSoundImpl* s)
             std::cout << "Sound disabled" << std::endl;
           PingusSound::init (new PingusSoundDummy ());
         }
-#endif 
     }
   else
     {
@@ -114,7 +112,7 @@ void
 PingusSound::play_music(const std::string & name, float volume)
 {
   assert (sound);
-  sound->real_play_music(path_manager.complete ("music/" + name), volume);
+  sound->real_play_music(path_manager.complete ("data/music/" + name), volume);
 }
 
 void

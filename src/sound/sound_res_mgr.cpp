@@ -28,36 +28,35 @@ SoundResMgr::SoundMap SoundResMgr::sound_map;
 SoundHandle
 SoundResMgr::load(const std::string& name)
 {
-#if 0
   SoundMap::iterator i = sound_map.find(name);
 
   if (i == sound_map.end())
     {
-      std::string filename = path_manager.complete("sounds/" + name + ".wav");
-      CL_SoundBuffer* buffer = new CL_SoundBuffer (filename, true);
+      std::string filename = path_manager.complete("data/sounds/" + name + ".wav");
+      Mix_Chunk* chunk = Mix_LoadWAV(filename.c_str());
       pout(PINGUS_DEBUG_LOADING) << "SoundResMgr: Loading sound from disk: "
                                  << name << " -> " << filename << std::endl;
+      if (!chunk)
+        pout(PINGUS_DEBUG_LOADING) << "Error: " << Mix_GetError() << std::endl;
 
-      sound_map[name] = buffer;
-      return buffer;
+      sound_map[name] = chunk;
+      return chunk;
     }
   else
     {
       pout(PINGUS_DEBUG_LOADING) << "SoundResMgr: Loading sound from cache: " << name << std::endl;
       return i->second;
     }
-#endif 
+
   return 0;
 }
 
 void SoundResMgr::free_sound_map()
 {
-#if 0
   for (SoundMap::iterator i = sound_map.begin(); i != sound_map.end(); ++i)
     {
-      delete i->second;
+      Mix_FreeChunk(i->second);
     }
-#endif 
 }
 
 
