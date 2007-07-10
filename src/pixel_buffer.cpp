@@ -35,10 +35,13 @@ PixelBuffer::PixelBuffer()
 
 PixelBuffer::PixelBuffer(const std::string& name_)
 {
-  std::ostringstream str;
-  str << "data/images/" << name_ << ".png";
-  std::string name = str.str();
+  std::string name = "data/images/" + name_ + ".png";
   surface = IMG_Load(name.c_str());
+  if (!surface)
+  {
+    std::string name = "data/images/" + name_ + ".jpg";
+    surface = IMG_Load(name.c_str());
+  }
   if (!surface)
     std::cout << "XXXXXX Failed to load: " << name << std::endl;
   ///else
@@ -127,7 +130,7 @@ PixelBuffer::get_surface() const
 
 PixelBuffer::operator bool() const
 {
-  return surface;
+  return surface != NULL;
 }
 
 Color
