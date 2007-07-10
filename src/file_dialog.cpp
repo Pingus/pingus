@@ -17,6 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <algorithm>
+
 #include "gettext.h"
 #include "system.hpp"
 #include "pingus_menu_manager.hpp"
@@ -298,7 +300,7 @@
 		gc.draw(sprite, Vector3f(gc.get_width ()/2 - sprite.get_width ()/2,
 			gc.get_height ()/2 - sprite.get_height ()/2));
 		gc.draw_rect(gc.get_width() / 2 - 285, gc.get_height() / 2 - 160,
-                             gc.get_width() / 2 + 285, gc.get_height() / 2 + 160, Color(0,0,0));
+			gc.get_width() / 2 + 285, gc.get_height() / 2 + 160, Color(0,0,0));
 		gc.print_center(Fonts::chalk_large, gc.get_width()/2, gc.get_height()/2 - 220, 
 			current_file.friendly_name == "" ? current_file.name : current_file.friendly_name);
 
@@ -319,33 +321,33 @@
 		file_list.clear();
 		current_offset=0;
 
+		System::Directory d;
+		System::DirectoryIter diter;
 		FileItem f;
 
 		// Get the list of files and folders in the current folder
-#if 0
-		CL_DirectoryScanner scanner;
-		scanner.scan(current_path, "*");
-		while (scanner.next())
+		d = System::opendir(current_path, "*");
+		for (diter = d.begin(); diter != d.end(); ++diter)
 		{
-			if (scanner.get_name() != "." && scanner.get_name() != ".." 
-				&& scanner.get_name() != ".svn" && scanner.is_directory())
+			if ((*diter).name != "." && (*diter).name != ".."
+				&& (*diter).name != ".svn" && (*diter).type == System::DirectoryEntry::DE_DIRECTORY)
 			{
-				f.name = scanner.get_name();
+				f.name = (*diter).name;
 				f.is_directory = true;
 				file_list.push_back(f);
 			}
 		}
 
-		scanner.scan(current_path, "*" + file_mask);
-		while (scanner.next())
+		d = System::opendir(current_path, "*" + file_mask);
+		for (diter = d.begin(); diter != d.end(); ++diter)
 		{
-			f.name = scanner.get_name();
+			f.name = (*diter).name;
 			f.is_directory = false;
 			file_list.push_back(f);
 		}
 
 		std::sort(file_list.begin(), file_list.end(), &FileItemCompare);
-#endif
+
 		current_offset = 0;
 		offset_changed();
 	}

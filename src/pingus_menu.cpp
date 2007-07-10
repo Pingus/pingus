@@ -112,7 +112,7 @@ PingusMenu::setup_contrib_menu()
 {
   if (filedialog)
     delete filedialog;
-  filedialog = new FileDialog(this, ".pingus", 
+  filedialog = new FileDialog(this, ".scm", 
                               path_manager.complete("levels/"), true);
   manager->push_menu (filedialog);
 }
@@ -234,7 +234,7 @@ void
 PingusMenu::load(const std::string &file, const std::string &filemask)
 {
   // Level
-  if (filemask == ".pingus")
+  if (filemask == ".scm")
     do_contrib(file);
   // Worldmap
   else if (filemask == ".xml")

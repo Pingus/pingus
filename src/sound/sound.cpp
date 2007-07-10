@@ -112,7 +112,7 @@ void
 PingusSound::play_music(const std::string & name, float volume)
 {
   assert (sound);
-  sound->real_play_music(path_manager.complete ("data/music/" + name), volume);
+  sound->real_play_music(path_manager.complete ("music/" + name), volume);
 }
 
 void

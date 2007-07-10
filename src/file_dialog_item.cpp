@@ -54,9 +54,9 @@
 		}
 		else
 		{
-#if 0
 			// FIXME: Load thumbnail specific to this level
 			sprite = Resource::load_sprite("core/menu/default_level");
+#if 0
 
 			// Load information about this file if possible.
 			CL_InputSourceProvider_File provider(".");

@@ -93,7 +93,7 @@ EditorScreen::show_file_dialog(bool for_loading)
 	if (filedialog)
 		delete filedialog;
 	close_dialog = false;
-	filedialog = new FileDialog(this, ".pingus", 
+	filedialog = new FileDialog(this, ".scm", 
 		path_manager.complete("levels/"), for_loading);
 	filedialog->preload();	
 }

@@ -32,7 +32,7 @@ SoundResMgr::load(const std::string& name)
 
   if (i == sound_map.end())
     {
-      std::string filename = path_manager.complete("data/sounds/" + name + ".wav");
+      std::string filename = path_manager.complete("sounds/" + name + ".wav");
       Mix_Chunk* chunk = Mix_LoadWAV(filename.c_str());
       pout(PINGUS_DEBUG_LOADING) << "SoundResMgr: Loading sound from disk: "
                                  << name << " -> " << filename << std::endl;

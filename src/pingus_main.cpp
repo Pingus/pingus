@@ -578,8 +578,10 @@ PingusMain::init_path_finder()
       exit(EXIT_FAILURE);
     }
   CFRelease(ref);
+  path_manager.add_path("data");
   //path_manager.add_path(CL_String::get_path(std::string(resource_path) + "/data/"));
 #else
+  path_manager.add_path("data");
   //path_manager.add_path(CL_String::get_path(CL_System::get_exe_path() + "/data/"));
   //path_manager.add_path(CL_String::get_path(CL_System::get_exe_path() + "/../data/"));
   //path_manager.add_path(CL_String::get_path(CL_System::get_exe_path() + "/../share/games/pingus/"));
@@ -588,13 +590,13 @@ PingusMain::init_path_finder()
   std::list<std::string> file_list;
   file_list.push_back ("data/core.xml");
 
-  //   if (!path_manager.find_path (file_list))
-  //     {
-  //       std::cout << "Error: Couldn't find 'data/core.xml', please set the enviroment variable\n"
-  //                 << "PINGUS_DATADIR to the path of the file `data/core.scr' or use the\n"
-  //                 << "-d option." << std::endl;
-  //       exit(EXIT_FAILURE);
-  //     }
+  if (!path_manager.find_path (file_list))
+    {
+      std::cout << "Error: Couldn't find 'data/core.xml', please set the enviroment variable\n"
+                << "PINGUS_DATADIR to the path of the file `data/core.scr' or use the\n"
+                << "-d option." << std::endl;
+      exit(EXIT_FAILURE);
+    }
 
   dictionary_manager.add_directory(path_manager.complete("po/"));
   // Language is automatically picked from env variable
@@ -640,18 +642,6 @@ PingusMain::print_greeting_message()
   for (unsigned int i = 0; i < greeting.length(); ++i)
     std::cout.put('=');
   std::cout << std::endl;
-
-#ifdef HAVE_LIBCLANVORBIS
-  std::cout << _("clanVorbis support:           ok") << std::endl;
-#else
-  std::cout << _("clanVoribs support:  missing (.ogg music files will not be playable)") << std::endl;
-#endif
-
-#ifdef HAVE_LIBCLANMIKMOD
-  std::cout << _("clanMikMod support:           ok") << std::endl;
-#else
-  std::cout << _("clanMikMod support:  missing (music files will not be playable)") << std::endl;
-#endif
 
 #ifdef HAVE_GETTEXT
   std::cout << _("getext support:               ok") << std::endl;
@@ -723,10 +713,10 @@ PingusMain::start_game ()
       bool successfull = true;
       if (!System::exist(levelfile))
         {
-          if (System::exist(levelfile + ".xml"))
-            levelfile += ".pingus";
-          else if (System::exist("levels/" + levelfile + ".pingus"))
-            levelfile = "levels/" + levelfile + ".pingus";
+          if (System::exist(levelfile + ".scm"))
+            levelfile += ".scm";
+          else if (System::exist("levels/" + levelfile + ".scm"))
+            levelfile = "levels/" + levelfile + ".scm";
           else
             {
               pout << _("PingusMain: Levelfile not found, ignoring: ") << levelfile << std::endl;

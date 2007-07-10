@@ -91,22 +91,31 @@ System::opendir(const std::string& pathname, const std::string& pattern)
     }
 #else /* WIN32 */
   WIN32_FIND_DATA coFindData;
-  std::string FindFileDir = pathname + "\\" + pattern;
-  std::string FileLocation;
+  std::string FindFileDir = pathname + "/" + pattern;
   HANDLE hFind = FindFirstFile(TEXT(FindFileDir.c_str()),&coFindData);
 
   if (hFind == INVALID_HANDLE_VALUE)
     {
-      std::cout << "System: Couldn't open: " << pathname << std::endl;
+      if (GetLastError() != ERROR_FILE_NOT_FOUND)
+	std::cout << "System: Couldn't open: " << pathname << std::endl;
     }
-
-  do
+  else
     {
-      dir_list.push_back(DirectoryEntry(coFindData.cFileName));
-    }
-  while (FindNextFile(hFind,&coFindData));
+      do
+	{
+	  if (coFindData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+	    {
+	      dir_list.push_back(DirectoryEntry(coFindData.cFileName, DirectoryEntry::DE_DIRECTORY));
+	    }
+	  else
+	    {
+	      dir_list.push_back(DirectoryEntry(coFindData.cFileName, DirectoryEntry::DE_FILE));
+	    }
+	}
+      while (FindNextFile(hFind,&coFindData));
 
-  FindClose(hFind);
+      FindClose(hFind);
+    }
 #endif
 
   return dir_list;
@@ -438,10 +447,10 @@ System::translate_default(const std::map<std::string, std::string>& strs)
 
 /** Read file and create a checksum and return it */
 std::string
-System::checksum (std::string filename)
+System::checksum(std::string filename)
 {
   FILE* in;
-  int bytes_read;
+  size_t bytes_read;
   char buffer[4096];
   long int checksum = 0;
 
@@ -455,14 +464,14 @@ System::checksum (std::string filename)
 
   do
     {
-      bytes_read = fread (buffer, sizeof (char), 4096, in);
+      bytes_read = fread(buffer, sizeof (char), 4096, in);
 
       if (bytes_read == -1)
 	{
 	  throw PingusError("System:checksum: file read error");
 	}
 
-      for (int i=0; i < bytes_read; ++i)
+      for (size_t i=0; i < bytes_read; ++i)
 	checksum = checksum * 17 + buffer[i];
     }
   while (bytes_read != 0);
