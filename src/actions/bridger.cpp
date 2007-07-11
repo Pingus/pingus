@@ -35,6 +35,8 @@ namespace Actions {
 Bridger::Bridger (Pingu* p)
   : PinguAction(p),
     mode(B_BUILDING),
+    brick_l(Resource::load_collision_mask("other/brick_left")),
+    brick_r(Resource::load_collision_mask("other/brick_right")),
     bricks(MAX_BRICKS),
     block_build(false),
     name(_("Bridger") + std::string(" (" + StringUtil::to_string(bricks) + ")"))
@@ -48,9 +50,6 @@ Bridger::Bridger (Pingu* p)
                                                              pingu->get_owner_str() + "/bridger/left"));
   build_sprite.load (Direction::RIGHT, Resource::load_sprite("pingus/player" + 
                                                              pingu->get_owner_str() + "/bridger/right"));
-
-  brick_l = Resource::load_collision_mask("other/brick_left");
-  brick_r = Resource::load_collision_mask("other/brick_right");
 }
 
 void
@@ -127,7 +126,7 @@ Bridger::update_walk ()
 void
 Bridger::update_build ()
 {
-  build_sprite[pingu->direction].update (0.033);
+  build_sprite[pingu->direction].update (0.033f);
 
   if (build_sprite[pingu->direction].get_current_frame () >= 7 && !block_build)
     {
