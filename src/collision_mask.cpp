@@ -72,7 +72,7 @@ CollisionMask::CollisionMask(const std::string& name)
 
 CollisionMask::~CollisionMask()
 {
-  delete buffer;
+  delete[] buffer;
 }  
 
 int

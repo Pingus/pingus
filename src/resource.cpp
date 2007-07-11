@@ -32,6 +32,7 @@
 #include "resource.hpp"
 #include "res_descriptor.hpp"
 #include "blitter.hpp"
+#include "sprite_description.hpp"
 #include "debug.hpp"
 
 ResourceManager Resource::resmgr;
@@ -178,7 +179,11 @@ Resource::load_collision_mask(const std::string& name)
 PixelBuffer
 Resource::load_pixelbuffer(const ResDescriptor& desc_)
 {
-  return apply_modifier_to_pixelbuffer(PixelBuffer(desc_.res_name), desc_);
+  SpriteDescription* desc = resmgr.get_sprite_description(desc_.res_name);
+  if (desc)
+    return apply_modifier_to_pixelbuffer(PixelBuffer(desc->filename), desc_);
+  else
+    return apply_modifier_to_pixelbuffer(PixelBuffer(), desc_);
 }
 
 PixelBuffer

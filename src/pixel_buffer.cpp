@@ -35,15 +35,9 @@ PixelBuffer::PixelBuffer()
 
 PixelBuffer::PixelBuffer(const std::string& name_)
 {
-  std::string name = "data/images/" + name_ + ".png";
-  surface = IMG_Load(name.c_str());
+  surface = IMG_Load(name_.c_str());
   if (!surface)
-  {
-    std::string name = "data/images/" + name_ + ".jpg";
-    surface = IMG_Load(name.c_str());
-  }
-  if (!surface)
-    std::cout << "XXXXXX Failed to load: " << name << std::endl;
+    std::cout << "XXXXXX Failed to load: " << name_ << std::endl;
   ///else
   //std::cout << "Loaded pixelbuffer: " << name << ": " << surface->w << "x" << surface->h << std::endl;
 
