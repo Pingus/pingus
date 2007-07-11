@@ -27,6 +27,7 @@
 #include "gettext.h"
 #include "col_map.hpp"
 #include "math.hpp"
+#include "SDL.h"
 
 MapTile::MapTile () 
 {
@@ -56,13 +57,11 @@ void
 MapTile::remove(PixelBuffer obj, int x, int y, 
                 int real_x, int real_y, GroundMap* parent)
 {
-#if 0
-  if (surface)
+  if (sprite)
     {
       parent->put_alpha_surface(pixelbuffer, obj, x, y, real_x, real_y);
-      surface = CL_Surface(pixelbuffer);
+      sprite = Sprite(pixelbuffer);
     }
-#endif 
 }
 
 void
@@ -196,11 +195,10 @@ void
 GroundMap::put_alpha_surface(PixelBuffer provider, PixelBuffer sprovider,
                              int x_pos, int y_pos, int real_x_arg, int real_y_arg)
 {
-#if 0
-  if (sprovider.get_format().get_depth() != 8)
+  if (sprovider.get_surface()->format->BitsPerPixel != 8)
     {
       PingusError::raise(std::string("SpotMap::put_alpha_surface: Image has wrong color depth: " 
-                                     + sprovider.get_format().get_depth()));
+                                     + sprovider.get_surface()->format->BitsPerPixel));
     }
 
   provider.lock();
@@ -218,28 +216,27 @@ GroundMap::put_alpha_surface(PixelBuffer provider, PixelBuffer sprovider,
   if (end_x - start_x <= 0 || end_y - start_y <= 0)
     return;
 
-  cl_uint8* target_buf = static_cast<cl_uint8*>(provider.get_data());
-  cl_uint8* source_buf = static_cast<cl_uint8*>(sprovider.get_data());
+  Uint8* target_buf = static_cast<Uint8*>(provider.get_data());
+  Uint8* source_buf = static_cast<Uint8*>(sprovider.get_data());
 
-  CL_Palette palette = sprovider.get_palette();
-
-  if (sprovider.get_format().has_colorkey())
+  if (sprovider.get_surface()->flags & SDL_SRCCOLORKEY)
     {
-      unsigned int colorkey = sprovider.get_format().get_colorkey();
+      Uint32 colorkey = sprovider.get_surface()->format->colorkey;
 
       for (int y = start_y; y < end_y; ++y)
         {
-          cl_uint8* tptr = target_buf + 4*((twidth*(y+y_pos)) + x_pos + start_x);
-          cl_uint8* sptr = source_buf + swidth*y + start_x;
+          Uint8* tptr = target_buf + 4*((twidth*(y+y_pos)) + x_pos + start_x);
+          Uint8* sptr = source_buf + swidth*y + start_x;
 
           for (int x = start_x; x < end_x; ++x)
             { 
               if (*sptr != colorkey && colmap->getpixel(real_x_arg+x, real_y_arg+y) != Groundtype::GP_SOLID)
-                { // FIXME: Slow?! if inside a blit loop probally not such a good idea
-                  if (!CL_Endian::is_system_big())
+                {
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
                     *tptr = 0;
-                  else
+#else
                     tptr[3] = 0;
+#endif
                 }
 
               tptr += 4;
@@ -251,17 +248,18 @@ GroundMap::put_alpha_surface(PixelBuffer provider, PixelBuffer sprovider,
     {
       for (int y = start_y; y < end_y; ++y)
         {
-          cl_uint8* tptr = target_buf + 4*((twidth*(y+y_pos)) + x_pos + start_x);
-          cl_uint8* sptr = source_buf + swidth*y + start_x;
+          Uint8* tptr = target_buf + 4*((twidth*(y+y_pos)) + x_pos + start_x);
+          Uint8* sptr = source_buf + swidth*y + start_x;
 
           for (int x = start_x; x < end_x; ++x)
             { 
               if (colmap->getpixel(real_x_arg+x, real_y_arg+y) != Groundtype::GP_SOLID)
-                { // FIXME: if inside blit loop might not be such a good idea
-                  if (!CL_Endian::is_system_big())
+                {
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
                     *tptr = 0;
-                  else
+#else
                     tptr[3] = 0;
+#endif
                 }
               
               tptr += 4;
@@ -272,7 +270,6 @@ GroundMap::put_alpha_surface(PixelBuffer provider, PixelBuffer sprovider,
   
   sprovider.unlock();
   provider.unlock();
-#endif
 }
 
 void

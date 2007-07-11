@@ -78,25 +78,24 @@ ColMap::get_width()
 void
 ColMap::remove(const CollisionMask& mask, int x, int y)
 {
-#if 0
 	++serial;
 
-  int swidth  = provider.get_width();
-  int sheight = provider.get_height();
-  int y_offset = -y;
-  int x_offset = -x;
-  if (y_offset < 0) y_offset = 0;
-  if (x_offset < 0) x_offset = 0;
+	int swidth  = mask.get_width();
+	int sheight = mask.get_height();
+	int y_offset = -y;
+	int x_offset = -x;
+	if (y_offset < 0) y_offset = 0;
+	if (x_offset < 0) x_offset = 0;
 
-  provider.lock();
+	mask.get_pixelbuffer().lock();
 
-  if (provider.get_format().get_depth() == 32)
+	if (mask.get_pixelbuffer().get_surface()->format->BitsPerPixel == 32)
 	{
 		for(int line = y_offset; line < sheight && (line + y) < height; ++line)
 		{
 			for (int i = x_offset; i < swidth && (i+x) < width; ++i)
 			{
-				if (provider.get_pixel(i, line).get_alpha() != 0)
+				if (mask.get_pixelbuffer().get_pixel(i, line).a != 0)
 				{
 					if (colmap[i + (width*(line+y) + x)] != Groundtype::GP_SOLID)
 						colmap[i + (width*(line+y) + x)] = Groundtype::GP_NOTHING;
@@ -104,10 +103,10 @@ ColMap::remove(const CollisionMask& mask, int x, int y)
 			}
 		}
 	}
-	else if (provider.get_format().get_depth() == 8)
+	else if (mask.get_pixelbuffer().get_surface()->format->BitsPerPixel == 8)
 	{
 		unsigned char* buffer;
-		buffer = static_cast<unsigned char*>(provider.get_data());
+		buffer = static_cast<unsigned char*>(mask.get_pixelbuffer().get_data());
 
 		for(int line = y_offset; line < sheight && (line + y) < height; ++line)
 		{
@@ -126,8 +125,7 @@ ColMap::remove(const CollisionMask& mask, int x, int y)
 		PingusError::raise("ColMap::remove() - image format not supported");
 	}
 
-	provider.unlock();
-#endif
+	mask.get_pixelbuffer().unlock();
 }
 
 void

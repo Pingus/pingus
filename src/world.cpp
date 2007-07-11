@@ -287,8 +287,10 @@ World::remove(int x, int y)
 }
 
 void
-World::remove(const CollisionMask&, int x, int y)
+World::remove(const CollisionMask& mask, int x, int y)
 {
+  gfx_map->remove(mask.get_pixelbuffer(), x, y);
+  colmap->remove(mask, x, y);
 }
 
 /* EOF */
