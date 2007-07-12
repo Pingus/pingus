@@ -45,7 +45,7 @@ PinguHolder::create_pingu (const Vector3f& pos, int owner_id)
     {
       // We use all_pingus.size() as pingu_id, so that id == array
       // index
-      Pingu* pingu = new Pingu (all_pingus.size(), pos, owner_id);
+      Pingu* pingu = new Pingu ((int)all_pingus.size(), pos, owner_id);
 
       // This list will deleted
       all_pingus.push_back (pingu);
@@ -155,19 +155,19 @@ PinguHolder::get_number_of_exited()
 int
 PinguHolder::get_number_of_killed()
 {
-  return all_pingus.size() - pingus.size() - get_number_of_exited();
+  return (int)all_pingus.size() - (int)pingus.size() - get_number_of_exited();
 }
 
 int
 PinguHolder::get_number_of_alive()
 {
-  return pingus.size();
+  return (int)pingus.size();
 }
 
 int
 PinguHolder::get_number_of_released()
 {
-  return all_pingus.size();
+  return (int)all_pingus.size();
 }
 
 int
@@ -179,7 +179,7 @@ PinguHolder::get_number_of_allowed()
 unsigned int
 PinguHolder::get_end_id()
 {
-  return all_pingus.size();
+  return (unsigned int)all_pingus.size();
 }
 
 

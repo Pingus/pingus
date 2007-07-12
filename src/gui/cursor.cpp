@@ -43,7 +43,7 @@ Cursor::on_event()
 {
   int x,y;
   SDL_GetMouseState(&x, &y);
-  sprite.draw(x, y, Display::get_screen());
+  sprite.draw((float)x, (float)y, Display::get_screen());
 }
 
 

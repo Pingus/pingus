@@ -147,17 +147,17 @@ Matrix::translate(float x, float y, float z)
 Matrix
 Matrix::rotate(float angle, float x, float y, float z)
 {
-  double len2 = x*x+y*y+z*z;
+  float len2 = x*x+y*y+z*z;
   if (len2 != 1.0)
     {
-      double len = sqrt(len2);
+      float len = sqrt(len2);
       x /= len;
       y /= len;
       z /= len;
     }
 
-  double c = cos(angle*3.14159265/180);
-  double s = sin(angle*3.14159265/180);
+  float c = cos(angle*3.14159265f/180);
+  float s = sin(angle*3.14159265f/180);
 
   Matrix matrix = Matrix::identity();
   matrix[0]  = x*x*(1-c)+c;

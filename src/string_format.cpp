@@ -62,8 +62,8 @@ StringFormat::break_line (std::string text, int length, const Font& font)
   while ((pos = text.find("  ", pos)) != std::string::npos)
     text.replace(pos, 2, 1, ' ');
 
-  int start_pos      = 0;
-  int previous_space = 0;
+  size_t start_pos      = 0;
+  size_t previous_space = 0;
   pos = 0;
 
   while ((pos = text.find(' ', pos + 1)) != std::string::npos)

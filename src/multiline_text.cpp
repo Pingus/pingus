@@ -38,13 +38,13 @@ MultiLineText::set_font(Font f)
 void
 MultiLineText::set_text(const std::string& str, int text_width)
 {
-  int last_pos;
+  size_t last_pos;
 
-  for(unsigned int j=0; j < str.length(); )
+  for(size_t j=0; j < str.length(); )
     {
       last_pos = str.length();
 
-      for(unsigned int i=j; /* i < (text_width + j) */
+      for(size_t i=j; /* i < (text_width + j) */
 	  font.get_size(str.substr(j, i-j).c_str()).width < text_width;
 	  ++i)
 	{

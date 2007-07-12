@@ -15,7 +15,7 @@ bool get(const Lisp* lisp, bool& val)
 bool get(const Lisp* lisp, float& val)
 {
   if(lisp->get_type() == Lisp::TYPE_INT)
-    val = lisp->get_int();
+    val = (float)lisp->get_int();
   else if(lisp->get_type() == Lisp::TYPE_FLOAT)
     val = lisp->get_float();
   else

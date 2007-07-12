@@ -161,20 +161,20 @@ GraphicContextState::set_pos(const Vector2f& pos)
     {
       if (-impl->offset.x < impl->limit.left)
         {
-	  impl->offset.x = -( impl->limit.left );
+	  impl->offset.x = (float)-(impl->limit.left);
         }
       else if (-impl->offset.x + get_width() >= impl->limit.right)
         {
-	  impl->offset.x = -( impl->limit.right - get_width() - 1 );
+	  impl->offset.x = (float)-(impl->limit.right - get_width() - 1);
         }
 
       if (-impl->offset.y < impl->limit.top)
         {
-          impl->offset.y = -( impl->limit.top );
+          impl->offset.y = (float)-(impl->limit.top);
         }
       else if (-impl->offset.y + get_height() >= impl->limit.bottom)
         {
-          impl->offset.y = -( impl->limit.bottom - get_height() - 1 );
+          impl->offset.y = (float)-(impl->limit.bottom - get_height() - 1);
         }
     }
 }
@@ -235,7 +235,7 @@ GraphicContextState::zoom_to (const Rectf& rect)
 Vector2f
 GraphicContextState::screen2world(const Vector2i& pos_)
 {
-  Vector2f pos(pos_.x, pos_.y);
+  Vector2f pos((float)pos_.x, (float)pos_.y);
   float sa = (float)sin(-impl->rotation/180.0f*M_PI);
   float ca = (float)cos(-impl->rotation/180.0f*M_PI);
 

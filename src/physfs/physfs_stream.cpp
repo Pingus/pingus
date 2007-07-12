@@ -82,7 +82,7 @@ IFileStreambuf::seekoff(off_type off, std::ios_base::seekdir dir,
       break;
     case std::ios_base::cur:
       if(off == 0)
-        return static_cast<pos_type> (ptell) - static_cast<pos_type> (egptr() - gptr());
+		  return static_cast<pos_type> ((std::streamoff)ptell) - static_cast<pos_type> ((std::streamoff)(egptr() - gptr()));
       pos += static_cast<off_type> (ptell) - static_cast<off_type> (egptr() - gptr());
       break;
     case std::ios_base::end:
@@ -127,7 +127,7 @@ OFileStreambuf::overflow(int c)
         return 0;
 
     size_t size = pptr() - pbase();
-    PHYSFS_sint64 res = PHYSFS_write(file, pbase(), 1, size);
+    PHYSFS_sint64 res = PHYSFS_write(file, pbase(), 1, (PHYSFS_uint32)size);
     if(res <= 0)
         return traits_type::eof();
     

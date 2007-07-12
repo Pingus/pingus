@@ -39,7 +39,7 @@ Lexer::Lexer(std::istream& newstream)
     c = 0;
     bufend = 0;
     nextChar();
-  } catch(EOFException& e) {
+  } catch(EOFException&) {
   }
 }
 

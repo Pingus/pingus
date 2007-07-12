@@ -85,7 +85,7 @@ Quaternion::slerp(const Quaternion& o, float t) const
    */
   float dot = dot_product(o);
 
-  const float DOT_THRESHOLD = 0.995;
+  const float DOT_THRESHOLD = 0.995f;
   if(dot > DOT_THRESHOLD) {
     // quaternions are too close, lineary interpolate them
     Quaternion result = *this + (o - *this)*t;

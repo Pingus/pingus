@@ -90,7 +90,7 @@ public:
         if(type != TYPE_INT)
           throw std::runtime_error("Lisp is not a float");
         else
-          return v.int_;
+          return (float)v.int_;
       }
     else
       {    

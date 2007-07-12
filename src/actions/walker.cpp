@@ -43,8 +43,8 @@ void
 Walker::update ()
 {
   // update the sprite
-  walker[pingu->direction].update(0.033);
-  floaterlayer[pingu->direction].update(0.033);
+  walker[pingu->direction].update(0.033f);
+  floaterlayer[pingu->direction].update(0.033f);
 
   Vector3f last_pos = pingu->get_pos();
 

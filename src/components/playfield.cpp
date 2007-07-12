@@ -230,7 +230,7 @@ Playfield::get_pos() const
 void
 Playfield::set_viewpoint(int x, int y)
 {
-  state.set_pos(Vector2f(x, y));
+  state.set_pos(Vector2f((float)x, (float)y));
 }
 
 void
@@ -245,7 +245,7 @@ Playfield::generate_clipping_rects(int x1, int y1, int x2, int y2)
 void
 Playfield::scroll (int x, int y)
 {
-  state.set_pos(state.get_pos() + Vector2f(x, y));
+  state.set_pos(state.get_pos() + Vector2f((float)x, (float)y));
 }
 
 

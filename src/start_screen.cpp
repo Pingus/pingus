@@ -150,7 +150,7 @@ StartScreenComponent::StartScreenComponent(const PingusLevel& p)
 void
 StartScreenComponent::draw(DrawingContext& gc)
 {
-  gc.draw(background, Display::get_width()/2, Display::get_height()/2);
+  gc.draw(background, Display::get_width()/2.f, Display::get_height()/2.f);
 
   int left_x  = Display::get_width()/2 - 120;
   int right_x = Display::get_width()/2 + 120;

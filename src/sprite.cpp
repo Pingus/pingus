@@ -181,7 +181,7 @@ Sprite::get_height()
 
 Sprite::operator bool()
 {
-  return impl.get();
+  return (impl.get() != 0);
 }
 
 void

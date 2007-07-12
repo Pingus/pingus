@@ -69,9 +69,7 @@ Smasher::update ()
 		            {
 		              world->get_smoke_particle_holder()->
                                 add_particle(pos.x + 20 + float(rand() % 260),
-                                             pos.y + 180,
-                                             float(Math::frand()-0.5f),
-																						 float(Math::frand()-0.5f));
+                                             pos.y + 180, Math::frand()-0.5f, Math::frand()-0.5f);
 		            }
 
 	            for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)

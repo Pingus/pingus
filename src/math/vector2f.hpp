@@ -34,7 +34,7 @@ public:
       : x(other.x), y(other.y)
   { }
   Vector2f(const Vector2i& other)
-    : x(other.x), y(other.y)
+    : x((float)other.x), y((float)other.y)
   {}
   Vector2f()
       : x(0), y(0)

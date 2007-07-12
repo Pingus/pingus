@@ -67,9 +67,9 @@ T mid (const T& a, const T& b, const T& c)
 }
 
 inline
-double frand()
+float frand()
 {
-  return double(rand()) / (RAND_MAX+1.0);
+  return rand() / (RAND_MAX + 1.0f);
 }
 
 inline

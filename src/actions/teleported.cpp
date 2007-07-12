@@ -42,7 +42,7 @@ Teleported::draw (SceneContext& gc)
 void
 Teleported::update()
 {
-  pingu->set_pos (x_target, y_target);
+  pingu->set_pos((float)x_target, (float)y_target);
   pingu->set_status(PS_ALIVE);
   pingu->set_action(Actions::Walker);
 }

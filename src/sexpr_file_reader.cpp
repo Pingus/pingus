@@ -83,7 +83,7 @@ public:
           }
         else if (item->get_type() == lisp::Lisp::TYPE_INT)
           {
-            v = item->get_int();
+            v = (float)item->get_int();
             return true;
           }
         else

@@ -31,8 +31,8 @@ namespace Particles {
 SnowParticleHolder::SnowParticle::SnowParticle (int x, int y, bool colliding_)
   : alive(true),
     colliding(colliding_),
-    pos(Vector3f(x,y)),
-    velocity(Vector3f(0.0f, 1 + ((float)Math::frand() * 3.5f)))
+    pos(Vector3f((float)x,(float)y)),
+    velocity(Vector3f(0.0f, 1 + (Math::frand() * 3.5f)))
 {
   switch (rand() % 10)
     {
@@ -100,7 +100,7 @@ SnowParticleHolder::update ()
 	  continue;
 	}
 
-      it->velocity.x += ((float)Math::frand() - 0.5f) / 10;
+      it->velocity.x += (Math::frand() - 0.5f) / 10;
 #ifdef CLANLIB_0_6
       if (it->colliding)
         {
