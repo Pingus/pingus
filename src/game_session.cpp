@@ -129,7 +129,7 @@ PingusGameSession::update (const GameDelta& delta)
       }
 
       if (show_result_screen)
-        ScreenManager::instance()->replace_screen(new ResultScreen(result));
+        ScreenManager::instance()->replace_screen(new ResultScreen(result), true);
       else
         ScreenManager::instance()->pop_screen();
       return;

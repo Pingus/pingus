@@ -87,19 +87,19 @@ PingusSound::play_sound(Sound::Name name, float volume, float panning)
   switch (name)
     {
     case Sound::DIGGER:
-      play_sound (path_manager.complete ("sounds/digger.wav"), volume, panning);
+      play_sound ("digger", volume, panning);
       break;
     case Sound::PLOP:
-      play_sound (path_manager.complete ("sounds/plop.wav"), volume, panning);
+      play_sound ("plop", volume, panning);
       break;
     case Sound::GOODIDEA:
-      play_sound (path_manager.complete ("sounds/goodidea.wav"), volume, panning);
+      play_sound ("goodidea", volume, panning);
       break;
     case Sound::OHNO:
-      play_sound (path_manager.complete ("sounds/ohno.wav"), volume, panning);
+      play_sound ("ohno", volume, panning);
       break;
     case Sound::TICK:
-      play_sound (path_manager.complete ("sounds/tick.wav"), volume, panning);
+      play_sound ("tick", volume, panning);
       break;
     }
 }
