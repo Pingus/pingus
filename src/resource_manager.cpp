@@ -36,6 +36,10 @@ ResourceManager::ResourceManager()
 
 ResourceManager::~ResourceManager()
 {
+  std::map<std::string, SpriteDescription*>::iterator i;
+  for (i = resources.begin(); i != resources.end(); ++i) {
+    delete (*i).second;
+  }
 }
 
 void
