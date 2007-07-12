@@ -56,6 +56,8 @@
 		{
 			// FIXME: Load thumbnail specific to this level
 			sprite = Resource::load_sprite("core/menu/default_level");
+			file_item.is_accessible = true;
+			file_item.is_finished = false;
 #if 0
 
 			// Load information about this file if possible.
