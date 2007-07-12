@@ -49,7 +49,7 @@ ResourceManager::add_resources(const std::string& filename)
   lisp::Lisp* sexpr = lisp::Parser::parse(filename);
   if (sexpr)
     {
-      SExprFileReader reader(sexpr = sexpr->get_list_elem(0));
+      SExprFileReader reader(sexpr->get_list_elem(0));
 
       if (reader.get_name() == "pingus-resources")
         {
@@ -66,6 +66,7 @@ ResourceManager::add_resources(const std::string& filename)
                     << "\ngot " << reader.get_name()
                     << std::endl;
         }
+      delete sexpr;
     }
   else
     {
