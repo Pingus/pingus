@@ -147,7 +147,7 @@ GroundMap::draw(SceneContext& gc)
               }
             else
               {
-                if (pingus_debug_flags & PINGUS_DEBUG_TILES)
+                if (0 /*pingus_debug_flags & PINGUS_DEBUG_TILES*/)
                   gc.color().draw_fillrect((float)x * tile_size,
                                            (float)y * tile_size,
                                            (float)x * tile_size + tile_size,

@@ -77,7 +77,7 @@ MultiLineText::set_text(const std::string& str, int text_width)
   for(std::vector<std::string>::iterator i = text.begin(); i != text.end(); ++i)
 	  width = Math::max(width, font.get_size(i->c_str()).width);
 
-  height = text.size() * font.get_height();
+  height = (int)text.size() * font.get_height();
 }
 
 void
