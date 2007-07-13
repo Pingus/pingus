@@ -95,6 +95,7 @@ $typespec_level =
    [/^\/pingus-level\/objects\/liquid$/, :section],
    [/^\/pingus-level\/objects\/liquid\/width$/, :integer],
    [/^\/pingus-level\/objects\/liquid\/speed$/, :integer],
+   [/^\/pingus-level\/objects\/snow-generator$/, :section],
 ]
 
 $typespec_generic =
