@@ -46,13 +46,11 @@ LevelDot::LevelDot(FileReader reader)
     highlight_green_dot_sur(Resource::load_sprite("core/worldmap/dot_green_hl")),
     highlight_red_dot_sur(Resource::load_sprite("core/worldmap/dot_red_hl"))
 {
-#if 0
   std::string resname;
   reader.read_string("levelname", resname); 
 
   plf = PLFResMgr::load_plf(resname);
   levelname = plf.get_levelname();
-#endif
 }
 
 void
