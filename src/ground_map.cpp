@@ -40,16 +40,10 @@ MapTile::~MapTile()
 void
 MapTile::prepare()
 {
-#if 0
-  if (!pixelbuffer)
-    {
-      pixelbuffer = PixelBuffer(tile_size, tile_size, tile_size*4, CL_PixelFormat::rgba8888);
-      Blitter::clear_canvas(pixelbuffer);
-    }
-#endif
   if (!pixelbuffer)
     {
       pixelbuffer = PixelBuffer(tile_size, tile_size);
+      //Blitter::clear_canvas(pixelbuffer);
     }
 }
 

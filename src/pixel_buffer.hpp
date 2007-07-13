@@ -29,12 +29,23 @@
 #include "SDL.h"
 #include <string>
 #include "math/color.hpp"
+#include "shared_ptr.hpp"
+
+class PixelBufferImpl
+{
+public:
+  PixelBufferImpl(SDL_Surface* surface = NULL) : surface(surface) {}
+  ~PixelBufferImpl() {
+    SDL_FreeSurface(surface);
+  }
+  SDL_Surface* surface;
+};
 
 /** */
 class PixelBuffer
 {
 private:
-  SDL_Surface* surface;
+  SharedPtr<PixelBufferImpl> impl;
 
 public:
   PixelBuffer();

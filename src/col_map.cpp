@@ -26,6 +26,7 @@
 #include "pixel_buffer.hpp"
 #include "pingus_error.hpp"
 #include "gettext.h"
+#include "sprite.hpp"
 
 #define COLMAP_WITH_MEMORY_HOLE 1
 
@@ -253,7 +254,6 @@ ColMap::put(const CollisionMask& mask, int sur_x, int sur_y, Groundtype::GPType 
 void
 ColMap::draw(DrawingContext& gc)
 {
-#if 0
   PixelBuffer canvas(width, height);
   unsigned char* buffer;
 
@@ -297,9 +297,7 @@ ColMap::draw(DrawingContext& gc)
   canvas.unlock();
 
   Sprite sprite(canvas);
-
-  //FIXME:gc.draw(sprite, 0, 0);
-#endif
+  gc.draw(sprite, 0, 0);
 }
 
 unsigned

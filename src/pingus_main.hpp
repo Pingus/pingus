@@ -67,9 +67,6 @@ private:
 
   void print_greeting_message();
 
-  void init_clanlib();
-  void deinit_clanlib();
-
   void init_sdl();
   void deinit_sdl();
 

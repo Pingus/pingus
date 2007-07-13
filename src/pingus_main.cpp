@@ -836,7 +836,6 @@ PingusMain::main(int argc, char** argv)
   }
 
   deinit_pingus();
-  deinit_clanlib();
 
   PHYSFS_deinit();
 
@@ -861,68 +860,10 @@ PingusMain::deinit_sdl()
 }
 
 void
-PingusMain::init_clanlib()
-{
-#if 0
-  if (render_preview)
-    {
-      CL_SetupCore::init ();
-      // Register only the resource types
-      CL_SetupDisplay::init(true);
-    }
-  else
-    {
-      CL_SetupCore::init ();
-
-      if (use_opengl) CL_SetupGL::init();
-      else            CL_SetupSDL::init();
-
-      CL_SetupDisplay::init();
-
-      if (verbose) {
-        std::cout << "Using resolution: "
-                  << screen_width << "x" << screen_height << std::endl;
-      }
-
-      CL_DisplayWindowDescription window_desc;
-      window_desc.set_size(CL_Size(screen_width, screen_height));
-      window_desc.set_title(PACKAGE_STRING);
-      window_desc.set_fullscreen(fullscreen_enabled);
-      window_desc.set_allow_resize(false);
-      window_desc.set_refresh_rate(refresh_rate);
-      
-      window = new CL_DisplayWindow(window_desc);
-     
-  //CL_Display::clear();
-  //  CL_Display::flip();
-    }
-  CL_SetupGUI::init ();
-  
-  on_exit_press_slot = window->sig_window_close().connect(this, &PingusMain::on_exit_press);
-#endif 
-}
-
-void
 PingusMain::on_exit_press()
 {
   std::cout << "Exit pressed" << std::endl;
   ScreenManager::instance()->clear();
-}
-
-void
-PingusMain::deinit_clanlib()
-{
-#if 0
-  CL_SetupCore::deinit();
-  CL_SetupGUI::deinit ();
-
-  if (use_opengl)
-    CL_SetupGL::deinit();
-  else
-    CL_SetupSDL::deinit();
-
-  CL_SetupDisplay::deinit ();
-#endif 
 }
 
 void
