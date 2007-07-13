@@ -87,7 +87,9 @@ ResourceManager::parse(const std::string& section, FileReader& reader)
       reader.read_string("name", name);
       if (!section.empty())
         name = section + "/" + name;
-     
+ 
+      if (resources[name])
+	delete resources[name];
       resources[name] = new SpriteDescription(reader);
     }
   else if (reader.get_name() == "alias")

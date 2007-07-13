@@ -122,7 +122,7 @@ PingusMenu::setup_worldmap_menu()
 {
   if (filedialog)
     delete filedialog;
-  filedialog = new FileDialog(this, ".xml", 
+  filedialog = new FileDialog(this, ".worldmap", 
                               path_manager.complete("worldmaps/"), true);
   manager->push_menu (filedialog);
 }
@@ -237,7 +237,7 @@ PingusMenu::load(const std::string &file, const std::string &filemask)
   if (filemask == ".scm")
     do_contrib(file);
   // Worldmap
-  else if (filemask == ".xml")
+  else if (filemask == ".worldmap")
     do_start(file);
   manager->pop_menu();
 }
