@@ -64,8 +64,14 @@ $typespec_level =
    [/^\/pingus-level\/head\/actions$/,  :section],
    [/^\/pingus-level\/head\/actions\/[a-z]+$/,  :integer],
    [/^\/pingus-level\/head\/levelsize$/,  :size],
+
    [/^\/pingus-level\/objects$/,  :section],
+
    [/^\/pingus-level\/objects\/surface-background$/,  :section],
+   [/^\/pingus-level\/objects\/surface-background\/alpha$/,  :integer],
+   [/^\/pingus-level\/objects\/surface-background\/red$/,  :integer],
+   [/^\/pingus-level\/objects\/surface-background\/green$/,  :integer],
+   [/^\/pingus-level\/objects\/surface-background\/blue$/,  :integer],
    [/^\/pingus-level\/objects\/surface-background\/scroll-x$/,  :integer],
    [/^\/pingus-level\/objects\/surface-background\/scroll-y$/,  :integer],
    [/^\/pingus-level\/objects\/surface-background\/para-x$/,  :integer],
@@ -73,16 +79,10 @@ $typespec_level =
    [/^\/pingus-level\/objects\/surface-background\/stretch-x$/,  :integer],
    [/^\/pingus-level\/objects\/surface-background\/stretch-y$/,  :integer],
    [/^\/pingus-level\/objects\/surface-background\/keep-aspect$/,  :integer],
-#   [/^\/pingus-level\/objects\/surface-background\/position$/,  :vector],
-   [/^\/pingus-level\/objects\/hotspot$/, :section],
-   [/^\/pingus-level\/objects\/hotspot\/parallax$/, :integer],
-   [/^\/pingus-level\/objects\/hotspot\/speed$/, :integer],
 
-   [/^\/pingus-level\/objects\/groundpiece$/, :section],
-   [/^\/pingus-level\/objects\/groundpiece\/type$/, :string],
-
-   [/^\/pingus-level\/objects\/exit$/, :section],
-   [/^\/pingus-level\/objects\/exit\/owner-id$/, :integer],
+   [/^\/pingus-level\/objects\/conveyorbelt$/, :section],
+   [/^\/pingus-level\/objects\/conveyorbelt\/width$/, :integer],
+   [/^\/pingus-level\/objects\/conveyorbelt\/speed$/, :integer],
 
    [/^\/pingus-level\/objects\/entrance$/, :section],
    [/^\/pingus-level\/objects\/entrance\/type$/, :string],
@@ -90,12 +90,45 @@ $typespec_level =
    [/^\/pingus-level\/objects\/entrance\/release-rate$/, :integer],
    [/^\/pingus-level\/objects\/entrance\/owner-id$/, :integer],
 
-   [/^\/pingus-level\/objects\/spike$/, :section],
+   [/^\/pingus-level\/objects\/exit$/, :section],
+   [/^\/pingus-level\/objects\/exit\/owner-id$/, :integer],
+
+   [/^\/pingus-level\/objects\/groundpiece$/, :section],
+   [/^\/pingus-level\/objects\/groundpiece\/type$/, :string],
+
+   [/^\/pingus-level\/objects\/guillotine$/, :section],
+   [/^\/pingus-level\/objects\/hammer$/, :section],
+
+   [/^\/pingus-level\/objects\/hotspot$/, :section],
+   [/^\/pingus-level\/objects\/hotspot\/parallax$/, :integer],
+   [/^\/pingus-level\/objects\/hotspot\/speed$/, :integer],
+
+   [/^\/pingus-level\/objects\/iceblock$/, :section],
+   [/^\/pingus-level\/objects\/iceblock\/width$/, :integer],
+
+   [/^\/pingus-level\/objects\/infobox$/, :section],
+   [/^\/pingus-level\/objects\/infobox\/info-text$/, :string],
+
+   [/^\/pingus-level\/objects\/laser_exit$/, :section],
 
    [/^\/pingus-level\/objects\/liquid$/, :section],
    [/^\/pingus-level\/objects\/liquid\/width$/, :integer],
    [/^\/pingus-level\/objects\/liquid\/speed$/, :integer],
+
+   [/^\/pingus-level\/objects\/rain-generator$/, :section],
+   [/^\/pingus-level\/objects\/smasher$/, :section],
    [/^\/pingus-level\/objects\/snow-generator$/, :section],
+   [/^\/pingus-level\/objects\/solidcolor-background$/, :section],
+   [/^\/pingus-level\/objects\/spike$/, :section],
+
+   [/^\/pingus-level\/objects\/switchdoor$/, :section],
+   [/^\/pingus-level\/objects\/switchdoor\/switch$/, :section],
+   [/^\/pingus-level\/objects\/switchdoor\/door$/, :section],
+   [/^\/pingus-level\/objects\/switchdoor\/door\/height$/, :integer],
+
+   [/^\/pingus-level\/objects\/teleporter$/, :section],
+   [/^\/pingus-level\/objects\/teleporter\/target$/, :section],
+
 ]
 
 $typespec_generic =
