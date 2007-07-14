@@ -50,7 +50,7 @@ public:
 	//param width: Initial width of size structure.
 	//param height: Initial height of size structure.
 	//param size: Size structure to construct this one from.
-	Size() { return; }
+	Size() : width(0), height(0) { return; }
 
 	Size(int width, int height)
 	: width(width), height(height) { }
@@ -104,7 +104,7 @@ public:
 	//param width: Initial width of size structure.
 	//param height: Initial height of size structure.
 	//param size: Size structure to construct this one from.
-	Sizef() { return; }
+	Sizef() : width(0.f), height(0.f) { return; }
 
 	Sizef(const Size& s) 
 		: width((float)s.width),

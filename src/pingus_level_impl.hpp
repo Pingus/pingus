@@ -33,6 +33,8 @@ public:
   // Set defaults in constructor
   PingusLevelImpl()
     : ambient_light(255, 255, 255, 255),
+      number_of_pingus(0), number_to_save(0),
+      time(0), difficulty(0),
       music("none")
   {
     // Do nothing
