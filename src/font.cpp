@@ -129,29 +129,29 @@ public:
   {
     Vector2i offset = calc_origin(origin, get_size(text));
 
-    SDL_Rect dstrect;
-    dstrect.x = x - offset.x;
-    dstrect.y = y - offset.y;
+    int dstx = x - offset.x;
+    int dsty = y - offset.y;
 
 
     for(std::string::size_type i = 0; i < text.size(); ++i)
       {
         if (text[i] == ' ')
           {
-            dstrect.x += space_length;
+            dstx += space_length;
           }
         else if (text[i] == '\n')
           {
-            dstrect.x = x;
-            dstrect.y += surface->h;
+            dstx = x;
+            dsty += surface->h;
           }
         else
           {
             SDL_Rect& srcrect = chrs[static_cast<unsigned char>(text[i])];
             if (srcrect.w != 0 && srcrect.h != 0)
               {
+		SDL_Rect dstrect = { dstx, dsty, 0, 0 };
                 SDL_BlitSurface(surface, &srcrect, target, &dstrect);
-                dstrect.x += srcrect.w+1;
+                dstx += srcrect.w+1;
               }
             else
               {
