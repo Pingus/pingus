@@ -511,10 +511,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\src\indexed_canvas.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\src\indexHeader.inc"
 				>
 			</File>
@@ -671,10 +667,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\src\plt_xml.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\src\preview_renderer.hpp"
 				>
 			</File>
@@ -739,10 +731,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\src\screenshot.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\src\server.cpp"
 				>
 			</File>
@@ -764,10 +752,6 @@
 			</File>
 			<File
 				RelativePath=".\src\sexpr_file_reader.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\src\shared_ptr.hpp"
 				>
 			</File>
 			<File
@@ -844,18 +828,6 @@
 			</File>
 			<File
 				RelativePath=".\src\system.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\src\target_provider.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\src\theme.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\src\theme_selector.hpp"
 				>
 			</File>
 			<File
@@ -1529,14 +1501,6 @@
 						>
 					</File>
 					<File
-						RelativePath=".\src\input\buttons\key_button.hpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\buttons\mouse_button.hpp"
-						>
-					</File>
-					<File
 						RelativePath=".\src\input\buttons\multiple_button.hpp"
 						>
 					</File>
@@ -1565,10 +1529,6 @@
 						>
 					</File>
 					<File
-						RelativePath=".\src\input\scrollers\mouse_scroller.hpp"
-						>
-					</File>
-					<File
 						RelativePath=".\src\input\scrollers\multiple_scroller.hpp"
 						>
 					</File>
@@ -1586,10 +1546,6 @@
 					</File>
 					<File
 						RelativePath=".\src\input\pointers\dummy_pointer.hpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\pointers\mouse_pointer.hpp"
 						>
 					</File>
 					<File
@@ -2077,10 +2033,6 @@
 			<Filter
 				Name="sound"
 				>
-				<File
-					RelativePath=".\src\sound\slot_manager.hpp"
-					>
-				</File>
 				<File
 					RelativePath=".\src\sound\sound.cpp"
 					>
