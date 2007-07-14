@@ -134,7 +134,6 @@ public:
 };
 
 Sprite::Sprite()
-  : impl(0)
 {
 }
 

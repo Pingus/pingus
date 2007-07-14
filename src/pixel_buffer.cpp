@@ -29,7 +29,6 @@
 #include "pixel_buffer.hpp"
 
 PixelBuffer::PixelBuffer()
-  : impl(0)
 {
 }
 

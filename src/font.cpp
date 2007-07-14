@@ -206,7 +206,6 @@ public:
 };
 
 Font::Font()
-  : impl(0)
 {
 }
 

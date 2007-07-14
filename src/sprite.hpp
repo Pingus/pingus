@@ -27,8 +27,8 @@
 #define HEADER_SPRITE_HPP
 
 #include <string>
+#include <boost/shared_ptr.hpp>
 #include "SDL.h"
-#include "shared_ptr.hpp"
 
 class PixelBuffer;
 class SpriteImpl;
@@ -57,7 +57,7 @@ public:
   operator bool();
 
 private:
-  SharedPtr<SpriteImpl> impl;
+  boost::shared_ptr<SpriteImpl> impl;
 };
 
 #endif

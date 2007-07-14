@@ -23,7 +23,7 @@
 #include <string>
 #include <vector>
 #include <map>
-#include "shared_ptr.hpp"
+#include <boost/shared_ptr.hpp>
 #include "file_reader.hpp"
 
 
@@ -83,7 +83,7 @@ public:
   const std::string get_resname() const;
 
 protected:
-  SharedPtr<PingusLevelImpl> impl;
+  boost::shared_ptr<PingusLevelImpl> impl;
 };
 
 

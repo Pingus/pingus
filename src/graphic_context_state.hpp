@@ -20,11 +20,11 @@
 #ifndef HEADER_GRAPHIC_CONTEXT_STATE_HXX
 #define HEADER_GRAPHIC_CONTEXT_STATE_HXX
 
+#include <boost/shared_ptr.hpp>
 #include "math/rect.hpp"
 #include "math/vector3f.hpp"
 #include "math/vector2i.hpp"
 #include "math/vector2f.hpp"
-#include "shared_ptr.hpp"
 #include "display/drawing_context.hpp"
 #include "display/scene_context.hpp"
 
@@ -87,7 +87,7 @@ public:
   Vector2f screen2world(const Vector2i& pos);
 
 private:
-  SharedPtr<GraphicContextStateImpl> impl;
+  boost::shared_ptr<GraphicContextStateImpl> impl;
 };
 
 #endif

@@ -28,8 +28,8 @@
 
 #include "SDL.h"
 #include <string>
+#include <boost/shared_ptr.hpp>
 #include "math/color.hpp"
-#include "shared_ptr.hpp"
 
 class PixelBufferImpl
 {
@@ -44,9 +44,6 @@ public:
 /** */
 class PixelBuffer
 {
-private:
-  SharedPtr<PixelBufferImpl> impl;
-
 public:
   PixelBuffer();
   PixelBuffer(const std::string& name);
@@ -67,6 +64,9 @@ public:
   SDL_Surface* get_surface() const;
 
   operator bool() const;
+
+protected:
+  boost::shared_ptr<PixelBufferImpl> impl;
 };
 
 #endif

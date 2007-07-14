@@ -252,7 +252,7 @@ private:
 };
 
 SExprFileReader::SExprFileReader(lisp::Lisp* lisp)
-  : FileReader(SharedPtr<FileReaderImpl>(new SExprFileReaderImpl(lisp)))
+  : FileReader(boost::shared_ptr<FileReaderImpl>(new SExprFileReaderImpl(lisp)))
 {
 }
 

@@ -27,11 +27,11 @@
 #define HEADER_FONT_HPP
 
 #include <string>
+#include <boost/shared_ptr.hpp>
 #include "SDL.h"
 #include "math/origin.hpp"
 #include "math/rect.hpp"
 #include "math/size.hpp"
-#include "shared_ptr.hpp"
 
 class FontImpl;
 class FontDescription;
@@ -53,7 +53,7 @@ public:
   Rect bounding_rect(int , int, const std::string& str) const;
 
 private:
-  SharedPtr<FontImpl> impl;
+  boost::shared_ptr<FontImpl> impl;
 };
 
 #endif

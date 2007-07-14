@@ -22,7 +22,7 @@
 
 #include <string>
 #include <vector>
-#include "shared_ptr.hpp"
+#include <boost/shared_ptr.hpp>
 
 class Size;
 class Color;
@@ -37,7 +37,7 @@ class FileReaderImpl;
 class FileReader
 {
 public:
-  FileReader(SharedPtr<FileReaderImpl> impl_);
+  FileReader(boost::shared_ptr<FileReaderImpl> impl_);
   FileReader();
 
   /** Name of the current section, ie. in the case of
@@ -75,7 +75,7 @@ public:
 
   static FileReader parse(const std::string& filename);
 private:
-  SharedPtr<FileReaderImpl> impl;
+  boost::shared_ptr<FileReaderImpl> impl;
 };
 
 #endif
