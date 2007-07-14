@@ -113,7 +113,6 @@ Display::clear()
 void
 Display::draw_rect(const Rect&, const Color&)
 {
-  
 }
 
 void
@@ -122,7 +121,7 @@ Display::fill_rect(const Rect& rect, const Color& color)
   SDL_Rect srcrect;
 
   srcrect.x = rect.left;
-  srcrect.y = rect.right;
+  srcrect.y = rect.top;
   srcrect.w = rect.get_width();
   srcrect.h = rect.get_height();
 
