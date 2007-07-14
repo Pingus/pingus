@@ -746,7 +746,7 @@ PingusMain::start_game ()
     }
   else if (editor == true)
     {
-      ScreenManager::instance()->push_screen (new Editor::EditorScreen());
+      ScreenManager::instance()->push_screen (new Editor::EditorScreen(), true);
     }
   else // start a normal game
     {

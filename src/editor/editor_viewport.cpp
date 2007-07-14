@@ -52,6 +52,7 @@ EditorViewport::EditorViewport(EditorScreen* e) :
 // Destructor
 EditorViewport::~EditorViewport ()
 {
+  delete scene_context;
 }
 
 // When someone right-clicks inside the viewport

@@ -185,7 +185,7 @@ void PingusMenu::do_contrib(const std::string &levelfile)
 void PingusMenu::do_edit()
 {	// Launch the level editor
   Sound::PingusSound::stop_music();
-  ScreenManager::instance()->push_screen (new Editor::EditorScreen());
+  ScreenManager::instance()->push_screen (new Editor::EditorScreen(), true);
 }
 
 void
