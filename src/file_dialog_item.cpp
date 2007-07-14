@@ -58,8 +58,19 @@
 			sprite = Resource::load_sprite("core/menu/default_level");
 			file_item.is_accessible = true;
 			file_item.is_finished = false;
-#if 0
 
+			// Load information about this file if possible.
+			FileReader reader = FileReader::parse(file_dialog->get_path() + file_item.name);
+			if (reader.get_name() != "pingus-level" || reader.get_name() != "pingus-worldmap") {
+				FileReader head;
+				if (reader.read_section("head", head)) {
+					head.read_string("levelname", file_item.friendly_name);
+					head.read_string("difficulty", file_info);
+					Savegame* sg = SavegameManager::instance()->get(file_item.friendly_name);
+					status = sg ? _("Finished!") : _("Not finished!");
+				}
+			}
+#if 0
 			// Load information about this file if possible.
 			CL_InputSourceProvider_File provider(".");
 			CL_DomDocument doc(provider.open_source(file_dialog->get_path() 
