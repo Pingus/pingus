@@ -47,6 +47,10 @@ public:
 
   Size     array;
 
+  bool     loop;
+  bool     loop_last_cycle;
+  bool     finished;
+
   /** Current frame */
   int frame; 
   int tick_count;
@@ -76,6 +80,10 @@ public:
     frame_delay  = desc.speed;
 
     array = desc.array;
+
+    loop = desc.loop;
+    loop_last_cycle = false;
+    finished = false;
 
     offset = calc_origin(desc.origin, frame_size) - desc.offset;
   }
@@ -108,10 +116,29 @@ public:
 
   void update(float delta)
   {
-      tick_count += int(delta * 1000.0f);
-      tick_count = tick_count % (frame_delay * (array.width * array.height));
-        
-      frame = tick_count / frame_delay;
+    if (finished)
+      return;
+
+    int total_time = frame_delay * (array.width * array.height);
+    tick_count += int(delta * 1000.0f);
+    if (tick_count >= total_time)
+      {
+	if (loop)
+	  {
+	    loop_last_cycle = true;
+	    tick_count = tick_count % total_time;
+	    frame = tick_count / frame_delay;
+	  }
+	else
+	  {
+	    finished = true;
+	  }
+      }
+    else
+      {
+	loop_last_cycle = false;
+	frame = tick_count / frame_delay;
+      }
   }
 
   void draw(float x, float y, SDL_Surface* dst)
@@ -130,6 +157,19 @@ public:
     srcrect.y = frame_pos.y + (srcrect.h * (frame/array.width));
 
     SDL_BlitSurface(surface, &srcrect, dst, &dstrect);
+  }
+
+  void restart()
+  {
+    finished = false;
+    loop_last_cycle = false;
+    frame = 0;
+    tick_count = 0;
+  }
+
+  void finish()
+  {
+    finished = true;
   }
 };
 
@@ -155,7 +195,6 @@ Sprite::~Sprite()
 void
 Sprite::draw(float x, float y, SDL_Surface* target)
 {
-  //std::cout << "Sprite: draw; " << x << ", " << y << std::endl;
   if (impl.get())
     impl->draw(x, y, target);
 }
@@ -184,7 +223,7 @@ Sprite::operator bool()
 }
 
 void
-Sprite:: update(float delta)
+Sprite::update(float delta)
 {
   if (impl.get())
     impl->update(delta);
@@ -200,13 +239,35 @@ Sprite::set_frame(int i)
 int
 Sprite::get_frame_count() const
 {
-  return (impl->array.width * impl->array.height);
+  if (impl.get())
+    return (impl->array.width * impl->array.height);
+  else
+    return 0;
 }
 
 bool
 Sprite::is_finished() const
 {
-  return true;
+  if (impl.get())
+    return impl->finished;
+  else
+    return true;
+}
+
+bool
+Sprite::is_looping() const
+{
+  if (impl.get())
+    return impl->loop_last_cycle;
+  else
+    return false;
+}
+
+void
+Sprite::set_play_loop(bool loop)
+{
+  if (impl.get())
+    impl->loop = loop;
 }
 
 int
@@ -221,7 +282,15 @@ Sprite::get_current_frame() const
 void
 Sprite::restart()
 {
-  
+  if (impl.get())
+    impl->restart();
+}
+
+void
+Sprite::finish()
+{
+  if (impl.get())
+    impl->finish();
 }
 
 /* EOF */

@@ -53,7 +53,10 @@ public:
   int  get_frame_count() const;
   int  get_current_frame() const;
   bool is_finished() const;
-  void  restart();
+  bool is_looping() const;
+  void set_play_loop(bool loop = true);
+  void restart();
+  void finish();
   operator bool();
 
 private:
