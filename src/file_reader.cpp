@@ -160,8 +160,7 @@ FileReader::read_section(const char* name)   const
 FileReader
 FileReader::parse(const std::string& filename)
 {
-  // FIXME: memory leak, somebody must delete the lisp::Lisp
-  lisp::Lisp* sexpr = lisp::Parser::parse(filename);
+  boost::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(filename);
   if (sexpr)
     {
       return SExprFileReader(sexpr->get_list_elem(0));

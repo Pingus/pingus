@@ -50,11 +50,11 @@ Lisp::Lisp(LispType newtype, const std::string& str)
   memcpy(v.string, str.c_str(), str.size()+1);
 }
 
-Lisp::Lisp(const std::vector<Lisp*>& list_elements)
+Lisp::Lisp(const std::vector<boost::shared_ptr<Lisp> >& list_elements)
   : type(TYPE_LIST)
 {
   v.list.size = list_elements.size();
-  v.list.entries = new Lisp* [v.list.size];
+  v.list.entries = new boost::shared_ptr<Lisp> [v.list.size];
   for(size_t i = 0; i < v.list.size; ++i) {
     v.list.entries[i] = list_elements[i];
   }
@@ -65,8 +65,6 @@ Lisp::~Lisp()
   if(type == TYPE_SYMBOL || type == TYPE_STRING) {
     delete[] v.string;
   } else if(type == TYPE_LIST) {
-    for(size_t i = 0; i < v.list.size; ++i)
-      delete v.list.entries[i];
     delete[] v.list.entries;
   }
 }

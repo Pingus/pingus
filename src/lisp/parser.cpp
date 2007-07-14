@@ -64,7 +64,7 @@ Parser::~Parser()
   delete lexer;
 }
 
-Lisp*
+boost::shared_ptr<Lisp>
 Parser::parse(const std::string& filename)
 {
   IFileStream in(filename);
@@ -77,7 +77,7 @@ Parser::parse(const std::string& filename)
   return parse(in, filename);
 }
 
-Lisp*
+boost::shared_ptr<Lisp>
 Parser::parse(std::istream& stream, const std::string& filename)
 {
   std::auto_ptr<Parser> parser (new Parser());
@@ -89,7 +89,7 @@ Parser::parse(std::istream& stream, const std::string& filename)
   if(parser->token != Lexer::TOKEN_OPEN_PAREN)
     throw ParseError(parser.get(), "file doesn't start with '('");
 
-  std::auto_ptr<Lisp> result (parser->parse());
+  boost::shared_ptr<Lisp> result(parser->parse());
   if(parser->token != Lexer::TOKEN_EOF) {
     if(parser->token == Lexer::TOKEN_CLOSE_PAREN)
       throw ParseError(parser.get(), "too many ')'");
@@ -97,80 +97,73 @@ Parser::parse(std::istream& stream, const std::string& filename)
       throw ParseError(parser.get(), "extra tokens at end of file");
   }
     
-  return result.release();
+  return result;
 }
 
-Lisp*
+boost::shared_ptr<Lisp>
 Parser::parse()
 {
-  std::vector<Lisp*> entries;
-  try {
-    while(token != Lexer::TOKEN_CLOSE_PAREN && token != Lexer::TOKEN_EOF) {
-      switch(token) {
-        case Lexer::TOKEN_OPEN_PAREN:
+  std::vector<boost::shared_ptr<Lisp> > entries;
+  while(token != Lexer::TOKEN_CLOSE_PAREN && token != Lexer::TOKEN_EOF) {
+    switch(token) {
+      case Lexer::TOKEN_OPEN_PAREN:
+        token = lexer->getNextToken();
+      
+        // Handle (_ "blup") strings that need to be translated
+        if(token == Lexer::TOKEN_SYMBOL
+            && strcmp(lexer->getString(), "_") == 0) {
           token = lexer->getNextToken();
-        
-          // Handle (_ "blup") strings that need to be translated
-          if(token == Lexer::TOKEN_SYMBOL
-              && strcmp(lexer->getString(), "_") == 0) {
-            token = lexer->getNextToken();
-            if(token != Lexer::TOKEN_STRING)
-              throw ParseError(this, "Expected string after '(_' sequence");
-            entries.push_back(new Lisp(Lisp::TYPE_STRING, lexer->getString()));
-            
-            token = lexer->getNextToken();
-            if(token != Lexer::TOKEN_CLOSE_PAREN)
-              throw ParseError(this, "Expected ')' after '(_ ""' sequence");
-            break;
-          }
-        
-          entries.push_back(parse());
-          if(token != Lexer::TOKEN_CLOSE_PAREN) {
-            if(token == Lexer::TOKEN_EOF)
-              throw ParseError(this, "Expected ')' token, got EOF");
-            else
-              throw ParseError(this, "Expected ')' token");
-          }
-          break;
-        case Lexer::TOKEN_SYMBOL:
-          entries.push_back(new Lisp(Lisp::TYPE_SYMBOL, lexer->getString()));
-          break;
-        case Lexer::TOKEN_STRING:
-          entries.push_back(new Lisp(Lisp::TYPE_STRING, lexer->getString()));
-          break;
-        case Lexer::TOKEN_INTEGER: {
-          int val;
-          sscanf(lexer->getString(), "%d", &val);
-          entries.push_back(new Lisp(val));
+          if(token != Lexer::TOKEN_STRING)
+            throw ParseError(this, "Expected string after '(_' sequence");
+          entries.push_back(boost::shared_ptr<Lisp>(new Lisp(Lisp::TYPE_STRING, lexer->getString())));
+          
+          token = lexer->getNextToken();
+          if(token != Lexer::TOKEN_CLOSE_PAREN)
+            throw ParseError(this, "Expected ')' after '(_ ""' sequence");
           break;
         }
-        case Lexer::TOKEN_REAL: {
-          float val;
-          sscanf(lexer->getString(), "%f", &val);
-          entries.push_back(new Lisp(val));
-          break;
+      
+        entries.push_back(parse());
+        if(token != Lexer::TOKEN_CLOSE_PAREN) {
+          if(token == Lexer::TOKEN_EOF)
+            throw ParseError(this, "Expected ')' token, got EOF");
+          else
+            throw ParseError(this, "Expected ')' token");
         }
-        case Lexer::TOKEN_TRUE:
-          entries.push_back(new Lisp(true));
-          break;
-        case Lexer::TOKEN_FALSE:
-          entries.push_back(new Lisp(false));
-          break;
-        default:
-          // this should never happen
-          assert(false);
+        break;
+      case Lexer::TOKEN_SYMBOL:
+        entries.push_back(boost::shared_ptr<Lisp>(new Lisp(Lisp::TYPE_SYMBOL, lexer->getString())));
+        break;
+      case Lexer::TOKEN_STRING:
+        entries.push_back(boost::shared_ptr<Lisp>(new Lisp(Lisp::TYPE_STRING, lexer->getString())));
+        break;
+      case Lexer::TOKEN_INTEGER: {
+        int val;
+        sscanf(lexer->getString(), "%d", &val);
+        entries.push_back(boost::shared_ptr<Lisp>(new Lisp(val)));
+        break;
       }
-
-      token = lexer->getNextToken();
+      case Lexer::TOKEN_REAL: {
+        float val;
+        sscanf(lexer->getString(), "%f", &val);
+        entries.push_back(boost::shared_ptr<Lisp>(new Lisp(val)));
+        break;
+      }
+      case Lexer::TOKEN_TRUE:
+        entries.push_back(boost::shared_ptr<Lisp>(new Lisp(true)));
+        break;
+      case Lexer::TOKEN_FALSE:
+        entries.push_back(boost::shared_ptr<Lisp>(new Lisp(false)));
+        break;
+      default:
+        // this should never happen
+        assert(false);
     }
-  } catch(...) {
-    for(std::vector<Lisp*>::iterator i = entries.begin();
-        i != entries.end(); ++i)
-      delete *i;
-    throw;
+
+    token = lexer->getNextToken();
   }
   
-  return new Lisp(entries);
+  return boost::shared_ptr<Lisp>(new Lisp(entries));
 }
 
 } // end of namespace lisp

@@ -14,14 +14,14 @@ Properties::Properties(const Lisp* lisp)
         throw std::runtime_error("Lisp is not a list");
 
       for(size_t i = 0; i < lisp->get_list_size(); ++i) {
-        const Lisp* child = lisp->get_list_elem(i);
+        const boost::shared_ptr<Lisp> child = lisp->get_list_elem(i);
         if(i == 0 && child->get_type() == Lisp::TYPE_SYMBOL)
           continue;
         if(child->get_type() != Lisp::TYPE_LIST)
           throw std::runtime_error("child of properties lisp is not a list");
         if(child->get_list_size() > 1)
           {    
-            const Lisp* name = child->get_list_elem(0);
+            const boost::shared_ptr<Lisp> name = child->get_list_elem(0);
             if(name->get_type() != Lisp::TYPE_SYMBOL)
               throw std::runtime_error("property has no symbol as name");
             properties.insert(std::make_pair(

@@ -25,6 +25,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <assert.h>
+#include <boost/shared_ptr.hpp>
 
 namespace lisp
 {
@@ -43,7 +44,7 @@ public:
 
   /// construct a new Lisp object symbol or string object
   Lisp(LispType newtype, const std::string& value);
-  Lisp(const std::vector<Lisp*>& list_elements);
+  Lisp(const std::vector<boost::shared_ptr<Lisp> >& list_elements);
   Lisp(int val);
   Lisp(float val);
   Lisp(bool val);
@@ -56,7 +57,7 @@ public:
   {
     return v.list.size;
   }
-  Lisp* get_list_elem(size_t i) const
+  boost::shared_ptr<Lisp> get_list_elem(size_t i) const
   {
     assert(i < v.list.size);
     return v.list.entries[i];
@@ -111,7 +112,7 @@ private:
   union
   {
     struct {
-      Lisp** entries;
+      boost::shared_ptr<Lisp>* entries;
       size_t size;
     } list;
     char* string;

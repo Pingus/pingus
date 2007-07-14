@@ -34,7 +34,7 @@ class SExprFileReader : public FileReader
 {
 private:
 public:
-  SExprFileReader(lisp::Lisp* lisp);
+  SExprFileReader(boost::shared_ptr<lisp::Lisp> lisp);
 };
 
 #endif

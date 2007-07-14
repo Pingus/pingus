@@ -8,11 +8,11 @@ namespace lisp
 {
 
 struct ListEntry {
-  ListEntry(const lisp::Lisp* lisp)
+  ListEntry(const boost::shared_ptr<lisp::Lisp> lisp)
     : lisp(lisp), used(false)
   {}
   
-  const Lisp* lisp;
+  const boost::shared_ptr<lisp::Lisp> lisp;
   bool used;
 };
 typedef std::multimap<std::string, ListEntry> PropertyMap;

@@ -46,7 +46,7 @@ void
 ResourceManager::add_resources(const std::string& filename)
 {
   std::cout << "ResourceManager: " << filename << std::endl;
-  lisp::Lisp* sexpr = lisp::Parser::parse(filename);
+  boost::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(filename);
   if (sexpr)
     {
       SExprFileReader reader(sexpr->get_list_elem(0));
@@ -66,7 +66,6 @@ ResourceManager::add_resources(const std::string& filename)
                     << "\ngot " << reader.get_name()
                     << std::endl;
         }
-      delete sexpr;
     }
   else
     {
