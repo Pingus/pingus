@@ -112,8 +112,7 @@ public:
 
   void draw(SDL_Surface* target)
   {
-    ////gc->draw_line(pos1.x, pos1.y, pos2.x, pos2.y,
-    ////color);
+    Display::draw_line(pos1, pos2, color);
   }
 };
 

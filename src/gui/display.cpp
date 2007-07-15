@@ -21,6 +21,7 @@
 #include <stdio.h>
 #include <iostream>
 #include "../globals.hpp"
+#include "../math/vector2i.hpp"
 #include "../math/rect.hpp"
 #include "../math/color.hpp"
 #include "display.hpp"
@@ -41,17 +42,6 @@ DisplayHook::toggle_display()
     Display::add_flip_screen_hook(this);
 
   is_visible = !is_visible;
-}
-
-void
-Display::draw_rect(int x1, int y1, int x2, int y2, float r, float g, float b, float a)
-{
-#if 0
-  CL_Display::draw_line(x1, y1, x2, y1, CL_Color(CL_Colorf(r, g, b, a)));
-  CL_Display::draw_line(x1, y2, x2, y2, CL_Color(CL_Colorf(r, g, b, a)));
-  CL_Display::draw_line(x1, y1, x1, y2, CL_Color(CL_Colorf(r, g, b, a)));
-  CL_Display::draw_line(x2, y1, x2, y2, CL_Color(CL_Colorf(r, g, b, a)));
-#endif 
 }
 
 void
@@ -107,12 +97,224 @@ Display::get_height()
 void
 Display::clear()
 {
-  SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
+  SDL_FillRect(screen, NULL, SDL_MapRGB(Display::get_screen()->format, 0, 0, 0));
+}
+
+static void draw_pixel16(int x, int y, const Color& c)
+{
+  Uint32 color = SDL_MapRGBA(Display::get_screen()->format, c.r, c.g, c.b, c.a);
+
+  if (c.a < 255) {
+    Uint16 *p;
+    unsigned long dp;
+    unsigned char alpha;
+
+    // Loses precision for speed
+    alpha = (255 - c.a) >> 3;
+
+    p = &((Uint16 *)Display::get_screen()->pixels)[x + y * Display::get_screen()->w];
+    color = (((color << 16) | color) & 0x07E0F81F);
+    dp = *p;
+    dp = ((dp << 16) | dp) & 0x07E0F81F;
+    dp = ((((dp - color) * alpha) >> 5) + color) & 0x07E0F81F;
+    *p = (Uint16)((dp >> 16) | dp);
+  } else {
+    ((Uint16 *)Display::get_screen()->pixels)[x + y * Display::get_screen()->w] = color;
+  }
+}
+static void draw_pixel32(int x, int y, const Color& c)
+{
+  Uint32 color = SDL_MapRGBA(Display::get_screen()->format, c.r, c.g, c.b, c.a);
+
+  if (c.a < 255) {
+    Uint32 *p;
+    unsigned long sp2;
+    unsigned long dp1;
+    unsigned long dp2;
+    unsigned char alpha;
+
+    alpha = 255 - c.a;
+
+    p = &((Uint32*)Display::get_screen()->pixels)[x + y * Display::get_screen()->w];
+
+    sp2 = (color & 0xFF00FF00) >> 8;
+    color &= 0x00FF00FF;
+
+    dp1 = *p;
+    dp2 = (dp1 & 0xFF00FF00) >> 8;
+    dp1 &= 0x00FF00FF;
+
+    dp1 = ((((dp1 - color) * alpha) >> 8) + color) & 0x00FF00FF;
+    dp2 = ((((dp2 - sp2) * alpha) >> 8) + sp2) & 0x00FF00FF;
+    *p = (dp1 | (dp2 << 8));
+  } else {
+    ((Uint32 *)Display::get_screen()->pixels)[x + y * Display::get_screen()->w] = color;
+  }
+}
+
+typedef void (*draw_pixel_func)(int, int, const Color&);
+static draw_pixel_func get_draw_pixel()
+{
+  switch (Display::get_screen()->format->BitsPerPixel)
+  {
+  case 16:
+    return draw_pixel16;
+  case 32:
+    return draw_pixel32;
+  }
+  return NULL;
+}
+
+static void draw_vline(int x, int y, int length, const Color& color)
+{
+  draw_pixel_func draw_pixel = get_draw_pixel();
+  if (!draw_pixel)
+    return;
+
+  for (int i = 0; i < length; ++i) {
+    draw_pixel(x, y + i, color);
+  }
+}
+
+static void draw_hline(int x, int y, int length, const Color& color)
+{
+  draw_pixel_func draw_pixel = get_draw_pixel();
+  if (!draw_pixel)
+    return;
+
+  for (int i = 0; i < length; ++i) {
+    draw_pixel(x + i, y, color);
+  }
 }
 
 void
-Display::draw_rect(const Rect&, const Color&)
+Display::draw_line(int x1, int y1, int x2, int y2, const Color& color)
 {
+  Display::draw_line(Vector2i(x1, y1), Vector2i(x2, y2), color);
+}
+
+void
+Display::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color)
+{
+  int x, y, xlen, ylen, incr;
+  int sx = pos1.x;
+  int sy = pos1.y;
+  int dx = pos2.x;
+  int dy = pos2.y;
+  void (*draw_pixel)(int x, int y, const Color& color);
+
+  // vertical line
+  if (sx == dx) {
+    if (sy < dy) {
+      draw_vline(sx, sy, dy - sy + 1, color);
+    } else {
+      draw_vline(dx, dy, sy - dy + 1, color);
+    }
+    return;
+  }
+
+  // horizontal
+  if (sy == dy) {
+    if (sx < dx) {
+      draw_hline(sx, sy, dx - sx + 1, color);
+    } else {
+      draw_hline(dx, dy, sx - dx + 1, color);
+    }
+    return;
+  }
+
+  draw_pixel = get_draw_pixel();
+  if (!draw_pixel)
+    return;
+
+  // exchange coordinates
+  if (sy > dy) {
+    int t = dx;
+    dx = sx;
+    sx = t;
+    t = dy;
+    dy = sy;
+    sy = t;
+  }
+  ylen = dy - sy;
+
+  if (sx > dx) {
+    xlen = sx - dx;
+    incr = -1;
+  } else {
+    xlen = dx - sx;
+    incr = 1;
+  }
+
+  y = sy;
+  x = sx;
+
+  if (xlen > ylen) {
+    if (sx > dx) {
+      int t = sx;
+      sx = dx;
+      dx = t;
+      y = dy;
+    }
+
+    int p = (ylen << 1) - xlen;
+
+    SDL_LockSurface(screen);
+    for (x = sx; x < dx; ++x) {
+      draw_pixel(x, y, color);
+      if (p >= 0) {
+	y += incr;
+	p += (ylen - xlen) << 1;
+      } else {
+	p += (ylen << 1);
+      }
+    }
+    SDL_UnlockSurface(screen);
+    return;
+  }
+
+  if (ylen > xlen) {
+    int p = (xlen << 1) - ylen;
+
+    SDL_LockSurface(screen);
+    for (y = sy; y < dy; ++y) {
+      draw_pixel(x, y, color);
+      if (p >= 0) {
+	x += incr;
+	p += (xlen - ylen) << 1;
+      } else {
+	p += (xlen << 1);
+      }
+    }
+    SDL_UnlockSurface(screen);
+    return;
+  }
+
+  // Draw a diagonal line
+  if (ylen == xlen) {
+    SDL_LockSurface(screen);
+    while (y != dy) {
+      draw_pixel(x, y, color);
+      x += incr;
+      ++y;
+    }
+    SDL_UnlockSurface(screen);
+  }
+}
+
+void
+Display::draw_rect(int x1, int y1, int x2, int y2, const Color& color)
+{
+  Display::draw_line(Vector2i(x1, y1), Vector2i(x2, y1), color);
+  Display::draw_line(Vector2i(x1, y2), Vector2i(x2, y2), color);
+  Display::draw_line(Vector2i(x1, y1), Vector2i(x1, y2), color);
+  Display::draw_line(Vector2i(x2, y1), Vector2i(x2, y2), color);
+}
+
+void
+Display::draw_rect(const Rect& rect, const Color& color)
+{
+  Display::draw_rect(rect.left, rect.top, rect.right, rect.bottom, color);
 }
 
 void

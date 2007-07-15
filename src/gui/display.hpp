@@ -24,6 +24,7 @@
 #include "SDL.h"
 #include <list>
 
+class Vector2i;
 class Rect;
 class Color;
 class DisplayHook;
@@ -55,9 +56,12 @@ private:
   static std::list<DisplayHook*> display_hooks;
   static SDL_Surface* screen;
 public:
-  static void draw_rect(int x1, int y1, int x2, int y2, float r, float g, float b, float a);
-  static void draw_rect(const Rect&, const Color&);
-  static void fill_rect(const Rect&, const Color&);
+  static void draw_line(int x1, int y1, int x2, int y2, const Color& color);
+  static void draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color);
+
+  static void draw_rect(int x1, int y1, int x2, int y2, const Color& color);
+  static void draw_rect(const Rect& rect, const Color& color);
+  static void fill_rect(const Rect& rect, const Color& color);
 
   static void flip_display(bool sync=false);
 
