@@ -1543,4 +1543,5 @@
     (teleporter 
       (position 31 231 100)
       (target 
-        (position 700 85 
+        (position 700 85 100)))))
+;; EOF ;;

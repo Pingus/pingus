@@ -419,7 +419,19 @@
 		// If it's a directory, change to it.
 		if (current_file.is_directory)
 		{
-			current_path += current_file.name + "/";
+			if (current_file.name != "..")
+			{
+				current_path += current_file.name + "/";
+			}
+			else
+			{
+				size_t index = current_path.size() > 1 ? current_path.size() - 2 : std::string::npos;
+				size_t pos = current_path.find_last_of('/', index);
+				if (pos != std::string::npos)
+					current_path = current_path.substr(0, pos + 1);
+				else
+					current_path.clear();
+			}
 			refresh();
 			ok_button->hide();
 		}

@@ -6442,6 +6442,7 @@
       <position>
 <x>260</x>
 <y>70</y>
+<z>100</z>
 </position>
     </target>
 </teleporter>
@@ -6455,6 +6456,7 @@
       <position>
 <x>260</x>
 <y>70</y>
+<z>100</z>
 </position>
     </target>
 </teleporter>

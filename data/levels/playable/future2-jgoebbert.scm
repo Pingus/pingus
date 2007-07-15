@@ -3227,4 +3227,9 @@
     (teleporter 
       (position 92 466 100)
       (target 
-        (position 260 70 
+        (position 260 70 100)))
+    (teleporter 
+      (position 1053 465 100)
+      (target 
+        (position 260 70 100)))))
+;; EOF ;;

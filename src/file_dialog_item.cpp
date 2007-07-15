@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <sstream>
 #include "pingus_error.hpp"
 #include "file_dialog_item.hpp"
 #include "file_dialog.hpp"
@@ -58,14 +59,26 @@
 			sprite = Resource::load_sprite("core/menu/default_level");
 			file_item.is_accessible = true;
 			file_item.is_finished = false;
+			file_item.friendly_name.clear();
+			file_info = _("Difficulty: ");
 
 			// Load information about this file if possible.
 			FileReader reader = FileReader::parse(file_dialog->get_path() + file_item.name);
-			if (reader.get_name() != "pingus-level" || reader.get_name() != "pingus-worldmap") {
+			if (reader.get_name() == "pingus-level" || reader.get_name() == "pingus-worldmap")
+			{
 				FileReader head;
-				if (reader.read_section("head", head)) {
+				int difficulty = 0;
+				std::ostringstream ostr;
+				if (reader.read_section("head", head))
+				{
 					head.read_string("levelname", file_item.friendly_name);
-					head.read_string("difficulty", file_info);
+					if (file_item.friendly_name.empty())
+						file_item.friendly_name = get_filename();
+					else
+						file_item.friendly_name = _(file_item.friendly_name);
+					head.read_int("difficulty", difficulty);
+					ostr << difficulty;
+					file_info += ostr.str();
 					Savegame* sg = SavegameManager::instance()->get(file_item.friendly_name);
 					status = sg ? _("Finished!") : _("Not finished!");
 				}
@@ -166,16 +179,20 @@
 			// Draw thumbnail
 			gc.draw(sprite, pos);
 
-			// Draw title
-			gc.print_left(Fonts::pingus_small, pos.x + (float)sprite.get_width(), 
-				pos.y, get_filename());
-
-			// If mouse over, draw a quick info box about the file item
-			if (mouse_over)
+			if (!mouse_over || file_item.is_directory)
 			{
+				// Draw title
+				gc.print_left(Fonts::pingus_small, pos.x + (float)sprite.get_width(), 
+					pos.y, get_filename());
+			}
+			else
+			{
+				// If mouse over, draw a quick info box about the file item
 				if (file_item.is_directory)
+				{
 					gc.draw_rect(pos.x, pos.y, pos.x + sprite.get_width(), 
 						pos.y + sprite.get_height(), Color(255,255,255,150));
+				}
 				else		// It's a file
 				{
 					// Determine which color to draw the background rectangle.

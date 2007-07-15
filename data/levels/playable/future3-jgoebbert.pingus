@@ -3072,6 +3072,7 @@
       <position>
 <x>700</x>
 <y>85</y>
+<z>100</z>
 </position>
     </target>
 </teleporter>

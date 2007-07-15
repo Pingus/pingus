@@ -57,22 +57,19 @@ public:
 
   SpriteImpl(const SpriteDescription& desc)
     : surface(0),
+      finished(false),
       frame(0),
       tick_count(0)
   {
     surface = IMG_Load(desc.filename.c_str());
-    if (surface)
-      {
-        //SDL_SetAlpha(surface, SDL_SRCALPHA, 128);
-      }
-    else
+    if (!surface)
       {
         std::cout << "Error: Couldn't load " << desc.filename << std::endl;
         surface = IMG_Load("data/images/core/misc/404.png");
         assert(surface);
       }
     
-    frame_pos    = desc.frame_pos;
+    frame_pos = desc.frame_pos;
 
     frame_size.width  = (desc.frame_size.width  == -1) ? surface->w : desc.frame_size.width;
     frame_size.height = (desc.frame_size.height == -1) ? surface->h : desc.frame_size.height;
@@ -83,7 +80,6 @@ public:
 
     loop = desc.loop;
     loop_last_cycle = false;
-    finished = false;
 
     offset = calc_origin(desc.origin, frame_size) - desc.offset;
   }
@@ -94,13 +90,15 @@ public:
       frame_size(pixelbuffer.get_width(), pixelbuffer.get_height()),
       frame_delay(0),
       array(1,1),
+      loop(true),
+      loop_last_cycle(false),
+      finished(false),
       frame(0),
       tick_count(0)
   {
     if (pixelbuffer.get_surface())
       {
         surface = SDL_DisplayFormatAlpha(pixelbuffer.get_surface());
-        //SDL_SetAlpha(surface, SDL_SRCALPHA, 128);
       }
     else
       {
