@@ -61,7 +61,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SDL.lib SDLmain.lib SDL_image.lib SDL_mixer.lib physfs.lib libiconv.lib"
+				AdditionalDependencies="SDL.lib SDLmain.lib SDL_image.lib libjpeg.lib libpng.lib SDL_mixer.lib physfs.lib libiconv.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="lib"
 				GenerateDebugInformation="true"
@@ -135,7 +135,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SDL.lib SDLmain.lib SDL_image.lib SDL_mixer.lib physfs.lib libiconv.lib"
+				AdditionalDependencies="SDL.lib SDLmain.lib SDL_image.lib libjpeg.lib libpng.lib SDL_mixer.lib physfs.lib libiconv.lib"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="lib"
 				GenerateDebugInformation="true"
