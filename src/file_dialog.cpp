@@ -31,6 +31,7 @@
 #include "file_dialog_item.hpp"
 #include "file_dialog_listener.hpp"
 
+#define CANCEL_TEXT _("Cancel")
 
 	const int DIR_UP = 0;
 	const int DIR_DOWN = 1;
@@ -44,7 +45,7 @@
 
 	public:
 		FileDialogOkButton (FileDialog *f, std::string l)
-			: GUI::SurfaceButton(Display::get_width()/2 + 170,
+			: GUI::SurfaceButton(Display::get_width()/2 + 230,
 			Display::get_height()/2 + 160,
 			ResDescriptor("core/menu/exit_button_normal"),
 			ResDescriptor("core/menu/exit_button_pressed"),
@@ -59,7 +60,7 @@
 			if (!is_hidden)
 			{
 				SurfaceButton::draw(gc);
-				gc.print_right(Fonts::chalk_large, (float)Display::get_width()/2 + 200,
+				gc.print_right(Fonts::chalk_large, (float)Display::get_width()/2 + 230,
 					(float)Display::get_height()/2 + 160, label);
 			}
 		}
@@ -94,7 +95,7 @@
 
 	public:
 		FileDialogCancelButton (FileDialog* f)
-			: GUI::SurfaceButton(Display::get_width()/2 - 280,
+			: GUI::SurfaceButton(Display::get_width()/2 - 280 + Fonts::chalk_large.get_width(CANCEL_TEXT),
 			Display::get_height()/2 + 160,
 			ResDescriptor("core/menu/exit_button_normal"),
 			ResDescriptor("core/menu/exit_button_pressed"),
@@ -105,8 +106,8 @@
 
 		void draw (DrawingContext& gc) {
 			SurfaceButton::draw(gc);
-			gc.print_right(Fonts::chalk_large, (float)Display::get_width()/2 - 200,
-				(float)Display::get_height()/2 + 160, _("Cancel"));
+			gc.print_left(Fonts::chalk_large, (float)Display::get_width()/2 - 280,
+				(float)Display::get_height()/2 + 160, CANCEL_TEXT);
 		}
 
 		void on_click()

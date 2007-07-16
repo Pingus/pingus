@@ -31,7 +31,7 @@ private:
   PingusMenuManager* manager;
 public:
   ExitMenuYesButton (PingusMenuManager* m)
-    : GUI::SurfaceButton(Display::get_width()/2 - 170,
+    : GUI::SurfaceButton(Display::get_width()/2 - 80,
                          Display::get_height()/2 + 15,
                          ResDescriptor("core/menu/exit_button_normal"),
                          ResDescriptor("core/menu/exit_button_pressed"),
@@ -43,7 +43,7 @@ public:
   void draw (DrawingContext& gc) {
     SurfaceButton::draw(gc);
     gc.print_right(Fonts::chalk_large, (float)Display::get_width()/2 - 80,
-                   (float)Display::get_height()/2 + 25, _("Yes"));
+                   (float)Display::get_height()/2 + 15, _("Yes"));
   }
 
   void on_click()
@@ -65,7 +65,7 @@ private:
   PingusMenuManager* manager;
 public:
   ExitMenuNoButton (PingusMenuManager* m)
-    : GUI::SurfaceButton(Display::get_width()/2, Display::get_height()/2 + 15,
+    : GUI::SurfaceButton(Display::get_width()/2 + 80, Display::get_height()/2 + 15,
                          ResDescriptor("core/menu/exit_button_normal"),
                          ResDescriptor("core/menu/exit_button_pressed"),
                          ResDescriptor("core/menu/exit_button_hover")),
@@ -76,7 +76,7 @@ public:
   void draw (DrawingContext& gc) {
     SurfaceButton::draw(gc);
     gc.print_right(Fonts::chalk_large, (float)Display::get_width()/2 + 80,
-                   (float)Display::get_height()/2 + 25, _("No"));
+                   (float)Display::get_height()/2 + 15, _("No"));
   }
 
   void on_click() {
