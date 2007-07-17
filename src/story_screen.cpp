@@ -98,9 +98,7 @@ private:
 public:
   StoryScreenSkipButton(StoryScreenComponent* arg_story_comp)
     : GUI::SurfaceButton(Display::get_width() - 4, Display::get_height() - 26,
-                         ResDescriptor("core/misc/next"),
-                         ResDescriptor("core/misc/next"),
-                         ResDescriptor("core/misc/next")),
+                         ResDescriptor(), ResDescriptor(), ResDescriptor()),
       story_comp(arg_story_comp)
   {
   }
