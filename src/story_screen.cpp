@@ -59,7 +59,7 @@ public:
   void draw (DrawingContext& gc);
   void update(float delta);
 
-  void skip_to_end();
+  void skip_story();
   /** starts to display the next text page */
   void next_text();
   WorldMapNS::WorldMapStory* get_story() const { return story; }
@@ -121,8 +121,7 @@ public:
 
   void on_click()
   {
-	story_comp->skip_to_end();
-	story_comp->next_text();
+	story_comp->skip_story();
   }
 };
 
@@ -201,10 +200,12 @@ StoryScreen::on_startup()
   Sound::PingusSound::play_music(story_comp->get_story()->get_music(), .7f);
 }
 
-void StoryScreenComponent::skip_to_end()
+void StoryScreenComponent::skip_story()
 {
 	page_displayed_completly = true;
-	pages.clear();
+	while (pages.size() > 1)
+		pages.pop_back();
+	next_text();
 }
 
 void
