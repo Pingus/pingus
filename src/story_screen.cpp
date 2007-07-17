@@ -97,7 +97,7 @@ private:
   StoryScreenComponent* story_comp;
 public:
   StoryScreenSkipButton(StoryScreenComponent* arg_story_comp)
-    : GUI::SurfaceButton(0, Display::get_height() - 26,
+    : GUI::SurfaceButton(Display::get_width() - 4, Display::get_height() - 26,
                          ResDescriptor("core/misc/next"),
                          ResDescriptor("core/misc/next"),
                          ResDescriptor("core/misc/next")),
@@ -107,11 +107,11 @@ public:
 
   void draw (DrawingContext& gc)
   {
-	  gc.print_left(Fonts::chalk_small, 4.0f, Display::get_height() - 26.0f, SKIP_TEXT);
+	  gc.print_right(Fonts::chalk_small, (float)x_pos, (float)y_pos, SKIP_TEXT);
   }
 
   bool is_at(int x, int y) {
-	  return x > x_pos && x < x_pos + Fonts::chalk_small.get_width(SKIP_TEXT)
+	  return x > x_pos - Fonts::chalk_small.get_width(SKIP_TEXT) && x < x_pos
 		&& y > y_pos && y < y_pos + Fonts::chalk_small.get_height();
   }
 
