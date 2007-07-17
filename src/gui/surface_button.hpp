@@ -49,7 +49,7 @@ public:
   virtual ~SurfaceButton ();
 
   virtual void draw (DrawingContext& gc);
-  bool is_at (int x, int y);
+  virtual bool is_at (int x, int y);
 
   void on_primary_button_press (int x, int y);
   void on_primary_button_release (int x, int y);

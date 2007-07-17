@@ -65,6 +65,12 @@ public:
 		}
 	}
 
+	bool is_at(int x, int y) {
+		return x > x_pos - Fonts::chalk_large.get_width(label)
+			&& x < x_pos + int(button_surface.get_width())
+			&& y > y_pos && y < y_pos + int(button_surface.get_height());
+	}
+
 	void on_click()
 	{
 		if (!is_hidden)
@@ -108,6 +114,12 @@ public:
 		SurfaceButton::draw(gc);
 		gc.print_left(Fonts::chalk_large, (float)Display::get_width()/2 - 280,
 			(float)Display::get_height()/2 + 160, CANCEL_TEXT);
+	}
+
+	bool is_at(int x, int y) {
+		return x > x_pos - Fonts::chalk_large.get_width(CANCEL_TEXT)
+			&& x < x_pos + int(button_surface.get_width())
+			&& y > y_pos && y < y_pos + int(button_surface.get_height());
 	}
 
 	void on_click()

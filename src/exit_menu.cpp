@@ -46,6 +46,12 @@ public:
                    (float)Display::get_height()/2 + 15, _("Yes"));
   }
 
+  bool is_at(int x, int y) {
+	  return x > x_pos - Fonts::chalk_large.get_width(_("Yes"))
+		&& x < x_pos + int(button_surface.get_width())
+		&& y > y_pos && y < y_pos + int(button_surface.get_height());
+  }
+
   void on_click()
   {
     Sound::PingusSound::play_sound ("yipee");
@@ -64,7 +70,7 @@ class ExitMenuNoButton : public GUI::SurfaceButton
 private:
   PingusMenuManager* manager;
 public:
-  ExitMenuNoButton (PingusMenuManager* m)
+  ExitMenuNoButton(PingusMenuManager* m)
     : GUI::SurfaceButton(Display::get_width()/2 + 80, Display::get_height()/2 + 15,
                          ResDescriptor("core/menu/exit_button_normal"),
                          ResDescriptor("core/menu/exit_button_pressed"),
@@ -73,10 +79,16 @@ public:
   {
   }
 
-  void draw (DrawingContext& gc) {
+  void draw(DrawingContext& gc) {
     SurfaceButton::draw(gc);
     gc.print_right(Fonts::chalk_large, (float)Display::get_width()/2 + 80,
                    (float)Display::get_height()/2 + 15, _("No"));
+  }
+
+  bool is_at(int x, int y) {
+	  return x > x_pos - Fonts::chalk_large.get_width(_("No"))
+		&& x < x_pos + int(button_surface.get_width())
+		&& y > y_pos && y < y_pos + int(button_surface.get_height());
   }
 
   void on_click() {
@@ -91,14 +103,14 @@ public:
   }
 };
 
-ExitMenu::ExitMenu (PingusMenuManager* manager_)
-  : PingusSubMenu (manager_)
+ExitMenu::ExitMenu(PingusMenuManager* manager_)
+  : PingusSubMenu(manager_)
 {
   gui_manager->add(new ExitMenuYesButton(manager), true);
-  gui_manager->add(new ExitMenuNoButton (manager), true);
+  gui_manager->add(new ExitMenuNoButton(manager), true);
 }
 
-ExitMenu::~ExitMenu ()
+ExitMenu::~ExitMenu()
 {
 }
 
@@ -107,15 +119,15 @@ ExitMenu::draw(DrawingContext& gc)
 {
   //gc.draw_fillrect (0, 0, Display::get_width (), Display::get_height (),
   //0, 0, 0, 0.5);
-  gc.draw(sur, Vector3f(gc.get_width ()/2 - sur.get_width ()/2,
-                        gc.get_height ()/2 - sur.get_height ()/2));
+  gc.draw(sur, Vector3f(gc.get_width()/2 - sur.get_width()/2,
+                        gc.get_height()/2 - sur.get_height()/2));
   gc.print_center(Fonts::chalk_large, gc.get_width()/2, gc.get_height()/2 - 70, _("Exit Pingus?"));
   PingusSubMenu::draw(gc);
   return true;
 }
 
 void
-ExitMenu::preload ()
+ExitMenu::preload()
 {
   sur = Resource::load_sprite("core/menu/exit_menu");
 }
