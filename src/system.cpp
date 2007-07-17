@@ -466,7 +466,7 @@ System::checksum(std::string filename)
     {
       bytes_read = fread(buffer, sizeof (char), 4096, in);
 
-      if (bytes_read == -1)
+      if (bytes_read != 4096 && !feof(in))
 	{
 	  throw PingusError("System:checksum: file read error");
 	}
