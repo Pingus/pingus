@@ -60,11 +60,19 @@ Liquid::on_startup ()
 {
   CollisionMask mask = Resource::load_collision_mask("liquids/water");
 
-  for(int i=0; i < width; ++i)
-    world->put(mask,
-               static_cast<int>(pos.x + i),
-               static_cast<int>(pos.y),
-               Groundtype::GP_WATER);
+  for (int x = static_cast<int>(pos.x);
+      x < pos.x + width;
+      x += sur.get_width())
+    {
+      for (int i = 0; i < sur.get_frame_count(); ++i)
+        {
+          sur.set_frame(i);
+          world->get_colmap()->put(mask,
+                     static_cast<int>(pos.x + x),
+                     static_cast<int>(pos.y),
+                     Groundtype::GP_WATER);
+        }
+    }
 }
 
 void
