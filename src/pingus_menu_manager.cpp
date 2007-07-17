@@ -71,7 +71,7 @@ PingusMenuManager::draw (DrawingContext& gc)
   background.draw(gc);
 
   gc.draw_fillrect(0.0,
-                   static_cast<float>(Display::get_height () - 22),
+                   static_cast<float>(Display::get_height () - 26),
                    static_cast<float>(Display::get_width ()),
                    static_cast<float>(Display::get_height ()),
                    Color(0, 0, 0, 255));

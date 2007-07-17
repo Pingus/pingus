@@ -42,7 +42,7 @@ LevelDot::LevelDot(FileReader reader)
   : Dot(reader.read_section("dot")),
     green_dot_sur(Resource::load_sprite("core/worldmap/dot_green")),
     red_dot_sur(Resource::load_sprite("core/worldmap/dot_red")),
-    unaccessible_dot_sur(Resource::load_sprite("core/worldmap/dot_invalid")),
+    inaccessible_dot_sur(Resource::load_sprite("core/worldmap/dot_invalid")),
     highlight_green_dot_sur(Resource::load_sprite("core/worldmap/dot_green_hl")),
     highlight_red_dot_sur(Resource::load_sprite("core/worldmap/dot_red_hl"))
 {
@@ -89,7 +89,7 @@ LevelDot::draw(DrawingContext& gc)
     }
   else
     {
-      gc.draw (unaccessible_dot_sur, pos);
+      gc.draw (inaccessible_dot_sur, pos);
     }
 }
 

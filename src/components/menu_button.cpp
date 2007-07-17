@@ -79,7 +79,7 @@ MenuButton::draw (DrawingContext& gc)
   if (mouse_over && !pressed)
     {
       gc.print_center(font, (float)Display::get_width() / 2,
-                      (float)(Display::get_height() - font.get_height()),
+                      (float)(Display::get_height() - font.get_height() - 2),
                       desc.c_str());
 
       gc.draw(surface_p, Vector3f((float)(x_pos - surface_p.get_width()/2),

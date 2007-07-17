@@ -60,7 +60,7 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
                                           Display::get_height() * 450 / 600),
                                   Resource::load_sprite("core/menu/options_on"),
                                   _("Contrib\nLevels"),
-                                  _("..:: Play User Build levels ::.."));
+                                  _("..:: Play User Built levels ::.."));
 
   story_button  = new MenuButton(this, Vector2i(Display::get_width() * 400 / 800,
                                          Display::get_height() * 340 / 600),
@@ -220,12 +220,12 @@ PingusMenu::draw_foreground(DrawingContext& gc)
                 static_cast<float>(Display::get_height()-100),
                 "Pingus version "VERSION", Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n");
 #else
-  gc.print_left(Fonts::pingus_small, 20.0f, 
-                static_cast<float>(Display::get_height()-100),
+  gc.print_left(Fonts::courier_small, 20.0f, 
+                static_cast<float>(Display::get_height()-80),
                 "Pingus version "VERSION" (unofficial build), Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n");
 #endif
-  gc.print_left(Fonts::pingus_small, 20.0f, 
-                static_cast<float>(Display::get_height()-70),
+  gc.print_left(Fonts::courier_small, 20.0f, 
+                static_cast<float>(Display::get_height()-60),
                 "Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome\n"
                 "to redistribute it under certain conditions; see the file COPYING for details.\n");
 }
