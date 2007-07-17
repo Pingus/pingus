@@ -37,6 +37,7 @@
 #include "credits.hpp"
 #include "sound/sound.hpp"
 
+#define SKIP_TEXT _("skip")
 
 class StoryScreenComponent : public GUI::Component
 {
@@ -58,6 +59,7 @@ public:
   void draw (DrawingContext& gc);
   void update(float delta);
 
+  void skip_to_end();
   /** starts to display the next text page */
   void next_text();
   WorldMapNS::WorldMapStory* get_story() const { return story; }
@@ -89,12 +91,49 @@ public:
   }
 };
 
+class StoryScreenSkipButton : public GUI::SurfaceButton
+{
+private:
+  StoryScreenComponent* story_comp;
+public:
+  StoryScreenSkipButton(StoryScreenComponent* arg_story_comp)
+    : GUI::SurfaceButton(0, Display::get_height() - 26,
+                         ResDescriptor("core/misc/next"),
+                         ResDescriptor("core/misc/next"),
+                         ResDescriptor("core/misc/next")),
+      story_comp(arg_story_comp)
+  {
+  }
+
+  void draw (DrawingContext& gc)
+  {
+	  gc.print_left(Fonts::chalk_small, 4.0f, Display::get_height() - 26.0f, SKIP_TEXT);
+  }
+
+  bool is_at(int x, int y) {
+	  return x > x_pos && x < x_pos + Fonts::chalk_small.get_width(SKIP_TEXT)
+		&& y > y_pos && y < y_pos + Fonts::chalk_small.get_height();
+  }
+
+  void on_pointer_enter()
+  {
+    SurfaceButton::on_pointer_enter();
+    Sound::PingusSound::play_sound ("tick", 0.3f);
+  }
+
+  void on_click()
+  {
+	story_comp->skip_to_end();
+	story_comp->next_text();
+  }
+};
 
 StoryScreen::StoryScreen(WorldMapNS::WorldMapStory *arg_pages)
 {
   story_comp = new StoryScreenComponent(arg_pages);
   gui_manager->add (story_comp, true);
   gui_manager->add (new StoryScreenContinueButton(story_comp), true);
+  gui_manager->add (new StoryScreenSkipButton(story_comp), true);
 }
 
 StoryScreen::~StoryScreen()
@@ -121,7 +160,7 @@ StoryScreenComponent::draw (DrawingContext& gc)
   gc.print_center(Fonts::chalk_large, static_cast<float>(Display::get_width()/2),
                   static_cast<float>(Display::get_height()/2 - 200), story->get_title());
   gc.draw(page_surface, Vector3f(gc.get_width()/2, gc.get_height()/2 - 65));
-  
+
   gc.print_left(Fonts::chalk_normal,
                 static_cast<float>(Display::get_width()/2  - 280),
                 static_cast<float>(Display::get_height()/2 + 35),
@@ -162,6 +201,12 @@ StoryScreen::on_startup()
 {
   // FIXME: Load the song from the WorldMapStory
   Sound::PingusSound::play_music(story_comp->get_story()->get_music(), .7f);
+}
+
+void StoryScreenComponent::skip_to_end()
+{
+	page_displayed_completly = true;
+	pages.clear();
 }
 
 void

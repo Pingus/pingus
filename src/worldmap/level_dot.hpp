@@ -32,7 +32,7 @@ class LevelDot : public Dot
 private:
   Sprite green_dot_sur;
   Sprite red_dot_sur;
-  Sprite unaccessible_dot_sur;
+  Sprite inaccessible_dot_sur;
   Sprite highlight_green_dot_sur;
   Sprite highlight_red_dot_sur;
 
