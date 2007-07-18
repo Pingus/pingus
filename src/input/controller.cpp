@@ -59,8 +59,6 @@ Controller::Controller(const std::string& configfile)
     }
   else
     {
-      FileReader head;
-
       const std::vector<FileReader>& sections = reader.get_sections();
       for (std::vector<FileReader>::const_iterator i = sections.begin();
           i != sections.end(); ++i)
@@ -239,8 +237,14 @@ Controller::update(float delta)
           break;
 
         case SDL_MOUSEMOTION:
-          events.push_back(makePointerEvent(Input::standard, event.motion.x, event.motion.y));
-          break;
+	  {
+            std::vector<mouse_callback_info>::iterator i;
+            for (i = mouse_callbacks.begin(); i != mouse_callbacks.end(); ++i)
+              {
+                i->callback(event, i->userdata);
+              }
+            break;
+	  }
 
         case SDL_MOUSEBUTTONDOWN:
 	  {
@@ -299,7 +303,6 @@ Controller::update(float delta)
       it != buttons.end(); ++it)
     it->second->update(delta);
 
-#if 0
   // FIXME: Busy checking of button status and other events is *VERY EVIL*
   if (std_pointer_x != standard_pointer->get_x_pos()
       || std_pointer_y != standard_pointer->get_y_pos())
@@ -309,7 +312,6 @@ Controller::update(float delta)
 
       events.push_back(makePointerEvent(standard, std_pointer_x, std_pointer_y));
     }
-#endif
 
   // FIXME: Busy checking of button status and other events is *VERY EVIL*
   if (scroller->get_x_delta() || scroller->get_y_delta())

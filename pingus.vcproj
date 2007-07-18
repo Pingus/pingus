@@ -1649,6 +1649,10 @@
 						>
 					</File>
 					<File
+						RelativePath=".\src\input\pointers\mouse_pointer.hpp"
+						>
+					</File>
+					<File
 						RelativePath=".\src\input\pointers\multiple_pointer.cpp"
 						>
 					</File>

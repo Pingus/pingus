@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_INPUT_MOUSE_POINTER_HXX
 
 #include "../pointer.hpp"
+#include "../controller.hpp"
 
 namespace Input {
 namespace Pointers {
@@ -35,7 +36,6 @@ class MousePointer : public Pointer {
 private:
   float x_pos;
   float y_pos;
-//  CL_Slot move_slot;
 
 public:
   MousePointer();
@@ -48,7 +48,7 @@ public:
   virtual void update(float);
 
 private:
-//  void move_signal(const CL_InputEvent& event);
+  static void move_signal(const SDL_Event&, void*);
       
   MousePointer(const MousePointer&);
   MousePointer& operator= (const MousePointer&);

@@ -38,6 +38,9 @@ MouseButton::update (float)
 void
 MouseButton::mouse_handler(const SDL_Event& event, void* userdata)
 {
+  if (event.type != SDL_MOUSEBUTTONDOWN && event.type != SDL_MOUSEBUTTONUP)
+    return;
+
   MouseButton* mb = (MouseButton*)userdata;
   switch (mb->button)
     {

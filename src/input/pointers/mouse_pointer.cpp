@@ -25,8 +25,8 @@ namespace Pointers {
 MousePointer::MousePointer() 
   : x_pos(0),
     y_pos(0)
-//    move_slot(CL_Mouse::sig_move().connect(this, &Input::Pointers::MousePointer::move_signal))
 {
+  Controller::add_mouse_callback(MousePointer::move_signal, this);
 }
 
 const float&
@@ -44,10 +44,7 @@ MousePointer::get_y_pos() const
 void
 MousePointer::set_pos(float new_x, float new_y)
 {
-#if 0
-  CL_Mouse::set_position(static_cast<int>(new_x),
-                         static_cast<int>(new_y));
-#endif
+  SDL_WarpMouse(static_cast<int>(new_x), static_cast<int>(new_y));
 }
 
 void
@@ -55,14 +52,16 @@ MousePointer::update(float)
 {
 }
 
-#if 0
 void
-MousePointer::move_signal(const CL_InputEvent& event)
+MousePointer::move_signal(const SDL_Event& event, void* userdata)
 {
-  x_pos = (float)event.mouse_pos.x;
-  y_pos = (float)event.mouse_pos.y;
+  if (event.type != SDL_MOUSEMOTION)
+    return;
+
+  MousePointer* mp = (MousePointer*)userdata;
+  mp->x_pos = (float)event.motion.x;
+  mp->y_pos = (float)event.motion.y;
 }
-#endif
 
 } // namespace Pointers
 } // namespace Input
