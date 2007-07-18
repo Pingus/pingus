@@ -70,7 +70,7 @@ SExprFileWriter::write_color(const char* name, const Color& color)
 void
 SExprFileWriter::write_bool(const char* name, bool value)
 {
-  (*out) << "(" << name << " " << value << ")\n";
+  (*out) << "(" << name << " " << (value ? "#t" : "#f") << ")\n";
 }
 
 void
@@ -82,7 +82,8 @@ SExprFileWriter::write_string(const char* name, const std::string& value)
 
 	std::map<std::string, std::string> replacements;
 	
-	replacements["\""] = "&quot;";
+	replacements["\""] = "\\\"";
+	replacements["\\"] = "\\\\";
 
 	for (std::map<std::string, std::string>::iterator i = replacements.begin();
 		i != replacements.end(); i++)

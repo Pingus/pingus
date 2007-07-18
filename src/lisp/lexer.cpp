@@ -119,6 +119,12 @@ Lexer::getNextToken()
                 case 't':
                   *c = '\t';
                   break;
+                case '\"':
+                  *c = '\"';
+                  break;
+                case '\\':
+                  *c = '\\';
+                  break;
               }
             }
             if(token_length < MAX_TOKEN_LENGTH)
