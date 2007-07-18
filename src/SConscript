@@ -26,7 +26,6 @@ env = Environment(# ENV = {'PKG_CONFIG_PATH' : os.getenv('PKG_CONFIG_PATH')},
 sdl_env = Environment(CC = 'gcc',
                       CCFLAGS = ['-O2', '-Wall', '-Werror', '-g'])
 
-env['CCFLAGS'] += ['-I/usr/include/boost-1_33_1']
 # env.Copy(LIBS = ['a', 'b'])
 
 # FIXME: Make this configurable
