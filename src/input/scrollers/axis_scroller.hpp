@@ -46,18 +46,18 @@ private:
   float y_delta;
 
 public:
-  AxisScroller (const std::vector<Axis*>& axes_, float speed_);
-  ~AxisScroller ();
+  AxisScroller(const std::vector<Axis*>& axes_, float speed_);
+  ~AxisScroller();
 
-  const float& get_x_delta () const;
-  const float& get_y_delta () const;
+  const float& get_x_delta() const;
+  const float& get_y_delta() const;
 
-  void  get_delta (float& x, float& y) const;
+  void  get_delta(float& x, float& y) const;
 
-  void  update (float delta);
+  void  update(float delta);
 
 private:
-  AxisScroller (const AxisScroller&);
+  AxisScroller(const AxisScroller&);
   AxisScroller& operator= (const AxisScroller&);
 };
 

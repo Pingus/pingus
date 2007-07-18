@@ -4,11 +4,11 @@
 
   (primary-button
     (mouse-button
-      (button 0)))
+      (button 1)))
 
   (secondary-button
     (mouse-button
-      (button 2)))
+      (button 3)))
 
   (pause-button
     (key-button

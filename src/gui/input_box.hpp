@@ -41,18 +41,18 @@ protected:
 	/** Shrink the string to fit in the box */
 	std::string shrink_string(const std::string& s) const;
   
-  /** Optional label to display */
-  std::string label;  
+	/** Optional label to display */
+	std::string label;  
 
 public:
   InputBox(float width_, Vector3f p, const std::string& 
 		default_value = std::string(), bool locked = false,
-    const std::string& label_ = std::string());
+	const std::string& label_ = std::string());
 
 	void set_string(const std::string& s) { str = s; }
 	std::string get_string() { return str; }
 	
-	void on_key_pressed(const char c);
+	void on_key_pressed(const unsigned short c);
 	
 	/// GUI Component functions:
 	///

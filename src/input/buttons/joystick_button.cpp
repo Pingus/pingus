@@ -17,10 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Core/System/clanstring.h>
-#include <ClanLib/Display/joystick.h>
-#include <ClanLib/Display/input_device.h>
-//#include <ClanLib/Display/input_button.h>
 #include "joystick_button.hpp"
 #include "../../pingus_error.hpp"
 
@@ -29,11 +25,13 @@ namespace Buttons {
 
 JoystickButton::JoystickButton(int id_, int button_) : id(id_), button(button_)
 {
+#if 0
   if (id >= CL_Joystick::get_device_count())
     PingusError::raise("JoystickButton: Invalid joystick id: " + CL_String::to(id));
 
   if (button > CL_Joystick::get_device(id).get_button_count())
     PingusError::raise("JoystickButton: Invalid joystick button id: " + CL_String::to(button));
+#endif
 }
 
 void
@@ -44,7 +42,8 @@ JoystickButton::update(float)
 bool
 JoystickButton::is_pressed() const
 {
-  return CL_Joystick::get_device(id).get_keycode(button);
+//  return CL_Joystick::get_device(id).get_keycode(button);
+  return false;
 }
 
 } // namespace Buttons

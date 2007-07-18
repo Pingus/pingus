@@ -20,10 +20,7 @@
 #ifndef HEADER_PINGUS_INPUT_MOUSE_POINTER_HXX
 #define HEADER_PINGUS_INPUT_MOUSE_POINTER_HXX
 
-#include <ClanLib/Signals/slot.h>
 #include "../pointer.hpp"
-
-class CL_InputEvent;
 
 namespace Input {
 namespace Pointers {
@@ -38,22 +35,22 @@ class MousePointer : public Pointer {
 private:
   float x_pos;
   float y_pos;
-  CL_Slot move_slot;
+//  CL_Slot move_slot;
 
 public:
-  MousePointer ();
+  MousePointer();
 
-  virtual const float& get_x_pos () const;
-  virtual const float& get_y_pos () const;
+  virtual const float& get_x_pos() const;
+  virtual const float& get_y_pos() const;
 
-  virtual void  set_pos (float new_x, float new_y);
+  virtual void set_pos(float new_x, float new_y);
 
-  virtual void  update (float);
+  virtual void update(float);
 
 private:
-  void move_signal (const CL_InputEvent& event);
+//  void move_signal(const CL_InputEvent& event);
       
-  MousePointer (const MousePointer&);
+  MousePointer(const MousePointer&);
   MousePointer& operator= (const MousePointer&);
 };
 

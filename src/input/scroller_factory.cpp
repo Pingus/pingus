@@ -65,7 +65,7 @@ ScrollerFactory::create(FileReader reader)
 }
 
 Scroller*
-ScrollerFactory::axis_scroller (FileReader reader)
+ScrollerFactory::axis_scroller(FileReader reader)
 {
   float speed;
   if (!reader.read_float("speed", speed))
@@ -81,7 +81,7 @@ ScrollerFactory::axis_scroller (FileReader reader)
 }
 
 Scroller*
-ScrollerFactory::inverted_scroller (FileReader reader)
+ScrollerFactory::inverted_scroller(FileReader reader)
 {
   bool invert_x;
   if (!reader.read_bool("invert-x", invert_x))
@@ -98,7 +98,7 @@ ScrollerFactory::inverted_scroller (FileReader reader)
 }
 
 Scroller*
-ScrollerFactory::joystick_scroller (FileReader reader)
+ScrollerFactory::joystick_scroller(FileReader reader)
 {
   int id;
   if (!reader.read_int("id", id))
@@ -120,7 +120,7 @@ ScrollerFactory::mouse_scroller (FileReader reader)
 }
 
 Scroller*
-ScrollerFactory::multiple_scroller (FileReader reader)
+ScrollerFactory::multiple_scroller(FileReader reader)
 {
   std::vector<Scroller*> scrollers;
 
@@ -135,7 +135,7 @@ ScrollerFactory::multiple_scroller (FileReader reader)
 }
 
 Scroller*
-ScrollerFactory::pointer_scroller (FileReader reader)
+ScrollerFactory::pointer_scroller(FileReader reader)
 {
   Pointer* pointer;
   Button*  button;

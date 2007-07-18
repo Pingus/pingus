@@ -51,7 +51,7 @@ Axis* AxisFactory::create(FileReader reader)
   return 0; // never reached
 }
 
-Axis* AxisFactory::button_axis (FileReader reader)
+Axis* AxisFactory::button_axis(FileReader reader)
 {
   float angle;
   if (!reader.read_float("angle", angle))
@@ -73,7 +73,7 @@ Axis* AxisFactory::inverted_axis (FileReader reader)
   return new InvertedAxis(create(reader));
 }
 
-Axis* AxisFactory::joystick_axis (FileReader reader)
+Axis* AxisFactory::joystick_axis(FileReader reader)
 {
   float angle;
   if (!reader.read_float("angle", angle))
@@ -90,7 +90,7 @@ Axis* AxisFactory::joystick_axis (FileReader reader)
   return new JoystickAxis(id, axis, angle);
 }
 
-Axis* AxisFactory::multiple_axis (FileReader reader)
+Axis* AxisFactory::multiple_axis(FileReader reader)
 {
   std::vector<Axis*> axes;
 

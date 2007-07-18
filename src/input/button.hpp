@@ -21,29 +21,59 @@
 #define HEADER_PINGUS_INPUT_BUTTON_HXX
 
 #include "../pingus.hpp"
+#include "controller.hpp"
 
 namespace Input {
+
+typedef void (*button_callback_func)(void*);
 
 /// abstract base class which defines the button interface
 class Button
 {
 public:
-  Button () { }
-  virtual ~Button () { }
+  Button() { }
+  virtual ~Button() { }
 
   /// returns true if the button is pressed, false otherwise
-  virtual bool is_pressed ()      const =0;
-  virtual void update     (float)       =0;
+  virtual bool is_pressed() const = 0;
+  virtual void update(float) = 0;
 
-  CL_Signal_v0& sig_button_down() { return button_down; }
-  CL_Signal_v0& sig_button_up() { return button_up; }
+  virtual void button_down() {
+    std::vector<button_callback_info>::iterator i;
+    for (i = button_down_callbacks.begin(); i != button_down_callbacks.end(); ++i) {
+      i->callback(i->userdata);
+    }
+  }
+  virtual void button_up() {
+    std::vector<button_callback_info>::iterator i;
+    for (i = button_up_callbacks.begin(); i != button_up_callbacks.end(); ++i) {
+      i->callback(i->userdata);
+    }
+  }
+
+  virtual void add_down_callback(button_callback_func callback, void* userdata) {
+    button_callback_info bci;
+    bci.callback = callback;
+    bci.userdata = userdata;
+    button_down_callbacks.push_back(bci);
+  }
+  virtual void add_up_callback(button_callback_func callback, void* userdata) {
+    button_callback_info bci;
+    bci.callback = callback;
+    bci.userdata = userdata;
+    button_up_callbacks.push_back(bci);
+  }
 
 protected:
-  CL_Signal_v0 button_down; 
-  CL_Signal_v0 button_up; 
+  struct button_callback_info {
+    button_callback_func callback;
+    void *userdata;
+  };
+  std::vector<button_callback_info> button_down_callbacks;
+  std::vector<button_callback_info> button_up_callbacks;
 
 private:
-  Button (const Button&);
+  Button(const Button&);
   Button& operator= (const Button&);
 };
 

@@ -20,13 +20,14 @@
 #include <math.h>
 #include <assert.h>
 #include "../../debug.hpp"
+#include "../../math.hpp"
 #include "../axis.hpp"
 #include "axis_scroller.hpp"
 
 namespace Input {
 namespace Scrollers {
 
-AxisScroller::AxisScroller (const std::vector<Axis*>& axes_, float speed_)
+AxisScroller::AxisScroller(const std::vector<Axis*>& axes_, float speed_)
   : axes(axes_),
     speed(speed_),
     x_delta(0),
@@ -36,33 +37,33 @@ AxisScroller::AxisScroller (const std::vector<Axis*>& axes_, float speed_)
   assert(axes[0]->get_angle() != axes[1]->get_angle());
 }
 
-AxisScroller::~AxisScroller ()
+AxisScroller::~AxisScroller()
 {
   for (unsigned int i=0; i < axes.size(); ++i)
     delete axes[i];
 }
 
 const float&
-AxisScroller::get_x_delta () const
+AxisScroller::get_x_delta() const
 {
   return x_delta;
 }
 
 const float&
-AxisScroller::get_y_delta () const
+AxisScroller::get_y_delta() const
 {
   return y_delta;
 }
 
 void
-AxisScroller::get_delta (float& x, float& y) const
+AxisScroller::get_delta(float& x, float& y) const
 {
   x = x_delta;
   y = y_delta;
 }
 
 void
-AxisScroller::update (float delta)
+AxisScroller::update(float delta)
 {
   x_delta = 0;
   y_delta = 0;
@@ -71,8 +72,8 @@ AxisScroller::update (float delta)
     {
       (*it)->update(delta);
 
-      x_delta += (float)cos((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
-      y_delta += (float)sin((*it)->get_angle() * 3.14159265 / 180) * speed * delta * (*it)->get_pos();
+      x_delta += (float)cos((*it)->get_angle() * Math::pi / 180) * speed * delta * (*it)->get_pos();
+      y_delta += (float)sin((*it)->get_angle() * Math::pi / 180) * speed * delta * (*it)->get_pos();
     }
 
 }

@@ -22,30 +22,30 @@
 namespace Input {
 namespace Axes {
 
-InvertedAxis::InvertedAxis (Axis* axis_) : axis(axis_)
+InvertedAxis::InvertedAxis(Axis* axis_) : axis(axis_)
 {
   angle = static_cast<float>((static_cast<int>(axis->get_angle()) + 180) % 360);
 }
 
-InvertedAxis::~InvertedAxis ()
+InvertedAxis::~InvertedAxis()
 {
   delete axis;
 }
 
 const float&
-InvertedAxis::get_pos () const
+InvertedAxis::get_pos() const
 {
   return axis->get_pos();
 }
 
 const float&
-InvertedAxis::get_angle () const
+InvertedAxis::get_angle() const
 {
   return angle;
 }
 
 void
-InvertedAxis::update (float delta)
+InvertedAxis::update(float delta)
 {
   axis->update(delta);
 }

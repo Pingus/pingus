@@ -25,39 +25,39 @@
 namespace Input {
 namespace Pointers {
 
-AxisPointer::AxisPointer (float speed_, const std::vector<Axis*>& axes_) : speed(speed_), axes(axes_)
+AxisPointer::AxisPointer(float speed_, const std::vector<Axis*>& axes_) : speed(speed_), axes(axes_)
 {
   assert(axes.size() >= 2);
   assert(axes[0]->get_angle() != axes[1]->get_angle());
 }
 
-AxisPointer::~AxisPointer ()
+AxisPointer::~AxisPointer()
 {
   for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
     delete *it;
 }
 
 const float&
-AxisPointer::get_x_pos () const
+AxisPointer::get_x_pos() const
 {
   return x_pos;
 }
 
 const float&
-AxisPointer::get_y_pos () const
+AxisPointer::get_y_pos() const
 {
   return y_pos;
 }
 
 void
-AxisPointer::set_pos (float new_x, float new_y)
+AxisPointer::set_pos(float new_x, float new_y)
 {
   x_pos = new_x;
   y_pos = new_y;
 }
 
 void
-AxisPointer::update (float delta)
+AxisPointer::update(float delta)
 {
   for (std::vector<Axis*>::const_iterator it = axes.begin(); it != axes.end(); it++)
     {

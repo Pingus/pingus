@@ -32,7 +32,7 @@ InputBox::InputBox(float width_, Vector3f p, const std::string& default_value,
 	width(width_),
 	height((float)Fonts::pingus_small.get_height()),
 	is_locked(locked),
-  label(label_) 
+	label(label_)
 {
 	
 }
@@ -48,9 +48,9 @@ InputBox::draw(DrawingContext &gc)
 	// If there is text, draw it:
 	if (str != std::string())
 		gc.print_left(Fonts::pingus_small, pos.x + 10, pos.y, shrink_string(str));
-	
-  if (label != std::string())
-    gc.print_right(Fonts::pingus_small, pos.x, pos.y, label);
+
+	if (label != std::string())
+		gc.print_right(Fonts::pingus_small, pos.x, pos.y, label);
      
 	if (has_focus)
 		gc.draw_line(pos.x + Fonts::pingus_small.get_size(shrink_string(str)).width + 12,
@@ -80,19 +80,23 @@ InputBox::shrink_string(const std::string& s) const
 }
 
 void
-InputBox::on_key_pressed(const char c)
+InputBox::on_key_pressed(const unsigned short c)
 {
 	if (!is_locked)
 	{
 		// Verify input and escape out bad characters
 		if (c == 0x08) 	// backspace
+		{
 			str = str.substr(0, str.length()-1);
+		}
 		else if ((c > 0x2c && c < 0x3a)    // - . / 0-9
 			|| (c > 0x40 && c < 0x5b)        // capital letters
 			|| (c > 0x60 && c < 0x7b)        // lowercase letters
-      || (c == 0x7e || c == 0x5f)      // ~ and _
-      ||  c == 0x20)                   // space
-			str += c;
+			|| (c == 0x7e || c == 0x5f)      // ~ and _
+			||  c == 0x20)                   // space
+		{
+			str += (unsigned char)c;
+		}
 	}
 }
 

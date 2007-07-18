@@ -29,8 +29,8 @@ MultipleButton::MultipleButton (const std::vector<Button*>& buttons_) : buttons(
 
   for (std::vector<Button*>::iterator it = buttons.begin(); it != buttons.end(); it++)
     {
-      slots.push_back((*it)->sig_button_up()  .connect(this, &MultipleButton::on_button_up));
-      slots.push_back((*it)->sig_button_down().connect(this, &MultipleButton::on_button_down));
+      (*it)->add_down_callback(&MultipleButton::on_button_down, this);
+      (*it)->add_up_callback(&MultipleButton::on_button_up, this);
     }
 }
 
@@ -58,23 +58,25 @@ MultipleButton::is_pressed () const
 }
 
 void
-MultipleButton::on_button_up()
+MultipleButton::on_button_up(void* userdata)
 {
-  down_count -= 1;
-  if (down_count < 0)
-    down_count = 0;
+  MultipleButton* mb = (MultipleButton*)userdata;
+  mb->down_count -= 1;
+  if (mb->down_count < 0)
+    mb->down_count = 0;
 
-  if (down_count == 0)
-    button_up();
+  if (mb->down_count == 0)
+    mb->button_up();
 }
 
 void
-MultipleButton::on_button_down()
+MultipleButton::on_button_down(void* userdata)
 {
-  if (down_count == 0)
-    button_down();
+  MultipleButton* mb = (MultipleButton*)userdata;
+  if (mb->down_count == 0)
+    mb->button_down();
 
-  down_count += 1; 
+  mb->down_count += 1;
 }
 
 } // namespace Buttons

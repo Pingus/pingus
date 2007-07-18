@@ -17,22 +17,17 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Core/System/clanstring.h>
-#include <ClanLib/Display/input_event.h>
-#include <ClanLib/Display/keys.h>
-#include <ClanLib/Display/mouse.h>
 #include "mouse_button.hpp"
 #include "../../pingus_error.hpp"
 
 namespace Input {
 namespace Buttons {
   
-MouseButton::MouseButton (int button_)
+MouseButton::MouseButton(int button_)
   : button(button_),
-    button_press_slot  (CL_Mouse::sig_key_down().connect(this, &Input::Buttons::MouseButton::press_handler)),
-    button_release_slot(CL_Mouse::sig_key_up().connect(this, &Input::Buttons::MouseButton::release_handler)),
     pressed(false)
 {
+  Controller::add_mouse_callback(&MouseButton::mouse_handler, this);
 }
 
 void
@@ -41,28 +36,44 @@ MouseButton::update (float)
 }
 
 void
-MouseButton::press_handler (const CL_InputEvent& signal) // may not be a member function since CL_Signal doesn't take a member function pointer
+MouseButton::mouse_handler(const SDL_Event& event, void* userdata)
 {
-  switch (button)
+  MouseButton* mb = (MouseButton*)userdata;
+  switch (mb->button)
     {
-    case 0:
-      if (signal.id == CL_MOUSE_LEFT) {
-        pressed = true;
-        button_down();
-      }
-      break;
-            
     case 1:
-      if (signal.id == CL_MOUSE_MIDDLE) {
-        pressed = true;
-        button_down();
+      if (event.button.button == SDL_BUTTON_LEFT) {
+        if (event.button.state == SDL_PRESSED) {
+          mb->pressed = true;
+          mb->button_down();
+        } else {
+          mb->pressed = false;
+          mb->button_up();
+        }
       }
       break;
             
     case 2:
-      if (signal.id == CL_MOUSE_RIGHT) {
-        pressed = true;
-        button_down();
+      if (event.button.button == SDL_BUTTON_MIDDLE) {
+        if (event.button.state == SDL_PRESSED) {
+          mb->pressed = true;
+          mb->button_down();
+        } else {
+          mb->pressed = false;
+          mb->button_up();
+        }
+      }
+      break;
+            
+    case 3:
+      if (event.button.button == SDL_BUTTON_RIGHT) {
+        if (event.button.state == SDL_PRESSED) {
+          mb->pressed = true;
+          mb->button_down();
+        } else {
+          mb->pressed = false;
+          mb->button_up();
+        }
       }
       break;
             
@@ -71,37 +82,7 @@ MouseButton::press_handler (const CL_InputEvent& signal) // may not be a member 
     }
 }
 
-void
-MouseButton::release_handler (const CL_InputEvent& signal) // may not be a member function since CL_Signal doesn't take a member function pointer
-{
-  switch (button)
-    {
-    case 0:
-      if (signal.id == CL_MOUSE_LEFT) {
-        pressed = false;
-        button_up();
-      }
-      break;
-            
-    case 1:
-      if (signal.id == CL_MOUSE_MIDDLE) {
-        pressed = false;
-        button_up();
-      }
-      break;
-            
-    case 2:
-      if (signal.id == CL_MOUSE_RIGHT) {
-        pressed = false;
-        button_up();
-      }
-      break;
-            
-    default: // only three buttons support so far
-      break;
-    }
-}
-    
+
 } // namespace Buttons
 } // namespace Input
 

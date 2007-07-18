@@ -20,10 +20,7 @@
 #ifndef HEADER_PINGUS_INPUT_MOUSE_BUTTON_HXX
 #define HEADER_PINGUS_INPUT_MOUSE_BUTTON_HXX
 
-#include <ClanLib/Signals/slot.h>
 #include "../button.hpp"
-
-class CL_InputEvent;
 
 namespace Input {
 namespace Buttons {
@@ -37,21 +34,20 @@ class MouseButton : public Button {
 
 private:
   int button;
-  CL_Slot button_press_slot;
-  CL_Slot button_release_slot;
   bool pressed;
 
 public:
-  MouseButton (int button_);
+  MouseButton(int button_);
 
-  virtual bool is_pressed () const { return pressed; }
-  virtual void update (float);
+  inline int get_button() const { return button; }
+
+  virtual bool is_pressed() const { return pressed; }
+  virtual void update(float);
 
 private:
-  void   press_handler (const CL_InputEvent& number);
-  void release_handler (const CL_InputEvent& number);
+  static void mouse_handler(const SDL_Event& event, void *userdata);
       
-  MouseButton (const MouseButton&);
+  MouseButton(const MouseButton&);
   MouseButton& operator= (const MouseButton&);
 };
 

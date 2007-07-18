@@ -20,11 +20,8 @@
 #ifndef HEADER_PINGUS_INPUT_KEY_BUTTON_HXX
 #define HEADER_PINGUS_INPUT_KEY_BUTTON_HXX
 
-#include <ClanLib/Signals/slot.h>
+#include <string>
 #include "../button.hpp"
-
-class CL_InputEvent;
-class CL_InputDevice;
 
 namespace Input {
 namespace Buttons {
@@ -38,22 +35,23 @@ class KeyButton : public Button {
 
 private:
   int     button;
-  CL_Slot key_press;
-  CL_Slot key_release;
   bool    pressed;
 
 public:
 
-  KeyButton (int button_);
+  KeyButton(int button_);
 
-  virtual bool is_pressed () const;
-  virtual void update (float);
+  inline int get_button() const { return button; }
+
+  virtual bool is_pressed() const;
+  virtual void update(float);
+
+  static int string_to_keyid(std::string key);
 
 private:
-  void key_press_handler (const CL_InputEvent& event);
-  void key_release_handler (const CL_InputEvent& event);
+  static void key_handler(const SDL_Event& event, void *userdata);
       
-  KeyButton (const KeyButton&);
+  KeyButton(const KeyButton&);
   KeyButton& operator= (const KeyButton&);
 };
 

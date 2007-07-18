@@ -17,9 +17,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/Input/input.h>
-#include <ClanLib/Display/Input/inputdevice.h>
-#include <ClanLib/Display/Input/inputcursor.h>
 #include "mouse_axis.hpp"
 
 namespace Input {
@@ -29,10 +26,11 @@ namespace Input {
     MouseAxis::MouseAxis(int axis_, float angle_) : axis(axis_), angle(angle_), pos(0), old_pos(0)
     {
       if (angle < 0)
-        angle = (static_cast<int>(angle) % 360) + 360;
+        angle = (float)((static_cast<int>(angle) % 360) + 360);
       else if (angle > 360)
-        angle = static_cast<int>(angle) % 360;
+        angle = (float)(static_cast<int>(angle) % 360);
 
+#if 0
       switch (axis)
         {
           case 0:  old_pos = CL_Input::pointers[0]->get_cursor(0)->get_x();
@@ -41,6 +39,7 @@ namespace Input {
 	           break;
 	  default: old_pos = 0;
         }
+#endif
     }
 
     const float&
@@ -58,6 +57,7 @@ namespace Input {
     void
     MouseAxis::update (float)
     {
+#if 0
       switch (axis)
         {
           case 0:  if (old_pos != CL_Input::pointers[0]->get_cursor(0)->get_x())
@@ -85,6 +85,7 @@ namespace Input {
 	           break;
           default: break; // do nothing
         }
+#endif
     }
 
   }

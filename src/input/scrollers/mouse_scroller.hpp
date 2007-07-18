@@ -20,7 +20,6 @@
 #ifndef HEADER_PINGUS_INPUT_MOUSE_SCROLLER_HXX
 #define HEADER_PINGUS_INPUT_MOUSE_SCROLLER_HXX
 
-#include <ClanLib/Display/input_device.h>
 #include "../scroller.hpp"
 
 namespace Input {
@@ -33,7 +32,6 @@ namespace Scrollers {
 */
 class MouseScroller : public Scroller {
 private:
-  CL_InputDevice device;
   float old_x;
   float old_y;
   float x_delta;
@@ -42,15 +40,15 @@ private:
 public:
   MouseScroller(int id);
 
-  const float& get_x_delta () const;
-  const float& get_y_delta () const;
+  const float& get_x_delta() const;
+  const float& get_y_delta() const;
 
-  void  get_delta (float& x, float& y) const;
+  void  get_delta(float& x, float& y) const;
 
-  void  update (float);
+  void  update(float);
 
 private:
-  MouseScroller (const MouseScroller&);
+  MouseScroller(const MouseScroller&);
   MouseScroller& operator= (const MouseScroller&);
 };
 

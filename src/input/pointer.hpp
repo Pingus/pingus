@@ -28,19 +28,19 @@ namespace Input {
 class Pointer
 {
 public:
-  Pointer () { }
+  Pointer() { }
   virtual ~Pointer() { }
 
   /// returns the X coordinate of the pointer
-  virtual const float& get_x_pos () const =0;
+  virtual const float& get_x_pos() const =0;
 
   /// returns the Y coordinate of the pointer
-  virtual const float& get_y_pos () const =0;
+  virtual const float& get_y_pos() const =0;
 
   /// sets the pointer to the given position
-  virtual void  set_pos (float, float) =0;
+  virtual void set_pos(float, float) =0;
 
-  virtual void  update (float) =0;
+  virtual void update(float) =0;
 
 private:
   Pointer (const Pointer&);

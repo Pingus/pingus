@@ -24,6 +24,7 @@
 #include <list>
 #include <string>
 #include <vector>
+#include "SDL.h"
 #include "../file_reader.hpp"
 #include "event.hpp"
 
@@ -34,53 +35,66 @@ class Button;
 class Pointer;
 class Scroller;
 
+typedef void (*key_callback_func)(const SDL_Event&, void*);
+typedef void (*mouse_callback_func)(const SDL_Event&, void*);
+
 class Controller {
 
 private:
-  Pointer*  standard_pointer;
+  Pointer* standard_pointer;
   Scroller* scroller;
 
   std::map<ButtonName, Button*> buttons;
 
   std::vector<Event> events;
 
-  float             std_pointer_x;
-  float             std_pointer_y;
+  float std_pointer_x;
+  float std_pointer_y;
 
   ////  std::vector<CL_Slot> slots;
 
 public:
-  Controller (const std::string& configfile);
-  ~Controller ();
+  Controller(const std::string& configfile);
+  ~Controller();
 
-  std::vector<Event>& get_events () { return events; }
+  std::vector<Event>& get_events() { return events; }
 	
-  const Pointer * get_pointer     () const { return standard_pointer; }
-  const Scroller* get_scroller    () const { return scroller;         }
+  const Pointer * get_pointer() const { return standard_pointer; }
+  const Scroller* get_scroller() const { return scroller; }
 
   /// returns the requested Buttons::Button or 0 if it doesn't exist (e.g. undefined action Buttons::Button)
-  const Button* get_button (ButtonName name);
+  const Button* get_button(ButtonName name);
 
-  void update (float delta);
+  void update(float delta);
   void clear();
 
   static void set_current(Controller* controller) { current_controller = controller; }
   static Controller* get_current() { return current_controller; }
+
+  static void add_key_callback(key_callback_func, void*);
+  static void add_mouse_callback(mouse_callback_func, void*);
 	
 private:
   static Controller* current_controller;
 
-  void on_button_down(ButtonName name);
-  void on_button_up(ButtonName name);
-  void create_action_buttons (FileReader reader);
+  static void on_button_down(void*);
+  static void on_button_up(void*);
+  void create_action_buttons(FileReader reader);
   ////void key_pressed(const CL_InputEvent &event);
 
-/** Get keyboard keys pressed to handle general keyboard input */
-	std::string get_keys_pressed();
+  struct key_callback_info {
+    key_callback_func callback;
+    void *userdata;
+  };
+  static std::vector<key_callback_info> key_callbacks;
 
-	std::string keys;
+  struct mouse_callback_info {
+    mouse_callback_func callback;
+    void *userdata;
+  };
+  static std::vector<mouse_callback_info> mouse_callbacks;
 
-  Controller (const Controller&);
+  Controller(const Controller&);
   Controller& operator= (const Controller&);
 };
 

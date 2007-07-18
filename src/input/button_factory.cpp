@@ -18,8 +18,6 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-#include <ClanLib/Display/keyboard.h>
-#include <ClanLib/Display/input_device.h>
 #include "../file_reader.hpp"
 #include "../pingus_error.hpp"
 #include "button_factory.hpp"
@@ -34,7 +32,7 @@ namespace Input {
 
 using namespace Buttons;
 
-Button* ButtonFactory::create (FileReader reader)
+Button* ButtonFactory::create(FileReader reader)
 {
   if (reader.get_name() == "double-button")
     return double_button(reader);
@@ -60,7 +58,7 @@ Button* ButtonFactory::create (FileReader reader)
   return 0; // never reached
 }
 
-Button* ButtonFactory::double_button (FileReader reader)
+Button* ButtonFactory::double_button(FileReader reader)
 {
   const std::vector<FileReader>& sections = reader.get_sections();
   
@@ -75,7 +73,7 @@ Button* ButtonFactory::double_button (FileReader reader)
   return new DoubleButton(button1, button2);
 }
 
-Button* ButtonFactory::joystick_button (FileReader reader)
+Button* ButtonFactory::joystick_button(FileReader reader)
 {
   int id;
   if (!reader.read_int("id", id))
@@ -88,13 +86,13 @@ Button* ButtonFactory::joystick_button (FileReader reader)
   return new JoystickButton(id, button);
 }
 
-Button* ButtonFactory::key_button (FileReader reader)
+Button* ButtonFactory::key_button(FileReader reader)
 {
   std::string key;
   if (!reader.read_string("key", key))
     PingusError::raise("KeyButton without key parameter");
 
-  return new KeyButton(CL_Keyboard::get_device().string_to_keyid(key));
+  return new KeyButton(KeyButton::string_to_keyid(key));
 }
 
 Button* ButtonFactory::mouse_button (FileReader reader)
@@ -106,7 +104,7 @@ Button* ButtonFactory::mouse_button (FileReader reader)
   return new MouseButton(button);
 }
 
-Button* ButtonFactory::multiple_button (FileReader reader)
+Button* ButtonFactory::multiple_button(FileReader reader)
 {
   std::vector<Button*> buttons;
 
@@ -119,7 +117,7 @@ Button* ButtonFactory::multiple_button (FileReader reader)
   return new MultipleButton(buttons);
 }
 
-Button* ButtonFactory::triple_button (FileReader reader)
+Button* ButtonFactory::triple_button(FileReader reader)
 {
   const std::vector<FileReader>& sections = reader.get_sections();
   

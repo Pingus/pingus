@@ -65,7 +65,11 @@
 #define HAVE_UNISTD_H 1
 
 /* Define as const if the declaration of iconv() needs const. */
-#define ICONV_CONST 
+#ifdef __CYGWIN__
+#define ICONV_CONST const
+#else
+#define ICONV_CONST
+#endif
 
 /* Name of package */
 #define PACKAGE "pingus"

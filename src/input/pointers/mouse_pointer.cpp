@@ -17,50 +17,52 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <ClanLib/Display/mouse.h>
-#include <ClanLib/Display/input_event.h>
 #include "mouse_pointer.hpp"
 
 namespace Input {
 namespace Pointers {
 
-MousePointer::MousePointer () 
+MousePointer::MousePointer() 
   : x_pos(0),
-    y_pos(0),
-    move_slot(CL_Mouse::sig_move().connect(this, &Input::Pointers::MousePointer::move_signal))
+    y_pos(0)
+//    move_slot(CL_Mouse::sig_move().connect(this, &Input::Pointers::MousePointer::move_signal))
 {
 }
 
 const float&
-MousePointer::get_x_pos () const
+MousePointer::get_x_pos() const
 {
   return x_pos;
 }
 
 const float&
-MousePointer::get_y_pos () const
+MousePointer::get_y_pos() const
 {
   return y_pos;
 }
 
 void
-MousePointer::set_pos (float new_x, float new_y)
+MousePointer::set_pos(float new_x, float new_y)
 {
+#if 0
   CL_Mouse::set_position(static_cast<int>(new_x),
                          static_cast<int>(new_y));
+#endif
 }
 
 void
-MousePointer::update (float)
+MousePointer::update(float)
 {
 }
 
+#if 0
 void
-MousePointer::move_signal (const CL_InputEvent& event)
+MousePointer::move_signal(const CL_InputEvent& event)
 {
   x_pos = (float)event.mouse_pos.x;
   y_pos = (float)event.mouse_pos.y;
 }
+#endif
 
 } // namespace Pointers
 } // namespace Input

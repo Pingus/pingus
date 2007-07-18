@@ -29,19 +29,19 @@ class Scroller;
 class ScrollerFactory
 {
 private:
-  static Scroller* axis_scroller     (FileReader reader);
-  static Scroller* inverted_scroller (FileReader reader);
-  static Scroller* joystick_scroller (FileReader reader);
-  static Scroller* mouse_scroller    (FileReader reader);
-  static Scroller* multiple_scroller (FileReader reader);
-  static Scroller* pointer_scroller  (FileReader reader);
+  static Scroller* axis_scroller(FileReader reader);
+  static Scroller* inverted_scroller(FileReader reader);
+  static Scroller* joystick_scroller(FileReader reader);
+  static Scroller* mouse_scroller(FileReader reader);
+  static Scroller* multiple_scroller(FileReader reader);
+  static Scroller* pointer_scroller(FileReader reader);
 
 public:
-  static Scroller* create (FileReader reader);
+  static Scroller* create(FileReader reader);
 
 private:
-  ScrollerFactory ();
-  ScrollerFactory (const ScrollerFactory&);
+  ScrollerFactory();
+  ScrollerFactory(const ScrollerFactory&);
   ScrollerFactory& operator= (const ScrollerFactory&);
 };
 

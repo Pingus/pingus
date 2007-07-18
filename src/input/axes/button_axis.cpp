@@ -23,7 +23,7 @@
 namespace Input {
 namespace Axes {
 
-ButtonAxis::ButtonAxis (float angle_, Button* button1_, Button* button2_) :
+ButtonAxis::ButtonAxis(float angle_, Button* button1_, Button* button2_) :
   pos(0), angle(angle_), button1(button1_), button2(button2_)
 {
   if (angle < 0)
@@ -32,26 +32,26 @@ ButtonAxis::ButtonAxis (float angle_, Button* button1_, Button* button2_) :
     angle = static_cast<float>((static_cast<int>(angle) % 360) + 0);
 }
 
-ButtonAxis::~ButtonAxis ()
+ButtonAxis::~ButtonAxis()
 {
   delete button1;
   delete button2;
 }
 
 const float&
-ButtonAxis::get_pos () const
+ButtonAxis::get_pos() const
 {
   return pos;
 }
 
 const float&
-ButtonAxis::get_angle () const
+ButtonAxis::get_angle() const
 {
   return angle;
 }
 
 void
-ButtonAxis::update (float delta)
+ButtonAxis::update(float delta)
 {
   button1->update(delta);
   button2->update(delta);

@@ -75,9 +75,9 @@ public:
       coordinates */
   virtual void on_pointer_move (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
 	
-	/** Emitted whenever a keyboard character is pressed.  Only certain 
-			components should implement this */
-	virtual void on_key_pressed(const char c) { UNUSED_ARG(c); }
+  /** Emitted whenever a keyboard character is pressed.  Only certain 
+      components should implement this */
+  virtual void on_key_pressed(const unsigned short c) { UNUSED_ARG(c); }
 
   // status functions for use in the update() function
   /** return true if currently pressed */

@@ -27,22 +27,22 @@ namespace Input {
 /// abstract base class defining the scroller interface
 class Scroller {
 public:
-  Scroller () { }
-  virtual ~Scroller () { }
+  Scroller() { }
+  virtual ~Scroller() { }
 
   /// returns the scroll delta in X direction
-  virtual const float& get_x_delta () const =0;
+  virtual const float& get_x_delta() const =0;
 
   /// returns the scroll delta in Y direction
-  virtual const float& get_y_delta () const =0;
+  virtual const float& get_y_delta() const =0;
 
   /// writes the X/Y scroll delta into it's parameters
-  virtual void  get_delta (float&, float&) const =0;
+  virtual void get_delta(float&, float&) const =0;
 
-  virtual void  update (float) =0;
+  virtual void update(float) =0;
 
 private:
-  Scroller (const Scroller&);
+  Scroller(const Scroller&);
   Scroller& operator= (const Scroller&);
 };
 

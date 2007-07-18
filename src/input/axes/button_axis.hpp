@@ -44,16 +44,16 @@ private:
 
 public:
 
-  ButtonAxis (float angle_, Button* button1_, Button* button2_);
-  ~ButtonAxis ();
+  ButtonAxis(float angle_, Button* button1_, Button* button2_);
+  ~ButtonAxis();
 
-  virtual const float& get_pos () const;
-  virtual const float& get_angle () const;
+  virtual const float& get_pos() const;
+  virtual const float& get_angle() const;
 
-  virtual void  update (float delta);
+  virtual void update(float delta);
 
 private:
-  ButtonAxis (const ButtonAxis&);
+  ButtonAxis(const ButtonAxis&);
   ButtonAxis& operator= (const ButtonAxis&);
 };
 

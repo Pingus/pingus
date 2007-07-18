@@ -29,16 +29,16 @@ class Pointer;
 class PointerFactory
 {
 private:
-  static Pointer* axis_pointer     (FileReader reader);
-  static Pointer* mouse_pointer    ();
-  static Pointer* multiple_pointer (FileReader reader);
+  static Pointer* axis_pointer(FileReader reader);
+  static Pointer* mouse_pointer();
+  static Pointer* multiple_pointer(FileReader reader);
 
 public:
-  static Pointer* create (FileReader reader);
+  static Pointer* create(FileReader reader);
 
 private:
-  PointerFactory ();
-  PointerFactory (const PointerFactory&);
+  PointerFactory();
+  PointerFactory(const PointerFactory&);
   PointerFactory& operator= (const PointerFactory&);
 };
 

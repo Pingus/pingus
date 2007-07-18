@@ -30,7 +30,7 @@ enum EventType { ButtonEventType, PointerEventType, AxisEventType, ScrollEventTy
 
 enum ButtonName { primary, secondary, pause, fast_forward, armageddon, escape, action_1, action_2,
                   action_3, action_4, action_5, action_6, action_7, action_8, action_9, action_10,
-                  action_up, action_down };
+                  action_up, action_down, max_button };
 
 enum State { pressed, released };
 
@@ -65,7 +65,7 @@ struct ScrollEvent
 
 struct KeyboardEvent
 {
-	char key;
+  unsigned short key;
 };
 
 struct Event
@@ -77,13 +77,13 @@ struct Event
     PointerEvent  pointer;
     AxisEvent     axis;
     ScrollEvent   scroll;
-		KeyboardEvent keyboard;
+    KeyboardEvent keyboard;
   };
 };
 
 typedef std::vector<Event> EventLst;
 
-inline Event makeButtonEvent (ButtonName name, State state)
+inline Event makeButtonEvent(ButtonName name, State state)
 {
   Event event;
 
@@ -106,7 +106,7 @@ inline Event makePointerEvent(PointerName name, float x, float y)
   return event;
 }
 
-inline Event makeAxisEvent (float dir, AxisName name = action)
+inline Event makeAxisEvent(float dir, AxisName name = action)
 {
   Event event;
 
@@ -117,7 +117,7 @@ inline Event makeAxisEvent (float dir, AxisName name = action)
   return event;
 }
 
-inline Event makeScrollEvent (float x_delta, float y_delta)
+inline Event makeScrollEvent(float x_delta, float y_delta)
 {
   Event event;
 
@@ -128,14 +128,14 @@ inline Event makeScrollEvent (float x_delta, float y_delta)
   return event;
 }
 
-inline Event makeKeyboardEvent (char c)
+inline Event makeKeyboardEvent(unsigned short c)
 {
-	Event event;
+  Event event;
 	
-	event.type = KeyboardEventType;
-	event.keyboard.key = c;
+  event.type = KeyboardEventType;
+  event.keyboard.key = c;
 	
-	return event;
+  return event;
 }
 
 } // namespace Input
