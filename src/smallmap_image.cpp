@@ -103,109 +103,91 @@ SmallMapImage::update_surface()
 	  switch (current_pixel)
             {
             case Groundtype::GP_NOTHING:
-              if (0) //!CL_Endian::is_system_big())
-              {
-                cbuffer[i + 0] = alpha;
-                cbuffer[i + 1] = 0;
-                cbuffer[i + 2] = 0;
-                cbuffer[i + 3] = 0;
-              }
-              else
-              {
-                cbuffer[i + 3] = alpha;
-                cbuffer[i + 2] = 0;
-                cbuffer[i + 1] = 0;
-                cbuffer[i + 0] = 0;
-              }
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+              cbuffer[i + 0] = alpha;
+              cbuffer[i + 1] = 0;
+              cbuffer[i + 2] = 0;
+              cbuffer[i + 3] = 0;
+#else
+              cbuffer[i + 3] = alpha;
+              cbuffer[i + 2] = 0;
+              cbuffer[i + 1] = 0;
+              cbuffer[i + 0] = 0;
+#endif
               break;
 
             case Groundtype::GP_BRIDGE:
-              if (0) //!CL_Endian::is_system_big())
-              {
-                cbuffer[i + 0] = 255;
-                cbuffer[i + 1] = 100;
-                cbuffer[i + 2] = 255;
-                cbuffer[i + 3] =   0;
-              }
-              else
-              {
-                cbuffer[i + 3] = 255;
-                cbuffer[i + 2] = 100;
-                cbuffer[i + 1] = 255;
-                cbuffer[i + 0] =   0;
-              }
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+              cbuffer[i + 0] = 255;
+              cbuffer[i + 1] = 100;
+              cbuffer[i + 2] = 255;
+              cbuffer[i + 3] =   0;
+#else
+              cbuffer[i + 3] = 255;
+              cbuffer[i + 2] = 100;
+              cbuffer[i + 1] = 255;
+              cbuffer[i + 0] =   0;
+#endif
               break;
 
             case Groundtype::GP_WATER:
             case Groundtype::GP_LAVA:
-              if (0) //!CL_Endian::is_system_big())
-              {
-                cbuffer[i + 0] = 255;
-                cbuffer[i + 1] = 200;
-                cbuffer[i + 2] = 0;
-                cbuffer[i + 3] = 0;
-              }
-              else
-              {
-                cbuffer[i + 3] = 255;
-                cbuffer[i + 2] = 200;
-                cbuffer[i + 1] = 0;
-                cbuffer[i + 0] = 0;
-              }
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+              cbuffer[i + 0] = 255;
+              cbuffer[i + 1] = 200;
+              cbuffer[i + 2] = 0;
+              cbuffer[i + 3] = 0;
+#else
+              cbuffer[i + 3] = 255;
+              cbuffer[i + 2] = 200;
+              cbuffer[i + 1] = 0;
+              cbuffer[i + 0] = 0;
+#endif
               break;
 
 #if 0
               // FIXME: temporaty disabled for 0.6.0 release, since all liquids are currently lava
             case Groundtype::GP_LAVA:
-              if (!CL_Endian::is_system_big())
-              {
-                cbuffer[i + 0] = 255; // alpha
-                cbuffer[i + 1] = 255; // blue
-                cbuffer[i + 2] = 128;   // green
-                cbuffer[i + 3] = 128;   // red
-              }
-              else
-              {
-                cbuffer[i + 3] = 255; // alpha
-                cbuffer[i + 2] = 255; // blue
-                cbuffer[i + 1] = 128;   // green
-                cbuffer[i + 0] = 128;   // red
-              }
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+              cbuffer[i + 0] = 255; // alpha
+              cbuffer[i + 1] = 255; // blue
+              cbuffer[i + 2] = 128;   // green
+              cbuffer[i + 3] = 128;   // red
+#else
+              cbuffer[i + 3] = 255; // alpha
+              cbuffer[i + 2] = 255; // blue
+              cbuffer[i + 1] = 128;   // green
+              cbuffer[i + 0] = 128;   // red
+#endif
               break;
 #endif
 
             case Groundtype::GP_SOLID:
-              if (0)//!CL_Endian::is_system_big())
-              {
-                cbuffer[i + 0] = 255;
-                cbuffer[i + 1] = 100;
-                cbuffer[i + 2] = 100;
-                cbuffer[i + 3] = 100;
-              }
-              else
-              {
-                cbuffer[i + 3] = 255;
-                cbuffer[i + 2] = 100;
-                cbuffer[i + 1] = 100;
-                cbuffer[i + 0] = 100;
-              }
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+              cbuffer[i + 0] = 255;
+              cbuffer[i + 1] = 100;
+              cbuffer[i + 2] = 100;
+              cbuffer[i + 3] = 100;
+#else
+              cbuffer[i + 3] = 255;
+              cbuffer[i + 2] = 100;
+              cbuffer[i + 1] = 100;
+              cbuffer[i + 0] = 100;
+#endif
               break;
 
             default:
-              if (0)///!CL_Endian::is_system_big())
-              {
-                cbuffer[i + 0] = 255;
-                cbuffer[i + 1] = 200;
-                cbuffer[i + 2] = 200;
-                cbuffer[i + 3] = 200;
-              }
-              else
-              {
-                cbuffer[i + 3] = 255;
-                cbuffer[i + 2] = 200;
-                cbuffer[i + 1] = 200;
-                cbuffer[i + 0] = 200;
-              }
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+              cbuffer[i + 0] = 255;
+              cbuffer[i + 1] = 200;
+              cbuffer[i + 2] = 200;
+              cbuffer[i + 3] = 200;
+#else
+              cbuffer[i + 3] = 255;
+              cbuffer[i + 2] = 200;
+              cbuffer[i + 1] = 200;
+              cbuffer[i + 0] = 200;
+#endif
               break;
             }
 	}
