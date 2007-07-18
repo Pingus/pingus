@@ -755,6 +755,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\sexpr_file_writer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\sexpr_file_writer.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\smallmap_image.cpp"
 				>
 			</File>

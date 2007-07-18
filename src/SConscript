@@ -138,6 +138,7 @@ env.Program('../pingus', [
 'file_dialog_item.cpp', 
 'file_reader.cpp',
 'sexpr_file_reader.cpp', 
+'sexpr_file_writer.cpp', 
 'fonts.cpp',
 'font.cpp',
 'font_description.cpp',
