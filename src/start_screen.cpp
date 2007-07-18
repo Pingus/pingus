@@ -71,7 +71,12 @@ public:
 
   void draw(DrawingContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_center(Fonts::chalk_normal, (float)x_pos + 32, (float)y_pos - 17, _("Ok"));
+    gc.print_center(Fonts::chalk_normal, (float)x_pos + 30, (float)y_pos - 20, _("Ok"));
+  }
+
+  bool is_at(int x, int y) {
+	  return x > x_pos && x < x_pos + int(button_surface.get_width())
+		&& y > y_pos - 20 && y < y_pos + int(button_surface.get_height());
   }
 
   void on_click()

@@ -95,7 +95,7 @@ public:
 
   void draw(DrawingContext& gc) {
     SurfaceButton::draw(gc);
-    gc.print_center(Fonts::chalk_normal, (float)x_pos + 55, (float)y_pos, _("Abort"));
+    gc.print_center(Fonts::chalk_normal, x_pos + 55.0f, y_pos - 4.0f, _("Abort"));
   }
 
   void on_click() {
@@ -124,6 +124,17 @@ public:
                          ResDescriptor("core/start/ok_hover")),
       parent(p)
   {
+  }
+
+  void draw (DrawingContext& gc) {
+    SurfaceButton::draw(gc);
+    gc.print_center(Fonts::chalk_normal, x_pos + 30.0f, y_pos - 24.0f, _("Retry"));
+  }
+
+  bool is_at(int x, int y) {
+	  return x > x_pos && x < x_pos + int(button_surface.get_width())
+		&& y > y_pos - 24 &&
+		y < y_pos + int(button_surface.get_height());
   }
 
   void on_click()
@@ -172,11 +183,6 @@ void
 ResultScreenComponent::draw(DrawingContext& gc)
 {
   gc.draw(background, Vector3f(gc.get_width()/2, gc.get_height()/2));
-
-  if (!result.success())
-    gc.print_right(Fonts::chalk_normal,
-                   (float)Display::get_width()/2 + 275,
-                   (float)Display::get_height()/2 + 110, _("Retry"));
 
   gc.print_center(Fonts::chalk_large, gc.get_width()/2, 
                   (float)Display::get_height()/2 - 200,
