@@ -150,24 +150,24 @@ OFileStreambuf::sync()
 //---------------------------------------------------------------------------
 
 IFileStream::IFileStream(const std::string& filename)
-    : std::istream(new IFileStreambuf(filename))
+    : std::istream(0), streambuf(filename)
 {
+  rdbuf(&streambuf);
 }
 
 IFileStream::~IFileStream()
 {
-    delete rdbuf();
 }
 
 //---------------------------------------------------------------------------
 
 OFileStream::OFileStream(const std::string& filename)
-    : std::ostream(new OFileStreambuf(filename))
+    : std::ostream(0), streambuf(filename)
 {
+  rdbuf(&streambuf);
 }
 
 OFileStream::~OFileStream()
 {
-    delete rdbuf();
 }
 

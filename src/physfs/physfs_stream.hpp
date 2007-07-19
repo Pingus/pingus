@@ -61,6 +61,7 @@ private:
 
 class IFileStream : public std::istream
 {
+    IFileStreambuf streambuf;
 public:
     IFileStream(const std::string& filename);
     ~IFileStream();
@@ -68,6 +69,7 @@ public:
 
 class OFileStream : public std::ostream
 {
+    OFileStreambuf streambuf;
 public:
     OFileStream(const std::string& filename);
     ~OFileStream();

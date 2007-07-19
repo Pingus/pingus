@@ -36,7 +36,7 @@ SavegameManager::instance()
   if (instance_)
     return instance_;
   else
-    return (instance_ = new SavegameManager("savegames/savegames.xml"));
+    return (instance_ = new SavegameManager("savegames/savegames.scm"));
 }
 
 void SavegameManager::deinit()
@@ -48,40 +48,46 @@ void SavegameManager::deinit()
 SavegameManager::SavegameManager(const std::string& arg_filename)
   : filename(arg_filename)
 {
-  boost::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(arg_filename);
+  boost::shared_ptr<lisp::Lisp> sexpr;
+
+  try {
+    sexpr = lisp::Parser::parse(arg_filename);
+  }
+  catch (const std::runtime_error& e) {
+    std::cerr << "SavegameManager: " << e.what() << std::endl;
+    return;
+  }
   if (!sexpr)
     {
-      PingusError::raise("SavegameManager: Couldn't find savegame file '" +
-        filename + "', starting with an empty one.");
+      std::cerr << "SavegameManager: Couldn't find savegame file '" <<
+        filename << "', starting with an empty one." << std::endl;
       return;
     }
 
   SExprFileReader reader(sexpr->get_list_elem(0));
-
   if (reader.get_name() != "pingus-savegame")
     {
-      PingusError::raise("Error: " + filename + ": not a (pingus-savegame) file");
+      std::cerr << "Error: " << filename << ": not a (pingus-savegame) file" << std::endl;
+      return;
     }
-  else
-    {
-      const std::vector<FileReader>& sections = reader.get_sections();
-      for(std::vector<FileReader>::const_iterator i = sections.begin();
-          i != sections.end(); ++i)
-        {
-          Savegame* savegame = new Savegame(*i);
-          SavegameTable::iterator j = savegames.find(savegame->levelname);
 
-          if (j != savegames.end())
-            {
-              std::cout << "SavegameManager: name collision: " << savegame->levelname << std::endl;
-              delete j->second;
-              j->second = savegame;
-            }
-          else
-            {
-              //std::cout << "SavegameManager: Loading savegame for: " << savegame->levelname << std::endl;
-              savegames[savegame->levelname] = savegame;
-            }
+  const std::vector<FileReader>& sections = reader.get_sections();
+  for(std::vector<FileReader>::const_iterator i = sections.begin();
+      i != sections.end(); ++i)
+    {
+      Savegame* savegame = new Savegame(*i);
+      SavegameTable::iterator j = savegames.find(savegame->levelname);
+
+      if (j != savegames.end())
+        {
+          std::cout << "SavegameManager: name collision: " << savegame->levelname << std::endl;
+          delete j->second;
+          j->second = savegame;
+        }
+      else
+        {
+          //std::cout << "SavegameManager: Loading savegame for: " << savegame->levelname << std::endl;
+          savegames[savegame->levelname] = savegame;
         }
     }
 }

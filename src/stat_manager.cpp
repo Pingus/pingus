@@ -17,13 +17,16 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <iostream>
 #include <algorithm>
-#include <fstream>
 #include "system.hpp"
 #include "pingus_error.hpp"
 #include "string_util.hpp"
 #include "stat_manager.hpp"
+#include "sexpr_file_reader.hpp"
+#include "sexpr_file_writer.hpp"
+#include "lisp/lisp.hpp"
+#include "lisp/parser.hpp"
+#include "physfs/physfs_stream.hpp"
 
 
 StatManager* StatManager::instance_ = 0;
@@ -34,7 +37,7 @@ StatManager::instance()
   if (instance_)
     return instance_;
   else
-    return (instance_ = new StatManager(System::get_statdir() + "savegames/variables.xml"));
+    return (instance_ = new StatManager("savegames/variables.scm"));
 }
 
 void
@@ -54,15 +57,17 @@ StatManager::deinit()
 std::string
 StatManager::get_resname(const std::string& filename)
 {
-	std::string::size_type pos;
-	std::string str;
-	pos = filename.rfind("/");
-	pos++;
-	str = filename.substr(pos);
+  std::string::size_type pos;
+  std::string str;
+  pos = filename.rfind("/");
+  pos++;
+  str = filename.substr(pos);
   pos = 0;
   while ((pos = str.find('.', pos)) != std::string::npos)
-    str.replace(pos, 1, 1, '-');
-	return str;
+    {
+      str.replace(pos, 1, 1, '-');
+    }
+  return str;
 }
 
 StatManager::StatManager(const std::string& arg_filename)
@@ -78,33 +83,40 @@ StatManager::~StatManager()
 void
 StatManager::load(const std::string& filename)
 {
-  if (!System::exist(filename))
-  {
-     // Create empty file
-     save(filename);
+  if (!PHYSFS_exists(filename.c_str()))
+    {
+      // Create empty file
+      save(filename);
+    }
+
+  boost::shared_ptr<lisp::Lisp> sexpr;
+  try {
+    sexpr = lisp::Parser::parse(filename);
   }
-  
-#if 0
-  CL_InputSourceProvider_File provider(".");
-  CL_DomDocument doc(provider.open_source(filename), true);
-      
-  CL_DomElement root = doc.get_document_element();
-      
-  if (root.get_tag_name() != "pingus-stats")
+  catch (const std::runtime_error& e) {
+    std::cerr << "SavegameManager: " << e.what() << std::endl;
+    return;
+  }
+  if (!sexpr)
     {
-      PingusError::raise("Error: " + filename + ": not a <pingus-stats> file");
+      std::cerr << "SavegameManager: Couldn't find savegame file '" <<
+        filename << "', starting with an empty one." << std::endl;
+      return;
     }
-  else
+
+  SExprFileReader reader(sexpr->get_list_elem(0));
+  if (reader.get_name() != "pingus-stats")
     {
-      XMLFileReader reader(root);
-      const std::vector<std::string>& section_names = reader.get_section_names();
-      for(std::vector<std::string>::const_iterator i = section_names.begin();
-          i != section_names.end(); ++i)
-        {
-          reader.read_string(i->c_str(), stats[*i]);
-        }
+      std::cerr << "Error: " << filename << ": not a (pingus-stats) file" << std::endl;
+      return;
     }
-#endif
+
+  const std::vector<std::string>& section_names = reader.get_section_names();
+  for(std::vector<std::string>::const_iterator i = section_names.begin();
+      i != section_names.end(); ++i)
+    {
+      reader.read_string(i->c_str(), stats[*i]);
+    }
 }
 
 void
@@ -116,18 +128,18 @@ StatManager::flush()
 void
 StatManager::save(const std::string& filename)
 {
-  std::ofstream xml(filename.c_str());
+  OFileStream out(filename);
+  SExprFileWriter writer(out);
 
-  xml << "<?xml version=\"1.0\"  encoding=\"ISO-8859-1\"?>\n\n"
-      << "<pingus-stats>\n";
+  writer.begin_section("pingus-stats");
 
   for (Table::iterator i = stats.begin(); i != stats.end(); ++i)
     {
       if (!i->second.empty())
-        xml << "  <" << i->first << ">" << i->second << "</" << i->first << ">" << std::endl;
+        writer.write_string(i->first.c_str(), i->second);
     }
 
-  xml << "</pingus-stats>\n";
+  writer.end_section();
 }
 
 bool
