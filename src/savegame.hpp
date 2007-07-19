@@ -24,7 +24,7 @@
 #include "file_reader.hpp"
 
 
-	class XMLFileWriter;
+class SExprFileWriter;
 
 /** The Savegame class holds savegame informations for a single
     level */
@@ -33,8 +33,8 @@ class Savegame
 private:
 public:
   enum S_Status { FINISHED,   // level is successfully finished
-                ACCESSIBLE, // level is accessible and can be played
-                NONE };      // level is not finished and cannot be accessed
+                  ACCESSIBLE, // level is accessible and can be played
+                  NONE };     // level is not finished and cannot be accessed
 
   static std::string status_to_string(S_Status s);
   static S_Status string_to_status (std::string s);
@@ -49,12 +49,12 @@ public:
   int saved_pingus;
 
   Savegame();
-	~Savegame() { }
+  ~Savegame() { }
   Savegame(FileReader node);
   Savegame(std::string arg_levelname, S_Status arg_status, int arg_time, int arg_saved_pingus);
 
-  void read_xml(FileReader node);
-  void write_xml(XMLFileWriter& xml);
+  void read_sexpr(FileReader node);
+  void write_sexpr(SExprFileWriter& xml);
 };
 
 

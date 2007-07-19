@@ -17,14 +17,15 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#include <iostream>
-#include <fstream>
 #include <assert.h>
 #include "system.hpp"
 #include "pingus_error.hpp"
-////#include "xml_file_reader.hpp"
-///#include "xml_file_writer.hpp"
+#include "sexpr_file_reader.hpp"
+#include "sexpr_file_writer.hpp"
 #include "savegame_manager.hpp"
+#include "lisp/lisp.hpp"
+#include "lisp/parser.hpp"
+#include "physfs/physfs_stream.hpp"
 
 
 SavegameManager* SavegameManager::instance_ = 0;
@@ -35,57 +36,54 @@ SavegameManager::instance()
   if (instance_)
     return instance_;
   else
-    return (instance_ = new SavegameManager(System::get_statdir() + "savegames/savegames.xml"));
+    return (instance_ = new SavegameManager("savegames/savegames.xml"));
 }
 
 void SavegameManager::deinit()
 {
-	delete instance_;
-	instance_ = 0;
+  delete instance_;
+  instance_ = 0;
 }
 
 SavegameManager::SavegameManager(const std::string& arg_filename)
   : filename(arg_filename)
 {
-#if 0
-  try 
+  boost::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(arg_filename);
+  if (!sexpr)
     {
-      CL_DomDocument doc(new CL_InputSource_File(filename), true);
-      CL_DomElement root = doc.get_document_element();
-      if (root.get_tag_name() != "pingus-savegame")
-        {
-          PingusError::raise("Error: " + filename + ": not a <pingus-savegame> file");
-        }
-      else
-        {
-          XMLFileReader reader(root);
-          const std::vector<FileReader>& sections = reader.get_sections();
-          for(std::vector<FileReader>::const_iterator i = sections.begin();
-              i != sections.end(); ++i)
-            {
-              Savegame* savegame = new Savegame(*i);
-              SavegameTable::iterator j = savegames.find(savegame->levelname);
+      PingusError::raise("SavegameManager: Couldn't find savegame file '" +
+        filename + "', starting with an empty one.");
+      return;
+    }
 
-              if (j != savegames.end())
-                {
-                  std::cout << "SavegameManager: name collision: " << savegame->levelname << std::endl;
-                  delete j->second;
-                  j->second = savegame;
-                }
-              else
-                {
-                  //std::cout << "SavegameManager: Loading savegame for: " << savegame->levelname << std::endl;
-                  savegames[savegame->levelname] = savegame;
-                }
+  SExprFileReader reader(sexpr->get_list_elem(0));
+
+  if (reader.get_name() != "pingus-savegame")
+    {
+      PingusError::raise("Error: " + filename + ": not a (pingus-savegame) file");
+    }
+  else
+    {
+      const std::vector<FileReader>& sections = reader.get_sections();
+      for(std::vector<FileReader>::const_iterator i = sections.begin();
+          i != sections.end(); ++i)
+        {
+          Savegame* savegame = new Savegame(*i);
+          SavegameTable::iterator j = savegames.find(savegame->levelname);
+
+          if (j != savegames.end())
+            {
+              std::cout << "SavegameManager: name collision: " << savegame->levelname << std::endl;
+              delete j->second;
+              j->second = savegame;
+            }
+          else
+            {
+              //std::cout << "SavegameManager: Loading savegame for: " << savegame->levelname << std::endl;
+              savegames[savegame->levelname] = savegame;
             }
         }
-    } 
-  catch (...) 
-    {
-      std::cout << "SavegameManager: Couldn't find savegame file '" << filename
-                << "', starting with a empty one." << std::endl;
     }
-#endif
 }
 
 SavegameManager::~SavegameManager()
@@ -137,20 +135,18 @@ SavegameManager::store(Savegame& arg_savegame)
 void
 SavegameManager::flush()
 {
-#if 0
-  std::ofstream out(filename.c_str());
-  XMLFileWriter xml(out);
+  OFileStream out(filename);
+  SExprFileWriter sfw(out);
 
-  xml.begin_section("pingus-savegame");
+  sfw.begin_section("pingus-savegame");
 
   for(SavegameTable::iterator i = savegames.begin(); i != savegames.end(); ++i)
     {
       assert(i->second);
-      i->second->write_xml(xml);
+      i->second->write_sexpr(sfw);
     }
 
-  xml.end_section();	// pingus-savegame
-#endif 
+  sfw.end_section();	// pingus-savegame
 }
 
 

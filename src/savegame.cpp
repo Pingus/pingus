@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
-///#include "sexpr_file_writer.hpp"
+#include "sexpr_file_writer.hpp"
 #include "savegame.hpp"
 #include "string_util.hpp"
 
@@ -62,7 +62,7 @@ Savegame::Savegame()
 
 Savegame::Savegame(FileReader reader)
 {
-  read_xml(reader);
+  read_sexpr(reader);
 }
 
 Savegame::Savegame(std::string arg_levelname, S_Status arg_status, int arg_time, int arg_saved_pingus)
@@ -73,9 +73,8 @@ Savegame::Savegame(std::string arg_levelname, S_Status arg_status, int arg_time,
 {
 }
 
-#if 0
 void
-Savegame::write_xml(XMLFileWriter& writer)
+Savegame::write_sexpr(SExprFileWriter& writer)
 {
   writer.begin_section("level");
   writer.write_string ("name", levelname);
@@ -84,10 +83,9 @@ Savegame::write_xml(XMLFileWriter& writer)
   writer.write_int    ("saved-pingus", saved_pingus);
   writer.end_section();
 }
-#endif 
 
 void
-Savegame::read_xml(FileReader reader)
+Savegame::read_sexpr(FileReader reader)
 {
   reader.read_string ("name", levelname);
   reader.read_enum   ("status", status, string_to_status);
