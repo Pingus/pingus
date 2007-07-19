@@ -43,6 +43,7 @@ private:
   int door_height;
 
   Sprite door_box;
+  CollisionMask door_box_cmap;
   Sprite door_tile;
   CollisionMask door_tile_cmap;
   Sprite switch_sur;

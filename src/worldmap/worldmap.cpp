@@ -58,13 +58,6 @@ WorldMap::WorldMap(const std::string& arg_filename)
     mouse_x(0),
     mouse_y(0)
 {
-#if 0
-  CL_InputSourceProvider_File provider(".");
-  CL_DomDocument doc(provider.open_source(filename), true);
-  CL_DomElement root = doc.get_document_element();
-
-  parse_file(XMLFileReader(root));
-#endif
   parse_file(FileReader::parse(filename));
 
   pingus = new Pingus(path_graph);

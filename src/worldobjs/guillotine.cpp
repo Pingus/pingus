@@ -34,11 +34,9 @@ Guillotine::Guillotine(const FileReader& reader)
 {
   reader.read_vector("position", pos);
   
-#if 0
   sprite_kill_right.set_play_loop(false);
   sprite_kill_left.set_play_loop(false);
   sprite_idle.set_play_loop(true);
-#endif
 }
 
 void

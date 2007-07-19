@@ -29,6 +29,7 @@ namespace WorldObjs {
 
 SwitchDoor::SwitchDoor(const FileReader& reader)
   : door_box      (Resource::load_sprite("worldobjs/switchdoor_box")),
+    door_box_cmap (Resource::load_collision_mask("worldobjs/switchdoor_box")),
     door_tile     (Resource::load_sprite("worldobjs/switchdoor_tile")),
     door_tile_cmap(Resource::load_collision_mask("worldobjs/switchdoor_tile_cmap")),
     switch_sur    (Resource::load_sprite("worldobjs/switchdoor_switch")),
@@ -48,8 +49,7 @@ SwitchDoor::SwitchDoor(const FileReader& reader)
 void
 SwitchDoor::on_startup ()
 {
-#if 0
-  world->get_colmap()->put(door_box.get_frame_pixeldata(0),
+  world->get_colmap()->put(door_box_cmap,
                            static_cast<int>(door_pos.x),
 			   static_cast<int>(door_pos.y),
 			   Groundtype::GP_SOLID);
@@ -61,7 +61,6 @@ SwitchDoor::on_startup ()
 			     + i * door_tile.get_height()
 			     + door_box.get_height(),
 			     Groundtype::GP_SOLID);
-#endif
 }
 
 void
@@ -105,8 +104,7 @@ SwitchDoor::update ()
 			// it, we remove the door from the colmap
 			if (current_door_height + 10 < door_height)
 			{
-#if 0
-				world->get_colmap()->put(door_box.get_frame_pixeldata(0),
+				world->get_colmap()->put(door_box_cmap,
 					static_cast<int>(door_pos.x),
 					static_cast<int>(door_pos.y),
 					Groundtype::GP_NOTHING);
@@ -116,7 +114,6 @@ SwitchDoor::update ()
 					static_cast<int>(door_pos.y) + i * door_tile.get_height()
 					+ door_box.get_height(),
 					Groundtype::GP_NOTHING);
-#endif
 			}
 		}
 	}

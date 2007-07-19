@@ -58,11 +58,10 @@ Exit::~Exit ()
 void
 Exit::on_startup ()
 {
-#if 0
-  world->get_colmap()->remove(sprite.get_frame_pixeldata(0),
+  CollisionMask mask = Resource::load_collision_mask("core/misc/smallmap_exit");
+  world->get_colmap()->remove(mask,
 			      static_cast<int>(pos.x) - sprite.get_width()/2,
 			      static_cast<int>(pos.y) - sprite.get_height());
-#endif
 }
 
 void

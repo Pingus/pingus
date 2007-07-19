@@ -33,7 +33,8 @@ IceBlock::IceBlock(const FileReader& reader)
   : thickness(1.0),
     is_finished(false),
     last_contact(0),
-    block_sur(Resource::load_sprite ("worldobjs/iceblock"))
+    block_sur(Resource::load_sprite("worldobjs/iceblock")),
+    block_sur_cmap(Resource::load_collision_mask("worldobjs/iceblock"))
 {
   reader.read_vector("position", pos);
   reader.read_int   ("width",    width);
@@ -42,9 +43,7 @@ IceBlock::IceBlock(const FileReader& reader)
 void
 IceBlock::on_startup ()
 {
-  CollisionMask surf = Resource::load_collision_mask("worldobjs/iceblock_cmap");
-
-  world->put(surf,
+  world->put(block_sur_cmap,
              static_cast<int>(pos.x),
              static_cast<int>(pos.y),
              Groundtype::GP_GROUND);
@@ -88,8 +87,7 @@ IceBlock::update()
 	  is_finished = true;
 	  thickness = 0;
 
-	  CollisionMask mask = Resource::load_collision_mask("worldobjs/iceblock_cmap");
-	  world->remove(mask, static_cast<int>(pos.x), static_cast<int>(pos.y));
+	  world->remove(block_sur_cmap, static_cast<int>(pos.x), static_cast<int>(pos.y));
 	  return;
 	}
     }

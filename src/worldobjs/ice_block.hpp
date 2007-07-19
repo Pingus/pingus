@@ -41,6 +41,7 @@ private:
   bool  is_finished;
   int   last_contact;
   Sprite block_sur;
+  CollisionMask block_sur_cmap;
 
 public:
   IceBlock(const FileReader& reader);
