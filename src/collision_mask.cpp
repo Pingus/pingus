@@ -87,6 +87,12 @@ CollisionMask::get_height() const
   return height;
 }
 
+int
+CollisionMask::get_pitch() const
+{
+  return pixelbuffer.get_surface()->pitch;
+}
+
 PixelBuffer
 CollisionMask::get_pixelbuffer() const
 {

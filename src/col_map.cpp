@@ -82,6 +82,7 @@ ColMap::remove(const CollisionMask& mask, int x, int y)
 	++serial;
 
 	int swidth  = mask.get_width();
+	int spitch  = mask.get_pitch();
 	int sheight = mask.get_height();
 	int y_offset = -y;
 	int x_offset = -x;
@@ -113,7 +114,7 @@ ColMap::remove(const CollisionMask& mask, int x, int y)
 		{
 			for (int i = x_offset; i < swidth && (i+x) < width; ++i)
 			{
-				if (buffer[i + (swidth*line)])
+				if (buffer[i + (spitch*line)])
 				{
 					if (colmap[i + (width*(line+y) + x)] != Groundtype::GP_SOLID)
 						colmap[i + (width*(line+y) + x)] = Groundtype::GP_NOTHING;
@@ -265,31 +266,59 @@ ColMap::draw(DrawingContext& gc)
       switch(colmap[i])
 	{
 	case Groundtype::GP_NOTHING:
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
 	  buffer[i * 4 + 0] = 0;
 	  buffer[i * 4 + 1] = 0;
 	  buffer[i * 4 + 2] = 0;
 	  buffer[i * 4 + 3] = 0;
+#else
+	  buffer[i * 4 + 3] = 0;
+	  buffer[i * 4 + 2] = 0;
+	  buffer[i * 4 + 1] = 0;
+	  buffer[i * 4 + 30] = 0;
+#endif
 	  break;
 
 	case Groundtype::GP_SOLID:
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
 	  buffer[i * 4 + 0] = 255;
 	  buffer[i * 4 + 1] = 100;
 	  buffer[i * 4 + 2] = 100;
 	  buffer[i * 4 + 3] = 100;
+#else
+	  buffer[i * 4 + 3] = 255;
+	  buffer[i * 4 + 2] = 100;
+	  buffer[i * 4 + 1] = 100;
+	  buffer[i * 4 + 30] = 100;
+#endif
 	  break;
 
 	case Groundtype::GP_BRIDGE:
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
 	  buffer[i * 4 + 0] = 255;
 	  buffer[i * 4 + 1] = 0;
 	  buffer[i * 4 + 2] = 0;
 	  buffer[i * 4 + 3] = 200;
+#else
+	  buffer[i * 4 + 3] = 255;
+	  buffer[i * 4 + 2] = 0;
+	  buffer[i * 4 + 1] = 0;
+	  buffer[i * 4 + 0] = 200;
+#endif
 	  break;
 
 	default:
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
 	  buffer[i * 4 + 0] = 255;
 	  buffer[i * 4 + 1] = 200;
 	  buffer[i * 4 + 2] = 200;
 	  buffer[i * 4 + 3] = 200;
+#else
+	  buffer[i * 4 + 3] = 255;
+	  buffer[i * 4 + 2] = 200;
+	  buffer[i * 4 + 1] = 200;
+	  buffer[i * 4 + 0] = 200;
+#endif
 	  break;
 	}
     }
