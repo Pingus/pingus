@@ -58,7 +58,6 @@ env['LIBS'] += ['SDL_image', 'SDL_mixer', 'physfs']
 env.Program('../pingus', [
 
 # # 'gui/buffer_graphic_context.cpp', 
-# # 'indexed_canvas.cpp', 
 # # 'input/axes/mouse_axis.cpp', 
 # # 'pingus_level_test.cpp', 
 # # 'sound/slot_manager.cpp', 
@@ -309,8 +308,6 @@ env.Program('../pingus', [
 # 'xml_pdf.cpp', 
 # 'xml_pingus_level.cpp'
 ],
-LIBS    = env['LIBS'],
-LIBPATH = env['LIBPATH'],
 CPPPATH = env['CPPPATH'] + ['..'] + ['.'])
 
 ## EOF ##
