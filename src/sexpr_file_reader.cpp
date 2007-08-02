@@ -102,6 +102,11 @@ public:
         v = item->get_bool();
         return true;
       }
+    else if (item && item->get_type() == lisp::Lisp::TYPE_INT)
+      {
+        v = item->get_int();
+        return true;
+      }
     return false;
   }
 
