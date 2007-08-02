@@ -56,6 +56,7 @@ public:
 
   int get_width()  const;
   int get_height() const;
+  int get_pitch()  const;
 
   void blit(const PixelBuffer& source, int x, int y);
 

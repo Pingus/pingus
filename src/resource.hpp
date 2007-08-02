@@ -75,6 +75,7 @@ public:
   static Sprite        load_sprite(const ResDescriptor&);
   static Sprite        load_sprite(const std::string& res_name);
   static CollisionMask load_collision_mask(const std::string& res_name);
+  static CollisionMask load_collision_mask(const ResDescriptor&);
   static PixelBuffer   load_pixelbuffer(const std::string& res_name);
   static PixelBuffer   load_pixelbuffer(const ResDescriptor&);
 

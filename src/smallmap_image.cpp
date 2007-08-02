@@ -88,12 +88,13 @@ SmallMapImage::update_surface()
 
   int width  = canvas.get_width();
   int height = canvas.get_height();
+  int pitch = canvas.get_pitch();
   for(int y = 0; y < height; ++y)
     {
       for (int x = 0; x < width; ++x)
 	{
           // Index on the smallmap canvas
-          int i = 4 * ((y * width) + x);
+          int i = y * pitch + 4 * x;
 
 	  int tx = x * cmap_width / width;
 	  int ty = y * cmap_height / height;

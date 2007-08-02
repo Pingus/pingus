@@ -38,11 +38,9 @@ Groundpiece::Groundpiece(const FileReader& reader)
 void
 Groundpiece::on_startup ()
 {
-  //// FIXME: We discard rotation here!
-  CollisionMask mask = Resource::load_collision_mask(desc.res_name);
+  CollisionMask mask = Resource::load_collision_mask(desc);
 
-  // FIXME: overdrawing of bridges and similar things aren't handled
-  // FIXME: here
+  // FIXME: overdrawing of bridges and similar things aren't handled here
   if (gptype == Groundtype::GP_REMOVE)
     get_world()->remove(mask, static_cast<int>(pos.x), static_cast<int>(pos.y));
   else

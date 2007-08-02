@@ -201,6 +201,9 @@ GroundMap::put_alpha_surface(PixelBuffer provider, PixelBuffer sprovider,
   int swidth  = sprovider.get_width();
   int twidth  = provider.get_width();
 
+  int spitch = sprovider.get_pitch();
+  int tpitch = sprovider.get_pitch();
+
   int start_x = std::max(0, -x_pos);
   int start_y = std::max(0, -y_pos);
 
@@ -219,8 +222,8 @@ GroundMap::put_alpha_surface(PixelBuffer provider, PixelBuffer sprovider,
 
       for (int y = start_y; y < end_y; ++y)
         {
-          Uint8* tptr = target_buf + 4*((twidth*(y+y_pos)) + x_pos + start_x);
-          Uint8* sptr = source_buf + swidth*y + start_x;
+          Uint8* tptr = target_buf + tpitch*(y+y_pos) + 4*(x_pos + start_x);
+          Uint8* sptr = source_buf + spitch*y + start_x;
 
           for (int x = start_x; x < end_x; ++x)
             { 
@@ -242,8 +245,8 @@ GroundMap::put_alpha_surface(PixelBuffer provider, PixelBuffer sprovider,
     {
       for (int y = start_y; y < end_y; ++y)
         {
-          Uint8* tptr = target_buf + 4*((twidth*(y+y_pos)) + x_pos + start_x);
-          Uint8* sptr = source_buf + swidth*y + start_x;
+          Uint8* tptr = target_buf + tpitch*(y+y_pos) + 4*(x_pos + start_x);
+          Uint8* sptr = source_buf + spitch*y + start_x;
 
           for (int x = start_x; x < end_x; ++x)
             { 

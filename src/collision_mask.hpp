@@ -28,6 +28,7 @@
 
 #include <string>
 #include "pixel_buffer.hpp"
+#include "res_descriptor.hpp"
 
 /** */
 class CollisionMask
@@ -41,6 +42,7 @@ public:
 public:
   CollisionMask();
   CollisionMask(const std::string& name);
+  CollisionMask(const ResDescriptor& res_desc);
   ~CollisionMask();
   
   int get_width() const;
@@ -49,6 +51,9 @@ public:
   
   PixelBuffer get_pixelbuffer() const;
   uint8_t* get_data() const;
+
+private:
+  void init(const ResDescriptor& res_desc);
 };
 
 #endif

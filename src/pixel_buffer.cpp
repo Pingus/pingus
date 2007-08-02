@@ -116,6 +116,15 @@ PixelBuffer::get_height() const
     return 0;
 }
 
+int
+PixelBuffer::get_pitch() const
+{
+  if (get_surface())
+    return get_surface()->pitch;
+  else
+    return 0;
+}
+
 SDL_Surface* 
 PixelBuffer::get_surface() const
 {
