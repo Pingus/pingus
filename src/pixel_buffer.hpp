@@ -47,7 +47,11 @@ class PixelBuffer
 public:
   PixelBuffer();
   PixelBuffer(const std::string& name);
+  /** Create an empty RGBA PixelBuffer */
   PixelBuffer(int width, int height);
+
+  /** Create an empty Indexed PixelBuffer (8bit) */
+  PixelBuffer(int width, int height, SDL_Palette* palette);
   ~PixelBuffer();
 
   uint8_t* get_data() const;

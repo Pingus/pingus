@@ -31,7 +31,7 @@ namespace BlitterImpl
 /** Rotate a surface 90 degree */
 struct transform_rot90
 {
-  static inline int get_index(int width, int height, int x, int y) {
+  static inline int get_index(int width, int height, int pitch, int x, int y) {
     return (x * height) + (height - y - 1);
   }
 
@@ -50,8 +50,8 @@ struct transform_rot90
 /** Rotate a surface 180 degree */
 struct transform_rot180
 {
-  static inline int get_index(int width, int height, int x, int y) {
-    return (width * height) - (y * width + x) - 1;
+  static inline int get_index(int width, int height, int pitch, int x, int y) {
+    return (pitch * height) - (y * pitch + x) - 1;
   }
 
   static inline int get_x(int width, int height, int x, int y) { UNUSED_ARG(height); UNUSED_ARG(y);
@@ -69,7 +69,7 @@ struct transform_rot180
 /** Rotate a surface 270 degree */
 struct transform_rot270
 {
-  static inline int get_index(int width, int height, int x, int y) {
+  static inline int get_index(int width, int height, int pitch, int x, int y) {
     return ((width - x - 1) * height) + y;
   }
 
@@ -92,9 +92,9 @@ struct transform_rot270
 /** flip a surface  */
 struct transform_flip
 {
-  static inline int get_index(int width, int height, int x, int y) {
+  static inline int get_index(int width, int height, int pitch, int x, int y) {
     UNUSED_ARG(height);
-    return (y * width) + (width - x - 1);
+    return (y * pitch) + (width - x - 1);
   }
 
   static inline int get_x(int width, int height, int x, int y) {
@@ -114,7 +114,7 @@ struct transform_flip
 /** Rotate a surface 90 degree and then flip it */
 struct transform_rot90_flip
 {
-  static inline int get_index(int width, int height, int x, int y) {
+  static inline int get_index(int width, int height, int pitch, int x, int y) {
     UNUSED_ARG(width);
     return (x * height) + y;
   }
@@ -136,8 +136,8 @@ struct transform_rot90_flip
 /** Rotate a surface 180 degree and then flip it */
 struct transform_rot180_flip
 {
-  static inline int get_index(int width, int height, int x, int y) {
-    return ((height - y - 1) * width) + x;
+  static inline int get_index(int width, int height, int pitch, int x, int y) {
+    return ((height - y - 1) * pitch) + x;
   }
 
   static inline int get_x(int width, int height, int x, int y) {
@@ -157,7 +157,7 @@ struct transform_rot180_flip
 /** Rotate a surface 270 degree and then flip it */
 struct transform_rot270_flip
 {
-  static inline int get_index(int width, int height, int x, int y) {
+  static inline int get_index(int width, int height, int pitch, int x, int y) {
     return ((width - x - 1) * height) + height - y - 1;
   }
 
@@ -177,67 +177,38 @@ struct transform_rot270_flip
 
 template<class TransF>
 inline
-PixelBuffer modify(PixelBuffer prov, const TransF&)
+PixelBuffer modify(PixelBuffer source_buffer, const TransF&)
 {
-  std::cout << "Blitter::modify: " << prov.get_surface()->format->BytesPerPixel << std::endl;
-  return prov;
-#if 0
-  if (prov.get_format().get_type() ==  pixelformat_index)
+  SDL_Surface* source = source_buffer.get_surface();
+  SDL_LockSurface(source);
+
+  if (source->format->palette)
     {
-      CL_PixelFormat format(8, 0, 0, 0, 0, 
-                            prov.get_format().has_colorkey(), prov.get_format().get_colorkey(),
-                            pixelformat_index);
-      
-      PixelBuffer canvas(TransF::get_width (prov.get_width(), prov.get_height()), 
-                         TransF::get_height(prov.get_width(), prov.get_height()),
-                         TransF::get_width (prov.get_width(), prov.get_height()),
-                         format, prov.get_palette());
+      PixelBuffer target_buffer(TransF::get_width (source_buffer.get_width(), source_buffer.get_height()), 
+                                TransF::get_height(source_buffer.get_width(), source_buffer.get_height()),
+                                source->format->palette);
+      SDL_Surface* target = target_buffer.get_surface();
+      SDL_LockSurface(target);
 
-      prov.lock ();
-      canvas.lock ();
+      uint8_t* source_buf = static_cast<uint8_t*>(source->pixels);
+      uint8_t* target_buf = static_cast<uint8_t*>(target->pixels);
 
-      unsigned char* source_buf = static_cast<unsigned char*>(prov.get_data());
-      unsigned char* target_buf = static_cast<unsigned char*>(canvas.get_data());
-
-      int pwidth  = prov.get_width();
-      int pheight = prov.get_height();
-
-      for (int y = 0; y < pheight; ++y)
-        for (int x = 0; x < pwidth; ++x)
+      for (int y = 0; y < source->h; ++y)
+        for (int x = 0; x < source->w; ++x)
           {
-            target_buf[TransF::get_index(pwidth, pheight, x, y)] = source_buf[y * pwidth + x];
+            target_buf[TransF::get_index(source->w, source->h, source->pitch, x, y)] = source_buf[y * source->pitch + x];
           }
-
-      canvas.unlock ();
-      prov.unlock ();
-      
-      return canvas;
+     
+      SDL_UnlockSurface(source);
+      return target_buffer;
     }
   else
     {
-      int pwidth  = prov.get_width();
-      int pheight = prov.get_height();
-			
-      PixelBuffer canvas(prov.get_height(), pwidth, pheight*4, CL_PixelFormat::rgba8888);
-
-      prov.lock();
-      canvas.lock();
-
-      for (int y = 0; y < pheight; ++y)
-        for (int x = 0; x < pwidth; ++x)
-          {
-            Color color = prov.get_pixel(x, y);
-            canvas.draw_pixel(TransF::get_x(pwidth, pheight, x, y),
-                              TransF::get_y(pwidth, pheight, x, y),
-                              color);
-          }
-
-      canvas.unlock ();
-      prov.unlock ();
-
-      return canvas;
+      std::cout << "Error: Blitter::modify: Unsupported PixelFormat: "
+                << int(source->format->BytesPerPixel) << std::endl;
+      SDL_UnlockSurface(source);
+      return source_buffer;
     }
-#endif
 }
 
 } // namespace BlitterImpl
