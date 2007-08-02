@@ -775,12 +775,6 @@ PingusMain::start_game ()
 int
 PingusMain::main(int argc, char** argv)
 {
-  PHYSFS_init(argv[0]);
-  PHYSFS_addToSearchPath("data", 0);
-  PHYSFS_addToSearchPath(".", 0);
-  PHYSFS_addToSearchPath(System::get_statdir().c_str(), 0);
-  PHYSFS_setWriteDir(System::get_statdir().c_str());
-
   executable_name = argv[0];
 
   // Register the segfault_handler
@@ -800,6 +794,12 @@ PingusMain::main(int argc, char** argv)
   try
     {
       init_path_finder();
+
+      PHYSFS_init(argv[0]);
+      PHYSFS_addToSearchPath("data", 0);
+      PHYSFS_addToSearchPath(".", 0);
+      PHYSFS_addToSearchPath(System::get_statdir().c_str(), 0);
+      PHYSFS_setWriteDir(System::get_statdir().c_str());
 
       quick_check_args(argc, argv);
       read_rc_file();
