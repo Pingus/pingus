@@ -43,12 +43,13 @@ PixelBuffer::PixelBuffer(const std::string& name_)
 
 }
 
-PixelBuffer::PixelBuffer(int width, int height, SDL_Palette* palette)
+PixelBuffer::PixelBuffer(int width, int height, SDL_Palette* palette, int colorkey)
   : impl(new PixelBufferImpl())
 {
-  impl->surface = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 8,
+  impl->surface = SDL_CreateRGBSurface(SDL_SWSURFACE | SDL_SRCCOLORKEY, width, height, 8,
                                        0, 0, 0 ,0);
   SDL_SetColors(impl->surface, palette->colors, 0, palette->ncolors);
+  SDL_SetColorKey(impl->surface, SDL_SRCCOLORKEY, colorkey);
 }
 
 PixelBuffer::PixelBuffer(int width, int height)

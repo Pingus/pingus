@@ -51,7 +51,7 @@ public:
   PixelBuffer(int width, int height);
 
   /** Create an empty Indexed PixelBuffer (8bit) */
-  PixelBuffer(int width, int height, SDL_Palette* palette);
+  PixelBuffer(int width, int height, SDL_Palette* palette, int colorkey);
   ~PixelBuffer();
 
   uint8_t* get_data() const;
