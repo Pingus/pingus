@@ -133,7 +133,7 @@ ColMap::remove(const CollisionMask& mask, int x, int y)
 void
 ColMap::put(int x, int y, Groundtype::GPType p)
 {
-  ++serial;
+  ++serial; // FIXME: Shouldn't be here but at a more heigher level function
 
   if (x > 0 && x < width
       && y > 0 && y < height)
@@ -181,8 +181,8 @@ ColMap::put(const CollisionMask& mask, int sur_x, int sur_y, Groundtype::GPType 
     }
 
   uint8_t* source = mask.get_data();
-  for (int y=0; y < mask.get_height(); ++y)
-    for (int x=0; x < mask.get_width(); ++x)
+  for (int y = 0; y < mask.get_height(); ++y)
+    for (int x = 0; x < mask.get_width(); ++x)
       {
         if (source[y * mask.get_width() + x])
           if (blit_allowed(x + sur_x, y + sur_y, pixel))

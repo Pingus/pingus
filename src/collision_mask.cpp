@@ -41,24 +41,23 @@ CollisionMask::CollisionMask(const std::string& name)
   pixelbuffer = Resource::load_pixelbuffer(name);
   //PixelBuffer cmap = pixelbuffer; // Resource::load_pixelbuffer(System::cut_ext(name) + "_cmap");
 
-  width  = pixelbuffer.get_width();
-  height = pixelbuffer.get_height();
-  
-  buffer = new uint8_t[width * height];
-
   SDL_Surface* surface = pixelbuffer.get_surface();
   SDL_LockSurface(surface);
 
-  if (surface->format->BytesPerPixel == 1)
+  width  = surface->w;
+  height = surface->h;
+  buffer = new uint8_t[width * height];
+
+  if (surface->format->palette)
     {
       uint8_t* source = static_cast<uint8_t*>(surface->pixels);
       for(int y = 0; y < height; ++y)
         for(int x = 0; x < width; ++x)
           {
-            if (source[y * width + x] == surface->format->colorkey)
-              buffer[y * width + x] = 0;
+            if (source[y*surface->pitch+x] == surface->format->colorkey)
+              buffer[y*width + x] = 0;
             else
-              buffer[y * width + x] = 1;
+              buffer[y*width + x] = 1;
           }
     }
   else
