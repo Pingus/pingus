@@ -20,11 +20,8 @@
 #ifndef HEADER_PINGUS_GLOBAL_EVENT_HXX
 #define HEADER_PINGUS_GLOBAL_EVENT_HXX
 
+#include "SDL.h"
 #include "pingus.hpp"
-
-class CL_Key;
-class CL_InputDevice;
-
 
 class GlobalEvent
 {
@@ -32,8 +29,8 @@ public:
   GlobalEvent ();
   virtual ~GlobalEvent() {}
 
-  virtual void on_button_press(const CL_InputEvent& event);
-  virtual void on_button_release(const CL_InputEvent& event);
+  virtual void on_button_press(const   SDL_KeyboardEvent& event);
+  virtual void on_button_release(const SDL_KeyboardEvent& event);
 
 private:
    GlobalEvent (const GlobalEvent&);

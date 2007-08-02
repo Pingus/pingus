@@ -148,7 +148,7 @@ env.Program('../pingus', [
 'game_session_result.cpp', 
 'game_time.cpp', 
 'gettext.cpp', 
-# 'global_event.cpp', 
+'global_event.cpp', 
 'globals.cpp', 
 'goal_manager.cpp', 
 'graphic_context_state.cpp', 

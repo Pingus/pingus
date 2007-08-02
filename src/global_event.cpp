@@ -20,16 +20,11 @@
 #include <config.h>
 #include <stdio.h>
 #include <algorithm>
-#include <ClanLib/Display/keyboard.h>
-#include <ClanLib/Display/display.h>
-#include <ClanLib/Display/input_event.h>
-#include <ClanLib/Display/keys.h>
-#include "screenshot.hpp"
+//#include "screenshot.hpp"
 #include "console.hpp"
 #include "fps_counter.hpp"
 #include "global_event.hpp"
 #include "globals.hpp"
-
 
 GlobalEvent global_event;
 
@@ -38,70 +33,65 @@ GlobalEvent::GlobalEvent ()
 }
 
 void
-GlobalEvent::on_button_press(const CL_InputEvent& event)
+GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
 {
-  if (event.device.get_type() == CL_InputDevice::keyboard)
+  Uint8 *keystate = SDL_GetKeyState(NULL);
+
+  std::cout << "GlobalEvent: " << event.keysym.sym << std::endl;
+  switch (event.keysym.sym)
     {
-      switch (event.id)
-	{
-	case CL_KEY_F1:
-	  console.toggle_display();
-	  break;
+    case SDLK_F1:
+      console.toggle_display();
+      break;
 
-	case CL_KEY_F10:
-	  fps_counter.toggle_display();
-	  console << "Toggling fps counter display" << std::endl;
-          break;
+    case SDLK_F10:
+      fps_counter.toggle_display();
+      console << "Toggling fps counter display" << std::endl;
+      break;
 
-	case CL_KEY_F11:
-          if (CL_Display::is_fullscreen())
-            CL_Display::set_windowed();
-          else
-            CL_Display::set_fullscreen(CL_Display::get_width(),
-                                       CL_Display::get_height(),
-                                       32);
-          break;
+#if 0
+    case SDLK_F11:
+      if (CL_Display::is_fullscreen())
+        CL_Display::set_windowed();
+      else
+        CL_Display::set_fullscreen(CL_Display::get_width(),
+                                   CL_Display::get_height(),
+                                   32);
+      break;
 
-	case CL_KEY_F12:
-	  {
-	    std::string filename;
-	    std::cout << "GlobalEvent::Making screenshot..." << std::endl;
-	    filename = Screenshot::make_screenshot();
-	    console << "GlobalEvent: Saved screenshot to \"" << filename << "\"" << std::endl;
-	    //console << "!\"#$%&'()*+,-./0123456789:;<=>?@";
-	    console.newline();
-	  }
-	  break;
+    case SDLK_F12:
+      {
+        std::string filename;
+        std::cout << "GlobalEvent::Making screenshot..." << std::endl;
+        filename = Screenshot::make_screenshot();
+        console << "GlobalEvent: Saved screenshot to \"" << filename << "\"" << std::endl;
+        //console << "!\"#$%&'()*+,-./0123456789:;<=>?@";
+        console.newline();
+      }
+      break;
+#endif 
 
-	case CL_KEY_C:
-          if (maintainer_mode)
-            draw_collision_map = !draw_collision_map;
-	  break;
+    case SDLK_c:
+      if (maintainer_mode)
+        draw_collision_map = !draw_collision_map;
+      break;
 
-        case CL_KEY_M:
-          if (CL_Keyboard::get_keycode(CL_KEY_LCONTROL) || CL_Keyboard::get_keycode(CL_KEY_RCONTROL) )
-            {
-              std::cout << "Maintainer Mode: " << maintainer_mode << std::endl;
-              maintainer_mode = !maintainer_mode;
-            }
-          break;
+    case SDLK_m:
+      if (keystate[SDLK_LCTRL] || keystate[SDLK_RCTRL])
+        {
+          std::cout << "Maintainer Mode: " << maintainer_mode << std::endl;
+          maintainer_mode = !maintainer_mode;
+        }
+      break;
 
-	case CL_KEY_END:
-	  if (CL_Keyboard::get_keycode(CL_KEY_LCONTROL))
-	    {
-	      puts ("---:: Emergency exit ::---");
-	      exit (0);
-	    }
-
-	default:
-	  // console << "GlobalEvent: Unknown key pressed: " << key.id;
-	  break;
-	}
+    default:
+      // console << "GlobalEvent: Unknown key pressed: " << key.id;
+      break;
     }
 }
 
 void
-GlobalEvent::on_button_release(const CL_InputEvent& event)
+GlobalEvent::on_button_release(const SDL_KeyboardEvent& event)
 {
 }
 

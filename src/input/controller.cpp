@@ -34,6 +34,7 @@
 #include "buttons/key_button.hpp"
 #include "buttons/mouse_button.hpp"
 #include "scrollers/axis_scroller.hpp"
+#include "../global_event.hpp"
 
 namespace Input {
 
@@ -268,6 +269,8 @@ Controller::update(float delta)
           
         case SDL_KEYDOWN:
           {
+            global_event.on_button_press(event.key);
+ 
             std::vector<key_callback_info>::iterator i;
             for (i = key_callbacks.begin(); i != key_callbacks.end(); ++i)
               {
@@ -280,6 +283,8 @@ Controller::update(float delta)
 
         case SDL_KEYUP:
           {
+            global_event.on_button_release(event.key);
+      
             std::vector<key_callback_info>::iterator i;
             for (i = key_callbacks.begin(); i != key_callbacks.end(); ++i)
               {
