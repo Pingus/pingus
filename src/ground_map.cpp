@@ -202,7 +202,7 @@ GroundMap::put_alpha_surface(PixelBuffer provider, PixelBuffer sprovider,
   int twidth  = provider.get_width();
 
   int spitch = sprovider.get_pitch();
-  int tpitch = sprovider.get_pitch();
+  int tpitch = provider.get_pitch();
 
   int start_x = std::max(0, -x_pos);
   int start_y = std::max(0, -y_pos);
