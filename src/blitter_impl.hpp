@@ -31,8 +31,8 @@ namespace BlitterImpl
 /** Rotate a surface 90 degree */
 struct transform_rot90
 {
-  static inline int get_index(int width, int height, int pitch, int x, int y) {
-    return (x * height) + (height - y - 1);
+  static inline int get_index(int width, int height, int spitch, int tpitch, int x, int y) {
+    return (x * tpitch) + (height - y - 1);
   }
 
   static inline int get_x(int width, int height, int x, int y) {
@@ -50,8 +50,8 @@ struct transform_rot90
 /** Rotate a surface 180 degree */
 struct transform_rot180
 {
-  static inline int get_index(int width, int height, int pitch, int x, int y) {
-    return (pitch * height) - (y * pitch + x) - 1;
+  static inline int get_index(int width, int height, int spitch, int tpitch, int x, int y) {
+    return (spitch * height) - (y * spitch + x) - 1;
   }
 
   static inline int get_x(int width, int height, int x, int y) { UNUSED_ARG(height); UNUSED_ARG(y);
@@ -69,8 +69,8 @@ struct transform_rot180
 /** Rotate a surface 270 degree */
 struct transform_rot270
 {
-  static inline int get_index(int width, int height, int pitch, int x, int y) {
-    return ((width - x - 1) * height) + y;
+  static inline int get_index(int width, int height, int spitch, int tpitch, int x, int y) {
+    return ((width - x - 1) * tpitch) + y;
   }
 
   static inline int get_x(int width, int height, int x, int y) {
@@ -92,9 +92,9 @@ struct transform_rot270
 /** flip a surface  */
 struct transform_flip
 {
-  static inline int get_index(int width, int height, int pitch, int x, int y) {
+  static inline int get_index(int width, int height, int spitch, int tpitch, int x, int y) {
     UNUSED_ARG(height);
-    return (y * pitch) + (width - x - 1);
+    return (y * spitch) + (width - x - 1);
   }
 
   static inline int get_x(int width, int height, int x, int y) {
@@ -114,9 +114,9 @@ struct transform_flip
 /** Rotate a surface 90 degree and then flip it */
 struct transform_rot90_flip
 {
-  static inline int get_index(int width, int height, int pitch, int x, int y) {
+  static inline int get_index(int width, int height, int spitch, int tpitch, int x, int y) {
     UNUSED_ARG(width);
-    return (x * height) + y;
+    return (x * tpitch) + y;
   }
 
   static inline int get_x(int width, int height, int x, int y) {
@@ -136,8 +136,8 @@ struct transform_rot90_flip
 /** Rotate a surface 180 degree and then flip it */
 struct transform_rot180_flip
 {
-  static inline int get_index(int width, int height, int pitch, int x, int y) {
-    return ((height - y - 1) * pitch) + x;
+  static inline int get_index(int width, int height, int spitch, int tpitch, int x, int y) {
+    return ((height - y - 1) * spitch) + x;
   }
 
   static inline int get_x(int width, int height, int x, int y) {
@@ -157,8 +157,8 @@ struct transform_rot180_flip
 /** Rotate a surface 270 degree and then flip it */
 struct transform_rot270_flip
 {
-  static inline int get_index(int width, int height, int pitch, int x, int y) {
-    return ((width - x - 1) * height) + height - y - 1;
+  static inline int get_index(int width, int height, int spitch, int tpitch, int x, int y) {
+    return ((width - x - 1) * tpitch) + height - y - 1;
   }
 
   static inline int get_x(int width, int height, int x, int y) {
@@ -196,7 +196,7 @@ PixelBuffer modify(PixelBuffer source_buffer, const TransF&)
       for (int y = 0; y < source->h; ++y)
         for (int x = 0; x < source->w; ++x)
           {
-            target_buf[TransF::get_index(source->w, source->h, source->pitch, x, y)] = source_buf[y * source->pitch + x];
+            target_buf[TransF::get_index(source->w, source->h, source->pitch, target->pitch, x, y)] = source_buf[y * source->pitch + x];
           }
      
       SDL_UnlockSurface(source);

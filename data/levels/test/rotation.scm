@@ -28,7 +28,7 @@
       (type "ground")
       (surface 
         (image "hotspots/signposts/danger")
-        (modifier "ROT0"))
+        (modifier "ROT90"))
       (position 366 260 0))
     (groundpiece 
       (type "ground")

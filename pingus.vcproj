@@ -511,14 +511,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\src\hierHeader.inc"
-				>
-			</File>
-			<File
-				RelativePath=".\src\indexHeader.inc"
-				>
-			</File>
-			<File
 				RelativePath=".\src\input_event.hpp"
 				>
 			</File>
