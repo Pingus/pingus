@@ -200,6 +200,7 @@ PixelBuffer modify(PixelBuffer source_buffer, const TransF&)
           }
      
       SDL_UnlockSurface(source);
+      SDL_UnlockSurface(target);
       return target_buffer;
     }
   else
