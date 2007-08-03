@@ -226,48 +226,46 @@ ScreenManager::real_clear()
 void
 ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
 {
-  // FIXME: This entire function doesn't work very well.
-#if 0
-  if (0)
+  DeltaManager delta_manager;
+  float passed_time = 0;
+
+  float progress = 0.0f;
+  while (progress <= 1.0f)
     {
-      DeltaManager delta_manager;
-      float passed_time = 0;
+      float time_delta = delta_manager.getset ();
+      passed_time += time_delta;
 
-      //Input::EventLst events;
+      int border_x = int((Display::get_width()/2)  * (1.0f - progress));
+      int border_y = int((Display::get_height()/2) * (1.0f - progress));
 
-      int screen_width = CL_Display::get_width ();
-      int screen_height = CL_Display::get_height ();
-      float progress = 0.0f;
-      while (progress <= 1.0f)
-        {
-          float time_delta = delta_manager.getset ();
-          passed_time += time_delta;
+      old_screen->draw(*display_gc);
+      display_gc->render(Display::get_screen());
+      display_gc->clear();
+      
+      SDL_Rect clip_rect;
+      clip_rect.x = 0 + border_x;
+      clip_rect.y = 0 + border_y;
+      clip_rect.w = screen_width  - 2*border_x;
+      clip_rect.h = screen_height - 2*border_y;
 
-          int border_x = int((screen_width/2) * (1.0f - progress));
-          int border_y = int((screen_height/2) * (1.0f - progress));
+      SDL_SetClipRect(Display::get_screen(), &clip_rect);
 
-          old_screen->draw(*display_gc);
-          CL_Display::get_current_window()->get_gc()
-            ->push_cliprect(CL_Rect(0 + border_x,
-                                    0 + border_y,
-                                    screen_width - border_x,
-                                    screen_height - border_y));
-          new_screen->draw(*display_gc);
+      new_screen->draw(*display_gc);
+      display_gc->render(Display::get_screen());
+      display_gc->clear();
 
-          //GameDelta delta (time_delta, CL_System::get_time(), events);
-          // FIXME: Animation looks nifty but doesn't work all that good
-          //new_screen->update (delta);
-          //old_screen->update (delta);
+      //GameDelta delta (time_delta, CL_System::get_time(), events);
+      // FIXME: Animation looks nifty but doesn't work all that good
+      //new_screen->update (delta);
+      //old_screen->update (delta);
+      
+      SDL_SetClipRect(Display::get_screen(), NULL);
 
-          CL_Display::get_current_window()->get_gc()->pop_cliprect ();
-
-          Display::flip_display ();
-          CL_System::keep_alive (5);
-
-          progress = passed_time/1.0f;
-        }
+      Display::flip_display ();
+      display_gc->clear();
+      
+      progress = passed_time/1.0f;
     }
-#endif
 }
 
 void
@@ -280,7 +278,7 @@ void
 ScreenManager::deinit()
 {
   delete instance_;
-	instance_ = 0;
+  instance_ = 0;
 }
 
 
