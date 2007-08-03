@@ -727,6 +727,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\screenshot.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\screenshot.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\server.cpp"
 				>
 			</File>
