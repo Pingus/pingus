@@ -49,6 +49,7 @@ ActionButton::init(int x, int y, ActionName name_, int owner_id)
   font_b = Fonts::pingus_large;
 
   sprite = Resource::load_sprite("pingus/player0/" + action_to_string(name) + "/right");
+  sprite.set_play_loop(true);
 }
 
 bool
@@ -129,15 +130,15 @@ VerticalActionButton::draw (DrawingContext& gc)
 
   // print the action name next to the button, when mouse pointer is on
   // the button.
-  // FIXME: this should use the GUI events, not CL_Mouse
-#if 0
+  // FIXME: this should use the GUI events, not SDL_GetMouseState
+  int x, y;
+  SDL_GetMouseState(&x, &y);
   if (action_help
-      && CL_Mouse::get_x() > x_pos      && CL_Mouse::get_x() < x_pos + 60
-      && CL_Mouse::get_y() < y_pos + 35 && CL_Mouse::get_y() > y_pos)
+      && x > x_pos      && x < x_pos + 60
+      && y < y_pos + 35 && y > y_pos)
     {
       gc.print_left(myfontb, (float)x_pos + 65, (float)y_pos, action_to_screenname(name));
     }
-#endif
 
   if (Cheat::unlimited_actions)
     {
