@@ -26,7 +26,6 @@
 #include "../res_descriptor.hpp"
 #include "../gui/display.hpp"
 #include "../display/drawing_context.hpp"
-#include "../xml_file_writer.hpp"
 
 
 namespace Editor {
@@ -187,65 +186,65 @@ LevelObj::set_modifier(const std::string m)
 	refresh_sprite();
 }
 
-// Writes the XML attributes for the file
+// Writes the attributes for the file
 void
-LevelObj::write_properties(XMLFileWriter &xml)
+LevelObj::write_properties(FileWriter &fw)
 {
 	if (!removed)
 	{
-		xml.begin_section(section_name.c_str());
+		fw.begin_section(section_name.c_str());
 
 		const unsigned attribs = get_attributes(section_name);
 
 		// Write information about the main sprite
 		if (attribs & HAS_SURFACE)
 		{
-			xml.begin_section("surface");
-			xml.write_string("image", desc.res_name);
-			xml.write_string("modifier", ResourceModifierNS::rs_to_string(desc.modifier));
-			xml.end_section();	// surface
+			fw.begin_section("surface");
+			fw.write_string("image", desc.res_name);
+			fw.write_string("modifier", ResourceModifierNS::rs_to_string(desc.modifier));
+			fw.end_section();	// surface
 		}
 		// Write the optional information
 		if (attribs & HAS_TYPE)
-			xml.write_string("type", object_type);
+			fw.write_string("type", object_type);
 		if (attribs & HAS_SPEED)
-			xml.write_int("speed", speed);
+			fw.write_int("speed", speed);
 		if (attribs & HAS_PARALLAX)
-			xml.write_float("parallax", parallax);
+			fw.write_float("parallax", parallax);
 		if (attribs & HAS_WIDTH)
-			xml.write_int("width", width);
+			fw.write_int("width", width);
 		if (attribs & HAS_OWNER)
-			xml.write_int("owner-id", owner_id);
+			fw.write_int("owner-id", owner_id);
 		if (attribs & HAS_DIRECTION)
-			xml.write_string("direction", direction);
+			fw.write_string("direction", direction);
 		if (attribs & HAS_RELEASE_RATE)
-			xml.write_int("release-rate", release_rate);
+			fw.write_int("release-rate", release_rate);
 		if (attribs & HAS_COLOR)
-                  ////xml.write_color("color", color);
+                  ////fw.write_color("color", color);
 		if (attribs & HAS_STRETCH)
 		{
-			xml.write_bool("stretch-x", stretch_x);
-			xml.write_bool("stretch-y", stretch_y);
-			xml.write_bool("keep-aspect", keep_aspect);
+			fw.write_bool("stretch-x", stretch_x);
+			fw.write_bool("stretch-y", stretch_y);
+			fw.write_bool("keep-aspect", keep_aspect);
 		}
 		if (attribs & HAS_SCROLL)
 		{
-			xml.write_float("scroll-x", scroll_x);
-			xml.write_float("scroll-y", scroll_y);
+			fw.write_float("scroll-x", scroll_x);
+			fw.write_float("scroll-y", scroll_y);
 		}
 		if (attribs & HAS_PARA)
 		{
-			xml.write_float("para-x", para_x);
-			xml.write_float("para-y", para_y);
+			fw.write_float("para-x", para_x);
+			fw.write_float("para-y", para_y);
 		}
 
 		// Writes any extra properties that may be necessary (virtual function)
-		write_extra_properties(xml);
+		write_extra_properties(fw);
 
 		// Write the Vector3f position - all objects have this
-		////xml.write_vector("position", pos);
+		////fw.write_vector("position", pos);
 
-		xml.end_section();	// object's section_name
+		fw.end_section();	// object's section_name
 	}
 }
 

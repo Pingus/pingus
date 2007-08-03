@@ -118,13 +118,13 @@ env.Program('../pingus', [
 'display/scene_context.cpp', 
 
 'editor/context_menu.cpp',
+'editor/editor_level.cpp', 
 'editor/editor_panel.cpp', 
 'editor/editor_screen.cpp', 
 'editor/editor_viewport.cpp', 
 'editor/level_head.cpp', 
 'editor/level_objs.cpp', 
 'editor/panel_buttons.cpp', 
-'editor/xml_level.cpp', 
 
 'command_line.cpp',
 'command_line_generic.cpp',

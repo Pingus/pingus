@@ -30,7 +30,7 @@ class GUI::GUIManager;
 
 namespace Editor {
 
-class XMLLevel;
+class EditorLevel;
 class LevelObj;
 class EditorPanel;
 class EditorViewport;
@@ -41,7 +41,7 @@ class EditorScreen : public GUIScreen, public FileDialogListener
 {
 private:
 	/** The level currently being edited */
-	XMLLevel* plf;
+	EditorLevel* plf;
 
 	/** Panel which contains all of the buttons for each action */
 	EditorPanel* panel;
@@ -56,7 +56,7 @@ private:
 
 public:
 	/** Default constructor */
-  EditorScreen(XMLLevel* level = 0);
+  EditorScreen(EditorLevel* level = 0);
 
 	/** Destructor */
 	~EditorScreen();
@@ -83,9 +83,9 @@ public:
 	EditorViewport* get_viewport() const { return viewport; }
 
 	/** Return a pointer to the current level */
-	XMLLevel* get_level() const { return plf; }
+	EditorLevel* get_level() const { return plf; }
 
-	/** Add an object to both the XMLLevel and the EditorViewport */
+	/** Add an object to both the EditorLevel and the EditorViewport */
 	void add_object(LevelObj* obj);
 	void add_objects(std::vector<LevelObj*> objs);
 

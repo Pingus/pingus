@@ -30,9 +30,9 @@
 #include "level_impl.hpp"
 #include "../gui/display.hpp"
 #include "panel_buttons.hpp"
+#include "editor_level.hpp"
 #include "editor_panel.hpp"
 #include "editor_screen.hpp"
-#include "xml_level.hpp"
 
 namespace Editor {
   

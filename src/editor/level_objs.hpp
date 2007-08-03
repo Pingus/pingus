@@ -25,10 +25,10 @@
 #include "../math/origin.hpp"
 #include "../math/vector3f.hpp"
 #include "../res_descriptor.hpp"
+#include "../file_writer.hpp"
 #include <string>
 
 
-	class XMLFileWriter;
 	class DrawingContext;
 
 namespace Editor {
@@ -160,8 +160,8 @@ protected:
 	/** Loads any generic images necessary for objects with HAS_FAKE_SURFACE */
 	void load_generic_surface();
 
-	/** Write any additional properties to the XML file for this type */
-	virtual void write_extra_properties(XMLFileWriter& xml) { }
+	/** Write any additional properties to the file for this type */
+	virtual void write_extra_properties(FileWriter& fw) { }
 	
 	/** Sets a position vector of where the sprite is located based 
 		on the "translation origin" specified in the sprite file. */
@@ -306,8 +306,8 @@ public:
 	void select() { selected = true; }
 	void unselect() { selected = false; }
 
-	/** Write basic properties to the XML file for this type */
-	virtual void write_properties(XMLFileWriter &xml);
+	/** Write basic properties to the file for this type */
+	virtual void write_properties(FileWriter &fw);
 
 	/** Call when the sprite needs to be reloaded */
 	void refresh_sprite();

@@ -25,10 +25,10 @@
 #include "../display/drawing_context.hpp"
 #include "../math/vector3f.hpp"
 #include "../graphic_context_state.hpp"
-#include "editor_viewport.hpp"
+#include "editor_level.hpp"
 #include "editor_screen.hpp"
+#include "editor_viewport.hpp"
 #include "context_menu.hpp"
-#include "xml_level.hpp"
 #include "level_objs.hpp"
 
 namespace Editor {
@@ -207,7 +207,7 @@ EditorViewport::draw(DrawingContext &gc)
 			Color(255,255,255,150));
 
 	state.pop(*scene_context);
-	gc.draw(new SceneContextDrawingRequest(scene_context, Vector3f(0, 0, -5000)));
+	gc.draw(new SceneContextDrawingRequest(scene_context, Vector3f(0, 0, -150)));
 }
 
 // Returns true if the viewport is at the x,y coordinate

@@ -1,4 +1,4 @@
-//  $Id: xml_level.hxx,v 1.00 2005/11/11 23:41:12 Jave27 Exp $
+//  $Id: editor_level.hxx,v 1.00 2005/11/11 23:41:12 Jave27 Exp $
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,8 +17,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_EDITOR_XMLLEVEL_HXX
-#define HEADER_PINGUS_EDITOR_XMLLEVEL_HXX
+#ifndef HEADER_PINGUS_EDITOR_EDITORLEVEL_HXX
+#define HEADER_PINGUS_EDITOR_EDITORLEVEL_HXX
 
 #include <vector>
 #include "level_impl.hpp"
@@ -28,7 +28,7 @@ namespace Editor {
 
 	class LevelObj;
 
-class XMLLevel
+class EditorLevel
 {
 private:
 	LevelImpl* impl;
@@ -36,10 +36,10 @@ private:
 public:
 
 	/** Construct new blank level */
-	XMLLevel();
+	EditorLevel();
 
 	/** Destructor */
-	~XMLLevel();
+	~EditorLevel();
 
 	/** Verify that level is valid */
 	bool is_valid();
@@ -61,9 +61,9 @@ public:
 	
 
 private:
-	XMLLevel (const XMLLevel&);
-  XMLLevel& operator= (const XMLLevel&);
-};	// XMLLevel class
+	EditorLevel (const EditorLevel&);
+  EditorLevel& operator= (const EditorLevel&);
+};	// EditorLevel class
 
 }		// Editor namespace
 

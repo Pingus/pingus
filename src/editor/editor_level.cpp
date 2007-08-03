@@ -1,7 +1,7 @@
-//  $Id: xml_level.cxx,v 1.00 2005/11/11 23:41:12 Jave27 Exp $
+//  $Id: editor_level.cxx,v 1.00 2007/08/03 23:41:12 Jave27 Exp $
 //
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -20,26 +20,23 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "xml_level.hpp"
+#include "editor_level.hpp"
 #include "level_impl.hpp"
 #include "level_objs.hpp"
-#include "../xml_pingus_level.hpp"
-#include "../xml_file_writer.hpp"
-#include "../xml_file_reader.hpp"
-#include "../res_descriptor.hpp"
+#include "../pingus_level.hpp"
 
 
 namespace Editor {
 
 // Default constructor
-XMLLevel::XMLLevel() :
+EditorLevel::EditorLevel() :
 	impl(new LevelImpl())
 {
 
 }
 
 // Default Destructor
-XMLLevel::~XMLLevel()
+EditorLevel::~EditorLevel()
 {
 	if (impl)
 		delete impl;
@@ -57,9 +54,9 @@ XMLLevel::~XMLLevel()
  Head section:
  - Everything should be filled in and within valid ranges
  */
-bool XMLLevel::is_valid()
+bool EditorLevel::is_valid()
 {
-	std::cout << "XMLLevel::is_valid() - Not yet implemented" << std::endl;
+	std::cout << "EditorLevel::is_valid() - Not yet implemented" << std::endl;
 	if (impl)
 		return true;
 	else
@@ -67,55 +64,55 @@ bool XMLLevel::is_valid()
 }
 
 // Save the level to a file.  Returns true if successful
-bool XMLLevel::save_level(const std::string& filename)
+bool EditorLevel::save_level(const std::string& filename)
 {
 #if 0
 	// Make sure level is valid
 	if (!is_valid())
 		return false;
 
-	// Create new XML file (overwrite existing file)
+	// Create new file (overwrite existing file)
 	std::ofstream out_file(filename.c_str());
-	XMLFileWriter xml(out_file);
+	FileWriter fw(out_file);
 	
 	// Write header
-	xml.begin_section("pingus-level");
-	xml.write_int("version", 2);
-	xml.begin_section("head");
-	xml.write_string("levelname", impl->levelname);
-	xml.write_string("description", impl->description);
-	xml.write_string("author", impl->author);
-	xml.write_int("number-of-pingus", impl->number_of_pingus);
-	xml.write_int("number-to-save", impl->number_to_save);
-	xml.write_int("time", impl->time);
-	xml.write_int("difficulty", impl->difficulty);
+	fw.begin_section("pingus-level");
+	fw.write_int("version", 2);
+	fw.begin_section("head");
+	fw.write_string("levelname", impl->levelname);
+	fw.write_string("description", impl->description);
+	fw.write_string("author", impl->author);
+	fw.write_int("number-of-pingus", impl->number_of_pingus);
+	fw.write_int("number-to-save", impl->number_to_save);
+	fw.write_int("time", impl->time);
+	fw.write_int("difficulty", impl->difficulty);
 	// FIXME: Allow user to decide if level is playable or not
-	xml.write_int("playable", 1);
-	xml.write_string("comment", impl->comment);
-	xml.write_string("music", impl->music);
+	fw.write_int("playable", 1);
+	fw.write_string("comment", impl->comment);
+	fw.write_string("music", impl->music);
 	
 	// Write the list of actions to the file
-	xml.begin_section("actions");
+	fw.begin_section("actions");
 	for (std::map<std::string, int>::const_iterator i = impl->actions.begin();
 		i != impl->actions.end(); i++)
 	{
-		xml.write_int(i->first.c_str(), i->second);
+		fw.write_int(i->first.c_str(), i->second);
 	}
-	xml.end_section();	// actions
+	fw.end_section();	// actions
 
-	xml.begin_section("levelsize");
-	xml.write_int("width", impl->size.width);
-	xml.write_int("height", impl->size.height);
-	xml.end_section();	// levelsize
-	xml.end_section();	// head
+	fw.begin_section("levelsize");
+	fw.write_int("width", impl->size.width);
+	fw.write_int("height", impl->size.height);
+	fw.end_section();	// levelsize
+	fw.end_section();	// head
 
 	// Write the objects
-	xml.begin_section("objects");
+	fw.begin_section("objects");
 	for (unsigned i = 0; i < impl->objects.size(); i++)
-		impl->objects[i]->write_properties(xml);
-	xml.end_section();	// objects
+		impl->objects[i]->write_properties(fw);
+	fw.end_section();	// objects
 
-	xml.end_section();	// pingus-level
+	fw.end_section();	// pingus-level
 	
 	// Clean up
 	out_file.close();
@@ -124,7 +121,7 @@ bool XMLLevel::save_level(const std::string& filename)
 }
 
 // Load an existing level from a file
-void XMLLevel::load_level(const std::string& filename)
+void EditorLevel::load_level(const std::string& filename)
 {
 	if (impl)
 		delete impl;
@@ -247,9 +244,11 @@ void XMLLevel::load_level(const std::string& filename)
 }
 
 void
-XMLLevel::add_object(LevelObj* obj)
+EditorLevel::add_object(LevelObj* obj)
 {
 	impl->objects.push_back(obj);
 }
 
 }	// Editor namespace
+
+/* EOF */

@@ -25,11 +25,11 @@
 #include "../fonts.hpp"
 #include "../resource.hpp"
 #include "panel_buttons.hpp"
-#include "editor_screen.hpp"
+#include "editor_level.hpp"
 #include "editor_panel.hpp"
+#include "editor_screen.hpp"
 #include "level_objs.hpp"
 #include "level_head.hpp"
-#include "xml_level.hpp"
 
 
 class Resource;

@@ -29,24 +29,24 @@
 #include "../fonts.hpp"
 #include "../file_dialog.hpp"
 #include "../path_manager.hpp"
-#include "editor_screen.hpp"
+#include "editor_level.hpp"
 #include "editor_panel.hpp"
+#include "editor_screen.hpp"
 #include "editor_viewport.hpp"
-#include "xml_level.hpp"
 #include "level_objs.hpp"
 
 
 namespace Editor {
 
 // Default constructor
-EditorScreen::EditorScreen(XMLLevel* level)
+EditorScreen::EditorScreen(EditorLevel* level)
 : plf(level), 
 	panel(0),
 	viewport(0),
 	filedialog(0),
 	close_dialog(false)
 {
-	if (!plf) plf = new XMLLevel();
+	if (!plf) plf = new EditorLevel();
 }
 
 // Destructor
