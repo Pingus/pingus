@@ -20,8 +20,8 @@
 #ifndef HEADER_PINGUS_SCREENSHOT_HXX
 #define HEADER_PINGUS_SCREENSHOT_HXX
 
+#include "SDL.h"
 #include "pingus.hpp"
-#include <ClanLib/Display/pixel_buffer.h>
 #include <string>
 
 class CL_Target;
@@ -33,14 +33,13 @@ class Screenshot
 private:
   static std::string get_date();
   static std::string get_filename();
-  static void save_target_to_file_fast(PixelBuffer ,   const std::string& filename);
-  static void save_target_to_file_slow(PixelBuffer , const std::string& filename);
+
 public:
   static std::string make_screenshot();
-  static void save_target_to_file(PixelBuffer , const std::string& filename);
+  static void save(SDL_Surface* surface, const std::string& filename);
 
   /** buffer must be RGB and width*height*3 large */
-  static void save_ppm(const std::string& filename, unsigned char* buffer, int width, int height);
+  static void save_ppm(const std::string& filename, uint8_t* buffer, int width, int height);
 private:
   Screenshot ();
   Screenshot (const Screenshot&);

@@ -231,7 +231,7 @@ env.Program('../pingus', [
 'result_screen.cpp', 
 'savegame.cpp', 
 'savegame_manager.cpp', 
-# 'screenshot.cpp', 
+'screenshot.cpp', 
 'server.cpp', 
 'server_event.cpp', 
 'smallmap_image.cpp', 

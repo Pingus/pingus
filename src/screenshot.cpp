@@ -17,20 +17,16 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <assert.h>
 #include <config.h>
 #include <time.h>
 #include <stdio.h>
 #include <fstream>
 #include <iostream>
-
-#include <ClanLib/Display/pixel_format.h>
-#include <ClanLib/Display/pixel_buffer.h>
-#include <ClanLib/Display/display.h>
-#include <ClanLib/Display/Providers/provider_factory.h>
+#include "gui/display.hpp"
 #include "system.hpp"
 #include "screenshot.hpp"
 #include "gettext.h"
-
 
 // Saves a screenshot to file, it return the filename the screenshot
 // was saved to.
@@ -39,82 +35,76 @@ Screenshot::make_screenshot()
 {
   std::string filename = get_filename();
   std::cout << _("Screenshot: Saving screenshot to: ") << filename << std::endl;
-  CL_ProviderFactory::save(CL_Display::get_front_buffer(), filename);
+  save(Display::get_screen(), filename);
   std::cout << _("Screenshot: Screenshot is done.") << std::endl;
   
   return filename;
 }
 
 void
-Screenshot::save_target_to_file(PixelBuffer target, const std::string& filename)
+Screenshot::save(SDL_Surface* surface, const std::string& filename)
 {
-  save_target_to_file_fast(target, filename);
-}
+  SDL_LockSurface(surface);
 
-void
-Screenshot::save_target_to_file_fast(PixelBuffer target, const std::string& filename)
-{
-  target.lock();
-  int num_pixels = target.get_width() * target.get_height();
-  unsigned char* buffer = new unsigned char[num_pixels * 3];
-  unsigned char* target_buffer = reinterpret_cast<unsigned char*>(target.get_data());
+  uint8_t* buffer = new uint8_t[surface->w * surface->h * 3];
 
-  unsigned int rmask = target.get_format().get_red_mask();
-  unsigned int gmask = target.get_format().get_green_mask();
-  unsigned int bmask = target.get_format().get_blue_mask();
-
-  switch(target.get_format().get_depth())
+  switch(surface->format->BitsPerPixel)
     {
     case 16: // 16bit
       {
-        for (int i = 0; i < num_pixels; ++i)
-          {
-            unsigned int color = *((unsigned short*)(target_buffer + i*2));
-
-            buffer[i*3 + 0] = (color & rmask) * 255 / rmask;
-            buffer[i*3 + 1] = (color & gmask) * 255 / gmask;
-            buffer[i*3 + 2] = (color & bmask) * 255 / bmask;
-          }
+        uint8_t* pixels = static_cast<uint8_t*>(surface->pixels);
+        for (int y = 0; y < surface->h; ++y)
+          for (int x = 0; x < surface->w; ++x)
+            {
+              int i = (y * surface->w + x);
+              SDL_GetRGB(*((uint16_t*)(pixels + y * surface->pitch + x*2)),
+                         surface->format, 
+                         buffer + i*3 + 0, buffer + i*3 + 1, buffer + i*3 + 2);
+            }
         break;
       }
+      
     case 24: // 24bit
       {
-        // that should do the trick - untested !!!
-        for (int i = 0; i < num_pixels; ++i)
-          {
-            unsigned char* d = target_buffer + i*3;
-#ifdef WORDS_BIGENDIAN
-            unsigned int color = (*d << 16) | (*(d+1) << 8) | (*(d+2));
-#else
-            unsigned int color = (*d) | (*(d+1) << 8) | (*(d+2) << 16);
-#endif
-
-            buffer[i*3 + 0] = (color & rmask) * 255 / rmask;
-            buffer[i*3 + 1] = (color & gmask) * 255 / gmask;
-            buffer[i*3 + 2] = (color & bmask) * 255 / bmask;
-          }
+        uint8_t* pixels = static_cast<uint8_t*>(surface->pixels);
+        for (int y = 0; y < surface->h; ++y)
+          for (int x = 0; x < surface->w; ++x)
+            {
+              int i = (y * surface->w + x);
+              SDL_GetRGB(*((uint32_t*)(pixels + y * surface->pitch + x*3)),
+                         surface->format, 
+                         buffer + i*3 + 0, buffer + i*3 + 1, buffer + i*3 + 2);
+            }
         break;
       }
+
     case 32: // 32bit
       {
-        for (int i = 0; i < num_pixels; ++i)
-          {
-            buffer[i*3 + 0] = target_buffer[i*4 + 3];
-            buffer[i*3 + 1] = target_buffer[i*4 + 2];
-            buffer[i*3 + 2] = target_buffer[i*4 + 1];
-          }
+        uint8_t* pixels = static_cast<uint8_t*>(surface->pixels);
+        for (int y = 0; y < surface->h; ++y)
+          for (int x = 0; x < surface->w; ++x)
+            {
+              int i = (y * surface->w + x);
+              SDL_GetRGB(*((uint32_t*)(pixels + y * surface->pitch + x*4)),
+                         surface->format, 
+                         buffer + i*3 + 0, buffer + i*3 + 1, buffer + i*3 + 2);
+            }
         break;
       }
-
+    default:
+      std::cout << "BitsPerPixel: " << int(surface->format->BitsPerPixel) << std::endl;
+      assert(!"Unknown color format");
+      break;
     }
 
-  target.unlock();
-  save_ppm(filename, buffer, target.get_width(), target.get_height());
+  save_ppm(filename, buffer, surface->w, surface->h);
   delete[] buffer;
+
+  SDL_UnlockSurface(surface);
 }
 
 void
-Screenshot::save_ppm(const std::string& filename, unsigned char* buffer, int width, int height)
+Screenshot::save_ppm(const std::string& filename, uint8_t* buffer, int width, int height)
 {
   FILE* out = fopen(filename.c_str(), "wb");
 
@@ -138,33 +128,6 @@ Screenshot::save_ppm(const std::string& filename, unsigned char* buffer, int wid
   fclose(out);
 }
 
-void
-Screenshot::save_target_to_file_slow(PixelBuffer target, const std::string& filename)
-{
-  std::ofstream out(filename.c_str());
-
-  out << "P3\n"
-      << "# CREATOR: Pingus... some version\n"
-      << target.get_width() << " "
-      << target.get_height() << "\n"
-      << "255" << std::endl;
-
-  target.lock();
-
-  for (int y=0; y < target.get_height(); ++y)
-    {
-      for (int x=0; x < target.get_width(); ++x)
-        {
-          Color color = target.get_pixel(x, y);
-          out << (int)(color.get_red())   << " "
-              << (int)(color.get_green()) << " "
-              << (int)(color.get_blue())  << "\n";
-        }
-    }
-
-  target.unlock();
-}
-
 std::string
 Screenshot::get_filename()
 {
@@ -173,7 +136,7 @@ Screenshot::get_filename()
   int i = 1;
 
   do {
-    snprintf(str, 16, "%d.png", i);
+    snprintf(str, 16, "%d.pnm", i);
     tmp_filename = System::get_statdir() + "screenshots/"
       + "pingus-" + get_date() + "-" + std::string(str);
     ++i;

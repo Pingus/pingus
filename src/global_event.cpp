@@ -20,7 +20,7 @@
 #include <config.h>
 #include <stdio.h>
 #include <algorithm>
-//#include "screenshot.hpp"
+#include "screenshot.hpp"
 #include "console.hpp"
 #include "fps_counter.hpp"
 #include "global_event.hpp"
@@ -58,6 +58,7 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
                                    CL_Display::get_height(),
                                    32);
       break;
+#endif
 
     case SDLK_F12:
       {
@@ -69,7 +70,6 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
         console.newline();
       }
       break;
-#endif 
 
     case SDLK_c:
       if (maintainer_mode)
