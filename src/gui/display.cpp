@@ -171,9 +171,11 @@ static void draw_vline(int x, int y, int length, const Color& color)
   if (!draw_pixel)
     return;
 
+  SDL_LockSurface(Display::get_screen());
   for (int i = 0; i < length; ++i) {
     draw_pixel(x, y + i, color);
   }
+  SDL_UnlockSurface(Display::get_screen());
 }
 
 static void draw_hline(int x, int y, int length, const Color& color)
@@ -182,15 +184,26 @@ static void draw_hline(int x, int y, int length, const Color& color)
   if (!draw_pixel)
     return;
 
+  SDL_LockSurface(Display::get_screen());
   for (int i = 0; i < length; ++i) {
     draw_pixel(x + i, y, color);
   }
+  SDL_UnlockSurface(Display::get_screen());
 }
 
 void
 Display::draw_line(int x1, int y1, int x2, int y2, const Color& color)
 {
   Display::draw_line(Vector2i(x1, y1), Vector2i(x2, y2), color);
+}
+
+static
+void clip(int& i, int min, int max)
+{
+  if (i < min)
+    i = min;
+  else if (i > max)
+    i = max;
 }
 
 void
@@ -205,6 +218,11 @@ Display::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& colo
 
   // vertical line
   if (sx == dx) {
+    if (sx < 0 || sx > get_width() - 1) {
+      return;
+    }
+    clip(sy, 0, get_height() - 1);
+    clip(dy, 0, get_height() - 1);
     if (sy < dy) {
       draw_vline(sx, sy, dy - sy + 1, color);
     } else {
@@ -215,6 +233,11 @@ Display::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& colo
 
   // horizontal
   if (sy == dy) {
+    if (sy < 0 || sy > get_height() - 1) {
+      return;
+    }
+    clip(sx, 0, get_width() - 1);
+    clip(dx, 0, get_width() - 1);
     if (sx < dx) {
       draw_hline(sx, sy, dx - sx + 1, color);
     } else {
@@ -224,8 +247,9 @@ Display::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& colo
   }
 
   draw_pixel = get_draw_pixel();
-  if (!draw_pixel)
+  if (!draw_pixel) {
     return;
+  }
 
   // exchange coordinates
   if (sy > dy) {
@@ -261,7 +285,9 @@ Display::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& colo
 
     SDL_LockSurface(screen);
     for (x = sx; x < dx; ++x) {
-      draw_pixel(x, y, color);
+      if (x >= 0 && x <= get_width() - 1 && y >= 0 && y <= get_height() - 1) {
+        draw_pixel(x, y, color);
+      }
       if (p >= 0) {
 	y += incr;
 	p += (ylen - xlen) << 1;
@@ -278,7 +304,9 @@ Display::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& colo
 
     SDL_LockSurface(screen);
     for (y = sy; y < dy; ++y) {
-      draw_pixel(x, y, color);
+      if (x >= 0 && x <= get_width() - 1 && y >= 0 && y <= get_height() - 1) {
+        draw_pixel(x, y, color);
+      }
       if (p >= 0) {
 	x += incr;
 	p += (xlen - ylen) << 1;
@@ -294,7 +322,9 @@ Display::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& colo
   if (ylen == xlen) {
     SDL_LockSurface(screen);
     while (y != dy) {
-      draw_pixel(x, y, color);
+      if (x >= 0 && x <= get_width() - 1 && y >= 0 && y <= get_height() - 1) {
+        draw_pixel(x, y, color);
+      }
       x += incr;
       ++y;
     }
