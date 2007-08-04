@@ -49,16 +49,12 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
       console << "Toggling fps counter display" << std::endl;
       break;
 
-#if 0
     case SDLK_F11:
-      if (CL_Display::is_fullscreen())
-        CL_Display::set_windowed();
-      else
-        CL_Display::set_fullscreen(CL_Display::get_width(),
-                                   CL_Display::get_height(),
-                                   32);
+      fullscreen_enabled = !fullscreen_enabled;
+      // re-initialize the screen
+      Display::set_video_mode(screen_width, screen_height);
       break;
-#endif
+
 
     case SDLK_F12:
       {
