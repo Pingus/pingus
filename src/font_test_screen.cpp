@@ -62,17 +62,19 @@ FontTestScreen::draw(DrawingContext& gc)
 
   for(int i = 0; i < 256; ++i)
     {
-      float x = 64.0f + (i%20)*(font.get_height() + 12);
-      float y = 64.0f + (i/20)*(font.get_height() + 12);
+      float x = 64.0f + (i%20)*(font.get_height() + 24);
+      float y = 64.0f + (i/20)*(font.get_height() + reference.get_height()*3);
 
-      gc.print_right(reference,
-                    x + font.get_height(), y,
+      // print the actual character
+      gc.print_left(reference,
+		    x,
+		    y - reference.get_height(),
                     std::string(1, char(i)));
-
-      gc.print_right(reference,
-                    x + font.get_height(), 
-                     y + font.get_height() - reference.get_height(),
-                     StringUtil::to_string(i));
+      // print the index number
+      gc.print_left(reference,
+		    x, 
+		    y + font.get_height(),
+		    StringUtil::to_string(i));
       
       if (font.get_width(char(i)))
         {
