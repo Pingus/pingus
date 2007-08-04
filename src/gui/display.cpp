@@ -215,14 +215,22 @@ Display::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& colo
   int dx = pos2.x;
   int dy = pos2.y;
   void (*draw_pixel)(int x, int y, const Color& color);
+  int clipx1, clipx2, clipy1, clipy2;
+  SDL_Rect rect;
+
+  SDL_GetClipRect(Display::get_screen(), &rect);
+  clipx1 = rect.x;
+  clipx2 = rect.x + rect.w - 1;
+  clipy1 = rect.y;
+  clipy2 = rect.y + rect.h - 1;
 
   // vertical line
   if (sx == dx) {
     if (sx < 0 || sx > get_width() - 1) {
       return;
     }
-    clip(sy, 0, get_height() - 1);
-    clip(dy, 0, get_height() - 1);
+    clip(sy, clipy1, clipy2);
+    clip(dy, clipy1, clipy2);
     if (sy < dy) {
       draw_vline(sx, sy, dy - sy + 1, color);
     } else {
@@ -236,8 +244,8 @@ Display::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& colo
     if (sy < 0 || sy > get_height() - 1) {
       return;
     }
-    clip(sx, 0, get_width() - 1);
-    clip(dx, 0, get_width() - 1);
+    clip(sx, clipx1, clipx2);
+    clip(dx, clipx1, clipx2);
     if (sx < dx) {
       draw_hline(sx, sy, dx - sx + 1, color);
     } else {
@@ -285,7 +293,7 @@ Display::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& colo
 
     SDL_LockSurface(screen);
     for (x = sx; x < dx; ++x) {
-      if (x >= 0 && x <= get_width() - 1 && y >= 0 && y <= get_height() - 1) {
+      if (x >= clipx1 && x <= clipx2 && y >= clipy1 && y <= clipy2) {
         draw_pixel(x, y, color);
       }
       if (p >= 0) {
@@ -304,7 +312,7 @@ Display::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& colo
 
     SDL_LockSurface(screen);
     for (y = sy; y < dy; ++y) {
-      if (x >= 0 && x <= get_width() - 1 && y >= 0 && y <= get_height() - 1) {
+      if (x >= clipx1 && x <= clipx2 && y >= clipy1 && y <= clipy2) {
         draw_pixel(x, y, color);
       }
       if (p >= 0) {
@@ -322,7 +330,7 @@ Display::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& colo
   if (ylen == xlen) {
     SDL_LockSurface(screen);
     while (y != dy) {
-      if (x >= 0 && x <= get_width() - 1 && y >= 0 && y <= get_height() - 1) {
+      if (x >= clipx1 && x <= clipx2 && y >= clipy1 && y <= clipy2) {
         draw_pixel(x, y, color);
       }
       x += incr;
