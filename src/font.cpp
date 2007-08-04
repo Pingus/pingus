@@ -54,10 +54,12 @@ public:
   SDL_Surface* surface;
   SDL_Rect chrs[256];
   int space_length;
+  int char_spacing;
   
   FontImpl(const FontDescription& desc)
     : surface(0),
-      space_length(desc.space_length)
+      space_length(desc.space_length),
+      char_spacing(desc.char_spacing)
   {
     //std::cout << "desc.image: " << desc.image << std::endl;
     //std::cout << "desc.space: " << desc.space_length << std::endl;
@@ -66,9 +68,9 @@ public:
     for(int i = 0; i < 256; ++i)
       chrs[i].x = chrs[i].y = chrs[i].w = chrs[i].h = 0;
 
-    // FIXME: Need monospace support
     surface = IMG_Load(desc.image.c_str());
     assert(surface);
+
     if (surface->format->BitsPerPixel != 32)
       {
         std::cout << "Error: '" << desc.filename << "' invalid, fonts need to be RGBA, but is "
@@ -78,61 +80,80 @@ public:
         
     SDL_LockSurface(surface);
     
-    int first = -1; // -1 signals no character start found yet
-    int idx = 0;
-    for(int x = 0; x <= surface->w; ++x) // '<=' so we scan one past
-                                         // the last line, to catch
-                                         // the last character
+    if (!desc.monospace)
       {
-        if (!vline_empty(surface, x, desc.alpha_threshold))
-          { // line contains a character
-            if (first == -1) 
-              { // found the start of a character
-                first = x;
-              } 
-            else 
-              {
-                // do nothing and continue to search for an end
+        int first = -1; // -1 signals no character start found yet
+        int idx = 0;
+        for(int x = 0; x <= surface->w; ++x) // '<=' so we scan one past
+          // the last line, to catch
+          // the last character
+          {
+            if (!vline_empty(surface, x, desc.alpha_threshold))
+              { // line contains a character
+                if (first == -1) 
+                  { // found the start of a character
+                    first = x;
+                  } 
+                else 
+                  {
+                    // do nothing and continue to search for an end
+                  }
+              }
+            else
+              { // line doesn't contain a character
+                if (first != -1) 
+                  { // we have a start and a end, so lets construct a char
+
+                    if (idx < int(desc.characters.size()))
+                      {
+                        //std::cout << idx << " '" << desc.characters[idx] << "' " 
+                        //          <<  " glyph: " << first << " - " << x << std::endl;
+
+                        SDL_Rect& rect = chrs[static_cast<unsigned char>(desc.characters[idx])];
+                        rect.x = first;
+                        rect.y = 0;
+                        rect.w = x - first;
+                        rect.h = surface->h;
+                      }
+                    else
+                      {
+                        std::cout << "Error: Found more desc.characters then are mapped" << std::endl;
+                      }
+
+                    idx += 1;
+                    first = -1;
+                  }
               }
           }
-        else
-          { // line doesn't contain a character
-            if (first != -1) 
-              { // we have a start and a end, so lets construct a char
 
-                if (idx < int(desc.characters.size()))
-                  {
-                    //std::cout << idx << " '" << desc.characters[idx] << "' " 
-                    //          <<  " glyph: " << first << " - " << x << std::endl;
-
-                    SDL_Rect& rect = chrs[static_cast<unsigned char>(desc.characters[idx])];
-                    rect.x = first;
-                    rect.y = 0;
-                    rect.w = x - first;
-                    rect.h = surface->h;
-                  }
-                else
-                  {
-                    std::cout << "Error: Found more desc.characters then are mapped" << std::endl;
-                  }
-
-                idx += 1;
-                first = -1;
-              }
+        if (idx != int(desc.characters.size())) 
+          {
+            std::cout << "Font: " << desc.image << "\n"
+                      << "  Error: glyphs found: " << idx << ", expected "  << desc.characters.size() << "\n"
+                      << "  Format: bpp: " << int(surface->format->BitsPerPixel) << "\n"
+                      << "  Size: " << surface->w << "x" << surface->h
+              //      << "  RMask: " << hex << surface->format->Rmask << "\n"
+              //      << "  GMask: " << hex << surface->format->Gmask << "\n"
+              //      << "  BMask: " << hex << surface->format->Bmask << "\n"
+              //      << "  AMask: " << hex << surface->format->Amask << "\n"
+                      << std::endl;
           }
       }
-    
-    if (idx != int(desc.characters.size())) 
+    else // monospace
       {
-        std::cout << "Font: " << desc.image << "\n"
-                  << "  Error: glyphs found: " << idx << ", expected "  << desc.characters.size() << "\n"
-                  << "  Format: bpp: " << int(surface->format->BitsPerPixel) << "\n"
-                  << "  Size: " << surface->w << "x" << surface->h
-          //      << "  RMask: " << hex << surface->format->Rmask << "\n"
-          //      << "  GMask: " << hex << surface->format->Gmask << "\n"
-          //      << "  BMask: " << hex << surface->format->Bmask << "\n"
-          //      << "  AMask: " << hex << surface->format->Amask << "\n"
-                  << std::endl;
+        assert(surface->w % desc.characters.size() == 0);
+
+        space_length = surface->w / desc.characters.size();
+        
+        for(int i = 0; i < int(desc.characters.size()); ++i)
+          {
+            SDL_Rect& rect = chrs[static_cast<unsigned char>(desc.characters[i])];
+            
+            rect.x = i * space_length;
+            rect.y = 0;
+            rect.w = space_length;
+            rect.h = surface->h;
+          }
       }
 
     SDL_UnlockSurface(surface);
@@ -168,7 +189,7 @@ public:
               {
 		SDL_Rect dstrect = { dstx, dsty, 0, 0 };
                 SDL_BlitSurface(surface, &srcrect, target, &dstrect);
-                dstx += srcrect.w+1;
+                dstx += srcrect.w + char_spacing;
               }
             else
               {

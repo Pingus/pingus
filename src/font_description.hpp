@@ -38,8 +38,16 @@ public:
   /** Image file from which the basic surface is loaded */
   std::string image;
 
-  int space_length; 
-  int alpha_threshold;
+  bool monospace;
+  
+  /** Length of the space character, ignored with monospace fonts */
+  int  space_length; 
+
+  /** Space between two characters */
+  int char_spacing;
+
+  /** Minimum amount of alpha that is handled as character seperator */
+  int  alpha_threshold;
 
   /** Characters in the font image */
   std::string characters;
