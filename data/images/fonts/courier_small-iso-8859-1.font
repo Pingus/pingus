@@ -3,9 +3,12 @@
  (name "Pingus Small")
  (space-length    8)
  (alpha-threshold  0)
- (characters "!\"#$%&'()*+,-./0123456789:;<=>?@"
-             "ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
-             "¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßàáâãäåæçèéêëìíîïğñòóôõö÷øùúûüı")
+ (characters
+  "!\"#$%&'()*+,-./0123456789:;<=>?@"
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
+  "ÄÖÜäöüßÇçÇçÇçÇç") ;; FIXME: Are those last few chars even latin1?
+                     ;; anyway, font needs to be redone or removed,
+                     ;; but this workaround will do for now
  (image "data/images/fonts/courier_small2.png"))
 
 ;; EOF ;;

@@ -97,8 +97,8 @@ public:
 
                 if (idx < int(desc.characters.size()))
                   {
-                    std::cout << idx << " '" << desc.characters[idx] << "' " 
-                              <<  " glyph: " << first << " - " << x << std::endl;
+                    //std::cout << idx << " '" << desc.characters[idx] << "' " 
+                    //          <<  " glyph: " << first << " - " << x << std::endl;
 
                     SDL_Rect& rect = chrs[static_cast<unsigned char>(desc.characters[idx])];
                     rect.x = first;
