@@ -61,6 +61,9 @@ void delete_Path(Edge<Path*> x)
 PathGraph::~PathGraph()
 {
   graph.for_each_edge(delete_Path);
+  for(PFinderCache::iterator i = pathfinder_cache.begin();
+      i != pathfinder_cache.end(); ++i)
+    delete *i;
 }
 
 void
@@ -177,6 +180,7 @@ PathGraph::get_path(NodeId start_id, NodeId end_id)
   if (!pfinder)
     {
       pfinder = new Pathfinder<Dot*, Path*>(graph, start_id);
+      pathfinder_cache[start_id] = pfinder;
     }
 
   return pfinder->get_result(end_id);
