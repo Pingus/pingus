@@ -24,6 +24,7 @@
 #include "level_impl.hpp"
 #include "level_objs.hpp"
 #include "../pingus_level.hpp"
+#include "../sexpr_file_writer.hpp"
 
 
 namespace Editor {
@@ -66,14 +67,13 @@ bool EditorLevel::is_valid()
 // Save the level to a file.  Returns true if successful
 bool EditorLevel::save_level(const std::string& filename)
 {
-#if 0
 	// Make sure level is valid
 	if (!is_valid())
 		return false;
 
 	// Create new file (overwrite existing file)
 	std::ofstream out_file(filename.c_str());
-	FileWriter fw(out_file);
+	SExprFileWriter fw(out_file);
 	
 	// Write header
 	fw.begin_section("pingus-level");
@@ -116,7 +116,7 @@ bool EditorLevel::save_level(const std::string& filename)
 	
 	// Clean up
 	out_file.close();
-#endif
+
 	return true;
 }
 
