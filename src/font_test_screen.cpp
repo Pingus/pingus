@@ -39,7 +39,7 @@ FontTestScreen::FontTestScreen(const std::string& fontfile)
 bool
 FontTestScreen::draw(DrawingContext& gc)
 {
-  int checker = 40;
+  float checker = 40.f;
   for(int y = 0; y < gc.get_height()/checker; y += 1)
     for(int x = 0; x < gc.get_width()/checker; x += 1)
       {
@@ -60,8 +60,8 @@ FontTestScreen::draw(DrawingContext& gc)
 
   for(int i = 0; i < 256; ++i)
     {
-      int x = 64 + (i%20)*(font.get_height() + 4);
-      int y = 64 + (i/20)*(font.get_height() + 6);
+      float x = 64.f + (i%20)*(font.get_height() + 4);
+      float y = 64.f + (i/20)*(font.get_height() + 6);
 
       if (font.get_width(char(i)))
         {

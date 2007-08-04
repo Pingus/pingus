@@ -411,6 +411,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\font_test_screen.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\font_test_screen.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\fonts.cpp"
 				>
 			</File>
