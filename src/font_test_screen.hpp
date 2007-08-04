@@ -5,7 +5,7 @@
 **   \        /|  |   |  \/ /_/ |\___ \  |  | |  |  |_|  |_\  ___/
 **    \__/\  / |__|___|  /\____ /____  > |__| |__|____/____/\___  >
 **         \/          \/      \/    \/                         \/
-**  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmx.de>
+**  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
 **
 **  This program is free software; you can redistribute it and/or
 **  modify it under the terms of the GNU General Public License
@@ -23,28 +23,29 @@
 **  02111-1307, USA.
 */
 
-#ifndef HEADER_FONT_DESCRIPTION_HPP
-#define HEADER_FONT_DESCRIPTION_HPP
+#ifndef HEADER_FONT_TEST_SCREEN_HPP
+#define HEADER_FONT_TEST_SCREEN_HPP
 
-#include <string>
+#include "gui/screen.hpp"
+#include "font.hpp"
 
 /** */
-class FontDescription
+class FontTestScreen : public Screen
 {
+private:
+  Font font;
+  float scrollx;
+  float scrolly;
+
 public:
-  std::string filename;
-  std::string name;
+  FontTestScreen(const std::string& fontfile);
 
-  /** Image file from which the basic surface is loaded */
-  std::string image;
+  bool draw(DrawingContext& gc);
+  void update (const GameDelta& delta);
 
-  int space_length; 
-  int alpha_threshold;
-
-  /** Characters in the font image */
-  std::string characters;
-
-  FontDescription(const std::string& filename);
+private:
+  FontTestScreen (const FontTestScreen&);
+  FontTestScreen& operator= (const FontTestScreen&);
 };
 
 #endif

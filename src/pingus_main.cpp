@@ -78,6 +78,7 @@
 #include "cheat.hpp"
 // #include "blitter_test.hpp"
 // #include "preview_renderer.hpp"
+#include "font_test_screen.hpp"
 #include "worldmap/manager.hpp"
 #include "worldobj_factory.hpp"
 
@@ -226,6 +227,8 @@ PingusMain::check_args(int argc, char** argv)
                   _("Load a custom worldmap from FILE"));
   argp.add_option('e', "editor", "",
                   _("Loads the level editor"));
+  argp.add_option(363, "font", "FILE",
+                  _("Test a font"));
   argp.add_option('v', "verbose", "", 
                   _("Print some more messages to stdout, can be set multiple times to increase verbosity"));
   argp.add_option('V', "version", "", 
@@ -524,6 +527,10 @@ PingusMain::check_args(int argc, char** argv)
           blitter_test = true;
           break;
 
+        case 363: // font test
+          fontfile = argp.get_argument();
+          break;
+
         case 'h':
           argp.print_help();
           exit(EXIT_SUCCESS);
@@ -691,6 +698,10 @@ PingusMain::start_game ()
   if (show_input_debug_screen) // show a debug screen
     {
       //ScreenManager::instance()->push_screen(new InputDebugScreen (), true);
+    }
+  else if (!fontfile.empty())
+    {
+      ScreenManager::instance()->push_screen(new FontTestScreen(fontfile), true); 
     }
   else if (render_preview)
     {

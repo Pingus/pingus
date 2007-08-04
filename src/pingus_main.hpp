@@ -38,6 +38,7 @@ private:
   /// the name of the exe: argv[0]
   std::string executable_name;
   std::string levelfile;
+  std::string fontfile;
 
   /** Filename to which the level preview should be saved */
   std::string preview_file;
