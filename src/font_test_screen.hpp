@@ -34,6 +34,7 @@ class FontTestScreen : public Screen
 {
 private:
   Font font;
+  Font reference;
   float scrollx;
   float scrolly;
 

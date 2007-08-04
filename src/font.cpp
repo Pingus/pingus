@@ -32,6 +32,9 @@
 
 static bool vline_empty(SDL_Surface* surface, int x, Uint8 threshold)
 {
+  if (x >= surface->w)
+    return true;
+
   Uint8* pixels = (Uint8*)surface->pixels;
 
   for(int y = 0; y < surface->h; ++y)
@@ -77,7 +80,9 @@ public:
     
     int first = -1; // -1 signals no character start found yet
     int idx = 0;
-    for(int x = 0; x < surface->w; ++x)
+    for(int x = 0; x <= surface->w; ++x) // '<=' so we scan one past
+                                         // the last line, to catch
+                                         // the last character
       {
         if (!vline_empty(surface, x, desc.alpha_threshold))
           { // line contains a character
@@ -120,7 +125,7 @@ public:
     if (idx != int(desc.characters.size())) 
       {
         std::cout << "Font: " << desc.image << "\n"
-                  << "  Error: " << idx << " expected "  << desc.characters.size() << "\n"
+                  << "  Error: glyphs found: " << idx << ", expected "  << desc.characters.size() << "\n"
                   << "  Format: bpp: " << int(surface->format->BitsPerPixel) << "\n"
                   << "  Size: " << surface->w << "x" << surface->h
           //      << "  RMask: " << hex << surface->format->Rmask << "\n"

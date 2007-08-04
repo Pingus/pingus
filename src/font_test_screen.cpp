@@ -24,6 +24,7 @@
 */
 
 #include "fonts.hpp"
+#include "string_util.hpp"
 #include "display/drawing_context.hpp"
 #include "font_description.hpp"
 #include "font_test_screen.hpp"
@@ -34,6 +35,7 @@ FontTestScreen::FontTestScreen(const std::string& fontfile)
 {
   std::cout << "### Loading font file: " << fontfile << std::endl;
   font = Font(FontDescription(fontfile));
+  reference = Font(FontDescription("images/fonts/reference-iso-8859-1.font"));
 }
 
 bool
@@ -46,7 +48,7 @@ FontTestScreen::draw(DrawingContext& gc)
         if ((x+y) % 2 != 0)
           gc.draw_fillrect(x*checker, y*checker,
                            x*checker + checker, y*checker + checker,
-                           Color(100, 100, 100));
+                           Color(50, 50, 50));
         else
           gc.draw_fillrect(x*checker, y*checker,
                            x*checker + checker, y*checker + checker,
@@ -60,11 +62,24 @@ FontTestScreen::draw(DrawingContext& gc)
 
   for(int i = 0; i < 256; ++i)
     {
-      float x = 64.f + (i%20)*(font.get_height() + 4);
-      float y = 64.f + (i/20)*(font.get_height() + 6);
+      float x = 64.0f + (i%20)*(font.get_height() + 12);
+      float y = 64.0f + (i/20)*(font.get_height() + 12);
 
+      gc.print_right(reference,
+                    x + font.get_height(), y,
+                    std::string(1, char(i)));
+
+      gc.print_right(reference,
+                    x + font.get_height(), 
+                     y + font.get_height() - reference.get_height(),
+                     StringUtil::to_string(i));
+      
       if (font.get_width(char(i)))
         {
+          gc.draw_rect(x, y, 
+                       x+font.get_height(), 
+                       y+font.get_height(), 
+                       Color(0,0,255));
           gc.draw_rect(x, y, 
                        x+font.get_width(char(i)), 
                        y+font.get_height(), 

@@ -53,7 +53,7 @@ init ()
 
   courier_small = Resource::load_font("fonts/courier_small" + std::string("-") + encoding);
   xterm        = Resource::load_font("fonts/courier_small" + std::string("-") + encoding);
-  smallfont    = Resource::load_font("fonts/courier_small" + std::string("-") + encoding); //PingusResource::load_font("Fonts/smallfont","fonts");
+  smallfont    = Resource::load_font("fonts/pingus_small" + std::string("-") + encoding); //PingusResource::load_font("Fonts/smallfont","fonts");
   smallfont_h  = Resource::load_font("fonts/courier_small" + std::string("-") + encoding); // PingusResource::load_font("Fonts/smallfont_h","fonts");
 
   lcd          = Resource::load_font("fonts/number_fnt");
