@@ -63,25 +63,42 @@ public:
     for(int i = 0; i < 256; ++i)
       chrs[i].x = chrs[i].y = chrs[i].w = chrs[i].h = 0;
 
+    // FIXME: Need monospace support
     surface = IMG_Load(desc.image.c_str());
     assert(surface);
-
+    if (surface->format->BitsPerPixel != 32)
+      {
+        std::cout << "Error: '" << desc.filename << "' invalid, fonts need to be RGBA, but is "
+                  << surface->format->BitsPerPixel << "bpp" << std::endl;
+        assert(0);
+      }
+        
     SDL_LockSurface(surface);
     
-    //std::cout << "Surface: " << surface->w << std::endl;
     int first = -1; // -1 signals no character start found yet
     int idx = 0;
     for(int x = 0; x < surface->w; ++x)
       {
-        ///std::cout << x << " " << surface->w << std::endl;
-        if (vline_empty(surface, x, desc.alpha_threshold))
-          {
-            if (first != -1) // skipping empty space
+        if (!vline_empty(surface, x, desc.alpha_threshold))
+          { // line contains a character
+            if (first == -1) 
+              { // found the start of a character
+                first = x;
+              } 
+            else 
               {
+                // do nothing and continue to search for an end
+              }
+          }
+        else
+          { // line doesn't contain a character
+            if (first != -1) 
+              { // we have a start and a end, so lets construct a char
+
                 if (idx < int(desc.characters.size()))
                   {
-                    //std::cout << idx << " " << desc.characters[idx]
-                    //<< " Empty: " << first << " - " << x << std::endl;
+                    std::cout << idx << " '" << desc.characters[idx] << "' " 
+                              <<  " glyph: " << first << " - " << x << std::endl;
 
                     SDL_Rect& rect = chrs[static_cast<unsigned char>(desc.characters[idx])];
                     rect.x = first;
@@ -90,23 +107,20 @@ public:
                     rect.h = surface->h;
                   }
                 else
-                  std::cout << "Error: Found more desc.characters then are mapped" << std::endl;
+                  {
+                    std::cout << "Error: Found more desc.characters then are mapped" << std::endl;
+                  }
 
                 idx += 1;
                 first = -1;
               }
           }
-        else
-          {
-            if (first == -1) // found the start of a character
-              first = x;
-          }
       }
     
-    if (idx-1 != int(desc.characters.size())) // FIXME: is that -1 correct?!
+    if (idx != int(desc.characters.size())) 
       {
         std::cout << "Font: " << desc.image << "\n"
-                  << "  Error: " << idx-1 << " expected "  << desc.characters.size() << "\n"
+                  << "  Error: " << idx << " expected "  << desc.characters.size() << "\n"
                   << "  Format: bpp: " << int(surface->format->BitsPerPixel) << "\n"
                   << "  Size: " << surface->w << "x" << surface->h
           //      << "  RMask: " << hex << surface->format->Rmask << "\n"
@@ -117,7 +131,6 @@ public:
       }
 
     SDL_UnlockSurface(surface);
-    //std::cout << "Font created successfully" << std::endl;
   }
 
   ~FontImpl()
@@ -131,7 +144,6 @@ public:
 
     int dstx = x - offset.x;
     int dsty = y - offset.y;
-
 
     for(std::string::size_type i = 0; i < text.size(); ++i)
       {

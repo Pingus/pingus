@@ -30,6 +30,9 @@
 class FontDescription
 {
 public:
+  std::string filename;
+  std::string name;
+
   /** Image file from which the basic surface is loaded */
   std::string image;
 

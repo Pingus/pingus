@@ -56,7 +56,7 @@ init ()
   smallfont    = Resource::load_font("fonts/courier_small" + std::string("-") + encoding); //PingusResource::load_font("Fonts/smallfont","fonts");
   smallfont_h  = Resource::load_font("fonts/courier_small" + std::string("-") + encoding); // PingusResource::load_font("Fonts/smallfont_h","fonts");
 
-  lcd          = Resource::load_font("fonts/courier_small" + std::string("-") + encoding); // PingusResource::load_font("Fonts/numbers", "fonts");
+  lcd          = Resource::load_font("fonts/number_fnt");
 }
 
 void deinit () 

@@ -27,19 +27,23 @@
 #include "file_reader.hpp"
 #include "font_description.hpp"
 
-FontDescription::FontDescription(const std::string& filename)
+FontDescription::FontDescription(const std::string& filename_)
+  : filename(filename_)
 {
+  name            = "<unknown>";
   space_length    = 20;
   alpha_threshold = 0;
 
   FileReader reader = FileReader::parse(filename);
 
+  // FIXME: We need support for monospace fonts
   if (reader.get_name() != "pingus-font")
     {
       PingusError::raise("FontDescription: not a pingus-font file");
     }
   else
     {
+      reader.read_string("name",         name);
       reader.read_string("image",        image);
       reader.read_string("characters",   characters);
       reader.read_int("space-length",    space_length);
