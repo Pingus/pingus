@@ -37,7 +37,6 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
 {
   Uint8 *keystate = SDL_GetKeyState(NULL);
 
-  std::cout << "GlobalEvent: " << event.keysym.sym << std::endl;
   switch (event.keysym.sym)
     {
     case SDLK_F1:
