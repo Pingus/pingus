@@ -32,6 +32,8 @@ class SExprFileWriter : public FileWriter
 private:
   /** A reference to the output stream */
   std::ostream* out;
+  int level;
+  std::string indent();
 
 public:
   SExprFileWriter(std::ostream& out_);

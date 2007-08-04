@@ -23,7 +23,7 @@
 #include "sexpr_file_writer.hpp"
 
 SExprFileWriter::SExprFileWriter(std::ostream& out_)
-  : out(&out_)
+  : out(&out_), level(0)
 {
 }
 
@@ -31,46 +31,53 @@ SExprFileWriter::~SExprFileWriter()
 {
 }
 
+std::string
+SExprFileWriter::indent()
+{
+  return std::string(level*2, ' ');
+}
+
 void
 SExprFileWriter::begin_section(const char* name)
 {
-  (*out) << "(" << name << "\n";
+  (*out) << indent() << "(" << name << "\n";
+  ++level;
 }
 
 void
 SExprFileWriter::end_section()
 {
-  (*out) << ")\n";
+  --level;
+  (*out) << indent() << ")\n";
 }
 
 void
 SExprFileWriter::write_int(const char* name, int value)
 {
-  (*out) << "(" << name << " " << value << ")\n";
+  (*out) << indent() << "(" << name << " " << value << ")\n";
 }
 
 void
 SExprFileWriter::write_float(const char* name, float value)
 {
-  (*out) << "(" << name << " " << value << ")\n";
+  (*out) << indent() << "(" << name << " " << value << ")\n";
 }
 
 void
 SExprFileWriter::write_color(const char* name, const Color& color)
 {
-  (*out) << "(" << name << "\n"
-         << "  (red "   << int(color.r * 255) << ")\n"
-         << "  (green " << int(color.g * 255) << ")\n"
-         << "  (blue "  << int(color.b * 255) << ")\n"
-         << "  (alpha " << int(color.a * 255) << ")\n"
-         << ")"
-         << std::endl;
+  (*out) << indent() << "(" << name << "\n"
+         << indent() << "  (red "   << int(color.r * 255) << ")\n"
+         << indent() << "  (green " << int(color.g * 255) << ")\n"
+         << indent() << "  (blue "  << int(color.b * 255) << ")\n"
+         << indent() << "  (alpha " << int(color.a * 255) << ")\n"
+         << indent() << ")\n";
 }
 
 void
 SExprFileWriter::write_bool(const char* name, bool value)
 {
-  (*out) << "(" << name << " " << (value ? "#t" : "#f") << ")\n";
+  (*out) << indent() << "(" << name << " " << (value ? "#t" : "#f") << ")\n";
 }
 
 void
@@ -95,23 +102,23 @@ SExprFileWriter::write_string(const char* name, const std::string& value)
 		}
 	}
 	
-	(*out) << "(" << name << " \"" << new_value << "\")\n";
+	(*out) << indent() << "(" << name << " \"" << new_value << "\")\n";
 }
 
 void
 SExprFileWriter::write_vector(const char* name, const Vector3f& value)
 {
-  (*out) << "(" << name << "\n"
-         << "  (x " << value.x << ")\n"
-         << "  (y " << value.y << ")\n"
-         << "  (z " << value.z << ")\n"
-         << ")\n";
+  (*out) << indent() << "(" << name << "\n"
+         << indent() << "  (x " << value.x << ")\n"
+         << indent() << "  (y " << value.y << ")\n"
+         << indent() << "  (z " << value.z << ")\n"
+         << indent() << ")\n";
 }
 
 void
 SExprFileWriter::write_size(const char* name, const Size& size)
 {
-  (*out) << "(" << name << " " << size.width << " " << size.height << ")\n";
+  (*out) << indent() << "(" << name << " " << size.width << " " << size.height << ")\n";
 }
 
 /* EOF */
