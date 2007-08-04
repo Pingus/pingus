@@ -854,6 +854,7 @@ PingusMain::init_sdl()
   atexit(SDL_Quit); 
   Display::set_video_mode(screen_width, screen_height);
   SDL_WM_SetCaption(PACKAGE_STRING " - SDL Edition", 0 /* icon */);
+  SDL_EnableUNICODE(1);
 }
 
 void
