@@ -108,4 +108,10 @@ SExprFileWriter::write_vector(const char* name, const Vector3f& value)
          << ")\n";
 }
 
+void
+SExprFileWriter::write_size(const char* name, const Size& size)
+{
+  (*out) << "(" << name << " " << size.width << " " << size.height << ")\n";
+}
+
 /* EOF */

@@ -100,10 +100,7 @@ bool EditorLevel::save_level(const std::string& filename)
 	}
 	fw.end_section();	// actions
 
-	fw.begin_section("levelsize");
-	fw.write_int("width", impl->size.width);
-	fw.write_int("height", impl->size.height);
-	fw.end_section();	// levelsize
+	fw.write_size("levelsize", impl->size);
 	fw.end_section();	// head
 
 	// Write the objects
