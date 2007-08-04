@@ -66,12 +66,8 @@ SExprFileWriter::write_float(const char* name, float value)
 void
 SExprFileWriter::write_color(const char* name, const Color& color)
 {
-  (*out) << indent() << "(" << name << "\n"
-         << indent() << "  (red "   << int(color.r * 255) << ")\n"
-         << indent() << "  (green " << int(color.g * 255) << ")\n"
-         << indent() << "  (blue "  << int(color.b * 255) << ")\n"
-         << indent() << "  (alpha " << int(color.a * 255) << ")\n"
-         << indent() << ")\n";
+  (*out) << indent() << "(" << name << " "
+         << (int)color.r << " " << (int)color.g << " " << (int)color.b << " " << (int)color.a << ")\n";
 }
 
 void
@@ -108,11 +104,8 @@ SExprFileWriter::write_string(const char* name, const std::string& value)
 void
 SExprFileWriter::write_vector(const char* name, const Vector3f& value)
 {
-  (*out) << indent() << "(" << name << "\n"
-         << indent() << "  (x " << value.x << ")\n"
-         << indent() << "  (y " << value.y << ")\n"
-         << indent() << "  (z " << value.z << ")\n"
-         << indent() << ")\n";
+  (*out) << indent() << "(" << name << " "
+         << value.x << " " << value.y << " " << value.z << ")\n";
 }
 
 void

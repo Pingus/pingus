@@ -33,21 +33,21 @@
 
 namespace Editor {
 
-	const unsigned HAS_TYPE = 1;
-	const unsigned HAS_SPEED = 2;
-	const unsigned HAS_PARALLAX = 4;
-	const unsigned HAS_WIDTH = 8;
-	const unsigned HAS_OWNER = 16;
-	const unsigned HAS_COLOR = 32;
-	const unsigned HAS_SCROLL = 64;
-	const unsigned HAS_PARA = 128;
-	const unsigned HAS_STRETCH = 256;
-	const unsigned HAS_DIRECTION = 512;
-	const unsigned HAS_RELEASE_RATE = 1024;
-	const unsigned HAS_SURFACE = 2048;
+	const unsigned HAS_TYPE =         1 << 0;
+	const unsigned HAS_SPEED =        1 << 1;
+	const unsigned HAS_PARALLAX =     1 << 2;
+	const unsigned HAS_WIDTH =        1 << 3;
+	const unsigned HAS_OWNER =        1 << 4;
+	const unsigned HAS_COLOR =        1 << 5;
+	const unsigned HAS_SCROLL =       1 << 6;
+	const unsigned HAS_PARA =         1 << 7;
+	const unsigned HAS_STRETCH =      1 << 8;
+	const unsigned HAS_DIRECTION =    1 << 9;
+	const unsigned HAS_RELEASE_RATE = 1 << 10;
+	const unsigned HAS_SURFACE =      1 << 11;
 	// HAS_SURFACE_FAKE means it has a generic image in the editor, but isn't saved.
-	const unsigned HAS_SURFACE_FAKE = 4096;
-	const unsigned CAN_ROTATE = 8192;
+	const unsigned HAS_SURFACE_FAKE = 1 << 12;
+	const unsigned CAN_ROTATE =       1 << 13;
 
 	/** Returns a number representing which attributes this object possesses */
 	inline unsigned int get_attributes(std::string obj_type)

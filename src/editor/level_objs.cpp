@@ -220,7 +220,7 @@ LevelObj::write_properties(FileWriter &fw)
 		if (attribs & HAS_RELEASE_RATE)
 			fw.write_int("release-rate", release_rate);
 		if (attribs & HAS_COLOR)
-                  ////fw.write_color("color", color);
+			fw.write_color("color", color);
 		if (attribs & HAS_STRETCH)
 		{
 			fw.write_bool("stretch-x", stretch_x);
@@ -242,7 +242,7 @@ LevelObj::write_properties(FileWriter &fw)
 		write_extra_properties(fw);
 
 		// Write the Vector3f position - all objects have this
-		////fw.write_vector("position", pos);
+		fw.write_vector("position", pos);
 
 		fw.end_section();	// object's section_name
 	}
