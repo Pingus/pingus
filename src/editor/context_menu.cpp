@@ -55,9 +55,6 @@ namespace Editor {
 
 	ContextMenu::~ContextMenu()
 	{
-		for (unsigned i = 0; i < actions.size(); i++)
-			if (actions[i].child)
-				delete actions[i].child;
 	}
 
 

@@ -256,7 +256,8 @@ void
 DrawingContext::draw_line (float x1, float y1, float x2, float y2, 
                            const Color& color, float z)
 {
-  draw(new LineDrawingRequest(Vector2i(int(x1), int(y1)), Vector2i(int(x2), int(y2)), color, z));
+  draw(new LineDrawingRequest(Vector2i(int(x1 + translate_stack.back().x), int(y1 + translate_stack.back().y)),
+    Vector2i(int(x2 + translate_stack.back().x), int(y2 + translate_stack.back().y)), color, z));
 }
 
 void
