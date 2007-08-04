@@ -21,7 +21,6 @@
 #include "debug.hpp"
 #include "system.hpp"
 #include "path_manager.hpp"
-#include "xml_pingus_level.hpp"
 #include "plf_res_mgr.hpp"
 
 

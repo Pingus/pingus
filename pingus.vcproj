@@ -890,26 +890,6 @@
 				RelativePath=".\src\worldobj_factory.hpp"
 				>
 			</File>
-			<File
-				RelativePath=".\src\xml_eval.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\src\xml_file_reader.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\src\xml_file_writer.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\src\xml_pdf.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\src\xml_pingus_level.hpp"
-				>
-			</File>
 			<Filter
 				Name="actions"
 				>

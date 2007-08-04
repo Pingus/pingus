@@ -304,10 +304,6 @@ env.Program('../pingus', [
 'worldobjs/thunderstorm_background.cpp', 
 'worldobjs/woodthing.cpp',
 
-# 'xml_file_reader.cpp', 
-# 'xml_file_writer.cpp', 
-# 'xml_pdf.cpp', 
-# 'xml_pingus_level.cpp'
 ],
 CPPPATH = env['CPPPATH'] + ['..'] + ['.'])
 
