@@ -52,7 +52,6 @@ public:
   bool read_vector2i(const char* name, Vector2i&)    const;
   bool read_size  (const char* name, Size&)          const;
   bool read_color (const char* name, Color&)         const;
-  ////  bool read_size  (const char* name, CL_Size&)       const;
   bool read_desc  (const char* name, ResDescriptor&) const;
   bool read_section(const char* name, FileReader&)   const;
   FileReader read_section(const char* name)   const;
