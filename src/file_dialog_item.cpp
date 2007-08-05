@@ -50,21 +50,22 @@
 		// Load sprite based on file  (folder icon, level screenshot, or generic)
 		if (file_item.is_directory)
 		{
-			file_item.is_directory = true;
 			sprite = Resource::load_sprite("core/menu/folder");
 		}
 		else
 		{
 			// FIXME: Load thumbnail specific to this level
 			sprite = Resource::load_sprite("core/menu/default_level");
+			file_item.short_name.clear();
+			file_item.friendly_name.clear();
 			file_item.is_accessible = true;
 			file_item.is_finished = false;
-			file_item.friendly_name.clear();
-			file_info = _("Difficulty: ");
+			file_info.clear();
+			status.clear();
 
 			// Load information about this file if possible.
 			FileReader reader = FileReader::parse(file_dialog->get_path() + file_item.name);
-			if (reader.get_name() == "pingus-level" || reader.get_name() == "pingus-worldmap")
+			if (reader.get_name() == "pingus-level")
 			{
 				FileReader head;
 				int difficulty = 0;
@@ -78,87 +79,48 @@
 						file_item.friendly_name = _(file_item.friendly_name);
 					head.read_int("difficulty", difficulty);
 					ostr << difficulty;
-					file_info += ostr.str();
+					file_info = _("Difficulty: ") + ostr.str();
+					file_item.is_accessible = true;
 					Savegame* sg = SavegameManager::instance()->get(file_item.friendly_name);
-					status = sg ? _("Finished!") : _("Not finished!");
+					if (sg && sg->status == Savegame::FINISHED) {
+						status = _("Finished!");
+						file_item.is_finished = true;
+					}
+					else {
+						status = _("Not finished!");
+						file_item.is_finished = false;
+					}
 				}
 			}
-#if 0
-			// Load information about this file if possible.
-			CL_InputSourceProvider_File provider(".");
-			CL_DomDocument doc(provider.open_source(file_dialog->get_path() 
-				+ file_item.name), true);
-
-			CL_DomElement root = doc.get_document_element();
-
-			if (root.get_tag_name() == "pingus-level" || root.get_tag_name() == "pingus-worldmap")
+			else if (reader.get_name() == "pingus-worldmap")
 			{
-				CL_DomNodeList lst = root.get_child_nodes();
-
-				for(int i = 0; i < lst.get_length(); ++i)
+				FileReader head;
+				if (reader.read_section("head", head))
 				{
-					CL_DomElement node = lst.item(i).to_element();
+					head.read_string("name", file_item.friendly_name);
+					head.read_string("short-name", file_item.short_name);
+					head.read_string("description", file_info);
 
-					// Get information about this file
-					if (node.get_tag_name() == "head")
+					// Get player's status for this worldmap
+					status = _("Not Finished");
+					if (StatManager::instance()->get_bool(
+						file_item.short_name + "-accessible", file_item.is_accessible))
 					{
-						XMLFileReader reader(node);
-						if (root.get_tag_name() == "pingus-level")
-						{
-							// It's a level file
-							reader.read_string("levelname",   file_item.friendly_name);
-							reader.read_string("difficulty",  file_info);
-							file_item.is_accessible = true;
-							file_item.friendly_name = _(file_item.friendly_name);
-							file_info = _("Difficulty: ") + file_info;
-							Savegame* sg = SavegameManager::instance()->get(file_item.friendly_name);
-							if (sg)
-							{
-								status = _("Finished!");
-								file_item.is_finished = (sg->status == Savegame::FINISHED);
-							}
-							else
-							{
-								status = _("Not finished");
-								file_item.is_finished = false;
-							}
-						}
-						else
-						{
-							// It's a Worldmap
-							reader.read_string("name",        file_item.friendly_name);
-							reader.read_string("short-name",  file_item.short_name);
-							reader.read_string("description", file_info);
-
-							// Get player's status for this worldmap
-							if (!StatManager::instance()->get_bool(
-								file_item.short_name + "-accessible", file_item.is_accessible))
-							{
-								status = _("Not Accessible");
-								file_item.is_accessible = false;
-							}
-							else if (!StatManager::instance()->get_bool(
-								file_item.short_name + "-finished", file_item.is_finished))
-							{
-								status = _("Not Finished");
-								file_item.is_finished = false;
-							}
-							else
-							{
-								status = _("Finished!");
-								file_item.is_finished = true;
-							}
-							file_item.friendly_name = _(file_item.friendly_name);
-							file_info = _(file_info);
-
-						}
-						// Have to limit the size of the printed name
-						file_item.friendly_name = file_item.friendly_name.substr(0, 23);
-						break;
-					}	// if XML Node == "head"
-				}	// for loop
-			}	// if XML tag_name was recognized
-#endif
+						if (!file_item.is_accessible)
+							status = _("Not Accessible");
+					}
+					if (StatManager::instance()->get_bool(
+						file_item.short_name + "-finished", file_item.is_finished))
+					{
+						if (file_item.is_finished)
+							status = _("Finished!");
+					}
+					file_item.friendly_name = _(file_item.friendly_name);
+					file_info = _(file_info);
+				}
+			}
+			// Have to limit the size of the printed name
+			file_item.friendly_name = file_item.friendly_name.substr(0, 23);
 		}	// else it's a file, not a directory
 	}	//set_file()
 
@@ -198,12 +160,14 @@
 					// Determine which color to draw the background rectangle.
 					Color color;
 					if (file_item.is_accessible)
+					{
 						if (file_item.is_finished)
-                                                  color = Color(123,123,0);////Color::azure;
+							color = Color(123,123,0);////Color::azure;
 						else
-                                                  color = Color(123,0,222); ////Color::aqua;
+							color = Color(123,0,222); ////Color::aqua;
+					}
 					else
-                                          color = Color(255,0,0);
+						color = Color(255,0,0);
 					gc.draw_fillrect(pos.x+50, pos.y, pos.x+270, pos.y+75, color);
 
 					// Draw level or worldmap information.
