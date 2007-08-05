@@ -161,20 +161,20 @@ GraphicContextState::set_pos(const Vector2f& pos)
     {
       if (-impl->offset.x < impl->limit.left)
         {
-	  impl->offset.x = (float)-(impl->limit.left);
+          impl->offset.x = (float)-(impl->limit.left);
         }
-      else if (-impl->offset.x + get_width() >= impl->limit.right)
+      else if (-impl->offset.x + get_width() > impl->limit.right)
         {
-	  impl->offset.x = (float)-(impl->limit.right - get_width() - 1);
+          impl->offset.x = (float)-(impl->limit.right - get_width());
         }
 
       if (-impl->offset.y < impl->limit.top)
         {
           impl->offset.y = (float)-(impl->limit.top);
         }
-      else if (-impl->offset.y + get_height() >= impl->limit.bottom)
+      else if (-impl->offset.y + get_height() > impl->limit.bottom)
         {
-          impl->offset.y = (float)-(impl->limit.bottom - get_height() - 1);
+          impl->offset.y = (float)-(impl->limit.bottom - get_height());
         }
     }
 }
