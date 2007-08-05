@@ -137,7 +137,7 @@ VerticalActionButton::draw (DrawingContext& gc)
       && x > x_pos      && x < x_pos + 60
       && y < y_pos + 35 && y > y_pos)
     {
-      gc.print_left(myfontb, (float)x_pos + 65, (float)y_pos, action_to_screenname(name));
+      gc.print_left(myfontb, (float)x_pos + 65, (float)y_pos-10, action_to_screenname(name));
     }
 
   if (Cheat::unlimited_actions)

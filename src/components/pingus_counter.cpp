@@ -53,7 +53,7 @@ PingusCounter::draw(DrawingContext& gc)
 	   world->get_pingus()->get_number_of_exited(),
 	   server->get_plf().get_number_to_save());
 
-  gc.print_center(font, gc.get_width()/2, 3, str);
+  gc.print_center(font, gc.get_width()/2, 0, str);
 }
 
 
