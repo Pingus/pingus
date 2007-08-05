@@ -33,7 +33,7 @@ public:
 	/** Load a music file and play it immediately.
     @param filename The complete filename
     @param volume   The volume to play the music with  */
-  virtual void real_play_music(const std::string & filename, float volume) = 0;
+  virtual void real_play_music(const std::string & filename, float volume, bool loop) = 0;
 
 	/** Stops playing any music file */
   virtual void real_stop_music() = 0;

@@ -32,7 +32,7 @@ public:
 	virtual ~PingusSoundDummy () { }
 
   virtual void real_play_sound (const std::string & filename, float volume, float panning);
-  virtual void real_play_music (const std::string & filename, float volume);
+  virtual void real_play_music (const std::string & filename, float volume, bool loop);
   virtual void real_stop_music();
 private:
   PingusSoundDummy (const PingusSoundDummy&);

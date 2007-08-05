@@ -288,11 +288,11 @@ ResultScreen::on_startup()
 {
   if (result.success())
     {
-      Sound::PingusSound::play_music("success_1.it");
+      Sound::PingusSound::play_music("success_1.it", 1.f, false);
     }
   else
     {
-      Sound::PingusSound::play_music("pingus-2.it");
+      Sound::PingusSound::play_music("pingus-2.it", 1.f, false);
     }
 }
 

@@ -95,7 +95,7 @@ PingusSoundReal::real_stop_music ()
 }
 
 void
-PingusSoundReal::real_play_music (const std::string & arg_filename, float volume)
+PingusSoundReal::real_play_music (const std::string & arg_filename, float volume, bool loop)
 {
   std::string filename;
 
@@ -117,7 +117,7 @@ PingusSoundReal::real_play_music (const std::string & arg_filename, float volume
     }
 
   Mix_VolumeMusic((int)(volume * 0.5f * MIX_MAX_VOLUME)); // FIXME: music_volume
-  Mix_PlayMusic(music_sample, -1);
+  Mix_PlayMusic(music_sample, loop ? -1 : 0);
 }
 
 } // namespace Sound

@@ -47,7 +47,7 @@ public:
   @param panning  panning */
   static void play_sound(const std::string & name, float volume = 1.0f, float panning = 0.0f);
 
-  static void play_music(const std::string & name, float volume = 1.0f);
+  static void play_music(const std::string & name, float volume = 1.0f, bool loop = true);
   static void stop_music();
 
   static void play_sound(Sound::Name name, float volume = 1.0f, float panning = 0.0f);

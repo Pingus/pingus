@@ -109,10 +109,10 @@ PingusSound::play_sound(Sound::Name name, float volume, float panning)
 @param name
 @param volume   volume */
 void
-PingusSound::play_music(const std::string & name, float volume)
+PingusSound::play_music(const std::string & name, float volume, bool loop)
 {
   assert (sound);
-  sound->real_play_music(path_manager.complete ("music/" + name), volume);
+  sound->real_play_music(path_manager.complete ("music/" + name), volume, loop);
 }
 
 void
