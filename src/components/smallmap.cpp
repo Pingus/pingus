@@ -89,9 +89,11 @@ SmallMap::draw (DrawingContext& gc)
   gc.draw(image->get_surface(), Vector3f((float)x_pos, (float)y_pos));
   
   Vector2i of = playfield->get_pos();
-    
-  of.x = x_pos + of.x * width  / client->get_server()->get_world()->get_colmap()->get_width();
-  of.y = y_pos + of.y * height / client->get_server()->get_world()->get_colmap()->get_height();
+
+  int cwidth = client->get_server()->get_world()->get_colmap()->get_width();
+  int cheight = client->get_server()->get_world()->get_colmap()->get_height();
+  of.x = x_pos + of.x * width  / Math::max(cwidth, int(gc.get_width()));
+  of.y = y_pos + of.y * height / Math::max(cheight, int(gc.get_height()));
 
   int w = Math::min(rwidth,  int(width  - 1));
   int h = Math::min(rheight, int(height - 1));

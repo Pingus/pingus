@@ -32,8 +32,6 @@ Roadmap for Pingus 0.7.0
 
 - completly broken: data/levels/playable/bombing.scm (z ordering?)
 
-- small levels make scrolling go crazy: data/levels/playable/blue3-marcotte.scm
-
 - hotspot offset gets ignored/mishandled
 
 - colorkey is used even in surfaces that don't have transparency
