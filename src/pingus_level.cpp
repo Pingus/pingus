@@ -22,6 +22,8 @@
 #include "pingus_level.hpp"
 #include "pingus_error.hpp"
 #include "pingus_level_impl.hpp"
+#include "globals.hpp"
+#include "debug.hpp"
 
 PingusLevel::PingusLevel()
   : impl(new PingusLevelImpl())  
@@ -44,9 +46,9 @@ PingusLevel::PingusLevel(const std::string& resname,
     {
       int version;
       if (reader.read_int("version", version))
-        std::cout << "Levelfile Version: " << version << std::endl;
+        pout(PINGUS_DEBUG_LOADING) << "Levelfile Version: " << version << std::endl;
       else
-        std::cout << "Unknown Levelfile Version: " << version << std::endl;
+        pout(PINGUS_DEBUG_LOADING) << "Unknown Levelfile Version: " << version << std::endl;
 
       FileReader head;
       if (!reader.read_section("head", head))
@@ -55,7 +57,7 @@ PingusLevel::PingusLevel(const std::string& resname,
         }
       else
         {
-          std::cout << "Reading head" << std::endl;
+          pout(PINGUS_DEBUG_LOADING) << "Reading head" << std::endl;
           head.read_string("levelname",        impl->levelname);
           head.read_string("description",      impl->description);
           head.read_size  ("levelsize",        impl->size);
@@ -67,7 +69,7 @@ PingusLevel::PingusLevel(const std::string& resname,
           head.read_color ("ambient-light",    impl->ambient_light);
           head.read_string("author",           impl->author);
 
-          std::cout << "Size: " << impl->size.width << " " << impl->size.height << std::endl;
+          pout(PINGUS_DEBUG_LOADING) << "Size: " << impl->size.width << " " << impl->size.height << std::endl;
           
           FileReader actions;
           if (head.read_section("actions", actions))
@@ -76,7 +78,7 @@ PingusLevel::PingusLevel(const std::string& resname,
               for(std::vector<std::string>::iterator i = lst.begin(); i != lst.end(); ++i)
                 {
                   int count = 0;
-                  std::cout << "Actions: " << i->c_str() << std::endl;
+                  pout(PINGUS_DEBUG_LOADING) << "Actions: " << i->c_str() << std::endl;
                   if (actions.read_int(i->c_str(), count))
                     impl->actions[*i] = count;
                 }

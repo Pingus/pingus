@@ -107,10 +107,8 @@ WorldMapManagerCreditsButton::draw (DrawingContext& gc)
 void
 WorldMapManagerCreditsButton::on_click()
 {
-#if 0
   ScreenManager::instance()->replace_screen
     (new StoryScreen(WorldMapManager::instance()->get_worldmap()->get_end_story()), true);
-#endif
 }
 
 WorldMapManagerStoryButton::WorldMapManagerStoryButton()

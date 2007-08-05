@@ -226,7 +226,6 @@ public:
       { // iterate over subsections
 	boost::shared_ptr<lisp::Lisp> sub = sexpr->get_list_elem(i);
         lst.push_back(sub->get_list_elem(0)->get_symbol());
-        std::cout << sub->get_list_elem(0)->get_symbol() << std::endl;
       }
 
     return lst;
