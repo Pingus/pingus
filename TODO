@@ -1,9 +1,47 @@
+Roadmap for Pingus 0.8.0
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+- add VCR like effect for fast forward
+
+- repaint pause and fast-forward button
+
+- use transparent action buttons unless fast-mode is used
+
+- add round corners to the minimap
+
+- allow sprites as background
+
+- add a proper option menu
+
+- redesign main menu
+
 Roadmap for Pingus 0.7.0
 ~~~~~~~~~~~~~~~~~~~~~~~~
+
+- seperate gfx/colmap surfaces aren't used
 
 - split screen multiplayer
 
 - two new worlds 
+
+- music when level is finished loops, but shouldn't
+
+- remove unneeded/outdated fonts
+
+- Latin1 clean
+
+- src/components/pingus_counter.hpp font should be fixed-width/monospace
+
+- scaling images for different resolutions
+
+- animation speed of sprites is wrong
+
+- the game is much slower then the Clanlib version
+
+- there is also a missing float->int cast somewhere, exits and maybe
+  other objects 'wooble' by one pixel while scrolling
+
+- clicking the x-button of the window currently acts as escape and exits a level instead of the whole game
 
 Older Stuff:
 ~~~~~~~~~~~~
@@ -74,12 +112,6 @@ Older Stuff:
   they can appear to be the same size as walkers)
 
 - Sometimes diggers can't be changed into miners.
-
-- Pingu can't usually walk past a staircase that's pointing towards
-  them (as Lemmings can), and should be able to. Maybe put stairs
-  in a separate layer to differentiate between a staircase they
-  should be able to step around in one direction (direction would
-  have to be determined somehow, though).
 
 - If enough Pingu are saved and all that are left are blockers, end
   level before time runs out, with a win
