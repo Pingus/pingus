@@ -58,7 +58,7 @@
 // #include "global_event.hpp"
 #include "config.hpp"
 #include "console.hpp"
-// #include "fps_counter.hpp"
+#include "fps_counter.hpp"
 #include "plf_res_mgr.hpp"
 #include "game_session.hpp"
 #include "story_screen.hpp"
@@ -684,8 +684,8 @@ PingusMain::start_game ()
     pout << _("PingusMain: Starting Main: ") << SDL_GetTicks() << std::endl;
   }
 
-  //if (print_fps)
-  //    Display::add_flip_screen_hook(&fps_counter);
+  if (print_fps)
+      Display::add_flip_screen_hook(&fps_counter);
 
   if (!render_preview)
     {
@@ -894,14 +894,14 @@ PingusMain::init_pingus()
   Credits::init();
   WorldMapNS::WorldMapManager::instance();
 
-////  fps_counter.init();
+  fps_counter.init();
   console.init();
 }
 
 void
 PingusMain::deinit_pingus()
 {
-////  fps_counter.deinit();
+  fps_counter.deinit();
   console.deinit();
 
   Fonts::deinit();

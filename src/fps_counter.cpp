@@ -70,7 +70,7 @@ FPSCounter::on_event()
       odd_frame = true;
     }
 
-  font.draw(Display::get_width(),
+  font.draw(Display::get_width() - 100,
             Display::get_height() - font.get_height(),
             fps_string);
 }

@@ -29,6 +29,7 @@
 #include "SDL_image.h"
 #include "font.hpp"
 #include "font_description.hpp"
+#include "gui/display.hpp"
 
 static bool vline_empty(SDL_Surface* surface, int x, Uint8 threshold)
 {
@@ -170,6 +171,8 @@ public:
 
     int dstx = x - offset.x;
     int dsty = y - offset.y;
+
+    if (!target) target = Display::get_screen();
 
     for(std::string::size_type i = 0; i < text.size(); ++i)
       {
