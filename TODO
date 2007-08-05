@@ -1,248 +1,18 @@
 Roadmap for Pingus 0.7.0
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-* split screen multiplayer
-* two new worlds 
+- split screen multiplayer
 
-Resource String Cleanup (DONE):
-========================
-Old:
-  <surface><resource type="datafile">
-    <resource-datafile>groundpieces-ground</resource-datafile>
-  <resource-ident>snow/block2</resource-ident>
-    <modifier>ROT0</modifier>
-  </resource></surface>
+- two new worlds 
 
-Should be:
-  <surface>
-    <name>groundpieces/ground/snow/block2</name>
-    <modifier>ROT0</modifier>
-  </surface>
-
-
-Roadmap for Pingus 0.5.0
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-Major Items:
-
-* two worlds should be provided
-	- tutorial world (maybe 25 levels)
-	- Hellmouth(story?: the earth opens and pingus face trouble...)
-
-* some text intro: This is Free Software, yada yada... this is not a
-  finished game, more might follow...
-
-* contrib levels need better sorting, removing 'dead' maps, and some cleaning up
-
-* multiplayer mode should be ripped out if not working correctly (will
-   be ripied out)
-
-* fix all major action bugs [mostly done, needs more testing]
-
-* resource syntax change [not done]
-
-    <surface>
-      <resource type="datafile">
-	<resource-datafile>global</resource-datafile>
-	<resource-ident>GroundPieces/piece5</resource-ident>
-      </resource>
-    </surface>
-
-should become:
-
-    <surface>
-      <location>
-        <datafile>
-  	  <datafile>global</datafile>
-       	  <ident>GroundPieces/piece5</ident>
-        </datafile>
-      </location>
-
-      <modifier>
-	<orientation>rot0</orientation>
-        <color>
-          <red>...
-          ...
-        </color>
-      </modifier>
-    </surface>
-
-
-============================
-
-Current Bugs:
-
-* Editor arrow keys don't work
-
-* Duplication doesn't work for entrances
-
-* Pressing Armageddon crashes the game from time to time
-
-* While loading a level it sometimes quits with a message that a
-  resource wasn't found, but the resource is present
-
-* Sound Support is very primitive
-
-* Music support isn't tested very much
-
-* Zooming is broken
-
-* Some non-critical errors (file not found, etc.) quit Pingus, when
-  it still should be able to contiune
-
-* Bridger's bridges are put wrongly to the colmap
-
-* Extremely short mouse clicks are not registered (its a bug in
-  ClanLibs event system)
-
-  - upload an uptodate doxygen source docu (might be incomplete)
-
-  - upload a tutorial game introduction
-
-  - update the level building tutorial and include it in the tarball
-
-  - all docu should be included in the tarball (source code docu might
-    only be on the webpage due to space issues)
-
-- temporary saving should be reworked [rotation buffer]
-
-- duplicating multilpe iceblocks leads to a crash
-
-- seperate colmap and gfx remover surfaces for digger, miner, etc. would be nice
-  the current ones don't work very good since the remove path is too smooth
-  - keep_trans,alpha blitters would also be very nice (darken the border of a digging path or something like that)
-- diggers leave a small pixel barier when finished with there digging,
-  which can be abused as a step
-
-- check for z-pos on groundpieces, which don't make much sense
-
-- replace all '9000' time levels with '-1' time or correct time
-
-- fix author in all levels
-
-- update email addrs and missing author fields in level files
+Older Stuff:
+~~~~~~~~~~~~
 
 - hint system via herring or flower (it should show the path to walk)
 
 - smasher doesn't correctly check the y-coordinate
 
-- 'translation bug' should be solved
-
-- write some guile scripts to check properties of levels
-
-- pingus should act more gracefully on errors 
-
-  - missing music should just get printed to the console
-
-  - missing images => 404 and console error
-
-- menu background should be repainted/fixed
-
-- back-button in option menu causes freeze when music running, see backtrace:
-
-,----
-| 0x4040884e in select () from /lib/libc.so.6
-| (gdb) where
-| #0  0x4040884e in select () from /lib/libc.so.6
-| #1  0x400894a0 in __DTOR_END__ () from /usr/local/lib/libclanSound.so.1
-| #2  0x40079220 in CL_CSMixer::wait() (this=0x81e28ac)
-|     at Sources/Sound/Sound/ClanSound/mixer.cpp:62
-| #3  0x40078d8d in CL_SoundCard_ClanSound::run() (this=0x0)
-|     at Sources/Sound/Sound/ClanSound/soundcard_clan.cpp:140
-| #4  0x40187d75 in CL_Thread_Generic::run_init(void*) (_self=0x800)
-|     at Sources/Core/System/Unix/thread_pthread.cpp:99
-| #5  0x401d4f0a in pthread_start_thread () from /lib/libpthread.so.0
-| #6  0x401d4f51 in pthread_start_thread_event () from /lib/libpthread.so.0
-`----
-
-- music and sound should be up and running and included in the game [important - release critical]
-
-- door-duplication crashes
-
-- z_pos sorting might be incorrect 
-
 - all working actions in default level
-
-- walker fly in the air (see test1)
-
-- bridger<->walker bug still there
-
-- pingus can walk over slime (hellmouth2)
-
-- diggers can dead-lock and not start digging
-
-- show floater and climber in the 'cursor'
-
-- insertion of surface backgrounds in the editor
-
-- exit/entrance on smallmap doesn't get shown
-
-- fix all the bugs at
-  http://sourceforge.net/tracker/?group_id=5358&atid=105358
-
-- check that the editor is fully working
-
-- background manipulation in the editor should be working
-
-- a property gui in the editor would be nice
-
-- one tutorial world should be present, other worlds have to wait for
-  the 1.0.0 release
-
-- contrib could need a bit cleanup
-
-- playable and non-playable levels should be sorted
-
-- add better load-from-file support for hotspots, backgrounds, etc.
-
-- fix screenshot segfault
-
-- pingus doesn't die when out-of-screen
-
-- result screens
-
-- html like behaviour for level descriptions
-
-- description screen and result screen must be reworked
-
-- thumbnail handling should be reviewed
-
-
-
-BUGS:
-~~~~~
-Random crash while scrolling
-=======
-* with-extra-libs broken
-
-* sstream buggy, doesn't work with gcc-3.0
-
-* plf entrances are buggy
-
-'grep' at the sources for "Bug" or "FIXME" that should give you some
-more known bugs and other stuff. 
-
-$Date: 2003/04/07 11:58:19 $
-
-=======
-
-Todo and Bugs from ROADMAP:
-
-  - upload an uptodate doxygen source docu (might be incomplete)
-
-  - upload a tutorial game introduction
-
-  - update the level building tutorial and include it in the tarball
-
-  - all docu should be included in the tarball (source code docu might
-    only be on the webpage due to space issues)
-
-- why the f*** is GameTime a class with static member function?! It
-  should be a normal non-static class and placed in World.
-
-- temporary saving should be reworked
-
-- duplicating multilpe iceblocks leads to a crash
 
 - seperate colmap and gfx remover surfaces for digger, miner, etc. would be nice
   the current ones don't work very good since the remove path is too smooth
@@ -250,8 +20,6 @@ Todo and Bugs from ROADMAP:
 
 - diggers leave a small pixel barier when finished with there digging,
   which can be abused as a step
-
-- check for z-pos on groundpieces, which don't make much sense
 
 - replace all '9000' time levels with '-1' time or correct time
 
@@ -263,77 +31,11 @@ Todo and Bugs from ROADMAP:
 
 - hint system via herring or flower (it should show the path to walk)
 
-- [important] diggers seem to be extremly slow in some situations
-  (transparent groundpieces?!), no idea what could causing this...
-  Node: this is caused by RGB groundpieces, so they shall *never* be
-  used as groundpieces!
-
-- convert all remaining plf's to xml (nameing convention, etc.)
-
 - smasher doesn't correctly check the y-coordinate
-
-- 'translation bug' should be solved
-
-- write some guile scripts to check properties of levels
-
-- pingus should act more gracefully on errors 
-
-  - missing music should just get printed to the console
-
-  - missing images => 404 and console error
 
 - console is bound to the wrong keys and keys for it are not documented
 
-- menu background should be repainted/fixed
-
-- back-button in option menu causes freeze when music running, see backtrace:
-
-,----
-| 0x4040884e in select () from /lib/libc.so.6
-| (gdb) where
-| #0  0x4040884e in select () from /lib/libc.so.6
-| #1  0x400894a0 in __DTOR_END__ () from /usr/local/lib/libclanSound.so.1
-| #2  0x40079220 in CL_CSMixer::wait() (this=0x81e28ac)
-|     at Sources/Sound/Sound/ClanSound/mixer.cpp:62
-| #3  0x40078d8d in CL_SoundCard_ClanSound::run() (this=0x0)
-|     at Sources/Sound/Sound/ClanSound/soundcard_clan.cpp:140
-| #4  0x40187d75 in CL_Thread_Generic::run_init(void*) (_self=0x800)
-|     at Sources/Core/System/Unix/thread_pthread.cpp:99
-| #5  0x401d4f0a in pthread_start_thread () from /lib/libpthread.so.0
-| #6  0x401d4f51 in pthread_start_thread_event () from /lib/libpthread.so.0
-`----
-
 - music and sound should be up and running and included in the game [important - release critical]
-
-- door-duplication crashes
-
-- z_pos sorting might be incorrect 
-
-- all working actions in default level
-
-- walker fly in the air (see test1)
-
-- bridger<->walker bug still there
-
-- pingus can walk over slime (hellmouth2)
-
-- diggers can dead-lock and not start digging
-
-- exit/entrance on smallmap doesn't get shown
-
-- fix all the bugs at
-  http://sourceforge.net/tracker/?group_id=5358&atid=105358
-
-- check that the editor is fully working
-
-- background manipulation in the editor should be working
-
-- a property gui in the editor would be nice
-
-- one tutorial world should be present, other worlds have to wait for
-  the 1.0.0 release
-
-- contrib could need a bit cleanup
 
 - playable and non-playable levels should be sorted
 
@@ -351,352 +53,43 @@ Todo and Bugs from ROADMAP:
 
 - thumbnail handling should be reviewed
 
+- Floaters shouldn't float until they've fallen the minimum distance
+  it'd take for a regular Pingu to splat. That way, you wouldn't have to
+  worry about floaters moving so slowly a lot of the time, when
+  unnecessary
 
-
-BUGS:
-~~~~~
-Random crash while scrolling
->>>>>>> 1.47
-
----Type <return> to continue, or q <return> to quit---
-#0  0x08090697 in Playfield::do_scrolling() (this=0x954d678)
-    at boost/smart_ptr.hpp:207
-207	   T* operator->() const         { return px; }  // never throws
-(gdb) where
-#0  0x08090697 in Playfield::do_scrolling() (this=0x954d678)
-    at boost/smart_ptr.hpp:207
-#1  0x080901e8 in Playfield::updateX() (this=0x954d678) at Playfield.cc:196
-#2  0x080637cb in Client::update(float) (this=0x954d3d0, delta=0.0350000001)
-    at /usr/include/g++-v3/bits/stl_iterator.h:478
-#3  0x08063566 in Client::play_level(boost::shared_ptr<PLF>) (
-    this=0x954d3d0, arg_plf=0xbfffec60) at DeltaManager.hh:35
-#4  0x08062388 in Client::display() (this=0x954d3d0)
-    at boost/dummy_ptr.hpp:37
-#5  0x080c18a6 in PingusGameSession::start() (this=0xbfffecd0)
-    at boost/smart_ptr.hpp:207
-#6  0x080fd50a in EditorEvent::editor_start_current_level() (this=0x829de00)
-    at EditorEvent.cc:490
-#7  0x080fc137 in EditorEvent::on_button_press(CL_InputDevice*, CL_Key const&) (this=0x829de00, device=0x81eb7c8, key=@0xbffff2d0) at EditorEvent.cc:90
-#8  0x08145348 in CL_MethodSlot_v2<EditorEvent, CL_InputDevice*, CL_Key const&>::call(CL_InputDevice*, CL_Key const&) (this=0x858a4c8, param1=0x81eb7c8, 
-    param2=@0xbffff2d0) at /usr/local/include/ClanLib/Signals/slot_v2.h:62
-#9  0x4012d5fa in CL_Signal_v2<CL_InputDevice*, CL_Key const&>::call(CL_InputDevice*, CL_Key const&) (this=0x81dd78c, param1=0x81eb7c8, param2=@0xbffff2d0)
-    at Sources/API/Signals/signal_v2.h:80
-#10 0x40116223 in CL_XWindowKeyboard::on_xevent(_XEvent&) (this=0x81eb7c8, 
-    e=@0xbffff3c0) at Sources/API/Signals/signal_v2.h:59
-#11 0x4012d851 in CL_MethodSlot_v1<CL_XWindowKeyboard, _XEvent&>::call(_XEvent&) (this=0x41001170, param1=@0xbffff3c0) at Sources/API/Signals/slot_v1.h:62
-#12 0x40119731 in CL_XWindow_DisplayCard::keep_alive() (this=0x81eb5f8)
-    at Sources/API/Signals/signal_v1.h:80
-#13 0x40171763 in CL_System::keep_alive() ()
-    at /usr/include/g++-v3/bits/stl_list.h:114
-#14 0x080fa45f in Editor::edit() (this=0x8586368) at Editor.cc:144
-#15 0x0809931d in EditorButton::on_click() (this=0x826a3f0)
-    at SurfaceButton.cc:331
-#16 0x08088ac9 in PingusMenu::on_button_release(CL_InputDevice*, CL_Key const&) (this=0xbffff890, device=0x81eb820, key=@0xbffff6f0)
----Type <return> to continue, or q <return> to quit---
-
-
-
-Happened while doing an armageddon in level one (probally out-of-screen remove):
-
-#0  PingusSpotMap::remove(CL_SurfaceProvider*, int, int) (this=0x8258f00, 
-    sprovider=0x8debc80, x=1673, y=815) at PingusSpotMap.hh:59
-59	  inline bool is_empty(void) { return empty; }
-(gdb) where
-#0  PingusSpotMap::remove(CL_SurfaceProvider*, int, int) (this=0x8258f00, 
-    sprovider=0x8debc80, x=1673, y=815) at PingusSpotMap.hh:59
-#1  0x08081dac in PinguMap::remove(CL_Surface const&, int, int) (this=0x8258f00, 
-    sur=@0x81da0a8, x=1673, y=815) at PinguMap.cc:49
-#2  0x080ea60c in Bomber::update(float) (this=0x8df6f00, delta=0.063000001)
-    at ../WorldObj.hh:44
-#3  0x0807f817 in Pingu::update(float) (this=0x8cddcb0, delta=0.063000001)
-    at boost/smart_ptr.hpp:207
-#4  0x080a72b6 in World::update(float) (this=0x8258e78, delta=0.063000001)
-    at boost/smart_ptr.hpp:207
-#5  0x080a5748 in TrueServer::update(float) (this=0x8258d20, delta=0.063000001)
-    at TrueServer.cc:72
-#6  0x080637b6 in Client::update(float) (this=0x899ad00, delta=0.063000001)
-    at boost/dummy_ptr.hpp:37
-#7  0x08063505 in Client::play_level(boost::shared_ptr<PLF>) (this=0x899ad00, 
-    arg_plf=0xbffff780) at DeltaManager.hh:35
-#8  0x08062334 in Client::display() (this=0x899ad00) at boost/dummy_ptr.hpp:37
-#9  0x080c1712 in PingusGameSession::start() (this=0xbffff960) at boost/smart_ptr.hpp:207
-#10 0x080562a1 in PingusMain::start_game() (this=0x81dd570) at PingusMain.cc:836
-#11 0x08056a6c in PingusMain::main(int, char**) (this=0x81dd560, argc=2, argv=0xbffffbc4)
-    at PingusMain.cc:875
-#12 0x08053730 in GenericMain::main(int, char**) (this=0x81d9a64, argc=2, argv=0xbffffbc4)
-    at GenericMain.cc:90
-#13 0x4014c303 in main (argc=2, argv=0xbffffbc4) at Sources/Application/Unix/clanapp.cpp:32
-#14 0x4035665f in __libc_start_main () from /lib/libc.so.6
-
-
-In the editor while increasing two marked liquid object at once (pressing Pos1)
-
-#0  0x080fbfcc in EditorEvent::on_button_press(CL_InputDevice*, CL_Key const&) (
-    this=0x82a8c90, device=0x81e8750, key=@0xbffff2a0) at ../boost/smart_ptr.hpp:207
-207	   T* operator->() const         { return px; }  // never throws
-(gdb) where
-#0  0x080fbfcc in EditorEvent::on_button_press(CL_InputDevice*, CL_Key const&) (
-    this=0x82a8c90, device=0x81e8750, key=@0xbffff2a0) at ../boost/smart_ptr.hpp:207
-#1  0x08143274 in CL_MethodSlot_v2<EditorEvent, CL_InputDevice*, CL_Key const&>::call(CL_Input
-Device*, CL_Key const&) (this=0x89ce7b8, param1=0x81e8750, param2=@0xbffff2a0)
-    at /usr/local/include/ClanLib/Signals/slot_v2.h:62
-#2  0x4012c5fa in CL_Signal_v2<CL_InputDevice*, CL_Key const&>::call(CL_InputDevice*, CL_Key c
-onst&) (this=0x81d98ac, param1=0x81e8750, param2=@0xbffff2a0)
-    at Sources/API/Signals/signal_v2.h:80
-#3  0x40115223 in CL_XWindowKeyboard::on_xevent(_XEvent&) (this=0x81e8750, e=@0xbffff390)
-    at Sources/API/Signals/signal_v2.h:59
-#4  0x4012c851 in CL_MethodSlot_v1<CL_XWindowKeyboard, _XEvent&>::call(_XEvent&) (this=0x0, 
-    param1=@0xbffff390) at Sources/API/Signals/slot_v1.h:62
-#5  0x40118731 in CL_XWindow_DisplayCard::keep_alive() (this=0x81e80e0)
-    at Sources/API/Signals/signal_v1.h:80
-#6  0x40170763 in CL_System::keep_alive() () at /usr/include/g++-v3/bits/stl_list.h:114
-#7  0x080f9cb3 in Editor::edit() (this=0x82abf28) at Editor.cc:144
-#8  0x080991f1 in EditorButton::on_click() (this=0x82575e0) at SurfaceButton.cc:331
-#9  0x080889e1 in PingusMenu::on_button_release(CL_InputDevice*, CL_Key const&) (
-    this=0xbffff860, device=0x81e8938, key=@0xbffff6c0) at boost/smart_ptr.hpp:207
-#10 0x080d46ec in PingusMenuManager::on_button_release(CL_InputDevice*, CL_Key const&) (
-    this=0xbffff800, device=0x81e8938, key=@0xbffff6c0) at boost/dummy_ptr.hpp:37
-#11 0x0813fa44 in CL_MethodSlot_v2<PingusMenuManager, CL_InputDevice*, CL_Key const&>::call(CL
-_InputDevice*, CL_Key const&) (this=0x8a1a520, param1=0x81e8938, param2=@0xbffff6c0)
-    at /usr/local/include/ClanLib/Signals/slot_v2.h:62
-#12 0x4012c5fa in CL_Signal_v2<CL_InputDevice*, CL_Key const&>::call(CL_InputDevice*, CL_Key c
-onst&) (this=0x81d98dc, param1=0x81e8938, param2=@0xbffff6c0)
-    at Sources/API/Signals/signal_v2.h:80
-#13 0x40117354 in CL_Mouse_XWin::keep_alive() (this=0x81e8938)
-    at Sources/API/Signals/signal_v2.h:59
-#14 0x40170763 in CL_System::keep_alive() () at /usr/include/g++-v3/bits/st
-
-
-
-
-
-on armagedon gesegfault:
-
-warning: exec file is newer than core file.
-Core was generated by `./pingus'.
-Program terminated with signal 11, Segmentation fault.
-#0  0x08090697 in Playfield::update(float) (this=0x954d678, delta=0.0350000001)
-    at /usr/include/g++-v3/bits/stl_iterator.h:469
-469	  explicit __normal_iterator(const _Iterator& __i) : _M_current(__i) { }
-(gdb) where
-#0  0x08090697 in Playfield::update(float) (this=0x954d678, delta=0.0350000001)
-    at /usr/include/g++-v3/bits/stl_iterator.h:469
-#1  0x080901e8 in Playfield::~Playfield() (__in_chrg=0x954d678)
-    at Playfield.cc:98
-#2  0x080637cb in Client::play_level(boost::shared_ptr<PLF>) (this=0x954d3d0, 
-    arg_plf=0x3d0f5c29) at /usr/include/g++-v3/bits/basic_string.h:180
-#3  0x08063566 in Client::play_level(boost::shared_ptr<PLF>) (this=0x954d3d0, 
-    arg_plf=0xbfffec60) at Client.cc:130
-#4  0x08062388 in Client::~Client() (__in_chrg=0x954d3d0) at Client.cc:75
-#5  0x080c18a6 in PingusGameSession::PingusGameSession(std::string) (
-    this=0xbfffecd0, arg_filename=0xbfffecc0)
-    at /usr/include/g++-v3/bits/basic_string.h:180
-#6  0x080fd50a in EditorEvent::editor_convert_selection_to_group() (
-    this=0x829de00) at /usr/include/g++-v3/bits/stl_list.h:114
-#7  0x080fc137 in __static_initialization_and_destruction_0(int, int) (
-    __initialize_p=136961536, __priority=136230856)
-    at /usr/include/g++-v3/bits/locale_facets.tcc:902
-#8  0x08145348 in Walker::~Walker() (__in_chrg=0x858a4c8) at Walker.cc:30
-#9  0x4012d5fa in ?? ()
-#10 0x40116223 in ?? ()
-#11 0x4012d851 in ?? ()
-#12 0x40119731 in ?? ()
-#13 0x40171763 in ?? ()
-#14 0x080fa45f in Editor::register_event
-
-=======
-
-Level notes:
-
-Playability status of levels:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-fully := fully playable
-half  := half playable and needs some cleanup/testplay
-nonplayable := currently not playable, but can be fixed
-test := just a test level, completly useless
-
-Dentist - 
-Lev4 - 
-Stair - 
-bg-test - 
-bla - 
-block - 
-block-timpany - 
-blockers-timpany-tutorial - 
-bombing - 
-cages - 
-candy-timpany-premoi - 
-candy1 - 
-chouser02 - 
-conv - useless
-crystal1 - 
-crystal2 - 
-crystal3 - 
-crystal4 - 
-crystal5 - 
-desert1 - 
-desert2 - 
-desert3 - 
-desert3-tflavel - solid surface confusion
-desert4 - 
-desert5 - 
-desert5-tflavel - solid surface confusion
-doors-grumbel - fully, nedes actions cleanup
-doors-grumbel - playable
-doors2-grumbel - 
-doors2-grumbel - maybe playable, needs testing (currently to large)
-editor_tut - 
-foliage1 - 
-foliage1 - nonplayable
-foliage3 - 
-foliage3 - half
-foliage4 - 
-foliage4 - nonplayable
-future1-jgoebbert - need cleanup, but looks good
-future2-jgoebbert - 
-future3-jgoebbert - 
-granit1 - testing
-headbang - playable maybe, needs testing
-hellmouth1-grumbel - 
-iceblock-grumbel1 - testing, but could be fixed
-indiana-yingwan - 
-industrial1-grumbel - 
-industrial2-grumbel - 
-intensiv-timpany - 
-intersec - 
-isle1-grumbel - 
-jewel - 
-jungle-crisscross-timpany - 
-jungle1 - 
-jungle2 - 
-large1 - 
-level0 - 
-level1 - fully
-level1-xml - 
-level10 - nonplayable, boring
-level12 - half, currently to hard/boring
-level13 - half, has bugs (solid)
-level2 - 
-level2 - half, FakeExit has position bug
-level3 - 
-level3 - nonplayable, looks boring
-level5 - 
-level5 - half, boring
-level7 - 
-level7 - nonplayable, but usefull
-level8 - 
-level8 - see level7, hammer trap needs fixing
-level9 - nearly playable, editor sorting bug
-lone_jumper - 
-lonely - 
-longway - 
-multi1-grumbel - 
-multi2-grumbel - 
-mushroom - 
-pacman1-yingwan - 
-pacman2-yingwan - 
-pacman3-yingwan - 
-parallel - 
-park-mkoller - could need cleanup, looks ugly
-partic2 - solid-groundpiece confusion
-particle -  solid-groundpiece confusion
-pipes1 - gfx demo, testing
-pyramid1-yingwan - 
-pyramid2-yingwan - 
-real1 - ugly, but playable
-real2 - trash
-real3 - trash
-real4 - trash
-real5 - playable
-real6 - playable
-rinse - 
-rock1 - testing, no gamplay present
-rockhopping - playable, probally to easy
-sas - 
-small1 - 
-snow1 - 
-snow2 - 
-snow3 - 
-snow4 - 
-snow5 - 
-snow6 - 
-sortie1 - 
-sortie2 - 
-sortie3 - 
-space-9-tom - 
-space1 - playable, could need cleanup
-space2 - playable, could need cleanup
-space3 - not-playable
-space4-grumbel - wrongly placed traps
-stone - 
-stone-castle-timpany - might be playable
-stone2 - testing
-stone3-grumbel - playable, but could need more elements, good demo of conveyor belt
-stone4-grumbel - nice gfx demo, testing
-teleporter1-grumbel - 
-tutorial1 - 
-tutorial2 - 
-tutorial3 - 
-tutorial4 - 
-tutorial5 - 
-wland - playable, but doesn't work due to new walker behaviour (3pixel-up walks)
-xmas-blockblow-timpany - pingus get stuck
-
-=======
-Additional bugs found by Phlog:
-
-Added Sat Apr 20, 2002:
-
-* Floaters shouldn't float until they've fallen the minimum distance
-it'd take for a regular Pingu to splat. That way, you wouldn't have
-to worry about floaters moving so slowly a lot of the time, when
-unnecessary
-
-Older:
-
-* Level selection box at the bottom of the level selection screen is
-  mostly cutoff by the bottom of the screen
-
-* Bashers cut in circles, so their last two or three swipes should be
+- Bashers cut in circles, so their last two or three swipes should be
   square when breaking through to an open space, since they currently
   can trap Pingu in, requiring another one or two bashes. This is
   especially obvious when bashing through wells. They can also bash
   through metal, which they shouldn't be able to.
 
-* All entrances should have graphics
+- All entrances should have graphics
 
-* Bridgers seem to move backwards when they first start stacking
-  (I think that their graphic may be more to the left in its square
-  than the walker graphic, and also a little smaller than the walker
+- Bridgers seem to move backwards when they first start stacking (I
+  think that their graphic may be more to the left in its square than
+  the walker graphic, and also a little smaller than the walker
   graphic - probably because it's confined to a square of the same
-  size - maybe give special workers slightly larger graphic sizes,
-  so they can appear to be the same size as walkers)
+  size - maybe give special workers slightly larger graphic sizes, so
+  they can appear to be the same size as walkers)
 
-* Some maps need more time (Cliffs in the ice, especially)
+- Sometimes diggers can't be changed into miners.
 
-* Sometimes diggers can't be changed into miners.
-
-* Pingu can't usually walk past a staircase that's pointing towards
+- Pingu can't usually walk past a staircase that's pointing towards
   them (as Lemmings can), and should be able to. Maybe put stairs
   in a separate layer to differentiate between a staircase they
   should be able to step around in one direction (direction would
   have to be determined somehow, though).
 
-* If enough Pingu are saved and all that are left are blockers, end
+- If enough Pingu are saved and all that are left are blockers, end
   level before time runs out, with a win
 
-* "Hurry up!" wayyy too late. Maybe at 1 minute left, or so.
+- "Hurry up!" wayyy too late. Maybe at 1 minute left, or so.
 
-* At least one kind of water (the kind in Evil in the Dark) doesn't
+- At least one kind of water (the kind in Evil in the Dark) doesn't
   kill Pingu
 
-* It seems that when Pingu blow up at the bottom of the screen, it
-  segfaults. It could be doing this because it's expecting to blow
-  up pixels below the size of the screen. The same effect can be
-  seen with blowing up Pingu on other edges of the screen, too.
-
-* In space levels, Pingu that fall off of a cliff into space don't
+- In space levels, Pingu that fall off of a cliff into space don't
   die, though they should just like in water or lava.
 
 Missing Groundpieces
@@ -711,6 +104,5 @@ Sortie Theme:
  - this theme needs 'normal' groundpieces which can be used to dig
    throught and things like that, it currently only has horizontal and
    vertical bars, which make building levels quite difficult
-
 
 # EOF #
