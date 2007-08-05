@@ -384,7 +384,7 @@ PingusMain::check_args(int argc, char** argv)
             std::cout << "Using demofile: " << demo_file << std::endl;
           break;
         case 'v':
-          sscanf(argp.get_argument().c_str(), "%d", &verbose);
+          verbose++;
           std::cout << "Pingus: Verbose level is " << verbose << std::endl;
           break;
 
