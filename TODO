@@ -28,13 +28,9 @@ Roadmap for Pingus 0.7.0
 
 - some levels have issues with liquids, maybe all
 
-- grayscale groundpieces are handled incorrectly: data/levels/playable/if_only_i_can_fly_-_wayne_shelley.scm
-
 - completly broken: data/levels/playable/bombing.scm (z ordering?)
 
 - hotspot offset gets ignored/mishandled
-
-- colorkey is used even in surfaces that don't have transparency
 
 - seperate gfx/colmap surfaces aren't used
 
@@ -42,7 +38,8 @@ Roadmap for Pingus 0.7.0
 
 - remove unneeded/outdated fonts
 
-- Latin1 clean
+- Latin1 clean (also Latin-2 and Latin-9, see:
+  http://kapsa.cz/~tomasb/pingus/intl-patch.tgz)
 
 - src/components/pingus_counter.hpp font should be fixed-width/monospace
 
