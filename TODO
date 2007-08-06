@@ -49,8 +49,6 @@ Roadmap for Pingus 0.7.0
 
 - scaling images for different resolutions
 
-- animation speed of sprites is wrong
-
 - the game is much slower then the Clanlib version
 
 - there is also a missing float->int cast somewhere, exits and maybe

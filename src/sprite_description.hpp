@@ -48,7 +48,7 @@ public:
   SpriteDescription() 
     : origin(origin_top_left),
       loop(true),
-      speed(30),
+      speed(100),
       array(1, 1),
       frame_size(-1, -1)
   {}
@@ -56,7 +56,7 @@ public:
   SpriteDescription(const FileReader& reader)
     : origin(origin_top_left),
       loop(true),
-      speed(50),
+      speed(100),
       array(1, 1),
       frame_size(-1, -1)
   {
