@@ -64,19 +64,41 @@ CollisionMask::init(const ResDescriptor& res_desc)
   if (surface->format->palette)
     {
       uint8_t* source = static_cast<uint8_t*>(surface->pixels);
-      for(int y = 0; y < height; ++y)
-        for(int x = 0; x < width; ++x)
-          {
-            if (source[y*pitch + x] == surface->format->colorkey)
-              buffer[y*width + x] = 0;
-            else
-              buffer[y*width + x] = 1;
-          }
+      if (surface->flags & SDL_SRCCOLORKEY)
+        {
+          for(int y = 0; y < height; ++y)
+            for(int x = 0; x < width; ++x)
+              {
+                if (source[y*pitch + x] == surface->format->colorkey)
+                  buffer[y*width + x] = 0;
+                else
+                  buffer[y*width + x] = 1;
+              }
+        }
+      else
+        {
+          memset(buffer, 1, width*height);
+        }
     }
   else
     {
-      std::cout << "CollisionMask: unsupported image format: " 
-                << surface->format->BytesPerPixel << std::endl;     
+      printf("CollisionMask: unsupported image format:\n" 
+             "  File: %s\n"
+             "  BitsPerPixel: %d\n"
+             "  BytesPerPixel: %d\n"
+             "  palette: 0x%08x\n"
+             "  rmask: 0x%08x\n"
+             "  gmask: 0x%08x\n"
+             "  bmask: 0x%08x\n"
+             "  amask: 0x%08x\n",
+             res_desc.res_name.c_str(),
+             int(surface->format->BitsPerPixel),
+             int(surface->format->BytesPerPixel),
+             int(surface->format->palette),
+             surface->format->Rmask,
+             surface->format->Gmask,
+             surface->format->Bmask,
+             surface->format->Amask);
     }
 
   SDL_UnlockSurface(surface);
