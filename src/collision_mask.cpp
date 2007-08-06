@@ -86,7 +86,6 @@ CollisionMask::init(const ResDescriptor& res_desc)
              "  File: %s\n"
              "  BitsPerPixel: %d\n"
              "  BytesPerPixel: %d\n"
-             "  palette: 0x%08x\n"
              "  rmask: 0x%08x\n"
              "  gmask: 0x%08x\n"
              "  bmask: 0x%08x\n"
@@ -94,7 +93,6 @@ CollisionMask::init(const ResDescriptor& res_desc)
              res_desc.res_name.c_str(),
              int(surface->format->BitsPerPixel),
              int(surface->format->BytesPerPixel),
-             int(surface->format->palette),
              surface->format->Rmask,
              surface->format->Gmask,
              surface->format->Bmask,
