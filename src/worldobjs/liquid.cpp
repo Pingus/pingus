@@ -27,14 +27,14 @@
 namespace WorldObjs {
 
 Liquid::Liquid(const FileReader& reader)
-  : old_width_handling(true),
+  : old_width_handling(false),
     width(0)
 {
   /*
-  if (XMLhelper::get_prop(cur, "use-old-width-handling", old_width_handling))
+    if (XMLhelper::get_prop(cur, "use-old-width-handling", old_width_handling))
     {
-      if (old_width_handling)
-        std::cout << "XMLPLF: Using Old Width Handling: " << std::endl;
+    if (old_width_handling)
+    std::cout << "XMLPLF: Using Old Width Handling: " << std::endl;
     }
   */
   ResDescriptor desc;
@@ -43,10 +43,10 @@ Liquid::Liquid(const FileReader& reader)
   reader.read_desc  ("surface",  desc);
   reader.read_int   ("width",    width);
 
-  if (!old_width_handling)
-    width *= sur.get_width();
-
   sur = Resource::load_sprite(desc);
+
+  if (!old_width_handling)
+    width = width * sur.get_width();
 }
 
 float
@@ -62,9 +62,9 @@ Liquid::on_startup ()
 
   for(int i=0; i < width; ++i)
     world->get_colmap()->put(mask,
-               static_cast<int>(pos.x + i),
-               static_cast<int>(pos.y),
-               Groundtype::GP_WATER);
+                             static_cast<int>(pos.x + i),
+                             static_cast<int>(pos.y),
+                             Groundtype::GP_WATER);
 }
 
 void
@@ -73,7 +73,9 @@ Liquid::draw (SceneContext& gc)
   for(int x = static_cast<int>(pos.x);
       x < pos.x + width;
       x += sur.get_width())
-    gc.color().draw(sur, Vector3f((float)x, pos.y));
+    {
+      gc.color().draw(sur, Vector3f((float)x, pos.y));
+    }
 }
 
 void

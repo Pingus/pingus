@@ -3,6 +3,10 @@ Roadmap for Pingus 0.8.0
 
 - add VCR like effect for fast forward
 
+- add slow motion button
+
+- proper waiter animation
+
 - repaint pause and fast-forward button
 
 - use transparent action buttons unless fast-mode is used
@@ -24,9 +28,9 @@ Roadmap for Pingus 0.8.0
 Roadmap for Pingus 0.7.0
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-- snow doesn't land on the ground
+- liquid's old-width-handling isn't handled by sexpr, but might be needed for some levels
 
-- some levels have issues with liquids, maybe all
+- snow doesn't land on the ground
 
 - completly broken: data/levels/playable/bombing.scm (z ordering?)
 
