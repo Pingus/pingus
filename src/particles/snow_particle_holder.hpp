@@ -53,7 +53,7 @@ private:
   Sprite snow3;
   Sprite snow4;
   Sprite snow5;
-  Sprite ground;
+  CollisionMask ground;
 
   std::vector<SnowParticle> particles;
 

@@ -62,7 +62,7 @@ SnowParticleHolder::SnowParticleHolder ()
     snow3 (Resource::load_sprite("particles/snow3")),
     snow4 (Resource::load_sprite("particles/snow4")),
     snow5 (Resource::load_sprite("particles/snow5")),
-    ground(Resource::load_sprite("particles/ground_snow"))
+    ground(Resource::load_collision_mask("particles/ground_snow"))
 {
 }
 
@@ -101,7 +101,6 @@ SnowParticleHolder::update ()
 	}
 
       it->velocity.x += (Math::frand() - 0.5f) / 10;
-#ifdef CLANLIB_0_6
       if (it->colliding)
         {
           int pixel = world->get_colmap()->getpixel(static_cast<int>(it->pos.x), static_cast<int>(it->pos.y));
@@ -109,13 +108,11 @@ SnowParticleHolder::update ()
             && pixel != Groundtype::GP_WATER
 	    && pixel != Groundtype::GP_OUTOFSCREEN)
 	    {
-	      world->put(ground, static_cast<int>(it->pos.x - 1), static_cast<int>(it->pos.y - 1));
+	      world->get_gfx_map()->put(ground.get_pixelbuffer(), static_cast<int>(it->pos.x - 1), static_cast<int>(it->pos.y - 1));
 	      it->alive = false;
 	    }
 	}
-#endif
     }
-
 }
 
 

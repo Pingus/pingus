@@ -207,7 +207,7 @@ World::get_time_passed()
 void
 World::armageddon(void)
 {
-	Sound::PingusSound::play_sound (Sound::GOODIDEA);
+  Sound::PingusSound::play_sound (Sound::GOODIDEA);
   do_armageddon = true;
   armageddon_count = 0;
 }
@@ -216,6 +216,12 @@ ColMap*
 World::get_colmap()
 {
   return colmap;
+}
+
+GroundMap*
+World::get_gfx_map()
+{
+  return gfx_map;
 }
 
 void
