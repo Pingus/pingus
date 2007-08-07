@@ -41,7 +41,8 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
     scroll_ox(0),
     scroll_oy(0)
 {
-  reader.read_vector("position", pos);
+  if (!reader.read_vector("position", pos))
+    pos = Vector3f(0.f, 0.f, -150.f);
 
   ResDescriptor desc;
 

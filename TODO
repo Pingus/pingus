@@ -30,8 +30,6 @@ Roadmap for Pingus 0.7.0
 
 - liquid's old-width-handling isn't handled by sexpr, but might be needed for some levels
 
-- completly broken: data/levels/playable/bombing.scm (z ordering?)
-
 - hotspot offset gets ignored/mishandled
 
 - seperate gfx/colmap surfaces aren't used
