@@ -45,7 +45,7 @@ private:
   /** the screen that was used in the last update() */
   ScreenPtr last_screen;
 
-  enum { CA_NONE, CA_POP, CA_REPLACE, CA_CLEAR } cached_action;
+  enum { CA_NONE, CA_POP, CA_POP_ALL, CA_REPLACE, CA_CLEAR } cached_action;
   ScreenPtr replace_screen_arg;
 
 protected:
@@ -66,6 +66,9 @@ public:
   /** Remove the current screen and fall back to the last one */
   void pop_screen ();
 
+  /** Remove all screens */
+  void pop_all_screens();
+
   /** Remove all screens from the stack */
   void clear();
 private:
@@ -76,6 +79,9 @@ private:
 
   /** Remove the current screen and fall back to the last one */
   void real_pop_screen ();
+
+  /** Remove all screens */
+  void real_pop_all_screens();
 
   /** FadeOver test*/
   void fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen);

@@ -101,10 +101,13 @@ ScreenManager::display()
           switch (cached_action)
             {
             case CA_POP:
-              real_pop_screen ();
+              real_pop_screen();
+              break;
+            case CA_POP_ALL:
+              real_pop_all_screens();
               break;
             case CA_REPLACE:
-              real_replace_screen (replace_screen_arg);
+              real_replace_screen(replace_screen_arg);
               break;
             case CA_CLEAR:
               real_clear();
@@ -180,6 +183,13 @@ ScreenManager::pop_screen ()
 }
 
 void
+ScreenManager::pop_all_screens()
+{
+  assert(cached_action == CA_NONE);
+  cached_action = CA_POP_ALL;
+}
+
+void
 ScreenManager::replace_screen (Screen* screen, bool delete_screen)
 {
   assert (cached_action == CA_NONE);
@@ -208,6 +218,17 @@ ScreenManager::real_pop_screen ()
     {
       screens.back ()->on_startup ();
     }
+}
+
+void
+ScreenManager::real_pop_all_screens()
+{
+  cached_action = CA_NONE;
+  ScreenPtr back = screens.back();
+  screens.pop_back();
+  back->on_shutdown();
+
+  screens.clear();
 }
 
 void

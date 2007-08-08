@@ -234,7 +234,7 @@ Controller::update(float delta)
       switch(event.type)
         {
         case SDL_QUIT:
-          ScreenManager::instance()->pop_screen();
+          ScreenManager::instance()->pop_all_screens();
           break;
 
         case SDL_MOUSEMOTION:

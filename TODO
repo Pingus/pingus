@@ -25,6 +25,8 @@ Roadmap for Pingus 0.8.0
 
 - UTF8 support
 
+- split screen multiplayer
+
 Roadmap for Pingus 0.7.0
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -33,8 +35,6 @@ Roadmap for Pingus 0.7.0
 - hotspot offset gets ignored/mishandled
 
 - seperate gfx/colmap surfaces aren't used
-
-- split screen multiplayer
 
 - remove unneeded/outdated fonts
 
@@ -49,8 +49,6 @@ Roadmap for Pingus 0.7.0
 
 - there is also a missing float->int cast somewhere, exits and maybe
   other objects 'wooble' by one pixel while scrolling
-
-- clicking the x-button of the window currently acts as escape and exits a level instead of the whole game
 
 Older Stuff:
 ~~~~~~~~~~~~
