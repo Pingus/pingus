@@ -21,6 +21,7 @@
 #include <stdio.h>
 #include <assert.h>
 
+#include "SDL.h"
 #include "string_util.hpp"
 #include "pingus_error.hpp"
 #include "globals.hpp"
@@ -462,148 +463,136 @@ Blitter::create_canvas(PixelBuffer prov)
     }
   return canvas;
 }
+#endif
 
-CL_Surface
-Blitter::scale_surface (const CL_Surface& sur, int width, int height)
+SDL_Surface*
+Blitter::scale_surface(SDL_Surface* surface, int width, int height)
 {
-  PixelBuffer buf = Blitter::scale_surface_to_canvas(sur, width, height);
-  return CL_Surface(PixelBuffer(buf));
-}
+  int i;
+  int j;
+  unsigned char *pixels;
+  unsigned char *new_pixels;
+  int x;
+  int bpp;
+  int new_pitch;
+  SDL_Surface* new_surface;
 
-PixelBuffer
-Blitter::scale_surface_to_canvas (PixelBuffer provider, int width, int height)
-{
-  PixelBuffer canvas(width, height, width*4, CL_PixelFormat::rgba8888);
+  bpp = surface->format->BytesPerPixel;
+  if (bpp == 1) {
+    SDL_Color pal[256];
+    Uint32 ckey;
+    int useckey;
 
-  provider.lock ();
-  canvas.lock ();
+    useckey = surface->flags & SDL_SRCCOLORKEY;
+    new_surface = SDL_CreateRGBSurface(SDL_SWSURFACE | (useckey ? SDL_SRCCOLORKEY : 0), width, height, 8, 0, 0, 0, 0);
 
-  unsigned char* sbuffer = static_cast<unsigned char*>(provider.get_data ());
-  unsigned char* tbuffer = static_cast<unsigned char*>(canvas.get_data ());
-  int pwidth = provider.get_width ();
-  int pheight = provider.get_height ();
-  int pitch = provider.get_pitch();
+    SDL_LockSurface(surface);
+    SDL_LockSurface(new_surface);
 
-	if (provider.get_format().get_type() ==  pixelformat_index)
-	{
-		Color color;
-		pout(PINGUS_DEBUG_ACTIONS) << 
-			"Blitter::scale_surface_to_canvas() - Scaling indexed image" << std::endl;
-		  
-		for (int y = 0; y < height; ++y)
-			for (int x = 0; x < width; ++x)
-			{
-				unsigned offset = (y * pheight/height) * pitch + (x * pwidth/width);
+    pixels = (unsigned char *)surface->pixels;
+    new_pixels = (unsigned char *)new_surface->pixels;
+    new_pitch = new_surface->pitch;
 
-				color = provider.get_palette().colors[sbuffer[offset]];
+    memcpy(pal, surface->format->palette->colors, sizeof(SDL_Color) * 256);
+    ckey = surface->format->colorkey;
 
-				// Detrmine alpha channel
-				if (provider.get_format().has_colorkey()
-					&& provider.get_format().get_colorkey() == sbuffer[offset])
-					color.set_alpha(0);
-				else
-					color.set_alpha(255);
-     
-				canvas.draw_pixel(x, y, color);
-    	}
-	}
-  else
-    {
-      switch (provider.get_format().get_depth())
-	{
-	case 24:
-	  {
-	    // We assume that we have the data in RGB888, which might not be
-	    // the case
-	      pout(PINGUS_DEBUG_ACTIONS) << 
-	      	"Blitter::scale_surface_to_canvas() - Scaling 24 bit image" << std::endl;
-	    for (int y = 0; y < height; ++y)
-	      for (int x = 0; x < width; ++x)
-		{
-		  int ti = (y * width + x) * 4;
-		  int si = ((y * pheight / height) * pwidth
-			    + (x * pwidth / width)) * 3;
-
-          if (!CL_Endian::is_system_big())
-          {
-            tbuffer[ti + 0] = 255; // alpha
-            tbuffer[ti + 1] = sbuffer[(si + 0)]; // blue
-            tbuffer[ti + 2] = sbuffer[(si + 1)]; // green
-            tbuffer[ti + 3] = sbuffer[(si + 2)]; // red
-          }
-          else
-          {
-            tbuffer[ti + 3] = 255; // alpha
-            tbuffer[ti + 0] = sbuffer[(si + 0)]; // blue
-            tbuffer[ti + 1] = sbuffer[(si + 1)]; // green
-            tbuffer[ti + 2] = sbuffer[(si + 2)]; // red
-          }
-		}
-	  }
-	  break;
-	case 32:
-	  {
-	    // We assume that we have the data in RGBA8888, which might not be
-	    // the case
-		pout(PINGUS_DEBUG_ACTIONS) << 
-			"Blitter::scale_surface_to_canvas() - Scaling 32 bit image" << std::endl;
-			
-	    for (int y = 0; y < height; ++y)
-	      for (int x = 0; x < width; ++x)
-		{
-		  int ti = (y * width + x) * 4;
-		  int si = ((y * pheight / height) * pwidth
-			    + (x * pwidth / width)) * 4;
-
-          if (!CL_Endian::is_system_big())
-          {
-            tbuffer[ti + 0] = sbuffer[(si + 0)]; // alpha
-            tbuffer[ti + 1] = sbuffer[(si + 1)]; // blue
-            tbuffer[ti + 2] = sbuffer[(si + 2)]; // green
-            tbuffer[ti + 3] = sbuffer[(si + 3)]; // red
-          }
-          else
-          {
-            tbuffer[ti + 3] = sbuffer[(si + 0)]; // alpha
-            tbuffer[ti + 2] = sbuffer[(si + 1)]; // blue
-            tbuffer[ti + 1] = sbuffer[(si + 2)]; // green
-            tbuffer[ti + 0] = sbuffer[(si + 3)]; // red
-          }
-		}
-	  }
-	  break;
-	default:
-		// Slow but generic, using get_data () would be better, but would
-		// require quite a bit of work
-		pout(PINGUS_DEBUG_ACTIONS) << 
-			"Blitter::scale_surface_to_canvas() - Scaling image using default method" 
-			<< std::endl;
-
-		for (int y = 0; y < height; ++y)
-			for (int x = 0; x < width; ++x)
-			{
-				Color color = provider.get_pixel(x * pwidth / width,
-					y * pheight / height);
-				// FIXME: ignoring the source alpha due to get_pixel
-				// brokeness... no time to test the patch
-				canvas.draw_pixel(x, y, color);
-			}
-		break;
-	}
+    for (i = 0; i < height; ++i) {
+      x = i * new_pitch;
+      for (j = 0; j < width; ++j) {
+        new_pixels[x] = pixels[(i * surface->h / height) * surface->pitch + j * surface->w / width];
+        ++x;
+      }
     }
 
-  canvas.unlock ();
-  provider.unlock ();
+    SDL_UnlockSurface(surface);
+    SDL_UnlockSurface(new_surface);
 
-  return canvas; 
+    SDL_SetPalette(new_surface, SDL_LOGPAL | SDL_PHYSPAL, pal, 0, 256);
+    if (useckey) {
+      SDL_SetColorKey(new_surface, SDL_SRCCOLORKEY | SDL_RLEACCEL, ckey);
+    }
+  } else {
+    int ix, iy;
+    float fx, fy, fz;
+    unsigned char *p1, *p2, *p3, *p4;
+
+    int Rmask, Gmask, Bmask, Amask;
+    if (SDL_BYTEORDER == SDL_LIL_ENDIAN) {
+      Rmask = 0x000000FF;
+      Gmask = 0x0000FF00;
+      Bmask = 0x00FF0000;
+      Amask = (bpp == 4) ? 0xFF000000 : 0;
+    } else {
+      int s = (bpp == 4) ? 0 : 8;
+      Rmask = 0xFF000000 >> s;
+      Gmask = 0x00FF0000 >> s;
+      Bmask = 0x0000FF00 >> s;
+      Amask = 0x000000FF >> s;
+    }
+
+    new_surface = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 8 * bpp,
+      Rmask, Gmask, Bmask, Amask);
+
+    SDL_LockSurface(surface);
+    SDL_LockSurface(new_surface);
+
+    pixels = (unsigned char *)surface->pixels;
+    new_pixels = (unsigned char *)new_surface->pixels;
+    new_pitch = new_surface->pitch;
+
+    for (i = 0; i < height; ++i) {
+      x = i * new_pitch;
+      fy = (float)i * surface->h / height;
+      iy = (int)fy;
+      fy -= iy;
+      for (j = 0; j < width; ++j) {
+        fx = (float)j * surface->w / width;
+        ix = (int)fx;
+        fx -= ix;
+        fz = (fx + fy) / 2;
+
+        p1 = &pixels[iy * surface->pitch + ix * bpp];
+        p2 = (iy != surface->h - 1) ?
+          &pixels[(iy + 1) * surface->pitch + ix * bpp] : p1;
+        p3 = (ix != surface->w - 1) ?
+          &pixels[iy * surface->pitch + (ix + 1) * bpp] : p1;
+        p4 = (iy != surface->h - 1 && ix != surface->w - 1) ?
+          &pixels[(iy + 1) * surface->pitch + (ix + 1) * bpp] : p1;
+
+        new_pixels[x + 0] = static_cast<unsigned char>(
+          (p1[0] * (1 - fy) + p2[0] * fy +
+           p1[0] * (1 - fx) + p3[0] * fx +
+           p1[0] * (1 - fz) + p4[0] * fz) / 3.0 + .5);
+        new_pixels[x + 1] = static_cast<unsigned char>(
+          (p1[1] * (1 - fy) + p2[1] * fy +
+           p1[1] * (1 - fx) + p3[1] * fx +
+           p1[1] * (1 - fz) + p4[1] * fz) / 3.0 + .5);
+        new_pixels[x + 2] = static_cast<unsigned char>(
+          (p1[2] * (1 - fy) + p2[2] * fy +
+           p1[2] * (1 - fx) + p3[2] * fx +
+           p1[2] * (1 - fz) + p4[2] * fz) / 3.0 + .5);
+        if (bpp == 4) {
+          new_pixels[x + 3] = static_cast<unsigned char>(
+            (p1[3] * (1 - fy) + p2[3] * fy +
+             p1[3] * (1 - fx) + p3[3] * fx +
+             p1[3] * (1 - fz) + p4[3] * fz) / 3.0 + .5);
+        }
+        x += bpp;
+      }
+    }
+
+    SDL_UnlockSurface(surface);
+    SDL_UnlockSurface(new_surface);
+  }
+
+  return new_surface;
 }
 
 PixelBuffer
-Blitter::scale_surface_to_canvas(const CL_Surface& sur, int width, int height)
+Blitter::scale_surface_to_canvas(PixelBuffer provider, int width, int height)
 {
-  return Blitter::scale_surface_to_canvas(sur.get_pixeldata(), width, height);
+    return PixelBuffer(Blitter::scale_surface(provider.get_surface(), width, height));
 }
-#endif
 
 /** Flip a surface horizontal */
 PixelBuffer

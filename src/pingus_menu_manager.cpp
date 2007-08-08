@@ -37,7 +37,6 @@ PingusMenuManager::PingusMenuManager ()
 	// resolution is not default
 	if (w != 800 && h != 600)
 	{
-#if 0
 		background.add_layer (Blitter::scale_surface_to_canvas(
 			Resource::load_pixelbuffer("core/menu/layer1"), w, 185 * h / 600), 0, 0, 12, 0);
 		background.add_layer (Blitter::scale_surface_to_canvas(
@@ -48,7 +47,6 @@ PingusMenuManager::PingusMenuManager ()
 			Resource::load_pixelbuffer("core/menu/layer4"), w, 171 * h / 600), 0, 429 * (float)h / 600, 100, 0);
 		background.add_layer (Blitter::scale_surface_to_canvas(
 			Resource::load_pixelbuffer("core/menu/layer5"), 302 * w / 800, 104 * h / 600), 0, 500 * (float)h / 600, 200, 0);
-#endif 
 	}
 	else
 	{

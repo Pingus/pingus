@@ -52,6 +52,8 @@ public:
 
   /** Create an empty Indexed PixelBuffer (8bit) */
   PixelBuffer(int width, int height, SDL_Palette* palette, int colorkey = -1);
+  /** Create a PixelBuffer from a SDL_Surface */
+  PixelBuffer(SDL_Surface* surface);
   ~PixelBuffer();
 
   uint8_t* get_data() const;

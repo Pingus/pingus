@@ -84,17 +84,17 @@ public:
 
   static PixelBuffer rotate_270_flip (PixelBuffer sur);
 
-  /** Creates a new canvas with the given width and height and
+  /** Creates a new surface with the given width and height and
       stretches the source surface onto it, the caller is responsible
       to delete the returned PixelBuffer.
 
-      @param sur The source surface
+      @param surface The source surface
       @param width The new width of the surface.
       @param height The new height of the surface.
       @return A newly created surface, the caller is responsible to delete it. */
-  ////static PixelBuffer scale_surface_to_canvas (const CL_Surface& sur, int width, int height);
+  static SDL_Surface* scale_surface(SDL_Surface* surface, int width, int height);
 
-  static PixelBuffer scale_surface_to_canvas (PixelBuffer sur, int width, int height);
+  static PixelBuffer scale_surface_to_canvas(PixelBuffer provider, int width, int height);
 
 private:
   Blitter (const Blitter&);
