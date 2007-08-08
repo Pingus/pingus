@@ -50,6 +50,7 @@
 		// Load sprite based on file  (folder icon, level screenshot, or generic)
 		if (file_item.is_directory)
 		{
+			file_item.is_accessible = true;
 			sprite = Resource::load_sprite("core/menu/folder");
 		}
 		else

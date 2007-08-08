@@ -93,10 +93,10 @@ CollisionMask::init(const ResDescriptor& res_desc)
              res_desc.res_name.c_str(),
              int(surface->format->BitsPerPixel),
              int(surface->format->BytesPerPixel),
-             surface->format->Rmask,
-             surface->format->Gmask,
-             surface->format->Bmask,
-             surface->format->Amask);
+             (unsigned int)surface->format->Rmask,
+             (unsigned int)surface->format->Gmask,
+             (unsigned int)surface->format->Bmask,
+             (unsigned int)surface->format->Amask);
     }
 
   SDL_UnlockSurface(surface);
