@@ -3,7 +3,13 @@ Roadmap for Pingus 0.8.0
 
 - add VCR like effect for fast forward
 
-- add slow motion button
+- add slow motion button (dead, turtle, pingu, rabbit)
+
+- move time into pingus counter
+
+- make option menu accessible from in-game (top/left corner)
+
+- add drag&drop scrolling
 
 - proper waiter animation
 
@@ -30,9 +36,12 @@ Roadmap for Pingus 0.8.0
 Roadmap for Pingus 0.7.0
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-- liquid's old-width-handling isn't handled by sexpr, but might be needed for some levels
+- reorder main menu in the 0.6 fashion with no submenus: (editor,
+  tutorial island story mode, exit)
 
-- hotspot offset gets ignored/mishandled
+- editor isn't working
+
+- liquid's old-width-handling isn't handled by sexpr, but might be needed for some levels
 
 - seperate gfx/colmap surfaces aren't used
 
