@@ -36,7 +36,7 @@
   <xsl:template match="/pingus-level/global/levelname">
     <xsl:choose>
       <xsl:when test="@lang='en'">
-        <levelname><xsl:apply-templates select="*"/></levelname>
+        <levelname><xsl:apply-templates /></levelname>
       </xsl:when>
     </xsl:choose>
   </xsl:template>
@@ -44,7 +44,7 @@
   <xsl:template match="/pingus-level/global/description">
     <xsl:choose>
       <xsl:when test="@lang='en'">
-        <description><xsl:apply-templates select="*"/></description>
+        <description><xsl:apply-templates /></description>
       </xsl:when>
     </xsl:choose>
   </xsl:template>
