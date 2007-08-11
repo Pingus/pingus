@@ -263,13 +263,8 @@ ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
       display_gc->render(Display::get_screen());
       display_gc->clear();
       
-      SDL_Rect clip_rect;
-      clip_rect.x = 0 + border_x;
-      clip_rect.y = 0 + border_y;
-      clip_rect.w = screen_width  - 2*border_x;
-      clip_rect.h = screen_height - 2*border_y;
-
-      SDL_SetClipRect(Display::get_screen(), &clip_rect);
+      Display::push_cliprect(Rect(Vector2i(0 + border_x, 0 + border_y),
+                                  Size(screen_width  - 2*border_x, screen_height - 2*border_y)));
 
       new_screen->draw(*display_gc);
       display_gc->render(Display::get_screen());
@@ -280,8 +275,7 @@ ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
       //new_screen->update (delta);
       //old_screen->update (delta);
       
-      SDL_SetClipRect(Display::get_screen(), NULL);
-
+      Display::pop_cliprect();
       Display::flip_display ();
       display_gc->clear();
       

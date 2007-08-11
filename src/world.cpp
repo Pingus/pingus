@@ -120,17 +120,10 @@ World::draw (SceneContext& gc)
 
   gc.light().fill_screen(Color(ambient_light));
 
-  SDL_Rect orig_rect;
-  SDL_Rect rect = { 0, 0, this->get_width(), this->get_height() };
-  SDL_GetClipRect(Display::get_screen(), &orig_rect);
-  SDL_SetClipRect(Display::get_screen(), &rect);
-
   for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
     {
       (*obj)->draw(gc);
     }
-
-  SDL_SetClipRect(Display::get_screen(), &orig_rect);
 }
 
 void

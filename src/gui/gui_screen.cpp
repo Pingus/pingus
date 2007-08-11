@@ -50,7 +50,7 @@ GUIScreen::update (const GameDelta& delta)
   // Dispatch the recieved input events
   gui_manager->update (delta);
 
-  update (delta.get_time ());
+  update(delta.get_time ());
 
   for (Input::EventLst::const_iterator i = delta.get_events ().begin ();
        i != delta.get_events ().end (); ++i)

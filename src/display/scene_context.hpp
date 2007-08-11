@@ -68,6 +68,9 @@ public:
   void pop_modelview();
   void reset_modelview();
 
+  void set_cliprect(const Rect& rect);
+  void reset_cliprect();
+
   /** Takes all the buffers and combines them to form the final image
       that will be shown on the screen */
   void render(SDL_Surface* gc);

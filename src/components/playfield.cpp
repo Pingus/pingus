@@ -58,7 +58,9 @@ void
 Playfield::draw (DrawingContext& gc)
 {
   scene_context->clear();
-  scene_context->light().fill_screen(Color(50, 50, 50));
+  scene_context->set_cliprect(Rect(Vector2i(0, 0), Size(world->get_width(), world->get_height())));
+
+  //scene_context->light().fill_screen(Color(50, 50, 50));
  
   state.push(*scene_context);
 

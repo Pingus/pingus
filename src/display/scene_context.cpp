@@ -29,8 +29,11 @@ public:
   DrawingContext color;
   DrawingContext light;
   DrawingContext highlight; 
+  Rect cliprect;
+  bool use_cliprect;
 
   SceneContextImpl() 
+    : use_cliprect(false)
   {
   }
 };
@@ -116,11 +119,33 @@ SceneContext::reset_modelview()
 }
 
 void
+SceneContext::set_cliprect(const Rect& rect)
+{
+  impl->cliprect = rect;
+  impl->use_cliprect = true;
+}
+
+void
+SceneContext::reset_cliprect()
+{
+  impl->use_cliprect = false;
+}
+
+void
 SceneContext::render(SDL_Surface* target)
 {
   // Render all buffers
   // FIXME: Render all to pbuffer for later combining of them
-  impl->color.render(target);
+  if (impl->use_cliprect)
+    {
+      Display::push_cliprect(impl->cliprect);
+      impl->color.render(target);
+      Display::pop_cliprect();
+    }
+  else
+    {
+      impl->color.render(target);
+    }
   
 #if 0
     { // lightmap support

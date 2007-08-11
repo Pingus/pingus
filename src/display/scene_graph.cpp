@@ -54,7 +54,7 @@ SceneGraph::render()
 
   return;
 
-
+#if 0
   screen.clear();
   // Find out what regions of the screen have changed
   for(Nodes::iterator i = nodes.begin(); i != nodes.end(); ++i)
@@ -75,7 +75,6 @@ SceneGraph::render()
             
             for(Nodes::iterator i = nodes.begin(); i != nodes.end(); ++i)
               { // FIXME: could optimize this to only draw the ones that touch the region
-
                 SDL_Rect clip_rect;
 
                 clip_rect.x = x*32;
@@ -91,6 +90,7 @@ SceneGraph::render()
             x += width;
           }
       }
+#endif
 }
 
 void

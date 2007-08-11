@@ -24,10 +24,26 @@
 #include "../math/vector2i.hpp"
 #include "../math/rect.hpp"
 #include "../math/color.hpp"
+#include "../math.hpp"
 #include "display.hpp"
 
 std::list<DisplayHook*> Display::display_hooks;
+std::vector<SDL_Rect>   Display::cliprect_stack;
 SDL_Surface* Display::screen;
+
+namespace {
+SDL_Rect Intersection(SDL_Rect* r1, SDL_Rect* r2)
+{
+  SDL_Rect rect;
+  rect.x = Math::max(r1->x, r2->y);
+  rect.y = Math::max(r1->y, r2->y);
+  int endx = Math::min(r1->x + r1->w, r2->x + r2->w);
+  rect.w = Math::max(endx - rect.x, 0);
+  int endy = Math::min(r1->y + r1->h, r2->y + r2->h);
+  rect.h = Math::max(endy - rect.y, 0);
+  return rect;
+}
+} // namespace
 
 DisplayHook::DisplayHook() : is_visible(false)
 {
@@ -161,12 +177,12 @@ typedef void (*draw_pixel_func)(int, int, const Color&);
 static draw_pixel_func get_draw_pixel()
 {
   switch (Display::get_screen()->format->BitsPerPixel)
-  {
-  case 16:
-    return draw_pixel16;
-  case 32:
-    return draw_pixel32;
-  }
+    {
+    case 16:
+      return draw_pixel16;
+    case 32:
+      return draw_pixel32;
+    }
   return NULL;
 }
 
@@ -374,13 +390,25 @@ Display::fill_rect(const Rect& rect, const Color& color)
 }
 
 void
-Display::push_cliprect(const Rect&)
+Display::push_cliprect(const Rect& rect)
 {
+  SDL_Rect sdl_rect = { rect.left, rect.top, rect.get_width(), rect.get_height() };
+
+  if (!cliprect_stack.empty())
+    sdl_rect = Intersection(&cliprect_stack.back(), &sdl_rect);
+  
+  cliprect_stack.push_back(sdl_rect);
+  SDL_SetClipRect(screen, &cliprect_stack.back());
 }
 
 void
 Display::pop_cliprect()
 {
+  cliprect_stack.pop_back();
+  if (cliprect_stack.empty())
+    SDL_SetClipRect(screen, NULL);
+  else
+    SDL_SetClipRect(screen, &cliprect_stack.back());
 }
 
 /* EOF */

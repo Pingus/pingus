@@ -23,6 +23,7 @@
 #include "../pingus.hpp"
 #include "SDL.h"
 #include <list>
+#include <vector>
 
 class Vector2i;
 class Rect;
@@ -54,6 +55,7 @@ class Display
 {
 private:
   static std::list<DisplayHook*> display_hooks;
+  static std::vector<SDL_Rect>   cliprect_stack;
   static SDL_Surface* screen;
 public:
   static void draw_line(int x1, int y1, int x2, int y2, const Color& color);

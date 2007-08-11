@@ -46,19 +46,19 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
   is_init = false;
     
   start_button = new MenuButton(this, Vector2i(Display::get_width() * 400 / 800,
-                                        Display::get_height() * 450 / 600),
+                                        Display::get_height() * 390 / 600),
                                 Resource::load_sprite("core/menu/play_on"),
                                 _("Start"),
                                 _("..:: Start the game ::.."));
-  
+
   quit_button = new MenuButton(this, Vector2i(Display::get_width() * 650 / 800,
-                                       Display::get_height() * 450 / 600),
+                                       Display::get_height() * 390 / 600),
                                Resource::load_sprite("core/menu/exit_on"),
                                _("Exit"),
                                _("..:: Bye, bye ::.."));
 
   credits_button = new MenuButton(this, Vector2i(Display::get_width() * 150 / 800,
-                                          Display::get_height() * 450 / 600),
+                                          Display::get_height() * 390 / 600),
                                   Resource::load_sprite("core/menu/credits_on"),
                                   _("Credits"),
                                  _("..:: See the credits ::.."));

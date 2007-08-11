@@ -265,10 +265,13 @@ Credits::draw_background (DrawingContext& gc)
   gc.print_right(Fonts::chalk_normal,
                 static_cast<float>(Display::get_width()/2 + 275),
                 static_cast<float>(Display::get_height()/2 + 110),
-								_("Skip"));
-
-  Display::push_cliprect(Rect(0, static_cast<int>(gc.get_height()/2-225),
-                              600, static_cast<int>(gc.get_height()/2+200)));
+								_("Exit"));
+  
+  // FIXME: Doesn't work here, due to DrawingContext, needs a little
+  // more work to get fixed properly
+  // Display::push_cliprect(Rect(0,
+  // static_cast<int>(gc.get_height()/2-225), 600,
+  // static_cast<int>(gc.get_height()/2+200)));
   yof = 0;
 
   for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); ++i)
@@ -291,7 +294,7 @@ Credits::draw_background (DrawingContext& gc)
 	  break;
 	}
     }
-  Display::pop_cliprect();
+  //Display::pop_cliprect();
 }
 
 void
@@ -320,7 +323,7 @@ void
 Credits::deinit()
 {
   delete instance_;
-	instance_ = 0;
+  instance_ = 0;
 }
 
 void
