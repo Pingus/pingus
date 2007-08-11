@@ -69,7 +69,7 @@ MenuButton::~MenuButton ()
 void
 MenuButton::on_click ()
 {
-  std::cout << "MenuButton: Click" << std::endl;
+  //std::cout << "MenuButton: Click" << std::endl;
   menu->on_click(this);
 }
 
