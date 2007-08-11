@@ -62,7 +62,7 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
                                   Resource::load_sprite("core/menu/credits_on"),
                                   _("Credits"),
                                  _("..:: See the credits ::.."));
-#if 0
+#ifdef NEW_MENU
   contrib_button = new MenuButton(this, Vector2i(Display::get_width() * 150 / 800,
                                           Display::get_height() * 450 / 600),
                                   Resource::load_sprite("core/menu/options_on"),
@@ -92,7 +92,7 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
 void
 PingusMenu::setup_main_menu()
 {
-#if 0
+#ifdef NEW_MENU
   gui_manager->remove(contrib_button);
   gui_manager->remove(story_button);
   gui_manager->remove(multiplayer_button);
@@ -104,7 +104,7 @@ PingusMenu::setup_main_menu()
   gui_manager->add(credits_button, false);
 }
 
-#if 0
+#ifdef NEW_MENU
 void
 PingusMenu::setup_game_menu()
 {
@@ -163,7 +163,7 @@ PingusMenu::~PingusMenu()
   delete start_button;
   delete quit_button;
   delete credits_button;
-#if 0
+#ifdef NEW_MENU
   delete contrib_button;
   delete story_button;
   delete multiplayer_button;
@@ -274,8 +274,11 @@ PingusMenu::on_click(MenuButton* button)
 {
   if (button == start_button)
     {
-      // setup_game_menu();
+#ifdef NEW_MENU
+      setup_game_menu();
+#else
       do_start("data/worldmaps/tutorial.worldmap");
+#endif
     }
   else if (button == quit_button)
     {
@@ -285,7 +288,7 @@ PingusMenu::on_click(MenuButton* button)
     {
       show_credits();
     }
-#if 0
+#ifdef NEW_MENU
   else if (button == contrib_button)
     {
       setup_contrib_menu();

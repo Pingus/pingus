@@ -48,7 +48,7 @@ private:
   MenuButton* quit_button;
   MenuButton* credits_button;
 
-#if 0
+#ifdef NEW_MENU
   MenuButton* contrib_button;
   MenuButton* story_button;
   MenuButton* multiplayer_button;
@@ -60,7 +60,7 @@ private:
 
   // These functions setup the different menus
   void setup_main_menu();
-#if 0
+#ifdef NEW_MENU
   void setup_game_menu();
 #endif
   void show_credits();
