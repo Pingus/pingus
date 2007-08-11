@@ -21,6 +21,7 @@
 #include <iostream>
 #include <algorithm>
 #include "drawing_context.hpp"
+#include "math.hpp"
 #include "gui/display.hpp"
 #include "../sprite.hpp"
 #include "../font.hpp"
@@ -62,16 +63,37 @@ class SpriteDrawingRequest : public DrawingRequest
 {
 private:
   Sprite sprite;
+  SDL_Rect clip_rect;
+
+  SDL_Rect Intersection(SDL_Rect* r1, SDL_Rect* r2)
+  {
+    SDL_Rect rect;
+    rect.x = Math::max(r1->x, r2->y);
+    rect.y = Math::max(r1->y, r2->y);
+    int endx = Math::min(r1->x + r1->w, r2->x + r2->w);
+    rect.w = Math::max(endx - rect.x, 0);
+    int endy = Math::min(r1->y + r1->h, r2->y + r2->h);
+    rect.h = Math::max(endy - rect.y, 0);
+    return rect;
+  }
 
 public:
   SpriteDrawingRequest(const Sprite& sprite_, const Vector3f& pos_)
     : DrawingRequest(pos_),
       sprite(sprite_)
-  {}
+  {
+    SDL_GetClipRect(Display::get_screen(), &clip_rect);
+  }
   virtual ~SpriteDrawingRequest() {}
 
   void draw(SDL_Surface* target) {
+    SDL_Rect orig_rect;
+    SDL_Rect rect;
+    SDL_GetClipRect(Display::get_screen(), &orig_rect);
+    rect = Intersection(&orig_rect, &clip_rect);
+    SDL_SetClipRect(Display::get_screen(), &rect);
     sprite.draw(pos.x, pos.y, target);
+    SDL_SetClipRect(Display::get_screen(), &orig_rect);
   }
 };
 
