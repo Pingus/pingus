@@ -56,15 +56,6 @@ public:
 
   static void fill_rect(PixelBuffer target, const Rect& rect, const Color& color);
 
-  /** Creates a new surface (based on a canvas) with the given width
-      and height and stretches the source surface onto it
-
-      @param sur The source surface
-      @param width The new width of the surface.
-      @param height The new height of the surface.
-      @return A newly created surface, the caller is responsible to delete it. */
-  ////static CL_Surface scale_surface (const CL_Surface& sur, int width, int height);
-
   /** Flip a surface horizontal */
   static PixelBuffer flip_horizontal (PixelBuffer sur);
 

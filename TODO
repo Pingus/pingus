@@ -52,8 +52,6 @@ Roadmap for Pingus 0.7.0
 
 - src/components/pingus_counter.hpp font should be fixed-width/monospace
 
-- scaling images for different resolutions
-
 - the game is much slower then the Clanlib version
 
 Older Stuff:

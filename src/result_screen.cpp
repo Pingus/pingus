@@ -152,21 +152,13 @@ public:
 ResultScreenComponent::ResultScreenComponent(Result arg_result)
   : result(arg_result)
 {
-  if (Display::get_width() == 800 && Display::get_height() == 600)
+  background = Resource::load_sprite("core/menu/startscreenbg");
+  if (!(Display::get_width() == 800 && Display::get_height() == 600))
     {
-      background = Resource::load_sprite("core/menu/startscreenbg");
+      SDL_Surface* s = Blitter::scale_surface(background.get_surface(),
+        Display::get_width(), Display::get_height());
+      background.set_surface(s);
     }
-#if 0
-  else
-    {
-      PixelBuffer pb = Blitter::scale_surface_to_canvas(Resource::load_pixelbuffer(
-                                                                                   "core/menu/startscreenbg"), Display::get_width(), Display::get_height());
-      CL_SpriteDescription desc;
-      desc.add_frame(pb);
-      background = CL_Sprite(desc);
-    }
-  background.set_alignment(origin_center);
-#endif
 	
   chalk_pingus.push_back(Resource::load_sprite("core/misc/chalk_pingu1"));
   chalk_pingus.push_back(Resource::load_sprite("core/misc/chalk_pingu2"));

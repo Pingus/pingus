@@ -66,26 +66,26 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
   if (color.a > 1.0)
     std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
 
-#if 0
   PixelBuffer canvas = Resource::load_pixelbuffer(desc);
+  SDL_Surface* s = canvas.get_surface();
+  SDL_Surface* new_surface = NULL;
 
   // Scaling Code
   if (stretch_x && stretch_y)
     {
-      canvas = Blitter::scale_surface_to_canvas(canvas, world->get_width(), world->get_height());
+      new_surface = Blitter::scale_surface(s, world->get_width(), world->get_height());
     }
   else if (stretch_x && !stretch_y)
     {
       if (keep_aspect)
         {
           float aspect = canvas.get_height()/float(canvas.get_width());
-          canvas = Blitter::scale_surface_to_canvas(canvas,
-                                                    world->get_width(),
-                                                    int(world->get_width()*aspect));
+          new_surface = Blitter::scale_surface(s,
+            world->get_width(), int(world->get_width()*aspect));
         }
       else
         {
-          canvas = Blitter::scale_surface_to_canvas(canvas, canvas.get_width(), world->get_height());
+          new_surface = Blitter::scale_surface(s, canvas.get_width(), world->get_height());
         }
     }
   else if (!stretch_x && stretch_y)
@@ -93,22 +93,20 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
       if (keep_aspect)
         {
           float aspect = float(canvas.get_width())/canvas.get_height();
-          canvas = Blitter::scale_surface_to_canvas(canvas,
-                                                    int(world->get_height() * aspect),
-                                                    world->get_height());
+          new_surface = Blitter::scale_surface(s,
+            int(world->get_height() * aspect), world->get_height());
         }
       else
         {
-          canvas = Blitter::scale_surface_to_canvas(canvas, canvas.get_width(), world->get_height());
+          new_surface = Blitter::scale_surface(s, canvas.get_width(), world->get_height());
         }
     }
 
-  SpriteDescription sprite_desc;
-  sprite_desc.add_frame(canvas);
-  bg_surface = Sprite(sprite_desc);
-#else
-  bg_surface = Resource::load_sprite(desc);
-#endif
+  bg_surface = Sprite(canvas);
+  if (new_surface)
+    {
+      bg_surface.set_surface(new_surface);
+    }
 
   timer.stop();
 }

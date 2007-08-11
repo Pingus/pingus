@@ -46,6 +46,7 @@ public:
   int      frame_delay;
 
   Size     array;
+  SpriteDescription* sprite_description;
 
   bool     loop;
   bool     loop_last_cycle;
@@ -68,7 +69,10 @@ public:
         surface = IMG_Load("data/images/core/misc/404.png");
         assert(surface);
       }
-    
+
+    sprite_description = new SpriteDescription();
+    *sprite_description = desc;
+
     frame_pos = desc.frame_pos;
 
     frame_size.width  = (desc.frame_size.width  == -1) ? surface->w : desc.frame_size.width;
@@ -90,6 +94,7 @@ public:
       frame_size(pixelbuffer.get_width(), pixelbuffer.get_height()),
       frame_delay(0),
       array(1,1),
+      sprite_description(NULL),
       loop(true),
       loop_last_cycle(false),
       finished(false),
@@ -110,6 +115,7 @@ public:
   ~SpriteImpl()
   {
     SDL_FreeSurface(surface);
+    delete sprite_description;
   }
 
   void update(float delta)
@@ -168,6 +174,24 @@ public:
   void finish()
   {
     finished = true;
+  }
+
+  void set_surface(SDL_Surface* new_surface)
+  {
+    SDL_FreeSurface(surface);
+    surface = new_surface;
+
+    if (sprite_description)
+      {
+        frame_size.width  = (sprite_description->frame_size.width  == -1) ? surface->w : sprite_description->frame_size.width;
+        frame_size.height = (sprite_description->frame_size.height == -1) ? surface->h : sprite_description->frame_size.height;
+        offset = calc_origin(sprite_description->origin, frame_size) - sprite_description->offset;
+      }
+    else
+      {
+        frame_size.width = surface->w;
+        frame_size.height = surface->h;
+      }
   }
 };
 
@@ -289,6 +313,22 @@ Sprite::finish()
 {
   if (impl.get())
     impl->finish();
+}
+
+SDL_Surface*
+Sprite::get_surface() const
+{
+  if (impl.get())
+    return impl->surface;
+  else
+    return NULL;
+}
+
+void
+Sprite::set_surface(SDL_Surface* surface)
+{
+  if (impl.get())
+    impl->set_surface(surface);
 }
 
 /* EOF */

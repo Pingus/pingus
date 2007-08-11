@@ -58,6 +58,8 @@ public:
   void restart();
   void finish();
   operator bool();
+  SDL_Surface* get_surface() const;
+  void set_surface(SDL_Surface* surface);
 
 private:
   boost::shared_ptr<SpriteImpl> impl;
