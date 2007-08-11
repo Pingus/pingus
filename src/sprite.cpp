@@ -77,10 +77,8 @@ public:
 
     array = desc.array;
 
-    frame_size.width  = (desc.frame_size.width  == -1) ? surface->w : desc.frame_size.width;
-    frame_size.width /= array.width;
-    frame_size.height = (desc.frame_size.height == -1) ? surface->h : desc.frame_size.height;
-    frame_size.height /= array.height;
+    frame_size.width  = (desc.frame_size.width  == -1) ? surface->w/array.width  : desc.frame_size.width;
+    frame_size.height = (desc.frame_size.height == -1) ? surface->h/array.height : desc.frame_size.height;
 
     frame_delay  = desc.speed;
 
