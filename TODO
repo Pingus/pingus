@@ -36,10 +36,21 @@ Roadmap for Pingus 0.8.0
 Roadmap for Pingus 0.7.0
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
+- remove all the remaining unneeded debuging std::cout's
+
+- hurry-up should be removed and replaced by something less heavy
+
+- --enabel-swcursor is broken (swcursor data is wrong)
+
+- check all classic levels for issues
+
 - reorder main menu in the 0.6 fashion with no submenus: (editor,
   tutorial island story mode, exit)
 
 - editor isn't working
+
+- levels seem to have lost something (names, maybe more) when going
+  from Pingus0.6 over PingusClanlib to PingusSDL
 
 - liquid's old-width-handling isn't handled by sexpr, but might be needed for some levels
 
