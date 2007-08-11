@@ -20,9 +20,9 @@
 #ifndef HEADER_PINGUS_MATH_HXX
 #define HEADER_PINGUS_MATH_HXX
 
+#include <assert.h>
 #include <stdlib.h>
 #include "pingus.hpp"
-
 
 /** A collection of small math helper functions, some of them might be
     equal in functionality to standard STL functions, but provided
@@ -63,6 +63,7 @@ T max (const T& a, const T& b)
 template<class T>
 T mid (const T& a, const T& b, const T& c)
 {
+  assert(a <= c);
   return max((a), min((b), (c)));
 }
 
