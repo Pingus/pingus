@@ -39,6 +39,7 @@
       (sprite
         (name "animcross")
         (image-file "../images/core/cursors/animcross.png")
+        (offset -18 -18)
         (image-array 10 1))
      )
 

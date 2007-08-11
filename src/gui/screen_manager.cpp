@@ -58,7 +58,7 @@ ScreenManager::display()
     {
       cursor = new Cursor("core/cursors/animcross");
       Display::add_flip_screen_hook(cursor);
-      //CL_MouseCursor::hide();
+      SDL_ShowCursor(SDL_DISABLE);
     }
 
   DeltaManager delta_manager;

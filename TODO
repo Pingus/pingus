@@ -40,8 +40,6 @@ Roadmap for Pingus 0.7.0
 
 - hurry-up should be removed and replaced by something less heavy
 
-- --enabel-swcursor is broken (swcursor data is wrong)
-
 - check all classic levels for issues
 
 - reorder main menu in the 0.6 fashion with no submenus: (editor,
