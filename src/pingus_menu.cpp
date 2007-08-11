@@ -36,6 +36,7 @@
 #include "path_manager.hpp"
 #include "file_dialog.hpp"
 #include "editor/editor_screen.hpp"
+#include "credits.hpp"
 
 
 PingusMenu::PingusMenu (PingusMenuManager* m)
@@ -56,6 +57,11 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
                                _("Exit"),
                                _("..:: Bye, bye ::.."));
 
+  credits_button = new MenuButton(this, Vector2i(Display::get_width() * 150 / 800,
+                                          Display::get_height() * 450 / 600),
+                                  Resource::load_sprite("core/menu/credits_on"),
+                                  _("Credits"),
+                                 _("..:: See the credits ::.."));
 #if 0
   contrib_button = new MenuButton(this, Vector2i(Display::get_width() * 150 / 800,
                                           Display::get_height() * 450 / 600),
@@ -95,6 +101,7 @@ PingusMenu::setup_main_menu()
 
   gui_manager->add(quit_button, false);
   gui_manager->add(start_button, false);
+  gui_manager->add(credits_button, false);
 }
 
 #if 0
@@ -112,6 +119,12 @@ PingusMenu::setup_game_menu()
   //gui_manager->add(multiplayer_button, false);
 }
 #endif
+
+void
+PingusMenu::show_credits()
+{
+      ScreenManager::instance()->push_screen(Credits::instance(), false);
+}
 
 void
 PingusMenu::setup_contrib_menu()
@@ -149,6 +162,7 @@ PingusMenu::~PingusMenu()
 {
   delete start_button;
   delete quit_button;
+  delete credits_button;
 #if 0
   delete contrib_button;
   delete story_button;
@@ -266,6 +280,10 @@ PingusMenu::on_click(MenuButton* button)
   else if (button == quit_button)
     {
       do_quit();
+    }
+  else if (button == credits_button)
+    {
+      show_credits();
     }
 #if 0
   else if (button == contrib_button)

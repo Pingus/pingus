@@ -46,6 +46,7 @@ private:
 
   MenuButton* start_button;
   MenuButton* quit_button;
+  MenuButton* credits_button;
 
 #if 0
   MenuButton* contrib_button;
@@ -62,6 +63,7 @@ private:
 #if 0
   void setup_game_menu();
 #endif
+  void show_credits();
   /** Show the levels folder */
   void setup_contrib_menu();
   /** Show the worldmap folder */
