@@ -47,17 +47,21 @@ private:
   MenuButton* start_button;
   MenuButton* quit_button;
 
+#if 0
   MenuButton* contrib_button;
   MenuButton* story_button;
   MenuButton* multiplayer_button;
   MenuButton* editor_button;
+#endif
   FileDialog* filedialog;
   
   void on_resize (int w, int h);
 
   // These functions setup the different menus
   void setup_main_menu();
+#if 0
   void setup_game_menu();
+#endif
   /** Show the levels folder */
   void setup_contrib_menu();
   /** Show the worldmap folder */

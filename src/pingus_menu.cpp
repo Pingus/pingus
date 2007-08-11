@@ -56,6 +56,7 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
                                _("Exit"),
                                _("..:: Bye, bye ::.."));
 
+#if 0
   contrib_button = new MenuButton(this, Vector2i(Display::get_width() * 150 / 800,
                                           Display::get_height() * 450 / 600),
                                   Resource::load_sprite("core/menu/options_on"),
@@ -79,20 +80,24 @@ PingusMenu::PingusMenu (PingusMenuManager* m)
                                  Resource::load_sprite("core/menu/create_on"),
                                  _("Level Editor"),
                                  _("..:: Create your own levels ::.."));
+#endif
 }
 
 void
 PingusMenu::setup_main_menu()
 {
+#if 0
   gui_manager->remove(contrib_button);
   gui_manager->remove(story_button);
   gui_manager->remove(multiplayer_button);
   gui_manager->remove(editor_button);
+#endif
 
   gui_manager->add(quit_button, false);
   gui_manager->add(start_button, false);
 }
 
+#if 0
 void
 PingusMenu::setup_game_menu()
 {
@@ -106,6 +111,7 @@ PingusMenu::setup_game_menu()
 
   //gui_manager->add(multiplayer_button, false);
 }
+#endif
 
 void
 PingusMenu::setup_contrib_menu()
@@ -143,12 +149,13 @@ PingusMenu::~PingusMenu()
 {
   delete start_button;
   delete quit_button;
+#if 0
   delete contrib_button;
   delete story_button;
   delete multiplayer_button;
   delete editor_button;
-  if (filedialog)
-    delete filedialog;
+#endif
+  delete filedialog;
 }
 
 void
@@ -253,12 +260,14 @@ PingusMenu::on_click(MenuButton* button)
 {
   if (button == start_button)
     {
-      setup_game_menu();
+      // setup_game_menu();
+      setup_worldmap_menu();
     }
   else if (button == quit_button)
     {
       do_quit();
     }
+#if 0
   else if (button == contrib_button)
     {
       setup_contrib_menu();
@@ -275,6 +284,7 @@ PingusMenu::on_click(MenuButton* button)
     {
       do_edit();
     }
+#endif
 }
 
 /* EOF */
