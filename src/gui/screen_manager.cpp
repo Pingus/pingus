@@ -139,7 +139,7 @@ ScreenManager::display()
 	}
 
       // Stupid hack to make this thing take less CPU
-      SDL_Delay(10);
+      SDL_Delay(1);
     }
 
   Display::remove_flip_screen_hook(cursor);

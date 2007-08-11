@@ -157,7 +157,7 @@ PingusGameSession::update (const GameDelta& delta)
     left_over_time = time_passed - (i * update_time);
   }
 
-  if (left_over_time < 0)
+  if (left_over_time < 0 && time_passed < update_time)
     {
       // FIXME: This doesn't really belong here
       SDL_Delay(-left_over_time);
