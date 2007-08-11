@@ -56,9 +56,6 @@ Roadmap for Pingus 0.7.0
 
 - the game is much slower then the Clanlib version
 
-- there is also a missing float->int cast somewhere, exits and maybe
-  other objects 'wooble' by one pixel while scrolling
-
 Older Stuff:
 ~~~~~~~~~~~~
 

@@ -241,8 +241,8 @@ void
 DrawingContext::draw(const Sprite&   sprite,  float x, float y, float z)
 { // FIXME: This should get flattend down to a simple texture draw
   // command for easier sorting after texture-id/alpha
-  draw(new SpriteDrawingRequest(sprite, Vector3f(translate_stack.back().x + x,
-                                                  translate_stack.back().y + y,
+  draw(new SpriteDrawingRequest(sprite, Vector3f((int)translate_stack.back().x + x,
+                                                 (int)translate_stack.back().y + y,
                                                   z)));
 }
 
