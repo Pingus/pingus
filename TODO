@@ -33,6 +33,8 @@ Roadmap for Pingus 0.8.0
 
 - split screen multiplayer
 
+- editor isn't working
+
 Roadmap for Pingus 0.7.0
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -41,11 +43,6 @@ Roadmap for Pingus 0.7.0
 - hurry-up should be removed and replaced by something less heavy
 
 - check all classic levels for issues
-
-- reorder main menu in the 0.6 fashion with no submenus: (editor,
-  tutorial island story mode, exit)
-
-- editor isn't working
 
 - levels seem to have lost something (names, maybe more) when going
   from Pingus0.6 over PingusClanlib to PingusSDL
