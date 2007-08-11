@@ -43,7 +43,7 @@ Roadmap for Pingus 0.7.0
 
 - liquid's old-width-handling isn't handled by sexpr, but might be needed for some levels
 
-- seperate gfx/colmap surfaces aren't used
+- separate gfx/colmap surfaces aren't used
 
 - remove unneeded/outdated fonts
 
@@ -51,8 +51,6 @@ Roadmap for Pingus 0.7.0
   http://kapsa.cz/~tomasb/pingus/intl-patch.tgz)
 
 - src/components/pingus_counter.hpp font should be fixed-width/monospace
-
-- the game is much slower then the Clanlib version
 
 Older Stuff:
 ~~~~~~~~~~~~

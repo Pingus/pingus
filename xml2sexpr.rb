@@ -72,10 +72,10 @@ $typespec_level =
    [/^\/pingus-level\/objects\/surface-background\/red$/,  :integer],
    [/^\/pingus-level\/objects\/surface-background\/green$/,  :integer],
    [/^\/pingus-level\/objects\/surface-background\/blue$/,  :integer],
-   [/^\/pingus-level\/objects\/surface-background\/scroll-x$/,  :integer],
-   [/^\/pingus-level\/objects\/surface-background\/scroll-y$/,  :integer],
-   [/^\/pingus-level\/objects\/surface-background\/para-x$/,  :integer],
-   [/^\/pingus-level\/objects\/surface-background\/para-y$/,  :integer],
+   [/^\/pingus-level\/objects\/surface-background\/scroll-x$/,  :float],
+   [/^\/pingus-level\/objects\/surface-background\/scroll-y$/,  :float],
+   [/^\/pingus-level\/objects\/surface-background\/para-x$/,  :float],
+   [/^\/pingus-level\/objects\/surface-background\/para-y$/,  :float],
    [/^\/pingus-level\/objects\/surface-background\/stretch-x$/,  :integer],
    [/^\/pingus-level\/objects\/surface-background\/stretch-y$/,  :integer],
    [/^\/pingus-level\/objects\/surface-background\/keep-aspect$/,  :integer],
@@ -225,6 +225,12 @@ def xml2array(section, indent, el)
       print "#{indent}(#{el.name} "
       el.children.each{|child|
         print "#{child.value.to_i}"
+      }
+      print ")"
+    when :float
+      print "#{indent}(#{el.name} "
+      el.children.each{|child|
+        print "#{child.value.to_f}"
       }
       print ")"
     when :vector
