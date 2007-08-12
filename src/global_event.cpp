@@ -48,6 +48,10 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
       console << "Toggling fps counter display" << std::endl;
       break;
 
+    case SDLK_RETURN:
+      if (!keystate[SDLK_LALT] && !keystate[SDLK_RALT])
+        break;
+      // FALL THROUGH
     case SDLK_F11:
       fullscreen_enabled = !fullscreen_enabled;
       // re-initialize the screen
@@ -76,6 +80,22 @@ GlobalEvent::on_button_press(const SDL_KeyboardEvent& event)
         {
           std::cout << "Maintainer Mode: " << maintainer_mode << std::endl;
           maintainer_mode = !maintainer_mode;
+        }
+      break;
+
+    case SDLK_g:
+      if (keystate[SDLK_LCTRL] || keystate[SDLK_RCTRL])
+        {
+          if (SDL_WM_GrabInput(SDL_GRAB_QUERY) == SDL_GRAB_ON)
+            {
+              SDL_WM_GrabInput(SDL_GRAB_OFF);
+              console << "Grab input off" << std::endl;
+            }
+          else
+            {
+              SDL_WM_GrabInput(SDL_GRAB_ON);
+              console << "Grab input on" << std::endl;
+            }
         }
       break;
 
