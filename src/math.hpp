@@ -61,10 +61,10 @@ T max (const T& a, const T& b)
 }
 
 template<class T>
-T mid (const T& a, const T& b, const T& c)
+T clamp (const T& low, const T& v, const T& high)
 {
-  assert(a <= c);
-  return max((a), min((b), (c)));
+  assert(low <= high);
+  return max((low), min((v), (high)));
 }
 
 inline

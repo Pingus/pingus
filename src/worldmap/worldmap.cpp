@@ -164,7 +164,7 @@ WorldMap::draw (DrawingContext& gc)
       min = float(width - gc.get_width()/2);
       max = float(gc.get_width()/2);
     }
-  pingu_pos.x = Math::mid(min, pingu_pos.x, max);
+  pingu_pos.x = Math::clamp(min, pingu_pos.x, max);
 
   if (height >= gc.get_height())
     {
@@ -176,7 +176,7 @@ WorldMap::draw (DrawingContext& gc)
       min = float(height - gc.get_height()/2);
       max = float(gc.get_height()/2);
     }
-  pingu_pos.y = Math::mid(min, pingu_pos.x, max);
+  pingu_pos.y = Math::clamp(min, pingu_pos.x, max);
 
   DrawingContext* display_gc = new DrawingContext();
 
