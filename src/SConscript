@@ -171,8 +171,6 @@ env.Program('../pingus', [
 'lisp/lexer.cpp',
 'lisp/lisp.cpp',
 'lisp/parser.cpp',
-'lisp/properties.cpp',
-'lisp/writer.cpp',
 
 'input/axes/button_axis.cpp', 
 'input/axes/inverted_axis.cpp', 
