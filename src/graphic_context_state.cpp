@@ -24,8 +24,7 @@
 class GraphicContextStateImpl
 {
 public:
-  int width;
-  int height;
+  Rect rect;
   
   Vector2f offset;
   float zoom;
@@ -38,8 +37,7 @@ public:
 GraphicContextState::GraphicContextState()
   : impl(new GraphicContextStateImpl())
 {
-  impl->width      = Display::get_width();
-  impl->height     = Display::get_height(); 
+  impl->rect       = Rect(Vector2i(0,0), Size(Display::get_width(), Display::get_height()));
   impl->offset     = Vector2f(0,0);
   impl->zoom       = 1.0f;
   impl->rotation   = 0;
@@ -49,12 +47,21 @@ GraphicContextState::GraphicContextState()
 GraphicContextState::GraphicContextState(int w, int h)
   : impl(new GraphicContextStateImpl())
 {  
-  impl->width      = w;
-  impl->height     = h;
+  impl->rect       = Rect(Vector2i(0,0), Size(w, h));
   impl->offset     = Vector2f(0,0); 
   impl->zoom       = 1.0f;
   impl->rotation   = 0;
   impl->have_limit = false;
+}
+
+GraphicContextState::GraphicContextState(const Rect& rect)
+  : impl(new GraphicContextStateImpl())
+{
+  impl->rect       = rect;
+  impl->offset     = Vector2f(0,0); 
+  impl->zoom       = 1.0f;
+  impl->rotation   = 0;
+  impl->have_limit = false;  
 }
 
 void
@@ -73,8 +80,7 @@ GraphicContextState::set_unlimited()
 void
 GraphicContextState::set_size(int w, int h)
 {
-  impl->width  = w;
-  impl->height = h;
+  impl->rect = Rect(Vector2i(impl->rect.left, impl->rect.top), Size(w, h));
 }
 
 void
@@ -82,9 +88,11 @@ GraphicContextState::push(DrawingContext& gc)
 {
   gc.push_modelview();
 
-  gc.translate((float)impl->width/2, (float)impl->height/2);
+  gc.translate((float)impl->rect.left, (float)impl->rect.top);
+
+  gc.translate((float)get_width()/2, (float)get_height()/2);
   gc.rotate(impl->rotation);
-  gc.translate(-(float)impl->width/2, -(float)impl->height/2);
+  gc.translate(-(float)get_width()/2, -(float)get_height()/2);
 
   gc.scale(get_zoom(), get_zoom());
   gc.translate(impl->offset.x, impl->offset.y);
@@ -95,9 +103,11 @@ GraphicContextState::push(SceneContext& gc)
 {
   gc.push_modelview();
 
-  gc.translate((float)impl->width/2, (float)impl->height/2);
+  gc.translate((float)impl->rect.left, (float)impl->rect.top);
+
+  gc.translate((float)get_width()/2, (float)get_height()/2);
   gc.rotate(impl->rotation);
-  gc.translate(-(float)impl->width/2, -(float)impl->height/2);
+  gc.translate(-(float)get_width()/2, -(float)get_height()/2);
 
   gc.scale(get_zoom(), get_zoom());
   gc.translate(impl->offset.x, impl->offset.y);
@@ -114,33 +124,6 @@ GraphicContextState::pop (DrawingContext& gc)
 {
   gc.pop_modelview();
 }
-
-#if 0
-void
-GraphicContextState::push(CL_GraphicContext* gc)
-{
-  if (gc == 0)
-    gc = CL_Display::get_current_window()->get_gc();
-  
-  gc->push_modelview();
-
-  gc->add_translate(impl->width/2, impl->height/2);
-  gc->add_rotate(impl->rotation, 0, 0, 1.0);
-  gc->add_translate(-impl->width/2, -impl->height/2);
-
-  gc->add_scale(get_zoom(), get_zoom());
-  gc->add_translate(impl->offset.x, impl->offset.y);
-}
-
-void
-GraphicContextState::pop(CL_GraphicContext* gc)
-{
-  if (gc == 0)
-    gc = CL_Display::get_current_window()->get_gc();
-  
-  gc->pop_modelview();
-}
-#endif 
 
 Rect
 GraphicContextState::get_clip_rect()
@@ -241,15 +224,17 @@ GraphicContextState::zoom_to (const Rectf& rect)
 Vector2f
 GraphicContextState::screen2world(const Vector2i& pos_)
 {
-  Vector2f pos((float)pos_.x, (float)pos_.y);
+  Vector2f pos(float(pos_.x),
+               float(pos_.y));
+
   float sa = (float)sin(-impl->rotation/180.0f*M_PI);
   float ca = (float)cos(-impl->rotation/180.0f*M_PI);
 
-  float dx = pos.x - (float)impl->width/2;
-  float dy = pos.y - (float)impl->height/2;
+  float dx = pos.x - (float)get_width()/2;
+  float dy = pos.y - (float)get_height()/2;
 
-  pos.x = impl->width/2  + (ca * dx - sa * dy);
-  pos.y = impl->height/2 + (sa * dx + ca * dy);
+  pos.x = get_width()/2  + (ca * dx - sa * dy);
+  pos.y = get_height()/2 + (sa * dx + ca * dy);
 
   Vector2f p((float(pos.x) / impl->zoom) - impl->offset.x, 
              (float(pos.y) / impl->zoom) - impl->offset.y);
@@ -272,13 +257,13 @@ GraphicContextState::get_rotation()
 int
 GraphicContextState::get_width()  const 
 {
-  return impl->width; 
+  return impl->rect.get_width(); 
 }
 
 int
 GraphicContextState::get_height() const 
 { 
-  return impl->height; 
+  return impl->rect.get_height(); 
 }
 
 /* EOF */

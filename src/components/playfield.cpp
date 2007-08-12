@@ -40,7 +40,7 @@ Playfield::Playfield (Client* client_, const Rect& rect_)
     // We keep the SceneContext has member variable so that we don't
     // have to reallocate it every frame, which is quite a costly operation
     scene_context(new SceneContext()),
-    state(rect.get_width(), rect.get_height()),
+    state(rect),
     cap(client->get_button_panel())
 {
   world              = client->get_server()->get_world();
@@ -55,10 +55,10 @@ Playfield::~Playfield()
 }
 
 void
-Playfield::draw (DrawingContext& gc)
+Playfield::draw(DrawingContext& gc)
 {
   scene_context->clear();
-  scene_context->set_cliprect(Rect(Vector2i(0, 0), Size(world->get_width(), world->get_height())));
+  scene_context->set_cliprect(rect);
 
   //scene_context->light().fill_screen(Color(50, 50, 50));
  
@@ -66,11 +66,7 @@ Playfield::draw (DrawingContext& gc)
 
   cap.set_pingu(current_pingu);
   cap.draw(*scene_context);
-  
-  // Blank out the entire window in case the screen resolution is larger
-  // than the current level.
-  gc.draw_fillrect(0, 0, (float)Display::get_width(), (float)Display::get_height(),
-                   Color(0,0,0), -15000);
+
   world->draw(*scene_context);
  
   // Draw the scrolling band

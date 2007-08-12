@@ -38,6 +38,7 @@ class GraphicContextState
 public:
   GraphicContextState();
   GraphicContextState(int w, int h);
+  GraphicContextState(const Rect& rect);
 
   /** Limit the graphic context to the given limits rectangle, meaning
       that no point of the current visible region will be outside the
@@ -46,11 +47,6 @@ public:
   void set_unlimited();
 
   void set_size(int w, int h);
-
-#if 0
-  void push(CL_GraphicContext* gc = 0);
-  void pop (CL_GraphicContext* gc = 0);
-#endif 
 
   void push(DrawingContext& gc);
   void pop (DrawingContext& gc);

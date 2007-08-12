@@ -62,7 +62,6 @@ private:
   TimeDisplay*   time_display;
   SmallMap*      small_map;
   HurryUp*       hurry_up;
-
   bool enabled;
 
 public:
@@ -79,7 +78,7 @@ public:
 
   /** Update all parts of the world */
   void update (const GameDelta&);
-
+  void draw_background (DrawingContext& gc);
   //void process_events ();
 
   ButtonPanel* get_button_panel () { return button_panel; }

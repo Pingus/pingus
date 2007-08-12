@@ -62,6 +62,7 @@ private:
   
   Vector2i mouse_pos;
   Vector2f old_state_pos;
+
 public:
   Playfield (Client*, const Rect& rect);
   virtual ~Playfield();
@@ -93,7 +94,7 @@ public:
   void set_server(Server*);
 
   bool is_at (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); return true; }
-
+  Rect get_rect() const { return rect; }
 private:
   Playfield (const Playfield&);
   Playfield& operator= (const Playfield&);

@@ -31,8 +31,9 @@
 #include "gui/cursor.hpp"
 #include "true_server.hpp"
 #include "components/button_panel.hpp"
+#include "world.hpp"
+#include "math.hpp"
 #include "gui/gui_manager.hpp"
-
 
 Client::Client (TrueServer * s)
   : server       (s),
@@ -50,8 +51,15 @@ Client::Client (TrueServer * s)
 
   // These object will get deleted by the gui_manager
   button_panel = new ButtonPanel(this, 2, Display::get_height()/2);
-  playfield    = new Playfield(this, Rect(Vector2i(0, 0), Size(Display::get_width(), 
-                                                               Display::get_height())));
+
+  int world_width  = server->get_world()->get_width();
+  int world_height = server->get_world()->get_height();
+
+  playfield    = new Playfield(this, Rect(Vector2i(Math::max((Display::get_width()  - world_width)/2,  0),
+                                                   Math::max((Display::get_height() - world_height)/2, 0)), 
+                                          Size(Math::min(Display::get_width(),  world_width),
+                                               Math::min(Display::get_height(), world_height))));
+
   hurry_up     = new HurryUp(this);
   pcounter     = new PingusCounter(get_server());
   small_map    = new SmallMap(this);
@@ -75,6 +83,27 @@ Client::Client (TrueServer * s)
 
 Client::~Client()
 {
+}
+
+void
+Client::draw_background (DrawingContext& gc)
+{
+  Rect rect = playfield->get_rect();
+  if (rect != Rect(Vector2i(0,0), Size(Display::get_width(), Display::get_height())))
+  {
+    // top
+    gc.draw_fillrect(0, 0, Display::get_width()-1, rect.top,
+                 Color(0,0,0));
+    // bottom
+    gc.draw_fillrect(0, rect.bottom, Display::get_width()-1, Display::get_height()-1,
+                 Color(0,0,0));
+    // left
+    gc.draw_fillrect(0, rect.top, rect.left, rect.bottom,
+                 Color(0,0,0));
+    // right
+    gc.draw_fillrect(rect.right, rect.top, Display::get_width()-1, rect.bottom,
+                 Color(0,0,0));
+  }
 }
 
 void
