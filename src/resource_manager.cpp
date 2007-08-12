@@ -24,6 +24,8 @@
 */
 
 #include <iostream>
+#include "debug.hpp"
+#include "globals.hpp"
 #include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
 #include "sprite_description.hpp"
@@ -45,7 +47,7 @@ ResourceManager::~ResourceManager()
 void
 ResourceManager::add_resources(const std::string& filename)
 {
-  std::cout << "ResourceManager: " << filename << std::endl;
+  pout(PINGUS_DEBUG_RESOURCES) << "ResourceManager: " << filename << std::endl;
   boost::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(filename);
   if (sexpr)
     {

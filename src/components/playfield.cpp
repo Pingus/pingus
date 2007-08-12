@@ -185,7 +185,6 @@ Playfield::on_primary_button_press(int x, int y)
 void
 Playfield::on_secondary_button_press (int x, int y)
 {
-  std::cout << "on_secondary_button_press" << std::endl;
   mouse_scrolling = true;
   scroll_center.x = x;
   scroll_center.y = y;
@@ -196,8 +195,6 @@ Playfield::on_secondary_button_press (int x, int y)
 void
 Playfield::on_secondary_button_release (int x, int y)
 {
-  std::cout << "on_secondary_button_release" << std::endl;
-
   UNUSED_ARG(x);
   UNUSED_ARG(y);
 

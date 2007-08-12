@@ -161,6 +161,9 @@ Client::process_events (const GameDelta& delta)
           process_scroll_event(i->scroll);
           break;
 
+        case Input::KeyboardEventType:
+          break;
+
 	default:
 	  // unhandled event
 	  std::cout << "Client::process_events (): unhandled event: " << i->type << std::endl;
