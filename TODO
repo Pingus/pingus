@@ -42,9 +42,10 @@ Roadmap for Pingus 0.7.0
 
 - walker speed looks wrong, other actions might need fine tuning as well
 
-- in old levels the exits float high up in the air
+- in old levels the exits float high up in the air (conversion likely wrong)
 
-- one pixel border at top/left of smallmap
+- german translation has font align issue when not completling a level successfully:
+http://pingus.seul.org/~grumbel/tmp/pingus-20070812-184308-1.png
 
 - climber align in the actionbutton looks wrong
 

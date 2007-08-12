@@ -68,6 +68,9 @@ public:
 
   int  getpixel(int x, int y);
 
+  /** Same as getpixel() but without the range check */
+  int  getpixel_fast(int x, int y);
+
   /** @return a number which represents the state of the collision
       map, once it changes the serial changes also */
   unsigned get_serial();

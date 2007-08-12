@@ -118,8 +118,8 @@ SmallMap::draw (DrawingContext& gc)
 
   client->get_server()->get_world()->draw_smallmap(this);
 
+  // Draw Pingus
   PinguHolder* pingus = world->get_pingus();
-
   for(PinguIter i = pingus->begin(); i != pingus->end(); ++i)
     {
       int x = static_cast<int>(x_pos + ((*i)->get_x() * width  / world->get_width()));

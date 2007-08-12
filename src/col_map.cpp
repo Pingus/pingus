@@ -28,9 +28,6 @@
 #include "gettext.h"
 #include "sprite.hpp"
 
-#define COLMAP_WITH_MEMORY_HOLE 1
-
-
 // Obtain the colmap from a memory area
 ColMap::ColMap(int w, int h)
   : serial(0),
@@ -56,6 +53,12 @@ ColMap::getpixel(int x, int y)
   } else {
     return Groundtype::GP_OUTOFSCREEN;
   }
+}
+
+int
+ColMap::getpixel_fast(int x, int y)
+{
+  return colmap[x+y*width];  
 }
 
 unsigned char*
@@ -135,8 +138,8 @@ ColMap::put(int x, int y, Groundtype::GPType p)
 {
   ++serial; // FIXME: Shouldn't be here but at a more heigher level function
 
-  if (x > 0 && x < width
-      && y > 0 && y < height)
+  if (x >= 0 && x < width
+      && y >= 0 && y < height)
     {
       colmap[x+y*width] = p;
     }
@@ -180,6 +183,7 @@ ColMap::put(const CollisionMask& mask, int sur_x, int sur_y, Groundtype::GPType 
       return;
     }
 
+  // FIXME: This could be speed up quite a bit
   uint8_t* source = mask.get_data();
   for (int y = 0; y < mask.get_height(); ++y)
     for (int x = 0; x < mask.get_width(); ++x)
@@ -272,6 +276,5 @@ ColMap::get_serial()
 {
   return serial;
 }
-
 
 /* EOF */

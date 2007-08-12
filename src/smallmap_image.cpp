@@ -68,12 +68,9 @@ SmallMapImage::get_surface ()
 void
 SmallMapImage::update_surface()
 {
-  unsigned char* buffer;
   unsigned char* cbuffer;
-  unsigned char  current_pixel;
 
   ColMap* colmap = server->get_world()->get_colmap();
-  buffer = colmap->get_data();
 
   colmap_serial = colmap->get_serial();
 
@@ -81,14 +78,15 @@ SmallMapImage::update_surface()
 
   cbuffer = static_cast<unsigned char*>(canvas.get_data());
 
-  int alpha = 255;
-
   int cmap_width  = colmap->get_width();
   int cmap_height = colmap->get_height();
 
   int width  = canvas.get_width();
   int height = canvas.get_height();
-  int pitch = canvas.get_pitch();
+  int pitch  = canvas.get_pitch();
+
+  assert(width < cmap_width && height < cmap_height);
+
   for(int y = 0; y < height; ++y)
     {
       for (int x = 0; x < width; ++x)
@@ -96,99 +94,65 @@ SmallMapImage::update_surface()
           // Index on the smallmap canvas
           int i = y * pitch + 4 * x;
 
-	  int tx = x * cmap_width / width;
-	  int ty = y * cmap_height / height;
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+              const int red   = 3;
+              const int green = 2;
+              const int blue  = 1;
+              const int alpha = 0;
+#else
+              const int red   = 0;
+              const int green = 1;
+              const int blue  = 2;
+              const int alpha = 3;
+#endif 
 
-	  current_pixel = buffer[tx + (ty * cmap_width)];
-
-	  switch (current_pixel)
+          switch (colmap->getpixel_fast(x * cmap_width  / width,
+                                        y * cmap_height / height))
             {
             case Groundtype::GP_NOTHING:
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-              cbuffer[i + 0] = alpha;
-              cbuffer[i + 1] = 0;
-              cbuffer[i + 2] = 0;
-              cbuffer[i + 3] = 0;
-#else
-              cbuffer[i + 3] = alpha;
-              cbuffer[i + 2] = 0;
-              cbuffer[i + 1] = 0;
-              cbuffer[i + 0] = 0;
-#endif
+              cbuffer[i + red]   = 0;
+              cbuffer[i + green] = 0;
+              cbuffer[i + blue]  = 0;
+              cbuffer[i + alpha] = 255;
               break;
 
             case Groundtype::GP_BRIDGE:
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-              cbuffer[i + 0] = 255;
-              cbuffer[i + 1] = 100;
-              cbuffer[i + 2] = 255;
-              cbuffer[i + 3] =   0;
-#else
-              cbuffer[i + 3] = 255;
-              cbuffer[i + 2] = 100;
-              cbuffer[i + 1] = 255;
-              cbuffer[i + 0] =   0;
-#endif
+              cbuffer[i + red]   =   0;
+              cbuffer[i + green] = 255;
+              cbuffer[i + blue]  = 100;
+              cbuffer[i + alpha] = 255;
               break;
 
             case Groundtype::GP_WATER:
             case Groundtype::GP_LAVA:
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-              cbuffer[i + 0] = 255;
-              cbuffer[i + 1] = 200;
-              cbuffer[i + 2] = 0;
-              cbuffer[i + 3] = 0;
-#else
-              cbuffer[i + 3] = 255;
-              cbuffer[i + 2] = 200;
-              cbuffer[i + 1] = 0;
-              cbuffer[i + 0] = 0;
-#endif
+              cbuffer[i + red]   = 0;
+              cbuffer[i + green] = 0;
+              cbuffer[i + blue]  = 200;
+              cbuffer[i + alpha] = 255;
               break;
 
 #if 0
               // FIXME: temporaty disabled for 0.6.0 release, since all liquids are currently lava
             case Groundtype::GP_LAVA:
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-              cbuffer[i + 0] = 255; // alpha
-              cbuffer[i + 1] = 255; // blue
-              cbuffer[i + 2] = 128;   // green
-              cbuffer[i + 3] = 128;   // red
-#else
               cbuffer[i + 3] = 255; // alpha
               cbuffer[i + 2] = 255; // blue
               cbuffer[i + 1] = 128;   // green
               cbuffer[i + 0] = 128;   // red
-#endif
               break;
 #endif
 
             case Groundtype::GP_SOLID:
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-              cbuffer[i + 0] = 255;
-              cbuffer[i + 1] = 100;
-              cbuffer[i + 2] = 100;
-              cbuffer[i + 3] = 100;
-#else
-              cbuffer[i + 3] = 255;
-              cbuffer[i + 2] = 100;
-              cbuffer[i + 1] = 100;
-              cbuffer[i + 0] = 100;
-#endif
+              cbuffer[i + red]   = 100;
+              cbuffer[i + green] = 100;
+              cbuffer[i + blue]  = 100;
+              cbuffer[i + alpha] = 255;
               break;
 
             default:
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-              cbuffer[i + 0] = 255;
-              cbuffer[i + 1] = 200;
-              cbuffer[i + 2] = 200;
-              cbuffer[i + 3] = 200;
-#else
-              cbuffer[i + 3] = 255;
-              cbuffer[i + 2] = 200;
-              cbuffer[i + 1] = 200;
-              cbuffer[i + 0] = 200;
-#endif
+              cbuffer[i + red]   = 200;
+              cbuffer[i + green] = 200;
+              cbuffer[i + blue]  = 200;
+              cbuffer[i + alpha] = 255;
               break;
             }
 	}
