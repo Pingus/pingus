@@ -113,7 +113,7 @@ SmallMap::draw (DrawingContext& gc)
     }
   
   gc.draw(image->get_surface(), Vector3f((float)x_pos, (float)y_pos));
-  gc.draw_rect(rect.left, rect.top, rect.right, rect.bottom,
+  gc.draw_rect((float)rect.left, (float)rect.top, (float)rect.right, (float)rect.bottom,
                Color(0, 255, 0));
 
   client->get_server()->get_world()->draw_smallmap(this);

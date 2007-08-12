@@ -1698,23 +1698,7 @@
 					>
 				</File>
 				<File
-					RelativePath=".\src\lisp\properties.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\lisp\properties.hpp"
-					>
-				</File>
-				<File
 					RelativePath=".\src\lisp\property_iterator.hpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\lisp\writer.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\lisp\writer.hpp"
 					>
 				</File>
 			</Filter>
