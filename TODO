@@ -42,7 +42,13 @@ Roadmap for Pingus 0.7.0
 
 - hurry-up should be removed and replaced by something less heavy
 
-- check all classic levels for issues
+- convert all levels and check all classic levels for issues:
+
+Convert script (issues: space in description is wrong, some levels fail):
+
+ see: http://pingus.seul.org/~grumbel/tmp/pingusconversion.log
+
+[ingo@penpen:~/projects/pingus/svn/pingus_0_6/data/levels]$ find -name "*.pingus" -print0 | while read -d $'\0' -r file; do echo "$file: ";xalan -indent 0 -xsl ../../../pingus_sdl/contrib/pingusv1tov2.xsl -in "$file" -out "../../../pingus_sdl/data/levels/$file"; ../../../pingus_sdl/xml2sexpr.rb "../../../pingus_sdl/data/levels/$file" > "../../../pingus_sdl/data/levels/${file%%.pingus}.scm"; done
 
 - levels seem to have lost something (names, maybe more) when going
   from Pingus0.6 over PingusClanlib to PingusSDL
