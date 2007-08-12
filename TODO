@@ -40,6 +40,10 @@ Roadmap for Pingus 0.8.0
 Roadmap for Pingus 0.7.0
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
+- Font::draw() origin only works properly for left, right and center break with multiline text
+
+- nuke button is unclean, other buttons not so great either -> repaint
+
 - walker speed looks wrong, other actions might need fine tuning as well
 
 - in old levels the exits float high up in the air (conversion likely wrong)
