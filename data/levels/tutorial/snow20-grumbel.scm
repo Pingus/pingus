@@ -4,7 +4,7 @@
   (head 
     (levelname "Three solutions, it's up to you")
     (description "Now that you've learned all the actions, it's time for some more practice. "
-                 "This levels presents you with at least three different ways to solve it. "
+                 "This level presents you with at least three different ways to solve it. "
                  "It's up to you which one you pick.")
     (author "Ingo Ruhnke <grumbel@gmx.de>")
     (number-of-pingus 20)
