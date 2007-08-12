@@ -57,12 +57,6 @@ private:
       on the position of the cursor in the small map */
   bool scroll_mode;
 
-  /** Width of the rectangle displayed inside the small map */
-  int rwidth;
-
-  /** Height of the rectangle displayed inside the small map */
-  int rheight;
-
   bool has_focus;
 
   /** Pointer to the current GC, only valid inside draw() */

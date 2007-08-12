@@ -364,10 +364,10 @@ Display::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& colo
 void
 Display::draw_rect(int x1, int y1, int x2, int y2, const Color& color)
 {
-  Display::draw_line(Vector2i(x1, y1), Vector2i(x2, y1), color);
-  Display::draw_line(Vector2i(x1, y2), Vector2i(x2, y2), color);
-  Display::draw_line(Vector2i(x1, y1), Vector2i(x1, y2), color);
-  Display::draw_line(Vector2i(x2, y1), Vector2i(x2, y2), color);
+  Display::draw_line(Vector2i(x1, y1),   Vector2i(x2-1, y1), color);
+  Display::draw_line(Vector2i(x1, y2-1), Vector2i(x2-1, y2-1), color);
+  Display::draw_line(Vector2i(x1, y1),   Vector2i(x1, y2-1), color);
+  Display::draw_line(Vector2i(x2-1, y1), Vector2i(x2-1, y2-1), color);
 }
 
 void
