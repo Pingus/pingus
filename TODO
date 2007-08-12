@@ -9,8 +9,6 @@ Roadmap for Pingus 0.8.0
 
 - make option menu accessible from in-game (top/left corner)
 
-- add drag&drop scrolling
-
 - proper waiter animation
 
 - repaint pause and fast-forward button
@@ -39,6 +37,17 @@ Roadmap for Pingus 0.8.0
 
 Roadmap for Pingus 0.7.0
 ~~~~~~~~~~~~~~~~~~~~~~~~
+
+- add drag&drop scrolling
+
+- exit wrong at data/levels/tutorial/snow12-grumbel.scm (colmap removal buggy?)
+
+- Spelling: data/levels/tutorial/snow20-grumbel.scm:
+  "more practice. This level(s) presents you with at least three"
+
+- add [Ctrl]+g to grab the mouse (according to Darklock that is common for SDL apps)
+
+- add Alt-Enter for fullscreen toggling
 
 - Font::draw() origin only works properly for left, right and center break with multiline text
 
