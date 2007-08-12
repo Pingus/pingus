@@ -28,6 +28,16 @@
 #include <iostream>
 #include "pixel_buffer.hpp"
 
+class PixelBufferImpl
+{
+public:
+  PixelBufferImpl(SDL_Surface* surface = NULL) : surface(surface) {}
+  ~PixelBufferImpl() {
+    SDL_FreeSurface(surface);
+  }
+  SDL_Surface* surface;
+};
+
 PixelBuffer::PixelBuffer()
 {
 }

@@ -188,68 +188,6 @@ ColMap::put(const CollisionMask& mask, int sur_x, int sur_y, Groundtype::GPType 
           if (blit_allowed(x + sur_x, y + sur_y, pixel))
             put(x + sur_x, y + sur_y, pixel);
       }
-
-#if 0 
-
-  // FIXME: Little slow
-  provider.lock();
-  // Rewritting blitter for 32bit depth (using get_pixel())
-  for (int y=0; y < provider.get_height(); ++y)
-    for (int x=0; x < provider.get_width(); ++x)
-      {
-        Color color = provider.get_pixel(x, y);
-        if (color.a > 32) // Alpha threshold
-          {
-            if (blit_allowed (x + sur_x, y + sur_y, pixel))
-              put(x + sur_x, y + sur_y, pixel);
-          }
-      }
-  provider.unlock();
-
-  else if (provider.get_format().get_depth() == 8)
-    {
-      unsigned char* buffer;
-      int swidth = provider.get_width();
-      int sheight = provider.get_height();
-      int y_offset = -sur_y;
-      int x_offset = -sur_x;
-      if (y_offset < 0) y_offset = 0;
-      if (x_offset < 0) x_offset = 0;
-
-      //provider.lock();
-      buffer = static_cast<unsigned char*>(provider.get_data());
-
-      if (provider.get_format().has_colorkey())
-	{
-	  unsigned int colorkey = provider.get_format().get_colorkey();
-	  for(int line = y_offset; line < sheight && (line + sur_y) < height; ++line)
-	    for (int i = x_offset; i < swidth && (i+sur_x) < width; ++i)
-	      {
-		if (buffer[i + (swidth*line)] != colorkey)
-		  {
-		    if (blit_allowed (i + sur_x, line + sur_y, pixel))
-		      colmap[i + (width*(line+sur_y) + sur_x)] = pixel;
-		  }
-	      }
-	}
-      else
-	{
-	  for(int line = y_offset; line < sheight && (line + sur_y) < height; ++line)
-	    for (int i = x_offset; i < swidth && (i+sur_x) < width; ++i)
-	      {
-		if (blit_allowed (i + sur_x, line + sur_y, pixel))
-		  colmap[i + (width*(line+sur_y) + sur_x)] = pixel;
-	      }
-	}
-    }
-  else
-    {
-      std::cout << "ColMap: Unsupported color depth, ignoring" << std::endl;
-    }
-
-  // FIXME: Memory hole
-  // provider.unlock();
-#endif
 }
 
 void

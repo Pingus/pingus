@@ -31,15 +31,7 @@
 #include <boost/shared_ptr.hpp>
 #include "math/color.hpp"
 
-class PixelBufferImpl
-{
-public:
-  PixelBufferImpl(SDL_Surface* surface = NULL) : surface(surface) {}
-  ~PixelBufferImpl() {
-    SDL_FreeSurface(surface);
-  }
-  SDL_Surface* surface;
-};
+class PixelBufferImpl;
 
 /** */
 class PixelBuffer
