@@ -35,10 +35,29 @@ Roadmap for Pingus 0.8.0
 
 - editor isn't working
 
+- rework the UI, either go glas-like or use the blackbord style 
+
 Roadmap for Pingus 0.7.0
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-- collision map in data/levels/tutorial/snow15-grumbel.scm is wrong 
+- walker speed looks wrong, other actions might need fine tuning as well
+
+- in old levels the exits float high up in the air
+
+- one pixel border at top/left of smallmap
+
+- climber align in the actionbutton looks wrong
+
+- fix all those Windstille file headers and replace them with Pingus
+
+- add all those who contributed to SDL version to AUTHORS and credits
+
+- update INSTALL.* file
+
+- data/levels/tutorial/snow9-grumbel.scm, at the right corner there is
+  something wrong (hole in a surface), also see colmap which doesn't look correct either
+
+- fallen snow looks to blueish
 
 - remove all the remaining unneeded debuging std::cout's
 
@@ -65,6 +84,10 @@ Convert script (issues: space in description is wrong, some levels fail):
   http://kapsa.cz/~tomasb/pingus/intl-patch.tgz)
 
 - src/components/pingus_counter.hpp font should be fixed-width/monospace
+
+- screenshot does pnm not png
+
+- "core/misc/404sprite" isn't returned for missing graphics
 
 Older Stuff:
 ~~~~~~~~~~~~
@@ -101,8 +124,6 @@ Older Stuff:
 - playable and non-playable levels should be sorted
 
 - add better load-from-file support for hotspots, backgrounds, etc.
-
-- fix screenshot segfault
 
 - pingus doesn't die when out-of-screen
 
