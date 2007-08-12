@@ -63,15 +63,6 @@ public:
   /** */
   static unsigned int get_mtime (const std::string& res_name);
 
-#if 0
-  /** Load a surface with res_name from datafile */
-  static CL_Surface load_surface(const std::string& res_name,
-				 ResourceModifierNS::ResourceModifier modifier
-				 = ResourceModifierNS::ROT0);
-
-  /** Load a surface from the ResDescriptor */
-  static CL_Surface load_surface(const ResDescriptor&);
-#endif
   static Sprite        load_sprite(const ResDescriptor&);
   static Sprite        load_sprite(const std::string& res_name);
   static CollisionMask load_collision_mask(const std::string& res_name);

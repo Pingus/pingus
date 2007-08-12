@@ -100,15 +100,6 @@ Resource::deinit()
 #endif
 }
 
-#if 0
-CL_Surface
-Resource::load_surface(const std::string& res_name,
-                       ResourceModifierNS::ResourceModifier modifier)
-{
-  return load_surface(ResDescriptor(res_name, modifier));
-}
-#endif
-
 Sprite
 Resource::load_sprite(const ResDescriptor& desc)
 {

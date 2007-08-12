@@ -186,7 +186,8 @@ PixelBuffer modify(PixelBuffer source_buffer, const TransF&)
     {
       PixelBuffer target_buffer(TransF::get_width (source_buffer.get_width(), source_buffer.get_height()), 
                                 TransF::get_height(source_buffer.get_width(), source_buffer.get_height()),
-                                source->format->palette, source->format->colorkey);
+                                source->format->palette, 
+                                (source->flags & SDL_SRCCOLORKEY) ? source->format->colorkey : -1);
       SDL_Surface* target = target_buffer.get_surface();
       SDL_LockSurface(target);
 
