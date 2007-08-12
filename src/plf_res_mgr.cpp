@@ -30,7 +30,7 @@ PingusLevel
 PLFResMgr::load_plf_raw(const std::string& res_name,
                         const std::string& filename)
 {
-  std::cout << "PLFResMgr: '" << res_name << "'  -> '" << filename << "'" << std::endl;
+  pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: '" << res_name << "'  -> '" << filename << "'" << std::endl;
 
   PLFMap::iterator i = plf_map.find(res_name);
 

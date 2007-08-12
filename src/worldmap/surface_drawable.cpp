@@ -39,7 +39,7 @@ SurfaceDrawable::SurfaceDrawable(FileReader reader)
   reader.read_bool  ("auto-uncover", auto_uncover);
 
   surface = Resource::load_sprite(desc);
-  std::cout << "XXX Desc: " << desc.res_name << std::endl;
+  //std::cout << "XXX Desc: " << desc.res_name << std::endl;
 }
 
 void
