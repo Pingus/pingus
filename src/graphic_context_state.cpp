@@ -224,8 +224,8 @@ GraphicContextState::zoom_to (const Rectf& rect)
 Vector2f
 GraphicContextState::screen2world(const Vector2i& pos_)
 {
-  Vector2f pos(float(pos_.x),
-               float(pos_.y));
+  Vector2f pos(float(pos_.x - impl->rect.left),
+               float(pos_.y - impl->rect.top));
 
   float sa = (float)sin(-impl->rotation/180.0f*M_PI);
   float ca = (float)cos(-impl->rotation/180.0f*M_PI);
