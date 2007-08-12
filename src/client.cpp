@@ -91,18 +91,19 @@ Client::draw_background (DrawingContext& gc)
   Rect rect = playfield->get_rect();
   if (rect != Rect(Vector2i(0,0), Size(Display::get_width(), Display::get_height())))
   {
+    Color border_color(50, 65, 75);
     // top
-    gc.draw_fillrect(0, 0, Display::get_width()-1, rect.top,
-                 Color(0,0,0));
+    gc.draw_fillrect(0, 0, Display::get_width(), rect.top,
+                     border_color);
     // bottom
-    gc.draw_fillrect(0, rect.bottom, Display::get_width()-1, Display::get_height()-1,
-                 Color(0,0,0));
+    gc.draw_fillrect(0, rect.bottom, Display::get_width(), Display::get_height(),
+                 border_color);
     // left
     gc.draw_fillrect(0, rect.top, rect.left, rect.bottom,
-                 Color(0,0,0));
+                 border_color);
     // right
-    gc.draw_fillrect(rect.right, rect.top, Display::get_width()-1, rect.bottom,
-                 Color(0,0,0));
+    gc.draw_fillrect(rect.right, rect.top, Display::get_width(), rect.bottom,
+                 border_color);
   }
 }
 
