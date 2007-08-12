@@ -38,6 +38,8 @@ Roadmap for Pingus 0.8.0
 Roadmap for Pingus 0.7.0
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
+- collision map in data/levels/tutorial/snow15-grumbel.scm is wrong 
+
 - remove all the remaining unneeded debuging std::cout's
 
 - hurry-up should be removed and replaced by something less heavy
