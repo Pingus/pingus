@@ -182,7 +182,7 @@ public:
           }
         else if (text[i] == '\n')
           {
-            dstx = x;
+            dstx = x - offset.x;
             dsty += surface->h;
           }
         else
