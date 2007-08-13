@@ -31,7 +31,6 @@
 #include "button_panel.hpp"
 #include "playfield.hpp"
 
-
 Playfield::Playfield (Client* client_, const Rect& rect_)
   : rect(rect_),
     client(client_),
@@ -183,7 +182,7 @@ Playfield::on_primary_button_press(int x, int y)
 }
 
 void
-Playfield::on_secondary_button_press (int x, int y)
+Playfield::on_secondary_button_press(int x, int y)
 {
   mouse_scrolling = true;
   scroll_center.x = x;
@@ -207,6 +206,37 @@ Playfield::on_pointer_move (int x, int y)
   // FIXME: useless stuff, but currently the controller doesn't have a state
   mouse_pos.x = x;
   mouse_pos.y = y;
+
+  if (maintainer_mode)
+    {
+      Uint8 *keystate = SDL_GetKeyState(NULL);
+      if (keystate[SDLK_r])
+        {
+          CollisionMask mask("other/bash_radius_gfx");
+          Vector2f p = state.screen2world(mouse_pos);
+          server->get_world()->remove(mask, 
+                                      int(p.x - mask.get_width()/2), 
+                                      int(p.y - mask.get_height()/2));
+        }
+      else if (keystate[SDLK_g])
+        {
+          CollisionMask mask("other/bash_radius_gfx");
+          Vector2f p = state.screen2world(mouse_pos);
+          server->get_world()->put(mask, 
+                                   int(p.x - mask.get_width()/2), 
+                                   int(p.y - mask.get_height()/2),
+                                   Groundtype::GP_GROUND);
+        }
+      else if (keystate[SDLK_b])
+        {
+          CollisionMask mask("other/bash_radius_gfx");
+          Vector2f p = state.screen2world(mouse_pos);
+          server->get_world()->put(mask, 
+                                   int(p.x - mask.get_width()/2), 
+                                   int(p.y - mask.get_height()/2),
+                                   Groundtype::GP_BRIDGE);
+        }
+    }
 }
 
 void
