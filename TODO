@@ -35,36 +35,47 @@ Roadmap for Pingus 0.8.0
 
 - rework the UI, either go glas-like or use the blackbord style 
 
+- Font::draw() origin only works properly for left, right and center break with multiline text
+
+- file parsing easily crashes or asserts on incorrect files
+
 Roadmap for Pingus 0.7.0
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-- add drag&drop scrolling
-
+Important:
+==========
 - exit wrong at data/levels/tutorial/snow12-grumbel.scm (colmap removal buggy?)
 
-- Font::draw() origin only works properly for left, right and center break with multiline text
+- in old levels the exits float high up in the air (conversion likely wrong)
+
+- update INSTALL.* file
+
+- add all those who contributed to SDL version to AUTHORS and credits
+
+- remove all the remaining unneeded debuging std::cout's
+
+- separate gfx/colmap surfaces aren't used
+
+- Latin1 clean (also Latin-2 and Latin-9, see:
+  http://kapsa.cz/~tomasb/pingus/intl-patch.tgz)
+
+- src/components/pingus_counter.hpp font should be fixed-width/monospace
+
+Nice to Have:
+=============
+- convert all levels and check all classic levels for issues:
+
+- add drag&drop scrolling
 
 - nuke button is unclean, other buttons not so great either -> repaint
 
 - walker speed looks wrong, other actions might need fine tuning as well
 
-- in old levels the exits float high up in the air (conversion likely wrong)
-
 - climber align in the actionbutton looks wrong
 
 - fix all those Windstille file headers and replace them with Pingus
 
-- add all those who contributed to SDL version to AUTHORS and credits
-
-- update INSTALL.* file
-
-- fallen snow looks to blueish
-
-- remove all the remaining unneeded debuging std::cout's
-
 - hurry-up should be removed and replaced by something less heavy
-
-- convert all levels and check all classic levels for issues:
 
 Convert script (issues: space in description is wrong, some levels fail):
 
@@ -77,14 +88,7 @@ Convert script (issues: space in description is wrong, some levels fail):
 
 - liquid's old-width-handling isn't handled by sexpr, but might be needed for some levels
 
-- separate gfx/colmap surfaces aren't used
-
 - remove unneeded/outdated fonts
-
-- Latin1 clean (also Latin-2 and Latin-9, see:
-  http://kapsa.cz/~tomasb/pingus/intl-patch.tgz)
-
-- src/components/pingus_counter.hpp font should be fixed-width/monospace
 
 - screenshot does pnm not png
 
