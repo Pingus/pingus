@@ -195,9 +195,6 @@ GroundMap::put_alpha_surface(PixelBuffer provider, PixelBuffer sprovider,
                                      + sprovider.get_surface()->format->BitsPerPixel));
     }
 
-  provider.lock();
-  sprovider.lock();
-
   int swidth  = sprovider.get_width();
   int twidth  = provider.get_width();
 
@@ -212,6 +209,9 @@ GroundMap::put_alpha_surface(PixelBuffer provider, PixelBuffer sprovider,
 
   if (end_x - start_x <= 0 || end_y - start_y <= 0)
     return;
+
+  provider.lock();
+  sprovider.lock();
 
   Uint8* target_buf = static_cast<Uint8*>(provider.get_data());
   Uint8* source_buf = static_cast<Uint8*>(sprovider.get_data());

@@ -25,6 +25,7 @@
 #include "collision_mask.hpp"
 #include "pixel_buffer.hpp"
 #include "pingus_error.hpp"
+#include "math.hpp"
 #include "gettext.h"
 #include "sprite.hpp"
 
@@ -82,55 +83,26 @@ ColMap::get_width()
 void
 ColMap::remove(const CollisionMask& mask, int x, int y)
 {
-	++serial;
+  ++serial;
 
-	int swidth  = mask.get_width();
-	int spitch  = mask.get_pitch();
-	int sheight = mask.get_height();
-	int y_offset = -y;
-	int x_offset = -x;
-	if (y_offset < 0) y_offset = 0;
-	if (x_offset < 0) x_offset = 0;
+  int swidth  = mask.get_width();
+  int spitch  = mask.get_pitch();
+  int sheight = mask.get_height();
+  int y_offset = Math::max(-y, 0);
+  int x_offset = Math::max(-x, 0);
+  uint8_t* buffer = mask.get_data();
 
-	mask.get_pixelbuffer().lock();
-
-	if (mask.get_pixelbuffer().get_surface()->format->BitsPerPixel == 32)
-	{
-		for(int line = y_offset; line < sheight && (line + y) < height; ++line)
-		{
-			for (int i = x_offset; i < swidth && (i+x) < width; ++i)
-			{
-				if (mask.get_pixelbuffer().get_pixel(i, line).a != 0)
-				{
-					if (colmap[i + (width*(line+y) + x)] != Groundtype::GP_SOLID)
-						colmap[i + (width*(line+y) + x)] = Groundtype::GP_NOTHING;
-				}
-			}
-		}
-	}
-	else if (mask.get_pixelbuffer().get_surface()->format->BitsPerPixel == 8)
-	{
-		unsigned char* buffer;
-		buffer = static_cast<unsigned char*>(mask.get_pixelbuffer().get_data());
-
-		for(int line = y_offset; line < sheight && (line + y) < height; ++line)
-		{
-			for (int i = x_offset; i < swidth && (i+x) < width; ++i)
-			{
-				if (buffer[i + (spitch*line)])
-				{
-					if (colmap[i + (width*(line+y) + x)] != Groundtype::GP_SOLID)
-						colmap[i + (width*(line+y) + x)] = Groundtype::GP_NOTHING;
-				}
-			}
-		}
-	}
-	else
-	{
-		PingusError::raise("ColMap::remove() - image format not supported");
-	}
-
-	mask.get_pixelbuffer().unlock();
+  for (int line = y_offset; line < sheight && (line + y) < height; ++line)
+    {
+      for (int i = x_offset; i < swidth && (i+x) < width; ++i)
+        {
+          if (buffer[i + (spitch*line)])
+            {
+              if (colmap[i + (width*(line+y) + x)] != Groundtype::GP_SOLID)
+                colmap[i + (width*(line+y) + x)] = Groundtype::GP_NOTHING;
+            }
+        }
+    }
 }
 
 void
@@ -146,7 +118,7 @@ ColMap::put(int x, int y, Groundtype::GPType p)
   else
     {
       if (verbose > 2)
-	std::cout << "ColMap: remove: Out of map" << std::endl;
+        std::cout << "ColMap: remove: Out of map" << std::endl;
     }
 }
 

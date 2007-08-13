@@ -58,9 +58,6 @@ Roadmap for Pingus 0.7.0
 
 - update INSTALL.* file
 
-- data/levels/tutorial/snow9-grumbel.scm, at the right corner there is
-  something wrong (hole in a surface), also see colmap which doesn't look correct either
-
 - fallen snow looks to blueish
 
 - remove all the remaining unneeded debuging std::cout's
