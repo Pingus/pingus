@@ -35,7 +35,7 @@ Blocker::Blocker(Pingu* p)
   if (   rel_getpixel(0,-1)  ==  Groundtype::GP_NOTHING
       && rel_getpixel(0, -2) ==  Groundtype::GP_GROUND)
     {
-      pingu->set_x(pingu->get_x() + 1);
+      pingu->set_y(pingu->get_y() + 1);
     }
   else if (   rel_getpixel(0,-1) ==  Groundtype::GP_NOTHING
 	   && rel_getpixel(0,-2) ==  Groundtype::GP_NOTHING
