@@ -247,7 +247,7 @@ Display::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& colo
 
   // vertical line
   if (sx == dx) {
-	if ((sx < clipx1 && dx < clipx1) || (sx > clipx2 && dx > clipx2)) {
+    if (sx < clipx1 || sx > clipx2 || (sy < clipy1 && dy < clipy1) || (sy > clipy2 && dy > clipy2)) {
       return;
     }
     clip(sy, clipy1, clipy2);
@@ -262,7 +262,7 @@ Display::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& colo
 
   // horizontal
   if (sy == dy) {
-	if ((sy < clipy1 && dy < clipy1) || (sy > clipy2 && dy > clipy2)) {
+    if (sy < clipy1 || sy > clipy2 || (sx < clipx1 && dx < clipx1) || (sx > clipx2 && dx > clipx2)) {
       return;
     }
     clip(sx, clipx1, clipx2);
