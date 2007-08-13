@@ -45,8 +45,6 @@ Roadmap for Pingus 0.7.0
 Important:
 ==========
 
-- only auto/border-scroll with screengrab or fullscreen
-
 - in old levels the exits float high up in the air (conversion likely wrong)
 
 - update INSTALL.* file
