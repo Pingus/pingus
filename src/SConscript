@@ -167,6 +167,8 @@ env.Program('../pingus', [
 'gui/screen_ptr.cpp', 
 'gui/surface_button.cpp',
 
+'line_iterator.cpp',
+
 'lisp/getters.cpp',
 'lisp/lexer.cpp',
 'lisp/lisp.cpp',

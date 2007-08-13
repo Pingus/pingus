@@ -128,7 +128,7 @@ ColMap::blit_allowed (int x, int y,  Groundtype::GPType gtype)
   // FIXME: Inline me
   if (gtype == Groundtype::GP_BRIDGE)
     {
-      int pixel = getpixel (x, y);
+      int pixel = getpixel(x, y);
       return pixel == Groundtype::GP_NOTHING;
     }
   else
