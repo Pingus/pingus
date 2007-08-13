@@ -28,6 +28,7 @@
 #include "SDL.h"
 #include "SDL_image.h"
 #include "font.hpp"
+#include "line_iterator.hpp"
 #include "font_description.hpp"
 #include "gui/display.hpp"
 
@@ -167,6 +168,16 @@ public:
 
   void draw(Origin origin, int x, int y, const std::string& text, SDL_Surface* target)
   {
+    // FIXME: only origins top_left, top_right and top_center to work right now
+    LineIterator it(text);
+    while(it.next()) {
+      draw_line(origin, x, y, it.get(), target);
+      y += surface->h;
+    }
+  }
+
+  void draw_line(Origin origin, int x, int y, const std::string& text, SDL_Surface* target)
+  {
     Vector2i offset = calc_origin(origin, get_size(text));
 
     int dstx = x - offset.x;
@@ -179,11 +190,6 @@ public:
         if (text[i] == ' ')
           {
             dstx += space_length;
-          }
-        else if (text[i] == '\n')
-          {
-            dstx = x - offset.x;
-            dsty += surface->h;
           }
         else
           {
