@@ -46,7 +46,7 @@ private:
   int   height;
 
   /** A array of uchar, each uchar represents a pixel on the map. */
-  unsigned char* colmap;
+  uint8_t* colmap;
 
 public:
   /** Init the colmap from a given area of memory.

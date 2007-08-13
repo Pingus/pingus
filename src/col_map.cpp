@@ -81,25 +81,28 @@ ColMap::get_width()
 }
 
 void
-ColMap::remove(const CollisionMask& mask, int x, int y)
+ColMap::remove(const CollisionMask& mask, int x_pos, int y_pos)
 {
   ++serial;
 
   int swidth  = mask.get_width();
-  int spitch  = mask.get_pitch();
   int sheight = mask.get_height();
-  int y_offset = Math::max(-y, 0);
-  int x_offset = Math::max(-x, 0);
   uint8_t* buffer = mask.get_data();
 
-  for (int line = y_offset; line < sheight && (line + y) < height; ++line)
+  int start_x = Math::max(0, -x_pos);
+  int start_y = Math::max(0, -y_pos);
+  int end_x   = Math::min(swidth,  width  - x_pos);
+  int end_y   = Math::min(sheight, height - y_pos);
+
+  for (int y = start_y; y < end_y; ++y)
     {
-      for (int i = x_offset; i < swidth && (i+x) < width; ++i)
+      for (int x = start_x; x < end_x; ++x)
         {
-          if (buffer[i + (spitch*line)])
+          if (buffer[y*swidth + x])
             {
-              if (colmap[i + (width*(line+y) + x)] != Groundtype::GP_SOLID)
-                colmap[i + (width*(line+y) + x)] = Groundtype::GP_NOTHING;
+              uint8_t& pixel = colmap[(y+y_pos)*width + (x+x_pos)];
+              if (pixel != Groundtype::GP_SOLID)
+                pixel = Groundtype::GP_NOTHING;
             }
         }
     }
@@ -175,64 +178,50 @@ ColMap::draw(DrawingContext& gc)
   canvas.lock();
   buffer = static_cast<unsigned char*>(canvas.get_data());
 
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+  const int red   = 3;
+  const int green = 2;
+  const int blue  = 1;
+  const int alpha = 0;  
+#else
+  const int red   = 0;
+  const int green = 1;
+  const int blue  = 2;
+  const int alpha = 3;
+#endif
+
+  uint8_t trans = 220;
+
   for(int i = 0; i < (width * height); ++i)
     {
       switch(colmap[i])
 	{
 	case Groundtype::GP_NOTHING:
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-	  buffer[i * 4 + 0] = 0;
-	  buffer[i * 4 + 1] = 0;
-	  buffer[i * 4 + 2] = 0;
-	  buffer[i * 4 + 3] = 0;
-#else
-	  buffer[i * 4 + 3] = 0;
-	  buffer[i * 4 + 2] = 0;
-	  buffer[i * 4 + 1] = 0;
-	  buffer[i * 4 + 30] = 0;
-#endif
+	  buffer[i * 4 + red  ] =   0;
+	  buffer[i * 4 + green] =   0;
+	  buffer[i * 4 + blue ] =   0;
+	  buffer[i * 4 + alpha] =   0;
 	  break;
 
 	case Groundtype::GP_SOLID:
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-	  buffer[i * 4 + 0] = 255;
-	  buffer[i * 4 + 1] = 100;
-	  buffer[i * 4 + 2] = 100;
-	  buffer[i * 4 + 3] = 100;
-#else
-	  buffer[i * 4 + 3] = 255;
-	  buffer[i * 4 + 2] = 100;
-	  buffer[i * 4 + 1] = 100;
-	  buffer[i * 4 + 30] = 100;
-#endif
+	  buffer[i * 4 + red  ] = 100;
+	  buffer[i * 4 + green] = 100;
+	  buffer[i * 4 + blue ] = 100;
+	  buffer[i * 4 + alpha] = trans;
 	  break;
 
 	case Groundtype::GP_BRIDGE:
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-	  buffer[i * 4 + 0] = 255;
-	  buffer[i * 4 + 1] = 0;
-	  buffer[i * 4 + 2] = 0;
-	  buffer[i * 4 + 3] = 200;
-#else
-	  buffer[i * 4 + 3] = 255;
-	  buffer[i * 4 + 2] = 0;
-	  buffer[i * 4 + 1] = 0;
-	  buffer[i * 4 + 0] = 200;
-#endif
+	  buffer[i * 4 + red  ] = 200;
+	  buffer[i * 4 + green] =   0;
+	  buffer[i * 4 + blue ] =   0;
+	  buffer[i * 4 + alpha] = trans;
 	  break;
 
 	default:
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-	  buffer[i * 4 + 0] = 255;
-	  buffer[i * 4 + 1] = 200;
-	  buffer[i * 4 + 2] = 200;
-	  buffer[i * 4 + 3] = 200;
-#else
-	  buffer[i * 4 + 3] = 255;
-	  buffer[i * 4 + 2] = 200;
-	  buffer[i * 4 + 1] = 200;
-	  buffer[i * 4 + 0] = 200;
-#endif
+	  buffer[i * 4 + red  ] = 200;
+	  buffer[i * 4 + green] = 200;
+	  buffer[i * 4 + blue ] = 200;
+	  buffer[i * 4 + alpha] = trans;
 	  break;
 	}
     }
@@ -240,7 +229,7 @@ ColMap::draw(DrawingContext& gc)
   canvas.unlock();
 
   Sprite sprite(canvas);
-  gc.draw(sprite, 0, 0);
+  gc.draw(sprite, 0, 0, 1000);
 }
 
 unsigned

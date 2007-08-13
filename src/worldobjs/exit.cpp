@@ -34,8 +34,6 @@ namespace WorldObjs {
 Exit::Exit(const FileReader& reader)
   : smallmap_symbol(Resource::load_sprite("core/misc/smallmap_exit"))
 {
-  ResDescriptor desc;
-
   reader.read_vector("position", pos);
   reader.read_desc  ("surface",  desc);
   reader.read_int   ("owner-id", owner_id);
@@ -58,7 +56,8 @@ Exit::~Exit ()
 void
 Exit::on_startup ()
 {
-  CollisionMask mask = Resource::load_collision_mask("core/misc/smallmap_exit");
+  // FIXME: This will fail with exits that contain multiple frames
+  CollisionMask mask(desc);
   world->get_colmap()->remove(mask,
 			      static_cast<int>(pos.x) - sprite.get_width()/2,
 			      static_cast<int>(pos.y) - sprite.get_height());

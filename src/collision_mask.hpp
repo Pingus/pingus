@@ -47,7 +47,6 @@ public:
   
   int get_width() const;
   int get_height() const;
-  int get_pitch() const;
   
   PixelBuffer get_pixelbuffer() const;
   uint8_t* get_data() const;

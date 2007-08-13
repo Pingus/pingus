@@ -118,38 +118,34 @@ GroundMap::draw(SceneContext& gc)
 
   // FIXME: delete the next four lines and replace them with gc.get_clip_rect()
   if (draw_collision_map)
-    {
-      draw_colmap(gc);
-    }
-  else
-    {
-      // Trying to calc which parts of the tilemap needs to be drawn
-      int start_x = Math::max(0, display.left/tile_size);
-      int start_y = Math::max(0, display.top/tile_size);
-      int tilemap_width  = display.get_width()  / tile_size + 1;
-      int tilemap_height = display.get_height() / tile_size + 1;
+    draw_colmap(gc);
 
-      // drawing the stuff
-      for (int x = start_x; x <= (start_x + tilemap_width) && x < int(tile.size()); ++x)
-        for (int y = start_y; y <= start_y + tilemap_height && y < int(tile[x].size()); ++y)
+  // Trying to calc which parts of the tilemap needs to be drawn
+  int start_x = Math::max(0, display.left/tile_size);
+  int start_y = Math::max(0, display.top/tile_size);
+  int tilemap_width  = display.get_width()  / tile_size + 1;
+  int tilemap_height = display.get_height() / tile_size + 1;
+
+  // drawing the stuff
+  for (int x = start_x; x <= (start_x + tilemap_width) && x < int(tile.size()); ++x)
+    for (int y = start_y; y <= start_y + tilemap_height && y < int(tile[x].size()); ++y)
+      {
+        if (tile[x][y].get_sprite())
           {
-            if (tile[x][y].get_sprite())
-              {
-                //std::cout << "Drawing GroundMap Tile " << std::endl;
-                gc.color().draw(tile[x][y].get_sprite(),
-                                Vector3f((float)x * tile_size, (float)y * tile_size));
-              }
-            else
-              {
-                if (0 /*pingus_debug_flags & PINGUS_DEBUG_TILES*/)
-                  gc.color().draw_fillrect((float)x * tile_size,
-                                           (float)y * tile_size,
-                                           (float)x * tile_size + tile_size,
-                                           (float)y * tile_size + tile_size,
-                                           Color(255, 0, 0, 75));
-              }
+            //std::cout << "Drawing GroundMap Tile " << std::endl;
+            gc.color().draw(tile[x][y].get_sprite(),
+                            Vector3f((float)x * tile_size, (float)y * tile_size));
           }
-    }
+        else
+          {
+            if (0 /*pingus_debug_flags & PINGUS_DEBUG_TILES*/)
+              gc.color().draw_fillrect((float)x * tile_size,
+                                       (float)y * tile_size,
+                                       (float)x * tile_size + tile_size,
+                                       (float)y * tile_size + tile_size,
+                                       Color(255, 0, 0, 75));
+          }
+      }
 }
 
 // Returns the width of the map, it is read directly from the *.psm file

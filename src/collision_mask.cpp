@@ -65,7 +65,7 @@ CollisionMask::init(const ResDescriptor& res_desc)
     {
       uint8_t* source = static_cast<uint8_t*>(surface->pixels);
       if (surface->flags & SDL_SRCCOLORKEY)
-        {
+        { // surface with transparent areas
           for(int y = 0; y < height; ++y)
             for(int x = 0; x < width; ++x)
               {
@@ -76,7 +76,7 @@ CollisionMask::init(const ResDescriptor& res_desc)
               }
         }
       else
-        {
+        { // completly opaque surface
           memset(buffer, 1, width*height);
         }
     }
@@ -117,12 +117,6 @@ int
 CollisionMask::get_height() const
 {
   return height;
-}
-
-int
-CollisionMask::get_pitch() const
-{
-  return pixelbuffer.get_surface()->pitch;
 }
 
 PixelBuffer
