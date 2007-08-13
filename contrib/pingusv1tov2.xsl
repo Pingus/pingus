@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <xsl:stylesheet version="1.0"
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   
   <xsl:output 
-    method="xml" 
-    indent="yes" 
-    encoding="UTF-8" /> <!-- ISO-8859-1 -->
+     method="xml" 
+     indent="yes" 
+     encoding="UTF-8" /> <!-- ISO-8859-1 -->
 
   <xsl:template match="node()|@*">
     <xsl:copy><xsl:apply-templates select="@* | node()" /></xsl:copy>
@@ -105,14 +105,14 @@
     <xsl:choose>
       <xsl:when test="string(@type) != ''">
         <xsl:element name="{concat(@type, '-background')}">
-        <xsl:apply-templates select="*"/>
+          <xsl:apply-templates select="*"/>
         </xsl:element>
       </xsl:when>
       <xsl:otherwise>
         <xsl:element name="surface-background">
-        <xsl:apply-templates select="*"/>
-         </xsl:element>
-     </xsl:otherwise>
+          <xsl:apply-templates select="*"/>
+        </xsl:element>
+      </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
@@ -143,38 +143,93 @@
       <type><xsl:value-of select="@type"/></type>
       <xsl:apply-templates select="*"/>
     </groundpiece>
-	</xsl:template>
+  </xsl:template>
 
-	<xsl:template match="trap">
-		<xsl:element name="{type}">
-			<xsl:apply-templates select="*"/>
-		</xsl:element>
-	</xsl:template>
-	<xsl:template match="trap/type"/>
+  <xsl:template match="trap">
+    <xsl:element name="{type}">
+      <xsl:apply-templates select="*"/>
+    </xsl:element>
+  </xsl:template>
+  <xsl:template match="trap/type"/>
 
   <xsl:template match="surface|position">
     <xsl:copy>
       <xsl:apply-templates select="*"/>
     </xsl:copy>
-	</xsl:template>
+  </xsl:template>
+
+  <xsl:template match="exit/position">
+    <xsl:choose>
+      <xsl:when test="../@use-old-pos-handling = '0'">
+        <position>
+          <xsl:apply-templates />
+        </position>
+      </xsl:when>
+      
+      <xsl:otherwise>
+        <xsl:variable name="resourcename" 
+                      select="concat(../surface/resource/resource-datafile/text(),':',../surface/resource/resource-ident/text())" />
+
+        <position>       
+          <xsl:choose>
+            <xsl:when test="$resourcename = 'exits:Exits/desert'">
+              <x><xsl:value-of select="floor(number(x-pos) + 150 div 2)" /></x>
+              <y><xsl:value-of select="number(y-pos) + 100" /></y>
+              <z><xsl:value-of select="number(z-pos)" /></z>
+            </xsl:when>
+
+            <xsl:when test="$resourcename = 'exits:Exits/stone'">
+              <x><xsl:value-of select="floor(number(x-pos) + 75 div 2)" /></x>
+              <y><xsl:value-of select="number(y-pos) + 60" /></y>
+              <z><xsl:value-of select="number(z-pos)" /></z>
+            </xsl:when>
+
+            <xsl:when test="$resourcename = 'exits:Exits/ice'">
+              <x><xsl:value-of select="floor(number(x-pos) + 64 div 2)" /></x>
+              <y><xsl:value-of select="number(y-pos) + 64" /></y>
+              <z><xsl:value-of select="number(z-pos)" /></z>
+            </xsl:when>
+
+            <xsl:when test="$resourcename = 'exits:Exits/sortie_anim'">
+              <x><xsl:value-of select="floor(number(x-pos) + 78 div 2)" /></x>
+              <y><xsl:value-of select="number(y-pos) + 90" /></y>
+              <z><xsl:value-of select="number(z-pos)" /></z>
+            </xsl:when>
+
+            <xsl:when test="$resourcename = 'exits:Exits/space'">
+              <x><xsl:value-of select="floor(number(x-pos) + 154 div 2)" /></x>
+              <y><xsl:value-of select="number(y-pos) + 118" /></y>
+              <z><xsl:value-of select="number(z-pos)" /></z>
+            </xsl:when>
+
+            <xsl:when test="$resourcename = 'global:Exits/stone'">
+              <x><xsl:value-of select="floor(number(x-pos) +  75 div 2)" /></x>
+              <y><xsl:value-of select="number(y-pos) + 60" /></y>
+              <z><xsl:value-of select="number(z-pos)" /></z>
+            </xsl:when>
+
+            <xsl:otherwise>
+              <xsl:message terminate="yes">
+                Critical error: resourcename: ((<xsl:value-of select="$resourcename" />))
+              </xsl:message>
+            </xsl:otherwise>
+          </xsl:choose>
+        </position>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
 
   <xsl:template match="exit">
     <xsl:element name="exit">
-    <xsl:if test="@use-old-pos-handling != '0'">
-      <xsl:message terminate="yes">
-        old-pos-handling is not supported
-      </xsl:message>
-    </xsl:if>
-    <xsl:choose>
-      <xsl:when test="string(@owner-id) != ''">
-        <xsl:apply-templates select="*"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <owner-id>0</owner-id>
-        <xsl:apply-templates select="*"/>
-      </xsl:otherwise>
-    </xsl:choose>
+      <xsl:choose>
+        <xsl:when test="string(@owner-id) != ''">
+          <xsl:apply-templates />
+        </xsl:when>
+        <xsl:otherwise>
+          <owner-id>0</owner-id>
+          <xsl:apply-templates />
+        </xsl:otherwise>
+      </xsl:choose>
     </xsl:element>
   </xsl:template>
-  
 </xsl:stylesheet>
