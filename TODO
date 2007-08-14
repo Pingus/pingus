@@ -61,13 +61,12 @@ Important:
 
 - src/components/pingus_counter.hpp font should be fixed-width/monospace
 
-- teleporter code should be done differently (target and teleporters
-  are two objects with id/name, instead of one), fileformat is
-  already new, see:
-  branches/pingus_sdl/data/levels/playable/future3-jgoebbert.scm
-
 Nice to Have:
 =============
+
+- CollisionMask can't handle RGBA images and likely shouldn't (due to
+  them being animated and stuff like that), we however don't have
+  seperate colmask for those images
 
 - scaling code could be a bit cleaned up, i.e. no load sprite,
   get_surface, Blitter::scale, set_surface, make it something simplyer
