@@ -39,7 +39,7 @@ LineIterator::LineIterator(std::string::const_iterator first_,
 bool
 LineIterator::next()
 {
-  if (line_end == last || line_end+1 == last)
+  if (line_end == last || (line_end+1 == last && *first == '\n'))
     {
       return false;
     }
@@ -89,6 +89,7 @@ int main()
   test("Hello Four\n");
   test("Hello\nWorld\nFooBar\n");
   test("Hello\nWorld\nFooBar\n\n");
+  test("1");
   return 0;
 }
 #endif
