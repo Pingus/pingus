@@ -24,6 +24,7 @@
 #include "display.hpp"
 #include "screen_manager.hpp"
 #include "../path_manager.hpp"
+#include "screenshot.hpp"
 #include "../display/drawing_context.hpp"
 #include "../input/controller.hpp"
 
@@ -277,6 +278,7 @@ ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
       
       Display::pop_cliprect();
       Display::flip_display ();
+      Screenshot::make_screenshot();
       display_gc->clear();
       
       progress = passed_time/1.0f;

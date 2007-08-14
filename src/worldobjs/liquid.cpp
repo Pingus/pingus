@@ -41,7 +41,7 @@ Liquid::Liquid(const FileReader& reader)
 
   reader.read_vector("position", pos);
   reader.read_desc  ("surface",  desc);
-  reader.read_int   ("width",    width);
+  reader.read_int   ("repeat",   width);
 
   sur = Resource::load_sprite(desc);
 
