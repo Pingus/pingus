@@ -61,6 +61,8 @@ Important:
 
 - src/components/pingus_counter.hpp font should be fixed-width/monospace
 
+- ActionButton doesn't display action count sometimes
+
 Nice to Have:
 =============
 
