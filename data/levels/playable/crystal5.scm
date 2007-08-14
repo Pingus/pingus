@@ -44,7 +44,7 @@
         (image "liquids/water2")
         (modifier "ROT0"))
       (position -11 857 -100)
-      (width 26)
+      (repeat 26)
       (speed 50))
     (spike 
       (position 748 425 -100))
@@ -457,7 +457,7 @@
         (image "liquids/water2")
         (modifier "ROT0"))
       (position -41 869 100)
-      (width 26)
+      (repeat 26)
       (speed 50))
     (groundpiece 
       (type "ground")

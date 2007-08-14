@@ -911,14 +911,14 @@
         (image "liquids/water2")
         (modifier "ROT0"))
       (position -8 927 -50)
-      (width 34)
+      (repeat 34)
       (speed 55))
     (liquid 
       (surface 
         (image "liquids/water2")
         (modifier "ROT0"))
       (position -44 940 100)
-      (width 34)
+      (repeat 34)
       (speed 60))
     (hotspot 
       (surface 

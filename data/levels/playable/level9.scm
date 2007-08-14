@@ -24,7 +24,7 @@
         (image "liquids/water2")
         (modifier "ROT0"))
       (position 226 552 -1000)
-      (width 15)
+      (repeat 15)
       (speed 50))
     (hotspot 
       (surface 
@@ -50,7 +50,7 @@
         (image "liquids/water2")
         (modifier "ROT0"))
       (position 224 567 -100)
-      (width 15)
+      (repeat 15)
       (speed 50))
     (spike 
       (position 382 207 -100))
@@ -622,9 +622,11 @@
       (release-rate 25)
       (owner-id 0))
     (teleporter 
-      (position 937 209 100)
-      (target 
-        (position 701 317 0)))
+      (id "id2252484")
+      (position 937 209 100))
+    (teleporter-target 
+      (id "id2252484")
+      (position 701 317 100))
     (hotspot 
       (surface 
         (image "entrances/wood_top")

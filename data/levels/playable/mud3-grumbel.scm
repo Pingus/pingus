@@ -38,7 +38,7 @@
         (image "liquids/slime")
         (modifier "ROT0"))
       (position -58 534 -50)
-      (width 21)
+      (repeat 21)
       (speed 50))
     (hotspot 
       (surface 
@@ -491,7 +491,7 @@
         (image "liquids/slime")
         (modifier "ROT0"))
       (position -31 545 50)
-      (width 21)
+      (repeat 21)
       (speed 50))
     (hotspot 
       (surface 

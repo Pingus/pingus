@@ -932,7 +932,7 @@
         (image "liquids/water")
         (modifier "ROT0"))
       (position -73 1570 100)
-      (width 1024)
+      (repeat 32)
       (speed 30))
     (spike 
       (position 318 844 100))))

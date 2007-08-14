@@ -36,7 +36,7 @@
         (image "liquids/slime")
         (modifier "ROT0"))
       (position -34.08 529.96 -55)
-      (width 24)
+      (repeat 24)
       (speed 50))
     (groundpiece 
       (type "solid")
@@ -314,6 +314,6 @@
         (image "liquids/slime")
         (modifier "ROT0"))
       (position -5.08 539.96 45)
-      (width 23)
+      (repeat 23)
       (speed 50))))
 ;; EOF ;;

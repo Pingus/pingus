@@ -619,28 +619,28 @@
         (image "liquids/water2")
         (modifier "ROT0"))
       (position 694 527 -50)
-      (width 20)
+      (repeat 20)
       (speed 55))
     (liquid 
       (surface 
         (image "liquids/water2")
         (modifier "ROT0"))
       (position 658 540 100)
-      (width 20)
+      (repeat 20)
       (speed 60))
     (liquid 
       (surface 
         (image "liquids/water2")
         (modifier "ROT0"))
       (position -584.746 527.309 -50)
-      (width 20)
+      (repeat 20)
       (speed 55))
     (liquid 
       (surface 
         (image "liquids/water2")
         (modifier "ROT0"))
       (position -620.746 540.309 100)
-      (width 20)
+      (repeat 20)
       (speed 60))
     (rain-generator 
       (position 0 0 200))))

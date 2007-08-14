@@ -41,7 +41,7 @@
         (image "liquids/water2")
         (modifier "ROT0"))
       (position -43 873 -100)
-      (width 40)
+      (repeat 40)
       (speed 50))
     (laser_exit 
       (position 695 281 -100))
@@ -837,7 +837,7 @@
         (image "liquids/water2")
         (modifier "ROT0"))
       (position -11 883 100)
-      (width 40)
+      (repeat 40)
       (speed 50))
     (exit 
       (owner-id 0)

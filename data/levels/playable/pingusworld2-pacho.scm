@@ -109,14 +109,14 @@
         (image "liquids/slime")
         (modifier "ROT0"))
       (position 366 574 0)
-      (width 5)
+      (repeat 5)
       (speed 20))
     (liquid 
       (surface 
         (image "liquids/slime")
         (modifier "ROT0"))
       (position 366 599 0)
-      (width 5)
+      (repeat 5)
       (speed 20))
     (groundpiece 
       (type "ground")
@@ -196,14 +196,14 @@
         (image "liquids/slime")
         (modifier "ROT0"))
       (position 366 623 0)
-      (width 5)
+      (repeat 5)
       (speed 20))
     (liquid 
       (surface 
         (image "liquids/slime")
         (modifier "ROT0"))
       (position 366 655 0)
-      (width 5)
+      (repeat 5)
       (speed 20))
     (entrance 
       (position 929.2 478.8 0)

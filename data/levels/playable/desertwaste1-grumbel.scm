@@ -38,7 +38,7 @@
         (image "liquids/slime")
         (modifier "ROT0"))
       (position -16 524 -50)
-      (width 24)
+      (repeat 24)
       (speed 50))
     (groundpiece 
       (type "ground")
@@ -316,6 +316,6 @@
         (image "liquids/slime")
         (modifier "ROT0"))
       (position -57 539 50)
-      (width 24)
+      (repeat 24)
       (speed 50))))
 ;; EOF ;;

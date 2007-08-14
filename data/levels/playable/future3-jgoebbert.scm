@@ -1531,7 +1531,7 @@
         (image "liquids/lava")
         (modifier "ROT0"))
       (position -4 545 10)
-      (width 1220)
+      (repeat 19)
       (speed 20))
     (hotspot 
       (surface 
@@ -1541,6 +1541,9 @@
       (speed 1)
       (parallax 1))
     (teleporter 
-      (position 31 231 100)
-      (target 
-        (position 700 85 
+      (id "id2256478")
+      (position 31 231 100))
+    (teleporter-target 
+      (id "id2256478")
+      (position 700 85 100))))
+;; EOF ;;

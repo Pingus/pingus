@@ -377,13 +377,13 @@
         (image "liquids/water2")
         (modifier "ROT0"))
       (position -13 526 -50)
-      (width 29)
+      (repeat 29)
       (speed 55))
     (liquid 
       (surface 
         (image "liquids/water2")
         (modifier "ROT0"))
       (position -49 539 100)
-      (width 29)
+      (repeat 29)
       (speed 60))))
 ;; EOF ;;

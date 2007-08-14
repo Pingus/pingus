@@ -722,6 +722,6 @@
         (image "liquids/water2")
         (modifier "ROT0"))
       (position -19 1058 100)
-      (width 1400)
+      (repeat 21)
       (speed 50))))
 ;; EOF ;;

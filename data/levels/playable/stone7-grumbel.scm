@@ -40,7 +40,7 @@
         (image "liquids/slime")
         (modifier "ROT0"))
       (position -38 529 -5)
-      (width 27)
+      (repeat 27)
       (speed 50))
     (exit 
       (owner-id 0)
@@ -426,6 +426,6 @@
         (image "liquids/slime")
         (modifier "ROT0"))
       (position -12 547 0)
-      (width 27)
+      (repeat 27)
       (speed 50))))
 ;; EOF ;;

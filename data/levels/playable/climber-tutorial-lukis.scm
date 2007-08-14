@@ -39,14 +39,14 @@
         (image "liquids/water2")
         (modifier "ROT0"))
       (position 493 457 -50)
-      (width 1)
+      (repeat 1)
       (speed 50))
     (liquid 
       (surface 
         (image "liquids/water2")
         (modifier "ROT0"))
       (position 455 453 -50)
-      (width 2)
+      (repeat 2)
       (speed 50))
     (groundpiece 
       (type "bridge")

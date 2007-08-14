@@ -33,7 +33,7 @@
         (image "liquids/water3")
         (modifier "ROT0"))
       (position 707 444 -100)
-      (width 150)
+      (repeat 2)
       (speed 50))
     (entrance 
       (position 456 266 0)

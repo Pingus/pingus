@@ -221,7 +221,7 @@
         (image "liquids/slime")
         (modifier "ROT0"))
       (position 901 282 0)
-      (width 5)
+      (repeat 5)
       (speed 20))
     (groundpiece 
       (type "ground")
@@ -288,7 +288,7 @@
         (image "liquids/slime")
         (modifier "ROT0"))
       (position 0 535 0)
-      (width 5)
+      (repeat 5)
       (speed 20))
     (groundpiece 
       (type "ground")

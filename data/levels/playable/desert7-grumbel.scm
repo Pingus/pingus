@@ -36,7 +36,7 @@
         (image "liquids/slime")
         (modifier "ROT0"))
       (position 113 609 -50)
-      (width 17)
+      (repeat 17)
       (speed 50))
     (groundpiece 
       (type "bridge")

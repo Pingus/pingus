@@ -249,14 +249,14 @@
         (image "liquids/slime")
         (modifier "ROT0"))
       (position -19 536 -50)
-      (width 20)
+      (repeat 20)
       (speed 50))
     (liquid 
       (surface 
         (image "liquids/slime")
         (modifier "ROT0"))
       (position -56 549 0)
-      (width 20)
+      (repeat 20)
       (speed 50))
     (groundpiece 
       (type "transparent")

@@ -302,41 +302,41 @@
         (image "liquids/water")
         (modifier "ROT0"))
       (position 557 248 -50)
-      (width 6)
+      (repeat 6)
       (speed 50))
     (liquid 
       (surface 
         (image "liquids/water")
         (modifier "ROT0"))
       (position 629 537 -50)
-      (width 7)
+      (repeat 7)
       (speed 50))
     (liquid 
       (surface 
         (image "liquids/water")
         (modifier "ROT0"))
       (position 168 563 -50)
-      (width 7)
+      (repeat 7)
       (speed 50))
     (liquid 
       (surface 
         (image "liquids/water")
         (modifier "ROT0"))
       (position 538 262 -47)
-      (width 6)
+      (repeat 6)
       (speed 45))
     (liquid 
       (surface 
         (image "liquids/water")
         (modifier "ROT0"))
       (position 619 548 -48)
-      (width 7)
+      (repeat 7)
       (speed 45))
     (liquid 
       (surface 
         (image "liquids/water")
         (modifier "ROT0"))
       (position 152 570 -40)
-      (width 7)
+      (repeat 7)
       (speed 45))))
 ;; EOF ;;

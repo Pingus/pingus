@@ -42,7 +42,7 @@
         (image "liquids/lava")
         (modifier "ROT0"))
       (position 257 551 -100)
-      (width 800)
+      (repeat 12)
       (speed 50))
     (groundpiece 
       (type "ground")

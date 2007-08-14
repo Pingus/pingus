@@ -335,7 +335,7 @@
         (image "liquids/slime")
         (modifier "ROT0"))
       (position 406.072 2224.46 0)
-      (width 5)
+      (repeat 5)
       (speed 20))
     (groundpiece 
       (type "ground")
@@ -482,28 +482,28 @@
         (image "liquids/water2")
         (modifier "ROT0"))
       (position 233.112 2183.38 -50)
-      (width 20)
+      (repeat 20)
       (speed 55))
     (liquid 
       (surface 
         (image "liquids/water2")
         (modifier "ROT0"))
       (position 197.112 2196.38 100)
-      (width 20)
+      (repeat 20)
       (speed 60))
     (liquid 
       (surface 
         (image "liquids/water2")
         (modifier "ROT0"))
       (position 0.791809 3146.64 -50)
-      (width 20)
+      (repeat 20)
       (speed 55))
     (liquid 
       (surface 
         (image "liquids/water2")
         (modifier "ROT0"))
       (position -35.2082 3159.64 100)
-      (width 20)
+      (repeat 20)
       (speed 60))
     (snow-generator 
       (position 0 0 200))

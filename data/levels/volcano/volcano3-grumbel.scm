@@ -43,7 +43,7 @@
         (image "liquids/water2")
         (modifier "ROT0"))
       (position -33 444 -50)
-      (width 14)
+      (repeat 14)
       (speed 55))
     (hotspot 
       (surface 
@@ -349,7 +349,7 @@
         (image "liquids/water2")
         (modifier "ROT0"))
       (position -69 457 100)
-      (width 14)
+      (repeat 14)
       (speed 60))
     (hotspot 
       (surface 

@@ -36,14 +36,14 @@
         (image "liquids/water3")
         (modifier "ROT0"))
       (position -1 546 -100)
-      (width 13)
+      (repeat 13)
       (speed 50))
     (liquid 
       (surface 
         (image "liquids/water3")
         (modifier "ROT0"))
       (position 383 343 -100)
-      (width 3)
+      (repeat 3)
       (speed 50))
     (groundpiece 
       (type "ground")

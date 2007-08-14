@@ -34,14 +34,14 @@
         (image "liquids/water")
         (modifier "ROT0"))
       (position -76 464 -100)
-      (width 192)
+      (repeat 6)
       (speed 50))
     (liquid 
       (surface 
         (image "liquids/water")
         (modifier "ROT0"))
       (position 808 278 -100)
-      (width 256)
+      (repeat 8)
       (speed 50))
     (groundpiece 
       (type "ground")
@@ -240,6 +240,6 @@
         (image "liquids/water")
         (modifier "ROT0"))
       (position 1 578 100)
-      (width 1024)
+      (repeat 32)
       (speed 30))))
 ;; EOF ;;

@@ -126,14 +126,14 @@
         (image "liquids/water2")
         (modifier "ROT0"))
       (position -4 414 -50)
-      (width 20)
+      (repeat 20)
       (speed 55))
     (liquid 
       (surface 
         (image "liquids/water2")
         (modifier "ROT0"))
       (position -40 427 100)
-      (width 20)
+      (repeat 20)
       (speed 60))
     (snow-generator 
       (position 0 0 200))))

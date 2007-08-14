@@ -66,7 +66,7 @@
         (image "liquids/water2")
         (modifier "ROT0"))
       (position -63 551 -50)
-      (width 17)
+      (repeat 17)
       (speed 50))
     (groundpiece 
       (type "solid")
@@ -547,7 +547,7 @@
         (image "liquids/water2")
         (modifier "ROT0"))
       (position -55 565 200)
-      (width 17)
+      (repeat 17)
       (speed 50))
     (groundpiece 
       (type "ground")

@@ -3225,6 +3225,15 @@
         (image "exits/sortie_anim")
         (modifier "ROT0")))
     (teleporter 
-      (position 92 466 100)
-      (target 
-        (position 260 70 
+      (id "id2265722")
+      (position 92 466 100))
+    (teleporter-target 
+      (id "id2265722")
+      (position 260 70 100))
+    (teleporter 
+      (id "id2265754")
+      (position 1053 465 100))
+    (teleporter-target 
+      (id "id2265754")
+      (position 260 70 100))))
+;; EOF ;;

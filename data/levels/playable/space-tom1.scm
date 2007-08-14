@@ -37,7 +37,7 @@
         (image "liquids/water3")
         (modifier "ROT0"))
       (position 407 454 -100)
-      (width 5)
+      (repeat 5)
       (speed 25))
     (groundpiece 
       (type "ground")

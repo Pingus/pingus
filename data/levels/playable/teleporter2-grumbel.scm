@@ -47,14 +47,14 @@
         (image "liquids/slime")
         (modifier "ROT0"))
       (position -8 1245 -100)
-      (width 20)
+      (repeat 20)
       (speed 50))
     (liquid 
       (surface 
         (image "liquids/slime")
         (modifier "ROT0"))
       (position -16 1238 -100)
-      (width 28)
+      (repeat 28)
       (speed 50))
     (spike 
       (position 1062 794 -100))
@@ -672,21 +672,25 @@
         (modifier "ROT0"))
       (owner-id 0))
     (teleporter 
-      (position 723 1228 0)
-      (target 
-        (position 786 940 100)))
+      (id "id2252438")
+      (position 723 1228 0))
+    (teleporter-target 
+      (id "id2252438")
+      (position 786 940 0))
     (guillotine 
       (position 844 717 0))
     (teleporter 
-      (position 260 821 0)
-      (target 
-        (position 993 933 100)))
+      (id "id2252493")
+      (position 260 821 0))
+    (teleporter-target 
+      (id "id2252493")
+      (position 993 933 0))
     (liquid 
       (surface 
         (image "liquids/slime")
         (modifier "ROT0"))
       (position -55 1251 50)
-      (width 29)
+      (repeat 29)
       (speed 50))
     (hotspot 
       (surface 

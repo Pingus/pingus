@@ -384,28 +384,28 @@
         (image "liquids/slime")
         (modifier "ROT0"))
       (position -28.8571 695.143 -50)
-      (width 5)
+      (repeat 5)
       (speed 20))
     (liquid 
       (surface 
         (image "liquids/slime")
         (modifier "ROT0"))
       (position 291.143 695.143 -50)
-      (width 5)
+      (repeat 5)
       (speed 20))
     (liquid 
       (surface 
         (image "liquids/slime")
         (modifier "ROT0"))
       (position 611.143 695.143 -50)
-      (width 5)
+      (repeat 5)
       (speed 20))
     (liquid 
       (surface 
         (image "liquids/slime")
         (modifier "ROT0"))
       (position 931.143 695.143 -50)
-      (width 5)
+      (repeat 5)
       (speed 20))
     (groundpiece 
       (type "solid")
@@ -496,28 +496,28 @@
         (image "liquids/slime")
         (modifier "ROT0"))
       (position -8.8571 705.143 0)
-      (width 5)
+      (repeat 5)
       (speed 20))
     (liquid 
       (surface 
         (image "liquids/slime")
         (modifier "ROT0"))
       (position 311.143 705.143 0)
-      (width 5)
+      (repeat 5)
       (speed 20))
     (liquid 
       (surface 
         (image "liquids/slime")
         (modifier "ROT0"))
       (position 631.143 705.143 0)
-      (width 5)
+      (repeat 5)
       (speed 20))
     (liquid 
       (surface 
         (image "liquids/slime")
         (modifier "ROT0"))
       (position 951.143 705.143 0)
-      (width 5)
+      (repeat 5)
       (speed 20))
     (groundpiece 
       (type "ground")

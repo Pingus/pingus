@@ -45,7 +45,7 @@
         (image "liquids/lava")
         (modifier "ROT0"))
       (position -59 550 -100)
-      (width 1400)
+      (repeat 21)
       (speed 50))
     (groundpiece 
       (type "ground")
@@ -341,7 +341,7 @@
         (image "liquids/lava")
         (modifier "ROT0"))
       (position -65 554 100)
-      (width 1400)
+      (repeat 21)
       (speed 50))
     (exit 
       (owner-id 0)

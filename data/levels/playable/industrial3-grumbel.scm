@@ -192,14 +192,14 @@
         (image "liquids/slime")
         (modifier "ROT0"))
       (position -89 525 0)
-      (width 21)
+      (repeat 21)
       (speed 50))
     (liquid 
       (surface 
         (image "liquids/slime")
         (modifier "ROT0"))
       (position -58 538 0)
-      (width 20)
+      (repeat 20)
       (speed 50))
     (hotspot 
       (surface 

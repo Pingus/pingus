@@ -4,8 +4,8 @@
   (head 
     (levelname "Three solutions, it's up to you")
     (description "Now that you've learned all the actions, it's time for some more practice. "
-                 "This levels presents you with at least three different ways to solve it. "
-                 "It's up to you which one you pick. ")
+                 "This level presents you with at least three different ways to solve it. It's "
+                 "up to you which one you pick. ")
     (author "Ingo Ruhnke <grumbel@gmx.de>")
     (number-of-pingus 20)
     (number-to-save 10)
@@ -581,14 +581,14 @@
         (image "liquids/water2")
         (modifier "ROT0"))
       (position -42 526 -50)
-      (width 33)
+      (repeat 33)
       (speed 55))
     (liquid 
       (surface 
         (image "liquids/water2")
         (modifier "ROT0"))
       (position -78 539 100)
-      (width 33)
+      (repeat 33)
       (speed 60))
     (hotspot 
       (surface 
