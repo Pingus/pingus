@@ -29,6 +29,7 @@
 #include "fonts.hpp"
 #include "gettext.h"
 #include "gui/display.hpp"
+#include "blitter.hpp"
 
 class CreditsOkButton
   : public GUI::SurfaceButton
@@ -64,6 +65,7 @@ Credits::Credits()
 {
   fast_scrolling = false;
   background = Resource::load_sprite("core/menu/startscreenbg");
+  background.set_surface(Blitter::scale_surface(background.get_surface(), Display::get_width(), Display::get_height()));
   pingu = Resource::load_sprite("core/misc/creditpingu");
 
   gui_manager->add(new CreditsOkButton(this), true);
