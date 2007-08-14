@@ -60,9 +60,25 @@ Important:
 
 - src/components/pingus_counter.hpp font should be fixed-width/monospace
 
+- teleporter code should be done differently (target and teleporters
+  are two objects with id/name, instead of one), fileformat is
+  already new, see:
+  branches/pingus_sdl/data/levels/playable/future3-jgoebbert.scm
+
 Nice to Have:
 =============
-- convert all levels and check all classic levels for issues:
+
+- scaling code could be a bit cleaned up, i.e. no load sprite,
+  get_surface, Blitter::scale, set_surface, make it something simplyer
+
+- convert all levels and check all classic levels for issues (run
+  branches/pingus_sdl/contribl/levelconvert.sh from SVN toplevel dir)
+
+- liquid's old-width-handling isn't handled by sexpr, but is needed
+  for some levels, conversion script should convert
+
+- Liquids/water is 32, others are 64, this is causing trouble with the
+  collision map
 
 - add drag&drop scrolling
 
@@ -75,17 +91,7 @@ Nice to Have:
 - fix all those Windstille file headers and replace them with Pingus
 
 - hurry-up should be removed and replaced by something less heavy
-
-Convert script (issues: space in description is wrong, some levels fail):
-
- see: http://pingus.seul.org/~grumbel/tmp/pingusconversion.log
-
-[ingo@penpen:~/projects/pingus/svn/pingus_0_6/data/levels]$ find -name "*.pingus" -print0 | while read -d $'\0' -r file; do echo "$file: ";xalan -indent 0 -xsl ../../../pingus_sdl/contrib/pingusv1tov2.xsl -in "$file" -out "../../../pingus_sdl/data/levels/$file"; ../../../pingus_sdl/xml2sexpr.rb "../../../pingus_sdl/data/levels/$file" > "../../../pingus_sdl/data/levels/${file%%.pingus}.scm"; done
-
-- levels seem to have lost something (names, maybe more) when going
-  from Pingus0.6 over PingusClanlib to PingusSDL
-
-- liquid's old-width-handling isn't handled by sexpr, but might be needed for some levels
+  (isn't used in tutorial island, since those levels don't have time)
 
 - remove unneeded/outdated fonts
 

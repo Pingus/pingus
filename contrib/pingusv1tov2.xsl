@@ -91,8 +91,35 @@
     </xsl:element>
   </xsl:template>
 
+  <xsl:template match="liquid/width">
+    <xsl:choose>
+      <xsl:when test="../@use-old-width-handling = '0'">
+        <repeat><xsl:apply-templates /></repeat>
+      </xsl:when>
+      
+      <xsl:otherwise> <!-- fixme: These must depend on the resources -->
+        <xsl:variable name="resourcename" 
+                      select="concat(../surface/resource/resource-datafile/text(),':',../surface/resource/resource-ident/text())" />
+
+        <xsl:choose>
+          <xsl:when test="$resourcename = 'global:Liquid/water'">
+            <repeat><xsl:value-of select="floor(number(text()) div 32)" /></repeat>
+          </xsl:when>
+          
+          <xsl:when test="$resourcename = 'liquids:Liquid/water'">
+            <repeat><xsl:value-of select="floor(number(text()) div 32)" /></repeat>
+          </xsl:when>
+          
+          <xsl:otherwise>
+            <repeat><xsl:value-of select="floor(number(text()) div 64)" /></repeat>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:otherwise>
+    </xsl:choose>    
+  </xsl:template>
+
   <xsl:template match="liquid">
-    <liquid><xsl:apply-templates select="*"/></liquid>
+    <liquid><xsl:apply-templates /></liquid>
   </xsl:template>
 
   <xsl:template match="action-list/*">
@@ -120,6 +147,21 @@
     <actions>
       <xsl:apply-templates select="*"/>
     </actions>
+  </xsl:template>
+
+  <xsl:template match="worldobj[@type='teleporter']">
+    <teleporter>
+      <id><xsl:value-of select="generate-id(.)" /></id>
+      <xsl:apply-templates select="position" />
+    </teleporter>
+    <teleporter-target>
+      <id><xsl:value-of select="generate-id(.)" /></id>
+      <position>
+        <x><xsl:value-of select="target/position/x-pos"/></x>
+        <y><xsl:value-of select="target/position/y-pos"/></y>
+        <z><xsl:value-of select="position/z-pos"/></z>
+      </position>      
+    </teleporter-target>
   </xsl:template>
 
   <xsl:template match="group">
@@ -207,6 +249,18 @@
               <y><xsl:value-of select="number(y-pos) + 60" /></y>
               <z><xsl:value-of select="number(z-pos)" /></z>
             </xsl:when>
+
+            <xsl:when test="$resourcename = 'exits:Exits/sweetexit'">
+              <x><xsl:value-of select="floor(number(x-pos) +  180 div 2)" /></x>
+              <y><xsl:value-of select="number(y-pos) + 121" /></y>
+              <z><xsl:value-of select="number(z-pos)" /></z>
+            </xsl:when>          
+
+            <xsl:when test="$resourcename = 'exits:Exits/crystal'">
+              <x><xsl:value-of select="floor(number(x-pos) +  154 div 2)" /></x>
+              <y><xsl:value-of select="number(y-pos) + 105" /></y>
+              <z><xsl:value-of select="number(z-pos)" /></z>
+            </xsl:when>          
 
             <xsl:otherwise>
               <xsl:message terminate="yes">

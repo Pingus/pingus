@@ -34,6 +34,7 @@ for IN in "$@"; do
             -out "$TMP"
         branches/pingus_sdl/xml2sexpr.rb "$TMP" "$IN" > "${OUT}"
     fi
+    rm "$TMP"
     echo "Conversion ok"
     echo ""
 done
