@@ -36,6 +36,7 @@
 #include "worldobj_factory.hpp"
 #include "col_map.hpp"
 #include "game_time.hpp"
+#include "debug.hpp"
 
 
 using Actions::Bomber;
@@ -57,7 +58,7 @@ World::World(const PingusLevel& plf)
 {
   WorldObj::set_world(this);
 
-  std::cout << "create particle holder" << std::endl;
+  pout(PINGUS_DEBUG_ALL) << "create particle holder" << std::endl;
 
   // These get deleted via the world_obj vector in the destructor
   pingu_particle_holder = new Particles::PinguParticleHolder();

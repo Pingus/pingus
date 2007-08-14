@@ -761,11 +761,11 @@ PingusMain::start_game ()
     }
   else // start a normal game
     {
-      std::cout << "starting normal game" << std::endl;
+      pout(PINGUS_DEBUG_LOADING) << "starting normal game" << std::endl;
       ScreenManager::instance()->push_screen(PingusMenuManager::instance (), false);
       ///ScreenManager::instance()->push_screen(new StoryScreen(), true);
       //ScreenManager::instance()->push_screen(new DummyScreen(), true);
-      std::cout << "done: starting normal game" << std::endl;
+      pout(PINGUS_DEBUG_LOADING) << "done: starting normal game" << std::endl;
     }
 
   if (!render_preview)

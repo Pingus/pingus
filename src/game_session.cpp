@@ -30,6 +30,7 @@
 #include "result_screen.hpp"
 #include "savegame_manager.hpp"
 #include "globals.hpp"
+#include "debug.hpp"
 
 PingusGameSession::PingusGameSession (const PingusLevel& arg_plf, bool arg_show_result_screen)
   : plf(arg_plf),
@@ -51,7 +52,7 @@ PingusGameSession::PingusGameSession (const PingusLevel& arg_plf, bool arg_show_
   number_of_updates = 0;
 
   left_over_time = 0;
-  std::cout << "PingusGameSession" << std::endl;
+  pout(PINGUS_DEBUG_LOADING) << "PingusGameSession" << std::endl;
 }
 
 PingusGameSession::~PingusGameSession ()
