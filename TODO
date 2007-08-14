@@ -45,6 +45,9 @@ Roadmap for Pingus 0.7.0
 Important:
 ==========
 
+- surface-background dimming isn't implemented (i.e. a transparent
+  fillrect over the background surface to change its color)
+
 - in old levels the exits float high up in the air (conversion likely wrong)
 
 - update INSTALL.* file
