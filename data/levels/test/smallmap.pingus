@@ -3,7 +3,7 @@
 <pingus-level>
   <global>
     <levelname lang="en">Small map test</levelname>
-    <description lang="en"><deutsch>Platzangst</deutsch>...</description>
+    <description lang="en">Platzangst...</description>
     <author>Ingo Ruhnke &lt;grumbel@gmx.de&gt;</author>
     <number-of-pingus>100</number-of-pingus>
     <number-to-save>50</number-to-save>
