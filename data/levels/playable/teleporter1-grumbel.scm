@@ -351,10 +351,10 @@
         (modifier "ROT0"))
       (owner-id 0))
     (teleporter 
-      (id "id2250610")
+      (target-id "id2250609")
       (position 457 344 0))
     (teleporter-target 
-      (id "id2250610")
+      (id "id2250609")
       (position 483 150 0))
     (hotspot 
       (surface 

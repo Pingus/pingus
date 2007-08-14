@@ -672,18 +672,18 @@
         (modifier "ROT0"))
       (owner-id 0))
     (teleporter 
-      (id "id2252438")
+      (target-id "id2252436")
       (position 723 1228 0))
     (teleporter-target 
-      (id "id2252438")
+      (id "id2252436")
       (position 786 940 0))
     (guillotine 
       (position 844 717 0))
     (teleporter 
-      (id "id2252493")
+      (target-id "id2252491")
       (position 260 821 0))
     (teleporter-target 
-      (id "id2252493")
+      (id "id2252491")
       (position 993 933 0))
     (liquid 
       (surface 

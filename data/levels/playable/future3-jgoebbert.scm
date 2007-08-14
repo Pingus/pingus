@@ -1541,9 +1541,9 @@
       (speed 1)
       (parallax 1))
     (teleporter 
-      (id "id2256478")
+      (target-id "id2256477")
       (position 31 231 100))
     (teleporter-target 
-      (id "id2256478")
+      (id "id2256477")
       (position 700 85 100))))
 ;; EOF ;;
