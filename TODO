@@ -62,6 +62,9 @@ Important:
 Nice to Have:
 =============
 
+- worldmap looks somewhat ugly on larger resolutions, should either be
+  scaled or simply be centered like the levels
+
 - CollisionMask can't handle RGBA images and likely shouldn't (due to
   them being animated and stuff like that), we however don't have
   seperate colmask for those images
