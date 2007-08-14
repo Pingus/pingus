@@ -20,7 +20,7 @@
 #ifndef HEADER_PINGUS_COL_MAP_HXX
 #define HEADER_PINGUS_COL_MAP_HXX
 
-#include <stdint.h>
+#include "SDL.h"
 #include "groundtype.hpp"
 
 class CollisionMask;

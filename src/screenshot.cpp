@@ -27,6 +27,7 @@
 #include "system.hpp"
 #include "screenshot.hpp"
 #include "gettext.h"
+#include "png.h"
 
 // Saves a screenshot to file, it return the filename the screenshot
 // was saved to.
@@ -97,7 +98,7 @@ Screenshot::save(SDL_Surface* surface, const std::string& filename)
       break;
     }
 
-  save_ppm(filename, buffer, surface->w, surface->h);
+  save_png(filename, buffer, surface->w, surface->h);
   delete[] buffer;
 
   SDL_UnlockSurface(surface);
@@ -128,6 +129,66 @@ Screenshot::save_ppm(const std::string& filename, uint8_t* buffer, int width, in
   fclose(out);
 }
 
+void
+Screenshot::save_png(const std::string& filename, uint8_t* buffer, int width, int height)
+{
+  FILE* fp;
+  png_structp png_ptr;
+  png_infop info_ptr;
+
+  fp = fopen(filename.c_str(), "wb");
+  if (fp == NULL)
+    {
+      perror(filename.c_str());
+      std::cout << _("Screenshot: Couldn't write file: ") << filename << std::endl;
+      return;
+    }
+
+  png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
+  if (png_ptr == NULL)
+    {
+      fclose(fp);
+      return;
+    }
+
+  info_ptr = png_create_info_struct(png_ptr);
+  if (info_ptr == NULL)
+    {
+      fclose(fp);
+      png_destroy_write_struct(&png_ptr, NULL);
+      return;
+    }
+
+  if (setjmp(png_ptr->jmpbuf))
+    {
+      // If we get here, we had a problem reading the file
+      fclose(fp);
+      png_destroy_write_struct(&png_ptr, &info_ptr);
+      return;
+    }
+
+  // set up the output control if you are using standard C streams
+  png_init_io(png_ptr, fp);
+
+  png_set_IHDR(png_ptr, info_ptr, width, height, 8,
+    PNG_COLOR_TYPE_RGB, PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT,
+    PNG_FILTER_TYPE_DEFAULT);
+
+  png_write_info(png_ptr, info_ptr);
+
+  for (int i = 0; i < height; ++i)
+    {
+      png_write_row(png_ptr, buffer + i * width * 3);
+    }
+
+  png_write_end(png_ptr, info_ptr);
+
+  // clean up after the write, and free any memory allocated
+  png_destroy_write_struct(&png_ptr, &info_ptr);
+
+  fclose(fp);
+}
+
 std::string
 Screenshot::get_filename()
 {
@@ -136,7 +197,7 @@ Screenshot::get_filename()
   int i = 1;
 
   do {
-    snprintf(str, 16, "%d.pnm", i);
+    snprintf(str, 16, "%d.png", i);
     tmp_filename = System::get_statdir() + "screenshots/"
       + "pingus-" + get_date() + "-" + std::string(str);
     ++i;

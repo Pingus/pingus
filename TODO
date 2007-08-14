@@ -89,8 +89,6 @@ Convert script (issues: space in description is wrong, some levels fail):
 
 - remove unneeded/outdated fonts
 
-- screenshot does pnm not png
-
 - "core/misc/404sprite" isn't returned for missing graphics
 
 Older Stuff:

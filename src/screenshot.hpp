@@ -40,6 +40,7 @@ public:
 
   /** buffer must be RGB and width*height*3 large */
   static void save_ppm(const std::string& filename, uint8_t* buffer, int width, int height);
+  static void save_png(const std::string& filename, uint8_t* buffer, int width, int height);
 private:
   Screenshot ();
   Screenshot (const Screenshot&);
