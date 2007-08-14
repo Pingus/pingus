@@ -31,6 +31,7 @@
 #include "math/vector2i.hpp"
 #include "SDL_image.h"
 #include "sprite.hpp"
+#include "blitter.hpp"
 #include "pixel_buffer.hpp"
 #include "sprite_description.hpp"
 
@@ -46,7 +47,6 @@ public:
   int      frame_delay;
 
   Size     array;
-  SpriteDescription* sprite_description;
 
   bool     loop;
   bool     loop_last_cycle;
@@ -55,6 +55,10 @@ public:
   /** Current frame */
   int frame; 
   int tick_count;
+
+  SpriteImpl()
+  {
+  }
 
   SpriteImpl(const SpriteDescription& desc)
     : surface(0),
@@ -69,9 +73,6 @@ public:
         surface = IMG_Load("data/images/core/misc/404.png");
         assert(surface);
       }
-
-    sprite_description = new SpriteDescription();
-    *sprite_description = desc;
 
     frame_pos = desc.frame_pos;
 
@@ -94,7 +95,6 @@ public:
       frame_size(pixelbuffer.get_width(), pixelbuffer.get_height()),
       frame_delay(0),
       array(1,1),
-      sprite_description(NULL),
       loop(true),
       loop_last_cycle(false),
       finished(false),
@@ -115,7 +115,6 @@ public:
   ~SpriteImpl()
   {
     SDL_FreeSurface(surface);
-    delete sprite_description;
   }
 
   void update(float delta)
@@ -175,31 +174,11 @@ public:
   {
     finished = true;
   }
-
-  void set_surface(SDL_Surface* new_surface)
-  {
-    if (surface != new_surface)
-      {
-        SDL_FreeSurface(surface);
-        surface = new_surface;
-
-        if (sprite_description)
-          {
-            frame_size.width  = (sprite_description->frame_size.width  == -1) ? surface->w : sprite_description->frame_size.width;
-            frame_size.height = (sprite_description->frame_size.height == -1) ? surface->h : sprite_description->frame_size.height;
-            offset = calc_origin(sprite_description->origin, frame_size) - sprite_description->offset;
-          }
-        else
-          {
-            frame_size.width = surface->w;
-            frame_size.height = surface->h;
-          }
-      }
-  }
 };
 
 Sprite::Sprite()
 {
+  
 }
 
 Sprite::Sprite(const PixelBuffer& pixelbuffer)
@@ -328,10 +307,34 @@ Sprite::get_surface() const
 }
 
 void
-Sprite::set_surface(SDL_Surface* surface)
+Sprite::scale(int w, int h)
 {
-  if (impl.get())
-    impl->set_surface(surface);
+  if (impl->frame_size.width != w || impl->frame_size.height != h)
+    {
+      boost::shared_ptr<SpriteImpl> new_impl(new SpriteImpl()); 
+
+      float scale_x = float(w) / float(impl->frame_size.width);
+      float scale_y = float(h) / float(impl->frame_size.height);
+      
+      new_impl->surface = Blitter::scale_surface(impl->surface, 
+                                                 w * impl->array.width,
+                                                 h * impl->array.height);
+      
+      new_impl->offset      = Vector2i(int(impl->offset.x * scale_x),
+                                       int(impl->offset.y * scale_y));
+      new_impl->frame_pos   = Vector2i(int(impl->frame_pos.x * scale_x),
+                                       int(impl->frame_pos.y * scale_y));
+      new_impl->frame_size      = Size(w, h);
+      new_impl->frame_delay     = impl->frame_delay;
+      new_impl->array           = impl->array;
+      new_impl->loop            = impl->loop;
+      new_impl->loop_last_cycle = impl->loop_last_cycle;
+      new_impl->finished        = impl->finished;
+      new_impl->frame           = impl->frame;
+      new_impl->tick_count      = impl->tick_count;
+
+      impl = new_impl;
+    }
 }
 
 /* EOF */

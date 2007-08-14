@@ -65,7 +65,7 @@ Credits::Credits()
 {
   fast_scrolling = false;
   background = Resource::load_sprite("core/menu/startscreenbg");
-  background.set_surface(Blitter::scale_surface(background.get_surface(), Display::get_width(), Display::get_height()));
+  background.scale(Display::get_width(), Display::get_height());
   pingu = Resource::load_sprite("core/misc/creditpingu");
 
   gui_manager->add(new CreditsOkButton(this), true);

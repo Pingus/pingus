@@ -135,12 +135,7 @@ StartScreenComponent::StartScreenComponent(const PingusLevel& p)
   : plf(p)
 {
   background = Resource::load_sprite("core/menu/startscreenbg");
-  if (!(Display::get_width() == 800 && Display::get_height() == 600))
-    {
-      SDL_Surface* s = Blitter::scale_surface(background.get_surface(),
-        Display::get_width(), Display::get_height());
-      background.set_surface(s);
-    }
+  background.scale(Display::get_width(), Display::get_height());
   time_str = GameTime::ticks_to_realtime_string(plf.get_time());
 }
 

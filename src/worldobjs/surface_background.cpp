@@ -60,52 +60,41 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
 
   reader.read_bool("keep-aspect", keep_aspect);
 
-
   Timer timer("Background creation");
 
   if (color.a > 1.0)
     std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
 
-  PixelBuffer canvas = Resource::load_pixelbuffer(desc);
-  SDL_Surface* s = canvas.get_surface();
-  SDL_Surface* new_surface = NULL;
+  bg_surface = Resource::load_sprite(desc);
 
   // Scaling Code
   if (stretch_x && stretch_y)
     {
-      new_surface = Blitter::scale_surface(s, world->get_width(), world->get_height());
+      bg_surface.scale(world->get_width(), world->get_height());
     }
   else if (stretch_x && !stretch_y)
     {
       if (keep_aspect)
         {
-          float aspect = canvas.get_height()/float(canvas.get_width());
-          new_surface = Blitter::scale_surface(s,
-            world->get_width(), int(world->get_width()*aspect));
+          float aspect = bg_surface.get_height()/float(bg_surface.get_width());
+          bg_surface.scale(world->get_width(), int(world->get_width()*aspect));
         }
       else
         {
-          new_surface = Blitter::scale_surface(s, canvas.get_width(), world->get_height());
+          bg_surface.scale(world->get_width(), bg_surface.get_height());
         }
     }
   else if (!stretch_x && stretch_y)
     {
       if (keep_aspect)
         {
-          float aspect = float(canvas.get_width())/canvas.get_height();
-          new_surface = Blitter::scale_surface(s,
-            int(world->get_height() * aspect), world->get_height());
+          float aspect = float(bg_surface.get_width())/bg_surface.get_height();
+          bg_surface.scale(int(world->get_height() * aspect), world->get_height());
         }
       else
         {
-          new_surface = Blitter::scale_surface(s, canvas.get_width(), world->get_height());
+          bg_surface.scale(bg_surface.get_width(), world->get_height());
         }
-    }
-
-  bg_surface = Sprite(canvas);
-  if (new_surface)
-    {
-      bg_surface.set_surface(new_surface);
     }
 
   timer.stop();
