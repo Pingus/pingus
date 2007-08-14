@@ -48,8 +48,6 @@ Important:
 - surface-background dimming isn't implemented (i.e. a transparent
   fillrect over the background surface to change its color)
 
-- in old levels the exits float high up in the air (conversion likely wrong)
-
 - update INSTALL.* file
 
 - remove all the remaining unneeded debuging std::cout's
@@ -68,14 +66,8 @@ Nice to Have:
   them being animated and stuff like that), we however don't have
   seperate colmask for those images
 
-- scaling code could be a bit cleaned up, i.e. no load sprite,
-  get_surface, Blitter::scale, set_surface, make it something simplyer
-
 - convert all levels and check all classic levels for issues (run
   branches/pingus_sdl/contribl/levelconvert.sh from SVN toplevel dir)
-
-- liquid's old-width-handling isn't handled by sexpr, but is needed
-  for some levels, conversion script should convert
 
 - Liquids/water is 32, others are 64, this is causing trouble with the
   collision map
