@@ -313,17 +313,49 @@ Sprite::scale(int w, int h)
     {
       boost::shared_ptr<SpriteImpl> new_impl(new SpriteImpl()); 
 
-      float scale_x = float(w) / float(impl->frame_size.width);
-      float scale_y = float(h) / float(impl->frame_size.height);
+      if ((impl->frame_size.width  * impl->array.width)  == impl->surface->w && 
+          (impl->frame_size.height * impl->array.height) == impl->surface->h)
+        {
+          new_impl->surface = Blitter::scale_surface(impl->surface, 
+                                                     w * impl->array.width,
+                                                     h * impl->array.height);
+        }
+      else
+        {
+          // Create a temporary surface that contains the subsection
+          // that is actually used for this Sprite
+          SDL_Surface* subsurface = SDL_CreateRGBSurfaceFrom((uint8_t*)(impl->surface->pixels)
+                                                             + (impl->frame_pos.y * impl->surface->pitch) 
+                                                             + (impl->frame_pos.x * impl->surface->format->BytesPerPixel),
+                                                             impl->array.width  * impl->frame_size.width,
+                                                             impl->array.height * impl->frame_size.height,
+                                                             impl->surface->format->BitsPerPixel, 
+                                                             impl->surface->pitch,
+                                                             impl->surface->format->Rmask,
+                                                             impl->surface->format->Gmask,
+                                                             impl->surface->format->Bmask,
+                                                             impl->surface->format->Amask);
       
-      new_impl->surface = Blitter::scale_surface(impl->surface, 
-                                                 w * impl->array.width,
-                                                 h * impl->array.height);
-      
-      new_impl->offset      = Vector2i(int(impl->offset.x * scale_x),
-                                       int(impl->offset.y * scale_y));
-      new_impl->frame_pos   = Vector2i(int(impl->frame_pos.x * scale_x),
-                                       int(impl->frame_pos.y * scale_y));
+          if (impl->surface->format->palette)
+            SDL_SetPalette(subsurface, SDL_LOGPAL, impl->surface->format->palette->colors, 
+                           0, impl->surface->format->palette->ncolors);
+
+          if (impl->surface->flags & SDL_SRCCOLORKEY)
+            SDL_SetColorKey(subsurface, SDL_SRCCOLORKEY, impl->surface->format->colorkey);
+
+          new_impl->surface = Blitter::scale_surface(subsurface, 
+                                                     w * impl->array.width,
+                                                     h * impl->array.height);
+
+          SDL_FreeSurface(subsurface);
+        }
+
+      float scale_x = float(w) / float(impl->frame_size.width); // ok
+      float scale_y = float(h) / float(impl->frame_size.height); // ok
+            
+      new_impl->offset          = Vector2i(int(impl->offset.x * scale_x),
+                                           int(impl->offset.y * scale_y)); //ok
+      new_impl->frame_pos       = Vector2i(0, 0);
       new_impl->frame_size      = Size(w, h);
       new_impl->frame_delay     = impl->frame_delay;
       new_impl->array           = impl->array;
