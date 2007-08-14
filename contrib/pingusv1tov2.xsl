@@ -151,7 +151,7 @@
 
   <xsl:template match="worldobj[@type='teleporter']">
     <teleporter>
-      <id><xsl:value-of select="generate-id(.)" /></id>
+      <target-id><xsl:value-of select="generate-id(.)" /></target-id>
       <xsl:apply-templates select="position" />
     </teleporter>
     <teleporter-target>

@@ -141,7 +141,7 @@ $typespec_level =
    [/^\/pingus-level\/objects\/switchdoor\/door\/height$/, :integer],
 
    [/^\/pingus-level\/objects\/teleporter$/, :section],
-   [/^\/pingus-level\/objects\/teleporter\/id$/, :string],
+   [/^\/pingus-level\/objects\/teleporter\/target-id$/, :string],
    [/^\/pingus-level\/objects\/teleporter\/position$/, :vector],
    [/^\/pingus-level\/objects\/teleporter-target$/, :section],
    [/^\/pingus-level\/objects\/teleporter-target\/id$/, :string],
