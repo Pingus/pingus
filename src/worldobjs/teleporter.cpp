@@ -23,19 +23,16 @@
 #include "../pingu_holder.hpp"
 #include "../world.hpp"
 #include "../resource.hpp"
+#include "teleporter_target.hpp"
 #include "teleporter.hpp"
 
 namespace WorldObjs {
 
 Teleporter::Teleporter(const FileReader& reader)
-  : sprite(Resource::load_sprite("worldobjs/teleporter")),
-    target_sprite(Resource::load_sprite("worldobjs/teleportertarget"))
+  : sprite(Resource::load_sprite("worldobjs/teleporter"))
 {
-  FileReader subreader;
-
-  reader.read_vector   ("position", pos);
-  reader.read_section  ("target",   subreader);
-  subreader.read_vector("position", target_pos);
+  reader.read_vector("position", pos);
+  reader.read_string("target-id", target_id);
 }
 
 float
@@ -48,26 +45,42 @@ void
 Teleporter::draw (SceneContext& gc)
 {
   gc.color().draw(sprite, pos);
-  gc.color().draw(target_sprite, target_pos);
+}
+
+void
+Teleporter::on_startup()
+{
+  if (target_id.empty())
+    {
+      std::cout << "Teleporter: target-id is empty" << std::endl;
+    }
+  else
+    {
+      // FIXME: find the target
+      target = dynamic_cast<TeleporterTarget*>(world->get_worldobj(target_id));
+      if (!target)
+        std::cout << "Teleporter: Couldn't find matching target-id or object isn't a TeleporterTarget" << std::endl;
+    }
 }
 
 void
 Teleporter::update ()
 {
   sprite.update();
-  target_sprite.update();
 
-  PinguHolder* holder = world->get_pingus();
-
-  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
+  if (target)
     {
-      if (   (*pingu)->get_x() > pos.x - 3  && (*pingu)->get_x() < pos.x + 3
-	     && (*pingu)->get_y() > pos.y - 52 && (*pingu)->get_y() < pos.y)
-	{
-	  (*pingu)->set_pos (target_pos.x, target_pos.y);
-	  sprite.restart();
-          target_sprite.restart();
-	}
+      PinguHolder* holder = world->get_pingus();
+      for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
+        {
+          if (   (*pingu)->get_x() > pos.x - 3  && (*pingu)->get_x() < pos.x + 3
+                 && (*pingu)->get_y() > pos.y - 52 && (*pingu)->get_y() < pos.y)
+            {
+              (*pingu)->set_pos(target->get_pos().x, target->get_pos().y);
+              target->teleporter_used();
+              sprite.restart();
+            }
+        }
     }
 }
 

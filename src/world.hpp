@@ -135,6 +135,8 @@ public:
   void remove(int x, int y);
   void remove(const CollisionMask&, int x, int y);
 
+  WorldObj* get_worldobj(const std::string& id);
+
   /** @return A pointer to the worlds pingu particle holder */
   Particles::PinguParticleHolder* get_pingu_particle_holder () { return pingu_particle_holder; }
 

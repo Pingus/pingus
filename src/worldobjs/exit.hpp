@@ -23,10 +23,6 @@
 #include "../res_descriptor.hpp"
 #include "../worldobj.hpp"
 
-namespace WorldObjsData {
-class ExitData;
-}
-
 namespace WorldObjs {
 
 class Exit : public WorldObj

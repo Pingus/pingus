@@ -300,7 +300,8 @@ env.Program('../pingus', [
 'worldobjs/starfield_background_stars.cpp', 
 'worldobjs/surface_background.cpp', 
 'worldobjs/switch_door.cpp', 
-'worldobjs/teleporter.cpp', 
+'worldobjs/teleporter.cpp',
+'worldobjs/teleporter_target.cpp', 
 'worldobjs/thunderstorm_background.cpp', 
 'worldobjs/woodthing.cpp',
 

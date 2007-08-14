@@ -32,6 +32,11 @@ WorldObj::set_world(World* arg_world)
   world = arg_world;
 }
 
+WorldObj::WorldObj(const FileReader& reader)
+{
+  reader.read_string("id", id);
+}
+
 WorldObj::WorldObj()
 {
   // z_pos = 0;

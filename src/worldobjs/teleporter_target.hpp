@@ -1,4 +1,4 @@
-//  $Id: teleporter.hxx,v 1.19 2003/10/19 12:25:47 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,34 +17,30 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_WORLDOBJS_TELEPORTER_HXX
-#define HEADER_PINGUS_WORLDOBJS_TELEPORTER_HXX
+#ifndef HEADER_PINGUS_WORLDOBJS_TELEPORTER_TARGET_HXX
+#define HEADER_PINGUS_WORLDOBJS_TELEPORTER_TARGET_HXX
 
 #include "../worldobj.hpp"
 
 namespace WorldObjs {
 
-class TeleporterTarget;
-
-class Teleporter : public WorldObj
+class TeleporterTarget : public WorldObj
 {
 private:
   Vector3f pos;
-  Sprite sprite;
-  std::string target_id;
-  TeleporterTarget* target;
+  Sprite   sprite;
 
 public:
-  Teleporter(const FileReader& reader);
+  TeleporterTarget(const FileReader& reader);
 
-  void  draw(SceneContext& gc);
-  void  update();
-  float get_z_pos() const;
-  void  on_startup();
-
+  void  draw (SceneContext& gc);
+  void  update ();
+  float get_z_pos () const;
+  Vector3f get_pos() const { return pos; }
+  void  teleporter_used();
 private:
-  Teleporter (const Teleporter&);
-  Teleporter& operator= (const Teleporter&);
+  TeleporterTarget (const TeleporterTarget&);
+  TeleporterTarget& operator= (const TeleporterTarget&);
 };
 
 } // namespace WorldObjs

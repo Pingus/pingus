@@ -42,6 +42,7 @@
 #include "worldobjs/surface_background.hpp"
 #include "worldobjs/switch_door.hpp"
 #include "worldobjs/teleporter.hpp"
+#include "worldobjs/teleporter_target.hpp"
 #include "worldobjs/thunderstorm_background.hpp"
 #include "worldobjs/woodthing.hpp"
 
@@ -117,6 +118,7 @@ WorldObjFactory::instance ()
       new WorldObjFactoryImpl<IceBlock>("iceblock");
       new WorldObjFactoryImpl<ConveyorBelt>("conveyorbelt");
       new WorldObjFactoryImpl<Teleporter>("teleporter");
+      new WorldObjFactoryImpl<TeleporterTarget>("teleporter-target");
 
       // Backgrounds
       new WorldObjFactoryImpl<SurfaceBackground>("surface-background");

@@ -25,6 +25,7 @@
 #include "sprite.hpp"
 #include "collision_mask.hpp"
 
+class FileReader;
 class SceneContext;
 class SmallMap;
 class World;
@@ -39,7 +40,7 @@ class WorldObj
 protected:
   /** The World all WorldObjects live in. */
   static World*  world;
-
+  
 public:
   /** Set the world pointer for all world objects */
   static void   set_world(World*);
@@ -47,15 +48,21 @@ public:
   /** Return the current active world */
   static World* get_world () { return world; }
 
+private:
+  std::string id;
+
 public:
   /** Creates a new WorldObj*/
   WorldObj ();
+  WorldObj(const FileReader& reader);
 
   WorldObj (const WorldObj&)       { }
   WorldObj& operator= (const WorldObj&) { return *this; }
 
   /** Destroys a world object */
   virtual ~WorldObj ();
+
+  std::string get_id() const { return id; }
 
   /** Returns the $z$-position of this object. */
   virtual float get_z_pos () const =0;

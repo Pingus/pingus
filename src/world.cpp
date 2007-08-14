@@ -300,4 +300,15 @@ World::remove(const CollisionMask& mask, int x, int y)
   colmap->remove(mask, x, y);
 }
 
+WorldObj*
+World::get_worldobj(const std::string& id)
+{
+  for(WorldObjIter obj = world_obj.begin(); obj != world_obj.end(); ++obj)
+    {
+      if ((*obj)->get_id() == id) 
+        return *obj;
+    }
+  return 0;
+}
+
 /* EOF */

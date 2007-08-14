@@ -1,4 +1,4 @@
-//  $Id: teleporter.hxx,v 1.19 2003/10/19 12:25:47 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,38 +17,47 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_WORLDOBJS_TELEPORTER_HXX
-#define HEADER_PINGUS_WORLDOBJS_TELEPORTER_HXX
-
-#include "../worldobj.hpp"
+#include <iostream>
+#include "../display/scene_context.hpp"
+#include "../pingu.hpp"
+#include "../pingu_holder.hpp"
+#include "../world.hpp"
+#include "../resource.hpp"
+#include "teleporter_target.hpp"
 
 namespace WorldObjs {
 
-class TeleporterTarget;
-
-class Teleporter : public WorldObj
+TeleporterTarget::TeleporterTarget(const FileReader& reader)
+  : WorldObj(reader),
+    sprite(Resource::load_sprite("worldobjs/teleportertarget"))
 {
-private:
-  Vector3f pos;
-  Sprite sprite;
-  std::string target_id;
-  TeleporterTarget* target;
+  reader.read_vector("position", pos);
+}
 
-public:
-  Teleporter(const FileReader& reader);
+float
+TeleporterTarget::get_z_pos () const
+{
+  return pos.z;
+}
 
-  void  draw(SceneContext& gc);
-  void  update();
-  float get_z_pos() const;
-  void  on_startup();
+void
+TeleporterTarget::draw (SceneContext& gc)
+{
+  gc.color().draw(sprite, pos);
+}
 
-private:
-  Teleporter (const Teleporter&);
-  Teleporter& operator= (const Teleporter&);
-};
+void
+TeleporterTarget::update ()
+{
+  sprite.update();
+}
+
+void
+TeleporterTarget::teleporter_used()
+{
+  sprite.restart();
+}
 
 } // namespace WorldObjs
-
-#endif
 
 /* EOF */
