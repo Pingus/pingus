@@ -178,19 +178,22 @@ public:
 
   void set_surface(SDL_Surface* new_surface)
   {
-    SDL_FreeSurface(surface);
-    surface = new_surface;
+    if (surface != new_surface)
+      {
+        SDL_FreeSurface(surface);
+        surface = new_surface;
 
-    if (sprite_description)
-      {
-        frame_size.width  = (sprite_description->frame_size.width  == -1) ? surface->w : sprite_description->frame_size.width;
-        frame_size.height = (sprite_description->frame_size.height == -1) ? surface->h : sprite_description->frame_size.height;
-        offset = calc_origin(sprite_description->origin, frame_size) - sprite_description->offset;
-      }
-    else
-      {
-        frame_size.width = surface->w;
-        frame_size.height = surface->h;
+        if (sprite_description)
+          {
+            frame_size.width  = (sprite_description->frame_size.width  == -1) ? surface->w : sprite_description->frame_size.width;
+            frame_size.height = (sprite_description->frame_size.height == -1) ? surface->h : sprite_description->frame_size.height;
+            offset = calc_origin(sprite_description->origin, frame_size) - sprite_description->offset;
+          }
+        else
+          {
+            frame_size.width = surface->w;
+            frame_size.height = surface->h;
+          }
       }
   }
 };
