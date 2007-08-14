@@ -90,7 +90,10 @@ Credits::Credits()
   credits.push_back("_David Philippi");
   credits.push_back("_Gervase Lam");
   credits.push_back("_Ingo Ruhnke");
-	credits.push_back("_Jason Green");
+  credits.push_back("_Jason Green");
+  credits.push_back("_Jimmy Salmon");
+  credits.push_back("_Michael Ploujnikov");
+  credits.push_back("_Nehal Mistry");
   credits.push_back("n");
 
   credits.push_back(_("-Porting (Win32)"));

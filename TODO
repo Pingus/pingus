@@ -49,8 +49,6 @@ Important:
 
 - update INSTALL.* file
 
-- add all those who contributed to SDL version to AUTHORS and credits
-
 - remove all the remaining unneeded debuging std::cout's
 
 - separate gfx/colmap surfaces aren't used
