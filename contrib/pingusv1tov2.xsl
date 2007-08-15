@@ -149,6 +149,25 @@
     </actions>
   </xsl:template>
 
+  <xsl:template match="background[@type='surface']/color">
+    <xsl:choose>
+      <xsl:when test="red/text() = '0' and green/text() = '0' and blue/text() = '0' and alpha/text() = '1'">
+        <color>
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+          <alpha>0</alpha>
+        </color>
+      </xsl:when>
+
+      <xsl:otherwise>
+        <color>
+          <xsl:apply-templates />
+        </color>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
   <xsl:template match="worldobj[@type='teleporter']">
     <teleporter>
       <target-id><xsl:value-of select="generate-id(.)" /></target-id>

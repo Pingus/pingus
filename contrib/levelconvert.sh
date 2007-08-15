@@ -16,7 +16,6 @@ for IN in "$@"; do
     PREFIX=$(echo $IN | sed "s/\(.*\)data\/levels\/.*/\1/")
     TMP=$(tempfile)
     OUT="branches/pingus_sdl/${IN##${PREFIX}}"
-    OUT="${OUT%%.pingus}.scm"
     # echo "Prefix: $PREFIX"
     echo "IN:     $IN"
     echo "OUT:    $OUT"
