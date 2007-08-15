@@ -63,6 +63,7 @@ Credits* Credits::instance_ = 0;
 
 Credits::Credits()
 {
+  scene_context = new SceneContext();
   fast_scrolling = false;
   background = Resource::load_sprite("core/menu/startscreenbg");
   background.scale(Display::get_width(), Display::get_height());
@@ -235,7 +236,8 @@ Credits::Credits()
 
 Credits::~Credits ()
 {
-	StatManager::instance()->set_bool("credits-seen", true);
+  StatManager::instance()->set_bool("credits-seen", true);
+  delete scene_context;
 }
 
 void
@@ -272,23 +274,22 @@ Credits::draw_background (DrawingContext& gc)
                 static_cast<float>(Display::get_height()/2 + 110),
 								_("Exit"));
   
-  // FIXME: Doesn't work here, due to DrawingContext, needs a little
-  // more work to get fixed properly
-  // Display::push_cliprect(Rect(0,
-  // static_cast<int>(gc.get_height()/2-225), 600,
-  // static_cast<int>(gc.get_height()/2+200)));
   yof = 0;
 
+  scene_context->clear();
+  scene_context->set_cliprect(Rect(0,
+                                   static_cast<int>(gc.get_height()/2-225), 600,
+                                   static_cast<int>(gc.get_height()/2+200)));
   for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); ++i)
     {
       switch ((*i)[0])
 	{
 	case '-':
-	  gc.print_center(font, x, (y + yof), i->substr(1));
+	  scene_context->color().print_center(font, x, (y + yof), i->substr(1));
 	  yof += font.get_height() + 5;
 	  break;
 	case '_':
-	  gc.print_center(font_small, x, (y + yof), i->substr(1));
+	  scene_context->color().print_center(font_small, x, (y + yof), i->substr(1));
 	  yof += font_small.get_height() + 5;
 	  break;
 	case 'n':
@@ -299,7 +300,7 @@ Credits::draw_background (DrawingContext& gc)
 	  break;
 	}
     }
-  //Display::pop_cliprect();
+  gc.draw(new SceneContextDrawingRequest(scene_context, Vector3f(0,0,100)));
 }
 
 void

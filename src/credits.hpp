@@ -24,12 +24,15 @@
 #include <vector>
 #include "gui/gui_screen.hpp"
 #include "font.hpp"
+#include "display/scene_context.hpp"
 #include "sprite.hpp"
 
 class Credits : public GUIScreen
 {
 private:
   static Credits* instance_;
+
+  SceneContext* scene_context;
 
   bool fast_scrolling;
   Sprite background;
