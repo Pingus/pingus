@@ -1970,6 +1970,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\src\worldobjs\teleporter_target.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\worldobjs\teleporter_target.hpp"
+					>
+				</File>
+				<File
 					RelativePath=".\src\worldobjs\thunderstorm_background.cpp"
 					>
 				</File>
