@@ -57,6 +57,7 @@ public:
   SDL_Rect chrs[256];
   int space_length;
   int char_spacing;
+  int vertical_spacing;
   
   FontImpl(const FontDescription& desc)
     : surface(0),
@@ -73,6 +74,8 @@ public:
     surface = IMG_Load(desc.image.c_str());
     //std::cout << "IMG: " << desc.image << std::endl;
     assert(surface);
+
+    vertical_spacing = (desc.vertical_spacing == -1) ? surface->h : desc.vertical_spacing;
 
     if (surface->format->BitsPerPixel != 32)
       {
@@ -173,7 +176,7 @@ public:
     LineIterator it(text);
     while(it.next()) {
       draw_line(origin, x, y, it.get(), target);
-      y += surface->h;
+      y += vertical_spacing;
     }
   }
 

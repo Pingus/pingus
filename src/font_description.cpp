@@ -35,6 +35,7 @@ FontDescription::FontDescription(const std::string& filename_)
   space_length    = 20;
   alpha_threshold = 0;
   char_spacing    = 1;
+  vertical_spacing = -1;
 
   FileReader reader = FileReader::parse(filename);
 
@@ -44,13 +45,14 @@ FontDescription::FontDescription(const std::string& filename_)
     }
   else
     {
-      reader.read_string("name",         name);
-      reader.read_string("image",        image);
-      reader.read_string("characters",   characters);
-      reader.read_bool("monospace",      monospace);
-      reader.read_int("char-spacing",   char_spacing);
-      reader.read_int("space-length",    space_length);
-      reader.read_int("alpha-threshold", alpha_threshold);
+      reader.read_string("name",          name);
+      reader.read_string("image",         image);
+      reader.read_string("characters",    characters);
+      reader.read_bool("monospace",       monospace);
+      reader.read_int("char-spacing",     char_spacing);
+      reader.read_int("vertical-spacing", vertical_spacing);
+      reader.read_int("space-length",     space_length);
+      reader.read_int("alpha-threshold",  alpha_threshold);
     }
 }
 

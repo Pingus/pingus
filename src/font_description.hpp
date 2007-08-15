@@ -46,6 +46,8 @@ public:
   /** Space between two characters */
   int char_spacing;
 
+  int vertical_spacing;
+
   /** Minimum amount of alpha that is handled as character seperator */
   int  alpha_threshold;
 

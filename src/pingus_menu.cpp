@@ -237,18 +237,18 @@ PingusMenu::draw_foreground(DrawingContext& gc)
                        static_cast<float>(Display::get_height()/10)));
     }
 #ifdef OFFICIAL_PINGUS_BUILD
-  gc.print_left(Fonts::courier_small, 20.0f, 
-                static_cast<float>(Display::get_height()-80),
+  gc.print_left(Fonts::pingus_small, 25.0f, 
+                static_cast<float>(Display::get_height()-114),
                 "Pingus version "VERSION", Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n");
 #else
-  gc.print_left(Fonts::courier_small, 20.0f, 
-                static_cast<float>(Display::get_height()-80),
+  gc.print_left(Fonts::pingus_small, 25.0f, 
+                static_cast<float>(Display::get_height()-114),
                 "Pingus version "VERSION" (unofficial build), Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n");
 #endif
-  gc.print_left(Fonts::courier_small, 20.0f, 
-                static_cast<float>(Display::get_height()-60),
-                "Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome\n"
-                "to redistribute it under certain conditions; see the file COPYING for details.\n");
+  gc.print_left(Fonts::pingus_small, 25.0f, 
+                static_cast<float>(Display::get_height()-80),
+                "Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are\n"
+                "welcome to redistribute it under certain conditions; see the file COPYING for details.\n");
 }
 
 void
