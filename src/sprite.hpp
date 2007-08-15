@@ -30,6 +30,7 @@
 #include <boost/shared_ptr.hpp>
 #include "SDL.h"
 
+class Color;
 class PixelBuffer;
 class SpriteImpl;
 class SpriteDescription;
@@ -64,6 +65,11 @@ public:
   /** Resizes the Sprite to the given size. This is a destructive
       operation. The original Surface will be lost. */
   void scale(int w, int h);
+
+  /** Fills the Sprite with the given color. Transparent areas aren't
+      touched.  This is a destructive operation. The original Surface
+      will be lost. */
+  void fill(const Color& color);
 
 private:
   boost::shared_ptr<SpriteImpl> impl;

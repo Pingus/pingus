@@ -31,31 +31,7 @@ class PixelBuffer;
     this are slower and work. */
 class Blitter
 {
-private:
-  ///
-  static void put_surface_8bit(PixelBuffer target, PixelBuffer source,
-                                   int x, int y);
-  ///
-  static void put_surface_32bit(PixelBuffer target, PixelBuffer source,
-			       int x, int y);
 public:
-  /** Puts a given surface to a given canvas at position x, y. */
-  ////static void put_surface(PixelBuffer target, const CL_Surface& source,
-  ////			  int x, int y);
-
-  /** Puts a given surface provider to a given canvas at position x, y. */
-  static void put_surface(PixelBuffer target, PixelBuffer source,
-			  int x, int y);
-
-  /** Returns a newly allocated canvas. The canvas contains the same
-      image as the given surface provider */
-  static PixelBuffer create_canvas(PixelBuffer );
-
-  /** Sets all pixels of a canvas to zero */
-  static void clear_canvas(PixelBuffer, Color color = Color(0, 0, 0, 0));
-
-  static void fill_rect(PixelBuffer target, const Rect& rect, const Color& color);
-
   /** Flip a surface horizontal */
   static PixelBuffer flip_horizontal (PixelBuffer sur);
 

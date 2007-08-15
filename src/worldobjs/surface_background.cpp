@@ -62,10 +62,8 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
 
   Timer timer("Background creation");
 
-  if (color.a > 1.0)
-    std::cout << "Background: Warning dim larger than 1.0 are no longer supported" << std::endl;
-
   bg_surface = Resource::load_sprite(desc);
+  bg_surface.fill(color);
 
   // Scaling Code
   if (stretch_x && stretch_y)

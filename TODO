@@ -39,14 +39,14 @@ Roadmap for Pingus 0.8.0
 
 - file parsing easily crashes or asserts on incorrect files
 
+- GroundMap tiles are currently RGBA, while in reality they are just
+  RGB with a colorkey, room for optimization
+
 Roadmap for Pingus 0.7.0
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Important:
 ==========
-
-- surface-background dimming isn't implemented (i.e. a transparent
-  fillrect over the background surface to change its color)
 
 - update INSTALL.* file
 
