@@ -61,12 +61,4 @@ Origin string2origin(const std::string& str);
 
 Vector2i calc_origin(Origin origin, const Size& size);
 
-#if 0
-//: Returns the anchor point for the origin within the dimensions of the size structure.
-//- !group=Display/Display 2D!
-//- !header=display.h!
-CL_API_CORE CL_Pointf calc_origin(CL_Origin origin, const CL_Sizef &size);
-CL_API_CORE CL_Pointd calc_origin(CL_Origin origin, const CL_Sized &size);
-#endif 
-
 #endif

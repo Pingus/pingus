@@ -48,8 +48,6 @@ Roadmap for Pingus 0.7.0
 Important:
 ==========
 
-- rain particles are missing, see data/levels/playable/blockers-timpany-tutorial.pingus
-
 - paralax handling is different between 0.6 and SDL, see
   data/levels/playable/slidenride1-grumbel.pingus
 

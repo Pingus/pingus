@@ -107,7 +107,6 @@ RainParticleHolder::update ()
 void
 RainParticleHolder::draw (SceneContext& gc)
 {
-#ifdef CLANLIB_0_6
   for (std::vector<RainParticle>::iterator it=particles.begin(); it != particles.end(); ++it)
     {
       // skip dead/invisible particles
@@ -115,14 +114,16 @@ RainParticleHolder::draw (SceneContext& gc)
         continue;
 
       if (it->splash)
-        gc.color().draw(rain_splash, it->pos, static_cast<int>(it->splash_frame));
+        {
+          rain_splash.set_frame(static_cast<int>(it->splash_frame));
+          gc.color().draw(rain_splash, it->pos);
+        }
       else
         if (it->use_rain2_surf)
-          gc.color().draw(rain2_surf, static_cast<int>(it->pos.x), static_cast<int>(it->pos.y - rain1_surf.get_height()));
+          gc.color().draw(rain2_surf, it->pos.x, it->pos.y - rain1_surf.get_height());
         else
-          gc.color().draw(rain1_surf, static_cast<int>(it->pos.x), static_cast<int>(it->pos.y - rain1_surf.get_height()));
+          gc.color().draw(rain1_surf, it->pos.x, it->pos.y - rain1_surf.get_height());
     }
-#endif
 }
 
 } // namespace Particles
