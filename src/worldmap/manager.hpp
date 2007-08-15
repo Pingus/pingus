@@ -66,6 +66,8 @@ class WorldMapManager : public GUIScreen
 private:
   static WorldMapManager* instance_;
 
+  Sprite levelname_bg;
+
   bool is_init;
   bool exit_worldmap;
 
@@ -83,6 +85,7 @@ public:
   /** Check if WorldMap manager still needs to run and exit if if
       not */
   void update (float);
+  void draw_foreground(DrawingContext& gc);
 
   /** @defgroup WorldMapManagerBindings Controller bindings of the WorldMapManager
       @{*/

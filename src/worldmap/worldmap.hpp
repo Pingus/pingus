@@ -47,8 +47,6 @@ class Pingus;
 class WorldMap
 {
 private:
-  Sprite levelname_bg;
-
   /** name of the file to parse */
   std::string filename;
 
@@ -111,6 +109,9 @@ public:
 
   /** Enters the level on which the Pingu is currently standing */
   void enter_level();
+
+  /** Return the current levelname for use in GUI */
+  std::string get_levelname();
 
   /** The the pingu to the given Node */
   void set_pingus(NodeId id);

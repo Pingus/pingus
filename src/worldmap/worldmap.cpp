@@ -64,7 +64,6 @@ WorldMap::WorldMap(const std::string& arg_filename)
   set_starting_node();
   add_drawable(pingus);
 
-  levelname_bg = Resource::load_sprite("core/worldmap/levelname_bg");
   gc_state.set_limit(Rect(Vector2i(0, 0), Size(width, height)));
 }
 
@@ -184,7 +183,7 @@ WorldMap::draw(DrawingContext& gc)
   
   
   for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)
-      (*i)->draw(gc);
+    (*i)->draw(gc);
 
   Vector3f mpos = gc.screen_to_world(Vector3f((float)mouse_x, (float)mouse_y));
   Dot* dot = path_graph->get_dot(mpos.x, mpos.y);
@@ -192,38 +191,6 @@ WorldMap::draw(DrawingContext& gc)
     dot->draw_hover(gc);
   
   gc_state.pop(gc);
-
-  // Draw the levelname
-  // FIXME: Should be moved to a higher level
-  gc.draw(levelname_bg,
-          Vector3f(gc.get_width()/2 - levelname_bg.get_width()/2,
-                   gc.get_height() - levelname_bg.get_height()));
-
-  if (pingus->get_node() != NoNode)
-    {
-      LevelDot* leveldot = dynamic_cast<LevelDot*>(path_graph->get_dot(pingus->get_node()));
-
-      if (leveldot)
-        {
-          gc.print_center(Fonts::chalk_small, gc.get_width()/2, gc.get_height() - 20,
-                          _(leveldot->get_plf().get_levelname()));
-          
-        }
-      else
-        {
-          gc.print_center(Fonts::chalk_small,
-                          gc.get_width()/2,
-                          gc.get_height() - 20,
-                          "---");
-        }
-    }
-  else
-    {
-      gc.print_center(Fonts::chalk_small,
-                      gc.get_width()/2,
-                      gc.get_height() - 20,
-                      _("...walking..."));
-    }
 }
 
 void
@@ -439,6 +406,23 @@ bool
 WorldMap::is_final_map()
 {
   return false; ////(WorldMapManager::instance()->get_metamap()->get_final_worldmap() == short_name);
+}
+
+std::string
+WorldMap::get_levelname()
+{
+  if (pingus->get_node() != NoNode)
+    {
+      LevelDot* leveldot = dynamic_cast<LevelDot*>(path_graph->get_dot(pingus->get_node()));
+      if (leveldot)
+        return _(leveldot->get_plf().get_levelname());
+      else 
+        return "---";
+    }
+  else
+    {
+      return _("...walking...");
+    }
 }
 
 } // namespace WorldMapNS

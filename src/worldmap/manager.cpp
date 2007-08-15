@@ -30,6 +30,7 @@
 #include "../display/scene_context.hpp"
 #include "../math.hpp"
 #include "worldmap.hpp"
+#include "resource.hpp"
 #include "worldmap_story.hpp"
 #include "pingus.hpp"
 #include "metamap.hpp"
@@ -214,9 +215,10 @@ WorldMapManagerEnterButton::on_click()
 }
 
 WorldMapManager::WorldMapManager ()
-  : is_init(false),
-		exit_worldmap(false),
-		worldmap(0),
+  : levelname_bg(Resource::load_sprite("core/worldmap/levelname_bg")),
+    is_init(false),
+    exit_worldmap(false),
+    worldmap(0),
     new_worldmap(0)
     ////metamap(new MetaMap(path_manager.complete("metamap/metamap.xml")))
 {
@@ -354,6 +356,18 @@ WorldMapComponent::update (float delta)
 {
   WorldMapManager::instance()->worldmap->update(delta);
   UNUSED_ARG(delta);
+}
+
+void
+WorldMapManager::draw_foreground(DrawingContext& gc)
+{
+  // Draw the levelname
+  gc.draw(levelname_bg,
+          Vector3f(gc.get_width()/2 - levelname_bg.get_width()/2,
+                   gc.get_height() - levelname_bg.get_height()));
+
+  gc.print_center(Fonts::chalk_small, gc.get_width()/2, gc.get_height() - 20,
+                  worldmap->get_levelname());
 }
 
 void
