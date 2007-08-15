@@ -724,10 +724,10 @@ PingusMain::start_game ()
       bool successfull = true;
       if (!System::exist(levelfile))
         {
-          if (System::exist(levelfile + ".scm"))
-            levelfile += ".scm";
-          else if (System::exist("levels/" + levelfile + ".scm"))
-            levelfile = "levels/" + levelfile + ".scm";
+          if (System::exist(levelfile + ".pingus"))
+            levelfile += ".pingus";
+          else if (System::exist("levels/" + levelfile + ".pingus"))
+            levelfile = "levels/" + levelfile + ".pingus";
           else
             {
               pout << _("PingusMain: Levelfile not found, ignoring: ") << levelfile << std::endl;
