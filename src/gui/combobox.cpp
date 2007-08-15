@@ -36,8 +36,8 @@ Combobox::Combobox (Vector3f p, ComboboxListener* listener_, std::string l) :
 	listener(listener_)
 {
 	// Default to 20 characters wide.
-	width = Fonts::smallfont.get_width('O') * 20.0f;
-	height = (float)Fonts::smallfont.get_height();
+	width = Fonts::pingus_small.get_width('O') * 20.0f;
+	height = (float)Fonts::pingus_small.get_height();
 }
 
 // Destructor
@@ -140,7 +140,7 @@ Combobox::draw(DrawingContext &gc)
 		return;
 	
 	// Draw the label
-	gc.print_right(Fonts::smallfont, pos.x, pos.y, label);
+	gc.print_right(Fonts::pingus_small, pos.x, pos.y, label);
 
 	// Draw the rectangle
 	gc.draw_fillrect(pos.x, pos.y, pos.x + get_width(), pos.y + get_height(),
@@ -160,7 +160,7 @@ Combobox::draw(DrawingContext &gc)
 		// Draw all of the items
 		for (unsigned i = 0; i < item_list.size(); i++)
 		{
-			gc.print_left(Fonts::smallfont, pos.x + 5.0f, pos.y + ((i + 1) * height), 
+			gc.print_left(Fonts::pingus_small, pos.x + 5.0f, pos.y + ((i + 1) * height), 
 				item_list[i]->get_displayed_string());
 		}
 	}
@@ -168,7 +168,7 @@ Combobox::draw(DrawingContext &gc)
 	if (current_item)
 	{
 		// Print the currently selected item
-		gc.print_left(Fonts::smallfont, pos.x + 3.0f, pos.y, current_item->get_displayed_string());
+		gc.print_left(Fonts::pingus_small, pos.x + 3.0f, pos.y, current_item->get_displayed_string());
 	}
 }
 

@@ -37,9 +37,6 @@ extern Font pingus_small;
 extern Font pingus_small_fix_num;
 extern Font pingus_large;
 
-extern Font smallfont;
-extern Font smallfont_h;
-extern Font xterm;
 extern Font lcd;
 
 /** Load all fonts */

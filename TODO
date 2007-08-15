@@ -51,7 +51,8 @@ Important:
 - paralax handling is different between 0.6 and SDL, see
   data/levels/playable/slidenride1-grumbel.pingus
 
-- grep for all the FIXME's and '#if 0' and find those that might be important
+- grep for all the FIXME's and '#if 0' and find those that might be
+  important, add what you find to this TODO
 
 - update INSTALL.* file
 
@@ -62,8 +63,14 @@ Important:
 
 - src/components/pingus_counter.hpp font should be fixed-width/monospace
 
+- lacks background: data/levels/tutorial/snow10-grumbel.pingus
+
 Nice to Have:
 =============
+
+- Sprite class is bonkers, fill() and scale() depend on order
+
+- story graphics have a missing vertical line (due to age old gimp scaling bug)
 
 - worldmap scrolling seems to be broken when using small resolutions (-g 400x300)
 

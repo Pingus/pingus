@@ -1,11 +1,21 @@
 0.7.0
 =====
-* ClanLib 0.8 support
-* two new islands
-* basic multiplayer support
+* switch from ClanLib to SDL 
+* anti-aliased fonts
+* better support for resolutions larger then 800x600 (see --geometry
+  WxH option)
+* level editor temporarly removed
+* less fps then the ClanLib version
+* s-expression based file format (converter scripts are available)
 
-0.6.1 (??/Sep/2003)
-===================
+
+0.6.? (never released)
+======================
+* ClanLib 0.8 support
+
+
+0.6.1 (??/Sep/2003, never released)
+===================================
 * scroll wheel support in the editor
 * file ending for level files changed from .xml to .plf
 * level preview render code

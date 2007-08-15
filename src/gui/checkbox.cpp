@@ -46,7 +46,7 @@ Checkbox::draw(DrawingContext& gc)
 	if (is_checked)
 		gc.draw(checkmark, pos);
 	
-	gc.print_right(Fonts::smallfont, pos.x, pos.y, label);
+	gc.print_right(Fonts::pingus_small, pos.x, pos.y, label);
 }
 
 bool

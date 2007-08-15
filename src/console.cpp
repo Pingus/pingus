@@ -138,7 +138,7 @@ void
 Console::init()
 {
   // std::cout << "Console: Init..." << std::endl;
-  font = Fonts::xterm;
+  font = Fonts::courier_small;
 
   //  (*this) << "Pingus Output Console (hide/show it with F1)\n"
   //	  << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";

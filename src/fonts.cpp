@@ -33,11 +33,8 @@ Font pingus_small;
 Font pingus_small_fix_num;
 Font pingus_large;
 
-Font smallfont;
-Font smallfont_h;
-
 Font courier_small;
-Font xterm;
+
 Font lcd;
 
 void
@@ -52,9 +49,6 @@ init ()
   pingus_large = Resource::load_font("fonts/pingus" + std::string("-") + encoding);
 
   courier_small = Resource::load_font("fonts/courier_small" + std::string("-") + encoding);
-  xterm        = Resource::load_font("fonts/courier_small" + std::string("-") + encoding);
-  smallfont    = Resource::load_font("fonts/pingus_small" + std::string("-") + encoding); //PingusResource::load_font("Fonts/smallfont","fonts");
-  smallfont_h  = Resource::load_font("fonts/courier_small" + std::string("-") + encoding); // PingusResource::load_font("Fonts/smallfont_h","fonts");
 
   lcd          = Resource::load_font("fonts/number_fnt");
 }
@@ -68,9 +62,6 @@ void deinit ()
   pingus_small_fix_num = Font();
   pingus_large = Font();
   courier_small = Font();
-  xterm = Font();
-  smallfont = Font();
-  smallfont_h = Font();
   lcd = Font();
 }
 
