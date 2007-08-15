@@ -386,9 +386,8 @@ Sprite::fill(const Color& color)
                                                    );
 		SDL_FillRect(new_surface, NULL, SDL_MapRGBA(new_surface->format, color.r, color.g, color.b, color.a));
 		SDL_BlitSurface(new_surface, NULL, this->get_surface(), NULL);
+		SDL_FreeSurface(new_surface);
 	}
-
-	SDL_FreeSurface(new_surface);
 }
 
 /* EOF */
