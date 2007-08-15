@@ -71,6 +71,7 @@ public:
       chrs[i].x = chrs[i].y = chrs[i].w = chrs[i].h = 0;
 
     surface = IMG_Load(desc.image.c_str());
+    //std::cout << "IMG: " << desc.image << std::endl;
     assert(surface);
 
     if (surface->format->BitsPerPixel != 32)

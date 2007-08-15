@@ -6,6 +6,6 @@
  (space-length    9)
  (alpha-threshold  0)
  (characters "0123456789:")
- (image "data/images/fonts/number_fnt.png"))
+ (image "data/images/fonts/lcd.png"))
 
 ;; EOF ;;
