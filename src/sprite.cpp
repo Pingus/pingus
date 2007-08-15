@@ -375,11 +375,8 @@ Sprite::scale(int w, int h)
 void
 Sprite::fill(const Color& color)
 {
-  if (color.a != 0)
-    {
-      boost::shared_ptr<SpriteImpl> new_impl(new SpriteImpl()); 
-
-      SDL_Surface* new_surface = SDL_CreateRGBSurface(SDL_SWSURFACE, impl->surface->w, impl->surface->h,
+	if (color.a != 0) {
+		SDL_Surface* new_surface = SDL_CreateRGBSurface(SDL_SWSURFACE, impl->surface->w, impl->surface->h,
                                                    32,
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
                                                    0xff000000, 0x00ff0000, 0x0000ff00, 0x000000ff
@@ -387,53 +384,9 @@ Sprite::fill(const Color& color)
                                                    0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000
 #endif
                                                    );
-      SDL_BlitSurface(impl->surface, NULL, new_surface, NULL);
-
-      SDL_LockSurface(new_surface);
-      uint8_t* pixels = static_cast<uint8_t*>(new_surface->pixels);
-      int width  = new_surface->w;
-      int height = new_surface->h;
-      int pitch  = new_surface->pitch;
-
-      for(int y = 0; y < height; ++y)
-        for(int x = 0; x < width; ++x)
-          {
-            uint8_t* pixel = pixels + y * pitch + new_surface->format->BytesPerPixel * x;
-
-            if (pixel[3])
-              {
-                pixel[0] = ((pixel[0] * (255 - color.a)) + (color.r * color.a)) / 255;
-                pixel[1] = ((pixel[1] * (255 - color.a)) + (color.g * color.a)) / 255;
-                pixel[2] = ((pixel[2] * (255 - color.a)) + (color.b * color.a)) / 255;
-                // alpha stays the same
-              }
-          }
-      SDL_UnlockSurface(new_surface);
-
-      if (impl->surface->format->Amask == 0)
-        new_impl->surface = SDL_DisplayFormat(new_surface);
-      else
-        new_impl->surface = SDL_DisplayFormatAlpha(new_surface);
-
-      SDL_FreeSurface(new_surface);
-
-      new_impl->offset = impl->offset;
-
-      new_impl->frame_pos   = impl->frame_pos;
-      new_impl->frame_size  = impl->frame_size;
-      new_impl->frame_delay = impl->frame_delay;
-
-      new_impl->array = impl->array;
-
-      new_impl->loop            = impl->loop;
-      new_impl->loop_last_cycle = impl->loop_last_cycle;
-      new_impl->finished        = impl->finished;
-
-      new_impl->frame      = impl->frame; 
-      new_impl->tick_count = impl->tick_count;
-
-      impl = new_impl;
-    }
+		SDL_FillRect(new_surface, NULL, SDL_MapRGBA(new_surface->format, color.r, color.g, color.b, color.a));
+		SDL_BlitSurface(new_surface, NULL, this->get_surface(), NULL);
+	}
 }
 
 /* EOF */

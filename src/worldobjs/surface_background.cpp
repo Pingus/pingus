@@ -63,6 +63,7 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
   Timer timer("Background creation");
 
   bg_surface = Resource::load_sprite(desc);
+  bg_surface.fill(color);
 
   // Scaling Code
   if (stretch_x && stretch_y)
@@ -93,8 +94,6 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
           bg_surface.scale(bg_surface.get_width(), world->get_height());
         }
     }
-
-  bg_surface.fill(color);
 
   timer.stop();
 }
