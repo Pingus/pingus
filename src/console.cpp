@@ -124,7 +124,7 @@ Console::Console() : ostream (&streambuf) // std:: is missing here since Win32 d
   *this << "Welcome to Pingus " << VERSION << std::endl;
   *this << "================================" << std::endl;
   newline ();
-  *this << "This is the output and debug console, you can toggle it with ^" << std::endl;
+  *this << "This is the output and debug console, you can toggle it with F1" << std::endl;
   newline ();
 }
 
@@ -164,10 +164,10 @@ Console::draw()
     Display::get_height() - (font.get_height() * (number_of_lines + 3));
 
   // The background of the console
-  Display::fill_rect(Rect(0, start_y_pos - 15,
-                          Display::get_width(),
-                          Display::get_height()),
-                     Color(0, 0, 0, 128));
+  Display::fill_rect(Rect(0, start_y_pos - 15, Display::get_width(), Display::get_height()),
+                     Color(0, 50, 0, 128));
+  Display::fill_rect(Rect(0, start_y_pos - 15 - 4, Display::get_width(), start_y_pos - 15),
+                     Color(0, 150, 0, 128));
 
   const std::list<std::string>& buffer = streambuf.get_buffer ();
 
