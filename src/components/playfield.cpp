@@ -259,15 +259,6 @@ Playfield::set_viewpoint(int x, int y)
 }
 
 void
-Playfield::generate_clipping_rects(int x1, int y1, int x2, int y2)
-{
-  clipping_rectangles.push_back(Rect(0, 0, Display::get_width() - 1, y1));
-  clipping_rectangles.push_back(Rect(0, y1, x1, y2+1));
-  clipping_rectangles.push_back(Rect(x2+1, y1, Display::get_width() - 1, y2+1));
-  clipping_rectangles.push_back(Rect(0, y2+1, Display::get_width() - 1, Display::get_height() - 1));
-}
-
-void
 Playfield::scroll (int x, int y)
 {
   state.set_pos(state.get_pos() + Vector2f((float)x, (float)y));

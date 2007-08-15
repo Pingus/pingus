@@ -1,7 +1,7 @@
 //  $Id: manager.hxx,v 1.24 2003/10/18 23:17:28 grumbel Exp $
 //
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2000,2007 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -24,38 +24,42 @@
 #include "../gui/gui_manager.hpp"
 #include "../gui/gui_screen.hpp"
 
+class SceneContext;
+
 namespace WorldMapNS {
 
 typedef int NodeId;
 class WorldMap;
+
+class WorldMapComponent : public GUI::Component
+{
+private:
+  SceneContext* scene_context;
+
+public:
+  WorldMapComponent();
+  ~WorldMapComponent();
+
+  void on_primary_button_press (int x, int y);
+  void on_secondary_button_press (int x, int y);
+  void on_pointer_move(int x, int y);
+
+  void draw (DrawingContext& gc);
+  void update (float delta);
+
+  bool is_at (int, int) { return true; }
+
+private:
+  WorldMapComponent (const WorldMapComponent&);
+  WorldMapComponent& operator= (const WorldMapComponent&);
+
+};
 
 /** The WorldMapManager manages the worldmaps and the translation
     between two worldmaps, it also holds the GUI elements that are
     accessible in the WorldMap Screen */
 class WorldMapManager : public GUIScreen
 {
-  /** FIXME: Workaround class to let the worldmap play with well
-      FIXME: with the Screen, should be deleted at a later point. */
-  class WorldMapComponent : public GUI::Component
-  {
-  public:
-    WorldMapComponent () { }
-
-    void on_primary_button_press (int x, int y);
-    void on_secondary_button_press (int x, int y);
-    void on_pointer_move(int x, int y);
-
-    void draw (DrawingContext& gc);
-    void update (float delta);
-
-    bool is_at (int, int) { return true; }
-
-  private:
-    WorldMapComponent (const WorldMapComponent&);
-    WorldMapComponent& operator= (const WorldMapComponent&);
-
-  };
-
   WorldMapComponent* worldmap_component;
 
   friend class WorldMapComponent;
@@ -96,14 +100,15 @@ public:
 
   /** Change the current map to the given map
 
-  @param filename the filename of the new map, filename must be
-  @param filename relative to the worldmap directory
-  @param filename Example: "volcano.pingus" */
+      @param filename the filename of the new map, filename must be
+      @param filename relative to the worldmap directory
+      @param filename Example: "volcano.pingus" */
   void change_map (const std::string& filename, NodeId node);
 
   /** Singleton access function */
   static WorldMapManager* instance ();
   static void deinit();
+
 private:
   /** Startup Hook of the Screen */
   void on_startup ();

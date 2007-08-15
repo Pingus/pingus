@@ -48,11 +48,11 @@ Roadmap for Pingus 0.7.0
 Important:
 ==========
 
+- grep for all the FIXME's and '#if 0' and find those that might be important
+
 - update INSTALL.* file
 
 - remove all the remaining unneeded debuging std::cout's
-
-- separate gfx/colmap surfaces aren't used
 
 - Latin1 clean (also Latin-2 and Latin-9, see:
   http://kapsa.cz/~tomasb/pingus/intl-patch.tgz)
@@ -62,8 +62,9 @@ Important:
 Nice to Have:
 =============
 
-- worldmap looks somewhat ugly on larger resolutions, should either be
-  scaled or simply be centered like the levels
+- worldmap scrolling seems to be broken when using small resolutions (-g 400x300)
+
+- separate gfx/colmap surfaces aren't used
 
 - CollisionMask can't handle RGBA images and likely shouldn't (due to
   them being animated and stuff like that), we however don't have

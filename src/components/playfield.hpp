@@ -88,8 +88,6 @@ public:
   void do_scrolling();
   void disable_scroll_mode();
 
-  void generate_clipping_rects(int, int, int, int);
-
   /// Members used to communicate between different screen objs
   void set_server(Server*);
 

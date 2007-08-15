@@ -88,7 +88,7 @@ WorldMap::parse_file(FileReader reader)
       parse_objects(reader.read_section("objects"));
       parse_properties(reader.read_section("head"));
       intro_story = new WorldMapStory(reader.read_section("intro_story"));
-      end_story = new WorldMapStory(reader.read_section("end_story"));
+      end_story   = new WorldMapStory(reader.read_section("end_story"));
     }
   else
     {
@@ -149,7 +149,7 @@ WorldMap::parse_properties(FileReader reader)
 }
 
 void
-WorldMap::draw (DrawingContext& gc)
+WorldMap::draw(DrawingContext& gc)
 {
   Vector3f pingu_pos = pingus->get_pos();
   float min, max;
@@ -178,26 +178,26 @@ WorldMap::draw (DrawingContext& gc)
     }
   pingu_pos.y = Math::clamp(min, pingu_pos.x, max);
 
-  DrawingContext* display_gc = new DrawingContext();
-
   gc_state.set_pos(Vector2f(pingu_pos.x, pingu_pos.y));
 	
-  gc_state.push(*display_gc);
+  gc_state.push(gc);
   
-  // Blank out the screen in case the screen resolution is larger than
-  // the worldmap picture.
-  // FIXME:  Should probably scale everything to match the resolution instead.
-  gc.draw_fillrect(0, 0, (float)Display::get_width(), (float)Display::get_height(),
-                   Color(0,0,0), -15000);
-		
+  
   for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)
-    {
-      (*i)->draw(*display_gc);
-    }
+      (*i)->draw(gc);
 
+  Vector3f mpos = gc.screen_to_world(Vector3f((float)mouse_x, (float)mouse_y));
+  Dot* dot = path_graph->get_dot(mpos.x, mpos.y);
+  if (dot)
+    dot->draw_hover(gc);
+  
+  gc_state.pop(gc);
+
+  // Draw the levelname
+  // FIXME: Should be moved to a higher level
   gc.draw(levelname_bg,
           Vector3f(gc.get_width()/2 - levelname_bg.get_width()/2,
-                 gc.get_height() - levelname_bg.get_height()));
+                   gc.get_height() - levelname_bg.get_height()));
 
   if (pingus->get_node() != NoNode)
     {
@@ -205,37 +205,25 @@ WorldMap::draw (DrawingContext& gc)
 
       if (leveldot)
         {
-          gc.print_center(Fonts::chalk_small,
-                          display_gc->get_width ()/2,
-                          display_gc->get_height() - 20,
+          gc.print_center(Fonts::chalk_small, gc.get_width()/2, gc.get_height() - 20,
                           _(leveldot->get_plf().get_levelname()));
           
         }
       else
         {
           gc.print_center(Fonts::chalk_small,
-                          display_gc->get_width ()/2,
-                          display_gc->get_height() - 20,
+                          gc.get_width()/2,
+                          gc.get_height() - 20,
                           "---");
         }
     }
   else
     {
       gc.print_center(Fonts::chalk_small,
-                      display_gc->get_width ()/2,
-                      display_gc->get_height() - 20,
+                      gc.get_width()/2,
+                      gc.get_height() - 20,
                       _("...walking..."));
     }
-
-  Vector3f mpos = display_gc->screen_to_world(Vector3f((float)mouse_x, (float)mouse_y));
-  Dot* dot = path_graph->get_dot(mpos.x, mpos.y);
-  if (dot)
-    {
-      dot->draw_hover(*display_gc);
-    }
-  gc.draw(display_gc);
-
-  gc_state.pop(*display_gc);
 }
 
 void

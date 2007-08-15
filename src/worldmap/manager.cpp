@@ -27,6 +27,8 @@
 #include "../res_descriptor.hpp"
 #include "../sound/sound.hpp"
 #include "../stat_manager.hpp"
+#include "../display/scene_context.hpp"
+#include "../math.hpp"
 #include "worldmap.hpp"
 #include "worldmap_story.hpp"
 #include "pingus.hpp"
@@ -295,40 +297,103 @@ WorldMapManager::update (float delta)
     }
 }
 
-void
-WorldMapManager::WorldMapComponent::draw (DrawingContext& gc)
+WorldMapComponent::WorldMapComponent()
 {
-  WorldMapManager::instance()->worldmap->draw(gc);
+  scene_context = new SceneContext();
+}
+
+WorldMapComponent::~WorldMapComponent()
+{
+  delete scene_context;
 }
 
 void
-WorldMapManager::WorldMapComponent::update (float delta)
+WorldMapComponent::draw (DrawingContext& gc)
+{
+  WorldMap* worldmap = WorldMapManager::instance()->worldmap;
+
+  Rect cliprect(Vector2i(Math::max((Display::get_width()  - worldmap->get_width())/2,  0),
+                         Math::max((Display::get_height() - worldmap->get_height())/2, 0)), 
+                Size(Math::min(Display::get_width(),  worldmap->get_width()),
+                 Math::min(Display::get_height(), worldmap->get_height())));
+
+  scene_context->clear();
+  scene_context->push_modelview();
+  scene_context->translate(cliprect.left, cliprect.top);
+
+  scene_context->set_cliprect(cliprect);
+
+  //scene_context->color().draw_fillrect(-100, -100, 2000, 2000, Color(255,0,0,0), -10000);
+  worldmap->draw(scene_context->color());
+
+  gc.draw(new SceneContextDrawingRequest(scene_context, Vector3f(0,0,-1000)));
+
+  scene_context->pop_modelview();
+
+  // Draw border
+  if (cliprect != Rect(Vector2i(0,0), Size(Display::get_width(), Display::get_height())))
+  {
+    Color border_color(50, 65, 75);
+    // top
+    gc.draw_fillrect(0, 0, (float)Display::get_width(), (float)cliprect.top,
+                     border_color);
+    // bottom
+    gc.draw_fillrect(0, (float)cliprect.bottom, (float)Display::get_width(), (float)Display::get_height(),
+                 border_color);
+    // left
+    gc.draw_fillrect(0, (float)cliprect.top, (float)cliprect.left, (float)cliprect.bottom,
+                 border_color);
+    // right
+    gc.draw_fillrect((float)cliprect.right, (float)cliprect.top, (float)Display::get_width(), (float)cliprect.bottom,
+                 border_color);
+  }
+}
+
+void
+WorldMapComponent::update (float delta)
 {
   WorldMapManager::instance()->worldmap->update(delta);
   UNUSED_ARG(delta);
 }
 
 void
-WorldMapManager::WorldMapComponent::on_primary_button_press (int x, int y)
+WorldMapComponent::on_primary_button_press (int x, int y)
 {
-  //std::cout << "Buton press" << std::endl;
-  /** Fixme: insert Co. translation here */
-  WorldMapManager::instance ()->worldmap->on_primary_button_press (x, y);
+  WorldMap* worldmap = WorldMapManager::instance ()->worldmap;
+  Rect cliprect(Vector2i(Math::max((Display::get_width()  - worldmap->get_width())/2,  0),
+                         Math::max((Display::get_height() - worldmap->get_height())/2, 0)), 
+                Size(Math::min(Display::get_width(),  worldmap->get_width()),
+                 Math::min(Display::get_height(), worldmap->get_height())));
+
+  WorldMapManager::instance ()->worldmap->on_primary_button_press(x - cliprect.left,
+                                                                  y - cliprect.top);
 }
 
 
 void
-WorldMapManager::WorldMapComponent::on_pointer_move (int x, int y)
+WorldMapComponent::on_pointer_move (int x, int y)
 {
-  WorldMapManager::instance ()->worldmap->on_pointer_move (x, y);
+  WorldMap* worldmap = WorldMapManager::instance ()->worldmap;
+  Rect cliprect(Vector2i(Math::max((Display::get_width()  - worldmap->get_width())/2,  0),
+                         Math::max((Display::get_height() - worldmap->get_height())/2, 0)), 
+                Size(Math::min(Display::get_width(),  worldmap->get_width()),
+                 Math::min(Display::get_height(), worldmap->get_height())));
+
+  WorldMapManager::instance ()->worldmap->on_pointer_move(x - cliprect.left,
+                                                          y - cliprect.top);
 }
 
 void
-WorldMapManager::WorldMapComponent::on_secondary_button_press (int x, int y)
+WorldMapComponent::on_secondary_button_press (int x, int y)
 {
-  //std::cout << "Buton press" << std::endl;
-  /** Fixme: insert Co. translation here */
-  WorldMapManager::instance ()->worldmap->on_secondary_button_press (x, y);
+  WorldMap* worldmap = WorldMapManager::instance ()->worldmap;
+  Rect cliprect(Vector2i(Math::max((Display::get_width()  - worldmap->get_width())/2,  0),
+                         Math::max((Display::get_height() - worldmap->get_height())/2, 0)), 
+                Size(Math::min(Display::get_width(),  worldmap->get_width()),
+                 Math::min(Display::get_height(), worldmap->get_height())));
+
+  WorldMapManager::instance ()->worldmap->on_secondary_button_press(x - cliprect.left,
+                                                                    y - cliprect.top);
 }
 
 void
