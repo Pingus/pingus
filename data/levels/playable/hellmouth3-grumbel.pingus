@@ -305,22 +305,22 @@
         (height 15)
         (position 510 306 0)))
     (teleporter 
-      (target-id "id2250173")
+      (target-id "id2250277")
       (position 214 753 0))
     (teleporter-target 
-      (id "id2250173")
+      (id "id2250277")
       (position 579 515 0))
     (teleporter 
-      (target-id "id2250209")
+      (target-id "id2250313")
       (position 952 759 0))
     (teleporter-target 
-      (id "id2250209")
+      (id "id2250313")
       (position 579 512 0))
     (teleporter 
-      (target-id "id2250244")
+      (target-id "id2250348")
       (position 791 526 0))
     (teleporter-target 
-      (id "id2250244")
+      (id "id2250348")
       (position 580 240 0))
     (switchdoor 
       (switch 

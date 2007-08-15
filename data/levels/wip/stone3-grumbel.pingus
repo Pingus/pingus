@@ -25,7 +25,7 @@
       (surface 
         (image "textures/rocktile")
         (modifier "ROT0"))
-      (color 0 0 0 1)
+      (color 0 0 0 0)
       (scroll-x 0.0)
       (scroll-y 0.0)
       (para-x 0.5)

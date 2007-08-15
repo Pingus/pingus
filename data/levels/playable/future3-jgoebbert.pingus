@@ -20,7 +20,7 @@
       (surface 
         (image "textures/anim_fire")
         (modifier "ROT0"))
-      (color 0 0 0 1)
+      (color 0 0 0 0)
       (scroll-x 0.0)
       (scroll-y 0.0)
       (para-x 0.0)
@@ -1541,9 +1541,9 @@
       (speed 1)
       (parallax 1))
     (teleporter 
-      (target-id "id2256477")
+      (target-id "id2258766")
       (position 31 231 100))
     (teleporter-target 
-      (id "id2256477")
+      (id "id2258766")
       (position 700 85 100))))
 ;; EOF ;;
