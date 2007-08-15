@@ -20,6 +20,7 @@
 #ifndef HEADER_PINGUS_BLITTER_HXX
 #define HEADER_PINGUS_BLITTER_HXX
 
+#include "SDL.h"
 #include "pingus.hpp"
 #include "math/color.hpp"
 #include "math/rect.hpp"
@@ -32,6 +33,9 @@ class PixelBuffer;
 class Blitter
 {
 public:
+  static SDL_Surface* create_surface_rgba(int w, int h);
+  static SDL_Surface* create_surface_rgb(int w, int h);
+
   /** Flip a surface horizontal */
   static PixelBuffer flip_horizontal (PixelBuffer sur);
 

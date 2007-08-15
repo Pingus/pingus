@@ -214,4 +214,28 @@ Blitter::rotate_270_flip (PixelBuffer sur)
   return BlitterImpl::modify(sur, BlitterImpl::transform_rot270_flip());
 }
 
+SDL_Surface*
+Blitter::create_surface_rgba(int w, int h)
+{
+  return SDL_CreateRGBSurface(SDL_SWSURFACE | SDL_SRCALPHA, w, h, 32,
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+                              0xff000000, 0x00ff0000, 0x0000ff00, 0x000000ff
+#else
+                              0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000
+#endif
+                              );
+}
+
+SDL_Surface*
+Blitter::create_surface_rgb(int w, int h)
+{
+  return SDL_CreateRGBSurface(SDL_SWSURFACE, w, h, 24,
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+                              0xff000000, 0x00ff0000, 0x0000ff00, 0x00000000
+#else
+                              0x000000ff, 0x0000ff00, 0x00ff0000, 0x00000000
+#endif
+                              );
+}
+
 /* EOF */

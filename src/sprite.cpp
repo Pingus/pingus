@@ -375,19 +375,64 @@ Sprite::scale(int w, int h)
 void
 Sprite::fill(const Color& color)
 {
-	if (color.a != 0) {
-		SDL_Surface* new_surface = SDL_CreateRGBSurface(SDL_SWSURFACE, impl->surface->w, impl->surface->h,
-                                                   32,
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-                                                   0xff000000, 0x00ff0000, 0x0000ff00, 0x000000ff
-#else
-                                                   0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000
-#endif
-                                                   );
-		SDL_FillRect(new_surface, NULL, SDL_MapRGBA(new_surface->format, color.r, color.g, color.b, color.a));
-		SDL_BlitSurface(new_surface, NULL, this->get_surface(), NULL);
-		SDL_FreeSurface(new_surface);
-	}
+  if (color.a != 0) 
+    {
+      make_single_user();
+
+      // FIXME: Couldn't get this to work with a RGBA surface for some
+      // reason, something to do with tmp format and impl->surface
+      // matching up maybe, anyway with RGB it works and it saves a
+      // little bit of space to
+      SDL_Surface* tmp = Blitter::create_surface_rgb(impl->surface->w, impl->surface->h);
+      SDL_FillRect(tmp, NULL, SDL_MapRGBA(tmp->format, color.r, color.g, color.b, 255));
+      SDL_SetAlpha(tmp, SDL_SRCALPHA, color.a);
+          
+      SDL_BlitSurface(tmp, NULL, impl->surface, NULL);
+
+      SDL_FreeSurface(tmp);
+    }
+}
+
+void
+Sprite::make_single_user()
+{
+  boost::shared_ptr<SpriteImpl> new_impl(new SpriteImpl());
+  
+  if (impl->surface->format->Amask == 0)
+    new_impl->surface         = Blitter::create_surface_rgb(impl->surface->w, impl->surface->h);
+  else
+    new_impl->surface         = Blitter::create_surface_rgba(impl->surface->w, impl->surface->h);
+
+  SDL_BlitSurface(impl->surface, NULL, new_impl->surface, NULL);
+
+  new_impl->offset          = impl->offset;
+  new_impl->frame_pos       = impl->frame_pos;
+  new_impl->frame_size      = impl->frame_size;
+  new_impl->frame_delay     = impl->frame_delay;
+  new_impl->array           = impl->array;
+  new_impl->loop            = impl->loop;
+  new_impl->loop_last_cycle = impl->loop_last_cycle;
+  new_impl->finished        = impl->finished;
+  new_impl->frame           = impl->frame;
+  new_impl->tick_count      = impl->tick_count;
+
+  impl = new_impl;  
+}
+
+void
+Sprite::optimize()
+{
+  // FIXME: Could add a check to check if the surface is already optimized
+  SDL_Surface* new_surface;
+
+  if (impl->surface->format->Amask == 0)
+    new_surface = SDL_DisplayFormat(impl->surface);
+  else
+    new_surface = SDL_DisplayFormatAlpha(impl->surface);
+  
+  SDL_FreeSurface(impl->surface);
+
+  impl->surface = new_surface;
 }
 
 /* EOF */

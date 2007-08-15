@@ -95,6 +95,8 @@ SurfaceBackground::SurfaceBackground(const FileReader& reader)
         }
     }
 
+  bg_surface.optimize();
+
   timer.stop();
 }
 
