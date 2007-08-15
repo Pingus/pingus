@@ -61,9 +61,6 @@ env.Program('../pingus', [
 # # 'input/axes/mouse_axis.cpp', 
 # # 'pingus_level_test.cpp', 
 # # 'sound/slot_manager.cpp', 
-# # 'target_provider.cpp', 
-# # 'theme.cpp', 
-# # 'theme_selector.cpp', 
 # # 'xml_eval.cpp',
     
 'action_holder.cpp', 
@@ -223,7 +220,6 @@ env.Program('../pingus', [
 'pingus_menu_manager.cpp', 
 'pingus_sub_menu.cpp', 
 'plf_res_mgr.cpp', 
-# 'plt_xml.cpp', 
 # 'preview_renderer.cpp', 
 'res_descriptor.cpp', 
 'resource.cpp',
