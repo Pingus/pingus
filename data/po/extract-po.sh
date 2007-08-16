@@ -32,8 +32,7 @@ echo -n "Extracting strings from worldmaps... "
 data/po/extract-levels.guile data/worldmaps/*.worldmap >> "${OUT}.tmp"
 echo "done"
 
-rpl "\"Content-Type: text/plain; charset=CHARSET\\n\"" \
-    "\"Content-Type: text/plain; charset=ASCII\\n\"" \
+sed -i "s/\"Content-Type: text\\/plain; charset=CHARSET\\n\\/\"Content-Type: text\\/plain; charset=ASCII\\n\"" \
     "${OUT}.tmp"
 
 echo -n "Removing duplicate entries... "
