@@ -54,9 +54,9 @@ DemoRecorder::DemoRecorder (Server* server)
           record_demo = true;
 
           // Write file header
-          out << "<pingus-demo>\n"
-              << "  <level>" << levelname << "</level>\n"
-              << "  <events>" << std::endl;
+          out << "(pingus-demo\n"
+              << "  (level " << levelname << ")\n"
+              << "  (events " << std::endl;
         }
     }
   else
@@ -74,9 +74,9 @@ DemoRecorder::~DemoRecorder ()
 {
   if (record_demo)
     {
-      // Write file footer
-      out << "  </events>\n"
-          << "</pingus-demo>" << std::endl;
+      // Write file footer - close events and pingus-demo
+      out << "  )\n"
+          << ")" << std::endl;
       out.close();
     }
 }
@@ -86,8 +86,7 @@ DemoRecorder::record_event (const ServerEvent& event)
 {
   if (record_demo)
     {
-      event.write_xml(out);
-      //event.write_xml(std::cout);
+      event.write(out);
     }
 }
 

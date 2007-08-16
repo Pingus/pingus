@@ -56,7 +56,7 @@ public:
   /** Construct an server event from an xml subtree */
   ServerEvent(FileReader reader);
 
-  void write_xml(std::ostream& xml) const;
+  void write(std::ostream& out) const;
 
   /** Send this event to the server */
   void send(Server*);
