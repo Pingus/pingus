@@ -200,7 +200,6 @@ env.Program('../pingus', [
 'components/menu_button.cpp', 
 'mover.cpp', 
 'movers/linear_mover.cpp', 
-'multiline_text.cpp', 
 'particles/explosive_particle.cpp', 
 'particles/ground_particle.cpp', 
 'particles/pingu_particle_holder.cpp', 

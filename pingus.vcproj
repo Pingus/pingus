@@ -551,14 +551,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\src\multiline_text.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\src\multiline_text.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\src\path_manager.cpp"
 				>
 			</File>
