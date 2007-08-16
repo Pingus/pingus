@@ -22,15 +22,22 @@ puts ""
 lang = ARGV[0]
 ARGV[1..-1].each{|arg|
   doc = REXML::Document.new(File.new(arg))
-  REXML::XPath.each(doc, "/pingus-level/global/description[@lang='en']") { |element|
-    puts "#: #{arg.gsub(/^\.\.\/\.\.\/pingus_0_6\//, "")}"
-    puts "msgid \"#{element.text.gsub(/\s+/, " ")}\""
-  }
 
-  REXML::XPath.each(doc, "/pingus-level/global/description[@lang='#{lang}']") { |element|
-    puts "msgstr \"#{element.text.gsub(/\s+/, " ")}\""    
+  ["/pingus-level/global/description", "/pingus-level/global/levelname"].each{|tree|
+    element = REXML::XPath.match(doc, "#{tree}[@lang='en']")
+    
+    puts "#: #{arg.gsub(/^\.\.\/\.\.\/pingus_0_6\//, "")}"
+    puts "msgid \"#{element[0].text.gsub(/\s+/, " ")}\""
+
+    element = REXML::XPath.match(doc, "#{tree}[@lang='#{lang}']")
+    if (element.length >= 1)
+      puts "msgstr \"#{element[0].text.gsub(/\s+/, " ")}\""    
+    else
+      puts "msgstr \"\""
+    end 
+
+    puts ""
   }
-  puts ""
 }
 
 # EOF #

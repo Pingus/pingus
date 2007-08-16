@@ -231,6 +231,8 @@ PingusMain::check_args(int argc, char** argv)
                   _("Test a font"));
   argp.add_option(364, "language", "LANG",
                   _("Select language for use with Pingus"));
+  argp.add_option(365, "list-languages", "",
+                  _("List all available languages"));
   argp.add_option('v', "verbose", "", 
                   _("Print some more messages to stdout, can be set multiple times to increase verbosity"));
   argp.add_option('V', "version", "", 
@@ -539,6 +541,19 @@ PingusMain::check_args(int argc, char** argv)
           dictionary_manager.set_language(argp.get_argument()); 
           break;
 
+        case 365: // list-languages
+          {
+            std::cout << "Available languages are:" << std::endl;
+            std::cout << "========================" << std::endl;
+            std::set<std::string> lst = dictionary_manager.get_languages();
+            for (std::set<std::string>::iterator i = lst.begin(); i != lst.end(); ++i)
+              std::cout << TinyGetText::get_language_def(*i).name << " (" << *i << ")" << std::endl;
+
+            std::cout << "\nLanguages can be used via:\n\n    pingus --language de\n" << std::endl; 
+          }
+          exit(EXIT_SUCCESS);
+          break;
+
         case 'h':
           argp.print_help();
           exit(EXIT_SUCCESS);
@@ -623,17 +638,17 @@ PingusMain::init_path_finder()
   if(language == "cs" || language == "sr")
     {
       dictionary_manager.set_charset("ISO-8859-2");
-      //Pingus::Fonts::encoding = "ISO-8859-2";
+      Fonts::encoding = "iso-8859-2";
     }
   else if(language == "tr")
     {
       dictionary_manager.set_charset("ISO-8859-9");
-      //Pingus::Fonts::encoding = "ISO-8859-9";
+      Fonts::encoding = "iso-8859-9";
     }
   else
     {
       dictionary_manager.set_charset("ISO-8859-1");
-      //Pingus::Fonts::encoding = "ISO-8859-1";
+      Fonts::encoding = "iso-8859-1";
     }
 
   if (maintainer_mode)

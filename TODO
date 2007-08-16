@@ -48,6 +48,9 @@ Roadmap for Pingus 0.7.0
 Important:
 ==========
 
+- copy all translations in level files over to the LANG.po file (take care of encoding!)
+
+
 - paralax handling is different between 0.6 and SDL, see
   data/levels/playable/slidenride1-grumbel.pingus
 
@@ -63,8 +66,13 @@ Important:
 
 - src/components/pingus_counter.hpp font should be fixed-width/monospace
 
+- forgein languages break many parts of the GUI
+
+
 Nice to Have:
 =============
+
+- sv.po - ISO-8859-1 - (incomplete)
 
 - story graphics have a missing vertical line (due to age old gimp scaling bug)
 
