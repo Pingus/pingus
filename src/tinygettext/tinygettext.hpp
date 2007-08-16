@@ -72,6 +72,8 @@ public:
       mainly needed to evaluate plural forms */
   void set_language(const LanguageDef& lang);
 
+  LanguageDef get_language() const { return language; }
+
   /** Translate the string \a msgid to its correct plural form, based
       on the number of items given by \a num. \a msgid2 is \a msgid in
       plural form. */

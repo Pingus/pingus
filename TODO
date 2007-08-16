@@ -63,12 +63,8 @@ Important:
 
 - src/components/pingus_counter.hpp font should be fixed-width/monospace
 
-- lacks background: data/levels/tutorial/snow10-grumbel.pingus
-
 Nice to Have:
 =============
-
-- Sprite class is bonkers, fill() and scale() depend on order
 
 - story graphics have a missing vertical line (due to age old gimp scaling bug)
 

@@ -229,6 +229,8 @@ PingusMain::check_args(int argc, char** argv)
                   _("Loads the level editor"));
   argp.add_option(363, "font", "FILE",
                   _("Test a font"));
+  argp.add_option(364, "language", "LANG",
+                  _("Select language for use with Pingus"));
   argp.add_option('v', "verbose", "", 
                   _("Print some more messages to stdout, can be set multiple times to increase verbosity"));
   argp.add_option('V', "version", "", 
@@ -392,10 +394,12 @@ PingusMain::check_args(int argc, char** argv)
           fullscreen_enabled = true;
           break;
 
+#if 0
         case 'R': // --refresh-rate
           sscanf(argp.get_argument().c_str(), "%d", &refresh_rate);
           std::cout << "Pingus: Refresh rate is " << refresh_rate << std::endl;
           break;
+#endif
           
         case 'w': // --window
           fullscreen_enabled = false;
@@ -531,6 +535,10 @@ PingusMain::check_args(int argc, char** argv)
           fontfile = argp.get_argument();
           break;
 
+        case 364: // language
+          dictionary_manager.set_language(argp.get_argument()); 
+          break;
+
         case 'h':
           argp.print_help();
           exit(EXIT_SUCCESS);
@@ -605,32 +613,27 @@ PingusMain::init_path_finder()
       exit(EXIT_FAILURE);
     }
 
-  dictionary_manager.add_directory(path_manager.complete("po/"));
   // Language is automatically picked from env variable
   // dictionary_manager.set_language("de"); 
+  dictionary_manager.add_directory(path_manager.complete("po/"));
 
-  const char* lang = getenv("LC_ALL");
-  if(!lang) lang = getenv("LC_MESSAGES");
-  if(!lang) lang = getenv("LANG");
-  if(lang)
+  std::string language = dictionary_manager.get_dictionary().get_language().name;
+
+  language.resize(2);
+  if(language == "cs" || language == "sr")
     {
-      std::string language(lang);
-      language.resize(2);
-      if(language == "cs" || language == "sr")
-        {
-          dictionary_manager.set_charset("ISO-8859-2");
-          //Pingus::Fonts::encoding = "ISO-8859-2";
-        }
-      else if(language == "tr")
-        {
-          dictionary_manager.set_charset("ISO-8859-9");
-          //Pingus::Fonts::encoding = "ISO-8859-9";
-        }
-      else
-        {
-          dictionary_manager.set_charset("ISO-8859-1");
-          //Pingus::Fonts::encoding = "ISO-8859-1";
-        }
+      dictionary_manager.set_charset("ISO-8859-2");
+      //Pingus::Fonts::encoding = "ISO-8859-2";
+    }
+  else if(language == "tr")
+    {
+      dictionary_manager.set_charset("ISO-8859-9");
+      //Pingus::Fonts::encoding = "ISO-8859-9";
+    }
+  else
+    {
+      dictionary_manager.set_charset("ISO-8859-1");
+      //Pingus::Fonts::encoding = "ISO-8859-1";
     }
 
   if (maintainer_mode)
@@ -650,12 +653,7 @@ PingusMain::print_greeting_message()
     std::cout.put('=');
   std::cout << std::endl;
 
-#ifdef HAVE_GETTEXT
-  std::cout << _("getext support:               ok") << std::endl;
-  std::cout << _("gettext language:        english") << std::endl;
-#else
-  std::cout << "getext support: missing (only support for english will be available)" << std::endl;
-#endif
+  std::cout << _("language:                ") << dictionary_manager.get_dictionary().get_language().name << std::endl;
 
   if (sound_enabled)
     std::cout << _("sound support:           enabled") << std::endl;
@@ -667,11 +665,11 @@ PingusMain::print_greeting_message()
   else
     std::cout << _("music support:          disabled") << std::endl;
 
-  std::cout << _("resolution set to:       ") << screen_width << "x" << screen_height << std::endl;
+  std::cout <<   _("resolution:              ") << screen_width << "x" << screen_height << std::endl;
   std::cout << _("fullscreen:              ")
             << (fullscreen_enabled ? _(" enabled") : _("disabled"))
             << std::endl;
-  std::cout << _("refresh rate:            ") << refresh_rate << std::endl;
+  //std::cout << _("refresh rate:            ") << refresh_rate << std::endl;
   std::cout << _("using OpenGL:            ") << use_opengl << std::endl;
 
   std::cout << std::endl;
