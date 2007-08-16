@@ -64,6 +64,11 @@ Walker::update ()
 
   */
 
+  if (rel_getpixel(1, 0) == Groundtype::GP_OUTOFSCREEN) {
+		pingu->set_x(pingu->get_x() + pingu->direction);
+		return;
+  }
+
   if (rel_getpixel(0, -1) ==  Groundtype::GP_WATER)
     {
       pingu->set_action(Actions::Drown);
