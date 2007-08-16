@@ -6,9 +6,6 @@
     (description "Sometimes there are situations where you don't have a Blocker at hand to "
                  "coordinate your Pingus. You'll have to find other ways to keep them under "
                  "control while a single one prepares the path for the rest. ")
-    (description "Det er ikke i alle baner, at du har en Spærre-Pingu til at holde styr på "
-                 "de andre. Du bliver så nødt til at finde på andre måde at kontrollere "
-                 "dem på, mens en fortrop bereder vejen for resten. ")
     (author "Ingo Ruhnke <grumbel@gmx.de>")
     (number-of-pingus 20)
     (number-to-save 15)
