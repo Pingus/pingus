@@ -20,7 +20,8 @@
 #ifndef HEADER_GETTEXT_HXX
 #define HEADER_GETTEXT_HXX
 
-#include "tinygettext/tinygettext.hpp"
+#include "tinygettext/dictionary_manager.hpp"
+#include "tinygettext/dictionary.hpp"
 
 extern TinyGetText::DictionaryManager dictionary_manager;
 

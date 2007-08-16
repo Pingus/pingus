@@ -204,7 +204,7 @@ WorldMapManagerEnterButton::draw (DrawingContext& gc)
       gc.print_right(Fonts::chalk_small,
                     (float)Display::get_width() - 40,
                     (float)Display::get_height() - 25,
-                    _("Enter"));
+                    _("Enter?"));
     }
 }
 

@@ -1,4 +1,4 @@
-//  $Id: tinygettext.h,v 1.2 2004/11/24 23:10:01 matzebraun Exp $
+//  $Id$
 // 
 //  TinyGetText - A small flexible gettext() replacement
 //  Copyright (C) 2004 Ingo Ruhnke <grumbel@gmx.de>
@@ -17,28 +17,15 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_TINYGETTEXT_HXX
-#define HEADER_TINYGETTEXT_HXX
+#ifndef HEADER_DICTIONARY_HPP
+#define HEADER_DICTIONARY_HPP
 
-#include <map>
-#include <vector>
-#include <set>
 #include <string>
+#include <map>
+
+#include "language_def.hpp"
 
 namespace TinyGetText {
-
-typedef int (*PluralFunc)(int n);
-
-struct LanguageDef {
-  const char* code;
-  const char* name;
-  int         nplural;
-  PluralFunc  plural;
-
-  LanguageDef(const char* code_, const char* name_,  int nplural_, PluralFunc plural_)
-    : code(code_), name(name_), nplural(nplural_), plural(plural_)
-  {}
-};
 
 /** A simple dictionary class that mimics gettext() behaviour. Each
     Dictionary only works for a single language, for managing multiple
@@ -94,60 +81,6 @@ public:
       dictionary */
   void add_translation(const std::string& msgid, const std::string& msgstr);
 };
-
-/** Manager class for dictionaries, you give it a bunch of directories
-    with .po files and it will then automatically load the right file
-    on demand depending on which language was set. */
-class DictionaryManager
-{
-private:
-  typedef std::map<std::string, Dictionary> Dictionaries;
-  Dictionaries dictionaries;
-  typedef std::vector<std::string> SearchPath;
-  SearchPath search_path;
-  typedef std::map<std::string, std::string> Aliases;
-  Aliases language_aliases;
-  std::string charset;
-  std::string language;
-  Dictionary* current_dict;
-  Dictionary empty_dict;
-
-public:
-  DictionaryManager();
-
-  /** Return the currently active dictionary, if none is set, an empty
-      dictionary is returned. */
-  Dictionary& get_dictionary()
-  { return *current_dict; }
-
-  /** Get dictionary for lang */
-  Dictionary& get_dictionary(const std::string& langspec);
-
-  /** Set a language based on a four? letter country code */
-  void set_language(const std::string& langspec);
-
-  /** Set a charset that will be set on the returned dictionaries */
-  void set_charset(const std::string& charset);
-
-  /** Define an alias for a language */
-  void set_language_alias(const std::string& alias, const std::string& lang);
-
-  /** Add a directory to the search path for dictionaries */
-  void add_directory(const std::string& pathname);
-  
-  /** Return a set of the available languages in their country code */
-  std::set<std::string> get_languages();
-
-private:
-  void parseLocaleAliases();
-  /// returns the language part in a language spec (like de_DE.UTF-8 -> de)
-  std::string get_language_from_spec(const std::string& spec);
-};
-
-/** Read the content of the .po file given as \a in into the
-    dictionary given as \a dict */
-void read_po_file(Dictionary& dict, std::istream& in);
-LanguageDef& get_language_def(const std::string& name);
 
 } // namespace TinyGetText
 
