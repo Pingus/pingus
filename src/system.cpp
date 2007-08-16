@@ -34,6 +34,10 @@
 #  include <fstream>
 #  include <sys/stat.h>
 #  include <sys/types.h>
+#  include <io.h>
+#define chdir  _chdir
+#define access _access
+#define F_OK   0
 #endif
 
 #include <iostream>
@@ -42,6 +46,7 @@
 #include "pingus_error.hpp"
 #include "globals.hpp"
 #include "system.hpp"
+#include "string_util.hpp"
 #include "gettext.h"
 
 
@@ -196,14 +201,7 @@ System::extension (std::string filename)
 bool
 System::exist(std::string filename)
 {
-#ifndef WIN32
   return !access(filename.c_str(), F_OK);
-#else
-  //don't know a better solution
-  std::ifstream check(filename.c_str());
-  if(!check) return false;
-  return true;
-#endif
 }
 
 void
@@ -231,7 +229,27 @@ System::create_dir(std::string directory)
       if (verbose) std::cout << "Found: " << directory << std::endl;
     }
 #else
-  CreateDirectory(directory.c_str(), 0);
+  if (!CreateDirectory(directory.c_str(), 0))
+    {
+      DWORD dwError = GetLastError();
+      if (dwError == ERROR_ALREADY_EXISTS)
+        {
+          if (verbose) std::cout << "Found: " << directory << std::endl;
+        }
+      else if (dwError == ERROR_PATH_NOT_FOUND)
+        {
+          throw PingusError("CreateDirectory: " + directory +
+            ": One or more intermediate directories do not exist; this function will only create the final directory in the path.");
+        }
+      else
+        {
+          throw PingusError("CreateDirectory: " + directory + ": failed with error " + StringUtil::to_string(dwError));
+        }
+    }
+  else
+    {
+      std::cout << "Successfully created: " << directory << std::endl;
+    }
 #endif
 }
 
@@ -240,11 +258,7 @@ void
 System::change_dir (std::string dir)
 {
   std::cout << "System: change_dir: " << dir << std::endl;
-#ifdef WIN32
-  _chdir (dir.c_str ());
-#else
-  chdir (dir.c_str ());
-#endif
+  chdir(dir.c_str());
 }
 
 void
@@ -282,18 +296,18 @@ std::string
 System::get_statdir()
 {
 #ifdef WIN32
-	std::string tmpstr;
-	char* homedir = getenv("HOMEDRIVE");
-	if (homedir)
-  {
-    tmpstr = std::string(homedir);
-    homedir = 0;
-    homedir = getenv("HOMEPATH");
-		tmpstr = tmpstr + std::string(homedir) + "/.pingus/";
-  }
-	else
-		tmpstr = "user/";
-	return tmpstr;
+  std::string tmpstr;
+  char* homedir = getenv("HOMEDRIVE");
+  if (homedir)
+    {
+      tmpstr = std::string(homedir);
+      homedir = 0;
+      homedir = getenv("HOMEPATH");
+      tmpstr = tmpstr + std::string(homedir) + "/.pingus/";
+    }
+  else
+    tmpstr = "user/";
+  return tmpstr;
 
 #else /* !WIN32 */
   char* homedir = getenv("HOME");
@@ -382,7 +396,7 @@ std::string
 System::get_language()
 {
 #ifdef WIN32
-  char* lang_c = getenv ("LC_MESSAGES");
+  char* lang_c = getenv("LC_MESSAGES");
 #else
   char* lang_c = setlocale(LC_MESSAGES, NULL);
 #endif
