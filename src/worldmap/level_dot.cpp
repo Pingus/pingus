@@ -144,7 +144,7 @@ LevelDot::draw_hover(DrawingContext& gc)
       
       gc.print_center(Fonts::pingus_small,
                       pos.x - (float)pos_correction,
-                      pos.y - 40,
+                      pos.y - 44,
                       _(get_plf().get_levelname()), 
                       10000);
     }
