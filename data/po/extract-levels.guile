@@ -1,0 +1,48 @@
+#!/usr/bin/guile \
+-e main -s
+!#
+
+(define *current-file* "")
+(define pattern-list
+  '((pingus-level head levelname)
+    (pingus-level head description)))
+
+;;(regexp-substitute/global #f  "\"" str 'pre "\\\"" 'post))))
+(define (print-msg sexpr)
+  (let ((str  (apply string-append sexpr))) ;; string escaping missing
+    (cond ((not (string-null? str))
+           (display "#: ")
+           (display *current-file*)
+           (newline)
+           (display "msgid = \"")
+           (display str)
+           (display "\"\n")
+           (display "msgstr = \"\"\n")
+           (newline)
+           ))))
+
+(define (grep-sexpr func pattern sexpr)
+  (cond ((null? pattern)
+         (func sexpr))
+        (else
+         (for-each (lambda (el)
+                     (if (equal? (car pattern) (car el))
+                         (grep-sexpr func (cdr pattern) (cdr el))))
+                   sexpr))))
+
+(define (main args)
+  (set! args (cdr args))
+  (for-each (lambda (file)
+              (set! *current-file* file)
+              (let* ((port  (open-input-file file))
+                     (sexpr (list (read port))))
+
+                (for-each (lambda (pattern)
+                            (grep-sexpr print-msg pattern sexpr))
+                          pattern-list)
+
+                (close-port port)))
+            args)
+  (display "\n;; EOF ;;\n"))
+
+;; EOF ;;
