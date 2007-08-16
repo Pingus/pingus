@@ -15,7 +15,7 @@
     (title "The Journey Begins")
     (music "pingus-4.it")
     (pages 
-      (page00 
+      (page 
         (surface 
           (image "story/story0")
           (modifier "ROT0"))
@@ -23,7 +23,7 @@
               "along with all the other animals. Everything was in balance and it seemed "
               "like nothing could disrupt their peace.  The Pingus were happy and it seemed "
               "like this could never end."))
-      (page01 
+      (page 
         (surface 
           (image "story/story1")
           (modifier "ROT0"))
@@ -31,7 +31,7 @@
               "earth got warmer. Firstly, they thought this was just a normal fluctuation "
               "in the world's climate, but things seemed to get worse and worse with every "
               "year."))
-      (page02 
+      (page 
         (surface 
           (image "story/story2")
           (modifier "ROT0"))
@@ -39,7 +39,7 @@
               "animals tried to leave the region to search for colder areas, but the Pingus "
               "knew that this wouldn't help: they knew that they had to do something about "
               "it."))
-      (page03 
+      (page 
         (surface 
           (image "story/story3")
           (modifier "ROT0"))
@@ -47,7 +47,7 @@
               "They decided to send out an expedition around the world to find the cause "
               "of this warming. The expedition consisted of hundreds of the bravest Pingus "
               "on the South Pole."))
-      (page04 
+      (page 
         (surface 
           (image "story/story4")
           (modifier "ROT0"))
@@ -56,14 +56,14 @@
               "of Mogorok, also known as the Tutorial Island. According to the eldest, this "
               "island has always been the first stop of Pingus that were sent out into the "
               "world."))
-      (page05 
+      (page 
         (surface 
           (image "story/story5")
           (modifier "ROT0"))
         (text "The island consists of many areas that are ideal to teach the Pingus their "
               "abilities. The Pingus can learn to build bridges, climb, bash and use many "
               "other talents which they will need on their long and dangerous journey."))
-      (page06 
+      (page 
         (surface 
           (image "story/story6")
           (modifier "ROT0"))
@@ -71,7 +71,7 @@
               "Pingus. You can also get familiar with all the abilities the Pingus provide "
               "and learn to master them, since you will need all of them on your journey "
               "around the world."))
-      (page07 
+      (page 
         (surface 
           (image "story/story6")
           (modifier "ROT0"))
@@ -81,7 +81,7 @@
     (title "The Journey Continues")
     (music "pingus-4.it")
     (pages 
-      (page01 
+      (page 
         (surface 
           (image "story/credits1")
           (modifier "ROT0"))
@@ -90,7 +90,7 @@
               "floe with which the Pingus traveled to the Tutorial Island isn't going to "
               "hold on the whole way into the warmer climates the Pingus have to find something "
               "else to guide them on their journey."))
-      (page02 
+      (page 
         (surface 
           (image "story/credits2")
           (modifier "ROT0"))
@@ -99,7 +99,7 @@
               "some searching the Pingus discovered the meaning of this, and they found "
               "the large tree at the end of the island which gave them wood to construct "
               "a float."))
-      (page03 
+      (page 
         (surface 
           (image "story/credits3")
           (modifier "ROT0"))
@@ -107,7 +107,7 @@
               "all. After also packing a bunch of provisions they were prepared to start "
               "their journey and leave their familiar ground and enter the unknown parts "
               "of the world."))
-      (page04 
+      (page 
         (surface 
           (image "story/credits4")
           (modifier "ROT0"))

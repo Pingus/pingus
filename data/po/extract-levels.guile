@@ -2,14 +2,29 @@
 -e main -s
 !#
 
-(define *current-file* "")
-(define pattern-list
+(use-modules (ice-9 regex))
+
+(define level-pattern-list
   '((pingus-level head levelname)
     (pingus-level head description)))
 
-;;(regexp-substitute/global #f  "\"" str 'pre "\\\"" 'post))))
+(define worldmap-pattern-list
+  '((pingus-worldmap head name)
+    (pingus-worldmap head description)
+    (pingus-worldmap intro_story title)
+    (pingus-worldmap intro_story text)
+    (pingus-worldmap intro_story pages page text)
+    (pingus-worldmap end_story   title)
+    (pingus-worldmap end_story   pages page text)
+    ))
+
+(define *current-file* "")
+
+(define (escape-string str)
+  (regexp-substitute/global #f "\"" str 'pre "\\\"" 'post))
+
 (define (print-msg sexpr)
-  (let ((str  (apply string-append sexpr))) ;; string escaping missing
+  (let ((str  (escape-string (apply string-append sexpr))) )
     (cond ((not (string-null? str))
            (display "#: ")
            (display *current-file*)
@@ -36,13 +51,16 @@
               (set! *current-file* file)
               (let* ((port  (open-input-file file))
                      (sexpr (list (read port))))
-
                 (for-each (lambda (pattern)
                             (grep-sexpr print-msg pattern sexpr))
-                          pattern-list)
-
+                          (cond ((string-suffix? ".worldmap" file)
+                                 worldmap-pattern-list)
+                                ((string-suffix? ".pingus" file)
+                                 level-pattern-list)
+                                (else
+                                 (error "Unknown file suffix\n"))))
                 (close-port port)))
             args)
-  (display "\n;; EOF ;;\n"))
+  (display "\n# EOF #\n"))
 
 ;; EOF ;;
