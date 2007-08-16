@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-26 23:07+0100\n"
+"POT-Creation-Date: 2007-08-16 04:47+0200\n"
 "PO-Revision-Date: 2003-08-21 18:29+0300\n"
 "Last-Translator: Jarno Elonen <elonen@iki.fi>\n"
 "Language-Team: Finnish <elonen@iki.fi>\n"
@@ -17,574 +17,523 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0.2\n"
 
-#: src/actions/bridger.cxx:40 src/actions/bridger.cxx:213
-#: src/pingu_enums.cxx:40
-msgid "Bridger"
-msgstr "Siltaaja"
-
-#: src/config.cxx:73
-msgid "Couldn't open: "
-msgstr "Avaus epäonnistui: "
-
-#: src/config.cxx:172
-msgid "Unexpected char: '"
-msgstr "Odottamaton merkki: '"
-
-#: src/config.cxx:206
-msgid "Unexpected char '"
-msgstr "Odottamaton merkki '"
-
-#: src/credits.cxx:51
-msgid "-Idea"
-msgstr "-Idea"
-
-#: src/credits.cxx:55
-msgid "-Maintaining"
-msgstr "-Ylläpito"
-
-#: src/credits.cxx:59
-msgid "-Programming"
-msgstr "-Ohjelmointi"
-
-#: src/credits.cxx:65
-msgid "-Porting (Win32)"
-msgstr "-Porttaus (Win32)"
-
-#: src/credits.cxx:73
-msgid "-Gfx"
-msgstr "-Grafiikka"
-
-#: src/credits.cxx:86
-msgid "-Music"
-msgstr "-Musiikki"
-
-#: src/credits.cxx:93
-msgid "-Level Design"
-msgstr "-Kenttäsuunnittelu"
-
-#: src/credits.cxx:99
-msgid "-Story"
-msgstr "-Tarina"
-
-#: src/credits.cxx:103
-msgid "-Translation"
-msgstr "-Käännöstyö"
-
-#: src/credits.cxx:117
-msgid "-Special"
-msgstr "-Erityiset"
-
-#: src/credits.cxx:118
-msgid "-Thanks to"
-msgstr "-Kiitokset"
-
-#: src/credits.cxx:162
-msgid "_And a very Special Thanks"
-msgstr "_Ja aivan erityiskiitokset"
-
-#: src/credits.cxx:163
-msgid "_to all the people who"
-msgstr "_kaikille niille, jotka"
-
-#: src/credits.cxx:164
-msgid "_contribute to"
-msgstr "_osallistuvat kehittämään"
-
-#: src/credits.cxx:165
-msgid "_Free Software!"
-msgstr "_vapaita ohjelmia!"
-
-#: src/credits.cxx:171
-msgid "_Thank you for"
-msgstr "_Kiitos sinulle"
-
-#: src/credits.cxx:172
-msgid "_playing!"
-msgstr "_pelaamisesta!"
-
-#: src/exit_menu.cxx:48
-msgid "Yes"
-msgstr "Kyllä"
-
-#: src/exit_menu.cxx:81
-msgid "No"
-msgstr "Ei"
-
-#: src/exit_menu.cxx:114
-msgid "Exit Pingus?"
-msgstr "Lopeta peli?"
-
-#: src/fps_counter.cxx:48
-msgid "unknown"
-msgstr "tuntematon"
-
-#: src/game_time.cxx:70
+#: src/game_time.cpp:69
 #, c-format
 msgid "unlimited"
 msgstr "rajaton"
 
-#: src/pingu_enums.cxx:35
+#: src/story_screen.cpp:40
+msgid "skip"
+msgstr ""
+
+#: src/pingu_enums.cpp:34
 msgid "Angel"
 msgstr "Enkeli"
 
-#: src/pingu_enums.cxx:36
+#: src/pingu_enums.cpp:35
 msgid "Basher"
 msgstr "Murskaaja"
 
-#: src/pingu_enums.cxx:37
+#: src/pingu_enums.cpp:36
 msgid "Blocker"
 msgstr "Pysäyttäjä"
 
-#: src/pingu_enums.cxx:38
+#: src/pingu_enums.cpp:37
 msgid "Boarder"
 msgstr "Laatoittaja"
 
-#: src/pingu_enums.cxx:39
+#: src/pingu_enums.cpp:38
 msgid "Bomber"
 msgstr "Pommittaja"
 
-#: src/pingu_enums.cxx:41
+#: src/pingu_enums.cpp:39 src/actions/bridger.cpp:42
+#: src/actions/bridger.cpp:216
+msgid "Bridger"
+msgstr "Siltaaja"
+
+#: src/pingu_enums.cpp:40
 msgid "Climber"
 msgstr "Kiipeilijä"
 
-#: src/pingu_enums.cxx:42
+#: src/pingu_enums.cpp:41
 msgid "Digger"
 msgstr "Kaivaja"
 
-#: src/pingu_enums.cxx:43
+#: src/pingu_enums.cpp:42
 msgid "Drown"
 msgstr "Hukkuminen"
 
-#: src/pingu_enums.cxx:44
+#: src/pingu_enums.cpp:43
 msgid "Exiter"
 msgstr "Poistuja"
 
-#: src/pingu_enums.cxx:45
+#: src/pingu_enums.cpp:44
 msgid "Faller"
 msgstr "Putoaja"
 
-#: src/pingu_enums.cxx:46
+#: src/pingu_enums.cpp:45
 msgid "Floater"
 msgstr "Leijuja"
 
-#: src/pingu_enums.cxx:47
+#: src/pingu_enums.cpp:46
 msgid "Jumper"
 msgstr "Hyppääjä"
 
-#: src/pingu_enums.cxx:48
+#: src/pingu_enums.cpp:47
 msgid "Laserkill"
 msgstr "Laserkuolema"
 
-#: src/pingu_enums.cxx:49
+#: src/pingu_enums.cpp:48
 msgid "Miner"
 msgstr "Louhija"
 
-#: src/pingu_enums.cxx:50
+#: src/pingu_enums.cpp:49
 msgid "Rocketlauncher"
 msgstr "Raketinheittäjä"
 
-#: src/pingu_enums.cxx:51
+#: src/pingu_enums.cpp:50
 msgid "Slider"
 msgstr "Liukuja"
 
-#: src/pingu_enums.cxx:52
+#: src/pingu_enums.cpp:51
 msgid "Smashed"
 msgstr "Liiskaus"
 
-#: src/pingu_enums.cxx:53
+#: src/pingu_enums.cpp:52
 msgid "Splashed"
 msgstr "Roiskaus"
 
-#: src/pingu_enums.cxx:54
+#: src/pingu_enums.cpp:53
 msgid "Superman"
 msgstr "Teräsmies"
 
-#: src/pingu_enums.cxx:55
+#: src/pingu_enums.cpp:54
 msgid "Teleported"
 msgstr "Teleportattu"
 
-#: src/pingu_enums.cxx:56
+#: src/pingu_enums.cpp:55
 msgid "Waiter"
 msgstr "Odottaja"
 
-#: src/pingu_enums.cxx:57
+#: src/pingu_enums.cpp:56
 msgid "Walker"
 msgstr "Kävelijä"
 
-#: src/pingus_counter.cxx:51
-#, c-format
-msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
-msgstr "Tullut:%3d/%-3d   Irti:%3d   Pelastettu:%3d/%-3d"
+#: src/start_screen.cpp:74 src/editor/level_head.cpp:53
+msgid "Ok"
+msgstr "OK"
 
-#: src/pingus_main.cxx:85
+#: src/start_screen.cpp:115 src/result_screen.cpp:98
+msgid "Abort"
+msgstr "Lopeta"
+
+#: src/start_screen.cpp:163
+msgid "Number of Pingus: "
+msgstr "Pingujen määrä: "
+
+#: src/start_screen.cpp:166
+msgid "Number to Save: "
+msgstr "Pelastettavien määrä: "
+
+#: src/start_screen.cpp:169
+msgid "Time: "
+msgstr "Aika: "
+
+#: src/start_screen.cpp:172
+msgid "Difficulty:"
+msgstr "Vaikeus:"
+
+#: src/start_screen.cpp:176
+msgid "Author: "
+msgstr "Tekijä: "
+
+#: src/start_screen.cpp:179
+msgid "Filename: "
+msgstr "Tiedostonimi: "
+
+#: src/pingus_main.cpp:100
 msgid "| segfault_handler: catched a SIGSEGV."
 msgstr "| segfault_handler: catched a SIGSEGV."
 
-#: src/pingus_main.cxx:87
+#: src/pingus_main.cpp:102
 msgid "| Woops, Pingus just crashed, congratulations you've found a bug."
 msgstr ""
 "| Hups, Pingus juuri kaatui, onnittelut ohjelmointivirheen löytämisestä."
 
-#: src/pingus_main.cxx:88
+#: src/pingus_main.cpp:103
 msgid ""
 "| Please write a little bug report to <grumbel@gmx.de>, include informations"
 msgstr ""
 "| Ole hyvä ja kirjoita lyhyt, englanninkielinen virheraportti osoitteeseen "
 "<grumbel@gmx.de> ja liitä mukaan tieto siitä,"
 
-#: src/pingus_main.cxx:89
+#: src/pingus_main.cpp:104
 msgid "| where exacly the SIGSEGV occured and how to reproduce it."
 msgstr "| missä SIGSEGV tarkalleen tapahtui ja miten sen saa aikaan."
 
-#: src/pingus_main.cxx:90
+#: src/pingus_main.cpp:105
 msgid "| Also try include a backtrace, you can get it like this:"
 msgstr "| Liitä mukaan myös 'backtrace', jonka saa näin:"
 
-#: src/pingus_main.cxx:96
+#: src/pingus_main.cpp:111
 msgid "| If that doesn't work, try this:"
 msgstr "| Ellei se toimi, kokeile tätä:"
 
-#: src/pingus_main.cxx:100
+#: src/pingus_main.cpp:115
 msgid "| [play until it crashes again]"
 msgstr "| [pelaa kunnes se kaatuu uudestaan]"
 
-#: src/pingus_main.cxx:108
+#: src/pingus_main.cpp:123
 msgid "| Warning: Pingus recieved a SIGINT, exiting now."
 msgstr "| Varoitus: Pingus vastaanotti SIGINT-signaalin, peli lopetetaan."
 
-#: src/pingus_main.cxx:292
-msgid "Warning: Larger resolution than 800x600 will result in visual problems"
-msgstr "Varoitus: Suurempi ruutukoko kuin 800x600 aiheuttaa grafiikkaongelmia"
-
-#: src/pingus_main.cxx:483
-msgid "Unknow char: "
-msgstr "Tuntematon merkki: "
-
-#: src/pingus_main.cxx:484
-msgid "Usage: "
-msgstr "Käyttö: "
-
-#: src/pingus_main.cxx:484
-msgid " [OPTIONS]... [LEVELFILE]"
-msgstr " [VALITSIMET]... [KENTTÄTIEDOSTO]"
-
-#: src/pingus_main.cxx:487
+#: src/pingus_main.cpp:205
 msgid "Options:"
 msgstr "Valitsimet:"
 
-#: src/pingus_main.cxx:489
+#: src/pingus_main.cpp:207
 msgid "Set the resolution for pingus (default: 800x600)"
 msgstr "Määritä ruutukoko (oletusarvo: 800x600)"
 
-#: src/pingus_main.cxx:490
+#: src/pingus_main.cpp:209
 msgid "Displays this help"
 msgstr "Näytä tämä ohje"
 
-#: src/pingus_main.cxx:491
+#: src/pingus_main.cpp:211
 msgid "Disable intro"
 msgstr "Älä näytä esittelyä"
 
-#: src/pingus_main.cxx:492
+#: src/pingus_main.cpp:213
 msgid "Use OpenGL"
 msgstr "Käytä OpenGL:ää"
 
-#: src/pingus_main.cxx:494
+#: src/pingus_main.cpp:215
+msgid "Use SDL"
+msgstr ""
+
+#: src/pingus_main.cpp:217
 msgid "Start in Window Mode"
 msgstr "Käynnistä ikkunassa"
 
-#: src/pingus_main.cxx:495
+#: src/pingus_main.cpp:219
 msgid "Start in Fullscreen"
 msgstr "Käynnistä koko ruudulla"
 
-#: src/pingus_main.cxx:499
-msgid "FILE      "
-msgstr "TIEDOSTO      "
+#: src/pingus_main.cpp:221
+#, fuzzy
+msgid "Set the refresh rate in fullscreen (default: 60)"
+msgstr "Määritä ruutukoko (oletusarvo: 800x600)"
 
-#: src/pingus_main.cxx:499
+#: src/pingus_main.cpp:222
+msgid "PATH"
+msgstr ""
+
+#: src/pingus_main.cpp:223
+msgid "Set the path to load the data files to 'path'"
+msgstr ""
+
+#: src/pingus_main.cpp:224 src/pingus_main.cpp:226 src/pingus_main.cpp:242
+#: src/pingus_main.cpp:275
+#, fuzzy
+msgid "FILE"
+msgstr "TIEDOSTO     "
+
+#: src/pingus_main.cpp:225
 msgid "Load a custom level from FILE"
 msgstr "Lataa kenttä TIEDOSTOsta"
 
-#: src/pingus_main.cxx:500
-msgid "FILE        "
-msgstr "TIEDOSTO        "
-
-#: src/pingus_main.cxx:500
+#: src/pingus_main.cpp:227
 msgid "Load a custom worldmap from FILE"
 msgstr "Lataa maailman kartta TIEDOSTOsta"
 
-#: src/pingus_main.cxx:501
-msgid "Print some more messages to stdout, can be set"
+#: src/pingus_main.cpp:229
+#, fuzzy
+msgid "Loads the level editor"
+msgstr "..:: Käynnistä kenttäeditori ::.."
+
+#: src/pingus_main.cpp:231
+msgid "Test a font"
+msgstr ""
+
+#: src/pingus_main.cpp:233
+#, fuzzy
+msgid ""
+"Print some more messages to stdout, can be set multiple times to increase "
+"verbosity"
 msgstr "Kirjoita enemmän tietoa stdout:iin, voidaan asettaa"
 
-#: src/pingus_main.cxx:502
-msgid "multiple times to increase verbosity"
-msgstr "useita kertoja tekstin lisäämiseksi"
-
-#: src/pingus_main.cxx:503
+#: src/pingus_main.cpp:235
 msgid "Prints version number and exit"
 msgstr "Näytä versionumero ja poistu"
 
-#: src/pingus_main.cxx:504
+#: src/pingus_main.cpp:237
 msgid "Disable automatic scrolling"
 msgstr "Poista automaattinen vieritys käytöstä"
 
-#: src/pingus_main.cxx:506
+#: src/pingus_main.cpp:239
 msgid "Enable software cursor"
 msgstr "Ota käyttöön ohjelmallinen osoitin"
 
-#: src/pingus_main.cxx:509
+#: src/pingus_main.cpp:241
 msgid "Don't read ~/.pingus/config"
 msgstr "Älä lue ~/.pingus/config:a"
 
-#: src/pingus_main.cxx:510
-msgid "FILE       "
-msgstr "TIEDOSTO       "
-
-#: src/pingus_main.cxx:510
-msgid "Read config from FILE (default: ~/.pingus/config)"
-msgstr "Lue asetukset TIEDOSTO:sta (oletusarvo: ~/.pingus/config)"
-
-#: src/pingus_main.cxx:511
-msgid "reduce CPU usage, might speed up the game on slower machines"
+#: src/pingus_main.cpp:243
+#, fuzzy
+msgid ""
+"Read config from FILE (default: ~/.pingus/config) reduce CPU usage, might "
+"speed up the game on slower machines"
 msgstr "vähennä suorittimen käyttöä; saattaa nopeuttaa peliä hitailla koneilla"
 
-#: src/pingus_main.cxx:512
+#: src/pingus_main.cpp:246
 msgid "Uses the controller given in FILE"
 msgstr "Käyttää TIEDOSTO:ssa annettua ohjainta"
 
-#: src/pingus_main.cxx:514
+#: src/pingus_main.cpp:248
 msgid "Debugging and experimental stuff:"
 msgstr "Kokeellista ja testaukseen liittyvää tavaraa"
 
-#: src/pingus_main.cxx:515
+#: src/pingus_main.cpp:250
 msgid "Enables some features, only interesting programmers"
 msgstr "Kytkee päälle joitain vain ohjelmoijia kiinnostavia ominaisuuksia"
 
-#: src/pingus_main.cxx:516
-msgid "Enable the output of debugging infos, possible"
-msgstr "Tulosta testaukseen liittyvää tietoa; mahdolliset"
-
-#: src/pingus_main.cxx:517
-msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
+#: src/pingus_main.cpp:252
+#, fuzzy
+msgid ""
+"Enable the output of debugging infos, possibleOPTION's are tiles, gametime, "
+"actions, sound, resources, gui,input, pathmgr"
 msgstr "VALITSImet ovat tiles, gametime, actions, sound, resources, gui,"
 
-#: src/pingus_main.cxx:519
+#: src/pingus_main.cpp:256
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr "Hyppää yli ainakin N ruutua; suuremmat arvot nopeuttavat peliä"
 
-#: src/pingus_main.cxx:520
+#: src/pingus_main.cpp:258
 msgid "Skip at most N frames"
 msgstr "Hyppää yli korkeintaan N ruutua"
 
-#: src/pingus_main.cxx:521
+#: src/pingus_main.cpp:260
 msgid "Set both min and max frameskip to N"
 msgstr "Aseta sekä minimi- että maksimi-ruudunhyppäys N:ään"
 
-#: src/pingus_main.cxx:522
+#: src/pingus_main.cpp:262
 msgid "Set the game speed (0=fastest, >0=slower)"
 msgstr "Aseta pelin nopeus (0=nopein, >0=hitaampi)"
 
-#: src/pingus_main.cxx:523
+#: src/pingus_main.cpp:264
 msgid "Prints the fps to stdout"
 msgstr "Kirjoittaa fps:n stdout:iin"
 
-#: src/pingus_main.cxx:524
+#: src/pingus_main.cpp:266
 msgid "Set the size of the map tiles (default: 32)"
 msgstr "Aseta karttaruutujen koko (oletusarvo: 32)"
 
-#: src/pingus_main.cxx:525
+#: src/pingus_main.cpp:268
 msgid "Disable some cpu intensive features"
 msgstr "Poista jotain suoritinsyöppöjä ominaisuuksia käytöstä"
 
-#: src/pingus_main.cxx:526
+#: src/pingus_main.cpp:270
 msgid "Reduces the CPU usage by issuing sleep()"
 msgstr "Vähentää suoritinajan käyttöä kutsumalla sleep():iä"
 
-#: src/pingus_main.cxx:528
+#: src/pingus_main.cpp:272
+msgid "Shows the credits"
+msgstr ""
+
+#: src/pingus_main.cpp:274
 msgid "Demo playing and recording:"
 msgstr "Demon näyttäminen ja nauhoitus:"
 
-#: src/pingus_main.cxx:529
-msgid "FILE     "
-msgstr "TIEDOSTO     "
-
-#: src/pingus_main.cxx:529
+#: src/pingus_main.cpp:276
 msgid "Plays a demo session from FILE"
 msgstr "Näyttää demopelin TIEDOSTOsta"
 
-#: src/pingus_main.cxx:531
+#: src/pingus_main.cpp:278
 msgid "Record demos for each played level"
 msgstr "Nauhoittaa demopelit jokaiselle pelatulle kentälle"
 
-#: src/pingus_main.cxx:533
+#: src/pingus_main.cpp:280
 msgid "Sound:"
 msgstr "Äänet:"
 
-#: src/pingus_main.cxx:534
+#: src/pingus_main.cpp:282
 msgid "Disable sound"
 msgstr "Ei ääniä"
 
-#: src/pingus_main.cxx:535
+#: src/pingus_main.cpp:284
 msgid "Disable music"
 msgstr "Ei musiikkia"
 
-#: src/pingus_main.cxx:616
-msgid "clanVorbis support:           ok"
-msgstr "clanVorbis-tuki:           ok"
+#: src/pingus_main.cpp:345
+msgid "Warning: Larger resolution than 800x600 will result in visual problems"
+msgstr "Varoitus: Suurempi ruutukoko kuin 800x600 aiheuttaa grafiikkaongelmia"
 
-#: src/pingus_main.cxx:618
-msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
-msgstr "clanVoribs-tuki:  puuttuu (.ogg-musiikkia ei voida soittaa)"
-
-#: src/pingus_main.cxx:622
-msgid "clanMikMod support:           ok"
-msgstr "clanMikMod-tuki:           ok"
-
-#: src/pingus_main.cxx:624
-msgid "clanMikMod support:  missing (music files will not be playable)"
-msgstr "clanMikMod-tuki:  puuttuu (musiikkitiedostoja ei voida soittaa)"
-
-#: src/pingus_main.cxx:628
-msgid "getext support:               ok"
-msgstr "getext-tuki:               ok"
-
-#: src/pingus_main.cxx:629
-msgid "gettext language:        english"
-msgstr "gettext-kieli:        englanti"
-
-#: src/pingus_main.cxx:635
+#: src/pingus_main.cpp:652
 msgid "sound support:           enabled"
 msgstr "äänituki:           päällä"
 
-#: src/pingus_main.cxx:637
+#: src/pingus_main.cpp:654
 msgid "sound support:          disabled"
 msgstr "äänituki:          pois päältä"
 
-#: src/pingus_main.cxx:640
+#: src/pingus_main.cpp:657
 msgid "music support:           enabled"
 msgstr "musiikkituki:           päällä"
 
-#: src/pingus_main.cxx:642
+#: src/pingus_main.cpp:659
 msgid "music support:          disabled"
 msgstr "musiikkituki:          pois päältä"
 
-#: src/pingus_main.cxx:644
-msgid "resolution set to:       "
+#: src/pingus_main.cpp:661
+#, fuzzy
+msgid "resolution:             "
 msgstr "ruutukooksi asetettu:       "
 
-#: src/pingus_main.cxx:645
+#: src/pingus_main.cpp:662
 msgid "fullscreen:              "
 msgstr "koko ruudun tila:              "
 
-#: src/pingus_main.cxx:646
+#: src/pingus_main.cpp:663
 msgid " enabled"
 msgstr " päällä"
 
-#: src/pingus_main.cxx:646
+#: src/pingus_main.cpp:663
 msgid "disabled"
 msgstr "pois päältä"
 
-#: src/pingus_main.cxx:656
+#: src/pingus_main.cpp:666
+#, fuzzy
+msgid "using OpenGL:            "
+msgstr "koko ruudun tila:              "
+
+#: src/pingus_main.cpp:675
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Käynnistetään Main: "
 
-#: src/pingus_main.cxx:701
+#: src/pingus_main.cpp:724
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Kenttätiedostoa ei löytynyt, jätetään väliin: "
 
-#: src/pingus_main.cxx:800
-msgid "Error caught from ClanLib: "
-msgstr "Virhe ClanLib:ltä: "
-
-#: src/pingus_main.cxx:804
+#: src/pingus_main.cpp:827
 msgid "Error caught from Pingus: "
 msgstr "Virhe Pingusilta: "
 
-#: src/pingus_main.cxx:808
+#: src/pingus_main.cpp:831
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Muisti loppu!"
 
-#: src/pingus_main.cxx:812
+#: src/pingus_main.cpp:835
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Standardikeskeytys!:\n"
 
-#: src/pingus_main.cxx:816
+#: src/pingus_main.cpp:839
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Tuntematon keskytys!"
 
-#: src/pingus_menu.cxx:45
-msgid "Start"
-msgstr "Aloita"
+#: src/system.cpp:305
+msgid "Environment variable $HOME not set, fix that and start again."
+msgstr ""
+"Ympäristömuuttuja $HOME:a ei ole asetetty, korjataan tilanne ja aloitetaan "
+"alusta."
 
-#: src/pingus_menu.cxx:46
-msgid "..:: Start the game ::.."
-msgstr "..:: Aloita peli ::.."
+#: src/credits.cpp:82
+msgid "-Idea"
+msgstr "-Idea"
 
-#: src/pingus_menu.cxx:51
+#: src/credits.cpp:86
+msgid "-Maintaining"
+msgstr "-Ylläpito"
+
+#: src/credits.cpp:90
+msgid "-Programming"
+msgstr "-Ohjelmointi"
+
+#: src/credits.cpp:100
+msgid "-Porting (Win32)"
+msgstr "-Porttaus (Win32)"
+
+#: src/credits.cpp:109
+#, fuzzy
+msgid "-Porting (MacOSX)"
+msgstr "-Porttaus (Win32)"
+
+#: src/credits.cpp:114
+msgid "-Gfx"
+msgstr "-Grafiikka"
+
+#: src/credits.cpp:127
+msgid "-Music"
+msgstr "-Musiikki"
+
+#: src/credits.cpp:134
+msgid "-Level Design"
+msgstr "-Kenttäsuunnittelu"
+
+#: src/credits.cpp:140
+msgid "-Story"
+msgstr "-Tarina"
+
+#: src/credits.cpp:144
+msgid "-Translation"
+msgstr "-Käännöstyö"
+
+#: src/credits.cpp:158
+msgid "-Special"
+msgstr "-Erityiset"
+
+#: src/credits.cpp:159
+msgid "-Thanks to"
+msgstr "-Kiitokset"
+
+#: src/credits.cpp:203
+msgid "_And a very Special Thanks"
+msgstr "_Ja aivan erityiskiitokset"
+
+#: src/credits.cpp:204
+msgid "_to all the people who"
+msgstr "_kaikille niille, jotka"
+
+#: src/credits.cpp:205
+msgid "_contribute to"
+msgstr "_osallistuvat kehittämään"
+
+#: src/credits.cpp:206
+msgid "_Free Software!"
+msgstr "_vapaita ohjelmia!"
+
+#: src/credits.cpp:212
+msgid "_Thank you for"
+msgstr "_Kiitos sinulle"
+
+#: src/credits.cpp:213
+msgid "_playing!"
+msgstr "_pelaamisesta!"
+
+#: src/credits.cpp:275 src/pingus_menu.cpp:57
 msgid "Exit"
 msgstr "Poistu"
 
-#: src/pingus_menu.cxx:52
-msgid "..:: Bye, bye ::.."
-msgstr "..:: Hei, hei! ::.."
-
-#: src/pingus_menu.cxx:57
-#, fuzzy
-msgid ""
-"Contrib\n"
-"Levels"
-msgstr "Lisäkenttä"
-
-#: src/pingus_menu.cxx:58
-#, fuzzy
-msgid "..:: Play User Build levels ::.."
-msgstr "..:: Aloita lisäkenttä ::.."
-
-#: src/pingus_menu.cxx:63
-#, fuzzy
-msgid "Story"
-msgstr "-Tarina"
-
-#: src/pingus_menu.cxx:64
-#, fuzzy
-msgid "..:: Start the story ::.."
-msgstr "..:: Aloita peli ::.."
-
-#: src/pingus_menu.cxx:69
-#, fuzzy
-msgid "Multiplayer"
-msgstr "Moninpeli"
-
-#: src/pingus_menu.cxx:70
-#, fuzzy
-msgid "..:: Multiplayer Match ::.."
-msgstr "..:: Moninpelit... kokeellista tavaraa ::.."
-
-#: src/result_screen.cxx:97 src/start_screen.cxx:110
-msgid "Abort"
-msgstr "Lopeta"
-
-#: src/result_screen.cxx:164
+#: src/result_screen.cpp:131
 msgid "Retry"
 msgstr "Yritä uudelleen"
 
-#: src/result_screen.cxx:172
+#: src/result_screen.cpp:181
 msgid "Success!"
 msgstr "Onnistuit!"
 
-#: src/result_screen.cxx:179
+#: src/result_screen.cpp:188
 msgid "Failure!"
 msgstr "Epäonnistuit."
 
-#: src/result_screen.cxx:188
+#: src/result_screen.cpp:197
 msgid "Perfect! You saved everyone possible - great!"
 msgstr "Täydellistä! Pelastit joka ikisen, loistavaa!"
 
-#: src/result_screen.cxx:190
+#: src/result_screen.cpp:199
 msgid "No-one got killed, pretty good work."
 msgstr "Yksikään ei menehtynyt, hyvin tehty."
 
-#: src/result_screen.cxx:192
+#: src/result_screen.cpp:201
 msgid ""
 "You saved exactly what you needed - you made it, but\n"
 "maybe you can do better?"
@@ -592,23 +541,23 @@ msgstr ""
 "Pelastit tasan tarvittavan määrän - pääsit kyllä kentän läpi,\n"
 "mutta kai pystyt parempaankin?"
 
-#: src/result_screen.cxx:195
+#: src/result_screen.cpp:204
 msgid "Not everybody was saved, but still good work!"
 msgstr "Ihan kaikki eivät pelastuneet, mutta hyvää työtä joka tapauksessa!"
 
-#: src/result_screen.cxx:197
+#: src/result_screen.cpp:206
 msgid "What can I say, you made it - congratulations!"
 msgstr "Mitästä tässä voi sanoa... Pääsit läpi - onneksi olkoon!"
 
-#: src/result_screen.cxx:202
+#: src/result_screen.cpp:211
 msgid "You killed everybody, not good."
 msgstr "Tapatit kaikki - ei hyvä, ei."
 
-#: src/result_screen.cxx:204
+#: src/result_screen.cpp:213
 msgid "No-one got saved - I know you can do better."
 msgstr "Yksikään ei selvinnyt - pystyt varmasti parempaankin."
 
-#: src/result_screen.cxx:206
+#: src/result_screen.cpp:215
 msgid ""
 "You didn't save enough, but you saved a few.  Next\n"
 "time you might do better."
@@ -616,268 +565,396 @@ msgstr ""
 "Et pelastanut ihan tarpeeksi, mutta muutaman kuitenkin.\n"
 "Ensi kerralla paremmin, vai mitä?"
 
-#: src/result_screen.cxx:209
+#: src/result_screen.cpp:218
 msgid "Only one more and you would have made it - try again!"
 msgstr ""
 "Vielä yksi lisää maaliin asti niin olisit päässyt läpi - yritä uudestaan!"
 
-#: src/result_screen.cxx:211
+#: src/result_screen.cpp:220
 msgid "Only a handful more and you would have made it - try again!"
 msgstr ""
 "Vain muutama lisää maaliin asti niin olisi päässyt läpi - yritä uudestaan!"
 
-#: src/result_screen.cxx:213
+#: src/result_screen.cpp:222
 msgid "Better luck next time!"
 msgstr "Parempi tuuri ensi kerralla!"
 
-#: src/result_screen.cxx:229
+#: src/result_screen.cpp:239
 msgid "Saved: "
 msgstr "Pelastui: "
 
-#: src/result_screen.cxx:233
+#: src/result_screen.cpp:243
 msgid "Died: "
 msgstr "Kuoli: "
 
-#: src/result_screen.cxx:237
+#: src/result_screen.cpp:247
 msgid "Time left: "
 msgstr "Aikaa jäljellä: "
 
-#: src/screenshot.cxx:42
+#: src/components/pingus_counter.cpp:49
+#, c-format, boost-format
+msgid "Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"
+msgstr "Tullut:%3d/%-3d   Irti:%3d   Pelastettu:%3d/%-3d"
+
+#: src/file_dialog_item.cpp:83
+#, fuzzy
+msgid "Difficulty: "
+msgstr "Vaikeus:"
+
+#: src/file_dialog_item.cpp:87 src/file_dialog_item.cpp:117
+msgid "Finished!"
+msgstr ""
+
+#: src/file_dialog_item.cpp:91
+msgid "Not finished!"
+msgstr ""
+
+#: src/file_dialog_item.cpp:106
+msgid "Not Finished"
+msgstr ""
+
+#: src/file_dialog_item.cpp:111
+msgid "Not Accessible"
+msgstr ""
+
+#: src/config.cpp:72
+msgid "Couldn't open: "
+msgstr "Avaus epäonnistui: "
+
+#: src/config.cpp:171
+msgid "Unexpected char: '"
+msgstr "Odottamaton merkki: '"
+
+#: src/config.cpp:205
+msgid "Unexpected char '"
+msgstr "Odottamaton merkki '"
+
+#: src/screenshot.cpp:38
 msgid "Screenshot: Saving screenshot to: "
 msgstr "Ruutukaappaus: Tallennetaan kaappausta: "
 
-#: src/screenshot.cxx:44
+#: src/screenshot.cpp:40
 msgid "Screenshot: Screenshot is done."
 msgstr "Ruutukaappaus: Ruutukaappaus valmis."
 
-#: src/screenshot.cxx:125
+#: src/screenshot.cpp:115 src/screenshot.cpp:143
 msgid "Screenshot: Couldn't write file: "
 msgstr "Ruutukaappaus: Tiedostoon ei voitu kirjoittaa: "
 
-#: src/spot_map.cxx:208
-#, c-format
-msgid "Image has wrong color depth: %d"
-msgstr "Kuvassa on väärä määrä värejä: %d"
+#: src/fps_counter.cpp:44
+msgid "unknown"
+msgstr "tuntematon"
 
-#: src/start_screen.cxx:74
-msgid "Ok"
-msgstr "OK"
+#: src/worldmap/worldmap.cpp:424
+msgid "...walking..."
+msgstr "...kävelee..."
 
-#: src/start_screen.cxx:157
-msgid "Number of Pingus: "
-msgstr "Pingujen määrä: "
-
-#: src/start_screen.cxx:160
-msgid "Number to Save: "
-msgstr "Pelastettavien määrä: "
-
-#: src/start_screen.cxx:163
-msgid "Time: "
-msgstr "Aika: "
-
-#: src/start_screen.cxx:166
-msgid "Difficulty:"
-msgstr "Vaikeus:"
-
-#: src/start_screen.cxx:174
-msgid "Author: "
-msgstr "Tekijä: "
-
-#: src/start_screen.cxx:177
-msgid "Filename: "
-msgstr "Tiedostonimi: "
-
-#: src/story.cxx:41
-msgid "The Journey Continues"
-msgstr "Matka jatkuu"
-
-#: src/story.cxx:46
-msgid ""
-"Now after you and the Pingus have learned the basics and\n"
-"practiced a bit it is time to move on and begin the journey into\n"
-"the world. Since the ice floe with which the Pingus traveled to the\n"
-"Tutorial Island isn't going to hold on the whole way into the warmer\n"
-"climates the Pingus have to find something else to guide\n"
-"them on their journey.\n"
-msgstr ""
-"Nyt kun sinä ja pingut olette oppineet perusasiat ja harjoitelleet\n"
-"hieman, on aika jatkaa eteenpäin ja aloittaa matka maailmalle.\n"
-"Koska Harjoitussaarelle pääsemiseen käytetty jäälautta sulaisi\n"
-"pian lämpimämmässä ilmastossa, tarvitsevat pingut jotain muita\n"
-"kulkuvälineitä vaelluksellaan pois etelänavalta.\n"
-
-#: src/story.cxx:58
-msgid ""
-"But as the eldest have said, the Tutorial Island provides not\n"
-"only a good way to practice, but it is also the starting point into\n"
-"the world. After some searching the Pingus discovered the meaning\n"
-"of this, and they found the large tree at the end of the island\n"
-"which gave them wood to construct a float.\n"
-msgstr ""
-"Aivan kuten heimon vanhimmat sanoivat, Harjoitussaari tarjoaa\n"
-"muutakin kuin hyvän harjoituspaikan - se on myös erinomainen\n"
-"lähtopiste matkalle pohjoiseen. Pienen etsinnän jälkeen pingut\n"
-"ymmärsivätkin mitä viisaat olivat tarkoittaneet. Ne löysivät saaren\n"
-"kaukaisimmasta päädystä suuren puun, josta saivat tarpeeksi\n"
-"kelluvaa rakennusmateriaalia.\n"
-
-#: src/story.cxx:69
-msgid ""
-"So the Pingus set out and constructed some large rafts, enough\n"
-"to carry them all. After also packing a bunch of provisions\n"
-"they were prepared to start their journey and leave\n"
-"their familiar ground and enter the unknown parts of the world.\n"
-msgstr ""
-"Pingut ryhtyivät toimeen ja rakensivat itselleen useita\n"
-"suuria lauttoja, joilla koko joukko pääsisi meren yli. Pakattuaan\n"
-"mukaan vielä hieman muonaa ja muita tarpeita, ne oliva valmiita\n"
-"jättämään kodin taakseen ja suunnistamaan kohti tuntematonta.\n"
-
-#: src/story.cxx:79
-msgid ""
-"So the Pingus sit on their raft, worrying about what's to come and\n"
-"where to go, while floating into the sunset.\n"
-"\n"
-"To be continued..."
-msgstr ""
-"Niin pingut istuivat lautoillaan huolestuneina siitä, mitä tuleman\n"
-"piti ja minne matka johtaisi, ajelehtiessaan kohti auringonlaskua.\n"
-"\n"
-"Jatkuu..."
-
-#: src/story.cxx:91
-msgid "The Journey Begins"
-msgstr "Matka alkaa"
-
-#: src/story.cxx:96
-msgid ""
-"For a long time, the Pingus have lived happily in peace on the\n"
-"South Pole along with all the other animals. Everything was in\n"
-"balance and it seemed like nothing could disrupt their peace.  The\n"
-"Pingus were happy and it seemed like this could never end.\n"
-msgstr ""
-"Pingut olivat pitkään asuneet etelänävalla, hyvässä sovussa sen\n"
-"muiden eläinlajien kanssa. Kaikki oli tasapainoista ja vaikutti siltä,\n"
-"ettei mikään voisi häiritä niiden rauhaa. Pingut voivat hyvin, onnelle\n"
-"ei näkynyt loppua.\n"
-
-#: src/story.cxx:106
-msgid ""
-"But then one day, things began to change slowly: the sky got darker\n"
-"and the earth got warmer. Firstly, they thought this was just a\n"
-"normal fluctuation in the world's climate, but things seemed to get\n"
-"worse and worse with every year."
-msgstr ""
-"Eräänä päivänä harmonia alkoi kuitenkin hiljalleen järkkyä: taivas\n"
-"tummeni ja maa lämpeni. Aluksi pingut ajattelivat sen johtuvan\n"
-"vain maailman ilmaston normaaleista vaihteluista, mutta tilanne\n"
-"näyttikin vuosi vuodelta vain pahenevan."
-
-#: src/story.cxx:117
-msgid ""
-"The snow began to melt away in a few areas and food became an\n"
-"issue. Other animals tried to leave the region to search\n"
-"for colder areas, but the Pingus knew that this wouldn't help:\n"
-"they knew that they had to do something about it."
-msgstr ""
-"Lumi suli pois joiltain alueilta ja ruoansaanti alkoi tuottaa\n"
-"vaikeuksia. Monet eläimet yrittivät etsiytyä kylmemmille\n"
-"seuduille, mutta pingut tiesivät ettei siitä olisi apua. Niiden\n"
-"olisi itse tehtävä asialle jotain."
-
-#: src/story.cxx:127
-msgid ""
-"So the circle of the eldest came together to decide what to do\n"
-"about it. They decided to send out an expedition around the world\n"
-"to find the cause of this warming. The expedition consisted of\n"
-"hundreds of the bravest Pingus on the South Pole."
-msgstr ""
-"Niinpä vanhimmat ja viisaimmat pingut kokoontuivat yhteen\n"
-"miettimään mitä tehdä. Päätöksenä oli lähettää retkikunta\n"
-"maailmalle selvittämään mistä lämpeneminen johtui. Tehtävää\n"
-"suorittamaan valittiin satoja etelänavan urheimpia pinguja."
-
-#: src/story.cxx:137
-msgid ""
-"And they picked you to lead them on their journey around the\n"
-"world. Since the journey will be dangerous and difficult, your\n"
-"first goal is the Island of Mogorok, also known as the Tutorial\n"
-"Island. According to the eldest, this island has always been the\n"
-"first stop of Pingus that were sent out into the world."
-msgstr ""
-"Sinut, hyvä pelaaja, valittiin johtamaan retkikuntaa sen\n"
-"matkalla maailman ääriin. Koska vaelluksesta tulee varmasti\n"
-"vaikea ja vaarallinen, ensimmäinen kohteesi on Mogorok,\n"
-"joka tunnetaan myös nimellä Harjoitussaari. Vanhimpien mukaan\n"
-"matkalle valmistautuvat pingut ovat aina aloittaneet sieltä."
-
-#: src/story.cxx:148
-msgid ""
-"The island consists of many areas that are ideal to teach the\n"
-"Pingus their abilities. The Pingus can learn to build\n"
-"bridges, climb, bash and use many other talents which they\n"
-"will need on their long and dangerous journey."
-msgstr ""
-"Saarella on erilaisia alueita, jotka soveltuvat erinomaisesti\n"
-"pingujen kouluttamiseen. Pingujen on opittava kiipeilyä,\n"
-"sillanrakennusta, esteiden murskausta ja muita tärkeitä\n"
-"taitoja joita pitkästä matkasta suoriutuminen edellyttää."
-
-#: src/story.cxx:158
-msgid ""
-"While there, you can practice your abilities in commanding\n"
-"and guiding the Pingus. You can also get familiar with\n"
-"all the abilities the Pingus provide and learn to master them,\n"
-"since you will need all of them on your journey around the\n"
-"world."
-msgstr ""
-"Saarella voit harjoitella pingujen johtamista, tutustua\n"
-"mihin kaikkeen ne pystyvät ja opetella hyödyntämään\n"
-"niiden oikeita kykyjä oikeissa tilanteissa. Ilman sinua\n"
-"pingut eivät varmasti selviä matkastaan, joten\n"
-"valmistaudu huolella."
-
-#: src/story.cxx:169
-msgid ""
-"Now that you and the Pingus have arrived at Tutorial Island it\n"
-"is time to take command and begin your mission.\n"
-"\n"
-"Good Luck!"
-msgstr ""
-"Nyt kun pingut ovat saapuneet Harjoitussaarelle, sinun on aika\n"
-"ottaa ohjat käsiisi ja aloittaa tehtävä.\n"
-"\n"
-"Onnea matkaan!"
-
-#: src/system.cxx:270
-msgid "Environment variable $HOME not set, fix that and start again."
-msgstr ""
-"Ympäristömuuttuja $HOME:a ei ole asetetty, korjataan tilanne ja aloitetaan "
-"alusta."
-
-#: src/worldmap/level_dot.cxx:145 src/worldmap/level_dot.cxx:155
-msgid "locked"
-msgstr "lukittu"
-
-#: src/worldmap/manager.cxx:103
+#: src/worldmap/manager.cpp:107
 msgid "Show Ending?"
 msgstr "Näytä lopetus?"
 
-#: src/worldmap/manager.cxx:133
+#: src/worldmap/manager.cpp:138
 msgid "Show Story?"
 msgstr "Näytä tarina?"
 
-#: src/worldmap/manager.cxx:161
+#: src/worldmap/manager.cpp:167
 msgid "Leave?"
 msgstr "Poistu?"
 
-#: src/worldmap/manager.cxx:201
-msgid "Enter?"
+#: src/worldmap/manager.cpp:207
+#, fuzzy
+msgid "Enter"
 msgstr "Valitse?"
 
-#: src/worldmap/worldmap.cxx:225
-msgid "...walking..."
-msgstr "...kävelee..."
+#: src/worldmap/level_dot.cpp:153 src/worldmap/level_dot.cpp:163
+msgid "locked"
+msgstr "lukittu"
+
+#: src/file_dialog.cpp:34
+msgid "Cancel"
+msgstr ""
+
+#: src/file_dialog.cpp:262
+msgid "Load"
+msgstr ""
+
+#: src/file_dialog.cpp:262
+#, fuzzy
+msgid "Save"
+msgstr "Pelastui: "
+
+#: src/exit_menu.cpp:46 src/exit_menu.cpp:50
+msgid "Yes"
+msgstr "Kyllä"
+
+#: src/exit_menu.cpp:85 src/exit_menu.cpp:89
+msgid "No"
+msgstr "Ei"
+
+#: src/exit_menu.cpp:124
+msgid "Exit Pingus?"
+msgstr "Lopeta peli?"
+
+#: src/pingus_menu.cpp:51
+msgid "Start"
+msgstr "Aloita"
+
+#: src/pingus_menu.cpp:52
+msgid "..:: Start the game ::.."
+msgstr "..:: Aloita peli ::.."
+
+#: src/pingus_menu.cpp:58
+msgid "..:: Bye, bye ::.."
+msgstr "..:: Hei, hei! ::.."
+
+#: src/pingus_menu.cpp:63
+msgid "Credits"
+msgstr "Tekijät"
+
+#: src/pingus_menu.cpp:64
+#, fuzzy
+msgid "..:: See the credits ::.."
+msgstr "..:: Aloita peli ::.."
+
+#: src/pingus_menu.cpp:69
+#, fuzzy
+msgid ""
+"Contrib\n"
+"Levels"
+msgstr "Lisäkenttä"
+
+#: src/pingus_menu.cpp:70
+#, fuzzy
+msgid "..:: Play User Built levels ::.."
+msgstr "..:: Aloita lisäkenttä ::.."
+
+#: src/pingus_menu.cpp:75
+#, fuzzy
+msgid "Story"
+msgstr "-Tarina"
+
+#: src/pingus_menu.cpp:76
+#, fuzzy
+msgid "..:: Start the story ::.."
+msgstr "..:: Aloita peli ::.."
+
+#: src/pingus_menu.cpp:81
+#, fuzzy
+msgid "Multiplayer"
+msgstr "Moninpeli"
+
+#: src/pingus_menu.cpp:82
+#, fuzzy
+msgid "..:: Multiplayer Match ::.."
+msgstr "..:: Moninpelit... kokeellista tavaraa ::.."
+
+#: src/pingus_menu.cpp:87
+msgid "Level Editor"
+msgstr ""
+
+#: src/pingus_menu.cpp:88
+#, fuzzy
+msgid "..:: Create your own levels ::.."
+msgstr "..:: Aloita lisäkenttä ::.."
+
+#~ msgid "Unknow char: "
+#~ msgstr "Tuntematon merkki: "
+
+#~ msgid "Usage: "
+#~ msgstr "Käyttö: "
+
+#~ msgid " [OPTIONS]... [LEVELFILE]"
+#~ msgstr " [VALITSIMET]... [KENTTÄTIEDOSTO]"
+
+#~ msgid "FILE      "
+#~ msgstr "TIEDOSTO      "
+
+#~ msgid "FILE        "
+#~ msgstr "TIEDOSTO        "
+
+#~ msgid "multiple times to increase verbosity"
+#~ msgstr "useita kertoja tekstin lisäämiseksi"
+
+#~ msgid "FILE       "
+#~ msgstr "TIEDOSTO       "
+
+#~ msgid "Read config from FILE (default: ~/.pingus/config)"
+#~ msgstr "Lue asetukset TIEDOSTO:sta (oletusarvo: ~/.pingus/config)"
+
+#~ msgid "Enable the output of debugging infos, possible"
+#~ msgstr "Tulosta testaukseen liittyvää tietoa; mahdolliset"
+
+#~ msgid "clanVorbis support:           ok"
+#~ msgstr "clanVorbis-tuki:           ok"
+
+#~ msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
+#~ msgstr "clanVoribs-tuki:  puuttuu (.ogg-musiikkia ei voida soittaa)"
+
+#~ msgid "clanMikMod support:           ok"
+#~ msgstr "clanMikMod-tuki:           ok"
+
+#~ msgid "clanMikMod support:  missing (music files will not be playable)"
+#~ msgstr "clanMikMod-tuki:  puuttuu (musiikkitiedostoja ei voida soittaa)"
+
+#~ msgid "getext support:               ok"
+#~ msgstr "getext-tuki:               ok"
+
+#~ msgid "gettext language:        english"
+#~ msgstr "gettext-kieli:        englanti"
+
+#~ msgid "Error caught from ClanLib: "
+#~ msgstr "Virhe ClanLib:ltä: "
+
+#~ msgid "Image has wrong color depth: %d"
+#~ msgstr "Kuvassa on väärä määrä värejä: %d"
+
+#~ msgid "The Journey Continues"
+#~ msgstr "Matka jatkuu"
+
+#~ msgid ""
+#~ "Now after you and the Pingus have learned the basics and\n"
+#~ "practiced a bit it is time to move on and begin the journey into\n"
+#~ "the world. Since the ice floe with which the Pingus traveled to the\n"
+#~ "Tutorial Island isn't going to hold on the whole way into the warmer\n"
+#~ "climates the Pingus have to find something else to guide\n"
+#~ "them on their journey.\n"
+#~ msgstr ""
+#~ "Nyt kun sinä ja pingut olette oppineet perusasiat ja harjoitelleet\n"
+#~ "hieman, on aika jatkaa eteenpäin ja aloittaa matka maailmalle.\n"
+#~ "Koska Harjoitussaarelle pääsemiseen käytetty jäälautta sulaisi\n"
+#~ "pian lämpimämmässä ilmastossa, tarvitsevat pingut jotain muita\n"
+#~ "kulkuvälineitä vaelluksellaan pois etelänavalta.\n"
+
+#~ msgid ""
+#~ "But as the eldest have said, the Tutorial Island provides not\n"
+#~ "only a good way to practice, but it is also the starting point into\n"
+#~ "the world. After some searching the Pingus discovered the meaning\n"
+#~ "of this, and they found the large tree at the end of the island\n"
+#~ "which gave them wood to construct a float.\n"
+#~ msgstr ""
+#~ "Aivan kuten heimon vanhimmat sanoivat, Harjoitussaari tarjoaa\n"
+#~ "muutakin kuin hyvän harjoituspaikan - se on myös erinomainen\n"
+#~ "lähtopiste matkalle pohjoiseen. Pienen etsinnän jälkeen pingut\n"
+#~ "ymmärsivätkin mitä viisaat olivat tarkoittaneet. Ne löysivät saaren\n"
+#~ "kaukaisimmasta päädystä suuren puun, josta saivat tarpeeksi\n"
+#~ "kelluvaa rakennusmateriaalia.\n"
+
+#~ msgid ""
+#~ "So the Pingus set out and constructed some large rafts, enough\n"
+#~ "to carry them all. After also packing a bunch of provisions\n"
+#~ "they were prepared to start their journey and leave\n"
+#~ "their familiar ground and enter the unknown parts of the world.\n"
+#~ msgstr ""
+#~ "Pingut ryhtyivät toimeen ja rakensivat itselleen useita\n"
+#~ "suuria lauttoja, joilla koko joukko pääsisi meren yli. Pakattuaan\n"
+#~ "mukaan vielä hieman muonaa ja muita tarpeita, ne oliva valmiita\n"
+#~ "jättämään kodin taakseen ja suunnistamaan kohti tuntematonta.\n"
+
+#~ msgid ""
+#~ "So the Pingus sit on their raft, worrying about what's to come and\n"
+#~ "where to go, while floating into the sunset.\n"
+#~ "\n"
+#~ "To be continued..."
+#~ msgstr ""
+#~ "Niin pingut istuivat lautoillaan huolestuneina siitä, mitä tuleman\n"
+#~ "piti ja minne matka johtaisi, ajelehtiessaan kohti auringonlaskua.\n"
+#~ "\n"
+#~ "Jatkuu..."
+
+#~ msgid "The Journey Begins"
+#~ msgstr "Matka alkaa"
+
+#~ msgid ""
+#~ "For a long time, the Pingus have lived happily in peace on the\n"
+#~ "South Pole along with all the other animals. Everything was in\n"
+#~ "balance and it seemed like nothing could disrupt their peace.  The\n"
+#~ "Pingus were happy and it seemed like this could never end.\n"
+#~ msgstr ""
+#~ "Pingut olivat pitkään asuneet etelänävalla, hyvässä sovussa sen\n"
+#~ "muiden eläinlajien kanssa. Kaikki oli tasapainoista ja vaikutti siltä,\n"
+#~ "ettei mikään voisi häiritä niiden rauhaa. Pingut voivat hyvin, onnelle\n"
+#~ "ei näkynyt loppua.\n"
+
+#~ msgid ""
+#~ "But then one day, things began to change slowly: the sky got darker\n"
+#~ "and the earth got warmer. Firstly, they thought this was just a\n"
+#~ "normal fluctuation in the world's climate, but things seemed to get\n"
+#~ "worse and worse with every year."
+#~ msgstr ""
+#~ "Eräänä päivänä harmonia alkoi kuitenkin hiljalleen järkkyä: taivas\n"
+#~ "tummeni ja maa lämpeni. Aluksi pingut ajattelivat sen johtuvan\n"
+#~ "vain maailman ilmaston normaaleista vaihteluista, mutta tilanne\n"
+#~ "näyttikin vuosi vuodelta vain pahenevan."
+
+#~ msgid ""
+#~ "The snow began to melt away in a few areas and food became an\n"
+#~ "issue. Other animals tried to leave the region to search\n"
+#~ "for colder areas, but the Pingus knew that this wouldn't help:\n"
+#~ "they knew that they had to do something about it."
+#~ msgstr ""
+#~ "Lumi suli pois joiltain alueilta ja ruoansaanti alkoi tuottaa\n"
+#~ "vaikeuksia. Monet eläimet yrittivät etsiytyä kylmemmille\n"
+#~ "seuduille, mutta pingut tiesivät ettei siitä olisi apua. Niiden\n"
+#~ "olisi itse tehtävä asialle jotain."
+
+#~ msgid ""
+#~ "So the circle of the eldest came together to decide what to do\n"
+#~ "about it. They decided to send out an expedition around the world\n"
+#~ "to find the cause of this warming. The expedition consisted of\n"
+#~ "hundreds of the bravest Pingus on the South Pole."
+#~ msgstr ""
+#~ "Niinpä vanhimmat ja viisaimmat pingut kokoontuivat yhteen\n"
+#~ "miettimään mitä tehdä. Päätöksenä oli lähettää retkikunta\n"
+#~ "maailmalle selvittämään mistä lämpeneminen johtui. Tehtävää\n"
+#~ "suorittamaan valittiin satoja etelänavan urheimpia pinguja."
+
+#~ msgid ""
+#~ "And they picked you to lead them on their journey around the\n"
+#~ "world. Since the journey will be dangerous and difficult, your\n"
+#~ "first goal is the Island of Mogorok, also known as the Tutorial\n"
+#~ "Island. According to the eldest, this island has always been the\n"
+#~ "first stop of Pingus that were sent out into the world."
+#~ msgstr ""
+#~ "Sinut, hyvä pelaaja, valittiin johtamaan retkikuntaa sen\n"
+#~ "matkalla maailman ääriin. Koska vaelluksesta tulee varmasti\n"
+#~ "vaikea ja vaarallinen, ensimmäinen kohteesi on Mogorok,\n"
+#~ "joka tunnetaan myös nimellä Harjoitussaari. Vanhimpien mukaan\n"
+#~ "matkalle valmistautuvat pingut ovat aina aloittaneet sieltä."
+
+#~ msgid ""
+#~ "The island consists of many areas that are ideal to teach the\n"
+#~ "Pingus their abilities. The Pingus can learn to build\n"
+#~ "bridges, climb, bash and use many other talents which they\n"
+#~ "will need on their long and dangerous journey."
+#~ msgstr ""
+#~ "Saarella on erilaisia alueita, jotka soveltuvat erinomaisesti\n"
+#~ "pingujen kouluttamiseen. Pingujen on opittava kiipeilyä,\n"
+#~ "sillanrakennusta, esteiden murskausta ja muita tärkeitä\n"
+#~ "taitoja joita pitkästä matkasta suoriutuminen edellyttää."
+
+#~ msgid ""
+#~ "While there, you can practice your abilities in commanding\n"
+#~ "and guiding the Pingus. You can also get familiar with\n"
+#~ "all the abilities the Pingus provide and learn to master them,\n"
+#~ "since you will need all of them on your journey around the\n"
+#~ "world."
+#~ msgstr ""
+#~ "Saarella voit harjoitella pingujen johtamista, tutustua\n"
+#~ "mihin kaikkeen ne pystyvät ja opetella hyödyntämään\n"
+#~ "niiden oikeita kykyjä oikeissa tilanteissa. Ilman sinua\n"
+#~ "pingut eivät varmasti selviä matkastaan, joten\n"
+#~ "valmistaudu huolella."
+
+#~ msgid ""
+#~ "Now that you and the Pingus have arrived at Tutorial Island it\n"
+#~ "is time to take command and begin your mission.\n"
+#~ "\n"
+#~ "Good Luck!"
+#~ msgstr ""
+#~ "Nyt kun pingut ovat saapuneet Harjoitussaarelle, sinun on aika\n"
+#~ "ottaa ohjat käsiisi ja aloittaa tehtävä.\n"
+#~ "\n"
+#~ "Onnea matkaan!"
 
 #~ msgid "Enter filename to save as:"
 #~ msgstr "Tallennettavan tiedoston nimi:"
@@ -1256,9 +1333,6 @@ msgstr "...kävelee..."
 #~ "Level"
 #~ msgstr "Luo uusi"
 
-#~ msgid "..:: Launch the level editor ::.."
-#~ msgstr "..:: Käynnistä kenttäeditori ::.."
-
 #~ msgid "Screenshot: Couldn't save screenshot"
 #~ msgstr "Ruutukaappaus: Tallennus ei onnistunut"
 
@@ -1267,9 +1341,6 @@ msgstr "...kävelee..."
 
 #~ msgid "..:: The people who brought this game to you ::.."
 #~ msgstr "..:: Näytä pelin tekijät ::.."
-
-#~ msgid "Credits"
-#~ msgstr "Tekijät"
 
 #~ msgid "..:: Takes you to the options menu ::.."
 #~ msgstr "..:: Näytä asetusvalikko ::.."
