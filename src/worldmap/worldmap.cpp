@@ -175,7 +175,7 @@ WorldMap::draw(DrawingContext& gc)
       min = float(height - gc.get_height()/2);
       max = float(gc.get_height()/2);
     }
-  pingu_pos.y = Math::clamp(min, pingu_pos.x, max);
+  pingu_pos.y = Math::clamp(min, pingu_pos.y, max);
 
   gc_state.set_pos(Vector2f(pingu_pos.x, pingu_pos.y));
 	

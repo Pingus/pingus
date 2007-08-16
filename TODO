@@ -72,8 +72,6 @@ Nice to Have:
 
 - story graphics have a missing vertical line (due to age old gimp scaling bug)
 
-- worldmap scrolling seems to be broken when using small resolutions (-g 400x300)
-
 - separate gfx/colmap surfaces aren't used
 
 - CollisionMask can't handle RGBA images and likely shouldn't (due to
