@@ -1,11 +1,19 @@
+# #-#-#-#-#  cs.po (cs)  #-#-#-#-#
 # translation of cs.po to czech
 # translation of pingus.po to czech
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR Ingo Ruhnke
 # Tomá¹ Bláha, 2003, 2004
 #
+# #-#-#-#-#  cs.po (PACKAGE VERSION)  #-#-#-#-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
 msgid ""
 msgstr ""
+"#-#-#-#-#  cs.po (cs)  #-#-#-#-#\n"
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-08-16 16:36+0200\n"
@@ -1735,10 +1743,9 @@ msgstr ""
 msgid "Do not enter if you don't like splashing penguins... "
 msgstr ""
 
-#: data/levels/test/sexpr.pingus:5
-#: data/levels/tutorial/solid-tutorial-grumbel.pingus:5
+#: data/levels/tutorial/solid-tutorial-grumbel.pingus
 msgid "Solid ground can block the path"
-msgstr ""
+msgstr "Pevné podlo¾í mù¾e omezit cestu"
 
 #: data/levels/test/sexpr.pingus:6
 msgid ""
@@ -1784,236 +1791,299 @@ msgstr ""
 msgid "Some Pingus might get killed in this level."
 msgstr ""
 
-#: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
+#: data/levels/tutorial/basher-tutorial-grumbel.pingus
 msgid "If the way is blocked, bash away"
-msgstr ""
+msgstr "Kdy¾ nevede cesta dál, tak ji prohrabej"
 
-#: data/levels/tutorial/basher-tutorial-grumbel.pingus:6
+#: data/levels/tutorial/basher-tutorial-grumbel.pingus
 msgid ""
 "Similar to the Digger action that you already know from previous levels, "
 "there is also an action that allows the Pingus to dig horizontally, as "
 "opposed to the vertical dig ability the Digger action provides. This new "
 "action is called Basher. "
 msgstr ""
+"Podobnì jako kopání, které u¾ zná¹ z minulých úrovní, existuje také mo¾nost "
+"vodorovného hrabání. Pingové pak nekopou jámu pod sebou, ale prohrabávají se "
+"rovnì ve smìru chùze. "
 
-#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:5
+#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus
 msgid "Sacrifice a few and save the rest"
-msgstr ""
+msgstr "Pár obìtuj a zachraò ostatní"
 
-#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:6
+#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus
 msgid ""
 "Sometimes no other actions are available, so you have to bomb your way "
 "through the ground. The Pingus can do this by actually self- destructing. "
 "This will kill them, but it is sometimes necessary to sacrifice a few to "
 "save the rest. "
 msgstr ""
+"Obèas, kdy¾ nemá¹ jinou vhodnou akci k dispozici, musí¹ si uvolnit cestu "
+"skrz zemi výbuchem. Pingové to ale umí udìlat jen tak, ¾e se pøi tom sami "
+"znièí. I kdy¾ je to zabíjí, tak je nìkdy nutné nìkolik z nich obìtovat, abys "
+"zachránil ostatní. "
 
-#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:5
+#: data/levels/tutorial/digger-tutorial2-grumbel.pingus
 msgid "Learning to dig"
-msgstr ""
+msgstr "Výuka kopání"
 
-#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:6
+#: data/levels/tutorial/digger-tutorial2-grumbel.pingus
 msgid ""
 "This is your first mission. As always, it's pretty easy. All you have to do "
 "is to give a Pingu the command to dig a hole into the ground so that they "
 "can reach the exit. This can be accomplished simply by clicking on a Pingu. "
 msgstr ""
+"Toto je tvùj první úkol a bude celkem jednoduchý. V¹echno, co bude¹ muset "
+"udìlat, je dát pingovi pøíkaz k vykopání jámy do zemì, aby se vytvoøila "
+"cesta k východu. To udìlá¹ prostì tak, ¾e na nìjakého pinga klikne¹. "
 
-#: data/levels/tutorial/floater-tutorial-grumbel.pingus:5
-#, fuzzy
+#: data/levels/tutorial/floater-tutorial-grumbel.pingus
 msgid "Float or Die"
-msgstr "Para¹utista"
+msgstr "Le», nebo zemøe¹"
 
-#: data/levels/tutorial/floater-tutorial-grumbel.pingus:6
+#: data/levels/tutorial/floater-tutorial-grumbel.pingus
 msgid ""
 "Well done in mission one! Now let's start the next one. This time you will "
 "need to equip your Pingus with a little propeller, so that they can float to "
 "the ground smoothly. If Pingus fall too far, they will not be able to "
 "survive the fall, so keep your eyes open! "
 msgstr ""
+"V první misi jsi dopadl dobøe, tak¾e se teï podíváme na dal¹í. Tentokrát "
+"bude¹ muset své svìøence vybavit malou vrtulkou, aby se mohli pomalu a "
+"bezpeènì snést z útesu na zem. Kdy¾ toti¾ pingové spadnou z pøíli¹ velké "
+"vý¹ky, tak nepøe¾ijí. Tak¾e na nì dávej dobrý pozor! "
 
-#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:5
+#: data/levels/tutorial/jumper-tutorial-grumbel.pingus
 msgid "Jump for joy"
-msgstr ""
+msgstr "Skákání je legrace"
 
-#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:6
+#: data/levels/tutorial/jumper-tutorial-grumbel.pingus
 msgid ""
 "Sometimes a Pingu needs to reach a platform that is far away, but not "
 "reachable by walking. That's when the Jumper comes in handy - it allows the "
 "Pingu to make a small jump and so enables him to reach the platform. "
 msgstr ""
+"Nìkdy potøebuje¹ pinga dovést na plo¹inu, která je sice jen kousek od nìj, "
+"ale nelze na ni dojít. Pak pøijde vhod skákání, které umo¾ní pingovi kousek "
+"poskoèit a dostat se tak na ký¾ené místo. "
 
-#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:5
+#: data/levels/tutorial/miner-tutorial2-grumbel.pingus
 msgid "Miner's heaven"
-msgstr ""
+msgstr "Ráj horníkù"
 
-#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:6
+#: data/levels/tutorial/miner-tutorial2-grumbel.pingus
 msgid ""
 "Another action hits the street - another digging action, this time a "
 "diagonal one. It allows a Pingu to dig diagonally through ground, thus "
 "creating a path for following Pingus. The action is called Miner. "
 msgstr ""
+"A dal¹í akce se dostává na výsluní a opìt se jedná o kopání do zemì, "
+"tentokrát ¹ikmo. Hornictví umo¾ní pingùm hloubit ¹ikmé chodby, kterými pak "
+"mohou ostatní projít. "
 
 #: data/levels/tutorial/placeholder.pingus:5
+#: data/levels/tutorial/placeholder.pingus
 msgid "--- Empty Placeholder Level ---"
 msgstr ""
 
 #: data/levels/tutorial/placeholder.pingus:6
+#: data/levels/tutorial/placeholder.pingus
 msgid "This Level is not playable and EMPTY!"
 msgstr ""
 
-#: data/levels/tutorial/snow10-grumbel.pingus:5
+#: data/levels/tutorial/snow10-grumbel.pingus
 msgid "Panic Island (float/bash)"
-msgstr ""
+msgstr "Panika na ostrovì"
 
-#: data/levels/tutorial/snow10-grumbel.pingus:6
+#: data/levels/tutorial/snow10-grumbel.pingus
 msgid ""
 "While the previous levels have not required much quick action from you, this "
 "one gets a bit trickier. The Pingus are coming out of two entrances in "
 "parallel and it is your job to coordinate the two groups wisely. "
 msgstr ""
+"Zatímco pøedchozí úrovnì po tobì nevy¾adovaly moc rychlých reakcí, tak ta "
+"následující je trochu nároènìj¹í. Pingové vycházejí ze dvou vchodù najednou "
+"a je jen na tobì obì skupiny uhlídat. "
 
-#: data/levels/tutorial/snow11-grumbel.pingus:5
+#: data/levels/tutorial/snow11-grumbel.pingus
 msgid "Jump'n Bump... and Bash..."
-msgstr ""
+msgstr "Skákání a hrabání..."
 
-#: data/levels/tutorial/snow11-grumbel.pingus:6
+#: data/levels/tutorial/snow11-grumbel.pingus
 msgid ""
 "It's panic time again. The Pingus will not come out very fast, but since "
 "they turn around when they hit walls you will soon have some trouble "
 "coordinating them all. Since you only need to save 5 it should be doable, "
 "but if all else fails use the pause-mode ('p') to get an overview again. "
 msgstr ""
+"Je na èase si dìlat starosti. Pingové sice nebudou pøicházet pøíli¹ rychle, "
+"ale proto¾e se u zdí otáèejí, tak brzo vznikne nepøehledná situace, kdy je "
+"u¾ nebude¹ stíhat ovládat. Na¹tìstí jich potøebuje¹ do domeèku dostat jen 5, "
+"tak to snad zvládne¹. Kdy¾ ti to bude dìlat problémy, mù¾e¹ pou¾ívat pauzu "
+"(P). "
 
-#: data/levels/tutorial/snow12-grumbel.pingus:5
+#: data/levels/tutorial/snow12-grumbel.pingus
 msgid "Two groups in parallel, coordinate wisely"
-msgstr ""
+msgstr "Dvì skupiny najednou - rozumì je veï"
 
-#: data/levels/tutorial/snow12-grumbel.pingus:6
+#: data/levels/tutorial/snow12-grumbel.pingus
 msgid ""
 "You have two groups to coordinate this time. No need to panic, since this "
 "level gives you enough time to think your actions through. No more tips this "
 "time, but good luck! "
 msgstr ""
+"Má¹ na starosti dvì skupiny, tak¾e je bude¹ muset zvládnout najednou. "
+"Nemusí¹ se obávat, má¹ dostatek èasu na promy¹lení svých plánù. Více ti u¾ "
+"napovídat nebudu. Hodnì ¹tìstí! "
 
-#: data/levels/tutorial/snow14-grumbel.pingus:5
+#: data/levels/tutorial/snow14-grumbel.pingus
 msgid "Block'a Rock"
-msgstr ""
+msgstr "Blokování"
 
-#: data/levels/tutorial/snow14-grumbel.pingus:6
+#: data/levels/tutorial/snow14-grumbel.pingus
 msgid ""
 "Once again it's time to combine the stuff you have learned in your previous "
 "levels. Blast your way free and make sure you also keep the rest of the "
 "Pingus under control. The Blocker action will be helpful. "
 msgstr ""
+"A máme tu znovu pøíle¾itost zkombinovat znalosti, které jsi zatím získal. "
+"Uvolni si cestu k cíli a zároveò dávej pozor i na ostatní pingy. Pomù¾e ti "
+"nová akce - zablokování cesty. "
 
-#: data/levels/tutorial/snow15-grumbel.pingus:5
+#: data/levels/tutorial/snow15-grumbel.pingus
 msgid "Climb, Climber,... Boom!"
-msgstr ""
+msgstr "©plhej horolezèe,... Bum!"
 
-#: data/levels/tutorial/snow15-grumbel.pingus:6
+#: data/levels/tutorial/snow15-grumbel.pingus
 msgid ""
 "As you might have already figured out from previous levels, you often have "
 "to combine different actions to get the job done. Due to the lack of a "
 "Digger action in this level the Bomber needs to jump in, but how can it "
 "reach the place to bomb? "
 msgstr ""
+"Jak jsi u¾ urèitì pochopil z pøedchozích úrovní, èasto je potøeba skloubit "
+"více rùzných èinností dohromady, aby se dosáhlo potøebného cíle. Proto¾e "
+"momentálnì nemá¹ k dispozici ¾ádného kopáèe, tak bude¹ muset pou¾ít bombera. "
+"Jak se ale dostat na místo odpalu? "
 
-#: data/levels/tutorial/snow16-grumbel.pingus:5
+#: data/levels/tutorial/snow16-grumbel.pingus
 msgid "Bridging gets more complicated..."
-msgstr ""
+msgstr "Mosty se zaèínají komplikovat..."
 
-#: data/levels/tutorial/snow16-grumbel.pingus:6
+#: data/levels/tutorial/snow16-grumbel.pingus
 msgid ""
 "Once again you have to combine actions carefully and wisely. If you don't "
 "you could end up in the hole just before the exit, so think about how to "
 "avoid that. "
 msgstr ""
+"Opìt bys mìl peèlivì a mazanì zkombinovat v¹echny schopnosti dohromady, "
+"jinak skonèí¹ v pasti kousek pøed cílem. Tak¾e zapøemý¹lej, jak se tomu "
+"vyhnout. "
 
-#: data/levels/tutorial/snow17-grumbel.pingus:5
+#: data/levels/tutorial/snow17-grumbel.pingus
 msgid "If too high, your Pingu will die..."
-msgstr ""
+msgstr "Pingové nepøe¾ijí pád z velké vý¹ky..."
 
-#: data/levels/tutorial/snow17-grumbel.pingus:6
+#: data/levels/tutorial/snow17-grumbel.pingus
 msgid ""
 "Teamwork is the way to the exit this time. You don't have enough Floaters to "
 "reach the exit, so just send a few and let them prepare the path for the "
 "rest. "
 msgstr ""
+"Týmová práce je tou pravou cestou k cíli. Proto¾e nemá¹ dostatek vrtulek pro "
+"v¹echny, vy¹li nejprve nìkolik pingù, aby ostatním pøipravili cestu. "
 
-#: data/levels/tutorial/snow19-grumbel.pingus:5
+#: data/levels/tutorial/snow19-grumbel.pingus
 msgid "Learn to use the bridge"
-msgstr ""
+msgstr "Nauè se stavìt mosty"
 
-#: data/levels/tutorial/snow19-grumbel.pingus:6
+#: data/levels/tutorial/snow19-grumbel.pingus
 msgid ""
 "If no Jumper is at hand and a large hole needs to be passed, a bridge can be "
 "pretty helpful. It takes some time to build, but unlike the jumper action it "
 "allows following Pingus to reach the other end too. "
 msgstr ""
+"Kdy¾ není po ruce skokan a je potøeba pøekonat nìjakou propast, tak mù¾e¹ "
+"postavit most. Stavba sice zabere nìjaký ten èas, ale zato budou moci "
+"v¹ichni ostatní pohodlnì pøejít, co¾ bys se samotným skokanem nedokázal. "
 
-#: data/levels/tutorial/snow20-grumbel.pingus:5
+#: data/levels/tutorial/snow20-grumbel.pingus
 msgid "Three solutions, it's up to you"
-msgstr ""
+msgstr "Tøi øe¹ení - zvol si, které chce¹"
 
-#: data/levels/tutorial/snow20-grumbel.pingus:6
+#: data/levels/tutorial/snow20-grumbel.pingus
 msgid ""
 "Now that you've learned all the actions, it's time for some more practice. "
 "This level presents you with at least three different ways to solve it. It's "
 "up to you which one you pick. "
 msgstr ""
+"Teï, kdy¾ ses nauèil v¹echny schopnosti, nastává èas, aby ses více "
+"procvièil. Tyto úkoly mají nejménì tøi rùzná øe¹ení a je jen na tobì, které "
+"si vybere¹. "
 
-#: data/levels/tutorial/snow21-grumbel.pingus:5
+#: data/levels/tutorial/snow21-grumbel.pingus
 msgid "Climb, Climber, climb... and build a bridge"
-msgstr ""
+msgstr "©plhej horolezèe, ¹plhej... a postav most"
 
-#: data/levels/tutorial/snow21-grumbel.pingus:6
+#: data/levels/tutorial/snow21-grumbel.pingus
 msgid ""
 "Once again you get access to a new action. The Climber action allows a Pingu "
 "to climb up straight walls, thus allowing him to reach stuff that might be "
 "too high to reach by other means. "
 msgstr ""
+"Zase tu máme novou schopnost - horolezectví. Pingu, který se stane "
+"horolezcem, umí vy¹plhat na kolmé zdi a dostane se tak na místa, kam by se "
+"jinak nikdo nedostal. "
 
-#: data/levels/tutorial/snow22-grumbel.pingus:5
+#: data/levels/tutorial/snow22-grumbel.pingus
 msgid "Entrance high, Exit low"
-msgstr ""
+msgstr "Vchod nahoøe, východ dole"
 
-#: data/levels/tutorial/snow22-grumbel.pingus:6
+#: data/levels/tutorial/snow22-grumbel.pingus
 msgid ""
 "If you don't have enough floaters to bring all the Pingus down to the exit - "
 "you have to find other ways to guide them down. You should have learned all "
 "the stuff you need for this level in previous levels, so this shouldn't be "
 "too much of a problem for you. "
 msgstr ""
+"Kdy¾ nemá¹ dostatek vrtulek, abys dostal v¹echny pingy bezpeènì dolù, bude¹ "
+"muset vymyslet jiný zpùsob. V¹e, co potøebuje¹, ses u¾ nauèil v pøedchozích "
+"úrovních, tak¾e to pro tebe nebude ¾ádný zvlá¹tní problém. "
 
-#: data/levels/tutorial/snow7-grumbel.pingus:5
+#: data/levels/tutorial/snow7-grumbel.pingus
 msgid "One must prepare, the rest must follow"
-msgstr ""
+msgstr "Jeden pøipraví, ostatní ho následují"
 
-#: data/levels/tutorial/snow7-grumbel.pingus:6
+#: data/levels/tutorial/snow7-grumbel.pingus
 msgid ""
 "Sometimes there are situations where you don't have a Blocker at hand to "
 "coordinate your Pingus. You'll have to find other ways to keep them under "
 "control while a single one prepares the path for the rest. "
 msgstr ""
+"Èas od èasu se dostane¹ do situace, kdy ¾ádný blokovaè není k dispozici. Mìl "
+"bys vymyslet nìjaký jiný zpùsob, jak pingy udr¾et pod kontrolou, ne¾ nìkdo "
+"pøipraví cestu. "
 
-#: data/levels/tutorial/snow8-grumbel.pingus:5
+#: data/levels/tutorial/snow8-grumbel.pingus
 msgid "Dig and float, but just don't fall and smash"
-msgstr ""
+msgstr "Kopej a skákej, ale hlavnì nespadni"
 
-#: data/levels/tutorial/snow8-grumbel.pingus:6
+#: data/levels/tutorial/snow8-grumbel.pingus
 msgid ""
 "Unlike the first two levels, you have two actions available in this level. "
 "Your job is again simple: select an action at the panel on the left and "
 "apply it to the Pingus so that they will be able to reach the exit. Make "
 "sure that not too many of them die. "
 msgstr ""
+"Na rozdíl od pøedchozích dvou úrovní bude¹ mít tentokrát k dispozici dvì "
+"schopnosti. Tvùj úkol bude, jako obvykle, velmi snadný - vybere¹ schopnost "
+"na levém panelu a pou¾ije¹ ji na pinga, abys vytvoøil cestu k cíli. Jen si "
+"dej pozor, aby ti mnoho svìøencù nezemøelo. "
 
-#: data/levels/tutorial/snow9-grumbel.pingus:5
+#: data/levels/tutorial/snow9-grumbel.pingus
 msgid "Dig, bash and other problems"
-msgstr ""
+msgstr "Kopání, hrabání a dal¹í problémy"
 
-#: data/levels/tutorial/snow9-grumbel.pingus:6
+#: data/levels/tutorial/snow9-grumbel.pingus
 msgid ""
 "The more levels you master, the more difficult they will get, but don't "
 "panic, as this one is still pretty easy. Just use the stuff that you've "
@@ -2021,14 +2091,22 @@ msgid ""
 "think you've reached a situation from which you can no longer solve the "
 "level, double click the armageddon button at the lower right. "
 msgstr ""
+"Èím více úrovní zvládne¹, tím tì¾¹í tì budou èekat. Ale neboj se, "
+"následující je je¹tì celkem jednoduchá. Prostì pou¾ij v¹e, co ses zatím "
+"nauèil a nebude¹ mít potí¾e. Kdy¾ se dostane¹ do bezvýchodné situace, "
+"dvojklikni na tlaèítko Armagedon vpravo dole. "
 
-#: data/levels/tutorial/solid-tutorial-grumbel.pingus:6
+#: data/levels/tutorial/solid-tutorial-grumbel.pingus
 msgid ""
 "As you have learned in earlier levels your Pingus can dig through basically "
 "any terrain, but there is one material which they can't penetrate: steel. "
 "These regions are marked dark grey on the level map and cannot be destroyed, "
 "so you must find a way around them. "
 msgstr ""
+"U¾ døíve ses nauèil, ¾e se pingové doká¾í prokopat skrze jakýkoliv druh "
+"zeminy. Tady se ale v zemi nacházejí kovové pøedmìty, které prokopat nejdou. "
+"Tyto vìci jsou na mapce vyznaèeny tmavì ¹edou barvou a nemohou být nijak "
+"znièeny. Musí¹ je obejít. "
 
 #: data/levels/volcano/volcano1-grumbel.pingus:5
 #, fuzzy
