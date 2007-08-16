@@ -8,51 +8,64 @@
   '((pingus-level head levelname)
     (pingus-level head description)))
 
+;; FIXME: add (pingus-worldmap (end_story intro_story)  pages page text) support
 (define worldmap-pattern-list
-  '((pingus-worldmap head name)
-    (pingus-worldmap head description)
-    (pingus-worldmap intro_story title)
-    (pingus-worldmap intro_story text)
-    (pingus-worldmap intro_story pages page text)
-    (pingus-worldmap end_story   title)
-    (pingus-worldmap end_story   pages page text)
-    ))
-
-(define *current-file* "")
+  '((pingus-worldmap head (name description))
+    (pingus-worldmap (intro_story end_story) title)
+    (pingus-worldmap (intro_story end_story) pages page text)))
 
 (define (escape-string str)
   (regexp-substitute/global #f "\"" str 'pre "\\\"" 'post))
 
-(define (print-msg sexpr)
+(define (print-msg sexpr props)
   (let ((str  (escape-string (apply string-append sexpr))) )
     (cond ((not (string-null? str))
            (display "#: ")
-           (display *current-file*)
+           (display (assoc-ref props 'filename))
+           (display ":")
+           (display (+ (assoc-ref props 'line) 1))
            (newline)
-           (display "msgid = \"")
+           (display "msgid \"")
            (display str)
            (display "\"\n")
-           (display "msgstr = \"\"\n")
+           (display "msgstr \"\"\n")
            (newline)
            ))))
 
-(define (grep-sexpr func pattern sexpr)
+(define (pattern-match pattern sym)
+  (cond ((list? pattern)
+         (let loop ((pat pattern))
+           (if (null? pat)
+               #f
+               (if (pattern-match (car pat) sym)
+                   #t
+                   (loop (cdr pat))))))
+        ((symbol? pattern)
+         (equal? pattern sym))
+        ((string? pattern)
+         (string-match pattern (symbol->string sym)))
+        (else 
+         (error "Unknown pattern: " pattern))))
+
+(define (grep-sexpr func pattern sexpr props)
   (cond ((null? pattern)
-         (func sexpr))
+         (func sexpr props))
         (else
          (for-each (lambda (el)
-                     (if (equal? (car pattern) (car el))
-                         (grep-sexpr func (cdr pattern) (cdr el))))
+                     (cond ((pattern-match (car pattern) (car el))
+                            (grep-sexpr func (cdr pattern) (cdr el)
+                                        (source-properties el)
+                                        ))))
                    sexpr))))
 
 (define (main args)
+  (read-enable 'positions)
   (set! args (cdr args))
   (for-each (lambda (file)
-              (set! *current-file* file)
               (let* ((port  (open-input-file file))
                      (sexpr (list (read port))))
                 (for-each (lambda (pattern)
-                            (grep-sexpr print-msg pattern sexpr))
+                            (grep-sexpr print-msg pattern sexpr 0))
                           (cond ((string-suffix? ".worldmap" file)
                                  worldmap-pattern-list)
                                 ((string-suffix? ".pingus" file)
@@ -60,7 +73,6 @@
                                 (else
                                  (error "Unknown file suffix\n"))))
                 (close-port port)))
-            args)
-  (display "\n# EOF #\n"))
+            args))
 
 ;; EOF ;;
