@@ -123,7 +123,11 @@ VerticalActionButton::draw (DrawingContext& gc)
       }
     }
 
-  gc.draw(sprite, Vector3f((float)x_pos + 20, (float)y_pos + 32));
+  if (this->get_action_name() == Climber) {
+	  gc.draw(sprite, Vector3f((float)x_pos + 32, (float)y_pos + 32));
+  } else {
+	  gc.draw(sprite, Vector3f((float)x_pos + 20, (float)y_pos + 32));
+  }
 
   Font myfont  = font;
   Font myfontb = font_b;
