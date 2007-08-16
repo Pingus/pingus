@@ -32,6 +32,8 @@
 #  include <windows.h>
 #  include <direct.h>
 #  include <fstream>
+#  include <sys/stat.h>
+#  include <sys/types.h>
 #endif
 
 #include <iostream>
@@ -484,7 +486,7 @@ System::checksum(std::string filename)
 }
 
 
-unsigned int
+uint64_t
 System::get_mtime(const std::string& filename)
 {
 #ifndef WIN32
@@ -496,7 +498,13 @@ System::get_mtime(const std::string& filename)
     return 0;
 
 #else
+
+  struct _stat stat_buf;
+  if (_stat(filename.c_str(), &stat_buf) == 0)
+    return stat_buf.st_mtime;
+  else
     return 0;
+
 #endif
 }
 

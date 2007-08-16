@@ -25,6 +25,7 @@
 #include <string>
 #include <list>
 #include <map>
+#include "SDL.h"
 
 
 /** A wrapper class around some system dependend functions (mostly
@@ -111,7 +112,7 @@ public:
   static std::string get_language();
 
   /** Return the modification time of a file */
-  static unsigned int get_mtime(const std::string& filename);
+  static uint64_t get_mtime(const std::string& filename);
 
   /** Choose the correct translation out of the map, if there is none
       present, fall back to the default language */

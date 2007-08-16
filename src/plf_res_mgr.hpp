@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_PLF_RES_MGR_HXX
 
 #include "pingus_level.hpp"
+#include "SDL.h"
 
 
 /** */
@@ -29,7 +30,7 @@ class PLFResMgr
 private:
   struct PLFEntry {
     PingusLevel plf;
-    unsigned int mtime;
+    uint64_t mtime;
   };
 
   typedef std::map<std::string, PLFEntry> PLFMap;

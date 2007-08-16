@@ -53,7 +53,7 @@ PLFResMgr::load_plf_raw(const std::string& res_name,
     }
   else
     {
-      unsigned int current_mtime = System::get_mtime(filename);
+      uint64_t current_mtime = System::get_mtime(filename);
       if (current_mtime != i->second.mtime)
         {
           pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: level changed on DISK, reloading: '" << res_name << "' -> '" << filename << "'" << std::endl;
