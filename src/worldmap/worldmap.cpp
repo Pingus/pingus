@@ -405,7 +405,8 @@ WorldMap::set_starting_node()
 bool
 WorldMap::is_final_map()
 {
-  return false; ////(WorldMapManager::instance()->get_metamap()->get_final_worldmap() == short_name);
+  return pingus->get_node() == final_node;
+////  return (WorldMapManager::instance()->get_metamap()->get_final_worldmap() == short_name);
 }
 
 std::string

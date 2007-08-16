@@ -249,8 +249,13 @@ StoryScreenComponent::next_text()
               StatManager::instance()->get_bool("credits-seen", credits_seen);
               if (!credits_seen)
                 ScreenManager::instance()->replace_screen(Credits::instance(), false);
+              else
+                ScreenManager::instance()->replace_screen(WorldMapNS::WorldMapManager::instance());
             }
-          ScreenManager::instance()->replace_screen(WorldMapNS::WorldMapManager::instance ());
+          else
+            {
+              ScreenManager::instance()->replace_screen(WorldMapNS::WorldMapManager::instance());
+            }
         }
     }
 }
