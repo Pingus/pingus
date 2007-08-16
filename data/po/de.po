@@ -2,12 +2,15 @@
 # Copyright (C) YEAR Free Software Foundation, Inc.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
+"#-#-#-#-#  de.po (Pingus 0.6.0)  #-#-#-#-#\n"
+"#-#-#-#-#  de.po (Pingus 0.6.0)  #-#-#-#-#\n"
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-08-16 16:36+0200\n"
-"PO-Revision-Date: 2003-04-15 17:31+0200\n"
+"PO-Revision-Date: 2007-08-16 17:15+0200\n"
 "Last-Translator: David Philippi <david@torangan.de>\n"
 "Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx."
 "de>, Giray Devlet <giray@devlet.cc>\n"
@@ -22,7 +25,7 @@ msgstr "unbegrenzt"
 
 #: src/story_screen.cpp:40
 msgid "skip"
-msgstr ""
+msgstr "überspringen"
 
 #: src/pingu_enums.cpp:34
 msgid "Angel"
@@ -207,7 +210,7 @@ msgstr "OpenGL benutzen"
 
 #: src/pingus_main.cpp:215
 msgid "Use SDL"
-msgstr ""
+msgstr "SDL benutzen"
 
 #: src/pingus_main.cpp:217
 msgid "Start in Window Mode"
@@ -224,11 +227,11 @@ msgstr "Setze die Auflösung für Pingus (Standard: 800x600)"
 
 #: src/pingus_main.cpp:222
 msgid "PATH"
-msgstr ""
+msgstr "PFAD"
 
 #: src/pingus_main.cpp:223
 msgid "Set the path to load the data files to 'path'"
-msgstr ""
+msgstr "Pfad setzen aus dem die Daten geladen werden"
 
 #: src/pingus_main.cpp:224 src/pingus_main.cpp:226 src/pingus_main.cpp:244
 #: src/pingus_main.cpp:277
@@ -251,11 +254,11 @@ msgstr "..:: Erstelle deinen eigenen Level ::.."
 
 #: src/pingus_main.cpp:231
 msgid "Test a font"
-msgstr ""
+msgstr "Schrift testen"
 
 #: src/pingus_main.cpp:233
 msgid "Select language for use with Pingus"
-msgstr ""
+msgstr "Sprache für Pingus auswählen"
 
 #: src/pingus_main.cpp:235
 #, fuzzy
@@ -343,7 +346,7 @@ msgstr "Reduziert die CPU Belastung durch Verwendung von sleep()"
 
 #: src/pingus_main.cpp:274
 msgid "Shows the credits"
-msgstr ""
+msgstr "Liste der Mitwirkende anzeigen"
 
 #: src/pingus_main.cpp:276
 msgid "Demo playing and recording:"
@@ -611,11 +614,11 @@ msgstr "Schwierigkeitsgrad:"
 
 #: src/file_dialog_item.cpp:87 src/file_dialog_item.cpp:117
 msgid "Finished!"
-msgstr ""
+msgstr "Kompletiert!"
 
 #: src/file_dialog_item.cpp:91
 msgid "Not finished!"
-msgstr ""
+msgstr "Nicht kompletiert"
 
 #: src/file_dialog_item.cpp:106
 msgid "Not Finished"
@@ -680,11 +683,11 @@ msgstr "gesperrt"
 
 #: src/file_dialog.cpp:34
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #: src/file_dialog.cpp:262
 msgid "Load"
-msgstr ""
+msgstr "Laden"
 
 #: src/file_dialog.cpp:262
 #, fuzzy
@@ -758,7 +761,7 @@ msgstr "..:: Mehrspieler Modus ::.. Experimentelles Zeug ::.."
 
 #: src/pingus_menu.cpp:87
 msgid "Level Editor"
-msgstr ""
+msgstr "Level Editor"
 
 #: src/pingus_menu.cpp:88
 #, fuzzy
@@ -845,7 +848,7 @@ msgstr "..:: Contrib level Spielen ::.."
 #: data/levels/wip/stone8-grumbel.pingus:5
 #: data/levels/wip/stone9-grumbel.pingus:5
 msgid "EditorDefaultValue: Please give me a name..."
-msgstr ""
+msgstr "EditorDefaultValue: Please give me a name..."
 
 #: data/levels/multiplayer/multi1-grumbel.pingus:6
 #: data/levels/multiplayer/multi2-grumbel.pingus:6
@@ -853,11 +856,11 @@ msgstr ""
 #: data/levels/test/test8.pingus:6 data/levels/test/test9.pingus:6
 #: data/levels/wip/conv.pingus:6 data/levels/wip/stone3-grumbel.pingus:6
 msgid "EditorDefaultValue: ...and a short descriptions"
-msgstr ""
+msgstr "EditorDefaultValue: ...and a short descriptions"
 
 #: data/levels/playable/aliens1-phil.pingus:5
 msgid "Escape from Aliens"
-msgstr ""
+msgstr "Flucht vor den Aliens"
 
 #: data/levels/playable/aliens1-phil.pingus:6
 msgid ""
@@ -1741,8 +1744,9 @@ msgstr ""
 
 #: data/levels/test/sexpr.pingus:5
 #: data/levels/tutorial/solid-tutorial-grumbel.pingus:5
+#: data/levels/tutorial/solid-tutorial-grumbel.pingus
 msgid "Solid ground can block the path"
-msgstr ""
+msgstr "Fester Boden kann den Weg blockieren"
 
 #: data/levels/test/sexpr.pingus:6
 msgid ""
@@ -1789,235 +1793,314 @@ msgid "Some Pingus might get killed in this level."
 msgstr ""
 
 #: data/levels/tutorial/basher-tutorial-grumbel.pingus:5
+#: data/levels/tutorial/basher-tutorial-grumbel.pingus
 msgid "If the way is blocked, bash away"
-msgstr ""
+msgstr "Ist der Weg blockiert, dann grab ihn frei"
 
-#: data/levels/tutorial/basher-tutorial-grumbel.pingus:6
+#: data/levels/tutorial/basher-tutorial-grumbel.pingus
 msgid ""
 "Similar to the Digger action that you already know from previous levels, "
 "there is also an action that allows the Pingus to dig horizontally, as "
 "opposed to the vertical dig ability the Digger action provides. This new "
 "action is called Basher. "
 msgstr ""
+"Vergleichbar zum Digger, der bereits aus den vorherigen Levels bekannt ist, "
+"gibt es auch eine Fähigkeit, die es einem Pingu erlaubt horizontal zu "
+"graben, im Gegensatz zur Fähigkeit zum vertikalen Graben eines Digger. Diese "
+"neue Fähigkeit heißt Basher. "
 
 #: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:5
+#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus
 msgid "Sacrifice a few and save the rest"
-msgstr ""
+msgstr "Opfere einige und rette den Rest"
 
-#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:6
+#: data/levels/tutorial/bomber-tutorial2-grumbel.pingus
 msgid ""
 "Sometimes no other actions are available, so you have to bomb your way "
 "through the ground. The Pingus can do this by actually self- destructing. "
 "This will kill them, but it is sometimes necessary to sacrifice a few to "
 "save the rest. "
 msgstr ""
+"Manchmal, wenn kein anderer Weg existiert, musst Du dir deinen Weg durch den "
+"Boden sprengen. Ein Pingu kann dies tun, indem er sich selbst sprengt. Dies "
+"wird ihn töten, aber es ist gelegentlich notwendig einige zu opfern, um den "
+"Rest zu retten. "
 
 #: data/levels/tutorial/digger-tutorial2-grumbel.pingus:5
+#: data/levels/tutorial/digger-tutorial2-grumbel.pingus
 msgid "Learning to dig"
-msgstr ""
+msgstr "Lernen zu graben"
 
-#: data/levels/tutorial/digger-tutorial2-grumbel.pingus:6
+#: data/levels/tutorial/digger-tutorial2-grumbel.pingus
 msgid ""
 "This is your first mission. As always, it's pretty easy. All you have to do "
 "is to give a Pingu the command to dig a hole into the ground so that they "
 "can reach the exit. This can be accomplished simply by clicking on a Pingu. "
 msgstr ""
+"Dies ist Deine erste Mission. Wie immer, ist sie ziemlich einfach. Alles was "
+"Du tun musst, ist einem Pingu den Befehl zum Graben eines Lochs in den Boden "
+"zu erteilen, damit alle den Ausgang erreichen können. Dies kann einfach "
+"dadurch erreicht werden, auf einen Pingu zu klicken. "
 
-#: data/levels/tutorial/floater-tutorial-grumbel.pingus:5
-#, fuzzy
+#: data/levels/tutorial/floater-tutorial-grumbel.pingus
 msgid "Float or Die"
-msgstr "Floater"
+msgstr "Schwebe oder Stirb"
 
-#: data/levels/tutorial/floater-tutorial-grumbel.pingus:6
+#: data/levels/tutorial/floater-tutorial-grumbel.pingus
 msgid ""
 "Well done in mission one! Now let's start the next one. This time you will "
 "need to equip your Pingus with a little propeller, so that they can float to "
 "the ground smoothly. If Pingus fall too far, they will not be able to "
 "survive the fall, so keep your eyes open! "
 msgstr ""
+"Erste Mission erfolgreich abgeschlossen, nun lass uns mit der nächsten "
+"beginnen. Dieses Mal musst du deine Pingus mit einem kleinen Propellor "
+"versehen, so dass sie langsam zu Boden schweben können. Wenn ein Pingu zu "
+"tief fällt, wird er dies nicht überleben. Darum halte die Augen offen! "
 
 #: data/levels/tutorial/jumper-tutorial-grumbel.pingus:5
+#: data/levels/tutorial/jumper-tutorial-grumbel.pingus
 msgid "Jump for joy"
-msgstr ""
+msgstr "Springe aus Freude"
 
-#: data/levels/tutorial/jumper-tutorial-grumbel.pingus:6
+#: data/levels/tutorial/jumper-tutorial-grumbel.pingus
 msgid ""
 "Sometimes a Pingu needs to reach a platform that is far away, but not "
 "reachable by walking. That's when the Jumper comes in handy - it allows the "
 "Pingu to make a small jump and so enables him to reach the platform. "
 msgstr ""
+"Manchmal muss ein Pingu eine Platform erreichen, die weit weg ist und nicht "
+"durch laufen erreicht werden kann. Dann ist der Jumper hilfreich, er erlaubt "
+"es einem Pingu einen kleinen Sprung zu machen und ermöglicht es so, die "
+"Platform zu erreichen. "
 
 #: data/levels/tutorial/miner-tutorial2-grumbel.pingus:5
+#: data/levels/tutorial/miner-tutorial2-grumbel.pingus
 msgid "Miner's heaven"
-msgstr ""
+msgstr "Miner's Himmel"
 
-#: data/levels/tutorial/miner-tutorial2-grumbel.pingus:6
+#: data/levels/tutorial/miner-tutorial2-grumbel.pingus
 msgid ""
 "Another action hits the street - another digging action, this time a "
 "diagonal one. It allows a Pingu to dig diagonally through ground, thus "
 "creating a path for following Pingus. The action is called Miner. "
 msgstr ""
+"Und eine weitere Fähigkeit taucht auf, es ist wieder eine grabende "
+"Fähigkeit, dieses mal eine diagonale. Sie erlaubt es einem Pingu diagonal "
+"durch den Boden zu graben und damit einen Pfad für die folgenden Pingu zu "
+"erschaffen. Diese Fähigkeit heißt Miner. "
 
 #: data/levels/tutorial/placeholder.pingus:5
+#: data/levels/tutorial/placeholder.pingus
 msgid "--- Empty Placeholder Level ---"
 msgstr ""
 
 #: data/levels/tutorial/placeholder.pingus:6
+#: data/levels/tutorial/placeholder.pingus
 msgid "This Level is not playable and EMPTY!"
 msgstr ""
 
 #: data/levels/tutorial/snow10-grumbel.pingus:5
+#: data/levels/tutorial/snow10-grumbel.pingus
 msgid "Panic Island (float/bash)"
-msgstr ""
+msgstr "Insel der Panik (schwebe/grabe)"
 
-#: data/levels/tutorial/snow10-grumbel.pingus:6
+#: data/levels/tutorial/snow10-grumbel.pingus
 msgid ""
 "While the previous levels have not required much quick action from you, this "
 "one gets a bit trickier. The Pingus are coming out of two entrances in "
 "parallel and it is your job to coordinate the two groups wisely. "
 msgstr ""
+"Während die vorangegangen Level nicht viel schnelle Reaktionen von Dir "
+"gefordert haben, wird dieser etwas schwieriger. Die Pingus kommen aus zwei "
+"Eingängen gleichzeitig und es ist Deine Aufgabe beide Gruppen weise zu "
+"koordinieren. "
 
 #: data/levels/tutorial/snow11-grumbel.pingus:5
+#: data/levels/tutorial/snow11-grumbel.pingus
 msgid "Jump'n Bump... and Bash..."
-msgstr ""
+msgstr "Springe... und grabe..."
 
-#: data/levels/tutorial/snow11-grumbel.pingus:6
+#: data/levels/tutorial/snow11-grumbel.pingus
 msgid ""
 "It's panic time again. The Pingus will not come out very fast, but since "
 "they turn around when they hit walls you will soon have some trouble "
 "coordinating them all. Since you only need to save 5 it should be doable, "
 "but if all else fails use the pause-mode ('p') to get an overview again. "
 msgstr ""
+"Es ist wieder Zeit für Panik. Die Pingus kommen nicht sehr schnell heraus, "
+"aber da sie sich drehen wenn sie eine Wand erreichen, wirst Du bald Probleme "
+"bekommen, sie zu koordinieren. Da Du nur 5 retten musst, sollte es schaffbar "
+"sein, aber wenn alles andere versagt, nutze den Pause Modus ('p') um dir "
+"wieder einen Überblick zu verschaffen. "
 
-#: data/levels/tutorial/snow12-grumbel.pingus:5
+#: data/levels/tutorial/snow12-grumbel.pingus
 msgid "Two groups in parallel, coordinate wisely"
-msgstr ""
+msgstr "Zwei Gruppen gleichzeitig, koordiniere weise"
 
-#: data/levels/tutorial/snow12-grumbel.pingus:6
+#: data/levels/tutorial/snow12-grumbel.pingus
 msgid ""
 "You have two groups to coordinate this time. No need to panic, since this "
 "level gives you enough time to think your actions through. No more tips this "
 "time, but good luck! "
 msgstr ""
+"Diesmal hast Du zwei Gruppen zu koordinieren, aber keine Panik, denn dieses "
+"Level gibt Dir genug Zeit zum Überlegen. Keine weiteren Tipps dieses Mal, "
+"aber Viel Glück! "
 
-#: data/levels/tutorial/snow14-grumbel.pingus:5
+#: data/levels/tutorial/snow14-grumbel.pingus
 msgid "Block'a Rock"
-msgstr ""
+msgstr "Blockiere und sprenge"
 
-#: data/levels/tutorial/snow14-grumbel.pingus:6
+#: data/levels/tutorial/snow14-grumbel.pingus
 msgid ""
 "Once again it's time to combine the stuff you have learned in your previous "
 "levels. Blast your way free and make sure you also keep the rest of the "
 "Pingus under control. The Blocker action will be helpful. "
 msgstr ""
+"Wieder ist es an der Zeit die Dinge die Du bereits gelernt hast zu "
+"verbinden. Sprenge Dir den Weg frei und achte darauf das du auch die "
+"restlichen Pingu unter Kontrolle hälst. Der Blocker wird Dir helfen. "
 
 #: data/levels/tutorial/snow15-grumbel.pingus:5
+#: data/levels/tutorial/snow15-grumbel.pingus
 msgid "Climb, Climber,... Boom!"
-msgstr ""
+msgstr "Kletter, Climber... Boom!"
 
-#: data/levels/tutorial/snow15-grumbel.pingus:6
+#: data/levels/tutorial/snow15-grumbel.pingus
 msgid ""
 "As you might have already figured out from previous levels, you often have "
 "to combine different actions to get the job done. Due to the lack of a "
 "Digger action in this level the Bomber needs to jump in, but how can it "
 "reach the place to bomb? "
 msgstr ""
+"Wie Du wohl bereits in den vorherigen Levels bemerkt hast, musst du oftmals "
+"mehere Fähigkeiten kombinieren, um das Ziel zu erreichen. Da die Digger "
+"Fähigkeit fehlt, muss der Bomber einspringen, aber wie erreicht er den Platz "
+"zum sprengen? "
 
-#: data/levels/tutorial/snow16-grumbel.pingus:5
+#: data/levels/tutorial/snow16-grumbel.pingus
 msgid "Bridging gets more complicated..."
-msgstr ""
+msgstr "Brückenbauen wird schwieriger..."
 
-#: data/levels/tutorial/snow16-grumbel.pingus:6
+#: data/levels/tutorial/snow16-grumbel.pingus
 msgid ""
 "Once again you have to combine actions carefully and wisely. If you don't "
 "you could end up in the hole just before the exit, so think about how to "
 "avoid that. "
 msgstr ""
+"Und wieder musst Du die Fähigkeiten weise und vorsichtig kombinieren, ohne "
+"das Du in dem Loch kurz vor dem Ausgang endest. Also denke nach, wie du dies "
+"verhindern kannst. "
 
-#: data/levels/tutorial/snow17-grumbel.pingus:5
+#: data/levels/tutorial/snow17-grumbel.pingus
 msgid "If too high, your Pingu will die..."
-msgstr ""
+msgstr "Zu hoch und dein Pingu wird sterben..."
 
-#: data/levels/tutorial/snow17-grumbel.pingus:6
+#: data/levels/tutorial/snow17-grumbel.pingus
 msgid ""
 "Teamwork is the way to the exit this time. You don't have enough Floaters to "
 "reach the exit, so just send a few and let them prepare the path for the "
 "rest. "
 msgstr ""
+"Teamwork ist der Weg zum Ausgang dieses Mal. Du hast nicht genug Floater, um "
+"den Ausgang zu erreichen, also schicke ein paar und lass sie den Weg für den "
+"Rest vorbereiten. "
 
-#: data/levels/tutorial/snow19-grumbel.pingus:5
+#: data/levels/tutorial/snow19-grumbel.pingus
 msgid "Learn to use the bridge"
-msgstr ""
+msgstr "Lerne Brücken zu bauen"
 
-#: data/levels/tutorial/snow19-grumbel.pingus:6
+#: data/levels/tutorial/snow19-grumbel.pingus
 msgid ""
 "If no Jumper is at hand and a large hole needs to be passed, a bridge can be "
 "pretty helpful. It takes some time to build, but unlike the jumper action it "
 "allows following Pingus to reach the other end too. "
 msgstr ""
+"Wenn kein Jumper da ist und ein grosses Loch passiert werden muss, kann eine "
+"Brücke sehr nützlich sein. Es dauert einige Zeit sie zu bauen, aber sie "
+"erlaubt den nachfolgenden Pingus auch die andere Seite zu erreichen, was die "
+"Jumper Fähigkeit nicht tat. "
 
-#: data/levels/tutorial/snow20-grumbel.pingus:5
+#: data/levels/tutorial/snow20-grumbel.pingus
 msgid "Three solutions, it's up to you"
-msgstr ""
+msgstr "Drei Lösungen, es liegt bei Dir"
 
-#: data/levels/tutorial/snow20-grumbel.pingus:6
+#: data/levels/tutorial/snow20-grumbel.pingus
 msgid ""
 "Now that you've learned all the actions, it's time for some more practice. "
 "This level presents you with at least three different ways to solve it. It's "
 "up to you which one you pick. "
 msgstr ""
+"Nun da du alle Fähigkeiten kennst, ist es an der Zeit für etwas mehr Übung. "
+"Dieser Level bietet mindestens drei verschiedene Lösungswege, welchen Du "
+"nimmst ist deine Wahl. "
 
-#: data/levels/tutorial/snow21-grumbel.pingus:5
+#: data/levels/tutorial/snow21-grumbel.pingus
 msgid "Climb, Climber, climb... and build a bridge"
-msgstr ""
+msgstr "Kletter, Climber, kletter.. und bau eine Brücke"
 
-#: data/levels/tutorial/snow21-grumbel.pingus:6
+#: data/levels/tutorial/snow21-grumbel.pingus
 msgid ""
 "Once again you get access to a new action. The Climber action allows a Pingu "
 "to climb up straight walls, thus allowing him to reach stuff that might be "
 "too high to reach by other means. "
 msgstr ""
+"Wieder erhälst du Zugriff auf eine neue Fähigkeit. Die Climber Fähigkeit "
+"ermöglicht es einem Pingu senkrechte Wände zu erklettern und dadurch Dinge "
+"zu erreichen die sonst unmöglich wären. "
 
-#: data/levels/tutorial/snow22-grumbel.pingus:5
+#: data/levels/tutorial/snow22-grumbel.pingus
 msgid "Entrance high, Exit low"
-msgstr ""
+msgstr "Eingang hoch, Ausgang tief"
 
-#: data/levels/tutorial/snow22-grumbel.pingus:6
+#: data/levels/tutorial/snow22-grumbel.pingus
 msgid ""
 "If you don't have enough floaters to bring all the Pingus down to the exit - "
 "you have to find other ways to guide them down. You should have learned all "
 "the stuff you need for this level in previous levels, so this shouldn't be "
 "too much of a problem for you. "
 msgstr ""
+"Wenn du nicht genug Float hast, um alle Pingus zum Ausgang hinunter zu "
+"bringen, dann musst Du andere Wege finden sie nach unten zu führen. Alles "
+"was Du in diesem Level brauchst, solltest du bereits in vorangegangen Levels "
+"gelernt haben. Von daher sollte dies kein sonderliches Problem darstellen. "
 
-#: data/levels/tutorial/snow7-grumbel.pingus:5
+#: data/levels/tutorial/snow7-grumbel.pingus
 msgid "One must prepare, the rest must follow"
-msgstr ""
+msgstr "Einer muss vorbereiten, der Rest folgen"
 
-#: data/levels/tutorial/snow7-grumbel.pingus:6
+#: data/levels/tutorial/snow7-grumbel.pingus
 msgid ""
 "Sometimes there are situations where you don't have a Blocker at hand to "
 "coordinate your Pingus. You'll have to find other ways to keep them under "
 "control while a single one prepares the path for the rest. "
 msgstr ""
+"Manchmal kommt es vor das Du keinen Blocker zur Hand hast um deine Pingus zu "
+"koordinieren. Darum musst du andere Wege finden sie unter Kontrolle zu "
+"halten, während ein einzelner den Weg für die anderen vorbereitet. "
 
-#: data/levels/tutorial/snow8-grumbel.pingus:5
+#: data/levels/tutorial/snow8-grumbel.pingus
 msgid "Dig and float, but just don't fall and smash"
-msgstr ""
+msgstr "Graben und schweben, nicht fallen und sterben"
 
-#: data/levels/tutorial/snow8-grumbel.pingus:6
+#: data/levels/tutorial/snow8-grumbel.pingus
 msgid ""
 "Unlike the first two levels, you have two actions available in this level. "
 "Your job is again simple: select an action at the panel on the left and "
 "apply it to the Pingus so that they will be able to reach the exit. Make "
 "sure that not too many of them die. "
 msgstr ""
+"Im Gegensatz zu den beiden ersten Levels, hast du hier zwei Fähigkeiten zur "
+"verfügung. Deine Aufgabe ist wieder einfach, wähle eine Fähigkeit in der "
+"Liste links und wende sie auf die Pingus an, damit sie den Ausgang erreichen "
+"können. Stelle sicher das nicht zu viele von ihnen sterben. "
 
-#: data/levels/tutorial/snow9-grumbel.pingus:5
+#: data/levels/tutorial/snow9-grumbel.pingus
 msgid "Dig, bash and other problems"
-msgstr ""
+msgstr "Graben und andere Probleme"
 
-#: data/levels/tutorial/snow9-grumbel.pingus:6
+#: data/levels/tutorial/snow9-grumbel.pingus
 msgid ""
 "The more levels you master, the more difficult they will get, but don't "
 "panic, as this one is still pretty easy. Just use the stuff that you've "
@@ -2025,14 +2108,23 @@ msgid ""
 "think you've reached a situation from which you can no longer solve the "
 "level, double click the armageddon button at the lower right. "
 msgstr ""
+"Je weiter du kommst, desto schwieriger wird es, aber keine Panik, dieser "
+"Level ist noch immer recht einfach. Benutze einfach das Wissen aus den "
+"vorherigen Leveln und es sollte kaum Probleme geben. Wenn du glaubst den "
+"Level nicht mehr lösen zu können, klicke doppelt auf den Armageddon Knopf am "
+"unteren, rechten Rand. "
 
-#: data/levels/tutorial/solid-tutorial-grumbel.pingus:6
+#: data/levels/tutorial/solid-tutorial-grumbel.pingus
 msgid ""
 "As you have learned in earlier levels your Pingus can dig through basically "
 "any terrain, but there is one material which they can't penetrate: steel. "
 "These regions are marked dark grey on the level map and cannot be destroyed, "
 "so you must find a way around them. "
 msgstr ""
+"Wie du in den früheren Levels gelernt hast, kann ein Pingu durch fast alles "
+"graben, aber es gibt etwas, dass sie nicht durchdringen können und zwar "
+"Stahl Objekte. Diese Bereiche sind auf der Karte dunkelgrau markiert und "
+"können nicht zerstört werden, also finde einen Weg, sie zu umgehen. "
 
 #: data/levels/volcano/volcano1-grumbel.pingus:5
 #, fuzzy
