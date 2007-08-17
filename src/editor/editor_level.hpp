@@ -1,4 +1,4 @@
-//  $Id: editor_level.hxx,v 1.00 2005/11/11 23:41:12 Jave27 Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmx.de>

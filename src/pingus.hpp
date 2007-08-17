@@ -1,4 +1,4 @@
-//  $Id: pingus.hxx,v 1.8 2004/03/29 16:00:54 torangan Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>

@@ -1,4 +1,4 @@
-//  $Id: credits.hxx,v 1.16 2005/12/8 19:28:54 Jave27 Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmx.de>

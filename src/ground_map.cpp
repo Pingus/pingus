@@ -1,4 +1,4 @@
-//  $Id: spot_map.cxx,v 1.31 2003/10/22 11:11:22 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>

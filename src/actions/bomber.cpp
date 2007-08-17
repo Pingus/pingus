@@ -1,4 +1,4 @@
-//  $Id: bomber.cxx,v 1.37 2003/10/22 11:11:23 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>

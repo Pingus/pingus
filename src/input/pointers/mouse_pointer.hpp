@@ -1,4 +1,4 @@
-//  $Id: mouse_pointer.hxx,v 1.7 2003/12/13 16:23:40 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>

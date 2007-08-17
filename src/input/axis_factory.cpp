@@ -1,4 +1,4 @@
-//  $Id: axis_factory.cxx,v 1.16 2003/10/20 13:33:44 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>

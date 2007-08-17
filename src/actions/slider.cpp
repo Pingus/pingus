@@ -1,4 +1,4 @@
-//  $Id: slider.cxx,v 1.20 2004/03/27 14:19:08 torangan Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>

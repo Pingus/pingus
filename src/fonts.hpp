@@ -1,4 +1,4 @@
-//  $Id: fonts.hxx,v 1.7 2003/10/18 23:17:27 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>

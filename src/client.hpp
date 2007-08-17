@@ -1,4 +1,4 @@
-//  $Id: client.hxx,v 1.30 2003/10/21 11:01:52 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>

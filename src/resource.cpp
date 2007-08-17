@@ -1,4 +1,4 @@
-//  $Id: resource.cxx,v 1.36 2003/12/13 16:23:39 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>

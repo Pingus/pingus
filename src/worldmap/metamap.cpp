@@ -1,4 +1,4 @@
-//  $Id: metamap.cxx,v 1.32 2006/1/19 00:30:04 Jave27 Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2006 Ingo Ruhnke <grumbel@gmx.de>

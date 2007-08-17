@@ -1,4 +1,4 @@
-//  $Id: lexer.h 2379 2005-05-01 19:02:16Z matzebraun $
+//  $Id$
 //
 //  Copyright (C) 2004 Matthias Braun <matze@braunis.de>
 //  code in this file based on lispreader from Mark Probst

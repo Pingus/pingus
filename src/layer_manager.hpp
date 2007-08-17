@@ -1,4 +1,4 @@
-//  $Id: layer_manager.hxx,v 1.13 2003/12/14 00:30:04 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>

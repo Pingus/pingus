@@ -1,4 +1,4 @@
-//  $Id: sound_impl.hxx,v 1.0 2005/11/01 Jave27 Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>

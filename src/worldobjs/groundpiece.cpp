@@ -1,4 +1,4 @@
-//  $Id: groundpiece.cxx,v 1.5 2003/10/20 13:11:09 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>

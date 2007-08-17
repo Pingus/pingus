@@ -1,4 +1,4 @@
-//  $Id: demo_session.cxx,v 1.12 2003/10/21 21:37:06 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>

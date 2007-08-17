@@ -1,4 +1,4 @@
-//  $Id: smallmap.hxx,v 1.21 2003/10/21 21:37:06 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>

@@ -1,4 +1,4 @@
-//  $Id: credits.cxx,v 1.42 2003/10/31 18:54:40 torangan Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>

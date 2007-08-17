@@ -1,4 +1,4 @@
-//  $Id: world_dot.hxx,v 1.11 2006/1/19 19:28:55 Jave27 Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2006 Ingo Ruhnke <grumbel@gmx.de>

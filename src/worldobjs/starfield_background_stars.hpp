@@ -1,4 +1,4 @@
-//  $Id: starfield_background_stars.hxx,v 1.9 2003/10/20 13:11:09 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>

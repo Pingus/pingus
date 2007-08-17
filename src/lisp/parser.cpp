@@ -1,4 +1,4 @@
-//  $Id: parser.cpp 2575 2005-06-07 15:59:27Z matzebraun $
+//  $Id$
 //
 //  TuxKart - a fun racing game with go-kart
 //  Copyright (C) 2004 Matthias Braun <matze@braunis.de>

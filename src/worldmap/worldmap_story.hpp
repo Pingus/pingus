@@ -1,4 +1,4 @@
-//  $Id: worldmap_story.hxx,v 1.32 2005/12/06 00:30:04 Jave27 Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmx.de>

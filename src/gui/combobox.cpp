@@ -1,4 +1,4 @@
-//  $Id: combobox.cxx,v 1.16 2005/11/10 21:37:06 Jave27 Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmx.de>

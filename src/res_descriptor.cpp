@@ -1,4 +1,4 @@
-//  $Id: res_descriptor.cxx,v 1.18 2003/10/20 19:28:54 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>

@@ -1,4 +1,4 @@
-//  $Id: buffer_graphic_context.hxx,v 1.6 2004/04/02 18:13:00 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>

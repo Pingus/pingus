@@ -1,4 +1,4 @@
-//  $Id: button_factory.hxx,v 1.10 2003/10/20 19:28:55 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>

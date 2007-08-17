@@ -1,4 +1,4 @@
-//  $Id: exit.cxx,v 1.11 2003/10/22 12:35:47 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>

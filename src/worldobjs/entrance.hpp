@@ -1,4 +1,4 @@
-//  $Id: entrance.hxx,v 1.7 2003/10/20 13:11:09 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>

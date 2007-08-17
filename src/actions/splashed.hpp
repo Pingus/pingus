@@ -1,4 +1,4 @@
-//  $Id: splashed.hxx,v 1.16 2003/10/18 23:17:27 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>

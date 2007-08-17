@@ -1,4 +1,4 @@
-//  $Id: lisp.h 2419 2005-05-06 19:08:24Z matzebraun $
+//  $Id$
 //
 //  Copyright (C) 2004 Matthias Braun <matze@braunis.de>
 //  code in this file based on lispreader from Mark Probst

@@ -1,4 +1,4 @@
-//  $Id: story_screen.cxx,v 1.25 2003/10/22 11:11:22 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>

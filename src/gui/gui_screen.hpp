@@ -1,4 +1,4 @@
-//  $Id: gui_screen.hxx,v 1.3 2003/10/18 23:17:28 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>

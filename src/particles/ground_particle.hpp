@@ -1,4 +1,4 @@
-//  $Id: ground_particle.hxx,v 1.6 2003/04/19 10:23:19 torangan Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>

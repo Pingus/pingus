@@ -1,4 +1,4 @@
-//  $Id: result.hxx,v 1.9 2003/10/21 21:37:06 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>

@@ -1,4 +1,4 @@
-//  $Id: input_box.cxx,v 1.16 2006/1/21 21:37:06 Jave27 Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2006 Ingo Ruhnke <grumbel@gmx.de>

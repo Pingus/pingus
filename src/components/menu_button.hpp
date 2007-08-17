@@ -1,4 +1,4 @@
-//  $Id: menu_button.hxx,v 1.8 2003/12/14 00:30:04 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>

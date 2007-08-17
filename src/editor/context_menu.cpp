@@ -1,4 +1,4 @@
-//  $Id: context_menu.cxx,v 1.00 2005/12/29 23:41:12 Jave27 Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmx.de>

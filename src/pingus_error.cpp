@@ -1,4 +1,4 @@
-//  $Id: pingus_error.cxx,v 1.12 2003/12/13 11:21:23 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>

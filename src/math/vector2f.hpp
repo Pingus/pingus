@@ -1,4 +1,4 @@
-//  $Id: vector.hpp 2642 2005-06-26 13:38:53Z matzebraun $
+//  $Id$
 //
 //  SuperTux -  A Jump'n Run
 //  Copyright (C) 2004 Matthias Braun <matze@braunis.de>

@@ -1,4 +1,4 @@
-//  $Id: file_dialog.cxx,v 1.00 2005/11/18 00:30:04 Jave27 Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmx.de>

@@ -1,4 +1,4 @@
-//  $Id: timer.cxx,v 1.6 2003/10/20 13:33:43 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>

@@ -1,4 +1,4 @@
-//  $Id: checkbox.hxx,v 1.00 2006/1/15 23:41:12 Jave27 Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2006 Ingo Ruhnke <grumbel@gmx.de>

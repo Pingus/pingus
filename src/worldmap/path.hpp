@@ -1,4 +1,4 @@
-//  $Id: path.hxx,v 1.5 2003/10/19 12:25:47 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>

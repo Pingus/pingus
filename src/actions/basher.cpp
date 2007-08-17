@@ -1,4 +1,4 @@
-//  $Id: basher.cxx,v 1.33 2003/12/13 11:21:24 grumbel Exp $
+//  $Id$
 //
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
 //

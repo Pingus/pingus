@@ -1,4 +1,4 @@
-//  $Id: smoke_particle_holder.cxx,v 1.6 2003/10/19 12:25:47 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>

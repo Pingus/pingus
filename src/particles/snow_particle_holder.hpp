@@ -1,4 +1,4 @@
-//  $Id: snow_particle_holder.hxx,v 1.5 2003/10/18 23:17:28 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>

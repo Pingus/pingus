@@ -1,4 +1,4 @@
-//  $Id: switch_door.cxx,v 1.28 2003/10/21 11:01:52 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>

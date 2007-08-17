@@ -1,4 +1,4 @@
-//  $Id: explosive_particle.cxx,v 1.6 2003/04/19 10:23:19 torangan Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>

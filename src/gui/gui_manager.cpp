@@ -1,4 +1,4 @@
-//  $Id: gui_manager.cxx,v 1.22 2003/10/18 23:17:28 grumbel Exp $
+//  $Id$
 //
 //  Pingus - A free Lemmings clone
 //  Copyright (C) 2000 Ingo Ruhnke <grumbel@gmx.de>
