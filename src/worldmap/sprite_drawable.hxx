@@ -46,7 +46,7 @@ public:
 
 private:
   SpriteDrawable (const SpriteDrawable&);
-  SpriteDrawable operator= (const SpriteDrawable&);
+  WorldMapNS::SpriteDrawable operator= (const SpriteDrawable&);
 };
 
 } // namespace WorldMapNS

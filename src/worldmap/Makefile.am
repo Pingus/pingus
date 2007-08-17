@@ -42,8 +42,6 @@ path_graph.hxx  \
 pathfinder.hxx  \
 pingus.cxx   \
 pingus.hxx   \
-sprite_drawable.cxx \
-sprite_drawable.hxx \
 surface_drawable.cxx \
 surface_drawable.hxx \
 worldmap.cxx \

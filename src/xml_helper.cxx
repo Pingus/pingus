@@ -466,12 +466,12 @@ XMLhelper::xmlChar2string(const xmlChar* in)
   //std::cout << "OUT: in_len: " << in_len << " out_len: " << out_len << std::endl;
   int ret = UTF8Toisolat1(out, &out_len, in,  &in_len);
 
-  if (ret != 0)
+  if (ret < 0)
     {
       std::cout << "Error: XMLhelper: Encoding failed: ret: " << ret
                 << " in: " << in_len
                 << " out: " << out_len
-                << " str: " << reinterpret_cast<const char*>(in)
+                << " str: '" << reinterpret_cast<const char*>(in) << "'"
                 << std::endl;
       delete[] out;
       return reinterpret_cast<const char*>(in);

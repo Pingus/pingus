@@ -20,7 +20,7 @@
 #include <iostream>
 #include "../xml_helper.hxx"
 #include "surface_drawable.hxx"
-#include "sprite_drawable.hxx"
+//#include "sprite_drawable.hxx"
 #include "drawable_factory.hxx"
 
 namespace WorldMapNS {
