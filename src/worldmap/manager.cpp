@@ -104,7 +104,7 @@ void
 WorldMapManagerCreditsButton::draw (DrawingContext& gc)
 {
   SurfaceButton::draw(gc);
-  gc.print_left(Fonts::chalk_small, (float)(Display::get_width() - 150 + 15), 2, _("Show Ending?"));
+  gc.print_center(Fonts::chalk_small, (float)(Display::get_width() - 59 - 24), 2, _("Show Ending?"));
 }
 
 void
@@ -135,7 +135,7 @@ void
 WorldMapManagerStoryButton::draw (DrawingContext& gc)
 {
   SurfaceButton::draw(gc);
-  gc.print_left(Fonts::chalk_small, 18, 2, _("Show Story?"));
+  gc.print_center(Fonts::chalk_small, 59, 2, _("Show Story?"));
 }
 
 void
@@ -164,7 +164,7 @@ void
 WorldMapManagerCloseButton::draw (DrawingContext& gc)
 {
   SurfaceButton::draw(gc);
-  gc.print_left(Fonts::chalk_small, 24, (float)Display::get_height() - 25, _("Leave?"));
+  gc.print_center(Fonts::chalk_small, 44, (float)Display::get_height() - 25, _("Leave?"));
 }
 
 void
@@ -201,8 +201,8 @@ WorldMapManagerEnterButton::draw (DrawingContext& gc)
   else
     {
       SurfaceButton::draw(gc);
-      gc.print_right(Fonts::chalk_small,
-                    (float)Display::get_width() - 40,
+      gc.print_center(Fonts::chalk_small,
+                    (float)Display::get_width() - 43 - 22,
                     (float)Display::get_height() - 25,
                     _("Enter?"));
     }
