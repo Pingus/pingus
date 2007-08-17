@@ -166,7 +166,7 @@ public:
 
   void draw(Origin origin, int x, int y_, const std::string& text, SDL_Surface* target)
   {
-    float y = y_;
+    float y = float(y_);
     // FIXME: only origins top_left, top_right and top_center to work right now
     LineIterator it(text);
     while(it.next()) {
@@ -179,8 +179,8 @@ public:
   {
     Vector2i offset = calc_origin(origin, get_size(text));
 
-    float dstx = x - offset.x;
-    float dsty = y - offset.y;
+    float dstx = float(x - offset.x);
+    float dsty = float(y - offset.y);
 
     if (!target) target = Display::get_screen();
 
