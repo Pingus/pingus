@@ -42,6 +42,12 @@ POFileReader::POFileReader(std::istream& in, Dictionary& dict_)
   state = WANT_MSGID;
   line_num = 0;
   tokenize_po(in);
+
+  if (dict.get_charset().empty())
+    {
+      std::cout << "POFileReader: Error: charset not declared in .po file, fallback to ISO-8859-1" << std::endl;
+      dict.set_charset("ISO-8859-1");
+    }
 }
 
 void
@@ -64,22 +70,10 @@ POFileReader::parse_header(const std::string& header)
   for(Lines::iterator i = lines.begin(); i != lines.end(); ++i)
     {
       if (has_prefix(*i, "Content-Type: text/plain; charset=")) {
-        from_charset = i->substr(strlen("Content-Type: text/plain; charset="));
+        dict.set_charset(i->substr(strlen("Content-Type: text/plain; charset=")));
+        break;
       }
-    }
-
-  if (from_charset.empty() || from_charset == "CHARSET")
-    {
-      std::cerr << "Error: Charset not specified for .po, fallback to ISO-8859-1" << std::endl;
-      from_charset = "ISO-8859-1";
-    }
-
-  to_charset = dict.get_charset();
-  if (to_charset.empty())
-    { // No charset requested from the dict, so we use the one from the .po 
-      to_charset = from_charset;
-      dict.set_charset(from_charset);
-    }
+    }  
 }
 
 void
@@ -126,8 +120,7 @@ POFileReader::add_token(const Token& token)
             }
           else
             {
-              dict.add_translation(current_msgid, 
-                                   IConv::convert(token.content, from_charset, to_charset));
+              dict.add_translation(current_msgid, token.content);
             }
           state = WANT_MSGID;
         } 
@@ -148,7 +141,7 @@ POFileReader::add_token(const Token& token)
             } 
           else 
             {
-              msgstr_plural[num] = IConv::convert(token.content, from_charset, to_charset);
+              msgstr_plural[num] = token.content;
             }
         }
       else 

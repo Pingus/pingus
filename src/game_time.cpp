@@ -61,15 +61,15 @@ GameTime::reset(void)
 std::string
 GameTime::ticks_to_realtime_string(int ticks)
 {
-  const int time_str_size = 20;
-  char time_str[time_str_size];
-
   if (ticks == -1)
     {
-      snprintf(time_str, time_str_size, _("unlimited"));
+      return _("unlimited");
     }
   else
     {
+      const int time_str_size = 20;
+      char time_str[time_str_size];
+
       int total_seconds = ticks * game_speed / 1000;
       int seconds       = total_seconds % 60;
       int minutes       = total_seconds / 60;
@@ -80,8 +80,9 @@ GameTime::ticks_to_realtime_string(int ticks)
         seconds = 0;
 
       snprintf(time_str, time_str_size, "%2d:%02d", minutes, seconds);
+
+      return time_str;
     }
-  return time_str;
 }
 
 

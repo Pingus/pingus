@@ -42,6 +42,8 @@ Roadmap for Pingus 0.8.0
 - GroundMap tiles are currently RGBA, while in reality they are just
   RGB with a colorkey, room for optimization
 
+- implement xschema-like language to check for syntax errors in the level files
+
 Roadmap for Pingus 0.7.0
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -57,8 +59,6 @@ Important:
 - update INSTALL.* file
 
 - remove all the remaining unneeded debuging std::cout's
-
-- Latin-2 and Latin-9 aren't not working, see language tr, cs, sr
 
 - src/components/pingus_counter.hpp font should be fixed-width/monospace
 

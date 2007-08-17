@@ -40,7 +40,8 @@ static bool has_suffix(const std::string& lhs, const std::string rhs)
 }
 
 DictionaryManager::DictionaryManager()
-  : current_dict(&empty_dict)
+  : empty_dict(lang_en, "ISO-8859-1"),
+    current_dict(&empty_dict)
 {
   parseLocaleAliases();
   // setup language from environment vars
@@ -101,12 +102,9 @@ DictionaryManager::get_dictionary(const std::string& spec)
     }
   else // Dictionary for languages lang isn't loaded, so we load it
     {
-      //std::cout << "get_dictionary: " << lang << std::endl;
       Dictionary& dict = dictionaries[lang];
 
       dict.set_language(get_language_def(lang));
-      if(charset != "")
-        dict.set_charset(charset);
 
       for (SearchPath::iterator p = search_path.begin(); p != search_path.end(); ++p)
         {
@@ -176,14 +174,6 @@ DictionaryManager::set_language(const std::string& lang)
 {
   language = get_language_from_spec(lang);
   current_dict = & (get_dictionary(language));
-}
-
-void
-DictionaryManager::set_charset(const std::string& charset)
-{
-  dictionaries.clear(); // changing charset invalidates cache
-  this->charset = charset;
-  set_language(language);
 }
 
 void

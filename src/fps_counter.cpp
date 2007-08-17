@@ -41,7 +41,7 @@ FPSCounter::init()
 {
   font = Fonts::pingus_small;
   start_time = SDL_GetTicks();
-  strcat(fps_string, _("unknown"));
+  strcat(fps_string, "");
   fps_count = 0;
 }
 

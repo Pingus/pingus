@@ -50,9 +50,7 @@ public:
   /** Return the charset used for this dictionary */
   std::string get_charset() const;
 
-  /** Set a charset for this dictionary, this will NOT convert stuff,
-      it is for information only, you have to convert stuff yourself
-      when you add it with \a add_translation() */
+  /** Set a charset for this dictionary, this does not convert anything */
   void set_charset(const std::string& charset);
 
   /** Set the language that is used for this dictionary, this is

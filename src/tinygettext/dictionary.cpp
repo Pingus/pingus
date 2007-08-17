@@ -27,20 +27,20 @@ Dictionary::Dictionary(const LanguageDef& language_, const std::string& charset_
 }
 
 Dictionary::Dictionary()
-  : language(lang_en)
+  : language(lang_en), charset("ISO-8859-1")
 {
-}
-
-std::string
-Dictionary::get_charset() const
-{
-  return charset;
 }
 
 void
 Dictionary::set_charset(const std::string& charset_)
 {
   charset = charset_;
+}
+
+std::string
+Dictionary::get_charset() const
+{
+  return charset;
 }
 
 void

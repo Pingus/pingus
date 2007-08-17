@@ -32,6 +32,7 @@
 #include <physfs.h>
 #include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
+#include "string_util.hpp"
 #include "sexpr_file_reader.hpp"
 
 #include "SDL.h"
@@ -44,7 +45,7 @@
 //#include <ClanLib/gui.h>
 
 #include "gettext.h"
-
+#include "tinygettext/dictionary_manager.hpp"
 #include "command_line.hpp"
 
 #include "gui/screen_manager.hpp"
@@ -89,6 +90,7 @@
 #pragma warning( disable : 4996 ) 
 #endif
 
+extern TinyGetText::DictionaryManager dictionary_manager;
 
 void
 signal_handler(int signo)
@@ -97,30 +99,30 @@ signal_handler(int signo)
     {
     case SIGSEGV:
       puts("\n,------------------------------------------------------------------------");
-      puts(_("| segfault_handler: caught a SIGSEGV."));
-      puts  ("|");
-      puts(_("| Woops, Pingus just crashed, congratulations you've found a bug."));
-      puts(_("| Please write a little bug report to <grumbel@gmx.de>, include information"));
-      puts(_("| where exacly the SIGSEGV occurred and how to reproduce it."));
-      puts(_("| Also try to include a backtrace, you can get it by doing:"));
-      puts  ("|");
-      puts  ("| $ gdb pingus core");
-      puts  ("| (gdb) bt");
-      puts  ("| ...");
-      puts  ("|");
-      puts(_("| If that doesn't work, try this:"));
-      puts  ("|");
-      puts  ("| $ gdb pingus");
-      puts  ("| (gdb) r");
-      puts(_("| [play until it crashes again]"));
-      puts  ("| ...");
-      puts  ("|");
-      puts  ("'------------------------------------------------------------------------\n");
+      puts("| segfault_handler: caught a SIGSEGV.");
+      puts("|");
+      puts("| Woops, Pingus just crashed, congratulations you've found a bug.");
+      puts("| Please write a little bug report to <grumbel@gmx.de>, include information");
+      puts("| where exacly the SIGSEGV occurred and how to reproduce it.");
+      puts("| Also try to include a backtrace, you can get it by doing:");
+      puts("|");
+      puts("| $ gdb pingus core");
+      puts("| (gdb) bt");
+      puts("| ...");
+      puts("|");
+      puts("| If that doesn't work, try this:");
+      puts("|");
+      puts("| $ gdb pingus");
+      puts("| (gdb) r");
+      puts("| [play until it crashes again]");
+      puts("| ...");
+      puts("|");
+      puts("'------------------------------------------------------------------------\n");
       break;
 
     case SIGINT:
       puts("\n,------------------------------------------------------------------------");
-      puts (_("| Warning: Pingus recieved a SIGINT, exiting now."));
+      puts("| Warning: Pingus recieved a SIGINT, exiting now.");
       puts("`------------------------------------------------------------------------\n");
       break;
 
@@ -243,7 +245,7 @@ PingusMain::check_args(int argc, char** argv)
                   _("Enable software cursor"));
   argp.add_option(342, "no-cfg-file", "",
                   _("Don't read ~/.pingus/config"));
-  argp.add_option(347, "config-file", "", _("FILE"), 
+  argp.add_option(347, "config-file", _("FILE"),
                   _("Read config from FILE (default: ~/.pingus/config) reduce CPU usage, "
                     "might speed up the game on slower machines"));
   argp.add_option(360, "controller", "FILE",
@@ -632,24 +634,6 @@ PingusMain::init_path_finder()
   // dictionary_manager.set_language("de"); 
   dictionary_manager.add_directory(path_manager.complete("po/"));
 
-  std::string language = dictionary_manager.get_dictionary().get_language().code;
-
-  if(language == "cs" || language == "sr")
-    {
-      dictionary_manager.set_charset("ISO-8859-2");
-      Fonts::encoding = "iso-8859-2";
-    }
-  else if(language == "tr")
-    {
-      dictionary_manager.set_charset("ISO-8859-9");
-      Fonts::encoding = "iso-8859-9";
-    }
-  else
-    {
-      dictionary_manager.set_charset("ISO-8859-1");
-      Fonts::encoding = "iso-8859-1";
-    }
-
   if (maintainer_mode)
     std::cout << "BasePath: " << path_manager.get_base_path () << std::endl;
 }
@@ -667,24 +651,27 @@ PingusMain::print_greeting_message()
     std::cout.put('=');
   std::cout << std::endl;
 
-  std::cout << _("language:                ") << dictionary_manager.get_dictionary().get_language().name << std::endl;
+  std::cout << "language:                " << dictionary_manager.get_dictionary().get_language().name << std::endl;
+
+  Fonts::encoding = StringUtil::to_lower(dictionary_manager.get_dictionary().get_charset());
+  std::cout << "font encoding:           " << Fonts::encoding << std::endl;
 
   if (sound_enabled)
-    std::cout << _("sound support:           enabled") << std::endl;
+    std::cout << "sound support:           enabled" << std::endl;
   else
-    std::cout << _("sound support:          disabled") << std::endl;
+    std::cout << "sound support:          disabled" << std::endl;
 
   if (music_enabled)
-    std::cout << _("music support:           enabled") << std::endl;
+    std::cout << "music support:           enabled" << std::endl;
   else
-    std::cout << _("music support:          disabled") << std::endl;
+    std::cout << "music support:          disabled" << std::endl;
 
-  std::cout <<   _("resolution:              ") << screen_width << "x" << screen_height << std::endl;
-  std::cout << _("fullscreen:              ")
-            << (fullscreen_enabled ? _(" enabled") : _("disabled"))
+  std::cout << "resolution:              " << screen_width << "x" << screen_height << std::endl;
+  std::cout << "fullscreen:              "
+            << (fullscreen_enabled ? " enabled" : "disabled")
             << std::endl;
-  //std::cout << _("refresh rate:            ") << refresh_rate << std::endl;
-  std::cout << _("using OpenGL:            ") << use_opengl << std::endl;
+  //std::cout << "refresh rate:            " << refresh_rate << std::endl;
+  std::cout << "using OpenGL:            " << use_opengl << std::endl;
 
   std::cout << std::endl;
 }

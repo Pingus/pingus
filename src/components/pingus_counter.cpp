@@ -46,7 +46,7 @@ PingusCounter::draw(DrawingContext& gc)
 
   World* world = server->get_world();
 
-  snprintf(str, 128, _("Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d"),
+  snprintf(str, 128, _("Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d").c_str(),
 	   world->get_pingus()->get_number_of_released(),
 	   world->get_pingus()->get_number_of_allowed(),
 	   world->get_pingus()->get_number_of_alive(),

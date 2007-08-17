@@ -17,8 +17,18 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "tinygettext/dictionary_manager.hpp"
+#include "tinygettext/dictionary.hpp"
 #include "gettext.h"
 
 TinyGetText::DictionaryManager dictionary_manager;
+
+std::string _(const std::string& msg) {
+  return dictionary_manager.get_dictionary().translate(msg);
+}
+
+std::string N_(const std::string& msg, const std::string& msg_pl, int num) {
+  return dictionary_manager.get_dictionary().translate(msg, msg_pl, num);
+}
 
 /* EOF */

@@ -37,9 +37,6 @@ private:
 
   Dictionary& dict;
 
-  std::string from_charset;
-  std::string to_charset;
-
   std::string current_msgid;
   std::string current_msgid_plural;
   std::map<int, std::string> msgstr_plural;

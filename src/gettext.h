@@ -20,12 +20,9 @@
 #ifndef HEADER_GETTEXT_HXX
 #define HEADER_GETTEXT_HXX
 
-#include "tinygettext/dictionary_manager.hpp"
-#include "tinygettext/dictionary.hpp"
+#include <string>
 
-extern TinyGetText::DictionaryManager dictionary_manager;
-
-#define _(String)        dictionary_manager.get_dictionary().translate(String).c_str()
-#define N_(id, id2, num) dictionary_manager.get_dictionary().translate(id, di2, num).c_str()
+std::string _(const std::string& msg);
+std::string _(const std::string& msg, const std::string& msg_pl, int num);
 
 #endif /* HEADER_GETTEXT_HXX */
