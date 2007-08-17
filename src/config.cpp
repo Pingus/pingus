@@ -202,7 +202,7 @@ ConfigParser::get_value(void)
       if (isspace(atom)){
 	return ret_val;
       } else {
-	syntax_error(std::string(_("Unexpected char '")) + atom + "'");
+        syntax_error(std::string(_("Unexpected char: '")) + atom + "'");
       }
     }
 

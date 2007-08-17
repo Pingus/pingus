@@ -94,7 +94,7 @@ public:
   /// The time the action needs to get activated (see bomber.cxx)
   virtual int   activation_time () { return -1; };
 
-  /** Return true if the pingu can be catched with the mouse and
+  /** Return true if the pingu can be caught with the mouse and
       another action can be applied, false otherwise (exiter,
       splashed, etc.) */
   virtual bool catchable () { return true; }

@@ -97,12 +97,12 @@ signal_handler(int signo)
     {
     case SIGSEGV:
       puts("\n,------------------------------------------------------------------------");
-      puts(_("| segfault_handler: catched a SIGSEGV."));
+      puts(_("| segfault_handler: caught a SIGSEGV."));
       puts  ("|");
       puts(_("| Woops, Pingus just crashed, congratulations you've found a bug."));
-      puts(_("| Please write a little bug report to <grumbel@gmx.de>, include informations"));
-      puts(_("| where exacly the SIGSEGV occured and how to reproduce it."));
-      puts(_("| Also try include a backtrace, you can get it like this:"));
+      puts(_("| Please write a little bug report to <grumbel@gmx.de>, include information"));
+      puts(_("| where exacly the SIGSEGV occurred and how to reproduce it."));
+      puts(_("| Also try to include a backtrace, you can get it by doing:"));
       puts  ("|");
       puts  ("| $ gdb pingus core");
       puts  ("| (gdb) bt");
@@ -230,13 +230,13 @@ PingusMain::check_args(int argc, char** argv)
   argp.add_option(363, "font", "FILE",
                   _("Test a font"));
   argp.add_option(364, "language", "LANG",
-                  _("Select language for use with Pingus"));
+                  _("Select language to use with Pingus"));
   argp.add_option(365, "list-languages", "",
                   _("List all available languages"));
   argp.add_option('v', "verbose", "", 
                   _("Print some more messages to stdout, can be set multiple times to increase verbosity"));
   argp.add_option('V', "version", "", 
-                  _("Prints version number and exit"));
+                  _("Print version number and exit"));
   argp.add_option(337, "disable-auto-scrolling", "",
                   _("Disable automatic scrolling"));
   argp.add_option(346, "enable-swcursor", "",
@@ -251,10 +251,10 @@ PingusMain::check_args(int argc, char** argv)
 
   argp.add_group(_("Debugging and experimental stuff:"));
   argp.add_option(334, "maintainer-mode",  "",  
-                  _("Enables some features, only interesting programmers"));
+                  _("Enables some features, only interesting to programmers"));
   argp.add_option(352, "debug",  "OPTION", 
-                  _("Enable the output of debugging infos, possible"
-                    "OPTION's are tiles, gametime, actions, sound, resources, gui,"
+                  _("Enable the output of debugging info, possible"
+                    "OPTIONs are tiles, gametime, actions, sound, resources, gui,"
                     "input, pathmgr"));
   argp.add_option(354, "min-frame-skip", "N",
                   _("Skip at least N frames, larger values speed the game up"));

@@ -47,7 +47,7 @@ PLFResMgr::load_plf_raw(const std::string& res_name,
       plf_map[res_name]  = entry;
 
       // FIXME: leaking pointers to the outsite work is not such a good
-      // idea, could lead to throuble sooner or later
+      // idea, could lead to trouble sooner or later
 
       return PingusLevel (entry.plf);
     }
@@ -68,11 +68,11 @@ PLFResMgr::load_plf_raw(const std::string& res_name,
           plf_map[res_name]  = entry;
 
           // FIXME: leaking pointers to the outsite work is not such a good
-          // idea, could lead to throuble sooner or later
+          // idea, could lead to trouble sooner or later
           return PingusLevel (entry.plf);
         }
       else
-        { // File in cache is up to date, everything is already, return it
+        { // File in cache is up to date, everything is all ready, return it
           pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: Loading level from CACHE: '" << res_name << "' -> '" << filename << "'" << std::endl;
 
           return i->second.plf;
