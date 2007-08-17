@@ -1,7 +1,7 @@
 ;; -*- scheme -*-
 (pingus-font
  (name "Pingus Small")
- (space-length    8)
+ (space-length    13)
  (char-spacing 0)
  (vertical-spacing 23)
  (alpha-threshold  0)
