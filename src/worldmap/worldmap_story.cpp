@@ -30,41 +30,35 @@
 
 namespace WorldMapNS {
 
-	bool StoryPageCompare(const StoryPage& a, const StoryPage& b)
-	{
-		// Reverse the sort order since we pull the page off the back
-		return (a.page_name > b.page_name);
-	}
+WorldMapStory::WorldMapStory(const FileReader &reader)
+{
+  reader.read_string("title", title);
+  title = _(title);
+  reader.read_string("music", music);
+  FileReader all_pages = reader.read_section("pages");
 
-	WorldMapStory::WorldMapStory(const FileReader &reader)
-	{
-		reader.read_string("title", title);
-		title = _(title);
-		reader.read_string("music", music);
-		FileReader all_pages = reader.read_section("pages");
-
-		// Temporary objects
-		ResDescriptor desc;
-		std::string text;
-		std::string page_name;
+  // Temporary objects
+  ResDescriptor desc;
+  std::string text;
+  std::string page_name;
 		
-		// Read each page into the pages vector
-		const std::vector<FileReader>& childs = all_pages.get_sections();
-  	for(std::vector<FileReader>::const_iterator i = childs.begin(); 
+  // Read each page into the pages vector
+  const std::vector<FileReader>& childs = all_pages.get_sections();
+  for(std::vector<FileReader>::const_iterator i = childs.begin(); 
       i != childs.end(); ++i)
-		{
-			page_name = i->get_name();
-			i->read_desc("surface", desc);
-			i->read_string("text", text);
-			// Translate the text and break it up.
-			text = StringFormat::break_line(_(text), 570, Fonts::chalk_normal);
-			pages.push_back(StoryPage(desc, text, page_name));
-		}
-		std::stable_sort(pages.begin(), pages.end(), &StoryPageCompare);
+    {
+      page_name = i->get_name();
+      i->read_desc("surface", desc);
+      i->read_string("text", text);
+      // Translate the text and break it up.
+      text = StringFormat::break_line(_(text), 570, Fonts::chalk_normal);
+      pages.push_back(StoryPage(desc, text, page_name));
+    }
+  std::reverse(pages.begin(), pages.end());
 
-		if (pages.empty())
-			PingusError::raise("WorldMapStory: WorldMap does not include a valid story");
-	}
+  if (pages.empty())
+    PingusError::raise("WorldMapStory: WorldMap does not include a valid story");
+}
 
 }	// namespace WorldMapNS
 
