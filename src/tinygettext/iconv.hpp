@@ -21,6 +21,7 @@
 #define HEADER_ICONV_HPP
 
 #include <string>
+#include <iconv.h>
 
 namespace TinyGetText {
 
