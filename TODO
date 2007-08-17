@@ -50,9 +50,6 @@ Roadmap for Pingus 0.7.0
 Important:
 ==========
 
-- paralax handling is different between 0.6 and SDL, see
-  data/levels/playable/slidenride1-grumbel.pingus
-
 - grep for all the FIXME's and '#if 0' and find those that might be
   important, add what you find to this TODO
 
@@ -91,8 +88,6 @@ Nice to Have:
 
 - hurry-up should be removed and replaced by something less heavy
   (isn't used in tutorial island, since those levels don't have time)
-
-- remove unneeded/outdated fonts
 
 - "core/misc/404sprite" isn't returned for missing graphics
 
