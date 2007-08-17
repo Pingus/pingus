@@ -33,7 +33,7 @@ PingusCounter::PingusCounter(Server* s)
   : server(s),
     background(Resource::load_sprite("core/buttons/info"))
 {
-  font = Fonts::pingus_small_fix_num;
+  font = Fonts::pingus_small;
 }
 
 void
@@ -46,14 +46,14 @@ PingusCounter::draw(DrawingContext& gc)
 
   World* world = server->get_world();
 
-  snprintf(str, 128, _("Released:%3d/%-3d   Out:%3d   Saved:%3d/%-3d").c_str(),
+  snprintf(str, 128, _("Released:%3d/%d   Out:%3d   Saved:%3d/%d").c_str(),
 	   world->get_pingus()->get_number_of_released(),
 	   world->get_pingus()->get_number_of_allowed(),
 	   world->get_pingus()->get_number_of_alive(),
 	   world->get_pingus()->get_number_of_exited(),
 	   server->get_plf().get_number_to_save());
 
-  gc.print_center(font, gc.get_width()/2, 0, str);
+  gc.print_center(font, gc.get_width()/2, -1, str);
 }
 
 

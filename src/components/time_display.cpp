@@ -37,7 +37,7 @@ TimeDisplay::TimeDisplay (Client* c)
   : server(c->get_server()),
     infinity_symbol(Resource::load_sprite("core/misc/infinity"))
 {
-  font = Fonts::pingus_small_fix_num;
+  font = Fonts::pingus_small;
 }
 
 void
@@ -48,8 +48,9 @@ TimeDisplay::draw (DrawingContext& gc)
 
   if (server->get_plf().get_time() == -1 && !(pingus_debug_flags & PINGUS_DEBUG_GAMETIME))
     {
-      gc.draw(infinity_symbol, static_cast<float>(Display::get_width()
-                                                  - infinity_symbol.get_width() - 6), 2.0f, 150.0f);
+      // No need for this
+      //gc.draw(infinity_symbol, static_cast<float>(Display::get_width()
+      //                                            - infinity_symbol.get_width() - 6), 2.0f, 150.0f);
     }
   else
     {

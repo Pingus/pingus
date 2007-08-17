@@ -188,7 +188,7 @@ public:
       {
         if (text[i] == ' ')
           {
-            dstx += space_length;
+            dstx += space_length + char_spacing;
           }
         else
           {
@@ -219,13 +219,13 @@ public:
 
   int  get_width(const std::string& text) const
   {
-    int width = 0;
-    int last_width = 0;
+    float width = 0.0f;
+    float last_width = 0;
     for(std::string::size_type i = 0; i < text.size(); ++i)
       {
         if (text[i] == ' ')
           {
-            width += space_length;
+            width += space_length + char_spacing;
           }
         else if (text[i] == '\n')
           {
@@ -234,10 +234,10 @@ public:
           }
         else
           {
-            width += chrs[static_cast<unsigned char>(text[i])].w+1;
+            width += chrs[static_cast<unsigned char>(text[i])].w + char_spacing;
           }
       }
-    return std::max(width, last_width);
+    return int(std::max(width, last_width));
   }
 
   Size get_size(const std::string& text) const

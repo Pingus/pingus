@@ -34,7 +34,6 @@ extern Font chalk_small;
 extern Font courier_small;
 
 extern Font pingus_small;
-extern Font pingus_small_fix_num;
 extern Font pingus_large;
 
 extern Font lcd;

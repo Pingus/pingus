@@ -29,7 +29,6 @@ Font chalk_normal;
 Font chalk_small;
 
 Font pingus_small;
-Font pingus_small_fix_num;
 Font pingus_large;
 
 Font courier_small;
@@ -45,7 +44,6 @@ init ()
 
   pingus_small = Resource::load_font("fonts/pingus_small" + std::string("-") + encoding);
   pingus_large = Resource::load_font("fonts/pingus"       + std::string("-") + encoding);
-  pingus_small_fix_num = Resource::load_font("fonts/pingus_small_fix_num" + std::string("-") + encoding);
 
   courier_small = Resource::load_font("fonts/courier_small" + std::string("-") + encoding);
 
@@ -58,7 +56,6 @@ void deinit ()
   chalk_normal = Font();
   chalk_small  = Font();
   pingus_small = Font();
-  pingus_small_fix_num = Font();
   pingus_large = Font();
   courier_small = Font();
   lcd = Font();

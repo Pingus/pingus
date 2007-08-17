@@ -101,7 +101,7 @@ private:
   StartScreen* parent;
 public:
   StartScreenAbortButton(StartScreen* p)
-    : GUI::SurfaceButton(Display::get_width()/2 - 278,
+    : GUI::SurfaceButton(Display::get_width()/2 - 300,
                          Display::get_height()/2 + 144,
                          ResDescriptor("core/start/back"),
                          ResDescriptor("core/start/back_clicked"),
@@ -144,8 +144,8 @@ StartScreenComponent::draw(DrawingContext& gc)
 {
   gc.draw(background, Display::get_width()/2.f, Display::get_height()/2.f);
 
-  int left_x  = Display::get_width()/2 - 120;
-  int right_x = Display::get_width()/2 + 120;
+  int left_x  = Display::get_width()/2 - 150;
+  int right_x = Display::get_width()/2 + 150;
   int y = Display::get_height()/2 + 40;
 
   gc.print_center(Fonts::chalk_large,

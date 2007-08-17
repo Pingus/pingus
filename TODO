@@ -27,7 +27,7 @@ Roadmap for Pingus 0.8.0
 
 - a new worlds 
 
-- UTF8 support
+- UTF8 support with MES-1 characters (http://www.eki.ee/letter/chardata.cgi?comp1=MES-1&comp2=)
 
 - split screen multiplayer
 
@@ -59,8 +59,6 @@ Important:
 - update INSTALL.* file
 
 - remove all the remaining unneeded debuging std::cout's
-
-- src/components/pingus_counter.hpp font should be fixed-width/monospace
 
 - forgein languages break many parts of the GUI (font align, mostly worldmap)
 
