@@ -22,38 +22,11 @@ import os
 
 env = Environment(# ENV = {'PKG_CONFIG_PATH' : os.getenv('PKG_CONFIG_PATH')},
                   CC = 'gcc',
-                  CCFLAGS = ['-O0', '-Wall', '-Werror', '-g'])
-sdl_env = Environment(CC = 'gcc',
-                      CCFLAGS = ['-O2', '-Wall', '-Werror', '-g'])
-
-# env.Copy(LIBS = ['a', 'b'])
-
-# FIXME: Make this configurable
-# env['ENV']['PKG_CONFIG_PATH'] = '/home/ingo/run/ClanLib-0.8-2005-12-01/lib/pkgconfig/'
-# env.ParseConfig('PKG_CONFIG_PATH=/home/ingo/run/ClanLib-0.8-2005-12-01/lib/pkgconfig/ pkg-config --cflags --libs \
-#   clanCore-0.8           ">=" 0.8.0 \
-#   clanApp-0.8            ">=" 0.8.0 \
-#   clanDisplay-0.8        ">=" 0.8.0 \
-#   clanGL-0.8             ">=" 0.8.0 \
-#   clanSDL-0.8            ">=" 0.8.0 \
-#   clanGUI-0.8            ">=" 0.8.0 \
-#   clanGUIStyleSilver-0.8 ">=" 0.8.0 \
-#   clanSound-0.8          ">=" 0.8.0 \
-#   clanVorbis-0.8         ">=" 0.8.0 \
-#   clanMikMod-0.8         ">=" 0.8.0')
+                  CCFLAGS = ['-O0', '-Wall', '-Werror', '-g'],
+                  CPPPATH = ['..', '.'])
 
 env.ParseConfig('sdl-config  --cflags --libs')
 env['LIBS'] += ['SDL_image', 'SDL_mixer', 'physfs', 'png']
-
-# sdl_env.ParseConfig('sdl-config  --cflags --libs')
-# sdl_env['LIBS'] += ['SDL_image']
-# sdl_env.Program('display/scene_test', [
-#     'display/scene_graph.cxx',
-#     'display/sprite_node.cxx',
-#     'display/scene_node.cxx',
-#     'math/rect.cpp',
-#     'math/origin.cpp',
-#     'display/scene_test.cxx'])
 
 env.Program('../pingus', [
 
@@ -303,8 +276,6 @@ env.Program('../pingus', [
 'worldobjs/teleporter_target.cpp', 
 'worldobjs/thunderstorm_background.cpp', 
 'worldobjs/woodthing.cpp',
-
-],
-CPPPATH = env['CPPPATH'] + ['..'] + ['.'])
+])
 
 ## EOF ##
