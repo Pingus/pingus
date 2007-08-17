@@ -48,9 +48,6 @@ Roadmap for Pingus 0.7.0
 Important:
 ==========
 
-- copy all translations in level files over to the LANG.po file (take care of encoding!)
-
-
 - paralax handling is different between 0.6 and SDL, see
   data/levels/playable/slidenride1-grumbel.pingus
 
@@ -61,18 +58,16 @@ Important:
 
 - remove all the remaining unneeded debuging std::cout's
 
-- Latin1 clean (also Latin-2 and Latin-9, see:
-  http://kapsa.cz/~tomasb/pingus/intl-patch.tgz)
+- Latin-2 and Latin-9 aren't not working, see language tr, cs, sr
 
 - src/components/pingus_counter.hpp font should be fixed-width/monospace
 
-- forgein languages break many parts of the GUI
-
+- forgein languages break many parts of the GUI (font align, mostly worldmap)
 
 Nice to Have:
 =============
 
-- sv.po - ISO-8859-1 - (incomplete)
+- sv.po, Swedish is incomplete, lacks level and story text
 
 - story graphics have a missing vertical line (due to age old gimp scaling bug)
 

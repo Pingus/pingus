@@ -632,9 +632,8 @@ PingusMain::init_path_finder()
   // dictionary_manager.set_language("de"); 
   dictionary_manager.add_directory(path_manager.complete("po/"));
 
-  std::string language = dictionary_manager.get_dictionary().get_language().name;
+  std::string language = dictionary_manager.get_dictionary().get_language().code;
 
-  language.resize(2);
   if(language == "cs" || language == "sr")
     {
       dictionary_manager.set_charset("ISO-8859-2");
