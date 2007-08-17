@@ -22,9 +22,6 @@
 
 #include "gui/gui_screen.hpp"
 
-class CL_Key;
-class CL_InputDevice;
-
 
 class PingusMenuManager;
 

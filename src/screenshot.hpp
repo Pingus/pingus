@@ -24,8 +24,6 @@
 #include "pingus.hpp"
 #include <string>
 
-class CL_Target;
-
 
 /** Simple class to get a screenshot and save it as pnm */
 class Screenshot

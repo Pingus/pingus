@@ -26,8 +26,6 @@
 #include "../state_sprite.hpp"
 #include "../gui/component.hpp"
 
-class CL_Font;
-
 
 class TrueServer;
 class ActionHolder;

@@ -24,8 +24,6 @@
 
 #include "action_button.hpp"
 
-class CL_InputEvent;
-
 
 class Client;
 

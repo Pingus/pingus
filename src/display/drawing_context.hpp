@@ -31,7 +31,6 @@
 
 class Font;
 class Sprite;
-class CL_Surface;
 
 /** The DrawingContext collects all DrawingRequests and allows you to
     flush them all down to the graphics card in one run, this has the
