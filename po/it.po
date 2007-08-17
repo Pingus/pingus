@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-15 18:33+0200\n"
+"POT-Creation-Date: 2007-08-18 01:00+0200\n"
 "PO-Revision-Date: 2004-04-07 18:48+0200\n"
 "Last-Translator: Giuseppe D'Aqui' <kumber@tiscalinet.it>\n"
 "Language-Team: \n"
@@ -496,6 +496,7 @@ msgid "unknown"
 msgstr "sconosciuto"
 
 #: src/game_time.cxx:68
+#, c-format
 msgid "unlimited"
 msgstr "illimitato"
 
@@ -907,159 +908,168 @@ msgid "Debugging and experimental stuff:"
 msgstr "Opzioni sperimentali e di debug:"
 
 #: src/pingus_main.cxx:532
+#, fuzzy
+msgid "FILE    "
+msgstr "FILE     "
+
+#: src/pingus_main.cxx:532
+msgid "Renders the levelfile into FILE in .pnm format"
+msgstr ""
+
+#: src/pingus_main.cxx:533
 msgid "Enables some features, only interesting programmers"
 msgstr "Attiva alcune funzionalità che interessano solo ai programmatori"
 
-#: src/pingus_main.cxx:533
+#: src/pingus_main.cxx:534
 msgid "Enable the output of debugging infos, possible"
 msgstr "Attiva le informazioni di debug, le OPZIONI possibili"
 
-#: src/pingus_main.cxx:534
+#: src/pingus_main.cxx:535
 msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
 msgstr "sono tiles, gametime, actions, sound, resources, gui,"
 
-#: src/pingus_main.cxx:536
+#: src/pingus_main.cxx:537
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr "Salta almeno N frames, valori maggiori accelerano il gioco"
 
-#: src/pingus_main.cxx:537
+#: src/pingus_main.cxx:538
 msgid "Skip at most N frames"
 msgstr "Salta al massimo N frames"
 
-#: src/pingus_main.cxx:538
+#: src/pingus_main.cxx:539
 msgid "Set both min and max frameskip to N"
 msgstr "Imposta N frames da saltare al minimo ed al massimo"
 
-#: src/pingus_main.cxx:539
+#: src/pingus_main.cxx:540
 msgid "Set the game speed (0=fastest, >0=slower)"
 msgstr "Imposta la velocità del gioco (0=più veloce, >0=più lento)"
 
-#: src/pingus_main.cxx:540
+#: src/pingus_main.cxx:541
 msgid "Prints the fps to stdout"
 msgstr "Stampa il numero di fps in stdout"
 
-#: src/pingus_main.cxx:541
+#: src/pingus_main.cxx:542
 msgid "Set the size of the map tiles (default: 32)"
 msgstr "Imposta la dimensione dei segmenti di mappa (default: 32)"
 
-#: src/pingus_main.cxx:542
+#: src/pingus_main.cxx:543
 msgid "Disable some cpu intensive features"
 msgstr "Disattiva alcune caratteristiche che consumano cicli CPU"
 
-#: src/pingus_main.cxx:543
+#: src/pingus_main.cxx:544
 msgid "Reduces the CPU usage by issuing sleep()"
 msgstr "Diminuisce l'uso della CPU usando sleep()"
 
-#: src/pingus_main.cxx:545
+#: src/pingus_main.cxx:546
 msgid "Demo playing and recording:"
 msgstr "Mostra e registra Demo:"
 
-#: src/pingus_main.cxx:546
+#: src/pingus_main.cxx:547
 msgid "FILE     "
 msgstr "FILE     "
 
-#: src/pingus_main.cxx:546
+#: src/pingus_main.cxx:547
 msgid "Plays a demo session from FILE"
 msgstr "Mostra una Demo da FILE"
 
-#: src/pingus_main.cxx:548
+#: src/pingus_main.cxx:549
 msgid "Record demos for each played level"
 msgstr "Registra una Demo per ogni livello giocato"
 
-#: src/pingus_main.cxx:550
+#: src/pingus_main.cxx:551
 msgid "Sound:"
 msgstr "Suono:"
 
-#: src/pingus_main.cxx:551
+#: src/pingus_main.cxx:552
 msgid "Disable sound"
 msgstr "Disattiva il suono"
 
-#: src/pingus_main.cxx:552
+#: src/pingus_main.cxx:553
 msgid "Disable music"
 msgstr "Disattiva la musica"
 
-#: src/pingus_main.cxx:730
+#: src/pingus_main.cxx:736
 msgid "clanVorbis support:           ok"
 msgstr "Supporto clanVorbis:          ok"
 
-#: src/pingus_main.cxx:732
+#: src/pingus_main.cxx:738
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr ""
 "Supporto clanVorbis: assente (i file musicali .ogg non saranno suonati)"
 
-#: src/pingus_main.cxx:736
+#: src/pingus_main.cxx:742
 msgid "clanMikMod support:           ok"
 msgstr "Supporto clanMikMod:          ok"
 
-#: src/pingus_main.cxx:738
+#: src/pingus_main.cxx:744
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr "Supporto clanMikMod: assente (i file musicali non saranno suonati)"
 
-#: src/pingus_main.cxx:742
+#: src/pingus_main.cxx:748
 msgid "getext support:               ok"
 msgstr "Supporto gettext:             ok"
 
-#: src/pingus_main.cxx:743
+#: src/pingus_main.cxx:749
 msgid "gettext language:        english"
 msgstr "lingua gettext:          italiano"
 
-#: src/pingus_main.cxx:749
+#: src/pingus_main.cxx:755
 msgid "sound support:           enabled"
 msgstr "Supporto suono:          attivato"
 
-#: src/pingus_main.cxx:751
+#: src/pingus_main.cxx:757
 msgid "sound support:          disabled"
 msgstr "Supporto suono:         disattivato"
 
-#: src/pingus_main.cxx:754
+#: src/pingus_main.cxx:760
 msgid "music support:           enabled"
 msgstr "Supporto musica:         attivato"
 
-#: src/pingus_main.cxx:756
+#: src/pingus_main.cxx:762
 msgid "music support:          disabled"
 msgstr "Supporto musica:        disattivato"
 
-#: src/pingus_main.cxx:758
+#: src/pingus_main.cxx:764
 msgid "resolution set to:       "
 msgstr "risoluzione fissata a:  "
 
-#: src/pingus_main.cxx:759
+#: src/pingus_main.cxx:765
 msgid "fullscreen:              "
 msgstr "schermo intero:        "
 
-#: src/pingus_main.cxx:760
+#: src/pingus_main.cxx:766
 msgid " enabled"
 msgstr " attivato"
 
-#: src/pingus_main.cxx:760
+#: src/pingus_main.cxx:766
 msgid "disabled"
 msgstr "disattivato"
 
-#: src/pingus_main.cxx:770
+#: src/pingus_main.cxx:776
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Inizio Main: "
 
-#: src/pingus_main.cxx:815
+#: src/pingus_main.cxx:821
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: File del livello assente, ignorato: "
 
-#: src/pingus_main.cxx:919
+#: src/pingus_main.cxx:925
 msgid "Error caught from ClanLib: "
 msgstr "Errore intercettato da ClanLib: "
 
-#: src/pingus_main.cxx:923
+#: src/pingus_main.cxx:929
 msgid "Error caught from Pingus: "
 msgstr "Errore intercettato da Pingus: "
 
-#: src/pingus_main.cxx:927
+#: src/pingus_main.cxx:933
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: memoria insufficiente!"
 
-#: src/pingus_main.cxx:931
+#: src/pingus_main.cxx:937
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Intercettata eccezione standard!:\n"
 
-#: src/pingus_main.cxx:935
+#: src/pingus_main.cxx:941
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Intercettato throw sconosciuto!"
 

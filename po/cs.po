@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-04-15 18:33+0200\n"
+"POT-Creation-Date: 2007-08-18 01:00+0200\n"
 "PO-Revision-Date: 2004-04-13 23:02+0200\n"
 "Last-Translator: Tomá¹ Bláha\n"
 "Language-Team: czech\n"
@@ -496,6 +496,7 @@ msgid "unknown"
 msgstr "neznámý"
 
 #: src/game_time.cxx:68
+#, c-format
 msgid "unlimited"
 msgstr "neomezený"
 
@@ -900,158 +901,167 @@ msgid "Debugging and experimental stuff:"
 msgstr "Ladicí a experimentální volby:"
 
 #: src/pingus_main.cxx:532
+#, fuzzy
+msgid "FILE    "
+msgstr "SOUBOR     "
+
+#: src/pingus_main.cxx:532
+msgid "Renders the levelfile into FILE in .pnm format"
+msgstr ""
+
+#: src/pingus_main.cxx:533
 msgid "Enables some features, only interesting programmers"
 msgstr "Zapnout nìkteré vlastnosti potøebné jen pro programátory"
 
-#: src/pingus_main.cxx:533
+#: src/pingus_main.cxx:534
 msgid "Enable the output of debugging infos, possible"
 msgstr "Zapnout vypisování ladicích hlá¹ek, mo¾ná"
 
-#: src/pingus_main.cxx:534
+#: src/pingus_main.cxx:535
 msgid "OPTION's are tiles, gametime, actions, sound, resources, gui,"
 msgstr "nastavení jsou: tiles, gametime, actions, sound, resources, gui,"
 
-#: src/pingus_main.cxx:536
+#: src/pingus_main.cxx:537
 msgid "Skip at least N frames, larger values speed the game up"
 msgstr "Pøeskoèit alespoò N snímkù, vy¹¹í hodnota zrychluje hru"
 
-#: src/pingus_main.cxx:537
+#: src/pingus_main.cxx:538
 msgid "Skip at most N frames"
 msgstr "Pøeskoèit maximálnì N snímkù"
 
-#: src/pingus_main.cxx:538
+#: src/pingus_main.cxx:539
 msgid "Set both min and max frameskip to N"
 msgstr "Nastavit maximální i minimální poèet snímkù k pøeskoèení na N"
 
-#: src/pingus_main.cxx:539
+#: src/pingus_main.cxx:540
 msgid "Set the game speed (0=fastest, >0=slower)"
 msgstr "Nastavit rychlost hry (0=nejrychlej¹í, >0=pomalej¹í)"
 
-#: src/pingus_main.cxx:540
+#: src/pingus_main.cxx:541
 msgid "Prints the fps to stdout"
 msgstr "Vypisovat fps na stdout"
 
-#: src/pingus_main.cxx:541
+#: src/pingus_main.cxx:542
 msgid "Set the size of the map tiles (default: 32)"
 msgstr "Nastavit velikost dílku mapy (výchozí: 32)"
 
-#: src/pingus_main.cxx:542
+#: src/pingus_main.cxx:543
 msgid "Disable some cpu intensive features"
 msgstr "Vypnout nìkteré operace nároèné na CPU"
 
-#: src/pingus_main.cxx:543
+#: src/pingus_main.cxx:544
 msgid "Reduces the CPU usage by issuing sleep()"
 msgstr "Sni¾ovat zátì¾ CPU voláním sleep()"
 
-#: src/pingus_main.cxx:545
+#: src/pingus_main.cxx:546
 msgid "Demo playing and recording:"
 msgstr "Nahrávání a pøehrávání dem:"
 
-#: src/pingus_main.cxx:546
+#: src/pingus_main.cxx:547
 msgid "FILE     "
 msgstr "SOUBOR     "
 
-#: src/pingus_main.cxx:546
+#: src/pingus_main.cxx:547
 msgid "Plays a demo session from FILE"
 msgstr "Pøehrát demo ze souboru"
 
-#: src/pingus_main.cxx:548
+#: src/pingus_main.cxx:549
 msgid "Record demos for each played level"
 msgstr "Zaznamenat demo ka¾dé odehrané úrovnì"
 
-#: src/pingus_main.cxx:550
+#: src/pingus_main.cxx:551
 msgid "Sound:"
 msgstr "Zvuk:"
 
-#: src/pingus_main.cxx:551
+#: src/pingus_main.cxx:552
 msgid "Disable sound"
 msgstr "Vypnout zvuk"
 
-#: src/pingus_main.cxx:552
+#: src/pingus_main.cxx:553
 msgid "Disable music"
 msgstr "Vypnout hudbu"
 
-#: src/pingus_main.cxx:730
+#: src/pingus_main.cxx:736
 msgid "clanVorbis support:           ok"
 msgstr "podpora clanVorbis:           ok"
 
-#: src/pingus_main.cxx:732
+#: src/pingus_main.cxx:738
 msgid "clanVoribs support:  missing (.ogg music files will not be playable)"
 msgstr "podpora clanVoribs:  chybí (hudba v .ogg souborech nebude pøehrána)"
 
-#: src/pingus_main.cxx:736
+#: src/pingus_main.cxx:742
 msgid "clanMikMod support:           ok"
 msgstr "podpora clanMikMod:           ok"
 
-#: src/pingus_main.cxx:738
+#: src/pingus_main.cxx:744
 msgid "clanMikMod support:  missing (music files will not be playable)"
 msgstr "podpora clanMikMod:  chybí (hudební soubory nebudou pøehrány)"
 
-#: src/pingus_main.cxx:742
+#: src/pingus_main.cxx:748
 msgid "getext support:               ok"
 msgstr "podpora gettextu:             ok"
 
-#: src/pingus_main.cxx:743
+#: src/pingus_main.cxx:749
 msgid "gettext language:        english"
 msgstr "jazyk gettextu:          èe¹tina"
 
-#: src/pingus_main.cxx:749
+#: src/pingus_main.cxx:755
 msgid "sound support:           enabled"
 msgstr "zvuková podpora:         zapnuta"
 
-#: src/pingus_main.cxx:751
+#: src/pingus_main.cxx:757
 msgid "sound support:          disabled"
 msgstr "zvuková podpora:        vypnuta"
 
-#: src/pingus_main.cxx:754
+#: src/pingus_main.cxx:760
 msgid "music support:           enabled"
 msgstr "hudební podpora:         zapnuta"
 
-#: src/pingus_main.cxx:756
+#: src/pingus_main.cxx:762
 msgid "music support:          disabled"
 msgstr "hudební podpora:         vypnuta"
 
-#: src/pingus_main.cxx:758
+#: src/pingus_main.cxx:764
 msgid "resolution set to:       "
 msgstr "rozli¹ení nastaveno na:  "
 
-#: src/pingus_main.cxx:759
+#: src/pingus_main.cxx:765
 msgid "fullscreen:              "
 msgstr "celoobrazovkový re¾im:    "
 
-#: src/pingus_main.cxx:760
+#: src/pingus_main.cxx:766
 msgid " enabled"
 msgstr "zapnut"
 
-#: src/pingus_main.cxx:760
+#: src/pingus_main.cxx:766
 msgid "disabled"
 msgstr "vypnut"
 
-#: src/pingus_main.cxx:770
+#: src/pingus_main.cxx:776
 msgid "PingusMain: Starting Main: "
 msgstr "PingusMain: Spou¹tím main: "
 
-#: src/pingus_main.cxx:815
+#: src/pingus_main.cxx:821
 msgid "PingusMain: Levelfile not found, ignoring: "
 msgstr "PingusMain: Soubor úrovnì nenalezen, ignoruji: "
 
-#: src/pingus_main.cxx:919
+#: src/pingus_main.cxx:925
 msgid "Error caught from ClanLib: "
 msgstr "Odchycena chyba v ClanLib: "
 
-#: src/pingus_main.cxx:923
+#: src/pingus_main.cxx:929
 msgid "Error caught from Pingus: "
 msgstr "Odchycena chyba v Pingus: "
 
-#: src/pingus_main.cxx:927
+#: src/pingus_main.cxx:933
 msgid "Pingus: Out of memory!"
 msgstr "Pingus: Do¹la pamì»!"
 
-#: src/pingus_main.cxx:931
+#: src/pingus_main.cxx:937
 msgid "Pingus: Standard exception caught!:\n"
 msgstr "Pingus: Odchycena standardní výjimka!:\n"
 
-#: src/pingus_main.cxx:935
+#: src/pingus_main.cxx:941
 msgid "Pingus: Unknown throw caught!"
 msgstr "Pingus: Odchyceno neznámé throw!"
 
