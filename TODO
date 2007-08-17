@@ -67,6 +67,10 @@ Important:
 Nice to Have:
 =============
 
+- jumper dies sometimes in data/levels/tutorial/snow11-grumbel.scm when hitting the ground
+
+- resource system needs a review
+
 - sv.po, Swedish is incomplete, lacks level and story text
 
 - story graphics have a missing vertical line (due to age old gimp scaling bug)

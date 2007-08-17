@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Pingus 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-08-16 20:03+0200\n"
-"PO-Revision-Date: 2007-08-16 17:15+0200\n"
+"PO-Revision-Date: 2007-08-17 17:57+0200\n"
 "Last-Translator: David Philippi <david@torangan.de>\n"
 "Language-Team: David Philippi <david@torangan.de>, Ingo Ruhnke <grumbel@gmx."
 "de>, Giray Devlet <giray@devlet.cc>\n"
@@ -536,7 +536,7 @@ msgstr "Erfolg!"
 
 #: src/result_screen.cpp:188
 msgid "Failure!"
-msgstr "Fehler!"
+msgstr "Versagt!"
 
 #: src/result_screen.cpp:197
 msgid "Perfect! You saved everyone possible - great!"
