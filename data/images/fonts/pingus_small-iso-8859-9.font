@@ -2,6 +2,7 @@
 (pingus-font
  (name "Pingus Small")
  (space-length    8)
+ (char-spacing 0.6)
  (alpha-threshold  0)
  (characters "!\"#$%&'()*+,-./0123456789:;<=>?@"
              "ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"

@@ -38,9 +38,9 @@ public:
   int  space_length; 
 
   /** Space between two characters */
-  int char_spacing;
+  float char_spacing;
 
-  int vertical_spacing;
+  float vertical_spacing;
 
   /** Minimum amount of alpha that is handled as character seperator */
   int  alpha_threshold;

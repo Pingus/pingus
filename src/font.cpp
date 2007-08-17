@@ -50,8 +50,8 @@ public:
   SDL_Surface* surface;
   SDL_Rect chrs[256];
   int space_length;
-  int char_spacing;
-  int vertical_spacing;
+  float char_spacing;
+  float vertical_spacing;
   
   FontImpl(const FontDescription& desc)
     : surface(0),
@@ -164,12 +164,13 @@ public:
     SDL_FreeSurface(surface);
   }
 
-  void draw(Origin origin, int x, int y, const std::string& text, SDL_Surface* target)
+  void draw(Origin origin, int x, int y_, const std::string& text, SDL_Surface* target)
   {
+    float y = y_;
     // FIXME: only origins top_left, top_right and top_center to work right now
     LineIterator it(text);
     while(it.next()) {
-      draw_line(origin, x, y, it.get(), target);
+      draw_line(origin, x, int(y), it.get(), target);
       y += vertical_spacing;
     }
   }
@@ -178,8 +179,8 @@ public:
   {
     Vector2i offset = calc_origin(origin, get_size(text));
 
-    int dstx = x - offset.x;
-    int dsty = y - offset.y;
+    float dstx = x - offset.x;
+    float dsty = y - offset.y;
 
     if (!target) target = Display::get_screen();
 
@@ -194,7 +195,7 @@ public:
             SDL_Rect& srcrect = chrs[static_cast<unsigned char>(text[i])];
             if (srcrect.w != 0 && srcrect.h != 0)
               {
-		SDL_Rect dstrect = { dstx, dsty, 0, 0 };
+		SDL_Rect dstrect = { int(dstx), int(dsty), 0, 0 };
                 SDL_BlitSurface(surface, &srcrect, target, &dstrect);
                 dstx += srcrect.w + char_spacing;
               }
