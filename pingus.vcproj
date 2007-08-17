@@ -2250,11 +2250,43 @@
 				Name="tinygettext"
 				>
 				<File
-					RelativePath=".\src\tinygettext\tinygettext.cpp"
+					RelativePath=".\src\tinygettext\dictionary.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\src\tinygettext\tinygettext.hpp"
+					RelativePath=".\src\tinygettext\dictionary.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\tinygettext\dictionary_manager.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\tinygettext\dictionary_manager.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\tinygettext\iconv.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\tinygettext\iconv.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\tinygettext\language_def.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\tinygettext\language_def.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\tinygettext\po_file_reader.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\tinygettext\po_file_reader.hpp"
 					>
 				</File>
 			</Filter>
