@@ -3,10 +3,17 @@
 echo "Exporting svn"
 svn export . pingus
 rm -rf pingus/contrib
+rm -rf pingus/doc
 rm -rf pingus/src
 rm -f pingus/pingus.sln
 rm -f pingus/pingus.vcproj
 rm -f pingus/SConstruct
+rm -f pingus/ChangeLog
+rm -f pingus/clanlib_2_sexpr.rb
+rm -f pingus/config.h
+rm -f pingus/INSTALL.unix
+rm -f pingus/INSTALL.Win32
+rm -f pingus/xml2sexpr.rb
 
 cp Release/pingus.exe pingus
 cp contrib/windows_installer/libiconv2.dll pingus
