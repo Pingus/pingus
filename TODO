@@ -44,6 +44,14 @@ Roadmap for Pingus 0.8.0
 
 - implement xschema-like language to check for syntax errors in the level files
 
+- keep highscores for levels (number saved and stuff like that)
+
+- digger follows down slopes
+
+- trap in one tutorial level with two exits is in background, should be foreground
+
+- worldmap pingu walks right over locked levels
+
 Roadmap for Pingus 0.7.0
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -56,6 +64,22 @@ Important:
 - update INSTALL.* file
 
 - remove all the remaining unneeded debuging std::cout's
+
+- minser's heaven doesn't stretch the background
+
+- story doesn't scale to resolution
+
+- disable demo-writing per default
+
+- level name placement on worldmap is completly wrong in higher resolutions
+
+- credits are cut of at higher resolutions
+
+- bridging gets more complicated has graphical error (background?!)
+
+- there seems to be a bug in the sprite class causing a double-free,
+ stuff broke in revision 2938 only got that as bug report, couldn't
+ reproduce it myself
 
 Nice to Have:
 =============
