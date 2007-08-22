@@ -231,9 +231,9 @@ Blitter::create_surface_rgb(int w, int h)
 {
   return SDL_CreateRGBSurface(SDL_SWSURFACE, w, h, 24,
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-                              0xff000000, 0x00ff0000, 0x0000ff00, 0x00000000
+                              0xff0000, 0x00ff00, 0x0000ff, 0x000000
 #else
-                              0x000000ff, 0x0000ff00, 0x00ff0000, 0x00000000
+                              0x0000ff, 0x00ff00, 0xff0000, 0x000000
 #endif
                               );
 }
