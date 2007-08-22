@@ -147,6 +147,8 @@ StoryScreenComponent::StoryScreenComponent (WorldMapNS::WorldMapStory *arg_story
   current_page = pages.back();
   page_surface = Resource::load_sprite(current_page.image);
   background   = Resource::load_sprite("core/menu/startscreenbg");
+  
+  background.scale(Display::get_width(), Display::get_height());
 }
 
 void

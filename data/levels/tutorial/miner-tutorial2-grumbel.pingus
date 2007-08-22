@@ -28,8 +28,8 @@
       (para-x 0.5)
       (para-y 0.0)
       (stretch-x 0)
-      (stretch-y 0)
-      (keep-aspect 0)
+      (stretch-y 1)
+      (keep-aspect 1)
       (position 13.3571 25.2141 -150))
     (hotspot 
       (surface 

@@ -65,13 +65,10 @@ Important:
 
 - remove all the remaining unneeded debuging std::cout's
 
-- minser's heaven doesn't stretch the background
-
-- story doesn't scale to resolution
-
 - disable demo-writing per default
 
 - bridging gets more complicated has graphical error (background?!)
+  surface background doesn't handle larger res due to the Playfield being offsetted
 
 - there seems to be a bug in the sprite class causing a double-free,
  stuff broke in revision 2938 only got that as bug report, couldn't

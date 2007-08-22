@@ -22,7 +22,7 @@ import os
 
 env = Environment(# ENV = {'PKG_CONFIG_PATH' : os.getenv('PKG_CONFIG_PATH')},
                   CC = 'gcc',
-                  CCFLAGS = ['-O0', '-Wall', '-Werror', '-g'],
+                  CCFLAGS = ['-O2', '-Wall', '-Werror', '-g'],
                   CPPPATH = ['..', '.'])
 
 env.ParseConfig('sdl-config  --cflags --libs')
