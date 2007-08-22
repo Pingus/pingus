@@ -185,7 +185,7 @@ WorldMap::draw(DrawingContext& gc)
   for (DrawableLst::iterator i = drawables.begin (); i != drawables.end (); ++i)
     (*i)->draw(gc);
 
-  Vector3f mpos = gc.screen_to_world(Vector3f((float)mouse_x, (float)mouse_y));
+  Vector2f mpos = gc_state.screen2world(Vector2i(mouse_x, mouse_y));
   Dot* dot = path_graph->get_dot(mpos.x, mpos.y);
   if (dot)
     dot->draw_hover(gc);

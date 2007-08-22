@@ -71,10 +71,6 @@ Important:
 
 - disable demo-writing per default
 
-- level name placement on worldmap is completly wrong in higher resolutions
-
-- credits are cut of at higher resolutions
-
 - bridging gets more complicated has graphical error (background?!)
 
 - there seems to be a bug in the sprite class causing a double-free,

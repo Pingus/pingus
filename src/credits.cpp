@@ -278,8 +278,9 @@ Credits::draw_background (DrawingContext& gc)
 
   scene_context->clear();
   scene_context->set_cliprect(Rect(0,
-                                   static_cast<int>(gc.get_height()/2-225), 600,
-                                   static_cast<int>(gc.get_height()/2+200)));
+                                   static_cast<int>(0.125f * gc.get_height()),
+                                   static_cast<int>(gc.get_width()),
+                                   static_cast<int>(0.833f * gc.get_height())));
   for (std::vector<std::string>::iterator i = credits.begin(); i != credits.end(); ++i)
     {
       switch ((*i)[0])
