@@ -153,7 +153,6 @@ PingusMain::get_title()
   static char title[] = "Pingus "VERSION" (unofficial build) - http://pingus.seul.org";
 #endif
   return title;
-  //return (string(PACKAGE) + " " + VERSION + " - http://pingus.seul.org").c_str();
 }
 
 void
@@ -880,7 +879,7 @@ PingusMain::init_sdl()
   }
   atexit(SDL_Quit); 
   Display::set_video_mode(screen_width, screen_height);
-  SDL_WM_SetCaption(PACKAGE_STRING " - SDL Edition", 0 /* icon */);
+  SDL_WM_SetCaption("Pingus - SDL Edition", 0 /* icon */);
   SDL_EnableUNICODE(1);
 }
 

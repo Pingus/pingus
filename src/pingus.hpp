@@ -44,10 +44,6 @@
 #  include <assert.h>
 #endif
 
-#if defined(WIN32) && defined(__GNUC__) && !defined(HAVE_SSTREAM)
-#  define HAVE_SSTREAM
-#endif
-
 #define UNUSED_ARG(a) do {/* null */} while (&a == 0)
 
 #endif
