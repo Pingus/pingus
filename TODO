@@ -159,7 +159,7 @@ Older Stuff:
   especially obvious when bashing through wells. They can also bash
   through metal, which they shouldn't be able to.
 
-- All entrances should have graphics
+- All entrances should have graphics and be animated
 
 - Bridgers seem to move backwards when they first start stacking (I
   think that their graphic may be more to the left in its square than
@@ -193,5 +193,51 @@ Sortie Theme:
  - this theme needs 'normal' groundpieces which can be used to dig
    throught and things like that, it currently only has horizontal and
    vertical bars, which make building levels quite difficult
+
+Wishlist
+========
+
+0.3.0
+~~~~~
+* ColMaps for hotspot objects (see the objects in the water in level9)
+* A better MessageBox
+* caching for level prviews
+* more ground gfx's
+* Better music support
+* colmap manipulation for liquid
+* right/left/random/left'n'right for entrances
+* Support for animated exits and entrances
+* More Backgrounds (tileable/fullscreen/resized)
+* Creating some sound effects
+* Integrading Demo recording/playing to the menu    
+* snow particles
+* A ground smashing animation
+
+0.4.0
+~~~~~
+* Collisions between water/lava and particles
+* Parallax scrolling backgrounds
+* All standard actions fine tuned working actions
+
+1.0.0
+~~~~~
+* Full Animated backgrounds, like Plasma and Fire effects
+* Dynamic loadable backgrounds, actions and traps
+* All memory leaks fixed
+
+Other Wishes:
+~~~~~~~~~~~~~
+- Water, Lava, Snake, Spike, Electric pits
+- Cursor follow mode
+- Pingus able to swim
+
+> Man koennte Tueren, Treppen, Bruecken, Lifte, Teleporter...
+> einbauen ("Extra pingu actions"), die sich auf konventionelle
+> Weise nicht oeffnen/begehen/ausfahren/aktivieren lassen, sondern
+> erst durch einen "Hacker-Pingu" freigeschaltet werden muessen,
+> der sich an einem nahegelegenen Terminal an die Arbeit macht. Um
+> ihn da wegzubekommen, muesste man ihn natuerlich sprengen (wie im
+> echten Leben *grins*).
+
 
 # EOF #
