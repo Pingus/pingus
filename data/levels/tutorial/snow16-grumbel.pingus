@@ -102,8 +102,8 @@
   <para-x>0.5</para-x>
   <para-y>0.5</para-y>
   <stretch-x>0</stretch-x>
-  <stretch-y>0</stretch-y>
-  <keep-aspect>0</keep-aspect>
+  <stretch-y>1</stretch-y>
+  <keep-aspect>1</keep-aspect>
   <position>
     <x-pos>-26</x-pos>
     <y-pos>-3</y-pos>
