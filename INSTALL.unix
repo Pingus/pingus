@@ -1,80 +1,66 @@
 Pingus Installation Guide for GNU/Linux
 =======================================
 
-Foreword:
-=========
-If you run GNU/Linux on a x86 it is strongly recommended that you use
-the static-binares provided at the Pingus Webpage http://pingus.seul.org.
-Compiling Pingus is only needed if you run a non-x86 architecture or a
-non-Linux Unix like OS (FreeBSD, GNU/Hurd or something like that).
-
-
-Installation:
-=============
+Requirements:
+-------------
 To compile Pingus you need:
 
- ClanLib 0.8.0 - http://www.clanlib.org
+ SDL          - http://libsdl.org/
+ SDL_mixer
+ SDL_image
+ boost        - http://www.boost.org
+ PhysicsFS    - http://icculus.org/physfs/
+ libpng       - http://libpng.org/
+ scons        - http://scons.org/
 
-For full music and sound support you also need:
+In most cases you will find those in your distribution.
 
- MikMod       - http://www.mikmod.org/
- Vorbis & Ogg - http://www.xiph.org/ogg/vorbis/ 
 
-Compile Vorbis, Ogg, and MikMod before ClanLib. To compile
-ClanLib you need to apply all the patches to it from the
-contrib/clanlib/ subdirectory to it, without them Pingus will have a
-few bugs (editor windows have a close button, which on click results
-in freeze or crash, console will be showable/hidable with many keys,
-scrollwheel support will be missing). Once all libraries are in place,
-compile Pingus with:
+Compilation:
+------------
+Once all libraries are in place, compile Pingus with:
 
- % ./autogen.sh
- % ./configure
- % make
+ % scons
 
-You can now run Pingus directly from the src/ subdirectory. If you
-want to install Pingus, which is required if you want to have the i18n
-support working, just type:
+The current SConscript doesn't do any extra checking for available
+libraries, so make sure you have installed them all.
 
- % make install
 
-For non-root installs use something like:
+Running:
+--------
+Once the compilation is successful you can run Pingus directly from
+the top level directory of the source tree via:
 
- % ./configure --prefix=/home/juser
- % make 
- % make install
+ % ./pingus
 
-Starting Pingus can be done by:
-
- % src/pingus
+There is no need to install Pingus.
 
 If you have a slow machine, starting Pingus with:
 
- % src/pingus -g 640x480 --frame-skip 3
+ % ./pingus -g 640x480 --frame-skip 3
+
+If you want to run Pingus in a larger resolution, you can do so with: 
+
+ % ./pingus -g 1024x768
 
 Might lead to a better playable game. Fullscreen support is available via:
 
- % src/pingus --fullscreen
+ % ./pingus --fullscreen
+
+Languages can be listed with:
+
+ % ./pingus --list-languages
+
+And started with:
+
+ % ./pingus --language de
 
 
-OpenGL Support:
-===============
+Installation:
+-------------
+As mentioned above, you don't need to install Pingus to run it, if you
+still want to do it, you can do so with:
 
-In addition to the normal X11 support, Pingus can also be compiled
-with OpenGL support, to do so you just need to make sure that you have
-ClanGL compiled and installed (its part of ClanLib) and then compile
-Pingus with:
-
- % ./configure --with-clanGL
- % make
-
-You need than to start Pingus with:
-
- % src/pingus --use-opengl
-
-But note, that OpenGL support is buggy and lead to visual artifacts,
-OpenGL graphic cards with a texturesize of 1024x1024 or lower will
-also cause trouble and be unable to display the Worldmap.
-
+ % ./install.sh DIR
 
 # EOF #
