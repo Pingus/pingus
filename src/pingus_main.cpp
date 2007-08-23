@@ -623,7 +623,7 @@ PingusMain::init_path_finder()
     }
   
   std::string data_path = br_find_prefix("data");
-  data_path += "/share/games/pingus/data/";
+  data_path += "/share/pingus/data/";
   //std::cout << "DataPath: " << data_path << std::endl;
   path_manager.add_path(data_path);
   path_manager.add_path("data");

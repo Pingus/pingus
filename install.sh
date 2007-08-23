@@ -14,8 +14,8 @@ else
         exit 1
     fi
 
-    BINDIR="$1/games/"
-    DATADIR="$1/share/games/pingus/"
+    BINDIR="$1/bin/"
+    DATADIR="$1/share/pingus/"
 
     echo "Installing Pingus in: $1"
 

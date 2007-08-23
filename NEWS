@@ -1,5 +1,5 @@
-0.7.0
-=====
+0.7.0 (23/Aug/2007)
+===================
 * switch from ClanLib to SDL 
 * new anti-aliased fonts
 * better support for resolutions larger then 800x600 (see --geometry WxH option)
@@ -9,7 +9,7 @@
   Serbian, Turkish, Danish, Dutch, Spanish, Fench and Polish
 * level editor temporarly removed
 * a little less fps then the ClanLib version
-* no new levels other main features
+* no new levels or other main features
 
 
 0.6.? (never released)

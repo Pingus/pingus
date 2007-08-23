@@ -38,19 +38,20 @@ If you have a slow machine, starting Pingus with:
 
  % ./pingus -g 640x480 --frame-skip 3
 
-If you want to run Pingus in a larger resolution, you can do so with: 
+Might lead to a better playable game. If you want to run Pingus in a
+larger resolution, you can do so with:
 
  % ./pingus -g 1024x768
 
-Might lead to a better playable game. Fullscreen support is available via:
+Fullscreen support is available via:
 
  % ./pingus --fullscreen
 
-Languages can be listed with:
+Available languages can be listed with:
 
  % ./pingus --list-languages
 
-And started with:
+And used with:
 
  % ./pingus --language de
 
