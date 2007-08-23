@@ -6,6 +6,6 @@
  (characters "!\"#$%&'()*+,-./0123456789:;<=>?@"
              "ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
              "¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßàáâãäåæçèéêëìíîïğñòóôõö÷øùúûüışÿ")
- (image "data/images/fonts/pingus-iso-8859-2.png"))
+ (image "images/fonts/pingus-iso-8859-2.png"))
 
 ;; EOF ;;

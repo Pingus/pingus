@@ -23,6 +23,7 @@
 #include "../debug.hpp"
 #include "../pingus_error.hpp"
 
+#include "path_manager.hpp"
 #include "controller.hpp"
 #include "axes/dummy_axis.hpp"
 #include "buttons/dummy_button.hpp"
@@ -53,7 +54,7 @@ Controller::Controller(const std::string& configfile)
     std_pointer_x(0),
     std_pointer_y(0)
 {
-  FileReader reader = FileReader::parse(configfile);
+  FileReader reader = FileReader::parse(path_manager.complete(configfile));
   if (reader.get_name() != "pingus-controller")
     {
       PingusError::raise("Controller: invalid config file <" + configfile + ">");

@@ -27,6 +27,7 @@
 #include "sprite.hpp"
 #include "blitter.hpp"
 #include "pixel_buffer.hpp"
+#include "path_manager.hpp"
 #include "sprite_description.hpp"
 
 class SpriteImpl
@@ -63,11 +64,11 @@ public:
       frame(0),
       tick_count(0)
   {
-    surface = IMG_Load(desc.filename.c_str());
+    surface = IMG_Load(path_manager.complete(desc.filename).c_str());
     if (!surface)
       {
         std::cout << "Error: Couldn't load " << desc.filename << std::endl;
-        surface = IMG_Load("data/images/core/misc/404.png");
+        surface = IMG_Load(path_manager.complete("images/core/misc/404.png").c_str());
         assert(surface);
       }
 
@@ -308,7 +309,7 @@ Sprite::scale(int w, int h)
 {
   if (impl->frame_size.width != w || impl->frame_size.height != h)
     {
-      boost::shared_ptr<SpriteImpl> new_impl(new SpriteImpl()); 
+      boost::shared_ptr<SpriteImpl> new_impl(new SpriteImpl());
 
       if ((impl->frame_size.width  * impl->array.width)  == impl->surface->w && 
           (impl->frame_size.height * impl->array.height) == impl->surface->h)

@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <assert.h>
+#include <fstream>
 #include "system.hpp"
 #include "pingus_error.hpp"
 #include "sexpr_file_reader.hpp"
@@ -25,8 +26,6 @@
 #include "savegame_manager.hpp"
 #include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
-#include "physfs/physfs_stream.hpp"
-
 
 SavegameManager* SavegameManager::instance_ = 0;
 
@@ -46,12 +45,12 @@ void SavegameManager::deinit()
 }
 
 SavegameManager::SavegameManager(const std::string& arg_filename)
-  : filename(arg_filename)
+  : filename(System::get_statdir() + arg_filename)
 {
   boost::shared_ptr<lisp::Lisp> sexpr;
 
   try {
-    sexpr = lisp::Parser::parse(arg_filename);
+    sexpr = lisp::Parser::parse(filename);
   }
   catch (const std::runtime_error& e) {
     std::cerr << "SavegameManager: " << e.what() << std::endl;
@@ -141,7 +140,7 @@ SavegameManager::store(Savegame& arg_savegame)
 void
 SavegameManager::flush()
 {
-  OFileStream out(filename);
+  std::ofstream out(filename.c_str());
   SExprFileWriter sfw(out);
 
   sfw.begin_section("pingus-savegame");

@@ -24,6 +24,7 @@
 #include "font.hpp"
 #include "line_iterator.hpp"
 #include "font_description.hpp"
+#include "path_manager.hpp"
 #include "gui/display.hpp"
 
 static bool vline_empty(SDL_Surface* surface, int x, Uint8 threshold)
@@ -65,9 +66,12 @@ public:
     for(int i = 0; i < 256; ++i)
       chrs[i].x = chrs[i].y = chrs[i].w = chrs[i].h = 0;
 
-    surface = IMG_Load(desc.image.c_str());
-    //std::cout << "IMG: " << desc.image << std::endl;
-    assert(surface);
+    surface = IMG_Load(path_manager.complete(desc.image).c_str());
+    if (!surface)
+      {
+        std::cout << "IMG: " << path_manager.complete(desc.image) << std::endl;
+        assert(surface);
+      }
 
     vertical_spacing = (desc.vertical_spacing == -1) ? surface->h : desc.vertical_spacing;
 

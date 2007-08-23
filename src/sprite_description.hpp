@@ -61,7 +61,7 @@ public:
     reader.read_enum("origin", origin, string2origin);
     
     reader.read_string("image-file",  filename);
-    filename = "data/data/" + filename;// FIXME: Hack
+    filename = "data/" + filename; // FIXME: Hack
     reader.read_size("image-array", array);
     reader.read_vector2i("image-pos",   frame_pos);
     reader.read_size("image-size",  frame_size);

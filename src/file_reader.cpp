@@ -20,6 +20,7 @@
 #include "sexpr_file_reader.hpp"
 #include "lisp/parser.hpp"
 #include "lisp/lisp.hpp"
+#include "path_manager.hpp"
 #include "file_reader.hpp"
 #include "file_reader_impl.hpp"
 

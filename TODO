@@ -58,24 +58,18 @@ Roadmap for Pingus 0.7.0
 Important:
 ==========
 
-- grep for all the FIXME's and '#if 0' and find those that might be
-  important, add what you find to this TODO
+- update INSTALL.Win32 file
 
-- update INSTALL.* file
-
-- remove all the remaining unneeded debuging std::cout's
-
-- disable demo-writing per default
+Nice to Have:
+=============
 
 - bridging gets more complicated has graphical error (background?!)
   surface background doesn't handle larger res due to the Playfield being offsetted
 
-- there seems to be a bug in the sprite class causing a double-free,
- stuff broke in revision 2938 only got that as bug report, couldn't
- reproduce it myself
+- rapidly clicking the credits button causes the game to crash
 
-Nice to Have:
-=============
+- grep for all the FIXME's and '#if 0' and find those that might be
+  important, add what you find to this TODO
 
 - jumper dies sometimes in data/levels/tutorial/snow11-grumbel.scm when hitting the ground
 

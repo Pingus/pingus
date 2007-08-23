@@ -58,7 +58,7 @@ WorldMap::WorldMap(const std::string& arg_filename)
     mouse_x(0),
     mouse_y(0)
 {
-  parse_file(FileReader::parse(filename));
+  parse_file(FileReader::parse(path_manager.complete(filename)));
 
   pingus = new Pingus(path_graph);
   set_starting_node();

@@ -51,10 +51,12 @@ PathManager::complete (const std::string& relative_path)
 }
 
 bool
-PathManager::find_path (const std::list<std::string>& file_list)
+PathManager::find_path(const std::list<std::string>& file_list)
 {
   for (PathIter i = path_list.begin (); !path_found && i != path_list.end (); ++i)
     {
+      pout(PINGUS_DEBUG_PATHMGR) << "PathManager: Checking: " << *i << std::endl;
+
       bool found_file = true;
       for (PathIter f = file_list.begin (); found_file && f != file_list.end (); ++f)
 	{

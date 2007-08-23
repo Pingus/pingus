@@ -9,7 +9,6 @@ To compile Pingus you need:
  SDL_mixer
  SDL_image
  boost        - http://www.boost.org
- PhysicsFS    - http://icculus.org/physfs/
  libpng       - http://libpng.org/
  scons        - http://scons.org/
 

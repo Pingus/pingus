@@ -23,10 +23,11 @@ import os
 env = Environment(# ENV = {'PKG_CONFIG_PATH' : os.getenv('PKG_CONFIG_PATH')},
                   CC = 'gcc',
                   CCFLAGS = ['-O2', '-Wall', '-Werror', '-g'],
+                  CPPDEFINES = ['ENABLE_BINRELOC'],
                   CPPPATH = ['..', '.'])
 
 env.ParseConfig('sdl-config  --cflags --libs')
-env['LIBS'] += ['SDL_image', 'SDL_mixer', 'physfs', 'png']
+env['LIBS'] += ['SDL_image', 'SDL_mixer', 'png']
 
 env.Program('../pingus', [
 
@@ -228,8 +229,8 @@ env.Program('../pingus', [
 'math/vector2f.cpp',
 'math/vector2i.cpp',
 'math/vector3f.cpp',
-'physfs/physfs_sdl.cpp',
-'physfs/physfs_stream.cpp',
+# 'physfs/physfs_sdl.cpp',
+# 'physfs/physfs_stream.cpp',
 'world.cpp', 
 
 'worldmap/dot.cpp', 
@@ -276,6 +277,7 @@ env.Program('../pingus', [
 'worldobjs/teleporter_target.cpp', 
 'worldobjs/thunderstorm_background.cpp', 
 'worldobjs/woodthing.cpp',
+'../lib/binreloc/binreloc.c'
 ])
 
 ## EOF ##

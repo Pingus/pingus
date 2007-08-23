@@ -49,7 +49,7 @@ ScreenManager::display()
   Input::Controller* input_controller = 0;
 
   if (controller_file.empty())
-    input_controller = new Input::Controller(path_manager.complete("controller/default.scm"));
+    input_controller = new Input::Controller("controller/default.scm");
   else
     input_controller = new Input::Controller(controller_file);
   Input::Controller::set_current(input_controller);

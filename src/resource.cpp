@@ -307,7 +307,7 @@ Resource::load_from_source (const ResDescriptor& res_desc)
 Font
 Resource::load_font(const std::string& res_name)
 {
-  FontDescription desc("data/images/" + res_name + ".font");
+  FontDescription desc("images/" + res_name + ".font");
   //("data/images/fonts/chalk_large-iso-8859-1.font");
   return Font(desc);
 }

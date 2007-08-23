@@ -19,6 +19,7 @@
 
 #include "pingus_error.hpp"
 #include "file_reader.hpp"
+#include "path_manager.hpp"
 #include "font_description.hpp"
 
 FontDescription::FontDescription(const std::string& filename_)
@@ -31,7 +32,7 @@ FontDescription::FontDescription(const std::string& filename_)
   char_spacing    = 1.0f;
   vertical_spacing = -1.0f;
 
-  FileReader reader = FileReader::parse(filename);
+  FileReader reader = FileReader::parse(path_manager.complete(filename));
 
   if (reader.get_name() != "pingus-font")
     {

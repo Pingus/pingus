@@ -23,6 +23,7 @@
 #include <cassert>
 #include <iostream>
 #include <string>
+#include <fstream>
 #include <exception>
 
 #include "physfs/physfs_stream.hpp"
@@ -67,7 +68,7 @@ Parser::~Parser()
 boost::shared_ptr<Lisp>
 Parser::parse(const std::string& filename)
 {
-  IFileStream in(filename);
+  std::ifstream in(filename.c_str()); // FIXME: Temporary switched away from physfs IFileStream
   if(!in.good()) {
     std::stringstream msg;
     msg << "Parser problem: Couldn't open file '" << filename << "'.";

@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <algorithm>
+#include <fstream>
 #include "system.hpp"
 #include "pingus_error.hpp"
 #include "string_util.hpp"
@@ -26,8 +27,6 @@
 #include "sexpr_file_writer.hpp"
 #include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
-#include "physfs/physfs_stream.hpp"
-
 
 StatManager* StatManager::instance_ = 0;
 
@@ -71,7 +70,7 @@ StatManager::get_resname(const std::string& filename)
 }
 
 StatManager::StatManager(const std::string& arg_filename)
-  : statfilename(arg_filename)
+  : statfilename(System::get_statdir() + arg_filename)
 {
   load(statfilename);
 }
@@ -83,7 +82,7 @@ StatManager::~StatManager()
 void
 StatManager::load(const std::string& filename)
 {
-  if (!PHYSFS_exists(filename.c_str()))
+  if (!System::exist(filename.c_str()))
     {
       // Create empty file
       save(filename);
@@ -128,7 +127,7 @@ StatManager::flush()
 void
 StatManager::save(const std::string& filename)
 {
-  OFileStream out(filename);
+  std::ofstream out(filename.c_str());
   SExprFileWriter writer(out);
 
   writer.begin_section("pingus-stats");

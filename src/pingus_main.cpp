@@ -37,12 +37,9 @@
 
 #include "SDL.h"
 
-//#include <ClanLib/display.h>
-//#include <ClanLib/sound.h>
-//#include <ClanLib/core.h>
-//#include <ClanLib/sdl.h>
-//#include <ClanLib/gl.h>
-//#include <ClanLib/gui.h>
+#ifdef ENABLE_BINRELOC
+#include "../lib/binreloc/binreloc.h"
+#endif 
 
 #include "gettext.h"
 #include "tinygettext/dictionary_manager.hpp"
@@ -211,10 +208,13 @@ PingusMain::check_args(int argc, char** argv)
                   _("Displays this help"));
   argp.add_option('n', "disable-intro", "", 
                   _("Disable intro"));
+
+#if 0
   argp.add_option('G', "use-opengl", "",
                   _("Use OpenGL"));
   argp.add_option('S', "use-sdl", "",
                   _("Use SDL"));
+#endif 
   argp.add_option('w', "window", "",
                   _("Start in Window Mode"));
   argp.add_option('f', "fullscreen", "",
@@ -601,7 +601,7 @@ PingusMain::init_path_finder()
     std::cout << "Directory name of " << executable_name << " - " << System::dirname(executable_name)
               << std::endl;
 
-#ifdef __APPLE__
+#if defined(__APPLE__)
   char resource_path[PATH_MAX];
   CFURLRef ref = CFBundleCopyResourcesDirectoryURL(CFBundleGetMainBundle());
   if (!ref || !CFURLGetFileSystemRepresentation(ref, true, (UInt8*)resource_path, PATH_MAX))
@@ -612,19 +612,31 @@ PingusMain::init_path_finder()
   CFRelease(ref);
   path_manager.add_path("data");
   //path_manager.add_path(CL_String::get_path(std::string(resource_path) + "/data/"));
+#elif ENABLE_BINRELOC
+  path_manager.add_path("data");
+  
+  BrInitError error;
+  if (br_init (&error) == 0 && error != BR_INIT_ERROR_DISABLED)
+    {
+      std::cout << "Warning: BinReloc failed to initialize (error code " << error << ")" << std::endl;
+      std::cout << "Will fallback to hardcoded default path." << std::endl; 
+    }
+  
+  std::string data_path = br_find_prefix("data");
+  data_path += "/share/games/pingus/data/";
+  //std::cout << "DataPath: " << data_path << std::endl;
+  path_manager.add_path(data_path);
+  path_manager.add_path("data");
 #else
   path_manager.add_path("data");
-  //path_manager.add_path(CL_String::get_path(CL_System::get_exe_path() + "/data/"));
-  //path_manager.add_path(CL_String::get_path(CL_System::get_exe_path() + "/../data/"));
-  //path_manager.add_path(CL_String::get_path(CL_System::get_exe_path() + "/../share/games/pingus/"));
 #endif
 
   std::list<std::string> file_list;
-  file_list.push_back ("data/core.xml");
+  file_list.push_back ("data/core.res");
 
   if (!path_manager.find_path (file_list))
     {
-      std::cout << "Error: Couldn't find 'data/core.xml', please set the enviroment variable\n"
+      std::cout << "Error: Couldn't find 'data/core.res', please set the enviroment variable\n"
                 << "PINGUS_DATADIR to the path of the file `data/core.scr' or use the\n"
                 << "-d option." << std::endl;
       exit(EXIT_FAILURE);
@@ -651,6 +663,7 @@ PingusMain::print_greeting_message()
     std::cout.put('=');
   std::cout << std::endl;
 
+  std::cout << "data path:               " << path_manager.get_base_path() << std::endl;
   std::cout << "language:                " << dictionary_manager.get_dictionary().get_language().name << std::endl;
 
   Fonts::encoding = StringUtil::to_lower(dictionary_manager.get_dictionary().get_charset());
@@ -805,11 +818,13 @@ PingusMain::main(int argc, char** argv)
     {
       init_path_finder();
 
+#if 0
       PHYSFS_init(argv[0]);
       PHYSFS_addToSearchPath("data", 0);
       PHYSFS_addToSearchPath(".", 0);
       PHYSFS_addToSearchPath(System::get_statdir().c_str(), 0);
       PHYSFS_setWriteDir(System::get_statdir().c_str());
+#endif
 
       quick_check_args(argc, argv);
       read_rc_file();
@@ -849,7 +864,9 @@ PingusMain::main(int argc, char** argv)
 
   deinit_pingus();
 
+#if 0
   PHYSFS_deinit();
+#endif
 
   return 0;
 }

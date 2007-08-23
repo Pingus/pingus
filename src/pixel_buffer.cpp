@@ -20,6 +20,7 @@
 #include "SDL_image.h"
 #include <sstream>
 #include <iostream>
+#include "path_manager.hpp"
 #include "pixel_buffer.hpp"
 
 class PixelBufferImpl
@@ -39,7 +40,7 @@ PixelBuffer::PixelBuffer()
 PixelBuffer::PixelBuffer(const std::string& name_)
   : impl(new PixelBufferImpl())
 {
-  impl->surface = IMG_Load(name_.c_str());
+  impl->surface = IMG_Load(path_manager.complete(name_).c_str());
   if (!impl->surface)
     std::cout << "XXXXXX Failed to load: " << name_ << std::endl;
   ///else

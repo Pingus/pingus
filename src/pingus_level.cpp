@@ -23,6 +23,7 @@
 #include "pingus_error.hpp"
 #include "pingus_level_impl.hpp"
 #include "globals.hpp"
+#include "path_manager.hpp"
 #include "debug.hpp"
 
 PingusLevel::PingusLevel()
@@ -36,7 +37,7 @@ PingusLevel::PingusLevel(const std::string& resname,
   : impl(new PingusLevelImpl())
 {
   impl->resname = resname;
-  FileReader reader = FileReader::parse(filename);
+  FileReader reader = FileReader::parse(path_manager.complete(filename));
 
   if (reader.get_name() != "pingus-level")
     {

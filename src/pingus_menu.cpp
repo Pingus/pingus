@@ -277,7 +277,7 @@ PingusMenu::on_click(MenuButton* button)
 #ifdef NEW_MENU
       setup_game_menu();
 #else
-      do_start("data/worldmaps/tutorial.worldmap");
+      do_start("worldmaps/tutorial.worldmap");
 #endif
     }
   else if (button == quit_button)
