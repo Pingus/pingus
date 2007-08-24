@@ -21,7 +21,6 @@
 import os
 
 env = Environment(# ENV = {'PKG_CONFIG_PATH' : os.getenv('PKG_CONFIG_PATH')},
-                  CC = 'gcc',
                   CCFLAGS = ['-O2', '-Wall', '-Werror', '-g'],
                   CPPDEFINES = ['ENABLE_BINRELOC'],
                   CPPPATH = ['..', '.'])
