@@ -29,7 +29,7 @@
 #include <signal.h>
 #include <locale.h>
 #include <iostream>
-#include <physfs.h>
+//#include <physfs.h>
 #include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
 #include "string_util.hpp"
