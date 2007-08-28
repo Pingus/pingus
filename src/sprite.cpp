@@ -36,6 +36,7 @@ private:
   friend class Sprite;
 
   SDL_Surface* surface;
+  bool         optimized;
 
   Vector2i offset;
 
@@ -60,6 +61,7 @@ public:
 
   SpriteImpl(const SpriteDescription& desc)
     : surface(0),
+      optimized(false),
       finished(false),
       frame(0),
       tick_count(0)
@@ -90,7 +92,8 @@ public:
   }
 
   SpriteImpl(const PixelBuffer& pixelbuffer)
-    : offset(0,0),
+    : optimized(false),
+      offset(0,0),
       frame_pos(0,0),
       frame_size(pixelbuffer.get_width(), pixelbuffer.get_height()),
       frame_delay(0),
@@ -107,6 +110,8 @@ public:
           surface = SDL_DisplayFormat(pixelbuffer.get_surface());
         else
           surface = SDL_DisplayFormatAlpha(pixelbuffer.get_surface());
+
+        optimized = true;
       }
     else
       {
@@ -122,15 +127,20 @@ public:
 
   void optimize()
   {
-    // FIXME: Could add a check to check if the surface is already optimized
-    SDL_Surface* old_surface = surface;
+    if (!optimized)
+      {
+        // FIXME: Could add a check to check if the surface is already optimized
+        SDL_Surface* old_surface = surface;
 
-    if (surface->format->Amask == 0)
-      surface = SDL_DisplayFormat(old_surface);
-    else
-      surface = SDL_DisplayFormatAlpha(old_surface);
+        if (surface->format->Amask == 0)
+          surface = SDL_DisplayFormat(old_surface);
+        else
+          surface = SDL_DisplayFormatAlpha(old_surface);
   
-    SDL_FreeSurface(old_surface);
+        SDL_FreeSurface(old_surface);
+
+        optimized = true;
+      }
   }
 
   void update(float delta)
