@@ -52,13 +52,16 @@ Roadmap for Pingus 0.8.0
 
 - worldmap pingu walks right over locked levels
 
-Roadmap for Pingus 0.7.0
+- Wiimote support (libcwiid)
+
+Roadmap for Pingus 0.7.1
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Important:
 ==========
 
-- update INSTALL.Win32 file
+- fix level loading from command line
+- add some SConscript checks (for compiler missing)
 
 Nice to Have:
 =============
