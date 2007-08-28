@@ -148,6 +148,7 @@ Credits::Credits()
   credits.push_back("_Ingo Ruhnke");
   credits.push_back("_Janne Morén");
   credits.push_back("_Jarno Elonen");
+  credits.push_back("_Karl Ove Hufthammer");
   credits.push_back("_Milan Babuskov");
   credits.push_back("_Philippe Saint-Pierre");
   credits.push_back("_Ricardo Cruz");

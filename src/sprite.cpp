@@ -85,6 +85,8 @@ public:
     loop_last_cycle = false;
 
     offset = calc_origin(desc.origin, frame_size) - desc.offset;
+    
+    optimize();
   }
 
   SpriteImpl(const PixelBuffer& pixelbuffer)
@@ -101,7 +103,10 @@ public:
   {
     if (pixelbuffer.get_surface())
       {
-        surface = SDL_DisplayFormatAlpha(pixelbuffer.get_surface());
+        if (pixelbuffer.get_surface()->format->Amask == 0)
+          surface = SDL_DisplayFormat(pixelbuffer.get_surface());
+        else
+          surface = SDL_DisplayFormatAlpha(pixelbuffer.get_surface());
       }
     else
       {
@@ -113,6 +118,19 @@ public:
   ~SpriteImpl()
   {
     SDL_FreeSurface(surface);
+  }
+
+  void optimize()
+  {
+    // FIXME: Could add a check to check if the surface is already optimized
+    SDL_Surface* old_surface = surface;
+
+    if (surface->format->Amask == 0)
+      surface = SDL_DisplayFormat(old_surface);
+    else
+      surface = SDL_DisplayFormatAlpha(old_surface);
+  
+    SDL_FreeSurface(old_surface);
   }
 
   void update(float delta)
@@ -417,17 +435,7 @@ Sprite::make_single_user()
 void
 Sprite::optimize()
 {
-  // FIXME: Could add a check to check if the surface is already optimized
-  SDL_Surface* new_surface;
-
-  if (impl->surface->format->Amask == 0)
-    new_surface = SDL_DisplayFormat(impl->surface);
-  else
-    new_surface = SDL_DisplayFormatAlpha(impl->surface);
-  
-  SDL_FreeSurface(impl->surface);
-
-  impl->surface = new_surface;
+  impl->optimize();
 }
 
 /* EOF */

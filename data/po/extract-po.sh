@@ -2,7 +2,7 @@
 
 set -e
 
-TMP=$(tempfile)
+TMP=$(mktemp)
 OUT="data/po/pingus.pot"
 
 cd ../.. # go to toplevel dir

@@ -54,6 +54,13 @@ Roadmap for Pingus 0.8.0
 
 - Wiimote support (libcwiid)
 
+- Translation issues:
+
+ * The suffix showing which extra skill a Pingus has (e.g. [f] for Floater or
+   [c] for Climber).
+
+ * b) The big sign on the 'Tutorial Island' image
+
 Roadmap for Pingus 0.7.1
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
