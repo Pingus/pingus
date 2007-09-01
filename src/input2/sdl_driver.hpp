@@ -97,7 +97,7 @@ public:
   Pointer*  create_pointer (const FileReader& reader, Control* parent);
 
   void update(float delta);
-  std::string get_name() { return "sdl"; }
+  std::string get_name() const { return "sdl"; }
 };
 
 } // namespace Input

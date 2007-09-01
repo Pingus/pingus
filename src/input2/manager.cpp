@@ -24,6 +24,7 @@
 #include "path_manager.hpp"
 #include "sdl_driver.hpp"
 #include "core_driver.hpp"
+#include "usbmouse_driver.hpp"
 #include "manager.hpp"
 
 namespace Input {
@@ -109,7 +110,7 @@ Manager::load(const std::string& filename)
                   if (pointer)
                     ctrl_pointer->add_pointer(pointer);
                   else
-                    std::cout << "Manager: pointer: Couldn't create pointer" << j->get_name() << std::endl;
+                    std::cout << "Manager: pointer: Couldn't create pointer " << j->get_name() << std::endl;
                 }
 
             }
@@ -124,7 +125,7 @@ Manager::load(const std::string& filename)
                   if (scroller)
                     ctrl_scroller->add_scroller(scroller);
                   else
-                    std::cout << "Manager: scroller: Couldn't create scroller" << j->get_name() << std::endl;
+                    std::cout << "Manager: scroller: Couldn't create scroller " << j->get_name() << std::endl;
                 }
 
             }
@@ -155,7 +156,7 @@ Manager::load(const std::string& filename)
                   else
                     std::cout << "Manager: axis: Couldn't create axis" << j->get_name() << std::endl;
                 }
-            } 
+            }
           else
             {
               PingusError::raise(std::string("Manager: Unkown Element in Controller Config: ") 
@@ -204,6 +205,8 @@ Manager::load_driver(const std::string& name)
         driver = new SDLDriver();
       } else if (name == "core") {
         driver = new CoreDriver(this);
+      } else if (name == "usbmouse") {
+        driver = new USBMouseDriver();
       } else {
         std::cout << "Manager: Unknown driver: " << name << std::endl;
         return 0;

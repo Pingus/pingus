@@ -34,13 +34,14 @@ class AxisPointer : public Pointer
 private:
   Axis* x_axis;
   Axis* y_axis;
+  Button* speed_button;
   float speed;
 
 public:
   AxisPointer(Control* parent) 
     : Pointer(parent),
-      x_axis(0), y_axis(0),
-      speed(800.0f)
+      x_axis(0), y_axis(0), speed_button(0),
+      speed(200.0f)
   {
   }
 
@@ -48,10 +49,11 @@ public:
   {
   }
 
-  void set_axis(Axis* x, Axis* y)
+  void setup(Axis* x, Axis* y, Button* s = 0)
   {
     x_axis = x;
     y_axis = y;
+    speed_button = s;
   }
 
   void update(Control* ) 
@@ -61,10 +63,20 @@ public:
 
   void update(float delta)
   {
-    Vector2f new_pos = pos;
+    x_axis->update(delta);
+    y_axis->update(delta);
+    if (speed_button) speed_button->update(delta);
 
-    new_pos.x += x_axis->get_pos() * speed * delta;
-    new_pos.y += y_axis->get_pos() * speed * delta;
+    Vector2f new_pos = pos;
+    float c_speed = speed;
+    
+    if (speed_button && speed_button->get_state() == BUTTON_PRESSED)
+      {
+        c_speed *= 5.0f;
+      }
+
+    new_pos.x += x_axis->get_pos() * c_speed * delta;
+    new_pos.y += y_axis->get_pos() * c_speed * delta;
 
     // FIXME: Shouldn't be hardcored, but shouldn't depend on Display
     // either
@@ -123,9 +135,16 @@ CoreDriver::create_pointer(const FileReader& reader, Control* parent)
       Axis* x_axis = manager->create_axis(x_reader.get_sections().front(), axis);
       Axis* y_axis = manager->create_axis(y_reader.get_sections().front(), axis);
 
+      Button* button = 0;
+      FileReader button_reader;
+      if (reader.read_section("button", button_reader))
+        {
+          button = manager->create_button(button_reader.get_sections().front(), axis);
+        }
+
       if (x_axis && y_axis)
         {
-          axis->set_axis(x_axis, y_axis);
+          axis->setup(x_axis, y_axis, button);
           return axis;
         }
       else

@@ -31,7 +31,7 @@ public:
   Driver() {}
   virtual ~Driver() {}
 
-  virtual std::string get_name() =0;
+  virtual std::string get_name() const =0;
   virtual void update(float delta) =0;
 
   virtual Button*   create_button  (const FileReader& reader, Control* parent) =0;

@@ -11,6 +11,7 @@ env.Program('main', [
     'controller_description.cpp',
     'controller.cpp',
     'core_driver.cpp',
+    'usbmouse_driver.cpp',
     'sdl_driver.cpp',
     'manager.cpp',
     '../file_reader.cpp',
