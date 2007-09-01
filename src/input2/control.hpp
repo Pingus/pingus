@@ -43,7 +43,7 @@ public:
   virtual ~Control() {
   }
 
-  void notify_parent() 
+  virtual void notify_parent() 
   {
     if (parent)
       {
@@ -51,7 +51,7 @@ public:
       }
     else
       {
-        std::cout << "Event thingy: " << std::endl;
+        std::cout << "Input: Control: Error: parent missing! " << std::endl;
       }
   }
 
@@ -80,6 +80,56 @@ public:
         state = new_state;
         notify_parent();
       }
+  }
+};
+
+class ButtonGroup : public Button 
+{
+private:
+  std::vector<Button*> buttons;
+  
+public: 
+  ButtonGroup(Control* parent)
+    : Button(parent)
+  {}
+
+  void add_button(Button* button) {
+    buttons.push_back(button);
+  }
+
+  virtual void update(Control* ctrl)
+  {
+    ButtonState new_state = BUTTON_RELEASED;
+
+    for(std::vector<Button*>::iterator i = buttons.begin(); 
+        i != buttons.end(); ++i)
+      {
+        if ((*i)->get_state() == BUTTON_PRESSED)
+          new_state = BUTTON_PRESSED;
+      }
+
+    if (new_state != state)
+      {
+        state = new_state;
+        notify_parent();
+      }
+  }
+};
+
+class ControllerButton : public ButtonGroup
+{
+private:
+  int id;
+
+public:
+  ControllerButton(int id_)
+    : ButtonGroup(0),
+      id(id_)
+  {}
+
+  virtual void notify_parent() {
+    std::cout << "Button " << id << " was " << (state == BUTTON_PRESSED
+                                                ? "pressed" : "released") << std::endl;    
   }
 };
 
@@ -139,35 +189,6 @@ public:
     if (delta != new_delta) 
       {
         delta = new_delta;
-        notify_parent();
-      }
-  }
-};
-
-class ButtonGroup : public Button 
-{
-private:
-  std::vector<Button*> buttons;
-  
-public: 
-  ButtonGroup(Control* parent)
-    : Button(parent)
-  {}
-
-  void update(Control* ctrl)
-  {
-    ButtonState new_state = BUTTON_RELEASED;
-
-    for(std::vector<Button*>::iterator i = buttons.begin(); 
-        i != buttons.end(); ++i)
-      {
-        if ((*i)->get_state() == BUTTON_PRESSED)
-          new_state = BUTTON_PRESSED;
-      }
-
-    if (new_state != state)
-      {
-        state = new_state;
         notify_parent();
       }
   }

@@ -28,20 +28,28 @@ namespace Input {
 
 class Controller
 {
-public:
+private:
   // State Stuff
-  std::vector<Button*>   buttons;
+  std::vector<ControllerButton*>   buttons;
   std::vector<Axis*>     axis;
   std::vector<Pointer*>  pointer;
   std::vector<Scroller*> scroller;
   
+public:
   // Events
   std::vector<Event> events;
 
   Controller()  {}
   ~Controller() {}
 
-  void add_button(int id, Button* button) {
+  ControllerButton* get_button(int id) {
+    if (id >= 0 && id < int(buttons.size()))
+      return buttons[id];
+    else
+      return 0;
+  }
+
+  void add_button(int id, ControllerButton* button) {
     if (int(buttons.size())-1 < id)
       buttons.resize(id+1);
    

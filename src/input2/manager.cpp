@@ -109,7 +109,15 @@ Manager::load(const std::string& filename)
                   Driver* drv = load_driver(driver);
                   if (drv)
                     {
-                      Button* button = drv->create_button(*j, 0);
+                      int id = desc.get_definition(i->get_name()).id;
+                      ControllerButton* ctrl_button = controller.get_button(id);
+                      if (!ctrl_button)
+                        {
+                          ctrl_button = new ControllerButton(id);
+                          controller.add_button(id, ctrl_button);
+                        }
+
+                      Button* button = drv->create_button(*j, ctrl_button);
                       if (!button)
                         {
                           std::cout << "Driver '" << driver << "' couldn't create button '" 
@@ -118,8 +126,7 @@ Manager::load(const std::string& filename)
                         }
                       else
                         {
-                          controller.add_button(desc.get_definition(i->get_name()).id, 
-                                                button);
+                          ctrl_button->add_button(button);
                         }
                     }
                   else
