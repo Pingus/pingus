@@ -1,6 +1,6 @@
 ##  -*- python -*-
 
-env = Environment(CCFLAGS  = ['-O2', '-Wall', '-Werror', '-g'],
+env = Environment(CCFLAGS  = ['-O0', '-Wall', '-Werror', '-g'],
                   CPPPATH  = ['..', '../..'])
 
 env.ParseConfig('sdl-config  --cflags --libs')

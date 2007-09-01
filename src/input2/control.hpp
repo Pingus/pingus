@@ -55,8 +55,8 @@ public:
       }
   }
 
-  virtual void update(Control* ctrl) 
-  {    
+  virtual void update(Control* ctrl) {
+    std::cout << "Warning: Control:update() not handled" << std::endl;
   }
 };
 
@@ -128,7 +128,7 @@ public:
   {}
 
   virtual void notify_parent() {
-    std::cout << "Button " << id << " was " << (state == BUTTON_PRESSED
+    std::cout << "ControlButton: id=" << id << " was " << (state == BUTTON_PRESSED
                                                 ? "pressed" : "released") << std::endl;    
   }
 };
@@ -157,13 +157,15 @@ public:
 
 class Pointer : public Control 
 {
-private:
+protected:
   Vector2f pos;
 
 public:
   Pointer(Control* parent)
     : Control(parent)
   {}
+
+  Vector2f get_pos() const { return pos; }
 
   void set_pos(const Vector2f& new_pos) {
     if (pos != new_pos) 
@@ -176,7 +178,7 @@ public:
 
 class Scroller : public Control 
 {
-private:
+protected:
   Vector2f delta;
   
 public:
@@ -184,6 +186,8 @@ public:
     : Control(parent),
       delta(0.0f, 0.0f)
   {}
+
+  Vector2f get_delta() const { return delta; }
 
   void set_delta(const Vector2f& new_delta) {
     if (delta != new_delta) 
@@ -203,9 +207,13 @@ public:
     : Axis(parent)
   {}
 
+  void add_axis(Axis* axis) {
+    axes.push_back(axis);
+  }
+
   void update(Control* ctrl) 
   {
-    float new_pos;
+    float new_pos = 0;
     
     for(std::vector<Axis*>::iterator i = axes.begin(); i != axes.end(); ++i)
       {
@@ -222,6 +230,22 @@ public:
   }
 };
 
+class ControllerAxis : public AxisGroup 
+{
+private:
+  int id;
+
+public:
+  ControllerAxis(int id_) 
+    : AxisGroup(0),
+      id(id_)
+  {}
+
+  virtual void notify_parent() {
+    std::cout << "ControlAxis moved id=" << id << " " << pos  << std::endl;
+  }
+};
+
 class PointerGroup : public Pointer 
 {
 private:
@@ -231,6 +255,37 @@ public:
   PointerGroup(Control* parent)
     : Pointer(parent)
   {}
+
+  void update(Control* p) {
+    Pointer* pointer = dynamic_cast<Pointer*>(p);
+    assert(pointer);
+    Vector2f new_pos = pointer->get_pos();
+    if (new_pos != pos)
+      {
+        pos = new_pos;
+        notify_parent();
+      }
+  }
+
+  void add_pointer(Pointer* p) {
+    pointer.push_back(p);
+  }
+};
+
+class ControllerPointer : public PointerGroup
+{
+private:
+  int id;
+
+public:
+  ControllerPointer(int id_)
+    : PointerGroup(0),
+      id(id_)
+  {}
+
+  virtual void notify_parent() {
+    std::cout << "ControlPointer moved id=" << id << " " << pos.x << ", " << pos.y  << std::endl;
+  }
 };
 
 class ScrollerGroup : public Scroller 
@@ -242,6 +297,32 @@ public:
   ScrollerGroup(Control* parent)
     : Scroller(parent)
   {}
+
+  void update(Control* p) {
+    Scroller* scroller = dynamic_cast<Scroller*>(p);
+    assert(scroller);
+    delta = scroller->get_delta();
+    notify_parent();
+  }
+
+  void add_scroller(Scroller* p) {
+    scrollers.push_back(p);
+  }
+};
+
+class ControllerScroller : public ScrollerGroup
+{
+private:
+  int id;
+public:
+  ControllerScroller(int id_)
+    : ScrollerGroup(0),
+      id(id_)
+  {}
+
+  virtual void notify_parent() {
+    std::cout << "ControlScroller: moved id=" << id << " " << delta.x << ", " << delta.y  << std::endl;
+  }
 };
 
 } // namespace Input

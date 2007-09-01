@@ -30,6 +30,11 @@ namespace Input {
 
 Manager::Manager()
 {
+  desc.add_axis("test-axis",  TEST_AXIS);
+
+  desc.add_pointer("standard-pointer",   STANDARD_POINTER);
+  desc.add_scroller("standard-scroller", STANDARD_SCROLLER);
+
   desc.add_button("primary-button",      PRIMARY_BUTTON);
   desc.add_button("secondary-button",    SECONDARY_BUTTON);
   desc.add_button("fast-forward-button", FAST_FORWARD_BUTTON);
@@ -79,6 +84,8 @@ std::string get_driver_part(const std::string& fullname)
 void
 Manager::load(const std::string& filename)
 {
+  controller.load(desc);
+
   FileReader reader = FileReader::parse(filename);
 
   if (reader.get_name() != "pingus-controller")
@@ -93,51 +100,61 @@ Manager::load(const std::string& filename)
         {
           if (StringUtil::has_suffix(i->get_name(), "pointer"))
             {
-              std::cout << "Pointer:  '" << i->get_name() << "'" << std::endl;
+              const std::vector<FileReader>& pointers = i->get_sections();
+              for(std::vector<FileReader>::const_iterator j = pointers.begin(); j != pointers.end(); ++j)
+                {
+                  int id = desc.get_definition(i->get_name()).id;
+                  ControllerPointer* ctrl_pointer = controller.get_pointer(id);
+                  Pointer* pointer = create_pointer(*j, ctrl_pointer);
+                  if (pointer)
+                    ctrl_pointer->add_pointer(pointer);
+                  else
+                    std::cout << "Manager: pointer: Couldn't create pointer" << j->get_name() << std::endl;
+                }
+
             }
           else if (StringUtil::has_suffix(i->get_name(), "scroller"))
             {
-              std::cout << "Scroller: '" << i->get_name() << "'" << std::endl;              
+              const std::vector<FileReader>& scrollers = i->get_sections();
+              for(std::vector<FileReader>::const_iterator j = scrollers.begin(); j != scrollers.end(); ++j)
+                {
+                  int id = desc.get_definition(i->get_name()).id;
+                  ControllerScroller* ctrl_scroller = controller.get_scroller(id);
+                  Scroller* scroller = create_scroller(*j, ctrl_scroller);
+                  if (scroller)
+                    ctrl_scroller->add_scroller(scroller);
+                  else
+                    std::cout << "Manager: scroller: Couldn't create scroller" << j->get_name() << std::endl;
+                }
+
             }
           else if (StringUtil::has_suffix(i->get_name(), "button"))
             {             
               const std::vector<FileReader>& buttons = i->get_sections();
               for(std::vector<FileReader>::const_iterator j = buttons.begin(); j != buttons.end(); ++j)
                 {
-                  std::string driver = get_driver_part(j->get_name());
-                  
-                  Driver* drv = load_driver(driver);
-                  if (drv)
-                    {
-                      int id = desc.get_definition(i->get_name()).id;
-                      ControllerButton* ctrl_button = controller.get_button(id);
-                      if (!ctrl_button)
-                        {
-                          ctrl_button = new ControllerButton(id);
-                          controller.add_button(id, ctrl_button);
-                        }
-
-                      Button* button = drv->create_button(*j, ctrl_button);
-                      if (!button)
-                        {
-                          std::cout << "Driver '" << driver << "' couldn't create button '" 
-                                    << i->get_name() << "' => '" 
-                                    << j->get_name() << "'" << std::endl;
-                        }
-                      else
-                        {
-                          ctrl_button->add_button(button);
-                        }
-                    }
+                  int id = desc.get_definition(i->get_name()).id;
+                  ControllerButton* ctrl_button = controller.get_button(id);
+                  Button* button = create_button(*j, ctrl_button);
+                  if (button)
+                    ctrl_button->add_button(button);
                   else
-                    {
-                      std::cout << "Manager: Error: Couldn't find driver: '" << driver << "'" << std::endl;
-                    }
+                    std::cout << "Manager: button: Couldn't create button" << j->get_name() << std::endl;
                 }
             }
           else if (StringUtil::has_suffix(i->get_name(), "axis"))
             {
-              std::cout << "Axis:    '" << i->get_name() << "'" << std::endl;
+              const std::vector<FileReader>& axes = i->get_sections();
+              for(std::vector<FileReader>::const_iterator j = axes.begin(); j != axes.end(); ++j)
+                {
+                  int id = desc.get_definition(i->get_name()).id;
+                  ControllerAxis* ctrl_axis = controller.get_axis(id);
+                  Axis* axis = create_axis(*j, ctrl_axis);
+                  if (axis)
+                    ctrl_axis->add_axis(axis);
+                  else
+                    std::cout << "Manager: axis: Couldn't create axis" << j->get_name() << std::endl;
+                }
             } 
           else
             {
@@ -194,6 +211,74 @@ Manager::load_driver(const std::string& name)
 
       drivers.push_back(driver);
       return driver;
+    }
+}
+
+Button*
+Manager::create_button(const FileReader& reader, Button* parent)
+{
+  std::string driver = get_driver_part(reader.get_name());
+                  
+  Driver* drv = load_driver(driver);
+  if (drv)
+    {
+      return drv->create_button(reader, parent);
+    }
+  else
+    {
+      std::cout << "Manager: Error: Couldn't find driver: '" << driver << "'" << std::endl;
+      return 0;
+    }
+}
+
+Axis*
+Manager::create_axis(const FileReader& reader, Axis* parent)
+{
+  std::string driver = get_driver_part(reader.get_name());
+                  
+  Driver* drv = load_driver(driver);
+  if (drv)
+    {
+      return drv->create_axis(reader, parent);
+    }
+  else
+    {
+      std::cout << "Manager: Error: Couldn't find driver: '" << driver << "'" << std::endl;
+      return 0;
+    }
+}
+
+Pointer*
+Manager::create_pointer(const FileReader& reader, Pointer* parent)
+{
+  std::string driver = get_driver_part(reader.get_name());
+                  
+  Driver* drv = load_driver(driver);
+  if (drv)
+    {
+      return drv->create_pointer(reader, parent);
+    }
+  else
+    {
+      std::cout << "Manager: Error: Couldn't find driver: '" << driver << "'" << std::endl;
+      return 0;
+    }
+}
+
+Scroller*
+Manager::create_scroller(const FileReader& reader, Scroller* parent)
+{
+  std::string driver = get_driver_part(reader.get_name());
+                  
+  Driver* drv = load_driver(driver);
+  if (drv)
+    {
+      return drv->create_scroller(reader, parent);
+    }
+  else
+    {
+      std::cout << "Manager: Error: Couldn't find driver: '" << driver << "'" << std::endl;
+      return 0;
     }
 }
 

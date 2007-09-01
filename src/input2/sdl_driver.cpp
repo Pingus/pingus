@@ -35,19 +35,43 @@ SDLDriver::SDLDriver()
   }
 }
 
+SDLDriver::~SDLDriver()
+{
+  
+}
+
 Button*
 SDLDriver::create_button(const FileReader& reader, Control* parent)
 {
   //std::cout << "SDL: " << reader.get_name() << std::endl;
   if (reader.get_name() == "sdl:joystick-button")
     {
-      return 0;      
+      JoystickButtonBinding binding;
+
+      reader.read_int("device", binding.device);
+      reader.read_int("button", binding.button);
+      
+      if (open_joystick(binding.device))
+        {
+          binding.binding = new Button(parent);
+          joystick_button_bindings.push_back(binding);
+      
+          return binding.binding;
+        }
+      else
+        {
+          return 0;
+        }
     }
   else if (reader.get_name() == "sdl:mouse-button")
     {
-      //MouseButtonBinding binding;
-      //reader.read_int("button", binding.button);
-      return 0;
+      MouseButtonBinding binding;
+
+      reader.read_int("button", binding.button);
+      binding.binding = new Button(parent);
+      mouse_button_bindings.push_back(binding);
+
+      return binding.binding;
     }
   else if (reader.get_name() == "sdl:keyboard-button")
     {
@@ -61,7 +85,6 @@ SDLDriver::create_button(const FileReader& reader, Control* parent)
       
               binding.key = i->second;
               binding.binding = new Button(parent);
-          
               keyboard_button_bindings.push_back(binding);
 
               return binding.binding;
@@ -71,7 +94,7 @@ SDLDriver::create_button(const FileReader& reader, Control* parent)
               std::cout << "SDLDriver: Couldn't find keysym for key '" << key << "'" << std::endl;
               return 0;
             }
-        } 
+        }
       else
         {
           std::cout << "SDLDriver: 'key' missing" << std::endl;
@@ -87,27 +110,94 @@ SDLDriver::create_button(const FileReader& reader, Control* parent)
 Axis*
 SDLDriver::create_axis(const FileReader& reader, Control* parent)
 {
-  return 0;
+  if (reader.get_name() == "sdl:joystick-axis")
+    {
+      JoystickAxisBinding binding;
+
+      reader.read_int("device", binding.device);
+      reader.read_int("axis",   binding.axis);
+      
+      if (open_joystick(binding.device))
+        {
+          binding.binding = new Axis(parent);
+          joystick_axis_bindings.push_back(binding);
+      
+          return binding.binding;
+        }
+      else
+        {
+          return 0;
+        }
+    }
+  else
+    {
+      return 0;
+    }
 }
 
 Scroller*
 SDLDriver::create_scroller(const FileReader& reader, Control* parent)
 {
-  return 0;
+  if (reader.get_name() == "sdl:mouse-scroller")
+    {
+      ScrollerBinding binding;
+
+      binding.binding = new Scroller(parent);
+      scroller_bindings.push_back(binding);
+
+      return binding.binding;
+    }
+  else
+    {
+      return 0;
+    }
 }
 
 Pointer*
 SDLDriver::create_pointer(const FileReader& reader, Control* parent)
 {
-  return 0;
+  if (reader.get_name() == "sdl:mouse-pointer")
+    {
+      PointerBinding binding;
+
+      binding.binding = new Pointer(parent);
+      pointer_bindings.push_back(binding);
+
+      return binding.binding;
+    }
+  else
+    {
+      return 0;
+    }
+}
+
+bool 
+SDLDriver::open_joystick(int device)
+{
+  JoystickHandles::iterator i = joystick_handles.find(device);
+  if (i == joystick_handles.end())
+    {
+      SDL_Joystick* joy = SDL_JoystickOpen(device);
+      if (joy)
+        {
+          joystick_handles[device] = joy;
+          return true;
+        }
+      else
+        {
+          std::cout << "SDLDriver: Couldn't open joystick number " << device << std::endl;
+          return false;
+        }
+    }
+  else
+    {
+      return true;
+    }
 }
 
 void
 SDLDriver::update(float delta)
 {
-  //std::cout << "SDLEvent fetching" << std::endl;
-
-  // Let SDL fetch events
   SDL_Event event;
   while (SDL_PollEvent(&event))
     {
@@ -122,6 +212,12 @@ SDLDriver::update(float delta)
                 i != pointer_bindings.end(); ++i)
               {
                 i->binding->set_pos(Vector2f(event.motion.x, event.motion.y));
+              }
+
+            for(std::vector<ScrollerBinding>::iterator i = scroller_bindings.begin();
+                i != scroller_bindings.end(); ++i)
+              {
+                i->binding->set_delta(Vector2f(event.motion.xrel, event.motion.yrel));
               }
             break;
 
@@ -161,7 +257,7 @@ SDLDriver::update(float delta)
               {
                 if (event.jaxis.which == i->device &&
                     event.jaxis.axis  == i->axis)
-                  i->binding->set_state(event.jaxis.value);
+                  i->binding->set_state(event.jaxis.value / 32767.0);
               }
             break;
             

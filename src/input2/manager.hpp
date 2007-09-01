@@ -43,6 +43,12 @@ public:
 
   Driver* load_driver(const std::string& name);
   Driver* get_driver(const std::string& name);
+
+private:
+  Button*   create_button  (const FileReader& reader, Button*   parent);
+  Axis*     create_axis    (const FileReader& reader, Axis*     parent);
+  Pointer*  create_pointer (const FileReader& reader, Pointer*  parent);
+  Scroller* create_scroller(const FileReader& reader, Scroller* parent);
 };
 
 } // namespace Input

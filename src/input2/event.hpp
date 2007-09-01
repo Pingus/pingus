@@ -32,57 +32,65 @@ enum EventType { BUTTON_EVENT_TYPE,
                  SCROLLER_EVENT_TYPE, 
                  KEYBOARD_EVENT_TYPE };
 
-enum ButtonName { PRIMARY_BUTTON, 
-                  SECONDARY_BUTTON,
-                  PAUSE_BUTTON,
-                  FAST_FORWARD_BUTTON,
-                  ARMAGEDDON_BUTTON, 
-                  ESCAPE_BUTTON, 
+enum EventName { 
+  // Buttons
+  PRIMARY_BUTTON, 
+  SECONDARY_BUTTON,
+  PAUSE_BUTTON,
+  FAST_FORWARD_BUTTON,
+  ARMAGEDDON_BUTTON, 
+  ESCAPE_BUTTON, 
 
-                  ACTION_1_BUTTON, 
-                  ACTION_2_BUTTON,
-                  ACTION_3_BUTTON,
-                  ACTION_4_BUTTON,
-                  ACTION_5_BUTTON,
-                  ACTION_6_BUTTON,
-                  ACTION_7_BUTTON,
-                  ACTION_8_BUTTON,
-                  ACTION_9_BUTTON, 
-                  ACTION_10_BUTTON,
+  ACTION_1_BUTTON, 
+  ACTION_2_BUTTON,
+  ACTION_3_BUTTON,
+  ACTION_4_BUTTON,
+  ACTION_5_BUTTON,
+  ACTION_6_BUTTON,
+  ACTION_7_BUTTON,
+  ACTION_8_BUTTON,
+  ACTION_9_BUTTON, 
+  ACTION_10_BUTTON,
                   
-                  ACTION_UP_BUTTON,
-                  ACTION_DOWN_BUTTON, 
+  ACTION_UP_BUTTON,
+  ACTION_DOWN_BUTTON, 
+                 
+  // Pointer
+  STANDARD_POINTER,
+  
+  // Scroller
+  STANDARD_SCROLLER,
 
-                  MAX_BUTTON };
+  // Axis
+  TEST_AXIS,
+};
 
 
 enum ButtonState { BUTTON_RELEASED, BUTTON_PRESSED };
 
 struct ButtonEvent
 {
-  ButtonName  name;
+  EventName   name;
   ButtonState state;
 };
 
-enum PointerName { standard };
 
 struct PointerEvent
 {
-  PointerName  name;
+  EventName name;
   float x;
   float y;
 };
 
-enum AxisName  { action };
-
 struct AxisEvent
 {
+  EventName name;
   float     dir;
-  AxisName  name;
 };
 
 struct ScrollEvent
 {
+  EventName name;
   float x_delta;
   float y_delta;
 };
@@ -107,7 +115,7 @@ struct Event
 
 typedef std::vector<Event> EventLst;
 
-inline Event makeButtonEvent(ButtonName name, ButtonState state)
+inline Event makeButtonEvent(EventName name, ButtonState state)
 {
   Event event;
 
@@ -118,7 +126,7 @@ inline Event makeButtonEvent(ButtonName name, ButtonState state)
   return event;
 }
 
-inline Event makePointerEvent(PointerName name, float x, float y)
+inline Event makePointerEvent(EventName name, float x, float y)
 {
   Event event;
 
@@ -130,7 +138,7 @@ inline Event makePointerEvent(PointerName name, float x, float y)
   return event;
 }
 
-inline Event makeAxisEvent(float dir, AxisName name = action)
+inline Event makeAxisEvent(EventName name, float dir)
 {
   Event event;
 
@@ -141,11 +149,12 @@ inline Event makeAxisEvent(float dir, AxisName name = action)
   return event;
 }
 
-inline Event makeScrollEvent(float x_delta, float y_delta)
+inline Event makeScrollEvent(EventName name, float x_delta, float y_delta)
 {
   Event event;
 
   event.type    = SCROLLER_EVENT_TYPE;
+  event.scroll.name    = name;
   event.scroll.x_delta = x_delta;
   event.scroll.y_delta = y_delta;
 

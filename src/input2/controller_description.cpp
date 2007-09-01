@@ -110,6 +110,43 @@ ControllerDescription::get_definition(const std::string& name) const
 }
 
 
+static std::vector<int> map2vector(const std::map<int, InputEventDefinition>& map,
+                                   EventType type)
+{
+  std::vector<int> lst;
+  for(std::map<int, InputEventDefinition>::const_iterator i = map.begin();
+      i != map.end(); ++i)
+    {
+      if (i->second.type == type)
+        lst.push_back(i->second.id);
+    }
+  return lst;
+}
+
+std::vector<int>
+ControllerDescription::get_buttons() const
+{
+  return map2vector(id_to_event, BUTTON_EVENT_TYPE);
+}
+
+std::vector<int>
+ControllerDescription::get_axes() const
+{
+  return map2vector(id_to_event, AXIS_EVENT_TYPE);
+}
+
+std::vector<int>
+ControllerDescription::get_pointers() const
+{
+  return map2vector(id_to_event, POINTER_EVENT_TYPE);  
+}
+
+std::vector<int>
+ControllerDescription::get_scrollers() const
+{
+  return map2vector(id_to_event, SCROLLER_EVENT_TYPE);  
+}
+
 } // namespace Input
 
 /* EOF */

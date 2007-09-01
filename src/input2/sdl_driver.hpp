@@ -64,10 +64,15 @@ private:
     SDLKey key;
   };
 
+  struct ScrollerBinding {
+    Scroller* binding;
+  };
+
   struct PointerBinding {
     Pointer* binding;
   };
 
+  std::vector<ScrollerBinding>       scroller_bindings;
   std::vector<PointerBinding>        pointer_bindings;
   std::vector<KeyboardButtonBinding> keyboard_button_bindings;
   std::vector<MouseButtonBinding>    mouse_button_bindings;
@@ -76,9 +81,15 @@ private:
 
   typedef std::map<std::string, SDLKey> String2Key;
   String2Key string2key;
+
+  typedef std::map<int, SDL_Joystick*> JoystickHandles;
+  JoystickHandles joystick_handles;
+
+  bool open_joystick(int device);
   
 public:
   SDLDriver();
+  ~SDLDriver();
 
   Button*   create_button  (const FileReader& reader, Control* parent);
   Axis*     create_axis    (const FileReader& reader, Control* parent);

@@ -56,6 +56,11 @@ public:
 
   const InputEventDefinition& get_definition(int id) const;
   const InputEventDefinition& get_definition(const std::string& name) const;
+
+  std::vector<int> get_buttons() const;
+  std::vector<int> get_axes() const;
+  std::vector<int> get_pointers() const;
+  std::vector<int> get_scrollers() const;
 };
 
 } // namespace Input
