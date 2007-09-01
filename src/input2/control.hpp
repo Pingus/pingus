@@ -28,6 +28,7 @@
 #include "math.hpp"
 #include "math/vector2f.hpp"
 #include "event.hpp"
+#include "controller.hpp"
 
 namespace Input {
 
@@ -55,6 +56,9 @@ public:
       }
   }
 
+  virtual void update(float delta) {
+  }
+  
   virtual void update(Control* ctrl) {
     std::cout << "Warning: Control:update() not handled" << std::endl;
   }
@@ -97,6 +101,11 @@ public:
     buttons.push_back(button);
   }
 
+  void update(float delta) {
+    for(std::vector<Button*>::iterator i = buttons.begin(); i != buttons.end(); ++i)
+      (*i)->update(delta);
+  }
+
   virtual void update(Control* ctrl)
   {
     ButtonState new_state = BUTTON_RELEASED;
@@ -119,17 +128,18 @@ public:
 class ControllerButton : public ButtonGroup
 {
 private:
+  Controller* controller;
   int id;
 
 public:
-  ControllerButton(int id_)
+  ControllerButton(Controller* controller_, int id_)
     : ButtonGroup(0),
+      controller(controller_),
       id(id_)
   {}
 
   virtual void notify_parent() {
-    std::cout << "ControlButton: id=" << id << " was " << (state == BUTTON_PRESSED
-                                                ? "pressed" : "released") << std::endl;    
+    controller->add_button_event(id, state);
   }
 };
 
@@ -211,6 +221,11 @@ public:
     axes.push_back(axis);
   }
 
+  void update(float delta) {
+    for(std::vector<Axis*>::iterator i = axes.begin(); i != axes.end(); ++i)
+      (*i)->update(delta);
+  }
+
   void update(Control* ctrl) 
   {
     float new_pos = 0;
@@ -233,16 +248,18 @@ public:
 class ControllerAxis : public AxisGroup 
 {
 private:
+  Controller* controller;
   int id;
 
 public:
-  ControllerAxis(int id_) 
+  ControllerAxis(Controller* controller_, int id_) 
     : AxisGroup(0),
+      controller(controller_),
       id(id_)
   {}
 
   virtual void notify_parent() {
-    std::cout << "ControlAxis moved id=" << id << " " << pos  << std::endl;
+    controller->add_axis_event(id, pos);
   }
 };
 
@@ -267,6 +284,11 @@ public:
       }
   }
 
+  void update(float delta) {
+    for(std::vector<Pointer*>::iterator i = pointer.begin(); i != pointer.end(); ++i)
+      (*i)->update(delta);
+  }
+
   void add_pointer(Pointer* p) {
     pointer.push_back(p);
   }
@@ -275,16 +297,18 @@ public:
 class ControllerPointer : public PointerGroup
 {
 private:
+  Controller* controller;
   int id;
 
 public:
-  ControllerPointer(int id_)
+  ControllerPointer(Controller* controller_, int id_)
     : PointerGroup(0),
+      controller(controller_),
       id(id_)
   {}
 
   virtual void notify_parent() {
-    std::cout << "ControlPointer moved id=" << id << " " << pos.x << ", " << pos.y  << std::endl;
+    controller->add_pointer_event(id, pos.x, pos.y);
   }
 };
 
@@ -297,6 +321,11 @@ public:
   ScrollerGroup(Control* parent)
     : Scroller(parent)
   {}
+
+  void update(float delta) {
+    for(std::vector<Scroller*>::iterator i = scrollers.begin(); i != scrollers.end(); ++i)
+      (*i)->update(delta);
+  }
 
   void update(Control* p) {
     Scroller* scroller = dynamic_cast<Scroller*>(p);
@@ -313,15 +342,18 @@ public:
 class ControllerScroller : public ScrollerGroup
 {
 private:
+  Controller* controller;
   int id;
+
 public:
-  ControllerScroller(int id_)
+  ControllerScroller(Controller* controller_, int id_)
     : ScrollerGroup(0),
+      controller(controller_),
       id(id_)
   {}
 
   virtual void notify_parent() {
-    std::cout << "ControlScroller: moved id=" << id << " " << delta.x << ", " << delta.y  << std::endl;
+    controller->add_scroller_event(id, delta.x, delta.y);
   }
 };
 

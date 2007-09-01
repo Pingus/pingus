@@ -9,6 +9,8 @@ env['LIBS'] += ['SDL_image', 'SDL_mixer', 'png']
 env.Program('main', [
     'main.cpp',
     'controller_description.cpp',
+    'controller.cpp',
+    'core_driver.cpp',
     'sdl_driver.cpp',
     'manager.cpp',
     '../file_reader.cpp',

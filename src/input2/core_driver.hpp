@@ -26,24 +26,29 @@
 #ifndef HEADER_CORE_DRIVER_HPP
 #define HEADER_CORE_DRIVER_HPP
 
+#include "driver.hpp"
+
 namespace Input {
+
+class Manager;
 
 /** */
 class CoreDriver : public Driver
 {
 private:
+  Manager* manager;
 
 public:
-  CoreDriver() {}
+  CoreDriver(Manager* manager_) : manager(manager_) {}
   virtual ~CoreDriver() {}
 
   std::string get_name() { return "core"; }
   void update(float delta) {}
 
-  Button*   create_button  (const FileReader& reader, Control* parent) { return 0; }
-  Axis*     create_axis    (const FileReader& reader, Control* parent) { return 0; }
-  Scroller* create_scroller(const FileReader& reader, Control* parent) { return 0; }  
-  Pointer*  create_pointer (const FileReader& reader, Control* parent) { return 0; }  
+  Button*   create_button  (const FileReader& reader, Control* parent);
+  Axis*     create_axis    (const FileReader& reader, Control* parent);
+  Scroller* create_scroller(const FileReader& reader, Control* parent);
+  Pointer*  create_pointer (const FileReader& reader, Control* parent);
 };
 
 } // namespace Input

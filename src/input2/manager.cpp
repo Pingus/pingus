@@ -169,9 +169,9 @@ void
 Manager::update(float delta)
 {
   for(Drivers::iterator i = drivers.begin(); i != drivers.end(); ++i)
-    {
-      (*i)->update(delta);
-    }
+    (*i)->update(delta);
+  
+  controller.update(delta);
 }
 
 Driver*
@@ -203,7 +203,7 @@ Manager::load_driver(const std::string& name)
       if (name == "sdl") {
         driver = new SDLDriver();
       } else if (name == "core") {
-        driver = new CoreDriver();
+        driver = new CoreDriver(this);
       } else {
         std::cout << "Manager: Unknown driver: " << name << std::endl;
         return 0;
@@ -215,7 +215,7 @@ Manager::load_driver(const std::string& name)
 }
 
 Button*
-Manager::create_button(const FileReader& reader, Button* parent)
+Manager::create_button(const FileReader& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
                   
@@ -232,7 +232,7 @@ Manager::create_button(const FileReader& reader, Button* parent)
 }
 
 Axis*
-Manager::create_axis(const FileReader& reader, Axis* parent)
+Manager::create_axis(const FileReader& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
                   
@@ -249,7 +249,7 @@ Manager::create_axis(const FileReader& reader, Axis* parent)
 }
 
 Pointer*
-Manager::create_pointer(const FileReader& reader, Pointer* parent)
+Manager::create_pointer(const FileReader& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
                   
@@ -266,7 +266,7 @@ Manager::create_pointer(const FileReader& reader, Pointer* parent)
 }
 
 Scroller*
-Manager::create_scroller(const FileReader& reader, Scroller* parent)
+Manager::create_scroller(const FileReader& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
                   
