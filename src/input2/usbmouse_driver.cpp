@@ -43,12 +43,15 @@ private:
 
   std::string device;
   std::vector<bool> buttons;
-  std::vector<Pointer*> pointer;
+
+  std::vector<Pointer*> pointer_bindings;
+  std::vector<std::vector<Button*> >  button_bindings;
   
 public: 
   USBMouse(const std::string& device_) 
     : device(device_),
-      buttons(5)
+      buttons(5),
+      button_bindings(5)
   {
     fd = open(device.c_str (), O_RDWR | O_NONBLOCK);
 
@@ -78,7 +81,13 @@ public:
 
   void add_listener(Pointer* p)
   {
-    pointer.push_back(p);
+    pointer_bindings.push_back(p);
+  }
+
+  void add_listener(int i, Button* b)
+  {
+    assert(i >= 0 && i < int(button_bindings.size()));
+    button_bindings[i].push_back(b);
   }
 
   std::string get_device() const { 
@@ -109,7 +118,7 @@ public:
             else if (mouse_pos.y > 600)
               mouse_pos.y = 600 - 1;
 
-            for(std::vector<Pointer*>::iterator i = pointer.begin(); i != pointer.end(); ++i)
+            for(std::vector<Pointer*>::iterator i = pointer_bindings.begin(); i != pointer_bindings.end(); ++i)
               (*i)->set_pos(mouse_pos);
 
             // send_ball_move(delta_x, delta_y);
@@ -152,6 +161,12 @@ public:
             if (new_state[i] != buttons[i])
               {
                 buttons[i] = new_state[i];
+
+                for(std::vector<Button*>::iterator j = button_bindings[i].begin();
+                    j != button_bindings[i].end(); ++j)
+                  {
+                    (*j)->set_state(buttons[i] ? BUTTON_PRESSED : BUTTON_RELEASED);
+                  }
               }
           }
 
@@ -182,7 +197,35 @@ USBMouseDriver::create_button(const FileReader& reader, Control* parent)
 {
   if (reader.get_name() == "usbmouse:button")
     {
-      return 0;
+      std::string device;
+      if (reader.read_string("device", device))
+        {
+          int i;
+          if (reader.read_int("button", i))
+            {
+              USBMouse* mouse = get_mouse(device);
+              if (mouse)
+                {
+                  Button* button = new Button(parent);
+                  mouse->add_listener(i, button);
+                  return button;
+                }
+              else
+                {
+                  return 0;
+                }
+            }
+          else
+            {
+              std::cout << "USBMouseDriver: 'button' entry is missing" << std::endl;
+              return 0;
+            }
+        }
+      else
+        {
+          std::cout << "USBMouseDriver: 'device' entry is missing" << std::endl;
+          return 0;
+        }
     }
   else
     {
