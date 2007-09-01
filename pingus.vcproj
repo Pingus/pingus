@@ -2175,26 +2175,6 @@
 				</File>
 			</Filter>
 			<Filter
-				Name="physfs"
-				>
-				<File
-					RelativePath=".\src\physfs\physfs_sdl.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\physfs\physfs_sdl.hpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\physfs\physfs_stream.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\physfs\physfs_stream.hpp"
-					>
-				</File>
-			</Filter>
-			<Filter
 				Name="particles"
 				>
 				<File
