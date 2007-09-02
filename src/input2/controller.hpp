@@ -41,11 +41,11 @@ private:
   std::vector<ControllerPointer*>  pointers;
   std::vector<ControllerScroller*> scrollers;
   
-public:
-  // Events
   std::vector<Event> events;
+public:
+  std::vector<Event> poll_events();
 
-  Controller()  {}
+  Controller(const ControllerDescription& desc);
   ~Controller() {}
   
   ControllerAxis*     get_axis(int id);
@@ -63,8 +63,6 @@ public:
   void add_pointer(int id, ControllerPointer* pointer);
   void add_scroller(int id, ControllerScroller* scroller);
   
-  void load(const ControllerDescription& desc);
-
   void update(float delta);
 private:
   Controller(const Controller&);

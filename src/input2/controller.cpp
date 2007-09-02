@@ -29,8 +29,7 @@
 
 namespace Input {
 
-void
-Controller::load(const ControllerDescription& desc)
+Controller::Controller(const ControllerDescription& desc)
 {
   const std::vector<int>& button_lst = desc.get_buttons();
   for(std::vector<int>::const_iterator i = button_lst.begin(); i != button_lst.end(); ++i)
@@ -56,7 +55,6 @@ Controller::load(const ControllerDescription& desc)
       add_scroller(*i, new ControllerScroller(this, *i));
     }
 }
-
 
 ControllerScroller*
 Controller::get_scroller(int id) 
@@ -172,6 +170,14 @@ void
 Controller::add_scroller_event(int id, float xrel, float yrel)
 {
   std::cout << "Controller::scroller_event: id=" << id << " " << xrel << ", " << yrel << std::endl;
+}
+
+std::vector<Event>
+Controller::poll_events()
+{
+  std::vector<Event> old_events = events;  
+  events.clear();
+  return old_events;
 }
 
 } // namespace Input

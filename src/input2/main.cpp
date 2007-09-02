@@ -1,6 +1,7 @@
 #include <stdexcept>
 #include "SDL.h"
 #include "manager.hpp"
+#include "controller.hpp"
 
 int main()
 {
@@ -15,10 +16,13 @@ int main()
 
   Input::Manager manager;
 
-  manager.load("../../data/controller/input2.scm");
+  Input::Controller* controller
+    = manager.create_controller("../../data/controller/input2.scm");
 
   while(true)
     {
+      std::vector<Input::Event> events = controller->poll_events();
+
       manager.update(0.033);
       
       SDL_Delay(33);

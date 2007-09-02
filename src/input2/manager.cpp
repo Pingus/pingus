@@ -85,10 +85,10 @@ std::string get_driver_part(const std::string& fullname)
     }
 }
 
-void
-Manager::load(const std::string& filename)
+Controller*
+Manager::create_controller(const std::string& filename)
 {
-  controller.load(desc);
+  std::auto_ptr<Controller> controller(new Controller(desc));
 
   FileReader reader = FileReader::parse(filename);
 
@@ -108,7 +108,7 @@ Manager::load(const std::string& filename)
               for(std::vector<FileReader>::const_iterator j = pointers.begin(); j != pointers.end(); ++j)
                 {
                   int id = desc.get_definition(i->get_name()).id;
-                  ControllerPointer* ctrl_pointer = controller.get_pointer(id);
+                  ControllerPointer* ctrl_pointer = controller->get_pointer(id);
                   Pointer* pointer = create_pointer(*j, ctrl_pointer);
                   if (pointer)
                     ctrl_pointer->add_pointer(pointer);
@@ -123,7 +123,7 @@ Manager::load(const std::string& filename)
               for(std::vector<FileReader>::const_iterator j = scrollers.begin(); j != scrollers.end(); ++j)
                 {
                   int id = desc.get_definition(i->get_name()).id;
-                  ControllerScroller* ctrl_scroller = controller.get_scroller(id);
+                  ControllerScroller* ctrl_scroller = controller->get_scroller(id);
                   Scroller* scroller = create_scroller(*j, ctrl_scroller);
                   if (scroller)
                     ctrl_scroller->add_scroller(scroller);
@@ -138,7 +138,7 @@ Manager::load(const std::string& filename)
               for(std::vector<FileReader>::const_iterator j = buttons.begin(); j != buttons.end(); ++j)
                 {
                   int id = desc.get_definition(i->get_name()).id;
-                  ControllerButton* ctrl_button = controller.get_button(id);
+                  ControllerButton* ctrl_button = controller->get_button(id);
                   Button* button = create_button(*j, ctrl_button);
                   if (button)
                     ctrl_button->add_button(button);
@@ -152,7 +152,7 @@ Manager::load(const std::string& filename)
               for(std::vector<FileReader>::const_iterator j = axes.begin(); j != axes.end(); ++j)
                 {
                   int id = desc.get_definition(i->get_name()).id;
-                  ControllerAxis* ctrl_axis = controller.get_axis(id);
+                  ControllerAxis* ctrl_axis = controller->get_axis(id);
                   Axis* axis = create_axis(*j, ctrl_axis);
                   if (axis)
                     ctrl_axis->add_axis(axis);
@@ -167,6 +167,8 @@ Manager::load(const std::string& filename)
             }
         }
     }
+
+  return controller.release();
 }
 
 void
@@ -175,7 +177,9 @@ Manager::update(float delta)
   for(Drivers::iterator i = drivers.begin(); i != drivers.end(); ++i)
     (*i)->update(delta);
   
-  controller.update(delta);
+  for(std::vector<Controller*>::iterator i = controller.begin(); 
+      i != controller.end(); ++i)
+    (*i)->update(delta);
 }
 
 Driver*

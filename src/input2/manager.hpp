@@ -33,21 +33,24 @@ private:
   typedef std::vector<Driver*> Drivers;
   Drivers drivers;
 
-  Controller controller;
+  std::vector<Controller*> controller;
   ControllerDescription desc;
+
 public:
   Manager();
 
-  void load(const std::string& filename);
   void update(float delta);
 
-  Driver* load_driver(const std::string& name);
-  Driver* get_driver(const std::string& name);
+  Controller* create_controller(const std::string& filename);
 
   Button*   create_button  (const FileReader& reader, Control* parent);
   Axis*     create_axis    (const FileReader& reader, Control* parent);
   Pointer*  create_pointer (const FileReader& reader, Control* parent);
   Scroller* create_scroller(const FileReader& reader, Control* parent);
+
+private:
+  Driver* load_driver(const std::string& name);
+  Driver* get_driver(const std::string& name);
 };
 
 } // namespace Input
