@@ -873,7 +873,7 @@ PingusMain::main(int argc, char** argv)
 void
 PingusMain::init_sdl()
 {
-  if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+  if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK) != 0) {
     std::cout << "Unable to initialize SDL: " << SDL_GetError() << std::endl;
     exit(1);
   }

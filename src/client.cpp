@@ -183,7 +183,7 @@ Client::process_scroll_event (const Input::ScrollEvent& ev)
 void
 Client::process_axis_event (const Input::AxisEvent& event)
 {
-  std::cout << "Client::process_axis_event ()" << std::endl;
+  // std::cout << "Client::process_axis_event ()" << std::endl;
   UNUSED_ARG(event);
 }
 

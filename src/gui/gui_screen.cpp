@@ -73,7 +73,7 @@ GUIScreen::update (const GameDelta& delta)
             {
               if (i->axis.name == Input::ACTION_AXIS)
                 {
-                  on_action_axis_move (i->axis.dir);
+                  on_action_axis_move(i->axis.dir);
                 }
             }
             break;
