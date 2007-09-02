@@ -59,20 +59,7 @@ Manager::Manager()
   desc.add_button("action-10-button",    ACTION_10_BUTTON);
 }
 
-std::string get_non_driver_part(const std::string& fullname)
-{
-  std::string::size_type i = fullname.find_first_of(':');
-  if (i != std::string::npos)
-    {
-      return fullname.substr(i+1);
-    }
-  else
-    {
-      return fullname;
-    }
-}
-
-std::string get_driver_part(const std::string& fullname)
+static std::string get_driver_part(const std::string& fullname)
 {
   std::string::size_type i = fullname.find_first_of(':');
   if (i != std::string::npos)
@@ -84,7 +71,7 @@ std::string get_driver_part(const std::string& fullname)
       return "core";
     }
 }
-
+
 Controller*
 Manager::create_controller(const std::string& filename)
 {
@@ -246,7 +233,7 @@ Manager::create_button(const FileReader& reader, Control* parent)
       return 0;
     }
 }
-
+
 Axis*
 Manager::create_axis(const FileReader& reader, Control* parent)
 {
@@ -263,7 +250,7 @@ Manager::create_axis(const FileReader& reader, Control* parent)
       return 0;
     }
 }
-
+
 Pointer*
 Manager::create_pointer(const FileReader& reader, Control* parent)
 {
@@ -280,7 +267,7 @@ Manager::create_pointer(const FileReader& reader, Control* parent)
       return 0;
     }
 }
-
+
 Scroller*
 Manager::create_scroller(const FileReader& reader, Control* parent)
 {

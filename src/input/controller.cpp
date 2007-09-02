@@ -29,8 +29,18 @@
 
 namespace Input {
 
+Controller* Controller::current_ = 0;
+
+Controller* 
+Controller::current()
+{
+  return current_;
+}
+
 Controller::Controller(const ControllerDescription& desc)
 {
+  current_ = this; 
+
   const std::vector<int>& button_lst = desc.get_buttons();
   for(std::vector<int>::const_iterator i = button_lst.begin(); i != button_lst.end(); ++i)
     {

@@ -32,6 +32,8 @@
 #include "../plf_res_mgr.hpp"
 #include "../savegame_manager.hpp"
 #include "../file_reader.hpp"
+#include "input/controller.hpp"
+#include "input/control.hpp"
 #include "level_dot.hpp"
 
 namespace WorldMapNS {
@@ -54,9 +56,8 @@ LevelDot::LevelDot(FileReader reader)
 void
 LevelDot::draw(DrawingContext& gc)
 {
-  Vector3f mpos; // FIXME: get the controller coordinates from somewhere
-  //= gc.screen_to_world(Vector3f(Input::Controller::get_current()->get_pointer()->get_x_pos(),
-  //Input::Controller::get_current()->get_pointer()->get_y_pos()));
+  Vector3f mpos
+    = gc.screen_to_world(Vector3f(Input::Controller::current()->get_pointer(Input::STANDARD_POINTER)->get_pos()));
 
   float x = mpos.x - pos.x;
   float y = mpos.y - pos.y;

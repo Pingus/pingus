@@ -34,6 +34,12 @@ class ControllerScroller;
 
 class Controller
 {
+
+private:
+  static Controller* current_;
+public:
+  static Controller* current();
+
 private:
   // State Stuff
   std::vector<ControllerButton*>   buttons;

@@ -17,11 +17,10 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-//#include "../input/controller.hpp"
-//#include "../input/pointer.hpp"
+#include "../input/controller.hpp"
+#include "../input/control.hpp"
 #include "../resource.hpp"
 #include "cursor.hpp"
-
 
 Cursor::Cursor(const std::string& ident)
   : sprite(Resource::load_sprite(ident))
@@ -41,10 +40,8 @@ Cursor::update (float delta)
 void
 Cursor::on_event()
 {
-  // FIXME: This should use the input framework
-  int x,y;
-  SDL_GetMouseState(&x, &y);
-  sprite.draw((float)x, (float)y, Display::get_screen());
+  Vector2f pos = Input::Controller::current()->get_pointer(Input::STANDARD_POINTER)->get_pos();
+  sprite.draw(pos.x, pos.y, Display::get_screen());
 }
 
 
