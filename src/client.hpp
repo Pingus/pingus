@@ -23,7 +23,6 @@
 #include "gui/gui_screen.hpp"
 
 namespace Input {
-class Controller;
 struct ButtonEvent;
 struct PointerEvent;
 struct ScrollEvent;
@@ -37,7 +36,6 @@ class RootGUIManager;
 
 class Vector;
 class ButtonPanel;
-class Controller;
 class Cursor;
 class HurryUp;
 class PingusCounter;
