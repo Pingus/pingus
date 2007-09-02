@@ -30,6 +30,8 @@
 #include <iostream>
 #include <errno.h>
 
+#include "debug.hpp"
+#include "globals.hpp"
 #include "math/vector2i.hpp"
 #include "usbmouse_driver.hpp"
 
@@ -140,7 +142,11 @@ public:
               {
                 --delta_z;
 
-                std::cout << "Wheel Down" << std::endl;
+                // Wheel Down
+                pout(PINGUS_DEBUG_INPUT) << "USBMouseDriver: "
+                                         << "(usbmouse:button (device \"" << device << "\") "
+                                         << "(button " << 5 << ")) ;; wheel down" << std::endl;
+
                 for(std::vector<Button*>::iterator j = button_bindings[5].begin();
                     j != button_bindings[5].end(); ++j)
                   {
@@ -156,7 +162,11 @@ public:
               {
                 ++delta_z;
 
-                std::cout << "Wheel Up" << std::endl;
+                // Wheel Down
+                pout(PINGUS_DEBUG_INPUT) << "USBMouseDriver: "
+                                         << "(usbmouse:button (device \"" << device << "\") "
+                                         << "(button " << 6 << ")) ;; wheel up" << std::endl;
+
                 for(std::vector<Button*>::iterator j = button_bindings[6].begin();
                     j != button_bindings[6].end(); ++j)
                   {
@@ -179,7 +189,9 @@ public:
           {
             if (new_state[i] != buttons[i])
               {
-                std::cout << "Button: " << i << std::endl;
+                pout(PINGUS_DEBUG_INPUT) << "USBMouseDriver: "
+                                         << "(usbmouse:button (device \"" << device << "\") "
+                                         << "(button " << i << "))" << std::endl;
 
                 buttons[i] = new_state[i];
 
