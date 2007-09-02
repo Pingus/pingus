@@ -108,7 +108,7 @@ FontTestScreen::update (const GameDelta& delta)
     {
       switch (i->type)
 	{
-	case Input::ScrollEventType:
+	case Input::SCROLLER_EVENT_TYPE:
           scrollx += i->scroll.x_delta;
           scrolly += i->scroll.y_delta;
 	  break;

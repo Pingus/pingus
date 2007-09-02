@@ -20,8 +20,6 @@
 #include <iostream>
 #include <math.h>
 #include "../font.hpp"
-#include "../input/controller.hpp"
-#include "../input/pointer.hpp"
 #include "../gettext.h"
 #include "../globals.hpp"
 #include "../system.hpp"
@@ -56,8 +54,9 @@ LevelDot::LevelDot(FileReader reader)
 void
 LevelDot::draw(DrawingContext& gc)
 {
-  Vector3f mpos = gc.screen_to_world(Vector3f(Input::Controller::get_current()->get_pointer()->get_x_pos(),
-    Input::Controller::get_current()->get_pointer()->get_y_pos()));
+  Vector3f mpos; // FIXME: get the controller coordinates from somewhere
+  //= gc.screen_to_world(Vector3f(Input::Controller::get_current()->get_pointer()->get_x_pos(),
+  //Input::Controller::get_current()->get_pointer()->get_y_pos()));
 
   float x = mpos.x - pos.x;
   float y = mpos.y - pos.y;

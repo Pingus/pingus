@@ -1,0 +1,37 @@
+##  -*- python -*-
+
+env = Environment(CCFLAGS  = ['-O0', '-Wall', '-Werror', '-g'],
+                  CPPPATH  = ['..', '../..'],
+                  CPPDEFINES = ['HAVE_CWIID'],
+                  LIBS = ['cwiid'])
+
+env.ParseConfig('sdl-config  --cflags --libs')
+env['LIBS'] += ['SDL_image', 'SDL_mixer', 'png']
+
+env.Program('main', [
+    'main.cpp',
+    'controller_description.cpp',
+    'controller.cpp',
+    'core_driver.cpp',
+    'usbmouse_driver.cpp',
+    'wiimote_driver.cpp',
+    'wiimote.cpp',
+    'sdl_driver.cpp',
+    'manager.cpp',
+    '../file_reader.cpp',
+    '../string_util.cpp',
+    '../path_manager.cpp',
+    '../pingus_error.cpp',
+    '../lisp/parser.cpp',
+    '../lisp/lexer.cpp',
+    '../lisp/lisp.cpp',
+    '../resource_modifier.cpp',
+    '../globals.cpp',
+    '../sexpr_file_reader.cpp',
+    '../math/vector3f.cpp',
+    '../debug.cpp',
+    '../debug_stream.cpp',
+    '../system.cpp',
+])
+
+# EOF #
