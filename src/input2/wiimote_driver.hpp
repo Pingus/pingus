@@ -22,14 +22,42 @@
 #ifndef HEADER_WIIMOTE_DRIVER_HPP
 #define HEADER_WIIMOTE_DRIVER_HPP
 
+#include "driver.hpp"
+
+namespace Input {
+
 /** */
-class WiimoteDriver
+class WiimoteDriver : public Driver
 {
+private: 
+  struct ButtonBinding {
+    Button* binding;
+    int button;
+  };
+
+  struct AxisBinding {
+    Axis* binding;
+    int axis;
+  };
+
+  std::vector<ButtonBinding> button_bindings;
+  std::vector<AxisBinding>   axis_bindings;
+
 public:
   WiimoteDriver();
+  ~WiimoteDriver();
 
   void update(float delta);
+
+  std::string get_name() const { return "wiimote"; }
+  
+  Button*   create_button  (const FileReader& reader, Control* parent);
+  Axis*     create_axis    (const FileReader& reader, Control* parent);
+  Scroller* create_scroller(const FileReader& reader, Control* parent);
+  Pointer*  create_pointer (const FileReader& reader, Control* parent);
 };
+
+} // namespace Input
 
 #endif
 

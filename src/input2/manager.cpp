@@ -25,6 +25,9 @@
 #include "sdl_driver.hpp"
 #include "core_driver.hpp"
 #include "usbmouse_driver.hpp"
+#ifdef HAVE_CWIID
+#  include "wiimote_driver.hpp"
+#endif 
 #include "manager.hpp"
 
 namespace Input {
@@ -140,7 +143,7 @@ Manager::load(const std::string& filename)
                   if (button)
                     ctrl_button->add_button(button);
                   else
-                    std::cout << "Manager: button: Couldn't create button" << j->get_name() << std::endl;
+                    std::cout << "Manager: button: Couldn't create button " << j->get_name() << std::endl;
                 }
             }
           else if (StringUtil::has_suffix(i->get_name(), "axis"))
@@ -154,7 +157,7 @@ Manager::load(const std::string& filename)
                   if (axis)
                     ctrl_axis->add_axis(axis);
                   else
-                    std::cout << "Manager: axis: Couldn't create axis" << j->get_name() << std::endl;
+                    std::cout << "Manager: axis: Couldn't create axis " << j->get_name() << std::endl;
                 }
             }
           else
@@ -207,6 +210,10 @@ Manager::load_driver(const std::string& name)
         driver = new CoreDriver(this);
       } else if (name == "usbmouse") {
         driver = new USBMouseDriver();
+#ifdef HAVE_CWIID
+      } else if (name == "wiimote") {
+        driver = new WiimoteDriver();
+#endif
       } else {
         std::cout << "Manager: Unknown driver: " << name << std::endl;
         return 0;
