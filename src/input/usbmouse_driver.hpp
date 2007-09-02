@@ -47,7 +47,7 @@ public:
   
   Button*   create_button  (const FileReader& reader, Control* parent);
   Axis*     create_axis    (const FileReader& reader, Control* parent) { return 0; } 
-  Scroller* create_scroller(const FileReader& reader, Control* parent) { return 0; }
+  Scroller* create_scroller(const FileReader& reader, Control* parent);
   Pointer*  create_pointer (const FileReader& reader, Control* parent);
 
 private:

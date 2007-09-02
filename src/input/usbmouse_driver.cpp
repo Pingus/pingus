@@ -44,14 +44,15 @@ private:
   std::string device;
   std::vector<bool> buttons;
 
-  std::vector<Pointer*> pointer_bindings;
+  std::vector<Pointer*>  pointer_bindings;
+  std::vector<Scroller*> scroller_bindings;
   std::vector<std::vector<Button*> >  button_bindings;
   
 public: 
   USBMouse(const std::string& device_) 
     : device(device_),
       buttons(5),
-      button_bindings(5)
+      button_bindings(7)
   {
     fd = open(device.c_str (), O_RDWR | O_NONBLOCK);
 
@@ -82,6 +83,11 @@ public:
   void add_listener(Pointer* p)
   {
     pointer_bindings.push_back(p);
+  }
+
+  void add_listener(Scroller* s)
+  {
+    scroller_bindings.push_back(s);
   }
 
   void add_listener(int i, Button* b)
@@ -121,8 +127,8 @@ public:
             for(std::vector<Pointer*>::iterator i = pointer_bindings.begin(); i != pointer_bindings.end(); ++i)
               (*i)->set_pos(mouse_pos);
 
-            // send_ball_move(delta_x, delta_y);
-            // send_pointer_move(mouse_pos);
+            for(std::vector<Scroller*>::iterator i = scroller_bindings.begin(); i != scroller_bindings.end(); ++i)
+              (*i)->set_delta(Vector2f(-delta_x, delta_y)); // FIXME: Inversion should be configurable
           }
 
         // Scrollwheel move
@@ -133,8 +139,15 @@ public:
             while (delta_z != 0)
               {
                 --delta_z;
-                //send_key_event(CL_MOUSE_WHEEL_DOWN, true);
-                //send_key_event(CL_MOUSE_WHEEL_DOWN, false);
+
+                std::cout << "Wheel Down" << std::endl;
+                for(std::vector<Button*>::iterator j = button_bindings[5].begin();
+                    j != button_bindings[5].end(); ++j)
+                  {
+                    (*j)->set_state(BUTTON_PRESSED);
+                    (*j)->set_state(BUTTON_RELEASED);
+                  }
+
               }
           } 
         else if (delta_z < 0)
@@ -142,8 +155,14 @@ public:
             while (delta_z != 0)
               {
                 ++delta_z;
-                //send_key_event(CL_MOUSE_WHEEL_UP, true);
-                //send_key_event(CL_MOUSE_WHEEL_UP, false);
+
+                std::cout << "Wheel Up" << std::endl;
+                for(std::vector<Button*>::iterator j = button_bindings[6].begin();
+                    j != button_bindings[6].end(); ++j)
+                  {
+                    (*j)->set_state(BUTTON_PRESSED);
+                    (*j)->set_state(BUTTON_RELEASED);
+                  }
               }
           }
 
@@ -160,6 +179,8 @@ public:
           {
             if (new_state[i] != buttons[i])
               {
+                std::cout << "Button: " << i << std::endl;
+
                 buttons[i] = new_state[i];
 
                 for(std::vector<Button*>::iterator j = button_bindings[i].begin();
@@ -247,6 +268,38 @@ USBMouseDriver::create_pointer(const FileReader& reader, Control* parent)
               Pointer* pointer = new Pointer(parent);
               mouse->add_listener(pointer);
               return pointer;
+            }
+          else
+            {
+              return 0;
+            }
+        }
+      else
+        {
+          std::cout << "USBMouseDriver: 'device' entry is missing" << std::endl;
+          return 0;
+        }
+    }
+  else
+    {
+      return 0;
+    }
+}
+
+Scroller*
+USBMouseDriver::create_scroller(const FileReader& reader, Control* parent)
+{
+  if (reader.get_name() == "usbmouse:scroller")
+    {
+      std::string device;
+      if (reader.read_string("device", device))
+        {
+          USBMouse* mouse = get_mouse(device);
+          if (mouse)
+            {
+              Scroller* scroller = new Scroller(parent);
+              mouse->add_listener(scroller);
+              return scroller;
             }
           else
             {
