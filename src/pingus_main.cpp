@@ -372,7 +372,7 @@ PingusMain::check_args(int argc, char** argv)
                     << std::endl;
             
           std::cout << "\n"
-            "Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n"
+            "Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>, see AUTHORS for a complete list\n"
             "There is NO warranty.  You may redistribute this software\n"
             "under the terms of the GNU General Public License.\n"
             "For more information about these matters, see the files named COPYING." << std::endl;

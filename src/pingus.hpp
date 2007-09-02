@@ -18,6 +18,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <config.h>
+
 #ifndef HEADER_PINGUS_PINGUS_HXX
 #define HEADER_PINGUS_PINGUS_HXX
 

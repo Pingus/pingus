@@ -318,7 +318,7 @@ System::get_statdir()
     }
   else
     {
-      throw PingusError(_("Environment variable $HOME not set, fix that and start again."));
+      throw PingusError("Environment variable $HOME not set, fix that and start again.");
     }
 #endif
 }

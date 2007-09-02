@@ -51,15 +51,13 @@ private:
   float std_pointer_x;
   float std_pointer_y;
 
-  ////  std::vector<CL_Slot> slots;
-
 public:
   Controller(const std::string& configfile);
   ~Controller();
 
   std::vector<Event>& get_events() { return events; }
 	
-  const Pointer * get_pointer() const { return standard_pointer; }
+  const Pointer * get_pointer() const  { return standard_pointer; }
   const Scroller* get_scroller() const { return scroller; }
 
   /// returns the requested Buttons::Button or 0 if it doesn't exist (e.g. undefined action Buttons::Button)
@@ -68,6 +66,9 @@ public:
   void update(float delta);
   void clear();
 
+  Controller(const Controller&);
+  Controller& operator= (const Controller&);
+
   static void set_current(Controller* controller) { current_controller = controller; }
   static Controller* get_current() { return current_controller; }
 
@@ -80,7 +81,6 @@ private:
   static void on_button_down(void*);
   static void on_button_up(void*);
   void create_action_buttons(FileReader reader);
-  ////void key_pressed(const CL_InputEvent &event);
 
   struct key_callback_info {
     key_callback_func callback;
@@ -93,9 +93,6 @@ private:
     void *userdata;
   };
   static std::vector<mouse_callback_info> mouse_callbacks;
-
-  Controller(const Controller&);
-  Controller& operator= (const Controller&);
 };
 
 } // namespace Input

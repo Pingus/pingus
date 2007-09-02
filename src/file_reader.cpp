@@ -150,6 +150,12 @@ FileReader::get_sections() const
     return std::vector<FileReader>();
 }
 
+int
+FileReader::get_num_sections() const
+{
+  return int(impl->get_sections().size());
+}
+
 FileReader
 FileReader::read_section(const char* name)   const
 {

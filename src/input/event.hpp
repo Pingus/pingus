@@ -25,13 +25,14 @@
 #include "../pingus.hpp"
 
 namespace Input {
-
+
 enum EventType { ButtonEventType, PointerEventType, AxisEventType, ScrollEventType, KeyboardEventType };
 
 enum ButtonName { primary, secondary, pause, fast_forward, armageddon, escape, action_1, action_2,
                   action_3, action_4, action_5, action_6, action_7, action_8, action_9, action_10,
                   action_up, action_down, max_button };
 
+
 enum State { pressed, released };
 
 struct ButtonEvent
@@ -39,7 +40,7 @@ struct ButtonEvent
   ButtonName name;
   State      state;
 };
-
+
 enum PointerName { standard };
 
 struct PointerEvent
@@ -48,7 +49,7 @@ struct PointerEvent
   float x;
   float y;
 };
-
+
 enum AxisName  { action };
 
 struct AxisEvent
@@ -56,18 +57,18 @@ struct AxisEvent
   float     dir;
   AxisName  name;
 };
-
+
 struct ScrollEvent
 {
   float x_delta;
   float y_delta;
 };
-
+
 struct KeyboardEvent
 {
   unsigned short key;
 };
-
+
 struct Event
 {
   EventType type;
@@ -82,7 +83,7 @@ struct Event
 };
 
 typedef std::vector<Event> EventLst;
-
+
 inline Event makeButtonEvent(ButtonName name, State state)
 {
   Event event;
@@ -137,7 +138,7 @@ inline Event makeKeyboardEvent(unsigned short c)
 	
   return event;
 }
-
+
 } // namespace Input
 
 #endif
