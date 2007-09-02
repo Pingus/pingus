@@ -68,7 +68,19 @@ Important:
 ==========
 
 - fix level loading from command line
+
 - add some SConscript checks (for compiler missing)
+
+- fix graphic gliches caused by all Sprites being optimized (some
+  actions are in large part transparent now, see bomber, armageddon
+  button when pressed)
+
+- document the mouse-trap, fullscreen, etc. shortcuts somewhere
+
+- some people like auto-scrolling in window mode, in 0.6.0 it worked
+  even when completly out of the window, in SDL the mouse coords don't
+  get updated when the mouse isn't in the window (need to switch from
+  event to polling?!)
 
 Nice to Have:
 =============
