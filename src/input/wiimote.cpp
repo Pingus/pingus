@@ -33,6 +33,80 @@ Wiimote* wiimote = 0;
 
 #ifdef HAVE_CWIID
 
+std::string
+Wiimote::id2str(int id)
+{
+  if      (id == WIIMOTE_A)     return "a";
+  else if (id == WIIMOTE_B)     return "b";
+  else if (id == WIIMOTE_LEFT)  return "left";
+  else if (id == WIIMOTE_RIGHT) return "right";
+  else if (id == WIIMOTE_UP)    return "up";
+  else if (id == WIIMOTE_DOWN)  return "down";
+  else if (id == WIIMOTE_PLUS)  return "plus";
+  else if (id == WIIMOTE_MINUS) return "minus";
+  else if (id == WIIMOTE_HOME)  return "home";
+  else if (id == WIIMOTE_1)     return "1";
+  else if (id == WIIMOTE_2)     return "2";
+
+  else if (id == NUNCHUK_C) return "nunchuk:c";
+  else if (id == NUNCHUK_Z) return "nunchuk:z";
+
+  else if (id == CLASSIC_LEFT)  return "classic:left";
+  else if (id == CLASSIC_RIGHT) return "classic:right";
+  else if (id == CLASSIC_UP)    return "classic:up";
+  else if (id == CLASSIC_DOWN)  return "classic:down";
+  else if (id == CLASSIC_PLUS)  return "classic:plus";
+  else if (id == CLASSIC_MINUS) return "classic:minus";
+  else if (id == CLASSIC_HOME)  return "classic:home";
+  else if (id == CLASSIC_A)     return "classic:a";
+  else if (id == CLASSIC_B)     return "classic:b";
+  else if (id == CLASSIC_X)     return "classic:x";
+  else if (id == CLASSIC_Y)     return "classic:y";
+  else if (id == CLASSIC_L)     return "classic:l";
+  else if (id == CLASSIC_R)     return "classic:r";
+  else if (id == CLASSIC_ZL)    return "classic:zl";
+  else if (id == CLASSIC_ZR)    return "classic:zr";
+  else 
+    return "unknown";
+}
+
+int
+Wiimote::str2id(const std::string& str)
+{
+  if      (str == "a")     return WIIMOTE_A;
+  else if (str == "b")     return WIIMOTE_B;
+  else if (str == "left")  return WIIMOTE_LEFT;
+  else if (str == "right") return WIIMOTE_RIGHT;
+  else if (str == "up")    return WIIMOTE_UP;
+  else if (str == "down")  return WIIMOTE_DOWN;
+  else if (str == "plus"  || str == "+") return WIIMOTE_PLUS;
+  else if (str == "minus" || str == "-") return WIIMOTE_MINUS;
+  else if (str == "home")  return WIIMOTE_HOME;
+  else if (str == "1")     return WIIMOTE_1;
+  else if (str == "2")     return WIIMOTE_2;
+
+  else if (str == "nunchuk:c") return NUNCHUK_C;
+  else if (str == "nunchuk:z") return NUNCHUK_Z;
+
+  else if (str == "classic:left")  return CLASSIC_LEFT;
+  else if (str == "classic:right") return CLASSIC_RIGHT;
+  else if (str == "classic:up")    return CLASSIC_UP;
+  else if (str == "classic:down")  return CLASSIC_DOWN;
+  else if (str == "classic:plus"  || str == "classic:+") return CLASSIC_PLUS;
+  else if (str == "classic:minus" || str == "classic:-") return CLASSIC_MINUS;
+  else if (str == "classic:home")  return CLASSIC_HOME;
+  else if (str == "classic:a")     return CLASSIC_A;
+  else if (str == "classic:b")     return CLASSIC_B;
+  else if (str == "classic:x")     return CLASSIC_X;
+  else if (str == "classic:y")     return CLASSIC_Y;
+  else if (str == "classic:l")     return CLASSIC_L;
+  else if (str == "classic:r")     return CLASSIC_R;
+  else if (str == "classic:zl")    return CLASSIC_ZL;
+  else if (str == "classic:zr")    return CLASSIC_ZR;
+  else 
+    return UNKNOWN;
+}
+
 void
 Wiimote::init()
 {
@@ -95,10 +169,12 @@ Wiimote::connect()
         std::cerr << "Unable to set message callback" << std::endl;
       }
 
+      // FIXME: Could init this depending on what events are actually bound
       if (cwiid_command(m_wiimote, CWIID_CMD_RPT_MODE, 
                         CWIID_RPT_STATUS  |
                         CWIID_RPT_NUNCHUK |
                         CWIID_RPT_ACC     |
+                        //CWIID_RPT_IR      |
                         CWIID_RPT_BTN))
         {
           std::cerr << "Wiimote: Error setting report mode" << std::endl;
@@ -301,20 +377,20 @@ Wiimote::on_button(const cwiid_btn_mesg& msg)
   uint16_t changes = m_buttons ^ msg.buttons;
   m_buttons = msg.buttons;
  
-  CHECK_BTN(CWIID_BTN_A, 0);
-  CHECK_BTN(CWIID_BTN_B, 1);
+  CHECK_BTN(CWIID_BTN_A, WIIMOTE_A);
+  CHECK_BTN(CWIID_BTN_B, WIIMOTE_B);
 
-  CHECK_BTN(CWIID_BTN_LEFT,  2);
-  CHECK_BTN(CWIID_BTN_RIGHT, 3);
-  CHECK_BTN(CWIID_BTN_UP,    4);
-  CHECK_BTN(CWIID_BTN_DOWN,  5);
+  CHECK_BTN(CWIID_BTN_LEFT,  WIIMOTE_LEFT);
+  CHECK_BTN(CWIID_BTN_RIGHT, WIIMOTE_RIGHT);
+  CHECK_BTN(CWIID_BTN_UP,    WIIMOTE_UP);
+  CHECK_BTN(CWIID_BTN_DOWN,  WIIMOTE_DOWN);
 
-  CHECK_BTN(CWIID_BTN_PLUS,  6);
-  CHECK_BTN(CWIID_BTN_HOME,  7);
-  CHECK_BTN(CWIID_BTN_MINUS, 8);
+  CHECK_BTN(CWIID_BTN_PLUS,  WIIMOTE_PLUS);
+  CHECK_BTN(CWIID_BTN_HOME,  WIIMOTE_HOME);
+  CHECK_BTN(CWIID_BTN_MINUS, WIIMOTE_MINUS);
 
-  CHECK_BTN(CWIID_BTN_1,  9);
-  CHECK_BTN(CWIID_BTN_2, 10);
+  CHECK_BTN(CWIID_BTN_1,  WIIMOTE_1);
+  CHECK_BTN(CWIID_BTN_2,  WIIMOTE_2);
 }
 
 void
@@ -331,12 +407,20 @@ Wiimote::on_acc(const cwiid_acc_mesg& msg)
 void
 Wiimote::on_ir(const cwiid_ir_mesg& msg)
 {
-  printf("IR Report: ");
+  bool is_valid = false;
   for (int i = 0; i < CWIID_IR_SRC_COUNT; ++i)
+    is_valid = is_valid || msg.src[i].valid;
+
+  if (is_valid)
     {
-      if (msg.src[i].valid) {
-        printf("(%d,%d) ", msg.src[i].pos[0], msg.src[i].pos[1]);
-      }
+      std::cout << "IR Report: ";
+      for (int i = 0; i < CWIID_IR_SRC_COUNT; ++i)
+        {
+          if (msg.src[i].valid) {
+            std::cout << "(" <<  msg.src[i].pos[0] << ", " <<  msg.src[i].pos[1] << ") ";
+          }
+        }
+      std::cout << std::endl;
     }
 }
 
@@ -361,15 +445,15 @@ inline float to_float(uint8_t min,
 }
 
 void
-Wiimote::on_nunchuck(const cwiid_nunchuk_mesg& msg)
+Wiimote::on_nunchuk(const cwiid_nunchuk_mesg& msg)
 {
   uint8_t changes = m_nunchuk_btns ^ msg.buttons;
   m_nunchuk_btns  = msg.buttons;
 
 #define CHECK_NCK_BTN(btn, num) if (changes & btn) add_button_event(0, num, m_nunchuk_btns & btn)
       
-  CHECK_NCK_BTN(CWIID_NUNCHUK_BTN_Z, 11);
-  CHECK_NCK_BTN(CWIID_NUNCHUK_BTN_C, 12);
+  CHECK_NCK_BTN(CWIID_NUNCHUK_BTN_Z, NUNCHUK_Z);
+  CHECK_NCK_BTN(CWIID_NUNCHUK_BTN_C, NUNCHUK_C);
   
   // FIXME: Read real calibration data, instead of hardcoded one
   float nunchuk_stick_x =  to_float(37, 129, 231, msg.stick[0]);
@@ -464,7 +548,7 @@ Wiimote::mesg(cwiid_wiimote_t* w, int mesg_count, union cwiid_mesg mesg[])
           break;
 
         case CWIID_MESG_NUNCHUK:
-          wiimote->on_nunchuck(mesg[i].nunchuk_mesg);
+          wiimote->on_nunchuk(mesg[i].nunchuk_mesg);
           break;
 
         case CWIID_MESG_CLASSIC:

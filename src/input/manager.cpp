@@ -155,7 +155,9 @@ Manager::create_controller(const std::string& filename)
         }
     }
 
-  return controller.release();
+  Controller* ctrl = controller.release();
+  controllers.push_back(ctrl);
+  return ctrl;
 }
 
 void
@@ -164,8 +166,8 @@ Manager::update(float delta)
   for(Drivers::iterator i = drivers.begin(); i != drivers.end(); ++i)
     (*i)->update(delta);
   
-  for(std::vector<Controller*>::iterator i = controller.begin(); 
-      i != controller.end(); ++i)
+  for(std::vector<Controller*>::iterator i = controllers.begin(); 
+      i != controllers.end(); ++i)
     (*i)->update(delta);
 }
 

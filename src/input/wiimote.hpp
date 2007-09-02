@@ -104,6 +104,48 @@ private:
   void add_acc_event(int device, int accelerometer, float x, float y, float z);
 
 public:
+  enum {
+    // Wiimote
+    WIIMOTE_A,
+    WIIMOTE_B,
+    WIIMOTE_LEFT,
+    WIIMOTE_RIGHT,
+    WIIMOTE_UP,
+    WIIMOTE_DOWN,
+    WIIMOTE_PLUS,
+    WIIMOTE_HOME,
+    WIIMOTE_MINUS,
+    WIIMOTE_1,
+    WIIMOTE_2,
+
+    // Nunchuk
+    NUNCHUK_C,
+    NUNCHUK_Z,
+
+    // Classic 
+    CLASSIC_LEFT,
+    CLASSIC_RIGHT,
+    CLASSIC_UP,
+    CLASSIC_DOWN,
+
+    CLASSIC_PLUS,
+    CLASSIC_HOME,
+    CLASSIC_MINUS,
+    CLASSIC_A,
+    CLASSIC_B,
+    CLASSIC_X,
+    CLASSIC_Y,
+    CLASSIC_L,
+    CLASSIC_R,
+    CLASSIC_ZL, // FIXME: This is an axis instead of a button?
+    CLASSIC_ZR,
+    
+    UNKNOWN
+  };
+
+  static std::string id2str(int id);
+  static int str2id(const std::string& str);
+
   Wiimote();
   ~Wiimote();
   
@@ -127,7 +169,7 @@ public:
   void on_button  (const cwiid_btn_mesg& msg);
   void on_acc     (const cwiid_acc_mesg& msg);
   void on_ir      (const cwiid_ir_mesg& msg);
-  void on_nunchuck(const cwiid_nunchuk_mesg& msg);
+  void on_nunchuk(const cwiid_nunchuk_mesg& msg);
   void on_classic (const cwiid_classic_mesg& msg);
   
   void mesg(cwiid_wiimote_t*, int mesg_count, union cwiid_mesg mesg[]);

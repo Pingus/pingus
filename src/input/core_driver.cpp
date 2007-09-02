@@ -41,7 +41,7 @@ public:
   AxisPointer(Control* parent) 
     : Pointer(parent),
       x_axis(0), y_axis(0), speed_button(0),
-      speed(200.0f)
+      speed(400.0f)
   {
   }
 

@@ -33,7 +33,7 @@ private:
   typedef std::vector<Driver*> Drivers;
   Drivers drivers;
 
-  std::vector<Controller*> controller;
+  std::vector<Controller*> controllers;
   ControllerDescription desc;
 
 public:
