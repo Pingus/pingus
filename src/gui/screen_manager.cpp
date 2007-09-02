@@ -52,6 +52,7 @@ ScreenManager::display()
     input_controller = new Input::Controller("controller/default.scm");
   else
     input_controller = new Input::Controller(controller_file);
+
   Input::Controller::set_current(input_controller);
 
   Cursor* cursor = 0;
