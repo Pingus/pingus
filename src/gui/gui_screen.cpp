@@ -57,42 +57,42 @@ GUIScreen::update (const GameDelta& delta)
     {
       switch (i->type)
 	{
-	case Input::PointerEventType:
-	  {
-	    // ignored cause this is handled in the gui_manager
-	  }
-	  break;
+          case Input::POINTER_EVENT_TYPE:
+            {
+              // ignored cause this is handled in the gui_manager
+            }
+            break;
 
-	case Input::ButtonEventType:
-	  {
-	    process_button_event (i->button);
-	  }
-	  break;
+          case Input::BUTTON_EVENT_TYPE:
+            {
+              process_button_event (i->button);
+            }
+            break;
 
-	case Input::AxisEventType:
-	  {
-	    if (i->axis.name == Input::action)
-	      {
-		on_action_axis_move (i->axis.dir);
-	      }
-	  }
-	  break;
+          case Input::AXIS_EVENT_TYPE:
+            {
+              if (i->axis.name == Input::ACTION_AXIS)
+                {
+                  on_action_axis_move (i->axis.dir);
+                }
+            }
+            break;
 
-	case Input::ScrollEventType:
-	  {
+          case Input::SCROLLER_EVENT_TYPE:
+            {
 
-	  }
-	  break;
+            }
+            break;
 		
-	case Input::KeyboardEventType:
-	{
+          case Input::KEYBOARD_EVENT_TYPE:
+            {
 		
-	}
-	break;
+            }
+            break;
 
-	default:
-	  std::cout << "GUIScreen::update (): unhandled event type: " << i->type << std::endl;
-	  break;
+          default:
+            std::cout << "GUIScreen::update (): unhandled event type: " << i->type << std::endl;
+            break;
 	}
     }
 }
@@ -102,26 +102,26 @@ GUIScreen::process_button_event (const Input::ButtonEvent& event)
 {
   //std::cout << "GUIScreen::process_button_event (Input::ButtonEvent* event)" << std::endl;
 
-  if (event.state == Input::pressed)
+  if (event.state == Input::BUTTON_PRESSED)
     {
       switch (event.name)
 	{
-	case Input::primary:
+	case Input::PRIMARY_BUTTON:
 	  // ignoring, handled in the gui_manager
 	  break;
-	case Input::secondary:
+	case Input::SECONDARY_BUTTON:
 	  // ignoring, handled in the gui_manager
 	  break;
-	case Input::pause:
+	case Input::PAUSE_BUTTON:
 	  on_pause_press ();
 	  break;
-	case Input::fast_forward:
+	case Input::FAST_FORWARD_BUTTON:
 	  on_fast_forward_press ();
 	  break;
-	case Input::armageddon:
+	case Input::ARMAGEDDON_BUTTON:
 	  on_armageddon_press ();
 	  break;
-	case Input::escape:
+	case Input::ESCAPE_BUTTON:
 	  on_escape_press ();
 	  break;
 	default:
@@ -129,26 +129,26 @@ GUIScreen::process_button_event (const Input::ButtonEvent& event)
 	  break;
 	}
     }
-  else if (event.state == Input::released)
+  else if (event.state == Input::BUTTON_RELEASED)
     {
       switch (event.name)
 	{
-	case Input::primary:
+	case Input::PRIMARY_BUTTON:
 	  // ignoring, handled in the gui_manager
 	  break;
-	case Input::secondary:
+	case Input::SECONDARY_BUTTON:
 	  // ignoring, handled in the gui_manager
 	  break;
-	case Input::pause:
+	case Input::PAUSE_BUTTON:
 	  on_pause_release ();
 	  break;
-	case Input::fast_forward:
+	case Input::FAST_FORWARD_BUTTON:
 	  on_fast_forward_release ();
 	  break;
-	case Input::armageddon:
+	case Input::ARMAGEDDON_BUTTON:
 	  on_armageddon_release ();
 	  break;
-	case Input::escape:
+	case Input::ESCAPE_BUTTON:
 	  on_escape_release ();
 	  break;
 	default:

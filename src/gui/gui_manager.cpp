@@ -79,26 +79,26 @@ GUIManager::process_input (const GameDelta& delta)
     {
       switch (i->type)
 	{
-	case Input::PointerEventType:
-          process_pointer_event (i->pointer);
-          break;
+          case Input::POINTER_EVENT_TYPE:
+            process_pointer_event (i->pointer);
+            break;
 
-	case Input::ButtonEventType:
-          process_button_event (delta.get_absolute_time(), i->button);
-          break;
+          case Input::BUTTON_EVENT_TYPE:
+            process_button_event (delta.get_absolute_time(), i->button);
+            break;
 
-	case Input::AxisEventType:
-          // AxisEvents can be ignored in the GUI, they are handled elsewhere
-          pout (PINGUS_DEBUG_GUI) << "GUIManager: AxisEvent: " << i->axis.dir << std::endl;
-          break;
+          case Input::AXIS_EVENT_TYPE:
+            // AxisEvents can be ignored in the GUI, they are handled elsewhere
+            pout (PINGUS_DEBUG_GUI) << "GUIManager: AxisEvent: " << i->axis.dir << std::endl;
+            break;
 	
-	case Input::KeyboardEventType:
-          process_keyboard_event(i->keyboard);
-          break;
+          case Input::KEYBOARD_EVENT_TYPE:
+            process_keyboard_event(i->keyboard);
+            break;
 
-	default:
-	  pwarn (PINGUS_DEBUG_GUI) << "GUIManager: unhandled event type " << i->type << std::endl;
-	  break;
+          default:
+            pwarn (PINGUS_DEBUG_GUI) << "GUIManager: unhandled event type " << i->type << std::endl;
+            break;
 	}
     }
 }
@@ -196,7 +196,7 @@ GUIManager::process_button_event (unsigned int time_stamp, const Input::ButtonEv
 
   if (comp)
     {
-      if (event.name == primary && event.state == Input::pressed)
+      if (event.name == PRIMARY_BUTTON && event.state == Input::BUTTON_PRESSED)
 	{
 	  primary_pressed_component = comp;
 		change_focussed_comp(comp);
@@ -204,7 +204,7 @@ GUIManager::process_button_event (unsigned int time_stamp, const Input::ButtonEv
 
           // FIXME: add double click detection here
 	}
-      else if (event.name == primary && event.state == Input::released)
+      else if (event.name == PRIMARY_BUTTON && event.state == Input::BUTTON_RELEASED)
 	{
 	  /** Send the release event to the same component
 	      which got the press event */
@@ -236,13 +236,13 @@ GUIManager::process_button_event (unsigned int time_stamp, const Input::ButtonEv
 	}
 
       // Secondary button
-      if (event.name == secondary && event.state == Input::pressed)
+      if (event.name == SECONDARY_BUTTON && event.state == Input::BUTTON_PRESSED)
 	{
 	  secondary_pressed_component = comp;
 		change_focussed_comp(comp);
 	  comp->on_secondary_button_press (x_pos, y_pos);
 	}
-      else if (event.name == secondary && event.state == Input::released)
+      else if (event.name == SECONDARY_BUTTON && event.state == Input::BUTTON_RELEASED)
 	{
 	  /** Send the release event to the same component
 	      which got the press event */

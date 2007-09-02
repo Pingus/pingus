@@ -27,7 +27,7 @@
 #include "screenshot.hpp"
 #include "../display/drawing_context.hpp"
 #include "../input/controller.hpp"
-
+#include "../input/manager.hpp"
 
 ScreenManager* ScreenManager::instance_ = 0;
 
@@ -46,14 +46,14 @@ ScreenManager::~ScreenManager ()
 void
 ScreenManager::display()
 {
+  Input::Manager input_manager;
+
   Input::Controller* input_controller = 0;
 
   if (controller_file.empty())
-    input_controller = new Input::Controller("controller/default.scm");
+    input_controller = input_manager.create_controller("data/controller/default.scm");
   else
-    input_controller = new Input::Controller(controller_file);
-
-  Input::Controller::set_current(input_controller);
+    input_controller = input_manager.create_controller(controller_file);
 
   Cursor* cursor = 0;
   if (swcursor_enabled)
@@ -68,7 +68,7 @@ ScreenManager::display()
   // Main loop for the menu
   while (!screens.empty())
     {
-      float time_delta = delta_manager.getset ();
+      float time_delta = delta_manager.getset();
 
       if (time_delta > 1.0)
 	{
@@ -78,13 +78,11 @@ ScreenManager::display()
 	  continue;
 	}
 
-      // Get new events from ClanLib
-      input_controller->update(time_delta);
+      input_manager.update(time_delta);
 
       // Fill the delta with values
       GameDelta delta(time_delta, delta_manager.get_absolute(),  
-                      input_controller->get_events());
-      input_controller->clear();
+                      input_controller->poll_events());
 
       last_screen = get_current_screen();
 

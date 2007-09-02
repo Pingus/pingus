@@ -127,21 +127,21 @@ Client::process_events (const GameDelta& delta)
 
       switch (i->type)
 	{
-	case Input::ButtonEventType:
+          case Input::BUTTON_EVENT_TYPE:
           {
             const Input::ButtonEvent& ev = i->button;
 
-            if (ev.state == Input::pressed)
+            if (ev.state == Input::BUTTON_PRESSED)
               {
-                if (ev.name >= Input::action_1 && ev.name <= Input::action_10)
+                if (ev.name >= Input::ACTION_1_BUTTON && ev.name <= Input::ACTION_10_BUTTON)
                   {
-                    button_panel->set_button(ev.name - Input::action_1);
+                    button_panel->set_button(ev.name - Input::ACTION_1_BUTTON);
                   }
-                else if (ev.name == Input::action_down)
+                else if (ev.name == Input::ACTION_DOWN_BUTTON)
                   {
                     button_panel->next_action();
                   }
-                else if (ev.name == Input::action_up)
+                else if (ev.name == Input::ACTION_UP_BUTTON)
                   {
                     button_panel->previous_action();
                   }
@@ -149,20 +149,20 @@ Client::process_events (const GameDelta& delta)
           }
 	  break;
 
-	case Input::PointerEventType:
+	case Input::POINTER_EVENT_TYPE:
 					// Ignore, is handled in GUIScreen
 	  break;
 
-	case Input::AxisEventType:
+	case Input::AXIS_EVENT_TYPE:
           // ???
 	  process_axis_event (i->axis);
 	  break;
 
-        case Input::ScrollEventType:
+        case Input::SCROLLER_EVENT_TYPE:
           process_scroll_event(i->scroll);
           break;
 
-        case Input::KeyboardEventType:
+        case Input::KEYBOARD_EVENT_TYPE:
           break;
 
 	default:
