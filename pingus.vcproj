@@ -1410,27 +1410,7 @@
 				Name="input"
 				>
 				<File
-					RelativePath=".\src\input\axis.hpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\input\axis_factory.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\input\axis_factory.hpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\input\button.hpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\input\button_factory.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\input\button_factory.hpp"
+					RelativePath=".\src\input\control.hpp"
 					>
 				</File>
 				<File
@@ -1442,225 +1422,75 @@
 					>
 				</File>
 				<File
+					RelativePath=".\src\input\controller_description.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\input\controller_description.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\input\core_driver.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\input\core_driver.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\input\driver.hpp"
+					>
+				</File>
+				<File
 					RelativePath=".\src\input\event.hpp"
 					>
 				</File>
 				<File
-					RelativePath=".\src\input\event_fwd.hpp"
+					RelativePath=".\src\input\manager.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\src\input\manager.hpp"
 					>
 				</File>
 				<File
-					RelativePath=".\src\input\pointer.hpp"
+					RelativePath=".\src\input\sdl_driver.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\src\input\pointer_factory.cpp"
+					RelativePath=".\src\input\sdl_driver.hpp"
 					>
 				</File>
 				<File
-					RelativePath=".\src\input\pointer_factory.hpp"
+					RelativePath=".\src\input\usbmouse_driver.hpp"
 					>
 				</File>
 				<File
-					RelativePath=".\src\input\scroller.hpp"
+					RelativePath=".\src\input\wiimote.hpp"
 					>
 				</File>
 				<File
-					RelativePath=".\src\input\scroller_factory.cpp"
+					RelativePath=".\src\input\wiimote_driver.hpp"
 					>
 				</File>
-				<File
-					RelativePath=".\src\input\scroller_factory.hpp"
-					>
-				</File>
-				<Filter
-					Name="axes"
-					>
-					<File
-						RelativePath=".\src\input\axes\button_axis.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\axes\button_axis.hpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\axes\dummy_axis.hpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\axes\inverted_axis.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\axes\inverted_axis.hpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\axes\joystick_axis.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\axes\joystick_axis.hpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\axes\mouse_axis.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\axes\mouse_axis.hpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\axes\multiple_axis.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\axes\multiple_axis.hpp"
-						>
-					</File>
-				</Filter>
-				<Filter
-					Name="buttons"
-					>
-					<File
-						RelativePath=".\src\input\buttons\double_button.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\buttons\double_button.hpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\buttons\dummy_button.hpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\buttons\joystick_button.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\buttons\joystick_button.hpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\buttons\key_button.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\buttons\key_button.hpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\buttons\mouse_button.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\buttons\mouse_button.hpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\buttons\multiple_button.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\buttons\multiple_button.hpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\buttons\triple_button.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\buttons\triple_button.hpp"
-						>
-					</File>
-				</Filter>
-				<Filter
-					Name="scrollers"
-					>
-					<File
-						RelativePath=".\src\input\scrollers\axis_scroller.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\scrollers\axis_scroller.hpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\scrollers\dummy_scroller.hpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\scrollers\inverted_scroller.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\scrollers\inverted_scroller.hpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\scrollers\joystick_scroller.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\scrollers\joystick_scroller.hpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\scrollers\mouse_scroller.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\scrollers\multiple_scroller.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\scrollers\multiple_scroller.hpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\scrollers\pointer_scroller.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\scrollers\pointer_scroller.hpp"
-						>
-					</File>
-				</Filter>
-				<Filter
-					Name="pointers"
-					>
-					<File
-						RelativePath=".\src\input\pointers\axis_pointer.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\pointers\axis_pointer.hpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\pointers\dummy_pointer.hpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\pointers\mouse_pointer.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\pointers\mouse_pointer.hpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\pointers\multiple_pointer.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\input\pointers\multiple_pointer.hpp"
-						>
-					</File>
-				</Filter>
 			</Filter>
 			<Filter
 				Name="lisp"

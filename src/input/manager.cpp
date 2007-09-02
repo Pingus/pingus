@@ -212,8 +212,10 @@ Manager::load_driver(const std::string& name)
         driver = new SDLDriver();
       } else if (name == "core") {
         driver = new CoreDriver(this);
+#ifndef WIN32
       } else if (name == "usbmouse") {
         driver = new USBMouseDriver();
+#endif
 #ifdef HAVE_CWIID
       } else if (name == "wiimote") {
         driver = new WiimoteDriver();
