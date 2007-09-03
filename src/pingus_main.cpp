@@ -135,8 +135,7 @@ signal_handler(int signo)
 PingusMain::PingusMain() :
   blitter_test(false),
   show_credits(false),
-  editor(false),
-  refresh_rate(60)
+  editor(false)
 {
 }
 
@@ -199,49 +198,56 @@ PingusMain::check_args(int argc, char** argv)
   CommandLine argp;
   argp.add_usage("pingus [OPTIONS]... [FILES]...");
   argp.add_doc("Pingus is a puzzle game where you need to guide a bunch of little penguins around the world.");
-    
-  argp.add_group(_("Options:"));
-  argp.add_option('g', "geometry", "{width}x{height}",  
-                  _("Set the resolution for pingus (default: 800x600)"));
+
   argp.add_option('h', "help", "", 
                   _("Displays this help"));
-  argp.add_option('n', "disable-intro", "", 
-                  _("Disable intro"));
-
+  argp.add_option('v', "verbose", "", 
+                  _("Print some more messages to stdout, can be set multiple times to increase verbosity"));
+  argp.add_option('V', "version", "", 
+                  _("Print version number and exit"));
 #if 0
   argp.add_option('G', "use-opengl", "",
                   _("Use OpenGL"));
   argp.add_option('S', "use-sdl", "",
                   _("Use SDL"));
 #endif 
+    
+  argp.add_group(_("Display:"));
   argp.add_option('w', "window", "",
                   _("Start in Window Mode"));
   argp.add_option('f', "fullscreen", "",
                   _("Start in Fullscreen"));
-  argp.add_option('R', "refresh-rate", "",
-                  _("Set the refresh rate in fullscreen (default: 60)"));                  
-  argp.add_option('d', "datadir", _("PATH"),
-                  _("Set the path to load the data files to 'path'"));
-  argp.add_option('l', "level",  _("FILE"), 
-                  _("Load a custom level from FILE"));
-  argp.add_option(358, "worldmap", _("FILE"),
-                  _("Load a custom worldmap from FILE"));
-  argp.add_option('e', "editor", "",
-                  _("Loads the level editor"));
-  argp.add_option(363, "font", "FILE",
-                  _("Test a font"));
+  argp.add_option(346, "enable-swcursor", "",
+                  _("Enable software cursor"));
+  argp.add_option('g', "geometry", "{width}x{height}",  
+                  _("Set the resolution for pingus (default: 800x600)"));
+
+  argp.add_group(_("Sound:"));
+  argp.add_option('s', "disable-sound", "", 
+                  _("Disable sound"));
+  argp.add_option('m', "disable-music", "", 
+                  _("Disable music"));
+
+  argp.add_group("Language Options:");
   argp.add_option(364, "language", "LANG",
                   _("Select language to use with Pingus"));
   argp.add_option(365, "list-languages", "",
                   _("List all available languages"));
-  argp.add_option('v', "verbose", "", 
-                  _("Print some more messages to stdout, can be set multiple times to increase verbosity"));
-  argp.add_option('V', "version", "", 
-                  _("Print version number and exit"));
+
+  argp.add_group("Modes:");
+  argp.add_option('e', "editor", "",
+                  _("Loads the level editor"));
+  argp.add_option(363, "font", "FILE",
+                  _("Test a font"));
+  argp.add_option(359, "credits", "",
+                  _("Shows the credits"));
+
+  argp.add_group(_("Misc Options:"));
+  argp.add_option('d', "datadir", _("PATH"),
+                  _("Set the path to load the data files to 'path'"));
+
   argp.add_option(337, "disable-auto-scrolling", "",
                   _("Disable automatic scrolling"));
-  argp.add_option(346, "enable-swcursor", "",
-                  _("Enable software cursor"));
   argp.add_option(342, "no-cfg-file", "",
                   _("Don't read ~/.pingus/config"));
   argp.add_option(347, "config-file", _("FILE"),
@@ -253,7 +259,9 @@ PingusMain::check_args(int argc, char** argv)
   argp.add_group(_("Debugging and experimental stuff:"));
   argp.add_option(334, "maintainer-mode",  "",  
                   _("Enables some features, only interesting to programmers"));
-  argp.add_option(352, "debug",  "OPTION", 
+  argp.add_option(358, "worldmap", _("FILE"),
+                  _("Load a custom worldmap from FILE"));
+  argp.add_option('D', "debug",  "OPTION", 
                   _("Enable the output of debugging info, possible"
                     "OPTIONs are tiles, gametime, actions, sound, resources, gui,"
                     "input, pathmgr"));
@@ -273,20 +281,12 @@ PingusMain::check_args(int argc, char** argv)
                   _("Disable some cpu intensive features"));
   argp.add_option(353, "min-cpu-usage", "",
                   _("Reduces the CPU usage by issuing sleep()"));
-  argp.add_option(359, "credits", "",
-                  _("Shows the credits"));
 
   argp.add_group(_("Demo playing and recording:"));
   argp.add_option('p', "play-demo", _("FILE"), 
                   _("Plays a demo session from FILE"));
   argp.add_option('r', "disable-demo-recording", "",
                   _("Record demos for each played level"));
-
-  argp.add_group(_("Sound:"));
-  argp.add_option('s', "disable-sound", "", 
-                  _("Disable sound"));
-  argp.add_option('m', "disable-music", "", 
-                  _("Disable music"));
 
   argp.parse_args(argc, argv);
   argp.set_help_indent(20);
@@ -312,11 +312,7 @@ PingusMain::check_args(int argc, char** argv)
         case 359: // --credits
           show_credits = true;
           break;
-            
-        case 'l': // -l, --level
-          levelfile = argp.get_argument();
-          break;
-          
+
         case 'e': // -e, --editor
           editor = true;
 
@@ -396,13 +392,6 @@ PingusMain::check_args(int argc, char** argv)
         case 'f': // --fullscreen
           fullscreen_enabled = true;
           break;
-
-#if 0
-        case 'R': // --refresh-rate
-          sscanf(argp.get_argument().c_str(), "%d", &refresh_rate);
-          std::cout << "Pingus: Refresh rate is " << refresh_rate << std::endl;
-          break;
-#endif
           
         case 'w': // --window
           fullscreen_enabled = false;
@@ -442,7 +431,7 @@ PingusMain::check_args(int argc, char** argv)
           config_file = argp.get_argument();
           break;
 
-        case 352:
+        case 'D':
           if (argp.get_argument() == "all")
             {
               pingus_debug_flags |= PINGUS_DEBUG_ALL;
@@ -682,7 +671,6 @@ PingusMain::print_greeting_message()
   std::cout << "fullscreen:              "
             << (fullscreen_enabled ? " enabled" : "disabled")
             << std::endl;
-  //std::cout << "refresh rate:            " << refresh_rate << std::endl;
   std::cout << "using OpenGL:            " << use_opengl << std::endl;
 
   std::cout << std::endl;

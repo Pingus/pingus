@@ -20,11 +20,13 @@
 
 import os
 
-env = Environment(# ENV = {'PKG_CONFIG_PATH' : os.getenv('PKG_CONFIG_PATH')},
-                  CCFLAGS = ['-O2', '-Wall', '-Werror', '-g'],
-                  CPPDEFINES = ['ENABLE_BINRELOC', 'HAVE_CWIID'],
-                  CPPPATH = ['..', '.'],
-                  LIBS = ['cwiid', 'Xi']) # FIXME: Make this configurable
+env = Environment(
+    # ENV = {'PKG_CONFIG_PATH' : os.getenv('PKG_CONFIG_PATH')},
+    CXX = "g++-4.2",
+    CCFLAGS = ['-O2', '-Wall', '-Werror', '-g'],
+    CPPDEFINES = ['ENABLE_BINRELOC', 'HAVE_CWIID'],
+    CPPPATH = ['..', '.'],
+    LIBS = ['cwiid', 'Xi']) # FIXME: Make this configurable
 
 env.ParseConfig('sdl-config  --cflags --libs')
 env['LIBS'] += ['SDL_image', 'SDL_mixer', 'png']
@@ -35,7 +37,7 @@ env.Program('../pingus', [
 # # 'pingus_level_test.cpp', 
 # # 'sound/slot_manager.cpp', 
 # # 'xml_eval.cpp',
-    
+
 'action_holder.cpp', 
 'actions/angel.cpp', 
 'actions/basher.cpp', 

@@ -236,6 +236,7 @@ PingusMenu::draw_foreground(DrawingContext& gc)
               Vector3f((gc.get_width()/2) - (background.get_width()/2),
                        static_cast<float>(Display::get_height()/10)));
     }
+
 #ifdef OFFICIAL_PINGUS_BUILD
   gc.print_left(Fonts::pingus_small, 25.0f, 
                 static_cast<float>(Display::get_height()-114),
@@ -245,6 +246,7 @@ PingusMenu::draw_foreground(DrawingContext& gc)
                 static_cast<float>(Display::get_height()-114),
                 "Pingus version "VERSION" (unofficial build), Copyright (C) 2003 Ingo Ruhnke <grumbel@gmx.de>\n");
 #endif
+
   gc.print_left(Fonts::pingus_small, 25.0f, 
                 static_cast<float>(Display::get_height()-80),
                 "Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are\n"
