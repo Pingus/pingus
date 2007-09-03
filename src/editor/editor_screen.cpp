@@ -1,7 +1,8 @@
 //  $Id$
 //
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2007 Jason Green <jave27@gmail.com>,
+//                     Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -40,35 +41,35 @@ namespace Editor {
 
 // Default constructor
 EditorScreen::EditorScreen(EditorLevel* level)
-: plf(level), 
-	panel(0),
-	viewport(0),
-	filedialog(0),
-	close_dialog(false)
+  : plf(level), 
+    panel(0),
+    viewport(0),
+    filedialog(0),
+    close_dialog(false)
 {
-	if (!plf) plf = new EditorLevel();
+  if (!plf) plf = new EditorLevel();
 }
 
 // Destructor
 EditorScreen::~EditorScreen()
 {
-	delete plf;
-	if (filedialog)
-		delete filedialog;
+  delete plf;
+  if (filedialog)
+    delete filedialog;
 }
 
 // Startup code
 void
 EditorScreen::on_startup()
 {
-	// Create the viewport for the images and data
-	viewport = new EditorViewport(this);
-	gui_manager->add(viewport, true);	
+  // Create the viewport for the images and data
+  viewport = new EditorViewport(this);
+  gui_manager->add(viewport, true);	
 	
-	// Create the panel for the buttons
-	panel = new EditorPanel(this);
-	gui_manager->add(panel, true);
-	panel->init();
+  // Create the panel for the buttons
+  panel = new EditorPanel(this);
+  gui_manager->add(panel, true);
+  panel->init();
 
 }
 
@@ -76,7 +77,7 @@ EditorScreen::on_startup()
 void
 EditorScreen::close_screen()
 {
-	ScreenManager::instance()->pop_screen();
+  ScreenManager::instance()->pop_screen();
 }
 
 // Escape was pressed
@@ -90,38 +91,38 @@ EditorScreen::on_escape_press()
 void
 EditorScreen::show_file_dialog(bool for_loading)
 {
-	if (filedialog)
-		delete filedialog;
-	close_dialog = false;
-	filedialog = new FileDialog(this, ".scm", 
-		path_manager.complete("levels/"), for_loading);
-	filedialog->preload();	
+  if (filedialog)
+    delete filedialog;
+  close_dialog = false;
+  filedialog = new FileDialog(this, ".scm", 
+                              path_manager.complete("levels/"), for_loading);
+  filedialog->preload();	
 }
 
 // Close dialog box
 void
 EditorScreen::cancel()
 {
-	close_dialog = true;
+  close_dialog = true;
 }
 
 // Save the current level
 void 
 EditorScreen::save(const std::string &file, const std::string &filemask)
 {
-	close_dialog = true;
-	plf->save_level(file);
-	panel->set_selected_button(0);
+  close_dialog = true;
+  plf->save_level(file);
+  panel->set_selected_button(0);
 }
 
 // Load a new level
 void 
 EditorScreen::load(const std::string &file, const std::string &filemask)
 {
-	close_dialog = true;
-	plf->load_level(file);
-	viewport->refresh();
-	panel->set_selected_button(0);
+  close_dialog = true;
+  plf->load_level(file);
+  viewport->refresh();
+  panel->set_selected_button(0);
 }
 
 // Play the current level (save to a temporary file 
@@ -129,61 +130,61 @@ EditorScreen::load(const std::string &file, const std::string &filemask)
 void
 EditorScreen::play_level()
 {
-	// Ask, "Would you like to save first?".
-	// if so, save the file normally.
+  // Ask, "Would you like to save first?".
+  // if so, save the file normally.
 
-	// Then save to a temporary file
+  // Then save to a temporary file
 
-	// Load the temporary file
+  // Load the temporary file
 }
 
 // Draw the background and components
 bool
 EditorScreen::draw(DrawingContext &gc)
 {
-	// Black out screen
-	gc.fill_screen(Color(0,0,0));
-	gui_manager->draw(gc);
+  // Black out screen
+  gc.fill_screen(Color(0,0,0));
+  gui_manager->draw(gc);
 
-	// FIXME: Remove this warning
-	gc.print_center(Fonts::pingus_large, (float)(Display::get_width() / 2), 
-		(float)(Display::get_height() / 2), "Not yet functional");
+  // FIXME: Remove this warning
+  gc.print_center(Fonts::pingus_large, (float)(Display::get_width() / 2), 
+                  (float)(Display::get_height() / 2), "Not yet functional");
 		
-	if (filedialog)
-		filedialog->draw(gc);
+  if (filedialog)
+    filedialog->draw(gc);
 	
-	return true;
+  return true;
 }
 
 void
 EditorScreen::update(const GameDelta &delta)
 {
-	if (filedialog)
-	{
-		if (close_dialog)
-		{
-			delete filedialog;
-			filedialog = 0;
-		}
-		else
-			filedialog->update(delta);
-	}
-	else
-		GUIScreen::update(delta);
+  if (filedialog)
+    {
+      if (close_dialog)
+        {
+          delete filedialog;
+          filedialog = 0;
+        }
+      else
+        filedialog->update(delta);
+    }
+  else
+    GUIScreen::update(delta);
 }
 
 void
 EditorScreen::add_object(LevelObj* obj)
 {
-	plf->add_object(obj);
-	viewport->add_object(obj);
+  plf->add_object(obj);
+  viewport->add_object(obj);
 }
 
 void
 EditorScreen::add_objects(std::vector<LevelObj*> objs)
 {
-	for (std::vector<LevelObj*>::const_iterator it = objs.begin(); it != objs.end(); it++)
-		add_object(*it);
+  for (std::vector<LevelObj*>::const_iterator it = objs.begin(); it != objs.end(); it++)
+    add_object(*it);
 }
 
 } // Editor namespace

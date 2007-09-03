@@ -1,7 +1,8 @@
 //  $Id$
 //
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2007 Jason Green <jave27@gmail.com>,
+//                     Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -29,10 +30,10 @@
 
 namespace Editor {
 
-	static bool LevelObjSort(LevelObj *a, LevelObj *b)
-	{
-		return (a->get_pos().z < b->get_pos().z);
-	}
+static bool LevelObjSort(LevelObj *a, LevelObj *b)
+{
+  return (a->get_pos().z < b->get_pos().z);
+}
 
 class LevelImpl
 {
@@ -45,13 +46,13 @@ public:
     // Do nothing
   }
 
-	/** Destructor */
-	~LevelImpl()
-	{
-		for (unsigned i = 0; i < objects.size(); i++)
-			delete objects[i];
-		objects.clear();
-	}
+  /** Destructor */
+  ~LevelImpl()
+  {
+    for (unsigned i = 0; i < objects.size(); i++)
+      delete objects[i];
+    objects.clear();
+  }
                     
   std::string resname;
 
@@ -70,19 +71,19 @@ public:
   int difficulty;
   
   std::string author;
-	std::string comment;
+  std::string comment;
   std::string music;
 
   std::vector<LevelObj*> objects;
 
-	/** Sort the objects by their z position */
-	void sort_objs()
-	{
-		std::stable_sort(objects.begin(), objects.end(), LevelObjSort);
-	}
+  /** Sort the objects by their z position */
+  void sort_objs()
+  {
+    std::stable_sort(objects.begin(), objects.end(), LevelObjSort);
+  }
 
 private:
-	LevelImpl (const LevelImpl&);
+  LevelImpl (const LevelImpl&);
   LevelImpl& operator= (const LevelImpl&);
 };	// LevelImpl class
 

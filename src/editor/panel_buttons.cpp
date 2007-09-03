@@ -1,7 +1,8 @@
 //  $Id$
 //
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2007 Jason Green <jave27@gmail.com>,
+//                     Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -40,7 +41,7 @@ namespace Editor {
 PanelButton::PanelButton(EditorPanel* p) :
   hover(false),
   panel(p),
-	is_selected(false)
+  is_selected(false)
 {
   button = Resource::load_sprite("core/editor/button");
   button_pressed = Resource::load_sprite("core/editor/button_pressed");
@@ -50,25 +51,25 @@ PanelButton::PanelButton(EditorPanel* p) :
 void
 PanelButton::draw(DrawingContext &gc)
 {
-	if (is_selected)
-		gc.draw(button_pressed, pos);
-	else
-		gc.draw(button, pos);
+  if (is_selected)
+    gc.draw(button_pressed, pos);
+  else
+    gc.draw(button, pos);
 
-	// Print the tooltip
-	if (hover)
-		gc.print_left(Fonts::pingus_small, pos.x, pos.y + (float)get_width(), 
-			tooltip, 50);
+  // Print the tooltip
+  if (hover)
+    gc.print_left(Fonts::pingus_small, pos.x, pos.y + (float)get_width(), 
+                  tooltip, 50);
 
-	// Draw the actual button image
-	gc.draw(sur, pos);
+  // Draw the actual button image
+  gc.draw(sur, pos);
 }
 
 // Set the position of this panelbutton
 void
 PanelButton::set_pos(Vector3f p)
 {
-	pos = p;
+  pos = p;
 }
 
 // Is this button at these x,y coordinates?
@@ -80,19 +81,19 @@ PanelButton::is_at(int x, int y)
 }
 
 // Something all buttons should do.
-void
-PanelButton::on_primary_button_click(int x, int y)
+  void
+  PanelButton::on_primary_button_click(int x, int y)
 {
-	UNUSED_ARG(x);
-	UNUSED_ARG(y);
-	panel->set_selected_button(this);
+  UNUSED_ARG(x);
+  UNUSED_ARG(y);
+  panel->set_selected_button(this);
 }
 
 // Standard exit button
 PanelButtonExit::PanelButtonExit(EditorPanel *p) :
-	PanelButton(p)
+  PanelButton(p)
 {
-	tooltip = "Exit the editor";
+  tooltip = "Exit the editor";
   sur = Resource::load_sprite("core/editor/exit");
 }
 
@@ -100,15 +101,15 @@ PanelButtonExit::PanelButtonExit(EditorPanel *p) :
 void
 PanelButtonExit::on_primary_button_click(int x, int y)
 {
-	PanelButton::on_primary_button_click(x, y);
-	panel->get_screen()->on_escape_press();
+  PanelButton::on_primary_button_click(x, y);
+  panel->get_screen()->on_escape_press();
 }
 
 // Standard Load button
 PanelButtonLoad::PanelButtonLoad(EditorPanel *p) :
-	PanelButton(p)
+  PanelButton(p)
 {
-	tooltip = "Load existing level";
+  tooltip = "Load existing level";
   sur = Resource::load_sprite("core/editor/open");
 }
 
@@ -116,15 +117,15 @@ PanelButtonLoad::PanelButtonLoad(EditorPanel *p) :
 void
 PanelButtonLoad::on_primary_button_click(int x, int y)
 {
-	PanelButton::on_primary_button_click(x, y);
-	panel->get_screen()->show_file_dialog(true);
+  PanelButton::on_primary_button_click(x, y);
+  panel->get_screen()->show_file_dialog(true);
 }
 
 // Standard save button
 PanelButtonSave::PanelButtonSave(EditorPanel *p) :
-	PanelButton(p)
+  PanelButton(p)
 {
-	tooltip = "Save current level";
+  tooltip = "Save current level";
   sur = Resource::load_sprite("core/editor/save");
 }
 
@@ -132,90 +133,90 @@ PanelButtonSave::PanelButtonSave(EditorPanel *p) :
 void
 PanelButtonSave::on_primary_button_click(int x, int y)
 {
-	PanelButton::on_primary_button_click(x, y);
-	panel->get_screen()->show_file_dialog(false);	
+  PanelButton::on_primary_button_click(x, y);
+  panel->get_screen()->show_file_dialog(false);	
 }
 
 
 // Load the groundpieces
 PanelButtonGroundpiece::PanelButtonGroundpiece(EditorPanel *p) :
-	PanelButton(p)
+  PanelButton(p)
 {
-	sur = Resource::load_sprite("core/editor/save"); // FIXME: Update this sprite 
-	tooltip = "Load a groundpiece";
+  sur = Resource::load_sprite("core/editor/save"); // FIXME: Update this sprite 
+  tooltip = "Load a groundpiece";
 }
 
 void
 PanelButtonGroundpiece::on_primary_button_click(int x, int y)
 {
-	PanelButton::on_primary_button_click(x, y);
+  PanelButton::on_primary_button_click(x, y);
 
-	panel->get_combobox(1)->clear();
-	panel->get_combobox(1)->set_label("Type");
-	panel->get_combobox(2)->set_label("Subtype");
-	panel->get_combobox(3)->set_label("Groundpiece");
-	std::vector<std::string> groundpieces; //// = Resource::get_sections("groundpieces");
-	for (unsigned i = 0; i < groundpieces.size(); i++)
-	{
-		// We add each ComboItem to the first box:
-		// - The ID field of the ComboItem should be the full resource name.
-		// - The displayed field should only be the section name.
-		panel->get_combobox(1)->add(new GUI::ComboItem("groundpieces/" + groundpieces[i], 
-			groundpieces[i]));
-	}
-	panel->get_combobox(1)->set_enabled(true);
+  panel->get_combobox(1)->clear();
+  panel->get_combobox(1)->set_label("Type");
+  panel->get_combobox(2)->set_label("Subtype");
+  panel->get_combobox(3)->set_label("Groundpiece");
+  std::vector<std::string> groundpieces; //// = Resource::get_sections("groundpieces");
+  for (unsigned i = 0; i < groundpieces.size(); i++)
+    {
+      // We add each ComboItem to the first box:
+      // - The ID field of the ComboItem should be the full resource name.
+      // - The displayed field should only be the section name.
+      panel->get_combobox(1)->add(new GUI::ComboItem("groundpieces/" + groundpieces[i], 
+                                                     groundpieces[i]));
+    }
+  panel->get_combobox(1)->set_enabled(true);
 }
 
 // Populate the other comboboxes with the available resources.
 void
 PanelButtonGroundpiece::combobox_changed(int i, const std::string &value)
 {
-	std::string section;
-	if (i == 1)
-	{
-		// Populate the 2nd combobox with the next resource section & disable box 3.
-		panel->get_combobox(2)->clear();
-		panel->get_combobox(2)->set_enabled(true);
-		panel->get_combobox(3)->set_enabled(false);
+  std::string section;
+  if (i == 1)
+    {
+      // Populate the 2nd combobox with the next resource section & disable box 3.
+      panel->get_combobox(2)->clear();
+      panel->get_combobox(2)->set_enabled(true);
+      panel->get_combobox(3)->set_enabled(false);
 
-		std::vector<std::string> groundpieces;//// = Resource::get_sections(
-                ////panel->get_combobox(1)->get_selected_item()->get_displayed_string());
-		for (std::vector<std::string>::const_iterator it = groundpieces.begin();
-			it != groundpieces.end(); it++)
-			panel->get_combobox(2)->add(new GUI::ComboItem(value + "/" + (*it), (*it)));		
-	}
-	else if (i == 2)
-	{
-		// Populate the 3rd combobox with the Resource ID's
-		panel->get_combobox(3)->clear();
-		panel->get_combobox(3)->set_enabled(true);
+      std::vector<std::string> groundpieces;//// = Resource::get_sections(
+      ////panel->get_combobox(1)->get_selected_item()->get_displayed_string());
+      for (std::vector<std::string>::const_iterator it = groundpieces.begin();
+           it != groundpieces.end(); it++)
+        panel->get_combobox(2)->add(new GUI::ComboItem(value + "/" + (*it), (*it)));		
+    }
+  else if (i == 2)
+    {
+      // Populate the 3rd combobox with the Resource ID's
+      panel->get_combobox(3)->clear();
+      panel->get_combobox(3)->set_enabled(true);
 
-		std::vector<std::string> groundpieces;//// = Resource::get_resources(
-		////	"sprite", value);
-		for (std::vector<std::string>::const_iterator it = groundpieces.begin();
-			it != groundpieces.end(); it++)
-		{
-			// new_value is the "displayed_string" for the combobox.
-			std::string new_value = (*it).substr(value.length()+1);
-			panel->get_combobox(3)->add(new GUI::ComboItem(value + "/" + new_value, 
-			new_value));		
-		}
-	}
-	else
-	{
-		// 3rd box was selected - add the resource to the current level.
-		LevelObj* obj = new LevelObj("groundpiece", panel->get_screen()->get_level()->get_level_impl());
-		obj->set_res_desc(ResDescriptor(value));
-		obj->set_pos(Vector3f(0, 0, 0));
-		// 1st combobox displayed the "type" of resource (solid, transparent, etc.)
-		obj->set_type(panel->get_combobox(1)->get_selected_item()->get_displayed_string());
-		panel->get_screen()->add_object(obj);
-	}
+      std::vector<std::string> groundpieces;//// = Resource::get_resources(
+      ////	"sprite", value);
+      for (std::vector<std::string>::const_iterator it = groundpieces.begin();
+           it != groundpieces.end(); it++)
+        {
+          // new_value is the "displayed_string" for the combobox.
+          std::string new_value = (*it).substr(value.length()+1);
+          panel->get_combobox(3)->add(new GUI::ComboItem(value + "/" + new_value, 
+                                                         new_value));		
+        }
+    }
+  else
+    {
+      // 3rd box was selected - add the resource to the current level.
+      LevelObj* obj = new LevelObj("groundpiece", panel->get_screen()->get_level()->get_level_impl());
+      obj->set_res_desc(ResDescriptor(value));
+      obj->set_pos(Vector3f(0, 0, 0));
+      // 1st combobox displayed the "type" of resource (solid, transparent, etc.)
+      obj->set_type(panel->get_combobox(1)->get_selected_item()->get_displayed_string());
+      panel->get_screen()->add_object(obj);
+    }
 }
 
 PanelButtonHead::PanelButtonHead(EditorPanel *p)
   : PanelButton(p),
-  head(0)
+    head(0)
 {  
   // FIXME: Update this sprite  
   sur = Resource::load_sprite("core/editor/save"); 
@@ -227,13 +228,13 @@ PanelButtonHead::on_primary_button_click(int x, int y)
 {
   PanelButton::on_primary_button_click(x, y); 
   if (!head)
-  {  
-    head = new LevelHead(panel, this);
-  }
+    {  
+      head = new LevelHead(panel, this);
+    }
   else
-  {  
-    remove_head(); 
-  }  
+    {  
+      remove_head(); 
+    }  
 } 
 
 void

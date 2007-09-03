@@ -1,7 +1,8 @@
 //  $Id$
 //
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2007 Jason Green <jave27@gmail.com>,
+//                     Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -36,47 +37,47 @@
 
 namespace Editor {
   
-  class LevelHeadCloseButton : public GUI::SurfaceButton
-  {
-    private:
-      LevelHead* head;
-      std::string label;   
+class LevelHeadCloseButton : public GUI::SurfaceButton
+{
+private:
+  LevelHead* head;
+  std::string label;   
 
-    public:
-      LevelHeadCloseButton(LevelHead* h)
-      : GUI::SurfaceButton(Display::get_width() -200,
-                           Display::get_height() -100,
-                           ResDescriptor("core/menu/exit_button_normal"),
-                           ResDescriptor("core/menu/exit_button_pressed"),
-                           ResDescriptor("core/menu/exit_button_hover")),
+public:
+  LevelHeadCloseButton(LevelHead* h)
+    : GUI::SurfaceButton(Display::get_width() -200,
+                         Display::get_height() -100,
+                         ResDescriptor("core/menu/exit_button_normal"),
+                         ResDescriptor("core/menu/exit_button_pressed"),
+                         ResDescriptor("core/menu/exit_button_hover")),
       head(h),
       label(_("Ok"))
-      {
-      }
+  {
+  }
 
-      void draw (DrawingContext& gc) {
-        SurfaceButton::draw(gc);
-        gc.print_right(Fonts::chalk_large, (float)Display::get_width() - 150,
-                       (float)Display::get_height() - 100, label);
-      }
+  void draw (DrawingContext& gc) {
+    SurfaceButton::draw(gc);
+    gc.print_right(Fonts::chalk_large, (float)Display::get_width() - 150,
+                   (float)Display::get_height() - 100, label);
+  }
 
-      void on_click()
-      {
-        head->get_head_button()->remove_head();
-      }
+  void on_click()
+  {
+    head->get_head_button()->remove_head();
+  }
 
-      void on_pointer_enter()
-      {
-        SurfaceButton::on_pointer_enter();
-        Sound::PingusSound::play_sound ("tick");
-      }
-  };
+  void on_pointer_enter()
+  {
+    SurfaceButton::on_pointer_enter();
+    Sound::PingusSound::play_sound ("tick");
+  }
+};
   	
 LevelHead::LevelHead(EditorPanel* p, PanelButtonHead* pbh) :
   head_button(pbh),  
-	impl(p->get_screen()->get_level()->get_level_impl()),
+  impl(p->get_screen()->get_level()->get_level_impl()),
   gui_manager(p->get_screen()->get_gui_manager()), 
-	pos(Vector3f(50, 75))
+  pos(Vector3f(50, 75))
 {
   gui_manager->add((GUI::Component*)this, false); 
    
@@ -119,7 +120,7 @@ bool
 LevelHead::is_at(int x, int y)
 {
   return (x > pos.x && y > pos.y && x < Display::get_width()-50 && 
-      y < Display::get_height()-50);
+          y < Display::get_height()-50);
 }
 
 void

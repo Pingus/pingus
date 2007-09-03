@@ -1,7 +1,8 @@
 //  $Id$
 //
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 1999 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2007 Jason Green <jave27@gmail.com>,
+//                     Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -36,73 +37,73 @@ class EditorPanel;
 class EditorViewport;
 
 /** This class is the screen that contains all of the
-	editor objects */
+    editor objects */
 class EditorScreen : public GUIScreen, public FileDialogListener
 {
 private:
-	/** The level currently being edited */
-	EditorLevel* plf;
+  /** The level currently being edited */
+  EditorLevel* plf;
 
-	/** Panel which contains all of the buttons for each action */
-	EditorPanel* panel;
+  /** Panel which contains all of the buttons for each action */
+  EditorPanel* panel;
 
-	/** Viewport which holds all of the level images and data */
-	EditorViewport* viewport;
+  /** Viewport which holds all of the level images and data */
+  EditorViewport* viewport;
 
-	/** File Dialog box */
-	FileDialog* filedialog;
+  /** File Dialog box */
+  FileDialog* filedialog;
 
-	bool close_dialog;
+  bool close_dialog;
 
 public:
-	/** Default constructor */
+  /** Default constructor */
   EditorScreen(EditorLevel* level = 0);
 
-	/** Destructor */
-	~EditorScreen();
+  /** Destructor */
+  ~EditorScreen();
 
-	/** Code that runs when the screen first opens */
+  /** Code that runs when the screen first opens */
   void on_startup();
 
-	/** Closes the current screen */
+  /** Closes the current screen */
   void close_screen();
 
-	/** Code that runs when the Escape button is pressed */
+  /** Code that runs when the Escape button is pressed */
   void on_escape_press();
 
-	/** Draw the items in the screen */
-	bool draw (DrawingContext& gc);
+  /** Draw the items in the screen */
+  bool draw (DrawingContext& gc);
 
-	/** Update the GUI objects */
-	void update (const GameDelta& delta);
+  /** Update the GUI objects */
+  void update (const GameDelta& delta);
 
-	/** Return the gui_manager */
-	GUI::GUIManager* get_gui_manager() const { return gui_manager; }
+  /** Return the gui_manager */
+  GUI::GUIManager* get_gui_manager() const { return gui_manager; }
 	
-	/** Return the viewport */
-	EditorViewport* get_viewport() const { return viewport; }
+  /** Return the viewport */
+  EditorViewport* get_viewport() const { return viewport; }
 
-	/** Return a pointer to the current level */
-	EditorLevel* get_level() const { return plf; }
+  /** Return a pointer to the current level */
+  EditorLevel* get_level() const { return plf; }
 
-	/** Add an object to both the EditorLevel and the EditorViewport */
-	void add_object(LevelObj* obj);
-	void add_objects(std::vector<LevelObj*> objs);
+  /** Add an object to both the EditorLevel and the EditorViewport */
+  void add_object(LevelObj* obj);
+  void add_objects(std::vector<LevelObj*> objs);
 
-	/** Show a file dialog box */
-	void show_file_dialog(bool for_loading);
+  /** Show a file dialog box */
+  void show_file_dialog(bool for_loading);
 
-	/** Closes the file dialog box */
-	void cancel();
+  /** Closes the file dialog box */
+  void cancel();
 
-	/** Saves the currently loaded level */
-	void save(const std::string &file, const std::string &filemask);
+  /** Saves the currently loaded level */
+  void save(const std::string &file, const std::string &filemask);
 
-	/** Load a new level */
-	void load(const std::string &file, const std::string &filemask);
+  /** Load a new level */
+  void load(const std::string &file, const std::string &filemask);
 
-	/** Plays the currently loaded level */
-	void play_level();
+  /** Plays the currently loaded level */
+  void play_level();
 
 private:
   EditorScreen (const EditorScreen&);

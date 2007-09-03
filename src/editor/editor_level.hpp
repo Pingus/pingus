@@ -1,7 +1,8 @@
 //  $Id$
 //
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2007 Jason Green <jave27@gmail.com>,
+//                     Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -23,45 +24,44 @@
 #include <vector>
 #include "level_impl.hpp"
 
-
 namespace Editor {
 
-	class LevelObj;
+class LevelObj;
 
 class EditorLevel
 {
 private:
-	LevelImpl* impl;
+  LevelImpl* impl;
 
 public:
 
-	/** Construct new blank level */
-	EditorLevel();
+  /** Construct new blank level */
+  EditorLevel();
 
-	/** Destructor */
-	~EditorLevel();
+  /** Destructor */
+  ~EditorLevel();
 
-	/** Verify that level is valid */
-	bool is_valid();
+  /** Verify that level is valid */
+  bool is_valid();
 
-	/** Save the level to a file.  Returns true if successful */
-	bool save_level(const std::string& filename);
+  /** Save the level to a file.  Returns true if successful */
+  bool save_level(const std::string& filename);
 
-	/** Load an existing level from a file */
-	void load_level(const std::string& filename);
+  /** Load an existing level from a file */
+  void load_level(const std::string& filename);
 
-	/** Return all objects in the level */
-	std::vector<LevelObj*> get_objects() const { return impl->objects; }
+  /** Return all objects in the level */
+  std::vector<LevelObj*> get_objects() const { return impl->objects; }
 	
-	/** Add an object to the level */
-	void add_object(LevelObj* obj);
+  /** Add an object to the level */
+  void add_object(LevelObj* obj);
 	
-	/** Return LevelImpl */
-	LevelImpl* get_level_impl() { return impl; }
+  /** Return LevelImpl */
+  LevelImpl* get_level_impl() { return impl; }
 	
 
 private:
-	EditorLevel (const EditorLevel&);
+  EditorLevel (const EditorLevel&);
   EditorLevel& operator= (const EditorLevel&);
 };	// EditorLevel class
 

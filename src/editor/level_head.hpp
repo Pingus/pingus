@@ -1,7 +1,8 @@
 //  $Id$
 //
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2005 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2007 Jason Green <jave27@gmail.com>,
+//                     Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -23,23 +24,23 @@
 #include "../gui/component.hpp"
 
 
-	class Vector3f; 
+class Vector3f; 
   
 namespace GUI {  
-  class GUIManager;
-  class InputBox; 
+class GUIManager;
+class InputBox; 
 }
 
 namespace Editor {
 
-	class LevelImpl;
-  class PanelButtonHead;
-  class EditorPanel;  
-  class LevelHeadCloseButton; 
+class LevelImpl;
+class PanelButtonHead;
+class EditorPanel;  
+class LevelHeadCloseButton; 
 
-  /** This class draws a box with different input boxes that
-   * determine the specific level information which is saved
-   * in the <HEAD> section of the XML level file */ 
+/** This class draws a box with different input boxes that
+ * determine the specific level information which is saved
+ * in the <HEAD> section of the XML level file */ 
 class LevelHead : public GUI::Component
 {
 private:
@@ -51,7 +52,7 @@ private:
   GUI::GUIManager* gui_manager; 
   
   /** Where this box is drawn*/ 
-	Vector3f pos;
+  Vector3f pos;
   
   // Input boxes for each item of the level impl 
   GUI::InputBox* name;
@@ -65,9 +66,9 @@ public:
 	
   PanelButtonHead* get_head_button() { return head_button; }
    
-	// GUI Component stuff
-	bool is_at(int x, int y);
-	void draw(DrawingContext& gc);
+  // GUI Component stuff
+  bool is_at(int x, int y);
+  void draw(DrawingContext& gc);
   void update(float delta); 
 };
 
