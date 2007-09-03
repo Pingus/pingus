@@ -24,7 +24,7 @@ env = Environment(# ENV = {'PKG_CONFIG_PATH' : os.getenv('PKG_CONFIG_PATH')},
                   CCFLAGS = ['-O2', '-Wall', '-Werror', '-g'],
                   CPPDEFINES = ['ENABLE_BINRELOC', 'HAVE_CWIID'],
                   CPPPATH = ['..', '.'],
-                  LIBS = ['cwiid']) # FIXME: Make this configurable
+                  LIBS = ['cwiid', 'Xi']) # FIXME: Make this configurable
 
 env.ParseConfig('sdl-config  --cflags --libs')
 env['LIBS'] += ['SDL_image', 'SDL_mixer', 'png']
@@ -32,7 +32,6 @@ env['LIBS'] += ['SDL_image', 'SDL_mixer', 'png']
 env.Program('../pingus', [
 
 # # 'gui/buffer_graphic_context.cpp', 
-# # 'input/axes/mouse_axis.cpp', 
 # # 'pingus_level_test.cpp', 
 # # 'sound/slot_manager.cpp', 
 # # 'xml_eval.cpp',
@@ -151,6 +150,8 @@ env.Program('../pingus', [
 'input/usbmouse_driver.cpp',
 'input/wiimote_driver.cpp',
 'input/wiimote.cpp',
+'input/xinput_driver.cpp',
+'input/xinput_device.cpp',
 'input/sdl_driver.cpp',
 'input/manager.cpp',
 
