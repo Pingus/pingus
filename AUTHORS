@@ -45,10 +45,10 @@ Werner Steiner <werner@rmdata-linux.dhs.org>
 	* Programming (Blocker)
 
 H. Matthew Smith <matthew@synature.com>
-	* music
+	* music (data/music/gd-*.{it,s3m})
 
 Joseph Toscano <zhaytee@zhaymusic.com> - http://zhaymusic.com/
-	* music
+	* music (data/music/pingus-*.it)
 
 Magnus Norddahl <mbn@dark.x.dtu.dk> - http://dark.x.dtu.dk/~mbn/
 	* RPM Packages
@@ -121,7 +121,8 @@ Robin Hogan <R.J.Hogan@reading.ac.uk>
 	* superman, angel
 
 Yuri Sucupira <yuri_sucupira@hotmail.com>
-	* Music
+	* music (success_*.it, rough_journey.it,
+          the_big_march_in_space.it, goin_march.it)
 
 Giray Devlet <giray@devlet.cc>
 Cagri Coltekin <cagri@metu.edu.tr>
