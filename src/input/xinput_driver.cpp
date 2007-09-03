@@ -25,6 +25,9 @@
 
 #include <iostream>
 
+#include "debug.hpp"
+#include "globals.hpp"
+
 #include "xinput_driver.hpp"
 #include "xinput_device.hpp"
 
@@ -71,14 +74,16 @@ XInputDriver::setup_xinput()
     {
       int num_devices;
       XDeviceInfo* info = XListInputDevices(sys.info.x11.display, &num_devices);
-      for(int loop = 0; loop < num_devices; ++loop) 
+      for(int i = 0; i < num_devices; ++i) 
         {
-        // FIXME: Xinput isn't necesarrily a mouse, could be anything
-        if (info[loop].use == IsXExtensionDevice)
-          devices.push_back(new XInputDevice(this, info + loop));
-
-        XFreeDeviceList(info);
-      }
+          pout(PINGUS_DEBUG_INPUT) << "XInputDriver: Device name='" << info[i].name << "'" << std::endl;
+          // FIXME: Xinput isn't necesarrily a mouse, could be anything
+          //if (info[i].use == IsXExtensionDevice)
+          // {
+              devices.push_back(new XInputDevice(this, &info[i]));
+              // } 
+        }
+      XFreeDeviceList(info);
     }
 }
 
@@ -95,18 +100,19 @@ XInputDriver::find_device_info(Display *display,
   // FIXME: Not really needed could simply pass XDeviceInfo to the
   // constructor, might however make a nicer interface
   XDeviceInfo *devices;
-  int  loop;
   int  num_devices;
   int  len = strlen(name);
   Bool is_id = True;
   XID  id = 0;
 
-  for(loop=0; loop<len; loop++) {
-    if (!isdigit(name[loop])) {
-      is_id = False;
-      break;
+  for(int i = 0; i < len; ++i) 
+    {
+      if (!isdigit(name[i])) 
+        {
+          is_id = False;
+          break;
+        }
     }
-  }
 
   if (is_id) {
     id = atoi(name);
@@ -114,13 +120,14 @@ XInputDriver::find_device_info(Display *display,
 
   devices = XListInputDevices(display, &num_devices);
 
-  for(loop=0; loop<num_devices; loop++) {
-    if ((!only_extended || (devices[loop].use == IsXExtensionDevice)) &&
-        ((!is_id && strcmp(devices[loop].name, name) == 0) ||
-         (is_id && devices[loop].id == id))) {
-      return &devices[loop];
+  for(int i = 0; i < num_devices; ++i) 
+    {
+      if ((!only_extended || (devices[i].use == IsXExtensionDevice)) &&
+          ((!is_id && strcmp(devices[i].name, name) == 0) ||
+           (is_id && devices[i].id == id))) {
+        return &devices[i];
+      }
     }
-  }
   return NULL;
 }
 

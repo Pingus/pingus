@@ -25,6 +25,9 @@
 
 #include "SDL_syswm.h"
 
+#include "debug.hpp"
+#include "globals.hpp"
+
 #include "xinput_driver.hpp"
 #include "xinput_device.hpp"
 
@@ -195,43 +198,63 @@ XInputDevice::register_events(Display* dpy,
 
   device = XOpenDevice(dpy, info->id);
 
-  if (!device) {
-    fprintf(stderr, "unable to open device %s\n", dev_name);
-    return 0;
-  }
-
-  if (device->num_classes > 0) {
-    for (ip = device->classes, i=0; i<info->num_classes; ip++, i++) {
-      switch (ip->input_class) {
-        case KeyClass:
-          DeviceKeyPress  (device, key_press_type,   event_list[number]); number++;
-          DeviceKeyRelease(device, key_release_type, event_list[number]); number++;
-          break;
-
-        case ButtonClass:
-          DeviceButtonPress  (device, button_press_type,   event_list[number]); number++;
-          DeviceButtonRelease(device, button_release_type, event_list[number]); number++;
-          break;
-
-        case ValuatorClass:
-          DeviceMotionNotify(device, motion_type, event_list[number]); number++;
-          if (handle_proximity) {
-            ProximityIn (device, proximity_in_type,  event_list[number]); number++;
-            ProximityOut(device, proximity_out_type, event_list[number]); number++;
-          }
-          break;
-
-        default:
-          fprintf(stderr, "unknown class\n");
-          break;
-      }
-    }
-
-    if (XSelectExtensionEvent(dpy, root_win, event_list, number)) {
-      fprintf(stderr, "error selecting extended events\n");
+  if (!device) 
+    {
+      fprintf(stderr, "unable to open device %s\n", dev_name);
       return 0;
     }
-  }
+
+  if (device->num_classes > 0) 
+    {
+      for (ip = device->classes, i=0; i<info->num_classes; ip++, i++) 
+        {
+          switch (ip->input_class) 
+            {
+              case KeyClass:
+                DeviceKeyPress  (device, key_press_type,   event_list[number]); number++;
+                DeviceKeyRelease(device, key_release_type, event_list[number]); number++;
+                break;
+
+              case ButtonClass:
+                DeviceButtonPress  (device, button_press_type,   event_list[number]); number++;
+                DeviceButtonRelease(device, button_release_type, event_list[number]); number++;
+                break;
+
+              case ValuatorClass:
+                DeviceMotionNotify(device, motion_type, event_list[number]); number++;
+                if (handle_proximity) {
+                  ProximityIn (device, proximity_in_type,  event_list[number]); number++;
+                  ProximityOut(device, proximity_out_type, event_list[number]); number++;
+                }
+                break;
+
+              case FeedbackClass:
+                std::cout << "Error: XInputDevice: register_events: unhandled class: FeedbackClass" << std::endl;
+                break;
+
+              case ProximityClass:
+                std::cout << "Error: XInputDevice: register_events: unhandled class: ProximityClass" << std::endl;
+                break;
+
+              case FocusClass:
+                std::cout << "Error: XInputDevice: register_events: unhandled class: FocusClass" << std::endl;
+                break;
+
+              case OtherClass:
+                std::cout << "Error: XInputDevice: register_events: unhandled class: OtherClass" << std::endl;
+                break;
+
+              default:
+                std::cout << "Error: XInputDevice: register_events: unknown class: " << ip->input_class << std::endl;
+                break;
+            }
+        }
+
+      if (XSelectExtensionEvent(dpy, root_win, event_list, number)) {
+        fprintf(stderr, "error selecting extended events\n");
+        return 0;
+      }
+    }
 
   //std::cout << "### Registered events: " << number << std::endl;
   return number;
@@ -240,67 +263,85 @@ XInputDevice::register_events(Display* dpy,
 void
 XInputDevice::get_info(XDeviceInfo* info)
 {
-  int   i,j;
-  XAnyClassPtr any;
-  XKeyInfoPtr  k;
-  XButtonInfoPtr b;
-  XValuatorInfoPtr v;
-  XAxisInfoPtr a;
-
   printf("\"%s\"\tid=%ld\t[%s]\n", info->name, info->id,
-     (info->use == IsXExtensionDevice) ? "XExtensionDevice" :
-      ((info->use == IsXPointer) ? "XPointer" : "XKeyboard"));
+         (info->use == IsXExtensionDevice) ? "XExtensionDevice" :
+         ((info->use == IsXPointer) ? "XPointer" : "XKeyboard"));
 
-  if (info->num_classes > 0) {
-    any = (XAnyClassPtr) (info->inputclassinfo);
-    for (i=0; i<info->num_classes; i++) {
-      switch (any->c_class) {
-        case KeyClass:
-          k = (XKeyInfoPtr) any;
-  
-          printf("\tNum_keys is %d\n", k->num_keys);
-          printf("\tMin_keycode is %d\n", k->min_keycode);
-          printf("\tMax_keycode is %d\n", k->max_keycode);
-
-          num_keys = k->num_keys;
-          break;
-
-        case ButtonClass:
-          b = (XButtonInfoPtr)any;
-          printf("\tNum_buttons is %d\n", b->num_buttons);
-
-          buttons.resize(b->num_buttons, false);
-          break;
-
-        case ValuatorClass:
-          v = (XValuatorInfoPtr)any;
-          a = (XAxisInfoPtr) ((char*)v +
-                              sizeof (XValuatorInfo));
-
-          printf("\tNum_axes is %d\n", v->num_axes);
-          printf("\tMode is %s\n", (v->mode == Absolute) ? "Absolute" : "Relative");
-          printf("\tMotion_buffer is %ld\n", v->motion_buffer);
-
-          absolute = (v->mode == Absolute);
-
-          for (j=0; j<v->num_axes; j++, a++)
+  XAnyClassPtr any = (XAnyClassPtr)(info->inputclassinfo);
+  std::cout << "Info->num_classes: " << info->num_classes << std::endl;
+  for (int i = 0; i < info->num_classes; ++i) 
+    {
+      switch (any->c_class) 
+        {
+          case KeyClass:
             {
-              printf("\tAxis %d :\n", j);
-              printf("\t\tMin_value is %d\n", a->min_value);
-              printf("\t\tMax_value is %d\n", a->max_value);
-              printf ("\t\tResolution is %d\n", a->resolution);
+              XKeyInfoPtr k = (XKeyInfoPtr)any;
+  
+              printf("\tNum_keys is %d\n", k->num_keys);
+              printf("\tMin_keycode is %d\n", k->min_keycode);
+              printf("\tMax_keycode is %d\n", k->max_keycode);
 
-              axis.push_back(AxisInfo(a->min_value, a->max_value, a->resolution));
+              num_keys = k->num_keys;
             }
+            break;
 
-          break;
+          case ButtonClass:
+            {
+              XButtonInfoPtr b = (XButtonInfoPtr)any;
+              printf("\tNum_buttons is %d\n", b->num_buttons);
 
-        default:
-          printf ("unknown class\n");
-      }
-      any = (XAnyClassPtr)((char*) any + any->length);
+              buttons.resize(b->num_buttons, false);
+            }
+            break;
+
+          case ValuatorClass:
+            {
+              XValuatorInfoPtr v = (XValuatorInfoPtr)any;
+              XAxisInfoPtr a = (XAxisInfoPtr) ((char*)v +
+                                               sizeof (XValuatorInfo));
+
+              printf("\tNum_axes is %d\n", v->num_axes);
+              printf("\tMode is %s\n", (v->mode == Absolute) ? "Absolute" : "Relative");
+              printf("\tMotion_buffer is %ld\n", v->motion_buffer);
+
+              absolute = (v->mode == Absolute);
+
+              for (int j = 0; j < v->num_axes; ++j, ++a)
+                {
+                  printf("\tAxis %d :\n", j);
+                  printf("\t\tMin_value is %d\n", a->min_value);
+                  printf("\t\tMax_value is %d\n", a->max_value);
+                  printf ("\t\tResolution is %d\n", a->resolution);
+
+                  axis.push_back(AxisInfo(a->min_value, a->max_value, a->resolution));
+                }
+            }
+            break;
+
+          case FeedbackClass:
+            std::cout << "Error: XInputDevice: get_info: unhandled class: FeedbackClass" << std::endl;
+            break;
+
+          case ProximityClass:
+            std::cout << "Error: XInputDevice: get_info: unhandled class: ProximityClass" << std::endl;
+            break;
+
+          case FocusClass:
+            std::cout << "Error: XInputDevice: get_info: unhandled class: FocusClass" << std::endl;
+            break;
+
+          case OtherClass:
+            std::cout << "Error: XInputDevice: get_info: unhandled class: OtherClass" << std::endl;
+            break;
+
+          default:
+            std::cout << "Error: XInputDevice: get_info: unknown class: " << any->c_class << std::endl;
+            break;
+        }
+
+      std::cout << "AnyClass ptr: " << any->length << std::endl;
+      any = (XAnyClassPtr)((char*)any + any->length);
     }
-  }
 }
 
 } // namespace Input
