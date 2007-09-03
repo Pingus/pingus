@@ -90,7 +90,60 @@ public:
       }
   }
 };
+
+class AxisScroller : public Scroller
+{
+private:
+  Axis* x_axis;
+  Axis* y_axis;
+  Button* speed_button;
+  float speed;
 
+public:
+  AxisScroller(Control* parent) 
+    : Scroller(parent),
+      x_axis(0), y_axis(0), speed_button(0),
+      speed(800.0f)
+  {
+  }
+
+  ~AxisScroller()
+  {
+  }
+
+  void setup(Axis* x, Axis* y, Button* s = 0)
+  {
+    x_axis = x;
+    y_axis = y;
+    speed_button = s;
+  }
+
+  void update(Control* ) 
+  {
+    //std::cout << "event" << std::endl;
+  }
+
+  void update(float delta)
+  {
+    x_axis->update(delta);
+    y_axis->update(delta);
+
+    if (speed_button) speed_button->update(delta);
+
+    float    c_speed = speed;
+    
+    if (speed_button && speed_button->get_state() == BUTTON_PRESSED)
+      {
+        c_speed *= 5.0f;
+      }
+
+    this->delta.x = -x_axis->get_pos() * c_speed * delta;
+    this->delta.y = y_axis->get_pos() * c_speed * delta;
+
+    notify_parent();
+  }
+};
+
 Button*
 CoreDriver::create_button(const FileReader& reader, Control* parent)
 {
@@ -106,7 +159,50 @@ CoreDriver::create_axis(const FileReader& reader, Control* parent)
 Scroller*
 CoreDriver::create_scroller(const FileReader& reader, Control* parent)
 {
-  return 0;
+  if (reader.get_name() == "core:axis-scroller") 
+    {
+      AxisScroller* axis = new AxisScroller(parent);
+
+      FileReader x_reader;
+      if (!reader.read_section("x-axis", x_reader))
+        {
+          std::cout << "CoreDriver: Couldn't find x-axis" << std::endl;
+          delete axis;
+          return 0;
+        }
+    
+      FileReader y_reader;
+      if (!reader.read_section("y-axis", y_reader))
+        {
+          std::cout << "CoreDriver: Couldn't find y-axis" << std::endl;
+          delete axis;
+          return 0;       
+        }
+
+      Axis* x_axis = manager->create_axis(x_reader.get_sections().front(), axis);
+      Axis* y_axis = manager->create_axis(y_reader.get_sections().front(), axis);
+
+      Button* button = 0;
+      FileReader button_reader;
+      if (reader.read_section("button", button_reader))
+        {
+          button = manager->create_button(button_reader.get_sections().front(), axis);
+        }
+
+      if (x_axis && y_axis)
+        {
+          axis->setup(x_axis, y_axis, button);
+          return axis;
+        }
+      else
+        {
+          return 0;
+        }
+    } 
+  else 
+    {
+      return 0;
+    }
 }
 
 Pointer*

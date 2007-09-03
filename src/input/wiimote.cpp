@@ -174,7 +174,7 @@ Wiimote::connect()
                         CWIID_RPT_STATUS  |
                         CWIID_RPT_NUNCHUK |
                         CWIID_RPT_ACC     |
-                        //CWIID_RPT_IR      |
+                        CWIID_RPT_IR      |
                         CWIID_RPT_BTN))
         {
           std::cerr << "Wiimote: Error setting report mode" << std::endl;

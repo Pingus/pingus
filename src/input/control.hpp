@@ -24,6 +24,7 @@
 
 #include <iostream>
 #include <vector>
+#include <math.h>
 
 #include "math.hpp"
 #include "math/vector2f.hpp"
@@ -147,16 +148,26 @@ class Axis : public Control
 {
 protected:
   float pos;
+  float dead_zone;
+  bool  invert;
 
 public:
   Axis(Control* parent)
     : Control(parent),
-      pos(0.0f)
+      pos(0.0f),
+      dead_zone(0.2f),
+      invert(false)
   {}
 
   float get_pos() const { return pos; }
 
   virtual void set_state(float new_pos) {
+    if (invert)
+      new_pos = -new_pos;
+
+    if (fabsf(new_pos) < dead_zone)
+      new_pos = 0.0f;
+
     if (new_pos != pos)
       {
         pos = new_pos;
@@ -236,12 +247,8 @@ public:
       }
 
     new_pos = Math::clamp(-1.0f, new_pos, 1.0f);
-    
-    if (pos != new_pos)
-      {
-        pos = new_pos;
-        notify_parent();
-      }
+
+    set_state(new_pos);
   }
 };
 
