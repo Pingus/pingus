@@ -36,6 +36,7 @@ class EditorLevel;
 class LevelObj;
 class Panel;
 class EditorViewport;
+class ObjectSelector;
 
 /** This class is the screen that contains all of the
     editor objects */
@@ -51,6 +52,8 @@ private:
 
   /** Viewport which holds all of the level images and data */
   EditorViewport* viewport;
+
+  ObjectSelector* object_selector;
 
   /** File Dialog box */
   FileDialog* filedialog;

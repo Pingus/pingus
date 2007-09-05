@@ -38,6 +38,7 @@
 #include "editor_screen.hpp"
 #include "editor_viewport.hpp"
 #include "level_objs.hpp"
+#include "object_selector.hpp"
 
 namespace Editor {
 
@@ -46,6 +47,7 @@ EditorScreen::EditorScreen()
   : plf(new EditorLevel()), 
     panel(0),
     viewport(0),
+    object_selector(0),
     filedialog(0),
     close_dialog(false),
     show_help(false)
@@ -56,6 +58,8 @@ EditorScreen::EditorScreen()
 	
   // Create the panel for the buttons
   panel = new Panel(this);
+
+  object_selector = new ObjectSelector(this);
 }
 
 // Destructor
