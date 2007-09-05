@@ -30,6 +30,7 @@
 #include "../fonts.hpp"
 #include "../file_dialog.hpp"
 #include "../path_manager.hpp"
+#include "game_session.hpp"
 #include "editor_level.hpp"
 #include "panel.hpp"
 #include "panel.hpp"
@@ -190,12 +191,10 @@ EditorScreen::level_save_as()
 void
 EditorScreen::level_play()
 {
-  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
-  // Save to temporary file
-
-  // Load the temporary file
-  
-  // Play it
+  plf->save_level(path_manager.complete("levels/editortmpfile.pingus"));
+  PingusLevel level("levels/editortmpfile.pingus",
+                    "levels/editortmpfile.pingus");
+  ScreenManager::instance()->push_screen(new PingusGameSession(level, false), true);
 }
 
 void 
