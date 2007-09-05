@@ -101,9 +101,36 @@ public:
   void load(const std::string &file);
 
   void load_level(const std::string& file);
+
+  // Functions accessible from the GUI
+  void level_new();
+  void level_load();
+  void level_save();
+  void level_save_as();
+  void level_play();
 
-  /** Plays the currently loaded level */
-  void play_level();
+  void show_level_properties();
+  void show_action_properties();
+  void show_object_properties();
+
+  void objects_delete();
+
+  void objects_raise_to_top();
+  void objects_raise();
+  void objects_lower();
+  void objects_lower_to_bottom();
+
+  void objects_flip_vertical();
+  void objects_flip_horizontal();
+
+  void objects_rotate_left();
+  void objects_rotate_right();
+
+  void toggle_grid_snap();
+
+  void toggle_object_selector();
+
+  void toggle_help();
 
 private:
   EditorScreen (const EditorScreen&);

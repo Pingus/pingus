@@ -115,19 +115,6 @@ EditorScreen::load(const std::string &file)
   //panel->set_selected_button(0);
 }
 
-// Play the current level (save to a temporary file 
-// then load it normally)
-void
-EditorScreen::play_level()
-{
-  // Ask, "Would you like to save first?".
-  // if so, save the file normally.
-
-  // Then save to a temporary file
-
-  // Load the temporary file
-}
-
 // Draw the background and components
 bool
 EditorScreen::draw(DrawingContext &gc)
@@ -175,6 +162,134 @@ EditorScreen::add_objects(std::vector<LevelObj*> objs)
 {
   for (std::vector<LevelObj*>::const_iterator it = objs.begin(); it != objs.end(); it++)
     add_object(*it);
+}
+
+void 
+EditorScreen::level_new()
+{
+  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+}
+
+void 
+EditorScreen::level_load()
+{
+  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+}
+
+void 
+EditorScreen::level_save()
+{
+  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+}
+
+void 
+EditorScreen::level_save_as()
+{
+  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+}
+void
+EditorScreen::level_play()
+{
+  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+  // Save to temporary file
+
+  // Load the temporary file
+  
+  // Play it
+}
+
+void 
+EditorScreen::show_level_properties()
+{
+  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+}
+
+void 
+EditorScreen::show_action_properties()
+{
+  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+}
+
+void 
+EditorScreen::show_object_properties()
+{
+  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+}
+
+void 
+EditorScreen::objects_delete()
+{
+  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+}
+
+void 
+EditorScreen::objects_raise_to_top()
+{
+  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+}
+
+void 
+EditorScreen::objects_raise()
+{
+  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+}
+
+void 
+EditorScreen::objects_lower()
+{
+  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+}
+
+void 
+EditorScreen::objects_lower_to_bottom()
+{
+  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+}
+
+
+void 
+EditorScreen::objects_flip_vertical()
+{
+  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+}
+
+void 
+EditorScreen::objects_flip_horizontal()
+{
+  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+}
+
+void 
+EditorScreen::objects_rotate_left()
+{
+  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+}
+
+void 
+EditorScreen::objects_rotate_right()
+{
+  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+}
+
+
+void 
+EditorScreen::toggle_grid_snap()
+{
+  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+}
+
+
+void 
+EditorScreen::toggle_object_selector()
+{
+  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+}
+
+
+void 
+EditorScreen::toggle_help()
+{
+  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
 }
 
 } // namespace Editor 

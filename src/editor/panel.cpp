@@ -59,6 +59,8 @@ public:
 class PanelButton : public GUI::Component
 {
 private:
+  EditorScreen* editor;
+
   Sprite button_raised;
   Sprite button_pressed;
   Sprite sprite;
@@ -67,15 +69,22 @@ private:
   Vector2i    pos;
   std::string tooltip;
 
+  typedef void (EditorScreen::*Callback)();
+  Callback callback;
+
 public:
-  PanelButton(const Vector2i& pos_, const std::string& name, const std::string& tooltip_)
-    : button_raised(Resource::load_sprite("core/editor/button-raised")),
+  PanelButton(EditorScreen* editor_, 
+              const Vector2i& pos_, const std::string& name, const std::string& tooltip_, 
+              Callback callback_ = 0)
+    : editor(editor_),
+      button_raised(Resource::load_sprite("core/editor/button-raised")),
       button_pressed(Resource::load_sprite("core/editor/button-pressed")),
       sprite(Resource::load_sprite(name)),
       mouse_over(false),
       mouse_down(false),
       pos(pos_),
-      tooltip(tooltip_)
+      tooltip(tooltip_),
+      callback(callback_)
   {
   }
 
@@ -111,8 +120,11 @@ public:
     mouse_down = true;
   }
 
-  void on_primary_button_release (int x, int y) { 
+  void on_primary_button_release (int x, int y) 
+  { 
     mouse_down = false;
+    if (mouse_over && callback)
+      ((*editor).*callback)();
   }
   
   bool is_at(int x, int y)
@@ -138,34 +150,34 @@ Panel::Panel(EditorScreen* editor_)
 {  
   editor->get_gui_manager()->add(this, true);
 
-  add_button("core/editor/document-new",  "New level");
-  add_button("core/editor/document-open", "Open level...");
-  add_button("core/editor/document-save", "Save level...");
-  add_button("core/editor/document-save-as", "Save level as...");
+  add_button("core/editor/document-new",  "New level", &EditorScreen::level_new);
+  add_button("core/editor/document-open", "Open level...", &EditorScreen::level_load);
+  add_button("core/editor/document-save", "Save level...", &EditorScreen::level_save);
+  add_button("core/editor/document-save-as", "Save level as...", &EditorScreen::level_save_as);
   add_separator();
-  add_button("core/editor/play", "Play level...");
+  add_button("core/editor/play", "Play level...", &EditorScreen::level_play);
   add_separator();
-  add_button("core/editor/actions", "Configure actions");
-  add_button("core/editor/document-properties", "Configure level");
-  add_button("core/editor/object-properties", "Display object properties");
+  add_button("core/editor/actions", "Configure actions", &EditorScreen::show_action_properties);
+  add_button("core/editor/document-properties", "Configure level", &EditorScreen::show_level_properties);
+  add_button("core/editor/object-properties", "Display object properties", &EditorScreen::show_object_properties);
   add_separator();
-  add_button("core/editor/delete", "Delete the selected objects");
+  add_button("core/editor/delete", "Delete the selected objects", &EditorScreen::objects_delete);
   add_separator();
-  add_button("core/editor/object-top",    "Raise object to top");
-  add_button("core/editor/object-up",     "Raise object");
-  add_button("core/editor/object-down",   "Lower object");
-  add_button("core/editor/object-bottom", "Lower object to bottom");
+  add_button("core/editor/object-top",    "Raise object to top", &EditorScreen::objects_raise_to_top);
+  add_button("core/editor/object-up",     "Raise object", &EditorScreen::objects_raise);
+  add_button("core/editor/object-down",   "Lower object", &EditorScreen::objects_lower);
+  add_button("core/editor/object-bottom", "Lower object to bottom", &EditorScreen::objects_lower_to_bottom);
   add_separator();
-  add_button("core/editor/object-flip-horizontal", "Flip object horizontally");
-  add_button("core/editor/object-flip-vertical", "Flip object vertically");
+  add_button("core/editor/object-flip-horizontal", "Flip object horizontally", &EditorScreen::objects_flip_horizontal);
+  add_button("core/editor/object-flip-vertical", "Flip object vertically", &EditorScreen::objects_flip_vertical);
   add_separator();
-  add_button("core/editor/object-rotate-left", "Rotate object 90 degree");
-  add_button("core/editor/object-rotate-right", "Rotate object -90 degree");
+  add_button("core/editor/object-rotate-left", "Rotate object 90 degree", &EditorScreen::objects_rotate_left);
+  add_button("core/editor/object-rotate-right", "Rotate object -90 degree", &EditorScreen::objects_rotate_right);
   add_separator();
-  add_button("core/editor/snap-grid", "Snap objects to grid");
-  add_button("core/editor/objects", "Show object insertion window");
+  add_button("core/editor/snap-grid", "Snap objects to grid", &EditorScreen::toggle_grid_snap);
+  add_button("core/editor/objects", "Show object insertion window", &EditorScreen::toggle_object_selector);
   add_separator();
-  add_button("core/editor/help", "Display help");
+  add_button("core/editor/help", "Display help", &EditorScreen::toggle_help);
 }
 
 Panel::~Panel()
@@ -188,9 +200,9 @@ Panel::update (float delta)
 }
 
 void
-Panel::add_button(const std::string& image, const std::string& tooltip)
+Panel::add_button(const std::string& image, const std::string& tooltip, Callback callback)
 {
-  PanelButton* comp = new PanelButton(pos, image, tooltip);
+  PanelButton* comp = new PanelButton(editor, pos, image, tooltip, callback);
   pos.x += comp->get_width();
   editor->get_gui_manager()->add(comp, true);
 }
@@ -198,7 +210,7 @@ Panel::add_button(const std::string& image, const std::string& tooltip)
 void
 Panel::add_toggle_button(const std::string& image)
 {
-  PanelButton* comp = new PanelButton(pos, image, "");
+  PanelButton* comp = new PanelButton(editor, pos, image, "");
   pos.x += comp->get_width();
   editor->get_gui_manager()->add(comp, true);
 }
