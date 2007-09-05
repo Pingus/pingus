@@ -250,25 +250,25 @@ EditorScreen::objects_lower_to_bottom()
 void 
 EditorScreen::objects_flip_vertical()
 {
-  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+  viewport->vflip_selected_objects();
 }
 
 void 
 EditorScreen::objects_flip_horizontal()
 {
-  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+  viewport->hflip_selected_objects();
 }
 
 void 
 EditorScreen::objects_rotate_left()
 {
-  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+  viewport->rotate_270_selected_objects();
 }
 
 void 
 EditorScreen::objects_rotate_right()
 {
-  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+  viewport->rotate_90_selected_objects();
 }
 
 void 

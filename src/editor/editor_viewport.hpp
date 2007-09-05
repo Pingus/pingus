@@ -124,6 +124,11 @@ public:
   void on_secondary_button_click(int x, int y);
 
   void delete_selected_objects();
+  void vflip_selected_objects();
+  void hflip_selected_objects();
+
+  void rotate_90_selected_objects();
+  void rotate_270_selected_objects();
 
 private:
   EditorViewport();

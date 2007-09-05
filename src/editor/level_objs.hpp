@@ -247,6 +247,11 @@ public:
   /** Set the object's modifier */
   void set_modifier(const std::string m);
 
+  /** Set the object's modifier */
+  void set_modifier(ResourceModifierNS::ResourceModifier modifier);
+
+  ResourceModifierNS::ResourceModifier get_modifier() const;
+
   /** Set the object's section header name */
   void set_section_name(const std::string sn) { section_name = sn; }
 

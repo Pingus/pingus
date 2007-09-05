@@ -150,34 +150,54 @@ Panel::Panel(EditorScreen* editor_)
 {  
   editor->get_gui_manager()->add(this, true);
 
-  add_button("core/editor/document-new",  "New level", &EditorScreen::level_new);
-  add_button("core/editor/document-open", "Open level...", &EditorScreen::level_load);
-  add_button("core/editor/document-save", "Save level...", &EditorScreen::level_save);
-  add_button("core/editor/document-save-as", "Save level as...", &EditorScreen::level_save_as);
+  add_button("core/editor/document-new",  "New level",
+             &EditorScreen::level_new);
+  add_button("core/editor/document-open", "Open level...",
+             &EditorScreen::level_load);
+  add_button("core/editor/document-save", "Save level...", 
+             &EditorScreen::level_save);
+  add_button("core/editor/document-save-as", "Save level as...", 
+             &EditorScreen::level_save_as);
   add_separator();
-  add_button("core/editor/play", "Play level...", &EditorScreen::level_play);
+  add_button("core/editor/play", "Play level...", 
+             &EditorScreen::level_play);
   add_separator();
-  add_button("core/editor/actions", "Configure actions", &EditorScreen::show_action_properties);
-  add_button("core/editor/document-properties", "Configure level", &EditorScreen::show_level_properties);
-  add_button("core/editor/object-properties", "Display object properties", &EditorScreen::show_object_properties);
+  add_button("core/editor/actions", "Configure actions", 
+             &EditorScreen::show_action_properties);
+  add_button("core/editor/document-properties", "Configure level", 
+             &EditorScreen::show_level_properties);
+  add_button("core/editor/object-properties", "Display object properties", 
+             &EditorScreen::show_object_properties);
   add_separator();
-  add_button("core/editor/delete", "Delete the selected objects", &EditorScreen::objects_delete);
+  add_button("core/editor/delete", "Delete the selected objects", 
+             &EditorScreen::objects_delete);
   add_separator();
-  add_button("core/editor/object-top",    "Raise object to top", &EditorScreen::objects_raise_to_top);
-  add_button("core/editor/object-up",     "Raise object", &EditorScreen::objects_raise);
-  add_button("core/editor/object-down",   "Lower object", &EditorScreen::objects_lower);
-  add_button("core/editor/object-bottom", "Lower object to bottom", &EditorScreen::objects_lower_to_bottom);
+  add_button("core/editor/object-top",    "Raise object to top", 
+             &EditorScreen::objects_raise_to_top);
+  add_button("core/editor/object-up",     "Raise object", 
+             &EditorScreen::objects_raise);
+  add_button("core/editor/object-down",   "Lower object", 
+             &EditorScreen::objects_lower);
+  add_button("core/editor/object-bottom", "Lower object to bottom", 
+             &EditorScreen::objects_lower_to_bottom);
   add_separator();
-  add_button("core/editor/object-flip-horizontal", "Flip object horizontally", &EditorScreen::objects_flip_horizontal);
-  add_button("core/editor/object-flip-vertical", "Flip object vertically", &EditorScreen::objects_flip_vertical);
+  add_button("core/editor/object-flip-horizontal", "Flip object horizontally", 
+             &EditorScreen::objects_flip_horizontal);
+  add_button("core/editor/object-flip-vertical", "Flip object vertically", 
+             &EditorScreen::objects_flip_vertical);
   add_separator();
-  add_button("core/editor/object-rotate-left", "Rotate object 90 degree", &EditorScreen::objects_rotate_left);
-  add_button("core/editor/object-rotate-right", "Rotate object -90 degree", &EditorScreen::objects_rotate_right);
+  add_button("core/editor/object-rotate-left", "Rotate object 90 degree", 
+             &EditorScreen::objects_rotate_left);
+  add_button("core/editor/object-rotate-right", "Rotate object -90 degree", 
+             &EditorScreen::objects_rotate_right);
   add_separator();
-  add_button("core/editor/snap-grid", "Snap objects to grid", &EditorScreen::toggle_grid_snap);
-  add_button("core/editor/objects", "Show object insertion window", &EditorScreen::toggle_object_selector);
+  add_button("core/editor/snap-grid", "Snap objects to grid", 
+             &EditorScreen::toggle_grid_snap);
+  add_button("core/editor/objects", "Show object insertion window", 
+             &EditorScreen::toggle_object_selector);
   add_separator();
-  add_button("core/editor/help", "Display help", &EditorScreen::toggle_help);
+  add_button("core/editor/help", "Display help", 
+             &EditorScreen::toggle_help);
 }
 
 Panel::~Panel()

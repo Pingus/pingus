@@ -290,6 +290,42 @@ EditorViewport::delete_selected_objects()
     }
 }
 
+void
+EditorViewport::hflip_selected_objects()
+{
+  for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
+    {
+      (*i)->set_modifier(ResourceModifierNS::horizontal_flip((*i)->get_modifier()));
+    }  
+}
+
+void
+EditorViewport::vflip_selected_objects()
+{
+  for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
+    {
+      (*i)->set_modifier(ResourceModifierNS::vertical_flip((*i)->get_modifier()));
+    }
+}
+
+void
+EditorViewport::rotate_90_selected_objects()
+{
+  for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
+    {
+      (*i)->set_modifier(ResourceModifierNS::rotate_90((*i)->get_modifier()));
+    }
+}
+
+void
+EditorViewport::rotate_270_selected_objects()
+{
+  for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
+    {
+      (*i)->set_modifier(ResourceModifierNS::rotate_270((*i)->get_modifier()));
+    }  
+}
+
 } // Editor namespace
 
 /* EOF */

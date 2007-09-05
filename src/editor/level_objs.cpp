@@ -190,6 +190,22 @@ LevelObj::set_modifier(const std::string m)
   refresh_sprite();
 }
 
+/** Set the object's modifier */
+void
+LevelObj::set_modifier(ResourceModifierNS::ResourceModifier modifier)
+{
+  // Set modifier
+  if (attribs & CAN_ROTATE)
+    desc.modifier = modifier;
+  refresh_sprite();  
+}
+
+ResourceModifierNS::ResourceModifier
+LevelObj::get_modifier() const
+{
+  return desc.modifier;
+}
+
 // Writes the attributes for the file
 void
 LevelObj::write_properties(FileWriter &fw)
