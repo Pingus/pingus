@@ -34,7 +34,7 @@ Vector3f::Vector3f(const Vector2f& old) : x(old.x), y(old.y), z(0)
 {
 }
 
-Vector3f::Vector3f(const Vector2i& old) : x(int(old.x)), y(int(old.y)), z(0)
+Vector3f::Vector3f(const Vector2i& old) : x(float(old.x)), y(float(old.y)), z(0)
 {
 }
 
