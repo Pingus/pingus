@@ -2,6 +2,13 @@
   (standard-pointer
     (sdl:mouse-pointer))
 
+  (standard-scroller
+   (core:button-scroller
+    (up    (sdl:keyboard-button (key "up")))
+    (down  (sdl:keyboard-button (key "down")))
+    (left  (sdl:keyboard-button (key "left")))
+    (right (sdl:keyboard-button (key "right")))))
+
   (primary-button
     (sdl:mouse-button (button 1)))
 

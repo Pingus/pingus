@@ -144,6 +144,60 @@ public:
   }
 };
 
+class ButtonScroller : public Scroller
+{
+private:
+  Button* up;
+  Button* down;
+  Button* left;
+  Button* right;
+  float speed; 
+
+public:
+  ButtonScroller(Control* parent)
+    : Scroller(parent),
+      up(0), down(0), left(0), right(0),
+      speed(800.0f)
+  {
+  }
+
+  void setup(Button* up_, Button* down_, Button* left_, Button* right_)
+  {
+    up    = up_;
+    down  = down_;
+    left  = left_;
+    right = right_;
+  }
+
+  void update(Control* ) 
+  {
+  }
+
+  void update(float delta_t)
+  {
+    up->update(delta_t);
+    down->update(delta_t);
+    left->update(delta_t);
+    right->update(delta_t);
+
+    delta.x = delta.y = 0.0f;
+    
+    if (left->get_state() == BUTTON_PRESSED)
+      delta.x += speed * delta_t;
+
+    if (right->get_state() == BUTTON_PRESSED)
+      delta.x += -speed * delta_t;
+
+    if (up->get_state() == BUTTON_PRESSED)
+      delta.y += speed * delta_t;
+
+    if (down->get_state() == BUTTON_PRESSED)
+      delta.y += -speed * delta_t;       
+
+    notify_parent();
+  }
+};
+
 Button*
 CoreDriver::create_button(const FileReader& reader, Control* parent)
 {
@@ -198,7 +252,55 @@ CoreDriver::create_scroller(const FileReader& reader, Control* parent)
         {
           return 0;
         }
-    } 
+    }
+  else if (reader.get_name() == "core:button-scroller")
+    {
+      ButtonScroller* scroller = new ButtonScroller(parent);
+
+      FileReader left_reader;
+      if (!reader.read_section("left", left_reader))
+        {
+          std::cout << "CoreDriver: core:button-scroller: Couldn't find 'left'" << std::endl;
+          delete scroller;
+          return 0;
+        }
+
+      FileReader right_reader;
+      if (!reader.read_section("right", right_reader))
+        {
+          std::cout << "CoreDriver: core:button-scroller: Couldn't find 'right'" << std::endl;
+          delete scroller;
+          return 0;
+        }
+
+      FileReader up_reader;
+      if (!reader.read_section("up", up_reader))
+        {
+          std::cout << "CoreDriver: core:button-scroller: Couldn't find 'up'" << std::endl;
+          delete scroller;
+          return 0;
+        }
+
+      FileReader down_reader;
+      if (!reader.read_section("down", down_reader))
+        {
+          std::cout << "CoreDriver: core:button-scroller: Couldn't find 'down'" << std::endl;
+          delete scroller;
+          return 0;
+        }
+      
+      // FIXME: Add more error checking
+      Button* up_button    = manager->create_button(up_reader.get_sections().front(),    scroller);
+      Button* down_button  = manager->create_button(down_reader.get_sections().front(),  scroller);
+      Button* left_button  = manager->create_button(left_reader.get_sections().front(),  scroller);
+      Button* right_button = manager->create_button(right_reader.get_sections().front(), scroller);
+
+      scroller->setup(up_button,
+                      down_button,
+                      left_button,
+                      right_button);
+      return scroller;
+    }
   else 
     {
       return 0;
