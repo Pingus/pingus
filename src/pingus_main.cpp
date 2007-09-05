@@ -53,7 +53,6 @@
 #include "globals.hpp"
 #include "system.hpp"
 #include "pingus_error.hpp"
-// #include "global_event.hpp"
 #include "config.hpp"
 #include "console.hpp"
 #include "fps_counter.hpp"
@@ -685,13 +684,6 @@ PingusMain::start_game ()
 
   if (print_fps)
     Display::add_flip_screen_hook(&fps_counter);
-
-  if (!render_preview)
-    {
-      // Register the global event catcher
-      //on_button_press_slot   = window->get_ic()->get_keyboard().sig_key_down().connect (&global_event, &GlobalEvent::on_button_press);
-      //on_button_release_slot = window->get_ic()->get_keyboard().sig_key_up().connect (&global_event, &GlobalEvent::on_button_release);
-    }
 
   // Set the root screen
   if (show_input_debug_screen) // show a debug screen

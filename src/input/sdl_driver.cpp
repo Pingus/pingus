@@ -19,6 +19,7 @@
 **  02111-1307, USA.
 */
 
+#include "global_event.hpp"
 #include "file_reader.hpp"
 #include "sdl_driver.hpp"
 
@@ -238,6 +239,11 @@ SDLDriver::update(float delta)
 
           case SDL_KEYDOWN:
           case SDL_KEYUP:
+            if (event.key.state == SDL_PRESSED)
+              global_event.on_button_press(event.key);
+            else
+              global_event.on_button_release(event.key);            
+
             for(std::vector<KeyboardButtonBinding>::iterator i = keyboard_button_bindings.begin();
                 i != keyboard_button_bindings.end(); ++i)
               {
