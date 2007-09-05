@@ -219,7 +219,7 @@ EditorScreen::show_object_properties()
 void 
 EditorScreen::objects_delete()
 {
-  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+  viewport->delete_selected_objects();
 }
 
 void 
@@ -271,20 +271,17 @@ EditorScreen::objects_rotate_right()
   std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
 }
 
-
 void 
 EditorScreen::toggle_grid_snap()
 {
   std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
 }
 
-
 void 
 EditorScreen::toggle_object_selector()
 {
   std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
 }
-
 
 void 
 EditorScreen::toggle_help()

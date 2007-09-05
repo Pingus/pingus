@@ -40,7 +40,47 @@ class ContextMenu;
 /** This class is where the actual level graphics will display in the
     level editor.  Objects can be added, deleted, moved, modified, etc. 
     inside of the EditorViewport */
-class EditorViewport : public GUI::Component {
+class EditorViewport : public GUI::Component 
+{
+private:	
+  GraphicContextState state;
+  SceneContext* scene_context;
+
+  /** The EditorScreen to which this viewport belongs */
+  EditorScreen* editor;
+
+  /** Whether or not Autoscrolling is turned on */
+  bool autoscroll;
+
+  /** Where the mouse is right now - used for autoscrolling */
+  Vector3f mouse_at;
+
+  /** Where the mouse is at in relation to the world/level */
+  Vector3f mouse_at_world;
+
+  /** Where the mouse started dragging from */
+  Vector3f drag_start_pos;
+
+  /** All objects in the level */
+  std::vector<LevelObj*> objs;
+
+  /** The currently selected LevelObjs */
+  std::vector<LevelObj*> selected_objs;
+
+  /** The region that is currently highlighted */
+  Rect highlighted_area;
+
+  /** Returns the topmost object at this x, y location */
+  LevelObj* object_at(int x, int y);
+
+  /** There should only be 0 or 1 context menus on the screen */
+  ContextMenu* context_menu;
+
+  /** Whether or not the "snap-to-grid" functionality is on. */
+  bool snap_to;
+
+  /** What is the currently selected action that the mouse is doing */
+  enum ActionType { NOTHING = 0, HIGHLIGHTING = 1, DRAGGING = 2 } current_action;
 
 public:
   /** Constructor
@@ -78,54 +118,17 @@ public:
   /** Return a pointer to the EditorScreen object */
   EditorScreen* get_screen() { return editor; }
 
-private:
-  EditorViewport();
-  EditorViewport (const EditorViewport&);
-  EditorViewport& operator= (const EditorViewport&);
-	
-  GraphicContextState state;
-  SceneContext* scene_context;
-
-  /** The EditorScreen to which this viewport belongs */
-  EditorScreen* editor;
-
-  /** Whether or not Autoscrolling is turned on */
-  bool autoscroll;
-
-  /** Where the mouse is right now - used for autoscrolling */
-  Vector3f mouse_at;
-
-  /** Where the mouse is at in relation to the world/level */
-  Vector3f mouse_at_world;
-
-  /** Where the mouse started dragging from */
-  Vector3f drag_start_pos;
-
-  /** All objects in the level */
-  std::vector<LevelObj*> objs;
-
-  /** The currently selected LevelObjs */
-  std::vector<LevelObj*> current_objs;
-
-  /** The region that is currently highlighted */
-  Rect highlighted_area;
-
-  /** Returns the topmost object at this x, y location */
-  LevelObj* object_at(int x, int y);
-
-  /** There should only be 0 or 1 context menus on the screen */
-  ContextMenu* context_menu;
-
-  /** Whether or not the "snap-to-grid" functionality is on. */
-  bool snap_to;
-
-  /** What is the currently selected action that the mouse is doing */
-  enum ActionType { NOTHING = 0, HIGHLIGHTING = 1, DRAGGING = 2 } current_action;
-
   /// Mouse actions
   void on_primary_button_press(int x, int y);
   void on_primary_button_release(int x, int y);
   void on_secondary_button_click(int x, int y);
+
+  void delete_selected_objects();
+
+private:
+  EditorViewport();
+  EditorViewport (const EditorViewport&);
+  EditorViewport& operator= (const EditorViewport&);
 };
 
 } // Editor namespace

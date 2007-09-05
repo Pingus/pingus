@@ -69,11 +69,11 @@ EditorViewport::on_secondary_button_click(int x, int y)
             << mouse_pos.y << std::endl;
 	
   //	LevelObj* obj = object_at((int)mouse_pos.x, (int)mouse_pos.y);
-  if (!current_objs.empty())
+  if (!selected_objs.empty())
     {
       //	std::vector<LevelObj*> objs;
       //	objs.push_back(obj);
-      context_menu = new ContextMenu(current_objs, Vector3f((float)x, (float)y), this);
+      context_menu = new ContextMenu(selected_objs, Vector3f((float)x, (float)y), this);
       editor->get_gui_manager()->add(context_menu, true);
     }
 }
@@ -94,11 +94,11 @@ EditorViewport::on_primary_button_press(int x, int y)
           // If the currently selected object isn't selected, select it and deselect the rest
           if (!obj->is_selected())
             {
-              for (unsigned i = 0; i < current_objs.size(); i++)
-                current_objs[i]->unselect();
-              current_objs.clear();
+              for (unsigned i = 0; i < selected_objs.size(); i++)
+                selected_objs[i]->unselect();
+              selected_objs.clear();
               obj->select();
-              current_objs.push_back(obj);
+              selected_objs.push_back(obj);
             }
           // Allow dragging of the currently selected objects
           current_action = DRAGGING;
@@ -106,14 +106,13 @@ EditorViewport::on_primary_button_press(int x, int y)
         }
       else
         {
-          current_objs.clear();
+          selected_objs.clear();
           current_action = HIGHLIGHTING;
           highlighted_area.left = highlighted_area.right = x;
           highlighted_area.top = highlighted_area.bottom = y;
         }
     }
 }
-
 
 void 
 EditorViewport::on_primary_button_release(int x, int y)
@@ -135,7 +134,7 @@ EditorViewport::on_primary_button_release(int x, int y)
 			
           if (highlighted_area.is_inside(obj_pos))
             {
-              current_objs.push_back(objs[i]);
+              selected_objs.push_back(objs[i]);
               objs[i]->select();
             }
           else
@@ -167,9 +166,9 @@ EditorViewport::on_pointer_move(int x, int y)
     {
       float new_x, new_y;
 
-      for (unsigned i = 0; i < current_objs.size(); i++)
+      for (unsigned i = 0; i < selected_objs.size(); i++)
         {
-          Vector3f orig_pos(current_objs[i]->get_orig_pos());
+          Vector3f orig_pos(selected_objs[i]->get_orig_pos());
           float x_offset = mouse_at_world.x - drag_start_pos.x;
           float y_offset = mouse_at_world.y - drag_start_pos.y;
           if (snap_to)
@@ -183,7 +182,7 @@ EditorViewport::on_pointer_move(int x, int y)
               new_x = x_offset + orig_pos.x;
               new_y = y_offset + orig_pos.y;
             }
-          current_objs[i]->set_pos(Vector3f(new_x, new_y, orig_pos.z));
+          selected_objs[i]->set_pos(Vector3f(new_x, new_y, orig_pos.z));
         }
     }
 }
@@ -280,6 +279,15 @@ void
 EditorViewport::add_object(LevelObj* obj)
 {
   objs.push_back(obj);
+}
+
+void
+EditorViewport::delete_selected_objects()
+{
+  for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
+    {
+      (*i)->remove();
+    }
 }
 
 } // Editor namespace
