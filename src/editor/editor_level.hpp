@@ -24,6 +24,8 @@
 #include <vector>
 #include "level_impl.hpp"
 
+class Pathname;
+
 namespace Editor {
 
 class LevelObj;
@@ -44,7 +46,7 @@ public:
   bool save_level(const std::string& filename);
 
   /** Load an existing level from a file */
-  void load_level(const std::string& filename);
+  void load_level(const Pathname& pathname);
 
   /** Return all objects in the level */
   std::vector<LevelObj*> get_objects() const { return impl->objects; }

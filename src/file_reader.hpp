@@ -31,6 +31,7 @@ class Vector2i;
 
 class ResDescriptor;
 class FileReaderImpl;
+class Pathname;
 
 /** Interface to read name/value pairs out of some kind of file or
     structure */
@@ -74,6 +75,7 @@ public:
   int  get_num_sections() const;
 
   static FileReader parse(const std::string& filename);
+  static FileReader parse(const Pathname& pathname);
 private:
   boost::shared_ptr<FileReaderImpl> impl;
 };

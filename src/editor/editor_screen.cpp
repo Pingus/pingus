@@ -30,6 +30,7 @@
 #include "../fonts.hpp"
 #include "../file_dialog.hpp"
 #include "../path_manager.hpp"
+#include "../pathname.hpp"
 #include "game_session.hpp"
 #include "editor_level.hpp"
 #include "panel.hpp"
@@ -46,7 +47,8 @@ EditorScreen::EditorScreen()
     panel(0),
     viewport(0),
     filedialog(0),
-    close_dialog(false)
+    close_dialog(false),
+    show_help(false)
 {
   // Create the viewport for the images and data
   viewport = new EditorViewport(this);
@@ -108,7 +110,7 @@ EditorScreen::save(const std::string &file)
 
 // Load a new level
 void 
-EditorScreen::load(const std::string &file)
+EditorScreen::load(const Pathname& file)
 {
   close_dialog = true;
   plf->load_level(file);
@@ -118,16 +120,59 @@ EditorScreen::load(const std::string &file)
 
 // Draw the background and components
 bool
-EditorScreen::draw(DrawingContext &gc)
+EditorScreen::draw(DrawingContext& gc)
 {
   // Black out screen
   gc.fill_screen(Color(0,0,0));
   gui_manager->draw(gc);
+  
+  if (show_help)
+    {
+      Size size(600, 400);
+      gc.draw_fillrect(int(gc.get_width()/2)  - size.width/2, 
+                       int(gc.get_height()/2) - size.height/2,
+                       int(gc.get_width()/2)  + size.width/2, 
+                       int(gc.get_height()/2) + size.height/2,
+                       Color(0,0,0));
+      
+      gc.print_center(Fonts::courier_small,
+                      int(gc.get_width()/2),
+                      int(gc.get_height()/2) - size.height/2 + 12,
+                      "Editor Help");
 
-  // FIXME: Remove this warning
-  gc.print_center(Fonts::pingus_large, (float)(Display::get_width() / 2), 
-                  (float)(Display::get_height() / 2), "Not yet functional");
-		
+      gc.print_left(Fonts::courier_small,
+                    int(gc.get_width()/2 - size.width/2 + 12),
+                    int(gc.get_height()/2) - size.height/2 + 36,
+                    "F1 - display this help\n"
+                    "F2 - toggle background color\n"
+                    "F4 - play the level\n"
+                    "F5 - load a level\n"
+                    "F6 - save this level\n"
+                    "F8 - backup save\n"
+                    "F9 - change level width/height\n"
+                    );
+
+      gc.print_left(Fonts::courier_small,
+                    int(gc.get_width()/2 + 12),
+                    int(gc.get_height()/2) - size.height/2 + 36,
+                    "F1 - display this help\n"
+                    "F2 - toggle background color\n"
+                    "F4 - play the level\n"
+                    "F5 - load a level\n"
+                    "F6 - save this level\n"
+                    "F8 - backup save\n"
+                    "F9 - change level width/height\n"
+                    );
+
+      gc.print_left(Fonts::courier_small,
+                    int(gc.get_width()/2 - size.width/2 + 12),
+                    int(gc.get_height()/2) - 10,
+                    "Naming Convention: <levelname><number>-<creator>.pingus\n\n"
+                    "When you have created a level and want to have it included\n"
+                    "in the game mail it to pingus-devel@nongnu.org\n"
+                    "\n");
+    }
+  
   if (filedialog)
     filedialog->draw(gc);
 	
@@ -193,7 +238,7 @@ EditorScreen::level_play()
 {
   plf->save_level(path_manager.complete("levels/editortmpfile.pingus"));
   PingusLevel level("levels/editortmpfile.pingus",
-                    "levels/editortmpfile.pingus");
+                    Pathname("levels/editortmpfile.pingus", Pathname::DATA_PATH));
   ScreenManager::instance()->push_screen(new PingusGameSession(level, false), true);
 }
 
@@ -285,7 +330,13 @@ EditorScreen::toggle_object_selector()
 void 
 EditorScreen::toggle_help()
 {
-  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+  show_help = !show_help;
+}
+
+void
+EditorScreen::exit()
+{
+  ScreenManager::instance()->pop_screen();  
 }
 
 } // namespace Editor 

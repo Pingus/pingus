@@ -23,6 +23,7 @@
 #include "pingus_level.hpp"
 #include "SDL.h"
 
+class Pathname;
 
 /** */
 class PLFResMgr
@@ -38,7 +39,7 @@ private:
   /** Loads PLF from filename and stores it under 'res_name' in the
       map */
   static PingusLevel load_plf_raw(const std::string& res_name,
-                                const std::string& filename);
+                                  const Pathname& pathname);
 public:
   /** @returns a handle to the PLF, which the caller *must not* delete
 
@@ -50,7 +51,7 @@ public:
       res_name, load it from a system dependend filename
 
       @param filename The filename of the plf, aka "../data/levels/snow11-grumbel.pingus" */
-  static PingusLevel load_plf_from_filename(const std::string& filename);
+  static PingusLevel load_plf_from_filename(const Pathname& filename);
 };
 
 

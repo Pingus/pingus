@@ -551,9 +551,9 @@ PingusMain::check_args(int argc, char** argv)
         case CommandLine::REST_ARG:
           if (levelfile.empty()) 
             {
-              levelfile = argp.get_argument();
+              levelfile = Pathname(argp.get_argument(), Pathname::SYSTEM_PATH);
             
-              if (!System::exist(levelfile))
+              if (!levelfile.exist())
                 {
                   std::cout << "PingusMain: " << levelfile << " not found" << std::endl;
                   exit (EXIT_FAILURE);

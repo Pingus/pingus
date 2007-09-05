@@ -28,6 +28,7 @@
 class DrawingContext;
 class FileDialog;
 class GUI::GUIManager;
+class Pathname;
 
 namespace Editor {
 
@@ -55,6 +56,8 @@ private:
   FileDialog* filedialog;
 
   bool close_dialog;
+
+  bool show_help;
 
 public:
   /** Default constructor */
@@ -98,7 +101,7 @@ public:
   void save(const std::string &file);
 
   /** Load a new level */
-  void load(const std::string &file);
+  void load(const Pathname& file);
 
   void load_level(const std::string& file);
 
@@ -131,6 +134,8 @@ public:
   void toggle_object_selector();
 
   void toggle_help();
+
+  void exit();
 
 private:
   EditorScreen (const EditorScreen&);

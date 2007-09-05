@@ -23,7 +23,7 @@
 #include "pingus_error.hpp"
 #include "pingus_level_impl.hpp"
 #include "globals.hpp"
-#include "path_manager.hpp"
+#include "pathname.hpp"
 #include "debug.hpp"
 
 PingusLevel::PingusLevel()
@@ -31,16 +31,29 @@ PingusLevel::PingusLevel()
 {
 }
 
-PingusLevel::PingusLevel(const std::string& resname,
-                         const std::string& filename)
+PingusLevel::PingusLevel(const Pathname& pathname)
   : impl(new PingusLevelImpl())
 {
+  load("", pathname);
+}
+
+PingusLevel::PingusLevel(const std::string& resname,
+                         const Pathname& pathname)
+  : impl(new PingusLevelImpl())
+{
+  load(resname, pathname);
+}
+
+void
+PingusLevel::load(const std::string& resname,
+                  const Pathname& pathname)
+{
   impl->resname = resname;
-  FileReader reader = FileReader::parse(path_manager.complete(filename));
+  FileReader reader = FileReader::parse(pathname);
 
   if (reader.get_name() != "pingus-level")
     {
-      PingusError::raise("Error: " + filename + ": not a 'pingus-level' file");
+      PingusError::raise("Error: " + pathname.str() + ": not a 'pingus-level' file");
     }
   else
     {
@@ -53,7 +66,7 @@ PingusLevel::PingusLevel(const std::string& resname,
       FileReader head;
       if (!reader.read_section("head", head))
         {
-          PingusError::raise("Error: (head) section not found in '" + filename + "'");
+          PingusError::raise("Error: (head) section not found in '" + pathname.str() + "'");
         }
       else
         {
@@ -85,7 +98,7 @@ PingusLevel::PingusLevel(const std::string& resname,
             }
           else
             {
-              PingusError::raise("Error: (pingus-level head actions) not found in '" + filename + "'"); 
+              PingusError::raise("Error: (pingus-level head actions) not found in '" + pathname.str() + "'"); 
             }
         }
       

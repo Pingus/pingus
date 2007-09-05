@@ -39,7 +39,7 @@ EditorViewport::EditorViewport(EditorScreen* e) :
   state(Display::get_width(), Display::get_height()),
   scene_context(new SceneContext()),
   editor(e),
-  autoscroll(true),
+  autoscroll(false),
   highlighted_area(0,0,0,0),
   context_menu(0),
   snap_to(false),
@@ -56,25 +56,45 @@ EditorViewport::~EditorViewport ()
   delete scene_context;
 }
 
+void
+EditorViewport::on_secondary_button_press(int x, int y)
+{
+  if (current_action == NOTHING)
+    {
+      drag_start_pos = mouse_at;  
+      current_action = SCROLLING;
+    }
+}
+
+void
+EditorViewport::on_secondary_button_release(int x, int y)
+{
+  if (current_action == SCROLLING)
+    current_action = NOTHING;
+}
+
 // When someone right-clicks inside the viewport
 void
 EditorViewport::on_secondary_button_click(int x, int y)
 {
-  remove_context_menu();
-
-  Vector3f mouse_pos(x - (state.get_width()/2 - state.get_pos().x),
-                     y - (state.get_height()/2 - state.get_pos().y));
-
-  std::cout << "Right-click at " << mouse_pos.x << ", " 
-            << mouse_pos.y << std::endl;
-	
-  //	LevelObj* obj = object_at((int)mouse_pos.x, (int)mouse_pos.y);
-  if (!selected_objs.empty())
+  if (0) // old context menu code
     {
-      //	std::vector<LevelObj*> objs;
-      //	objs.push_back(obj);
-      context_menu = new ContextMenu(selected_objs, Vector3f((float)x, (float)y), this);
-      editor->get_gui_manager()->add(context_menu, true);
+      remove_context_menu();
+
+      Vector3f mouse_pos(x - (state.get_width()/2 - state.get_pos().x),
+                         y - (state.get_height()/2 - state.get_pos().y));
+
+      std::cout << "Right-click at " << mouse_pos.x << ", " 
+                << mouse_pos.y << std::endl;
+	
+      //	LevelObj* obj = object_at((int)mouse_pos.x, (int)mouse_pos.y);
+      if (!selected_objs.empty())
+        {
+          //	std::vector<LevelObj*> objs;
+          //	objs.push_back(obj);
+          context_menu = new ContextMenu(selected_objs, Vector3f((float)x, (float)y), this);
+          editor->get_gui_manager()->add(context_menu, true);
+        }
     }
 }
 
@@ -153,40 +173,50 @@ EditorViewport::on_primary_button_release(int x, int y)
 void
 EditorViewport::on_pointer_move(int x, int y)
 {
-  mouse_at = Vector3f(float(x), float(y));
-  mouse_at_world = Vector3f(x - (state.get_width()/2 - state.get_pos().x),
+  mouse_at = Vector2f(float(x), float(y));
+  mouse_at_world = Vector2f(x - (state.get_width()/2 - state.get_pos().x),
                             y - (state.get_height()/2 - state.get_pos().y));
 
-  if (current_action == HIGHLIGHTING)
+  switch(current_action)
     {
-      highlighted_area.right = x;
-      highlighted_area.bottom = y;
-    }
-  else if (current_action == DRAGGING)
-    {
-      float new_x, new_y;
-
-      for (unsigned i = 0; i < selected_objs.size(); i++)
+      case HIGHLIGHTING:
+        highlighted_area.right  = x;
+        highlighted_area.bottom = y;
+        break;
+        
+      case DRAGGING:
         {
-          Vector3f orig_pos(selected_objs[i]->get_orig_pos());
-          float x_offset = mouse_at_world.x - drag_start_pos.x;
-          float y_offset = mouse_at_world.y - drag_start_pos.y;
-          if (snap_to)
+          float new_x, new_y;
+
+          for (unsigned i = 0; i < selected_objs.size(); i++)
             {
-              // FIXME: May need to adjust the snap-to offset here.
-              new_x = (float)((int)((x_offset + orig_pos.x) / 10) * 10);
-              new_y = (float)((int)((y_offset + orig_pos.y) / 10) * 10);
+              Vector3f orig_pos(selected_objs[i]->get_orig_pos());
+              float x_offset = mouse_at_world.x - drag_start_pos.x;
+              float y_offset = mouse_at_world.y - drag_start_pos.y;
+
+              if (snap_to)
+                {
+                  // FIXME: May need to adjust the snap-to offset here.
+                  new_x = (float)((int)((x_offset + orig_pos.x) / 10) * 10);
+                  new_y = (float)((int)((y_offset + orig_pos.y) / 10) * 10);
+                }
+              else
+                {
+                  new_x = x_offset + orig_pos.x;
+                  new_y = y_offset + orig_pos.y;
+                }
+              selected_objs[i]->set_pos(Vector3f(new_x, new_y, orig_pos.z));
             }
-          else
-            {
-              new_x = x_offset + orig_pos.x;
-              new_y = y_offset + orig_pos.y;
-            }
-          selected_objs[i]->set_pos(Vector3f(new_x, new_y, orig_pos.z));
         }
+        break;
+
+      case SCROLLING:
+        break;
+        
+      case NOTHING:
+        break;
     }
 }
-
 
 // Draws all of the objects in the viewport and the background (if any)
 void
@@ -224,6 +254,9 @@ void
 EditorViewport::update(float delta)
 {
   UNUSED_ARG(delta);
+
+  if (current_action == SCROLLING)
+    state.set_pos(state.get_pos() + (mouse_at - drag_start_pos) * delta * 5.0f);
 
   // Autoscroll if necessary
   if (autoscroll)

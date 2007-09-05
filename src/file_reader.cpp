@@ -20,7 +20,7 @@
 #include "sexpr_file_reader.hpp"
 #include "lisp/parser.hpp"
 #include "lisp/lisp.hpp"
-#include "path_manager.hpp"
+#include "pathname.hpp"
 #include "file_reader.hpp"
 #include "file_reader_impl.hpp"
 
@@ -176,6 +176,20 @@ FileReader::parse(const std::string& filename)
     {
       return FileReader();
     }
+}
+
+FileReader
+FileReader::parse(const Pathname& pathname)
+{
+  boost::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(pathname.get_sys_path());
+  if (sexpr)
+    {
+      return SExprFileReader(sexpr->get_list_elem(0));
+    }
+  else
+    {
+      return FileReader();
+    }  
 }
 
 /* EOF */

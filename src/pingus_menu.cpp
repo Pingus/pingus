@@ -34,6 +34,7 @@
 #include "gui/gui_manager.hpp"
 #include "plf_res_mgr.hpp"
 #include "path_manager.hpp"
+#include "pathname.hpp"
 #include "file_dialog.hpp"
 #include "editor/editor_screen.hpp"
 #include "credits.hpp"
@@ -199,8 +200,7 @@ void PingusMenu::do_contrib(const std::string &levelfile)
 { // Launch the specified level - don't bother checking for it, it has to exist
   Sound::PingusSound::play_sound ("letsgo");
   ScreenManager::instance()->push_screen
-    (new StartScreen(PLFResMgr::load_plf_from_filename(levelfile)),
-     true);
+    (new StartScreen(PLFResMgr::load_plf_from_filename(Pathname(levelfile, Pathname::SYSTEM_PATH))), true);
 }
 
 void PingusMenu::do_edit()

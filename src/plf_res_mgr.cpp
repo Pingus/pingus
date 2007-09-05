@@ -20,29 +20,29 @@
 #include "globals.hpp"
 #include "debug.hpp"
 #include "system.hpp"
-#include "path_manager.hpp"
+#include "pathname.hpp"
 #include "plf_res_mgr.hpp"
-
 
 PLFResMgr::PLFMap PLFResMgr::plf_map;
 
 PingusLevel
 PLFResMgr::load_plf_raw(const std::string& res_name,
-                        const std::string& filename)
+                        const Pathname& pathname)
 {
-  pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: '" << res_name << "'  -> '" << filename << "'" << std::endl;
+  pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: '" << res_name << "'  -> '" << pathname.str() << "'" << std::endl;
 
   PLFMap::iterator i = plf_map.find(res_name);
 
   if (i == plf_map.end())
     { // Entry not cached, so load it and add it to cache
-      pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: Loading level from DISK: '" << res_name << "' -> '" << filename << "'" << std::endl;
+      pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: Loading level from DISK: '" << res_name << "' -> '"
+                                 << pathname.str() << "'" << std::endl;
 
-      PingusLevel plf(res_name, filename);
+      PingusLevel plf(res_name, pathname);
 
       PLFEntry entry;
       entry.plf   = plf;
-      entry.mtime = System::get_mtime(filename);
+      entry.mtime = pathname.mtime();
 
       plf_map[res_name]  = entry;
 
@@ -53,17 +53,18 @@ PLFResMgr::load_plf_raw(const std::string& res_name,
     }
   else
     {
-      uint64_t current_mtime = System::get_mtime(filename);
+      uint64_t current_mtime = pathname.mtime();
       if (current_mtime != i->second.mtime)
         {
-          pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: level changed on DISK, reloading: '" << res_name << "' -> '" << filename << "'" << std::endl;
+          pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: level changed on DISK, reloading: '" << res_name
+                                     << "' -> '" << pathname.str() << "'" << std::endl;
 
           // Reload the file since it has changed on disk
-          PingusLevel plf(res_name, filename);
+          PingusLevel plf(res_name, pathname);
           PLFEntry entry;
 
           entry.plf   = plf;
-          entry.mtime = System::get_mtime(filename);
+          entry.mtime = pathname.mtime();
 
           plf_map[res_name]  = entry;
 
@@ -73,7 +74,8 @@ PLFResMgr::load_plf_raw(const std::string& res_name,
         }
       else
         { // File in cache is up to date, everything is all ready, return it
-          pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: Loading level from CACHE: '" << res_name << "' -> '" << filename << "'" << std::endl;
+          pout(PINGUS_DEBUG_LOADING) << "PLFResMgr: Loading level from CACHE: '" << res_name << "' -> '"
+                                     << pathname.str() << "'" << std::endl;
 
           return i->second.plf;
         }
@@ -81,21 +83,22 @@ PLFResMgr::load_plf_raw(const std::string& res_name,
 }
 
 PingusLevel
-PLFResMgr::load_plf_from_filename(const std::string& filename)
+PLFResMgr::load_plf_from_filename(const Pathname& pathname)
 {
-  std::string res_name = System::basename(filename);
+  // FIXME: Ugly resname guessing is ugly
+  std::string res_name = System::basename(pathname.get_sys_path());
 
   // This should give us the tutorial/, wip/, etc. part of the res_name
-  std::string dirname  = System::basename(System::dirname(filename));
+  std::string dirname  = System::basename(System::dirname(pathname.get_sys_path()));
 
   return load_plf_raw(dirname + "/" + res_name.substr(0, res_name.length()-4),
-                      filename);
+                      pathname);
 }
 
 PingusLevel
 PLFResMgr::load_plf(const std::string& res_name)
 {
-  return load_plf_raw(res_name, "levels/" + res_name + ".pingus");
+  return load_plf_raw(res_name, Pathname("levels/" + res_name + ".pingus", Pathname::DATA_PATH));
 }
 
 

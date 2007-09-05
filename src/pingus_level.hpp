@@ -26,7 +26,7 @@
 #include <boost/shared_ptr.hpp>
 #include "file_reader.hpp"
 
-
+class Pathname;
 class FileReader;
 class PingusLevelImpl;
 
@@ -37,8 +37,10 @@ class PingusLevel
 public:
   PingusLevel();
 
+  PingusLevel(const Pathname& pathname);
+
   PingusLevel(const std::string& resname,
-              const std::string& filename);
+              const Pathname& pathname);
 
   /** Returns the name of the current level, {\em not} the level file name. */
   const std::string& get_levelname() const;
@@ -81,6 +83,10 @@ public:
 
   /** Return the 'resource name' of the level ('snow22-grumbel', etc. ) */
   const std::string get_resname() const;
+
+private:
+  void load(const std::string& resname,
+            const Pathname& pathname);
 
 protected:
   boost::shared_ptr<PingusLevelImpl> impl;

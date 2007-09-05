@@ -23,6 +23,7 @@
 #include <string>
 #include "pingus.hpp"
 #include "SDL.h"
+#include "pathname.hpp"
 
 void segfault_handler(int);
 
@@ -37,7 +38,7 @@ private:
 
   /// the name of the exe: argv[0]
   std::string executable_name;
-  std::string levelfile;
+  Pathname levelfile;
   std::string fontfile;
 
   /** Filename to which the level preview should be saved */

@@ -24,6 +24,7 @@
 #include "editor_level.hpp"
 #include "level_impl.hpp"
 #include "level_objs.hpp"
+#include "pathname.hpp"
 #include "../pingus_level.hpp"
 #include "../sexpr_file_writer.hpp"
 
@@ -118,14 +119,14 @@ bool EditorLevel::save_level(const std::string& filename)
 }
 
 // Load an existing level from a file
-void EditorLevel::load_level(const std::string& filename)
+void EditorLevel::load_level(const Pathname& pathname)
 {
   if (impl)
     delete impl;
   impl = new LevelImpl();
 
   // Load the level from the file - we don't care what it's res_name is.
-  PingusLevel existing_level("", filename);
+  PingusLevel existing_level(pathname);
 	
   // Assign all of the level information to our LevelImpl
   impl->levelname        = existing_level.get_levelname();

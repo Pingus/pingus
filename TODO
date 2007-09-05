@@ -86,13 +86,46 @@ Important:
   get updated when the mouse isn't in the window (need to switch from
   event to polling?!)
 
-- action-axis doesn't handle analog
+- action-axis doesn't handle analog (do we even need this or could we do with axis-button?)
 
-- fix memory leaks in input2/
+- fix memory leaks in input2/ (Controller doesn't clean up)
 
 - menu crashes when you click a little wildely
 
 - 404 image use
+
+Editor:
+=======
+
+- add sidebar to select objects
+
+- fix align of exits
+
+- object selector: 48x48 tumbnails, keep aspect when possible, 
+types of objects:  13+ object types
+
+48 * 5 = 240
+30 * 8 = 240
+
+- maybe have a scrollbar
+
+Groundpiece (ground)
+Groundpiece (solid)
+Groundpiece (bridge)
+Groundpiece (transparent)
+Groundpiece (remove)
+
+Hotspot
+Entrance
+Exit
+Liquid
+
+Special Objects
+Traps
+
+Weather
+
+Backgrounds
 
 Nice to Have:
 =============

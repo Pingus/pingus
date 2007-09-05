@@ -53,13 +53,13 @@ private:
   bool autoscroll;
 
   /** Where the mouse is right now - used for autoscrolling */
-  Vector3f mouse_at;
+  Vector2f mouse_at;
 
   /** Where the mouse is at in relation to the world/level */
-  Vector3f mouse_at_world;
+  Vector2f mouse_at_world;
 
   /** Where the mouse started dragging from */
-  Vector3f drag_start_pos;
+  Vector2f drag_start_pos;
 
   /** All objects in the level */
   std::vector<LevelObj*> objs;
@@ -80,7 +80,7 @@ private:
   bool snap_to;
 
   /** What is the currently selected action that the mouse is doing */
-  enum ActionType { NOTHING = 0, HIGHLIGHTING = 1, DRAGGING = 2 } current_action;
+  enum ActionType { NOTHING, HIGHLIGHTING, DRAGGING, SCROLLING } current_action;
 
 public:
   /** Constructor
@@ -121,6 +121,10 @@ public:
   /// Mouse actions
   void on_primary_button_press(int x, int y);
   void on_primary_button_release(int x, int y);
+
+  void on_secondary_button_press(int x, int y);
+  void on_secondary_button_release(int x, int y);
+
   void on_secondary_button_click(int x, int y);
 
   void delete_selected_objects();
