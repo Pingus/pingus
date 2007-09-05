@@ -58,13 +58,10 @@ private:
 
 public:
   /** Default constructor */
-  EditorScreen(EditorLevel* level = 0);
+  EditorScreen();
 
   /** Destructor */
   ~EditorScreen();
-
-  /** Code that runs when the screen first opens */
-  void on_startup();
 
   /** Closes the current screen */
   void close_screen();
@@ -98,10 +95,12 @@ public:
   void cancel();
 
   /** Saves the currently loaded level */
-  void save(const std::string &file, const std::string &filemask);
+  void save(const std::string &file);
 
   /** Load a new level */
-  void load(const std::string &file, const std::string &filemask);
+  void load(const std::string &file);
+
+  void load_level(const std::string& file);
 
   /** Plays the currently loaded level */
   void play_level();

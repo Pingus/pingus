@@ -53,6 +53,23 @@
         (name "object-top")
         (image-file "../images/core/editor/object-top.png"))
 
+
+      (sprite
+        (name "document-properties")
+        (image-file "../images/core/editor/document-properties.png"))
+
+      (sprite
+        (name "objects")
+        (image-file "../images/core/editor/objects.png"))
+
+      (sprite
+        (name "object-properties")
+        (image-file "../images/core/editor/object-properties.png"))
+
+      (sprite
+        (name "snap-grid")
+        (image-file "../images/core/editor/snap-grid.png"))
+
       (sprite
         (name "object-up")
         (image-file "../images/core/editor/object-up.png"))
@@ -64,6 +81,18 @@
                               (sprite
         (name "object-flip-horizontal")
         (image-file "../images/core/editor/object-flip_horizontal.png"))
+
+      (sprite
+        (name "play")
+        (image-file "../images/core/editor/play.png"))
+
+      (sprite
+        (name "object-rotate-right")
+        (image-file "../images/core/editor/object-rotate_right.png"))
+
+      (sprite
+        (name "object-rotate-left")
+        (image-file "../images/core/editor/object-rotate_left.png"))
 
       (sprite
         (name "object-flip-vertical")
@@ -135,11 +164,11 @@
 
       (sprite
         (name "help")
-        (image-file "../images/core/editor/tb_help.png"))
+        (image-file "../images/core/editor/help.png"))
 
       (sprite
         (name "delete")
-        (image-file "../images/core/editor/tb_trash.png"))
+        (image-file "../images/core/editor/edit-delete.png"))
 
       (sprite
         (name "index")

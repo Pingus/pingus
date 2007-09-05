@@ -45,7 +45,7 @@ public:
   void draw (DrawingContext& gc);
   void update (float delta);
 
-  void add_button(const std::string& image);
+  void add_button(const std::string& image, const std::string& tooltip = "");
   void add_toggle_button(const std::string& image);
   void add_separator();
   

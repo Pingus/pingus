@@ -23,6 +23,7 @@
 **  02111-1307, USA.
 */
 
+#include "fonts.hpp"
 #include "gui/display.hpp" 
 #include "display/drawing_context.hpp"
 #include "resource.hpp"
@@ -63,16 +64,18 @@ private:
   Sprite sprite;
   bool   mouse_over;
   bool   mouse_down;
-  Vector2i pos;
+  Vector2i    pos;
+  std::string tooltip;
 
 public:
-  PanelButton(const Vector2i& pos_, const std::string& name)
+  PanelButton(const Vector2i& pos_, const std::string& name, const std::string& tooltip_)
     : button_raised(Resource::load_sprite("core/editor/button-raised")),
       button_pressed(Resource::load_sprite("core/editor/button-pressed")),
       sprite(Resource::load_sprite(name)),
       mouse_over(false),
       mouse_down(false),
-      pos(pos_)
+      pos(pos_),
+      tooltip(tooltip_)
   {
   }
 
@@ -84,6 +87,11 @@ public:
       gc.draw(button_raised, pos);
 
     gc.draw(sprite, pos + Vector2i(5,5));
+
+    if (mouse_over)
+      {
+        gc.print_center(Fonts::courier_small, pos.x + 17, pos.y + 38, tooltip);
+      }
   }
 
   /** Emmitted when pointer enters the region of the component */
@@ -130,18 +138,34 @@ Panel::Panel(EditorScreen* editor_)
 {  
   editor->get_gui_manager()->add(this, true);
 
-  add_button("core/editor/document-new");
-  add_button("core/editor/document-open");
-  add_button("core/editor/document-save");
-  add_button("core/editor/document-save-as");
+  add_button("core/editor/document-new",  "New level");
+  add_button("core/editor/document-open", "Open level...");
+  add_button("core/editor/document-save", "Save level...");
+  add_button("core/editor/document-save-as", "Save level as...");
   add_separator();
-  add_button("core/editor/object-top");
-  add_button("core/editor/object-up");
-  add_button("core/editor/object-down");
-  add_button("core/editor/object-bottom");
+  add_button("core/editor/play", "Play level...");
   add_separator();
-  add_button("core/editor/object-flip-horizontal");
-  add_button("core/editor/object-flip-vertical");
+  add_button("core/editor/actions", "Configure actions");
+  add_button("core/editor/document-properties", "Configure level");
+  add_button("core/editor/object-properties", "Display object properties");
+  add_separator();
+  add_button("core/editor/delete", "Delete the selected objects");
+  add_separator();
+  add_button("core/editor/object-top",    "Raise object to top");
+  add_button("core/editor/object-up",     "Raise object");
+  add_button("core/editor/object-down",   "Lower object");
+  add_button("core/editor/object-bottom", "Lower object to bottom");
+  add_separator();
+  add_button("core/editor/object-flip-horizontal", "Flip object horizontally");
+  add_button("core/editor/object-flip-vertical", "Flip object vertically");
+  add_separator();
+  add_button("core/editor/object-rotate-left", "Rotate object 90 degree");
+  add_button("core/editor/object-rotate-right", "Rotate object -90 degree");
+  add_separator();
+  add_button("core/editor/snap-grid", "Snap objects to grid");
+  add_button("core/editor/objects", "Show object insertion window");
+  add_separator();
+  add_button("core/editor/help", "Display help");
 }
 
 Panel::~Panel()
@@ -151,9 +175,10 @@ Panel::~Panel()
 void
 Panel::draw (DrawingContext& gc)
 {
-  // FIXME: Should handle resize
-  gc.draw_fillrect(0, 0, Display::get_width(), 38, Color(237, 233, 227));
-  gc.draw(logo, Display::get_width() - logo.get_width(), 0);
+  // FIXME: Could use draw_line
+  gc.draw_fillrect(0, 0, Display::get_width(), 38, Color(255, 255, 255));
+  gc.draw_fillrect(1, 1, Display::get_width(), 38, Color(169, 157, 140));
+  gc.draw_fillrect(1, 1, Display::get_width()-1, 37, Color(237, 233, 227));
 }
 
 void
@@ -163,9 +188,9 @@ Panel::update (float delta)
 }
 
 void
-Panel::add_button(const std::string& image)
+Panel::add_button(const std::string& image, const std::string& tooltip)
 {
-  PanelButton* comp = new PanelButton(pos, image);
+  PanelButton* comp = new PanelButton(pos, image, tooltip);
   pos.x += comp->get_width();
   editor->get_gui_manager()->add(comp, true);
 }
@@ -173,7 +198,7 @@ Panel::add_button(const std::string& image)
 void
 Panel::add_toggle_button(const std::string& image)
 {
-  PanelButton* comp = new PanelButton(pos, image);
+  PanelButton* comp = new PanelButton(pos, image, "");
   pos.x += comp->get_width();
   editor->get_gui_manager()->add(comp, true);
 }

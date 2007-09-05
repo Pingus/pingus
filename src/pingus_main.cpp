@@ -684,7 +684,7 @@ PingusMain::start_game ()
   }
 
   if (print_fps)
-      Display::add_flip_screen_hook(&fps_counter);
+    Display::add_flip_screen_hook(&fps_counter);
 
   if (!render_preview)
     {
@@ -718,32 +718,24 @@ PingusMain::start_game ()
     {
       ScreenManager::instance()->push_screen(Credits::instance(), false);
     }
+  else if (editor == true)
+    {
+      Editor::EditorScreen* editor = new Editor::EditorScreen();
+      if (!levelfile.empty())
+        {
+          editor->load(levelfile);
+        }
+      ScreenManager::instance()->push_screen (editor, true);
+    }
   else if (!levelfile.empty ()) 
     {
-      bool successfull = true;
-      if (!System::exist(levelfile))
-        {
-          if (System::exist(levelfile + ".pingus"))
-            levelfile += ".pingus";
-          else if (System::exist("levels/" + levelfile + ".pingus"))
-            levelfile = "levels/" + levelfile + ".pingus";
-          else
-            {
-              pout << _("PingusMain: Levelfile not found, ignoring: ") << levelfile << std::endl;
-              successfull = false;
-            }
-        }
-
-      if (successfull)
-        {
-          ScreenManager::instance()->push_screen
-          (new StartScreen(PLFResMgr::load_plf_from_filename(levelfile)),
-          true);
-          if (0)
-            ScreenManager::instance()->push_screen
-              (new PingusGameSession(PLFResMgr::load_plf_from_filename(levelfile), false),
-               true);
-        }
+      ScreenManager::instance()->push_screen
+        (new StartScreen(PLFResMgr::load_plf_from_filename(levelfile)),
+         true);
+      if (0)
+        ScreenManager::instance()->push_screen
+          (new PingusGameSession(PLFResMgr::load_plf_from_filename(levelfile), false),
+           true);
     }
   else if (!demo_file.empty()) // start a demo
     {
@@ -753,10 +745,6 @@ PingusMain::start_game ()
     {
       WorldMapNS::WorldMapManager::instance()->load(worldmapfile);
       ScreenManager::instance()->push_screen(WorldMapNS::WorldMapManager::instance());
-    }
-  else if (editor == true)
-    {
-      ScreenManager::instance()->push_screen (new Editor::EditorScreen(), true);
     }
   else // start a normal game
     {

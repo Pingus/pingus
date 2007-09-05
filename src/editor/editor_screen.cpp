@@ -40,14 +40,19 @@
 namespace Editor {
 
 // Default constructor
-EditorScreen::EditorScreen(EditorLevel* level)
-  : plf(level), 
+EditorScreen::EditorScreen()
+  : plf(new EditorLevel()), 
     panel(0),
     viewport(0),
     filedialog(0),
     close_dialog(false)
 {
-  if (!plf) plf = new EditorLevel();
+  // Create the viewport for the images and data
+  viewport = new EditorViewport(this);
+  gui_manager->add(viewport, true);	
+	
+  // Create the panel for the buttons
+  panel = new Panel(this);
 }
 
 // Destructor
@@ -56,18 +61,6 @@ EditorScreen::~EditorScreen()
   delete plf;
   if (filedialog)
     delete filedialog;
-}
-
-// Startup code
-void
-EditorScreen::on_startup()
-{
-  // Create the viewport for the images and data
-  viewport = new EditorViewport(this);
-  gui_manager->add(viewport, true);	
-	
-  // Create the panel for the buttons
-  panel = new Panel(this);
 }
 
 // Close the current screen
@@ -105,7 +98,7 @@ EditorScreen::cancel()
 
 // Save the current level
 void 
-EditorScreen::save(const std::string &file, const std::string &filemask)
+EditorScreen::save(const std::string &file)
 {
   close_dialog = true;
   plf->save_level(file);
@@ -114,7 +107,7 @@ EditorScreen::save(const std::string &file, const std::string &filemask)
 
 // Load a new level
 void 
-EditorScreen::load(const std::string &file, const std::string &filemask)
+EditorScreen::load(const std::string &file)
 {
   close_dialog = true;
   plf->load_level(file);
