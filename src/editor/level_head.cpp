@@ -30,9 +30,8 @@
 #include "level_head.hpp"
 #include "level_impl.hpp"
 #include "../gui/display.hpp"
-#include "panel_buttons.hpp"
 #include "editor_level.hpp"
-#include "editor_panel.hpp"
+//#include "editor_panel.hpp"
 #include "editor_screen.hpp"
 
 namespace Editor {
@@ -63,7 +62,7 @@ public:
 
   void on_click()
   {
-    head->get_head_button()->remove_head();
+    //head->get_head_button()->remove_head();
   }
 
   void on_pointer_enter()
@@ -128,11 +127,11 @@ LevelHead::update(float delta)
 {
   UNUSED_ARG(delta);
   // FIXME:  Should only update this information if it has changed. 
-  impl->levelname = name->get_string();
+  impl->levelname   = name->get_string();
   impl->description = desc->get_string(); 
 }   
   
           
-}	// Editor
+} // namespace Editor
 
 /* EOF */

@@ -22,15 +22,19 @@
 #include "vector3f.hpp"
 #include "vector2f.hpp"
 
-Vector3f::Vector3f (float x_, float y_, float z_) : x(x_), y(y_), z(z_)
+Vector3f::Vector3f(float x_, float y_, float z_) : x(x_), y(y_), z(z_)
 {
 }
 
-Vector3f::Vector3f (const Vector3f& old) : x(old.x), y(old.y), z(old.z)
+Vector3f::Vector3f(const Vector3f& old) : x(old.x), y(old.y), z(old.z)
 {
 }
 
-Vector3f::Vector3f (const Vector2f& old) : x(old.x), y(old.y), z(0)
+Vector3f::Vector3f(const Vector2f& old) : x(old.x), y(old.y), z(0)
+{
+}
+
+Vector3f::Vector3f(const Vector2i& old) : x(int(old.x)), y(int(old.y)), z(0)
 {
 }
 

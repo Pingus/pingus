@@ -31,7 +31,6 @@ PingusLevel::PingusLevel()
 {
 }
 
-
 PingusLevel::PingusLevel(const std::string& resname,
                          const std::string& filename)
   : impl(new PingusLevelImpl())

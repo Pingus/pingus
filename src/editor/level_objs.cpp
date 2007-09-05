@@ -27,7 +27,6 @@
 #include "../gui/display.hpp"
 #include "../display/drawing_context.hpp"
 
-
 namespace Editor {
 
 // Default constructor
@@ -72,12 +71,15 @@ LevelObj::draw(DrawingContext &gc)
     {
       // If selected, draw a highlighted box around it
       if (selected)
-        gc.draw_rect(translated_pos.x, translated_pos.y, translated_pos.x 
-                     + sprite.get_width(), translated_pos.y + sprite.get_height(), 
-                     Color(255,255,255,150), 5000);
+        {
+          gc.draw_rect(translated_pos.x, translated_pos.y, translated_pos.x 
+                       + sprite.get_width(), translated_pos.y + sprite.get_height(), 
+                       Color(255,255,255,150), 5000);
+        }
+
       if (attribs & HAS_WIDTH)
         {
-          for(int x = static_cast<int>(pos.x); x < pos.x + width;	x += sprite.get_width())
+          for(int x = int(pos.x); x < pos.x + width; x += sprite.get_width())
             gc.draw(sprite, Vector3f(static_cast<float>(x), pos.y, pos.z));
         }
       else if(attribs & HAS_STRETCH)
@@ -88,7 +90,9 @@ LevelObj::draw(DrawingContext &gc)
               gc.draw(sprite, Vector3f((float)x, (float)y, pos.z));
         }
       else
-        gc.draw(sprite, pos);
+        {
+          gc.draw(sprite, pos);
+        }
     }
 }
 
@@ -99,13 +103,13 @@ LevelObj::is_at(int x, int y)
     {
       return (x > translated_pos.x && x < translated_pos.x + sprite.get_width()
               && y > translated_pos.y && y < translated_pos.y + sprite.get_height());
-    }
+}
   else
     return false;
 }
 
-void
-LevelObj::set_stretch_x(const bool s)
+  void
+  LevelObj::set_stretch_x(const bool s)
 { 
   stretch_x = s;
 }
@@ -316,6 +320,6 @@ LevelObj::set_pos(Vector3f p)
   set_translated_pos();
 }
 
-}		// Editor namespace
+} // namespace Editor 
 
 /* EOF */

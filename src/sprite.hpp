@@ -34,12 +34,13 @@ class Sprite
 {
 public:
   Sprite();
+  Sprite(const std::string& name);
   Sprite(const SpriteDescription& desc);
   Sprite(const PixelBuffer& pixelbuffer);
   ~Sprite();
 
-  int get_width();
-  int get_height();
+  int get_width()  const;
+  int get_height() const;
 
   void update(float delta = 0.033f);
 

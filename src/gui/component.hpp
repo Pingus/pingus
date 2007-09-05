@@ -22,7 +22,6 @@
 
 #include "../pingus.hpp"
 
-
 class DrawingContext;
 
 namespace GUI {
@@ -34,13 +33,13 @@ class Component
 private:
 	
 protected:
-	bool has_focus;
+  bool has_focus;
 
 public:
   Component () : has_focus(false) { }
   virtual ~Component() {}
 
-	virtual void set_focus(bool val) { has_focus = val; }
+  virtual void set_focus(bool val) { has_focus = val; }
 	
   virtual void draw (DrawingContext& gc) =0;
   virtual void update (float delta) { UNUSED_ARG(delta);}
@@ -85,7 +84,7 @@ public:
 
   /** true if mouse is currently over, FIXME: these seem to be
       unimplementable without renaming on_pointer_enter() and wrapp them */
-  bool pointer_over ();
+  bool pointer_over();
 
 private:
   Component (const Component&);

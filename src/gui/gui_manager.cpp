@@ -120,7 +120,7 @@ GUIManager::remove(Component* c)
 }
 
 Component*
-GUIManager::component_at (int x, int y)
+GUIManager::component_at(int x, int y)
 {
   // we travel reversly through the component list, so that we get the
   // top most component at first

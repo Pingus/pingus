@@ -215,8 +215,10 @@ EditorViewport::draw(DrawingContext &gc)
 bool
 EditorViewport::is_at(int x, int y)
 {
-  // FIXME: Should return true everywhere except for on the panel
-  return true;
+  if (y >= 38) // FIXME: Could be done more flexible
+    return true;
+  else 
+    return false;
 }
 
 void

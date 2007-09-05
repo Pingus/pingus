@@ -27,7 +27,6 @@
 #include <algorithm>
 #include "level_objs.hpp"
 
-
 namespace Editor {
 
 static bool LevelObjSort(LevelObj *a, LevelObj *b)
@@ -87,7 +86,7 @@ private:
   LevelImpl& operator= (const LevelImpl&);
 };	// LevelImpl class
 
-}		// Editor namespace
+} // namespace Editor
 
 #endif
 

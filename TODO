@@ -67,6 +67,10 @@ Roadmap for Pingus 0.7.1
 Important:
 ==========
 
+- update ChangeLog
+
+- enable default fullscreen for release
+
 - fix level loading from command line
 
 - add some SConscript checks (for compiler missing)
@@ -81,6 +85,14 @@ Important:
   even when completly out of the window, in SDL the mouse coords don't
   get updated when the mouse isn't in the window (need to switch from
   event to polling?!)
+
+- action-axis doesn't handle analog
+
+- fix memory leaks in input2/
+
+- menu crashes when you click a little wildely
+
+- 404 image use
 
 Nice to Have:
 =============

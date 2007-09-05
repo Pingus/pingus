@@ -128,17 +128,17 @@ void EditorLevel::load_level(const std::string& filename)
   PingusLevel existing_level("", filename);
 	
   // Assign all of the level information to our LevelImpl
-  impl->levelname = existing_level.get_levelname();
-  impl->description = existing_level.get_description();
-  impl->ambient_light = existing_level.get_ambient_light();
-  impl->size = existing_level.get_size();
+  impl->levelname        = existing_level.get_levelname();
+  impl->description      = existing_level.get_description();
+  impl->ambient_light    = existing_level.get_ambient_light();
+  impl->size             = existing_level.get_size();
   impl->number_of_pingus = existing_level.get_number_of_pingus();
-  impl->number_to_save = existing_level.get_number_to_save();
-  impl->actions = existing_level.get_actions();
-  impl->time = existing_level.get_time();
-  impl->difficulty = existing_level.get_difficulty();
-  impl->author = existing_level.get_author();
-  impl->music = existing_level.get_music();
+  impl->number_to_save   = existing_level.get_number_to_save();
+  impl->actions          = existing_level.get_actions();
+  impl->time             = existing_level.get_time();
+  impl->difficulty       = existing_level.get_difficulty();
+  impl->author           = existing_level.get_author();
+  impl->music            = existing_level.get_music();
 	
   // Temporary objects
   unsigned attribs;

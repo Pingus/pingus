@@ -33,19 +33,20 @@ namespace Editor {
 
 class EditorLevel;
 class LevelObj;
-class EditorPanel;
+class Panel;
 class EditorViewport;
 
 /** This class is the screen that contains all of the
     editor objects */
-class EditorScreen : public GUIScreen, public FileDialogListener
+class EditorScreen : public GUIScreen, 
+                     public FileDialogListener
 {
 private:
   /** The level currently being edited */
   EditorLevel* plf;
 
   /** Panel which contains all of the buttons for each action */
-  EditorPanel* panel;
+  Panel* panel;
 
   /** Viewport which holds all of the level images and data */
   EditorViewport* viewport;

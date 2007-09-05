@@ -31,11 +31,11 @@
 #include "../file_dialog.hpp"
 #include "../path_manager.hpp"
 #include "editor_level.hpp"
-#include "editor_panel.hpp"
+#include "panel.hpp"
+#include "panel.hpp"
 #include "editor_screen.hpp"
 #include "editor_viewport.hpp"
 #include "level_objs.hpp"
-
 
 namespace Editor {
 
@@ -67,10 +67,7 @@ EditorScreen::on_startup()
   gui_manager->add(viewport, true);	
 	
   // Create the panel for the buttons
-  panel = new EditorPanel(this);
-  gui_manager->add(panel, true);
-  panel->init();
-
+  panel = new Panel(this);
 }
 
 // Close the current screen
@@ -112,7 +109,7 @@ EditorScreen::save(const std::string &file, const std::string &filemask)
 {
   close_dialog = true;
   plf->save_level(file);
-  panel->set_selected_button(0);
+  //panel->set_selected_button(0);
 }
 
 // Load a new level
@@ -122,7 +119,7 @@ EditorScreen::load(const std::string &file, const std::string &filemask)
   close_dialog = true;
   plf->load_level(file);
   viewport->refresh();
-  panel->set_selected_button(0);
+  //panel->set_selected_button(0);
 }
 
 // Play the current level (save to a temporary file 
@@ -187,5 +184,8 @@ EditorScreen::add_objects(std::vector<LevelObj*> objs)
     add_object(*it);
 }
 
-} // Editor namespace
+} // namespace Editor 
+
+/* EOF */
+
 

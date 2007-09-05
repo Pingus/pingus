@@ -18,52 +18,43 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_EDITOR_EDITORLEVEL_HXX
-#define HEADER_PINGUS_EDITOR_EDITORLEVEL_HXX
+#ifndef HEADER_PINGUS_EDITOR_PANEL_HXX
+#define HEADER_PINGUS_EDITOR_PANEL_HXX
 
-#include <vector>
-#include "level_impl.hpp"
+#include <string>
+#include "sprite.hpp"
+#include "math/vector2i.hpp"
+#include "../gui/component.hpp"
 
 namespace Editor {
+
+class EditorScreen;
 
-class LevelObj;
-
-class EditorLevel
+/** */
+class Panel : public GUI::Component
 {
+private:
+  EditorScreen* editor;
+  Sprite logo;
+  Vector2i pos;
+
 public:
-  /** Construct new blank level */
-  EditorLevel();
+  Panel(EditorScreen* e);
+  ~Panel();
 
-  /** Destructor */
-  ~EditorLevel();
+  void draw (DrawingContext& gc);
+  void update (float delta);
 
-  /** Verify that level is valid */
-  bool is_valid();
-
-  /** Save the level to a file.  Returns true if successful */
-  bool save_level(const std::string& filename);
-
-  /** Load an existing level from a file */
-  void load_level(const std::string& filename);
-
-  /** Return all objects in the level */
-  std::vector<LevelObj*> get_objects() const { return impl->objects; }
-	
-  /** Add an object to the level */
-  void add_object(LevelObj* obj);
-	
-  /** Return LevelImpl */
-  LevelImpl* get_level_impl() { return impl; }
-
+  void add_button(const std::string& image);
+  void add_toggle_button(const std::string& image);
+  void add_separator();
+  
 private:
-  LevelImpl* impl;
-
-private:
-  EditorLevel (const EditorLevel&);
-  EditorLevel& operator= (const EditorLevel&);
+  Panel (const Panel&);
+  Panel& operator= (const Panel&);
 };
-
-} // Editor namespace
+
+} // namespace Editor
 
 #endif
 

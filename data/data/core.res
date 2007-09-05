@@ -1,3 +1,4 @@
+;; -*- scheme -*-
 ;; core.xml
 (pingus-resources
   (section (name "core")
@@ -44,6 +45,50 @@
      )
 
     (section (name "editor")
+      (sprite
+        (name "object-bottom")
+        (image-file "../images/core/editor/object-bottom.png"))
+
+      (sprite
+        (name "object-top")
+        (image-file "../images/core/editor/object-top.png"))
+
+      (sprite
+        (name "object-up")
+        (image-file "../images/core/editor/object-up.png"))
+
+      (sprite
+        (name "object-down")
+        (image-file "../images/core/editor/object-down.png"))
+
+                              (sprite
+        (name "object-flip-horizontal")
+        (image-file "../images/core/editor/object-flip_horizontal.png"))
+
+      (sprite
+        (name "object-flip-vertical")
+        (image-file "../images/core/editor/object-flip_vertical.png"))
+
+      (sprite
+        (name "document-new")
+        (image-file "../images/core/editor/document-new.png"))
+
+      (sprite
+        (name "document-open")
+        (image-file "../images/core/editor/document-open.png"))
+
+      (sprite
+        (name "document-save")
+        (image-file "../images/core/editor/document-save.png"))
+
+      (sprite
+        (name "document-save-as")
+        (image-file "../images/core/editor/document-save-as.png"))
+
+      (sprite
+        (name "separator")
+        (image-file "../images/core/editor/separator.png"))
+
       (sprite
         (name "start_pos")
         (image-file "../images/core/editor/start_pos.png"))
@@ -115,6 +160,14 @@
       (sprite
         (name "button")
         (image-file "../images/core/editor/button.png"))
+
+      (sprite
+        (name "button-raised")
+        (image-file "../images/core/editor/button-raised.png"))
+
+      (sprite
+        (name "button-pressed")
+        (image-file "../images/core/editor/button-pressed.png"))
 
       (sprite
         (name "button_pressed")

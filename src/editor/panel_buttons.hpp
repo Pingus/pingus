@@ -203,10 +203,9 @@ private:
   PanelButtonHead ();
   PanelButtonHead (const PanelButtonHead&);
   PanelButtonHead& operator= (const PanelButtonHead&);
-};    // PanelButtonHead class
+};
 
-}		// Editor namespace
-
+} // Editor namespace
 
 #endif
 

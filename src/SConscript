@@ -22,8 +22,8 @@ import os
 
 env = Environment(
     # ENV = {'PKG_CONFIG_PATH' : os.getenv('PKG_CONFIG_PATH')},
-    CXX = "g++-4.2",
-    CCFLAGS = ['-O2', '-Wall', '-Werror', '-g'],
+    # CXX = "g++-4.2",
+    CCFLAGS = ['-O0', '-Wall', '-Werror', '-g'],
     CPPDEFINES = ['ENABLE_BINRELOC', 'HAVE_CWIID'],
     CPPPATH = ['..', '.'],
     LIBS = ['cwiid', 'Xi']) # FIXME: Make this configurable
@@ -91,12 +91,10 @@ env.Program('../pingus', [
 
 'editor/context_menu.cpp',
 'editor/editor_level.cpp', 
-'editor/editor_panel.cpp', 
+'editor/panel.cpp', 
 'editor/editor_screen.cpp', 
 'editor/editor_viewport.cpp', 
-'editor/level_head.cpp', 
 'editor/level_objs.cpp', 
-'editor/panel_buttons.cpp', 
 
 'command_line.cpp',
 'command_line_generic.cpp',

@@ -117,9 +117,9 @@ private:
   ContextMenu (const ContextMenu&);
   ContextMenu& operator= (const ContextMenu&);
 
-};	// ContextMenu class
+};
 
-}	// Editor namespace
+}  // Editor namespace
 
 #endif
 

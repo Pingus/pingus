@@ -27,21 +27,20 @@
 #include "../resource.hpp"
 #include "panel_buttons.hpp"
 #include "editor_level.hpp"
-#include "editor_panel.hpp"
+//#include "editor_panel.hpp"
 #include "editor_screen.hpp"
 #include "level_objs.hpp"
 #include "level_head.hpp"
-
 
 class Resource;
 
 namespace Editor {
 
 // Constructor
-PanelButton::PanelButton(EditorPanel* p) :
-  hover(false),
-  panel(p),
-  is_selected(false)
+PanelButton::PanelButton(EditorPanel* p) 
+ : hover(false),
+   panel(p),
+   is_selected(false)
 {
   button = Resource::load_sprite("core/editor/button");
   button_pressed = Resource::load_sprite("core/editor/button_pressed");
@@ -81,8 +80,8 @@ PanelButton::is_at(int x, int y)
 }
 
 // Something all buttons should do.
-  void
-  PanelButton::on_primary_button_click(int x, int y)
+void
+PanelButton::on_primary_button_click(int x, int y)
 {
   UNUSED_ARG(x);
   UNUSED_ARG(y);
@@ -155,6 +154,7 @@ PanelButtonGroundpiece::on_primary_button_click(int x, int y)
   panel->get_combobox(1)->set_label("Type");
   panel->get_combobox(2)->set_label("Subtype");
   panel->get_combobox(3)->set_label("Groundpiece");
+
   std::vector<std::string> groundpieces; //// = Resource::get_sections("groundpieces");
   for (unsigned i = 0; i < groundpieces.size(); i++)
     {

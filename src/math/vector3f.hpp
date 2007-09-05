@@ -24,7 +24,7 @@
 #include "../pingus.hpp"
 
 class Vector2f;
-
+class Vector2i;
 class Vector3f
 {
 public:
@@ -37,6 +37,7 @@ public:
 
   Vector3f (const Vector3f& old);
   Vector3f (const Vector2f& old);
+  Vector3f (const Vector2i& old);
   Vector3f& operator= (const Vector3f& old);
 
   Vector3f operator- () const;

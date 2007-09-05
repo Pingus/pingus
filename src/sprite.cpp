@@ -207,6 +207,13 @@ Sprite::Sprite()
   
 }
 
+Sprite::Sprite(const std::string& name)
+{
+  SpriteDescription desc;
+  desc.filename = name;
+  impl = boost::shared_ptr<SpriteImpl>(new SpriteImpl(desc));
+}
+
 Sprite::Sprite(const PixelBuffer& pixelbuffer)
   : impl(new SpriteImpl(pixelbuffer))
 {
@@ -230,7 +237,7 @@ Sprite::draw(float x, float y, SDL_Surface* target)
 }
 
 int
-Sprite::get_width()
+Sprite::get_width() const
 {
   if (impl.get()) 
     return impl->frame_size.width;
@@ -239,7 +246,7 @@ Sprite::get_width()
 }
 
 int
-Sprite::get_height()
+Sprite::get_height() const
 {
   if (impl.get()) 
     return impl->frame_size.height;
