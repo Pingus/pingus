@@ -24,7 +24,6 @@
 #include "font.hpp"
 #include "line_iterator.hpp"
 #include "font_description.hpp"
-#include "path_manager.hpp"
 #include "gui/display.hpp"
 
 static bool vline_empty(SDL_Surface* surface, int x, Uint8 threshold)
@@ -66,10 +65,10 @@ public:
     for(int i = 0; i < 256; ++i)
       chrs[i].x = chrs[i].y = chrs[i].w = chrs[i].h = 0;
 
-    surface = IMG_Load(path_manager.complete(desc.image).c_str());
+    surface = IMG_Load(desc.image.get_sys_path().c_str());
     if (!surface)
       {
-        std::cout << "IMG: " << path_manager.complete(desc.image) << std::endl;
+        std::cout << "IMG: " << desc.image.str() << std::endl;
         assert(surface);
       }
 
@@ -77,7 +76,7 @@ public:
 
     if (surface->format->BitsPerPixel != 32)
       {
-        std::cout << "Error: '" << desc.filename << "' invalid, fonts need to be RGBA, but is "
+        std::cout << "Error: '" << desc.pathname.str() << "' invalid, fonts need to be RGBA, but is "
                   << surface->format->BitsPerPixel << "bpp" << std::endl;
         assert(0);
       }

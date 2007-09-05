@@ -49,6 +49,7 @@ public:
   bool read_float (const char* name, float&)         const;
   bool read_bool  (const char* name, bool&)          const;
   bool read_string(const char* name, std::string&)   const;
+  bool read_path  (const char* name, Pathname&)      const;
   bool read_vector(const char* name, Vector3f&)      const;
   bool read_vector2i(const char* name, Vector2i&)    const;
   bool read_size  (const char* name, Size&)          const;

@@ -523,7 +523,7 @@ PingusMain::check_args(int argc, char** argv)
           break;
 
         case 363: // font test
-          fontfile = argp.get_argument();
+          fontfile = Pathname(argp.get_argument(), Pathname::SYSTEM_PATH);
           break;
 
         case 364: // language

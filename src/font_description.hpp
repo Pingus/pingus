@@ -21,16 +21,17 @@
 #define HEADER_FONT_DESCRIPTION_HPP
 
 #include <string>
+#include "pathname.hpp"
 
 /** */
 class FontDescription
 {
 public:
-  std::string filename;
+  Pathname    pathname;
   std::string name;
 
   /** Image file from which the basic surface is loaded */
-  std::string image;
+  Pathname image;
 
   bool monospace;
   
@@ -48,7 +49,7 @@ public:
   /** Characters in the font image */
   std::string characters;
 
-  FontDescription(const std::string& filename);
+  FontDescription(const Pathname& filename);
 };
 
 #endif

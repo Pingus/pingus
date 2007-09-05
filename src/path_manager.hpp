@@ -21,6 +21,7 @@
 #define HEADER_PINGUS_PATH_MANAGER_HXX
 
 #include "pingus.hpp"
+#include "path_manager.hpp"
 #include <string>
 #include <list>
 

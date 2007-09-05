@@ -24,12 +24,13 @@
 #include "math/size.hpp"
 #include "math/origin.hpp"
 #include "file_reader.hpp"
+#include "pathname.hpp"
 
 /** */
 class SpriteDescription
 {
 public:
-  std::string filename;
+  Pathname    filename;
   Vector2i    offset;
   Origin      origin;
 
@@ -60,8 +61,8 @@ public:
 
     reader.read_enum("origin", origin, string2origin);
     
-    reader.read_string("image-file",  filename);
-    filename = "data/" + filename; // FIXME: Hack
+    reader.read_path("image-file",  filename);
+    filename = Pathname("data/" + filename.get_raw_path(), filename.get_type()); // FIXME: Hack
     reader.read_size("image-array", array);
     reader.read_vector2i("image-pos",   frame_pos);
     reader.read_size("image-size",  frame_size);

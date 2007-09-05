@@ -27,7 +27,6 @@
 #include "components/pingus_counter.hpp"
 #include "components/smallmap.hpp"
 #include "components/hurry_up.hpp"
-#include "path_manager.hpp"
 #include "gui/cursor.hpp"
 #include "true_server.hpp"
 #include "components/button_panel.hpp"

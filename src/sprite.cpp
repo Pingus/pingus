@@ -27,7 +27,7 @@
 #include "sprite.hpp"
 #include "blitter.hpp"
 #include "pixel_buffer.hpp"
-#include "path_manager.hpp"
+#include "pathname.hpp"
 #include "sprite_description.hpp"
 
 class SpriteImpl
@@ -66,11 +66,11 @@ public:
       frame(0),
       tick_count(0)
   {
-    surface = IMG_Load(path_manager.complete(desc.filename).c_str());
+    surface = IMG_Load(desc.filename.get_sys_path().c_str());
     if (!surface)
       {
         std::cout << "Error: Couldn't load " << desc.filename << std::endl;
-        surface = IMG_Load(path_manager.complete("images/core/misc/404.png").c_str());
+        surface = IMG_Load(Pathname("images/core/misc/404.png", Pathname::DATA_PATH).str().c_str());
         assert(surface);
       }
 
@@ -207,7 +207,7 @@ Sprite::Sprite()
   
 }
 
-Sprite::Sprite(const std::string& name)
+Sprite::Sprite(const Pathname& name)
 {
   SpriteDescription desc;
   desc.filename = name;

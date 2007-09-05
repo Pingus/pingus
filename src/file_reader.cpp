@@ -79,6 +79,26 @@ FileReader::read_string(const char* name, std::string& value) const
 }
 
 bool
+FileReader::read_path(const char* name, Pathname& value) const
+{
+  if (impl.get())
+    {
+      std::string filename;
+      if (impl->read_string(name, filename))
+        {
+          value = Pathname(filename, Pathname::DATA_PATH);
+          return true;
+        }
+      else
+        {
+          return false;
+        }
+    }
+  else
+    return false;
+}
+
+bool
 FileReader::read_vector(const char* name, Vector3f& value) const
 {
   if (impl.get())

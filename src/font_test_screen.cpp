@@ -23,13 +23,13 @@
 #include "font_description.hpp"
 #include "font_test_screen.hpp"
 
-FontTestScreen::FontTestScreen(const std::string& fontfile)
+FontTestScreen::FontTestScreen(const Pathname& fontfile)
   : scrollx(0),
     scrolly(0)
 {
   std::cout << "### Loading font file: " << fontfile << std::endl;
   font = Font(FontDescription(fontfile));
-  reference = Font(FontDescription("images/fonts/reference-iso-8859-1.font"));
+  reference = Font(FontDescription(Pathname("images/fonts/reference-iso-8859-1.font", Pathname::DATA_PATH)));
 }
 
 bool

@@ -26,6 +26,7 @@
 
 class Color;
 class PixelBuffer;
+class Pathname;
 class SpriteImpl;
 class SpriteDescription;
 
@@ -34,7 +35,7 @@ class Sprite
 {
 public:
   Sprite();
-  Sprite(const std::string& name);
+  Sprite(const Pathname& name);
   Sprite(const SpriteDescription& desc);
   Sprite(const PixelBuffer& pixelbuffer);
   ~Sprite();

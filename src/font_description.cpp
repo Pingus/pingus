@@ -19,11 +19,10 @@
 
 #include "pingus_error.hpp"
 #include "file_reader.hpp"
-#include "path_manager.hpp"
 #include "font_description.hpp"
 
-FontDescription::FontDescription(const std::string& filename_)
-  : filename(filename_)
+FontDescription::FontDescription(const Pathname& pathname_)
+  : pathname(pathname_)
 {
   name            = "<unknown>";
   monospace       = false;
@@ -32,7 +31,7 @@ FontDescription::FontDescription(const std::string& filename_)
   char_spacing    = 1.0f;
   vertical_spacing = -1.0f;
 
-  FileReader reader = FileReader::parse(path_manager.complete(filename));
+  FileReader reader = FileReader::parse(pathname);
 
   if (reader.get_name() != "pingus-font")
     {
@@ -41,7 +40,7 @@ FontDescription::FontDescription(const std::string& filename_)
   else
     {
       reader.read_string("name",          name);
-      reader.read_string("image",         image);
+      reader.read_path("image",           image);
       reader.read_string("characters",    characters);
       reader.read_bool("monospace",       monospace);
       reader.read_float("char-spacing",     char_spacing);

@@ -23,8 +23,10 @@
 #include "SDL.h"
 #include <string>
 #include <boost/shared_ptr.hpp>
+#include "pathname.hpp"
 #include "math/color.hpp"
 
+class Pathname;
 class PixelBufferImpl;
 
 /** */
@@ -32,7 +34,7 @@ class PixelBuffer
 {
 public:
   PixelBuffer();
-  PixelBuffer(const std::string& name);
+  PixelBuffer(const Pathname& name);
   /** Create an empty RGBA PixelBuffer */
   PixelBuffer(int width, int height);
 

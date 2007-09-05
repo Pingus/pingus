@@ -234,7 +234,7 @@ EditorViewport::draw(DrawingContext &gc)
   if (current_action == HIGHLIGHTING)
     gc.draw_rect((float)highlighted_area.left, (float)highlighted_area.top, 
                  (float)highlighted_area.right, (float)highlighted_area.bottom, 
-                 Color(255,255,255,150));
+                 Color(255,0,255));
 
   state.pop(*scene_context);
   gc.draw(new SceneContextDrawingRequest(scene_context, Vector3f(0, 0, -150)));

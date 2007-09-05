@@ -33,7 +33,7 @@ private:
   float scrolly;
 
 public:
-  FontTestScreen(const std::string& fontfile);
+  FontTestScreen(const Pathname& fontfile);
 
   bool draw(DrawingContext& gc);
   void update (const GameDelta& delta);

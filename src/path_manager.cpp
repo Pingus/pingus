@@ -19,9 +19,8 @@
 
 #include "globals.hpp"
 #include "system.hpp"
-#include "path_manager.hpp"
 #include "debug.hpp"
-
+#include "path_manager.hpp"
 
 PathManager path_manager;
 
