@@ -99,7 +99,7 @@ public:
 
     if (mouse_over)
       {
-        gc.print_center(Fonts::courier_small, pos.x + 17, pos.y + 38, tooltip);
+        gc.print_center(Fonts::courier_small, pos.x + 17.f, pos.y + 38.f, tooltip);
       }
   }
 
@@ -208,9 +208,9 @@ void
 Panel::draw (DrawingContext& gc)
 {
   // FIXME: Could use draw_line
-  gc.draw_fillrect(0, 0, Display::get_width(), 38, Color(255, 255, 255));
-  gc.draw_fillrect(1, 1, Display::get_width(), 38, Color(169, 157, 140));
-  gc.draw_fillrect(1, 1, Display::get_width()-1, 37, Color(237, 233, 227));
+  gc.draw_fillrect(0, 0, float(Display::get_width()), 38, Color(255, 255, 255));
+  gc.draw_fillrect(1, 1, float(Display::get_width()), 38, Color(169, 157, 140));
+  gc.draw_fillrect(1, 1, float(Display::get_width()-1), 37, Color(237, 233, 227));
 }
 
 void

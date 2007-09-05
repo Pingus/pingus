@@ -1222,14 +1222,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\src\editor\editor_panel.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\editor\editor_panel.hpp"
-					>
-				</File>
-				<File
 					RelativePath=".\src\editor\editor_screen.cpp"
 					>
 				</File>
@@ -1246,14 +1238,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\src\editor\level_head.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\editor\level_head.hpp"
-					>
-				</File>
-				<File
 					RelativePath=".\src\editor\level_impl.hpp"
 					>
 				</File>
@@ -1266,11 +1250,11 @@
 					>
 				</File>
 				<File
-					RelativePath=".\src\editor\panel_buttons.cpp"
+					RelativePath=".\src\editor\panel.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\src\editor\panel_buttons.hpp"
+					RelativePath=".\src\editor\panel.hpp"
 					>
 				</File>
 			</Filter>
