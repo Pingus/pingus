@@ -53,6 +53,8 @@ public:
 	
   /** Add an object to the level */
   void add_object(LevelObj* obj);
+
+  Size get_size() const;
 	
   /** Return LevelImpl */
   LevelImpl* get_level_impl() { return impl; }

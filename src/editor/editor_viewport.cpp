@@ -37,7 +37,7 @@ namespace Editor {
 // Constructor
 EditorViewport::EditorViewport(EditorScreen* e) :
   state(Display::get_width(), Display::get_height()),
-  scene_context(new SceneContext()),
+  drawing_context(new DrawingContext(Rect(48, 38 + 48, Display::get_width() - 248 - 48, 600 - 48))),
   editor(e),
   autoscroll(false),
   highlighted_area(0,0,0,0),
@@ -45,15 +45,12 @@ EditorViewport::EditorViewport(EditorScreen* e) :
   snap_to(false),
   current_action(NOTHING)
 {
-  // FIXME: Hardcoded values should be determined by level size
-  state.set_limit(Rect(-30, -50, 1600, 1300));
-  state.set_pos(Vector2f(0, 0));
 }
 
 // Destructor
 EditorViewport::~EditorViewport ()
 {
-  delete scene_context;
+  delete drawing_context;
 }
 
 void
@@ -222,22 +219,22 @@ EditorViewport::on_pointer_move(int x, int y)
 void
 EditorViewport::draw(DrawingContext &gc)
 {
-  scene_context->clear();
-  state.push(*scene_context);
+  drawing_context->clear();
+  state.push(*drawing_context);
 	
   // Now, draw all of the objects
 
   // Draw the level objects
   for (unsigned i = 0; i < objs.size(); i++)
-    objs[i]->draw(scene_context->color());
+    objs[i]->draw(*drawing_context);
 
   if (current_action == HIGHLIGHTING)
     gc.draw_rect((float)highlighted_area.left, (float)highlighted_area.top, 
                  (float)highlighted_area.right, (float)highlighted_area.bottom, 
                  Color(255,0,255));
 
-  state.pop(*scene_context);
-  gc.draw(new SceneContextDrawingRequest(scene_context, Vector3f(0, 0, -150)));
+  state.pop(*drawing_context);
+  gc.draw(*drawing_context, -150);
 }
 
 // Returns true if the viewport is at the x,y coordinate
@@ -306,6 +303,10 @@ void
 EditorViewport::refresh()
 {
   objs = editor->get_level()->get_objects();
+  //state.set_limit(Rect(Vector2i(0, 0), editor->get_level()->get_size()));
+  std::cout << editor->get_level()->get_size().width << ", "
+            << editor->get_level()->get_size().height 
+            << std::endl;
 }
 
 void 

@@ -109,7 +109,6 @@ EditorScreen::save(const std::string &file)
 {
   close_dialog = true;
   plf->save_level(file);
-  //panel->set_selected_button(0);
 }
 
 // Load a new level
@@ -119,7 +118,6 @@ EditorScreen::load(const Pathname& file)
   close_dialog = true;
   plf->load_level(file);
   viewport->refresh();
-  //panel->set_selected_button(0);
 }
 
 // Draw the background and components

@@ -185,7 +185,8 @@ DrawingContext::DrawingContext(const Rect& rect_, bool clip)
 }
 
 DrawingContext::DrawingContext()
-  : rect(0, 0, Display::get_width(), Display::get_height())
+  : rect(0, 0, Display::get_width(), Display::get_height()),
+    do_clipping(false)
 {
   translate_stack.push_back(Vector3f(0, 0));
 }
@@ -193,14 +194,14 @@ DrawingContext::DrawingContext()
 DrawingContext::~DrawingContext()
 {
   if (drawingrequests.size() > 0) 
-		clear();
+    clear();
 }
 
 void
 DrawingContext::render(SDL_Surface* screen, const Rect& parent_rect)
 {
   Rect this_rect(Math::max(rect.left   + parent_rect.left, parent_rect.left),
-                 Math::max(rect.top    + parent_rect.top,  parent_rect.left),
+                 Math::max(rect.top    + parent_rect.top,  parent_rect.top),
                  Math::min(rect.right  + parent_rect.left, parent_rect.right),
                  Math::min(rect.bottom + parent_rect.top,  parent_rect.bottom));
 

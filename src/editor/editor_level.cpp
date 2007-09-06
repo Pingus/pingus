@@ -29,21 +29,27 @@
 #include "../sexpr_file_writer.hpp"
 
 namespace Editor {
-
+
 // Default constructor
 EditorLevel::EditorLevel() :
   impl(new LevelImpl())
 {
 
 }
-
+
 // Default Destructor
 EditorLevel::~EditorLevel()
 {
   if (impl)
     delete impl;
 }
-
+
+Size
+EditorLevel::get_size() const
+{
+  return impl->size;
+}
+
 /** Verify that level is valid:
     Level should contain the following attributes in order to be "valid":
     -----------
@@ -64,7 +70,7 @@ bool EditorLevel::is_valid()
   else
     return false;
 }
-
+
 // Save the level to a file.  Returns true if successful
 bool EditorLevel::save_level(const std::string& filename)
 {
@@ -117,7 +123,7 @@ bool EditorLevel::save_level(const std::string& filename)
 
   return true;
 }
-
+
 // Load an existing level from a file
 void EditorLevel::load_level(const Pathname& pathname)
 {
@@ -126,33 +132,33 @@ void EditorLevel::load_level(const Pathname& pathname)
   impl = new LevelImpl();
 
   // Load the level from the file - we don't care what it's res_name is.
-  PingusLevel existing_level(pathname);
+  PingusLevel level(pathname);
 	
   // Assign all of the level information to our LevelImpl
-  impl->levelname        = existing_level.get_levelname();
-  impl->description      = existing_level.get_description();
-  impl->ambient_light    = existing_level.get_ambient_light();
-  impl->size             = existing_level.get_size();
-  impl->number_of_pingus = existing_level.get_number_of_pingus();
-  impl->number_to_save   = existing_level.get_number_to_save();
-  impl->actions          = existing_level.get_actions();
-  impl->time             = existing_level.get_time();
-  impl->difficulty       = existing_level.get_difficulty();
-  impl->author           = existing_level.get_author();
-  impl->music            = existing_level.get_music();
+  impl->levelname        = level.get_levelname();
+  impl->description      = level.get_description();
+  impl->ambient_light    = level.get_ambient_light();
+  impl->size             = level.get_size();
+  impl->number_of_pingus = level.get_number_of_pingus();
+  impl->number_to_save   = level.get_number_to_save();
+  impl->actions          = level.get_actions();
+  impl->time             = level.get_time();
+  impl->difficulty       = level.get_difficulty();
+  impl->author           = level.get_author();
+  impl->music            = level.get_music();
 	
   // Temporary objects
   unsigned attribs;
   Vector3f p;
-  Color tmp_color;
+  Color    tmp_color;
   ResDescriptor desc;
-  std::string tmp_str;
-  int tmp_int;
+  std::string   tmp_str;
+  int   tmp_int;
   float tmp_float;
-  bool tmp_bool;
+  bool  tmp_bool;
 
   // Get the objects
-  std::vector<FileReader> objs = existing_level.get_objects();
+  std::vector<FileReader> objs = level.get_objects();
   for (std::vector<FileReader>::const_iterator i = objs.begin(); i != objs.end(); i++)
     {
       // Create new object
@@ -240,13 +246,13 @@ void EditorLevel::load_level(const Pathname& pathname)
   // Sort by Z coordinate
   impl->sort_objs();
 }
-
+
 void
 EditorLevel::add_object(LevelObj* obj)
 {
   impl->objects.push_back(obj);
 }
-
-}	// Editor namespace
+
+} // namespace Editor
 
 /* EOF */

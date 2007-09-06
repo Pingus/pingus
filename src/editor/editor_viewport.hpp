@@ -44,7 +44,7 @@ class EditorViewport : public GUI::Component
 {
 private:	
   GraphicContextState state;
-  SceneContext* scene_context;
+  DrawingContext* drawing_context;
 
   /** The EditorScreen to which this viewport belongs */
   EditorScreen* editor;
