@@ -20,6 +20,8 @@
 #ifndef HEADER_VECTOR2_HPP
 #define HEADER_VECTOR2_HPP
 
+class Vector2f;
+
 /** */
 class Vector2i
 {
@@ -29,6 +31,8 @@ public:
 
   Vector2i()
     : x(0), y(0) {}
+
+  explicit Vector2i(const Vector2f& v);
 
   Vector2i(int x_, int y_) 
     : x(x_), y(y_) {}

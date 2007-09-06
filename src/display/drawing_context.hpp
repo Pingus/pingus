@@ -110,7 +110,10 @@ public:
   void reset_modelview();
 
   /** Return the area of the screen that will be visible*/
-  Rect get_clip_rect() const;
+  Rect get_world_clip_rect() const;
+
+  void set_rect(const Rect& rect);
+  Rect get_rect() const;
 
   float get_width() const;
   float get_height() const;
@@ -126,6 +129,9 @@ public:
 
   Vector3f screen_to_world (Vector3f pos);
   Vector3f world_to_screen (Vector3f pos);
+
+  Vector2i screen_to_world(const Vector2i pos);
+  Vector2i world_to_screen(const Vector2i pos);
 
 private:
   DrawingContext (const DrawingContext&);

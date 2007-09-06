@@ -360,11 +360,23 @@ DrawingContext::reset_modelview()
 }
 
 Rect
-DrawingContext::get_clip_rect() const
+DrawingContext::get_world_clip_rect() const
 {
   return Rect(Vector2i(static_cast<int>(-translate_stack.back().x),
                           static_cast<int>(-translate_stack.back().y)),
                  Size((int)get_width(), (int)get_height()));
+}
+
+void
+DrawingContext::set_rect(const Rect& rect)
+{
+  std::cout << "DrawingContext::set_rect(const Rect& rect): unimplemented" << std::endl;
+}
+
+Rect
+DrawingContext::get_rect() const
+{
+  return rect;
 }
 
 float
@@ -415,13 +427,29 @@ DrawingContext::print_right (const Font& font_, float x_pos, float y_pos, const 
 Vector3f
 DrawingContext::screen_to_world (Vector3f pos)
 {
-  return pos - Vector3f(translate_stack.back().x, translate_stack.back().y);
+  return pos - Vector3f(translate_stack.back().x + rect.left,
+                        translate_stack.back().y + rect.top);
 }
 
 Vector3f
 DrawingContext::world_to_screen (Vector3f pos)
 {
-  return pos + Vector3f(translate_stack.back().x, translate_stack.back().y);
+  return pos + Vector3f(translate_stack.back().x + rect.left, 
+                        translate_stack.back().y + rect.top);
+}
+
+Vector2i
+DrawingContext::screen_to_world(const Vector2i pos)
+{
+  return pos - Vector2i(int(translate_stack.back().x + rect.left), 
+                        int(translate_stack.back().y + rect.top));
+}
+
+Vector2i
+DrawingContext::world_to_screen(const Vector2i pos)
+{
+  return pos + Vector2i(int(translate_stack.back().x + rect.left), 
+                        int(translate_stack.back().y + rect.top));
 }
 
 /* EOF */

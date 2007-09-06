@@ -17,7 +17,12 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include "vector2f.hpp"
 #include "vector2i.hpp"
+
+Vector2i::Vector2i(const Vector2f& v)
+  : x(int(v.x)), y(int(v.y))
+{}
 
 Vector2i
 Vector2i::operator+ (const Vector2i& add) const

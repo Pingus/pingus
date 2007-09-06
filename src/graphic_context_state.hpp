@@ -80,7 +80,7 @@ public:
 
   void zoom_to (const Rectf& rect);
 
-  Vector2f screen2world(const Vector2i& pos);
+  Vector2f screen2world(const Vector2i& pos) const;
 
 private:
   boost::shared_ptr<GraphicContextStateImpl> impl;

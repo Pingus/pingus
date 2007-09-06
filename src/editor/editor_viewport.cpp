@@ -54,42 +54,48 @@ EditorViewport::~EditorViewport ()
 }
 
 void
-EditorViewport::on_secondary_button_press(int x, int y)
+EditorViewport::on_secondary_button_press(int x_, int y_)
 {
+  mouse_world_pos = screen2world(x_, y_);
+  mouse_screen_pos = Vector2i(x_, y_);
+
   if (current_action == NOTHING)
     {
-      drag_start_pos = mouse_at;  
+      drag_screen_pos = mouse_screen_pos;  
       current_action = SCROLLING;
     }
 }
 
 void
-EditorViewport::on_secondary_button_release(int x, int y)
+EditorViewport::on_secondary_button_release(int x_, int y_)
 {
+  mouse_world_pos = screen2world(x_, y_);
+  mouse_screen_pos = Vector2i(x_, y_);
+
   if (current_action == SCROLLING)
     current_action = NOTHING;
 }
 
 // When someone right-clicks inside the viewport
 void
-EditorViewport::on_secondary_button_click(int x, int y)
+EditorViewport::on_secondary_button_click(int x_, int y_)
 {
+  mouse_world_pos = screen2world(x_, y_);
+  mouse_screen_pos = Vector2i(x_, y_);
+  
   if (0) // old context menu code
     {
       remove_context_menu();
 
-      Vector3f mouse_pos(x - (state.get_width()/2 - state.get_pos().x),
-                         y - (state.get_height()/2 - state.get_pos().y));
+      //Vector3f mouse_pos(x - (state.get_width()/2  - state.get_pos().x),
+      //                   y - (state.get_height()/2 - state.get_pos().y));
 
-      std::cout << "Right-click at " << mouse_pos.x << ", " 
-                << mouse_pos.y << std::endl;
-	
       //	LevelObj* obj = object_at((int)mouse_pos.x, (int)mouse_pos.y);
       if (!selected_objs.empty())
         {
           //	std::vector<LevelObj*> objs;
           //	objs.push_back(obj);
-          context_menu = new ContextMenu(selected_objs, Vector3f((float)x, (float)y), this);
+          context_menu = new ContextMenu(selected_objs, Vector3f((float)x_, (float)y_), this);
           editor->get_gui_manager()->add(context_menu, true);
         }
     }
@@ -97,14 +103,16 @@ EditorViewport::on_secondary_button_click(int x, int y)
 
 // Select 1 or more LevelObjs, or drag them.
 void 
-EditorViewport::on_primary_button_press(int x, int y)
+EditorViewport::on_primary_button_press(int x_, int y_)
 {
+  mouse_world_pos  = screen2world(x_, y_);
+  mouse_screen_pos = Vector2i(x_, y_);
+  
   remove_context_menu();
 
   if (current_action == NOTHING)
     {
-      LevelObj* obj = object_at(x - (state.get_width()/2 - (int)state.get_pos().x),
-                                y - (state.get_height()/2 - (int)state.get_pos().y));
+      LevelObj* obj = object_at(mouse_world_pos.x, mouse_world_pos.y);
 
       if (obj)
         {
@@ -117,39 +125,34 @@ EditorViewport::on_primary_button_press(int x, int y)
               obj->select();
               selected_objs.push_back(obj);
             }
+
           // Allow dragging of the currently selected objects
           current_action = DRAGGING;
-          drag_start_pos = mouse_at_world;
+          drag_world_pos = mouse_world_pos;
         }
       else
         {
           selected_objs.clear();
           current_action = HIGHLIGHTING;
-          highlighted_area.left = highlighted_area.right = x;
-          highlighted_area.top = highlighted_area.bottom = y;
+          highlighted_area.left = highlighted_area.right  = mouse_world_pos.x;
+          highlighted_area.top  = highlighted_area.bottom = mouse_world_pos.y;
         }
     }
 }
 
 void 
-EditorViewport::on_primary_button_release(int x, int y)
+EditorViewport::on_primary_button_release(int x_, int y_)
 {
+  mouse_world_pos = screen2world(x_, y_);
+  mouse_screen_pos = Vector2i(x_, y_);
+
   if (current_action == HIGHLIGHTING)
     {
-      // Make sure CL_Rect starts at the top left
-      if (highlighted_area.right < highlighted_area.left)
-        std::swap(highlighted_area.left, highlighted_area.right);
-      if (highlighted_area.bottom < highlighted_area.top)
-        std::swap(highlighted_area.top, highlighted_area.bottom);
-
+      highlighted_area.normalize();
       for (unsigned i = 0; i < objs.size(); i++)
         {
-          // Calculate the object's position
-          Vector2i obj_pos((int)objs[i]->get_pos().x + (state.get_width()/2 - 
-                                                        (int)state.get_pos().x), (int)objs[i]->get_pos().y + (state.get_height()/2 - 
-                                                                                                              (int)state.get_pos().y));
-			
-          if (highlighted_area.is_inside(obj_pos))
+          if (highlighted_area.is_inside(Vector2i(int(objs[i]->get_pos().x),
+                                                  int(objs[i]->get_pos().y))))
             {
               selected_objs.push_back(objs[i]);
               objs[i]->select();
@@ -168,17 +171,16 @@ EditorViewport::on_primary_button_release(int x, int y)
 }
 
 void
-EditorViewport::on_pointer_move(int x, int y)
+EditorViewport::on_pointer_move(int x_, int y_)
 {
-  mouse_at = Vector2f(float(x), float(y));
-  mouse_at_world = Vector2f(x - (state.get_width()/2 - state.get_pos().x),
-                            y - (state.get_height()/2 - state.get_pos().y));
-
+  mouse_world_pos = screen2world(x_, y_);
+  mouse_screen_pos = Vector2i(x_, y_);
+  
   switch(current_action)
     {
       case HIGHLIGHTING:
-        highlighted_area.right  = x;
-        highlighted_area.bottom = y;
+        highlighted_area.right  = mouse_world_pos.x;
+        highlighted_area.bottom = mouse_world_pos.y;
         break;
         
       case DRAGGING:
@@ -188,8 +190,8 @@ EditorViewport::on_pointer_move(int x, int y)
           for (unsigned i = 0; i < selected_objs.size(); i++)
             {
               Vector3f orig_pos(selected_objs[i]->get_orig_pos());
-              float x_offset = mouse_at_world.x - drag_start_pos.x;
-              float y_offset = mouse_at_world.y - drag_start_pos.y;
+              float x_offset = mouse_world_pos.x - drag_world_pos.x;
+              float y_offset = mouse_world_pos.y - drag_world_pos.y;
 
               if (snap_to)
                 {
@@ -222,17 +224,15 @@ EditorViewport::draw(DrawingContext &gc)
   drawing_context->clear();
   state.push(*drawing_context);
 	
-  // Now, draw all of the objects
-
   // Draw the level objects
   for (unsigned i = 0; i < objs.size(); i++)
     objs[i]->draw(*drawing_context);
 
   if (current_action == HIGHLIGHTING)
-    gc.draw_rect((float)highlighted_area.left, (float)highlighted_area.top, 
-                 (float)highlighted_area.right, (float)highlighted_area.bottom, 
-                 Color(255,0,255));
-
+    drawing_context->draw_rect((float)highlighted_area.left, (float)highlighted_area.top, 
+                               (float)highlighted_area.right, (float)highlighted_area.bottom, 
+                               Color(255,0,255), 1000.0f);
+  
   state.pop(*drawing_context);
   gc.draw(*drawing_context, -150);
 }
@@ -241,10 +241,7 @@ EditorViewport::draw(DrawingContext &gc)
 bool
 EditorViewport::is_at(int x, int y)
 {
-  if (y >= 38) // FIXME: Could be done more flexible
-    return true;
-  else 
-    return false;
+  return drawing_context->get_rect().is_inside(Vector2i(x,y));
 }
 
 void
@@ -253,7 +250,7 @@ EditorViewport::update(float delta)
   UNUSED_ARG(delta);
 
   if (current_action == SCROLLING)
-    state.set_pos(state.get_pos() + (mouse_at - drag_start_pos) * delta * 5.0f);
+    state.set_pos(state.get_pos() + Vector2f(mouse_screen_pos - drag_screen_pos) * delta * 5.0f);
 
   // Autoscroll if necessary
   if (autoscroll)
@@ -261,13 +258,13 @@ EditorViewport::update(float delta)
       const int autoscroll_border = 10;
       if (autoscroll)
         {
-          if (mouse_at.x < autoscroll_border)
+          if (mouse_screen_pos.x < autoscroll_border)
             state.set_pos(state.get_pos() - Vector2f(5, 0));
-          else if ((float)Display::get_width() - mouse_at.x < autoscroll_border)
+          else if ((float)Display::get_width() - mouse_screen_pos.x < autoscroll_border)
             state.set_pos(state.get_pos() + Vector2f(5, 0));
-          else if (mouse_at.y < autoscroll_border)
+          else if (mouse_screen_pos.y < autoscroll_border)
             state.set_pos(state.get_pos() - Vector2f(0, 5));
-          else if ((float)Display::get_height() - mouse_at.y < autoscroll_border)
+          else if ((float)Display::get_height() - mouse_screen_pos.y < autoscroll_border)
             state.set_pos(state.get_pos() + Vector2f(0, 5));
         }
     }
@@ -281,7 +278,7 @@ EditorViewport::object_at (int x, int y)
   for (std::vector<LevelObj*>::reverse_iterator i = objs.rbegin ();
        i != objs.rend (); ++i)
     {
-      if ((*i)->is_at (x, y))
+      if ((*i)->is_at(x, y))
         return *i;
     }
   return 0;
@@ -358,6 +355,12 @@ EditorViewport::rotate_270_selected_objects()
     {
       (*i)->set_modifier(ResourceModifierNS::rotate_270((*i)->get_modifier()));
     }  
+}
+
+Vector2i
+EditorViewport::screen2world(int x, int y) const
+{
+  return Vector2i(state.screen2world(drawing_context->screen_to_world(Vector2i(x, y))));
 }
 
 } // Editor namespace

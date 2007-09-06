@@ -53,13 +53,12 @@ private:
   bool autoscroll;
 
   /** Where the mouse is right now - used for autoscrolling */
-  Vector2f mouse_at;
-
-  /** Where the mouse is at in relation to the world/level */
-  Vector2f mouse_at_world;
+  Vector2i mouse_world_pos;
+  Vector2i mouse_screen_pos;
 
   /** Where the mouse started dragging from */
-  Vector2f drag_start_pos;
+  Vector2i drag_world_pos;
+  Vector2i drag_screen_pos;
 
   /** All objects in the level */
   std::vector<LevelObj*> objs;
@@ -134,6 +133,7 @@ public:
   void rotate_90_selected_objects();
   void rotate_270_selected_objects();
 
+  Vector2i screen2world(int x, int y) const;
 private:
   EditorViewport();
   EditorViewport (const EditorViewport&);

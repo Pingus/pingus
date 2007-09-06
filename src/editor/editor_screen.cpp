@@ -125,7 +125,7 @@ bool
 EditorScreen::draw(DrawingContext& gc)
 {
   // Black out screen
-  gc.fill_screen(Color(0,0,0));
+  gc.fill_screen(Color(255,0,255));
   gui_manager->draw(gc);
   
   if (show_help)

@@ -114,7 +114,7 @@ GroundMap::draw_colmap(SceneContext& gc)
 void
 GroundMap::draw(SceneContext& gc)
 {
-  const Rect& display = gc.color().get_clip_rect();
+  const Rect& display = gc.color().get_world_clip_rect();
 
   // FIXME: delete the next four lines and replace them with gc.get_clip_rect()
   if (draw_collision_map)

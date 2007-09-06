@@ -222,7 +222,7 @@ GraphicContextState::zoom_to (const Rectf& rect)
 }
 
 Vector2f
-GraphicContextState::screen2world(const Vector2i& pos_)
+GraphicContextState::screen2world(const Vector2i& pos_) const
 {
   Vector2f pos(float(pos_.x - impl->rect.left),
                float(pos_.y - impl->rect.top));
