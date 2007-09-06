@@ -30,6 +30,9 @@
 #include "display/drawing_context.hpp"
 #include "fonts.hpp"
 #include "math.hpp"
+#include "editor_viewport.hpp"
+#include "editor_level.hpp"
+#include "level_objs.hpp"
 #include "display/drawing_context.hpp"
 #include "gui/gui_manager.hpp"
 #include "object_selector.hpp"
@@ -285,10 +288,14 @@ ObjectSelector::on_primary_button_release (int x, int y)
   if (mode == OBJECT_DRAG)
     {
       mode = NOTHING;
-
-      //LevelObj* obj = new LevelObj();
-      // find out mouse_co in the level
-      //editor->add_object(obj);
+      
+      if (current_object != -1)
+        {
+          LevelObj* obj = new LevelObj("groundpiece", editor->get_level()->get_level_impl());
+          obj->set_res_desc(objects[current_object].desc);
+          obj->set_pos(editor->get_viewport()->screen2world(x,y));
+          editor->add_object(obj);
+        }
     }
 }
 
@@ -342,7 +349,9 @@ ObjectSelector::set_objects(const std::string& prefix)
       Sprite sprite = Resource::load_sprite(*i);
       //sprite.scale(48, 48);
       // need to reset the align to top/left
-      objects.push_back(Object(sprite));
+      Object obj(sprite);
+      obj.desc = ResDescriptor(*i);
+      objects.push_back(obj);
     }
 }
 

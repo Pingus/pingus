@@ -36,7 +36,10 @@ namespace Editor {
 
 // Constructor
 EditorViewport::EditorViewport(EditorScreen* e) 
-  : rect(48, 38 + 48, Display::get_width() - 248 - 48, 600 - 48),
+  : rect(0,
+         38,
+         Display::get_width() - 244, 
+         600),
     state(rect.get_width(), rect.get_height()),
     drawing_context(new DrawingContext(rect)),
     editor(e),

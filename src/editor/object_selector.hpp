@@ -27,7 +27,7 @@
 #define HEADER_OBJECT_SELECTOR_HPP
 
 #include "gui/component.hpp"
-
+#include "res_descriptor.hpp"
 class DrawingContext;
 
 namespace Editor {
@@ -53,8 +53,8 @@ private:
 
   struct Object 
   {
-    Sprite sprite;
-    // add meta-info to track object type
+    Sprite      sprite;
+    ResDescriptor desc;
 
     Object(const Sprite& sprite_) 
       : sprite(sprite_)
