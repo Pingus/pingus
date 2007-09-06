@@ -79,7 +79,13 @@ public:
 
     if (mouse_over)
       {
-        gc.print_center(Fonts::courier_small, pos.x + 17.f, pos.y + 38.f, tooltip, 1000);
+        Rect rect(int(gc.get_width()) - 244,  38,
+                  int(gc.get_width()),        int(gc.get_height()));
+        
+        gc.print_left(Fonts::courier_small,
+                      //pos.x + 17.f, pos.y + 38.f,
+                      rect.left+2 + 2, rect.top+2 + 62 + 2,
+                      tooltip, 1000);
       }
   }
 
@@ -125,7 +131,7 @@ public:
 
 ObjectSelector::ObjectSelector(EditorScreen* editor_)
   : editor(editor_),
-    button_pos(Display::get_width() - 240,  38)
+    button_pos(Display::get_width() - 242,  40)
 {
   editor->get_gui_manager()->add(this, true);
   
@@ -153,9 +159,29 @@ ObjectSelector::~ObjectSelector()
 void
 ObjectSelector::draw(DrawingContext& gc)
 {
-  gc.draw_fillrect(gc.get_width() - 240,  38,
-                   gc.get_width(),        gc.get_height(),
-                   Color(255, 255, 0));
+  Rect rect(int(gc.get_width()) - 244,  38,
+            int(gc.get_width()),        int(gc.get_height()));
+
+  // FIXME: Should use draw_line
+  gc.draw_fillrect(rect.left, rect.top, rect.right, rect.bottom,
+                   Color(255, 255, 255));
+
+  gc.draw_fillrect(rect.left+1, rect.top+1, rect.right, rect.bottom,
+                   Color(169, 157, 140));
+                   
+  gc.draw_fillrect(rect.left+1, rect.top+1, rect.right-1, rect.bottom-1,
+                   Color(237, 233, 227));
+
+  gc.draw_fillrect(rect.left+2, rect.top+2 + 62, rect.right-2, rect.bottom-2,
+                   Color(0,0,0));
+
+  for(int y = 0; y < 10; ++y)
+    for(int x = 0; x < 5; ++x)
+      {
+        gc.draw_fillrect(rect.left+2 + x * 48,      rect.top+2 + 62 + y * 48, 
+                         rect.left+2 + x * 48 + 48, rect.top+2 + 62 + y * 48 + 48, 
+                         (((x-(y%2)) % 2) ? Color(0,0,0) : Color(100,100,100)));
+      }
 }
 
 void
