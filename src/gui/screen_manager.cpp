@@ -127,7 +127,8 @@ ScreenManager::display()
       	{
 	  if (get_current_screen()->draw(*display_gc))
             {
-              display_gc->render(Display::get_screen());
+              display_gc->render(Display::get_screen(), Rect(Vector2i(0,0), Size(Display::get_width(),
+                                                                                     Display::get_height())));
               Display::flip_display ();
               display_gc->clear();
             }
@@ -260,14 +261,16 @@ ScreenManager::fade_over (ScreenPtr& old_screen, ScreenPtr& new_screen)
       int border_y = int((Display::get_height()/2) * (1.0f - progress));
 
       old_screen->draw(*display_gc);
-      display_gc->render(Display::get_screen());
+      display_gc->render(Display::get_screen(), Rect(Vector2i(0,0), Size(Display::get_width(),
+                                                                         Display::get_height())));
       display_gc->clear();
       
       Display::push_cliprect(Rect(Vector2i(0 + border_x, 0 + border_y),
                                   Size(screen_width  - 2*border_x, screen_height - 2*border_y)));
 
       new_screen->draw(*display_gc);
-      display_gc->render(Display::get_screen());
+      display_gc->render(Display::get_screen(), Rect(Vector2i(0,0), Size(Display::get_width(),
+                                                                         Display::get_height())));
       display_gc->clear();
 
       //GameDelta delta (time_delta, CL_System::get_time(), events);

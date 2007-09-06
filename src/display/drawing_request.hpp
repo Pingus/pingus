@@ -22,6 +22,7 @@
 
 #include "SDL.h"
 #include "math/vector3f.hpp"
+#include "math/rect.hpp"
 
 /** 
  */
@@ -34,7 +35,7 @@ public:
   DrawingRequest(const Vector3f& pos_) : pos(pos_) {}
   virtual ~DrawingRequest() {};
   
-  virtual void draw(SDL_Surface* gc) = 0;
+  virtual void render(SDL_Surface* gc, const Rect& rect) = 0;
   
   /** Returns true if the request contains an alpha channel and needs
       to be drawn in order */

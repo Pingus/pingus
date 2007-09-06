@@ -46,12 +46,18 @@ private:
 
   std::vector<Vector3f> translate_stack;
 
+  /** The rectangle that the DrawingContext uses on the screen */
+  Rect rect;
+
+  bool do_clipping;
+
 public:
   DrawingContext();
+  DrawingContext(const Rect& rect, bool clip = true);
   virtual ~DrawingContext();
 
   /** Draws everything in the drawing context to the screen */
-  void render(SDL_Surface* screen);
+  void render(SDL_Surface* screen, const Rect& rect);
 
   /** Empties the drawing context */
   void clear();
@@ -72,8 +78,6 @@ public:
       clear() in that it doesn't remove other DrawingRequest from the
       queue */
   void fill_screen(const Color& color);
-
-  void draw(const std::string& text,    float x, float y, float z = 0);
 
   void draw_line (float x1, float y1, float x2, float y2, 
 		  const Color& color, float z = 0);

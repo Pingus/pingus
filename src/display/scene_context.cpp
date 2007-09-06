@@ -29,6 +29,7 @@ public:
   DrawingContext color;
   DrawingContext light;
   DrawingContext highlight; 
+
   Rect cliprect;
   bool use_cliprect;
 
@@ -36,11 +37,24 @@ public:
     : use_cliprect(false)
   {
   }
+
+  SceneContextImpl(const Rect& rect) 
+    : color(rect),
+      light(rect),
+      highlight(rect),
+      use_cliprect(false)
+  {
+  }
 };
 
 SceneContext::SceneContext()
 {
   impl = new SceneContextImpl();
+}
+
+SceneContext::SceneContext(const Rect& rect)
+{
+  impl = new SceneContextImpl(rect);
 }
 
 SceneContext::~SceneContext()
@@ -132,19 +146,19 @@ SceneContext::reset_cliprect()
 }
 
 void
-SceneContext::render(SDL_Surface* target)
+SceneContext::render(SDL_Surface* target, const Rect& rect)
 {
   // Render all buffers
   // FIXME: Render all to pbuffer for later combining of them
   if (impl->use_cliprect)
     {
       Display::push_cliprect(impl->cliprect);
-      impl->color.render(target);
+      impl->color.render(target, rect);
       Display::pop_cliprect();
     }
   else
     {
-      impl->color.render(target);
+      impl->color.render(target, rect);
     }
   
 #if 0
@@ -161,7 +175,7 @@ SceneContext::render(SDL_Surface* target)
     }
 #endif
 
-  impl->highlight.render(target);
+    impl->highlight.render(target, rect);
 }
 
 void
@@ -184,9 +198,9 @@ SceneContextDrawingRequest::~SceneContextDrawingRequest()
 }
 
 void
-SceneContextDrawingRequest::draw(SDL_Surface* gc) 
+SceneContextDrawingRequest::render(SDL_Surface* gc, const Rect& rect) 
 {
-  sc->render(gc);
+  sc->render(gc, rect);
 }
 
 

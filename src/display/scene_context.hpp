@@ -33,6 +33,7 @@ class SceneContext
 {
 public:
   SceneContext();
+  SceneContext(const Rect& rect);
   ~SceneContext();
   
   /** The main drawing context, also known as color buffer, to this
@@ -73,7 +74,7 @@ public:
 
   /** Takes all the buffers and combines them to form the final image
       that will be shown on the screen */
-  void render(SDL_Surface* gc);
+  void render(SDL_Surface* gc, const Rect& rect);
 
   void clear();
 private:
@@ -91,7 +92,7 @@ private:
 public:
   SceneContextDrawingRequest(SceneContext* sc, const Vector3f& pos_ = Vector3f(0,0,0));
   virtual ~SceneContextDrawingRequest();
-  void draw(SDL_Surface* gc);
+  void render(SDL_Surface* gc, const Rect& render);
 };
 
 

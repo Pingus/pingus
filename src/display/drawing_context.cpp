@@ -27,14 +27,14 @@
 #include "../font.hpp"
 #include "../math/origin.hpp"
 
-
+
 struct DrawingRequestsSorter
 {
   bool operator()(DrawingRequest* a, DrawingRequest* b) {
     return a->get_z_pos() < b->get_z_pos();
   }
 };
-
+
 class FontDrawingRequest : public DrawingRequest
 {
 private:
@@ -54,11 +54,11 @@ public:
 
   virtual ~FontDrawingRequest() {}
 
-  void draw(SDL_Surface* target) {
-    font.draw(origin, static_cast<int>(pos.x), static_cast<int>(pos.y), text, target);
+  void render(SDL_Surface* target, const Rect& rect) {
+    font.draw(origin, static_cast<int>(pos.x + rect.left), static_cast<int>(pos.y + rect.top), text, target);
   }
 };
-
+
 class SpriteDrawingRequest : public DrawingRequest
 {
 private:
@@ -73,11 +73,11 @@ public:
 
   virtual ~SpriteDrawingRequest() {}
 
-  void draw(SDL_Surface* target) {
-    sprite.draw(pos.x, pos.y, target);
+  void render(SDL_Surface* target, const Rect& rect) {
+    sprite.draw(pos.x + rect.left, pos.y + rect.top, target);
   }
 };
-
+
 class FillScreenDrawingRequest : public DrawingRequest
 {
 private:
@@ -89,11 +89,16 @@ public:
   }
   virtual ~FillScreenDrawingRequest() {}
 
-  void draw(SDL_Surface* target) {
-    SDL_FillRect(target, NULL, SDL_MapRGB(target->format, color.r, color.g, color.b));
+  void render(SDL_Surface* target, const Rect& rect) {
+    SDL_Rect r;
+    r.x = rect.left;
+    r.y = rect.top;
+    r.w = rect.get_width();
+    r.h = rect.get_height();
+    SDL_FillRect(target, &r, SDL_MapRGB(target->format, color.r, color.g, color.b));
   }
 };
-
+
 class LineDrawingRequest : public DrawingRequest
 {
 private:
@@ -113,54 +118,45 @@ public:
   {
   }
 
-  void draw(SDL_Surface* target)
+  void render(SDL_Surface* target, const Rect& rect)
   {
-    Display::draw_line(pos1, pos2, color);
+    Display::draw_line(pos1 + Vector2i(rect.left, rect.top),
+                       pos2 + Vector2i(rect.left, rect.top), color);
   }
 };
-
+
 class RectDrawingRequest : public DrawingRequest
 {
 private:
-  Rect  rect;
+  Rect  d_rect;
   Color color;
   bool  filled;
   
 public:
   RectDrawingRequest(const Rect& rect_, const Color& color_, bool filled_, float z)
-    : DrawingRequest(Vector3f((float)rect.left, (float)rect.top, z)),
-      rect(rect_), color(color_), filled(filled_)
+    : DrawingRequest(Vector3f(0,0)),
+      d_rect(rect_), color(color_), filled(filled_)
   {}
   
-  void draw(SDL_Surface* target)
+  void render(SDL_Surface* target, const Rect& rect)
   {
     if (filled)
       {
-        Display::fill_rect(rect, color);
+        Display::fill_rect(Rect(Vector2i(d_rect.left + rect.left, 
+                                         d_rect.top  + rect.top),
+                                d_rect.get_size()), 
+                           color);
       }
     else
       {
-        Display::draw_rect(rect, color);
+        Display::draw_rect(Rect(Vector2i(d_rect.left + rect.left, 
+                                         d_rect.top  + rect.top),
+                                d_rect.get_size()), 
+                           color);
       }
   }
 };
-
-class TextDrawingRequest : public DrawingRequest
-{
-private:
-  std::string text;
-public:
-  TextDrawingRequest(const std::string& text_, const Vector3f& pos_)
-    : DrawingRequest(pos_),
-      text(text_)
-  {}
-  virtual ~TextDrawingRequest() {}
-
-  void draw(SDL_Surface* target) {
-    // FIXME: not implemented
-  }
-};
-
+
 class DrawingContextDrawingRequest : public DrawingRequest
 {
 private:
@@ -177,12 +173,20 @@ public:
     delete dc;
   }
 
-  void draw(SDL_Surface* screen) {
-    dc->render(screen);
+  void render(SDL_Surface* target, const Rect& rect) {
+    dc->render(target, rect);
   }
 };
+
+DrawingContext::DrawingContext(const Rect& rect_, bool clip)
+  : rect(rect_),
+    do_clipping(clip)
+{
+  
+}
 
 DrawingContext::DrawingContext()
+  : rect(0, 0, Display::get_width(), Display::get_height())
 {
   translate_stack.push_back(Vector3f(0, 0));
 }
@@ -194,8 +198,16 @@ DrawingContext::~DrawingContext()
 }
 
 void
-DrawingContext::render(SDL_Surface* screen)
+DrawingContext::render(SDL_Surface* screen, const Rect& parent_rect)
 {
+  Rect this_rect(Math::max(rect.left   + parent_rect.left, parent_rect.left),
+                 Math::max(rect.top    + parent_rect.top,  parent_rect.left),
+                 Math::min(rect.right  + parent_rect.left, parent_rect.right),
+                 Math::min(rect.bottom + parent_rect.top,  parent_rect.bottom));
+
+  if (do_clipping) 
+    Display::push_cliprect(this_rect);
+
   std::stable_sort(drawingrequests.begin(), drawingrequests.end(), DrawingRequestsSorter());
   
   if (0)
@@ -208,8 +220,11 @@ DrawingContext::render(SDL_Surface* screen)
   for(DrawingRequests::iterator i = drawingrequests.begin(); i != drawingrequests.end(); ++i)
     {
       //std::cout << this << ": " << (*i)->get_z_pos() << std::endl;
-      (*i)->draw(screen);
+      (*i)->render(screen, this_rect); // FIXME: Should we clip size against parent rect?
     }
+
+  if (do_clipping) 
+    Display::pop_cliprect();
 }
 
 void
@@ -247,12 +262,6 @@ DrawingContext::draw(const Sprite&   sprite,  float x, float y, float z)
   draw(new SpriteDrawingRequest(sprite, Vector3f((int)translate_stack.back().x + x,
                                                  (int)translate_stack.back().y + y,
                                                   z)));
-}
-
-void
-DrawingContext::draw(const std::string& text, float x, float y, float z)
-{ 
-  draw(new TextDrawingRequest(text, Vector3f(x, y, z)));
 }
 
 void
@@ -357,16 +366,17 @@ DrawingContext::get_clip_rect() const
                           static_cast<int>(-translate_stack.back().y)),
                  Size((int)get_width(), (int)get_height()));
 }
+
 float
 DrawingContext::get_width() const
 {
-  return (float)Display::get_width();
+  return rect.get_width();
 }
 
 float
 DrawingContext::get_height() const
 {
-  return (float)Display::get_height();  
+  return rect.get_height();  
 }
 
 void
