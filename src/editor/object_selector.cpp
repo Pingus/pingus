@@ -29,6 +29,7 @@
 #include "editor_screen.hpp"
 #include "display/drawing_context.hpp"
 #include "fonts.hpp"
+#include "math.hpp"
 #include "display/drawing_context.hpp"
 #include "gui/gui_manager.hpp"
 #include "object_selector.hpp"
@@ -85,7 +86,8 @@ public:
         
         gc.print_left(Fonts::courier_small,
                       //pos.x + 17.f, pos.y + 38.f,
-                      rect.left+2 + 2, rect.top+2 + 62 + 2,
+                      rect.left+2 + 2, 
+                      rect.top+2 + 62 + 2,
                       tooltip, 1000);
       }
   }
@@ -138,7 +140,9 @@ ObjectSelector::ObjectSelector(EditorScreen* editor_)
     drawing_context(new DrawingContext(rect)),
     offset(0),
     old_offset(0),
-    mode(NOTHING)
+    mode(NOTHING),
+    current_object(-1),
+    drag_object(-1)
 {
   editor->get_gui_manager()->add(this, true);
   
@@ -171,13 +175,13 @@ ObjectSelector::draw(DrawingContext& parent_gc)
 
   // FIXME: Should use draw_line
   parent_gc.draw_fillrect(rect.left, rect.top, rect.right, rect.bottom,
-                   Color(255, 255, 255));
+                          Color(255, 255, 255));
 
   parent_gc.draw_fillrect(rect.left+1, rect.top+1, rect.right, rect.bottom,
-                   Color(169, 157, 140));
+                          Color(169, 157, 140));
                    
   parent_gc.draw_fillrect(rect.left+1, rect.top+1, rect.right-1, rect.bottom-1,
-                   Color(237, 233, 227));
+                          Color(237, 233, 227));
 
   DrawingContext& gc = *drawing_context;
 
@@ -191,19 +195,48 @@ ObjectSelector::draw(DrawingContext& parent_gc)
   for(int y = 0; y < 20; ++y)
     for(int x = 0; x < 5; ++x)
       {
-        gc.draw_fillrect(x * 48,      y * 48, 
-                         x * 48 + 48, y * 48 + 48, 
-                         (((x-(y%2)) % 2) ? Color(0,0,0) : Color(100,100,100)));
-
         if (i != objects.end())
           {
-            gc.draw(i->sprite, x * 48, y * 48);
+            if (current_object != -1 && (i - objects.begin()) == current_object)
+              {
+                gc.draw_fillrect(x * 48,      y * 48, 
+                                 x * 48 + 48, y * 48 + 48, 
+                                 Color(150,150,150));
+
+
+                gc.draw_rect(x * 48,      y * 48, 
+                             x * 48 + 48, y * 48 + 48, 
+                             Color(255,255,255), 10000);
+              }
+            else
+              {
+                gc.draw_fillrect(x * 48,      y * 48, 
+                                 x * 48 + 48, y * 48 + 48, 
+                                 (((x-(y%2)) % 2) ? Color(0,0,0) : Color(100,100,100)));
+                
+              }
+
+            gc.draw(i->sprite, 
+                    x * 48 + std::max(0, (48 - i->sprite.get_width())/2), 
+                    y * 48 + std::max(0, (48 - i->sprite.get_height())/2));
             ++i;
+          }
+        else
+          {
+            gc.draw_fillrect(x * 48,      y * 48, 
+                             x * 48 + 48, y * 48 + 48, 
+                             (((x-(y%2)) % 2) ? Color(0,0,0) : Color(100,100,100)));
           }
       }
   
   gc.pop_modelview();
 
+  if (mode == OBJECT_DRAG)
+    {
+      parent_gc.draw(objects[current_object].sprite, Vector3f(real_mouse_pos.x,
+                                                              real_mouse_pos.y,
+                                                              2000.0f));
+    }
   parent_gc.draw(gc);
 }
 
@@ -239,33 +272,59 @@ ObjectSelector::is_at(int x, int y)
 void
 ObjectSelector::on_primary_button_press (int x, int y)
 {
-  std::cout << "Button: " << x << " " << y << std::endl;
+  if (mode == NOTHING && current_object != -1)
+    {
+      drag_object = current_object;
+      mode = OBJECT_DRAG;
+    }
 }
 
 void
 ObjectSelector::on_primary_button_release (int x, int y)
 {
-  std::cout << "Button" << std::endl;
+  if (mode == OBJECT_DRAG)
+    {
+      mode = NOTHING;
+
+      //LevelObj* obj = new LevelObj();
+      // find out mouse_co in the level
+      //editor->add_object(obj);
+    }
 }
 
 void
 ObjectSelector::on_secondary_button_press (int x, int y)
 {
-  drag_start = Vector2i(x,y);
-  mode = SCROLLING;
-  old_offset = offset;
+  if (mode == NOTHING)
+    {
+      drag_start = Vector2i(x,y);
+      mode = SCROLLING;
+      old_offset = offset;
+    }
 }
 
 void
 ObjectSelector::on_secondary_button_release (int x, int y)
 {  
-  mode = NOTHING;
-  std::cout << "Button" << std::endl;
+  if (mode == SCROLLING)
+    mode = NOTHING;
 }
 
 void
 ObjectSelector::on_pointer_move (int x, int y)
 {
+  real_mouse_pos = Vector2i(x, y);
+  mouse_pos = Vector2i(x - rect.left, 
+                       y - rect.top);
+
+  if (mode != OBJECT_DRAG)
+    {
+      int obj_x = Math::clamp(0, mouse_pos.x / 48, 4);
+      int obj_y = Math::clamp(0, int(mouse_pos.y - offset) / 48, 200); // FIXME: 200 is placeholder
+
+      current_object = Math::clamp(-1, (obj_y * 5) + obj_x, int(objects.size()-1));
+    }
+
   if (mode == SCROLLING)
     {
       offset = old_offset + (y - drag_start.y);
@@ -281,7 +340,7 @@ ObjectSelector::set_objects(const std::string& prefix)
     {
       std::cout << "Objects: " << *i << std::endl;
       Sprite sprite = Resource::load_sprite(*i);
-      sprite.scale(48, 48);
+      //sprite.scale(48, 48);
       // need to reset the align to top/left
       objects.push_back(Object(sprite));
     }

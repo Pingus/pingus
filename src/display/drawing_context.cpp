@@ -134,7 +134,7 @@ private:
   
 public:
   RectDrawingRequest(const Rect& rect_, const Color& color_, bool filled_, float z)
-    : DrawingRequest(Vector3f(0,0)),
+    : DrawingRequest(Vector3f(0, 0, z)),
       d_rect(rect_), color(color_), filled(filled_)
   {}
   

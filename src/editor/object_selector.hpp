@@ -45,8 +45,10 @@ private:
   float offset;
   float old_offset;
   Vector2i drag_start;
-
-  enum Mode { NOTHING, SCROLLING };
+  Vector2i mouse_pos;
+  Vector2i real_mouse_pos;
+  
+  enum Mode { NOTHING, SCROLLING, OBJECT_DRAG };
   Mode mode;
 
   struct Object 
@@ -60,6 +62,9 @@ private:
   };
   typedef std::vector<Object> Objects;
   Objects objects;
+
+  int current_object;
+  int drag_object;
 
 public:
   typedef void (ObjectSelector::*Callback)();
