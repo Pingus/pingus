@@ -28,6 +28,8 @@
 
 #include "gui/component.hpp"
 
+class SceneContext;
+
 namespace Editor {
 
 class EditorScreen;
@@ -38,6 +40,15 @@ class ObjectSelector : public GUI::Component
 private:
   EditorScreen* editor;
   Vector2i button_pos;
+  SceneContext* scene_context;
+  Rect rect;
+  float offset;
+  float old_offset;
+  Vector2i drag_start;
+
+  enum Mode { NOTHING, SCROLLING };
+  Mode mode;
+
 public:
   typedef void (ObjectSelector::*Callback)();
   Callback callback;
@@ -51,6 +62,15 @@ public:
   bool is_at (int x, int y);
   
   void add_button(const std::string& image, const std::string& tooltip = "", Callback callback = 0);
+
+  void on_primary_button_press (int x, int y);
+  void on_primary_button_release (int x, int y);
+
+  void on_secondary_button_press (int x, int y);
+  void on_secondary_button_release (int x, int y);
+
+  void on_pointer_move (int x, int y);
+
 private:
   ObjectSelector (const ObjectSelector&);
   ObjectSelector& operator= (const ObjectSelector&);

@@ -29,6 +29,7 @@
 #include "editor_screen.hpp"
 #include "display/drawing_context.hpp"
 #include "fonts.hpp"
+#include "display/scene_context.hpp"
 #include "gui/gui_manager.hpp"
 #include "object_selector.hpp"
 
@@ -131,8 +132,17 @@ public:
 
 ObjectSelector::ObjectSelector(EditorScreen* editor_)
   : editor(editor_),
-    button_pos(Display::get_width() - 242,  40)
+    button_pos(Display::get_width() - 242,  40),
+    scene_context(new SceneContext()),
+    rect(Vector2i(Display::get_width() - 244 + 2,  38 + 3 + 62),
+         Size(240, 495)),
+    offset(0),
+    old_offset(0),
+    mode(NOTHING)
 {
+  scene_context->translate(rect.left, rect.top);
+  scene_context->set_cliprect(rect);
+
   editor->get_gui_manager()->add(this, true);
   
   add_button("core/editor/obj_entrance", "Entrance");
@@ -157,31 +167,43 @@ ObjectSelector::~ObjectSelector()
 }
 
 void
-ObjectSelector::draw(DrawingContext& gc)
+ObjectSelector::draw(DrawingContext& parent_gc)
 {
-  Rect rect(int(gc.get_width()) - 244,  38,
-            int(gc.get_width()),        int(gc.get_height()));
+  // FIXME: SceneContext is overkill for this, DrawingContext would be
+  // enough, but that can't do cliprects right know
+  scene_context->clear();
+
+  scene_context->push_modelview();
+  scene_context->translate(0, offset);
+
+  Rect rect(int(parent_gc.get_width()) - 244,  38,
+            int(parent_gc.get_width()),        int(parent_gc.get_height()));
 
   // FIXME: Should use draw_line
-  gc.draw_fillrect(rect.left, rect.top, rect.right, rect.bottom,
+  parent_gc.draw_fillrect(rect.left, rect.top, rect.right, rect.bottom,
                    Color(255, 255, 255));
 
-  gc.draw_fillrect(rect.left+1, rect.top+1, rect.right, rect.bottom,
+  parent_gc.draw_fillrect(rect.left+1, rect.top+1, rect.right, rect.bottom,
                    Color(169, 157, 140));
                    
-  gc.draw_fillrect(rect.left+1, rect.top+1, rect.right-1, rect.bottom-1,
+  parent_gc.draw_fillrect(rect.left+1, rect.top+1, rect.right-1, rect.bottom-1,
                    Color(237, 233, 227));
 
-  gc.draw_fillrect(rect.left+2, rect.top+2 + 62, rect.right-2, rect.bottom-2,
-                   Color(0,0,0));
+  DrawingContext& gc = scene_context->color();
 
-  for(int y = 0; y < 10; ++y)
+  // black
+  //gc.fill_screen(Color(0,0,0));
+
+  for(int y = 0; y < 20; ++y)
     for(int x = 0; x < 5; ++x)
       {
-        gc.draw_fillrect(rect.left+2 + x * 48,      rect.top+2 + 62 + y * 48, 
-                         rect.left+2 + x * 48 + 48, rect.top+2 + 62 + y * 48 + 48, 
+        gc.draw_fillrect(x * 48,      y * 48, 
+                         x * 48 + 48, y * 48 + 48, 
                          (((x-(y%2)) % 2) ? Color(0,0,0) : Color(100,100,100)));
       }
+  
+  parent_gc.draw(new SceneContextDrawingRequest(scene_context, Vector3f(0,0,0)));
+  scene_context->pop_modelview();
 }
 
 void
@@ -208,7 +230,43 @@ ObjectSelector::add_button(const std::string& image, const std::string& tooltip,
 bool
 ObjectSelector::is_at(int x, int y)
 {
-  return false;
+  return rect.is_inside(Vector2i(x, y));
+}
+
+void
+ObjectSelector::on_primary_button_press (int x, int y)
+{
+  std::cout << "Button: " << x << " " << y << std::endl;
+}
+
+void
+ObjectSelector::on_primary_button_release (int x, int y)
+{
+  std::cout << "Button" << std::endl;
+}
+
+void
+ObjectSelector::on_secondary_button_press (int x, int y)
+{
+  drag_start = Vector2i(x,y);
+  mode = SCROLLING;
+  old_offset = offset;
+}
+
+void
+ObjectSelector::on_secondary_button_release (int x, int y)
+{  
+  mode = NOTHING;
+  std::cout << "Button" << std::endl;
+}
+
+void
+ObjectSelector::on_pointer_move (int x, int y)
+{
+  if (mode == SCROLLING)
+    {
+      offset = old_offset + (y - drag_start.y);
+    }
 }
 
 } // namespace Editor
