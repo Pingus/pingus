@@ -28,7 +28,7 @@
 
 #include "gui/component.hpp"
 
-class SceneContext;
+class DrawingContext;
 
 namespace Editor {
 
@@ -40,8 +40,8 @@ class ObjectSelector : public GUI::Component
 private:
   EditorScreen* editor;
   Vector2i button_pos;
-  SceneContext* scene_context;
   Rect rect;
+  DrawingContext* drawing_context;
   float offset;
   float old_offset;
   Vector2i drag_start;

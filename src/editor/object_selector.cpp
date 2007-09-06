@@ -29,14 +29,14 @@
 #include "editor_screen.hpp"
 #include "display/drawing_context.hpp"
 #include "fonts.hpp"
-#include "display/scene_context.hpp"
+#include "display/drawing_context.hpp"
 #include "gui/gui_manager.hpp"
 #include "object_selector.hpp"
 
 #include "resource.hpp"
 
 namespace Editor {
-
+
 class ObjectSelectorButton : public GUI::Component
 {
 private:
@@ -133,16 +133,13 @@ public:
 ObjectSelector::ObjectSelector(EditorScreen* editor_)
   : editor(editor_),
     button_pos(Display::get_width() - 242,  40),
-    scene_context(new SceneContext()),
     rect(Vector2i(Display::get_width() - 244 + 2,  38 + 3 + 62),
          Size(240, 495)),
+    drawing_context(new DrawingContext(rect)),
     offset(0),
     old_offset(0),
     mode(NOTHING)
 {
-  scene_context->translate(rect.left, rect.top);
-  scene_context->set_cliprect(rect);
-
   editor->get_gui_manager()->add(this, true);
   
   add_button("core/editor/obj_entrance", "Entrance");
@@ -169,13 +166,6 @@ ObjectSelector::~ObjectSelector()
 void
 ObjectSelector::draw(DrawingContext& parent_gc)
 {
-  // FIXME: SceneContext is overkill for this, DrawingContext would be
-  // enough, but that can't do cliprects right know
-  scene_context->clear();
-
-  scene_context->push_modelview();
-  scene_context->translate(0, offset);
-
   Rect rect(int(parent_gc.get_width()) - 244,  38,
             int(parent_gc.get_width()),        int(parent_gc.get_height()));
 
@@ -189,7 +179,12 @@ ObjectSelector::draw(DrawingContext& parent_gc)
   parent_gc.draw_fillrect(rect.left+1, rect.top+1, rect.right-1, rect.bottom-1,
                    Color(237, 233, 227));
 
-  DrawingContext& gc = scene_context->color();
+  DrawingContext& gc = *drawing_context;
+
+  gc.clear();
+
+  gc.push_modelview();
+  gc.translate(0, offset);
 
   // black
   //gc.fill_screen(Color(0,0,0));
@@ -202,8 +197,10 @@ ObjectSelector::draw(DrawingContext& parent_gc)
                          (((x-(y%2)) % 2) ? Color(0,0,0) : Color(100,100,100)));
       }
   
-  parent_gc.draw(new SceneContextDrawingRequest(scene_context, Vector3f(0,0,0)));
-  scene_context->pop_modelview();
+  //parent_gc.draw(drawing_context);
+  gc.pop_modelview();
+
+  parent_gc.draw(gc);
 }
 
 void
@@ -268,7 +265,7 @@ ObjectSelector::on_pointer_move (int x, int y)
       offset = old_offset + (y - drag_start.y);
     }
 }
-
+
 } // namespace Editor
 
 /* EOF */

@@ -160,21 +160,20 @@ public:
 class DrawingContextDrawingRequest : public DrawingRequest
 {
 private:
-  DrawingContext* dc;
+  DrawingContext& dc;
   
 public:
-  DrawingContextDrawingRequest(DrawingContext* dc_, float z)
+  DrawingContextDrawingRequest(DrawingContext& dc_, float z)
     : DrawingRequest(Vector3f(0,0,z)),
       dc(dc_)
   {}
   
   virtual ~DrawingContextDrawingRequest()
   {
-    delete dc;
   }
 
   void render(SDL_Surface* target, const Rect& rect) {
-    dc->render(target, rect);
+    dc.render(target, rect);
   }
 };
 
@@ -182,7 +181,7 @@ DrawingContext::DrawingContext(const Rect& rect_, bool clip)
   : rect(rect_),
     do_clipping(clip)
 {
-  
+  translate_stack.push_back(Vector3f(0, 0));
 }
 
 DrawingContext::DrawingContext()
@@ -244,7 +243,7 @@ DrawingContext::draw(DrawingRequest* request)
 }
 
 void
-DrawingContext::draw(DrawingContext* dc, float z)
+DrawingContext::draw(DrawingContext& dc, float z)
 {
   draw(new DrawingContextDrawingRequest(dc, z));
 }
