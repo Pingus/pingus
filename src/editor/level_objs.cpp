@@ -74,7 +74,7 @@ LevelObj::draw(DrawingContext &gc)
         {
           gc.draw_rect(translated_pos.x, translated_pos.y, translated_pos.x 
                        + sprite.get_width(), translated_pos.y + sprite.get_height(), 
-                       Color(255,255,255,150), 5000);
+                       Color(255,0,0), 5000);
         }
 
       if (attribs & HAS_WIDTH)

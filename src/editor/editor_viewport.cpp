@@ -33,17 +33,18 @@
 #include "level_objs.hpp"
 
 namespace Editor {
-
+
 // Constructor
-EditorViewport::EditorViewport(EditorScreen* e) :
-  state(Display::get_width(), Display::get_height()),
-  drawing_context(new DrawingContext(Rect(48, 38 + 48, Display::get_width() - 248 - 48, 600 - 48))),
-  editor(e),
-  autoscroll(false),
-  highlighted_area(0,0,0,0),
-  context_menu(0),
-  snap_to(false),
-  current_action(NOTHING)
+EditorViewport::EditorViewport(EditorScreen* e) 
+  : rect(48, 38 + 48, Display::get_width() - 248 - 48, 600 - 48),
+    state(rect.get_width(), rect.get_height()),
+    drawing_context(new DrawingContext(rect)),
+    editor(e),
+    autoscroll(false),
+    highlighted_area(0,0,0,0),
+    context_menu(0),
+    snap_to(false),
+    current_action(NOTHING)
 {
 }
 
@@ -300,7 +301,7 @@ void
 EditorViewport::refresh()
 {
   objs = editor->get_level()->get_objects();
-  //state.set_limit(Rect(Vector2i(0, 0), editor->get_level()->get_size()));
+  state.set_limit(Rect(Vector2i(0, 0), editor->get_level()->get_size()));
   std::cout << editor->get_level()->get_size().width << ", "
             << editor->get_level()->get_size().height 
             << std::endl;
@@ -362,7 +363,7 @@ EditorViewport::screen2world(int x, int y) const
 {
   return Vector2i(state.screen2world(drawing_context->screen_to_world(Vector2i(x, y))));
 }
-
-} // Editor namespace
+
+} // namespace Editor
 
 /* EOF */

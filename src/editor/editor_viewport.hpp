@@ -32,7 +32,7 @@ class DrawingContext;
 class SceneContext;
 
 namespace Editor {
-
+
 class LevelObj;
 class EditorScreen;
 class ContextMenu;
@@ -43,6 +43,7 @@ class ContextMenu;
 class EditorViewport : public GUI::Component 
 {
 private:	
+  Rect rect;
   GraphicContextState state;
   DrawingContext* drawing_context;
 
@@ -139,7 +140,7 @@ private:
   EditorViewport (const EditorViewport&);
   EditorViewport& operator= (const EditorViewport&);
 };
-
+
 } // Editor namespace
 
 #endif
