@@ -110,8 +110,8 @@ public:
   void on_primary_button_release (int x, int y) 
   { 
     mouse_down = false;
-    //if (mouse_over && callback)
-      //  ((*editor).*callback)();
+    if (mouse_over && callback)
+      ((*object_selector).*callback)();
   }
   
   bool is_at(int x, int y)
@@ -132,7 +132,7 @@ public:
 
 ObjectSelector::ObjectSelector(EditorScreen* editor_)
   : editor(editor_),
-    button_pos(Display::get_width() - 242,  40),
+    button_pos(0,0),
     rect(Vector2i(Display::get_width() - 244 + 2,  38 + 3 + 62),
          Size(240, 495)),
     drawing_context(new DrawingContext(rect)),
@@ -142,20 +142,20 @@ ObjectSelector::ObjectSelector(EditorScreen* editor_)
 {
   editor->get_gui_manager()->add(this, true);
   
-  add_button("core/editor/obj_entrance", "Entrance");
-  add_button("core/editor/obj_gp_ground",      "Groundpiece (ground)");
-  add_button("core/editor/obj_gp_solid",       "Groundpiece (solid)");
-  add_button("core/editor/obj_gp_bridge",      "Groundpiece (bridge)");
-  add_button("core/editor/obj_gp_transparent", "Groundpiece (transparent)");
-  add_button("core/editor/obj_gp_remove",      "Groundpiece (remove)");
-  add_button("core/editor/obj_hotspot",    "Hotspot");
-  add_button("core/editor/obj_background", "Background");
+  add_button("core/editor/obj_entrance",   "Entrance", &ObjectSelector::set_entrance);
+  add_button("core/editor/obj_gp_ground",      "Groundpiece (ground)", &ObjectSelector::set_gp_ground);
+  add_button("core/editor/obj_gp_solid",       "Groundpiece (solid)", &ObjectSelector::set_gp_solid);
+  add_button("core/editor/obj_gp_bridge",      "Groundpiece (bridge)", &ObjectSelector::set_gp_bridge);
+  add_button("core/editor/obj_gp_transparent", "Groundpiece (transparent)", &ObjectSelector::set_gp_transparent);
+  add_button("core/editor/obj_gp_remove",      "Groundpiece (remove)", &ObjectSelector::set_gp_remove);
+  add_button("core/editor/obj_hotspot",    "Hotspot", &ObjectSelector::set_hotspot);
+  add_button("core/editor/obj_background", "Background", &ObjectSelector::set_background);
   // -------------------------------
-  add_button("core/editor/obj_exit", "Exit");
-  add_button("core/editor/obj_liquid", "Liquid");
-  add_button("core/editor/obj_trap", "Trap");
-  add_button("core/editor/obj_weather", "Weather");
-  add_button("core/editor/obj_worldobj", "Special Object");
+  add_button("core/editor/obj_exit", "Exit", &ObjectSelector::set_exit);
+  add_button("core/editor/obj_liquid", "Liquid", &ObjectSelector::set_liquid);
+  add_button("core/editor/obj_trap", "Trap", &ObjectSelector::set_trap);
+  add_button("core/editor/obj_weather", "Weather", &ObjectSelector::set_weather);
+  add_button("core/editor/obj_worldobj", "Special Object", &ObjectSelector::set_worldobj);
 
 }
 
@@ -186,8 +186,7 @@ ObjectSelector::draw(DrawingContext& parent_gc)
   gc.push_modelview();
   gc.translate(0, offset);
 
-  // black
-  //gc.fill_screen(Color(0,0,0));
+  Objects::iterator i = objects.begin();
 
   for(int y = 0; y < 20; ++y)
     for(int x = 0; x < 5; ++x)
@@ -195,9 +194,14 @@ ObjectSelector::draw(DrawingContext& parent_gc)
         gc.draw_fillrect(x * 48,      y * 48, 
                          x * 48 + 48, y * 48 + 48, 
                          (((x-(y%2)) % 2) ? Color(0,0,0) : Color(100,100,100)));
+
+        if (i != objects.end())
+          {
+            gc.draw(i->sprite, x * 48, y * 48);
+            ++i;
+          }
       }
   
-  //parent_gc.draw(drawing_context);
   gc.pop_modelview();
 
   parent_gc.draw(gc);
@@ -213,14 +217,16 @@ ObjectSelector::add_button(const std::string& image, const std::string& tooltip,
 {
   editor->get_gui_manager()->add
     (new ObjectSelectorButton(this,
-                              button_pos, image, tooltip,
+                              Vector2i(Display::get_width() - 242 + button_pos.x * 30,  
+                                       40 + button_pos.y * 30),
+                              image, tooltip,
                               callback), true);
 
-  button_pos.x += 30;
-  if (button_pos.x >= Display::get_width())
+  button_pos.x += 1;
+  if (button_pos.x > 7)
     {
-      button_pos.x = Display::get_width() - 240;
-      button_pos.y += 30;
+      button_pos.x  = 0;
+      button_pos.y += 1;
     }
 }
 
@@ -265,6 +271,101 @@ ObjectSelector::on_pointer_move (int x, int y)
       offset = old_offset + (y - drag_start.y);
     }
 }
+
+void
+ObjectSelector::set_objects(const std::string& prefix)
+{
+  std::vector<std::string> lst = Resource::resmgr.get_section(prefix);
+  objects.clear();
+  for(std::vector<std::string>::const_iterator i = lst.begin(); i != lst.end(); ++i)
+    {
+      std::cout << "Objects: " << *i << std::endl;
+      Sprite sprite = Resource::load_sprite(*i);
+      sprite.scale(48, 48);
+      // need to reset the align to top/left
+      objects.push_back(Object(sprite));
+    }
+}
+
+void
+ObjectSelector::set_gp_ground()
+{
+  set_objects("groundpieces/ground");
+}
+
+void
+ObjectSelector::set_gp_solid()
+{
+  set_objects("groundpieces/solid");
+}
+
+void
+ObjectSelector::set_gp_bridge()
+{
+  set_objects("groundpieces/bridge");
+}
+
+void
+ObjectSelector::set_gp_transparent()
+{
+  set_objects("groundpieces/transparent");
+}
+
+void
+ObjectSelector::set_gp_remove()
+{
+  set_objects("groundpieces/remove");
+}
+
+void
+ObjectSelector::set_hotspot()
+{
+  set_objects("hotspots");
+}
+
+void
+ObjectSelector::set_background()
+{
+  set_objects("textures");
+}
+
+void
+ObjectSelector::set_entrance()
+{
+  set_objects("entrances");
+}
+
+void
+ObjectSelector::set_exit()
+{
+  set_objects("exits");
+}
+
+void
+ObjectSelector::set_liquid()
+{
+  set_objects("liquids");
+}
+
+void
+ObjectSelector::set_trap()
+{
+  set_objects("traps");
+}
+
+void
+ObjectSelector::set_weather()
+{
+  //set_objects("weather");
+  std::cout << "ObjectSelector: unimplemented: " << __FILE__ << ":" << __LINE__ << std::endl;
+}
+
+void
+ObjectSelector::set_worldobj()
+{
+  std::cout << "ObjectSelector: unimplemented: " << __FILE__ << ":" << __LINE__ << std::endl;
+}
+
 
 } // namespace Editor
 

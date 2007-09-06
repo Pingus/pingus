@@ -39,6 +39,9 @@ public:
 
   void add_resources(const std::string& filename);
   SpriteDescription* get_sprite_description(const std::string& name) const;
+
+  std::vector<std::string> get_section(const std::string& name);
+
 private:
   void parse(const std::string& section, FileReader&);
   void parse_section(const std::string& section, FileReader&);

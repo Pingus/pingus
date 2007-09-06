@@ -49,6 +49,18 @@ private:
   enum Mode { NOTHING, SCROLLING };
   Mode mode;
 
+  struct Object 
+  {
+    Sprite sprite;
+    // add meta-info to track object type
+
+    Object(const Sprite& sprite_) 
+      : sprite(sprite_)
+    {}      
+  };
+  typedef std::vector<Object> Objects;
+  Objects objects;
+
 public:
   typedef void (ObjectSelector::*Callback)();
   Callback callback;
@@ -70,6 +82,22 @@ public:
   void on_secondary_button_release (int x, int y);
 
   void on_pointer_move (int x, int y);
+
+  void set_objects(const std::string& prefix);
+
+  void set_gp_ground();
+  void set_gp_solid();
+  void set_gp_bridge();
+  void set_gp_transparent();
+  void set_gp_remove();
+  void set_hotspot();
+  void set_background();
+  void set_entrance();
+  void set_exit();
+  void set_liquid();
+  void set_trap();
+  void set_weather();
+  void set_worldobj();
 
 private:
   ObjectSelector (const ObjectSelector&);

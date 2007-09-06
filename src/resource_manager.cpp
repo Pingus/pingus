@@ -28,6 +28,7 @@
 #include "globals.hpp"
 #include "lisp/lisp.hpp"
 #include "lisp/parser.hpp"
+#include "string_util.hpp"
 #include "sprite_description.hpp"
 #include "sexpr_file_reader.hpp"
 #include "resource_manager.hpp"
@@ -42,6 +43,19 @@ ResourceManager::~ResourceManager()
   for (i = resources.begin(); i != resources.end(); ++i) {
     delete (*i).second;
   }
+}
+
+std::vector<std::string>
+ResourceManager::get_section(const std::string& name)
+{
+  std::vector<std::string> lst;
+  for (std::map<std::string, SpriteDescription*>::iterator i = resources.begin();
+       i != resources.end(); ++i) 
+    {
+      if (StringUtil::has_prefix(i->first, name))
+        lst.push_back(i->first);
+    }
+  return lst;
 }
 
 void

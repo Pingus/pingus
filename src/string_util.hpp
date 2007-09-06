@@ -73,6 +73,14 @@ public:
       return false;
   }
 
+  static bool has_prefix(const std::string& str, const std::string prefix)
+  {
+    if (str.length() < prefix.length())
+      return false;
+    else
+      return str.compare(0, prefix.length(), prefix) == 0;
+  }
+
 private:
   StringUtil ();
   StringUtil (const StringUtil&);

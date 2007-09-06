@@ -198,6 +198,8 @@ EditorScreen::update(const GameDelta &delta)
     }
   else
     GUIScreen::update(delta);
+
+  SDL_Delay(33); // FIXME: Brute force delay to get CPU usage down
 }
 
 void
