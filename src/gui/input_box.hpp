@@ -24,45 +24,44 @@
 #include "../math/vector3f.hpp"
 #include <string>
 
-
-	class DrawingContext;
+class DrawingContext;
 
 namespace GUI {
-
+
 /** This class allows keyboard input to be displayed in a box */
 class InputBox : public GUI::Component {
 protected:
-	std::string str;
-	Vector3f pos;
-	float width;
-	float height;
-	bool is_locked;
+  std::string str;
+  Vector3f pos;
+  float width;
+  float height;
+  bool  is_locked;
 
-	/** Shrink the string to fit in the box */
-	std::string shrink_string(const std::string& s) const;
+  /** Shrink the string to fit in the box */
+  std::string shrink_string(const std::string& s) const;
   
-	/** Optional label to display */
-	std::string label;  
+  /** Optional label to display */
+  std::string label;  
 
 public:
   InputBox(float width_, Vector3f p, const std::string& 
-		default_value = std::string(), bool locked = false,
-	const std::string& label_ = std::string());
+           default_value = std::string(), bool locked = false,
+           const std::string& label_ = std::string());
 
-	void set_string(const std::string& s) { str = s; }
-	std::string get_string() { return str; }
+  void set_string(const std::string& s) { str = s; }
+  std::string get_string() { return str; }
 	
-	void on_key_pressed(const unsigned short c);
+  void on_key_pressed(const unsigned short c);
 	
-	/// GUI Component functions:
-	///
-	void update(float delta) { }
+  /// GUI Component functions:
+  ///
+  void update(float delta) { }
 	
-	bool is_at(int x, int y);
+  bool is_at(int x, int y);
 	
-	void draw(DrawingContext &gc);
+  void draw(DrawingContext &gc);
 };	// InputBox class
-
+
 }	// GUI namespace
 
 #endif

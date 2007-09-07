@@ -153,9 +153,6 @@ public:
   /// Returns the name of the action the button represents.
   Actions::ActionName get_action_name();
 
-  /// Returns true if the button is pressed.
-  bool   is_pressed();
-
   virtual bool   is_at(int x, int y) = 0;
 
 private:

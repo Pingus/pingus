@@ -31,7 +31,7 @@ class GUI::GUIManager;
 class Pathname;
 
 namespace Editor {
-
+
 class EditorLevel;
 class LevelObj;
 class Panel;
@@ -144,8 +144,9 @@ private:
   EditorScreen (const EditorScreen&);
   EditorScreen& operator= (const EditorScreen&);
 
-};	// EditorScreen
-}  // Editor namespace
+};
+
+} // namespace Editor 
 
 #endif
 

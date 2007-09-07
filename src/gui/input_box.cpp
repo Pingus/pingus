@@ -27,77 +27,76 @@ namespace GUI {
 	
 InputBox::InputBox(float width_, Vector3f p, const std::string& default_value,
                    bool locked, const std::string& label_) 
-	:	str(default_value),
+  :	str(default_value),
 	pos(p),
 	width(width_),
 	height((float)Fonts::pingus_small.get_height()),
 	is_locked(locked),
 	label(label_)
 {
-	
 }
 
 void
 InputBox::draw(DrawingContext &gc)
 {
-	// Draw the rectangle and border
-	gc.draw_fillrect(pos.x, pos.y, pos.x + width, pos.y + height, 
-                         Color(0,0,0));
-	gc.draw_rect(pos.x, pos.y, pos.x + width, pos.y + height, Color(255,255,255));	
+  // Draw the rectangle and border
+  gc.draw_fillrect(pos.x, pos.y, pos.x + width, pos.y + height, 
+                   Color(0,0,0));
+  gc.draw_rect(pos.x, pos.y, pos.x + width, pos.y + height, Color(255,255,255));	
 
-	// If there is text, draw it:
-	if (str != std::string())
-		gc.print_left(Fonts::pingus_small, pos.x + 10, pos.y, shrink_string(str));
+  // If there is text, draw it:
+  if (str != std::string())
+    gc.print_left(Fonts::pingus_small, pos.x + 10, pos.y, shrink_string(str));
 
-	if (label != std::string())
-		gc.print_right(Fonts::pingus_small, pos.x, pos.y, label);
+  if (label != std::string())
+    gc.print_right(Fonts::pingus_small, pos.x, pos.y, label);
      
-	if (has_focus)
-		gc.draw_line(pos.x + Fonts::pingus_small.get_size(shrink_string(str)).width + 12,
-			pos.y, pos.x + Fonts::pingus_small.get_size(shrink_string(str)).width + 12, 
-                             pos.y + height,	Color(0,255,255));
+  if (has_focus)
+    gc.draw_line(pos.x + Fonts::pingus_small.get_size(shrink_string(str)).width + 12,
+                 pos.y, pos.x + Fonts::pingus_small.get_size(shrink_string(str)).width + 12, 
+                 pos.y + height,	Color(0,255,255));
 }
 
 bool
 InputBox::is_at(int x, int y)
 {
-	return (x > pos.x && x < pos.x + width &&
-		y > pos.y && y < pos.y + height);
+  return (x > pos.x && x < pos.x + width &&
+          y > pos.y && y < pos.y + height);
 }
 
 std::string
 InputBox::shrink_string(const std::string& s) const
 {
-	std::string ret_string;
-	int w = (int)width / Fonts::pingus_small.get_width('W');
+  std::string ret_string;
+  int w = (int)width / Fonts::pingus_small.get_width('W');
 	
-	if ((int)s.length() > w - 1)
-		ret_string = s.substr(std::max(0, (int)s.length()-w), w - 1);
-	else
-		ret_string = s;
+  if ((int)s.length() > w - 1)
+    ret_string = s.substr(std::max(0, (int)s.length()-w), w - 1);
+  else
+    ret_string = s;
 	
-	return ret_string;
+  return ret_string;
 }
 
 void
 InputBox::on_key_pressed(const unsigned short c)
 {
-	if (!is_locked)
-	{
-		// Verify input and escape out bad characters
-		if (c == 0x08) 	// backspace
-		{
-			str = str.substr(0, str.length()-1);
-		}
-		else if ((c > 0x2c && c < 0x3a)    // - . / 0-9
-			|| (c > 0x40 && c < 0x5b)        // capital letters
-			|| (c > 0x60 && c < 0x7b)        // lowercase letters
-			|| (c == 0x7e || c == 0x5f)      // ~ and _
-			||  c == 0x20)                   // space
-		{
-			str += (unsigned char)c;
-		}
-	}
+  if (!is_locked)
+    {
+      // Verify input and escape out bad characters
+      if (c == 0x08) 	// backspace
+        {
+          str = str.substr(0, str.length()-1);
+        }
+      else if ((c > 0x2c && c < 0x3a)    // - . / 0-9
+               || (c > 0x40 && c < 0x5b)        // capital letters
+               || (c > 0x60 && c < 0x7b)        // lowercase letters
+               || (c == 0x7e || c == 0x5f)      // ~ and _
+               ||  c == 0x20)                   // space
+        {
+          str += (unsigned char)c;
+        }
+    }
 }
 
 }	// GUI

@@ -52,12 +52,6 @@ ActionButton::init(int x, int y, ActionName name_, int owner_id)
   sprite.set_play_loop(true);
 }
 
-bool
-ActionButton::is_pressed()
-{
-  return false;
-}
-
 void
 ActionButton::update(float delta)
 {

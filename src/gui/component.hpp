@@ -45,7 +45,7 @@ public:
   virtual void update (float delta) { UNUSED_ARG(delta);}
 
   virtual bool is_at (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); return false; }
-
+
   // Events
   /** Gets issued once the primary button is pressed */
   virtual void on_primary_button_press (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
@@ -77,14 +77,6 @@ public:
   /** Emitted whenever a keyboard character is pressed.  Only certain 
       components should implement this */
   virtual void on_key_pressed(const unsigned short c) { UNUSED_ARG(c); }
-
-  // status functions for use in the update() function
-  /** return true if currently pressed */
-  bool is_pressed ();
-
-  /** true if mouse is currently over, FIXME: these seem to be
-      unimplementable without renaming on_pointer_enter() and wrapp them */
-  bool pointer_over();
 
 private:
   Component (const Component&);

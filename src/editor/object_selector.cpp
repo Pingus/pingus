@@ -217,6 +217,9 @@ ObjectSelector::draw(DrawingContext& parent_gc)
                                  x * 48 + 48, y * 48 + 48, 
                                  (((x-(y%2)) % 2) ? Color(0,0,0) : Color(100,100,100)));
                 
+                gc.draw_rect(x * 48,      y * 48, 
+                             x * 48 + 48, y * 48 + 48, 
+                             Color(155,155,155), 10000);
               }
 
             gc.draw(i->sprite, 
