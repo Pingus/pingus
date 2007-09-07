@@ -23,50 +23,55 @@
 **  02111-1307, USA.
 */
 
-#include <iostream>
-#include <boost/bind.hpp>
+#ifndef HEADER_PINGUS_GUI_GROUP_COMPONENT_HPP
+#define HEADER_PINGUS_GUI_GROUP_COMPONENT_HPP
+
 #include "display/drawing_context.hpp"
-#include "gui/gui_manager.hpp"
-#include "editor_screen.hpp"
-#include "file_load_dialog.hpp"
+#include "rect_component.hpp"
 
-namespace Editor {
+namespace GUI {
 
-FileLoadDialog::FileLoadDialog(EditorScreen* editor_, const Rect& rect)
-  : RectComponent(rect),
-    editor(editor_),
-    file_list(Rect(rect.left  + 10, rect.top + 10,
-                   rect.right - 10, rect.bottom - 10))
+/** */
+class GroupComponent : public RectComponent
 {
-  editor->get_gui_manager()->add(&file_list, false);
+private:
+  std::vector<Component> children;
+  DrawingContext drawing_context;
   
-  file_list.on_click.connect(boost::bind(&FileLoadDialog::load_file, this, _1));
-}
-
-FileLoadDialog::~FileLoadDialog()
-{
-}
-
-void
-FileLoadDialog::draw(DrawingContext& gc)
-{
-  gc.draw_fillrect(rect.left, rect.top, rect.right, rect.bottom, Color(100, 100, 100), -10);
-}
-  
-void
-FileLoadDialog::load_file(const std::string& file) const
-{
-  std::cout << "FileLoadDialog::load_file: " << file << std::endl;
-  
-}
-
-void
-FileLoadDialog::set_directory(const std::string& pathname_)
-{
-  pathname = pathname_;
-  file_list.set_directory(pathname);
-}
+public:
+  GroupComponent(const Rect& rect);
+  ~GroupComponent();  
+  	
+  void draw (DrawingContext& gc);
+  void update (float delta);
 
-} // namespace Editor
+  void on_primary_button_press (int x, int y);
+  void on_primary_button_release (int x, int y);
+
+  void on_primary_button_double_click (int x, int y);
+  
+  void on_secondary_button_press (int x, int y);
+  void on_secondary_button_release (int x, int y);
+  
+  void on_primary_button_click (int x, int y);
+  void on_secondary_button_click (int x, int y);
+
+  void on_pointer_enter ();
+  void on_pointer_leave ();
+
+  void on_pointer_move (int x, int y);
+
+  void on_key_pressed(const unsigned short c);
+
+  void add(Component*);
+
+private:
+  GroupComponent (const GroupComponent&);
+  GroupComponent& operator= (const GroupComponent&);
+};
+
+} // namespace GUI
+
+#endif
 
 /* EOF */

@@ -39,6 +39,7 @@ class FileLoadDialog : public GUI::RectComponent
 private:
   EditorScreen* editor;
   FileList file_list;
+  std::string pathname;
 
 public:
   FileLoadDialog(EditorScreen* editor, const Rect& rect);
@@ -46,7 +47,7 @@ public:
   
   bool is_at(int x, int y) { return false; }
 
-  void draw(DrawingContext&) {}
+  void draw(DrawingContext& gc);
   void update_layout() {}
 
   void load_file(const std::string& file) const;

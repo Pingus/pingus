@@ -23,50 +23,92 @@
 **  02111-1307, USA.
 */
 
-#include <iostream>
-#include <boost/bind.hpp>
-#include "display/drawing_context.hpp"
-#include "gui/gui_manager.hpp"
-#include "editor_screen.hpp"
-#include "file_load_dialog.hpp"
+#include "group_component.hpp"
 
-namespace Editor {
+namespace GUI {
 
-FileLoadDialog::FileLoadDialog(EditorScreen* editor_, const Rect& rect)
-  : RectComponent(rect),
-    editor(editor_),
-    file_list(Rect(rect.left  + 10, rect.top + 10,
-                   rect.right - 10, rect.bottom - 10))
+GroupComponent::GroupComponent(const Rect& rect)
+  : RectComponent(rect)
 {
-  editor->get_gui_manager()->add(&file_list, false);
-  
-  file_list.on_click.connect(boost::bind(&FileLoadDialog::load_file, this, _1));
 }
 
-FileLoadDialog::~FileLoadDialog()
+GroupComponent::~GroupComponent()
+{
+}
+  	
+void
+GroupComponent::draw (DrawingContext& gc)
+{
+}
+
+void
+GroupComponent::update (float delta)
+{
+}
+
+bool is_at (int x, int y);
+
+void
+GroupComponent::on_primary_button_press (int x, int y)
+{
+}
+
+void
+GroupComponent::on_primary_button_release (int x, int y)
 {
 }
 
 void
-FileLoadDialog::draw(DrawingContext& gc)
+GroupComponent::on_primary_button_double_click (int x, int y)
 {
-  gc.draw_fillrect(rect.left, rect.top, rect.right, rect.bottom, Color(100, 100, 100), -10);
 }
   
 void
-FileLoadDialog::load_file(const std::string& file) const
+GroupComponent::on_secondary_button_press (int x, int y)
 {
-  std::cout << "FileLoadDialog::load_file: " << file << std::endl;
-  
 }
 
 void
-FileLoadDialog::set_directory(const std::string& pathname_)
+GroupComponent::on_secondary_button_release (int x, int y)
 {
-  pathname = pathname_;
-  file_list.set_directory(pathname);
+}
+
+void
+GroupComponent::on_primary_button_click (int x, int y)
+{
+}
+
+void
+GroupComponent::on_secondary_button_click (int x, int y)
+{
+}
+
+void
+GroupComponent::on_pointer_enter () 
+{
+}
+
+void
+GroupComponent::on_pointer_leave () 
+{
+}
+
+void
+GroupComponent::on_pointer_move (int x, int y)
+{
+}
+
+void
+GroupComponent::on_key_pressed(const unsigned short c)
+{
+}
+
+void
+GroupComponent::add(Component*)
+{
+  
 }
 
-} // namespace Editor
+} // namespace GUI
 
 /* EOF */

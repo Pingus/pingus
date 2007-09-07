@@ -54,7 +54,8 @@ GUIManager::draw (DrawingContext& gc)
   for (std::vector<Component*>::iterator i = components.begin ();
        i != components.end (); ++i)
     {
-      (*i)->draw (gc);
+      if ((*i)->is_visible())
+        (*i)->draw (gc);
     }
 }
 
@@ -66,7 +67,8 @@ GUIManager::update (const GameDelta& delta)
   for (std::vector<Component*>::iterator i = components.begin ();
        i != components.end (); ++i)
     {
-      (*i)->update (delta.get_time ());
+      if ((*i)->is_visible())
+        (*i)->update (delta.get_time ());
     }
 }
 
@@ -139,7 +141,7 @@ GUIManager::is_at (int x, int y)
   for (std::vector<Component*>::iterator i = components.begin ();
        i != components.end (); ++i)
     {
-      if ((*i)->is_at (x, y))
+      if ((*i)->is_visible() && (*i)->is_at (x, y))
 	return true;
     }
 

@@ -25,18 +25,17 @@
 class DrawingContext;
 
 namespace GUI {
-
+
 /** A component represents an area which recivies events in the GUI,
     some people might call it a widget */
 class Component
 {
-private:
-	
 protected:
   bool has_focus;
+  bool visible;
 
 public:
-  Component () : has_focus(false) { }
+  Component () : has_focus(false), visible(true) { }
   virtual ~Component() {}
 
   virtual void set_focus(bool val) { has_focus = val; }
@@ -52,8 +51,6 @@ public:
 
   /** Gets issued once the primary button is released */
   virtual void on_primary_button_release (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
-
-  virtual void on_primary_button_double_click (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
 
   virtual void on_secondary_button_press (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
   virtual void on_secondary_button_release (int x, int y) { UNUSED_ARG(x); UNUSED_ARG(y); }
@@ -78,11 +75,16 @@ public:
       components should implement this */
   virtual void on_key_pressed(const unsigned short c) { UNUSED_ARG(c); }
 
+  virtual void hide() { visible = false; }
+  virtual void show() { visible = true; }
+
+  virtual bool is_visible() { return visible; }
+
 private:
   Component (const Component&);
   Component& operator= (const Component&);
 };
-
+
 } // namespace GUI
 
 #endif
