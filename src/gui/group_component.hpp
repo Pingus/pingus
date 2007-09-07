@@ -35,39 +35,43 @@ namespace GUI {
 class GroupComponent : public RectComponent
 {
 private:
-  std::vector<Component> children;
+  typedef std::vector<Component*> Components;
+  Components     children;
   DrawingContext drawing_context;
+  Component*     mouse_over_comp;
+  Component*     press_over_comp;
   
 public:
   GroupComponent(const Rect& rect);
   ~GroupComponent();  
   	
-  void draw (DrawingContext& gc);
-  void update (float delta);
+  void draw(DrawingContext& gc);
+  virtual void draw_background(DrawingContext& gc) {}
+
+  void update(float delta);
 
-  void on_primary_button_press (int x, int y);
-  void on_primary_button_release (int x, int y);
-
-  void on_primary_button_double_click (int x, int y);
+  void on_primary_button_press(int x, int y);
+  void on_primary_button_release(int x, int y);
+ 
+  void on_secondary_button_press(int x, int y);
+  void on_secondary_button_release(int x, int y);
   
-  void on_secondary_button_press (int x, int y);
-  void on_secondary_button_release (int x, int y);
-  
-  void on_primary_button_click (int x, int y);
-  void on_secondary_button_click (int x, int y);
+  void on_primary_button_click(int x, int y) {}
+  void on_secondary_button_click(int x, int y) {}
 
-  void on_pointer_enter ();
-  void on_pointer_leave ();
+  void on_pointer_enter() {}
+  void on_pointer_leave() {}
 
-  void on_pointer_move (int x, int y);
+  void on_pointer_move(int x, int y);
 
   void on_key_pressed(const unsigned short c);
 
-  void add(Component*);
+  void add(Component*, bool delete_comp);
 
+  Component* component_at (const Vector2i& pos);
 private:
-  GroupComponent (const GroupComponent&);
-  GroupComponent& operator= (const GroupComponent&);
+  GroupComponent(const GroupComponent&);
+  GroupComponent& operator=(const GroupComponent&);
 };
 
 } // namespace GUI

@@ -22,8 +22,7 @@
 #define HEADER_PINGUS_EDITOR_SCREEN_HXX
 
 #include "../gui/gui_screen.hpp"
-#include "../file_dialog_listener.hpp"
-
+#include "file_load_dialog.hpp"
 
 class DrawingContext;
 class FileDialog;
@@ -40,25 +39,15 @@ class ObjectSelector;
 
 /** This class is the screen that contains all of the
     editor objects */
-class EditorScreen : public GUIScreen, 
-                     public FileDialogListener
+class EditorScreen : public GUIScreen
 {
 private:
-  /** The level currently being edited */
   EditorLevel* plf;
 
-  /** Panel which contains all of the buttons for each action */
   Panel* panel;
-
-  /** Viewport which holds all of the level images and data */
   EditorViewport* viewport;
-
   ObjectSelector* object_selector;
-
-  /** File Dialog box */
-  FileDialog* filedialog;
-
-  bool close_dialog;
+  FileLoadDialog* file_load_dialog;
 
   bool show_help;
 

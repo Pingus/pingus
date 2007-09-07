@@ -49,8 +49,6 @@ EditorScreen::EditorScreen()
     panel(0),
     viewport(0),
     object_selector(0),
-    filedialog(0),
-    close_dialog(false),
     show_help(false)
 {
   // Create the viewport for the images and data
@@ -62,17 +60,16 @@ EditorScreen::EditorScreen()
 
   object_selector = new ObjectSelector(this);
 
-  FileLoadDialog* file_load_dialog = new FileLoadDialog(this, Rect(100, 150, 700, 450));
-  gui_manager->add(file_load_dialog, true);
+  file_load_dialog = new FileLoadDialog(this, Rect(100, 150, 700, 450));
   file_load_dialog->set_directory("/tmp");
+  file_load_dialog->hide();
+  gui_manager->add(file_load_dialog, true);
 }
 
 // Destructor
 EditorScreen::~EditorScreen()
 {
   delete plf;
-  if (filedialog)
-    delete filedialog;
 }
 
 // Close the current screen
@@ -89,30 +86,10 @@ EditorScreen::on_escape_press()
   close_screen();
 }
 
-// Show dialog box
-void
-EditorScreen::show_file_dialog(bool for_loading)
-{
-  if (filedialog)
-    delete filedialog;
-  close_dialog = false;
-  filedialog = new FileDialog(this, ".scm", 
-                              path_manager.complete("levels/"), for_loading);
-  filedialog->preload();	
-}
-
-// Close dialog box
-void
-EditorScreen::cancel()
-{
-  close_dialog = true;
-}
-
 // Save the current level
 void 
 EditorScreen::save(const std::string &file)
 {
-  close_dialog = true;
   plf->save_level(file);
 }
 
@@ -120,7 +97,6 @@ EditorScreen::save(const std::string &file)
 void 
 EditorScreen::load(const Pathname& file)
 {
-  close_dialog = true;
   plf->load_level(file);
   viewport->refresh();
 }
@@ -180,27 +156,13 @@ EditorScreen::draw(DrawingContext& gc)
                     "\n");
     }
   
-  if (filedialog)
-    filedialog->draw(gc);
-	
   return true;
 }
 
 void
 EditorScreen::update(const GameDelta &delta)
 {
-  if (filedialog)
-    {
-      if (close_dialog)
-        {
-          delete filedialog;
-          filedialog = 0;
-        }
-      else
-        filedialog->update(delta);
-    }
-  else
-    GUIScreen::update(delta);
+  GUIScreen::update(delta);
 
   SDL_Delay(33); // FIXME: Brute force delay to get CPU usage down
 }
@@ -228,7 +190,14 @@ EditorScreen::level_new()
 void 
 EditorScreen::level_load()
 {
-  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+  if (file_load_dialog->is_visible())
+    file_load_dialog->hide();
+  else 
+    {
+      //file_load_dialog->set_rect(Rect(Vector2i(rand() % 200, rand() % 200),
+      //                                 Size(400, 300)));
+      file_load_dialog->show();
+    }
 }
 
 void 

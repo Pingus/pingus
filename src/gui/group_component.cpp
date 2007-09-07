@@ -28,7 +28,10 @@
 namespace GUI {
 
 GroupComponent::GroupComponent(const Rect& rect)
-  : RectComponent(rect)
+  : RectComponent(rect),
+    drawing_context(rect),
+    mouse_over_comp(0),
+    press_over_comp(0)
 {
 }
 
@@ -37,13 +40,29 @@ GroupComponent::~GroupComponent()
 }
   	
 void
-GroupComponent::draw (DrawingContext& gc)
+GroupComponent::draw (DrawingContext& parent_gc)
 {
+  drawing_context.clear();
+
+  draw_background(drawing_context);
+
+  for(Components::iterator i = children.begin(); i != children.end(); ++i)
+    {
+      if ((*i)->is_visible())
+        (*i)->draw(drawing_context);
+    }
+  
+  parent_gc.draw(drawing_context);
 }
 
 void
 GroupComponent::update (float delta)
 {
+  for(Components::iterator i = children.begin(); i != children.end(); ++i)
+    {
+      if ((*i)->is_visible())
+        (*i)->update(delta);
+    }
 }
 
 bool is_at (int x, int y);
@@ -51,62 +70,98 @@ bool is_at (int x, int y);
 void
 GroupComponent::on_primary_button_press (int x, int y)
 {
+  Vector2i mouse_pos = drawing_context.screen_to_world(Vector2i(x, y));
+  Component* comp = component_at(mouse_pos);
+  if (comp)
+    comp->on_primary_button_press(mouse_pos.x, mouse_pos.y);
+  
+  press_over_comp = comp;
 }
 
 void
 GroupComponent::on_primary_button_release (int x, int y)
 {
-}
-
-void
-GroupComponent::on_primary_button_double_click (int x, int y)
-{
+  Vector2i mouse_pos = drawing_context.screen_to_world(Vector2i(x, y));
+  Component* comp = component_at(mouse_pos);
+  if (comp)
+    {
+      comp->on_primary_button_release(mouse_pos.x, mouse_pos.y);
+      if (press_over_comp)
+        press_over_comp->on_secondary_button_click(mouse_pos.x, mouse_pos.y);
+      
+      press_over_comp = 0;
+    }
 }
   
 void
 GroupComponent::on_secondary_button_press (int x, int y)
 {
+  Vector2i mouse_pos = drawing_context.screen_to_world(Vector2i(x, y));
+  Component* comp = component_at(mouse_pos);
+  if (comp)
+    comp->on_secondary_button_press(mouse_pos.x, mouse_pos.y);
+
+  press_over_comp = comp;
 }
 
 void
 GroupComponent::on_secondary_button_release (int x, int y)
 {
+  Vector2i mouse_pos = drawing_context.screen_to_world(Vector2i(x, y));
+  Component* comp = component_at(mouse_pos);
+  if (comp)
+    {
+      comp->on_secondary_button_release(mouse_pos.x, mouse_pos.y);
+      if (press_over_comp)
+        press_over_comp->on_secondary_button_click(mouse_pos.x, mouse_pos.y);
+
+      press_over_comp = 0;
+    }
 }
 
 void
-GroupComponent::on_primary_button_click (int x, int y)
+GroupComponent::on_pointer_move(int x, int y)
 {
-}
+  Vector2i mouse_pos = drawing_context.screen_to_world(Vector2i(x, y));
+  Component* comp = component_at(mouse_pos);
+  if (comp)
+    {
+      comp->on_pointer_move(mouse_pos.x, mouse_pos.y); 
+    }
 
-void
-GroupComponent::on_secondary_button_click (int x, int y)
-{
-}
+  if (comp != mouse_over_comp)
+    {
+      if (mouse_over_comp)
+        mouse_over_comp->on_pointer_leave();
+      
+      if (comp)
+        comp->on_pointer_enter();
+    }
 
-void
-GroupComponent::on_pointer_enter () 
-{
-}
-
-void
-GroupComponent::on_pointer_leave () 
-{
-}
-
-void
-GroupComponent::on_pointer_move (int x, int y)
-{
+  mouse_over_comp = comp;
 }
 
 void
 GroupComponent::on_key_pressed(const unsigned short c)
 {
+  
+}
+
+Component*
+GroupComponent::component_at (const Vector2i& pos)
+{
+  for(Components::iterator i = children.begin(); i != children.end(); ++i)
+    {
+      if ((*i)->is_at(pos.x, pos.y))
+        return *i;
+    }
+  return 0;
 }
 
 void
-GroupComponent::add(Component*)
+GroupComponent::add(Component* comp, bool delete_comp)
 {
-  
+  children.push_back(comp);
 }
 
 } // namespace GUI

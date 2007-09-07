@@ -33,12 +33,12 @@
 namespace Editor {
 
 FileLoadDialog::FileLoadDialog(EditorScreen* editor_, const Rect& rect)
-  : RectComponent(rect),
+  : GroupComponent(rect),
     editor(editor_),
-    file_list(Rect(rect.left  + 10, rect.top + 10,
-                   rect.right - 10, rect.bottom - 10))
+    file_list(Rect(10, 10,
+                   rect.get_width()-10, rect.get_height() - 10))
 {
-  editor->get_gui_manager()->add(&file_list, false);
+  add(&file_list, false);
   
   file_list.on_click.connect(boost::bind(&FileLoadDialog::load_file, this, _1));
 }
@@ -48,9 +48,9 @@ FileLoadDialog::~FileLoadDialog()
 }
 
 void
-FileLoadDialog::draw(DrawingContext& gc)
+FileLoadDialog::draw_background(DrawingContext& gc)
 {
-  gc.draw_fillrect(rect.left, rect.top, rect.right, rect.bottom, Color(100, 100, 100), -10);
+  gc.draw_fillrect(0, 0, rect.get_width(), rect.get_height(), Color(255, 255, 255));
 }
   
 void

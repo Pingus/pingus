@@ -27,14 +27,14 @@
 #define HEADER_FILE_LOAD_DIALOG_HPP
 
 #include "file_list.hpp"
-#include "gui/rect_component.hpp"
+#include "gui/group_component.hpp"
 
 namespace Editor {
 
 class EditorScreen;
 
 /** */
-class FileLoadDialog : public GUI::RectComponent
+class FileLoadDialog : public GUI::GroupComponent
 {
 private:
   EditorScreen* editor;
@@ -45,9 +45,7 @@ public:
   FileLoadDialog(EditorScreen* editor, const Rect& rect);
   ~FileLoadDialog();
   
-  bool is_at(int x, int y) { return false; }
-
-  void draw(DrawingContext& gc);
+  void draw_background(DrawingContext& gc);
   void update_layout() {}
 
   void load_file(const std::string& file) const;
