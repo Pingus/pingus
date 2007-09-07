@@ -17,36 +17,30 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_GUI_RECT_COMPONENT_HPP
-#define HEADER_PINGUS_GUI_RECT_COMPONENT_HPP
+#ifndef HEADER_EDITOR_OBJECT_PROPERTIES_HPP
+#define HEADER_EDITOR_OBJECT_PROPERTIES_HPP
 
-#include "math/rect.hpp"
-#include "component.hpp"
-
-namespace GUI {
+namespace Editor {
 
 /** */
-class RectComponent : public Component
+class ObjectProperties
 {
-protected:
-  Rect rect;
-
+private:
+  Editor* editor;
+  LevelObj* current_object;
+  
 public:
-  RectComponent(const Rect& rect_)
-    : rect(rect_)
-  {}
+  ObjectProperties(EditorScreen* editor);
+  ~ObjectProperties();
   
-  virtual bool is_at (int x, int y) { return rect.is_inside(Vector2i(x, y)); }
-  virtual void update_layout() =0;
-  
-  void set_rect(const Rect& rect_) 
-  {
-    rect = rect_;
-    update_layout();
-  }
+  void set_object(LevelObj* obj);
+
+private:
+  ObjectProperties (const ObjectProperties&);
+  ObjectProperties& operator= (const ObjectProperties&);
 };
-
-} // namespace GUI
+
+} // namespace Editor
 
 #endif
 

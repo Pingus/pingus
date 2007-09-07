@@ -17,36 +17,51 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_GUI_RECT_COMPONENT_HPP
-#define HEADER_PINGUS_GUI_RECT_COMPONENT_HPP
+#ifndef HEADER_FILE_LIST_HPP
+#define HEADER_FILE_LIST_HPP
 
-#include "math/rect.hpp"
-#include "component.hpp"
+#include <boost/signal.hpp>
+#include "system.hpp"
+#include "sprite.hpp"
+#include "gui/rect_component.hpp"
 
-namespace GUI {
+namespace Editor {
 
 /** */
-class RectComponent : public Component
+class FileList : public GUI::RectComponent
 {
-protected:
-  Rect rect;
+private:
+  int hspace;
+  int vspace;
+
+  Sprite file_icon;
+  Sprite directory_icon;
+  System::Directory directory;
+  int current_item;
+  int click_item;
 
 public:
-  RectComponent(const Rect& rect_)
-    : rect(rect_)
-  {}
+  FileList(const Rect& rect);
+
+  void draw (DrawingContext& gc);
+  void update (float delta);
   
-  virtual bool is_at (int x, int y) { return rect.is_inside(Vector2i(x, y)); }
-  virtual void update_layout() =0;
-  
-  void set_rect(const Rect& rect_) 
-  {
-    rect = rect_;
-    update_layout();
-  }
+  void update_layout();
+  void set_directory(const std::string& pathname, const std::string& pattern = "*"); 
+
+  void on_pointer_move (int x, int y);
+
+  void on_primary_button_press (int x, int y);
+  void on_primary_button_release (int x, int y);
+
+  boost::signal<void (const std::string&)> on_click;
+
+private:
+  FileList (const FileList&);
+  FileList& operator= (const FileList&);
 };
 
-} // namespace GUI
+} // namespace Editor
 
 #endif
 

@@ -29,6 +29,7 @@
 #include "../resource.hpp"
 #include "../fonts.hpp"
 #include "../file_dialog.hpp"
+#include "file_load_dialog.hpp"
 #include "../path_manager.hpp"
 #include "../pathname.hpp"
 #include "game_session.hpp"
@@ -60,6 +61,10 @@ EditorScreen::EditorScreen()
   panel = new Panel(this);
 
   object_selector = new ObjectSelector(this);
+
+  FileLoadDialog* file_load_dialog = new FileLoadDialog(this, Rect(100, 150, 700, 450));
+  gui_manager->add(file_load_dialog, true);
+  file_load_dialog->set_directory("/tmp");
 }
 
 // Destructor

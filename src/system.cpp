@@ -63,7 +63,7 @@ System::DirectoryEntry::DirectoryEntry(const std::string& n, FileType t)
 System::Directory
 System::opendir(const std::string& pathname, const std::string& pattern)
 {
-  std::list<System::DirectoryEntry> dir_list;
+  Directory dir_list;
 
 #ifndef WIN32
   DIR* dp;
@@ -86,11 +86,11 @@ System::opendir(const std::string& pathname, const std::string& pattern)
 
 	      if (S_ISDIR(buf.st_mode))
 		{
-		  dir_list.push_back(DirectoryEntry(de->d_name, DirectoryEntry::DE_DIRECTORY));
+		  dir_list.push_back(DirectoryEntry(de->d_name, DE_DIRECTORY));
 		}
 	      else
 		{
-		  dir_list.push_back(DirectoryEntry(de->d_name, DirectoryEntry::DE_FILE));
+		  dir_list.push_back(DirectoryEntry(de->d_name, DE_FILE));
 		}
 	    }
 	}

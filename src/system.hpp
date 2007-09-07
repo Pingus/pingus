@@ -23,7 +23,7 @@
 
 #include "pingus.hpp"
 #include <string>
-#include <list>
+#include <vector>
 #include <map>
 #include "SDL.h"
 
@@ -37,17 +37,19 @@ private:
   static std::string default_email;
   static std::string default_username;
 public:
+  enum FileType { DE_DIRECTORY, DE_FILE };
+
   struct DirectoryEntry
   {
-    enum FileType { DE_DIRECTORY, DE_FILE } type;
+    FileType type;
     std::string name;
 
     DirectoryEntry(const std::string&, FileType t = DE_FILE);
   };
 
   ///
-  typedef std::list<DirectoryEntry> Directory;
-  typedef std::list<DirectoryEntry>::iterator DirectoryIter;
+  typedef std::vector<DirectoryEntry> Directory;
+  typedef Directory::iterator DirectoryIter;
 
   ///
   static Directory opendir(const std::string& pathname, const std::string& pattern = "*");

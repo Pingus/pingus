@@ -1,7 +1,7 @@
 //  $Id$
 //
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2006 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -17,37 +17,24 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-#ifndef HEADER_PINGUS_GUI_RECT_COMPONENT_HPP
-#define HEADER_PINGUS_GUI_RECT_COMPONENT_HPP
+#include "object_properties.hpp"
 
-#include "math/rect.hpp"
-#include "component.hpp"
-
-namespace GUI {
+namespace Editor {
 
-/** */
-class RectComponent : public Component
+ObjectProperties::ObjectProperties(EditorScreen* editor_)
+  : editor(editor_)
 {
-protected:
-  Rect rect;
+}
 
-public:
-  RectComponent(const Rect& rect_)
-    : rect(rect_)
-  {}
-  
-  virtual bool is_at (int x, int y) { return rect.is_inside(Vector2i(x, y)); }
-  virtual void update_layout() =0;
-  
-  void set_rect(const Rect& rect_) 
-  {
-    rect = rect_;
-    update_layout();
-  }
-};
+ObjectProperties::~ObjectProperties()
+{
+}
+
+void
+ObjectProperties::set_object(LevelObj* obj)
+{
+}
 
-} // namespace GUI
-
-#endif
+} // namespace Editor
 
 /* EOF */

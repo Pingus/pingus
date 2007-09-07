@@ -26,7 +26,7 @@ env = Environment(
     CCFLAGS = ['-O0', '-Wall', '-Werror', '-g'],
     CPPDEFINES = ['ENABLE_BINRELOC', 'HAVE_CWIID'],
     CPPPATH = ['..', '.'],
-    LIBS = ['cwiid', 'Xi']) # FIXME: Make this configurable
+    LIBS = ['cwiid', 'Xi', 'boost_signals']) # FIXME: Make this configurable
 
 env.ParseConfig('sdl-config  --cflags --libs')
 env['LIBS'] += ['SDL_image', 'SDL_mixer', 'png']
@@ -91,7 +91,10 @@ env.Program('../pingus', [
 
 'editor/context_menu.cpp',
 'editor/editor_level.cpp', 
-'editor/panel.cpp', 
+'editor/panel.cpp',
+'editor/file_list.cpp',
+'editor/file_load_dialog.cpp',
+'editor/file_save_dialog.cpp', 
 'editor/editor_screen.cpp', 
 'editor/editor_viewport.cpp', 
 'editor/level_objs.cpp',
