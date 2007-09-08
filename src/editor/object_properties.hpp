@@ -32,7 +32,7 @@ class ObjectProperties : public GUI::GroupComponent
 {
 private:
   EditorScreen* editor;
-  LevelObj* current_object;
+  std::vector<LevelObj*> objects;
   
 public:
   ObjectProperties(EditorScreen* editor, const Rect& rect);
@@ -41,6 +41,7 @@ public:
   void set_object(LevelObj* obj);
   void draw_background(DrawingContext& gc);
 
+  void set_objects(const std::vector<LevelObj*>& objs);
 private:
   ObjectProperties (const ObjectProperties&);
   ObjectProperties& operator= (const ObjectProperties&);

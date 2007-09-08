@@ -19,6 +19,8 @@
 
 #include "button.hpp"
 #include "editor_screen.hpp"
+#include "level_objs.hpp"
+#include "fonts.hpp"
 #include "object_properties.hpp"
 
 namespace Editor {
@@ -27,8 +29,7 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
   : GUI::GroupComponent(rect),
     editor(editor_)
 {
-  add(new Button(Rect(10, 10, 100, 20), "Test"), true);
-  add(new Button(Rect(10, 100, 100, 220), "Test 2"), true);
+  add(new Button(Rect(10, 50, 100, 70), "Test 2"), true);
 }
 
 ObjectProperties::~ObjectProperties()
@@ -45,6 +46,28 @@ ObjectProperties::draw_background(DrawingContext& gc)
 {
   gc.draw_fillrect(0,0, rect.get_width(), rect.get_height(), 
                    Color(255, 255, 0));
+
+  std::string obj_type;
+  if (objects.empty())
+    {
+      obj_type = "[Empty]";
+    }
+  else if (objects.size() > 1)
+    {
+      obj_type = "[Group]";
+    }
+  else
+    {
+      obj_type = objects.front()->get_section_name();
+    }
+  gc.print_center(Fonts::courier_small, rect.get_width()/2, 10, 
+                  obj_type);
+}
+
+void
+ObjectProperties::set_objects(const std::vector<LevelObj*>& objs)
+{
+  objects = objs;
 }
 
 } // namespace Editor

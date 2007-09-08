@@ -19,6 +19,7 @@
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <iostream>
+#include <boost/bind.hpp>
 #include "../gui/display.hpp"
 #include "../system.hpp"
 #include "../sound/sound.hpp"
@@ -68,6 +69,8 @@ EditorScreen::EditorScreen()
   file_load_dialog->set_directory(".");
   file_load_dialog->hide();
   gui_manager->add(file_load_dialog, true);
+
+  viewport->selection_changed.connect(boost::bind(&ObjectProperties::set_objects, object_properties, _1));
 }
 
 // Destructor

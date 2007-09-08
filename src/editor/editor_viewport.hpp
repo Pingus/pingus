@@ -23,6 +23,7 @@
 
 #include "../gui/component.hpp"
 #include "../graphic_context_state.hpp"
+#include <boost/signal.hpp>
 #include <vector>
 #include <string>
 
@@ -135,6 +136,8 @@ public:
   void rotate_270_selected_objects();
 
   Vector2i screen2world(int x, int y) const;
+
+  boost::signal<void (const std::vector<LevelObj*>&)> selection_changed;
 private:
   EditorViewport();
   EditorViewport (const EditorViewport&);

@@ -128,6 +128,8 @@ EditorViewport::on_primary_button_press(int x_, int y_)
               selected_objs.clear();
               obj->select();
               selected_objs.push_back(obj);
+
+              selection_changed(selected_objs);
             }
 
           // Allow dragging of the currently selected objects
@@ -140,6 +142,8 @@ EditorViewport::on_primary_button_press(int x_, int y_)
           current_action = HIGHLIGHTING;
           highlighted_area.left = highlighted_area.right  = mouse_world_pos.x;
           highlighted_area.top  = highlighted_area.bottom = mouse_world_pos.y;
+
+          selection_changed(selected_objs);
         }
     }
 }
@@ -164,6 +168,8 @@ EditorViewport::on_primary_button_release(int x_, int y_)
           else
             objs[i]->unselect();
         }
+
+      selection_changed(selected_objs);
     }
   else if (current_action == DRAGGING)
     {
@@ -323,6 +329,8 @@ EditorViewport::delete_selected_objects()
     {
       (*i)->remove();
     }
+  selected_objs.clear();
+  selection_changed(selected_objs);
 }
 
 void
