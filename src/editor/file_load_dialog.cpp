@@ -30,6 +30,7 @@
 #include "editor_screen.hpp"
 #include "gui_style.hpp"
 #include "fonts.hpp"
+#include "pathname.hpp"
 #include "button.hpp"
 #include "file_load_dialog.hpp"
 
@@ -106,9 +107,7 @@ FileLoadDialog::load_file(const System::DirectoryEntry& entry)
   if (entry.type == System::DE_DIRECTORY)
     {
       //std::cout << "Directory: " << entry.name << std::endl;
-      pathname = System::realpath(pathname + "/" + entry.name);
-      file_list.set_directory(pathname);
-      filename = "";
+      set_directory(pathname + "/" + entry.name);
     }
   else
     {
@@ -120,8 +119,10 @@ FileLoadDialog::load_file(const System::DirectoryEntry& entry)
 void
 FileLoadDialog::set_directory(const std::string& pathname_)
 {
+  filename = "";
   pathname = System::realpath(pathname_);
   file_list.set_directory(pathname);
+  update_button_state();
 }
 
 void
@@ -134,20 +135,27 @@ FileLoadDialog::on_cancel()
 void
 FileLoadDialog::on_open()
 {
-  std::cout << "Open" << std::endl;
-  hide();
+  if (!filename.empty())
+    {
+      Pathname file(pathname + "/" + filename, Pathname::SYSTEM_PATH);
+      std::cout << "Open: " << file << std::endl;
+      editor->load(file);
+      hide();
+    }
 }
 
 void
 FileLoadDialog::on_up()
 {
-  std::cout << "Up" << std::endl;
+  file_list.prev_page();
+  update_button_state();
 }
 
 void
 FileLoadDialog::on_down()
 {
-  std::cout << "Down" << std::endl;
+  file_list.next_page();
+  update_button_state();
 }
 
 void
@@ -177,6 +185,20 @@ void
 FileLoadDialog::on_home()
 {
   
+}
+
+void
+FileLoadDialog::update_button_state()
+{
+  if (file_list.has_more_prev_pages())
+    up_button->enable();
+  else
+    up_button->disable();
+
+  if (file_list.has_more_next_pages())
+    down_button->enable();
+  else
+    down_button->disable();
 }
   
 } // namespace Editor

@@ -39,7 +39,9 @@ private:
   System::Directory directory;
   int current_item;
   int click_item;
-
+  int page;
+  int num_pages;
+  
 public:
   FileList(const Rect& rect);
 
@@ -54,9 +56,17 @@ public:
   void on_primary_button_press (int x, int y);
   void on_primary_button_release (int x, int y);
 
+  void next_page();
+  void prev_page();
+
+  bool has_more_next_pages();
+  bool has_more_prev_pages();
+
   boost::signal<void (const System::DirectoryEntry&)> on_click;
 
 private:
+  int items_per_page();
+
   FileList (const FileList&);
   FileList& operator= (const FileList&);
 };

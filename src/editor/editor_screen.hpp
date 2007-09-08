@@ -96,8 +96,6 @@ public:
 
   /** Load a new level */
   void load(const Pathname& file);
-
-  void load_level(const std::string& file);
 
   // Functions accessible from the GUI
   void level_new();

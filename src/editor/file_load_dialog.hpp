@@ -67,7 +67,10 @@ public:
   void on_down();
   
   void on_home();
+
 private:
+  void update_button_state();
+
   FileLoadDialog (const FileLoadDialog&);
   FileLoadDialog& operator= (const FileLoadDialog&);
 };

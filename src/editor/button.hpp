@@ -38,6 +38,7 @@ private:
   std::string text;
   bool mouse_over;
   bool mouse_down;
+  bool enabled;
 
 public:
   Button(const Rect& rect, const std::string& text);
@@ -50,6 +51,9 @@ public:
   void on_pointer_leave();
   void on_primary_button_press(int x, int y);
   void on_primary_button_release(int x, int y);
+
+  void enable()  { enabled = true; }
+  void disable() { enabled = false; }
 
   boost::signal<void()> on_click;
 
