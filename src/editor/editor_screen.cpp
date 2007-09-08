@@ -254,25 +254,25 @@ EditorScreen::objects_delete()
 void 
 EditorScreen::objects_raise_to_top()
 {
-  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+  viewport->raise_objects_to_top();
 }
 
 void 
 EditorScreen::objects_raise()
 {
-  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+  viewport->raise_objects();
 }
 
 void 
 EditorScreen::objects_lower()
 {
-  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+  viewport->lower_objects();
 }
 
 void 
 EditorScreen::objects_lower_to_bottom()
 {
-  std::cout << "Function at '" << __FILE__ << ":" << __LINE__ << "' is unimplemented" << std::endl; 
+  viewport->lower_objects_to_bottom();
 }
 
 

@@ -135,6 +135,18 @@ public:
   void rotate_90_selected_objects();
   void rotate_270_selected_objects();
 
+  void raise_object(LevelObj* obj);
+  void lower_object(LevelObj* obj);
+
+  void raise_object_to_top(LevelObj* obj);
+  void lower_object_to_bottom(LevelObj* obj);
+
+  void raise_objects();
+  void lower_objects();
+
+  void raise_objects_to_top();
+  void lower_objects_to_bottom();
+
   Vector2i screen2world(int x, int y) const;
 
   boost::signal<void (const std::vector<LevelObj*>&)> selection_changed;

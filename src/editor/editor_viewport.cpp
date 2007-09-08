@@ -326,9 +326,8 @@ void
 EditorViewport::delete_selected_objects()
 {
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
-    {
-      (*i)->remove();
-    }
+    (*i)->remove();
+  
   selected_objs.clear();
   selection_changed(selected_objs);
 }
@@ -366,13 +365,103 @@ EditorViewport::rotate_270_selected_objects()
   for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
     {
       (*i)->set_modifier(ResourceModifierNS::rotate_270((*i)->get_modifier()));
-    }  
+    }
 }
 
 Vector2i
 EditorViewport::screen2world(int x, int y) const
 {
   return Vector2i(state.screen2world(drawing_context->screen_to_world(Vector2i(x, y))));
+}
+
+void
+EditorViewport::raise_object(LevelObj* obj)
+{
+  for(std::vector<LevelObj*>::size_type i = 0; i < objs.size(); ++i)
+    {
+      if (objs[i] == obj)
+        {
+          if (i != objs.size()-1)
+            std::swap(objs[i], objs[i+1]);
+          break;
+        }
+    }
+}
+
+void
+EditorViewport::lower_object(LevelObj* obj)
+{
+  for(std::vector<LevelObj*>::size_type i = 0; i < objs.size(); ++i)
+    {
+      if (objs[i] == obj)
+        {
+          if (i != 0)
+            std::swap(objs[i], objs[i-1]);
+          break;
+        }
+    }
+}
+
+void
+EditorViewport::raise_object_to_top(LevelObj* obj)
+{
+  for(std::vector<LevelObj*>::size_type i = 0; i < objs.size(); ++i)
+    {
+      if (objs[i] == obj)
+        {
+          for(int j = i; j < int(objs.size()-1); ++j)
+            std::swap(objs[j], objs[j+1]);
+
+          break;
+        }      
+    }
+}
+
+void
+EditorViewport::lower_object_to_bottom(LevelObj* obj)
+{
+  for(std::vector<LevelObj*>::size_type i = 0; i < objs.size(); ++i)
+    {
+      if (objs[i] == obj)
+        {
+          for(int j = i; j >= 1; --j)
+            std::swap(objs[j], objs[j-1]);
+          
+          break;
+        }      
+    }
+}
+
+void
+EditorViewport::raise_objects()
+{
+  for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
+    {
+      raise_object(*i);
+    }
+}
+
+void
+EditorViewport::lower_objects()
+{
+  for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
+    {
+      lower_object(*i);
+    }
+}
+
+void
+EditorViewport::raise_objects_to_top()
+{
+  for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
+    raise_object_to_top(*i);
+}
+
+void
+EditorViewport::lower_objects_to_bottom()
+{
+  for(std::vector<LevelObj*>::iterator i = selected_objs.begin(); i != selected_objs.end(); ++i)
+    lower_object_to_bottom(*i); 
 }
 
 } // namespace Editor
