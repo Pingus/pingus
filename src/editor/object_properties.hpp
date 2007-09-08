@@ -20,20 +20,26 @@
 #ifndef HEADER_EDITOR_OBJECT_PROPERTIES_HPP
 #define HEADER_EDITOR_OBJECT_PROPERTIES_HPP
 
+
+#include "gui/group_component.hpp"
+
 namespace Editor {
 
+class EditorScreen;
+
 /** */
-class ObjectProperties
+class ObjectProperties : public GUI::GroupComponent
 {
 private:
-  Editor* editor;
+  EditorScreen* editor;
   LevelObj* current_object;
   
 public:
-  ObjectProperties(EditorScreen* editor);
+  ObjectProperties(EditorScreen* editor, const Rect& rect);
   ~ObjectProperties();
   
   void set_object(LevelObj* obj);
+  void draw_background(DrawingContext& gc);
 
 private:
   ObjectProperties (const ObjectProperties&);

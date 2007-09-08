@@ -523,5 +523,61 @@ System::get_mtime(const std::string& filename)
 #endif
 }
 
+std::string
+System::realpath(const std::string& pathname)
+{
+  std::string fullpath;
+  
+  if (pathname.size() > 0 && pathname[0] == '/')
+    {
+      fullpath = pathname;
+    }
+  else
+    {
+      char buf[PATH_MAX];
+      if (getcwd(buf, PATH_MAX) == 0)
+        {
+          std::cout << "System::realpath: Error: couldn't getcwd()" << std::endl;
+          return pathname;
+        }
+      
+      fullpath = fullpath + buf + "/"  + pathname;
+    }
+  
+  std::string result;
+  std::string::reverse_iterator last_slash = fullpath.rbegin();
+  int skip = 0;
+  // /foo/bar/../../bar/baz/
+  //std::cout << "fullpath: '" << fullpath << "'" << std::endl;
+  for(std::string::reverse_iterator i = fullpath.rbegin(); i != fullpath.rend(); ++i)
+    { // FIXME: Little crude and hackish
+      if (*i == '/')
+        {
+          std::string dir(last_slash, i); 
+          //std::cout << "'" << dir << "'" << std::endl;
+          if (dir == ".." || dir == "/..")
+            {
+              skip += 1;
+            }
+          else if (dir == "." || dir == "/." || dir.empty() || dir == "/")
+            {
+              // pass
+            }
+          else
+            {
+              if (skip == 0)
+                {
+                  result += dir;
+                }
+              else
+                skip -= 1;
+            }
+
+          last_slash = i;
+        }
+    }
+  
+  return "/" + std::string(result.rbegin(), result.rend());
+}
 
 /* EOF */

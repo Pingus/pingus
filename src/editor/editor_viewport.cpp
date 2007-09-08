@@ -39,7 +39,7 @@ EditorViewport::EditorViewport(EditorScreen* e)
   : rect(0,
          38,
          Display::get_width() - 244, 
-         600),
+         Display::get_height()),
     state(rect.get_width(), rect.get_height()),
     drawing_context(new DrawingContext(rect)),
     editor(e),

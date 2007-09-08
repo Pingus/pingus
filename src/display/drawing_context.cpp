@@ -43,6 +43,7 @@ private:
   std::string text;
   float x;
   float y;
+
 public:
   FontDrawingRequest(Font font_, Origin origin_, const Vector3f& pos, const std::string& text_, float z)
     : DrawingRequest(Vector3f(pos.x, pos.y, z)),
@@ -368,9 +369,9 @@ DrawingContext::get_world_clip_rect() const
 }
 
 void
-DrawingContext::set_rect(const Rect& rect)
+DrawingContext::set_rect(const Rect& rect_)
 {
-  std::cout << "DrawingContext::set_rect(const Rect& rect): unimplemented" << std::endl;
+  rect = rect_;
 }
 
 Rect

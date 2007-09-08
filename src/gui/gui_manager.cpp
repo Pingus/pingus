@@ -129,7 +129,7 @@ GUIManager::component_at(int x, int y)
   for (std::vector<Component*>::reverse_iterator i = components.rbegin ();
        i != components.rend (); ++i)
     {
-      if ((*i)->is_at (x, y))
+      if ((*i)->is_visible() && (*i)->is_at (x, y))
 	return *i;
     }
   return 0;

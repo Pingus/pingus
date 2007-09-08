@@ -44,6 +44,8 @@ public:
     rect = rect_;
     update_layout();
   }
+
+  Rect get_rect() const { return rect; }
 };
 
 } // namespace GUI

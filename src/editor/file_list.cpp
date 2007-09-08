@@ -39,10 +39,30 @@ FileList::update_layout()
   vspace = 20;
 }
 
+struct DirectorySorter
+{
+  bool operator()(const System::DirectoryEntry& lhs,
+                  const System::DirectoryEntry& rhs)
+  {
+    if (lhs.type == rhs.type)
+      {
+        return lhs.name < rhs.name;
+      }
+    else
+      {
+        if (lhs.type == System::DE_DIRECTORY)
+          return true;
+        else
+          return false;
+      }
+  }
+};
+
 void
 FileList::set_directory(const std::string& pathname, const std::string& pattern)
 {
   directory = System::opendir(pathname, pattern);
+  std::sort(directory.begin(), directory.end(), DirectorySorter());
 }
 
 void
@@ -92,10 +112,10 @@ void
 FileList::on_primary_button_release (int x, int y)
 {
   on_pointer_move(x,y);
-  if (click_item == current_item)
+  if (click_item == current_item && current_item != -1)
     {
-      std::cout << directory[current_item].name << std::endl;
-      on_click(directory[current_item].name);
+      //std::cout << directory[current_item].name << std::endl;
+      on_click(directory[current_item]);
     }
   click_item = -1;
 }

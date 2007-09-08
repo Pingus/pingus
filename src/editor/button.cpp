@@ -23,57 +23,66 @@
 **  02111-1307, USA.
 */
 
-#ifndef HEADER_FILE_LOAD_DIALOG_HPP
-#define HEADER_FILE_LOAD_DIALOG_HPP
-
-#include "file_list.hpp"
-#include "gui/group_component.hpp"
+#include "fonts.hpp"
+#include "gui_style.hpp"
+#include "button.hpp"
 
 namespace Editor {
 
-class Button;
-class EditorScreen;
-
-/** */
-class FileLoadDialog : public GUI::GroupComponent
+Button::Button(const Rect& rect, const std::string& text_)
+  : RectComponent(rect), 
+    text(text_),
+    mouse_over(false),
+    mouse_down(false)
 {
-private:
-  EditorScreen* editor;
-  FileList file_list;
-  Button* up_button;
-  Button* down_button;
-  Button* open_button;
-  Button* cancel_button;
+}
 
-  Button* home_button;
+void
+Button::draw (DrawingContext& gc)
+{
+ if (mouse_down && mouse_over)
+   GUIStyle::draw_lowered_box(gc, rect, Color(237, 233, 227), 2);
+ else if (mouse_over)
+   GUIStyle::draw_raised_box(gc, rect, Color(255, 255, 255), 2);
+ else
+   GUIStyle::draw_raised_box(gc, rect, Color(237, 233, 227), 2);  
+ 
+ gc.print_center(Fonts::courier_small, 
+                 rect.left + rect.get_width()/2, rect.top + rect.get_height()/2 - 6,
+                 text);
+}
 
-  std::string pathname;
-  std::string filename;
+void
+Button::update (float delta)
+{  
+}
 
-public:
-  FileLoadDialog(EditorScreen* editor, const Rect& rect);
-  ~FileLoadDialog();
+void
+Button::on_pointer_enter () 
+{
+  mouse_over = true;
+}
+
+void
+Button::on_pointer_leave () 
+{
+  mouse_over = false;
+}
   
-  void draw_background(DrawingContext& gc);
-  void update_layout();
+void
+Button::on_primary_button_press (int x, int y) 
+{
+  mouse_down = true;
+}
 
-  void load_file(const System::DirectoryEntry& entry);
-  void set_directory(const std::string& pathname);
-
-  void on_cancel();
-  void on_open();
-
-  void on_up();
-  void on_down();
-  
-  void on_home();
-private:
-  FileLoadDialog (const FileLoadDialog&);
-  FileLoadDialog& operator= (const FileLoadDialog&);
-};
+void
+Button::on_primary_button_release (int x, int y) 
+{ 
+  mouse_down = false;
+  if (mouse_over)
+    on_click();    
+}
 
 } // namespace Editor
-
-#endif
 
 /* EOF */

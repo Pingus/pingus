@@ -28,6 +28,9 @@
 #include "display/drawing_context.hpp"
 #include "gui/gui_manager.hpp"
 #include "editor_screen.hpp"
+#include "gui_style.hpp"
+#include "fonts.hpp"
+#include "button.hpp"
 #include "file_load_dialog.hpp"
 
 namespace Editor {
@@ -35,12 +38,44 @@ namespace Editor {
 FileLoadDialog::FileLoadDialog(EditorScreen* editor_, const Rect& rect)
   : GroupComponent(rect),
     editor(editor_),
-    file_list(Rect(10, 10,
-                   rect.get_width()-10, rect.get_height() - 10))
+    file_list(Rect(4, 30 + 30 + 30,
+                   rect.get_width()-4 - 30, rect.get_height() - 4 - 35))
 {
   add(&file_list, false);
-  
   file_list.on_click.connect(boost::bind(&FileLoadDialog::load_file, this, _1));
+
+  Rect file_rect = file_list.get_rect();
+  up_button = new Button(Rect(file_rect.right + 2, file_rect.top,
+                                     rect.get_width()-4, file_rect.top + file_rect.get_height()/2 - 1),
+                                "/\\\n|");
+  down_button = new Button(Rect(file_rect.right + 2, file_rect.top + file_rect.get_height()/2 + 1,
+                                rect.get_width()-4, file_rect.bottom),
+                           "|\n\\/");
+
+  // FIXME: This could be turned into system specific hotkeys (C:, D:,
+  // etc. on windows, Home, '/', Datadir on Linux)
+  home_button = new Button(Rect(Vector2i(4, rect.get_height() - 4 - 30),
+                                        Size(100, 30)), "Home");
+  
+  open_button = new Button(Rect(Vector2i(rect.get_width() - 104, rect.get_height() - 4 - 30),
+                                        Size(100, 30)), "Open");
+  
+  cancel_button = new Button(Rect(Vector2i(rect.get_width() - 104 - 104, rect.get_height() - 4 - 30),
+                                  Size(100, 30)), "Cancel");
+  
+  up_button->on_click.connect(boost::bind(&FileLoadDialog::on_up, this));
+  down_button->on_click.connect(boost::bind(&FileLoadDialog::on_down, this));
+  home_button->on_click.connect(boost::bind(&FileLoadDialog::on_home, this));
+  open_button->on_click.connect(boost::bind(&FileLoadDialog::on_open, this));
+  cancel_button->on_click.connect(boost::bind(&FileLoadDialog::on_cancel, this));
+  
+  add(up_button, true);
+  add(down_button, true);
+
+  add(home_button, true);
+
+  add(open_button, true);
+  add(cancel_button, true);
 }
 
 FileLoadDialog::~FileLoadDialog()
@@ -50,23 +85,100 @@ FileLoadDialog::~FileLoadDialog()
 void
 FileLoadDialog::draw_background(DrawingContext& gc)
 {
-  gc.draw_fillrect(0, 0, rect.get_width(), rect.get_height(), Color(255, 255, 255));
+  GUIStyle::draw_raised_box(gc, Rect(0,0,rect.get_width(), rect.get_height()));
+  gc.draw_fillrect(4,4,rect.get_width()-4, 30, Color(77,130,180));
+  gc.print_center(Fonts::pingus_small, rect.get_width()/2, 2, "Open a level");
+
+  GUIStyle::draw_lowered_box(gc, Rect(4 + 60,4+30,rect.get_width()-4, 26+30),
+                             Color(0,0,0));
+  gc.print_left(Fonts::courier_small, 10, 8+30, "File: ");
+  gc.print_left(Fonts::courier_small, 10 + 60, 8+30, filename);
+
+  GUIStyle::draw_lowered_box(gc, Rect(4 + 60,4+60,rect.get_width()-4, 26+60),
+                             Color(0,0,0));
+  gc.print_left(Fonts::courier_small, 10, 8+60, "Path: ");
+  gc.print_left(Fonts::courier_small, 10 + 60, 8+60, pathname);
 }
   
 void
-FileLoadDialog::load_file(const std::string& file) const
+FileLoadDialog::load_file(const System::DirectoryEntry& entry)
 {
-  std::cout << "FileLoadDialog::load_file: " << file << std::endl;
-  
+  if (entry.type == System::DE_DIRECTORY)
+    {
+      //std::cout << "Directory: " << entry.name << std::endl;
+      pathname = System::realpath(pathname + "/" + entry.name);
+      file_list.set_directory(pathname);
+      filename = "";
+    }
+  else
+    {
+      //std::cout << pathname + "/" + entry.name << std::endl;
+      filename = entry.name;
+    }
 }
 
 void
 FileLoadDialog::set_directory(const std::string& pathname_)
 {
-  pathname = pathname_;
+  pathname = System::realpath(pathname_);
   file_list.set_directory(pathname);
 }
-
+
+void
+FileLoadDialog::on_cancel()
+{
+  std::cout << "Cancel" << std::endl;
+  hide();
+}
+
+void
+FileLoadDialog::on_open()
+{
+  std::cout << "Open" << std::endl;
+  hide();
+}
+
+void
+FileLoadDialog::on_up()
+{
+  std::cout << "Up" << std::endl;
+}
+
+void
+FileLoadDialog::on_down()
+{
+  std::cout << "Down" << std::endl;
+}
+
+void
+FileLoadDialog::update_layout()
+{
+  GUI::GroupComponent::update_layout();
+
+  file_list.set_rect(Rect(4, 30 + 30 + 30,
+                          rect.get_width()-4 - 30, rect.get_height() - 4 - 35));
+  
+  Rect file_rect = file_list.get_rect();
+
+  up_button->set_rect(Rect(file_rect.right + 2, file_rect.top,
+                          rect.get_width()-4, file_rect.top + file_rect.get_height()/2 - 1));
+                     
+  down_button->set_rect(Rect(file_rect.right + 2, file_rect.top + file_rect.get_height()/2 + 1,
+                             rect.get_width()-4, file_rect.bottom));
+  
+  open_button->set_rect(Rect(Vector2i(rect.get_width() - 104, rect.get_height() - 4 - 30),
+                             Size(100, 30)));
+  
+  cancel_button->set_rect(Rect(Vector2i(rect.get_width() - 104 - 104, rect.get_height() - 4 - 30),
+                               Size(100, 30)));
+}
+
+void
+FileLoadDialog::on_home()
+{
+  
+}
+  
 } // namespace Editor
 
 /* EOF */

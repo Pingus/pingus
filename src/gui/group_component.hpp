@@ -68,6 +68,8 @@ public:
 
   void add(Component*, bool delete_comp);
 
+  void update_layout();
+
   Component* component_at (const Vector2i& pos);
 private:
   GroupComponent(const GroupComponent&);

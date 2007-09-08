@@ -139,7 +139,7 @@ ObjectSelector::ObjectSelector(EditorScreen* editor_)
   : editor(editor_),
     button_pos(0,0),
     rect(Vector2i(Display::get_width() - 244 + 2,  38 + 3 + 62),
-         Size(240, 495)),
+         Size(240, Display::get_height() - (600 - 495))),
     drawing_context(new DrawingContext(rect)),
     offset(0),
     old_offset(0),

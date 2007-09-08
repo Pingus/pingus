@@ -36,6 +36,7 @@ class LevelObj;
 class Panel;
 class EditorViewport;
 class ObjectSelector;
+class ObjectProperties;
 
 /** This class is the screen that contains all of the
     editor objects */
@@ -45,10 +46,11 @@ private:
   EditorLevel* plf;
 
   Panel* panel;
-  EditorViewport* viewport;
-  ObjectSelector* object_selector;
-  FileLoadDialog* file_load_dialog;
-
+  EditorViewport*   viewport;
+  ObjectSelector*   object_selector;
+  ObjectProperties* object_properties;
+  FileLoadDialog*   file_load_dialog;
+  
   bool show_help;
 
 public:

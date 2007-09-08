@@ -54,7 +54,7 @@ public:
   void on_primary_button_press (int x, int y);
   void on_primary_button_release (int x, int y);
 
-  boost::signal<void (const std::string&)> on_click;
+  boost::signal<void (const System::DirectoryEntry&)> on_click;
 
 private:
   FileList (const FileList&);

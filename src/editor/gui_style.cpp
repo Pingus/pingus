@@ -23,57 +23,34 @@
 **  02111-1307, USA.
 */
 
-#ifndef HEADER_FILE_LOAD_DIALOG_HPP
-#define HEADER_FILE_LOAD_DIALOG_HPP
-
-#include "file_list.hpp"
-#include "gui/group_component.hpp"
+#include "gui_style.hpp"
 
 namespace Editor {
 
-class Button;
-class EditorScreen;
-
-/** */
-class FileLoadDialog : public GUI::GroupComponent
+void
+GUIStyle::draw_raised_box(DrawingContext& gc, const Rect& rect, const Color& color, int border)
 {
-private:
-  EditorScreen* editor;
-  FileList file_list;
-  Button* up_button;
-  Button* down_button;
-  Button* open_button;
-  Button* cancel_button;
+  // FIXME: Should use draw_line
+  gc.draw_fillrect(rect.left, rect.top, rect.right, rect.bottom,
+                   Color(255, 255, 255));
+  gc.draw_fillrect(rect.left+border, rect.top+border, rect.right, rect.bottom,
+                          Color(169, 157, 140));
+  gc.draw_fillrect(rect.left+border, rect.top+border, rect.right-border, rect.bottom-border,
+                   color);
+}
 
-  Button* home_button;
-
-  std::string pathname;
-  std::string filename;
-
-public:
-  FileLoadDialog(EditorScreen* editor, const Rect& rect);
-  ~FileLoadDialog();
-  
-  void draw_background(DrawingContext& gc);
-  void update_layout();
-
-  void load_file(const System::DirectoryEntry& entry);
-  void set_directory(const std::string& pathname);
-
-  void on_cancel();
-  void on_open();
-
-  void on_up();
-  void on_down();
-  
-  void on_home();
-private:
-  FileLoadDialog (const FileLoadDialog&);
-  FileLoadDialog& operator= (const FileLoadDialog&);
-};
+void
+GUIStyle::draw_lowered_box(DrawingContext& gc, const Rect& rect, const Color& color, int border)
+{
+  // FIXME: Should use draw_line
+  gc.draw_fillrect(rect.left, rect.top, rect.right, rect.bottom,
+                   Color(169, 157, 140));
+  gc.draw_fillrect(rect.left+border, rect.top+border, rect.right, rect.bottom,
+                   Color(255, 255, 255));
+  gc.draw_fillrect(rect.left+border, rect.top+border, rect.right-border, rect.bottom-border,
+                   color);  
+}
 
 } // namespace Editor
-
-#endif
 
 /* EOF */

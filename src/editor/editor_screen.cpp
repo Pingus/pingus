@@ -40,6 +40,7 @@
 #include "editor_viewport.hpp"
 #include "level_objs.hpp"
 #include "object_selector.hpp"
+#include "object_properties.hpp"
 
 namespace Editor {
 
@@ -59,9 +60,12 @@ EditorScreen::EditorScreen()
   panel = new Panel(this);
 
   object_selector = new ObjectSelector(this);
-
-  file_load_dialog = new FileLoadDialog(this, Rect(100, 150, 700, 450));
-  file_load_dialog->set_directory("/tmp");
+  object_properties = new ObjectProperties(this, Rect(100,100,500,500));
+  gui_manager->add(object_properties, true);
+  file_load_dialog = new FileLoadDialog(this, Rect(Vector2i(50, 50), 
+                                                   Size(Display::get_width() - 100, 
+                                                        Display::get_height() - 100)));
+  file_load_dialog->set_directory(".");
   file_load_dialog->hide();
   gui_manager->add(file_load_dialog, true);
 }
@@ -195,7 +199,7 @@ EditorScreen::level_load()
   else 
     {
       //file_load_dialog->set_rect(Rect(Vector2i(rand() % 200, rand() % 200),
-      //                                 Size(400, 300)));
+      //                                Size(rand()%600+200, rand()%600+300)));
       file_load_dialog->show();
     }
 }

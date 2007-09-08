@@ -23,53 +23,39 @@
 **  02111-1307, USA.
 */
 
-#ifndef HEADER_FILE_LOAD_DIALOG_HPP
-#define HEADER_FILE_LOAD_DIALOG_HPP
+#ifndef HEADER_BUTTON_HPP
+#define HEADER_BUTTON_HPP
 
-#include "file_list.hpp"
-#include "gui/group_component.hpp"
+#include <boost/signal.hpp>
+#include "gui/rect_component.hpp"
 
 namespace Editor {
 
-class Button;
-class EditorScreen;
-
 /** */
-class FileLoadDialog : public GUI::GroupComponent
+class Button : public GUI::RectComponent
 {
 private:
-  EditorScreen* editor;
-  FileList file_list;
-  Button* up_button;
-  Button* down_button;
-  Button* open_button;
-  Button* cancel_button;
-
-  Button* home_button;
-
-  std::string pathname;
-  std::string filename;
+  std::string text;
+  bool mouse_over;
+  bool mouse_down;
 
 public:
-  FileLoadDialog(EditorScreen* editor, const Rect& rect);
-  ~FileLoadDialog();
+  Button(const Rect& rect, const std::string& text);
+
+  void draw (DrawingContext& gc);
+  void update (float delta);
+  void update_layout() {}
   
-  void draw_background(DrawingContext& gc);
-  void update_layout();
+  void on_pointer_enter();
+  void on_pointer_leave();
+  void on_primary_button_press(int x, int y);
+  void on_primary_button_release(int x, int y);
 
-  void load_file(const System::DirectoryEntry& entry);
-  void set_directory(const std::string& pathname);
+  boost::signal<void()> on_click;
 
-  void on_cancel();
-  void on_open();
-
-  void on_up();
-  void on_down();
-  
-  void on_home();
 private:
-  FileLoadDialog (const FileLoadDialog&);
-  FileLoadDialog& operator= (const FileLoadDialog&);
+  Button (const Button&);
+  Button& operator= (const Button&);
 };
 
 } // namespace Editor

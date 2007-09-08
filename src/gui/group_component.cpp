@@ -152,7 +152,7 @@ GroupComponent::component_at (const Vector2i& pos)
 {
   for(Components::iterator i = children.begin(); i != children.end(); ++i)
     {
-      if ((*i)->is_at(pos.x, pos.y))
+      if ((*i)->is_visible() && (*i)->is_at(pos.x, pos.y))
         return *i;
     }
   return 0;
@@ -162,6 +162,12 @@ void
 GroupComponent::add(Component* comp, bool delete_comp)
 {
   children.push_back(comp);
+}
+
+void
+GroupComponent::update_layout()
+{
+  drawing_context.set_rect(rect);
 }
 
 } // namespace GUI

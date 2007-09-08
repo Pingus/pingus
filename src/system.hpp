@@ -125,6 +125,9 @@ public:
   /** Translate to 'en' */
   static std::string translate_default(const std::map<std::string, std::string>& strs);
 
+  /** Removes all .., double slashes and such from a pathname */
+  static std::string realpath(const std::string& pathname);
+
   /** Read a file and generate a checksum and return it. The checksum
    generation is very primitiv and should probably be replaced by CRC
    or md5. */
