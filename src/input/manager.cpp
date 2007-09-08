@@ -25,11 +25,11 @@
 #include "sdl_driver.hpp"
 #include "core_driver.hpp"
 #ifdef HAVE_CWIID
-#  include "usbmouse_driver.hpp"
 #  include "wiimote_driver.hpp"
 #endif 
 #ifndef WIN32
 #  include "xinput_driver.hpp"
+#  include "usbmouse_driver.hpp"
 #endif
 #include "manager.hpp"
 
