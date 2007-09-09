@@ -31,7 +31,7 @@ private:
   Font reference;
   float scrollx;
   float scrolly;
-
+  bool  dark;
 public:
   FontTestScreen(const Pathname& fontfile);
 

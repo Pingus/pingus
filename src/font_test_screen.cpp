@@ -25,7 +25,8 @@
 
 FontTestScreen::FontTestScreen(const Pathname& fontfile)
   : scrollx(0),
-    scrolly(0)
+    scrolly(0),
+    dark(true)
 {
   std::cout << "### Loading font file: " << fontfile << std::endl;
   font = Font(FontDescription(fontfile));
@@ -42,11 +43,11 @@ FontTestScreen::draw(DrawingContext& gc)
         if ((x+y) % 2 != 0)
           gc.draw_fillrect(x*checker, y*checker,
                            x*checker + checker, y*checker + checker,
-                           Color(50, 50, 50));
+                           dark ? Color(50, 50, 50) : Color(255, 255, 255));
         else
           gc.draw_fillrect(x*checker, y*checker,
                            x*checker + checker, y*checker + checker,
-                           Color(0, 0, 0));          
+                           dark ? Color(0, 0, 0) : Color(200,200,200));
       }
 
   gc.print_left(Fonts::chalk_large, 10, 10, "Pingus - Font Test");
@@ -108,13 +109,19 @@ FontTestScreen::update (const GameDelta& delta)
     {
       switch (i->type)
 	{
-	case Input::SCROLLER_EVENT_TYPE:
-          scrollx += i->scroll.x_delta;
-          scrolly += i->scroll.y_delta;
-	  break;
+          case Input::BUTTON_EVENT_TYPE:
+            if (i->button.state == Input::BUTTON_PRESSED &&
+                i->button.name == Input::PRIMARY_BUTTON)
+              dark = !dark;
+            break;
+            
+          case Input::SCROLLER_EVENT_TYPE:
+            scrollx += i->scroll.x_delta;
+            scrolly += i->scroll.y_delta;
+            break;
           
-        default:
-          break;
+          default:
+            break;
         }
     } 
 }
