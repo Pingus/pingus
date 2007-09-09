@@ -42,8 +42,8 @@ private:
   Vector2i button_pos;
   Rect rect;
   DrawingContext* drawing_context;
-  float offset;
-  float old_offset;
+  float    offset;
+  float    old_offset;
   Vector2i drag_start;
   Vector2i mouse_pos;
   Vector2i real_mouse_pos;

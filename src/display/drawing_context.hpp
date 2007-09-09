@@ -85,6 +85,12 @@ public:
 		      const Color& color, float z = 0);
   void draw_rect (float x1, float y1, float x2, float y2, 
 		  const Color& color, float z = 0);
+
+  void draw_fillrect (const Rect& rect,
+		      const Color& color, float z = 0);
+  void draw_rect (const Rect& rect,
+		  const Color& color, float z = 0);
+
   void draw_pixel (float x_pos, float y_pos, 
 		   const Color& color);
   void draw_circle (float x_pos, float y_pos, float radius,
@@ -133,6 +139,7 @@ public:
   Vector2i screen_to_world(const Vector2i pos);
   Vector2i world_to_screen(const Vector2i pos);
 
+  void update_layout() {}
 private:
   DrawingContext (const DrawingContext&);
   DrawingContext& operator= (const DrawingContext&);

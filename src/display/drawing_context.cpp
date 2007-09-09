@@ -274,6 +274,30 @@ DrawingContext::draw_line (float x1, float y1, float x2, float y2,
 }
 
 void
+DrawingContext::draw_fillrect (const Rect& rect, const Color& color, float z)
+{
+  draw(new RectDrawingRequest(Rect(int(rect.left + translate_stack.back().x), 
+                                   int(rect.top + translate_stack.back().y), 
+                                   int(rect.right + translate_stack.back().x), 
+                                   int(rect.bottom + translate_stack.back().y)),
+                              color,
+                              true,
+                              z));  
+}
+
+void
+DrawingContext::draw_rect (const Rect& rect, const Color& color, float z)
+{
+  draw(new RectDrawingRequest(Rect(int(rect.left + translate_stack.back().x),
+                                   int(rect.top + translate_stack.back().y), 
+                                   int(rect.right + translate_stack.back().x),
+                                   int(rect.bottom + translate_stack.back().y)),
+                              color,
+                              false,
+                              z));  
+}
+
+void
 DrawingContext::draw_fillrect (float x1, float y1, float x2, float y2, 
                                const Color& color, float z)
 {

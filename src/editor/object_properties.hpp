@@ -20,13 +20,14 @@
 #ifndef HEADER_EDITOR_OBJECT_PROPERTIES_HPP
 #define HEADER_EDITOR_OBJECT_PROPERTIES_HPP
 
-
 #include "gui/group_component.hpp"
 
 namespace Editor {
 
 class Label;
 class EditorScreen;
+class Combobox;
+class ComboItem;
 
 /** */
 class ObjectProperties : public GUI::GroupComponent
@@ -36,8 +37,9 @@ private:
   std::vector<LevelObj*> objects;
   Label* type_label;
 
-  Label* gptype_label;
-  RadioButtonGroup* gptype_type;
+  // Groundpiece Type
+  Label*    gptype_label;
+  Combobox* gptype_type;
 
 public:
   ObjectProperties(EditorScreen* editor, const Rect& rect);
@@ -47,9 +49,9 @@ public:
   void draw_background(DrawingContext& gc);
 
   void set_objects(const std::vector<LevelObj*>& objs);
-private:
-  ObjectProperties (const ObjectProperties&);
-  ObjectProperties& operator= (const ObjectProperties&);
+
+  void on_gptype_change(const ComboItem& item);
+
 };
 
 } // namespace Editor

@@ -17,12 +17,15 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+#include <boost/bind.hpp>
 #include "button.hpp"
 #include "editor_screen.hpp"
 #include "level_objs.hpp"
 #include "fonts.hpp"
 #include "label.hpp"
 #include "gui_style.hpp"
+#include "groundtype.hpp"
+#include "combobox.hpp"
 #include "object_properties.hpp"
 
 namespace Editor {
@@ -33,6 +36,19 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
 {
   add(type_label = new Label(Rect(Vector2i(10, 10), Size(120, 20)), "Object:"), true);
 
+  add(gptype_label = new Label(Rect(Vector2i(10, 100), Size(120, 20)), "GPType:"), true);
+  add(gptype_type  = new Combobox(Rect(Vector2i(60, 100), Size(120, 20))), true);
+
+  gptype_type->add(Groundtype::GP_TRANSPARENT, "Transparent");
+  gptype_type->add(Groundtype::GP_SOLID,       "Solid");
+  gptype_type->add(Groundtype::GP_GROUND,      "Ground");
+  gptype_type->add(Groundtype::GP_BRIDGE,      "Bridge");
+  gptype_type->add(Groundtype::GP_WATER,       "Water");
+  gptype_type->add(Groundtype::GP_LAVA,        "Lava");
+  gptype_type->add(Groundtype::GP_REMOVE,      "Remove");
+  gptype_type->set_selected_item(Groundtype::GP_GROUND);
+  gptype_type->on_select.connect(boost::bind(&ObjectProperties::on_gptype_change, this, _1));
+  
   add(new Label(Rect(Vector2i(  10,  30), Size( 80, 20)), "Type:"), true);
 
   add(new Button(Rect(Vector2i( 60,  30), Size( 80, 20)), "Ground"), true);
@@ -75,6 +91,13 @@ ObjectProperties::set_objects(const std::vector<LevelObj*>& objs)
     {
       type_label->set_text("Object: " + objects.front()->get_section_name());
     }
+}
+
+void
+ObjectProperties::on_gptype_change(const ComboItem& item)
+{
+  std::cout << "ObjectProperties::on_gpytpe_change: switch to: "
+            << Groundtype::type_to_string((Groundtype::GPType)item.id) << std::endl;
 }
 
 } // namespace Editor
