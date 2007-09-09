@@ -34,6 +34,8 @@ Font pingus_large;
 
 Font courier_small;
 
+Font verdana11;
+
 Font lcd;
 
 void
@@ -49,6 +51,8 @@ init ()
 
   courier_small = Resource::load_font("fonts/courier_small" + std::string("-") + encoding);
 
+  verdana11 = Resource::load_font("fonts/verdana11" + std::string("-") + encoding);
+
   lcd          = Resource::load_font("fonts/lcd");
 }
 
@@ -60,6 +64,7 @@ void deinit ()
   pingus_small = Font();
   pingus_large = Font();
   courier_small = Font();
+  verdana11 = Font();
   lcd = Font();
 }
 

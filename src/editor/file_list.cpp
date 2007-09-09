@@ -84,7 +84,7 @@ void
 FileList::draw(DrawingContext& gc)
 {
   gc.draw_fillrect(rect.left, rect.top, rect.right, rect.bottom,
-                   Color(0, 0, 0));
+                   Color(255, 255, 255));
 
   int end = (page+1) * items_per_page();
   if (end > int(directory.size()))
@@ -109,7 +109,7 @@ FileList::draw(DrawingContext& gc)
             gc.draw_rect(x, y, x + hspace, y + vspace, Color(0, 0, 255));
         }
       
-      gc.print_left(Fonts::courier_small, x + 4, y + 3,
+      gc.print_left(Fonts::verdana11, x + 4, y + 3,
                     ((i->type == System::DE_DIRECTORY) ? "[DIR]  " : "[FILE] ") + i->name);
 
       y += 20;

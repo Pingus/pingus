@@ -87,7 +87,7 @@ public:
         Rect rect(int(gc.get_width()) - 244,  38,
                   int(gc.get_width()),        int(gc.get_height()));
         
-        gc.print_left(Fonts::courier_small,
+        gc.print_left(Fonts::verdana11,
                       //pos.x + 17.f, pos.y + 38.f,
                       rect.left+2 + 2, 
                       rect.top+2 + 62 + 2,

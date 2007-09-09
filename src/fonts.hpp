@@ -1,7 +1,7 @@
 //  $Id$
 //
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 2002 Ingo Ruhnke <grumbel@gmx.de>
+//  Copyright (C) 2007 Ingo Ruhnke <grumbel@gmx.de>
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -36,6 +36,8 @@ extern Font courier_small;
 extern Font pingus_small;
 extern Font pingus_small_fixnum;
 extern Font pingus_large;
+
+extern Font verdana11;
 
 extern Font lcd;
 

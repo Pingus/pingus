@@ -91,14 +91,15 @@ FileLoadDialog::draw_background(DrawingContext& gc)
   gc.print_center(Fonts::pingus_small, rect.get_width()/2, 2, "Open a level");
 
   GUIStyle::draw_lowered_box(gc, Rect(4 + 60,4+30,rect.get_width()-4, 26+30),
-                             Color(0,0,0));
-  gc.print_left(Fonts::courier_small, 10, 8+30, "File: ");
-  gc.print_left(Fonts::courier_small, 10 + 60, 8+30, filename);
+                             Color(255,255,255));
+
+  gc.print_left(Fonts::verdana11, 10, 8+30, "File: ");
+  gc.print_left(Fonts::verdana11, 10 + 60, 8+30, filename);
 
   GUIStyle::draw_lowered_box(gc, Rect(4 + 60,4+60,rect.get_width()-4, 26+60),
-                             Color(0,0,0));
-  gc.print_left(Fonts::courier_small, 10, 8+60, "Path: ");
-  gc.print_left(Fonts::courier_small, 10 + 60, 8+60, pathname);
+                             Color(255,255,255));
+  gc.print_left(Fonts::verdana11, 10, 8+60, "Path: ");
+  gc.print_left(Fonts::verdana11, 10 + 60, 8+60, pathname);
 }
   
 void

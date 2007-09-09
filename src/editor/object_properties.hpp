@@ -25,6 +25,7 @@
 
 namespace Editor {
 
+class Label;
 class EditorScreen;
 
 /** */
@@ -33,7 +34,11 @@ class ObjectProperties : public GUI::GroupComponent
 private:
   EditorScreen* editor;
   std::vector<LevelObj*> objects;
-  
+  Label* type_label;
+
+  Label* gptype_label;
+  RadioButtonGroup* gptype_type;
+
 public:
   ObjectProperties(EditorScreen* editor, const Rect& rect);
   ~ObjectProperties();

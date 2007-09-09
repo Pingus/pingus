@@ -35,7 +35,7 @@ ContextMenu::ContextMenu(std::vector<LevelObj*> o, Vector3f p, EditorViewport* v
     pos(p),
     selected_action_offset(0),
     displayed_child(0),
-    item_height(Fonts::courier_small.get_height())
+    item_height(Fonts::verdana11.get_height())
 {
   if (base_menu)
     {
@@ -90,7 +90,7 @@ ContextMenu::draw(DrawingContext &gc)
 
       // Draw the action names
       for (unsigned i = 0; i < actions.size(); i++)
-        gc.print_left(Fonts::courier_small, pos.x, pos.y + 
+        gc.print_left(Fonts::verdana11, pos.x, pos.y + 
                       (i * item_height), actions[i].friendly_name);
     }
 }

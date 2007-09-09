@@ -21,6 +21,8 @@
 #include "editor_screen.hpp"
 #include "level_objs.hpp"
 #include "fonts.hpp"
+#include "label.hpp"
+#include "gui_style.hpp"
 #include "object_properties.hpp"
 
 namespace Editor {
@@ -29,7 +31,15 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect)
   : GUI::GroupComponent(rect),
     editor(editor_)
 {
-  add(new Button(Rect(10, 50, 100, 70), "Test 2"), true);
+  add(type_label = new Label(Rect(Vector2i(10, 10), Size(120, 20)), "Object:"), true);
+
+  add(new Label(Rect(Vector2i(  10,  30), Size( 80, 20)), "Type:"), true);
+
+  add(new Button(Rect(Vector2i( 60,  30), Size( 80, 20)), "Ground"), true);
+  add(new Button(Rect(Vector2i( 60,  50), Size( 80, 20)), "Transparent"), true);
+  add(new Button(Rect(Vector2i( 60,  70), Size( 80, 20)), "Solid"), true);
+  add(new Button(Rect(Vector2i(140,  30), Size( 80, 20)), "Bridge"), true);
+  add(new Button(Rect(Vector2i(140,  50), Size( 80, 20)), "Remove"), true);
 }
 
 ObjectProperties::~ObjectProperties()
@@ -44,30 +54,27 @@ ObjectProperties::set_object(LevelObj* obj)
 void
 ObjectProperties::draw_background(DrawingContext& gc)
 {
-  gc.draw_fillrect(0,0, rect.get_width(), rect.get_height(), 
-                   Color(255, 255, 0));
-
-  std::string obj_type;
-  if (objects.empty())
-    {
-      obj_type = "[Empty]";
-    }
-  else if (objects.size() > 1)
-    {
-      obj_type = "[Group]";
-    }
-  else
-    {
-      obj_type = objects.front()->get_section_name();
-    }
-  gc.print_center(Fonts::courier_small, rect.get_width()/2, 10, 
-                  obj_type);
+  GUIStyle::draw_raised_box(gc, Rect(0,0, rect.get_width(), rect.get_height()));
 }
 
 void
 ObjectProperties::set_objects(const std::vector<LevelObj*>& objs)
 {
   objects = objs;
+
+  std::string obj_type;
+  if (objects.empty())
+    {
+      type_label->set_text("Object: [Empty]");
+    }
+  else if (objects.size() > 1)
+    {
+      type_label->set_text("Object: [Group]");
+    }
+  else
+    {
+      type_label->set_text("Object: " + objects.front()->get_section_name());
+    }
 }
 
 } // namespace Editor

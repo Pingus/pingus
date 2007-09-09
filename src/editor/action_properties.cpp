@@ -23,68 +23,36 @@
 **  02111-1307, USA.
 */
 
-#include "fonts.hpp"
-#include "gui_style.hpp"
-#include "button.hpp"
+#include "action_properties.hpp"
 
 namespace Editor {
 
-Button::Button(const Rect& rect, const std::string& text_)
-  : RectComponent(rect), 
-    text(text_),
-    mouse_over(false),
-    mouse_down(false),
-    enabled(true)
+/*
+
+ActionDialog: 
+[active] [Actionname] [count]
+...
+
+ */
+ActionProperties::ActionProperties(EditorScreen* editor, const Rect& rect)
+: GroupComponent(rect)
+{
+
+}
+
+ActionProperties::~ActionProperties()
 {
 }
 
 void
-Button::draw (DrawingContext& gc)
+ActionProperties::draw(DrawingContext& gc)
 {
-  if (enabled)
-    {
-      if (mouse_down && mouse_over)
-        GUIStyle::draw_lowered_box(gc, rect, Color(237, 233, 227), 2);
-      else if (mouse_over)
-        GUIStyle::draw_raised_box(gc, rect, Color(255, 255, 255), 2);
-      else
-        GUIStyle::draw_raised_box(gc, rect, Color(237, 233, 227), 2);  
-    }
-
-  gc.print_center(Fonts::verdana11, 
-                  rect.left + rect.get_width()/2, rect.top + rect.get_height()/2 - 6,
-                  text);
 }
 
 void
-Button::update (float delta)
-{  
-}
-
-void
-Button::on_pointer_enter () 
+ActionProperties::update (float delta)
 {
-  mouse_over = true;
-}
-
-void
-Button::on_pointer_leave () 
-{
-  mouse_over = false;
-}
   
-void
-Button::on_primary_button_press (int x, int y) 
-{
-  mouse_down = true;
-}
-
-void
-Button::on_primary_button_release (int x, int y) 
-{ 
-  mouse_down = false;
-  if (mouse_over)
-    on_click();    
 }
 
 } // namespace Editor

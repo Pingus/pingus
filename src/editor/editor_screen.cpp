@@ -61,7 +61,7 @@ EditorScreen::EditorScreen()
   panel = new Panel(this);
 
   object_selector = new ObjectSelector(this);
-  object_properties = new ObjectProperties(this, Rect(0,500,200,600));
+  object_properties = new ObjectProperties(this, Rect(Vector2i(0,440), Size(240, 160)));
   gui_manager->add(object_properties, true);
   file_load_dialog = new FileLoadDialog(this, Rect(Vector2i(50, 50), 
                                                    Size(Display::get_width() - 100, 
@@ -125,12 +125,12 @@ EditorScreen::draw(DrawingContext& gc)
                        int(gc.get_height()/2) + size.height/2,
                        Color(0,0,0));
       
-      gc.print_center(Fonts::courier_small,
+      gc.print_center(Fonts::verdana11,
                       int(gc.get_width()/2),
                       int(gc.get_height()/2) - size.height/2 + 12,
                       "Editor Help");
 
-      gc.print_left(Fonts::courier_small,
+      gc.print_left(Fonts::verdana11,
                     int(gc.get_width()/2 - size.width/2 + 12),
                     int(gc.get_height()/2) - size.height/2 + 36,
                     "F1 - display this help\n"
@@ -142,7 +142,7 @@ EditorScreen::draw(DrawingContext& gc)
                     "F9 - change level width/height\n"
                     );
 
-      gc.print_left(Fonts::courier_small,
+      gc.print_left(Fonts::verdana11,
                     int(gc.get_width()/2 + 12),
                     int(gc.get_height()/2) - size.height/2 + 36,
                     "F1 - display this help\n"
@@ -154,7 +154,7 @@ EditorScreen::draw(DrawingContext& gc)
                     "F9 - change level width/height\n"
                     );
 
-      gc.print_left(Fonts::courier_small,
+      gc.print_left(Fonts::verdana11,
                     int(gc.get_width()/2 - size.width/2 + 12),
                     int(gc.get_height()/2) - 10,
                     "Naming Convention: <levelname><number>-<creator>.pingus\n\n"

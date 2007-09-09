@@ -94,6 +94,7 @@ env.Program('../pingus', [
 'editor/context_menu.cpp',
 'editor/editor_level.cpp', 
 'editor/panel.cpp',
+'editor/label.cpp',
 'editor/file_list.cpp',
 'editor/file_load_dialog.cpp',
 'editor/file_save_dialog.cpp', 
@@ -101,7 +102,9 @@ env.Program('../pingus', [
 'editor/editor_viewport.cpp', 
 'editor/level_objs.cpp',
 'editor/object_selector.cpp',
-'editor/object_properties.cpp', 
+'editor/object_properties.cpp',
+'editor/level_properties.cpp',
+'editor/action_properties.cpp', 
 
 'command_line.cpp',
 'command_line_generic.cpp',

@@ -99,7 +99,7 @@ public:
 
     if (mouse_over)
       {
-        gc.print_center(Fonts::courier_small, pos.x + 17.f, pos.y + 38.f, tooltip, 1000.0f);
+        gc.print_center(Fonts::verdana11, pos.x + 17.f, pos.y + 38.f, tooltip, 1000.0f);
       }
   }
 
