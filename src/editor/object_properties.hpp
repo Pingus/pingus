@@ -28,6 +28,7 @@ class Label;
 class EditorScreen;
 class Combobox;
 class ComboItem;
+class Checkbox;
 
 /** */
 class ObjectProperties : public GUI::GroupComponent
@@ -41,6 +42,12 @@ private:
   Label*    gptype_label;
   Combobox* gptype_type;
 
+  Label*    entrance_direction_label;
+  Combobox* entrance_direction;
+
+  Checkbox* stretch_x_checkbox;
+  Checkbox* stretch_y_checkbox;
+
 public:
   ObjectProperties(EditorScreen* editor, const Rect& rect);
   ~ObjectProperties();
@@ -51,6 +58,9 @@ public:
   void set_objects(const std::vector<LevelObj*>& objs);
 
   void on_gptype_change(const ComboItem& item);
+  void on_stretch_x_change(bool t);
+  void on_stretch_y_change(bool t);
+  void on_entrance_direction_change(const ComboItem& item);
 
 };
 

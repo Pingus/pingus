@@ -42,7 +42,7 @@ private:
   Component*     press_over_comp;
   
 public:
-  GroupComponent(const Rect& rect);
+  GroupComponent(const Rect& rect, bool clip = true);
   ~GroupComponent();  
   	
   void draw(DrawingContext& gc);

@@ -62,7 +62,7 @@ public:
   void draw(DrawingContext &gc);
 };	// InputBox class
 
-}	// GUI namespace
+} // namespace GUI
 
 #endif
 

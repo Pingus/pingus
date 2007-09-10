@@ -92,6 +92,7 @@ env.Program('../pingus', [
 'editor/button.cpp',
 'editor/gui_style.cpp',
 'editor/context_menu.cpp',
+'editor/checkbox.cpp',
 'editor/editor_level.cpp', 
 'editor/panel.cpp',
 'editor/label.cpp',

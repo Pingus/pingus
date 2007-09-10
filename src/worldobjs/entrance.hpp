@@ -37,8 +37,9 @@ namespace WorldObjs {
     currently sucks and needs to be rewritten */
 class Entrance : public WorldObj
 {
-protected:
+public:
   enum EntranceDirection { LEFT, RIGHT, MISC };
+protected:
   EntranceDirection direction;
   Vector3f            pos;
   int               release_rate;

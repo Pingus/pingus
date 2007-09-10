@@ -23,28 +23,50 @@
 **  02111-1307, USA.
 */
 
-#include "display/drawing_context.hpp"
 #include "fonts.hpp"
-#include "label.hpp"
+#include "gui_style.hpp"
+#include "checkbox.hpp"
 
 namespace Editor {
 
-Label::Label(const Rect& rect, const std::string& text_)
+Checkbox::Checkbox(const Rect& rect, const std::string& label_)
   : RectComponent(rect),
-    text(text_)
+    checked(false),
+    label(label_)
+{
+}
+
+Checkbox::~Checkbox()
 {
 }
 
 void
-Label::draw (DrawingContext& gc)
+Checkbox::draw(DrawingContext& gc)
 {
-  gc.print_left(Fonts::verdana11, rect.left, rect.top + rect.get_height()/2 - Fonts::verdana11.get_height()/2,
-                text);
+  if (checked)
+    GUIStyle::draw_lowered_box(gc, rect);
+  else
+    GUIStyle::draw_raised_box(gc, rect);
+
+  if (!label.empty())
+    gc.print_center(Fonts::verdana11, 
+                    rect.left + rect.get_width()/2, 
+                    rect.top + rect.get_height()/2 - Fonts::verdana11.get_height()/2, 
+                    label);
 }
 
 void
-Label::update (float delta)
-{  
+Checkbox::on_primary_button_press(int x, int y)
+{
+  checked = !checked;
+  on_change(checked);
+}
+
+void
+Checkbox::set_checked(bool t) 
+{
+  checked = t;
+  on_change(checked);
 }
 
 } // namespace Editor

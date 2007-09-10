@@ -24,7 +24,7 @@
 #include "../fonts.hpp"
 
 namespace GUI {
-	
+	
 InputBox::InputBox(float width_, Vector3f p, const std::string& default_value,
                    bool locked, const std::string& label_) 
   :	str(default_value),
@@ -98,7 +98,7 @@ InputBox::on_key_pressed(const unsigned short c)
         }
     }
 }
-
-}	// GUI
+
+} // namespace GUI
 
 /* EOF */
