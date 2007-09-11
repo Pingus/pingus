@@ -39,6 +39,8 @@ Manager::Manager()
 {
   desc.add_axis("action-axis",  ACTION_AXIS);
 
+  desc.add_keyboard("standard-keyboard",  STANDARD_KEYBOARD);
+
   desc.add_pointer("standard-pointer",   STANDARD_POINTER);
   desc.add_scroller("standard-scroller", STANDARD_SCROLLER);
 
@@ -149,6 +151,20 @@ Manager::create_controller(const std::string& filename)
                   else
                     std::cout << "Manager: axis: Couldn't create axis " << j->get_name() << std::endl;
                 }
+            }
+          else if (StringUtil::has_suffix(i->get_name(), "keyboard"))
+            {
+              const std::vector<FileReader>& keyboards = i->get_sections();
+              for(std::vector<FileReader>::const_iterator j = keyboards.begin(); j != keyboards.end(); ++j)
+                {
+                  int id = desc.get_definition(i->get_name()).id;
+                  ControllerKeyboard* ctrl_keyboard = controller->get_keyboard(id);
+                  Keyboard* keyboard = create_keyboard(*j, ctrl_keyboard);
+                  if (keyboard)
+                    ctrl_keyboard->add_keyboard(keyboard);
+                  else
+                    std::cout << "Manager: keyboard: Couldn't create keyboard " << j->get_name() << std::endl;
+                }              
             }
           else
             {
@@ -290,6 +306,23 @@ Manager::create_scroller(const FileReader& reader, Control* parent)
       std::cout << "Manager: Error: Couldn't find driver: '" << driver << "'" << std::endl;
       return 0;
     }
+}
+
+Keyboard*
+Manager::create_keyboard(const FileReader& reader, Control* parent)
+{
+  std::string driver = get_driver_part(reader.get_name());
+                  
+  Driver* drv = load_driver(driver);
+  if (drv)
+    {
+      return drv->create_keyboard(reader, parent);
+    }
+  else
+    {
+      std::cout << "Manager: Error: Couldn't find driver: '" << driver << "'" << std::endl;
+      return 0;
+    }  
 }
 
 } // namespace Input

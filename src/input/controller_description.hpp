@@ -53,6 +53,7 @@ public:
   void add_axis    (const std::string& name, int id); 
   void add_scroller(const std::string& name, int id); 
   void add_pointer (const std::string& name, int id); 
+  void add_keyboard(const std::string& name, int id); 
 
   const InputEventDefinition& get_definition(int id) const;
   const InputEventDefinition& get_definition(const std::string& name) const;
@@ -61,6 +62,7 @@ public:
   std::vector<int> get_axes() const;
   std::vector<int> get_pointers() const;
   std::vector<int> get_scrollers() const;
+  std::vector<int> get_keyboards() const;
 };
 
 } // namespace Input

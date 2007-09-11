@@ -89,6 +89,19 @@ ControllerDescription::add_axis  (const std::string& name, int id)
   id_to_event[event.id]    = event;
 }
 
+void
+ControllerDescription::add_keyboard  (const std::string& name, int id)
+{
+  InputEventDefinition event;
+
+  event.type = KEYBOARD_EVENT_TYPE;
+  event.name = name;
+  event.id   = id;
+
+  str_to_event[event.name] = event;
+  id_to_event[event.id]    = event;
+}
+
 const InputEventDefinition&
 ControllerDescription::get_definition(int id) const
 {
@@ -146,6 +159,13 @@ ControllerDescription::get_scrollers() const
 {
   return map2vector(id_to_event, SCROLLER_EVENT_TYPE);  
 }
+
+std::vector<int>
+ControllerDescription::get_keyboards() const
+{
+  return map2vector(id_to_event, KEYBOARD_EVENT_TYPE);  
+}
+
 
 } // namespace Input
 

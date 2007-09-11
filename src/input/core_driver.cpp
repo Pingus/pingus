@@ -356,6 +356,12 @@ CoreDriver::create_pointer(const FileReader& reader, Control* parent)
     }
 }
 
+Keyboard*
+CoreDriver::create_keyboard(const FileReader& reader, Control* parent)
+{
+  return 0;
+}
+
 } // namespace Input
 
 /* EOF */

@@ -49,7 +49,7 @@ public:
   Axis*     create_axis    (const FileReader& reader, Control* parent) { return 0; } 
   Scroller* create_scroller(const FileReader& reader, Control* parent);
   Pointer*  create_pointer (const FileReader& reader, Control* parent);
-
+  Keyboard*  create_keyboard(const FileReader& reader, Control* parent) { return 0; }
 private:
   USBMouse* get_mouse(const std::string& device);
 };

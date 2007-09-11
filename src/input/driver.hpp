@@ -38,6 +38,7 @@ public:
   virtual Axis*     create_axis    (const FileReader& reader, Control* parent) =0;
   virtual Scroller* create_scroller(const FileReader& reader, Control* parent) =0;
   virtual Pointer*  create_pointer (const FileReader& reader, Control* parent) =0;
+  virtual Keyboard* create_keyboard(const FileReader& reader, Control* parent) =0;
 };
 
 } // namespace Input

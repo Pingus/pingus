@@ -26,6 +26,7 @@
 namespace Input {
 
 SDLDriver::SDLDriver()
+  : keyboard_binding(0)
 {
   for (int i = 0; i < SDLK_LAST; ++i) {
     char* key_name = SDL_GetKeyName(static_cast<SDLKey>(i));
@@ -39,6 +40,12 @@ SDLDriver::SDLDriver()
 SDLDriver::~SDLDriver()
 {
   
+}
+
+Keyboard*
+SDLDriver::create_keyboard(const FileReader& reader, Control* parent)
+{
+  return (keyboard_binding = new Keyboard(parent));
 }
 
 Button*
@@ -238,6 +245,9 @@ SDLDriver::update(float delta)
             break;
 
           case SDL_KEYDOWN:
+            if (keyboard_binding)
+              keyboard_binding->send_char(event.key.keysym.unicode);
+            
           case SDL_KEYUP:
             if (event.key.state == SDL_PRESSED)
               global_event.on_button_press(event.key);

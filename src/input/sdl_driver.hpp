@@ -78,6 +78,7 @@ private:
   std::vector<MouseButtonBinding>    mouse_button_bindings;
   std::vector<JoystickButtonBinding> joystick_button_bindings;
   std::vector<JoystickAxisBinding>   joystick_axis_bindings;
+  Keyboard* keyboard_binding;
 
   typedef std::map<std::string, SDLKey> String2Key;
   String2Key string2key;
@@ -95,6 +96,7 @@ public:
   Axis*     create_axis    (const FileReader& reader, Control* parent);
   Scroller* create_scroller(const FileReader& reader, Control* parent);
   Pointer*  create_pointer (const FileReader& reader, Control* parent);
+  Keyboard* create_keyboard(const FileReader& reader, Control* parent);
 
   void update(float delta);
   std::string get_name() const { return "sdl"; }

@@ -64,6 +64,12 @@ Controller::Controller(const ControllerDescription& desc)
     {
       add_scroller(*i, new ControllerScroller(this, *i));
     }
+
+  const std::vector<int>& keyboard_lst = desc.get_keyboards();
+  for(std::vector<int>::const_iterator i = keyboard_lst.begin(); i != keyboard_lst.end(); ++i)
+    {
+      add_keyboard(*i, new ControllerKeyboard(this, *i));
+    }
 }
 
 ControllerScroller*
@@ -92,6 +98,25 @@ Controller::get_pointer(int id)
     return pointers[id];
   else
     return 0;
+}
+
+ControllerKeyboard*
+Controller::get_keyboard(int id)
+{
+  if (id >= 0 && id < int(keyboards.size()))
+    return keyboards[id];
+  else
+    return 0;
+}
+
+void
+Controller::add_keyboard(int id, ControllerKeyboard* keyboard) 
+{
+  if (int(keyboards.size())-1 < id)
+    keyboards.resize(id+1);
+   
+  assert(keyboards[id] == 0);
+  keyboards[id] = keyboard;
 }
 
 void
@@ -184,6 +209,12 @@ Controller::add_scroller_event(int id, float xrel, float yrel)
 {
   // std::cout << "Controller::scroller_event: id=" << id << " " << xrel << ", " << yrel << std::endl;
   events.push_back(makeScrollerEvent((EventName)id, xrel, yrel));
+}
+
+void
+Controller::add_keyboard_event(unsigned short key)
+{
+  events.push_back(makeKeyboardEvent(key));
 }
 
 std::vector<Event>

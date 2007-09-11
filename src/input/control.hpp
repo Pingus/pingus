@@ -364,6 +364,62 @@ public:
   }
 };
 
+class Keyboard : public Control
+{
+protected:
+  unsigned short chr;
+
+public:
+  Keyboard(Control* parent)
+    : Control(parent)
+  {}
+
+  void send_char(unsigned short c) { chr = c; notify_parent(); }
+  unsigned char get_char() { return chr; }
+};
+
+class KeyboardGroup : public Keyboard
+{
+private:
+  std::vector<Keyboard*> keyboards;
+
+public:
+  KeyboardGroup(Control* parent)
+    : Keyboard(parent)
+  {}
+
+  void update(float delta) {
+  }
+
+  void update(Control* p) {
+    chr = dynamic_cast<Keyboard*>(p)->get_char();
+    notify_parent();
+  }
+
+  void add_keyboard(Keyboard* keyboard)
+  {
+    keyboards.push_back(keyboard);
+  }
+};
+
+class ControllerKeyboard : public KeyboardGroup
+{
+private:
+  Controller* controller;
+  int id;
+
+public:
+  ControllerKeyboard(Controller* controller_, int id_)
+    : KeyboardGroup(0),
+      controller(controller_),
+      id(id_)
+  {}
+  
+  virtual void notify_parent() {
+    controller->add_keyboard_event(chr);
+  }
+};
+
 } // namespace Input
 
 #endif

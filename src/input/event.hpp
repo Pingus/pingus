@@ -61,6 +61,8 @@ enum EventName {
   // Scroller
   STANDARD_SCROLLER,
 
+  STANDARD_KEYBOARD,
+
   // Axis
   ACTION_AXIS,
 };

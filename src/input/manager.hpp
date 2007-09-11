@@ -47,6 +47,7 @@ public:
   Axis*     create_axis    (const FileReader& reader, Control* parent);
   Pointer*  create_pointer (const FileReader& reader, Control* parent);
   Scroller* create_scroller(const FileReader& reader, Control* parent);
+  Keyboard* create_keyboard(const FileReader& reader, Control* parent);
 
 private:
   Driver* load_driver(const std::string& name);

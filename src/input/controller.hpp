@@ -31,6 +31,7 @@ class ControllerButton;
 class ControllerAxis;
 class ControllerPointer;
 class ControllerScroller;
+class ControllerKeyboard;
 
 class Controller
 {
@@ -46,6 +47,7 @@ private:
   std::vector<ControllerAxis*>     axes;
   std::vector<ControllerPointer*>  pointers;
   std::vector<ControllerScroller*> scrollers;
+  std::vector<ControllerKeyboard*> keyboards;
   
   std::vector<Event> events;
 public:
@@ -58,16 +60,19 @@ public:
   ControllerButton*   get_button(int id);
   ControllerPointer*  get_pointer(int id);
   ControllerScroller* get_scroller(int id);
+  ControllerKeyboard* get_keyboard(int id);
 
   void add_axis_event(int id, float pos);
   void add_button_event(int id, ButtonState state);
   void add_pointer_event(int id, float x, float y);
   void add_scroller_event(int id, float xrel, float yrel);
+  void add_keyboard_event(unsigned short key);
 
   void add_axis(int id, ControllerAxis* axis);
   void add_button(int id, ControllerButton* button); 
   void add_pointer(int id, ControllerPointer* pointer);
   void add_scroller(int id, ControllerScroller* scroller);
+  void add_keyboard(int id, ControllerKeyboard* keyboard);
   
   void update(float delta);
 private:
